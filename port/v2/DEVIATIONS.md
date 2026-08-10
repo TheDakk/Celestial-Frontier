@@ -1561,7 +1561,31 @@ duplicates).
   repairs the provenance model by distinguishing current catalogue ownership from retained
   legacy-route ownership, exercises both production routes, and negative-controls relabelling the
   legacy microbe route as current membership. Its sentinels, selftest and TypeScript check are
-  green; both stable browser orders validated 234/234 assets. Overall status remains
-  `FAIL_BYTE_IDENTICAL_STAGES` solely for pre-existing Vanilla Orchid, so visual continuity is
-  still OPEN. **An audit must test compatibility surfaces without silently rewriting the roster it
-  claims to measure.**
+  green; both stable browser orders validated 234/234 assets. That first v3 run still reported
+  `FAIL_BYTE_IDENTICAL_STAGES` for pre-existing Vanilla Orchid; the later bounded r6 repair closes
+  that focused defect under D-ART-180. **An audit must test compatibility surfaces without silently
+  rewriting the roster it claims to measure.**
+
+- ★★★ **D-ART-180 — A LINEAGE-DISTINCTNESS GATE MUST INCLUDE THE LINEAGE THAT ACTUALLY
+  COLLAPSED, AND ITS NEGATIVE CONTROL MUST RECREATE THAT COLLAPSE.** (2026-08-10, Vanilla r6.)
+  The first hybrid guard proved routing, owner selection, cache separation and several distinct
+  lineages while Vanilla Orchid still rendered the same portrait at anchors 1.0, 0.90, 0.73, 0.46
+  and 0.22. The bounded repair is independently PASS at `floraoverrides2.ts` SHA-256
+  `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`: the pure portrait stays
+  byte-exact, all five stages preserve defining Vanilla organs with continuous joins, and pixel
+  distance from pure increases as the anchor falls. The r6 matrix validates 234/234 assets in both
+  browser orders. `hybridcheck` now requires five exact ID+kingdom+name focused lineages spanning all four kingdoms and
+  rejects eleven injected failures, including focused-species substitution and a simulated Vanilla stage collapse. **A representative
+  lineage test cannot protect an omitted lineage; put the reported failure itself in the positive
+  set and reproduce it in the negative set.**
+
+- ★★★ **D-ART-181 — A BOUNDED CHECKPOINT IS OPEN UNTIL ITS LAST CHANGED PIXEL HAS AN
+  AUTHOR-SEPARATED PASS.** (2026-08-10, Wave 2a.) Mammal A closed 4/4 and INVERT worms+sessile
+  closed 13/13 under independent 440/300/132 review, exact repeats and protected controls. The
+  S1–S3 first pass returned 11 PASS / 4 FAIL—Caddisfly, Diving Beetle, Firefly and Water Beetle.
+  Bounded R2 changed exactly those four; its independent judge returned 4 PASS / 0 FAIL, all 156
+  current/repeat PNGs are complete and exact, and all 22 protected rows remain byte-identical at
+  every scale. The combined checkpoint therefore closes 32/32 scoped PASS. Neither that closure nor
+  its component counts may be added to the frozen 516/14/720 ledger; only a new complete collector
+  can make a catalogue claim. **Source completion and green author gates are evidence inputs; the
+  last changed pixel still requires author-separated review before a checkpoint can close.**

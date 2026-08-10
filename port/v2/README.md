@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (Phase 1+)
 
-**Status: ★★★ RESET R1 FROZEN · WAVE 1 READY TO COMMIT · VANILLA DEFERRED OPEN** (2026-08-10).
+**Status: ★★★ RESET R1 FROZEN · WAVE 1 PUSHED · WAVE 2A 32/32 PASS / READY TO COMMIT** (2026-08-10).
 **Port milestone record (2026-08-01):** ★★★ PHASES 1–3 COMPLETE (automatable) · PHASE 4 SHELL RUNNING.
 **Phase 4 so far — the slice wears the game's face at the GOLDEN SCREENS' exact geometry**
 (floating-pill topbar: player chip + HP bar + Prime pill + trail · objective chip fed by the
@@ -38,19 +38,30 @@ source owners are `alientraits.ts`, `invertoverrides.ts`,
 `faunaoverrides2.ts`. These scoped results are not a replacement 1,250-row
 collector tally; do not add them to 516 and claim a catalogue score.
 
-Wave 1 remains uncommitted, but independent review and the complete checkpoint
-gate set are finished: it is ready to commit. Apple's continuity repair is
-independently judged PASS at `floraoverrides2.ts` SHA-256
-`D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
-58/58 tree rows remain exact at 440/300/132 (174/174 hashes), all five stages are
-unique, and pixel distance from pure strictly increases as the anchor falls.
-Schema v3 validates 234/234 assets with both browser orders stable. The matrix
-still reports `FAIL_BYTE_IDENTICAL_STAGES` solely because pre-existing Vanilla
-Orchid renders all five stages identically. Route/cache ownership is otherwise
-guarded across every kingdom. Broader hybrid visual continuity remains OPEN for
-a later bounded Vanilla wave and does not block this Wave-1 checkpoint commit.
-Judge evidence is at
-`C:\Users\Nick\.codex\visualizations\2026\08\09\019fe72d-20c7-73a0-bac7-d2c64d10673d\flora-tree-focus\evidence-apple-continuity-judge`.
+Wave 1 is committed and pushed as `d005090f`. Wave 2a is a separate bounded,
+uncommitted checkpoint. Mammal A is **4/4 PASS** (Colugo, Sugar Glider, Fur Seal,
+Sea Lion); the INVERT worms+sessile batch is **13/13 PASS**; and S1–S3 is
+**15/15 PASS** after bounded R2 independently closed Caddisfly, Diving Beetle,
+Firefly, and Water Beetle. Its immutable R2 recapture binds the same source hash
+before A, between A/B and after B, with zero drift across 139 build inputs; all
+26 rows / 156 current+repeat PNGs are hash/dimension/repeat exact. Exactly four targets changed and all
+22 protected rows remain byte-identical at all three scales. Across those three
+catalogue batches Wave 2a is **32/32 scoped PASS** and ready to commit/push—not a
+new full-catalogue tally.
+
+Vanilla Orchid r6 is independently judged continuity PASS at
+`floraoverrides2.ts` SHA-256
+`5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`.
+The evidence root
+`apps/game/smoke/hybrid-continuity-wave2-vanilla-2026-08-10-r6` validates
+234/234 assets, exact source/hash/dimension records, and both browser orders.
+The pure portrait remains byte-exact to
+`3f6834b7f984b35186fa1c441eeb4537d3e5793d446e447b021a1e3687939a25`;
+all five stages are unique and progress meaningfully from pure through the 0.22
+anchor floor. `hybridcheck` now requires five exact ID+kingdom+name focused lineages spanning all four
+kingdoms and rejects eleven injected negative controls, including focused-species
+substitution and Vanilla stage collapse. The prior `FAIL_BYTE_IDENTICAL_STAGES` blocker is closed. Broader
+all-bloodline and full-catalogue certification remains OPEN.
 
 The first live hybrid-matrix attempt exposed a real schema-v2 harness contract
 bug, not transient provenance or an art verdict: it required both Green Algae
@@ -114,7 +125,7 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 | `npm run gp7conformity -- --input <extracted-recheck-dir>` | Validates a 1,250-row ledger/manifest/results/index join and reports direct vs carried remediation work. `--certify` rejects every carried or non-PASS row; it guards ledger provenance and never substitutes for rendering or visual review. |
 | `node tools/gp71rejudge.mjs --prepare --out=gp71-rejudge --date=2026-08-09` | Builds the separate GP7.1 all-fresh 1,250-portrait / 196-packet evidence set, with no generated verdicts. `--collect` refuses partial, stale, or misaligned packet verdicts. |
 | `node tools/gp71compare.mjs --verify-only --old-root=<old> --current-root=<current> --catalogue=<current-index>` | Exact-joins two complete 1,250-image evidence roots; generation mode writes hash-bound family-organized old/current sheets to a new output directory. |
-| `npm run hybridcheck` | Drives the real browser art wrapper and proves set-qualified lineage pixels across fauna/flora/fungi/microbe, Earth/alien parent orders, multi-generation cases, duplicate names, swapped-parent cache separation, deterministic repeats, and injected bypass rejection. |
+| `npm run hybridcheck` | Drives the real browser art wrapper and proves set-qualified lineage pixels across five exact ID+kingdom+name focused lineages spanning fauna/flora/fungi/microbe, Earth/alien parent orders, multi-generation cases, duplicate names, swapped-parent cache separation and deterministic repeats; eleven injected negative controls must all be rejected. |
 | `npm run hybridmatrix -- --out=<new-name-under-apps/game/smoke>` | Writes the 12-lineage × 5-stage production hybrid continuity matrix, cards, silhouettes, 4× join crops, repeat/reload proof and reversed-parent cache controls to a new evidence root. It deliberately reports visual continuity OPEN until independently judged. |
 | `npm run fullresetlayout -- --prepare --evidence=<current-root> --out=<new-layout> --per=10 --packets --source-commit=<40-hex>` | From a clean commit-bound 1,250-image root, derives the official 181 families / 233 packets, 46 procedural plan families, exact set/species contracts and labelled/unlabeled packet evidence. `--verify` is the read-only counterpart. |
 | `npm run fullresetreview -- --compare …` / `--template` / `--collect` / `--certify` | Binds each row to native 440px, unlabeled 300px, actual unlabeled 132px, labelled old/current and exact contract hashes; creates empty fresh verdicts, collects only complete matching review, and certifies only 1,250 fresh PASS. See the copy-ready sequence below. |

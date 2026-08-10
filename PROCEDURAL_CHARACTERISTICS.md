@@ -16,15 +16,16 @@ the procedural source as of 2026-08-10; dated B15 sections below remain legacy
 >
 > Set-qualified `_earthBlend` ownership and cache identity are guarded by final
 > browser pixels across all four kingdoms (`npm run hybridcheck` from `port/v2`).
-> Apple's continuity repair is independently judged PASS at source SHA-256
-> `D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
-> 58/58 tree rows are exact at 440/300/132 (174/174 hashes), five stages are
-> unique with strictly increasing pure-distance, and schema v3 validates 234/234
-> assets with both browser orders stable. The matrix remains
-> `FAIL_BYTE_IDENTICAL_STAGES` solely because pre-existing Vanilla Orchid paints
-> all five stages identically, so overall visual continuity remains OPEN. Earlier
-> dirty-worktree matrices are diagnostic history. See
-> `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+> Its current contract requires five exact ID+kingdom+name focused lineages covering fauna, flora,
+> fungi and microbes and rejects eleven injected negative controls. Apple's prior
+> repair remains accepted, and Vanilla Orchid r6 is independently PASS at source
+> SHA-256 `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`:
+> the pure portrait is byte-exact, all five stages are unique and integrated,
+> progressive drift survives the 0.22 anchor floor, and the matrix validates
+> 234/234 assets in both browser orders. The prior
+> `FAIL_BYTE_IDENTICAL_STAGES` result is diagnostic history. These focused
+> results do not certify every possible lineage or create a new catalogue tally.
+> See `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
 > **Reading boundary:** the “TEXT-ONLY TODAY” and “STRONG” assessments below are
 > preserved pre-Pass-7/v1 observations, not claims about current v2 pixels. The

@@ -15,16 +15,21 @@ Companion to `ART_DIRECTION.md` and `PROCEDURAL_CHARACTERISTICS.md`._
 > browser pixels across all four kingdoms, duplicate names, both parent orders,
 > multi-generation/cache/repeat cases and injected failures.
 >
-> **Overall visual continuity remains OPEN solely for Vanilla Orchid.** Apple's
-> continuity repair is independently judged PASS at source SHA-256
-> `D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
-> 58/58 tree rows remain exact at 440/300/132 (174/174 hashes), five stages are
-> unique with strictly increasing pure-distance, and schema v3 validates 234/234
-> assets with both browser orders stable. Vanilla Orchid alone remains
-> `FAIL_BYTE_IDENTICAL_STAGES`. Schema v2's Green Algae stop was a real harness
-> contract bug, not transient provenance; schema v3 repairs current-catalogue vs
-> retained-legacy-route ownership and its sentinels are green. Routing correctness
-> and distinct hashes are necessary and are not proof that every graft is seamless.
+> **The focused Apple and Vanilla continuity blockers are independently closed.**
+> Vanilla r6 passes at `floraoverrides2.ts` SHA-256
+> `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`.
+> Its pure portrait remains byte-exact to
+> `3f6834b7f984b35186fa1c441eeb4537d3e5793d446e447b021a1e3687939a25`;
+> five stages are unique, preserve defining Vanilla organs, join continuously,
+> and drift progressively farther from pure as the anchor falls. The r6 matrix
+> validates 234/234 assets and both browser orders. `npm run hybridcheck` now
+> requires five exact ID+kingdom+name focused lineages covering all four kingdoms and rejects eleven
+> injected negative controls, including focused-species substitution and simulated Vanilla stage collapse.
+> Schema v2's Green Algae stop was a real harness contract bug, not transient
+> provenance; schema v3 repairs current-catalogue vs retained-legacy-route
+> ownership and its sentinels are green. These focused results do not certify
+> every possible bloodline; routing correctness and distinct hashes alone still
+> do not prove that every graft is seamless.
 
 The central rule (Nick): **never make the player choose between keeping a beloved
 Earth creature and participating in the alien progression system — the game lets

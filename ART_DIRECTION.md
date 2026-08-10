@@ -694,15 +694,18 @@ or procedural-plan hashes. The complete fresh result is **516 PASS / 14 POLISH /
 720 FAIL** and is not certification-eligible. No final all-PASS collection or
 image-inclusive ZIP exists.
 
-Hybrid route/cache ownership is technically correct while overall visual
-continuity remains OPEN solely for Vanilla Orchid. Apple's continuity repair is
-independently judged PASS at source SHA-256
-`D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
-58/58 tree rows are exact at 440/300/132 (174/174 hashes), five stages are unique,
-and pixel distance from pure strictly increases as the anchor falls. Schema v3
-validates 234/234 assets with both browser orders stable. Vanilla Orchid alone
-remains `FAIL_BYTE_IDENTICAL_STAGES`. The earlier dirty 12-lineage × 5-stage
-matrix is diagnostic history. The graphics upgrade remains staged: correct
+Hybrid route/cache ownership is technically correct, and the prior focused
+Apple and Vanilla continuity blockers are now independently closed. Vanilla r6
+passes at `floraoverrides2.ts` SHA-256
+`5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`:
+its pure portrait is byte-exact, all five stages remain recognizably Vanilla,
+their joins are continuous, and child-genome drift increases meaningfully as the
+anchor falls. The r6 root validates 234/234 assets and both browser orders.
+`hybridcheck` binds five exact ID+kingdom+name focused lineages across all four kingdoms and rejects
+eleven injected negative controls, including focused-species substitution and Vanilla stage collapse. The earlier
+dirty matrices and prior `FAIL_BYTE_IDENTICAL_STAGES` result are diagnostic
+history. This focused PASS is not a claim that every possible bloodline or the
+full catalogue is certified. The graphics upgrade remains staged: correct
 anatomy and lineage continuity, then a resolution-aware portrait seam, then a
 bounded Pixi living preview, then any later mesh/skeletal production pipeline.
 
@@ -733,3 +736,26 @@ Apple's integrated hybrid variation is independently PASS: all five stages are
 distinct with strictly increasing pure-distance, while all 58 tree rows remain
 exact across the three delivery sizes. The judge evidence is
 `C:\Users\Nick\.codex\visualizations\2026\08\09\019fe72d-20c7-73a0-bac7-d2c64d10673d\flora-tree-focus\evidence-apple-continuity-judge`.
+
+## 2026-08-10 reset Wave 2a — anatomy-first family batches
+
+Wave 2a continues the same literal, source-frozen ruler. Mammal A is
+independently **4/4 PASS** (Colugo, Sugar Glider, Fur Seal, Sea Lion): gliding
+membranes, plume/fur, limb contacts and pinniped flippers now read as integrated
+whole-form anatomy at 440/300/132, while 71 protected controls remain exact.
+
+The INVERT winning route independently closes **13/13 PASS**: seven worm forms
+(Earthworm, Flatworm, Ice Worm, Lancelet, Marine Worm, Polychaete Worm, Scale
+Worm) and six sessile/benthic forms (Barnacle, Coral, Cold-Water Coral,
+Deep-Water Coral, Sea Cucumber, Sponge). The governing art rule is body-plan
+truth before decoration: annulation, parapodia/scales, cirri, branching tissue,
+polyps, oscula and tube feet must belong to the continuous body or colony, not
+sit on top as icons.
+
+S1–S3 is independently **15/15 PASS**. Its first result was 11 PASS / 4 FAIL;
+bounded R2 changed exactly Caddisfly, Diving Beetle, Firefly and Water Beetle and
+closed all four at 440/300/132. All 22 protected rows remain byte-identical at
+every scale, and the 156 current/repeat PNGs are complete and deterministic.
+Wave 2a is therefore 32/32 scoped PASS and ready to commit/push. That scoped
+closure still cannot be converted into a new catalogue score without the full
+1,250 collector.

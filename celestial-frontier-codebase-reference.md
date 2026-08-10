@@ -23,8 +23,9 @@
 > lineage-aware HD fallback and flora/fungi/microbe to the exact kingdom+name
 > owner before generic procedural mapping. Portrait and thumb caches canonicalize
 > the complete deterministic genome because `A×B` and `B×A` can share a seed while
-> inheriting different traits. `hybridblendcheck.mjs` guards every kingdom's final
-> browser route/cache outcomes; visual hybrid continuity remains OPEN.
+> inheriting different traits. `hybridblendcheck.mjs` guards five exact ID+kingdom+name focused lineages
+> spanning every kingdom, final browser route/cache outcomes and eleven injected
+> negative controls; final all-bloodline certification remains OPEN.
 >
 > `gp71rejudge.mjs` guards set-aware references; `gp71compare.mjs` exact-joins
 > old/current 1,250-image roots; `fullresetlayout.mjs` derives the official 181
@@ -41,21 +42,29 @@
 > bounded to `alientraits.ts`, `invertoverrides.ts`, `proceduralfamilies.ts`,
 > `proceduraloverrides.ts`, `speciesoverrides.ts`, `faunaoverrides3.ts`,
 > `florarost.ts`, `floraoverrides2.ts`, and `faunaoverrides2.ts`. These scoped
-> verdicts are not a replacement full-catalogue score.
+> verdicts are not a replacement full-catalogue score. Wave 1 is committed and
+> pushed as `d005090f`.
 >
-> Apple's continuity repair is independently judged PASS at `floraoverrides2.ts` SHA-256
-> `D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
-> 58/58 tree rows remain exact at 440/300/132 (174/174 hashes), five stages are
-> unique with strictly increasing pure-distance, and schema v3 validates 234/234
-> assets with both browser orders stable. The matrix still reports
-> `FAIL_BYTE_IDENTICAL_STAGES` solely for pre-existing Vanilla Orchid, whose five
-> stages are identical, so overall visual continuity remains OPEN.
+> Apple's continuity repair remains independently accepted. Vanilla Orchid r6 is
+> independently PASS at `floraoverrides2.ts` SHA-256
+> `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`:
+> the pure portrait remains byte-exact, five stages are unique and progressively
+> farther from pure, defining organs survive, and joins remain continuous. The r6
+> evidence validates 234/234 assets and both browser orders. The earlier
+> `FAIL_BYTE_IDENTICAL_STAGES` state is closed diagnosis, not current status.
 > Whole-form routes return
 > before legacy generic painters; features behind that return are inert, while a
 > second same-target overlay risks double-painted seams. The pixel-neutral flora
 > cleanup made the strict/reset tree flags mutually exclusive for 39 overlapping
 > names and removed dead orchard/citrus alternatives with 0/174 tree-surface and
 > 0/332 Earth-flora native drift.
+>
+> Wave 2a is an uncommitted bounded checkpoint now ready to commit/push. Mammal A
+> is 4/4 independently PASS (Colugo, Sugar Glider, Fur Seal, Sea Lion); INVERT
+> worms+sessile is 13/13 PASS; and S1–S3 is 15/15 PASS after bounded R2 closed
+> Caddisfly, Diving Beetle, Firefly and Water Beetle at 440/300/132. Its 156
+> current/repeat PNGs are exact and all 22 protected rows remain byte-identical.
+> The combined 32-target scope is 32/32 PASS. This is not a new catalogue tally.
 >
 > The v2 renderer caps DPR at 2 for touch/coarse pointers and 3 for desktop. An
 > accidental unreferenced 26,400×19,800 PNG at `packages/art/src/5` (2,029,643

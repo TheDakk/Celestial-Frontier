@@ -6,11 +6,11 @@ the audit source, renderer, or acceptance ruler changes._
 
 The clean full-reset baseline is commit
 `bc26e800c7adca72805a832e753ace1a8f9837ba` on `openai/windows`. The current
-worktree is an uncommitted nine-art-file Wave-1 batch plus
-`hybridmatrixaudit.ts` / `hybridmatrix.mjs` audit updates on top. PR #7 is
-historical/already merged; no reset PR exists yet.
+accepted Wave 1 is committed and pushed as `d005090f`; the current worktree is
+an uncommitted bounded Wave-2a family/continuity batch on top. PR #7 is
+historical/already merged; no reset PR exists.
 
-## Status: r1 baseline frozen; Wave 1 ready to commit; Vanilla deferred open
+## Status: r1 frozen; Wave 1 pushed; Wave 2a 32/32 PASS and ready to commit
 
 Nick stopped the GP7.1 remediation and explicitly reopened the entire catalogue
 after Fruit Bat exposed a false acceptance: the current animal does not read as
@@ -75,17 +75,60 @@ be added arithmetically to the frozen 516 and described as a new catalogue
 score: changed hashes need a later full collector run, and the other 1,073 rows
 have not received a post-Wave-1 verdict.
 
-The 177 catalogue verdicts are closed. Apple's continuity repair is independently
-judged PASS at `floraoverrides2.ts` SHA-256
-`D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
-58/58 tree target/control rows are exact at 440/300/132 (174/174 hashes), all
-five stages are unique, and their pixel distance from pure strictly increases as
-the anchor falls. Schema v3 validates 234/234 assets with both browser orders
-stable. The matrix retains `FAIL_BYTE_IDENTICAL_STAGES` solely for pre-existing
-Vanilla Orchid, whose five stages are identical; broader hybrid visual
-continuity remains OPEN for a later bounded wave. Independent review and the
-complete Wave-1 gate set are finished; Vanilla does not block this checkpoint
-commit.
+The 177 catalogue verdicts are closed. The complete Wave-1 gate set finished,
+and the batch is committed/pushed as `d005090f`. Apple's independently accepted
+continuity evidence and the pixel-neutral flora cleanup remain part of that
+frozen checkpoint. These scoped results do not mutate the r1 ledger.
+
+## Wave 2a: bounded family and Vanilla-continuity work
+
+Wave 2a currently contains three catalogue batches totaling 32 r1 non-PASS
+targets, plus the separate Vanilla hybrid-continuity repair:
+
+| bounded batch | targets | independent status |
+|---|---:|---|
+| Mammal A | 4 | 4 PASS |
+| INVERT worms + sessile | 13 | 13 PASS |
+| S1–S3 fauna families | 15 | 15 PASS |
+| **catalogue scope** | **32** | **32 PASS** |
+
+Mammal A is Colugo, Sugar Glider, Fur Seal and Sea Lion. All four independently
+pass at 440/300/132, repeats are exact, and all 71 protected controls remain
+exact. Evidence is
+`apps/game/smoke/wave2-mammal-a-evidence-2026-08-10-r3`.
+
+The INVERT batch is Earthworm, Flatworm, Ice Worm, Lancelet, Marine Worm,
+Polychaete Worm, Scale Worm, Barnacle, Coral, Cold-Water Coral, Deep-Water Coral,
+Sea Cucumber and Sponge. All 13 independently pass at 440/300/132 with frozen
+same-painter controls and exact repeats. Frozen `invertoverrides.ts` SHA-256 is
+`861FA37AA88918EC908824A66AB800250B0A40BF7113E57F74069F7F7873717E`.
+
+The S1–S3 first independent judgment returned **11 PASS / 4 FAIL**. Bounded R2
+changed exactly Caddisfly, Diving Beetle, Firefly and Water Beetle; the second
+independent judgment returned **4 PASS / 0 FAIL** at 440/300/132. Frozen
+`faunaoverrides.ts` SHA-256 is
+`EE6CC43E6A326942C3508878470F9490EE1CF21C50DC5C9BE35229AA130EF3F5`.
+The immutable r2 evidence root
+`apps/game/smoke/wave2-fauna-s1-s3-r2-evidence-2026-08-10-frozen` contains 26 rows /
+156 current+repeat PNGs with zero
+missing, hash, dimension, or repeat errors. Its source hash matches before A,
+between A/B and after B, with zero drift across 139 build inputs; exactly four targets changed and all
+22 protected rows remain byte-identical at every scale. S1–S3 is therefore
+15/15 PASS and the three Wave-2a catalogue batches are **32/32 scoped PASS**.
+This is not a post-wave catalogue total and must never be added to 516.
+
+Vanilla Orchid r6 is independently judged continuity PASS at
+`floraoverrides2.ts` SHA-256
+`5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`.
+The r6 evidence root validates 234/234 assets, exact source/hash/dimension
+records and both browser orders. Its pure portrait is byte-exact to
+`3f6834b7f984b35186fa1c441eeb4537d3e5793d446e447b021a1e3687939a25`;
+all five stages are unique, preserve defining Vanilla organs, use continuous
+joins, and drift progressively farther from pure as the anchor falls.
+`hybridcheck` now requires five exact ID+kingdom+name focused lineages spanning all four kingdoms and
+rejects eleven injected negative controls, including focused-species substitution and simulated
+Vanilla stage collapse. This closes the prior focused Vanilla blocker, not every possible
+bloodline or the final 1,250-row certification.
 
 ## Trigger and first closed family: bats
 
@@ -134,12 +177,13 @@ canonical deterministic genome. This includes the selected lineage, catalogue
 owner and anchor, and distinguishes order-swapped crosses: genetics can produce
 the same derived seed from `A×B` and `B×A` while inherited traits differ.
 
-`npm run hybridcheck` is the production-browser outcome guard. It covers every
-kingdom, all set-specific duplicate names, Earth/alien parent order,
-multi-generation lineage, stripped-lineage and pure-procedural controls, cache
-order, deterministic repeats, and injected routing failures. It proves route and
-cache correctness; it does not prove that the resulting composition is visually
-seamless.
+`npm run hybridcheck` is the production-browser outcome guard. It requires five
+exact ID+kingdom+name focused lineages spanning every kingdom, all set-specific duplicate names,
+Earth/alien parent order, multi-generation lineage, stripped-lineage and pure-
+procedural controls, cache order and deterministic repeats. Eleven injected
+negative controls cover route bypasses, owner loss, cache collapse, focused-species substitution and focused
+stage collapse. It proves those route/cache and focused-stage outcomes; it does
+not prove that every possible composition is visually seamless.
 
 ### 2. Duplicate names could receive the wrong kingdom specification
 
@@ -221,7 +265,7 @@ small Pixi living-preview surface over the same deterministic source, and only
 then (4) consider the Phase-5 mesh/skeletal production pipeline. A broad Pixi
 rewrite is not part of the current reset-foundation batch.
 
-## Hybrid continuity: routing closed, visual result open
+## Hybrid continuity: focused Apple and Vanilla results closed; final scope open
 
 `hybridmatrix` renders 12 representative lineages through five real
 `crossGenome` stages: pure Earth, Earth×Earth (0.90), Earth×alien (0.73), a
@@ -237,9 +281,21 @@ distinct integrated trees without a decorative pasted overlay, 58/58 tree rows
 remain exact at all three delivery sizes, and pure-distance increases strictly
 through the five-stage progression. The exact judge root is
 `C:\Users\Nick\.codex\visualizations\2026\08\09\019fe72d-20c7-73a0-bac7-d2c64d10673d\flora-tree-focus\evidence-apple-continuity-judge`.
-The current matrix-level failure is solely pre-existing Vanilla Orchid: its five
-production stages remain byte-identical. **Visual continuity remains OPEN** and
-no catalogue-wide seamlessness or hybrid art-PASS claim is permitted.
+
+Independent judgment also accepts Vanilla Orchid r6. Its pure portrait remains
+byte-exact, the five production stages are unique and progressively farther from
+pure, defining vine/leaf/aerial-root/flower/pod organs survive every stage, and
+the attachment atlas shows continuous joins rather than a pasted ladder. The
+source-frozen r6 root is
+`apps/game/smoke/hybrid-continuity-wave2-vanilla-2026-08-10-r6`; it validates
+234/234 assets, source snapshots, dimensions, hashes, repeats, and both browser
+orders. `hybridcheck` now binds five exact ID+kingdom+name focused lineages across all four kingdoms
+and negative-controls eleven independent failure shapes. The earlier Vanilla
+`FAIL_BYTE_IDENTICAL_STAGES` result is closed historical diagnosis.
+
+**Final hybrid certification remains OPEN.** These focused passes do not inspect
+every possible lineage or authorize a catalogue-wide seamlessness claim; the
+final clean hybrid evidence remains coupled to the eventual all-PASS reset.
 
 The first attempted live matrix after Wave 1 did not complete because of a real
 schema-v2 harness contract bug: it incorrectly required Green Algae's retained
@@ -348,16 +404,12 @@ into `develop`. No `main` merge, release or deployment is authorized here.
 
 ## Immediate order
 
-1. Commit and push the gate-complete Wave-1 source, hybrid audit repair and living
-   docs on `openai/windows`; do not add unrelated files.
-2. Open a reviewed draft PR with base `develop` and source `openai/windows`, using
-   the copy-ready title/description in `port/HANDOFF_NEXT_SESSION.md`.
-3. Continue the remaining r1 non-PASS rows in bounded owner/family waves. Preserve
+1. Commit only the accepted Wave-2a source/tool/doc scope on `openai/windows`,
+   then push that branch; do not include unrelated files.
+2. Continue the remaining r1 non-PASS rows in bounded owner/family waves. Preserve
    author separation and never edit a painter while its judge holds source frozen.
-4. Handle Vanilla Orchid in a later bounded continuity wave; do not promote the
-   current matrix while `FAIL_BYTE_IDENTICAL_STAGES` remains.
-5. After all rows close, repeat the complete clean 1,250 capture/layout/compare/
+3. After all rows close, repeat the complete clean 1,250 capture/layout/compare/
    collect sequence, rerun the clean hybrid matrix, and certify only a literal
    1,250/1,250 PASS result.
-6. Build the image-inclusive ZIP only after certification. Until then, keep
+4. Build the image-inclusive ZIP only after certification. Until then, keep
    GP7/GP7.1 quarantined and the full certification, ZIP, reset PR and release open.

@@ -213,7 +213,9 @@ export interface QuadSpec {
   /** Named vertical head placement relative to the withers (positive lowers it). */
   headDrop?: number;
   /** Eared seal posture: chest propped on a long fore-flipper, never a prone loaf. */
-  pinnipedPose?: 'eared';
+  pinnipedPose?: 'fur-seal' | 'sea-lion';
+  /** Named glider whole-form: colugo encloses the tail; sugar glider does not. */
+  gliderPlan?: 'colugo' | 'sugar-glider';
 }
 
 /** ★ WAVE 6 — THE SKULL. Nick, after looking at the wave-5 export: *"the heads
@@ -471,64 +473,137 @@ export function nameSeedQ(name: string): number {
     neck, wrists, ankles and tail into one visible membrane.  This deliberately
     narrow pose is opt-in, preserves every standing mammal, and gives those two
     animals their read-at-a-glance plan before any coat decoration. */
-function faunaGlider(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+function faunaGlider(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<QuadSpec['gliderPlan']>): void {
   const p = pal(p0, spec);
+  const name = plan === 'colugo' ? 'Colugo' : 'Sugar Glider';
   const r = mulberry32((((g.seed as number) ^ 0x4C1D ^ nameSeedQ(name)) >>> 0));
-  const colugo = name === 'Colugo';
-  const cx = S * 0.50, cy = S * 0.49;
-  const wing = S * (colugo ? 0.34 : 0.30);
-  const reach = S * (colugo ? 0.30 : 0.26);
-  const tailL = S * (colugo ? 0.29 : 0.26);
+  const colugo = plan === 'colugo';
+  const cx = S * 0.50, cy = S * (colugo ? 0.47 : 0.45);
+  const wing = S * (colugo ? 0.345 : 0.305);
+  const headR = S * (colugo ? 0.098 : 0.088);
+  const tone = (k: number): string => `rgb(${Math.min(255, p.cr * k) | 0},${Math.min(255, p.cg * k) | 0},${Math.min(255, p.cb * k) | 0})`;
 
-  /* a body shadow under the low point makes the animal read as a flying sheet,
-     not a flat sticker floating in the vignette */
+  /* A shallow cast shadow gives the spread whole-form depth without inventing
+     a ground contact for an airborne animal. */
   c.fillStyle = 'rgba(0,0,0,0.34)';
   c.beginPath(); c.ellipse(cx, S * 0.83, S * 0.22, S * 0.025, 0, 0, TAU); c.fill();
 
-  /* tail first: both gliders use it as the membrane's trailing edge. */
-  c.strokeStyle = p.dark; c.lineWidth = S * (colugo ? 0.060 : 0.050); c.lineCap = 'round';
-  c.beginPath();
-  c.moveTo(cx, cy + S * 0.11);
-  c.quadraticCurveTo(cx - tailL * 0.35, cy + S * 0.23, cx - tailL * 0.82, cy + S * 0.31);
-  c.quadraticCurveTo(cx - tailL * 1.05, cy + S * 0.34, cx - tailL, cy + S * 0.26);
-  c.stroke();
+  /* Sugar Glider's tail is a true furred appendage, rooted under the rump and
+     deliberately OUTSIDE the wrist-to-ankle membrane. The old dark stroke ran
+     across the body and read as a pasted stripe. This filled taper starts broad
+     beneath the torso and carries a broken fur rim for a body-length plume. */
+  if (!colugo) {
+    const tg = c.createLinearGradient(cx, cy + S * 0.10, cx - S * 0.25, cy + S * 0.39);
+    tg.addColorStop(0, tone(0.95)); tg.addColorStop(0.55, tone(0.67)); tg.addColorStop(1, tone(0.42));
+    c.fillStyle = tg; c.beginPath();
+    c.moveTo(cx - S * 0.038, cy + S * 0.105);
+    c.bezierCurveTo(cx - S * 0.112, cy + S * 0.18, cx - S * 0.265, cy + S * 0.245, cx - S * 0.282, cy + S * 0.350);
+    c.bezierCurveTo(cx - S * 0.291, cy + S * 0.408, cx - S * 0.205, cy + S * 0.432, cx - S * 0.150, cy + S * 0.370);
+    c.bezierCurveTo(cx - S * 0.101, cy + S * 0.300, cx - S * 0.014, cy + S * 0.205, cx + S * 0.038, cy + S * 0.105);
+    c.closePath(); c.fill();
+    c.strokeStyle = `rgba(${Math.min(255, p.cr * 1.28) | 0},${Math.min(255, p.cg * 1.24) | 0},${Math.min(255, p.cb * 1.20) | 0},0.44)`;
+    c.lineWidth = 1.7; c.lineCap = 'round';
+    /* Short fibres stay INSIDE the broad plume. Long radial strokes turned the
+       old attempt into a comb; width and tapered mass now carry bushiness. */
+    for (let i = 0; i < 24; i++) {
+      const t = (i + 0.5) / 24;
+      const x = cx - S * (0.052 + 0.205 * t) + (r() - 0.5) * S * 0.020;
+      const y = cy + S * (0.135 + 0.260 * t) + (r() - 0.5) * S * 0.010;
+      const side = i % 2 ? 1 : -1;
+      c.beginPath(); c.moveTo(x, y);
+      c.lineTo(x + side * S * (0.010 + r() * 0.006), y + S * (0.006 + r() * 0.006)); c.stroke();
+    }
+  }
 
-  /* one unbroken kite: head -> wrist -> ankle -> tail -> other ankle -> wrist.
-     The light rim intentionally follows the free edge so the membrane survives
-     card scale on the dark background. */
+  /* Trace the one continuous membrane silhouette. Colugo's rear free edges
+     converge on the TAIL TIP itself, enclosing the entire tail. Sugar Glider's
+     stop at the ankles/rump, leaving its separate plume anatomically honest. */
+  const traceMembrane = (): void => {
+    c.beginPath();
+    c.moveTo(cx, cy - S * 0.175);
+    c.quadraticCurveTo(cx + S * 0.080, cy - S * 0.145, cx + wing, cy - S * 0.055);
+    c.quadraticCurveTo(cx + wing * 1.02, cy + S * 0.005, cx + wing * (colugo ? 0.73 : 0.76), cy + S * (colugo ? 0.215 : 0.220));
+    if (colugo) {
+      c.quadraticCurveTo(cx + S * 0.085, cy + S * 0.295, cx, cy + S * 0.385);
+      c.quadraticCurveTo(cx - S * 0.085, cy + S * 0.295, cx - wing * 0.73, cy + S * 0.215);
+    } else {
+      c.quadraticCurveTo(cx + S * 0.090, cy + S * 0.190, cx, cy + S * 0.155);
+      c.quadraticCurveTo(cx - S * 0.090, cy + S * 0.190, cx - wing * 0.76, cy + S * 0.220);
+    }
+    c.quadraticCurveTo(cx - wing * 1.02, cy + S * 0.005, cx - wing, cy - S * 0.055);
+    c.quadraticCurveTo(cx - S * 0.080, cy - S * 0.145, cx, cy - S * 0.175);
+    c.closePath();
+  };
   const mg = c.createRadialGradient(cx - wing * 0.16, cy - wing * 0.24, 8, cx, cy, wing * 1.38);
   mg.addColorStop(0, `rgba(${Math.min(255, p.cr * 1.28) | 0},${Math.min(255, p.cg * 1.22) | 0},${Math.min(255, p.cb * 1.16) | 0},0.96)`);
   mg.addColorStop(0.58, `rgba(${p.cr | 0},${p.cg | 0},${p.cb | 0},0.90)`);
   mg.addColorStop(1, `rgba(${p.cr * 0.38 | 0},${p.cg * 0.38 | 0},${p.cb * 0.42 | 0},0.92)`);
-  c.fillStyle = mg;
-  c.beginPath();
-  c.moveTo(cx, cy - S * 0.16);
-  c.quadraticCurveTo(cx + wing * 0.46, cy - S * 0.18, cx + wing, cy - S * 0.02);
-  c.quadraticCurveTo(cx + wing * 0.86, cy + reach * 0.48, cx + wing * 0.64, cy + reach);
-  c.quadraticCurveTo(cx + wing * 0.12, cy + reach * 1.08, cx - tailL, cy + S * 0.26);
-  c.quadraticCurveTo(cx - wing * 0.56, cy + reach * 0.90, cx - wing * 0.74, cy + reach * 0.22);
-  c.quadraticCurveTo(cx - wing, cy - S * 0.03, cx - wing * 0.48, cy - S * 0.18);
-  c.quadraticCurveTo(cx - S * 0.13, cy - S * 0.23, cx, cy - S * 0.16);
-  c.closePath(); c.fill();
+  c.fillStyle = mg; traceMembrane(); c.fill();
   c.strokeStyle = 'rgba(232,239,232,0.82)'; c.lineWidth = 3.2; c.lineJoin = 'round'; c.stroke();
 
-  /* limb bones and fingers make the membrane anatomy rather than a blanket. */
+  if (colugo) {
+    c.save(); traceMembrane(); c.clip();
+    for (let i = 0; i < 46; i++) {
+      const x = cx + (r() - 0.5) * wing * 1.78, y = cy + (r() - 0.35) * S * 0.43;
+      softMark(c, x, y, S * (0.014 + r() * 0.020), S * (0.008 + r() * 0.014), i % 3 ? '76,88,64' : '176,165,128', i % 3 ? 0.40 : 0.28, r() * TAU);
+    }
+    c.restore();
+  }
+
+  /* Shoulder-to-wrist and hip-to-ankle bones terminate on the free edge; short
+     digit rays make "to the fingertips" survive without pasted-on hands. */
   c.strokeStyle = `rgba(${p.cr * 0.45 | 0},${p.cg * 0.42 | 0},${p.cb * 0.38 | 0},0.90)`;
   c.lineWidth = 3.4; c.lineCap = 'round';
   for (const side of [-1, 1]) {
-    c.beginPath(); c.moveTo(cx + side * S * 0.045, cy - S * 0.025);
-    c.lineTo(cx + side * wing * 0.62, cy + S * 0.01); c.lineTo(cx + side * wing, cy - S * 0.02); c.stroke();
-    c.beginPath(); c.moveTo(cx + side * S * 0.03, cy + S * 0.07);
-    c.lineTo(cx + side * wing * 0.42, cy + reach * 0.57); c.lineTo(cx + side * wing * 0.64, cy + reach); c.stroke();
+    const wristX = cx + side * wing, wristY = cy - S * 0.055;
+    const ankleX = cx + side * wing * (colugo ? 0.73 : 0.76), ankleY = cy + S * (colugo ? 0.215 : 0.220);
+    c.beginPath(); c.moveTo(cx + side * S * 0.040, cy - S * 0.045);
+    c.lineTo(cx + side * wing * 0.58, cy - S * 0.015); c.lineTo(wristX, wristY); c.stroke();
+    c.beginPath(); c.moveTo(cx + side * S * 0.028, cy + S * 0.065);
+    c.lineTo(cx + side * wing * 0.42, cy + S * 0.125); c.lineTo(ankleX, ankleY); c.stroke();
+    c.lineWidth = 1.8;
+    for (const dy of [-0.020, 0, 0.020]) {
+      c.beginPath(); c.moveTo(cx + side * wing * 0.88, cy - S * 0.043);
+      c.lineTo(wristX, wristY + S * dy); c.stroke();
+    }
+    c.lineWidth = 3.4;
   }
 
-  /* compact body and face sit on the leading edge of the kite. */
-  const headR = S * (colugo ? 0.105 : 0.092);
+  /* A central furred body overlaps every limb root. Colugo's body tapers into
+     the enclosed tail ridge and reaches the exact same tip as its membrane. */
+  const bodyG = c.createLinearGradient(cx - S * 0.05, cy - S * 0.10, cx + S * 0.06, cy + S * 0.20);
+  bodyG.addColorStop(0, tone(1.22)); bodyG.addColorStop(0.58, tone(0.90)); bodyG.addColorStop(1, tone(0.48));
+  c.fillStyle = bodyG; c.beginPath(); c.ellipse(cx, cy + S * 0.010, S * (colugo ? 0.064 : 0.058), S * (colugo ? 0.165 : 0.145), 0, 0, TAU); c.fill();
+  if (colugo) {
+    c.fillStyle = bodyG; c.beginPath();
+    c.moveTo(cx - S * 0.046, cy + S * 0.080);
+    c.bezierCurveTo(cx - S * 0.041, cy + S * 0.205, cx - S * 0.020, cy + S * 0.330, cx, cy + S * 0.385);
+    c.bezierCurveTo(cx + S * 0.020, cy + S * 0.330, cx + S * 0.041, cy + S * 0.205, cx + S * 0.046, cy + S * 0.080);
+    c.closePath(); c.fill();
+  }
+
+  /* Ears are rooted behind the skull; Sugar Glider's large rounded ears flank
+     the face while Colugo keeps compact cups. */
+  c.fillStyle = tone(0.58);
+  for (const side of [-1, 1]) {
+    c.beginPath(); c.ellipse(cx + side * headR * 0.84, cy - S * 0.185, headR * (colugo ? 0.26 : 0.43), headR * (colugo ? 0.36 : 0.50), side * 0.35, 0, TAU); c.fill();
+  }
   const bg = c.createRadialGradient(cx - headR * 0.32, cy - S * 0.18 - headR * 0.36, 2, cx, cy - S * 0.18, headR * 1.2);
   bg.addColorStop(0, p.lit); bg.addColorStop(1, p.dark);
   c.fillStyle = bg; c.beginPath(); c.ellipse(cx, cy - S * 0.18, headR, headR * 0.88, 0, 0, TAU); c.fill();
-  c.fillStyle = `rgb(${Math.min(255, p.cr * 1.10) | 0},${Math.min(255, p.cg * 1.05) | 0},${Math.min(255, p.cb * 0.98) | 0})`;
+  c.fillStyle = tone(1.08);
   c.beginPath(); c.ellipse(cx, cy - S * 0.105, headR * 0.50, headR * 0.38, 0, 0, TAU); c.fill();
+
+  if (!colugo) {
+    /* Crown-to-nose facial stripe only: it ends at the pink nose and never
+       crosses the torso or impersonates the tail. */
+    c.fillStyle = 'rgba(27,29,36,0.92)'; c.beginPath();
+    c.moveTo(cx - headR * 0.18, cy - S * 0.258);
+    c.quadraticCurveTo(cx - headR * 0.13, cy - S * 0.180, cx - headR * 0.08, cy - S * 0.112);
+    c.quadraticCurveTo(cx, cy - S * 0.086, cx + headR * 0.08, cy - S * 0.112);
+    c.quadraticCurveTo(cx + headR * 0.13, cy - S * 0.180, cx + headR * 0.18, cy - S * 0.258);
+    c.closePath(); c.fill();
+  }
 
   /* huge forward eyes are a colugo/sugar-glider identity cue, not decorative
      highlights.  They deliberately break the head silhouette at thumbnail size. */
@@ -539,65 +614,53 @@ function faunaGlider(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void 
   }
   c.fillStyle = colugo ? '#26231e' : '#d7a8a0';
   c.beginPath(); c.arc(cx, cy - S * 0.105, headR * 0.13, 0, TAU); c.fill();
-
-  if (colugo) {
-    /* lichen camouflage: irregular low-contrast blotches, never a leopard coat. */
-    for (let i = 0; i < 38; i++) {
-      const a = r() * TAU, d = Math.sqrt(r()) * wing * 0.78;
-      const x = cx + Math.cos(a) * d, y = cy + Math.sin(a) * d * 0.68;
-      c.fillStyle = i % 3 ? 'rgba(82,92,68,0.45)' : 'rgba(178,170,132,0.32)';
-      c.beginPath(); c.ellipse(x, y, S * (0.010 + r() * 0.014), S * (0.006 + r() * 0.010), a, 0, TAU); c.fill();
-    }
-  } else {
-    /* Sugar Glider's unmistakable dark dorsal stripe from crown to tail root. */
-    c.strokeStyle = 'rgba(28,30,38,0.88)'; c.lineWidth = S * 0.024; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(cx, cy - S * 0.27); c.quadraticCurveTo(cx - S * 0.02, cy + S * 0.07, cx - tailL * 0.38, cy + S * 0.22); c.stroke();
-    for (let i = 0; i < 16; i++) {
-      const x = cx - tailL * (0.12 + i / 20), y = cy + S * (0.13 + i / 210);
-      c.strokeStyle = `rgba(${p.cr * 0.55 | 0},${p.cg * 0.55 | 0},${p.cb * 0.55 | 0},0.72)`;
-      c.lineWidth = 2.2; c.beginPath(); c.moveTo(x, y); c.lineTo(x - S * 0.018, y + S * 0.042); c.stroke();
-    }
-  }
 }
 
-/** Fur seals and sea lions are not short-legged quadrupeds with flippers added.
-    The eared-pinniped plan holds the chest up on a visibly long fore-flipper,
-    keeps the hind flippers trailing behind, and gives the head a readable ear
-    flap. It is deliberately opt-in: true seals and Walrus retain their prone
-    anatomy and pixels. */
-function faunaEaredPinniped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+/** Fur seals and sea lions rotate their hind flippers FORWARD under the pelvis
+    and can support themselves on all four limbs. This named-only whole-form
+    plan makes the four weight-bearing contacts structural; true seals and
+    Walrus never enter it and retain their prone anatomy and pixels. */
+function faunaEaredPinniped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<QuadSpec['pinnipedPose']>): void {
   const p = pal(p0, spec);
-  const seaLion = name === 'Sea Lion';
+  const seaLion = plan === 'sea-lion';
+  const name = seaLion ? 'Sea Lion' : 'Fur Seal';
   const r = mulberry32((((g.seed as number) ^ 0xE4E3 ^ nameSeedQ(name)) >>> 0));
-  const cx = S * 0.50, cy = S * 0.61;
-  const bw = S * (seaLion ? 0.275 : 0.250), bh = S * (seaLion ? 0.125 : 0.112);
+  const cx = S * 0.48, cy = S * 0.58;
+  const bw = S * (seaLion ? 0.270 : 0.250), bh = S * (seaLion ? 0.128 : 0.116);
   const headR = S * (seaLion ? 0.096 : 0.087);
   const tone = (k: number): string => `rgb(${Math.min(255, p.cr * k) | 0},${Math.min(255, p.cg * k) | 0},${Math.min(255, p.cb * k) | 0})`;
+  const groundY = S * 0.795;
 
   c.fillStyle = 'rgba(0,0,0,0.34)'; c.beginPath();
-  c.ellipse(cx, S * 0.81, bw * 1.28, S * 0.030, 0, 0, TAU); c.fill();
+  c.ellipse(cx + S * 0.015, groundY + S * 0.015, bw * 1.30, S * 0.030, 0, 0, TAU); c.fill();
 
-  /* trailing paired hind flippers: clearly behind the body, not planted feet */
+  /* FAR limbs first. Both hind roots angle forward (toward the head, +x), so
+     even the darker pair says eared-seal locomotion rather than trailing fins. */
   c.fillStyle = tone(0.54);
-  for (const dy of [-0.028, 0.045]) {
-    c.beginPath();
-    c.moveTo(cx - bw * 0.92, cy + bh * 0.22 + S * dy);
-    c.quadraticCurveTo(cx - bw * 1.42, cy + bh * (dy < 0 ? 0.18 : 0.48), cx - bw * 1.62, cy + bh * (dy < 0 ? 0.52 : 0.78));
-    c.quadraticCurveTo(cx - bw * 1.18, cy + bh * (dy < 0 ? 0.64 : 0.92), cx - bw * 0.76, cy + bh * (dy < 0 ? 0.42 : 0.60));
-    c.closePath(); c.fill();
-  }
+  c.beginPath();
+  c.moveTo(cx - bw * 0.88, cy + bh * 0.20);
+  c.bezierCurveTo(cx - bw * 0.84, cy + bh * 0.78, cx - bw * 0.78, groundY - S * 0.032, cx - bw * 0.62, groundY - S * 0.010);
+  c.quadraticCurveTo(cx - bw * 0.39, groundY + S * 0.004, cx - bw * 0.32, groundY - S * 0.032);
+  c.quadraticCurveTo(cx - bw * 0.55, groundY - S * 0.070, cx - bw * 0.75, groundY - S * 0.078);
+  c.bezierCurveTo(cx - bw * 0.76, cy + bh * 0.48, cx - bw * 0.92, cy + bh * 0.30, cx - bw * 0.88, cy + bh * 0.20);
+  c.closePath(); c.fill();
+  c.beginPath();
+  c.moveTo(cx + bw * 0.53, cy - bh * 0.42);
+  c.bezierCurveTo(cx + bw * 0.70, cy + bh * 0.18, cx + bw * 0.88, groundY - S * 0.10, cx + bw * 1.03, groundY - S * 0.015);
+  c.quadraticCurveTo(cx + bw * 1.18, groundY + S * 0.010, cx + bw * 1.24, groundY - S * 0.030);
+  c.bezierCurveTo(cx + bw * 1.09, groundY - S * 0.072, cx + bw * 0.88, cy + bh * 0.02, cx + bw * 0.66, cy - bh * 0.62);
+  c.closePath(); c.fill();
 
-  /* low rear barrel to raised chest: an S-curved outline makes the animal prop
-     itself up rather than lie as a featureless horizontal bean. */
+  /* Low rear barrel to raised chest, with broad overlap over every limb root. */
   const bg = c.createLinearGradient(cx - bw, cy - bh, cx + bw, cy + bh);
   bg.addColorStop(0, tone(0.54)); bg.addColorStop(0.52, tone(1.03)); bg.addColorStop(1, tone(0.46));
   c.fillStyle = bg;
   c.beginPath();
-  c.moveTo(cx - bw, cy + bh * 0.32);
-  c.bezierCurveTo(cx - bw * 0.98, cy - bh * 0.64, cx - bw * 0.32, cy - bh * 0.92, cx + bw * 0.30, cy - bh * 0.52);
-  c.bezierCurveTo(cx + bw * 0.72, cy - bh * 0.42, cx + bw * 0.84, cy - bh * 1.35, cx + bw * 1.02, cy - bh * 1.72);
-  c.bezierCurveTo(cx + bw * 1.22, cy - bh * 0.78, cx + bw * 1.16, cy + bh * 0.70, cx + bw * 0.52, cy + bh * 0.98);
-  c.bezierCurveTo(cx - bw * 0.06, cy + bh * 1.22, cx - bw * 0.72, cy + bh * 0.98, cx - bw, cy + bh * 0.32);
+  c.moveTo(cx - bw, cy + bh * 0.30);
+  c.bezierCurveTo(cx - bw * 1.00, cy - bh * 0.58, cx - bw * 0.40, cy - bh * 0.98, cx + bw * 0.28, cy - bh * 0.62);
+  c.bezierCurveTo(cx + bw * 0.70, cy - bh * 0.52, cx + bw * 0.83, cy - bh * 1.40, cx + bw * 1.02, cy - bh * 1.75);
+  c.bezierCurveTo(cx + bw * 1.22, cy - bh * 0.72, cx + bw * 1.08, cy + bh * 0.66, cx + bw * 0.48, cy + bh * 0.86);
+  c.bezierCurveTo(cx - bw * 0.02, cy + bh * 1.04, cx - bw * 0.72, cy + bh * 0.94, cx - bw, cy + bh * 0.30);
   c.closePath(); c.fill();
 
   /* short contour strokes provide a furred neck for Fur Seal and sleek folds
@@ -609,14 +672,38 @@ function faunaEaredPinniped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string)
     c.lineWidth = 1.2 + r() * 1.3; c.beginPath(); c.moveTo(x, y); c.lineTo(x - S * 0.015, y + S * (0.010 + r() * 0.020)); c.stroke();
   }
 
-  /* long, weight-bearing fore-flipper: the defining eared-seal read. */
-  const fx = cx + bw * 0.66, fy = cy - bh * 0.34;
-  c.save(); c.translate(fx, fy); c.rotate(0.52);
-  c.fillStyle = tone(0.48); c.beginPath();
-  c.ellipse(S * 0.052, S * 0.116, S * 0.058, S * 0.154, 0, 0, TAU); c.fill();
-  c.strokeStyle = `rgba(0,0,0,0.32)`; c.lineWidth = 1.8;
-  for (let i = -1; i <= 1; i++) { c.beginPath(); c.moveTo(i * S * 0.014, S * 0.010); c.lineTo(i * S * 0.021, S * 0.225); c.stroke(); }
-  c.restore();
+  /* NEAR hind flipper: broad pelvic root, forward-rotated hock, planted webbed
+     foot. It crosses under the belly instead of projecting behind the rump. */
+  const hindG = c.createLinearGradient(cx - bw * 0.78, cy, cx - bw * 0.18, groundY);
+  hindG.addColorStop(0, tone(0.92)); hindG.addColorStop(1, tone(0.46));
+  c.fillStyle = hindG; c.beginPath();
+  c.moveTo(cx - bw * 0.84, cy + bh * 0.28);
+  c.bezierCurveTo(cx - bw * 0.72, cy + bh * 0.92, cx - bw * 0.55, groundY - S * 0.025, cx - bw * 0.30, groundY - S * 0.008);
+  c.quadraticCurveTo(cx - bw * 0.04, groundY + S * 0.012, cx + bw * 0.02, groundY - S * 0.035);
+  c.quadraticCurveTo(cx - bw * 0.24, groundY - S * 0.083, cx - bw * 0.50, groundY - S * 0.082);
+  c.bezierCurveTo(cx - bw * 0.66, cy + bh * 0.55, cx - bw * 0.86, cy + bh * 0.40, cx - bw * 0.84, cy + bh * 0.28);
+  c.closePath(); c.fill();
+
+  /* NEAR fore-flipper: the long shoulder-to-ground lever that lifts the chest. */
+  const foreG = c.createLinearGradient(cx + bw * 0.55, cy - bh * 0.55, cx + bw * 0.72, groundY);
+  foreG.addColorStop(0, tone(0.94)); foreG.addColorStop(1, tone(0.42));
+  c.fillStyle = foreG; c.beginPath();
+  c.moveTo(cx + bw * 0.48, cy - bh * 0.58);
+  c.bezierCurveTo(cx + bw * 0.58, cy + bh * 0.04, cx + bw * 0.56, groundY - S * 0.090, cx + bw * 0.54, groundY - S * 0.018);
+  c.quadraticCurveTo(cx + bw * 0.68, groundY + S * 0.010, cx + bw * 0.82, groundY - S * 0.020);
+  c.quadraticCurveTo(cx + bw * 0.72, groundY - S * 0.072, cx + bw * 0.70, groundY - S * 0.118);
+  c.bezierCurveTo(cx + bw * 0.72, cy + bh * 0.08, cx + bw * 0.74, cy - bh * 0.62, cx + bw * 0.48, cy - bh * 0.58);
+  c.closePath(); c.fill();
+
+  /* Toe/web lines terminate inside each planted fan, so the four contacts read
+     as feet rather than a second pair of tails. */
+  c.strokeStyle = 'rgba(18,16,17,0.42)'; c.lineWidth = 1.8; c.lineCap = 'round';
+  for (const [x0, x1] of [[-0.72, -0.34], [-0.47, -0.02], [0.58, 0.79], [0.94, 1.20]] as const) {
+    for (const dy of [-0.014, 0, 0.014]) {
+      c.beginPath(); c.moveTo(cx + bw * x0, groundY - S * 0.056);
+      c.lineTo(cx + bw * x1, groundY - S * (0.020 + dy)); c.stroke();
+    }
+  }
 
   /* neck and dog-like head held above the chest */
   const hx = cx + bw * 1.00, hy = cy - bh * 1.66;
@@ -640,8 +727,8 @@ function faunaEaredPinniped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string)
 }
 
 export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = ''): void {
-  if (spec.pinnipedPose === 'eared') { faunaEaredPinniped(c, g, p0, spec, name); return; }
-  if (spec.pose === 'glide') { faunaGlider(c, g, p0, spec, name); return; }
+  if (spec.pinnipedPose) { faunaEaredPinniped(c, g, p0, spec, spec.pinnipedPose); return; }
+  if (spec.gliderPlan) { faunaGlider(c, g, p0, spec, spec.gliderPlan); return; }
   const r = mulberry32((((g.seed as number) ^ 0x9AD4 ^ nameSeedQ(name)) >>> 0));
   /* the species NAME varies real proportion, so two specs that happen to
      match cannot render the same animal — D-ART-20 applied back to wave 4,

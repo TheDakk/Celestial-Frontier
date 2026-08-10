@@ -1,11 +1,124 @@
-# ★ LIVE — Wave 1 177/177 PASS and ready to commit; Vanilla deferred open (2026-08-10)
+# ★ LIVE — Wave 2a 32/32 PASS and ready to commit/push (2026-08-10)
 
 **Current worktree:** `C:\Projects\celestial-frontier-openai-windows` on
 `openai/windows`. Clean full-reset baseline HEAD is
-`bc26e800c7adca72805a832e753ace1a8f9837ba`; Wave 1 is an uncommitted
-nine-art-file batch plus `hybridmatrixaudit.ts` / `hybridmatrix.mjs` audit
-updates on top. Independent review and the complete Wave-1 gate set are finished;
-this bounded checkpoint is ready to commit. PR #7 is historical/already merged. No
+`bc26e800c7adca72805a832e753ace1a8f9837ba`; Wave 1 is committed and pushed as
+`d005090f`. Wave 2a is a bounded, uncommitted batch on top. Mammal A, the
+worms+sessile batch, S1–S3, and Vanilla Orchid r6 are independently PASS. All
+32 catalogue targets are closed and the focused continuity repair passes;
+**Wave 2a is ready to commit and push on `openai/windows`.** PR #7 is
+historical/already merged. No reset PR, new full-catalogue tally, 1,250-row
+certification, final image-inclusive ZIP, release, deployment, or version bump
+exists.
+
+Read first: `ROADMAP.md`, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`,
+`port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`,
+`ART_DIRECTION.md`, `PROCEDURAL_CHARACTERISTICS.md`,
+`LINEAGE_AND_BREEDING.md`, `port/PROPORTION_ARC.md`, `port/v2/README.md`, and
+`port/v2/DEVIATIONS.md`.
+
+## Frozen r1 and Wave 1 authority
+
+The immutable clean `bc26e8` result remains **516 PASS / 14 POLISH / 720 FAIL**
+across all 1,250 fresh rows. It is a repair baseline, not a certificate. Wave 1
+is separately closed at exactly **177/177 scoped PASS**—root 38, fish 59, trees
+48, fauna2 32—and committed/pushed as `d005090f`. Never add scoped wave results
+to 516 or publish a new catalogue total without another complete collector run.
+
+## Wave 2a exact current state
+
+| bounded batch | targets | independent status |
+|---|---:|---|
+| Mammal A | 4 | 4 PASS |
+| INVERT worms + sessile | 13 | 13 PASS |
+| S1–S3 fauna families | 15 | 15 PASS |
+| **catalogue scope** | **32** | **32 PASS** |
+
+Mammal A is **Colugo, Sugar Glider, Fur Seal, Sea Lion**. Its frozen source
+hashes are quadruped
+`53F76793ECA1B7403D3B37DC317302BDD6D24F3B7AFD8F5C252EBC2B66839F23` and
+mammal `90CDC88AF9672AF54F6BD3D32FA184E51F137141451728EE0852C98408FB5908`;
+all four targets independently pass at 440/300/132, repeats are exact, and all
+71 protected controls remain exact. Evidence:
+`port/v2/apps/game/smoke/wave2-mammal-a-evidence-2026-08-10-r3`.
+
+The INVERT batch is **Earthworm, Flatworm, Ice Worm, Lancelet, Marine Worm,
+Polychaete Worm, Scale Worm, Barnacle, Coral, Cold-Water Coral, Deep-Water Coral,
+Sea Cucumber, Sponge**. All 13 independently pass at 440/300/132 with exact
+repeat/control proof. Frozen `invertoverrides.ts` SHA-256 is
+`861FA37AA88918EC908824A66AB800250B0A40BF7113E57F74069F7F7873717E`;
+evidence is under
+`C:\Users\Nick\.codex\visualizations\2026\08\09\019fe72d-20c7-73a0-bac7-d2c64d10673d\invert-wave2-worms-sessile\{evidence-a,evidence-b-repeat}`.
+
+The S1–S3 first independent review returned **11 PASS / 4 FAIL**. Bounded R2 then
+changed exactly **Caddisfly, Diving Beetle, Firefly, and Water Beetle**, and the
+second independent judge returned **4 PASS / 0 FAIL** at 440/300/132. Frozen
+`faunaoverrides.ts` SHA-256 is
+`EE6CC43E6A326942C3508878470F9490EE1CF21C50DC5C9BE35229AA130EF3F5`.
+The immutable r2 root
+`port/v2/apps/game/smoke/wave2-fauna-s1-s3-r2-evidence-2026-08-10-frozen`
+contains 26 rows / 156 current+repeat PNGs with zero missing, hash, dimension, or
+repeat errors. Its source hash matches before A, between A/B and after B, with
+zero drift across 139 build inputs; exactly four targets changed and all 22 protected rows remain
+byte-identical at every scale. S1–S3 is therefore **15/15 PASS**.
+
+## Vanilla Orchid continuity closure
+
+Vanilla r6 is independently PASS at `floraoverrides2.ts` SHA-256
+`5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`.
+The r6 root
+`port/v2/apps/game/smoke/hybrid-continuity-wave2-vanilla-2026-08-10-r6`
+validates **234/234 assets**, exact dimensions/hashes/source snapshot, and both
+browser orders. The pure Vanilla portrait remains exact to
+`3f6834b7f984b35186fa1c441eeb4537d3e5793d446e447b021a1e3687939a25`;
+all five production stages are unique, preserve Vanilla organs, use continuous
+joins, and drift progressively farther from pure as the anchor falls.
+`hybridcheck` now requires five exact ID+kingdom+name focused lineages across all four kingdoms and
+rejects eleven injected negative controls, including focused-species substitution
+and simulated Vanilla stage collapse. The prior `FAIL_BYTE_IDENTICAL_STAGES` blocker is closed. This is a
+focused continuity PASS, not certification of every possible bloodline or the
+full 1,250 catalogue.
+
+The Green Algae schema-v2 stop remains correctly documented as a real harness
+contract bug: schema v3 distinguishes current catalogue ownership from retained
+legacy-route ownership and its sentinels are green. Whole-form route law still
+applies: anatomy behind an earlier return is absent, while a second same-target
+body after a whole-form painter creates pasted seams.
+
+## Exact next sequence
+
+1. Commit only the accepted Wave-2a source/tool/doc scope on `openai/windows`,
+   then push that branch. Do not include unrelated files.
+2. Do not open the reset PR or merge to `develop` until the reset reaches its
+   next integration boundary.
+3. Continue the remaining frozen-r1 non-PASS rows in bounded owner/family waves.
+   Run a new clean 1,250 collection, final hybrid evidence, literal certification,
+   and dated image-inclusive ZIP only after every row closes.
+
+## Parallel Git handoff
+
+Current side: OpenAI/Codex — `d005090f` is pushed on `openai/windows`; Wave 2a is
+independently closed and ready to commit/push locally. No reset PR exists.
+Other side: Anthropic/Claude Code does not have this batch and Nick does not need
+to open it now; never copy files manually. After a future reviewed Codex PR is
+merged into `develop`, Claude starts from a clean `anthropic/windows`, fetches,
+and merges `origin/develop` under `PARALLEL_GIT_PROTOCOL.md`. Codex performs the
+same clean-start synchronization after `develop` moves. `develop`, `main`, and
+the live site remain unchanged; no release or deployment occurred.
+
+# Historical Wave-1/Wave-2-opening handoff — superseded by Wave 2a record
+
+> The former live block below is preserved verbatim for provenance. Its Vanilla
+> blocker and opening Wave-2 next steps are superseded by the live block above.
+
+# ★ LIVE — Wave 1 committed; Wave 2 family repairs underway (2026-08-10)
+
+**Current worktree:** `C:\Projects\celestial-frontier-openai-windows` on
+`openai/windows`. Clean full-reset baseline HEAD is
+`bc26e800c7adca72805a832e753ace1a8f9837ba`; Wave 1 is committed and pushed as
+`d005090f` on `openai/windows`. Independent review and the complete Wave-1 gate
+set are finished. Wave 2 is now a bounded, uncommitted family-repair batch on top.
+PR #7 is historical/already merged. No
 reset PR, 1,250-row certification, final image-inclusive ZIP, release,
 deployment, or version bump exists.
 
@@ -89,13 +202,12 @@ sizes (0/174 drift) and all 332 Earth-flora native hashes (0 drift).
 
 ## Exact next sequence
 
-1. Commit only the completed Wave-1 source, hybrid audit repair, and living docs
-   on `openai/windows`; then push that branch.
-2. Open a reviewed **draft** PR with base `develop` and source `openai/windows`.
-3. Continue later repair waves from the frozen r1 reasons with author-separated
+1. Continue repair waves from the frozen r1 reasons with author-separated
    judgement. Handle Vanilla Orchid in a later bounded continuity wave; do not
    promote the current matrix while `FAIL_BYTE_IDENTICAL_STAGES` remains.
-4. A fresh full 1,250 capture/collection, literal certification, and dated
+2. Commit and push accepted checkpoints only on `openai/windows`; no reset PR or
+   merge to `develop` until the full reset reaches its next integration boundary.
+3. A fresh full 1,250 capture/collection, literal certification, and dated
    image-inclusive ZIP happen only after every remaining row closes.
 
 Copy-ready PR title:
@@ -122,9 +234,9 @@ Copy-ready PR description:
 
 ## Parallel Git handoff
 
-Current side: OpenAI/Codex — the Wave-1 worktree is gate-complete and ready to
-commit/push on `openai/windows`, then open the reviewed draft PR above to
-`develop`. Other side: Anthropic/Claude Code does not have this batch and Nick does not need to
+Current side: OpenAI/Codex — Wave 1 commit `d005090f` is pushed on
+`openai/windows`; Wave 2 is local and uncommitted until its bounded reviews
+close. No reset PR is open. Other side: Anthropic/Claude Code does not have this batch and Nick does not need to
 open it now; do not copy files manually. After a future Codex PR is reviewed and
 merged into `develop`, Claude starts from a clean `anthropic/windows`, fetches,
 and merges `origin/develop` under `PARALLEL_GIT_PROTOCOL.md`. No release or

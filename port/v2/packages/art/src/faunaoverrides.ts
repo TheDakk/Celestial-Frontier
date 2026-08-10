@@ -271,6 +271,580 @@ export function faunaSpringtail(c: Ctx, g: G, p: Pal): void {
   for (const s of [-1, 1] as const) { c.beginPath(); c.moveTo(cx - bw * 0.85, cy - 4); c.quadraticCurveTo(cx - bw * 1.5, cy - 16 + s * 8, cx - bw * 1.9, cy - 20 + s * 12); c.stroke(); }
   eye(c, cx - bw * 0.72, cy - bh * 0.3, 4);
 }
+
+/* ---------------- full-reset r1: named small-invertebrate whole forms ----------------
+   These painters are deliberately opt-in from FAUNA_NAME. The accepted Beetle,
+   Damselfly, Dragonfly, Squid and Giant Squid controls stay on their existing
+   byte-identical helpers, while each reset target owns one connected silhouette
+   and returns before the older generic body can double-paint it. */
+type ResetWingedKind = 'caddisfly' | 'dobsonfly' | 'mayfly' | 'stonefly' | 'scorpionfly';
+
+function resetWingedHue(kind: ResetWingedKind): string {
+  switch (kind) {
+    case 'caddisfly': return '#755034';
+    case 'dobsonfly': return '#746e63';
+    case 'mayfly': return '#c5b783';
+    case 'stonefly': return '#3b4644';
+    case 'scorpionfly': return '#956c32';
+  }
+}
+
+function resetInsectLegs(c: Ctx, p: Pal, thoraxX: number, cy: number, spread = 1): void {
+  c.lineCap = 'round'; c.lineJoin = 'round';
+  for (let i = 0; i < 3; i++) for (const side of [-1, 1] as const) {
+    const x = thoraxX - 12 + i * 12, y = cy + side * (9 + i * 2);
+    const kneeX = x - 8 + i * 8, kneeY = cy + side * (28 + i * 4) * spread;
+    const footX = x + (i - 1) * 18, footY = cy + side * (43 + i * 3) * spread;
+    c.strokeStyle = 'rgba(18,22,24,0.90)'; c.lineWidth = 5.2;
+    c.beginPath(); c.moveTo(x, y); c.lineTo(kneeX, kneeY); c.lineTo(footX, footY); c.stroke();
+    c.strokeStyle = p.lit; c.lineWidth = 1.5;
+    c.beginPath(); c.moveTo(x, y); c.lineTo(kneeX, kneeY); c.stroke();
+    c.fillStyle = p.dark; c.beginPath(); c.arc(kneeX, kneeY, 3.2, 0, TAU); c.fill();
+  }
+}
+
+function resetThreadAntennae(c: Ctx, hx: number, cy: number, length: number): void {
+  for (const side of [-1, 1] as const) {
+    const y = cy + side * 7;
+    c.strokeStyle = 'rgba(15,18,21,0.96)'; c.lineWidth = 4.4; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(hx - 4, y);
+    c.bezierCurveTo(hx - length * 0.34, y + side * 5, hx - length * 0.72, y + side * 18, hx - length, y + side * 13); c.stroke();
+    c.strokeStyle = 'rgba(210,184,128,0.76)'; c.lineWidth = 1.6;
+    c.beginPath(); c.moveTo(hx - 4, y);
+    c.bezierCurveTo(hx - length * 0.34, y + side * 5, hx - length * 0.72, y + side * 18, hx - length, y + side * 13); c.stroke();
+  }
+}
+
+function resetNetWing(c: Ctx, x0: number, y0: number, x1: number, half: number,
+    tint: string, blotches = false, hairy = false): void {
+  const len = x1 - x0;
+  const wing = c.createLinearGradient(x0, y0, x1, y0);
+  wing.addColorStop(0, tint); wing.addColorStop(0.72, 'rgba(185,204,214,0.32)'); wing.addColorStop(1, 'rgba(168,190,204,0.18)');
+  c.fillStyle = wing; c.beginPath(); c.moveTo(x0, y0);
+  c.bezierCurveTo(x0 + len * 0.26, y0 - half * 1.35, x0 + len * 0.72, y0 - half * 1.15, x1, y0 - half * 0.12);
+  c.bezierCurveTo(x0 + len * 0.70, y0 + half * 0.82, x0 + len * 0.24, y0 + half * 0.92, x0, y0); c.closePath(); c.fill();
+  c.strokeStyle = hairy ? 'rgba(96,68,40,0.92)' : 'rgba(218,230,236,0.72)'; c.lineWidth = hairy ? 3.8 : 2.2; c.stroke();
+  c.save(); c.beginPath(); c.moveTo(x0, y0);
+  c.bezierCurveTo(x0 + len * 0.26, y0 - half * 1.35, x0 + len * 0.72, y0 - half * 1.15, x1, y0 - half * 0.12);
+  c.bezierCurveTo(x0 + len * 0.70, y0 + half * 0.82, x0 + len * 0.24, y0 + half * 0.92, x0, y0); c.closePath(); c.clip();
+  c.strokeStyle = hairy ? 'rgba(224,191,137,0.32)' : 'rgba(224,238,242,0.38)'; c.lineWidth = 1.4;
+  for (let i = 1; i <= 6; i++) {
+    const u = i / 7;
+    c.beginPath(); c.moveTo(x0 + len * 0.05, y0); c.lineTo(x0 + len * u, y0 - half * (0.78 - u * 0.30)); c.stroke();
+    c.beginPath(); c.moveTo(x0 + len * u, y0 - half * (0.78 - u * 0.30)); c.lineTo(x0 + len * Math.min(0.98, u + 0.13), y0 + half * 0.34); c.stroke();
+  }
+  if (blotches) {
+    c.fillStyle = 'rgba(24,18,14,0.88)';
+    for (const u of [0.32, 0.58, 0.82]) { c.beginPath(); c.ellipse(x0 + len * u, y0 - half * (0.30 + (u % 0.2)), len * 0.075, half * 0.26, -0.12, 0, TAU); c.fill(); }
+  }
+  if (hairy) {
+    c.strokeStyle = 'rgba(238,213,166,0.42)'; c.lineWidth = 1.1;
+    for (let i = 0; i < 28; i++) { const u = i / 27; c.beginPath(); c.moveTo(x0 + len * u, y0 + half * (0.45 + Math.sin(u * Math.PI) * 0.20)); c.lineTo(x0 + len * u, y0 + half * (0.57 + Math.sin(u * Math.PI) * 0.20)); c.stroke(); }
+  }
+  c.restore();
+}
+
+function resetInsectTorso(c: Ctx, p: Pal, hx: number, thoraxX: number, cy: number,
+    tailX: number, slim: number): void {
+  const headR = 18, thoraxW = 30, thoraxH = 24;
+  c.fillStyle = bodyGrad(c, p, hx, cy, headR); c.beginPath(); c.ellipse(hx, cy, headR, headR * 0.86, 0, 0, TAU); c.fill();
+  c.fillStyle = bodyGrad(c, p, thoraxX, cy, thoraxW); c.beginPath(); c.ellipse(thoraxX, cy, thoraxW, thoraxH, 0, 0, TAU); c.fill();
+  const abdomen = c.createLinearGradient(thoraxX, cy - slim, tailX, cy + slim);
+  abdomen.addColorStop(0, p.lit); abdomen.addColorStop(0.48, p.base); abdomen.addColorStop(1, p.dark);
+  c.fillStyle = abdomen; c.beginPath(); c.moveTo(thoraxX + 18, cy - slim);
+  c.bezierCurveTo(thoraxX + 54, cy - slim * 1.20, tailX - 28, cy - slim * 0.74, tailX, cy);
+  c.bezierCurveTo(tailX - 28, cy + slim * 0.74, thoraxX + 54, cy + slim * 1.20, thoraxX + 18, cy + slim); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(18,20,22,0.30)'; c.lineWidth = 2;
+  const span = tailX - (thoraxX + 22);
+  for (let i = 1; i <= 6; i++) { const x = thoraxX + 22 + span * i / 7; c.beginPath(); c.moveTo(x, cy - slim * 0.78); c.lineTo(x, cy + slim * 0.78); c.stroke(); }
+  eye(c, hx - 8, cy - 6, 5.2);
+}
+
+function faunaResetWingedInsect(c: Ctx, g: G, pIn: Pal, kind: ResetWingedKind): void {
+  const p = speciesHue(pIn, resetWingedHue(kind));
+  const cy = S * 0.51;
+  ground(c, S * 0.52, S * 0.79, S * 0.30);
+
+  if (kind === 'mayfly') {
+    /* Side view: a continuous up-curved abdomen, sail-like upright wings, and
+       three long caudal filaments. The large forewing owns the silhouette. */
+    const hx = 128, tx = 166, tailX = 326;
+    resetInsectLegs(c, p, tx, cy + 8, 0.76);
+    c.fillStyle = bodyGrad(c, p, tx, cy, 28); c.beginPath(); c.ellipse(tx, cy, 29, 22, -0.08, 0, TAU); c.fill();
+    const abdomen = c.createLinearGradient(tx, cy, tailX, cy - 34); abdomen.addColorStop(0, p.lit); abdomen.addColorStop(0.52, p.base); abdomen.addColorStop(1, p.dark);
+    c.fillStyle = abdomen; c.beginPath(); c.moveTo(tx + 19, cy - 10);
+    c.bezierCurveTo(230, cy - 12, 288, cy - 28, tailX, cy - 42);
+    c.bezierCurveTo(286, cy - 28, 228, cy + 7, tx + 19, cy + 10); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(58,51,36,0.40)'; c.lineWidth = 2;
+    for (let i = 1; i <= 7; i++) { const u = i / 8, x = tx + 22 + (tailX - tx - 26) * u, y = cy - 36 * u; c.beginPath(); c.moveTo(x, y - 8); c.lineTo(x + 2, y + 8); c.stroke(); }
+    /* Two forewings stand together above the thorax; their filled triangular
+       membranes remain a sail at thumbnail size. */
+    for (const off of [-7, 7]) {
+      const wg = c.createLinearGradient(tx, cy, tx + off, cy - 150); wg.addColorStop(0, 'rgba(210,222,205,0.52)'); wg.addColorStop(1, 'rgba(236,242,226,0.82)');
+      c.fillStyle = wg; c.beginPath(); c.moveTo(tx - 12, cy - 8); c.lineTo(tx + off - 8, cy - 152); c.quadraticCurveTo(tx + off + 68, cy - 102, tx + 24, cy - 4); c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(235,240,220,0.70)'; c.lineWidth = 2.2; c.stroke();
+      c.strokeStyle = 'rgba(107,104,77,0.34)'; c.lineWidth = 1.2;
+      for (let i = 1; i < 5; i++) { c.beginPath(); c.moveTo(tx + off - 7, cy - 144); c.lineTo(tx + 10 + i * 10, cy - 16 - i * 7); c.stroke(); }
+    }
+    c.fillStyle = bodyGrad(c, p, hx, cy, 18); c.beginPath(); c.ellipse(hx, cy, 19, 16, 0, 0, TAU); c.fill(); eye(c, hx - 7, cy - 5, 4.8);
+    c.strokeStyle = p.dark; c.lineWidth = 2.2; for (const side of [-1, 1] as const) { c.beginPath(); c.moveTo(hx - 8, cy + side * 5); c.lineTo(hx - 40, cy + side * 13); c.stroke(); }
+    for (const side of [-1, 0, 1]) {
+      c.strokeStyle = side === 0 ? p.lit : p.base; c.lineWidth = side === 0 ? 2.8 : 3.6; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(tailX - 12, cy - 41 + side * 3); c.bezierCurveTo(356, cy - 48 + side * 13, 384, cy - 28 + side * 18, 414, cy - 45 + side * 24); c.stroke();
+    }
+    return;
+  }
+
+  if (kind === 'caddisfly') {
+    const hx = 130, tx = 170, tailX = 318;
+    resetInsectLegs(c, p, tx, cy + 9, 0.78);
+    resetInsectTorso(c, p, hx, tx, cy, tailX, 16);
+    /* Both wing pairs form one closed, hairy roof over the abdomen. The dorsal
+       ridge belongs to the filled silhouette, so no open-V gap can turn the
+       resting adult into a wasp with lateral blades. */
+    const roofTip = 356;
+    const wg = c.createLinearGradient(tx, cy - 44, tx, cy + 44);
+    wg.addColorStop(0, '#a47b50'); wg.addColorStop(0.48, '#85603e'); wg.addColorStop(0.52, '#755035'); wg.addColorStop(1, '#493429');
+    c.fillStyle = wg; c.beginPath(); c.moveTo(tx - 7, cy);
+    c.bezierCurveTo(218, cy - 46, 310, cy - 42, roofTip, cy - 11);
+    c.quadraticCurveTo(364, cy, roofTip, cy + 11);
+    c.bezierCurveTo(310, cy + 42, 218, cy + 46, tx - 7, cy); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(226,195,145,0.64)'; c.lineWidth = 2.8; c.stroke();
+    /* Sparse ribs describe the sloping tent surface; the stronger centre line
+       is the roof peak, not a transparent split between separate panels. */
+    c.strokeStyle = 'rgba(226,198,151,0.30)'; c.lineWidth = 1.25;
+    for (let i = 2; i <= 10; i++) {
+      const u = i / 12, x = tx + (roofTip - tx) * u, half = 10 + 34 * Math.sin(u * Math.PI);
+      for (const side of [-1, 1] as const) { c.beginPath(); c.moveTo(x - 13, cy + side * 2); c.lineTo(x + 4, cy + side * half * 0.78); c.stroke(); }
+    }
+    c.strokeStyle = 'rgba(244,218,174,0.62)'; c.lineWidth = 2.2; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(tx - 5, cy); c.bezierCurveTo(230, cy - 3, 312, cy - 2, roofTip, cy); c.stroke();
+    /* A short, evenly rooted fringe follows both eaves instead of fanning out
+       from a detached wing tip. */
+    c.strokeStyle = 'rgba(235,211,171,0.48)'; c.lineWidth = 1.2;
+    for (let i = 1; i < 24; i++) {
+      const u = i / 24, x = tx + (roofTip - tx) * u, half = 8 + 36 * Math.sin(u * Math.PI);
+      for (const side of [-1, 1] as const) { c.beginPath(); c.moveTo(x, cy + side * half); c.lineTo(x + 1.5, cy + side * (half + 6)); c.stroke(); }
+    }
+    /* Repaint head/thorax over the wing roots so every membrane grows from the
+       same thoracic volume. */
+    c.fillStyle = bodyGrad(c, p, tx, cy, 30); c.beginPath(); c.ellipse(tx, cy, 31, 25, 0, 0, TAU); c.fill();
+    c.fillStyle = bodyGrad(c, p, hx, cy, 18); c.beginPath(); c.ellipse(hx, cy, 19, 16, 0, 0, TAU); c.fill(); eye(c, hx - 7, cy - 5, 4.5);
+    resetThreadAntennae(c, hx, cy, 142);
+    return;
+  }
+
+  if (kind === 'dobsonfly') {
+    const hx = 116, tx = 162, tailX = 338;
+    resetInsectLegs(c, p, tx, cy + 8, 0.82);
+    resetInsectTorso(c, p, hx, tx, cy, tailX, 18);
+    /* Long smoky, densely net-veined wings overlap along the back and extend
+       beyond the continuous soft abdomen. */
+    resetNetWing(c, tx - 3, cy - 5, 386, 45, 'rgba(126,125,118,0.70)');
+    resetNetWing(c, tx + 4, cy + 7, 394, 38, 'rgba(158,158,150,0.48)');
+    c.fillStyle = bodyGrad(c, p, tx, cy, 30); c.beginPath(); c.ellipse(tx, cy, 31, 25, 0, 0, TAU); c.fill();
+    c.fillStyle = bodyGrad(c, p, hx, cy, 22); c.beginPath(); c.ellipse(hx, cy, 23, 20, 0, 0, TAU); c.fill(); eye(c, hx - 8, cy - 6, 5.5);
+    /* Male mandibles are broad filled sickles, rooted at the head and crossing
+       in front; strokes alone collapsed to antennae at 132px. */
+    for (const side of [-1, 1] as const) {
+      c.strokeStyle = '#5a351e'; c.lineWidth = 11; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(hx - 15, cy + side * 8); c.quadraticCurveTo(72, cy + side * 34, 40, cy - side * 9); c.stroke();
+      c.strokeStyle = '#b27a45'; c.lineWidth = 3.2;
+      c.beginPath(); c.moveTo(hx - 15, cy + side * 7); c.quadraticCurveTo(72, cy + side * 31, 42, cy - side * 8); c.stroke();
+    }
+    resetThreadAntennae(c, hx, cy - 4, 98);
+    return;
+  }
+
+  if (kind === 'stonefly') {
+    const hx = 126, tx = 169, tailX = 343;
+    resetInsectLegs(c, p, tx, cy + 8, 0.90);
+    resetInsectTorso(c, p, hx, tx, cy, tailX, 17);
+    /* Flat overlapping wings lie along the back, not upright or laterally
+       spread; the second wing peeks out as a coherent lower layer. */
+    resetNetWing(c, tx - 2, cy - 7, 367, 31, 'rgba(91,108,108,0.72)');
+    resetNetWing(c, tx + 4, cy + 8, 360, 26, 'rgba(73,88,88,0.58)');
+    c.fillStyle = bodyGrad(c, p, tx, cy, 29); c.beginPath(); c.ellipse(tx, cy, 30, 24, 0, 0, TAU); c.fill();
+    /* The head is visibly flat and squared off. */
+    c.fillStyle = bodyGrad(c, p, hx, cy, 22); c.beginPath(); c.roundRect(hx - 23, cy - 18, 44, 36, 8); c.fill(); eye(c, hx - 9, cy - 6, 4.8);
+    resetThreadAntennae(c, hx, cy, 118);
+    c.strokeStyle = p.dark; c.lineWidth = 6; c.lineCap = 'round';
+    for (const side of [-1, 1] as const) { c.beginPath(); c.moveTo(tailX - 3, cy + side * 6); c.lineTo(tailX + 34, cy + side * 17); c.stroke(); }
+    return;
+  }
+
+  /* Scorpionfly: the beak, blotched wings, and harmless male genital bulb are
+     integrated into one continuous thorax/abdomen rather than bead ornaments. */
+  {
+    const hx = 125, tx = 169, tailX = 326;
+    resetInsectLegs(c, p, tx, cy + 8, 0.84);
+    resetInsectTorso(c, p, hx, tx, cy, tailX, 15);
+    resetNetWing(c, tx - 1, cy - 9, 336, 34, 'rgba(197,174,119,0.60)', true);
+    resetNetWing(c, tx + 7, cy + 8, 328, 28, 'rgba(181,151,92,0.46)', true);
+    c.fillStyle = bodyGrad(c, p, tx, cy, 29); c.beginPath(); c.ellipse(tx, cy, 30, 24, 0, 0, TAU); c.fill();
+    c.fillStyle = bodyGrad(c, p, hx, cy, 20); c.beginPath(); c.ellipse(hx, cy, 21, 18, 0, 0, TAU); c.fill(); eye(c, hx - 8, cy - 6, 4.7);
+    /* Down-curved rostrum with jaws at its terminal tip. */
+    c.fillStyle = '#5a371d'; c.beginPath(); c.moveTo(hx - 17, cy - 7);
+    c.bezierCurveTo(96, cy + 3, 75, cy + 25, 55, cy + 48); c.lineTo(68, cy + 52);
+    c.bezierCurveTo(87, cy + 30, 108, cy + 16, hx - 13, cy + 7); c.closePath(); c.fill();
+    c.strokeStyle = '#d4aa60'; c.lineWidth = 3; c.beginPath(); c.moveTo(54, cy + 48); c.lineTo(44, cy + 42); c.moveTo(55, cy + 49); c.lineTo(45, cy + 57); c.stroke();
+    /* Tapered abdomen curves into the terminal male bulb. */
+    c.strokeStyle = p.dark; c.lineWidth = 15; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(tailX - 28, cy); c.bezierCurveTo(346, cy - 9, 365, cy - 42, 354, cy - 78); c.stroke();
+    c.fillStyle = p.dark; c.beginPath(); c.ellipse(354, cy - 87, 18, 22, -0.22, 0, TAU); c.fill();
+    c.fillStyle = p.lit; c.beginPath(); c.arc(348, cy - 94, 5, 0, TAU); c.fill();
+    resetThreadAntennae(c, hx, cy - 5, 78);
+  }
+}
+
+type ResetBeetleKind = 'carrion' | 'diving' | 'dung' | 'firefly' | 'ladybug' | 'water';
+
+function resetBeetleHue(kind: ResetBeetleKind): string {
+  switch (kind) {
+    case 'carrion': return '#252226';
+    case 'diving': return '#27352d';
+    case 'dung': return '#111417';
+    case 'firefly': return '#3a2b21';
+    case 'ladybug': return '#c92d2a';
+    case 'water': return '#5a422b';
+  }
+}
+
+function resetBeetleLeg(c: Ctx, p: Pal, x: number, y: number, side: -1 | 1,
+    row: number, rake = false): void {
+  const kneeX = x + side * (43 + row * 5), kneeY = y + 11 + row * 27;
+  const footX = x + side * 70, footY = kneeY + 20;
+  c.strokeStyle = '#15191e'; c.lineWidth = rake ? 10 : 6; c.lineCap = 'round'; c.lineJoin = 'round';
+  c.beginPath(); c.moveTo(x + side * 12, y); c.lineTo(kneeX, kneeY); c.lineTo(footX, footY); c.stroke();
+  c.strokeStyle = p.lit; c.lineWidth = rake ? 2.6 : 1.5;
+  c.beginPath(); c.moveTo(x + side * 14, y); c.lineTo(kneeX, kneeY); c.stroke();
+  c.fillStyle = '#15191e'; c.beginPath(); c.arc(kneeX, kneeY, 4, 0, TAU); c.fill();
+  if (rake) {
+    c.strokeStyle = '#15191e'; c.lineWidth = 4;
+    for (let i = -2; i <= 2; i++) { c.beginPath(); c.moveTo(footX - side * 3, footY + i * 4); c.lineTo(footX + side * 17, footY + i * 7); c.stroke(); }
+  }
+}
+
+function resetSwimmingBeetleHindLeg(c: Ctx, p: Pal, x: number, y: number,
+    side: -1 | 1): void {
+  /* Femur, tibia and broad tarsus are one tapered ribbon whose buried root is
+     occluded by the shell. Hair grows along the full trailing edge, not as a
+     paintbrush fan attached to a stick leg. */
+  const rootX = x + side * 11, rootY = y - 7;
+  const blade = c.createLinearGradient(rootX, rootY, x + side * 124, y + 43);
+  blade.addColorStop(0, p.lit); blade.addColorStop(0.42, p.base); blade.addColorStop(1, p.dark);
+  c.fillStyle = blade; c.beginPath(); c.moveTo(rootX, rootY);
+  c.bezierCurveTo(x + side * 34, y - 4, x + side * 53, y + 8, x + side * 67, y + 17);
+  c.bezierCurveTo(x + side * 87, y + 18, x + side * 114, y + 27, x + side * 126, y + 38);
+  c.quadraticCurveTo(x + side * 116, y + 52, x + side * 88, y + 49);
+  c.bezierCurveTo(x + side * 61, y + 44, x + side * 34, y + 27, x + side * 10, y + 10);
+  c.closePath(); c.fill();
+  c.strokeStyle = '#15191e'; c.lineWidth = 3.4; c.lineJoin = 'round'; c.stroke();
+  c.strokeStyle = 'rgba(231,238,221,0.42)'; c.lineWidth = 1.7; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(x + side * 17, y + 2); c.bezierCurveTo(x + side * 48, y + 14, x + side * 91, y + 31, x + side * 119, y + 38); c.stroke();
+  c.strokeStyle = 'rgba(225,235,218,0.76)'; c.lineWidth = 1.45;
+  for (let i = 0; i <= 12; i++) {
+    const u = i / 12, bx = x + side * (68 + u * 54), by = y + 40 + u * 7;
+    c.beginPath(); c.moveTo(bx, by); c.lineTo(bx + side * (2 + u * 2), by + 7); c.stroke();
+  }
+}
+
+function resetBeetleAntennae(c: Ctx, cx: number, y: number,
+    opts: { long?: boolean; clubbed?: boolean } = {}): void {
+  const long = opts.long === true;
+  for (const side of [-1, 1] as const) {
+    const len = long ? 76 : 52;
+    c.strokeStyle = long ? '#986b35' : '#745535'; c.lineWidth = long ? 3.2 : 4.2; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx + side * 10, y); c.quadraticCurveTo(cx + side * (len * 0.62), y - 26, cx + side * len, y - 18); c.stroke();
+    if (opts.clubbed !== false) {
+      c.fillStyle = '#684727'; c.beginPath(); c.ellipse(cx + side * len, y - 18, 9, 5.5, side * 0.24, 0, TAU); c.fill();
+    }
+  }
+}
+
+function faunaResetBeetle(c: Ctx, g: G, pIn: Pal, kind: ResetBeetleKind): void {
+  const p = speciesHue(pIn, resetBeetleHue(kind));
+  const r = mulberry32(((g.seed as number) ^ 0xBEE72A) >>> 0);
+  const cx = S * 0.5, top = S * 0.25, cy = S * 0.52;
+  const long = kind === 'firefly';
+  const rw = S * (long ? 0.145 : kind === 'carrion' ? 0.175 : 0.18);
+  const rh = S * (long ? 0.235 : kind === 'ladybug' ? 0.18 : 0.205);
+  ground(c, cx, cy + rh + 34, S * 0.22);
+  /* Legs are painted first, so their coxae disappear under the thorax/shell
+     instead of looking glued to the outside of the elytra. */
+  for (let row = 0; row < 3; row++) for (const side of [-1, 1] as const) {
+    const oar = (kind === 'diving' || kind === 'water') && row === 2;
+    const rake = kind === 'dung' && row === 0;
+    const y = cy - rh * 0.58 + row * rh * 0.55;
+    if (oar) resetSwimmingBeetleHindLeg(c, p, cx, y, side);
+    else resetBeetleLeg(c, p, cx, y, side, row, rake);
+  }
+
+  if (kind === 'carrion') {
+    /* Exposed posterior abdomen is one continuation under deliberately short
+       elytra, not a detached tail badge. */
+    c.fillStyle = '#17181c'; c.beginPath(); c.roundRect(cx - rw * 0.70, cy + rh * 0.50, rw * 1.40, rh * 0.84, 22); c.fill();
+    c.strokeStyle = '#d56d28'; c.lineWidth = 5;
+    for (let i = 0; i < 3; i++) { const y = cy + rh * (0.62 + i * 0.20); c.beginPath(); c.moveTo(cx - rw * 0.52, y); c.lineTo(cx + rw * 0.52, y); c.stroke(); }
+  }
+
+  const shell = c.createRadialGradient(cx - rw * 0.38, cy - rh * 0.42, 4, cx, cy, rh * 1.22);
+  shell.addColorStop(0, p.lit); shell.addColorStop(0.56, p.base); shell.addColorStop(1, p.dark);
+  c.fillStyle = shell;
+  if (kind === 'dung') {
+    c.beginPath(); c.ellipse(cx, cy + 4, rw, rh, 0, 0, TAU); c.fill();
+  } else if (kind === 'carrion') {
+    c.beginPath(); c.roundRect(cx - rw, cy - rh, rw * 2, rh * 1.72, 34); c.fill();
+  } else {
+    c.beginPath(); c.ellipse(cx, cy, rw, rh, 0, 0, TAU); c.fill();
+  }
+  rim(c, () => kind === 'carrion' ? c.roundRect(cx - rw, cy - rh, rw * 2, rh * 1.72, 34) : c.ellipse(cx, cy + (kind === 'dung' ? 4 : 0), rw, rh, 0, -2.8, 0.35), 2.6);
+
+  if (kind === 'diving') {
+    c.strokeStyle = '#e0d07b'; c.lineWidth = 8; c.beginPath(); c.ellipse(cx, cy, rw - 4, rh - 4, 0, 0, TAU); c.stroke();
+  }
+  c.strokeStyle = 'rgba(8,9,11,0.62)'; c.lineWidth = 3; c.beginPath(); c.moveTo(cx, cy - rh * 0.86); c.lineTo(cx, cy + rh * (kind === 'carrion' ? 0.60 : 0.88)); c.stroke();
+
+  if (kind === 'carrion') {
+    c.fillStyle = '#d36b2b';
+    for (const [sx, sy, rot] of [[-0.48, -0.42, -0.35], [0.46, -0.40, 0.32], [-0.42, 0.18, 0.20], [0.44, 0.20, -0.18]] as const) {
+      c.beginPath(); c.ellipse(cx + rw * sx, cy + rh * sy, rw * 0.31, rh * 0.17, rot, 0, TAU); c.fill();
+    }
+  }
+  if (kind === 'ladybug') {
+    c.fillStyle = '#11151a';
+    for (const [sx, sy, q] of [[-0.45,-0.45,0.13],[0.45,-0.45,0.13],[-0.53,0.08,0.16],[0.53,0.08,0.16],[-0.30,0.48,0.14],[0.30,0.48,0.14]] as const) {
+      c.beginPath(); c.arc(cx + rw * sx, cy + rh * sy, rw * q, 0, TAU); c.fill();
+    }
+  }
+  if (kind === 'firefly') {
+    /* The lantern is the curved underside of the posterior abdominal segments,
+       clipped to and sharing the body's contour—not a badge pasted on top. */
+    c.save(); c.globalCompositeOperation = 'lighter';
+    const halo = c.createRadialGradient(cx, cy + rh * 0.76, 2, cx, cy + rh * 0.76, 69);
+    halo.addColorStop(0, 'rgba(225,255,122,0.80)'); halo.addColorStop(0.45, 'rgba(182,237,76,0.28)'); halo.addColorStop(1, 'rgba(160,220,60,0)');
+    c.fillStyle = halo; c.beginPath(); c.arc(cx, cy + rh * 0.76, 69, 0, TAU); c.fill(); c.restore();
+    c.save(); c.beginPath(); c.ellipse(cx, cy, rw, rh, 0, 0, TAU); c.clip();
+    const lantern = c.createLinearGradient(cx, cy + rh * 0.46, cx, cy + rh);
+    lantern.addColorStop(0, '#9fcd47'); lantern.addColorStop(0.38, '#dfff78'); lantern.addColorStop(1, '#bfe94e');
+    c.fillStyle = lantern; c.beginPath(); c.moveTo(cx - rw * 0.78, cy + rh * 0.48);
+    c.bezierCurveTo(cx - rw * 0.72, cy + rh * 0.77, cx - rw * 0.42, cy + rh * 0.98, cx, cy + rh * 1.02);
+    c.bezierCurveTo(cx + rw * 0.42, cy + rh * 0.98, cx + rw * 0.72, cy + rh * 0.77, cx + rw * 0.78, cy + rh * 0.48);
+    c.quadraticCurveTo(cx, cy + rh * 0.66, cx - rw * 0.78, cy + rh * 0.48); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(92,122,42,0.82)'; c.lineWidth = 3.2;
+    for (const u of [0.62, 0.77, 0.89]) {
+      const half = rw * Math.sqrt(Math.max(0, 1 - u * u)) * 0.88;
+      c.beginPath(); c.moveTo(cx - half, cy + rh * u); c.quadraticCurveTo(cx, cy + rh * (u + 0.055), cx + half, cy + rh * u); c.stroke();
+    }
+    c.restore();
+  }
+  if (kind === 'diving') {
+    /* The retained air store follows the posterior underside of both elytra;
+       its dark upper seam leaves the silver crescent visibly tucked below the
+       wing cases instead of floating as a white badge. */
+    const air = c.createLinearGradient(cx, cy + rh * 0.62, cx, cy + rh * 0.96);
+    air.addColorStop(0, 'rgba(137,160,161,0.78)'); air.addColorStop(0.58, 'rgba(231,242,239,0.94)'); air.addColorStop(1, 'rgba(174,202,204,0.82)');
+    c.fillStyle = air; c.beginPath(); c.moveTo(cx - rw * 0.68, cy + rh * 0.63);
+    c.quadraticCurveTo(cx, cy + rh * 0.98, cx + rw * 0.68, cy + rh * 0.63);
+    c.quadraticCurveTo(cx, cy + rh * 0.77, cx - rw * 0.68, cy + rh * 0.63); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(13,22,20,0.78)'; c.lineWidth = 4.5; c.beginPath();
+    c.moveTo(cx - rw * 0.68, cy + rh * 0.63); c.quadraticCurveTo(cx, cy + rh * 0.77, cx + rw * 0.68, cy + rh * 0.63); c.stroke();
+    c.strokeStyle = 'rgba(255,255,255,0.62)'; c.lineWidth = 1.8; c.beginPath();
+    c.moveTo(cx - rw * 0.48, cy + rh * 0.76); c.quadraticCurveTo(cx, cy + rh * 0.91, cx + rw * 0.48, cy + rh * 0.76); c.stroke();
+  }
+
+  /* Pronotum/head geometry is named because its occlusion is identity. */
+  if (kind === 'dung') {
+    c.fillStyle = '#15191c'; c.beginPath(); c.moveTo(cx - rw * 0.73, cy - rh * 0.70); c.lineTo(cx - rw * 0.92, cy - rh * 1.12); c.quadraticCurveTo(cx, cy - rh * 1.38, cx + rw * 0.92, cy - rh * 1.12); c.lineTo(cx + rw * 0.73, cy - rh * 0.70); c.closePath(); c.fill();
+    c.strokeStyle = '#242a2e'; c.lineWidth = 4; c.stroke();
+  } else {
+    c.fillStyle = kind === 'ladybug' || kind === 'firefly' ? '#15171b' : p.dark;
+    c.beginPath(); c.ellipse(cx, cy - rh * 0.90, rw * (kind === 'firefly' ? 0.92 : 0.72), rh * 0.29, 0, 0, TAU); c.fill();
+    /* Tiny head stays tucked under the anterior shield. */
+    c.beginPath(); c.ellipse(cx, cy - rh * 1.14, rw * 0.30, rh * 0.16, 0, 0, TAU); c.fill();
+  }
+
+  if (kind === 'firefly') {
+    resetBeetleAntennae(c, cx, top + 8, { long: true, clubbed: false });
+  } else if (kind === 'carrion' || kind === 'water') {
+    resetBeetleAntennae(c, cx, cy - rh * 1.14);
+  } else if (kind === 'diving') {
+    resetBeetleAntennae(c, cx, cy - rh * 1.14);
+  }
+
+  /* Dung beetle head and forelegs are a rake system: broad spade plus teeth. */
+  if (kind === 'dung') {
+    /* Distal rake tibiae sit outside the dome. The spade is painted last over
+       their roots, so they articulate from under the head instead of floating. */
+    for (const side of [-1, 1] as const) {
+      c.strokeStyle = '#11171a'; c.lineWidth = 12; c.lineCap = 'round'; c.lineJoin = 'round';
+      c.beginPath(); c.moveTo(cx + side * rw * 0.62, cy - rh * 0.73);
+      c.lineTo(cx + side * (rw + 34), cy - rh * 1.02); c.lineTo(cx + side * (rw + 62), cy - rh * 1.22); c.stroke();
+      c.strokeStyle = '#566269'; c.lineWidth = 2.8;
+      c.beginPath(); c.moveTo(cx + side * rw * 0.70, cy - rh * 0.76); c.lineTo(cx + side * (rw + 55), cy - rh * 1.18); c.stroke();
+      c.strokeStyle = '#151b1e'; c.lineWidth = 4.5;
+      for (let i = -2; i <= 2; i++) {
+        const x = cx + side * (rw + 58), y = cy - rh * 1.22 + i * 5;
+        c.beginPath(); c.moveTo(x, y); c.lineTo(x + side * 19, y - 8 + i * 3); c.stroke();
+      }
+    }
+    c.fillStyle = '#0e1113'; c.beginPath(); c.moveTo(cx - 54, cy - rh * 1.08); c.quadraticCurveTo(cx, cy - rh * 1.55, cx + 54, cy - rh * 1.08); c.lineTo(cx + 42, cy - rh * 0.82); c.lineTo(cx - 42, cy - rh * 0.82); c.closePath(); c.fill();
+    c.strokeStyle = '#5d6970'; c.lineWidth = 4; c.stroke();
+    c.strokeStyle = 'rgba(132,151,158,0.55)'; c.lineWidth = 5;
+    c.beginPath(); c.ellipse(cx, cy + 4, rw - 7, rh - 7, 0, Math.PI * 0.78, Math.PI * 1.72); c.stroke();
+    c.fillStyle = 'rgba(170,190,196,0.16)'; c.beginPath(); c.ellipse(cx - rw * 0.32, cy - rh * 0.32, rw * 0.19, rh * 0.43, -0.38, 0, TAU); c.fill();
+  }
+  /* Fixed seed is consumed only for the named surface, keeping deterministic
+     texture without leaking into any accepted shared helper. */
+  if (kind === 'dung') {
+    for (let i = 0; i < 14; i++) softMark(c, cx + (r() - 0.5) * rw * 1.15, cy + (r() - 0.5) * rh * 1.15, 7, 4, '105,122,128', 0.13);
+  }
+}
+
+function faunaResetFlyLarva(c: Ctx, g: G, pIn: Pal): void {
+  const cx = S * 0.50, cy = S * 0.54, left = S * 0.19, right = S * 0.82, h = S * 0.095;
+  ground(c, cx, cy + h + 22, S * 0.27);
+  const skin = c.createLinearGradient(left, cy - h, right, cy + h);
+  skin.addColorStop(0, '#e8ddbd'); skin.addColorStop(0.42, '#fff6d9'); skin.addColorStop(0.78, '#d9c9a8'); skin.addColorStop(1, '#b5a17f');
+  c.fillStyle = skin; c.beginPath();
+  /* pointed anterior at left; broad blunt posterior at right */
+  c.moveTo(left, cy); c.bezierCurveTo(left + 46, cy - h * 0.78, right - 78, cy - h * 1.08, right - 12, cy - h * 0.60);
+  c.quadraticCurveTo(right + 10, cy, right - 12, cy + h * 0.60);
+  c.bezierCurveTo(right - 80, cy + h * 1.08, left + 48, cy + h * 0.82, left, cy); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(108,91,65,0.72)'; c.lineWidth = 3; c.stroke();
+  /* Segment folds stay inside one continuous skin; no bead caps, legs, or eye. */
+  c.strokeStyle = 'rgba(132,110,76,0.34)'; c.lineWidth = 2.2;
+  for (let i = 1; i <= 8; i++) { const u = i / 9, x = left + (right - left) * u, q = Math.sin(u * Math.PI); c.beginPath(); c.ellipse(x, cy, 9, h * (0.50 + q * 0.36), 0, -1.24, 1.24); c.stroke(); }
+  c.fillStyle = '#5d4730'; c.beginPath(); c.moveTo(left + 5, cy - 4); c.lineTo(left - 6, cy); c.lineTo(left + 5, cy + 4); c.closePath(); c.fill();
+  c.fillStyle = 'rgba(255,255,255,0.34)'; c.beginPath(); c.ellipse(cx - 22, cy - h * 0.43, 68, 11, -0.04, 0, TAU); c.fill();
+  void g; void pIn;
+}
+
+function faunaResetSpringtail(c: Ctx, g: G, pIn: Pal): void {
+  const p = speciesHue(pIn, '#59636e');
+  const cx = S * 0.51, cy = S * 0.54, left = S * 0.28, right = S * 0.73, h = S * 0.082;
+  ground(c, cx, cy + h + 28, S * 0.22);
+  /* Six legs articulate from the thorax and disappear under a single soft
+     segmented body. */
+  c.strokeStyle = p.dark; c.lineWidth = 5; c.lineCap = 'round'; c.lineJoin = 'round';
+  for (let i = 0; i < 3; i++) for (const side of [-1, 1] as const) {
+    const x = left + 66 + i * 18, y = cy + side * 10;
+    c.beginPath(); c.moveTo(x, y); c.lineTo(x - 4 + i * 5, cy + side * 42); c.lineTo(x + (i - 1) * 17, cy + side * 58); c.stroke();
+  }
+  const body = c.createLinearGradient(left, cy - h, right, cy + h); body.addColorStop(0, p.lit); body.addColorStop(0.50, p.base); body.addColorStop(1, p.dark);
+  c.fillStyle = body; c.beginPath(); c.moveTo(left + 30, cy - h * 0.76);
+  c.bezierCurveTo(left + 82, cy - h * 1.05, right - 45, cy - h * 0.98, right, cy - h * 0.34);
+  c.quadraticCurveTo(right + 12, cy, right, cy + h * 0.34);
+  c.bezierCurveTo(right - 44, cy + h * 0.94, left + 82, cy + h * 1.04, left + 30, cy + h * 0.76);
+  c.quadraticCurveTo(left - 8, cy, left + 30, cy - h * 0.76); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(210,224,232,0.46)'; c.lineWidth = 2.4; c.stroke();
+  c.strokeStyle = 'rgba(20,26,32,0.32)'; c.lineWidth = 2;
+  for (let i = 1; i <= 5; i++) { const x = left + 38 + (right - left - 46) * i / 6; c.beginPath(); c.ellipse(x, cy, 8, h * 0.75, 0, -1.18, 1.18); c.stroke(); }
+  c.fillStyle = bodyGrad(c, p, left + 20, cy, 28); c.beginPath(); c.ellipse(left + 20, cy, 29, 25, 0, 0, TAU); c.fill(); eye(c, left + 4, cy - 7, 4.5);
+  /* Short four-jointed antennae: each segment is a visible bead, not one long
+     smooth rod. */
+  for (const side of [-1, 1] as const) {
+    let px = left + 1, py = cy + side * 6;
+    for (let i = 0; i < 4; i++) {
+      const x = left - 13 - i * 11, y = cy + side * (8 + i * 4);
+      c.strokeStyle = p.dark; c.lineWidth = 3.5; c.beginPath(); c.moveTo(px, py); c.lineTo(x, y); c.stroke();
+      c.fillStyle = i % 2 ? p.base : p.dark; c.beginPath(); c.arc(x, y, 4.3 - i * 0.35, 0, TAU); c.fill(); px = x; py = y;
+    }
+  }
+  /* The forked furcula is folded forward under the posterior abdomen and
+     shares a broad rooted base with the fourth abdominal segment. */
+  const fx = right - 32, fy = cy + h * 0.48;
+  c.strokeStyle = '#d1dbe1'; c.lineWidth = 8; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(fx, fy); c.quadraticCurveTo(right + 28, cy + h * 1.35, cx + 36, cy + h * 1.42); c.stroke();
+  c.lineWidth = 4.5;
+  for (const side of [-1, 1] as const) { c.beginPath(); c.moveTo(cx + 38, cy + h * 1.42); c.lineTo(cx + 2, cy + h * 1.42 + side * 9); c.stroke(); }
+  void g;
+}
+
+function sampleBezier(a: number, b: number, d: number, e: number, u: number): number {
+  const v = 1 - u;
+  return v * v * v * a + 3 * v * v * u * b + 3 * v * u * u * d + u * u * u * e;
+}
+
+function faunaResetOctopus(c: Ctx, g: G, pIn: Pal, giant: boolean): void {
+  const p = speciesHue(pIn, giant ? '#a83f2d' : '#a86456');
+  const r = mulberry32(((g.seed as number) ^ (giant ? 0x0C701 : 0x0C702)) >>> 0);
+  const cx = S * 0.50, mantleY = S * 0.33, mw = S * (giant ? 0.17 : 0.145), mh = S * (giant ? 0.19 : 0.165);
+  const baseY = mantleY + mh * 0.70;
+  ground(c, cx, S * 0.88, S * (giant ? 0.34 : 0.29));
+  const armTips = [-0.95, -0.70, -0.44, -0.17, 0.17, 0.44, 0.70, 0.95];
+  /* Eight filled tapered ribbons, each rooted under the eye shelf. Their
+     unequal lengths and alternating bends keep all eight separable at 132px. */
+  for (let i = 0; i < 8; i++) {
+    const side = armTips[i]!;
+    const x0 = cx + side * mw * 0.62, y0 = baseY;
+    const len = S * ((giant ? 0.34 : 0.29) + (i % 3) * 0.035 + r() * 0.018);
+    const x3 = cx + side * S * (0.30 + Math.abs(side) * 0.10) + (i % 2 ? 16 : -16);
+    const y3 = baseY + len * (0.84 + (i % 2) * 0.10);
+    const x1 = x0 + side * len * 0.28, y1 = baseY + len * 0.22;
+    const x2 = x3 - side * len * (0.12 + (i % 2) * 0.12), y2 = baseY + len * 0.66;
+    const leftPts: Array<[number, number]> = [], rightPts: Array<[number, number]> = [];
+    for (let k = 0; k <= 24; k++) {
+      const u = k / 24;
+      const x = sampleBezier(x0, x1, x2, x3, u), y = sampleBezier(y0, y1, y2, y3, u);
+      const nx0 = sampleBezier(x0, x1, x2, x3, Math.min(1, u + 0.012));
+      const ny0 = sampleBezier(y0, y1, y2, y3, Math.min(1, u + 0.012));
+      const mag = Math.hypot(nx0 - x, ny0 - y) || 1, nx = -(ny0 - y) / mag, ny = (nx0 - x) / mag;
+      const w = (giant ? 15 : 12.5) * Math.pow(1 - u, 0.72) + 1.6;
+      leftPts.push([x + nx * w, y + ny * w]); rightPts.push([x - nx * w, y - ny * w]);
+    }
+    const arm = c.createLinearGradient(x0, y0, x3, y3); arm.addColorStop(0, i % 2 ? p.lit : p.base); arm.addColorStop(0.62, p.base); arm.addColorStop(1, p.dark);
+    c.fillStyle = arm; c.beginPath(); leftPts.forEach(([x, y], k) => k ? c.lineTo(x, y) : c.moveTo(x, y));
+    for (let k = rightPts.length - 1; k >= 0; k--) c.lineTo(rightPts[k]![0], rightPts[k]![1]); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(79,33,30,0.76)'; c.lineWidth = 2.2; c.stroke();
+    /* Two alternating sucker rows ride the inner arm surface. */
+    c.fillStyle = 'rgba(250,229,203,0.88)'; c.strokeStyle = 'rgba(113,57,49,0.72)'; c.lineWidth = 1.1;
+    for (let k = 4; k <= 19; k += 3) {
+      const u = k / 24, x = sampleBezier(x0, x1, x2, x3, u), y = sampleBezier(y0, y1, y2, y3, u);
+      const dx = sampleBezier(x0, x1, x2, x3, Math.min(1, u + 0.012)) - x;
+      const dy = sampleBezier(y0, y1, y2, y3, Math.min(1, u + 0.012)) - y;
+      const mag = Math.hypot(dx, dy) || 1, nx = -dy / mag, ny = dx / mag;
+      for (const sideRow of [-1, 1] as const) {
+        const q = Math.max(2.4, (giant ? 5.0 : 4.2) * (1 - u * 0.62));
+        c.beginPath(); c.arc(x + nx * sideRow * q * 0.95, y + ny * sideRow * q * 0.95, q, 0, TAU); c.fill(); c.stroke();
+      }
+    }
+  }
+  /* A continuous arm crown bridges every root into the head volume. */
+  c.fillStyle = p.dark; c.beginPath(); c.ellipse(cx, baseY + 10, mw * 0.92, mh * 0.42, 0, 0, TAU); c.fill();
+  /* Bag-like mantle above the eyes; no lateral fin skirt on octopuses. */
+  const mantle = c.createRadialGradient(cx - mw * 0.36, mantleY - mh * 0.40, 4, cx, mantleY, mw * 1.35);
+  mantle.addColorStop(0, p.lit); mantle.addColorStop(0.58, p.base); mantle.addColorStop(1, p.dark);
+  c.fillStyle = mantle; c.beginPath(); c.moveTo(cx - mw * 0.88, baseY - 5);
+  c.bezierCurveTo(cx - mw * 1.06, mantleY - mh * 0.40, cx - mw * 0.55, mantleY - mh * 1.06, cx, mantleY - mh * 1.13);
+  c.bezierCurveTo(cx + mw * 0.55, mantleY - mh * 1.06, cx + mw * 1.06, mantleY - mh * 0.40, cx + mw * 0.88, baseY - 5);
+  c.quadraticCurveTo(cx, baseY + 22, cx - mw * 0.88, baseY - 5); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(235,214,205,0.48)'; c.lineWidth = 3; c.stroke();
+  /* Eye shelf sits below the mantle where the arms attach. */
+  c.fillStyle = p.base; c.beginPath(); c.ellipse(cx, baseY - 2, mw * 0.82, mh * 0.32, 0, 0, TAU); c.fill();
+  for (const side of [-1, 1] as const) {
+    const ex = cx + side * mw * 0.48, ey = baseY - 6;
+    c.fillStyle = '#dfc98f'; c.beginPath(); c.ellipse(ex, ey, 16, 12, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(65,39,32,0.86)'; c.lineWidth = 2; c.stroke();
+    c.fillStyle = '#14171b'; c.beginPath(); c.roundRect(ex - 10, ey - 2.8, 20, 5.6, 2.8); c.fill();
+    c.fillStyle = 'rgba(255,255,255,0.76)'; c.beginPath(); c.arc(ex - 5, ey - 4, 2.2, 0, TAU); c.fill();
+  }
+}
+
+/* Named wrappers keep morphology tags outside FAUNA_NAME's route literal.
+   overridecheck deliberately treats every top-level string in a route table as
+   a candidate species key, so inline string options would be false dead routes. */
+function faunaResetCaddisfly(c: Ctx, g: G, p: Pal): void { faunaResetWingedInsect(c, g, p, 'caddisfly'); }
+function faunaResetDobsonfly(c: Ctx, g: G, p: Pal): void { faunaResetWingedInsect(c, g, p, 'dobsonfly'); }
+function faunaResetMayfly(c: Ctx, g: G, p: Pal): void { faunaResetWingedInsect(c, g, p, 'mayfly'); }
+function faunaResetScorpionfly(c: Ctx, g: G, p: Pal): void { faunaResetWingedInsect(c, g, p, 'scorpionfly'); }
+function faunaResetStonefly(c: Ctx, g: G, p: Pal): void { faunaResetWingedInsect(c, g, p, 'stonefly'); }
+function faunaResetCarrionBeetle(c: Ctx, g: G, p: Pal): void { faunaResetBeetle(c, g, p, 'carrion'); }
+function faunaResetDivingBeetle(c: Ctx, g: G, p: Pal): void { faunaResetBeetle(c, g, p, 'diving'); }
+function faunaResetDungBeetle(c: Ctx, g: G, p: Pal): void { faunaResetBeetle(c, g, p, 'dung'); }
+function faunaResetFirefly(c: Ctx, g: G, p: Pal): void { faunaResetBeetle(c, g, p, 'firefly'); }
+function faunaResetLadybug(c: Ctx, g: G, p: Pal): void { faunaResetBeetle(c, g, p, 'ladybug'); }
+function faunaResetWaterBeetle(c: Ctx, g: G, p: Pal): void { faunaResetBeetle(c, g, p, 'water'); }
 /** ASYMMETRIC CLAW crab (Fiddler): one huge claw, one small */
 export function faunaFiddler(c: Ctx, g: G, p: Pal): void {
   const cx = S * 0.5, cy = S * 0.56, bw = S * 0.15, bh = S * 0.105;
@@ -1645,28 +2219,28 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
 /** the wave-3 roster: species whose defining anatomy was categorically wrong */
 export const FAUNA_NAME: Record<string, FaunaPainter> = {
   /* Blocker 4 — life stage + arthropod body plans */
-  'Fly Larvae': (c, g, p) => faunaLarva(c, g, speciesHue(p, '#f0e6c8')),
+  'Fly Larvae': (c, g, p) => faunaResetFlyLarva(c, g, p),
   'Cave Cricket': (c, g, p, n) => insectBody(c, g, speciesHue(p, '#9c7a54'), { abdomen: 1.1, broad: 0.84, eyes: 0.8, face: 'slant', antennae: 'long', wings: 'none', jumper: true, legSpan: 2.25 }, n),
   'Dragonfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#1e7fa8', open: true, slim: false }),
   'Damselfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#4aa8e0', open: false, slim: true, body: 1.05 }),
-  'Mayfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#d8c48a', open: false, slim: true, body: 0.82 }),
+  'Mayfly': faunaResetMayfly,
   /* ★ WAVE 23 — Caddisfly, Stonefly and Dobsonfly went HARD look-alike: three
      drab browns on a length dial, the same defect the ants had. They are not
      alike. A caddisfly is MOTH-like with hairy wings tented over the body. */
-  'Caddisfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#7d4f22', open: false, slim: true, body: 0.55, threadAntennae: true }),
+  'Caddisfly': faunaResetCaddisfly,
   /* a stonefly holds its wings FLAT along a dark slender body */
-  'Stonefly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#38423f', open: false, slim: true, body: 0.86 }),
+  'Stonefly': faunaResetStonefly,
   /* a dobsonfly is BIG — the largest of these by a wide margin, pale grey,
-     with long soft wings held out */
-  'Dobsonfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#9d968a', open: true, slim: false, body: 1.45, sickleJaws: true }),
-  'Scorpionfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#9f7a38', open: false, slim: true, body: 1.10, beak: true, scorpionTail: true, wingBlotches: true }),
-  'Springtail': (c, g, p) => faunaSpringtail(c, g, speciesHue(p, '#5a6470')),
-  'Ladybug': (c, g, p) => faunaBeetle(c, g, p, { hue: '#c62828', spots: true }),
-  'Firefly': (c, g, p) => faunaBeetle(c, g, p, { hue: '#382c1f', glow: true }),
-  'Diving Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#414f1e', paddle: true }),
-  'Dung Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#151515', }),
-  'Carrion Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#221f22', }),
-  'Water Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#55402c', paddle: true }),
+     with long smoky wings overlapping along the back past the abdomen */
+  'Dobsonfly': faunaResetDobsonfly,
+  'Scorpionfly': faunaResetScorpionfly,
+  'Springtail': (c, g, p) => faunaResetSpringtail(c, g, p),
+  'Ladybug': faunaResetLadybug,
+  'Firefly': faunaResetFirefly,
+  'Diving Beetle': faunaResetDivingBeetle,
+  'Dung Beetle': faunaResetDungBeetle,
+  'Carrion Beetle': faunaResetCarrionBeetle,
+  'Water Beetle': faunaResetWaterBeetle,
   'Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#96551f', }),
   'Fiddler Crab': (c, g, p) => faunaFiddler(c, g, speciesHue(p, '#c9a877')),
   /* Blocker 6 — specialist fish + marine bodies */
@@ -1676,8 +2250,8 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Halibut': (c, g, p) => faunaFlatfish(c, g, speciesHue(p, '#7d6b4e'), { elong: 1.52, blotch: 0.35 }),
   'Angelfish': (c, g, p) => faunaAngelfish(c, g, speciesHue(p, '#f7a41c')),
   'Lionfish': (c, g, p) => faunaLionfish(c, g, speciesHue(p, '#9b3a26')),
-  'Octopus': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#a65f52', squid: false }),
-  'Giant Octopus': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#b03a26', squid: false }),
+  'Octopus': (c, g, p) => faunaResetOctopus(c, g, p, false),
+  'Giant Octopus': (c, g, p) => faunaResetOctopus(c, g, p, true),
   'Squid': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#d69a92', squid: true }),
   'Giant Squid': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#8c2f3a', squid: true }),
   /* its row: a TINY nub dorsal set far back, and a broad flat U rostrum —
