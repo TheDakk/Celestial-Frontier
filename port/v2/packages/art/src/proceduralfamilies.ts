@@ -776,3 +776,179 @@ export function fungiEnoki(c: Ctx, g: G, p: Pal): void {
     c.quadraticCurveTo(tx - cw * 0.2, ty - cw * 1.05, tx + cw * 0.6, ty - cw * 0.5); c.stroke();
   }
 }
+
+/* ═══════════════════ OWNED ALIEN FLORA + RADIAL FAUNA ═══════════════════
+   The legacy fallback represented several alien growth plans as isolated
+   discs, trays, or soft clouds. These painters preserve the alien plan while
+   giving it one connected substrate, real attachment anatomy, form light, and
+   a silhouette that survives the actual 132px Compendium thumbnail. */
+export type ProceduralFloraArchitecture =
+  | 'fungalForest' | 'lichenMat' | 'crystal' | 'sporeTowers' | 'balloonPods' | 'glassNeedles'
+  | 'cane' | 'rosette' | 'tree';
+
+export function proceduralAlienFlora(
+  c: Ctx, g: G, p: Pal, architecture: ProceduralFloraArchitecture,
+): void {
+  const r = seeded(g, 0xA11E), cx = S * 0.5, base = S * 0.84;
+  ground(c, cx, base + S * 0.035, S * 0.28);
+
+  if (architecture === 'lichenMat') {
+    const mat = c.createRadialGradient(cx - S * 0.08, base - S * 0.08, 2, cx, base - S * 0.07, S * 0.30);
+    mat.addColorStop(0, p.lit); mat.addColorStop(0.54, p.base); mat.addColorStop(1, p.dark);
+    c.fillStyle = mat; c.beginPath(); c.ellipse(cx, base - S * 0.06, S * 0.29, S * 0.105, 0, 0, TAU); c.fill();
+    c.strokeStyle = shade(p, 0.42); c.lineWidth = 3.2; c.stroke();
+    for (let i = 0; i < 34; i++) {
+      const a = r() * TAU, d = Math.sqrt(r()) * S * 0.245, x = cx + Math.cos(a) * d, y = base - S * 0.075 + Math.sin(a) * d * 0.28;
+      const q = S * (0.026 + r() * 0.034), turn = a + (r() - 0.5) * 0.7;
+      const lobe = c.createRadialGradient(x - q * 0.3, y - q * 0.35, 1, x, y, q);
+      lobe.addColorStop(0, p.lit); lobe.addColorStop(0.62, p.base); lobe.addColorStop(1, p.dark);
+      c.fillStyle = lobe; c.save(); c.translate(x, y); c.rotate(turn); c.beginPath(); c.ellipse(0, 0, q * 1.55, q * 0.58, 0, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(245,250,235,0.24)'; c.lineWidth = 1.4; c.stroke(); c.restore();
+    }
+    c.strokeStyle = 'rgba(245,250,235,0.42)'; c.lineWidth = 1.5; c.lineCap = 'round';
+    for (let i = 0; i < 18; i++) { const a = (i / 18) * TAU + r() * 0.12, d = S * (0.09 + r() * 0.15); c.beginPath(); c.moveTo(cx, base - S * 0.07); c.quadraticCurveTo(cx + Math.cos(a + 0.24) * d * 0.55, base - S * 0.08 + Math.sin(a) * d * 0.10, cx + Math.cos(a) * d, base - S * 0.07 + Math.sin(a) * d * 0.22); c.stroke(); }
+    return;
+  }
+
+  if (architecture === 'fungalForest') {
+    c.fillStyle = shade(p, 0.38); c.beginPath(); c.ellipse(cx, base, S * 0.24, S * 0.055, 0, 0, TAU); c.fill();
+    const trunks = [[-0.16, 0.48, 0.16], [0.02, 0.61, 0.21], [0.19, 0.43, 0.145]] as const;
+    for (const [u, h, w] of trunks) {
+      const bx = cx + S * u, top = base - S * h, sw = S * w * 0.34;
+      const stem = c.createLinearGradient(bx - sw, 0, bx + sw, 0); stem.addColorStop(0, p.dark); stem.addColorStop(0.44, p.lit); stem.addColorStop(1, p.base);
+      c.strokeStyle = shade(p, 0.34); c.lineWidth = sw * 2.4; c.lineCap = 'round'; c.beginPath(); c.moveTo(bx, base); c.quadraticCurveTo(bx - S * u * 0.22, top + S * 0.18, bx + S * u * 0.10, top + S * 0.04); c.stroke();
+      c.strokeStyle = stem; c.lineWidth = sw * 1.75; c.stroke();
+      const capW = S * w * 1.45, capH = capW * 0.44, tx = bx + S * u * 0.10, ty = top;
+      const cap = c.createRadialGradient(tx - capW * 0.25, ty - capH * 0.45, 2, tx, ty, capW); cap.addColorStop(0, p.lit); cap.addColorStop(0.58, p.base); cap.addColorStop(1, p.dark);
+      c.fillStyle = cap; c.beginPath(); c.moveTo(tx - capW, ty + capH * 0.18);
+      c.quadraticCurveTo(tx - capW * 0.72, ty - capH * 1.20, tx, ty - capH);
+      c.quadraticCurveTo(tx + capW * 0.72, ty - capH * 1.20, tx + capW, ty + capH * 0.18);
+      c.quadraticCurveTo(tx + capW * 0.56, ty + capH * 0.48, tx + capW * 0.22, ty + capH * 0.28);
+      c.quadraticCurveTo(tx, ty + capH * 0.55, tx - capW * 0.22, ty + capH * 0.28);
+      c.quadraticCurveTo(tx - capW * 0.56, ty + capH * 0.48, tx - capW, ty + capH * 0.18); c.closePath(); c.fill();
+      c.strokeStyle = shade(p, 0.42); c.lineWidth = 2.6; c.stroke();
+      c.strokeStyle = 'rgba(245,248,235,0.50)'; c.lineWidth = 1.6;
+      for (let k = -5; k <= 5; k++) { c.beginPath(); c.moveTo(tx, ty + capH * 0.17); c.lineTo(tx + k * capW * 0.16, ty + capH * (0.28 + Math.abs(k) * 0.025)); c.stroke(); }
+    }
+    return;
+  }
+
+  if (architecture === 'sporeTowers') {
+    c.fillStyle = shade(p, 0.40); c.beginPath(); c.ellipse(cx, base, S * 0.27, S * 0.065, 0, 0, TAU); c.fill();
+    const n = 7;
+    for (let i = 0; i < n; i++) {
+      const u = (i / (n - 1) - 0.5), bx = cx + u * S * 0.42, h = S * (0.28 + (1 - Math.abs(u)) * 0.25 + r() * 0.055), top = base - h;
+      c.strokeStyle = shade(p, 0.38); c.lineWidth = 17; c.lineCap = 'round'; c.beginPath(); c.moveTo(bx, base); c.quadraticCurveTo(bx + u * S * 0.06, base - h * 0.55, bx - u * S * 0.03, top); c.stroke();
+      const stem = c.createLinearGradient(bx - 7, 0, bx + 7, 0); stem.addColorStop(0, p.dark); stem.addColorStop(0.45, p.lit); stem.addColorStop(1, p.base);
+      c.strokeStyle = stem; c.lineWidth = 11; c.stroke();
+      c.strokeStyle = 'rgba(245,250,235,0.36)'; c.lineWidth = 2;
+      for (let k = 1; k < 5; k++) { const y = base - h * k / 6; c.beginPath(); c.moveTo(bx - 6, y); c.lineTo(bx + 6, y - u * 3); c.stroke(); }
+      const q = S * (0.035 + r() * 0.015), bulb = c.createRadialGradient(bx - q * 0.32, top - q * 0.34, 1, bx, top, q); bulb.addColorStop(0, p.lit); bulb.addColorStop(0.58, p.base); bulb.addColorStop(1, p.dark);
+      c.fillStyle = bulb; c.beginPath(); c.ellipse(bx - u * S * 0.03, top, q * 1.15, q * 1.42, -u * 0.24, 0, TAU); c.fill(); c.strokeStyle = shade(p, 0.38); c.lineWidth = 2.2; c.stroke();
+    }
+    return;
+  }
+
+  if (architecture === 'balloonPods') {
+    c.strokeStyle = shade(p, 0.36); c.lineWidth = 15; c.lineCap = 'round'; c.beginPath(); c.moveTo(cx - S * 0.26, base); c.bezierCurveTo(cx - S * 0.22, base - S * 0.24, cx + S * 0.17, base - S * 0.38, cx + S * 0.24, base - S * 0.62); c.stroke();
+    c.strokeStyle = p.base; c.lineWidth = 9; c.stroke();
+    for (let i = 0; i < 7; i++) {
+      const t = (i + 0.65) / 7.8, x = cx - S * 0.26 + t * S * 0.50 + Math.sin(t * Math.PI) * S * 0.055, y = base - t * S * 0.62 - Math.sin(t * Math.PI) * S * 0.08;
+      const side = i % 2 ? 1 : -1, px = x + side * S * (0.07 + r() * 0.025), py = y - S * 0.015, q = S * (0.050 + r() * 0.015);
+      c.strokeStyle = p.base; c.lineWidth = 6; c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo((x + px) * 0.5, py + S * 0.025, px, py); c.stroke();
+      const pod = c.createRadialGradient(px - q * 0.33, py - q * 0.40, 2, px, py, q * 1.18); pod.addColorStop(0, p.lit); pod.addColorStop(0.52, p.base); pod.addColorStop(1, p.dark);
+      c.fillStyle = pod; c.beginPath(); c.ellipse(px, py, q * 0.92, q * 1.32, side * 0.28, 0, TAU); c.fill(); c.strokeStyle = shade(p, 0.35); c.lineWidth = 2.5; c.stroke();
+      c.strokeStyle = 'rgba(250,252,239,0.50)'; c.lineWidth = 1.8; c.beginPath(); c.moveTo(px, py - q * 1.08); c.quadraticCurveTo(px + side * q * 0.16, py, px, py + q * 1.08); c.stroke();
+    }
+    return;
+  }
+
+  if (architecture === 'cane') {
+    c.fillStyle = shade(p, 0.36); c.beginPath(); c.ellipse(cx, base, S * 0.25, S * 0.055, 0, 0, TAU); c.fill();
+    for (let i = 0; i < 7; i++) {
+      const u = i / 6 - 0.5, bx = cx + u * S * 0.36, h = S * (0.36 + (1 - Math.abs(u)) * 0.24 + r() * 0.05), lean = u * S * 0.05;
+      c.strokeStyle = shade(p, 0.35); c.lineWidth = 13; c.lineCap = 'round'; c.beginPath(); c.moveTo(bx, base); c.quadraticCurveTo(bx - lean * 0.30, base - h * 0.55, bx + lean, base - h); c.stroke();
+      const stem = c.createLinearGradient(bx - 6, 0, bx + 6, 0); stem.addColorStop(0, p.dark); stem.addColorStop(0.45, p.lit); stem.addColorStop(1, p.base);
+      c.strokeStyle = stem; c.lineWidth = 8; c.stroke();
+      for (let k = 1; k <= 5; k++) {
+        const t = k / 6, x = bx + lean * t, y = base - h * t, side = (k + i) % 2 ? 1 : -1;
+        c.strokeStyle = 'rgba(245,250,235,0.50)'; c.lineWidth = 2; c.beginPath(); c.moveTo(x - 5, y); c.lineTo(x + 5, y); c.stroke();
+        const tipX = x + side * S * (0.075 + r() * 0.025), tipY = y - S * (0.025 + r() * 0.025);
+        c.fillStyle = k % 2 ? p.base : p.lit; c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo((x + tipX) * 0.5, tipY - S * 0.025, tipX, tipY); c.quadraticCurveTo((x + tipX) * 0.55, tipY + S * 0.020, x, y); c.closePath(); c.fill();
+        c.strokeStyle = shade(p, 0.40); c.lineWidth = 1.6; c.stroke();
+      }
+    }
+    return;
+  }
+
+  if (architecture === 'rosette') {
+    const leaves: Array<[number, number, number]> = [];
+    for (let i = 0; i < 18; i++) { const a = (i / 18) * TAU + r() * 0.04, len = S * (0.18 + r() * 0.09); leaves.push([a, len, r()]); }
+    leaves.sort((a, b) => Math.sin(a[0]) - Math.sin(b[0]));
+    for (const [a, len, q] of leaves) {
+      const x = cx + Math.cos(a) * len, y = base - S * 0.085 + Math.sin(a) * len * 0.40;
+      const spread = 0.26 + q * 0.16;
+      const leaf = c.createLinearGradient(cx, base, x, y); leaf.addColorStop(0, p.dark); leaf.addColorStop(0.48, p.base); leaf.addColorStop(1, p.lit);
+      c.fillStyle = leaf; c.beginPath(); c.moveTo(cx, base - S * 0.075); c.quadraticCurveTo(cx + Math.cos(a + spread) * len * 0.55, base - S * 0.075 + Math.sin(a + spread) * len * 0.30, x, y); c.quadraticCurveTo(cx + Math.cos(a - spread) * len * 0.55, base - S * 0.075 + Math.sin(a - spread) * len * 0.30, cx, base - S * 0.075); c.closePath(); c.fill();
+      c.strokeStyle = shade(p, 0.36); c.lineWidth = 2; c.stroke();
+      c.strokeStyle = 'rgba(250,252,240,0.38)'; c.lineWidth = 1.4; c.beginPath(); c.moveTo(cx, base - S * 0.075); c.lineTo(x, y); c.stroke();
+    }
+    const heart = c.createRadialGradient(cx - S * 0.02, base - S * 0.11, 1, cx, base - S * 0.09, S * 0.055); heart.addColorStop(0, p.lit); heart.addColorStop(0.65, p.base); heart.addColorStop(1, p.dark);
+    c.fillStyle = heart; c.beginPath(); c.arc(cx, base - S * 0.085, S * 0.052, 0, TAU); c.fill();
+    return;
+  }
+
+  if (architecture === 'tree') {
+    c.strokeStyle = shade(p, 0.29); c.lineWidth = 30; c.lineCap = 'round'; c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx - S * 0.035, base - S * 0.36, cx, base - S * 0.58); c.stroke();
+    c.strokeStyle = shade(p, 0.52); c.lineWidth = 18; c.stroke();
+    const crowns: Array<[number, number, number]> = [[0, -0.58, 0.16], [-0.17, -0.49, 0.13], [0.17, -0.48, 0.13], [-0.10, -0.64, 0.12], [0.11, -0.66, 0.11]];
+    for (const [u, v, q] of crowns) {
+      const x = cx + S * u, y = base + S * v;
+      c.strokeStyle = shade(p, 0.36); c.lineWidth = 8; c.beginPath(); c.moveTo(cx, base - S * 0.30); c.lineTo(x, y + S * q * 0.45); c.stroke();
+      const crown = c.createRadialGradient(x - S * q * 0.35, y - S * q * 0.40, 2, x, y, S * q); crown.addColorStop(0, p.lit); crown.addColorStop(0.55, p.base); crown.addColorStop(1, p.dark);
+      c.fillStyle = crown; c.beginPath(); c.arc(x, y, S * q, 0, TAU); c.fill(); c.strokeStyle = shade(p, 0.34); c.lineWidth = 2.4; c.stroke();
+      c.fillStyle = 'rgba(248,252,235,0.28)'; for (let k = 0; k < 8; k++) { const a = r() * TAU, d = r() * S * q * 0.72; c.beginPath(); c.ellipse(x + Math.cos(a) * d, y + Math.sin(a) * d, 4.2, 2.2, a, 0, TAU); c.fill(); }
+    }
+    return;
+  }
+
+  const glass = architecture === 'glassNeedles';
+  c.fillStyle = shade(p, 0.34); c.beginPath(); c.moveTo(cx - S * 0.28, base); c.lineTo(cx - S * 0.18, base - S * 0.075); c.lineTo(cx + S * 0.20, base - S * 0.065); c.lineTo(cx + S * 0.29, base); c.closePath(); c.fill();
+  const count = glass ? 17 : 8;
+  const shards: Array<[number, number, number, number]> = [];
+  for (let i = 0; i < count; i++) { const u = i / (count - 1) - 0.5, h = S * ((glass ? 0.24 : 0.30) + (1 - Math.abs(u) * 1.5) * (glass ? 0.30 : 0.34) + r() * 0.09); shards.push([cx + u * S * (glass ? 0.48 : 0.42), base - S * 0.035, h, (r() - 0.5) * (glass ? 0.24 : 0.12)]); }
+  shards.sort((a, b) => a[2] - b[2]);
+  for (const [bx, by, h, lean] of shards) {
+    const w = S * (glass ? 0.018 + r() * 0.013 : 0.045 + r() * 0.022), tx = bx + lean * h, ty = by - h;
+    const shard = c.createLinearGradient(bx - w, by, tx + w, ty); shard.addColorStop(0, shade(p, 0.48)); shard.addColorStop(0.38, p.base); shard.addColorStop(0.66, p.lit); shard.addColorStop(1, shade(p, 0.36));
+    c.fillStyle = shard; c.beginPath(); c.moveTo(bx - w, by); c.lineTo(tx, ty); c.lineTo(bx + w, by); c.lineTo(bx, by + w * 0.55); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(230,246,255,0.58)'; c.lineWidth = glass ? 1.4 : 2.2; c.stroke();
+    c.strokeStyle = 'rgba(255,255,255,0.34)'; c.lineWidth = 1; c.beginPath(); c.moveTo(bx, by - w * 0.20); c.lineTo(tx, ty + h * 0.08); c.stroke();
+  }
+}
+
+export function proceduralRadialFauna(c: Ctx, g: G, p: Pal): void {
+  const r = seeded(g, 0x8AD1A), cx = S * 0.50, cy = S * 0.52, core = S * 0.105;
+  ground(c, cx, S * 0.82, S * 0.22);
+  const arms = 10;
+  for (let i = 0; i < arms; i++) {
+    const a = (i / arms) * TAU + r() * 0.035, len = S * (0.20 + r() * 0.045), w = S * (0.040 + r() * 0.010);
+    c.save(); c.translate(cx, cy); c.rotate(a);
+    const limb = c.createLinearGradient(core * 0.4, -w, len, w); limb.addColorStop(0, p.base); limb.addColorStop(0.62, p.lit); limb.addColorStop(1, p.dark);
+    c.fillStyle = limb; c.beginPath(); c.moveTo(core * 0.45, -w);
+    c.bezierCurveTo(len * 0.38, -w * 1.34, len * 0.68, w * 0.24, len - w * 0.22, -w * 0.12);
+    c.quadraticCurveTo(len + w * 0.20, 0, len - w * 0.22, w * 0.12);
+    c.bezierCurveTo(len * 0.67, w * 0.68, len * 0.40, w * 1.28, core * 0.45, w); c.closePath(); c.fill();
+    c.strokeStyle = shade(p, 0.36); c.lineWidth = 2.4; c.stroke();
+    c.strokeStyle = 'rgba(248,252,245,0.34)'; c.lineWidth = 1.6; c.beginPath(); c.moveTo(core * 0.62, -w * 0.30); c.quadraticCurveTo(len * 0.55, -w * 0.18, len * 0.91, 0); c.stroke();
+    for (let k = 1; k < 4; k++) { const x = core + (len - core) * k / 4; c.fillStyle = 'rgba(25,25,30,0.48)'; c.beginPath(); c.arc(x, 0, 2.4, 0, TAU); c.fill(); }
+    c.restore();
+  }
+  const body = c.createRadialGradient(cx - core * 0.36, cy - core * 0.40, 2, cx, cy, core * 1.25); body.addColorStop(0, p.lit); body.addColorStop(0.55, p.base); body.addColorStop(1, p.dark);
+  c.fillStyle = body; c.beginPath(); c.arc(cx, cy, core, 0, TAU); c.fill(); c.strokeStyle = shade(p, 0.34); c.lineWidth = 3; c.stroke();
+  c.fillStyle = 'rgba(20,22,28,0.74)';
+  for (let i = 0; i < arms; i++) { const a = (i / arms) * TAU, x = cx + Math.cos(a) * core * 0.55, y = cy + Math.sin(a) * core * 0.55; c.beginPath(); c.arc(x, y, 3.4, 0, TAU); c.fill(); }
+  c.fillStyle = 'rgba(17,20,25,0.86)'; c.beginPath(); c.ellipse(cx, cy + core * 0.05, core * 0.24, core * 0.18, 0, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(245,250,255,0.58)'; c.lineWidth = 2.2; c.stroke();
+  c.fillStyle = 'rgba(245,250,255,0.62)'; c.beginPath(); c.arc(cx - core * 0.22, cy - core * 0.28, core * 0.13, 0, TAU); c.fill();
+}

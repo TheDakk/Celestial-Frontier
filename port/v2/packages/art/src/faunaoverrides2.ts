@@ -108,7 +108,9 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
     /** Infrared pit dots on cave/pit snakes. */
     pits?: boolean;
     /** A forked branch behind an arboreal snake's loose S curve. */
-    perch?: boolean }, name = ''): void {
+    perch?: boolean;
+    /** Exact constrictor silhouettes; unset keeps every other snake byte-stable. */
+    constrictor?: 'anaconda' | 'boa' | 'python' | 'sand-boa' }, name = ''): void {
   /* ★ D-ART-114 — the species hue axis (21 snakes were on the rarity roll). */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x5AE1);
@@ -129,13 +131,33 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
      round-capped ribbon — 200 short segments, each shaded across its own
      girth — so the surface is unbroken and the coil still overlaps itself
      back-to-front. */
+  const constrictor = opts.constrictor;
   const N = 200, turns = 1.62 * nvar(name, 0x11, 0.16);
-  const R0 = S * 0.255 * nvar(name, 0x22, 0.10), W0 = S * 0.050 * (opts.gauge ?? 1) * nvar(name, 0x33, 0.22);
+  const R0 = S * 0.255 * nvar(name, 0x22, 0.10),
+    W0 = S * (constrictor ? 0.039 : 0.050) * (opts.gauge ?? 1) * nvar(name, 0x33, 0.22);
   const pts: Array<{ x: number; y: number; w: number }> = [];
   for (let i = 0; i < N; i++) {
     const u = i / (N - 1);
-    const taper = u < 0.10 ? 0.55 + 4.5 * u : 1 - 0.62 * ((u - 0.10) / 0.90) ** 1.5;  /* blunt neck, fine tail */
-    if (opts.posture === 'slither') {
+    const taper = constrictor === 'sand-boa'
+      ? (u < 0.10 ? 0.76 + 2.4 * u : u < 0.80 ? 1 - 0.12 * ((u - 0.10) / 0.70) : 0.88 - 0.15 * ((u - 0.80) / 0.20))
+      : constrictor === 'boa'
+        ? (u < 0.10 ? 0.70 + 3.0 * u : 1 - 0.40 * ((u - 0.10) / 0.90) ** 1.8)
+        : u < 0.10 ? 0.55 + 4.5 * u : 1 - 0.62 * ((u - 0.10) / 0.90) ** 1.5;  /* blunt neck, fine tail */
+    if (constrictor) {
+      /* Open centerlines with real crossings replace the shared closed torus.
+         Tail-to-head painting below turns those crossings into honest overlaps. */
+      const control: ReadonlyArray<readonly [number, number]> = constrictor === 'sand-boa'
+        ? [[0.79, 0.48], [0.72, 0.46], [0.63, 0.49], [0.56, 0.58], [0.45, 0.64], [0.33, 0.61], [0.23, 0.54], [0.13, 0.57]]
+        : [[0.80, 0.43], [0.72, 0.44], [0.62, 0.52], [0.69, 0.65], [0.57, 0.72], [0.38, 0.70],
+          [0.25, 0.62], [0.28, 0.50], [0.43, 0.45], [0.59, 0.49], [0.61, 0.58], [0.52, 0.64],
+          [0.40, 0.60], [0.30, 0.58], [0.21, 0.64], [0.10, 0.67]];
+      const z = u * (control.length - 1), si = Math.min(control.length - 2, Math.floor(z)), t = z - si;
+      const p0 = control[Math.max(0, si - 1)]!, p1 = control[si]!, p2 = control[si + 1]!, p3 = control[Math.min(control.length - 1, si + 2)]!;
+      const t2 = t * t, t3 = t2 * t;
+      const spline = (a: number, b: number, d: number, e: number): number =>
+        0.5 * ((2 * b) + (-a + d) * t + (2 * a - 5 * b + 4 * d - e) * t2 + (-a + 3 * b - 3 * d + e) * t3);
+      pts.push({ x: S * spline(p0[0], p1[0], p2[0], p3[0]), y: S * spline(p0[1], p1[1], p2[1], p3[1]), w: W0 * taper });
+    } else if (opts.posture === 'slither') {
       /* A low, loose S makes the body read as a single animal. The generic spiral
          is retained for non-target rows, but must not turn every named snake into
          the same inner-hole silhouette. */
@@ -206,19 +228,21 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
     const mx = (a0.x + a1.x) / 2, my = (a0.y + a1.y) / 2;
     if (pat === 'band' && (i % 16) < 7) {
       softMark(c, mx, my, w * 1.18, w * 1.02, opts.bandHue ?? '26,18,12', opts.boldBands ? 0.86 : 0.58);
-    } else if (pat === 'saddle' && (i % 21) < 10) {
+    } else if (pat === 'saddle' && (constrictor === 'boa' ? (i % 24) === 12 : (i % 21) < 10)) {
       /* a boa's saddles redden toward the tail — u is 0 at the head end */
       const u2 = i / (N - 1);
-      const rd = Math.round(48 + u2 * 46), gn = Math.round(30 - u2 * 6);
-      softMark(c, mx, my - w * 0.12, w * 1.30, w * 1.02, `${rd},${gn},20`, 0.70);
+      const rd = Math.round(48 + u2 * (constrictor === 'boa' ? 58 : 46)), gn = Math.round(30 - u2 * (constrictor === 'boa' ? 8 : 6));
+      const tang = Math.atan2(a1.y - a0.y, a1.x - a0.x);
+      softMark(c, mx, constrictor === 'boa' ? my : my - w * 0.12, w * (constrictor === 'boa' ? 1.28 : 1.30), w * (constrictor === 'boa' ? 0.72 : 1.02),
+        `${rd},${gn},20`, constrictor === 'boa' ? 0.86 : 0.70, constrictor === 'boa' ? tang + Math.PI / 2 : 0);
     } else if (pat === 'reticulate') {
       /* ⚠ A PATTERN MUST SPAN THE GIRTH, NOT DOT ALONG THE LENGTH. At w*0.66
          the cells were smaller than the body was thick, so a python's net came
          out as speckle — present, and not a net. Transverse dark cells with a
          pale seam between each pair is what reads as reticulation at portrait
          size, where the real animal's fine mesh cannot resolve anyway. */
-      if ((i % 11) < 5) softMark(c, mx, my, w * 1.18, w * 1.05, '26,20,14', 0.58);
-      if ((i % 11) === 7) softMark(c, mx, my - w * 0.28, w * 0.60, w * 0.70, '240,230,200', 0.42);
+      if (constrictor !== 'python' && (i % 11) < 5) softMark(c, mx, my, w * 1.18, w * 1.05, '26,20,14', 0.58);
+      if (constrictor !== 'python' && (i % 11) === 7) softMark(c, mx, my - w * 0.28, w * 0.60, w * 0.70, '240,230,200', 0.42);
     } else if (pat === 'zigzag' && (i % 2) === 0) {
       /* the chain runs ALONG the spine, alternating side to side, so each mark
          has to be wide enough to touch its neighbour and close the zigzag */
@@ -238,8 +262,27 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
        — so they actually survive to the final surface. */
     for (let i = N - 10; i > 8; i -= 23) {
       const a0 = pts[i]!, w = a0.w;
-      softMark(c, a0.x, a0.y - w * 0.10, w * 1.05, w * 0.88, '198,188,120', 0.30);
-      softMark(c, a0.x, a0.y - w * 0.10, w * 0.80, w * 0.66, '14,12,8', 0.80);
+      if (constrictor === 'anaconda') softMark(c, a0.x, a0.y - w * 0.10, w * 1.18, w * 0.66, '16,20,9', 0.86);
+      else {
+        softMark(c, a0.x, a0.y - w * 0.10, w * 1.05, w * 0.88, '198,188,120', 0.30);
+        softMark(c, a0.x, a0.y - w * 0.10, w * 0.80, w * 0.66, '14,12,8', 0.80);
+      }
+    }
+  }
+  if (constrictor === 'python') {
+    /* Angular linked cells supply a real reticulate net at thumb scale. */
+    c.lineJoin = 'round'; c.lineCap = 'round';
+    for (const phase of [0, Math.PI] as const) {
+      c.strokeStyle = phase === 0 ? 'rgba(38,27,17,0.72)' : 'rgba(229,207,159,0.62)';
+      c.lineWidth = phase === 0 ? Math.max(2.2, W0 * 0.10) : Math.max(1.7, W0 * 0.07);
+      c.beginPath();
+      for (let i = N - 4; i >= 4; i -= 2) {
+        const q = pts[i]!, qa = pts[i - 2]!, qb = pts[i + 2]!;
+        const a = Math.atan2(qb.y - qa.y, qb.x - qa.x), off = Math.sin(i * 0.31 + phase) * q.w * 0.50;
+        const x = q.x - Math.sin(a) * off, y = q.y + Math.cos(a) * off;
+        if (i === N - 4) c.moveTo(x, y); else c.lineTo(x, y);
+      }
+      c.stroke();
     }
   }
   /* the head rides the coil's outer end */
@@ -248,6 +291,13 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
   const head = pts[0]!, neck = pts[3]!;
   const hAng = Math.atan2(head.y - neck.y, head.x - neck.x);
   const hx = head.x + Math.cos(hAng) * S * 0.030, hy = head.y + Math.sin(hAng) * S * 0.030;
+  if (constrictor) {
+    /* Overlapping neck bridge makes the skull a widening of the same body tube. */
+    c.strokeStyle = p.dark; c.lineWidth = head.w * 1.82; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(neck.x, neck.y); c.lineTo(hx - Math.cos(hAng) * head.w * 0.18, hy - Math.sin(hAng) * head.w * 0.18); c.stroke();
+    c.strokeStyle = p.base; c.lineWidth = head.w * 1.48;
+    c.beginPath(); c.moveTo(neck.x, neck.y - head.w * 0.05); c.lineTo(hx - Math.cos(hAng) * head.w * 0.10, hy - Math.sin(hAng) * head.w * 0.10); c.stroke();
+  }
   if (opts.hood) {   /* THE HOOD — a cobra's whole silhouette. Drawn in the
        body's own colour it disappeared into the coil behind it, so it now
        carries its own lighter face, a dark rim and the spectacle mark. */
@@ -293,10 +343,10 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
      the broad triangular skull set off from a thin neck that is three of their
      mustReads and was absent from all of them. */
   const arrow = opts.head === 'arrow', narrow = opts.head === 'narrow', longHead = opts.head === 'long', ratHead = opts.head === 'rat';
-  const hW = head.w * (arrow ? 2.30 : ratHead ? 1.04 : narrow ? 1.18 : 1.62);
-  const hL = head.w * (arrow ? 3.05 : longHead ? 4.70 : ratHead ? 4.15 : 3.45);
+  const hW = head.w * (constrictor === 'boa' ? 2.24 : constrictor === 'anaconda' ? 1.98 : constrictor === 'python' ? 1.88 : constrictor === 'sand-boa' ? 1.70 : arrow ? 2.30 : ratHead ? 1.04 : narrow ? 1.18 : 1.62);
+  const hL = head.w * (constrictor === 'boa' ? 3.04 : constrictor === 'anaconda' ? 3.18 : constrictor === 'python' ? 3.32 : constrictor === 'sand-boa' ? 2.20 : arrow ? 3.05 : longHead ? 4.70 : ratHead ? 4.15 : 3.45);
   c.save(); c.translate(hx, hy); c.rotate(hAng);
-  c.fillStyle = grad(c, p, 0, 0, hL * 0.85);
+  c.fillStyle = constrictor ? grad(c, p, -hL * 0.16, -hW * 0.20, hL * 1.08) : grad(c, p, 0, 0, hL * 0.85);
   c.beginPath();
   c.moveTo(-hL * 0.62, -hW * 0.26);
   /* the widest point sits BEHIND the snout on an arrow head, at the jaw hinge */
@@ -319,6 +369,13 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
     c.beginPath(); c.moveTo(hL * 0.06, -hW * 0.42); c.lineTo(hL * 0.82, -hW * 0.12); c.stroke();
   }
   c.restore();
+  if (constrictor === 'boa') {
+    /* The dark eye-stripe is carried by the skull plane, not pasted on the canvas. */
+    c.save(); c.translate(hx, hy); c.rotate(hAng);
+    c.strokeStyle = 'rgba(44,24,18,0.88)'; c.lineWidth = Math.max(2.2, hW * 0.20); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(-hL * 0.12, -hW * 0.44); c.lineTo(hL * 0.74, -hW * 0.16); c.stroke();
+    c.restore();
+  }
   if (opts.gape) {
     /* Cottonmouth: the white mouth is visible because the jaw is open toward
        the viewer, not because a white stripe is painted on a closed head. */
@@ -329,7 +386,10 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
     c.beginPath();
     c.ellipse(hx + S * 0.039, hy + S * 0.016, head.w * 0.72, head.w * 0.24, hAng, 0, TAU); c.fill();
   }
-  const ex = hx + S * 0.022, ey = hy - S * 0.012, er = 5.5 * (opts.eyeScale ?? 1);
+  const specialistEye = Boolean(constrictor);
+  const ex = specialistEye ? hx + Math.cos(hAng) * hL * 0.18 + Math.cos(hAng - Math.PI / 2) * hW * 0.42 : hx + S * 0.022;
+  const ey = specialistEye ? hy + Math.sin(hAng) * hL * 0.18 + Math.sin(hAng - Math.PI / 2) * hW * 0.42 : hy - S * 0.012;
+  const er = 5.5 * (opts.eyeScale ?? 1) * (constrictor === 'anaconda' ? 1.18 : 1);
   if (ratHead) {
     const rr = Math.max(3.0, 4.4 * (opts.eyeScale ?? 1));
     c.fillStyle = '#b8ad78'; c.beginPath(); c.ellipse(ex, ey, rr * 0.86, rr * 0.72, 0, 0, TAU); c.fill();
@@ -339,6 +399,13 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
     c.fillStyle = '#d9ca6a'; c.beginPath(); c.ellipse(ex, ey, er * 1.08, er * 0.92, 0, 0, TAU); c.fill();
     c.fillStyle = '#121216'; c.beginPath(); c.ellipse(ex, ey, er * 0.68, er * 0.18, 0, 0, TAU); c.fill();
     c.fillStyle = 'rgba(255,255,248,0.72)'; c.beginPath(); c.arc(ex - er * 0.24, ey - er * 0.26, er * 0.16, 0, TAU); c.fill();
+  } else if (constrictor === 'sand-boa') {
+    c.save(); c.translate(hx, hy); c.rotate(hAng);
+    for (const sy of [-1, 1] as const) {
+      c.fillStyle = '#d8c89c'; c.beginPath(); c.arc(hL * 0.28, sy * hW * 0.34, Math.max(2.4, hW * 0.095), 0, TAU); c.fill();
+      c.fillStyle = '#171510'; c.beginPath(); c.arc(hL * 0.30, sy * hW * 0.34, Math.max(1.3, hW * 0.045), 0, TAU); c.fill();
+    }
+    c.restore();
   } else {
     eye(c, ex, ey, er, true);
   }
@@ -346,11 +413,34 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
     c.fillStyle = 'rgba(30,24,20,0.75)';
     for (const dy of [-1, 1]) { c.beginPath(); c.arc(hx + S * 0.047, hy + dy * head.w * 0.34, Math.max(1.4, head.w * 0.16), 0, TAU); c.fill(); }
   }
+  if (constrictor === 'python') {
+    /* A row of heat-sensing labial pits survives the 132px gameplay thumb. */
+    c.save(); c.translate(hx, hy); c.rotate(hAng);
+    c.fillStyle = 'rgba(24,18,14,0.92)';
+    for (let i = 0; i < 5; i++) { c.beginPath(); c.arc(hL * (0.12 + i * 0.13), hW * 0.38, Math.max(1.8, hW * 0.095), 0, TAU); c.fill(); }
+    c.restore();
+  }
+  if (constrictor === 'anaconda') {
+    /* High-set nostrils share the crown with the eyes in this aquatic constrictor. */
+    c.save(); c.translate(hx, hy); c.rotate(hAng);
+    c.fillStyle = 'rgba(16,18,10,0.92)';
+    for (const sy of [-1, 1] as const) { c.beginPath(); c.arc(hL * 0.69, sy * hW * 0.20, Math.max(1.8, hW * 0.10), 0, TAU); c.fill(); }
+    c.restore();
+  }
   c.strokeStyle = '#c8384a'; c.lineWidth = 2.6; c.lineCap = 'round';   /* forked tongue */
-  const tx = hx + S * 0.055, ty = hy + S * 0.006;
-  c.beginPath(); c.moveTo(tx, ty); c.lineTo(tx + 22, ty + 4); c.stroke();
-  c.beginPath(); c.moveTo(tx + 22, ty + 4); c.lineTo(tx + 34, ty - 2); c.stroke();
-  c.beginPath(); c.moveTo(tx + 22, ty + 4); c.lineTo(tx + 34, ty + 11); c.stroke();
+  if (constrictor) {
+    const fx = Math.cos(hAng), fy = Math.sin(hAng), sx = Math.cos(hAng + Math.PI / 2), sy = Math.sin(hAng + Math.PI / 2);
+    const tx = hx + fx * hL * 0.72, ty = hy + fy * hL * 0.72;
+    const mx = tx + fx * 22, my = ty + fy * 22;
+    c.beginPath(); c.moveTo(tx, ty); c.lineTo(mx, my); c.stroke();
+    c.beginPath(); c.moveTo(mx, my); c.lineTo(mx + fx * 12 + sx * 6, my + fy * 12 + sy * 6); c.stroke();
+    c.beginPath(); c.moveTo(mx, my); c.lineTo(mx + fx * 12 - sx * 6, my + fy * 12 - sy * 6); c.stroke();
+  } else {
+    const tx = hx + S * 0.055, ty = hy + S * 0.006;
+    c.beginPath(); c.moveTo(tx, ty); c.lineTo(tx + 22, ty + 4); c.stroke();
+    c.beginPath(); c.moveTo(tx + 22, ty + 4); c.lineTo(tx + 34, ty - 2); c.stroke();
+    c.beginPath(); c.moveTo(tx + 22, ty + 4); c.lineTo(tx + 34, ty + 11); c.stroke();
+  }
   /* SCALE MOTTLE along the coil — a snake's skin is never one flat tone */
   for (let i = 0; i < 40; i++) {
     const k = Math.floor(r() * (pts.length - 1));
@@ -374,6 +464,154 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
   }
 }
 /** LIZARD/MONITOR: low sprawled body, four splayed legs, long tapering tail */
+type LizardMorph = 'iguana' | 'komodo' | 'marine-iguana' | 'monitor' | 'tegu' | 'coastal' | 'land-iguana' | 'lizard' | 'mountain';
+
+/** Continuous named-lizard anatomy. The tail, trunk, neck and skull are one
+    closed skin surface; limbs root beneath it and articulate through elbows. */
+function reptLizardForm(c: Ctx, p: Pal, r: () => number, morph: LizardMorph, opts: {
+  tail?: number; crest?: boolean; tailBands?: boolean; paddleTail?: boolean; claws?: boolean;
+  tongue?: boolean; ear?: boolean; rough?: boolean; saltSnout?: boolean
+}): void {
+  const tailRatioMorph = morph === 'iguana' || morph === 'tegu' || morph === 'coastal' || morph === 'lizard' || morph === 'mountain';
+  const cx = S * (morph === 'iguana' ? 0.68 : tailRatioMorph ? 0.58 : 0.52), cy = S * 0.53;
+  const deep = morph === 'komodo' ? 1.34 : morph === 'tegu' ? 1.18 : morph === 'land-iguana' ? 1.12 : morph === 'marine-iguana' ? 1.06 : 1;
+  const bodyHalf = S * (morph === 'komodo' ? 0.18 : morph === 'monitor' ? 0.17 : morph === 'tegu' ? 0.145 :
+    morph === 'iguana' ? 0.11 : morph === 'marine-iguana' || morph === 'land-iguana' ? 0.155 :
+      morph === 'coastal' || morph === 'lizard' || morph === 'mountain' ? 0.135 : 0.145);
+  const bodyH = S * 0.072 * deep;
+  const rumpX = cx - bodyHalf * 0.84, shoulderX = cx + bodyHalf * 0.74;
+  const tailScale = opts.tail ?? 1;
+  const headL = S * (morph === 'komodo' ? 0.13 : morph === 'monitor' ? 0.12 : morph === 'tegu' ? 0.125 : morph === 'land-iguana' ? 0.118 : morph === 'iguana' ? 0.08 : 0.105);
+  const headTipX = shoulderX + headL * 1.32;
+  const requiredTailRatio = morph === 'iguana' ? 2.25 : morph === 'tegu' ? 1.10 :
+    morph === 'coastal' || morph === 'lizard' || morph === 'mountain' ? 1.22 : undefined;
+  const tailFloorX = S * (morph === 'iguana' ? 0.012 : 0.025);
+  const tailTipX = Math.max(tailFloorX, requiredTailRatio === undefined
+    ? rumpX - S * 0.34 * tailScale / 1.30
+    : rumpX - (headTipX - rumpX) * requiredTailRatio);
+  const jowl = morph === 'land-iguana' || morph === 'iguana' || morph === 'marine-iguana' || morph === 'tegu';
+  const headH = bodyH * (morph === 'land-iguana' ? 1.05 : morph === 'tegu' ? 0.96 : morph === 'komodo' ? 0.84 :
+    morph === 'iguana' ? 0.76 : morph === 'marine-iguana' ? 0.70 : 0.64);
+  const paddle = Boolean(opts.paddleTail);
+  const tailDepth = paddle ? 1.04 : morph === 'monitor' ? 0.64 : 0.38;
+  ground(c, cx, cy + bodyH * 2.05, S * 0.255);
+
+  const bodyPath = (): void => {
+    c.moveTo(tailTipX, cy - bodyH * (paddle ? 0.34 : 0.05));
+    c.quadraticCurveTo(rumpX - (rumpX - tailTipX) * 0.50, cy - bodyH * tailDepth, rumpX, cy - bodyH * 0.52);
+    c.quadraticCurveTo(cx - bodyHalf * 0.28, cy - bodyH * 1.06, shoulderX, cy - bodyH * 0.72);
+    c.quadraticCurveTo(shoulderX + headL * 0.16, cy - headH * 0.96, shoulderX + headL * 0.50, cy - headH * 0.86);
+    c.lineTo(headTipX - headL * 0.12, cy - headH * 0.43);
+    c.quadraticCurveTo(headTipX + headL * 0.06, cy - headH * 0.05, headTipX - headL * (jowl ? 0.10 : 0.04), cy + headH * 0.38);
+    c.quadraticCurveTo(shoulderX + headL * 0.54, cy + headH * (jowl ? 0.92 : 0.65), shoulderX + headL * 0.06, cy + bodyH * 0.54);
+    c.quadraticCurveTo(cx + bodyHalf * 0.30, cy + bodyH * 1.04, rumpX, cy + bodyH * 0.62);
+    c.quadraticCurveTo(rumpX - (rumpX - tailTipX) * 0.46, cy + bodyH * (paddle ? 1.10 : morph === 'monitor' ? 0.58 : 0.34), tailTipX, cy + bodyH * (paddle ? 0.34 : 0.05));
+    c.closePath();
+  };
+  const legs = (far: boolean): void => {
+    const color = far
+      ? `rgb(${Math.min(255, p.cr * 0.52 + 8) | 0},${Math.min(255, p.cg * 0.52 + 8) | 0},${Math.min(255, p.cb * 0.47 + 7) | 0})`
+      : `rgb(${Math.min(255, p.cr * 0.72 + 14) | 0},${Math.min(255, p.cg * 0.70 + 13) | 0},${Math.min(255, p.cb * 0.62 + 10) | 0})`;
+    const mass = morph === 'komodo' ? 1.34 : morph === 'monitor' ? 1.18 : morph === 'tegu' || morph === 'land-iguana' ? 1.12 : 1;
+    const y0 = cy + bodyH * (far ? 0.12 : 0.44);
+    const roots: Array<{ x: number; dir: -1 | 1 }> = [
+      { x: cx - bodyHalf * (far ? 0.16 : 0.66), dir: -1 },
+      { x: cx + bodyHalf * (far ? 0.18 : 0.68), dir: 1 },
+    ];
+    c.strokeStyle = color; c.lineCap = 'round'; c.lineJoin = 'round';
+    for (const limb of roots) {
+      const elbowX = limb.x + limb.dir * bodyHalf * (far ? 0.30 : 0.52);
+      const elbowY = cy + bodyH * (far ? 0.96 : 1.14);
+      const wristX = limb.x + limb.dir * bodyHalf * (far ? 0.48 : 0.80);
+      const wristY = cy + bodyH * (far ? 1.50 : 1.82);
+      const palmX = wristX + limb.dir * bodyHalf * 0.11, palmY = wristY + bodyH * 0.07;
+      c.lineWidth = bodyH * (far ? 0.29 : 0.34) * mass;
+      c.beginPath(); c.moveTo(limb.x, y0); c.quadraticCurveTo(limb.x + limb.dir * bodyHalf * 0.18, elbowY - bodyH * 0.16, elbowX, elbowY); c.stroke();
+      c.lineWidth = bodyH * (far ? 0.23 : 0.27) * mass;
+      c.beginPath(); c.moveTo(elbowX, elbowY); c.quadraticCurveTo(wristX - limb.dir * bodyHalf * 0.08, wristY - bodyH * 0.10, wristX, wristY); c.stroke();
+      c.lineWidth = bodyH * (far ? 0.14 : 0.18) * mass;
+      c.beginPath(); c.moveTo(wristX, wristY); c.lineTo(palmX, palmY); c.stroke();
+      c.lineWidth = Math.max(1.8, bodyH * (far ? 0.065 : 0.078));
+      for (let d = -1; d <= 1; d++) {
+        const toeX = palmX + limb.dir * bodyHalf * (0.19 + Math.abs(d) * 0.025), toeY = palmY + d * bodyH * 0.17;
+        c.beginPath(); c.moveTo(palmX, palmY); c.quadraticCurveTo(toeX - limb.dir * bodyH * 0.08, toeY - d * bodyH * 0.04, toeX, toeY); c.stroke();
+        if (opts.claws) {
+          c.strokeStyle = '#dfcba4'; c.lineWidth = Math.max(1.3, bodyH * 0.038);
+          c.beginPath(); c.moveTo(toeX, toeY); c.quadraticCurveTo(toeX + limb.dir * bodyH * 0.10, toeY, toeX + limb.dir * bodyH * 0.17, toeY + bodyH * 0.08); c.stroke();
+          c.strokeStyle = color; c.lineWidth = Math.max(1.8, bodyH * (far ? 0.065 : 0.078));
+        }
+      }
+    }
+  };
+  legs(true);
+  if (morph === 'iguana') {
+    /* The skin-coloured dewlap is rooted along jaw and chest before the torso overlaps it. */
+    const dg = c.createLinearGradient(shoulderX, cy, shoulderX, cy + bodyH * 3.0);
+    dg.addColorStop(0, `rgba(${Math.min(255, p.cr + 26)},${Math.min(255, p.cg + 22)},${Math.min(255, p.cb + 12)},0.94)`);
+    dg.addColorStop(1, `rgba(${p.cr * 0.58 | 0},${p.cg * 0.58 | 0},${p.cb * 0.44 | 0},0.88)`);
+    c.fillStyle = dg; c.beginPath(); c.moveTo(shoulderX + headL * 0.22, cy + headH * 0.24);
+    c.quadraticCurveTo(shoulderX + headL * 0.10, cy + bodyH * 3.10, shoulderX - bodyHalf * 0.54, cy + bodyH * 1.02);
+    c.lineTo(shoulderX - bodyHalf * 0.16, cy + bodyH * 0.32); c.closePath(); c.fill();
+  }
+  const bg = c.createLinearGradient(tailTipX, cy - bodyH, headTipX, cy + bodyH);
+  bg.addColorStop(0, p.dark); bg.addColorStop(0.24, p.base); bg.addColorStop(0.58, p.lit); bg.addColorStop(1, p.base);
+  c.fillStyle = bg; c.beginPath(); bodyPath(); c.fill();
+  if (morph === 'marine-iguana') {
+    c.strokeStyle = 'rgba(178,188,184,0.62)'; c.lineWidth = Math.max(2.2, bodyH * 0.055); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(tailTipX + (rumpX - tailTipX) * 0.10, cy - bodyH * 0.20);
+    c.quadraticCurveTo(rumpX, cy - bodyH * 0.78, shoulderX + headL * 0.48, cy - headH * 0.84); c.stroke();
+  }
+  /* Low-contrast skin texture remains inside the one body surface. */
+  c.save(); c.beginPath(); bodyPath(); c.clip();
+  for (let i = 0; i < (opts.rough ? 44 : 18); i++) softMark(c, rumpX + r() * (headTipX - rumpX) * 0.82, cy - bodyH * 0.72 + r() * bodyH * 1.35,
+    opts.rough ? 2.2 + r() * 2.2 : 4 + r() * 4, opts.rough ? 1.8 + r() * 1.8 : 3 + r() * 3, opts.rough ? '226,216,190' : '30,24,16', opts.rough ? 0.30 : 0.22);
+  if (morph === 'tegu') {
+    c.strokeStyle = 'rgba(234,227,197,0.86)'; c.lineWidth = Math.max(4, bodyH * 0.13);
+    for (let i = 1; i <= 6; i++) {
+      const u = i / 7, x = tailTipX + (rumpX - tailTipX) * u;
+      c.beginPath(); c.moveTo(x - bodyH * 0.12, cy - bodyH * 0.92); c.lineTo(x + bodyH * 0.14, cy + bodyH * 0.92); c.stroke();
+    }
+    for (let i = 0; i < 8; i++) { const x = rumpX + i * (shoulderX - rumpX) / 7; c.beginPath(); c.moveTo(x - bodyH * 0.16, cy - bodyH); c.lineTo(x + bodyH * 0.10, cy + bodyH); c.stroke(); }
+    c.fillStyle = '#e7ddbc'; for (let i = 0; i < 24; i++) { const x = rumpX + r() * (shoulderX - rumpX), y = cy - bodyH * 0.72 + r() * bodyH * 1.34; c.beginPath(); c.arc(x, y, Math.max(1.6, bodyH * 0.045), 0, TAU); c.fill(); }
+  }
+  if (opts.tailBands) {
+    c.strokeStyle = 'rgba(34,31,20,0.72)'; c.lineWidth = Math.max(3, bodyH * 0.12);
+    for (let i = 1; i <= 7; i++) { const u = i / 8, x = tailTipX + (rumpX - tailTipX) * u; c.beginPath(); c.moveTo(x, cy - bodyH * 0.80); c.lineTo(x + bodyH * 0.10, cy + bodyH * 0.80); c.stroke(); }
+  }
+  c.restore();
+  legs(false);
+  if (opts.crest) {
+    const count = 15;
+    for (let i = 0; i < count; i++) {
+      const u = i / (count - 1), x = rumpX - (rumpX - tailTipX) * 0.08 + u * (shoulderX - rumpX + headL * 0.08);
+      const rise = bodyH * (0.18 + Math.sin(Math.PI * u) * (morph === 'marine-iguana' ? 0.48 : 0.72));
+      c.fillStyle = i % 2 ? p.dark : `rgb(${p.cr * 0.60 | 0},${p.cg * 0.61 | 0},${p.cb * 0.54 | 0})`;
+      c.beginPath(); c.moveTo(x - bodyH * 0.08, cy - bodyH * 0.72); c.lineTo(x - bodyH * 0.16, cy - bodyH * 0.72 - rise); c.lineTo(x + bodyH * 0.10, cy - bodyH * 0.70); c.closePath(); c.fill();
+    }
+  }
+  if (morph === 'komodo') {
+    c.strokeStyle = 'rgba(54,45,39,0.52)'; c.lineWidth = Math.max(2, bodyH * 0.055); c.lineCap = 'round';
+    for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(shoulderX - bodyHalf * (0.12 + i * 0.10), cy - headH * 0.20 + i * bodyH * 0.22); c.quadraticCurveTo(shoulderX + headL * 0.22, cy + bodyH * (0.48 + i * 0.16), shoulderX + headL * 0.58, cy + headH * (0.42 + i * 0.05)); c.stroke(); }
+  }
+  if (opts.ear) {
+    c.fillStyle = 'rgba(24,20,17,0.88)'; c.beginPath(); c.arc(shoulderX + headL * 0.34, cy - headH * 0.18, Math.max(3.2, headH * 0.13), 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(232,210,172,0.52)'; c.lineWidth = 1.3; c.stroke();
+  }
+  eye(c, shoulderX + headL * 0.70, cy - headH * 0.48, Math.max(3.8, headH * 0.14), true);
+  c.strokeStyle = 'rgba(20,16,13,0.52)'; c.lineWidth = Math.max(2, headH * 0.055); c.beginPath(); c.moveTo(shoulderX + headL * 0.46, cy + headH * 0.10); c.quadraticCurveTo(shoulderX + headL * 0.94, cy + headH * 0.28, headTipX, cy + headH * 0.10); c.stroke();
+  if (opts.saltSnout) {
+    c.fillStyle = 'rgba(232,234,220,0.90)';
+    for (let i = 0; i < 10; i++) { c.beginPath(); c.arc(headTipX - headL * (0.18 + (i % 4) * 0.09), cy - headH * (0.26 - Math.floor(i / 4) * 0.18), Math.max(1.4, headH * 0.045), 0, TAU); c.fill(); }
+  }
+  if (opts.tongue) {
+    c.strokeStyle = morph === 'komodo' ? '#e8cf3e' : '#c7384c'; c.lineWidth = Math.max(2, headH * 0.065); c.lineCap = 'round';
+    const tx = headTipX, ty = cy + headH * 0.08, mx = tx + headL * 0.50;
+    c.beginPath(); c.moveTo(tx, ty); c.lineTo(mx, ty - headH * 0.08); c.stroke();
+    c.beginPath(); c.moveTo(mx, ty - headH * 0.08); c.lineTo(mx + headL * 0.20, ty - headH * 0.26); c.stroke();
+    c.beginPath(); c.moveTo(mx, ty - headH * 0.08); c.lineTo(mx + headL * 0.22, ty + headH * 0.10); c.stroke();
+  }
+}
+
 export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horns?: boolean; long?: boolean; stout?: number; tail?: number; hue?: string;
     /* ★ wave 45 G10 — the anole's pink throat fan, its mustRead and the trait
        that separates it from the gecko it was sharing an asset with. */
@@ -389,7 +627,9 @@ export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horn
     ear?: boolean;
     rough?: boolean;
     saltSnout?: boolean;
-    neck?: number }, name = ''): void {
+    neck?: number;
+    /** Exact whole-form lizard contracts; unset preserves the procedural family. */
+    morph?: LizardMorph }, name = ''): void {
   /* ★ D-ART-114 — the species hue axis (18 lizards were on the rarity roll). */
   const p = speciesHue(pIn, opts.hue);
   /* ★ WAVE 22 — THE PROPORTION PASS. tools/proportioncheck.mjs measured every
@@ -399,6 +639,8 @@ export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horn
      it is long) came out the same shape as a whiptail (genuinely a ribbon).
      `stout` deepens the body and `tail` scales its reach. */
   const r = nrng(g, name, 0x112A);
+  const morph = opts.morph;
+  if (morph) { reptLizardForm(c, p, r, morph, opts); return; }
   const stout = opts.stout ?? 1;
   const cy = S * 0.56, bw = S * (opts.long ? 0.20 : 0.17) * nvar(name, 0x44, 0.16) / Math.sqrt(stout),
     bh = S * 0.072 * nvar(name, 0x55, 0.22) * stout, cx = S * 0.44;
@@ -848,6 +1090,71 @@ export function reptTurtle(c: Ctx, g: G, pIn: Pal, opts: { flippers?: boolean; h
   }
   eye(c, hx + hs * 0.06, hy - hs * 0.1, 4.5 * Math.min(1.35, headK));
 }
+/** WOOD FROG: a dorsal three-quarter body makes the paired folds run along the
+    back instead of hanging down a shared frontal face like pale fangs. */
+function woodFrogForm(c: Ctx, p: Pal, r: () => number): void {
+  const cx = S * 0.49, cy = S * 0.52, bodyL = S * 0.17, bodyH = S * 0.125;
+  const hx = cx + bodyL * 0.67, headL = S * 0.115, headH = S * 0.12;
+  ground(c, cx - bodyL * 0.06, cy + bodyH * 1.88, S * 0.26);
+  /* Long thigh-shin-foot chains fold out from both hips behind the body. */
+  for (const s of [-1, 1] as const) {
+    const rootX = cx - bodyL * 0.52, rootY = cy + s * bodyH * 0.58;
+    const kneeX = cx - bodyL * 1.02, kneeY = cy + s * bodyH * 1.46;
+    const ankleX = cx - bodyL * 1.60, ankleY = cy + s * bodyH * 1.12;
+    c.fillStyle = grad(c, p, rootX, rootY, bodyL * 0.62); c.save(); c.translate(rootX, rootY); c.rotate(s * -0.34);
+    c.beginPath(); c.ellipse(0, 0, bodyL * 0.46, bodyH * 0.46, 0, 0, TAU); c.fill(); c.restore();
+    c.strokeStyle = p.dark; c.lineCap = 'round'; c.lineJoin = 'round'; c.lineWidth = bodyH * 0.48;
+    c.beginPath(); c.moveTo(rootX, rootY); c.quadraticCurveTo(cx - bodyL * 0.72, cy + s * bodyH * 1.06, kneeX, kneeY); c.stroke();
+    c.lineWidth = bodyH * 0.34; c.beginPath(); c.moveTo(kneeX, kneeY); c.quadraticCurveTo(cx - bodyL * 1.34, cy + s * bodyH * 1.52, ankleX, ankleY); c.stroke();
+    const footX = cx - bodyL * 2.08, footY = cy + s * bodyH * 1.30;
+    c.lineWidth = bodyH * 0.16; c.beginPath(); c.moveTo(ankleX, ankleY); c.lineTo(footX, footY); c.stroke();
+    for (let d = -1; d <= 1; d++) {
+      c.lineWidth = Math.max(2, bodyH * 0.075); c.beginPath(); c.moveTo(footX, footY);
+      c.lineTo(footX - bodyL * 0.32, footY + s * d * bodyH * 0.20); c.stroke();
+    }
+  }
+  /* One overlapping skin surface joins rump, back, neck and broad head. */
+  c.fillStyle = grad(c, p, cx - bodyL * 0.32, cy - bodyH * 0.54, bodyL * 1.65);
+  c.beginPath(); c.ellipse(cx, cy, bodyL, bodyH, 0, 0, TAU); c.fill();
+  c.save(); c.beginPath(); c.ellipse(cx, cy, bodyL, bodyH, 0, 0, TAU); c.clip();
+  for (let i = 0; i < 18; i++) softMark(c, cx - bodyL * 0.84 + r() * bodyL * 1.68,
+    cy - bodyH * 0.70 + r() * bodyH * 1.40, 5 + r() * 5, 4 + r() * 4, '42,27,16', 0.30);
+  c.restore();
+  c.fillStyle = grad(c, p, hx, cy - headH * 0.34, headL * 1.25);
+  c.beginPath(); c.ellipse(hx, cy, headL, headH, 0, 0, TAU); c.fill();
+  /* The black mask passes through both eyes and ends at the shoulder. */
+  for (const s of [-1, 1] as const) {
+    c.strokeStyle = 'rgba(25,18,15,0.88)'; c.lineWidth = Math.max(5, headH * 0.34); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(hx + headL * 0.74, cy + s * headH * 0.50);
+    c.quadraticCurveTo(hx + headL * 0.05, cy + s * headH * 0.72, hx - headL * 0.78, cy + s * headH * 0.58); c.stroke();
+  }
+  /* Paired folds begin behind the eyes and run to the hips on the back plane. */
+  const ridge = (s: -1 | 1): void => {
+    c.beginPath(); c.moveTo(hx - headL * 0.26, cy + s * bodyH * 0.56);
+    c.bezierCurveTo(cx + bodyL * 0.36, cy + s * bodyH * 0.72, cx - bodyL * 0.26, cy + s * bodyH * 0.74,
+      cx - bodyL * 0.76, cy + s * bodyH * 0.58);
+  };
+  c.lineCap = 'round'; c.strokeStyle = 'rgba(65,39,23,0.82)'; c.lineWidth = Math.max(4.2, bodyH * 0.18);
+  for (const s of [-1, 1] as const) { ridge(s); c.stroke(); }
+  c.strokeStyle = 'rgba(255,229,169,0.98)'; c.lineWidth = Math.max(2.8, bodyH * 0.095);
+  for (const s of [-1, 1] as const) { ridge(s); c.stroke(); }
+  /* Forearms root under the shoulder and prop the head without covering folds. */
+  for (const s of [-1, 1] as const) {
+    const rootX = hx - headL * 0.18, rootY = cy + s * headH * 0.64;
+    const wristX = hx + headL * 0.36, wristY = cy + s * headH * 1.48;
+    c.strokeStyle = p.base; c.lineWidth = bodyH * 0.22; c.beginPath(); c.moveTo(rootX, rootY); c.lineTo(wristX, wristY); c.stroke();
+    c.strokeStyle = p.dark; c.lineWidth = Math.max(2, bodyH * 0.08);
+    for (let d = -1; d <= 1; d++) { c.beginPath(); c.moveTo(wristX, wristY); c.lineTo(wristX + headL * 0.28, wristY + s * d * headH * 0.16); c.stroke(); }
+  }
+  for (const s of [-1, 1] as const) {
+    const ex = hx + headL * 0.26, ey = cy + s * headH * 0.52;
+    c.fillStyle = grad(c, p, ex, ey, headH * 0.42); c.beginPath(); c.arc(ex, ey, headH * 0.37, 0, TAU); c.fill();
+    eye(c, ex + headH * 0.05, ey, headH * 0.21, true);
+  }
+  c.strokeStyle = 'rgba(20,12,10,0.48)'; c.lineWidth = Math.max(2, headH * 0.06); c.beginPath();
+  c.moveTo(hx + headL * 0.54, cy - headH * 0.22); c.quadraticCurveTo(hx + headL * 0.88, cy, hx + headL * 0.54, cy + headH * 0.22); c.stroke();
+}
+
 /** FROG: crouched haunches, long folded hind legs, wide mouth, domed eyes */
 export function amphFrog(c: Ctx, g: G, pIn: Pal, opts: { warty?: boolean; hue?: string;
   /* ★ POLISH — the bullfrog's large circular TYMPANUM disc behind each eye */
@@ -855,10 +1162,15 @@ export function amphFrog(c: Ctx, g: G, pIn: Pal, opts: { warty?: boolean; hue?: 
    toePads?: boolean;
    glass?: boolean;
    mask?: boolean;
-   ridges?: boolean }, name = ''): void {
+   ridges?: boolean;
+   /** Named anatomical reads absent from the shared frog body. */
+   webbedHindFeet?: boolean;
+   parotoidGlands?: boolean;
+   woodFrog?: boolean }, name = ''): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0xF209);
+  if (opts.woodFrog) { woodFrogForm(c, p, r); return; }
   const cx = S * 0.5, cy = S * 0.56, bw = S * 0.155 * nvar(name, 0x88, 0.16),
     bh = S * 0.125 * nvar(name, 0x99, 0.20);
   ground(c, cx, cy + bh + S * 0.05, S * 0.20);
@@ -882,12 +1194,23 @@ export function amphFrog(c: Ctx, g: G, pIn: Pal, opts: { warty?: boolean; hue?: 
     c.save(); c.translate(fx, fy); c.rotate(s * 0.18);
     c.beginPath(); c.ellipse(0, 0, bw * 0.34, bh * 0.12, 0, 0, TAU); c.fill();
     c.restore();
+    const toeReach = opts.webbedHindFeet ? 0.72 : 0.56;
+    if (opts.webbedHindFeet) {
+      /* The membrane is continuous with the ankle and spans the long toes. */
+      c.fillStyle = `rgba(${Math.min(255, p.cr * 0.90 + 18) | 0},${Math.min(255, p.cg * 0.96 + 22) | 0},${Math.min(255, p.cb * 0.72 + 14) | 0},0.98)`;
+      c.beginPath(); c.moveTo(fx - s * bw * 0.06, fy);
+      c.lineTo(fx + s * bw * toeReach, fy - bh * 0.28);
+      c.quadraticCurveTo(fx + s * bw * 0.46, fy - bh * 0.08, fx + s * bw * toeReach, fy);
+      c.quadraticCurveTo(fx + s * bw * 0.46, fy + bh * 0.08, fx + s * bw * toeReach, fy + bh * 0.28);
+      c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(211,232,150,0.66)'; c.lineWidth = Math.max(1.5, bh * 0.035); c.stroke();
+    }
     c.strokeStyle = p.dark; c.lineWidth = bh * 0.11; c.lineCap = 'round';
     for (let d = -1; d <= 1; d++) {
-      c.beginPath(); c.moveTo(fx, fy); c.lineTo(fx + s * bw * 0.56, fy + d * bh * 0.20); c.stroke();
+      c.beginPath(); c.moveTo(fx, fy); c.lineTo(fx + s * bw * toeReach, fy + d * bh * (opts.webbedHindFeet ? 0.28 : 0.20)); c.stroke();
       if (opts.toePads) {
         c.fillStyle = `rgba(${Math.min(255, p.cr * 1.16 + 20) | 0},${Math.min(255, p.cg * 1.18 + 20) | 0},${Math.min(255, p.cb * 1.12 + 20) | 0},0.96)`;
-        c.beginPath(); c.arc(fx + s * bw * 0.56, fy + d * bh * 0.20, bh * 0.15, 0, TAU); c.fill();
+        c.beginPath(); c.arc(fx + s * bw * toeReach, fy + d * bh * (opts.webbedHindFeet ? 0.28 : 0.20), bh * 0.15, 0, TAU); c.fill();
       }
     }
   }
@@ -904,6 +1227,16 @@ export function amphFrog(c: Ctx, g: G, pIn: Pal, opts: { warty?: boolean; hue?: 
   }
   if (opts.warty) for (let i = 0; i < 30; i++) softMark(c, cx - bw + r() * bw * 2, cy - bh * 0.8 + r() * bh * 1.6, 5 + r() * 4, 4 + r() * 3, '30,24,14', 0.42);
   else for (let i = 0; i < 16; i++) softMark(c, cx - bw + r() * bw * 2, cy - bh * 0.8 + r() * bh * 1.6, 7 + r() * 6, 5 + r() * 4, '20,30,16', 0.35);
+  if (opts.parotoidGlands) {
+    /* A toad's paired parotoids are raised masses immediately behind the eyes. */
+    for (const s of [-1, 1] as const) {
+      const gx = cx + s * bw * 0.56, gy = cy - bh * 0.46;
+      c.fillStyle = grad(c, p, gx, gy, bh * 0.34);
+      c.beginPath(); c.ellipse(gx, gy, bw * 0.25, bh * 0.23, s * -0.26, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(42,34,22,0.58)'; c.lineWidth = Math.max(1.8, bh * 0.055); c.stroke();
+      for (let k = -1; k <= 1; k++) softMark(c, gx + k * bw * 0.07, gy + (k % 2) * bh * 0.05, bh * 0.055, bh * 0.045, '28,22,14', 0.52);
+    }
+  }
   if (opts.mask) {
     c.strokeStyle = 'rgba(22,18,16,0.78)'; c.lineWidth = bh * 0.34; c.lineCap = 'round';
     c.beginPath(); c.moveTo(cx - bw * 0.76, cy - bh * 0.22); c.quadraticCurveTo(cx, cy - bh * 0.56, cx + bw * 0.76, cy - bh * 0.22); c.stroke();
@@ -947,6 +1280,63 @@ export function amphFrog(c: Ctx, g: G, pIn: Pal, opts: { warty?: boolean; hue?: 
 }
 
 /* ============================ RODENTS & SMALL MAMMALS ============================ */
+/** A hedgehog is an insectivore in a dense spine cape, not a quilled upright rodent. */
+function hedgehogForm(c: Ctx, p: Pal, r: () => number): void {
+  const cx = S * 0.47, cy = S * 0.57, bw = S * 0.205, bh = S * 0.145;
+  ground(c, cx, cy + bh * 1.16, S * 0.22);
+  c.fillStyle = p.dark;
+  for (const x of [cx - bw * 0.36, cx + bw * 0.35]) { c.beginPath(); c.ellipse(x, cy + bh * 0.86, bw * 0.24, bh * 0.11, -0.06, 0, TAU); c.fill(); }
+  c.fillStyle = grad(c, p, cx, cy, bw);
+  c.beginPath();
+  c.moveTo(cx - bw, cy + bh * 0.36);
+  c.quadraticCurveTo(cx - bw * 0.92, cy - bh * 0.82, cx - bw * 0.12, cy - bh * 1.02);
+  c.quadraticCurveTo(cx + bw * 0.74, cy - bh * 0.90, cx + bw * 0.92, cy + bh * 0.22);
+  c.quadraticCurveTo(cx + bw * 0.46, cy + bh, cx - bw * 0.62, cy + bh * 0.88);
+  c.closePath(); c.fill();
+  /* Three overlapping rooted rows form one dense cape instead of sparse pins. */
+  for (let row = 0; row < 3; row++) {
+    const n = 32 - row * 4;
+    for (let i = 0; i < n; i++) {
+      const u = (i + 0.35 + r() * 0.30) / n, a = Math.PI * (0.92 + u * 0.95);
+      const x = cx + Math.cos(a) * bw * (0.86 - row * 0.10), y = cy + Math.sin(a) * bh * (0.94 - row * 0.08);
+      rootedSpine(c, x, y, a, S * (0.043 + r() * 0.027 - row * 0.004), row === 0 ? '#e9ddbd' : '#c7b58f');
+    }
+  }
+  /* The face grows out from under the cape as a continuous tapered wedge. */
+  c.fillStyle = grad(c, p, cx + bw * 0.72, cy + bh * 0.12, bw * 0.62);
+  c.beginPath(); c.moveTo(cx + bw * 0.34, cy - bh * 0.48);
+  c.quadraticCurveTo(cx + bw * 0.82, cy - bh * 0.48, cx + bw * 1.34, cy + bh * 0.12);
+  c.quadraticCurveTo(cx + bw * 1.02, cy + bh * 0.62, cx + bw * 0.34, cy + bh * 0.52);
+  c.closePath(); c.fill();
+  c.fillStyle = p.dark; c.beginPath(); c.arc(cx + bw * 0.56, cy - bh * 0.43, bh * 0.15, 0, TAU); c.fill();
+  eye(c, cx + bw * 0.78, cy - bh * 0.20, bh * 0.11);
+  c.fillStyle = '#d78d8c'; c.beginPath(); c.ellipse(cx + bw * 1.34, cy + bh * 0.12, bh * 0.13, bh * 0.10, 0, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(242,238,226,0.56)'; c.lineWidth = 1.4;
+  for (let i = -1; i <= 1; i++) { c.beginPath(); c.moveTo(cx + bw, cy + bh * 0.18); c.lineTo(cx + bw * 1.56, cy + bh * (0.12 + i * 0.20)); c.stroke(); }
+}
+
+/** A shrew's long mobile proboscis and low insectivore body replace rodent incisors. */
+function shrewForm(c: Ctx, p: Pal): void {
+  const cx = S * 0.46, cy = S * 0.58, bw = S * 0.18, bh = S * 0.105;
+  ground(c, cx, cy + bh * 1.42, S * 0.21);
+  c.strokeStyle = p.dark; c.lineWidth = bh * 0.18; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(cx - bw * 0.86, cy + bh * 0.18); c.quadraticCurveTo(cx - bw * 2.05, cy + bh * 0.42, cx - bw * 2.48, cy - bh * 0.42); c.stroke();
+  c.fillStyle = p.dark;
+  for (const x of [cx - bw * 0.32, cx + bw * 0.42]) { c.beginPath(); c.ellipse(x, cy + bh * 0.98, bw * 0.24, bh * 0.10, 0, 0, TAU); c.fill(); }
+  c.fillStyle = grad(c, p, cx, cy, bw); c.beginPath(); c.ellipse(cx, cy, bw, bh, -0.08, 0, TAU); c.fill();
+  const hx = cx + bw * 0.82, hy = cy - bh * 0.18;
+  c.fillStyle = grad(c, p, hx, hy, bh * 1.4);
+  c.beginPath(); c.moveTo(hx - bh * 0.72, hy - bh * 0.66);
+  c.quadraticCurveTo(hx + bh * 0.46, hy - bh * 0.72, hx + bh * 2.15, hy + bh * 0.10);
+  c.quadraticCurveTo(hx + bh * 0.72, hy + bh * 0.72, hx - bh * 0.72, hy + bh * 0.56);
+  c.closePath(); c.fill();
+  c.fillStyle = p.dark; c.beginPath(); c.arc(hx - bh * 0.18, hy - bh * 0.62, bh * 0.22, 0, TAU); c.fill();
+  eye(c, hx + bh * 0.28, hy - bh * 0.34, bh * 0.13);
+  c.fillStyle = '#b9787a'; c.beginPath(); c.ellipse(hx + bh * 2.15, hy + bh * 0.10, bh * 0.14, bh * 0.11, 0.18, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(244,240,230,0.50)'; c.lineWidth = 1.2;
+  for (let i = -1; i <= 1; i++) { c.beginPath(); c.moveTo(hx + bh * 1.18, hy + bh * 0.22); c.lineTo(hx + bh * 2.55, hy + bh * (0.10 + i * 0.30)); c.stroke(); }
+}
+
 /** RODENT: compact haunched body, big round ears, prominent incisors */
 export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bushy' | 'furred' | 'stub'; ears: number; quills?: boolean; hue?: string;
     /* ★ wave 45 G11 — a LOW ROUNDED ear set into the fur. Nine species shared
@@ -975,12 +1365,15 @@ export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bush
     muzzle?: 'blunt' | 'long';
     /** Individual card-scale morphology, all opt-in so existing rodents stay fixed. */
     tailReach?: number; longHindFeet?: boolean; pika?: boolean; snowFeet?: boolean;
-    blackEarTips?: boolean; puffTail?: boolean }, name = ''): void {
+    blackEarTips?: boolean; puffTail?: boolean;
+    hedgehog?: boolean; shrew?: boolean }, name = ''): void {
   /* ★ D-ART-114 — the species hue axis. 29 rodents were on the rarity roll for
      no reason but this painter lacking a field, so a red squirrel could come
      out lilac. */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x0DE5);
+  if (opts.hedgehog) { hedgehogForm(c, p, r); return; }
+  if (opts.shrew) { shrewForm(c, p); return; }
   /* ★ WAVE 45 — THE FAMILY HAD NO SIZE AXIS, which is why eleven small
      mammals converged the moment they shared an ear shape: same body, same
      scale, different hue. A pika is a fist and a marmot is a small dog, and
@@ -1114,6 +1507,7 @@ export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bush
     c.beginPath(); c.moveTo(cx + bw * 0.62, cy + bh * 0.30);
     c.lineTo(cx + bw * 0.76, cy + bh * 0.48); c.stroke();
   } else {
+  if (!opts.snowFeet) {
   c.fillStyle = grad(c, p, hipX, hipY, bw * 0.42);
   c.beginPath(); c.ellipse(hipX, hipY, bw * 0.40, bh * 0.46, -0.16, 0, TAU); c.fill();
   /* the crease where the thigh meets the flank — soft, so it reads as one
@@ -1125,19 +1519,41 @@ export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bush
   c.lineWidth = bh * 0.26;
   c.beginPath(); c.moveTo(hipX - bw * 0.06, hipY + bh * 0.28);
   c.quadraticCurveTo(hipX - bw * 0.02, cy + bh * 0.86, hipX + bw * 0.16, cy + bh * 0.98); c.stroke();
+  }
    const hindFootW = opts.snowFeet ? bw * 0.68 : opts.longHindFeet ? bw * 0.72 : bw * 0.28;
    const hindFootH = opts.snowFeet ? bh * 0.17 : opts.longHindFeet ? bh * 0.17 : bh * 0.11;
-   c.fillStyle = opts.snowFeet ? '#f7f4e9' : opts.longHindFeet ? p.lit : p.dark;   /* the long rodent hind foot, flat on the ground */
-   c.save(); c.translate(hipX + bw * (opts.snowFeet ? 0.40 : opts.longHindFeet ? 0.34 : 0.26), cy + bh * 1.02); c.rotate(-0.10);
-   c.beginPath(); c.ellipse(0, 0, hindFootW, hindFootH, 0, 0, TAU); c.fill();
-   if (opts.snowFeet || opts.longHindFeet) {
-     c.strokeStyle = opts.snowFeet ? 'rgba(74,72,66,0.58)' : 'rgba(66,48,28,0.66)'; c.lineWidth = Math.max(1.4, bh * 0.045); c.stroke();
+   if (opts.snowFeet) {
+     /* One furred thigh-ankle-foot surface begins inside the rump. There is no
+        circular haunch rim or floating ankle left to survive as a pasted oval. */
+     const ankleX = hipX + bw * 0.20, groundY = cy + bh * 1.00, toeX = hipX + bw * 1.30;
+     c.fillStyle = grad(c, p, hipX + bw * 0.18, hipY + bh * 0.18, bw * 0.92);
+     c.beginPath();
+     c.moveTo(hipX - bw * 0.34, hipY - bh * 0.46);
+     c.bezierCurveTo(hipX + bw * 0.18, hipY - bh * 0.56, hipX + bw * 0.50, cy + bh * 0.28,
+       ankleX, groundY - bh * 0.12);
+     c.bezierCurveTo(ankleX + bw * 0.24, groundY - bh * 0.10, toeX - bw * 0.10, groundY - bh * 0.08,
+       toeX, groundY);
+     c.quadraticCurveTo(toeX + bw * 0.14, groundY + bh * 0.12, toeX - bw * 0.04, groundY + bh * 0.22);
+     c.bezierCurveTo(hipX + bw * 0.54, groundY + bh * 0.24, hipX - bw * 0.30, hipY + bh * 0.48,
+       hipX - bw * 0.34, hipY - bh * 0.46);
+     c.closePath(); c.fill();
+     c.strokeStyle = 'rgba(98,94,86,0.54)'; c.lineWidth = Math.max(1.2, bh * 0.036); c.lineCap = 'round';
+     for (let k = 0; k < 3; k++) {
+       const x = toeX - bw * (0.10 + k * 0.17);
+       c.beginPath(); c.moveTo(x, groundY - bh * 0.05);
+       c.quadraticCurveTo(x + bw * 0.02, groundY + bh * 0.07, x + bw * 0.05, groundY + bh * 0.16); c.stroke();
+     }
+   } else {
+     c.fillStyle = opts.longHindFeet ? p.lit : p.dark;   /* the long rodent hind foot, flat on the ground */
+     c.save(); c.translate(hipX + bw * (opts.longHindFeet ? 0.34 : 0.26), cy + bh * 1.02); c.rotate(-0.10);
+     c.beginPath(); c.ellipse(0, 0, hindFootW, hindFootH, 0, 0, TAU); c.fill();
+     if (opts.longHindFeet) {
+       c.strokeStyle = 'rgba(66,48,28,0.66)'; c.lineWidth = Math.max(1.4, bh * 0.045); c.stroke();
+       c.strokeStyle = 'rgba(66,48,28,0.72)'; c.lineWidth = Math.max(1.2, bh * 0.042);
+       for (const tx of [-0.34, 0, 0.34]) { c.beginPath(); c.moveTo(hindFootW * tx, -hindFootH * 0.28); c.lineTo(hindFootW * (tx + 0.12), hindFootH * 0.48); c.stroke(); }
+     }
+     c.restore();
    }
-   if (opts.longHindFeet) {
-     c.strokeStyle = 'rgba(66,48,28,0.72)'; c.lineWidth = Math.max(1.2, bh * 0.042);
-     for (const tx of [-0.34, 0, 0.34]) { c.beginPath(); c.moveTo(hindFootW * tx, -hindFootH * 0.28); c.lineTo(hindFootW * (tx + 0.12), hindFootH * 0.48); c.stroke(); }
-   }
-   c.restore();
    if (opts.webbedFeet) {
      c.fillStyle = `rgba(${p.cr * 0.56 | 0},${p.cg * 0.50 | 0},${p.cb * 0.44 | 0},0.94)`;
      c.beginPath(); c.moveTo(hipX + bw * 0.12, cy + bh * 1.00);
@@ -1626,8 +2042,362 @@ export function marineRay(c: Ctx, g: G, pIn: Pal, opts: { sting?: boolean; hue?:
   }
 }
 /** BIVALVE/GASTROPOD shells: scallop ribs, spiral snail, ear-shaped abalone */
+type LiveShell = 'clam' | 'giant-clam' | 'mussel' | 'oyster' | 'razor-clam' | 'scallop' |
+  'nautilus' | 'abalone' | 'conch' | 'cowrie' | 'limpet' | 'sea-snail';
+
+/** Named live-shell plates. Each is a complete organism, not an organ sticker on
+    the generic shell token; the legacy branches remain untouched for controls. */
+function marineShellForm(c: Ctx, p: Pal, r: () => number, live: LiveShell, sv: number, sv2: number): void {
+  const cx = S * 0.5, cy = S * 0.53;
+  if (live === 'clam') {
+    const w = S * 0.225 * sv, h = S * 0.125 * sv2, hingeY = cy + h * 0.08;
+    ground(c, cx, cy + h * 1.62, w * 1.10);
+    const valve = (upper: boolean): void => {
+      const sy = upper ? -1 : 1;
+      c.fillStyle = grad(c, p, cx - w * 0.20, hingeY + sy * h * 0.42, w);
+      c.beginPath(); c.moveTo(cx - w, hingeY);
+      c.quadraticCurveTo(cx - w * 0.40, hingeY + sy * h * 1.34, cx + w, hingeY + sy * h * 0.54);
+      c.quadraticCurveTo(cx + w * 0.64, hingeY + sy * h * 0.10, cx - w, hingeY); c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(75,57,40,0.68)'; c.lineWidth = Math.max(2.2, h * 0.050); c.stroke();
+      for (let k = 1; k <= 4; k++) {
+        const t = k / 5;
+        c.strokeStyle = `rgba(86,65,45,${0.26 + k * 0.07})`; c.lineWidth = Math.max(1.4, h * 0.032);
+        c.beginPath(); c.moveTo(cx - w * (0.92 - t * 0.10), hingeY + sy * h * t * 0.04);
+        c.quadraticCurveTo(cx - w * 0.22, hingeY + sy * h * (1.16 - t * 0.14), cx + w * (0.90 - t * 0.09), hingeY + sy * h * (0.49 - t * 0.04)); c.stroke();
+      }
+    };
+    valve(false);
+    c.fillStyle = '#c98e76'; c.beginPath(); c.ellipse(cx + w * 0.14, hingeY + h * 0.05, w * 0.66, h * 0.24, 0, 0, TAU); c.fill();
+    c.fillStyle = '#dda481'; c.beginPath(); c.moveTo(cx - w * 0.12, hingeY + h * 0.02);
+    c.quadraticCurveTo(cx - w * 0.04, hingeY + h * 1.56, cx + w * 0.40, hingeY + h * 1.30);
+    c.quadraticCurveTo(cx + w * 0.50, hingeY + h * 0.46, cx + w * 0.24, hingeY + h * 0.04); c.closePath(); c.fill();
+    c.strokeStyle = '#b97968'; c.lineWidth = h * 0.26; c.lineCap = 'round';
+    for (const off of [-0.17, 0.17]) { c.beginPath(); c.moveTo(cx + w * 0.54, hingeY + h * off); c.quadraticCurveTo(cx + w * 0.92, hingeY + h * (off - 0.08), cx + w * 1.12, hingeY + h * (off + 0.02)); c.stroke(); }
+    c.fillStyle = '#553733';
+    for (const off of [-0.17, 0.17]) { c.beginPath(); c.ellipse(cx + w * 1.12, hingeY + h * (off + 0.02), h * 0.15, h * 0.10, 0.18, 0, TAU); c.fill(); }
+    c.strokeStyle = 'rgba(77,57,40,0.78)'; c.lineWidth = Math.max(3, h * 0.072);
+    c.beginPath(); c.moveTo(cx - w, hingeY); c.quadraticCurveTo(cx - w * 0.40, hingeY + h * 1.34, cx + w, hingeY + h * 0.54); c.stroke();
+    for (let k = 1; k <= 3; k++) {
+      const t = k / 4; c.strokeStyle = `rgba(105,78,53,${0.34 + k * 0.10})`; c.lineWidth = Math.max(1.5, h * 0.036);
+      c.beginPath(); c.moveTo(cx - w * (0.88 - t * 0.08), hingeY + h * t * 0.05);
+      c.quadraticCurveTo(cx - w * 0.20, hingeY + h * (1.12 - t * 0.10), cx + w * (0.88 - t * 0.07), hingeY + h * (0.48 - t * 0.03)); c.stroke();
+    }
+    valve(true);
+    c.fillStyle = '#5a4631'; c.beginPath(); c.ellipse(cx - w * 0.90, hingeY, w * 0.12, h * 0.13, 0, 0, TAU); c.fill();
+    return;
+  }
+  if (live === 'giant-clam') {
+    const w = S * 0.245 * sv, h = S * 0.155 * sv2;
+    ground(c, cx, cy + h * 1.34, w * 1.08);
+    c.fillStyle = '#b9a77e'; c.beginPath();
+    c.moveTo(cx - w, cy + h * 0.92); c.quadraticCurveTo(cx - w * 0.86, cy - h * 0.94, cx, cy - h * 1.12);
+    c.quadraticCurveTo(cx + w * 0.86, cy - h * 0.94, cx + w, cy + h * 0.92); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(72,57,38,0.50)'; c.lineWidth = 3;
+    for (let i = -6; i <= 6; i++) { c.beginPath(); c.moveTo(cx, cy + h * 0.88); c.lineTo(cx + i * w * 0.16, cy - h * 0.92); c.stroke(); }
+    /* The living mantle visibly bulges between wavy valve lips. */
+    const mg = c.createLinearGradient(cx - w, cy, cx + w, cy);
+    mg.addColorStop(0, '#0b625e'); mg.addColorStop(0.48, '#24d6c6'); mg.addColorStop(1, '#155f78');
+    c.fillStyle = mg; c.beginPath();
+    for (let k = 0; k <= 12; k++) { const u = k / 12, x = cx - w * 0.82 + u * w * 1.64, y = cy - h * 0.06 + Math.sin(k * 1.75) * h * 0.18; k ? c.lineTo(x, y) : c.moveTo(x, y); }
+    for (let k = 12; k >= 0; k--) { const u = k / 12, x = cx - w * 0.82 + u * w * 1.64, y = cy + h * 0.52 + Math.sin(k * 1.75 + 0.8) * h * 0.18; c.lineTo(x, y); }
+    c.closePath(); c.fill();
+    c.strokeStyle = '#83f0d8'; c.lineWidth = Math.max(3, h * 0.08); c.beginPath();
+    for (let k = 0; k <= 12; k++) { const u = k / 12, x = cx - w * 0.82 + u * w * 1.64, y = cy - h * 0.06 + Math.sin(k * 1.75) * h * 0.18; k ? c.lineTo(x, y) : c.moveTo(x, y); } c.stroke();
+    for (let i = 0; i < 24; i++) softMark(c, cx - w * 0.70 + r() * w * 1.4, cy + r() * h * 0.42, 5 + r() * 5, 4 + r() * 4, i % 2 ? '30,40,130' : '230,250,120', 0.66);
+    c.fillStyle = grad(c, p, cx, cy + h * 0.72, w); c.beginPath();
+    c.moveTo(cx - w, cy + h * 0.92); c.quadraticCurveTo(cx, cy + h * 1.48, cx + w, cy + h * 0.92);
+    c.quadraticCurveTo(cx + w * 0.72, cy + h * 0.54, cx - w * 0.72, cy + h * 0.54); c.closePath(); c.fill();
+    return;
+  }
+  if (live === 'mussel') {
+    const w = S * 0.15 * sv, h = S * 0.245 * sv2;
+    ground(c, cx, cy + h * 1.02, w * 1.55);
+    c.strokeStyle = 'rgba(43,31,23,0.92)'; c.lineWidth = 2.1; c.lineCap = 'round';
+    for (let i = -5; i <= 5; i++) { c.beginPath(); c.moveTo(cx - w * 0.24 + i * 2.2, cy + h * 0.70); c.quadraticCurveTo(cx - w * 0.42 + i * 4, cy + h * 1.08, cx - w * 0.78 + i * 7, cy + h * 1.24); c.stroke(); }
+    const valve = (sgn: -1 | 1): void => {
+      const dx = sgn * w * 0.28;
+      const vg = c.createLinearGradient(cx - w, cy - h, cx + w, cy + h);
+      vg.addColorStop(0, '#61706f'); vg.addColorStop(0.28, p.lit); vg.addColorStop(0.48, p.base); vg.addColorStop(1, '#11172a');
+      c.fillStyle = vg; c.beginPath(); c.moveTo(cx - w * 0.56 + dx, cy - h * 0.96);
+      c.quadraticCurveTo(cx + w * 1.06 + dx, cy - h * 0.42, cx + w * 0.72 + dx, cy + h * 0.82);
+      c.quadraticCurveTo(cx - w * 0.10 + dx, cy + h * 1.02, cx - w * 0.56 + dx, cy - h * 0.96); c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(160,176,160,0.34)'; c.lineWidth = 1.8;
+      for (let k = 1; k <= 4; k++) { c.beginPath(); c.moveTo(cx - w * 0.44 + dx, cy - h * (0.82 - k * 0.08)); c.quadraticCurveTo(cx + w * (0.52 + k * 0.08) + dx, cy - h * 0.18, cx + w * (0.48 + k * 0.05) + dx, cy + h * (0.56 + k * 0.07)); c.stroke(); }
+    };
+    valve(-1); valve(1);
+    c.strokeStyle = 'rgba(6,9,17,0.92)'; c.lineWidth = Math.max(3, w * 0.09); c.beginPath(); c.moveTo(cx - w * 0.52, cy - h * 0.88); c.quadraticCurveTo(cx, cy, cx + w * 0.48, cy + h * 0.78); c.stroke();
+    c.strokeStyle = 'rgba(226,238,226,0.76)'; c.lineWidth = Math.max(2, w * 0.045); c.beginPath(); c.moveTo(cx - w * 0.26, cy - h * 0.70); c.quadraticCurveTo(cx + w * 0.26, cy - h * 0.22, cx + w * 0.42, cy + h * 0.30); c.stroke();
+    return;
+  }
+  if (live === 'oyster') {
+    const w = S * 0.235 * sv, h = S * 0.17 * sv2;
+    ground(c, cx, cy + h * 1.38, w * 1.05);
+    /* Layered, ruffled lower valve: repeated organic lips replace flat panels. */
+    const cup = (scale: number, ox: number, oy: number, fill: string): void => {
+      c.save(); c.translate(cx + ox, cy + oy); c.scale(scale, scale); c.fillStyle = fill; c.beginPath();
+      c.moveTo(-w * 0.92, h * 0.48); c.quadraticCurveTo(-w * 1.05, h * 0.08, -w * 0.78, -h * 0.36);
+      c.quadraticCurveTo(-w * 0.62, -h * 0.86, -w * 0.18, -h * 0.74);
+      c.quadraticCurveTo(w * 0.10, -h * 1.02, w * 0.42, -h * 0.64);
+      c.quadraticCurveTo(w * 0.88, -h * 0.72, w * 0.84, -h * 0.18);
+      c.quadraticCurveTo(w * 1.08, h * 0.16, w * 0.72, h * 0.48);
+      c.quadraticCurveTo(w * 0.60, h * 0.96, w * 0.10, h * 0.84);
+      c.quadraticCurveTo(-w * 0.22, h * 1.10, -w * 0.52, h * 0.78);
+      c.quadraticCurveTo(-w * 0.88, h * 0.88, -w * 0.92, h * 0.48); c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(48,44,37,0.68)'; c.lineWidth = Math.max(2.2, h * 0.045) / scale; c.stroke(); c.restore();
+    };
+    cup(1, 0, h * 0.12, '#595a54');
+    cup(0.89, -w * 0.02, h * 0.22, '#77766d');
+    cup(0.78, w * 0.01, h * 0.28, '#99978d');
+    const pearl = c.createRadialGradient(cx - w * 0.20, cy - h * 0.28, 3, cx, cy, w);
+    pearl.addColorStop(0, '#fff5de'); pearl.addColorStop(0.48, '#d9d8cb'); pearl.addColorStop(1, '#8e8c82');
+    c.fillStyle = pearl; c.beginPath(); c.ellipse(cx, cy + h * 0.16, w * 0.68, h * 0.66, -0.08, 0, TAU); c.fill();
+    for (let i = 0; i < 18; i++) softMark(c, cx - w * 0.78 + r() * w * 1.56, cy - h * 0.72 + r() * h * 1.55, 7 + r() * 8, 4 + r() * 6, '58,52,42', 0.34);
+    /* Unequal flatter upper valve, lifted and visibly thinner than the cup. */
+    c.fillStyle = grad(c, p, cx - w * 0.14, cy - h * 0.86, w * 0.78); c.beginPath();
+    c.moveTo(cx - w * 0.82, cy - h * 0.34); c.quadraticCurveTo(cx - w * 0.78, cy - h * 1.18, cx - w * 0.18, cy - h * 1.18);
+    c.quadraticCurveTo(cx + w * 0.14, cy - h * 1.46, cx + w * 0.48, cy - h * 1.05);
+    c.quadraticCurveTo(cx + w * 0.82, cy - h * 0.80, cx + w * 0.52, cy - h * 0.28); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(50,46,38,0.72)'; c.lineWidth = 3; c.stroke();
+    for (let k = 1; k <= 3; k++) {
+      c.strokeStyle = `rgba(62,57,48,${0.30 + k * 0.10})`; c.lineWidth = 2;
+      c.beginPath(); c.moveTo(cx - w * (0.72 - k * 0.08), cy - h * (0.42 + k * 0.05));
+      c.quadraticCurveTo(cx - w * 0.05, cy - h * (1.25 - k * 0.08), cx + w * (0.58 - k * 0.06), cy - h * (0.54 + k * 0.02)); c.stroke();
+    }
+    return;
+  }
+  if (live === 'razor-clam') {
+    const w = S * 0.285 * sv, h = S * 0.054 * sv2;
+    ground(c, cx, cy + S * 0.15, w * 0.94);
+    c.save(); c.translate(cx, cy); c.rotate(-0.18);
+    c.fillStyle = '#d5a67c'; c.beginPath();
+    c.moveTo(-w * 0.86, h * 0.10); c.quadraticCurveTo(-w * 1.30, h * 0.30, -w * 1.26, h * 1.08);
+    c.quadraticCurveTo(-w * 0.82, h * 1.38, -w * 0.46, h * 0.38); c.closePath(); c.fill();
+    for (const sy of [-1, 1] as const) {
+      const vg = c.createLinearGradient(0, sy * h * 1.1, 0, 0);
+      vg.addColorStop(0, '#68703c'); vg.addColorStop(0.22, p.dark); vg.addColorStop(0.58, p.base); vg.addColorStop(1, p.lit);
+      c.fillStyle = vg; c.beginPath(); c.moveTo(-w, sy * h * 0.12); c.quadraticCurveTo(-w * 0.94, sy * h * 1.08, w * 0.94, sy * h * 1.02);
+      c.quadraticCurveTo(w, sy * h * 0.54, w, sy * h * 0.10); c.closePath(); c.fill();
+      c.strokeStyle = '#7b713b'; c.lineWidth = Math.max(2.2, h * 0.20); c.stroke();
+    }
+    c.strokeStyle = 'rgba(48,42,25,0.72)'; c.lineWidth = Math.max(2, h * 0.18); c.beginPath(); c.moveTo(-w, 0); c.lineTo(w, 0); c.stroke();
+    c.restore(); return;
+  }
+  if (live === 'scallop') {
+    const w = S * 0.225 * sv, h = S * 0.17 * sv2;
+    ground(c, cx, cy + h * 1.46, w * 1.02);
+    const fan = (yy: number, flip: number, alpha: number): void => {
+      c.globalAlpha = alpha; c.fillStyle = grad(c, p, cx, yy, w); c.beginPath();
+      c.moveTo(cx - w * 0.18, yy + flip * h * 0.88); c.quadraticCurveTo(cx - w * 1.14, yy + flip * h * 0.24, cx - w * 0.76, yy - flip * h * 0.78);
+      c.quadraticCurveTo(cx, yy - flip * h * 1.06, cx + w * 0.76, yy - flip * h * 0.78);
+      c.quadraticCurveTo(cx + w * 1.14, yy + flip * h * 0.24, cx + w * 0.18, yy + flip * h * 0.88); c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(58,38,28,0.46)'; c.lineWidth = 2.5;
+      for (let i = -5; i <= 5; i++) { c.beginPath(); c.moveTo(cx, yy + flip * h * 0.78); c.lineTo(cx + i * w * 0.17, yy - flip * h * 0.84); c.stroke(); }
+      c.globalAlpha = 1;
+    };
+    fan(cy - h * 0.18, 1, 0.72);
+    /* Tentacle fringe and blue mantle eyes occupy the actual open valve margin. */
+    c.strokeStyle = '#d9b28e'; c.lineWidth = Math.max(1.5, h * 0.055); c.lineCap = 'round';
+    for (let i = -8; i <= 8; i++) { const x = cx + i * w * 0.095, y = cy + h * (0.16 + Math.abs(i) * 0.025); c.beginPath(); c.moveTo(x, y); c.lineTo(x + i * 0.8, y + h * 0.28); c.stroke(); }
+    c.fillStyle = '#1b7fff';
+    for (let i = -7; i <= 7; i++) { const x = cx + i * w * 0.105, y = cy + h * (0.16 + Math.abs(i) * 0.025); c.beginPath(); c.arc(x, y, Math.max(2.4, h * 0.055), 0, TAU); c.fill(); }
+    fan(cy + h * 0.58, -1, 0.96);
+    /* Reassert the living fringe above the near valve so it cannot be occluded. */
+    c.strokeStyle = '#e7c39c'; c.lineWidth = Math.max(1.5, h * 0.052);
+    for (let i = -8; i <= 8; i++) { const x = cx + i * w * 0.095, y = cy + h * (0.30 + Math.abs(i) * 0.018); c.beginPath(); c.moveTo(x, y); c.lineTo(x + i * 0.7, y - h * 0.22); c.stroke(); }
+    c.fillStyle = '#168cff';
+    for (let i = -7; i <= 7; i++) { const x = cx + i * w * 0.105, y = cy + h * (0.31 + Math.abs(i) * 0.018); c.beginPath(); c.arc(x, y, Math.max(2.6, h * 0.060), 0, TAU); c.fill(); }
+    /* Broad flat auricles extend from both sides of the hinge. They share the
+       valve fill and outline so they read as shell anatomy, not dark feet. */
+    for (const s of [-1, 1] as const) {
+      c.fillStyle = p.lit; c.beginPath();
+      c.moveTo(cx + s * w * 0.48, cy + h * 0.76); c.lineTo(cx + s * w * 1.24, cy + h * 0.68);
+      c.lineTo(cx + s * w * 1.12, cy + h * 1.02); c.lineTo(cx + s * w * 0.50, cy + h * 1.08); c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(74,43,30,0.62)'; c.lineWidth = 2.2; c.stroke();
+    }
+    c.fillStyle = p.dark; c.beginPath(); c.ellipse(cx, cy + h * 1.12, w * 0.24, h * 0.13, 0, 0, TAU); c.fill();
+    return;
+  }
+  if (live === 'nautilus') {
+    const R = S * 0.205 * sv2, sx = cx - R * 0.12, sy = cy - R * 0.04;
+    ground(c, cx, cy + R * 1.13, R * 1.12);
+    /* Tentacles and leathery hood emerge from, and remain rooted in, the aperture. */
+    c.strokeStyle = '#d4b886'; c.lineCap = 'round';
+    for (let i = 0; i < 22; i++) { const a = -0.90 + (i / 21) * 1.70, len = R * (0.62 + (i % 4) * 0.09); c.lineWidth = Math.max(2, R * (0.035 - (i % 3) * 0.004)); c.beginPath(); c.moveTo(sx + R * 0.72, sy + R * 0.26); c.quadraticCurveTo(sx + R * 1.02, sy + Math.sin(a) * R * 0.28, sx + R * 0.72 + Math.cos(a) * len, sy + R * 0.26 + Math.sin(a) * len); c.stroke(); }
+    c.fillStyle = '#6b4b32'; c.beginPath(); c.ellipse(sx + R * 0.70, sy + R * 0.22, R * 0.40, R * 0.30, 0.20, 0, TAU); c.fill();
+    const sg = c.createRadialGradient(sx - R * 0.30, sy - R * 0.38, 4, sx, sy, R * 1.1);
+    sg.addColorStop(0, '#fff6dd'); sg.addColorStop(0.62, '#ead8b7'); sg.addColorStop(1, '#aa835b');
+    c.fillStyle = sg; c.beginPath(); c.ellipse(sx, sy, R, R * 0.86, -0.05, 0, TAU); c.fill();
+    c.save(); c.beginPath(); c.ellipse(sx, sy, R, R * 0.86, -0.05, 0, TAU); c.clip();
+    c.fillStyle = '#8f3f2d';
+    for (let i = 0; i < 10; i++) {
+      const a = -2.76 + i * 0.57, spread = 0.075 + (i % 3) * 0.014;
+      const outer = R * (0.94 - (i % 2) * 0.035), inner = R * (0.18 + (i % 3) * 0.025);
+      c.beginPath();
+      c.moveTo(sx + Math.cos(a - spread) * outer, sy + Math.sin(a - spread) * outer * 0.84);
+      c.bezierCurveTo(sx + Math.cos(a + 0.02) * R * 0.72, sy + Math.sin(a - 0.04) * R * 0.56,
+        sx + Math.cos(a + 0.26) * R * 0.42, sy + Math.sin(a + 0.20) * R * 0.30,
+        sx + Math.cos(a + 0.34) * inner, sy + Math.sin(a + 0.34) * inner * 0.84);
+      c.bezierCurveTo(sx + Math.cos(a + 0.16) * R * 0.36, sy + Math.sin(a + 0.18) * R * 0.28,
+        sx + Math.cos(a + spread) * R * 0.70, sy + Math.sin(a + spread) * R * 0.58,
+        sx + Math.cos(a + spread) * outer, sy + Math.sin(a + spread) * outer * 0.84);
+      c.closePath(); c.fill();
+    }
+    c.restore();
+    c.strokeStyle = 'rgba(91,60,38,0.78)'; c.lineWidth = Math.max(3, R * 0.045); c.beginPath(); c.arc(sx, sy, R * 0.68, -2.55, 2.15); c.stroke(); c.beginPath(); c.arc(sx, sy, R * 0.38, -2.55, 2.15); c.stroke();
+    return;
+  }
+  if (live === 'abalone') {
+    const w = S * 0.22 * sv, h = S * 0.145 * sv2;
+    ground(c, cx, cy + h * 1.48, w * 1.08);
+    /* The enormous foot and sensory epipodium are the living animal beneath the shell. */
+    const fg = c.createRadialGradient(cx - w * 0.25, cy + h * 0.28, 2, cx, cy + h * 0.48, w);
+    fg.addColorStop(0, '#f0c08e'); fg.addColorStop(0.58, '#b47b57'); fg.addColorStop(1, '#6f4c3c');
+    c.fillStyle = fg; c.beginPath(); c.ellipse(cx, cy + h * 0.54, w * 1.08, h * 0.76, -0.08, 0, TAU); c.fill();
+    c.strokeStyle = '#a97d62'; c.lineWidth = Math.max(1.8, h * 0.055); c.lineCap = 'round';
+    for (let i = 0; i < 28; i++) { const a = Math.PI * (0.08 + i / 27 * 0.84), x = cx + Math.cos(a) * w * 1.04, y = cy + h * 0.50 + Math.sin(a) * h * 0.62; c.beginPath(); c.moveTo(x, y); c.lineTo(x + Math.cos(a) * h * 0.25, y + Math.sin(a) * h * 0.25); c.stroke(); }
+    c.fillStyle = grad(c, p, cx, cy - h * 0.12, w); c.beginPath(); c.ellipse(cx, cy - h * 0.12, w, h, -0.18, 0, TAU); c.fill();
+    c.save(); c.beginPath(); c.ellipse(cx, cy - h * 0.12, w, h, -0.18, 0, TAU); c.clip();
+    for (let i = 0; i < 22; i++) softMark(c, cx - w + r() * w * 2, cy - h + r() * h * 1.65, 12 + r() * 9, 8 + r() * 6, i % 2 ? '70,220,210' : '218,140,235', 0.28, r() * 3); c.restore();
+    c.fillStyle = 'rgba(20,18,20,0.86)'; for (let i = 0; i < 6; i++) { c.beginPath(); c.arc(cx - w * 0.56 + i * w * 0.22, cy - h * (0.48 - i * 0.04), 6 - i * 0.45, 0, TAU); c.fill(); }
+    return;
+  }
+  if (live === 'conch') {
+    const W = S * 0.205 * sv;
+    ground(c, cx, cy + W * 0.94, W * 1.30);
+    /* Muscular foot remains continuous beneath the shell aperture. */
+    c.fillStyle = '#cf9278'; c.beginPath(); c.ellipse(cx + W * 0.42, cy + W * 0.55, W * 0.82, W * 0.25, 0.08, 0, TAU); c.fill();
+    /* One continuous shell silhouette forms a broad body whorl and a pointed,
+       stepped spire. Large rooted shoulder knobs survive the actual thumb. */
+    const shell = c.createLinearGradient(cx - W * 1.30, cy - W, cx + W * 0.18, cy + W * 0.55);
+    shell.addColorStop(0, p.dark); shell.addColorStop(0.46, p.base); shell.addColorStop(1, p.lit);
+    c.fillStyle = shell; c.beginPath();
+    c.moveTo(cx + W * 0.10, cy + W * 0.48);
+    c.bezierCurveTo(cx - W * 0.38, cy + W * 0.72, cx - W * 0.82, cy + W * 0.54, cx - W * 0.92, cy + W * 0.12);
+    c.bezierCurveTo(cx - W * 1.02, cy - W * 0.28, cx - W * 1.20, cy - W * 0.66, cx - W * 1.36, cy - W * 0.92);
+    c.bezierCurveTo(cx - W * 0.98, cy - W * 0.74, cx - W * 0.54, cy - W * 0.70, cx - W * 0.16, cy - W * 0.62);
+    c.bezierCurveTo(cx + W * 0.28, cy - W * 0.40, cx + W * 0.38, cy + W * 0.16, cx + W * 0.10, cy + W * 0.48);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(105,59,42,0.66)'; c.lineWidth = Math.max(2.4, W * 0.040); c.lineCap = 'round';
+    for (let i = 0; i < 4; i++) {
+      const u = i / 3, x = cx - W * (1.03 - u * 0.72), y = cy - W * (0.56 - u * 0.21);
+      c.beginPath(); c.arc(x, y, W * (0.25 + u * 0.13), -2.30, 0.82); c.stroke();
+    }
+    for (const [x, y, h] of [[-0.84, -0.70, 0.18], [-0.55, -0.68, 0.22], [-0.24, -0.61, 0.18]] as const) {
+      c.fillStyle = p.dark; c.beginPath(); c.moveTo(cx + W * (x - 0.09), cy + W * (y + 0.07));
+      c.quadraticCurveTo(cx + W * x, cy + W * (y - h), cx + W * (x + 0.10), cy + W * (y + 0.06)); c.closePath(); c.fill();
+    }
+    /* The outer lip is a flared wing in the shell silhouette around a recessed
+       open aperture. The dark mouth and thick rim prevent the old flat shield
+       read while keeping the animal and its eye stalks rooted inside it. */
+    const outerLip = (): void => {
+      c.beginPath(); c.moveTo(cx - W * 0.28, cy - W * 0.60);
+      c.bezierCurveTo(cx + W * 0.12, cy - W * 0.91, cx + W * 1.02, cy - W * 0.84, cx + W * 1.26, cy - W * 0.44);
+      c.quadraticCurveTo(cx + W * 1.46, cy - W * 0.18, cx + W * 1.28, cy + W * 0.06);
+      c.quadraticCurveTo(cx + W * 1.43, cy + W * 0.40, cx + W * 0.92, cy + W * 0.72);
+      c.bezierCurveTo(cx + W * 0.48, cy + W * 0.83, cx - W * 0.06, cy + W * 0.70, cx - W * 0.28, cy + W * 0.49);
+      c.quadraticCurveTo(cx - W * 0.42, cy - W * 0.02, cx - W * 0.28, cy - W * 0.60); c.closePath();
+    };
+    const lip = c.createLinearGradient(cx, cy - W, cx + W, cy + W);
+    lip.addColorStop(0, '#ffd1bd'); lip.addColorStop(0.48, '#e99f91'); lip.addColorStop(1, '#a85c56');
+    c.fillStyle = lip; outerLip(); c.fill();
+    const mouth = c.createLinearGradient(cx + W * 0.08, cy - W * 0.40, cx + W * 0.96, cy + W * 0.42);
+    mouth.addColorStop(0, '#8c514d'); mouth.addColorStop(0.55, '#5b3437'); mouth.addColorStop(1, '#2e242b');
+    c.fillStyle = mouth; c.beginPath(); c.moveTo(cx + W * 0.02, cy - W * 0.43);
+    c.bezierCurveTo(cx + W * 0.45, cy - W * 0.64, cx + W * 0.98, cy - W * 0.58, cx + W * 1.10, cy - W * 0.27);
+    c.quadraticCurveTo(cx + W * 1.20, cy + W * 0.05, cx + W * 1.05, cy + W * 0.32);
+    c.quadraticCurveTo(cx + W * 0.72, cy + W * 0.52, cx + W * 0.10, cy + W * 0.39);
+    c.quadraticCurveTo(cx - W * 0.06, cy - W * 0.02, cx + W * 0.02, cy - W * 0.43); c.closePath(); c.fill();
+    const eyeTips: Array<{ x: number; y: number }> = [];
+    c.strokeStyle = '#d6a18a'; c.lineWidth = Math.max(5, W * 0.075); c.lineCap = 'round';
+    for (const sy of [-1, 1] as const) {
+      const ex = cx + W * 1.42, ey = cy + W * (0.10 + sy * 0.16);
+      c.beginPath(); c.moveTo(cx + W * 0.22, cy + W * 0.12);
+      c.bezierCurveTo(cx + W * 0.58, cy + W * (0.08 + sy * 0.03), cx + W * 1.02, cy + W * (0.10 + sy * 0.12), ex, ey); c.stroke();
+      eyeTips.push({ x: ex, y: ey });
+    }
+    c.strokeStyle = 'rgba(132,60,52,0.72)'; c.lineWidth = Math.max(3.4, W * 0.050); outerLip(); c.stroke();
+    c.strokeStyle = 'rgba(255,188,170,0.72)'; c.lineWidth = Math.max(3.2, W * 0.046); c.beginPath();
+    c.moveTo(cx + W * 0.02, cy - W * 0.43);
+    c.bezierCurveTo(cx + W * 0.45, cy - W * 0.64, cx + W * 0.98, cy - W * 0.58, cx + W * 1.10, cy - W * 0.27);
+    c.quadraticCurveTo(cx + W * 1.20, cy + W * 0.05, cx + W * 1.05, cy + W * 0.32); c.stroke();
+    c.strokeStyle = 'rgba(255,224,205,0.58)'; c.lineWidth = Math.max(2.0, W * 0.026); c.beginPath();
+    c.moveTo(cx - W * 0.08, cy - W * 0.54); c.quadraticCurveTo(cx + W * 0.56, cy - W * 0.78, cx + W * 1.11, cy - W * 0.40); c.stroke();
+    for (const tip of eyeTips) {
+      c.fillStyle = '#c98f76'; c.beginPath(); c.arc(tip.x, tip.y, W * 0.105, 0, TAU); c.fill();
+      c.fillStyle = '#0b1118'; c.beginPath(); c.arc(tip.x + W * 0.018, tip.y, W * 0.068, 0, TAU); c.fill();
+      c.fillStyle = '#e8f4ff'; c.beginPath(); c.arc(tip.x - W * 0.010, tip.y - W * 0.026, W * 0.022, 0, TAU); c.fill();
+    }
+    return;
+  }
+  if (live === 'cowrie') {
+    const w = S * 0.18 * sv, h = S * 0.125 * sv2;
+    ground(c, cx, cy + h * 1.42, w * 1.12);
+    c.fillStyle = '#7f5b45'; c.beginPath(); c.ellipse(cx, cy + h * 0.60, w * 0.96, h * 0.48, 0, 0, TAU); c.fill();
+    const gg = c.createRadialGradient(cx - w * 0.30, cy - h * 0.46, 2, cx, cy, w * 1.18);
+    gg.addColorStop(0, '#fff1c9'); gg.addColorStop(0.30, p.lit); gg.addColorStop(0.58, p.base); gg.addColorStop(1, p.dark);
+    c.fillStyle = gg; c.beginPath(); c.ellipse(cx, cy, w, h, 0, 0, TAU); c.fill();
+    /* Paired mantle flaps climb the shell sides and meet short of the dorsal seam. */
+    for (const s of [-1, 1] as const) {
+      c.fillStyle = `rgba(${Math.min(255, p.cr + 42)},${Math.min(255, p.cg + 30)},${Math.min(255, p.cb + 24)},0.90)`;
+      c.beginPath(); c.moveTo(cx + s * w * 0.94, cy + h * 0.54); c.quadraticCurveTo(cx + s * w * 0.76, cy - h * 0.64, cx + s * w * 0.18, cy - h * 0.72);
+      c.quadraticCurveTo(cx + s * w * 0.34, cy - h * 0.22, cx + s * w * 0.40, cy + h * 0.56); c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(52,28,20,0.72)'; c.lineWidth = Math.max(2.2, h * 0.065); c.stroke();
+      c.fillStyle = '#e6c49c'; for (let i = 0; i < 7; i++) { const u = i / 6; c.beginPath(); c.arc(cx + s * w * (0.40 + u * 0.42), cy - h * (0.52 - u * 0.90), Math.max(1.8, h * 0.045), 0, TAU); c.fill(); }
+    }
+    c.strokeStyle = 'rgba(22,15,12,0.82)'; c.lineWidth = Math.max(3, h * 0.10); c.beginPath(); c.moveTo(cx - w * 0.65, cy + h * 0.64); c.quadraticCurveTo(cx, cy + h * 0.92, cx + w * 0.65, cy + h * 0.64); c.stroke();
+    c.strokeStyle = 'rgba(246,218,174,0.90)'; c.lineWidth = Math.max(1.6, h * 0.045); c.lineCap = 'round';
+    for (let i = 0; i <= 12; i++) {
+      const u = i / 12, x = cx - w * 0.60 + u * w * 1.20;
+      const y = cy + h * (0.64 + 0.56 * u * (1 - u));
+      c.beginPath(); c.moveTo(x, y - h * 0.10); c.lineTo(x, y + h * 0.10); c.stroke();
+    }
+    return;
+  }
+  if (live === 'limpet') {
+    const w = S * 0.20 * sv, h = S * 0.15 * sv2, rockY = cy + h * 0.72;
+    ground(c, cx, rockY + h * 0.78, w * 1.22);
+    /* The shell's entire base follows the rock surface: no air gap. */
+    c.fillStyle = '#4f514d'; c.beginPath(); c.moveTo(cx - w * 1.25, rockY + h * 0.20);
+    c.lineTo(cx - w * 0.98, rockY - h * 0.08); c.lineTo(cx - w * 0.42, rockY - h * 0.14); c.lineTo(cx + w * 0.12, rockY - h * 0.04);
+    c.lineTo(cx + w * 0.72, rockY - h * 0.12); c.lineTo(cx + w * 1.24, rockY + h * 0.10); c.lineTo(cx + w * 1.08, rockY + h * 0.54); c.lineTo(cx - w * 1.04, rockY + h * 0.52); c.closePath(); c.fill();
+    c.fillStyle = '#a98563'; c.beginPath(); c.ellipse(cx, rockY - h * 0.06, w * 0.92, h * 0.20, 0, 0, TAU); c.fill();
+    c.fillStyle = grad(c, p, cx, cy - h * 0.20, w); c.beginPath(); c.moveTo(cx - w, rockY - h * 0.08);
+    c.quadraticCurveTo(cx - w * 0.30, cy - h * 1.26, cx + w * 0.04, cy - h * 1.34);
+    c.quadraticCurveTo(cx + w * 0.48, cy - h * 1.08, cx + w, rockY - h * 0.08); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(42,34,24,0.44)'; c.lineWidth = 2;
+    for (let i = -5; i <= 5; i++) { c.beginPath(); c.moveTo(cx + w * 0.03, cy - h * 1.30); c.lineTo(cx + i * w * 0.19, rockY - h * 0.07); c.stroke(); }
+    c.strokeStyle = 'rgba(28,22,16,0.72)'; c.lineWidth = 3.2; c.beginPath(); c.moveTo(cx - w, rockY - h * 0.08); c.lineTo(cx + w, rockY - h * 0.08); c.stroke();
+    return;
+  }
+  /* Sea snail: preserve the shell-foot identity but add its marine siphon. */
+  const R = S * 0.155 * sv2, fx = cx - S * 0.02, fy = cy + S * 0.085;
+  ground(c, cx, fy + S * 0.032, S * 0.21);
+  c.fillStyle = grad(c, p, fx, fy, S * 0.14); c.beginPath();
+  c.moveTo(fx - S * 0.20, fy + S * 0.02); c.quadraticCurveTo(fx - S * 0.20, fy - S * 0.04, fx - S * 0.04, fy - S * 0.04);
+  c.quadraticCurveTo(fx + S * 0.17, fy - S * 0.04, fx + S * 0.23, fy); c.quadraticCurveTo(fx + S * 0.23, fy + S * 0.03, fx + S * 0.15, fy + S * 0.03); c.closePath(); c.fill();
+  const nx = fx + S * 0.18, ny = fy - S * 0.02;
+  const sx = cx, sy = cy - S * 0.03;
+  c.fillStyle = grad(c, p, sx, sy, R); c.beginPath(); c.ellipse(sx, sy, R, R * 0.82, -0.04, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(30,22,14,0.44)'; c.lineWidth = Math.max(2.2, R * 0.035);
+  for (let k = 1; k <= 3; k++) { c.beginPath(); c.ellipse(sx, sy, R * (0.24 * k), R * (0.20 * k), -0.04, -2.6, 2.1); c.stroke(); }
+  /* The aperture interrupts the shell edge and exposes the living mantle. */
+  c.fillStyle = '#2a211b'; c.beginPath(); c.ellipse(sx + R * 0.70, sy + R * 0.24, R * 0.34, R * 0.47, 0.54, 0, TAU); c.fill();
+  c.fillStyle = '#9b765e'; c.beginPath(); c.ellipse(sx + R * 0.75, sy + R * 0.28, R * 0.19, R * 0.33, 0.54, 0, TAU); c.fill();
+  c.fillStyle = '#756b57'; c.beginPath(); c.ellipse(nx, ny, S * 0.055, S * 0.038, -0.12, 0, TAU); c.fill();
+  /* Paired eye tentacles diverge clearly above the head. */
+  c.strokeStyle = '#8a8068'; c.lineCap = 'round'; c.lineWidth = S * 0.014;
+  for (const [dx, dy] of [[0.055, -0.145], [0.125, -0.090]] as const) {
+    c.beginPath(); c.moveTo(nx, ny - S * 0.008); c.quadraticCurveTo(nx + S * dx * 0.48, ny + S * dy * 0.52, nx + S * dx, ny + S * dy); c.stroke();
+    c.fillStyle = '#11151a'; c.beginPath(); c.arc(nx + S * dx, ny + S * dy, S * 0.013, 0, TAU); c.fill();
+  }
+  /* The siphon leaves the aperture horizontally, apart from both tentacles. */
+  c.strokeStyle = '#786a58'; c.lineWidth = S * 0.028; c.beginPath();
+  c.moveTo(sx + R * 0.62, sy + R * 0.28); c.quadraticCurveTo(nx + S * 0.03, ny + S * 0.045, nx + S * 0.145, ny + S * 0.035); c.stroke();
+  c.fillStyle = '#241f1d'; c.beginPath(); c.ellipse(nx + S * 0.145, ny + S * 0.035, S * 0.017, S * 0.010, 0.08, 0, TAU); c.fill();
+}
+
 export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 'spiral' | 'abalone' | 'razor' | 'snail' | 'clam' | 'mussel' | 'limpet' | 'cowrie' | 'conch';
-  hue?: string; scale?: number; oyster?: boolean; giant?: boolean; byssus?: boolean }, name = ''): void {
+  hue?: string; scale?: number; oyster?: boolean; giant?: boolean; byssus?: boolean; live?: LiveShell }, name = ''): void {
   /* ★ WAVE 12 — Snail and Freshwater Snail carried LITERALLY the same spec and
      the lock reported them at 0.06, the closest pair in the entire catalogue. */
   let p = pIn;
@@ -1646,6 +2416,7 @@ export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 's
      Folded into the shared size variance so every kind honours it. */
   const sc = opts.scale ?? 1;
   const sv = nvar(name, 0xF4, 0.18) * sc, sv2 = nvar(name, 0xF5, 0.16) * sc;
+  if (opts.live) { marineShellForm(c, p, r, opts.live, sv, sv2); return; }
   /* ★ WAVE 38, G11 — THE DETACHED SHADOW. `S*0.76` is a fixed ground line
      shared by all five shell kinds, but a snail's foot bottoms out at
      cy + 0.111·S ≈ 0.63·S — so its shadow floated 0.13·S clear of the animal,
@@ -2098,10 +2869,10 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Viper': (c, g, p, n) => reptSnake(c, g, p, { hue: '#97845e', pattern: 'zigzag', head: 'arrow', gauge: 1.18, posture: 'slither' }, n),
   'Mountain Viper': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6f7466', pattern: 'zigzag', head: 'arrow', gauge: 1.22, posture: 'slither' }, n),
   'Rattlesnake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#b09468', rattle: true, pattern: 'saddle', head: 'arrow', reared: true, gauge: 1.16, posture: 'slither' }, n),
-  'Boa': (c, g, p, n) => reptSnake(c, g, p, { hue: '#8e6b4a', pattern: 'saddle', gauge: 1.26, posture: 'slither' }, n),
-  'Sand Boa': (c, g, p, n) => reptSnake(c, g, p, { hue: '#c69258', pattern: 'saddle', gauge: 1.34, posture: 'slither' }, n),
-  'Python': (c, g, p, n) => reptSnake(c, g, p, { hue: '#9a8355', pattern: 'reticulate', gauge: 1.18, posture: 'slither' }, n),
-  'Anaconda': (c, g, p, n) => reptSnake(c, g, p, { hue: '#4f5c34', pattern: 'oval' }, n),
+  'Boa': (c, g, p, n) => reptSnake(c, g, p, { hue: '#8e6b4a', pattern: 'saddle', gauge: 1.55, constrictor: 'boa' }, n),
+  'Sand Boa': (c, g, p, n) => reptSnake(c, g, p, { hue: '#c69258', pattern: 'saddle', gauge: 1.58, constrictor: 'sand-boa' }, n),
+  'Python': (c, g, p, n) => reptSnake(c, g, p, { hue: '#9a8355', pattern: 'reticulate', gauge: 1.46, constrictor: 'python' }, n),
+  'Anaconda': (c, g, p, n) => reptSnake(c, g, p, { hue: '#4f5c34', pattern: 'oval', gauge: 1.76, constrictor: 'anaconda' }, n),
   'King Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#1e1c1a', pattern: 'band', boldBands: true, bandHue: '232,224,188' }, n),
   'Garter Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#3f5540', pattern: 'stripe', head: 'narrow' }, n),
   'Rat Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#4e5144', pattern: 'plain', posture: 'slither', gauge: 0.58, head: 'rat', eyeScale: 0.82 }, n),
@@ -2115,25 +2886,25 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Racer': (c, g, p, n) => reptSnake(c, g, p, { hue: '#35404a', pattern: 'plain', gauge: 0.46, posture: 'slither' }, n),
   'Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6f5b3e', pattern: 'saddle', posture: 'slither' }, n),
   /* ── LIZARDS ── the sprawled stance: elbows OUT, belly low, tail long */
-  'Monitor Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#55503f', long: true, stout: 1.30, tail: 1.05, tongue: true, claws: true, neck: 0.42 }, n),
-  'Komodo Dragon': (c, g, p, n) => reptLizard(c, g, p, { hue: '#77706a', long: true, stout: 1.62, tail: 0.92, tongue: true, claws: true, looseThroat: true, neck: 0.28 }, n),
+  'Monitor Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#55503f', tail: 1.42, tongue: true, claws: true, morph: 'monitor' }, n),
+  'Komodo Dragon': (c, g, p, n) => reptLizard(c, g, p, { hue: '#77706a', tail: 0.98, tongue: true, claws: true, morph: 'komodo' }, n),
   'Gila Monster': (c, g, p, n) => reptLizard(c, g, p, { hue: '#cf5f22', stout: 1.72, tail: 0.62 }, n),
-  'Tegu': (c, g, p, n) => reptLizard(c, g, p, { hue: '#3e4240', long: true, stout: 1.45, tail: 0.95, blocky: true }, n),
+  'Tegu': (c, g, p, n) => reptLizard(c, g, p, { hue: '#3e4240', claws: true, morph: 'tegu' }, n),
   'Gecko': (c, g, p, n) => reptLizard(c, g, p, { hue: '#c3a582', stout: 1.28, tail: 0.72 }, n),
   'Skink': (c, g, p, n) => reptLizard(c, g, p, { hue: '#7a5a34', stout: 1.06, tail: 1.12 }, n),
   'Anole': (c, g, p, n) => reptLizard(c, g, p, { hue: '#5fbf5a', stout: 1.20, tail: 0.98, dewlap: true }, n),
   'Agama': (c, g, p, n) => reptLizard(c, g, p, { hue: '#3a72b0', crest: true, stout: 1.42, tail: 0.82 }, n),
   'Whiptail': (c, g, p, n) => reptLizard(c, g, p, { hue: '#5c5236', long: true, tail: 1.30 }, n),
-  'Iguana': (c, g, p, n) => reptLizard(c, g, p, { hue: '#6f9b4a', crest: true, long: true, looseThroat: true, tailBands: true }, n),
-  'Marine Iguana': (c, g, p, n) => reptLizard(c, g, p, { hue: '#1f2124', crest: true, long: true, stout: 1.18, blocky: true, paddleTail: true, claws: true, saltSnout: true }, n),
-  'Land Iguana': (c, g, p, n) => reptLizard(c, g, p, { hue: '#c98a2c', crest: true, long: true }, n),
+  'Iguana': (c, g, p, n) => reptLizard(c, g, p, { hue: '#6f9b4a', crest: true, tailBands: true, claws: true, morph: 'iguana' }, n),
+  'Marine Iguana': (c, g, p, n) => reptLizard(c, g, p, { hue: '#3b4447', crest: true, tail: 1.28, paddleTail: true, claws: true, saltSnout: true, morph: 'marine-iguana' }, n),
+  'Land Iguana': (c, g, p, n) => reptLizard(c, g, p, { hue: '#c98a2c', crest: true, tail: 1.22, claws: true, morph: 'land-iguana' }, n),
   /* a horned lizard is nearly as wide as it is long — the squattest lizard alive */
   'Horned Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#b09878', horns: true, stout: 2.15, tail: 0.42 }, n),
   'Alligator Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#8b6236', long: true, tail: 1.15 }, n),
-  'Mountain Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#5a5347', stout: 0.94, tail: 0.98, rough: true, claws: true }, n),
+  'Mountain Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#5a5347', rough: true, claws: true, morph: 'mountain' }, n),
   'Wall Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#6e7a58', stout: 1.22, tail: 0.95 }, n),
-  'Coastal Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#b0a486', stout: 1.30, tail: 0.86, ear: true, claws: true }, n),
-  'Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#8a7b62', stout: 1.25, tail: 0.90 }, n),
+  'Coastal Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#b0a486', ear: true, claws: true, morph: 'coastal' }, n),
+  'Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#8a7b62', claws: true, morph: 'lizard' }, n),
   /* ── TURTLES ── the domed scuted shell */
   /* ★ D-ART-127 — three turtles that were one asset recoloured. */
   'Tortoise': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#a58253', tailLen: 0.10 }, n),
@@ -2147,10 +2918,10 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#4c9a3f', }, n),
   'Tree Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#63c832', toePads: true }, n),
   'Glass Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#a9d9a0', glass: true }, n),
-  'Wood Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#a4642f', mask: true, ridges: true }, n),
+  'Wood Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#a4642f', woodFrog: true }, n),
   'Cave Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#ded8c6', }, n),
-  'Bullfrog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#3f5e2e', eardrum: true }, n),
-  'Toad': (c, g, p, n) => amphFrog(c, g, p, { hue: '#857052', warty: true }, n),
+  'Bullfrog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#3f5e2e', eardrum: true, webbedHindFeet: true }, n),
+  'Toad': (c, g, p, n) => amphFrog(c, g, p, { hue: '#857052', warty: true, parotoidGlands: true }, n),
   /* ── SALAMANDERS ── smooth skin, paddle tail, NOT lizards */
   /* ★ D-ART-130 — the land species lose the swimming paddle. */
   'Salamander': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#251a12', terrestrial: true }, n),
@@ -2165,7 +2936,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Rat': (c, g, p, n) => smallRodent(c, g, p, { hue: '#6b6157', tail: 'long', ears: 0.34, earShape: 'nub', tailBare: true, muzzle: 'long' }, n),
   'Vole': (c, g, p, n) => smallRodent(c, g, p, { hue: '#77705f', tail: 'stub', ears: 0.22, earShape: 'nub', muzzle: 'blunt' }, n),
   'Water Vole': (c, g, p, n) => smallRodent(c, g, p, { hue: '#5a4a38', tail: 'furred', ears: 0.20, earShape: 'nub', muzzle: 'blunt' }, n),
-  'Shrew': (c, g, p, n) => smallRodent(c, g, p, { hue: '#4f4a44', tail: 'long', ears: 0.42 }, n),
+  'Shrew': (c, g, p, n) => smallRodent(c, g, p, { hue: '#4f4a44', tail: 'long', ears: 0.42, shrew: true }, n),
   'Tree Shrew': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7e6a3c', tail: 'bushy', ears: 0.52 }, n),
   'Lemming': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a5713c', tail: 'stub', ears: 0.18, earShape: 'nub', muzzle: 'blunt' }, n),
   'Gerbil': (c, g, p, n) => smallRodent(c, g, p, { hue: '#c39a68', tail: 'long', ears: 0.62, tailReach: 3.0, tailTuft: true, longHindFeet: true }, n),
@@ -2189,7 +2960,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Jackrabbit': (c, g, p, n) => smallRodent(c, g, p, { hue: '#bda57f', tail: 'stub', ears: 1.95 , lagomorph: true }, n),
   'Snowshoe Hare': (c, g, p, n) => smallRodent(c, g, p, { hue: '#f4f0e5', tail: 'stub', ears: 1.55, blackEarTips: true, snowFeet: true, lagomorph: true }, n),
   'Arctic Hare': (c, g, p, n) => smallRodent(c, g, p, { hue: '#f2f0eb', tail: 'stub', ears: 1.20, blackEarTips: true, snowFeet: true, lagomorph: true }, n),
-  'Hedgehog': (c, g, p, n) => smallRodent(c, g, p, { hue: '#71624b', tail: 'stub', ears: 0.40, quills: true }, n),
+  'Hedgehog': (c, g, p, n) => smallRodent(c, g, p, { hue: '#71624b', tail: 'stub', ears: 0.40, hedgehog: true }, n),
   'Porcupine': (c, g, p, n) => smallRodent(c, g, p, { hue: '#4a3b2c', tail: 'stub', ears: 0.34, quills: true }, n),
   /* ── PRIMATES ── the shoulder-to-hip taper, the face disc, the reach */
   'Gorilla': (c, g, p, n) => primate(c, g, p, { hue: '#2b2a2c', build: 'great', peakedSkull: true, potBelly: true, knuckles: true, armLen: 1.14 }, n),
@@ -2215,20 +2986,20 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Stingray': (c, g, p, n) => marineRay(c, g, p, { hue: '#93866c', sting: true }, n),
   'Ray': (c, g, p, n) => marineRay(c, g, p, { hue: '#6d7377', sting: true }, n),
   /* ── SHELLS & THE ANIMALS INSIDE THEM ── */
-  'Scallop': (c, g, p, n) => marineShell(c, g, p, { hue: '#c98a6b', kind: 'scallop' }, n),
-  'Oyster': (c, g, p, n) => marineShell(c, g, p, { hue: '#8e8d84', kind: 'clam', scale: 1.02, oyster: true }, n),
-  'Clam': (c, g, p, n) => marineShell(c, g, p, { hue: '#cfc3ae', kind: 'clam' }, n),
-  'Giant Clam': (c, g, p, n) => marineShell(c, g, p, { hue: '#17a2a0', kind: 'clam', scale: 1.2, giant: true }, n),
-  'Mussel': (c, g, p, n) => marineShell(c, g, p, { hue: '#23283a', kind: 'mussel', byssus: true }, n),
-  'Razor Clam': (c, g, p, n) => marineShell(c, g, p, { hue: '#b6a86a', kind: 'razor' }, n),
-  'Abalone': (c, g, p, n) => marineShell(c, g, p, { hue: '#6b8f80', kind: 'abalone' }, n),
-  'Limpet': (c, g, p, n) => marineShell(c, g, p, { hue: '#8a7a5f', kind: 'limpet' }, n),
-  'Conch': (c, g, p, n) => marineShell(c, g, p, { hue: '#d99b7d', kind: 'conch' }, n),
-  'Nautilus': (c, g, p, n) => marineShell(c, g, p, { hue: '#e8dcc6', kind: 'spiral' }, n),
-  'Cowrie': (c, g, p, n) => marineShell(c, g, p, { hue: '#8b5a2b', kind: 'cowrie' }, n),
+  'Scallop': (c, g, p, n) => marineShell(c, g, p, { hue: '#c98a6b', kind: 'scallop', live: 'scallop' }, n),
+  'Oyster': (c, g, p, n) => marineShell(c, g, p, { hue: '#8e8d84', kind: 'clam', scale: 1.02, live: 'oyster' }, n),
+  'Clam': (c, g, p, n) => marineShell(c, g, p, { hue: '#cfc3ae', kind: 'clam', live: 'clam' }, n),
+  'Giant Clam': (c, g, p, n) => marineShell(c, g, p, { hue: '#17a2a0', kind: 'clam', scale: 1.2, live: 'giant-clam' }, n),
+  'Mussel': (c, g, p, n) => marineShell(c, g, p, { hue: '#23283a', kind: 'mussel', live: 'mussel' }, n),
+  'Razor Clam': (c, g, p, n) => marineShell(c, g, p, { hue: '#b6a86a', kind: 'razor', live: 'razor-clam' }, n),
+  'Abalone': (c, g, p, n) => marineShell(c, g, p, { hue: '#6b8f80', kind: 'abalone', live: 'abalone' }, n),
+  'Limpet': (c, g, p, n) => marineShell(c, g, p, { hue: '#8a7a5f', kind: 'limpet', live: 'limpet' }, n),
+  'Conch': (c, g, p, n) => marineShell(c, g, p, { hue: '#d99b7d', kind: 'conch', live: 'conch' }, n),
+  'Nautilus': (c, g, p, n) => marineShell(c, g, p, { hue: '#e8dcc6', kind: 'spiral', live: 'nautilus' }, n),
+  'Cowrie': (c, g, p, n) => marineShell(c, g, p, { hue: '#8b5a2b', kind: 'cowrie', live: 'cowrie' }, n),
   'Snail': (c, g, p, n) => marineShell(c, g, p, { kind: 'snail', hue: '#8d6f43' }, n),
   'Land Snail': (c, g, p, n) => marineShell(c, g, p, { hue: '#b08655', kind: 'snail' }, n),
-  'Sea Snail': (c, g, p, n) => marineShell(c, g, p, { hue: '#5a5347', kind: 'snail' }, n),
+  'Sea Snail': (c, g, p, n) => marineShell(c, g, p, { hue: '#5a5347', kind: 'snail', live: 'sea-snail' }, n),
   'Water Snail': (c, g, p, n) => marineShell(c, g, p, { hue: '#7e6a33', kind: 'snail' }, n),
   'Freshwater Snail': (c, g, p, n) => marineShell(c, g, p, { kind: 'snail', hue: '#4a5a4e', scale: 0.86 }, n),
   /* ── RADIAL INVERTEBRATES ── body plans nothing else in the game had ── */

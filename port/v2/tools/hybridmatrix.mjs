@@ -23,8 +23,8 @@ const V2 = path.resolve(HERE, '..');
 const APP = path.join(V2, 'apps', 'game');
 const DIST = path.join(APP, 'dist');
 const SMOKE = path.join(APP, 'smoke');
-const BROWSER_SCHEMA = 'cf.hybrid-continuity.browser-report.v2';
-const EVIDENCE_SCHEMA = 'cf.hybrid-continuity.evidence.v2';
+const BROWSER_SCHEMA = 'cf.hybrid-continuity.browser-report.v3';
+const EVIDENCE_SCHEMA = 'cf.hybrid-continuity.evidence.v3';
 const NATIVE = 440;
 const CARD = 332;
 const STAGES = Object.freeze(['pure', 'earth-earth', 'earth-alien', 'next-alien', 'floor']);
@@ -383,8 +383,15 @@ function validateMixedInput(input, expected, spec, attempt, where) {
   assert(derivation.formula === expected.formula && derivation.heat === expected.heat,
     `${where}: mixed input derivation formula mismatch`);
   if (expected.named) {
-    assert(derivation.kind === 'named-earth-seed-search' && derivation.exact_name_matches === 1,
-      `${where}: named Earth provenance missing`);
+    assert(derivation.kind === expected.derivationKind
+      && derivation.exact_name_matches === expected.exactNameMatches
+      && derivation.owner_source === expected.ownerSource
+      && derivation.route_owner === `${expected.kingdom}|${spec.name}`,
+    `${where}: named Earth owner provenance missing`);
+    if (expected.ownerSource === 'deduped-legacy-route') {
+      assert(derivation.route_owner_verified === true && derivation.exact_name_matches === 0,
+        `${where}: deduped legacy route owner was not verified`);
+    }
     assert(genome._earthName === spec.name && genome._earthBlend === undefined
       && genome._earthBlendKingdom === undefined && genome._anchorVal === undefined,
     `${where}: named Earth lineage fields invalid`);
@@ -398,15 +405,21 @@ function validateMixedInput(input, expected, spec, attempt, where) {
 function mixedInputContract(spec, attempt) {
   if (spec.kind === 'single-lineage-owner') {
     const earth = { id: 'earth', kingdom: spec.owner, named: true, heat: 1,
-      base: 0xC2055, formula: 'hashInt(0xC2055,salt,attempt)' };
+      base: 0xC2055, formula: 'hashInt(0xC2055,salt,attempt)',
+      derivationKind: 'named-earth-seed-search', exactNameMatches: 1,
+      ownerSource: 'current-catalogue' };
     const wild = { id: 'wild', kingdom: spec.other, named: false, heat: attempt % 3,
       base: 0xA11E7, formula: 'hashInt(0xA11E7,salt,attempt)' };
     return spec.order === 'earth-first' ? [earth, wild] : [wild, earth];
   }
   const flora = { id: 'flora-earth', kingdom: 'flora', named: true, heat: 1,
-    base: 0x6A1A, formula: 'hashInt(0x6A1A,salt,attempt)' };
+    base: 0x6A1A, formula: 'hashInt(0x6A1A,salt,attempt)',
+    derivationKind: 'named-earth-seed-search', exactNameMatches: 1,
+    ownerSource: 'current-catalogue' };
   const microbe = { id: 'microbe-earth', kingdom: 'microbe', named: true, heat: 1,
-    base: 0x6A1B, formula: 'hashInt(0x6A1B,salt,attempt)' };
+    base: 0x6A1B, formula: 'hashInt(0x6A1B,salt,attempt)',
+    derivationKind: 'legacy-named-route-seed-search', exactNameMatches: 0,
+    ownerSource: 'deduped-legacy-route' };
   return spec.order === 'flora-first' ? [flora, microbe] : [microbe, flora];
 }
 function validateMixedControl(control, expectedGenome, selectedPortraitHash, where) {
@@ -554,7 +567,7 @@ function validateBrowserReport(report, options = {}) {
     && report.summary.mixed_kingdom_sentinels === 16 && report.summary.mixed_portraits === 16,
   'browser report summary is incomplete');
   assert(isObject(report.checks), 'browser report omitted checks');
-  const requiredChecks = ['exact_catalogue_matches', 'no_handwritten_lineage_fields', 'cross_genome_provenance',
+  const requiredChecks = ['earth_owner_sources_verified', 'no_handwritten_lineage_fields', 'cross_genome_provenance',
     'anchor_values_exact', 'production_matches_fresh_route', 'repeated_fresh_render_stable',
     'stripped_lineage_bypass_differs', 'stage_genome_identities_distinct',
     'pixel_identity_groups_accounted', 'cache_permutation_independent',
@@ -890,8 +903,8 @@ function writeReadme(file, report) {
     'Each of the 12 lineage sheets shows five genomes produced by the real game path:',
     'pure Earth, Earth x Earth (0.90), Earth x alien (0.73), next alien (0.46), and the 0.22 floor.', '',
     'mixed-kingdom/ adds 16 real crossGenome sentinels: Apple and Wolf in both parent orders',
-    'and both child kingdoms, plus duplicate-name Green Algae in both parent orders, both selected',
-    'catalogue owners, and both child kingdoms. These bind `_earthBlendKingdom` and production route',
+    'and both child kingdoms, plus Green Algae in both parent orders, both the current flora catalogue',
+    'owner and retained legacy microbe route owner, and both child kingdoms. These bind `_earthBlendKingdom` and production route',
     'to the selected lineage owner; stripped, missing-marker, and counterfactual-owner controls are',
     'recorded with exact genomes and hashes in manifest.json.', '',
     'Use lineage-sheets/ at normal size, join-atlases/ for declared 4x attachment crops,',
@@ -1058,7 +1071,7 @@ async function generate(options) {
     console.log('HYBRID CONTINUITY MATRIX EVIDENCE READY - UNREVIEWED');
     console.log('  principal matrix: 12 lineages x 5 stages = 60 portraits');
     console.log('  reversed-parent cache subset: 6 pairs / 12 portraits');
-    console.log('  mixed-kingdom owner sentinels: 16 portraits (both orders/child kingdoms; duplicate owner pair included)');
+    console.log('  mixed-kingdom owner sentinels: 16 portraits (both orders/child kingdoms; current + legacy route owners included)');
     console.log(`  review artefacts: ${assets.length}`);
     console.log(`  output: ${output}`);
     console.log(`  machine anchor differentiation: ${first.report.machine_anchor_visual_status}`);
@@ -1097,9 +1110,14 @@ function makeFixtureMixedSentinels(assets) {
       const seed = hashInt(expected.base, spec.salt, attempt);
       const extras = expected.named ? { _earthName: spec.name } : {};
       const genome = fakeGenome(seed, expected.kingdom, expected.heat, extras);
-      const derivation = { kind: expected.named ? 'named-earth-seed-search' : 'alien-seed-search',
+      const derivation = { kind: expected.named ? expected.derivationKind : 'alien-seed-search',
         formula: expected.formula, salt: spec.salt, attempt, seed, heat: expected.heat,
-        ...(expected.named ? { exact_name_matches: 1 } : {}) };
+        ...(expected.named ? {
+          exact_name_matches: expected.exactNameMatches,
+          owner_source: expected.ownerSource,
+          route_owner: `${expected.kingdom}|${spec.name}`,
+          ...(expected.ownerSource === 'deduped-legacy-route' ? { route_owner_verified: true } : {}),
+        } : {}) };
       return { id: expected.id, genome, genome_sha256: genomeHash(genome), derivation };
     });
     const anchor = spec.kind === 'duplicate-name-owner' ? 0.9 : 0.73;
@@ -1235,7 +1253,7 @@ function makeFixtureReport() {
     summary: { lineages: 12, principal_portraits: 60, cache_controls: 6, cache_portraits: 12,
       mixed_kingdom_sentinels: 16, mixed_portraits: 16,
       assets: assets.length, pixel_identical_lineages: 0, pixel_identical_lineage_ids: [] },
-    checks: { exact_catalogue_matches: true, no_handwritten_lineage_fields: true, cross_genome_provenance: true,
+    checks: { earth_owner_sources_verified: true, no_handwritten_lineage_fields: true, cross_genome_provenance: true,
       anchor_values_exact: true, production_matches_fresh_route: true, repeated_fresh_render_stable: true,
       stripped_lineage_bypass_differs: true, stage_genome_identities_distinct: true,
       pixel_identity_groups_accounted: true, cache_permutation_independent: true,
@@ -1290,6 +1308,15 @@ function runSelftest() {
   expectRejected('hybrid bypass', () => validateBrowserReport(bypass), /generic procedural route/);
   const missingMixed = structuredClone(report); missingMixed.mixed_kingdom_sentinels.pop();
   expectRejected('missing mixed sentinel', () => validateBrowserReport(missingMixed), /expected 16 mixed-kingdom sentinels/);
+  const legacyClaimedAsCatalogue = structuredClone(report);
+  const legacyInput = legacyClaimedAsCatalogue.mixed_kingdom_sentinels[8].inputs
+    .find((input) => input.id === 'microbe-earth');
+  legacyInput.derivation.kind = 'named-earth-seed-search';
+  legacyInput.derivation.exact_name_matches = 1;
+  legacyInput.derivation.owner_source = 'current-catalogue';
+  delete legacyInput.derivation.route_owner_verified;
+  expectRejected('deduped legacy owner claimed as current catalogue',
+    () => validateBrowserReport(legacyClaimedAsCatalogue), /named Earth owner provenance missing/);
   const mixedOwnerLoss = structuredClone(report);
   mixedOwnerLoss.mixed_kingdom_sentinels[0].child_genome._earthBlendKingdom = 'fauna';
   mixedOwnerLoss.mixed_kingdom_sentinels[0].child_genome_sha256 =
@@ -1365,7 +1392,7 @@ function runSelftest() {
   console.log('  exact-genome stages with disclosed byte-identical pixels: accepted as OPEN/FAIL evidence');
   console.log('  missing/duplicate/handwritten/nondeterministic/stage-order defects: rejected');
   console.log('  hybrid bypass + seed-only cache collision: rejected');
-  console.log('  mixed owner/route/child/order + duplicate marker/owner bypasses: rejected');
+  console.log('  current/legacy owner provenance + mixed route/child/order/marker bypasses: rejected');
   console.log('  stale genome/output hashes + dimensions: rejected');
   console.log('  traversal/existing/overlap/symlink targets: rejected');
 }
