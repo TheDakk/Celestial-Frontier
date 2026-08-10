@@ -1,7 +1,35 @@
 # Earth Lineage, Breeding & Replayability
 
-_Design north star + build status. Matches code as of 2026-07-21 (v1.6 Batch 12).
+_Design north star + build status. Matches code as of 2026-08-10 (full-catalogue reset).
 Companion to `ART_DIRECTION.md` and `PROCEDURAL_CHARACTERISTICS.md`._
+
+> **2026-08-10 reset correction:** the v2 override router had been sending bred
+> `_earthBlend` genomes through generic procedural painters before the lineage-aware
+> Earth owner could preserve their scaffold. The typed genetics facade now stores
+> the selected parent's set-qualified owner as `_earthBlendKingdom` without changing
+> the lifted inheritance RNG stream. Fauna returns to the lineage-aware HD renderer;
+> flora, fungi and microbe blends use the exact kingdom+name owner with the complete
+> child genome unchanged. Portrait and thumbnail caches share a canonical key over
+> the complete deterministic genome because `A×B` and `B×A` can share a derived seed
+> while inheriting different traits. `npm run hybridcheck` verifies final production
+> browser pixels across all four kingdoms, duplicate names, both parent orders,
+> multi-generation/cache/repeat cases and injected failures.
+>
+> **The focused Apple and Vanilla continuity blockers are independently closed.**
+> Vanilla r6 passes at `floraoverrides2.ts` SHA-256
+> `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`.
+> Its pure portrait remains byte-exact to
+> `3f6834b7f984b35186fa1c441eeb4537d3e5793d446e447b021a1e3687939a25`;
+> five stages are unique, preserve defining Vanilla organs, join continuously,
+> and drift progressively farther from pure as the anchor falls. The r6 matrix
+> validates 234/234 assets and both browser orders. `npm run hybridcheck` now
+> requires five exact ID+kingdom+name focused lineages covering all four kingdoms and rejects eleven
+> injected negative controls, including focused-species substitution and simulated Vanilla stage collapse.
+> Schema v2's Green Algae stop was a real harness contract bug, not transient
+> provenance; schema v3 repairs current-catalogue vs retained-legacy-route
+> ownership and its sentinels are green. These focused results do not certify
+> every possible bloodline; routing correctness and distinct hashes alone still
+> do not prove that every graft is seamless.
 
 The central rule (Nick): **never make the player choose between keeping a beloved
 Earth creature and participating in the alien progression system — the game lets
@@ -14,7 +42,7 @@ making either obsolete.
 | origin | how it renders | ancestry |
 |---|---|---|
 | **Pure Earth** | handcrafted Earth rig (`_earthName` → `_earthArt`) | none |
-| **Earth-lineage hybrid** | Earth rig scaffold + procedural palette + drift graft (`_earthBlend`) | ≥1 Earth ancestor |
+| **Earth-lineage hybrid** | set-qualified Earth owner/scaffold + child palette/traits + compatible drift (`_earthBlend`, `_earthBlendKingdom`) | ≥1 Earth ancestor |
 | **Pure alien** | procedural body-plan + phenotype resolver | none |
 
 Pure alien life must stay genuinely alien — it never needs an Earth ancestor, and
@@ -24,9 +52,11 @@ crystalline metabolism, extreme limb layouts, exotic senses).
 ## Breeding model — AS BUILT
 
 - **Dominant anatomical scaffold** (not a 50/50 body average): a bred child of an
-  Earth parent renders through that parent's Earth rig (`crossGenome` sets
-  `_earthBlend`; `hdGenesFor` applies the rig + anatomy but restores the child's
-  procedural palette). Propagates across generations.
+  Earth parent records the selected parent's exact catalogue owner (`crossGenome`
+  sets `_earthBlend` + `_earthBlendKingdom`). Fauna uses the HD lineage rig;
+  flora/fungi/microbe use the exact named owner with the child's palette/genes.
+  This set-qualified lineage propagates across generations even when the child's
+  gameplay kingdom came from the other parent.
 - **Organic generational drift (no toggle — "part of the game"):** the Earth-anchor
   strength is set AT BREEDING by the mate's alienness —
   `_anchorVal = clamp(dom − (0.05 + (1−mate)·0.22), 0.22, 0.9)`, where a pure-Earth

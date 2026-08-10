@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-07-30. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-10. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -247,3 +247,41 @@ reviewer being unable to see the species at all. The same shape as the procedura
 being invisible to every name-based instrument.
 > **The remedy:** when a review tool reports "nothing here", determine whether the thing is
 > broken or merely unreachable BEFORE concluding anything about the art.
+
+---
+
+## Added 2026-08-10 (full-catalogue reset foundation)
+
+⚠⚠ **A DISPLAY NAME IS A LABEL, NOT A CATALOGUE IDENTITY.** The Earth roster owns four
+names in two sets—Green Algae, Reindeer Lichen, Snow Algae, and Tardigrade—and a review
+loader keyed by bare name silently gave the later set's `mustRead` contract to both rows.
+Every file still joined; the judge was simply shown the wrong organism contract. Review,
+comparison, merge, package, cache, and lineage joins use **set + species** (or a stronger
+stable identity), reject duplicate exact identities, and carry a negative control that
+reproduces the bare-name collapse.
+
+⚠⚠ **A CHILD'S GAMEPLAY KINGDOM IS NOT NECESSARILY THE CATALOGUE THAT OWNS ITS EARTH
+ANATOMY.** A mixed-kingdom child can inherit an Earth lineage from either parent while its
+own `kingdom` comes from the other. Store the selected lineage's set-qualified owner when
+breeding, route through that exact owner, and test final pixels in fauna, flora, fungi, and
+microbe cases. A fauna-only outcome gate was green while non-fauna blends either crossed
+ownership boundaries or ignored the inherited Earth route. Route fields existing in memory
+are not evidence; drive the production renderer for every kingdom and both parent orders.
+
+⚠⚠ **A DIRTY-WORKTREE CAPTURE IS DIAGNOSTIC EVIDENCE, NEVER CERTIFICATION PROVENANCE.**
+File and pixel hashes can make an uncommitted capture reproducible enough to investigate,
+but another machine cannot fetch the exact state from a 40-hex commit. Freeze one clean
+commit before the official render; bind the evidence to that exact HEAD; prove the scoped
+source stays clean and unchanged from start to finish; write to a new evidence root. If any
+source changes while review is running, discard promotion and recapture. Never describe a
+dirty provisional matrix or packet set as the final review source.
+
+⚠⚠ **A VERDICT MUST BE BOUND TO THE VIEW THE REVIEWER WAS REQUIRED TO JUDGE.** A native
+portrait hash alone does not prove unlabeled gameplay identity, an old/current comparison,
+or that the correct `mustRead` contract was present. Literal species certification binds
+each exact set/species row to the native 440px portrait, the unlabeled 300px gameplay render,
+the **actual unlabeled 132px thumbnail**, the labelled old/current comparison, and the hash of
+its set-specific `mustRead` or procedural-plan payload, plus date, reviewer attestation, source
+commit, and ruler version. If any bound input moves, the verdict is stale. Resolution-specific
+evidence is not optional: Fruit Bat's first rebuild contained details enlarged that did not
+survive card scale, so code presence and native-scale visibility were both false comfort.

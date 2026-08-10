@@ -22,6 +22,7 @@
     "@cf/domain-rand": "*",
     "@cf/domain-naming": "*",
     "@cf/domain-genome": "*",
+    "@cf/domain-genetics": "*",
     "@cf/domain-combatcore": "*",
     "@cf/domain-strays": "*",
     "@cf/domain-ecology": "*",

@@ -1,6 +1,45 @@
 # Procedural (Non-Earth) Characteristics — Catalog & Pass Map
 
-_Matches code as of 2026-07-21 (v1.6 Batch 15.5). Companion to `ART_DIRECTION.md`._
+_Legacy v1 catalogue plus a current v2 reset overlay. The reset overlay matches
+the procedural source as of 2026-08-10; dated B15 sections below remain legacy
+`main.js` snapshots unless explicitly labelled current. Companion to
+`ART_DIRECTION.md` and `LINEAGE_AND_BREEDING.md`._
+
+> **2026-08-10 full-catalogue reset:** prior GP7/GP7.1 bands are historical,
+> not current certification. Clean reset r1 reviewed all 1,250 rows as **516 PASS
+> / 14 POLISH / 720 FAIL**; the procedural subset is **212 / 6 / 22**. Wave 1
+> then selected exactly 177 reset non-PASS targets, including **28 procedural
+> identities**, and independent 440/300/132 review closed the root-owned group
+> (2 fungi + 8 microbes + 28 procedural) **38/38 PASS**. This scoped result is
+> not a new 1,250-row tally. All 240 deterministic procedural identities and 46
+> plan families remain in the final certification scope.
+>
+> Set-qualified `_earthBlend` ownership and cache identity are guarded by final
+> browser pixels across all four kingdoms (`npm run hybridcheck` from `port/v2`).
+> Its current contract requires five exact ID+kingdom+name focused lineages covering fauna, flora,
+> fungi and microbes and rejects eleven injected negative controls. Apple's prior
+> repair remains accepted, and Vanilla Orchid r6 is independently PASS at source
+> SHA-256 `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`:
+> the pure portrait is byte-exact, all five stages are unique and integrated,
+> progressive drift survives the 0.22 anchor floor, and the matrix validates
+> 234/234 assets in both browser orders. The prior
+> `FAIL_BYTE_IDENTICAL_STAGES` result is diagnostic history. These focused
+> results do not certify every possible lineage or create a new catalogue tally.
+> See `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+
+> **Reading boundary:** the “TEXT-ONLY TODAY” and “STRONG” assessments below are
+> preserved pre-Pass-7/v1 observations, not claims about current v2 pixels. The
+> Reset r1 has now measured all 240 procedural identities. The legacy sections
+> remain design history until the bounded repair waves and clean post-wave
+> collector/hybrid matrix support a complete current-state rewrite.
+
+> **Whole-form ownership law:** a repaired procedural body or growth plan owns one
+> winning route. Required anatomy or traits behind an earlier return are inert;
+> painting a second body/overlay afterward produces pasted seams. Prove the route,
+> repair the owning whole form, and freeze sibling/control hashes before narrowing
+> dead alternatives. Wave 1 used that rule for connected myriapod appendages,
+> coherent procedural plant plans, and the tree reset; code presence alone never
+> counts as visible morphology.
 
 > **B15 release-polish (render-only, fp 50/50):** FA_SKIN now renders as STRUCTURAL material
 > (scale rows / fur fringe / chitin bands / wet sheen / armour plates / warts / feathers /
@@ -77,7 +116,7 @@ folded-at-rest or spread, taking the hide texture (today only a faint stub
 membrane draws). (b) plan 10/11 tusks/horns are small & generic — give them the
 variety we gave Earth (curved/straight/spiral/palmate, paired tusks).
 
-## 2. Fauna HEAD (`g.head % 10` = `FA_HEAD`) — **TEXT-ONLY TODAY (biggest gap)**
+## 2. Fauna HEAD (`g.head % 10` = `FA_HEAD`) — **LEGACY PRE-PASS-7 SNAPSHOT**
 
 Every descriptor draws the **same generic circle-head + one eye + an occasional
 thin nub/horn**. The `proc-heads` sheet shows all ten rows are visually identical.
@@ -100,7 +139,7 @@ thin nub/horn**. The `proc-heads` sheet shows all ten rows are visually identica
 frill, crest, tendrils, dome, eyeless. Highest visual payoff of the whole
 procedural set.
 
-## 3. Fauna TAIL (`g.tail % 7` = `FA_TAIL`) — TEXT-ONLY TODAY
+## 3. Fauna TAIL (`g.tail % 7` = `FA_TAIL`) — **LEGACY PRE-PASS-7 SNAPSHOT**
 
 `whip / finned / spiked / prehensile / plumed / stinger` all draw the **same thin
 curved tail** (`proc-features` rows TAIL 1–6). Only length varies slightly.
@@ -120,7 +159,7 @@ rendered:** `single curved horn`, `armored crest-plates`, `humped water-store`
 back hump for humped; dorsal plates for crest-plates; a single asymmetric horn),
 mirroring Earth's `withers`/`shag`/`orn` flags.
 
-## 5. Fauna EYES / LIMBS / SKIN — TEXT-ONLY TODAY
+## 5. Fauna EYES / LIMBS / SKIN — **LEGACY PRE-PASS-7 SNAPSHOT**
 
 - `FA_EYES` (1/2/4/6/8): always draws **one eye** regardless (`proc-features` EYES
   rows identical). Opportunity: multi-eye clusters, compound eyes, eyeless.
@@ -137,7 +176,7 @@ serpent / jelly / sessile-radial / ceph / insect / crust / fish-swimmer. This is
 the piece that already reached Earth-rig quality. **Next:** within-clade variation
 (feeding-specific heads, foot/joint types, propulsion, predator-vs-grazer).
 
-## 7. Procedural FLORA (`g.form % 16` + `aq`/`af`/`lumin`) — STRONG
+## 7. Procedural FLORA (`g.form % 16` + `aq`/`af`/`lumin`) — **LEGACY V1 STATUS: STRONG**
 
 All growth forms render distinct and recognizable (`proc-flora-forms`):
 `tree · conifer · palm · shrub · herb · flower · grass · cactus · fern · vine ·

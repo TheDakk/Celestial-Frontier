@@ -1,5 +1,12 @@
 # PLAN — driving the catalogue to a clean pass
 
+> **Historical planning note.** The user now requires a literal all-fresh
+> strict-PASS certification rather than this document's former zero-FAIL
+> recommendation. The live contract is
+> [GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md](GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md);
+> preserve this plan for its prior reasoning and do not use its stale counts as
+> current evidence.
+
 Written 2026-08-03 at the end of the waves 35–47 session, at Nick's request: *"let's try to get
 the 100% pass."* This is the map and the route. It is deliberately honest about what "100%"
 can and cannot mean, because the number that gets quoted back matters.

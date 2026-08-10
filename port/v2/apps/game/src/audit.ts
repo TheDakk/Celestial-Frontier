@@ -2,10 +2,12 @@
    ported): every Earth-catalog name + a procedural spread through the
    VERBATIM hdart engine — counted, failures named, contact sheets baked.
    Driven headless by tools/speciesaudit.mjs; also runnable by hand. */
-import { speciesPortrait, CLIPPED } from '@cf/art/species';
+import { speciesPortrait, verbatimSpeciesPortraitForAudit, CLIPPED } from '@cf/art/species';
 import { _EARTH_NAMES } from '@cf/domain-descriptors';
 import { makeGenome } from '@cf/domain-genome';
+import { crossGenome } from '@cf/domain-genetics';
 import { hashInt } from '@cf/domain-rand';
+import { resolveOverride } from '../../../packages/art/src/speciesoverrides.js';
 
 const log = document.getElementById('log')!;
 const say = (t: string): void => { log.textContent = t; };
@@ -22,6 +24,353 @@ async function pushFull(k: string, name: string, url: string | null): Promise<vo
   while (fullQ.length > 12) await new Promise((r) => setTimeout(r, 80));   /* let the driver drain */
 }
 interface SheetSpec { key: string; cells: Array<{ name: string; url: string | null }> }
+
+/* HYBRID OUTCOME MODE (?hybrid=1): prove the kingdom-specific production
+   contract with real crosses. Fauna lineage stays on the lineage-aware
+   verbatim renderer; flora/fungi/microbe lineage uses its exact named owner
+   with the child genome. A stripped child must take a different procedural
+   outcome, and final data URLs catch cache collisions between full genomes. */
+async function hybridBlendAudit(): Promise<void> {
+  type K = 'fauna' | 'flora' | 'fungi' | 'microbe';
+  type G = Record<string, unknown>;
+  const cross = (a: G, b: G): G => crossGenome(a as never, b as never) as unknown as G;
+  const named = (seed: number, kingdom: K, name: string): G => ({
+    ...makeGenome(seed >>> 0, kingdom, 1) as unknown as G,
+    _earthName: name,
+  });
+  const alien = (seed: number, kingdom: K, heat: number): G =>
+    makeGenome(seed >>> 0, kingdom, heat) as unknown as G;
+  const stripLineage = (genome: G): G => {
+    const stripped = { ...genome };
+    delete stripped._earthName;
+    delete stripped._earthBlend;
+    delete stripped._earthBlendKingdom;
+    delete stripped._anchorVal;
+    delete stripped._src;
+    return stripped;
+  };
+  const freshRoute = (genome: G): { owner: 'owned' | 'verbatim'; pixels: string } => {
+    const owned = resolveOverride(genome as never);
+    return owned === null
+      ? { owner: 'verbatim', pixels: verbatimSpeciesPortraitForAudit(genome) }
+      : { owner: 'owned', pixels: owned };
+  };
+  const routeLabel = (genome: G, owner: 'owned' | 'verbatim'): string =>
+    typeof genome._earthName === 'string' ? `named-${owner}`
+      : typeof genome._earthBlend === 'string' ? `lineage-${owner}`
+        : `procedural-${owner}`;
+
+  let proceduralBase: G | null = null;
+  let procedural = '';
+  let proceduralVerbatim = '';
+  for (let i = 0; i < 32; i++) {
+    const candidate = alien(hashInt(0xB1E7D, i, 9) >>> 0, 'fauna', 1);
+    const routed = speciesPortrait(candidate);
+    const fallback = verbatimSpeciesPortraitForAudit(candidate);
+    if (routed !== fallback) {
+      proceduralBase = candidate;
+      procedural = routed;
+      proceduralVerbatim = fallback;
+      break;
+    }
+  }
+  if (!proceduralBase) {
+    (window as unknown as Record<string, unknown>).__CF_HYBRID__ = {
+      done: true, pass: false, errors: ['negative control could not find a procedural override route'],
+    };
+    return;
+  }
+
+  const focusSpecs: Array<{ id: string; kingdom: K; name: string; seed: number }> = [
+    { id: 'fauna-wolf', kingdom: 'fauna', name: 'Wolf', seed: 0xEA7101 },
+    { id: 'flora-apple', kingdom: 'flora', name: 'Apple', seed: 0xEA7201 },
+    { id: 'fungi-oyster-mushroom', kingdom: 'fungi', name: 'Oyster Mushroom', seed: 0xEA7301 },
+    { id: 'microbe-amoeba', kingdom: 'microbe', name: 'Amoeba', seed: 0xEA7401 },
+    { id: 'flora-vanilla-orchid', kingdom: 'flora', name: 'Vanilla Orchid', seed: 0xEA7501 },
+  ];
+  const stageIds = ['pure-earth', 'earth-earth-0.90', 'earth-alien-0.73', 'next-alien-0.46', 'floor-0.22'];
+  const anchorTargets = [1, 0.9, 0.73, 0.46, 0.22];
+  const focusLineages = focusSpecs.map((spec, specIndex) => {
+    const earth = named(spec.seed, spec.kingdom, spec.name);
+    const earthMate = named(spec.seed + 1, spec.kingdom, spec.name);
+    const alien1 = alien(0xA11000 + specIndex * 0x100 + 1, spec.kingdom, 1);
+    const alien2 = alien(0xA11000 + specIndex * 0x100 + 2, spec.kingdom, 2);
+    const alien3 = alien(0xA11000 + specIndex * 0x100 + 3, spec.kingdom, 3);
+    const earthEarth = cross(earth, earthMate);
+    const earthAlien = cross(earth, alien1);
+    const nextAlien = cross(earthAlien, alien2);
+    const floor = cross(nextAlien, alien3);
+    const genomes = [earth, earthEarth, earthAlien, nextAlien, floor];
+    const pixels: string[] = [];
+    const stages = genomes.map((genome, stageIndex) => {
+      const fresh = freshRoute(genome);
+      const production = speciesPortrait(genome);
+      const repeated = speciesPortrait(genome);
+      const expectedOwner = stageIndex === 0 || spec.kingdom !== 'fauna' ? 'owned' : 'verbatim';
+      const stripped = stageIndex === 0 ? null : stripLineage(genome);
+      const strippedFresh = stripped ? freshRoute(stripped) : null;
+      const strippedProduction = stripped ? speciesPortrait(stripped) : '';
+      pixels.push(production);
+      return {
+        id: stageIds[stageIndex],
+        anchor: stageIndex === 0 ? 1 : Number(genome._anchorVal),
+        expectedAnchor: anchorTargets[stageIndex],
+        route: routeLabel(genome, fresh.owner),
+        expectedRoute: routeLabel(genome, expectedOwner),
+        productionMatchesFresh: production === fresh.pixels,
+        repeatedProductionStable: production === repeated,
+        strippedRoute: strippedFresh ? routeLabel(stripped!, strippedFresh.owner) : null,
+        strippedProductionMatchesFresh: strippedFresh ? strippedProduction === strippedFresh.pixels : null,
+        strippedDiffers: strippedFresh ? production !== strippedProduction : null,
+        lineage: typeof genome._earthBlend === 'string' ? genome._earthBlend : genome._earthName,
+      };
+    });
+    return {
+      id: spec.id,
+      kingdom: spec.kingdom,
+      name: spec.name,
+      parents: { earth, earthMate, alien1, alien2, alien3 },
+      genomes,
+      stages,
+      pixels,
+      stagePixelsDistinct: new Set(pixels).size === pixels.length,
+    };
+  });
+
+  /* Same-name genomes are bred through each catalogue kingdom. The shared
+     derived seed makes this a cache/selector outcome check rather than a
+     hand-authored route fixture. */
+  const duplicateSpecs: Array<{ name: string; kingdoms: [K, K] }> = [
+    { name: 'Green Algae', kingdoms: ['flora', 'microbe'] },
+    { name: 'Snow Algae', kingdoms: ['flora', 'microbe'] },
+    { name: 'Reindeer Lichen', kingdoms: ['flora', 'fungi'] },
+    { name: 'Tardigrade', kingdoms: ['fauna', 'microbe'] },
+  ];
+  const duplicateRouteResults = duplicateSpecs.map((spec, index) => {
+    const seed = 0xD07100 + index * 0x10;
+    const mateSeed = 0xD07200 + index * 0x10;
+    const rows = spec.kingdoms.map((kingdom) => {
+      const earth = named(seed, kingdom, spec.name);
+      const wild = alien(mateSeed, kingdom, 2);
+      const child = cross(earth, wild);
+      const fresh = freshRoute(child);
+      const production = speciesPortrait(child);
+      const stripped = stripLineage(child);
+      const strippedPixels = speciesPortrait(stripped);
+      const expectedOwner = kingdom === 'fauna' ? 'verbatim' : 'owned';
+      return {
+        kingdom,
+        seed: child.seed,
+        lineage: child._earthBlend,
+        route: routeLabel(child, fresh.owner),
+        expectedRoute: routeLabel(child, expectedOwner),
+        productionMatchesFresh: production === fresh.pixels,
+        strippedDiffers: production !== strippedPixels,
+        pixels: production,
+      };
+    });
+    return {
+      name: spec.name,
+      rows,
+      sameDerivedSeed: rows[0]!.seed === rows[1]!.seed,
+      kingdomPixelsDistinct: rows[0]!.pixels !== rows[1]!.pixels,
+    };
+  });
+
+  /* Real breeding allows any two kingdoms. The child kingdom is inherited by
+     a separate RNG pick from the Earth lineage, so both parent orders must keep
+     the catalogue owner even when those values disagree. */
+  const mixedResult = (child: G, label: string, expectedLineage: string, expectedOwner: K) => {
+    const fresh = freshRoute(child);
+    const production = speciesPortrait(child);
+    const stripped = stripLineage(child);
+    const expectedRoute = expectedOwner === 'fauna' ? 'lineage-verbatim' : 'lineage-owned';
+    return {
+      label,
+      childKingdom: child.kingdom,
+      lineage: child._earthBlend,
+      lineageKingdom: child._earthBlendKingdom,
+      expectedLineage,
+      expectedLineageKingdom: expectedOwner,
+      route: routeLabel(child, fresh.owner),
+      expectedRoute,
+      productionMatchesFresh: production === fresh.pixels,
+      strippedDiffers: production !== speciesPortrait(stripped),
+    };
+  };
+  const findMixed = (owner: K, name: string, other: K, order: 'earth-first' | 'earth-second',
+    wantedChild: K, salt: number) => {
+    for (let attempt = 0; attempt < 2048; attempt++) {
+      const earth = named(hashInt(0xC2055, salt, attempt) >>> 0, owner, name);
+      const wild = alien(hashInt(0xA11E7, salt, attempt) >>> 0, other, attempt % 3);
+      const child = order === 'earth-first' ? cross(earth, wild) : cross(wild, earth);
+      if (child.kingdom === wantedChild && child._earthBlend === name
+        && child._earthBlendKingdom === owner) {
+        return mixedResult(child, `${name}/${order}/${wantedChild}`, name, owner);
+      }
+    }
+    throw new Error(`mixed-kingdom sentinel not found: ${name}/${order}/${wantedChild}`);
+  };
+  const mixedKingdomResults = [
+    findMixed('flora', 'Apple', 'fauna', 'earth-first', 'flora', 1),
+    findMixed('flora', 'Apple', 'fauna', 'earth-first', 'fauna', 2),
+    findMixed('flora', 'Apple', 'fauna', 'earth-second', 'flora', 3),
+    findMixed('flora', 'Apple', 'fauna', 'earth-second', 'fauna', 4),
+    findMixed('fauna', 'Wolf', 'flora', 'earth-first', 'fauna', 5),
+    findMixed('fauna', 'Wolf', 'flora', 'earth-first', 'flora', 6),
+    findMixed('fauna', 'Wolf', 'flora', 'earth-second', 'fauna', 7),
+    findMixed('fauna', 'Wolf', 'flora', 'earth-second', 'flora', 8),
+  ];
+  const findDuplicateMixed = (order: 'flora-first' | 'microbe-first', wantedOwner: 'flora' | 'microbe',
+    wantedChild: 'flora' | 'microbe', salt: number) => {
+    for (let attempt = 0; attempt < 2048; attempt++) {
+      const flora = named(hashInt(0x6A1A, salt, attempt) >>> 0, 'flora', 'Green Algae');
+      const microbe = named(hashInt(0x6A1B, salt, attempt) >>> 0, 'microbe', 'Green Algae');
+      const child = order === 'flora-first' ? cross(flora, microbe) : cross(microbe, flora);
+      if (child.kingdom === wantedChild && child._earthBlend === 'Green Algae'
+        && child._earthBlendKingdom === wantedOwner) {
+        return mixedResult(child, `Green Algae/${order}/${wantedOwner}/${wantedChild}`,
+          'Green Algae', wantedOwner);
+      }
+    }
+    throw new Error(`duplicate mixed-kingdom sentinel not found: ${order}/${wantedOwner}/${wantedChild}`);
+  };
+  const duplicateMixedResults = (['flora-first', 'microbe-first'] as const).flatMap((order, orderIndex) =>
+    (['flora', 'microbe'] as const).flatMap((owner, ownerIndex) =>
+      (['flora', 'microbe'] as const).map((childKingdom, childIndex) =>
+        findDuplicateMixed(order, owner, childKingdom, 20 + orderIndex * 4 + ownerIndex * 2 + childIndex))));
+
+  const faunaFocus = focusLineages[0]!;
+  const earthWolf = faunaFocus.parents.earth;
+  const alienFauna = faunaFocus.parents.alien1;
+  const earthEarth = faunaFocus.genomes[1]!;
+  const earthAlien = faunaFocus.genomes[2]!;
+  const grandchild = faunaFocus.genomes[3]!;
+  const earthEagle = named(0xEA7102, 'fauna', 'Eagle');
+  const eagleChild = cross(earthEagle, alienFauna);
+  const alienEarth = cross(alienFauna, earthWolf);
+  const repeatedCross = cross(earthWolf, alienFauna);
+  const earthAlienPixels = speciesPortrait(earthAlien);
+  const alienEarthPixels = speciesPortrait(alienEarth);
+  const actualChildResults = focusLineages.flatMap((lineage) => lineage.stages.slice(1).map((stage) => ({
+    kingdom: lineage.kingdom,
+    blend: stage.lineage,
+    anchor: stage.anchor,
+    route: stage.route,
+    expectedRoute: stage.expectedRoute,
+    routeMatchesExpected: stage.route === stage.expectedRoute,
+    strippedDiffers: stage.strippedDiffers,
+  })));
+  const hybridStages = focusLineages.flatMap((lineage) => lineage.stages.slice(1));
+  const nonFaunaStages = focusLineages.filter((lineage) => lineage.kingdom !== 'fauna')
+    .flatMap((lineage) => lineage.stages.slice(1));
+  const duplicateRows = duplicateRouteResults.flatMap((pair) => pair.rows);
+  const catalogue = _EARTH_NAMES as unknown as Record<K, string[]>;
+  const nonFaunaRouteCoverage = (['flora', 'fungi', 'microbe'] as const).map((kingdom, kingdomIndex) => {
+    const names = catalogue[kingdom];
+    const unowned: string[] = [];
+    for (const [index, name] of names.entries()) {
+      const earth = named(hashInt(0xE471B, kingdomIndex, index) >>> 0, kingdom, name);
+      const wild = alien(hashInt(0xA11E5, kingdomIndex, index) >>> 0, kingdom, index % 3);
+      const child = cross(earth, wild);
+      if (child._earthBlend !== name || Math.abs(Number(child._anchorVal) - 0.73) > 1e-9
+        || resolveOverride(child as never) === null) unowned.push(name);
+    }
+    return { kingdom, catalogueCount: names.length, unowned };
+  });
+  const checks = {
+    proceduralControlDiffersFromVerbatim: procedural !== proceduralVerbatim,
+    productionBlendEqualsVerbatim:
+      earthAlienPixels === verbatimSpeciesPortraitForAudit(earthAlien),
+    blendDiffersFromProcedural: earthAlienPixels !== procedural,
+    lineagesHaveDistinctPixels: earthAlienPixels !== speciesPortrait(eagleChild),
+    anchorValuesHaveDistinctPixels: earthAlienPixels !== speciesPortrait(grandchild),
+    repeatedBlendIsStable: earthAlienPixels === speciesPortrait(earthAlien),
+    actualCrossesWriteLineage: focusLineages.every((lineage) => lineage.genomes.slice(1).every((child) =>
+      child._earthBlend === lineage.name && child._earthBlendKingdom === lineage.kingdom
+      && typeof child._anchorVal === 'number')),
+    actualCrossPixelsUseLineage: hybridStages.every((stage) =>
+      stage.route === stage.expectedRoute && stage.strippedDiffers === true),
+    earthEarthRetainsMoreAnchorThanEarthAlien:
+      Number(earthEarth._anchorVal) > Number(earthAlien._anchorVal),
+    multigenerationAnchorDrifts:
+      Number(grandchild._anchorVal) < Number(earthAlien._anchorVal),
+    faunaAndFloraCrossesCovered:
+      focusLineages.some((row) => row.kingdom === 'fauna') && focusLineages.some((row) => row.kingdom === 'flora'),
+    allKingdomsCovered: new Set(focusLineages.map((row) => row.kingdom)).size === 4,
+    faunaUsesVerbatimLineageRoute:
+      faunaFocus.stages.slice(1).every((stage) => stage.route === 'lineage-verbatim'),
+    nonFaunaUsesOwnedNamedRoute:
+      nonFaunaStages.every((stage) => stage.route === 'lineage-owned'),
+    nonFaunaProductionMatchesOwnedRoute:
+      nonFaunaStages.every((stage) => stage.productionMatchesFresh),
+    floraLineageDiffersWhenStripped:
+      focusLineages.find((row) => row.kingdom === 'flora')!.stages.slice(1).every((stage) => stage.strippedDiffers),
+    fungiLineageDiffersWhenStripped:
+      focusLineages.find((row) => row.kingdom === 'fungi')!.stages.slice(1).every((stage) => stage.strippedDiffers),
+    microbeLineageDiffersWhenStripped:
+      focusLineages.find((row) => row.kingdom === 'microbe')!.stages.slice(1).every((stage) => stage.strippedDiffers),
+    fiveStageTargetsRendered:
+      focusLineages.every((lineage) => lineage.stages.length === 5),
+    anchorTargetsExact: focusLineages.every((lineage) => lineage.stages.every((stage, index) =>
+      Math.abs(Number(stage.anchor) - anchorTargets[index]!) < 1e-9)),
+    focusedStagePixelsStayDistinct:
+      focusLineages.every((lineage) => lineage.stagePixelsDistinct),
+    productionMatchesFreshRoute:
+      focusLineages.every((lineage) => lineage.stages.every((stage) => stage.productionMatchesFresh)),
+    strippedControlsMatchFreshRoute:
+      hybridStages.every((stage) => stage.strippedProductionMatchesFresh === true),
+    crossKingdomDuplicateRoutesAreSetSpecific:
+      duplicateRouteResults.every((pair) => pair.sameDerivedSeed && pair.kingdomPixelsDistinct)
+      && duplicateRows.every((row) => row.lineage && row.route === row.expectedRoute
+        && row.productionMatchesFresh && row.strippedDiffers),
+    mixedKingdomLineageOwnerSurvives:
+      mixedKingdomResults.every((row) => row.lineage === row.expectedLineage
+        && row.lineageKingdom === row.expectedLineageKingdom),
+    mixedKingdomRouteUsesLineageOwner:
+      mixedKingdomResults.every((row) => row.route === row.expectedRoute
+        && row.productionMatchesFresh && row.strippedDiffers),
+    duplicateNameMixedKingdomOwnerSurvives:
+      duplicateMixedResults.every((row) => row.lineage === row.expectedLineage
+        && row.lineageKingdom === row.expectedLineageKingdom
+        && row.route === row.expectedRoute && row.productionMatchesFresh && row.strippedDiffers),
+    nonFaunaCatalogueBlendRoutesOwned:
+      nonFaunaRouteCoverage.every((row) => row.catalogueCount > 0 && row.unowned.length === 0),
+    swappedParentsShareSeedButDifferGenome:
+      earthAlien.seed === alienEarth.seed
+      && JSON.stringify(earthAlien) !== JSON.stringify(alienEarth),
+    swappedParentPixelsStayDistinct: earthAlienPixels !== alienEarthPixels,
+    repeatedCrossIsDeterministic:
+      JSON.stringify(earthAlien) === JSON.stringify(repeatedCross)
+      && speciesPortrait(earthAlien) === speciesPortrait(repeatedCross),
+  };
+  const errors = Object.entries(checks).filter(([, ok]) => !ok).map(([name]) => name);
+  (window as unknown as Record<string, unknown>).__CF_HYBRID__ = {
+    done: true,
+    pass: errors.length === 0,
+    errors,
+    seed: proceduralBase.seed,
+    checks,
+    actualChildResults,
+    focusLineages: focusLineages.map((lineage) => ({
+      id: lineage.id,
+      kingdom: lineage.kingdom,
+      name: lineage.name,
+      stages: lineage.stages,
+      stagePixelsDistinct: lineage.stagePixelsDistinct,
+    })),
+    duplicateRouteResults: duplicateRouteResults.map((pair) => ({
+      name: pair.name,
+      sameDerivedSeed: pair.sameDerivedSeed,
+      kingdomPixelsDistinct: pair.kingdomPixelsDistinct,
+      rows: pair.rows.map(({ pixels: _pixels, ...row }) => row),
+    })),
+    mixedKingdomResults,
+    duplicateMixedResults,
+    nonFaunaRouteCoverage,
+  };
+  say(`hybrid blend audit: ${errors.length ? 'FAIL ' + errors.join(', ') : 'PASS'}`);
+}
 
 /* STRIP MODE (?strip=A,B,C): render just the named species BIG and labelled,
    into one sheet — the standing eyeball instrument for a morphology wave.
@@ -262,6 +611,7 @@ async function proportions(kingdom: string): Promise<void> {
 }
 
 async function run(): Promise<void> {
+  if (new URLSearchParams(location.search).has('hybrid')) { await hybridBlendAudit(); return; }
   const pq = new URLSearchParams(location.search).get('prop');
   if (pq) { await proportions(pq); return; }
   const sp = new URLSearchParams(location.search).get('strip');

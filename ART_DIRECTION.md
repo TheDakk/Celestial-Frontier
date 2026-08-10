@@ -623,13 +623,24 @@ instrument, and its `--assert` mode should survive the port.
 This addendum is the current execution record for the port; it does not retroactively rewrite
 the legacy `main.js` status above.
 
+> **2026-08-09 status correction — GP7 is a frozen baseline, not the current
+> literal certification.** PR #7 merged into `develop` at `52467ba`. Nick's
+> strict-conformity recheck opened GP7.1 remediation: make only named,
+> evidence-backed morphology repairs, then re-render and freshly rejudge the
+> full catalogue. Its first all-fresh baseline is now 1,250 current portraits /
+> 196 hash-bound packets = 318 FAIL / 301 POLISH / 631 PASS; it is a repair
+> input, not a certification. A second named repair pass has produced a new r3
+> 1,250-portrait / 196-packet evidence capture, but it is deliberately
+> unjudged. The ledger itself cannot certify pixels; see
+> `port/v2/reference/GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md`.
+
 - **Current coverage is exactly 1,250 organisms:** 631 Earth fauna, 332 Earth flora,
   27 fungi, 20 microbes, and 240 procedural identities, all exportable as native 440×440 art.
 - **Nick's independent full-catalogue audit** found **381 GOLD / 810 POLISH / 59 FIX** and
   called the build a Gold Candidate. All 59 FIX rows were addressed. His patch review then
   returned **15 PASS / 25 PASS-WITH-POLISH / 19 STILL-FIX / 1 REGRESSION**; the 20 remaining
   rows were reworked with targeted, render-verified changes.
-- **The art is frozen: no global body pass.** GP7 judged 503 changed rows and 62 unchanged
+- **GP7 is frozen as evidence; GP7.1 permits named repairs only, never a global body pass.** GP7 judged 503 changed rows and 62 unchanged
   controls with the same strict ruler. Eligible-row demotions were **62/160 (38.8%)** for the
   edited drift set versus **21/32 (65.6%)** for control, a **−26.8-point** net demotion gap;
   rescues were **104/343 (30.3%)** versus **4/30 (13.3%)**. This calibration is the evidence
@@ -638,5 +649,269 @@ the legacy `main.js` status above.
   pair-specific: honest colour exposed 9 hard look-alike pairs, shape axes reduced that to 2,
   and the Wild Thyme/Mite corrections brought the final **hard-pair count to 0**. The broader
   confusable list remains a watch-list; zero hard pairs does not mean zero visual similarity.
-- GP7 measurement and the complete-catalogue package are complete; commit `a9345c1` is pushed.
-  Draft `openai/windows` → `develop` PR #7 is open for Nick's final package review.
+- GP7 measurement and the complete-catalogue package remain preserved as historical evidence.
+  PR #7 is merged; the GP7.1 remediation/evidence batch may use a new
+  `openai/windows` to `develop` draft PR, but it remains unmergeable until the
+  fresh full-catalogue evidence package and certification exist.
+
+## 2026-08-10 full-catalogue reset — current authority
+
+Nick reopened the full 1,250-organism review after Fruit Bat exposed a false
+acceptance. The GP7 execution addendum above is retained as history, but its
+bands are not a current score or certification. The live ruler, root-cause
+record, and procedure are in
+`port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+
+Foundation defects were corrected before restarting judgement: bred
+`_earthBlend` genomes store the selected Earth parent's set-qualified owner;
+fauna reaches the inherited HD scaffold while flora/fungi/microbe use the exact
+named owner; caches use the full deterministic genome state (not seed alone);
+and review references are keyed by catalogue set plus species so cross-kingdom
+duplicate names cannot receive the wrong contract. `npm run hybridcheck` guards
+the final browser route/cache outcome across every kingdom and injected failures.
+
+The art direction is now explicitly anatomical and topological: silhouette and
+proportion first; connected skeleton/growth structure second; continuous
+membrane, skin, fur, bark, or tissue over that structure; shared light,
+occlusion, outline weight, and material response last. Horns, tusks, wings,
+tails, flowers, fruit, roots, and hybrid traits must grow from the organism,
+never read as stickers or paper pieces. PixiJS may improve resolution,
+filtering, compositing, and animation only after the deterministic Canvas2D
+source geometry reads correctly; a texture upload cannot repair bad anatomy.
+
+The first negative-control family is now frozen under that ruler. Refine2d
+remained four-for-four FAIL because jointed digit/thumb/foot/rear-membrane reads
+did not survive delivery size. Independent refine3 review returned PASS for Bat,
+Fruit Bat, Insect-Eating Bat and Vampire Bat at native 440px, unlabeled gameplay
+300px and actual unlabeled 132px, with exact repeat hashes and unchanged nearby
+controls. This is a four-row family result only; the durable record is
+`port/v2/reference/BAT_FAMILY_RESET_REVIEW_2026-08-10.md`.
+
+The clean reset r1 review is now frozen at commit `bc26e8`. Its official 181
+families / 233 packets bind all 1,250 exact identities to 440px, unlabeled 300px,
+actual unlabeled 132px, labelled old/current, and exact set-specific `mustRead`
+or procedural-plan hashes. The complete fresh result is **516 PASS / 14 POLISH /
+720 FAIL** and is not certification-eligible. No final all-PASS collection or
+image-inclusive ZIP exists.
+
+Hybrid route/cache ownership is technically correct, and the prior focused
+Apple and Vanilla continuity blockers are now independently closed. Vanilla r6
+passes at `floraoverrides2.ts` SHA-256
+`5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`:
+its pure portrait is byte-exact, all five stages remain recognizably Vanilla,
+their joins are continuous, and child-genome drift increases meaningfully as the
+anchor falls. The r6 root validates 234/234 assets and both browser orders.
+`hybridcheck` binds five exact ID+kingdom+name focused lineages across all four kingdoms and rejects
+eleven injected negative controls, including focused-species substitution and Vanilla stage collapse. The earlier
+dirty matrices and prior `FAIL_BYTE_IDENTICAL_STAGES` result are diagnostic
+history. This focused PASS is not a claim that every possible bloodline or the
+full catalogue is certified. The graphics upgrade remains staged: correct
+anatomy and lineage continuity, then a resolution-aware portrait seam, then a
+bounded Pixi living preview, then any later mesh/skeletal production pipeline.
+
+## 2026-08-10 reset Wave 1 — 177 scoped targets independently PASS
+
+Wave 1 is bounded to **177 r1 non-PASS identities**: root 38 (2 fungi + 8
+microbes + 28 procedural), fish 59, trees 48, and fauna2 32. Independent
+source-frozen review closed all four groups at 440/300/132: **177/177 scoped
+PASS**, with named protected controls and deterministic repeats. This is not a
+new catalogue score; the changed rows and remaining 1,073 rows require a later
+complete clean collector run.
+
+The art-direction law earned by the tree work is strict: **one whole form, one
+winning route**. A named replacement painter must own silhouette, attachments,
+material and identity cues together, then return before an older generic body.
+A cue placed after that early return is dead; a second same-target overlay after
+the whole form creates pasted seams even when both fragments are individually
+correct. Prove dispatch ownership before drawing. Delete or narrow a shadowed
+same-target branch only after target/control hashes prove it owns no pixels.
+
+The flora stale cleanup was deliberately pixel-neutral: `strictSignature` and
+`resetTreeSignature` are mutually exclusive for their 39 overlapping names;
+impossible Apricot/Plum arms inside the Cherry/Peach/Pear-only branch and
+unreachable Lime/Orange alternatives after dedicated citrus returns were
+removed. All 58 tree target/control rows stayed byte-identical at 440/300/132
+(0/174 drift), and all 332 Earth-flora native portraits stayed byte-identical.
+Apple's integrated hybrid variation is independently PASS: all five stages are
+distinct with strictly increasing pure-distance, while all 58 tree rows remain
+exact across the three delivery sizes. The judge evidence is
+`C:\Users\Nick\.codex\visualizations\2026\08\09\019fe72d-20c7-73a0-bac7-d2c64d10673d\flora-tree-focus\evidence-apple-continuity-judge`.
+
+## 2026-08-10 reset Wave 2a — anatomy-first family batches
+
+Wave 2a continues the same literal, source-frozen ruler. Mammal A is
+independently **4/4 PASS** (Colugo, Sugar Glider, Fur Seal, Sea Lion): gliding
+membranes, plume/fur, limb contacts and pinniped flippers now read as integrated
+whole-form anatomy at 440/300/132, while 71 protected controls remain exact.
+
+The INVERT winning route independently closes **13/13 PASS**: seven worm forms
+(Earthworm, Flatworm, Ice Worm, Lancelet, Marine Worm, Polychaete Worm, Scale
+Worm) and six sessile/benthic forms (Barnacle, Coral, Cold-Water Coral,
+Deep-Water Coral, Sea Cucumber, Sponge). The governing art rule is body-plan
+truth before decoration: annulation, parapodia/scales, cirri, branching tissue,
+polyps, oscula and tube feet must belong to the continuous body or colony, not
+sit on top as icons.
+
+S1–S3 is independently **15/15 PASS**. Its first result was 11 PASS / 4 FAIL;
+bounded R2 changed exactly Caddisfly, Diving Beetle, Firefly and Water Beetle and
+closed all four at 440/300/132. All 22 protected rows remain byte-identical at
+every scale, and the 156 current/repeat PNGs are complete and deterministic.
+Wave 2a is therefore 32/32 scoped PASS and is committed/pushed as `00e499c`. That scoped
+closure still cannot be converted into a new catalogue score without the full
+1,250 collector.
+
+## 2026-08-10 reset Wave 2b — 51 scoped whole forms independently PASS
+
+Wave 2b closed exactly **51/51 scoped PASS** under the same 440/300/132,
+protected-control, deterministic-repeat and author-separated ruler. This remains
+scoped repair evidence, not a new 1,250-row tally:
+
+- **Mammal B — 25/25 PASS.** The first independent round failed closed at
+  19 PASS / 6 FAIL. Bounded R3 repaired Brown Bear, Grizzly Bear, Bobcat, Lynx,
+  Serval and Sand Cat; the second judge returned 6/6 PASS. Frozen sources are
+  `quadrupedoverrides.ts`
+  `288E54795D4EBD52EE131E4691AFED98AA7409BC033228FE0274B099B6FE7DAE`
+  and `mammaloverrides.ts`
+  `2BB3541963F610B3D4504BEC423C982E1F11E902BD6200AD64E332B8F853CEAA`.
+  The sealed r3 evidence has exact current/repeat surfaces and keeps the retained
+  19 PASS targets plus 75 controls byte-identical.
+- **Bird B1 — 21/21 PASS.** The first judge returned 17 PASS / 4 FAIL; bounded
+  R2 repaired Secretary Bird, Rhea, Seriema and Hummingbird, and the second judge
+  returned 4/4 PASS. Frozen sources are `faunaoverrides.ts`
+  `783DCCE7641E9EA826296922E9787CEE33857A6853CD96563E88F374F1C9BF10`
+  and `birdoverrides.ts`
+  `B5DEBDCA726F48E8405F1D9F47D019E8472A2786825F35DCCFF1E147936494DF`;
+  432 evidence PNGs are exact and all 51 protected rows stay byte-identical.
+- **Invert I — 5/5 PASS.** Banana Slug, Chiton, Comb Jelly, Portuguese
+  Man-of-War and Isopod all pass. The first candidate correctly failed because
+  Banana Slug's four tentacles and tip eyes did not survive 132px; a Banana-only
+  refinement closed it while the other four targets plus 20 controls remained
+  exact. Frozen `invertoverrides.ts` SHA-256 is
+  `9173B81703BE955B857ED5D3A39B09DD196967C63DE40E764D8F79EDB1832B1D`.
+
+The earned direction is broader than adding detail: distinctive anatomy must
+survive the actual card size. If a required shoulder hump, bobtail, facial ruff,
+ear/head proportion, foot/tentacle or organ topology disappears at 132px, the
+row remains FAIL even when native pixels changed. Reopen only that named row,
+freeze every accepted neighbour, then require a second independent verdict.
+Final integrated Wave-2b gates are green with all five source SHAs unchanged,
+and the bounded checkpoint is committed/pushed as `9c148f0`. Full recertification, the
+image-inclusive ZIP, reset PR and release remain OPEN.
+
+## 2026-08-10 reset Wave 2c — 56 scoped whole forms independently PASS
+
+Wave 2c is exactly **56/56 scoped PASS**: Mammal C 13/13, Bird B2 28/28 and
+Invert II 15/15. It remains bounded repair evidence rather than a new 1,250-row
+tally, and every changed delivery surface received an author-separated verdict.
+
+- **Mammal C — 13/13 PASS.** The initial preview was 0/13 candidate-ready
+  because rigid tube joins and pasted attachments required continuous whole-form
+  rebuilds. R2 reached 8/13; R3 reached 11/13, and R3/R4 kept Red Panda and
+  Tasmanian Devil open until hidden leg roots and the organic clipped chest band
+  belonged to the body. R5 closed both before final independent judgment.
+- **Bird B2 — 28/28 PASS.** The first independent shared judgment returned
+  25 PASS /3 FAIL. Eider Duck needed a genuinely low-in-water posture, Rail a
+  rump-rooted cocked tail and downcurved probe, and Avocet a continuous recurved
+  bill. The bounded repair changed only those three; final A/B review returned
+  3/3 PASS and preserved the other 25 targets +72 controls.
+- **Invert II — 15/15 PASS.** The first author preview failed closed on five
+  shrimp/amphipod forms; its bounded R2 made them candidate-ready. The first
+  independent shared judgment still returned 13 PASS /2 FAIL on Krill and
+  Tadpole Shrimp. The final repair made Krill's conspicuous stalked compound eyes
+  and Tadpole Shrimp's dense organic leaf-limb field survive 132px; the second
+  judge returned 2/2 PASS.
+
+The admissible shared evidence root is
+`port/v2/apps/game/smoke/wave2c-shared-final-r2-evidence-2026-08-10`; manifest
+SHA-256 is
+`BCB5282571903AC2057F6A5B9F7FCA09C6DE8372E4FEFEEAD8D34340930CE330`.
+It binds 249 rows =56 targets +193 protected controls, 747 surfaces per run and
+1,494 physical PNG hash/dimension checks. Current/repeat is exact on 747/747
+surfaces; all 579 protected surfaces match the shared baseline; all 168 target
+surfaces changed. Final R2 changed only Eider Duck, Rail, Avocet, Krill and
+Tadpole Shrimp (15 surfaces), while the other 244 rows /732 surfaces remained
+exact. Three 139-file input snapshots have zero drift and all three negative
+controls were rejected.
+
+Final source SHA-256 values are `quadrupedoverrides.ts`
+`45B1C645952DAC02EFF9B0D5266BA31DCED6D89176F51417B85A7B0F0B37BB59`,
+`mammaloverrides.ts`
+`50B3B2FFEBF2C6DF1842B9E545CEBC79C4880F376FDD96CA8E8C612150C47EC2`,
+`faunaoverrides.ts`
+`D7917829228DEFFF764D9C5224D55A4C6A708B9FCEDAE4FF7E34149375A907C5`,
+`birdoverrides.ts`
+`C7D536C679460E0BE8ADF38CF14DF0FF3EB4F4E35C6827D8D51DF2997FE8BD21`
+and `invertoverrides.ts`
+`6A4020DD69E65473E8034C58FA398A3099A1339B94D83A838A10EE5C905451A0`.
+
+The integrated gate set is green with all five hashes unchanged: typecheck and
+artunused pass; Vitest is 238 passed /1 skipped across 23 files; speccheck is
+418 declared /0 unread /0 inert; overridecheck is 1,014/1,014 live and
+1,010/1,010 Earth; speciesaudit is 1,250/1,250 with zero failure, duplicate pair
+or clipping; hybridcheck passes and rejects 11 injected failures; hybridmatrix,
+speciesstrip, fullresetlayout and fullresetreview selftests pass; coveragegap is
+1,010/1,010 with zero remaining; `git diff --check` passes. The scoped Wave-2c
+checkpoint is committed/pushed as `dc015cf`. Full recertification, ZIP, reset
+PR, merge, release and deployment remain OPEN.
+
+## 2026-08-10 reset Wave 2d — 50 scoped whole forms independently PASS
+
+Wave 2d is exactly **50/50 scoped PASS** under the same author-separated,
+source-frozen 440/300/132 A/B ruler: Mammal D 16/16, Bird B3 27/27, and Invert
+III 7/7. This remains bounded repair evidence; the frozen full-reset r1 ledger
+is still **516 PASS /14 POLISH /720 FAIL** and no post-wave 1,250-row tally
+exists.
+
+- **Mammal D — 16/16 PASS.** The first shared preview failed closed on Fisher's
+  tail, Marten's ears, Wolverine's claws, Sea Otter's body rotation, Hyrax's ear
+  scale, and Mole's snout/forepaw separation. R2 changed those six. The first
+  independent final judgment still rejected Civet's round muzzle; Civet-only R4
+  supplied the continuous long pointed muzzle and closed the lane while the
+  other 303 shared rows /909 surfaces stayed exact.
+- **Bird B3 — 27/27 PASS.** The first author screen was 11 ready /16 blocked.
+  R2 changed exactly those 16 and retained only Pheasant, Quetzal, and Macaw for
+  tails/streamers that remained too short. R3 changed exactly those three; the
+  independent final judge accepted all 27 with 100 lane controls exact.
+- **Invert III — 7/7 PASS.** The first screen retained only Camel Spider's paired
+  chelicerae/open gape and Tarantula's cheliceral bases, down-folding fangs, and
+  short palps. R2 changed exactly those two; the final independent judge accepted
+  all seven.
+
+The final evidence root is
+`port/v2/apps/game/smoke/wave2d-shared-final-r4-evidence-2026-08-10`; manifest
+SHA-256 is
+`DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE`.
+It binds 304 rows =50 targets +254 protected controls, 912 surfaces per run,
+exact A/B, 762/762 baseline-exact protected surfaces, 150/150 changed target
+surfaces, Civet-only 3/3 final drift, and 909/909 other retained surfaces. Four
+negative controls were rejected. The pre-edit seal is
+`7C68250E3BED9AE64FD5066A4D5389C45056600F09E48B1287253AB20E6B877F`.
+
+Final sources are `faunaoverrides.ts`
+`63D7A9B1E3AE8E2FE359137A030E1AE8AEFC3328ACB5C88FB6E59E7F014A2DA2`,
+`birdoverrides.ts`
+`48FFA589F2273F0F29FD85DF1F05FD070477ADE70F1CDEB7698F5321E5702DC7`,
+`quadrupedoverrides.ts`
+`544F5A6582F467E744C5F2A3ABF0EDF61DE5A5180CF5658155594E5FF86316C1`,
+`mammaloverrides.ts`
+`776FB86FF9A42E348A9278F98F7DC03584568C65A09C637CB1D7BFA38BB7A46E`,
+and `invertoverrides.ts`
+`2BB40BD1838D6B6B01F09B01D3BC4CBE7B00D0F0C219FEA5926BF076A4F39677`.
+
+The deferred routing cleanup is now closed with fresh pixel-neutral proof:
+Mammal C's `marsupial-c1` dispatch is explicit, Skua's impossible Snow-Petrel
+colour arm is removed, and exact Invert-II non-hue options shadowed by named
+early returns are removed. All 254 protected rows remain exact. This reinforces
+the direction rather than changing it: remove unreachable configuration only
+after the winning route and before/after pixels prove that it owns no visible
+result.
+
+The final integrated Wave-2d gates are **green** with all five source hashes and
+the 139-input aggregate unchanged: typecheck/artunused; 238-pass/1-skip Vitest;
+speccheck 419/0/0; coveragegap 1,010/1,010; artaudit 23/0; tokencheck selftest
+16/16; overridecheck 1,014/1,014 routes +1,010/1,010 species; speciesaudit
+1,250/1,250 with zero failure/duplicate/clipping; hybridcheck and its 11
+negatives; hybridmatrix/speciesstrip/fullresetlayout/fullresetreview selftests;
+and `git diff --check`. The checkpoint is ready to commit/push. Full
+recertification, the image-inclusive ZIP, reset PR, merge, release, and
+deployment remain OPEN.

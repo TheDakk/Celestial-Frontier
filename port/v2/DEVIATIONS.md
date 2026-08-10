@@ -13,9 +13,11 @@ as any change that touches an entry.
 
 The species-art surface is the one place the verbatim-parity boundary is OPEN, under Nick's
 approval after the full-catalog review (`port/ART_REVIEW_SPECIES_2026-08-01.md` +
-`audits/species-audit-2026-08-01/`). Corrections live in `packages/art/src/speciesoverrides.ts`
-ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
-`port/MORPHOLOGY_PASS.md`. Gate: `npm run speciesaudit` (1,254/1,254 every batch).
+`audits/species-audit-2026-08-01/`). Named and procedural corrections now live across the bounded
+owners under `packages/art/src/` atop the verbatim engine; unmatched species stay parity-exact.
+Plan + historical waves: `port/MORPHOLOGY_PASS.md`. Current reset gates are `npm run speciesaudit`
+(1,250/1,250) plus `npm run overridecheck` (1,014/1,014 Earth routes, including four cross-set
+duplicates).
 
 - ✔ **D-ART-6 — fungi structural families (wave 1).** The 27 Earth fungi were one mushroom
   recolored (release blocker). Now: bracket/shelf · puffball · coral · morel · mold · earthstar
@@ -1415,3 +1417,240 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   its artlock blast radius. Before deleting a suspected dead route, use the same render/lock proof
   to show that it owns no pixels. **Dead corrective code is worse than absent code because it can
   close a review item without changing the image.**
+
+- ★★★ **D-ART-167 — A COMPLETE LEDGER PROVES PROVENANCE, NOT PIXELS.** (2026-08-09,
+  GP7.1 strict-conformity recheck.) A manifest, 1,250 rows, hashes, and exact joins can prove
+  that a review record is internally coherent while carrying **zero rendered portraits or review
+  strips**. It cannot prove current morphology, and a byte-unchanged carried verdict cannot be
+  promoted to a fresh visual PASS. Literal certification now requires the current 1,250 rendered
+  images, the review strips, a dated fresh strict ledger, and the provenance manifest together;
+  the guard must fail closed when any row is carried or non-PASS. See
+  `reference/GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md`.
+
+- ★★★ **D-ART-168 — A VERDICT WITHOUT THE PORTRAIT AND STRIP HASHES IS A COMMENT,
+  NOT REVIEW EVIDENCE.** (2026-08-09, GP7.1 first all-fresh pass.) The first complete fresh
+  render made it possible to change a painter between the time a packet was opened and a tally
+  was quoted. Names, packet numbers, and even a dated result file would still join perfectly while
+  describing previous pixels. `gp71rejudge` therefore records each native portrait SHA-256 and
+  packet strip SHA-256 in the preparation/index, requires both exact values in every verdict, and
+  refuses collection if any one changes. A repair must create new evidence and a new review; it
+  may never inherit a PASS merely because the species name is unchanged.
+
+- ★★★ **D-ART-169 — A DISPLAY NAME IS NOT AN IDENTITY WHEN THE CATALOGUE OWNS THE SAME NAME IN
+  TWO SETS.** (2026-08-09, full-catalogue reset foundation.) GP7.1's reference loader keyed
+  `fauna.json`, `flora.json`, and `other.json` rows by bare `name`; because `other` loaded last,
+  it silently replaced the Earth-flora contracts for Green Algae, Reindeer Lichen and Snow Algae,
+  and the Earth-fauna contract for Tardigrade, with their other-kingdom rows. Every packet still
+  had a name, reference and valid hash, so completeness/provenance checks stayed green while the
+  judge was shown the wrong required anatomy. The live loader now derives the catalogue set and
+  keys `set + species`, rejects duplicate exact identities, and its self-test pins all four pairs;
+  a bare-name negative control must reproduce and expose the collapse. **Every review, merge,
+  comparison and package join uses the exact set/species identity. Human-readable names are labels,
+  never primary keys.**
+
+- ★★★ **D-ART-170 — A BRED SEED IS NOT A COMPLETE PORTRAIT IDENTITY, AND GENERIC PROCEDURAL
+  ROUTING MUST NOT PREEMPT EARTH LINEAGE.** (2026-08-09, full-catalogue reset foundation.)
+  `crossGenome` correctly wrote `_earthBlend` and `_anchorVal`, and the HD renderer correctly knew
+  how to preserve the inherited Earth scaffold, but `resolveOverride` claimed every genome without
+  `_earthName` first. Mapped children therefore became generic procedural bodies before lineage
+  rendering could run. Independently, the portrait/thumb caches keyed a small seed/name tuple;
+  reverse-parent crosses can share a derived seed while inheriting different traits, and two
+  lineages/anchors could reuse whichever texture painted first. The live route now returns
+  `_earthBlend` genomes to the lineage-aware renderer before procedural mapping, and both caches
+  canonicalize the complete plain genome through one shared key. `hybridblendcheck` drives final
+  browser pixels across actual Earth×Earth, Earth×alien, multi-generation, fauna/flora, lineage,
+  anchor, repeat and cache-order outcomes, then rejects an injected bypass. **Test the rendered
+  outcome and the full pixel input, not the presence of inheritance fields or a convenient seed.**
+
+- ★★★ **D-ART-171 — A HASH-STABLE PORTRAIT CAN BE STABLY WRONG; HASHES PROVE WHICH PIXELS WERE
+  REVIEWED, NOT WHETHER THE ORGANISM IS CORRECT.** (2026-08-09, Fruit Bat reset trigger.) Fruit
+  Bat has the identical SHA-256
+  `877AB8C2028350AF672E4B1E48979834FBCEEC1CE31651A360AD2796AF4B6C72` in GP7.1 r1, r2 and r3,
+  yet direct review found a toy/rodent-like head, rigid paper-like membrane read, missing joined
+  thumb/foot anatomy and intended species eyes overpainted by a later generic eye pass. Earlier
+  PASS/POLISH language and green route/render gates therefore preserved a false acceptance across
+  three perfectly traceable captures. The full catalogue is reopened: old hashes/bands are frozen
+  evidence only, and a current PASS requires unlabeled identity plus every set-specific anatomical
+  must-read, connected attachment/occlusion/material construction, family comparison and injected
+  removal controls at gameplay and native scale. **Hash equality authorizes carry of pixels, never
+  carry of judgement after the ruler or biological contract is shown to be wrong.**
+
+- ★★★ **D-ART-172 — A MIXED-KINGDOM CHILD'S GAMEPLAY KINGDOM IS NOT THE OWNER OF ITS EARTH
+  ANATOMY.** (2026-08-10, full-reset lineage repair.) The lifted breeding body selected an
+  Earth lineage by name, but the renderer later inferred its catalogue from the child's own
+  `kingdom`. That is ambiguous for Green Algae, Reindeer Lichen, Snow Algae and Tardigrade and
+  wrong whenever the child inherited its kingdom from one parent and its Earth scaffold from
+  the other. The typed genetics facade now carries the selected lineage's exact kingdom through
+  the unchanged RNG/name pick as `_earthBlendKingdom`; art resolves that set-qualified owner.
+  Fauna keeps the lineage-aware verbatim scaffold, while flora/fungi/microbe call the exact named
+  owner with the child's complete genome unchanged. Old saves without the marker infer only from
+  live route ownership under a stable fail-closed order. **A lineage name is not enough; store the
+  catalogue that owns it at the moment deterministic inheritance chooses it.**
+
+- ★★★ **D-ART-173 — A FAUNA-GREEN HYBRID GUARD CAN HIDE THREE BROKEN KINGDOMS.** (2026-08-10,
+  mixed-kingdom outcome controls.) The first repaired route correctly returned fauna blends to
+  the HD lineage scaffold and its browser checks went green, while flora, fungi and microbe
+  `_earthBlend` children still had no equivalent lineage fallback and could be treated as generic
+  procedural art. `hybridblendcheck` now drives final production pixels for every kingdom,
+  set-qualified duplicates, both parent orders, lineage stripping, cache order and injected
+  route failures. **When a field crosses a union of kingdoms, a representative from one member
+  does not test the union. Enumerate every owner and assert the rendered outcome.**
+
+- ★★★ **D-ART-174 — A HASHED DIRTY-WORKTREE CAPTURE IS REPRODUCIBLE DIAGNOSIS, NOT FETCHABLE
+  CERTIFICATION.** (2026-08-10, hybrid/reset evidence foundation.) The first two hybrid matrices
+  honestly recorded `HEAD 3528bfb` plus a complete source-file snapshot, and they reproduced the
+  same pixel projection; they also honestly recorded that the art/app source was uncommitted.
+  That is enough to preserve a finding and not enough for another machine to check out the exact
+  state. Official reset layout/review tools therefore require the complete 40-hex current HEAD,
+  reject dirty scoped source for preparation, bind every output to source and evidence hashes,
+  and refuse an existing destination. **Freeze a clean commit before the official render; a hash
+  manifest does not turn an uncommitted workspace into shared provenance.**
+
+- ★★★ **D-ART-175 — CERTIFICATION BINDS THE RULER'S INPUTS, NOT JUST ITS FINAL PORTRAIT.**
+  (2026-08-10, full-reset review contract.) A correct 440px hash can coexist with a signature
+  that disappears at gameplay size, the wrong set's `mustRead`, or a historical comparison the
+  reviewer never saw. The official 1,250-row workflow now binds each exact set/species verdict to
+  native 440px pixels, an unlabeled 300px gameplay render, the actual unlabeled 132px thumbnail,
+  the labelled old/current comparison, the hashed set-specific `mustRead` or procedural-plan
+  payload, review date, source commit, and fixed attestation. The official layout is derived as
+  181 families / 233 packets at a maximum of 10 rows; collection rejects partial, stale or
+  mismatched inputs, and certification writes only for 1,250 fresh PASS.
+  **If resolution, comparison, contract, ruler or source is not bound, the verdict is a comment,
+  not certification evidence.**
+
+- ★★★ **D-ART-176 — A COMPLETE FRESH BASELINE IS A REPAIR AUTHORITY, NOT AN AUTOMATIC
+  CERTIFICATE.** (2026-08-10, full-reset r1.) The clean `bc26e8` capture bound all 1,250 exact
+  identities to the full ruler and collected every row as **516 PASS / 14 POLISH / 720 FAIL**.
+  `all_rows_fresh` and `all_required_evidence_reviewed` are true while
+  `all_rows_literal_pass` and `literal_certification_eligible` are false. That distinction is
+  intentional: a complete honest failure inventory is progress and cannot be relabelled as 100%.
+  The result is frozen at `apps/game/smoke/full-reset-results-2026-08-10-r1/results.json`; later
+  scoped PASS rows do not mutate it. **Freshness proves the baseline is usable; only every row
+  passing authorizes certification.**
+
+- ★★★ **D-ART-177 — A WHOLE-FORM EARLY RETURN DEFINES OWNERSHIP; DETAILS BEHIND IT ARE DEAD,
+  AND A SECOND BODY AFTER IT IS A SEAM.** (2026-08-10, Wave-1 trees.) The first tree repair put
+  later orchard, citrus, blossom and bark cues behind a broader whole-form branch that already
+  returned. The source contained the requested code and the winning pixels could never reach it.
+  Adding still more overlays would have produced double-painted attachments rather than one tree.
+  The corrected shape gives each exact named reset tree one winning whole-form painter, returns
+  before legacy bodies, and keeps accepted rows on their frozen route. Before fixing a named row,
+  prove which branch wins; before removing an apparent duplicate, prove it owns no target/control
+  pixels. **Route ownership is part of morphology: unreachable anatomy is absent anatomy.**
+
+- ★★★ **D-ART-178 — PIXEL-NEUTRAL CLEANUP NEEDS CATALOGUE-SCALE PROOF, AND A SCOPED PASS IS
+  NOT A NEW CATALOGUE TALLY.** (2026-08-10, Wave 1.) The cleanup made `strictSignature` and
+  `resetTreeSignature` mutually exclusive for 39 overlapping names and removed impossible
+  Apricot/Plum and post-return citrus alternatives. It was accepted only after **0/174 drift**
+  across 58 tree target/control surfaces at 440/300/132 and **0/332 drift** across Earth-flora
+  native portraits, with no unread/inert spec fields. Independently, the exact Wave-1 scope—root
+  38 + fish 59 + trees 48 + fauna2 32—closed **177/177 scoped PASS**. Those changed rows cannot
+  simply be added to r1's 516 because no post-wave 1,250-row collector exists. The integrated
+  guard also found Apple's distinct lineage inputs rendered byte-identical stages. The bounded
+  repair at source SHA-256
+  `D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624` is independently
+  judged PASS: 58/58 tree rows remain exact at 440/300/132 (174/174 hashes), all five stages are unique,
+  and pure-distance strictly increases as the anchor falls. **Freeze and report the scope you
+  actually judged; rerun the whole collector before making a whole-catalogue claim.**
+
+- ★★★ **D-ART-179 — A RETAINED COMPATIBILITY ROUTE IS NOT A CURRENT CATALOGUE MEMBER.**
+  (2026-08-10, hybrid-matrix schema v3.) D-CAT-1 makes flora Green Algae the one current roster
+  identity while intentionally retaining the set-qualified microbe painter for old saves. The
+  first live schema-v2 matrix had a real harness contract bug—not transient provenance: it falsely
+  required both route owners to be current members and stopped before evidence capture. Schema v3
+  repairs the provenance model by distinguishing current catalogue ownership from retained
+  legacy-route ownership, exercises both production routes, and negative-controls relabelling the
+  legacy microbe route as current membership. Its sentinels, selftest and TypeScript check are
+  green; both stable browser orders validated 234/234 assets. That first v3 run still reported
+  `FAIL_BYTE_IDENTICAL_STAGES` for pre-existing Vanilla Orchid; the later bounded r6 repair closes
+  that focused defect under D-ART-180. **An audit must test compatibility surfaces without silently
+  rewriting the roster it claims to measure.**
+
+- ★★★ **D-ART-180 — A LINEAGE-DISTINCTNESS GATE MUST INCLUDE THE LINEAGE THAT ACTUALLY
+  COLLAPSED, AND ITS NEGATIVE CONTROL MUST RECREATE THAT COLLAPSE.** (2026-08-10, Vanilla r6.)
+  The first hybrid guard proved routing, owner selection, cache separation and several distinct
+  lineages while Vanilla Orchid still rendered the same portrait at anchors 1.0, 0.90, 0.73, 0.46
+  and 0.22. The bounded repair is independently PASS at `floraoverrides2.ts` SHA-256
+  `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`: the pure portrait stays
+  byte-exact, all five stages preserve defining Vanilla organs with continuous joins, and pixel
+  distance from pure increases as the anchor falls. The r6 matrix validates 234/234 assets in both
+  browser orders. `hybridcheck` now requires five exact ID+kingdom+name focused lineages spanning all four kingdoms and
+  rejects eleven injected failures, including focused-species substitution and a simulated Vanilla stage collapse. **A representative
+  lineage test cannot protect an omitted lineage; put the reported failure itself in the positive
+  set and reproduce it in the negative set.**
+
+- ★★★ **D-ART-181 — A BOUNDED CHECKPOINT IS OPEN UNTIL ITS LAST CHANGED PIXEL HAS AN
+  AUTHOR-SEPARATED PASS.** (2026-08-10, Wave 2a.) Mammal A closed 4/4 and INVERT worms+sessile
+  closed 13/13 under independent 440/300/132 review, exact repeats and protected controls. The
+  S1–S3 first pass returned 11 PASS / 4 FAIL—Caddisfly, Diving Beetle, Firefly and Water Beetle.
+  Bounded R2 changed exactly those four; its independent judge returned 4 PASS / 0 FAIL, all 156
+  current/repeat PNGs are complete and exact, and all 22 protected rows remain byte-identical at
+  every scale. The combined checkpoint therefore closes 32/32 scoped PASS. Neither that closure nor
+  its component counts may be added to the frozen 516/14/720 ledger; only a new complete collector
+  can make a catalogue claim. **Source completion and green author gates are evidence inputs; the
+  last changed pixel still requires author-separated review before a checkpoint can close.**
+
+- ★★★ **D-ART-182 — NATIVE DETAIL DOES NOT RESCUE A REQUIRED CUE THAT DISAPPEARS AT CARD SIZE;
+  FAIL CLOSED, REOPEN ONLY THE NAMED BLOCKER, AND FREEZE EVERYTHING ALREADY ACCEPTED.** (2026-08-10,
+  Wave 2b.) The first independent Mammal B round returned 19 PASS / 6 FAIL, and the first Bird B1
+  round returned 17 PASS / 4 FAIL, even though all assigned source branches and changed pixels were
+  present. Bounded follow-ups repaired only Brown Bear, Grizzly Bear, Bobcat, Lynx, Serval and Sand
+  Cat in Mammal R3, and only Secretary Bird, Rhea, Seriema and Hummingbird in Bird R2; second judges
+  closed both groups 25/25 and 21/21 while retained targets and controls stayed exact. Invert I's own
+  first candidate likewise stopped on Banana Slug because four tentacles and their tip eyes did not
+  survive 132px; a Banana-only refinement changed 3/3 surfaces while the other four targets plus 20
+  controls remained 72/72 exact, then an independent judge closed the lane 5/5. Wave 2b therefore
+  reaches **51/51 scoped PASS**, with final source SHA-256 values `288E5479…E7DAE` (quadruped),
+  `2BB35419…CEAA` (mammal), `783DCCE7…BF10` (fauna), `B5DEBDCA…94DF` (bird), and
+  `9173B817…B1D` (invert). The final integrated gates passed with those sources unchanged, making the
+  bounded checkpoint ready to commit/push. This does not update the frozen 516/14/720 ledger or close
+  the reset PR, full recertification, ZIP, or release. **Judge the real delivery surface;
+  a cue that exists only at 440px is absent from the game surface that needed it.**
+
+- ★★★ **D-ART-183 — A CURRENT-ONLY PREVIEW CAN AUTHORIZE THE NEXT CAPTURE, NEVER THE FINAL
+  VERDICT; THE ADMISSIBLE CLOSE IS SOURCE-BOUND A/B WITH EVERY ACCEPTED NEIGHBOUR FROZEN.**
+  (2026-08-10, Wave 2c.) Mammal C needed five author preview rounds before its first shared
+  independent close: 0/13 candidate-ready, then 8/13, then 11/13 twice while Red Panda's hidden
+  leg roots and Tasmanian Devil's body-clipped chest band remained open. Bird B2's first independent
+  shared judgment returned 25 PASS /3 FAIL on Eider Duck, Rail and Avocet. Their current-only bounded
+  preview made the corrections visible but was explicitly provisional until a final A/B reproduced
+  all nine changed surfaces and kept the other 25 targets plus 72 controls exact. Invert II likewise
+  went from a 10/15 author preview to a 15/15 candidate, then correctly reopened after its first
+  independent shared judgment returned 13 PASS /2 FAIL on Krill and Tadpole Shrimp. The final shared
+  R2 changed only those five Bird/Invert identities, preserved the other 244 rows /732 surfaces, and
+  closed all three lanes at **56/56 scoped PASS**.
+
+  The admissible manifest is
+  `apps/game/smoke/wave2c-shared-final-r2-evidence-2026-08-10/evidence-manifest.json`, SHA-256
+  `BCB5282571903AC2057F6A5B9F7FCA09C6DE8372E4FEFEEAD8D34340930CE330`: 249 rows =56 targets
+  +193 protected controls, 747/747 current/repeat surfaces exact, 579/579 protected surfaces exact
+  to baseline, 168/168 target surfaces changed, three drift-free 139-file input snapshots and three
+  rejected negative controls. Integrated gates passed with all five source hashes unchanged. **A
+  preview answers “is this worth sealing?”; only the final frozen A/B plus independent judgment
+  answers “did this row pass?”** This does not alter the frozen 516/14/720 catalogue ledger or close
+  recertification, ZIP, reset PR, merge, release or deployment.
+
+- ★★★ **D-ART-184 — A PIXEL-NEUTRAL ROUTE CLEANUP AND A VISUAL REPAIR CAN SHARE A BATCH ONLY
+  WHEN THE SAME PRE-EDIT UNION PROVES WHICH ROWS DID NOT MOVE.** (2026-08-10, Wave 2d, begun from
+  committed/pushed Wave-2c checkpoint `dc015cf`.) Three
+  code-quality items had been correctly deferred at the Wave-2c evidence boundary: Mammal C's
+  implicit `marsupial-c1` dispatcher arm, Skua's unreachable Snow-Petrel colour alternative, and
+  exact Invert-II legacy non-hue options shadowed by named early returns. Wave 2d made the dispatch
+  explicit and removed the dead alternatives only after one shared pre-edit baseline bound every
+  new target and every prior accepted route. The final R4 manifest proves all 254 protected rows /
+  762 surfaces are byte-identical while all 50 intended targets /150 surfaces changed. “The branch
+  is unreachable by inspection” was not accepted as pixel proof.
+
+  The same union preserved fail-closed visual review. Mammal D reopened six author-screen rows,
+  then independently reopened Civet alone for a still-round muzzle; Civet-only R4 changed 3/3
+  surfaces and retained the other 303 rows /909 surfaces. Bird B3 moved 11/27 →24/27 →27/27 by
+  changing exact blocker sets, and Invert III moved 5/7 →7/7 by changing only Camel Spider and
+  Tarantula. Final author-separated verdicts are **50/50 PASS**. The admissible manifest is
+  `apps/game/smoke/wave2d-shared-final-r4-evidence-2026-08-10/evidence-manifest.json`, SHA-256
+  `DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE`: 304 rows =50 targets
+  +254 protected controls, exact 912/912 A/B surfaces, 150/150 changed target surfaces, four
+  rejected negative controls, and three drift-free 139-file input snapshots. Integrated gates
+  passed with all five source hashes unchanged, making the bounded checkpoint ready to commit/push.
+  **A dead-source proof is necessary to propose cleanup; a frozen before/after pixel union is what
+  permits it to ship beside morphology work.** This does not update r1's 516/14/720 ledger; full
+  certification, the image-inclusive ZIP, reset PR, merge, release, and deployment remain OPEN.

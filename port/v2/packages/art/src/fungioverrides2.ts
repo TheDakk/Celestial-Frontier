@@ -36,16 +36,23 @@ export function fungiFlyAgaric(c: Ctx, g: G, _p: Pal): void {
     c.fillStyle = '#efe7d2';   /* the pale stalk with a ring */
     c.beginPath(); c.moveTo(cx - S * 0.022 * sc, by); c.lineTo(cx - S * 0.030 * sc, by - S * 0.18 * sc);
     c.lineTo(cx + S * 0.030 * sc, by - S * 0.18 * sc); c.lineTo(cx + S * 0.022 * sc, by); c.closePath(); c.fill();
+    /* bulbous scaly volva belts make this amanita read below the cap too. */
+    c.fillStyle = 'rgba(239,231,210,0.92)'; c.beginPath(); c.ellipse(cx, by + S * 0.004, S * 0.050 * sc, S * 0.025 * sc, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(174,161,135,0.72)'; c.lineWidth = 2;
+    for (let b = 0; b < 3; b++) { const y = by - S * (0.025 + b * 0.030) * sc; c.beginPath(); c.arc(cx, y, S * (0.030 + b * 0.004) * sc, Math.PI * 0.12, Math.PI * 0.88); c.stroke(); }
     c.fillStyle = 'rgba(255,255,255,0.85)';
     c.beginPath(); c.ellipse(cx, by - S * 0.14 * sc, S * 0.040 * sc, S * 0.012 * sc, 0, 0, TAU); c.fill();
+    /* a pendulous torn skirt, not merely a pale horizontal line */
+    c.fillStyle = 'rgba(247,241,226,0.88)'; c.beginPath(); c.moveTo(cx - S * 0.037 * sc, by - S * 0.14 * sc); c.quadraticCurveTo(cx - S * 0.020 * sc, by - S * 0.115 * sc, cx, by - S * 0.128 * sc); c.quadraticCurveTo(cx + S * 0.022 * sc, by - S * 0.115 * sc, cx + S * 0.037 * sc, by - S * 0.14 * sc); c.closePath(); c.fill();
     const capY = by - S * 0.18 * sc, capR = S * 0.085 * sc;
     c.fillStyle = lit3(c, '#c8261f', cx, capY, capR);   /* THE RED CAP */
     c.beginPath(); c.ellipse(cx, capY, capR, capR * 0.72, 0, Math.PI, TAU); c.fill();
     c.beginPath(); c.ellipse(cx, capY, capR, capR * 0.22, 0, 0, Math.PI); c.fill();
-    for (let i = 0; i < 12; i++) {   /* the white warts */
+    for (let i = 0; i < 12; i++) {   /* torn veil scraps, not uniform polka dots */
       const a = -0.2 - r() * 2.7, d = capR * (0.2 + r() * 0.7);
       c.fillStyle = 'rgba(248,246,236,0.92)';
-      c.beginPath(); c.arc(cx + Math.cos(a) * d, capY + Math.sin(a) * d * 0.7, capR * (0.06 + r() * 0.05), 0, TAU); c.fill();
+      c.save(); c.translate(cx + Math.cos(a) * d, capY + Math.sin(a) * d * 0.7); c.rotate(a + (r() - 0.5) * 0.9); c.beginPath(); c.ellipse(0, 0, capR * (0.05 + r() * 0.07), capR * (0.035 + r() * 0.045), 0, 0, TAU); c.fill(); c.restore();
+      if (i % 4 === 0) { c.strokeStyle = 'rgba(248,246,236,0.88)'; c.lineWidth = 2; c.beginPath(); c.moveTo(cx + Math.cos(a) * (d - capR * 0.03), capY + Math.sin(a) * (d - capR * 0.03) * 0.7); c.lineTo(cx + Math.cos(a) * (d + capR * 0.09), capY + Math.sin(a) * (d + capR * 0.09) * 0.7); c.stroke(); }
     }
   }
 }
@@ -128,6 +135,9 @@ export function fungiStinkhorn(c: Ctx, g: G, _p: Pal): void {
     shadow(c, cx, base + 4, S * 0.08);
     /* the volva (egg sac) at the base */
     c.fillStyle = '#e6ddc6'; c.beginPath(); c.ellipse(cx, base, S * 0.05, S * 0.028, 0, 0, TAU); c.fill();
+    /* an intact nearby egg makes the hatch stage legible, rather than leaving
+       only a flat pale foot below an otherwise ordinary tall mushroom. */
+    if (k === 0) { const ex = cx - S * 0.11, ey = base - S * 0.015; c.fillStyle = '#e8dfc8'; c.beginPath(); c.ellipse(ex, ey, S * 0.052, S * 0.040, -0.18, 0, TAU); c.fill(); c.strokeStyle = '#a99d7b'; c.lineWidth = 1.5; c.beginPath(); c.arc(ex, ey, S * 0.035, -0.7, 2.0); c.stroke(); }
     /* the spongy pale stalk */
     const sg = c.createLinearGradient(cx - S * 0.03, 0, cx + S * 0.03, 0);
     sg.addColorStop(0, '#c8bda0'); sg.addColorStop(0.45, '#efe8d4'); sg.addColorStop(1, '#c8bda0');
@@ -144,6 +154,10 @@ export function fungiStinkhorn(c: Ctx, g: G, _p: Pal): void {
     c.beginPath(); c.moveTo(cx - S * 0.03, cy2); c.quadraticCurveTo(cx, cy2 + S * 0.06, cx + S * 0.03, cy2); c.closePath(); c.fill();
     c.fillStyle = 'rgba(20,28,14,0.5)';
     for (let i = 0; i < 8; i++) { const x = cx - S * 0.028 + r() * S * 0.056; c.beginPath(); c.ellipse(x, cy2 + S * 0.02 + r() * S * 0.02, 3, 5, 0, 0, TAU); c.fill(); }
+    c.strokeStyle = 'rgba(154,174,91,0.62)'; c.lineWidth = 1.5; for (let i = 0; i < 5; i++) { const yy = cy2 - S * 0.026 + i * S * 0.017; c.beginPath(); c.moveTo(cx - S * 0.027, yy); c.quadraticCurveTo(cx, yy - S * 0.010, cx + S * 0.027, yy); c.stroke(); }
+    /* The egg and olive gleba need their ecological cue: visibly attracted
+       flies, small but unmistakable at review-strip scale. */
+    for (let f = 0; f < 3; f++) { const fx = cx + S * (0.055 + f * 0.024), fy = cy2 + S * (0.010 + (f % 2) * 0.032); c.fillStyle = '#20231d'; c.beginPath(); c.arc(fx, fy, S * 0.008, 0, TAU); c.fill(); c.fillStyle = 'rgba(190,205,214,0.76)'; c.beginPath(); c.ellipse(fx - S * 0.010, fy - S * 0.006, S * 0.012, S * 0.006, -0.35, 0, TAU); c.fill(); c.beginPath(); c.ellipse(fx + S * 0.010, fy - S * 0.006, S * 0.012, S * 0.006, 0.35, 0, TAU); c.fill(); }
   }
 }
 
@@ -156,26 +170,30 @@ export function fungiCordyceps(c: Ctx, g: G, p: Pal): void {
      (gp3). A curled segmented caterpillar with a dark head capsule and stubby
      legs — the horror of a cordyceps needs a recognisable victim. */
   c.fillStyle = '#5a4632';
-  const segN = 7;
-  for (let i = 0; i < segN; i++) {   /* overlapping segments in a curl */
+  const segN = 8;
+  for (let i = 0; i < segN; i++) {   /* overlapping segments in a curled larva */
     const u = i / (segN - 1);
-    const sx = cx - S * 0.12 + u * S * 0.24, sy = base - Math.sin(u * Math.PI) * S * 0.028;
-    const sr = S * (0.030 - Math.abs(u - 0.4) * 0.012);
+    const sx = cx - S * 0.15 + u * S * 0.30, sy = base - Math.sin(u * Math.PI) * S * 0.040 + u * S * 0.018;
+    const sr = S * (0.040 - Math.abs(u - 0.38) * 0.014);
     const gg = c.createRadialGradient(sx - sr * 0.3, sy - sr * 0.4, 1, sx, sy, sr * 1.1);
     gg.addColorStop(0, '#7a6248'); gg.addColorStop(1, '#42321f');
     c.fillStyle = gg; c.beginPath(); c.arc(sx, sy, sr, 0, TAU); c.fill();
   }
-  c.fillStyle = '#2c2014';   /* the head capsule, tucked down */
-  c.beginPath(); c.arc(cx + S * 0.125, base + S * 0.008, S * 0.024, 0, TAU); c.fill();
+  c.fillStyle = '#2c2014';   /* head capsule, deliberately separate from abdomen */
+  c.beginPath(); c.ellipse(cx + S * 0.162, base + S * 0.036, S * 0.038, S * 0.031, -0.25, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(226,202,122,0.72)';
+  for (const ex of [-S * 0.010, S * 0.011]) { c.beginPath(); c.arc(cx + S * 0.166 + ex, base + S * 0.024, S * 0.006, 0, TAU); c.fill(); }
   c.strokeStyle = 'rgba(30,22,14,0.8)'; c.lineWidth = 2; c.lineCap = 'round';
-  for (let i = 0; i < 5; i++) {   /* stubby legs beneath */
-    const x = cx - S * 0.08 + i * S * 0.045;
-    c.beginPath(); c.moveTo(x, base + S * 0.02); c.lineTo(x + S * 0.008, base + S * 0.042); c.stroke();
+  for (let i = 0; i < 3; i++) {   /* three paired, clearly jointed insect legs */
+    const x = cx - S * 0.035 + i * S * 0.060;
+    for (const side of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(x, base + S * 0.018); c.lineTo(x + side * S * 0.030, base + S * 0.050); c.lineTo(x + side * S * 0.055, base + S * 0.043); c.stroke();
+    }
   }
   const club = p.cr > p.cb ? p.base : '#d97a28';
   const n = 5 + (r() * 3 | 0);
   for (let i = 0; i < n; i++) {   /* the clubs — thin stalks with a knobbed, granular head */
-    const bx = cx + (i - (n - 1) / 2) * S * 0.05 + (r() - 0.5) * 10;
+    const bx = cx - S * 0.07 + (i - (n - 1) / 2) * S * 0.045 + (r() - 0.5) * 8;
     const h = S * (0.28 + r() * 0.16), tilt = (r() - 0.5) * 0.4;
     const tx = bx + Math.sin(tilt) * h, ty = base - S * 0.02 - h;
     c.strokeStyle = '#c8a86a'; c.lineWidth = 4; c.lineCap = 'round';
@@ -195,20 +213,27 @@ export function lichenMat(c: Ctx, g: G, _p: Pal): void {
   shadow(c, cx, base + 6, S * 0.22);
   const pale = '#c9d0c2';
   const draw = (x: number, y: number, a: number, len: number, w: number, d: number): void => {
-    if (d > 6 || len < 4) return;
+    if (d > 4 || len < 6) return;
     const ex = x + Math.cos(a) * len, ey = y + Math.sin(a) * len;
     c.strokeStyle = d < 2 ? '#9aa294' : pale; c.lineWidth = w; c.lineCap = 'round';
     c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(x + Math.cos(a - 0.2) * len * 0.6, y + Math.sin(a - 0.2) * len * 0.6, ex, ey); c.stroke();
     /* lichen forks in THREES, tightly — that density is the read */
-    draw(ex, ey, a - 0.5 - r() * 0.2, len * 0.72, w * 0.72, d + 1);
-    draw(ex, ey, a + 0.05, len * 0.72, w * 0.72, d + 1);
-    draw(ex, ey, a + 0.5 + r() * 0.2, len * 0.72, w * 0.72, d + 1);
+    if (d >= 4) { c.strokeStyle = 'rgba(72,86,75,0.72)'; c.lineWidth = Math.max(1.1, w * 0.38); c.beginPath(); c.arc(ex, ey, Math.max(2.0, w * 0.70), a - 0.4, a + 0.7); c.stroke(); }
+    const nod = d > 2 ? 0.16 : 0;
+    const spread = 0.27 + r() * 0.22;
+    draw(ex, ey, a - spread + nod, len * (0.52 + r() * 0.16), w * 0.70, d + 1);
+    draw(ex, ey, a + nod, len * (0.54 + r() * 0.16), w * 0.70, d + 1);
+    draw(ex, ey, a + spread + nod, len * (0.52 + r() * 0.16), w * 0.70, d + 1);
+    if (d >= 3) { c.strokeStyle = 'rgba(232,238,226,0.80)'; c.lineWidth = Math.max(1.2, w * 0.34); c.beginPath(); c.moveTo(ex, ey); c.quadraticCurveTo(ex + Math.cos(a + 0.7) * len * 0.18, ey + Math.sin(a + 0.7) * len * 0.18, ex + Math.cos(a + 1.1) * len * 0.14, ey + Math.sin(a + 1.1) * len * 0.14); c.stroke(); }
   };
   /* ★ WAVE 68 — the branching starts AT THE GROUND. gp3 failed it for 'eight
      thick bare vertical trunks' under the fine crown: short thin first
      segments, more of them, so the cushion sits on fuzz, not on stilts. */
-  for (let k = -4; k <= 4; k++) draw(cx + k * S * 0.030, base, -Math.PI / 2 + k * 0.11, S * 0.062, 3.6, 0);
-  for (let i = 0; i < 40; i++) { const a = r() * TAU, dd = r() * S * 0.16; c.fillStyle = 'rgba(230,236,224,0.4)'; c.beginPath(); c.arc(cx + Math.cos(a) * dd, base - S * 0.14 + Math.sin(a) * dd * 0.7, 2, 0, TAU); c.fill(); }
+  /* A thin ground-hugging cushion anchors the branches without turning the
+     colony into a mushroom-like bowl. */
+  c.fillStyle = 'rgba(174,184,166,0.22)'; c.beginPath(); c.ellipse(cx, base + S * 0.006, S * 0.20, S * 0.032, 0, 0, TAU); c.fill();
+  for (let k = -5; k <= 5; k++) draw(cx + k * S * 0.024, base, -Math.PI / 2 + k * 0.052 + (r() - 0.5) * 0.16, S * (0.052 + r() * 0.058), 4.2, 0);
+  for (let i = 0; i < 74; i++) { const a = r() * TAU, dd = r() * S * 0.19; c.fillStyle = 'rgba(230,236,224,0.44)'; c.beginPath(); c.arc(cx + Math.cos(a) * dd, base - S * 0.12 + Math.sin(a) * dd * 0.52, 1.8, 0, TAU); c.fill(); }
 }
 
 /* ── FORAMINIFERAN: a chambered spiral test with radiating pseudopodia ── */
@@ -567,13 +592,25 @@ export function fungiCap(c: Ctx, g: G, _p: Pal, spec: CapSpec): void {
   const n = spec.count ?? 1;
   const base = S * 0.78;
   shadow(c, S * 0.5, base + 4, S * 0.20);
+  if (spec.glow) {
+    /* The light source grows from decaying wood.  A cap-only green aura looked
+       like a UI effect rather than a night mushroom colony. */
+    c.fillStyle = '#4b3829'; c.beginPath(); c.ellipse(S * 0.50, base + S * 0.010, S * 0.27, S * 0.060, -0.10, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(137,105,70,0.72)'; c.lineWidth = 3; for (let i = -4; i <= 4; i++) { c.beginPath(); c.moveTo(S * (0.38 + i * 0.028), base - S * 0.020); c.quadraticCurveTo(S * (0.48 + i * 0.022), base + S * 0.025, S * (0.60 + i * 0.020), base + S * 0.012); c.stroke(); }
+  }
 
   for (let k = 0; k < n; k++) {
     const t = n === 1 ? 0.5 : k / (n - 1);
-    const sc = (spec.scale ?? 1) * (n === 1 ? 1 : 0.52 + r() * 0.30);
+    /* Strict named forms get enough area to show their identity features:
+       a chanterelle's vase/ridges and shiitake's cracked flesh vanish when
+       every member of a cluster is treated as a tiny background garnish. */
+    const sc = (spec.scale ?? 1) * (n === 1 ? 1 : (spec.cap === 'funnel' ? 0.68 + r() * 0.24 : spec.crack ? 0.82 + r() * 0.18 : 0.52 + r() * 0.30));
     const cx = S * 0.5 + (n === 1 ? 0 : (t - 0.5) * S * 0.26) + (r() - 0.5) * S * 0.02;
-    const stemH = S * 0.20 * sc * (spec.stem === 'slender' ? 1.22 : spec.stem === 'bulbous' ? 0.78 : 1);
-    const capW = S * 0.105 * sc * (spec.cap === 'funnel' ? 1.05 : 1);
+    /* Funnel/ridge and luminous-gill forms need their landmark above the
+       card-scale threshold.  These factors are opt-in CapSpec properties,
+       not a change to ordinary capped controls. */
+    const stemH = S * 0.20 * sc * (spec.stem === 'slender' ? 1.22 : spec.stem === 'bulbous' ? 0.78 : 1) * (spec.cap === 'funnel' ? 1.30 : spec.gills === 'pore' ? 0.86 : 1);
+    const capW = S * 0.105 * sc * (spec.cap === 'funnel' ? 1.34 : spec.glow ? 1.12 : spec.gills === 'pore' ? 1.20 : 1);
     const capY = base - stemH;
 
     /* ── the VOLVA: a sac-like cup the stem grows out of. On an amanita this
@@ -591,7 +628,7 @@ export function fungiCap(c: Ctx, g: G, _p: Pal, spec: CapSpec): void {
     }
 
     /* ── the stem ── */
-    const sw = capW * (spec.stem === 'bulbous' ? 0.46 : spec.stem === 'slender' ? 0.17 : 0.24);
+    const sw = capW * (spec.stem === 'bulbous' ? (spec.gills === 'pore' ? 0.74 : 0.62) : spec.stem === 'slender' ? 0.17 : 0.24);
     const sg = c.createLinearGradient(cx - sw, 0, cx + sw, 0);
     const stemHue = spec.gillHue ?? '#efe9d8';
     sg.addColorStop(0, stemHue);
@@ -614,13 +651,16 @@ export function fungiCap(c: Ctx, g: G, _p: Pal, spec: CapSpec): void {
     c.closePath(); c.fill();
     if (spec.net) {
       /* the raised white reticulation over a bolete's upper stem */
-      c.strokeStyle = 'rgba(255,255,255,0.55)'; c.lineWidth = 1.1;
+      c.strokeStyle = 'rgba(255,255,255,0.72)'; c.lineWidth = 1.8;
       for (let i = 0; i < 7; i++) {
         const y = capY + stemH * (0.06 + i * 0.055);
         c.beginPath(); c.moveTo(cx - sw * 0.9, y); c.lineTo(cx + sw * 0.9, y); c.stroke();
       }
       for (let i = -2; i <= 2; i++) {
         c.beginPath(); c.moveTo(cx + i * sw * 0.4, capY); c.lineTo(cx + i * sw * 0.44, capY + stemH * 0.42); c.stroke();
+      }
+      for (let i = -2; i <= 2; i++) {
+        c.beginPath(); c.moveTo(cx - sw * 0.80, capY + stemH * (0.08 + (i + 2) * 0.075)); c.lineTo(cx + sw * 0.80, capY + stemH * (0.17 + (i + 2) * 0.075)); c.stroke();
       }
     }
     if (spec.ring) {
@@ -645,11 +685,11 @@ export function fungiCap(c: Ctx, g: G, _p: Pal, spec: CapSpec): void {
       c.beginPath(); c.ellipse(cx, capY + capW * 0.10, capW * 0.94, capW * 0.20, 0, 0, Math.PI); c.fill();
       if (spec.gills === 'pore') {
         /* a sponge, not blades — a bolete has no gills at all */
-        c.fillStyle = 'rgba(120,110,74,0.45)';
-        for (let i = 0; i < 46; i++) {
-          const px = cx + (r() - 0.5) * capW * 1.7, py = capY + capW * (0.02 + r() * 0.16);
-          c.beginPath(); c.arc(px, py, 0.9 + r() * 0.7, 0, TAU); c.fill();
-        }
+          c.fillStyle = 'rgba(107,94,56,0.72)';
+          for (let i = 0; i < 46; i++) {
+            const px = cx + (r() - 0.5) * capW * 1.7, py = capY + capW * (0.02 + r() * 0.16);
+            c.beginPath(); c.arc(px, py, 1.8 + r() * 1.15, 0, TAU); c.fill();
+          }
       } else {
         c.strokeStyle = 'rgba(120,108,86,0.42)'; c.lineWidth = 1;
         for (let i = -9; i <= 9; i++) {
@@ -728,21 +768,24 @@ export function fungiCap(c: Ctx, g: G, _p: Pal, spec: CapSpec): void {
           c.beginPath(); c.ellipse(0, 0, capW * (0.09 + r() * 0.09), capW * 0.035, 0, 0, TAU); c.fill();
           c.restore();
         }
+        c.strokeStyle = 'rgba(247,238,218,0.78)'; c.lineWidth = 1.5;
+        for (let i = 0; i < 7; i++) { const a = -Math.PI * (0.16 + i * 0.11); c.beginPath(); c.moveTo(cx + Math.cos(a) * capW * 0.18, capY + capW * 0.06 + Math.sin(a) * capW * dome * 0.18); c.lineTo(cx + Math.cos(a) * capW * 0.82, capY + capW * 0.06 + Math.sin(a) * capW * dome * 0.76); c.stroke(); }
       }
     }
     if (spec.glow) {
       /* the light comes from the GILLS and the stem, never the cap top */
-      const gg = c.createRadialGradient(cx, capY + capW * 0.16, 1, cx, capY + capW * 0.16, capW * 2.2);
-      gg.addColorStop(0, 'rgba(150,255,190,0.55)');
-      gg.addColorStop(0.45, 'rgba(110,230,160,0.20)');
-      gg.addColorStop(1, 'rgba(110,230,160,0)');
-      c.fillStyle = gg;
-      c.beginPath(); c.arc(cx, capY + capW * 0.16, capW * 2.2, 0, TAU); c.fill();
-      c.strokeStyle = 'rgba(190,255,215,0.85)'; c.lineWidth = 1.2;
+       const gg = c.createRadialGradient(cx, capY + capW * 0.16, 1, cx, capY + capW * 0.16, capW * 2.6);
+       gg.addColorStop(0, 'rgba(150,255,190,0.72)');
+       gg.addColorStop(0.45, 'rgba(110,230,160,0.28)');
+       gg.addColorStop(1, 'rgba(110,230,160,0)');
+       c.fillStyle = gg;
+       c.beginPath(); c.arc(cx, capY + capW * 0.16, capW * 2.6, 0, TAU); c.fill();
+       c.strokeStyle = 'rgba(190,255,215,0.92)'; c.lineWidth = 1.6;
       for (let i = -6; i <= 6; i++) {
         const px = cx + (i / 6) * capW * 0.84;
-        c.beginPath(); c.moveTo(px, capY + capW * 0.03); c.lineTo(cx + (px - cx) * 0.2, capY + capW * 0.20); c.stroke();
-      }
+         c.beginPath(); c.moveTo(px, capY + capW * 0.03); c.lineTo(cx + (px - cx) * 0.2, capY + capW * 0.20); c.stroke();
+       }
+       c.strokeStyle = 'rgba(185,255,210,0.78)'; c.lineWidth = Math.max(1.4, sw * 0.34); c.beginPath(); c.moveTo(cx, capY + capW * 0.12); c.lineTo(cx, base - stemH * 0.04); c.stroke();
     }
     c.strokeStyle = 'rgba(240,246,252,0.20)'; c.lineWidth = 2;
     c.beginPath();

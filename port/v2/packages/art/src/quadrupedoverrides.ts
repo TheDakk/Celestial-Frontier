@@ -42,6 +42,17 @@ export type MammalFamily = 'felid' | 'canid' | 'ursid' | 'bovid' | 'cervid' | 'e
   /* ★ wave 35: the hyenas were canids, and three blockers said so. */
   | 'hyaenid';
 
+/** Full-reset Wave 2d routes are deliberately exact-name values.  The plan is
+    not a family bucket: every value below owns one catalogue identity. */
+export type MammalDPlan = 'Badger' | 'Civet' | 'Fisher' | 'Giant Otter' | 'Marten' | 'Mink'
+  | 'Mongoose' | 'Otter' | 'River Otter' | 'Sea Otter' | 'Wolverine' | 'Capybara'
+  | 'Hyrax' | 'Mara' | 'Marsh Rodent' | 'Mole';
+
+/** Full-reset Wave 2e exact-name bovid whole forms.  These values deliberately
+    identify catalogue rows, not a reusable horn/body bucket. */
+export type MammalEPlan = 'Buffalo' | 'Cow' | 'Eland' | 'Gaur' | 'Gazelle' | 'Hartebeest'
+  | 'Impala' | 'Kudu' | 'Musk Ox' | 'Oryx' | 'Water Buffalo' | 'Wildebeest' | 'Yak';
+
 export interface QuadSpec {
   legs: number;                 /* leg length as a fraction of S */
   depth: number;                /* body depth (belly) */
@@ -61,10 +72,7 @@ export interface QuadSpec {
   /** ★ POLISH WAVE — small COAT ACCENTS that are whole identities: a pale rump
       patch (banteng), a dark lower-flank band (gazelle/springbok), vertical
       rump stripes (impala). One axis, several species. */
-  accent?: 'rumpPatch' | 'flankBand' | 'rumpStripes' | 'chestBlaze';
-  /** ★ GOLD AUDIT — the glider membrane: a loose furred sheet slung from
-      foreleg to hindleg, sagging below the belly line (Sugar Glider, Colugo) */
-  patagium?: boolean;
+  accent?: 'rumpPatch' | 'flankBand' | 'rumpStripes' | 'chestBlaze' | 'chestCrescent' | 'chestU';
   /** ★ D-ART-134 — a pale tail TIP is a species mark (fox, wolf, wild dog),
       not a universal feature. It used to be stamped on every brush tail. */
   tailTip?: string;
@@ -137,14 +145,22 @@ export interface QuadSpec {
   cheekRuff?: number;
   /** Opt-in paw enlargement for snow-footed or wetland cats. */
   pawScale?: number;
+  /** Capybara-style toe webbing, retained as a named-only paw accent. */
+  webbedFeet?: boolean;
+  /** Orange rodent enamel, distinct from the ordinary dark mammal mouth. */
+  incisors?: 'orange';
   /** Per-species skull scale; family default remains the fallback. */
   headScale?: number;
   /** Ocelot's elongated chain rosettes, distinct from leopard rings. */
   rosetteChain?: boolean;
+  /** Named-only ring scale for smoky snow-leopard or compact jaguar rosettes. */
+  rosetteScale?: number;
+  /** Named-only spot sizing for small cats; generic spots remain unchanged. */
+  spotScale?: number;
   /** Paired dark cheek bars used by the ocelot. */
   cheekBars?: boolean;
   /** A carried, upward-curled tail rather than the default hanging sweep. */
-  tailPose?: 'raised';
+  tailPose?: 'raised' | 'upright';
   /** Catalogue-scale domestic-cat face accents; deliberately opt-in. */
   domesticCatFace?: boolean;
   mat?: Material;
@@ -161,13 +177,13 @@ export interface QuadSpec {
   /* ★ wave 22b — a mane is drawn BEHIND and BACK from the head, never centred
      on it: centred, it swallows the muzzle and eyes and the animal loses the
      only part anyone actually reads. */
-  mane?: 'lion' | 'ruff' | 'crest' | 'crestUp';
+  mane?: 'lion' | 'ruff' | 'crest' | 'crestUp' | 'bison' | 'hyena';
   /** ★ wave 40 — the body's POSTURE. 'stand' (default) is the horizontal
       quadruped this painter has always drawn; 'sentinel' rears it onto its
       hind legs with the forelimbs tucked (meerkat, prairie dog, ground
       squirrel). It rotates the SPINE, so the silhouette, coat, material,
       shading and rim all follow without knowing anything about it. */
-  pose?: 'sentinel' | 'hang';
+  pose?: 'sentinel' | 'hang' | 'glide';
   /* ★ WAVE 39 — THE OKAPI PROBLEM. Its coat runs on the HINDQUARTERS ONLY and
      is PALE on a dark ground — the exact inverse of what `coat:'stripes'` does,
      and its verifier called the inversion "real and damning". Two axes, both
@@ -192,6 +208,32 @@ export interface QuadSpec {
       reference row names the carriage — a giraffe, a gerenuk, a stalking
       cheetah — sets it here; everyone else inherits the family plan. */
   carry?: number;
+  /** Named only: an extra shoulder mass for bears, bison and high-withers bovids. */
+  shoulderHump?: number;
+  /** Named only: make the planted claws read at thumbnail size without changing every paw. */
+  clawScale?: number;
+  /** Named muzzle material/colour (tan bear muzzle, pale sloth-bear snout). */
+  muzzleHue?: string;
+  /** Distinct face signatures that cannot be inferred from a coat pattern. */
+  faceMark?: 'spectacles' | 'muzzleBars' | 'whiteBlaze' | 'darkMask';
+  /** A true loose throat fold, separate from the torso/chest mass. */
+  dewlap?: number;
+  /** Named vertical head placement relative to the withers (positive lowers it). */
+  headDrop?: number;
+  /** Eared seal posture: chest propped on a long fore-flipper, never a prone loaf. */
+  pinnipedPose?: 'fur-seal' | 'sea-lion';
+  /** Named glider whole-form: colugo encloses the tail; sugar glider does not. */
+  gliderPlan?: 'colugo' | 'sugar-glider';
+  /** Legacy generic membrane switch, retained until a separately proven pixel-neutral cleanup. */
+  patagium?: boolean;
+  /** Full-reset Wave 2b: exact named bear/cat/hyaena whole-form owner. */
+  mammalBPlan?: 'ursid-r1' | 'felid-r1' | 'hyaenid-r1';
+  /** Full-reset Wave 2c: exact named canid/procyonid/marsupial whole-form owner. */
+  mammalCPlan?: 'canid-c1' | 'procyonid-c1' | 'marsupial-c1';
+  /** Full-reset Wave 2d: one exact named whole-form owner per catalogue identity. */
+  mammalDPlan?: MammalDPlan;
+  /** Full-reset Wave 2e: one exact named whole-form owner per accepted bovid identity. */
+  mammalEPlan?: MammalEPlan;
 }
 
 /** ★ WAVE 6 — THE SKULL. Nick, after looking at the wave-5 export: *"the heads
@@ -443,7 +485,2291 @@ export function nameSeedQ(name: string): number {
   for (let i = 0; i < name.length; i++) h = Math.imul(h ^ name.charCodeAt(i), 0x85EB) >>> 0;
   return h >>> 0;
 }
+
+/** A glider is not a side-on quadruped with a sagging flank patch.  Colugo and
+    Sugar Glider both failed precisely because the old patagium could not join
+    neck, wrists, ankles and tail into one visible membrane.  This deliberately
+    narrow pose is opt-in, preserves every standing mammal, and gives those two
+    animals their read-at-a-glance plan before any coat decoration. */
+function faunaGlider(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<QuadSpec['gliderPlan']>): void {
+  const p = pal(p0, spec);
+  const name = plan === 'colugo' ? 'Colugo' : 'Sugar Glider';
+  const r = mulberry32((((g.seed as number) ^ 0x4C1D ^ nameSeedQ(name)) >>> 0));
+  const colugo = plan === 'colugo';
+  const cx = S * 0.50, cy = S * (colugo ? 0.47 : 0.45);
+  const wing = S * (colugo ? 0.345 : 0.305);
+  const headR = S * (colugo ? 0.098 : 0.088);
+  const tone = (k: number): string => `rgb(${Math.min(255, p.cr * k) | 0},${Math.min(255, p.cg * k) | 0},${Math.min(255, p.cb * k) | 0})`;
+
+  /* A shallow cast shadow gives the spread whole-form depth without inventing
+     a ground contact for an airborne animal. */
+  c.fillStyle = 'rgba(0,0,0,0.34)';
+  c.beginPath(); c.ellipse(cx, S * 0.83, S * 0.22, S * 0.025, 0, 0, TAU); c.fill();
+
+  /* Sugar Glider's tail is a true furred appendage, rooted under the rump and
+     deliberately OUTSIDE the wrist-to-ankle membrane. The old dark stroke ran
+     across the body and read as a pasted stripe. This filled taper starts broad
+     beneath the torso and carries a broken fur rim for a body-length plume. */
+  if (!colugo) {
+    const tg = c.createLinearGradient(cx, cy + S * 0.10, cx - S * 0.25, cy + S * 0.39);
+    tg.addColorStop(0, tone(0.95)); tg.addColorStop(0.55, tone(0.67)); tg.addColorStop(1, tone(0.42));
+    c.fillStyle = tg; c.beginPath();
+    c.moveTo(cx - S * 0.038, cy + S * 0.105);
+    c.bezierCurveTo(cx - S * 0.112, cy + S * 0.18, cx - S * 0.265, cy + S * 0.245, cx - S * 0.282, cy + S * 0.350);
+    c.bezierCurveTo(cx - S * 0.291, cy + S * 0.408, cx - S * 0.205, cy + S * 0.432, cx - S * 0.150, cy + S * 0.370);
+    c.bezierCurveTo(cx - S * 0.101, cy + S * 0.300, cx - S * 0.014, cy + S * 0.205, cx + S * 0.038, cy + S * 0.105);
+    c.closePath(); c.fill();
+    c.strokeStyle = `rgba(${Math.min(255, p.cr * 1.28) | 0},${Math.min(255, p.cg * 1.24) | 0},${Math.min(255, p.cb * 1.20) | 0},0.44)`;
+    c.lineWidth = 1.7; c.lineCap = 'round';
+    /* Short fibres stay INSIDE the broad plume. Long radial strokes turned the
+       old attempt into a comb; width and tapered mass now carry bushiness. */
+    for (let i = 0; i < 24; i++) {
+      const t = (i + 0.5) / 24;
+      const x = cx - S * (0.052 + 0.205 * t) + (r() - 0.5) * S * 0.020;
+      const y = cy + S * (0.135 + 0.260 * t) + (r() - 0.5) * S * 0.010;
+      const side = i % 2 ? 1 : -1;
+      c.beginPath(); c.moveTo(x, y);
+      c.lineTo(x + side * S * (0.010 + r() * 0.006), y + S * (0.006 + r() * 0.006)); c.stroke();
+    }
+  }
+
+  /* Trace the one continuous membrane silhouette. Colugo's rear free edges
+     converge on the TAIL TIP itself, enclosing the entire tail. Sugar Glider's
+     stop at the ankles/rump, leaving its separate plume anatomically honest. */
+  const traceMembrane = (): void => {
+    c.beginPath();
+    c.moveTo(cx, cy - S * 0.175);
+    c.quadraticCurveTo(cx + S * 0.080, cy - S * 0.145, cx + wing, cy - S * 0.055);
+    c.quadraticCurveTo(cx + wing * 1.02, cy + S * 0.005, cx + wing * (colugo ? 0.73 : 0.76), cy + S * (colugo ? 0.215 : 0.220));
+    if (colugo) {
+      c.quadraticCurveTo(cx + S * 0.085, cy + S * 0.295, cx, cy + S * 0.385);
+      c.quadraticCurveTo(cx - S * 0.085, cy + S * 0.295, cx - wing * 0.73, cy + S * 0.215);
+    } else {
+      c.quadraticCurveTo(cx + S * 0.090, cy + S * 0.190, cx, cy + S * 0.155);
+      c.quadraticCurveTo(cx - S * 0.090, cy + S * 0.190, cx - wing * 0.76, cy + S * 0.220);
+    }
+    c.quadraticCurveTo(cx - wing * 1.02, cy + S * 0.005, cx - wing, cy - S * 0.055);
+    c.quadraticCurveTo(cx - S * 0.080, cy - S * 0.145, cx, cy - S * 0.175);
+    c.closePath();
+  };
+  const mg = c.createRadialGradient(cx - wing * 0.16, cy - wing * 0.24, 8, cx, cy, wing * 1.38);
+  mg.addColorStop(0, `rgba(${Math.min(255, p.cr * 1.28) | 0},${Math.min(255, p.cg * 1.22) | 0},${Math.min(255, p.cb * 1.16) | 0},0.96)`);
+  mg.addColorStop(0.58, `rgba(${p.cr | 0},${p.cg | 0},${p.cb | 0},0.90)`);
+  mg.addColorStop(1, `rgba(${p.cr * 0.38 | 0},${p.cg * 0.38 | 0},${p.cb * 0.42 | 0},0.92)`);
+  c.fillStyle = mg; traceMembrane(); c.fill();
+  c.strokeStyle = 'rgba(232,239,232,0.82)'; c.lineWidth = 3.2; c.lineJoin = 'round'; c.stroke();
+
+  if (colugo) {
+    c.save(); traceMembrane(); c.clip();
+    for (let i = 0; i < 46; i++) {
+      const x = cx + (r() - 0.5) * wing * 1.78, y = cy + (r() - 0.35) * S * 0.43;
+      softMark(c, x, y, S * (0.014 + r() * 0.020), S * (0.008 + r() * 0.014), i % 3 ? '76,88,64' : '176,165,128', i % 3 ? 0.40 : 0.28, r() * TAU);
+    }
+    c.restore();
+  }
+
+  /* Shoulder-to-wrist and hip-to-ankle bones terminate on the free edge; short
+     digit rays make "to the fingertips" survive without pasted-on hands. */
+  c.strokeStyle = `rgba(${p.cr * 0.45 | 0},${p.cg * 0.42 | 0},${p.cb * 0.38 | 0},0.90)`;
+  c.lineWidth = 3.4; c.lineCap = 'round';
+  for (const side of [-1, 1]) {
+    const wristX = cx + side * wing, wristY = cy - S * 0.055;
+    const ankleX = cx + side * wing * (colugo ? 0.73 : 0.76), ankleY = cy + S * (colugo ? 0.215 : 0.220);
+    c.beginPath(); c.moveTo(cx + side * S * 0.040, cy - S * 0.045);
+    c.lineTo(cx + side * wing * 0.58, cy - S * 0.015); c.lineTo(wristX, wristY); c.stroke();
+    c.beginPath(); c.moveTo(cx + side * S * 0.028, cy + S * 0.065);
+    c.lineTo(cx + side * wing * 0.42, cy + S * 0.125); c.lineTo(ankleX, ankleY); c.stroke();
+    c.lineWidth = 1.8;
+    for (const dy of [-0.020, 0, 0.020]) {
+      c.beginPath(); c.moveTo(cx + side * wing * 0.88, cy - S * 0.043);
+      c.lineTo(wristX, wristY + S * dy); c.stroke();
+    }
+    c.lineWidth = 3.4;
+  }
+
+  /* A central furred body overlaps every limb root. Colugo's body tapers into
+     the enclosed tail ridge and reaches the exact same tip as its membrane. */
+  const bodyG = c.createLinearGradient(cx - S * 0.05, cy - S * 0.10, cx + S * 0.06, cy + S * 0.20);
+  bodyG.addColorStop(0, tone(1.22)); bodyG.addColorStop(0.58, tone(0.90)); bodyG.addColorStop(1, tone(0.48));
+  c.fillStyle = bodyG; c.beginPath(); c.ellipse(cx, cy + S * 0.010, S * (colugo ? 0.064 : 0.058), S * (colugo ? 0.165 : 0.145), 0, 0, TAU); c.fill();
+  if (colugo) {
+    c.fillStyle = bodyG; c.beginPath();
+    c.moveTo(cx - S * 0.046, cy + S * 0.080);
+    c.bezierCurveTo(cx - S * 0.041, cy + S * 0.205, cx - S * 0.020, cy + S * 0.330, cx, cy + S * 0.385);
+    c.bezierCurveTo(cx + S * 0.020, cy + S * 0.330, cx + S * 0.041, cy + S * 0.205, cx + S * 0.046, cy + S * 0.080);
+    c.closePath(); c.fill();
+  }
+
+  /* Ears are rooted behind the skull; Sugar Glider's large rounded ears flank
+     the face while Colugo keeps compact cups. */
+  c.fillStyle = tone(0.58);
+  for (const side of [-1, 1]) {
+    c.beginPath(); c.ellipse(cx + side * headR * 0.84, cy - S * 0.185, headR * (colugo ? 0.26 : 0.43), headR * (colugo ? 0.36 : 0.50), side * 0.35, 0, TAU); c.fill();
+  }
+  const bg = c.createRadialGradient(cx - headR * 0.32, cy - S * 0.18 - headR * 0.36, 2, cx, cy - S * 0.18, headR * 1.2);
+  bg.addColorStop(0, p.lit); bg.addColorStop(1, p.dark);
+  c.fillStyle = bg; c.beginPath(); c.ellipse(cx, cy - S * 0.18, headR, headR * 0.88, 0, 0, TAU); c.fill();
+  c.fillStyle = tone(1.08);
+  c.beginPath(); c.ellipse(cx, cy - S * 0.105, headR * 0.50, headR * 0.38, 0, 0, TAU); c.fill();
+
+  if (!colugo) {
+    /* Crown-to-nose facial stripe only: it ends at the pink nose and never
+       crosses the torso or impersonates the tail. */
+    c.fillStyle = 'rgba(27,29,36,0.92)'; c.beginPath();
+    c.moveTo(cx - headR * 0.18, cy - S * 0.258);
+    c.quadraticCurveTo(cx - headR * 0.13, cy - S * 0.180, cx - headR * 0.08, cy - S * 0.112);
+    c.quadraticCurveTo(cx, cy - S * 0.086, cx + headR * 0.08, cy - S * 0.112);
+    c.quadraticCurveTo(cx + headR * 0.13, cy - S * 0.180, cx + headR * 0.18, cy - S * 0.258);
+    c.closePath(); c.fill();
+  }
+
+  /* huge forward eyes are a colugo/sugar-glider identity cue, not decorative
+     highlights.  They deliberately break the head silhouette at thumbnail size. */
+  for (const side of [-1, 1]) {
+    const ex = cx + side * headR * 0.48, ey = cy - S * 0.19;
+    c.fillStyle = '#10131a'; c.beginPath(); c.arc(ex, ey, headR * 0.34, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(236,244,250,0.90)'; c.beginPath(); c.arc(ex - headR * 0.10, ey - headR * 0.11, headR * 0.095, 0, TAU); c.fill();
+  }
+  c.fillStyle = colugo ? '#26231e' : '#d7a8a0';
+  c.beginPath(); c.arc(cx, cy - S * 0.105, headR * 0.13, 0, TAU); c.fill();
+}
+
+/** Fur seals and sea lions rotate their hind flippers FORWARD under the pelvis
+    and can support themselves on all four limbs. This named-only whole-form
+    plan makes the four weight-bearing contacts structural; true seals and
+    Walrus never enter it and retain their prone anatomy and pixels. */
+function faunaEaredPinniped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<QuadSpec['pinnipedPose']>): void {
+  const p = pal(p0, spec);
+  const seaLion = plan === 'sea-lion';
+  const name = seaLion ? 'Sea Lion' : 'Fur Seal';
+  const r = mulberry32((((g.seed as number) ^ 0xE4E3 ^ nameSeedQ(name)) >>> 0));
+  const cx = S * 0.48, cy = S * 0.58;
+  const bw = S * (seaLion ? 0.270 : 0.250), bh = S * (seaLion ? 0.128 : 0.116);
+  const headR = S * (seaLion ? 0.096 : 0.087);
+  const tone = (k: number): string => `rgb(${Math.min(255, p.cr * k) | 0},${Math.min(255, p.cg * k) | 0},${Math.min(255, p.cb * k) | 0})`;
+  const groundY = S * 0.795;
+
+  c.fillStyle = 'rgba(0,0,0,0.34)'; c.beginPath();
+  c.ellipse(cx + S * 0.015, groundY + S * 0.015, bw * 1.30, S * 0.030, 0, 0, TAU); c.fill();
+
+  /* FAR limbs first. Both hind roots angle forward (toward the head, +x), so
+     even the darker pair says eared-seal locomotion rather than trailing fins. */
+  c.fillStyle = tone(0.54);
+  c.beginPath();
+  c.moveTo(cx - bw * 0.88, cy + bh * 0.20);
+  c.bezierCurveTo(cx - bw * 0.84, cy + bh * 0.78, cx - bw * 0.78, groundY - S * 0.032, cx - bw * 0.62, groundY - S * 0.010);
+  c.quadraticCurveTo(cx - bw * 0.39, groundY + S * 0.004, cx - bw * 0.32, groundY - S * 0.032);
+  c.quadraticCurveTo(cx - bw * 0.55, groundY - S * 0.070, cx - bw * 0.75, groundY - S * 0.078);
+  c.bezierCurveTo(cx - bw * 0.76, cy + bh * 0.48, cx - bw * 0.92, cy + bh * 0.30, cx - bw * 0.88, cy + bh * 0.20);
+  c.closePath(); c.fill();
+  c.beginPath();
+  c.moveTo(cx + bw * 0.53, cy - bh * 0.42);
+  c.bezierCurveTo(cx + bw * 0.70, cy + bh * 0.18, cx + bw * 0.88, groundY - S * 0.10, cx + bw * 1.03, groundY - S * 0.015);
+  c.quadraticCurveTo(cx + bw * 1.18, groundY + S * 0.010, cx + bw * 1.24, groundY - S * 0.030);
+  c.bezierCurveTo(cx + bw * 1.09, groundY - S * 0.072, cx + bw * 0.88, cy + bh * 0.02, cx + bw * 0.66, cy - bh * 0.62);
+  c.closePath(); c.fill();
+
+  /* Low rear barrel to raised chest, with broad overlap over every limb root. */
+  const bg = c.createLinearGradient(cx - bw, cy - bh, cx + bw, cy + bh);
+  bg.addColorStop(0, tone(0.54)); bg.addColorStop(0.52, tone(1.03)); bg.addColorStop(1, tone(0.46));
+  c.fillStyle = bg;
+  c.beginPath();
+  c.moveTo(cx - bw, cy + bh * 0.30);
+  c.bezierCurveTo(cx - bw * 1.00, cy - bh * 0.58, cx - bw * 0.40, cy - bh * 0.98, cx + bw * 0.28, cy - bh * 0.62);
+  c.bezierCurveTo(cx + bw * 0.70, cy - bh * 0.52, cx + bw * 0.83, cy - bh * 1.40, cx + bw * 1.02, cy - bh * 1.75);
+  c.bezierCurveTo(cx + bw * 1.22, cy - bh * 0.72, cx + bw * 1.08, cy + bh * 0.66, cx + bw * 0.48, cy + bh * 0.86);
+  c.bezierCurveTo(cx - bw * 0.02, cy + bh * 1.04, cx - bw * 0.72, cy + bh * 0.94, cx - bw, cy + bh * 0.30);
+  c.closePath(); c.fill();
+
+  /* short contour strokes provide a furred neck for Fur Seal and sleek folds
+     for Sea Lion without altering their shared chest-first geometry. */
+  c.strokeStyle = seaLion ? `rgba(${p.cr * 0.36 | 0},${p.cg * 0.30 | 0},${p.cb * 0.26 | 0},0.35)` : `rgba(${p.cr * 1.24 | 0},${p.cg * 1.18 | 0},${p.cb * 1.08 | 0},0.34)`;
+  c.lineCap = 'round';
+  for (let i = 0; i < (seaLion ? 36 : 62); i++) {
+    const x = cx - bw * 0.78 + r() * bw * 1.48, y = cy - bh * 0.50 + r() * bh * 1.25;
+    c.lineWidth = 1.2 + r() * 1.3; c.beginPath(); c.moveTo(x, y); c.lineTo(x - S * 0.015, y + S * (0.010 + r() * 0.020)); c.stroke();
+  }
+
+  /* NEAR hind flipper: broad pelvic root, forward-rotated hock, planted webbed
+     foot. It crosses under the belly instead of projecting behind the rump. */
+  const hindG = c.createLinearGradient(cx - bw * 0.78, cy, cx - bw * 0.18, groundY);
+  hindG.addColorStop(0, tone(0.92)); hindG.addColorStop(1, tone(0.46));
+  c.fillStyle = hindG; c.beginPath();
+  c.moveTo(cx - bw * 0.84, cy + bh * 0.28);
+  c.bezierCurveTo(cx - bw * 0.72, cy + bh * 0.92, cx - bw * 0.55, groundY - S * 0.025, cx - bw * 0.30, groundY - S * 0.008);
+  c.quadraticCurveTo(cx - bw * 0.04, groundY + S * 0.012, cx + bw * 0.02, groundY - S * 0.035);
+  c.quadraticCurveTo(cx - bw * 0.24, groundY - S * 0.083, cx - bw * 0.50, groundY - S * 0.082);
+  c.bezierCurveTo(cx - bw * 0.66, cy + bh * 0.55, cx - bw * 0.86, cy + bh * 0.40, cx - bw * 0.84, cy + bh * 0.28);
+  c.closePath(); c.fill();
+
+  /* NEAR fore-flipper: the long shoulder-to-ground lever that lifts the chest. */
+  const foreG = c.createLinearGradient(cx + bw * 0.55, cy - bh * 0.55, cx + bw * 0.72, groundY);
+  foreG.addColorStop(0, tone(0.94)); foreG.addColorStop(1, tone(0.42));
+  c.fillStyle = foreG; c.beginPath();
+  c.moveTo(cx + bw * 0.48, cy - bh * 0.58);
+  c.bezierCurveTo(cx + bw * 0.58, cy + bh * 0.04, cx + bw * 0.56, groundY - S * 0.090, cx + bw * 0.54, groundY - S * 0.018);
+  c.quadraticCurveTo(cx + bw * 0.68, groundY + S * 0.010, cx + bw * 0.82, groundY - S * 0.020);
+  c.quadraticCurveTo(cx + bw * 0.72, groundY - S * 0.072, cx + bw * 0.70, groundY - S * 0.118);
+  c.bezierCurveTo(cx + bw * 0.72, cy + bh * 0.08, cx + bw * 0.74, cy - bh * 0.62, cx + bw * 0.48, cy - bh * 0.58);
+  c.closePath(); c.fill();
+
+  /* Toe/web lines terminate inside each planted fan, so the four contacts read
+     as feet rather than a second pair of tails. */
+  c.strokeStyle = 'rgba(18,16,17,0.42)'; c.lineWidth = 1.8; c.lineCap = 'round';
+  for (const [x0, x1] of [[-0.72, -0.34], [-0.47, -0.02], [0.58, 0.79], [0.94, 1.20]] as const) {
+    for (const dy of [-0.014, 0, 0.014]) {
+      c.beginPath(); c.moveTo(cx + bw * x0, groundY - S * 0.056);
+      c.lineTo(cx + bw * x1, groundY - S * (0.020 + dy)); c.stroke();
+    }
+  }
+
+  /* neck and dog-like head held above the chest */
+  const hx = cx + bw * 1.00, hy = cy - bh * 1.66;
+  c.fillStyle = tone(0.74); c.beginPath(); c.ellipse(hx - headR * 0.55, hy + headR * 0.60, headR * 0.60, headR * 0.94, -0.46, 0, TAU); c.fill();
+  const hg = c.createRadialGradient(hx - headR * 0.34, hy - headR * 0.30, 2, hx, hy, headR * 1.3);
+  hg.addColorStop(0, tone(1.28)); hg.addColorStop(1, tone(0.46)); c.fillStyle = hg;
+  c.beginPath(); c.ellipse(hx, hy, headR, headR * 0.82, -0.08, 0, TAU); c.fill();
+  c.fillStyle = tone(1.10); c.beginPath(); c.ellipse(hx + headR * 0.70, hy + headR * 0.18, headR * 0.68, headR * 0.38, 0.06, 0, TAU); c.fill();
+  c.fillStyle = '#171517'; c.beginPath(); c.ellipse(hx + headR * 1.18, hy + headR * 0.17, headR * 0.15, headR * 0.11, 0, 0, TAU); c.fill();
+  c.fillStyle = '#111318'; c.beginPath(); c.arc(hx + headR * 0.16, hy - headR * 0.18, headR * 0.17, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(238,244,248,0.86)'; c.beginPath(); c.arc(hx + headR * 0.10, hy - headR * 0.24, headR * 0.052, 0, TAU); c.fill();
+
+  /* visible external ear flap, set behind the head rather than a generic dot */
+  c.fillStyle = seaLion ? '#8e6250' : '#775747'; c.beginPath();
+  c.ellipse(hx - headR * 0.70, hy - headR * 0.35, headR * 0.30, headR * 0.40, -0.64, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(44,28,26,0.62)'; c.beginPath(); c.ellipse(hx - headR * 0.70, hy - headR * 0.35, headR * 0.13, headR * 0.22, -0.64, 0, TAU); c.fill();
+
+  /* muzzle whisker fan makes the head read as a pinniped, not a dog. */
+  c.strokeStyle = 'rgba(238,232,214,0.62)'; c.lineWidth = 1.2; c.lineCap = 'round';
+  for (let i = -2; i <= 2; i++) { c.beginPath(); c.moveTo(hx + headR * 0.82, hy + headR * 0.24); c.lineTo(hx + headR * (1.34 + i * 0.05), hy + headR * (0.34 + i * 0.15)); c.stroke(); }
+}
+
+/** Reset Wave 2b's bear, cat, and hyaena rows need a different skeleton, not
+    more dials on the old shared barrel. These helpers own one continuous named
+    silhouette each: attachments overlap beneath one coat/light field, while
+    diagnostic marks are clipped into that same form. No unlisted mammal can
+    reach this route. */
+function mammalBTone(p: Pal, k: number, alpha = 1): string {
+  const rr = Math.max(0, Math.min(255, p.cr * k)) | 0;
+  const gg = Math.max(0, Math.min(255, p.cg * k)) | 0;
+  const bb = Math.max(0, Math.min(255, p.cb * k)) | 0;
+  return alpha === 1 ? `rgb(${rr},${gg},${bb})` : `rgba(${rr},${gg},${bb},${alpha})`;
+}
+
+function mammalBFill(c: Ctx, paths: readonly Path2D[], p: Pal, x0: number, y0: number, x1: number, y1: number): void {
+  const fill = c.createLinearGradient(x0, y0, x1, y1);
+  fill.addColorStop(0, p.lit);
+  fill.addColorStop(0.42, mammalBTone(p, 1.04));
+  fill.addColorStop(0.76, p.base);
+  fill.addColorStop(1, p.dark);
+  c.fillStyle = fill;
+  /* Fill ordered, overlapping components one at a time. Adding oppositely wound
+     limb/body subpaths to one Path2D cancels their overlap under the nonzero
+     rule and opens black paper-cut voids at shoulders, hips, and knees. Shared
+     gradient coordinates keep these solid overlaps visually continuous. */
+  for (const path of paths) c.fill(path);
+}
+
+function mammalBGround(c: Ctx, x: number, y: number, rx: number): void {
+  const sh = c.createRadialGradient(x, y, 2, x, y, rx);
+  sh.addColorStop(0, 'rgba(0,0,0,0.40)');
+  sh.addColorStop(1, 'rgba(0,0,0,0)');
+  c.fillStyle = sh;
+  c.beginPath(); c.ellipse(x, y, rx, S * 0.035, 0, 0, TAU); c.fill();
+}
+
+function faunaResetUrsid(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+  const p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0xB3A2 ^ nameSeedQ(name)) >>> 0));
+  const brown = name === 'Brown Bear' || name === 'Grizzly Bear';
+  const black = name === 'Black Bear';
+  const panda = name === 'Panda';
+  const polar = name === 'Polar Bear';
+  const sloth = name === 'Sloth Bear';
+  const spectacled = name === 'Spectacled Bear';
+  const sun = name === 'Sun Bear';
+  const groundY = S * 0.785;
+  const left = polar ? S * 0.145 : S * (sun ? 0.205 : 0.175);
+  const right = polar ? S * 0.655 : S * (sun ? 0.630 : 0.650);
+  const rumpTop = S * (black ? 0.350 : polar ? 0.365 : panda ? 0.365 : sun ? 0.425 : 0.405);
+  const shoulderTop = S * (brown ? (name === 'Grizzly Bear' ? 0.275 : 0.292)
+    : black ? 0.410 : polar ? 0.430 : panda ? 0.365 : sloth ? 0.350 : sun ? 0.405 : 0.380);
+  const bodyBottom = S * (sun ? 0.665 : panda ? 0.700 : 0.690);
+  const hx = S * (polar ? 0.785 : 0.765);
+  const hy = S * (polar ? 0.455 : sloth ? 0.440 : sun ? 0.455 : 0.420);
+  const headRx = S * (panda ? 0.102 : polar ? 0.076 : sloth ? 0.083 : sun ? 0.080 : 0.090);
+  const headRy = headRx * (panda ? 1.02 : 0.90);
+  const legW = S * (panda ? 0.052 : polar ? 0.047 : sun ? 0.043 : 0.050);
+
+  mammalBGround(c, S * 0.48, groundY + S * 0.020, S * (polar ? 0.33 : 0.29));
+
+  const total = new Path2D();
+  const tail = new Path2D();
+  tail.ellipse(left + S * 0.006, bodyBottom - S * 0.105, S * (panda ? 0.038 : 0.027), S * (panda ? 0.034 : 0.025), -0.2, 0, TAU);
+  total.addPath(tail);
+
+  const body = new Path2D();
+  body.moveTo(left, bodyBottom - S * 0.045);
+  body.bezierCurveTo(left - S * 0.030, bodyBottom - S * 0.145, left + S * 0.005, rumpTop + S * 0.018, left + S * 0.075, rumpTop);
+  if (brown) {
+    /* One broad muscular withers mass, not a row of small dorsal bumps. The
+       second curve crests well behind the neck so the hump remains distinct
+       from the single visible ear at card scale. */
+    body.bezierCurveTo(left + S * 0.180, rumpTop - S * 0.004, right - S * 0.245, rumpTop - S * 0.008,
+      right - S * 0.165, shoulderTop + S * 0.045);
+    body.bezierCurveTo(right - S * 0.135, shoulderTop - S * 0.035, right - S * 0.060, shoulderTop - S * 0.032,
+      right, shoulderTop + S * 0.035);
+  } else {
+    body.bezierCurveTo(left + S * 0.155, rumpTop - S * (black ? 0.020 : 0.002), right - S * 0.105, shoulderTop - S * 0.010, right, shoulderTop + S * 0.035);
+  }
+  body.bezierCurveTo(right + S * 0.035, shoulderTop + S * 0.095, right + S * 0.025, bodyBottom - S * 0.020, right - S * 0.030, bodyBottom + S * 0.015);
+  body.bezierCurveTo(right - S * 0.145, bodyBottom + S * 0.050, left + S * 0.090, bodyBottom + S * 0.045, left, bodyBottom - S * 0.045);
+  body.closePath(); total.addPath(body);
+
+  const bearLeg = (x: number, far: boolean, fore: boolean): Path2D => {
+    const q = new Path2D();
+    const rootY = bodyBottom - S * (fore ? 0.060 : 0.045);
+    const lean = fore ? S * 0.010 : -S * 0.006;
+    const w = legW * (far ? 0.82 : 1);
+    const ankleX = x + lean + (far ? -S * 0.010 : 0);
+    q.moveTo(x - w, rootY);
+    q.bezierCurveTo(x - w * 1.18, rootY + S * 0.065, ankleX - w * 0.78, groundY - S * 0.060, ankleX - w * 0.56, groundY - S * 0.026);
+    q.quadraticCurveTo(ankleX + w * 0.20, groundY + S * 0.008, ankleX + w * 1.42, groundY - S * 0.006);
+    q.quadraticCurveTo(ankleX + w * 1.54, groundY - S * 0.030, ankleX + w * 0.72, groundY - S * 0.054);
+    q.bezierCurveTo(ankleX + w * 0.70, groundY - S * 0.110, x + w * 1.18, rootY + S * 0.055, x + w, rootY);
+    q.closePath(); return q;
+  };
+  const legPositions = [left + S * 0.105, left + S * 0.155, right - S * 0.115, right - S * 0.065];
+  const legs = legPositions.map((x, i) => bearLeg(x, i === 0 || i === 2, i > 1));
+  for (const leg of legs) total.addPath(leg);
+
+  const neck = new Path2D();
+  neck.moveTo(right - S * 0.055, shoulderTop + S * 0.020);
+  neck.bezierCurveTo(right + S * 0.020, shoulderTop - S * (polar ? 0.010 : 0.035), hx - headRx * 0.95, hy - headRy * 0.74, hx - headRx * 0.56, hy - headRy * 0.52);
+  neck.lineTo(hx - headRx * 0.50, hy + headRy * 0.70);
+  neck.bezierCurveTo(hx - headRx * 0.92, hy + headRy * 0.88, right + S * 0.010, bodyBottom - S * 0.020, right - S * 0.040, bodyBottom - S * 0.010);
+  neck.closePath(); total.addPath(neck);
+  const head = new Path2D();
+  if (brown) {
+    /* Brown/grizzly profile: high forehead folds inward before the short
+       muzzle, producing the diagnostic concave/dished face in silhouette. */
+    head.moveTo(hx - headRx * 0.84, hy + headRy * 0.48);
+    head.bezierCurveTo(hx - headRx * 1.02, hy - headRy * 0.10, hx - headRx * 0.62, hy - headRy * 0.82,
+      hx + headRx * 0.05, hy - headRy * 0.88);
+    head.bezierCurveTo(hx + headRx * 0.30, hy - headRy * 0.84, hx + headRx * 0.46, hy - headRy * 0.48,
+      hx + headRx * 0.28, hy - headRy * 0.06);
+    head.bezierCurveTo(hx + headRx * 0.38, hy + headRy * 0.34, hx + headRx * 0.02, hy + headRy * 0.90,
+      hx - headRx * 0.58, hy + headRy * 0.78);
+    head.quadraticCurveTo(hx - headRx * 0.82, hy + headRy * 0.70, hx - headRx * 0.84, hy + headRy * 0.48);
+    head.closePath();
+  } else {
+    head.ellipse(hx, hy, headRx, headRy, -0.06, 0, TAU);
+  }
+  total.addPath(head);
+
+  const muzzle = new Path2D();
+  const muzzleLen = headRx * (sloth ? 1.22 : polar ? 1.02 : brown ? 0.85 : sun ? 0.66 : 0.78);
+  muzzle.moveTo(hx + headRx * (brown ? 0.18 : 0.30), hy - headRy * (brown ? -0.02 : polar ? 0.25 : 0.20));
+  if (brown) muzzle.quadraticCurveTo(hx + headRx * 0.40, hy + headRy * 0.05, hx + muzzleLen, hy + headRy * 0.04);
+  else if (polar) muzzle.quadraticCurveTo(hx + headRx * 0.68, hy - headRy * 0.34, hx + muzzleLen, hy + headRy * 0.02);
+  else muzzle.quadraticCurveTo(hx + headRx * 0.60, hy - headRy * 0.14, hx + muzzleLen, hy + headRy * 0.02);
+  muzzle.quadraticCurveTo(hx + muzzleLen * 1.08, hy + headRy * 0.26, hx + muzzleLen * 0.80, hy + headRy * 0.43);
+  muzzle.quadraticCurveTo(hx + headRx * 0.44, hy + headRy * 0.48, hx + headRx * 0.20, hy + headRy * 0.30);
+  muzzle.closePath(); total.addPath(muzzle);
+
+  const ears: Path2D[] = [];
+  const earTall = headRy * (black ? 0.54 : panda ? 0.38 : polar ? 0.30 : 0.40);
+  for (const side of brown ? [-1] : [-1, 1]) {
+    const ear = new Path2D();
+    ear.ellipse(hx - headRx * 0.36 + side * headRx * 0.36, hy - headRy * 0.78,
+      headRx * (black ? 0.23 : 0.20), earTall, side * 0.18, 0, TAU);
+    ears.push(ear); total.addPath(ear);
+  }
+
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck, head, muzzle, ...ears],
+    p, left, rumpTop, right + S * 0.16, bodyBottom);
+  c.save(); c.clip(total);
+  const furCount = sun || polar ? 34 : sloth ? 96 : 66;
+  c.strokeStyle = sloth ? 'rgba(220,210,190,0.26)' : mammalBTone(p, 1.34, 0.25);
+  c.lineCap = 'round';
+  for (let i = 0; i < furCount; i++) {
+    const x = left - S * 0.010 + r() * (right - left + S * 0.19);
+    const y = rumpTop + r() * (bodyBottom - rumpTop + S * 0.09);
+    c.lineWidth = 0.8 + r() * 1.2; c.beginPath(); c.moveTo(x, y);
+    c.lineTo(x - S * (0.010 + r() * 0.022), y + S * (0.008 + r() * 0.014)); c.stroke();
+  }
+  if (name === 'Grizzly Bear') {
+    c.strokeStyle = 'rgba(234,218,186,0.48)'; c.lineCap = 'round';
+    for (let i = 0; i < 48; i++) {
+      const x = left + S * 0.015 + r() * (right - left + S * 0.050);
+      const y = rumpTop + S * 0.015 + r() * (bodyBottom - rumpTop + S * 0.025);
+      c.lineWidth = 1.1 + r() * 1.1; c.beginPath(); c.moveTo(x, y);
+      c.lineTo(x - S * (0.009 + r() * 0.017), y + S * (0.006 + r() * 0.010)); c.stroke();
+    }
+  }
+  c.restore();
+
+  if (panda) {
+    /* The shoulder saddle and black legs are anatomy layers, not rectangles
+       stamped over the animal. Fill the actual limb paths so the band joins
+       the forelegs without reopening the composite-path void. */
+    c.fillStyle = '#15171c'; c.save(); c.clip(body);
+    c.beginPath(); c.ellipse(right - S * 0.045, shoulderTop + S * 0.105, S * 0.095, S * 0.175, -0.10, 0, TAU); c.fill(); c.restore();
+    for (const leg of legs) c.fill(leg);
+  }
+
+  const muzzleColour = spec.muzzleHue ?? mammalBTone(p, 1.24);
+  const mg = c.createLinearGradient(hx, hy, hx + muzzleLen, hy + headRy * 0.35);
+  mg.addColorStop(0, mammalBTone(p, 1.08)); mg.addColorStop(0.34, muzzleColour); mg.addColorStop(1, mammalBTone(p, 0.62));
+  c.fillStyle = mg; c.fill(muzzle);
+  if (panda) {
+    c.fillStyle = '#11141a';
+    for (const side of [-1, 1]) { c.beginPath(); c.ellipse(hx + side * headRx * 0.39, hy - headRy * 0.08, headRx * 0.25, headRy * 0.34, side * 0.34, 0, TAU); c.fill(); }
+    c.fillStyle = '#15171c'; for (const ear of ears) c.fill(ear);
+  }
+  if (spectacled) {
+    c.strokeStyle = '#e6d6a8'; c.lineWidth = S * 0.016;
+    c.beginPath(); c.ellipse(hx + headRx * 0.30, hy - headRy * 0.10, headRx * 0.30, headRy * 0.38, -0.18, 0, TAU); c.stroke();
+    c.beginPath(); c.moveTo(hx + headRx * 0.08, hy + headRy * 0.08); c.lineTo(hx - headRx * 0.20, hy + headRy * 0.70); c.stroke();
+  }
+  if (sloth || sun) {
+    c.save(); c.clip(body); c.strokeStyle = sloth ? '#e2d4a6' : '#e4bd62';
+    c.lineWidth = S * (sloth ? 0.026 : 0.023); c.lineCap = 'round';
+    c.beginPath(); c.arc(right - S * 0.105, bodyBottom - S * 0.105, S * 0.054, sloth ? 0.12 : 0.02, sloth ? Math.PI - 0.10 : Math.PI - 0.24); c.stroke();
+    if (sloth) { c.beginPath(); c.moveTo(right - S * 0.105, bodyBottom - S * 0.050); c.lineTo(right - S * 0.105, bodyBottom - S * 0.010); c.stroke(); }
+    c.restore();
+  }
+
+  c.fillStyle = '#101319'; c.beginPath();
+  c.ellipse(hx + headRx * 0.32, hy - headRy * 0.15, headRx * 0.105, headRy * 0.115, 0, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(240,244,245,0.90)'; c.beginPath(); c.arc(hx + headRx * 0.29, hy - headRy * 0.19, headRx * 0.030, 0, TAU); c.fill();
+  c.fillStyle = '#171518'; c.beginPath(); c.ellipse(hx + muzzleLen * 1.02, hy + headRy * 0.08, headRx * 0.17, headRy * 0.14, 0.10, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(31,24,23,0.72)'; c.lineWidth = 2.2; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(hx + headRx * 0.50, hy + headRy * 0.34); c.quadraticCurveTo(hx + muzzleLen * 0.78, hy + headRy * 0.48, hx + muzzleLen * 0.92, hy + headRy * 0.30); c.stroke();
+
+  const clawLen = S * (black ? 0.014 : brown ? 0.030 : sloth ? 0.035 : sun ? 0.033 : polar ? 0.023 : 0.020);
+  c.strokeStyle = brown || sloth || sun ? '#ead9ad' : '#c9bea6';
+  c.lineWidth = 2.4; c.lineCap = 'round';
+  for (const x of [legPositions[1]!, legPositions[3]!]) {
+    for (let i = 0; i < 3; i++) {
+      const sx = x + legW * (0.35 + i * 0.34);
+      c.beginPath(); c.moveTo(sx, groundY - S * 0.012); c.quadraticCurveTo(sx + clawLen * 0.72, groundY - S * 0.002, sx + clawLen, groundY + S * 0.006); c.stroke();
+    }
+  }
+}
+
+interface MammalBFelidShape {
+  body: number; depth: number; leg: number; head: number; tail: number; tailW: number;
+  ear: number; paw: number; rump: number; shoulder: number; tuck: number;
+}
+
+const MAMMAL_B_FELID: Record<string, MammalBFelidShape> = {
+  'Bobcat': { body: 158, depth: 65, leg: 74, head: 35, tail: 22, tailW: 13, ear: 24, paw: 16, rump: 7, shoulder: 3, tuck: 13 },
+  'Caracal': { body: 162, depth: 57, leg: 94, head: 31, tail: 66, tailW: 8, ear: 31, paw: 13, rump: 8, shoulder: 1, tuck: 15 },
+  'Cat': { body: 150, depth: 55, leg: 65, head: 34, tail: 120, tailW: 8, ear: 23, paw: 12, rump: 8, shoulder: 3, tuck: 16 },
+  'Cheetah': { body: 184, depth: 57, leg: 104, head: 29, tail: 142, tailW: 8, ear: 16, paw: 11, rump: 2, shoulder: 8, tuck: 25 },
+  'Clouded Leopard': { body: 180, depth: 70, leg: 57, head: 35, tail: 185, tailW: 14, ear: 17, paw: 16, rump: 8, shoulder: 5, tuck: 12 },
+  'Cougar': { body: 188, depth: 65, leg: 83, head: 34, tail: 150, tailW: 13, ear: 17, paw: 15, rump: 17, shoulder: 2, tuck: 18 },
+  'Jaguar': { body: 190, depth: 82, leg: 62, head: 43, tail: 102, tailW: 14, ear: 17, paw: 18, rump: 5, shoulder: 6, tuck: 9 },
+  'Leopard': { body: 192, depth: 65, leg: 76, head: 35, tail: 155, tailW: 11, ear: 17, paw: 15, rump: 6, shoulder: 6, tuck: 20 },
+  'Lion': { body: 198, depth: 78, leg: 76, head: 39, tail: 150, tailW: 9, ear: 16, paw: 17, rump: 3, shoulder: 3, tuck: 12 },
+  'Lynx': { body: 158, depth: 66, leg: 91, head: 35, tail: 20, tailW: 13, ear: 25, paw: 21, rump: 12, shoulder: 1, tuck: 12 },
+  'Ocelot': { body: 158, depth: 62, leg: 67, head: 34, tail: 78, tailW: 9, ear: 17, paw: 14, rump: 6, shoulder: 4, tuck: 13 },
+  'Sand Cat': { body: 145, depth: 58, leg: 55, head: 38, tail: 94, tailW: 11, ear: 24, paw: 17, rump: 5, shoulder: 4, tuck: 10 },
+  'Serval': { body: 150, depth: 50, leg: 127, head: 27, tail: 44, tailW: 8, ear: 43, paw: 11, rump: 5, shoulder: 2, tuck: 17 },
+  'Snow Leopard': { body: 184, depth: 72, leg: 58, head: 38, tail: 190, tailW: 18, ear: 15, paw: 22, rump: 8, shoulder: 6, tuck: 10 },
+  'Tiger': { body: 198, depth: 78, leg: 77, head: 39, tail: 146, tailW: 13, ear: 16, paw: 18, rump: 5, shoulder: 5, tuck: 12 },
+};
+
+function faunaResetFelid(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+  const p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0xF311 ^ nameSeedQ(name)) >>> 0));
+  const d = MAMMAL_B_FELID[name] ?? MAMMAL_B_FELID.Cat!;
+  const bobbed = name === 'Bobcat' || name === 'Lynx';
+  const serval = name === 'Serval';
+  const sand = name === 'Sand Cat';
+  const framedLongTail = ['Cheetah', 'Clouded Leopard', 'Cougar', 'Leopard', 'Lion', 'Snow Leopard', 'Tiger'].includes(name);
+  const groundY = S * 0.790, left = S * (framedLongTail ? (name === 'Clouded Leopard' || name === 'Snow Leopard' ? 0.340 : 0.300) : 0.265), right = left + d.body;
+  const bodyBottom = groundY - d.leg + 10, baseTop = bodyBottom - d.depth;
+  const rumpTop = baseTop - d.rump, shoulderTop = baseTop - d.shoulder;
+  const tailBaseY = rumpTop + d.depth * 0.58;
+  const raisedTail = name === 'Cat';
+  const tipX = Math.max(S * 0.035, left - d.tail);
+  const tipY = raisedTail ? S * 0.255 : bobbed ? tailBaseY + 8 : serval ? tailBaseY + 48
+    : groundY - (name === 'Clouded Leopard' || name === 'Snow Leopard' ? 31 : 42);
+  const hx = right + d.head * 0.72, hy = shoulderTop + d.head * (sand ? 0.48 : 0.66);
+  const headRy = d.head * (sand ? 0.74 : name === 'Jaguar' ? 0.90 : 0.82);
+  const bigJaw = name === 'Jaguar' || name === 'Lion' || name === 'Tiger';
+
+  mammalBGround(c, S * 0.49, groundY + S * 0.016, S * 0.33);
+
+  let lionMane: Path2D | undefined;
+  if (name === 'Lion') {
+    const mane = new Path2D();
+    mane.moveTo(hx - d.head * 1.08, hy - headRy * 0.96);
+    for (let i = 0; i <= 14; i++) {
+      const a = -Math.PI * 0.78 + i * (Math.PI * 1.62 / 14);
+      const rr = d.head * (i % 2 ? 1.36 : 1.18);
+      const x = hx - d.head * 0.28 + Math.cos(a) * rr;
+      const y = hy + headRy * 0.12 + Math.sin(a) * rr;
+      if (i === 0) mane.moveTo(x, y); else mane.lineTo(x, y);
+    }
+    mane.closePath();
+    lionMane = mane;
+  }
+
+  const total = new Path2D();
+  const tail = new Path2D();
+  tail.moveTo(left + 8, tailBaseY - d.tailW);
+  if (bobbed) {
+    /* A bobcat/lynx tail is a thick rounded stump carried off the rump, not a
+       shortened version of the generic diagonal tail curve. */
+    tail.bezierCurveTo(left - d.tail * 0.30, tailBaseY - d.tailW * 0.82,
+      tipX - d.tailW * 0.35, tipY - d.tailW * 0.58, tipX, tipY);
+    tail.quadraticCurveTo(tipX - d.tailW * 0.18, tipY + d.tailW * 0.74,
+      tipX + d.tailW * 0.64, tipY + d.tailW * 0.82);
+    tail.bezierCurveTo(left - d.tail * 0.34, tailBaseY + d.tailW * 1.10,
+      left - 2, tailBaseY + d.tailW * 1.08, left + 8, tailBaseY + d.tailW);
+  } else if (raisedTail) {
+    tail.bezierCurveTo(left - 45, tailBaseY - 20, tipX - 18, S * 0.335, tipX, tipY);
+    tail.quadraticCurveTo(tipX + 8, tipY - 7, tipX + d.tailW * 1.15, tipY + 2);
+    tail.bezierCurveTo(tipX + 9, S * 0.360, left - 25, tailBaseY + 18, left + 8, tailBaseY + d.tailW);
+  } else {
+    const outwardControl = Math.max(S * 0.028, left - d.tail * 0.72);
+    const returnControl = Math.max(S * 0.040, left - d.tail * 0.58);
+    tail.bezierCurveTo(left - d.tail * 0.22, tailBaseY + 8, outwardControl, tipY - 22, tipX, tipY);
+    tail.quadraticCurveTo(tipX - 3, tipY + d.tailW * 0.55, tipX + d.tailW * 0.72, tipY + d.tailW * 0.72);
+    tail.bezierCurveTo(returnControl, tipY + d.tailW * 0.82, left - d.tail * 0.12, tailBaseY + d.tailW * 1.25, left + 8, tailBaseY + d.tailW);
+  }
+  tail.closePath(); total.addPath(tail);
+
+  const body = new Path2D();
+  body.moveTo(left, rumpTop + 10);
+  body.bezierCurveTo(left + d.body * 0.13, rumpTop - 7, left + d.body * 0.37, baseTop + 4, left + d.body * 0.56, baseTop + 5);
+  body.bezierCurveTo(left + d.body * 0.74, baseTop + 4, right - 24, shoulderTop - 6, right, shoulderTop + 7);
+  body.bezierCurveTo(right + 8, shoulderTop + d.depth * 0.42, right - 1, bodyBottom - 7, right - 28, bodyBottom + 3);
+  body.quadraticCurveTo(left + d.body * 0.60, bodyBottom - d.tuck, left + d.body * 0.43, bodyBottom - d.tuck * 1.10);
+  body.quadraticCurveTo(left + d.body * 0.26, bodyBottom + 9, left + 18, bodyBottom - 2);
+  body.bezierCurveTo(left - 8, bodyBottom - 17, left - 12, rumpTop + 31, left, rumpTop + 10);
+  body.closePath(); total.addPath(body);
+
+  const catLeg = (x: number, hind: boolean, far: boolean): Path2D => {
+    const q = new Path2D(), y0 = bodyBottom - (hind ? 22 : 26), w = (hind ? 15 : 11) * (far ? 0.82 : 1);
+    const gY = groundY - (far ? 4 : 0), paw = d.paw * (far ? 0.82 : 1);
+    q.moveTo(x - w, y0);
+    if (hind) {
+      q.bezierCurveTo(x - w * 1.15, y0 + d.leg * 0.22, x + 18, y0 + d.leg * 0.36, x + 20, y0 + d.leg * 0.47);
+      q.bezierCurveTo(x + 18, y0 + d.leg * 0.61, x - 6, gY - 32, x - 6, gY - 18);
+    } else {
+      q.bezierCurveTo(x - w * 0.92, y0 + d.leg * 0.32, x - 9, y0 + d.leg * 0.48, x - 6, y0 + d.leg * 0.58);
+      q.bezierCurveTo(x - 2, y0 + d.leg * 0.73, x + 1, gY - 29, x + 2, gY - 17);
+    }
+    q.quadraticCurveTo(x + paw * 0.52, gY - 5, x + paw, gY - 7);
+    q.quadraticCurveTo(x + paw * 1.20, gY - 15, x + paw * 0.72, gY - 23);
+    if (hind) q.bezierCurveTo(x + 8, gY - 36, x + w * 1.05, y0 + d.leg * 0.22, x + w, y0);
+    else q.bezierCurveTo(x + 11, gY - 42, x + w * 1.08, y0 + d.leg * 0.18, x + w, y0);
+    q.closePath(); return q;
+  };
+  const legs = [catLeg(left + 35, true, true), catLeg(left + 61, true, false), catLeg(right - 48, false, true), catLeg(right - 24, false, false)];
+  for (const leg of legs) total.addPath(leg);
+
+  const neck = new Path2D();
+  neck.moveTo(right - 37, shoulderTop + 2);
+  neck.quadraticCurveTo(right + 12, shoulderTop - 3, hx - d.head * 0.58, hy - headRy * 0.68);
+  neck.lineTo(hx - d.head * 0.45, hy + headRy * 0.70);
+  neck.quadraticCurveTo(right + 10, bodyBottom - 6, right - 24, bodyBottom - 3);
+  neck.closePath(); total.addPath(neck);
+
+  const ruffs: Path2D[] = [];
+  if (name === 'Tiger') {
+    const ruff = new Path2D();
+    ruff.moveTo(hx - d.head * 0.72, hy - headRy * 0.26);
+    ruff.lineTo(hx - d.head * 1.14, hy + headRy * 0.05);
+    ruff.lineTo(hx - d.head * 0.88, hy + headRy * 0.24);
+    ruff.lineTo(hx - d.head * 1.02, hy + headRy * 0.52);
+    ruff.lineTo(hx - d.head * 0.46, hy + headRy * 0.62);
+    ruff.closePath(); ruffs.push(ruff); total.addPath(ruff);
+  }
+  const head = new Path2D();
+  if (bobbed) {
+    /* The bobcat/lynx cheek fan is the skull's own lower outline: two deep
+       pointed lobes and a rear flare, rather than a hidden same-colour patch
+       under the neck. This keeps the ruff seamless and legible at 132 px. */
+    head.moveTo(hx - d.head * 0.76, hy - headRy * 0.58);
+    head.bezierCurveTo(hx - d.head * 0.24, hy - headRy * 0.92, hx + d.head * 0.58, hy - headRy * 0.72,
+      hx + d.head * 0.84, hy - headRy * 0.18);
+    head.quadraticCurveTo(hx + d.head * 0.96, hy + headRy * 0.30, hx + d.head * 0.52, hy + headRy * 0.54);
+    head.lineTo(hx + d.head * 0.28, hy + headRy * 1.08);
+    head.lineTo(hx - d.head * 0.02, hy + headRy * 0.68);
+    head.lineTo(hx - d.head * 0.56, hy + headRy * 1.22);
+    head.lineTo(hx - d.head * 0.50, hy + headRy * 0.52);
+    head.lineTo(hx - d.head * 1.16, hy + headRy * 0.34);
+    head.lineTo(hx - d.head * 0.78, hy + headRy * 0.02);
+    head.quadraticCurveTo(hx - d.head * 1.02, hy - headRy * 0.32, hx - d.head * 0.76, hy - headRy * 0.58);
+    head.closePath();
+  } else {
+    head.ellipse(hx, hy, sand ? d.head * 1.12 : d.head, headRy, -0.06, 0, TAU);
+  }
+  total.addPath(head);
+  const muzzle = new Path2D();
+  const muzzleLen = d.head * (bigJaw ? 0.86 : name === 'Cheetah' ? 0.63 : sand ? 0.90 : 0.70);
+  muzzle.moveTo(hx + d.head * 0.28, hy - headRy * 0.08);
+  muzzle.quadraticCurveTo(hx + d.head * 0.58, hy - headRy * 0.12, hx + muzzleLen, hy + headRy * 0.04);
+  muzzle.quadraticCurveTo(hx + muzzleLen * 1.10, hy + headRy * (bigJaw ? 0.34 : 0.28), hx + d.head * 0.58, hy + headRy * (bigJaw ? 0.52 : 0.40));
+  muzzle.quadraticCurveTo(hx + d.head * 0.28, hy + headRy * 0.40, hx + d.head * 0.20, hy + headRy * 0.18);
+  muzzle.closePath(); total.addPath(muzzle);
+
+  const pointEars = ['Bobcat', 'Caracal', 'Cat', 'Lynx', 'Sand Cat', 'Serval'].includes(name);
+  const earPaths: Path2D[] = [];
+  for (const side of [-1, 1]) {
+    const ex = hx - d.head * (sand ? 0.05 : 0.36) + side * d.head * (sand ? 0.46 : serval ? 0.48 : 0.30);
+    const baseY = hy - headRy * (sand ? 0.38 : serval ? 0.58 : 0.68);
+    const ear = new Path2D();
+    if (serval) {
+      /* The serval's ears are extraordinarily large rounded upright ovals;
+         sharp generic cat triangles lose that identity at thumbnail scale. */
+      ear.ellipse(ex, baseY - d.ear * 0.43, d.ear * 0.36, d.ear * 0.60, side * 0.08, 0, TAU);
+    } else if (sand) {
+      /* Sand-cat ears sit low and far apart on a broad, flattened skull. */
+      ear.moveTo(ex - d.ear * 0.66, baseY + d.ear * 0.12);
+      ear.quadraticCurveTo(ex - d.ear * 0.44, baseY - d.ear * 0.60, ex, baseY - d.ear * 1.15);
+      ear.quadraticCurveTo(ex + d.ear * 0.44, baseY - d.ear * 0.60, ex + d.ear * 0.66, baseY + d.ear * 0.12);
+    } else if (pointEars) {
+      ear.moveTo(ex - d.ear * 0.46, baseY + d.ear * 0.18);
+      ear.quadraticCurveTo(ex - d.ear * 0.10, baseY - d.ear * 0.34, ex + side * d.ear * 0.18, baseY - d.ear);
+      ear.quadraticCurveTo(ex + d.ear * 0.50, baseY - d.ear * 0.22, ex + d.ear * 0.44, baseY + d.ear * 0.20);
+    } else {
+      ear.ellipse(ex, baseY - d.ear * 0.24, d.ear * 0.50, d.ear * 0.58, side * 0.22, 0, TAU);
+    }
+    ear.closePath(); earPaths.push(ear); total.addPath(ear);
+  }
+
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck, ...ruffs],
+    p, left, baseTop, right + d.head * 1.5, bodyBottom);
+  if (lionMane) {
+    const mg = c.createRadialGradient(hx - d.head * 0.44, hy - d.head * 0.45, 3, hx - d.head * 0.25, hy, d.head * 1.45);
+    mg.addColorStop(0, '#8a673d'); mg.addColorStop(0.68, '#5b412b'); mg.addColorStop(1, '#2e261e');
+    c.fillStyle = mg; c.fill(lionMane);
+  }
+  mammalBFill(c, [head, muzzle, ...earPaths], p, left, baseTop, right + d.head * 1.5, bodyBottom);
+
+  c.save(); c.clip(total);
+  if (name === 'Cheetah' || name === 'Bobcat' || name === 'Serval') {
+    const count = name === 'Serval' ? 30 : name === 'Cheetah' ? 46 : 28;
+    const size = name === 'Serval' ? 4.2 : name === 'Cheetah' ? 3.2 : 2.8;
+    for (let i = 0; i < count; i++) {
+      const x = left + 13 + r() * (d.body - 22), y = baseTop + 12 + r() * (d.depth + 16);
+      c.fillStyle = `rgba(30,24,19,${0.72 + r() * 0.20})`; c.beginPath(); c.arc(x, y, size * (0.72 + r() * 0.55), 0, TAU); c.fill();
+    }
+    if (name === 'Serval') {
+      c.strokeStyle = 'rgba(30,24,19,0.86)'; c.lineWidth = 6;
+      for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(right - 32 + i * 9, shoulderTop); c.lineTo(right - 45 + i * 9, shoulderTop + 42); c.stroke(); }
+    }
+  } else if (name === 'Jaguar' || name === 'Leopard' || name === 'Snow Leopard' || name === 'Ocelot') {
+    const count = name === 'Ocelot' ? 15 : 24;
+    for (let i = 0; i < count; i++) {
+      const chainRow = name === 'Ocelot' ? Math.floor(i / 5) : 0;
+      const chainCol = name === 'Ocelot' ? i % 5 : 0;
+      const x = name === 'Ocelot'
+        ? left + 24 + chainCol * ((d.body - 52) / 4) + (chainRow % 2) * 5
+        : left + 16 + r() * (d.body - 28);
+      const y = name === 'Ocelot' ? baseTop + 16 + chainRow * 15 : baseTop + 14 + r() * (d.depth + 11);
+      const rx = (name === 'Ocelot' ? 9.5 : name === 'Snow Leopard' ? 8 : 6) * (name === 'Ocelot' ? 1 : 0.78 + r() * 0.52);
+      const ry = (name === 'Ocelot' ? 4.3 : name === 'Snow Leopard' ? 6.5 : 5.2) * (name === 'Ocelot' ? 1 : 0.78 + r() * 0.50);
+      c.strokeStyle = name === 'Snow Leopard' ? 'rgba(52,57,67,0.78)' : 'rgba(38,28,18,0.88)';
+      c.lineWidth = name === 'Snow Leopard' ? 3.0 : 2.7; c.beginPath(); c.ellipse(x, y, rx, ry, name === 'Ocelot' ? (chainRow - 1) * 0.08 : r() * 0.7 - 0.35, 0, TAU); c.stroke();
+      if (name === 'Jaguar') { c.fillStyle = 'rgba(34,24,17,0.88)'; c.beginPath(); c.arc(x, y, 1.7, 0, TAU); c.fill(); }
+    }
+    if (name === 'Ocelot') {
+      c.strokeStyle = 'rgba(38,28,18,0.86)'; c.lineWidth = 3.4; c.lineCap = 'round';
+      for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(right - 55, baseTop + 15 + i * 12); c.quadraticCurveTo(right - 31, baseTop + 19 + i * 12, right - 14, baseTop + 25 + i * 12); c.stroke(); }
+    }
+  } else if (name === 'Clouded Leopard') {
+    for (let i = 0; i < 13; i++) {
+      const x = left + 18 + r() * (d.body - 34), y = baseTop + 18 + r() * (d.depth + 4);
+      c.strokeStyle = 'rgba(45,33,25,0.88)'; c.lineWidth = 4.4; c.beginPath();
+      c.ellipse(x, y, 12 + r() * 8, 7 + r() * 5, r() * 0.8 - 0.4, 0, TAU); c.stroke();
+      softMark(c, x, y, 10 + r() * 5, 5 + r() * 3, '208,184,132', 0.28, r() * TAU);
+    }
+  } else if (name === 'Tiger' || name === 'Cat') {
+    const stripes = name === 'Tiger' ? 13 : 7;
+    c.fillStyle = name === 'Tiger' ? 'rgba(31,25,21,0.92)' : 'rgba(34,39,45,0.72)';
+    for (let i = 0; i < stripes; i++) {
+      const x = left + 12 + i * ((d.body - 26) / stripes);
+      const q = new Path2D(); q.moveTo(x - 3, baseTop - 3); q.lineTo(x + 5, baseTop - 1);
+      q.quadraticCurveTo(x + 2, baseTop + d.depth * 0.36, x - 1 + (i % 2 ? 7 : -5), bodyBottom - 12 - (i % 3) * 7);
+      q.lineTo(x - 7 + (i % 2 ? 7 : -5), bodyBottom - 10 - (i % 3) * 7);
+      q.quadraticCurveTo(x - 3, baseTop + d.depth * 0.34, x - 3, baseTop - 3); q.closePath(); c.fill(q);
+    }
+  }
+  c.restore();
+
+  if (name === 'Tiger' || name === 'Sand Cat') {
+    c.save(); c.clip(total); c.strokeStyle = name === 'Tiger' ? 'rgba(31,25,21,0.94)' : 'rgba(72,63,52,0.78)';
+    c.lineWidth = name === 'Tiger' ? 8 : 6;
+    for (let i = 1; i <= (name === 'Tiger' ? 7 : 5); i++) {
+      const t = i / (name === 'Tiger' ? 8 : 6), x = left - d.tail * t;
+      const y = tailBaseY * (1 - t) + tipY * t;
+      c.beginPath(); c.moveTo(x, y - d.tailW * 1.4); c.lineTo(x + 3, y + d.tailW * 1.4); c.stroke();
+    }
+    if (name === 'Sand Cat') {
+      for (const x of [left + 55, right - 28]) {
+        for (let j = 0; j < 2; j++) { c.beginPath(); c.moveTo(x - 15, groundY - 27 - j * 15); c.lineTo(x + 18, groundY - 25 - j * 15); c.stroke(); }
+      }
+    }
+    c.restore();
+  }
+
+  const muzzleG = c.createLinearGradient(hx, hy, hx + muzzleLen, hy + headRy * 0.35);
+  muzzleG.addColorStop(0, mammalBTone(p, 1.22)); muzzleG.addColorStop(1, mammalBTone(p, 0.70)); c.fillStyle = muzzleG; c.fill(muzzle);
+  c.fillStyle = mammalBTone(p, 0.50, 0.74);
+  for (const ear of earPaths) { c.save(); c.clip(ear); c.fillRect(hx - d.head * 1.2, hy - d.ear * 1.8, d.head * 2.4, d.ear * 1.55); c.restore(); }
+
+  const eyeX = hx + d.head * 0.26, eyeY = hy - headRy * 0.18;
+  c.fillStyle = '#d7aa54'; c.beginPath(); c.ellipse(eyeX, eyeY, d.head * 0.125, d.head * 0.105, 0, 0, TAU); c.fill();
+  c.strokeStyle = '#121318'; c.lineWidth = Math.max(1.8, d.head * 0.055); c.beginPath(); c.moveTo(eyeX, eyeY - d.head * 0.085); c.lineTo(eyeX, eyeY + d.head * 0.085); c.stroke();
+  c.fillStyle = '#16151a'; c.beginPath(); c.ellipse(hx + muzzleLen * 1.04, hy + headRy * 0.08, d.head * 0.13, d.head * 0.105, 0.08, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(32,25,23,0.76)'; c.lineWidth = 1.8; c.beginPath(); c.moveTo(hx + d.head * 0.48, hy + headRy * 0.35); c.quadraticCurveTo(hx + muzzleLen * 0.82, hy + headRy * 0.48, hx + muzzleLen * 0.95, hy + headRy * 0.29); c.stroke();
+
+  if (name === 'Cheetah') {
+    c.strokeStyle = '#25201c'; c.lineWidth = 4.8; c.lineCap = 'round'; c.beginPath(); c.moveTo(eyeX + 1, eyeY + 3); c.quadraticCurveTo(hx + d.head * 0.42, hy + headRy * 0.16, hx + d.head * 0.60, hy + headRy * 0.33); c.stroke();
+  }
+  if (name === 'Tiger') {
+    c.fillStyle = '#f2e8d5'; c.beginPath(); c.ellipse(hx + d.head * 0.05, hy + headRy * 0.19, d.head * 0.36, headRy * 0.30, -0.10, 0, TAU); c.fill();
+    c.fillStyle = '#f5eee1'; c.beginPath(); c.ellipse(eyeX - d.head * 0.03, eyeY - d.head * 0.16, d.head * 0.23, d.head * 0.095, -0.16, 0, TAU); c.fill();
+  }
+  if (name === 'Ocelot' || name === 'Cougar') {
+    c.strokeStyle = 'rgba(28,24,22,0.90)'; c.lineWidth = 3.2; c.lineCap = 'round';
+    for (const off of [-0.06, 0.10]) { c.beginPath(); c.moveTo(hx + d.head * 0.30, hy + headRy * off); c.lineTo(hx + d.head * 0.76, hy + headRy * (off + 0.18)); c.stroke(); }
+  }
+  if (name === 'Bobcat' || name === 'Lynx' || name === 'Caracal') {
+    const tuft = name === 'Caracal' ? d.ear * 0.76 : d.ear * 0.46;
+    c.strokeStyle = '#18171a'; c.lineWidth = name === 'Caracal' ? 4.3 : 3.3; c.lineCap = 'round';
+    for (const side of [-1, 1]) {
+      const ex = hx - d.head * 0.36 + side * d.head * 0.30, ey = hy - headRy * 0.68 - d.ear;
+      c.beginPath(); c.moveTo(ex + side * d.ear * 0.18, ey + 3); c.quadraticCurveTo(ex + side * tuft * 0.32, ey - tuft * 0.55, ex + side * tuft * 0.12, ey - tuft); c.stroke();
+    }
+  }
+  if (name === 'Serval' || name === 'Caracal') {
+    c.strokeStyle = '#201b19'; c.lineWidth = name === 'Serval' ? 5.4 : 4.6;
+    for (const side of [-1, 1]) {
+      const ex = hx - d.head * 0.36 + side * d.head * 0.30;
+      c.beginPath(); c.moveTo(ex - d.ear * 0.26, hy - headRy * 0.74); c.lineTo(ex + d.ear * 0.16, hy - headRy * 0.74 - d.ear * 0.62); c.stroke();
+    }
+  }
+  if (name === 'Cougar') {
+    c.fillStyle = '#211d1c'; c.beginPath(); c.arc(tipX + d.tailW * 0.28, tipY + d.tailW * 0.22, d.tailW * 0.86, 0, TAU); c.fill();
+  }
+  if (name === 'Lion') {
+    c.fillStyle = '#30251d'; c.beginPath(); c.ellipse(tipX + 3, tipY + 2, d.tailW * 1.45, d.tailW * 1.85, -0.35, 0, TAU); c.fill();
+  }
+  if (name === 'Sand Cat') {
+    c.fillStyle = '#2c2925'; c.beginPath(); c.arc(tipX + d.tailW * 0.30, tipY + d.tailW * 0.18, d.tailW * 0.78, 0, TAU); c.fill();
+  }
+
+  c.strokeStyle = 'rgba(24,22,22,0.55)'; c.lineWidth = 1.5; c.lineCap = 'round';
+  for (const x of [left + 61, right - 24]) {
+    for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(x + 3 + i * d.paw * 0.24, groundY - 8); c.lineTo(x + 5 + i * d.paw * 0.28, groundY - 3); c.stroke(); }
+  }
+  if (name === 'Cat' || name === 'Sand Cat' || name === 'Tiger' || name === 'Ocelot') {
+    c.strokeStyle = 'rgba(235,235,226,0.72)'; c.lineWidth = 1.2;
+    for (let i = -2; i <= 2; i++) { c.beginPath(); c.moveTo(hx + d.head * 0.54, hy + headRy * 0.26); c.lineTo(hx + d.head * (1.14 + i * 0.04), hy + headRy * (0.30 + i * 0.13)); c.stroke(); }
+  }
+}
+
+function faunaResetHyaenid(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+  const p = pal(p0, spec), striped = name === 'Striped Hyena';
+  const r = mulberry32((((g.seed as number) ^ 0x48A3 ^ nameSeedQ(name)) >>> 0));
+  const groundY = S * 0.790, left = S * 0.225, right = S * 0.665;
+  const shoulderTop = S * 0.325, rumpTop = S * (striped ? 0.475 : 0.455), bodyBottom = S * 0.655;
+  const hx = S * 0.775, hy = S * 0.420, headRx = S * 0.090, headRy = S * 0.078;
+  mammalBGround(c, S * 0.49, groundY + S * 0.018, S * 0.30);
+
+  if (striped) {
+    const mane = new Path2D(); mane.moveTo(left + S * 0.020, rumpTop + S * 0.012);
+    for (let i = 0; i <= 12; i++) {
+      const t = i / 12, x = left + S * 0.025 + (right - left - S * 0.035) * t;
+      const y = rumpTop * (1 - t) + shoulderTop * t - S * (i % 2 ? 0.055 : 0.080);
+      mane.lineTo(x, y);
+    }
+    mane.lineTo(right - S * 0.010, shoulderTop + S * 0.035); mane.closePath();
+    const mg = c.createLinearGradient(left, rumpTop, right, shoulderTop); mg.addColorStop(0, '#4b4136'); mg.addColorStop(1, '#262420');
+    c.fillStyle = mg; c.fill(mane);
+  }
+
+  const total = new Path2D();
+  const tail = new Path2D();
+  tail.moveTo(left + S * 0.020, rumpTop + S * 0.085);
+  tail.bezierCurveTo(left - S * 0.075, rumpTop + S * 0.105, left - S * 0.110, groundY - S * 0.105, left - S * 0.075, groundY - S * 0.065);
+  tail.quadraticCurveTo(left - S * 0.035, groundY - S * 0.040, left - S * 0.002, groundY - S * 0.090);
+  tail.bezierCurveTo(left - S * 0.020, groundY - S * 0.145, left - S * 0.020, rumpTop + S * 0.100, left + S * 0.020, rumpTop + S * 0.085); tail.closePath(); total.addPath(tail);
+  const body = new Path2D(); body.moveTo(left, rumpTop + S * 0.025);
+  body.bezierCurveTo(left + S * 0.075, rumpTop - S * 0.010, right - S * 0.115, shoulderTop - S * 0.015, right, shoulderTop + S * 0.025);
+  body.bezierCurveTo(right + S * 0.018, shoulderTop + S * 0.115, right - S * 0.020, bodyBottom, right - S * 0.055, bodyBottom + S * 0.012);
+  body.bezierCurveTo(right - S * 0.155, bodyBottom + S * 0.028, left + S * 0.075, bodyBottom + S * 0.020, left, rumpTop + S * 0.025); body.closePath(); total.addPath(body);
+
+  const hyenaLeg = (x: number, fore: boolean, far: boolean): Path2D => {
+    const q = new Path2D(), y0 = bodyBottom - S * 0.035;
+    const len = S * (fore ? 0.185 : 0.135), w = S * (fore ? 0.026 : 0.023) * (far ? 0.82 : 1);
+    q.moveTo(x - w, y0); q.bezierCurveTo(x - w, y0 + len * 0.38, x - w * 0.30, groundY - S * 0.060, x, groundY - S * 0.025);
+    q.quadraticCurveTo(x + S * 0.025, groundY - S * 0.005, x + S * 0.050, groundY - S * 0.014);
+    q.quadraticCurveTo(x + S * 0.055, groundY - S * 0.034, x + w * 0.62, groundY - S * 0.050);
+    q.bezierCurveTo(x + w * 0.72, groundY - S * 0.090, x + w * 1.12, y0 + len * 0.20, x + w, y0); q.closePath(); return q;
+  };
+  const legs = [hyenaLeg(left + S * 0.070, false, true), hyenaLeg(left + S * 0.120, false, false), hyenaLeg(right - S * 0.090, true, true), hyenaLeg(right - S * 0.040, true, false)];
+  for (const leg of legs) total.addPath(leg);
+  const neck = new Path2D(); neck.moveTo(right - S * 0.080, shoulderTop + S * 0.018);
+  neck.bezierCurveTo(right + S * 0.010, shoulderTop - S * 0.020, hx - headRx * 0.76, hy - headRy * 0.76, hx - headRx * 0.40, hy - headRy * 0.50);
+  neck.lineTo(hx - headRx * 0.36, hy + headRy * 0.72);
+  neck.bezierCurveTo(right + S * 0.010, bodyBottom - S * 0.035, right - S * 0.050, bodyBottom - S * 0.005, right - S * 0.080, shoulderTop + S * 0.018); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(hx, hy, headRx, headRy, -0.04, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D(); muzzle.moveTo(hx + headRx * 0.20, hy - headRy * 0.08);
+  muzzle.quadraticCurveTo(hx + headRx * 0.72, hy - headRy * 0.16, hx + headRx * 1.18, hy + headRy * 0.05);
+  muzzle.quadraticCurveTo(hx + headRx * 1.30, hy + headRy * 0.42, hx + headRx * 0.56, hy + headRy * 0.62);
+  muzzle.quadraticCurveTo(hx + headRx * 0.22, hy + headRy * 0.50, hx + headRx * 0.10, hy + headRy * 0.18); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) {
+    const ex = hx - headRx * 0.35 + side * headRx * 0.30, by = hy - headRy * 0.64;
+    const ear = new Path2D();
+    if (striped) { ear.moveTo(ex - headRx * 0.22, by); ear.lineTo(ex + side * headRx * 0.08, by - headRy * 0.98); ear.lineTo(ex + headRx * 0.27, by + headRy * 0.06); ear.closePath(); }
+    else ear.ellipse(ex, by - headRy * 0.20, headRx * 0.28, headRy * 0.42, side * 0.20, 0, TAU);
+    ears.push(ear); total.addPath(ear);
+  }
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck, head, muzzle, ...ears],
+    p, left, shoulderTop, hx + headRx * 1.3, bodyBottom);
+  c.save(); c.clip(total);
+  if (striped) {
+    for (let i = 0; i < 8; i++) {
+      const t = (i + 0.5) / 8, x = left + S * (0.030 + i * 0.049);
+      const top = rumpTop * (1 - t) + shoulderTop * t;
+      softMark(c, x, (top + bodyBottom) * 0.5, S * 0.015, (bodyBottom - top) * 0.52,
+        '53,47,42', 0.90, -0.10 + i * 0.018);
+    }
+  } else {
+    for (let i = 0; i < 42; i++) {
+      const x = left + r() * (right - left), y = shoulderTop + S * 0.030 + r() * (bodyBottom - shoulderTop);
+      softMark(c, x, y, S * (0.008 + r() * 0.010), S * (0.006 + r() * 0.008), '52,43,34', 0.75, r() * TAU);
+    }
+  }
+  c.restore();
+  const mg = c.createLinearGradient(hx, hy, hx + headRx * 1.25, hy + headRy * 0.40); mg.addColorStop(0, mammalBTone(p, 1.10)); mg.addColorStop(1, mammalBTone(p, 0.54)); c.fillStyle = mg; c.fill(muzzle);
+  c.fillStyle = '#151419'; c.beginPath(); c.ellipse(hx + headRx * 1.19, hy + headRy * 0.08, headRx * 0.15, headRy * 0.14, 0, 0, TAU); c.fill();
+  c.fillStyle = '#c99a50'; c.beginPath(); c.arc(hx + headRx * 0.28, hy - headRy * 0.16, headRx * 0.11, 0, TAU); c.fill();
+  c.fillStyle = '#111318'; c.beginPath(); c.arc(hx + headRx * 0.30, hy - headRy * 0.16, headRx * 0.055, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(27,23,22,0.76)'; c.lineWidth = 2.4; c.beginPath(); c.moveTo(hx + headRx * 0.42, hy + headRy * 0.38); c.lineTo(hx + headRx * 1.08, hy + headRy * 0.34); c.stroke();
+  c.fillStyle = striped ? 'rgba(38,33,29,0.72)' : 'rgba(66,48,39,0.66)'; for (const ear of ears) c.fill(ear);
+}
+
+function faunaMammalB(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<QuadSpec['mammalBPlan']>, name: string): void {
+  if (plan === 'ursid-r1') { faunaResetUrsid(c, g, p0, spec, name); return; }
+  if (plan === 'felid-r1') { faunaResetFelid(c, g, p0, spec, name); return; }
+  faunaResetHyaenid(c, g, p0, spec, name);
+}
+
+/** Wave 2c's thirteen mammals opt into one of three source-frozen whole-form
+    painters.  Each form owns silhouette, limbs, head and tail before markings
+    are clipped into that shared topology; no generic quadruped receives these
+    branches. */
+function mammalCEye(c: Ctx, x: number, y: number, rx: number, iris = '#9b6a30'): void {
+  c.fillStyle = '#efe4cb'; c.beginPath(); c.ellipse(x, y, rx * 1.22, rx, -0.08, 0, TAU); c.fill();
+  c.fillStyle = iris; c.beginPath(); c.arc(x + rx * 0.12, y, rx * 0.66, 0, TAU); c.fill();
+  c.fillStyle = '#111318'; c.beginPath(); c.arc(x + rx * 0.22, y, rx * 0.38, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(255,255,255,0.82)'; c.beginPath(); c.arc(x + rx * 0.42, y - rx * 0.35, Math.max(1.4, rx * 0.17), 0, TAU); c.fill();
+}
+
+function mammalCNose(c: Ctx, x: number, y: number, rx: number, ry: number, fill = '#18171a'): void {
+  const ng = c.createRadialGradient(x - rx * 0.28, y - ry * 0.34, 1, x, y, rx);
+  ng.addColorStop(0, '#55545a'); ng.addColorStop(0.34, fill); ng.addColorStop(1, '#090a0d');
+  c.fillStyle = ng; c.beginPath(); c.ellipse(x, y, rx, ry, 0.05, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(255,255,255,0.33)'; c.beginPath(); c.ellipse(x - rx * 0.27, y - ry * 0.31, rx * 0.18, ry * 0.15, 0, 0, TAU); c.fill();
+}
+
+function mammalCProfileEye(c: Ctx, x: number, y: number, radius: number, iris: string): void {
+  c.fillStyle = 'rgba(32,28,27,0.74)'; c.beginPath(); c.ellipse(x, y, radius * 1.28, radius * 0.82, -0.10, 0, TAU); c.fill();
+  c.fillStyle = iris; c.beginPath(); c.arc(x + radius * 0.15, y, radius * 0.55, 0, TAU); c.fill();
+  c.fillStyle = '#111318'; c.beginPath(); c.arc(x + radius * 0.24, y, radius * 0.30, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(255,255,255,0.78)'; c.beginPath(); c.arc(x + radius * 0.38, y - radius * 0.22, Math.max(1.1, radius * 0.13), 0, TAU); c.fill();
+}
+
+function mammalCFurGrain(
+  c: Ctx, clip: Path2D, r: () => number,
+  x0: number, y0: number, x1: number, y1: number,
+  count: number, light = 'rgba(255,239,210,0.22)', dark = 'rgba(50,34,29,0.20)',
+): void {
+  c.save(); c.clip(clip); c.lineCap = 'round';
+  for (let i = 0; i < count; i++) {
+    const x = x0 + r() * (x1 - x0), y = y0 + r() * (y1 - y0);
+    const len = S * (0.008 + r() * 0.018), rise = S * (r() * 0.007 - 0.0035);
+    c.strokeStyle = r() > 0.46 ? light : dark; c.lineWidth = 1.15 + r() * 0.75;
+    c.beginPath(); c.moveTo(x - len * 0.55, y - rise); c.quadraticCurveTo(x, y + rise * 0.35, x + len * 0.55, y + rise); c.stroke();
+  }
+  c.restore();
+}
+
+function faunaResetCanidC(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+  const p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0xC41D ^ nameSeedQ(name)) >>> 0));
+  const red = name === 'Red Fox' || name === 'Fox';
+  const pampas = name === 'Pampas Fox';
+  const wolf = name === 'Wolf';
+  const dingo = name === 'Dingo';
+  const dog = name === 'Dog';
+  const groundY = S * 0.805;
+  const bodyW = S * (red ? 0.318 : pampas ? 0.326 : wolf ? 0.368 : dingo ? 0.342 : 0.338);
+  const bodyH = S * spec.depth * (wolf ? 1.10 : dog ? 1.07 : 1.03);
+  const legLen = S * spec.legs * (wolf ? 1.05 : dingo ? 1.02 : 0.97);
+  const left = S * (red ? 0.350 : pampas ? 0.330 : wolf ? 0.275 : dingo ? 0.315 : 0.325);
+  const right = left + bodyW;
+  const bodyBottom = groundY - legLen + S * 0.018;
+  const rumpTop = bodyBottom - bodyH * (red ? 0.78 : pampas ? 0.82 : wolf ? 0.82 : 0.76);
+  const shoulderTop = bodyBottom - bodyH * (wolf ? 1.05 : dog ? 0.95 : dingo ? 0.94 : 0.90);
+  const headRx = S * (wolf ? 0.103 : dingo ? 0.079 : dog ? 0.082 : pampas ? 0.071 : 0.069);
+  const headRy = S * (wolf ? 0.075 : dingo ? 0.060 : dog ? 0.062 : 0.054);
+  const hx = Math.min(S * 0.805, right + S * (wolf ? 0.065 : 0.060));
+  const hy = shoulderTop + headRy * (wolf ? 1.08 : 1.12);
+  const muzzleLen = S * (wolf ? 0.077 : dingo ? 0.071 : dog ? 0.066 : pampas ? 0.073 : 0.072);
+  const earH = S * (wolf ? 0.058 : dingo ? 0.073 : dog ? 0.056 : pampas ? 0.068 : 0.064);
+  const legW = S * (wolf ? 0.029 : dog ? 0.027 : 0.024);
+
+  mammalBGround(c, S * 0.49, groundY + S * 0.018, S * (wolf ? 0.34 : 0.31));
+
+  const total = new Path2D();
+  let tipX: number, tipY: number, tailW: number;
+  const tail = new Path2D();
+  if (dog) {
+    tipX = left - S * 0.075; tipY = rumpTop - S * 0.105; tailW = S * 0.033;
+    tail.moveTo(left + bodyW * 0.14, rumpTop + bodyH * 0.42);
+    tail.bezierCurveTo(left - S * 0.060, rumpTop + S * 0.010, left - S * 0.105, rumpTop - S * 0.090, tipX, tipY);
+    tail.quadraticCurveTo(tipX + S * 0.038, tipY - S * 0.030, tipX + S * 0.068, tipY + S * 0.006);
+    tail.bezierCurveTo(left - S * 0.015, rumpTop - S * 0.050, left + bodyW * 0.16, rumpTop + bodyH * 0.20, left + bodyW * 0.14, rumpTop + bodyH * 0.42);
+  } else {
+    const tailLen = S * (red ? 0.305 : pampas ? 0.255 : wolf ? 0.205 : 0.215);
+    tipX = Math.max(S * 0.022, left - tailLen);
+    tipY = rumpTop + bodyH * (red ? 0.78 : pampas ? 0.96 : wolf ? 1.02 : 0.90);
+    tailW = S * (red ? 0.050 : pampas ? 0.040 : wolf ? 0.036 : 0.034);
+    tail.moveTo(left + bodyW * 0.15, rumpTop + bodyH * 0.30);
+    tail.bezierCurveTo(left - tailLen * 0.32, rumpTop + bodyH * 0.34, tipX + tailLen * 0.12, tipY - tailW * 0.78, tipX, tipY);
+    tail.quadraticCurveTo(tipX - tailW * 0.06, tipY + tailW * 0.70, tipX + tailW * 0.66, tipY + tailW * 0.92);
+    tail.bezierCurveTo(left - tailLen * 0.42, tipY + tailW * 0.70, left + bodyW * 0.02, rumpTop + bodyH * 0.76, left + bodyW * 0.16, rumpTop + bodyH * 0.50);
+  }
+  tail.closePath(); total.addPath(tail);
+
+  const body = new Path2D();
+  body.moveTo(left + bodyW * 0.02, rumpTop + bodyH * 0.16);
+  body.bezierCurveTo(left + bodyW * 0.06, rumpTop - bodyH * 0.10, right - bodyW * 0.22, shoulderTop - bodyH * 0.10, right, shoulderTop + bodyH * 0.08);
+  body.bezierCurveTo(right + bodyW * 0.025, shoulderTop + bodyH * 0.52, right - bodyW * 0.055, bodyBottom + bodyH * 0.04, right - bodyW * 0.14, bodyBottom);
+  body.bezierCurveTo(right - bodyW * 0.29, bodyBottom - bodyH * (wolf ? 0.12 : 0.22), left + bodyW * 0.38, bodyBottom - bodyH * (red ? 0.30 : 0.20), left + bodyW * 0.11, bodyBottom - bodyH * 0.01);
+  body.bezierCurveTo(left - bodyW * 0.035, bodyBottom - bodyH * 0.15, left - bodyW * 0.040, rumpTop + bodyH * 0.34, left + bodyW * 0.02, rumpTop + bodyH * 0.16);
+  body.closePath(); total.addPath(body);
+
+  const canidLeg = (x: number, fore: boolean, far: boolean): Path2D => {
+    const q = new Path2D();
+    const y0 = bodyBottom - bodyH * (fore ? 0.17 : 0.13);
+    const w = legW * (far ? 0.80 : 1);
+    const hock = fore ? S * 0.002 : S * 0.020;
+    q.moveTo(x - w, y0);
+    q.bezierCurveTo(x - w * 1.08, y0 + legLen * 0.30, x - w * 0.45 + hock, groundY - S * 0.070, x - w * 0.20 + hock, groundY - S * 0.031);
+    q.quadraticCurveTo(x + S * 0.024 + hock, groundY - S * 0.018, x + S * 0.047 + hock, groundY - S * 0.025);
+    q.quadraticCurveTo(x + S * 0.051 + hock, groundY - S * 0.045, x + w * 0.60 + hock, groundY - S * 0.053);
+    q.bezierCurveTo(x + w * 0.64, groundY - S * 0.090, x + w * 1.14, y0 + legLen * 0.25, x + w, y0);
+    q.closePath(); return q;
+  };
+  const legs = [
+    canidLeg(left + bodyW * 0.18, false, true), canidLeg(left + bodyW * 0.29, false, false),
+    canidLeg(right - bodyW * 0.19, true, true), canidLeg(right - bodyW * 0.08, true, false),
+  ];
+  for (const leg of legs) total.addPath(leg);
+
+  const neck = new Path2D();
+  neck.moveTo(right - bodyW * 0.16, shoulderTop + bodyH * 0.02);
+  neck.bezierCurveTo(right + bodyW * 0.03, shoulderTop - bodyH * 0.06, hx - headRx * 0.78, hy - headRy * 0.74, hx - headRx * 0.42, hy - headRy * 0.48);
+  neck.lineTo(hx - headRx * 0.34, hy + headRy * 0.72);
+  neck.bezierCurveTo(right + bodyW * 0.02, bodyBottom - bodyH * 0.12, right - bodyW * 0.09, bodyBottom, right - bodyW * 0.16, shoulderTop + bodyH * 0.02);
+  neck.closePath(); total.addPath(neck);
+
+  const head = new Path2D();
+  if (wolf || dingo || dog) {
+    head.moveTo(hx - headRx, hy - headRy * 0.32);
+    head.quadraticCurveTo(hx - headRx * 0.50, hy - headRy * 1.08, hx + headRx * 0.40, hy - headRy * 0.82);
+    head.quadraticCurveTo(hx + headRx * 1.02, hy - headRy * 0.30, hx + headRx * 0.76, hy + headRy * 0.58);
+    head.quadraticCurveTo(hx - headRx * 0.04, hy + headRy * 1.02, hx - headRx, hy + headRy * 0.38);
+  } else {
+    head.moveTo(hx - headRx, hy - headRy * 0.26);
+    head.quadraticCurveTo(hx - headRx * 0.38, hy - headRy * 1.04, hx + headRx * 0.55, hy - headRy * 0.70);
+    head.quadraticCurveTo(hx + headRx * 0.92, hy - headRy * 0.12, hx + headRx * 0.55, hy + headRy * 0.54);
+    head.quadraticCurveTo(hx - headRx * 0.18, hy + headRy * 0.88, hx - headRx, hy + headRy * 0.32);
+  }
+  head.closePath(); total.addPath(head);
+
+  const muzzle = new Path2D();
+  const jawDepth = (wolf || dingo || dog) ? headRy * 0.62 : headRy * 0.43;
+  muzzle.moveTo(hx + headRx * 0.14, hy - headRy * 0.05);
+  muzzle.bezierCurveTo(hx + headRx * 0.72, hy - headRy * 0.12, hx + muzzleLen * 0.86, hy - headRy * 0.04, hx + muzzleLen, hy + headRy * 0.12);
+  muzzle.quadraticCurveTo(hx + muzzleLen * 0.94, hy + jawDepth, hx + headRx * 0.35, hy + jawDepth);
+  muzzle.quadraticCurveTo(hx + headRx * 0.08, hy + headRy * 0.36, hx + headRx * 0.14, hy - headRy * 0.05);
+  muzzle.closePath(); total.addPath(muzzle);
+
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) {
+    const ex = hx - headRx * 0.44 + side * headRx * (wolf ? 0.40 : 0.43);
+    const by = hy - headRy * 0.66;
+    const ear = new Path2D();
+    if (dog && side === 1) {
+      ear.moveTo(ex - earH * 0.20, by); ear.quadraticCurveTo(ex + earH * 0.42, by + earH * 0.20, ex + earH * 0.30, by + earH * 0.76);
+      ear.quadraticCurveTo(ex - earH * 0.12, by + earH * 0.61, ex - earH * 0.28, by + earH * 0.08);
+    } else {
+      ear.moveTo(ex - earH * 0.30, by + earH * 0.16);
+      ear.quadraticCurveTo(ex - earH * 0.10, by - earH * 0.42, ex + side * earH * 0.11, by - earH);
+      ear.quadraticCurveTo(ex + earH * 0.35, by - earH * 0.34, ex + earH * 0.30, by + earH * 0.18);
+    }
+    ear.closePath(); ears.push(ear); total.addPath(ear);
+  }
+
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, ...ears, body, legs[1]!, legs[3]!, neck, head, muzzle],
+    p, tipX, Math.min(tipY, shoulderTop - earH), hx + muzzleLen, groundY);
+
+  mammalCFurGrain(c, total, r, tipX, Math.min(tipY, shoulderTop - earH), hx + muzzleLen, bodyBottom,
+    wolf ? 82 : red || pampas ? 74 : 60,
+    red ? 'rgba(255,214,158,0.25)' : dingo || dog ? 'rgba(255,228,184,0.22)' : 'rgba(236,235,226,0.20)',
+    red ? 'rgba(76,36,24,0.20)' : 'rgba(44,42,43,0.18)');
+
+  c.save(); c.clip(total);
+  const belly = c.createLinearGradient(0, shoulderTop, 0, bodyBottom);
+  belly.addColorStop(0, 'rgba(255,255,255,0)'); belly.addColorStop(1, 'rgba(238,224,199,0.34)');
+  c.fillStyle = belly; c.fillRect(left - S * 0.04, shoulderTop, right - left + S * 0.12, bodyBottom - shoulderTop + S * 0.03);
+  c.restore();
+
+  if (spec.stockings) {
+    const sockTop = pampas ? bodyBottom - S * 0.012 : dingo ? groundY - legLen * 0.26 : groundY - legLen * 0.58;
+    for (const leg of legs) {
+      c.save(); c.clip(leg); c.fillStyle = spec.stockings; c.fillRect(0, sockTop, S, groundY - sockTop + S * 0.01); c.restore();
+    }
+  }
+  if (spec.tailTip) {
+    c.save(); c.clip(tail);
+    const tg = c.createLinearGradient(tipX - tailW, tipY, tipX + tailW * 4.2, tipY);
+    tg.addColorStop(0, spec.tailTip); tg.addColorStop(0.46, spec.tailTip); tg.addColorStop(1, 'rgba(255,255,255,0)');
+    c.fillStyle = tg; c.fillRect(tipX - tailW, tipY - tailW * 1.7, tailW * 5.4, tailW * 3.4); c.restore();
+  }
+
+  if (red) {
+    const throat = new Path2D(); throat.moveTo(hx - headRx * 0.44, hy + headRy * 0.18);
+    throat.bezierCurveTo(hx - headRx * 0.62, hy + headRy * 0.56, hx - headRx * 0.44, hy + headRy * 1.25, right - bodyW * 0.03, bodyBottom - bodyH * 0.10);
+    throat.bezierCurveTo(right + bodyW * 0.03, bodyBottom - bodyH * 0.36, hx + headRx * 0.18, hy + headRy * 0.52, hx + headRx * 0.14, hy + headRy * 0.18); throat.closePath();
+    c.save(); c.clip(total); c.fillStyle = '#f0e8d7'; c.fill(throat); c.restore();
+  } else if (dingo) {
+    c.save(); c.clip(total); c.fillStyle = 'rgba(245,235,211,0.72)'; c.beginPath(); c.ellipse(hx - headRx * 0.10, hy + headRy * 0.52, headRx * 0.54, headRy * 0.32, -0.18, 0, TAU); c.fill(); c.restore();
+  }
+  const muzzleG = c.createLinearGradient(hx, hy, hx + muzzleLen, hy + jawDepth);
+  muzzleG.addColorStop(0, spec.muzzleHue ?? mammalBTone(p, 1.18)); muzzleG.addColorStop(1, mammalBTone(p, 0.72));
+  c.fillStyle = muzzleG; c.fill(muzzle);
+  c.fillStyle = 'rgba(42,31,27,0.70)';
+  for (const ear of ears) { c.save(); c.clip(ear); c.fillRect(hx - headRx * 1.8, hy - earH * 1.9, headRx * 3.6, earH * 1.45); c.restore(); }
+  mammalCProfileEye(c, hx + headRx * 0.28, hy - headRy * 0.17, S * (wolf ? 0.0105 : 0.0095), wolf ? '#b98a48' : '#8b5a2d');
+  mammalCNose(c, hx + muzzleLen, hy + headRy * 0.11, S * (wolf ? 0.014 : 0.012), S * 0.009);
+  c.strokeStyle = 'rgba(35,27,24,0.78)'; c.lineWidth = 2.4; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(hx + headRx * 0.34, hy + jawDepth * 0.74); c.quadraticCurveTo(hx + muzzleLen * 0.77, hy + jawDepth * 0.88, hx + muzzleLen * 0.94, hy + jawDepth * 0.54); c.stroke();
+  c.strokeStyle = 'rgba(28,25,24,0.52)'; c.lineWidth = 1.5;
+  for (const x of [left + bodyW * 0.29, right - bodyW * 0.08]) for (let i = 0; i < 3; i++) {
+    c.beginPath(); c.moveTo(x + S * (0.016 + i * 0.007), groundY - S * 0.026); c.lineTo(x + S * (0.018 + i * 0.008), groundY - S * 0.020); c.stroke();
+  }
+}
+
+function faunaResetProcyonidC(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+  const p = pal(p0, spec);
+  const kinkajou = name === 'Kinkajou';
+  const raccoon = name === 'Raccoon';
+  const redPanda = name === 'Red Panda';
+  const groundY = S * (kinkajou ? 0.725 : 0.805);
+  const left = S * (kinkajou ? 0.345 : redPanda ? 0.335 : 0.295);
+  const right = S * (kinkajou ? 0.625 : redPanda ? 0.645 : 0.650);
+  const rumpTop = S * (kinkajou ? 0.435 : redPanda ? 0.415 : 0.375);
+  const shoulderTop = S * (kinkajou ? 0.430 : redPanda ? 0.435 : 0.430);
+  const bodyBottom = S * (kinkajou ? 0.605 : redPanda ? 0.645 : 0.650);
+  const hx = S * (kinkajou ? 0.695 : redPanda ? 0.735 : 0.735);
+  const hy = S * (kinkajou ? 0.465 : redPanda ? 0.470 : 0.475);
+  const headRx = S * (kinkajou ? 0.066 : redPanda ? 0.066 : 0.065) * (spec.headScale ?? 1);
+  const headRy = headRx * (kinkajou ? 0.96 : 0.91);
+  const muzzleLen = S * (kinkajou ? 0.037 : redPanda ? 0.036 : 0.045);
+  const legW = S * (kinkajou ? 0.025 : 0.030);
+
+  if (kinkajou) {
+    const branch = c.createLinearGradient(0, groundY, 0, groundY + S * 0.055);
+    branch.addColorStop(0, '#7d5534'); branch.addColorStop(0.45, '#513720'); branch.addColorStop(1, '#2b2119');
+    c.strokeStyle = branch; c.lineWidth = S * 0.038; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(S * 0.095, groundY + S * 0.018); c.bezierCurveTo(S * 0.30, groundY - S * 0.015, S * 0.66, groundY + S * 0.016, S * 0.88, groundY - S * 0.010); c.stroke();
+    c.strokeStyle = 'rgba(212,160,92,0.34)'; c.lineWidth = S * 0.006;
+    c.beginPath(); c.moveTo(S * 0.11, groundY + S * 0.006); c.bezierCurveTo(S * 0.32, groundY - S * 0.022, S * 0.68, groundY + S * 0.008, S * 0.86, groundY - S * 0.018); c.stroke();
+  } else mammalBGround(c, S * 0.49, groundY + S * 0.018, S * 0.30);
+
+  const total = new Path2D();
+  let tail: Path2D | null = null;
+  if (kinkajou) {
+    const tailPath = new Path2D();
+    tailPath.moveTo(left + S * 0.065, rumpTop + S * 0.075);
+    tailPath.bezierCurveTo(S * 0.205, S * 0.475, S * 0.115, S * 0.585, S * 0.155, S * 0.690);
+    tailPath.bezierCurveTo(S * 0.190, S * 0.775, S * 0.315, S * 0.755, S * 0.290, S * 0.655);
+    tailPath.bezierCurveTo(S * 0.275, S * 0.595, S * 0.205, S * 0.595, S * 0.205, S * 0.655);
+    const tg = c.createLinearGradient(S * 0.11, S * 0.48, S * 0.31, S * 0.72);
+    tg.addColorStop(0, p.lit); tg.addColorStop(0.48, p.base); tg.addColorStop(1, p.dark);
+    c.strokeStyle = tg; c.lineWidth = S * 0.052; c.lineCap = 'round'; c.lineJoin = 'round'; c.stroke(tailPath);
+    c.strokeStyle = 'rgba(255,222,157,0.22)'; c.lineWidth = S * 0.013; c.stroke(tailPath);
+    /* The branch crosses the inner loop once: one occlusion is what makes the
+       tail visibly grip instead of merely curling in empty space. */
+    c.strokeStyle = '#4a321f'; c.lineWidth = S * 0.034; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(S * 0.165, groundY + S * 0.010); c.lineTo(S * 0.230, groundY + S * 0.002); c.stroke();
+  } else {
+    tail = new Path2D();
+    const tailLen = S * (redPanda ? 0.305 : 0.235), tailH = S * (redPanda ? 0.054 : 0.043);
+    const tipX = Math.max(S * 0.020, left - tailLen), tipY = rumpTop + S * (redPanda ? 0.105 : 0.135);
+    tail.moveTo(left + S * 0.060, rumpTop + S * 0.060);
+    tail.bezierCurveTo(left - tailLen * 0.35, rumpTop + S * 0.048, tipX + tailLen * 0.18, tipY - tailH, tipX, tipY);
+    tail.quadraticCurveTo(tipX - tailH * 0.04, tipY + tailH * 0.70, tipX + tailH * 0.66, tipY + tailH * 0.92);
+    tail.bezierCurveTo(left - tailLen * 0.38, tipY + tailH * 0.77, left + S * 0.005, rumpTop + S * 0.155, left + S * 0.065, rumpTop + S * 0.095);
+    tail.closePath(); total.addPath(tail);
+  }
+
+  const body = new Path2D(); body.moveTo(left + S * 0.018, rumpTop + S * 0.042);
+  body.bezierCurveTo(left + S * 0.045, rumpTop - S * 0.022, right - S * 0.105, shoulderTop - S * 0.016, right, shoulderTop + S * 0.025);
+  body.bezierCurveTo(right + S * 0.020, shoulderTop + S * 0.100, right - S * 0.015, bodyBottom, right - S * 0.075, bodyBottom + S * 0.012);
+  body.bezierCurveTo(right - S * 0.145, bodyBottom + S * 0.030, left + S * 0.090, bodyBottom + S * 0.024, left - S * 0.008, rumpTop + S * 0.118);
+  body.quadraticCurveTo(left - S * 0.012, rumpTop + S * 0.070, left + S * 0.018, rumpTop + S * 0.042); body.closePath(); total.addPath(body);
+
+  const leg = (x: number, fore: boolean, far: boolean): Path2D => {
+    const q = new Path2D(), y0 = bodyBottom - S * (redPanda ? 0.080 : 0.025), w = legW * (far ? 0.80 : 1);
+    q.moveTo(x - w * 1.35, y0 - S * 0.012); q.bezierCurveTo(x - w * 1.38, y0 + S * 0.045, x - w * 0.72, groundY - S * 0.060, x - S * 0.008, groundY - S * 0.026);
+    q.quadraticCurveTo(x + S * 0.020, groundY - S * 0.010, x + S * (fore ? 0.054 : 0.046), groundY - S * 0.019);
+    q.quadraticCurveTo(x + S * 0.057, groundY - S * 0.038, x + w * 0.76, groundY - S * 0.052);
+    q.bezierCurveTo(x + w * 0.92, groundY - S * 0.080, x + w * 1.42, y0 + S * 0.020, x + w * 1.20, y0 - S * 0.010); q.closePath(); return q;
+  };
+  const legs = [leg(left + S * 0.065, false, true), leg(left + S * 0.115, false, false), leg(right - S * 0.085, true, true), leg(right - S * 0.035, true, false)];
+  for (const q of legs) total.addPath(q);
+  const neck = new Path2D(); neck.moveTo(right - S * 0.075, shoulderTop + S * 0.012);
+  neck.bezierCurveTo(right + S * 0.010, shoulderTop - S * 0.010, hx - headRx * 0.76, hy - headRy * 0.70, hx - headRx * 0.38, hy - headRy * 0.42);
+  neck.lineTo(hx - headRx * 0.35, hy + headRy * 0.68); neck.bezierCurveTo(right + S * 0.005, bodyBottom - S * 0.020, right - S * 0.050, bodyBottom, right - S * 0.075, shoulderTop + S * 0.012); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(hx, hy, headRx, headRy, kinkajou ? -0.02 : -0.08, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D(); muzzle.moveTo(hx + headRx * 0.12, hy - headRy * 0.02);
+  muzzle.quadraticCurveTo(hx + headRx * 0.62, hy - headRy * 0.12, hx + muzzleLen, hy + headRy * 0.10);
+  muzzle.quadraticCurveTo(hx + muzzleLen * 0.98, hy + headRy * 0.46, hx + headRx * 0.26, hy + headRy * 0.50);
+  muzzle.quadraticCurveTo(hx + headRx * 0.05, hy + headRy * 0.30, hx + headRx * 0.12, hy - headRy * 0.02); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) {
+    const ex = hx - headRx * 0.38 + side * headRx * 0.36, ey = hy - headRy * 0.68;
+    const ear = new Path2D(); ear.ellipse(ex, ey - headRy * 0.20, headRx * (redPanda ? 0.30 : 0.25), headRy * (redPanda ? 0.40 : 0.31), side * 0.16, 0, TAU);
+    ears.push(ear); total.addPath(ear);
+  }
+  const fillOrder = redPanda
+    ? (tail ? [tail, ...ears, ...legs, body, neck, head, muzzle] : [...ears, ...legs, body, neck, head, muzzle])
+    : (tail ? [tail, legs[0]!, legs[2]!, ...ears, body, legs[1]!, legs[3]!, neck, head, muzzle] : [legs[0]!, legs[2]!, ...ears, body, legs[1]!, legs[3]!, neck, head, muzzle]);
+  mammalBFill(c, fillOrder, p, S * 0.03, Math.min(rumpTop, shoulderTop), hx + muzzleLen, groundY);
+  mammalCFurGrain(c, total, mulberry32((((g.seed as number) ^ 0xC017 ^ nameSeedQ(name)) >>> 0)),
+    tail ? S * 0.035 : left - S * 0.02, Math.min(rumpTop, shoulderTop), hx + muzzleLen, bodyBottom,
+    kinkajou ? 66 : redPanda ? 78 : 62,
+    kinkajou ? 'rgba(255,220,157,0.25)' : redPanda ? 'rgba(255,205,157,0.20)' : 'rgba(245,241,229,0.17)',
+    redPanda ? 'rgba(73,27,23,0.21)' : 'rgba(33,33,35,0.18)');
+
+  if (redPanda) {
+    for (const q of legs) { c.save(); c.clip(q); c.fillStyle = spec.stockings ?? '#211d1c'; c.fillRect(0, bodyBottom + S * 0.012, S, groundY); c.restore(); }
+    c.save(); c.clip(body); const bg = c.createLinearGradient(0, shoulderTop, 0, bodyBottom); bg.addColorStop(0, 'rgba(0,0,0,0)'); bg.addColorStop(0.58, 'rgba(20,18,18,0.12)'); bg.addColorStop(1, '#211d1c'); c.fillStyle = bg; c.fillRect(left, shoulderTop, right - left, bodyBottom - shoulderTop + S * 0.02); c.restore();
+  }
+  if (tail) {
+    c.save(); c.clip(tail); c.strokeStyle = redPanda ? 'rgba(235,196,139,0.82)' : 'rgba(40,38,38,0.86)';
+    c.lineWidth = S * (redPanda ? 0.022 : 0.018); c.lineCap = 'round';
+    const count = redPanda ? 7 : 6;
+    for (let i = 1; i <= count; i++) {
+      const t = i / (count + 1), x = left - S * (redPanda ? 0.285 : 0.215) * t;
+      const y = rumpTop + S * (redPanda ? 0.060 + 0.070 * t : 0.070 + 0.105 * t);
+      c.beginPath(); c.moveTo(x - S * 0.006, y - S * 0.055); c.lineTo(x + S * 0.010, y + S * 0.060); c.stroke();
+    }
+    c.restore();
+  }
+
+  if (raccoon) {
+    c.save(); c.clip(head);
+    c.fillStyle = '#ece7dc'; c.beginPath(); c.ellipse(hx + headRx * 0.12, hy + headRy * 0.13, headRx * 0.67, headRy * 0.58, -0.10, 0, TAU); c.fill();
+    c.fillStyle = '#242428'; c.beginPath(); c.ellipse(hx + headRx * 0.21, hy - headRy * 0.11, headRx * 0.69, headRy * 0.27, -0.10, 0, TAU); c.fill(); c.restore();
+  } else if (redPanda) {
+    c.save(); c.clip(head); c.fillStyle = '#f2ead9';
+    c.beginPath(); c.ellipse(hx - headRx * 0.16, hy + headRy * 0.05, headRx * 0.43, headRy * 0.60, -0.05, 0, TAU); c.fill();
+    c.beginPath(); c.ellipse(hx + headRx * 0.38, hy + headRy * 0.14, headRx * 0.38, headRy * 0.47, -0.12, 0, TAU); c.fill(); c.restore();
+    c.strokeStyle = '#8e3528'; c.lineWidth = S * 0.014; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(hx + headRx * 0.20, hy - headRy * 0.12); c.quadraticCurveTo(hx + headRx * 0.30, hy + headRy * 0.18, hx + headRx * 0.48, hy + headRy * 0.48); c.stroke();
+    c.fillStyle = '#f0e4d1';
+    for (const side of [-1, 1]) { const ex = hx - headRx * 0.38 + side * headRx * 0.36, ey = hy - headRy * 0.88; c.beginPath(); c.ellipse(ex, ey, headRx * 0.16, headRy * 0.22, side * 0.16, 0, TAU); c.fill(); }
+  }
+  const muzzleG = c.createLinearGradient(hx, hy, hx + muzzleLen, hy + headRy * 0.40); muzzleG.addColorStop(0, mammalBTone(p, 1.18)); muzzleG.addColorStop(1, mammalBTone(p, 0.68)); c.fillStyle = muzzleG; c.fill(muzzle);
+  const eyeR = S * (kinkajou ? 0.017 : 0.0105);
+  if (kinkajou) mammalCEye(c, hx + headRx * 0.24, hy - headRy * 0.14, eyeR, '#21150d');
+  else mammalCProfileEye(c, hx + headRx * 0.24, hy - headRy * 0.14, eyeR, '#8b642d');
+  if (kinkajou) { c.fillStyle = '#171116'; c.beginPath(); c.arc(hx + headRx * 0.26, hy - headRy * 0.14, eyeR * 0.72, 0, TAU); c.fill(); }
+  mammalCNose(c, hx + muzzleLen, hy + headRy * 0.12, S * 0.0115, S * 0.0085);
+  c.strokeStyle = 'rgba(39,31,27,0.74)'; c.lineWidth = 2; c.beginPath(); c.moveTo(hx + headRx * 0.28, hy + headRy * 0.38); c.lineTo(hx + muzzleLen * 0.92, hy + headRy * 0.38); c.stroke();
+  c.strokeStyle = 'rgba(32,29,28,0.56)'; c.lineWidth = 1.5; c.lineCap = 'round';
+  for (const x of [left + S * 0.115, right - S * 0.035]) for (let i = 0; i < 4; i++) {
+    c.beginPath(); c.moveTo(x + S * (0.008 + i * 0.008), groundY - S * 0.024); c.lineTo(x + S * (0.010 + i * 0.009), groundY - S * 0.017); c.stroke();
+  }
+}
+
+function faunaResetMarsupialC(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+  const p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0xA57A ^ nameSeedQ(name)) >>> 0));
+  const possum = name === 'Possum', quoll = name === 'Quoll';
+  const devil = name === 'Tasmanian Devil', wombat = name === 'Wombat';
+  const groundY = S * 0.805;
+  const left = S * (possum ? 0.310 : quoll ? 0.305 : devil ? 0.270 : 0.255);
+  const right = S * (possum ? 0.625 : quoll ? 0.640 : devil ? 0.595 : 0.640);
+  const top = S * (possum ? 0.430 : quoll ? 0.460 : devil ? 0.420 : 0.390);
+  const bottom = S * (possum ? 0.645 : quoll ? 0.635 : devil ? 0.675 : 0.690);
+  const hx = S * (possum ? 0.715 : quoll ? 0.725 : devil ? 0.705 : 0.710);
+  const hy = S * (possum ? 0.480 : quoll ? 0.505 : devil ? 0.515 : 0.525);
+  const headRx = S * (possum ? 0.064 : quoll ? 0.068 : devil ? 0.090 : 0.087) * (spec.headScale ?? 1);
+  const headRy = headRx * (devil ? 0.80 : wombat ? 0.82 : 0.86);
+  const muzzleLen = S * (possum ? 0.105 : quoll ? 0.092 : devil ? 0.128 : 0.112);
+  const legW = S * (wombat ? 0.043 : devil ? 0.034 : 0.026);
+
+  mammalBGround(c, S * 0.49, groundY + S * 0.020, S * (wombat ? 0.31 : 0.29));
+  const total = new Path2D();
+  let tail: Path2D | null = null;
+  let possumTail: Path2D | null = null;
+  if (possum) {
+    possumTail = new Path2D(); possumTail.moveTo(left + S * 0.072, top + S * 0.095);
+    possumTail.bezierCurveTo(S * 0.238, S * 0.500, S * 0.110, S * 0.575, S * 0.040, S * 0.674);
+    possumTail.quadraticCurveTo(S * 0.030, S * 0.690, S * 0.046, S * 0.702);
+    possumTail.bezierCurveTo(S * 0.135, S * 0.608, S * 0.252, S * 0.545, left + S * 0.085, top + S * 0.132);
+    possumTail.closePath();
+    const tg = c.createLinearGradient(left, top, S * 0.04, S * 0.69); tg.addColorStop(0, '#b99b91'); tg.addColorStop(0.45, '#d39c9b'); tg.addColorStop(1, '#d9aaa5');
+    c.fillStyle = tg; c.fill(possumTail); total.addPath(possumTail);
+  } else if (!wombat) {
+    tail = new Path2D();
+    const len = S * (quoll ? 0.275 : 0.155), th = S * (quoll ? 0.044 : 0.048);
+    const tipX = Math.max(S * 0.025, left - len), tipY = top + S * (quoll ? 0.155 : 0.190);
+    tail.moveTo(left + S * 0.070, top + S * 0.090);
+    tail.bezierCurveTo(left - len * 0.36, top + S * 0.085, tipX + len * 0.15, tipY - th * 0.64, tipX, tipY);
+    tail.quadraticCurveTo(tipX - th * 0.03, tipY + th * 0.52, tipX + th * 0.58, tipY + th * 0.78);
+    tail.bezierCurveTo(left - len * 0.38, tipY + th * 0.64, left + S * 0.006, top + S * 0.190, left + S * 0.075, top + S * 0.130);
+    tail.closePath(); total.addPath(tail);
+  }
+
+  const body = new Path2D(); body.moveTo(left + S * 0.020, top + S * 0.050);
+  body.bezierCurveTo(left + S * 0.055, top - S * (wombat ? 0.038 : 0.014), right - S * 0.110, top - S * (devil ? 0.020 : 0.010), right, top + S * 0.035);
+  body.bezierCurveTo(right + S * 0.025, top + S * 0.135, right - S * 0.015, bottom, right - S * 0.075, bottom + S * 0.012);
+  body.bezierCurveTo(right - S * 0.160, bottom + S * 0.038, left + S * 0.092, bottom + S * 0.040, left - S * 0.012, top + S * (wombat ? 0.205 : 0.145));
+  body.quadraticCurveTo(left - S * 0.016, top + S * 0.090, left + S * 0.020, top + S * 0.050); body.closePath(); total.addPath(body);
+
+  const leg = (x: number, fore: boolean, far: boolean): Path2D => {
+    const q = new Path2D(), y0 = bottom - S * 0.025, w = legW * (far ? 0.82 : 1);
+    if (wombat) {
+      q.moveTo(x - w, y0); q.bezierCurveTo(x - w * 1.55, y0 + S * 0.050, x - w * 1.35, groundY - S * 0.060, x - w * 0.65, groundY - S * 0.030);
+      q.quadraticCurveTo(x + S * 0.018, groundY - S * 0.008, x + S * 0.060, groundY - S * 0.018);
+      q.quadraticCurveTo(x + S * 0.064, groundY - S * 0.044, x + w * 0.80, groundY - S * 0.060);
+      q.bezierCurveTo(x + w * 1.40, groundY - S * 0.092, x + w * 1.45, y0 + S * 0.050, x + w, y0);
+    } else {
+      const shift = fore ? S * 0.006 : S * 0.018;
+      q.moveTo(x - w, y0); q.bezierCurveTo(x - w * 1.05, y0 + S * 0.042, x - w * 0.55 + shift, groundY - S * 0.052, x - S * 0.006 + shift, groundY - S * 0.026);
+      q.quadraticCurveTo(x + S * 0.020 + shift, groundY - S * 0.010, x + S * 0.050 + shift, groundY - S * 0.020);
+      q.quadraticCurveTo(x + S * 0.054 + shift, groundY - S * 0.040, x + w * 0.72 + shift, groundY - S * 0.052);
+      q.bezierCurveTo(x + w * 0.90, groundY - S * 0.080, x + w * 1.15, y0 + S * 0.022, x + w, y0);
+    }
+    q.closePath(); return q;
+  };
+  const legs = [leg(left + S * 0.075, false, true), leg(left + S * 0.130, false, false), leg(right - S * 0.090, true, true), leg(right - S * 0.035, true, false)];
+  for (const q of legs) total.addPath(q);
+  const neck = new Path2D(); neck.moveTo(right - S * 0.080, top + S * 0.020);
+  neck.bezierCurveTo(right + S * 0.015, top - S * 0.010, hx - headRx * 0.78, hy - headRy * 0.72, hx - headRx * 0.38, hy - headRy * 0.44);
+  neck.lineTo(hx - headRx * 0.34, hy + headRy * 0.72); neck.bezierCurveTo(right + S * 0.012, bottom - S * 0.030, right - S * 0.055, bottom, right - S * 0.080, top + S * 0.020); neck.closePath(); total.addPath(neck);
+
+  const head = new Path2D();
+  if (devil || wombat) {
+    head.moveTo(hx - headRx, hy - headRy * 0.20); head.quadraticCurveTo(hx - headRx * 0.48, hy - headRy * 1.05, hx + headRx * 0.54, hy - headRy * 0.80);
+    head.quadraticCurveTo(hx + headRx * 1.02, hy - headRy * 0.16, hx + headRx * 0.72, hy + headRy * 0.62); head.quadraticCurveTo(hx - headRx * 0.08, hy + headRy * 1.02, hx - headRx, hy + headRy * 0.30);
+  } else head.ellipse(hx, hy, headRx, headRy, -0.08, 0, TAU);
+  head.closePath(); total.addPath(head);
+  const muzzle = new Path2D(); muzzle.moveTo(hx + headRx * 0.12, hy - headRy * (devil ? 0.18 : 0.05));
+  muzzle.quadraticCurveTo(hx + headRx * 0.65, hy - headRy * 0.15, hx + muzzleLen, hy + headRy * (devil ? 0.02 : 0.11));
+  muzzle.quadraticCurveTo(hx + muzzleLen * 0.98, hy + headRy * (devil ? 0.62 : 0.46), hx + headRx * 0.24, hy + headRy * (devil ? 0.66 : 0.50));
+  muzzle.quadraticCurveTo(hx + headRx * 0.04, hy + headRy * 0.30, hx + headRx * 0.12, hy - headRy * (devil ? 0.18 : 0.05)); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) {
+    const ex = hx - headRx * 0.40 + side * headRx * 0.34, ey = hy - headRy * 0.64;
+    const ear = new Path2D(); ear.ellipse(ex, ey - headRy * 0.18, headRx * (possum ? 0.32 : wombat ? 0.22 : 0.26), headRy * (possum ? 0.46 : 0.34), side * 0.18, 0, TAU);
+    ears.push(ear); total.addPath(ear);
+  }
+  const fillOrder = tail ? [tail, legs[0]!, legs[2]!, ...ears, body, legs[1]!, legs[3]!, neck, head, muzzle] : [legs[0]!, legs[2]!, ...ears, body, legs[1]!, legs[3]!, neck, head, muzzle];
+  mammalBFill(c, fillOrder, p, S * 0.025, Math.min(top, hy - headRy), hx + muzzleLen, groundY);
+  mammalCFurGrain(c, total, r, possum || quoll ? S * 0.035 : left - S * 0.02, Math.min(top, hy - headRy), hx + muzzleLen, bottom,
+    wombat ? 86 : devil ? 72 : 68,
+    possum ? 'rgba(240,237,226,0.23)' : quoll ? 'rgba(246,213,174,0.20)' : 'rgba(235,223,204,0.15)',
+    devil ? 'rgba(0,0,0,0.24)' : 'rgba(53,38,32,0.18)');
+
+  if (possum && possumTail) {
+    const bez = (a: number, b: number, d: number, e: number, t: number): number => {
+      const u = 1 - t; return u * u * u * a + 3 * u * u * t * b + 3 * u * t * t * d + t * t * t * e;
+    };
+    c.save(); c.clip(possumTail); c.strokeStyle = 'rgba(83,50,52,0.82)'; c.lineWidth = S * 0.006; c.lineCap = 'round';
+    for (let i = 1; i <= 13; i++) {
+      const t = i / 14;
+      const tx = bez(left + S * 0.072, S * 0.238, S * 0.110, S * 0.040, t);
+      const ty = bez(top + S * 0.095, S * 0.500, S * 0.575, S * 0.674, t);
+      const bx = bez(left + S * 0.085, S * 0.252, S * 0.135, S * 0.046, t);
+      const by = bez(top + S * 0.132, S * 0.545, S * 0.608, S * 0.702, t);
+      c.beginPath(); c.moveTo(tx, ty); c.lineTo(bx, by); c.stroke();
+    }
+    c.restore();
+  }
+
+  c.save(); c.clip(total);
+  if (possum) {
+    for (let i = 0; i < 36; i++) {
+      const x = left + S * 0.015 + r() * (right - left - S * 0.030), y = top + S * 0.020 + r() * (bottom - top - S * 0.030);
+      c.strokeStyle = r() > 0.48 ? 'rgba(233,228,217,0.33)' : 'rgba(45,43,44,0.30)'; c.lineWidth = 1.7; c.beginPath(); c.moveTo(x - S * 0.010, y); c.lineTo(x + S * 0.010, y + S * 0.005); c.stroke();
+    }
+  } else if (quoll) {
+    c.fillStyle = '#f3eee4';
+    for (let i = 0; i < 34; i++) {
+      const x = left + S * 0.014 + r() * (right - left - S * 0.025), y = top + S * 0.020 + r() * (bottom - top - S * 0.040);
+      c.beginPath(); c.arc(x, y, S * (0.0055 + r() * 0.004), 0, TAU); c.fill();
+    }
+  }
+  c.restore();
+  if (quoll && tail) {
+    c.save(); c.clip(tail); c.fillStyle = '#f3eee4';
+    for (let i = 0; i < 11; i++) { const t = (i + 1) / 12; c.beginPath(); c.arc(left - S * 0.25 * t, top + S * (0.095 + 0.075 * t), S * 0.0075, 0, TAU); c.fill(); }
+    c.restore();
+  }
+
+  if (devil) {
+    const blaze = new Path2D(); blaze.moveTo(right - S * 0.047, top + S * 0.042);
+    blaze.bezierCurveTo(right - S * 0.020, top + S * 0.054, right + S * 0.005, top + S * 0.104, right + S * 0.010, top + S * 0.150);
+    blaze.bezierCurveTo(right + S * 0.003, top + S * 0.215, right - S * 0.009, bottom - S * 0.018, right - S * 0.025, bottom + S * 0.002);
+    blaze.bezierCurveTo(right - S * 0.045, bottom - S * 0.014, right - S * 0.057, top + S * 0.176, right - S * 0.058, top + S * 0.102);
+    blaze.quadraticCurveTo(right - S * 0.057, top + S * 0.060, right - S * 0.047, top + S * 0.042); blaze.closePath();
+    c.save(); c.clip(body);
+    const blazeFill = c.createLinearGradient(right - S * 0.07, top, right + S * 0.02, bottom);
+    blazeFill.addColorStop(0, '#f3ede2'); blazeFill.addColorStop(0.64, '#e8dfd0'); blazeFill.addColorStop(1, '#cfc3b3');
+    c.fillStyle = blazeFill; c.fill(blaze); c.restore();
+  }
+  if (possum) {
+    c.save(); c.clip(head); c.fillStyle = '#eee8dc'; c.beginPath(); c.ellipse(hx + headRx * 0.18, hy + headRy * 0.08, headRx * 0.72, headRy * 0.66, -0.12, 0, TAU); c.fill(); c.restore();
+    c.fillStyle = '#d6a2a0';
+    for (const side of [-1, 1]) { const ex = hx - headRx * 0.40 + side * headRx * 0.34, ey = hy - headRy * 0.82; c.beginPath(); c.ellipse(ex, ey, headRx * 0.20, headRy * 0.28, side * 0.18, 0, TAU); c.fill(); }
+  } else if (devil) {
+    c.fillStyle = '#8e5558';
+    for (const side of [-1, 1]) { const ex = hx - headRx * 0.40 + side * headRx * 0.34, ey = hy - headRy * 0.82; c.beginPath(); c.ellipse(ex, ey, headRx * 0.16, headRy * 0.21, side * 0.18, 0, TAU); c.fill(); }
+  }
+  const muzzleG = c.createLinearGradient(hx, hy, hx + muzzleLen, hy + headRy * 0.48);
+  muzzleG.addColorStop(0, spec.muzzleHue ?? mammalBTone(p, 1.18)); muzzleG.addColorStop(1, possum ? '#e8d9cc' : quoll ? '#bd716e' : mammalBTone(p, 0.68));
+  c.fillStyle = muzzleG; c.fill(muzzle);
+  if (devil) {
+    const mouth = new Path2D(); mouth.moveTo(hx + headRx * 0.25, hy + headRy * 0.13); mouth.quadraticCurveTo(hx + muzzleLen * 0.72, hy + headRy * 0.18, hx + muzzleLen * 0.94, hy + headRy * 0.34);
+    mouth.quadraticCurveTo(hx + muzzleLen * 0.70, hy + headRy * 0.72, hx + headRx * 0.22, hy + headRy * 0.52); mouth.closePath();
+    c.fillStyle = '#160f13'; c.fill(mouth); c.fillStyle = '#e7d7bc';
+    for (let i = 0; i < 5; i++) { const x = hx + headRx * 0.32 + i * S * 0.017; c.beginPath(); c.moveTo(x, hy + headRy * 0.20); c.lineTo(x + S * 0.006, hy + headRy * 0.38); c.lineTo(x + S * 0.012, hy + headRy * 0.21); c.closePath(); c.fill(); }
+    c.fillStyle = '#b64e5b'; c.beginPath(); c.ellipse(hx + headRx * 0.60, hy + headRy * 0.52, headRx * 0.32, headRy * 0.15, 0.10, 0, TAU); c.fill();
+  }
+  const eyeR = S * (devil ? 0.0115 : wombat ? 0.011 : 0.0095);
+  mammalCProfileEye(c, hx + headRx * 0.25, hy - headRy * 0.17, eyeR, devil ? '#7f4f2c' : '#76502b');
+  if (wombat) mammalCNose(c, hx + muzzleLen * 0.98, hy + headRy * 0.12, S * 0.031, S * 0.021, '#292526');
+  else mammalCNose(c, hx + muzzleLen, hy + headRy * (devil ? 0.05 : 0.12), S * (possum || quoll ? 0.012 : 0.017), S * (possum || quoll ? 0.009 : 0.012), possum || quoll ? '#b96f72' : '#171518');
+  c.strokeStyle = 'rgba(31,27,27,0.58)'; c.lineWidth = wombat ? 2.2 : 1.5; c.lineCap = 'round';
+  for (const x of [left + S * 0.130, right - S * 0.035]) for (let i = 0; i < (wombat ? 4 : 3); i++) {
+    c.beginPath(); c.moveTo(x + S * (0.008 + i * 0.009), groundY - S * 0.025); c.lineTo(x + S * (0.012 + i * 0.010), groundY - S * (wombat ? 0.010 : 0.018)); c.stroke();
+  }
+}
+
+/** Wave 2d exact-name forms keep the catalogue contract in the silhouette.
+    Shared helpers below provide paint, grain and small facial anatomy only;
+    every route still supplies its own complete body, limb, skull and tail. */
+function mammalDWhiskers(
+  c: Ctx, x: number, y: number, length: number, spread: number,
+  count = 5, colour = 'rgba(238,232,218,0.70)',
+): void {
+  c.strokeStyle = colour; c.lineWidth = 1.25; c.lineCap = 'round';
+  for (let i = 0; i < count; i++) {
+    const t = count === 1 ? 0.5 : i / (count - 1);
+    c.beginPath(); c.moveTo(x, y + (t - 0.5) * spread * 0.28);
+    c.quadraticCurveTo(x + length * 0.52, y + (t - 0.5) * spread * 0.58,
+      x + length, y + (t - 0.5) * spread); c.stroke();
+  }
+}
+
+function mammalDInnerEar(c: Ctx, ear: Path2D, fill = 'rgba(45,31,30,0.56)'): void {
+  c.save(); c.clip(ear); c.fillStyle = fill; c.fillRect(0, 0, S, S); c.restore();
+}
+
+type MammalDMustelid = Extract<MammalDPlan, 'Badger' | 'Fisher' | 'Marten' | 'Mink' | 'Wolverine'>;
+
+function faunaResetMustelidD(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: MammalDMustelid): void {
+  const p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0xD41D ^ nameSeedQ(plan)) >>> 0));
+  const badger = plan === 'Badger', fisher = plan === 'Fisher', marten = plan === 'Marten';
+  const mink = plan === 'Mink', wolverine = plan === 'Wolverine';
+  const groundY = S * 0.795;
+  const left = S * (wolverine ? 0.195 : badger ? 0.205 : 0.265);
+  const right = S * (wolverine ? 0.655 : badger ? 0.665 : fisher ? 0.655 : 0.640);
+  const bodyBottom = S * (wolverine ? 0.660 : badger ? 0.685 : mink ? 0.665 : 0.655);
+  const rumpTop = S * (wolverine ? 0.365 : badger ? 0.435 : mink ? 0.475 : 0.445);
+  const shoulderTop = S * (wolverine ? 0.315 : badger ? 0.420 : marten ? 0.405 : fisher ? 0.425 : 0.455);
+  const hx = S * (wolverine ? 0.760 : badger ? 0.775 : 0.755);
+  const hy = S * (wolverine ? 0.425 : badger ? 0.505 : marten ? 0.455 : fisher ? 0.475 : 0.495);
+  const headRx = S * (wolverine ? 0.088 : badger ? 0.076 : fisher ? 0.068 : marten ? 0.064 : 0.058);
+  const headRy = headRx * (badger ? 0.72 : wolverine ? 0.86 : 0.80);
+  const muzzleLen = headRx * (badger ? 1.18 : wolverine ? 0.90 : fisher ? 0.98 : marten ? 1.02 : 1.06);
+  const legW = S * (wolverine ? 0.042 : badger ? 0.032 : fisher ? 0.025 : 0.022);
+
+  mammalBGround(c, S * 0.49, groundY + S * 0.014, S * (wolverine ? 0.31 : 0.28));
+  const total = new Path2D();
+  const tail = new Path2D();
+  const tailBaseY = rumpTop + (bodyBottom - rumpTop) * 0.50;
+  if (badger) {
+    tail.moveTo(left + S * 0.012, tailBaseY - S * 0.025);
+    tail.quadraticCurveTo(left - S * 0.070, tailBaseY - S * 0.012, left - S * 0.075, tailBaseY + S * 0.030);
+    tail.quadraticCurveTo(left - S * 0.035, tailBaseY + S * 0.055, left + S * 0.018, tailBaseY + S * 0.024); tail.closePath();
+  } else {
+    const bush = wolverine ? S * 0.060 : fisher ? S * 0.050 : marten ? S * 0.058 : S * 0.021;
+    const tipX = left - S * (wolverine ? 0.135 : fisher ? 0.235 : marten ? 0.245 : 0.230);
+    const tipY = groundY - S * (wolverine ? 0.070 : fisher ? 0.095 : marten ? 0.115 : 0.075);
+    tail.moveTo(left + S * 0.018, tailBaseY - bush);
+    tail.bezierCurveTo(left - S * 0.055, tailBaseY - bush * 1.15, tipX + S * 0.045, tipY - bush * 0.58, tipX, tipY);
+    tail.quadraticCurveTo(tipX - bush * 0.28, tipY + bush * 0.54, tipX + bush * 0.40, tipY + bush * 0.72);
+    tail.bezierCurveTo(tipX + S * 0.080, tipY + bush * 0.72, left - S * 0.030, tailBaseY + bush * 0.82, left + S * 0.018, tailBaseY + bush * 0.52); tail.closePath();
+  }
+  total.addPath(tail);
+
+  const body = new Path2D();
+  body.moveTo(left, bodyBottom - S * 0.035);
+  body.bezierCurveTo(left - S * 0.020, rumpTop + S * 0.055, left + S * 0.045, rumpTop, left + S * 0.105, rumpTop);
+  if (wolverine) {
+    body.bezierCurveTo(left + S * 0.185, rumpTop - S * 0.008, right - S * 0.135, shoulderTop - S * 0.025, right, shoulderTop + S * 0.048);
+  } else {
+    body.bezierCurveTo(left + S * 0.155, rumpTop - S * (marten ? 0.018 : 0.004), right - S * 0.100, shoulderTop - S * 0.010, right, shoulderTop + S * 0.025);
+  }
+  body.bezierCurveTo(right + S * 0.025, shoulderTop + S * 0.090, right + S * 0.010, bodyBottom - S * 0.010, right - S * 0.035, bodyBottom + S * 0.012);
+  body.bezierCurveTo(right - S * 0.150, bodyBottom + S * (wolverine ? 0.040 : 0.020), left + S * 0.080, bodyBottom + S * 0.022, left, bodyBottom - S * 0.035); body.closePath();
+  total.addPath(body);
+
+  const leg = (x: number, fore: boolean, far: boolean): Path2D => {
+    const q = new Path2D();
+    const rootY = bodyBottom - S * (fore ? 0.052 : 0.040);
+    const w = legW * (far ? 0.82 : 1);
+    const ankleX = x + (fore ? S * 0.010 : -S * 0.008);
+    q.moveTo(x - w, rootY);
+    q.bezierCurveTo(x - w * 1.08, rootY + S * 0.050, ankleX - w * 0.72, groundY - S * 0.056, ankleX - w * 0.42, groundY - S * 0.027);
+    q.quadraticCurveTo(ankleX + w * 0.50, groundY + S * 0.005, ankleX + w * (badger && fore ? 2.10 : 1.45), groundY - S * 0.012);
+    q.quadraticCurveTo(ankleX + w * (badger && fore ? 2.20 : 1.55), groundY - S * 0.034, ankleX + w * 0.66, groundY - S * 0.052);
+    q.bezierCurveTo(ankleX + w * 0.72, groundY - S * 0.085, x + w * 1.15, rootY + S * 0.030, x + w, rootY); q.closePath(); return q;
+  };
+  const legX = [left + S * 0.075, left + S * 0.130, right - S * 0.105, right - S * 0.050];
+  const legs = legX.map((x, i) => leg(x, i > 1, i === 0 || i === 2));
+  for (const q of legs) total.addPath(q);
+
+  const neck = new Path2D();
+  neck.moveTo(right - S * 0.070, shoulderTop + S * 0.015);
+  neck.bezierCurveTo(right + S * 0.010, shoulderTop - S * 0.015, hx - headRx * 0.85, hy - headRy * 0.66, hx - headRx * 0.48, hy - headRy * 0.45);
+  neck.lineTo(hx - headRx * 0.38, hy + headRy * 0.74);
+  neck.bezierCurveTo(right + S * 0.010, bodyBottom - S * 0.015, right - S * 0.045, bodyBottom, right - S * 0.070, shoulderTop + S * 0.015); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(hx, hy, headRx, headRy, -0.05, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D();
+  muzzle.moveTo(hx + headRx * 0.18, hy - headRy * 0.15);
+  muzzle.quadraticCurveTo(hx + headRx * 0.72, hy - headRy * 0.15, hx + muzzleLen, hy + headRy * 0.05);
+  muzzle.quadraticCurveTo(hx + muzzleLen * 1.08, hy + headRy * 0.34, hx + headRx * 0.50, hy + headRy * 0.48);
+  muzzle.quadraticCurveTo(hx + headRx * 0.20, hy + headRy * 0.40, hx + headRx * 0.10, hy + headRy * 0.16); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) {
+    const ear = new Path2D();
+    const ex = hx - headRx * 0.42 + side * headRx * 0.34, ey = hy - headRy * 0.72;
+    ear.ellipse(ex, ey, headRx * (badger ? 0.16 : marten ? 0.35 : fisher ? 0.32 : 0.23),
+      headRy * (badger ? 0.22 : marten ? 0.56 : fisher ? 0.46 : 0.32), side * 0.18, 0, TAU);
+    ears.push(ear); total.addPath(ear);
+  }
+
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck, head, muzzle, ...ears],
+    p, left - S * 0.20, Math.min(rumpTop, shoulderTop), hx + muzzleLen, bodyBottom);
+  mammalCFurGrain(c, total, r, left - S * 0.20, Math.min(rumpTop, shoulderTop), hx + muzzleLen, bodyBottom,
+    wolverine ? 95 : fisher ? 78 : marten ? 68 : mink ? 42 : 60,
+    mink ? 'rgba(255,231,205,0.18)' : 'rgba(255,239,210,0.22)', 'rgba(40,28,25,0.22)');
+
+  if (fisher || marten || wolverine) {
+    /* Break the tail outline with short overlapping guard hairs. Width alone
+       still read as an otter's smooth muscular taper at thumbnail scale. */
+    const tipX = left - S * (wolverine ? 0.135 : fisher ? 0.235 : 0.245);
+    const tipY = groundY - S * (wolverine ? 0.070 : fisher ? 0.095 : 0.115);
+    const bush = S * (wolverine ? 0.060 : fisher ? 0.050 : 0.058);
+    c.strokeStyle = mammalBTone(p, 0.88); c.lineWidth = 2.3; c.lineCap = 'round';
+    for (let i = 1; i < 12; i++) {
+      const t = i / 12, x = left * (1 - t) + tipX * t;
+      const y = tailBaseY * (1 - t) + tipY * t, rad = bush * (1 - t * 0.62);
+      const tooth = S * (0.008 + (i % 3) * 0.003);
+      c.beginPath(); c.moveTo(x + S * 0.006, y - rad * 0.72); c.lineTo(x - tooth, y - rad * (1.00 + (i % 2) * 0.10)); c.stroke();
+      c.beginPath(); c.moveTo(x + S * 0.006, y + rad * 0.68); c.lineTo(x - tooth, y + rad * (0.96 + ((i + 1) % 2) * 0.10)); c.stroke();
+    }
+  }
+
+  if (badger) {
+    c.save(); c.clip(body);
+    c.strokeStyle = '#252426'; c.lineWidth = S * 0.118; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(left + S * 0.045, rumpTop + S * 0.060);
+    c.bezierCurveTo(left + S * 0.175, rumpTop + S * 0.010, right - S * 0.120, shoulderTop + S * 0.015, right + S * 0.008, shoulderTop + S * 0.080); c.stroke();
+    c.strokeStyle = '#e7e2d7'; c.lineWidth = S * 0.030;
+    c.beginPath(); c.moveTo(left + S * 0.020, rumpTop + S * 0.008);
+    c.bezierCurveTo(left + S * 0.180, rumpTop - S * 0.012, right - S * 0.080, shoulderTop - S * 0.006, right + S * 0.010, shoulderTop + S * 0.020); c.stroke(); c.restore();
+    c.fillStyle = '#eee9df'; c.fill(head); c.fill(muzzle);
+    c.strokeStyle = '#242326'; c.lineWidth = S * 0.027; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(hx - headRx * 0.62, hy - headRy * 0.38); c.lineTo(hx + muzzleLen * 0.84, hy + headRy * 0.04); c.stroke();
+    c.beginPath(); c.moveTo(hx - headRx * 0.48, hy + headRy * 0.24); c.lineTo(hx + muzzleLen * 0.74, hy + headRy * 0.28); c.stroke();
+    c.strokeStyle = '#e7e2d7'; c.lineWidth = S * 0.014;
+    c.beginPath(); c.moveTo(hx - headRx * 0.62, hy - headRy * 0.68); c.lineTo(hx + muzzleLen * 0.90, hy - headRy * 0.06); c.stroke();
+  } else if (wolverine) {
+    c.save(); c.clip(body); c.strokeStyle = '#c59b64'; c.lineWidth = S * 0.040; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(right - S * 0.010, shoulderTop + S * 0.105);
+    c.bezierCurveTo(right - S * 0.130, bodyBottom - S * 0.040, left + S * 0.120, bodyBottom - S * 0.025, left + S * 0.020, tailBaseY + S * 0.030); c.stroke(); c.restore();
+  } else if (marten) {
+    const bib = new Path2D(); bib.moveTo(hx - headRx * 0.62, hy + headRy * 0.34);
+    bib.bezierCurveTo(right + S * 0.025, hy + S * 0.055, right - S * 0.010, bodyBottom - S * 0.025, right - S * 0.075, bodyBottom - S * 0.020);
+    bib.quadraticCurveTo(right - S * 0.085, hy + S * 0.025, hx - headRx * 0.42, hy + headRy * 0.18); bib.closePath();
+    c.fillStyle = '#e6a85e'; c.fill(bib);
+  } else if (mink) {
+    c.fillStyle = '#f0e9dc'; c.beginPath(); c.ellipse(hx + headRx * 0.47, hy + headRy * 0.34, headRx * 0.34, headRy * 0.18, 0.02, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(255,242,221,0.34)'; c.lineWidth = S * 0.010; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(left + S * 0.060, rumpTop + S * 0.048); c.quadraticCurveTo((left + right) * 0.5, rumpTop - S * 0.015, right - S * 0.020, shoulderTop + S * 0.050); c.stroke();
+  }
+
+  for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCProfileEye(c, hx + headRx * 0.28, hy - headRy * 0.18, S * (wolverine ? 0.010 : 0.0085), '#8f5f2f');
+  mammalCNose(c, hx + muzzleLen, hy + headRy * 0.06, S * (wolverine ? 0.016 : 0.013), S * 0.0095);
+  if (badger) {
+    c.strokeStyle = '#d8c7a5'; c.lineWidth = 2.3; c.lineCap = 'round';
+    for (const x of [legX[2]!, legX[3]!]) for (let i = 0; i < 4; i++) {
+      const sx = x + legW * (0.55 + i * 0.48); c.beginPath(); c.moveTo(sx, groundY - S * 0.011);
+      c.quadraticCurveTo(sx + S * 0.027, groundY + S * 0.001, sx + S * 0.052, groundY + S * 0.006); c.stroke();
+    }
+  } else if (wolverine) {
+    c.strokeStyle = '#dec89f'; c.lineWidth = 2.6; c.lineCap = 'round';
+    for (const x of [legX[1]!, legX[3]!]) for (let i = 0; i < 4; i++) {
+      const sx = x + legW * (0.45 + i * 0.38); c.beginPath(); c.moveTo(sx, groundY - S * 0.013);
+      c.quadraticCurveTo(sx + S * 0.017, groundY - S * 0.001, sx + S * 0.031, groundY + S * 0.005); c.stroke();
+    }
+  }
+}
+
+type MammalDViverrid = Extract<MammalDPlan, 'Civet' | 'Mongoose'>;
+
+function faunaResetViverridD(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: MammalDViverrid): void {
+  const p = pal(p0, spec), civet = plan === 'Civet';
+  const r = mulberry32((((g.seed as number) ^ 0xD71D ^ nameSeedQ(plan)) >>> 0));
+  const groundY = S * 0.795, left = S * 0.300, right = S * (civet ? 0.650 : 0.635);
+  const rumpTop = S * (civet ? 0.420 : 0.455), shoulderTop = S * (civet ? 0.405 : 0.440);
+  const bodyBottom = S * (civet ? 0.650 : 0.665);
+  const hx = S * 0.755, hy = S * (civet ? 0.470 : 0.500);
+  const headRx = S * (civet ? 0.070 : 0.060), headRy = S * (civet ? 0.058 : 0.050);
+  const muzzleLen = S * (civet ? 0.125 : 0.095), legW = S * (civet ? 0.022 : 0.020);
+  mammalBGround(c, S * 0.48, groundY + S * 0.014, S * 0.30);
+
+  const total = new Path2D();
+  const tail = new Path2D();
+  const tailBaseY = rumpTop + S * 0.100, tipX = S * (civet ? 0.055 : 0.035), tipY = groundY - S * (civet ? 0.080 : 0.060);
+  tail.moveTo(left + S * 0.012, tailBaseY - S * (civet ? 0.032 : 0.040));
+  tail.bezierCurveTo(left - S * 0.060, tailBaseY - S * 0.045, tipX + S * 0.060, tipY - S * 0.022, tipX, tipY);
+  tail.quadraticCurveTo(tipX - S * 0.012, tipY + S * 0.018, tipX + S * 0.030, tipY + S * (civet ? 0.030 : 0.012));
+  tail.bezierCurveTo(tipX + S * 0.085, tipY + S * 0.035, left - S * 0.035, tailBaseY + S * (civet ? 0.044 : 0.052), left + S * 0.018, tailBaseY + S * 0.026); tail.closePath();
+  total.addPath(tail);
+  const body = new Path2D(); body.moveTo(left, bodyBottom - S * 0.035);
+  body.bezierCurveTo(left - S * 0.020, rumpTop + S * 0.055, left + S * 0.040, rumpTop, left + S * 0.090, rumpTop);
+  body.bezierCurveTo(left + S * 0.165, rumpTop - S * 0.008, right - S * 0.080, shoulderTop - S * 0.010, right, shoulderTop + S * 0.025);
+  body.bezierCurveTo(right + S * 0.022, shoulderTop + S * 0.090, right + S * 0.008, bodyBottom - S * 0.008, right - S * 0.035, bodyBottom + S * 0.012);
+  body.bezierCurveTo(right - S * 0.130, bodyBottom + S * 0.026, left + S * 0.070, bodyBottom + S * 0.024, left, bodyBottom - S * 0.035); body.closePath(); total.addPath(body);
+  const leg = (x: number, far: boolean): Path2D => {
+    const q = new Path2D(), w = legW * (far ? 0.82 : 1), y0 = bodyBottom - S * 0.035;
+    q.moveTo(x - w, y0); q.bezierCurveTo(x - w, y0 + S * 0.045, x - w * 0.55, groundY - S * 0.052, x, groundY - S * 0.025);
+    q.quadraticCurveTo(x + S * 0.020, groundY - S * 0.002, x + S * 0.045, groundY - S * 0.012);
+    q.quadraticCurveTo(x + S * 0.048, groundY - S * 0.032, x + w * 0.55, groundY - S * 0.050);
+    q.bezierCurveTo(x + w * 0.75, groundY - S * 0.090, x + w * 1.12, y0 + S * 0.028, x + w, y0); q.closePath(); return q;
+  };
+  const legX = [left + S * 0.070, left + S * 0.120, right - S * 0.095, right - S * 0.045];
+  const legs = legX.map((x, i) => leg(x, i === 0 || i === 2)); for (const q of legs) total.addPath(q);
+  const neck = new Path2D(); neck.moveTo(right - S * 0.070, shoulderTop + S * 0.012);
+  neck.bezierCurveTo(right + S * 0.012, shoulderTop - S * 0.010, hx - headRx * 0.82, hy - headRy * 0.68, hx - headRx * 0.45, hy - headRy * 0.42);
+  neck.lineTo(hx - headRx * 0.38, hy + headRy * 0.72); neck.bezierCurveTo(right + S * 0.004, bodyBottom - S * 0.018, right - S * 0.045, bodyBottom, right - S * 0.070, shoulderTop + S * 0.012); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(hx, hy, headRx, headRy, -0.07, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D();
+  if (civet) {
+    muzzle.moveTo(hx + headRx * 0.02, hy - headRy * 0.16);
+    muzzle.bezierCurveTo(hx + headRx * 0.55, hy - headRy * 0.19,
+      hx + muzzleLen * 0.82, hy - headRy * 0.08, hx + muzzleLen, hy + headRy * 0.02);
+    muzzle.quadraticCurveTo(hx + muzzleLen * 0.96, hy + headRy * 0.17,
+      hx + headRx * 0.37, hy + headRy * 0.36);
+    muzzle.quadraticCurveTo(hx + headRx * 0.12, hy + headRy * 0.34,
+      hx + headRx * 0.01, hy + headRy * 0.10);
+  } else {
+    muzzle.moveTo(hx + headRx * 0.15, hy - headRy * 0.13);
+    muzzle.quadraticCurveTo(hx + headRx * 0.70, hy - headRy * 0.18, hx + muzzleLen, hy + headRy * 0.03);
+    muzzle.quadraticCurveTo(hx + muzzleLen * 1.06, hy + headRy * 0.26, hx + headRx * 0.44, hy + headRy * 0.43);
+    muzzle.quadraticCurveTo(hx + headRx * 0.18, hy + headRy * 0.38, hx + headRx * 0.08, hy + headRy * 0.12);
+  }
+  muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) { const ear = new Path2D(); ear.ellipse(hx - headRx * 0.43 + side * headRx * 0.34, hy - headRy * 0.73, headRx * 0.24, headRy * 0.34, side * 0.18, 0, TAU); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck, head, muzzle, ...ears],
+    p, tipX, rumpTop, hx + muzzleLen, bodyBottom);
+  mammalCFurGrain(c, total, r, tipX, rumpTop, hx + muzzleLen, bodyBottom, civet ? 64 : 72,
+    'rgba(255,242,212,0.22)', 'rgba(42,34,28,0.20)');
+
+  if (civet) {
+    c.save(); c.clip(body); c.fillStyle = 'rgba(47,42,35,0.72)';
+    for (let i = 0; i < 26; i++) {
+      const x = left + S * 0.025 + r() * (right - left - S * 0.045), y = rumpTop + S * 0.025 + r() * (bodyBottom - rumpTop - S * 0.045);
+      c.beginPath(); c.ellipse(x, y, S * (0.006 + r() * 0.005), S * (0.0045 + r() * 0.004), r() * 0.8 - 0.4, 0, TAU); c.fill();
+    }
+    c.restore();
+    c.save(); c.clip(tail); c.strokeStyle = 'rgba(40,36,34,0.92)'; c.lineWidth = S * 0.022;
+    for (let i = 0; i < 8; i++) { const x = tipX + S * (0.037 + i * 0.026); c.beginPath(); c.moveTo(x, tipY - S * 0.060); c.lineTo(x + S * 0.010, tipY + S * 0.080); c.stroke(); }
+    c.restore();
+    c.save(); c.clip(head); c.fillStyle = 'rgba(34,31,29,0.94)';
+    c.beginPath(); c.ellipse(hx + headRx * 0.12, hy - headRy * 0.10, headRx * 0.86, headRy * 0.34, -0.07, 0, TAU); c.fill(); c.restore();
+    const muzzlePatch = new Path2D(); muzzlePatch.moveTo(hx + headRx * 0.10, hy);
+    muzzlePatch.quadraticCurveTo(hx + muzzleLen * 0.60, hy - headRy * 0.02,
+      hx + muzzleLen * 0.89, hy + headRy * 0.06);
+    muzzlePatch.quadraticCurveTo(hx + muzzleLen * 0.69, hy + headRy * 0.26,
+      hx + headRx * 0.22, hy + headRy * 0.31);
+    muzzlePatch.quadraticCurveTo(hx + headRx * 0.08, hy + headRy * 0.24,
+      hx + headRx * 0.10, hy); muzzlePatch.closePath();
+    c.fillStyle = '#e9dfc8'; c.fill(muzzlePatch);
+  }
+  for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCProfileEye(c, hx + headRx * 0.30, hy - headRy * 0.17, S * 0.0085, civet ? '#c79a4a' : '#8d6434');
+  mammalCNose(c, hx + muzzleLen, hy + headRy * 0.05, S * 0.0125, S * 0.009);
+  mammalDWhiskers(c, hx + muzzleLen * 0.78, hy + headRy * 0.24, S * 0.075, S * 0.065, 4);
+}
+
+type MammalDOtter = Extract<MammalDPlan, 'Otter' | 'River Otter' | 'Giant Otter'>;
+
+function faunaResetOtterD(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: MammalDOtter): void {
+  const p = pal(p0, spec), river = plan === 'River Otter', giant = plan === 'Giant Otter';
+  const r = mulberry32((((g.seed as number) ^ 0x0D72 ^ nameSeedQ(plan)) >>> 0));
+  const groundY = S * 0.795, left = S * (giant ? 0.285 : 0.315), right = S * (giant ? 0.665 : river ? 0.655 : 0.640);
+  const top = S * (giant ? 0.410 : 0.455), bottom = S * (giant ? 0.665 : 0.675);
+  const hx = S * 0.755, hy = S * (giant ? 0.485 : 0.520), headRx = S * (giant ? 0.078 : 0.068), headRy = S * (giant ? 0.060 : 0.054);
+  mammalBGround(c, S * 0.47, groundY + S * 0.014, S * 0.32);
+  const total = new Path2D();
+  const tail = new Path2D();
+  const baseY = top + (bottom - top) * 0.55, tipX = S * 0.045, tipY = groundY - S * 0.080;
+  tail.moveTo(left + S * 0.015, baseY - S * (giant ? 0.048 : 0.036));
+  if (giant) {
+    tail.bezierCurveTo(left - S * 0.065, baseY - S * 0.065, tipX + S * 0.080, tipY - S * 0.060, tipX, tipY);
+    tail.quadraticCurveTo(tipX - S * 0.012, tipY + S * 0.035, tipX + S * 0.055, tipY + S * 0.070);
+    tail.bezierCurveTo(tipX + S * 0.135, tipY + S * 0.075, left - S * 0.030, baseY + S * 0.060, left + S * 0.020, baseY + S * 0.038);
+  } else {
+    tail.bezierCurveTo(left - S * 0.080, baseY - S * 0.040, tipX + S * 0.075, tipY - S * 0.018, tipX, tipY);
+    tail.quadraticCurveTo(tipX - S * 0.010, tipY + S * 0.014, tipX + S * 0.035, tipY + S * 0.025);
+    tail.bezierCurveTo(tipX + S * 0.105, tipY + S * 0.035, left - S * 0.028, baseY + S * 0.047, left + S * 0.020, baseY + S * 0.030);
+  }
+  tail.closePath(); total.addPath(tail);
+  const body = new Path2D(); body.moveTo(left, bottom - S * 0.035);
+  body.bezierCurveTo(left - S * 0.020, top + S * 0.055, left + S * 0.045, top, left + S * 0.110, top);
+  body.bezierCurveTo(left + S * 0.200, top - S * 0.012, right - S * 0.080, top - S * 0.005, right, top + S * 0.030);
+  body.bezierCurveTo(right + S * 0.025, top + S * 0.105, right + S * 0.010, bottom - S * 0.010, right - S * 0.040, bottom + S * 0.012);
+  body.bezierCurveTo(right - S * 0.150, bottom + S * 0.025, left + S * 0.080, bottom + S * 0.022, left, bottom - S * 0.035); body.closePath(); total.addPath(body);
+  const paw = (x: number, far: boolean): Path2D => { const q = new Path2D(), w = S * (giant ? 0.026 : 0.023) * (far ? 0.82 : 1), y0 = bottom - S * 0.035;
+    q.moveTo(x - w, y0); q.bezierCurveTo(x - w, y0 + S * 0.040, x - w * 0.4, groundY - S * 0.055, x, groundY - S * 0.030);
+    q.quadraticCurveTo(x + S * (river ? 0.038 : 0.030), groundY, x + S * (river ? 0.070 : 0.052), groundY - S * 0.012);
+    q.quadraticCurveTo(x + S * (river ? 0.070 : 0.053), groundY - S * 0.035, x + w * 0.55, groundY - S * 0.052);
+    q.bezierCurveTo(x + w * 0.72, groundY - S * 0.088, x + w, y0 + S * 0.025, x + w, y0); q.closePath(); return q; };
+  const pawX = [left + S * 0.080, left + S * 0.135, right - S * 0.100, right - S * 0.045];
+  const paws = pawX.map((x, i) => paw(x, i === 0 || i === 2)); for (const q of paws) total.addPath(q);
+  const neck = new Path2D(); neck.moveTo(right - S * 0.075, top + S * 0.010);
+  neck.bezierCurveTo(right + S * 0.015, top, hx - headRx * 0.85, hy - headRy * 0.75, hx - headRx * 0.42, hy - headRy * 0.48);
+  neck.lineTo(hx - headRx * 0.35, hy + headRy * 0.78); neck.bezierCurveTo(right + S * 0.005, bottom - S * 0.020, right - S * 0.040, bottom, right - S * 0.075, top + S * 0.010); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(hx, hy, headRx, headRy, -0.03, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D(); muzzle.moveTo(hx + headRx * 0.10, hy - headRy * 0.12);
+  muzzle.quadraticCurveTo(hx + headRx * 0.65, hy - headRy * 0.18, hx + headRx * 1.05, hy + headRy * 0.02);
+  muzzle.quadraticCurveTo(hx + headRx * 1.16, hy + headRy * 0.32, hx + headRx * 0.42, hy + headRy * 0.50);
+  muzzle.quadraticCurveTo(hx + headRx * 0.08, hy + headRy * 0.46, hx, hy + headRy * 0.14); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) { const ear = new Path2D(); ear.ellipse(hx - headRx * 0.48 + side * headRx * 0.28, hy - headRy * 0.69, headRx * 0.15, headRy * 0.18, side * 0.15, 0, TAU); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [tail, paws[0]!, paws[2]!, body, paws[1]!, paws[3]!, neck, head, muzzle, ...ears], p, tipX, top, hx + headRx * 1.15, bottom);
+  mammalCFurGrain(c, total, r, tipX, top, hx + headRx * 1.15, bottom, giant ? 80 : 58, 'rgba(238,224,198,0.20)', 'rgba(35,30,27,0.18)');
+  if (giant) {
+    c.strokeStyle = 'rgba(35,29,25,0.40)'; c.lineWidth = 2.2; c.beginPath(); c.moveTo(tipX + S * 0.030, tipY + S * 0.020); c.quadraticCurveTo(left - S * 0.090, baseY + S * 0.010, left + S * 0.005, baseY); c.stroke();
+    const bib = new Path2D(); bib.moveTo(hx - headRx * 0.62, hy + headRy * 0.18);
+    bib.bezierCurveTo(right + S * 0.020, hy + S * 0.030, right - S * 0.005, bottom - S * 0.020, right - S * 0.070, bottom - S * 0.012);
+    bib.quadraticCurveTo(right - S * 0.090, hy + S * 0.018, hx - headRx * 0.42, hy + headRy * 0.02); bib.closePath(); c.fillStyle = '#e6d8b8'; c.fill(bib);
+  }
+  c.fillStyle = giant ? '#d9caa9' : '#d8c6a8';
+  c.beginPath(); c.ellipse(hx + headRx * 0.45, hy + headRy * 0.20, headRx * 0.48, headRy * 0.29, 0, 0, TAU); c.fill();
+  for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCProfileEye(c, hx + headRx * 0.24, hy - headRy * 0.18, S * 0.0085, '#76532d');
+  mammalCNose(c, hx + headRx * 1.05, hy + headRy * 0.04, S * 0.014, S * 0.010);
+  mammalDWhiskers(c, hx + headRx * 0.72, hy + headRy * 0.25, S * 0.090, S * 0.078, 5);
+  if (river) {
+    c.strokeStyle = 'rgba(31,28,27,0.66)'; c.lineWidth = 1.6; c.lineCap = 'round';
+    for (const x of [pawX[1]!, pawX[3]!]) for (let i = 0; i < 4; i++) {
+      c.beginPath(); c.moveTo(x + S * (0.012 + i * 0.010), groundY - S * 0.037);
+      c.lineTo(x + S * (0.018 + i * 0.014), groundY - S * 0.010); c.stroke();
+    }
+  }
+}
+
+function faunaResetSeaOtterD(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0x5EA0 ^ nameSeedQ('Sea Otter')) >>> 0));
+  /* A sea otter's entire read is its supine water posture. Keep the water
+     horizontal so the diagonal belly, raised hind flippers and chest rock
+     cannot be mistaken for another short-legged side-view mustelid. */
+  c.strokeStyle = 'rgba(111,190,207,0.30)'; c.lineWidth = 3; c.lineCap = 'round';
+  for (const [x0, y, x1] of [[S * 0.10, S * 0.795, S * 0.54], [S * 0.47, S * 0.740, S * 0.90], [S * 0.08, S * 0.690, S * 0.30]] as const) {
+    c.beginPath(); c.moveTo(x0, y); c.quadraticCurveTo((x0 + x1) * 0.5, y - S * 0.012, x1, y); c.stroke();
+  }
+  const total = new Path2D();
+  const tail = new Path2D(); tail.moveTo(S * 0.225, S * 0.675);
+  tail.bezierCurveTo(S * 0.160, S * 0.710, S * 0.105, S * 0.790, S * 0.080, S * 0.825);
+  tail.quadraticCurveTo(S * 0.095, S * 0.850, S * 0.145, S * 0.815);
+  tail.bezierCurveTo(S * 0.205, S * 0.780, S * 0.260, S * 0.735, S * 0.265, S * 0.700); tail.closePath(); total.addPath(tail);
+  const hindFlippers: Path2D[] = [];
+  const flipper1 = new Path2D(); flipper1.moveTo(S * 0.230, S * 0.675);
+  flipper1.bezierCurveTo(S * 0.160, S * 0.690, S * 0.095, S * 0.720, S * 0.075, S * 0.755);
+  flipper1.quadraticCurveTo(S * 0.130, S * 0.790, S * 0.225, S * 0.742);
+  flipper1.quadraticCurveTo(S * 0.270, S * 0.710, S * 0.230, S * 0.675); flipper1.closePath(); hindFlippers.push(flipper1); total.addPath(flipper1);
+  const flipper2 = new Path2D(); flipper2.moveTo(S * 0.275, S * 0.690);
+  flipper2.bezierCurveTo(S * 0.225, S * 0.735, S * 0.190, S * 0.820, S * 0.215, S * 0.850);
+  flipper2.quadraticCurveTo(S * 0.285, S * 0.842, S * 0.335, S * 0.742);
+  flipper2.quadraticCurveTo(S * 0.345, S * 0.704, S * 0.275, S * 0.690); flipper2.closePath(); hindFlippers.push(flipper2); total.addPath(flipper2);
+  const body = new Path2D(); body.ellipse(S * 0.475, S * 0.515, S * 0.145, S * 0.265, 0.58, 0, TAU); total.addPath(body);
+  const neck = new Path2D(); neck.moveTo(S * 0.590, S * 0.350);
+  neck.bezierCurveTo(S * 0.625, S * 0.280, S * 0.685, S * 0.245, S * 0.725, S * 0.255);
+  neck.lineTo(S * 0.765, S * 0.355); neck.bezierCurveTo(S * 0.705, S * 0.405, S * 0.650, S * 0.435, S * 0.600, S * 0.430); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(S * 0.730, S * 0.280, S * 0.102, S * 0.087, -0.18, 0, TAU); total.addPath(head);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) { const ear = new Path2D(); ear.ellipse(S * (0.685 + side * 0.052), S * 0.220, S * 0.018, S * 0.020, side * 0.15, 0, TAU); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [tail, flipper1, flipper2, body, neck, head, ...ears], p, S * 0.07, S * 0.18, S * 0.84, S * 0.85);
+  mammalCFurGrain(c, total, r, S * 0.10, S * 0.20, S * 0.82, S * 0.82, 104,
+    'rgba(239,224,196,0.25)', 'rgba(42,31,27,0.20)');
+
+  c.save(); c.clip(body); const belly = c.createRadialGradient(S * 0.510, S * 0.455, S * 0.010, S * 0.470, S * 0.520, S * 0.170);
+  belly.addColorStop(0, '#d8c6a7'); belly.addColorStop(0.70, '#aa8d69'); belly.addColorStop(1, 'rgba(92,68,50,0.20)'); c.fillStyle = belly;
+  c.beginPath(); c.ellipse(S * 0.500, S * 0.500, S * 0.103, S * 0.218, 0.58, 0, TAU); c.fill(); c.restore();
+
+  /* Both forepaws meet around a rock on the chest; the object is intentionally
+     stone-grey and occluded by digits so it reads as carried, not a coat spot. */
+  const arms: Path2D[] = [];
+  for (const side of [-1, 1]) {
+    const arm = new Path2D(); arm.moveTo(S * (0.535 + side * 0.015), S * 0.405);
+    arm.bezierCurveTo(S * (0.550 + side * 0.060), S * 0.450, S * (0.555 + side * 0.045), S * 0.530, S * (0.535 + side * 0.018), S * 0.550);
+    arm.quadraticCurveTo(S * (0.495 + side * 0.020), S * 0.545, S * (0.485 + side * 0.010), S * 0.500);
+    arm.bezierCurveTo(S * (0.485 + side * 0.005), S * 0.455, S * (0.500 + side * 0.005), S * 0.420, S * (0.535 + side * 0.015), S * 0.405); arm.closePath(); arms.push(arm);
+  }
+  mammalBFill(c, arms, p, S * 0.45, S * 0.39, S * 0.61, S * 0.56);
+  c.fillStyle = '#777b80'; c.beginPath(); c.ellipse(S * 0.535, S * 0.495, S * 0.055, S * 0.046, -0.22, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(44,46,49,0.66)'; c.lineWidth = 1.6; c.beginPath(); c.moveTo(S * 0.505, S * 0.480); c.quadraticCurveTo(S * 0.530, S * 0.462, S * 0.560, S * 0.482); c.stroke();
+  c.fillStyle = mammalBTone(p, 1.18); for (const arm of arms) { c.save(); c.clip(arm); c.fillRect(S * 0.47, S * 0.50, S * 0.15, S * 0.08); c.restore(); }
+  c.strokeStyle = 'rgba(37,31,28,0.64)'; c.lineWidth = 1.5;
+  for (const x of [S * 0.510, S * 0.555]) for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(x + i * S * 0.007, S * 0.515); c.lineTo(x + i * S * 0.008, S * 0.540); c.stroke(); }
+
+  c.fillStyle = '#d9c6a7'; c.beginPath(); c.ellipse(S * 0.770, S * 0.300, S * 0.050, S * 0.034, -0.10, 0, TAU); c.fill();
+  for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCEye(c, S * 0.745, S * 0.258, S * 0.011, '#76512b');
+  mammalCNose(c, S * 0.818, S * 0.292, S * 0.015, S * 0.011);
+  mammalDWhiskers(c, S * 0.786, S * 0.316, S * 0.095, S * 0.090, 6);
+  c.strokeStyle = 'rgba(43,37,34,0.58)'; c.lineWidth = 1.5;
+  for (const flipper of hindFlippers) { c.save(); c.clip(flipper); for (let i = 1; i < 5; i++) { c.beginPath(); c.moveTo(S * (0.075 + i * 0.025), S * 0.725); c.lineTo(S * (0.120 + i * 0.028), S * 0.810); c.stroke(); } c.restore(); }
+}
+
+function faunaResetCapybaraD(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec), r = mulberry32((((g.seed as number) ^ 0xCA9B ^ nameSeedQ('Capybara')) >>> 0));
+  const groundY = S * 0.800, left = S * 0.205, right = S * 0.625, top = S * 0.350, bottom = S * 0.690;
+  mammalBGround(c, S * 0.49, groundY + S * 0.016, S * 0.31);
+  const total = new Path2D();
+  const body = new Path2D(); body.moveTo(left, bottom - S * 0.050);
+  body.bezierCurveTo(left - S * 0.018, top + S * 0.095, left + S * 0.060, top, left + S * 0.145, top);
+  body.bezierCurveTo(left + S * 0.270, top - S * 0.005, right - S * 0.030, top + S * 0.010, right + S * 0.015, top + S * 0.085);
+  body.lineTo(right + S * 0.010, bottom - S * 0.020);
+  body.bezierCurveTo(right - S * 0.100, bottom + S * 0.040, left + S * 0.075, bottom + S * 0.040, left, bottom - S * 0.050); body.closePath(); total.addPath(body);
+  const leg = (x: number, far: boolean): Path2D => { const q = new Path2D(), w = S * 0.033 * (far ? 0.82 : 1), y0 = bottom - S * 0.040;
+    q.moveTo(x - w, y0); q.bezierCurveTo(x - w * 1.10, y0 + S * 0.035, x - w * 0.70, groundY - S * 0.055, x - w * 0.30, groundY - S * 0.030);
+    q.quadraticCurveTo(x + S * 0.030, groundY + S * 0.004, x + S * 0.068, groundY - S * 0.012);
+    q.quadraticCurveTo(x + S * 0.070, groundY - S * 0.035, x + w * 0.60, groundY - S * 0.053);
+    q.bezierCurveTo(x + w * 0.78, groundY - S * 0.085, x + w * 1.14, y0 + S * 0.020, x + w, y0); q.closePath(); return q; };
+  const legX = [left + S * 0.080, left + S * 0.145, right - S * 0.105, right - S * 0.040];
+  const legs = legX.map((x, i) => leg(x, i === 0 || i === 2)); for (const q of legs) total.addPath(q);
+  /* Rectangular skull, with its sensory points all on the roof. */
+  const head = new Path2D(); head.moveTo(S * 0.600, S * 0.385); head.lineTo(S * 0.785, S * 0.390);
+  head.quadraticCurveTo(S * 0.835, S * 0.405, S * 0.840, S * 0.470); head.lineTo(S * 0.825, S * 0.620);
+  head.quadraticCurveTo(S * 0.790, S * 0.675, S * 0.675, S * 0.650); head.lineTo(S * 0.610, S * 0.580);
+  head.quadraticCurveTo(S * 0.585, S * 0.480, S * 0.600, S * 0.385); head.closePath(); total.addPath(head);
+  const ears: Path2D[] = [];
+  for (const x of [S * 0.650, S * 0.735]) { const ear = new Path2D(); ear.ellipse(x, S * 0.373, S * 0.023, S * 0.030, 0, 0, TAU); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, head, ...ears], p, left, top, S * 0.84, bottom);
+  mammalCFurGrain(c, total, r, left, top, S * 0.84, bottom, 82, 'rgba(247,220,180,0.20)', 'rgba(64,42,29,0.20)');
+  c.fillStyle = mammalBTone(p, 0.72); c.beginPath(); c.ellipse(S * 0.802, S * 0.540, S * 0.052, S * 0.060, 0.05, 0, TAU); c.fill();
+  for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCProfileEye(c, S * 0.753, S * 0.420, S * 0.0105, '#8a5b2d');
+  mammalCNose(c, S * 0.824, S * 0.445, S * 0.010, S * 0.007, '#2b2928');
+  c.fillStyle = '#dd7b2e'; c.beginPath(); c.roundRect(S * 0.818, S * 0.560, S * 0.020, S * 0.036, S * 0.005); c.fill();
+  c.strokeStyle = 'rgba(45,34,29,0.70)'; c.lineWidth = 1.6; c.lineCap = 'round';
+  for (const x of [legX[1]!, legX[3]!]) for (let i = 0; i < 4; i++) { c.beginPath(); c.moveTo(x + S * (0.014 + i * 0.010), groundY - S * 0.038); c.lineTo(x + S * (0.018 + i * 0.014), groundY - S * 0.010); c.stroke(); }
+}
+
+function faunaResetHyraxD(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec), r = mulberry32((((g.seed as number) ^ 0x48A9 ^ nameSeedQ('Hyrax')) >>> 0));
+  const groundY = S * 0.800, left = S * 0.275, right = S * 0.655, top = S * 0.390, bottom = S * 0.690;
+  mammalBGround(c, S * 0.50, groundY + S * 0.015, S * 0.25);
+  const total = new Path2D();
+  const body = new Path2D(); body.moveTo(left, bottom - S * 0.030);
+  body.bezierCurveTo(left - S * 0.040, top + S * 0.080, left + S * 0.065, top - S * 0.010, left + S * 0.180, top);
+  body.bezierCurveTo(left + S * 0.290, top - S * 0.002, right + S * 0.020, top + S * 0.070, right + S * 0.010, bottom - S * 0.015);
+  body.bezierCurveTo(right - S * 0.100, bottom + S * 0.035, left + S * 0.075, bottom + S * 0.035, left, bottom - S * 0.030); body.closePath(); total.addPath(body);
+  const leg = (x: number, far: boolean): Path2D => { const q = new Path2D(), w = S * 0.026 * (far ? 0.82 : 1), y0 = bottom - S * 0.035;
+    q.moveTo(x - w, y0); q.lineTo(x - w * 0.55, groundY - S * 0.035); q.quadraticCurveTo(x + S * 0.025, groundY + S * 0.002, x + S * 0.055, groundY - S * 0.014);
+    q.lineTo(x + w * 0.65, groundY - S * 0.050); q.lineTo(x + w, y0); q.closePath(); return q; };
+  const legX = [left + S * 0.080, left + S * 0.125, right - S * 0.090, right - S * 0.040];
+  const legs = legX.map((x, i) => leg(x, i === 0 || i === 2)); for (const q of legs) total.addPath(q);
+  const head = new Path2D(); head.ellipse(S * 0.700, S * 0.505, S * 0.105, S * 0.100, -0.02, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D(); muzzle.moveTo(S * 0.730, S * 0.480); muzzle.quadraticCurveTo(S * 0.790, S * 0.475, S * 0.825, S * 0.510);
+  muzzle.quadraticCurveTo(S * 0.822, S * 0.555, S * 0.750, S * 0.565); muzzle.quadraticCurveTo(S * 0.718, S * 0.545, S * 0.730, S * 0.480); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) { const ear = new Path2D(); ear.ellipse(S * (0.660 + side * 0.040), S * 0.428, S * 0.016, S * 0.020, side * 0.15, 0, TAU); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, head, muzzle, ...ears], p, left, top, S * 0.83, bottom);
+  mammalCFurGrain(c, total, r, left, top, S * 0.82, bottom, 74, 'rgba(247,228,196,0.22)', 'rgba(52,40,34,0.20)');
+  c.fillStyle = mammalBTone(p, 1.16); c.fill(muzzle); for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCProfileEye(c, S * 0.735, S * 0.475, S * 0.010, '#80552b'); mammalCNose(c, S * 0.823, S * 0.514, S * 0.012, S * 0.009);
+  mammalDWhiskers(c, S * 0.795, S * 0.540, S * 0.082, S * 0.075, 5);
+}
+
+function faunaResetMaraD(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec), r = mulberry32((((g.seed as number) ^ 0x6A2A ^ nameSeedQ('Mara')) >>> 0));
+  const groundY = S * 0.820, left = S * 0.285, right = S * 0.625, top = S * 0.405, bottom = S * 0.590;
+  mammalBGround(c, S * 0.50, groundY + S * 0.014, S * 0.27);
+  const total = new Path2D();
+  const nub = new Path2D(); nub.ellipse(left - S * 0.008, top + S * 0.095, S * 0.016, S * 0.013, 0, 0, TAU); total.addPath(nub);
+  const body = new Path2D(); body.moveTo(left, bottom - S * 0.025); body.bezierCurveTo(left - S * 0.020, top + S * 0.055, left + S * 0.050, top, left + S * 0.105, top);
+  body.bezierCurveTo(left + S * 0.190, top - S * 0.012, right - S * 0.055, top + S * 0.005, right, top + S * 0.035);
+  body.bezierCurveTo(right + S * 0.020, top + S * 0.090, right, bottom - S * 0.005, right - S * 0.035, bottom + S * 0.010);
+  body.bezierCurveTo(right - S * 0.120, bottom + S * 0.020, left + S * 0.070, bottom + S * 0.022, left, bottom - S * 0.025); body.closePath(); total.addPath(body);
+  const leg = (x: number, hind: boolean, far: boolean): Path2D => { const q = new Path2D(), w = S * 0.018 * (far ? 0.82 : 1), y0 = bottom - S * 0.025;
+    const kneeX = x + S * (hind ? 0.032 : -0.012), kneeY = S * (hind ? 0.665 : 0.690), ankleX = x + S * (hind ? 0.010 : 0.018);
+    q.moveTo(x - w, y0); q.bezierCurveTo(x - w, S * 0.625, kneeX - w, kneeY, ankleX - w * 0.45, groundY - S * 0.040);
+    q.quadraticCurveTo(ankleX + S * 0.020, groundY, ankleX + S * 0.055, groundY - S * 0.010);
+    q.quadraticCurveTo(ankleX + S * 0.057, groundY - S * 0.030, ankleX + w * 0.50, groundY - S * 0.046);
+    q.bezierCurveTo(kneeX + w * 0.55, kneeY, x + w, S * 0.625, x + w, y0); q.closePath(); return q; };
+  const legs = [leg(left + S * 0.070, true, true), leg(left + S * 0.125, true, false), leg(right - S * 0.090, false, true), leg(right - S * 0.040, false, false)]; for (const q of legs) total.addPath(q);
+  const neck = new Path2D(); neck.moveTo(right - S * 0.065, top + S * 0.020); neck.bezierCurveTo(S * 0.670, S * 0.350, S * 0.700, S * 0.305, S * 0.720, S * 0.300);
+  neck.lineTo(S * 0.765, S * 0.410); neck.bezierCurveTo(S * 0.715, S * 0.475, S * 0.665, S * 0.520, right - S * 0.025, bottom); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(S * 0.735, S * 0.315, S * 0.067, S * 0.060, -0.04, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D(); muzzle.moveTo(S * 0.752, S * 0.300); muzzle.quadraticCurveTo(S * 0.805, S * 0.295, S * 0.840, S * 0.320);
+  muzzle.quadraticCurveTo(S * 0.842, S * 0.350, S * 0.770, S * 0.357); muzzle.quadraticCurveTo(S * 0.745, S * 0.340, S * 0.752, S * 0.300); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) { const ear = new Path2D(), ex = S * (0.700 + side * 0.045), by = S * 0.275;
+    ear.moveTo(ex - S * 0.022, by); ear.quadraticCurveTo(ex - S * 0.018, S * (side < 0 ? 0.105 : 0.125), ex + S * 0.005, S * (side < 0 ? 0.085 : 0.105));
+    ear.quadraticCurveTo(ex + S * 0.035, S * (side < 0 ? 0.150 : 0.165), ex + S * 0.026, by + S * 0.012); ear.closePath(); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [nub, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck, head, muzzle, ...ears], p, left, S * 0.08, S * 0.85, groundY);
+  mammalCFurGrain(c, total, r, left, S * 0.10, S * 0.84, bottom, 62, 'rgba(245,235,215,0.22)', 'rgba(48,43,39,0.18)');
+  c.fillStyle = '#ded6c7'; c.beginPath(); c.ellipse(S * 0.770, S * 0.340, S * 0.040, S * 0.023, 0, 0, TAU); c.fill(); for (const ear of ears) mammalDInnerEar(c, ear, 'rgba(117,74,73,0.58)');
+  mammalCProfileEye(c, S * 0.756, S * 0.296, S * 0.0095, '#81582d'); mammalCNose(c, S * 0.840, S * 0.321, S * 0.010, S * 0.007);
+}
+
+function faunaResetMarshRodentD(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec), r = mulberry32((((g.seed as number) ^ 0xAA51 ^ nameSeedQ('Marsh Rodent')) >>> 0));
+  const groundY = S * 0.800, left = S * 0.290, right = S * 0.635, top = S * 0.430, bottom = S * 0.685;
+  mammalBGround(c, S * 0.46, groundY + S * 0.014, S * 0.30);
+  const total = new Path2D();
+  const tail = new Path2D(); tail.moveTo(left + S * 0.005, top + S * 0.125); tail.bezierCurveTo(S * 0.190, S * 0.565, S * 0.115, S * 0.675, S * 0.050, S * 0.745);
+  tail.quadraticCurveTo(S * 0.045, S * 0.760, S * 0.060, S * 0.764); tail.bezierCurveTo(S * 0.145, S * 0.700, S * 0.230, S * 0.605, left + S * 0.012, top + S * 0.145); tail.closePath(); total.addPath(tail);
+  const body = new Path2D(); body.moveTo(left, bottom - S * 0.035); body.bezierCurveTo(left - S * 0.030, top + S * 0.070, left + S * 0.055, top, left + S * 0.130, top);
+  body.bezierCurveTo(left + S * 0.230, top - S * 0.005, right - S * 0.040, top + S * 0.015, right + S * 0.010, top + S * 0.075);
+  body.lineTo(right, bottom - S * 0.010); body.bezierCurveTo(right - S * 0.100, bottom + S * 0.030, left + S * 0.070, bottom + S * 0.032, left, bottom - S * 0.035); body.closePath(); total.addPath(body);
+  const leg = (x: number, hind: boolean, far: boolean): Path2D => { const q = new Path2D(), w = S * 0.025 * (far ? 0.82 : 1), y0 = bottom - S * 0.035;
+    q.moveTo(x - w, y0); q.bezierCurveTo(x - w, y0 + S * 0.045, x - w * 0.45, groundY - S * 0.052, x, groundY - S * 0.028);
+    q.quadraticCurveTo(x + S * (hind ? 0.045 : 0.028), groundY + S * 0.002, x + S * (hind ? 0.090 : 0.055), groundY - S * 0.012);
+    q.quadraticCurveTo(x + S * (hind ? 0.092 : 0.056), groundY - S * 0.035, x + w * 0.55, groundY - S * 0.050);
+    q.bezierCurveTo(x + w * 0.72, groundY - S * 0.086, x + w, y0 + S * 0.025, x + w, y0); q.closePath(); return q; };
+  const legX = [left + S * 0.075, left + S * 0.130, right - S * 0.090, right - S * 0.035];
+  const legs = legX.map((x, i) => leg(x, i < 2, i === 0 || i === 2)); for (const q of legs) total.addPath(q);
+  const head = new Path2D(); head.ellipse(S * 0.705, S * 0.520, S * 0.100, S * 0.090, 0, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D(); muzzle.moveTo(S * 0.740, S * 0.490); muzzle.lineTo(S * 0.830, S * 0.495); muzzle.quadraticCurveTo(S * 0.855, S * 0.530, S * 0.825, S * 0.575);
+  muzzle.lineTo(S * 0.750, S * 0.580); muzzle.quadraticCurveTo(S * 0.720, S * 0.545, S * 0.740, S * 0.490); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) { const ear = new Path2D(); ear.ellipse(S * (0.665 + side * 0.050), S * 0.438, S * 0.028, S * 0.035, side * 0.15, 0, TAU); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, head, muzzle, ...ears], p, S * 0.04, top, S * 0.86, bottom);
+  mammalCFurGrain(c, total, r, left, top, S * 0.84, bottom, 72, 'rgba(241,219,183,0.20)', 'rgba(55,41,31,0.20)');
+  c.save(); c.clip(tail); c.strokeStyle = 'rgba(64,48,42,0.56)'; c.lineWidth = 1.4;
+  for (let i = 1; i < 12; i++) { const t = i / 12, x = left * (1 - t) + S * 0.050 * t, y = (top + S * 0.135) * (1 - t) + S * 0.745 * t; c.beginPath(); c.moveTo(x - S * 0.010, y - S * 0.009); c.lineTo(x + S * 0.010, y + S * 0.009); c.stroke(); } c.restore();
+  c.fillStyle = '#e1812f'; c.beginPath(); c.roundRect(S * 0.818, S * 0.535, S * 0.026, S * 0.044, S * 0.004); c.fill(); for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCProfileEye(c, S * 0.745, S * 0.495, S * 0.010, '#85592e'); mammalCNose(c, S * 0.835, S * 0.510, S * 0.010, S * 0.007);
+  c.strokeStyle = 'rgba(47,38,33,0.68)'; c.lineWidth = 1.5;
+  for (const x of [legX[1]!, legX[0]!]) for (let i = 0; i < 4; i++) { c.beginPath(); c.moveTo(x + S * (0.018 + i * 0.013), groundY - S * 0.040); c.lineTo(x + S * (0.025 + i * 0.018), groundY - S * 0.010); c.stroke(); }
+  mammalDWhiskers(c, S * 0.805, S * 0.560, S * 0.075, S * 0.070, 4);
+}
+
+function faunaResetMoleD(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec), r = mulberry32((((g.seed as number) ^ 0x601E ^ nameSeedQ('Mole')) >>> 0));
+  const groundY = S * 0.790;
+  const soil = c.createRadialGradient(S * 0.47, groundY, 2, S * 0.47, groundY, S * 0.33);
+  soil.addColorStop(0, 'rgba(67,45,31,0.48)'); soil.addColorStop(0.65, 'rgba(58,39,28,0.22)'); soil.addColorStop(1, 'rgba(40,27,21,0)');
+  c.fillStyle = soil; c.beginPath(); c.ellipse(S * 0.47, groundY, S * 0.33, S * 0.055, 0, 0, TAU); c.fill();
+
+  const total = new Path2D();
+  const tail = new Path2D(); tail.moveTo(S * 0.280, S * 0.585); tail.bezierCurveTo(S * 0.215, S * 0.570, S * 0.155, S * 0.610, S * 0.125, S * 0.655);
+  tail.quadraticCurveTo(S * 0.122, S * 0.670, S * 0.140, S * 0.669); tail.bezierCurveTo(S * 0.190, S * 0.635, S * 0.245, S * 0.625, S * 0.292, S * 0.615); tail.closePath(); total.addPath(tail);
+  /* One neckless velvet cylinder: the head is the narrowing front of the body,
+     not a separate generic mammal skull. */
+  const body = new Path2D(); body.moveTo(S * 0.250, S * 0.610);
+  body.bezierCurveTo(S * 0.230, S * 0.475, S * 0.335, S * 0.385, S * 0.500, S * 0.390);
+  body.bezierCurveTo(S * 0.650, S * 0.390, S * 0.740, S * 0.455, S * 0.755, S * 0.550);
+  body.bezierCurveTo(S * 0.770, S * 0.660, S * 0.660, S * 0.720, S * 0.500, S * 0.715);
+  body.bezierCurveTo(S * 0.340, S * 0.715, S * 0.260, S * 0.680, S * 0.250, S * 0.610); body.closePath(); total.addPath(body);
+  const hindPaws: Path2D[] = [];
+  for (const x of [S * 0.330, S * 0.430]) { const paw = new Path2D(); paw.ellipse(x, S * 0.705, S * 0.060, S * 0.032, -0.10, 0, TAU); hindPaws.push(paw); total.addPath(paw); }
+  /* Forepaws sit beside the snout and point out of the silhouette. Their broad
+     fans and long straight digits are the mole's diagnostic anatomy. */
+  const forePaws: Path2D[] = [];
+  const upper = new Path2D(); upper.moveTo(S * 0.665, S * 0.500); upper.bezierCurveTo(S * 0.720, S * 0.435, S * 0.820, S * 0.405, S * 0.880, S * 0.430);
+  upper.lineTo(S * 0.845, S * 0.515); upper.quadraticCurveTo(S * 0.755, S * 0.545, S * 0.675, S * 0.555); upper.closePath(); forePaws.push(upper); total.addPath(upper);
+  const lower = new Path2D(); lower.moveTo(S * 0.665, S * 0.605); lower.bezierCurveTo(S * 0.735, S * 0.620, S * 0.825, S * 0.670, S * 0.875, S * 0.735);
+  lower.lineTo(S * 0.795, S * 0.760); lower.quadraticCurveTo(S * 0.720, S * 0.705, S * 0.650, S * 0.665); lower.closePath(); forePaws.push(lower); total.addPath(lower);
+  const snout = new Path2D(); snout.moveTo(S * 0.705, S * 0.525); snout.quadraticCurveTo(S * 0.820, S * 0.515, S * 0.925, S * 0.555);
+  snout.quadraticCurveTo(S * 0.835, S * 0.595, S * 0.705, S * 0.592); snout.quadraticCurveTo(S * 0.675, S * 0.558, S * 0.705, S * 0.525); snout.closePath(); total.addPath(snout);
+  mammalBFill(c, [tail, hindPaws[0]!, body, hindPaws[1]!, upper, lower], p, S * 0.12, S * 0.38, S * 0.89, S * 0.76);
+  mammalCFurGrain(c, total, r, S * 0.22, S * 0.39, S * 0.76, S * 0.72, 110,
+    'rgba(214,203,194,0.16)', 'rgba(16,15,17,0.28)');
+  const pawFill = c.createLinearGradient(S * 0.68, S * 0.48, S * 0.86, S * 0.70);
+  pawFill.addColorStop(0, '#b98a86'); pawFill.addColorStop(0.55, '#9f6f70'); pawFill.addColorStop(1, '#6c4b52'); c.fillStyle = pawFill;
+  for (const paw of forePaws) c.fill(paw);
+  const snoutFill = c.createLinearGradient(S * 0.700, S * 0.520, S * 0.855, S * 0.565);
+  snoutFill.addColorStop(0, '#b98482'); snoutFill.addColorStop(0.70, '#e4a6a0'); snoutFill.addColorStop(1, '#f0b4ad'); c.fillStyle = snoutFill; c.fill(snout);
+  mammalCNose(c, S * 0.925, S * 0.557, S * 0.012, S * 0.009, '#7d4c54');
+  c.strokeStyle = '#e4c8ad'; c.lineWidth = 2.2; c.lineCap = 'round';
+  for (let i = 0; i < 5; i++) {
+    c.beginPath(); c.moveTo(S * (0.800 + i * 0.012), S * (0.446 + i * 0.010)); c.lineTo(S * (0.905 + i * 0.010), S * (0.413 + i * 0.008)); c.stroke();
+    c.beginPath(); c.moveTo(S * (0.790 + i * 0.012), S * (0.693 + i * 0.010)); c.lineTo(S * (0.892 + i * 0.010), S * (0.756 + i * 0.007)); c.stroke();
+  }
+  mammalDWhiskers(c, S * 0.855, S * 0.578, S * 0.070, S * 0.055, 4, 'rgba(225,209,194,0.58)');
+}
+
+type MammalEGeom = {
+  ground: number; left: number; right: number; rumpTop: number; shoulderTop: number; bottom: number;
+  hx: number; hy: number; headRx: number; headRy: number; muzzle: number; legW: number;
+};
+
+/** Wave 2e's bovid cohort shares cloven-foot anatomy, but not silhouette.  Each
+    exact-name row below fixes the mass, carriage, skull and diagnostic organ
+    before any markings are painted. */
+const MAMMAL_E_GEOM: Record<MammalEPlan, MammalEGeom> = {
+  'Buffalo':       { ground: 0.820, left: 0.200, right: 0.640, rumpTop: 0.360, shoulderTop: 0.290, bottom: 0.660, hx: 0.755, hy: 0.455, headRx: 0.085, headRy: 0.075, muzzle: 0.105, legW: 0.027 },
+  'Cow':           { ground: 0.820, left: 0.210, right: 0.640, rumpTop: 0.380, shoulderTop: 0.370, bottom: 0.680, hx: 0.760, hy: 0.475, headRx: 0.082, headRy: 0.070, muzzle: 0.105, legW: 0.024 },
+  'Eland':         { ground: 0.835, left: 0.230, right: 0.620, rumpTop: 0.400, shoulderTop: 0.320, bottom: 0.620, hx: 0.755, hy: 0.300, headRx: 0.066, headRy: 0.058, muzzle: 0.090, legW: 0.018 },
+  'Gaur':          { ground: 0.825, left: 0.200, right: 0.640, rumpTop: 0.380, shoulderTop: 0.270, bottom: 0.650, hx: 0.760, hy: 0.430, headRx: 0.085, headRy: 0.075, muzzle: 0.105, legW: 0.026 },
+  'Gazelle':       { ground: 0.840, left: 0.280, right: 0.610, rumpTop: 0.450, shoulderTop: 0.410, bottom: 0.600, hx: 0.750, hy: 0.285, headRx: 0.060, headRy: 0.050, muzzle: 0.075, legW: 0.014 },
+  'Hartebeest':    { ground: 0.840, left: 0.250, right: 0.610, rumpTop: 0.490, shoulderTop: 0.320, bottom: 0.620, hx: 0.720, hy: 0.330, headRx: 0.058, headRy: 0.055, muzzle: 0.160, legW: 0.016 },
+  'Impala':        { ground: 0.840, left: 0.270, right: 0.610, rumpTop: 0.440, shoulderTop: 0.390, bottom: 0.610, hx: 0.750, hy: 0.290, headRx: 0.062, headRy: 0.052, muzzle: 0.077, legW: 0.014 },
+  'Kudu':          { ground: 0.840, left: 0.240, right: 0.610, rumpTop: 0.400, shoulderTop: 0.350, bottom: 0.640, hx: 0.740, hy: 0.315, headRx: 0.068, headRy: 0.058, muzzle: 0.085, legW: 0.017 },
+  'Musk Ox':       { ground: 0.810, left: 0.180, right: 0.650, rumpTop: 0.310, shoulderTop: 0.270, bottom: 0.710, hx: 0.760, hy: 0.475, headRx: 0.092, headRy: 0.080, muzzle: 0.095, legW: 0.030 },
+  'Oryx':          { ground: 0.840, left: 0.230, right: 0.620, rumpTop: 0.390, shoulderTop: 0.360, bottom: 0.630, hx: 0.760, hy: 0.310, headRx: 0.068, headRy: 0.060, muzzle: 0.090, legW: 0.017 },
+  'Water Buffalo': { ground: 0.810, left: 0.170, right: 0.640, rumpTop: 0.350, shoulderTop: 0.320, bottom: 0.690, hx: 0.755, hy: 0.520, headRx: 0.096, headRy: 0.075, muzzle: 0.115, legW: 0.028 },
+  'Wildebeest':    { ground: 0.830, left: 0.220, right: 0.620, rumpTop: 0.450, shoulderTop: 0.280, bottom: 0.650, hx: 0.755, hy: 0.460, headRx: 0.085, headRy: 0.073, muzzle: 0.115, legW: 0.021 },
+  'Yak':           { ground: 0.810, left: 0.180, right: 0.640, rumpTop: 0.330, shoulderTop: 0.260, bottom: 0.710, hx: 0.750, hy: 0.500, headRx: 0.090, headRy: 0.078, muzzle: 0.100, legW: 0.029 },
+};
+
+function mammalEHorn(c: Ctx, path: Path2D, width: number, bone = '#d8c69b'): void {
+  c.lineCap = 'round'; c.lineJoin = 'round';
+  c.strokeStyle = 'rgba(47,39,33,0.88)'; c.lineWidth = width + S * 0.010; c.stroke(path);
+  c.strokeStyle = bone; c.lineWidth = width; c.stroke(path);
+  c.strokeStyle = 'rgba(255,247,216,0.42)'; c.lineWidth = Math.max(1.8, width * 0.22); c.stroke(path);
+}
+
+function mammalEHoofSplit(c: Ctx, x: number, groundY: number, scale = 1): void {
+  c.strokeStyle = 'rgba(25,23,23,0.88)'; c.lineWidth = Math.max(1.8, S * 0.005 * scale); c.lineCap = 'round';
+  c.beginPath(); c.moveTo(x + S * 0.004 * scale, groundY - S * 0.022); c.lineTo(x + S * 0.006 * scale, groundY - S * 0.004); c.stroke();
+}
+
+function faunaResetBovidE(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: MammalEPlan): void {
+  const cfg = MAMMAL_E_GEOM[plan], p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0xE41D ^ nameSeedQ(plan)) >>> 0));
+  const groundY = S * cfg.ground, left = S * cfg.left, right = S * cfg.right;
+  const rumpTop = S * cfg.rumpTop, shoulderTop = S * cfg.shoulderTop, bodyBottom = S * cfg.bottom;
+  const hx = S * cfg.hx, hy = S * cfg.hy, headRx = S * cfg.headRx, headRy = S * cfg.headRy;
+  const muzzleLen = S * cfg.muzzle, legW = S * cfg.legW;
+  const shaggy = plan === 'Musk Ox' || plan === 'Yak';
+  const lowHead = shaggy || plan === 'Buffalo' || plan === 'Gaur' || plan === 'Water Buffalo' || plan === 'Wildebeest';
+  const broadHead = lowHead || plan === 'Cow';
+
+  mammalBGround(c, S * 0.49, groundY + S * 0.015, S * (shaggy ? 0.34 : 0.30));
+  const total = new Path2D();
+
+  /* Filled tail mass, rooted under the rump.  A line with a dot on its end was
+     exactly why Cow, Wildebeest and Yak lost their tail identity at 132px. */
+  const tail = new Path2D();
+  if (plan !== 'Musk Ox') {
+    const rootY = rumpTop + (bodyBottom - rumpTop) * 0.46;
+    const plume = plan === 'Yak' || plan === 'Wildebeest';
+    const tipX = left - S * (plume ? 0.155 : 0.105), tipY = groundY - S * (plume ? 0.055 : 0.030);
+    const thick = S * (plan === 'Yak' ? 0.047 : plan === 'Wildebeest' ? 0.038 : 0.021);
+    tail.moveTo(left + S * 0.010, rootY - thick * 0.72);
+    tail.bezierCurveTo(left - S * 0.045, rootY - thick, tipX + S * 0.040, tipY - thick * 0.65, tipX, tipY);
+    tail.quadraticCurveTo(tipX - thick * 0.25, tipY + thick * 0.52, tipX + thick * 0.58, tipY + thick * 0.72);
+    tail.bezierCurveTo(tipX + S * 0.060, tipY + thick * 0.72, left - S * 0.030, rootY + thick * 0.82, left + S * 0.014, rootY + thick * 0.50);
+    tail.closePath(); total.addPath(tail);
+  }
+
+  const body = new Path2D();
+  body.moveTo(left, bodyBottom - S * 0.045);
+  body.bezierCurveTo(left - S * 0.020, rumpTop + S * 0.070, left + S * 0.050, rumpTop, left + S * 0.115, rumpTop);
+  body.bezierCurveTo(left + S * 0.230, rumpTop - S * 0.012, right - S * 0.085, shoulderTop - S * 0.012, right, shoulderTop + S * 0.038);
+  body.bezierCurveTo(right + S * 0.030, shoulderTop + S * 0.105, right + S * 0.012, bodyBottom - S * 0.010, right - S * 0.030, bodyBottom + S * 0.014);
+  body.bezierCurveTo(right - S * 0.145, bodyBottom + S * (broadHead ? 0.038 : 0.024), left + S * 0.080, bodyBottom + S * 0.030, left, bodyBottom - S * 0.045);
+  body.closePath(); total.addPath(body);
+
+  const leg = (x: number, hind: boolean, far: boolean): Path2D => {
+    const q = new Path2D(), w = legW * (far ? 0.78 : 1), y0 = bodyBottom - S * 0.045;
+    const bend = x + S * (hind ? -0.012 : 0.010), ankle = bend + S * (hind ? 0.006 : 0.012);
+    q.moveTo(x - w, y0);
+    q.bezierCurveTo(x - w * 1.05, y0 + S * 0.060, bend - w * 0.70, groundY - S * 0.090, ankle - w * 0.50, groundY - S * 0.036);
+    q.lineTo(ankle - w * 0.92, groundY - S * 0.012);
+    q.quadraticCurveTo(ankle + w * 0.15, groundY + S * 0.003, ankle + w * 1.45, groundY - S * 0.010);
+    q.lineTo(ankle + w * 0.62, groundY - S * 0.039);
+    q.bezierCurveTo(bend + w * 0.72, groundY - S * 0.092, x + w * 1.10, y0 + S * 0.050, x + w, y0);
+    q.closePath(); return q;
+  };
+  const legX = [left + S * 0.075, left + S * 0.140, right - S * 0.105, right - S * 0.045];
+  const legs = legX.map((x, i) => leg(x, i < 2, i === 0 || i === 2));
+  for (const q of legs) total.addPath(q);
+
+  const neck = new Path2D();
+  neck.moveTo(right - S * 0.090, shoulderTop + S * 0.016);
+  neck.bezierCurveTo(right + S * 0.020, shoulderTop - S * 0.018, hx - headRx * 0.88, hy - headRy * 0.72, hx - headRx * 0.46, hy - headRy * 0.48);
+  neck.lineTo(hx - headRx * 0.36, hy + headRy * 0.78);
+  neck.bezierCurveTo(right + S * 0.020, bodyBottom - S * 0.012, right - S * 0.055, bodyBottom + S * 0.005, right - S * 0.090, shoulderTop + S * 0.016);
+  neck.closePath(); total.addPath(neck);
+
+  const head = new Path2D();
+  if (plan === 'Hartebeest') {
+    head.ellipse(hx, hy, headRx, headRy, 0.20, 0, TAU);
+  } else {
+    head.ellipse(hx, hy, headRx, headRy, lowHead ? 0.10 : -0.04, 0, TAU);
+  }
+  total.addPath(head);
+  const muzzle = new Path2D();
+  const muzzleTop = hy - headRy * (plan === 'Hartebeest' ? 0.11 : 0.18);
+  muzzle.moveTo(hx + headRx * 0.10, muzzleTop);
+  muzzle.bezierCurveTo(hx + headRx * 0.62, muzzleTop - headRy * 0.06, hx + muzzleLen * 0.86, hy - headRy * 0.10, hx + muzzleLen, hy + headRy * 0.02);
+  muzzle.quadraticCurveTo(hx + muzzleLen * 1.03, hy + headRy * (broadHead ? 0.42 : 0.28), hx + headRx * 0.42, hy + headRy * (broadHead ? 0.55 : 0.43));
+  muzzle.quadraticCurveTo(hx + headRx * 0.12, hy + headRy * 0.38, hx + headRx * 0.10, muzzleTop);
+  muzzle.closePath(); total.addPath(muzzle);
+
+  const ears: Path2D[] = [];
+  if (plan === 'Buffalo') {
+    for (const side of [-1, 1]) {
+      const ear = new Path2D(), bx = hx - headRx * 0.40 + side * headRx * 0.34, by = hy - headRy * 0.34;
+      ear.moveTo(bx, by); ear.bezierCurveTo(bx + side * S * 0.075, by - S * 0.008, bx + side * S * 0.082, by + S * 0.060, bx + side * S * 0.036, by + S * 0.095);
+      ear.bezierCurveTo(bx + side * S * 0.005, by + S * 0.075, bx - side * S * 0.012, by + S * 0.018, bx, by); ear.closePath(); ears.push(ear); total.addPath(ear);
+    }
+  } else if (plan === 'Kudu') {
+    for (const side of [-1, 1]) {
+      const ear = new Path2D(); ear.ellipse(hx - headRx * 0.42 + side * S * 0.050, hy - headRy * 0.50, S * 0.077, S * 0.043, side * 0.18, 0, TAU); ears.push(ear); total.addPath(ear);
+    }
+  } else {
+    const earWide = plan === 'Cow' ? S * 0.060 : plan === 'Eland' || plan === 'Gazelle' || plan === 'Impala' ? S * 0.041 : S * 0.032;
+    const earTall = plan === 'Cow' ? S * 0.023 : plan === 'Eland' || plan === 'Gazelle' || plan === 'Impala' ? S * 0.029 : S * 0.022;
+    for (const side of [-1, 1]) {
+      const ear = new Path2D();
+      ear.ellipse(hx - headRx * 0.42 + side * headRx * 0.34, hy - headRy * 0.70, earWide, earTall, side * (plan === 'Cow' ? 0.05 : 0.28), 0, TAU);
+      ears.push(ear); total.addPath(ear);
+    }
+  }
+
+  const dewlap = new Path2D();
+  const hasDewlap = plan === 'Buffalo' || plan === 'Cow' || plan === 'Eland' || plan === 'Gaur';
+  if (hasDewlap) {
+    const drop = S * (plan === 'Buffalo' ? 0.170 : plan === 'Eland' ? 0.145 : plan === 'Gaur' ? 0.120 : 0.105);
+    dewlap.moveTo(hx - headRx * 0.52, hy + headRy * 0.42);
+    dewlap.bezierCurveTo(hx - S * 0.060, hy + drop * 0.70, right + S * 0.015, hy + drop, right - S * 0.020, bodyBottom - S * 0.010);
+    dewlap.bezierCurveTo(right - S * 0.055, bodyBottom - S * 0.035, right - S * 0.035, shoulderTop + S * 0.095, hx - headRx * 0.52, hy + headRy * 0.42);
+    dewlap.closePath(); total.addPath(dewlap);
+  }
+
+  const skirt = new Path2D();
+  if (shaggy) {
+    skirt.moveTo(left + S * 0.010, rumpTop + S * 0.090);
+    skirt.lineTo(right - S * 0.010, shoulderTop + S * 0.105);
+    const teeth = 15;
+    for (let i = teeth; i >= 0; i--) {
+      const t = i / teeth, x = left + S * 0.015 + t * (right - left - S * 0.030);
+      const y = groundY - S * (0.015 + ((i * 7) % 4) * 0.008);
+      skirt.lineTo(x, y);
+    }
+    skirt.closePath(); total.addPath(skirt);
+  }
+
+  const parts: Path2D[] = [];
+  if (plan !== 'Musk Ox') parts.push(tail);
+  parts.push(legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck);
+  if (hasDewlap) parts.push(dewlap);
+  if (shaggy) parts.push(skirt);
+  parts.push(head, muzzle, ...ears);
+  mammalBFill(c, parts, p, left - S * 0.16, Math.min(rumpTop, shoulderTop), hx + muzzleLen, groundY);
+  mammalCFurGrain(c, total, r, left - S * 0.05, Math.min(rumpTop, shoulderTop), hx + muzzleLen, bodyBottom,
+    shaggy ? 105 : broadHead ? 68 : 48, 'rgba(255,238,204,0.20)', 'rgba(45,34,29,0.19)');
+
+  /* Exact-name coat and limb signatures. */
+  if (plan === 'Cow') {
+    c.save(); c.clip(body);
+    softMark(c, left + S * 0.080, rumpTop + S * 0.095, S * 0.090, S * 0.080, '58,49,45', 0.88, -0.20);
+    softMark(c, left + S * 0.235, shoulderTop + S * 0.090, S * 0.075, S * 0.105, '67,55,49', 0.82, 0.24);
+    softMark(c, right - S * 0.035, shoulderTop + S * 0.135, S * 0.055, S * 0.080, '45,41,40', 0.78, -0.12);
+    c.restore();
+    const udder = new Path2D(); udder.ellipse(left + S * 0.145, bodyBottom + S * 0.030, S * 0.067, S * 0.052, 0.03, 0, TAU);
+    c.fillStyle = '#d9a0a1'; c.fill(udder); c.fillStyle = '#aa6f75';
+    for (const x of [left + S * 0.112, left + S * 0.143, left + S * 0.174]) { c.beginPath(); c.roundRect(x, bodyBottom + S * 0.054, S * 0.012, S * 0.045, S * 0.005); c.fill(); }
+  } else if (plan === 'Gazelle') {
+    c.save(); c.clip(body); c.strokeStyle = '#f1e8d4'; c.lineWidth = S * 0.090; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(left + S * 0.035, bodyBottom - S * 0.018); c.lineTo(right - S * 0.035, bodyBottom - S * 0.025); c.stroke();
+    c.strokeStyle = '#38251c'; c.lineWidth = S * 0.029; c.beginPath(); c.moveTo(left + S * 0.015, rumpTop + S * 0.108); c.lineTo(right - S * 0.015, shoulderTop + S * 0.113); c.stroke(); c.restore();
+  } else if (plan === 'Impala') {
+    c.save(); c.clip(body); c.fillStyle = '#eee9dc'; c.beginPath(); c.ellipse(left + S * 0.052, rumpTop + S * 0.095, S * 0.080, S * 0.100, -0.06, 0, TAU); c.fill();
+    c.strokeStyle = '#211e1d'; c.lineWidth = S * 0.018; c.lineCap = 'round';
+    for (const x of [left + S * 0.030, left + S * 0.070]) { c.beginPath(); c.moveTo(x, rumpTop + S * 0.038); c.lineTo(x + S * 0.010, rumpTop + S * 0.165); c.stroke(); } c.restore();
+    c.fillStyle = '#1e1c1b'; c.beginPath(); c.moveTo(legX[1]! - S * 0.010, groundY - S * 0.092); c.lineTo(legX[1]! + S * 0.020, groundY - S * 0.068); c.lineTo(legX[1]! - S * 0.005, groundY - S * 0.048); c.closePath(); c.fill();
+  } else if (plan === 'Kudu') {
+    c.save(); c.clip(body); c.strokeStyle = 'rgba(245,241,225,0.88)'; c.lineWidth = S * 0.010; c.lineCap = 'round';
+    for (let i = 0; i < 8; i++) { const x = left + S * (0.070 + i * 0.035); c.beginPath(); c.moveTo(x, rumpTop + S * 0.025); c.lineTo(x + S * 0.012, bodyBottom - S * 0.035); c.stroke(); } c.restore();
+  } else if (plan === 'Oryx') {
+    c.save(); c.clip(body); c.fillStyle = '#f1eadb'; c.fillRect(left, bodyBottom - S * 0.050, right - left, S * 0.080); c.restore();
+  } else if (plan === 'Wildebeest') {
+    c.save(); c.clip(body); c.strokeStyle = 'rgba(35,32,32,0.78)'; c.lineWidth = S * 0.014; c.lineCap = 'round';
+    for (let i = 0; i < 6; i++) { const x = right - S * (0.040 + i * 0.042); c.beginPath(); c.moveTo(x, shoulderTop + S * 0.040); c.lineTo(x - S * 0.020, bodyBottom - S * 0.055); c.stroke(); } c.restore();
+  }
+
+  if (plan === 'Gaur') {
+    for (const q of legs) { c.save(); c.clip(q); c.fillStyle = '#eee8da'; c.fillRect(0, groundY - S * 0.115, S, S * 0.125); c.restore(); }
+  } else if (plan === 'Oryx') {
+    for (const q of legs) { c.save(); c.clip(q); c.fillStyle = '#17191b'; c.fillRect(0, groundY - S * 0.145, S, S * 0.055); c.fillRect(0, groundY - S * 0.055, S, S * 0.065); c.restore(); }
+  }
+
+  if (shaggy) {
+    c.save(); c.clip(skirt); c.strokeStyle = plan === 'Musk Ox' ? 'rgba(35,26,22,0.52)' : 'rgba(30,25,24,0.48)';
+    c.lineWidth = S * 0.007; c.lineCap = 'round';
+    for (let i = 0; i < 24; i++) { const x = left + S * 0.015 + i * (right - left - S * 0.030) / 23; const y0 = rumpTop + S * (0.100 + (i % 3) * 0.012); c.beginPath(); c.moveTo(x, y0); c.lineTo(x + S * ((i % 2) ? 0.010 : -0.008), groundY - S * (0.025 + (i % 4) * 0.006)); c.stroke(); } c.restore();
+  }
+
+  /* Horns are broad, attached organs.  Their dark under-stroke seats every root
+     into the forehead instead of leaving a pale floating line. */
+  if (plan === 'Buffalo') {
+    const a = new Path2D(); a.moveTo(hx - S * 0.010, hy - S * 0.060); a.bezierCurveTo(hx - S * 0.090, hy - S * 0.115, hx - S * 0.170, hy - S * 0.045, hx - S * 0.205, hy + S * 0.025);
+    const b = new Path2D(); b.moveTo(hx + S * 0.018, hy - S * 0.055); b.bezierCurveTo(hx + S * 0.080, hy - S * 0.095, hx + S * 0.135, hy - S * 0.035, hx + S * 0.155, hy + S * 0.020);
+    mammalEHorn(c, a, S * 0.025); mammalEHorn(c, b, S * 0.021, '#cfbb8f');
+    c.fillStyle = '#a99269'; c.beginPath(); c.ellipse(hx, hy - S * 0.055, S * 0.078, S * 0.040, -0.02, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(57,47,39,0.72)'; c.lineWidth = S * 0.008; c.beginPath(); c.moveTo(hx - S * 0.060, hy - S * 0.055); c.lineTo(hx + S * 0.060, hy - S * 0.055); c.stroke();
+  } else if (plan === 'Cow') {
+    for (const side of [-1, 1]) { const h = new Path2D(); h.moveTo(hx + side * S * 0.030, hy - S * 0.052); h.quadraticCurveTo(hx + side * S * 0.075, hy - S * 0.095, hx + side * S * 0.105, hy - S * 0.070); mammalEHorn(c, h, S * 0.012); }
+  } else if (plan === 'Eland') {
+    for (const side of [-1, 1]) { const x = hx + side * S * 0.025, h = new Path2D(); h.moveTo(x, hy - S * 0.045); h.quadraticCurveTo(x + side * S * 0.012, hy - S * 0.145, x + side * S * 0.004, hy - S * 0.255); mammalEHorn(c, h, S * 0.014); c.strokeStyle = '#675542'; c.lineWidth = 2.2; for (let i = 1; i < 7; i++) { const y = hy - S * (0.055 + i * 0.028); c.beginPath(); c.moveTo(x - S * 0.014, y); c.lineTo(x + S * 0.014, y + S * 0.008); c.stroke(); } }
+  } else if (plan === 'Gaur') {
+    for (const side of [-1, 1]) { const h = new Path2D(); h.moveTo(hx + side * S * 0.025, hy - S * 0.050); h.bezierCurveTo(hx + side * S * 0.085, hy - S * 0.075, hx + side * S * 0.100, hy - S * 0.155, hx + side * S * 0.068, hy - S * 0.190); mammalEHorn(c, h, S * 0.018, '#d8c59a'); }
+  } else if (plan === 'Gazelle' || plan === 'Impala') {
+    const impala = plan === 'Impala';
+    for (const side of [-1, 1]) { const x = hx + side * S * 0.018, h = new Path2D(); h.moveTo(x, hy - S * 0.040); h.bezierCurveTo(x + side * S * (impala ? 0.075 : 0.058), hy - S * 0.105, x + side * S * (impala ? 0.088 : 0.070), hy - S * 0.205, x + side * S * 0.030, hy - S * (impala ? 0.255 : 0.245)); mammalEHorn(c, h, S * (impala ? 0.015 : 0.012), '#b79a6b'); c.strokeStyle = '#5a4936'; c.lineWidth = 2; for (let i = 1; i < 7; i++) { const y = hy - S * (0.055 + i * (impala ? 0.030 : 0.029)); c.beginPath(); c.moveTo(x - S * 0.012, y); c.lineTo(x + S * 0.016, y + S * 0.006); c.stroke(); } }
+  } else if (plan === 'Hartebeest') {
+    c.fillStyle = '#8f7557'; c.beginPath(); c.roundRect(hx - S * 0.052, hy - S * 0.085, S * 0.104, S * 0.048, S * 0.012); c.fill();
+    for (const side of [-1, 1]) { const h = new Path2D(); h.moveTo(hx + side * S * 0.035, hy - S * 0.070); h.lineTo(hx + side * S * 0.090, hy - S * 0.135); h.lineTo(hx + side * S * 0.082, hy - S * 0.225); h.lineTo(hx + side * S * 0.035, hy - S * 0.245); mammalEHorn(c, h, S * 0.014, '#bea77e'); }
+  } else if (plan === 'Kudu') {
+    const rear = new Path2D(); rear.moveTo(hx - S * 0.028, hy - S * 0.045); rear.bezierCurveTo(hx - S * 0.115, hy - S * 0.090, hx + S * 0.010, hy - S * 0.145, hx - S * 0.075, hy - S * 0.190); rear.bezierCurveTo(hx - S * 0.135, hy - S * 0.225, hx - S * 0.010, hy - S * 0.270, hx - S * 0.055, hy - S * 0.275);
+    const fore = new Path2D(); fore.moveTo(hx + S * 0.012, hy - S * 0.045); fore.bezierCurveTo(hx + S * 0.095, hy - S * 0.095, hx - S * 0.025, hy - S * 0.155, hx + S * 0.065, hy - S * 0.205); fore.bezierCurveTo(hx + S * 0.120, hy - S * 0.240, hx + S * 0.010, hy - S * 0.285, hx + S * 0.050, hy - S * 0.280);
+    mammalEHorn(c, rear, S * 0.017, '#c4aa79'); mammalEHorn(c, fore, S * 0.015, '#d4bb88');
+  } else if (plan === 'Musk Ox') {
+    const a = new Path2D(); a.moveTo(hx - S * 0.010, hy - S * 0.060); a.bezierCurveTo(hx - S * 0.100, hy - S * 0.080, hx - S * 0.145, hy + S * 0.010, hx - S * 0.155, hy + S * 0.075); a.quadraticCurveTo(hx - S * 0.175, hy + S * 0.010, hx - S * 0.205, hy - S * 0.010);
+    const b = new Path2D(); b.moveTo(hx + S * 0.010, hy - S * 0.060); b.bezierCurveTo(hx + S * 0.090, hy - S * 0.075, hx + S * 0.135, hy + S * 0.015, hx + S * 0.145, hy + S * 0.070); b.quadraticCurveTo(hx + S * 0.165, hy + S * 0.010, hx + S * 0.190, hy - S * 0.010);
+    mammalEHorn(c, a, S * 0.026); mammalEHorn(c, b, S * 0.023);
+    c.fillStyle = '#aa9066'; c.beginPath(); c.ellipse(hx, hy - S * 0.055, S * 0.075, S * 0.038, 0, 0, TAU); c.fill();
+  } else if (plan === 'Oryx') {
+    const a = new Path2D(); a.moveTo(hx - S * 0.025, hy - S * 0.045); a.lineTo(hx - S * 0.330, hy - S * 0.265);
+    const b = new Path2D(); b.moveTo(hx + S * 0.012, hy - S * 0.042); b.lineTo(hx - S * 0.255, hy - S * 0.280);
+    mammalEHorn(c, a, S * 0.012, '#c9b58a'); mammalEHorn(c, b, S * 0.010, '#dfcca1');
+  } else if (plan === 'Water Buffalo') {
+    const rear = new Path2D(); rear.moveTo(hx - S * 0.025, hy - S * 0.055); rear.bezierCurveTo(hx - S * 0.135, hy - S * 0.175, hx - S * 0.315, hy - S * 0.175, hx - S * 0.455, hy - S * 0.305);
+    const fore = new Path2D(); fore.moveTo(hx + S * 0.018, hy - S * 0.050); fore.bezierCurveTo(hx - S * 0.080, hy - S * 0.215, hx - S * 0.290, hy - S * 0.250, hx - S * 0.400, hy - S * 0.390);
+    mammalEHorn(c, rear, S * 0.027, '#c7b891'); mammalEHorn(c, fore, S * 0.022, '#ded0aa');
+  } else if (plan === 'Wildebeest') {
+    const a = new Path2D(); a.moveTo(hx - S * 0.012, hy - S * 0.055); a.lineTo(hx - S * 0.160, hy - S * 0.075); a.quadraticCurveTo(hx - S * 0.205, hy - S * 0.090, hx - S * 0.215, hy - S * 0.160);
+    const b = new Path2D(); b.moveTo(hx + S * 0.015, hy - S * 0.052); b.lineTo(hx + S * 0.115, hy - S * 0.070); b.quadraticCurveTo(hx + S * 0.150, hy - S * 0.085, hx + S * 0.158, hy - S * 0.145);
+    mammalEHorn(c, a, S * 0.018, '#a99472'); mammalEHorn(c, b, S * 0.016, '#c2af88');
+  } else {
+    for (const side of [-1, 1]) { const h = new Path2D(); h.moveTo(hx + side * S * 0.025, hy - S * 0.050); h.bezierCurveTo(hx + side * S * 0.100, hy - S * 0.090, hx + side * S * 0.120, hy - S * 0.195, hx + side * S * 0.080, hy - S * 0.250); mammalEHorn(c, h, S * 0.017, '#c5b183'); }
+  }
+
+  for (const ear of ears) mammalDInnerEar(c, ear, plan === 'Kudu' ? 'rgba(80,49,48,0.66)' : 'rgba(53,37,35,0.54)');
+  if (plan === 'Buffalo') {
+    c.strokeStyle = '#d7c09a'; c.lineWidth = 2.2; c.lineCap = 'round';
+    for (const side of [-1, 1]) for (let i = 0; i < 5; i++) { const x = hx - headRx * 0.35 + side * (S * 0.030 + i * S * 0.010), y = hy + S * (0.026 + i * 0.010); c.beginPath(); c.moveTo(x, y); c.lineTo(x + side * S * 0.020, y + S * 0.018); c.stroke(); }
+  }
+
+  /* Head signatures come last so masks and wet muzzles remain readable after
+     downsampling rather than dissolving into the coat grain. */
+  if (plan === 'Gaur') {
+    c.fillStyle = '#c9c8bd'; c.beginPath(); c.ellipse(hx, hy - headRy * 0.43, headRx * 0.52, headRy * 0.40, -0.03, 0, TAU); c.fill();
+  } else if (plan === 'Oryx') {
+    c.strokeStyle = '#18191b'; c.lineWidth = S * 0.028; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(hx - headRx * 0.28, hy - headRy * 0.60); c.lineTo(hx + headRx * 0.48, hy + headRy * 0.18); c.stroke();
+    c.beginPath(); c.moveTo(hx + headRx * 0.10, hy - headRy * 0.36); c.lineTo(hx + muzzleLen * 0.82, hy + headRy * 0.03); c.stroke();
+  }
+
+  if (plan === 'Wildebeest') {
+    c.fillStyle = '#2b292a';
+    const mane = new Path2D(); mane.moveTo(right - S * 0.050, shoulderTop + S * 0.010); for (let i = 0; i < 9; i++) mane.lineTo(right + S * (0.012 + (i % 2) * 0.018), shoulderTop + S * (0.025 + i * 0.035)); mane.lineTo(right - S * 0.010, bodyBottom - S * 0.030); mane.closePath(); c.fill(mane);
+    const beard = new Path2D(); beard.moveTo(hx + headRx * 0.10, hy + headRy * 0.35); beard.lineTo(hx + S * 0.020, hy + S * 0.175); beard.lineTo(hx + S * 0.075, hy + S * 0.105); beard.lineTo(hx + muzzleLen * 0.70, hy + headRy * 0.34); beard.closePath(); c.fill(beard);
+  }
+
+  const muzzleFill = plan === 'Water Buffalo' ? '#36383a' : plan === 'Buffalo' || plan === 'Gaur' || plan === 'Wildebeest' || plan === 'Yak' || plan === 'Musk Ox' ? mammalBTone(p, 0.66) : mammalBTone(p, 1.16);
+  c.fillStyle = muzzleFill; c.beginPath(); c.ellipse(hx + muzzleLen * 0.78, hy + headRy * 0.16, muzzleLen * (broadHead ? 0.34 : 0.27), headRy * (broadHead ? 0.42 : 0.27), 0.04, 0, TAU); c.fill();
+  mammalCProfileEye(c, hx + headRx * 0.28, hy - headRy * 0.20, S * (broadHead ? 0.0105 : 0.0088), '#8a5c2c');
+  if (broadHead) {
+    c.fillStyle = '#17191b'; for (const y of [-1, 1]) { c.beginPath(); c.ellipse(hx + muzzleLen * 0.93, hy + headRy * (0.12 + y * 0.12), S * 0.011, S * 0.007, 0.06, 0, TAU); c.fill(); }
+  } else {
+    mammalCNose(c, hx + muzzleLen, hy + headRy * 0.04, S * 0.012, S * 0.0085);
+  }
+
+  for (let i = 0; i < legs.length; i++) mammalEHoofSplit(c, legX[i]!, groundY, plan === 'Gazelle' || plan === 'Impala' ? 0.72 : 1);
+}
+
+function faunaMammalE(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: MammalEPlan): void {
+  switch (plan) {
+    case 'Buffalo': case 'Cow': case 'Eland': case 'Gaur': case 'Gazelle': case 'Hartebeest':
+    case 'Impala': case 'Kudu': case 'Musk Ox': case 'Oryx': case 'Water Buffalo': case 'Wildebeest': case 'Yak':
+      faunaResetBovidE(c, g, p0, spec, plan); return;
+    default: { const exhaustive: never = plan; return exhaustive; }
+  }
+}
+
+function faunaMammalD(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: MammalDPlan): void {
+  switch (plan) {
+    case 'Badger': case 'Fisher': case 'Marten': case 'Mink': case 'Wolverine':
+      faunaResetMustelidD(c, g, p0, spec, plan); return;
+    case 'Civet': case 'Mongoose':
+      faunaResetViverridD(c, g, p0, spec, plan); return;
+    case 'Otter': case 'River Otter': case 'Giant Otter':
+      faunaResetOtterD(c, g, p0, spec, plan); return;
+    case 'Sea Otter': faunaResetSeaOtterD(c, g, p0, spec); return;
+    case 'Capybara': faunaResetCapybaraD(c, g, p0, spec); return;
+    case 'Hyrax': faunaResetHyraxD(c, g, p0, spec); return;
+    case 'Mara': faunaResetMaraD(c, g, p0, spec); return;
+    case 'Marsh Rodent': faunaResetMarshRodentD(c, g, p0, spec); return;
+    case 'Mole': faunaResetMoleD(c, g, p0, spec); return;
+    default: { const exhaustive: never = plan; return exhaustive; }
+  }
+}
+
+function faunaMammalC(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<QuadSpec['mammalCPlan']>, name: string): void {
+  switch (plan) {
+    case 'canid-c1': faunaResetCanidC(c, g, p0, spec, name); return;
+    case 'procyonid-c1': faunaResetProcyonidC(c, g, p0, spec, name); return;
+    case 'marsupial-c1': faunaResetMarsupialC(c, g, p0, spec, name); return;
+    default: { const exhaustive: never = plan; return exhaustive; }
+  }
+}
+
 export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = ''): void {
+  if (spec.mammalEPlan) { faunaMammalE(c, g, p0, spec, spec.mammalEPlan); return; }
+  if (spec.mammalDPlan) { faunaMammalD(c, g, p0, spec, spec.mammalDPlan); return; }
+  if (spec.mammalCPlan) { faunaMammalC(c, g, p0, spec, spec.mammalCPlan, name); return; }
+  if (spec.mammalBPlan) { faunaMammalB(c, g, p0, spec, spec.mammalBPlan, name); return; }
+  if (spec.pinnipedPose) { faunaEaredPinniped(c, g, p0, spec, spec.pinnipedPose); return; }
+  if (spec.gliderPlan) { faunaGlider(c, g, p0, spec, spec.gliderPlan); return; }
   const r = mulberry32((((g.seed as number) ^ 0x9AD4 ^ nameSeedQ(name)) >>> 0));
   /* the species NAME varies real proportion, so two specs that happen to
      match cannot render the same animal — D-ART-20 applied back to wave 4,
@@ -480,7 +2806,8 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      the countershading and the rim light, and the seam is not fixed, it is
      unreachable. */
   const humpAt = (t: number): number => {
-    if (!spec.humps) return 0;
+    const shoulder = bodyH * (spec.shoulderHump ?? 0) * Math.exp(-(((t - 0.84) / 0.135) ** 2));
+    if (!spec.humps) return shoulder;
     /* ⚠ SUMMING TWO GAUSSIANS MERGES THEM. At width 0.155 the bactrian's pair
        overlapped in the middle and added to a single broad dome — one hump on
        the animal whose TWO humps are the only thing separating it from a
@@ -491,6 +2818,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     const w = two ? 0.115 : 0.155;
     let lift = 0;
     for (const hu of hxs) lift = Math.max(lift, Math.exp(-(((t - hu) / w) ** 2)));
+    lift += shoulder / (bodyH * (two ? 0.46 : 0.62));
     return bodyH * (two ? 0.46 : 0.62) * lift;   /* ★ POLISH — the dromedary hump reads taller */
   };
   const topY = (t: number): number => topYBase(t) - humpAt(t);
@@ -890,6 +3218,12 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       const legW2 = legW0 * (crouch > 0.9 ? 1.24 : 1) * (spec.pawScale ?? 1);
       c.fillStyle = dark(padK);
       c.beginPath(); c.ellipse(x, gy - legW2 * 0.22, legW2 * 1.06, legW2 * 0.44, 0, 0, TAU); c.fill();
+      if (spec.webbedFeet) {
+        c.fillStyle = `rgba(${Math.min(255, p.cr * 0.92 + 18) | 0},${Math.min(255, p.cg * 0.80 + 16) | 0},${Math.min(255, p.cb * 0.68 + 12) | 0},${0.92 * m})`;
+        c.beginPath(); c.moveTo(x - legW2 * 0.72, gy - legW2 * 0.11);
+        c.quadraticCurveTo(x, gy - legW2 * 0.62, x + legW2 * 0.76, gy - legW2 * 0.08);
+        c.lineTo(x + legW2 * 0.58, gy + legW2 * 0.12); c.lineTo(x - legW2 * 0.58, gy + legW2 * 0.12); c.closePath(); c.fill();
+      }
       c.fillStyle = dark(toeK);
       for (let i = -1; i <= 1; i++) {
         c.beginPath(); c.ellipse(x + i * legW2 * 0.44, gy - legW2 * 0.06, legW2 * 0.30, legW2 * 0.26, 0, 0, TAU); c.fill();
@@ -912,6 +3246,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       }
     } else if (foot === 'plantigrade') {
       /* a bear puts its heel down: a long sole with claws at the front */
+      const claw = spec.clawScale ?? 1;
       c.fillStyle = dark(0.48);
       c.beginPath();
       c.ellipse(x + legW * 0.24, gy - legW * 0.22, legW * (hind ? 1.05 : 0.86), legW * 0.40, 0, 0, TAU);
@@ -919,7 +3254,8 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       c.fillStyle = `rgba(238,232,216,${0.72 * m})`;
       for (let i = 0; i < 4; i++) {
         c.beginPath();
-        c.ellipse(x + legW * (0.62 + i * 0.16), gy - legW * 0.44, legW * 0.07, legW * 0.13, 0.5, 0, TAU);
+        c.ellipse(x + legW * (0.62 + i * 0.16), gy - legW * 0.44,
+          legW * 0.07 * claw, legW * 0.13 * claw, 0.5, 0, TAU);
         c.fill();
       }
     } else if (foot === 'claw') {
@@ -1027,7 +3363,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       if (coat === 'bands') coatBars(c, limb, r, lp, { count: 7, width: 1.15, phiTop: 1.62, phiEnd: -1.45, lean: 0.02, forkRate: 0, hard: true, rgb: spec.coatRgb ?? [18, 15, 16] });
       else if (coat === 'stripes') coatBars(c, limb, r, lp, { count: 5, width: 0.85, phiEnd: -0.95, forkRate: 0 });
       else if (coat === 'spots') coatSpots(c, limb, r, lp, { count: 20, size: 0.52, soft: 0.14, rgb: [24, 17, 10] });
-      else if (coat === 'rosettes') coatRosettes(c, limb, r, lp, { count: 7, size: 0.5 });
+      else if (coat === 'rosettes') coatRosettes(c, limb, r, lp, { count: 7, size: 0.5 * (spec.rosetteScale ?? 1) });
       else if (coat === 'patches') coatPatches(c, limb, r, lp, { nu: 4, nphi: 3, seam: 0.78, rgb: [126, 74, 26] });
       else if (coat === 'panda') coatBlocks(c, limb, lp, [{ u0: 0, u1: 1, phiLo: -1.6, phiHi: 1.7, rgb: '#15181e' }]);
     }
@@ -1130,7 +3466,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   const neckAng = 1.0026 * (0.10 + 0.90 * carryF);
   const neckReach = neckLen * 1.0208;
   const headX = shoulderX + neckReach * Math.cos(neckAng);
-  const headY = shoulderY - neckReach * Math.sin(neckAng);
+  const headY = shoulderY - neckReach * Math.sin(neckAng) + S * (spec.headDrop ?? 0);
   /* ★ WAVE 22b — A HEAD BELONGS TO THE ANIMAL'S LENGTH, not only its depth.
      Sized purely off bodyH, a sand cat got a 28px skull on a 210px body — 13%,
      where a real carnivore's head is about a fifth of its body. Long shallow
@@ -1183,8 +3519,8 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   if (coat === 'patches') coatPatches(c, neckTube, r, p, { nu: 7, nphi: 4, seam: 0.78, rgb: [126, 74, 26] });
   else if (coat === 'stripes') coatBars(c, neckTube, r, p, { count: 7, width: 0.9, phiEnd: -0.9, forkRate: 0.1 });
   else if (coat === 'bands') coatBars(c, neckTube, r, p, { count: 9, width: 1.1, phiEnd: -1.4, lean: 0.02, forkRate: 0, hard: true, rgb: [18, 15, 16] });
-  else if (coat === 'spots') coatSpots(c, neckTube, r, p, { count: 34, size: 0.8, soft: 0.13, rgb: [24, 17, 10] });
-  else if (coat === 'rosettes') coatRosettes(c, neckTube, r, p, { count: 12, size: 0.8,
+  else if (coat === 'spots') coatSpots(c, neckTube, r, p, { count: 34, size: 0.8 * (spec.spotScale ?? 1), soft: 0.13, rgb: [24, 17, 10] });
+  else if (coat === 'rosettes') coatRosettes(c, neckTube, r, p, { count: 12, size: 0.8 * (spec.rosetteScale ?? 1),
     ...(spec.rosetteChain ? { chain: true } : {}) });
   else if (coat === 'shaggy') coatShaggy(c, neckTube, r, p, { count: 46 });
   c.restore();
@@ -1208,11 +3544,11 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      prototype for the graphics upgrade; MAT_DETAIL is the cost dial. */
   if (!spec.alien?.skin) coatMaterial(c, body, r, p, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL });
   if (coat === 'spots') {
-    coatSpots(c, body, r, p, { count: 150, size: 0.92, soft: 0.13, rgb: [24, 17, 10] });
+    coatSpots(c, body, r, p, { count: 150, size: 0.92 * (spec.spotScale ?? 1), soft: 0.13, rgb: [24, 17, 10] });
   } else if (coat === 'fawn') {
     coatSpots(c, body, r, p, { count: 60, size: 0.8, soft: 0.4, rgb: [246, 242, 228], phiLo: -0.4, phiHi: 1.3 });
   } else if (coat === 'rosettes') {
-    coatRosettes(c, body, r, p, { count: spec.rosetteChain ? 22 : 38, core: name === 'Jaguar',
+    coatRosettes(c, body, r, p, { count: spec.rosetteChain ? 22 : 38, core: name === 'Jaguar', size: spec.rosetteScale ?? 1,
       ...(spec.rosetteChain ? { chain: true } : {}) });
   } else if (coat === 'stripes') {
     /* ★ THE TIGER. Fifteen "stripes" were fifteen COLUMNS OF FIVE SOFT DOTS,
@@ -1304,6 +3640,23 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     }
   }
   c.restore();
+  if (name === 'Striped Hyena') {
+    /* A striped hyena's markings are sparse vertical flank bars, not tiger
+       bands wrapping the whole body. This deliberately narrow named pass keeps
+       every striped felid/equid on its own established coat route. */
+    c.save(); c.beginPath(); body.trace(c, 56); c.clip();
+    c.strokeStyle = 'rgba(56,44,34,0.38)'; c.lineCap = 'round';
+    for (let i = 0; i < 5; i++) {
+      const u = 0.24 + i * 0.115;
+      const a2 = AX(u), rr = RAD(u);
+      c.lineWidth = Math.max(1.8, rr * 0.065);
+      c.beginPath();
+      c.moveTo(a2[0] - rr * 0.18, a2[1] - rr * 0.62);
+      c.quadraticCurveTo(a2[0] - rr * 0.12, a2[1], a2[0] - rr * 0.02, a2[1] + rr * 0.54);
+      c.stroke();
+    }
+    c.restore();
+  }
   if (spec.alien?.sail) {
     alienSail(c, cx + bodyW * 0.05, topY(0.5) + bodyH * 0.05, bodyW * 0.62, bodyH * 1.5, p);
   }
@@ -1392,6 +3745,37 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
         c.beginPath(); c.moveTo(headX + (i - 2) * 2, headY - headR * 0.85);
         c.quadraticCurveTo(headX - headR * 0.35, headY - headR * 0.55 + i, headX - headR * (0.45 + mr2() * 0.2), headY - headR * 0.15); c.stroke();
       }
+    }
+  } else if (spec.mane === 'bison' || spec.mane === 'hyena') {
+    /* These are directional capes, not a lion's circular face ruff. Bison needs
+       a heavy head/hump curtain; a striped hyena needs a narrow upright ridge
+       over high shoulders. Both are opt-in named silhouettes. */
+    const bisonMane = spec.mane === 'bison';
+    const [withersX, withersY] = AX(0.84);
+    const [backX, backY] = AX(bisonMane ? 0.46 : 0.60);
+    const dark = `rgb(${Math.max(0, p.cr * (bisonMane ? 0.42 : 0.34)) | 0},${Math.max(0, p.cg * (bisonMane ? 0.40 : 0.34)) | 0},${Math.max(0, p.cb * (bisonMane ? 0.38 : 0.34)) | 0})`;
+    c.fillStyle = dark;
+    c.beginPath();
+    c.moveTo(backX, backY - bodyH * (bisonMane ? 0.16 : 0.10));
+    c.quadraticCurveTo(withersX - bodyW * 0.06, withersY - bodyH * (bisonMane ? 0.42 : 0.26),
+      headX - headR * 0.42, headY - headR * 0.24);
+    c.quadraticCurveTo(headX - headR * 0.56, headY + headR * (bisonMane ? 1.28 : 0.68),
+      withersX - bodyW * 0.04, withersY + bodyH * (bisonMane ? 0.74 : 0.20));
+    c.quadraticCurveTo(backX + bodyW * 0.10, backY + bodyH * (bisonMane ? 0.26 : 0.12),
+      backX, backY - bodyH * (bisonMane ? 0.16 : 0.10));
+    c.closePath(); c.fill();
+    const mr3 = mulberry32((((g.seed as number) ^ (bisonMane ? 0xB150 : 0x48EA)) >>> 0));
+    c.strokeStyle = `rgba(${Math.min(255, p.cr * 0.82) | 0},${Math.min(255, p.cg * 0.76) | 0},${Math.min(255, p.cb * 0.70) | 0},0.68)`;
+    c.lineCap = 'round';
+    const strokes = bisonMane ? 92 : 52;
+    for (let i = 0; i < strokes; i++) {
+      const t = i / Math.max(1, strokes - 1);
+      const sx = backX + (withersX - backX) * t + (mr3() - 0.5) * bodyH * 0.10;
+      const sy = backY - bodyH * (bisonMane ? 0.15 + 0.20 * Math.sin(t * Math.PI) : 0.09);
+      const len = bodyH * (bisonMane ? 0.20 + mr3() * 0.22 : 0.10 + mr3() * 0.11);
+      c.lineWidth = Math.max(1.5, bodyH * (bisonMane ? 0.030 : 0.020));
+      c.beginPath(); c.moveTo(sx, sy);
+      c.quadraticCurveTo(sx - bodyW * 0.04, sy + len * 0.42, sx - bodyW * 0.03, sy + len); c.stroke();
     }
   } else if (spec.mane) {
     const mr = headR * (spec.mane === 'lion' ? 2.05 : 1.45);
@@ -1505,10 +3889,25 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   if (coat === 'patches') coatPatches(c, head, r, p, { nu: 4, nphi: 3, seam: 0.76, rgb: [126, 74, 26] });
   else if (coat === 'stripes') coatBars(c, head, r, p, { count: 6, width: 0.75, phiEnd: -0.8, forkRate: 0 });
   else if (coat === 'spots') coatSpots(c, head, r, p, { count: 22, size: 0.62, soft: 0.16, rgb: [24, 17, 10] });
-  else if (coat === 'rosettes') coatRosettes(c, head, r, p, { count: 7, size: 0.6,
+  else if (coat === 'rosettes') coatRosettes(c, head, r, p, { count: 7, size: 0.6 * (spec.rosetteScale ?? 1),
     ...(spec.rosetteChain ? { chain: true } : {}) });
   else if (coat === 'shaggy') coatShaggy(c, head, r, p, { count: 34 });
   c.restore();
+  if (spec.muzzleHue) {
+    /* A bear's tan snout or a sloth bear's pale muzzle is a surface of the
+       existing skull, not a second head pasted onto it.  Clipping keeps the
+       named colour inside the species' own muzzle profile. */
+    const mp = head.pt(0.76, -0.08);
+    c.save(); c.beginPath(); head.trace(c, 52); c.clip();
+    const mg = c.createRadialGradient(mp[0] - skMuz * 0.22, mp[1] - skMuz * 0.18,
+      skMuz * 0.10, mp[0], mp[1], skMuz * 1.05);
+    mg.addColorStop(0, spec.muzzleHue);
+    mg.addColorStop(0.72, spec.muzzleHue);
+    mg.addColorStop(1, 'rgba(0,0,0,0)');
+    c.fillStyle = mg;
+    c.beginPath(); c.ellipse(mp[0], mp[1], skMuz * 1.06, skMuz * 0.72, ang, 0, TAU); c.fill();
+    c.restore();
+  }
   /* ★ WAVE 16 — THE CHEEK. Without a jowl the muzzle leaves the skull as a
      plank: the audit's words on animal after animal. A cat's broad cheek ruff,
      a horse's masseter, a bear's heavy jaw — all the same mass in different
@@ -1554,6 +3953,22 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       const tip = rp(back, down);
       c.beginPath(); c.moveTo(root[0], root[1]); c.lineTo(tip[0], tip[1]); c.stroke();
     }
+  }
+  if (spec.dewlap) {
+    /* A dewlap is a hanging throat fold attached to the jaw/neck junction. It
+       cannot be simulated by making the whole chest deeper without turning a
+       bovid into a barrel. */
+    const dk = spec.dewlap;
+    const throat = head.pt(0.26, -0.88);
+    const neckBase = headAxis(0.10);
+    c.fillStyle = `rgba(${Math.max(0, p.cr * 0.62) | 0},${Math.max(0, p.cg * 0.62) | 0},${Math.max(0, p.cb * 0.58) | 0},0.92)`;
+    c.beginPath();
+    c.moveTo(throat[0] - headR * 0.12, throat[1] - headR * 0.04);
+    c.quadraticCurveTo(throat[0] - headR * (0.46 + dk * 0.24), throat[1] + headR * (0.34 + dk * 0.16),
+      neckBase[0] - headR * 0.20, neckBase[1] + headR * (0.72 + dk * 0.42));
+    c.quadraticCurveTo(neckBase[0] + headR * 0.12, neckBase[1] + headR * (0.34 + dk * 0.22),
+      throat[0] + headR * 0.20, throat[1] + headR * 0.12);
+    c.closePath(); c.fill();
   }
 
   /* the nose, ON the end of the muzzle rather than beside it */
@@ -1659,6 +4074,13 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.beginPath(); c.ellipse(ch[0], ch[1], headR * 0.20 * SK.jaw * 3, headR * 0.13 * SK.jaw * 3, ang, 0, TAU); c.fill();
   }
 
+  if (spec.incisors === 'orange') {
+    c.save(); c.translate(nosePt[0] - headR * 0.04, nosePt[1] + headR * 0.18); c.rotate(ang);
+    c.fillStyle = '#d86f20';
+    c.beginPath(); c.rect(-headR * 0.22, -headR * 0.06, headR * 0.15, headR * 0.36); c.fill();
+    c.beginPath(); c.rect(headR * 0.02, -headR * 0.06, headR * 0.15, headR * 0.34); c.fill();
+    c.restore();
+  }
   if (spec.domesticCatFace) {
     /* A domestic cat's whiskers are one of its three catalogue must-reads.
        The family painter had none at all, so the correct slit pupil and short
@@ -1948,6 +4370,38 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.strokeStyle = 'rgba(22,16,10,0.55)'; c.lineWidth = Math.max(2, headR * 0.06);
     c.beginPath(); c.moveTo(headX - headR * 0.10, headY - headR * 0.02);
     c.quadraticCurveTo(headX + headR * 0.24, headY + headR * 0.36, headX + headR * 0.62, headY + headR * 0.48); c.stroke();
+  }
+  if (spec.faceMark) {
+    const ux = Math.cos(ang), uy = Math.sin(ang), vx = -uy, vy = ux;
+    if (spec.faceMark === 'spectacles') {
+      /* Spectacled Bear: pale broken eye-rings and a nose bridge, left open so
+         they read as markings rather than the old concentric-disc artifact. */
+      c.strokeStyle = 'rgba(238,224,192,0.90)'; c.lineWidth = Math.max(3, headR * 0.20); c.lineCap = 'round';
+      for (const side of [-1, 1] as const) {
+        const e = head.pt(0.36, -0.34 + side * 0.28);
+        c.beginPath(); c.ellipse(e[0], e[1], headR * 0.34, headR * 0.24, ang + side * 0.16, -2.35, 1.10); c.stroke();
+      }
+      const a = head.pt(0.40, -0.08), b = head.pt(0.56, -0.06);
+      c.beginPath(); c.moveTo(a[0], a[1]); c.quadraticCurveTo((a[0] + b[0]) / 2 + vx * headR * 0.08, (a[1] + b[1]) / 2 + vy * headR * 0.08, b[0], b[1]); c.stroke();
+    } else if (spec.faceMark === 'muzzleBars') {
+      /* Cougar's dark cheek/muzzle bars run WITH the short feline muzzle. */
+      c.strokeStyle = 'rgba(30,22,16,0.82)'; c.lineWidth = Math.max(2.4, headR * 0.10); c.lineCap = 'round';
+      for (const side of [-1, 1] as const) {
+        const a = head.pt(0.46, -0.42 + side * 0.18);
+        const b = [a[0] + ux * headR * 0.66 + vx * headR * side * 0.20,
+          a[1] + uy * headR * 0.66 + vy * headR * side * 0.20] as const;
+        c.beginPath(); c.moveTo(a[0], a[1]); c.lineTo(b[0], b[1]); c.stroke();
+      }
+    } else if (spec.faceMark === 'whiteBlaze') {
+      /* A blaze is a narrow medial stripe, not a pale mask over both eyes. */
+      const a = head.pt(0.18, 0.36), b = head.pt(0.84, 0.28);
+      c.strokeStyle = 'rgba(244,238,220,0.88)'; c.lineWidth = Math.max(3, headR * 0.20); c.lineCap = 'round';
+      c.beginPath(); c.moveTo(a[0], a[1]); c.quadraticCurveTo((a[0] + b[0]) / 2 - vx * headR * 0.10, (a[1] + b[1]) / 2 - vy * headR * 0.10, b[0], b[1]); c.stroke();
+    } else { /* darkMask */
+      const m = head.pt(0.38, -0.20);
+      c.fillStyle = 'rgba(24,18,14,0.52)';
+      c.beginPath(); c.ellipse(m[0], m[1], headR * 0.62, headR * 0.44, ang - 0.12, 0, TAU); c.fill();
+    }
   }
   if (spec.cheekBars) {
     /* Ocelot: two oblique black cheek stripes running forward-and-down from
@@ -2360,6 +4814,23 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       c.moveTo(ax2 - bodyW * 0.02, ay2 + RAD(0.86) * 0.30);
       c.quadraticCurveTo(ax2 - bodyW * 0.10, ay2 + RAD(0.86) * 0.85, ax2 + bodyW * 0.08, ay2 + RAD(0.86) * 0.92);
       c.stroke();
+    } else if (spec.accent === 'chestCrescent' || spec.accent === 'chestU') {
+      /* The sun/sloth bear marks are a compact chest signal, separate from the
+         Tasmanian Devil's horizontal blaze. */
+      const [ax2, ay2] = AX(0.80);
+      const crescent = spec.accent === 'chestCrescent';
+      c.strokeStyle = crescent ? 'rgba(244,208,130,0.94)' : 'rgba(238,226,192,0.92)';
+      c.lineWidth = bodyH * (crescent ? 0.14 : 0.12); c.lineCap = 'round';
+      c.beginPath();
+      if (crescent) {
+        c.moveTo(ax2 - bodyW * 0.11, ay2 + RAD(0.80) * 0.20);
+        c.quadraticCurveTo(ax2 + bodyW * 0.08, ay2 + RAD(0.80) * 0.82, ax2 + bodyW * 0.17, ay2 + RAD(0.80) * 0.16);
+      } else {
+        c.moveTo(ax2 - bodyW * 0.12, ay2 + RAD(0.80) * 0.06);
+        c.quadraticCurveTo(ax2 - bodyW * 0.08, ay2 + RAD(0.80) * 0.82, ax2 + bodyW * 0.02, ay2 + RAD(0.80) * 0.88);
+        c.quadraticCurveTo(ax2 + bodyW * 0.14, ay2 + RAD(0.80) * 0.78, ax2 + bodyW * 0.17, ay2 + RAD(0.80) * 0.10);
+      }
+      c.stroke();
     }
     c.restore();
   }
@@ -2393,7 +4864,42 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   }
   const tAnchor = AX(0.035);
   const tx0 = tAnchor[0] - RAD(0.035) * 0.35, ty0 = tAnchor[1] - RAD(0.035) * 0.30;
-  if (tail === 'bushy' || tail === 'plume') {
+  if (spec.tailPose === 'upright') {
+    /* Coati and warthog carry a real vertical signal tail. A bent horizontal
+       tail with rings/tuft decoration cannot communicate that posture. */
+    const TS = spec.tailScale ?? 1;
+    const p1: [number, number] = [tx0 - bodyW * 0.28 * TS, ty0 - bodyH * 0.40 * TS];
+    const p2: [number, number] = [tx0 - bodyW * 0.20 * TS, ty0 - bodyH * 0.98 * TS];
+    const p3: [number, number] = [tx0 - bodyW * 0.05 * TS, ty0 - bodyH * 1.42 * TS];
+    const tailAt = (t: number): [number, number] => {
+      const m = 1 - t;
+      return [m * m * m * tx0 + 3 * m * m * t * p1[0] + 3 * m * t * t * p2[0] + t * t * t * p3[0],
+        m * m * m * ty0 + 3 * m * m * t * p1[1] + 3 * m * t * t * p2[1] + t * t * t * p3[1]];
+    };
+    const tailR = (t: number): number => bodyH * (0.15 - t * 0.065);
+    const tailT = new Tube({ P: tailAt, R: tailR });
+    c.fillStyle = p.base; c.beginPath(); tailT.trace(c, 42); c.fill();
+    c.save(); c.beginPath(); tailT.trace(c, 42); c.clip();
+    countershade(c, tailT, p, 0.80);
+    coatMaterial(c, tailT, r, p, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL * 0.34, len: 0.58 });
+    if (tail === 'banded') {
+      c.lineCap = 'butt'; c.strokeStyle = 'rgba(30,23,18,0.88)';
+      for (let i = 0; i < 6; i++) {
+        const a2 = tailAt(0.12 + i * 0.14), b2 = tailAt(0.18 + i * 0.14);
+        c.lineWidth = tailR(0.12 + i * 0.14) * 2.7;
+        c.beginPath(); c.moveTo(a2[0], a2[1]); c.lineTo(b2[0], b2[1]); c.stroke();
+      }
+    }
+    c.restore();
+    if (tail === 'tuft') {
+      const tip = tailAt(1);
+      c.strokeStyle = `rgba(${Math.max(0, p.cr * 0.34) | 0},${Math.max(0, p.cg * 0.30) | 0},${Math.max(0, p.cb * 0.26) | 0},0.88)`;
+      c.lineCap = 'round'; c.lineWidth = Math.max(1.5, bodyH * 0.035);
+      for (let i = -2; i <= 2; i++) {
+        c.beginPath(); c.moveTo(tip[0], tip[1]); c.quadraticCurveTo(tip[0] + i * bodyH * 0.08, tip[1] - bodyH * 0.10, tip[0] + i * bodyH * 0.11, tip[1] - bodyH * 0.20); c.stroke();
+      }
+    }
+  } else if (tail === 'bushy' || tail === 'plume') {
     /* ★ WAVE 21 — A BRUSH IS NOT A TUBE. One constant-width round-capped stroke
        gave every fox, snow leopard and fennec in the catalogue an orange PIPE
        lying behind it. A plume tapers from a narrow root, swells through its
@@ -2661,19 +5167,19 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* big cats — same family, different builds and coats */
   /* ★ wave 22b — Lion had NO route and fell through to the verbatim engine,
      where the mane rendered as a ring of spikes over an unreadable face. */
-  'Lion': { legs: 0.1236, depth: 0.1426, len: 0.2455, neck: 0.06, muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'tuft', mane: 'lion', hue: '#c19a5b', family: 'felid' },
-  'Jaguar': { legs: 0.114, depth: 0.1395, len: 0.2287, neck: 0.07, muzzle: 0.35, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#c8983c", family: 'felid' , legMarks: true, tailScale: 1.8 },
-  'Leopard': { legs: 0.1253, depth: 0.1080, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#d3ab5e", family: 'felid' , legMarks: true, tailScale: 1.8 },
-  'Snow Leopard': { legs: 0.1221, depth: 0.1140, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' , legMarks: true, tailScale: 2.1 },
+  'Lion': { legs: 0.1236, depth: 0.1426, len: 0.2455, neck: 0.06, muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'tuft', mane: 'lion', hue: '#c19a5b', family: 'felid', mammalBPlan: 'felid-r1' },
+  'Jaguar': { legs: 0.108, depth: 0.151, len: 0.2287, neck: 0.07, muzzle: 0.38, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#c8983c", family: 'felid' , legMarks: true, tailScale: 1.52, headScale: 1.30, pawScale: 1.20, rosetteScale: 1.18, mammalBPlan: 'felid-r1' },
+  'Leopard': { legs: 0.1253, depth: 0.1080, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#d3ab5e", family: 'felid' , legMarks: true, tailScale: 1.8, mammalBPlan: 'felid-r1' },
+  'Snow Leopard': { legs: 0.114, depth: 0.123, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' , legMarks: true, tailScale: 3.25, pawScale: 1.34, rosetteScale: 1.52, headScale: 1.10, mammalBPlan: 'felid-r1' },
   /* ★ wave 35 — Nick's row: "current ungulate-like body lacks deep chest,
      tucked waist, feline paws/head". It is the one felid NOT built like a big
      cat — a whippet: extreme waist tuck, light hindquarters, and a tail nearly
      as long as the body it steers. Those four numbers are the animal, and the
      felid plan alone could never reach them because the felid plan describes a
      leopard. */
-  'Cheetah': { back: 'arched', legs: 0.1938, depth: 0.1050, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 0.95, rump: 0.52, tailScale: 1.9 , legMarks: true },
-  'Cougar': { legs: 0.1482, depth: 0.1120, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid', tailScale: 1.7, tailTip: '#241f1d' },
-  'Lynx': { back: 'arched', legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft', earTuftScale: 1.22, cheekRuff: 1.64, pawScale: 1.26 },
+  'Cheetah': { back: 'arched', legs: 0.202, depth: 0.096, len: 0.215, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 1.06, rump: 0.46, tailScale: 2.48, legMarks: true, headScale: 1.28, spotScale: 0.78, carry: 0.56, mammalBPlan: 'felid-r1' },
+  'Cougar': { legs: 0.1482, depth: 0.1120, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid', tailScale: 1.7, tailTip: '#241f1d', faceMark: 'muzzleBars', mammalBPlan: 'felid-r1' },
+  'Lynx': { back: 'arched', legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft', earTuftScale: 1.38, cheekRuff: 1.76, pawScale: 1.34, spotScale: 0.56, mammalBPlan: 'felid-r1' },
   /* the pixel-siblings, separated */
   'Rhinoceros': { legs: 0.0835, depth: 0.1886, len: 0.263, neck: 0.045, muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#8b8b8e', family: 'pachyderm' },
   'Wild Sheep': { legs: 0.1345, depth: 0.1529, len: 0.1881, neck: 0.075, muzzle: 0.35, ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#9d8a6e', family: 'bovid' },
@@ -2681,35 +5187,35 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* the humped and the long-necked */
   'Camel': { legs: 0.1846, depth: 0.1629, len: 0.1804, neck: 0.20, back: 'level', muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#c8a173', family: 'camelid' },
   'Bactrian Camel': { legs: 0.176, depth: 0.1667, len: 0.1914, neck: 0.19, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 2, hue: '#b08a5e', family: 'camelid' },
-  'Dromedary Camel': { legs: 0.1935, depth: 0.159, len: 0.176, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777', family: 'camelid' },
+  'Dromedary Camel': { legs: 0.1935, depth: 0.159, len: 0.176, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777', family: 'camelid', carry: 0.42 },
   'Giraffe': { legs: 0.2438, depth: 0.1573, len: 0.1652, neck: 0.34, back: 'sloped', muzzle: 0.40, ears: 'large', tail: 'tuft', coat: 'patches', horn: 'ossicone', hue: '#e0c07a' , family: 'cervid' , legMarks: true },
   'Llama': { legs: 0.1938, depth: 0.1434, len: 0.1506, neck: 0.20, muzzle: 0.35, ears: 'large', tail: 'stub', hue: '#d8cbb4', family: 'camelid', earScale: 1.5 },
   'Alpaca': { legs: 0.1594, depth: 0.1448, len: 0.152, neck: 0.18, muzzle: 0.30, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#ddd2bd', family: 'camelid' },
   /* antlered + horned */
-  'Moose': { legs: 0.2181, depth: 0.1843, len: 0.2116, neck: 0.10, back: 'humped', muzzle: 0.62, jaw: 'broad', ears: 'large', tail: 'stub', horn: 'palmate', hue: '#5b4433', family: 'cervid' },
+  'Moose': { legs: 0.2181, depth: 0.1843, len: 0.2116, neck: 0.10, back: 'humped', muzzle: 0.62, jaw: 'broad', ears: 'large', tail: 'stub', horn: 'palmate', hue: '#5b4433', family: 'cervid', shoulderHump: 0.24, dewlap: 0.72 },
   'Elk': { legs: 0.2035, depth: 0.1594, len: 0.2092, neck: 0.13, back: 'sloped', muzzle: 0.48, ears: 'large', tail: 'stub', horn: 'branched', hue: '#9c7748', family: 'cervid' },
   'Deer': { legs: 0.1973, depth: 0.139, len: 0.1709, neck: 0.12, muzzle: 0.42, ears: 'large', tail: 'stub', horn: 'branched', coat: 'spots', hue: '#b98a58', family: 'cervid' },
   /* ★ wave 35 — the warm brown half of the Caribou/Reindeer split; see Caribou */
-  'Reindeer': { legs: 0.1782, depth: 0.1505, len: 0.1974, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#9c7548', family: 'cervid' },
+  'Reindeer': { legs: 0.1782, depth: 0.1505, len: 0.1974, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#9c7548', family: 'cervid', shoulderHump: 0.10, dewlap: 0.24 },
   'Sheep': { legs: 0.1448, depth: 0.1548, len: 0.1777, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', hue: '#a98f6d', family: 'bovid' },
-  'Bison': { legs: 0.1211, depth: 0.1881, len: 0.2313, neck: 0.045, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', tailScale: 0.7, coat: 'shaggy', horn: 'shorthorn', hue: '#5c4535', family: 'bovid', carry: 0.15, chest: 1.0, rump: 0.32 },
-  'Water Buffalo': { legs: 0.1249, depth: 0.1765, len: 0.246, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'sweep', hue: '#77736e', family: 'bovid' },
+  'Bison': { legs: 0.104, depth: 0.1881, len: 0.2313, neck: 0.030, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', tailScale: 0.58, coat: 'shaggy', horn: 'shorthorn', hue: '#5c4535', family: 'bovid', carry: 0, chest: 1.28, rump: 0.18, shoulderHump: 0.52, mane: 'bison', muzzleHue: '#3b2b24', headScale: 1.18, headDrop: 0.10 },
+  'Water Buffalo': { legs: 0.118, depth: 0.184, len: 0.246, neck: 0.06, muzzle: 0.50, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'sweep', hue: '#77736e', family: 'bovid', earShape: 'drop', earScale: 1.18, headScale: 1.16, shoulderHump: 0.18, dewlap: 0.42, muzzleHue: '#4d4d48', mammalEPlan: 'Water Buffalo' },
   /* bears, differentiated */
-  'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636', family: 'ursid' },
-  'Brown Bear': { legs: 0.0963, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f', family: 'ursid' },
-  'Polar Bear': { legs: 0.1112, depth: 0.1696, len: 0.2642, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6', family: 'ursid', earScale: 0.50 },
-  'Black Bear': { legs: 0.101, depth: 0.1729, len: 0.2268, neck: 0.05, muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#3b3a40', family: 'ursid' },
-  'Panda': { legs: 0.0825, depth: 0.1844, len: 0.2269, neck: 0.04, back: 'arched', muzzle: 0.30, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'panda', face: 'mask', hue: '#f0f2f4', family: 'ursid' , legMarks: true },
-  'Sun Bear': { legs: 0.0939, depth: 0.1438, len: 0.2004, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c', family: 'ursid' },
-  'Sloth Bear': { legs: 0.1001, depth: 0.1697, len: 0.2227, neck: 0.05, muzzle: 0.55, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#2b2726', family: 'ursid' },
+  'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636', family: 'ursid', shoulderHump: 0.24, clawScale: 1.45, muzzleHue: '#b49670', mammalBPlan: 'ursid-r1' },
+  'Brown Bear': { legs: 0.0963, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f', family: 'ursid', shoulderHump: 0.18, clawScale: 1.30, muzzleHue: '#b18a62', mammalBPlan: 'ursid-r1' },
+  'Polar Bear': { legs: 0.1112, depth: 0.1696, len: 0.2642, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6', family: 'ursid', earScale: 0.50, clawScale: 1.28, muzzleHue: '#d8d5c7', mammalBPlan: 'ursid-r1' },
+  'Black Bear': { legs: 0.101, depth: 0.1729, len: 0.2268, neck: 0.05, muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#3b3a40', family: 'ursid', shoulderHump: 0.12, clawScale: 1.25, muzzleHue: '#b99a78', mammalBPlan: 'ursid-r1' },
+  'Panda': { legs: 0.0825, depth: 0.1844, len: 0.2269, neck: 0.04, back: 'arched', muzzle: 0.30, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'panda', face: 'mask', hue: '#f0f2f4', family: 'ursid' , legMarks: true, mammalBPlan: 'ursid-r1' },
+  'Sun Bear': { legs: 0.0939, depth: 0.1438, len: 0.2004, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c', family: 'ursid', accent: 'chestCrescent', clawScale: 1.34, muzzleHue: '#c7ac84', mammalBPlan: 'ursid-r1' },
+  'Sloth Bear': { legs: 0.1001, depth: 0.1697, len: 0.2227, neck: 0.05, muzzle: 0.55, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#2b2726', family: 'ursid', accent: 'chestU', clawScale: 1.52, muzzleHue: '#d4c19c', mammalBPlan: 'ursid-r1' },
   /* canids + small mammals where ears/tails are the read */
-  'Red Fox': { legs: 0.1118, depth: 0.104, len: 0.1962, neck: 0.06, muzzle: 0.44, jaw: 'fine', ears: 'large', tail: 'plume', hue: '#d1651f', family: 'canid', tailScale: 1.7 , tailTip: '#f2efe6' },
-  'Arctic Fox': { legs: 0.1046, depth: 0.1072, len: 0.1847, neck: 0.06, muzzle: 0.36, ears: 'small', tail: 'plume', hue: '#eaf0f5', family: 'canid', tailScale: 1.7 , tailTip: '#f6f5f2' },
+  'Red Fox': { legs: 0.1118, depth: 0.104, len: 0.1962, neck: 0.06, muzzle: 0.44, jaw: 'fine', ears: 'large', tail: 'plume', hue: '#d1651f', family: 'canid', tailScale: 1.7, tailTip: '#f2efe6', stockings: '#241b19', mammalCPlan: 'canid-c1' },
+  'Arctic Fox': { legs: 0.1046, depth: 0.1072, len: 0.1847, neck: 0.06, muzzle: 0.36, ears: 'small', tail: 'plume', hue: '#eaf0f5', family: 'canid', tailScale: 1.7 , tailTip: '#f6f5f2', muzzleHue: '#d9d3c7' },
   /* ★ wave 21 — the audit: "ears should dominate the head; reduce body size and
      increase bushy tail". A fennec is a desert fox scaled DOWN around ears that
      were not scaled down with it. */
   'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.30, tailScale: 1.6, family: 'canid', earShape: 'point' , tailTip: '#20191a' },
-  'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid' , tailTip: '#241f1d' },
+  'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid', tailTip: '#241f1d', muzzleHue: '#cac5b8', mammalCPlan: 'canid-c1' },
   'Hyena': { legs: 0.1442, depth: 0.1492, len: 0.208, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63', family: 'hyaenid' },
   /* ⚠ WAVE 42, CODE PASS — THIS COMMENT WAS TRUE IN WAVE 4 AND IS FALSE NOW,
      which is worse than no comment: it points a maintainer at the wrong engine.
@@ -2721,11 +5227,11 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
      The principle it states is still right and still load-bearing —
      ★ never override what already excels (D-ART-14) — so the principle stays
      and the stale species list goes. A rule outlives its examples. */
-  'Walrus': { legs: 0.0303, depth: 0.1631, len: 0.2943, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f', family: 'pinniped'  },
+  'Walrus': { legs: 0.0303, depth: 0.1631, len: 0.2943, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f', family: 'pinniped', headScale: 1.16, muzzleHue: '#b99484' },
   /* equines + swine */
   'Horse': { legs: 0.1964, depth: 0.166, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'flow', mane: 'crest', hue: '#8a5a35', family: 'equid' },
   'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e', family: 'suid', earShape: 'point' },
-  'Warthog': { legs: 0.1087, depth: 0.155, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.62, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', mane: 'crestUp', hue: '#6b5647', family: 'suid', earShape: 'point', carry: 0.20 },
+  'Warthog': { legs: 0.1087, depth: 0.155, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.62, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', mane: 'crestUp', hue: '#6b5647', family: 'suid', earShape: 'point', carry: 0.20, tailPose: 'upright' },
   /* ★ wave 35 — a tapir is barrel-bodied like a suid, so it keeps that BODY;
      but the suid skull hard-wires the flat cartilage nose disc that is a pig's
      whole identity, and the reference row warns against it by name. It gets a
