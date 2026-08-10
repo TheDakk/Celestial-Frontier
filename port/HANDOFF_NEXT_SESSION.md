@@ -1,12 +1,13 @@
-# ★ LIVE — Wave 2d 50/50 PASS; ready to commit/push (2026-08-10)
+# ★ LIVE — Wave 2e implementation paused at static-green checkpoint (2026-08-10)
 
 **Current worktree:** `C:\Projects\celestial-frontier-openai-windows` on
 `openai/windows`. Clean full-reset baseline HEAD is
 `bc26e800c7adca72805a832e753ace1a8f9837ba`; Wave 1 is `d005090f`, Wave 2a is
 `00e499c`, Wave 2b is `9c148f0`, and Wave 2c is committed/pushed as
-`dc015cfde4385530686cf8fff7e36e13ce67769c`. Wave 2d is the current uncommitted
-bounded checkpoint. Its 50 changed targets are independently PASS and the
-integrated gates are green, so it is **ready to commit/push**. PR #7 is
+`dc015cfde4385530686cf8fff7e36e13ce67769c`, and Wave 2d is committed/pushed as
+`2ed0f288a95c327aa892e8b3b54ce94f626f1ab7`. Wave 2e's exact 47-target batch is
+paused after source implementation and before any post-edit render, visual review, or verdict on
+`openai/windows`. PR #7 is
 historical/already merged. No reset PR, new
 full-catalogue tally, 1,250-row certification, image-inclusive ZIP, merge,
 release, deployment, or version bump exists.
@@ -29,7 +30,7 @@ add scoped PASS results to that ledger:
 | Wave 2a catalogue | 32 | 32 PASS | committed/pushed `00e499c` |
 | Wave 2b catalogue | 51 | 51 PASS | committed/pushed `9c148f0` |
 | Wave 2c catalogue | 56 | 56 PASS | committed/pushed `dc015cf` |
-| Wave 2d catalogue | 50 | 50 PASS | uncommitted; ready to commit/push |
+| Wave 2d catalogue | 50 | 50 PASS | committed/pushed `2ed0f28` |
 
 Wave 2d is Mammal D 16 + Bird B3 27 + Invert III 7. Vanilla Orchid r6 remains
 a separate focused continuity PASS with 234/234 assets. None of these scoped
@@ -160,23 +161,52 @@ image-inclusive ZIP, release, or deployment.
 The full 1,250 recertification, image-inclusive ZIP, reset PR, merge, release,
 and deployment all remain **OPEN**.
 
-## Exact next actions
+## Wave 2e paused implementation checkpoint
 
-1. Create one intentional Wave-2d checkpoint commit and push `openai/windows`;
-   do not include unrelated files or open the reset PR.
-2. Continue remaining frozen-r1 non-PASS identities in bounded named owner
-   lanes with 440/300/132 A/B, protected controls, deterministic repeat, and an
-   author-separated judge.
-3. Run a new clean 1,250-row collector and fresh literal review only after all
+1. **Mammal E (13 bovids):** Buffalo, Cow, Eland, Gaur, Gazelle, Hartebeest,
+   Impala, Kudu, Musk Ox, Oryx, Water Buffalo, Wildebeest, Yak. Owners:
+   `quadrupedoverrides.ts` and `mammaloverrides.ts`.
+2. **Fauna E (21 squamates):** Agama, Anole, Gecko, Skink, Wall Lizard,
+   Whiptail, Alligator Lizard, Gila Monster, Horned Lizard, Grass Snake, King
+   Snake, Rat Snake, Vine Snake, Water Snake, Mountain Viper, Snake, Cobra,
+   Cottonmouth, Mamba, Rattlesnake, Viper. Owner: `faunaoverrides2.ts`.
+3. **Invert IV (13 insect-body rows):** Bumblebee, Honeybee, Orchid Bee, Bee,
+   Butterfly, Fly, Mantis, Moth, Termite, Thrips, Wasp, Black Fly, Mosquito.
+   Owner: `invertoverrides.ts`.
+4. **Sealed pre-edit union:**
+   `port/v2/apps/game/smoke/wave2e-shared-preedit-baseline-2026-08-10/baseline`.
+   Seal `BC424C8FC8D19DDC7A23F81A946CDE99AF2A7FED759129E132233E23C598AA37`; index
+   `2AE4FDB1D443698A092304C22573D8604C07D5B42752E967549D6B038FCD26E3`. It binds
+   288 rows =47 targets +241 protected, 864 physical PNG hashes/dimensions, and three exact
+   139-file source/input snapshots.
+5. **Paused static-green source state; not a visual verdict:**
+   `quadrupedoverrides.ts` `AE8E3830EF57233EB43ABE0F594E335A050A1DB3375F08781FF61549B0C6D288`;
+   `mammaloverrides.ts` `74BBD77CD8BA8E3C22D503AD42FB667EDB74AF6ED3C73551ED283223B28CF80B`;
+   `faunaoverrides2.ts` `30B2E3E2BCDA4865EE81625805384B373423274E0634F8A50F8E4D5A20483378`;
+   `invertoverrides.ts` `6785058479456FF35EE3C44D9FC8F8A9A5467B7F61BBF3153854F93B090A5C1C`.
+   Integrated pause checks PASS: typecheck, artunused, Vitest 23 files/238 pass/1 skip, speccheck
+   455/0 unread/0 inert, and `git diff --check`. No post-edit export, 440/300/132 review,
+   deterministic A/B repeat, independent judgment, final integrated gate closure, reset PR,
+   certification, ZIP, merge, release, or deployment has occurred.
+6. **Known non-blocking tool finding:** `overridecheck` confirms 1,014 live routes and 1,010 Earth
+   species, but its duplicate-key diagnostic falsely scans inline `faunaESquamata(..., 'Name')`
+   plan literals as keys. A direct FAUNA2 literal-table extraction confirms each of the 21 target
+   keys occurs exactly once. Repair/negative-control the scanner before the next official integrated
+   gate; do not interpret the current output as a competing route.
+7. Bird reset FAIL scope is exhausted: B1–B3 exactly cover all 76 frozen-r1
+   Bird FAIL rows. Do not reopen the 26 frozen-PASS birds.
+6. Run a new clean 1,250-row collector and fresh literal review only after all
    remaining rows close. Certification and the dated image-inclusive ZIP come
    after—not before—that all-fresh collector.
 
 ## Parallel Git handoff
 
-Current side: OpenAI/Codex — Wave 2c commit `dc015cf` is pushed/synchronized;
-Wave 2d is uncommitted and ready to commit/push. GitHub step: create the bounded
-checkpoint commit and push `openai/windows`; no PR is due yet. PR details: not
-needed.
+Current side: OpenAI/Codex — Wave 2d commit `2ed0f28` is pushed/synchronized;
+the Wave 2e exact 47-target implementation checkpoint is paused and should be committed/pushed
+on `openai/windows`. It is explicitly not a completed visual/independent-judgment closure.
+GitHub step: after push, review a draft PR to `develop`; do not merge automatically.
+PR details: base `develop`; source `openai/windows`; title `Checkpoint Wave 2e static implementation`;
+description `Preserves the sealed Wave 2e pre-edit baseline and the static-green 47-target source implementation for cross-machine continuation. No post-edit render, visual judgment, certification, release, or deployment is included.`
 
 Other side: Anthropic/Claude Code does not have these bounded checkpoints
 through `develop`; Nick does not need to open it now, and files must never be

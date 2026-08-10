@@ -17,6 +17,14 @@ type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 export type Painter2 = (c: Ctx, g: G, p: Pal, name: string) => void;
+
+/** Full-reset Wave 2e exact-name Squamata whole forms. These are catalogue
+    identities, not reusable family buckets, so additions must update the
+    exhaustive dispatcher below. */
+export type FaunaEPlan = 'Agama' | 'Anole' | 'Gecko' | 'Skink' | 'Wall Lizard' | 'Whiptail'
+  | 'Alligator Lizard' | 'Gila Monster' | 'Horned Lizard' | 'Grass Snake' | 'King Snake'
+  | 'Rat Snake' | 'Vine Snake' | 'Water Snake' | 'Mountain Viper' | 'Snake' | 'Cobra'
+  | 'Cottonmouth' | 'Mamba' | 'Rattlesnake' | 'Viper';
 const S = 440;
 
 /** the species NAME as a seed — the anti-duplicate law (D-ART-8), applied
@@ -858,6 +866,417 @@ export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horn
         rx + Math.cos(a + 1.57) * w, ry + Math.sin(a + 1.57) * w);
       c.closePath(); c.fill();
     }
+  }
+}
+
+type FaunaELizardHead = 'blunt' | 'wedge' | 'broad' | 'slender' | 'heavy';
+interface FaunaELizardSpec {
+  hue: string;
+  tailRatio: number;
+  bodyDepth: number;
+  head: FaunaELizardHead;
+  headShare?: number;
+  headDepth?: number;
+  legScale?: number;
+  toePads?: boolean;
+  longToes?: boolean;
+  tinyLegs?: boolean;
+  fatTail?: boolean;
+  dewlap?: boolean;
+  glossy?: boolean;
+  bumpy?: boolean;
+  stripes?: boolean;
+  armour?: boolean;
+  beads?: boolean;
+}
+
+type FaunaESnakePosture = 'loose-s' | 'long-s' | 'low-coil' | 'reared-s' | 'cobra-rise' | 'rattle-rise';
+type FaunaESnakeHead = 'wedge' | 'round' | 'dart' | 'arrow' | 'coffin' | 'block';
+interface FaunaESnakeSpec {
+  hue: string;
+  gauge: number;
+  posture: FaunaESnakePosture;
+  head: FaunaESnakeHead;
+  headWidth: number;
+  headLength: number;
+  pattern?: 'rings' | 'bands' | 'zigzag' | 'saddles';
+  bandHue?: string;
+  collar?: string;
+  hood?: boolean;
+  gape?: boolean;
+  rattle?: boolean;
+  keeled?: boolean;
+  flatBelly?: boolean;
+  tongue?: boolean;
+  pupil?: 'round' | 'vertical' | 'horizontal';
+  eyeScale?: number;
+  grin?: boolean;
+}
+
+/** Wave 2e lizards are full silhouettes, not decorations on the legacy oval.
+    Tail length is solved against head+trunk length inside one fixed frame, so
+    the literal one-, two-, and three-body contracts remain true after fitting. */
+function faunaELizardE(c: Ctx, g: G, pIn: Pal, plan: FaunaEPlan, spec: FaunaELizardSpec): void {
+  const p = speciesHue(pIn, spec.hue), r = nrng(g, plan, 0x2E11);
+  if (plan === 'Horned Lizard') {
+    const cx = S * 0.50, cy = S * 0.53, rx = S * 0.225, ry = S * 0.145;
+    ground(c, cx, cy + ry + S * 0.085, rx * 1.28);
+    c.lineCap = 'round';
+    for (const far of [true, false]) {
+      c.strokeStyle = far ? p.dark : p.base; c.lineWidth = far ? S * 0.025 : S * 0.032;
+      const ySign = far ? -1 : 1;
+      for (const xSign of [-1, 1]) {
+        const sx = cx + xSign * rx * 0.58, sy = cy + ySign * ry * 0.40;
+        const ex = cx + xSign * rx * 1.12, ey = cy + ySign * ry * 1.34;
+        c.beginPath(); c.moveTo(sx, sy); c.quadraticCurveTo(cx + xSign * rx * 0.94, cy + ySign * ry * 0.78, ex, ey); c.stroke();
+        c.lineWidth = far ? 2.4 : 3.2;
+        for (let d = -1; d <= 1; d++) {
+          c.beginPath(); c.moveTo(ex, ey); c.lineTo(ex + xSign * (10 + Math.abs(d) * 2), ey + d * 7); c.stroke();
+        }
+        c.lineWidth = far ? S * 0.025 : S * 0.032;
+      }
+    }
+    /* The tail is deliberately a tiny rooted wedge, not the generic lizard whip. */
+    c.fillStyle = p.base; c.beginPath(); c.moveTo(cx - rx * 0.78, cy - ry * 0.20);
+    c.quadraticCurveTo(cx - rx * 1.34, cy, cx - rx * 1.48, cy + ry * 0.14);
+    c.quadraticCurveTo(cx - rx * 1.10, cy + ry * 0.38, cx - rx * 0.76, cy + ry * 0.28); c.closePath(); c.fill();
+    const body = new Path2D(); body.ellipse(cx, cy, rx, ry, -0.03, 0, TAU);
+    c.fillStyle = grad(c, p, cx - rx * 0.18, cy - ry * 0.28, rx * 1.05); c.fill(body);
+    c.strokeStyle = 'rgba(32,25,19,0.62)'; c.lineWidth = 2.4; c.stroke(body);
+    c.save(); c.clip(body);
+    for (let i = 0; i < 44; i++) softMark(c, cx - rx + r() * rx * 2, cy - ry + r() * ry * 2,
+      3 + r() * 5, 2 + r() * 3, i % 3 ? '63,48,34' : '214,188,142', 0.30);
+    c.restore();
+    /* A double fringe breaks the pancake outline along both flanks. */
+    for (const side of [-1, 1]) for (let i = 0; i < 13; i++) {
+      const u = i / 12, x = cx - rx * 0.84 + u * rx * 1.68;
+      const edge = cy + side * ry * Math.sqrt(Math.max(0.05, 1 - ((x - cx) / rx) ** 2));
+      const len = ry * (0.16 + Math.sin(u * Math.PI) * 0.16);
+      c.fillStyle = i % 2 ? p.dark : p.base; c.beginPath();
+      c.moveTo(x - 4, edge); c.lineTo(x, edge + side * len); c.lineTo(x + 4, edge); c.closePath(); c.fill();
+    }
+    const hx = cx + rx * 0.93, hy = cy - ry * 0.05, hw = S * 0.072, hh = S * 0.060;
+    c.fillStyle = grad(c, p, hx, hy, hw); c.beginPath(); c.ellipse(hx, hy, hw, hh, -0.04, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(32,25,19,0.62)'; c.lineWidth = 2.2; c.stroke();
+    /* Crown horns sweep backward from the rear skull margin. */
+    for (let i = 0; i < 7; i++) {
+      const u = i / 6, a = -2.78 + u * 1.42, len = hh * (0.78 + Math.sin(u * Math.PI) * 0.72);
+      const bx = hx - hw * 0.34 + Math.cos(a) * hw * 0.28, by = hy + Math.sin(a) * hh * 0.36;
+      c.fillStyle = i % 2 ? p.dark : '#bba27d'; c.beginPath();
+      c.moveTo(bx - Math.sin(a) * 4, by + Math.cos(a) * 4); c.lineTo(bx + Math.cos(a) * len, by + Math.sin(a) * len);
+      c.lineTo(bx + Math.sin(a) * 4, by - Math.cos(a) * 4); c.closePath(); c.fill();
+    }
+    eye(c, hx + hw * 0.18, hy - hh * 0.32, S * 0.012, true);
+    c.strokeStyle = 'rgba(24,19,15,0.72)'; c.lineWidth = 2.2; c.beginPath(); c.moveTo(hx + hw * 0.12, hy + hh * 0.30); c.lineTo(hx + hw * 0.86, hy + hh * 0.18); c.stroke();
+    return;
+  }
+
+  const span = S * 0.79, tailLen = span * spec.tailRatio / (1 + spec.tailRatio), headBody = span - tailLen;
+  const headShare = spec.headShare ?? 0.28, headL = Math.max(S * 0.064, Math.min(S * 0.145, headBody * headShare));
+  const trunkL = headBody - headL, tailTipX = S * 0.055, rumpX = tailTipX + tailLen, shoulderX = rumpX + trunkL;
+  const headTipX = tailTipX + span, cy = S * 0.515;
+  const bodyH = Math.max(S * 0.035, Math.min(S * 0.132, headBody * spec.bodyDepth));
+  const headH = bodyH * (spec.headDepth ?? (spec.head === 'broad' ? 1.12 : spec.head === 'heavy' ? 1.03 : 0.82));
+  const tipDrop = spec.fatTail ? bodyH * 0.12 : -Math.min(bodyH * 0.30, tailLen * 0.045);
+  const tailTipHalf = spec.fatTail ? bodyH * 0.34 : Math.max(1.2, bodyH * 0.045);
+  ground(c, S * 0.50, cy + bodyH + S * 0.115, S * 0.38);
+
+  const legScale = spec.legScale ?? 1, roots = [
+    { x: rumpX + trunkL * 0.22, fore: false, far: true }, { x: rumpX + trunkL * 0.70, fore: true, far: true },
+    { x: rumpX + trunkL * 0.31, fore: false, far: false }, { x: rumpX + trunkL * 0.78, fore: true, far: false },
+  ];
+  c.lineCap = 'round'; c.lineJoin = 'round';
+  for (const limb of roots) {
+    const depth = limb.far ? 0.72 : 1, tiny = spec.tinyLegs ? 0.55 : 1;
+    const reach = S * 0.070 * legScale * tiny * depth, drop = S * 0.095 * legScale * tiny * depth;
+    const dir = limb.fore ? 1 : -1, elbowX = limb.x + dir * reach * 0.48, elbowY = cy + bodyH * 0.58 + drop * 0.34;
+    const wristX = limb.x + dir * reach, wristY = cy + bodyH * 0.72 + drop;
+    c.strokeStyle = limb.far ? p.dark : `rgb(${p.cr * 0.72 | 0},${p.cg * 0.72 | 0},${p.cb * 0.68 | 0})`;
+    c.lineWidth = Math.max(4.2, bodyH * (limb.far ? 0.24 : 0.30) * tiny);
+    c.beginPath(); c.moveTo(limb.x, cy + bodyH * 0.20); c.quadraticCurveTo(elbowX, elbowY, wristX, wristY); c.stroke();
+    c.lineWidth = Math.max(2.2, bodyH * 0.10 * tiny);
+    const toeLen = (spec.longToes ? S * 0.052 : S * 0.031) * legScale * depth;
+    for (let d = -2; d <= 2; d++) {
+      const ex = wristX + dir * toeLen, ey = wristY + d * S * (spec.longToes ? 0.012 : 0.009);
+      c.beginPath(); c.moveTo(wristX, wristY); c.quadraticCurveTo(wristX + dir * toeLen * 0.55, ey - 3, ex, ey); c.stroke();
+      if (spec.toePads) {
+        c.fillStyle = limb.far ? p.dark : p.lit; c.beginPath();
+        c.ellipse(ex + dir * 2, ey, Math.max(3.2, bodyH * 0.10), Math.max(2.1, bodyH * 0.055), 0, 0, TAU); c.fill();
+      }
+    }
+  }
+
+  const outline = new Path2D();
+  outline.moveTo(tailTipX, cy + tipDrop - tailTipHalf);
+  outline.bezierCurveTo(tailTipX + tailLen * 0.32, cy - bodyH * (spec.fatTail ? 0.58 : 0.20),
+    rumpX - tailLen * 0.22, cy - bodyH * 0.58, rumpX, cy - bodyH * 0.50);
+  outline.quadraticCurveTo(rumpX + trunkL * 0.48, cy - bodyH * 1.05, shoulderX, cy - bodyH * 0.54);
+  if (spec.head === 'blunt') {
+    outline.lineTo(headTipX - headL * 0.10, cy - headH * 0.72); outline.lineTo(headTipX, cy - headH * 0.35);
+    outline.lineTo(headTipX, cy + headH * 0.34); outline.lineTo(shoulderX, cy + headH * 0.64);
+  } else if (spec.head === 'wedge') {
+    outline.quadraticCurveTo(shoulderX + headL * 0.46, cy - headH * 0.92, headTipX, cy - headH * 0.05);
+    outline.lineTo(headTipX - headL * 0.04, cy + headH * 0.24); outline.quadraticCurveTo(shoulderX + headL * 0.45, cy + headH * 0.62, shoulderX, cy + headH * 0.54);
+  } else if (spec.head === 'broad') {
+    outline.quadraticCurveTo(shoulderX + headL * 0.36, cy - headH * 1.10, headTipX - headL * 0.16, cy - headH * 0.72);
+    outline.quadraticCurveTo(headTipX + headL * 0.05, cy - headH * 0.20, headTipX - headL * 0.02, cy + headH * 0.35);
+    outline.quadraticCurveTo(shoulderX + headL * 0.40, cy + headH * 0.98, shoulderX, cy + headH * 0.52);
+  } else if (spec.head === 'heavy') {
+    outline.lineTo(headTipX - headL * 0.16, cy - headH * 0.78); outline.quadraticCurveTo(headTipX + headL * 0.04, cy - headH * 0.50, headTipX, cy);
+    outline.lineTo(headTipX - headL * 0.08, cy + headH * 0.56); outline.lineTo(shoulderX, cy + headH * 0.62);
+  } else {
+    outline.quadraticCurveTo(shoulderX + headL * 0.45, cy - headH * 0.70, headTipX, cy - headH * 0.04);
+    outline.lineTo(headTipX - headL * 0.04, cy + headH * 0.20); outline.quadraticCurveTo(shoulderX + headL * 0.42, cy + headH * 0.48, shoulderX, cy + headH * 0.46);
+  }
+  outline.quadraticCurveTo(rumpX + trunkL * 0.50, cy + bodyH * 1.02, rumpX, cy + bodyH * 0.58);
+  outline.bezierCurveTo(rumpX - tailLen * 0.20, cy + bodyH * (spec.fatTail ? 0.82 : 0.44),
+    tailTipX + tailLen * 0.30, cy + bodyH * (spec.fatTail ? 0.62 : 0.22), tailTipX, cy + tipDrop + tailTipHalf);
+  outline.quadraticCurveTo(tailTipX - tailTipHalf * 0.72, cy + tipDrop, tailTipX, cy + tipDrop - tailTipHalf); outline.closePath();
+  const skin = c.createLinearGradient(tailTipX, cy - bodyH, headTipX, cy + bodyH);
+  skin.addColorStop(0, p.dark); skin.addColorStop(0.28, p.base); skin.addColorStop(0.68, p.lit); skin.addColorStop(1, p.base);
+  c.fillStyle = skin; c.fill(outline); c.strokeStyle = 'rgba(28,23,18,0.62)'; c.lineWidth = 2.4; c.stroke(outline);
+
+  c.save(); c.clip(outline);
+  if (spec.bumpy) for (let i = 0; i < 62; i++) {
+    const x = tailTipX + r() * span, y = cy - bodyH + r() * bodyH * 2;
+    softMark(c, x, y, 2.4 + r() * 3.8, 1.8 + r() * 2.8, i % 3 ? '238,218,188' : '55,42,31', 0.38);
+  }
+  if (spec.beads) for (let i = 0; i < 58; i++) {
+    const x = tailTipX + r() * span, y = cy - bodyH + r() * bodyH * 2, rr = 3.2 + r() * 5.2;
+    c.fillStyle = i % 3 ? 'rgba(24,21,21,0.82)' : 'rgba(238,111,42,0.84)'; c.beginPath(); c.arc(x, y, rr, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(245,184,112,0.22)'; c.lineWidth = 1; c.stroke();
+  }
+  if (spec.armour) {
+    for (let row = -1; row <= 1; row++) for (let i = 0; i < 10; i++) {
+      const x = rumpX + trunkL * (0.05 + i * 0.095), y = cy + row * bodyH * 0.42 + (i % 2) * 2;
+      c.fillStyle = (i + row) % 2 ? 'rgba(54,40,25,0.40)' : 'rgba(214,185,132,0.24)';
+      c.fillRect(x - trunkL * 0.034, y - bodyH * 0.16, trunkL * 0.060, bodyH * 0.28);
+    }
+  }
+  if (spec.stripes) {
+    for (const off of [-0.40, 0, 0.40]) {
+      c.strokeStyle = off === 0 ? 'rgba(238,224,164,0.78)' : 'rgba(232,218,154,0.60)'; c.lineWidth = Math.max(2.2, bodyH * 0.095);
+      c.beginPath(); c.moveTo(tailTipX + tailLen * 0.04, cy + off * bodyH * 0.35);
+      c.quadraticCurveTo(rumpX, cy + off * bodyH * 0.82, headTipX - headL * 0.10, cy + off * headH * 0.72); c.stroke();
+    }
+  }
+  if (spec.glossy) {
+    c.strokeStyle = 'rgba(248,238,208,0.62)'; c.lineWidth = Math.max(3, bodyH * 0.16); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(tailTipX + tailLen * 0.14, cy - bodyH * 0.26);
+    c.quadraticCurveTo(rumpX + trunkL * 0.34, cy - bodyH * 0.72, headTipX - headL * 0.18, cy - headH * 0.36); c.stroke();
+  }
+  c.restore();
+  if (spec.armour) {
+    c.strokeStyle = 'rgba(30,24,18,0.76)'; c.lineWidth = Math.max(2, bodyH * 0.075);
+    c.beginPath(); c.moveTo(rumpX + trunkL * 0.03, cy + bodyH * 0.34); c.quadraticCurveTo(rumpX + trunkL * 0.50, cy + bodyH * 0.56, shoulderX, cy + bodyH * 0.30); c.stroke();
+  }
+  if (spec.dewlap) {
+    const fan = c.createLinearGradient(shoulderX + headL * 0.25, cy, shoulderX, cy + S * 0.14);
+    fan.addColorStop(0, '#f06a70'); fan.addColorStop(1, '#a92f4d'); c.fillStyle = fan;
+    c.beginPath(); c.moveTo(shoulderX + headL * 0.72, cy + headH * 0.20);
+    c.quadraticCurveTo(shoulderX + headL * 0.40, cy + S * 0.145, shoulderX - trunkL * 0.18, cy + S * 0.095);
+    c.quadraticCurveTo(shoulderX - trunkL * 0.05, cy + bodyH * 0.52, shoulderX + headL * 0.72, cy + headH * 0.20); c.fill();
+    c.strokeStyle = 'rgba(112,30,48,0.62)'; c.lineWidth = 2; c.stroke();
+  }
+  const eyeX = headTipX - headL * (spec.head === 'broad' ? 0.42 : 0.34), eyeY = cy - headH * 0.36;
+  const eyeR = plan === 'Gecko' ? Math.max(8.5, headH * 0.33) : Math.max(4.2, headH * 0.17);
+  eye(c, eyeX, eyeY, eyeR, true);
+  c.strokeStyle = 'rgba(20,17,14,0.68)'; c.lineWidth = Math.max(1.8, headH * 0.055); c.lineCap = 'round';
+  c.beginPath(); c.moveTo(headTipX - headL * 0.48, cy + headH * 0.16); c.lineTo(headTipX - headL * 0.04, cy + headH * 0.12); c.stroke();
+}
+
+function faunaESpline(control: ReadonlyArray<readonly [number, number]>): Array<{ x: number; y: number }> {
+  const out: Array<{ x: number; y: number }> = [];
+  for (let i = 0; i < control.length - 1; i++) {
+    const a = control[Math.max(0, i - 1)]!, b = control[i]!, d = control[i + 1]!, e = control[Math.min(control.length - 1, i + 2)]!;
+    for (let k = 0; k < 18; k++) {
+      const t = k / 18, t2 = t * t, t3 = t2 * t;
+      const cat = (q0: number, q1: number, q2: number, q3: number): number =>
+        0.5 * ((2 * q1) + (-q0 + q2) * t + (2 * q0 - 5 * q1 + 4 * q2 - q3) * t2 + (-q0 + 3 * q1 - 3 * q2 + q3) * t3);
+      out.push({ x: cat(a[0], b[0], d[0], e[0]), y: cat(a[1], b[1], d[1], e[1]) });
+    }
+  }
+  const last = control[control.length - 1]!; out.push({ x: last[0], y: last[1] });
+  return out;
+}
+
+/** Wave 2e snakes use open continuous centerlines. The plan changes the whole
+    track, gauge, skull and scale signal; no target falls back to the old donut. */
+function faunaESnakeE(c: Ctx, g: G, pIn: Pal, plan: FaunaEPlan, spec: FaunaESnakeSpec): void {
+  const p = speciesHue(pIn, spec.hue), r = nrng(g, plan, 0x2E52);
+  let control: ReadonlyArray<readonly [number, number]>;
+  switch (spec.posture) {
+    case 'loose-s': control = [[32, 262], [82, 294], [142, 285], [198, 225], [254, 205], [308, 254], [382, 220]]; break;
+    case 'long-s': control = [[24, 274], [82, 246], [142, 280], [205, 244], [266, 205], [326, 214], [392, 170]]; break;
+    case 'low-coil': control = [[62, 286], [48, 326], [126, 344], [234, 330], [320, 282], [274, 235], [180, 244], [148, 292], [222, 306], [308, 270], [376, 220]]; break;
+    case 'reared-s': control = [[42, 304], [104, 334], [210, 326], [292, 286], [250, 244], [188, 274], [238, 300], [298, 254], [310, 182], [344, 122]]; break;
+    case 'cobra-rise': control = [[48, 304], [112, 336], [214, 330], [286, 292], [260, 252], [294, 226], [308, 164], [312, 90]]; break;
+    case 'rattle-rise': control = [[74, 312], [136, 340], [238, 326], [310, 286], [258, 238], [176, 252], [158, 298], [234, 306], [300, 258], [330, 174]]; break;
+    default: { const exhaustive: never = spec.posture; return exhaustive; }
+  }
+  const center = faunaESpline(control), baseW = S * spec.gauge;
+  const pts = center.map((q, i) => {
+    const u = i / (center.length - 1), tail = u < 0.13 ? 0.16 + u / 0.13 * 0.84 : 1;
+    const neck = u > 0.90 ? 1 - ((u - 0.90) / 0.10) * (spec.head === 'arrow' || spec.head === 'block' ? 0.34 : 0.18) : 1;
+    return { x: q.x, y: q.y, w: baseW * tail * neck };
+  });
+  ground(c, S * 0.50, S * 0.795, S * 0.37);
+  c.lineCap = 'round'; c.lineJoin = 'round';
+  for (let i = 1; i < pts.length; i++) {
+    const a = pts[i - 1]!, b = pts[i]!, w = (a.w + b.w) * 0.5;
+    c.strokeStyle = p.dark; c.lineWidth = w * 2.14; c.beginPath(); c.moveTo(a.x, a.y + w * 0.13); c.lineTo(b.x, b.y + w * 0.13); c.stroke();
+    c.strokeStyle = p.base; c.lineWidth = w * 1.86; c.beginPath(); c.moveTo(a.x, a.y); c.lineTo(b.x, b.y); c.stroke();
+    c.strokeStyle = p.lit; c.globalAlpha = 0.34; c.lineWidth = w * 0.48; c.beginPath(); c.moveTo(a.x, a.y - w * 0.38); c.lineTo(b.x, b.y - w * 0.38); c.stroke(); c.globalAlpha = 1;
+  }
+  if (spec.pattern === 'rings' || spec.pattern === 'bands') {
+    for (let i = 5; i < pts.length - 5; i++) {
+      const ring = spec.pattern === 'rings' ? (Math.floor(i / 7) % 2 === 0) : (Math.floor(i / 14) % 3 === 0);
+      if (!ring) continue;
+      const a = pts[i - 1]!, b = pts[i]!, w = (a.w + b.w) * 0.5;
+      c.strokeStyle = spec.bandHue ?? (spec.pattern === 'rings' ? '#eadfb8' : 'rgba(45,32,22,0.78)'); c.lineCap = 'butt'; c.lineWidth = w * 1.82;
+      c.beginPath(); c.moveTo(a.x, a.y); c.lineTo(b.x, b.y); c.stroke();
+    }
+    c.lineCap = 'round';
+  } else if (spec.pattern === 'zigzag') {
+    c.strokeStyle = 'rgba(29,21,15,0.88)'; c.lineWidth = Math.max(3.2, baseW * 0.42); c.beginPath();
+    for (let i = 8; i < pts.length - 8; i += 4) {
+      const prev = pts[i - 2]!, q = pts[i]!, next = pts[i + 2]!, a = Math.atan2(next.y - prev.y, next.x - prev.x);
+      const side = Math.floor(i / 8) % 2 ? -1 : 1, x = q.x - Math.sin(a) * q.w * 0.44 * side, y = q.y + Math.cos(a) * q.w * 0.44 * side;
+      if (i === 8) c.moveTo(x, y); else c.lineTo(x, y);
+    }
+    c.stroke();
+  } else if (spec.pattern === 'saddles') {
+    for (let i = 12; i < pts.length - 8; i += 18) {
+      const q = pts[i]!, a = pts[i - 2]!, b = pts[i + 2]!, ang = Math.atan2(b.y - a.y, b.x - a.x);
+      softMark(c, q.x, q.y, q.w * 1.08, q.w * 0.72, '46,29,18', 0.72, ang + Math.PI / 2);
+    }
+  }
+  if (spec.keeled) {
+    c.strokeStyle = 'rgba(232,218,184,0.34)'; c.lineWidth = Math.max(1.5, baseW * 0.10); c.lineCap = 'round';
+    for (let i = 8; i < pts.length - 6; i += 7) {
+      const a = pts[i - 2]!, q = pts[i]!, b = pts[i + 2]!, ang = Math.atan2(b.y - a.y, b.x - a.x);
+      c.beginPath(); c.moveTo(q.x - Math.sin(ang) * q.w * 0.60, q.y + Math.cos(ang) * q.w * 0.60);
+      c.lineTo(q.x + Math.sin(ang) * q.w * 0.20, q.y - Math.cos(ang) * q.w * 0.20); c.stroke();
+    }
+  }
+  if (spec.flatBelly) {
+    /* Rat snakes carry a visibly flat ventral edge instead of a round cord. */
+    c.strokeStyle = 'rgba(34,29,23,0.66)'; c.lineWidth = Math.max(3.0, baseW * 0.34); c.lineCap = 'round';
+    for (let i = 8; i < pts.length - 8; i++) {
+      const a = pts[i - 1]!, b = pts[i]!, w = (a.w + b.w) * 0.5;
+      c.beginPath(); c.moveTo(a.x, a.y + w * 0.69); c.lineTo(b.x, b.y + w * 0.69); c.stroke();
+    }
+  }
+  if (spec.collar) {
+    const a = pts[pts.length - 10]!, b = pts[pts.length - 5]!, w = (a.w + b.w) * 0.5;
+    c.strokeStyle = spec.collar; c.lineWidth = w * 1.80; c.lineCap = 'butt'; c.beginPath(); c.moveTo(a.x, a.y); c.lineTo(b.x, b.y); c.stroke(); c.lineCap = 'round';
+  }
+  const root = pts[pts.length - 1]!, prev = pts[pts.length - 5]!;
+  const ang = Math.atan2(root.y - prev.y, root.x - prev.x), fx = Math.cos(ang), fy = Math.sin(ang);
+  const hx = root.x + fx * baseW * 0.95, hy = root.y + fy * baseW * 0.95;
+  if (spec.hood) {
+    c.save(); c.translate(root.x, root.y); c.rotate(ang);
+    const hoodL = S * 0.235, hoodW = S * 0.092, hp = new Path2D();
+    hp.moveTo(baseW * 0.45, -baseW * 0.54); hp.quadraticCurveTo(-hoodL * 0.28, -hoodW, -hoodL * 0.66, -hoodW * 0.78);
+    hp.quadraticCurveTo(-hoodL, -hoodW * 0.34, -hoodL * 1.05, 0); hp.quadraticCurveTo(-hoodL, hoodW * 0.34, -hoodL * 0.66, hoodW * 0.78);
+    hp.quadraticCurveTo(-hoodL * 0.28, hoodW, baseW * 0.45, baseW * 0.54); hp.closePath();
+    const hg = c.createLinearGradient(-hoodL, -hoodW, baseW, hoodW); hg.addColorStop(0, p.dark); hg.addColorStop(0.44, p.base); hg.addColorStop(1, p.lit);
+    c.fillStyle = hg; c.fill(hp); c.strokeStyle = 'rgba(28,21,15,0.70)'; c.lineWidth = 2.6; c.stroke(hp);
+    c.strokeStyle = 'rgba(35,25,16,0.36)'; c.lineWidth = 2;
+    for (let i = -2; i <= 2; i++) { c.beginPath(); c.moveTo(-hoodL * 0.92, i * hoodW * 0.25); c.lineTo(-hoodL * 0.12, i * hoodW * 0.16); c.stroke(); }
+    c.restore();
+  }
+  const headW = Math.max(8.5, baseW * spec.headWidth), headL = Math.max(22, baseW * spec.headLength);
+  c.save(); c.translate(hx, hy); c.rotate(ang);
+  const skull = new Path2D();
+  if (spec.head === 'arrow') {
+    skull.moveTo(-headL * 0.72, -headW * 0.20); skull.lineTo(-headL * 0.10, -headW); skull.quadraticCurveTo(headL * 0.66, -headW * 0.52, headL * 0.82, 0);
+    skull.quadraticCurveTo(headL * 0.66, headW * 0.52, -headL * 0.10, headW); skull.lineTo(-headL * 0.72, headW * 0.20); skull.closePath();
+  } else if (spec.head === 'dart') {
+    skull.moveTo(-headL * 0.70, -headW * 0.34); skull.quadraticCurveTo(0, -headW * 0.78, headL * 1.32, 0);
+    skull.quadraticCurveTo(0, headW * 0.78, -headL * 0.70, headW * 0.34); skull.closePath();
+  } else if (spec.head === 'coffin') {
+    skull.moveTo(-headL * 0.72, -headW * 0.44); skull.lineTo(headL * 0.32, -headW * 0.78); skull.lineTo(headL * 0.82, -headW * 0.36);
+    skull.lineTo(headL * 0.88, headW * 0.20); skull.lineTo(headL * 0.30, headW * 0.72); skull.lineTo(-headL * 0.72, headW * 0.40); skull.closePath();
+  } else if (spec.head === 'block') {
+    skull.moveTo(-headL * 0.72, -headW * 0.46); skull.quadraticCurveTo(-headL * 0.05, -headW, headL * 0.72, -headW * 0.62);
+    skull.lineTo(headL * 0.88, headW * 0.34); skull.quadraticCurveTo(0, headW * 0.96, -headL * 0.72, headW * 0.42); skull.closePath();
+  } else if (spec.head === 'round') {
+    skull.moveTo(-headL * 0.70, -headW * 0.34); skull.quadraticCurveTo(headL * 0.05, -headW * 0.90, headL * 0.78, -headW * 0.32);
+    skull.quadraticCurveTo(headL * 1.00, 0, headL * 0.76, headW * 0.38); skull.quadraticCurveTo(0, headW * 0.84, -headL * 0.70, headW * 0.32); skull.closePath();
+  } else {
+    skull.moveTo(-headL * 0.72, -headW * 0.30); skull.quadraticCurveTo(0, -headW * 0.82, headL * 0.90, 0);
+    skull.quadraticCurveTo(0, headW * 0.78, -headL * 0.72, headW * 0.30); skull.closePath();
+  }
+  c.fillStyle = grad(c, p, 0, -headW * 0.20, headL); c.fill(skull); c.strokeStyle = 'rgba(28,22,17,0.68)'; c.lineWidth = 2.2; c.stroke(skull);
+  const eyeX = headL * (spec.head === 'dart' ? 0.18 : 0.10), eyeY = -headW * (plan === 'Water Snake' ? 0.60 : 0.46);
+  const eyeR = Math.max(3.8, headW * 0.18) * (spec.eyeScale ?? 1);
+  if (spec.pupil === 'horizontal') {
+    c.fillStyle = '#d9c95f'; c.beginPath(); c.ellipse(eyeX, eyeY, eyeR * 1.10, eyeR * 0.92, 0, 0, TAU); c.fill();
+    c.fillStyle = '#111416'; c.beginPath(); c.ellipse(eyeX, eyeY, eyeR * 0.72, eyeR * 0.18, 0, 0, TAU); c.fill();
+  } else if (spec.pupil === 'round') {
+    eye(c, eyeX, eyeY, eyeR, false);
+  } else {
+    eye(c, eyeX, eyeY, eyeR, true);
+  }
+  c.strokeStyle = 'rgba(22,17,14,0.72)'; c.lineWidth = Math.max(1.8, headW * 0.09); c.lineCap = 'round';
+  c.beginPath(); c.moveTo(headL * 0.02, headW * 0.24); c.quadraticCurveTo(headL * 0.46, headW * (spec.grin ? 0.48 : 0.30), headL * 0.80, headW * 0.18); c.stroke();
+  if (spec.gape) {
+    c.fillStyle = '#f4eee0'; c.beginPath(); c.moveTo(headL * 0.02, headW * 0.10); c.quadraticCurveTo(headL * 0.54, headW * 0.72, headL * 0.88, headW * 0.12);
+    c.quadraticCurveTo(headL * 0.52, headW * 0.36, headL * 0.02, headW * 0.10); c.fill();
+    c.fillStyle = '#3a1820'; c.beginPath(); c.moveTo(headL * 0.22, headW * 0.22); c.quadraticCurveTo(headL * 0.56, headW * 0.52, headL * 0.77, headW * 0.18);
+    c.quadraticCurveTo(headL * 0.52, headW * 0.34, headL * 0.22, headW * 0.22); c.fill();
+  }
+  if (spec.tongue) {
+    c.strokeStyle = '#d03a50'; c.lineWidth = 2.5; const tx = headL * 0.82, mx = headL * 1.32;
+    c.beginPath(); c.moveTo(tx, headW * 0.08); c.lineTo(mx, 0); c.stroke();
+    c.beginPath(); c.moveTo(mx, 0); c.lineTo(headL * 1.58, -headW * 0.22); c.moveTo(mx, 0); c.lineTo(headL * 1.58, headW * 0.20); c.stroke();
+  }
+  c.restore();
+  if (spec.rattle) {
+    const tail = pts[0]!, next = pts[4]!, ta = Math.atan2(tail.y - next.y, tail.x - next.x);
+    c.save(); c.translate(tail.x, tail.y); c.rotate(ta); c.lineWidth = 1.4;
+    for (let i = 0; i < 7; i++) {
+      const x = 4 + i * 9, rw = 7.5 - i * 0.55, rh = 5.8 - i * 0.35;
+      c.fillStyle = i % 2 ? '#a68a5c' : '#d2bb85'; c.beginPath(); c.ellipse(x, 0, rw, rh, 0, 0, TAU); c.fill();
+      c.strokeStyle = '#5d4a32'; c.stroke();
+    }
+    c.restore();
+  }
+  /* A few deterministic scale glints prevent uniform long snakes becoming flat cords. */
+  if (!spec.keeled && spec.pattern === undefined) for (let i = 18; i < pts.length - 18; i += 26) {
+    const q = pts[i]!, a = pts[i - 2]!, b = pts[i + 2]!, ang2 = Math.atan2(b.y - a.y, b.x - a.x);
+    softMark(c, q.x - Math.sin(ang2) * q.w * 0.20, q.y + Math.cos(ang2) * q.w * 0.20,
+      q.w * (0.36 + r() * 0.16), q.w * 0.24, '238,229,204', 0.22, ang2);
+  }
+}
+
+/** Exact-name dispatcher: each accepted row reaches one and only one whole-form
+    branch. The never assignment makes an added plan a compile-time failure. */
+function faunaESquamata(c: Ctx, g: G, p: Pal, plan: FaunaEPlan): void {
+  switch (plan) {
+    case 'Agama': faunaELizardE(c, g, p, plan, { hue: '#3976b7', tailRatio: 1.02, bodyDepth: 0.28, head: 'blunt', headShare: 0.34, headDepth: 1.08, legScale: 1.12 }); return;
+    case 'Anole': faunaELizardE(c, g, p, plan, { hue: '#55b957', tailRatio: 1.48, bodyDepth: 0.21, head: 'wedge', headShare: 0.30, legScale: 1.20, toePads: true, longToes: true, dewlap: true }); return;
+    case 'Gecko': faunaELizardE(c, g, p, plan, { hue: '#c5a47c', tailRatio: 0.76, bodyDepth: 0.29, head: 'broad', headShare: 0.34, headDepth: 1.16, legScale: 1.12, toePads: true, longToes: true, fatTail: true, bumpy: true }); return;
+    case 'Skink': faunaELizardE(c, g, p, plan, { hue: '#7c5b34', tailRatio: 1.08, bodyDepth: 0.17, head: 'slender', headShare: 0.23, legScale: 0.72, tinyLegs: true, glossy: true }); return;
+    case 'Wall Lizard': faunaELizardE(c, g, p, plan, { hue: '#6e7955', tailRatio: 2.02, bodyDepth: 0.17, head: 'wedge', headShare: 0.28, legScale: 1.04, longToes: true }); return;
+    case 'Whiptail': faunaELizardE(c, g, p, plan, { hue: '#5e5234', tailRatio: 2.62, bodyDepth: 0.16, head: 'slender', headShare: 0.31, legScale: 0.90, longToes: true, stripes: true }); return;
+    case 'Alligator Lizard': faunaELizardE(c, g, p, plan, { hue: '#896039', tailRatio: 1.72, bodyDepth: 0.22, head: 'heavy', headShare: 0.31, legScale: 0.72, tinyLegs: true, armour: true }); return;
+    case 'Gila Monster': faunaELizardE(c, g, p, plan, { hue: '#d36727', tailRatio: 0.62, bodyDepth: 0.31, head: 'heavy', headShare: 0.33, headDepth: 1.15, legScale: 0.92, fatTail: true, beads: true }); return;
+    case 'Horned Lizard': faunaELizardE(c, g, p, plan, { hue: '#af9878', tailRatio: 0.18, bodyDepth: 0.40, head: 'broad' }); return;
+    case 'Grass Snake': faunaESnakeE(c, g, p, plan, { hue: '#647a47', gauge: 0.034, posture: 'loose-s', head: 'round', headWidth: 1.10, headLength: 2.10, collar: '#eadc68', pupil: 'round' }); return;
+    case 'King Snake': faunaESnakeE(c, g, p, plan, { hue: '#201d1b', gauge: 0.039, posture: 'loose-s', head: 'wedge', headWidth: 1.12, headLength: 2.10, pattern: 'rings', bandHue: '#eee2b8', pupil: 'round' }); return;
+    case 'Rat Snake': faunaESnakeE(c, g, p, plan, { hue: '#505248', gauge: 0.028, posture: 'long-s', head: 'round', headWidth: 1.05, headLength: 2.34, pupil: 'round', eyeScale: 1.35, flatBelly: true }); return;
+    case 'Vine Snake': faunaESnakeE(c, g, p, plan, { hue: '#75ae3c', gauge: 0.016, posture: 'long-s', head: 'dart', headWidth: 1.14, headLength: 3.00, pupil: 'horizontal', eyeScale: 1.46 }); return;
+    case 'Water Snake': faunaESnakeE(c, g, p, plan, { hue: '#6d5541', gauge: 0.039, posture: 'loose-s', head: 'round', headWidth: 1.12, headLength: 2.12, pattern: 'bands', keeled: true, pupil: 'round', eyeScale: 1.08 }); return;
+    case 'Mountain Viper': faunaESnakeE(c, g, p, plan, { hue: '#71766a', gauge: 0.052, posture: 'low-coil', head: 'arrow', headWidth: 1.78, headLength: 2.30, pattern: 'zigzag', pupil: 'vertical' }); return;
+    case 'Snake': faunaESnakeE(c, g, p, plan, { hue: '#705c3e', gauge: 0.036, posture: 'loose-s', head: 'wedge', headWidth: 1.18, headLength: 2.18, pupil: 'round', tongue: true }); return;
+    case 'Cobra': faunaESnakeE(c, g, p, plan, { hue: '#5d4b31', gauge: 0.041, posture: 'cobra-rise', head: 'wedge', headWidth: 1.12, headLength: 2.10, pattern: 'bands', hood: true, pupil: 'round' }); return;
+    case 'Cottonmouth': faunaESnakeE(c, g, p, plan, { hue: '#3e3a30', gauge: 0.052, posture: 'reared-s', head: 'block', headWidth: 1.66, headLength: 2.24, pattern: 'saddles', gape: true, pupil: 'vertical' }); return;
+    case 'Mamba': faunaESnakeE(c, g, p, plan, { hue: '#4a504b', gauge: 0.025, posture: 'reared-s', head: 'coffin', headWidth: 1.28, headLength: 2.66, pupil: 'round', grin: true }); return;
+    case 'Rattlesnake': faunaESnakeE(c, g, p, plan, { hue: '#b29166', gauge: 0.050, posture: 'rattle-rise', head: 'arrow', headWidth: 1.76, headLength: 2.28, pattern: 'saddles', rattle: true, pupil: 'vertical' }); return;
+    case 'Viper': faunaESnakeE(c, g, p, plan, { hue: '#99865e', gauge: 0.049, posture: 'low-coil', head: 'arrow', headWidth: 1.72, headLength: 2.26, pattern: 'zigzag', pupil: 'vertical' }); return;
+    default: { const exhaustive: never = plan; return exhaustive; }
   }
 }
 /** TURTLE/TORTOISE: domed scuted shell, stump legs, retracted neck */
@@ -2864,45 +3283,45 @@ export function marineAnemone(c: Ctx, g: G, pIn: Pal, opts: { tall?: boolean; wo
 
 export const FAUNA2_NAME: Record<string, Painter2> = {
   /* ── SNAKES ── the coil, the wedge head, the forked tongue */
-  'Cobra': (c, g, p, n) => reptSnake(c, g, p, { hue: '#5e4a2e', hood: true, pattern: 'band', reared: true, gauge: 1.10, posture: 'slither' }, n),
-  'Mamba': (c, g, p, n) => reptSnake(c, g, p, { hue: '#4c4f4d', pattern: 'plain' }, n),
-  'Viper': (c, g, p, n) => reptSnake(c, g, p, { hue: '#97845e', pattern: 'zigzag', head: 'arrow', gauge: 1.18, posture: 'slither' }, n),
-  'Mountain Viper': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6f7466', pattern: 'zigzag', head: 'arrow', gauge: 1.22, posture: 'slither' }, n),
-  'Rattlesnake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#b09468', rattle: true, pattern: 'saddle', head: 'arrow', reared: true, gauge: 1.16, posture: 'slither' }, n),
+  'Cobra': (c, g, p) => faunaESquamata(c, g, p, 'Cobra'),
+  'Mamba': (c, g, p) => faunaESquamata(c, g, p, 'Mamba'),
+  'Viper': (c, g, p) => faunaESquamata(c, g, p, 'Viper'),
+  'Mountain Viper': (c, g, p) => faunaESquamata(c, g, p, 'Mountain Viper'),
+  'Rattlesnake': (c, g, p) => faunaESquamata(c, g, p, 'Rattlesnake'),
   'Boa': (c, g, p, n) => reptSnake(c, g, p, { hue: '#8e6b4a', pattern: 'saddle', gauge: 1.55, constrictor: 'boa' }, n),
   'Sand Boa': (c, g, p, n) => reptSnake(c, g, p, { hue: '#c69258', pattern: 'saddle', gauge: 1.58, constrictor: 'sand-boa' }, n),
   'Python': (c, g, p, n) => reptSnake(c, g, p, { hue: '#9a8355', pattern: 'reticulate', gauge: 1.46, constrictor: 'python' }, n),
   'Anaconda': (c, g, p, n) => reptSnake(c, g, p, { hue: '#4f5c34', pattern: 'oval', gauge: 1.76, constrictor: 'anaconda' }, n),
-  'King Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#1e1c1a', pattern: 'band', boldBands: true, bandHue: '232,224,188' }, n),
+  'King Snake': (c, g, p) => faunaESquamata(c, g, p, 'King Snake'),
   'Garter Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#3f5540', pattern: 'stripe', head: 'narrow' }, n),
-  'Rat Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#4e5144', pattern: 'plain', posture: 'slither', gauge: 0.58, head: 'rat', eyeScale: 0.82 }, n),
+  'Rat Snake': (c, g, p) => faunaESquamata(c, g, p, 'Rat Snake'),
   'Tree Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#38a04a', pattern: 'plain', gauge: 0.46, posture: 'slither', head: 'long', eyeScale: 1.42, perch: true }, n),
-  'Vine Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#7fb23c', pattern: 'plain', gauge: 0.34, posture: 'slither', head: 'long', eyeScale: 1.30, pupil: 'horizontal' }, n),
-  'Water Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6a5341', pattern: 'band', gauge: 1.10, posture: 'slither', head: 'narrow' }, n),
-  'Grass Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#5f7a45', pattern: 'plain', collar: '#e6d86a' }, n),
+  'Vine Snake': (c, g, p) => faunaESquamata(c, g, p, 'Vine Snake'),
+  'Water Snake': (c, g, p) => faunaESquamata(c, g, p, 'Water Snake'),
+  'Grass Snake': (c, g, p) => faunaESquamata(c, g, p, 'Grass Snake'),
   'Whip Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6b6b48', pattern: 'stripe', gauge: 0.36, posture: 'slither', head: 'narrow', eyeScale: 1.34 }, n),
   'Cave Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#928a86', pattern: 'plain', pits: true }, n),
-  'Cottonmouth': (c, g, p, n) => reptSnake(c, g, p, { hue: '#3d3a30', pattern: 'saddle', head: 'arrow', gauge: 1.24, gape: true, reared: true, posture: 'slither' }, n),
+  'Cottonmouth': (c, g, p) => faunaESquamata(c, g, p, 'Cottonmouth'),
   'Racer': (c, g, p, n) => reptSnake(c, g, p, { hue: '#35404a', pattern: 'plain', gauge: 0.46, posture: 'slither' }, n),
-  'Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6f5b3e', pattern: 'saddle', posture: 'slither' }, n),
+  'Snake': (c, g, p) => faunaESquamata(c, g, p, 'Snake'),
   /* ── LIZARDS ── the sprawled stance: elbows OUT, belly low, tail long */
   'Monitor Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#55503f', tail: 1.42, tongue: true, claws: true, morph: 'monitor' }, n),
   'Komodo Dragon': (c, g, p, n) => reptLizard(c, g, p, { hue: '#77706a', tail: 0.98, tongue: true, claws: true, morph: 'komodo' }, n),
-  'Gila Monster': (c, g, p, n) => reptLizard(c, g, p, { hue: '#cf5f22', stout: 1.72, tail: 0.62 }, n),
+  'Gila Monster': (c, g, p) => faunaESquamata(c, g, p, 'Gila Monster'),
   'Tegu': (c, g, p, n) => reptLizard(c, g, p, { hue: '#3e4240', claws: true, morph: 'tegu' }, n),
-  'Gecko': (c, g, p, n) => reptLizard(c, g, p, { hue: '#c3a582', stout: 1.28, tail: 0.72 }, n),
-  'Skink': (c, g, p, n) => reptLizard(c, g, p, { hue: '#7a5a34', stout: 1.06, tail: 1.12 }, n),
-  'Anole': (c, g, p, n) => reptLizard(c, g, p, { hue: '#5fbf5a', stout: 1.20, tail: 0.98, dewlap: true }, n),
-  'Agama': (c, g, p, n) => reptLizard(c, g, p, { hue: '#3a72b0', crest: true, stout: 1.42, tail: 0.82 }, n),
-  'Whiptail': (c, g, p, n) => reptLizard(c, g, p, { hue: '#5c5236', long: true, tail: 1.30 }, n),
+  'Gecko': (c, g, p) => faunaESquamata(c, g, p, 'Gecko'),
+  'Skink': (c, g, p) => faunaESquamata(c, g, p, 'Skink'),
+  'Anole': (c, g, p) => faunaESquamata(c, g, p, 'Anole'),
+  'Agama': (c, g, p) => faunaESquamata(c, g, p, 'Agama'),
+  'Whiptail': (c, g, p) => faunaESquamata(c, g, p, 'Whiptail'),
   'Iguana': (c, g, p, n) => reptLizard(c, g, p, { hue: '#6f9b4a', crest: true, tailBands: true, claws: true, morph: 'iguana' }, n),
   'Marine Iguana': (c, g, p, n) => reptLizard(c, g, p, { hue: '#3b4447', crest: true, tail: 1.28, paddleTail: true, claws: true, saltSnout: true, morph: 'marine-iguana' }, n),
   'Land Iguana': (c, g, p, n) => reptLizard(c, g, p, { hue: '#c98a2c', crest: true, tail: 1.22, claws: true, morph: 'land-iguana' }, n),
   /* a horned lizard is nearly as wide as it is long — the squattest lizard alive */
-  'Horned Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#b09878', horns: true, stout: 2.15, tail: 0.42 }, n),
-  'Alligator Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#8b6236', long: true, tail: 1.15 }, n),
+  'Horned Lizard': (c, g, p) => faunaESquamata(c, g, p, 'Horned Lizard'),
+  'Alligator Lizard': (c, g, p) => faunaESquamata(c, g, p, 'Alligator Lizard'),
   'Mountain Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#5a5347', rough: true, claws: true, morph: 'mountain' }, n),
-  'Wall Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#6e7a58', stout: 1.22, tail: 0.95 }, n),
+  'Wall Lizard': (c, g, p) => faunaESquamata(c, g, p, 'Wall Lizard'),
   'Coastal Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#b0a486', ear: true, claws: true, morph: 'coastal' }, n),
   'Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#8a7b62', claws: true, morph: 'lizard' }, n),
   /* ── TURTLES ── the domed scuted shell */

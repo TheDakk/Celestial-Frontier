@@ -164,10 +164,594 @@ export interface InsectSpec {
   /** The asymmetrical rasping cone at a thrips' face. */
   raspingMouth?: boolean;
 }
+
+/* Wave 2e / Invert IV. These exact-name whole forms replace the shared bead
+   insect only for the thirteen frozen-r1 targets. The dispatcher runs after
+   species hue resolution but before any generic geometry, so every unlisted
+   INVERT_NAME row and the cross-file Cave Cricket route stay on their sealed
+   painter byte-for-byte. */
+type ResetInsectIVSignature = 'bumblebee' | 'honeybee' | 'bee' | 'orchidBee'
+  | 'butterfly' | 'fly' | 'mantis' | 'moth' | 'termite' | 'thrips' | 'wasp'
+  | 'blackFly' | 'mosquito';
+
+const RESET_INSECT_IV: Readonly<Record<string, ResetInsectIVSignature>> = Object.freeze({
+  'Bumblebee': 'bumblebee',
+  'Honeybee': 'honeybee',
+  'Bee': 'bee',
+  'Orchid Bee': 'orchidBee',
+  'Butterfly': 'butterfly',
+  'Fly': 'fly',
+  'Mantis': 'mantis',
+  'Moth': 'moth',
+  'Termite': 'termite',
+  'Thrips': 'thrips',
+  'Wasp': 'wasp',
+  'Black Fly': 'blackFly',
+  'Mosquito': 'mosquito',
+});
+
+function insectIVTone(p: Pal, k: number, alpha = 1): string {
+  const ch = (v: number): number => Math.max(0, Math.min(255, Math.round(v * k)));
+  return `rgba(${ch(p.cr)},${ch(p.cg)},${ch(p.cb)},${alpha})`;
+}
+
+function insectIVGradient(c: Ctx, p: Pal, x: number, y: number, radius: number): CanvasGradient {
+  const gg = c.createRadialGradient(x - radius * 0.34, y - radius * 0.42, 2, x, y, radius * 1.25);
+  gg.addColorStop(0, p.lit); gg.addColorStop(0.58, p.base); gg.addColorStop(1, p.dark);
+  return gg;
+}
+
+/** One continuous membrane rooted under the thorax, with veins sharing its root. */
+function insectIVWing(c: Ctx, p: Pal, rootX: number, rootY: number, tipX: number, tipY: number,
+  halfWidth: number, alpha = 0.62): void {
+  const dx = tipX - rootX, dy = tipY - rootY;
+  const len = Math.max(1, Math.hypot(dx, dy));
+  const nx = -dy / len, ny = dx / len;
+  const wingPath = (): void => {
+    c.moveTo(rootX, rootY);
+    c.bezierCurveTo(rootX + dx * 0.30 + nx * halfWidth, rootY + dy * 0.30 + ny * halfWidth,
+      tipX - dx * 0.20 + nx * halfWidth * 0.38, tipY - dy * 0.20 + ny * halfWidth * 0.38, tipX, tipY);
+    c.bezierCurveTo(tipX - dx * 0.18 - nx * halfWidth * 0.56, tipY - dy * 0.18 - ny * halfWidth * 0.56,
+      rootX + dx * 0.22 - nx * halfWidth * 0.72, rootY + dy * 0.22 - ny * halfWidth * 0.72, rootX, rootY);
+  };
+  const fill = c.createLinearGradient(rootX, rootY, tipX, tipY);
+  fill.addColorStop(0, `rgba(${Math.min(255, p.cr + 120)},${Math.min(255, p.cg + 130)},255,${alpha * 0.44})`);
+  fill.addColorStop(0.62, `rgba(224,238,252,${alpha})`);
+  fill.addColorStop(1, `rgba(186,210,238,${alpha * 0.36})`);
+  c.fillStyle = fill; c.beginPath(); wingPath(); c.closePath(); c.fill();
+  c.strokeStyle = `rgba(222,238,252,${Math.min(0.92, alpha + 0.18)})`; c.lineWidth = 2.2;
+  c.beginPath(); wingPath(); c.closePath(); c.stroke();
+  c.strokeStyle = `rgba(132,164,196,${alpha * 0.72})`; c.lineWidth = 1.35;
+  for (const u of [0.34, 0.58, 0.78]) {
+    c.beginPath(); c.moveTo(rootX, rootY);
+    c.quadraticCurveTo(rootX + dx * u * 0.62 + nx * halfWidth * (0.38 - u * 0.20),
+      rootY + dy * u * 0.62 + ny * halfWidth * (0.38 - u * 0.20),
+      rootX + dx * u, rootY + dy * u); c.stroke();
+  }
+}
+
+function insectIVFurHalo(c: Ctx, r: () => number, x: number, y: number, rx: number, ry: number,
+  col: string, count: number, length: number): void {
+  c.strokeStyle = col; c.lineCap = 'round';
+  for (let i = 0; i < count; i++) {
+    const a = (i / count) * TAU + (r() - 0.5) * 0.09;
+    const ca = Math.cos(a), sa = Math.sin(a);
+    const x0 = x + ca * rx * 0.90, y0 = y + sa * ry * 0.90;
+    const out = length * (0.58 + r() * 0.70);
+    c.lineWidth = 1.4 + r() * 1.5;
+    c.beginPath(); c.moveTo(x0, y0); c.lineTo(x + ca * (rx + out), y + sa * (ry + out)); c.stroke();
+  }
+}
+
+function insectIVBeeLegs(c: Ctx, p: Pal, cy: number, pollen: boolean, bulky: boolean): void {
+  const roots = [184, 207, 233];
+  for (const side of [-1, 1] as const) {
+    for (let i = 0; i < 3; i++) {
+      const x = roots[i] ?? 207;
+      const kneeX = x + (i - 1) * 12 + (i === 2 ? 23 : -8);
+      const kneeY = cy + side * (bulky ? 63 + i * 10 : 50 + i * 12);
+      const endX = x + (i - 1) * 30 + (i === 2 ? 34 : -18);
+      const endY = cy + side * (bulky ? 104 + i * 5 : 90 + i * 8);
+      limb(c, x, cy + side * 18, endX, endY, kneeX, kneeY, bulky ? 6.2 : 5.2, p.dark);
+      if (pollen && i === 2) {
+        c.save(); c.translate(kneeX, kneeY); c.rotate(side * 0.22);
+        c.fillStyle = '#e5ae26'; c.beginPath(); c.ellipse(0, 0, bulky ? 15 : 13, bulky ? 22 : 19, 0, 0, TAU); c.fill();
+        c.strokeStyle = '#6f4a16'; c.lineWidth = 2.2; c.stroke();
+        c.restore();
+      }
+    }
+  }
+}
+
+function resetHoneybeeIV(c: Ctx, g: G, p: Pal, name: string, sig: 'bumblebee' | 'honeybee' | 'bee'): void {
+  const r = nrng(g, name, 0x2E41);
+  const bulky = sig === 'bumblebee';
+  const generic = sig === 'bee';
+  const cy = bulky ? 220 : generic ? 224 : 216;
+  const wingSpan = bulky ? 0.78 : generic ? 1.02 : 1.08;
+  shadow(c, 226, cy + (bulky ? 118 : 104), bulky ? 132 : 124);
+
+  /* Four independently readable wings: fore pair long, hind pair shorter. */
+  insectIVWing(c, p, 205, cy - 16, 236 + 24 * wingSpan, cy - 139 * wingSpan, 30 * wingSpan, 0.64);
+  insectIVWing(c, p, 219, cy - 10, 310 + 11 * wingSpan, cy - 91 * wingSpan, 24 * wingSpan, 0.52);
+  insectIVWing(c, p, 205, cy + 16, 236 + 24 * wingSpan, cy + 139 * wingSpan, 30 * wingSpan, 0.64);
+  insectIVWing(c, p, 219, cy + 10, 310 + 11 * wingSpan, cy + 91 * wingSpan, 24 * wingSpan, 0.52);
+  insectIVBeeLegs(c, p, cy, !bulky, bulky);
+
+  const thoraxX = 203, thoraxRx = bulky ? 61 : 49, thoraxRy = bulky ? 55 : 42;
+  const abdomenFront = bulky ? 224 : 218, abdomenTip = bulky ? 344 : generic ? 346 : 354;
+  const abdomenRy = bulky ? 52 : generic ? 34 : 32;
+  const abdomenPath = (): void => {
+    c.moveTo(abdomenFront, cy - abdomenRy * 0.78);
+    c.bezierCurveTo(270, cy - abdomenRy * 1.18, abdomenTip - 18, cy - abdomenRy * 0.70, abdomenTip, cy);
+    c.bezierCurveTo(abdomenTip - 18, cy + abdomenRy * 0.70, 270, cy + abdomenRy * 1.18, abdomenFront, cy + abdomenRy * 0.78);
+    c.closePath();
+  };
+  c.fillStyle = bulky ? '#201d1b' : generic ? '#b77524' : '#a9621f';
+  c.beginPath(); abdomenPath(); c.fill();
+  c.save(); c.beginPath(); abdomenPath(); c.clip();
+  const bandXs = bulky ? [250, 291, 327] : generic ? [257, 298, 330] : [253, 289, 324];
+  for (let i = 0; i < bandXs.length; i++) {
+    c.fillStyle = bulky ? (i % 2 === 0 ? '#e3ae25' : '#d69619') : '#2b241f';
+    const bw = bulky ? 22 : 17;
+    c.fillRect((bandXs[i] ?? 280) - bw / 2, cy - abdomenRy * 1.28, bw, abdomenRy * 2.56);
+  }
+  const sheen = c.createLinearGradient(225, cy - abdomenRy, 335, cy + abdomenRy);
+  sheen.addColorStop(0, 'rgba(255,246,198,0.28)'); sheen.addColorStop(0.48, 'rgba(255,255,255,0)'); sheen.addColorStop(1, 'rgba(20,12,8,0.34)');
+  c.fillStyle = sheen; c.fillRect(218, cy - abdomenRy * 1.3, 145, abdomenRy * 2.6); c.restore();
+  c.strokeStyle = bulky ? '#100f0f' : '#4d2d18'; c.lineWidth = 3; c.beginPath(); abdomenPath(); c.stroke();
+
+  c.fillStyle = bulky ? '#29231f' : insectIVGradient(c, p, thoraxX, cy, thoraxRx);
+  c.beginPath(); c.ellipse(thoraxX, cy, thoraxRx, thoraxRy, 0, 0, TAU); c.fill();
+  c.strokeStyle = bulky ? '#11100f' : p.dark; c.lineWidth = 3; c.stroke();
+  if (bulky) {
+    c.save(); c.beginPath(); c.ellipse(thoraxX, cy, thoraxRx, thoraxRy, 0, 0, TAU); c.clip();
+    c.fillStyle = '#e3ae25'; c.fillRect(thoraxX - 22, cy - thoraxRy - 4, 29, thoraxRy * 2 + 8);
+    c.restore();
+  }
+
+  const headX = bulky ? 139 : 146, headRx = bulky ? 39 : 33, headRy = bulky ? 35 : 31;
+  c.fillStyle = bulky ? '#25211f' : insectIVGradient(c, p, headX, cy, headRx);
+  c.beginPath(); c.ellipse(headX, cy, headRx, headRy, 0, 0, TAU); c.fill();
+  c.strokeStyle = p.dark; c.lineWidth = 3; c.stroke();
+  for (const side of [-1, 1] as const) eyeDot(c, headX - 10, cy + side * 15, bulky ? 7 : 6.5);
+  c.strokeStyle = p.dark; c.lineWidth = 3.4; c.lineCap = 'round';
+  for (const side of [-1, 1] as const) {
+    c.beginPath(); c.moveTo(headX - 22, cy + side * 18); c.quadraticCurveTo(headX - 45, cy + side * 34, headX - 55, cy + side * 48); c.stroke();
+  }
+
+  const hair = bulky ? 'rgba(238,186,58,0.90)' : 'rgba(103,66,31,0.72)';
+  insectIVFurHalo(c, r, thoraxX, cy, thoraxRx, thoraxRy, hair, bulky ? 74 : 46, bulky ? 10 : 7);
+  insectIVFurHalo(c, r, 280, cy, (abdomenTip - abdomenFront) * 0.47, abdomenRy * 0.91,
+    bulky ? 'rgba(225,170,40,0.78)' : 'rgba(83,50,27,0.64)', bulky ? 72 : 36, bulky ? 8 : 5);
+  if (!bulky) {
+    /* Thoracic pile is continuous with the leg and wing roots, not a decal. */
+    c.strokeStyle = 'rgba(225,176,91,0.62)'; c.lineWidth = 2;
+    for (let i = 0; i < 20; i++) {
+      const a = r() * TAU, rr = Math.sqrt(r());
+      const x = thoraxX + Math.cos(a) * thoraxRx * rr * 0.78;
+      const y = cy + Math.sin(a) * thoraxRy * rr * 0.78;
+      c.beginPath(); c.moveTo(x - 3, y + 3); c.lineTo(x + 4, y - 4); c.stroke();
+    }
+  }
+}
+
+function resetOrchidBeeIV(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0x0EC4);
+  const cy = 216;
+  shadow(c, 228, 328, 125);
+  insectIVWing(c, p, 205, cy - 15, 265, 74, 34, 0.58);
+  insectIVWing(c, p, 221, cy - 10, 325, 112, 27, 0.48);
+  insectIVWing(c, p, 205, cy + 15, 265, 358, 34, 0.58);
+  insectIVWing(c, p, 221, cy + 10, 325, 320, 27, 0.48);
+
+  for (const side of [-1, 1] as const) {
+    limb(c, 188, cy + side * 15, 138, cy + side * 91, 158, cy + side * 57, 4.6, p.dark);
+    limb(c, 210, cy + side * 18, 215, cy + side * 105, 190, cy + side * 67, 4.8, p.dark);
+    limb(c, 230, cy + side * 16, 300, cy + side * 103, 268, cy + side * 66, 5.4, p.dark);
+    /* The enlarged male tibia is the leg segment itself: its root and tarsus
+       visibly continue through the polished reservoir. */
+    const tx = 268, ty = cy + side * 66;
+    c.fillStyle = insectIVGradient(c, p, tx, ty, 23);
+    c.beginPath(); c.ellipse(tx, ty, 18, 27, side * 0.34, 0, TAU); c.fill();
+    c.strokeStyle = '#0c4b3c'; c.lineWidth = 2.6; c.stroke();
+    c.fillStyle = 'rgba(185,255,225,0.55)'; c.beginPath(); c.ellipse(tx - 5, ty - side * 7, 4, 10, side * 0.34, 0, TAU); c.fill();
+  }
+
+  const abdomenPath = (): void => {
+    c.moveTo(220, cy - 29); c.bezierCurveTo(274, cy - 40, 336, cy - 26, 348, cy);
+    c.bezierCurveTo(336, cy + 26, 274, cy + 40, 220, cy + 29); c.closePath();
+  };
+  c.fillStyle = insectIVGradient(c, p, 282, cy, 72); c.beginPath(); abdomenPath(); c.fill();
+  c.strokeStyle = '#0b5442'; c.lineWidth = 3; c.stroke();
+  c.save(); c.beginPath(); abdomenPath(); c.clip();
+  for (let i = 0; i < 18; i++) {
+    const x = 232 + r() * 105, y = cy - 24 + r() * 48;
+    softMark(c, x, y, 7 + r() * 9, 5 + r() * 6, i % 2 ? '70,255,211' : '55,135,255', 0.22);
+  }
+  c.restore();
+  c.fillStyle = insectIVGradient(c, p, 198, cy, 52); c.beginPath(); c.ellipse(198, cy, 51, 43, 0, 0, TAU); c.fill();
+  c.strokeStyle = '#0b5442'; c.lineWidth = 3; c.stroke();
+  c.fillStyle = insectIVGradient(c, p, 143, cy, 34); c.beginPath(); c.ellipse(143, cy, 34, 31, 0, 0, TAU); c.fill(); c.stroke();
+  for (const side of [-1, 1] as const) eyeDot(c, 132, cy + side * 13, 6.5);
+  c.strokeStyle = '#183a30'; c.lineWidth = 3; c.lineCap = 'round';
+  for (const side of [-1, 1] as const) { c.beginPath(); c.moveTo(124, cy + side * 17); c.quadraticCurveTo(97, cy + side * 29, 83, cy + side * 43); c.stroke(); }
+
+  /* A heavy continuous tongue leaves the mouth, sweeps beneath the body, and
+     trails nearly the animal's full length. */
+  c.strokeStyle = '#7a3f48'; c.lineWidth = 8; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(115, cy + 7); c.bezierCurveTo(94, cy + 48, 186, cy + 78, 277, cy + 75);
+  c.bezierCurveTo(317, cy + 74, 340, cy + 63, 351, cy + 51); c.stroke();
+  c.strokeStyle = 'rgba(255,179,188,0.64)'; c.lineWidth = 2.2;
+  c.beginPath(); c.moveTo(116, cy + 5); c.bezierCurveTo(98, cy + 43, 187, cy + 70, 277, cy + 68); c.stroke();
+}
+
+function resetButterflyIV(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0xB077);
+  const cx = 220, rootY = 218;
+  shadow(c, cx, 352, 146);
+  for (const side of [-1, 1] as const) {
+    c.fillStyle = side < 0 ? '#e6862c' : '#dc7025';
+    c.beginPath(); c.moveTo(cx + side * 13, rootY);
+    c.bezierCurveTo(cx + side * 65, 104, cx + side * 174, 55, cx + side * 169, 150);
+    c.bezierCurveTo(cx + side * 168, 194, cx + side * 90, 224, cx + side * 17, rootY + 24); c.closePath(); c.fill();
+    c.strokeStyle = '#3d241d'; c.lineWidth = 4; c.stroke();
+    c.fillStyle = side < 0 ? '#cb5523' : '#bd4722';
+    c.beginPath(); c.moveTo(cx + side * 15, rootY + 20);
+    c.bezierCurveTo(cx + side * 82, 228, cx + side * 162, 260, cx + side * 143, 333);
+    c.bezierCurveTo(cx + side * 93, 353, cx + side * 32, 299, cx + side * 12, rootY + 35); c.closePath(); c.fill(); c.stroke();
+    c.strokeStyle = 'rgba(67,35,25,0.70)'; c.lineWidth = 2.4;
+    for (const u of [0.30, 0.52, 0.74]) {
+      c.beginPath(); c.moveTo(cx + side * 10, rootY + 8); c.quadraticCurveTo(cx + side * 72, rootY - 54 * u, cx + side * (68 + 100 * u), 95 + 76 * u); c.stroke();
+    }
+    for (const [x, y, rad] of [[112, 144, 17], [151, 249, 14], [118, 284, 11]] as Array<[number, number, number]>) {
+      const px = side < 0 ? x : S - x;
+      c.fillStyle = '#2b211f'; c.beginPath(); c.arc(px, y, rad, 0, TAU); c.fill();
+      c.fillStyle = '#f2c84c'; c.beginPath(); c.arc(px, y, rad * 0.54, 0, TAU); c.fill();
+      c.fillStyle = '#4b79a8'; c.beginPath(); c.arc(px, y, rad * 0.24, 0, TAU); c.fill();
+    }
+  }
+  /* Fine deterministic scale flecks remain inside the wing surfaces. */
+  c.fillStyle = 'rgba(255,226,151,0.54)';
+  for (let i = 0; i < 34; i++) {
+    const side = i % 2 ? -1 : 1, x = cx + side * (42 + r() * 105), y = 115 + r() * 174;
+    c.beginPath(); c.arc(x, y, 1.8 + r() * 2.4, 0, TAU); c.fill();
+  }
+  c.fillStyle = '#34251f'; c.beginPath(); c.ellipse(cx, 245, 15, 80, 0, 0, TAU); c.fill();
+  c.fillStyle = insectIVGradient(c, p, cx, 194, 25); c.beginPath(); c.ellipse(cx, 196, 25, 30, 0, 0, TAU); c.fill();
+  c.fillStyle = '#2c211d'; c.beginPath(); c.arc(cx, 157, 20, 0, TAU); c.fill();
+  for (const side of [-1, 1] as const) {
+    eyeDot(c, cx + side * 9, 153, 5.5);
+    c.strokeStyle = '#33231f'; c.lineWidth = 3.4; c.beginPath(); c.moveTo(cx + side * 8, 145);
+    c.quadraticCurveTo(cx + side * 34, 114, cx + side * 55, 96); c.stroke();
+    c.fillStyle = '#33231f'; c.beginPath(); c.arc(cx + side * 57, 94, 7, 0, TAU); c.fill();
+  }
+  /* Watch-spring proboscis: its mouth root and coil remain visible at 132. */
+  c.strokeStyle = '#6e3c2d'; c.lineWidth = 6; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(cx - 4, 171); c.quadraticCurveTo(cx - 26, 185, cx - 20, 205); c.stroke();
+  c.beginPath(); c.arc(cx - 4, 207, 20, Math.PI * 0.92, Math.PI * 3.08); c.stroke();
+  c.lineWidth = 3.2; c.beginPath(); c.arc(cx - 4, 207, 9, Math.PI * 0.94, Math.PI * 3.04); c.stroke();
+}
+
+function resetMothIV(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0xA407);
+  const cx = 220;
+  shadow(c, cx, 349, 137);
+  /* Two broad pairs overlap into a pitched roof; the central furry thorax later
+     grows over their roots, eliminating any pasted-wing seam. */
+  for (const side of [-1, 1] as const) {
+    const tipX = cx + side * 158;
+    const wingFill = c.createLinearGradient(cx, 180, tipX, 305);
+    wingFill.addColorStop(0, '#9b8873'); wingFill.addColorStop(0.58, '#716458'); wingFill.addColorStop(1, '#4b433e');
+    c.fillStyle = wingFill;
+    c.beginPath(); c.moveTo(cx + side * 10, 183);
+    c.bezierCurveTo(cx + side * 79, 126, cx + side * 160, 147, tipX, 229);
+    c.bezierCurveTo(cx + side * 150, 291, cx + side * 73, 323, cx + side * 14, 274); c.closePath(); c.fill();
+    c.strokeStyle = '#342e2b'; c.lineWidth = 4; c.stroke();
+    c.strokeStyle = 'rgba(225,210,186,0.34)'; c.lineWidth = 2;
+    for (let i = 0; i < 6; i++) {
+      c.beginPath(); c.moveTo(cx + side * 10, 192 + i * 7);
+      c.quadraticCurveTo(cx + side * (65 + i * 9), 176 + i * 14, cx + side * (126 + i * 4), 203 + i * 13); c.stroke();
+    }
+    c.fillStyle = 'rgba(210,179,128,0.48)';
+    for (let i = 0; i < 20; i++) {
+      const x = cx + side * (35 + r() * 108), y = 174 + r() * 112;
+      c.beginPath(); c.arc(x, y, 2 + r() * 4, 0, TAU); c.fill();
+    }
+  }
+  c.fillStyle = '#514840'; c.beginPath(); c.ellipse(cx, 251, 28, 79, 0, 0, TAU); c.fill();
+  c.strokeStyle = '#302a27'; c.lineWidth = 3; c.stroke();
+  c.fillStyle = insectIVGradient(c, p, cx, 186, 38); c.beginPath(); c.ellipse(cx, 192, 39, 47, 0, 0, TAU); c.fill(); c.stroke();
+  c.fillStyle = '#403733'; c.beginPath(); c.ellipse(cx, 145, 25, 24, 0, 0, TAU); c.fill();
+  insectIVFurHalo(c, r, cx, 204, 38, 58, 'rgba(208,190,166,0.78)', 74, 9);
+  insectIVFurHalo(c, r, cx, 263, 25, 64, 'rgba(170,151,130,0.62)', 54, 7);
+  for (const side of [-1, 1] as const) {
+    eyeDot(c, cx + side * 9, 143, 5);
+    const bx = cx + side * 8, by = 133, ex = cx + side * 86, ey = 91;
+    c.strokeStyle = '#3a302c'; c.lineWidth = 4; c.beginPath(); c.moveTo(bx, by); c.quadraticCurveTo(cx + side * 46, 111, ex, ey); c.stroke();
+    /* Long comb branches turn each antenna into a feather at card scale. */
+    for (let i = 1; i <= 8; i++) {
+      const u = i / 9, x = bx + (ex - bx) * u, y = by + (ey - by) * u;
+      const reach = 16 * (1 - u * 0.45);
+      c.lineWidth = 2.2;
+      c.beginPath(); c.moveTo(x, y); c.lineTo(x - side * 5, y - reach); c.stroke();
+      c.beginPath(); c.moveTo(x, y); c.lineTo(x + side * 8, y + reach * 0.72); c.stroke();
+    }
+  }
+}
+
+function resetFlyIV(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0xF17A);
+  const cy = 218;
+  shadow(c, 225, 330, 122);
+  /* Diptera: exactly one membrane on each side, then a knobbed haltere pair. */
+  insectIVWing(c, p, 218, cy - 15, 308, 78, 41, 0.68);
+  insectIVWing(c, p, 218, cy + 15, 308, 358, 41, 0.68);
+  for (const side of [-1, 1] as const) {
+    limb(c, 191, cy + side * 15, 122, cy + side * 101, 151, cy + side * 60, 4.3, '#2d3236');
+    limb(c, 213, cy + side * 19, 211, cy + side * 114, 185, cy + side * 72, 4.5, '#2d3236');
+    limb(c, 236, cy + side * 16, 309, cy + side * 100, 273, cy + side * 63, 4.2, '#2d3236');
+    c.strokeStyle = '#6f675c'; c.lineWidth = 3; c.beginPath(); c.moveTo(244, cy + side * 12); c.lineTo(267, cy + side * 38); c.stroke();
+    c.fillStyle = '#b6aa91'; c.beginPath(); c.ellipse(271, cy + side * 43, 8, 12, side * 0.35, 0, TAU); c.fill();
+    c.strokeStyle = '#514a42'; c.lineWidth = 1.8; c.stroke();
+  }
+  const abdomenPath = (): void => {
+    c.moveTo(235, cy - 27); c.bezierCurveTo(278, cy - 35, 335, cy - 24, 349, cy);
+    c.bezierCurveTo(335, cy + 24, 278, cy + 35, 235, cy + 27); c.closePath();
+  };
+  c.fillStyle = '#596168'; c.beginPath(); abdomenPath(); c.fill(); c.strokeStyle = '#252b30'; c.lineWidth = 3; c.stroke();
+  c.fillStyle = insectIVGradient(c, p, 213, cy, 59); c.beginPath(); c.ellipse(213, cy, 57, 49, 0, 0, TAU); c.fill(); c.stroke();
+  c.save(); c.beginPath(); c.ellipse(213, cy, 57, 49, 0, 0, TAU); c.clip();
+  c.strokeStyle = '#30373c'; c.lineWidth = 7;
+  for (const y of [cy - 27, cy - 9, cy + 9, cy + 27]) { c.beginPath(); c.moveTo(170, y); c.quadraticCurveTo(213, y - 7, 256, y); c.stroke(); }
+  c.restore();
+  /* The head is almost all paired red compound eye. */
+  c.fillStyle = '#4a4541'; c.beginPath(); c.ellipse(143, cy, 47, 48, 0, 0, TAU); c.fill(); c.strokeStyle = '#252422'; c.lineWidth = 3; c.stroke();
+  for (const side of [-1, 1] as const) {
+    const ey = cy + side * 22;
+    const eg = c.createRadialGradient(126, ey - 7, 2, 136, ey, 31);
+    eg.addColorStop(0, '#ff8a69'); eg.addColorStop(0.46, '#b92d25'); eg.addColorStop(1, '#591718');
+    c.fillStyle = eg; c.beginPath(); c.ellipse(136, ey, 28, 22, 0, 0, TAU); c.fill(); c.strokeStyle = '#3d1718'; c.lineWidth = 2; c.stroke();
+  }
+  c.strokeStyle = 'rgba(28,30,33,0.78)'; c.lineWidth = 2;
+  for (let i = 0; i < 30; i++) {
+    const a = r() * TAU, rr = Math.sqrt(r());
+    const x = 213 + Math.cos(a) * 49 * rr, y = cy + Math.sin(a) * 42 * rr;
+    c.beginPath(); c.moveTo(x, y); c.lineTo(x + (r() - 0.5) * 12, y - 7 - r() * 7); c.stroke();
+  }
+}
+
+function resetBlackFlyIV(c: Ctx, p: Pal): void {
+  const cy = 229;
+  shadow(c, 225, 320, 112);
+  insectIVWing(c, p, 225, cy - 30, 318, 130, 38, 0.66);
+  insectIVWing(c, p, 225, cy + 14, 319, 311, 36, 0.62);
+  for (const side of [-1, 1] as const) {
+    limb(c, 202, cy + side * 11, 150, cy + side * 83, 174, cy + side * 52, 4.6, '#242427');
+    limb(c, 226, cy + side * 13, 230, cy + side * 91, 210, cy + side * 58, 4.5, '#242427');
+    limb(c, 248, cy + side * 9, 300, cy + side * 70, 276, cy + side * 46, 4.2, '#242427');
+  }
+  /* One compact outline: the thoracic arch descends continuously over the
+     bowed head and into a short abdomen. */
+  const body = (): void => {
+    c.moveTo(120, 242); c.bezierCurveTo(128, 211, 151, 196, 173, 196);
+    c.bezierCurveTo(188, 132, 260, 123, 286, 178);
+    c.bezierCurveTo(331, 183, 349, 212, 338, 238);
+    c.bezierCurveTo(321, 268, 276, 272, 245, 260);
+    c.bezierCurveTo(204, 284, 150, 279, 120, 242); c.closePath();
+  };
+  c.fillStyle = insectIVGradient(c, p, 225, 212, 103); c.beginPath(); body(); c.fill();
+  c.strokeStyle = '#141518'; c.lineWidth = 4; c.stroke();
+  c.strokeStyle = 'rgba(164,170,178,0.34)'; c.lineWidth = 3;
+  for (const x of [220, 249, 278, 307]) { c.beginPath(); c.moveTo(x, 180); c.quadraticCurveTo(x + 8, 216, x - 1, 252); c.stroke(); }
+  c.fillStyle = '#2e3035'; c.beginPath(); c.ellipse(137, 241, 39, 34, -0.28, 0, TAU); c.fill(); c.strokeStyle = '#111216'; c.lineWidth = 3; c.stroke();
+  for (const side of [-1, 1] as const) eyeDot(c, 123, 241 + side * 13, 7.5);
+  c.strokeStyle = '#1b1c20'; c.lineWidth = 3;
+  for (const side of [-1, 1] as const) { c.beginPath(); c.moveTo(115, 236 + side * 11); c.lineTo(85, 231 + side * 23); c.stroke(); }
+}
+
+function resetMosquitoIV(c: Ctx, p: Pal): void {
+  c.save(); c.translate(220, 220); c.rotate(-0.18);
+  shadow(c, 18, 126, 137);
+  /* Long legs first so their roots disappear naturally beneath the thorax. */
+  const roots = [-20, 1, 25];
+  for (const side of [-1, 1] as const) {
+    for (let i = 0; i < 3; i++) {
+      const x = roots[i] ?? 0;
+      const hind = i === 2;
+      const kneeX = hind ? 83 : x + (i - 1) * 42;
+      const kneeY = side * (hind ? 82 : 73 + i * 17);
+      const endX = hind ? 147 : x + (i - 1) * 74;
+      const endY = side * (hind ? 119 : 141 + i * 9);
+      limb(c, x, side * 11, endX, endY, kneeX, kneeY, 4.2, '#3a3538');
+    }
+  }
+  /* Exactly one narrow wing on either side. */
+  insectIVWing(c, p, 5, -11, 92, -101, 20, 0.58);
+  insectIVWing(c, p, 5, 11, 92, 101, 20, 0.58);
+  c.fillStyle = '#514b4e'; c.beginPath(); c.ellipse(4, 0, 31, 27, 0, 0, TAU); c.fill(); c.strokeStyle = '#2b282b'; c.lineWidth = 3; c.stroke();
+  const abdomen = (): void => {
+    c.moveTo(21, -17); c.bezierCurveTo(65, -21, 120, -13, 148, 0);
+    c.bezierCurveTo(120, 13, 65, 21, 21, 17); c.closePath();
+  };
+  c.fillStyle = insectIVGradient(c, p, 76, 0, 66); c.beginPath(); abdomen(); c.fill(); c.strokeStyle = '#302b2e'; c.lineWidth = 3; c.stroke();
+  c.strokeStyle = 'rgba(32,29,31,0.54)'; c.lineWidth = 2;
+  for (const x of [55, 80, 105, 128]) { c.beginPath(); c.moveTo(x, -14); c.lineTo(x, 14); c.stroke(); }
+  c.fillStyle = '#494246'; c.beginPath(); c.arc(-36, 0, 25, 0, TAU); c.fill(); c.strokeStyle = '#282429'; c.lineWidth = 3; c.stroke();
+  for (const side of [-1, 1] as const) eyeDot(c, -43, side * 10, 6);
+  c.strokeStyle = '#352f33'; c.lineWidth = 6; c.lineCap = 'round'; c.beginPath(); c.moveTo(-57, 0); c.lineTo(-171, 0); c.stroke();
+  c.strokeStyle = 'rgba(225,192,164,0.64)'; c.lineWidth = 1.8; c.beginPath(); c.moveTo(-61, -1.5); c.lineTo(-169, -1.5); c.stroke();
+  for (const side of [-1, 1] as const) {
+    c.strokeStyle = '#3b3438'; c.lineWidth = 2.6; c.beginPath(); c.moveTo(-48, side * 12); c.quadraticCurveTo(-77, side * 31, -93, side * 45); c.stroke();
+  }
+  c.restore();
+}
+
+function resetMantisIV(c: Ctx, p: Pal): void {
+  shadow(c, 231, 349, 142);
+  /* Four walking legs, behind the raised continuous front body. */
+  for (const side of [-1, 1] as const) {
+    limb(c, 282, 239 + side * 10, 255, 337 + side * 5, 231, 289 + side * 15, 5, p.dark);
+    limb(c, 319, 241 + side * 9, 361, 326 + side * 5, 350, 279 + side * 18, 5, p.dark);
+  }
+  const abdomen = (): void => {
+    c.moveTo(251, 204); c.bezierCurveTo(298, 185, 364, 205, 382, 239);
+    c.bezierCurveTo(358, 274, 298, 283, 250, 252); c.closePath();
+  };
+  c.fillStyle = insectIVGradient(c, p, 315, 230, 79); c.beginPath(); abdomen(); c.fill(); c.strokeStyle = p.dark; c.lineWidth = 3; c.stroke();
+  c.fillStyle = 'rgba(179,211,112,0.38)'; c.beginPath(); c.moveTo(269, 213); c.quadraticCurveTo(325, 205, 367, 237); c.quadraticCurveTo(326, 250, 277, 246); c.closePath(); c.fill();
+  /* Elongated prothorax is a tapered bridge, not a round bead. */
+  c.fillStyle = insectIVGradient(c, p, 210, 196, 63); c.beginPath();
+  c.moveTo(268, 216); c.bezierCurveTo(230, 194, 192, 159, 163, 143);
+  c.lineTo(145, 173); c.bezierCurveTo(182, 188, 220, 232, 263, 244); c.closePath(); c.fill();
+  c.strokeStyle = p.dark; c.lineWidth = 3; c.stroke();
+  /* Triangular swivelling head, joined across the prothorax end. */
+  c.fillStyle = insectIVGradient(c, p, 131, 143, 38); c.beginPath();
+  c.moveTo(91, 122); c.quadraticCurveTo(132, 112, 168, 132); c.lineTo(145, 173); c.quadraticCurveTo(117, 174, 91, 122); c.closePath(); c.fill(); c.stroke();
+  for (const side of [-1, 1] as const) eyeDot(c, 119, 140 + side * 17, 8.5);
+  c.strokeStyle = p.dark; c.lineWidth = 3;
+  c.beginPath(); c.moveTo(105, 127); c.quadraticCurveTo(80, 100, 61, 86); c.stroke();
+  c.beginPath(); c.moveTo(139, 122); c.quadraticCurveTo(126, 90, 116, 70); c.stroke();
+  /* Both thick raptorial arms root on the prothorax, fold back in prayer, and
+     carry a visible inner spine comb. */
+  for (const side of [-1, 1] as const) {
+    const ox = 190, oy = 183 + side * 13;
+    const elbowX = 142, elbowY = 222 + side * 34;
+    const wristX = 184, wristY = 248 + side * 25;
+    c.strokeStyle = insectIVTone(p, 0.82); c.lineCap = 'round'; c.lineWidth = 16;
+    c.beginPath(); c.moveTo(ox, oy); c.lineTo(elbowX, elbowY); c.stroke();
+    c.lineWidth = 11; c.beginPath(); c.moveTo(elbowX, elbowY); c.lineTo(wristX, wristY); c.stroke();
+    c.strokeStyle = '#28321d'; c.lineWidth = 2.2;
+    for (let i = 1; i <= 5; i++) {
+      const u = i / 6, x = elbowX + (wristX - elbowX) * u, y = elbowY + (wristY - elbowY) * u;
+      c.beginPath(); c.moveTo(x, y); c.lineTo(x - 9, y + side * 5); c.stroke();
+    }
+  }
+}
+
+function resetTermiteIV(c: Ctx, p: Pal): void {
+  const cy = 227;
+  shadow(c, 220, 306, 134);
+  c.strokeStyle = '#927f66'; c.lineCap = 'round';
+  for (const side of [-1, 1] as const) {
+    for (const [x, dx] of [[165, -55], [217, -5], [265, 53]] as Array<[number, number]>) {
+      limb(c, x, cy + side * 15, x + dx, cy + side * 76, x + dx * 0.55, cy + side * 49, 4.5, '#927f66');
+    }
+  }
+  /* Broad overlaps create one soft worker body without an ant/wasp petiole. */
+  c.fillStyle = 'rgba(219,205,172,0.96)'; c.beginPath(); c.ellipse(277, cy, 86, 43, 0, 0, TAU); c.fill();
+  c.strokeStyle = '#9f8c70'; c.lineWidth = 3; c.stroke();
+  c.fillStyle = 'rgba(226,214,184,0.98)'; c.beginPath(); c.ellipse(205, cy, 56, 40, 0, 0, TAU); c.fill(); c.stroke();
+  c.fillStyle = 'rgba(232,221,194,0.98)'; c.beginPath(); c.ellipse(139, cy, 48, 39, 0, 0, TAU); c.fill(); c.stroke();
+  c.save(); c.beginPath(); c.ellipse(277, cy, 86, 43, 0, 0, TAU); c.clip();
+  c.fillStyle = 'rgba(255,255,236,0.28)'; c.fillRect(205, cy - 38, 135, 22); c.restore();
+  c.strokeStyle = 'rgba(120,104,82,0.48)'; c.lineWidth = 2;
+  for (const x of [239, 271, 303]) { c.beginPath(); c.moveTo(x, cy - 39); c.quadraticCurveTo(x + 6, cy, x, cy + 39); c.stroke(); }
+  /* Blind worker: deliberately no eye. Straight feelers are visibly beaded. */
+  for (const side of [-1, 1] as const) {
+    const x0 = 105, y0 = cy + side * 16, x1 = 42, y1 = cy + side * 51;
+    c.strokeStyle = '#9a8568'; c.lineWidth = 3; c.beginPath(); c.moveTo(x0, y0); c.lineTo(x1, y1); c.stroke();
+    for (let i = 1; i <= 6; i++) {
+      const u = i / 7; c.fillStyle = '#b9a383'; c.beginPath(); c.arc(x0 + (x1 - x0) * u, y0 + (y1 - y0) * u, 4.4 - u * 0.8, 0, TAU); c.fill();
+      c.strokeStyle = '#826f57'; c.lineWidth = 1.2; c.stroke();
+    }
+  }
+}
+
+function insectIVFringedWing(c: Ctx, x0: number, y0: number, x1: number, y1: number, width: number): void {
+  const dx = x1 - x0, dy = y1 - y0, len = Math.max(1, Math.hypot(dx, dy)), nx = -dy / len, ny = dx / len;
+  c.fillStyle = 'rgba(226,232,211,0.50)'; c.beginPath(); c.moveTo(x0 + nx * width, y0 + ny * width);
+  c.lineTo(x1 + nx * width * 0.35, y1 + ny * width * 0.35); c.lineTo(x1 - nx * width * 0.35, y1 - ny * width * 0.35);
+  c.lineTo(x0 - nx * width, y0 - ny * width); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(151,143,112,0.78)'; c.lineWidth = 1.8; c.stroke();
+  for (let i = 1; i <= 13; i++) {
+    const u = i / 14, x = x0 + dx * u, y = y0 + dy * u, hair = 12 * (0.65 + u * 0.35);
+    c.lineWidth = 1.2; c.beginPath(); c.moveTo(x + nx * width * 0.55, y + ny * width * 0.55); c.lineTo(x + nx * (width + hair), y + ny * (width + hair)); c.stroke();
+    c.beginPath(); c.moveTo(x - nx * width * 0.55, y - ny * width * 0.55); c.lineTo(x - nx * (width + hair), y - ny * (width + hair)); c.stroke();
+  }
+}
+
+function resetThripsIV(c: Ctx, p: Pal): void {
+  const cy = 220;
+  shadow(c, 228, 293, 140);
+  insectIVFringedWing(c, 190, cy - 11, 341, cy - 65, 8);
+  insectIVFringedWing(c, 194, cy - 3, 354, cy - 27, 7);
+  insectIVFringedWing(c, 190, cy + 11, 341, cy + 65, 8);
+  insectIVFringedWing(c, 194, cy + 3, 354, cy + 27, 7);
+  for (const side of [-1, 1] as const) {
+    limb(c, 166, cy + side * 7, 128, cy + side * 55, 144, cy + side * 35, 3.4, p.dark);
+    limb(c, 208, cy + side * 9, 208, cy + side * 61, 191, cy + side * 39, 3.4, p.dark);
+    limb(c, 253, cy + side * 7, 292, cy + side * 55, 274, cy + side * 34, 3.2, p.dark);
+  }
+  const body = (): void => {
+    c.moveTo(126, cy - 18); c.bezierCurveTo(178, cy - 28, 308, cy - 20, 365, cy);
+    c.bezierCurveTo(308, cy + 20, 178, cy + 28, 126, cy + 18); c.closePath();
+  };
+  c.fillStyle = insectIVGradient(c, p, 240, cy, 124); c.beginPath(); body(); c.fill(); c.strokeStyle = '#70603e'; c.lineWidth = 3; c.stroke();
+  c.strokeStyle = 'rgba(92,75,45,0.42)'; c.lineWidth = 2;
+  for (const x of [186, 225, 264, 303, 337]) { c.beginPath(); c.moveTo(x, cy - 18); c.lineTo(x, cy + 18); c.stroke(); }
+  c.fillStyle = '#b9a05c'; c.beginPath(); c.ellipse(119, cy, 31, 25, 0, 0, TAU); c.fill(); c.strokeStyle = '#6e5b35'; c.lineWidth = 3; c.stroke();
+  eyeDot(c, 108, cy - 10, 4.4);
+  /* The one-sided rasping cone breaks the lower head contour at 132. */
+  c.fillStyle = '#5f4530'; c.beginPath(); c.moveTo(94, cy + 2); c.lineTo(57, cy + 24); c.lineTo(101, cy + 24); c.closePath(); c.fill();
+  c.strokeStyle = '#392c22'; c.lineWidth = 2.4; c.stroke();
+  c.strokeStyle = '#6c5939'; c.lineWidth = 2.6;
+  for (const side of [-1, 1] as const) { c.beginPath(); c.moveTo(98, cy + side * 13); c.lineTo(66, cy + side * 36); c.stroke(); }
+}
+
+function resetWaspIV(c: Ctx, p: Pal): void {
+  const cy = 218;
+  shadow(c, 229, 326, 127);
+  insectIVWing(c, p, 207, cy - 16, 281, 82, 24, 0.58);
+  insectIVWing(c, p, 222, cy - 10, 335, 132, 18, 0.48);
+  insectIVWing(c, p, 207, cy + 16, 281, 354, 24, 0.58);
+  insectIVWing(c, p, 222, cy + 10, 335, 304, 18, 0.48);
+  for (const side of [-1, 1] as const) {
+    limb(c, 184, cy + side * 14, 125, cy + side * 91, 149, cy + side * 55, 4, '#2b2620');
+    limb(c, 208, cy + side * 17, 207, cy + side * 108, 183, cy + side * 63, 4.2, '#2b2620');
+    limb(c, 229, cy + side * 12, 302, cy + side * 91, 270, cy + side * 55, 4, '#2b2620');
+  }
+  c.fillStyle = '#2c2823'; c.beginPath(); c.ellipse(198, cy, 49, 41, 0, 0, TAU); c.fill(); c.strokeStyle = '#171512'; c.lineWidth = 3; c.stroke();
+  c.fillStyle = '#d9ad20'; c.beginPath(); c.ellipse(139, cy, 35, 31, 0, 0, TAU); c.fill(); c.strokeStyle = '#2c2417'; c.stroke();
+  for (const side of [-1, 1] as const) eyeDot(c, 127, cy + side * 13, 6);
+  /* Petiole is a real narrow bridge under both torso shapes. */
+  c.strokeStyle = '#2a241b'; c.lineWidth = 10; c.lineCap = 'round'; c.beginPath(); c.moveTo(239, cy); c.lineTo(273, cy); c.stroke();
+  const abdomen = (): void => {
+    c.moveTo(265, cy - 26); c.bezierCurveTo(302, cy - 42, 352, cy - 31, 382, cy);
+    c.bezierCurveTo(352, cy + 31, 302, cy + 42, 265, cy + 26); c.closePath();
+  };
+  c.fillStyle = '#e2b51f'; c.beginPath(); abdomen(); c.fill(); c.strokeStyle = '#272018'; c.lineWidth = 3; c.stroke();
+  c.save(); c.beginPath(); abdomen(); c.clip(); c.fillStyle = '#24211d';
+  for (const x of [292, 326, 357]) c.fillRect(x - 8, cy - 45, 16, 90);
+  c.restore();
+  c.fillStyle = '#261f18'; c.beginPath(); c.moveTo(381, cy - 5); c.lineTo(404, cy); c.lineTo(381, cy + 5); c.closePath(); c.fill();
+  c.strokeStyle = '#29231d'; c.lineWidth = 3;
+  for (const side of [-1, 1] as const) { c.beginPath(); c.moveTo(118, cy + side * 17); c.quadraticCurveTo(92, cy + side * 30, 76, cy + side * 44); c.stroke(); }
+}
+
+function resetInsectIV(c: Ctx, g: G, p: Pal, name: string, sig: ResetInsectIVSignature): void {
+  switch (sig) {
+    case 'bumblebee': case 'honeybee': case 'bee': resetHoneybeeIV(c, g, p, name, sig); return;
+    case 'orchidBee': resetOrchidBeeIV(c, g, p, name); return;
+    case 'butterfly': resetButterflyIV(c, g, p, name); return;
+    case 'fly': resetFlyIV(c, g, p, name); return;
+    case 'mantis': resetMantisIV(c, p); return;
+    case 'moth': resetMothIV(c, g, p, name); return;
+    case 'termite': resetTermiteIV(c, p); return;
+    case 'thrips': resetThripsIV(c, p); return;
+    case 'wasp': resetWaspIV(c, p); return;
+    case 'blackFly': resetBlackFlyIV(c, p); return;
+    case 'mosquito': resetMosquitoIV(c, p); return;
+    default: { const exhaustive: never = sig; return exhaustive; }
+  }
+}
+
 export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''): void {
   /* ★ D-ART-114 — the species hue axis. 26 insects took the rarity roll purely
      because this painter had no field for a colour; `hued` was already here. */
   const p = hued(pIn, spec.hue);
+  const resetSignature = RESET_INSECT_IV[name];
+  if (resetSignature) { resetInsectIV(c, g, p, name, resetSignature); return; }
   const r = nrng(g, name, 0x15EC);
   const cx = S * 0.50, cy = S * 0.52;
   const sc = (spec.stick ? 1.35 : 1) * nv(name, 0x11, 0.10);
@@ -810,6 +1394,7 @@ function resetArachnidIII(c: Ctx, p: Pal, sig: ResetArachnidIIISignature): void 
     case 'scorpion': resetScorpionIII(c, p); return;
     case 'spider': resetTrueSpiderIII(c, p, false); return;
     case 'tarantula': resetTrueSpiderIII(c, p, true); return;
+    default: { const exhaustive: never = sig; return exhaustive; }
   }
 }
 
@@ -1988,6 +2573,7 @@ function resetShrimpII(c: Ctx, g: G, p: Pal, name: string, sig: ResetShrimpIISig
     case 'copepod': resetCopepod(c, g, p, name); return;
     case 'amphipod': resetAmphipod(c, g, p, name); return;
     case 'lobster': resetLobster(c, g, p, name); return;
+    default: { const exhaustive: never = sig; return exhaustive; }
   }
 }
 
@@ -3289,12 +3875,12 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Cold-Adapted Insect': I({ hue: '#3c4249', abdomen: 0.95, broad: 1.55, eyes: 0.85, antennae: 'short', fuzzy: true }),
   /* ── ARACHNIDS: eight legs, no antennae ── */
   'Spider': A({ hue: '#7b5a3c', }),
-  'Tarantula': A({ hue: '#3b2b25', big: true, hairy: true, pedipalps: true, fangs: true }),
-  'Camel Spider': A({ hue: '#c9a468', big: true, hairy: true, longleg: true, anatomy: 'solifuge', pedipalps: true }),
-  'Sea Spider': A({ hue: '#b39a86', longleg: true }),
+  'Tarantula': A({ hue: '#3b2b25' }),
+  'Camel Spider': A({ hue: '#c9a468' }),
+  'Sea Spider': A({ hue: '#b39a86' }),
   'Harvestman': A({ hue: '#5d4b40', longleg: true, legReach: 13.2, fused: true, ocularTurret: true, scale: 0.55 }),
-  'Scorpion': A({ hue: '#a3762f', big: true, sting: true, claws: true }),
-  'Pseudoscorpion': A({ claws: true, scale: 0.92, hue: '#5d4630' }),
+  'Scorpion': A({ hue: '#a3762f' }),
+  'Pseudoscorpion': A({ hue: '#5d4630' }),
   'Deer Tick': A({ hue: '#94402c', anatomy: 'tick' }),
   /* ★ WAVE 22 — a mite read as an ANT. It is not one: it is a tiny round
      unsegmented arachnid, and the common ones are conspicuously red. Redder, and drawn
@@ -3305,7 +3891,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
   /* ── MYRIAPODS ── */
   'Centipede': M({ flat: true, hue: '#b06a2c' }),
   'Giant Centipede': M({ flat: true, scale: 1.34, segs: 22, hue: '#7d2f28' }),
-  'Millipede': M({ hue: '#4a3324', coil: true }),
+  'Millipede': M({ hue: '#4a3324' }),
   /* ── CRABS ── */
   'Crab': C({ hue: '#8f5a3b', wide: true }),
   'Mud Crab': C({ hue: '#4e5230' }),

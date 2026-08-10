@@ -21,15 +21,15 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-10 · WAVE 2D 50/50 PASS; READY TO COMMIT/PUSH ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-10 · WAVE 2E 47-TARGET IMPLEMENTATION PAUSED AT STATIC-GREEN CHECKPOINT ◀◀◀
 
 ## ★ COLD START — READ THIS BLOCK, THEN THE LINKED REFERENCES
 ## Workspace: C:\Projects\celestial-frontier-openai-windows
 ## Owner/branch: OpenAI/Codex on openai/windows. Clean reset-baseline HEAD is
 ## bc26e800c7adca72805a832e753ace1a8f9837ba; Wave 1 is d005090f, Wave 2a is 00e499c,
-## Wave 2b is 9c148f0, Wave 2c is committed/pushed as dc015cfde4385530686cf8fff7e36e13ce67769c,
-## and Wave 2d is the current uncommitted bounded checkpoint. Its 50 changed targets are independently
-## PASS and final integrated gates are green; it is ready to commit/push. PR #7 is
+## Wave 2b is 9c148f0, Wave 2c is dc015cf, and Wave 2d is committed/pushed as
+## 2ed0f288a95c327aa892e8b3b54ce94f626f1ab7. Wave 2e's exact 47-target bounded batch is
+## paused after source implementation and before any post-edit render, visual review, or verdict. PR #7 is
 ## historical/merged. No reset PR, new 1,250-row tally, final certification, image-inclusive ZIP,
 ## merge, release, deployment, or version bump exists. Read next: PROCESS_LAWS.md ·
 ## PARALLEL_GIT_PROTOCOL.md · port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md ·
@@ -48,7 +48,7 @@
 ## Wave 2a: committed/pushed 00e499c; Mammal A 4 + worms/sessile 13 + S1–S3 15 =32/32 scoped PASS.
 ## Wave 2b: committed/pushed 9c148f0; Mammal B 25 + Bird B1 21 + Invert I 5 =51/51 scoped PASS.
 ## Wave 2c: committed/pushed dc015cf; Mammal C 13 + Bird B2 28 + Invert II 15 =56/56 scoped PASS.
-## Wave 2d: uncommitted/ready; Mammal D 16 + Bird B3 27 + Invert III 7 =50/50 scoped PASS. Vanilla
+## Wave 2d: committed/pushed 2ed0f28; Mammal D 16 + Bird B3 27 + Invert III 7 =50/50 scoped PASS. Vanilla
 ## Orchid r6 remains a separate 234-asset continuity PASS. None is a new
 ## full-catalogue score.
 
@@ -114,17 +114,41 @@
 ## recertification, ZIP, merge, release, or deployment.
 ## Full 1,250 recertification, the image-inclusive ZIP, reset PR, merge, release and deployment remain OPEN.
 
-## ★ NEXT — CHECKPOINT THEN CONTINUE THE RESET
-## 1. Create one intentional Wave-2d checkpoint commit and push openai/windows; do not open the
-##    reset PR or include unrelated files.
-## 2. Continue the remaining frozen-r1 non-PASS rows in bounded named owner lanes with the same
-##    440/300/132 A/B, protected-control and independent-judge ruler.
-## 3. Only after every remaining row closes may a clean 1,250 collector, final hybrid evidence,
+## ★ WAVE 2E — PAUSED EXACT OWNER LANES; NO VISUAL ACCEPTANCE YET
+## 1. Mammal E (13 bovids): Buffalo · Cow · Eland · Gaur · Gazelle · Hartebeest · Impala · Kudu ·
+##    Musk Ox · Oryx · Water Buffalo · Wildebeest · Yak. Owners: quadrupedoverrides.ts + mammaloverrides.ts.
+## 2. Fauna E (21 squamates): Agama · Anole · Gecko · Skink · Wall Lizard · Whiptail · Alligator Lizard ·
+##    Gila Monster · Horned Lizard · Grass Snake · King Snake · Rat Snake · Vine Snake · Water Snake ·
+##    Mountain Viper · Snake · Cobra · Cottonmouth · Mamba · Rattlesnake · Viper. Owner: faunaoverrides2.ts.
+## 3. Invert IV (13 insect-body rows): Bumblebee · Honeybee · Orchid Bee · Bee · Butterfly · Fly · Mantis ·
+##    Moth · Termite · Thrips · Wasp · Black Fly · Mosquito. Owner: invertoverrides.ts.
+## 4. The shared pre-edit union is sealed at
+##    `port/v2/apps/game/smoke/wave2e-shared-preedit-baseline-2026-08-10/baseline`:
+##    288 rows =47 targets +241 protected, 864 physical PNG hashes/dimensions, 3×139 source/input
+##    snapshots exact. Seal `BC424C8FC8D19DDC7A23F81A946CDE99AF2A7FED759129E132233E23C598AA37`;
+##    index `2AE4FDB1D443698A092304C22573D8604C07D5B42752E967549D6B038FCD26E3`.
+## 5. Source-only implementation is static-green but deliberately UNJUDGED. Frozen pause SHAs:
+##    quadruped `AE8E3830EF57233EB43ABE0F594E335A050A1DB3375F08781FF61549B0C6D288`; mammal
+##    `74BBD77CD8BA8E3C22D503AD42FB667EDB74AF6ED3C73551ED283223B28CF80B`; fauna2
+##    `30B2E3E2BCDA4865EE81625805384B373423274E0634F8A50F8E4D5A20483378`; invert
+##    `6785058479456FF35EE3C44D9FC8F8A9A5467B7F61BBF3153854F93B090A5C1C`.
+##    Integrated pause checks: typecheck, artunused, Vitest 23 files/238 pass/1 skip, speccheck
+##    455 declared/0 unread/0 inert, and diff-check PASS. No post-edit export, 440/300/132 preview,
+##    repeat, independent judgment, full gate closure, reset PR, certification, ZIP, merge, release,
+##    or deployment is authorized.
+## 6. `overridecheck` still confirms 1,014 live keys/1,010 Earth species, but its duplicate-key
+##    diagnostic falsely treats inline `faunaESquamata(..., 'Name')` plan literals as table keys.
+##    Direct FAUNA2 table extraction proves every one of the 21 target keys appears exactly once.
+##    Treat this as a P2 parser/test repair before the next official integrated gate; do not mistake
+##    the diagnostic for a competing live route.
+## 7. Bird reset FAIL scope is exhausted: B1–B3 exactly cover all 76 frozen-r1 Bird FAIL rows; do not
+##    reopen the 26 frozen-PASS birds. Only after every remaining row closes may a clean 1,250 collector, final hybrid evidence,
 ##    literal certification and dated image-inclusive ZIP begin.
 
 ## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
-## Current side: OpenAI/Codex — Wave 2c commit dc015cf is pushed/synchronized; Wave 2d is
-## uncommitted and READY TO COMMIT/PUSH. No reset PR is due at this checkpoint.
+## Current side: OpenAI/Codex — Wave 2d commit 2ed0f28 is pushed/synchronized; Wave 2e's exact
+## 47-target implementation checkpoint is paused for commit/push on `openai/windows`. It is not a
+## completed visual/independent-judgment closure and no reset PR is due.
 ## Other side: Anthropic/Claude Code does not have these bounded checkpoints through develop; Nick
 ## does not need to open it now and files must never be copied manually. After a future reviewed
 ## Codex PR merges openai/windows into develop, Claude starts clean, fetches, and merges
