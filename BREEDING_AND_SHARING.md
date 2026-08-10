@@ -1,6 +1,8 @@
 # Celestial Frontier — Breeding & Sharing
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js). Carries v1.8.6 and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.
+**STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 art
+integration note below matches the reset source as of 2026-08-10. Carries v1.8.6
+and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **See also:** `LINEAGE_AND_BREEDING.md` — the v1.6 Earth-lineage layer on top of `breedPair`:
 a child of an Earth parent keeps that parent's Earth RIG + wears the child's alien palette
 (`_earthBlend`); the Earth-anchor strength drifts alien organically by the MATE's alienness
@@ -9,6 +11,21 @@ a child of an Earth parent keeps that parent's Earth RIG + wears the child's ali
 `_pa`/`_pb`). All render-only / Earth-gated → determinism-safe.
 **Purpose:** The husbandry loop (breeding, feeding, healing) that grows creatures and the player, and the cross-device code system (world codes, creature codes, champion codes, discovery records) that lets anyone regenerate the exact same life on any device.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
+
+> **2026-08-10 v2 reset correction:** genetics already wrote `_earthBlend` and
+> `_anchorVal`, but a name alone could not identify one of the four duplicate
+> cross-kingdom Earth records, and the v2 art override could claim a child through
+> generic procedural routing before lineage rendering. The typed facade now records
+> `_earthBlendKingdom` at the deterministic lineage choice. Fauna returns to its HD
+> scaffold; flora/fungi/microbe use the exact set+name owner. Portrait/thumb caches
+> canonicalize the complete genome so different inherited traits, owners, Earth
+> scaffolds and anchors cannot share a texture. `npm run hybridcheck` drives
+> production browser pixels across every kingdom, parent orders, multi-generation,
+> duplicate-name and injected-failure cases. This proves routing/cache outcomes,
+> not seamless visual quality: the provisional matrix still shows Fruit Bat
+> renderer-generation discontinuity and byte-identical Vanilla Orchid stages, so
+> the full hybrid matrix and one-by-one review remain open under
+> `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
 ## 1. Overview
 Two coupled systems:

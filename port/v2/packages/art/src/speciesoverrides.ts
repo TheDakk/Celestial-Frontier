@@ -27,7 +27,7 @@ import { planFor } from './proceduraloverrides.js';
 import { faunaKiwi, faunaMudskipper, faunaPyrosome, faunaSalp, faunaTripodFish } from './faunaoverrides4.js';
 import { floraCabbage, floraCarrot, floraCorn, floraHemp, floraTobacco, floraWatermelon, floraStrawberry, floraKiwiFruit } from './floraoverrides3.js';
 import { fungiFlyAgaric, fungiLionsMane, fungiMaitake, fungiStinkhorn, fungiCordyceps, fungiCap, fungiJellyBrain, lichenMat, microbeForam, tardigrade, macroAlgaeSheet, microAlgaeCell, algaeBloom } from './fungioverrides2.js';
-import { fungiEnoki, procFamilyIndex, FAMILY_COUNT, fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiCupAnchored, fungiClub, microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate, microbePlates, microbeMat, microbeStructuredColony } from './proceduralfamilies.js';
+import { fungiEnoki, procFamilyIndex, fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiCupAnchored, fungiClub, microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate, microbePlates, microbeMat, microbeStructuredColony } from './proceduralfamilies.js';
 import { faunaBear, faunaKoala, faunaSirenian, faunaHumpback, faunaBeakedWhale, faunaCuttlefish, faunaHorseshoeCrab, faunaSeaSquirt, faunaLamprey, faunaBat, faunaCroc, faunaHopper, faunaMonotreme, faunaChameleon, faunaFrilled, faunaSeahorse, faunaCaecilian, faunaDartFrog, faunaCloakSquid } from './faunaoverrides5.js';
 import { fishBody } from './faunaoverrides3.js';
 import { insectBody, myriapod } from './invertoverrides.js';
@@ -273,60 +273,6 @@ function fungiMold(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   /* sporangia dots peppering the fuzz */
   for (let i = 0; i < 60; i++) { const a = r() * TAU, d = Math.pow(r(), 0.6) * S * 0.3; c.fillStyle = `rgba(${p.cr * 1.3 | 0},${p.cg * 1.3 | 0},${p.cb * 1.3 | 0},0.5)`; c.beginPath(); c.arc(S * 0.5 + Math.cos(a) * d, S * 0.52 + Math.sin(a) * d * 0.82, 1 + r() * 1.8, 0, TAU); c.fill(); }
 }
-/* ★ WAVE 63 — MILDEW GROWS ON A LEAF. gp3: "no leaf or fabric substrate at all;
-   the blob is the whole subject". A green leaf with white powdery patches. */
-function fungiMildew(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
-  const r = mulberry32(((g.seed as number) ^ 0x311E) >>> 0);
-  const cx = S * 0.5, cy = S * 0.52, L = S * 0.30, W = S * 0.185;
-  groundShadow(c, cx, cy + W + S * 0.08, S * 0.24);
-  /* the host leaf, slightly sickly */
-  const lg = c.createLinearGradient(cx - L, cy, cx + L, cy);
-  lg.addColorStop(0, '#4a6b34'); lg.addColorStop(0.5, '#5d7c3e'); lg.addColorStop(1, '#3e5c2c');
-  c.fillStyle = lg;
-  c.beginPath(); c.moveTo(cx - L, cy);
-  c.quadraticCurveTo(cx - L * 0.3, cy - W, cx + L * 0.85, cy - W * 0.24);
-  c.quadraticCurveTo(cx + L * 1.05, cy, cx + L * 0.85, cy + W * 0.24);
-  c.quadraticCurveTo(cx - L * 0.3, cy + W, cx - L, cy); c.closePath(); c.fill();
-  c.strokeStyle = 'rgba(26,40,20,0.5)'; c.lineWidth = 2;
-  c.beginPath(); c.moveTo(cx - L, cy); c.lineTo(cx + L * 0.95, cy); c.stroke();   /* midrib */
-  for (let k = 1; k <= 4; k++) { const lx = cx - L + (k / 5) * L * 1.9; c.beginPath(); c.moveTo(lx, cy); c.lineTo(lx + L * 0.16, cy - W * 0.55 * (1 - Math.abs(k - 2.5) * 0.2)); c.moveTo(lx, cy); c.lineTo(lx + L * 0.16, cy + W * 0.55 * (1 - Math.abs(k - 2.5) * 0.2)); c.stroke(); }
-  /* the powdery white bloom, in patches that follow the surface */
-  for (let i = 0; i < 90; i++) {
-    const u = r(), a = r() * TAU;
-    const px = cx - L * 0.7 + u * L * 1.5, py = cy + Math.sin(a) * W * 0.6 * (1 - Math.abs(u - 0.4));
-    const rad = 4 + r() * 9;
-    const gg = c.createRadialGradient(px, py, 0, px, py, rad);
-    gg.addColorStop(0, 'rgba(244,244,238,0.55)'); gg.addColorStop(1, 'rgba(244,244,238,0)');
-    c.fillStyle = gg; c.beginPath(); c.arc(px, py, rad, 0, TAU); c.fill();
-  }
-}
-/* ★ WAVE 63 — YEAST IS ITS CELLS. gp3: "defined by its cells" — a cluster of
-   plump translucent ovals, several mid-BUD (a small daughter cell pinching off),
-   the microscope-view read. */
-function fungiYeast(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
-  const r = mulberry32(((g.seed as number) ^ 0x9EA5) >>> 0);
-  const cx = S * 0.5, cy = S * 0.52;
-  groundShadow(c, cx, cy + S * 0.26, S * 0.2);
-  const cell = (x: number, y: number, rad: number, budAng: number | null): void => {
-    const gg = c.createRadialGradient(x - rad * 0.3, y - rad * 0.35, 1, x, y, rad * 1.1);
-    gg.addColorStop(0, 'rgba(240,234,214,0.95)'); gg.addColorStop(0.6, `rgba(${p.cr * 1.1 | 0},${p.cg * 1.05 | 0},${p.cb * 0.9 | 0},0.9)`); gg.addColorStop(1, 'rgba(120,108,80,0.85)');
-    c.fillStyle = gg; c.beginPath(); c.ellipse(x, y, rad, rad * 0.82, 0.2, 0, TAU); c.fill();
-    c.strokeStyle = 'rgba(90,80,58,0.5)'; c.lineWidth = 1.6; c.stroke();
-    /* the vacuole — the pale internal disc that says "cell" */
-    c.fillStyle = 'rgba(255,252,240,0.4)'; c.beginPath(); c.arc(x - rad * 0.18, y - rad * 0.1, rad * 0.34, 0, TAU); c.fill();
-    if (budAng !== null) {   /* a daughter cell pinching off */
-      const bx = x + Math.cos(budAng) * rad * 1.12, by = y + Math.sin(budAng) * rad * 0.95, br = rad * 0.45;
-      const bg = c.createRadialGradient(bx - br * 0.3, by - br * 0.3, 1, bx, by, br);
-      bg.addColorStop(0, 'rgba(244,238,220,0.95)'); bg.addColorStop(1, 'rgba(140,126,94,0.85)');
-      c.fillStyle = bg; c.beginPath(); c.arc(bx, by, br, 0, TAU); c.fill();
-      c.strokeStyle = 'rgba(90,80,58,0.5)'; c.lineWidth = 1.4; c.stroke();
-    }
-  };
-  for (let i = 0; i < 9; i++) {
-    const a = (i / 9) * TAU + r() * 0.5, d = (i ? 0.45 + r() * 0.55 : 0) * S * 0.16;
-    cell(cx + Math.cos(a) * d * 1.3, cy + Math.sin(a) * d, S * (0.055 + r() * 0.03), r() < 0.5 ? r() * TAU : null);
-  }
-}
 function fungiMorel(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   /* conical honeycomb-pitted cap on a pale stalk */
   const r = mulberry32(((g.seed as number) ^ 0x503E) >>> 0);
@@ -430,41 +376,6 @@ function microbeCiliate(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   c.fillStyle = 'rgba(0,0,0,0.3)'; c.beginPath(); c.ellipse(-S * 0.02, S * 0.01, S * 0.04, S * 0.028, 0, 0, TAU); c.fill();   /* macronucleus */
   c.restore();
 }
-function microbeAmoeba(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
-  /* irregular pseudopod blob with nucleus + vacuoles */
-  const r = mulberry32(((g.seed as number) ^ 0xA0EB) >>> 0);
-  const cx = S * 0.5, cy = S * 0.5, n = 9 + (r() * 4 | 0), pts: Array<[number, number]> = [];
-  for (let i = 0; i < n; i++) { const a = (i / n) * TAU, rad = S * (0.16 + r() * 0.14); pts.push([cx + Math.cos(a) * rad, cy + Math.sin(a) * rad * 0.9]); }
-  const body = c.createRadialGradient(cx - S * 0.05, cy - S * 0.05, 6, cx, cy, S * 0.3);
-  body.addColorStop(0, `rgba(${p.cr * 1.4 | 0},${p.cg * 1.4 | 0},${p.cb * 1.4 | 0},0.55)`); body.addColorStop(0.75, `rgba(${p.cr},${p.cg},${p.cb},0.3)`); body.addColorStop(1, `rgba(${p.cr},${p.cg},${p.cb},0.08)`);
-  c.fillStyle = body; c.beginPath(); c.moveTo(pts[0]![0], pts[0]![1]);
-  for (let i = 0; i < n; i++) { const a = pts[i]!, b = pts[(i + 1) % n]!; c.quadraticCurveTo(a[0], a[1], (a[0] + b[0]) / 2, (a[1] + b[1]) / 2); }
-  c.closePath(); c.fill();
-  rimStroke(c, () => { c.moveTo(pts[0]![0], pts[0]![1]); for (let i = 0; i < n; i++) { const a = pts[i]!, b = pts[(i + 1) % n]!; c.quadraticCurveTo(a[0], a[1], (a[0] + b[0]) / 2, (a[1] + b[1]) / 2); } }, `rgba(${p.cr * 1.5 | 0},${p.cg * 1.5 | 0},${p.cb * 1.5 | 0},0.5)`, 1.6);
-  /* ★ WAVE 63 — PSEUDOPODS. gp5: "no pseudopods at all — a clean convex egg".
-     Three or four blunt finger lobes reaching out of the membrane, in the same
-     translucent body fill, so the outline reads as flowing, not drawn. */
-  for (let k = 0; k < 3 + (r() < 0.5 ? 1 : 0); k++) {
-    const a = r() * TAU, rootR = S * 0.20;
-    const rx = cx + Math.cos(a) * rootR * 0.8, ry = cy + Math.sin(a) * rootR * 0.72;
-    const len = S * (0.14 + r() * 0.10), wid = S * (0.045 + r() * 0.02);
-    c.fillStyle = body;
-    c.save(); c.translate(rx, ry); c.rotate(a);
-    c.beginPath(); c.moveTo(-wid * 0.2, -wid);
-    c.quadraticCurveTo(len * 0.6, -wid * 0.9, len, -wid * 0.25);
-    c.quadraticCurveTo(len * 1.14, 0, len, wid * 0.25);
-    c.quadraticCurveTo(len * 0.6, wid * 0.9, -wid * 0.2, wid);
-    c.closePath(); c.fill();
-    c.strokeStyle = `rgba(${p.cr * 1.5 | 0},${p.cg * 1.5 | 0},${p.cb * 1.5 | 0},0.4)`; c.lineWidth = 1.4;
-    c.beginPath(); c.moveTo(-wid * 0.2, -wid); c.quadraticCurveTo(len * 0.6, -wid * 0.9, len, -wid * 0.25);
-    c.quadraticCurveTo(len * 1.14, 0, len, wid * 0.25); c.quadraticCurveTo(len * 0.6, wid * 0.9, -wid * 0.2, wid); c.stroke();
-    c.restore();
-  }
-  c.fillStyle = 'rgba(20,26,34,0.75)'; c.beginPath(); c.arc(cx + S * 0.03, cy - S * 0.02, S * 0.05, 0, TAU); c.fill();   /* nucleus */
-  c.fillStyle = 'rgba(255,255,255,0.14)';
-  for (let i = 0; i < 5; i++) { c.beginPath(); c.arc(cx + (r() - 0.5) * S * 0.24, cy + (r() - 0.5) * S * 0.2, S * (0.02 + r() * 0.03), 0, TAU); c.fill(); }
-}
-
 /* ---- family routing by Earth-species NAME (audit-driven), then draw ---- */
 /* GP7 conformity recheck: these are deliberately NAME-ONLY painters. The
    procedural family painters below stay untouched; a named Earth organism must
@@ -984,32 +895,6 @@ function habitatWash(c: Ctx, col: string, edge: string): void {
   gg.addColorStop(0, col); gg.addColorStop(1, edge);
   c.fillStyle = gg; c.fillRect(S * 0.04, S * 0.04, S * 0.92, S * 0.92);
 }
-function microbeAcidophile(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
-  habitatWash(c, 'rgba(140,50,20,0.85)', 'rgba(70,22,8,0.9)');   /* iron-stained water */
-  const r = mulberry32(((g.seed as number) ^ 0xAC1D) >>> 0);
-  c.fillStyle = 'rgba(214,120,40,0.55)';   /* orange iron crust */
-  for (let i = 0; i < 14; i++) { c.beginPath(); c.ellipse(S * (0.1 + r() * 0.8), S * (0.72 + r() * 0.2), S * (0.03 + r() * 0.05), S * 0.015, 0, 0, TAU); c.fill(); }
-  microbeRods(c, g, tint(p, '#e8c890'));
-}
-function microbeCryophile(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
-  const r = mulberry32(((g.seed as number) ^ 0xC0D) >>> 0);
-  habitatWash(c, 'rgba(190,220,240,0.5)', 'rgba(120,160,200,0.55)');
-  c.strokeStyle = 'rgba(240,250,255,0.6)'; c.lineWidth = 2.4;   /* ice facet boundaries */
-  for (let i = 0; i < 7; i++) { const x = S * r(), y = S * r();
-    c.beginPath(); c.moveTo(x, y); c.lineTo(x + (r() - 0.5) * S * 0.5, y + (r() - 0.5) * S * 0.5); c.stroke(); }
-  c.strokeStyle = 'rgba(60,110,160,0.5)'; c.lineWidth = 6;   /* the brine vein holding the cells */
-  c.beginPath(); c.moveTo(S * 0.2, S * 0.6); c.quadraticCurveTo(S * 0.5, S * 0.4, S * 0.8, S * 0.55); c.stroke();
-  microbeRods(c, g, tint(p, '#9fd4e8'));
-}
-function microbeHalophile(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
-  habitatWash(c, 'rgba(232,80,150,0.75)', 'rgba(160,30,90,0.85)');   /* the pink brine pond */
-  const r = mulberry32(((g.seed as number) ^ 0x5A17) >>> 0);
-  microbeRods(c, g, tint(p, '#ffb0d8'));
-  c.fillStyle = 'rgba(255,190,220,0.8)';   /* CROWDED — pack the field with more cells */
-  for (let i = 0; i < 90; i++) { const x = S * (0.08 + r() * 0.84), y = S * (0.1 + r() * 0.8);
-    c.save(); c.translate(x, y); c.rotate(r() * TAU);
-    c.beginPath(); c.ellipse(0, 0, S * 0.022, S * 0.008, 0, 0, TAU); c.fill(); c.restore(); }
-}
 function microbeMethanogen(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   habitatWash(c, 'rgba(40,60,55,0.8)', 'rgba(16,28,26,0.9)');
   microbeRods(c, g, tint(p, '#7f9aa6'));
@@ -1041,95 +926,6 @@ function microbeNitrogenFixer(c: Ctx, g: G, p: ReturnType<typeof palette>): void
     c.beginPath(); c.ellipse(0, 0, S * 0.014, S * 0.006, 0, 0, TAU); c.fill(); c.restore(); }
   c.restore();
 }
-function microbeTetrad(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
-  /* Deinococcus: a flat packet of EXACTLY FOUR cocci — the tetrad IS the read */
-  habitatWash(c, 'rgba(60,50,30,0.6)', 'rgba(30,24,12,0.8)');
-  const cx = S * 0.5, cy = S * 0.5, R = S * 0.13;
-  for (const [dx, dy] of [[-1, -1], [1, -1], [-1, 1], [1, 1]] as const) {
-    const x = cx + dx * R * 0.94, y = cy + dy * R * 0.94;
-    const gg = c.createRadialGradient(x - R * 0.3, y - R * 0.3, 2, x, y, R * 1.05);
-    gg.addColorStop(0, '#f0d890'); gg.addColorStop(0.6, '#d8a83a'); gg.addColorStop(1, '#8a621c');
-    c.fillStyle = gg; c.beginPath(); c.arc(x, y, R, 0, TAU); c.fill();
-    c.strokeStyle = 'rgba(90,60,10,0.6)'; c.lineWidth = 2; c.stroke();
-  }
-  c.strokeStyle = 'rgba(90,60,10,0.5)'; c.lineWidth = 3;   /* the division septa */
-  c.beginPath(); c.moveTo(cx, cy - R * 2); c.lineTo(cx, cy + R * 2); c.moveTo(cx - R * 2, cy); c.lineTo(cx + R * 2, cy); c.stroke();
-}
-function microbeRedTide(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
-  /* a BLOOM: the water itself discoloured, a field of many cells */
-  habitatWash(c, 'rgba(160,40,30,0.8)', 'rgba(90,18,14,0.9)');
-  const r = mulberry32(((g.seed as number) ^ 0x8ED) >>> 0);
-  for (let i = 0; i < 70; i++) {
-    const x = S * (0.08 + r() * 0.84), y = S * (0.08 + r() * 0.84), rad = S * (0.012 + r() * 0.022);
-    const gg = c.createRadialGradient(x - rad * 0.3, y - rad * 0.3, 1, x, y, rad);
-    gg.addColorStop(0, '#e88a70'); gg.addColorStop(1, '#a02818');
-    c.fillStyle = gg; c.beginPath(); c.arc(x, y, rad, 0, TAU); c.fill();
-  }
-  microbePlates(c, g, tint(p, '#d84838'));
-}
-function microbeIronOxidizer(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
-  /* Gallionella: a bean cell trailing a LONG TWISTED RIBBON STALK */
-  habitatWash(c, 'rgba(120,60,24,0.6)', 'rgba(60,28,10,0.85)');
-  const bx = S * 0.68, by = S * 0.32;
-  /* the twisted stalk: two interleaved sine ribbons */
-  for (const ph of [0, Math.PI]) {
-    c.strokeStyle = ph ? 'rgba(200,120,50,0.8)' : 'rgba(150,84,34,0.8)'; c.lineWidth = 5; c.lineCap = 'round';
-    c.beginPath();
-    for (let i = 0; i <= 40; i++) { const u = i / 40;
-      const x = bx - u * S * 0.5, y = by + u * S * 0.42 + Math.sin(u * TAU * 2.4 + ph) * S * 0.028 * (0.4 + u);
-      i ? c.lineTo(x, y) : c.moveTo(x, y); }
-    c.stroke();
-  }
-  const gg = c.createRadialGradient(bx - 6, by - 6, 2, bx, by, S * 0.075);
-  gg.addColorStop(0, '#e8b088'); gg.addColorStop(1, '#a05a2c');
-  c.fillStyle = gg;
-  c.save(); c.translate(bx, by); c.rotate(0.5);
-  c.beginPath(); c.moveTo(-S * 0.055, 0);   /* the bean: two arcs with a waist */
-  c.quadraticCurveTo(0, -S * 0.055, S * 0.055, 0);
-  c.quadraticCurveTo(0, S * 0.02, -S * 0.055, 0);
-  c.closePath(); c.fill(); c.restore();
-}
-function microbeBioluminescent(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
-  /* glowing dinoflagellate cells scattered in dark water, each with its glow */
-  habitatWash(c, 'rgba(8,20,34,0.9)', 'rgba(2,8,16,0.95)');
-  const r = mulberry32(((g.seed as number) ^ 0xB10 ) >>> 0);
-  for (let i = 0; i < 9; i++) {
-    const x = S * (0.15 + r() * 0.7), y = S * (0.15 + r() * 0.7), rad = S * (0.028 + r() * 0.02);
-    const halo = c.createRadialGradient(x, y, 1, x, y, rad * 4);
-    halo.addColorStop(0, 'rgba(120,240,220,0.8)'); halo.addColorStop(0.4, 'rgba(60,180,200,0.3)'); halo.addColorStop(1, 'rgba(0,0,0,0)');
-    c.fillStyle = halo; c.beginPath(); c.arc(x, y, rad * 4, 0, TAU); c.fill();
-    c.fillStyle = '#bffff0'; c.beginPath(); c.ellipse(x, y, rad, rad * 0.8, r() * TAU, 0, TAU); c.fill();
-  }
-}
-function microbeDinoflagellate(c: Ctx, g: G, _p: ReturnType<typeof palette>): void {
-  /* ★ WAVE 64 — the armoured cell with the EQUATORIAL GIRDLE GROOVE (called
-     non-negotiable) and its two flagella: one wrapped in the girdle, one
-     trailing. */
-  habitatWash(c, 'rgba(30,44,50,0.7)', 'rgba(10,20,24,0.9)');
-  const cx = S * 0.5, cy = S * 0.48, R = S * 0.17;
-  const gg = c.createRadialGradient(cx - R * 0.3, cy - R * 0.35, 3, cx, cy, R * 1.15);
-  gg.addColorStop(0, '#d8c890'); gg.addColorStop(0.6, '#a89050'); gg.addColorStop(1, '#5c4c24');
-  c.fillStyle = gg;
-  c.beginPath(); c.moveTo(cx - R, cy);   /* two half-cells meeting at the girdle */
-  c.quadraticCurveTo(cx - R * 0.9, cy - R * 1.15, cx, cy - R * 1.05);   /* pointed epitheca */
-  c.quadraticCurveTo(cx + R * 0.9, cy - R * 1.15, cx + R, cy);
-  c.quadraticCurveTo(cx + R * 0.85, cy + R * 0.95, cx, cy + R * 0.9);   /* rounded hypotheca */
-  c.quadraticCurveTo(cx - R * 0.85, cy + R * 0.95, cx - R, cy);
-  c.closePath(); c.fill();
-  /* the GIRDLE: a deep transverse groove right around the equator */
-  c.strokeStyle = 'rgba(40,30,10,0.85)'; c.lineWidth = R * 0.18;
-  c.beginPath(); c.moveTo(cx - R, cy); c.quadraticCurveTo(cx, cy + R * 0.12, cx + R, cy); c.stroke();
-  c.strokeStyle = 'rgba(230,215,160,0.5)'; c.lineWidth = 1.6;   /* armour plate seams */
-  for (let k = -2; k <= 2; k++) { c.beginPath(); c.moveTo(cx + k * R * 0.4, cy - R); c.quadraticCurveTo(cx + k * R * 0.5, cy - R * 0.4, cx + k * R * 0.36, cy - R * 0.08); c.stroke(); }
-  /* flagellum 1 wraps the girdle; flagellum 2 trails long behind */
-  c.strokeStyle = 'rgba(220,235,230,0.8)'; c.lineWidth = 2.2; c.lineCap = 'round';
-  c.beginPath(); c.moveTo(cx - R * 0.95, cy + R * 0.05);
-  for (let i = 1; i <= 14; i++) { const u = i / 14; c.lineTo(cx - R * 0.95 + u * R * 1.9, cy + R * 0.06 + Math.sin(u * TAU * 1.6) * R * 0.07); }
-  c.stroke();
-  c.beginPath(); c.moveTo(cx + R * 0.2, cy + R * 0.88);
-  for (let i = 1; i <= 16; i++) { const u = i / 16; c.lineTo(cx + R * 0.2 + Math.sin(u * TAU * 1.2) * R * 0.16, cy + R * 0.88 + u * R * 1.1); }
-  c.stroke();
-}
 function microbeEuglena(c: Ctx, g: G, _p: ReturnType<typeof palette>): void {
   /* ★ WAVE 64 — a green TEARDROP with ONE anterior flagellum and the red
      eyespot; was routed to the ciliate (fringed all round = wrong organism). */
@@ -1158,38 +954,6 @@ function microbeEuglena(c: Ctx, g: G, _p: ReturnType<typeof palette>): void {
   for (let i = 1; i <= 16; i++) { const u = i / 16; c.lineTo(L + u * L * 1.1, -u * W * 1.6 + Math.sin(u * TAU * 1.4) * W * 0.35); }
   c.stroke();
   c.restore();
-}
-function microbeRadiolarian(c: Ctx, g: G, _p: ReturnType<typeof palette>): void {
-  /* ★ WAVE 64 — a GLASSY 3-D silica sphere: a shaded lattice ball with long
-     radial spines, not a flat wireframe. */
-  habitatWash(c, 'rgba(16,26,40,0.8)', 'rgba(4,10,18,0.92)');
-  const cx = S * 0.5, cy = S * 0.5, R = S * 0.15;
-  const r = mulberry32(((g.seed as number) ^ 0x8AD1) >>> 0);
-  /* the long radial spines first, behind the shell */
-  c.strokeStyle = 'rgba(210,225,240,0.7)'; c.lineCap = 'round';
-  for (let i = 0; i < 14; i++) {
-    const a = (i / 14) * TAU + r() * 0.2, len = R * (1.5 + r() * 0.8);
-    c.lineWidth = 2.6 - (i % 2);
-    c.beginPath(); c.moveTo(cx + Math.cos(a) * R * 0.7, cy + Math.sin(a) * R * 0.7);
-    c.lineTo(cx + Math.cos(a) * (R + len), cy + Math.sin(a) * (R + len)); c.stroke();
-  }
-  /* the glassy shell: translucent sphere with a specular light */
-  const gg = c.createRadialGradient(cx - R * 0.35, cy - R * 0.4, 2, cx, cy, R * 1.1);
-  gg.addColorStop(0, 'rgba(240,248,255,0.65)'); gg.addColorStop(0.5, 'rgba(160,190,220,0.35)'); gg.addColorStop(1, 'rgba(80,110,150,0.25)');
-  c.fillStyle = gg; c.beginPath(); c.arc(cx, cy, R, 0, TAU); c.fill();
-  c.strokeStyle = 'rgba(220,235,250,0.6)'; c.lineWidth = 1.6; c.stroke();
-  /* the lattice: pores shaded smaller toward the rim so the ball reads ROUND */
-  c.strokeStyle = 'rgba(200,220,240,0.5)'; c.lineWidth = 1.2;
-  for (let i = 0; i < 60; i++) {
-    const a = r() * TAU, d = Math.sqrt(r()) * R * 0.92;
-    const px = cx + Math.cos(a) * d, py = cy + Math.sin(a) * d;
-    const pore = (1 - d / R * 0.7) * R * 0.10;
-    c.beginPath(); c.arc(px, py, Math.max(1.5, pore), 0, TAU); c.stroke();
-  }
-  /* the central capsule glowing faintly inside */
-  const cg2 = c.createRadialGradient(cx, cy, 1, cx, cy, R * 0.4);
-  cg2.addColorStop(0, 'rgba(255,220,160,0.5)'); cg2.addColorStop(1, 'rgba(255,220,160,0)');
-  c.fillStyle = cg2; c.beginPath(); c.arc(cx, cy, R * 0.4, 0, TAU); c.fill();
 }
 const MICROBE_NAME: Record<string, Painter> = {
   /* ★ WAVE 18 → 64 — the extremophiles now carry their HABITAT (above). */
@@ -1342,18 +1106,57 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'fauna|Fruit Bat': (c, g, pp) => faunaBat(c, g, speciesHue(pp, '#a1562a'), 'Fruit Bat'),
   'fauna|Vampire Bat': (c, g, pp) => faunaBat(c, g, speciesHue(pp, '#7a5233'), 'Vampire Bat'),
 };
+
+type EarthKingdom = 'fauna' | 'flora' | 'fungi' | 'microbe';
+const EARTH_KINGDOM_ORDER: readonly EarthKingdom[] = ['fauna', 'flora', 'fungi', 'microbe'];
+function isEarthKingdom(value: unknown): value is EarthKingdom {
+  return typeof value === 'string' && (EARTH_KINGDOM_ORDER as readonly string[]).includes(value);
+}
+function hasNamedRoute(kingdom: EarthKingdom, name: string): boolean {
+  if (CANON[kingdom + '|' + name]) return true;
+  if (kingdom === 'flora') return Boolean(FLORA_ICONIC[name] || FLORA2_SPEC[name] || FLORA_DUPES.includes(name));
+  if (kingdom === 'fauna') return Boolean(FAUNA_NAME[name] || FAUNA2_NAME[name] || FAUNA3_NAME[name]
+    || BIRD_NAME[name] || INVERT_NAME[name] || QUAD_SPEC[name] || QUAD2_SPEC[name]);
+  return Boolean(kingdom === 'fungi' ? FUNGI_NAME[name] : MICROBE_NAME[name]);
+}
+
+/** Return the Earth catalogue that owns a bred lineage. New children carry an
+ * explicit marker. For a pre-marker save, infer only from real route ownership;
+ * a duplicate name prefers the child's matching catalogue and otherwise uses a
+ * stable order rather than silently crossing tables. */
+export function lineageRenderKingdom(g: G): EarthKingdom {
+  const current: EarthKingdom = isEarthKingdom(g.kingdom) ? g.kingdom : 'fauna';
+  const blend = typeof g._earthBlend === 'string' ? g._earthBlend.replace(/[’‘]/g, "'") : '';
+  if (!blend || typeof g._earthName === 'string') return current;
+  const recorded = g._earthBlendKingdom;
+  if (isEarthKingdom(recorded) && hasNamedRoute(recorded, blend)) return recorded;
+  const candidates = EARTH_KINGDOM_ORDER.filter((kingdom) => hasNamedRoute(kingdom, blend));
+  if (candidates.length === 1) return candidates[0]!;
+  if (candidates.includes(current)) return current;
+  return candidates[0] ?? current;
+}
+
 export function resolveOverride(g: G): string | null {
   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it
      (Lion's Mane), which is exactly the mojibake Nick's audit caught */
-  const name = String((g as { _earthName?: string })._earthName || '').replace(/[’‘]/g, "'");
+  const earthName = String((g as { _earthName?: string })._earthName || '').replace(/[’‘]/g, "'");
   /* ★ WAVE 13: a genome with NO Earth name — every procedural species and
      every creature a player breeds — used to fall straight through to the
      verbatim engine, which meant twelve waves of work stopped at the edge of
      the Earth catalogue. It now picks a body plan FROM THE GENOME, and only
      falls through when the plan has no Earth analogue worth forcing. */
+  const blend = String((g as { _earthBlend?: string })._earthBlend || '').replace(/[’‘]/g, "'");
+  const genomeKingdom: EarthKingdom = isEarthKingdom(g.kingdom) ? g.kingdom : 'fauna';
+  const kingdom = earthName ? genomeKingdom : lineageRenderKingdom(g);
+  /* Earth-lineage fauna remains owned by the lineage-aware verbatim renderer.
+     Flora, fungi and microbes do not have an equivalent verbatim lineage rig,
+     so route their blend through the exact kingdom+name owner while passing the
+     CHILD genome through unchanged (including palette, traits and anchor data).
+     The kingdom-qualified lookup below prevents duplicate catalogue names from
+     crossing ownership boundaries. */
+  const name = earthName || (kingdom === 'flora' || kingdom === 'fungi' || kingdom === 'microbe' ? blend : '');
+  if (!name && blend) return null;
   if (!name) return resolveProcedural(g);
-  if (!name) return null;
-  const kingdom = g.kingdom as string;
   /* ★ WAVE 18 — CANONICAL + CROSS-KINGDOM audit blockers. Four organisms live
      in TWO kingdoms each (the 1,014-vs-1,010 count delta), and a few iconic
      species need a bespoke painter regardless of which family the kingdom
@@ -1493,8 +1296,7 @@ export function resolveProcedural(g: G): string | null {
       microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate,
       microbePlates, microbeMat, microbePlates];
     const fam = kingdom === 'fungi' ? FUNGI_FAM : MICROBE_FAM;
-    /* the table and FAMILY_COUNT must agree — if they ever drift, the spread
-       test says so by name rather than this silently painting an empty frame */
+    /* The spread test guards this table's deterministic family coverage. */
     const familyIndex = procFamilyIndex(g, kingdom) % fam.length;
     let painter = fam[familyIndex]!;
     const seed = (g.seed as number) >>> 0;
@@ -1541,7 +1343,6 @@ export function resolveProcedural(g: G): string | null {
      falls below ~56 is lifted proportionally, hue preserved. Scoped HERE on
      purpose — an Earth black wolf keeps its darkness (D-ART-141). */
   const pal = readableProceduralPal(g, 82);
-  const isFlora = plan.kind === 'plant';
   const { cv, c } = newCanvas();
   vignette(c, false);
   floorFade(c);
@@ -1560,6 +1361,5 @@ export function resolveProcedural(g: G): string | null {
     case 'plant': plantBody(ink.c, g, pal, plan.spec, who); break;
   }
   fitInk(ink.cv, c, who);
-  void isFlora;
   return cv.toDataURL();
 }

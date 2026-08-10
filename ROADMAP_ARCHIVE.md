@@ -7,6 +7,167 @@
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
 
+## ══════════ ARCHIVED 2026-08-10 — reset-opening handoff superseded by reviewed foundation record ══════════
+## ══════════ Moved from ROADMAP.md verbatim; original span began at line 24. ══════════
+
+## ▶▶▶ SESSION HANDOFF — 2026-08-09 · FULL 1,250-ASSET ART RESET OPEN ◀◀◀
+
+## ★ COLD START — READ THIS BLOCK, THEN THE LINKED REFERENCES
+## Current workspace: C:\Projects\celestial-frontier-openai-windows
+## Current owner/branch: OpenAI/Codex on openai/windows. Local HEAD is 3528bfb; the reset changes
+## described below are an UNCOMMITTED working-tree batch on top of that commit. PR #7 is historical
+## and already merged; no PR number exists for this reset batch and none should be invented.
+## Integration path remains openai/windows → reviewed draft PR → develop. Never commit directly to
+## develop or main. No release, main merge, deployment or version bump is authorized in this batch.
+## Read next: PROCESS_LAWS.md · PARALLEL_GIT_PROTOCOL.md ·
+## port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md · ART_DIRECTION.md ·
+## LINEAGE_AND_BREEDING.md · PROCEDURAL_CHARACTERISTICS.md · port/PROPORTION_ARC.md ·
+## port/HANDOFF_NEXT_SESSION.md · port/v2/DEVIATIONS.md.
+
+## ★ WHY THE CATALOGUE RESTARTED
+## Nick stopped GP7.1 and reopened every Earth and procedural organism after Fruit Bat exposed a
+## false acceptance: its r1/r2/r3 portrait hash never changed, yet the current animal does not read
+## as a correct flying fox. GP7 and GP7.1 pixels, ledgers and reviews remain historical evidence;
+## none of their bands is carried as a current verdict or certification.
+## The review scope remains exactly 1,250 identities: 631 fauna + 332 flora + 27 fungi +
+## 20 microbes + 240 procedural = 1,250. Four cross-kingdom duplicate names create 1,014 Earth
+## route rows; every reference/evidence join must therefore use catalogue set + species, never name.
+
+## ★ RESET-START FOUNDATION REPAIRS — SOURCE PRESENT, ACCEPTANCE STILL OPEN
+## The uncommitted batch repairs two outcome-level defects found before new judging:
+## 1. GP7.1 references are keyed by set+species so Green Algae, Reindeer Lichen, Snow Algae and
+##    Tardigrade cannot receive another kingdom's must-read contract.
+## 2. Bred `_earthBlend` genomes return to the lineage-aware Earth scaffold before generic
+##    procedural routing, and portrait/thumb caches key the complete deterministic genome: A×B
+##    and B×A can share a derived seed while inheriting different traits and must never collide.
+## New comparison and hybrid guards exist in the working tree, but routing/gate success is not an
+## art PASS. The complete one-by-one visual reset, hybrid matrix and final evidence package remain.
+
+## ★ RESET-START ENGINE / REPOSITORY HYGIENE
+## Exact type/consumer/signature checks proved `port/v2/packages/art/src/5` was an accidental
+## 26,400×19,800 PNG (2,029,643 bytes) with no consumer; the uncommitted batch deletes it rather
+## than treating it as an art asset. The v2 app also restores the standing DPR heat law — touch or
+## coarse-pointer devices cap at 2, desktop at 3 — and corrects stale comments: deterministic static
+## Canvas portraits are live in DOM cards; retained Pixi actors/meshes/animation remain future work.
+
+## ★ CURRENT ART TRUTH — NO PASS CLAIM
+## Fruit Bat and the bat family are the first negative-control family. Current evidence shows split
+## ownership between the named `faunaBat` painter and legacy `_rigBat`, rigid/paper-like membranes,
+## weak or missing joined limb/wing anatomy, and Fruit Bat-specific eyes overpainted by a generic pass.
+## PixiJS currently owns the galaxy/world presentation, while organism portraits are deterministic
+## Canvas2D data URLs displayed by DOM image elements. Pixi can improve later presentation, filtering
+## and animation; it cannot repair incorrect source geometry, proportions, attachments or occlusion.
+## The live ruler is anatomical, set-specific and fail-closed: unlabeled identity at 300/440px,
+## every must-read visible, seamless attachments/material/light, family distinction, deterministic
+## repeatability, old/current regression comparison, and current hashes. POLISH and FAIL remain open;
+## literal completion requires 1,250 fresh independent PASS verdicts with zero carried rows.
+
+## ★ NEXT — COMPLETE IN THIS ORDER
+## 1. Finish and independently verify one coherent bat-family rig at gameplay and native scale, with
+##    explicit negative controls for wing skeleton/membrane, feet/thumbs and species-specific faces.
+## 2. Generate exact family-organized old/current comparisons; repair and negative-control every
+##    set-specific reference join before generating fresh reset packets.
+## 3. Review the full catalogue one by one: Earth fauna, flora, fungi, microbes, then all 240
+##    procedural identities. Use authoritative biology/botany sources wherever a contract is unclear.
+## 4. Repair only evidence-confirmed morphology/topology, checking siblings and protected controls;
+##    clean dead/shadowed code only after render ownership and pixel neutrality are proven.
+## 5. Run Earth×Earth, Earth×alien and multi-generation hybrid matrices across anchor strengths;
+##    prove ancestry, child traits, cache separation, determinism and seamless connected anatomy.
+## 6. After every final hash is freshly reviewed PASS, build a new dated image-inclusive ZIP with
+##    portraits, thumbnails, comparison sheets, references, manifest, ledger and gate transcript;
+##    only then run literal certification. Until then there is no 100% claim.
+
+## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
+## OpenAI/Codex: keep this uncommitted batch in this worktree, finish the bounded reset-foundation
+## checks, then commit and push openai/windows before opening a draft PR with base develop and source
+## openai/windows. No current PR title/number is recorded yet; create neither a placeholder nor a
+## completion claim. Claude Code: do not open it now. After a reviewed Codex PR is merged, Claude
+## must start clean, fetch origin and merge origin/develop into anthropic/windows under
+## PARALLEL_GIT_PROTOCOL.md; Codex follows the same clean-start sync after develop moves.
+
+
+
+## ══════════ ARCHIVED 2026-08-09 — superseded GP7.1 live handoff after full-catalogue reset ══════════
+## ══════════ Moved from ROADMAP.md verbatim; original span was lines 24–100. ══════════
+
+## ▶▶▶ SESSION HANDOFF — 2026-08-09 · GP7.1 STRICT-CONFORMITY REMEDIATION IN PROGRESS ◀◀◀
+
+## ★ COLD START — READ THIS BLOCK, THEN THE LINKED REFERENCES
+## Current workspace: C:\Projects\celestial-frontier-openai-windows
+## Current owner/branch: OpenAI/Codex on openai/windows. PR #7 is merged into develop as
+## 52467ba. This is a new bounded GP7.1 remediation batch; its integration vehicle is a draft PR,
+## never a direct merge.
+## Integration path: openai/windows → reviewed draft PR → develop. Never commit directly to
+## develop or main; no release, main merge, live-site deploy or version bump is authorized here.
+## Read next: PROCESS_LAWS.md · PARALLEL_GIT_PROTOCOL.md · ART_DIRECTION.md ·
+## port/HANDOFF_NEXT_SESSION.md · port/v2/DEVIATIONS.md ·
+## port/v2/reference/GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md.
+
+## ★ THE UPLOADED GP7 CONFORMITY RECHECK IS ACCOUNTED FOR
+## Nick supplied Celestial_Frontier_GP7_1250_Asset_Spec_Conformity_Recheck_Full_Package.zip.
+## SHA-256: 448BF5A465F195673E87DBEB487A3C3ADFDDE258A319050DD2493ECAB84CC6BB.
+## Size: 7,317,675 bytes. It contains 23 metadata entries, all internally coherent, but no
+## PNG/JPEG/WebP/GIF portraits, review strips, or packets. It proves a 1,250-row ledger/index,
+## not current visual pixels. GP7 evidence remains frozen; do not rewrite carried records to pass.
+
+## ★ MEASURED STATE — NOT A MISLEADING SINGLE SCORE
+## Fresh strict current-pixel review: 503 rows / 95 strips = 301 FAIL · 37 POLISH · 165 PASS.
+## Byte-unchanged carried review: 747 rows = 317 FAIL · 378 POLISH · 52 PASS.
+## The merged 1,250-row inventory is 618 FAIL · 415 POLISH · 217 PASS and is explicitly NOT a
+## calibrated catalogue score. Exact work queue: 301 FIX_TO_PASS · 37 POLISH_TO_PASS · 165 FREEZE ·
+## 317 REVALIDATE_STRICT_THEN_FIX_IF_CONFIRMED · 378 REVALIDATE_STRICT_THEN_POLISH_IF_CONFIRMED ·
+## 52 REVALIDATE_STRICT_THEN_FREEZE. When stale required_fix prose conflicts with a verified
+## current-pixel note, verify_why governs the repair.
+
+## ★ GP7.1 WORK NOW IN PROGRESS
+## 1. Close the 338 fresh strict named non-PASS rows through opt-in, species-scoped morphology and
+##    preserve matched controls. No global repaint, no verdict relabeling.
+## 2. Render and strictly rejudge all 747 carried rows. A carried FAIL/POLISH is a review queue,
+##    not a confirmed current defect; a carried PASS is not a fresh certification.
+## 3. Preserve a dated GP7.1 ledger plus the actual 1,250 current portraits and labelled review
+##    strips/contact sheets. Run all art gates and the conformity guard.
+## 4. Literal 100% PASS is permitted only when all 1,250 rows are freshly strict PASS, with no
+##    carried rows, and the package contains current pixels + strip evidence + manifest + ledger.
+
+## ★ NEW FAIL-CLOSED GUARD
+## From port/v2: npm run gp7conformity -- --input <extracted-or-fresh-ledger-dir>
+## The tool verifies exact joins, manifests, identity hashes, bands, freshness and action routing.
+## --certify fails unless all 1,250 are fresh strict PASS. It validates ledger provenance; it does
+## not substitute for rendered image evidence. Self-test passes both positive and negative controls.
+
+## ★ LIVE SOURCE / REVIEW STATE
+## GP7.1 has completed its first all-fresh, single-ruler baseline: 1,250 current 440x440 portraits
+## and 196 hash-bound review packets collected as 318 FAIL · 301 POLISH · 631 PASS, with zero
+## carried rows. It is a repair baseline, not a 100% certification. The largest non-PASS buckets are
+## Other plant/harvest (115), procedural (79), fruit/nut trees (27), rodents (17), herbs/spices (17),
+## primates (15), and shrubs/bushes (12). Source repairs must remain named/opt-in; generated
+## full-catalogue diagnostics are evidence only and must not become a drift baseline or rewrite GP7.
+## r2 changed-pixel evidence then independently measured fauna 46 PASS / 42 POLISH / 10 FAIL (98),
+## flora+fungi 56 / 62 / 49 (167), and procedural 76 / 21 / 0 (97); the other 888 portraits matched
+## their baseline bytes. A second narrow source pass is gated and complete, but no bands were promoted.
+## A distinct r3 full 1,250-portrait / 196-packet current evidence set is now captured. It differs
+## from r2 in 106 portrait hashes: fauna 13, flora 59, fungi 6, and procedural 28; the other 1,144
+## portraits remain byte-identical. R3 has no verdict ledger or certification yet. Independently
+## judge its current packets before promoting any band, and retain exact-hash prior evidence only as
+## transparent support rather than as a substitute for the final all-fresh strict rejudge.
+
+## ★ NEXT — COMPLETE IN THIS ORDER
+## 1. Independently review the r3 packets under the strict ruler and collect only hash-bound verdicts.
+## 2. Resolve only confirmed remaining FAIL/POLISH rows, preserving matched controls, then repeat the
+##    all-catalogue capture and rejudge until every one of the 1,250 fresh rows is PASS.
+## 3. Generate a new dated image-inclusive review ZIP and fresh ledger; run gp7conformity --certify
+##    plus full art gates only after the all-PASS collector result exists.
+## 4. Commit/push this remediation and evidence-pipeline batch on openai/windows as a draft PR to
+##    develop. It must remain a draft and must not be merged or deployed before certification.
+
+## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
+## Current side: OpenAI/Codex on openai/windows. PR #7 is already merged in develop at 52467ba.
+## This GP7.1 batch must be committed and pushed as a NEW draft PR from openai/windows → develop
+## only after fresh evidence and gates are complete. Do not create a placeholder PR.
+## Claude Code: no need to open it now. After the new Codex PR is merged, Claude must start clean,
+## fetch origin, and merge origin/develop into anthropic/windows under PARALLEL_GIT_PROTOCOL.md.
+## Codex follows the same clean-start fetch/merge procedure before its next batch after develop moves.
+
 
 ## ══════════ ARCHIVED 2026-08-09 — superseded GP7 final-package handoff after conformity recheck ══════════
 ## ══════════ Moved from ROADMAP.md verbatim; original span was lines 24–149. ══════════

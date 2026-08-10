@@ -15,7 +15,8 @@
 
    Still ahead (recorded in ROADMAP's NEXT): the 21-step training port,
    Star Atlas, rarity stings, ring↔planet mutual shadows, PROTO star disk,
-   biome vista surfaces (Phase 6), living portraits (Phase 5). */
+   biome vista surfaces (Phase 6). Static deterministic Canvas species portraits
+   are live; retained Pixi actors, meshes, and portrait animation remain Phase 5. */
 import { Application, Container, Graphics, Sprite, Texture, Text, extensions, CullerPlugin } from 'pixi.js';
 import {
   galSpriteFor, decoSprite, getPlanetSprite, starSprite,
@@ -131,7 +132,9 @@ let save: SaveStateV2;
 let epochClock: EpochClock = createEpochClock(0, () => 0);
 let playT0 = 0;
 const playSeconds = (): number => (performance.now() - playT0) / 1000;
-const DPR = Math.min(devicePixelRatio, 3);
+const TOUCH_DPR = navigator.maxTouchPoints > 0
+  || (typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches);
+const DPR = Math.min(devicePixelRatio, TOUCH_DPR ? 2 : 3);
 const minWH = (): number => Math.max(80, Math.min(innerWidth, innerHeight));   /* floor: a zero-sized window must not mint z=0 → NaN cameras (audit #8) */
 
 let nav: NavState = NAV_HOME;
@@ -287,7 +290,8 @@ function fillCodex(filter?: string): void {
 /* the Compendium DETAIL CARD: the whole domain stack speaking for one
    creature — describeSpecies (fixture-pinned sentences + fauna enrichments),
    battleStats (the five stats as bars in their own hues), the grade badge.
-   The living portrait joins in Phase 5 (SpeciesArt). */
+   The static Canvas portrait is live. Pixi living actors and animation remain
+   a separate Phase 5 pipeline. */
 function fillCodexDetail(idx: number): void {
   if (!save) return;
   const row = save.codex[idx];

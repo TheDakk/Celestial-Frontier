@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (Phase 1+)
 
-**Status: ★★★ PR #7 MERGED · GP7.1 STRICT-CONFORMITY REMEDIATION IN PROGRESS** (2026-08-09).
+**Status: ★★★ PR #7 MERGED · FULL 1,250-ASSET ART RESET IN PROGRESS** (2026-08-10).
 **Port milestone record (2026-08-01):** ★★★ PHASES 1–3 COMPLETE (automatable) · PHASE 4 SHELL RUNNING.
 **Phase 4 so far — the slice wears the game's face at the GOLDEN SCREENS' exact geometry**
 (floating-pill topbar: player chip + HP bar + Prime pill + trail · objective chip fed by the
@@ -14,35 +14,72 @@ filter), the CMB band-pick, and the Escape-order law. The smoke carries a GEOMET
 (real bounding boxes vs the goldens, desktop AND phone, self-controlled) plus 15 standing
 negative controls. `npm run proofsheet` bakes the art/sound verdict sheet.
 
-## Current GP7 species-art status (2026-08-09)
+## Current species-art reset (2026-08-10)
+
+Nick reopened the entire Earth/procedural catalogue after Fruit Bat exposed a
+false visual acceptance. No GP7/GP7.1 band is current certification. The live
+authority and fail-closed ruler are in
+`reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+
+Reset-start repairs preserve the selected Earth parent's set-qualified lineage
+owner (`_earthBlendKingdom`), route fauna through the lineage-aware HD scaffold,
+route flora/fungi/microbe through the exact named owner, key portrait and
+thumbnail caches by the complete deterministic genome, and key review references
+by catalogue set plus species. `npm run hybridcheck` proves those production
+browser route/cache outcomes across every kingdom and injected regressions.
+
+The first negative-control family is frozen: independent refine3 review returned
+PASS for Bat, Fruit Bat, Insect-Eating Bat and Vampire Bat at 440/300/132px, with
+exact repeat hashes and unchanged nearby controls. This is a four-row family
+result only; see `reference/BAT_FAMILY_RESET_REVIEW_2026-08-10.md`.
+
+The official reset layout is derived as 181 families and 233 packets at a maximum of
+10 rows, with all 1,250 identities, 46 production-derived procedural plan
+families, clean-commit provenance and per-row 440px / unlabeled 300px / actual
+unlabeled 132px / labelled comparison / `mustRead` or procedural-plan hashes.
+The bounded certification-tool diff review found no blockers, and its syntax,
+selftests and negative controls pass. The integrated post-review pass also
+cleared syntax, TypeScript, unused-code, 238-pass/1-skipped Vitest, reset-tool,
+hybrid-matrix and diff checks. A clean commit still precedes official capture;
+the fresh visual review has not begun.
+Literal completion still means 1,250 freshly rendered PASS rows with zero carried
+verdicts, POLISH, or FAIL.
+
+Hybrid routing is correct while visual continuity remains OPEN. The provisional
+12-lineage × 5-stage matrix exposes a Fruit Bat pure-vs-legacy-child renderer
+discontinuity and byte-identical Vanilla Orchid anchor stages; Apple and Oyster
+Mushroom remain unreviewed. Its current r1/r2 roots are dirty-worktree diagnostics,
+not certification evidence.
+
+## Historical GP7/GP7.1 evidence (not the reset score)
 
 The current renderer covers all **1,250** catalogue identities (631 fauna, 332 flora,
-27 fungi, 20 microbes, 240 procedural). **GP7 is the frozen baseline; GP7.1 is the live
-remediation pass.** GP7 measured **503 changed rows / 95 strips**
+27 fungi, 20 microbes, 240 procedural). **GP7 is the frozen baseline; GP7.1 was the
+subsequent remediation pass before the full reset superseded it.** GP7 measured **503 changed rows / 95 strips**
 (165 PASS, 37 POLISH, 301 FAIL) plus **62 unchanged controls / 39 strips** (11 PASS,
 4 POLISH, 47 FAIL). The procedural correction subset is **57/57 PASS**. The paired control
 shows the new ruler is materially harsher on unchanged art: eligible-row demotions are
 38.8% for drift versus 65.6% for control (−26.8 points). Therefore the carried full-catalogue
 merge — 217 PASS / 415 POLISH / 618 FAIL — is inventory state across mixed rulers, **not a
-catalogue score**. GP7 is frozen as evidence; GP7.1 permits named fixes only, never a global
-body pass. Its literal fresh-PASS contract is recorded in
+catalogue score**. GP7 is frozen as evidence; GP7.1 permitted named fixes only and never a global
+body pass. Its historical fresh-PASS contract is recorded in
 `reference/GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md`.
 
-GP7.1 has now completed its **first all-fresh review baseline**: 1,250 current
+GP7.1 completed its **first all-fresh review baseline**: 1,250 then-current
 440x440 portraits and 196 hash-bound packets, independently collected as
-**318 FAIL / 301 POLISH / 631 PASS**, with zero carried rows. This is an honest
-repair baseline, not a completion claim; the 619 fresh non-PASS rows require
-named repairs followed by another all-fresh render and review before
-`--certify` can pass.
+**318 FAIL / 301 POLISH / 631 PASS**, with zero carried rows. It was an honest
+repair baseline, not a completion claim; its 619 non-PASS rows remain historical
+diagnostic evidence and are not the reset's carried work queue.
 
 The first post-baseline r2 delta pass independently reviewed all 362 changed
 pixels: fauna 46 PASS / 42 POLISH / 10 FAIL (98), flora+fungi 56 / 62 / 49
 (167), and procedural 76 / 21 / 0 (97). The remaining 888 portraits retained
 their exact baseline bytes. This is progress evidence only, not a replacement
-1,250-row ledger. The second narrow repair pass is now captured as r3 (1,250
+1,250-row ledger. The second narrow repair pass was captured as r3 (1,250
 portraits / 196 packets); it differs from r2 in 106 hashes and deliberately
-has no verdict ledger yet. It must be independently reviewed before any
-literal certification can be attempted.
+has no verdict ledger. It was awaiting independent review when the full reset
+superseded that sequence; it remains historical evidence, not the next live
+input or a route to certification.
 
 The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory:
 
@@ -54,11 +91,32 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 | `node tools/gp7collect.mjs` | Validates packet completeness, schema, exact names/order, bands, and reasons before writing the canonical GP7 drift/control records. |
 | `npm run gp7conformity -- --input <extracted-recheck-dir>` | Validates a 1,250-row ledger/manifest/results/index join and reports direct vs carried remediation work. `--certify` rejects every carried or non-PASS row; it guards ledger provenance and never substitutes for rendering or visual review. |
 | `node tools/gp71rejudge.mjs --prepare --out=gp71-rejudge --date=2026-08-09` | Builds the separate GP7.1 all-fresh 1,250-portrait / 196-packet evidence set, with no generated verdicts. `--collect` refuses partial, stale, or misaligned packet verdicts. |
+| `node tools/gp71compare.mjs --verify-only --old-root=<old> --current-root=<current> --catalogue=<current-index>` | Exact-joins two complete 1,250-image evidence roots; generation mode writes hash-bound family-organized old/current sheets to a new output directory. |
+| `npm run hybridcheck` | Drives the real browser art wrapper and proves set-qualified lineage pixels across fauna/flora/fungi/microbe, Earth/alien parent orders, multi-generation cases, duplicate names, swapped-parent cache separation, deterministic repeats, and injected bypass rejection. |
+| `npm run hybridmatrix -- --out=<new-name-under-apps/game/smoke>` | Writes the 12-lineage × 5-stage production hybrid continuity matrix, cards, silhouettes, 4× join crops, repeat/reload proof and reversed-parent cache controls to a new evidence root. It deliberately reports visual continuity OPEN until independently judged. |
+| `npm run fullresetlayout -- --prepare --evidence=<current-root> --out=<new-layout> --per=10 --packets --source-commit=<40-hex>` | From a clean commit-bound 1,250-image root, derives the official 181 families / 233 packets, 46 procedural plan families, exact set/species contracts and labelled/unlabeled packet evidence. `--verify` is the read-only counterpart. |
+| `npm run fullresetreview -- --compare …` / `--template` / `--collect` / `--certify` | Binds each row to native 440px, unlabeled 300px, actual unlabeled 132px, labelled old/current and exact contract hashes; creates empty fresh verdicts, collects only complete matching review, and certifies only 1,250 fresh PASS. See the copy-ready sequence below. |
 | `node tools/gp71package-2026-08-09.mjs ...` | Creates a separate dated GP7.1 image-inclusive ZIP only after `gp7conformity --certify` accepts the fresh ledger; it rejects legacy/overlapping targets. |
 | `node tools/rejudgemerge.mjs --fresh=<file> --base=<file> --control=<file> --out=<file>` | Folds fresh drift verdicts into the carried baseline and reports paired control calibration; it will not claim a delta without control. |
 | `npm run speciesexport` | Rebuilds and verifies the 1,250 native 440×440 portraits and per-set ZIPs. |
 | `npm run cataloguecards` | Alias for `rejudgecards --full`; generates the family-grouped complete-catalogue contact sheets and packets. |
 | `npm run gp7package` | Verifies portrait/contact coverage, records SHA-256 hashes, and assembles the dated complete-review ZIP. |
+
+The live reset sequence, after the foundation is committed and the worktree is
+clean, is:
+
+```powershell
+node tools/gp71rejudge.mjs --prepare --out=<NEW_CURRENT_EVIDENCE> --date=2026-08-10
+npm.cmd run fullresetlayout -- --prepare --evidence=<CURRENT_EVIDENCE> --out=<NEW_LAYOUT_DIR> --per=10 --packets --source-commit=<40_HEX_HEAD>
+npm.cmd run fullresetreview -- --compare --layout=<LAYOUT_DIR> --old=<OLD_EVIDENCE> --current=<CURRENT_EVIDENCE> --out=<NEW_COMPARISON_DIR> --source-commit=<40_HEX_HEAD>
+npm.cmd run fullresetreview -- --template --comparison=<COMPARISON_DIR> --out=<NEW_VERDICT_DIR> --review-date=YYYY-MM-DD --source-commit=<40_HEX_HEAD>
+# Independent judges fill the generated templates.
+npm.cmd run fullresetreview -- --collect --comparison=<COMPARISON_DIR> --verdicts=<FILLED_VERDICT_DIR> --out=<NEW_RESULTS_DIR> --review-date=YYYY-MM-DD --source-commit=<40_HEX_HEAD>
+npm.cmd run fullresetreview -- --certify --comparison=<COMPARISON_DIR> --verdicts=<FILLED_VERDICT_DIR> --results=<RESULTS_DIR> --out=<NEW_CERTIFICATION_DIR> --review-date=YYYY-MM-DD --source-commit=<40_HEX_HEAD>
+```
+
+Every output directory must be new. Do not edit art while verdicts are being
+written, and do not run `--certify` until collection reports 1,250 fresh PASS.
 
 The GP7 baseline packaging sequence (`speciesexport` → `cataloguecards` → `gp7package`) completed.
 The package gate accepted all review records and emitted

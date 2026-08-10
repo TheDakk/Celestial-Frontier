@@ -653,3 +653,51 @@ the legacy `main.js` status above.
   PR #7 is merged; the GP7.1 remediation/evidence batch may use a new
   `openai/windows` to `develop` draft PR, but it remains unmergeable until the
   fresh full-catalogue evidence package and certification exist.
+
+## 2026-08-10 full-catalogue reset — current authority
+
+Nick reopened the full 1,250-organism review after Fruit Bat exposed a false
+acceptance. The GP7 execution addendum above is retained as history, but its
+bands are not a current score or certification. The live ruler, root-cause
+record, and procedure are in
+`port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+
+Foundation defects were corrected before restarting judgement: bred
+`_earthBlend` genomes store the selected Earth parent's set-qualified owner;
+fauna reaches the inherited HD scaffold while flora/fungi/microbe use the exact
+named owner; caches use the full deterministic genome state (not seed alone);
+and review references are keyed by catalogue set plus species so cross-kingdom
+duplicate names cannot receive the wrong contract. `npm run hybridcheck` guards
+the final browser route/cache outcome across every kingdom and injected failures.
+
+The art direction is now explicitly anatomical and topological: silhouette and
+proportion first; connected skeleton/growth structure second; continuous
+membrane, skin, fur, bark, or tissue over that structure; shared light,
+occlusion, outline weight, and material response last. Horns, tusks, wings,
+tails, flowers, fruit, roots, and hybrid traits must grow from the organism,
+never read as stickers or paper pieces. PixiJS may improve resolution,
+filtering, compositing, and animation only after the deterministic Canvas2D
+source geometry reads correctly; a texture upload cannot repair bad anatomy.
+
+The first negative-control family is now frozen under that ruler. Refine2d
+remained four-for-four FAIL because jointed digit/thumb/foot/rear-membrane reads
+did not survive delivery size. Independent refine3 review returned PASS for Bat,
+Fruit Bat, Insect-Eating Bat and Vampire Bat at native 440px, unlabeled gameplay
+300px and actual unlabeled 132px, with exact repeat hashes and unchanged nearby
+controls. This is a four-row family result only; the durable record is
+`port/v2/reference/BAT_FAMILY_RESET_REVIEW_2026-08-10.md`.
+
+The full reset does not carry those four verdicts into a global claim. Official
+review derives 181 families / 233 packets at a maximum of 10 and binds each of
+the 1,250 exact identities to clean-commit provenance, 440px, unlabeled 300px,
+actual unlabeled 132px, labelled old/current, and set-specific `mustRead` or
+procedural-plan hashes. No final all-catalogue review or ZIP exists yet.
+
+Hybrid routing is technically correct while visual continuity remains OPEN.
+The provisional 12-lineage × 5-stage matrix shows a Fruit Bat renderer-generation
+break between pure and bred stages and five byte-identical Vanilla Orchid anchors;
+Apple and Oyster Mushroom remain unreviewed. The current matrix is dirty-worktree
+diagnostic evidence and must be regenerated from the clean commit. The graphics
+upgrade remains staged: correct anatomy and lineage continuity, then a
+resolution-aware portrait seam, then a bounded Pixi living preview, then any
+later mesh/skeletal production pipeline.

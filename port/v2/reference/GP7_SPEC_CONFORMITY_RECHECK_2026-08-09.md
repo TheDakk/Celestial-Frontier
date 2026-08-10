@@ -1,8 +1,17 @@
 # GP7.1 strict-conformity recheck — 2026-08-09
 
+> **Historical GP7.1 evidence — superseded as the live work sequence by the
+> [full-catalogue reset](FULL_CATALOG_RESET_AUDIT_2026-08-09.md).** Nick reopened
+> all 1,250 identities after Fruit Bat exposed a false acceptance. The r1/r2/r3
+> pixels, hashes and measurements below remain frozen evidence, but their bands
+> are not current verdicts and r3 is not the next review input. Those packets
+> were also prepared before references were keyed by set+species, so Green
+> Algae, Reindeer Lichen, Snow Algae and Tardigrade could receive another
+> catalogue set's contract. Do not collect, relabel or certify this record.
+
 ## Status
 
-**Remediation in progress — not certified as 100% PASS.** This is the live
+**Historical remediation record — never certified as 100% PASS.** This was the
 authority for the strict-conformity follow-up to the frozen GP7 baseline in
 [GOLD_PASS_7.md](GOLD_PASS_7.md). It does not replace or rewrite any GP7
 verdict, Nick review, or carried historical record.
@@ -124,4 +133,4 @@ the dated image-inclusive packager may succeed.
 - [NICK_PATCH_REVIEW_2026-08-08.md](NICK_PATCH_REVIEW_2026-08-08.md) — fixed
   species review, byte-identical to Nick's supplied Downloads copy.
 - [PLAN_100_PERCENT.md](PLAN_100_PERCENT.md) — prior historical plan;
-  this record governs the new literal fresh-PASS target.
+  the full-catalogue reset now governs the literal fresh-PASS target.

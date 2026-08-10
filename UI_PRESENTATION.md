@@ -9,6 +9,16 @@ lesson card must also join the `--tut-bot` positioning contract, or the raise bu
 a-time manager, the "fold language", the vista box, the cards, and the platform caps —
 plus the headless layout gate that guards them.
 
+> **2026-08-10 v2 correction:** the Pixi slice now enforces the same mobile heat
+> law as the legacy build: coarse-pointer/touch devices cap renderer DPR at 2,
+> desktop at 3. Static species portraits are deterministic Canvas images in DOM
+> cards; Pixi living actors/mesh animation remain future work. The reset's staged
+> graphics path is anatomy/lineage continuity first, an explicit resolution-aware
+> portrait seam second, a bounded Pixi living-preview proof third, and a later
+> mesh/skeletal production pipeline only after those gates. Pixi filters cannot
+> repair a wrong silhouette or disconnected anatomy. See
+> `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+
 > **B15–15.5 LANDING VISTAS (render-only, fp 50/50):** two dedicated sub-surface scenes now route from
 > `showVistaBox` — `_hdReefScene` (Coral-Shallows → bright reef: caustics, coral colonies, fish schools,
 > in-column creatures) and `_hdAbyssScene` (the deep; now draws the world's ACTUAL genes as pressure-dark

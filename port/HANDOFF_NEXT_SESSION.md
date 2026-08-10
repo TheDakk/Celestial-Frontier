@@ -1,3 +1,111 @@
+# ★ LIVE — reset foundation ready to commit; fresh 1,250-row judging next (2026-08-10)
+
+**Current worktree:** `C:\Projects\celestial-frontier-openai-windows` on
+`openai/windows`. The bounded reset-foundation batch is still uncommitted on
+top of local HEAD `3528bfb`. Independent bounded diff review and the integrated
+post-review gate pass found no blockers; the foundation is ready to commit.
+PR #7 is historical/already merged. There is no reset PR, global
+PASS, final ZIP, release, deployment, or version bump.
+
+Read first: `ROADMAP.md`, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`,
+`port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`,
+`port/v2/reference/BAT_FAMILY_RESET_REVIEW_2026-08-10.md`,
+`ART_DIRECTION.md`, `LINEAGE_AND_BREEDING.md`,
+`PROCEDURAL_CHARACTERISTICS.md`, `port/PROPORTION_ARC.md`, and
+`port/v2/README.md`.
+
+## Current reset truth
+
+GP7/GP7.1/r1/r2/r3 are quarantined history, not current bands. Exact scope is
+631 fauna + 332 flora + 27 fungi + 20 microbes + 240 procedural = **1,250**.
+Four names occur in two Earth sets, so 1,010 Earth identities own 1,014 route
+rows. Every review, lineage, compare, merge and package identity is
+`set + species`, never a bare display name.
+
+## Reset foundation accepted — clean commit remains
+
+1. Breeding stores the selected Earth lineage's exact `_earthBlendKingdom`
+   without changing the lifted RNG stream. Fauna uses the lineage-aware HD
+   scaffold; flora/fungi/microbe use the exact set+name owner.
+2. Portrait and thumbnail caches share a canonical key over the complete genome;
+   `hybridcheck` exercises all kingdoms, duplicate names, parent orders,
+   lineage/cache/repeat cases and injected failures through production pixels.
+3. `fullresetlayout` derives **181 families / 233 official packets** at 10 max,
+   including 46 production-derived procedural plan families.
+4. `fullresetreview` binds every exact row to clean 40-hex provenance, native
+   440px, unlabeled 300px, actual unlabeled 132px, labelled old/current, and its
+   exact `mustRead` or procedural-plan hash. It writes certification only for
+   1,250 fresh PASS.
+
+The independent review found no blocker in `gp71rejudge`, `fullresetlayout` or
+`fullresetreview`; their selftests and negative controls passed. Post-review
+syntax, TypeScript, unused-code, 238-pass/1-skipped Vitest, reset-tool,
+hybrid-matrix and diff checks also passed. That accepts the foundation, not the
+art. Do not run the official capture until this batch has a clean 40-hex commit.
+
+## Bat family: frozen refine3 PASS only
+
+Refine2d remained four-for-four FAIL because digit/thumb/foot/rear-membrane
+supports did not survive all delivery bands. With the source frozen, independent
+refine3 review returned **Bat PASS · Fruit Bat PASS · Insect-Eating Bat PASS ·
+Vampire Bat PASS** at 440/300/132px. Repeat hashes match and five nearby controls
+are unchanged from refine2d. The exact record is
+`port/v2/reference/BAT_FAMILY_RESET_REVIEW_2026-08-10.md`.
+
+This is four frozen rows, not a catalogue score. Any new bat pixel requires a
+new hash-bound review.
+
+## Hybrid and graphics boundary
+
+The provisional 12-lineage × 5-stage matrix proves route/cache mechanics and
+records 217 assets, but visual continuity is **OPEN**. Fruit Bat changes renderer
+generation between pure and bred stages; Vanilla Orchid's five anchors are
+byte-identical; Apple and Oyster Mushroom remain unreviewed. The r1/r2 matrix
+roots are dirty-worktree diagnostics and must be regenerated from a clean commit.
+
+PixiJS owns the galaxy/world scene. Species are deterministic Canvas2D data URLs
+inside DOM images. Sequence the upgrade as anatomy/lineage continuity →
+resolution-aware portrait seam → bounded Pixi living-preview proof → later
+mesh/skeletal production. Pixi filters do not repair wrong geometry.
+
+## Repository hygiene in this batch
+
+The orphan 26,400×19,800 `packages/art/src/5` PNG is removed after exact consumer
+proof. Twelve superseded local painters and definite no-op locals are removed;
+isolated evidence keeps all 1,246 non-bat portraits byte-identical. Touch/coarse
+pointer DPR caps at 2 and desktop at 3. These are cleanup facts, not art verdicts.
+
+## Exact next sequence (run from `port/v2` after a clean foundation commit)
+
+```powershell
+node tools/gp71rejudge.mjs --prepare --out=<NEW_CURRENT_EVIDENCE> --date=2026-08-10
+npm.cmd run fullresetlayout -- --prepare --evidence=<CURRENT_EVIDENCE> --out=<NEW_LAYOUT_DIR> --per=10 --packets --source-commit=<40_HEX_HEAD>
+npm.cmd run fullresetreview -- --compare --layout=<LAYOUT_DIR> --old=<OLD_EVIDENCE> --current=<CURRENT_EVIDENCE> --out=<NEW_COMPARISON_DIR> --source-commit=<40_HEX_HEAD>
+npm.cmd run fullresetreview -- --template --comparison=<COMPARISON_DIR> --out=<NEW_VERDICT_DIR> --review-date=YYYY-MM-DD --source-commit=<40_HEX_HEAD>
+```
+
+Judges fill the 233 fresh templates. Then run `fullresetreview --collect`; repair
+only concrete non-PASS rows, commit, and recapture. Run `--certify` and build the
+image-inclusive ZIP only after collection reports 1,250 PASS, zero POLISH/FAIL/
+carried rows. Copy-ready collect/certify commands are in `port/v2/README.md`.
+Resolve the hybrid visual findings and rerun `hybridcheck` + `hybridmatrix` from
+the clean commit before final packaging.
+
+## Parallel Git handoff
+
+OpenAI/Codex keeps the accepted worktree isolated, then commits and pushes only
+`openai/windows`. A future draft PR must use base `develop` and source
+`openai/windows`; no placeholder PR number/title exists. Claude Code does not
+need to open now and must not copy files manually. After Nick reviews and merges
+that future PR, Claude starts clean, fetches, and merges `origin/develop` into
+`anthropic/windows` under `PARALLEL_GIT_PROTOCOL.md`. Codex performs the same
+clean-start synchronization after `develop` moves. No release/deployment here.
+
+# Historical GP7.1 handoff — superseded by the full-catalogue reset; retained below
+
+> The following former live block is provenance only. Its instruction to judge
+> r3 next is cancelled by the reset above.
+
 # ★ LIVE — GP7.1 strict-conformity remediation (2026-08-09)
 
 **Current worktree:** `C:\Projects\celestial-frontier-openai-windows` on

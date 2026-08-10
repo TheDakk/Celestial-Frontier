@@ -1433,3 +1433,85 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   packet strip SHA-256 in the preparation/index, requires both exact values in every verdict, and
   refuses collection if any one changes. A repair must create new evidence and a new review; it
   may never inherit a PASS merely because the species name is unchanged.
+
+- ★★★ **D-ART-169 — A DISPLAY NAME IS NOT AN IDENTITY WHEN THE CATALOGUE OWNS THE SAME NAME IN
+  TWO SETS.** (2026-08-09, full-catalogue reset foundation.) GP7.1's reference loader keyed
+  `fauna.json`, `flora.json`, and `other.json` rows by bare `name`; because `other` loaded last,
+  it silently replaced the Earth-flora contracts for Green Algae, Reindeer Lichen and Snow Algae,
+  and the Earth-fauna contract for Tardigrade, with their other-kingdom rows. Every packet still
+  had a name, reference and valid hash, so completeness/provenance checks stayed green while the
+  judge was shown the wrong required anatomy. The live loader now derives the catalogue set and
+  keys `set + species`, rejects duplicate exact identities, and its self-test pins all four pairs;
+  a bare-name negative control must reproduce and expose the collapse. **Every review, merge,
+  comparison and package join uses the exact set/species identity. Human-readable names are labels,
+  never primary keys.**
+
+- ★★★ **D-ART-170 — A BRED SEED IS NOT A COMPLETE PORTRAIT IDENTITY, AND GENERIC PROCEDURAL
+  ROUTING MUST NOT PREEMPT EARTH LINEAGE.** (2026-08-09, full-catalogue reset foundation.)
+  `crossGenome` correctly wrote `_earthBlend` and `_anchorVal`, and the HD renderer correctly knew
+  how to preserve the inherited Earth scaffold, but `resolveOverride` claimed every genome without
+  `_earthName` first. Mapped children therefore became generic procedural bodies before lineage
+  rendering could run. Independently, the portrait/thumb caches keyed a small seed/name tuple;
+  reverse-parent crosses can share a derived seed while inheriting different traits, and two
+  lineages/anchors could reuse whichever texture painted first. The live route now returns
+  `_earthBlend` genomes to the lineage-aware renderer before procedural mapping, and both caches
+  canonicalize the complete plain genome through one shared key. `hybridblendcheck` drives final
+  browser pixels across actual Earth×Earth, Earth×alien, multi-generation, fauna/flora, lineage,
+  anchor, repeat and cache-order outcomes, then rejects an injected bypass. **Test the rendered
+  outcome and the full pixel input, not the presence of inheritance fields or a convenient seed.**
+
+- ★★★ **D-ART-171 — A HASH-STABLE PORTRAIT CAN BE STABLY WRONG; HASHES PROVE WHICH PIXELS WERE
+  REVIEWED, NOT WHETHER THE ORGANISM IS CORRECT.** (2026-08-09, Fruit Bat reset trigger.) Fruit
+  Bat has the identical SHA-256
+  `877AB8C2028350AF672E4B1E48979834FBCEEC1CE31651A360AD2796AF4B6C72` in GP7.1 r1, r2 and r3,
+  yet direct review found a toy/rodent-like head, rigid paper-like membrane read, missing joined
+  thumb/foot anatomy and intended species eyes overpainted by a later generic eye pass. Earlier
+  PASS/POLISH language and green route/render gates therefore preserved a false acceptance across
+  three perfectly traceable captures. The full catalogue is reopened: old hashes/bands are frozen
+  evidence only, and a current PASS requires unlabeled identity plus every set-specific anatomical
+  must-read, connected attachment/occlusion/material construction, family comparison and injected
+  removal controls at gameplay and native scale. **Hash equality authorizes carry of pixels, never
+  carry of judgement after the ruler or biological contract is shown to be wrong.**
+
+- ★★★ **D-ART-172 — A MIXED-KINGDOM CHILD'S GAMEPLAY KINGDOM IS NOT THE OWNER OF ITS EARTH
+  ANATOMY.** (2026-08-10, full-reset lineage repair.) The lifted breeding body selected an
+  Earth lineage by name, but the renderer later inferred its catalogue from the child's own
+  `kingdom`. That is ambiguous for Green Algae, Reindeer Lichen, Snow Algae and Tardigrade and
+  wrong whenever the child inherited its kingdom from one parent and its Earth scaffold from
+  the other. The typed genetics facade now carries the selected lineage's exact kingdom through
+  the unchanged RNG/name pick as `_earthBlendKingdom`; art resolves that set-qualified owner.
+  Fauna keeps the lineage-aware verbatim scaffold, while flora/fungi/microbe call the exact named
+  owner with the child's complete genome unchanged. Old saves without the marker infer only from
+  live route ownership under a stable fail-closed order. **A lineage name is not enough; store the
+  catalogue that owns it at the moment deterministic inheritance chooses it.**
+
+- ★★★ **D-ART-173 — A FAUNA-GREEN HYBRID GUARD CAN HIDE THREE BROKEN KINGDOMS.** (2026-08-10,
+  mixed-kingdom outcome controls.) The first repaired route correctly returned fauna blends to
+  the HD lineage scaffold and its browser checks went green, while flora, fungi and microbe
+  `_earthBlend` children still had no equivalent lineage fallback and could be treated as generic
+  procedural art. `hybridblendcheck` now drives final production pixels for every kingdom,
+  set-qualified duplicates, both parent orders, lineage stripping, cache order and injected
+  route failures. **When a field crosses a union of kingdoms, a representative from one member
+  does not test the union. Enumerate every owner and assert the rendered outcome.**
+
+- ★★★ **D-ART-174 — A HASHED DIRTY-WORKTREE CAPTURE IS REPRODUCIBLE DIAGNOSIS, NOT FETCHABLE
+  CERTIFICATION.** (2026-08-10, hybrid/reset evidence foundation.) The first two hybrid matrices
+  honestly recorded `HEAD 3528bfb` plus a complete source-file snapshot, and they reproduced the
+  same pixel projection; they also honestly recorded that the art/app source was uncommitted.
+  That is enough to preserve a finding and not enough for another machine to check out the exact
+  state. Official reset layout/review tools therefore require the complete 40-hex current HEAD,
+  reject dirty scoped source for preparation, bind every output to source and evidence hashes,
+  and refuse an existing destination. **Freeze a clean commit before the official render; a hash
+  manifest does not turn an uncommitted workspace into shared provenance.**
+
+- ★★★ **D-ART-175 — CERTIFICATION BINDS THE RULER'S INPUTS, NOT JUST ITS FINAL PORTRAIT.**
+  (2026-08-10, full-reset review contract.) A correct 440px hash can coexist with a signature
+  that disappears at gameplay size, the wrong set's `mustRead`, or a historical comparison the
+  reviewer never saw. The official 1,250-row workflow now binds each exact set/species verdict to
+  native 440px pixels, an unlabeled 300px gameplay render, the actual unlabeled 132px thumbnail,
+  the labelled old/current comparison, the hashed set-specific `mustRead` or procedural-plan
+  payload, review date, source commit, and fixed attestation. The official layout is derived as
+  181 families / 233 packets at a maximum of 10 rows; collection rejects partial, stale or
+  mismatched inputs, and certification writes only for 1,250 fresh PASS.
+  **If resolution, comparison, contract, ruler or source is not bound, the verdict is a comment,
+  not certification evidence.**
