@@ -795,5 +795,61 @@ ear/head proportion, foot/tentacle or organ topology disappears at 132px, the
 row remains FAIL even when native pixels changed. Reopen only that named row,
 freeze every accepted neighbour, then require a second independent verdict.
 Final integrated Wave-2b gates are green with all five source SHAs unchanged,
-so this bounded checkpoint is ready to commit/push. Full recertification, the
+and the bounded checkpoint is committed/pushed as `9c148f0`. Full recertification, the
 image-inclusive ZIP, reset PR and release remain OPEN.
+
+## 2026-08-10 reset Wave 2c — 56 scoped whole forms independently PASS
+
+Wave 2c is exactly **56/56 scoped PASS**: Mammal C 13/13, Bird B2 28/28 and
+Invert II 15/15. It remains bounded repair evidence rather than a new 1,250-row
+tally, and every changed delivery surface received an author-separated verdict.
+
+- **Mammal C — 13/13 PASS.** The initial preview was 0/13 candidate-ready
+  because rigid tube joins and pasted attachments required continuous whole-form
+  rebuilds. R2 reached 8/13; R3 reached 11/13, and R3/R4 kept Red Panda and
+  Tasmanian Devil open until hidden leg roots and the organic clipped chest band
+  belonged to the body. R5 closed both before final independent judgment.
+- **Bird B2 — 28/28 PASS.** The first independent shared judgment returned
+  25 PASS /3 FAIL. Eider Duck needed a genuinely low-in-water posture, Rail a
+  rump-rooted cocked tail and downcurved probe, and Avocet a continuous recurved
+  bill. The bounded repair changed only those three; final A/B review returned
+  3/3 PASS and preserved the other 25 targets +72 controls.
+- **Invert II — 15/15 PASS.** The first author preview failed closed on five
+  shrimp/amphipod forms; its bounded R2 made them candidate-ready. The first
+  independent shared judgment still returned 13 PASS /2 FAIL on Krill and
+  Tadpole Shrimp. The final repair made Krill's conspicuous stalked compound eyes
+  and Tadpole Shrimp's dense organic leaf-limb field survive 132px; the second
+  judge returned 2/2 PASS.
+
+The admissible shared evidence root is
+`port/v2/apps/game/smoke/wave2c-shared-final-r2-evidence-2026-08-10`; manifest
+SHA-256 is
+`BCB5282571903AC2057F6A5B9F7FCA09C6DE8372E4FEFEEAD8D34340930CE330`.
+It binds 249 rows =56 targets +193 protected controls, 747 surfaces per run and
+1,494 physical PNG hash/dimension checks. Current/repeat is exact on 747/747
+surfaces; all 579 protected surfaces match the shared baseline; all 168 target
+surfaces changed. Final R2 changed only Eider Duck, Rail, Avocet, Krill and
+Tadpole Shrimp (15 surfaces), while the other 244 rows /732 surfaces remained
+exact. Three 139-file input snapshots have zero drift and all three negative
+controls were rejected.
+
+Final source SHA-256 values are `quadrupedoverrides.ts`
+`45B1C645952DAC02EFF9B0D5266BA31DCED6D89176F51417B85A7B0F0B37BB59`,
+`mammaloverrides.ts`
+`50B3B2FFEBF2C6DF1842B9E545CEBC79C4880F376FDD96CA8E8C612150C47EC2`,
+`faunaoverrides.ts`
+`D7917829228DEFFF764D9C5224D55A4C6A708B9FCEDAE4FF7E34149375A907C5`,
+`birdoverrides.ts`
+`C7D536C679460E0BE8ADF38CF14DF0FF3EB4F4E35C6827D8D51DF2997FE8BD21`
+and `invertoverrides.ts`
+`6A4020DD69E65473E8034C58FA398A3099A1339B94D83A838A10EE5C905451A0`.
+
+The integrated gate set is green with all five hashes unchanged: typecheck and
+artunused pass; Vitest is 238 passed /1 skipped across 23 files; speccheck is
+418 declared /0 unread /0 inert; overridecheck is 1,014/1,014 live and
+1,010/1,010 Earth; speciesaudit is 1,250/1,250 with zero failure, duplicate pair
+or clipping; hybridcheck passes and rejects 11 injected failures; hybridmatrix,
+speciesstrip, fullresetlayout and fullresetreview selftests pass; coveragegap is
+1,010/1,010 with zero remaining; `git diff --check` passes. The scoped Wave-2c
+checkpoint is ready to commit/push. Full recertification, ZIP, reset PR, merge,
+release and deployment remain OPEN.

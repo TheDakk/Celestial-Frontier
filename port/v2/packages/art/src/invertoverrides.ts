@@ -766,6 +766,235 @@ export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: 
 }
 
 /* ═══════════════ CRUSTACEANS ═══════════════ */
+type InvertPt = readonly [number, number];
+type ResetCrabIISignature = 'freshwaterCrab' | 'mudCrab' | 'ventCrab' | 'hermitCrab';
+
+const RESET_CRAB_II: Readonly<Record<string, ResetCrabIISignature>> = Object.freeze({
+  'Freshwater Crab': 'freshwaterCrab',
+  'Mud Crab': 'mudCrab',
+  'Vent Crab': 'ventCrab',
+  'Hermit Crab': 'hermitCrab',
+});
+
+function crustTone(p: Pal, k: number, alpha = 1): string {
+  const ch = (v: number): number => Math.max(0, Math.min(255, Math.round(v * k)));
+  return `rgba(${ch(p.cr)},${ch(p.cg)},${ch(p.cb)},${alpha})`;
+}
+
+function crustGradient(c: Ctx, p: Pal, x: number, y: number, radius: number, alpha = 1): CanvasGradient {
+  const gg = c.createRadialGradient(x - radius * 0.34, y - radius * 0.38, 2, x, y, radius * 1.22);
+  gg.addColorStop(0, crustTone(p, 1.36, alpha));
+  gg.addColorStop(0.56, crustTone(p, 0.94, alpha));
+  gg.addColorStop(1, crustTone(p, 0.42, alpha));
+  return gg;
+}
+
+/** A rooted, filled-width crustacean leg. The body is painted after the root,
+    so the appendage grows from beneath the carapace rather than touching it. */
+function resetCrustLeg(c: Ctx, p: Pal, root: InvertPt, knee: InvertPt, tip: InvertPt,
+  width: number, paddle = 0): void {
+  const legPath = (): void => {
+    c.moveTo(root[0], root[1]);
+    c.lineTo(knee[0], knee[1]);
+    c.lineTo(tip[0], tip[1]);
+  };
+  c.lineCap = 'round'; c.lineJoin = 'round';
+  c.strokeStyle = crustTone(p, 0.38, 0.98); c.lineWidth = width;
+  c.beginPath(); legPath(); c.stroke();
+  c.strokeStyle = crustTone(p, 0.83, 0.92); c.lineWidth = Math.max(1.6, width * 0.42);
+  c.beginPath(); legPath(); c.stroke();
+  c.fillStyle = crustTone(p, 0.72, 1);
+  c.beginPath(); c.arc(knee[0], knee[1], Math.max(2.5, width * 0.57), 0, TAU); c.fill();
+  if (paddle > 0) {
+    const a = Math.atan2(tip[1] - knee[1], tip[0] - knee[0]);
+    c.save(); c.translate(tip[0], tip[1]); c.rotate(a);
+    c.fillStyle = crustGradient(c, p, 0, 0, width * 2.4);
+    c.beginPath(); c.ellipse(width * 1.05, 0, width * (1.45 + paddle), width * (0.72 + paddle * 0.35), 0, 0, TAU); c.fill();
+    c.strokeStyle = crustTone(p, 0.35, 0.78); c.lineWidth = 1.8;
+    c.beginPath(); c.ellipse(width * 1.05, 0, width * (1.45 + paddle), width * (0.72 + paddle * 0.35), 0, 0, TAU); c.stroke();
+    c.restore();
+  }
+}
+
+function resetCrabChela(c: Ctx, p: Pal, root: InvertPt, elbow: InvertPt, palm: InvertPt,
+  size: number, angle: number): void {
+  resetCrustLeg(c, p, root, elbow, palm, Math.max(7, size * 0.24));
+  c.save(); c.translate(palm[0], palm[1]); c.rotate(angle);
+  c.fillStyle = crustGradient(c, p, -size * 0.08, 0, size);
+  c.beginPath(); c.ellipse(-size * 0.08, 0, size * 0.72, size * 0.48, 0, 0, TAU); c.fill();
+  c.strokeStyle = crustTone(p, 0.34, 0.82); c.lineWidth = Math.max(1.8, size * 0.055);
+  c.beginPath(); c.ellipse(-size * 0.08, 0, size * 0.72, size * 0.48, 0, 0, TAU); c.stroke();
+  /* Fixed finger and dactyl are filled wedges with a real gape. */
+  c.fillStyle = crustTone(p, 0.82, 1);
+  c.beginPath(); c.moveTo(size * 0.34, -size * 0.34);
+  c.quadraticCurveTo(size * 1.15, -size * 0.62, size * 1.48, -size * 0.24);
+  c.quadraticCurveTo(size * 1.03, -size * 0.27, size * 0.34, -size * 0.06); c.closePath(); c.fill();
+  c.beginPath(); c.moveTo(size * 0.34, size * 0.31);
+  c.quadraticCurveTo(size * 1.13, size * 0.50, size * 1.42, size * 0.11);
+  c.quadraticCurveTo(size * 0.98, size * 0.10, size * 0.34, size * 0.03); c.closePath(); c.fill();
+  c.strokeStyle = crustTone(p, 0.34, 0.72); c.lineWidth = Math.max(1.5, size * 0.045);
+  c.beginPath(); c.moveTo(size * 0.36, -size * 0.27); c.quadraticCurveTo(size * 0.23, 0, size * 0.36, size * 0.25); c.stroke();
+  c.restore();
+}
+
+/** Compact filled chela for shrimp feeding appendages. Thin forked strokes
+    disappeared at 132px; these overlapping palm/finger shapes keep the claw
+    visibly joined to its rooted limb without turning it into a lobster chela. */
+function resetSmallChela(c: Ctx, p: Pal, palm: InvertPt, size: number, angle: number,
+  alpha = 0.92): void {
+  c.save(); c.translate(palm[0], palm[1]); c.rotate(angle);
+  c.fillStyle = crustGradient(c, p, -size * 0.10, 0, size, alpha);
+  c.beginPath(); c.ellipse(-size * 0.08, 0, size * 0.58, size * 0.38, 0, 0, TAU); c.fill();
+  c.strokeStyle = crustTone(p, 0.34, alpha); c.lineWidth = Math.max(2.2, size * 0.12);
+  c.beginPath(); c.ellipse(-size * 0.08, 0, size * 0.58, size * 0.38, 0, 0, TAU); c.stroke();
+  c.fillStyle = crustTone(p, 0.82, alpha);
+  c.beginPath(); c.moveTo(size * 0.20, -size * 0.28);
+  c.quadraticCurveTo(size * 0.86, -size * 0.50, size * 1.08, -size * 0.18);
+  c.quadraticCurveTo(size * 0.74, -size * 0.18, size * 0.20, -size * 0.04); c.closePath(); c.fill();
+  c.beginPath(); c.moveTo(size * 0.20, size * 0.27);
+  c.quadraticCurveTo(size * 0.82, size * 0.42, size * 1.04, size * 0.12);
+  c.quadraticCurveTo(size * 0.70, size * 0.10, size * 0.20, size * 0.03); c.closePath(); c.fill();
+  c.restore();
+}
+
+function resetCrabCarapace(c: Ctx, g: G, p: Pal, name: string, sig: ResetCrabIISignature,
+  cx: number, cy: number, w: number, h: number): void {
+  const r = nrng(g, name, 0x2C2C);
+  const path = (): void => {
+    if (sig === 'mudCrab') {
+      c.moveTo(cx - w, cy + h * 0.04);
+      c.quadraticCurveTo(cx - w * 0.93, cy - h * 0.68, cx - w * 0.53, cy - h * 0.88);
+      c.quadraticCurveTo(cx, cy - h * 1.02, cx + w * 0.53, cy - h * 0.88);
+      c.quadraticCurveTo(cx + w * 0.93, cy - h * 0.68, cx + w, cy + h * 0.04);
+      c.quadraticCurveTo(cx + w * 0.62, cy + h * 0.77, cx, cy + h * 0.84);
+      c.quadraticCurveTo(cx - w * 0.62, cy + h * 0.77, cx - w, cy + h * 0.04);
+    } else if (sig === 'freshwaterCrab') {
+      c.moveTo(cx - w * 0.86, cy - h * 0.72);
+      c.quadraticCurveTo(cx - w, cy - h * 0.30, cx - w * 0.91, cy + h * 0.58);
+      c.quadraticCurveTo(cx - w * 0.52, cy + h * 0.88, cx, cy + h * 0.90);
+      c.quadraticCurveTo(cx + w * 0.52, cy + h * 0.88, cx + w * 0.91, cy + h * 0.58);
+      c.quadraticCurveTo(cx + w, cy - h * 0.30, cx + w * 0.86, cy - h * 0.72);
+      c.quadraticCurveTo(cx, cy - h * 0.91, cx - w * 0.86, cy - h * 0.72);
+    } else {
+      c.moveTo(cx - w, cy + h * 0.10);
+      c.quadraticCurveTo(cx - w * 0.86, cy - h * 0.86, cx, cy - h);
+      c.quadraticCurveTo(cx + w * 0.86, cy - h * 0.86, cx + w, cy + h * 0.10);
+      c.quadraticCurveTo(cx + w * 0.58, cy + h * 0.82, cx, cy + h * 0.88);
+      c.quadraticCurveTo(cx - w * 0.58, cy + h * 0.82, cx - w, cy + h * 0.10);
+    }
+    c.closePath();
+  };
+  c.fillStyle = crustGradient(c, p, cx - w * 0.10, cy - h * 0.18, w * 1.08);
+  c.beginPath(); path(); c.fill();
+  c.save(); c.beginPath(); path(); c.clip();
+  const shine = c.createLinearGradient(cx - w, cy - h, cx + w, cy + h);
+  shine.addColorStop(0, 'rgba(255,255,255,0.24)'); shine.addColorStop(0.42, 'rgba(255,255,255,0.03)'); shine.addColorStop(1, 'rgba(0,0,0,0.18)');
+  c.fillStyle = shine; c.fillRect(cx - w, cy - h, w * 2, h * 2);
+  for (let i = 0; i < 12; i++) {
+    softMark(c, cx - w * 0.68 + r() * w * 1.36, cy - h * 0.56 + r() * h * 1.12,
+      5 + r() * 7, 3 + r() * 4, sig === 'ventCrab' ? '150,156,164' : '24,18,12', sig === 'ventCrab' ? 0.11 : 0.16);
+  }
+  c.restore();
+  c.strokeStyle = sig === 'ventCrab' ? 'rgba(210,220,228,0.72)' : crustTone(p, 0.33, 0.82);
+  c.lineWidth = 3; c.beginPath(); path(); c.stroke();
+  c.strokeStyle = 'rgba(255,255,255,0.22)'; c.lineWidth = 2;
+  c.beginPath(); c.moveTo(cx - w * 0.62, cy - h * 0.62); c.quadraticCurveTo(cx, cy - h * 0.88, cx + w * 0.62, cy - h * 0.62); c.stroke();
+}
+
+function resetHermitCrab(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0x4E12);
+  const sx = S * 0.635, sy = S * 0.515, rx = S * 0.245, ry = S * 0.220;
+  shadow(c, S * 0.52, S * 0.79, S * 0.34);
+  /* Borrowed shell first: every living appendage subsequently grows from its mouth. */
+  const sg = c.createRadialGradient(sx - rx * 0.36, sy - ry * 0.42, 3, sx, sy, rx * 1.12);
+  sg.addColorStop(0, '#ead7ae'); sg.addColorStop(0.48, '#bd8d52'); sg.addColorStop(1, '#5b422c');
+  c.fillStyle = sg; c.beginPath(); c.ellipse(sx, sy, rx, ry, -0.08, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(67,43,28,0.88)'; c.lineWidth = 4;
+  c.beginPath(); c.ellipse(sx, sy, rx, ry, -0.08, 0, TAU); c.stroke();
+  c.strokeStyle = 'rgba(83,53,31,0.58)'; c.lineWidth = 7; c.lineCap = 'round';
+  c.beginPath();
+  for (let i = 0; i <= 110; i++) {
+    const u = i / 110, a = u * TAU * 2.35, rad = (1 - u) * rx * 0.72;
+    const x = sx + Math.cos(a) * rad, y = sy + Math.sin(a) * rad * 0.82;
+    if (i === 0) c.moveTo(x, y); else c.lineTo(x, y);
+  }
+  c.stroke();
+  for (let i = 0; i < 11; i++) softMark(c, sx - rx * 0.62 + r() * rx * 1.20, sy - ry * 0.58 + r() * ry * 1.15, 8 + r() * 9, 5 + r() * 7, '78,50,28', 0.14);
+  const mouthX = sx - rx * 0.76, mouthY = sy + ry * 0.12;
+  c.fillStyle = 'rgba(42,29,22,0.92)'; c.beginPath(); c.ellipse(mouthX, mouthY, rx * 0.28, ry * 0.42, -0.18, 0, TAU); c.fill();
+
+  /* Three visible walking legs emerge from inside the shell aperture. */
+  const roots: InvertPt[] = [[mouthX + 8, mouthY + 10], [mouthX + 2, mouthY + 20], [mouthX + 12, mouthY + 30]];
+  for (let i = 0; i < roots.length; i++) {
+    resetCrustLeg(c, p, roots[i]!, [S * (0.42 - i * 0.045), S * (0.62 + i * 0.045)],
+      [S * (0.30 - i * 0.040), S * (0.70 + i * 0.050)], 8 - i * 0.6);
+  }
+  const bx = S * 0.405, by = S * 0.505;
+  c.fillStyle = crustGradient(c, p, bx, by, S * 0.105);
+  c.beginPath(); c.ellipse(bx, by, S * 0.115, S * 0.090, -0.18, 0, TAU); c.fill();
+  c.strokeStyle = crustTone(p, 0.36, 0.82); c.lineWidth = 2.4; c.stroke();
+
+  /* The enlarged left chela overlaps and visibly plugs the shell mouth. */
+  resetCrabChela(c, p, [bx + 20, by + 5], [mouthX - 5, mouthY - 8], [mouthX - 19, mouthY - 5], S * 0.080, Math.PI - 0.10);
+  resetCrabChela(c, p, [bx - 10, by + 5], [S * 0.31, S * 0.53], [S * 0.245, S * 0.55], S * 0.048, Math.PI + 0.18);
+
+  const hx = S * 0.355, hy = S * 0.435;
+  c.fillStyle = crustGradient(c, p, hx, hy, S * 0.072);
+  c.beginPath(); c.ellipse(hx, hy, S * 0.075, S * 0.060, -0.10, 0, TAU); c.fill();
+  /* Stalked eyes plus two distinct antenna pairs. */
+  for (const s of [-1, 1] as const) {
+    const ex = hx - S * 0.030, ey = hy + s * S * 0.050;
+    c.strokeStyle = crustTone(p, 0.46, 1); c.lineWidth = 5; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(hx, hy + s * S * 0.026); c.lineTo(ex - S * 0.052, ey + s * S * 0.010); c.stroke();
+    eyeDot(c, ex - S * 0.058, ey + s * S * 0.010, S * 0.014);
+    c.strokeStyle = crustTone(p, 0.55, 0.92); c.lineWidth = 2.8;
+    c.beginPath(); c.moveTo(hx - S * 0.020, hy + s * S * 0.030);
+    c.quadraticCurveTo(S * 0.22, S * (0.34 + (s > 0 ? 0.12 : -0.02)), S * 0.095, S * (0.36 + (s > 0 ? 0.18 : -0.08))); c.stroke();
+    c.lineWidth = 2;
+    c.beginPath(); c.moveTo(hx - S * 0.030, hy + s * S * 0.015);
+    c.quadraticCurveTo(S * 0.24, S * (0.40 + s * 0.06), S * 0.145, S * (0.43 + s * 0.09)); c.stroke();
+  }
+}
+
+function resetCrabII(c: Ctx, g: G, p: Pal, name: string, sig: ResetCrabIISignature): void {
+  if (sig === 'hermitCrab') { resetHermitCrab(c, g, p, name); return; }
+  const cx = S * 0.50, cy = S * 0.505;
+  const w = sig === 'mudCrab' ? S * 0.205 : sig === 'ventCrab' ? S * 0.145 : S * 0.175;
+  const h = sig === 'mudCrab' ? S * 0.120 : sig === 'ventCrab' ? S * 0.105 : S * 0.135;
+  shadow(c, cx, S * 0.79, sig === 'ventCrab' ? S * 0.25 : S * 0.31);
+  for (const side of [-1, 1] as const) {
+    for (let i = 0; i < 4; i++) {
+      const root: InvertPt = [cx + side * w * (0.70 - i * 0.025), cy - h * 0.40 + i * h * 0.29];
+      const span = sig === 'ventCrab' ? 1.34 : 1;
+      const knee: InvertPt = [cx + side * (w + S * (0.050 + i * 0.019)) * span,
+        cy - h * 0.72 + i * S * 0.052];
+      const tip: InvertPt = [cx + side * (w + S * (0.155 + i * 0.016)) * span,
+        cy - h * 0.40 + i * S * 0.092];
+      resetCrustLeg(c, p, root, knee, tip, sig === 'ventCrab' ? 5.6 - i * 0.30 : 8.6 - i * 0.55,
+        sig === 'mudCrab' && i === 3 ? 0.88 : 0);
+    }
+  }
+  /* Arms are rooted behind the carapace; only their filled chelae remain in front. */
+  const leftSize = sig === 'mudCrab' ? S * 0.082 : sig === 'ventCrab' ? S * 0.044 : S * 0.063;
+  const rightSize = sig === 'mudCrab' ? S * 0.058 : sig === 'ventCrab' ? S * 0.042 : S * 0.063;
+  resetCrabChela(c, p, [cx - w * 0.52, cy - h * 0.36], [cx - w * 0.92, cy - h * 0.93],
+    [cx - w * 1.20, cy - h * 1.10], leftSize, Math.PI - 0.25);
+  resetCrabChela(c, p, [cx + w * 0.52, cy - h * 0.36], [cx + w * 0.92, cy - h * 0.93],
+    [cx + w * 1.20, cy - h * 1.10], rightSize, 0.25);
+  resetCrabCarapace(c, g, p, name, sig, cx, cy, w, h);
+
+  /* Eyes live on the front edge. Vent eyes are reduced pale knobs, not beads. */
+  for (const side of [-1, 1] as const) {
+    const bx = cx + side * w * 0.30, by = cy - h * 0.77;
+    c.strokeStyle = sig === 'ventCrab' ? 'rgba(176,182,188,0.72)' : crustTone(p, 0.38, 1);
+    c.lineWidth = sig === 'ventCrab' ? 3 : 5; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(bx, by); c.lineTo(bx + side * w * 0.035, by - h * (sig === 'ventCrab' ? 0.20 : 0.35)); c.stroke();
+    if (sig === 'ventCrab') {
+      c.fillStyle = 'rgba(126,130,136,0.72)'; c.beginPath(); c.arc(bx + side * w * 0.035, by - h * 0.22, 3.2, 0, TAU); c.fill();
+    } else eyeDot(c, bx + side * w * 0.035, by - h * 0.38, S * 0.014);
+  }
+}
+
 export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?: boolean; big?: boolean; hue?: string;
   /** Coconut-crab land stance: long heavy walking legs, never swimmer paddles. */
   terrestrial?: boolean;
@@ -773,6 +1002,8 @@ export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?
   crusher?: boolean }, name = ''): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
+  const resetSignature = RESET_CRAB_II[name];
+  if (resetSignature) { resetCrabII(c, g, p, name, resetSignature); return; }
   const r = nrng(g, name, 0xC2AB);
   const cx = S * 0.50, cy = S * 0.50;
   const cw = S * (opts.wide ? 0.155 : 0.125) * (opts.big ? 1.2 : 1) * nv(name, 0x41, 0.12);
@@ -846,6 +1077,546 @@ export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?
   }
 }
 
+type ResetShrimpIISignature = 'shrimp' | 'prawn' | 'freshwaterShrimp' | 'brineShrimp'
+  | 'fairyShrimp' | 'tadpoleShrimp' | 'ventShrimp' | 'krill' | 'copepod'
+  | 'amphipod' | 'lobster';
+
+const RESET_SHRIMP_II: Readonly<Record<string, ResetShrimpIISignature>> = Object.freeze({
+  'Shrimp': 'shrimp',
+  'Prawn': 'prawn',
+  'Freshwater Shrimp': 'freshwaterShrimp',
+  'Brine Shrimp': 'brineShrimp',
+  'Fairy Shrimp': 'fairyShrimp',
+  'Tadpole Shrimp': 'tadpoleShrimp',
+  'Vent Shrimp': 'ventShrimp',
+  'Krill': 'krill',
+  'Copepod': 'copepod',
+  'Amphipod': 'amphipod',
+  'Lobster': 'lobster',
+});
+
+type PleonSeg = readonly [number, number, number, number, number];
+
+function resetWhip(c: Ctx, p: Pal, start: InvertPt, control: InvertPt, end: InvertPt,
+  width = 2.8, alpha = 0.92): void {
+  c.strokeStyle = crustTone(p, 0.48, alpha); c.lineWidth = width; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(start[0], start[1]); c.quadraticCurveTo(control[0], control[1], end[0], end[1]); c.stroke();
+  c.strokeStyle = 'rgba(255,255,255,0.16)'; c.lineWidth = Math.max(0.8, width * 0.34);
+  c.beginPath(); c.moveTo(start[0], start[1] - 1); c.quadraticCurveTo(control[0], control[1] - 1, end[0], end[1]); c.stroke();
+}
+
+function resetTailFan(c: Ctx, p: Pal, x: number, y: number, size: number, angle: number,
+  alpha = 0.90, lobes = 5): void {
+  c.save(); c.translate(x, y); c.rotate(angle);
+  for (let i = 0; i < lobes; i++) {
+    const off = i - (lobes - 1) / 2, a = off * 0.25;
+    c.save(); c.rotate(a);
+    c.fillStyle = crustGradient(c, p, size * 0.56, 0, size * 0.62, alpha);
+    c.beginPath(); c.moveTo(-size * 0.08, 0);
+    c.quadraticCurveTo(size * 0.62, -size * 0.30, size * 1.22, 0);
+    c.quadraticCurveTo(size * 0.62, size * 0.30, -size * 0.08, 0); c.closePath(); c.fill();
+    c.strokeStyle = crustTone(p, 0.38, alpha * 0.82); c.lineWidth = 1.5;
+    c.beginPath(); c.moveTo(0, 0); c.lineTo(size * 1.08, 0); c.stroke();
+    c.restore();
+  }
+  c.restore();
+}
+
+function resetPleon(c: Ctx, p: Pal, segs: readonly PleonSeg[], alpha: number): void {
+  for (let i = segs.length - 1; i >= 0; i--) {
+    const [x, y, rx, ry, angle] = segs[i]!;
+    c.fillStyle = crustGradient(c, p, x - rx * 0.18, y - ry * 0.28, Math.max(rx, ry), alpha);
+    c.beginPath(); c.ellipse(x, y, rx, ry, angle, 0, TAU); c.fill();
+    c.strokeStyle = crustTone(p, 0.34, Math.min(0.86, alpha)); c.lineWidth = 2;
+    c.beginPath(); c.ellipse(x, y, rx, ry, angle, -2.55, 0.58); c.stroke();
+    c.strokeStyle = 'rgba(255,255,255,0.20)'; c.lineWidth = 1.5;
+    c.beginPath(); c.ellipse(x - rx * 0.12, y - ry * 0.16, rx * 0.62, ry * 0.54, angle, -2.55, -0.35); c.stroke();
+  }
+}
+
+function resetRostrum(c: Ctx, p: Pal, baseX: number, baseY: number, tipX: number,
+  serrations: number, scale = 1): void {
+  c.fillStyle = crustTone(p, 0.70, 0.98);
+  c.beginPath(); c.moveTo(baseX, baseY - 7 * scale); c.lineTo(tipX, baseY - 2 * scale);
+  c.lineTo(baseX, baseY + 6 * scale); c.closePath(); c.fill();
+  c.strokeStyle = crustTone(p, 0.34, 0.92); c.lineWidth = Math.max(1.4, 2.2 * scale);
+  c.beginPath(); c.moveTo(tipX, baseY - 2 * scale); c.lineTo(baseX, baseY - 7 * scale); c.stroke();
+  const span = baseX - tipX;
+  c.fillStyle = crustTone(p, 0.46, 0.96);
+  for (let i = 1; i <= serrations; i++) {
+    const x = tipX + span * (i / (serrations + 1)), tooth = (4.2 + (i % 2) * 1.6) * scale;
+    c.beginPath(); c.moveTo(x - 3 * scale, baseY - 5 * scale); c.lineTo(x, baseY - 5 * scale - tooth);
+    c.lineTo(x + 3 * scale, baseY - 5 * scale); c.closePath(); c.fill();
+  }
+}
+
+function resetSideEyes(c: Ctx, p: Pal, rootX: number, rootY: number, spread: number, radius: number): void {
+  for (const side of [-1, 1] as const) {
+    const ex = rootX - radius * 1.5, ey = rootY + side * spread;
+    c.strokeStyle = crustTone(p, 0.42, 1); c.lineWidth = Math.max(3, radius * 0.82); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(rootX, rootY + side * spread * 0.36); c.lineTo(ex, ey); c.stroke();
+    eyeDot(c, ex, ey, radius);
+  }
+}
+
+function resetCaridean(c: Ctx, g: G, p: Pal, name: string,
+  sig: 'shrimp' | 'prawn' | 'freshwaterShrimp'): void {
+  const r = nrng(g, name, 0xCA21D);
+  const prawn = sig === 'prawn', fresh = sig === 'freshwaterShrimp';
+  const hx = prawn ? S * 0.355 : S * 0.365, hy = prawn ? S * 0.445 : S * 0.440;
+  const segs: PleonSeg[] = prawn ? [
+    [S * 0.485, S * 0.475, S * 0.090, S * 0.070, 0.05],
+    [S * 0.575, S * 0.490, S * 0.080, S * 0.063, 0.18],
+    [S * 0.655, S * 0.525, S * 0.070, S * 0.055, 0.34],
+    [S * 0.720, S * 0.575, S * 0.059, S * 0.047, 0.54],
+    [S * 0.770, S * 0.630, S * 0.049, S * 0.039, 0.72],
+  ] : [
+    [S * 0.490, S * 0.472, S * 0.092, S * 0.076, 0.02],
+    [S * 0.580, S * 0.497, S * 0.082, S * 0.068, 0.24],
+    [S * 0.650, S * 0.550, S * 0.071, S * 0.058, 0.49],
+    [S * 0.698, S * 0.620, S * 0.060, S * 0.049, 0.82],
+    [S * 0.714, S * 0.690, S * 0.048, S * 0.039, 1.12],
+  ];
+  shadow(c, S * 0.54, S * 0.805, S * 0.31);
+  /* Walking legs and swimmerets are laid beneath their carapace/pleon roots. */
+  for (let i = 0; i < 5; i++) {
+    const x = hx - S * 0.018 + i * S * 0.035;
+    const long = prawn ? S * (0.165 + i * 0.012) : S * (0.125 + i * 0.010);
+    c.strokeStyle = crustTone(p, 0.40, 0.88); c.lineWidth = fresh && i < 2 ? 4.4 : 3; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(x, hy + S * 0.036);
+    c.quadraticCurveTo(x - S * 0.020, hy + long * 0.56, x - S * 0.055 + i * S * 0.010, hy + long); c.stroke();
+    if (fresh && i < 2) {
+      const px = x - S * 0.055 + i * S * 0.010, py = hy + long;
+      resetSmallChela(c, p, [px, py], S * 0.031, 0.42 + i * 0.10, 0.88);
+    }
+  }
+  for (let i = 0; i < segs.length - 1; i++) {
+    const [x, y, rx, ry] = segs[i]!;
+    c.fillStyle = crustTone(p, 0.76, 0.72);
+    c.save(); c.translate(x, y + ry * 0.62); c.rotate(0.22 + i * 0.15);
+    c.beginPath(); c.ellipse(0, ry * 0.64, rx * 0.48, ry * 0.30, 0, 0, TAU); c.fill(); c.restore();
+  }
+  resetPleon(c, p, segs, fresh ? 0.82 : 0.92);
+  const tail = segs[segs.length - 1]!;
+  resetTailFan(c, p, tail[0] + tail[2] * 0.58, tail[1] + tail[3] * 0.52,
+    prawn ? S * 0.055 : S * 0.060, prawn ? 0.70 : 1.02, fresh ? 0.82 : 0.94);
+
+  /* One continuous cephalothorax overlaps the first pleon plate. */
+  const headRx = prawn ? S * 0.125 : S * 0.132, headRy = prawn ? S * 0.088 : S * 0.100;
+  c.fillStyle = crustGradient(c, p, hx - headRx * 0.22, hy - headRy * 0.30, headRx, fresh ? 0.84 : 0.94);
+  c.beginPath(); c.ellipse(hx, hy, headRx, headRy, 0.04, 0, TAU); c.fill();
+  c.strokeStyle = crustTone(p, 0.35, 0.82); c.lineWidth = 2.4; c.stroke();
+  c.save(); c.beginPath(); c.ellipse(hx, hy, headRx, headRy, 0.04, 0, TAU); c.clip();
+  for (let i = 0; i < 12; i++) softMark(c, hx - headRx * 0.65 + r() * headRx * 1.3,
+    hy - headRy * 0.55 + r() * headRy * 1.1, 4 + r() * 5, 3 + r() * 4, '42,27,20', 0.12);
+  c.restore();
+
+  const baseX = hx - headRx * 0.78, baseY = hy - headRy * 0.18;
+  resetRostrum(c, p, baseX, baseY, prawn ? S * 0.095 : fresh ? S * 0.125 : S * 0.145,
+    prawn ? 8 : fresh ? 7 : 6, prawn ? 1.15 : 1);
+  resetSideEyes(c, p, hx - headRx * 0.56, hy - headRy * 0.18, headRy * 0.34, S * 0.015);
+  /* Two whips are deliberately thick enough to survive the actual 132px tile. */
+  resetWhip(c, p, [baseX + 8, baseY + 5], [S * 0.235, S * 0.245], [S * 0.035, S * 0.245], 3.4);
+  resetWhip(c, p, [baseX + 9, baseY + 13], [S * 0.225, S * 0.610], [S * 0.030, S * 0.685], 3.2);
+}
+
+function resetAnostracan(c: Ctx, g: G, p: Pal, name: string, brine: boolean): void {
+  const r = nrng(g, name, brine ? 0xB21E : 0xFA12);
+  const y0 = S * 0.545, headX = S * 0.205, tailX = S * 0.805;
+  shadow(c, S * 0.51, S * 0.76, S * 0.31);
+  /* Eleven paired phyllopods beat above the back: the unmistakable upside-down
+     anostracan pose. Far-side leaves are translucent; near-side leaves sit over them. */
+  for (const far of [true, false]) {
+    for (let i = 0; i < 11; i++) {
+      const u = i / 10, x = S * (0.300 + u * 0.405), rootY = y0 + Math.sin(u * Math.PI) * S * 0.025;
+      const wave = Math.sin(u * Math.PI * 2.2 + (brine ? 0.5 : 0));
+      const tipY = S * (far ? 0.350 : 0.315) + wave * S * 0.030;
+      const tipX = x + (far ? -1 : 1) * S * 0.012;
+      c.strokeStyle = crustTone(p, far ? 0.62 : 0.78, far ? 0.35 : 0.78);
+      c.lineWidth = far ? 2.4 : 4; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(x, rootY); c.quadraticCurveTo(x - S * 0.008, (rootY + tipY) * 0.5, tipX, tipY); c.stroke();
+      c.save(); c.translate(tipX, tipY); c.rotate(-0.10 + wave * 0.12);
+      c.fillStyle = crustTone(p, brine ? 1.02 : 1.18, far ? 0.22 : 0.56);
+      c.beginPath(); c.ellipse(0, -S * 0.010, S * (far ? 0.018 : 0.024), S * (far ? 0.043 : 0.054), 0, 0, TAU); c.fill();
+      c.restore();
+    }
+  }
+  /* Bare translucent tube: no prawn carapace. */
+  const trunk = (): void => {
+    c.moveTo(headX + S * 0.040, y0 - S * 0.045);
+    c.bezierCurveTo(S * 0.42, y0 - S * 0.052, S * 0.64, y0 - S * 0.032, tailX, y0 + S * 0.004);
+    c.bezierCurveTo(S * 0.65, y0 + S * 0.050, S * 0.42, y0 + S * 0.052, headX + S * 0.040, y0 + S * 0.040);
+    c.closePath();
+  };
+  const tg = c.createLinearGradient(0, y0 - S * 0.06, 0, y0 + S * 0.06);
+  tg.addColorStop(0, crustTone(p, 1.30, 0.72)); tg.addColorStop(0.45, crustTone(p, 0.92, 0.42)); tg.addColorStop(1, crustTone(p, 0.52, 0.62));
+  c.fillStyle = tg; c.beginPath(); trunk(); c.fill();
+  c.strokeStyle = crustTone(p, 0.40, 0.72); c.lineWidth = 2.5; c.beginPath(); trunk(); c.stroke();
+  c.strokeStyle = brine ? 'rgba(96,42,28,0.58)' : 'rgba(80,48,35,0.30)';
+  c.lineWidth = brine ? 4.2 : 1.8;
+  for (let i = 1; i < 12; i++) {
+    const x = S * (0.285 + i * 0.042);
+    c.beginPath(); c.moveTo(x, y0 - S * 0.040); c.lineTo(x + S * 0.006, y0 + S * 0.045); c.stroke();
+  }
+  c.strokeStyle = brine ? 'rgba(128,50,34,0.54)' : 'rgba(105,83,67,0.42)'; c.lineWidth = S * 0.013;
+  c.beginPath(); c.moveTo(headX + S * 0.055, y0); c.bezierCurveTo(S * 0.44, y0 + r() * 2, S * 0.63, y0 + S * 0.010, tailX - S * 0.018, y0 + S * 0.012); c.stroke();
+
+  c.fillStyle = crustGradient(c, p, headX, y0, S * 0.070, 0.78);
+  c.beginPath(); c.ellipse(headX, y0, S * 0.071, S * 0.060, 0, 0, TAU); c.fill();
+  resetSideEyes(c, p, headX - S * 0.030, y0 - S * 0.006, S * 0.046, S * 0.016);
+  resetWhip(c, p, [headX - S * 0.050, y0 - S * 0.018], [S * 0.115, S * 0.420], [S * 0.055, S * 0.385], 2.6, 0.80);
+  resetWhip(c, p, [headX - S * 0.050, y0 + S * 0.018], [S * 0.115, S * 0.620], [S * 0.055, S * 0.665], 2.4, 0.80);
+  /* Brine shrimp need broad paired caudal rami that still read as a forked
+     tail fan at 132px. Fairy shrimp retain their slimmer cercopods. */
+  if (brine) {
+    for (const side of [-1, 1] as const) {
+      const tipX = S * 0.925, tipY = y0 + side * S * 0.062;
+      c.fillStyle = crustTone(p, 0.92, 0.62);
+      c.beginPath(); c.moveTo(tailX - S * 0.010, y0 + side * S * 0.006);
+      c.bezierCurveTo(S * 0.850, y0 + side * S * 0.010, S * 0.890, y0 + side * S * 0.036, tipX, tipY);
+      c.quadraticCurveTo(S * 0.875, y0 + side * S * 0.084, tailX, y0 + side * S * 0.026); c.closePath(); c.fill();
+      c.strokeStyle = crustTone(p, 0.42, 0.86); c.lineWidth = 2.8;
+      c.beginPath(); c.moveTo(tailX, y0 + side * S * 0.016); c.quadraticCurveTo(S * 0.875, y0 + side * S * 0.035, tipX, tipY); c.stroke();
+      c.lineWidth = 2.2;
+      for (let k = -1; k <= 1; k++) {
+        c.beginPath(); c.moveTo(tipX, tipY);
+        c.lineTo(S * 0.965, tipY + side * k * S * 0.016); c.stroke();
+      }
+    }
+  } else {
+    for (const side of [-1, 1] as const) {
+      c.strokeStyle = crustTone(p, 0.56, 0.88); c.lineWidth = 4; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(tailX - S * 0.010, y0 + S * 0.008);
+      c.quadraticCurveTo(S * 0.875, y0 + side * S * 0.030, S * 0.930, y0 + side * S * 0.073); c.stroke();
+    }
+  }
+}
+
+function resetTadpoleShrimp(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0x7AD0);
+  const cx = S * 0.455, cy = S * 0.485, w = S * 0.230, h = S * 0.175;
+  shadow(c, S * 0.52, S * 0.79, S * 0.33);
+  /* Fifty-two flattened leaf limbs form two softly offset layers. Each limb is
+     a curved filled ribbon with its own phase/length, never a crossing stick
+     pair, so the underside reads as organic wriggling phyllopods at 440/132. */
+  for (const far of [true, false]) {
+    const count = 26;
+    for (let i = 0; i < count; i++) {
+      const u = i / (count - 1), rootX = S * (0.286 + u * 0.520);
+      const rootY = cy + h * (0.43 + u * 0.30) + (far ? -S * 0.004 : S * 0.004);
+      const phase = i * 1.47 + (far ? 0.83 : 0);
+      const len = S * (0.058 + (i % 6) * 0.0045 + Math.sin(phase * 0.61) * 0.006);
+      const drift = S * (Math.sin(phase) * 0.018 + Math.cos(phase * 0.47) * 0.006 + (far ? -0.004 : 0.006));
+      const controlX = rootX + drift * 0.42, tipX = rootX + drift, tipY = rootY + len;
+      const leafW = S * (far ? 0.0075 : 0.0105);
+      c.fillStyle = crustTone(p, far ? 0.98 : 0.80, far ? 0.30 : 0.66);
+      c.beginPath(); c.moveTo(rootX - leafW * 0.28, rootY);
+      c.bezierCurveTo(controlX - leafW * 0.74, rootY + len * 0.34,
+        tipX - leafW * 1.34, tipY - len * 0.22, tipX, tipY);
+      c.bezierCurveTo(tipX + leafW * 1.34, tipY - len * 0.22,
+        controlX + leafW * 0.74, rootY + len * 0.34, rootX + leafW * 0.28, rootY);
+      c.closePath(); c.fill();
+      c.strokeStyle = crustTone(p, far ? 0.54 : 0.38, far ? 0.28 : 0.66);
+      c.lineWidth = far ? 1.0 : 1.5; c.stroke();
+    }
+  }
+  /* Exposed annulated rear trunk. */
+  for (let i = 6; i >= 0; i--) {
+    const x = cx + w * 0.58 + i * S * 0.042, rr = S * (0.048 - i * 0.003);
+    c.fillStyle = crustGradient(c, p, x, cy + h * 0.20, rr, 0.90);
+    c.beginPath(); c.ellipse(x, cy + h * 0.20 + i * S * 0.006, rr, rr * 0.74, 0.10, 0, TAU); c.fill();
+    c.strokeStyle = crustTone(p, 0.36, 0.66); c.lineWidth = 1.6; c.stroke();
+  }
+  const tailX = S * 0.810, tailY = cy + h * 0.28;
+  for (const side of [-1, 1] as const) {
+    c.strokeStyle = crustTone(p, 0.43, 0.92); c.lineWidth = 4; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(tailX, tailY); c.quadraticCurveTo(S * 0.90, tailY + side * S * 0.030, S * 0.965, tailY + side * S * 0.075); c.stroke();
+  }
+  /* The broad dorsal shield dominates the form and covers the front half. */
+  const shield = (): void => {
+    c.moveTo(cx - w, cy + h * 0.08);
+    c.quadraticCurveTo(cx - w * 0.88, cy - h * 0.90, cx, cy - h);
+    c.quadraticCurveTo(cx + w * 0.90, cy - h * 0.84, cx + w, cy + h * 0.10);
+    c.quadraticCurveTo(cx + w * 0.55, cy + h * 0.72, cx, cy + h * 0.78);
+    c.quadraticCurveTo(cx - w * 0.55, cy + h * 0.72, cx - w, cy + h * 0.08); c.closePath();
+  };
+  c.fillStyle = crustGradient(c, p, cx - w * 0.20, cy - h * 0.30, w * 1.05, 0.94);
+  c.beginPath(); shield(); c.fill();
+  c.save(); c.beginPath(); shield(); c.clip();
+  for (let i = 0; i < 18; i++) softMark(c, cx - w * 0.72 + r() * w * 1.44, cy - h * 0.62 + r() * h * 1.20,
+    5 + r() * 7, 3 + r() * 5, '50,38,22', 0.12);
+  c.restore();
+  c.strokeStyle = crustTone(p, 0.34, 0.82); c.lineWidth = 3; c.beginPath(); shield(); c.stroke();
+  /* Paired compound eyes and the smaller median ocellus sit close atop the helmet. */
+  eyeDot(c, cx - S * 0.030, cy - h * 0.50, S * 0.016);
+  eyeDot(c, cx + S * 0.030, cy - h * 0.50, S * 0.016);
+  c.fillStyle = '#29241c'; c.beginPath(); c.arc(cx, cy - h * 0.64, S * 0.008, 0, TAU); c.fill();
+}
+
+function resetAmphipod(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0xA4F1);
+  shadow(c, S * 0.45, S * 0.81, S * 0.26);
+
+  /* Differentiated appendages are rooted beneath one continuous lateral body:
+     two grasping gnathopods, five walking legs, then four abdominal paddles. */
+  const legs: ReadonlyArray<readonly [InvertPt, InvertPt, InvertPt, number, boolean]> = [
+    [[S * 0.285, S * 0.390], [S * 0.315, S * 0.485], [S * 0.265, S * 0.565], 7.2, true],
+    [[S * 0.330, S * 0.415], [S * 0.365, S * 0.520], [S * 0.325, S * 0.610], 6.8, true],
+    [[S * 0.370, S * 0.445], [S * 0.425, S * 0.535], [S * 0.455, S * 0.675], 5.6, false],
+    [[S * 0.405, S * 0.480], [S * 0.470, S * 0.555], [S * 0.520, S * 0.690], 5.4, false],
+    [[S * 0.430, S * 0.520], [S * 0.495, S * 0.585], [S * 0.555, S * 0.700], 5.2, false],
+    [[S * 0.440, S * 0.565], [S * 0.475, S * 0.635], [S * 0.505, S * 0.740], 5.0, false],
+    [[S * 0.425, S * 0.605], [S * 0.420, S * 0.675], [S * 0.425, S * 0.765], 4.8, false],
+  ];
+  for (const [root, knee, tip, width, claw] of legs) {
+    resetCrustLeg(c, p, root, knee, tip, width);
+    if (claw) resetSmallChela(c, p, tip, S * 0.027, 2.15, 0.92);
+  }
+  for (let i = 0; i < 4; i++) {
+    const rootX = S * (0.415 + i * 0.020), rootY = S * (0.520 + i * 0.040);
+    const tipX = rootX - S * (0.040 + i * 0.006), tipY = rootY + S * 0.095;
+    c.strokeStyle = crustTone(p, 0.45, 0.64); c.lineWidth = 3.4; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(rootX, rootY); c.quadraticCurveTo(rootX - S * 0.012, tipY - S * 0.030, tipX, tipY); c.stroke();
+    c.fillStyle = crustTone(p, 0.86, 0.58);
+    c.beginPath(); c.ellipse(tipX, tipY, S * 0.022, S * 0.010, -0.55, 0, TAU); c.fill();
+  }
+
+  /* A single crescent path replaces the bead chain while preserving plate
+     segmentation as surface bands inside the shared silhouette. */
+  const body = (): void => {
+    c.moveTo(S * 0.235, S * 0.315);
+    c.bezierCurveTo(S * 0.315, S * 0.255, S * 0.445, S * 0.285, S * 0.525, S * 0.395);
+    c.bezierCurveTo(S * 0.600, S * 0.500, S * 0.565, S * 0.625, S * 0.455, S * 0.695);
+    c.quadraticCurveTo(S * 0.405, S * 0.725, S * 0.355, S * 0.685);
+    c.bezierCurveTo(S * 0.390, S * 0.625, S * 0.435, S * 0.570, S * 0.430, S * 0.505);
+    c.bezierCurveTo(S * 0.425, S * 0.440, S * 0.355, S * 0.395, S * 0.280, S * 0.395);
+    c.quadraticCurveTo(S * 0.225, S * 0.380, S * 0.235, S * 0.315); c.closePath();
+  };
+  c.fillStyle = crustGradient(c, p, S * 0.330, S * 0.350, S * 0.245, 0.94);
+  c.beginPath(); body(); c.fill();
+  c.strokeStyle = crustTone(p, 0.32, 0.88); c.lineWidth = 3.2; c.beginPath(); body(); c.stroke();
+  c.save(); c.beginPath(); body(); c.clip();
+  const bands: ReadonlyArray<readonly [InvertPt, InvertPt, InvertPt]> = [
+    [[S * 0.325, S * 0.285], [S * 0.310, S * 0.350], [S * 0.300, S * 0.405]],
+    [[S * 0.390, S * 0.295], [S * 0.370, S * 0.370], [S * 0.350, S * 0.430]],
+    [[S * 0.450, S * 0.325], [S * 0.425, S * 0.410], [S * 0.395, S * 0.470]],
+    [[S * 0.500, S * 0.370], [S * 0.470, S * 0.460], [S * 0.425, S * 0.525]],
+    [[S * 0.535, S * 0.430], [S * 0.500, S * 0.525], [S * 0.425, S * 0.590]],
+    [[S * 0.545, S * 0.500], [S * 0.505, S * 0.600], [S * 0.400, S * 0.660]],
+    [[S * 0.515, S * 0.590], [S * 0.470, S * 0.665], [S * 0.365, S * 0.700]],
+  ];
+  c.strokeStyle = crustTone(p, 0.36, 0.52); c.lineWidth = 2.8;
+  for (const [start, control, end] of bands) {
+    c.beginPath(); c.moveTo(start[0], start[1]); c.quadraticCurveTo(control[0], control[1], end[0], end[1]); c.stroke();
+  }
+  c.fillStyle = crustTone(p, 0.45, 0.22);
+  for (let i = 0; i < 12; i++) { c.beginPath(); c.arc(S * (0.29 + r() * 0.22), S * (0.32 + r() * 0.26), 2 + r() * 2.5, 0, TAU); c.fill(); }
+  c.restore();
+
+  eyeDot(c, S * 0.255, S * 0.335, S * 0.016);
+  /* Four independently visible whips encode two antenna pairs at delivery size. */
+  resetWhip(c, p, [S * 0.245, S * 0.322], [S * 0.135, S * 0.205], [S * 0.035, S * 0.150], 2.8, 0.52);
+  resetWhip(c, p, [S * 0.235, S * 0.310], [S * 0.135, S * 0.125], [S * 0.035, S * 0.070], 4.0, 0.90);
+  resetWhip(c, p, [S * 0.245, S * 0.355], [S * 0.145, S * 0.380], [S * 0.055, S * 0.430], 2.8, 0.56);
+  resetWhip(c, p, [S * 0.250, S * 0.372], [S * 0.145, S * 0.440], [S * 0.065, S * 0.505], 3.8, 0.88);
+  for (const [dx, dy, width] of [[-0.090, 0.045, 4.6], [-0.055, 0.095, 4.0], [-0.110, 0.078, 2.8]] as const) {
+    c.strokeStyle = crustTone(p, 0.40, width < 3 ? 0.56 : 0.90); c.lineWidth = width; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(S * 0.390, S * 0.675); c.lineTo(S * (0.390 + dx), S * (0.675 + dy)); c.stroke();
+  }
+}
+
+function resetCopepod(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0xC0E0);
+  const cx = S * 0.50;
+  shadow(c, cx, S * 0.84, S * 0.22);
+  /* Long calanoid antennules span approximately the animal's full body length. */
+  resetWhip(c, p, [cx - S * 0.035, S * 0.285], [S * 0.245, S * 0.130], [S * 0.050, S * 0.105], 3.2, 0.86);
+  resetWhip(c, p, [cx + S * 0.035, S * 0.285], [S * 0.755, S * 0.130], [S * 0.950, S * 0.105], 3.2, 0.86);
+  for (const side of [-1, 1] as const) {
+    for (let i = 0; i < 5; i++) {
+      const y = S * (0.430 + i * 0.043), rootX = cx + side * S * (0.060 - i * 0.004);
+      c.strokeStyle = crustTone(p, 0.42, 0.76); c.lineWidth = 3; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(rootX, y); c.quadraticCurveTo(cx + side * S * 0.145, y + S * 0.018, cx + side * S * (0.190 - i * 0.012), y + S * 0.048); c.stroke();
+    }
+  }
+  const body = (): void => {
+    c.moveTo(cx, S * 0.245);
+    c.bezierCurveTo(cx - S * 0.145, S * 0.260, cx - S * 0.175, S * 0.430, cx - S * 0.095, S * 0.555);
+    c.quadraticCurveTo(cx, S * 0.615, cx + S * 0.095, S * 0.555);
+    c.bezierCurveTo(cx + S * 0.175, S * 0.430, cx + S * 0.145, S * 0.260, cx, S * 0.245); c.closePath();
+  };
+  const bg = c.createLinearGradient(cx - S * 0.16, S * 0.28, cx + S * 0.14, S * 0.57);
+  bg.addColorStop(0, crustTone(p, 1.30, 0.82)); bg.addColorStop(0.52, crustTone(p, 0.92, 0.62)); bg.addColorStop(1, crustTone(p, 0.48, 0.74));
+  c.fillStyle = bg; c.beginPath(); body(); c.fill();
+  c.strokeStyle = crustTone(p, 0.34, 0.80); c.lineWidth = 3; c.beginPath(); body(); c.stroke();
+  /* Straight gut remains visible through the transparent prosome. */
+  c.strokeStyle = crustTone(p, 0.36, 0.38); c.lineWidth = S * 0.018; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(cx, S * 0.340); c.lineTo(cx, S * 0.555); c.stroke();
+  c.fillStyle = '#171315'; c.beginPath(); c.arc(cx, S * 0.330, S * 0.022, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(255,255,255,0.70)'; c.beginPath(); c.arc(cx - S * 0.006, S * 0.322, S * 0.006, 0, TAU); c.fill();
+  /* Narrow urosome visibly tapers into two bristled caudal rami. */
+  for (let i = 0; i < 4; i++) {
+    const y = S * (0.585 + i * 0.055), rx = S * (0.056 - i * 0.009), ry = S * 0.043;
+    c.fillStyle = crustGradient(c, p, cx, y, rx, 0.78); c.beginPath(); c.ellipse(cx, y, rx, ry, 0, 0, TAU); c.fill();
+    c.strokeStyle = crustTone(p, 0.36, 0.62); c.lineWidth = 1.6; c.stroke();
+  }
+  for (const side of [-1, 1] as const) {
+    const ex = cx + side * S * 0.050, ey = S * 0.835;
+    c.strokeStyle = crustTone(p, 0.38, 0.92); c.lineWidth = 5; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx + side * S * 0.018, S * 0.770); c.lineTo(ex, ey); c.stroke();
+    c.lineWidth = 1.8;
+    for (let i = -2; i <= 2; i++) {
+      c.beginPath(); c.moveTo(ex, ey); c.lineTo(ex + side * S * (0.055 + r() * 0.010), ey + i * S * 0.020); c.stroke();
+    }
+  }
+}
+
+function resetVentShrimp(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0x7E17);
+  shadow(c, S * 0.53, S * 0.79, S * 0.30);
+  const segs: PleonSeg[] = [
+    [S * 0.485, S * 0.405, S * 0.100, S * 0.073, 0.12],
+    [S * 0.585, S * 0.435, S * 0.084, S * 0.064, 0.30],
+    [S * 0.655, S * 0.495, S * 0.070, S * 0.055, 0.62],
+    [S * 0.695, S * 0.565, S * 0.058, S * 0.047, 0.96],
+    [S * 0.708, S * 0.635, S * 0.046, S * 0.038, 1.22],
+  ];
+  for (let i = 0; i < 5; i++) {
+    const x = S * (0.315 + i * 0.045);
+    c.strokeStyle = crustTone(p, 0.43, 0.70); c.lineWidth = 3;
+    c.beginPath(); c.moveTo(x, S * 0.455); c.quadraticCurveTo(x - S * 0.010, S * 0.555, x - S * (0.040 - i * 0.004), S * 0.615); c.stroke();
+    if (i < 2) {
+      const px = x - S * (0.040 - i * 0.004), py = S * 0.615;
+      resetSmallChela(c, p, [px, py], S * 0.030, 2.55 - i * 0.12, 0.72);
+    }
+  }
+  resetPleon(c, p, segs, 0.68);
+  const tail = segs[segs.length - 1]!;
+  resetTailFan(c, p, tail[0] + S * 0.022, tail[1] + S * 0.022, S * 0.055, 1.10, 0.68);
+  const hx = S * 0.355, hy = S * 0.390, rx = S * 0.145, ry = S * 0.112;
+  const carapace = (): void => {
+    c.moveTo(hx - rx, hy + ry * 0.40);
+    c.bezierCurveTo(hx - rx * 0.88, hy - ry * 0.88, hx - rx * 0.18, hy - ry * 1.20, hx + rx * 0.55, hy - ry * 0.60);
+    c.quadraticCurveTo(hx + rx, hy + ry * 0.05, hx + rx * 0.68, hy + ry * 0.64);
+    c.quadraticCurveTo(hx - rx * 0.12, hy + ry, hx - rx, hy + ry * 0.40); c.closePath();
+  };
+  const cg = c.createLinearGradient(0, hy - ry, 0, hy + ry);
+  cg.addColorStop(0, 'rgba(250,244,238,0.76)'); cg.addColorStop(0.46, crustTone(p, 1.10, 0.44)); cg.addColorStop(1, crustTone(p, 0.52, 0.62));
+  c.fillStyle = cg; c.beginPath(); carapace(); c.fill();
+  c.strokeStyle = 'rgba(220,214,214,0.68)'; c.lineWidth = 2.5; c.beginPath(); carapace(); c.stroke();
+  /* Lensless dorsal light-sensing patch; there are deliberately no eyestalks. */
+  const patch = c.createRadialGradient(hx - S * 0.005, hy - ry * 0.68, 2, hx, hy - ry * 0.60, S * 0.080);
+  patch.addColorStop(0, 'rgba(255,255,246,0.98)'); patch.addColorStop(0.62, 'rgba(236,231,212,0.78)'); patch.addColorStop(1, 'rgba(210,204,195,0.08)');
+  c.fillStyle = patch; c.beginPath(); c.ellipse(hx, hy - ry * 0.62, S * 0.078, S * 0.035, -0.06, 0, TAU); c.fill();
+  resetWhip(c, p, [hx - rx * 0.72, hy + S * 0.005], [S * 0.185, S * 0.215], [S * 0.030, S * 0.220], 3, 0.72);
+  resetWhip(c, p, [hx - rx * 0.70, hy + S * 0.030], [S * 0.160, S * 0.545], [S * 0.035, S * 0.620], 2.8, 0.72);
+  c.fillStyle = 'rgba(255,255,255,0.18)';
+  for (let i = 0; i < 8; i++) { c.beginPath(); c.arc(hx - rx * 0.40 + r() * rx * 0.95, hy - ry * 0.30 + r() * ry * 0.75, 2 + r() * 3, 0, TAU); c.fill(); }
+}
+
+function resetKrill(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0x6B11);
+  shadow(c, S * 0.53, S * 0.77, S * 0.31);
+  const segs: PleonSeg[] = [
+    [S * 0.465, S * 0.475, S * 0.083, S * 0.057, 0.03],
+    [S * 0.545, S * 0.482, S * 0.073, S * 0.052, 0.12],
+    [S * 0.615, S * 0.505, S * 0.065, S * 0.047, 0.26],
+    [S * 0.675, S * 0.540, S * 0.056, S * 0.041, 0.42],
+    [S * 0.725, S * 0.578, S * 0.047, S * 0.035, 0.56],
+  ];
+  /* Swimming-leg fan and external gill trees are structural, under the shell. */
+  for (let i = 0; i < 7; i++) {
+    const x = S * (0.330 + i * 0.054), rootY = S * (0.500 + i * 0.004);
+    c.strokeStyle = crustTone(p, 0.38, 0.78); c.lineWidth = 3.2; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(x, rootY); c.quadraticCurveTo(x - S * 0.005, S * 0.615, x + S * (0.010 + i * 0.005), S * 0.685); c.stroke();
+    c.strokeStyle = 'rgba(235,242,244,0.70)'; c.lineWidth = 2.2;
+    const gx = x + S * 0.008, gy = rootY + S * 0.030;
+    c.beginPath(); c.moveTo(gx, gy); c.lineTo(gx, gy + S * 0.085); c.stroke();
+    for (let k = 1; k <= 4; k++) {
+      const yy = gy + k * S * 0.016;
+      c.lineWidth = 1.5;
+      c.beginPath(); c.moveTo(gx, yy); c.lineTo(gx - S * 0.026, yy + S * 0.013); c.stroke();
+      c.beginPath(); c.moveTo(gx, yy); c.lineTo(gx + S * 0.026, yy + S * 0.013); c.stroke();
+    }
+  }
+  resetPleon(c, p, segs, 0.70);
+  const tail = segs[segs.length - 1]!;
+  resetTailFan(c, p, tail[0] + S * 0.020, tail[1] + S * 0.012, S * 0.050, 0.52, 0.72);
+  const hx = S * 0.330, hy = S * 0.455, rx = S * 0.115, ry = S * 0.082;
+  c.fillStyle = crustGradient(c, p, hx - rx * 0.20, hy - ry * 0.28, rx, 0.72);
+  c.beginPath(); c.ellipse(hx, hy, rx, ry, -0.04, 0, TAU); c.fill();
+  c.strokeStyle = crustTone(p, 0.34, 0.74); c.lineWidth = 2.2; c.stroke();
+  /* Krill carry conspicuous black compound-eye masses on real stalks. The
+     filled ellipses are intentionally oversized enough to survive 132px. */
+  for (const side of [-1, 1] as const) {
+    const rootX = hx - rx * 0.58, rootY = hy + side * ry * 0.18;
+    const eyeX = hx - rx * 1.10, eyeY = hy + side * ry * 0.54;
+    c.strokeStyle = 'rgba(40,24,24,0.96)'; c.lineWidth = S * 0.012; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(rootX, rootY); c.lineTo(eyeX, eyeY); c.stroke();
+    c.fillStyle = '#06070a';
+    c.beginPath(); c.ellipse(eyeX, eyeY, S * 0.029, S * 0.025, side * -0.10, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(238,215,208,0.62)'; c.lineWidth = 2.2; c.stroke();
+    c.fillStyle = 'rgba(255,255,255,0.82)';
+    c.beginPath(); c.arc(eyeX - S * 0.008, eyeY - S * 0.008, S * 0.006, 0, TAU); c.fill();
+  }
+  resetWhip(c, p, [hx - rx * 0.72, hy - S * 0.010], [S * 0.185, S * 0.245], [S * 0.035, S * 0.220], 3.1, 0.82);
+  resetWhip(c, p, [hx - rx * 0.70, hy + S * 0.015], [S * 0.175, S * 0.570], [S * 0.035, S * 0.635], 2.8, 0.82);
+  /* A visible gut reinforces translucency without obscuring the external gills. */
+  c.strokeStyle = 'rgba(72,84,48,0.42)'; c.lineWidth = S * 0.012; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(hx - S * 0.010, hy); c.quadraticCurveTo(S * 0.54, S * 0.49, S * 0.70, S * 0.56); c.stroke();
+  c.fillStyle = 'rgba(255,255,255,0.20)';
+  for (let i = 0; i < 8; i++) { c.beginPath(); c.arc(hx - rx * 0.50 + r() * rx, hy - ry * 0.45 + r() * ry * 0.90, 2 + r() * 2.5, 0, TAU); c.fill(); }
+}
+
+function resetLobster(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0x10B5);
+  const hx = S * 0.405, hy = S * 0.475, rx = S * 0.125, ry = S * 0.095;
+  shadow(c, S * 0.54, S * 0.79, S * 0.35);
+  /* Four walking legs and both cheliped arms originate beneath the carapace. */
+  for (let i = 0; i < 4; i++) {
+    const root: InvertPt = [hx + S * (0.015 + i * 0.035), hy + ry * 0.40];
+    resetCrustLeg(c, p, root, [hx + S * (0.02 + i * 0.055), S * (0.59 + i * 0.018)],
+      [hx - S * (0.02 - i * 0.040), S * (0.69 + i * 0.020)], 6.8 - i * 0.4);
+  }
+  resetCrabChela(c, p, [hx - rx * 0.45, hy + S * 0.010], [S * 0.285, S * 0.435], [S * 0.165, S * 0.390], S * 0.090, Math.PI - 0.12);
+  resetCrabChela(c, p, [hx - rx * 0.40, hy + S * 0.040], [S * 0.300, S * 0.555], [S * 0.190, S * 0.595], S * 0.067, Math.PI + 0.14);
+  const segs: PleonSeg[] = [
+    [S * 0.535, S * 0.482, S * 0.075, S * 0.078, 0.02],
+    [S * 0.605, S * 0.495, S * 0.068, S * 0.071, 0.08],
+    [S * 0.668, S * 0.515, S * 0.060, S * 0.064, 0.16],
+    [S * 0.722, S * 0.545, S * 0.052, S * 0.056, 0.25],
+    [S * 0.765, S * 0.580, S * 0.044, S * 0.048, 0.36],
+  ];
+  resetPleon(c, p, segs, 0.96);
+  const tail = segs[segs.length - 1]!;
+  resetTailFan(c, p, tail[0] + S * 0.025, tail[1] + S * 0.020, S * 0.065, 0.34, 0.96);
+  c.fillStyle = crustGradient(c, p, hx - rx * 0.20, hy - ry * 0.30, rx, 1);
+  c.beginPath(); c.ellipse(hx, hy, rx, ry, 0.02, 0, TAU); c.fill();
+  c.strokeStyle = crustTone(p, 0.32, 0.90); c.lineWidth = 3; c.stroke();
+  c.save(); c.beginPath(); c.ellipse(hx, hy, rx, ry, 0.02, 0, TAU); c.clip();
+  for (let i = 0; i < 18; i++) softMark(c, hx - rx * 0.70 + r() * rx * 1.40, hy - ry * 0.56 + r() * ry * 1.12,
+    4 + r() * 6, 3 + r() * 4, '220,230,242', 0.11);
+  c.restore();
+  resetSideEyes(c, p, hx - rx * 0.65, hy - ry * 0.15, ry * 0.34, S * 0.017);
+  resetWhip(c, p, [hx - rx * 0.72, hy - S * 0.020], [S * 0.230, S * 0.165], [S * 0.030, S * 0.105], 4, 0.90);
+  resetWhip(c, p, [hx - rx * 0.70, hy + S * 0.005], [S * 0.220, S * 0.690], [S * 0.035, S * 0.760], 3.6, 0.90);
+  resetRostrum(c, p, hx - rx * 0.75, hy - ry * 0.18, S * 0.245, 3, 0.78);
+}
+
+function resetShrimpII(c: Ctx, g: G, p: Pal, name: string, sig: ResetShrimpIISignature): void {
+  switch (sig) {
+    case 'shrimp': case 'prawn': case 'freshwaterShrimp': resetCaridean(c, g, p, name, sig); return;
+    case 'brineShrimp': resetAnostracan(c, g, p, name, true); return;
+    case 'fairyShrimp': resetAnostracan(c, g, p, name, false); return;
+    case 'tadpoleShrimp': resetTadpoleShrimp(c, g, p, name); return;
+    case 'ventShrimp': resetVentShrimp(c, g, p, name); return;
+    case 'krill': resetKrill(c, g, p, name); return;
+    case 'copepod': resetCopepod(c, g, p, name); return;
+    case 'amphipod': resetAmphipod(c, g, p, name); return;
+    case 'lobster': resetLobster(c, g, p, name); return;
+  }
+}
+
 export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stout?: boolean; tiny?: boolean;
   hue?: string; shield?: boolean; stalks?: boolean; gills?: boolean; scale?: number;
   /* ★ WAVE 65 — the copepod's identity kit: one long pair of antennae held
@@ -858,6 +1629,8 @@ export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stou
   /** Lobster signature: one crusher claw dominates the paired chelae. */
   unequalClaws?: boolean }, name = ''): void {
   const p = hued(pIn, opts.hue);
+  const resetSignature = RESET_SHRIMP_II[name];
+  if (resetSignature) { resetShrimpII(c, g, p, name, resetSignature); return; }
   const r = nrng(g, name, 0x5E1D);
   const cx = S * 0.50, cy = S * 0.50;
   /* ⚠ the same defect the small birds had: a krill was drawn at its true size
