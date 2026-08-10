@@ -1606,3 +1606,26 @@ duplicates).
   bounded checkpoint ready to commit/push. This does not update the frozen 516/14/720 ledger or close
   the reset PR, full recertification, ZIP, or release. **Judge the real delivery surface;
   a cue that exists only at 440px is absent from the game surface that needed it.**
+
+- ★★★ **D-ART-183 — A CURRENT-ONLY PREVIEW CAN AUTHORIZE THE NEXT CAPTURE, NEVER THE FINAL
+  VERDICT; THE ADMISSIBLE CLOSE IS SOURCE-BOUND A/B WITH EVERY ACCEPTED NEIGHBOUR FROZEN.**
+  (2026-08-10, Wave 2c.) Mammal C needed five author preview rounds before its first shared
+  independent close: 0/13 candidate-ready, then 8/13, then 11/13 twice while Red Panda's hidden
+  leg roots and Tasmanian Devil's body-clipped chest band remained open. Bird B2's first independent
+  shared judgment returned 25 PASS /3 FAIL on Eider Duck, Rail and Avocet. Their current-only bounded
+  preview made the corrections visible but was explicitly provisional until a final A/B reproduced
+  all nine changed surfaces and kept the other 25 targets plus 72 controls exact. Invert II likewise
+  went from a 10/15 author preview to a 15/15 candidate, then correctly reopened after its first
+  independent shared judgment returned 13 PASS /2 FAIL on Krill and Tadpole Shrimp. The final shared
+  R2 changed only those five Bird/Invert identities, preserved the other 244 rows /732 surfaces, and
+  closed all three lanes at **56/56 scoped PASS**.
+
+  The admissible manifest is
+  `apps/game/smoke/wave2c-shared-final-r2-evidence-2026-08-10/evidence-manifest.json`, SHA-256
+  `BCB5282571903AC2057F6A5B9F7FCA09C6DE8372E4FEFEEAD8D34340930CE330`: 249 rows =56 targets
+  +193 protected controls, 747/747 current/repeat surfaces exact, 579/579 protected surfaces exact
+  to baseline, 168/168 target surfaces changed, three drift-free 139-file input snapshots and three
+  rejected negative controls. Integrated gates passed with all five source hashes unchanged. **A
+  preview answers “is this worth sealing?”; only the final frozen A/B plus independent judgment
+  answers “did this row pass?”** This does not alter the frozen 516/14/720 catalogue ledger or close
+  recertification, ZIP, reset PR, merge, release or deployment.

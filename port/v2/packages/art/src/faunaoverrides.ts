@@ -2799,6 +2799,511 @@ export function faunaBirdB1(c: Ctx, g: G, p: Pal, kind: BirdB1Kind): void {
   }
 }
 
+/* ---------------- Wave 2c B2: water, marsh, pelagic and shore birds ----------------
+   Like B1, this is a literal-name opt-in. These families depend on feet, bill
+   sections, neck posture and flight outline that cannot be added safely to the
+   accepted shared faunaBird route. Every feature is attached inside a single
+   named whole form; procedural labels never enter this dispatcher. */
+export type BirdB2Kind =
+  | 'Duck' | 'Eider Duck' | 'Goose'
+  | 'Flamingo' | 'Heron' | 'Bittern' | 'Egret'
+  | 'Coot' | 'Moorhen' | 'Rail'
+  | 'Pelican' | 'Booby' | 'Cormorant' | 'Frigatebird' | 'Gannet'
+  | 'Puffin' | 'Petrel' | 'Seabird' | 'Skua' | 'Snow Petrel' | 'Tern'
+  | 'Avocet' | 'Godwit' | 'Snipe' | 'Oystercatcher' | 'Sandpiper'
+  | 'Grebe' | 'Loon';
+
+function birdB2Eye(c: Ctx, x: number, y: number, r: number, iris = '#d6b23e', ring?: string): void {
+  if (ring) { c.fillStyle = ring; c.beginPath(); c.arc(x, y, r * 1.55, 0, TAU); c.fill(); }
+  c.fillStyle = iris; c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill();
+  c.fillStyle = '#111318'; c.beginPath(); c.arc(x, y, r * 0.56, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(255,255,255,0.9)'; c.beginPath(); c.arc(x - r * 0.24, y - r * 0.28, Math.max(1.2, r * 0.20), 0, TAU); c.fill();
+}
+
+function birdB2Water(c: Ctx, y: number, x0 = 34, x1 = 406): void {
+  const gg = c.createLinearGradient(0, y - 24, 0, y + 28);
+  gg.addColorStop(0, 'rgba(86,164,191,0.04)'); gg.addColorStop(0.48, 'rgba(73,151,181,0.22)'); gg.addColorStop(1, 'rgba(25,88,122,0.06)');
+  c.fillStyle = gg; c.beginPath(); c.moveTo(x0, y);
+  c.bezierCurveTo(x0 + 72, y - 8, x0 + 116, y + 8, x0 + 184, y);
+  c.bezierCurveTo(x1 - 116, y - 8, x1 - 72, y + 8, x1, y); c.lineTo(x1, y + 30); c.lineTo(x0, y + 30); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(151,220,236,0.52)'; c.lineWidth = 3; c.lineCap = 'round';
+  for (const [yy, inset] of [[y, 0], [y + 14, 32], [y + 25, 70]] as const) {
+    c.beginPath(); c.moveTo(x0 + inset, yy); c.bezierCurveTo(142, yy - 5, 300, yy + 5, x1 - inset, yy); c.stroke();
+  }
+}
+
+function birdB2Leg(c: Ctx, x: number, hipY: number, ankleX: number, ankleY: number, footX: number, footY: number, hue: string, width = 8): void {
+  c.strokeStyle = hue; c.lineCap = 'round'; c.lineJoin = 'round';
+  c.lineWidth = width; c.beginPath(); c.moveTo(x, hipY); c.quadraticCurveTo(x + (ankleX - x) * 0.42, hipY + (ankleY - hipY) * 0.56, ankleX, ankleY); c.stroke();
+  c.lineWidth = width * 0.68; c.beginPath(); c.moveTo(ankleX, ankleY); c.quadraticCurveTo(ankleX + (footX - ankleX) * 0.48, ankleY + (footY - ankleY) * 0.52, footX, footY); c.stroke();
+}
+
+function birdB2WebFoot(c: Ctx, x: number, y: number, scale: number, hue: string, flip = false): void {
+  const d = flip ? -1 : 1;
+  c.save(); c.translate(x, y); c.scale(d * scale, scale);
+  const fg = c.createLinearGradient(-24, -5, 26, 16); fg.addColorStop(0, hue); fg.addColorStop(1, '#704331');
+  c.fillStyle = fg;
+  c.beginPath(); c.moveTo(-5, -8); c.quadraticCurveTo(-13, 2, -27, 15);
+  c.quadraticCurveTo(-14, 17, -4, 12); c.quadraticCurveTo(5, 20, 23, 16);
+  c.quadraticCurveTo(13, 5, 7, -7); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(255,236,188,0.42)'; c.lineWidth = 1.8;
+  for (const tx of [-18, -2, 16]) { c.beginPath(); c.moveTo(0, -5); c.lineTo(tx, 14); c.stroke(); }
+  c.restore();
+}
+
+function birdB2LobedFoot(c: Ctx, x: number, y: number, scale: number, hue: string): void {
+  c.save(); c.translate(x, y); c.scale(scale, scale); c.lineCap = 'round';
+  c.strokeStyle = hue; c.lineWidth = 5.5;
+  for (const [tx, ty] of [[-37, 9], [-17, 20], [6, 22], [28, 12]] as const) {
+    c.beginPath(); c.moveTo(0, -9); c.quadraticCurveTo(tx * 0.42, 1, tx, ty); c.stroke();
+    c.fillStyle = hue;
+    for (let i = 1; i <= 3; i++) {
+      const u = i / 3, xx = tx * u, yy = -9 + (ty + 9) * u;
+      c.beginPath(); c.ellipse(xx, yy, 7.6, 4.8, Math.atan2(ty + 9, tx), 0, TAU); c.fill();
+    }
+  }
+  c.restore();
+}
+
+function birdB2FoldedWing(c: Ctx, x: number, y: number, w: number, h: number, light: string, base: string, dark: string, tip = dark): void {
+  c.fillStyle = birdB1Gradient(c, x, y, Math.max(w, h) * 0.72, light, base, dark);
+  c.beginPath(); c.moveTo(x - w * 0.48, y - h * 0.38); c.quadraticCurveTo(x + w * 0.14, y - h * 0.68, x + w * 0.48, y - h * 0.08);
+  c.quadraticCurveTo(x + w * 0.30, y + h * 0.52, x - w * 0.34, y + h * 0.45); c.quadraticCurveTo(x - w * 0.56, y + h * 0.10, x - w * 0.48, y - h * 0.38); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(239,239,230,0.35)'; c.lineWidth = 3;
+  for (let i = 0; i < 4; i++) { const yy = y - h * 0.16 + i * h * 0.13; c.beginPath(); c.moveTo(x - w * 0.28, yy); c.quadraticCurveTo(x + w * 0.08, yy + h * 0.10, x + w * 0.31, yy + h * 0.22); c.stroke(); }
+  c.fillStyle = tip; c.beginPath(); c.moveTo(x + w * 0.16, y + h * 0.22); c.lineTo(x + w * 0.50, y + h * 0.48); c.lineTo(x + w * 0.27, y + h * 0.06); c.closePath(); c.fill();
+}
+
+function birdB2Waterfowl(c: Ctx, kind: 'Duck' | 'Eider Duck' | 'Goose'): void {
+  const goose = kind === 'Goose', eider = kind === 'Eider Duck';
+  const footHue = goose ? '#393a36' : '#dc7839';
+  if (!eider) {
+    ground(c, 246, 371, goose ? 150 : 132);
+    for (const [x, flip] of (goose ? [[286, false], [320, true]] : [[270, false], [309, true]]) as [number, boolean][]) {
+      birdB2Leg(c, x, goose ? 276 : 274, x + 7, 326, x - 2, 350, footHue, goose ? 9 : 8);
+      birdB2WebFoot(c, x - 2, 356, goose ? 1.25 : 1.10, footHue, flip);
+    }
+  }
+  const bodyLight = goose ? '#c3b08f' : eider ? '#f5f3ec' : '#b7b4a5';
+  const bodyBase = goose ? '#8d7658' : eider ? '#deded9' : '#817e72';
+  const bodyDark = goose ? '#4b4033' : eider ? '#22262d' : '#4a493f';
+  c.fillStyle = birdB1Gradient(c, 250, 247, 150, bodyLight, bodyBase, bodyDark);
+  c.beginPath(); c.moveTo(goose ? 169 : 126, 224); c.quadraticCurveTo(230, 181, 337, 207); c.quadraticCurveTo(401, 230, 390, 287);
+  c.quadraticCurveTo(346, 324, 224, 309); c.quadraticCurveTo(143, 304, goose ? 154 : 114, 264); c.quadraticCurveTo(107, 241, goose ? 169 : 126, 224); c.closePath(); c.fill();
+  birdB2FoldedWing(c, 283, 250, eider ? 134 : 143, 99, eider ? '#f5f5ef' : '#b9aa8d', eider ? '#343940' : goose ? '#75624c' : '#66675d', '#343437', eider ? '#181c23' : '#33352f');
+  if (eider) {
+    /* Bill, forehead and crown share one unbroken wedge silhouette. */
+    c.fillStyle = birdB1Gradient(c, 142, 175, 82, '#f3f3ee', '#d9dedc', '#6f7778');
+    c.beginPath(); c.moveTo(62, 184); c.lineTo(133, 148); c.quadraticCurveTo(172, 126, 202, 151); c.quadraticCurveTo(222, 179, 200, 215);
+    c.quadraticCurveTo(164, 234, 127, 211); c.lineTo(62, 194); c.closePath(); c.fill();
+    c.fillStyle = '#b7a459'; c.beginPath(); c.moveTo(62, 184); c.lineTo(135, 150); c.lineTo(127, 211); c.lineTo(62, 194); c.closePath(); c.fill();
+    c.fillStyle = '#202329'; c.beginPath(); c.moveTo(132, 148); c.quadraticCurveTo(167, 126, 200, 151); c.lineTo(187, 167); c.quadraticCurveTo(154, 151, 132, 164); c.closePath(); c.fill();
+    c.fillStyle = '#9bc1a6'; c.beginPath(); c.ellipse(192, 186, 22, 30, -0.35, 0, TAU); c.fill();
+    c.fillStyle = '#20242a'; c.beginPath(); c.ellipse(248, 286, 106, 25, 0, 0, TAU); c.fill();
+    birdB2Eye(c, 133, 176, 5.6, '#7d6d48');
+  } else if (goose) {
+    c.strokeStyle = '#272b2b'; c.lineCap = 'round'; c.lineWidth = 56;
+    c.beginPath(); c.moveTo(184, 245); c.bezierCurveTo(178, 207, 163, 161, 151, 126); c.stroke();
+    c.fillStyle = '#242829'; c.beginPath(); c.ellipse(143, 105, 45, 39, -0.14, 0, TAU); c.fill();
+    c.fillStyle = '#f1eee4'; c.beginPath(); c.moveTo(111, 108); c.quadraticCurveTo(138, 121, 173, 111); c.lineTo(166, 129); c.quadraticCurveTo(135, 136, 113, 120); c.closePath(); c.fill();
+    c.fillStyle = '#353a38'; c.beginPath(); c.moveTo(106, 98); c.quadraticCurveTo(78, 91, 60, 104); c.quadraticCurveTo(78, 119, 110, 113); c.closePath(); c.fill();
+    birdB2Eye(c, 126, 94, 5.7, '#5b4c2d');
+  } else {
+    c.fillStyle = '#174f46'; c.beginPath(); c.ellipse(145, 184, 52, 48, -0.15, 0, TAU); c.fill();
+    c.fillStyle = '#f2eee1'; c.beginPath(); c.moveTo(159, 222); c.quadraticCurveTo(178, 221, 193, 232); c.lineTo(183, 241); c.quadraticCurveTo(164, 229, 148, 228); c.closePath(); c.fill();
+    c.fillStyle = '#a9663f'; c.beginPath(); c.moveTo(175, 223); c.quadraticCurveTo(215, 220, 236, 249); c.quadraticCurveTo(222, 278, 185, 287); c.closePath(); c.fill();
+    c.fillStyle = '#d9b448'; c.beginPath(); c.moveTo(106, 174); c.quadraticCurveTo(67, 168, 48, 181); c.quadraticCurveTo(71, 197, 111, 191); c.closePath(); c.fill();
+    c.strokeStyle = '#6a5525'; c.lineWidth = 3; c.beginPath(); c.moveTo(52, 183); c.lineTo(108, 183); c.stroke();
+    birdB2Eye(c, 126, 170, 5.6, '#564428');
+  }
+  /* Eiders sit as heavy rafts with the belly submerged; exposed stilt legs
+     invert that read.  The two other waterfowl retain their standing rig. */
+  birdB2Water(c, eider ? 286 : 332, eider ? 38 : 47, 407);
+}
+
+function birdB2Flamingo(c: Ctx): void {
+  ground(c, 245, 399, 125);
+  for (const [x, d] of [[258, -1], [294, 1]] as const) {
+    birdB2Leg(c, x, 229, x + 19, 326, x - 2 + d * 8, 391, '#d96f91', 8.5);
+    c.strokeStyle = '#c45878'; c.lineWidth = 4.5; c.beginPath(); c.moveTo(x - 2 + d * 8, 391); c.lineTo(x - 26 + d * 13, 398); c.moveTo(x - 2 + d * 8, 391); c.lineTo(x + 20 + d * 7, 399); c.stroke();
+  }
+  c.fillStyle = birdB1Gradient(c, 282, 210, 105, '#ffc2d0', '#ec87a0', '#a73565');
+  c.beginPath(); c.ellipse(284, 216, 109, 63, -0.08, 0, TAU); c.fill();
+  birdB2FoldedWing(c, 306, 208, 116, 78, '#ffb6c7', '#d95b82', '#8c2858');
+  c.fillStyle = '#28262d'; c.beginPath(); c.moveTo(355, 207); c.lineTo(398, 230); c.lineTo(346, 241); c.closePath(); c.fill();
+  c.strokeStyle = '#8e2e5c'; c.lineWidth = 42; c.lineCap = 'round'; c.lineJoin = 'round';
+  c.beginPath(); c.moveTo(220, 210); c.bezierCurveTo(144, 222, 212, 155, 146, 137); c.bezierCurveTo(108, 126, 143, 91, 133, 75); c.stroke();
+  c.strokeStyle = '#ef8eaa'; c.lineWidth = 34; c.beginPath(); c.moveTo(220, 210); c.bezierCurveTo(144, 222, 212, 155, 146, 137); c.bezierCurveTo(108, 126, 143, 91, 133, 75); c.stroke();
+  c.strokeStyle = 'rgba(255,214,224,0.58)'; c.lineWidth = 6; c.beginPath(); c.moveTo(213, 199); c.bezierCurveTo(158, 205, 211, 157, 151, 130); c.stroke();
+  c.fillStyle = '#f2a3b8'; c.beginPath(); c.ellipse(127, 69, 29, 24, -0.18, 0, TAU); c.fill();
+  /* The bill bends at a visible mid-joint instead of forming a smooth sickle. */
+  c.fillStyle = '#e8c6b5'; c.beginPath(); c.moveTo(104, 61); c.lineTo(65, 65); c.lineTo(43, 91); c.lineTo(66, 112); c.lineTo(87, 89); c.lineTo(110, 79); c.closePath(); c.fill();
+  c.fillStyle = '#252329'; c.beginPath(); c.moveTo(65, 65); c.lineTo(43, 91); c.lineTo(66, 112); c.lineTo(79, 94); c.closePath(); c.fill();
+  c.strokeStyle = '#795b5d'; c.lineWidth = 3; c.beginPath(); c.moveTo(66, 87); c.lineTo(92, 78); c.stroke();
+  birdB2Eye(c, 116, 62, 5.2, '#58422f');
+}
+
+function birdB2Heron(c: Ctx, kind: 'Heron' | 'Egret'): void {
+  const egret = kind === 'Egret';
+  const bodyLight = egret ? '#ffffff' : '#b7c8d4', bodyBase = egret ? '#eceeea' : '#738b9e', bodyDark = egret ? '#aeb7b8' : '#314454';
+  ground(c, 266, 395, 119);
+  for (const [x, d] of [[267, -1], [301, 1]] as const) {
+    birdB2Leg(c, x, 252, x + 15, 332, x - 5, 390, egret ? '#25292c' : '#786b49', 7.5);
+    c.strokeStyle = egret ? '#25292c' : '#786b49'; c.lineWidth = 3.6; c.lineCap = 'round';
+    for (const spread of [-28, -5, 20]) { c.beginPath(); c.moveTo(x - 5, 390); c.lineTo(x + spread + d * 4, 398); c.stroke(); }
+  }
+  c.fillStyle = birdB1Gradient(c, 287, 232, 111, bodyLight, bodyBase, bodyDark);
+  c.beginPath(); c.moveTo(208, 197); c.quadraticCurveTo(285, 159, 365, 205); c.quadraticCurveTo(390, 240, 354, 284); c.quadraticCurveTo(278, 318, 205, 273); c.quadraticCurveTo(181, 229, 208, 197); c.closePath(); c.fill();
+  birdB2FoldedWing(c, 306, 234, 127, 92, bodyLight, egret ? '#dfe3e0' : '#657f95', bodyDark);
+  c.fillStyle = bodyDark; c.beginPath(); c.moveTo(351, 232); c.lineTo(408, 270); c.lineTo(350, 281); c.closePath(); c.fill();
+  c.strokeStyle = bodyDark; c.lineWidth = 43; c.lineCap = 'round'; c.lineJoin = 'round';
+  c.beginPath(); c.moveTo(220, 220); c.bezierCurveTo(158, 214, 227, 163, 171, 146); c.bezierCurveTo(128, 134, 176, 105, 150, 88); c.stroke();
+  c.strokeStyle = bodyBase; c.lineWidth = 35; c.beginPath(); c.moveTo(220, 220); c.bezierCurveTo(158, 214, 227, 163, 171, 146); c.bezierCurveTo(128, 134, 176, 105, 150, 88); c.stroke();
+  c.strokeStyle = egret ? 'rgba(255,255,255,0.85)' : 'rgba(211,227,236,0.62)'; c.lineWidth = 6;
+  c.beginPath(); c.moveTo(214, 211); c.bezierCurveTo(171, 201, 221, 164, 174, 140); c.stroke();
+  c.fillStyle = bodyBase; c.beginPath(); c.ellipse(143, 82, 33, 27, -0.16, 0, TAU); c.fill();
+  c.fillStyle = egret ? '#d9ad3e' : '#c9983e'; c.beginPath(); c.moveTo(116, 77); c.lineTo(38, 85); c.lineTo(116, 94); c.closePath(); c.fill();
+  c.strokeStyle = egret ? '#4f4028' : '#5a4932'; c.lineWidth = 2.5; c.beginPath(); c.moveTo(43, 85); c.lineTo(115, 86); c.stroke();
+  if (!egret) {
+    c.fillStyle = '#273641'; c.beginPath(); c.moveTo(116, 68); c.quadraticCurveTo(145, 48, 178, 65); c.lineTo(170, 78); c.quadraticCurveTo(140, 64, 116, 78); c.closePath(); c.fill();
+    c.strokeStyle = '#263540'; c.lineWidth = 4; c.beginPath(); c.moveTo(163, 63); c.lineTo(202, 49); c.stroke();
+  }
+  birdB2Eye(c, 131, 75, 5.8, egret ? '#c7b135' : '#d0a130');
+}
+
+function birdB2Bittern(c: Ctx): void {
+  ground(c, 230, 399, 103);
+  c.strokeStyle = 'rgba(132,112,54,0.46)'; c.lineWidth = 8; c.lineCap = 'round';
+  for (const [x, top] of [[62,69],[92,32],[338,52],[371,78]] as const) { c.beginPath(); c.moveTo(x, 397); c.quadraticCurveTo(x + 9, 228, x, top); c.stroke(); }
+  for (const x of [207, 252]) {
+    birdB2Leg(c, x, 292, x + 8, 348, x - 2, 392, '#84704c', 7);
+    c.strokeStyle = '#84704c'; c.lineWidth = 3; for (const dx of [-24, 0, 22]) { c.beginPath(); c.moveTo(x - 2, 392); c.lineTo(x + dx, 399); c.stroke(); }
+  }
+  c.fillStyle = birdB1Gradient(c, 224, 245, 105, '#dec491', '#a67c46', '#4e3927');
+  c.beginPath(); c.moveTo(162, 153); c.quadraticCurveTo(205, 114, 272, 151); c.quadraticCurveTo(310, 218, 280, 319); c.quadraticCurveTo(227, 354, 166, 313); c.quadraticCurveTo(135, 223, 162, 153); c.closePath(); c.fill();
+  c.strokeStyle = '#4b3525'; c.lineWidth = 8; c.lineCap = 'round';
+  for (const [x0, y0, x1, y1] of [[174,169,182,304],[199,142,204,323],[226,137,230,320],[252,152,262,303]] as const) { c.beginPath(); c.moveTo(x0,y0); c.quadraticCurveTo((x0+x1)/2-7,(y0+y1)/2,x1,y1); c.stroke(); }
+  c.fillStyle = '#b18a54'; c.beginPath(); c.ellipse(204, 119, 40, 37, 0.02, 0, TAU); c.fill();
+  c.strokeStyle = '#ad8553'; c.lineWidth = 34; c.beginPath(); c.moveTo(216, 158); c.quadraticCurveTo(207, 128, 204, 105); c.stroke();
+  c.fillStyle = '#c9ab76'; c.beginPath(); c.moveTo(193, 88); c.lineTo(194, 25); c.lineTo(211, 90); c.closePath(); c.fill();
+  c.fillStyle = '#51402d'; c.beginPath(); c.moveTo(194, 25); c.lineTo(200, 12); c.lineTo(205, 28); c.closePath(); c.fill();
+  c.fillStyle = '#3b2e23'; c.beginPath(); c.moveTo(176, 111); c.quadraticCurveTo(202, 99, 232, 110); c.lineTo(229, 120); c.quadraticCurveTo(202, 111, 179, 121); c.closePath(); c.fill();
+  birdB2Eye(c, 192, 101, 5.2, '#d1b043');
+}
+
+function birdB2Rail(c: Ctx, kind: 'Coot' | 'Moorhen' | 'Rail'): void {
+  const coot = kind === 'Coot', moorhen = kind === 'Moorhen';
+  const legHue = coot ? '#8c9b76' : moorhen ? '#c7a43e' : '#9b7250';
+  ground(c, 232, 388, 126);
+  for (const [x, scale] of [[212, 1], [274, 0.92]] as const) {
+    birdB2Leg(c, x, 274, x + 8, 329, x - 3, 373, legHue, coot ? 9 : 7.5);
+    if (coot) birdB2LobedFoot(c, x - 3, 377, scale, legHue);
+    else {
+      c.strokeStyle = legHue; c.lineWidth = 4.5; c.lineCap = 'round';
+      for (const [dx,dy] of [[-42,10],[-19,18],[12,18],[35,11]] as const) { c.beginPath(); c.moveTo(x - 3,373); c.quadraticCurveTo(x+dx*0.45,375,x+dx,373+dy); c.stroke(); }
+    }
+  }
+  const light = coot ? '#626a6b' : moorhen ? '#56635d' : '#c29a66';
+  const base = coot ? '#303538' : moorhen ? '#303d38' : '#816044';
+  const dark = coot ? '#16191c' : moorhen ? '#19221f' : '#3b2b24';
+  c.fillStyle = birdB1Gradient(c, 246, 230, 122, light, base, dark);
+  if (kind === 'Rail') {
+    c.beginPath(); c.moveTo(150, 173); c.quadraticCurveTo(215, 142, 303, 184); c.quadraticCurveTo(337, 224, 302, 286); c.quadraticCurveTo(231, 318, 159, 274); c.quadraticCurveTo(131, 223, 150, 173); c.closePath(); c.fill();
+  } else {
+    c.beginPath(); c.ellipse(247, 232, coot ? 117 : 109, coot ? 86 : 79, -0.08, 0, TAU); c.fill();
+  }
+  birdB2FoldedWing(c, 270, 237, 122, 84, light, base, dark);
+  c.fillStyle = base; c.beginPath(); c.ellipse(150, 186, coot ? 48 : 42, coot ? 45 : 41, -0.08, 0, TAU); c.fill();
+  if (coot) {
+    c.fillStyle = '#f0f0e8'; c.beginPath(); c.moveTo(117,176); c.lineTo(70,187); c.lineTo(119,198); c.lineTo(137,190); c.lineTo(140,151); c.lineTo(124,156); c.closePath(); c.fill();
+    birdB2Eye(c, 135, 175, 5.7, '#bd2f2c');
+  } else if (moorhen) {
+    c.fillStyle = '#d33c28'; c.beginPath(); c.moveTo(118,176); c.lineTo(71,184); c.lineTo(116,198); c.lineTo(139,190); c.lineTo(142,151); c.lineTo(125,156); c.closePath(); c.fill();
+    c.fillStyle = '#edc43e'; c.beginPath(); c.moveTo(71,184); c.lineTo(91,179); c.lineTo(91,192); c.closePath(); c.fill();
+    c.strokeStyle = '#f3f2e9'; c.lineWidth = 7; c.lineCap = 'round'; c.beginPath(); c.moveTo(238,260); c.quadraticCurveTo(277,270,312,256); c.stroke();
+    c.fillStyle = '#f4f2e9'; c.beginPath(); c.moveTo(332,212); c.lineTo(389,185); c.lineTo(365,235); c.lineTo(390,250); c.lineTo(337,256); c.closePath(); c.fill();
+    c.fillStyle = '#26302d'; c.beginPath(); c.moveTo(331,207); c.lineTo(385,176); c.lineTo(356,226); c.closePath(); c.fill();
+    birdB2Eye(c, 136, 174, 5.5, '#c99e33');
+  } else {
+    /* A long narrow probe curves just below the head axis; the old broad
+       paddle read as a duck bill and erased the rail silhouette at 132px. */
+    c.fillStyle = '#7c5a3d'; c.beginPath(); c.moveTo(120,176); c.bezierCurveTo(87,173,53,184,24,201); c.bezierCurveTo(53,202,88,208,122,197); c.closePath(); c.fill();
+    c.strokeStyle = '#e4d6ae'; c.lineWidth = 5;
+    for (const y of [213,229,245,261]) { c.beginPath(); c.moveTo(205,y); c.lineTo(265,y+18); c.stroke(); }
+    /* The short cocked tail begins deep inside the rump so no background
+       seam can open between body and tail at either evidence scale. */
+    c.fillStyle = birdB1Gradient(c, 334, 194, 72, base, dark, '#241b18');
+    c.beginPath(); c.moveTo(292,190); c.quadraticCurveTo(337,183,382,162);
+    c.quadraticCurveTo(365,203,331,228); c.quadraticCurveTo(313,214,292,210); c.closePath(); c.fill();
+    birdB2Eye(c, 136, 172, 5.2, '#7d6539');
+  }
+}
+
+function birdB2Pelican(c: Ctx): void {
+  ground(c, 266, 386, 140);
+  for (const [x, flip] of [[264,false],[310,true]] as const) { birdB2Leg(c,x,286,x+3,330,x-2,362,'#786a55',10); birdB2WebFoot(c,x-2,370,1.18,'#8b785d',flip); }
+  c.fillStyle = birdB1Gradient(c, 288, 249, 135, '#d8d4c4', '#9b9588', '#49463f');
+  c.beginPath(); c.ellipse(291, 247, 132, 92, -0.08, 0, TAU); c.fill();
+  birdB2FoldedWing(c, 315, 244, 148, 102, '#c7c4b8', '#7a756c', '#44413d');
+  c.strokeStyle = '#5a5348'; c.lineWidth = 55; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(209,232); c.bezierCurveTo(164,225,214,168,174,139); c.bezierCurveTo(145,118,174,91,153,83); c.stroke();
+  c.strokeStyle = '#b9ad95'; c.lineWidth = 43; c.beginPath(); c.moveTo(209,232); c.bezierCurveTo(164,225,214,168,174,139); c.bezierCurveTo(145,118,174,91,153,83); c.stroke();
+  c.fillStyle = '#c7b896'; c.beginPath(); c.ellipse(143, 80, 36, 30, -0.08, 0, TAU); c.fill();
+  c.fillStyle = '#b9ab80'; c.beginPath(); c.moveTo(119,70); c.lineTo(28,76); c.lineTo(119,94); c.closePath(); c.fill();
+  /* Pouch and throat share the lower bill edge and disappear under the neck. */
+  c.fillStyle = '#b77b5f'; c.beginPath(); c.moveTo(30,77); c.quadraticCurveTo(65,133, 139,135); c.quadraticCurveTo(154,111, 119,93); c.lineTo(30,77); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(247,207,171,0.45)'; c.lineWidth = 3; c.beginPath(); c.moveTo(42,87); c.quadraticCurveTo(78,121,132,124); c.stroke();
+  birdB2Eye(c, 132, 70, 5.8, '#59452e');
+}
+
+function birdB2Cormorant(c: Ctx): void {
+  ground(c, 232, 397, 148);
+  /* A single stiff wedge tail continues the low horizontal torso. */
+  c.fillStyle = '#1a1d21'; c.beginPath(); c.moveTo(286,257); c.lineTo(412,307); c.lineTo(290,321); c.closePath(); c.fill();
+  for (const [x,d] of [[208,-1],[252,1]] as const) {
+    birdB2Leg(c,x,302,x+d*3,346,x+d*7,378,'#30353a',7);
+    c.strokeStyle='#30353a';c.lineWidth=3;c.lineCap='round';for(const dx of [-20,0,18]){c.beginPath();c.moveTo(x+d*7,378);c.lineTo(x+dx+d*4,390);c.stroke();}
+  }
+  const wing = (side: -1 | 1): void => {
+    c.save(); c.translate(220, 239); c.scale(side, 1);
+    c.fillStyle = birdB1Gradient(c, 105, -24, 142, '#5b5d5b', '#2a2d2f', '#121417');
+    c.beginPath(); c.moveTo(7, -37); c.quadraticCurveTo(54, -101, 173, -122); c.quadraticCurveTo(205, -119, 193, -93); c.quadraticCurveTo(139, -39, 56, 23); c.quadraticCurveTo(28, 31, 7, 9); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(194,198,192,0.35)'; c.lineWidth = 4;
+    for (let i=0;i<6;i++){ c.beginPath(); c.moveTo(27,-25+i*8); c.lineTo(181-i*10,-104+i*10); c.stroke(); }
+    c.restore();
+  };
+  wing(-1); wing(1);
+  c.fillStyle = birdB1Gradient(c, 227, 267, 112, '#4a4d4b', '#222529', '#101215'); c.beginPath(); c.ellipse(227,267,103,63,0.04,0,TAU); c.fill();
+  c.strokeStyle='#25282b'; c.lineWidth=41; c.lineCap='round'; c.beginPath(); c.moveTo(159,251); c.bezierCurveTo(124,219,171,155,153,103); c.stroke();
+  c.fillStyle='#292c2e'; c.beginPath(); c.ellipse(145,89,31,28,-0.15,0,TAU); c.fill();
+  c.fillStyle='#c8903d'; c.beginPath(); c.moveTo(124,96); c.quadraticCurveTo(101,108,84,96); c.lineTo(124,82); c.closePath(); c.fill();
+  c.fillStyle='#262321'; c.beginPath(); c.moveTo(86,96); c.quadraticCurveTo(74,92,78,82); c.quadraticCurveTo(86,90,96,89); c.closePath(); c.fill();
+  c.fillStyle='#d7a33d'; c.beginPath(); c.ellipse(127,105,17,10,-0.2,0,TAU); c.fill();
+  birdB2Eye(c,136,81,5.4,'#64a0a6');
+}
+
+function birdB2Frigate(c: Ctx): void {
+  const wing = (side: -1 | 1): void => {
+    c.save(); c.translate(220,205); c.scale(side,1);
+    c.fillStyle=birdB1Gradient(c,108,132,175,'#4d5154','#22262b','#101216');
+    c.beginPath(); c.moveTo(0,-10); c.quadraticCurveTo(65,-91,176,-150); c.quadraticCurveTo(207,-156,190,-119); c.lineTo(133,-54); c.lineTo(201,-73); c.quadraticCurveTo(149,-19,69,34); c.quadraticCurveTo(32,49,0,24); c.closePath(); c.fill();
+    c.strokeStyle='rgba(184,190,194,0.30)'; c.lineWidth=3.5;
+    for(let i=0;i<5;i++){c.beginPath();c.moveTo(33,0+i*6);c.lineTo(181-i*8,-131+i*16);c.stroke();}
+    c.restore();
+  };
+  wing(-1); wing(1);
+  c.fillStyle='#171a1e'; c.beginPath(); c.moveTo(195,291); c.lineTo(155,406); c.lineTo(218,325); c.lineTo(282,406); c.lineTo(246,290); c.closePath(); c.fill();
+  c.fillStyle=birdB1Gradient(c,220,230,100,'#3f4447','#1d2126','#0e1013'); c.beginPath(); c.ellipse(220,229,62,101,0,0,TAU); c.fill();
+  c.strokeStyle='#1e2226'; c.lineWidth=32; c.lineCap='round'; c.beginPath(); c.moveTo(205,174); c.quadraticCurveTo(180,141,165,111); c.stroke();
+  c.fillStyle='#202428'; c.beginPath(); c.ellipse(157,99,29,25,-0.18,0,TAU); c.fill();
+  c.fillStyle='#a8252b'; c.beginPath(); c.ellipse(179,146,43,50,-0.12,0,TAU); c.fill();
+  c.strokeStyle='rgba(255,114,96,0.45)'; c.lineWidth=3; for(let i=-2;i<=2;i++){c.beginPath();c.arc(179,146,24+i*4,-1.2,1.2);c.stroke();}
+  c.fillStyle='#353236'; c.beginPath(); c.moveTo(135,93); c.lineTo(96,102); c.lineTo(135,110); c.quadraticCurveTo(108,118,108,128); c.quadraticCurveTo(128,123,143,106); c.closePath(); c.fill();
+  birdB2Eye(c,149,91,5.5,'#686a65');
+}
+
+function birdB2GannetBooby(c: Ctx, kind: 'Gannet' | 'Booby'): void {
+  const booby=kind==='Booby', footHue=booby?'#2ba9cb':'#555b59';
+  ground(c,239,394,124);
+  for(const [x,flip] of [[213,false],[270,true]] as const){birdB2Leg(c,x,283,x+3,337,x-2,372,footHue,9);birdB2WebFoot(c,x-2,379,1.25,footHue,flip);}
+  c.fillStyle=birdB1Gradient(c,243,238,119,booby?'#f1e5cf':'#ffffff',booby?'#b99a75':'#e8e7df',booby?'#5f4434':'#a7a9a7');
+  c.beginPath();c.moveTo(178,151);c.quadraticCurveTo(250,119,330,185);c.quadraticCurveTo(358,241,319,310);c.quadraticCurveTo(247,340,177,291);c.quadraticCurveTo(146,219,178,151);c.closePath();c.fill();
+  birdB2FoldedWing(c,269,235,130,121,booby?'#7b5b43':'#f2f2ec',booby?'#4d382d':'#d7d9d7',booby?'#29231f':'#252a30',booby?'#332820':'#11151a');
+  if(booby){
+    /* Head, forehead and long dagger are one overlapping silhouette. The
+       paired forward eyes sit above and below the bill root, so both remain
+       legible without turning the side-view head into a detached face badge. */
+    c.fillStyle='#d9c4a0';c.beginPath();c.moveTo(199,160);c.quadraticCurveTo(215,133,201,106);c.quadraticCurveTo(184,84,153,91);c.quadraticCurveTo(145,98,141,107);c.lineTo(61,126);c.lineTo(143,145);c.quadraticCurveTo(165,170,199,160);c.closePath();c.fill();
+    c.fillStyle='#596664';c.beginPath();c.moveTo(145,106);c.lineTo(61,126);c.lineTo(144,145);c.quadraticCurveTo(158,126,145,106);c.closePath();c.fill();
+    c.strokeStyle='rgba(215,226,218,0.62)';c.lineWidth=2.5;c.beginPath();c.moveTo(66,126);c.lineTo(143,126);c.stroke();
+    c.fillStyle='rgba(183,199,189,0.78)';c.beginPath();c.ellipse(157,110,11,8,-0.10,0,TAU);c.fill();c.beginPath();c.ellipse(178,121,10,8,0.10,0,TAU);c.fill();
+    birdB2Eye(c,157,110,5.2,'#d3b647'); birdB2Eye(c,178,121,4.8,'#d3b647');
+  } else {
+    c.fillStyle='#e9d49f'; c.beginPath(); c.ellipse(167,128,43,40,-0.1,0,TAU); c.fill();
+    c.fillStyle='#242a2d'; c.beginPath(); c.moveTo(137,119); c.lineTo(70,129); c.lineTo(138,143); c.closePath(); c.fill();
+    c.fillStyle='rgba(219,185,91,0.72)';c.beginPath();c.ellipse(173,131,48,44,-0.1,0,TAU);c.fill();
+    c.fillStyle='#25282b';c.beginPath();c.moveTo(129,108);c.quadraticCurveTo(163,93,199,108);c.lineTo(192,120);c.quadraticCurveTo(161,109,133,120);c.closePath();c.fill();
+    birdB2Eye(c,153,111,5.6,'#7891a1');
+  }
+}
+
+function birdB2Puffin(c: Ctx): void {
+  ground(c,224,394,101);
+  for(const [x,flip] of [[199,false],[245,true]] as const){birdB2Leg(c,x,303,x+2,345,x,372,'#e87032',9);birdB2WebFoot(c,x,380,1.18,'#e87032',flip);}
+  c.fillStyle=birdB1Gradient(c,225,242,118,'#5b5d61','#23262b','#101216');c.beginPath();c.ellipse(227,244,91,125,-0.03,0,TAU);c.fill();
+  c.fillStyle='#f2eee3';c.beginPath();c.ellipse(202,250,61,86,-0.12,0,TAU);c.fill();
+  c.fillStyle='#24272c';c.beginPath();c.ellipse(181,126,59,56,-0.08,0,TAU);c.fill();
+  c.fillStyle='#f3eee1';c.beginPath();c.ellipse(168,135,42,39,-0.12,0,TAU);c.fill();
+  /* Tall lateral bill plates overlap at the face instead of hanging from it. */
+  c.fillStyle='#ea6a2d';c.beginPath();c.moveTo(137,112);c.lineTo(58,137);c.lineTo(137,164);c.quadraticCurveTo(158,140,137,112);c.closePath();c.fill();
+  c.fillStyle='#7394a7';c.beginPath();c.moveTo(117,119);c.lineTo(88,136);c.lineTo(118,155);c.lineTo(130,137);c.closePath();c.fill();
+  c.fillStyle='#f0cf57';c.beginPath();c.moveTo(91,127);c.lineTo(69,136);c.lineTo(92,146);c.closePath();c.fill();
+  c.strokeStyle='#512f2b';c.lineWidth=4;for(const x of [102,124]){c.beginPath();c.moveTo(x,118);c.lineTo(x-1,156);c.stroke();}
+  birdB2Eye(c,163,122,6,'#7d6744');
+  birdB2FoldedWing(c,251,248,100,104,'#55585c','#25292e','#101216');
+}
+
+function birdB2FlyingSeabird(c: Ctx, kind: 'Petrel' | 'Snow Petrel' | 'Skua' | 'Tern'): void {
+  const tern=kind==='Tern', snow=kind==='Snow Petrel', skua=kind==='Skua';
+  const light=tern?'#f8f8f3':snow?'#ffffff':skua?'#8a7961':'#746c62';
+  const base=tern?'#d7dcdd':snow?'#edf1f0':skua?'#56483a':'#48443f';
+  const dark=tern?'#70777b':snow?'#9aa3a5':skua?'#29251f':'#252522';
+  const wing=(side:-1|1):void=>{
+    c.save();c.translate(220,220);c.scale(side,1);c.fillStyle=birdB1Gradient(c,116,115,172,light,base,dark);
+    c.beginPath();c.moveTo(4,-10);
+    if(tern)c.bezierCurveTo(74,-70,142,-146,202,-177); else c.bezierCurveTo(65,-72,141,-132,201,-145);
+    c.quadraticCurveTo(214, tern ? -173 : -134, 197, tern ? -156 : -118); c.bezierCurveTo(136, -65, 85, 22, 6, 31); c.closePath(); c.fill();
+    c.strokeStyle='rgba(240,242,238,0.36)';c.lineWidth=3;for(let i=0;i<4;i++){c.beginPath();c.moveTo(29,i*7);c.lineTo(190-i*11,(tern?-158:-127)+i*17);c.stroke();}
+    if(skua){c.fillStyle='#f4f1df';c.beginPath();c.moveTo(112,-88);c.lineTo(161,-124);c.lineTo(142,-80);c.lineTo(101,-45);c.closePath();c.fill();}
+    if(snow){c.strokeStyle='#32383b';c.lineWidth=5;c.beginPath();c.moveTo(137,-91);c.lineTo(198,-135);c.stroke();}
+    c.restore();
+  };
+  wing(-1);wing(1);
+  c.fillStyle=dark;c.beginPath();
+  if(tern){c.moveTo(198,279);c.lineTo(161,388);c.lineTo(220,315);c.lineTo(279,388);c.lineTo(242,279);}else{c.moveTo(198,278);c.lineTo(188,350);c.lineTo(220,316);c.lineTo(252,350);c.lineTo(242,278);}c.closePath();c.fill();
+  c.fillStyle=birdB1Gradient(c,220,234,95,light,base,dark);c.beginPath();c.ellipse(220,232,skua?72:tern?46:57,tern?92:102,0,0,TAU);c.fill();
+  c.fillStyle=base;c.beginPath();c.ellipse(164,178,tern?26:32,tern?25:29,-0.13,0,TAU);c.fill();
+  if(tern){c.fillStyle='#171b20';c.beginPath();c.arc(163,171,28,Math.PI,TAU);c.lineTo(190,178);c.closePath();c.fill();}
+  const billHue=tern?'#d94a37':snow?'#202327':skua?'#35302a':'#34302d';
+  c.fillStyle=billHue;c.beginPath();
+  if(snow){c.moveTo(143,171);c.lineTo(98,180);c.quadraticCurveTo(89,183,93,194);c.quadraticCurveTo(101,191,108,187);c.lineTo(143,193);}else if(!tern&&!skua){c.moveTo(143,170);c.lineTo(72,182);c.lineTo(143,194);}else{c.moveTo(141,174);c.lineTo(tern?58:94,182);c.lineTo(142,191);}c.closePath();c.fill();
+  if(skua){c.beginPath();c.moveTo(96,182);c.quadraticCurveTo(84,185,90,198);c.quadraticCurveTo(101,193,108,187);c.closePath();c.fill();}
+  if(skua){
+    c.fillStyle=snow?'#3a3e42':'#8f8878';c.beginPath();c.roundRect(116,168,24,12,5);c.fill();
+    c.fillStyle='#111418';for(const x of [122,133]){c.beginPath();c.ellipse(x,172,3.2,2.5,0,0,TAU);c.fill();}
+  }else if(!tern){
+    /* The nasal saddle grows from the bill's dorsal contour instead of
+       arriving as a rounded rectangle pasted across the face. */
+    const saddleX=snow?103:97;
+    c.fillStyle=billHue;c.beginPath();c.moveTo(saddleX,181);c.quadraticCurveTo(snow?106:104,164,116,162);c.quadraticCurveTo(129,161,141,175);c.lineTo(141,188);c.quadraticCurveTo(121,182,saddleX,188);c.closePath();c.fill();
+    c.fillStyle=snow?'#050709':'#111418';for(const [x,y] of [[113,169],[128,170]] as const){c.beginPath();c.ellipse(x,y,4.1,3.1,-0.08,0,TAU);c.fill();}
+  }
+  birdB2Eye(c,158,170,tern?5:5.6,tern?'#34302c':snow?'#4a4540':'#8b7445');
+}
+
+function birdB2Seabird(c: Ctx): void {
+  ground(c,238,391,118);
+  for(const [x,flip] of [[215,false],[267,true]] as const){birdB2Leg(c,x,278,x+2,333,x-2,369,'#c89848',8);birdB2WebFoot(c,x-2,377,1.12,'#c89848',flip);}
+  c.fillStyle=birdB1Gradient(c,245,230,125,'#eef1f2','#aeb9c0','#4b545c');c.beginPath();c.moveTo(139,194);c.quadraticCurveTo(226,143,348,191);c.quadraticCurveTo(386,232,350,292);c.quadraticCurveTo(269,328,153,284);c.quadraticCurveTo(118,239,139,194);c.closePath();c.fill();
+  birdB2FoldedWing(c,280,230,156,108,'#e3e8e9','#788793','#353d45','#252b31');
+  c.fillStyle='#d9dee0';c.beginPath();c.ellipse(132,169,43,39,-0.1,0,TAU);c.fill();
+  c.fillStyle='#c9a047';c.beginPath();c.moveTo(102,165);c.lineTo(52,177);c.lineTo(104,184);c.quadraticCurveTo(91,193,85,199);c.quadraticCurveTo(105,195,116,180);c.closePath();c.fill();
+  birdB2Eye(c,120,159,5.6,'#b59b47');
+}
+
+function birdB2Godwit(c: Ctx): void {
+  /* Both dark legs stream behind the airborne torso; their roots disappear
+     beneath the belly so they cannot read as loose antennae. */
+  c.strokeStyle='#4b403b';c.lineWidth=7;c.lineCap='round';
+  for(const [x,y,d] of [[276,239,-1],[302,240,1]] as const){c.beginPath();c.moveTo(x,y);c.bezierCurveTo(329,y+10,363,y+24,401,y+43+d*7);c.stroke();c.lineWidth=3;for(const dy of [-8,0,8]){c.beginPath();c.moveTo(400,y+43+d*7);c.lineTo(424,y+43+d*7+dy);c.stroke();}c.lineWidth=7;}
+  c.fillStyle=birdB1Gradient(c,275,142,157,'#dfad7d','#9d5b3d','#4d3028');
+  c.beginPath();c.moveTo(196,205);c.quadraticCurveTo(258,126,372,76);c.quadraticCurveTo(397,72,381,101);c.quadraticCurveTo(335,160,284,231);c.quadraticCurveTo(231,248,196,224);c.closePath();c.fill();
+  c.strokeStyle='rgba(248,205,154,0.50)';c.lineWidth=4;for(let i=0;i<4;i++){c.beginPath();c.moveTo(230+i*8,211);c.lineTo(365-i*8,94+i*13);c.stroke();}
+  c.fillStyle=birdB1Gradient(c,244,220,119,'#e2ad7c','#aa623f','#513128');
+  c.beginPath();c.moveTo(147,190);c.quadraticCurveTo(224,150,333,187);c.quadraticCurveTo(366,217,333,255);c.quadraticCurveTo(247,281,151,242);c.quadraticCurveTo(126,216,147,190);c.closePath();c.fill();
+  c.fillStyle='#684034';c.beginPath();c.moveTo(316,197);c.lineTo(388,222);c.lineTo(323,245);c.closePath();c.fill();
+  c.fillStyle='#b96e49';c.beginPath();c.ellipse(142,185,34,31,-0.08,0,TAU);c.fill();
+  c.fillStyle='#c49378';c.beginPath();c.moveTo(118,178);c.bezierCurveTo(84,174,48,166,13,160);c.bezierCurveTo(47,171,83,190,120,195);c.closePath();c.fill();
+  c.fillStyle='#473833';c.beginPath();c.moveTo(13,160);c.bezierCurveTo(35,166,58,174,79,181);c.lineTo(73,187);c.bezierCurveTo(48,174,29,167,13,166);c.closePath();c.fill();
+  c.strokeStyle='#53362c';c.lineWidth=5;c.lineCap='round';
+  for(const [x,y] of [[169,207],[178,221],[187,235]] as const){c.beginPath();c.moveTo(x,y);c.lineTo(x+13,y+7);c.lineTo(x+27,y);c.stroke();}
+  birdB2Eye(c,153,176,5.5,'#6e5837');
+}
+
+function birdB2Snipe(c: Ctx): void {
+  ground(c,246,398,116);
+  for(const [x,d] of [[246,-1],[292,1]] as const){birdB2Leg(c,x,274,x+d*5,333,x-5,390,'#8f7651',6.5);c.strokeStyle='#8f7651';c.lineWidth=3;for(const dx of [-23,-2,20]){c.beginPath();c.moveTo(x-5,390);c.lineTo(x+dx+d*2,399);c.stroke();}}
+  c.fillStyle=birdB1Gradient(c,271,229,116,'#c4a06a','#765535','#342921');
+  c.beginPath();c.moveTo(153,200);c.quadraticCurveTo(231,153,354,194);c.quadraticCurveTo(386,229,348,276);c.quadraticCurveTo(266,311,158,278);c.quadraticCurveTo(127,239,153,200);c.closePath();c.fill();
+  birdB2FoldedWing(c,288,232,132,84,'#c4a06a','#765535','#342921');
+  c.fillStyle='#4a3528';c.beginPath();c.moveTo(338,203);c.lineTo(402,181);c.lineTo(366,231);c.closePath();c.fill();
+  c.fillStyle='#765535';c.beginPath();c.ellipse(164,187,33,31,-0.06,0,TAU);c.fill();
+  c.fillStyle='#5b4430';c.beginPath();c.moveTo(138,181);c.lineTo(8,187);c.lineTo(138,194);c.closePath();c.fill();
+  c.strokeStyle='#e4ca8c';c.lineCap='round';c.lineWidth=6;
+  c.beginPath();c.moveTo(143,172);c.quadraticCurveTo(161,157,184,165);c.stroke();
+  c.beginPath();c.moveTo(145,181);c.quadraticCurveTo(165,168,185,176);c.stroke();
+  c.lineWidth=7;for(const [y0,y1] of [[194,220],[207,236],[220,252]] as const){c.beginPath();c.moveTo(190,y0);c.quadraticCurveTo(257,y0-19,329,y1);c.stroke();}
+  birdB2Eye(c,179,176,5.8,'#4b3b29');
+}
+
+function birdB2Shorebird(c: Ctx, kind: 'Avocet' | 'Oystercatcher' | 'Sandpiper'): void {
+  const avocet=kind==='Avocet',oyster=kind==='Oystercatcher',sand=kind==='Sandpiper';
+  const legHue=avocet?'#778e9a':oyster?'#cf8a8d':'#9a8052';
+  const hipY=sand?270:248,groundY=sand?354:389,ankleY=sand?318:326;
+  ground(c,238,sand?366:397,117);
+  for(const [x,d] of [[222,-1],[268,1]] as const){birdB2Leg(c,x,hipY,x+(sand?17:8),ankleY,x-4,groundY,legHue,avocet?7.5:6.5);c.strokeStyle=legHue;c.lineWidth=3;c.lineCap='round';for(const dx of [-24,-2,20]){c.beginPath();c.moveTo(x-4,groundY);c.lineTo(x+dx+d*2,groundY+9);c.stroke();}}
+  const light=avocet?'#ffffff':oyster?'#4c4a48':'#baa47d';
+  const base=avocet?'#e4e6e4':oyster?'#202429':'#89714e';
+  const dark=avocet?'#1a2027':oyster?'#111418':'#42372b';
+  c.fillStyle=birdB1Gradient(c,250,231,111,light,base,dark);
+  c.beginPath();c.moveTo(132,193);c.quadraticCurveTo(222,151,336,195);c.quadraticCurveTo(369,232,337,278);c.quadraticCurveTo(260,313,150,279);c.quadraticCurveTo(119,239,132,193);c.closePath();c.fill();
+  birdB2FoldedWing(c,273,232,128,82,light,base,dark);
+  c.fillStyle=base;c.beginPath();c.ellipse(136,180,35,32,-0.08,0,TAU);c.fill();
+  if(avocet){
+    /* A narrow continuous recurved bill: nearly level at the face, then a
+       decisive rising sweep to the fine tip instead of a straight spike. */
+    c.fillStyle='#1b2026';c.beginPath();c.moveTo(141,174);
+    c.bezierCurveTo(111,177,82,164,57,138);c.quadraticCurveTo(38,118,25,92);
+    c.quadraticCurveTo(43,115,64,145);c.bezierCurveTo(90,173,116,190,143,188);c.closePath();c.fill();
+    c.fillStyle='#1b2026';c.beginPath();c.moveTo(171,167);c.quadraticCurveTo(227,155,297,185);c.lineTo(270,214);c.quadraticCurveTo(220,187,177,194);c.closePath();c.fill();
+    birdB2Eye(c,127,170,5.2,'#6e5c3a');
+  }else if(oyster){
+    c.fillStyle='#f3f1e9';c.beginPath();c.moveTo(175,228);c.quadraticCurveTo(257,200,334,227);c.lineTo(326,279);c.quadraticCurveTo(246,307,179,279);c.closePath();c.fill();
+    c.fillStyle='#e75d31';c.beginPath();c.moveTo(108,174);c.lineTo(31,181);c.lineTo(110,191);c.closePath();c.fill();
+    birdB2Eye(c,128,168,6.2,'#f1cf42','#c83a35');
+  }else{
+    c.fillStyle='#68543a';c.beginPath();c.moveTo(109,176);c.lineTo(39,185);c.lineTo(110,191);c.closePath();c.fill();
+    c.fillStyle='#f1eee3';for(let i=0;i<8;i++){c.beginPath();c.arc(188+(i%4)*27,238+((i/4)|0)*22,5,0,TAU);c.fill();}
+    birdB2Eye(c,127,170,5.2,'#655035');
+  }
+}
+
+function birdB2Diver(c: Ctx, kind: 'Grebe' | 'Loon'): void {
+  const loon=kind==='Loon';
+  const y=281;
+  c.fillStyle=birdB1Gradient(c,250,236,145,loon?'#4a4e53':'#a98963',loon?'#20252b':'#65513d',loon?'#0c1014':'#30271f');
+  c.beginPath();c.moveTo(107,221);c.quadraticCurveTo(207,174,374,219);c.quadraticCurveTo(410,250,383,286);c.quadraticCurveTo(291,311,149,289);c.quadraticCurveTo(103,273,107,221);c.closePath();c.fill();
+  if(loon){
+    c.fillStyle='#f0f1ee';for(let row=0;row<4;row++){for(let col=0;col<6;col++){const x=230+col*23+(row%2)*10,y0=205+row*17;c.fillRect(x,y0,11,9);}}
+    c.strokeStyle='#f0f1ee';c.lineWidth=5;for(const yy of [172,184,196]){c.beginPath();c.moveTo(130,yy);c.lineTo(182,yy+7);c.stroke();}
+    c.fillStyle='#171b20';c.beginPath();c.ellipse(121,170,42,38,-0.05,0,TAU);c.fill();
+    c.fillStyle='#606970';c.beginPath();c.moveTo(89,164);c.lineTo(20,173);c.lineTo(88,183);c.closePath();c.fill();
+    c.strokeStyle='rgba(198,207,209,0.72)';c.lineWidth=2.4;c.beginPath();c.moveTo(86,165);c.lineTo(25,173);c.stroke();
+    birdB2Eye(c,110,160,5.6,'#c33c31');
+  }else{
+    c.fillStyle='#6b5541';c.beginPath();c.ellipse(123,185,37,34,-0.08,0,TAU);c.fill();
+    c.fillStyle='#40352d';c.beginPath();c.moveTo(96,179);c.lineTo(42,188);c.lineTo(98,194);c.closePath();c.fill();
+    c.fillStyle='#d0a36d';c.beginPath();c.moveTo(121,151);c.lineTo(103,125);c.lineTo(132,144);c.lineTo(151,123);c.lineTo(145,157);c.closePath();c.fill();
+    birdB2Eye(c,113,176,5.1,'#9e7d3d');
+    /* Rear-set lobed foot is lifted clear of the water and remains visible. */
+    birdB2Leg(c,335,260,355,292,361,315,'#71826c',6.5);birdB2LobedFoot(c,360,319,0.82,'#7f9278');
+  }
+  birdB2Water(c,y,34,408);
+}
+
+/** Named whole-form B2 dispatcher. */
+export function faunaBirdB2(c: Ctx, g: G, p: Pal, kind: BirdB2Kind): void {
+  void g; void p;
+  switch(kind){
+    case 'Duck': case 'Eider Duck': case 'Goose': birdB2Waterfowl(c,kind); return;
+    case 'Flamingo': birdB2Flamingo(c); return;
+    case 'Heron': case 'Egret': birdB2Heron(c,kind); return;
+    case 'Bittern': birdB2Bittern(c); return;
+    case 'Coot': case 'Moorhen': case 'Rail': birdB2Rail(c,kind); return;
+    case 'Pelican': birdB2Pelican(c); return;
+    case 'Cormorant': birdB2Cormorant(c); return;
+    case 'Frigatebird': birdB2Frigate(c); return;
+    case 'Gannet': case 'Booby': birdB2GannetBooby(c,kind); return;
+    case 'Puffin': birdB2Puffin(c); return;
+    case 'Petrel': case 'Snow Petrel': case 'Skua': case 'Tern': birdB2FlyingSeabird(c,kind); return;
+    case 'Seabird': birdB2Seabird(c); return;
+    case 'Godwit': birdB2Godwit(c); return;
+    case 'Snipe': birdB2Snipe(c); return;
+    case 'Avocet': case 'Oystercatcher': case 'Sandpiper': birdB2Shorebird(c,kind); return;
+    case 'Grebe': case 'Loon': birdB2Diver(c,kind); return;
+  }
+}
+
 const birdB1Eagle: FaunaPainter = (c, g, p) => faunaBirdB1(c, g, p, 'Eagle');
 const birdB1Falcon: FaunaPainter = (c, g, p) => faunaBirdB1(c, g, p, 'Falcon');
 const birdB1Hawk: FaunaPainter = (c, g, p) => faunaBirdB1(c, g, p, 'Hawk');
@@ -2879,16 +3384,10 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Falcon': birdB1Falcon,
   'Vulture': birdB1VulturePainter,
   'Albatross': (c, g, p, n) => faunaBird(c, g, p, { hue: '#99a0a8', legs: 0.01, bill: 'hook', wings: 'soaring', size: 1.05, tubeNostrils: true }, n),
-  'Flamingo': (c, g, p, n) => faunaBird(c, g, p, { hue: '#ef92a6', legs: 0.18, bill: 'downcurve', neck: 'swan', size: 1.05, billHue: '#1a1c20', legHue: '#e47b98' }, n),
-  'Heron': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7b8fa3', legs: 0.13, bill: 'long', neck: 'swan', size: 0.98 }, n),
   'Crane': (c, g, p, n) => faunaBird(c, g, p, { hue: '#a3a39b', legs: 0.13, bill: 'long', crest: true, neck: 'long', cap: '#b62d2b', tail: 'shortFan' }, n),
   'Stork': (c, g, p, n) => faunaBird(c, g, p, { hue: '#e6e2d8', legs: 0.15, bill: 'huge', neck: 'long', billHue: '#bd4035', legHue: '#bd4035' }, n),
   'Spoonbill': (c, g, p, n) => faunaBird(c, g, p, { hue: '#e2607f', legs: 0.14, bill: 'spoon', neck: 'long', legHue: '#ba6379' }, n),
-  'Avocet': (c, g, p, n) => faunaBird(c, g, p, { hue: '#e8ecee', legs: 0.11, bill: 'upcurve', neck: 'long', cap: '#1a1c20' }, n),
   'Ibis': (c, g, p, n) => faunaBird(c, g, p, { hue: '#b8352f', legs: 0.10, bill: 'downcurve', neck: 'long', billHue: '#b8352f' }, n),
-  'Snipe': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7a6440', legs: 0.06, bill: 'probe' }, n),
-  'Godwit': (c, g, p, n) => faunaBird(c, g, p, { hue: '#9c6b3f', legs: 0.08, bill: 'probe', neck: 'long' }, n),
-  'Pelican': (c, g, p, n) => faunaBird(c, g, p, { hue: '#a9a89b', legs: 0.03, bill: 'huge' }, n),
   'Toucan': (c, g, p, n) => faunaBird(c, g, p, { hue: '#1b1a1c', legs: 0.02, bill: 'toucan' }, n),
   'Kookaburra': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6e5a45', legs: 0.02, bill: 'huge', headMass: 1.55, neck: 'none', size: 0.92 }, n),
   'Hornbill': (c, g, p, n) => faunaBird(c, g, p, { hue: '#2b2b30', legs: 0.02, bill: 'casque' }, n),
@@ -2899,5 +3398,4 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Kakapo': birdB1KakapoPainter,
   'Secretary Bird': birdB1SecretaryBird,
   'Hoatzin': birdB1HoatzinPainter,
-  'Puffin': (c, g, p, n) => faunaBird(c, g, p, { hue: '#23272b', legs: 0.02, bill: 'huge', billHue: '#e8622c', bib: '#f0f2f4', plump: 1.3, size: 0.72, legHue: '#e8622c' }, n),
 };

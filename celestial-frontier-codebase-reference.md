@@ -79,9 +79,39 @@
 > integrated gates are green with all five source SHAs unchanged: typecheck and
 > artunused pass; speccheck is 417/0/0; overridecheck is 1,014/1,014 catalogue
 > and 1,010/1,010 Earth routes; speciesaudit is 1,250/1,250 with zero failures,
-> duplicates or clipping; targeted/full diff checks pass. Wave 2b is ready to
-> commit/push, but this scoped closure does not change r1's 516/14/720 or close
+> duplicates or clipping; targeted/full diff checks pass. Wave 2b is committed/
+> pushed as `9c148f0`, but this scoped closure does not change r1's 516/14/720 or close
 > full recertification, ZIP, reset PR or release.
+>
+> Wave 2b is committed/pushed as `9c148f0`. Wave 2c is independently **56/56
+> scoped PASS**: Mammal C 13/13, Bird B2 28/28 and Invert II 15/15. Mammal C
+> progressed from 0/13 candidate-ready through 8/13 and 11/13 previews before
+> Red Panda's continuous leg/body join and Tasmanian Devil's integrated chest
+> band closed. Bird B2's first independent judgment returned 25 PASS /3 FAIL
+> (Eider Duck, Rail, Avocet); Invert II's returned 13 PASS /2 FAIL (Krill,
+> Tadpole Shrimp). The final exact-five repair was independently accepted.
+>
+> Final Wave-2c sources are `quadrupedoverrides.ts`
+> `45B1C645952DAC02EFF9B0D5266BA31DCED6D89176F51417B85A7B0F0B37BB59`,
+> `mammaloverrides.ts` `50B3B2FFEBF2C6DF1842B9E545CEBC79C4880F376FDD96CA8E8C612150C47EC2`,
+> `faunaoverrides.ts` `D7917829228DEFFF764D9C5224D55A4C6A708B9FCEDAE4FF7E34149375A907C5`,
+> `birdoverrides.ts` `C7D536C679460E0BE8ADF38CF14DF0FF3EB4F4E35C6827D8D51DF2997FE8BD21`
+> and `invertoverrides.ts` `6A4020DD69E65473E8034C58FA398A3099A1339B94D83A838A10EE5C905451A0`.
+> The shared final-R2 root is
+> `port/v2/apps/game/smoke/wave2c-shared-final-r2-evidence-2026-08-10`; manifest
+> SHA-256 is `BCB5282571903AC2057F6A5B9F7FCA09C6DE8372E4FEFEEAD8D34340930CE330`.
+> It binds 249 rows, 747 surfaces per run, exact A/B, 579 baseline-exact protected
+> surfaces, 168 changed target surfaces, three drift-free 139-file input
+> snapshots and three rejected negative controls.
+>
+> Integrated Wave-2c gates are green with all five hashes unchanged: typecheck,
+> artunused, 23-file Vitest (238 passed /1 skipped), speccheck 418/0/0,
+> overridecheck 1,014/1,014 live +1,010/1,010 Earth, speciesaudit 1,250/1,250
+> with zero failure/duplicate/clipping, hybridcheck with 11/11 injected failures
+> rejected, hybridmatrix/speciesstrip/fullresetlayout/fullresetreview selftests,
+> coveragegap 1,010/1,010 with zero remaining and `git diff --check`. Wave 2c is
+> ready to commit/push, but full recertification, ZIP, reset PR, merge and release
+> remain OPEN.
 >
 > The v2 renderer caps DPR at 2 for touch/coarse pointers and 3 for desktop. An
 > accidental unreferenced 26,400×19,800 PNG at `packages/art/src/5` (2,029,643

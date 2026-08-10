@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (Phase 1+)
 
-**Status: ★★★ RESET R1 FROZEN · WAVE 2A PUSHED · WAVE 2B 51/51 PASS · READY TO COMMIT/PUSH** (2026-08-10).
+**Status: ★★★ RESET R1 FROZEN · WAVE 2B PUSHED · WAVE 2C 56/56 PASS · READY TO COMMIT/PUSH** (2026-08-10).
 **Port milestone record (2026-08-01):** ★★★ PHASES 1–3 COMPLETE (automatable) · PHASE 4 SHELL RUNNING.
 **Phase 4 so far — the slice wears the game's face at the GOLDEN SCREENS' exact geometry**
 (floating-pill topbar: player chip + HP bar + Prime pill + trail · objective chip fed by the
@@ -63,7 +63,8 @@ kingdoms and rejects eleven injected negative controls, including focused-specie
 substitution and Vanilla stage collapse. The prior `FAIL_BYTE_IDENTICAL_STAGES` blocker is closed. Broader
 all-bloodline and full-catalogue certification remains OPEN.
 
-Wave 2b is now **51/51 independently PASS** across three non-overlapping source
+Wave 2b is committed/pushed as `9c148f0` with **51/51 independently PASS**
+across three non-overlapping source
 lanes: Mammal B 25/25, Bird B1 21/21, and Invert I 5/5 (Banana Slug, Chiton,
 Comb Jelly, Portuguese Man-of-War, Isopod). The first independent rounds failed
 closed on six mammals and four birds; bounded Mammal R3 and Bird R2 closed those
@@ -83,8 +84,47 @@ Current/repeat evidence and protected controls are exact. The final integrated
 gates are green with all five source SHAs unchanged: typecheck/artunused pass,
 speccheck is 417/0/0, overridecheck is 1,014/1,014 catalogue and 1,010/1,010
 Earth routes, speciesaudit is 1,250/1,250 with zero failure/duplicate/clipping,
-and targeted/full diff checks pass. The checkpoint is ready to commit/push.
-This scoped closure does not replace the frozen 516/14/720 ledger.
+and targeted/full diff checks pass. The checkpoint is committed/pushed as
+`9c148f0`. This scoped closure does not
+replace the frozen 516/14/720 ledger.
+
+Wave 2c is now **56/56 independently PASS**: Mammal C 13/13, Bird B2 28/28
+and Invert II 15/15. Its fail-closed path was deliberate. Mammal C progressed
+from 0/13 candidate-ready through 8/13 and 11/13 previews before Red Panda's
+leg/body join and Tasmanian Devil's chest-band integration closed. Bird B2's
+first independent shared judgment was 25 PASS /3 FAIL (Eider Duck, Rail,
+Avocet), and Invert II's was 13 PASS /2 FAIL (Krill, Tadpole Shrimp). Final R2
+changed only those five exact identities and the independent rejudges closed
+all five.
+
+The admissible A/B root is
+`apps/game/smoke/wave2c-shared-final-r2-evidence-2026-08-10`; manifest SHA-256
+is `BCB5282571903AC2057F6A5B9F7FCA09C6DE8372E4FEFEEAD8D34340930CE330`.
+It contains 249 rows =56 targets +193 protected controls, 747 PNG surfaces per
+run and 1,494 verified physical PNGs. Current/repeat is exact on 747/747
+surfaces; 579/579 protected surfaces match the shared baseline; all 168 target
+surfaces changed; the final exact-five changed 15 surfaces while the other 244
+rows /732 surfaces stayed exact. Three 139-file input snapshots have zero drift
+and three negative controls were rejected.
+
+Final Wave-2c source SHA-256 values are `quadrupedoverrides.ts`
+`45B1C645952DAC02EFF9B0D5266BA31DCED6D89176F51417B85A7B0F0B37BB59`,
+`mammaloverrides.ts`
+`50B3B2FFEBF2C6DF1842B9E545CEBC79C4880F376FDD96CA8E8C612150C47EC2`,
+`faunaoverrides.ts`
+`D7917829228DEFFF764D9C5224D55A4C6A708B9FCEDAE4FF7E34149375A907C5`,
+`birdoverrides.ts`
+`C7D536C679460E0BE8ADF38CF14DF0FF3EB4F4E35C6827D8D51DF2997FE8BD21`
+and `invertoverrides.ts`
+`6A4020DD69E65473E8034C58FA398A3099A1339B94D83A838A10EE5C905451A0`.
+The integrated gates are green with those hashes unchanged: typecheck and
+artunused pass; Vitest is 238 passed /1 skipped across 23 files; speccheck is
+418/0/0; overridecheck is 1,014/1,014 live and 1,010/1,010 Earth;
+speciesaudit is 1,250/1,250 with zero failure, duplicate pair or clipping;
+hybridcheck passes and rejects all 11 injected failures; hybridmatrix,
+speciesstrip, fullresetlayout and fullresetreview selftests pass; coveragegap is
+1,010/1,010 with zero remaining; `git diff --check` passes. Wave 2c is ready to
+commit/push, not to open or merge the reset PR.
 
 The first live hybrid-matrix attempt exposed a real schema-v2 harness contract
 bug, not transient provenance or an art verdict: it required both Green Algae

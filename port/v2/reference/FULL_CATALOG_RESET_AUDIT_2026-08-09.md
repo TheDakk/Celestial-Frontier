@@ -7,13 +7,13 @@ the audit source, renderer, or acceptance ruler changes._
 The clean full-reset baseline is commit
 `bc26e800c7adca72805a832e753ace1a8f9837ba` on `openai/windows`. Wave 1 is
 `d005090f`; accepted Wave 2a is committed/pushed as
-`00e499cb130e906b5475d2d466c07e2d7a6d1282`; the current worktree is an
-uncommitted bounded Wave-2b batch whose 51 assigned rows are independently PASS.
-The final integrated gates are green with all five source SHAs unchanged, so the
-checkpoint is ready to commit/push. PR #7 is
-historical/already merged; no reset PR exists.
+`00e499cb130e906b5475d2d466c07e2d7a6d1282`; Wave 2b is committed/pushed as
+`9c148f071bb8e4ad8d3e92358c6408fc234f22bd`. The current worktree is an
+uncommitted bounded Wave-2c batch whose 56 assigned rows are independently PASS.
+The final integrated gates are green with all five source SHAs unchanged, so
+Wave 2c is ready to commit/push. PR #7 is historical/already merged; no reset PR exists.
 
-## Status: r1 frozen; Wave 2a pushed; Wave 2b 51/51 PASS and ready to commit/push
+## Status: r1 frozen; Wave 2b pushed; Wave 2c 56/56 PASS and ready to commit/push
 
 Nick stopped the GP7.1 remediation and explicitly reopened the entire catalogue
 after Fruit Bat exposed a false acceptance: the current animal does not read as
@@ -188,8 +188,84 @@ Wave-2b art-source SHAs unchanged: typecheck and artunused pass; speccheck
 reports 417 declared / 0 unread / 0 unobservable; overridecheck reports
 1,014/1,014 catalogue routes and 1,010/1,010 Earth routes; speciesaudit reports
 1,250/1,250 portraits with zero failure, duplicate or clipping; targeted/full
-diff checks pass. The bounded checkpoint is ready to commit/push, not to open or
-merge the reset PR.
+diff checks pass. The bounded checkpoint is committed/pushed as `9c148f0`; it
+did not open or merge the reset PR.
+
+## Wave 2c: exact 56-target scope independently PASS
+
+Wave 2c began from pushed `9c148f0` with three non-overlapping source lanes and
+closed exactly **56/56 scoped PASS** under author-separated 440/300/132 A/B
+review:
+
+| bounded lane | targets | fail-closed path | final result |
+|---|---:|---|---|
+| Mammal C | 13 | preview 0/13 → R2 8/13 → R3/R4 11/13 → R5 close | 13 PASS |
+| Bird B2 | 28 | first independent 25 PASS /3 FAIL → exact-three R2 | 28 PASS |
+| Invert II | 15 | author preview 10/15 → candidate 15/15 → first independent 13 PASS /2 FAIL → exact-two R2 | 15 PASS |
+| **total** | **56** |  | **56 PASS** |
+
+Mammal C is Red Fox, Wolf, Dingo, Dog, Fox, Pampas Fox, Kinkajou, Raccoon,
+Red Panda, Possum, Quoll, Tasmanian Devil and Wombat. R2 retained Wolf, Pampas
+Fox, Red Panda, Possum and Tasmanian Devil as FAIL. R3 closed three; R3 and R4
+correctly kept Red Panda's leg/body fill-order join and Tasmanian Devil's
+integrated body-clipped chest band open. R5 closed both, and the final independent
+shared judgment returned 13/13 PASS. Frozen sources are
+`quadrupedoverrides.ts`
+`45B1C645952DAC02EFF9B0D5266BA31DCED6D89176F51417B85A7B0F0B37BB59`
+and `mammaloverrides.ts`
+`50B3B2FFEBF2C6DF1842B9E545CEBC79C4880F376FDD96CA8E8C612150C47EC2`.
+
+Bird B2's first independent shared judgment returned 25 PASS /3 FAIL. Eider
+Duck needed to sit low in water rather than stand above it; Rail needed its
+cocked tail continuously rooted in the rump and its narrow probe visibly
+downcurved; Avocet needed a continuous recurved needle bill. The exact-three
+repair changed only those rows, and the final admissible A/B returned 3/3 PASS
+while the other 25 targets plus 72 controls stayed exact on 291/291 surfaces.
+Frozen sources are `faunaoverrides.ts`
+`D7917829228DEFFF764D9C5224D55A4C6A708B9FCEDAE4FF7E34149375A907C5`
+and `birdoverrides.ts`
+`C7D536C679460E0BE8ADF38CF14DF0FF3EB4F4E35C6827D8D51DF2997FE8BD21`.
+
+Invert II is Freshwater Crab, Mud Crab, Vent Crab, Hermit Crab, Brine Shrimp,
+Fairy Shrimp, Freshwater Shrimp, Tadpole Shrimp, Vent Shrimp, Amphipod, Copepod,
+Krill, Lobster, Prawn and Shrimp. Its first author preview failed closed on Brine
+Shrimp, Freshwater Shrimp, Tadpole Shrimp, Vent Shrimp and Amphipod; candidate
+R2 closed those five while the retained ten targets and 27 controls stayed
+exact. The first independent shared judgment still rejected Krill and Tadpole
+Shrimp. Their exact-two repair made the conspicuous stalked compound eyes and
+dense organic leaf-limb field survive 132px; final independent judgment returned
+2/2 PASS. Frozen `invertoverrides.ts` SHA-256 is
+`6A4020DD69E65473E8034C58FA398A3099A1339B94D83A838A10EE5C905451A0`.
+
+The final admissible root is
+`apps/game/smoke/wave2c-shared-final-r2-evidence-2026-08-10`; manifest SHA-256
+is `BCB5282571903AC2057F6A5B9F7FCA09C6DE8372E4FEFEEAD8D34340930CE330`.
+Its 249 rows comprise 56 targets and 193 protected controls. Both runs contain
+747 surfaces; all 1,494 physical PNG hashes/dimensions and all 747 A/B surfaces
+are exact. All 579 protected surfaces match the shared baseline and all 168
+target surfaces changed. Final R2 changed only Eider Duck, Rail, Avocet, Krill
+and Tadpole Shrimp (15 surfaces); the other 244 rows /732 surfaces stayed exact.
+Three 139-file input snapshots share aggregate SHA-256
+`F153BD18B9155A4197C823C7B218B3533FEF426AEB6C7772519DC926A8A132A1`
+with zero drift, and all three negative controls were rejected.
+
+The integrated gate set is green with all five source SHAs unchanged: typecheck
+and artunused pass; Vitest is 238 passed /1 skipped across 23 files; speccheck
+reports 418 declared /0 unread /0 inert; overridecheck reports 1,014/1,014 live
+and 1,010/1,010 Earth; speciesaudit reports 1,250/1,250 with zero failure,
+duplicate pair or clipping; hybridcheck passes and rejects 11 injected failures;
+hybridmatrix, speciesstrip, fullresetlayout and fullresetreview selftests pass;
+coveragegap reports 1,010/1,010 with zero remaining; `git diff --check` passes.
+This makes the bounded Wave-2c checkpoint ready to commit/push, not to open or
+merge the reset PR. The frozen 516/14/720 ledger remains unchanged.
+
+The final code-quality reread found no P0/P1 source blocker. Deferred P2 cleanup
+must not disturb this frozen evidence: make Mammal C's implicit `marsupial-c1`
+dispatcher arm explicit (`quadrupedoverrides.ts:1864-1867`); remove Skua's
+unreachable Snow-Petrel colour alternative (`faunaoverrides.ts:3171-3172`); and
+simplify legacy exact-Invert-II options shadowed by named early returns
+(`invertoverrides.ts:1005-1006`, `1632-1633`, `2937-2957`). Each requires a
+later bounded pixel-neutral proof and fresh target/control hashes.
 
 ## Trigger and first closed family: bats
 
@@ -465,7 +541,7 @@ into `develop`. No `main` merge, release or deployment is authorized here.
 
 ## Immediate order
 
-1. Commit/push the reviewed Wave-2b scope on `openai/windows`; do not include
+1. Commit/push the reviewed Wave-2c scope on `openai/windows`; do not include
    unrelated files or open the reset PR.
 2. Continue remaining r1 non-PASS rows in bounded owner/family waves. Preserve
    author separation and never edit a painter while its judge holds source frozen.
