@@ -2,9 +2,153 @@
    Split from floraoverrides2.ts (which holds the painter) purely for size.
    Every key was read out of the catalog, never recalled — and the shadow
    check guarantees none of these re-covers a wave-2 species. */
-import { plantBody, type PlantSpec, type PainterF } from './floraoverrides2.js';
+import { plantBody, type PlantSpec, type PainterF, type RecheckFocus } from './floraoverrides2.js';
 
-const T = (spec: PlantSpec): PainterF => (c, g, p, n) => plantBody(c, g, p, spec, n);
+/* Strict-recheck routing is intentionally an explicit NAME -> focus map.  A
+   broad plant painter has no licence to reinterpret every plant in its family;
+   these are only the fresh 2026-08-09 non-PASS rows and each gets a cue its
+   packet calls out.  Keeping the list here makes the scope auditable and keeps
+   every accepted neighbour byte-identical. */
+const RECHECK_FOCUS = new Map<string, RecheckFocus>();
+const recheck = (focus: RecheckFocus, names: readonly string[]): void => { for (const name of names) RECHECK_FOCUS.set(name, focus); };
+
+recheck('wildflower', [
+  'Black-Eyed Susan', 'Bromeliad', 'Buttercup', 'Clover', 'Daisy', 'Dandelion',
+  'Foxglove', 'Goldenrod', 'Poppy', 'Sunflower', 'Violet', 'Arnica', 'Bitterroot',
+  'Chicory', 'Cliff Rose', 'Echinacea', 'Edelweiss', 'Gentian', 'Rabbitbrush', 'Steppe Tulip',
+]);
+recheck('succulent', ['Agave', 'Aloe', 'Air Plant', 'Barrel Cactus Fruit', 'Prickly Pear', 'Yucca']);
+recheck('wetland', [
+  'Arrowhead', 'Brooklime', 'Cattail', 'Duckweed', 'Papyrus', 'Pickerelweed',
+  'Seagrass', 'Sweet Flag', 'Watercress', 'Water Spinach', 'Wild Rice',
+]);
+recheck('crop', [
+  'Amaranth', 'Arrowroot', 'Barley', 'Buckwheat', 'Cassava', 'Meadow Grass', 'Millet',
+  'Oats', 'Potato', 'Quinoa', 'Rice', 'Rye', 'Sorghum', 'Sweet Potato', 'Taro', 'Wheat',
+]);
+recheck('tree', [
+  'Acacia', 'Acai', 'Apple', 'Arctic Willow', 'Bay Laurel', 'Cashew', 'Cedar', 'Crabapple',
+  'Creosote Bush', 'Date Plum', 'Eucalyptus', 'Hazelnut', 'Mango', 'Pear', 'Pine Nuts',
+  'Pinyon Pine', 'Rambutan', 'Redwood', 'Spruce Tips', 'Yew',
+]);
+recheck('palm', [
+  'Banana', 'Coconut', 'Date', 'Date Palm', 'Mountain Papaya', 'Nipa Palm Fruit',
+  'Pandanus Fruit', 'Papaya', 'Plantain',
+]);
+recheck('shrub', [
+  'Bog Myrtle', 'Bog Rosemary', 'Calotropis', 'Cloudberry', 'Coastal Sage', 'Desert Sage', 'Heather', 'Lavender', 'Oleander',
+  'Rosemary', 'Sage', 'Sagebrush', 'Samphire', 'Sea Fennel', 'Sea Purslane', 'Thyme',
+  'Wormwood',
+]);
+recheck('herb', [
+  'African Ginger', 'Alfalfa', 'Alpine Mint', 'Alpine Sorrel', 'Angelica', 'Anise',
+  'Arctic Sorrel', 'Black Pepper', 'Cardamom', 'Desert Mint', 'Fenugreek', 'Fennel', 'Flax', 'Ginger', 'Hemlock',
+  'Ginseng', 'Holy Basil', 'Licorice Root', 'Marsh Rosemary', 'Milkweed', 'Mountain Mint',
+  'Mountain Sorrel', 'Mugwort', 'Mustard', 'Nettle', 'Oregano', 'Pampas Herb', 'Rainforest Nettle',
+  'Riverbank Nettle', 'Roselle', 'Scurvy Grass', 'Sea Kale', 'Sea Lavender', 'Sea Rocket',
+  'Sesame', 'Sorrel', 'Tamarisk', 'Tea Tree', 'Turmeric', 'Valerian', 'Water Hemlock',
+  'Water Mint', 'Wild Sesame', 'Wood Sorrel', 'Yarrow',
+]);
+recheck('root', [
+  'Beet', 'Garlic', 'Onion', 'Peanut', 'Prairie Turnip', 'Sea Beet', 'Turmeric', 'Wild Garlic',
+  'Wild Ginger', 'Wild Rhubarb',
+]);
+recheck('vine', ['Beach Morning Glory', 'Canopy Vine', "Devil's Claw", 'Orchid Pods', 'Vanilla Orchid']);
+recheck('algae', ['Bladderwrack', 'Bull Kelp', 'Coralline Algae', 'Dulse', 'Red Algae', 'Sea Grapes Algae', 'Wakame']);
+recheck('fern', ['Sword Fern', 'Tree Fern Shoots']);
+recheck('berry', ['Lingonberry', 'Mountain Cranberry']);
+
+/* GP7.1's fresh strict ledger is deliberately a NAME list, not a family-wide
+   switch.  These are the current non-PASS entries in the bounded flora/harvest
+   repair queue.  T() resolves each one through its own roster spec below; every
+   name outside this set remains byte-for-byte on the established path. */
+const STRICT_CLUSTER_NAMES = new Set<string>([
+  /* palms / tree-habit harvest and fruit */
+  'Acai', 'Mountain Papaya', 'Nipa Palm Fruit', 'Pandanus Fruit', 'Papaya',
+  'Acorn', 'Birch Sap', 'Breadnut', 'Cacao', 'Camphor Tree', 'Carob', 'Crabapple',
+  'Date Plum', 'Mangrove Leaves', 'Maple Sap', 'Marula', 'Neem', 'Pine Nuts',
+  'Pinyon Pine', 'Spruce Tips', 'Star Anise', 'Tree Tomato', 'Wild Cherry',
+  'Wild Fig', 'Wild Mango', 'Apple', 'Apricot', 'Avocado', 'Brazil Nut', 'Cherry',
+  'Chestnut', 'Durian', 'Fig', 'Guava', 'Jackfruit', 'Jujube', 'Lemon', 'Lime',
+  'Lychee', 'Mulberry', 'Olive', 'Orange', 'Peach', 'Pear', 'Persimmon', 'Plum',
+  'Pomegranate', 'Rambutan', 'Soursop', 'Walnut', 'Cinnamon', 'Clove', 'Nutmeg',
+  'Mesquite',
+  /* herbs, shrubs, roots, crops, grass and canes */
+  'Alfalfa', 'Alpine Mint', 'Anise', 'Belladonna', 'Chicory', 'Desert Mint',
+  "Devil's Claw", 'Fenugreek', 'Flax', 'Licorice Root', 'Milkweed', 'Mountain Mint',
+  'Mountain Thyme', 'Mugwort', 'Nettle', 'Rainforest Nettle', 'Riverbank Nettle',
+  'Sea Lavender', 'Sea Rocket', 'Sesame', 'Water Hemlock', 'Water Mint', 'Wild Mint',
+  'Wild Sesame', 'Wormwood', 'Chamomile', 'Echinacea', 'Ginseng', 'Mint', 'Mustard',
+  'Oregano', 'Thyme', 'Valerian', 'Buckwheat', 'Potato', 'Quinoa',
+  'Arctic Willow', 'Bay Laurel', 'Beach Plum', 'Bog Myrtle', 'Bog Rosemary',
+  'Calotropis', 'Castor Bean', 'Chokecherry', 'Cliff Rose', 'Cloudberry', 'Coastal Sage',
+  'Coffee', 'Creosote Bush', 'Desert Sage', 'Huckleberry', 'Labrador Tea', 'Marsh Rosemary',
+  'Mormon Tea', 'Pigeon Pea', 'Roselle', 'Sea Buckthorn', 'Serviceberry', 'Tamarisk',
+  'Tea', 'Tea Tree', 'Wild Blueberry', 'Wild Guava', 'Yerba Mate', 'Hazelnut', 'Lavender',
+  'Rosemary', 'Sage', 'Cassava', 'Blackberry', 'Blueberry', 'Cranberry', 'Currant',
+  'Elderberry', 'Gooseberry', 'Heather', 'Oleander', 'Raspberry', 'Sagebrush', 'Saltbush',
+  'Chili Pepper', 'Bamboo Shoots', 'Sweet Flag', 'Edelweiss', 'Scurvy Grass', 'Sea Beet',
+  'Sea Fennel', 'Sea Kale', 'Wild Garlic', 'Wild Ginger', 'Wild Rhubarb', 'Cardamom',
+  'Turmeric', 'Arrowroot', 'Taro', 'Pampas Herb', 'Rush Shoots', 'Saltgrass', 'Tussock Grass',
+  'Samphire', 'Sea Purslane',
+  /* vines, aquatic plants and ferns */
+  'Beach Morning Glory', 'Beach Pea', 'Canopy Vine', 'Desert Melon', 'Orchid Pods',
+  'Vanilla Orchid', 'Black Pepper', 'Sweet Potato', 'Ivy', 'Passionflower', 'Rattan',
+  'Cucumber', 'Bladderwrack', 'Coralline Algae', 'Dulse', 'Giant Kelp', 'Lotus Root',
+  'Wakame', 'Cave Fern', 'Licorice Fern', 'Tree Fern Shoots', 'Maidenhair Fern', 'Sword Fern',
+  /* these are intentionally listed for ledger completeness but remain owned by
+     older/canonical painters outside this bounded source task. */
+  'Dragon Fruit', 'Joshua Tree', 'Lichen', 'Licorice', 'Rhubarb', 'Salmonberry', 'Sea Lettuce',
+]);
+
+/* Fresh packet 138-196 tree-focus failures.  This is intentionally separate
+   from STRICT_CLUSTER_NAMES: these 48 rows need a replacement whole-form tree,
+   while accepted strict controls must remain on their current byte-identical
+   painter. */
+const RESET_TREE_NAMES = new Set<string>([
+  'Cedar', 'Redwood', 'Yew',
+  'Apple', 'Apricot', 'Avocado', 'Brazil Nut', 'Cashew', 'Cherry', 'Chestnut',
+  'Durian', 'Fig', 'Guava', 'Hazelnut', 'Jackfruit', 'Jujube', 'Lemon', 'Lime',
+  'Lychee', 'Mango', 'Mulberry', 'Olive', 'Orange', 'Peach', 'Pear', 'Persimmon',
+  'Plum', 'Pomegranate', 'Soursop', 'Walnut',
+  'Mesquite', 'Cinnamon', 'Clove', 'Nutmeg', 'Eucalyptus', 'Acorn', 'Bay Laurel',
+  'Breadnut', 'Camphor Tree', 'Carob', 'Date Plum', 'Maple Sap', 'Marula', 'Neem',
+  'Pine Nuts', 'Pinyon Pine', 'Wild Mango', 'Acacia',
+]);
+
+const STRICT_HABIT_FOCUS: Record<PlantSpec['habit'], RecheckFocus> = {
+  tree: 'tree', shrub: 'shrub', herb: 'herb', grass: 'crop', vine: 'vine',
+  succulent: 'shrub', fern: 'fern', aquatic: 'algae', rosette: 'root', palm: 'palm', cane: 'crop',
+};
+
+/* Explicit exceptions are still named: they select a structure that differs
+   from their broad roster habit, never a blanket painter replacement. */
+recheck('palm', ['Acai']);
+/* Tamarisk was historically routed through the herb focus despite its shrub
+   roster habit, bypassing its named feathery salt-bush painter. */
+/* These three had legacy broad-focus entries above their actual roster habits.
+   Keep the correction named: each has a dedicated whole-form painter below and
+   none of its neighbouring controls should be reinterpreted with it. */
+recheck('shrub', ['Arctic Willow', 'Tamarisk', 'Creosote Bush']);
+recheck('wetland', ['Lotus Root']);
+recheck('vine', ['Black Pepper']);
+recheck('algae', ['Giant Kelp']);
+recheck('fern', ['Cave Fern', 'Licorice Fern', 'Maidenhair Fern']);
+recheck('crop', ['Bamboo Shoots', 'Pampas Herb', 'Rush Shoots', 'Saltgrass', 'Tussock Grass']);
+recheck('root', ['Arrowroot', 'Taro']);
+
+const strictFocusFor = (name: string, spec: PlantSpec): RecheckFocus | undefined =>
+  RECHECK_FOCUS.get(name) ?? (STRICT_CLUSTER_NAMES.has(name) ? STRICT_HABIT_FOCUS[spec.habit] : undefined);
+
+const T = (spec: PlantSpec): PainterF => (c, g, p, n) => {
+  const focus = strictFocusFor(n, spec);
+  plantBody(c, g, p, focus ? {
+    ...spec,
+    recheck: focus,
+    strictSignature: STRICT_CLUSTER_NAMES.has(n) && !RESET_TREE_NAMES.has(n),
+    resetTreeSignature: RESET_TREE_NAMES.has(n),
+  } : spec, n);
+};
 
 export const FLORA2_SPEC: Record<string, PainterF> = {
   /* ── FRUIT TREES: a canopy carrying its fruit ── */
@@ -75,8 +219,8 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Oak': T({ hue: '#526a31', habit: 'tree', leaf: 'palmate', fruit: 'nut', fhue: '#8a6a3a' }),
   'Acorn': T({ hue: '#577127', habit: 'tree', leaf: 'palmate', fruit: 'nut', fhue: '#8a6a3a' }),
   'Hemlock': T({ hue: '#3a4935', habit: 'tree', leaf: 'needle', fruit: 'cone', tall: true }),
-  'Pinyon Pine': T({ hue: '#5e7f5f', habit: 'tree', leaf: 'needle', fruit: 'cone' }),
-  'Pine Nuts': T({ hue: '#4f7059', habit: 'tree', leaf: 'needle', fruit: 'cone' }),
+  'Pinyon Pine': T({ hue: '#5e7f5f', habit: 'tree', leaf: 'needle', fruit: 'cone', pinyonPine: true }),
+  'Pine Nuts': T({ hue: '#4f7059', habit: 'tree', leaf: 'needle', fruit: 'cone', pineSeedHarvest: true }),
   'Spruce Tips': T({ hue: '#729a8d', habit: 'tree', leaf: 'needle', fruit: 'cone', tall: true }),
   'Juniper': T({ hue: '#405d4c', habit: 'shrub', leaf: 'scale', fruit: 'berry', fhue: '#5a6a8a' }),
   'Juniper Berries': T({ hue: '#5d7d74', habit: 'shrub', leaf: 'scale', fruit: 'berry', fhue: '#4a5a7a' }),

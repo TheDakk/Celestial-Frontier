@@ -117,10 +117,10 @@ export function fungiJelly(c: Ctx, g: G, p: Pal): void {
   const r = seeded(g, 0x1E11);
   /* the branch it grips */
   c.strokeStyle = '#33241a'; c.lineWidth = 26; c.lineCap = 'round';
-  c.beginPath(); c.moveTo(S * 0.06, S * 0.30); c.quadraticCurveTo(S * 0.5, S * 0.44, S * 0.94, S * 0.34); c.stroke();
-  c.strokeStyle = 'rgba(0,0,0,0.35)'; c.lineWidth = 10;
   c.beginPath(); c.moveTo(S * 0.06, S * 0.36); c.quadraticCurveTo(S * 0.5, S * 0.50, S * 0.94, S * 0.40); c.stroke();
-  const cx = S * 0.5, cy = S * 0.56;
+  c.strokeStyle = 'rgba(0,0,0,0.35)'; c.lineWidth = 10;
+  c.beginPath(); c.moveTo(S * 0.06, S * 0.42); c.quadraticCurveTo(S * 0.5, S * 0.56, S * 0.94, S * 0.46); c.stroke();
+  const cx = S * 0.5, cy = S * 0.50;
   /* the mass is built from OVERLAPPING soft lobes, not one blob — a jelly
      fungus is a folded brain, and folds are what make it read */
   const lobes = 7 + (r() * 4 | 0);
@@ -129,11 +129,17 @@ export function fungiJelly(c: Ctx, g: G, p: Pal): void {
     const a = r() * TAU, d = Math.pow(r(), 0.55) * S * 0.15;
     pts.push([cx + Math.cos(a) * d, cy + Math.sin(a) * d * 0.72, S * (0.055 + r() * 0.055)]);
   }
+  /* A visible attachment keeps the mass from reading as a cloud floating below
+     the branch: tremelloid folds grow FROM a wet, compressed grip. */
+  const tether = c.createLinearGradient(cx, S * 0.48, cx, cy + S * 0.02);
+  tether.addColorStop(0, p.dark); tether.addColorStop(0.58, p.base); tether.addColorStop(1, p.lit);
+  c.strokeStyle = tether; c.lineWidth = 18; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(cx, S * 0.48); c.quadraticCurveTo(cx - S * 0.015, S * 0.54, cx, cy + S * 0.02); c.stroke();
   for (const [x, y, rad] of pts) {
     const gg = c.createRadialGradient(x - rad * 0.3, y - rad * 0.4, 2, x, y, rad * 1.1);
-    gg.addColorStop(0, `rgba(${Math.min(255, p.cr + 70)},${Math.min(255, p.cg + 60)},${Math.min(255, p.cb + 50)},0.80)`);
-    gg.addColorStop(0.6, `rgba(${p.cr},${p.cg},${p.cb},0.68)`);
-    gg.addColorStop(1, `rgba(${p.cr * 0.5 | 0},${p.cg * 0.5 | 0},${p.cb * 0.5 | 0},0.55)`);
+    gg.addColorStop(0, `rgba(${Math.min(255, p.cr + 70)},${Math.min(255, p.cg + 60)},${Math.min(255, p.cb + 50)},0.88)`);
+    gg.addColorStop(0.6, `rgba(${p.cr},${p.cg},${p.cb},0.78)`);
+    gg.addColorStop(1, `rgba(${p.cr * 0.5 | 0},${p.cg * 0.5 | 0},${p.cb * 0.5 | 0},0.68)`);
     c.fillStyle = gg; c.beginPath(); c.ellipse(x, y, rad, rad * 0.86, r() * 0.6, 0, TAU); c.fill();
   }
   /* the wet highlight — jelly fungi are GLOSSY, and gloss is half the read */
@@ -142,7 +148,7 @@ export function fungiJelly(c: Ctx, g: G, p: Pal): void {
     c.beginPath(); c.ellipse(x - rad * 0.3, y - rad * 0.42, rad * 0.34, rad * 0.20, -0.5, 0, TAU); c.fill();
   }
   /* the seam where lobe meets lobe */
-  c.strokeStyle = `rgba(${p.cr * 0.4 | 0},${p.cg * 0.4 | 0},${p.cb * 0.4 | 0},0.40)`; c.lineWidth = 1.6;
+  c.strokeStyle = `rgba(${p.cr * 0.34 | 0},${p.cg * 0.34 | 0},${p.cb * 0.34 | 0},0.62)`; c.lineWidth = 2.2;
   for (const [x, y, rad] of pts) { c.beginPath(); c.ellipse(x, y, rad * 0.92, rad * 0.78, 0, 0.4, 2.6); c.stroke(); }
 }
 
@@ -155,17 +161,17 @@ export function fungiTruffle(c: Ctx, g: G, p: Pal): void {
      layer the soil ends in two hard vertical walls at the frame — the audit's
      "hard-edged brown rectangle with sharp vertical sides". A ground plane has
      no edges; it fades out in every direction it is not anchored in. */
-  const sg = c.createRadialGradient(S * 0.5, S * 0.78, S * 0.06, S * 0.5, S * 0.78, S * 0.46);
+  const sg = c.createRadialGradient(S * 0.5, S * 0.78, S * 0.06, S * 0.5, S * 0.78, S * 0.36);
   sg.addColorStop(0, 'rgba(26,19,13,0.98)'); sg.addColorStop(0.55, 'rgba(42,31,22,0.90)');
   sg.addColorStop(0.82, 'rgba(48,36,26,0.42)'); sg.addColorStop(1, 'rgba(48,36,26,0)');
   c.fillStyle = sg;
-  c.beginPath(); c.ellipse(S * 0.5, S * 0.78, S * 0.46, S * 0.30, 0, 0, TAU); c.fill();
+  c.beginPath(); c.ellipse(S * 0.5, S * 0.78, S * 0.36, S * 0.22, 0, 0, TAU); c.fill();
   /* ★ and the two balls were at FIXED positions and FIXED radii — part of the
      seven constant painters D-ART-143 records. Vary them as ratios. */
   const b0 = 0.36 + r() * 0.09, b1 = 0.62 + r() * 0.09;
   const balls: Array<[number, number, number]> = [
-    [S * b0, S * (0.64 + r() * 0.05), S * (0.128 + r() * 0.034)],
-    [S * b1, S * (0.70 + r() * 0.05), S * (0.092 + r() * 0.030)]];
+    [S * b0, S * (0.63 + r() * 0.04), S * (0.148 + r() * 0.036)],
+    [S * b1, S * (0.69 + r() * 0.04), S * (0.112 + r() * 0.032)]];
   for (const [bx, by, rad] of balls) {
     c.fillStyle = lump(c, p, bx, by, rad);
     /* a truffle is LUMPY, never a sphere — walk the rim with noise */
@@ -177,6 +183,7 @@ export function fungiTruffle(c: Ctx, g: G, p: Pal): void {
       if (i === 0) c.moveTo(x, y); else c.lineTo(x, y);
     }
     c.closePath(); c.fill();
+    c.strokeStyle = shade(p, 0.38); c.lineWidth = 2.1; c.stroke();
     /* THE WARTS — a truffle's rind is a pavement of pyramidal scales */
     for (let i = 0; i < 90; i++) {
       const a = r() * TAU, d = Math.sqrt(r()) * rad * 0.94;
@@ -194,7 +201,7 @@ export function fungiTruffle(c: Ctx, g: G, p: Pal): void {
   /* THE CUT FACE on the small one — the marbled gleba is the identity */
   const [gx, gy, gr] = balls[1]!;
   c.save();
-  c.beginPath(); c.ellipse(gx + gr * 0.28, gy - gr * 0.1, gr * 0.72, gr * 0.86, 0.4, 0, TAU); c.clip();
+  c.beginPath(); c.ellipse(gx + gr * 0.28, gy - gr * 0.1, gr * 0.82, gr * 0.94, 0.4, 0, TAU); c.clip();
   /* ⚠ THIS WAS INVERTED. It filled the face BRIGHT (`shade(p, 1.55)`) and then
      ruled sixteen evenly-spaced dark beziers across it — "a striped golf ball".
      Real gleba is the other way round and is not ruled: DARK flesh laced with
@@ -223,7 +230,7 @@ export function fungiTruffle(c: Ctx, g: G, p: Pal): void {
   }
   c.restore();
   c.strokeStyle = 'rgba(240,240,230,0.35)'; c.lineWidth = 2;
-  c.beginPath(); c.ellipse(gx + gr * 0.28, gy - gr * 0.1, gr * 0.72, gr * 0.86, 0.4, 0, TAU); c.stroke();
+  c.beginPath(); c.ellipse(gx + gr * 0.28, gy - gr * 0.1, gr * 0.82, gr * 0.94, 0.4, 0, TAU); c.stroke();
 }
 
 /** CUP (pezizoid): a stalkless bowl, its inner face turned to the viewer. */
@@ -265,6 +272,60 @@ export function fungiCup(c: Ctx, g: G, p: Pal): void {
       const x = cx + Math.cos(a) * rad * 0.95, y = cy + rad * 0.28 + Math.sin(a) * rad * 0.70;
       c.beginPath(); c.moveTo(x, y); c.lineTo(x + Math.cos(a) * 9, y + Math.sin(a) * 9); c.stroke();
     }
+  }
+}
+
+/** A cup cluster with a visible mycelial holdfast.  This is a distinct
+ *  procedural anatomy from the ordinary stalkless cup: the low body is kept
+ *  clear of the field by a lit outer wall, short supports, and a companion
+ *  fruiting cup. */
+export function fungiCupAnchored(c: Ctx, g: G, p: Pal): void {
+  const r = seeded(g, 0xC0A7);
+  const base = S * 0.79;
+  ground(c, S * 0.50, S * 0.84, S * 0.25);
+  /* A decomposing twig gives the cups a real substrate without turning their
+     stalkless bowls into generic cap-and-stem mushrooms. */
+  c.strokeStyle = '#332419'; c.lineWidth = S * 0.052; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(S * 0.19, base); c.quadraticCurveTo(S * 0.49, base - S * 0.052, S * 0.80, base + S * 0.010); c.stroke();
+  c.strokeStyle = 'rgba(154,111,69,0.40)'; c.lineWidth = S * 0.010;
+  c.beginPath(); c.moveTo(S * 0.22, base - S * 0.010); c.quadraticCurveTo(S * 0.49, base - S * 0.052, S * 0.77, base); c.stroke();
+
+  const drawCup = (cx: number, cy: number, rad: number, lean: number): void => {
+    /* A short root-like attachment plus a pale lower wall fixes the former
+       floating dark bowl read while retaining the pezizoid opening. */
+    c.strokeStyle = shade(p, 0.55); c.lineWidth = rad * 0.52; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx, cy + rad * 0.42); c.quadraticCurveTo(cx + lean * rad * 0.22, cy + rad * 0.76, cx + lean * rad * 0.36, base - S * 0.012); c.stroke();
+    c.strokeStyle = shade(p, 1.16); c.lineWidth = Math.max(2, rad * 0.10);
+    c.beginPath(); c.moveTo(cx - rad * 0.08, cy + rad * 0.42); c.quadraticCurveTo(cx + lean * rad * 0.12, cy + rad * 0.73, cx + lean * rad * 0.28, base - S * 0.015); c.stroke();
+
+    const outer = c.createLinearGradient(cx - rad, cy, cx + rad, cy + rad * 0.9);
+    outer.addColorStop(0, shade(p, 0.44)); outer.addColorStop(0.48, p.base); outer.addColorStop(1, p.lit);
+    c.fillStyle = outer;
+    c.beginPath();
+    c.moveTo(cx - rad * 0.93, cy + rad * 0.03);
+    c.quadraticCurveTo(cx - rad * 0.72, cy + rad * 1.02, cx, cy + rad * 1.10);
+    c.quadraticCurveTo(cx + rad * 0.72, cy + rad * 1.02, cx + rad * 0.93, cy + rad * 0.03);
+    c.closePath(); c.fill();
+    c.strokeStyle = shade(p, 0.34); c.lineWidth = 2.4; c.stroke();
+
+    const bowl = c.createRadialGradient(cx - rad * 0.26, cy - rad * 0.32, 2, cx, cy, rad * 1.10);
+    bowl.addColorStop(0, shade(p, 0.28)); bowl.addColorStop(0.50, shade(p, 0.66)); bowl.addColorStop(0.82, p.base); bowl.addColorStop(1, p.lit);
+    c.fillStyle = bowl; c.beginPath(); c.ellipse(cx, cy, rad, rad * 0.58, lean * 0.10, 0, TAU); c.fill();
+    c.strokeStyle = p.lit; c.lineWidth = Math.max(2.8, rad * 0.11);
+    c.beginPath(); c.ellipse(cx, cy, rad, rad * 0.58, lean * 0.10, 0, TAU); c.stroke();
+    c.strokeStyle = `rgba(${p.cr * 0.32 | 0},${p.cg * 0.32 | 0},${p.cb * 0.32 | 0},0.86)`; c.lineWidth = 1.8;
+    c.beginPath(); c.ellipse(cx, cy + rad * 0.16, rad * 0.64, rad * 0.30, lean * 0.10, 0, TAU); c.stroke();
+  };
+
+  const mainX = S * (0.44 + r() * 0.06), mainY = S * (0.52 + r() * 0.035);
+  drawCup(mainX, mainY, S * (0.125 + r() * 0.022), -0.45 + r() * 0.90);
+  drawCup(mainX + S * (0.18 + r() * 0.06), mainY + S * (0.085 + r() * 0.035), S * (0.068 + r() * 0.018), -0.60 + r() * 1.20);
+  /* A few raised substrate nodules make the attachment read as a colony rather
+     than two unrelated bowls. */
+  c.fillStyle = `rgba(${p.cr * 0.62 | 0},${p.cg * 0.62 | 0},${p.cb * 0.62 | 0},0.70)`;
+  for (let i = 0; i < 5; i++) {
+    const x = mainX - S * 0.11 + i * S * 0.055, y = base - S * (0.006 + r() * 0.020);
+    c.beginPath(); c.ellipse(x, y, S * (0.016 + r() * 0.008), S * 0.010, r() * TAU, 0, TAU); c.fill();
   }
 }
 
@@ -535,24 +596,37 @@ export function microbeMat(c: Ctx, g: G, p: Pal): void {
   bgg.addColorStop(0, 'rgba(30,35,42,0.62)'); bgg.addColorStop(0.7, 'rgba(26,30,36,0.45)');
   bgg.addColorStop(1, 'rgba(22,26,32,0)');
   c.fillStyle = bgg; c.fill();
-  /* the film: overlapping soft lobes, three layers deep, so it reads as a
-     THICKNESS of colony rather than a painted patch */
-  for (let layer = 0; layer < 3; layer++) {
-    const m = 0.68 + layer * 0.26;
-    for (let i = 0; i < 26; i++) {
-      const x = S * (0.12 + r() * 0.76), y = S * (0.22 + r() * 0.56);
-      softMark(c, x, y, S * (0.06 + r() * 0.09), `${p.cr * m | 0},${p.cg * m | 0},${p.cb * m | 0}`, 0.16 + layer * 0.07);
+  /* Keep the soft film subordinate to its cells.  The prior three wide glow
+     layers became the whole silhouette, so a biofilm read as a light cloud. */
+  for (let layer = 0; layer < 2; layer++) {
+    const m = 0.72 + layer * 0.18;
+    for (let i = 0; i < 16; i++) {
+      const x = S * (0.14 + r() * 0.72), y = S * (0.24 + r() * 0.52);
+      softMark(c, x, y, S * (0.035 + r() * 0.045), `${p.cr * m | 0},${p.cg * m | 0},${p.cb * m | 0}`, 0.05 + layer * 0.035);
     }
   }
+  /* Raised microcolonies give the sheet an edge, a hierarchy, and discrete
+     bodies before the fine cell texture arrives. */
+  for (let i = 0; i < 18; i++) {
+    const x = S * (0.16 + r() * 0.68), y = S * (0.27 + r() * 0.46);
+    const dx = (x - S * 0.5) / (S * 0.38), dy = (y - S * 0.5) / (S * 0.28);
+    if (dx * dx + dy * dy > 1) continue;
+    const rx = S * (0.018 + r() * 0.020), ry = rx * (0.58 + r() * 0.30);
+    const gg = c.createRadialGradient(x - rx * 0.34, y - ry * 0.44, 2, x, y, rx * 1.25);
+    gg.addColorStop(0, p.lit); gg.addColorStop(0.58, p.base); gg.addColorStop(1, p.dark);
+    c.fillStyle = gg; c.beginPath(); c.ellipse(x, y, rx, ry, r() * TAU, 0, TAU); c.fill();
+    c.strokeStyle = `rgba(${p.cr * 0.34 | 0},${p.cg * 0.34 | 0},${p.cb * 0.34 | 0},0.72)`;
+    c.lineWidth = 1.5; c.stroke();
+  }
   /* the individual cells packed inside it, dense at the centre */
-  for (let i = 0; i < 320; i++) {
+  for (let i = 0; i < 230; i++) {
     const x = S * (0.10 + r() * 0.80), y = S * (0.20 + r() * 0.60);
     const dx = (x - S * 0.5) / (S * 0.42), dy = (y - S * 0.5) / (S * 0.34);
     if (dx * dx + dy * dy > 1) continue;
     const a = r() * TAU;
-    c.strokeStyle = shade(p, 1.15 + r() * 0.4);
-    c.globalAlpha = 0.30 + r() * 0.45; c.lineWidth = 2.2; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(x, y); c.lineTo(x + Math.cos(a) * 6, y + Math.sin(a) * 6); c.stroke();
+    c.strokeStyle = shade(p, 1.08 + r() * 0.36);
+    c.globalAlpha = 0.46 + r() * 0.34; c.lineWidth = 2.5; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(x, y); c.lineTo(x + Math.cos(a) * 7, y + Math.sin(a) * 7); c.stroke();
   }
   c.globalAlpha = 1;
   /* the streamers a biofilm trails downstream */
@@ -567,6 +641,93 @@ export function microbeMat(c: Ctx, g: G, p: Pal): void {
     const x = S * (0.16 + r() * 0.68), y = S * (0.24 + r() * 0.52), q = 3 + r() * 7;
     c.fillStyle = 'rgba(255,255,255,0.12)'; c.beginPath(); c.arc(x, y, q, 0, TAU); c.fill();
     c.strokeStyle = 'rgba(255,255,255,0.24)'; c.lineWidth = 1; c.beginPath(); c.arc(x, y, q, -2.5, -0.6); c.stroke();
+  }
+}
+
+/* A bounded r2 alternative for the handful of biofilm outputs whose fine cells
+   still read as a diffuse cloud.  The three seeded layouts use a single visible
+   colony plan: membranes are linked, cells repeat a shared anatomy, and the
+   faint envelope contains the colony instead of becoming its silhouette. */
+export function microbeStructuredColony(c: Ctx, g: G, p: Pal): void {
+  const r = seeded(g, 0xCE11);
+  const form = ((g.form as number) || 0) % 3;
+  const shell = (cx: number, cy: number, rx: number, ry: number): void => {
+    const halo = c.createRadialGradient(cx - rx * 0.28, cy - ry * 0.34, 2, cx, cy, Math.max(rx, ry) * 1.12);
+    halo.addColorStop(0, `rgba(${p.cr},${p.cg},${p.cb},0.22)`);
+    halo.addColorStop(0.68, `rgba(${p.cr},${p.cg},${p.cb},0.10)`);
+    halo.addColorStop(1, `rgba(${p.cr},${p.cg},${p.cb},0)`);
+    c.fillStyle = halo; c.beginPath(); c.ellipse(cx, cy, rx, ry, 0, 0, TAU); c.fill();
+    c.strokeStyle = `rgba(${p.cr * 0.52 | 0},${p.cg * 0.52 | 0},${p.cb * 0.52 | 0},0.72)`; c.lineWidth = 2.2;
+    c.beginPath(); c.ellipse(cx, cy, rx * 0.93, ry * 0.90, 0, 0, TAU); c.stroke();
+  };
+  const link = (x0: number, y0: number, x1: number, y1: number): void => {
+    c.strokeStyle = `rgba(${p.cr * 0.34 | 0},${p.cg * 0.34 | 0},${p.cb * 0.34 | 0},0.85)`; c.lineWidth = S * 0.020; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(x0, y0); c.quadraticCurveTo((x0 + x1) * 0.5, (y0 + y1) * 0.5 - S * 0.018, x1, y1); c.stroke();
+    c.strokeStyle = `rgba(${p.cr},${p.cg},${p.cb},0.68)`; c.lineWidth = S * 0.006;
+    c.beginPath(); c.moveTo(x0, y0); c.quadraticCurveTo((x0 + x1) * 0.5, (y0 + y1) * 0.5 - S * 0.018, x1, y1); c.stroke();
+  };
+  const cell = (cx: number, cy: number, rx: number, ry: number, a: number): void => {
+    c.save(); c.translate(cx, cy); c.rotate(a);
+    const body = c.createRadialGradient(-rx * 0.34, -ry * 0.42, 2, 0, 0, rx * 1.18);
+    body.addColorStop(0, p.lit); body.addColorStop(0.54, p.base); body.addColorStop(1, p.dark);
+    c.fillStyle = body; c.beginPath(); c.ellipse(0, 0, rx, ry, 0, 0, TAU); c.fill();
+    c.strokeStyle = `rgba(${p.cr * 0.28 | 0},${p.cg * 0.28 | 0},${p.cb * 0.28 | 0},0.92)`; c.lineWidth = 2.2; c.stroke();
+    c.strokeStyle = 'rgba(255,255,255,0.48)'; c.lineWidth = 1.25;
+    c.beginPath(); c.moveTo(-rx * 0.45, -ry * 0.36); c.quadraticCurveTo(0, -ry * 0.60, rx * 0.42, -ry * 0.24); c.stroke();
+    c.strokeStyle = `rgba(${p.cr * 0.30 | 0},${p.cg * 0.30 | 0},${p.cb * 0.30 | 0},0.82)`; c.lineWidth = 1.5;
+    c.beginPath(); c.moveTo(0, -ry * 0.76); c.lineTo(0, ry * 0.76); c.stroke();
+    c.restore();
+  };
+
+  if (form === 0) {
+    /* A sinuous chain is a repeated cell plan with an obvious attachment axis. */
+    const cells: Array<[number, number]> = [];
+    for (let i = 0; i < 10; i++) {
+      const t = i / 9, x = S * (0.16 + t * 0.68), y = S * (0.50 + Math.sin(t * TAU * 1.18 + r() * 0.24) * 0.12);
+      cells.push([x, y]);
+    }
+    shell(S * 0.50, S * 0.50, S * 0.39, S * 0.20);
+    for (let i = 1; i < cells.length; i++) link(cells[i - 1]![0], cells[i - 1]![1], cells[i]![0], cells[i]![1]);
+    for (let i = 0; i < cells.length; i++) cell(cells[i]![0], cells[i]![1], S * (0.034 + (i % 3) * 0.003), S * (0.022 + (i % 2) * 0.003), (i % 2 ? 0.52 : -0.34) + r() * 0.18);
+    return;
+  }
+
+  if (form === 1) {
+    /* A radial holdfast makes the shared centre and its repeated outer cells
+       explicit, rather than scattering unrelated marks through a haze. */
+    const cx = S * 0.50, cy = S * 0.50, ring = S * 0.145;
+    shell(cx, cy, S * 0.245, S * 0.215);
+    const petals: Array<[number, number, number]> = [];
+    for (let i = 0; i < 8; i++) {
+      const a = (i / 8) * TAU + r() * 0.12;
+      const x = cx + Math.cos(a) * ring, y = cy + Math.sin(a) * ring * 0.76;
+      petals.push([x, y, a]);
+    }
+    for (const [x, y] of petals) link(cx, cy, x, y);
+    cell(cx, cy, S * 0.050, S * 0.034, -0.28);
+    for (let i = 0; i < petals.length; i++) {
+      const [x, y, a] = petals[i]!;
+      cell(x, y, S * (0.031 + (i % 2) * 0.003), S * 0.021, a + Math.PI / 2);
+    }
+    return;
+  }
+
+  /* Three linked microcolonies: each one repeats the same cell body, while the
+     bridges make their larger organism-level structure visible. */
+  const groups: Array<[number, number, number]> = [
+    [S * 0.33, S * 0.42, 0.84], [S * 0.64, S * 0.46, 1.20], [S * 0.48, S * 0.67, 0.48],
+  ];
+  link(groups[0]![0], groups[0]![1], groups[1]![0], groups[1]![1]);
+  link(groups[0]![0], groups[0]![1], groups[2]![0], groups[2]![1]);
+  link(groups[1]![0], groups[1]![1], groups[2]![0], groups[2]![1]);
+  for (const [cx, cy, turn] of groups) {
+    shell(cx, cy, S * 0.135, S * 0.105);
+    for (let i = 0; i < 6; i++) {
+      const a = turn + (i / 6) * TAU;
+      cell(cx + Math.cos(a) * S * 0.062, cy + Math.sin(a) * S * 0.047,
+        S * 0.027, S * 0.018, a + Math.PI / 2);
+    }
+    cell(cx, cy, S * 0.033, S * 0.022, turn);
   }
 }
 
@@ -614,4 +775,180 @@ export function fungiEnoki(c: Ctx, g: G, p: Pal): void {
     c.beginPath(); c.moveTo(tx - cw * 0.8, ty - cw * 0.2);
     c.quadraticCurveTo(tx - cw * 0.2, ty - cw * 1.05, tx + cw * 0.6, ty - cw * 0.5); c.stroke();
   }
+}
+
+/* ═══════════════════ OWNED ALIEN FLORA + RADIAL FAUNA ═══════════════════
+   The legacy fallback represented several alien growth plans as isolated
+   discs, trays, or soft clouds. These painters preserve the alien plan while
+   giving it one connected substrate, real attachment anatomy, form light, and
+   a silhouette that survives the actual 132px Compendium thumbnail. */
+export type ProceduralFloraArchitecture =
+  | 'fungalForest' | 'lichenMat' | 'crystal' | 'sporeTowers' | 'balloonPods' | 'glassNeedles'
+  | 'cane' | 'rosette' | 'tree';
+
+export function proceduralAlienFlora(
+  c: Ctx, g: G, p: Pal, architecture: ProceduralFloraArchitecture,
+): void {
+  const r = seeded(g, 0xA11E), cx = S * 0.5, base = S * 0.84;
+  ground(c, cx, base + S * 0.035, S * 0.28);
+
+  if (architecture === 'lichenMat') {
+    const mat = c.createRadialGradient(cx - S * 0.08, base - S * 0.08, 2, cx, base - S * 0.07, S * 0.30);
+    mat.addColorStop(0, p.lit); mat.addColorStop(0.54, p.base); mat.addColorStop(1, p.dark);
+    c.fillStyle = mat; c.beginPath(); c.ellipse(cx, base - S * 0.06, S * 0.29, S * 0.105, 0, 0, TAU); c.fill();
+    c.strokeStyle = shade(p, 0.42); c.lineWidth = 3.2; c.stroke();
+    for (let i = 0; i < 34; i++) {
+      const a = r() * TAU, d = Math.sqrt(r()) * S * 0.245, x = cx + Math.cos(a) * d, y = base - S * 0.075 + Math.sin(a) * d * 0.28;
+      const q = S * (0.026 + r() * 0.034), turn = a + (r() - 0.5) * 0.7;
+      const lobe = c.createRadialGradient(x - q * 0.3, y - q * 0.35, 1, x, y, q);
+      lobe.addColorStop(0, p.lit); lobe.addColorStop(0.62, p.base); lobe.addColorStop(1, p.dark);
+      c.fillStyle = lobe; c.save(); c.translate(x, y); c.rotate(turn); c.beginPath(); c.ellipse(0, 0, q * 1.55, q * 0.58, 0, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(245,250,235,0.24)'; c.lineWidth = 1.4; c.stroke(); c.restore();
+    }
+    c.strokeStyle = 'rgba(245,250,235,0.42)'; c.lineWidth = 1.5; c.lineCap = 'round';
+    for (let i = 0; i < 18; i++) { const a = (i / 18) * TAU + r() * 0.12, d = S * (0.09 + r() * 0.15); c.beginPath(); c.moveTo(cx, base - S * 0.07); c.quadraticCurveTo(cx + Math.cos(a + 0.24) * d * 0.55, base - S * 0.08 + Math.sin(a) * d * 0.10, cx + Math.cos(a) * d, base - S * 0.07 + Math.sin(a) * d * 0.22); c.stroke(); }
+    return;
+  }
+
+  if (architecture === 'fungalForest') {
+    c.fillStyle = shade(p, 0.38); c.beginPath(); c.ellipse(cx, base, S * 0.24, S * 0.055, 0, 0, TAU); c.fill();
+    const trunks = [[-0.16, 0.48, 0.16], [0.02, 0.61, 0.21], [0.19, 0.43, 0.145]] as const;
+    for (const [u, h, w] of trunks) {
+      const bx = cx + S * u, top = base - S * h, sw = S * w * 0.34;
+      const stem = c.createLinearGradient(bx - sw, 0, bx + sw, 0); stem.addColorStop(0, p.dark); stem.addColorStop(0.44, p.lit); stem.addColorStop(1, p.base);
+      c.strokeStyle = shade(p, 0.34); c.lineWidth = sw * 2.4; c.lineCap = 'round'; c.beginPath(); c.moveTo(bx, base); c.quadraticCurveTo(bx - S * u * 0.22, top + S * 0.18, bx + S * u * 0.10, top + S * 0.04); c.stroke();
+      c.strokeStyle = stem; c.lineWidth = sw * 1.75; c.stroke();
+      const capW = S * w * 1.45, capH = capW * 0.44, tx = bx + S * u * 0.10, ty = top;
+      const cap = c.createRadialGradient(tx - capW * 0.25, ty - capH * 0.45, 2, tx, ty, capW); cap.addColorStop(0, p.lit); cap.addColorStop(0.58, p.base); cap.addColorStop(1, p.dark);
+      c.fillStyle = cap; c.beginPath(); c.moveTo(tx - capW, ty + capH * 0.18);
+      c.quadraticCurveTo(tx - capW * 0.72, ty - capH * 1.20, tx, ty - capH);
+      c.quadraticCurveTo(tx + capW * 0.72, ty - capH * 1.20, tx + capW, ty + capH * 0.18);
+      c.quadraticCurveTo(tx + capW * 0.56, ty + capH * 0.48, tx + capW * 0.22, ty + capH * 0.28);
+      c.quadraticCurveTo(tx, ty + capH * 0.55, tx - capW * 0.22, ty + capH * 0.28);
+      c.quadraticCurveTo(tx - capW * 0.56, ty + capH * 0.48, tx - capW, ty + capH * 0.18); c.closePath(); c.fill();
+      c.strokeStyle = shade(p, 0.42); c.lineWidth = 2.6; c.stroke();
+      c.strokeStyle = 'rgba(245,248,235,0.50)'; c.lineWidth = 1.6;
+      for (let k = -5; k <= 5; k++) { c.beginPath(); c.moveTo(tx, ty + capH * 0.17); c.lineTo(tx + k * capW * 0.16, ty + capH * (0.28 + Math.abs(k) * 0.025)); c.stroke(); }
+    }
+    return;
+  }
+
+  if (architecture === 'sporeTowers') {
+    c.fillStyle = shade(p, 0.40); c.beginPath(); c.ellipse(cx, base, S * 0.27, S * 0.065, 0, 0, TAU); c.fill();
+    const n = 7;
+    for (let i = 0; i < n; i++) {
+      const u = (i / (n - 1) - 0.5), bx = cx + u * S * 0.42, h = S * (0.28 + (1 - Math.abs(u)) * 0.25 + r() * 0.055), top = base - h;
+      c.strokeStyle = shade(p, 0.38); c.lineWidth = 17; c.lineCap = 'round'; c.beginPath(); c.moveTo(bx, base); c.quadraticCurveTo(bx + u * S * 0.06, base - h * 0.55, bx - u * S * 0.03, top); c.stroke();
+      const stem = c.createLinearGradient(bx - 7, 0, bx + 7, 0); stem.addColorStop(0, p.dark); stem.addColorStop(0.45, p.lit); stem.addColorStop(1, p.base);
+      c.strokeStyle = stem; c.lineWidth = 11; c.stroke();
+      c.strokeStyle = 'rgba(245,250,235,0.36)'; c.lineWidth = 2;
+      for (let k = 1; k < 5; k++) { const y = base - h * k / 6; c.beginPath(); c.moveTo(bx - 6, y); c.lineTo(bx + 6, y - u * 3); c.stroke(); }
+      const q = S * (0.035 + r() * 0.015), bulb = c.createRadialGradient(bx - q * 0.32, top - q * 0.34, 1, bx, top, q); bulb.addColorStop(0, p.lit); bulb.addColorStop(0.58, p.base); bulb.addColorStop(1, p.dark);
+      c.fillStyle = bulb; c.beginPath(); c.ellipse(bx - u * S * 0.03, top, q * 1.15, q * 1.42, -u * 0.24, 0, TAU); c.fill(); c.strokeStyle = shade(p, 0.38); c.lineWidth = 2.2; c.stroke();
+    }
+    return;
+  }
+
+  if (architecture === 'balloonPods') {
+    c.strokeStyle = shade(p, 0.36); c.lineWidth = 15; c.lineCap = 'round'; c.beginPath(); c.moveTo(cx - S * 0.26, base); c.bezierCurveTo(cx - S * 0.22, base - S * 0.24, cx + S * 0.17, base - S * 0.38, cx + S * 0.24, base - S * 0.62); c.stroke();
+    c.strokeStyle = p.base; c.lineWidth = 9; c.stroke();
+    for (let i = 0; i < 7; i++) {
+      const t = (i + 0.65) / 7.8, x = cx - S * 0.26 + t * S * 0.50 + Math.sin(t * Math.PI) * S * 0.055, y = base - t * S * 0.62 - Math.sin(t * Math.PI) * S * 0.08;
+      const side = i % 2 ? 1 : -1, px = x + side * S * (0.07 + r() * 0.025), py = y - S * 0.015, q = S * (0.050 + r() * 0.015);
+      c.strokeStyle = p.base; c.lineWidth = 6; c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo((x + px) * 0.5, py + S * 0.025, px, py); c.stroke();
+      const pod = c.createRadialGradient(px - q * 0.33, py - q * 0.40, 2, px, py, q * 1.18); pod.addColorStop(0, p.lit); pod.addColorStop(0.52, p.base); pod.addColorStop(1, p.dark);
+      c.fillStyle = pod; c.beginPath(); c.ellipse(px, py, q * 0.92, q * 1.32, side * 0.28, 0, TAU); c.fill(); c.strokeStyle = shade(p, 0.35); c.lineWidth = 2.5; c.stroke();
+      c.strokeStyle = 'rgba(250,252,239,0.50)'; c.lineWidth = 1.8; c.beginPath(); c.moveTo(px, py - q * 1.08); c.quadraticCurveTo(px + side * q * 0.16, py, px, py + q * 1.08); c.stroke();
+    }
+    return;
+  }
+
+  if (architecture === 'cane') {
+    c.fillStyle = shade(p, 0.36); c.beginPath(); c.ellipse(cx, base, S * 0.25, S * 0.055, 0, 0, TAU); c.fill();
+    for (let i = 0; i < 7; i++) {
+      const u = i / 6 - 0.5, bx = cx + u * S * 0.36, h = S * (0.36 + (1 - Math.abs(u)) * 0.24 + r() * 0.05), lean = u * S * 0.05;
+      c.strokeStyle = shade(p, 0.35); c.lineWidth = 13; c.lineCap = 'round'; c.beginPath(); c.moveTo(bx, base); c.quadraticCurveTo(bx - lean * 0.30, base - h * 0.55, bx + lean, base - h); c.stroke();
+      const stem = c.createLinearGradient(bx - 6, 0, bx + 6, 0); stem.addColorStop(0, p.dark); stem.addColorStop(0.45, p.lit); stem.addColorStop(1, p.base);
+      c.strokeStyle = stem; c.lineWidth = 8; c.stroke();
+      for (let k = 1; k <= 5; k++) {
+        const t = k / 6, x = bx + lean * t, y = base - h * t, side = (k + i) % 2 ? 1 : -1;
+        c.strokeStyle = 'rgba(245,250,235,0.50)'; c.lineWidth = 2; c.beginPath(); c.moveTo(x - 5, y); c.lineTo(x + 5, y); c.stroke();
+        const tipX = x + side * S * (0.075 + r() * 0.025), tipY = y - S * (0.025 + r() * 0.025);
+        c.fillStyle = k % 2 ? p.base : p.lit; c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo((x + tipX) * 0.5, tipY - S * 0.025, tipX, tipY); c.quadraticCurveTo((x + tipX) * 0.55, tipY + S * 0.020, x, y); c.closePath(); c.fill();
+        c.strokeStyle = shade(p, 0.40); c.lineWidth = 1.6; c.stroke();
+      }
+    }
+    return;
+  }
+
+  if (architecture === 'rosette') {
+    const leaves: Array<[number, number, number]> = [];
+    for (let i = 0; i < 18; i++) { const a = (i / 18) * TAU + r() * 0.04, len = S * (0.18 + r() * 0.09); leaves.push([a, len, r()]); }
+    leaves.sort((a, b) => Math.sin(a[0]) - Math.sin(b[0]));
+    for (const [a, len, q] of leaves) {
+      const x = cx + Math.cos(a) * len, y = base - S * 0.085 + Math.sin(a) * len * 0.40;
+      const spread = 0.26 + q * 0.16;
+      const leaf = c.createLinearGradient(cx, base, x, y); leaf.addColorStop(0, p.dark); leaf.addColorStop(0.48, p.base); leaf.addColorStop(1, p.lit);
+      c.fillStyle = leaf; c.beginPath(); c.moveTo(cx, base - S * 0.075); c.quadraticCurveTo(cx + Math.cos(a + spread) * len * 0.55, base - S * 0.075 + Math.sin(a + spread) * len * 0.30, x, y); c.quadraticCurveTo(cx + Math.cos(a - spread) * len * 0.55, base - S * 0.075 + Math.sin(a - spread) * len * 0.30, cx, base - S * 0.075); c.closePath(); c.fill();
+      c.strokeStyle = shade(p, 0.36); c.lineWidth = 2; c.stroke();
+      c.strokeStyle = 'rgba(250,252,240,0.38)'; c.lineWidth = 1.4; c.beginPath(); c.moveTo(cx, base - S * 0.075); c.lineTo(x, y); c.stroke();
+    }
+    const heart = c.createRadialGradient(cx - S * 0.02, base - S * 0.11, 1, cx, base - S * 0.09, S * 0.055); heart.addColorStop(0, p.lit); heart.addColorStop(0.65, p.base); heart.addColorStop(1, p.dark);
+    c.fillStyle = heart; c.beginPath(); c.arc(cx, base - S * 0.085, S * 0.052, 0, TAU); c.fill();
+    return;
+  }
+
+  if (architecture === 'tree') {
+    c.strokeStyle = shade(p, 0.29); c.lineWidth = 30; c.lineCap = 'round'; c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx - S * 0.035, base - S * 0.36, cx, base - S * 0.58); c.stroke();
+    c.strokeStyle = shade(p, 0.52); c.lineWidth = 18; c.stroke();
+    const crowns: Array<[number, number, number]> = [[0, -0.58, 0.16], [-0.17, -0.49, 0.13], [0.17, -0.48, 0.13], [-0.10, -0.64, 0.12], [0.11, -0.66, 0.11]];
+    for (const [u, v, q] of crowns) {
+      const x = cx + S * u, y = base + S * v;
+      c.strokeStyle = shade(p, 0.36); c.lineWidth = 8; c.beginPath(); c.moveTo(cx, base - S * 0.30); c.lineTo(x, y + S * q * 0.45); c.stroke();
+      const crown = c.createRadialGradient(x - S * q * 0.35, y - S * q * 0.40, 2, x, y, S * q); crown.addColorStop(0, p.lit); crown.addColorStop(0.55, p.base); crown.addColorStop(1, p.dark);
+      c.fillStyle = crown; c.beginPath(); c.arc(x, y, S * q, 0, TAU); c.fill(); c.strokeStyle = shade(p, 0.34); c.lineWidth = 2.4; c.stroke();
+      c.fillStyle = 'rgba(248,252,235,0.28)'; for (let k = 0; k < 8; k++) { const a = r() * TAU, d = r() * S * q * 0.72; c.beginPath(); c.ellipse(x + Math.cos(a) * d, y + Math.sin(a) * d, 4.2, 2.2, a, 0, TAU); c.fill(); }
+    }
+    return;
+  }
+
+  const glass = architecture === 'glassNeedles';
+  c.fillStyle = shade(p, 0.34); c.beginPath(); c.moveTo(cx - S * 0.28, base); c.lineTo(cx - S * 0.18, base - S * 0.075); c.lineTo(cx + S * 0.20, base - S * 0.065); c.lineTo(cx + S * 0.29, base); c.closePath(); c.fill();
+  const count = glass ? 17 : 8;
+  const shards: Array<[number, number, number, number]> = [];
+  for (let i = 0; i < count; i++) { const u = i / (count - 1) - 0.5, h = S * ((glass ? 0.24 : 0.30) + (1 - Math.abs(u) * 1.5) * (glass ? 0.30 : 0.34) + r() * 0.09); shards.push([cx + u * S * (glass ? 0.48 : 0.42), base - S * 0.035, h, (r() - 0.5) * (glass ? 0.24 : 0.12)]); }
+  shards.sort((a, b) => a[2] - b[2]);
+  for (const [bx, by, h, lean] of shards) {
+    const w = S * (glass ? 0.018 + r() * 0.013 : 0.045 + r() * 0.022), tx = bx + lean * h, ty = by - h;
+    const shard = c.createLinearGradient(bx - w, by, tx + w, ty); shard.addColorStop(0, shade(p, 0.48)); shard.addColorStop(0.38, p.base); shard.addColorStop(0.66, p.lit); shard.addColorStop(1, shade(p, 0.36));
+    c.fillStyle = shard; c.beginPath(); c.moveTo(bx - w, by); c.lineTo(tx, ty); c.lineTo(bx + w, by); c.lineTo(bx, by + w * 0.55); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(230,246,255,0.58)'; c.lineWidth = glass ? 1.4 : 2.2; c.stroke();
+    c.strokeStyle = 'rgba(255,255,255,0.34)'; c.lineWidth = 1; c.beginPath(); c.moveTo(bx, by - w * 0.20); c.lineTo(tx, ty + h * 0.08); c.stroke();
+  }
+}
+
+export function proceduralRadialFauna(c: Ctx, g: G, p: Pal): void {
+  const r = seeded(g, 0x8AD1A), cx = S * 0.50, cy = S * 0.52, core = S * 0.105;
+  ground(c, cx, S * 0.82, S * 0.22);
+  const arms = 10;
+  for (let i = 0; i < arms; i++) {
+    const a = (i / arms) * TAU + r() * 0.035, len = S * (0.20 + r() * 0.045), w = S * (0.040 + r() * 0.010);
+    c.save(); c.translate(cx, cy); c.rotate(a);
+    const limb = c.createLinearGradient(core * 0.4, -w, len, w); limb.addColorStop(0, p.base); limb.addColorStop(0.62, p.lit); limb.addColorStop(1, p.dark);
+    c.fillStyle = limb; c.beginPath(); c.moveTo(core * 0.45, -w);
+    c.bezierCurveTo(len * 0.38, -w * 1.34, len * 0.68, w * 0.24, len - w * 0.22, -w * 0.12);
+    c.quadraticCurveTo(len + w * 0.20, 0, len - w * 0.22, w * 0.12);
+    c.bezierCurveTo(len * 0.67, w * 0.68, len * 0.40, w * 1.28, core * 0.45, w); c.closePath(); c.fill();
+    c.strokeStyle = shade(p, 0.36); c.lineWidth = 2.4; c.stroke();
+    c.strokeStyle = 'rgba(248,252,245,0.34)'; c.lineWidth = 1.6; c.beginPath(); c.moveTo(core * 0.62, -w * 0.30); c.quadraticCurveTo(len * 0.55, -w * 0.18, len * 0.91, 0); c.stroke();
+    for (let k = 1; k < 4; k++) { const x = core + (len - core) * k / 4; c.fillStyle = 'rgba(25,25,30,0.48)'; c.beginPath(); c.arc(x, 0, 2.4, 0, TAU); c.fill(); }
+    c.restore();
+  }
+  const body = c.createRadialGradient(cx - core * 0.36, cy - core * 0.40, 2, cx, cy, core * 1.25); body.addColorStop(0, p.lit); body.addColorStop(0.55, p.base); body.addColorStop(1, p.dark);
+  c.fillStyle = body; c.beginPath(); c.arc(cx, cy, core, 0, TAU); c.fill(); c.strokeStyle = shade(p, 0.34); c.lineWidth = 3; c.stroke();
+  c.fillStyle = 'rgba(20,22,28,0.74)';
+  for (let i = 0; i < arms; i++) { const a = (i / arms) * TAU, x = cx + Math.cos(a) * core * 0.55, y = cy + Math.sin(a) * core * 0.55; c.beginPath(); c.arc(x, y, 3.4, 0, TAU); c.fill(); }
+  c.fillStyle = 'rgba(17,20,25,0.86)'; c.beginPath(); c.ellipse(cx, cy + core * 0.05, core * 0.24, core * 0.18, 0, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(245,250,255,0.58)'; c.lineWidth = 2.2; c.stroke();
+  c.fillStyle = 'rgba(245,250,255,0.62)'; c.beginPath(); c.arc(cx - core * 0.22, cy - core * 0.28, core * 0.13, 0, TAU); c.fill();
 }

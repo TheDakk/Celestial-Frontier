@@ -62,7 +62,10 @@ try {
      the wave-11 bug: 280 routes written, imported, and unreachable */
   const ROUTER = path.join(SRC, 'speciesoverrides.ts');
   const routerOrig = fs.readFileSync(ROUTER, 'utf8');
-  fs.writeFileSync(ROUTER, routerOrig.replace('FLORA_ICONIC[name] || FLORA2_SPEC[name]', 'FLORA_ICONIC[name]'));
+  /* The lineage-owner helper also consults this table before resolveOverride.
+     Remove every occurrence so the control still breaks the actual router body
+     instead of stopping at a preparatory membership check. */
+  fs.writeFileSync(ROUTER, routerOrig.replaceAll('FLORA_ICONIC[name] || FLORA2_SPEC[name]', 'FLORA_ICONIC[name]'));
   check('F: a table imported but never consulted by the router', run(), 'fail');
   fs.writeFileSync(ROUTER, routerOrig);
 

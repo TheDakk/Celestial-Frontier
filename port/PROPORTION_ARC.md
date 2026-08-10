@@ -9,6 +9,38 @@
 
 This is a multi-batch arc. It is written down in full so a cold session can pick it up.
 
+> **Reopened from the beginning, 2026-08-09:** Fruit Bat demonstrated that
+> green structural gates and prior labels could coexist with a biologically
+> wrong silhouette. Every prior band is now evidence only. The renewed arc adds
+> exact old/current family sheets, set-aware reference joins, seamless-attachment
+> review, authoritative source recording, and Earth-lineage hybrid outcomes.
+> Live procedure: `v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+
+> **Current 2026-08-10:** the official 181-family /233-packet reset review is
+> frozen at clean commit `bc26e8` as **516 PASS /14 POLISH /720 FAIL**. It is the
+> repair baseline, not certification. Accepted scoped checkpoints are Wave 1
+> 177/177 (`d005090f`), Wave 2a 32/32 (`00e499c`), Wave 2b 51/51 (`9c148f0`),
+> and Wave 2c 56/56 (`dc015cf`), all committed/pushed. Vanilla Orchid r6 is a
+> separate 234-asset continuity PASS. None creates a new 1,250-row tally.
+>
+> Wave 2d is independently **50/50 scoped PASS**: Mammal D 16/16, Bird B3 27/27,
+> and Invert III 7/7. Mammal D failed closed on six preview blockers, then on
+> Civet's still-round muzzle; Civet-only R4 closed the pointed-muzzle contract.
+> Bird B3 moved from 11/27 candidate-ready through an exact-16 R2 and exact-three
+> tail/streamer R3 before final 27/27. Invert III moved from 5/7 candidate-ready
+> through an exact-two Camel Spider/Tarantula R2 before final 7/7. Final evidence
+> binds 304 rows =50 targets +254 controls and exact 912/912 A/B surfaces; all
+> 762 protected surfaces remain baseline-exact, all 150 target surfaces changed,
+> Civet alone changed 3/3 in R4, and the other 909 surfaces stayed exact. The
+> integrated gates are green with all five source SHAs and 139 inputs unchanged,
+> so Wave 2d is ready to commit/push. Remaining waves, full certification, the
+> final image-inclusive ZIP, reset PR, merge, release, and deployment remain OPEN.
+> The final R4 manifest is
+> `DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE` at
+> `v2/apps/game/smoke/wave2d-shared-final-r4-evidence-2026-08-10`.
+> See
+> `v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+
 ---
 
 ## WHY THE EXISTING INSTRUMENTS CANNOT DO THIS

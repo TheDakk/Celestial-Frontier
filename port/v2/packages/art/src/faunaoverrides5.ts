@@ -799,142 +799,465 @@ export function faunaLamprey(c: Ctx, g: G, p: Pal): void {
     built from the actual skeleton: an arm to the WRIST, then four fingers
     fanning out from it, membrane filled between them, and the trailing edge
     scalloped where it sags from strut to strut. */
-export function faunaBat(c: Ctx, g: G, p: Pal, name: string): void {
+export function faunaBat(c: Ctx, g: G, pIn: Pal, name: string): void {
   const r = nrng(g, name, 0x8A71);
   const fruit = /fruit|flying fox/i.test(name);
   const vamp = /vampire/i.test(name);
-  const cx = S * 0.50, cy = S * 0.44;
-  const bodyL = S * (fruit ? 0.15 : 0.115), bodyR = S * (fruit ? 0.045 : 0.034);
-  const span = S * (fruit ? 0.235 : 0.205);
-  shadow(c, cx, S * 0.80, S * 0.10, 0.34);
+  const insect = /insect[- ]eating/i.test(name);
+  /* Species-true fur prevents a bright genome palette from turning a nocturnal
+     mammal into a yellow mascot. Variation remains present in the final mix. */
+  const p = fruit ? anchor(pIn, 142, 78, 42, 0.54)
+    : vamp ? anchor(pIn, 102, 72, 55, 0.60)
+      : insect ? anchor(pIn, 74, 66, 58, 0.70)
+        : anchor(pIn, 72, 66, 62, 0.60);
+  const cx = S * 0.50;
+  const bodyCy = S * (fruit ? 0.535 : 0.525);
+  /* Flying foxes carry a long, narrow trunk between exceptionally long wings;
+     vampire bats are compact but visibly more muscular through the hips. */
+  const bodyW = S * (fruit ? 0.062 : vamp ? 0.063 : 0.056);
+  const bodyH = S * (fruit ? 0.162 : vamp ? 0.132 : 0.140);
+  const span = S * (fruit ? 0.450 : 0.420);
+  shadow(c, cx, S * 0.82, S * (fruit ? 0.15 : 0.13), 0.30);
+  c.lineCap = 'round'; c.lineJoin = 'round';
 
-  const memb = (side: -1 | 1, dark: number): void => {
-    /* the shoulder, the elbow, and the WRIST — everything beyond the wrist is
-       finger, and getting that proportion right is most of the read */
-    const sh: [number, number] = [cx + side * bodyR * 0.7, cy - bodyL * 0.18];
-    const el: [number, number] = [sh[0] + side * span * 0.34, cy - bodyL * 0.52];
-    const wr: [number, number] = [sh[0] + side * span * 0.70, cy - bodyL * 0.30];
-    const tips: Array<[number, number]> = [];
-    for (let i = 0; i < 4; i++) {
-      const t = i / 3;
-      const a = -0.82 + t * 2.20;
-      const len = span * (0.60 - t * 0.20);
-      tips.push([wr[0] + side * Math.cos(a) * len, wr[1] + Math.sin(a) * len]);
-    }
-    const ankle: [number, number] = [cx + side * bodyR * 0.6, cy + bodyL * 0.62];
-    const gg = c.createLinearGradient(sh[0], sh[1], tips[2]![0], tips[2]![1]);
-    gg.addColorStop(0, `rgba(${(p.cr * 0.62 * dark) | 0},${(p.cg * 0.44 * dark) | 0},${(p.cb * 0.46 * dark) | 0},0.95)`);
-    gg.addColorStop(1, `rgba(${Math.min(255, p.cr * 0.92 * dark) | 0},${(p.cg * 0.58 * dark) | 0},${(p.cb * 0.60 * dark) | 0},0.82)`);
-    c.fillStyle = gg;
+  type Pt = [number, number];
+  interface Wing {
+    side: -1 | 1;
+    shoulder: Pt;
+    elbow: Pt;
+    wrist: Pt;
+    digits: [Pt, Pt, Pt, Pt];
+    ankle: Pt;
+    hip: Pt;
+  }
+  const wing = (side: -1 | 1): Wing => {
+    const shoulder: Pt = [cx + side * bodyW * 0.76, bodyCy - bodyH * 0.48];
+    const elbow: Pt = [shoulder[0] + side * span * 0.29, shoulder[1] - bodyH * 0.76];
+    const wrist: Pt = [shoulder[0] + side * span * 0.55, shoulder[1] - bodyH * 0.43];
+    return {
+      side, shoulder, elbow, wrist,
+      /* Digits II–V fan from one wrist. Their endpoints, not decorative
+         stripes, define the four membrane bays and scalloped trailing edge. */
+      digits: [
+        [cx + side * span, S * (fruit ? 0.190 : 0.205)],
+        [cx + side * span * 0.94, bodyCy - bodyH * (fruit ? 0.95 : 0.88)],
+        [cx + side * span * 0.78, bodyCy - bodyH * (fruit ? 0.12 : 0.06)],
+        [cx + side * span * 0.53, bodyCy + bodyH * (fruit ? 0.60 : 0.58)],
+      ],
+      ankle: [cx + side * bodyW * (fruit ? 1.25 : vamp ? 1.44 : 1.40),
+        bodyCy + bodyH * (fruit ? 1.02 : vamp ? 1.00 : 0.98)],
+      hip: [cx + side * bodyW * 0.50, bodyCy + bodyH * 0.48],
+    };
+  };
+  const wings: [Wing, Wing] = [wing(-1), wing(1)];
+
+  const traceMembrane = (w: Wing): void => {
+    const d = w.digits;
     c.beginPath();
-    c.moveTo(sh[0], sh[1]);
-    c.quadraticCurveTo(el[0], el[1] - bodyR * 0.4, wr[0], wr[1]);
-    c.lineTo(tips[0]![0], tips[0]![1]);
-    /* the trailing edge SCALLOPS between finger tips — a bat's wing is not a
-       smooth triangle, it sags between every strut */
-    for (let i = 1; i < 4; i++) {
-      const a2 = tips[i - 1]!, b2 = tips[i]!;
-      c.quadraticCurveTo((a2[0] + b2[0]) / 2 - side * span * 0.05, (a2[1] + b2[1]) / 2 + span * 0.115, b2[0], b2[1]);
+    c.moveTo(w.shoulder[0], w.shoulder[1]);
+    c.quadraticCurveTo(w.elbow[0], w.elbow[1] - bodyW * 0.10, w.wrist[0], w.wrist[1]);
+    c.lineTo(d[0][0], d[0][1]);
+    for (let i = 1; i < d.length; i++) {
+      const a = d[i - 1]!, b = d[i]!;
+      c.quadraticCurveTo((a[0] + b[0]) * 0.5 - w.side * span * 0.018,
+        (a[1] + b[1]) * 0.5 + bodyH * 0.20, b[0], b[1]);
     }
-    c.quadraticCurveTo((tips[3]![0] + ankle[0]) / 2 - side * span * 0.06, (tips[3]![1] + ankle[1]) / 2 + span * 0.05, ankle[0], ankle[1]);
-    c.closePath(); c.fill();
-    /* the finger bones themselves, and the arm out to the wrist */
-    c.strokeStyle = `rgba(${(p.cr * 0.34 * dark) | 0},${(p.cg * 0.26 * dark) | 0},${(p.cb * 0.28 * dark) | 0},0.85)`;
-    c.lineCap = 'round';
-    c.lineWidth = Math.max(1.6, bodyR * 0.20);
-    c.beginPath(); c.moveTo(sh[0], sh[1]); c.quadraticCurveTo(el[0], el[1], wr[0], wr[1]); c.stroke();
-    c.lineWidth = Math.max(1.2, bodyR * 0.14);
-    for (const t2 of tips) { c.beginPath(); c.moveTo(wr[0], wr[1]); c.lineTo(t2[0], t2[1]); c.stroke(); }
-    /* the fine vein network that makes it read as skin rather than paper */
-    c.strokeStyle = `rgba(${(p.cr * 0.42 * dark) | 0},${(p.cg * 0.30 * dark) | 0},${(p.cb * 0.32 * dark) | 0},0.35)`;
+    const last = d[3];
+    c.quadraticCurveTo((last[0] + w.ankle[0]) * 0.5 - w.side * span * 0.025,
+      (last[1] + w.ankle[1]) * 0.5 + bodyH * 0.16, w.ankle[0], w.ankle[1]);
+    c.lineTo(w.hip[0], w.hip[1]);
+    c.quadraticCurveTo(cx + w.side * bodyW * 0.90, bodyCy - bodyH * 0.05,
+      w.shoulder[0], w.shoulder[1]);
+    c.closePath();
+  };
+
+  const drawWing = (w: Wing, depth: number): void => {
+    const outer = w.digits[0];
+    const mg = c.createLinearGradient(w.shoulder[0], w.shoulder[1], outer[0], outer[1]);
+    mg.addColorStop(0, `rgba(${(p.cr * 0.50 * depth) | 0},${(p.cg * 0.43 * depth) | 0},${(p.cb * 0.44 * depth) | 0},0.98)`);
+    mg.addColorStop(0.52, `rgba(${(p.cr * 0.72 * depth) | 0},${(p.cg * 0.50 * depth) | 0},${(p.cb * 0.52 * depth) | 0},0.94)`);
+    mg.addColorStop(1, `rgba(${Math.min(255, p.cr * 0.92 * depth) | 0},${(p.cg * 0.61 * depth) | 0},${(p.cb * 0.63 * depth) | 0},0.88)`);
+    c.fillStyle = mg; traceMembrane(w); c.fill();
+    c.strokeStyle = `rgba(${(p.cr * 0.28 * depth) | 0},${(p.cg * 0.24 * depth) | 0},${(p.cb * 0.25 * depth) | 0},0.90)`;
+    c.lineWidth = Math.max(2.2, bodyW * 0.10); traceMembrane(w); c.stroke();
+
+    /* One continuous arm: humerus to elbow, forearm to wrist, then four
+       JOINTED and visibly fanned fingers. A dark under-stroke preserves the
+       rays at 132px; the narrower living-bone core keeps them under the skin
+       instead of turning them into flat panel seams. */
+    c.strokeStyle = shade(p, 0.28); c.lineWidth = Math.max(7.2, bodyW * 0.25);
+    c.beginPath(); c.moveTo(w.shoulder[0], w.shoulder[1]);
+    c.lineTo(w.elbow[0], w.elbow[1]); c.lineTo(w.wrist[0], w.wrist[1]); c.stroke();
+    c.strokeStyle = shade(p, 0.68 + depth * 0.18); c.lineWidth = Math.max(4.4, bodyW * 0.15);
+    c.beginPath(); c.moveTo(w.shoulder[0], w.shoulder[1]);
+    c.lineTo(w.elbow[0], w.elbow[1]); c.lineTo(w.wrist[0], w.wrist[1]); c.stroke();
+    const fingerJoints: Pt[] = w.digits.map((tip, i) => {
+      const t = 0.36 + i * 0.035;
+      return [w.wrist[0] + (tip[0] - w.wrist[0]) * t + w.side * bodyW * (0.035 + i * 0.025),
+        w.wrist[1] + (tip[1] - w.wrist[1]) * t + bodyW * (i - 1.5) * 0.035];
+    });
+    for (let i = 0; i < w.digits.length; i++) {
+      const tip = w.digits[i]!, knuckle = fingerJoints[i]!;
+      c.strokeStyle = shade(p, 0.30); c.lineWidth = Math.max(5.6, bodyW * 0.18);
+      c.beginPath(); c.moveTo(w.wrist[0], w.wrist[1]);
+      c.lineTo(knuckle[0], knuckle[1]); c.lineTo(tip[0], tip[1]); c.stroke();
+      c.strokeStyle = shade(p, 0.82 + depth * 0.18); c.lineWidth = Math.max(3.25, bodyW * 0.11);
+      c.beginPath(); c.moveTo(w.wrist[0], w.wrist[1]);
+      c.lineTo(knuckle[0], knuckle[1]); c.lineTo(tip[0], tip[1]); c.stroke();
+    }
+    c.fillStyle = shade(p, 0.74 + depth * 0.18);
+    for (const joint of [w.elbow, w.wrist] as const) {
+      c.beginPath(); c.arc(joint[0], joint[1], Math.max(4.4, bodyW * 0.15), 0, TAU); c.fill();
+    }
+    for (const joint of fingerJoints) {
+      c.beginPath(); c.arc(joint[0], joint[1], Math.max(2.8, bodyW * 0.09), 0, TAU); c.fill();
+    }
+
+    /* Ordered capillaries follow each finger bay. Their low value and contained
+       endpoints make the wing read as living skin, never paper. */
+    c.strokeStyle = `rgba(${(p.cr * 0.38 * depth) | 0},${(p.cg * 0.27 * depth) | 0},${(p.cb * 0.30 * depth) | 0},0.30)`;
     c.lineWidth = 1;
-    for (let i = 0; i < 14; i++) {
-      const t = r();
-      const fx = wr[0] + (sh[0] - wr[0]) * t * 0.7, fy = wr[1] + (sh[1] - wr[1]) * t * 0.7;
-      const to = tips[(r() * 4) | 0]!;
-      const k = 0.4 + r() * 0.5;
-      c.beginPath(); c.moveTo(fx, fy); c.lineTo(fx + (to[0] - fx) * k, fy + (to[1] - fy) * k); c.stroke();
+    for (let i = 1; i < w.digits.length; i++) {
+      const a = w.digits[i - 1]!, b = w.digits[i]!;
+      for (let j = 1; j <= 3; j++) {
+        const t = j / 4;
+        const sx = w.wrist[0] + (a[0] - w.wrist[0]) * t;
+        const sy = w.wrist[1] + (a[1] - w.wrist[1]) * t;
+        const ex = w.wrist[0] + (b[0] - w.wrist[0]) * (t * 0.88);
+        const ey = w.wrist[1] + (b[1] - w.wrist[1]) * (t * 0.88);
+        c.beginPath(); c.moveTo(sx, sy);
+        c.quadraticCurveTo((sx + ex) * 0.5, (sy + ey) * 0.5 + bodyW * 0.10, ex, ey); c.stroke();
+      }
+    }
+
+    /* Skin tension originates at skeletal load points. Three restrained folds
+       tie shoulder, wrist and ankle into the membrane without subdividing it
+       into decorative paper panels. */
+    const foldColour = `rgba(${Math.min(255, p.cr * (0.72 + depth * 0.12)) | 0},${Math.min(255, p.cg * (0.64 + depth * 0.10)) | 0},${Math.min(255, p.cb * (0.66 + depth * 0.10)) | 0},0.34)`;
+    c.strokeStyle = foldColour; c.lineWidth = 1.55;
+    const shoulderFold: Pt = [w.shoulder[0] + (w.digits[2][0] - w.shoulder[0]) * 0.46,
+      w.shoulder[1] + (w.digits[2][1] - w.shoulder[1]) * 0.46];
+    c.beginPath(); c.moveTo(w.shoulder[0], w.shoulder[1]);
+    c.quadraticCurveTo(w.elbow[0], w.elbow[1] + bodyH * 0.26, shoulderFold[0], shoulderFold[1]); c.stroke();
+    const wristFold: Pt = [(w.digits[1][0] + w.digits[2][0]) * 0.5,
+      (w.digits[1][1] + w.digits[2][1]) * 0.5 + bodyH * 0.08];
+    c.beginPath(); c.moveTo(w.wrist[0], w.wrist[1]);
+    c.quadraticCurveTo((w.wrist[0] + wristFold[0]) * 0.5,
+      (w.wrist[1] + wristFold[1]) * 0.5 + bodyW * 0.14, wristFold[0], wristFold[1]); c.stroke();
+    const ankleFold: Pt = [((w.wrist[0] + w.digits[3][0]) * 0.5) * 0.45 + w.ankle[0] * 0.55,
+      ((w.wrist[1] + w.digits[3][1]) * 0.5) * 0.45 + w.ankle[1] * 0.55];
+    c.beginPath(); c.moveTo(w.ankle[0], w.ankle[1]);
+    c.quadraticCurveTo((w.ankle[0] + w.digits[3][0]) * 0.5,
+      (w.ankle[1] + w.digits[3][1]) * 0.5, ankleFold[0], ankleFold[1]); c.stroke();
+  };
+  drawWing(wings[0], 0.72);
+  drawWing(wings[1], 1.00);
+
+  /* The interfemoral membrane grows from both ankles and the body. Microbats
+     enclose a visible tail; fruit bats have a shallow no-tail web, vampires an
+     almost absent one. */
+  const left = wings[0], right = wings[1];
+  const rearDepth = fruit ? 0.22 : vamp ? 0.18 : insect ? 0.72 : 0.62;
+  const tailY = Math.max(left.ankle[1], right.ankle[1]) + bodyH * rearDepth;
+  const traceRearEdge = (): void => {
+    c.beginPath(); c.moveTo(left.ankle[0], left.ankle[1]);
+    if (!fruit && !vamp) {
+      /* A broad distal edge makes this an ankle-to-ankle flight membrane, not
+         a skinny tail pennant. The tail meets the middle of the flat basket. */
+      c.quadraticCurveTo(cx - bodyW * 0.98, tailY - bodyH * 0.18,
+        cx - bodyW * 0.34, tailY);
+      c.lineTo(cx + bodyW * 0.34, tailY);
+      c.quadraticCurveTo(cx + bodyW * 0.98, tailY - bodyH * 0.18,
+        right.ankle[0], right.ankle[1]);
+    } else {
+      c.quadraticCurveTo(cx - bodyW * 0.42, tailY - bodyH * 0.02, cx, tailY);
+      c.quadraticCurveTo(cx + bodyW * 0.42, tailY - bodyH * 0.02, right.ankle[0], right.ankle[1]);
     }
   };
-  memb(-1, 0.55);          /* the far wing, behind the body and in shadow */
-
-  /* the body: a small furry spindle slung between the wings */
-  const bg = c.createLinearGradient(cx - bodyR, cy, cx + bodyR, cy);
-  bg.addColorStop(0, p.lit); bg.addColorStop(0.5, p.base); bg.addColorStop(1, p.dark);
-  c.fillStyle = bg;
-  c.beginPath(); c.ellipse(cx, cy + bodyL * 0.10, bodyR, bodyL * 0.62, 0, 0, TAU); c.fill();
-  /* fur breaking the outline, so the body is not a smooth capsule */
-  c.strokeStyle = p.dark; c.lineWidth = 1.2; c.lineCap = 'round';
-  for (let i = 0; i < 46; i++) {
-    const a = r() * TAU;
-    const ex = cx + Math.cos(a) * bodyR, ey = cy + bodyL * 0.10 + Math.sin(a) * bodyL * 0.62;
-    const L = bodyR * (0.16 + r() * 0.22);
-    c.beginPath(); c.moveTo(ex, ey); c.lineTo(ex + Math.cos(a) * L, ey + Math.sin(a) * L); c.stroke();
-  }
-  /* the hind feet and the tail membrane stretched between them */
-  c.fillStyle = `rgba(${(p.cr * 0.52) | 0},${(p.cg * 0.38) | 0},${(p.cb * 0.40) | 0},0.9)`;
-  c.beginPath();
-  c.moveTo(cx - bodyR * 0.9, cy + bodyL * 0.60);
-  c.quadraticCurveTo(cx, cy + bodyL * (fruit ? 0.74 : 0.98), cx + bodyR * 0.9, cy + bodyL * 0.60);
+  c.fillStyle = `rgba(${(p.cr * 0.58) | 0},${(p.cg * 0.46) | 0},${(p.cb * 0.48) | 0},${fruit || vamp ? 0.78 : 0.96})`;
+  traceRearEdge();
+  c.lineTo(cx + bodyW * 0.58, bodyCy + bodyH * 0.42);
+  c.quadraticCurveTo(cx, bodyCy + bodyH * 0.74, cx - bodyW * 0.58, bodyCy + bodyH * 0.42);
   c.closePath(); c.fill();
-
-  /* the head — and EARS that on an echolocating bat are half the animal */
-  const hy = cy - bodyL * 0.56, hr = bodyR * 1.05;
-  const earH = hr * (vamp ? 2.5 : fruit ? 1.05 : 2.1);
-  for (const s of [-1, 1] as const) {
-    c.fillStyle = s < 0 ? shade(p, 0.46) : p.dark;
-    c.save(); c.translate(cx + s * hr * 0.62, hy - hr * 0.42); c.rotate(s * 0.34);
-    c.beginPath(); c.ellipse(0, -earH * 0.44, hr * 0.50, earH * 0.56, 0, 0, TAU); c.fill();
-    c.fillStyle = `rgba(${Math.min(255, p.cr * 1.1) | 0},${(p.cg * 0.62) | 0},${(p.cb * 0.62) | 0},0.5)`;
-    c.beginPath(); c.ellipse(0, -earH * 0.42, hr * 0.26, earH * 0.38, 0, 0, TAU); c.fill();
-    c.restore();
-  }
-  c.fillStyle = volume(c, p, cx, hy, hr * 1.3);
-  c.beginPath(); c.ellipse(cx, hy, hr, hr * 0.92, 0, 0, TAU); c.fill();
-  if (fruit) {   /* ★ POLISH — the flying fox's FOX FACE: a long tapering
-       projecting muzzle with a dark nose tip and bright forward eyes. */
-    c.fillStyle = p.base;
-    c.beginPath();
-    c.moveTo(cx - hr * 0.40, hy + hr * 0.42);
-    c.quadraticCurveTo(cx - hr * 0.22, hy + hr * 1.28, cx, hy + hr * 1.42);   /* tapering snout */
-    c.quadraticCurveTo(cx + hr * 0.22, hy + hr * 1.28, cx + hr * 0.40, hy + hr * 0.42);
-    c.closePath(); c.fill();
-    c.fillStyle = 'rgba(18,12,12,0.9)';
-    c.beginPath(); c.ellipse(cx, hy + hr * 1.36, hr * 0.14, hr * 0.10, 0, 0, TAU); c.fill();
-    c.fillStyle = '#2c1a10';   /* big round fruit-bat eyes, forward on the face */
-    for (const s2 of [-1, 1] as const) { c.beginPath(); c.arc(cx + s2 * hr * 0.30, hy + hr * 0.18, hr * 0.15, 0, TAU); c.fill();
-      c.fillStyle = 'rgba(255,240,220,0.8)'; c.beginPath(); c.arc(cx + s2 * hr * 0.26, hy + hr * 0.12, hr * 0.05, 0, TAU); c.fill(); c.fillStyle = '#2c1a10'; }
-  } else if (vamp) {
-    /* ★ POLISH — the vampire's flat PIG-LIKE nose pad with the M-leaf ridge */
-    c.fillStyle = `rgba(${Math.min(255, p.cr * 1.15) | 0},${(p.cg * 0.68) | 0},${(p.cb * 0.70) | 0},0.95)`;
-    c.beginPath(); c.ellipse(cx, hy + hr * 0.58, hr * 0.34, hr * 0.22, 0, 0, TAU); c.fill();
-    c.strokeStyle = 'rgba(60,24,24,0.8)'; c.lineWidth = 2; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(cx - hr * 0.26, hy + hr * 0.46);   /* the M-shaped leaf ridge */
-    c.quadraticCurveTo(cx - hr * 0.10, hy + hr * 0.34, cx, hy + hr * 0.46);
-    c.quadraticCurveTo(cx + hr * 0.10, hy + hr * 0.34, cx + hr * 0.26, hy + hr * 0.46); c.stroke();
-    c.fillStyle = 'rgba(18,12,12,0.85)';
-    for (const s2 of [-1, 1] as const) { c.beginPath(); c.ellipse(cx + s2 * hr * 0.12, hy + hr * 0.60, hr * 0.07, hr * 0.05, 0, 0, TAU); c.fill(); }
-  } else {
-    c.fillStyle = `rgba(${Math.min(255, p.cr * 1.12) | 0},${(p.cg * 0.70) | 0},${(p.cb * 0.72) | 0},0.95)`;
-    c.beginPath();
-    c.moveTo(cx - hr * 0.24, hy + hr * 0.52);
-    c.quadraticCurveTo(cx, hy + hr * 1.20, cx + hr * 0.24, hy + hr * 0.52);
-    c.closePath(); c.fill();
-    c.fillStyle = 'rgba(18,12,12,0.7)';
-    for (const s of [-1, 1] as const) { c.beginPath(); c.arc(cx + s * hr * 0.11, hy + hr * 0.62, hr * 0.07, 0, TAU); c.fill(); }
-  }
-  if (vamp) {   /* the two blades, which are the whole point of the animal */
-    c.fillStyle = '#f2ece0';
-    for (const s of [-1, 1] as const) {
-      c.beginPath();
-      c.moveTo(cx + s * hr * 0.16, hy + hr * 0.74);
-      c.lineTo(cx + s * hr * 0.32, hy + hr * 0.70);
-      c.lineTo(cx + s * hr * 0.21, hy + hr * 1.14);
-      c.closePath(); c.fill();
+  c.strokeStyle = shade(p, 0.66); c.lineWidth = 2.5;
+  traceRearEdge(); c.stroke();
+  if (!fruit && !vamp) {
+    /* The tapered center tail reaches the distal edge as its own volume.
+       Calcars stay lateral, leaving negative space between three independent
+       supports instead of collapsing into one bright V under the abdomen. */
+    const tailBaseY = bodyCy + bodyH * 0.56;
+    c.fillStyle = shade(p, 0.96); c.strokeStyle = shade(p, 0.28); c.lineWidth = 2.4;
+    c.beginPath(); c.moveTo(cx - bodyW * 0.16, tailBaseY);
+    c.quadraticCurveTo(cx - bodyW * 0.08, tailY - bodyH * 0.16, cx, tailY);
+    c.quadraticCurveTo(cx + bodyW * 0.08, tailY - bodyH * 0.16,
+      cx + bodyW * 0.16, tailBaseY); c.closePath(); c.fill(); c.stroke();
+    c.fillStyle = shade(p, 1.08); c.beginPath(); c.arc(cx, tailY - 1, 2.6, 0, TAU); c.fill();
+    for (const w of wings) {
+      c.strokeStyle = shade(p, 0.28); c.lineWidth = 6.0;
+      c.beginPath(); c.moveTo(w.ankle[0], w.ankle[1]);
+      c.lineTo(cx + w.side * bodyW * 0.72, tailY - bodyH * 0.10); c.stroke();
+      c.strokeStyle = shade(p, 1.04); c.lineWidth = 3.3;
+      c.beginPath(); c.moveTo(w.ankle[0], w.ankle[1]);
+      c.lineTo(cx + w.side * bodyW * 0.72, tailY - bodyH * 0.10); c.stroke();
+      c.fillStyle = shade(p, 1.02); c.beginPath();
+      c.arc(w.ankle[0], w.ankle[1], Math.max(4.2, bodyW * 0.15), 0, TAU); c.fill();
     }
   }
-  for (const s of [-1, 1] as const) eye(c, cx + s * hr * 0.36, hy - hr * 0.12, Math.max(3, hr * 0.15));
-  memb(1, 1);              /* the near wing, over the body */
+
+  /* Fur-clad hind limbs emerge through the membrane and terminate in hooked,
+     grasping toes. Drawing the membrane first keeps every join continuous. */
+  for (const w of wings) {
+    const knee: Pt = [cx + w.side * bodyW * (vamp ? 1.12 : 0.88), bodyCy + bodyH * 0.70];
+    c.strokeStyle = shade(p, w.side < 0 ? 0.48 : 0.64);
+    c.lineWidth = Math.max(vamp ? 7.6 : fruit ? 6.7 : 6.0, bodyW * (vamp ? 0.26 : 0.22));
+    c.beginPath(); c.moveTo(w.hip[0], w.hip[1]); c.lineTo(knee[0], knee[1]); c.lineTo(w.ankle[0], w.ankle[1]); c.stroke();
+    const footY = w.ankle[1] + bodyW * (fruit ? 0.58 : vamp ? 0.52 : 0.46);
+    const palmX = w.ankle[0] + w.side * bodyW * (fruit ? 0.24 : vamp ? 0.22 : 0.18);
+    c.strokeStyle = shade(p, 0.30); c.lineWidth = Math.max(6.2, bodyW * 0.21);
+    c.beginPath(); c.moveTo(w.ankle[0], w.ankle[1]); c.lineTo(palmX, footY); c.stroke();
+    c.strokeStyle = shade(p, 0.90); c.lineWidth = Math.max(4.0, bodyW * 0.14);
+    c.beginPath(); c.moveTo(w.ankle[0], w.ankle[1]); c.lineTo(palmX, footY); c.stroke();
+    c.fillStyle = shade(p, vamp ? 1.08 : 1.00); c.strokeStyle = shade(p, 0.28); c.lineWidth = 2.2;
+    c.beginPath(); c.ellipse(palmX, footY, bodyW * (fruit ? 0.34 : vamp ? 0.36 : 0.32),
+      bodyW * (fruit ? 0.22 : vamp ? 0.24 : 0.21), w.side * 0.16, 0, TAU); c.fill(); c.stroke();
+    for (let toe = -2; toe <= 1; toe++) {
+      const x0 = palmX + toe * bodyW * 0.090;
+      const toeLen = bodyW * (fruit ? 0.68 : vamp ? 0.64 : 0.62);
+      const midX = x0 + w.side * toeLen * 0.78;
+      const midY = footY + bodyW * (0.12 + (toe + 2) * 0.028);
+      c.strokeStyle = shade(p, 1.06); c.lineWidth = Math.max(3.6, bodyW * 0.12);
+      c.beginPath(); c.moveTo(x0, footY);
+      c.quadraticCurveTo(x0 + w.side * toeLen * 0.42, footY + bodyW * 0.04, midX, midY); c.stroke();
+      c.strokeStyle = 'rgba(184,153,114,0.94)'; c.lineWidth = Math.max(2.4, bodyW * 0.080);
+      c.beginPath(); c.moveTo(midX, midY);
+      c.quadraticCurveTo(x0 + w.side * toeLen, midY + toeLen * 0.20,
+        x0 + w.side * toeLen * 0.62, midY + toeLen * 0.48); c.stroke();
+    }
+  }
+
+  /* Torso laid over the inner wing and leg roots: one furry shoulder mass,
+     with no sticker-like seams where the flight apparatus joins the body. */
+  const torsoG = c.createLinearGradient(cx - bodyW, bodyCy, cx + bodyW, bodyCy);
+  torsoG.addColorStop(0, p.dark); torsoG.addColorStop(0.34, p.base);
+  torsoG.addColorStop(0.64, shade(p, 1.10)); torsoG.addColorStop(1, shade(p, 0.54));
+  c.fillStyle = torsoG;
+  c.beginPath();
+  c.moveTo(cx, bodyCy - bodyH);
+  c.bezierCurveTo(cx - bodyW * 1.12, bodyCy - bodyH * 0.90, cx - bodyW * 1.06, bodyCy + bodyH * 0.52, cx, bodyCy + bodyH);
+  c.bezierCurveTo(cx + bodyW * 1.06, bodyCy + bodyH * 0.52, cx + bodyW * 1.12, bodyCy - bodyH * 0.90, cx, bodyCy - bodyH);
+  c.closePath(); c.fill();
+  const chest = c.createRadialGradient(cx - bodyW * 0.20, bodyCy - bodyH * 0.30, 2, cx, bodyCy, bodyH);
+  chest.addColorStop(0, 'rgba(255,236,210,0.19)'); chest.addColorStop(0.56, 'rgba(255,236,210,0.04)'); chest.addColorStop(1, 'rgba(255,236,210,0)');
+  c.fillStyle = chest; c.beginPath(); c.ellipse(cx, bodyCy, bodyW * 0.74, bodyH * 0.88, 0, 0, TAU); c.fill();
+  /* Fine fur follows the body volume inside its silhouette. The former radial
+     edge strokes shrank into porcupine spikes and made the mammal look built
+     from sticks. */
+  c.save(); c.beginPath(); c.ellipse(cx, bodyCy, bodyW * 0.94, bodyH * 0.94, 0, 0, TAU); c.clip();
+  for (let i = 0; i < (fruit ? 120 : 92); i++) {
+    const yy = bodyCy - bodyH * 0.84 + r() * bodyH * 1.68;
+    const half = bodyW * Math.sqrt(Math.max(0, 1 - ((yy - bodyCy) / bodyH) ** 2));
+    const xx = cx + (r() * 2 - 1) * half * 0.88;
+    const len = S * (0.007 + r() * 0.009);
+    c.strokeStyle = `rgba(${(p.cr * 0.46) | 0},${(p.cg * 0.40) | 0},${(p.cb * 0.38) | 0},${0.15 + r() * 0.24})`;
+    c.lineWidth = 0.8 + r() * 0.8;
+    c.beginPath(); c.moveTo(xx, yy - len * 0.45); c.quadraticCurveTo(xx + 1.5, yy, xx, yy + len * 0.55); c.stroke();
+  }
+  c.restore();
+
+  /* Digit I sits outside the membrane at the wrist. Vampire bats carry long,
+     weight-bearing thumbs; the others show a hooked leading-edge thumb. */
+  for (const w of wings) {
+    const thumbJoint: Pt = vamp
+      ? [w.wrist[0] - w.side * bodyW * 0.10, w.wrist[1] + bodyW * 0.92]
+      : [w.wrist[0] + w.side * bodyW * 0.46, w.wrist[1] - bodyW * 0.55];
+    const thumbTip: Pt = vamp
+      ? [w.wrist[0] - w.side * bodyW * 0.26, w.wrist[1] + bodyW * 1.92]
+      : [w.wrist[0] + w.side * bodyW * 1.05, w.wrist[1] - bodyW * 0.64];
+    c.strokeStyle = shade(p, 0.28); c.lineWidth = Math.max(vamp ? 8.2 : 7.0, bodyW * (vamp ? 0.28 : 0.23));
+    c.beginPath(); c.moveTo(w.wrist[0], w.wrist[1]); c.lineTo(thumbJoint[0], thumbJoint[1]); c.lineTo(thumbTip[0], thumbTip[1]); c.stroke();
+    c.strokeStyle = shade(p, vamp ? 1.00 : 0.98); c.lineWidth = Math.max(vamp ? 5.4 : 4.1, bodyW * (vamp ? 0.19 : 0.14));
+    c.beginPath(); c.moveTo(w.wrist[0], w.wrist[1]); c.lineTo(thumbJoint[0], thumbJoint[1]); c.lineTo(thumbTip[0], thumbTip[1]); c.stroke();
+    c.fillStyle = shade(p, vamp ? 1.06 : 1.02);
+    c.beginPath(); c.arc(w.wrist[0], w.wrist[1], Math.max(vamp ? 6.0 : 4.8, bodyW * (vamp ? 0.20 : 0.16)), 0, TAU); c.fill();
+    c.beginPath(); c.arc(thumbJoint[0], thumbJoint[1], Math.max(vamp ? 4.3 : 3.6, bodyW * 0.12), 0, TAU); c.fill();
+    if (vamp) {
+      /* The vampire's first digit is a padded walking support, not a floating
+         claw. The tiny hook starts only after the fleshy distal pad. */
+      c.fillStyle = shade(p, 1.08); c.beginPath();
+      c.ellipse(thumbTip[0], thumbTip[1], bodyW * 0.19, bodyW * 0.27, w.side * 0.16, 0, TAU); c.fill();
+    }
+    c.strokeStyle = 'rgba(181,150,112,0.94)'; c.lineWidth = Math.max(2.4, bodyW * 0.078);
+    c.beginPath(); c.moveTo(thumbTip[0], thumbTip[1]);
+    c.quadraticCurveTo(thumbTip[0] + w.side * bodyW * (vamp ? 0.18 : 0.32), thumbTip[1] + bodyW * 0.03,
+      thumbTip[0] + w.side * bodyW * 0.08, thumbTip[1] + bodyW * (vamp ? 0.15 : 0.28)); c.stroke();
+  }
+  if (fruit) {
+    /* Pteropodids retain a second-digit claw in addition to the free thumb.
+       Put it at the leading fingertip so it survives the 132px card. */
+    for (const w of wings) {
+      const tip = w.digits[0];
+      /* Warm keratin stays visibly rooted in digit II instead of flashing as a
+         white ornament pasted onto the wingtip. */
+      c.strokeStyle = 'rgba(194,154,108,0.94)'; c.lineWidth = 3.3;
+      c.beginPath(); c.moveTo(tip[0], tip[1]);
+      c.quadraticCurveTo(tip[0] + w.side * bodyW * 0.48, tip[1] - bodyW * 0.18,
+        tip[0] + w.side * bodyW * 0.18, tip[1] + bodyW * 0.34); c.stroke();
+    }
+  }
+
+  const headY = bodyCy - bodyH * (fruit ? 0.94 : 0.92);
+  const headW = S * (fruit ? 0.082 : vamp ? 0.072 : 0.061);
+  const headH = S * (fruit ? 0.076 : vamp ? 0.064 : 0.061);
+  const earScale = fruit ? 1.20 : insect ? 2.15 : vamp ? 1.82 : 1.92;
+
+  /* Cupped pinnae grow from the skull rather than floating like rabbit ears. Fruit-bat ears stay
+     moderate; echolocating microbats carry the enormous acoustic surface. */
+  for (const side of [-1, 1] as const) {
+    const outerBase: Pt = [cx + side * headW * 0.70, headY - headH * 0.10];
+    const innerBase: Pt = [cx + side * headW * 0.12, headY - headH * 0.48];
+    const broadEar = !fruit && !vamp;
+    const tip: Pt = [cx + side * headW * (fruit ? 1.00 : vamp ? 1.18 : 0.72), headY - headH * earScale];
+    c.fillStyle = shade(p, side < 0 ? 0.48 : 0.62);
+    c.beginPath(); c.moveTo(outerBase[0], outerBase[1]);
+    if (broadEar) {
+      c.bezierCurveTo(cx + side * headW * 1.70, headY - headH * 0.48,
+        cx + side * headW * 1.38, headY - headH * 1.62, tip[0], tip[1]);
+      c.bezierCurveTo(cx + side * headW * 0.36, headY - headH * 1.80,
+        cx + side * headW * 0.18, headY - headH * 0.72, innerBase[0], innerBase[1]);
+    } else {
+      c.quadraticCurveTo(cx + side * headW * (fruit ? 1.22 : 1.30), headY - headH * 0.80, tip[0], tip[1]);
+      c.quadraticCurveTo(cx + side * headW * 0.48, headY - headH * 1.02, innerBase[0], innerBase[1]);
+    }
+    c.quadraticCurveTo(cx + side * headW * 0.46, headY - headH * 0.08, outerBase[0], outerBase[1]);
+    c.closePath(); c.fill();
+    c.fillStyle = `rgba(${Math.min(255, p.cr * 1.12) | 0},${Math.min(255, p.cg * 0.72) | 0},${Math.min(255, p.cb * 0.74) | 0},0.58)`;
+    c.beginPath(); c.moveTo(cx + side * headW * (broadEar ? 0.66 : 0.61), headY - headH * 0.22);
+    if (broadEar) {
+      c.bezierCurveTo(cx + side * headW * 1.34, headY - headH * 0.70,
+        cx + side * headW * 1.08, headY - headH * 1.50, tip[0], tip[1] + headH * 0.18);
+      c.bezierCurveTo(cx + side * headW * 0.43, headY - headH * 1.45,
+        cx + side * headW * 0.30, headY - headH * 0.68, cx + side * headW * 0.28, headY - headH * 0.46);
+    } else {
+      c.quadraticCurveTo(cx + side * headW * 0.86, headY - headH * 0.92, tip[0], tip[1] + headH * 0.16);
+      c.quadraticCurveTo(cx + side * headW * 0.42, headY - headH * 0.82, cx + side * headW * 0.28, headY - headH * 0.46);
+    }
+    c.closePath(); c.fill();
+  }
+
+  const traceFruitHead = (): void => {
+    c.beginPath();
+    c.moveTo(cx - headW * 0.22, headY + headH * 0.88);
+    c.bezierCurveTo(cx - headW * 0.92, headY + headH * 0.64,
+      cx - headW * 1.04, headY - headH * 0.34, cx - headW * 0.34, headY - headH * 0.92);
+    c.bezierCurveTo(cx + headW * 0.28, headY - headH * 0.86,
+      cx + headW * 0.78, headY - headH * 0.28, cx + headW * 1.48, headY + headH * 0.28);
+    c.bezierCurveTo(cx + headW * 1.42, headY + headH * 0.58,
+      cx + headW * 0.72, headY + headH * 0.78, cx - headW * 0.22, headY + headH * 0.88);
+    c.closePath();
+  };
+  const headG = c.createRadialGradient(cx - headW * 0.28, headY - headH * 0.34, 2, cx, headY, headW * 1.55);
+  headG.addColorStop(0, p.lit); headG.addColorStop(0.54, p.base); headG.addColorStop(1, p.dark);
+  c.fillStyle = headG;
+  if (fruit) { traceFruitHead(); c.fill(); } else { c.beginPath(); c.ellipse(cx, headY, headW, headH, 0, 0, TAU); c.fill(); }
+  if (fruit) {
+    c.save(); traceFruitHead(); c.clip();
+    for (let i = 0; i < 46; i++) {
+      const xx = cx - headW * 0.82 + r() * headW * 2.15;
+      const yy = headY - headH * 0.70 + r() * headH * 1.44;
+      c.strokeStyle = `rgba(${(p.cr * 0.54) | 0},${(p.cg * 0.46) | 0},${(p.cb * 0.42) | 0},${0.16 + r() * 0.22})`;
+      c.lineWidth = 0.9 + r() * 0.7; c.beginPath(); c.moveTo(xx - 2, yy - 1); c.lineTo(xx + 3.5, yy + 1.5); c.stroke();
+    }
+    c.restore();
+  } else {
+    pelt(c, p, r, (a) => [cx + Math.cos(a) * headW * (0.90 + r() * 0.06),
+      headY + Math.sin(a) * headH * (0.90 + r() * 0.06), a], 18, S * 0.005);
+  }
+
+  if (insect) {
+    /* Vespertilionid tragus: a separate pointed cartilage blade inside each
+       pinna. It is drawn after the skull so its base remains visible at card
+       size instead of being silently overpainted by the head. */
+    for (const side of [-1, 1] as const) {
+      c.fillStyle = `rgba(${Math.min(255, p.cr * 1.42) | 0},${Math.min(255, p.cg * 1.08) | 0},${Math.min(255, p.cb * 1.10) | 0},0.96)`;
+      c.beginPath(); c.moveTo(cx + side * headW * 0.34, headY - headH * 0.18);
+      c.lineTo(cx + side * headW * 0.70, headY - headH * 1.28);
+      c.lineTo(cx + side * headW * 1.00, headY - headH * 0.16);
+      c.quadraticCurveTo(cx + side * headW * 0.68, headY + headH * 0.02,
+        cx + side * headW * 0.34, headY - headH * 0.18); c.fill();
+      c.strokeStyle = shade(p, 0.34); c.lineWidth = 2.1;
+      c.beginPath(); c.moveTo(cx + side * headW * 0.34, headY - headH * 0.18);
+      c.lineTo(cx + side * headW * 0.70, headY - headH * 1.28);
+      c.lineTo(cx + side * headW * 1.00, headY - headH * 0.16); c.stroke();
+    }
+  }
+
+  const darkEye = (x: number, y: number, rr: number, iris: string): void => {
+    c.fillStyle = 'rgba(14,10,10,0.92)'; c.beginPath(); c.arc(x, y, rr, 0, TAU); c.fill();
+    c.fillStyle = iris; c.beginPath(); c.arc(x, y, rr * 0.62, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(255,244,220,0.88)'; c.beginPath(); c.arc(x - rr * 0.28, y - rr * 0.32, rr * 0.20, 0, TAU); c.fill();
+  };
+
+  if (fruit) {
+    /* Flying-fox face: the cranial vault, brow, bridge and rostrum were filled
+       as ONE profile above. Details follow that volume; no muzzle patch can
+       detach into a pasted-on dog snout and no generic eye pass can overpaint. */
+    darkEye(cx - headW * 0.22, headY - headH * 0.17, headW * 0.145, '#6d421e');
+    darkEye(cx + headW * 0.30, headY - headH * 0.12, headW * 0.210, '#744923');
+    c.strokeStyle = 'rgba(54,34,24,0.48)'; c.lineWidth = 2.0;
+    c.beginPath(); c.moveTo(cx + headW * 0.28, headY - headH * 0.02);
+    c.quadraticCurveTo(cx + headW * 0.78, headY + headH * 0.02,
+      cx + headW * 1.22, headY + headH * 0.26); c.stroke();
+    c.fillStyle = '#17110f'; c.beginPath();
+    c.ellipse(cx + headW * 1.47, headY + headH * 0.31, headW * 0.22, headH * 0.18, 0.10, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(255,255,255,0.20)'; c.beginPath();
+    c.ellipse(cx + headW * 1.40, headY + headH * 0.25, headW * 0.060, headH * 0.045, -0.3, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(28,18,14,0.66)'; c.lineWidth = 1.6;
+    c.beginPath(); c.moveTo(cx + headW * 1.36, headY + headH * 0.50);
+    c.quadraticCurveTo(cx + headW * 0.96, headY + headH * 0.66,
+      cx + headW * 0.54, headY + headH * 0.62); c.stroke();
+  } else if (vamp) {
+    /* Compact swollen muzzle below a broad, flat nose pad. The nose—not a
+       pair of novelty teeth—owns the card-scale face read. */
+    const muzzleG = c.createRadialGradient(cx, headY + headH * 0.36, 2,
+      cx, headY + headH * 0.48, headW * 0.62);
+    muzzleG.addColorStop(0, shade(p, 1.08)); muzzleG.addColorStop(1, shade(p, 0.70));
+    c.fillStyle = muzzleG; c.beginPath();
+    c.ellipse(cx, headY + headH * 0.48, headW * 0.56, headH * 0.44, 0, 0, TAU); c.fill();
+    c.fillStyle = '#75464a'; c.beginPath();
+    c.moveTo(cx - headW * 0.48, headY + headH * 0.30);
+    c.lineTo(cx + headW * 0.48, headY + headH * 0.30);
+    c.quadraticCurveTo(cx + headW * 0.46, headY + headH * 0.68, cx, headY + headH * 0.75);
+    c.quadraticCurveTo(cx - headW * 0.46, headY + headH * 0.68,
+      cx - headW * 0.48, headY + headH * 0.30); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(54,22,24,0.88)'; c.lineWidth = 2.2;
+    c.beginPath(); c.moveTo(cx - headW * 0.48, headY + headH * 0.30);
+    c.lineTo(cx + headW * 0.48, headY + headH * 0.30); c.stroke();
+    c.fillStyle = '#181010';
+    for (const side of [-1, 1] as const) {
+      c.beginPath(); c.ellipse(cx + side * headW * 0.16, headY + headH * 0.52,
+        headW * 0.070, headH * 0.060, 0, 0, TAU); c.fill();
+    }
+    c.strokeStyle = 'rgba(34,18,18,0.74)'; c.lineWidth = 1.8;
+    c.beginPath(); c.moveTo(cx - headW * 0.28, headY + headH * 0.84);
+    c.quadraticCurveTo(cx, headY + headH * 0.91, cx + headW * 0.28, headY + headH * 0.84); c.stroke();
+    darkEye(cx - headW * 0.36, headY - headH * 0.08, headW * 0.105, '#2a1714');
+    darkEye(cx + headW * 0.36, headY - headH * 0.08, headW * 0.105, '#2a1714');
+  } else {
+    /* Representative microbat: small eyes, leafless wrinkled muzzle. The
+       Insect-Eating Bat's identity comes from the pinnae/tragus above. */
+    c.fillStyle = shade(p, 0.82);
+    c.beginPath(); c.moveTo(cx - headW * 0.32, headY + headH * 0.16);
+    c.quadraticCurveTo(cx - headW * 0.22, headY + headH * 0.74, cx, headY + headH * 0.88);
+    c.quadraticCurveTo(cx + headW * 0.22, headY + headH * 0.74, cx + headW * 0.32, headY + headH * 0.16);
+    c.closePath(); c.fill();
+    c.fillStyle = '#231a18'; c.beginPath(); c.ellipse(cx, headY + headH * 0.70, headW * 0.19, headH * 0.12, 0, 0, TAU); c.fill();
+    for (const side of [-1, 1] as const) darkEye(cx + side * headW * 0.38, headY - headH * 0.05, headW * 0.09, '#241b18');
+    c.strokeStyle = 'rgba(30,20,18,0.52)'; c.lineWidth = 1.2;
+    for (const side of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(cx + side * headW * 0.08, headY + headH * 0.48);
+      c.quadraticCurveTo(cx + side * headW * 0.34, headY + headH * 0.58, cx + side * headW * 0.42, headY + headH * 0.80); c.stroke();
+    }
+  }
 }
 
 /** ★ WAVE 10 — THE CROCODILIANS. All four were unrouted and fell through to the

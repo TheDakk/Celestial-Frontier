@@ -1,8 +1,25 @@
 # Celestial Frontier — Species & Genome System
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js). ⚠ v1.8.9: every reader of the `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note in §2.4.
+**STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 reset
+overlay below matches `port/v2` as of 2026-08-10. ⚠ v1.8.9: every reader of the
+`size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
+in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
+
+> **2026-08-10 v2 full-catalogue reset:** `_earthName` identifies a fixed Earth
+> organism; bred descendants carry `_earthBlend`, `_earthBlendKingdom`, and
+> `_anchorVal`. The selected lineage's exact catalogue owner is stored at breeding
+> because a mixed-kingdom child's own kingdom may come from the other parent and
+> four Earth names occur in two sets. Fauna descendants reach the lineage-aware HD
+> scaffold before generic procedural mapping; non-fauna descendants reach the exact
+> kingdom+name owner with the child genome unchanged. Portrait and thumbnail caches
+> use the complete plain genome as pixel identity, not seed/name alone, because
+> reverse-parent crosses may share a seed while inheriting different traits.
+> Earth review identity is also `catalogue set + species`: 1,010 Earth identities
+> own 1,014 route rows because four names occur in two sets. The live review ruler
+> is `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`; no prior band is
+> a current PASS.
 
 > **B15.4 classifier + naming (render/text-only, fp 50/50):** `FA_BODY[0]` renamed `"six-limbed"` →
 > `"sturdy-limbed"` (Plan 0 is now a "land grazer" whose limb count is set by the limb gene, not the
@@ -137,6 +154,11 @@ fauna ~600 names, flora ~300, fungi 27, microbe 22. Assigned by `seed % pool.len
 
 ## 4. Data / save fields
 The genome object itself is persisted inside each Compendium entry (`entry.genome`) and inside placed champions. Persisted genome fields: all the index genes above, `lumin`, `gen`, `heat`, and any set markers (`x`, `aq`, `af`, `wild`, `parents`, `apex`, `par`, `ep`, `evolved`). Load-time hardening coerces/clamps `apex` (must be 12–TIER_MAX or dropped, ~11288). `_earthName`/`_cradle` are app-side conveniences re-derived on the world, not part of the determinism domain. New fields must default safely when absent.
+
+In the current v2 lineage overlay, bred descendants also persist `_earthBlend`,
+`_earthBlendKingdom`, and `_anchorVal`. `_earthBlendKingdom` defaults through a
+live-route ownership inference for pre-marker genomes; new crosses always record
+it explicitly. It is render ownership metadata, not a new RNG draw.
 
 ## 5. Determinism
 - Every gene comes from `mulberry32`/`hashInt` seeded by the object seed — **no `Math.random()`/`Date.now()`** in these domain modules (enforced by validate.js's grep). The lone `Math.random` genome calls (Lab preview ~15567/15582) are UI-only and never enter the codex/fingerprint.

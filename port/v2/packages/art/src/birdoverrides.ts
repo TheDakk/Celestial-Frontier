@@ -18,105 +18,144 @@
      · upright   — the penguin/auk stance: a stiff FLIPPER, not a wing
      · bills     — short (finch cone) · chisel (woodpecker) · needle
                    (hummingbird) · duck (spatulate) */
-import { faunaBird, type BirdSpec, type FaunaPainter } from './faunaoverrides.js';
+import { faunaBird, faunaBirdB1, faunaBirdB2, faunaBirdB3, type BirdB1Kind, type BirdB2Kind, type BirdB3Kind, type BirdSpec, type FaunaPainter } from './faunaoverrides.js';
 
 const B = (spec: BirdSpec): FaunaPainter => (c, g, p, n) => faunaBird(c, g, p, spec, n);
+const B1 = (kind: BirdB1Kind): FaunaPainter => (c, g, p) => faunaBirdB1(c, g, p, kind);
+const B2 = (kind: BirdB2Kind): FaunaPainter => (c, g, p) => faunaBirdB2(c, g, p, kind);
+const B3 = (kind: BirdB3Kind): FaunaPainter => (c, g, p) => faunaBirdB3(c, g, p, kind);
+
+/* Named B1 routes live outside the table so the override audit sees a strict
+   species-to-painter mapping rather than treating anatomy labels as routes. */
+const ospreyB1 = B1('Osprey'), kestrelB1 = B1('Kestrel'), condorB1 = B1('Condor');
+const owlB1 = B1('Owl'), snowyOwlB1 = B1('Snowy Owl'), desertOwlB1 = B1('Desert Owl');
+const hummingbirdB1 = B1('Hummingbird'), woodpeckerB1 = B1('Woodpecker');
+const bustardB1 = B1('Bustard'), rheaB1 = B1('Rhea'), seriemaB1 = B1('Seriema'), screamerB1 = B1('Screamer');
+
+/* Wave 2c B2: literal named whole forms. Keep the kind strings outside the
+   route table so the override audit sees only species-to-painter ownership. */
+const duckB2 = B2('Duck'), eiderDuckB2 = B2('Eider Duck'), gooseB2 = B2('Goose');
+const flamingoB2 = B2('Flamingo'), heronB2 = B2('Heron'), bitternB2 = B2('Bittern'), egretB2 = B2('Egret');
+const cootB2 = B2('Coot'), moorhenB2 = B2('Moorhen'), railB2 = B2('Rail');
+const pelicanB2 = B2('Pelican'), boobyB2 = B2('Booby'), cormorantB2 = B2('Cormorant');
+const frigatebirdB2 = B2('Frigatebird'), gannetB2 = B2('Gannet'), puffinB2 = B2('Puffin');
+const petrelB2 = B2('Petrel'), seabirdB2 = B2('Seabird'), skuaB2 = B2('Skua');
+const snowPetrelB2 = B2('Snow Petrel'), ternB2 = B2('Tern');
+const avocetB2 = B2('Avocet'), godwitB2 = B2('Godwit'), snipeB2 = B2('Snipe');
+const oystercatcherB2 = B2('Oystercatcher'), sandpiperB2 = B2('Sandpiper');
+const grebeB2 = B2('Grebe'), loonB2 = B2('Loon');
+
+/* Wave 2d B3: exact named whole forms.  Toucan, Kookaburra and Hornbill have
+   earlier FAUNA_NAME ownership and are routed beside that table instead. */
+const choughB3=B3('Chough'),crowB3=B3('Crow'),jayB3=B3('Jay'),ravenB3=B3('Raven');
+const guineafowlB3=B3('Guineafowl'),peacockB3=B3('Peacock'),pheasantB3=B3('Pheasant'),roosterB3=B3('Rooster'),turkeyB3=B3('Turkey');
+const quetzalB3=B3('Quetzal'),sandgrouseB3=B3('Sandgrouse'),tropicbirdB3=B3('Tropicbird'),weaverbirdB3=B3('Weaverbird');
+const cockatooB3=B3('Cockatoo'),macawB3=B3('Macaw'),parrotB3=B3('Parrot');
+const doveB3=B3('Dove'),pigeonB3=B3('Pigeon');
+const finchB3=B3('Finch'),larkB3=B3('Lark'),sparrowB3=B3('Sparrow'),starlingB3=B3('Starling'),swiftB3=B3('Swift'),tanagerB3=B3('Tanager');
 
 export const BIRD_NAME: Record<string, FaunaPainter> = {
   /* ── raptors and scavengers: the hooked bill, the heavy foot ── */
   /* wave 50 — see the Hawk/Falcon note in faunaoverrides: three raptors, one
      bird, separated only by hue. An osprey is the biggest of the three and
      flies on long angled wings over water. */
-  'Osprey': B({ legs: 0.02, bill: 'hook', size: 1.14, hue: '#6c5f50', wings: 'soaring', talons: true, plump: 0.96 }),
-  'Kestrel': B({ legs: 0.02, bill: 'hook', size: 0.72, hue: '#a5713d' }),
-  'Condor': B({ legs: 0.03, bill: 'hook', size: 1.30, hue: '#2a2723' }),
-  'Skua': B({ legs: 0.02, bill: 'hook', size: 0.90, hue: '#5d5347', wings: 'soaring' }),
+  'Osprey': ospreyB1,
+  'Kestrel': kestrelB1,
+  'Condor': condorB1,
+  'Skua': skuaB2,
   /* ── OWLS: the facial disc, forward eyes, ear tufts ── */
-  'Owl': B({ legs: 0.015, bill: 'hook', owl: true, neck: 'none', size: 1.0, crest: true, hue: '#7d6a4f' }),
-  'Snowy Owl': B({ legs: 0.015, bill: 'hook', owl: true, neck: 'none', size: 1.10, hue: '#eef1f4' }),
-  'Desert Owl': B({ legs: 0.015, bill: 'hook', owl: true, neck: 'none', size: 0.88, crest: true, hue: '#c3ab84' }),
+  'Owl': owlB1,
+  'Snowy Owl': snowyOwlB1,
+  'Desert Owl': desertOwlB1,
   /* ── corvids and songbirds: small, perched, cone bills ── */
-  'Crow': B({ legs: 0.025, bill: 'stout', size: 0.80, hue: '#23252e', billHue: '#16171c', legHue: '#16171c' }),
-  'Raven': B({ legs: 0.025, bill: 'hook', size: 0.92, hue: '#191b22', plump: 1.06, elong: 1.08, billHue: '#141519', legHue: '#141519' }),
+  'Crow': crowB3,
+  'Raven': ravenB3,
   'Magpie': B({ legs: 0.025, bill: 'stout', size: 0.74, tail: 'long', hue: '#22242c', billHue: '#141519', legHue: '#141519', bib: '#eef0f2' }),
-  'Jay': B({ legs: 0.02, bill: 'stout', size: 0.66, crest: true, hue: '#3f6fa8' }),
-  'Chough': B({ legs: 0.02, bill: 'long', size: 0.70, hue: '#24262c' , billHue: '#e2451c', legHue: '#d93a12' }),
-  'Sparrow': B({ legs: 0.015, bill: 'cone', size: 0.46, hue: '#8a6f4c', plump: 1.10, elong: 0.96, streak: true, cap: '#6b5334' }),
-  'Finch': B({ legs: 0.015, bill: 'cone', size: 0.44, hue: '#a8552f', plump: 1.18, elong: 0.92 }),
+  'Jay': jayB3,
+  'Chough': choughB3,
+  'Sparrow': sparrowB3,
+  'Finch': finchB3,
   'Robin': B({ legs: 0.018, bill: 'fine', size: 0.50, hue: '#6d6154', plump: 1.28, elong: 0.86, bib: '#d4622a' }),
   'Cardinal': B({ legs: 0.018, bill: 'cone', size: 0.54, hue: '#c0261f', plump: 1.22, elong: 0.88, crest: true, mask: true }),
-  'Tanager': B({ legs: 0.015, bill: 'cone', size: 0.48, hue: '#c9342b', plump: 1.12, elong: 0.94 }),
-  'Weaverbird': B({ legs: 0.015, bill: 'cone', size: 0.46, hue: '#e3c231', plump: 1.10, elong: 0.94, mask: true, nest: true }),
-  'Starling': B({ legs: 0.018, bill: 'fine', size: 0.52, hue: '#2b2f3d', plump: 0.94, elong: 1.06, speckle: true  }),
-  'Lark': B({ legs: 0.020, bill: 'fine', size: 0.48, hue: '#9c8560', plump: 0.98, elong: 1.06, streak: true, crest: true }),
+  'Tanager': tanagerB3,
+  'Weaverbird': weaverbirdB3,
+  'Starling': starlingB3,
+  'Lark': larkB3,
   'Swallow': B({ legs: 0.012, bill: 'fine', size: 0.46, hue: '#2f4a6b', plump: 0.74, elong: 1.34, tail: 'forked', bib: '#c9743e' }),
-  'Swift': B({ legs: 0.008, bill: 'fine', size: 0.46, hue: '#4b4640', plump: 0.58, elong: 1.62, tail: 'forked' }),
-  'Hummingbird': B({ hue: '#1e8a5a', legs: 0.008, bill: 'needle', size: 0.34 }),
-  'Kingfisher': B({ legs: 0.012, bill: 'chisel', size: 0.56, crest: true, hue: '#1b6fa8' }),
-  'Woodpecker': B({ legs: 0.015, bill: 'chisel', size: 0.62, crest: true, hue: '#2c2a28' , cling: true }),
-  'Quetzal': B({ legs: 0.015, bill: 'short', size: 0.62, tail: 'long', crest: true, hue: '#0f8a6a' }),
+  'Swift': swiftB3,
+  'Hummingbird': hummingbirdB1,
+  'Kingfisher': B({ legs: 0.012, bill: 'long', size: 0.62, crest: true, headMass: 1.52, neck: 'none', tail: 'short', hue: '#1b6fa8' }),
+  'Woodpecker': woodpeckerB1,
+  'Quetzal': quetzalB3,
   /* ── parrots ── */
-  'Parrot': B({ legs: 0.018, bill: 'hook', parrotBill: true, zygo: true, headMass: 1.3, size: 0.72, tail: 'long', hue: '#2f9e4a' }),
+  'Parrot': parrotB3,
   /* ★ D-ART-121 — a macaw's bill and feet had REGRESSED to the shared eagle
      assets; a parrot's deep bill and two-back toes are its whole read. */
-  'Macaw': B({ legs: 0.020, bill: 'hook', parrotBill: true, zygo: true, headMass: 1.4, size: 0.92, tail: 'long', hue: '#c2331f' }),
-  'Cockatoo': B({ legs: 0.020, bill: 'hook', size: 0.82, crest: true, hue: '#f0ece2' }),
+  'Macaw': macawB3,
+  'Cockatoo': cockatooB3,
   /* ── gamebirds: heavy body, short legs, fanned tails ── */
-  'Peacock': B({ legs: 0.045, bill: 'stout', size: 0.96, tail: 'fan', eyespots: true, crest: true, hue: '#12656b' }),
-  'Pheasant': B({ legs: 0.045, bill: 'stout', size: 0.86, tail: 'long', hue: '#8c4a22' }),
-  'Turkey': B({ legs: 0.045, bill: 'stout', size: 1.05, tail: 'fan', hue: '#4a3a2c' }),
-  'Grouse': B({ legs: 0.030, bill: 'short', size: 0.80, tail: 'fan', hue: '#6d5942' }),
+  'Peacock': peacockB3,
+  'Pheasant': pheasantB3,
+  'Turkey': turkeyB3,
+  'Grouse': B({ legs: 0.030, bill: 'short', size: 0.80, tail: 'fan', hue: '#6d5942', streak: true, featherFeet: true, browComb: true }),
   'Ptarmigan': B({ legs: 0.028, bill: 'stout', size: 0.72, hue: '#e8e6df', browComb: true, featherFeet: true }),
   'Quail': B({ legs: 0.025, bill: 'short', size: 0.54, crest: true, hue: '#a08761' }),
   'Partridge': B({ legs: 0.028, bill: 'short', size: 0.62, hue: '#a4794e', plump: 1.20, elong: 0.94, streak: true }),
-  'Guineafowl': B({ legs: 0.040, bill: 'short', size: 0.78, pearled: true, hue: '#3c4250' }),
-  'Bustard': B({ legs: 0.075, bill: 'stout', size: 0.98, hue: '#a08f70' }),
-  'Sandgrouse': B({ legs: 0.028, bill: 'short', size: 0.60, hue: '#c3a878', plump: 0.96, elong: 1.14, speckle: true }),
+  'Guineafowl': guineafowlB3,
+  'Bustard': bustardB1,
+  'Sandgrouse': sandgrouseB3,
   'Roadrunner': B({ legs: 0.060, bill: 'long', size: 0.72, tail: 'long', crest: true, hue: '#8a7554' }),
-  'Dove': B({ legs: 0.018, bill: 'fine', size: 0.58, hue: '#b9aa9c', plump: 1.14, elong: 1.00 }),
-  'Pigeon': B({ legs: 0.020, bill: 'fine', size: 0.62, hue: '#6e7684', plump: 1.06, elong: 1.04, cap: '#3f6a63' }),
+  'Dove': doveB3,
+  'Pigeon': pigeonB3,
   /* ── WATERFOWL: the waterline is the whole read ── */
-  'Duck': B({ legs: 0.010, bill: 'duck', size: 0.76, swim: true, neck: 'short', hue: '#5b6b4a' }),
-  'Eider Duck': B({ legs: 0.010, bill: 'duck', size: 0.82, swim: true, neck: 'short', hue: '#e4e2dc' }),
-  'Goose': B({ legs: 0.012, bill: 'duck', size: 0.98, swim: true, neck: 'long', hue: '#7d7468' }),
+  'Duck': duckB2,
+  'Eider Duck': eiderDuckB2,
+  'Goose': gooseB2,
   /* sooty black with a WHITE bill running up into a white forehead shield */
-  'Coot': B({ legs: 0.012, bill: 'cone', size: 0.62, swim: true, hue: '#26292f', plump: 1.16, cap: '#eef0f2', billHue: '#f0f2f4' }),
+  'Coot': cootB2,
   /* red bill and shield, and a WHITE STREAK along the flank */
-  'Moorhen': B({ legs: 0.012, bill: 'cone', size: 0.60, swim: true, hue: '#3d4a44', plump: 1.06, cap: '#c33a26', bib: '#e8e6df' }),
-  'Loon': B({ legs: 0.008, bill: 'long', size: 0.86, swim: true, neck: 'long', hue: '#23272e' }),
-  'Grebe': B({ legs: 0.008, bill: 'long', size: 0.66, swim: true, neck: 'long', crest: true, hue: '#6a5340' }),
-  'Cormorant': B({ legs: 0.012, bill: 'hook', size: 0.90, swim: true, neck: 'long', hue: '#262a2e'  }),
+  'Moorhen': moorhenB2,
+  'Loon': loonB2,
+  'Grebe': grebeB2,
+  'Cormorant': cormorantB2,
   /* ── UPRIGHT divers: a flipper, not a wing ── */
   'Penguin': B({ legs: 0.012, bill: 'stout', size: 0.94, upright: true, neck: 'none', flightless: true, hue: '#20242c' }),
   'Auk': B({ legs: 0.012, bill: 'stout', size: 0.68, upright: true, neck: 'none', hue: '#26292f'  }),
   'Guillemot': B({ legs: 0.012, bill: 'long', size: 0.70, upright: true, neck: 'none', hue: '#2b2f36'  }),
   /* ── seabirds ── */
-  'Gull': B({ legs: 0.030, bill: 'hook', size: 0.82, hue: '#e6e9ee', billHue: '#e0b13c' }),
-  'Tern': B({ legs: 0.022, bill: 'long', size: 0.64, tail: 'forked', hue: '#e9edf2' }),
-  'Petrel': B({ legs: 0.014, bill: 'long', size: 0.62, hue: '#4d4741', wings: 'soaring' }),
-  'Snow Petrel': B({ legs: 0.014, bill: 'long', size: 0.60, hue: '#f1f4f7', wings: 'soaring', billHue: '#1a1c20' }),
-  'Gannet': B({ legs: 0.016, bill: 'long', size: 0.92, hue: '#eef0f2' }),
-  'Booby': B({ legs: 0.020, bill: 'long', size: 0.84, hue: '#dfe3e8' }),
-  'Tropicbird': B({ legs: 0.012, bill: 'long', size: 0.70, tail: 'long', hue: '#f0f2f5' }),
-  'Frigatebird': B({ legs: 0.012, bill: 'hook', size: 0.96, tail: 'forked', wings: 'soaring', elong: 1.25, hue: '#22242a' }),
-  'Seabird': B({ legs: 0.024, bill: 'long', size: 0.76, hue: '#cfd5dc' }),
+  'Gull': B({ legs: 0.030, bill: 'hook', size: 0.82, hue: '#e6e9ee', billHue: '#e0b13c', wings: 'soaring', belly: '#f4f5f5' }),
+  'Tern': ternB2,
+  'Petrel': petrelB2,
+  'Snow Petrel': snowPetrelB2,
+  'Gannet': gannetB2,
+  'Booby': boobyB2,
+  'Tropicbird': tropicbirdB3,
+  'Frigatebird': frigatebirdB2,
+  'Seabird': seabirdB2,
+  'Pelican': pelicanB2,
+  'Puffin': puffinB2,
   /* ── shorebirds and marsh ── */
   'Plover': B({ legs: 0.045, bill: 'short', size: 0.50, hue: '#8d8778', plump: 1.16, elong: 0.92, bib: '#f0ece2' }),
-  'Sandpiper': B({ legs: 0.050, bill: 'long', size: 0.50, hue: '#a2926f', plump: 0.94, elong: 1.10, streak: true }),
-  'Curlew': B({ legs: 0.070, bill: 'downcurve', size: 0.72, hue: '#a2916f', billHue: '#2b2118' }),
-  'Oystercatcher': B({ legs: 0.055, bill: 'chisel', size: 0.66, hue: '#23262b', billHue: '#e0561c' }),
-  'Egret': B({ legs: 0.120, bill: 'long', size: 0.84, neck: 'long', hue: '#f2f4f6' }),
-  'Bittern': B({ legs: 0.080, bill: 'long', size: 0.74, neck: 'long', hue: '#9b8256' }),
-  'Rail': B({ legs: 0.055, bill: 'long', size: 0.56, hue: '#7b6a52' }),
+  'Sandpiper': sandpiperB2,
+  'Curlew': B({ legs: 0.100, bill: 'downcurve', size: 0.72, hue: '#a2916f', billHue: '#2b2118', legHue: '#8b6b52' }),
+  'Oystercatcher': oystercatcherB2,
+  'Egret': egretB2,
+  'Bittern': bitternB2,
+  'Rail': railB2,
+  'Flamingo': flamingoB2,
+  'Heron': heronB2,
+  'Avocet': avocetB2,
+  'Godwit': godwitB2,
+  'Snipe': snipeB2,
   /* ── the big flightless ratites ── */
-  'Rhea': B({ legs: 0.125, bill: 'stout', size: 1.12, flightless: true, neck: 'long', hue: '#8b8172' }),
-  'Seriema': B({ legs: 0.095, bill: 'hook', size: 0.80, crest: true, hue: '#a99878' }),
-  'Screamer': B({ legs: 0.060, bill: 'short', size: 0.88, hue: '#6b6459' }),
+  'Rhea': rheaB1,
+  'Seriema': seriemaB1,
+  'Screamer': screamerB1,
   /* ── the swan's S-curve ── */
   'Swan': B({ legs: 0.012, bill: 'duck', size: 1.10, swim: true, neck: 'swan', hue: '#f4f6f8' , billHue: '#e08a1c', legHue: '#2a2723' }),
   /* ★ WAVE 10 — Chicken and Rooster were unrouted and came out as waders.
      A gamebird is a plump body on scaly legs with a comb, wattles and an
      upswept tail; the rooster adds the sickle plumes and the hackle cape. */
-  'Chicken': B({ legs: 0.038, bill: 'cone', size: 0.74, hue: '#c9a05c', plump: 1.30, elong: 0.90, tail: 'fan', comb: true }),
-  'Rooster': B({ legs: 0.046, bill: 'cone', size: 0.86, hue: '#8d3a24', plump: 1.24, elong: 0.92, tail: 'long', comb: true, bib: '#d8a53a' }),
+  'Chicken': B({ legs: 0.038, bill: 'cone', size: 0.74, hue: '#c9a05c', plump: 1.30, elong: 0.90, tail: 'shortFan', comb: true }),
+  'Rooster': roosterB3,
 };

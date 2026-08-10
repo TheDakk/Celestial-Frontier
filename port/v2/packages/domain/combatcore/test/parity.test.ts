@@ -124,4 +124,21 @@ describe('code-fixtures — share & champion codes over the 23-genome corpus', (
       expect(canon(n) !== canon(GENOMES[gk]), `normGenome.${gk}.changed`).toBe(want.changed);
     }
   });
+  it('set-qualified Earth lineage survives normalization and share-code round trip', () => {
+    const genome = {
+      ...clone(GENOMES.fauna_basic),
+      _earthBlend: 'Green Algae',
+      _earthBlendKingdom: 'flora',
+      _anchorVal: 0.73,
+    };
+    const normalized = call(normGenome as never, clone(genome)) as Record<string, unknown>;
+    expect(normalized._earthBlend).toBe('Green Algae');
+    expect(normalized._earthBlendKingdom).toBe('flora');
+    const code = call(encodeCreature as never, { name: 'Lineage Sentinel', genome }, false);
+    expect(typeof code).toBe('string');
+    const decoded = call(decodeCreature as never, code) as { genome: Record<string, unknown> } | null;
+    expect(decoded?.genome._earthBlend).toBe('Green Algae');
+    expect(decoded?.genome._earthBlendKingdom).toBe('flora');
+    expect(decoded?.genome._anchorVal).toBe(0.73);
+  });
 });

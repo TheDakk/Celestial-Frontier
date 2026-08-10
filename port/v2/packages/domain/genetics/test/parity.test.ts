@@ -61,6 +61,33 @@ describe('audited invariants (PROCESS_LAWS: assert the outcome)', () => {
     expect(crossGenome(ax, b).x).toBeUndefined();
     expect(crossGenome({ ...a, x: 1 }, { ...b, x: 1 }).x).toBe(1);
   });
+  it('mixed-kingdom children retain the Earth lineage catalogue in both parent orders', () => {
+    const outcomes = new Set<string>();
+    for (let seed = 1; seed <= 512; seed++) {
+      const apple = { ...makeGenome(hashInt(seed, 0xA991E, 1), 'flora', 1), _earthName: 'Apple' };
+      const alien = makeGenome(hashInt(seed, 0xFA09A, 2), 'fauna', 2);
+      for (const child of [crossGenome(apple, alien), crossGenome(alien, apple)]) {
+        expect(child._earthBlend).toBe('Apple');
+        expect(child._earthBlendKingdom).toBe('flora');
+        outcomes.add(`${child.kingdom}|${child._earthBlendKingdom}`);
+      }
+    }
+    expect(outcomes.has('flora|flora')).toBe(true);
+    expect(outcomes.has('fauna|flora')).toBe(true);
+  });
+  it('same-name cross-kingdom parents retain the selected catalogue owner', () => {
+    const selected = new Set<string>();
+    for (let seed = 1; seed <= 512; seed++) {
+      const flora = { ...makeGenome(hashInt(seed, 0x6A1A, 1), 'flora', 1), _earthName: 'Green Algae' };
+      const microbe = { ...makeGenome(hashInt(seed, 0x6A1A, 2), 'microbe', 1), _earthName: 'Green Algae' };
+      for (const child of [crossGenome(flora, microbe), crossGenome(microbe, flora)]) {
+        expect(child._earthBlend).toBe('Green Algae');
+        expect(['flora', 'microbe']).toContain(child._earthBlendKingdom);
+        selected.add(String(child._earthBlendKingdom));
+      }
+    }
+    expect(selected).toEqual(new Set(['flora', 'microbe']));
+  });
   it('evolveGenome(g, 0) returns the genome untouched', () => {
     const g = makeGenome(99, 'fauna', 0.5);
     expect(evolveGenome(g, 0)).toBe(g);
