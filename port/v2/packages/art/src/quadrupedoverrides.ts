@@ -61,7 +61,7 @@ export interface QuadSpec {
   /** ★ POLISH WAVE — small COAT ACCENTS that are whole identities: a pale rump
       patch (banteng), a dark lower-flank band (gazelle/springbok), vertical
       rump stripes (impala). One axis, several species. */
-  accent?: 'rumpPatch' | 'flankBand' | 'rumpStripes' | 'chestBlaze';
+  accent?: 'rumpPatch' | 'flankBand' | 'rumpStripes' | 'chestBlaze' | 'chestCrescent' | 'chestU';
   /** ★ GOLD AUDIT — the glider membrane: a loose furred sheet slung from
       foreleg to hindleg, sagging below the belly line (Sugar Glider, Colugo) */
   patagium?: boolean;
@@ -137,14 +137,22 @@ export interface QuadSpec {
   cheekRuff?: number;
   /** Opt-in paw enlargement for snow-footed or wetland cats. */
   pawScale?: number;
+  /** Capybara-style toe webbing, retained as a named-only paw accent. */
+  webbedFeet?: boolean;
+  /** Orange rodent enamel, distinct from the ordinary dark mammal mouth. */
+  incisors?: 'orange';
   /** Per-species skull scale; family default remains the fallback. */
   headScale?: number;
   /** Ocelot's elongated chain rosettes, distinct from leopard rings. */
   rosetteChain?: boolean;
+  /** Named-only ring scale for smoky snow-leopard or compact jaguar rosettes. */
+  rosetteScale?: number;
+  /** Named-only spot sizing for small cats; generic spots remain unchanged. */
+  spotScale?: number;
   /** Paired dark cheek bars used by the ocelot. */
   cheekBars?: boolean;
   /** A carried, upward-curled tail rather than the default hanging sweep. */
-  tailPose?: 'raised';
+  tailPose?: 'raised' | 'upright';
   /** Catalogue-scale domestic-cat face accents; deliberately opt-in. */
   domesticCatFace?: boolean;
   mat?: Material;
@@ -161,13 +169,13 @@ export interface QuadSpec {
   /* ★ wave 22b — a mane is drawn BEHIND and BACK from the head, never centred
      on it: centred, it swallows the muzzle and eyes and the animal loses the
      only part anyone actually reads. */
-  mane?: 'lion' | 'ruff' | 'crest' | 'crestUp';
+  mane?: 'lion' | 'ruff' | 'crest' | 'crestUp' | 'bison' | 'hyena';
   /** ★ wave 40 — the body's POSTURE. 'stand' (default) is the horizontal
       quadruped this painter has always drawn; 'sentinel' rears it onto its
       hind legs with the forelimbs tucked (meerkat, prairie dog, ground
       squirrel). It rotates the SPINE, so the silhouette, coat, material,
       shading and rim all follow without knowing anything about it. */
-  pose?: 'sentinel' | 'hang';
+  pose?: 'sentinel' | 'hang' | 'glide';
   /* ★ WAVE 39 — THE OKAPI PROBLEM. Its coat runs on the HINDQUARTERS ONLY and
      is PALE on a dark ground — the exact inverse of what `coat:'stripes'` does,
      and its verifier called the inversion "real and damning". Two axes, both
@@ -192,6 +200,20 @@ export interface QuadSpec {
       reference row names the carriage — a giraffe, a gerenuk, a stalking
       cheetah — sets it here; everyone else inherits the family plan. */
   carry?: number;
+  /** Named only: an extra shoulder mass for bears, bison and high-withers bovids. */
+  shoulderHump?: number;
+  /** Named only: make the planted claws read at thumbnail size without changing every paw. */
+  clawScale?: number;
+  /** Named muzzle material/colour (tan bear muzzle, pale sloth-bear snout). */
+  muzzleHue?: string;
+  /** Distinct face signatures that cannot be inferred from a coat pattern. */
+  faceMark?: 'spectacles' | 'muzzleBars' | 'whiteBlaze' | 'darkMask';
+  /** A true loose throat fold, separate from the torso/chest mass. */
+  dewlap?: number;
+  /** Named vertical head placement relative to the withers (positive lowers it). */
+  headDrop?: number;
+  /** Eared seal posture: chest propped on a long fore-flipper, never a prone loaf. */
+  pinnipedPose?: 'eared';
 }
 
 /** ★ WAVE 6 — THE SKULL. Nick, after looking at the wave-5 export: *"the heads
@@ -443,7 +465,183 @@ export function nameSeedQ(name: string): number {
   for (let i = 0; i < name.length; i++) h = Math.imul(h ^ name.charCodeAt(i), 0x85EB) >>> 0;
   return h >>> 0;
 }
+
+/** A glider is not a side-on quadruped with a sagging flank patch.  Colugo and
+    Sugar Glider both failed precisely because the old patagium could not join
+    neck, wrists, ankles and tail into one visible membrane.  This deliberately
+    narrow pose is opt-in, preserves every standing mammal, and gives those two
+    animals their read-at-a-glance plan before any coat decoration. */
+function faunaGlider(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+  const p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0x4C1D ^ nameSeedQ(name)) >>> 0));
+  const colugo = name === 'Colugo';
+  const cx = S * 0.50, cy = S * 0.49;
+  const wing = S * (colugo ? 0.34 : 0.30);
+  const reach = S * (colugo ? 0.30 : 0.26);
+  const tailL = S * (colugo ? 0.29 : 0.26);
+
+  /* a body shadow under the low point makes the animal read as a flying sheet,
+     not a flat sticker floating in the vignette */
+  c.fillStyle = 'rgba(0,0,0,0.34)';
+  c.beginPath(); c.ellipse(cx, S * 0.83, S * 0.22, S * 0.025, 0, 0, TAU); c.fill();
+
+  /* tail first: both gliders use it as the membrane's trailing edge. */
+  c.strokeStyle = p.dark; c.lineWidth = S * (colugo ? 0.060 : 0.050); c.lineCap = 'round';
+  c.beginPath();
+  c.moveTo(cx, cy + S * 0.11);
+  c.quadraticCurveTo(cx - tailL * 0.35, cy + S * 0.23, cx - tailL * 0.82, cy + S * 0.31);
+  c.quadraticCurveTo(cx - tailL * 1.05, cy + S * 0.34, cx - tailL, cy + S * 0.26);
+  c.stroke();
+
+  /* one unbroken kite: head -> wrist -> ankle -> tail -> other ankle -> wrist.
+     The light rim intentionally follows the free edge so the membrane survives
+     card scale on the dark background. */
+  const mg = c.createRadialGradient(cx - wing * 0.16, cy - wing * 0.24, 8, cx, cy, wing * 1.38);
+  mg.addColorStop(0, `rgba(${Math.min(255, p.cr * 1.28) | 0},${Math.min(255, p.cg * 1.22) | 0},${Math.min(255, p.cb * 1.16) | 0},0.96)`);
+  mg.addColorStop(0.58, `rgba(${p.cr | 0},${p.cg | 0},${p.cb | 0},0.90)`);
+  mg.addColorStop(1, `rgba(${p.cr * 0.38 | 0},${p.cg * 0.38 | 0},${p.cb * 0.42 | 0},0.92)`);
+  c.fillStyle = mg;
+  c.beginPath();
+  c.moveTo(cx, cy - S * 0.16);
+  c.quadraticCurveTo(cx + wing * 0.46, cy - S * 0.18, cx + wing, cy - S * 0.02);
+  c.quadraticCurveTo(cx + wing * 0.86, cy + reach * 0.48, cx + wing * 0.64, cy + reach);
+  c.quadraticCurveTo(cx + wing * 0.12, cy + reach * 1.08, cx - tailL, cy + S * 0.26);
+  c.quadraticCurveTo(cx - wing * 0.56, cy + reach * 0.90, cx - wing * 0.74, cy + reach * 0.22);
+  c.quadraticCurveTo(cx - wing, cy - S * 0.03, cx - wing * 0.48, cy - S * 0.18);
+  c.quadraticCurveTo(cx - S * 0.13, cy - S * 0.23, cx, cy - S * 0.16);
+  c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(232,239,232,0.82)'; c.lineWidth = 3.2; c.lineJoin = 'round'; c.stroke();
+
+  /* limb bones and fingers make the membrane anatomy rather than a blanket. */
+  c.strokeStyle = `rgba(${p.cr * 0.45 | 0},${p.cg * 0.42 | 0},${p.cb * 0.38 | 0},0.90)`;
+  c.lineWidth = 3.4; c.lineCap = 'round';
+  for (const side of [-1, 1]) {
+    c.beginPath(); c.moveTo(cx + side * S * 0.045, cy - S * 0.025);
+    c.lineTo(cx + side * wing * 0.62, cy + S * 0.01); c.lineTo(cx + side * wing, cy - S * 0.02); c.stroke();
+    c.beginPath(); c.moveTo(cx + side * S * 0.03, cy + S * 0.07);
+    c.lineTo(cx + side * wing * 0.42, cy + reach * 0.57); c.lineTo(cx + side * wing * 0.64, cy + reach); c.stroke();
+  }
+
+  /* compact body and face sit on the leading edge of the kite. */
+  const headR = S * (colugo ? 0.105 : 0.092);
+  const bg = c.createRadialGradient(cx - headR * 0.32, cy - S * 0.18 - headR * 0.36, 2, cx, cy - S * 0.18, headR * 1.2);
+  bg.addColorStop(0, p.lit); bg.addColorStop(1, p.dark);
+  c.fillStyle = bg; c.beginPath(); c.ellipse(cx, cy - S * 0.18, headR, headR * 0.88, 0, 0, TAU); c.fill();
+  c.fillStyle = `rgb(${Math.min(255, p.cr * 1.10) | 0},${Math.min(255, p.cg * 1.05) | 0},${Math.min(255, p.cb * 0.98) | 0})`;
+  c.beginPath(); c.ellipse(cx, cy - S * 0.105, headR * 0.50, headR * 0.38, 0, 0, TAU); c.fill();
+
+  /* huge forward eyes are a colugo/sugar-glider identity cue, not decorative
+     highlights.  They deliberately break the head silhouette at thumbnail size. */
+  for (const side of [-1, 1]) {
+    const ex = cx + side * headR * 0.48, ey = cy - S * 0.19;
+    c.fillStyle = '#10131a'; c.beginPath(); c.arc(ex, ey, headR * 0.34, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(236,244,250,0.90)'; c.beginPath(); c.arc(ex - headR * 0.10, ey - headR * 0.11, headR * 0.095, 0, TAU); c.fill();
+  }
+  c.fillStyle = colugo ? '#26231e' : '#d7a8a0';
+  c.beginPath(); c.arc(cx, cy - S * 0.105, headR * 0.13, 0, TAU); c.fill();
+
+  if (colugo) {
+    /* lichen camouflage: irregular low-contrast blotches, never a leopard coat. */
+    for (let i = 0; i < 38; i++) {
+      const a = r() * TAU, d = Math.sqrt(r()) * wing * 0.78;
+      const x = cx + Math.cos(a) * d, y = cy + Math.sin(a) * d * 0.68;
+      c.fillStyle = i % 3 ? 'rgba(82,92,68,0.45)' : 'rgba(178,170,132,0.32)';
+      c.beginPath(); c.ellipse(x, y, S * (0.010 + r() * 0.014), S * (0.006 + r() * 0.010), a, 0, TAU); c.fill();
+    }
+  } else {
+    /* Sugar Glider's unmistakable dark dorsal stripe from crown to tail root. */
+    c.strokeStyle = 'rgba(28,30,38,0.88)'; c.lineWidth = S * 0.024; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx, cy - S * 0.27); c.quadraticCurveTo(cx - S * 0.02, cy + S * 0.07, cx - tailL * 0.38, cy + S * 0.22); c.stroke();
+    for (let i = 0; i < 16; i++) {
+      const x = cx - tailL * (0.12 + i / 20), y = cy + S * (0.13 + i / 210);
+      c.strokeStyle = `rgba(${p.cr * 0.55 | 0},${p.cg * 0.55 | 0},${p.cb * 0.55 | 0},0.72)`;
+      c.lineWidth = 2.2; c.beginPath(); c.moveTo(x, y); c.lineTo(x - S * 0.018, y + S * 0.042); c.stroke();
+    }
+  }
+}
+
+/** Fur seals and sea lions are not short-legged quadrupeds with flippers added.
+    The eared-pinniped plan holds the chest up on a visibly long fore-flipper,
+    keeps the hind flippers trailing behind, and gives the head a readable ear
+    flap. It is deliberately opt-in: true seals and Walrus retain their prone
+    anatomy and pixels. */
+function faunaEaredPinniped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+  const p = pal(p0, spec);
+  const seaLion = name === 'Sea Lion';
+  const r = mulberry32((((g.seed as number) ^ 0xE4E3 ^ nameSeedQ(name)) >>> 0));
+  const cx = S * 0.50, cy = S * 0.61;
+  const bw = S * (seaLion ? 0.275 : 0.250), bh = S * (seaLion ? 0.125 : 0.112);
+  const headR = S * (seaLion ? 0.096 : 0.087);
+  const tone = (k: number): string => `rgb(${Math.min(255, p.cr * k) | 0},${Math.min(255, p.cg * k) | 0},${Math.min(255, p.cb * k) | 0})`;
+
+  c.fillStyle = 'rgba(0,0,0,0.34)'; c.beginPath();
+  c.ellipse(cx, S * 0.81, bw * 1.28, S * 0.030, 0, 0, TAU); c.fill();
+
+  /* trailing paired hind flippers: clearly behind the body, not planted feet */
+  c.fillStyle = tone(0.54);
+  for (const dy of [-0.028, 0.045]) {
+    c.beginPath();
+    c.moveTo(cx - bw * 0.92, cy + bh * 0.22 + S * dy);
+    c.quadraticCurveTo(cx - bw * 1.42, cy + bh * (dy < 0 ? 0.18 : 0.48), cx - bw * 1.62, cy + bh * (dy < 0 ? 0.52 : 0.78));
+    c.quadraticCurveTo(cx - bw * 1.18, cy + bh * (dy < 0 ? 0.64 : 0.92), cx - bw * 0.76, cy + bh * (dy < 0 ? 0.42 : 0.60));
+    c.closePath(); c.fill();
+  }
+
+  /* low rear barrel to raised chest: an S-curved outline makes the animal prop
+     itself up rather than lie as a featureless horizontal bean. */
+  const bg = c.createLinearGradient(cx - bw, cy - bh, cx + bw, cy + bh);
+  bg.addColorStop(0, tone(0.54)); bg.addColorStop(0.52, tone(1.03)); bg.addColorStop(1, tone(0.46));
+  c.fillStyle = bg;
+  c.beginPath();
+  c.moveTo(cx - bw, cy + bh * 0.32);
+  c.bezierCurveTo(cx - bw * 0.98, cy - bh * 0.64, cx - bw * 0.32, cy - bh * 0.92, cx + bw * 0.30, cy - bh * 0.52);
+  c.bezierCurveTo(cx + bw * 0.72, cy - bh * 0.42, cx + bw * 0.84, cy - bh * 1.35, cx + bw * 1.02, cy - bh * 1.72);
+  c.bezierCurveTo(cx + bw * 1.22, cy - bh * 0.78, cx + bw * 1.16, cy + bh * 0.70, cx + bw * 0.52, cy + bh * 0.98);
+  c.bezierCurveTo(cx - bw * 0.06, cy + bh * 1.22, cx - bw * 0.72, cy + bh * 0.98, cx - bw, cy + bh * 0.32);
+  c.closePath(); c.fill();
+
+  /* short contour strokes provide a furred neck for Fur Seal and sleek folds
+     for Sea Lion without altering their shared chest-first geometry. */
+  c.strokeStyle = seaLion ? `rgba(${p.cr * 0.36 | 0},${p.cg * 0.30 | 0},${p.cb * 0.26 | 0},0.35)` : `rgba(${p.cr * 1.24 | 0},${p.cg * 1.18 | 0},${p.cb * 1.08 | 0},0.34)`;
+  c.lineCap = 'round';
+  for (let i = 0; i < (seaLion ? 36 : 62); i++) {
+    const x = cx - bw * 0.78 + r() * bw * 1.48, y = cy - bh * 0.50 + r() * bh * 1.25;
+    c.lineWidth = 1.2 + r() * 1.3; c.beginPath(); c.moveTo(x, y); c.lineTo(x - S * 0.015, y + S * (0.010 + r() * 0.020)); c.stroke();
+  }
+
+  /* long, weight-bearing fore-flipper: the defining eared-seal read. */
+  const fx = cx + bw * 0.66, fy = cy - bh * 0.34;
+  c.save(); c.translate(fx, fy); c.rotate(0.52);
+  c.fillStyle = tone(0.48); c.beginPath();
+  c.ellipse(S * 0.052, S * 0.116, S * 0.058, S * 0.154, 0, 0, TAU); c.fill();
+  c.strokeStyle = `rgba(0,0,0,0.32)`; c.lineWidth = 1.8;
+  for (let i = -1; i <= 1; i++) { c.beginPath(); c.moveTo(i * S * 0.014, S * 0.010); c.lineTo(i * S * 0.021, S * 0.225); c.stroke(); }
+  c.restore();
+
+  /* neck and dog-like head held above the chest */
+  const hx = cx + bw * 1.00, hy = cy - bh * 1.66;
+  c.fillStyle = tone(0.74); c.beginPath(); c.ellipse(hx - headR * 0.55, hy + headR * 0.60, headR * 0.60, headR * 0.94, -0.46, 0, TAU); c.fill();
+  const hg = c.createRadialGradient(hx - headR * 0.34, hy - headR * 0.30, 2, hx, hy, headR * 1.3);
+  hg.addColorStop(0, tone(1.28)); hg.addColorStop(1, tone(0.46)); c.fillStyle = hg;
+  c.beginPath(); c.ellipse(hx, hy, headR, headR * 0.82, -0.08, 0, TAU); c.fill();
+  c.fillStyle = tone(1.10); c.beginPath(); c.ellipse(hx + headR * 0.70, hy + headR * 0.18, headR * 0.68, headR * 0.38, 0.06, 0, TAU); c.fill();
+  c.fillStyle = '#171517'; c.beginPath(); c.ellipse(hx + headR * 1.18, hy + headR * 0.17, headR * 0.15, headR * 0.11, 0, 0, TAU); c.fill();
+  c.fillStyle = '#111318'; c.beginPath(); c.arc(hx + headR * 0.16, hy - headR * 0.18, headR * 0.17, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(238,244,248,0.86)'; c.beginPath(); c.arc(hx + headR * 0.10, hy - headR * 0.24, headR * 0.052, 0, TAU); c.fill();
+
+  /* visible external ear flap, set behind the head rather than a generic dot */
+  c.fillStyle = seaLion ? '#8e6250' : '#775747'; c.beginPath();
+  c.ellipse(hx - headR * 0.70, hy - headR * 0.35, headR * 0.30, headR * 0.40, -0.64, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(44,28,26,0.62)'; c.beginPath(); c.ellipse(hx - headR * 0.70, hy - headR * 0.35, headR * 0.13, headR * 0.22, -0.64, 0, TAU); c.fill();
+
+  /* muzzle whisker fan makes the head read as a pinniped, not a dog. */
+  c.strokeStyle = 'rgba(238,232,214,0.62)'; c.lineWidth = 1.2; c.lineCap = 'round';
+  for (let i = -2; i <= 2; i++) { c.beginPath(); c.moveTo(hx + headR * 0.82, hy + headR * 0.24); c.lineTo(hx + headR * (1.34 + i * 0.05), hy + headR * (0.34 + i * 0.15)); c.stroke(); }
+}
+
 export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = ''): void {
+  if (spec.pinnipedPose === 'eared') { faunaEaredPinniped(c, g, p0, spec, name); return; }
+  if (spec.pose === 'glide') { faunaGlider(c, g, p0, spec, name); return; }
   const r = mulberry32((((g.seed as number) ^ 0x9AD4 ^ nameSeedQ(name)) >>> 0));
   /* the species NAME varies real proportion, so two specs that happen to
      match cannot render the same animal — D-ART-20 applied back to wave 4,
@@ -480,7 +678,8 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      the countershading and the rim light, and the seam is not fixed, it is
      unreachable. */
   const humpAt = (t: number): number => {
-    if (!spec.humps) return 0;
+    const shoulder = bodyH * (spec.shoulderHump ?? 0) * Math.exp(-(((t - 0.84) / 0.135) ** 2));
+    if (!spec.humps) return shoulder;
     /* ⚠ SUMMING TWO GAUSSIANS MERGES THEM. At width 0.155 the bactrian's pair
        overlapped in the middle and added to a single broad dome — one hump on
        the animal whose TWO humps are the only thing separating it from a
@@ -491,6 +690,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     const w = two ? 0.115 : 0.155;
     let lift = 0;
     for (const hu of hxs) lift = Math.max(lift, Math.exp(-(((t - hu) / w) ** 2)));
+    lift += shoulder / (bodyH * (two ? 0.46 : 0.62));
     return bodyH * (two ? 0.46 : 0.62) * lift;   /* ★ POLISH — the dromedary hump reads taller */
   };
   const topY = (t: number): number => topYBase(t) - humpAt(t);
@@ -890,6 +1090,12 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       const legW2 = legW0 * (crouch > 0.9 ? 1.24 : 1) * (spec.pawScale ?? 1);
       c.fillStyle = dark(padK);
       c.beginPath(); c.ellipse(x, gy - legW2 * 0.22, legW2 * 1.06, legW2 * 0.44, 0, 0, TAU); c.fill();
+      if (spec.webbedFeet) {
+        c.fillStyle = `rgba(${Math.min(255, p.cr * 0.92 + 18) | 0},${Math.min(255, p.cg * 0.80 + 16) | 0},${Math.min(255, p.cb * 0.68 + 12) | 0},${0.92 * m})`;
+        c.beginPath(); c.moveTo(x - legW2 * 0.72, gy - legW2 * 0.11);
+        c.quadraticCurveTo(x, gy - legW2 * 0.62, x + legW2 * 0.76, gy - legW2 * 0.08);
+        c.lineTo(x + legW2 * 0.58, gy + legW2 * 0.12); c.lineTo(x - legW2 * 0.58, gy + legW2 * 0.12); c.closePath(); c.fill();
+      }
       c.fillStyle = dark(toeK);
       for (let i = -1; i <= 1; i++) {
         c.beginPath(); c.ellipse(x + i * legW2 * 0.44, gy - legW2 * 0.06, legW2 * 0.30, legW2 * 0.26, 0, 0, TAU); c.fill();
@@ -912,6 +1118,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       }
     } else if (foot === 'plantigrade') {
       /* a bear puts its heel down: a long sole with claws at the front */
+      const claw = spec.clawScale ?? 1;
       c.fillStyle = dark(0.48);
       c.beginPath();
       c.ellipse(x + legW * 0.24, gy - legW * 0.22, legW * (hind ? 1.05 : 0.86), legW * 0.40, 0, 0, TAU);
@@ -919,7 +1126,8 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       c.fillStyle = `rgba(238,232,216,${0.72 * m})`;
       for (let i = 0; i < 4; i++) {
         c.beginPath();
-        c.ellipse(x + legW * (0.62 + i * 0.16), gy - legW * 0.44, legW * 0.07, legW * 0.13, 0.5, 0, TAU);
+        c.ellipse(x + legW * (0.62 + i * 0.16), gy - legW * 0.44,
+          legW * 0.07 * claw, legW * 0.13 * claw, 0.5, 0, TAU);
         c.fill();
       }
     } else if (foot === 'claw') {
@@ -1027,7 +1235,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       if (coat === 'bands') coatBars(c, limb, r, lp, { count: 7, width: 1.15, phiTop: 1.62, phiEnd: -1.45, lean: 0.02, forkRate: 0, hard: true, rgb: spec.coatRgb ?? [18, 15, 16] });
       else if (coat === 'stripes') coatBars(c, limb, r, lp, { count: 5, width: 0.85, phiEnd: -0.95, forkRate: 0 });
       else if (coat === 'spots') coatSpots(c, limb, r, lp, { count: 20, size: 0.52, soft: 0.14, rgb: [24, 17, 10] });
-      else if (coat === 'rosettes') coatRosettes(c, limb, r, lp, { count: 7, size: 0.5 });
+      else if (coat === 'rosettes') coatRosettes(c, limb, r, lp, { count: 7, size: 0.5 * (spec.rosetteScale ?? 1) });
       else if (coat === 'patches') coatPatches(c, limb, r, lp, { nu: 4, nphi: 3, seam: 0.78, rgb: [126, 74, 26] });
       else if (coat === 'panda') coatBlocks(c, limb, lp, [{ u0: 0, u1: 1, phiLo: -1.6, phiHi: 1.7, rgb: '#15181e' }]);
     }
@@ -1130,7 +1338,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   const neckAng = 1.0026 * (0.10 + 0.90 * carryF);
   const neckReach = neckLen * 1.0208;
   const headX = shoulderX + neckReach * Math.cos(neckAng);
-  const headY = shoulderY - neckReach * Math.sin(neckAng);
+  const headY = shoulderY - neckReach * Math.sin(neckAng) + S * (spec.headDrop ?? 0);
   /* ★ WAVE 22b — A HEAD BELONGS TO THE ANIMAL'S LENGTH, not only its depth.
      Sized purely off bodyH, a sand cat got a 28px skull on a 210px body — 13%,
      where a real carnivore's head is about a fifth of its body. Long shallow
@@ -1183,8 +1391,8 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   if (coat === 'patches') coatPatches(c, neckTube, r, p, { nu: 7, nphi: 4, seam: 0.78, rgb: [126, 74, 26] });
   else if (coat === 'stripes') coatBars(c, neckTube, r, p, { count: 7, width: 0.9, phiEnd: -0.9, forkRate: 0.1 });
   else if (coat === 'bands') coatBars(c, neckTube, r, p, { count: 9, width: 1.1, phiEnd: -1.4, lean: 0.02, forkRate: 0, hard: true, rgb: [18, 15, 16] });
-  else if (coat === 'spots') coatSpots(c, neckTube, r, p, { count: 34, size: 0.8, soft: 0.13, rgb: [24, 17, 10] });
-  else if (coat === 'rosettes') coatRosettes(c, neckTube, r, p, { count: 12, size: 0.8,
+  else if (coat === 'spots') coatSpots(c, neckTube, r, p, { count: 34, size: 0.8 * (spec.spotScale ?? 1), soft: 0.13, rgb: [24, 17, 10] });
+  else if (coat === 'rosettes') coatRosettes(c, neckTube, r, p, { count: 12, size: 0.8 * (spec.rosetteScale ?? 1),
     ...(spec.rosetteChain ? { chain: true } : {}) });
   else if (coat === 'shaggy') coatShaggy(c, neckTube, r, p, { count: 46 });
   c.restore();
@@ -1208,11 +1416,11 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      prototype for the graphics upgrade; MAT_DETAIL is the cost dial. */
   if (!spec.alien?.skin) coatMaterial(c, body, r, p, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL });
   if (coat === 'spots') {
-    coatSpots(c, body, r, p, { count: 150, size: 0.92, soft: 0.13, rgb: [24, 17, 10] });
+    coatSpots(c, body, r, p, { count: 150, size: 0.92 * (spec.spotScale ?? 1), soft: 0.13, rgb: [24, 17, 10] });
   } else if (coat === 'fawn') {
     coatSpots(c, body, r, p, { count: 60, size: 0.8, soft: 0.4, rgb: [246, 242, 228], phiLo: -0.4, phiHi: 1.3 });
   } else if (coat === 'rosettes') {
-    coatRosettes(c, body, r, p, { count: spec.rosetteChain ? 22 : 38, core: name === 'Jaguar',
+    coatRosettes(c, body, r, p, { count: spec.rosetteChain ? 22 : 38, core: name === 'Jaguar', size: spec.rosetteScale ?? 1,
       ...(spec.rosetteChain ? { chain: true } : {}) });
   } else if (coat === 'stripes') {
     /* ★ THE TIGER. Fifteen "stripes" were fifteen COLUMNS OF FIVE SOFT DOTS,
@@ -1304,6 +1512,34 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     }
   }
   c.restore();
+  if (name === 'Striped Hyena') {
+    /* A striped hyena's markings are sparse vertical flank bars, not tiger
+       bands wrapping the whole body. This deliberately narrow named pass keeps
+       every striped felid/equid on its own established coat route. */
+    c.save(); c.beginPath(); body.trace(c, 56); c.clip();
+    c.strokeStyle = 'rgba(56,44,34,0.38)'; c.lineCap = 'round';
+    for (let i = 0; i < 5; i++) {
+      const u = 0.24 + i * 0.115;
+      const a2 = AX(u), rr = RAD(u);
+      c.lineWidth = Math.max(1.8, rr * 0.065);
+      c.beginPath();
+      c.moveTo(a2[0] - rr * 0.18, a2[1] - rr * 0.62);
+      c.quadraticCurveTo(a2[0] - rr * 0.12, a2[1], a2[0] - rr * 0.02, a2[1] + rr * 0.54);
+      c.stroke();
+    }
+    c.restore();
+  }
+  if (name === 'Badger') {
+    /* Badger is a low pale mustelid with one broad black mantle, not a tiny
+       tiger. The mantle follows the dorsal profile and fades into the flanks. */
+    c.save(); c.beginPath(); body.trace(c, 56); c.clip();
+    const a0 = AX(0.10), a1 = AX(0.92);
+    c.strokeStyle = 'rgba(34,30,28,0.86)'; c.lineWidth = bodyH * 0.56; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(a0[0], a0[1] - RAD(0.10) * 0.26);
+    c.bezierCurveTo(cx - bodyW * 0.25, cy - bodyH * 0.74, cx + bodyW * 0.22, cy - bodyH * 0.72,
+      a1[0], a1[1] - RAD(0.92) * 0.34); c.stroke();
+    c.restore();
+  }
   if (spec.alien?.sail) {
     alienSail(c, cx + bodyW * 0.05, topY(0.5) + bodyH * 0.05, bodyW * 0.62, bodyH * 1.5, p);
   }
@@ -1392,6 +1628,37 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
         c.beginPath(); c.moveTo(headX + (i - 2) * 2, headY - headR * 0.85);
         c.quadraticCurveTo(headX - headR * 0.35, headY - headR * 0.55 + i, headX - headR * (0.45 + mr2() * 0.2), headY - headR * 0.15); c.stroke();
       }
+    }
+  } else if (spec.mane === 'bison' || spec.mane === 'hyena') {
+    /* These are directional capes, not a lion's circular face ruff. Bison needs
+       a heavy head/hump curtain; a striped hyena needs a narrow upright ridge
+       over high shoulders. Both are opt-in named silhouettes. */
+    const bisonMane = spec.mane === 'bison';
+    const [withersX, withersY] = AX(0.84);
+    const [backX, backY] = AX(bisonMane ? 0.46 : 0.60);
+    const dark = `rgb(${Math.max(0, p.cr * (bisonMane ? 0.42 : 0.34)) | 0},${Math.max(0, p.cg * (bisonMane ? 0.40 : 0.34)) | 0},${Math.max(0, p.cb * (bisonMane ? 0.38 : 0.34)) | 0})`;
+    c.fillStyle = dark;
+    c.beginPath();
+    c.moveTo(backX, backY - bodyH * (bisonMane ? 0.16 : 0.10));
+    c.quadraticCurveTo(withersX - bodyW * 0.06, withersY - bodyH * (bisonMane ? 0.42 : 0.26),
+      headX - headR * 0.42, headY - headR * 0.24);
+    c.quadraticCurveTo(headX - headR * 0.56, headY + headR * (bisonMane ? 1.28 : 0.68),
+      withersX - bodyW * 0.04, withersY + bodyH * (bisonMane ? 0.74 : 0.20));
+    c.quadraticCurveTo(backX + bodyW * 0.10, backY + bodyH * (bisonMane ? 0.26 : 0.12),
+      backX, backY - bodyH * (bisonMane ? 0.16 : 0.10));
+    c.closePath(); c.fill();
+    const mr3 = mulberry32((((g.seed as number) ^ (bisonMane ? 0xB150 : 0x48EA)) >>> 0));
+    c.strokeStyle = `rgba(${Math.min(255, p.cr * 0.82) | 0},${Math.min(255, p.cg * 0.76) | 0},${Math.min(255, p.cb * 0.70) | 0},0.68)`;
+    c.lineCap = 'round';
+    const strokes = bisonMane ? 92 : 52;
+    for (let i = 0; i < strokes; i++) {
+      const t = i / Math.max(1, strokes - 1);
+      const sx = backX + (withersX - backX) * t + (mr3() - 0.5) * bodyH * 0.10;
+      const sy = backY - bodyH * (bisonMane ? 0.15 + 0.20 * Math.sin(t * Math.PI) : 0.09);
+      const len = bodyH * (bisonMane ? 0.20 + mr3() * 0.22 : 0.10 + mr3() * 0.11);
+      c.lineWidth = Math.max(1.5, bodyH * (bisonMane ? 0.030 : 0.020));
+      c.beginPath(); c.moveTo(sx, sy);
+      c.quadraticCurveTo(sx - bodyW * 0.04, sy + len * 0.42, sx - bodyW * 0.03, sy + len); c.stroke();
     }
   } else if (spec.mane) {
     const mr = headR * (spec.mane === 'lion' ? 2.05 : 1.45);
@@ -1505,10 +1772,25 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   if (coat === 'patches') coatPatches(c, head, r, p, { nu: 4, nphi: 3, seam: 0.76, rgb: [126, 74, 26] });
   else if (coat === 'stripes') coatBars(c, head, r, p, { count: 6, width: 0.75, phiEnd: -0.8, forkRate: 0 });
   else if (coat === 'spots') coatSpots(c, head, r, p, { count: 22, size: 0.62, soft: 0.16, rgb: [24, 17, 10] });
-  else if (coat === 'rosettes') coatRosettes(c, head, r, p, { count: 7, size: 0.6,
+  else if (coat === 'rosettes') coatRosettes(c, head, r, p, { count: 7, size: 0.6 * (spec.rosetteScale ?? 1),
     ...(spec.rosetteChain ? { chain: true } : {}) });
   else if (coat === 'shaggy') coatShaggy(c, head, r, p, { count: 34 });
   c.restore();
+  if (spec.muzzleHue) {
+    /* A bear's tan snout or a sloth bear's pale muzzle is a surface of the
+       existing skull, not a second head pasted onto it.  Clipping keeps the
+       named colour inside the species' own muzzle profile. */
+    const mp = head.pt(0.76, -0.08);
+    c.save(); c.beginPath(); head.trace(c, 52); c.clip();
+    const mg = c.createRadialGradient(mp[0] - skMuz * 0.22, mp[1] - skMuz * 0.18,
+      skMuz * 0.10, mp[0], mp[1], skMuz * 1.05);
+    mg.addColorStop(0, spec.muzzleHue);
+    mg.addColorStop(0.72, spec.muzzleHue);
+    mg.addColorStop(1, 'rgba(0,0,0,0)');
+    c.fillStyle = mg;
+    c.beginPath(); c.ellipse(mp[0], mp[1], skMuz * 1.06, skMuz * 0.72, ang, 0, TAU); c.fill();
+    c.restore();
+  }
   /* ★ WAVE 16 — THE CHEEK. Without a jowl the muzzle leaves the skull as a
      plank: the audit's words on animal after animal. A cat's broad cheek ruff,
      a horse's masseter, a bear's heavy jaw — all the same mass in different
@@ -1554,6 +1836,22 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       const tip = rp(back, down);
       c.beginPath(); c.moveTo(root[0], root[1]); c.lineTo(tip[0], tip[1]); c.stroke();
     }
+  }
+  if (spec.dewlap) {
+    /* A dewlap is a hanging throat fold attached to the jaw/neck junction. It
+       cannot be simulated by making the whole chest deeper without turning a
+       bovid into a barrel. */
+    const dk = spec.dewlap;
+    const throat = head.pt(0.26, -0.88);
+    const neckBase = headAxis(0.10);
+    c.fillStyle = `rgba(${Math.max(0, p.cr * 0.62) | 0},${Math.max(0, p.cg * 0.62) | 0},${Math.max(0, p.cb * 0.58) | 0},0.92)`;
+    c.beginPath();
+    c.moveTo(throat[0] - headR * 0.12, throat[1] - headR * 0.04);
+    c.quadraticCurveTo(throat[0] - headR * (0.46 + dk * 0.24), throat[1] + headR * (0.34 + dk * 0.16),
+      neckBase[0] - headR * 0.20, neckBase[1] + headR * (0.72 + dk * 0.42));
+    c.quadraticCurveTo(neckBase[0] + headR * 0.12, neckBase[1] + headR * (0.34 + dk * 0.22),
+      throat[0] + headR * 0.20, throat[1] + headR * 0.12);
+    c.closePath(); c.fill();
   }
 
   /* the nose, ON the end of the muzzle rather than beside it */
@@ -1659,6 +1957,13 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.beginPath(); c.ellipse(ch[0], ch[1], headR * 0.20 * SK.jaw * 3, headR * 0.13 * SK.jaw * 3, ang, 0, TAU); c.fill();
   }
 
+  if (spec.incisors === 'orange') {
+    c.save(); c.translate(nosePt[0] - headR * 0.04, nosePt[1] + headR * 0.18); c.rotate(ang);
+    c.fillStyle = '#d86f20';
+    c.beginPath(); c.rect(-headR * 0.22, -headR * 0.06, headR * 0.15, headR * 0.36); c.fill();
+    c.beginPath(); c.rect(headR * 0.02, -headR * 0.06, headR * 0.15, headR * 0.34); c.fill();
+    c.restore();
+  }
   if (spec.domesticCatFace) {
     /* A domestic cat's whiskers are one of its three catalogue must-reads.
        The family painter had none at all, so the correct slit pupil and short
@@ -1948,6 +2253,38 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.strokeStyle = 'rgba(22,16,10,0.55)'; c.lineWidth = Math.max(2, headR * 0.06);
     c.beginPath(); c.moveTo(headX - headR * 0.10, headY - headR * 0.02);
     c.quadraticCurveTo(headX + headR * 0.24, headY + headR * 0.36, headX + headR * 0.62, headY + headR * 0.48); c.stroke();
+  }
+  if (spec.faceMark) {
+    const ux = Math.cos(ang), uy = Math.sin(ang), vx = -uy, vy = ux;
+    if (spec.faceMark === 'spectacles') {
+      /* Spectacled Bear: pale broken eye-rings and a nose bridge, left open so
+         they read as markings rather than the old concentric-disc artifact. */
+      c.strokeStyle = 'rgba(238,224,192,0.90)'; c.lineWidth = Math.max(3, headR * 0.20); c.lineCap = 'round';
+      for (const side of [-1, 1] as const) {
+        const e = head.pt(0.36, -0.34 + side * 0.28);
+        c.beginPath(); c.ellipse(e[0], e[1], headR * 0.34, headR * 0.24, ang + side * 0.16, -2.35, 1.10); c.stroke();
+      }
+      const a = head.pt(0.40, -0.08), b = head.pt(0.56, -0.06);
+      c.beginPath(); c.moveTo(a[0], a[1]); c.quadraticCurveTo((a[0] + b[0]) / 2 + vx * headR * 0.08, (a[1] + b[1]) / 2 + vy * headR * 0.08, b[0], b[1]); c.stroke();
+    } else if (spec.faceMark === 'muzzleBars') {
+      /* Cougar's dark cheek/muzzle bars run WITH the short feline muzzle. */
+      c.strokeStyle = 'rgba(30,22,16,0.82)'; c.lineWidth = Math.max(2.4, headR * 0.10); c.lineCap = 'round';
+      for (const side of [-1, 1] as const) {
+        const a = head.pt(0.46, -0.42 + side * 0.18);
+        const b = [a[0] + ux * headR * 0.66 + vx * headR * side * 0.20,
+          a[1] + uy * headR * 0.66 + vy * headR * side * 0.20] as const;
+        c.beginPath(); c.moveTo(a[0], a[1]); c.lineTo(b[0], b[1]); c.stroke();
+      }
+    } else if (spec.faceMark === 'whiteBlaze') {
+      /* A blaze is a narrow medial stripe, not a pale mask over both eyes. */
+      const a = head.pt(0.18, 0.36), b = head.pt(0.84, 0.28);
+      c.strokeStyle = 'rgba(244,238,220,0.88)'; c.lineWidth = Math.max(3, headR * 0.20); c.lineCap = 'round';
+      c.beginPath(); c.moveTo(a[0], a[1]); c.quadraticCurveTo((a[0] + b[0]) / 2 - vx * headR * 0.10, (a[1] + b[1]) / 2 - vy * headR * 0.10, b[0], b[1]); c.stroke();
+    } else { /* darkMask */
+      const m = head.pt(0.38, -0.20);
+      c.fillStyle = 'rgba(24,18,14,0.52)';
+      c.beginPath(); c.ellipse(m[0], m[1], headR * 0.62, headR * 0.44, ang - 0.12, 0, TAU); c.fill();
+    }
   }
   if (spec.cheekBars) {
     /* Ocelot: two oblique black cheek stripes running forward-and-down from
@@ -2360,6 +2697,23 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       c.moveTo(ax2 - bodyW * 0.02, ay2 + RAD(0.86) * 0.30);
       c.quadraticCurveTo(ax2 - bodyW * 0.10, ay2 + RAD(0.86) * 0.85, ax2 + bodyW * 0.08, ay2 + RAD(0.86) * 0.92);
       c.stroke();
+    } else if (spec.accent === 'chestCrescent' || spec.accent === 'chestU') {
+      /* The sun/sloth bear marks are a compact chest signal, separate from the
+         Tasmanian Devil's horizontal blaze. */
+      const [ax2, ay2] = AX(0.80);
+      const crescent = spec.accent === 'chestCrescent';
+      c.strokeStyle = crescent ? 'rgba(244,208,130,0.94)' : 'rgba(238,226,192,0.92)';
+      c.lineWidth = bodyH * (crescent ? 0.14 : 0.12); c.lineCap = 'round';
+      c.beginPath();
+      if (crescent) {
+        c.moveTo(ax2 - bodyW * 0.11, ay2 + RAD(0.80) * 0.20);
+        c.quadraticCurveTo(ax2 + bodyW * 0.08, ay2 + RAD(0.80) * 0.82, ax2 + bodyW * 0.17, ay2 + RAD(0.80) * 0.16);
+      } else {
+        c.moveTo(ax2 - bodyW * 0.12, ay2 + RAD(0.80) * 0.06);
+        c.quadraticCurveTo(ax2 - bodyW * 0.08, ay2 + RAD(0.80) * 0.82, ax2 + bodyW * 0.02, ay2 + RAD(0.80) * 0.88);
+        c.quadraticCurveTo(ax2 + bodyW * 0.14, ay2 + RAD(0.80) * 0.78, ax2 + bodyW * 0.17, ay2 + RAD(0.80) * 0.10);
+      }
+      c.stroke();
     }
     c.restore();
   }
@@ -2393,7 +2747,42 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   }
   const tAnchor = AX(0.035);
   const tx0 = tAnchor[0] - RAD(0.035) * 0.35, ty0 = tAnchor[1] - RAD(0.035) * 0.30;
-  if (tail === 'bushy' || tail === 'plume') {
+  if (spec.tailPose === 'upright') {
+    /* Coati and warthog carry a real vertical signal tail. A bent horizontal
+       tail with rings/tuft decoration cannot communicate that posture. */
+    const TS = spec.tailScale ?? 1;
+    const p1: [number, number] = [tx0 - bodyW * 0.28 * TS, ty0 - bodyH * 0.40 * TS];
+    const p2: [number, number] = [tx0 - bodyW * 0.20 * TS, ty0 - bodyH * 0.98 * TS];
+    const p3: [number, number] = [tx0 - bodyW * 0.05 * TS, ty0 - bodyH * 1.42 * TS];
+    const tailAt = (t: number): [number, number] => {
+      const m = 1 - t;
+      return [m * m * m * tx0 + 3 * m * m * t * p1[0] + 3 * m * t * t * p2[0] + t * t * t * p3[0],
+        m * m * m * ty0 + 3 * m * m * t * p1[1] + 3 * m * t * t * p2[1] + t * t * t * p3[1]];
+    };
+    const tailR = (t: number): number => bodyH * (0.15 - t * 0.065);
+    const tailT = new Tube({ P: tailAt, R: tailR });
+    c.fillStyle = p.base; c.beginPath(); tailT.trace(c, 42); c.fill();
+    c.save(); c.beginPath(); tailT.trace(c, 42); c.clip();
+    countershade(c, tailT, p, 0.80);
+    coatMaterial(c, tailT, r, p, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL * 0.34, len: 0.58 });
+    if (tail === 'banded') {
+      c.lineCap = 'butt'; c.strokeStyle = 'rgba(30,23,18,0.88)';
+      for (let i = 0; i < 6; i++) {
+        const a2 = tailAt(0.12 + i * 0.14), b2 = tailAt(0.18 + i * 0.14);
+        c.lineWidth = tailR(0.12 + i * 0.14) * 2.7;
+        c.beginPath(); c.moveTo(a2[0], a2[1]); c.lineTo(b2[0], b2[1]); c.stroke();
+      }
+    }
+    c.restore();
+    if (tail === 'tuft') {
+      const tip = tailAt(1);
+      c.strokeStyle = `rgba(${Math.max(0, p.cr * 0.34) | 0},${Math.max(0, p.cg * 0.30) | 0},${Math.max(0, p.cb * 0.26) | 0},0.88)`;
+      c.lineCap = 'round'; c.lineWidth = Math.max(1.5, bodyH * 0.035);
+      for (let i = -2; i <= 2; i++) {
+        c.beginPath(); c.moveTo(tip[0], tip[1]); c.quadraticCurveTo(tip[0] + i * bodyH * 0.08, tip[1] - bodyH * 0.10, tip[0] + i * bodyH * 0.11, tip[1] - bodyH * 0.20); c.stroke();
+      }
+    }
+  } else if (tail === 'bushy' || tail === 'plume') {
     /* ★ WAVE 21 — A BRUSH IS NOT A TUBE. One constant-width round-capped stroke
        gave every fox, snow leopard and fennec in the catalogue an orange PIPE
        lying behind it. A plume tapers from a narrow root, swells through its
@@ -2662,18 +3051,18 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* ★ wave 22b — Lion had NO route and fell through to the verbatim engine,
      where the mane rendered as a ring of spikes over an unreadable face. */
   'Lion': { legs: 0.1236, depth: 0.1426, len: 0.2455, neck: 0.06, muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'tuft', mane: 'lion', hue: '#c19a5b', family: 'felid' },
-  'Jaguar': { legs: 0.114, depth: 0.1395, len: 0.2287, neck: 0.07, muzzle: 0.35, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#c8983c", family: 'felid' , legMarks: true, tailScale: 1.8 },
+  'Jaguar': { legs: 0.108, depth: 0.151, len: 0.2287, neck: 0.07, muzzle: 0.38, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#c8983c", family: 'felid' , legMarks: true, tailScale: 1.52, headScale: 1.30, pawScale: 1.20, rosetteScale: 1.18 },
   'Leopard': { legs: 0.1253, depth: 0.1080, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#d3ab5e", family: 'felid' , legMarks: true, tailScale: 1.8 },
-  'Snow Leopard': { legs: 0.1221, depth: 0.1140, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' , legMarks: true, tailScale: 2.1 },
+  'Snow Leopard': { legs: 0.114, depth: 0.123, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' , legMarks: true, tailScale: 3.25, pawScale: 1.34, rosetteScale: 1.52, headScale: 1.10 },
   /* ★ wave 35 — Nick's row: "current ungulate-like body lacks deep chest,
      tucked waist, feline paws/head". It is the one felid NOT built like a big
      cat — a whippet: extreme waist tuck, light hindquarters, and a tail nearly
      as long as the body it steers. Those four numbers are the animal, and the
      felid plan alone could never reach them because the felid plan describes a
      leopard. */
-  'Cheetah': { back: 'arched', legs: 0.1938, depth: 0.1050, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 0.95, rump: 0.52, tailScale: 1.9 , legMarks: true },
-  'Cougar': { legs: 0.1482, depth: 0.1120, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid', tailScale: 1.7, tailTip: '#241f1d' },
-  'Lynx': { back: 'arched', legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft', earTuftScale: 1.22, cheekRuff: 1.64, pawScale: 1.26 },
+  'Cheetah': { back: 'arched', legs: 0.202, depth: 0.096, len: 0.215, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 1.06, rump: 0.46, tailScale: 2.48, legMarks: true, headScale: 1.28, spotScale: 0.78, carry: 0.56 },
+  'Cougar': { legs: 0.1482, depth: 0.1120, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid', tailScale: 1.7, tailTip: '#241f1d', faceMark: 'muzzleBars' },
+  'Lynx': { back: 'arched', legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft', earTuftScale: 1.38, cheekRuff: 1.76, pawScale: 1.34, spotScale: 0.56 },
   /* the pixel-siblings, separated */
   'Rhinoceros': { legs: 0.0835, depth: 0.1886, len: 0.263, neck: 0.045, muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#8b8b8e', family: 'pachyderm' },
   'Wild Sheep': { legs: 0.1345, depth: 0.1529, len: 0.1881, neck: 0.075, muzzle: 0.35, ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#9d8a6e', family: 'bovid' },
@@ -2681,35 +3070,35 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* the humped and the long-necked */
   'Camel': { legs: 0.1846, depth: 0.1629, len: 0.1804, neck: 0.20, back: 'level', muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#c8a173', family: 'camelid' },
   'Bactrian Camel': { legs: 0.176, depth: 0.1667, len: 0.1914, neck: 0.19, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 2, hue: '#b08a5e', family: 'camelid' },
-  'Dromedary Camel': { legs: 0.1935, depth: 0.159, len: 0.176, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777', family: 'camelid' },
+  'Dromedary Camel': { legs: 0.1935, depth: 0.159, len: 0.176, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777', family: 'camelid', carry: 0.42 },
   'Giraffe': { legs: 0.2438, depth: 0.1573, len: 0.1652, neck: 0.34, back: 'sloped', muzzle: 0.40, ears: 'large', tail: 'tuft', coat: 'patches', horn: 'ossicone', hue: '#e0c07a' , family: 'cervid' , legMarks: true },
   'Llama': { legs: 0.1938, depth: 0.1434, len: 0.1506, neck: 0.20, muzzle: 0.35, ears: 'large', tail: 'stub', hue: '#d8cbb4', family: 'camelid', earScale: 1.5 },
   'Alpaca': { legs: 0.1594, depth: 0.1448, len: 0.152, neck: 0.18, muzzle: 0.30, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#ddd2bd', family: 'camelid' },
   /* antlered + horned */
-  'Moose': { legs: 0.2181, depth: 0.1843, len: 0.2116, neck: 0.10, back: 'humped', muzzle: 0.62, jaw: 'broad', ears: 'large', tail: 'stub', horn: 'palmate', hue: '#5b4433', family: 'cervid' },
+  'Moose': { legs: 0.2181, depth: 0.1843, len: 0.2116, neck: 0.10, back: 'humped', muzzle: 0.62, jaw: 'broad', ears: 'large', tail: 'stub', horn: 'palmate', hue: '#5b4433', family: 'cervid', shoulderHump: 0.24, dewlap: 0.72 },
   'Elk': { legs: 0.2035, depth: 0.1594, len: 0.2092, neck: 0.13, back: 'sloped', muzzle: 0.48, ears: 'large', tail: 'stub', horn: 'branched', hue: '#9c7748', family: 'cervid' },
   'Deer': { legs: 0.1973, depth: 0.139, len: 0.1709, neck: 0.12, muzzle: 0.42, ears: 'large', tail: 'stub', horn: 'branched', coat: 'spots', hue: '#b98a58', family: 'cervid' },
   /* ★ wave 35 — the warm brown half of the Caribou/Reindeer split; see Caribou */
-  'Reindeer': { legs: 0.1782, depth: 0.1505, len: 0.1974, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#9c7548', family: 'cervid' },
+  'Reindeer': { legs: 0.1782, depth: 0.1505, len: 0.1974, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#9c7548', family: 'cervid', shoulderHump: 0.10, dewlap: 0.24 },
   'Sheep': { legs: 0.1448, depth: 0.1548, len: 0.1777, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', hue: '#a98f6d', family: 'bovid' },
-  'Bison': { legs: 0.1211, depth: 0.1881, len: 0.2313, neck: 0.045, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', tailScale: 0.7, coat: 'shaggy', horn: 'shorthorn', hue: '#5c4535', family: 'bovid', carry: 0.15, chest: 1.0, rump: 0.32 },
-  'Water Buffalo': { legs: 0.1249, depth: 0.1765, len: 0.246, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'sweep', hue: '#77736e', family: 'bovid' },
+  'Bison': { legs: 0.104, depth: 0.1881, len: 0.2313, neck: 0.030, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', tailScale: 0.58, coat: 'shaggy', horn: 'shorthorn', hue: '#5c4535', family: 'bovid', carry: 0, chest: 1.28, rump: 0.18, shoulderHump: 0.52, mane: 'bison', muzzleHue: '#3b2b24', headScale: 1.18, headDrop: 0.10 },
+  'Water Buffalo': { legs: 0.118, depth: 0.184, len: 0.246, neck: 0.06, muzzle: 0.50, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'sweep', hue: '#77736e', family: 'bovid', earShape: 'drop', earScale: 1.18, headScale: 1.16, shoulderHump: 0.18, dewlap: 0.42, muzzleHue: '#4d4d48' },
   /* bears, differentiated */
-  'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636', family: 'ursid' },
-  'Brown Bear': { legs: 0.0963, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f', family: 'ursid' },
-  'Polar Bear': { legs: 0.1112, depth: 0.1696, len: 0.2642, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6', family: 'ursid', earScale: 0.50 },
-  'Black Bear': { legs: 0.101, depth: 0.1729, len: 0.2268, neck: 0.05, muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#3b3a40', family: 'ursid' },
+  'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636', family: 'ursid', shoulderHump: 0.24, clawScale: 1.45, muzzleHue: '#b49670' },
+  'Brown Bear': { legs: 0.0963, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f', family: 'ursid', shoulderHump: 0.18, clawScale: 1.30, muzzleHue: '#b18a62' },
+  'Polar Bear': { legs: 0.1112, depth: 0.1696, len: 0.2642, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6', family: 'ursid', earScale: 0.50, clawScale: 1.28, muzzleHue: '#d8d5c7' },
+  'Black Bear': { legs: 0.101, depth: 0.1729, len: 0.2268, neck: 0.05, muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#3b3a40', family: 'ursid', shoulderHump: 0.12, clawScale: 1.25, muzzleHue: '#b99a78' },
   'Panda': { legs: 0.0825, depth: 0.1844, len: 0.2269, neck: 0.04, back: 'arched', muzzle: 0.30, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'panda', face: 'mask', hue: '#f0f2f4', family: 'ursid' , legMarks: true },
-  'Sun Bear': { legs: 0.0939, depth: 0.1438, len: 0.2004, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c', family: 'ursid' },
-  'Sloth Bear': { legs: 0.1001, depth: 0.1697, len: 0.2227, neck: 0.05, muzzle: 0.55, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#2b2726', family: 'ursid' },
+  'Sun Bear': { legs: 0.0939, depth: 0.1438, len: 0.2004, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c', family: 'ursid', accent: 'chestCrescent', clawScale: 1.34, muzzleHue: '#c7ac84' },
+  'Sloth Bear': { legs: 0.1001, depth: 0.1697, len: 0.2227, neck: 0.05, muzzle: 0.55, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#2b2726', family: 'ursid', accent: 'chestU', clawScale: 1.52, muzzleHue: '#d4c19c' },
   /* canids + small mammals where ears/tails are the read */
   'Red Fox': { legs: 0.1118, depth: 0.104, len: 0.1962, neck: 0.06, muzzle: 0.44, jaw: 'fine', ears: 'large', tail: 'plume', hue: '#d1651f', family: 'canid', tailScale: 1.7 , tailTip: '#f2efe6' },
-  'Arctic Fox': { legs: 0.1046, depth: 0.1072, len: 0.1847, neck: 0.06, muzzle: 0.36, ears: 'small', tail: 'plume', hue: '#eaf0f5', family: 'canid', tailScale: 1.7 , tailTip: '#f6f5f2' },
+  'Arctic Fox': { legs: 0.1046, depth: 0.1072, len: 0.1847, neck: 0.06, muzzle: 0.36, ears: 'small', tail: 'plume', hue: '#eaf0f5', family: 'canid', tailScale: 1.7 , tailTip: '#f6f5f2', muzzleHue: '#d9d3c7' },
   /* ★ wave 21 — the audit: "ears should dominate the head; reduce body size and
      increase bushy tail". A fennec is a desert fox scaled DOWN around ears that
      were not scaled down with it. */
   'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.30, tailScale: 1.6, family: 'canid', earShape: 'point' , tailTip: '#20191a' },
-  'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid' , tailTip: '#241f1d' },
+  'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid' , tailTip: '#241f1d', muzzleHue: '#cac5b8' },
   'Hyena': { legs: 0.1442, depth: 0.1492, len: 0.208, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63', family: 'hyaenid' },
   /* ⚠ WAVE 42, CODE PASS — THIS COMMENT WAS TRUE IN WAVE 4 AND IS FALSE NOW,
      which is worse than no comment: it points a maintainer at the wrong engine.
@@ -2721,11 +3110,11 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
      The principle it states is still right and still load-bearing —
      ★ never override what already excels (D-ART-14) — so the principle stays
      and the stale species list goes. A rule outlives its examples. */
-  'Walrus': { legs: 0.0303, depth: 0.1631, len: 0.2943, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f', family: 'pinniped'  },
+  'Walrus': { legs: 0.0303, depth: 0.1631, len: 0.2943, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f', family: 'pinniped', headScale: 1.16, muzzleHue: '#b99484' },
   /* equines + swine */
   'Horse': { legs: 0.1964, depth: 0.166, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'flow', mane: 'crest', hue: '#8a5a35', family: 'equid' },
   'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e', family: 'suid', earShape: 'point' },
-  'Warthog': { legs: 0.1087, depth: 0.155, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.62, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', mane: 'crestUp', hue: '#6b5647', family: 'suid', earShape: 'point', carry: 0.20 },
+  'Warthog': { legs: 0.1087, depth: 0.155, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.62, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', mane: 'crestUp', hue: '#6b5647', family: 'suid', earShape: 'point', carry: 0.20, tailPose: 'upright' },
   /* ★ wave 35 — a tapir is barrel-bodied like a suid, so it keeps that BODY;
      but the suid skull hard-wires the flat cartilage nose disc that is a pig's
      whole identity, and the reference row warns against it by name. It gets a

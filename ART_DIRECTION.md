@@ -623,13 +623,24 @@ instrument, and its `--assert` mode should survive the port.
 This addendum is the current execution record for the port; it does not retroactively rewrite
 the legacy `main.js` status above.
 
+> **2026-08-09 status correction — GP7 is a frozen baseline, not the current
+> literal certification.** PR #7 merged into `develop` at `52467ba`. Nick's
+> strict-conformity recheck opened GP7.1 remediation: make only named,
+> evidence-backed morphology repairs, then re-render and freshly rejudge the
+> full catalogue. Its first all-fresh baseline is now 1,250 current portraits /
+> 196 hash-bound packets = 318 FAIL / 301 POLISH / 631 PASS; it is a repair
+> input, not a certification. A second named repair pass has produced a new r3
+> 1,250-portrait / 196-packet evidence capture, but it is deliberately
+> unjudged. The ledger itself cannot certify pixels; see
+> `port/v2/reference/GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md`.
+
 - **Current coverage is exactly 1,250 organisms:** 631 Earth fauna, 332 Earth flora,
   27 fungi, 20 microbes, and 240 procedural identities, all exportable as native 440×440 art.
 - **Nick's independent full-catalogue audit** found **381 GOLD / 810 POLISH / 59 FIX** and
   called the build a Gold Candidate. All 59 FIX rows were addressed. His patch review then
   returned **15 PASS / 25 PASS-WITH-POLISH / 19 STILL-FIX / 1 REGRESSION**; the 20 remaining
   rows were reworked with targeted, render-verified changes.
-- **The art is frozen: no global body pass.** GP7 judged 503 changed rows and 62 unchanged
+- **GP7 is frozen as evidence; GP7.1 permits named repairs only, never a global body pass.** GP7 judged 503 changed rows and 62 unchanged
   controls with the same strict ruler. Eligible-row demotions were **62/160 (38.8%)** for the
   edited drift set versus **21/32 (65.6%)** for control, a **−26.8-point** net demotion gap;
   rescues were **104/343 (30.3%)** versus **4/30 (13.3%)**. This calibration is the evidence
@@ -638,5 +649,7 @@ the legacy `main.js` status above.
   pair-specific: honest colour exposed 9 hard look-alike pairs, shape axes reduced that to 2,
   and the Wild Thyme/Mite corrections brought the final **hard-pair count to 0**. The broader
   confusable list remains a watch-list; zero hard pairs does not mean zero visual similarity.
-- GP7 measurement and the complete-catalogue package are complete; commit `a9345c1` is pushed.
-  Draft `openai/windows` → `develop` PR #7 is open for Nick's final package review.
+- GP7 measurement and the complete-catalogue package remain preserved as historical evidence.
+  PR #7 is merged; the GP7.1 remediation/evidence batch may use a new
+  `openai/windows` to `develop` draft PR, but it remains unmergeable until the
+  fresh full-catalogue evidence package and certification exist.

@@ -159,6 +159,10 @@ export interface InsectSpec {
   face?: 'slant' | 'triangle';/** an orthopteran's tilted wedge; a mantis's triangle */
   proboscis?: boolean;        /** the mosquito's needle */
   pattern?: 'bands' | 'spots';
+  /** A thrips' wing is a narrow strap fringed with setae, not a fly membrane. */
+  fringedWings?: boolean;
+  /** The asymmetrical rasping cone at a thrips' face. */
+  raspingMouth?: boolean;
 }
 export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''): void {
   /* ★ D-ART-114 — the species hue axis. 26 insects took the rarity roll purely
@@ -434,6 +438,34 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
     c.beginPath(); c.moveTo(hx - th * 0.5, hy + th * 0.20);
     c.lineTo(hx - th * 2.1, hy + th * 0.62); c.stroke();
   }
+  if (spec.raspingMouth) {
+    /* Thrips feed with one-sided rasping/sucking cones.  It must break the
+       head silhouette; a symmetric generic mouth reads as an aphid. */
+    c.fillStyle = 'rgba(48,38,24,0.92)';
+    c.beginPath();
+    c.moveTo(hx - th * 0.52, hy - th * 0.16);
+    c.lineTo(hx - th * 1.46, hy + th * 0.14);
+    c.lineTo(hx - th * 0.48, hy + th * 0.38);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(238,226,188,0.42)'; c.lineWidth = Math.max(1, th * 0.08);
+    c.beginPath(); c.moveTo(hx - th * 0.52, hy + th * 0.10); c.lineTo(hx - th * 1.32, hy + th * 0.15); c.stroke();
+  }
+  if (spec.fringedWings) {
+    /* The normal lace-wing path is a broad fly sail.  Thrips carry two very
+       narrow straps whose long marginal hairs are visible at card size. */
+    c.strokeStyle = 'rgba(226,230,214,0.72)'; c.lineWidth = Math.max(2.0, th * 0.20); c.lineCap = 'round';
+    for (const s of [-1, 1] as const) {
+      const x0 = cx + th * 0.32, y0 = cy + s * th * 0.34;
+      const x1 = ax + abL * 0.72, y1 = cy + s * th * 0.66;
+      c.beginPath(); c.moveTo(x0, y0); c.quadraticCurveTo((x0 + x1) * 0.5, y0 - s * th * 0.25, x1, y1); c.stroke();
+      c.strokeStyle = 'rgba(236,238,220,0.64)'; c.lineWidth = Math.max(1, th * 0.055);
+      for (let i = 1; i < 10; i++) {
+        const u = i / 10, x = x0 + (x1 - x0) * u, y = y0 + (y1 - y0) * u;
+        c.beginPath(); c.moveTo(x, y); c.lineTo(x + th * 0.20, y + s * th * 0.42); c.stroke();
+      }
+      c.strokeStyle = 'rgba(226,230,214,0.72)'; c.lineWidth = Math.max(2.0, th * 0.20);
+    }
+  }
   const ant = spec.antennae ?? 'short';
   if (ant !== 'none') {
     c.strokeStyle = p.dark; c.lineWidth = ant === 'feather' ? 3 : 2.4; c.lineCap = 'round';
@@ -481,13 +513,67 @@ export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: 
      chassis recoloured". */
   fused?: boolean;
   /** two lateral eyes raised on the dorsal ocular tubercle of a harvestman */
-  ocularTurret?: boolean }, name = ''): void {
+  ocularTurret?: boolean;
+  /** Ground-up non-spider chassis for the two acariform target species. */
+  anatomy?: 'tick' | 'mite' | 'solifuge';
+  /** Long, leg-like sensory pedipalps (tarantula and solifuge). */
+  pedipalps?: boolean;
+  /** Down-facing cheliceral fangs rather than a visible spider eye cluster. */
+  fangs?: boolean }, name = ''): void {
   const p = hued(pIn, opts.hue);
   const r = nrng(g, name, 0xA8AC);
   const cx = S * 0.50, cy = S * 0.52;
   const b = S * 0.050 * (opts.big ? 1.25 : 1) * 1.30 * (opts.scale ?? 1) * nv(name, 0x21, 0.12);
   const squat = nv(name, 0x22, 0.22);         /* abdomen aspect — a RATIO, so the fit pass keeps it */
   const splay = nv(name, 0x23, 0.20);         /* how far the legs reach relative to the body */
+  if (opts.anatomy === 'tick' || opts.anatomy === 'mite') {
+    /* A tick/mite is not a compressed spider. Both need one continuous low
+       acarine body with every leg rooted in its anterior third. */
+    const tick = opts.anatomy === 'tick';
+    const L = b * (tick ? 4.55 : 3.25), H = b * (tick ? 1.05 : 1.30);
+    const front = cx - L * 0.60, rear = cx + L * 0.56;
+    shadow(c, cx, cy + H * 2.0, L * 0.72);
+    c.strokeStyle = p.dark; c.lineCap = 'round';
+    for (const side of [-1, 1] as const) {
+      for (let i = 0; i < 4; i++) {
+        const u = 0.11 + i * 0.105;
+        const ox = front + L * u, oy = cy + side * H * (0.18 + i * 0.08);
+        const kx = ox - L * (0.14 + i * 0.020), ky = cy + side * H * (1.10 + i * 0.24);
+        const ex = ox - L * (0.34 - i * 0.025), ey = cy + side * H * (1.58 + i * 0.20);
+        limb(c, ox, oy, ex, ey, kx, ky, tick ? 3.8 : 4.4, p.dark);
+      }
+    }
+    c.fillStyle = shell(c, p, cx, cy, L * 0.6);
+    c.beginPath();
+    c.moveTo(front, cy);
+    c.quadraticCurveTo(front + L * 0.12, cy - H * 0.92, front + L * 0.55, cy - H);
+    c.quadraticCurveTo(rear + L * 0.10, cy - H * 0.72, rear, cy);
+    c.quadraticCurveTo(rear + L * 0.10, cy + H * 0.72, front + L * 0.55, cy + H);
+    c.quadraticCurveTo(front + L * 0.12, cy + H * 0.92, front, cy);
+    c.closePath(); c.fill();
+    rim(c, () => { c.moveTo(front, cy); c.quadraticCurveTo(front + L * 0.12, cy - H * 0.92, front + L * 0.55, cy - H); c.quadraticCurveTo(rear + L * 0.10, cy - H * 0.72, rear, cy); }, 2);
+    if (tick) {
+      c.fillStyle = `rgba(${p.cr * 0.44 | 0},${p.cg * 0.42 | 0},${p.cb * 0.40 | 0},0.72)`;
+      c.beginPath(); c.ellipse(front + L * 0.46, cy - H * 0.34, L * 0.18, H * 0.42, -0.12, 0, TAU); c.fill();
+      /* Capitulum, palps and the barbed hypostome project ahead of the wedge. */
+      c.strokeStyle = '#2a2018'; c.lineWidth = Math.max(2.2, H * 0.30);
+      c.beginPath(); c.moveTo(front + L * 0.05, cy); c.lineTo(front - L * 0.34, cy); c.stroke();
+      c.strokeStyle = 'rgba(210,184,138,0.86)'; c.lineWidth = Math.max(1.2, H * 0.12);
+      for (const side of [-1, 1] as const) {
+        c.beginPath(); c.moveTo(front + L * 0.07, cy + side * H * 0.22); c.lineTo(front - L * 0.17, cy + side * H * 0.36); c.stroke();
+      }
+      c.strokeStyle = '#2a2018'; c.lineWidth = 1.2;
+      for (let i = 0; i < 3; i++) {
+        const x = front - L * (0.15 + i * 0.07);
+        c.beginPath(); c.moveTo(x, cy); c.lineTo(x + L * 0.06, cy - H * 0.22); c.stroke();
+        c.beginPath(); c.moveTo(x, cy); c.lineTo(x + L * 0.06, cy + H * 0.22); c.stroke();
+      }
+    } else {
+      /* A mite's tiny mouth cone is enough; no eyes or waist are permitted. */
+      c.fillStyle = p.dark; c.beginPath(); c.moveTo(front + L * 0.05, cy - H * 0.20); c.lineTo(front - L * 0.20, cy); c.lineTo(front + L * 0.05, cy + H * 0.20); c.closePath(); c.fill();
+    }
+    return;
+  }
   shadow(c, cx, cy + b * 2.4, S * 0.16);
   const reach = b * (opts.legReach ?? (opts.longleg ? 8.2 : 2.9)) * splay;   /* the span IS the animal */
   for (const s of [-1, 1] as const) {
@@ -589,6 +675,33 @@ export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: 
     eyeDot(c, cx - b * 1.15 + (i % 2) * b * 0.26, cy - b * 0.34 + Math.floor(i / 2) * b * 0.26, b * 0.11);
   }
   }
+  if (opts.pedipalps) {
+    /* Distinct from the eight walking legs: these leave the facial plate and
+       lead forward as extra feeler-limbs. */
+    for (const side of [-1, 1] as const) {
+      const ox = cx - b * 1.02, oy = cy + side * b * 0.34;
+      limb(c, ox, oy, cx - b * 3.00, cy + side * b * 1.35,
+        cx - b * 2.12, cy + side * b * 0.54, opts.hairy ? 5.2 : 4.0, p.dark);
+    }
+  }
+  if (opts.fangs) {
+    /* Fangs hang below the front plate, not out of a generic mouth line. */
+    c.fillStyle = '#19120f';
+    for (const side of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(cx - b * 1.20, cy + side * b * 0.20);
+      c.lineTo(cx - b * 1.58, cy + side * b * 0.70);
+      c.lineTo(cx - b * 1.02, cy + side * b * 0.44); c.closePath(); c.fill();
+    }
+  }
+  if (opts.anatomy === 'solifuge') {
+    /* Solifuge chelicerae are huge opposing jaws in front of the face. */
+    c.fillStyle = shell(c, p, cx - b * 1.36, cy, b * 0.82);
+    for (const side of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(cx - b * 1.08, cy + side * b * 0.12);
+      c.quadraticCurveTo(cx - b * 2.05, cy + side * b * 0.18, cx - b * 2.28, cy + side * b * 0.66);
+      c.lineTo(cx - b * 1.32, cy + side * b * 0.46); c.closePath(); c.fill();
+    }
+  }
 }
 
 /* ═══════════════ MYRIAPODS: many segments, a leg pair on each ═══════════════ */
@@ -652,7 +765,11 @@ export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: 
 }
 
 /* ═══════════════ CRUSTACEANS ═══════════════ */
-export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?: boolean; big?: boolean; hue?: string }, name = ''): void {
+export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?: boolean; big?: boolean; hue?: string;
+  /** Coconut-crab land stance: long heavy walking legs, never swimmer paddles. */
+  terrestrial?: boolean;
+  /** One oversized crusher chela beside a smaller cutter. */
+  crusher?: boolean }, name = ''): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0xC2AB);
@@ -665,9 +782,10 @@ export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?
     for (let i = 0; i < 4; i++) {                /* four walking legs a side */
       const a = -0.30 + i * 0.42;
       const ox = cx + s * cw * 0.62, oy = cy + ch * (-0.1 + i * 0.16);
-      const kx = ox + s * cw * (0.62 + i * 0.10), ky = oy - ch * (0.42 - i * 0.22);
-      const ex = ox + s * cw * (1.05 + i * 0.07), ey = oy + ch * (0.85 + i * 0.24);
-      limb(c, ox, oy, ex, ey, kx, ky, 5.5 - i * 0.5, p.dark);
+      const span = opts.terrestrial ? 1.62 : 1;
+      const kx = ox + s * cw * (0.62 + i * 0.10) * span, ky = oy - ch * (0.42 - i * 0.22);
+      const ex = ox + s * cw * (1.05 + i * 0.07) * span, ey = oy + ch * (0.85 + i * 0.24) * (opts.terrestrial ? 1.12 : 1);
+      limb(c, ox, oy, ex, ey, kx, ky, (opts.terrestrial ? 8.2 : 5.5) - i * 0.5, p.dark);
     }
   }
   if (opts.hermit) {   /* the borrowed shell — the hermit crab's whole story */
@@ -709,15 +827,16 @@ export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?
   /* THE CLAWS, IN FRONT of the carapace — a crab holds its chelae forward,
      and drawn before the shell they were buried underneath it */
   for (const s of [-1, 1] as const) {
+    const clawK = opts.crusher && s < 0 ? 1.78 : 1;
     const px = cx + s * cw * 1.02, py = cy - ch * 0.86;
-    limb(c, cx + s * cw * 0.52, cy - ch * 0.3, px, py, cx + s * cw * 1.06, cy - ch * 0.14, 7.5, p.dark);
+    limb(c, cx + s * cw * 0.52, cy - ch * 0.3, px, py, cx + s * cw * 1.06, cy - ch * 0.14, 7.5 * clawK, p.dark);
     c.save(); c.translate(px, py); c.rotate(s * -0.62);
-    c.fillStyle = shell(c, p, 0, 0, cw * 0.34);
-    c.beginPath(); c.ellipse(0, 0, cw * 0.34, cw * 0.19, 0, 0, TAU); c.fill();
-    c.strokeStyle = p.dark; c.lineWidth = 6; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(cw * 0.20, -cw * 0.09); c.quadraticCurveTo(cw * 0.52, -cw * 0.22, cw * 0.64, -cw * 0.10); c.stroke();
-    c.lineWidth = 5;
-    c.beginPath(); c.moveTo(cw * 0.20, cw * 0.06); c.quadraticCurveTo(cw * 0.50, cw * 0.10, cw * 0.62, -cw * 0.02); c.stroke();
+    c.fillStyle = shell(c, p, 0, 0, cw * 0.34 * clawK);
+    c.beginPath(); c.ellipse(0, 0, cw * 0.34 * clawK, cw * 0.19 * clawK, 0, 0, TAU); c.fill();
+    c.strokeStyle = p.dark; c.lineWidth = 6 * clawK; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cw * 0.20 * clawK, -cw * 0.09 * clawK); c.quadraticCurveTo(cw * 0.52 * clawK, -cw * 0.22 * clawK, cw * 0.64 * clawK, -cw * 0.10 * clawK); c.stroke();
+    c.lineWidth = 5 * clawK;
+    c.beginPath(); c.moveTo(cw * 0.20 * clawK, cw * 0.06 * clawK); c.quadraticCurveTo(cw * 0.50 * clawK, cw * 0.10 * clawK, cw * 0.62 * clawK, -cw * 0.02 * clawK); c.stroke();
     c.restore();
   }
   c.strokeStyle = p.dark; c.lineWidth = 3; c.lineCap = 'round';   /* eyestalks */
@@ -731,7 +850,13 @@ export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stou
   hue?: string; shield?: boolean; stalks?: boolean; gills?: boolean; scale?: number;
   /* ★ WAVE 65 — the copepod's identity kit: one long pair of antennae held
      out sideways + the two egg sacs trailing behind the tail */
-  eggSacs?: boolean }, name = ''): void {
+  eggSacs?: boolean;
+  /** Copepod's clean split caudal rami, each ending in bristles. */
+  forkedTail?: boolean;
+  /** Stocky crayfish abdomen with a broad, plated tail fan. */
+  crayfish?: boolean;
+  /** Lobster signature: one crusher claw dominates the paired chelae. */
+  unequalClaws?: boolean }, name = ''): void {
   const p = hued(pIn, opts.hue);
   const r = nrng(g, name, 0x5E1D);
   const cx = S * 0.50, cy = S * 0.50;
@@ -798,12 +923,46 @@ export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stou
     c.strokeStyle = p.dark; c.lineWidth = 2;   /* the swimmerets */
     c.beginPath(); c.moveTo(x, y + rr * 0.6); c.lineTo(x + rr * 0.4, y + rr * 1.5); c.stroke();
   }
+  if (opts.crayfish) {
+    /* Crayfish show hard abdominal plates, not a generic smooth shrimp curl. */
+    c.strokeStyle = 'rgba(34,28,18,0.58)'; c.lineWidth = Math.max(1.4, h * 0.12);
+    for (let i = 1; i < seg; i++) {
+      const u = i / (seg - 1), a = 0.35 + u * 1.15 * curl;
+      const x = cx + Math.cos(a) * L * (0.55 + u * 0.75);
+      const y = cy - h * 0.3 + Math.sin(a) * L * (0.30 + u * 0.62);
+      c.save(); c.translate(x, y); c.rotate(a - 1.4);
+      c.beginPath(); c.moveTo(-h * 0.52, 0); c.lineTo(h * 0.52, 0); c.stroke(); c.restore();
+    }
+  }
   const u1 = 1, a1 = 0.35 + u1 * 1.15 * curl;
   const tx = cx + Math.cos(a1) * L * 1.30, ty = cy - h * 0.3 + Math.sin(a1) * L * 0.92;
   c.fillStyle = `rgba(${p.cr},${p.cg},${p.cb},0.78)`;   /* THE TAIL FAN */
-  for (let k = -2; k <= 2; k++) {
-    c.save(); c.translate(tx, ty); c.rotate(a1 - 1.4 + k * 0.26);
-    c.beginPath(); c.ellipse(h * 0.9, 0, h * 0.95, h * 0.22, 0, 0, TAU); c.fill(); c.restore();
+  if (opts.crayfish) {
+    /* Five short, broad telson plates read as a crayfish fan rather than fins. */
+    for (let k = -2; k <= 2; k++) {
+      c.save(); c.translate(tx, ty); c.rotate(a1 - 1.4 + k * 0.24);
+      c.beginPath();
+      c.moveTo(h * 0.05, 0);
+      c.quadraticCurveTo(h * 1.15, -h * 0.38, h * 1.72, 0);
+      c.quadraticCurveTo(h * 1.15, h * 0.38, h * 0.05, 0);
+      c.closePath(); c.fill(); c.restore();
+    }
+  } else if (opts.forkedTail) {
+    /* Two caudal rami read more cleanly than the generic five-lobed fan. */
+    c.strokeStyle = p.dark; c.lineCap = 'round';
+    for (const side of [-1, 1] as const) {
+      c.lineWidth = Math.max(2, h * 0.24);
+      c.beginPath(); c.moveTo(tx, ty); c.quadraticCurveTo(tx + h * 1.45, ty + side * h * 0.72, tx + h * 2.30, ty + side * h * 0.94); c.stroke();
+      c.lineWidth = Math.max(1, h * 0.07);
+      for (let k = -1; k <= 1; k++) {
+        c.beginPath(); c.moveTo(tx + h * 1.78, ty + side * h * 0.77); c.lineTo(tx + h * 2.34, ty + side * h * (0.94 + k * 0.20)); c.stroke();
+      }
+    }
+  } else {
+    for (let k = -2; k <= 2; k++) {
+      c.save(); c.translate(tx, ty); c.rotate(a1 - 1.4 + k * 0.26);
+      c.beginPath(); c.ellipse(h * 0.9, 0, h * 0.95, h * 0.22, 0, 0, TAU); c.fill(); c.restore();
+    }
   }
   /* the carapace and rostrum */
   c.fillStyle = shell(c, p, cx - L * 0.15, cy - h * 0.2, h * 1.5);
@@ -836,6 +995,7 @@ export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stou
       const px = cx - L * 0.95, py = cy + h * (0.3 + s * 0.75);
       limb(c, cx - L * 0.45, cy + h * 0.3, px, py, cx - L * 0.75, cy + h * (0.2 + s * 0.5), 8, p.dark);
       c.save(); c.translate(px, py); c.rotate(s * 0.35);
+      if (opts.unequalClaws && s > 0) c.scale(1.42, 1.42);
       c.fillStyle = shell(c, p, 0, 0, h * 0.9);
       c.beginPath(); c.ellipse(-h * 0.3, 0, h * 0.95, h * 0.52, 0, 0, TAU); c.fill();   /* the palm */
       /* the fixed finger and the movable dactyl — filled wedges with a gape */
@@ -875,11 +1035,39 @@ export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stou
 }
 
 /* ═══════════════ SOFT BODIES ═══════════════ */
-export function wormBody(c: Ctx, g: G, pIn: Pal, opts: { bristles?: boolean; flat?: boolean; sucker?: boolean; hue?: string }, name = ''): void {
+export function wormBody(c: Ctx, g: G, pIn: Pal, opts: { bristles?: boolean; flat?: boolean; sucker?: boolean; hue?: string;
+  /** Planarian head with auricles + cross-eyed ocelli; suppresses worm rings. */
+  flatworm?: boolean;
+  /** Two overlapping roof rows on a flattened scale worm. */
+  scalePlates?: boolean;
+  /** A leech has a sucker at both the leading and trailing end. */
+  dualSuckers?: boolean }, name = ''): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x0202);
   const cx = S * 0.48, cy = S * 0.54;
+  if (opts.flatworm) {
+    /* The planarian must be one smooth ribbon, not thirty visible earthworm
+       rings. Its arrowhead and auricles carry the whole species read. */
+    const L = S * 0.245 * nv(name, 0x61, 0.10), H = S * 0.055 * nv(name, 0x62, 0.10);
+    shadow(c, cx, cy + H * 1.9, L * 0.86);
+    c.fillStyle = shell(c, p, cx, cy, L * 0.7);
+    c.beginPath();
+    c.moveTo(cx - L, cy);
+    c.lineTo(cx - L * 0.72, cy - H * 1.25);   /* left auricle */
+    c.lineTo(cx - L * 0.20, cy - H * 0.78);
+    c.quadraticCurveTo(cx + L * 0.50, cy - H * 0.64, cx + L, cy);
+    c.quadraticCurveTo(cx + L * 0.50, cy + H * 0.64, cx - L * 0.20, cy + H * 0.78);
+    c.lineTo(cx - L * 0.72, cy + H * 1.25);   /* right auricle */
+    c.closePath(); c.fill();
+    rim(c, () => { c.moveTo(cx - L, cy); c.lineTo(cx - L * 0.72, cy - H * 1.25); c.lineTo(cx - L * 0.20, cy - H * 0.78); c.quadraticCurveTo(cx + L * 0.50, cy - H * 0.64, cx + L, cy); }, 2);
+    c.fillStyle = '#101418';
+    c.beginPath(); c.arc(cx - L * 0.58, cy - H * 0.27, H * 0.18, 0, TAU); c.fill();
+    c.beginPath(); c.arc(cx - L * 0.58, cy + H * 0.27, H * 0.18, 0, TAU); c.fill();
+    c.strokeStyle = `rgba(${p.cr * 0.55 | 0},${p.cg * 0.55 | 0},${p.cb * 0.55 | 0},0.38)`; c.lineWidth = 1.5;
+    for (let i = 1; i < 5; i++) { const x = cx - L * 0.10 + i * L * 0.20; c.beginPath(); c.moveTo(x, cy - H * 0.43); c.quadraticCurveTo(x + L * 0.05, cy, x, cy + H * 0.43); c.stroke(); }
+    return;
+  }
   const N = 30, th = S * (opts.flat ? 0.078 : 0.030) * nv(name, 0x61, 0.16);
   /* ★ WAVE 59 — a flatworm is a BROAD FLAT LEAF-RIBBON, not the earthworm tube
      recoloured; a leech ARCHES like an inchworm. Both were failing as identical
@@ -918,6 +1106,28 @@ export function wormBody(c: Ctx, g: G, pIn: Pal, opts: { bristles?: boolean; fla
   c.beginPath(); c.ellipse(hx - th * 0.3, hy, th * 1.15, th * 0.95, 0, 0, TAU); c.fill();
   if (opts.sucker) { c.fillStyle = 'rgba(20,14,12,0.6)'; c.beginPath(); c.ellipse(hx - th * 1.1, hy, th * 0.5, th * 0.62, 0, 0, TAU); c.fill(); }
   else { eyeDot(c, hx - th * 0.7, hy - th * 0.3, th * 0.16); }
+  if (opts.dualSuckers) {
+    const [tx, ty] = at(N - 1);
+    c.fillStyle = 'rgba(20,14,12,0.72)';
+    c.beginPath(); c.ellipse(hx - th * 1.1, hy, th * 0.58, th * 0.70, 0, 0, TAU); c.fill();
+    c.beginPath(); c.ellipse(tx + th * 0.82, ty, th * 0.62, th * 0.74, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(238,224,200,0.28)'; c.lineWidth = Math.max(1, th * 0.08);
+    c.beginPath(); c.ellipse(hx - th * 1.1, hy, th * 0.45, th * 0.54, 0, 0, TAU); c.stroke();
+    c.beginPath(); c.ellipse(tx + th * 0.82, ty, th * 0.48, th * 0.58, 0, 0, TAU); c.stroke();
+  }
+  if (opts.scalePlates) {
+    /* Paired overlapping scales roof the back, leaving the bristle tufts to
+       break out BETWEEN plates instead of making fence posts. */
+    for (const side of [-1, 1] as const) {
+      for (let i = 1; i < N - 2; i += 2) {
+        const [x, y] = at(i);
+        c.fillStyle = `rgba(${p.cr * 0.70 | 0},${p.cg * 0.72 | 0},${p.cb * 0.74 | 0},0.94)`;
+        c.beginPath(); c.ellipse(x, y + side * th * 0.18, th * 0.92, th * 0.70, 0.08, side < 0 ? Math.PI : 0, side < 0 ? TAU : Math.PI); c.fill();
+        c.strokeStyle = 'rgba(226,230,220,0.26)'; c.lineWidth = 1.2;
+        c.beginPath(); c.ellipse(x, y + side * th * 0.18, th * 0.92, th * 0.70, 0.08, side < 0 ? Math.PI : 0, side < 0 ? TAU : Math.PI); c.stroke();
+      }
+    }
+  }
 }
 
 export function slugBody(c: Ctx, g: G, pIn: Pal, opts: { cerata?: boolean; plated?: boolean; hue?: string }, name = ''): void {
@@ -1241,7 +1451,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
      the single most different silhouette in this group, and it had none of it */
   'Cockroach': I({ hue: '#6b3b1e', abdomen: 1.18, broad: 1.85, eyes: 0.7, shield: true, carapace: true, wings: 'folded', antennae: 'long' }),
   'Aphid': I({ hue: '#a8cf72', abdomen: 1.05, antennae: 'short' }),
-  'Thrips': I({ hue: '#cdb464', abdomen: 2.3, broad: 0.38, wings: 'lace', wingScale: 0.7, antennae: 'short' }),
+  'Thrips': I({ hue: '#cdb464', abdomen: 2.3, broad: 0.38, wings: 'none', antennae: 'short', fringedWings: true, raspingMouth: true }),
   'Mosquito': I({ hue: '#5c565a', abdomen: 1.40, broad: 0.62, proboscis: true, wings: 'lace', antennae: 'feather' }),
   /* a fly is mostly EYE, and a black fly is a tiny hunched one */
   'Black Fly': I({ hue: '#33313a', abdomen: 0.68, broad: 1.15, eyes: 1.6, wings: 'lace', antennae: 'short' }),
@@ -1254,19 +1464,19 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Cold-Adapted Insect': I({ hue: '#3c4249', abdomen: 0.95, broad: 1.55, eyes: 0.85, antennae: 'short', fuzzy: true }),
   /* ── ARACHNIDS: eight legs, no antennae ── */
   'Spider': A({ hue: '#7b5a3c', }),
-  'Tarantula': A({ hue: '#3b2b25', big: true, hairy: true }),
-  'Camel Spider': A({ hue: '#c9a468', big: true, hairy: true, longleg: true }),
+  'Tarantula': A({ hue: '#3b2b25', big: true, hairy: true, pedipalps: true, fangs: true }),
+  'Camel Spider': A({ hue: '#c9a468', big: true, hairy: true, longleg: true, anatomy: 'solifuge', pedipalps: true }),
   'Sea Spider': A({ hue: '#b39a86', longleg: true }),
   'Harvestman': A({ hue: '#5d4b40', longleg: true, legReach: 13.2, fused: true, ocularTurret: true, scale: 0.55 }),
   'Scorpion': A({ hue: '#a3762f', big: true, sting: true, claws: true }),
   'Pseudoscorpion': A({ claws: true, scale: 0.92, hue: '#5d4630' }),
-  'Deer Tick': A({ hue: '#94402c', big: true }),
+  'Deer Tick': A({ hue: '#94402c', anatomy: 'tick' }),
   /* ★ WAVE 22 — a mite read as an ANT. It is not one: it is a tiny round
      unsegmented arachnid, and the common ones are conspicuously red. Redder, and drawn
      LARGER: shrinking it first made things worse, 0.60 to 0.51, because a
      small subject leaves mostly empty canvas and two mostly-empty cards look
      alike. Portrait scale is invisible when each species is framed alone. */
-  'Mite': A({ scale: 0.95, hue: '#b0442c', fused: true }),
+  'Mite': A({ scale: 0.95, hue: '#b0442c', anatomy: 'mite' }),
   /* ── MYRIAPODS ── */
   'Centipede': M({ flat: true, hue: '#b06a2c' }),
   'Giant Centipede': M({ flat: true, scale: 1.34, segs: 22, hue: '#7d2f28' }),
@@ -1277,7 +1487,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Freshwater Crab': C({ hue: '#7d4c3d', }),
   'Vent Crab': C({ hue: '#fbf8f2', }),
   'Hermit Crab': C({ hue: '#cd8145', hermit: true }),
-  'Coconut Crab': C({ hue: '#3f3f6e', big: true, wide: true }),
+  'Coconut Crab': C({ hue: '#3f3f6e', big: true, wide: true, terrestrial: true, crusher: true }),
   /* ── SHRIMP, LOBSTER AND KIN ── */
   'Shrimp': P({ hue: '#cfa091', }),
   'Prawn': P({ hue: '#8d94a6', }),
@@ -1288,22 +1498,22 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Cave Shrimp': P({ hue: '#f0dfd8', }),
   'Vent Shrimp': P({ hue: '#e8bcae', }),
   'Krill': P({ tiny: true, gills: true, stalks: true, scale: 1.00, hue: '#e2705a' }),
-  'Copepod': P({ hue: '#d18a4e', tiny: true, stout: true, eggSacs: true }),
+  'Copepod': P({ hue: '#d18a4e', tiny: true, stout: true, eggSacs: true, forkedTail: true }),
   'Amphipod': P({ tiny: true, stout: true, scale: 0.74, hue: '#b9a274' }),
   'Water Flea': (c, g, p, n) => waterFlea(c, g, p, n),
   'Isopod': (c, g, p, n) => isopodBody(c, g, p, { hue: '#6e6c73' }, n),
   'Giant Isopod': (c, g, p, n) => isopodBody(c, g, p, { giant: true, hue: '#c3b2b8' }, n),
-  'Lobster': P({ hue: '#2f3a4e', claws: true }),
-  'Crayfish': P({ hue: '#6e6135', claws: true }),
+  'Lobster': P({ hue: '#2f3a4e', claws: true, stout: true, unequalClaws: true }),
+  'Crayfish': P({ hue: '#6e6135', claws: true, stout: true, crayfish: true }),
   'Barnacle': X({ kind: 'volcano', hue: '#d8d2c4' }),
   /* ── WORMS ── */
   'Earthworm': W({ hue: '#b0796a', }),
   'Ice Worm': W({ hue: '#232c34', }),
   'Marine Worm': W({ hue: '#c6907c', bristles: true }),
   'Polychaete Worm': W({ hue: '#a8481a', bristles: true }),
-  'Scale Worm': W({ hue: '#6c6355', bristles: true, flat: true }),
-  'Flatworm': W({ hue: '#3c4040', flat: true }),
-  'Leech': W({ hue: '#473d22', sucker: true }),
+  'Scale Worm': W({ hue: '#6c6355', bristles: true, flat: true, scalePlates: true }),
+  'Flatworm': W({ hue: '#3c4040', flatworm: true }),
+  'Leech': W({ hue: '#473d22', sucker: true, flat: true, dualSuckers: true }),
   /* ── SLUGS AND KIN ── */
   'Banana Slug': G2({ hue: '#e3c22a', }),
   'Nudibranch': G2({ hue: '#c02f8a', cerata: true }),

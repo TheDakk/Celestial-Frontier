@@ -85,7 +85,8 @@ export function faunaWingedInsect(c: Ctx, g: G, pIn: Pal, opts: { open: boolean;
     /* ★ WAVE 64 — the two identity features gp3 failed this painter's species
        for: the caddisfly's thread antennae (longer than its own body, held
        FORWARD) and the male dobsonfly's huge crossed sickle mandibles. */
-    threadAntennae?: boolean; sickleJaws?: boolean }): void {
+    threadAntennae?: boolean; sickleJaws?: boolean;
+    beak?: boolean; scorpionTail?: boolean; wingBlotches?: boolean }): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const r = mulberry32(((g.seed as number) ^ 0x2C4E) >>> 0);
@@ -108,6 +109,11 @@ export function faunaWingedInsect(c: Ctx, g: G, pIn: Pal, opts: { open: boolean;
     c.quadraticCurveTo(len * 0.45, -len * 0.20, len, -len * 0.045);
     c.quadraticCurveTo(len * 0.5, len * 0.075, 0, 0);
     c.closePath(); c.fill();
+    if (opts.wingBlotches) {
+      /* The spots must survive the translucent wing at card scale. */
+      c.fillStyle = 'rgba(30,22,15,0.88)';
+      for (const u of [0.28, 0.56, 0.80]) { c.beginPath(); c.ellipse(len * u, -len * 0.040, len * 0.102, len * 0.072, 0, 0, TAU); c.fill(); }
+    }
     c.strokeStyle = 'rgba(226,240,255,0.5)'; c.lineWidth = 1.2; c.stroke();
     c.strokeStyle = 'rgba(226,240,255,0.22)'; c.lineWidth = 0.8;   /* venation */
     for (let v = 1; v <= 4; v++) { c.beginPath(); c.moveTo(len * 0.05, 0); c.quadraticCurveTo(len * 0.5, -len * 0.10 * (v / 4), len * 0.95, -len * 0.04 * (v / 4)); c.stroke(); }
@@ -126,6 +132,14 @@ export function faunaWingedInsect(c: Ctx, g: G, pIn: Pal, opts: { open: boolean;
     c.fillStyle = i % 2 ? p.base : p.dark;
     c.beginPath(); c.ellipse(x, cy + t * 4, abW * (1 - t * 0.35), abW * (0.9 - t * 0.25), 0, 0, TAU); c.fill();
   }
+  if (opts.scorpionTail) {
+    /* The male scorpionfly's abdomen ends in a lifted bulb, not a straight fly tail. */
+    const tx = cx + abLen * 0.94, ty = cy + abW * 0.18;
+    c.strokeStyle = p.dark; c.lineWidth = Math.max(3, abW * 1.25); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(tx - abLen * 0.18, ty); c.quadraticCurveTo(tx + abLen * 0.04, ty - abLen * 0.18, tx - abLen * 0.02, ty - abLen * 0.34); c.stroke();
+    c.fillStyle = p.dark; c.beginPath(); c.arc(tx - abLen * 0.02, ty - abLen * 0.34, Math.max(5, abW * 2.1), 0, TAU); c.fill();
+    c.fillStyle = 'rgba(235,196,104,0.42)'; c.beginPath(); c.arc(tx - abLen * 0.055, ty - abLen * 0.39, Math.max(1.7, abW * 0.44), 0, TAU); c.fill();
+  }
   rim(c, () => c.ellipse(cx - abLen * 0.22, cy, S * 0.055, S * 0.045, 0, -2.6, 0.3), 1.8);
   /* six thoracic legs */
   c.strokeStyle = p.dark; c.lineWidth = 2.6; c.lineCap = 'round';
@@ -142,6 +156,20 @@ export function faunaWingedInsect(c: Ctx, g: G, pIn: Pal, opts: { open: boolean;
     c.beginPath(); c.ellipse(hx - 6, cy - 8 + s * 9, S * 0.026, S * 0.021, 0, 0, TAU); c.fill();
     c.fillStyle = 'rgba(255,255,255,0.5)';
     c.beginPath(); c.arc(hx - 10, cy - 11 + s * 9, 2.6, 0, TAU); c.fill();
+  }
+  if (opts.beak) {
+    /* A downward rostrum must break the face silhouette, not resemble an antenna. */
+    const bx = hx - S * 0.020, by = cy + S * 0.004;
+    c.fillStyle = '#2d1c11';
+    c.beginPath();
+    c.moveTo(bx, by - S * 0.015);
+    c.quadraticCurveTo(hx - S * 0.090, cy + S * 0.028, hx - S * 0.198, cy + S * 0.098);
+    c.lineTo(hx - S * 0.218, cy + S * 0.124);
+    c.lineTo(hx - S * 0.182, cy + S * 0.108);
+    c.quadraticCurveTo(hx - S * 0.082, cy + S * 0.060, bx, by + S * 0.017);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(238,200,128,0.46)'; c.lineWidth = 1.4; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(bx - S * 0.010, by + S * 0.005); c.lineTo(hx - S * 0.188, cy + S * 0.108); c.stroke();
   }
   if (opts.threadAntennae) {
     /* the caddisfly's thread antennae: longer than the body, swept FORWARD */
@@ -493,6 +521,10 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; 
 /** CETACEAN: long body, horizontal FLUKE, blowhole, species dorsal */
 export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | 'small' | 'none'; blunt: boolean; hue?: [number, number, number];
     bulk?: number; long?: number; melon?: number; tusk?: boolean; patch?: boolean;
+    beak?: boolean; throatGrooves?: boolean; knuckles?: boolean; callosities?: boolean;
+    archedJaw?: boolean; squareHead?: boolean; frontBlowhole?: boolean; throatPatch?: boolean; forwardDorsal?: boolean;
+    /** A card-scale, flattened paired tail for dolphins, never a fish caudal fin. */
+    horizontalFlukes?: boolean;
     pale?: boolean /* ★ POLISH — beluga: the body stays WHITE to the tail */ }): void {
   /* NO CETACEAN IS PURPLE. Every whale, dolphin and porpoise alive is some
      grey, blue-grey or black, and a lavender blue whale is not rarity
@@ -539,15 +571,54 @@ export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | '
   c.quadraticCurveTo(tail - L * 0.16, cy + H * 0.48, cx + L * 0.2, cy + H * 0.85);
   c.quadraticCurveTo(cx - L * 0.5, cy + H * 1.05, head, cy + (opts.blunt ? H * 0.3 : 0));
   c.closePath(); c.fill();
+  if (opts.squareHead) {
+    /* The sperm-whale head is a block with a low underslung jaw, not a fish nose. */
+    c.fillStyle = p.base;
+    c.beginPath();
+    c.moveTo(head - L * 0.24, cy - H * 0.78); c.lineTo(head + L * 0.34, cy - H * 0.94);
+    c.lineTo(head + L * 0.42, cy + H * 0.24); c.lineTo(head - L * 0.16, cy + H * 0.36);
+    c.closePath(); c.fill();
+    c.fillStyle = p.dark;
+    c.beginPath(); c.moveTo(head - L * 0.14, cy + H * 0.36); c.lineTo(head + L * 0.42, cy + H * 0.24);
+    c.lineTo(head + L * 0.28, cy + H * 0.62); c.lineTo(head - L * 0.04, cy + H * 0.58); c.closePath(); c.fill();
+  }
+  if (opts.beak) {
+    /* A dolphin's short rostrum must break the front silhouette. */
+    c.fillStyle = p.base;
+    c.beginPath(); c.moveTo(head + L * 0.20, cy - H * 0.30);
+    c.lineTo(head - L * 0.52, cy - H * 0.10); c.lineTo(head - L * 0.52, cy + H * 0.08);
+    c.lineTo(head + L * 0.18, cy + H * 0.22); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(22,30,36,0.46)'; c.lineWidth = Math.max(1.6, H * 0.10);
+    c.beginPath(); c.moveTo(head - L * 0.48, cy + H * 0.08); c.quadraticCurveTo(head - L * 0.10, cy + H * 0.22, head + L * 0.20, cy + H * 0.20); c.stroke();
+  }
   rim(c, () => { c.moveTo(head, cy); c.quadraticCurveTo(cx - L * (0.5 + mel * 0.28), cy - H * ((opts.blunt ? 1.5 : 1.15) + mel * 0.85), cx + L * 0.2, cy - H * 0.75); c.quadraticCurveTo(tail - L * 0.16, cy - H * 0.42, tail, cy - ped); }, 2.4);
   /* THE HORIZONTAL FLUKE — never a vertical fish tail. Scaled to the body. */
-  const fw = Math.max(L * 0.22, H * 1.2), fh = Math.max(H * 0.9, L * 0.12);
-  c.fillStyle = p.dark;
-  c.beginPath(); c.moveTo(tail - 2, cy - ped);
-  c.quadraticCurveTo(tail + fw * 0.5, cy - fh, tail + fw, cy - fh * 0.62);
-  c.quadraticCurveTo(tail + fw * 0.55, cy, tail + fw, cy + fh * 0.62);
-  c.quadraticCurveTo(tail + fw * 0.5, cy + fh, tail - 2, cy + ped);
-  c.closePath(); c.fill();
+  /* Preserve the existing shared fluke for controls. Dolphin gets a shallow,
+     visibly split horizontal paddle instead of the old tall fish-tail diamond. */
+  if (opts.horizontalFlukes) {
+    const fw = Math.max(L * 0.66, H * 4.0), fh = Math.max(H * 0.42, L * 0.060);
+    /* Two shallow leaves have much more lateral than vertical reach.  They
+       remain visibly separate at native size, so the tail cannot read as a
+       fish's tall caudal fin. */
+    for (const s of [-1, 1] as const) {
+      c.fillStyle = p.dark;
+      c.beginPath(); c.moveTo(tail - L * 0.025, cy + s * ped * 0.18);
+      c.quadraticCurveTo(tail + fw * 0.18, cy + s * fh * 1.02, tail + fw * 0.64, cy + s * fh * 0.76);
+      c.quadraticCurveTo(tail + fw * 1.04, cy + s * fh * 0.44, tail + fw * 1.10, cy + s * fh * 0.08);
+      c.quadraticCurveTo(tail + fw * 0.58, cy + s * fh * 0.05, tail - L * 0.025, cy + s * ped * 0.18);
+      c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(205,216,220,0.54)'; c.lineWidth = Math.max(1.4, fh * 0.18); c.lineCap = 'round';
+      c.beginPath(); c.moveTo(tail + fw * 0.10, cy + s * fh * 0.38); c.quadraticCurveTo(tail + fw * 0.56, cy + s * fh * 0.82, tail + fw * 0.99, cy + s * fh * 0.14); c.stroke();
+    }
+  } else {
+    const fw = Math.max(L * 0.22, H * 1.2), fh = Math.max(H * 0.9, L * 0.12);
+    c.fillStyle = p.dark;
+    c.beginPath(); c.moveTo(tail - 2, cy - ped);
+    c.quadraticCurveTo(tail + fw * 0.5, cy - fh, tail + fw, cy - fh * 0.62);
+    c.quadraticCurveTo(tail + fw * 0.55, cy, tail + fw, cy + fh * 0.62);
+    c.quadraticCurveTo(tail + fw * 0.5, cy + fh, tail - 2, cy + ped);
+    c.closePath(); c.fill();
+  }
   if (opts.dorsal !== 'none') {
     c.fillStyle = p.dark;
     if (opts.dorsal === 'tall') {
@@ -564,12 +635,49 @@ export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | '
       c.closePath(); c.fill();
     }
   }
+  if (opts.forwardDorsal) {
+    c.fillStyle = p.dark;
+    c.beginPath(); c.moveTo(cx - L * 0.18, cy - H * 0.72);
+    c.quadraticCurveTo(cx - L * 0.06, cy - H * 2.05, cx + L * 0.08, cy - H * 0.78);
+    c.closePath(); c.fill();
+  }
   c.fillStyle = p.dark;   /* pectoral flipper */
   c.beginPath(); c.ellipse(cx - L * 0.3, cy + H * 0.85, L * 0.20, H * 0.28, 0.5, 0, TAU); c.fill();
   /* ★ D-ART-124 — THE NARWHAL'S TUSK, restored. It was lost when the species
      was rerouted onto the shared cetacean painter, whose options carry no tusk
      — so the animal kept its silhouette and lost the ONE feature anybody
      identifies it by. The audit called it correctly as a regression. */
+  if (opts.throatGrooves) {
+    c.strokeStyle = 'rgba(38,48,60,0.52)'; c.lineWidth = Math.max(1.5, H * 0.09); c.lineCap = 'round';
+    for (let i = 0; i < 7; i++) {
+      const x = head + L * (0.20 + i * 0.095);
+      c.beginPath(); c.moveTo(x, cy + H * 0.36); c.quadraticCurveTo(x - L * 0.03, cy + H * 0.72, x + L * 0.03, cy + H * 0.96); c.stroke();
+    }
+  }
+  if (opts.knuckles) {
+    c.fillStyle = 'rgba(178,170,154,0.88)';
+    for (let i = 0; i < 5; i++) {
+      const x = head + L * (0.34 + i * 0.17), y = cy - H * (0.98 - (i % 2) * 0.15);
+      c.beginPath(); c.ellipse(x, y, H * 0.20, H * 0.15, -0.22, 0, TAU); c.fill();
+    }
+  }
+  if (opts.callosities) {
+    c.fillStyle = 'rgba(235,225,194,0.92)';
+    for (const [u, v, sc] of [[0.08, -0.28, 0.28], [0.22, -0.72, 0.22], [0.36, -0.88, 0.18], [0.18, 0.36, 0.16]] as const) {
+      c.beginPath(); c.ellipse(head + L * u, cy + H * v, H * sc * 1.25, H * sc, -0.18, 0, TAU); c.fill();
+    }
+  }
+  if (opts.archedJaw) {
+    c.strokeStyle = 'rgba(224,218,202,0.92)'; c.lineWidth = Math.max(2.4, H * 0.18); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(head - L * 0.04, cy + H * 0.38);
+    c.quadraticCurveTo(head + L * 0.28, cy + H * 1.15, head + L * 0.76, cy + H * 0.70); c.stroke();
+  }
+  if (opts.throatPatch) {
+    c.fillStyle = 'rgba(220,224,214,0.92)';
+    c.beginPath(); c.moveTo(head + L * 0.18, cy + H * 0.30);
+    c.lineTo(head + L * 0.48, cy + H * 0.88); c.lineTo(head + L * 0.72, cy + H * 0.54);
+    c.lineTo(head + L * 0.42, cy + H * 0.18); c.closePath(); c.fill();
+  }
   if (opts.tusk) {
     const tl = L * 0.92, ty = cy - H * 0.34;
     const tg = c.createLinearGradient(head, ty, head - tl, ty);
@@ -604,6 +712,10 @@ export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | '
   }
   c.fillStyle = 'rgba(255,255,255,0.5)';   /* blowhole */
   c.beginPath(); c.ellipse(cx - L * 0.62, cy - H * 0.92, 5, 3, 0, 0, TAU); c.fill();
+  if (opts.frontBlowhole) {
+    c.fillStyle = 'rgba(230,230,220,0.84)';
+    c.beginPath(); c.ellipse(head + L * 0.08, cy - H * 0.92, Math.max(3, H * 0.16), Math.max(2, H * 0.09), -0.25, 0, TAU); c.fill();
+  }
   eye(c, head + L * 0.22, cy + H * 0.1, 5);
   c.strokeStyle = 'rgba(0,0,0,0.28)'; c.lineWidth = 2;   /* the jawline */
   c.beginPath(); c.moveTo(head + 4, cy + H * 0.35); c.quadraticCurveTo(cx - L * 0.55, cy + H * 0.6, cx - L * 0.28, cy + H * 0.62); c.stroke();
@@ -632,7 +744,7 @@ export interface BirdSpec {
      before (D-ART-14: never override what already excels). ── */
   size?: number;                                   /** body scale; a hummingbird is not an ostrich */
   neck?: 'short' | 'long' | 'swan' | 'none';
-  tail?: 'short' | 'fan' | 'long' | 'forked';
+  tail?: 'short' | 'fan' | 'long' | 'forked' | 'square' | 'wedge' | 'shortFan' | 'sickle' | 'train';
   eyespots?: boolean;                              /** the peacock train */
   pearled?: boolean;                               /** wave 39 — guineafowl pearl spotting */
   cling?: boolean;                                 /** wave 40 — vertical trunk cling (woodpecker) */
@@ -648,6 +760,8 @@ export interface BirdSpec {
   owl?: boolean;                                   /** round head, facial disc, forward eyes */
   swim?: boolean;                                  /** rides a waterline; legs hidden */
   upright?: boolean;                               /** penguin/auk stance, flipper not wing */
+  /** Stationary flight: no perch or legs, with fast blade-like wing strokes. */
+  hover?: boolean;
   /* ── wave 21: the Platinum audit's bird findings, each "add <the one thing>" ── */
   wings?: 'soaring';                              /** wings so long they ARE the bird (albatross) */
   headMass?: number;                               /** an oversized head (kingfisher, kookaburra) */
@@ -677,6 +791,7 @@ export interface BirdSpec {
   cap?: string;                                    /** a contrasting crown (chickadee, jay) */
   mask?: boolean;                                  /** the black face mask (cardinal, weaverbird) */
   nest?: boolean;                                  /** ★ WAVE 68 — the weaverbird's woven ball nest */
+  tubeNostrils?: boolean;                          /** paired tube nostrils on procellariiform seabird bills */
   comb?: boolean;                                  /** ★ POLISH — the fleshy red serrated chicken comb */
   browComb?: boolean;                              /** ★ POLISH — the grouse/ptarmigan red wattle ABOVE the eye */
   brow?: boolean;                                  /** ★ GOLD AUDIT — the raptor's supraorbital ridge: the fierce hooded glare */
@@ -733,7 +848,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
   const plump = opts.plump ?? 1, elong = opts.elong ?? 1;
   const bw = S * 0.15 * sz * (opts.upright ? 0.78 : 1) * elong * (opts.flightless ? 0.86 : 1);
   const bh = S * 0.12 * sz * (opts.upright ? 1.45 : 1) * plump * (opts.flightless ? 1.30 : 1);
-  const by = groundY - legLen - bh;
+  const by = groundY - legLen - bh - (opts.hover ? S * 0.13 : 0);
   /* ★ WAVE 40 — CLINGING. `faunaBird` draws one posture: a bird perched level
      on a ground line. A woodpecker is never in it — the row asks for a bird
      gripping a VERTICAL TRUNK, head up, braced back on a stiff tail — and the
@@ -760,7 +875,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
        trunk. Positive brings the head up and swings the tail down behind it,
        which is also exactly where a woodpecker's stiff tail braces. */
     c.translate(bx, by); c.rotate(1.16); c.translate(-bx, -by);
-  } else if (opts.wings !== 'soaring') {
+  } else if (opts.wings !== 'soaring' && !opts.hover) {
     /* ★ WAVE 67 — a SOARING bird is AIRBORNE: no ground shadow, no legs. gp3/5
        failed Albatross, Skua, Petrel and Snow Petrel for standing on yellow
        legs over a cast shadow while their rows specify the flying posture. */
@@ -768,7 +883,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
   }
 
   /* legs — hidden on a swimming bird (waterline) and an airborne one */
-  if (!opts.swim && opts.wings !== 'soaring') {
+  if (!opts.swim && !opts.hover && (opts.wings !== 'soaring' || opts.talons)) {
     /* THE BACKWARD ANKLE. A bird's visible joint is the ankle, not a knee,
        and it folds the opposite way to ours — on a flamingo, a heron or an
        ostrich that reversed bend IS the silhouette. Two straight strokes
@@ -835,16 +950,17 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
   /* ── the TAIL, behind the body ── */
   c.fillStyle = p.dark;
   const tail = opts.tail ?? 'short';
-  if (tail === 'fan' && opts.eyespots) {
+  if ((tail === 'fan' || tail === 'train') && opts.eyespots) {
     /* ★ WAVE 62 — THE PEACOCK'S TRAIN. The old fan was a handful of body-length
        feathers pointing back-down; gp5's verdict was "the train — the entire
        identity of a peacock — is not there". It is now what it is in life: a
        huge ERECT semicircular fan behind the whole bird, each feather ~2.6×
        the body, tipped with a blue-and-gold ocellus. */
+    const train = tail === 'train';
     const rootX = bx + bw * 0.30, rootY = by + bh * 0.10;
-    const R = bw * 2.6;
+    const R = bw * (train ? 3.3 : 2.6);
     for (let i = -6; i <= 6; i++) {
-      const a = -Math.PI / 2 + i * 0.145;   /* an erect fan, -125°..-55° spread */
+      const a = train ? 0.36 + i * 0.055 : -Math.PI / 2 + i * 0.145;
       c.save(); c.translate(rootX, rootY); c.rotate(a);
       const fg2 = c.createLinearGradient(0, 0, R, 0);
       fg2.addColorStop(0, 'rgba(20,70,60,0.9)'); fg2.addColorStop(1, 'rgba(40,120,90,0.85)');
@@ -856,6 +972,29 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       c.fillStyle = '#d8b43c'; c.beginPath(); c.arc(R * 0.88, 0, bh * 0.055, 0, TAU); c.fill();
       c.restore();
     }
+  } else if (tail === 'shortFan') {
+    /* A chicken's upright fan is short, layered, and visibly separate from a long gamebird tail. */
+    for (let i = -2; i <= 2; i++) {
+      c.save(); c.translate(bx + bw * 0.62, by + bh * 0.20); c.rotate(-0.72 + i * 0.24);
+      c.fillStyle = i % 2 ? p.dark : p.base;
+      c.beginPath(); c.ellipse(bw * 0.48, 0, bw * 0.50, bh * 0.13, 0, 0, TAU); c.fill(); c.restore();
+    }
+  } else if (tail === 'sickle') {
+    /* Rooster sickles arch in a long pair instead of forming a straight blade. */
+    c.strokeStyle = p.dark; c.lineCap = 'round';
+    for (let i = 0; i < 3; i++) {
+      c.lineWidth = bh * (0.15 - i * 0.025); c.beginPath();
+      c.moveTo(bx + bw * (0.52 + i * 0.08), by + bh * (0.12 + i * 0.08));
+      c.bezierCurveTo(bx + bw * 1.18, by - bh * (0.42 + i * 0.10), bx + bw * 1.82, by + bh * (0.18 + i * 0.10), bx + bw * 1.34, by + bh * (0.72 + i * 0.08)); c.stroke();
+    }
+  } else if (tail === 'square') {
+    c.beginPath(); c.moveTo(bx + bw * 0.62, by + bh * 0.08); c.lineTo(bx + bw * 1.48, by + bh * 0.28);
+    c.lineTo(bx + bw * 1.46, by + bh * 0.72); c.lineTo(bx + bw * 0.64, by + bh * 0.58); c.closePath(); c.fill();
+  } else if (tail === 'wedge') {
+    c.beginPath(); c.moveTo(bx + bw * 0.58, by + bh * 0.08); c.lineTo(bx + bw * 1.78, by + bh * 0.45);
+    c.lineTo(bx + bw * 0.58, by + bh * 0.66); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(230,235,240,0.20)'; c.lineWidth = 1.2;
+    c.beginPath(); c.moveTo(bx + bw * 0.72, by + bh * 0.17); c.lineTo(bx + bw * 1.60, by + bh * 0.45); c.stroke();
   } else if (tail === 'fan') {
     for (let i = -4; i <= 4; i++) {
       c.save(); c.translate(bx + bw * 0.66, by + bh * 0.24); c.rotate(i * 0.13 + 0.30);
@@ -1097,6 +1236,22 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
        and wave 6 the neck: there is nothing to blend if the join is buried. */
     feather(bx + bw * 0.16, by - bh * 0.40, Math.PI - 0.30, 0.72, 0.55);   /* far, going away */
     feather(bx + bw * 0.22, by - bh * 0.16, 0.14, 1, 1);                   /* near, toward us */
+  } else if (opts.hover) {
+    /* A hovering hummingbird reads from the paired translucent wing blurs, not
+       from a grounded folded-wing silhouette. */
+    for (const side of [-1, 1] as const) {
+      const sx = bx + side * bw * 0.10, sy = by - bh * 0.20;
+      c.strokeStyle = `rgba(${p.cr},${p.cg},${p.cb},0.34)`;
+      c.lineWidth = Math.max(2.4, bh * 0.24); c.lineCap = 'round';
+      c.beginPath(); c.moveTo(sx, sy);
+      c.quadraticCurveTo(sx + side * bw * 0.86, sy - bh * 1.25, sx + side * bw * 1.28, sy - bh * 0.48); c.stroke();
+      c.strokeStyle = `rgba(${Math.min(255, p.cr + 95)},${Math.min(255, p.cg + 105)},${Math.min(255, p.cb + 110)},0.46)`;
+      c.lineWidth = Math.max(1.2, bh * 0.075);
+      for (let blur = -1; blur <= 1; blur++) {
+        c.beginPath(); c.moveTo(sx, sy + blur * bh * 0.13);
+        c.quadraticCurveTo(sx + side * bw * 0.82, sy - bh * (1.18 - blur * 0.06), sx + side * bw * 1.24, sy - bh * (0.42 - blur * 0.08)); c.stroke();
+      }
+    }
   } else if (opts.upright) {   /* a penguin has a FLIPPER: one stiff blade, no primaries */
     /* ★ POLISH — the flipper is a STIFF NARROW BLADE held out from the body,
        tapering to a rounded tip, not a soft oval wing lying on the flank. */
@@ -1430,6 +1585,11 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       c.quadraticCurveTo(hx - L * 0.58, hy + D * 0.20, hx - L * 0.96, hy + D * 0.14);
       c.stroke();
     } else { c.beginPath(); c.moveTo(hx - 14 * B, hy - 5 * B); c.lineTo(hx - 36 * B, hy + 1 * B); c.lineTo(hx - 14 * B, hy + 8 * B); c.closePath(); c.fill(); }
+    if (opts.tubeNostrils) {
+      /* Procellariiforms carry paired tubes on the bill's top, a small but decisive seabird tell. */
+      c.strokeStyle = 'rgba(24,28,32,0.86)'; c.lineWidth = Math.max(1.5, 3 * B); c.lineCap = 'round';
+      for (const y of [-1, 3]) { c.beginPath(); c.moveTo(hx - 15 * B, hy + y * B); c.lineTo(hx - 31 * B, hy + (y - 1) * B); c.stroke(); }
+    }
   }
   if (opts.crest && !opts.owl) {
     if (opts.doubleCrest) {
@@ -1486,7 +1646,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
 export const FAUNA_NAME: Record<string, FaunaPainter> = {
   /* Blocker 4 — life stage + arthropod body plans */
   'Fly Larvae': (c, g, p) => faunaLarva(c, g, speciesHue(p, '#f0e6c8')),
-  'Cave Cricket': (c, g, p, n) => insectBody(c, g, speciesHue(p, '#9c7a54'), { abdomen: 1.1, broad: 1.05, eyes: 0.8, face: 'slant', antennae: 'long', jumper: true }, n),
+  'Cave Cricket': (c, g, p, n) => insectBody(c, g, speciesHue(p, '#9c7a54'), { abdomen: 1.1, broad: 0.84, eyes: 0.8, face: 'slant', antennae: 'long', wings: 'none', jumper: true, legSpan: 2.25 }, n),
   'Dragonfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#1e7fa8', open: true, slim: false }),
   'Damselfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#4aa8e0', open: false, slim: true, body: 1.05 }),
   'Mayfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#d8c48a', open: false, slim: true, body: 0.82 }),
@@ -1499,7 +1659,7 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   /* a dobsonfly is BIG — the largest of these by a wide margin, pale grey,
      with long soft wings held out */
   'Dobsonfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#9d968a', open: true, slim: false, body: 1.45, sickleJaws: true }),
-  'Scorpionfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#e8a81c', open: false, slim: false, body: 0.95 }),
+  'Scorpionfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#9f7a38', open: false, slim: true, body: 1.10, beak: true, scorpionTail: true, wingBlotches: true }),
   'Springtail': (c, g, p) => faunaSpringtail(c, g, speciesHue(p, '#5a6470')),
   'Ladybug': (c, g, p) => faunaBeetle(c, g, p, { hue: '#c62828', spots: true }),
   'Firefly': (c, g, p) => faunaBeetle(c, g, p, { hue: '#382c1f', glow: true }),
@@ -1522,15 +1682,15 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Giant Squid': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#8c2f3a', squid: true }),
   /* its row: a TINY nub dorsal set far back, and a broad flat U rostrum —
      'Whale' now takes the no-dorsal blunt form so the two are not one animal */
-  'Blue Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [92, 108, 132], long: 1.30, bulk: 0.80 }),
-  'Sperm Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [86, 78, 72], long: 1.10, bulk: 1.05, melon: 0.85 }),
-  'Gray Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [142, 146, 140], long: 1.06, bulk: 1.00 }),
-  'Right Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [46, 48, 52], long: 0.84, bulk: 1.42, melon: 0.30 }),
+  'Blue Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [92, 108, 132], long: 1.30, bulk: 0.80, throatGrooves: true }),
+  'Sperm Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [86, 78, 72], long: 1.10, bulk: 1.05, melon: 0.85, squareHead: true, knuckles: true, frontBlowhole: true }),
+  'Gray Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [142, 146, 140], long: 1.06, bulk: 1.00, knuckles: true, callosities: true }),
+  'Right Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [46, 48, 52], long: 0.84, bulk: 1.42, melon: 0.30, archedJaw: true, callosities: true }),
   'Beluga': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [226, 228, 230], long: 0.88, bulk: 1.12, melon: 0.55, pale: true }),
   'Orca': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'tall', blunt: false, patch: true, hue: [22, 24, 30], long: 0.98, bulk: 1.08 }),
-  'Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [124, 134, 146], long: 0.86, bulk: 0.82 }),
+  'Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [124, 134, 146], long: 0.86, bulk: 0.82, beak: true, horizontalFlukes: true }),
   'River Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [178, 150, 148], long: 0.80, bulk: 0.70 }),
-  'Pilot Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: true, hue: [30, 32, 38], long: 0.92, bulk: 1.20, melon: 1.00 }),
+  'Pilot Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: true, hue: [30, 32, 38], long: 0.92, bulk: 1.20, melon: 1.00, throatPatch: true, forwardDorsal: true }),
   'Narwhal': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, tusk: true, melon: 0.62, hue: [168, 168, 158], long: 0.94, bulk: 0.78 }),
   /* the wing, at last — birds by bill + leg length */
   /* ★ D-ART-121 — the axes existed and the rows never set them. */
@@ -1538,7 +1698,7 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
      never drew a single talon on either eagle. Perch them: the heavy GRIP
      legs + hooks are the raptor read. */
   'Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#4a3a28', legs: 0.040, bill: 'hook', tail: 'fan', headMass: 1.6, talons: true, plump: 1.32, elong: 1.12, size: 1.15, brow: true }, n),
-  'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6b7079', legs: 0.040, bill: 'hook', crest: true, doubleCrest: true, headMass: 1.48, talons: true, plump: 1.38, elong: 1.10, size: 1.25, brow: true, belly: '#eee9dd', breastBand: '#252a31' }, n),
+  'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6b7079', legs: 0.040, bill: 'hook', crest: true, doubleCrest: true, headMass: 1.48, talons: true, plump: 1.38, elong: 1.10, size: 1.25, brow: true, belly: '#eee9dd', breastBand: '#252a31', legHue: '#92742b' }, n),
   /* ★ WAVE 50 — HAWK, FALCON AND OSPREY WERE ONE BIRD IN THREE HUES. Their
      rows were byte-identical apart from `hue` (Osprey added `size`), so the
      new [SHAPE] tier scores Hawk ≈ Falcon at 0.06 and Hawk ≈ Osprey at 0.25.
@@ -1551,12 +1711,12 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Hawk': (c, g, p, n) => faunaBird(c, g, p, { hue: '#96543a', legs: 0.02, bill: 'hook', tail: 'fan', talons: true, plump: 1.16, size: 0.96 }, n),
   'Falcon': (c, g, p, n) => faunaBird(c, g, p, { hue: '#55647a', legs: 0.02, bill: 'hook', talons: true, size: 0.76, plump: 0.88, elong: 1.16 }, n),
   'Vulture': (c, g, p, n) => faunaBird(c, g, p, { hue: '#3a322c', legs: 0.03, bill: 'hook', bald: true, talons: true, size: 1.10, plump: 1.14 }, n),
-  'Albatross': (c, g, p, n) => faunaBird(c, g, p, { hue: '#99a0a8', legs: 0.01, bill: 'hook', wings: 'soaring', size: 1.05 }, n),
-  'Flamingo': (c, g, p, n) => faunaBird(c, g, p, { hue: '#ef92a6', legs: 0.14, bill: 'stout', neck: 'swan', size: 1.05 }, n),
+  'Albatross': (c, g, p, n) => faunaBird(c, g, p, { hue: '#99a0a8', legs: 0.01, bill: 'hook', wings: 'soaring', size: 1.05, tubeNostrils: true }, n),
+  'Flamingo': (c, g, p, n) => faunaBird(c, g, p, { hue: '#ef92a6', legs: 0.18, bill: 'downcurve', neck: 'swan', size: 1.05, billHue: '#1a1c20', legHue: '#e47b98' }, n),
   'Heron': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7b8fa3', legs: 0.13, bill: 'long', neck: 'swan', size: 0.98 }, n),
-  'Crane': (c, g, p, n) => faunaBird(c, g, p, { hue: '#a3a39b', legs: 0.13, bill: 'long', crest: true, neck: 'long' }, n),
-  'Stork': (c, g, p, n) => faunaBird(c, g, p, { hue: '#e6e2d8', legs: 0.12, bill: 'huge', neck: 'long' }, n),
-  'Spoonbill': (c, g, p, n) => faunaBird(c, g, p, { hue: '#e2607f', legs: 0.11, bill: 'spoon', neck: 'long' }, n),
+  'Crane': (c, g, p, n) => faunaBird(c, g, p, { hue: '#a3a39b', legs: 0.13, bill: 'long', crest: true, neck: 'long', cap: '#b62d2b', tail: 'shortFan' }, n),
+  'Stork': (c, g, p, n) => faunaBird(c, g, p, { hue: '#e6e2d8', legs: 0.15, bill: 'huge', neck: 'long', billHue: '#bd4035', legHue: '#bd4035' }, n),
+  'Spoonbill': (c, g, p, n) => faunaBird(c, g, p, { hue: '#e2607f', legs: 0.14, bill: 'spoon', neck: 'long', legHue: '#ba6379' }, n),
   'Avocet': (c, g, p, n) => faunaBird(c, g, p, { hue: '#e8ecee', legs: 0.11, bill: 'upcurve', neck: 'long', cap: '#1a1c20' }, n),
   'Ibis': (c, g, p, n) => faunaBird(c, g, p, { hue: '#b8352f', legs: 0.10, bill: 'downcurve', neck: 'long', billHue: '#b8352f' }, n),
   'Snipe': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7a6440', legs: 0.06, bill: 'probe' }, n),

@@ -1,6 +1,80 @@
-# ★ COLD-START HANDOFF — read this first
+# ★ LIVE — GP7.1 strict-conformity remediation (2026-08-09)
 
-# ★★★★★ LIVE — 2026-08-09 · GP7 FINISHED · PACKAGE + BRANCH PUSHED · DRAFT PR #7 OPEN
+**Current worktree:** `C:\Projects\celestial-frontier-openai-windows` on
+`openai/windows`. **PR #7 is merged into `develop` at `52467ba`.** GP7 is
+preserved below as a frozen baseline; a new draft PR does not exist yet.
+
+## Current measured truth
+
+Nick's supplied `Celestial_Frontier_GP7_1250_Asset_Spec_Conformity_Recheck_Full_Package.zip`
+is SHA-256 `448BF5A465F195673E87DBEB487A3C3ADFDDE258A319050DD2493ECAB84CC6BB`
+(7,317,675 bytes). It validates an exact 1,250-row ledger, but has 23 metadata
+entries and no raster pixels. It is not a fresh visual certification.
+
+| ruler | rows | FAIL | POLISH | PASS |
+|---|---:|---:|---:|---:|
+| fresh strict | 503 | 301 | 37 | 165 |
+| byte-unchanged carried | 747 | 317 | 378 | 52 |
+| mixed inventory — **not a score** | 1,250 | 618 | 415 | 217 |
+
+Immediate work: fix/polish the 338 fresh strict non-PASS rows with named,
+evidence-backed routes; strictly re-render and rejudge all 747 carried rows;
+then package all current 1,250 portraits and review sheets beside a new dated
+fresh ledger. `npm run gp7conformity -- --input <fresh-ledger-dir> --certify`
+must stay blocked until every row is freshly strict PASS.
+
+## GP7.1 first all-fresh baseline (captured 2026-08-09)
+
+The remediation source was freshly rendered into 1,250 native 440x440 portraits
+and 196 labelled, hash-bound packets. Independent strict packet reviews are
+complete and `gp71rejudge --collect` accepted their exact joins:
+
+| current fresh ruler | rows | FAIL | POLISH | PASS |
+|---|---:|---:|---:|---:|
+| GP7.1 all-current render | 1,250 | 318 | 301 | 631 |
+
+There are zero carried rows in this ledger. It is therefore the first honest
+repair baseline, but **not** a literal PASS claim: 318 `FIX_TO_PASS` and 301
+`POLISH_TO_PASS` rows remain. The active repair order is named flora/harvest
+architecture, procedural contrast/body plans, fruit/nut trees, rodents,
+herbs/spices, primates, shrubs, then the smaller per-row fauna routes. Do not
+overwrite frozen GP7 records; every source change requires a fresh affected
+render and a final all-catalogue rejudge before certification.
+
+## r2 delta evidence and current source state
+
+The first bounded repair pass changed 362 portraits, independently reviewed by
+an author-separated r2 delta pass: fauna **46 PASS / 42 POLISH / 10 FAIL**
+(98 changed), flora+fungi **56 / 62 / 49** (167), and procedural **76 / 21 /
+0** (97). The other 888 portraits are byte-identical to their all-fresh
+baseline evidence. These are SHA-bound auxiliary reports only, not a new
+collector result or a certificate. A second narrow source pass has completed
+the exact r2 failure/polish fixes with type/spec/route/species-audit gates
+green; it has not promoted a verdict. A distinct r3 all-1,250 capture is now
+ready at `apps/game/smoke/gp71-rejudge-r3`: 1,250 portraits and 196 packets.
+It changes 106 portrait hashes from r2 (fauna 13, flora 59, fungi 6,
+procedural 28) while 1,144 remain byte-identical. R3 has no verdict ledger,
+results, or certificate. Independently inspect the packets and collect only
+their hash-bound strict verdicts before any band promotion.
+
+## Next human/agent sequence
+
+1. Independently inspect r3 under the strict ruler and collect only complete,
+   hash-bound packet verdicts; do not infer new verdicts from r1/r2.
+2. Resolve only confirmed remaining FAIL/POLISH items, repeating evidence and
+   gates until all 1,250 rows are fresh PASS.
+3. Build a new evidence package containing current portraits, labelled strips,
+   manifest, provenance, and fresh verdict ledger; run full certification.
+4. Commit, push `openai/windows`, and open a new **draft** PR from
+   `openai/windows` to `develop`. Keep it draft until certification; never
+   commit directly to `develop` or `main`.
+
+Read next: `ROADMAP.md`, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
+`port/v2/reference/GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md`.
+
+# Historical GP7 handoff — superseded baseline retained verbatim below
+
+# ★★★★★ FROZEN GP7 BASELINE — 2026-08-09 · PACKAGE/BRANCH RECORD · PR #7 MERGED
 
 ⚠ **This worktree is `C:\Projects\celestial-frontier-openai-windows`; run the art tools from
 `port/v2`. Art is frozen. Do not start another global body pass.**
@@ -28,7 +102,7 @@ addressed. His patch review was **15 PASS / 25 PASS-WITH-POLISH / 19 STILL-FIX /
 the remaining 20 rows were then reworked and rejudged. His standing instruction still controls:
 preserve the build and regenerate only named targets.
 
-## Next human actions — in order
+## Historical next human actions — superseded by GP7.1 sequence above
 
 1. Review draft PR #7 at `https://github.com/TheDakk/Celestial-Frontier/pull/7` and merge it
    from `openai/windows` to `develop` only when approved; do not merge it into `main`.

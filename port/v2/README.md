@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (Phase 1+)
 
-**Status: ★★★ GP7 ART + PACKAGE COMPLETE · DRAFT PR #7 OPEN FOR NICK REVIEW** (2026-08-09).
+**Status: ★★★ PR #7 MERGED · GP7.1 STRICT-CONFORMITY REMEDIATION IN PROGRESS** (2026-08-09).
 **Port milestone record (2026-08-01):** ★★★ PHASES 1–3 COMPLETE (automatable) · PHASE 4 SHELL RUNNING.
 **Phase 4 so far — the slice wears the game's face at the GOLDEN SCREENS' exact geometry**
 (floating-pill topbar: player chip + HP bar + Prime pill + trail · objective chip fed by the
@@ -17,15 +17,34 @@ negative controls. `npm run proofsheet` bakes the art/sound verdict sheet.
 ## Current GP7 species-art status (2026-08-09)
 
 The current renderer covers all **1,250** catalogue identities (631 fauna, 332 flora,
-27 fungi, 20 microbes, 240 procedural). GP7 is complete over **503 changed rows / 95 strips**
+27 fungi, 20 microbes, 240 procedural). **GP7 is the frozen baseline; GP7.1 is the live
+remediation pass.** GP7 measured **503 changed rows / 95 strips**
 (165 PASS, 37 POLISH, 301 FAIL) plus **62 unchanged controls / 39 strips** (11 PASS,
 4 POLISH, 47 FAIL). The procedural correction subset is **57/57 PASS**. The paired control
 shows the new ruler is materially harsher on unchanged art: eligible-row demotions are
 38.8% for drift versus 65.6% for control (−26.8 points). Therefore the carried full-catalogue
 merge — 217 PASS / 415 POLISH / 618 FAIL — is inventory state across mixed rulers, **not a
-catalogue score**. Art is frozen; Nick's instruction remains no global body pass.
+catalogue score**. GP7 is frozen as evidence; GP7.1 permits named fixes only, never a global
+body pass. Its literal fresh-PASS contract is recorded in
+`reference/GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md`.
 
-The GP7 review/export workflow is fail-closed and runs from this directory:
+GP7.1 has now completed its **first all-fresh review baseline**: 1,250 current
+440x440 portraits and 196 hash-bound packets, independently collected as
+**318 FAIL / 301 POLISH / 631 PASS**, with zero carried rows. This is an honest
+repair baseline, not a completion claim; the 619 fresh non-PASS rows require
+named repairs followed by another all-fresh render and review before
+`--certify` can pass.
+
+The first post-baseline r2 delta pass independently reviewed all 362 changed
+pixels: fauna 46 PASS / 42 POLISH / 10 FAIL (98), flora+fungi 56 / 62 / 49
+(167), and procedural 76 / 21 / 0 (97). The remaining 888 portraits retained
+their exact baseline bytes. This is progress evidence only, not a replacement
+1,250-row ledger. The second narrow repair pass is now captured as r3 (1,250
+portraits / 196 packets); it differs from r2 in 106 hashes and deliberately
+has no verdict ledger yet. It must be independently reviewed before any
+literal certification can be attempted.
+
+The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory:
 
 | Tool | Role |
 |---|---|
@@ -33,12 +52,15 @@ The GP7 review/export workflow is fail-closed and runs from this directory:
 | `node tools/rejudgecards.mjs --drift=<file> --out=<dir> [--control] [--full]` | Builds indexed drift, unchanged-control, or full-catalogue review strips and packets from the current renderer. |
 | `node tools/speciesstrip.mjs "<name,...>" [out.png]` | Renders a small named Earth/procedural strip for targeted visual diagnosis; `npm run stripcheck` exercises its positive and rejection controls. |
 | `node tools/gp7collect.mjs` | Validates packet completeness, schema, exact names/order, bands, and reasons before writing the canonical GP7 drift/control records. |
+| `npm run gp7conformity -- --input <extracted-recheck-dir>` | Validates a 1,250-row ledger/manifest/results/index join and reports direct vs carried remediation work. `--certify` rejects every carried or non-PASS row; it guards ledger provenance and never substitutes for rendering or visual review. |
+| `node tools/gp71rejudge.mjs --prepare --out=gp71-rejudge --date=2026-08-09` | Builds the separate GP7.1 all-fresh 1,250-portrait / 196-packet evidence set, with no generated verdicts. `--collect` refuses partial, stale, or misaligned packet verdicts. |
+| `node tools/gp71package-2026-08-09.mjs ...` | Creates a separate dated GP7.1 image-inclusive ZIP only after `gp7conformity --certify` accepts the fresh ledger; it rejects legacy/overlapping targets. |
 | `node tools/rejudgemerge.mjs --fresh=<file> --base=<file> --control=<file> --out=<file>` | Folds fresh drift verdicts into the carried baseline and reports paired control calibration; it will not claim a delta without control. |
 | `npm run speciesexport` | Rebuilds and verifies the 1,250 native 440×440 portraits and per-set ZIPs. |
 | `npm run cataloguecards` | Alias for `rejudgecards --full`; generates the family-grouped complete-catalogue contact sheets and packets. |
 | `npm run gp7package` | Verifies portrait/contact coverage, records SHA-256 hashes, and assembles the dated complete-review ZIP. |
 
-The final packaging sequence (`speciesexport` → `cataloguecards` → `gp7package`) completed.
+The GP7 baseline packaging sequence (`speciesexport` → `cataloguecards` → `gp7package`) completed.
 The package gate accepted all review records and emitted
 `apps/game/smoke/Celestial_Frontier_GP7_Complete_Catalogue_Review_2026-08-09.zip`
 (305,291,135 bytes; SHA-256

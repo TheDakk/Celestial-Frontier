@@ -21,128 +21,80 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF — as of 2026-08-09. ★ GOLD PASS 7 + FINAL PACKAGE COMPLETE
-## AND PUSHED; DRAFT PR #7 IS OPEN FOR NICK REVIEW. ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-09 · GP7.1 STRICT-CONFORMITY REMEDIATION IN PROGRESS ◀◀◀
 
 ## ★ COLD START — READ THIS BLOCK, THEN THE LINKED REFERENCES
 ## Current workspace: C:\Projects\celestial-frontier-openai-windows
-## Current owner/branch: OpenAI/Codex on openai/windows. HEAD and origin/develop were both
-## e16da09 when this batch began. The complete GP7 implementation is commit a9345c1 and is pushed
-## to origin/openai/windows; this live handoff records that published branch state.
+## Current owner/branch: OpenAI/Codex on openai/windows. PR #7 is merged into develop as
+## 52467ba. This is a new bounded GP7.1 remediation batch; its integration vehicle is a draft PR,
+## never a direct merge.
 ## Integration path: openai/windows → reviewed draft PR → develop. Never commit directly to
 ## develop or main; no release, main merge, live-site deploy or version bump is authorized here.
-## The v1 single-file game remains the production reference. This batch changes the deterministic
-## port/v2 Canvas species-art catalogue, its review instruments, evidence and handoff documents.
 ## Read next: PROCESS_LAWS.md · PARALLEL_GIT_PROTOCOL.md · ART_DIRECTION.md ·
-## port/HANDOFF_NEXT_SESSION.md · port/v2/DEVIATIONS.md · port/v2/reference/GOLD_PASS_7.md.
+## port/HANDOFF_NEXT_SESSION.md · port/v2/DEVIATIONS.md ·
+## port/v2/reference/GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md.
 
-## ★ BOTH NICK REVIEWS ARE ACCOUNTED FOR — NOT JUST THE EARLIER HANDOFF
-## 1. port/v2/reference/NICK_GOLD_AUDIT_2026-08-08.md is the complete 1,250-item audit:
-##    381 GOLD / 810 POLISH / 59 FIX. SHA-256:
-##    382A9EA1618B86E976AA9180A6BD743851D3F5F227744CCDDB87692283E4C865.
-## 2. port/v2/reference/NICK_PATCH_REVIEW_2026-08-08.md is the fixed-species patch review:
-##    15 PASS / 25 PASS-WITH-POLISH / 19 STILL-FIX / 1 regression before the final refinements.
-##    Nick's Downloads copy, Celestial_Frontier_2026-08-08_Fixed_Species_Patch_Review.md,
-##    is byte-identical to the committed reference. Both SHA-256 values are:
-##    4C533151EFEC55B5FC741CD771E34CA0E32919F981E76D5C4BB390D4F4B72460.
-## These two documents, the round-3 carry record and the actual current pixels jointly define GP7.
+## ★ THE UPLOADED GP7 CONFORMITY RECHECK IS ACCOUNTED FOR
+## Nick supplied Celestial_Frontier_GP7_1250_Asset_Spec_Conformity_Recheck_Full_Package.zip.
+## SHA-256: 448BF5A465F195673E87DBEB487A3C3ADFDDE258A319050DD2493ECAB84CC6BB.
+## Size: 7,317,675 bytes. It contains 23 metadata entries, all internally coherent, but no
+## PNG/JPEG/WebP/GIF portraits, review strips, or packets. It proves a 1,250-row ledger/index,
+## not current visual pixels. GP7 evidence remains frozen; do not rewrite carried records to pass.
 
-## ★ COMPLETE CATALOGUE COVERAGE — ONE RECORD FOR EVERY ASSET
-## The catalogue is 1,250 assets: 631 Earth fauna · 332 Earth flora · 27 Earth fungi ·
-## 20 Earth microbes · 240 procedural organisms.
-## GP7 freshly judged every changed asset: 503 current-pixel verdicts across 95 drift strips.
-## The 747 byte-unchanged assets retain their exact prior one-by-one round-3/Nick verdicts.
-## A separate 62-item family-matched control set was judged across 39 strips. Total judge packet:
-## 134 pre-rendered strips. No asset was inferred from a family or omitted from the ledger.
-## Final strict fresh-drift result: 301 FAIL / 37 POLISH / 165 PASS = 503 exact joins.
-## Control result: 47 FAIL / 4 POLISH / 11 PASS = 62 exact joins.
-## The strict judge demoted 21/32 previously acceptable controls (66%) versus 62/160 previously
-## acceptable drift assets (39%), a 27-point ruler effect. Treat the strict bands as a demanding
-## defect-finding lens, not as a calibrated continuation of Nick's GOLD/POLISH/FIX ruler.
-## ⚠ MIXED-RULER CAVEAT: reference/goldpass7-results.json merges the 503 strict verdicts with
-## 747 carried verdicts and therefore reports 618 FAIL / 415 POLISH / 217 PASS. That 1,250 total
-## is useful for per-asset traceability only; it is NOT an honest single-ruler catalogue score.
-## Never quote it as regression or completion percentage without the 62-control calibration.
+## ★ MEASURED STATE — NOT A MISLEADING SINGLE SCORE
+## Fresh strict current-pixel review: 503 rows / 95 strips = 301 FAIL · 37 POLISH · 165 PASS.
+## Byte-unchanged carried review: 747 rows = 317 FAIL · 378 POLISH · 52 PASS.
+## The merged 1,250-row inventory is 618 FAIL · 415 POLISH · 217 PASS and is explicitly NOT a
+## calibrated catalogue score. Exact work queue: 301 FIX_TO_PASS · 37 POLISH_TO_PASS · 165 FREEZE ·
+## 317 REVALIDATE_STRICT_THEN_FIX_IF_CONFIRMED · 378 REVALIDATE_STRICT_THEN_POLISH_IF_CONFIRMED ·
+## 52 REVALIDATE_STRICT_THEN_FREEZE. When stale required_fix prose conflicts with a verified
+## current-pixel note, verify_why governs the repair.
 
-## ★ THE PROCEDURAL RESULT WAS CORRECTED AFTER NEGATIVE-CONTROLLING THE INSTRUMENT
-## Drift strips 11–15 originally rendered blank red cells and produced a bogus 57/57 FAIL.
-## Cause: baseline names (fungi-h0-s1), art-lock names (f0·1#121) and renderer names
-## (proc:fungi:h0:s1) were three incompatible namespaces; the merge also silently dropped rows.
-## The checked 240-row procedural identity bridge now proves a bijection, render/merge fail closed
-## on an unmapped identity or unpainted cell, and bundle freshness includes the consuming app source.
-## Re-rendered current pixels were independently re-judged: the affected 57 are 57/57 PASS.
-## The other 183 procedural assets were byte-unchanged and carry their prior verdicts, so all 240
-## procedural organisms are covered. Do not resurrect the blank-frame findings.
+## ★ GP7.1 WORK NOW IN PROGRESS
+## 1. Close the 338 fresh strict named non-PASS rows through opt-in, species-scoped morphology and
+##    preserve matched controls. No global repaint, no verdict relabeling.
+## 2. Render and strictly rejudge all 747 carried rows. A carried FAIL/POLISH is a review queue,
+##    not a confirmed current defect; a carried PASS is not a fresh certification.
+## 3. Preserve a dated GP7.1 ledger plus the actual 1,250 current portraits and labelled review
+##    strips/contact sheets. Run all art gates and the conformity guard.
+## 4. Literal 100% PASS is permitted only when all 1,250 rows are freshly strict PASS, with no
+##    carried rows, and the package contains current pixels + strip evidence + manifest + ledger.
 
-## ★ FINAL TARGETED FIX OUTCOMES — NO TARGET REMAINS IN THE STRICT FAIL BAND
-## PASS: Arctic Blueberry · Bearberry · Crowberry · Cranberry · Giant Kelp · Huckleberry ·
-## Harvestman · Kelp · Mahi-Mahi · Monkfish · Aardvark · Cat · Clouded Leopard.
-## POLISH: Lingonberry · Mountain Cranberry · Harpy Eagle · Bobcat · Caracal · Fishing Cat ·
-## Lynx · Ocelot. These now carry their requested identity cues but retain the named finish work.
-## The fixes include distinct berry growth habits, real kelp stipes/blades/holdfasts, a fused-body
-## long-legged Harvestman, Mahi-Mahi/Monkfish silhouettes, Harpy Eagle crest/chest identity,
-## mammal tails/feline faces/ruffs/rosettes, and six dead or shadowed flora routes removed.
-## All 15 former HARD near-duplicate pairs were cleared. Art-lock confusable pairs under 1.5
-## improved 686 → 507; colour-blind SHAPE pairs under 2 improved 92 → 73. The non-gated WATCH
-## population under 2.5 rose 3,327 → 5,196 and remains future catalogue-polish work, not hidden.
+## ★ NEW FAIL-CLOSED GUARD
+## From port/v2: npm run gp7conformity -- --input <extracted-or-fresh-ledger-dir>
+## The tool verifies exact joins, manifests, identity hashes, bands, freshness and action routing.
+## --certify fails unless all 1,250 are fresh strict PASS. It validates ledger provenance; it does
+## not substitute for rendered image evidence. Self-test passes both positive and negative controls.
 
-## ★ FINAL AUTOMATED CERTIFICATION — GREEN ON THE FROZEN SOURCE
-## npm test: 23/23 files; 234 passed, 1 skipped. TypeScript: PASS.
-## speccheck: 301 declared fields · 0 unread · 0 inert; self-test 5/5.
-## overridecheck: 1,014/1,014 routes live · 0 dead; controls baseline+A–F+restore PASS.
-## coveragegap: 1,010/1,010 Earth species · 0 remaining.
-## artaudit: 23 sources · 0 findings. Procedural bridge, strip and GP7 collector self-tests: PASS.
-## speciesaudit: 1,250/1,250 painted · 0 failures · 0 duplicate pairs · 0 clipped.
-## artlock: exactly 503/1,250 drift — flora 213 · fauna 93 · quadruped 75 · procedural 57
-## advisory · species 29 · invert 18 · bird 18; 0 undeclared hard drift; 0 HARD pairs.
-## artbattery: 6/6 PASS. The only diagnostic is Vite's existing >500 kB chunk warning.
-
-## ★ REVIEW EXPORTS AND PACKAGE STATE
-## The frozen source was exported in full: 1,250 native 440×440 PNG portraits in five set ZIPs
-## and 196 labelled family contact sheets across 152 families. Paths:
-## port/v2/apps/game/smoke/species-fullsize/ and
-## port/v2/apps/game/smoke/catalogue-review/.
-## The fail-closed package gate validated exact per-set counts, 440×440 dimensions, SHA-256
-## manifests, identity-to-filename joins, 1,250 unique rows and every required review record.
-## Final master artifact (305,291,135 bytes; SHA-256
-## 47B730C0323241F8E171DC3A96D4EFD5C67FA0C3CA12333CA17EBE10540D398F):
-## port/v2/apps/game/smoke/Celestial_Frontier_GP7_Complete_Catalogue_Review_2026-08-09.zip.
-## Documentation, packaging, commit and branch push are complete. Draft PR #7 is open.
+## ★ LIVE SOURCE / REVIEW STATE
+## GP7.1 has completed its first all-fresh, single-ruler baseline: 1,250 current 440x440 portraits
+## and 196 hash-bound review packets collected as 318 FAIL · 301 POLISH · 631 PASS, with zero
+## carried rows. It is a repair baseline, not a 100% certification. The largest non-PASS buckets are
+## Other plant/harvest (115), procedural (79), fruit/nut trees (27), rodents (17), herbs/spices (17),
+## primates (15), and shrubs/bushes (12). Source repairs must remain named/opt-in; generated
+## full-catalogue diagnostics are evidence only and must not become a drift baseline or rewrite GP7.
+## r2 changed-pixel evidence then independently measured fauna 46 PASS / 42 POLISH / 10 FAIL (98),
+## flora+fungi 56 / 62 / 49 (167), and procedural 76 / 21 / 0 (97); the other 888 portraits matched
+## their baseline bytes. A second narrow source pass is gated and complete, but no bands were promoted.
+## A distinct r3 full 1,250-portrait / 196-packet current evidence set is now captured. It differs
+## from r2 in 106 portrait hashes: fauna 13, flora 59, fungi 6, and procedural 28; the other 1,144
+## portraits remain byte-identical. R3 has no verdict ledger or certification yet. Independently
+## judge its current packets before promoting any band, and retain exact-hash prior evidence only as
+## transparent support rather than as a substitute for the final all-fresh strict rejudge.
 
 ## ★ NEXT — COMPLETE IN THIS ORDER
-## 1. Nick reviews draft PR #7 described below. Do not deploy.
-## 2. Nick reviews the finished ZIP and records only named PASS / POLISH / FIX follow-ups.
-## 3. Merge the reviewed PR to develop only after approval; never merge it directly to main.
-## 4. Re-run proportional gates only if source changes after the frozen certification above.
-
-## ★ NEXT HUMAN REVIEW — PACKAGE READY
-## Nick opens the master ZIP and reviews catalogue-review first: all 196 labelled sheets, family by
-## family, with the final target sheets checked first (kelps, seven berry habits, Harvestman,
-## Mahi-Mahi/Monkfish/Harpy Eagle, Aardvark and the seven feline refinements). The five full-size
-## set directories provide the 1,250 individual 440×440 portraits for any uncertain thumbnail.
-## Record feedback by exact species name and PASS / POLISH / FIX. Do not start another global art
-## sweep: any follow-up is a named, bounded target list protected by artlock and matched controls.
+## 1. Independently review the r3 packets under the strict ruler and collect only hash-bound verdicts.
+## 2. Resolve only confirmed remaining FAIL/POLISH rows, preserving matched controls, then repeat the
+##    all-catalogue capture and rejudge until every one of the 1,250 fresh rows is PASS.
+## 3. Generate a new dated image-inclusive review ZIP and fresh ledger; run gp7conformity --certify
+##    plus full art gates only after the all-PASS collector result exists.
+## 4. Commit/push this remediation and evidence-pipeline batch on openai/windows as a draft PR to
+##    develop. It must remain a draft and must not be merged or deployed before certification.
 
 ## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
-## Current side: OpenAI/Codex — GP7 is certified, packaged and pushed on origin/openai/windows.
-## Draft PR #7 is open: https://github.com/TheDakk/Celestial-Frontier/pull/7.
-## GitHub step now: Nick reviews PR #7 and merges it to develop only when approved. Pushing and
-## opening the PR did not update develop.
-## PR base: develop
-## PR source: openai/windows
-## Copy-ready title: GP7: complete Earth catalogue art pass and review package
-## Copy-ready description: Completes GP7 across all 1,250 catalogue assets using 503 fresh drift
-## verdicts, 747 carried per-asset verdicts and 62 controls. Incorporates Nick's gold audit and
-## fixed-species patch review, corrects the procedural review bridge, resolves targeted fauna/flora
-## defects, and adds deterministic export/package verification. Validation: Vitest 234 pass/1 skip;
-## TypeScript; spec/override/coverage/art audits; speciesaudit 1,250/1,250; artlock 503 declared or
-## advisory drift with 0 HARD pairs; artbattery 6/6. After merge, both agent branches can import the
-## work from develop. No release or deployment is included.
-## Other side: Anthropic/Claude Code does NOT have this batch yet and Nick does not need to open that
-## application now. It may continue unrelated work, but must not expect GP7 or copy files manually.
-## Only after the PR is merged into develop, at Claude Code's next coding batch: first make sure the
-## anthropic/windows worktree is clean; then fetch origin and merge origin/develop into
-## anthropic/windows under PARALLEL_GIT_PROTOCOL.md. If it is not clean, finish or commit its work
-## before pulling/switching/merging. OpenAI/Codex follows the same clean-start merge procedure at its
-## next batch after develop moves. Release status: develop/main/live site are unchanged; no release
-## or deployment has been performed.
+## Current side: OpenAI/Codex on openai/windows. PR #7 is already merged in develop at 52467ba.
+## This GP7.1 batch must be committed and pushed as a NEW draft PR from openai/windows → develop
+## only after fresh evidence and gates are complete. Do not create a placeholder PR.
+## Claude Code: no need to open it now. After the new Codex PR is merged, Claude must start clean,
+## fetch origin, and merge origin/develop into anthropic/windows under PARALLEL_GIT_PROTOCOL.md.
+## Codex follows the same clean-start fetch/merge procedure before its next batch after develop moves.

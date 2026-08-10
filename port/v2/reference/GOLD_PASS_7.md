@@ -1,5 +1,11 @@
 # GOLD PASS 7 — final 1,250-asset certification (fresh drift + matched control)
 
+> **Frozen GP7 baseline, not the current literal certification.** PR #7 merged
+> into `develop` at `52467ba`. The 2026-08-09 strict-conformity recheck opened
+> GP7.1 remediation; it preserves this record unchanged and requires a new
+> all-fresh visual ledger before any 100% PASS claim. See
+> [GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md](GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md).
+
 **2026-08-09. Status: review and master packaging complete on the frozen source.** GP7
 incorporates both of Nick's 2026-08-08 review documents, freshly judges every
 pixel-changed asset, carries only byte-unchanged rows, and measures the strict judge against a
