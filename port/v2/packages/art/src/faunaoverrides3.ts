@@ -109,6 +109,32 @@ export interface FishSpec {
   headPlan?: 'flat-wide';    /** dorsoventrally flattened head dominated by a broad mouth */
   bodyTaper?: 'strong';      /** wedge sharply from that head into a narrow caudal body */
   pectoralBase?: 'broad';    /** wide-rooted benthic pectorals, not free-standing fins */
+  /** Opt-in non-teleost skin: suppresses the universal bony-fish scale mesh. */
+  smoothSkin?: boolean;
+  /** A shark's mouth is a real anatomical opening, never the generic jaw score. */
+  sharkMouth?: 'crescent' | 'terminal';
+  /** Cichlids need a spiny fore-dorsal that resolves into a soft rear lobe. */
+  cichlidDorsal?: boolean;
+  /** Sailfish pelvic fins are long threads, not the shared low ventral lobe. */
+  pelvicThreads?: boolean;
+  /** Species-only high-contrast fin tips (reef-shark blacktip read). */
+  finTips?: boolean;
+  /** Whale-shark white spot-and-bar lattice, deliberately not generic fish spots. */
+  whalePattern?: boolean;
+  /** Whale-shark flank keels, kept opt-in because a lateral line is not a keel. */
+  flankRidges?: boolean;
+  /** Broad, low scaleless head for catfish rather than the shared lens point. */
+  flatHead?: boolean;
+  /** A thick visible terminal lip; currently used only by the cichlid route. */
+  thickLips?: boolean;
+  /** Remora's ridged dorsal suction plate, kept separate from the dorsal fin. */
+  suctionDisc?: boolean;
+  /** Archerfish's bold wedge bars and raised shooting mouth. */
+  archerBars?: boolean;
+  /** Translucent low-density skin for snailfish, distinct from blobfish droop. */
+  gelatinous?: boolean;
+  /** Ventral adhesive disc, used by the snailfish rather than generic fins. */
+  bellySucker?: boolean;
 }
 
 /** the half-height of the body at t (0 = tail peduncle, 1 = snout tip) */
@@ -172,6 +198,13 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
       return [depth * (0.16 + 0.78 * u - 0.08 * front),
         depth * (0.13 + 0.68 * u - 0.05 * front)];
     }
+    if ((spec.sharkMouth === 'terminal' || spec.flatHead) && t >= 0.78) {
+      /* Whale sharks terminate in a wide, blunt frontal plane, not the shared
+         lens point. The small taper preserves a head while leaving room for a
+         full-width mouth and corner eyes. */
+      const u = Math.min(1, (t - 0.78) / 0.22);
+      return [depth * (spec.flatHead ? 1.18 : 1.06 - 0.15 * u), depth * (spec.flatHead ? 0.94 : 0.88 - 0.12 * u)];
+    }
     if (spec.forehead === 'vertical' && t >= 0.82) {
       /* Preserve the laterally-compressed mahi body, but stop both outlines
          from converging to a generic point. The high crown drops steeply to
@@ -229,12 +262,14 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     c.quadraticCurveTo(ped - tl * 0.34, cy, ped - tl, cy + th);
     c.closePath(); c.fill();
   } else if (spec.tail === 'shark') {
-    c.beginPath();   /* heterocercal: the upper lobe is longer */
-    c.moveTo(ped + pedH * 0.4, cy);
-    c.quadraticCurveTo(ped - tl * 0.5, cy - th * 0.7, ped - tl * 1.05, cy - th * 1.35);
-    c.quadraticCurveTo(ped - tl * 0.42, cy - th * 0.25, ped - tl * 0.30, cy + th * 0.10);
-    c.quadraticCurveTo(ped - tl * 0.55, cy + th * 0.72, ped - tl * 0.62, cy + th * 0.80);
-    c.quadraticCurveTo(ped - tl * 0.20, cy + th * 0.30, ped + pedH * 0.4, cy);
+    /* Broad and fleshy by construction: the old two needle lobes plus the
+       generic ray pass read as a tuna fork even when asymmetry measured right. */
+    c.beginPath();
+    c.moveTo(ped + pedH * 0.46, cy - pedH * 0.52);
+    c.bezierCurveTo(ped - tl * 0.18, cy - th * 0.70, ped - tl * 0.72, cy - th * 1.58, ped - tl * 1.10, cy - th * 1.14);
+    c.bezierCurveTo(ped - tl * 0.90, cy - th * 0.52, ped - tl * 0.58, cy - th * 0.10, ped - tl * 0.28, cy + th * 0.08);
+    c.bezierCurveTo(ped - tl * 0.54, cy + th * 0.60, ped - tl * 0.64, cy + th * 0.78, ped - tl * 0.40, cy + th * 0.74);
+    c.bezierCurveTo(ped - tl * 0.12, cy + th * 0.48, ped + pedH * 0.42, cy + pedH * 0.46, ped + pedH * 0.46, cy - pedH * 0.52);
     c.closePath(); c.fill();
   } else if (spec.tail === 'round' || spec.tail === 'fan') {
     /* a fan GROWS FROM THE PEDUNCLE. As a free-standing ellipse it read as a
@@ -263,7 +298,7 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     c.quadraticCurveTo(ped - tl, cy, ped + pedH * 0.4, cy + pedH * 0.8);
     c.closePath(); c.fill();
   }
-  if (spec.tail !== 'none') {   /* the fin rays */
+  if (spec.tail !== 'none' && spec.tail !== 'shark') {   /* teleost fin rays */
     c.strokeStyle = 'rgba(20,26,34,0.28)'; c.lineWidth = 1.8;
     for (let i = -3; i <= 3; i++) {
       c.beginPath(); c.moveTo(ped, cy); c.lineTo(ped - tl * 0.88, cy + i * th * 0.30); c.stroke();
@@ -549,7 +584,7 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
      Scaled by `depth`: the material's default density suits a mammal-sized
      torso, and an anchovy is a tenth of one. Left unscaled, a small fish gets
      scales the size of its own head. */
-  {
+  if (!spec.smoothSkin) {
     const scaleTube = profileTube(ped, nose, cy, (t) =>
       spec.bodyTaper === 'strong' || spec.forehead === 'vertical'
         ? (outlineHeights(t)[0] + outlineHeights(t)[1]) / 1.96
@@ -561,7 +596,37 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
 
   /* the pattern, clipped to the body so marks are SKIN not stickers */
   c.save(); c.beginPath(); trace(); c.clip();
-  if (spec.pattern === 'bands') {
+  if (spec.archerBars) {
+    /* Archerfish carry broad diagonal wedges, not the shared soft band texture. */
+    c.fillStyle = 'rgba(30,34,24,0.58)';
+    for (const t of [0.26, 0.47, 0.68]) {
+      const x = ped + (nose - ped) * t;
+      c.beginPath();
+      c.moveTo(x - depth * 0.18, cy - depth * 1.46);
+      c.lineTo(x + depth * 0.20, cy - depth * 1.22);
+      c.lineTo(x - depth * 0.32, cy + depth * 1.34);
+      c.lineTo(x - depth * 0.68, cy + depth * 1.08);
+      c.closePath(); c.fill();
+    }
+  } else if (spec.whalePattern) {
+    /* A whale shark carries bright spots and cross-bars on a dark, smooth
+       ground. Keeping this out of the generic `spots` branch prevents the
+       normal soft blotch treatment from turning into a scale-like lattice. */
+    c.fillStyle = 'rgba(238,246,250,0.88)';
+    for (let ix = 0; ix < 9; ix++) {
+      const t = 0.15 + ix * 0.085;
+      const x = ped + (nose - ped) * t;
+      const h = heightAt(spec.profile, t, depth);
+      for (const frac of [-0.46, -0.12, 0.23, 0.53]) {
+        c.beginPath(); c.arc(x, cy + h * frac, depth * 0.105, 0, TAU); c.fill();
+      }
+    }
+    c.strokeStyle = 'rgba(232,242,248,0.66)'; c.lineWidth = Math.max(1.6, depth * 0.10);
+    for (const frac of [-0.28, 0.16, 0.47]) {
+      c.beginPath(); c.moveTo(ped + len * 0.06, cy + depth * frac);
+      c.quadraticCurveTo(cx, cy + depth * (frac - 0.07), nose - depth * 0.34, cy + depth * (frac - 0.02)); c.stroke();
+    }
+  } else if (spec.pattern === 'bands') {
     for (let i = 0; i < 7; i++) {
       const t = 0.16 + i * 0.115, x = ped + (nose - ped) * t;
       softMark(c, x, cy - depth * 0.15, depth * 0.30, depth * 1.30, '22,28,20', 0.34);
@@ -602,6 +667,13 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
   c.moveTo(ped + (nose - ped) * 0.08, cy - depth * 0.10);
   c.quadraticCurveTo(cx, cy - depth * 0.30, nose - depth * 0.4, cy - depth * 0.16);
   c.stroke();
+  if (spec.flankRidges) {
+    c.strokeStyle = 'rgba(214,230,236,0.60)'; c.lineWidth = Math.max(2.0, depth * 0.12);
+    for (const yFrac of [-0.40, -0.06, 0.28]) {
+      c.beginPath(); c.moveTo(ped + len * 0.02, cy + depth * yFrac);
+      c.quadraticCurveTo(cx, cy + depth * (yFrac - 0.10), nose - depth * 0.38, cy + depth * (yFrac - 0.04)); c.stroke();
+    }
+  }
   if (spec.glow) {   /* photophore rows — the deep-sea read */
     for (let i = 0; i < 16; i++) {
       const x = ped + (nose - ped) * (0.10 + i * 0.055);
@@ -631,9 +703,98 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
   c.strokeStyle = 'rgba(214,228,248,0.30)'; c.lineWidth = 2;   /* the rim */
   c.beginPath(); trace(); c.stroke();
 
+  if (spec.gelatinous) {
+    /* Snailfish retain a soft translucent body instead of teleost-hard edges. */
+    c.save(); c.beginPath(); trace(); c.clip();
+    const gg = c.createLinearGradient(0, cy - depth * 1.5, 0, cy + depth * 1.5);
+    gg.addColorStop(0, 'rgba(246,226,232,0.34)');
+    gg.addColorStop(0.55, 'rgba(255,244,246,0.16)');
+    gg.addColorStop(1, 'rgba(154,104,112,0.20)');
+    c.fillStyle = gg; c.fillRect(ped - depth, cy - depth * 2.2, (nose - ped) + depth * 2, depth * 4.4);
+    c.restore();
+  }
+
+  if (spec.suctionDisc) {
+    /* The remora plate lives on top of the head and resolves into dark ridges. */
+    const dx = nose - len * 0.19, dy = cy - depth * 0.93;
+    c.save(); c.translate(dx, dy); c.rotate(-0.10);
+    c.fillStyle = 'rgba(20,24,28,0.92)';
+    c.beginPath(); c.ellipse(0, 0, len * 0.27, Math.max(depth * 0.42, len * 0.045), 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(188,196,192,0.32)'; c.lineWidth = Math.max(1.1, depth * 0.075);
+    for (let i = -3; i <= 3; i++) {
+      const x = i * len * 0.060;
+      c.beginPath(); c.moveTo(x, -depth * 0.30); c.lineTo(x, depth * 0.30); c.stroke();
+    }
+    c.restore();
+  }
+
   wing(1);   /* the near wing, OVER the body — this is the one that reads */
 
   /* ── the PECTORAL fin, in front of the body ── */
+  /* These fins belong in the foreground. The generic dorsal pass is deliberately
+     behind the body so it can grow from a teleost's back; shark, cichlid and
+     sail silhouettes lose their identity if that same layering buries them. */
+  if (spec.dorsal === 'sharkfin') {
+    const [x0, y0] = dorsalAt(0.43);
+    c.fillStyle = `rgb(${Math.max(16, p.cr * 0.48) | 0},${Math.max(18, p.cg * 0.50) | 0},${Math.max(22, p.cb * 0.54) | 0})`;
+    c.beginPath();
+    c.moveTo(x0 - len * 0.13, y0 + depth * 0.05);
+    c.lineTo(x0 - len * 0.015, y0 - depth * 3.35);
+    c.quadraticCurveTo(x0 + len * 0.055, y0 - depth * 1.05, x0 + len * 0.16, y0 + depth * 0.04);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(218,230,244,0.26)'; c.lineWidth = 1.8; c.stroke();
+    const [x2, y2] = dorsalAt(0.72);
+    c.fillStyle = p.dark; c.beginPath();
+    c.moveTo(x2 - len * 0.045, y2); c.lineTo(x2, y2 - depth * 1.00);
+    c.quadraticCurveTo(x2 + len * 0.025, y2 - depth * 0.35, x2 + len * 0.06, y2); c.closePath(); c.fill();
+  }
+  if (spec.cichlidDorsal) {
+    const a = 0.20, b = 0.93, steps = 24;
+    c.fillStyle = `rgba(${p.cr * 0.52 | 0},${p.cg * 0.56 | 0},${p.cb * 0.72 | 0},0.96)`;
+    c.beginPath();
+    for (let i = 0; i <= steps; i++) {
+      const u = i / steps, [x, y] = dorsalAt(a + (b - a) * u);
+      if (!i) c.moveTo(x, y); else c.lineTo(x, y);
+    }
+    for (let i = steps; i >= 0; i--) {
+      const u = i / steps, [x, y] = dorsalAt(a + (b - a) * u);
+      const h = u < 0.48 ? depth * (1.15 - u * 0.35) : depth * (0.82 + Math.sin((u - 0.48) / 0.52 * Math.PI) * 0.58);
+      c.lineTo(x, y - h);
+    }
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(20,26,34,0.50)'; c.lineWidth = 1.45;
+    for (let i = 1; i < 9; i++) {
+      const u = i / 10, [x, y] = dorsalAt(a + (b - a) * u);
+      c.beginPath(); c.moveTo(x, y); c.lineTo(x + depth * 0.11, y - depth * (1.08 - u * 0.36)); c.stroke();
+    }
+  }
+  if (spec.dorsal === 'sail' && spec.pelvicThreads) {
+    const a = 0.12, b = 0.94, steps = 28;
+    c.fillStyle = `rgba(${Math.min(255, p.cr * 0.72 + 35) | 0},${Math.min(255, p.cg * 0.70 + 45) | 0},${Math.min(255, p.cb * 1.08 + 38) | 0},0.92)`;
+    c.beginPath();
+    for (let i = 0; i <= steps; i++) {
+      const u = i / steps, [x, y] = dorsalAt(a + (b - a) * u);
+      if (!i) c.moveTo(x, y); else c.lineTo(x, y);
+    }
+    for (let i = steps; i >= 0; i--) {
+      const u = i / steps, [x, y] = dorsalAt(a + (b - a) * u);
+      c.lineTo(x, y - depth * (2.55 + 1.20 * Math.sin(Math.PI * u)));
+    }
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(228,242,255,0.30)'; c.lineWidth = 1.35;
+    for (let i = 1; i < 17; i++) {
+      const u = i / 17, [x, y] = dorsalAt(a + (b - a) * u);
+      c.beginPath(); c.moveTo(x, y); c.lineTo(x, y - depth * (2.52 + 1.18 * Math.sin(Math.PI * u))); c.stroke();
+    }
+  }
+  if (spec.pelvicThreads) {
+    c.strokeStyle = `rgba(${Math.min(255, p.cr * 0.85 + 36) | 0},${Math.min(255, p.cg * 0.82 + 44) | 0},${Math.min(255, p.cb * 1.12 + 42) | 0},0.92)`;
+    c.lineWidth = Math.max(1.8, depth * 0.10); c.lineCap = 'round';
+    for (const side of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(ped + (nose - ped) * 0.48, cy + depth * 0.72);
+      c.quadraticCurveTo(ped + (nose - ped) * 0.32, cy + depth * (1.38 + side * 0.14), ped - len * 0.24, cy + depth * (1.70 + side * 0.22)); c.stroke();
+    }
+  }
   if (spec.wings || spec.pectoralBase) { /* these ARE the pectorals; a second pair would double them */ }
   else {
   const pfx = ped + (nose - ped) * (spec.shark ? 0.62 : 0.66);
@@ -653,6 +814,17 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
   }
 
   /* ── the HEAD: jaw line, teeth, eye, and the angler's lure ── */
+  if (spec.finTips) {
+    /* Blacktip-style terminal patches sit ON the silhouette; a colour-only
+       texture cannot survive the scale mesh or the card-size fit. */
+    c.fillStyle = 'rgba(15,18,22,0.96)';
+    const [dx, dy] = dorsalAt(0.43);
+    c.beginPath(); c.moveTo(dx - len * 0.035, dy - depth * 2.58); c.lineTo(dx + len * 0.012, dy - depth * 3.34); c.lineTo(dx + len * 0.042, dy - depth * 2.46); c.closePath(); c.fill();
+    c.beginPath();
+    c.moveTo(ped - tl * 0.92, cy - th * 1.22); c.lineTo(ped - tl * 1.10, cy - th * 1.14); c.lineTo(ped - tl * 0.84, cy - th * 0.90); c.closePath(); c.fill();
+    c.beginPath();
+    c.moveTo(ped + len * 0.02, cy + depth * 0.12); c.lineTo(ped + len * 0.22, cy + depth * 0.45); c.lineTo(ped + len * 0.13, cy + depth * 0.58); c.closePath(); c.fill();
+  }
   const hx = nose - depth * 0.55, hy = cy;
   if (spec.headPlan === 'flat-wide') {
     /* MONKFISH / GOOSEFISH: the mouth occupies nearly half the animal. Its
@@ -726,6 +898,45 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     }
   }
   }
+  if (spec.sharkMouth) {
+    /* The generic jaw score follows a teleost's tapered cheek. Shark mouths sit
+       below (or across the front of) a broad head, and must read as an opening. */
+    if (spec.sharkMouth === 'terminal') {
+      const mx = nose - depth * 0.42;
+      c.fillStyle = 'rgba(5,9,14,0.94)';
+      c.beginPath();
+      c.roundRect(mx - depth * 0.18, cy - depth * 0.12, depth * 0.96, depth * 0.42, depth * 0.10); c.fill();
+      c.strokeStyle = 'rgba(224,232,238,0.62)'; c.lineWidth = Math.max(2, depth * 0.10);
+      c.beginPath(); c.moveTo(mx - depth * 0.10, cy - depth * 0.10); c.lineTo(mx + depth * 0.72, cy - depth * 0.10); c.stroke();
+    } else {
+      c.strokeStyle = 'rgba(8,13,19,0.88)'; c.lineWidth = Math.max(2.4, depth * 0.14); c.lineCap = 'round';
+      c.beginPath();
+      c.moveTo(nose - depth * 0.22, cy + depth * 0.34);
+      c.quadraticCurveTo(nose - depth * 0.90, cy + depth * 0.72, nose - depth * 1.78, cy + depth * 0.42); c.stroke();
+      c.strokeStyle = 'rgba(220,232,238,0.38)'; c.lineWidth = Math.max(1.4, depth * 0.07);
+      c.beginPath();
+      c.moveTo(nose - depth * 0.20, cy + depth * 0.25);
+      c.quadraticCurveTo(nose - depth * 0.90, cy + depth * 0.52, nose - depth * 1.72, cy + depth * 0.35); c.stroke();
+    }
+  }
+  if (spec.flatHead) {
+    c.fillStyle = 'rgba(20,17,15,0.82)';
+    c.beginPath(); c.roundRect(nose - depth * 1.00, cy + depth * 0.12, depth * 1.04, depth * 0.28, depth * 0.10); c.fill();
+    c.strokeStyle = 'rgba(210,184,150,0.48)'; c.lineWidth = Math.max(1.6, depth * 0.07);
+    c.beginPath(); c.moveTo(nose - depth * 0.98, cy + depth * 0.12); c.lineTo(nose - depth * 0.04, cy + depth * 0.12); c.stroke();
+  }
+  if (spec.thickLips) {
+    c.strokeStyle = 'rgba(224,198,182,0.78)'; c.lineWidth = Math.max(2.4, depth * 0.18); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(nose + depth * 0.02, cy + depth * 0.03); c.quadraticCurveTo(nose - depth * 0.28, cy + depth * 0.20, nose - depth * 0.62, cy + depth * 0.16); c.stroke();
+    c.strokeStyle = 'rgba(35,24,20,0.70)'; c.lineWidth = Math.max(1.4, depth * 0.07);
+    c.beginPath(); c.moveTo(nose + depth * 0.04, cy + depth * 0.10); c.quadraticCurveTo(nose - depth * 0.29, cy + depth * 0.23, nose - depth * 0.60, cy + depth * 0.20); c.stroke();
+  }
+  if (spec.archerBars) {
+    /* A short raised upper lip is the archerfish's shooting nozzle. */
+    c.strokeStyle = 'rgba(30,34,24,0.82)'; c.lineWidth = Math.max(1.8, depth * 0.12); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(nose + depth * 0.05, cy - depth * 0.10);
+    c.quadraticCurveTo(nose - depth * 0.22, cy - depth * 0.54, nose - depth * 0.66, cy - depth * 0.40); c.stroke();
+  }
   if (spec.barbels) {
     /* ★ WAVE 66 — the catfish's whiskers: three pairs rooted ON the snout tip
        and jaw, drooping down and back. gp3: "NO barbels — the single most
@@ -744,12 +955,12 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
        capping the snout, proud of the profile, with the fused seam. */
     c.fillStyle = '#f0ece0';
     c.beginPath();
-    c.moveTo(nose - depth * 0.28, cy - depth * 0.10);
-    c.quadraticCurveTo(nose + depth * 0.34, cy - depth * 0.02, nose - depth * 0.10, cy + depth * 0.40);
-    c.quadraticCurveTo(nose - depth * 0.36, cy + depth * 0.34, nose - depth * 0.28, cy - depth * 0.10);
+    c.moveTo(nose - depth * 0.50, cy - depth * 0.30);
+    c.quadraticCurveTo(nose + depth * 0.78, cy - depth * 0.12, nose + depth * 0.28, cy + depth * 0.62);
+    c.quadraticCurveTo(nose - depth * 0.52, cy + depth * 0.56, nose - depth * 0.50, cy - depth * 0.30);
     c.closePath(); c.fill();
     c.strokeStyle = 'rgba(120,110,90,0.6)'; c.lineWidth = 1.6;
-    c.beginPath(); c.moveTo(nose - depth * 0.30, cy + depth * 0.14); c.lineTo(nose + depth * 0.16, cy + depth * 0.16); c.stroke();
+    c.beginPath(); c.moveTo(nose - depth * 0.48, cy + depth * 0.18); c.lineTo(nose + depth * 0.48, cy + depth * 0.20); c.stroke();
   }
   if (spec.scalpel) {
     /* ★ WAVE 62 — the surgeonfish's scalpel: a bright contrasting blade at the
@@ -768,7 +979,7 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
      animal, so it is drawn here as what it is: a transverse bar across the
      nose, squared off, with the eyes carried out to its tips. */
   if (spec.snout === 'hammer') {
-    const hw = len * 0.42, hth = len * 0.075;      /* span across, thickness along */
+    const hw = len * 0.30, hth = len * 0.135;      /* broad rooted foil, not a thin domino */
     const hx2 = nose - hth * 1.5;                   /* ★ WAVE 59 — seated BACK so the
        bar overlaps the head instead of floating forward of the tapering nose
        (the judge's "hammer stranded off with a gap of background"). */
@@ -782,20 +993,20 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     c.fillStyle = hg;
     c.beginPath();
     /* a shallow-arched bar: the leading edge bows forward a little at centre */
-    c.moveTo(hx2 - hth, cy - hw);
-    c.quadraticCurveTo(hx2 - hth * 1.5, cy, hx2 - hth, cy + hw);
-    c.lineTo(hx2 + hth * 0.9, cy + hw * 0.92);
-    c.quadraticCurveTo(hx2 + hth * 1.2, cy, hx2 + hth * 0.9, cy - hw * 0.92);
+    c.moveTo(hx2 - hth * 0.72, cy - hw * 0.92);
+    c.quadraticCurveTo(hx2 - hth * 1.28, cy - hw * 0.48, hx2 - hth * 0.72, cy + hw * 0.92);
+    c.lineTo(hx2 + hth * 0.86, cy + hw * 0.64);
+    c.quadraticCurveTo(hx2 + hth * 1.30, cy, hx2 + hth * 0.86, cy - hw * 0.64);
     c.closePath(); c.fill();
     c.strokeStyle = 'rgba(16,22,28,0.34)'; c.lineWidth = 1.6;
-    c.beginPath(); c.moveTo(hx2 - hth, cy - hw);
-    c.quadraticCurveTo(hx2 - hth * 1.5, cy, hx2 - hth, cy + hw); c.stroke();
+    c.beginPath(); c.moveTo(hx2 - hth * 0.72, cy - hw * 0.92);
+    c.quadraticCurveTo(hx2 - hth * 1.28, cy - hw * 0.48, hx2 - hth * 0.72, cy + hw * 0.92); c.stroke();
     /* the eyes ride the OUTBOARD TIPS — that is the point of the shape */
     for (const sgn of [-1, 1]) {
       c.fillStyle = '#f4f6f4';
-      c.beginPath(); c.arc(hx2 - hth * 0.1, cy + sgn * hw * 0.90, depth * 0.20, 0, TAU); c.fill();
+       c.beginPath(); c.arc(hx2 - hth * 0.02, cy + sgn * hw * 0.74, depth * 0.18, 0, TAU); c.fill();
       c.fillStyle = '#10161c';
-      c.beginPath(); c.arc(hx2 - hth * 0.1, cy + sgn * hw * 0.90, depth * 0.11, 0, TAU); c.fill();
+       c.beginPath(); c.arc(hx2 - hth * 0.02, cy + sgn * hw * 0.74, depth * 0.09, 0, TAU); c.fill();
     }
   }
   if (spec.lure) {   /* the esca on its illicium — the anglerfish's whole story */
@@ -824,8 +1035,10 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
        a black triangle raked with pale lines and read as a broom. It is now a
        round opening with an inner gradient — dark at the throat, catching light
        at the rim — which is what makes an aperture read as a hole in a body. */
-    const mx = nose - depth * 0.55, my = cy + depth * 0.12;
-    const mrx = depth * 1.05, mry = depth * 1.62;
+    /* Wide, shallow cavity tucked UNDER the conical snout: a tall frontal disc
+       reads as a lamprey funnel even when it is correctly dark inside. */
+    const mx = nose - depth * 0.72, my = cy + depth * 0.33;
+    const mrx = depth * 1.28, mry = depth * 0.58;
     const mg = c.createRadialGradient(mx - mrx * 0.3, my, mrx * 0.15, mx, my, mrx * 2.2);
     mg.addColorStop(0, 'rgba(4,7,11,0.96)');
     mg.addColorStop(0.62, 'rgba(12,18,26,0.92)');
@@ -996,6 +1209,15 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     c.restore();
   }
 
+  if (spec.bellySucker) {
+    /* A snailfish's ventral adhesive disc remains visible below the soft body. */
+    const sx = nose - len * 0.56, sy = cy + depth * 1.15;
+    c.fillStyle = 'rgba(178,122,128,0.86)';
+    c.beginPath(); c.ellipse(sx, sy, depth * 0.58, depth * 0.26, -0.08, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(244,218,218,0.54)'; c.lineWidth = Math.max(1.1, depth * 0.07);
+    c.beginPath(); c.ellipse(sx, sy, depth * 0.40, depth * 0.15, -0.08, 0, TAU); c.stroke();
+  }
+
   /* ★ WAVE 42, CODE PASS — TWO SPECIES WERE GETTING AN EXTRA, WRONGLY-PLACED EYE.
      · `snout:'hammer'`: D-ART-123 draws the hammerhead's eyes out on the tips of
        the cephalofoil — which is the whole point of the animal — and then this
@@ -1015,9 +1237,9 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
        until the eye is a pixel or two and the head reads as blank. A minimum
        has to be a RATIO of the subject to survive the fit, which is the same
        law the painters already follow for every other dimension. */
-    eye(c, spec.headPlan === 'flat-wide' ? nose - len * 0.34 : nose - depth * (spec.profile === 'eel' ? 0.9 : 0.70),
-      spec.headPlan === 'flat-wide' ? cy - depth * 0.53 : cy - depth * 0.34 - gapeLift,
-      spec.headPlan === 'flat-wide' ? depth * 0.18
+    eye(c, (spec.sharkMouth === 'terminal' || spec.flatHead) ? nose - depth * 0.24 : spec.headPlan === 'flat-wide' ? nose - len * 0.34 : nose - depth * (spec.profile === 'eel' ? 0.9 : 0.70),
+      (spec.sharkMouth === 'terminal' || spec.flatHead) ? cy - depth * 0.46 : spec.headPlan === 'flat-wide' ? cy - depth * 0.53 : cy - depth * 0.34 - gapeLift,
+      (spec.sharkMouth === 'terminal' || spec.flatHead) ? depth * 0.105 : spec.headPlan === 'flat-wide' ? depth * 0.18
         : Math.max(len * 0.050, depth * (spec.profile === 'globe' ? 0.22 : spec.bighead ? 0.30 : 0.18)));
   }
 }
@@ -1039,10 +1261,10 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
      and carry one continuous dorsal almost from eye to tail. */
   'Mahi-Mahi': F({ hue: '#6cbf3f', profile: 'deep', len: 0.26, depth: 0.066, tail: 'lunate', snout: 'blunt', dorsal: 'sail', forehead: 'vertical', dorsalSpan: 'eye-tail' }),
   'Marlin': F({ hue: '#1f3b7a', profile: 'fusiform', len: 0.25, depth: 0.072, tail: 'lunate', snout: 'bill', dorsal: 'sail' }),
-  'Sailfish': F({ hue: '#3a4c94', profile: 'fusiform', len: 0.25, depth: 0.068, tail: 'lunate', snout: 'bill', dorsal: 'sail', sailScale: 2.3 }),
+  'Sailfish': F({ hue: '#3a4c94', profile: 'fusiform', len: 0.29, depth: 0.054, tail: 'lunate', snout: 'bill', dorsal: 'sail', sailScale: 3.2, pelvicThreads: true }),
   'Swordfish': F({ hue: '#57405a', profile: 'fusiform', len: 0.25, depth: 0.070, tail: 'lunate', snout: 'bill', dorsal: 'one' }),
   'Flying Fish': F({ hue: '#4a6f8c', profile: 'fusiform', len: 0.22, depth: 0.052, tail: 'forked', snout: 'blunt', dorsal: 'one', wings: 'glide' }),
-  'Remora': F({ profile: 'fusiform', len: 0.255, depth: 0.034, tail: 'forked', snout: 'blunt', dorsal: 'two', hue: '#2f343b' }),
+  'Remora': F({ profile: 'fusiform', len: 0.255, depth: 0.034, tail: 'forked', snout: 'blunt', dorsal: 'two', hue: '#2f343b', suctionDisc: true }),
   /* ── cold and temperate food fish ── */
   'Cod': F({ hue: '#8a7a4e', profile: 'fusiform', len: 0.23, depth: 0.078, tail: 'round', snout: 'blunt', dorsal: 'two', pattern: 'mottle' }),
   'Arctic Cod': F({ profile: 'fusiform', len: 0.235, depth: 0.046, tail: 'forked', snout: 'blunt', dorsal: 'two', hue: '#7d8a63', barbels: true }),
@@ -1059,7 +1281,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Carp': F({ hue: '#96702a', profile: 'deep', len: 0.22, depth: 0.078, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
   'Goldfish': F({ hue: '#ee7b18', profile: 'deep', len: 0.19, depth: 0.078, tail: 'veil', snout: 'blunt', dorsal: 'one' }),
   'Tilapia': F({ hue: '#94907a', profile: 'deep', len: 0.20, depth: 0.082, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'bands' }),
-  'Cichlid': F({ hue: '#2f7fbf', profile: 'deep', len: 0.19, depth: 0.082, tail: 'fan', snout: 'blunt', dorsal: 'sail', pattern: 'bands' }),
+  'Cichlid': F({ hue: '#2f7fbf', profile: 'deep', len: 0.20, depth: 0.080, tail: 'forked', snout: 'blunt', dorsal: 'none', pattern: 'bands', cichlidDorsal: true, thickLips: true }),
   'Perch': F({ hue: '#9fa32f', profile: 'deep', len: 0.21, depth: 0.075, tail: 'forked', snout: 'blunt', dorsal: 'spiny', pattern: 'bands' }),
   'Bass': F({ hue: '#5d7538', profile: 'fusiform', len: 0.22, depth: 0.080, tail: 'forked', snout: 'jaw', dorsal: 'spiny' }),
   'Sea Bass': F({ hue: '#7d8a94', profile: 'fusiform', len: 0.23, depth: 0.082, tail: 'forked', snout: 'jaw', dorsal: 'spiny' }),
@@ -1073,11 +1295,11 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Killifish': F({ hue: '#5f9d72', profile: 'fusiform', len: 0.17, depth: 0.050, tail: 'round', snout: 'blunt', dorsal: 'one', pattern: 'spots' }),
   'Sculpin': F({ hue: '#675340', profile: 'fusiform', len: 0.19, depth: 0.062, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'mottle' }),
   'Sunfish': F({ hue: '#6f8f6a', profile: 'deep', len: 0.18, depth: 0.092, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'spots' }),
-  'Catfish': F({ hue: '#4f4438', profile: 'fusiform', len: 0.24, depth: 0.070, tail: 'forked', snout: 'blunt', dorsal: 'one', pattern: 'mottle', barbels: true }),
+  'Catfish': F({ hue: '#4f4438', profile: 'fusiform', len: 0.25, depth: 0.070, tail: 'forked', snout: 'blunt', dorsal: 'one', pattern: 'mottle', barbels: true, smoothSkin: true, flatHead: true }),
   'Arapaima': F({ hue: '#56755f', profile: 'fusiform', len: 0.27, depth: 0.075, tail: 'round', snout: 'blunt', dorsal: 'one' }),
   'Arowana': F({ hue: '#b0a67e', profile: 'ribbon', len: 0.26, depth: 0.060, tail: 'point', snout: 'jaw', dorsal: 'none' }),
   'Tigerfish': F({ hue: '#b4ab9c', profile: 'fusiform', len: 0.23, depth: 0.072, tail: 'forked', snout: 'jaw', dorsal: 'two', pattern: 'stripes', teeth: true }),
-  'Archerfish': F({ hue: '#c2b878', profile: 'deep', len: 0.18, depth: 0.070, tail: 'forked', snout: 'jaw', dorsal: 'spiny', pattern: 'bands' }),
+  'Archerfish': F({ hue: '#c2b878', profile: 'deep', len: 0.18, depth: 0.070, tail: 'forked', snout: 'jaw', dorsal: 'spiny', archerBars: true }),
   'Knifefish': F({ hue: '#4c4356', profile: 'ribbon', len: 0.25, depth: 0.055, tail: 'point', snout: 'blunt', dorsal: 'none' }),
   /* ⚠ SHAPE, not colour, is what separates this one. Lungfish, Eel and
      Electric Eel shared a profile, a length, a depth, a tail, a snout and a
@@ -1112,7 +1334,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Surgeonfish': F({ hue: '#6aa6d6', profile: 'deep', len: 0.17, depth: 0.086, tail: 'lunate', snout: 'blunt', dorsal: 'spiny', scalpel: '#f2c018' }),
   'Tang': F({ hue: '#1a44c4', profile: 'deep', len: 0.16, depth: 0.090, tail: 'lunate', snout: 'blunt', dorsal: 'spiny' }),
   'Triggerfish': F({ hue: '#2f8f7a', profile: 'deep', len: 0.17, depth: 0.084, tail: 'fan', snout: 'blunt', dorsal: 'two', pattern: 'mottle' }),
-  'Parrotfish': F({ hue: '#0f9fb5', profile: 'deep', len: 0.19, depth: 0.078, tail: 'fan', snout: 'blunt', dorsal: 'one', pattern: 'mottle', beak: true }),
+  'Parrotfish': F({ hue: '#0f9fb5', profile: 'deep', len: 0.19, depth: 0.078, tail: 'fan', snout: 'blunt', dorsal: 'one', pattern: 'mottle', beak: true, forehead: 'vertical' }),
   'Wrasse': F({ profile: 'fusiform', len: 0.20, depth: 0.062, tail: 'fan', snout: 'jaw', dorsal: 'one', pattern: 'stripes', teeth: true, hue: '#2f8f7a' }),
   'Cardinalfish': F({ hue: '#c72c26', profile: 'deep', len: 0.15, depth: 0.062, tail: 'forked', snout: 'blunt', dorsal: 'two' }),
   'Rabbitfish': F({ hue: '#c9a936', profile: 'deep', len: 0.17, depth: 0.078, tail: 'forked', snout: 'tube', dorsal: 'spiny', pattern: 'spots' }),
@@ -1130,7 +1352,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Boxfish': F({ hue: '#f0d63a', profile: 'box', len: 0.15, depth: 0.070, tail: 'fan', snout: 'blunt', dorsal: 'one', pattern: 'spots' }),
   'Blobfish': F({ hue: '#b78e8a', profile: 'globe', len: 0.17, depth: 0.066, tail: 'round', snout: 'blunt', dorsal: 'none', droop: true }),
   'Ocean Sunfish': F({ hue: '#837d73', profile: 'globe', len: 0.16, depth: 0.098, tail: 'none', snout: 'blunt', dorsal: 'one' }),
-  'Snailfish': F({ hue: '#d0a9a0', profile: 'globe', len: 0.17, depth: 0.055, tail: 'round', snout: 'blunt', dorsal: 'none' }),
+  'Snailfish': F({ hue: '#d0a9a0', profile: 'globe', len: 0.17, depth: 0.055, tail: 'round', snout: 'blunt', dorsal: 'none', smoothSkin: true, gelatinous: true, bellySucker: true }),
   /* ── the deep: lures, photophores, teeth ── */
   'Anglerfish': F({ hue: '#201d1b', profile: 'globe', len: 0.16, depth: 0.078, tail: 'round', snout: 'jaw', dorsal: 'none', lure: true, teeth: true }),
   'Lanternfish': F({ hue: '#5f7590', profile: 'fusiform', len: 0.18, depth: 0.052, tail: 'forked', snout: 'blunt', dorsal: 'one', glow: true }),
@@ -1141,13 +1363,13 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Deep-Sea Fish': F({ hue: '#6e5563', profile: 'fusiform', len: 0.19, depth: 0.058, tail: 'forked', snout: 'jaw', dorsal: 'one', glow: true }),
   'Monkfish': F({ hue: '#7d6a4e', profile: 'fusiform', len: 0.24, depth: 0.092, tail: 'round', snout: 'jaw', dorsal: 'none', lure: true, teeth: true, pattern: 'mottle', headPlan: 'flat-wide', bodyTaper: 'strong', pectoralBase: 'broad' }),
   /* ── SHARKS: heterocercal tail, gill slits, swept pectorals ── */
-  'Shark': F({ profile: 'fusiform', len: 0.25, depth: 0.057, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, hue: '#6e7a86' }),
-  'Reef Shark': F({ hue: '#838d7e', profile: 'fusiform', len: 0.25, depth: 0.066, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true }),
+  'Shark': F({ profile: 'fusiform', len: 0.29, depth: 0.052, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, smoothSkin: true, sharkMouth: 'crescent', hue: '#6e7a86' }),
+  'Reef Shark': F({ hue: '#838d7e', profile: 'fusiform', len: 0.29, depth: 0.056, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, smoothSkin: true, sharkMouth: 'crescent', finTips: true }),
   'Juvenile Shark': F({ hue: '#a6b0b4', profile: 'fusiform', len: 0.21, depth: 0.058, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true }),
   'Great White Shark': F({ hue: '#6f7a80', profile: 'fusiform', len: 0.27, depth: 0.086, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, teeth: true }),
-  'Tiger Shark': F({ hue: '#62707a', profile: 'fusiform', len: 0.26, depth: 0.080, tail: 'shark', snout: 'blunt', dorsal: 'sharkfin', shark: true, pattern: 'bands', teeth: true }),
+  'Tiger Shark': F({ hue: '#62707a', profile: 'fusiform', len: 0.29, depth: 0.062, tail: 'shark', snout: 'blunt', dorsal: 'sharkfin', shark: true, smoothSkin: true, sharkMouth: 'crescent', pattern: 'bands' }),
   'Mako Shark': F({ hue: '#2f5f8f', profile: 'fusiform', len: 0.26, depth: 0.070, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, teeth: true }),
-  'Whale Shark': F({ hue: '#47555f', profile: 'fusiform', len: 0.28, depth: 0.092, tail: 'shark', snout: 'blunt', dorsal: 'sharkfin', shark: true, pattern: 'spots' }),
-  'Basking Shark': F({ hue: '#5f6560', profile: 'fusiform', len: 0.28, depth: 0.092, tail: 'shark', snout: 'blunt', dorsal: 'sharkfin', shark: true, gape: true }),
-  'Hammerhead Shark': F({ hue: '#74806c', profile: 'fusiform', len: 0.26, depth: 0.070, tail: 'shark', snout: 'hammer', dorsal: 'sharkfin', shark: true }),
+  'Whale Shark': F({ hue: '#47555f', profile: 'fusiform', len: 0.33, depth: 0.066, tail: 'shark', snout: 'blunt', dorsal: 'sharkfin', shark: true, smoothSkin: true, sharkMouth: 'terminal', whalePattern: true, flankRidges: true }),
+  'Basking Shark': F({ hue: '#5f6560', profile: 'fusiform', len: 0.31, depth: 0.070, tail: 'shark', snout: 'blunt', dorsal: 'sharkfin', shark: true, smoothSkin: true, sharkMouth: 'crescent', gape: true }),
+  'Hammerhead Shark': F({ hue: '#74806c', profile: 'fusiform', len: 0.32, depth: 0.052, tail: 'shark', snout: 'hammer', dorsal: 'sharkfin', shark: true, smoothSkin: true, sharkMouth: 'crescent' }),
 };

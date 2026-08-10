@@ -1415,3 +1415,21 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   its artlock blast radius. Before deleting a suspected dead route, use the same render/lock proof
   to show that it owns no pixels. **Dead corrective code is worse than absent code because it can
   close a review item without changing the image.**
+
+- ★★★ **D-ART-167 — A COMPLETE LEDGER PROVES PROVENANCE, NOT PIXELS.** (2026-08-09,
+  GP7.1 strict-conformity recheck.) A manifest, 1,250 rows, hashes, and exact joins can prove
+  that a review record is internally coherent while carrying **zero rendered portraits or review
+  strips**. It cannot prove current morphology, and a byte-unchanged carried verdict cannot be
+  promoted to a fresh visual PASS. Literal certification now requires the current 1,250 rendered
+  images, the review strips, a dated fresh strict ledger, and the provenance manifest together;
+  the guard must fail closed when any row is carried or non-PASS. See
+  `reference/GP7_SPEC_CONFORMITY_RECHECK_2026-08-09.md`.
+
+- ★★★ **D-ART-168 — A VERDICT WITHOUT THE PORTRAIT AND STRIP HASHES IS A COMMENT,
+  NOT REVIEW EVIDENCE.** (2026-08-09, GP7.1 first all-fresh pass.) The first complete fresh
+  render made it possible to change a painter between the time a packet was opened and a tally
+  was quoted. Names, packet numbers, and even a dated result file would still join perfectly while
+  describing previous pixels. `gp71rejudge` therefore records each native portrait SHA-256 and
+  packet strip SHA-256 in the preparation/index, requires both exact values in every verdict, and
+  refuses collection if any one changes. A repair must create new evidence and a new review; it
+  may never inherit a PASS merely because the species name is unchanged.

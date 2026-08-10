@@ -23,6 +23,7 @@
     "cataloguecards": "node tools/rejudgecards.mjs --drift=reference/goldpass3-prechassis.json --out=catalogue-review --full",
     "stripcheck": "node tools/speciesstrip.mjs --selftest",
     "gp7collect": "node tools/gp7collect.mjs",
+    "gp7conformity": "node tools/gp7conformity.mjs",
     "gp7package": "node tools/gp7package.mjs",
     "overridecheck": "node tools/overridecheck.mjs",
     "strip": "node tools/speciesstrip.mjs",
