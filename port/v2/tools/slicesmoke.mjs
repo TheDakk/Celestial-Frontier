@@ -185,9 +185,9 @@ try {
   if (st1.mode !== 'universe') fails.push('a SINGLE tap descended (survey-first broken): ' + st1.mode);
   if (!st1.cardOpen || !st1.cardTitle) fails.push('single tap did not open the galaxy survey card: ' + JSON.stringify({ open: st1.cardOpen, title: st1.cardTitle }));
   if (typeof st1.epoch !== 'number') fails.push('COSMIC_EPOCH clock not running: ' + JSON.stringify(st1.epoch));
-  /* Close the already-open card, then issue two ordinary real clicks with a
-     physical gap. Count their canvas pointerups after the pair so the proof
-     does not consume tapTwice's 400 ms window between the two events. */
+  /* Close the already-open card, then ask Chromium to synthesize the real
+     two-tap gesture inside the browser process. Separate CDP mouse commands
+     can be delayed by a slow CI host beyond tapTwice's 400 ms window. */
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
   await sleep(120);
@@ -196,9 +196,9 @@ try {
   await evalIn(`(()=>{ const canvas=document.querySelector('canvas'); window.__cfDivePointerUps=[];
     const record=(event)=>window.__cfDivePointerUps.push(event.timeStamp); window.__cfDivePointerRecord=record;
     canvas.addEventListener('pointerup',record,true); return true; })()`);
-  await click();
-  await sleep(80);
-  await click();
+  await send('Input.synthesizeTapGesture', {
+    x: cx, y: cy, duration: 50, tapCount: 2, gestureSourceType: 'touch',
+  }, sess);
   await sleep(2500);   /* per-seed 512px painterly bake + star field */
   const st2 = await evalIn(`window.__CF_SLICE__.api.state()`);
   const divePointerUps = await evalIn(`(()=>{ const canvas=document.querySelector('canvas'), times=window.__cfDivePointerUps||[];
