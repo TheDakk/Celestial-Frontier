@@ -174,9 +174,9 @@ try {
   /* 3. SURVEY-FIRST (the game's flow): ONE tap on the Milky Way opens its
      survey card — it must NOT teleport; a quick second tap dives. */
   const cx = 1280 / 2 + 90, cy = 800 / 2 - 60;
-  const click = async () => {
+  const click = async (clickCount = 1) => {
     for (const type of ['mousePressed', 'mouseReleased']) {
-      await send('Input.dispatchMouseEvent', { type, x: cx, y: cy, button: 'left', clickCount: 1 }, sess);
+      await send('Input.dispatchMouseEvent', { type, x: cx, y: cy, button: 'left', clickCount }, sess);
     }
   };
   await click();
@@ -185,7 +185,9 @@ try {
   if (st1.mode !== 'universe') fails.push('a SINGLE tap descended (survey-first broken): ' + st1.mode);
   if (!st1.cardOpen || !st1.cardTitle) fails.push('single tap did not open the galaxy survey card: ' + JSON.stringify({ open: st1.cardOpen, title: st1.cardTitle }));
   if (typeof st1.epoch !== 'number') fails.push('COSMIC_EPOCH clock not running: ' + JSON.stringify(st1.epoch));
-  await click(); await click();   /* the quick double-tap = dive */
+  await click(1);
+  await sleep(80);
+  await click(2);   /* click(1) + click(2) = two real pointer taps with native double-click semantics */
   await sleep(2500);   /* per-seed 512px painterly bake + star field */
   const st2 = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (st2.mode !== 'galaxy' || st2.gal !== 999) fails.push('double-tap descent into the Milky Way did not happen: ' + JSON.stringify([st2.mode, st2.gal]));
