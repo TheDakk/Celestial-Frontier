@@ -32,8 +32,11 @@
 ## reached develop through merged PR #8 at bb1a980. The Mac resume verified all four frozen art
 ## hashes, then stopped before post-edit rendering because the documented 288-row pre-edit evidence
 ## was ignored and never crossed Git. The overridecheck parser false-positive is repaired and
-## independently post-edit reviewed; no art source moved. No reset PR, new 1,250-row tally, final
-## certification, image-inclusive ZIP, release, deployment, or version bump exists. Read next: PROCESS_LAWS.md ·
+## independently post-edit reviewed; no art source moved. A separate current-generation review ZIP
+## now exists from clean evidence commit 79ce144, with the production-anchor packager repair at
+## 60b16ce; it is explicitly CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED and is not Wave 2e A/B.
+## Draft PR #9 is open from openai/mac into develop. No reset merge, new 1,250-row verdict tally,
+## final certification package, release, deployment, or version bump exists. Read next: PROCESS_LAWS.md ·
 ## PARALLEL_GIT_PROTOCOL.md · port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md ·
 ## ART_DIRECTION.md · PROCEDURAL_CHARACTERISTICS.md · LINEAGE_AND_BREEDING.md ·
 ## port/PROPORTION_ARC.md · port/HANDOFF_NEXT_SESSION.md · port/v2/DEVIATIONS.md · port/v2/README.md.
@@ -114,7 +117,8 @@
 ## fullresetreview PASS 10/10 join /6 packets /9 changed fixture. No nonignored generated leakage;
 ## renderer drained. This authorizes only the Wave-2d checkpoint commit/push—not the reset PR, full
 ## recertification, ZIP, merge, release, or deployment.
-## Full 1,250 recertification, the image-inclusive ZIP, reset PR, merge, release and deployment remain OPEN.
+## Full 1,250 recertification, its certification image-inclusive ZIP, reset PR, merge, release and
+## deployment remain OPEN.
 
 ## ★ WAVE 2E — STATIC SOURCE MERGED; POST-EDIT REVIEW FAIL-CLOSED BEFORE FIRST CAPTURE
 ## 1. Mammal E (13 bovids): Buffalo · Cow · Eland · Gaur · Gazelle · Hartebeest · Impala · Kudu ·
@@ -145,9 +149,9 @@
 ##    `30B2E3E2BCDA4865EE81625805384B373423274E0634F8A50F8E4D5A20483378`; invert
 ##    `6785058479456FF35EE3C44D9FC8F8A9A5467B7F61BBF3153854F93B090A5C1C`.
 ##    Integrated pause checks: typecheck, artunused, Vitest 23 files/238 pass/1 skip, speccheck
-##    455 declared/0 unread/0 inert, and diff-check PASS. No post-edit export, 440/300/132 preview,
-##    repeat, independent judgment, full gate closure, reset PR, certification, ZIP, merge, release,
-##    or deployment is authorized.
+##    455 declared/0 unread/0 inert, and diff-check PASS. No Wave-2e-scoped old/current A/B export,
+##    440/300/132 comparison preview, deterministic A/B repeat, independent judgment, full gate
+##    closure, reset PR, certification package, merge, release, or deployment is authorized.
 ## 6. `overridecheck` is repaired: pinned Rolldown 1.2.1/Oxc parses each complete TypeScript art
 ##    source as an AST, and only literal string property/array nodes become route keys; every such
 ##    key is validated regardless of length or alphabet, and malformed CANON keys cannot disappear.
@@ -184,38 +188,47 @@
 ##    coveragegap 1,010/1,010; artaudit 23/0; overridecheck/overridecontrol; diff-check all PASS.
 ## 7. Bird reset FAIL scope is exhausted: B1–B3 exactly cover all 76 frozen-r1 Bird FAIL rows; do not
 ##    reopen the 26 frozen-PASS birds. Only after every remaining row closes may a clean 1,250 collector, final hybrid evidence,
-##    literal certification and dated image-inclusive ZIP begin.
-## 8. Nick separately requested one full current-generation review archive on 2026-08-10. The
-##    bounded Mac producer may package all 1,250 current native portraits, current family packets,
-##    and a clean representative hybrid matrix only as `UNREVIEWED / CURRENT-ONLY`. It must bind a
-##    clean commit, preserve exact manifests/hashes, reject verdict/certification material, and state
-##    that the absent Wave 2e baseline still blocks old/current comparison and visual promotion.
+##    literal certification and its dated certification image-inclusive ZIP begin.
+## 8. Nick separately requested one full current-generation review archive on 2026-08-10. It is now
+##    produced at `Celestial_Frontier_Current_Full_Generations_Review_2026-08-10_79ce144.zip` from
+##    clean evidence commit `79ce14460998d653ee753e49e8f8016e754c82e4`, using the independently
+##    reviewed packager plus anchor-tolerance repair at `60b16ce`. The archive is 472,304,848 bytes;
+##    SHA-256 `18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`.
+##    It deep-reverifies one top-level directory and exactly 2,146 PNGs: 1,250 current native
+##    portraits (631 fauna +332 flora +27 fungi +20 microbe +240 procedural), 196 catalogue strips,
+##    466 official layout sheets, and 234 representative hybrid assets. Its manifest says
+##    `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED`, hybrid continuity remains OPEN, and its blank
+##    review template is hash-bound. It contains no carried verdict/certification material and does
+##    not replace the absent Wave 2e baseline, old/current A/B, or final all-PASS certification ZIP.
 
 ## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
-## Current side: OpenAI/Codex on macOS, branch openai/mac — scanner/tools repair commit 1e1497e is
-## pushed and synchronized; merged PR #8 left develop at bb1a980, where this branch resumed.
-## Post-edit art review is blocked before capture because the ignored sealed baseline did not cross machines.
-## GitHub step: no PR was opened because the connected app returned 404 for the private repository
-## and the local GitHub CLI token is invalid. Nick creates the draft PR with the fields below, then
-## reviews and merges it into develop; never merge it automatically.
-## PR details: base `develop`; source `openai/mac`; title `Repair Wave 2e scanner and preserve the
-## fail-closed baseline boundary`; description `Replaces overridecheck's token-shape scan with pinned
-## Rolldown/Oxc full-TypeScript AST traversal and hardens exact finding/parser/restoration/wiring/
-## provenance controls while preserving all four frozen Wave 2e art-source hashes. Records that the
-## ignored 288-row pre-edit evidence did not cross machines, so no post-edit visual verdict is
-## claimed. Verification: offline lockfile install; overridecheck 1,014/1,014 routes and 1,010/1,010
-## species; the full named overridecontrol suite plus clean baseline/restoration;
-## typecheck; artunused; Vitest 23 files/238
-## pass/1 skip; speccheck 455/0/0 plus 5/5 controls; coveragegap 1,010/1,010; artaudit 23/0;
-## tokencheck 16/16; hybridmatrix selftest; root validate including 1,010 renders and the 50-probe
-## fingerprint; four frozen SHA-256 checks; and git diff-check. Anthropic/Claude Code receives the
-## repair only after this PR is reviewed and merged into develop. No certification, release, or
-## deployment is included.`
+## Current side: OpenAI/Codex on macOS, branch openai/mac — scanner repair 1e1497e, portable evidence
+## producer/package 79ce144, and anchor-tolerance repair 60b16ce are committed, pushed, independently
+## reviewed, and synchronized. The requested current-only archive is complete and deep-reverified.
+## Post-edit Wave 2e art review remains blocked because the ignored sealed baseline did not cross machines.
+## GitHub step: draft PR #9 is open at https://github.com/TheDakk/Celestial-Frontier/pull/9. Nick
+## reviews it and, only when satisfied, merges it into develop; never merge it automatically.
+## PR details: base `develop`; source `openai/mac`; title `Repair Wave 2e review tooling and add
+## current-generation package`; description `Replaces the Wave 2e override scanner with pinned
+## Rolldown/Oxc full-TypeScript AST validation and the complete fail-closed control suite while
+## preserving all four frozen art-source hashes and the missing-baseline boundary. Adds portable,
+## provenance-bound, atomic browser evidence producers plus a separate current-review packager.
+## Verification: overridecheck 1,014/1,014 routes and 1,010/1,010 species; overridecontrol through
+## CP with clean restoration; typecheck; artunused; Vitest 23 files/238 pass/1 skip; speccheck
+## 455/0/0; coveragegap 1,010/1,010; artaudit 23/0; browser/evidence/package selftests; root validate
+## including 1,010 renders and the 50-probe fingerprint; frozen SHA-256 checks; independent
+## adversarial reviews; and a real 472,304,848-byte archive deep-reverify. After review and merge,
+## Anthropic/Claude Code on anthropic/windows runs git fetch origin followed by git merge
+## origin/develop only from a clean worktree. The archive is CURRENT-ONLY / UNREVIEWED / NOT
+## CERTIFIED; no Wave 2e verdict,
+## release, or deployment is included.` Existing PR #9's title and description already match these
+## fields and need no change.
 ## Other side: Anthropic/Claude Code on Windows, branch anthropic/windows, need not be opened now and
 ## does not have the repair. After the PR merges, at its next batch and only from a clean worktree,
 ## run `git fetch origin` then `git merge origin/develop`; if dirty, do not pull/switch/merge first.
 ## Evidence side: Nick does need to open OpenAI/Codex on Windows, branch openai/windows, now only to
 ## confirm a clean worktree and recover/package the exact ignored baseline and scoped producer. Do
 ## not copy source files, switch branches, or merge there.
-## Release status: develop has the static Wave-2e checkpoint but not this Mac repair; main and the
-## live site are unchanged. No release or deployment occurred.
+## Release status: develop remains at merged PR #8 / bb1a980 until draft PR #9 is reviewed and
+## merged. Main and the live site are unchanged. No release, deployment, certification, or version
+## bump occurred.

@@ -218,7 +218,7 @@ Independent post-edit provenance and resolver/compositor reviews returned PASS.
 Static gates remain green:
 1,014/1,014 routes, 1,010/1,010 species, typecheck/artunused, 23-file Vitest
 (238 pass /1 skip), speccheck 455/0/0, coveragegap 1,010/1,010, artaudit 23/0,
-and `git diff --check`. No Wave 2e art PASS, full tally, certification, ZIP,
+and `git diff --check`. No Wave 2e art PASS, full tally, certification package,
 release, or deployment is claimed.
 
 The first live hybrid-matrix attempt exposed a real schema-v2 harness contract
@@ -240,7 +240,7 @@ unreachable orchard/citrus alternatives with **0/174** tree-surface drift at
 
 Literal completion still means a new clean 1,250-row collection containing only
 fresh PASS, with zero carried verdicts, POLISH, or FAIL. No final certification,
-image-inclusive ZIP, reset PR, release, or deployment exists.
+certification image-inclusive ZIP, reset PR, release, or deployment exists.
 
 ## Historical GP7/GP7.1 evidence (not the reset score)
 
@@ -297,9 +297,12 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 | `npm run currentreviewpackage -- --catalogue=<capture> --layout=<layout> --hybrid=<matrix> --output=<new.zip>` | Creates a new extracted-and-reverified **UNREVIEWED current-state** package spanning the exact 1,250 catalogue rows, official packet layout, and representative five-stage hybrid evidence. It rejects verdict/certification material and never replaces the later all-PASS certification ZIP. |
 
 Nick explicitly requested a full current-generation review archive on 2026-08-10.
-That bounded deliverable is allowed before certification only when its README and
-manifest say **UNREVIEWED / CURRENT-ONLY**, bind one clean commit, preserve every
-producer manifest and hash, and state that the missing Wave 2e pre-edit evidence
+It is now produced from clean evidence commit `79ce144` with exactly 2,146 PNGs:
+1,250 native portraits, 196 catalogue strips, 466 official layout sheets, and
+234 representative hybrid assets. The ZIP is 472,304,848 bytes with SHA-256
+`18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`. Its README
+and manifest say **UNREVIEWED / CURRENT-ONLY / NOT CERTIFIED**, preserve every
+producer manifest/hash, and state that the missing Wave 2e pre-edit evidence
 prevents old/current comparison or promotion. It is not the dated image-inclusive
 certification package described below.
 

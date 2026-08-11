@@ -57,7 +57,7 @@ The frozen result is
 clean commit `bc26e8`. It records all rows fresh and all required evidence
 reviewed, but `all_rows_literal_pass: false` and
 `literal_certification_eligible: false`. This is the repair baseline, not a
-certificate. There is no final all-PASS collection, image-inclusive ZIP, reset
+certificate. There is no final all-PASS collection, certification image-inclusive ZIP, reset
 pull request, release, or deployment.
 
 ## Wave 1: exact 177-target scope
@@ -702,13 +702,20 @@ comparison is blocked by the missing ignored baseline, and never reuse the final
 certification ZIP name or claim a new catalogue tally. This is a review handoff,
 not the all-PASS image-inclusive package governed by the paragraph above.
 
+That bounded handoff is now complete from clean evidence commit `79ce144`: exactly
+2,146 PNGs (1,250 native portraits +196 catalogue strips +466 official layout
+sheets +234 representative hybrid assets), 472,304,848 ZIP bytes, SHA-256
+`18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`. Its
+machine-readable status remains `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED`, and
+hybrid continuity remains OPEN. It changes none of the certification blockers above.
+
 ## Immediate order
 
-1. Commit/push the independently reviewed Mac scanner repair on `openai/mac`
-   and open only its draft PR into `develop`; do not claim a Wave-2e art verdict.
-2. Produce Nick's separate current-only review archive only from a clean,
-   committed Mac producer; preserve exact capture/layout/hybrid manifests and
-   keep every visual status unreviewed/open.
+1. Review draft PR #9 from `openai/mac` into `develop`; do not claim a Wave-2e art verdict and do
+   not merge automatically.
+2. The separate current-only review archive is produced and deep-reverified from clean evidence
+   commit `79ce144`; preserve it as `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED` with every visual
+   status unreviewed/open.
 3. OpenAI/Codex on Windows must first confirm `openai/windows` is clean, then
    recover/package the exact ignored Wave-2e pre-edit root plus its scoped
    capture/control recipe. Do not copy source files or begin a new baseline.

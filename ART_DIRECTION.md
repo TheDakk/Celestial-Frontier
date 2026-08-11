@@ -692,13 +692,16 @@ families / 233 packets bind all 1,250 exact identities to 440px, unlabeled 300px
 actual unlabeled 132px, labelled old/current, and exact set-specific `mustRead`
 or procedural-plan hashes. The complete fresh result is **516 PASS / 14 POLISH /
 720 FAIL** and is not certification-eligible. No final all-PASS collection or
-image-inclusive ZIP exists.
+certification ZIP exists.
 
-Nick's 2026-08-10 request for a full current-generation ZIP is a separate
-review handoff: all 1,250 current native portraits, current family packets, and
-representative hybrid stages may be exported from one clean commit as
-`UNREVIEWED / CURRENT-ONLY`. That archive cannot carry verdicts, substitute for
-the absent Wave 2e pre-edit baseline, or become the final certification ZIP.
+Nick's 2026-08-10 request for a full current-generation ZIP is fulfilled as a
+separate review handoff from clean evidence commit `79ce144`: 1,250 current
+native portraits, 196 catalogue strips, 466 official layout sheets, and 234
+representative hybrid assets, for exactly 2,146 PNGs. The 472,304,848-byte ZIP
+has SHA-256 `18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`
+and is explicitly `CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED`. It carries no
+verdicts, cannot substitute for the absent Wave 2e pre-edit baseline, and is not
+the final all-PASS certification ZIP.
 
 Hybrid route/cache ownership is technically correct, and the prior focused
 Apple and Vanilla continuity blockers are now independently closed. Vanilla r6
@@ -947,9 +950,9 @@ Consequently its claimed 288-row roster (47 targets +241 protected controls),
 `BC424C8FC8D19DDC7A23F81A946CDE99AF2A7FED759129E132233E23C598AA37`,
 and index
 `2AE4FDB1D443698A092304C22573D8604C07D5B42752E967549D6B038FCD26E3`
-cannot be independently verified here. Post-edit capture and comparison remain
-fail-closed until that exact evidence and its scoped capture/control recipe are
-recovered from the Windows workspace, or an explicitly authorized
+cannot be independently verified here. Wave-2e-scoped post-edit old/current A/B
+capture and comparison remain fail-closed until that exact evidence and its
+scoped capture/control recipe are recovered from the Windows workspace, or an explicitly authorized
 reconstruction from `2ed0f28` reproduces both frozen hashes.
 
 The only Mac-side code change is a tooling repair: pinned Rolldown 1.2.1/Oxc now
@@ -979,5 +982,5 @@ drift, direct trusted-global escape, and incomplete kingdom-qualified route cove
 The sentinel assumes standard unmodified platform intrinsics and approved dependency implementations;
 it is not a visual verdict.
 All four art-source hashes remain exact;
-no Wave-2e painter was changed. Full shared A/B review, recertification, the
-image-inclusive ZIP, reset PR, merge, release, and deployment remain OPEN.
+no Wave-2e painter was changed. Full shared A/B review, recertification, its
+certification image-inclusive ZIP, reset PR, merge, release, and deployment remain OPEN.
