@@ -38,8 +38,8 @@
 ## Merged PR #9 integrated the Mac scanner/tooling and current-review-package repair into develop at
 ## 989142d. Its reviewed description correctly preserves the missing-baseline boundary and the
 ## CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED archive scope. No reset merge, new 1,250-row verdict
-## tally, final certification package, release, deployment, or version bump exists. Read next:
-## PROCESS_LAWS.md ·
+## tally, final certification package, release, deployment, or version bump exists. The docs-only
+## merge-handoff correction is draft PR #10 from openai/mac into develop. Read next: PROCESS_LAWS.md ·
 ## PARALLEL_GIT_PROTOCOL.md · port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md ·
 ## ART_DIRECTION.md · PROCEDURAL_CHARACTERISTICS.md · LINEAGE_AND_BREEDING.md ·
 ## port/PROPORTION_ARC.md · port/HANDOFF_NEXT_SESSION.md · port/v2/DEVIATIONS.md · port/v2/README.md.
@@ -210,18 +210,22 @@
 ## merge: scanner repair 1e1497e, portable evidence producer/package 79ce144, and anchor-tolerance
 ## repair 60b16ce remain committed, reviewed, and synchronized. The requested current-only archive
 ## is complete and deep-reverified. Post-edit Wave 2e art review remains blocked because the ignored
-## sealed baseline did not cross machines.
-## GitHub step: none for merged PR #9. Its existing title and description were verified correct and
-## need no change. This handoff-only documentation correction follows the normal reviewed-PR flow.
-## PR details: PR #9 was base `develop`; source `openai/mac`; title `Repair Wave 2e review tooling and
-## add current-generation package`; description correctly states the AST scanner repair, frozen
-## art-source hashes, missing-baseline boundary, portable evidence producers, current-only archive,
-## verification, Anthropic clean synchronization, and no certification/release/deployment.
+## sealed baseline did not cross machines. This merge-handoff correction is docs-only draft PR #10.
+## GitHub step: review draft PR #10 at https://github.com/TheDakk/Celestial-Frontier/pull/10 and,
+## only when satisfied, merge it into develop; never merge it automatically. Merged PR #9's existing
+## title and description were verified correct and need no change.
+## PR details: base `develop`; source `openai/mac`; title `Record merged PR #9 handoff`; description
+## `Records the verified merge of PR #9 (989142d) in the live roadmap, port handoff, and reset-audit
+## reference. Why: those live documents still described #9 as an open draft after it had merged.
+## Verification: git diff --check. Docs-only: no source, art, evidence, certification, release, or
+## deployment change. After merge, Anthropic/Claude Code syncs only from a clean anthropic/windows
+## worktree using git fetch origin followed by git merge origin/develop.` Existing PR #10 title and
+## description match these fields and need no change.
 ## Other side: Anthropic/Claude Code on Windows, branch anthropic/windows, need not be opened now.
 ## At its next coding batch and only from a clean worktree, run `git fetch origin` then
 ## `git merge origin/develop`; if dirty, do not pull/switch/merge first.
 ## Evidence side: Nick does need to open OpenAI/Codex on Windows, branch openai/windows, now only to
 ## confirm a clean worktree and recover/package the exact ignored baseline and scoped producer. Do
 ## not copy source files, switch branches, or merge there.
-## Release status: develop includes merged PR #9 at 989142d. Main and the live site are unchanged.
-## No release, deployment, certification, or version bump occurred.
+## Release status: develop includes merged PR #9 at 989142d; docs-only draft PR #10 is pending.
+## Main and the live site are unchanged. No release, deployment, certification, or version bump occurred.
