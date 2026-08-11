@@ -236,12 +236,12 @@ and deployment all remain **OPEN**.
 
 ## Parallel Git handoff
 
-Current side: OpenAI/Codex on macOS, branch `openai/mac` — merged PR #8 put the Wave 2e static
-checkpoint on `develop` at `bb1a980`; this branch resumed exactly there. The Mac scanner/tools
-repair is the only new source work. Post-edit art review is blocked before capture because the
-exact ignored baseline is absent.
-GitHub step: after the Mac repair is pushed, Nick reviews its draft PR into `develop`; never merge
-it automatically.
+Current side: OpenAI/Codex on macOS, branch `openai/mac` — scanner/tools repair commit `1e1497e` is
+pushed and synchronized. Merged PR #8 left `develop` at `bb1a980`, where this branch resumed.
+Post-edit art review is blocked before capture because the exact ignored baseline is absent.
+GitHub step: no PR was opened because the connected app returned 404 for the private repository
+and the local GitHub CLI token is invalid. Nick creates the draft PR with the fields below, then
+reviews and merges it into `develop`; never merge it automatically.
 PR details: base `develop`; source `openai/mac`; title `Repair Wave 2e scanner and preserve the
 fail-closed baseline boundary`; description `Replaces overridecheck's token-shape scan with pinned
 Rolldown/Oxc full-TypeScript AST traversal and hardens exact exit/diagnostic controls across

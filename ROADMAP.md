@@ -186,10 +186,12 @@
 ##    literal certification and dated image-inclusive ZIP begin.
 
 ## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
-## Current side: OpenAI/Codex on macOS, branch openai/mac — merged PR #8 put Wave 2e's static
-## implementation on develop at bb1a980; this branch resumed there and repaired only scanner/tools.
+## Current side: OpenAI/Codex on macOS, branch openai/mac — scanner/tools repair commit 1e1497e is
+## pushed and synchronized; merged PR #8 left develop at bb1a980, where this branch resumed.
 ## Post-edit art review is blocked before capture because the ignored sealed baseline did not cross machines.
-## GitHub step: after push, Nick reviews the draft PR into develop; never merge it automatically.
+## GitHub step: no PR was opened because the connected app returned 404 for the private repository
+## and the local GitHub CLI token is invalid. Nick creates the draft PR with the fields below, then
+## reviews and merges it into develop; never merge it automatically.
 ## PR details: base `develop`; source `openai/mac`; title `Repair Wave 2e scanner and preserve the
 ## fail-closed baseline boundary`; description `Replaces overridecheck's token-shape scan with pinned
 ## Rolldown/Oxc full-TypeScript AST traversal and hardens exact finding/parser/restoration/wiring/
