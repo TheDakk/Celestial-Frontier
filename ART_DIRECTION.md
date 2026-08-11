@@ -912,6 +912,66 @@ speccheck 419/0/0; coveragegap 1,010/1,010; artaudit 23/0; tokencheck selftest
 16/16; overridecheck 1,014/1,014 routes +1,010/1,010 species; speciesaudit
 1,250/1,250 with zero failure/duplicate/clipping; hybridcheck and its 11
 negatives; hybridmatrix/speciesstrip/fullresetlayout/fullresetreview selftests;
-and `git diff --check`. The checkpoint is ready to commit/push. Full
+and `git diff --check`. The checkpoint was committed/pushed as `2ed0f28`. Full
 recertification, the image-inclusive ZIP, reset PR, merge, release, and
 deployment remain OPEN.
+
+## 2026-08-10 reset Wave 2e — 47 static whole-form candidates; visual review not begun
+
+Wave 2e is exactly Mammal E 13 + Fauna E 21 + Invert IV 13. Its static source
+checkpoint is `5db9039`, merged to `develop` through PR #8 at `bb1a980`; the
+parent is the frozen Wave-2d checkpoint `2ed0f28`. The four frozen source
+SHA-256 values are:
+
+- `quadrupedoverrides.ts`
+  `AE8E3830EF57233EB43ABE0F594E335A050A1DB3375F08781FF61549B0C6D288`
+- `mammaloverrides.ts`
+  `74BBD77CD8BA8E3C22D503AD42FB667EDB74AF6ED3C73551ED283223B28CF80B`
+- `faunaoverrides2.ts`
+  `30B2E3E2BCDA4865EE81625805384B373423274E0634F8A50F8E4D5A20483378`
+- `invertoverrides.ts`
+  `6785058479456FF35EE3C44D9FC8F8A9A5467B7F61BBF3153854F93B090A5C1C`
+
+No Wave-2e visual PASS, POLISH, or FAIL verdict is recorded. The documented
+pre-edit root
+`port/v2/apps/game/smoke/wave2e-shared-preedit-baseline-2026-08-10/baseline`
+is ignored by Git and is absent from the Mac worktree and all tracked refs.
+Consequently its claimed 288-row roster (47 targets +241 protected controls),
+864 PNGs, seal
+`BC424C8FC8D19DDC7A23F81A946CDE99AF2A7FED759129E132233E23C598AA37`,
+and index
+`2AE4FDB1D443698A092304C22573D8604C07D5B42752E967549D6B038FCD26E3`
+cannot be independently verified here. Post-edit capture and comparison remain
+fail-closed until that exact evidence and its scoped capture/control recipe are
+recovered from the Windows workspace, or an explicitly authorized
+reconstruction from `2ed0f28` reproduces both frozen hashes.
+
+The only Mac-side code change is a tooling repair: pinned Rolldown 1.2.1/Oxc now
+parses each complete TypeScript art source as an AST and
+only literal string property/array nodes become keys. Every such key is validated regardless of
+length or alphabet, and malformed CANON keys cannot disappear. This replaces the scan that misread
+the 21 inline `faunaESquamata(..., 'Name')` plan literals as duplicate keys or truncated on
+hand-lexed grammar boundaries. Its controls require specific exit-1 findings
+for genuine duplicates, accept matching inline/ternary value strings, keep
+routes after template/regex, control-head/member-call, Unicode-identifier and
+ASI traps visible. Full-source declaration traversal covers parenthesized,
+annotated, comment-separated and later `const` declarators; post-declaration
+writes/aliases and malformed route-table source exit 2. Painter values must be
+statically callable (and quadruped specs objects) through immutable, unwritten exact
+local/import bindings; supported factories must return a direct callable expression.
+Neither `null!`, mutable aliases, nor truthy objects count as painters. The coverage denominator
+is one exact four-kingdom `_EARTH_NAMES` AST with its read-only consumer pinned. Wiring is measured only
+from supported route-selection initializer AST shapes and their exact precedence/executable
+guard/call/fallback/furniture consumer chains and returned-canvas `fitInk` path inside parsed
+`resolveOverride`; disconnected consumers, always-false predicates, discarded/inert
+syntax, and later count-summary mentions cannot mask a disconnected table. Computed
+route members/methods outside exact audited consumer nodes fail closed. Recursive
+`.ts`/`.mts`/`.cts`/`.tsx` discovery rejects untracked executable imports/re-exports;
+normalized full-path plus actual-export ownership prevents nested same-basename/export
+impersonation. Shadow direction follows resolver precedence, and helper binding/implementation
+drift, direct trusted-global escape, and incomplete kingdom-qualified route coverage fail.
+The sentinel assumes standard unmodified platform intrinsics and approved dependency implementations;
+it is not a visual verdict.
+All four art-source hashes remain exact;
+no Wave-2e painter was changed. Full shared A/B review, recertification, the
+image-inclusive ZIP, reset PR, merge, release, and deployment remain OPEN.
