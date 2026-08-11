@@ -553,10 +553,26 @@ try {
   await evalIn(`(()=>{ window.__CF_SLICE__.camT.z = 0.05; return 1; })()`);
   const stU = await waitDesktopValue('galaxy-to-universe zoom', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='universe'?s:null; })()`);
   if (stU.mode !== 'universe') fails.push('zoom-out did not rise galaxy→universe: ' + stU.mode);
-  /* negative control: deep zoom in EMPTY space must NOT dive */
+  /* Negative control: deep zoom in EMPTY space must NOT dive. Waiting a
+     fixed interval can pass vacuously on a throttled target if no ticker
+     ever reads the injected intent. The first observed tick moves the
+     camera and streams the target cell after transition checks; require a
+     second distinct camera advance so checkTransitions has evaluated the
+     empty point against that newly streamed cell. */
+  const emptyStart = await evalIn(`(()=>{ const S=window.__CF_SLICE__; return {x:S.cam.x,y:S.cam.y}; })()`);
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=5000; S.camT.y=5000; S.camT.z=28; return 1; })()`);
-  await sleep(700);
-  const stEmpty = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const emptyObserved = await waitDesktopValue('empty-space zoom ticker observation', `(()=>{
+    const S=window.__CF_SLICE__,s=S.api.state();
+    const start=${JSON.stringify(emptyStart)},target={x:5000,y:5000};
+    const toward=(S.cam.x-start.x)*(target.x-start.x)+(S.cam.y-start.y)*(target.y-start.y);
+    return s.mode!=='universe'||toward>0.01?{state:s,toward,cam:{x:S.cam.x,y:S.cam.y}}:null;
+  })()`);
+  const emptyChecked = await waitDesktopValue('empty-space zoom resolved-cell transition check', `(()=>{
+    const S=window.__CF_SLICE__,s=S.api.state(),prior=${JSON.stringify(emptyObserved.cam)};
+    const moved=(S.cam.x-prior.x)*(S.cam.x-prior.x)+(S.cam.y-prior.y)*(S.cam.y-prior.y);
+    return s.mode!=='universe'||moved>1e-8?{state:s,moved}:null;
+  })()`);
+  const stEmpty = emptyChecked.state;
   if (stEmpty.mode !== 'universe') fails.push('CONTROL FAILED — deep zoom in empty space dove somewhere: ' + stEmpty.mode);
   /* zoom INTO the Milky Way at HOME_POS → galaxy */
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=90; S.camT.y=-60; S.camT.z=28; return 1; })()`);
