@@ -21,7 +21,7 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-10 · WAVE 2E MAC RESUME FAIL-CLOSED ON NON-PORTABLE BASELINE ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-11 · WAVE 2E MAC RESUME FAIL-CLOSED ON NON-PORTABLE BASELINE ◀◀◀
 
 ## ★ COLD START — READ THIS BLOCK, THEN THE LINKED REFERENCES
 ## Workspace: /Users/nick/Projects/celestial-frontier-openai-mac
@@ -35,8 +35,11 @@
 ## independently post-edit reviewed; no art source moved. A separate current-generation review ZIP
 ## now exists from clean evidence commit 79ce144, with the production-anchor packager repair at
 ## 60b16ce; it is explicitly CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED and is not Wave 2e A/B.
-## Draft PR #9 is open from openai/mac into develop. No reset merge, new 1,250-row verdict tally,
-## final certification package, release, deployment, or version bump exists. Read next: PROCESS_LAWS.md ·
+## Merged PR #9 integrated the Mac scanner/tooling and current-review-package repair into develop at
+## 989142d. Its reviewed description correctly preserves the missing-baseline boundary and the
+## CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED archive scope. No reset merge, new 1,250-row verdict
+## tally, final certification package, release, deployment, or version bump exists. Read next:
+## PROCESS_LAWS.md ·
 ## PARALLEL_GIT_PROTOCOL.md · port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md ·
 ## ART_DIRECTION.md · PROCEDURAL_CHARACTERISTICS.md · LINEAGE_AND_BREEDING.md ·
 ## port/PROPORTION_ARC.md · port/HANDOFF_NEXT_SESSION.md · port/v2/DEVIATIONS.md · port/v2/README.md.
@@ -202,33 +205,23 @@
 ##    not replace the absent Wave 2e baseline, old/current A/B, or final all-PASS certification ZIP.
 
 ## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
-## Current side: OpenAI/Codex on macOS, branch openai/mac — scanner repair 1e1497e, portable evidence
-## producer/package 79ce144, and anchor-tolerance repair 60b16ce are committed, pushed, independently
-## reviewed, and synchronized. The requested current-only archive is complete and deep-reverified.
-## Post-edit Wave 2e art review remains blocked because the ignored sealed baseline did not cross machines.
-## GitHub step: draft PR #9 is open at https://github.com/TheDakk/Celestial-Frontier/pull/9. Nick
-## reviews it and, only when satisfied, merges it into develop; never merge it automatically.
-## PR details: base `develop`; source `openai/mac`; title `Repair Wave 2e review tooling and add
-## current-generation package`; description `Replaces the Wave 2e override scanner with pinned
-## Rolldown/Oxc full-TypeScript AST validation and the complete fail-closed control suite while
-## preserving all four frozen art-source hashes and the missing-baseline boundary. Adds portable,
-## provenance-bound, atomic browser evidence producers plus a separate current-review packager.
-## Verification: overridecheck 1,014/1,014 routes and 1,010/1,010 species; overridecontrol through
-## CP with clean restoration; typecheck; artunused; Vitest 23 files/238 pass/1 skip; speccheck
-## 455/0/0; coveragegap 1,010/1,010; artaudit 23/0; browser/evidence/package selftests; root validate
-## including 1,010 renders and the 50-probe fingerprint; frozen SHA-256 checks; independent
-## adversarial reviews; and a real 472,304,848-byte archive deep-reverify. After review and merge,
-## Anthropic/Claude Code on anthropic/windows runs git fetch origin followed by git merge
-## origin/develop only from a clean worktree. The archive is CURRENT-ONLY / UNREVIEWED / NOT
-## CERTIFIED; no Wave 2e verdict,
-## release, or deployment is included.` Existing PR #9's title and description already match these
-## fields and need no change.
-## Other side: Anthropic/Claude Code on Windows, branch anthropic/windows, need not be opened now and
-## does not have the repair. After the PR merges, at its next batch and only from a clean worktree,
-## run `git fetch origin` then `git merge origin/develop`; if dirty, do not pull/switch/merge first.
+## Current side: OpenAI/Codex on macOS, branch openai/mac — PR #9, `Repair Wave 2e review tooling and
+## add current-generation package`, merged into develop at `989142d`. Its source is unchanged after
+## merge: scanner repair 1e1497e, portable evidence producer/package 79ce144, and anchor-tolerance
+## repair 60b16ce remain committed, reviewed, and synchronized. The requested current-only archive
+## is complete and deep-reverified. Post-edit Wave 2e art review remains blocked because the ignored
+## sealed baseline did not cross machines.
+## GitHub step: none for merged PR #9. Its existing title and description were verified correct and
+## need no change. This handoff-only documentation correction follows the normal reviewed-PR flow.
+## PR details: PR #9 was base `develop`; source `openai/mac`; title `Repair Wave 2e review tooling and
+## add current-generation package`; description correctly states the AST scanner repair, frozen
+## art-source hashes, missing-baseline boundary, portable evidence producers, current-only archive,
+## verification, Anthropic clean synchronization, and no certification/release/deployment.
+## Other side: Anthropic/Claude Code on Windows, branch anthropic/windows, need not be opened now.
+## At its next coding batch and only from a clean worktree, run `git fetch origin` then
+## `git merge origin/develop`; if dirty, do not pull/switch/merge first.
 ## Evidence side: Nick does need to open OpenAI/Codex on Windows, branch openai/windows, now only to
 ## confirm a clean worktree and recover/package the exact ignored baseline and scoped producer. Do
 ## not copy source files, switch branches, or merge there.
-## Release status: develop remains at merged PR #8 / bb1a980 until draft PR #9 is reviewed and
-## merged. Main and the live site are unchanged. No release, deployment, certification, or version
-## bump occurred.
+## Release status: develop includes merged PR #9 at 989142d. Main and the live site are unchanged.
+## No release, deployment, certification, or version bump occurred.

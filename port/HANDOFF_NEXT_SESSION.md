@@ -1,4 +1,4 @@
-# ★ LIVE — Wave 2e Mac resume fail-closed on non-portable baseline (2026-08-10)
+# ★ LIVE — Wave 2e Mac resume fail-closed on non-portable baseline (2026-08-11)
 
 **Current worktree:** `/Users/nick/Projects/celestial-frontier-openai-mac` on
 `openai/mac`. Clean full-reset baseline HEAD is
@@ -13,9 +13,11 @@ cross Git. The overridecheck false-positive is repaired and independently post-e
 source moved. A separate current-generation review ZIP now exists from clean evidence commit
 `79ce14460998d653ee753e49e8f8016e754c82e4`, with the production-anchor packager repair at
 `60b16ce`; it is explicitly **CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED** and is not Wave 2e A/B.
-Draft PR #9 is open from `openai/mac` into `develop`. PR #7 is historical/already merged. No reset
-merge, new full-catalogue verdict tally, 1,250-row certification package, release, deployment, or
-version bump exists.
+Merged PR #9 integrated the Mac scanner/tooling and current-review-package repair into `develop` at
+`989142d`. Its reviewed description correctly preserves the missing-baseline boundary and the
+**CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED** archive scope. PR #7 is historical/already merged.
+No reset merge, new full-catalogue verdict tally, 1,250-row certification package, release,
+deployment, or version bump exists.
 
 Read first: `ROADMAP.md`, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`,
 `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`,
@@ -249,42 +251,33 @@ and deployment all remain **OPEN**.
 
 ## Parallel Git handoff
 
-Current side: OpenAI/Codex on macOS, branch `openai/mac` — scanner repair `1e1497e`, portable
-evidence producer/package `79ce144`, and anchor-tolerance repair `60b16ce` are committed, pushed,
-independently reviewed, and synchronized. The requested current-only archive is complete and
-deep-reverified. Post-edit Wave 2e art review remains blocked because the exact ignored baseline is absent.
+Current side: OpenAI/Codex on macOS, branch `openai/mac` — PR #9, `Repair Wave 2e review tooling and
+add current-generation package`, merged into `develop` at `989142d`. Its source is unchanged after
+merge: scanner repair `1e1497e`, portable evidence producer/package `79ce144`, and anchor-tolerance
+repair `60b16ce` remain committed, reviewed, and synchronized. The requested current-only archive
+is complete and deep-reverified. Post-edit Wave 2e art review remains blocked because the exact
+ignored baseline is absent.
 
-GitHub step: draft PR #9 is open at <https://github.com/TheDakk/Celestial-Frontier/pull/9>. Nick
-reviews it and, only when satisfied, merges it into `develop`; never merge it automatically.
+GitHub step: none for merged PR #9. Its existing title and description were verified correct and
+need no change. This handoff-only documentation correction follows the normal reviewed-PR flow.
 
-PR details: base `develop`; source `openai/mac`; title `Repair Wave 2e review tooling and add
-current-generation package`; description `Replaces the Wave 2e override scanner with pinned
-Rolldown/Oxc full-TypeScript AST validation and the complete fail-closed control suite while
-preserving all four frozen art-source hashes and the missing-baseline boundary. Adds portable,
-provenance-bound, atomic browser evidence producers plus a separate current-review packager.
-Verification: overridecheck 1,014/1,014 routes and 1,010/1,010 species; overridecontrol through CP
-with clean restoration; typecheck; artunused; Vitest 23 files/238 pass/1 skip; speccheck 455/0/0;
-coveragegap 1,010/1,010; artaudit 23/0; browser/evidence/package selftests; root validate including
-1,010 renders and the 50-probe fingerprint; frozen SHA-256 checks; independent adversarial reviews;
-and a real 472,304,848-byte archive deep-reverify. After review and merge, Anthropic/Claude Code on
-anthropic/windows runs git fetch origin followed by git merge origin/develop only from a clean
-worktree. The archive is CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED; no Wave 2e verdict, release, or deployment is
-included.` Existing PR #9's title and description already match these fields and need no change.
+PR details: PR #9 was base `develop`; source `openai/mac`; title `Repair Wave 2e review tooling and
+add current-generation package`; description correctly states the AST scanner repair, frozen
+art-source hashes, missing-baseline boundary, portable evidence producers, current-only archive,
+verification, Anthropic clean synchronization, and no certification/release/deployment.
 
-Other side: Anthropic/Claude Code on Windows, branch `anthropic/windows`, need not be opened
-now and must not expect the Mac repair until its PR merges into `develop`. After that merge, at its
-next coding batch and only from a clean worktree, run `git fetch origin` and then
+Other side: Anthropic/Claude Code on Windows, branch `anthropic/windows`, need not be opened now.
+At its next coding batch and only from a clean worktree, run `git fetch origin` and then
 `git merge origin/develop` on `anthropic/windows`. If that worktree is dirty, do not pull, switch,
 or merge; inspect and safely finish or commit its own work first. Do not copy files manually.
 
 Evidence side: Nick does need to open OpenAI/Codex on Windows now, branch `openai/windows`, only to
 confirm the worktree is clean and recover/package the exact ignored Wave-2e baseline plus its scoped
-capture/control recipe. Do not copy source files, switch branches, or merge there. `develop`
-currently has the static Wave-2e checkpoint but not the Mac repair.
+capture/control recipe. Do not copy source files, switch branches, or merge there. `develop` now
+contains the Mac repair, but not the ignored baseline.
 
-Release status: `develop` remains at merged PR #8 / `bb1a980` until draft PR #9 is reviewed and
-merged. `main` and the live site remain unchanged. No release, deployment, certification, or
-version bump occurred.
+Release status: `develop` includes merged PR #9 at `989142d`. `main` and the live site remain
+unchanged. No release, deployment, certification, or version bump occurred.
 
 # Historical Wave-2c/Wave-2d-opening handoff — superseded by Wave 2d closure
 
