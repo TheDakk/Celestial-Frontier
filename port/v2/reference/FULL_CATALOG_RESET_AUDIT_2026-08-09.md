@@ -1,7 +1,7 @@
-# Full Catalogue Reset Audit — opened 2026-08-09, current 2026-08-10
+# Full Catalogue Reset Audit — opened 2026-08-09, current 2026-08-11
 
 _Live authority for the restarted species-art review. Matches the current
-OpenAI/Codex worktree as of 2026-08-10; update this file in the same batch as
+OpenAI/Codex worktree as of 2026-08-11; update this file in the same batch as
 the audit source, renderer, or acceptance ruler changes._
 
 The clean full-reset baseline is commit
@@ -12,9 +12,10 @@ The clean full-reset baseline is commit
 `dc015cfde4385530686cf8fff7e36e13ce67769c`; Wave 2d is committed/pushed as
 `2ed0f288a95c327aa892e8b3b54ce94f626f1ab7`. Wave 2e's static checkpoint is
 `5db90396dd0e33b5463ce40c32f6769c93e559be` and reached `develop` through
-merged PR #8 at `bb1a980`. The Mac continuation is fail-closed before its first
-post-edit render because the ignored scoped baseline did not cross Git. PR #7
-is historical/already merged; no reset PR exists.
+merged PR #8 at `bb1a980`; its Mac scanner/tooling and current-review-package
+follow-up merged as PR #9 at `989142d`. The Mac continuation is fail-closed
+before its first Wave-2e-scoped post-edit render because the ignored scoped
+baseline did not cross Git. PR #7 is historical/already merged; no reset PR exists.
 
 ## Status: r1 frozen; Wave 2d 50/50 PASS/pushed; Wave 2e static source merged, review blocked
 
@@ -711,8 +712,8 @@ hybrid continuity remains OPEN. It changes none of the certification blockers ab
 
 ## Immediate order
 
-1. Review draft PR #9 from `openai/mac` into `develop`; do not claim a Wave-2e art verdict and do
-   not merge automatically.
+1. PR #9 is merged into `develop` at `989142d`; its title and description were reviewed and require
+   no correction. Do not claim a Wave-2e art verdict.
 2. The separate current-only review archive is produced and deep-reverified from clean evidence
    commit `79ce144`; preserve it as `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED` with every visual
    status unreviewed/open.
