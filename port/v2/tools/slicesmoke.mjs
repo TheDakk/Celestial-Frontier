@@ -185,22 +185,29 @@ try {
   if (st1.mode !== 'universe') fails.push('a SINGLE tap descended (survey-first broken): ' + st1.mode);
   if (!st1.cardOpen || !st1.cardTitle) fails.push('single tap did not open the galaxy survey card: ' + JSON.stringify({ open: st1.cardOpen, title: st1.cardTitle }));
   if (typeof st1.epoch !== 'number') fails.push('COSMIC_EPOCH clock not running: ' + JSON.stringify(st1.epoch));
-  /* Close the already-open card, then make the first tap of the dive pair
-     observable before issuing the second. This avoids relying on Chromium
-     to infer a native double-click from two same-timestamp CDP events. */
+  /* Close the already-open card, then issue two ordinary real clicks with a
+     physical gap. Count their canvas pointerups after the pair so the proof
+     does not consume tapTwice's 400 ms window between the two events. */
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
   await sleep(120);
   const closedBeforeDive = await evalIn(`window.__CF_SLICE__.api.state().cardOpen`);
   if (closedBeforeDive) fails.push('Escape did not close the galaxy card before the dive pair');
+  await evalIn(`(()=>{ const canvas=document.querySelector('canvas'); window.__cfDivePointerUps=[];
+    const record=(event)=>window.__cfDivePointerUps.push(event.timeStamp); window.__cfDivePointerRecord=record;
+    canvas.addEventListener('pointerup',record,true); return true; })()`);
   await click();
-  const firstDiveTap = await evalIn(`window.__CF_SLICE__.api.state()`);
-  if (firstDiveTap.mode !== 'universe' || !firstDiveTap.cardOpen) {
-    fails.push('first tap of the dive pair did not survey in place: ' + JSON.stringify([firstDiveTap.mode, firstDiveTap.cardOpen]));
-  }
+  await sleep(80);
   await click();
   await sleep(2500);   /* per-seed 512px painterly bake + star field */
   const st2 = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const divePointerUps = await evalIn(`(()=>{ const canvas=document.querySelector('canvas'), times=window.__cfDivePointerUps||[];
+    if(window.__cfDivePointerRecord) canvas.removeEventListener('pointerup',window.__cfDivePointerRecord,true);
+    delete window.__cfDivePointerRecord; return times; })()`);
+  if (divePointerUps.length !== 2) fails.push('double-tap input did not deliver two real canvas pointerups: ' + JSON.stringify(divePointerUps));
+  else if (!(divePointerUps[1] > divePointerUps[0] && divePointerUps[1] - divePointerUps[0] < 400)) {
+    fails.push('double-tap pointerups did not land inside the game timing window: ' + JSON.stringify(divePointerUps));
+  }
   if (st2.mode !== 'galaxy' || st2.gal !== 999) fails.push('double-tap descent into the Milky Way did not happen: ' + JSON.stringify([st2.mode, st2.gal]));
   if (!/Milky Way/.test(st2.trail)) fails.push('galaxy trail missing Milky Way: ' + JSON.stringify(st2.trail));
   if (!/stars sharing/.test(st2.ctx)) fails.push('galaxy caption (galaxyStats) missing: ' + JSON.stringify(st2.ctx));
