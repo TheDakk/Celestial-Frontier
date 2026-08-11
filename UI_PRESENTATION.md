@@ -12,6 +12,19 @@
 > above measured `--dock-h`, proves all eight dock centres remain geometrically
 > clear, and rejects an injected training-card burial; the veteran phone capture
 > can no longer make that fresh-player layout pass vacuously.
+> Pixi also uses `autoDensity: true`: the backing store remains DPR-scaled
+> while the rendered canvas box equals the viewport. The phone gate injects the
+> former doubled CSS canvas and requires the density check to fail.
+>
+> Survey-first navigation is also phone- and slow-device safe: the first tap
+> opens the typed body card without teleporting, and its explicit 44px
+> `Enter galaxy` or `Enter system` action performs the dive. The card may cover
+> the body on a phone, so navigation never depends on a second canvas tap or a
+> timing window. The portable browser gate proves the desktop action and a real
+> 390×844 touch body→card-action outcome. It also drives the actual Sol sprite,
+> a stage-0 non-Sol fine-star Charter rejection and a deterministic stage-2
+> fine star, compares exact `{seed,x,y}` identity, and includes buried-action
+> controls.
 >
 > Browser smoke and performance tools use the owned portable CDP lifecycle and
 > always rebuild before capture; unresolved performance metrics now fail rather

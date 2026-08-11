@@ -21,7 +21,7 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-11 · PR #10 MERGED; V2 HARDENING/PHONE BATCH IN FINAL REVIEW ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-11 · PR #10 MERGED; DRAFT PR #11 IS THE V2 HARDENING VEHICLE ◀◀◀
 
 ## ★ COLD START — READ THIS BLOCK, THEN THE LINKED REFERENCES
 ## Workspace: /Users/nick/Projects/celestial-frontier-openai-mac
@@ -43,8 +43,14 @@
 ## identities; prevents repeated landfall credit, stale-card actions and external-code landing
 ## bypass; restores named-world CF1 round trips; fixes lazy-art subscriber races and port-authored
 ## declaration drift; strengthens SessionRNG; makes the phone dock a measured 4×2 geometry contract;
+## enables Pixi `autoDensity` and fixes the DPR backing-canvas/CSS-size mismatch that halved phone hit coordinates;
+## makes survey-first descent use an explicit mobile-safe card action instead of a covered body or timing window;
 ## makes browser smoke/perf portable and fail closed; adds core v2 test/type/art/browser-smoke gates
 ## to CI; and makes the app's own TypeScript config part of `npm run typecheck`. Current
+## browser proof covers desktop pointer and real 390×844 touch entry into the exact Milky Way node,
+## the actual Sol sprite, a real stage-0 non-Sol Charter rejection, and stage-2 entry into a
+## deterministic visible fine star; seed+x+y identity, the former DPR-sized CSS canvas, and buried
+## travel actions are all outcome-checked.
 ## verification: Vitest 23 files / 257 pass / 1 skip; both TypeScript configs; artunused;
 ## artaudit 23/0; coveragegap 1,010/1,010; speccheck
 ## 454/0/0; overridecheck 1,014/1,014 routes +1,010/1,010 species and controls through CV;
@@ -64,33 +70,41 @@
 
 ## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
 ## Current side: OpenAI/Codex on macOS, branch `openai/mac`. PR #10 merged normally into `develop`
-## at `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`. This batch's Git authority is the latest pushed
-## `openai/mac` commit carrying the files described here; the working copy may be ahead only while
-## publication is in progress.
-## GitHub step: use the separate draft PR whose exact base/source/title/body are below. If it is not
-## open yet, OpenAI/Codex creates it after pushing; once it exists, Nick reviews its checks and diff,
-## then uses the normal merge into `develop` only when satisfied. Never add this batch to merged PR
-## #10, auto-merge it, squash/rebase it, or target `main`.
+## at `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`; draft PR #11 is already open at
+## https://github.com/TheDakk/Celestial-Frontier/pull/11. This batch's Git authority is the latest
+## pushed `openai/mac` commit carrying the files described here; the working copy may be ahead only
+## while publication is in progress.
+## GitHub step: draft PR #11 (https://github.com/TheDakk/Celestial-Frontier/pull/11) is the separate
+## integration vehicle. After each pushed follow-up, OpenAI/Codex keeps its body synchronized with the
+## copy-ready description below. Nick then reviews its checks and diff, clicks **Ready for review**, and
+## uses the normal merge into `develop` only when satisfied. Never add this batch to merged PR #10,
+## auto-merge it, squash/rebase it, or target `main`.
 ## PR details: base `develop`; source `openai/mac`; title `Harden v2 persistence, navigation, mobile UI, and CI`;
 ## description `Audits and hardens the already-ported v2 slice. Protects sparse/corrupt and newer saves;
 ## restores IndexedDB retries; bounds hostile epoch input; validates Atlas routes; prevents duplicate
 ## landfall credit, stale-card actions, external-code landing bypass and named-world share loss; fixes
-## lazy species-art races and TypeScript declaration drift; hardens SessionRNG; makes the phone dock a
-## measured 4x2 non-overlap contract; ports the browser smoke/perf harnesses; and adds core v2
+## lazy species-art races and TypeScript declaration drift; hardens SessionRNG; and makes the phone dock
+## a measured 4x2 non-overlap contract. Enables Pixi autoDensity so the DPR-scaled backing store retains
+## a viewport-sized CSS box and logical pointer coordinates agree. Replaces timing-sensitive second-tap
+## descent with minimum-44px Enter galaxy / Enter system survey-card actions. Real-browser smoke proves
+## desktop galaxy navigation and exact base-Sol identity {seed:424242,x:560,y:170}, real 390×844 touch
+## galaxy navigation, a real stage-0 fine-star card action rejected by the Charter gate, and stage-2
+## fine-star success preserving the touched target's exact {seed,x,y}; injected DPR-sized-canvas and
+## click-through/buried-action regressions fail. Ports the browser smoke/perf harnesses and adds core v2
 ## test/type/art/browser-smoke gates to CI. The static flora/fauna/procedural pixel set covered by the
 ## package-level Platinum PASS remains unchanged except for a type-only art correction with identical
-## runtime value. Verification includes 23-file Vitest, both
-## TypeScript configs, artunused/artaudit/coverage/speccheck/override controls, evidence-packager and
-## browser selftests, real-browser smoke/perf, and diff-check. Remaining canonical CF1 hierarchy,
-## legacy full-expedition tutorial snapshot restore, CFB parent preservation, Compendium virtualization,
-## Pixi texture lifecycle, HD planet replacement, epoch-edge/visibility policy, living rigs and biome
-## scenes are explicitly deferred. After merge, Anthropic/Claude Code synchronizes only from a clean
-## `anthropic/windows` worktree with `git fetch origin` then `git merge origin/develop`. No release,
-## deployment, certification, or version bump is included.`
+## runtime value. Verification includes 23-file Vitest, both TypeScript configs,
+## artunused/artaudit/coverage/speccheck/override controls, evidence-packager and browser selftests,
+## real-browser smoke/perf, and diff-check. Remaining canonical CF1 hierarchy, legacy full-expedition
+## tutorial snapshot restore, CFB parent preservation, Compendium virtualization, Pixi texture lifecycle,
+## HD planet replacement, epoch-edge/visibility policy, living rigs and biome scenes are explicitly
+## deferred. After merge, Anthropic/Claude Code synchronizes only from a clean anthropic/windows
+## worktree with git fetch origin then git merge origin/develop. No release, deployment,
+## certification, or version bump is included.`
 ## Other side: Anthropic/Claude Code on Windows, branch anthropic/windows, need not be opened now.
 ## It does not have this batch until that draft PR merges. At its next coding batch after the merge,
 ## and only from a clean worktree, run `git fetch origin` then `git merge origin/develop`; if dirty,
 ## do not pull/switch/merge first, and never copy files manually between worktrees.
-## Release status: `develop` includes merged PR #10 at `61cc058`; this batch reaches `develop` only
-## through the reviewed draft PR above. `main` and the live site are unchanged. No release,
-## deployment, certification, or version bump is included.
+## Release status: PR #11 is open, draft, unmerged. `develop` remains at merged PR #10 (`61cc058`)
+## and receives this batch only through a reviewed normal merge of PR #11. `main` and the live site
+## are unchanged. No release, deployment, certification, or version bump is included.

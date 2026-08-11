@@ -5,7 +5,7 @@
    forwards input into the tested state machines.
 
    Live today: the full descent ladder with zoom-driven transitions ·
-   survey-first input (tap = describePick card, double-tap dives) · the
+   survey-first input (tap = describePick card, explicit card action = dive) · the
    charter/Ascent gates (toasting the build that opens the ring) · wormhole
    travel (reach-clamped) · comets/visitor/supernovae/moon terminators/cloud
    deck · THE REAL SAVE LOOP (importSaveV2 ⇄ exportSaveV2 over IndexedDB,
@@ -187,12 +187,21 @@ card.className = 'glass';
 document.body.appendChild(card);
 let lastCard: Descriptor | null = null;
 let cardCtx: { p: PlanetNode; starSeed: number } | null = null;
-function showSurvey(d: Descriptor, actionsHtml?: string): void {
+interface CardTravelAction { label: 'Enter galaxy' | 'Enter system'; run: () => void; }
+let cardTravelAction: CardTravelAction | null = null;
+function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTravelAction | null = null): void {
+  cardTravelAction = travelAction;
   if (actionsHtml === undefined) cardCtx = null;
   lastCard = d;
+  const travelHtml = travelAction
+    ? '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px">' +
+      `<button data-act="travel" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">${esc(travelAction.label)}</button>` +
+      '</div>'
+    : '';
   card.innerHTML =
     `<h2 data-sel="title" style="margin:0 0 2px;font-size:17px;color:#f4f8ff">${esc(d.title)}</h2>` +
     `<div data-sel="sub" style="color:#8fa3c4;margin-bottom:10px">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
+    travelHtml +
     (actionsHtml || '') +   /* the card's ACTION ROW (Land · +Atlas · share) — buttons are trusted markup, never save text */
     (d.rows as Array<[string, string, string?]>).map(([k, v, cls]) =>
       `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" style="margin:4px 0"><span style="color:#8fa3c4">${esc(k)}</span><br>${esc(v)}</div>`).join('');
@@ -204,6 +213,10 @@ function hideSurvey(): void {
   card.style.display = 'none';
   document.body.classList.remove('card-open');
   document.getElementById('docksurvey')!.classList.remove('on');
+}
+function invalidateSurveyTravel(): void {
+  cardTravelAction = null;
+  card.querySelector('[data-act="travel"]')?.remove();
 }
 
 /* ---- the save-import sheet (Phase 4's second UI component; GATE C's front
@@ -240,6 +253,7 @@ document.getElementById('docksurvey')!.addEventListener('click', () => {
   }
   if (card.style.display === 'none' && card.innerHTML) {
     card.style.display = 'block';
+    document.body.classList.add('card-open');
     document.getElementById('docksurvey')!.classList.add('on');
   } else hideSurvey();
 });
@@ -609,11 +623,11 @@ function hudText(): void {
   updateChips();
   if (nav.mode === 'universe') {
     setTrail(['Cosmos']);
-    setHint('tap a galaxy to survey · tap twice or zoom in to dive');
+    setHint('tap a galaxy to survey · Enter on its card or zoom in to dive');
     updateUniverseCtx();
   } else if (nav.mode === 'galaxy' && nav.gal) {
     setTrail(['Cosmos', galaxyName(nav.gal.seed)]);
-    setHint('tap a star to survey · tap twice to dive · zoom out to rise');
+    setHint('tap a star to survey · Enter on its card · zoom out to rise');
     const gs2 = galaxyStats(nav.gal as never) as { stars: number; planets: number };
     setCtx('every dot is one of ~' + fmtBig(gs2.stars) + ' stars sharing ~' + fmtBig(gs2.planets) + ' worlds — zoom deeper and more keep resolving');
   } else if (nav.mode === 'system' && nav.gal && nav.star) {
@@ -784,18 +798,11 @@ interface ScreenScaled { obj: Container; f: number; }   /* scale = f / cam.z */
 const galaxySpins: Array<{ spr: Sprite; base: number }> = [];
 let uniNodes: GalaxyNode[] = [];   /* cached universe composition — checkTransitions runs per tick */
 let uniCell: { ux: number; uy: number } | null = null;   /* the streamed window's anchor cell */
-/* SURVEY-FIRST (the game's own flow): a tap SURVEYS — the card opens with a
-   sonar ping; travel is zooming in (checkTransitions) or a quick second tap
-   on the same thing. No silent teleports. */
-let lastTap: { key: string; t: number } = { key: '', t: -1e9 };
-function tapTwice(key: string): boolean {
-  const now = performance.now();
-  const twice = lastTap.key === key && now - lastTap.t < 400;
-  lastTap = twice ? { key: '', t: -1e9 } : { key, t: now };
-  return twice;
-}
-function surveyCard(d: unknown): void {
-  if (d) { showSurvey(d as Descriptor); playSurveyPing(); }
+/* SURVEY-FIRST: one tap opens the typed card; its explicit 44px travel
+   action performs the dive. The card can cover the body on a phone, so
+   navigation must never depend on a second canvas tap or a timing window. */
+function surveyCard(d: unknown, travelAction: CardTravelAction | null = null): void {
+  if (d) { showSurvey(d as Descriptor, undefined, travelAction); playSurveyPing(); }
 }
 let galStars: StarEntry[] = [];
 let galTwinkle: StarEntry[] = [];
@@ -821,6 +828,7 @@ const zCut = (): number => {
 };
 let fineLayer: Container | null = null;
 let fineWin: { fx0: number; fy0: number; fx1: number; fy1: number } | null = null;
+let fineStarTargets: Array<{ spr: Sprite; star: { seed: number; x: number; y: number } }> = [];
 let lastZBucket = 0;
 const zBucket = (): number => Math.round(Math.log(cam.z) / Math.log(1.15));
 interface Orbiter { c: Container; kind: 'planet' | 'moon' | 'rock' | 'dwarf' | 'beam'; orb: number; sp?: number; a0?: number; mul?: number; pOrb?: number; face?: Sprite[]; cloud?: { wrap: Container; a: Sprite; b: Sprite; pr: number }; }
@@ -841,6 +849,7 @@ function clearWorld(): void {
   galaxySpins.length = 0;
   galStars = []; galTwinkle = []; screenScaled = [];
   solMark = null; bhDisc = null; fineLayer = null; fineWin = null;
+  fineStarTargets = [];
   orbiters = []; sysLabels = []; sysStar = null; starSurfSpr = null; surfClouds = null; chartLayer = null;
   galAnims = []; wormPos = null;
   uniLabels = []; uniPulse = []; charterFx = null; webLayer = null; fogFx = [];
@@ -891,8 +900,10 @@ function drawUniverse(): void {
   for (const g of uniNodes) {
     const sz = g.size;
     const onTap = (): void => {
-      if (tapTwice('g' + g.seed)) descendGalaxy(g);
-      else surveyCard(describePick({ kind: g.quasar ? 'quasar' : (g.radio ? 'radio' : 'galaxy'), data: g } as never));
+      surveyCard(
+        describePick({ kind: g.quasar ? 'quasar' : (g.radio ? 'radio' : 'galaxy'), data: g } as never),
+        { label: 'Enter galaxy', run: () => descendGalaxy(g) },
+      );
     };
     let label: [string, string, number] | null = null;   /* text, color, gate */
     if (g.quasar) {
@@ -1101,8 +1112,10 @@ function drawGalaxy(galSeed: number): void {
       spr.eventMode = 'static';
       spr.cursor = 'pointer';
       spr.on('pointertap', () => {
-        if (tapTwice('s' + s.seed)) descendSystem({ seed: s.seed, x: s.x, y: s.y });
-        else surveyCard(describePick({ kind: 'star', data: s } as never));
+        const star = { seed: s.seed, x: s.x, y: s.y };
+        surveyCard(describePick({ kind: 'star', data: s } as never), {
+          label: 'Enter system', run: () => descendSystem(star),
+        });
       });
       world.addChild(spr);
       const entry = { spr, s: s.s, seed: s.seed };
@@ -1204,6 +1217,7 @@ function updateFineLayer(force: boolean): void {
   const on = cam.z > minWH() / 260;
   if (!on) {
     if (fineLayer) { world.removeChild(fineLayer); fineLayer.destroy({ children: true }); fineLayer = null; fineWin = null; }
+    fineStarTargets = [];
     return;
   }
   const W = app.screen.width, H = app.screen.height;   /* logical CSS px — renderer.width/resolution DOUBLE-divided on DPR-3 phones (the off-center-scene bug the perf probe caught) */
@@ -1218,6 +1232,7 @@ function updateFineLayer(force: boolean): void {
   if (!force && fineWin && win.fx0 === fineWin.fx0 && win.fy0 === fineWin.fy0 && win.fx1 === fineWin.fx1 && win.fy1 === fineWin.fy1) return;
   if (fineLayer) { world.removeChild(fineLayer); fineLayer.destroy({ children: true }); }
   fineLayer = new Container();
+  fineStarTargets = [];
   const prof = galaxyProfile(nav.gal.seed) as Record<string, unknown>;
   const bR = baseR();
   for (let fx = win.fx0; fx <= win.fx1; fx++) for (let fy = win.fy0; fy <= win.fy1; fy++) {
@@ -1229,11 +1244,17 @@ function updateFineLayer(force: boolean): void {
       spr.width = D; spr.height = D;
       spr.position.set(s.x, s.y);
       spr.cullable = true;
-      /* fine stars are DIVEABLE, same as the game's picks (main.js 4193) */
+      /* Fine stars obey the same survey-first card action as base stars. */
       spr.eventMode = 'static';
       spr.cursor = 'pointer';
-      spr.on('pointertap', () => descendSystem({ seed: s.seed, x: s.x, y: s.y }));
+      spr.on('pointertap', () => {
+        const star = { seed: s.seed, x: s.x, y: s.y };
+        surveyCard(describePick({ kind: 'star', data: s } as never), {
+          label: 'Enter system', run: () => descendSystem(star),
+        });
+      });
       fineLayer.addChild(spr);
+      fineStarTargets.push({ spr, star: { seed: s.seed, x: s.x, y: s.y } });
     }
   }
   /* under the black hole disc, over the base stars */
@@ -1534,6 +1555,7 @@ function rebuildSystemHD(): void {
 
 /* ---- navigation (every transition through the tested state machine) ---- */
 function rerender(): void {
+  invalidateSurveyTravel();
   hideSurvey();
   if (nav.mode !== 'surface') sideEl.style.display = 'none';
   stSeam.gal = nav.gal; stSeam.star = nav.star;   /* the describePick seam stays true */
@@ -1729,7 +1751,13 @@ card.addEventListener('click', (e) => {
   const act = (e.target as HTMLElement).closest('[data-act]');
   if (!act) return;
   const a = (act as HTMLElement).dataset.act;
-  if (a === 'landcta') doLand();
+  if (a === 'travel') {
+    const action = cardTravelAction;
+    if (!action || card.style.display === 'none') return;
+    cardTravelAction = null;
+    (act as HTMLButtonElement).disabled = true;
+    action.run();
+  } else if (a === 'landcta') doLand();
   else if (a === 'add') addToAtlas();
   else if (a === 'share') {
     const code = cardShareCode();
@@ -2049,7 +2077,10 @@ async function loadSave(): Promise<void> {
 
 /* ---- boot ---- */
 (async () => {
-  await app.init({ background: 0x05070d, resizeTo: window, antialias: true, resolution: DPR });
+  /* autoDensity keeps the DPR-scaled backing store at CSS viewport size.
+     Without it a DPR-2 phone displayed a 780px canvas inside 390 CSS px,
+     halving Pixi hit coordinates and moving the home galaxy offscreen. */
+  await app.init({ background: 0x05070d, resizeTo: window, antialias: true, resolution: DPR, autoDensity: true });
   document.body.appendChild(app.canvas);
   /* THE BACKDROP (drawBackdrop, main.js 3560 — verbatim recipe): the seeded
      900-star field under a deep radial wash, rebuilt per viewport, screen-
@@ -2092,6 +2123,8 @@ async function loadSave(): Promise<void> {
     api: {
       state: () => ({
         mode: nav.mode, gal: nav.gal?.seed ?? null, star: nav.star?.seed ?? null,
+        galX: nav.gal?.x ?? null, galY: nav.gal?.y ?? null,
+        starX: nav.star?.x ?? null, starY: nav.star?.y ?? null,
         fine: !!fineLayer, solVisible: !!(solMark && solMark.visible),
         epoch: epochClock.current(),
         cardOpen: card.style.display !== 'none',
@@ -2116,6 +2149,33 @@ async function loadSave(): Promise<void> {
       importBlob,   /* Gate C's front door, drivable by the smoke */
       encodeHere,   /* the share-code round trip, drivable by the smoke */
       cardShareCode,
+      fineStarTarget: () => {
+        for (const target of fineStarTargets) {
+          const point = world.toGlobal({ x: target.star.x, y: target.star.y });
+          if (point.x < 0 || point.y < 0 || point.x > innerWidth || point.y > innerHeight) continue;
+          if (document.elementFromPoint(point.x, point.y) !== app.canvas) continue;
+          const bounds = target.spr.getBounds();
+          return { ...target.star, screenX: point.x, screenY: point.y, width: bounds.width, height: bounds.height };
+        }
+        return null;
+      },
+      fineStarProbe: () => {
+        let visible = 0;
+        let canvasHits = 0;
+        const samples: Array<{ x: number; y: number; hit: string }> = [];
+        for (const target of fineStarTargets) {
+          const point = world.toGlobal({ x: target.star.x, y: target.star.y });
+          if (point.x < 0 || point.y < 0 || point.x > innerWidth || point.y > innerHeight) continue;
+          visible++;
+          const hit = document.elementFromPoint(point.x, point.y);
+          if (hit === app.canvas) canvasHits++;
+          if (samples.length < 4) samples.push({
+            x: point.x, y: point.y,
+            hit: hit === app.canvas ? 'canvas' : (hit?.id || hit?.tagName.toLowerCase() || 'none'),
+          });
+        }
+        return { total: fineStarTargets.length, visible, canvasHits, samples };
+      },
       descendGalaxy: (seed: number) => {
         const g = uniNodes.find((n) => n.seed === seed);
         if (!g) return false;

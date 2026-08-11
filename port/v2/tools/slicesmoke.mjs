@@ -3,7 +3,8 @@
 
    PROVES what vite build cannot: the bundle BOOTS (Pixi WebGL init, the
    verbatim painters bake their canvases, IndexedDB opens), renders the
-   painterly universe, and DESCENDS into the Milky Way on a real click —
+   painterly universe, and DESCENDS into the Milky Way through the real
+   survey-card action —
    with zero console errors or uncaught exceptions. Saves screenshots as
    the visual record (the thing a human judges; a smoke can only prove it
    isn't blank).
@@ -28,6 +29,14 @@ const withCodeName = (code, name) => {
   return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
 };
 const codeName = (code) => JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8')).n || null;
+const VETERAN_RAW = JSON.stringify(JSON.parse(fs.readFileSync(
+  path.join(here, '..', '..', 'baseline-v1.8.9', 'save-fixtures.json'), 'utf8',
+)).inputs.veteran_rich);
+const VETERAN_ARRAY_RAW = (() => {
+  const save = JSON.parse(VETERAN_RAW);
+  save.items = [...(Array.isArray(save.items) ? save.items : []), ['array', 1]];
+  return JSON.stringify(save);
+})();
 
 /* A smoke that reads a stale build can pass for source that no longer
    exists—the species-audit failure class. Build unconditionally, then drive
@@ -50,6 +59,9 @@ const URL0 = 'http://127.0.0.1:' + server.address().port + '/';
 const server2 = http.createServer(server.listeners('request')[0]);
 await new Promise((r) => server2.listen(0, '127.0.0.1', r));
 const URL2 = 'http://127.0.0.1:' + server2.address().port + '/';   /* different origin ⇒ fresh IndexedDB ⇒ a NEW expedition */
+const server3 = http.createServer(server.listeners('request')[0]);
+await new Promise((r) => server3.listen(0, '127.0.0.1', r));
+const URL3 = 'http://127.0.0.1:' + server3.address().port + '/';   /* isolated fresh-phone navigation outcome */
 
 const events = [];
 let browser;
@@ -61,7 +73,7 @@ try {
     onEvent: (event) => events.push(event),
   });
 } catch (error) {
-  server.close(); server2.close();
+  server.close(); server2.close(); server3.close();
   throw error;
 }
 const send = browser.send;
@@ -171,8 +183,9 @@ try {
   const shot1 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-universe.png'), Buffer.from(shot1.data, 'base64'));
 
-  /* 3. SURVEY-FIRST (the game's flow): ONE tap on the Milky Way opens its
-     survey card — it must NOT teleport; a quick second tap dives. */
+  /* 3. SURVEY-FIRST: ONE tap on the Milky Way opens its card and must not
+     teleport. The card's explicit travel action performs the dive; this is
+     reachable even when the phone card covers the canvas body. */
   const cx = 1280 / 2 + 90, cy = 800 / 2 - 60;
   const click = async () => {
     for (const type of ['mousePressed', 'mouseReleased']) {
@@ -185,30 +198,54 @@ try {
   if (st1.mode !== 'universe') fails.push('a SINGLE tap descended (survey-first broken): ' + st1.mode);
   if (!st1.cardOpen || !st1.cardTitle) fails.push('single tap did not open the galaxy survey card: ' + JSON.stringify({ open: st1.cardOpen, title: st1.cardTitle }));
   if (typeof st1.epoch !== 'number') fails.push('COSMIC_EPOCH clock not running: ' + JSON.stringify(st1.epoch));
-  /* Close the already-open card, then ask Chromium to synthesize the real
-     two-tap gesture inside the browser process. Separate CDP mouse commands
-     can be delayed by a slow CI host beyond tapTwice's 400 ms window. */
+  const travelCheck = `(()=>{ const button=document.querySelector('#survey [data-act=travel]');
+    if(!button) return {ok:false,why:'missing'}; const b=button.getBoundingClientRect();
+    const hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
+    return {ok:b.width>0&&b.height>=44&&!!hit&&button.contains(hit),label:button.textContent,
+      x:(b.left+b.right)/2,y:(b.top+b.bottom)/2,h:b.height}; })()`;
+  const travel1 = await evalIn(travelCheck);
+  if (!travel1.ok || travel1.label !== 'Enter galaxy') {
+    fails.push('galaxy card travel action is missing, undersized, or buried: ' + JSON.stringify(travel1));
+  }
+  /* Discriminating hit-test control: make the action click-through and
+     require the same rendered-outcome probe to turn red, then restore it. */
+  if (travel1.ok) {
+    const travelCtl = await evalIn(`(()=>{ const button=document.querySelector('#survey [data-act=travel]');
+      const prior=button.style.pointerEvents; button.style.pointerEvents='none'; const result=${travelCheck};
+      button.style.pointerEvents=prior; return result; })()`);
+    if (travelCtl.ok) fails.push('TRAVEL ACTION CONTROL FAILED — injected click-through stayed green: ' + JSON.stringify(travelCtl));
+  }
+  /* Escape hides but does not invalidate the current card. Reopening it from
+     the Survey dock must keep the explicit action usable, and a second
+     Escape must be observed before the next body interaction. */
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
   await sleep(120);
   const closedBeforeDive = await evalIn(`window.__CF_SLICE__.api.state().cardOpen`);
-  if (closedBeforeDive) fails.push('Escape did not close the galaxy card before the dive pair');
-  await evalIn(`(()=>{ const canvas=document.querySelector('canvas'); window.__cfDivePointerUps=[];
-    const record=(event)=>window.__cfDivePointerUps.push(event.timeStamp); window.__cfDivePointerRecord=record;
-    canvas.addEventListener('pointerup',record,true); return true; })()`);
-  await send('Input.synthesizeTapGesture', {
-    x: cx, y: cy, duration: 50, tapCount: 2, gestureSourceType: 'touch',
-  }, sess);
+  if (closedBeforeDive) fails.push('Escape did not close the galaxy card before dock reopen');
+  await evalIn(`(()=>{ document.getElementById('docksurvey').click(); return true; })()`);
+  const reopened = await evalIn(`({state:window.__CF_SLICE__.api.state(),travel:${travelCheck},cardOwnsChrome:document.body.classList.contains('card-open')})`);
+  if (reopened.state.mode !== 'universe' || !reopened.state.cardOpen || !reopened.travel.ok || !reopened.cardOwnsChrome) {
+    fails.push('Survey dock did not reopen the same usable galaxy action: ' + JSON.stringify(reopened));
+  }
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
+  await sleep(120);
+  const closedAgain = await evalIn(`window.__CF_SLICE__.api.state().cardOpen`);
+  if (closedAgain) fails.push('second Escape did not close the reopened galaxy card');
+  await click();
+  const travel2 = await evalIn(travelCheck);
+  if (!travel2.ok) fails.push('second body survey did not restore a usable galaxy action: ' + JSON.stringify(travel2));
+  if (travel2.ok) {
+    await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: travel2.x, y: travel2.y, button: 'left', clickCount: 1 }, sess);
+    await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: travel2.x, y: travel2.y, button: 'left', clickCount: 1 }, sess);
+  }
   await sleep(2500);   /* per-seed 512px painterly bake + star field */
   const st2 = await evalIn(`window.__CF_SLICE__.api.state()`);
-  const divePointerUps = await evalIn(`(()=>{ const canvas=document.querySelector('canvas'), times=window.__cfDivePointerUps||[];
-    if(window.__cfDivePointerRecord) canvas.removeEventListener('pointerup',window.__cfDivePointerRecord,true);
-    delete window.__cfDivePointerRecord; return times; })()`);
-  if (divePointerUps.length !== 2) fails.push('double-tap input did not deliver two real canvas pointerups: ' + JSON.stringify(divePointerUps));
-  else if (!(divePointerUps[1] > divePointerUps[0] && divePointerUps[1] - divePointerUps[0] < 400)) {
-    fails.push('double-tap pointerups did not land inside the game timing window: ' + JSON.stringify(divePointerUps));
+  if (st2.mode !== 'galaxy' || st2.gal !== 999 || st2.galX !== 90 || st2.galY !== -60) {
+    fails.push('galaxy card action did not enter the exact Milky Way node: '
+      + JSON.stringify([st2.mode, st2.gal, st2.galX, st2.galY]));
   }
-  if (st2.mode !== 'galaxy' || st2.gal !== 999) fails.push('double-tap descent into the Milky Way did not happen: ' + JSON.stringify([st2.mode, st2.gal]));
   if (!/Milky Way/.test(st2.trail)) fails.push('galaxy trail missing Milky Way: ' + JSON.stringify(st2.trail));
   if (!/stars sharing/.test(st2.ctx)) fails.push('galaxy caption (galaxyStats) missing: ' + JSON.stringify(st2.ctx));
   const shot2 = await send('Page.captureScreenshot', { format: 'png' }, sess);
@@ -228,14 +265,27 @@ try {
   const perf = await evalIn(`window.__CF_SLICE__.api.state().galaxyBuildMs`);
   console.log('  (galaxy rebuild: ' + (typeof perf === 'number' ? perf.toFixed(0) : '?') + 'ms)');
 
-  /* 3b. THE FULL GATE D DESCENT: into Sol, land on EARTH, the survey card speaks */
-  const landed = await evalIn(`(()=>{ const S=window.__CF_SLICE__; if(!S||!S.api) return 'no api';
-    S.api.descendSystem({ seed: 424242, x: 0, y: 0 });
-    return 'ok'; })()`);
-  if (landed !== 'ok') fails.push('descendSystem: ' + landed);
+  /* 3b. BASE-STAR SURVEY-FIRST: drive the actual Sol sprite, prove one
+     pointertap cannot teleport, then enter through the actual card action. */
+  const solPoint = await evalIn(`(()=>{ const p=window.__CF_SLICE__.world.toGlobal({x:560,y:170}); return {x:p.x,y:p.y}; })()`);
+  await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: solPoint.x, y: solPoint.y, button: 'left', clickCount: 1 }, sess);
+  await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: solPoint.x, y: solPoint.y, button: 'left', clickCount: 1 }, sess);
+  await sleep(300);
+  const solSurvey = await evalIn(`({state:window.__CF_SLICE__.api.state(),travel:${travelCheck}})`);
+  if (solSurvey.state.mode !== 'galaxy' || solSurvey.state.star !== null || !solSurvey.state.cardOpen
+    || !solSurvey.travel.ok || solSurvey.travel.label !== 'Enter system') {
+    fails.push('BASE STAR SURVEY-FIRST broken — one Sol tap teleported or lacked its action: ' + JSON.stringify(solSurvey));
+  }
+  if (solSurvey.travel.ok) {
+    await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: solSurvey.travel.x, y: solSurvey.travel.y, button: 'left', clickCount: 1 }, sess);
+    await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: solSurvey.travel.x, y: solSurvey.travel.y, button: 'left', clickCount: 1 }, sess);
+  }
   await sleep(1800);   /* eight painterly surfaces bake */
   const stSys = await evalIn(`window.__CF_SLICE__.api.state()`);
-  if (stSys.mode !== 'system' || stSys.star !== 424242) fails.push('Sol descent failed: ' + JSON.stringify([stSys.mode, stSys.star]));
+  if (stSys.mode !== 'system' || stSys.star !== 424242 || stSys.starX !== 560 || stSys.starY !== 170) {
+    fails.push('Sol card action did not enter the exact base-star node: '
+      + JSON.stringify([stSys.mode, stSys.star, stSys.starX, stSys.starY]));
+  }
   if (!stSys.trail.includes('Sun (Sol)')) fails.push('system trail missing Sun (Sol): ' + JSON.stringify(stSys.trail));
   if (!/8 worlds orbit Sol/.test(stSys.ctx)) fails.push('Sol caption wrong: ' + JSON.stringify(stSys.ctx));
   /* the DOCK press must LAND (simrun-dom law): charts OFF by default
@@ -465,7 +515,7 @@ try {
   /* 4c. GATE C's FRONT DOOR, rehearsed with the veteran fixture: the import
      sheet's own path (api.importBlob = the button's handler) must validate,
      store VERBATIM, and reboot into the veteran — name, stardust and view. */
-  const vrRaw = JSON.stringify(JSON.parse(fs.readFileSync(path.join(here, '..', '..', 'baseline-v1.8.9', 'save-fixtures.json'), 'utf8')).inputs.veteran_rich);
+  const vrRaw = VETERAN_RAW;
   /* a garbage blob must be REFUSED with nothing stored */
   const refuse = await evalIn(`window.__CF_SLICE__.api.importBlob('{"not":"a save"' )`).catch(() => 'navigated');
   if (refuse === null || refuse === 'navigated') fails.push('importBlob accepted garbage (or reloaded on it)');
@@ -539,10 +589,23 @@ try {
     if (r.exceptionDetails) throw new Error('phone eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
     return r.result.value;
   };
-  const phBoot = await evalPh(`({ canvas: !!document.querySelector('canvas'), name: window.__CF_SLICE__ ? window.__CF_SLICE__.api.state().save.name : null, w: innerWidth })`);
+  const phoneCanvasCheck = `(()=>{ const bad=[],canvas=document.querySelector('canvas'),S=window.__CF_SLICE__;
+    if(!canvas||!S) return ['canvas/app missing']; const b=canvas.getBoundingClientRect();
+    if(Math.abs(b.width-innerWidth)>1||Math.abs(b.height-innerHeight)>1) bad.push('canvas CSS box is not the viewport: '+JSON.stringify([b.width,b.height,innerWidth,innerHeight]));
+    if(Math.abs(S.app.screen.width-innerWidth)>1||Math.abs(S.app.screen.height-innerHeight)>1) bad.push('Pixi logical screen is not the viewport');
+    if(!(canvas.width>b.width&&canvas.height>b.height)) bad.push('phone backing store is not DPR-scaled');
+    return bad; })()`;
+  const phBoot = await evalPh(`({ canvas: !!document.querySelector('canvas'), name: window.__CF_SLICE__ ? window.__CF_SLICE__.api.state().save.name : null, w: innerWidth, density:${phoneCanvasCheck} })`);
   if (!phBoot.canvas) fails.push('PHONE: no canvas');
   if (phBoot.w !== 390) fails.push('PHONE: viewport not 390: ' + phBoot.w);
   if (phBoot.name !== 'Dakk') fails.push('PHONE: the veteran save did not follow across targets (IndexedDB): ' + JSON.stringify(phBoot.name));
+  if (phBoot.density.length) fails.push('PHONE CANVAS DENSITY drift: ' + phBoot.density.join(' · '));
+  const phDensityCtl = await evalPh(`(()=>{ const canvas=document.querySelector('canvas'),priorW=canvas.style.width,priorH=canvas.style.height;
+    canvas.style.width=canvas.width+'px'; canvas.style.height=canvas.height+'px'; const bad=${phoneCanvasCheck};
+    canvas.style.width=priorW; canvas.style.height=priorH; return bad; })()`);
+  if (!phDensityCtl.some((finding) => finding.startsWith('canvas CSS box is not the viewport'))) {
+    fails.push('PHONE CANVAS DENSITY CONTROL FAILED — injected DPR-sized CSS canvas stayed green: ' + JSON.stringify(phDensityCtl));
+  }
   /* the phone golden: the FULL geometry contract runs here too — the
      player-chip/search overlap hid in a phone-only branch the first time */
   const phGeo = await evalPh(geoCheck);
@@ -609,6 +672,153 @@ try {
   if (!(z1 > z0 * 1.15)) fails.push('PHONE: pinch-out did not zoom (z ' + z0 + ' → ' + z1 + ')');
   const shotPh = await send('Page.captureScreenshot', { format: 'png' }, ph);
   fs.writeFileSync(path.join(OUT, 'slice-phone.png'), Buffer.from(shotPh.data, 'base64'));
+
+  /* 4d1. MOBILE SURVEY DESCENT: the fixed survey card can cover the body
+     that opened it, so the canonical dive is its explicit 44px action. Drive
+     both the body and that button with real browser touch input at 390×844. */
+  const tNav = await send('Target.createTarget', { url: 'about:blank' });
+  const aNav = await send('Target.attachToTarget', { targetId: tNav.targetId, flatten: true });
+  const navPh = aNav.sessionId;
+  await send('Runtime.enable', {}, navPh);
+  await send('Page.enable', {}, navPh);
+  await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true }, navPh);
+  await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 }, navPh);
+  await send('Page.navigate', { url: URL3 }, navPh);
+  await sleep(3000);
+  const evalNavPh = async (expr) => {
+    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, navPh);
+    if (r.exceptionDetails) throw new Error('phone navigation eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
+    return r.result.value;
+  };
+  await evalNavPh(`(()=>{ document.querySelector('[data-sel=tutskip]').click(); return true; })()`);
+  await sleep(300);
+  const phoneGalaxyPoint = await evalNavPh(`(()=>{ const S=window.__CF_SLICE__;
+    const p=S.world.toGlobal({x:90,y:-60}); return {x:p.x,y:p.y}; })()`);
+  const phoneGalaxyX = phoneGalaxyPoint.x, phoneGalaxyY = phoneGalaxyPoint.y;
+  const phoneBodyProbe = await evalNavPh(`(()=>{ const S=window.__CF_SLICE__,canvas=document.querySelector('canvas');
+    const el=document.elementFromPoint(${phoneGalaxyX},${phoneGalaxyY});
+    window.__cfPhoneBodyEvents=[];
+    for(const type of ['pointerdown','pointerup','pointercancel']) canvas.addEventListener(type,(event)=>{
+      window.__cfPhoneBodyEvents.push({type,eventX:event.clientX,eventY:event.clientY,pointerType:event.pointerType});
+    },{once:true,capture:true});
+    return {point:{x:${phoneGalaxyX},y:${phoneGalaxyY}},element:el&&[el.tagName,el.id,el.className],
+      canvasPointer:getComputedStyle(canvas).pointerEvents,
+      training:S.api.state().tutActive}; })()`);
+  const touchNav = async (x, y) => {
+    await send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y, id: 1 }] }, navPh);
+    await sleep(80);
+    await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }, navPh);
+  };
+  await touchNav(phoneGalaxyX, phoneGalaxyY);
+  await sleep(400);
+  const phoneTravelCheck = `(()=>{ const state=window.__CF_SLICE__.api.state();
+    const button=document.querySelector('#survey [data-act=travel]');
+    if(!button) return {state,ok:false,why:'missing',bodyEvents:window.__cfPhoneBodyEvents||[]}; const b=button.getBoundingClientRect();
+    const hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
+    return {state,ok:b.width>0&&b.height>=44&&!!hit&&button.contains(hit),label:button.textContent,
+      x:(b.left+b.right)/2,y:(b.top+b.bottom)/2,h:b.height,
+      bodyHit:(document.elementFromPoint(${phoneGalaxyX},${phoneGalaxyY})||{}).id||''}; })()`;
+  const phoneTravel = await evalNavPh(phoneTravelCheck);
+  if (phoneTravel.state.mode !== 'universe' || !phoneTravel.state.cardOpen || !phoneTravel.ok
+    || phoneTravel.label !== 'Enter galaxy') {
+    fails.push('PHONE TRAVEL: one touch did not expose a reachable galaxy action without teleporting: '
+      + JSON.stringify({ phoneBodyProbe, phoneTravel }));
+  }
+  if (phoneTravel.ok) {
+    const phoneTravelCtl = await evalNavPh(`(()=>{ const button=document.querySelector('#survey [data-act=travel]');
+      const prior=button.style.pointerEvents; button.style.pointerEvents='none'; const result=${phoneTravelCheck};
+      button.style.pointerEvents=prior; return result; })()`);
+    if (phoneTravelCtl.ok) fails.push('PHONE TRAVEL CONTROL FAILED — injected buried action stayed green: ' + JSON.stringify(phoneTravelCtl));
+  }
+  if (phoneTravel.ok) {
+    await touchNav(phoneTravel.x, phoneTravel.y);
+  }
+  await sleep(2500);
+  const phoneDive = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+  if (phoneDive.mode !== 'galaxy' || phoneDive.gal !== 999 || phoneDive.galX !== 90 || phoneDive.galY !== -60) {
+    fails.push('PHONE TRAVEL: touching the visible card action did not enter the exact Milky Way node: '
+      + JSON.stringify([phoneDive.mode, phoneDive.gal, phoneDive.galX, phoneDive.galY]));
+  }
+
+  /* 4d0-charter. Drive a REAL non-Sol fine-star body and card action while
+     this phone origin is still stage 0. The action must flow through the
+     Charter gate, remain in the galaxy, and name the required build. This
+     catches a handler that teleports directly around descendSystem(). */
+  await evalNavPh(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=0; S.camT.y=0; S.camT.z=2;
+    S.cam.x=0; S.cam.y=0; S.cam.z=2; return true; })()`);
+  await sleep(1600);
+  const blockedFineTarget = await evalNavPh(`window.__CF_SLICE__.api.fineStarTarget()`);
+  const blockedFineProbe = await evalNavPh(`window.__CF_SLICE__.api.fineStarProbe()`);
+  if (!blockedFineTarget) {
+    fails.push('CHARTER ACTION SETUP found no real fine-star target: '
+      + JSON.stringify({ blockedFineTarget, blockedFineProbe }));
+  }
+  if (blockedFineTarget) await touchNav(blockedFineTarget.screenX, blockedFineTarget.screenY);
+  await sleep(400);
+  const blockedFineSurvey = await evalNavPh(`({state:window.__CF_SLICE__.api.state(),travel:${travelCheck}})`);
+  if (!blockedFineTarget || blockedFineSurvey.state.mode !== 'galaxy'
+    || !blockedFineSurvey.state.cardOpen || !blockedFineSurvey.travel.ok
+    || blockedFineSurvey.travel.label !== 'Enter system') {
+    fails.push('CHARTER ACTION SETUP did not expose the real fine-star action without teleporting: '
+      + JSON.stringify({ blockedFineTarget, blockedFineSurvey }));
+  }
+  if (blockedFineSurvey.travel.ok) await touchNav(blockedFineSurvey.travel.x, blockedFineSurvey.travel.y);
+  await sleep(350);
+  const blockedFineDive = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+  if (blockedFineDive.mode !== 'galaxy' || blockedFineDive.star !== null || blockedFineDive.stage !== 0
+    || !blockedFineDive.toastOn || !/Charter/.test(blockedFineDive.toastText)) {
+    fails.push('CHARTER ACTION BYPASS — a real stage-0 fine-star card action was not blocked: '
+      + JSON.stringify(blockedFineDive));
+  }
+
+  /* 4d1-fine. Import the stage-2 veteran on this isolated origin, rise back
+     to the home galaxy, and drive one deterministic visible fine star with
+     real touch. This is the negative control for the old one-tap teleport. */
+  try { await evalNavPh(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(VETERAN_ARRAY_RAW)})`); }
+  catch { /* successful import reloads and destroys the evaluation context */ }
+  await sleep(2800);
+  for (let i = 0; i < 2; i++) {
+    await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, navPh);
+    await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, navPh);
+    await sleep(800);
+  }
+  const fineGalaxy = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+  if (fineGalaxy.mode !== 'galaxy' || fineGalaxy.gal !== 999 || fineGalaxy.stage < 2) {
+    fails.push('FINE STAR SETUP did not reach a veteran-chartered Milky Way: '
+      + JSON.stringify([fineGalaxy.mode, fineGalaxy.gal, fineGalaxy.stage]));
+  }
+  await evalNavPh(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=0; S.camT.y=0; S.camT.z=2;
+    S.cam.x=0; S.cam.y=0; S.cam.z=2; return true; })()`);
+  await sleep(1600);
+  const fineTarget = await evalNavPh(`window.__CF_SLICE__.api.fineStarTarget()`);
+  const fineProbe = await evalNavPh(`window.__CF_SLICE__.api.fineStarProbe()`);
+  if (!fineTarget || !(fineTarget.width > 0) || !(fineTarget.height > 0)) {
+    fails.push('FINE STAR SETUP found no visible hit-testable deterministic target: '
+      + JSON.stringify({ fineTarget, fineProbe }));
+  }
+  if (fineTarget) await touchNav(fineTarget.screenX, fineTarget.screenY);
+  await sleep(400);
+  const fineSurvey = await evalNavPh(`({state:window.__CF_SLICE__.api.state(),travel:${travelCheck}})`);
+  if (!fineTarget || fineSurvey.state.mode !== 'galaxy' || !fineSurvey.state.cardOpen
+    || !fineSurvey.travel.ok || fineSurvey.travel.label !== 'Enter system') {
+    fails.push('FINE STAR SURVEY-FIRST broken — one touch teleported or lacked its action: '
+      + JSON.stringify({ fineTarget, fineSurvey }));
+  }
+  if (fineSurvey.travel.ok) {
+    const fineTravelCtl = await evalNavPh(`(()=>{ const button=document.querySelector('#survey [data-act=travel]');
+      const prior=button.style.pointerEvents; button.style.pointerEvents='none'; const result=${travelCheck};
+      button.style.pointerEvents=prior; return result; })()`);
+    if (fineTravelCtl.ok) fails.push('FINE STAR ACTION CONTROL FAILED — injected buried action stayed green: ' + JSON.stringify(fineTravelCtl));
+    await touchNav(fineSurvey.travel.x, fineSurvey.travel.y);
+  }
+  await sleep(1800);
+  const fineDive = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+  if (!fineTarget || fineDive.mode !== 'system' || fineDive.star !== fineTarget.seed
+    || fineDive.starX !== fineTarget.x || fineDive.starY !== fineTarget.y) {
+    fails.push('FINE STAR ACTION did not enter the exact touched target: '
+      + JSON.stringify({ fineDive, fineTarget }));
+  }
+  await send('Target.closeTarget', { targetId: tNav.targetId });
 
   /* 4d2. THE RESOLUTION MATRIX (uilayout discipline, first slice tier):
      the geometry contract on tablet-portrait and a small phone too — the
@@ -860,10 +1070,10 @@ try {
   fails.push('harness: ' + e.message);
 } finally {
   try { await browser.close(); } catch (e) { fails.push('browser close: ' + e.message); }
-  server.close(); server2.close();
+  server.close(); server2.close(); server3.close();
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · SURVEY-FIRST (one tap = the galaxy card + ping, double-tap dives; COSMIC_EPOCH ticking) · CHARTER stage-0 gate live · Milky Way · Sol · LANDED ON EARTH with the survey card speaking · THE REAL SAVE SURVIVED RELOAD (importSaveV2 ⇄ exportSaveV2 through IndexedDB) · ZOOM LADDER with the empty-space control · Sun marker + fine stars at depth · GATE C REHEARSED (garbage refused; the veteran fixture imported through the sheet path and booted as Dakk, surface view restored) · THE PHONE LEG (390×844 @3x, touch): veteran followed across targets, painted, pinch zooms · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · SURVEY-FIRST (one tap = the galaxy card + ping, explicit Enter action = dive; real 390×844 touch outcome; COSMIC_EPOCH ticking) · CHARTER stage-0 gate live · Milky Way · Sol · LANDED ON EARTH with the survey card speaking · THE REAL SAVE SURVIVED RELOAD (importSaveV2 ⇄ exportSaveV2 through IndexedDB) · ZOOM LADDER with the empty-space control · Sun marker + fine stars at depth · GATE C REHEARSED (garbage refused; the veteran fixture imported through the sheet path and booted as Dakk, surface view restored) · THE PHONE LEG (390×844 @3x, touch): veteran followed across targets, painted, pinch zooms · zero console errors.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-earth · slice-solmark · slice-phone');
 process.exit(0);
