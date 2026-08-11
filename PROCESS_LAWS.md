@@ -285,3 +285,68 @@ its set-specific `mustRead` or procedural-plan payload, plus date, reviewer atte
 commit, and ruler version. If any bound input moves, the verdict is stale. Resolution-specific
 evidence is not optional: Fruit Bat's first rebuild contained details enlarged that did not
 survive card scale, so code presence and native-scale visibility were both false comfort.
+
+⚠⚠ **A HASH DOES NOT MAKE AN IGNORED EVIDENCE ROOT PORTABLE.** Wave 2e reached `develop` with
+four verifiable art-source hashes and two documented pre-edit evidence hashes, but the actual
+288-row protected roster, 864 PNGs, and one-off scoped capture/control procedure remained under
+ignored `apps/game/smoke/` on the originating machine. A receiving machine cannot derive bytes,
+scope, or negative-control semantics from a digest. Publish immutable evidence with a tracked,
+reproducible producer before a cross-machine handoff; otherwise stop before comparison and recover
+the exact root (or explicitly authorize a deterministic reconstruction that reproduces every seal).
+
+⚠⚠ **A SOURCE SCANNER MUST PROVE THE GRAMMATICAL ROLE IT REPORTS.** A quoted token at object
+depth is not necessarily a key: it may be a call argument, and a ternary value may even be followed
+by the same `:` that superficially marks a property. `overridecheck` produced 21 false duplicates
+by classifying token shape instead of property position. Controls now cover both overcapture forms
+and require genuine injected defects to exit exactly 1 with their own diagnostic; a parser crash or
+unrelated failure cannot satisfy the test. Do not hand-roll a language parser for this: template/
+regex context, keyword-named member calls, Unicode identifiers and restricted-production ASI each
+created another silent truncation. Delegate the complete TypeScript source to a pinned parser, then
+count only the exact AST node role the check claims. Malformed route-table source requires its own
+exit-2 control. Discovery is a separate claim: traverse every route-like declaration and require
+each to own a supported literal initializer, because perfect extraction cannot inspect a declaration
+it never discovers. Controls must include comment-separated and later declarators, not only the
+first whitespace-separated name after `const`.
+Once the AST identifies a literal route key, never discard it with a second length, alphabet, or
+"looks like a species" heuristic. Validate the claim exactly as written; unsupported CANON key
+shape is parser damage, not permission to skip it.
+The denominator is code too: parse the one exact catalogue declaration, accept string literals
+independent of quote style, require the exact kingdom surface, and bind its read-only runtime
+consumer. An initializer-only scan is stale the moment later code can push or replace a row.
+Nor does a key alone prove a live route: TypeScript assertions and `any` can assign `null!` or a
+truthy non-function to a painter map. Require painter values to be statically callable and spec
+values to be objects through immutable, unwritten exact local/import bindings. A supported factory
+must return a direct callable expression—not a parameter or mutable alias; a type annotation by
+itself is not runtime liveness.
+Likewise, a literal-only table contract must reject post-declaration writes and table alias escapes;
+otherwise a runtime key can bypass perfect initializer extraction.
+
+⚠⚠ **A NAME AFTER THE CONSUMER IS NOT WIRING PROOF.** Never search from a function declaration to
+end-of-file and call any later textual mention a live read; summaries, exports, tests, comments,
+and inert property labels can all make a disconnected table look wired. Inspect the parsed consumer
+body for the exact table-read AST shape, and negative-control both non-reference syntax inside that
+body and a symbol deliberately repeated outside it. A name match is still not provenance: require
+one declaration owner, bind external reads to the unaliased import from that owner, and compare the
+complete kingdom-qualified route set—not bare names—so one surviving cross-kingdom copy cannot mask
+its missing sibling.
+An exact lookup whose result is discarded is not wiring either: bind the read to the resolver's
+selection initializer **and its executable guard/call/fallback chain that feeds the returned canvas**.
+Negative-control an intact initializer whose consumer is disconnected, selectors hidden behind
+always-false predicates, and a painter whose ink is never fitted onto the returned canvas. Whitelist
+exact computed lookup shapes **at their audited consumer nodes** and every allowed route-table method;
+callbacks such as `forEach`, computed methods, and prototype members can expose the original table
+under a new name. Reject ownerless route imports and value-wrapper/default/namespace/destructuring
+aliases instead of assuming name-based analysis saw them. Recursively inventory the source root and
+compare each import's complete normalized relative path—not its basename—to the sole declaration
+owner **and its actual exported binding**. Include every executable TypeScript extension; reject
+untracked executable files/imports/re-exports and unapproved bare dependencies, and byte-pin any
+legacy JavaScript input explicitly outside the AST inventory. When reporting shadows, derive winner/loser from audited resolver precedence, never directory
+or alphabetic scan order. Bind compositor/helper names too: prove the resolver has its exact parameter
+list and that `newCanvas`, `newInk`, and `fitInk` still resolve to stable, unwritten module functions;
+a default parameter or reassignment must not shadow the pipeline. Never trust any lexical shadow of
+`Object.keys`, including TypeScript namespaces.
+Static provenance is not a JavaScript sandbox. State the standard-unmodified-intrinsics and
+approved-dependency-implementation assumptions
+explicitly; do not turn “we reject the audited alias/mutation shapes” into a claim that arbitrary
+hostile prototype or dynamic-code monkey-patching is impossible. Runtime rendering and visual review
+remain separate evidence.

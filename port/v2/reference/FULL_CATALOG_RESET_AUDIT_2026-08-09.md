@@ -9,12 +9,14 @@ The clean full-reset baseline is commit
 `d005090f`; accepted Wave 2a is committed/pushed as
 `00e499cb130e906b5475d2d466c07e2d7a6d1282`; Wave 2b is committed/pushed as
 `9c148f071bb8e4ad8d3e92358c6408fc234f22bd`; Wave 2c is committed/pushed as
-`dc015cfde4385530686cf8fff7e36e13ce67769c`. The current worktree is an
-uncommitted bounded Wave-2d batch whose 50 assigned rows are independently PASS.
-The final integrated gates are green with all five source SHAs unchanged, so
-Wave 2d is ready to commit/push. PR #7 is historical/already merged; no reset PR exists.
+`dc015cfde4385530686cf8fff7e36e13ce67769c`; Wave 2d is committed/pushed as
+`2ed0f288a95c327aa892e8b3b54ce94f626f1ab7`. Wave 2e's static checkpoint is
+`5db90396dd0e33b5463ce40c32f6769c93e559be` and reached `develop` through
+merged PR #8 at `bb1a980`. The Mac continuation is fail-closed before its first
+post-edit render because the ignored scoped baseline did not cross Git. PR #7
+is historical/already merged; no reset PR exists.
 
-## Status: r1 frozen; Wave 2c pushed; Wave 2d 50/50 PASS and ready to commit/push
+## Status: r1 frozen; Wave 2d 50/50 PASS/pushed; Wave 2e static source merged, review blocked
 
 Nick stopped the GP7.1 remediation and explicitly reopened the entire catalogue
 after Fruit Bat exposed a false acceptance: the current animal does not read as
@@ -345,9 +347,67 @@ aggregate unchanged: `git diff --check`; typecheck; artunused; 23-file Vitest
 failure, duplicate, or clipping; hybridcheck with 11 negative controls;
 hybridmatrix and speciesstrip selftests; fullresetlayout; and fullresetreview
 10/10 join, 6 packets, 9 changed fixture. No nonignored generated output leaked
-and the renderer drained. Wave 2d is ready to commit/push. This does not change
+and the renderer drained. Wave 2d is committed/pushed as `2ed0f28`. This does not change
 the frozen 516/14/720 ledger or authorize the reset PR, merge, certification,
 ZIP, release, or deployment.
+
+## Wave 2e: exact 47-target source checkpoint; no visual verdict
+
+Wave 2e is Mammal E 13 + Fauna E 21 + Invert IV 13. Its frozen static sources
+are `quadrupedoverrides.ts`
+`AE8E3830EF57233EB43ABE0F594E335A050A1DB3375F08781FF61549B0C6D288`,
+`mammaloverrides.ts`
+`74BBD77CD8BA8E3C22D503AD42FB667EDB74AF6ED3C73551ED283223B28CF80B`,
+`faunaoverrides2.ts`
+`30B2E3E2BCDA4865EE81625805384B373423274E0634F8A50F8E4D5A20483378`,
+and `invertoverrides.ts`
+`6785058479456FF35EE3C44D9FC8F8A9A5467B7F61BBF3153854F93B090A5C1C`.
+
+The Windows handoff records a 288-row pre-edit union (47 targets +241
+protected controls; 864 surfaces) at
+`apps/game/smoke/wave2e-shared-preedit-baseline-2026-08-10/baseline`, seal
+`BC424C8FC8D19DDC7A23F81A946CDE99AF2A7FED759129E132233E23C598AA37`,
+index `2AE4FDB1D443698A092304C22573D8604C07D5B42752E967549D6B038FCD26E3`.
+That root is ignored, absent from the Mac clone and every Git ref, and has no
+tracked scoped-capture or reconstruction script. The documented hashes are not
+enough to recover the protected roster, pixels, or negative-control mechanics.
+Fail closed: recover the exact evidence or explicitly authorize deterministic
+reconstruction from pre-edit `2ed0f28` that reproduces both hashes before any
+current/repeat comparison or visual promotion. On Mac, the browser review path
+is separately blocked because `gp71rejudge`, `speciesstrip`, `speciesaudit`,
+`hybridblendcheck`, and `fullresetlayout` (including the `fullresetreview`
+compositor) hard-code Windows Edge. Prior Windows passes must not be promoted as
+fresh Mac gate results.
+
+The known scanner false-positive is separately closed. Pinned Rolldown 1.2.1/Oxc
+parses each complete TypeScript art source as an AST; only literal string
+property/array nodes become route keys, every such key is validated regardless
+of length or alphabet, malformed CANON keys cannot disappear, and every genuine mutation class still
+exits 1 with its own diagnostic. Controls prove inline/ternary values stay out
+and later routes survive template/regex, control-head/member-call,
+Unicode-identifier and ASI grammar traps. Full-source declaration traversal
+covers parenthesized, annotated, comment-separated and later `const` declarators;
+post-declaration writes/aliases and malformed route-table source exit 2. Painter values
+must be statically callable (and quadruped specs objects) through immutable, unwritten
+exact local/import bindings; supported factories must return a direct callable expression.
+Neither `null!`, mutable aliases, nor truthy objects count as painters.
+Restoration verifies ownership before writing. Wiring is measured only from
+supported route-selection initializer AST shapes, their exact runtime precedence and executable
+guard/call/fallback/furniture consumer chains, and the returned-canvas `fitInk` path inside
+parsed `resolveOverride`; disconnected consumers, always-false predicates,
+discarded/inert syntax, and later `OVERRIDE_COUNT` mentions cannot mask a
+disconnected table. Computed route members/methods outside exact audited consumer
+nodes fail closed. The catalog is parsed as one exact four-kingdom `_EARTH_NAMES` literal with
+its read-only consumer pinned. Recursive `.ts`/`.mts`/`.cts`/`.tsx` discovery rejects untracked
+executable sources/imports/re-exports; normalized full-path plus actual-export ownership prevents
+nested same-basename and export impersonation. Shadow direction follows resolver precedence, and
+helper parameter/reassignment/implementation drift, direct trusted-global escape, and incomplete
+kingdom-qualified route coverage fail. This assumes standard unmodified platform intrinsics and
+approved dependency implementations; it does not substitute for dependency-integrity or runtime/visual evidence.
+Independent post-edit provenance and resolver/compositor reviews returned PASS. Static gates are green at 1,014/1,014 routes,
+1,010/1,010 species, 23 Vitest files/238 pass/1 skip, speccheck 455/0/0,
+coveragegap 1,010/1,010, and artaudit 23/0. No Wave 2e organism has received an
+author screen or independent PASS.
 
 ## Trigger and first closed family: bats
 
@@ -571,8 +631,10 @@ POLISH, zero FAIL.
 The clean baseline sequence completed once at `bc26e8`; its 516/14/720 result is
 frozen. The command shape below remains mandatory for each future complete
 post-repair capture: first commit the independently reviewed and gate-green
-source on `openai/windows`, require a clean complete 40-hex HEAD, and write only
-to new never-overwritten directories. Commands run from `port/v2` on Windows:
+source on its protocol-owned agent branch, require a clean complete 40-hex HEAD,
+and write only to new never-overwritten directories. The current browser tools
+remain Windows-Edge-bound, so these commands run from `port/v2` on Windows until
+a separately reviewed portability repair lands:
 
 ```powershell
 node tools/gp71rejudge.mjs --prepare --out=<NEW_CURRENT_EVIDENCE> --date=2026-08-10
@@ -618,17 +680,27 @@ npm.cmd run hybridmatrix -- --out=<NEW_CLEAN_HYBRID_EVIDENCE_NAME>
 Only after every row is PASS should packaging assemble native portraits,
 thumbnails, labelled/unlabeled family sheets, old/current comparisons,
 references, manifests, verdicts, gate transcript and provenance into the new
-dated ZIP. Keep this work on `openai/windows`; integrate by reviewed draft PR
-into `develop`. No `main` merge, release or deployment is authorized here.
+dated ZIP. While the browser tools remain Windows-bound, run those captures in
+the protocol-owned `openai/windows` worktree; integrate by reviewed draft PR
+from the owning agent branch into `develop`. No `main` merge, release or
+deployment is authorized here.
 
 ## Immediate order
 
-1. Commit/push the reviewed Wave-2d scope on `openai/windows`; do not include
-   unrelated files or open the reset PR.
-2. Continue remaining r1 non-PASS rows in bounded owner/family waves. Preserve
-   author separation and never edit a painter while its judge holds source frozen.
-3. After all rows close, repeat the complete clean 1,250 capture/layout/compare/
+1. Commit/push the independently reviewed Mac scanner repair on `openai/mac`
+   and open only its draft PR into `develop`; do not claim a Wave-2e art verdict.
+2. OpenAI/Codex on Windows must first confirm `openai/windows` is clean, then
+   recover/package the exact ignored Wave-2e pre-edit root plus its scoped
+   capture/control recipe. Do not copy source files or begin a new baseline.
+3. After that evidence is verified against seal `BC424C8F…AA37` and index
+   `2AE4FDB1…26E3`, continue the 47-target post-edit A/B/repeat and independent
+   review on the compatible clean worktree. Any substitute reconstruction needs
+   Nick's explicit authorization and must reproduce both hashes from `2ed0f28`.
+4. Continue remaining r1 non-PASS rows only after Wave 2e closes, in bounded
+   owner/family waves. Preserve author separation and never edit a painter while
+   its judge holds source frozen.
+5. After all rows close, repeat the complete clean 1,250 capture/layout/compare/
    collect sequence, rerun the clean hybrid matrix, and certify only a literal
    1,250/1,250 PASS result.
-4. Build the image-inclusive ZIP only after certification. Until then, keep
+6. Build the image-inclusive ZIP only after certification. Until then, keep
    GP7/GP7.1 quarantined and the full certification, ZIP, reset PR and release open.

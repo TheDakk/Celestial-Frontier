@@ -20,7 +20,7 @@ This is a multi-batch arc. It is written down in full so a cold session can pick
 > frozen at clean commit `bc26e8` as **516 PASS /14 POLISH /720 FAIL**. It is the
 > repair baseline, not certification. Accepted scoped checkpoints are Wave 1
 > 177/177 (`d005090f`), Wave 2a 32/32 (`00e499c`), Wave 2b 51/51 (`9c148f0`),
-> and Wave 2c 56/56 (`dc015cf`), all committed/pushed. Vanilla Orchid r6 is a
+> Wave 2c 56/56 (`dc015cf`), and Wave 2d 50/50 (`2ed0f28`), all committed/pushed. Vanilla Orchid r6 is a
 > separate 234-asset continuity PASS. None creates a new 1,250-row tally.
 >
 > Wave 2d is independently **50/50 scoped PASS**: Mammal D 16/16, Bird B3 27/27,
@@ -32,8 +32,14 @@ This is a multi-batch arc. It is written down in full so a cold session can pick
 > binds 304 rows =50 targets +254 controls and exact 912/912 A/B surfaces; all
 > 762 protected surfaces remain baseline-exact, all 150 target surfaces changed,
 > Civet alone changed 3/3 in R4, and the other 909 surfaces stayed exact. The
-> integrated gates are green with all five source SHAs and 139 inputs unchanged,
-> so Wave 2d is ready to commit/push. Remaining waves, full certification, the
+> integrated gates are green with all five source SHAs and 139 inputs unchanged.
+> Wave 2e's 47-target static source reached `develop` through PR #8, but its Mac
+> continuation is stopped before post-edit rendering: the recorded 288-row
+> pre-edit evidence and one-off scoped producer remained under ignored
+> `apps/game/smoke/` on Windows. Recover the exact root or explicitly authorize
+> a deterministic `2ed0f28` reconstruction that reproduces both frozen hashes;
+> the browser review tools are also Windows-Edge-bound, so no Wave 2e visual
+> verdict exists on Mac. Remaining waves, full certification, the
 > final image-inclusive ZIP, reset PR, merge, release, and deployment remain OPEN.
 > The final R4 manifest is
 > `DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE` at
