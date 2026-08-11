@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-10. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-11. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -382,3 +382,12 @@ clean commit are trusted. Exact schemas/statuses and forbidden verdict artifacts
 closed, but SHA-256 cannot prove authenticity against an actor who deliberately rewrites producer
 metadata and every dependent hash before resealing. That stronger threat model requires signed
 attestations and protected keys; do not claim it from ordinary hashes.
+
+⚠⚠ **A SEALED PREPARATION STATUS AND A RETURNED HUMAN VERDICT ARE DIFFERENT LAYERS.** An archive
+correctly generated as `UNREVIEWED / NOT_CERTIFIED` must not be reopened or resealed to insert a
+later judgment. Preserve the returned review separately, byte-hash it, and cross-bind it to the exact
+archive and clean source. Report both truths: the immutable package still describes its preparation
+state, while the external document supplies the human verdict. A package-level PASS does not become
+literal per-row `--collect/--certify` output by wording alone, and it does not close unrelated blocked
+evidence. If the supplied review omits a reviewer identity, signature, or archive digest, record that
+limitation and the external cross-binding; never invent the missing attestation.

@@ -29,8 +29,9 @@
 > the complete deterministic genome because `A×B` and `B×A` can share a seed while
 > inheriting different traits. The schema-v4 hybrid contract guards 13 exact
 > five-stage lineages /251 assets spanning every kingdom, including Amoeba as the
-> principal microbe row, plus route/cache/mixed-owner negative controls. Its visual
-> status and final all-bloodline certification remain OPEN / UNREVIEWED.
+> principal microbe row, plus route/cache/mixed-owner negative controls. The exact
+> source-`03ea297` package review returned **PASS with optional polish only**; the
+> sealed preparation status remains immutable and final all-bloodline certification remains open.
 >
 > `gp71rejudge.mjs` guards set-aware references; `gp71compare.mjs` exact-joins
 > old/current 1,250-image roots; `fullresetlayout.mjs` derives the official 181

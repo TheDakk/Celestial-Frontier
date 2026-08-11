@@ -30,8 +30,9 @@ in §2.4.
 > modern owners; Sea Turtle and Great White Shark remain protected on compatibility
 > routing. Pure named paths stay separate. The same candidate adds anchor-aware bred
 > treatment for Apple, Vanilla Orchid, Oyster Mushroom and Amoeba. Evidence schema v4
-> binds 13×5 stages /251 assets, but its output remains OPEN/UNREVIEWED until a new
-> source-commit- and ruler-bound verdict is collected.
+> binds 13×5 stages /251 assets. The exact source-`03ea297` package review returned
+> **PASS with optional polish only**; the sealed archive's generated UNREVIEWED status
+> remains its preparation state, and final all-bloodline certification remains open.
 
 > **B15.4 classifier + naming (render/text-only, fp 50/50):** `FA_BODY[0]` renamed `"six-limbed"` →
 > `"sturdy-limbed"` (Plan 0 is now a "land grazer" whose limb count is set by the limb gene, not the

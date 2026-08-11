@@ -36,9 +36,10 @@ a child of an Earth parent keeps that parent's Earth RIG + wears the child's ali
 > orders. Green Algae's earlier stop was a real schema-v2 harness contract bug,
 > not transient provenance; schema v3 repairs current-catalogue vs retained-
 > legacy-route ownership without undoing D-CAT-1, and its sentinels are green.
-> The successor schema-v4 matrix remains `OPEN / UNREVIEWED`; it does not prove
-> seamless quality for every possible bloodline. Full review remains open under
-> `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+> The source-`03ea297` successor's external review returned **PASS with optional
+> polish only**. Its sealed UNREVIEWED fields remain preparation metadata; the
+> representative matrix still does not prove every possible bloodline, and formal
+> reset certification remains open under `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
 ## 1. Overview
 Two coupled systems:

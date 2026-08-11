@@ -1,6 +1,6 @@
 # Earth Lineage, Breeding & Replayability
 
-_Design north star + build status. Matches code as of 2026-08-11 (Platinum repair candidate).
+_Design north star + build status. Matches code as of 2026-08-11 (Platinum repair reviewed).
 Companion to `ART_DIRECTION.md` and `PROCEDURAL_CHARACTERISTICS.md`._
 
 > **2026-08-11 Platinum correction:** the hash-bound current-generation review of clean
@@ -17,9 +17,10 @@ Companion to `ART_DIRECTION.md` and `PROCEDURAL_CHARACTERISTICS.md`._
 > anchor-bounded lineage traits before compositing. Sea Turtle and Great White Shark stay
 > on their frozen compatibility route. Apple, Vanilla, Oyster and a new principal Amoeba
 > row receive anchor-aware bred branches while pure named portraits remain protected.
-> Hybrid evidence schema v4 is 13 lineages ×5 stages /251 assets. This is a candidate
-> contract, not a visual PASS: the old archive stays sealed, and continuity remains OPEN
-> until fresh clean-commit evidence receives a new hash-bound human review.
+> Hybrid evidence schema v4 is 13 lineages ×5 stages /251 assets. Clean source
+> `03ea297` supplied the sealed successor; its exact external review returned
+> **PASS with optional polish only / APPROVE**. That is a package-level human verdict,
+> not proof of every possible bloodline or formal 1,250-row certification.
 
 > **2026-08-10 reset correction:** the v2 override router had been sending bred
 > `_earthBlend` genomes through generic procedural painters before the lineage-aware

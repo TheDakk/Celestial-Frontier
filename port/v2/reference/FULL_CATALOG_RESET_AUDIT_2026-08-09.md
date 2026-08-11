@@ -17,7 +17,7 @@ follow-up merged as PR #9 at `989142d`. The Mac continuation is fail-closed
 before its first Wave-2e-scoped post-edit render because the ignored scoped
 baseline did not cross Git. PR #7 is historical/already merged; no reset PR exists.
 
-## Status: Platinum repair source complete; clean-commit evidence and human verdict open
+## Status: Platinum repair package-level human PASS received; formal reset certification open
 
 The governing feedback artifact is
 `reference/Celestial_Frontier_Current_Full_Generations_Platinum_Review_2026-08-10.md`,
@@ -35,15 +35,20 @@ Octopus retain their modern named whole-form owners through the reviewed bred
 stages; Sea Turtle and Great White Shark remain protected on the reviewed legacy
 route. Apple, Vanilla Orchid and Oyster Mushroom receive stronger bounded drift,
 and Amoeba is the principal microbe row. Hybrid schema v4 is 13 lineages ×5
-stages /251 assets. The successor combined package is exactly 2,163 PNGs and
-remains **OPEN / UNREVIEWED / NOT CERTIFIED**. Browser-backed tools now share the
-portable `browsercdp` resolver and exact browser provenance. Provisional evidence
-is diagnostic only. Clean-commit capture/repeat/package is deliberately a post-commit action; its
-external sidecar and PR freshness transcript are authoritative, while human review remains OPEN.
+stages /251 assets. Clean source `03ea297e4f8ec61461310b0312a7363027ce90e3`
+produced the sealed 2,163-PNG archive, 470,045,987 bytes at SHA-256
+`ef7a6e9bb720ab6e6e1497569ade194b471ed7ab63449ee94ea5c94c57372f4b`.
+The exact returned review is preserved at
+`reference/Celestial_Frontier_Current_Platinum_Repair_All_Pass_Review_2026-08-11.md`,
+SHA-256 `1c6c49e74270e9c69800de5b10b031aacf73a7a30937350086e97bc712823b3f`,
+and returns **PASS with optional polish only / APPROVE**, with no blocker-level issue.
+The sealed archive's `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED` fields remain immutable
+preparation metadata; the review is a separate package-level verdict, not formal reset certification.
 
-Draft PR #10 is repurposed from `openai/mac` into `develop` as `Address Platinum
-glider and lineage review`. It does not authorize merge, certification, release,
-or deployment. Wave 2e's missing ignored baseline remains a separate blocker.
+Draft PR #10 carries the result from `openai/mac` into `develop` as `Address Platinum
+glider and lineage review`. It may be reviewed and normally merged by Nick; it does
+not authorize automatic merge, formal certification, release, or deployment. Wave
+2e's missing ignored baseline remains a separate blocker.
 
 Nick stopped the GP7.1 remediation and explicitly reopened the entire catalogue
 after Fruit Bat exposed a false acceptance: the current animal does not read as
@@ -574,16 +579,17 @@ small Pixi living-preview surface over the same deterministic source, and only
 then (4) consider the Phase-5 mesh/skeletal production pipeline. A broad Pixi
 rewrite is not part of the current reset-foundation batch.
 
-## Platinum continuity overlay: schema v4 repair implemented; judgment open
+## Platinum continuity overlay: schema v4 package-level PASS; formal certification open
 
 The current ruler supersedes the older focused conclusion below without erasing
 it. Schema v4 binds 13 lineages ×5 stages /65 principal portraits /251 assets,
 including Amoeba as the microbe row. It requires the three glider whole forms,
 the exact seven-fauna modern-owner set, protected Sea Turtle/Great White Shark
 legacy pixels, stronger Apple/Vanilla Orchid/Oyster Mushroom drift, repeat/cache
-controls, and anatomy-specific joins. The successor package is 2,163 PNGs and
-must remain `OPEN / UNREVIEWED / NOT_CERTIFIED` until clean committed evidence
-receives a new hash-bound human verdict.
+controls, and anatomy-specific joins. The sealed 2,163-PNG successor retains its
+generated `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED` preparation fields, while
+the separate hash-bound human review returns PASS with optional polish only.
+That closes this bounded package ruler, not the literal 1,250-row certification ruler.
 
 ## Historical schema-v3 focused continuity — 12 lineages /217 and 234 assets, superseded
 
@@ -758,21 +764,21 @@ machine-readable status remains `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED`, and
 hybrid continuity remains OPEN. The feedback preserves those bytes as history
 while superseding their narrower continuity scope. The successor is 2,163 PNGs
 with schema-v4 13×5 /251-asset hybrid evidence. Its immutable ZIP sidecar and PR
-verification transcript are the authority for the final clean-commit generation;
-this live reference stays future-neutral so editing a “pending” marker cannot stale
-that evidence commit. Its human verdict remains OPEN. Neither package changes the
+verification transcript bind its clean generation; the exact returned review at
+SHA-256 `1c6c49e74270e9c69800de5b10b031aacf73a7a30937350086e97bc712823b3f`
+supplies PASS with optional polish only. Neither package changes the formal
 certification blockers above.
 
 ## Immediate order
 
-1. Freeze the Platinum repair on one clean `openai/mac` commit; run the complete
-   static/browser/selftest battery without editing tracked source afterward.
-2. From that commit, generate repeat-exact glider and schema-v4 13×5 /251-asset
-   hybrid evidence, then the exact 2,163-PNG current-only archive and its
-   post-hoc freshness result. Leave all review verdict fields open/unreviewed.
-3. Push `openai/mac` and update draft PR #10 into `develop` with title `Address
-   Platinum glider and lineage review`. Review it; do not merge automatically,
-   deploy, certify, or release.
+1. Preserve the returned package-level PASS byte-exact and cross-bind its hash to
+   source `03ea297e4f8ec61461310b0312a7363027ce90e3` and archive SHA-256
+   `ef7a6e9bb720ab6e6e1497569ade194b471ed7ab63449ee94ea5c94c57372f4b`;
+   never rewrite the sealed ZIP.
+2. Review draft PR #10 from `openai/mac` into `develop`; do not merge automatically,
+   deploy, certify, or release. The optional polish list does not block this PR.
+3. Keep the frozen 516/14/720 ledger and literal 1,250-row certification unchanged;
+   this package-level review is not `fullresetreview --collect/--certify` output.
 4. Separately, OpenAI/Codex on Windows must first confirm `openai/windows` is clean, then
    recover/package the exact ignored Wave-2e pre-edit root plus its scoped
    capture/control recipe. Do not copy source files or begin a new baseline.

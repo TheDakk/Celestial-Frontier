@@ -318,8 +318,19 @@ drift; and the matrix lacked a principal microbe lineage. The 2,146-PNG ZIP stay
 sealed as the reviewed baseline. The repair contract uses hybrid schema v4,
 13×5 principal stages including Amoeba, 251 hybrid assets, and an exact reviewed-
 fauna route allowlist while Sea Turtle and Great White Shark remain protected.
-Any successor combined archive is therefore 2,163 PNGs and remains UNREVIEWED /
-NOT_CERTIFIED until its own hash-bound human judgment is returned.
+The successor combined archive is 2,163 PNGs from clean source `03ea297`,
+470,045,987 bytes at SHA-256
+`ef7a6e9bb720ab6e6e1497569ade194b471ed7ab63449ee94ea5c94c57372f4b`.
+Its exact external review is preserved at
+`reference/Celestial_Frontier_Current_Platinum_Repair_All_Pass_Review_2026-08-11.md`
+(SHA-256 `1c6c49e74270e9c69800de5b10b031aacf73a7a30937350086e97bc712823b3f`)
+and returns **PASS with optional polish only / APPROVE**. The archive's generated
+`CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED` fields remain immutable preparation
+metadata; the review is a separate human-verdict overlay and is not the formal
+1,250-row certification package described below.
+Any later documentation/source commit makes `--freshness` report
+`STALE_FOR_CURRENT: source commit differs`; that is an honest current-checkout state,
+not corruption or retroactive invalidation of the sealed reviewed artifact.
 
 The complete reset recapture sequence, after a bounded repair wave is committed
 and the worktree is clean at a full 40-hex HEAD, is:
