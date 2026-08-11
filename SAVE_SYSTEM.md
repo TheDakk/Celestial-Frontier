@@ -1,5 +1,39 @@
 # Celestial Frontier — Save System
 
+> **2026-08-11 v2 port overlay (matches `port/v2` code):** The browser slice now
+> distinguishes a fresh store, a supported coherent save, an unsupported future
+> version, a corrupt/sparse payload, and a transient storage failure. Only a
+> supported coherent payload may replace the last-known-good backup. Corrupt
+> primaries attempt one recovery; without a proven backup they remain protected
+> from writes, as do future-version bytes. A thrown primary read is unknown—not
+> proof of corruption—so it never calls recovery or rolls a valid newer primary
+> back to an older backup. Its transient hold clears only after a later read
+> proves a genuinely fresh store; a supported or protected payload reloads or
+> stays protected instead. Rejected/blocked IndexedDB open Promises are no
+> longer cached forever, and a blocked native request that succeeds after its
+> bounded attempt was abandoned immediately closes that late orphan database.
+> Explicit import uses the same envelope guard, so `{}`, `{view:null}`, arrays
+> and primitives cannot erase progress.
+>
+> The importer also normalizes `gen`/`maxGen` to nonnegative safe integers,
+> contains a malformed Compendium row instead of rejecting the whole expedition,
+> caps cosmic epoch at 10,000 to bound retained O(epoch) ecology work, timestamps
+> new Atlas rows, and preserves/requires complete galaxy/star coordinates for
+> travelable Atlas destinations. Honest out-of-range bred `size` remains
+> untouched. Current-v2 Field Training restart uses a reversible `{view}`
+> snapshot; restoring the older v1 full-expedition `tsnap` schema is still a
+> Gate-C blocker. The repository still stores one exported blob rather than the
+> planned split/CAS records, so multi-tab last-writer-wins is also open.
+>
+> One historical compatibility bridge remains exact and narrow: the first
+> IndexedDB slice's two-field `{nav,view}` envelope is accepted only when those
+> are the only top-level keys, `nav` has exactly `mode/gal/star/planet`, and both
+> route copies agree after sanitization. It preserves that route and immediately
+> migrates to the complete v4 envelope; nearby sparse shapes remain protected.
+> Future/corrupt-save notices are critical boot outcomes, so they bypass the
+> ordinary toast debounce and are browser-tested as both visible and
+> byte-preserving before the fast-boot notification window can hide them.
+
 **STATUS:** matches code as of 2026-07-31 (verified against main.js). ⚠ Read the v1.8.7 section (a reverted `size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`, harvest on play time).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated
 from seeds) to `localStorage` under one hardened key, with load-time coerce/clamp so a

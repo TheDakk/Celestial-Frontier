@@ -78,6 +78,7 @@ export async function openChromiumCdp({
   startupTimeoutMs = 15000,
   shutdownTimeoutMs = 5000,
   WebSocketImpl = WebSocket,
+  onEvent = () => {},
 }) {
   assert(typeof label === 'string' && label.trim(), 'CDP label is required');
   assert(/^[a-z0-9][a-z0-9-]*$/.test(userDataPrefix), `${label}: unsafe user-data prefix`);
@@ -89,6 +90,7 @@ export async function openChromiumCdp({
     `${label}: shutdown timeout must be a positive integer`);
   assert(typeof WebSocketImpl === 'function' && Number.isInteger(WebSocketImpl.OPEN),
     `${label}: WebSocket implementation is invalid`);
+  assert(typeof onEvent === 'function', `${label}: CDP event handler is invalid`);
   const browserFile = findChromiumBrowser();
   const temporary = fs.realpathSync(os.tmpdir());
   const userData = path.join(temporary,
@@ -132,6 +134,7 @@ export async function openChromiumCdp({
   let ws = null;
   let closed = false;
   let closePromise = null;
+  let eventHandlerError = null;
   let messageId = 0;
   const pending = new Map();
   const terminalError = (message) => new Error(`${label}: ${message}`);
@@ -178,6 +181,12 @@ export async function openChromiumCdp({
         const waiter = pending.get(message.id);
         pending.delete(message.id);
         message.error ? waiter.reject(terminalError(message.error.message)) : waiter.resolve(message.result);
+      } else if (message.method) {
+        try { onEvent(message); }
+        catch (error) {
+          eventHandlerError = terminalError(`CDP event handler failed (${error.message})`);
+          rejectPending(eventHandlerError);
+        }
       }
     };
     ws.onerror = () => rejectPending(terminalError('CDP WebSocket error'));
@@ -186,6 +195,7 @@ export async function openChromiumCdp({
       `browser exited (exit=${String(code)} signal=${String(signal)})`)));
 
     const send = (method, params = {}, sessionId) => {
+      if (eventHandlerError) return Promise.reject(eventHandlerError);
       if (closed || ws.readyState !== WebSocketImpl.OPEN) {
         return Promise.reject(terminalError(`cannot send ${method}; CDP is not open`));
       }
@@ -303,9 +313,11 @@ async function runSelftest() {
     assertNoOwnedProfiles(openPrefix, 'WebSocket open-timeout cleanup');
 
     const livePrefix = `${base}-live`;
+    const liveEvents = [];
     const connection = await openChromiumCdp({
       label: 'CDP selftest live browser', userDataPrefix: livePrefix,
       commandTimeoutMs: 1500, startupTimeoutMs: 10000, shutdownTimeoutMs: 2000,
+      onEvent: (event) => liveEvents.push(event),
     });
     try {
       assert(connection.browser.executable === portable(actualBrowser),
@@ -317,6 +329,15 @@ async function runSelftest() {
         targetId: target.targetId, flatten: true,
       });
       await connection.send('Runtime.enable', {}, attached.sessionId);
+      await connection.send('Runtime.evaluate', {
+        expression: `console.log('cf-browsercdp-event-${nonce}')`, returnByValue: true,
+      }, attached.sessionId);
+      for (let i = 0; i < 20 && !liveEvents.some((event) =>
+        event.method === 'Runtime.consoleAPICalled'
+        && JSON.stringify(event.params).includes(`cf-browsercdp-event-${nonce}`)); i++) await sleep(10);
+      assert(liveEvents.some((event) => event.method === 'Runtime.consoleAPICalled'
+        && JSON.stringify(event.params).includes(`cf-browsercdp-event-${nonce}`)),
+      'SELFTEST CDP events were not forwarded to the owned handler');
       await expectRejectedAsync('CDP command timeout', () => connection.send('Runtime.evaluate', {
         expression: 'new Promise(() => {})', awaitPromise: true, returnByValue: true,
       }, attached.sessionId), /timed out waiting for Runtime\.evaluate/);
@@ -333,6 +354,31 @@ async function runSelftest() {
       await connection.close();
     }
     assertNoOwnedProfiles(livePrefix, 'normal/command-timeout/pending cleanup');
+
+    const eventFailurePrefix = `${base}-event-failure`;
+    const eventFailure = await openChromiumCdp({
+      label: 'CDP selftest event failure', userDataPrefix: eventFailurePrefix,
+      commandTimeoutMs: 1500, startupTimeoutMs: 10000, shutdownTimeoutMs: 2000,
+      onEvent(event) {
+        if (event.method === 'Runtime.consoleAPICalled') throw new Error('injected event failure');
+      },
+    });
+    try {
+      const target = await eventFailure.send('Target.createTarget', { url: 'about:blank' });
+      const attached = await eventFailure.send('Target.attachToTarget', {
+        targetId: target.targetId, flatten: true,
+      });
+      await eventFailure.send('Runtime.enable', {}, attached.sessionId);
+      await eventFailure.send('Runtime.evaluate', {
+        expression: `console.log('cf-browsercdp-event-failure-${nonce}')`, returnByValue: true,
+      }, attached.sessionId).catch(() => { /* event may beat the response */ });
+      await sleep(20);
+      await expectRejectedAsync('CDP event-handler failure',
+        () => eventFailure.send('Browser.getVersion'), /event handler failed.*injected event failure/);
+    } finally {
+      await eventFailure.close();
+    }
+    assertNoOwnedProfiles(eventFailurePrefix, 'event-handler failure cleanup');
   } finally {
     if (priorExplicit === undefined) delete process.env.CF_BROWSER;
     else process.env.CF_BROWSER = priorExplicit;
@@ -345,6 +391,7 @@ async function runSelftest() {
   console.log('  browser child exit and profile cleanup: PASS');
   console.log('  WebSocket open timeout and cleanup: PASS');
   console.log('  CDP command error and timeout: rejected');
+  console.log('  CDP events forwarded; event-handler failure rejected and cleaned up');
   console.log('  pending command rejected during bounded close: PASS');
   console.log('  exact browser provenance and no owned profile leakage: PASS');
 }

@@ -266,7 +266,13 @@ function canonical(value: unknown): string {
   return JSON.stringify(value);
 }
 async function sha256Bytes(bytes: Uint8Array): Promise<string> {
-  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  /* TypeScript 7 correctly keeps Uint8Array's backing store generic over
+     ArrayBufferLike. Web Crypto accepts only a BufferSource backed by a real
+     ArrayBuffer, so make that boundary explicit instead of asserting away a
+     possible SharedArrayBuffer. */
+  const input = new ArrayBuffer(bytes.byteLength);
+  new Uint8Array(input).set(bytes);
+  const digest = await crypto.subtle.digest('SHA-256', input);
   return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
 }
 async function sha256Genome(genome: Genome): Promise<string> {
@@ -1029,8 +1035,12 @@ async function run(): Promise<void> {
       await enqueue(descriptor);
       cache[`${order}_portrait_path`] = relative;
     }
-    delete cache.ab_url; delete cache.ba_url;
   }
+  /* Keep the private render URLs available until the comparison sheet has
+     been built, but project them out of the public evidence rows. Mutating a
+     required-field type with `delete` hid this contract from the app's own
+     TypeScript build. */
+  const publicCacheReports = cacheReports.map(({ ab_url: _abUrl, ba_url: _baUrl, ...record }) => record);
   /* URLs were deliberately removed from the public report; re-render exact
      cache genomes fresh for the one human comparison sheet. */
   const cacheSheetInput: Array<Record<string, unknown> & { ab_url: string; ba_url: string }> = cacheReports.map((record) => ({
@@ -1122,7 +1132,7 @@ async function run(): Promise<void> {
       mixed_repeated_cross_stable: true,
     },
     lineages: lineageReports,
-    cache_controls: cacheReports,
+    cache_controls: publicCacheReports,
     mixed_kingdom_sentinels: publicMixedReports,
     mixed_sentinel_sheet: mixedSheetPath,
     assets,

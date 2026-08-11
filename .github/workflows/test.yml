@@ -1,5 +1,6 @@
-# CI (external review CF-RR): the same battery deploy.js enforces locally,
-# run on every push/PR so an untested commit can never sneak toward a release.
+# CI (external review CF-RR): release-facing root checks plus the core v2
+# parity/type/art/browser-smoke PR gates. Deployment has its own milestone
+# battery and is deliberately not changed by this port batch.
 name: test-battery
 on:
   push:
@@ -16,6 +17,9 @@ jobs:
         with:
           node-version: 26   # parity with the local validation environment
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            port/v2/package-lock.json
       - name: environment
         run: |
           node --version
@@ -34,6 +38,28 @@ jobs:
         run: node tools/rarity-sanity.js
       - name: dead code scan
         run: node tools/deadcode.js
+      - name: install v2 workspace
+        working-directory: port/v2
+        run: npm ci
+      - name: v2 parity and complete TypeScript surface
+        working-directory: port/v2
+        run: |
+          npm test
+          npm run typecheck
+          npm run artunused
+      - name: v2 art routing and coverage sentinels
+        working-directory: port/v2
+        run: |
+          npm run artaudit
+          npm run overridecheck
+          npm run overridecontrol
+          npm run coveragegap
+          node tools/speccheck.mjs
+      - name: v2 real-browser slice smoke
+        working-directory: port/v2
+        run: npm run smoke
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
       - name: archive reports
         if: always()
         uses: actions/upload-artifact@v6

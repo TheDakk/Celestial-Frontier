@@ -44,4 +44,28 @@ describe('@cf/domain-sessionrng — the reviewer §2.1 contract, as tests', () =
   it('the eleven call sites have their domain vocabulary', () => {
     expect(Object.keys(DOMAINS).length).toBeGreaterThanOrEqual(7);
   });
+  it('hostile persisted property names are ordinary isolated counters, not prototype reads', () => {
+    /* Negative control for the old plain-object implementation: `toString`
+       read Object.prototype.toString and `__proto__` invoked its setter, so
+       neither stream advanced through a numeric counter. */
+    const restored = JSON.parse('{"toString":2,"__proto__":3}') as Record<string, number>;
+    const rng = createSessionRNG(42, restored);
+    const toStringRoll = rng.roll('toString');
+    const protoRoll = rng.roll('__proto__');
+    expect(toStringRoll).toBe(rng.at('toString', 2));
+    expect(protoRoll).toBe(rng.at('__proto__', 3));
+    const state = rng.state().draws;
+    expect(state.toString).toBe(3);
+    expect(Object.hasOwn(state, '__proto__')).toBe(true);
+    expect(state.__proto__).toBe(4);
+  });
+  it('malformed saved seeds/counters and exhausted streams fail closed', () => {
+    expect(() => createSessionRNG(-1)).toThrow(/seed must be a uint32/);
+    expect(() => createSessionRNG(1, { tryCapture: -1 })).toThrow(/draw counter/);
+    expect(() => createSessionRNG(1, { tryCapture: 1.5 })).toThrow(/draw counter/);
+    expect(() => createSessionRNG(1, { tryCapture: Number.NaN })).toThrow(/draw counter/);
+    const exhausted = createSessionRNG(1, { tryCapture: 0xFFFF_FFFF });
+    expect(() => exhausted.roll('tryCapture')).toThrow(/exhausted/);
+    expect(() => exhausted.at('tryCapture', -1)).toThrow(/draw counter/);
+  });
 });

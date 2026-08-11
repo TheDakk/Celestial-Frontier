@@ -6,6 +6,22 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 overlay matches code and live handoff as of 2026-08-11.**
 >
+> **2026-08-11 v2 integration/hardening overlay:** PR #10 merged the Platinum
+> repair into `develop` at `61cc058`. The next bounded port batch makes the app
+> TypeScript configuration and v2 browser gates part of CI; narrows the DOM
+> compatibility waiver; hardens SessionRNG; protects sparse/corrupt/future saves
+> and IndexedDB retries; bounds cosmic epoch; preserves complete Atlas star
+> coordinates; contains malformed Compendium rows; prevents repeat landfall,
+> stale-card and direct-code landing outcomes; round-trips accepted custom planet
+> names; repairs lazy species-art subscription; and gives phone lower chrome a
+> measured 4×2 non-overlap contract. The slice still stores one exported save
+> blob, `NavState` is not yet a discriminated union, complete CF1 hierarchy and
+> legacy full-state `tsnap` restoration remain open, and CFB still loses hybrid
+> parents. Runtime priorities are Compendium virtualization, scene texture
+> ownership/memory proof, live HD planet replacement, clock/visibility policy,
+> then living organism rigs and biome scenes. Platinum-approved static portraits
+> remain frozen; optional polish is not a mandate to repaint them.
+>
 > **v1.6 additions not yet folded into the sections below** (see ART_DIRECTION / PROCEDURAL_CHARACTERISTICS /
 > UI_PRESENTATION / SPECIES_AND_GENOME for detail): the Earth-bestiary rig system (`_rig*` per class) +
 > `hdGenesFor` procedural phenotype resolver + `hdBeastBare` structural-skin/limb/tail/habitat-preserve

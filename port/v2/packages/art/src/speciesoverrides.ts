@@ -89,9 +89,9 @@ function fitInk(src: HTMLCanvasElement, dst: Ctx, who: string): void {
 function palette(g: G): { base: string; cr: number; cg: number; cb: number; lit: string; dark: string } {
   /* mirror the verbatim engine's color read EXACTLY (hdart.verbatim.js:201):
      SP_HEX[ SP_COLOR[ color % SP_COLOR.length ] ] */
-  const spc = SP_COLOR as readonly number[], sph = SP_HEX as readonly string[];
+  const spc = SP_COLOR, sph = SP_HEX;
   const forced = (g as { _forceHex?: string })._forceHex;
-  const hex = forced || sph[spc[((g.color as number) || 0) % spc.length] as number] || '#b08a6a';
+  const hex = forced || sph[spc[((g.color as number) || 0) % spc.length]!] || '#b08a6a';
   const n = parseInt(hex.slice(1), 16);
   let cr = (n >> 16) & 255, cg = (n >> 8) & 255, cb = n & 255;
   /* ★ THE EARTH COLOUR RULE (Nick, 2026-08-02, ratified) — AND WHY THERE IS NO

@@ -75,6 +75,17 @@ describe('import → export → import: the fixed point', () => {
     expect(s1.seenSp).toContain('f1234');
     expect(s2.seenSp).not.toContain('f1234');
   });
+  it('Atlas capacity keeps a newly charted timestamped row and evicts the oldest', () => {
+    const state = importOk(JSON.stringify(FX.inputs.veteran_rich));
+    state.logMap = Array.from({ length: 120 }, (_, i) => [
+      'p' + i, { id: 'p' + i, title: 'old ' + i, t: i, where: null },
+    ] as [string, Record<string, unknown>]);
+    state.logMap.push(['p-new', { id: 'p-new', title: 'new', t: NOW, where: null }]);
+    const output = JSON.parse(exportSaveV2(state, NOW)) as { log: Array<{ id: string }> };
+    expect(output.log).toHaveLength(120);
+    expect(output.log.some((row) => row.id === 'p-new')).toBe(true);
+    expect(output.log.some((row) => row.id === 'p0')).toBe(false);
+  });
 });
 
 describe('the repository flow, end to end (Phase 2 wiring)', () => {
