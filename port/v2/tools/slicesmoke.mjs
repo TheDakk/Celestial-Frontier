@@ -153,6 +153,20 @@ try {
     }
     return r.result.value;
   };
+  const waitDesktopValue = async (label, expr, timeoutMs = 6000) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = null;
+    while (Date.now() < deadline) {
+      last = await evalIn(expr);
+      if (last) return last;
+      await sleep(50);
+    }
+    throw new Error(`${label} did not reach its browser outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  let transitionWaitControlRejected = false;
+  try { await waitDesktopValue('transition waiter negative control', 'false', 150); }
+  catch { transitionWaitControlRejected = true; }
+  if (!transitionWaitControlRejected) fails.push('TRANSITION WAITER CONTROL FAILED — a never-true outcome reported ready');
 
   /* 1. booted: canvas mounted, HUD says universe */
   const boot = await evalIn(`({ canvas: !!document.querySelector('canvas'), topbar: !!document.getElementById('topbar'), st: window.__CF_SLICE__ ? window.__CF_SLICE__.api.state() : null,
@@ -534,12 +548,10 @@ try {
      the zoom ladder up and back down. Every step reads camT (intent). */
   const stEsc = back;
   await evalIn(`(()=>{ window.__CF_SLICE__.camT.z = 0.01; return 1; })()`);   /* zoom out hard */
-  await sleep(700);
-  const stG = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const stG = await waitDesktopValue('system-to-galaxy zoom', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='galaxy'&&s.gal===999?s:null; })()`);
   if (stG.mode !== 'galaxy' || stG.gal !== 999) fails.push('zoom-out did not rise system→galaxy: ' + JSON.stringify([stG.mode, stG.gal]));
   await evalIn(`(()=>{ window.__CF_SLICE__.camT.z = 0.05; return 1; })()`);
-  await sleep(700);
-  const stU = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const stU = await waitDesktopValue('galaxy-to-universe zoom', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='universe'?s:null; })()`);
   if (stU.mode !== 'universe') fails.push('zoom-out did not rise galaxy→universe: ' + stU.mode);
   /* negative control: deep zoom in EMPTY space must NOT dive */
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=5000; S.camT.y=5000; S.camT.z=28; return 1; })()`);
@@ -548,22 +560,19 @@ try {
   if (stEmpty.mode !== 'universe') fails.push('CONTROL FAILED — deep zoom in empty space dove somewhere: ' + stEmpty.mode);
   /* zoom INTO the Milky Way at HOME_POS → galaxy */
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=90; S.camT.y=-60; S.camT.z=28; return 1; })()`);
-  await sleep(900);
-  const stG2 = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const stG2 = await waitDesktopValue('universe-to-galaxy zoom', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='galaxy'&&s.gal===999?s:null; })()`);
   if (stG2.mode !== 'galaxy' || stG2.gal !== 999) fails.push('zoom-in did not dive universe→galaxy: ' + JSON.stringify([stG2.mode, stG2.gal]));
   /* hold deep over SOL_POS below the dive threshold: the Sun marker + the
      fine-star resolve layer must both be up (Renderer LOD gates) */
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=560; S.camT.y=170; S.camT.z=8; S.cam.x=560; S.cam.y=170; S.cam.z=8; return 1; })()`);
-  await sleep(1600);
-  const deep = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const deep = await waitDesktopValue('deep Sol detail layer', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.fine&&s.solVisible?s:null; })()`);
   if (!deep.fine) fails.push('deep zoom did not build the fine-star layer');
   if (!deep.solVisible) fails.push('Sun marker not visible at deep zoom over SOL_POS');
   const shot5 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-solmark.png'), Buffer.from(shot5.data, 'base64'));
   /* and the final dive: past starZ over the Sun → system 424242 */
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.z=30; return 1; })()`);
-  await sleep(1200);
-  const stS2 = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const stS2 = await waitDesktopValue('galaxy-to-Sol zoom', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'&&s.star===424242?s:null; })()`);
   if (stS2.mode !== 'system' || stS2.star !== 424242) fails.push('zoom-in over the Sun did not dive into Sol: ' + JSON.stringify([stS2.mode, stS2.star]));
 
   /* 4c. GATE C's FRONT DOOR, rehearsed with the veteran fixture: the import
@@ -908,20 +917,25 @@ try {
       os.put(${JSON.stringify(raw)},'save'); os.delete('save_bak'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
   const protectedBoot = async (raw) => {
     await setProtectedPrimary(raw);
+    /* This is a VISUAL notice gate. Make its page the active renderer before
+       reading a CSS transition; background targets may intentionally pause
+       animation frames and report computed opacity 0 despite an open toast. */
+    await send('Target.activateTarget', { targetId: t2.targetId });
     await navigateToSlice(ph, URL0, 'protected-save boot');
     await sleep(700);
     return evalPh(`new Promise((resolve,reject)=>{ const title=(document.querySelector('#toast [data-sel=toast-title]')||{}).textContent||'';
-      const opacity=getComputedStyle(document.getElementById('toast')).opacity; const q=indexedDB.open('cf-v2-slice');
+      const toast=document.getElementById('toast'),style=getComputedStyle(toast);
+      const open=toast.style.opacity==='1'&&Number(style.opacity)>0&&style.display!=='none'&&style.visibility!=='hidden'; const q=indexedDB.open('cf-v2-slice');
       q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
-        g.onsuccess=()=>{db.close();resolve({title,opacity,raw:String(g.result||'')})}; g.onerror=()=>reject(g.error); }; })`);
+        g.onsuccess=()=>{db.close();resolve({title,open,raw:String(g.result||'')})}; g.onerror=()=>reject(g.error); }; })`);
   };
   const futureRaw = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
   const futureBoot = await protectedBoot(futureRaw);
-  if (futureBoot.title !== 'Update required' || +futureBoot.opacity <= 0 || futureBoot.raw !== futureRaw) {
+  if (futureBoot.title !== 'Update required' || !futureBoot.open || futureBoot.raw !== futureRaw) {
     fails.push('FUTURE SAVE PROTECTION was not visible/byte-preserving on fast boot: ' + JSON.stringify(futureBoot));
   }
   const corruptBoot = await protectedBoot('{}');
-  if (corruptBoot.title !== 'Save protected' || +corruptBoot.opacity <= 0 || corruptBoot.raw !== '{}') {
+  if (corruptBoot.title !== 'Save protected' || !corruptBoot.open || corruptBoot.raw !== '{}') {
     fails.push('CORRUPT SAVE PROTECTION was not visible/byte-preserving on fast boot: ' + JSON.stringify(corruptBoot));
   }
 
