@@ -1650,7 +1650,68 @@ duplicates).
   `DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE`: 304 rows =50 targets
   +254 protected controls, exact 912/912 A/B surfaces, 150/150 changed target surfaces, four
   rejected negative controls, and three drift-free 139-file input snapshots. Integrated gates
-  passed with all five source hashes unchanged, making the bounded checkpoint ready to commit/push.
+  passed with all five source hashes unchanged; the bounded checkpoint was then committed/pushed as
+  `2ed0f28`.
   **A dead-source proof is necessary to propose cleanup; a frozen before/after pixel union is what
   permits it to ship beside morphology work.** This does not update r1's 516/14/720 ledger; full
   certification, the image-inclusive ZIP, reset PR, merge, release, and deployment remain OPEN.
+
+- ★★★ **D-ART-185 — A QUOTED VALUE IS NOT AN OBJECT KEY; A SOURCE SCANNER MUST CLASSIFY
+  GRAMMAR POSITION, NOT TOKEN SHAPE.** (2026-08-10, Wave 2e Mac resume.) `overridecheck` treated
+  every depth-1 string in an override table as a route key. The 21 exact-name
+  `faunaESquamata(..., 'Name')` plan arguments therefore appeared to duplicate their real
+  `FAUNA2_NAME` properties even though the live object contained each key exactly once. The repair
+  delegates each complete TypeScript art source to pinned Rolldown 1.2.1/Oxc and counts only literal
+  string property/array AST nodes. Every such key is validated regardless of length or alphabet,
+  and malformed CANON keys cannot disappear. It separately guards call arguments and ternary values,
+  then proves later duplicates survive template/regex, control-head/member-call,
+  Unicode-identifier and restricted-production ASI traps. Full-source declaration traversal covers
+  parenthesized, annotated, comment-separated and later `const` declarators; post-declaration
+  writes/aliases and malformed route-table source exit 2. Genuine duplicate/dead/shadowed/unwired mutations must exit exactly 1
+  with their own diagnostic; parser damage cannot satisfy a finding control. **A hand lexer that
+  finds the right words can still make the wrong
+  syntax tree; bind findings to parser-owned grammatical nodes instead of reimplementing the language.**
+  The denominator now follows the same rule: parse the one exact four-kingdom `_EARTH_NAMES`
+  literal and pin its read-only consumer, so quote style and post-initializer mutation cannot
+  silently change what “complete” means. Recursive `.ts`/`.mts`/`.cts`/`.tsx` discovery rejects
+  untracked executable imports/re-exports, and imports resolve through the actual exported binding.
+
+- ★★★ **D-ART-186 — AN IGNORED EVIDENCE ROOT IS A ONE-MACHINE CLAIM UNLESS ITS BYTES OR
+  RECONSTRUCTION RECIPE CROSS THE HANDOFF.** (2026-08-10, Wave 2e Mac resume.) The Windows handoff
+  recorded a 288-row/864-surface pre-edit seal and index, then committed only the hashes because
+  `apps/game/smoke/` is ignored. Develop carried the 47-target source checkpoint but neither the
+  protected roster/PNGs nor the one-off scoped capture and negative-control implementation. On Mac,
+  the source hashes were verifiable and the advertised baseline was not. Review stopped before the
+  first post-edit render. **A hash proves supplied bytes; it cannot recover missing bytes, scope, or
+  procedure. Cross-machine evidence must be published with an immutable manifest and reproducible
+  tracked producer, or continuation fails closed until the exact root is recovered.**
+
+- ★★★ **D-ART-187 — A NAME ANYWHERE AFTER THE CONSUMER IS NOT WIRING PROOF.** (2026-08-10,
+  Wave 2e Mac resume.) `overridecheck` sliced from `resolveOverride` to end-of-file, then searched
+  that suffix for each table name. The later `OVERRIDE_COUNT` summary named nearly every table, so
+  disconnecting one from the actual resolver still looked wired; the old control happened to use
+  `FLORA2_SPEC`, the one table absent from that summary. The repair parses exactly the
+  `resolveOverride` function body and counts only lookups in the actual `canon`/`iconic`/`dupe`/
+  `fp`/`quad`/`painter` selection initializers **after validating their exact precedence and executable
+  guard/call/fallback/furniture chains into the returned canvas**. One control removes `FAUNA2_NAME` from
+  `fp` while its later summary mention remains and must report the exact unwired table; another
+  leaves an inert exact lookup/property label outside the audited chain and must exit 2. Further
+  controls preserve an intact initializer but disconnect its downstream renderer, make the
+  duplicate/quadruped predicates unreachable, or sever `fitInk` from the returned canvas; all must
+  fail closed. Computed members and methods are accepted only at the exact audited `[name]`,
+  kingdom-qualified CANON, and `FLORA_DUPES.includes(name)` consumer nodes; spelling an unrelated
+  binding `name` is not provenance. A provenance control replaces the imported table with an empty
+  same-named local; recursive source discovery plus normalized full-path and actual-export ownership
+  also reject nested same-basename/export impersonators. Shadow diagnostics follow the audited resolver priority, not
+  alphabetic file traversal, and a conflict-direction control proves that ordering. Painter values
+  must resolve to statically callable immutable/unwritten local/import bindings (quadruped specs to
+  objects), and factories must return direct callables; `null!`, mutable aliases, parameter returns,
+  and truthy objects cannot masquerade as live painters. Exact resolver parameters, stable/unwritten
+  canvas-helper bindings/implementations, and audited direct trusted-global contexts prevent helper/global shadowing. Global
+  single-owner/import-owner checks reject that impersonation; ownerless imports and table alias/
+  callback escapes are parser damage; and incomplete
+  kingdom-qualified route coverage also fails. **Bind a wiring claim to the consumer node that performs the lookup, its
+  declaration/import provenance, and negative-control both non-reference syntax inside that
+  consumer and a repeated symbol outside it. This sentinel assumes standard unmodified platform
+  intrinsics and approved dependency implementations; arbitrary hostile monkey-patching, dependency
+  poisoning, and visual correctness remain outside its static claim.**

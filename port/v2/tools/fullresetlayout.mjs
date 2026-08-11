@@ -19,13 +19,13 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { execFileSync, spawn } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { openChromiumCdp } from './browsercdp.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..');
 const repositoryRoot = path.resolve(root, '..', '..');
-const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const IDENTITY_SCHEMA = 'cf.gp71.identity-manifest.v2';
 const PORTRAIT_SCHEMA = 'cf.gp71.portrait-manifest.v2';
 const LEGACY_IDENTITY_SCHEMA = 'cf.gp71.identity-manifest.v1';
@@ -1268,59 +1268,31 @@ function safeSlug(value) {
 }
 
 async function openCdp() {
-  assert(fs.existsSync(EDGE), `packet sheets require Edge at ${EDGE}`);
-  const userData = path.join(os.tmpdir(), `cf-full-reset-layout-${process.pid}-${crypto.randomBytes(6).toString('hex')}`);
-  const edge = spawn(EDGE, [
-    '--headless=new', '--no-sandbox', '--no-first-run', '--disable-background-networking',
-    '--disable-component-update', '--disable-component-extensions-with-background-pages',
-    '--remote-debugging-port=0', `--user-data-dir=${userData}`, 'about:blank',
-  ], { stdio: ['ignore', 'ignore', 'pipe'] });
-  let stderr = '';
-  edge.stderr.on('data', (chunk) => { stderr += chunk.toString(); });
-  let debuggerUrl = null;
-  for (let attempt = 0; attempt < 75 && !debuggerUrl; attempt++) {
-    await sleep(100);
-    const match = stderr.match(/DevTools listening on (ws:\/\/[^\s]+)/);
-    if (match) debuggerUrl = match[1];
-    if (edge.exitCode !== null) break;
-  }
-  if (!debuggerUrl) {
-    edge.kill();
-    fail(`packet sheets: Edge CDP did not start${stderr ? ` (${stderr.trim().slice(-240)})` : ''}`);
-  }
-  const ws = new WebSocket(debuggerUrl);
-  let messageId = 0;
-  const pending = new Map();
-  ws.onmessage = (event) => {
-    const message = JSON.parse(event.data);
-    if (message.id && pending.has(message.id)) {
-      const waiter = pending.get(message.id);
-      pending.delete(message.id);
-      message.error ? waiter.reject(new Error(message.error.message)) : waiter.resolve(message.result);
-    }
-  };
-  await new Promise((resolve, reject) => { ws.onopen = resolve; ws.onerror = reject; });
-  const send = (method, params = {}, sessionId) => new Promise((resolve, reject) => {
-    const id = ++messageId;
-    pending.set(id, { resolve, reject });
-    ws.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params }));
+  const connection = await openChromiumCdp({
+    label: 'packet sheets', userDataPrefix: 'cf-full-reset-layout',
   });
-  const target = await send('Target.createTarget', { url: 'about:blank' });
-  const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
-  const sessionId = attached.sessionId;
-  await send('Runtime.enable', {}, sessionId);
-  return {
-    async evaluate(expression) {
-      const result = await send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true }, sessionId);
-      if (result.exceptionDetails) {
-        fail(`packet canvas failed: ${String(result.exceptionDetails.exception?.description || result.exceptionDetails.text).slice(0, 400)}`);
-      }
-      return result.result.value;
-    },
-    close() {
-      try { ws.close(); } finally { edge.kill(); }
-    },
-  };
+  try {
+    const target = await connection.send('Target.createTarget', { url: 'about:blank' });
+    const attached = await connection.send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
+    const sessionId = attached.sessionId;
+    await connection.send('Runtime.enable', {}, sessionId);
+    return {
+      browser: connection.browser,
+      async evaluate(expression) {
+        const result = await connection.send('Runtime.evaluate', {
+          expression, returnByValue: true, awaitPromise: true,
+        }, sessionId);
+        if (result.exceptionDetails) {
+          fail(`packet canvas failed: ${String(result.exceptionDetails.exception?.description || result.exceptionDetails.text).slice(0, 400)}`);
+        }
+        return result.result.value;
+      },
+      close: connection.close,
+    };
+  } catch (error) {
+    await connection.close();
+    throw error;
+  }
 }
 
 async function composePacket(browser, packet, labelled) {
@@ -1372,7 +1344,14 @@ function packetSourceDigest(packet) {
   return sha256(packet.rows.map((row) => `${row.set}\u0000${row.species}\u0000${row.sha256}\n`).join(''));
 }
 
-async function writePreparedOutput(out, layout, includePackets) {
+async function commitPreparedDirectory(stage, out, browser, beforeRename = null) {
+  if (browser) await browser.close();
+  if (beforeRename) await beforeRename();
+  assert(!fs.existsSync(out), `output appeared while preparing: ${displayPath(out)}`);
+  fs.renameSync(stage, out);
+}
+
+async function writePreparedOutput(out, layout, includePackets, beforeRename = null) {
   const parent = path.dirname(out);
   const stage = fs.mkdtempSync(path.join(parent, `.${path.basename(out)}.stage-`));
   let browser = null;
@@ -1407,19 +1386,20 @@ async function writePreparedOutput(out, layout, includePackets) {
       }
       writeJsonExclusive(path.join(stage, 'packet-manifest.json'), {
         schema: PACKET_MANIFEST_SCHEMA,
+        browser: browser.browser,
         catalogue_sha256: layout.plan.catalogue_sha256,
         packet_count: layout.internalPackets.length,
         sheets: files.length,
         files,
       });
     }
-    assert(!fs.existsSync(out), `output appeared while preparing: ${displayPath(out)}`);
-    fs.renameSync(stage, out);
+    await commitPreparedDirectory(stage, out, browser, beforeRename);
+    browser = null;
   } catch (error) {
     if (fs.existsSync(stage)) fs.rmSync(stage, { recursive: true, force: true });
     throw error;
   } finally {
-    if (browser) browser.close();
+    if (browser) await browser.close();
   }
 }
 
@@ -1508,12 +1488,13 @@ async function prepare(options) {
   const loaded = await loadInputs(options);
   const before = sourceSnapshot(loaded.evidence, loaded.metadata, loaded.other, loaded.mustReadContracts);
   const out = validateOutputTarget(options.out, loaded.evidence, [loaded.metadata.file, loaded.other.file]);
-  await writePreparedOutput(out, loaded.layout, options.packets);
-  const afterLoaded = await loadInputs(options);
-  const after = sourceSnapshot(
-    afterLoaded.evidence, afterLoaded.metadata, afterLoaded.other, afterLoaded.mustReadContracts,
-  );
-  assert(after === before, 'source evidence or family metadata changed while preparing output');
+  await writePreparedOutput(out, loaded.layout, options.packets, async () => {
+    const afterLoaded = await loadInputs(options);
+    const after = sourceSnapshot(
+      afterLoaded.evidence, afterLoaded.metadata, afterLoaded.other, afterLoaded.mustReadContracts,
+    );
+    assert(after === before, 'source evidence or family metadata changed while preparing output');
+  });
   console.log('FULL RESET LAYOUT PREPARATION PASS');
   console.log(`  wrote: ${displayPath(out)}`);
   console.log(`  exact identities: ${loaded.layout.plan.total_identities}`);
@@ -1707,7 +1688,7 @@ async function expectRejectedAsync(label, work, pattern) {
 }
 
 async function runSelftest() {
-  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-full-reset-layout-selftest-'));
+  const temp = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), 'cf-full-reset-layout-selftest-'));
   try {
     const goodFixture = makeFixture(temp, 'good');
     const good = await loadFixture(goodFixture);
@@ -1735,7 +1716,7 @@ async function runSelftest() {
       assert(sha256(labelled.buffer) !== sha256(unlabelled.buffer),
         'SELFTEST labelled/unlabelled packet controls produced identical output');
     } finally {
-      if (browser) browser.close();
+      if (browser) await browser.close();
     }
 
     const preparedOut = path.join(temp, 'prepared');
@@ -1744,6 +1725,29 @@ async function runSelftest() {
     assert(fs.existsSync(path.join(preparedOut, 'plan.json')) && fs.existsSync(path.join(preparedOut, 'index.json'))
       && fs.existsSync(path.join(preparedOut, 'procedural-plan-index.json')),
     'SELFTEST plan-only preparation did not write all three manifests');
+    const closeFailureStage = path.join(temp, 'close-failure-stage');
+    const closeFailureOut = path.join(temp, 'close-failure-output');
+    fs.mkdirSync(closeFailureStage);
+    fs.writeFileSync(path.join(closeFailureStage, 'sentinel'), 'staged');
+    await expectRejectedAsync('browser close before evidence commit', () => commitPreparedDirectory(
+      closeFailureStage, closeFailureOut, {
+        async close() { throw new Error('injected browser close failure'); },
+      },
+    ), /injected browser close failure/);
+    assert(!fs.existsSync(closeFailureOut),
+      'SELFTEST browser close failure left a success-shaped evidence directory');
+    fs.rmSync(closeFailureStage, { recursive: true, force: true });
+    const sourceFailureStage = path.join(temp, 'source-failure-stage');
+    const sourceFailureOut = path.join(temp, 'source-failure-output');
+    fs.mkdirSync(sourceFailureStage);
+    fs.writeFileSync(path.join(sourceFailureStage, 'sentinel'), 'staged');
+    await expectRejectedAsync('source recheck before evidence commit', () => commitPreparedDirectory(
+      sourceFailureStage, sourceFailureOut, null,
+      async () => { throw new Error('injected source recheck failure'); },
+    ), /injected source recheck failure/);
+    assert(!fs.existsSync(sourceFailureOut),
+      'SELFTEST source recheck failure left a success-shaped evidence directory');
+    fs.rmSync(sourceFailureStage, { recursive: true, force: true });
     expectRejected('existing target',
       () => validateOutputTarget(preparedOut, good.evidence, [good.metadata.file, good.other.file]), /already exists/);
     expectRejected('overlapping evidence target',
@@ -1888,6 +1892,8 @@ async function runSelftest() {
     console.log('  deterministic plan/index repeat: PASS');
     console.log('  labelled + unlabelled real-browser packet compositor: PASS');
     console.log('  plan-only atomic output: PASS');
+    console.log('  browser close failure before atomic commit: rejected; no output left');
+    console.log('  source recheck failure before atomic commit: rejected; no output left');
     console.log('  wrong set/name, missing, extra, and duplicate identities: rejected');
     console.log('  stale SHA and dimensions: rejected');
     console.log('  path and symlink escape: rejected');
