@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (Phase 1+)
 
-**Status: ★★★ RESET R1 FROZEN · WAVE 2C PUSHED · WAVE 2D 50/50 PASS · READY TO COMMIT/PUSH** (2026-08-10).
+**Status: ★★★ RESET R1 FROZEN · WAVE 2D 50/50 PASS/PUSHED · WAVE 2E STATIC SOURCE MERGED, REVIEW EVIDENCE BLOCKED** (2026-08-10).
 **Port milestone record (2026-08-01):** ★★★ PHASES 1–3 COMPLETE (automatable) · PHASE 4 SHELL RUNNING.
 **Phase 4 so far — the slice wears the game's face at the GOLDEN SCREENS' exact geometry**
 (floating-pill topbar: player chip + HP bar + Prime pill + trail · objective chip fed by the
@@ -167,7 +167,59 @@ sources/0; tokencheck selftest 16/16; overridecheck 1,014/1,014 routes and
 1,010/1,010 species; speciesaudit 1,250/1,250 with zero failure/duplicate/
 clipping; hybridcheck with 11 negatives; hybridmatrix/speciesstrip/
 fullresetlayout/fullresetreview selftests; and `git diff --check`. Wave 2d is
-ready to commit/push, not to open the reset PR or recertify the catalogue.
+committed/pushed as `2ed0f28`, not a reset PR or catalogue recertification.
+
+Wave 2e's exact 47-target static implementation (Mammal E 13 + Fauna E 21 +
+Invert IV 13) is checkpoint `5db9039` and reached `develop` through merged PR #8
+at `bb1a980`. Its four frozen art sources remain byte-exact. The first Mac
+continuation stopped before any post-edit export or visual judgment: the
+documented 288-row pre-edit union lives under ignored `apps/game/smoke/`, did
+not cross Git, and has no tracked scoped-capture/reconstruction recipe. Its
+recorded seal `BC424C8F…AA37` and index `2AE4FDB1…26E3` therefore cannot be
+independently verified here. Recover the exact Windows evidence or explicitly
+authorize a deterministic reconstruction from pre-edit `2ed0f28` that
+reproduces both hashes before A/B promotion. A bounded portability seam now lets
+`gp71rejudge --prepare` and `fullresetlayout --packets` resolve an exact
+Chromium-family executable through `CF_BROWSER` or checked platform paths, so a
+new **current-only, unreviewed** Mac catalogue export can be prepared. The same
+resolver reaches `fullresetreview` through its imported packet compositor, but
+that does not unlock Wave 2e A/B because the scoped old evidence is still
+absent. `speciesstrip`, `speciesaudit`, and `hybridblendcheck` remain separately
+Windows-bound. Historical Windows passes are not fresh Mac results.
+
+The separate `overridecheck` blocker is closed: pinned Rolldown 1.2.1/Oxc parses
+each complete TypeScript art source as an AST, and only literal string
+property/array nodes become route keys. Every such key is validated regardless
+of length or alphabet, and malformed CANON keys cannot disappear. It still rejects genuine dead,
+duplicate, shadowed, unclassified, new-file, and unwired-table defects with
+exact diagnostics. Controls prove inline/ternary values stay out and later
+routes survive template/regex, control-head/member-call, Unicode-identifier and
+ASI grammar traps. Full-source declaration traversal covers parenthesized,
+annotated, comment-separated and later `const` declarators; post-declaration
+writes/aliases and malformed route-table source exit 2. Painter values must be
+statically callable (and quadruped specs objects) through immutable, unwritten exact
+local/import bindings; supported factories must return a direct callable expression.
+Neither `null!`, mutable aliases, nor truthy objects count as painters. Its harness refuses
+concurrent source overwrite and measures wiring only from supported route-selection
+initializer AST shapes, their exact precedence and executable guard/call/fallback/furniture
+consumer chains, and the returned-canvas `fitInk` path inside parsed `resolveOverride`;
+the catalog denominator is an exact four-kingdom `_EARTH_NAMES` AST plus its pinned read-only
+consumer, so quote style or later mutation cannot hide roster entries. Disconnected consumers,
+always-false predicates, discarded/inert syntax, and later `OVERRIDE_COUNT` mentions cannot
+mask a disconnected table. Computed route members/methods outside exact audited consumer
+nodes fail closed. Recursive `.ts`/`.mts`/`.cts`/`.tsx` discovery rejects untracked executable
+sources/imports/re-exports, and normalized full-path import plus actual-export ownership prevents
+nested same-basename or same-file export impersonation. Shadow direction follows exact resolver
+precedence, and helper parameter/reassignment/implementation drift, direct trusted-global escape,
+and incomplete kingdom-qualified route coverage fail. The static sentinel assumes standard
+unmodified platform intrinsics and approved dependency implementations; it is not a hostile-runtime
+sandbox, dependency-integrity proof, or visual verdict.
+Independent post-edit provenance and resolver/compositor reviews returned PASS.
+Static gates remain green:
+1,014/1,014 routes, 1,010/1,010 species, typecheck/artunused, 23-file Vitest
+(238 pass /1 skip), speccheck 455/0/0, coveragegap 1,010/1,010, artaudit 23/0,
+and `git diff --check`. No Wave 2e art PASS, full tally, certification package,
+release, or deployment is claimed.
 
 The first live hybrid-matrix attempt exposed a real schema-v2 harness contract
 bug, not transient provenance or an art verdict: it required both Green Algae
@@ -188,7 +240,7 @@ unreachable orchard/citrus alternatives with **0/174** tree-surface drift at
 
 Literal completion still means a new clean 1,250-row collection containing only
 fresh PASS, with zero carried verdicts, POLISH, or FAIL. No final certification,
-image-inclusive ZIP, reset PR, release, or deployment exists.
+certification image-inclusive ZIP, reset PR, release, or deployment exists.
 
 ## Historical GP7/GP7.1 evidence (not the reset score)
 
@@ -224,6 +276,8 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 
 | Tool | Role |
 |---|---|
+| `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. |
+| `node tools/browsercdp.mjs --selftest` | Negative-controls browser startup metadata, child exit, WebSocket and command timeouts, pending-command rejection, bounded shutdown, exact version provenance, and owned-profile cleanup. |
 | `node tools/proceduralnames.mjs --selftest` | Proves the exact 240-row bridge among full, drift, and render procedural identities. |
 | `node tools/rejudgecards.mjs --drift=<file> --out=<dir> [--control] [--full]` | Builds indexed drift, unchanged-control, or full-catalogue review strips and packets from the current renderer. |
 | `node tools/speciesstrip.mjs "<name,...>" [out.png]` | Renders a small named Earth/procedural strip for targeted visual diagnosis; `npm run stripcheck` exercises its positive and rejection controls. |
@@ -240,6 +294,17 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 | `npm run speciesexport` | Rebuilds and verifies the 1,250 native 440×440 portraits and per-set ZIPs. |
 | `npm run cataloguecards` | Alias for `rejudgecards --full`; generates the family-grouped complete-catalogue contact sheets and packets. |
 | `npm run gp7package` | Verifies portrait/contact coverage, records SHA-256 hashes, and assembles the dated complete-review ZIP. |
+| `npm run currentreviewpackage -- --catalogue=<capture> --layout=<layout> --hybrid=<matrix> --output=<new.zip>` | Creates a new extracted-and-reverified **UNREVIEWED current-state** package spanning the exact 1,250 catalogue rows, official packet layout, and representative five-stage hybrid evidence. It rejects verdict/certification material and never replaces the later all-PASS certification ZIP. |
+
+Nick explicitly requested a full current-generation review archive on 2026-08-10.
+It is now produced from clean evidence commit `79ce144` with exactly 2,146 PNGs:
+1,250 native portraits, 196 catalogue strips, 466 official layout sheets, and
+234 representative hybrid assets. The ZIP is 472,304,848 bytes with SHA-256
+`18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`. Its README
+and manifest say **UNREVIEWED / CURRENT-ONLY / NOT CERTIFIED**, preserve every
+producer manifest/hash, and state that the missing Wave 2e pre-edit evidence
+prevents old/current comparison or promotion. It is not the dated image-inclusive
+certification package described below.
 
 The complete reset recapture sequence, after a bounded repair wave is committed
 and the worktree is clean at a full 40-hex HEAD, is:

@@ -30,6 +30,7 @@ import {
   EXPECTED_PACKET_COUNT,
   INDEX_SCHEMA,
   NATIVE_SIZE,
+  PACKET_MANIFEST_SCHEMA,
   assert,
   cmp,
   displayPath,
@@ -52,6 +53,7 @@ import {
 } from './fullresetlayout.mjs';
 
 const COMPARISON_SCHEMA = 'cf.full-reset.comparison-index.v2';
+const PREPARATION_SCHEMA = 'cf.gp71.rejudge-preparation.v2';
 const TEMPLATE_MANIFEST_SCHEMA = 'cf.full-reset.verdict-template-manifest.v2';
 const VERDICT_SCHEMA = 'cf.full-reset.fresh-verdict.v2';
 const RESULTS_SCHEMA = 'cf.full-reset.fresh-results.v2';
@@ -63,6 +65,9 @@ const ATTESTATION = 'I reviewed every row fresh at native 440px, at unlabelled 3
 const BAND_ORDER = Object.freeze(['PASS', 'POLISH', 'FAIL']);
 const STATUS_FAMILY = /^(?:PASS(?:_WITH_POLISH)?|POLISH|HOLD|FAIL|BLOCKER|TRUE|FALSE|HIGH|LOW|MEDIUM|N\/?A|NONE|UNKNOWN|\d+)$/i;
 const REVIEWED_BATS = Object.freeze(['Bat', 'Fruit Bat', 'Vampire Bat', 'Insect-Eating Bat']);
+const BROWSER_PROVENANCE_FIELDS = Object.freeze([
+  'executable', 'product', 'revision', 'user_agent', 'js_version', 'protocol_version',
+]);
 
 function fail(message) { throw new Error(message); }
 function expectedTotal(expectedSets) {
@@ -80,6 +85,25 @@ function exactKeys(value, expected, where) {
   const wanted = [...expected].sort(cmp);
   assert(JSON.stringify(actual) === JSON.stringify(wanted),
     `${where}: keys must be exactly ${wanted.join(', ')}; got ${actual.join(', ')}`);
+}
+function validateBrowserProvenance(raw, where) {
+  exactKeys(raw, BROWSER_PROVENANCE_FIELDS, where);
+  const executable = nonempty(raw.executable, `${where}.executable`);
+  assert(!executable.includes('\\')
+      && (path.posix.isAbsolute(executable) || /^[A-Za-z]:\//.test(executable))
+      && path.posix.normalize(executable) === executable,
+  `${where}.executable: expected a canonical portable absolute path`);
+  const browser = { executable };
+  for (const field of BROWSER_PROVENANCE_FIELDS.slice(1)) {
+    browser[field] = nonempty(raw[field], `${where}.${field}`);
+  }
+  return browser;
+}
+function assertBrowserProvenanceEqual(actual, expected, where) {
+  for (const field of BROWSER_PROVENANCE_FIELDS) {
+    assert(actual[field] === expected[field],
+      `${where}: browser provenance differs at ${field}`);
+  }
 }
 function hex(value, length, where) {
   const text = nonempty(value, where).toLowerCase();
@@ -222,6 +246,22 @@ function layoutSourceRevision(raw, expectedCommit, where) {
   return raw;
 }
 
+function loadCurrentPreparationBrowser(current) {
+  const file = sourceFile(path.join(current.root, 'preparation.json'), 'current capture preparation');
+  const raw = readJson(file, 'current capture preparation');
+  assert(isObject(raw) && raw.schema === PREPARATION_SCHEMA,
+    `current capture preparation: expected schema ${PREPARATION_SCHEMA}`);
+  assert(current.provenance.status === 'current_provenanced' && current.provenance.capture,
+    'current capture preparation: current evidence provenance is unavailable');
+  assert(stableJson(raw.capture_provenance) === stableJson(current.provenance.capture),
+    'current capture preparation: capture provenance differs from current evidence manifests');
+  return {
+    file,
+    sha256: hashFile(file),
+    browser: validateBrowserProvenance(raw.browser, 'current capture preparation browser'),
+  };
+}
+
 function validateLayoutRow(raw, packet, ordinal, current, where) {
   const procedural = raw.set === 'procedural';
   exactKeys(raw, [
@@ -262,9 +302,12 @@ function loadLayout(layoutValue, current, expectedCommit, config = {}) {
   const expectedSets = config.expectedSets ?? EXPECTED_SETS;
   const expectedPackets = config.expectedPacketCount ?? EXPECTED_PACKET_COUNT;
   const enforceOfficial = config.officialLayout ?? (config.expectedSets === undefined && config.expectedPacketCount === undefined);
+  const currentPreparation = loadCurrentPreparationBrowser(current);
   const layoutRoot = realDirectory(layoutValue, 'layout root');
   const indexFile = sourceFile(path.join(layoutRoot, 'index.json'), 'layout index');
+  const packetManifestFile = sourceFile(path.join(layoutRoot, 'packet-manifest.json'), 'layout packet manifest');
   const raw = readJson(indexFile, 'layout index');
+  const packetManifest = readJson(packetManifestFile, 'layout packet manifest');
   exactKeys(raw, [
     'schema', 'identity_key', 'total_identities', 'sets', 'families', 'packet_size',
     'packet_count', 'catalogue_sha256', 'source_revision', 'packets',
@@ -285,6 +328,27 @@ function loadLayout(layoutValue, current, expectedCommit, config = {}) {
   assert(raw.packet_count === expectedPackets,
     `layout index: expected ${expectedPackets} packets, got ${JSON.stringify(raw.packet_count)}`);
   hex(raw.catalogue_sha256, 64, 'layout index catalogue_sha256');
+  exactKeys(packetManifest, [
+    'schema', 'browser', 'catalogue_sha256', 'packet_count', 'sheets', 'files',
+  ], 'layout packet manifest');
+  assert(packetManifest.schema === PACKET_MANIFEST_SCHEMA,
+    `layout packet manifest: expected schema ${PACKET_MANIFEST_SCHEMA}`);
+  const layoutBrowser = validateBrowserProvenance(
+    packetManifest.browser, 'layout packet manifest browser',
+  );
+  assertBrowserProvenanceEqual(
+    layoutBrowser, currentPreparation.browser,
+    'layout packet manifest versus current capture preparation',
+  );
+  assert(hex(packetManifest.catalogue_sha256, 64, 'layout packet manifest catalogue_sha256')
+      === raw.catalogue_sha256,
+  'layout packet manifest: catalogue_sha256 differs from layout index');
+  assert(packetManifest.packet_count === raw.packet_count,
+    'layout packet manifest: packet_count differs from layout index');
+  assert(packetManifest.sheets === raw.packet_count * 2,
+    'layout packet manifest: expected exactly two sheets per packet');
+  assert(Array.isArray(packetManifest.files) && packetManifest.files.length === packetManifest.sheets,
+    'layout packet manifest: files[] length differs from sheets');
   const revision = layoutSourceRevision(raw.source_revision, expectedCommit, 'layout index source_revision');
   assert(Array.isArray(raw.packets) && raw.packets.length === expectedPackets,
     `layout index: packets[] must contain exactly ${expectedPackets} packets`);
@@ -356,6 +420,11 @@ function loadLayout(layoutValue, current, expectedCommit, config = {}) {
     root: layoutRoot,
     indexFile,
     indexSha256: hashFile(indexFile),
+    packetManifestFile,
+    packetManifestSha256: hashFile(packetManifestFile),
+    currentPreparationFile: currentPreparation.file,
+    currentPreparationSha256: currentPreparation.sha256,
+    browser: layoutBrowser,
     catalogueSha256: raw.catalogue_sha256,
     revision,
     rows,
@@ -393,6 +462,9 @@ function evidenceSummary(evidence) {
 function sourceSnapshot(layout, oldEvidence, currentEvidence) {
   return stableJson({
     layout_index_sha256: hashFile(layout.indexFile),
+    layout_packet_manifest_sha256: hashFile(layout.packetManifestFile),
+    current_preparation_sha256: hashFile(layout.currentPreparationFile),
+    browser: layout.browser,
     old: evidenceSummary(oldEvidence),
     current: evidenceSummary(currentEvidence),
   });
@@ -572,6 +644,13 @@ async function writeComparisonOutput(stage, layout, comparison, oldEvidence, cur
   let browser = null;
   try {
     browser = await openCdp();
+    const decisiveBrowser = validateBrowserProvenance(
+      browser.browser, 'decisive comparison renderer browser',
+    );
+    assertBrowserProvenanceEqual(
+      decisiveBrowser, layout.browser,
+      'decisive comparison renderer versus capture/layout inputs',
+    );
     const packetRecords = [];
     for (const packet of comparison.packets) {
       const sheet = await composeComparisonSheet(browser, packet, gameplaySize, actualThumbSize);
@@ -657,6 +736,7 @@ async function writeComparisonOutput(stage, layout, comparison, oldEvidence, cur
       catalogue_sha256: layout.catalogueSha256,
       layout_index_sha256: layout.indexSha256,
       source_revision: layout.revision,
+      browser: decisiveBrowser,
       old_evidence: evidenceSummary(oldEvidence),
       current_evidence: evidenceSummary(currentEvidence),
       changed_identities: changed,
@@ -672,7 +752,7 @@ async function writeComparisonOutput(stage, layout, comparison, oldEvidence, cur
     };
     writeJsonExclusive(path.join(stage, 'comparison-index.json'), index);
   } finally {
-    if (browser) browser.close();
+    if (browser) await browser.close();
   }
 }
 
@@ -743,7 +823,7 @@ function loadComparison(comparisonValue, expectedCommit, config = {}) {
   const raw = readJson(indexFile, 'comparison index');
   exactKeys(raw, [
     'schema', 'purpose', 'identity_key', 'total_identities', 'sets', 'packet_count',
-    'catalogue_sha256', 'layout_index_sha256', 'source_revision', 'old_evidence',
+    'catalogue_sha256', 'layout_index_sha256', 'source_revision', 'browser', 'old_evidence',
     'current_evidence', 'changed_identities', 'unchanged_identities',
     'required_review_surfaces', 'packets',
   ], 'comparison index');
@@ -757,6 +837,7 @@ function loadComparison(comparisonValue, expectedCommit, config = {}) {
   const catalogueSha256 = hex(raw.catalogue_sha256, 64, 'comparison index catalogue_sha256');
   const layoutIndexSha256 = hex(raw.layout_index_sha256, 64, 'comparison index layout_index_sha256');
   const revision = layoutSourceRevision(raw.source_revision, expectedCommit, 'comparison index source_revision');
+  const browser = validateBrowserProvenance(raw.browser, 'comparison index browser');
   const oldSummary = validateEvidenceSummary(raw.old_evidence, 'comparison index old_evidence', 'historical', expectedCommit);
   const currentSummary = validateEvidenceSummary(raw.current_evidence, 'comparison index current_evidence', 'current', expectedCommit);
   exactKeys(raw.required_review_surfaces, [
@@ -947,6 +1028,7 @@ function loadComparison(comparisonValue, expectedCommit, config = {}) {
     catalogueSha256,
     layoutIndexSha256,
     revision,
+    browser,
     oldSummary,
     currentSummary,
     packets,
@@ -980,12 +1062,17 @@ async function compare(options, config = {}) {
       'comparison inputs changed while sheets were being prepared');
   });
   const loaded = loadComparison(out, commit, config);
+  assertBrowserProvenanceEqual(
+    loaded.browser, layout.browser,
+    'comparison index versus capture/layout inputs',
+  );
   console.log('FULL RESET OLD/CURRENT COMPARISON PASS');
   console.log(`  exact two-root join: ${loaded.rows.length}/${expectedTotal(expectedSets)}`);
   console.log(`  labelled family packets: ${loaded.packets.length}`);
   console.log(`  changed portraits: ${loaded.rows.filter((row) => row.changed).length}`);
   console.log(`  current catalogue digest: ${loaded.catalogueSha256}`);
   console.log(`  source commit: ${loaded.revision.commit}`);
+  console.log(`  browser: ${loaded.browser.product} (${loaded.browser.executable})`);
   console.log(`  wrote: ${displayPath(out)}`);
   return loaded;
 }
@@ -1562,7 +1649,7 @@ function validFixturePng(tag) {
   return Buffer.concat([pixel, Buffer.from(tag)]);
 }
 
-function writeFixtureEvidence(directory, definitions, version) {
+function writeFixtureEvidence(directory, definitions, version, browser = null) {
   const rows = [];
   const files = [];
   for (const [offset, definition] of definitions.entries()) {
@@ -1601,6 +1688,13 @@ function writeFixtureEvidence(directory, definitions, version) {
   };
   const current = version === 'current';
   fs.mkdirSync(path.join(directory, 'review-info'), { recursive: true });
+  if (current) {
+    fs.writeFileSync(path.join(directory, 'preparation.json'), JSON.stringify({
+      schema: PREPARATION_SCHEMA,
+      browser: validateBrowserProvenance(browser, 'SELFTEST current preparation browser'),
+      capture_provenance: captureProvenance,
+    }, null, 2) + '\n');
+  }
   fs.writeFileSync(path.join(directory, 'identity-manifest.json'), JSON.stringify({
     schema: current ? 'cf.gp71.identity-manifest.v2' : 'cf.gp71.identity-manifest.v1',
     ...(current ? { capture_provenance: captureProvenance } : {}),
@@ -1629,7 +1723,7 @@ function fixtureMustReadContract(definition, proceduralPlanSha = null) {
   return { ...payload, sha256: sha256(stableJson(payload)) };
 }
 
-function writeFixtureLayout(directory, currentEvidence, definitions = fixtureDefinitions()) {
+function writeFixtureLayout(directory, currentEvidence, definitions = fixtureDefinitions(), browser = null) {
   const groups = [
     definitions.slice(0, 4),
     [definitions[4]],
@@ -1704,8 +1798,27 @@ function writeFixtureLayout(directory, currentEvidence, definitions = fixtureDef
     },
     packets,
   };
+  const packetFiles = packets.flatMap((packet) => ['labelled', 'unlabelled'].map((variant) => ({
+    packet_id: packet.packet_id,
+    variant,
+    file: `packets/${variant}/${packet.packet_id}-fixture.png`,
+    sha256: sha256(`fixture layout ${packet.packet_id}/${variant}`),
+    bytes: 24,
+    width: 1,
+    height: 1,
+    source_rows_sha256: sha256(packet.rows.map((row) =>
+      `${row.set}\u0000${row.species}\u0000${row.sha256}\n`).join('')),
+  })));
   fs.mkdirSync(directory);
   fs.writeFileSync(path.join(directory, 'index.json'), JSON.stringify(index, null, 2) + '\n');
+  fs.writeFileSync(path.join(directory, 'packet-manifest.json'), JSON.stringify({
+    schema: PACKET_MANIFEST_SCHEMA,
+    browser: validateBrowserProvenance(browser, 'SELFTEST layout packet manifest browser'),
+    catalogue_sha256: index.catalogue_sha256,
+    packet_count: index.packet_count,
+    sheets: packetFiles.length,
+    files: packetFiles,
+  }, null, 2) + '\n');
   return index;
 }
 
@@ -1786,19 +1899,33 @@ function treeDigest(directory) {
 }
 
 async function runSelftest() {
-  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-fullresetreview-'));
+  const temp = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), 'cf-fullresetreview-'));
   const config = fixtureConfig();
   try {
+    let browserProbe = null;
+    let fixtureBrowser = null;
+    try {
+      browserProbe = await openCdp();
+      fixtureBrowser = validateBrowserProvenance(
+        browserProbe.browser, 'SELFTEST decisive browser probe',
+      );
+    } finally {
+      if (browserProbe) await browserProbe.close();
+    }
     const definitions = fixtureDefinitions();
     const oldRoot = path.join(temp, 'old-evidence');
     const currentRoot = path.join(temp, 'current-evidence');
     writeFixtureEvidence(oldRoot, definitions, 'old');
-    writeFixtureEvidence(currentRoot, definitions, 'current');
+    const mismatchedBrowser = {
+      ...fixtureBrowser,
+      revision: `${fixtureBrowser.revision}-selftest-mismatch`,
+    };
+    writeFixtureEvidence(currentRoot, definitions, 'current', mismatchedBrowser);
     const currentEvidence = loadEvidence(currentRoot, 'selftest current', FIXTURE_SETS, 1, {
       mode: 'current', expectedCommit: FIXTURE_COMMIT,
     });
     const layoutRoot = path.join(temp, 'layout');
-    writeFixtureLayout(layoutRoot, currentEvidence, definitions);
+    writeFixtureLayout(layoutRoot, currentEvidence, definitions, mismatchedBrowser);
     const compareOptions = {
       layout: layoutRoot,
       old: oldRoot,
@@ -1806,6 +1933,11 @@ async function runSelftest() {
       out: path.join(temp, 'comparison-a'),
       sourceCommit: FIXTURE_COMMIT,
     };
+    await expectReject('decisive renderer browser provenance mismatch', () => compare({
+      ...compareOptions, out: path.join(temp, 'comparison-browser-renderer-mismatch'),
+    }, config), /decisive comparison renderer.*browser provenance differs/i);
+    mutateJson(path.join(currentRoot, 'preparation.json'), (value) => { value.browser = fixtureBrowser; });
+    mutateJson(path.join(layoutRoot, 'packet-manifest.json'), (value) => { value.browser = fixtureBrowser; });
     const comparison = await compare(compareOptions, config);
     assert(comparison.rows.length === 10 && comparison.packets.length === 6,
       'selftest comparator lost rows or packets');
@@ -1946,6 +2078,15 @@ async function runSelftest() {
         ...compareOptions, layout: clone, out: path.join(temp, `compare-${name}`),
       }, config), pattern);
     };
+    const mismatchedLayoutBrowser = copyFixture(layoutRoot, path.join(temp, 'layout-browser-mismatch'));
+    mutateJson(path.join(mismatchedLayoutBrowser, 'packet-manifest.json'), (value) => {
+      value.browser.product = `${value.browser.product} selftest-mismatch`;
+    });
+    await expectReject('capture/layout browser provenance mismatch', () => compare({
+      ...compareOptions,
+      layout: mismatchedLayoutBrowser,
+      out: path.join(temp, 'compare-browser-source-mismatch'),
+    }, config), /layout packet manifest versus current capture preparation.*browser provenance differs/i);
     await mutateLayout('stale-sha', (index) => { index.packets[0].rows[0].sha256 = 'c'.repeat(64); }, /SHA-256 differs/i);
     await mutateLayout('missing-identity', (index) => { index.packets[0].rows.pop(); }, /flattened|identit|ordinal/i);
     await mutateLayout('extra-identity', (index) => { index.packets[0].rows.push(deepClone(index.packets[0].rows[0])); }, /rows|ordinal|duplicate|identit/i);
@@ -1988,6 +2129,14 @@ async function runSelftest() {
     await expectReject('comparison stale sheet dimensions', () => Promise.resolve(loadComparison(
       badComparisonDimension, FIXTURE_COMMIT, config,
     )), /dimensions/i);
+
+    const badComparisonBrowser = copyFixture(compareOptions.out, path.join(temp, 'comparison-browser-shape'));
+    mutateJson(path.join(badComparisonBrowser, 'comparison-index.json'), (index) => {
+      delete index.browser.protocol_version;
+    });
+    await expectReject('comparison incomplete browser provenance', () => Promise.resolve(loadComparison(
+      badComparisonBrowser, FIXTURE_COMMIT, config,
+    )), /comparison index browser.*keys must be exactly/i);
 
     const missingGameplay = copyFixture(compareOptions.out, path.join(temp, 'comparison-missing-gameplay'));
     const missingGameplayIndex = readJson(path.join(missingGameplay, 'comparison-index.json'), 'SELFTEST missing gameplay');
@@ -2098,6 +2247,7 @@ async function runSelftest() {
     console.log('FULL RESET REVIEW SELFTEST PASS');
     console.log('  old/current exact two-root join and labelled packet compositor: PASS');
     console.log('  deterministic comparison/template output: PASS');
+    console.log('  exact capture/layout/decisive-renderer browser provenance: PASS; mismatches rejected');
     console.log('  four reviewed bats remain together under Bats: PASS');
     console.log('  cross-kingdom same names remain set-scoped: PASS');
     console.log('  fresh hash-bound template, collector, and all-PASS certification: PASS');

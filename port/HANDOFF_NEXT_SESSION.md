@@ -1,16 +1,21 @@
-# ★ LIVE — Wave 2e implementation paused at static-green checkpoint (2026-08-10)
+# ★ LIVE — Wave 2e Mac resume fail-closed on non-portable baseline (2026-08-10)
 
-**Current worktree:** `C:\Projects\celestial-frontier-openai-windows` on
-`openai/windows`. Clean full-reset baseline HEAD is
+**Current worktree:** `/Users/nick/Projects/celestial-frontier-openai-mac` on
+`openai/mac`. Clean full-reset baseline HEAD is
 `bc26e800c7adca72805a832e753ace1a8f9837ba`; Wave 1 is `d005090f`, Wave 2a is
 `00e499c`, Wave 2b is `9c148f0`, and Wave 2c is committed/pushed as
 `dc015cfde4385530686cf8fff7e36e13ce67769c`, and Wave 2d is committed/pushed as
-`2ed0f288a95c327aa892e8b3b54ce94f626f1ab7`. Wave 2e's exact 47-target batch is
-paused after source implementation and before any post-edit render, visual review, or verdict on
-`openai/windows`. PR #7 is
-historical/already merged. No reset PR, new
-full-catalogue tally, 1,250-row certification, image-inclusive ZIP, merge,
-release, deployment, or version bump exists.
+`2ed0f288a95c327aa892e8b3b54ce94f626f1ab7`. Wave 2e's static checkpoint is
+`5db90396dd0e33b5463ce40c32f6769c93e559be` and reached `develop` through merged
+PR #8 at `bb1a980`. The Mac resume verified the checkpoint and all four frozen art-source hashes,
+then failed closed before post-edit rendering because the ignored 288-row pre-edit evidence did not
+cross Git. The overridecheck false-positive is repaired and independently post-edit reviewed; no art
+source moved. A separate current-generation review ZIP now exists from clean evidence commit
+`79ce14460998d653ee753e49e8f8016e754c82e4`, with the production-anchor packager repair at
+`60b16ce`; it is explicitly **CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED** and is not Wave 2e A/B.
+Draft PR #9 is open from `openai/mac` into `develop`. PR #7 is historical/already merged. No reset
+merge, new full-catalogue verdict tally, 1,250-row certification package, release, deployment, or
+version bump exists.
 
 Read first: `ROADMAP.md`, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`,
 `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`,
@@ -155,13 +160,13 @@ remained exact. The authoritative integrated report is green:
   9 changed-fixture checks.
 - No nonignored generated output leaked; the renderer drained.
 
-Wave 2d is ready to commit/push. This closes only the bounded checkpoint; it
+Wave 2d is committed/pushed as `2ed0f28`. This closes only the bounded checkpoint; it
 does not authorize the reset PR, merge, full 1,250 recertification,
-image-inclusive ZIP, release, or deployment.
-The full 1,250 recertification, image-inclusive ZIP, reset PR, merge, release,
+certification image-inclusive ZIP, release, or deployment.
+The full 1,250 recertification, its certification image-inclusive ZIP, reset PR, merge, release,
 and deployment all remain **OPEN**.
 
-## Wave 2e paused implementation checkpoint
+## Wave 2e static checkpoint and fail-closed Mac resume
 
 1. **Mammal E (13 bovids):** Buffalo, Cow, Eland, Gaur, Gazelle, Hartebeest,
    Impala, Kudu, Musk Ox, Oryx, Water Buffalo, Wildebeest, Yak. Owners:
@@ -173,47 +178,113 @@ and deployment all remain **OPEN**.
 3. **Invert IV (13 insect-body rows):** Bumblebee, Honeybee, Orchid Bee, Bee,
    Butterfly, Fly, Mantis, Moth, Termite, Thrips, Wasp, Black Fly, Mosquito.
    Owner: `invertoverrides.ts`.
-4. **Sealed pre-edit union:**
+4. **Documented Windows pre-edit union:**
    `port/v2/apps/game/smoke/wave2e-shared-preedit-baseline-2026-08-10/baseline`.
    Seal `BC424C8FC8D19DDC7A23F81A946CDE99AF2A7FED759129E132233E23C598AA37`; index
    `2AE4FDB1D443698A092304C22573D8604C07D5B42752E967549D6B038FCD26E3`. It binds
    288 rows =47 targets +241 protected, 864 physical PNG hashes/dimensions, and three exact
-   139-file source/input snapshots.
+   139-file source/input snapshots. This directory is ignored by
+   `port/v2/apps/game/.gitignore`, is absent from the Mac worktree and every Git ref, and has no
+   tracked scoped-capture/reconstruction script. Therefore its seal, index, protected roster, and
+   negative-control implementation cannot yet be independently verified on Mac. Do not substitute
+   a new baseline or begin post-edit A/B promotion until the exact root is recovered, or Nick
+   explicitly authorizes deterministic reconstruction from pre-edit `2ed0f28` and both frozen hashes
+   are reproduced. A bounded portability seam now lets `gp71rejudge` and
+   `fullresetlayout`/`fullresetreview` resolve an exact `CF_BROWSER` or checked platform browser,
+   which permits a separate current-only Mac export. That does not replace the absent scoped
+   baseline or unlock Wave 2e A/B. `speciesstrip`, `speciesaudit`, and `hybridblendcheck` remain
+   Windows-bound, and their prior Windows passes are not fresh Mac evidence.
 5. **Paused static-green source state; not a visual verdict:**
    `quadrupedoverrides.ts` `AE8E3830EF57233EB43ABE0F594E335A050A1DB3375F08781FF61549B0C6D288`;
    `mammaloverrides.ts` `74BBD77CD8BA8E3C22D503AD42FB667EDB74AF6ED3C73551ED283223B28CF80B`;
    `faunaoverrides2.ts` `30B2E3E2BCDA4865EE81625805384B373423274E0634F8A50F8E4D5A20483378`;
    `invertoverrides.ts` `6785058479456FF35EE3C44D9FC8F8A9A5467B7F61BBF3153854F93B090A5C1C`.
    Integrated pause checks PASS: typecheck, artunused, Vitest 23 files/238 pass/1 skip, speccheck
-   455/0 unread/0 inert, and `git diff --check`. No post-edit export, 440/300/132 review,
-   deterministic A/B repeat, independent judgment, final integrated gate closure, reset PR,
-   certification, ZIP, merge, release, or deployment has occurred.
-6. **Known non-blocking tool finding:** `overridecheck` confirms 1,014 live routes and 1,010 Earth
-   species, but its duplicate-key diagnostic falsely scans inline `faunaESquamata(..., 'Name')`
-   plan literals as keys. A direct FAUNA2 literal-table extraction confirms each of the 21 target
-   keys occurs exactly once. Repair/negative-control the scanner before the next official integrated
-   gate; do not interpret the current output as a competing route.
+   455/0 unread/0 inert, and `git diff --check`. No Wave-2e-scoped old/current A/B export,
+   440/300/132 comparison review, deterministic A/B repeat, independent judgment, final integrated
+   gate closure, reset PR, certification package, merge, release, or deployment has occurred.
+6. **Scanner repair closed and independently reviewed:** pinned Rolldown 1.2.1/Oxc parses each
+   complete TypeScript art source as an AST; only literal string property/array nodes become
+   route keys, every such key is validated regardless of length or alphabet, and malformed CANON
+   keys cannot disappear. Inline plan and ternary strings are expected-pass controls. Duplicates after
+   template/regex, control-head/member-call, Unicode-identifier and ASI grammar traps remain required
+   failures. Full-source declaration traversal covers parenthesized, annotated, comment-separated
+   and later `const` declarators; post-declaration writes/aliases and malformed route-table source
+   must exit 2. Painter values must be statically callable (and quadruped specs objects) through
+   immutable, unwritten exact local/import bindings; supported factories must return a direct
+   callable expression. Neither `null!`, mutable aliases, nor truthy objects count as painters. Genuine
+   dead, duplicate, shadowed, unclassified, new-file, and unwired-table
+   mutations must exit exactly 1 with their own diagnostic. Restoration verifies ownership and
+   refuses to overwrite concurrent edits. Wiring is measured only from supported route-selection
+   initializer AST shapes, their exact precedence and executable guard/call/fallback/furniture
+   consumer chains, and the returned-canvas `fitInk` path inside parsed `resolveOverride`.
+   The denominator is one exact four-kingdom `_EARTH_NAMES` AST with its read-only consumer pinned;
+   quote style or post-initializer mutation cannot hide roster entries. Disconnected consumers,
+   always-false predicates, discarded/inert syntax, and later `OVERRIDE_COUNT` mentions cannot
+   mask a disconnected table. Computed route members/methods outside exact audited consumer nodes
+   fail closed. Recursive `.ts`/`.mts`/`.cts`/`.tsx` discovery rejects untracked executable
+   sources/imports/re-exports; normalized full-path plus actual-export ownership prevents nested
+   same-basename and export impersonation. Shadow direction follows resolver precedence, and
+   incomplete kingdom-qualified route coverage plus helper parameter/reassignment/implementation
+   drift and direct trusted-global escape fail closed. This static sentinel assumes standard
+   unmodified platform intrinsics and approved dependency implementations; it does not replace
+   rendering or visual review. Final
+   output is 1,014/1,014 live routes and 1,010/1,010 Earth species. Independent post-edit provenance
+   and resolver/compositor reviews returned PASS. Static gates: typecheck/artunused; Vitest 23 files/238 pass/1 skip; speccheck 455/0/0;
+   coveragegap 1,010/1,010; artaudit 23/0; overridecheck/overridecontrol; `git diff --check` PASS.
 7. Bird reset FAIL scope is exhausted: B1–B3 exactly cover all 76 frozen-r1
    Bird FAIL rows. Do not reopen the 26 frozen-PASS birds.
-6. Run a new clean 1,250-row collector and fresh literal review only after all
-   remaining rows close. Certification and the dated image-inclusive ZIP come
-   after—not before—that all-fresh collector.
+8. **Separate current-generation review archive produced:**
+   `Celestial_Frontier_Current_Full_Generations_Review_2026-08-10_79ce144.zip`,
+   472,304,848 bytes, SHA-256
+   `18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`. It binds
+   clean evidence commit `79ce14460998d653ee753e49e8f8016e754c82e4` and deep-reverifies one
+   top-level directory with exactly 2,146 PNGs: 1,250 native portraits (631 fauna +332 flora +27
+   fungi +20 microbe +240 procedural), 196 catalogue strips, 466 official layout sheets, and 234
+   representative hybrid assets. Its manifest says `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED`;
+   hybrid continuity remains OPEN and the included review template is blank and hash-bound. This
+   fulfills the requested current review handoff only. Run a fresh literal 1,250-row review after
+   all remaining repair rows close; certification and its separate dated image-inclusive ZIP still
+   come after—not before—that all-fresh collector.
 
 ## Parallel Git handoff
 
-Current side: OpenAI/Codex — Wave 2d commit `2ed0f28` is pushed/synchronized;
-the Wave 2e exact 47-target implementation checkpoint is paused and should be committed/pushed
-on `openai/windows`. It is explicitly not a completed visual/independent-judgment closure.
-GitHub step: after push, review a draft PR to `develop`; do not merge automatically.
-PR details: base `develop`; source `openai/windows`; title `Checkpoint Wave 2e static implementation`;
-description `Preserves the sealed Wave 2e pre-edit baseline and the static-green 47-target source implementation for cross-machine continuation. No post-edit render, visual judgment, certification, release, or deployment is included.`
+Current side: OpenAI/Codex on macOS, branch `openai/mac` — scanner repair `1e1497e`, portable
+evidence producer/package `79ce144`, and anchor-tolerance repair `60b16ce` are committed, pushed,
+independently reviewed, and synchronized. The requested current-only archive is complete and
+deep-reverified. Post-edit Wave 2e art review remains blocked because the exact ignored baseline is absent.
 
-Other side: Anthropic/Claude Code does not have these bounded checkpoints
-through `develop`; Nick does not need to open it now, and files must never be
-copied manually. After a future reviewed Codex PR merges `openai/windows` into
-`develop`, Claude starts from a clean `anthropic/windows`, fetches, and merges
-`origin/develop` under `PARALLEL_GIT_PROTOCOL.md`. `develop`, `main`, and the
-live site remain unchanged; no release or deployment occurred.
+GitHub step: draft PR #9 is open at <https://github.com/TheDakk/Celestial-Frontier/pull/9>. Nick
+reviews it and, only when satisfied, merges it into `develop`; never merge it automatically.
+
+PR details: base `develop`; source `openai/mac`; title `Repair Wave 2e review tooling and add
+current-generation package`; description `Replaces the Wave 2e override scanner with pinned
+Rolldown/Oxc full-TypeScript AST validation and the complete fail-closed control suite while
+preserving all four frozen art-source hashes and the missing-baseline boundary. Adds portable,
+provenance-bound, atomic browser evidence producers plus a separate current-review packager.
+Verification: overridecheck 1,014/1,014 routes and 1,010/1,010 species; overridecontrol through CP
+with clean restoration; typecheck; artunused; Vitest 23 files/238 pass/1 skip; speccheck 455/0/0;
+coveragegap 1,010/1,010; artaudit 23/0; browser/evidence/package selftests; root validate including
+1,010 renders and the 50-probe fingerprint; frozen SHA-256 checks; independent adversarial reviews;
+and a real 472,304,848-byte archive deep-reverify. After review and merge, Anthropic/Claude Code on
+anthropic/windows runs git fetch origin followed by git merge origin/develop only from a clean
+worktree. The archive is CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED; no Wave 2e verdict, release, or deployment is
+included.` Existing PR #9's title and description already match these fields and need no change.
+
+Other side: Anthropic/Claude Code on Windows, branch `anthropic/windows`, need not be opened
+now and must not expect the Mac repair until its PR merges into `develop`. After that merge, at its
+next coding batch and only from a clean worktree, run `git fetch origin` and then
+`git merge origin/develop` on `anthropic/windows`. If that worktree is dirty, do not pull, switch,
+or merge; inspect and safely finish or commit its own work first. Do not copy files manually.
+
+Evidence side: Nick does need to open OpenAI/Codex on Windows now, branch `openai/windows`, only to
+confirm the worktree is clean and recover/package the exact ignored Wave-2e baseline plus its scoped
+capture/control recipe. Do not copy source files, switch branches, or merge there. `develop`
+currently has the static Wave-2e checkpoint but not the Mac repair.
+
+Release status: `develop` remains at merged PR #8 / `bb1a980` until draft PR #9 is reviewed and
+merged. `main` and the live site remain unchanged. No release, deployment, certification, or
+version bump occurred.
 
 # Historical Wave-2c/Wave-2d-opening handoff — superseded by Wave 2d closure
 

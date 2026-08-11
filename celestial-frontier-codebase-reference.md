@@ -4,6 +4,7 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
+> **Current port/v2 overlay matches code and live handoff as of 2026-08-10.**
 >
 > **v1.6 additions not yet folded into the sections below** (see ART_DIRECTION / PROCEDURAL_CHARACTERISTICS /
 > UI_PRESENTATION / SPECIES_AND_GENOME for detail): the Earth-bestiary rig system (`_rig*` per class) +
@@ -147,9 +148,49 @@
 > overridecheck 1,014/1,014 routes +1,010/1,010 species, speciesaudit 1,250/1,250
 > with zero failure/duplicate/clipping, hybridcheck and its 11 negatives,
 > hybridmatrix/speciesstrip/fullresetlayout/fullresetreview selftests, and
-> `git diff --check`. Wave 2d is ready to commit/push. The frozen r1 ledger stays
+> `git diff --check`. Wave 2d was committed/pushed as `2ed0f28`. The frozen r1 ledger stays
 > 516/14/720; full recertification, ZIP, reset PR, merge, release, and deployment
 > remain OPEN.
+>
+> Wave 2e is the exact static 47-target scope Mammal E 13 + Fauna E 21 + Invert
+> IV 13. Checkpoint `5db9039` reached `develop` through merged PR #8 at
+> `bb1a980`; its four frozen art-source hashes remain exact. No Wave-2e visual
+> verdict exists. The documented 288-row/864-PNG pre-edit root stayed under
+> ignored `port/v2/apps/game/smoke/` on Windows and is absent from the Mac clone
+> and every Git ref, so its recorded seal `BC424C8F…AA37`, index
+> `2AE4FDB1…26E3`, protected roster, and one-off controls cannot be independently
+> verified here. Recover that exact root and producer, or explicitly authorize a
+> deterministic `2ed0f28` reconstruction that reproduces both hashes, before
+> post-edit A/B promotion. The browser review tools also hard-code Windows Edge,
+> so their historical passes are not fresh Mac results.
+>
+> The independent Mac-side repair is tooling-only: `overridecheck` now delegates
+> each complete TypeScript art source to pinned Rolldown 1.2.1/Oxc and counts only
+> literal string property/array AST nodes. Every such key is validated regardless
+> of length or alphabet, and malformed CANON keys cannot disappear. Exact controls prove inline/ternary
+> values are not keys, later duplicates survive template/regex,
+> control-head/member-call, Unicode-identifier and ASI grammar traps. Full-source
+> declaration traversal covers parenthesized, annotated, comment-separated and
+> later `const` declarators; post-declaration writes/aliases and malformed
+> route-table source exit 2. Painter values must be statically callable (and
+> quadruped specs objects) through immutable, unwritten exact local/import bindings;
+> supported factories must return a direct callable expression. Neither `null!`,
+> mutable aliases, nor truthy objects count as painters. The denominator is one exact
+> four-kingdom `_EARTH_NAMES` AST with its read-only consumer pinned.
+> Wiring is measured only from supported route-selection
+> initializer AST shapes, exact precedence and executable guard/call/fallback/furniture chains, and
+> the `ink.c` → `fitInk(ink.cv,c,…)` → returned-`cv` path inside parsed
+> `resolveOverride`; disconnected consumers, always-false predicates,
+> discarded/inert syntax, and later count-summary mentions cannot mask a disconnected
+> table. Computed route members/methods outside exact audited consumer nodes fail closed.
+> Recursive `.ts`/`.mts`/`.cts`/`.tsx` discovery rejects untracked executable imports/re-exports;
+> normalized full-path plus actual-export ownership prevents nested same-basename/export
+> impersonation. Shadow direction follows resolver precedence, and helper binding/implementation
+> drift, direct trusted-global escape, and incomplete kingdom-qualified route coverage fail.
+> The sentinel assumes standard unmodified platform intrinsics and approved dependency implementations;
+> it is not a visual verdict. It reports
+> 1,014/1,014 live routes and 1,010/1,010 Earth
+> species without changing a painter.
 >
 > The v2 renderer caps DPR at 2 for touch/coarse pointers and 3 for desktop. An
 > accidental unreferenced 26,400×19,800 PNG at `packages/art/src/5` (2,029,643
