@@ -2,27 +2,30 @@
 
    A bred genome has no `_earthName`; `_earthBlend` is what preserves its
    Earth parent's rig while the inherited genome supplies palette and drift.
-   Fauna hybrids remain on the lineage-aware verbatim route; flora, fungi and
-   microbe hybrids use the exact kingdom+name owner with the child genome.
-   This drives the real browser renderer and fails if production pixels bypass
-   either route, if cache identity collapses lineages/anchors, or if the
-   procedural negative control stops exercising an override.
+   Seven reviewed fauna lineages use their modern named whole-form owner;
+   compatibility fauna remains verbatim, and flora/fungi/microbe use their exact
+   kingdom+name owner. This drives the real browser renderer and fails if
+   production pixels bypass either route, if cache identity collapses
+   lineages/anchors, or if a negative control stops exercising its outcome.
 
    Usage: node tools/hybridblendcheck.mjs
 */
 import fs from 'node:fs';
 import http from 'node:http';
-import net from 'node:net';
-import os from 'node:os';
 import path from 'node:path';
-import { execSync, spawn } from 'node:child_process';
+import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { openChromiumCdp } from './browsercdp.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.join(here, '..', 'apps', 'game');
 const dist = path.join(appDir, 'dist');
-const edgeFile = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const reviewedFaunaLineages = new Set([
+  'Fruit Bat', 'Eagle', 'Wolf', 'Elephant', 'Chameleon', 'Dragonfly', 'Octopus',
+]);
+const expectedLineageRoute = (kingdom, name) =>
+  kingdom !== 'fauna' || reviewedFaunaLineages.has(name) ? 'lineage-owned' : 'lineage-verbatim';
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -33,7 +36,7 @@ function validate(report) {
   assert(report.checks && typeof report.checks === 'object', 'hybrid report omitted checks');
   const required = [
     'proceduralControlDiffersFromVerbatim',
-    'productionBlendEqualsVerbatim',
+    'reviewedFaunaBlendUsesOwnedRoute',
     'blendDiffersFromProcedural',
     'lineagesHaveDistinctPixels',
     'anchorValuesHaveDistinctPixels',
@@ -44,7 +47,9 @@ function validate(report) {
     'multigenerationAnchorDrifts',
     'faunaAndFloraCrossesCovered',
     'allKingdomsCovered',
-    'faunaUsesVerbatimLineageRoute',
+    'reviewedFaunaUsesOwnedLineageRoute',
+    'protectedFaunaUsesVerbatimLineageRoute',
+    'purePathsStayNamedOwned',
     'nonFaunaUsesOwnedNamedRoute',
     'nonFaunaProductionMatchesOwnedRoute',
     'floraLineageDiffersWhenStripped',
@@ -98,7 +103,7 @@ function validate(report) {
       assert(Math.abs(Number(stage.anchor) - anchors[index]) < 1e-9,
         `${lineage.id}/${stage.id}: wrong anchor`);
       const expectedRoute = index === 0 ? 'named-owned'
-        : lineage.kingdom === 'fauna' ? 'lineage-verbatim' : 'lineage-owned';
+        : expectedLineageRoute(lineage.kingdom, lineage.name);
       assert(stage.route === expectedRoute && stage.expectedRoute === expectedRoute,
         `${lineage.id}/${stage.id}: wrong production route`);
       assert(stage.productionMatchesFresh === true && stage.repeatedProductionStable === true,
@@ -133,7 +138,7 @@ function validate(report) {
     assert(pair.rows.map((row) => row.kingdom).sort().join(',') === duplicateSets.get(pair.name),
       `${pair.name}: wrong kingdom pair`);
     for (const row of pair.rows) {
-      const expectedRoute = row.kingdom === 'fauna' ? 'lineage-verbatim' : 'lineage-owned';
+      const expectedRoute = expectedLineageRoute(row.kingdom, pair.name);
       assert(row.route === expectedRoute && row.expectedRoute === expectedRoute,
         `${pair.name}/${row.kingdom}: wrong owner`);
       assert(row.productionMatchesFresh === true && row.strippedDiffers === true,
@@ -148,7 +153,7 @@ function validate(report) {
     assert(row.lineage === row.expectedLineage
       && row.lineageKingdom === row.expectedLineageKingdom,
     `${row.label}: Earth lineage catalogue owner was not preserved`);
-    const expectedRoute = row.expectedLineageKingdom === 'fauna' ? 'lineage-verbatim' : 'lineage-owned';
+    const expectedRoute = expectedLineageRoute(row.expectedLineageKingdom, row.expectedLineage);
     assert(row.route === expectedRoute && row.expectedRoute === expectedRoute,
       `${row.label}: renderer followed child kingdom rather than lineage owner`);
     assert(row.productionMatchesFresh === true && row.strippedDiffers === true,
@@ -163,13 +168,32 @@ function validate(report) {
       && Array.isArray(row.unowned) && row.unowned.length === 0,
     `${kingdom}: catalogue Earth-lineage children are not all named-owner routed`);
   }
+  const protectedNames = ['Sea Turtle', 'Great White Shark'];
+  assert(Array.isArray(report.protectedFaunaLineages)
+    && report.protectedFaunaLineages.length === protectedNames.length,
+  'protected fauna report must contain Sea Turtle and Great White Shark');
+  for (let lineageIndex = 0; lineageIndex < protectedNames.length; lineageIndex++) {
+    const lineage = report.protectedFaunaLineages[lineageIndex];
+    assert(lineage?.name === protectedNames[lineageIndex]
+      && Array.isArray(lineage.stages) && lineage.stages.length === stageIds.length,
+    `protected fauna row ${lineageIndex} is missing or substituted`);
+    lineage.stages.forEach((stage, index) => {
+      const expectedRoute = index === 0 ? 'named-owned' : 'lineage-verbatim';
+      assert(stage.id === stageIds[index] && Math.abs(Number(stage.anchor) - anchors[index]) < 1e-9,
+        `${lineage.name}: protected stage identity/anchor changed`);
+      assert(stage.route === expectedRoute && stage.expectedRoute === expectedRoute
+        && stage.productionMatchesFresh === true && stage.repeatedProductionStable === true
+        && stage.lineage === lineage.name,
+      `${lineage.name}/${stage.id}: protected route or pixels changed`);
+    });
+  }
   assert(report.pass === true && Array.isArray(report.errors) && report.errors.length === 0,
     `hybrid report did not pass: ${JSON.stringify(report.errors || [])}`);
 }
 
 function injectedFailureControl(report) {
   const mutations = [
-    ['fauna route bypass', (broken) => { broken.focusLineages[0].stages[2].route = 'lineage-owned'; }],
+    ['reviewed fauna route bypass', (broken) => { broken.focusLineages[0].stages[2].route = 'lineage-verbatim'; }],
     ['flora route bypass', (broken) => { broken.focusLineages[1].stages[2].route = 'lineage-verbatim'; }],
     ['fungi stripped-lineage bypass', (broken) => { broken.focusLineages[2].stages[3].strippedDiffers = false; }],
     ['microbe stripped-lineage bypass', (broken) => { broken.focusLineages[3].stages[4].strippedDiffers = false; }],
@@ -180,6 +204,9 @@ function injectedFailureControl(report) {
     ['swapped-parent cache collapse', (broken) => { broken.checks.swappedParentPixelsStayDistinct = false; }],
     ['Vanilla stage collapse', (broken) => { broken.focusLineages[4].stagePixelsDistinct = false; }],
     ['focused species substitution', (broken) => { broken.focusLineages[4].name = 'Apple'; }],
+    ['protected fauna route widening', (broken) => { broken.protectedFaunaLineages[0].stages[2].route = 'lineage-owned'; }],
+    ['protected fauna substitution', (broken) => { broken.protectedFaunaLineages[1].name = 'Hammerhead Shark'; }],
+    ['pure route bypass', (broken) => { broken.protectedFaunaLineages[0].stages[0].route = 'lineage-owned'; }],
   ];
   for (const [label, mutate] of mutations) {
     const broken = structuredClone(report);
@@ -188,21 +215,9 @@ function injectedFailureControl(report) {
     try { validate(broken); } catch { rejected = true; }
     assert(rejected, `negative control failed: simulated ${label} was accepted`);
   }
+  return mutations.length;
 }
 
-function freePort() {
-  return new Promise((resolve, reject) => {
-    const probe = net.createServer();
-    probe.on('error', reject);
-    probe.listen(0, '127.0.0.1', () => {
-      const address = probe.address();
-      assert(address && typeof address === 'object', 'free-port probe returned no address');
-      probe.close(() => resolve(address.port));
-    });
-  });
-}
-
-assert(fs.existsSync(edgeFile), `Edge executable not found at ${edgeFile}`);
 execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
 
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.map': 'application/json' };
@@ -218,58 +233,24 @@ const server = http.createServer((request, response) => {
   }
 });
 
-let edge = null;
-let socket = null;
-const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-hybrid-check-'));
+let browser = null;
 try {
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
-  const browserPort = await freePort();
-  edge = spawn(edgeFile, [
-    '--headless=new', '--no-sandbox', '--no-first-run',
-    '--disable-component-extensions-with-background-pages', '--disable-component-update',
-    '--disable-background-networking', `--remote-debugging-port=${browserPort}`,
-    `--user-data-dir=${profile}`, 'about:blank',
-  ], { stdio: 'ignore' });
-
-  let webSocketUrl = null;
-  for (let attempt = 0; attempt < 50 && !webSocketUrl; attempt++) {
-    await sleep(300);
-    try {
-      const response = await fetch(`http://127.0.0.1:${browserPort}/json/version`);
-      webSocketUrl = (await response.json()).webSocketDebuggerUrl;
-    } catch { /* browser boot */ }
-  }
-  assert(webSocketUrl, 'headless browser did not expose CDP');
-  socket = new WebSocket(webSocketUrl);
-  await new Promise((resolve, reject) => {
-    socket.onopen = resolve;
-    socket.onerror = () => reject(new Error('CDP WebSocket failed to open'));
+  browser = await openChromiumCdp({
+    label: 'hybrid blend check', userDataPrefix: 'cf-hybrid-blend-check-browser',
+    commandTimeoutMs: 15000, startupTimeoutMs: 15000, shutdownTimeoutMs: 5000,
   });
-
-  let messageId = 0;
-  const pending = new Map();
-  socket.onmessage = (event) => {
-    const message = JSON.parse(event.data);
-    if (!message.id || !pending.has(message.id)) return;
-    const promise = pending.get(message.id);
-    pending.delete(message.id);
-    if (message.error) promise.reject(new Error(message.error.message));
-    else promise.resolve(message.result);
-  };
-  const send = (method, params = {}, sessionId) => new Promise((resolve, reject) => {
-    const id = ++messageId;
-    pending.set(id, { resolve, reject });
-    socket.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params }));
-  });
-  const target = await send('Target.createTarget', { url: 'about:blank' });
-  const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
+  const target = await browser.send('Target.createTarget', { url: 'about:blank' });
+  const attached = await browser.send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
   const sessionId = attached.sessionId;
-  await send('Runtime.enable', {}, sessionId);
+  await browser.send('Runtime.enable', {}, sessionId);
+  await browser.send('Page.enable', {}, sessionId);
   const appPort = server.address().port;
-  await send('Page.navigate', { url: `http://127.0.0.1:${appPort}/audit.html?hybrid=1` }, sessionId);
+  await browser.send('Page.navigate', { url: `http://127.0.0.1:${appPort}/audit.html?hybrid=1` }, sessionId);
 
   const evaluate = async (expression) => {
-    const result = await send('Runtime.evaluate', { expression, returnByValue: true }, sessionId);
+    const result = await browser.send('Runtime.evaluate',
+      { expression, returnByValue: true, awaitPromise: true }, sessionId);
     if (result.exceptionDetails) throw new Error(`browser evaluation failed: ${result.exceptionDetails.text}`);
     return result.result.value;
   };
@@ -280,17 +261,16 @@ try {
   }
   if (!report?.pass) console.error(`  browser report: ${JSON.stringify(report)}`);
   validate(report);
-  injectedFailureControl(report);
+  const rejectedRegressions = injectedFailureControl(report);
   console.log('HYBRID BLEND CHECK PASS');
-  console.log(`  fauna hybrids: lineage-aware verbatim route (control seed ${report.seed})`);
+  console.log(`  reviewed fauna hybrids: exact seven-name modern owner route (control seed ${report.seed})`);
+  console.log('  protected/unreviewed fauna hybrids: compatibility verbatim route');
   console.log('  flora/fungi/microbe hybrids: exact kingdom+name owner route');
   console.log(`  non-fauna catalogue owned coverage: ${report.nonFaunaRouteCoverage
     .map((row) => `${row.kingdom}=${row.catalogueCount}`).join(', ')}`);
   console.log('  five-stage, stripped-lineage, duplicate-name, cache outcomes: verified');
-  console.log('  eleven injected route/cache/lineage/identity regressions: rejected');
+  console.log(`  ${rejectedRegressions} injected route/cache/lineage/identity regressions: rejected`);
 } finally {
-  if (socket) socket.close();
-  if (edge) edge.kill();
+  if (browser) await browser.close();
   await new Promise((resolve) => server.close(resolve));
-  try { fs.rmSync(profile, { recursive: true, force: true }); } catch { /* OS cleanup can lag */ }
 }

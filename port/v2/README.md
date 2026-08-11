@@ -217,7 +217,7 @@ sandbox, dependency-integrity proof, or visual verdict.
 Independent post-edit provenance and resolver/compositor reviews returned PASS.
 Static gates remain green:
 1,014/1,014 routes, 1,010/1,010 species, typecheck/artunused, 23-file Vitest
-(238 pass /1 skip), speccheck 455/0/0, coveragegap 1,010/1,010, artaudit 23/0,
+(238 pass /1 skip), speccheck 454/0/0, coveragegap 1,010/1,010, artaudit 23/0,
 and `git diff --check`. No Wave 2e art PASS, full tally, certification package,
 release, or deployment is claimed.
 
@@ -286,7 +286,7 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 | `node tools/gp71rejudge.mjs --prepare --out=gp71-rejudge --date=2026-08-09` | Builds the separate GP7.1 all-fresh 1,250-portrait / 196-packet evidence set, with no generated verdicts. `--collect` refuses partial, stale, or misaligned packet verdicts. |
 | `node tools/gp71compare.mjs --verify-only --old-root=<old> --current-root=<current> --catalogue=<current-index>` | Exact-joins two complete 1,250-image evidence roots; generation mode writes hash-bound family-organized old/current sheets to a new output directory. |
 | `npm run hybridcheck` | Drives the real browser art wrapper and proves set-qualified lineage pixels across five exact ID+kingdom+name focused lineages spanning fauna/flora/fungi/microbe, Earth/alien parent orders, multi-generation cases, duplicate names, swapped-parent cache separation and deterministic repeats; eleven injected negative controls must all be rejected. |
-| `npm run hybridmatrix -- --out=<new-name-under-apps/game/smoke>` | Writes the 12-lineage × 5-stage production hybrid continuity matrix, cards, silhouettes, 4× join crops, repeat/reload proof and reversed-parent cache controls to a new evidence root. It deliberately reports visual continuity OPEN until independently judged. |
+| `npm run hybridmatrix -- --out=<new-name-under-apps/game/smoke>` | Writes the 13-lineage × 5-stage production hybrid continuity matrix—including principal microbe lineage Amoeba—plus cards, silhouettes, 4× join crops, repeat/reload proof and reversed-parent cache controls to a new 251-asset evidence root. It deliberately reports visual continuity OPEN until independently judged. |
 | `npm run fullresetlayout -- --prepare --evidence=<current-root> --out=<new-layout> --per=10 --packets --source-commit=<40-hex>` | From a clean commit-bound 1,250-image root, derives the official 181 families / 233 packets, 46 procedural plan families, exact set/species contracts and labelled/unlabeled packet evidence. `--verify` is the read-only counterpart. |
 | `npm run fullresetreview -- --compare …` / `--template` / `--collect` / `--certify` | Binds each row to native 440px, unlabeled 300px, actual unlabeled 132px, labelled old/current and exact contract hashes; creates empty fresh verdicts, collects only complete matching review, and certifies only 1,250 fresh PASS. See the copy-ready sequence below. |
 | `node tools/gp71package-2026-08-09.mjs ...` | Creates a separate dated GP7.1 image-inclusive ZIP only after `gp7conformity --certify` accepts the fresh ledger; it rejects legacy/overlapping targets. |
@@ -294,7 +294,9 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 | `npm run speciesexport` | Rebuilds and verifies the 1,250 native 440×440 portraits and per-set ZIPs. |
 | `npm run cataloguecards` | Alias for `rejudgecards --full`; generates the family-grouped complete-catalogue contact sheets and packets. |
 | `npm run gp7package` | Verifies portrait/contact coverage, records SHA-256 hashes, and assembles the dated complete-review ZIP. |
-| `npm run currentreviewpackage -- --catalogue=<capture> --layout=<layout> --hybrid=<matrix> --output=<new.zip>` | Creates a new extracted-and-reverified **UNREVIEWED current-state** package spanning the exact 1,250 catalogue rows, official packet layout, and representative five-stage hybrid evidence. It rejects verdict/certification material and never replaces the later all-PASS certification ZIP. |
+| `npm run currentreviewpackage -- --catalogue=<capture> --layout=<layout> --hybrid=<matrix> --output=</outside/repository/new.zip>` | Creates a new extracted-and-reverified **UNREVIEWED current-state** package spanning the exact 1,250 catalogue rows, official packet layout, and representative five-stage hybrid evidence. The ZIP must be outside the source repository so publishing it cannot dirty its own freshness proof. It rejects completed-verdict artifacts and completed-status/schema fields under the clean-source producer contract and never replaces the later all-PASS certification ZIP. Producer code, approved reference inputs, and platform intrinsics at the recorded clean commit are trusted; hashes are integrity checks, not authenticity signatures against coordinated malicious rewriting and resealing. |
+| `npm run currentreviewpackage -- --freshness=<package.zip-or-extracted-root>` | Deep-reverifies a sealed review package and reports `FRESH_FOR_CURRENT` only while its source commit, clean checkout, package producer, Platinum ruler and exact six-field browser provenance still match the live checkout. The first mismatch reports `STALE_FOR_CURRENT`; it does not invalidate the historical artifact. |
+| `npm run gliderreview -- --verify --baseline=<sealed-79ce144-capture> --current=<fresh-capture-a> --repeat=<fresh-capture-b> --source-commit=<40-hex>` | Fail-closed mechanical A/B gate for Sugar Glider, Flying Squirrel and Colugo. It requires three distinct/repeat-exact repaired portraits, exact protected bat/rodent/quadruped hashes, three independent roots, and identical six-field browser provenance; it never supplies the human art verdict. |
 
 Nick explicitly requested a full current-generation review archive on 2026-08-10.
 It is now produced from clean evidence commit `79ce144` with exactly 2,146 PNGs:
@@ -305,6 +307,30 @@ and manifest say **UNREVIEWED / CURRENT-ONLY / NOT CERTIFIED**, preserve every
 producer manifest/hash, and state that the missing Wave 2e pre-edit evidence
 prevents old/current comparison or promotion. It is not the dated image-inclusive
 certification package described below.
+
+The independent Platinum review of that exact archive is preserved at
+`reference/Celestial_Frontier_Current_Full_Generations_Platinum_Review_2026-08-10.md`
+(SHA-256 `5af3a33f0648f96115a421ea64cc70f97846f62e89dc8631deeb310103c708c2`).
+It correctly keeps the archive below Platinum: Sugar Glider, Flying Squirrel and
+Colugo require stronger family separation; several hybrid fauna switch scaffold
+too abruptly; Apple, Vanilla Orchid and Oyster Mushroom need stronger low-anchor
+drift; and the matrix lacked a principal microbe lineage. The 2,146-PNG ZIP stays
+sealed as the reviewed baseline. The repair contract uses hybrid schema v4,
+13×5 principal stages including Amoeba, 251 hybrid assets, and an exact reviewed-
+fauna route allowlist while Sea Turtle and Great White Shark remain protected.
+The successor combined archive is 2,163 PNGs from clean source `03ea297`,
+470,045,987 bytes at SHA-256
+`ef7a6e9bb720ab6e6e1497569ade194b471ed7ab63449ee94ea5c94c57372f4b`.
+Its exact external review is preserved at
+`reference/Celestial_Frontier_Current_Platinum_Repair_All_Pass_Review_2026-08-11.md`
+(SHA-256 `1c6c49e74270e9c69800de5b10b031aacf73a7a30937350086e97bc712823b3f`)
+and returns **PASS with optional polish only / APPROVE**. The archive's generated
+`CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED` fields remain immutable preparation
+metadata; the review is a separate human-verdict overlay and is not the formal
+1,250-row certification package described below.
+Any later documentation/source commit makes `--freshness` report
+`STALE_FOR_CURRENT: source commit differs`; that is an honest current-checkout state,
+not corruption or retroactive invalidation of the sealed reviewed artifact.
 
 The complete reset recapture sequence, after a bounded repair wave is committed
 and the worktree is clean at a full 40-hex HEAD, is:

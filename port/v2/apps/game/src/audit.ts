@@ -25,11 +25,12 @@ async function pushFull(k: string, name: string, url: string | null): Promise<vo
 }
 interface SheetSpec { key: string; cells: Array<{ name: string; url: string | null }> }
 
-/* HYBRID OUTCOME MODE (?hybrid=1): prove the kingdom-specific production
-   contract with real crosses. Fauna lineage stays on the lineage-aware
-   verbatim renderer; flora/fungi/microbe lineage uses its exact named owner
-   with the child genome. A stripped child must take a different procedural
-   outcome, and final data URLs catch cache collisions between full genomes. */
+/* HYBRID OUTCOME MODE (?hybrid=1): prove the set-qualified production contract
+   with real crosses. Seven Platinum-reviewed fauna lineages use their modern
+   named whole-form owner; every other fauna lineage retains the compatibility
+   renderer, while flora/fungi/microbe use their exact named owner. A stripped
+   child must take a different procedural outcome, and final data URLs catch
+   cache collisions between full genomes. */
 async function hybridBlendAudit(): Promise<void> {
   type K = 'fauna' | 'flora' | 'fungi' | 'microbe';
   type G = Record<string, unknown>;
@@ -59,6 +60,11 @@ async function hybridBlendAudit(): Promise<void> {
     typeof genome._earthName === 'string' ? `named-${owner}`
       : typeof genome._earthBlend === 'string' ? `lineage-${owner}`
         : `procedural-${owner}`;
+  const reviewedFaunaLineages = new Set([
+    'Fruit Bat', 'Eagle', 'Wolf', 'Elephant', 'Chameleon', 'Dragonfly', 'Octopus',
+  ]);
+  const expectedLineageRoute = (owner: K, name: string): 'lineage-owned' | 'lineage-verbatim' =>
+    owner !== 'fauna' || reviewedFaunaLineages.has(name) ? 'lineage-owned' : 'lineage-verbatim';
 
   let proceduralBase: G | null = null;
   let procedural = '';
@@ -106,7 +112,8 @@ async function hybridBlendAudit(): Promise<void> {
       const fresh = freshRoute(genome);
       const production = speciesPortrait(genome);
       const repeated = speciesPortrait(genome);
-      const expectedOwner = stageIndex === 0 || spec.kingdom !== 'fauna' ? 'owned' : 'verbatim';
+      const expectedOwner = stageIndex === 0 || expectedLineageRoute(spec.kingdom, spec.name) === 'lineage-owned'
+        ? 'owned' : 'verbatim';
       const stripped = stageIndex === 0 ? null : stripLineage(genome);
       const strippedFresh = stripped ? freshRoute(stripped) : null;
       const strippedProduction = stripped ? speciesPortrait(stripped) : '';
@@ -157,7 +164,7 @@ async function hybridBlendAudit(): Promise<void> {
       const production = speciesPortrait(child);
       const stripped = stripLineage(child);
       const strippedPixels = speciesPortrait(stripped);
-      const expectedOwner = kingdom === 'fauna' ? 'verbatim' : 'owned';
+      const expectedOwner = expectedLineageRoute(kingdom, spec.name) === 'lineage-owned' ? 'owned' : 'verbatim';
       return {
         kingdom,
         seed: child.seed,
@@ -184,7 +191,7 @@ async function hybridBlendAudit(): Promise<void> {
     const fresh = freshRoute(child);
     const production = speciesPortrait(child);
     const stripped = stripLineage(child);
-    const expectedRoute = expectedOwner === 'fauna' ? 'lineage-verbatim' : 'lineage-owned';
+    const expectedRoute = expectedLineageRoute(expectedOwner, expectedLineage);
     return {
       label,
       childKingdom: child.kingdom,
@@ -240,6 +247,37 @@ async function hybridBlendAudit(): Promise<void> {
       (['flora', 'microbe'] as const).map((childKingdom, childIndex) =>
         findDuplicateMixed(order, owner, childKingdom, 20 + orderIndex * 4 + ownerIndex * 2 + childIndex))));
 
+  /* The two externally approved fauna rows are explicit compatibility controls.
+     Exercise all four real crosses so the bounded seven-name migration cannot
+     silently widen into a kingdom-wide route change. */
+  const protectedFaunaLineages = ['Sea Turtle', 'Great White Shark'].map((name, index) => {
+    const earth = named(0xEA7601 + index * 0x100, 'fauna', name);
+    const earthMate = named(0xEA7602 + index * 0x100, 'fauna', name);
+    const alien1 = alien(0xA11601 + index * 0x100, 'fauna', 1);
+    const alien2 = alien(0xA11602 + index * 0x100, 'fauna', 2);
+    const alien3 = alien(0xA11603 + index * 0x100, 'fauna', 3);
+    const earthEarth = cross(earth, earthMate);
+    const earthAlien = cross(earth, alien1);
+    const nextAlien = cross(earthAlien, alien2);
+    const floor = cross(nextAlien, alien3);
+    const genomes = [earth, earthEarth, earthAlien, nextAlien, floor];
+    return {
+      name,
+      stages: genomes.map((genome, stageIndex) => {
+        const fresh = freshRoute(genome), production = speciesPortrait(genome);
+        return {
+          id: stageIds[stageIndex],
+          anchor: stageIndex === 0 ? 1 : Number(genome._anchorVal),
+          route: routeLabel(genome, fresh.owner),
+          expectedRoute: stageIndex === 0 ? 'named-owned' : 'lineage-verbatim',
+          productionMatchesFresh: production === fresh.pixels,
+          repeatedProductionStable: production === speciesPortrait(genome),
+          lineage: typeof genome._earthBlend === 'string' ? genome._earthBlend : genome._earthName,
+        };
+      }),
+    };
+  });
+
   const faunaFocus = focusLineages[0]!;
   const earthWolf = faunaFocus.parents.earth;
   const alienFauna = faunaFocus.parents.alien1;
@@ -280,8 +318,8 @@ async function hybridBlendAudit(): Promise<void> {
   });
   const checks = {
     proceduralControlDiffersFromVerbatim: procedural !== proceduralVerbatim,
-    productionBlendEqualsVerbatim:
-      earthAlienPixels === verbatimSpeciesPortraitForAudit(earthAlien),
+    reviewedFaunaBlendUsesOwnedRoute:
+      resolveOverride(earthAlien as never) === earthAlienPixels,
     blendDiffersFromProcedural: earthAlienPixels !== procedural,
     lineagesHaveDistinctPixels: earthAlienPixels !== speciesPortrait(eagleChild),
     anchorValuesHaveDistinctPixels: earthAlienPixels !== speciesPortrait(grandchild),
@@ -298,8 +336,16 @@ async function hybridBlendAudit(): Promise<void> {
     faunaAndFloraCrossesCovered:
       focusLineages.some((row) => row.kingdom === 'fauna') && focusLineages.some((row) => row.kingdom === 'flora'),
     allKingdomsCovered: new Set(focusLineages.map((row) => row.kingdom)).size === 4,
-    faunaUsesVerbatimLineageRoute:
-      faunaFocus.stages.slice(1).every((stage) => stage.route === 'lineage-verbatim'),
+    reviewedFaunaUsesOwnedLineageRoute:
+      faunaFocus.stages.slice(1).every((stage) => stage.route === 'lineage-owned'),
+    protectedFaunaUsesVerbatimLineageRoute:
+      protectedFaunaLineages.every((lineage) => lineage.stages.slice(1).every((stage) =>
+        stage.lineage === lineage.name && stage.route === 'lineage-verbatim'
+        && stage.expectedRoute === 'lineage-verbatim' && stage.productionMatchesFresh
+        && stage.repeatedProductionStable)),
+    purePathsStayNamedOwned:
+      focusLineages.every((lineage) => lineage.stages[0]?.route === 'named-owned')
+      && protectedFaunaLineages.every((lineage) => lineage.stages[0]?.route === 'named-owned'),
     nonFaunaUsesOwnedNamedRoute:
       nonFaunaStages.every((stage) => stage.route === 'lineage-owned'),
     nonFaunaProductionMatchesOwnedRoute:
@@ -367,6 +413,7 @@ async function hybridBlendAudit(): Promise<void> {
     })),
     mixedKingdomResults,
     duplicateMixedResults,
+    protectedFaunaLineages,
     nonFaunaRouteCoverage,
   };
   say(`hybrid blend audit: ${errors.length ? 'FAIL ' + errors.join(', ') : 'PASS'}`);

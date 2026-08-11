@@ -1715,3 +1715,27 @@ duplicates).
   consumer and a repeated symbol outside it. This sentinel assumes standard unmodified platform
   intrinsics and approved dependency implementations; arbitrary hostile monkey-patching, dependency
   poisoning, and visual correctness remain outside its static claim.**
+
+- ★★★ **D-ART-188 — CORRECT LINEAGE METADATA DOES NOT PROVE CONTINUOUS LINEAGE PIXELS; BIND
+  THE PURE AND BRED STAGES TO ONE REVIEWED WHOLE-FORM OWNER.** (2026-08-11, Platinum
+  current-generation review.) The clean `79ce144` package carried correct deterministic
+  `_earthBlend`, `_earthBlendKingdom`, `_anchorVal`, cache identity, and fresh/repeat hashes, yet
+  Fruit Bat, Eagle, Wolf, Dragonfly and Octopus visibly replaced their pure modern scaffold at the
+  first bred stage. The router admitted `_earthBlend` directly only for flora/fungi/microbe; fauna
+  therefore fell through to a retained HD compatibility painter while `_earthName` pure rows used
+  newer exact-name whole forms. Distinct hashes proved change, not continuity. The governing review
+  is preserved at
+  `reference/Celestial_Frontier_Current_Full_Generations_Platinum_Review_2026-08-10.md`, SHA-256
+  `5af3a33f0648f96115a421ea64cc70f97846f62e89dc8631deeb310103c708c2`.
+
+  The repair is deliberately not a catalogue-wide fauna migration. Only the seven reviewed rows
+  (Fruit Bat, Eagle, Wolf, Elephant, Chameleon, Dragonfly, Octopus) move through their modern
+  set-qualified owner and a deterministic anchor-bounded trait adapter; Sea Turtle and Great White
+  Shark remain frozen on the compatibility route that the same reviewer passed. Pure named pixels
+  are protected. Apple, Vanilla Orchid and Oyster Mushroom receive stronger bred-only progressive
+  drift, and Amoeba becomes the principal microbe row. Schema v4 therefore binds 13×5 principal
+  stages and 251 hybrid assets and negative-controls both a reviewed-fauna fallback and a protected-
+  fauna migration. **A route/seed/hash gate can establish provenance and determinism; continuity
+  requires the exact pure-to-bred whole-form sequence under a versioned human ruler. Preserve old
+  verdicts as historical evidence, mark them stale for the broader scope, and write a new immutable
+  package instead of overwriting either one.**

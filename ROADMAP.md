@@ -21,7 +21,7 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-10 · WAVE 2E MAC RESUME FAIL-CLOSED ON NON-PORTABLE BASELINE ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-11 · PLATINUM REPAIR HUMAN PASS RECEIVED; PR #10 READY FOR REVIEW ◀◀◀
 
 ## ★ COLD START — READ THIS BLOCK, THEN THE LINKED REFERENCES
 ## Workspace: /Users/nick/Projects/celestial-frontier-openai-mac
@@ -31,12 +31,26 @@
 ## 2ed0f288a95c327aa892e8b3b54ce94f626f1ab7. Wave 2e's static checkpoint is 5db9039 and
 ## reached develop through merged PR #8 at bb1a980. The Mac resume verified all four frozen art
 ## hashes, then stopped before post-edit rendering because the documented 288-row pre-edit evidence
-## was ignored and never crossed Git. The overridecheck parser false-positive is repaired and
-## independently post-edit reviewed; no art source moved. A separate current-generation review ZIP
-## now exists from clean evidence commit 79ce144, with the production-anchor packager repair at
-## 60b16ce; it is explicitly CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED and is not Wave 2e A/B.
-## Draft PR #9 is open from openai/mac into develop. No reset merge, new 1,250-row verdict tally,
-## final certification package, release, deployment, or version bump exists. Read next: PROCESS_LAWS.md ·
+## was ignored and never crossed Git. Merged PR #9 integrated the scanner/tooling and first
+## current-review-package repair into develop at 989142d. The exact independent Platinum review of
+## that archive is now preserved at
+## `port/v2/reference/Celestial_Frontier_Current_Full_Generations_Platinum_Review_2026-08-10.md`
+## (SHA-256 `5af3a33f0648f96115a421ea64cc70f97846f62e89dc8631deeb310103c708c2`).
+## It correctly rejects Platinum: Sugar Glider, Flying Squirrel and Colugo lacked whole-form family
+## separation, and the focused hybrid matrix did not prove gradual continuity. The bounded repair
+## candidate now gives those gliders distinct whole forms; migrates exactly seven reviewed fauna
+## lineages to their modern named owners while freezing Sea Turtle/Great White Shark; strengthens
+## Apple, Vanilla Orchid and Oyster Mushroom drift; and adds Amoeba as the principal microbe row.
+## Schema v4 is 13×5 /251 hybrid assets. Clean source `03ea297e4f8ec61461310b0312a7363027ce90e3`
+## produced the sealed 2,163-PNG successor archive (470,045,987 bytes; SHA-256
+## `ef7a6e9bb720ab6e6e1497569ade194b471ed7ab63449ee94ea5c94c57372f4b`). Its immutable
+## preparation status remains `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED`. The exact supplied human
+## review is preserved at `port/v2/reference/Celestial_Frontier_Current_Platinum_Repair_All_Pass_Review_2026-08-11.md`
+## (SHA-256 `1c6c49e74270e9c69800de5b10b031aacf73a7a30937350086e97bc712823b3f`) and returns
+## **PASS with optional polish only / APPROVE** with no blocker-level issue. That judgment is a
+## separate package-level overlay, not a formal 1,250-row certification or a rewrite of the sealed
+## archive. Wave 2e's absent baseline remains separately blocked; no release, deployment, or version
+## bump exists. Draft PR #10 carries this repair from openai/mac into develop. Read next: PROCESS_LAWS.md ·
 ## PARALLEL_GIT_PROTOCOL.md · port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md ·
 ## ART_DIRECTION.md · PROCEDURAL_CHARACTERISTICS.md · LINEAGE_AND_BREEDING.md ·
 ## port/PROPORTION_ARC.md · port/HANDOFF_NEXT_SESSION.md · port/v2/DEVIATIONS.md · port/v2/README.md.
@@ -198,37 +212,83 @@
 ##    portraits (631 fauna +332 flora +27 fungi +20 microbe +240 procedural), 196 catalogue strips,
 ##    466 official layout sheets, and 234 representative hybrid assets. Its manifest says
 ##    `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED`, hybrid continuity remains OPEN, and its blank
-##    review template is hash-bound. It contains no carried verdict/certification material and does
+##    review template is hash-bound. Under its recorded clean-source producer trust boundary it
+##    contains no completed-verdict artifact or completed-status/schema field, and it does
 ##    not replace the absent Wave 2e baseline, old/current A/B, or final all-PASS certification ZIP.
 
+## ★ PLATINUM FEEDBACK REPAIR — SOURCE/EVIDENCE COMPLETE; EXTERNAL HUMAN VERDICT PASS
+## 1. The governing ruler is the preserved `Celestial_Frontier_Current_Full_Generations_Platinum_Review_2026-08-10.md`
+##    at SHA-256 `5af3a33f0648f96115a421ea64cc70f97846f62e89dc8631deeb310103c708c2`.
+##    Both supplied reviews remain byte-exact. The first retains hard-break spaces on lines 3–4;
+##    the returned review retains them on lines 3, 4, 99, 108, 117, 129, 138, 147 and 157. Staged
+##    whitespace verification excludes only these two immutable artifacts and pairs that exclusion
+##    with exact `cmp` and SHA-256 checks.
+##    The reviewed archive remains sealed historical evidence at source `79ce144` /archive SHA-256
+##    `18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`; its narrower
+##    focused checks were real but insufficient for the expanded whole-form/continuity ruler.
+## 2. Sugar Glider, Flying Squirrel and Colugo now use three distinct whole-form painters. Sugar
+##    keeps a possum face/stripe and independent plume; Flying Squirrel has squirrel skull/digits,
+##    four-corner patagia and a flattened rudder tail; Colugo uses a continuous neck/digit/toe/tail
+##    membrane. The glider gate freezes Bat/Fruit Bat/Insect-Eating Bat/Vampire Bat plus same-owner
+##    rodent/quadruped controls, and requires two clean repeat-exact post-edit captures.
+## 3. Exactly Fruit Bat, Eagle, Wolf, Elephant, Chameleon, Dragonfly and Octopus marked fauna
+##    hybrids now retain their modern named whole-form owner through all four bred stages. Sea
+##    Turtle and Great White Shark remain exact on the reviewed legacy route; no global fauna
+##    migration occurred. Apple, Vanilla Orchid and Oyster Mushroom receive stronger bounded
+##    anchor drift, and Amoeba is the new principal microbe five-stage row.
+## 4. Hybrid evidence schema v4 is 13 lineages ×5 stages /65 principal portraits /251 assets. Final
+##    clean-commit evidence is 5/5 pixel-unique on every row, production=fresh/repeat-stable, preserves
+##    all 36 available pure portrait/card/silhouette artifacts and all 30 Sea Turtle/Great White
+##    artifacts exactly, and binds joins to the actual Eagle, Chameleon, Dragonfly and Amoeba anatomy.
+## 5. The successor current-only package is exactly 2,163 PNGs =1,250 portraits +196 catalogue
+##    strips +466 layout sheets +251 hybrid assets. It accepts only exact generated blank review
+##    inputs, deep-reverifies after extraction, publishes outside the repository with a ZIP sidecar,
+##    and records `FRESH_FOR_CURRENT` only while source, producer, ruler and exact six-field browser
+##    provenance match. `--freshness=<zip-or-root>` reports the first `STALE_FOR_CURRENT` binding;
+##    stale history is retained, never overwritten or silently called corrupt. Source `03ea297` made
+##    `Celestial_Frontier_Current_Platinum_Repair_Full_Generations_Review_2026-08-11_03ea297.zip`,
+##    470,045,987 bytes at SHA-256 `ef7a6e9bb720ab6e6e1497569ade194b471ed7ab63449ee94ea5c94c57372f4b`.
+##    This review-document commit advances HEAD, so a later live `--freshness` check correctly reports
+##    `STALE_FOR_CURRENT: source commit differs`; that does not invalidate the sealed reviewed bytes.
+## 6. The byte-exact returned review at SHA-256 `1c6c49e74270e9c69800de5b10b031aacf73a7a30937350086e97bc712823b3f`
+##    names that archive and source and returns **PASS with optional polish only / APPROVE**. Horse
+##    stiffness, Colugo geometry, Eagle sharpness and conservative lower-anchor plant/fungus drift
+##    are optional polish, not blockers. The review has no embedded reviewer identity or ZIP digest;
+##    it assesses manifest completeness, high-risk categories and overall readiness rather than
+##    attesting individual inspection of every PNG. This handoff cross-binds both hashes but does not
+##    call it `fullresetreview --certify` output.
+
 ## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
-## Current side: OpenAI/Codex on macOS, branch openai/mac — scanner repair 1e1497e, portable evidence
-## producer/package 79ce144, and anchor-tolerance repair 60b16ce are committed, pushed, independently
-## reviewed, and synchronized. The requested current-only archive is complete and deep-reverified.
-## Post-edit Wave 2e art review remains blocked because the ignored sealed baseline did not cross machines.
-## GitHub step: draft PR #9 is open at https://github.com/TheDakk/Celestial-Frontier/pull/9. Nick
-## reviews it and, only when satisfied, merges it into develop; never merge it automatically.
-## PR details: base `develop`; source `openai/mac`; title `Repair Wave 2e review tooling and add
-## current-generation package`; description `Replaces the Wave 2e override scanner with pinned
-## Rolldown/Oxc full-TypeScript AST validation and the complete fail-closed control suite while
-## preserving all four frozen art-source hashes and the missing-baseline boundary. Adds portable,
-## provenance-bound, atomic browser evidence producers plus a separate current-review packager.
-## Verification: overridecheck 1,014/1,014 routes and 1,010/1,010 species; overridecontrol through
-## CP with clean restoration; typecheck; artunused; Vitest 23 files/238 pass/1 skip; speccheck
-## 455/0/0; coveragegap 1,010/1,010; artaudit 23/0; browser/evidence/package selftests; root validate
-## including 1,010 renders and the 50-probe fingerprint; frozen SHA-256 checks; independent
-## adversarial reviews; and a real 472,304,848-byte archive deep-reverify. After review and merge,
-## Anthropic/Claude Code on anthropic/windows runs git fetch origin followed by git merge
-## origin/develop only from a clean worktree. The archive is CURRENT-ONLY / UNREVIEWED / NOT
-## CERTIFIED; no Wave 2e verdict,
-## release, or deployment is included.` Existing PR #9's title and description already match these
-## fields and need no change.
-## Other side: Anthropic/Claude Code on Windows, branch anthropic/windows, need not be opened now and
-## does not have the repair. After the PR merges, at its next batch and only from a clean worktree,
-## run `git fetch origin` then `git merge origin/develop`; if dirty, do not pull/switch/merge first.
+## Current side: OpenAI/Codex on macOS, branch openai/mac — draft PR #10 contains the Platinum
+## glider/lineage repair, schema-v4 evidence contract, long-term freshness gate, sealed clean-commit
+## evidence and the exact returned human PASS review. The package's embedded preparation fields remain
+## immutable; Wave 2e art review remains separately blocked because its ignored baseline did not cross machines.
+## GitHub step: review draft PR #10 at https://github.com/TheDakk/Celestial-Frontier/pull/10, click
+## **Ready for review**, then when satisfied choose the normal **Merge pull request** into develop
+## (no squash or rebase); never merge it automatically. PR #10's authoritative title/body are the
+## exact fields below; update GitHub if either differs.
+## PR details: base `develop`; source `openai/mac`; title `Address Platinum glider and lineage review`;
+## description `Implements the repairs required by the hash-bound Platinum review: three distinct
+## whole-form gliders; exact seven-fauna modern lineage routing with Sea Turtle and Great White Shark
+## protected; stronger Apple, Vanilla Orchid and Oyster Mushroom drift; and Amoeba as the principal
+## microbe row. Preserves the original feedback and exact returned PASS review at SHA-256
+## `1c6c49e74270e9c69800de5b10b031aacf73a7a30937350086e97bc712823b3f`; upgrades hybrid evidence to schema v4
+## (13x5 /251 assets) plus the current-only package to 2,163 PNGs with exact blank-input validation,
+## six-field browser provenance, non-overwriting sidecar publication and post-hoc freshness checks.
+## Verification: typecheck, Vitest, artunused, speccheck, coveragegap, artaudit, overridecheck and its
+## negative controls, hybrid browser audit, hybridmatrix/currentreviewpackage/gliderreview/browser
+## selftests, clean-commit capture/repeat/package verification, exact ZIP/sidecar recheck, byte-exact
+## review preservation, and git diff --check. External package-level review returned PASS with optional
+## polish; the sealed archive remains internally UNREVIEWED / NOT CERTIFIED and the missing Wave 2e
+## baseline remains blocked. After merge,
+## Anthropic/Claude Code synchronizes only from a clean anthropic/windows worktree with git fetch
+## origin then git merge origin/develop. No release, deployment, certification or version bump is
+## included.`
+## Other side: Anthropic/Claude Code on Windows, branch anthropic/windows, need not be opened now.
+## At its next coding batch and only from a clean worktree, run `git fetch origin` then
+## `git merge origin/develop`; if dirty, do not pull/switch/merge first.
 ## Evidence side: Nick does need to open OpenAI/Codex on Windows, branch openai/windows, now only to
 ## confirm a clean worktree and recover/package the exact ignored baseline and scoped producer. Do
 ## not copy source files, switch branches, or merge there.
-## Release status: develop remains at merged PR #8 / bb1a980 until draft PR #9 is reviewed and
-## merged. Main and the live site are unchanged. No release, deployment, certification, or version
-## bump occurred.
+## Release status: develop includes merged PR #9 at 989142d; Platinum repair draft PR #10 is pending.
+## Main and the live site are unchanged. No release, deployment, certification, or version bump occurred.

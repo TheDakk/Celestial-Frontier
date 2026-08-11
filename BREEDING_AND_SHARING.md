@@ -1,7 +1,7 @@
 # Celestial Frontier — Breeding & Sharing
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 art
-integration note below matches the reset source as of 2026-08-10. Carries v1.8.6
+integration note below matches the reset source as of 2026-08-11. Carries v1.8.6
 and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **See also:** `LINEAGE_AND_BREEDING.md` — the v1.6 Earth-lineage layer on top of `breedPair`:
 a child of an Earth parent keeps that parent's Earth RIG + wears the child's alien palette
@@ -12,28 +12,34 @@ a child of an Earth parent keeps that parent's Earth RIG + wears the child's ali
 **Purpose:** The husbandry loop (breeding, feeding, healing) that grows creatures and the player, and the cross-device code system (world codes, creature codes, champion codes, discovery records) that lets anyone regenerate the exact same life on any device.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
-> **2026-08-10 v2 reset correction:** genetics already wrote `_earthBlend` and
+> **2026-08-11 v2 reset/Platinum correction:** genetics already wrote `_earthBlend` and
 > `_anchorVal`, but a name alone could not identify one of the four duplicate
 > cross-kingdom Earth records, and the v2 art override could claim a child through
 > generic procedural routing before lineage rendering. The typed facade now records
 > `_earthBlendKingdom` at the deterministic lineage choice. Fauna returns to its HD
-> scaffold; flora/fungi/microbe use the exact set+name owner. Portrait/thumb caches
+> scaffold except for the exact reviewed set Fruit Bat, Eagle, Wolf, Elephant,
+> Chameleon, Dragonfly and Octopus, whose marked hybrids use their lineage-owned
+> modern painters; Sea Turtle and Great White Shark remain protected on the reviewed
+> legacy route. Flora/fungi/microbe use the exact set+name owner. Portrait/thumb caches
 > canonicalize the complete genome so different inherited traits, owners, Earth
 > scaffolds and anchors cannot share a texture. `npm run hybridcheck` drives
 > production browser pixels across every kingdom, parent orders, multi-generation,
-> duplicate-name and injected-failure cases. The guard now requires five exact ID+kingdom+name focused
-> lineages across all four kingdoms and rejects eleven injected negative controls.
+> duplicate-name and injected-failure cases. The live schema-v4 guard requires
+> 13 exact ID+kingdom+name five-stage lineages /251 assets across all four kingdoms,
+> including Amoeba as the principal microbe row. The former 12-lineage /234-asset
+> schema-v3 evidence remains sealed history, superseded for the broader Platinum ruler.
 > The focused Apple and Vanilla continuity blockers are independently closed:
 > Vanilla r6 passes at source SHA-256
 > `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`,
-> preserves its byte-exact pure portrait, and produces five unique, integrated,
-> progressively drifting stages in a 234/234-asset matrix stable in both browser
+> preserved its byte-exact pure portrait, and produced five unique, integrated,
+> progressively drifting stages in the historical 234/234-asset matrix stable in both browser
 > orders. Green Algae's earlier stop was a real schema-v2 harness contract bug,
 > not transient provenance; schema v3 repairs current-catalogue vs retained-
 > legacy-route ownership without undoing D-CAT-1, and its sentinels are green.
-> This proves the focused production outcomes, not seamless quality for every
-> possible bloodline. Full review remains open under
-> `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+> The source-`03ea297` successor's external review returned **PASS with optional
+> polish only**. Its sealed UNREVIEWED fields remain preparation metadata; the
+> representative matrix still does not prove every possible bloodline, and formal
+> reset certification remains open under `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
 ## 1. Overview
 Two coupled systems:

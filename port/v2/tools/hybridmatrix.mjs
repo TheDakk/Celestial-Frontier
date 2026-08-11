@@ -2,7 +2,7 @@
 
    Builds a fresh browser bundle, drives hybrid-matrix.html twice (forward
    output order, then reverse cache order after a real navigation), validates
-   the 12 x 5 production crossGenome matrix, and writes a NEW ignored evidence
+   the 13 x 5 production crossGenome matrix, and writes a NEW ignored evidence
    directory. It never awards a visual PASS or "seamless" verdict.
 
    Usage:
@@ -12,38 +12,62 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import http from 'node:http';
-import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
-import { execFileSync, execSync, spawn } from 'node:child_process';
+import { execFileSync, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { openChromiumCdp } from './browsercdp.mjs';
+import { HYBRID_REVIEW_LINEAGES } from './hybridreviewcontract.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const V2 = path.resolve(HERE, '..');
 const APP = path.join(V2, 'apps', 'game');
 const DIST = path.join(APP, 'dist');
 const SMOKE = path.join(APP, 'smoke');
-const BROWSER_SCHEMA = 'cf.hybrid-continuity.browser-report.v3';
-const EVIDENCE_SCHEMA = 'cf.hybrid-continuity.evidence.v3';
+const BROWSER_SCHEMA = 'cf.hybrid-continuity.browser-report.v4';
+const EVIDENCE_SCHEMA = 'cf.hybrid-continuity.evidence.v4';
 const NATIVE = 440;
 const CARD = 332;
 const STAGES = Object.freeze(['pure', 'earth-earth', 'earth-alien', 'next-alien', 'floor']);
 const ANCHORS = Object.freeze([1, 0.9, 0.73, 0.46, 0.22]);
-const LINEAGES = Object.freeze([
-  { id: 'fruit-bat', species: 'Fruit Bat', kingdom: 'fauna', challenge: 'head-graft' },
-  { id: 'eagle', species: 'Eagle', kingdom: 'fauna', challenge: 'dorsal-tail' },
-  { id: 'wolf', species: 'Wolf', kingdom: 'fauna', challenge: 'palette-contrast' },
-  { id: 'elephant', species: 'Elephant', kingdom: 'fauna', challenge: 'head-graft' },
-  { id: 'sea-turtle', species: 'Sea Turtle', kingdom: 'fauna', challenge: 'extra-eyes' },
-  { id: 'great-white-shark', species: 'Great White Shark', kingdom: 'fauna', challenge: 'dorsal-tail' },
-  { id: 'chameleon', species: 'Chameleon', kingdom: 'fauna', challenge: 'head-graft' },
-  { id: 'dragonfly', species: 'Dragonfly', kingdom: 'fauna', challenge: 'extra-eyes' },
-  { id: 'octopus', species: 'Octopus', kingdom: 'fauna', challenge: 'bulk-length' },
-  { id: 'apple', species: 'Apple', kingdom: 'flora', challenge: 'palette-contrast' },
-  { id: 'vanilla-orchid', species: 'Vanilla Orchid', kingdom: 'flora', challenge: 'head-graft' },
-  { id: 'oyster-mushroom', species: 'Oyster Mushroom', kingdom: 'fungi', challenge: 'bulk-length' },
-]);
+const LINEAGES = HYBRID_REVIEW_LINEAGES;
 const CACHE_IDS = Object.freeze(['dragonfly', 'eagle', 'elephant', 'fruit-bat', 'great-white-shark', 'wolf']);
+const OWNED_FAUNA_LINEAGES = new Set(['Fruit Bat', 'Eagle', 'Wolf', 'Elephant', 'Chameleon', 'Dragonfly', 'Octopus']);
+const PLATINUM_REVIEW = Object.freeze({
+  name: 'Celestial Frontier Current Full Generations Platinum Review',
+  file: 'reference/Celestial_Frontier_Current_Full_Generations_Platinum_Review_2026-08-10.md',
+  sha256: '5af3a33f0648f96115a421ea64cc70f97846f62e89dc8631deeb310103c708c2',
+  baseline_source_commit: '79ce14460998d653ee753e49e8f8016e754c82e4',
+  baseline_archive_sha256: '18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5',
+  disposition: 'REPAIR_REQUIRED_NOT_PLATINUM',
+});
+const PLATINUM_REVIEW_FILE = path.join(V2, PLATINUM_REVIEW.file);
+const BROWSER_CDP_FILE = path.join(HERE, 'browsercdp.mjs');
+const BROWSER_PATH_FILE = path.join(HERE, 'browserpath.mjs');
+const HYBRID_REVIEW_CONTRACT_FILE = path.join(HERE, 'hybridreviewcontract.mjs');
+const VISUAL_CLAIM = 'No seamlessness or art PASS is awarded by this evidence tool.';
+const CLEAN_SOURCE_CLAIM = 'Clean working tree at the recorded commit.';
+const DIRTY_SOURCE_CLAIM = 'UNCOMMITTED WORKING TREE - file and pixel hashes identify this capture; rerun from the clean committed tree before certification.';
+const RESIDUAL_CONTINUITY_RISKS = Object.freeze([
+  'Flora, fungi and microbe hybrids keep the exact named Earth owner; anchor drift reaches that owner only through inherited child genome, seed and palette values that the painter actually reads.',
+  'A low-anchor non-fauna hybrid may retain an exact Earth silhouette or ignore some reversed-parent trait differences. This is review evidence, not a seamlessness claim.',
+  'Apple remains in the principal 13x5 matrix but is excluded from the cache subset because its same-seed AB/BA expected pixels were identical; using it as a collision control would be vacuous.',
+]);
+const NEGATIVE_CONTROLS = Object.freeze({
+  stripped_lineage_bypass: 'rejected for every hybrid stage',
+  reviewed_fauna_owner_bypass: 'rejected for the seven Platinum-reviewed fauna lineages',
+  protected_fauna_route_drift: 'rejected for Sea Turtle and Great White Shark',
+  principal_microbe_omission: 'rejected by the exact Amoeba lineage identity/count contract',
+  seed_only_cache_key: 'rejected by six same-seed/different-trait AB/BA pairs',
+  carried_or_handwritten_lineage: 'rejected by exact input provenance and repeated production crosses',
+  mixed_owner_marker_loss: 'rejected by exact _earthBlendKingdom lineage-owner checks',
+  mixed_child_kingdom_route_bypass: 'rejected by owner-derived route checks in both parent orders and both child kingdoms',
+  duplicate_name_owner_bypass: 'rejected by Green Algae markerless and counterfactual-owner pixel controls',
+  visual_boundary: 'machine output remains UNREVIEWED',
+});
+const BROWSER_FIELDS = Object.freeze([
+  'executable', 'product', 'revision', 'user_agent', 'js_version', 'protocol_version',
+]);
 const MIXED_SENTINELS = Object.freeze([
   { id: 'apple-earth-first-child-flora', kind: 'single-lineage-owner', name: 'Apple', owner: 'flora', other: 'fauna', order: 'earth-first', child: 'flora', salt: 1 },
   { id: 'apple-earth-first-child-fauna', kind: 'single-lineage-owner', name: 'Apple', owner: 'flora', other: 'fauna', order: 'earth-first', child: 'fauna', salt: 2 },
@@ -63,11 +87,11 @@ const MIXED_SENTINELS = Object.freeze([
       })))),
 ]);
 const ASSET_COUNTS = Object.freeze({
-  portrait: 60,
-  card: 60,
-  silhouette: 60,
-  'lineage-sheet': 12,
-  'join-atlas': 12,
+  portrait: 65,
+  card: 65,
+  silhouette: 65,
+  'lineage-sheet': 13,
+  'join-atlas': 13,
   'cache-portrait': 12,
   'cache-sheet': 1,
   'mixed-portrait': 16,
@@ -88,6 +112,10 @@ const SOURCE_FILES = Object.freeze([
   path.join(APP, 'package.json'),
   path.join(V2, 'package.json'),
   path.join(V2, 'package-lock.json'),
+  BROWSER_CDP_FILE,
+  BROWSER_PATH_FILE,
+  HYBRID_REVIEW_CONTRACT_FILE,
+  PLATINUM_REVIEW_FILE,
   fileURLToPath(import.meta.url),
 ]);
 const SHA = /^[0-9a-f]{64}$/;
@@ -96,6 +124,37 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 function fail(message) { throw new Error(message); }
 function assert(condition, message) { if (!condition) fail(message); }
 function isObject(value) { return value !== null && typeof value === 'object' && !Array.isArray(value); }
+function exactObjectKeys(value, expected, where) {
+  assert(isObject(value), `${where}: expected an object`);
+  assert(canonical(Object.keys(value).sort()) === canonical([...expected].sort()),
+    `${where}: keys are incomplete or unexpected`);
+}
+const FORBIDDEN_COMPLETED_REVIEW_KEYS = new Set([
+  'approval', 'approved_by', 'band', 'certification', 'certification_status', 'certified',
+  'certified_by', 'human_verdict', 'reason', 'review_complete', 'reviewed_at',
+  'reviewed_at_utc', 'reviewed_by', 'reviewer', 'reviewer_notes', 'release_signoff', 'signoff',
+  'verdict', 'verdicts',
+]);
+function rejectEmbeddedCompletedReview(value, where, trail = []) {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => rejectEmbeddedCompletedReview(item, where, [...trail, String(index)]));
+    return;
+  }
+  if (!isObject(value)) {
+    if (typeof value === 'string') assert(!/^\s*(?:PASS|POLISH|FAIL|CERTIFIED|APPROVED|ACCEPTED)\s*$/i.test(value)
+      && !/\b(?:awarded|returned|rated|judged|reviewed as|certified as)\s+(?:a\s+)?(?:PASS|POLISH|FAIL|CERTIFIED|APPROVED)\b/i.test(value)
+      && !/\b(?:verdict|band|status|assessment|outcome|judg(?:e)?ment)\s*[:=-]\s*(?:PASS|POLISH|FAIL|CERTIFIED|APPROVED|ACCEPTED)\b/i.test(value)
+      && !/\b(?:Platinum\s+approved|approved\s+by|release\s+approved|sign[- ]?off|certification\s+approved)\b/i.test(value),
+    `${where}: embedded completed-review value is forbidden at ${trail.join('.') || '<root>'}`);
+    return;
+  }
+  for (const [key, child] of Object.entries(value)) {
+    const next = [...trail, key];
+    assert(!FORBIDDEN_COMPLETED_REVIEW_KEYS.has(key.toLowerCase()),
+      `${where}: embedded completed-review field is forbidden at ${next.join('.')}`);
+    rejectEmbeddedCompletedReview(child, where, next);
+  }
+}
 function portable(value) { return value.split(path.sep).join('/'); }
 function sha256(value) { return crypto.createHash('sha256').update(value).digest('hex'); }
 function canonical(value) {
@@ -109,6 +168,22 @@ function canonical(value) {
   return JSON.stringify(value);
 }
 function genomeHash(genome) { return sha256(canonical(genome)); }
+function validatePlatinumReview(value = PLATINUM_REVIEW) {
+  assert(canonical(value) === canonical(PLATINUM_REVIEW),
+    'Platinum review contract changed or is incomplete');
+  assert(fs.existsSync(PLATINUM_REVIEW_FILE)
+    && sha256(fs.readFileSync(PLATINUM_REVIEW_FILE)) === PLATINUM_REVIEW.sha256,
+    'Platinum review file is missing or differs from its frozen SHA-256');
+}
+function validateBrowserProvenance(raw) {
+  assert(isObject(raw) && canonical(Object.keys(raw).sort()) === canonical([...BROWSER_FIELDS].sort()),
+    'browser provenance keys are incomplete or unexpected');
+  for (const field of BROWSER_FIELDS) nonempty(raw[field], `browser.${field}`);
+  const executable = String(raw.executable);
+  assert(!executable.includes('\\')
+    && (path.posix.isAbsolute(executable) || /^[A-Za-z]:\//.test(executable)),
+  'browser.executable must be a canonical portable absolute path');
+}
 function derivePixelIdentityGroups(stages) {
   const byHash = new Map();
   for (const stage of stages) {
@@ -158,13 +233,54 @@ function expectedAssetDimensions(kind) {
   if (kind === 'mixed-sheet') return { width: 880, height: 1160 };
   fail(`unknown asset kind ${JSON.stringify(kind)}`);
 }
+const EVIDENCE_GENOME_KEYS = new Set([
+  'seed', 'kingdom', 'color', 'form', 'body', 'loco', 'trait', 'size', 'diet', 'head', 'limbs',
+  'skin', 'tail', 'pattern', 'eyes', 'behavior', 'habitat', 'detail', 'accent', 'temper', 'sense',
+  'repro', 'life', 'metab', 'lumin', 'gen', 'heat', 'x', 'aq', 'af', 'wild', 'apex', 'par', 'ep',
+  'evolved', 'parents', '_earthName', '_earthBlend', '_earthBlendKingdom', '_anchorVal', '_src',
+]);
+const SOURCE_ATTR_KEYS = new Set([
+  'kingdom', 'color', 'form', 'body', 'loco', 'trait', 'size', 'diet', 'head', 'limbs', 'skin',
+  'tail', 'pattern', 'eyes', 'behavior', 'habitat', 'detail', 'accent', 'heat',
+]);
+const CACHE_GENE_KEYS = Object.freeze(['kingdom', 'color', 'form', 'body', 'loco', 'trait', 'size',
+  'diet', 'head', 'limbs', 'skin', 'tail', 'pattern', 'eyes', 'behavior', 'habitat',
+  'detail', 'accent', 'lumin', 'heat']);
+function validateEvidenceGenome(genome, where) {
+  assert(isObject(genome), `${where}: expected an object`);
+  for (const key of Object.keys(genome)) assert(EVIDENCE_GENOME_KEYS.has(key),
+    `${where}: unsupported genome field ${JSON.stringify(key)}`);
+  for (const key of ['seed', 'color', 'form', 'body', 'loco', 'trait', 'size', 'diet', 'head', 'limbs',
+    'skin', 'tail', 'pattern', 'eyes', 'behavior', 'habitat', 'detail', 'accent', 'temper', 'sense',
+    'repro', 'life', 'metab', 'gen', 'heat']) if (Object.hasOwn(genome, key)) assert(
+    typeof genome[key] === 'number' && Number.isFinite(genome[key]), `${where}.${key}: expected finite number`);
+  assert(typeof genome.kingdom === 'string' && genome.kingdom.length > 0,
+    `${where}.kingdom: expected nonempty string`);
+  if (Object.hasOwn(genome, 'lumin')) assert(typeof genome.lumin === 'boolean', `${where}.lumin: expected boolean`);
+  for (const key of ['x', 'aq', 'af', 'wild', 'apex', 'par', 'ep']) if (Object.hasOwn(genome, key)) assert(
+    typeof genome[key] === 'number' || typeof genome[key] === 'boolean', `${where}.${key}: invalid marker`);
+  if (Object.hasOwn(genome, 'evolved')) assert(typeof genome.evolved === 'boolean', `${where}.evolved: expected boolean`);
+  if (Object.hasOwn(genome, 'parents')) assert(Array.isArray(genome.parents)
+    && genome.parents.every((seed) => Number.isInteger(seed)), `${where}.parents: expected integer seeds`);
+  for (const key of ['_earthName', '_earthBlend', '_earthBlendKingdom']) if (Object.hasOwn(genome, key)) assert(
+    typeof genome[key] === 'string' && genome[key].length > 0, `${where}.${key}: expected nonempty string`);
+  if (Object.hasOwn(genome, '_anchorVal')) assert(typeof genome._anchorVal === 'number'
+    && Number.isFinite(genome._anchorVal), `${where}._anchorVal: expected finite number`);
+  if (Object.hasOwn(genome, '_src')) {
+    assert(isObject(genome._src), `${where}._src: expected an object`);
+    for (const [key, value] of Object.entries(genome._src)) assert(SOURCE_ATTR_KEYS.has(key)
+      && (value === 0 || value === 1), `${where}._src: unsupported ancestry field ${JSON.stringify(key)}`);
+  }
+}
 function checkGenomeHash(record, where) {
   assert(isObject(record), `${where}: expected an object`);
   assert(isObject(record.genome), `${where}.genome: expected an object`);
+  validateEvidenceGenome(record.genome, `${where}.genome`);
   assert(SHA.test(record.genome_sha256), `${where}.genome_sha256: invalid SHA-256`);
   assert(record.genome_sha256 === genomeHash(record.genome), `${where}: stale full-genome SHA-256`);
 }
 function validateInput(input, spec, row, where) {
+  exactObjectKeys(input, ['id', 'genome', 'genome_sha256', 'derivation'], where);
   checkGenomeHash(input, where);
   const id = nonempty(input.id, `${where}.id`);
   assert(isObject(input.derivation), `${where}.derivation: expected an object`);
@@ -175,7 +291,11 @@ function validateInput(input, spec, row, where) {
   assert(Number.isInteger(genome.heat) && genome.heat >= 0 && genome.heat <= 2, `${where}: invalid heat`);
   assert(genome.seed === derivation.seed, `${where}: derivation seed differs from genome`);
   if (id === 'pure') {
+    exactObjectKeys(derivation, ['kind', 'formula', 'kingdom_index', 'catalogue_index', 'heat', 'seed',
+      'exact_name_matches'], `${where}.derivation`);
     assert(derivation.kind === 'catalogue-makeGenome', `${where}: wrong pure derivation`);
+    assert(derivation.formula === 'hashInt(0xEA47,catalogueIndex,kingdomIndex)',
+      `${where}: wrong pure seed formula`);
     assert(Number.isInteger(derivation.catalogue_index) && derivation.catalogue_index >= 0,
       `${where}: invalid catalogue index`);
     assert(Number.isInteger(derivation.kingdom_index) && derivation.kingdom_index >= 0,
@@ -187,16 +307,24 @@ function validateInput(input, spec, row, where) {
       `${where}: pure Earth lineage fields are invalid`);
     assert(derivation.exact_name_matches === 1, `${where}: catalogue identity was not exact and unique`);
   } else if (id === 'earth-mate') {
+    exactObjectKeys(derivation, ['kind', 'formula', 'row', 'catalogue_index', 'heat', 'seed'],
+      `${where}.derivation`);
     assert(derivation.kind === 'named-earth-makeGenome', `${where}: wrong Earth-mate derivation`);
+    assert(derivation.formula === 'hashInt(0xEA7E,row,catalogueIndex)' && derivation.row === row,
+      `${where}: wrong Earth-mate seed formula`);
     const expected = hashInt(0xEA7E, row, derivation.catalogue_index);
     assert(genome.seed === expected, `${where}: Earth-mate seed formula mismatch`);
     assert(genome._earthName === spec.species && genome._earthBlend === undefined
       && genome._earthBlendKingdom === undefined && genome._anchorVal === undefined,
       `${where}: Earth-mate lineage fields are invalid`);
   } else if (/^alien-[123]$/.test(id)) {
+    exactObjectKeys(derivation, ['kind', 'formula', 'row', 'slot', 'attempt', 'heat', 'seed', 'predicate'],
+      `${where}.derivation`);
     const slot = Number(id.slice(-1));
     assert(derivation.kind === 'alien-seed-search' && derivation.row === row && derivation.slot === slot,
       `${where}: wrong alien search provenance`);
+    assert(derivation.formula === 'hashInt(0xA11E57,row*10000+slot*1000+attempt,0x4D)',
+      `${where}: wrong alien seed formula`);
     assert(Number.isInteger(derivation.attempt) && derivation.attempt >= 0 && derivation.attempt < 512,
       `${where}: invalid search attempt`);
     const expected = hashInt(0xA11E57, row * 10000 + slot * 1000 + derivation.attempt, 0x4D);
@@ -219,6 +347,9 @@ function parentSeeds(stageId, stages, inputs) {
   return [];
 }
 function validateStage(stage, spec, stageIndex, stages, inputs, where) {
+  exactObjectKeys(stage, ['lineage_id', 'identity', 'stage_id', 'stage_index', 'anchor',
+    'genome', 'genome_sha256', 'portrait_path', 'card_path', 'silhouette_path', 'route', 'owned',
+    'production_matches_fresh', 'repeated_render_stable', 'portrait_sha256', 'stripped_lineage_control'], where);
   checkGenomeHash(stage, where);
   const stageId = STAGES[stageIndex];
   assert(stage.stage_id === stageId && stage.stage_index === stageIndex,
@@ -234,7 +365,7 @@ function validateStage(stage, spec, stageIndex, stages, inputs, where) {
       && genome._earthBlendKingdom === undefined && genome._anchorVal === undefined,
       `${where}: pure stage lineage fields invalid`);
     assert(stage.genome_sha256 === inputs[0].genome_sha256, `${where}: pure stage is not the exact catalogue input`);
-    assert(stage.route === 'named-owned' || stage.route === 'named-verbatim', `${where}: pure stage used a non-named route`);
+    assert(stage.route === 'named-owned', `${where}: pure stage must use the exact named owner route`);
     assert(stage.stripped_lineage_control === null, `${where}: pure stage has a hybrid bypass control`);
   } else {
     assert(genome._earthName === undefined && genome._earthBlend === spec.species
@@ -246,17 +377,20 @@ function validateStage(stage, spec, stageIndex, stages, inputs, where) {
     const expectedParents = parentSeeds(stageId, stages, inputs);
     assert(Array.isArray(genome.parents) && canonical(genome.parents) === canonical(expectedParents),
       `${where}: production parent seed chain is invalid`);
-    assert(stage.route === 'lineage-owned' || stage.route === 'lineage-verbatim',
-      `${where}: hybrid took a generic procedural route`);
+    assert(stage.route === expectedLineageRoute(spec.kingdom, spec.species),
+      `${where}: hybrid used the wrong reviewed lineage route`);
     assert(isObject(stage.stripped_lineage_control)
       && stage.stripped_lineage_control.differs_from_lineage === true
       && /^procedural-(owned|verbatim)$/.test(stage.stripped_lineage_control.route)
       && SHA.test(stage.stripped_lineage_control.portrait_sha256)
       && stage.stripped_lineage_control.portrait_sha256 !== stage.portrait_sha256,
     `${where}: injected hybrid-bypass negative control was accepted`);
+    exactObjectKeys(stage.stripped_lineage_control,
+      ['route', 'portrait_sha256', 'differs_from_lineage'], `${where}.stripped_lineage_control`);
   }
   assert(stage.production_matches_fresh === true && stage.repeated_render_stable === true,
     `${where}: production/fresh or repeat-render check failed`);
+  assert(stage.owned === stage.route.endsWith('-owned'), `${where}: owned flag disagrees with the production route`);
   assert(SHA.test(stage.portrait_sha256), `${where}: invalid portrait SHA-256`);
   assert(safeRelativePng(stage.portrait_path, `${where}.portrait_path`)
     === `portraits/${spec.id}/${String(stageIndex + 1).padStart(2, '0')}-${stageId}.png`,
@@ -271,6 +405,10 @@ function validateStage(stage, spec, stageIndex, stages, inputs, where) {
 function validateLineage(row, spec, index) {
   const where = `lineage ${index + 1} (${spec.id})`;
   assert(isObject(row), `${where}: expected an object`);
+  exactObjectKeys(row, ['ordinal', 'lineage_id', 'set', 'species', 'challenge',
+    'crop_contract', 'stage_pixel_unique_count', 'pixel_identity_groups',
+    'anchor_visual_differentiation', 'inputs', 'crosses', 'stages', 'lineage_sheet', 'join_atlas',
+    'visual_review_status'], where);
   assert(row.ordinal === index + 1 && row.lineage_id === spec.id && row.species === spec.species,
     `${where}: missing, duplicate, or wrong catalogue identity`);
   assert(row.set === `earth-${spec.kingdom}` && row.challenge === spec.challenge,
@@ -279,23 +417,32 @@ function validateLineage(row, spec, index) {
   assert(isObject(row.crop_contract) && row.crop_contract.source_pixels === 55
     && row.crop_contract.output_pixels === 220 && row.crop_contract.scale === 4,
   `${where}: 4x crop contract missing`);
+  exactObjectKeys(row.crop_contract, ['source_pixels', 'output_pixels', 'scale', 'coordinates'],
+    `${where}.crop_contract`);
   assert(Array.isArray(row.crop_contract.coordinates) && row.crop_contract.coordinates.length === 4,
     `${where}: expected four machine-readable join coordinates`);
+  const expectedCrops = spec.crops.map(([x, y, w, h]) => ({ x, y, w, h }));
+  assert(canonical(row.crop_contract.coordinates) === canonical(expectedCrops),
+    `${where}: anatomy-bound crop coordinates changed`);
   const cropIds = new Set();
   for (const [cropIndex, crop] of row.crop_contract.coordinates.entries()) {
     assert(isObject(crop), `${where} crop ${cropIndex + 1}: expected an object`);
-    assert(!cropIds.has(crop.id), `${where}: duplicate crop id ${JSON.stringify(crop.id)}`);
-    cropIds.add(crop.id);
+    exactObjectKeys(crop, ['x', 'y', 'w', 'h'], `${where} crop ${cropIndex + 1}`);
+    const cropId = `${crop.x},${crop.y},${crop.w},${crop.h}`;
+    assert(!cropIds.has(cropId), `${where}: duplicate crop coordinates ${cropId}`);
+    cropIds.add(cropId);
     assert(Number.isInteger(crop.x) && Number.isInteger(crop.y) && crop.w === 55 && crop.h === 55,
-      `${where} crop ${crop.id}: invalid coordinates`);
+      `${where} crop ${cropIndex + 1}: invalid coordinates`);
     assert(crop.x >= 0 && crop.y >= 0 && crop.x + crop.w <= NATIVE && crop.y + crop.h <= NATIVE,
-      `${where} crop ${crop.id}: outside the 440px portrait`);
+      `${where} crop ${cropIndex + 1}: outside the 440px portrait`);
   }
   assert(Array.isArray(row.inputs) && row.inputs.length === 5, `${where}: expected five exact inputs`);
   const expectedInputIds = ['pure', 'earth-mate', 'alien-1', 'alien-2', 'alien-3'];
   assert(canonical(row.inputs.map((input) => input.id)) === canonical(expectedInputIds), `${where}: input order/identity mismatch`);
   row.inputs.forEach((input, inputIndex) => validateInput(input, spec, index, `${where} input ${inputIndex + 1}`));
   assert(Array.isArray(row.crosses) && row.crosses.length === 4, `${where}: missing cross chain`);
+  row.crosses.forEach((cross, crossIndex) => exactObjectKeys(cross,
+    ['stage_id', 'parent_a', 'parent_b'], `${where} cross ${crossIndex + 1}`));
   assert(canonical(row.crosses.map((cross) => cross.stage_id)) === canonical(STAGES.slice(1)),
     `${where}: cross chain order mismatch`);
   assert(Array.isArray(row.stages) && row.stages.length === 5, `${where}: expected five stages`);
@@ -305,8 +452,10 @@ function validateLineage(row, spec, index) {
   assert(new Set(row.stages.map((stage) => stage.genome_sha256)).size === 5,
     `${where}: duplicate production genome identity`);
   const pixelGroups = derivePixelIdentityGroups(row.stages);
-  assert(Array.isArray(row.pixel_identity_groups)
-    && canonical(row.pixel_identity_groups) === canonical(pixelGroups),
+  assert(Array.isArray(row.pixel_identity_groups), `${where}: pixel identity groups must be an array`);
+  row.pixel_identity_groups.forEach((group, groupIndex) => exactObjectKeys(group,
+    ['portrait_sha256', 'stage_ids'], `${where} pixel group ${groupIndex + 1}`));
+  assert(canonical(row.pixel_identity_groups) === canonical(pixelGroups),
   `${where}: pixel identity groups are stale or incomplete`);
   assert(row.stage_pixel_unique_count === new Set(row.stages.map((stage) => stage.portrait_sha256)).size,
     `${where}: wrong unique-pixel count`);
@@ -320,12 +469,21 @@ function validateLineage(row, spec, index) {
 }
 function validateCacheControl(row, expectedId, where) {
   assert(isObject(row) && row.lineage_id === expectedId, `${where}: wrong cache-control identity`);
+  exactObjectKeys(row, ['lineage_id', 'species', 'input_order_first', 'alien', 'same_seed', 'seed',
+    'different_full_genomes', 'differing_fields', 'ab_genome', 'ba_genome', 'ab_genome_sha256',
+    'ba_genome_sha256', 'ab_portrait_sha256', 'ba_portrait_sha256', 'cache_independent', 'ab_route',
+    'ba_route', 'ab_portrait_path', 'ba_portrait_path'], where);
   assert(row.species === LINEAGES.find((lineage) => lineage.id === expectedId).species, `${where}: wrong species`);
   assert(row.same_seed === true && row.different_full_genomes === true && row.cache_independent === true,
     `${where}: cache independence flags failed`);
   assert(row.input_order_first === 'AB' || row.input_order_first === 'BA', `${where}: missing render order`);
   assert(isObject(row.alien) && isObject(row.alien.genome) && isObject(row.alien.derivation),
     `${where}: missing exact alien input`);
+  exactObjectKeys(row.alien, ['id', 'genome', 'derivation'], `${where}.alien`);
+  exactObjectKeys(row.alien.derivation, ['kind', 'formula', 'row', 'attempt', 'heat', 'seed'],
+    `${where}.alien.derivation`);
+  validateEvidenceGenome(row.alien.genome, `${where}.alien.genome`);
+  assert(row.alien.id === 'cache-alien', `${where}: wrong cache-alien identity`);
   assert(row.alien.derivation.kind === 'makeGenome'
     && row.alien.derivation.formula === 'hashInt(0xCA6E,row,attempt)', `${where}: wrong cache seed formula`);
   assert(Number.isInteger(row.alien.derivation.row) && Number.isInteger(row.alien.derivation.attempt)
@@ -337,31 +495,43 @@ function validateCacheControl(row, expectedId, where) {
     && row.alien.genome._earthBlendKingdom === undefined,
     `${where}: cache alien carries lineage metadata`);
   assert(isObject(row.ab_genome) && isObject(row.ba_genome), `${where}: missing AB/BA genomes`);
+  validateEvidenceGenome(row.ab_genome, `${where}.ab_genome`);
+  validateEvidenceGenome(row.ba_genome, `${where}.ba_genome`);
   assert(row.ab_genome.seed === row.ba_genome.seed && row.seed === row.ab_genome.seed,
     `${where}: reversed parents did not share a seed`);
   assert(genomeHash(row.ab_genome) === row.ab_genome_sha256 && genomeHash(row.ba_genome) === row.ba_genome_sha256,
     `${where}: stale AB/BA full-genome hash`);
   assert(row.ab_genome_sha256 !== row.ba_genome_sha256, `${where}: AB/BA full genomes collapsed`);
-  assert(Array.isArray(row.differing_fields) && row.differing_fields.length > 0,
-    `${where}: same-seed pair has no differing inherited trait`);
+  const expectedDifferingFields = CACHE_GENE_KEYS.filter((key) =>
+    canonical(row.ab_genome[key]) !== canonical(row.ba_genome[key]));
+  assert(expectedDifferingFields.length > 0
+    && canonical(row.differing_fields) === canonical(expectedDifferingFields),
+    `${where}: differing inherited fields do not match the canonical AB/BA genomes`);
   assert(Array.isArray(row.ab_genome.parents) && Array.isArray(row.ba_genome.parents)
     && row.ab_genome.parents[0] === row.ba_genome.parents[1]
     && row.ab_genome.parents[1] === row.ba_genome.parents[0],
   `${where}: AB/BA parent order is not reversed`);
   const owner = LINEAGES.find((lineage) => lineage.id === expectedId).kingdom;
+  assert(row.alien.genome.kingdom === owner, `${where}: cache alien kingdom differs from the lineage owner`);
   assert(row.ab_genome._earthBlend === row.species && row.ba_genome._earthBlend === row.species
     && row.ab_genome._earthBlendKingdom === owner && row.ba_genome._earthBlendKingdom === owner,
     `${where}: cache controls lost Earth lineage`);
   assert(Math.abs(row.ab_genome._anchorVal - 0.73) < 1e-9 && Math.abs(row.ba_genome._anchorVal - 0.73) < 1e-9,
     `${where}: cache controls have wrong anchor`);
-  assert(/^lineage-(owned|verbatim)$/.test(row.ab_route) && /^lineage-(owned|verbatim)$/.test(row.ba_route),
-    `${where}: cache control used a procedural route`);
+  const expectedRoute = expectedLineageRoute(owner, row.species);
+  assert(row.ab_route === expectedRoute && row.ba_route === expectedRoute,
+    `${where}: cache control used the wrong lineage route`);
   assert(SHA.test(row.ab_portrait_sha256) && SHA.test(row.ba_portrait_sha256)
     && row.ab_portrait_sha256 !== row.ba_portrait_sha256, `${where}: cache portrait collision`);
   assert(row.ab_portrait_path === `cache-controls/${expectedId}-AB.png`
     && row.ba_portrait_path === `cache-controls/${expectedId}-BA.png`, `${where}: wrong cache portrait paths`);
 }
-function expectedLineageRoute(owner) { return owner === 'fauna' ? 'lineage-verbatim' : 'lineage-owned'; }
+function expectedLineageRoute(owner, name) {
+  return owner === 'fauna' && !OWNED_FAUNA_LINEAGES.has(name) ? 'lineage-verbatim' : 'lineage-owned';
+}
+function expectedMarkerlessLineageRoute(owner) {
+  return owner === 'fauna' ? 'lineage-verbatim' : 'lineage-owned';
+}
 function withoutLineage(genome) {
   const stripped = { ...genome };
   delete stripped._earthName; delete stripped._earthBlend; delete stripped._earthBlendKingdom;
@@ -369,6 +539,7 @@ function withoutLineage(genome) {
   return stripped;
 }
 function validateMixedInput(input, expected, spec, attempt, where) {
+  exactObjectKeys(input, ['id', 'genome', 'genome_sha256', 'derivation'], where);
   checkGenomeHash(input, where);
   assert(input.id === expected.id && isObject(input.derivation), `${where}: wrong input identity/derivation`);
   const genome = input.genome, derivation = input.derivation;
@@ -383,6 +554,10 @@ function validateMixedInput(input, expected, spec, attempt, where) {
   assert(derivation.formula === expected.formula && derivation.heat === expected.heat,
     `${where}: mixed input derivation formula mismatch`);
   if (expected.named) {
+    exactObjectKeys(derivation, ['kind', 'formula', 'salt', 'attempt', 'seed', 'heat',
+      'exact_name_matches', 'owner_source', 'route_owner',
+      ...(expected.ownerSource === 'deduped-legacy-route' ? ['route_owner_verified'] : [])],
+    `${where}.derivation`);
     assert(derivation.kind === expected.derivationKind
       && derivation.exact_name_matches === expected.exactNameMatches
       && derivation.owner_source === expected.ownerSource
@@ -396,6 +571,8 @@ function validateMixedInput(input, expected, spec, attempt, where) {
       && genome._earthBlendKingdom === undefined && genome._anchorVal === undefined,
     `${where}: named Earth lineage fields invalid`);
   } else {
+    exactObjectKeys(derivation, ['kind', 'formula', 'salt', 'attempt', 'seed', 'heat'],
+      `${where}.derivation`);
     assert(derivation.kind === 'alien-seed-search', `${where}: alien provenance missing`);
     assert(genome._earthName === undefined && genome._earthBlend === undefined
       && genome._earthBlendKingdom === undefined && genome._anchorVal === undefined,
@@ -423,6 +600,11 @@ function mixedInputContract(spec, attempt) {
   return spec.order === 'flora-first' ? [flora, microbe] : [microbe, flora];
 }
 function validateMixedControl(control, expectedGenome, selectedPortraitHash, where) {
+  const markerControl = isObject(control)
+    && (Object.hasOwn(control, 'expected_legacy_owner') || Object.hasOwn(control, 'required_to_differ'));
+  exactObjectKeys(control, ['genome', 'genome_sha256', 'route', 'portrait_sha256',
+    'production_matches_fresh', 'repeated_render_stable', 'differs_from_selected_owner',
+    ...(markerControl ? ['expected_legacy_owner', 'required_to_differ'] : [])], where);
   checkGenomeHash(control, where);
   assert(canonical(control.genome) === canonical(expectedGenome), `${where}: injected genome mutation is not exact`);
   assert(/^lineage-(owned|verbatim)$|^procedural-(owned|verbatim)$/.test(control.route),
@@ -436,6 +618,12 @@ function validateMixedSentinel(row, spec, index) {
   const where = `mixed sentinel ${index + 1} (${spec.id})`;
   assert(isObject(row) && row.ordinal === index + 1 && row.sentinel_id === spec.id,
     `${where}: missing, duplicate, or wrong sentinel identity`);
+  exactObjectKeys(row, ['ordinal', 'sentinel_id', 'sentinel_kind', 'species', 'selected_lineage_owner',
+    'other_parent_kingdom', 'parent_order', 'expected_child_kingdom', 'search', 'inputs', 'cross',
+    'child_genome', 'child_genome_sha256', 'child_kingdom', 'lineage', 'lineage_kingdom', 'anchor',
+    'route', 'expected_route', 'production_matches_fresh', 'repeated_render_stable',
+    'repeated_cross_stable', 'portrait_sha256', 'portrait_path', 'stripped_lineage_control',
+    'missing_owner_marker_control', 'counterfactual_owner_control', 'visual_review_status'], where);
   assert(row.sentinel_kind === spec.kind && row.species === spec.name
     && row.selected_lineage_owner === spec.owner && row.other_parent_kingdom === spec.other
     && row.parent_order === spec.order && row.expected_child_kingdom === spec.child,
@@ -444,6 +632,7 @@ function validateMixedSentinel(row, spec, index) {
     && row.search.salt === spec.salt && row.search.limit === 2048
     && Number.isInteger(row.search.attempt) && row.search.attempt >= 0 && row.search.attempt < 2048,
   `${where}: deterministic search provenance invalid`);
+  exactObjectKeys(row.search, ['kind', 'salt', 'attempt', 'limit'], `${where}.search`);
   const inputContract = mixedInputContract(spec, row.search.attempt);
   assert(Array.isArray(row.inputs) && row.inputs.length === 2
     && canonical(row.inputs.map((input) => input.id)) === canonical(inputContract.map((input) => input.id)),
@@ -453,8 +642,10 @@ function validateMixedSentinel(row, spec, index) {
   assert(isObject(row.cross) && row.cross.function === 'crossGenome'
     && row.cross.parent_a === inputContract[0].id && row.cross.parent_b === inputContract[1].id,
   `${where}: production cross order is invalid`);
+  exactObjectKeys(row.cross, ['function', 'parent_a', 'parent_b'], `${where}.cross`);
   assert(isObject(row.child_genome) && SHA.test(row.child_genome_sha256)
     && row.child_genome_sha256 === genomeHash(row.child_genome), `${where}: stale child full-genome SHA-256`);
+  validateEvidenceGenome(row.child_genome, `${where}.child_genome`);
   const child = row.child_genome;
   assert(child._earthName === undefined && child._earthBlend === spec.name
     && child._earthBlendKingdom === spec.owner && child.kingdom === spec.child,
@@ -468,7 +659,7 @@ function validateMixedSentinel(row, spec, index) {
   assert(isObject(child._src) && Array.isArray(child.parents)
     && canonical(child.parents) === canonical(row.inputs.map((input) => input.genome.seed)),
   `${where}: production ancestry/parent seed order invalid`);
-  const expectedRoute = expectedLineageRoute(spec.owner);
+  const expectedRoute = expectedLineageRoute(spec.owner, spec.name);
   assert(row.route === expectedRoute && row.expected_route === expectedRoute,
     `${where}: production route followed child kingdom instead of lineage owner`);
   assert(row.production_matches_fresh === true && row.repeated_render_stable === true
@@ -490,7 +681,7 @@ function validateMixedSentinel(row, spec, index) {
   const fallbackOwner = spec.kind === 'duplicate-name-owner' ? spec.child : spec.owner;
   const markerRequired = spec.kind === 'duplicate-name-owner' && spec.child !== spec.owner;
   assert(row.missing_owner_marker_control.expected_legacy_owner === fallbackOwner
-    && row.missing_owner_marker_control.route === expectedLineageRoute(fallbackOwner)
+    && row.missing_owner_marker_control.route === expectedMarkerlessLineageRoute(fallbackOwner)
     && row.missing_owner_marker_control.required_to_differ === markerRequired,
   `${where}: route-aware legacy fallback contract changed`);
   if (markerRequired) assert(row.missing_owner_marker_control.differs_from_selected_owner === true,
@@ -501,7 +692,7 @@ function validateMixedSentinel(row, spec, index) {
     const counterfactual = { ...child, _earthBlendKingdom: spec.other };
     validateMixedControl(row.counterfactual_owner_control, counterfactual, row.portrait_sha256,
       `${where} counterfactual-owner control`);
-    assert(row.counterfactual_owner_control.route === expectedLineageRoute(spec.other)
+    assert(row.counterfactual_owner_control.route === expectedLineageRoute(spec.other, spec.name)
       && row.counterfactual_owner_control.differs_from_selected_owner === true,
     `${where}: duplicate-name lineage owner did not select set-specific pixels`);
   } else assert(row.counterfactual_owner_control === null,
@@ -527,6 +718,10 @@ function validateAssets(assets, report) {
   for (const [index, asset] of assets.entries()) {
     const where = `asset ${index + 1}`;
     assert(isObject(asset), `${where}: expected an object`);
+    const finalRecord = Object.hasOwn(asset, 'bytes') || Object.hasOwn(asset, 'sha256');
+    exactObjectKeys(asset, finalRecord
+      ? ['path', 'kind', 'identity', 'width', 'height', 'bytes', 'sha256']
+      : ['path', 'kind', 'identity', 'width', 'height'], where);
     const relative = safeRelativePng(asset.path, `${where}.path`);
     const kind = nonempty(asset.kind, `${where}.kind`);
     assert(kind in ASSET_COUNTS, `${where}: unknown kind ${JSON.stringify(kind)}`);
@@ -542,6 +737,8 @@ function validateAssets(assets, report) {
     if (kind === 'cache-portrait') assert(cacheByPath.has(relative), `${where}: cache portrait has no control row`);
     if (kind === 'mixed-portrait') assert(mixedByPath.get(relative) === identity,
       `${where}: mixed portrait has no matching sentinel`);
+    if (kind === 'cache-sheet') assert(relative === 'cache-controls/reversed-parent-sheet.png'
+      && identity === 'cache-subset', `${where}: reversed-parent cache sheet contract changed`);
     if (kind === 'mixed-sheet') assert(relative === report.mixed_sentinel_sheet
       && relative === 'mixed-kingdom/sentinels-sheet.png' && identity === 'mixed-sentinels',
     `${where}: mixed sentinel sheet is not bound to the report`);
@@ -554,18 +751,26 @@ function validateAssets(assets, report) {
 function validateBrowserReport(report, options = {}) {
   assert(isObject(report) && report.schema === BROWSER_SCHEMA && report.done === true,
     'browser did not return a completed hybrid-matrix report');
+  exactObjectKeys(report, ['schema', 'done', 'review_status', 'visual_continuity_status',
+    'machine_anchor_visual_status', 'visual_claim', 'production_path', 'stage_order', 'anchor_contract',
+    'emit', 'render_order', 'summary', 'checks', 'lineages', 'cache_controls',
+    'mixed_kingdom_sentinels', 'mixed_sentinel_sheet', 'assets'], 'browser report');
+  rejectEmbeddedCompletedReview(report, 'browser report');
   assert(!report.error, `browser report failed: ${report.error || 'unknown error'}`);
   assert(report.review_status === 'UNREVIEWED', 'browser report must remain UNREVIEWED');
   assert(report.visual_continuity_status === 'OPEN', 'visual continuity must remain OPEN for human review');
-  assert(typeof report.visual_claim === 'string' && /No seamlessness or art PASS/.test(report.visual_claim),
-    'browser report omitted its no-visual-PASS boundary');
+  assert(report.visual_claim === VISUAL_CLAIM,
+    'browser report changed its exact no-visual-PASS boundary');
   assert(canonical(report.stage_order) === canonical(STAGES), 'browser report has bad stage order');
   assert(canonical(report.anchor_contract) === canonical(ANCHORS), 'browser report has bad anchor contract');
   assert(report.production_path === 'makeGenome -> crossGenome -> speciesPortrait', 'browser report used the wrong production path');
-  assert(isObject(report.summary) && report.summary.lineages === 12 && report.summary.principal_portraits === 60
+  assert(isObject(report.summary) && report.summary.lineages === 13 && report.summary.principal_portraits === 65
     && report.summary.cache_controls === 6 && report.summary.cache_portraits === 12
     && report.summary.mixed_kingdom_sentinels === 16 && report.summary.mixed_portraits === 16,
   'browser report summary is incomplete');
+  exactObjectKeys(report.summary, ['lineages', 'principal_portraits', 'cache_controls', 'cache_portraits',
+    'mixed_kingdom_sentinels', 'mixed_portraits', 'assets', 'pixel_identical_lineages',
+    'pixel_identical_lineage_ids'], 'browser report summary');
   assert(isObject(report.checks), 'browser report omitted checks');
   const requiredChecks = ['earth_owner_sources_verified', 'no_handwritten_lineage_fields', 'cross_genome_provenance',
     'anchor_values_exact', 'production_matches_fresh_route', 'repeated_fresh_render_stable',
@@ -574,6 +779,7 @@ function validateBrowserReport(report, options = {}) {
     'mixed_parent_order_child_kingdom_coverage', 'mixed_lineage_owner_preserved',
     'mixed_production_route_follows_owner', 'duplicate_name_owner_pixels_set_specific',
     'mixed_stripped_lineage_bypass_differs', 'mixed_repeated_cross_stable'];
+  exactObjectKeys(report.checks, requiredChecks, 'browser report checks');
   for (const check of requiredChecks) assert(report.checks[check] === true, `browser check failed: ${check}`);
   assert(Array.isArray(report.lineages) && report.lineages.length === LINEAGES.length,
     `expected ${LINEAGES.length} lineages`);
@@ -682,34 +888,8 @@ function gitState() {
     branch: run(['branch', '--show-current']),
     dirty: statusLines.length > 0,
     status_lines: statusLines,
-    source_claim: statusLines.length
-      ? 'UNCOMMITTED WORKING TREE - file and pixel hashes identify this capture; rerun from the clean committed tree before certification.'
-      : 'Clean working tree at the recorded commit.',
+    source_claim: statusLines.length ? DIRTY_SOURCE_CLAIM : CLEAN_SOURCE_CLAIM,
   };
-}
-function browserCandidates() {
-  return [process.env.CF_BROWSER,
-    'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-    'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
-    '/usr/bin/google-chrome', '/usr/bin/chromium-browser', '/usr/bin/chromium',
-    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-  ].filter(Boolean);
-}
-function findBrowser() {
-  const candidate = browserCandidates().find((file) => fs.existsSync(file) && fs.statSync(file).isFile());
-  assert(candidate, 'no Chromium-family browser found (run the repository preflight or set CF_BROWSER)');
-  return candidate;
-}
-function freePort() {
-  return new Promise((resolve, reject) => {
-    const probe = net.createServer();
-    probe.on('error', reject);
-    probe.listen(0, '127.0.0.1', () => {
-      const address = probe.address();
-      assert(address && typeof address === 'object', 'free-port probe returned no address');
-      probe.close(() => resolve(address.port));
-    });
-  });
 }
 function startStaticServer() {
   const root = fs.realpathSync(DIST);
@@ -733,62 +913,28 @@ function startStaticServer() {
   });
   return server;
 }
-async function openBrowser(browserFile) {
-  const browserPort = await freePort();
-  const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-hybrid-matrix-browser-'));
-  const processHandle = spawn(browserFile, [
-    '--headless=new', '--no-sandbox', '--no-first-run',
-    '--disable-component-extensions-with-background-pages', '--disable-component-update',
-    '--disable-background-networking', `--remote-debugging-port=${browserPort}`,
-    `--user-data-dir=${profile}`, 'about:blank',
-  ], { stdio: 'ignore' });
-  let webSocketUrl = null;
-  for (let attempt = 0; attempt < 60 && !webSocketUrl; attempt++) {
-    await sleep(250);
-    try { webSocketUrl = (await (await fetch(`http://127.0.0.1:${browserPort}/json/version`)).json()).webSocketDebuggerUrl; }
-    catch { /* browser boot */ }
+async function openBrowser() {
+  const cdp = await openChromiumCdp({
+    label: 'hybrid matrix', userDataPrefix: 'cf-hybrid-matrix-browser',
+    commandTimeoutMs: 15000, startupTimeoutMs: 15000, shutdownTimeoutMs: 5000,
+  });
+  try {
+    const target = await cdp.send('Target.createTarget', { url: 'about:blank' });
+    const attached = await cdp.send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
+    const sessionId = attached.sessionId;
+    await cdp.send('Runtime.enable', {}, sessionId);
+    await cdp.send('Page.enable', {}, sessionId);
+    const evaluate = async (expression) => {
+      const result = await cdp.send('Runtime.evaluate',
+        { expression, returnByValue: true, awaitPromise: true }, sessionId);
+      if (result.exceptionDetails) fail(`browser evaluation failed: ${result.exceptionDetails.text}`);
+      return result.result.value;
+    };
+    return { send: cdp.send, sessionId, evaluate, browser: cdp.browser, close: cdp.close };
+  } catch (error) {
+    await cdp.close();
+    throw error;
   }
-  assert(webSocketUrl, 'headless browser did not expose CDP');
-  const socket = new WebSocket(webSocketUrl);
-  await new Promise((resolve, reject) => {
-    socket.onopen = resolve;
-    socket.onerror = () => reject(new Error('CDP WebSocket failed to open'));
-  });
-  let messageId = 0;
-  const pending = new Map();
-  socket.onmessage = (event) => {
-    const message = JSON.parse(event.data);
-    if (!message.id || !pending.has(message.id)) return;
-    const promise = pending.get(message.id); pending.delete(message.id);
-    if (message.error) promise.reject(new Error(message.error.message)); else promise.resolve(message.result);
-  };
-  const send = (method, params = {}, sessionId) => new Promise((resolve, reject) => {
-    const id = ++messageId; pending.set(id, { resolve, reject });
-    socket.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params }));
-  });
-  const target = await send('Target.createTarget', { url: 'about:blank' });
-  const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
-  const sessionId = attached.sessionId;
-  await send('Runtime.enable', {}, sessionId);
-  await send('Page.enable', {}, sessionId);
-  const version = await send('Browser.getVersion');
-  const evaluate = async (expression) => {
-    const result = await send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true }, sessionId);
-    if (result.exceptionDetails) fail(`browser evaluation failed: ${result.exceptionDetails.text}`);
-    return result.result.value;
-  };
-  const close = () => {
-    try { socket.close(); } catch { /* already closed */ }
-    try { processHandle.kill(); } catch { /* already stopped */ }
-    try {
-      const realTemp = fs.realpathSync(os.tmpdir());
-      const resolved = path.resolve(profile);
-      if (path.dirname(resolved) === realTemp && path.basename(resolved).startsWith('cf-hybrid-matrix-browser-')) {
-        fs.rmSync(resolved, { recursive: true, force: true });
-      }
-    } catch { /* browser profile cleanup may lag on Windows */ }
-  };
-  return { send, sessionId, evaluate, version, close };
 }
 async function drainPass(browser, pageUrl, stage, emit) {
   await browser.send('Page.navigate', { url: pageUrl }, browser.sessionId);
@@ -890,17 +1036,19 @@ function listFiles(root) {
   return rows.sort();
 }
 function writeJson(file, value) { fs.writeFileSync(file, JSON.stringify(value, null, 2) + '\n'); }
-function writeReadme(file, report) {
+function expectedEvidenceReadme(report) {
   const identical = report.lineages
     .filter((lineage) => lineage.pixel_identity_groups.length > 0)
     .map((lineage) => `${lineage.species} (${lineage.pixel_identity_groups
       .map((group) => group.stage_ids.join('=')).join('; ')})`);
-  fs.writeFileSync(file, [
+  return [
     '# Hybrid continuity review evidence', '',
     'Status: UNREVIEWED. This package does not claim seamlessness or an art PASS.', '',
+    `Repair ruler: ${PLATINUM_REVIEW.name} (${PLATINUM_REVIEW.sha256}); disposition ${PLATINUM_REVIEW.disposition}.`,
+    `Reviewed baseline: source ${PLATINUM_REVIEW.baseline_source_commit}; archive SHA-256 ${PLATINUM_REVIEW.baseline_archive_sha256}.`, '',
     `Visual continuity: OPEN. Machine anchor differentiation: ${report.machine_anchor_visual_status}.`,
     `Byte-identical anchor groups: ${identical.length ? identical.join(', ') : 'none observed; human verdict still required'}.`, '',
-    'Each of the 12 lineage sheets shows five genomes produced by the real game path:',
+    'Each of the 13 lineage sheets shows five genomes produced by the real game path:',
     'pure Earth, Earth x Earth (0.90), Earth x alien (0.73), next alien (0.46), and the 0.22 floor.', '',
     'mixed-kingdom/ adds 16 real crossGenome sentinels: Apple and Wolf in both parent orders',
     'and both child kingdoms, plus Green Algae in both parent orders, both the current flora catalogue',
@@ -917,15 +1065,51 @@ function writeReadme(file, report) {
     'low anchors or ignore some reversed-parent trait differences. Apple is therefore kept in the',
     'principal matrix but excluded from the cache-collision subset, where equal expected pixels',
     'would make the negative control vacuous. Judge those low-anchor sheets by eye.', '',
-  ].join('\n'));
+  ].join('\n');
 }
-function verifyEvidence(root, manifest) {
-  assert(manifest.schema === EVIDENCE_SCHEMA && manifest.review_status === 'UNREVIEWED',
-    'evidence manifest schema/status invalid');
-  assert(manifest.visual_continuity_status === 'OPEN'
-    && (manifest.machine_anchor_visual_status === 'FAIL_BYTE_IDENTICAL_STAGES'
-      || manifest.machine_anchor_visual_status === 'OPEN_UNREVIEWED'),
-  'evidence manifest hides its open visual-continuity boundary');
+function writeReadme(file, report) { fs.writeFileSync(file, expectedEvidenceReadme(report)); }
+function validateFinalEvidenceRows(manifest) {
+  assert(canonical(manifest.stage_order) === canonical(STAGES),
+    'evidence manifest: stage order changed');
+  assert(canonical(manifest.anchor_contract) === canonical(ANCHORS),
+    'evidence manifest: anchor contract changed');
+  assert(Array.isArray(manifest.lineages) && manifest.lineages.length === LINEAGES.length,
+    `evidence manifest: expected ${LINEAGES.length} lineages`);
+  manifest.lineages.forEach((lineage, index) => validateLineage(lineage, LINEAGES[index], index));
+  assert(new Set(manifest.lineages.map((lineage) => lineage.lineage_id)).size === LINEAGES.length,
+    'evidence manifest: duplicate lineage identity');
+  assert(Array.isArray(manifest.cache_controls) && manifest.cache_controls.length === CACHE_IDS.length,
+    `evidence manifest: expected ${CACHE_IDS.length} cache controls`);
+  manifest.cache_controls.forEach((cache, index) =>
+    validateCacheControl(cache, CACHE_IDS[index], `evidence cache control ${index + 1}`));
+  assert(Array.isArray(manifest.mixed_kingdom_sentinels)
+    && manifest.mixed_kingdom_sentinels.length === MIXED_SENTINELS.length,
+  'evidence manifest mixed-sentinel coverage is incomplete');
+  manifest.mixed_kingdom_sentinels.forEach((row, index) =>
+    validateMixedSentinel(row, MIXED_SENTINELS[index], index));
+  validateAssets(manifest.assets, manifest);
+  const pixelIdenticalLineageIds = manifest.lineages
+    .filter((lineage) => lineage.pixel_identity_groups.length > 0)
+    .map((lineage) => lineage.lineage_id);
+  assert(canonical(manifest.summary) === canonical({
+    lineages: LINEAGES.length,
+    principal_portraits: LINEAGES.length * STAGES.length,
+    cache_controls: CACHE_IDS.length,
+    cache_portraits: CACHE_IDS.length * 2,
+    mixed_kingdom_sentinels: MIXED_SENTINELS.length,
+    mixed_portraits: MIXED_SENTINELS.length,
+    assets: Object.values(ASSET_COUNTS).reduce((sum, value) => sum + value, 0),
+    pixel_identical_lineages: pixelIdenticalLineageIds.length,
+    pixel_identical_lineage_ids: pixelIdenticalLineageIds,
+  }), 'evidence manifest: exact arithmetic/pixel summary differs from validated rows');
+}
+function validateEvidenceMachineObservations(manifest) {
+  exactObjectKeys(manifest.machine_observations, [
+    'byte_identical_anchor_lineages', 'required_human_verdict', 'mixed_owner_sentinels',
+  ], 'evidence manifest machine_observations');
+  exactObjectKeys(manifest.machine_observations.mixed_owner_sentinels, [
+    'total', 'unique_owner_cases', 'duplicate_name_cases', 'visual_status',
+  ], 'evidence manifest mixed_owner_sentinels');
   const observed = manifest.lineages
     .filter((lineage) => lineage.pixel_identity_groups.length > 0)
     .map((lineage) => ({
@@ -934,18 +1118,99 @@ function verifyEvidence(root, manifest) {
       pixel_identity_groups: lineage.pixel_identity_groups,
       status: lineage.anchor_visual_differentiation,
     }));
-  assert(isObject(manifest.machine_observations)
-    && manifest.machine_observations.required_human_verdict === true
-    && canonical(manifest.machine_observations.byte_identical_anchor_lineages) === canonical(observed),
-  'evidence manifest omits or alters byte-identical anchor observations');
+  assert(manifest.machine_observations.required_human_verdict === true
+    && canonical(manifest.machine_observations.byte_identical_anchor_lineages) === canonical(observed)
+    && canonical(manifest.machine_observations.mixed_owner_sentinels) === canonical({
+      total: MIXED_SENTINELS.length,
+      unique_owner_cases: MIXED_SENTINELS.filter((row) => row.kind === 'single-lineage-owner').length,
+      duplicate_name_cases: MIXED_SENTINELS.filter((row) => row.kind === 'duplicate-name-owner').length,
+      visual_status: 'OPEN',
+    }), 'evidence manifest omits or alters machine observations');
+  return observed;
+}
+function validateEvidenceProvenance(manifest) {
+  assert(manifest.visual_claim === VISUAL_CLAIM,
+    'evidence manifest changed its exact no-visual-PASS boundary');
+  assert(canonical(manifest.residual_continuity_risks) === canonical(RESIDUAL_CONTINUITY_RISKS),
+    'evidence manifest changed its exact residual-continuity disclosures');
+  exactObjectKeys(manifest.git, ['start', 'end', 'status_changed_during_capture'], 'evidence manifest git');
+  const validateState = (state, where) => {
+    exactObjectKeys(state, ['head', 'branch', 'dirty', 'status_lines', 'source_claim'], where);
+    assert(/^[0-9a-f]{40}$/.test(state.head) && typeof state.branch === 'string' && state.branch.length > 0,
+      `${where}: invalid commit/branch`);
+    assert(Array.isArray(state.status_lines) && state.dirty === (state.status_lines.length > 0),
+      `${where}: dirty/status lines disagree`);
+    assert(state.source_claim === (state.dirty ? DIRTY_SOURCE_CLAIM : CLEAN_SOURCE_CLAIM),
+      `${where}: exact source claim changed`);
+    return state;
+  };
+  const start = validateState(manifest.git.start, 'evidence manifest git start');
+  const end = validateState(manifest.git.end, 'evidence manifest git end');
+  assert(canonical(start) === canonical(end) && manifest.git.status_changed_during_capture === false,
+    'evidence manifest git state changed during capture');
+  assert(canonical(end) === canonical(gitState()),
+    'evidence manifest git state differs from the current checkout');
+  exactObjectKeys(manifest.source_snapshot, ['files', 'sha256'], 'evidence manifest source snapshot');
+  assert(Array.isArray(manifest.source_snapshot.files),
+    'evidence manifest source snapshot files must be an array');
+  manifest.source_snapshot.files.forEach((row, index) => exactObjectKeys(row,
+    ['file', 'bytes', 'sha256'], `evidence manifest source snapshot row ${index + 1}`));
+  assert(canonical(manifest.source_snapshot) === canonical(sourceSnapshot()),
+    'evidence manifest source snapshot differs from the exact current producer inventory/bytes');
+}
+function verifyEvidence(root, manifest) {
+  const manifestPath = path.join(root, 'manifest.json');
+  assert(fs.existsSync(manifestPath), 'evidence disk manifest is missing');
+  const manifestStat = fs.lstatSync(manifestPath);
+  assert(manifestStat.isFile() && !manifestStat.isSymbolicLink(),
+    'evidence disk manifest must be a real file');
+  let diskManifest;
+  try { diskManifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8')); }
+  catch (error) { fail(`evidence disk manifest is invalid JSON: ${error.message}`); }
+  assert(canonical(diskManifest) === canonical(manifest),
+    'evidence disk manifest differs from the validated in-memory contract');
+  manifest = diskManifest;
+  const readmePath = path.join(root, 'README.md');
+  assert(fs.existsSync(readmePath), 'evidence README is missing');
+  const readmeStat = fs.lstatSync(readmePath);
+  assert(readmeStat.isFile() && !readmeStat.isSymbolicLink(), 'evidence README must be a real file');
+  assert(fs.readFileSync(readmePath, 'utf8') === expectedEvidenceReadme(manifest),
+    'evidence README differs from the exact UNREVIEWED / OPEN contract');
+  exactObjectKeys(manifest, ['schema', 'review_status', 'visual_continuity_status',
+    'machine_anchor_visual_status', 'visual_claim', 'review_contract', 'generated_at_utc', 'contract',
+    'browser', 'git', 'source_snapshot', 'reload_check', 'negative_controls',
+    'residual_continuity_risks', 'machine_observations', 'summary', 'stage_order', 'anchor_contract',
+    'lineages', 'cache_controls', 'mixed_kingdom_sentinels', 'mixed_sentinel_sheet', 'assets'],
+  'evidence manifest');
+  assert(manifest.schema === EVIDENCE_SCHEMA && manifest.review_status === 'UNREVIEWED',
+    'evidence manifest schema/status invalid');
+  rejectEmbeddedCompletedReview(manifest, 'evidence manifest');
+  assert(manifest.visual_continuity_status === 'OPEN'
+    && (manifest.machine_anchor_visual_status === 'FAIL_BYTE_IDENTICAL_STAGES'
+      || manifest.machine_anchor_visual_status === 'OPEN_UNREVIEWED'),
+  'evidence manifest hides its open visual-continuity boundary');
+  validateEvidenceProvenance(manifest);
+  validatePlatinumReview(manifest.review_contract);
+  validateBrowserProvenance(manifest.browser);
+  assert(typeof manifest.generated_at_utc === 'string' && !Number.isNaN(Date.parse(manifest.generated_at_utc)),
+    'evidence manifest generated_at_utc is invalid');
+  assert(manifest.contract === 'Fresh production-derived 13-lineage x 5-stage matrix plus 16 mixed-kingdom owner sentinels. Hybrid lineage metadata comes only from crossGenome.',
+    'evidence manifest exact production contract changed');
+  exactObjectKeys(manifest.reload_check,
+    ['passes', 'first_order', 'second_order', 'stable_projection_sha256', 'identical'],
+    'evidence manifest reload check');
+  assert(manifest.reload_check.passes === 2
+    && manifest.reload_check.first_order === 'forward (AB first)'
+    && manifest.reload_check.second_order === 'reverse (BA first)'
+    && SHA.test(manifest.reload_check.stable_projection_sha256)
+    && manifest.reload_check.identical === true, 'evidence manifest reload contract changed');
+  assert(canonical(manifest.negative_controls) === canonical(NEGATIVE_CONTROLS),
+    'evidence manifest exact negative-control disclosures changed');
+  validateFinalEvidenceRows(manifest);
+  const observed = validateEvidenceMachineObservations(manifest);
   const expectedMachineStatus = observed.length ? 'FAIL_BYTE_IDENTICAL_STAGES' : 'OPEN_UNREVIEWED';
   assert(manifest.machine_anchor_visual_status === expectedMachineStatus,
     'evidence manifest machine status disagrees with pixel identity groups');
-  assert(Array.isArray(manifest.mixed_kingdom_sentinels)
-    && manifest.mixed_kingdom_sentinels.length === MIXED_SENTINELS.length,
-  'evidence manifest mixed-sentinel coverage is incomplete');
-  manifest.mixed_kingdom_sentinels.forEach((row, index) =>
-    validateMixedSentinel(row, MIXED_SENTINELS[index], index));
   assert(manifest.mixed_sentinel_sheet === 'mixed-kingdom/sentinels-sheet.png',
     'evidence manifest mixed-sentinel sheet is missing');
   assert(Array.isArray(manifest.assets) && manifest.assets.length === Object.values(ASSET_COUNTS).reduce((a, b) => a + b, 0),
@@ -965,9 +1230,9 @@ function safeRemoveStage(stage) {
 }
 async function generate(options) {
   const output = validateOutputTarget(options.out);
+  validatePlatinumReview();
   const gitAtStart = gitState();
   const sourceBefore = sourceSnapshot();
-  const browserFile = findBrowser();
   /* ALWAYS REBUILD before reading dist. `execSync` uses the platform shell,
      so the project-standard `npx vite build` invocation also works on Windows
      without asking spawnSync to execute an npm `.cmd` shim directly. */
@@ -981,7 +1246,7 @@ async function generate(options) {
     });
     const address = server.address();
     assert(address && typeof address === 'object', 'static server returned no port');
-    browser = await openBrowser(browserFile);
+    browser = await openBrowser();
     stage = fs.mkdtempSync(path.join(fs.realpathSync(SMOKE), '.hybrid-matrix-stage-'));
     const base = `http://127.0.0.1:${address.port}/hybrid-matrix.html`;
     const first = await drainPass(browser, `${base}?emit=1&order=forward`, stage, true);
@@ -994,20 +1259,18 @@ async function generate(options) {
     const sourceAfter = sourceSnapshot();
     sourceUnchanged(sourceBefore, sourceAfter);
     const gitAtEnd = gitState();
+    const browserProvenance = browser.browser;
+    await browser.close(); browser = null;
     const manifest = {
       schema: EVIDENCE_SCHEMA,
       review_status: 'UNREVIEWED',
       visual_continuity_status: first.report.visual_continuity_status,
       machine_anchor_visual_status: first.report.machine_anchor_visual_status,
-      visual_claim: 'No seamlessness or art PASS is awarded by this evidence tool.',
+      visual_claim: VISUAL_CLAIM,
+      review_contract: PLATINUM_REVIEW,
       generated_at_utc: new Date().toISOString(),
-      contract: 'Fresh production-derived 12-lineage x 5-stage matrix plus 16 mixed-kingdom owner sentinels. Hybrid lineage metadata comes only from crossGenome.',
-      browser: {
-        executable: portable(browserFile),
-        product: browser.version.product,
-        revision: browser.version.revision,
-        user_agent: browser.version.userAgent,
-      },
+      contract: 'Fresh production-derived 13-lineage x 5-stage matrix plus 16 mixed-kingdom owner sentinels. Hybrid lineage metadata comes only from crossGenome.',
+      browser: browserProvenance,
       git: {
         start: gitAtStart,
         end: gitAtEnd,
@@ -1021,20 +1284,8 @@ async function generate(options) {
         stable_projection_sha256: sha256(canonical(stableReportProjection(first.report))),
         identical: true,
       },
-      negative_controls: {
-        stripped_lineage_bypass: 'rejected for every hybrid stage',
-        seed_only_cache_key: 'rejected by six same-seed/different-trait AB/BA pairs',
-        carried_or_handwritten_lineage: 'rejected by exact input provenance and repeated production crosses',
-        mixed_owner_marker_loss: 'rejected by exact _earthBlendKingdom lineage-owner checks',
-        mixed_child_kingdom_route_bypass: 'rejected by owner-derived route checks in both parent orders and both child kingdoms',
-        duplicate_name_owner_bypass: 'rejected by Green Algae markerless and counterfactual-owner pixel controls',
-        visual_boundary: 'machine output remains UNREVIEWED',
-      },
-      residual_continuity_risks: [
-        'Flora, fungi and microbe hybrids keep the exact named Earth owner; anchor drift reaches that owner only through inherited child genome, seed and palette values that the painter actually reads.',
-        'A low-anchor non-fauna hybrid may retain an exact Earth silhouette or ignore some reversed-parent trait differences. This is review evidence, not a seamlessness claim.',
-        'Apple remains in the principal 12x5 matrix but is excluded from the cache subset because its same-seed AB/BA expected pixels were identical; using it as a collision control would be vacuous.',
-      ],
+      negative_controls: NEGATIVE_CONTROLS,
+      residual_continuity_risks: RESIDUAL_CONTINUITY_RISKS,
       machine_observations: {
         byte_identical_anchor_lineages: first.report.lineages
           .filter((lineage) => lineage.pixel_identity_groups.length > 0)
@@ -1069,7 +1320,7 @@ async function generate(options) {
     fs.renameSync(stage, output); stage = null;
     verifyEvidence(output, manifest);
     console.log('HYBRID CONTINUITY MATRIX EVIDENCE READY - UNREVIEWED');
-    console.log('  principal matrix: 12 lineages x 5 stages = 60 portraits');
+    console.log('  principal matrix: 13 lineages x 5 stages = 65 portraits');
     console.log('  reversed-parent cache subset: 6 pairs / 12 portraits');
     console.log('  mixed-kingdom owner sentinels: 16 portraits (both orders/child kingdoms; current + legacy route owners included)');
     console.log(`  review artefacts: ${assets.length}`);
@@ -1077,7 +1328,7 @@ async function generate(options) {
     console.log(`  machine anchor differentiation: ${first.report.machine_anchor_visual_status}`);
     console.log('  visual continuity/seam verdict: OPEN; human review required');
   } finally {
-    if (browser) browser.close();
+    if (browser) await browser.close();
     await new Promise((resolve) => server.close(resolve));
     if (stage && fs.existsSync(stage)) safeRemoveStage(stage);
   }
@@ -1135,14 +1386,14 @@ function makeFixtureMixedSentinels(assets) {
     const markerRequired = spec.kind === 'duplicate-name-owner' && spec.child !== spec.owner;
     const markerlessHash = markerRequired ? sha256(`mixed-markerless-${spec.id}`) : portraitSha256;
     const markerlessControl = {
-      ...fakeMixedControl(markerless, expectedLineageRoute(fallbackOwner), markerlessHash, portraitSha256),
+      ...fakeMixedControl(markerless, expectedMarkerlessLineageRoute(fallbackOwner), markerlessHash, portraitSha256),
       expected_legacy_owner: fallbackOwner,
       required_to_differ: markerRequired,
     };
     let counterfactualOwnerControl = null;
     if (spec.kind === 'duplicate-name-owner') {
       const counterfactual = { ...child, _earthBlendKingdom: spec.other };
-      counterfactualOwnerControl = fakeMixedControl(counterfactual, expectedLineageRoute(spec.other),
+      counterfactualOwnerControl = fakeMixedControl(counterfactual, expectedLineageRoute(spec.other, spec.name),
         sha256(`mixed-counterfactual-${spec.id}`), portraitSha256);
     }
     return {
@@ -1153,7 +1404,7 @@ function makeFixtureMixedSentinels(assets) {
       inputs, cross: { function: 'crossGenome', parent_a: inputs[0].id, parent_b: inputs[1].id },
       child_genome: child, child_genome_sha256: genomeHash(child), child_kingdom: child.kingdom,
       lineage: child._earthBlend, lineage_kingdom: child._earthBlendKingdom, anchor,
-      route: expectedLineageRoute(spec.owner), expected_route: expectedLineageRoute(spec.owner),
+      route: expectedLineageRoute(spec.owner, spec.name), expected_route: expectedLineageRoute(spec.owner, spec.name),
       production_matches_fresh: true, repeated_render_stable: true, repeated_cross_stable: true,
       portrait_sha256: portraitSha256, portrait_path: portraitPath,
       stripped_lineage_control: strippedControl,
@@ -1193,17 +1444,26 @@ function makeFixtureReport() {
       assets.push(fakeAsset(silhouettePath, 'silhouette', NATIVE, NATIVE, identity));
       const portraitHash = sha256(`fixture-portrait-${row}-${stageIndex}`);
       return { lineage_id: spec.id, identity, stage_id: stageId, stage_index: stageIndex,
-        stage_label: stageId, anchor: ANCHORS[stageIndex], genome, genome_sha256: genomeHash(genome),
+        anchor: ANCHORS[stageIndex], genome, genome_sha256: genomeHash(genome),
         portrait_path: portraitPath, card_path: cardPath, silhouette_path: silhouettePath,
-        route: stageIndex ? 'lineage-verbatim' : 'named-owned', owned: !stageIndex,
+        route: stageIndex ? expectedLineageRoute(spec.kingdom, spec.species) : 'named-owned',
+        owned: stageIndex === 0 || expectedLineageRoute(spec.kingdom, spec.species) === 'lineage-owned',
         production_matches_fresh: true, repeated_render_stable: true, portrait_sha256: portraitHash,
         stripped_lineage_control: stageIndex ? { route: 'procedural-owned', portrait_sha256: sha256(`stripped-${row}-${stageIndex}`), differs_from_lineage: true } : null };
     });
     const inputs = [
-      { id: 'pure', genome: pure, genome_sha256: genomeHash(pure), derivation: { kind: 'catalogue-makeGenome', seed: pureSeed, catalogue_index: catalogueIndex, kingdom_index: kingdomIndex, heat: 1, exact_name_matches: 1 } },
-      { id: 'earth-mate', genome: earthMate, genome_sha256: genomeHash(earthMate), derivation: { kind: 'named-earth-makeGenome', seed: mateSeed, row, catalogue_index: catalogueIndex, heat: 1 } },
+      { id: 'pure', genome: pure, genome_sha256: genomeHash(pure), derivation: {
+        kind: 'catalogue-makeGenome', formula: 'hashInt(0xEA47,catalogueIndex,kingdomIndex)',
+        seed: pureSeed, catalogue_index: catalogueIndex, kingdom_index: kingdomIndex, heat: 1,
+        exact_name_matches: 1,
+      } },
+      { id: 'earth-mate', genome: earthMate, genome_sha256: genomeHash(earthMate), derivation: {
+        kind: 'named-earth-makeGenome', formula: 'hashInt(0xEA7E,row,catalogueIndex)',
+        seed: mateSeed, row, catalogue_index: catalogueIndex, heat: 1,
+      } },
       ...aliens.map((alien, index) => ({ id: `alien-${index + 1}`, genome: alien, genome_sha256: genomeHash(alien), derivation: {
-        kind: 'alien-seed-search', seed: alien.seed, row, slot: index + 1, attempt: index + 1 + row,
+        kind: 'alien-seed-search', formula: 'hashInt(0xA11E57,row*10000+slot*1000+attempt,0x4D)',
+        seed: alien.seed, row, slot: index + 1, attempt: index + 1 + row,
         heat: alien.heat, predicate: spec.challenge,
       } })),
     ];
@@ -1212,10 +1472,10 @@ function makeFixtureReport() {
     assets.push(fakeAsset(lineageSheet, 'lineage-sheet', 2200, 1180, spec.id));
     assets.push(fakeAsset(joinAtlas, 'join-atlas', 1290, 1048, spec.id));
     lineages.push({ ordinal: row + 1, lineage_id: spec.id, set: `earth-${spec.kingdom}`,
-      species: spec.species, display: spec.species, challenge: spec.challenge, joins: 'fixture joins',
+      species: spec.species, challenge: spec.challenge,
       crop_contract: { source_pixels: 55, output_pixels: 220, scale: 4,
-        coordinates: [0, 1, 2, 3].map((n) => ({ id: `join-${n}`, label: `join ${n}`, x: 20 + n * 60, y: 100, w: 55, h: 55 })) },
-      renderer_contract: 'route-aware fixture', stage_pixel_unique_count: 5,
+        coordinates: spec.crops.map(([x, y, w, h]) => ({ x, y, w, h })) },
+      stage_pixel_unique_count: 5,
       pixel_identity_groups: [], anchor_visual_differentiation: 'OPEN_UNREVIEWED', inputs,
       crosses: [
         { stage_id: 'earth-earth', parent_a: 'pure', parent_b: 'earth-mate' },
@@ -1238,7 +1498,9 @@ function makeFixtureReport() {
         same_seed: true, seed: sharedSeed, different_full_genomes: true, differing_fields: ['color', 'head'],
         ab_genome: ab, ba_genome: ba, ab_genome_sha256: genomeHash(ab), ba_genome_sha256: genomeHash(ba),
         ab_portrait_sha256: sha256(`cache-ab-${spec.id}`), ba_portrait_sha256: sha256(`cache-ba-${spec.id}`),
-        cache_independent: true, ab_route: 'lineage-verbatim', ba_route: 'lineage-verbatim',
+        cache_independent: true,
+        ab_route: expectedLineageRoute(spec.kingdom, spec.species),
+        ba_route: expectedLineageRoute(spec.kingdom, spec.species),
         ab_portrait_path: abPath, ba_portrait_path: baPath });
     }
   }
@@ -1247,10 +1509,10 @@ function makeFixtureReport() {
   const mixedSentinels = makeFixtureMixedSentinels(assets);
   return { schema: BROWSER_SCHEMA, done: true, review_status: 'UNREVIEWED',
     visual_continuity_status: 'OPEN', machine_anchor_visual_status: 'OPEN_UNREVIEWED',
-    visual_claim: 'No seamlessness or art PASS is awarded by this evidence tool.',
+    visual_claim: VISUAL_CLAIM,
     production_path: 'makeGenome -> crossGenome -> speciesPortrait', stage_order: STAGES, anchor_contract: ANCHORS,
     emit: true, render_order: 'forward',
-    summary: { lineages: 12, principal_portraits: 60, cache_controls: 6, cache_portraits: 12,
+    summary: { lineages: 13, principal_portraits: 65, cache_controls: 6, cache_portraits: 12,
       mixed_kingdom_sentinels: 16, mixed_portraits: 16,
       assets: assets.length, pixel_identical_lineages: 0, pixel_identical_lineage_ids: [] },
     checks: { earth_owner_sources_verified: true, no_handwritten_lineage_fields: true, cross_genome_provenance: true,
@@ -1274,8 +1536,31 @@ function fakePng(width, height, tag = 0x41) {
   buffer.writeUInt32BE(width, 16); buffer.writeUInt32BE(height, 20); return buffer;
 }
 function runSelftest() {
+  validatePlatinumReview();
+  expectRejected('Platinum review contract drift', () => validatePlatinumReview({
+    ...PLATINUM_REVIEW, baseline_archive_sha256: 'f'.repeat(64),
+  }), /review contract changed/);
+  const fixtureBrowser = { executable: '/fixture/browser', product: 'Fixture/1', revision: '@fixture',
+    user_agent: 'Fixture UA', js_version: '1', protocol_version: '1.3' };
+  validateBrowserProvenance(fixtureBrowser);
+  expectRejected('browser provenance omission', () => validateBrowserProvenance({
+    ...fixtureBrowser, protocol_version: undefined,
+  }), /browser\.protocol_version/);
   const report = makeFixtureReport();
   validateBrowserReport(report, { expectEmit: true, expectOrder: 'forward' });
+  const machineEnvelope = {
+    lineages: report.lineages,
+    machine_observations: {
+      byte_identical_anchor_lineages: [], required_human_verdict: true,
+      mixed_owner_sentinels: { total: 16, unique_owner_cases: 8,
+        duplicate_name_cases: 8, visual_status: 'OPEN' },
+    },
+  };
+  validateEvidenceMachineObservations(machineEnvelope);
+  const escapedMachineEnvelope = structuredClone(machineEnvelope);
+  escapedMachineEnvelope.machine_observations.release_signoff = 'Nick approved Platinum certification';
+  expectRejected('embedded machine-observation signoff',
+    () => validateEvidenceMachineObservations(escapedMachineEnvelope), /keys are incomplete or unexpected/);
   const reverse = structuredClone(report); reverse.emit = false; reverse.render_order = 'reverse';
   for (const cache of reverse.cache_controls) cache.input_order_first = 'BA';
   validateReload(report, reverse);
@@ -1295,7 +1580,7 @@ function runSelftest() {
   validateBrowserReport(identicalPixels, { expectEmit: true, expectOrder: 'forward' });
 
   const missing = structuredClone(report); missing.lineages.pop();
-  expectRejected('missing species', () => validateBrowserReport(missing), /expected 12 lineages/);
+  expectRejected('missing species', () => validateBrowserReport(missing), /expected 13 lineages/);
   const duplicate = structuredClone(report); duplicate.lineages[1].lineage_id = duplicate.lineages[0].lineage_id;
   expectRejected('duplicate identity', () => validateBrowserReport(duplicate), /missing, duplicate, or wrong catalogue identity/);
   const handwritten = structuredClone(report); handwritten.lineages[0].stages[2].genome._anchorVal = 0.91;
@@ -1305,16 +1590,58 @@ function runSelftest() {
   const badOrder = structuredClone(report); [badOrder.lineages[0].stages[1], badOrder.lineages[0].stages[2]] = [badOrder.lineages[0].stages[2], badOrder.lineages[0].stages[1]];
   expectRejected('bad stage order', () => validateBrowserReport(badOrder), /bad stage order/);
   const bypass = structuredClone(report); bypass.lineages[0].stages[2].route = 'procedural-owned';
-  expectRejected('hybrid bypass', () => validateBrowserReport(bypass), /generic procedural route/);
+  expectRejected('hybrid bypass', () => validateBrowserReport(bypass), /wrong reviewed lineage route/);
+  const ownedFaunaBypass = structuredClone(report); ownedFaunaBypass.lineages[0].stages[2].route = 'lineage-verbatim';
+  expectRejected('reviewed fauna owner bypass', () => validateBrowserReport(ownedFaunaBypass), /wrong reviewed lineage route/);
+  const protectedFaunaDrift = structuredClone(report); protectedFaunaDrift.lineages[5].stages[2].route = 'lineage-owned';
+  expectRejected('protected fauna route drift', () => validateBrowserReport(protectedFaunaDrift), /wrong reviewed lineage route/);
+  const protectedPureRouteDrift = structuredClone(report);
+  protectedPureRouteDrift.lineages[4].stages[0].route = 'named-verbatim';
+  protectedPureRouteDrift.lineages[4].stages[0].owned = false;
+  expectRejected('protected pure named-owner route drift', () => validateBrowserReport(protectedPureRouteDrift),
+    /pure stage must use the exact named owner route/);
+  const finalManifestRouteDrift = structuredClone(report);
+  finalManifestRouteDrift.lineages[0].stages[2].route = 'lineage-verbatim';
+  finalManifestRouteDrift.lineages[0].stages[2].owned = false;
+  expectRejected('final evidence route drift', () => validateFinalEvidenceRows(finalManifestRouteDrift),
+    /wrong reviewed lineage route/);
+  const finalManifestSummaryDrift = structuredClone(report);
+  finalManifestSummaryDrift.summary.lineages = 12;
+  expectRejected('final evidence summary drift', () => validateFinalEvidenceRows(finalManifestSummaryDrift),
+    /exact arithmetic\/pixel summary differs/);
+  const embeddedCompletedReview = structuredClone(report);
+  embeddedCompletedReview.lineages[0].human_verdict = { band: 'PASS', reviewer: 'fixture' };
+  expectRejected('embedded completed review', () => validateBrowserReport(embeddedCompletedReview),
+    /embedded completed-review field/);
+  const embeddedCompletedAssessment = structuredClone(report);
+  embeddedCompletedAssessment.lineages[0].assessment = 'Verdict: PASS';
+  expectRejected('embedded completed-review value', () => validateBrowserReport(embeddedCompletedAssessment),
+    /embedded completed-review value/);
+  const unknownLineageMetadata = structuredClone(report);
+  unknownLineageMetadata.lineages[0].platinum_status = 'yes';
+  expectRejected('unknown lineage metadata', () => validateBrowserReport(unknownLineageMetadata),
+    /keys are incomplete or unexpected/);
+  const unknownGenomeMetadata = structuredClone(report);
+  unknownGenomeMetadata.lineages[0].inputs[0].genome.reviewDecision = 'Nick endorses Platinum';
+  unknownGenomeMetadata.lineages[0].inputs[0].genome_sha256 =
+    genomeHash(unknownGenomeMetadata.lineages[0].inputs[0].genome);
+  expectRejected('unknown genome metadata', () => validateBrowserReport(unknownGenomeMetadata),
+    /unsupported genome field/);
+  const embeddedAssetSignoff = structuredClone(report);
+  embeddedAssetSignoff.assets[0].release_signoff = 'Nick';
+  expectRejected('embedded asset signoff', () => validateBrowserReport(embeddedAssetSignoff),
+    /embedded completed-review field/);
+  const appendedVisualApproval = structuredClone(report);
+  appendedVisualApproval.visual_claim += ' Platinum approved by Nick.';
+  expectRejected('appended visual approval', () => validateBrowserReport(appendedVisualApproval),
+    /embedded completed-review value|exact no-visual-PASS boundary/);
   const missingMixed = structuredClone(report); missingMixed.mixed_kingdom_sentinels.pop();
   expectRejected('missing mixed sentinel', () => validateBrowserReport(missingMixed), /expected 16 mixed-kingdom sentinels/);
   const legacyClaimedAsCatalogue = structuredClone(report);
   const legacyInput = legacyClaimedAsCatalogue.mixed_kingdom_sentinels[8].inputs
     .find((input) => input.id === 'microbe-earth');
   legacyInput.derivation.kind = 'named-earth-seed-search';
-  legacyInput.derivation.exact_name_matches = 1;
   legacyInput.derivation.owner_source = 'current-catalogue';
-  delete legacyInput.derivation.route_owner_verified;
   expectRejected('deduped legacy owner claimed as current catalogue',
     () => validateBrowserReport(legacyClaimedAsCatalogue), /named Earth owner provenance missing/);
   const mixedOwnerLoss = structuredClone(report);
@@ -1325,7 +1652,7 @@ function runSelftest() {
   expectRejected('mixed owner loss', () => validateBrowserReport(mixedOwnerLoss),
     /_earthBlendKingdom did not follow/);
   const mixedRouteBypass = structuredClone(report);
-  mixedRouteBypass.mixed_kingdom_sentinels[4].route = 'lineage-owned';
+  mixedRouteBypass.mixed_kingdom_sentinels[4].route = 'lineage-verbatim';
   expectRejected('mixed route bypass', () => validateBrowserReport(mixedRouteBypass),
     /production route followed child kingdom/);
   const mixedChildCoverage = structuredClone(report);
@@ -1384,14 +1711,23 @@ function runSelftest() {
     verifyAssetRecord(temp, asset, 'fixture asset');
     expectRejected('stale output hash', () => verifyAssetRecord(temp, { ...asset, sha256: 'f'.repeat(64) }, 'fixture stale hash'), /stale SHA-256/);
     expectRejected('stale output dimensions', () => verifyAssetRecord(temp, { ...asset, width: 441 }, 'fixture stale dimensions'), /stale dimensions/);
+    const diskContract = path.join(temp, 'disk-contract'); fs.mkdirSync(diskContract);
+    writeJson(path.join(diskContract, 'manifest.json'), { ...report, review_status: 'REVIEWED' });
+    fs.writeFileSync(path.join(diskContract, 'README.md'), expectedEvidenceReadme(report));
+    expectRejected('disk manifest mutation', () => verifyEvidence(diskContract, report),
+      /disk manifest differs from the validated in-memory contract/);
+    writeJson(path.join(diskContract, 'manifest.json'), report);
+    fs.writeFileSync(path.join(diskContract, 'README.md'), `${expectedEvidenceReadme(report)}\nOverall: PASS\n`);
+    expectRejected('disk README mutation', () => verifyEvidence(diskContract, report),
+      /README differs from the exact UNREVIEWED \/ OPEN contract/);
   } finally {
     fs.rmSync(temp, { recursive: true, force: true });
   }
   console.log('HYBRID CONTINUITY MATRIX SELFTEST PASS');
-  console.log('  valid 12x5 report + forward/reverse reload: accepted');
+  console.log('  valid 13x5 report + forward/reverse reload: accepted');
   console.log('  exact-genome stages with disclosed byte-identical pixels: accepted as OPEN/FAIL evidence');
   console.log('  missing/duplicate/handwritten/nondeterministic/stage-order defects: rejected');
-  console.log('  hybrid bypass + seed-only cache collision: rejected');
+  console.log('  hybrid/owned-fauna/protected-fauna bypasses + seed-only cache collision: rejected');
   console.log('  current/legacy owner provenance + mixed route/child/order/marker bypasses: rejected');
   console.log('  stale genome/output hashes + dimensions: rejected');
   console.log('  traversal/existing/overlap/symlink targets: rejected');
