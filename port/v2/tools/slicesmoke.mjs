@@ -79,6 +79,48 @@ try {
 const send = browser.send;
 
 const fails = [];
+const sliceToken = async (session) => {
+  try {
+    const r = await send('Runtime.evaluate', {
+      expression: `typeof window.__CF_SLICE__?.documentToken==='string' ? window.__CF_SLICE__.documentToken : null`,
+      returnByValue: true,
+    }, session);
+    return r.exceptionDetails || typeof r.result.value !== 'string' ? null : r.result.value;
+  } catch { return null; /* an execution context may vanish during navigation */ }
+};
+const waitForSlice = async (session, label, { timeoutMs = 15000, previousToken = null } = {}) => {
+  const deadline = Date.now() + timeoutMs;
+  let last = 'diagnostic surface absent';
+  while (Date.now() < deadline) {
+    let r;
+    try {
+      r = await send('Runtime.evaluate', { expression: `(()=>{ try {
+        const S=window.__CF_SLICE__; if(!S||!S.api) return {ready:false,token:null,why:'surface absent'};
+        const state=S.api.state();
+        return {ready:!!state&&!!state.save&&Array.isArray(state.save.landed),token:S.documentToken,why:'state incomplete'};
+      } catch(error) { return {ready:false,token:null,why:String(error&&error.message||error)}; } })()`,
+        returnByValue: true, awaitPromise: true }, session);
+    } catch (error) {
+      last = String(error?.message || error);
+      await sleep(50);
+      continue;
+    }
+    if (r.exceptionDetails) last = String(r.exceptionDetails.exception?.description || r.exceptionDetails.text || 'page exception');
+    else {
+      const value = r.result.value;
+      const token = typeof value?.token === 'string' ? value.token : null;
+      if (value?.ready && token && (previousToken === null || token !== previousToken)) return token;
+      last = value?.ready && token === previousToken ? 'stale document token' : String(value?.why || 'state incomplete');
+    }
+    await sleep(50);
+  }
+  throw new Error(`${label} did not expose a ready slice within ${timeoutMs}ms (${last})`);
+};
+const navigateToSlice = async (session, url, label) => {
+  const previousToken = await sliceToken(session);
+  await send('Page.navigate', { url }, session);
+  return waitForSlice(session, label, { previousToken });
+};
 try {
   const t = await send('Target.createTarget', { url: 'about:blank' });
   const at = await send('Target.attachToTarget', { targetId: t.targetId, flatten: true });
@@ -86,7 +128,16 @@ try {
   await send('Runtime.enable', {}, sess);
   await send('Page.enable', {}, sess);
   await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false }, sess);
-  await send('Page.navigate', { url: URL0 }, sess);
+  let readinessControlRejected = false;
+  try { await waitForSlice(sess, 'about:blank readiness control', { timeoutMs: 150 }); }
+  catch { readinessControlRejected = true; }
+  if (!readinessControlRejected) fails.push('SLICE READINESS CONTROL FAILED — an about:blank target reported ready');
+  await navigateToSlice(sess, URL0, 'desktop boot');
+  const desktopToken = await sliceToken(sess);
+  let staleReadyControlRejected = false;
+  try { await waitForSlice(sess, 'stale-ready readiness control', { timeoutMs: 150, previousToken: desktopToken }); }
+  catch { staleReadyControlRejected = true; }
+  if (!staleReadyControlRejected) fails.push('SLICE READINESS CONTROL FAILED — the prior document token was accepted as a new boot');
   await sleep(3000);
 
   const evalIn = async (expr) => {
@@ -96,7 +147,10 @@ try {
       const near = String(expr).replace(/\s+/g, ' ').slice(0, 120);
       throw new Error(`desktop eval failed near ${JSON.stringify(near)}: ${error.message}`);
     }
-    if (r.exceptionDetails) throw new Error('page eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
+    if (r.exceptionDetails) {
+      const near = String(expr).replace(/\s+/g, ' ').slice(0, 120);
+      throw new Error(`page eval threw near ${JSON.stringify(near)}: ${JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text)}`);
+    }
     return r.result.value;
   };
 
@@ -375,7 +429,7 @@ try {
   /* 4. reload: the REAL SAVE survives (importSaveV2 ⇄ exportSaveV2 through
      IndexedDB — not a side JSON). The view must come back AND the landing
      must be in the save's `land` set. */
-  await send('Page.navigate', { url: URL0 }, sess);
+  await navigateToSlice(sess, URL0, 'desktop persistence reload');
   await sleep(2500);
   const st3 = await evalIn(`window.__CF_SLICE__.api.state()`);
   /* we landed on Earth before reloading — the SURFACE view must come back */
@@ -394,7 +448,7 @@ try {
   await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
     q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite');
       tx.objectStore('meta').put('{}','save'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
-  await send('Page.navigate', { url: URL0 }, sess);
+  await navigateToSlice(sess, URL0, 'desktop sparse-primary recovery');
   await sleep(2500);
   const recoveredSparse = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (recoveredSparse.mode !== 'surface' || !recoveredSparse.save.landed.includes(133)) {
@@ -519,9 +573,11 @@ try {
   /* a garbage blob must be REFUSED with nothing stored */
   const refuse = await evalIn(`window.__CF_SLICE__.api.importBlob('{"not":"a save"' )`).catch(() => 'navigated');
   if (refuse === null || refuse === 'navigated') fails.push('importBlob accepted garbage (or reloaded on it)');
+  const desktopImportToken = await sliceToken(sess);
   try {
     await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(vrRaw)})`);
   } catch { /* success path reloads the page — the eval context dies with it */ }
+  await waitForSlice(sess, 'desktop veteran import', { previousToken: desktopImportToken });
   await sleep(2800);
   const vet = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (vet.save.name !== 'Dakk') fails.push('veteran import did not boot as Dakk: ' + JSON.stringify(vet.save.name));
@@ -582,7 +638,7 @@ try {
   await send('Page.enable', {}, ph);
   await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true }, ph);
   await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 }, ph);
-  await send('Page.navigate', { url: URL0 }, ph);
+  await navigateToSlice(ph, URL0, 'phone veteran boot');
   await sleep(3000);
   const evalPh = async (expr) => {
     const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, ph);
@@ -683,7 +739,7 @@ try {
   await send('Page.enable', {}, navPh);
   await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true }, navPh);
   await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 }, navPh);
-  await send('Page.navigate', { url: URL3 }, navPh);
+  await navigateToSlice(navPh, URL3, 'fresh-phone navigation boot');
   await sleep(3000);
   const evalNavPh = async (expr) => {
     const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, navPh);
@@ -774,8 +830,10 @@ try {
   /* 4d1-fine. Import the stage-2 veteran on this isolated origin, rise back
      to the home galaxy, and drive one deterministic visible fine star with
      real touch. This is the negative control for the old one-tap teleport. */
+  const phoneImportToken = await sliceToken(navPh);
   try { await evalNavPh(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(VETERAN_ARRAY_RAW)})`); }
   catch { /* successful import reloads and destroys the evaluation context */ }
+  await waitForSlice(navPh, 'fresh-phone veteran import', { previousToken: phoneImportToken });
   await sleep(2800);
   for (let i = 0; i < 2; i++) {
     await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, navPh);
@@ -830,7 +888,7 @@ try {
     await send('Runtime.enable', {}, sR);
     await send('Page.enable', {}, sR);
     await send('Emulation.setDeviceMetricsOverride', { width: vw, height: vh, deviceScaleFactor: 2, mobile: true }, sR);
-    await send('Page.navigate', { url: URL0 }, sR);
+    await navigateToSlice(sR, URL0, `${name} matrix boot`);
     await sleep(2600);
     const evalR = async (expr) => {
       const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, sR);
@@ -850,7 +908,7 @@ try {
       os.put(${JSON.stringify(raw)},'save'); os.delete('save_bak'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
   const protectedBoot = async (raw) => {
     await setProtectedPrimary(raw);
-    await send('Page.navigate', { url: URL0 }, ph);
+    await navigateToSlice(ph, URL0, 'protected-save boot');
     await sleep(700);
     return evalPh(`new Promise((resolve,reject)=>{ const title=(document.querySelector('#toast [data-sel=toast-title]')||{}).textContent||'';
       const opacity=getComputedStyle(document.getElementById('toast')).opacity; const q=indexedDB.open('cf-v2-slice');
@@ -876,7 +934,7 @@ try {
     view: { type: 'galaxy', gal: legacyGal },
   });
   await setProtectedPrimary(legacySliceRaw);
-  await send('Page.navigate', { url: URL0 }, ph);
+  await navigateToSlice(ph, URL0, 'legacy slice upgrade boot');
   await sleep(900);
   const legacyUpgrade = await evalPh(`new Promise((resolve,reject)=>{ const state=window.__CF_SLICE__.api.state();
     const q=indexedDB.open('cf-v2-slice'); q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result;
@@ -929,10 +987,14 @@ try {
         return put0.apply(this, arguments);
       };
     })();` }, retrySession);
-    await send('Page.navigate', { url: URL0 }, retrySession);
+    await navigateToSlice(retrySession, URL0, 'transient-read retry boot');
     await sleep(900);
+    const retryBootToken = await sliceToken(retrySession);
     await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
     await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
+    if (seedRaw !== undefined) {
+      await waitForSlice(retrySession, 'transient-read existing-primary reload', { previousToken: retryBootToken });
+    }
     await sleep(seedRaw === undefined ? 900 : 1700);
     const result = await send('Runtime.evaluate', { expression: `new Promise((resolve,reject)=>{ const state=window.__CF_SLICE__.api.state();
       const q=indexedDB.open('cf-v2-slice'); q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result;
@@ -969,7 +1031,7 @@ try {
   await send('Page.enable', {}, trp);
   await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true }, trp);
   await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 }, trp);
-  await send('Page.navigate', { url: URL2 }, trp);
+  await navigateToSlice(trp, URL2, 'fresh-phone training boot');
   await sleep(3000);
   const evalTp = async (expr) => {
     const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, trp);
@@ -1018,7 +1080,7 @@ try {
   await send('Runtime.enable', {}, tr);
   await send('Page.enable', {}, tr);
   await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false }, tr);
-  await send('Page.navigate', { url: URL2 }, tr);
+  await navigateToSlice(tr, URL2, 'desktop training boot');
   await sleep(3000);
   const evalT = async (expr) => {
     const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, tr);
@@ -1056,7 +1118,7 @@ try {
   if (done3.tutActive || !done3.tutDone) fails.push('DRILL: graduation did not close training: ' + JSON.stringify([done3.tutActive, done3.tutDone]));
   if (done3.mode !== 'surface') fails.push('DRILL: the drill should end planetside: ' + done3.mode);
   /* the promise: training persists as DONE across reload */
-  await send('Page.navigate', { url: URL2 }, tr);
+  await navigateToSlice(tr, URL2, 'desktop training completion reload');
   await sleep(2500);
   const done4 = await evalT(`window.__CF_SLICE__.api.state()`);
   if (done4.tutActive) fails.push('DRILL: training re-opened after graduation + reload');

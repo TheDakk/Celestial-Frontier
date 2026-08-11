@@ -2113,10 +2113,17 @@ async function loadSave(): Promise<void> {
   rebuildBackdrop();
   addEventListener('resize', () => setTimeout(rebuildBackdrop, 50));
   app.stage.addChild(world);
+  /* Publish the browser-audit surface only after persistence has produced a
+     complete SaveStateV2 and the first scene is rendered. Publishing it
+     before this await let a slower CI browser call state() while `save` was
+     still unassigned, turning a readiness race into a misleading app fault. */
+  await loadSave();
+  rerender();
   /* diagnostics handle for tools/slicesmoke.mjs — a WebGL canvas reads BLACK
      through 2D drawImage without preserveDrawingBuffer, so the smoke asks
      Pixi's extract (which re-renders) instead of scraping the canvas */
   (window as unknown as Record<string, unknown>).__CF_SLICE__ = {
+    documentToken: crypto.randomUUID(),   /* reload/import waits must reject the prior document's still-live handle */
     app, world, cam, camT,   /* camT drives the zoom-transition smoke leg */
     /* test API for tools/slicesmoke.mjs — drives the SAME functions the
        pointer handlers call; no parallel logic to drift */
@@ -2200,8 +2207,6 @@ async function loadSave(): Promise<void> {
       },
     },
   };
-  await loadSave();
-  rerender();
   /* the CMB band-pick (main.js ringPick): a tap on EMPTY space near the
      observable-universe ring — and only there — opens the origin card */
   app.stage.eventMode = 'static';
