@@ -1,7 +1,7 @@
 # Celestial Frontier — Species & Genome System
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 reset
-overlay below matches `port/v2` as of 2026-08-10. ⚠ v1.8.9: every reader of the
+overlay below matches `port/v2` as of 2026-08-11. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
@@ -20,6 +20,18 @@ in §2.4.
 > own 1,014 route rows because four names occur in two sets. The live review ruler
 > is `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`; no prior band is
 > a current PASS.
+
+> **2026-08-11 route/freshness correction:** the Platinum review of the clean
+> `79ce144` current-generation archive proved that lineage metadata could be exact
+> while a fauna child still switched from its modern pure whole form to the retained
+> HD compatibility renderer at the first bred stage. Genetics and anchor generation
+> remain unchanged. Rendering now set-qualifies an exact seven-name reviewed-fauna
+> migration (Fruit Bat, Eagle, Wolf, Elephant, Chameleon, Dragonfly, Octopus) to
+> modern owners; Sea Turtle and Great White Shark remain protected on compatibility
+> routing. Pure named paths stay separate. The same candidate adds anchor-aware bred
+> treatment for Apple, Vanilla Orchid, Oyster Mushroom and Amoeba. Evidence schema v4
+> binds 13×5 stages /251 assets, but its output remains OPEN/UNREVIEWED until a new
+> source-commit- and ruler-bound verdict is collected.
 
 > **B15.4 classifier + naming (render/text-only, fp 50/50):** `FA_BODY[0]` renamed `"six-limbed"` →
 > `"sturdy-limbed"` (Plan 0 is now a "land grazer" whose limb count is set by the limb gene, not the

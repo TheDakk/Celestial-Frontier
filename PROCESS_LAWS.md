@@ -350,3 +350,35 @@ approved-dependency-implementation assumptions
 explicitly; do not turn “we reject the audited alias/mutation shapes” into a claim that arbitrary
 hostile prototype or dynamic-code monkey-patching is impossible. Runtime rendering and visual review
 remain separate evidence.
+
+---
+
+## Added 2026-08-11 (Platinum current-generation review)
+
+⚠⚠ **A VERDICT IS VALID FOR ITS BOUND RULER, NOT IMMORTAL FOR THE LABEL.** A prior scoped
+PASS can be honest and still be reopened when a later review binds more surfaces or asks a stronger
+question. The Platinum review did not show that the earlier glider and focused-lineage evidence was
+fabricated; it showed that isolated anatomy/detail checks and distinct stage hashes did not prove
+whole-form family separation or gradual five-generation continuity. Preserve the old verdict as
+history with its source commit, evidence hashes, resolutions, and rubric version. Mark it
+**superseded for the broader scope**—never silently rewrite it—and require a new hash-bound judgment
+for every changed pixel under the expanded ruler.
+
+⚠⚠ **FRESHNESS IS A CONTENT-ADDRESSABLE STATE, NOT A FILENAME OR DATE.** Every review package binds
+at least: clean 40-hex source commit; producer/schema version; exact catalogue identities and counts;
+browser provenance; per-file and aggregate SHA-256; required surfaces/resolutions; and review-ruler
+version. A completed verdict set additionally binds its reviewer/date and verdict-file hash; an
+UNREVIEWED blank package must leave those completion fields empty. A package is current only while
+all applicable bindings still match. Source, producer, browser, roster, required surface, or ruler drift
+makes it `STALE_FOR_CURRENT`, not corrupt and not retroactively false. Generate into
+a new non-overwriting directory/ZIP, deep-reverify after extraction, keep the old artifact sealed,
+and expose a machine-readable freshness check that names the first mismatched binding. “Latest”
+symlinks, mutable shared folders, and filenames containing “final” are navigation aids, never
+authority.
+
+The clean-source evidence contract is an integrity and reproducibility boundary, not an adversarial
+signature system. Producer code, approved reference inputs, and platform intrinsics at the recorded
+clean commit are trusted. Exact schemas/statuses and forbidden verdict artifacts must still fail
+closed, but SHA-256 cannot prove authenticity against an actor who deliberately rewrites producer
+metadata and every dependent hash before resealing. That stronger threat model requires signed
+attestations and protected keys; do not claim it from ordinary hashes.

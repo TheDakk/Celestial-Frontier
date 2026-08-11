@@ -16,7 +16,30 @@ This is a multi-batch arc. It is written down in full so a cold session can pick
 > review, authoritative source recording, and Earth-lineage hybrid outcomes.
 > Live procedure: `v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
-> **Current 2026-08-10:** the official 181-family /233-packet reset review is
+> **Current 2026-08-11 — Platinum repair overlay:** the governing feedback is
+> `v2/reference/Celestial_Frontier_Current_Full_Generations_Platinum_Review_2026-08-10.md`,
+> SHA-256 `5af3a33f0648f96115a421ea64cc70f97846f62e89dc8631deeb310103c708c2`.
+> It reviewed the sealed archive from source
+> `79ce14460998d653ee753e49e8f8016e754c82e4`, archive SHA-256
+> `18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`, and
+> withheld Platinum under the broader whole-form/continuity ruler. The bounded
+> repair now separates Sugar Glider, Flying Squirrel and Colugo as three whole
+> forms; routes exactly Fruit Bat, Eagle, Wolf, Elephant, Chameleon, Dragonfly
+> and Octopus through their modern named lineage owners while protecting Sea
+> Turtle and Great White Shark on the reviewed legacy route; strengthens Apple,
+> Vanilla Orchid and Oyster Mushroom drift; and adds Amoeba as the principal
+> microbe row. Schema v4 is 13×5 /251 hybrid assets; the successor combined
+> package is 2,163 PNGs and remains **OPEN / UNREVIEWED / NOT CERTIFIED**.
+> Browser-backed tools now use portable `browsercdp` resolution and exact
+> provenance. Clean-commit capture/repeat/package is deliberately produced only
+> after the source commit; its external sidecar and PR freshness transcript are
+> authoritative, while human review remains OPEN.
+> Draft PR #10 is repurposed from `openai/mac` into `develop` as `Address
+> Platinum glider and lineage review`; no merge, certification, release, or
+> deployment is authorized.
+
+> **Historical frozen checkpoint, 2026-08-10 — superseded for the broader
+> Platinum ruler:** the official 181-family /233-packet reset review is
 > frozen at clean commit `bc26e8` as **516 PASS /14 POLISH /720 FAIL**. It is the
 > repair baseline, not certification. Accepted scoped checkpoints are Wave 1
 > 177/177 (`d005090f`), Wave 2a 32/32 (`00e499c`), Wave 2b 51/51 (`9c148f0`),
@@ -37,9 +60,10 @@ This is a multi-batch arc. It is written down in full so a cold session can pick
 > continuation is stopped before post-edit rendering: the recorded 288-row
 > pre-edit evidence and one-off scoped producer remained under ignored
 > `apps/game/smoke/` on Windows. Recover the exact root or explicitly authorize
-> a deterministic `2ed0f28` reconstruction that reproduces both frozen hashes;
-> the browser review tools are also Windows-Edge-bound, so no Wave 2e visual
-> verdict exists on Mac. Remaining waves, full certification, the
+> a deterministic `2ed0f28` reconstruction that reproduces both frozen hashes.
+> At that checkpoint the browser review tools were Windows-Edge-bound; that
+> portability statement is superseded by the shared `browsercdp` resolver, but
+> no Wave 2e visual verdict exists on Mac. Remaining waves, full certification, the
 > final image-inclusive ZIP, reset PR, merge, release, and deployment remain OPEN.
 > The final R4 manifest is
 > `DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE` at
@@ -194,8 +218,15 @@ scope the guard to the class being worked on so an intentional retroactive pass 
 cannot disturb the rest. `[DRIFT]` per painter class + `[SAME]` Earth-only ratchets. Read
 D-ART-95 and D-ART-97 before changing its thresholds.
 
-### Stage 4 — RE-EXPORT AND RE-AUDIT
-Re-run the five zips and hand back for the external Platinum audit.
+### Stage 4 — RE-EXPORT AND RE-AUDIT ▶ PLATINUM FEEDBACK RECEIVED; EXTERNAL EVIDENCE AUTHORITY
+
+The external Platinum review is preserved at the hash above. Its bounded repair
+candidate is implemented. The immutable ZIP sidecar and PR verification transcript
+are the authority for whichever clean committed source supplies the repeat-exact
+captures, 13×5 /251-asset matrix, and 2,163-PNG current-only package; this reference
+does not embed a mutable “pending” or “complete” claim that would invalidate that
+commit. All generated review fields remain blank/open until a new independent
+judgment; the sealed predecessor archive is history, not a verdict to carry.
 
 **Two standing worklists now drive the arc** (both committed, both from LOOKING at the art):
 - `port/v2/reference/visualaudit.json` — 1,111 non-quadruped organisms judged one by one.
@@ -217,7 +248,8 @@ Re-run the five zips and hand back for the external Platinum audit.
 - **The end-lobe threshold needs recalibrating.** It went 19 → 42 in 22b because heads
   correctly got bigger. Until it is re-tuned against the new head rule it is not a gate.
 - **Platypus** has no route; measured 3.35 aspect against a real ~2.6.
-- **The 17 flora NEEDS_FIX rows** from the Platinum audit are still outstanding (task #24):
+- **The 17 flora NEEDS_FIX rows** from the legacy pre-reset Platinum audit remain a historical
+  worklist (task #24), not the governing 2026-08-11 feedback verdict:
   Acai, Angel's Trumpet, Beach Morning Glory, Black Pepper, Bladderwrack, Buckwheat, Cardamom,
   Cinnamon, Cotton, Cucumber, Dragon Fruit, Ivy, Mustard, Peanut, Sargassum, Tea Tree.
   (Ice Algae is already handled by the wave-18 CANON map.)

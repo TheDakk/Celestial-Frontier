@@ -59,6 +59,9 @@
    fauna shadow direction comes from the audited selector order; CO requires
    the returned-canvas serialization call itself to be exact and argument-free;
    CP rejects a curly-apostrophe table key that runtime lookup cannot reach.
+   CQ pins the reviewed fauna allowlist; CR/CS pin both new lineage helpers;
+   CT/CU require the drift compositor on both canonical and fauna consumers;
+   CV proves the new Set dependency cannot be shadowed by a live local binding.
    Usage: node tools/overridecheck.control.mjs  (exit 0 = every control fires) */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -915,6 +918,54 @@ try {
     'control CP'));
   check('CP: a noncanonical apostrophe cannot masquerade as a reachable route key', run(), 'parser-fail',
     /key "Lion’s Mane" is not runtime-canonical; use "Lion\'s Mane"[\s\S]*PARSER is broken/);
+  writeRouter(routerOrig);
+
+  writeRouter(replaceOnce(routerOrig,
+    "const REVIEWED_FAUNA_LINEAGES = new Set([\n  'Fruit Bat', 'Eagle', 'Wolf', 'Elephant', 'Chameleon', 'Dragonfly', 'Octopus',\n]);",
+    "const REVIEWED_FAUNA_LINEAGES = new Set([\n  'Fruit Bat', 'Eagle', 'Wolf', 'Elephant', 'Chameleon', 'Dragonfly',\n]);",
+    'control CQ'));
+  check('CQ: the reviewed fauna route is an exact closed allowlist', run(), 'parser-fail',
+    /reviewed fauna lineage allowlist changed[\s\S]*PARSER is broken/);
+  writeRouter(routerOrig);
+
+  writeRouter(replaceOnce(routerOrig,
+    "g._earthBlendKingdom === 'fauna'",
+    "g._earthBlendKingdom !== 'fauna'",
+    'control CR'));
+  check('CR: the reviewed fauna qualifier cannot widen or invert', run(), 'parser-fail',
+    /route helper isReviewedFaunaLineage implementation changed from its audited canvas contract[\s\S]*PARSER is broken/);
+  writeRouter(routerOrig);
+
+  writeRouter(replaceOnce(routerOrig,
+    "  if (!isReviewedFaunaLineage(g, 'fauna', name)) return;",
+    "  if (false) return;",
+    'control CS'));
+  check('CS: the drift helper cannot bypass the exact lineage gate', run(), 'parser-fail',
+    /route helper applyReviewedFaunaLineageDrift implementation changed from its audited canvas contract[\s\S]*PARSER is broken/);
+  writeRouter(routerOrig);
+
+  writeRouter(replaceOnce(routerOrig,
+    "    canon(ink.c, g, palette(g) as Pal);\n    applyReviewedFaunaLineageDrift(ink.c, g, name);\n    fitInk(ink.cv, c, kingdom + ':' + name);",
+    "    canon(ink.c, g, palette(g) as Pal);\n    void name;\n    fitInk(ink.cv, c, kingdom + ':' + name);",
+    'control CT'));
+  check('CT: canonical fauna must apply reviewed drift before fitInk', run(), 'parser-fail',
+    /canon lookup is not the guarded painter that feeds the returned canvas[\s\S]*PARSER is broken/);
+  writeRouter(routerOrig);
+
+  writeRouter(replaceOnce(routerOrig,
+    "    if (fp) fp(ink.c, g, palette(g) as Pal, name);\n    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);\n    applyReviewedFaunaLineageDrift(ink.c, g, name);\n    fitInk(ink.cv, c, 'fauna:' + name);",
+    "    if (fp) fp(ink.c, g, palette(g) as Pal, name);\n    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);\n    void name;\n    fitInk(ink.cv, c, 'fauna:' + name);",
+    'control CU'));
+  check('CU: fauna-table painters must apply reviewed drift before fitInk', run(), 'parser-fail',
+    /fauna selectors do not guard and feed the painter\/fallback that returns the canvas[\s\S]*PARSER is broken/);
+  writeRouter(routerOrig);
+
+  writeRouter(replaceOnce(routerOrig,
+    "type EarthKingdom = 'fauna' | 'flora' | 'fungi' | 'microbe';",
+    "class Set { constructor(_values: readonly string[]) {} has(_value: string): boolean { return false; } }\n\ntype EarthKingdom = 'fauna' | 'flora' | 'fungi' | 'microbe';",
+    'control CV'));
+  check('CV: the reviewed-lineage Set constructor cannot be shadowed', run(), 'parser-fail',
+    /trusted built-in Set is shadowed or reassigned[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   let shadowRouter = replaceOnce(routerOrig,
