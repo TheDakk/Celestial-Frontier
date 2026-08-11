@@ -713,7 +713,8 @@ hybrid continuity remains OPEN. It changes none of the certification blockers ab
 ## Immediate order
 
 1. PR #9 is merged into `develop` at `989142d`; its title and description were reviewed and require
-   no correction. Do not claim a Wave-2e art verdict.
+   no correction. Review docs-only draft PR #10 before it records that merged state on `develop`.
+   Do not claim a Wave-2e art verdict.
 2. The separate current-only review archive is produced and deep-reverified from clean evidence
    commit `79ce144`; preserve it as `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED` with every visual
    status unreviewed/open.
