@@ -1,7 +1,44 @@
 # Celestial Frontier v2 — the TypeScript port (Phase 1+)
 
-**Status: ★★★ RESET R1 FROZEN · WAVE 2D 50/50 PASS/PUSHED · WAVE 2E STATIC SOURCE MERGED, REVIEW EVIDENCE BLOCKED** (2026-08-10).
-**Port milestone record (2026-08-01):** ★★★ PHASES 1–3 COMPLETE (automatable) · PHASE 4 SHELL RUNNING.
+## Current port status — 2026-08-11
+
+The 14 planned deterministic domain facades are present and the port has a
+playable Pixi/browser slice, but the old milestone record below is not a claim
+that Gates B–D are literally closed. This audit found and repaired concrete
+integration gaps: the app's own TypeScript configuration now participates in
+`npm run typecheck`; CI installs v2 and runs its core test/type/art/browser-smoke
+gates; the DOM waiver is narrowed
+to three exact compatibility expressions; sparse/corrupt and future save
+payloads cannot overwrite proven data; IndexedDB can recover after a failed
+open; hostile epoch input is bounded; Atlas route identity, planet landing,
+named CF1 sharing, stale-card actions and repeat landfall outcomes are guarded;
+SessionRNG rejects hostile counters/keys; handwritten domain declarations match
+their runtime APIs; lazy species-art subscribers are retained; and the phone
+dock is a measured 4×2 layout with browser-backed non-overlap/hit-target
+negative controls. Browser smoke and performance tools now use the owned,
+portable CDP lifecycle.
+
+Current battery: 23 Vitest files / 257 pass / 1 skip; root and app TypeScript;
+artunused; artaudit 23/0; coveragegap 1,010/1,010; speccheck 454/0/0;
+overridecheck 1,014/1,014 routes and 1,010/1,010 catalogue species plus controls
+through CV; the production hybrid guard with 14 injected regressions;
+hybridmatrix/currentreviewpackage/browser selftests; real browser slice smoke;
+and a portable phone performance profile. This battery describes the bounded
+batch, not a production-release certificate.
+
+Highest-priority open v2 work is now semantic and runtime-owned: canonicalize
+the full CF1 galaxy→star→planet hierarchy; restore imported legacy full-state
+tutorial snapshots; decide and preserve hybrid parent identity in CFB codes;
+virtualize the 1,500-row Compendium; own/destroy Pixi canvas textures and add a
+memory plateau gate; attach completed HD planet textures to live sprites;
+persist/invalidate epoch edges and settle hidden-tab/reduced-motion policy;
+then close remaining literal Gate-B boundaries and split-store/CAS persistence.
+Static Platinum-reviewed portraits are deliberately frozen. The next major art
+ceiling is Phase 5 living rigs/animation and Phase 6's 43 biome scenes, not a
+blanket repaint of the 1,250 portraits covered by the package-level PASS.
+
+**Historical reset status (2026-08-10): ★★★ RESET R1 FROZEN · WAVE 2D 50/50 PASS/PUSHED · WAVE 2E STATIC SOURCE MERGED, REVIEW EVIDENCE BLOCKED.**
+**Historical port milestone record (2026-08-01):** ★★★ PHASES 1–3 COMPLETE (automatable) · PHASE 4 SHELL RUNNING.
 **Phase 4 so far — the slice wears the game's face at the GOLDEN SCREENS' exact geometry**
 (floating-pill topbar: player chip + HP bar + Prime pill + trail · objective chip fed by the
 Ascent chapters as pure data, landfalls BANK for real · caption + hint bottom-center · round

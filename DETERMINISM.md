@@ -1,5 +1,20 @@
 # Celestial Frontier — Determinism Discipline
 
+> **2026-08-11 v2 port overlay:** `@cf/domain-sessionrng` now requires uint32
+> session seeds/counters, 1–64 printable-ASCII domain names, prototype-safe
+> `Map` ownership, and a fail-closed counter-exhaustion boundary. Tests reject
+> `__proto__`/`constructor` collisions, fractions, negatives, unsafe values,
+> invalid domains and exhausted streams. Production gameplay call-site wiring
+> is still deferred; this hardens the deterministic service, not a claim that
+> all live outcome rolls have migrated.
+>
+> The v2 no-DOM gate no longer grants whole-file waivers to CombatCore and
+> WorldGen. It permits exactly the three retained compatibility expressions
+> (`document` paperdoll, `document` avatar and WorldGen canvas creation), and a
+> negative control proves an additional DOM reference fails. Browser-backed
+> harnesses use one owned CDP process/profile with bounded shutdown and cleanup;
+> static generation remains independent of browser timing.
+
 **STATUS:** matches code as of 2026-07-30 (verified against main.js + tools/). The 2026-07-30
 pass added §6's "WHEN art is drawn is not fingerprint input", corrected the layout gate to 10
 viewports, and registered `bootperf.js` + `simrun dom` in the battery.

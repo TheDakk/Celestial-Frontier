@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { loadFixture, checkGenerator, canon } from '../../../../tests/parity.js';
 import { probeRaw, probeParsed } from '../../../../tests/baseline.js';
-import { rarityRoll, colorGrade, spectral, speciesName, GRADE_TIERS, RARITY_V17, TIER_MAX, displayRarity } from '@cf/domain-speciestraits';
+import { rarityRoll, colorGrade, spectral, speciesName, GRADE_TIERS, RARITY_V17, TIER_MAX, displayRarity, SP_COLOR, SP_HEX, FA_EYES } from '@cf/domain-speciestraits';
 
 const fx = loadFixture();
 
@@ -56,6 +56,10 @@ describe('★ ROADMAP 9g — the display collapse gets its guard (plan §16.3)',
   });
   it('star glyphs are retired on every row', () => {
     for (const g of GRADE_TIERS) expect(g.star).toBe('');
+  });
+  it('exported palette and eye-count tables match their runtime shapes', () => {
+    expect(SP_COLOR.every((name) => typeof SP_HEX[name] === 'string')).toBe(true);
+    expect(FA_EYES).toEqual([2, 4, 6, 8, 1, 0]);
   });
   it('displayRarity clamps raw 10–14 to Transcendent; TIER_MAX is 14', () => {
     expect(TIER_MAX).toBe(14);

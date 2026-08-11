@@ -391,3 +391,25 @@ state, while the external document supplies the human verdict. A package-level P
 literal per-row `--collect/--certify` output by wording alone, and it does not close unrelated blocked
 evidence. If the supplied review omits a reviewer identity, signature, or archive digest, record that
 limitation and the external cross-binding; never invent the missing attestation.
+
+---
+
+## Added 2026-08-11 (v2 integration audit)
+
+⚠⚠ **A TOTAL LOADER IS NOT AN AUTHENTIC SAVE CLASSIFIER.** A migration function may deliberately
+turn `{}`, partial legacy fields, or malformed rows into usable defaults so a session can continue.
+That does not authorize those bytes to replace a primary save or last-known-good backup. Classify
+storage/import input first: absent/fresh, coherent supported envelope, unsupported future version,
+corrupt/truncated payload, or transient storage failure. Only coherent supported data may be
+promoted. Future and corrupt bytes remain protected; a transient hold clears only after storage
+health is re-proven. Negative-control syntactically valid truncations, primitives/arrays, a future
+version, backup recovery, and a failed-then-successful database open. “The importer returned an
+object” proves availability, not preservation.
+
+⚠⚠ **A HANDWRITTEN DECLARATION MUST BE TESTED AGAINST THE RUNTIME IT CLAIMS.** TypeScript can make
+the wrong call shape compile perfectly when a `.d.ts` lies: an omitted required callback crashes,
+an array declared where an object exists selects the wrong path, and an incomplete combat-stat
+shape reaches a nested dereference. For every lifted JavaScript boundary, pair compile-time probes
+with runtime calls that exercise the returned shape and failure surface. Run the consumer app's own
+TypeScript configuration too; a workspace-root check can omit the exact program that exposes the
+drift. Treat declaration-only edits as behavior risk until those two directions agree.

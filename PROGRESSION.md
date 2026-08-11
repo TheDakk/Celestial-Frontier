@@ -1,5 +1,16 @@
 # Celestial Frontier — Player Progression
 
+> **2026-08-11 v2 port overlay:** `COSMIC_EPOCH` is accepted only as a
+> nonnegative safe integer and is capped at 10,000 (>138 continuous active days
+> at 20 minutes per epoch). The live injected play-time clock uses the same cap.
+> This deliberately closes an imported `epoch=1e12` availability exploit in the
+> retained O(epoch) ecology evolution and removes fractional extra iterations;
+> honest frozen epochs are unchanged. Remaining clock work is to persist and
+> invalidate epoch-derived scenes exactly once at an integer edge, and to decide
+> whether hidden-tab time counts as play before wiring visibility suspension.
+> Repeat planet landings no longer bank an extra landfall; a veteran training
+> replay may still receive its lesson event without receiving progression credit.
+
 **STATUS:** matches code as of 2026-07-30 (verified against main.js). See the 2026-07-30 addendum at the end — three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.

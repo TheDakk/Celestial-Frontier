@@ -1,5 +1,25 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-11 v2 port overlay (matches `port/v2` code):** The phone slice now
+> owns an explicit 206×98, 4×2 dock and publishes measured `--dock-h` and
+> `--ctx-h`. Context, hint and Planetside offsets derive from those values, so a
+> wrapped line, safe-area change or media-query change cannot bury copy beneath
+> the dock. The 390×844 real-browser leg checks pairwise rectangle clearance,
+> all eight button hit targets, exact rows/size, and CSS-variable equality, then
+> injects the old overlap and requires the gate to fail. Hint verbs also use real
+> word-boundary regex bytes, so `.kw` highlighting is tested as an outcome. A
+> separate fresh-origin phone leg keeps Field Training active, anchors its card
+> above measured `--dock-h`, proves all eight dock centres remain geometrically
+> clear, and rejects an injected training-card burial; the veteran phone capture
+> can no longer make that fresh-player layout pass vacuously.
+>
+> Browser smoke and performance tools use the owned portable CDP lifecycle and
+> always rebuild before capture; unresolved performance metrics now fail rather
+> than print a profile-shaped success. The current profile is not yet a release
+> budget gate: cold repetitions, long-task/memory budgets, Compendium
+> virtualization, scene-texture disposal, live HD planet replacement and fuller
+> reduced-motion/hidden-tab behavior remain open.
+
 **STATUS:** matches code as of 2026-07-31 (verified against main.js + the html). Three addenda at the end: THE ART-HOLD LAW (v1.8.5), THE TRAINING LAYOUT CONTRACT (v1.8.6) and its part two (v1.8.7) — a raised board must clear BOTH the lesson card and the dock.
 the end of this file: **THE ART-HOLD LAW** (shipped in v1.8.5) — nothing expensive may be synthesised
 behind a blocking full-screen surface — with the *painted ≠ answerable* distinction that found it;

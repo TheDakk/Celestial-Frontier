@@ -38,33 +38,49 @@ import {
 import { galaxyProfile, galaxyHaze, systemFor, fineStarsInCell, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
 import { planetSpecies } from '@cf/domain-ecology';
 import { climateBand } from '@cf/domain-surveyphrases';
-import { SYS_R, UCELL, OBS_R, HOME_POS } from '@cf/domain-worldconfig';
+import { SYS_R, UCELL, OBS_R, HOME_GAL_SEED, HOME_POS, SOL_SEED, SOL_POS } from '@cf/domain-worldconfig';
 import { galaxyName, starName, properName } from '@cf/domain-naming';
 import { createEpochClock, type EpochClock } from '@cf/domain-progression';
 import { mulberry32, hashInt, TAU } from '@cf/domain-rand';
 import { installCaptureHooks, planetDescriptor, describePick, SOL_MOONS, galaxyStats, fmtBig, type Descriptor } from '@cf/domain-descriptors';
-import { encodeWhere, decodeWhere, _sanitizeView } from '@cf/domain-strays';
+import { cleanName, encodeWhere, decodeWhere, _sanitizeView } from '@cf/domain-strays';
 import { describeSpecies } from '@cf/domain-genome';
 import { battleStats, STAT_NAMES, STAT_HUES } from '@cf/domain-combatcore';
 import {
   createSaveRepository, createIndexedDBBackend,
-  importSaveV2, exportSaveV2, type SaveStateV2, type ContentRegistry,
+  importSaveV2, isPlausibleSaveEnvelope, exportSaveV2, readSaveWithRecovery,
+  type SaveStateV2, type ContentRegistry, type StoredPayloadStatus,
 } from '@cf/persistence';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
 installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt fully replaces the hooks */
-/* THE PORTRAIT ENGINE IS A LAZY CHUNK: 380KB of hdart stays off the boot
+/* THE PORTRAIT ENGINE IS A LAZY CHUNK: ~352KB gzip of species art stays off the boot
    path; the first Compendium/planetside view kicks the load and refills
    itself when the painters arrive (idle-prefetched after boot). */
 type SArt = { speciesPortrait: (g: Record<string, unknown>) => string; speciesThumb: (g: Record<string, unknown>) => string };
 let SA: SArt | null = null;
-let _saKicked = false;
-function ensureSA(onReady: () => void): boolean {
+let saPromise: Promise<SArt> | null = null;
+const saSubscribers = new Map<string, () => void>();
+function ensureSA(key: 'codex' | 'planetside' | 'prefetch', onReady: () => void): boolean {
   if (SA) return true;
-  if (!_saKicked) {
-    _saKicked = true;
-    void import('@cf/art/species').then((mod) => { SA = mod as unknown as SArt; onReady(); }).catch(() => { _saKicked = false; });
-  }
+  /* One latest invalidation per view. A raw Promise `.then` per call can
+     retain 1,500 Compendium-row callbacks and replay the whole list 1,500
+     times when the chunk resolves. Distinct views still all hear readiness. */
+  saSubscribers.set(key, onReady);
+  /* Every interested view subscribes to the same import. The old boolean
+     retained only the callback that STARTED the load; if the 3s prefetch
+     won the race, a Compendium/Planetside callback arriving in-flight was
+     discarded and the view stayed empty until reopened. */
+  saPromise ??= import('@cf/art/species')
+    .then((mod) => {
+      SA = mod as unknown as SArt;
+      const callbacks = [...saSubscribers.values()];
+      saSubscribers.clear();
+      for (const callback of callbacks) try { callback(); } catch { /* another subscribed view still refills */ }
+      return SA;
+    })
+    .catch((error) => { saPromise = null; throw error; });
+  void saPromise.catch(() => { /* a later request retries; latest subscribers stay queued */ });
   return false;
 }
 /* app-state seams the VERBATIM descriptor code reads as globals (D-ST in
@@ -74,8 +90,9 @@ function ensureSA(onReady: () => void): boolean {
 const REGISTRY = REGISTRY_JSON as unknown as ContentRegistry;
 const gSeam = globalThis as Record<string, unknown>;
 const stSeam: { gal: unknown; star: unknown } = { gal: null, star: null };
+const customNames = new Map<string, string>();
 gSeam.st ??= stSeam;
-gSeam.customNames ??= new Map();   /* player renames — Phase 4 wiring */
+gSeam.customNames = customNames;   /* one app-owned map shared with descriptor seams */
 
 extensions.add(CullerPlugin);   /* offscreen sprites skip render — thousands of stars, one flag */
 
@@ -93,14 +110,29 @@ const objChipEl = document.getElementById('objchip')!;
 const ctxEl = document.getElementById('ctxbar')!;
 const hintEl = document.getElementById('hintpill')!;
 const topbarEl = document.getElementById('topbar')!;
+const dockEl = document.getElementById('dock')!;
 const esc = (s: unknown): string => String(s ?? '').replace(/[<>&"']/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c]!));
 function syncTopbarH(): void {
   /* the game's height-sync law: MEASURED, never guessed (main.js 119) */
   document.documentElement.style.setProperty('--topbar-h', topbarEl.offsetHeight + 'px');
 }
+function syncDockH(): void {
+  /* Phone owns two rows while desktop owns one. All lower chrome reads the
+     measured result, so a media-query or safe-area change cannot bury it. */
+  document.documentElement.style.setProperty('--dock-h', dockEl.offsetHeight + 'px');
+}
+function syncCtxH(): void {
+  /* The contextual line can wrap on a phone. Planetside anchors above its
+     rendered height rather than assuming one line and covering the copy. */
+  document.documentElement.style.setProperty('--ctx-h', ctxEl.offsetHeight + 'px');
+}
 new ResizeObserver(syncTopbarH).observe(topbarEl);
+new ResizeObserver(syncDockH).observe(dockEl);
+new ResizeObserver(syncCtxH).observe(ctxEl);
 addEventListener('resize', () => {
   syncTopbarH();
+  syncDockH();
+  syncCtxH();
   /* rotation moves minWH while the ascend floors read gz0/sz0 live (audit
      #8) — recompute for the mode you are IN so the thresholds agree */
   if (nav.mode === 'galaxy') gz0 = 0.42 * minWH() / GR;
@@ -112,7 +144,7 @@ function setHint(t: string): void {
   if (t === _hintTxt) return;
   _hintTxt = t;
   /* verbs light up blue — the golden's scanability (static strings only) */
-  hintEl.innerHTML = t.replace(/(tap|drag|zoom|press|right-click|Escape|wheel|pinch)/gi, '<b class="kw">$1</b>');
+  hintEl.innerHTML = t.replace(/\b(tap|drag|zoom|press|right-click|Escape|wheel|pinch)\b/gi, '<b class="kw">$1</b>');
 }
 function setTrail(segs: string[]): void {
   trailEl.innerHTML = segs.map((s, i) =>
@@ -154,7 +186,9 @@ card.id = 'survey';
 card.className = 'glass';
 document.body.appendChild(card);
 let lastCard: Descriptor | null = null;
+let cardCtx: { p: PlanetNode; starSeed: number } | null = null;
 function showSurvey(d: Descriptor, actionsHtml?: string): void {
+  if (actionsHtml === undefined) cardCtx = null;
   lastCard = d;
   card.innerHTML =
     `<h2 data-sel="title" style="margin:0 0 2px;font-size:17px;color:#f4f8ff">${esc(d.title)}</h2>` +
@@ -198,6 +232,12 @@ document.body.appendChild(sheet);
 document.getElementById('docksave')!.addEventListener('click', () => { sheet.style.display = 'block'; });
 document.getElementById('docksurvey')!.addEventListener('click', () => {
   /* re-show the LAST card (no rebuild — the fold law's no-rebuild spirit) */
+  if (cardCtx && !activeCardPlanetWhere()) {
+    cardCtx = null;
+    card.innerHTML = '';
+    hideSurvey();
+    return;
+  }
   if (card.style.display === 'none' && card.innerHTML) {
     card.style.display = 'block';
     document.getElementById('docksurvey')!.classList.add('on');
@@ -253,11 +293,31 @@ function fillSettings(): void {
     save.motionMode = +(b as HTMLElement).dataset.motion!;
     fillSettings(); void persistView();
   });
-  el.querySelector('#setrestart')!.addEventListener('click', () => {
-    /* the game's promise: Settings can restart the lessons any time */
+  el.querySelector('#setrestart')!.addEventListener('click', async (event) => {
+    /* Veteran restart is a reversible drill: begin in Sol where the lesson
+       is winnable, then restore the exact pre-drill view on skip/finish. */
+    const button = event.currentTarget as HTMLButtonElement;
+    const prior = save.tutDone;
+    const priorSnapshot = save.tutSnapPending;
+    const priorNav = nav;
+    button.disabled = true;
+    save.tutSnapPending = { view: navToView(nav) };
     save.tutDone = false;
-    void persistView();
-    location.reload();
+    nav = {
+      mode: 'system',
+      gal: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y, size: 78, sp: 0, tilt: 0.62, rot: 0.5, home: true },
+      star: { seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y },
+      planet: null,
+    };
+    if (await persistView()) location.reload();
+    else {
+      save.tutDone = prior;
+      save.tutSnapPending = priorSnapshot;
+      nav = priorNav;
+      save.savedView = navToView(priorNav);
+      button.disabled = false;
+      toast('Save unavailable', 'Field Training was not restarted; your current expedition is unchanged.');
+    }
   });
   el.querySelector('#setglass')!.addEventListener('input', (e) => {
     save.glassTint = (+(e.target as HTMLInputElement).value) / 100;
@@ -271,6 +331,10 @@ function fillSettings(): void {
 function fillCodex(filter?: string): void {
   if (!save) return;
   const f = (filter || '').toLowerCase();
+  /* Subscribe the VIEW once, not once per creature. With the shared import
+     Promise, putting this inside `rows.map` retained up to 1,500 callbacks;
+     resolving the chunk then launched 1,500 eager full-list rerenders. */
+  if (!SA) ensureSA('codex', () => { if (openPanelId() === 'codex') fillCodex(filter); });
   const rows = save.codex
     .map(([, e], i) => ({ e, i }))
     .filter(({ e }) => !f || (e.name + ' ' + e.kind + ' ' + e.realm).toLowerCase().includes(f));
@@ -281,7 +345,6 @@ function fillCodex(filter?: string): void {
       : rows.map(({ e, i }) => {
         let th = '';
         if (SA) { try { th = SA.speciesThumb(e.g as never); } catch { /* text row still reads */ } }
-        else ensureSA(() => { if (openPanelId() === 'codex') fillCodex(filter); });
         return `<div class="centry" data-sel="codex-entry" data-ci="${i}" style="cursor:pointer;display:flex;gap:10px;align-items:center">` +
           (th ? `<img src="${th}" alt="" style="width:44px;height:44px;border-radius:8px;border:1px solid #22304a;background:#0b1220;flex:0 0 44px">` : '') +
           `<span style="min-width:0"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><div class="sub">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</div></span></div>`;
@@ -306,7 +369,7 @@ function fillCodexDetail(idx: number): void {
     const names = STAT_NAMES as readonly string[], hues = STAT_HUES as readonly string[];
     let portrait = '';
     const idx0 = idx;
-    if (ensureSA(() => { if (openPanelId() === 'codex') fillCodexDetail(idx0); })) {
+    if (ensureSA('codex', () => { if (openPanelId() === 'codex') fillCodexDetail(idx0); })) {
       try { portrait = SA!.speciesPortrait(e.g as never); } catch { /* a genome the painter cannot dress — the card still reads */ }
     }
     body =
@@ -416,13 +479,21 @@ const searchEl = document.getElementById('searchbox') as HTMLInputElement;
 function encodeHere(): string | null {
   const v = navToView(nav);
   if (!v) return null;
-  return encodeWhere(v as never) as string;
+  const name = v.type === 'planet' && v.pseed != null ? customNames.get('p' + v.pseed) : null;
+  return encodeWhere(v as never, name || undefined) as string;
 }
-function jumpToView(view: Record<string, unknown>): boolean {
+function jumpToView(view: Record<string, unknown>, incomingName: string | null = null): boolean {
   if (!save) return false;   /* pre-boot paste (audit #3) */
   const v = _sanitizeView(view);
   if (!v) return false;
   const n2 = viewToNav(v);
+  /* External planet destinations focus the real world in system view; only
+     the explicit Land command may enter surface mode and bank outcomes.
+     Also reject a pseed that is not a member of the declared system. */
+  const focusPlanet = n2.mode === 'surface' && n2.star && n2.planet
+    ? systemScene(n2.star.seed).planets.find((planet) => planet.seed === n2.planet!.seed) || null
+    : null;
+  if (n2.mode === 'surface' && !focusPlanet) return false;
   if (n2.mode !== 'universe' && n2.gal) {
     if (!withinReachOf(primeCount(), n2.gal.x, n2.gal.y)) {
       toast('⬆ Beyond Your Charter', ascHintFor(ascStage()));
@@ -433,13 +504,26 @@ function jumpToView(view: Record<string, unknown>): boolean {
       return false;
     }
   }
-  nav = n2;
+  let acceptedName = false;
+  if (focusPlanet && incomingName) {
+    const name = cleanName(incomingName);
+    if (name) {
+      customNames.set('p' + focusPlanet.seed, name);
+      save.customNames = [...customNames.entries()];
+      acceptedName = true;
+    }
+  }
+  nav = focusPlanet
+    ? { mode: 'system', gal: n2.gal, star: n2.star, planet: null }
+    : n2;
   if (nav.mode === 'galaxy') { gz0 = 0.42 * minWH() / GR; camT.z = gz0 * 1.05; }
   else if (nav.mode === 'system') { sz0 = 0.40 * minWH() / SYS_R; camT.z = sz0 * 1.05; }
   else camT.z = 1;
   cam.z = camT.z * 0.7; cam.x = camT.x = 0; cam.y = camT.y = 0;
   playWhoosh();
   rerender();
+  if (focusPlanet && nav.star) surveyPlanet(focusPlanet, nav.star.seed);
+  if (acceptedName) void persistView();
   return true;
 }
 searchEl.addEventListener('keydown', (e) => {
@@ -448,7 +532,7 @@ searchEl.addEventListener('keydown', (e) => {
   if (!q) return;
   const dec = decodeWhere(q) as { where: Record<string, unknown>; name: string | null } | null;
   if (dec && dec.where) {
-    if (jumpToView(dec.where)) searchEl.value = '';
+    if (jumpToView(dec.where, dec.name)) searchEl.value = '';
     searchEl.blur();
     return;
   }
@@ -465,14 +549,14 @@ sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
 async function importBlob(raw: string): Promise<string | null> {
   /* returns an error message, or null on success (then we reload) */
   const imp = importSaveV2(raw, REGISTRY, Date.now());
+  if (!imp.ok && imp.reason === 'future-version') return 'This save is from a newer Celestial Frontier build. Update first; nothing was stored.';
   if (!imp.ok) return 'That does not load as a Celestial Frontier save — nothing was stored.';
   /* the real loader hardens ANY object into a fresh save — fine at boot,
      dangerous in an import sheet (an accidental "{}" would wipe the stored
      expedition). Require a face we recognize before we overwrite. */
   try {
-    const o = JSON.parse(raw) as Record<string, unknown>;
-    const KNOWN = ['me', 'essence', 'view', 'codex', 'land', 'stats', 'cargo', 'epoch', 'tut'];
-    if (!KNOWN.some((k) => k in o)) return 'That parses, but carries no save fields — nothing was stored.';
+    const o = JSON.parse(raw) as unknown;
+    if (!isPlausibleSaveEnvelope(o)) return 'That parses, but is not a complete save envelope — nothing was stored.';
   } catch { return 'That does not load as a Celestial Frontier save — nothing was stored.'; }
   try { await repo.write(raw); } catch { return 'Storage refused the write (private mode?).'; }
   /* the ORIGINAL paste is kept as an untouched keepsake (audit #2): the live
@@ -496,9 +580,9 @@ toastEl.style.cssText = 'position:fixed;left:50%;bottom:calc(env(safe-area-inset
   'border:1px solid #2a3c5e;border-radius:10px;opacity:0;transition:opacity 0.35s;pointer-events:none';
 document.body.appendChild(toastEl);
 let _toastT = 0, _toastHide = 0;
-function toast(title: string, msg: string): void {
+function toast(title: string, msg: string, force = false): void {
   const now = performance.now();
-  if (now - _toastT < 1800) return;   /* the game's re-fire guard (review catch: parking inside a gate) */
+  if (!force && now - _toastT < 1800) return;   /* the game's re-fire guard (review catch: parking inside a gate) */
   _toastT = now;
   toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><br>${esc(msg)}`;   /* every sink escapes (audit #6) */
   toastEl.style.opacity = '1';
@@ -1551,10 +1635,14 @@ function worldRoster(p: PlanetNode, starSeed: number): Array<Record<string, unkn
 /* THE GAME'S TRUE TWO-STEP (find-earth/land training steps depend on it):
    a tap SURVEYS — the card opens with its ACTION ROW (Land · + Add to Star
    Atlas · ⧉ share code); pressing LAND is its own act. */
-let cardCtx: { p: PlanetNode; starSeed: number } | null = null;
 function surveyPlanet(p: PlanetNode, starSeed: number): void {
   const sys = systemFor(starSeed);
   const d = planetDescriptor(p.P, sys, { name: p.name, orb: p.orb } as never) as Descriptor;
+  const customName = customNames.get('p' + p.seed);
+  if (customName) {
+    d.title = customName;
+    d.sub = (d.sub ? d.sub + ' · ' : '') + 'named by you';
+  }
   cardCtx = { p, starSeed };
   showSurvey(d, buildCardActions(p));
   playSurveyPing();   /* the ACT of surveying answers back (main.js) */
@@ -1562,11 +1650,16 @@ function surveyPlanet(p: PlanetNode, starSeed: number): void {
 }
 function buildCardActions(p: PlanetNode): string {
   const charted = save && save.logMap.some(([id]) => id === 'p' + p.seed);
+  /* A veteran replay already has Earth charted. Keep the real Add action in
+     the drill so the atlas-add step cannot spotlight a missing control;
+     addToAtlas is idempotent and still emits the training event. */
+  const trainingAdd = p.seed === 133 && trainingActive();
   return '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px">' +
     '<button data-act="landcta" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:40px;font:12px system-ui">⛳ Land</button>' +
-    (charted
+    (charted && !trainingAdd
       ? '<span style="color:#8fa3c4;align-self:center;font-size:12px">★ charted</span>'
-      : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:40px;font:12px system-ui">+ Add to Star Atlas</button>') +
+      : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:40px;font:12px system-ui">' +
+        (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
     '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:40px;font:12px system-ui">⧉ share code</button>' +
     '</div>';
 }
@@ -1575,16 +1668,33 @@ function surveyAndLand(p: PlanetNode, starSeed: number): void {
   surveyPlanet(p, starSeed);
   doLand();
 }
+function activeCardPlanetWhere(): Record<string, unknown> | null {
+  if (!cardCtx || !nav.gal || !nav.star || nav.star.seed !== cardCtx.starSeed) return null;
+  const live = systemScene(nav.star.seed).planets.some((planet) => planet.seed === cardCtx!.p.seed);
+  if (!live) return null;
+  return {
+    type: 'planet', gal: { ...nav.gal },
+    star: { x: nav.star.x, y: nav.star.y, seed: nav.star.seed },
+    pseed: cardCtx.p.seed,
+  };
+}
+function cardShareCode(): string | null {
+  const where = activeCardPlanetWhere();
+  /* A stale planet card must never silently encode the current system. The
+     visible card and copied address are one atomic context. */
+  return where ? encodeWhere(where as never, customNames.get('p' + cardCtx!.p.seed)) as string : null;
+}
 function doLand(): void {
-  if (!cardCtx) return;
+  if (!cardCtx || !activeCardPlanetWhere()) return;
   const p = cardCtx.p;
   const r = land(nav, { seed: p.seed });
   if (r.ok) {
     nav = r.state;
-    if (!save.landed.includes(p.seed)) save.landed.push(p.seed);   /* the game's `land` set */
+    const firstLand = !save.landed.includes(p.seed);
+    if (firstLand) save.landed.push(p.seed);   /* the game's `land` set */
     /* the Ascent hears the landfall — credit BANKS for every chapter from
        the current on (the review-catch rule, now pure in charter.ts) */
-    if (bankLandfall(save.ascCh, save.ascProg, p.seed) && chapterGoalsDone(save.ascCh, save.ascProg)) {
+    if (firstLand && bankLandfall(save.ascCh, save.ascProg, p.seed) && chapterGoalsDone(save.ascCh, save.ascProg)) {
       const done = ASC_CHAPTERS_DATA[save.ascCh]!;
       save.ascCh++;
       toast('★ ' + done.name + ' — complete', done.unlockNote);
@@ -1592,18 +1702,23 @@ function doLand(): void {
     stSeam.gal = nav.gal; stSeam.star = nav.star;
     playWhoosh();   /* planetfall */
     drawSurface(p); hudText(); void persistView();
-    gameEvent('landfall', { planetSeed: p.seed });
+    /* A repeated landing is not new progression. The one exception is the
+       explicit veteran training replay: its lesson waits for the action,
+       but still receives no second landfall credit. */
+    if (firstLand || (p.seed === 133 && trainingActive() && trainingStepId() === 'land')) {
+      gameEvent('landfall', { planetSeed: p.seed });
+    }
   }
 }
 function addToAtlas(): void {
-  if (!cardCtx || !save || !nav.gal || !nav.star) return;
+  const where = activeCardPlanetWhere();
+  if (!cardCtx || !save || !where) return;
   const p = cardCtx.p;
   const id = 'p' + p.seed;
   if (!save.logMap.some(([k]) => k === id)) {
     const d = card.querySelector('[data-sel=title]')?.textContent || p.name;
     const sub = card.querySelector('[data-sel=sub]')?.textContent || '';
-    const where = { type: 'planet', gal: { ...nav.gal }, star: { x: nav.star.x, y: nav.star.y, seed: nav.star.seed }, pseed: p.seed };
-    save.logMap.push([id, { id, title: d, sub, where }]);
+    save.logMap.push([id, { id, title: d, sub, where, t: Date.now() }]);
     void persistView();
     toast('★ Charted', d + ' joined your Star Atlas.');
   }
@@ -1617,7 +1732,7 @@ card.addEventListener('click', (e) => {
   if (a === 'landcta') doLand();
   else if (a === 'add') addToAtlas();
   else if (a === 'share') {
-    const code = encodeHere() || (cardCtx ? (encodeWhere({ type: 'planet', gal: nav.gal, star: nav.star, pseed: cardCtx.p.seed } as never) as string) : null);
+    const code = cardShareCode();
     if (code) {
       void navigator.clipboard?.writeText(code).catch(() => { /* headless */ });
       toast('⧉ Share code copied', 'Paste it into any explorer’s search bar to guide them here.');
@@ -1627,7 +1742,7 @@ card.addEventListener('click', (e) => {
 const sideEl = document.createElement('div');
 sideEl.id = 'planetside';
 sideEl.className = 'glass';
-sideEl.style.cssText = 'position:fixed;left:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 148px);' +
+sideEl.style.cssText = 'position:fixed;left:12px;bottom:calc(env(safe-area-inset-bottom,0px) + var(--dock-h) + var(--ctx-h) + 86px);' +
   'max-width:min(560px,72vw);display:none;z-index:14;border-radius:12px;padding:8px 10px;' +
   'overflow-x:auto;white-space:nowrap;scrollbar-width:thin';
 document.body.appendChild(sideEl);
@@ -1637,11 +1752,16 @@ function fillPlanetside(p: PlanetNode, starSeed: number): void {
      Phase 4 chrome; the full walkable vista is Phase 6's. */
   const roster = worldRoster(p, starSeed);
   if (!roster.length) { sideEl.style.display = 'none'; return; }
+  if (!SA && nav.star) {
+    const p0 = p, s0 = starSeed;
+    ensureSA('planetside', () => {
+      if (nav.mode === 'surface' && nav.planet?.seed === p0.seed && nav.star?.seed === s0) fillPlanetside(p0, s0);
+    });
+  }
   sideEl.innerHTML = '<div style="font-size:10.5px;letter-spacing:0.06em;color:#8fa3c4;margin:0 0 6px">PLANETSIDE — the ground survey</div>' +
     roster.map((g) => {
       let th = '';
       if (SA) { try { th = SA.speciesThumb(g as never); } catch { /* text chip still reads */ } }
-      else if (nav.star) { const p0 = p, s0 = starSeed; ensureSA(() => { if (nav.mode === 'surface') fillPlanetside(p0, s0); }); }
       let nm = String((g as { _earthName?: string })._earthName || '');
       if (!nm) { try { nm = String((describeSpecies(g as never) as { name?: string }).name || ''); } catch { nm = 'specimen'; } }
       return '<span data-sel="planetside-sp" style="display:inline-block;text-align:center;margin-right:8px;vertical-align:top">' +
@@ -1784,13 +1904,14 @@ function zoomLimits(): [number, number] {
 }
 
 /* ---- the save/reload leg — THE REAL PIPELINE ---- */
-async function persistView(): Promise<void> {
-  if (persistHold) return;   /* a failed boot read holds writes until the player acts */
+async function persistView(): Promise<boolean> {
+  if (persistHold) return false;   /* a failed boot read holds writes until the player acts */
   try {
     save.savedView = navToView(nav);
     save.EPOCH_BASE = epochClock.current();   /* play time accumulates across sessions (doSave writes COSMIC_EPOCH) */
     await repo.write(exportSaveV2(save, Date.now()));
-  } catch { /* private mode: session continues unsaved */ }
+    return true;
+  } catch { return false; /* private mode: session continues unsaved */ }
 }
 let _persistT = 0;
 function persistSoon(): void {
@@ -1798,7 +1919,54 @@ function persistSoon(): void {
   clearTimeout(_persistT);
   _persistT = window.setTimeout(() => { void persistView(); }, 400);
 }
-let persistHold = false;   /* a FAILED boot read must not let the boot persist overwrite evidence */
+let persistHold: false | 'transient-read' | 'protected-payload' = false;
+let persistRetrying = false;
+function isLegacySliceEnvelope(value: unknown): boolean {
+  /* e960e21–the full-save wiring stored this exact two-field envelope in
+     cf-v2-slice. Keep that one real compatibility bridge without turning
+     sparse objects back into whole-save evidence. Both copies of the route
+     must agree, and every identity needed by its mode must be finite. */
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  const data = value as Record<string, unknown>;
+  if (Object.keys(data).sort().join('|') !== 'nav|view') return false;
+  if (!data.nav || typeof data.nav !== 'object' || Array.isArray(data.nav)) return false;
+  const rawNav = data.nav as Record<string, unknown>;
+  if (Object.keys(rawNav).sort().join('|') !== 'gal|mode|planet|star') return false;
+  const mode = rawNav.mode;
+  if (!['universe', 'galaxy', 'system', 'surface'].includes(String(mode))) return false;
+  if (mode === 'universe') {
+    return data.view === null && rawNav.gal === null && rawNav.star === null && rawNav.planet === null;
+  }
+  const cleanView = _sanitizeView(data.view);
+  if (!cleanView) return false;
+  const fromView = viewToNav(cleanView);
+  if (fromView.mode !== mode) return false;
+  const sameRef = (raw: unknown, clean: { seed: number; x?: number; y?: number } | null, xy: boolean): boolean => {
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw) || !clean) return false;
+    const ref = raw as Record<string, unknown>;
+    if (!Number.isFinite(ref.seed) || Number(ref.seed) !== clean.seed) return false;
+    return !xy || (Number.isFinite(ref.x) && Number.isFinite(ref.y)
+      && Number(ref.x) === clean.x && Number(ref.y) === clean.y);
+  };
+  if (!sameRef(rawNav.gal, fromView.gal, true)) return false;
+  if (mode === 'galaxy') return rawNav.star === null && rawNav.planet === null;
+  if (!sameRef(rawNav.star, fromView.star, true)) return false;
+  if (mode === 'system') return rawNav.planet === null;
+  return sameRef(rawNav.planet, fromView.planet, false);
+}
+function importStoredPayload(payload: string | null): ReturnType<typeof importSaveV2> {
+  const result = importSaveV2(payload, REGISTRY, Date.now());
+  if (!result.ok || payload === null) return result;
+  try {
+    const parsed = JSON.parse(payload) as unknown;
+    return (isPlausibleSaveEnvelope(parsed) || isLegacySliceEnvelope(parsed))
+      ? result : { ok: false, reason: 'invalid' };
+  } catch { return { ok: false, reason: 'invalid' }; }
+}
+function storedPayloadStatus(payload: string): StoredPayloadStatus {
+  const result = importStoredPayload(payload);
+  return result.ok ? 'supported' : result.reason;
+}
 async function loadSave(): Promise<void> {
   /* THE RECOVERY CONTRACT, finally wired (audit finding #1 — the CF-RR-002
      path was built and tested in the repository but never called):
@@ -1807,23 +1975,27 @@ async function loadSave(): Promise<void> {
      the v1.8.9 loadSave semantic. A read that THREW (infra, not absence)
      holds all persists until a user action, so the boot's own write can
      never destroy the evidence. */
-  let raw: string | null = null;
-  let readThrew = false;
-  try { raw = (await repo.readPrimary()) ?? null; } catch { readThrew = true; }
-  let imp = importSaveV2(raw, REGISTRY, Date.now());
-  if (!imp.ok && (raw !== null || readThrew)) {
-    /* primary corrupt or unreadable — CF-RR-002: the backup takes its place ONCE */
-    try {
-      const rec = await repo.recover();
-      if (rec !== undefined) { raw = rec; imp = importSaveV2(raw, REGISTRY, Date.now()); }
-    } catch { /* backup unreachable too */ }
+  /* A sparse but syntactically valid truncation (`{}` / `{view:null}`)
+     hardens into defaults inside the legacy importer. That is useful for
+     constructing a fresh in-memory state, but it is NOT proof that a stored
+     payload is safe to promote over the last-known-good backup. */
+  const bootRead = await readSaveWithRecovery(repo, storedPayloadStatus);
+  const imp = bootRead.kind === 'loaded'
+    ? importStoredPayload(bootRead.raw)
+    : { ok: false as const, reason: bootRead.kind === 'protected' ? bootRead.reason : 'invalid' as const };
+  if (bootRead.kind === 'loaded') {
+    try { await repo.promoteLastKnownGood(bootRead.raw); } catch { /* keepsake only */ }
   }
-  if (imp.ok && raw) {
-    try { await repo.promoteLastKnownGood(raw); } catch { /* keepsake only */ }
-  }
-  persistHold = readThrew && !imp.ok;
+  /* A future save is valid evidence from a newer build, not corruption. Do
+     not replace it with a backup or let this older app write defaults over
+     it; the explicit import path remains available after updating. */
+  persistHold = bootRead.kind === 'transient-read' ? 'transient-read'
+    : bootRead.kind === 'protected' ? 'protected-payload' : false;
+  const protectedReason = bootRead.kind === 'protected' ? bootRead.reason : null;
   save = imp.ok ? imp.state
     : (importSaveV2('{}', REGISTRY, Date.now()) as { ok: true; state: SaveStateV2 }).state;   /* fresh expedition */
+  customNames.clear();
+  for (const [key, name] of save.customNames) customNames.set(key, name);
   /* the sanitized view → nav; viewToNav degrades toward home, so a
      hand-edited/corrupt view can never render an empty stage */
   nav = viewToNav(save.savedView);
@@ -1832,7 +2004,7 @@ async function loadSave(): Promise<void> {
   /* a truly EMPTY store is a NEW EXPEDITION — training runs, exactly like
      the game's new-run init (the absent-⇒-done default protects HELD saves,
      not fresh ones) */
-  if (raw === null && !readThrew) save.tutDone = false;
+  if (bootRead.kind === 'fresh') save.tutDone = false;
   playT0 = performance.now();
   epochClock = createEpochClock(save.EPOCH_BASE, playSeconds);
   (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
@@ -1841,11 +2013,36 @@ async function loadSave(): Promise<void> {
   document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
   applyGlass();
   syncTopbarH();
-  setTimeout(() => ensureSA(() => { /* idle prefetch — warm before first use */ }), 3000);
+  syncDockH();
+  syncCtxH();
+  const warmSpeciesArt = (): void => {
+    if (!document.hidden) ensureSA('prefetch', () => { /* warm before first use */ });
+  };
+  if ('requestIdleCallback' in window) window.requestIdleCallback(warmSpeciesArt, { timeout: 5000 });
+  else setTimeout(warmSpeciesArt, 3000);
+  if (persistHold === 'protected-payload') {
+    setTimeout(() => toast(
+      protectedReason === 'future-version' ? 'Update required' : 'Save protected',
+      protectedReason === 'future-version'
+        ? 'This expedition was written by a newer build. It will not be changed here.'
+        : 'The stored expedition is incomplete and no proven backup loaded. It will not be overwritten.',
+      true,
+    ), 0);
+  }
   initTraining({
     explorerName: () => save.explorerName,
     isDone: () => save.tutDone,
-    setDone: (v) => { save.tutDone = v; },
+    setDone: (v) => {
+      save.tutDone = v;
+      if (v && save.tutSnapPending && typeof save.tutSnapPending === 'object'
+        && 'view' in save.tutSnapPending) {
+        const restored = _sanitizeView((save.tutSnapPending as { view: unknown }).view);
+        nav = viewToNav(restored);
+        save.savedView = restored;
+        save.tutSnapPending = null;
+        rerender();
+      }
+    },
     persist: () => { void persistView(); },
   });
 }
@@ -1918,6 +2115,7 @@ async function loadSave(): Promise<void> {
       }),
       importBlob,   /* Gate C's front door, drivable by the smoke */
       encodeHere,   /* the share-code round trip, drivable by the smoke */
+      cardShareCode,
       descendGalaxy: (seed: number) => {
         const g = uniNodes.find((n) => n.seed === seed);
         if (!g) return false;
@@ -2078,7 +2276,38 @@ async function loadSave(): Promise<void> {
   let pinchD = 0;
   app.canvas.style.touchAction = 'none';
   app.canvas.addEventListener('pointerdown', (e) => {
-    persistHold = false;   /* the player is HERE — writes may resume */
+    /* A transient IDB read failure may clear once a real player is present.
+       A stored corrupt/future payload stays protected until explicit import;
+       one click must never authorize overwriting that evidence. */
+    if (persistHold === 'transient-read' && !persistRetrying) {
+      persistRetrying = true;
+      void readSaveWithRecovery(repo, storedPayloadStatus).then((retryRead) => {
+        if (persistHold !== 'transient-read') return;
+        if (retryRead.kind === 'loaded') {
+          /* The first read failed before we knew whether storage was empty.
+             If retry reveals real bytes, never overwrite them with the
+             temporary fresh in-memory state: reload through the full
+             classifier/recovery path. */
+          location.reload();
+          return;
+        }
+        if (retryRead.kind === 'protected') {
+          persistHold = 'protected-payload';
+          toast(retryRead.reason === 'future-version' ? 'Update required' : 'Save protected',
+            retryRead.reason === 'future-version'
+              ? 'This expedition was written by a newer build. It will not be changed here.'
+              : 'Stored expedition bytes appeared after retry but did not prove safe. They remain unchanged.', true);
+          return;
+        }
+        if (retryRead.kind === 'transient-read') throw new Error('storage retry still unavailable');
+        /* A successful retry that proves the store is genuinely empty may
+           finally authorize the new expedition's first write. */
+        persistHold = false;
+        void persistView();
+      }).catch(() => {
+        toast('Save unavailable', 'Storage is still unavailable. This expedition remains protected from overwrite.');
+      }).finally(() => { persistRetrying = false; });
+    }
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointers.size === 2) {
       const [a, b] = [...pointers.values()];

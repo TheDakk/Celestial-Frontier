@@ -8,26 +8,31 @@
    the visual record (the thing a human judges; a smoke can only prove it
    isn't blank).
 
-   Usage: node tools/slicesmoke.mjs   (builds first if dist/ is missing) */
+   Usage: node tools/slicesmoke.mjs   (always rebuilds before measuring) */
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
-import os from 'node:os';
-import { spawn, execSync } from 'node:child_process';
+import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { openChromiumCdp } from './browsercdp.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.join(here, '..', 'apps', 'game');
 const dist = path.join(appDir, 'dist');
-const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const OUT = path.join(here, '..', 'apps', 'game', 'smoke');
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const withCodeName = (code, name) => {
+  const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
+  payload.n = name;
+  return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
+};
+const codeName = (code) => JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8')).n || null;
 
-if (!fs.existsSync(path.join(dist, 'index.html'))) {
-  console.log('dist missing — building…');
-  execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
-}
+/* A smoke that reads a stale build can pass for source that no longer
+   exists—the species-audit failure class. Build unconditionally, then drive
+   exactly those bytes. */
+execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
 if (!fs.existsSync(OUT)) fs.mkdirSync(OUT, { recursive: true });
 
 /* ---- tiny static server over dist (vite preview without the dep surface) ---- */
@@ -46,37 +51,20 @@ const server2 = http.createServer(server.listeners('request')[0]);
 await new Promise((r) => server2.listen(0, '127.0.0.1', r));
 const URL2 = 'http://127.0.0.1:' + server2.address().port + '/';   /* different origin ⇒ fresh IndexedDB ⇒ a NEW expedition */
 
-/* ---- headless Edge + CDP ---- */
-const udd = path.join(os.tmpdir(), 'cf-slicesmoke-' + Date.now());
-const port = 9333 + (process.pid % 500);
-const edge = spawn(EDGE, ['--headless=new', '--no-sandbox', '--no-first-run',
-  /* Edge's bundled component extensions emit "message channel closed"
-     uncaught rejections into the page on longer runs — browser noise that
-     would fail the zero-error bar for the wrong reason. Suppress the
-     components rather than filtering the error text (a filter would also
-     hide a REAL app error that happened to match). */
-  '--disable-component-extensions-with-background-pages', '--disable-component-update', '--disable-background-networking',
-  '--remote-debugging-port=' + port, '--user-data-dir=' + udd, 'about:blank'], { stdio: 'ignore' });
-let browserWs = null;
-for (let t = 0; t < 60 && !browserWs; t++) {
-  await sleep(400);
-  try { const v = await (await fetch('http://127.0.0.1:' + port + '/json/version')).json(); browserWs = v.webSocketDebuggerUrl; } catch { /* not up yet */ }
-}
-if (!browserWs) { console.error('CDP endpoint never came up'); edge.kill(); process.exit(2); }
-
-const ws = new WebSocket(browserWs);
-let mid = 0; const pend = new Map();
 const events = [];
-ws.onmessage = (ev) => {
-  const m = JSON.parse(ev.data);
-  if (m.id && pend.has(m.id)) { const p = pend.get(m.id); pend.delete(m.id); m.error ? p.rej(new Error(m.error.message)) : p.res(m.result); }
-  else if (m.method) events.push(m);
-};
-await new Promise((r) => { ws.onopen = r; });
-const send = (method, params = {}, sessionId) => new Promise((res, rej) => {
-  const id = ++mid; pend.set(id, { res, rej });
-  ws.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params }));
-});
+let browser;
+try {
+  browser = await openChromiumCdp({
+    label: 'slice smoke',
+    userDataPrefix: 'cf-slicesmoke',
+    commandTimeoutMs: 30000,
+    onEvent: (event) => events.push(event),
+  });
+} catch (error) {
+  server.close(); server2.close();
+  throw error;
+}
+const send = browser.send;
 
 const fails = [];
 try {
@@ -90,13 +78,19 @@ try {
   await sleep(3000);
 
   const evalIn = async (expr) => {
-    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, sess);
+    let r;
+    try { r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, sess); }
+    catch (error) {
+      const near = String(expr).replace(/\s+/g, ' ').slice(0, 120);
+      throw new Error(`desktop eval failed near ${JSON.stringify(near)}: ${error.message}`);
+    }
     if (r.exceptionDetails) throw new Error('page eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
     return r.result.value;
   };
 
   /* 1. booted: canvas mounted, HUD says universe */
-  const boot = await evalIn(`({ canvas: !!document.querySelector('canvas'), topbar: !!document.getElementById('topbar'), st: window.__CF_SLICE__ ? window.__CF_SLICE__.api.state() : null })`);
+  const boot = await evalIn(`({ canvas: !!document.querySelector('canvas'), topbar: !!document.getElementById('topbar'), st: window.__CF_SLICE__ ? window.__CF_SLICE__.api.state() : null,
+    hintKw: [...document.querySelectorAll('#hintpill .kw')].map((node) => node.textContent) })`);
   if (!boot.canvas) fails.push('no <canvas> — Pixi never mounted');
   if (!boot.topbar) fails.push('no #topbar — the Phase 4 shell is missing');
   if (!boot.st || boot.st.mode !== 'universe') fails.push('not in universe mode at boot: ' + JSON.stringify(boot.st && boot.st.mode));
@@ -104,6 +98,9 @@ try {
   if (boot.st && !(parseFloat(boot.st.topbarH) > 20)) fails.push('--topbar-h not measured: ' + JSON.stringify(boot.st.topbarH));
   if (boot.st && !boot.st.ctx) fails.push('the caption line is empty at boot');
   if (boot.st && !/Make planetfall on 2 worlds of Sol/.test(boot.st.objective)) fails.push('objective chip wrong at fresh boot: ' + JSON.stringify(boot.st.objective));
+  if (!boot.hintKw.includes('tap') || !boot.hintKw.includes('zoom')) {
+    fails.push('hint action verbs are not highlighted through real .kw nodes: ' + JSON.stringify(boot.hintKw));
+  }
 
   /* 1a-training. a FRESH boot TRAINS (the game's new-expedition rule); the
      classic legs run as a veteran — Skip first, the game's own path, and
@@ -269,18 +266,25 @@ try {
   const shot3 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-sol.png'), Buffer.from(shot3.data, 'base64'));
   const surveyed = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
-    if(!S.api.landOn(2)) return { ok:false, why:'landOn refused' };
+    if(!S.api.surveyOn(2)) return { ok:false, why:'surveyOn refused' };
     const card=document.getElementById('survey');
     const rows=[...card.querySelectorAll('[data-row]')].map(r=>r.getAttribute('data-row'));
     const title=(card.querySelector('[data-sel=title]')||{}).textContent;
-    return { ok:true, visible:card.style.display!=='none', title, rows, n:rows.length }; })()`);
+    return { ok:true, visible:card.style.display!=='none', title, rows, n:rows.length,
+      starCode:S.api.encodeHere(), planetCode:S.api.cardShareCode() }; })()`);
   if (!surveyed.ok || !surveyed.visible) fails.push('survey card did not open: ' + JSON.stringify(surveyed));
   else {
     if (surveyed.title !== 'Earth') fails.push('landed planet 2 of Sol but the card says: ' + JSON.stringify(surveyed.title));
     for (const want of ['Spectral class', 'Life', 'Civilization']) {
       if (!surveyed.rows.includes(want)) fails.push('survey card missing the "' + want + '" row (rows: ' + surveyed.rows.join(', ') + ')');
     }
+    if (!/^CF1-/.test(surveyed.planetCode || '') || surveyed.planetCode === surveyed.starCode) {
+      fails.push('pre-landing planet Share did not bind a distinct planet address: ' + JSON.stringify([surveyed.starCode, surveyed.planetCode]));
+    }
   }
+  const planetShareCode = surveyed.planetCode;
+  await evalIn(`window.__CF_SLICE__.api.landHere()`);
+  await sleep(300);
   /* THE LIVING PLANETSIDE: Earth's ground survey shows its real roster,
      each specimen wearing an hdart portrait */
   const side = await evalIn(`(()=>{ const el=document.getElementById('planetside');
@@ -313,18 +317,53 @@ try {
     if (!Array.isArray(saved.landed) || !saved.landed.includes(133)) fails.push('Earth (133) not in the save’s landed set after reload: ' + JSON.stringify(saved.landed));
     if (typeof saved.essence !== 'number') fails.push('save.essence is not a number — importSaveV2 did not run');
   }
+  /* Negative control for a syntactically-valid truncated primary. The
+     importer can harden `{}` into defaults for a fresh in-memory state, but
+     boot must classify it as corrupt stored evidence and recover the proven
+     backup instead of promoting/writing the truncation over both copies. */
+  await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
+    q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite');
+      tx.objectStore('meta').put('{}','save'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
+  await send('Page.navigate', { url: URL0 }, sess);
+  await sleep(2500);
+  const recoveredSparse = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (recoveredSparse.mode !== 'surface' || !recoveredSparse.save.landed.includes(133)) {
+    fails.push('sparse JSON primary was promoted instead of recovering the proven backup: ' + JSON.stringify(recoveredSparse));
+  }
+  const restoredPrimary = await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
+    q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
+      g.onsuccess=()=>{db.close();resolve(String(g.result||''))}; g.onerror=()=>reject(g.error); }; })`);
+  if (restoredPrimary === '{}') fails.push('sparse JSON primary remained authoritative after recovery');
 
   /* 4a-search. THE SHARE-CODE ROUND TRIP: encode Earth's surface, climb to
      the universe, paste the code in the search bar → travel straight back
      (decodeWhere → the sanitized view → the same charter gates). */
-  const shareCode = await evalIn(`window.__CF_SLICE__.api.encodeHere()`);
-  if (!shareCode || !/^CF1-/.test(shareCode)) fails.push('encodeHere did not produce a CF1 code: ' + JSON.stringify(shareCode));
-  for (let i = 0; i < 3; i++) {   /* surface → system → galaxy → universe */
+  const shareCode = planetShareCode;
+  if (!shareCode || !/^CF1-/.test(shareCode)) fails.push('survey Share did not produce a CF1 planet code: ' + JSON.stringify(shareCode));
+  const namedShareCode = shareCode ? withCodeName(shareCode, 'Blue Earth') : shareCode;
+  /* Repeat planetfall must be navigable without paying chapter progression
+     twice. Re-enter Earth from system and require the 1/2 objective to hold. */
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
+  await sleep(500);
+  await evalIn(`window.__CF_SLICE__.api.landOn(2)`);
+  await sleep(500);
+  const repeatLand = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (!repeatLand.objective.includes('1 / 2')) fails.push('repeat Earth landing double-credited chapter progression: ' + JSON.stringify(repeatLand.objective));
+  /* Escape first closes an open survey card, then climbs. Drive the actual
+     focus law to its outcome rather than assuming the card state away. */
+  for (let i = 0; i < 5; i++) {
+    if (await evalIn(`window.__CF_SLICE__.api.state().mode`) === 'universe') break;
     await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
     await sleep(500);
   }
   const preJump = await evalIn(`window.__CF_SLICE__.api.state().mode`);
   if (preJump !== 'universe') fails.push('Escape ladder did not reach the universe before the code jump: ' + preJump);
+  const stalePlanetCard = await evalIn(`(()=>{ document.getElementById('docksurvey').click();
+    const S=window.__CF_SLICE__, st=S.api.state();
+    return { open:st.cardOpen, code:S.api.cardShareCode(), share:!!document.querySelector('#survey [data-act=share]') }; })()`);
+  if (stalePlanetCard.open || stalePlanetCard.code !== null || stalePlanetCard.share) {
+    fails.push('stale planet card survived outside its system/share context: ' + JSON.stringify(stalePlanetCard));
+  }
   /* THE CMB BAND-PICK, while we're at the universe: zoom out to the orange
      ring and tap ON it — the origin card must speak; a tap far INSIDE the
      ring must NOT (the band, not the box) */
@@ -351,21 +390,25 @@ try {
   if (nonCode.panel !== 'codex') fails.push('a NON-code search did not open the Compendium filter: ' + JSON.stringify(nonCode.panel));
   await evalIn(`(()=>{ document.querySelector('#codexpanel [data-pnx]').click(); return 1; })()`);   /* the ✕, so the next Escape reaches nav */
   await evalIn(`(()=>{ const s=document.getElementById('searchbox');
-    s.value=${JSON.stringify(String(shareCode))};
+    s.value=${JSON.stringify(String(namedShareCode))};
     s.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}));
     return 1; })()`);
   await sleep(1500);
   const back = await evalIn(`window.__CF_SLICE__.api.state()`);
-  if (back.mode !== 'surface' || back.star !== 424242) fails.push('the share code did not travel back to Earth: ' + JSON.stringify([back.mode, back.star]));
+  if (back.mode !== 'system' || back.star !== 424242 || back.cardTitle !== 'Blue Earth') {
+    fails.push('planet Share did not focus Earth in Sol without bypassing Land: ' + JSON.stringify([back.mode, back.star, back.cardTitle]));
+  }
+  if (!back.objective.includes('1 / 2')) fails.push('planet Share changed landfall progression without Land: ' + JSON.stringify(back.objective));
+  const resharedNamedCode = await evalIn(`window.__CF_SLICE__.api.cardShareCode()`);
+  if (!resharedNamedCode || codeName(resharedNamedCode) !== 'Blue Earth') {
+    fails.push('named CF1 route did not survive display + v2 re-share: ' + JSON.stringify(resharedNamedCode));
+  }
 
   /* 4b. THE ZOOM-DRIVEN TRANSITIONS (checkTransitions semantics) — the leg
-     the click-descent tests structurally cannot see. We are on Earth's
-     surface after the reload; ride the zoom ladder all the way up and back
-     down to Sol. Every step reads camT (intent), exactly as the app does. */
-  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
-  await sleep(700);
-  const stEsc = await evalIn(`window.__CF_SLICE__.api.state()`);
-  if (stEsc.mode !== 'system' || stEsc.gal !== 999) fails.push('Escape did not ascend surface→system: ' + JSON.stringify([stEsc.mode, stEsc.gal]));
+     the click-descent tests structurally cannot see. We are already in Sol
+     after the external planet address focused Earth without landing; ride
+     the zoom ladder up and back down. Every step reads camT (intent). */
+  const stEsc = back;
   await evalIn(`(()=>{ window.__CF_SLICE__.camT.z = 0.01; return 1; })()`);   /* zoom out hard */
   await sleep(700);
   const stG = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -484,6 +527,51 @@ try {
      player-chip/search overlap hid in a phone-only branch the first time */
   const phGeo = await evalPh(geoCheck);
   if (phGeo.length) fails.push('PHONE GOLDEN LAYOUT drift: ' + phGeo.join(' · '));
+  /* The lower-phone stack has four independently-sized surfaces. Assert the
+     rendered outcome, including the 4×2 intent and the actual hit target at
+     every button centre; merely finding the CSS declarations missed the
+     three-row overlap this guards. */
+  const phoneChromeCheck = `(()=>{ const bad=[];
+    const box=(id)=>{ const el=document.getElementById(id); if(!el) return null;
+      const cs=getComputedStyle(el), b=el.getBoundingClientRect();
+      if(cs.display==='none'||cs.visibility==='hidden'||b.width<1||b.height<1) return null;
+      return { l:b.left,t:b.top,r:b.right,b:b.bottom,w:b.width,h:b.height }; };
+    const ids=['planetside','ctxbar','hintpill','dock'];
+    const boxes=Object.fromEntries(ids.map(id=>[id,box(id)]));
+    for(const id of ids) if(!boxes[id]) bad.push(id+' is not visible');
+    const overlaps=(a,b)=>a&&b&&a.l<b.r-1&&a.r>b.l+1&&a.t<b.b-1&&a.b>b.t+1;
+    for(const [a,b] of [['planetside','ctxbar'],['planetside','hintpill'],['planetside','dock'],['ctxbar','hintpill'],['ctxbar','dock'],['hintpill','dock']]) {
+      if(overlaps(boxes[a],boxes[b])) bad.push(a+' overlaps '+b);
+    }
+    const dock=document.getElementById('dock');
+    const buttons=[...dock.querySelectorAll('button')].filter((button)=>box(button.id));
+    if(buttons.length!==8) bad.push('dock does not expose eight buttons: '+buttons.length);
+    const rows=[];
+    for(const button of buttons){ const b=button.getBoundingClientRect();
+      let row=rows.find((candidate)=>Math.abs(candidate.top-b.top)<2);
+      if(!row){ row={top:b.top,n:0}; rows.push(row); } row.n++;
+      if(Math.abs(b.width-44)>1||Math.abs(b.height-44)>1) bad.push(button.id+' is not a 44px target');
+      const hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
+      if(!hit||!button.contains(hit)) bad.push(button.id+' is not hit-testable at its centre');
+    }
+    rows.sort((a,b)=>a.top-b.top);
+    if(rows.length!==2||rows.some((row)=>row.n!==4)) bad.push('dock is not 4x2: '+JSON.stringify(rows.map((row)=>row.n)));
+    if(boxes.dock&&(Math.abs(boxes.dock.w-206)>1||Math.abs(boxes.dock.h-98)>1)) bad.push('dock box is not 206x98: '+JSON.stringify([boxes.dock.w,boxes.dock.h]));
+    const published=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dock-h'));
+    if(!boxes.dock||!Number.isFinite(published)||Math.abs(published-boxes.dock.h)>1) bad.push('--dock-h does not match the rendered dock: '+JSON.stringify([published,boxes.dock&&boxes.dock.h]));
+    const ctxPublished=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ctx-h'));
+    if(!boxes.ctxbar||!Number.isFinite(ctxPublished)||Math.abs(ctxPublished-boxes.ctxbar.h)>1) bad.push('--ctx-h does not match the rendered caption: '+JSON.stringify([ctxPublished,boxes.ctxbar&&boxes.ctxbar.h]));
+    return bad; })()`;
+  const phChrome = await evalPh(phoneChromeCheck);
+  if (phChrome.length) fails.push('PHONE LOWER CHROME drift: ' + phChrome.join(' · '));
+  /* Discriminating control: recreate the reported failure by pinning the
+     hint into the dock. The outcome checker must turn red, then the inline
+     override is removed before the visual record and touch leg continue. */
+  const phChromeCtl = await evalPh(`(()=>{ const h=document.getElementById('hintpill'), prev=h.style.bottom;
+    h.style.bottom='12px'; const bad=${phoneChromeCheck}; h.style.bottom=prev; return bad; })()`);
+  if (!phChromeCtl.some((b) => b === 'hintpill overlaps dock')) {
+    fails.push('PHONE LOWER CHROME CONTROL FAILED — an injected hint/dock overlap went unseen: ' + JSON.stringify(phChromeCtl));
+  }
   const phPainted = await evalPh(`(async()=>{ const S=window.__CF_SLICE__;
     const px=await S.app.renderer.extract.pixels({ target: S.app.stage, frame: S.app.renderer.screen });
     const d=px.pixels||px; let lit=0; for(let i=0;i<d.length;i+=4){ if(d[i]+d[i+1]+d[i+2]>60) lit++; } return lit; })()`);
@@ -523,6 +611,172 @@ try {
     if (g.length) fails.push('MATRIX ' + name + ' (' + vw + '×' + vh + ') layout drift: ' + g.join(' · '));
     await send('Target.closeTarget', { targetId: tR.targetId });
   }
+
+  /* Protected-save notices are CRITICAL boot outcomes and must bypass the
+     ordinary 1.8s toast de-bounce. Exercise them before that window closes,
+     and prove neither future nor corrupt bytes are rewritten. */
+  const setProtectedPrimary = async (raw) => evalPh(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
+    q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite'),os=tx.objectStore('meta');
+      os.put(${JSON.stringify(raw)},'save'); os.delete('save_bak'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
+  const protectedBoot = async (raw) => {
+    await setProtectedPrimary(raw);
+    await send('Page.navigate', { url: URL0 }, ph);
+    await sleep(700);
+    return evalPh(`new Promise((resolve,reject)=>{ const title=(document.querySelector('#toast [data-sel=toast-title]')||{}).textContent||'';
+      const opacity=getComputedStyle(document.getElementById('toast')).opacity; const q=indexedDB.open('cf-v2-slice');
+      q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
+        g.onsuccess=()=>{db.close();resolve({title,opacity,raw:String(g.result||'')})}; g.onerror=()=>reject(g.error); }; })`);
+  };
+  const futureRaw = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
+  const futureBoot = await protectedBoot(futureRaw);
+  if (futureBoot.title !== 'Update required' || +futureBoot.opacity <= 0 || futureBoot.raw !== futureRaw) {
+    fails.push('FUTURE SAVE PROTECTION was not visible/byte-preserving on fast boot: ' + JSON.stringify(futureBoot));
+  }
+  const corruptBoot = await protectedBoot('{}');
+  if (corruptBoot.title !== 'Save protected' || +corruptBoot.opacity <= 0 || corruptBoot.raw !== '{}') {
+    fails.push('CORRUPT SAVE PROTECTION was not visible/byte-preserving on fast boot: ' + JSON.stringify(corruptBoot));
+  }
+
+  /* Exact historical compatibility: the first IndexedDB slice wrote only
+     {nav,view}. It must boot at the same place and immediately migrate to a
+     complete v4 save; nearby sparse `{}` remains protected above. */
+  const legacyGal = { seed: 999, x: 90, y: -60, size: 72, sp: 4, tilt: 0.5, rot: 0, home: true, quasar: false, dwarf: false };
+  const legacySliceRaw = JSON.stringify({
+    nav: { mode: 'galaxy', gal: legacyGal, star: null, planet: null },
+    view: { type: 'galaxy', gal: legacyGal },
+  });
+  await setProtectedPrimary(legacySliceRaw);
+  await send('Page.navigate', { url: URL0 }, ph);
+  await sleep(900);
+  const legacyUpgrade = await evalPh(`new Promise((resolve,reject)=>{ const state=window.__CF_SLICE__.api.state();
+    const q=indexedDB.open('cf-v2-slice'); q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result;
+      const tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
+      g.onsuccess=()=>{ const saved=JSON.parse(String(g.result||'null')); db.close();
+        resolve({mode:state.mode,gal:state.gal,v:saved&&saved.v,epoch:saved&&saved.epoch,
+          codex:Array.isArray(saved&&saved.codex),land:Array.isArray(saved&&saved.land)}); }; g.onerror=()=>reject(g.error); }; })`);
+  if (legacyUpgrade.mode !== 'galaxy' || legacyUpgrade.gal !== 999 || legacyUpgrade.v !== 4
+    || !Number.isFinite(legacyUpgrade.epoch) || !legacyUpgrade.codex || !legacyUpgrade.land) {
+    fails.push('LEGACY SLICE {nav,view} did not preserve its route and upgrade to the full v4 envelope: '
+      + JSON.stringify(legacyUpgrade));
+  }
+
+  /* A transient first read is UNKNOWN—not permission to recover a stale
+     backup or overwrite a primary that appears on retry. Inject the failure
+     at the real IDB request boundary, then press the real canvas: existing
+     bytes must cause a reload through the full loader with zero first-page
+     primary writes; only a proven-empty retry may authorize the first save. */
+  const transientRetryProbe = async (seedRaw) => {
+    if (seedRaw === undefined) {
+      await evalPh(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice'); q.onerror=()=>reject(q.error);
+        q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite'),os=tx.objectStore('meta');
+          os.delete('save'); os.delete('save_bak'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
+    } else await setProtectedPrimary(seedRaw);
+    const target = await send('Target.createTarget', { url: 'about:blank' });
+    const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
+    const retrySession = attached.sessionId;
+    await send('Runtime.enable', {}, retrySession);
+    await send('Page.enable', {}, retrySession);
+    await send('Page.addScriptToEvaluateOnNewDocument', { source: `(() => {
+      const first = sessionStorage.getItem('__cf_transient_injected') !== '1';
+      sessionStorage.setItem('__cf_transient_active', first ? '1' : '0');
+      if (!first) return;
+      sessionStorage.setItem('__cf_transient_injected', '1');
+      sessionStorage.setItem('__cf_transient_primary_writes', '0');
+      const get0 = IDBObjectStore.prototype.get;
+      IDBObjectStore.prototype.get = function(key) {
+        if (this.name === 'meta' && key === 'save' && sessionStorage.getItem('__cf_transient_failed') !== '1') {
+          sessionStorage.setItem('__cf_transient_failed', '1');
+          throw new DOMException('injected first primary read failure', 'UnknownError');
+        }
+        return get0.apply(this, arguments);
+      };
+      const put0 = IDBObjectStore.prototype.put;
+      IDBObjectStore.prototype.put = function(value, key) {
+        if (this.name === 'meta' && key === 'save' && sessionStorage.getItem('__cf_transient_active') === '1') {
+          const n = Number(sessionStorage.getItem('__cf_transient_primary_writes') || '0');
+          sessionStorage.setItem('__cf_transient_primary_writes', String(n + 1));
+        }
+        return put0.apply(this, arguments);
+      };
+    })();` }, retrySession);
+    await send('Page.navigate', { url: URL0 }, retrySession);
+    await sleep(900);
+    await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
+    await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
+    await sleep(seedRaw === undefined ? 900 : 1700);
+    const result = await send('Runtime.evaluate', { expression: `new Promise((resolve,reject)=>{ const state=window.__CF_SLICE__.api.state();
+      const q=indexedDB.open('cf-v2-slice'); q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result;
+        const tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save'); g.onsuccess=()=>{
+          const raw=g.result===undefined?null:String(g.result); db.close(); resolve({name:state.save.name,
+            writes:Number(sessionStorage.getItem('__cf_transient_primary_writes')||'0'), raw}); }; g.onerror=()=>reject(g.error); }; })`,
+      returnByValue: true, awaitPromise: true }, retrySession);
+    await send('Target.closeTarget', { targetId: target.targetId });
+    if (result.exceptionDetails) throw new Error('transient retry probe threw: ' + JSON.stringify(result.exceptionDetails));
+    return result.result.value;
+  };
+  const existingRetry = await transientRetryProbe(vrRaw);
+  if (existingRetry.name !== 'Dakk' || existingRetry.writes !== 0) {
+    fails.push('TRANSIENT READ retry overwrote/ignored an existing primary instead of reloading it: ' + JSON.stringify(existingRetry));
+  }
+  const freshRetry = await transientRetryProbe(undefined);
+  let freshPayload = null;
+  try { freshPayload = JSON.parse(freshRetry.raw); } catch { /* diagnostic below */ }
+  if (freshRetry.writes !== 1 || !freshPayload || freshPayload.v !== 4
+    || !Array.isArray(freshPayload.codex) || !Array.isArray(freshPayload.land)) {
+    fails.push('TRANSIENT READ retry did not authorize exactly one first write after proving the store empty: '
+      + JSON.stringify(freshRetry));
+  }
+
+  /* 4e-phone. A FRESH PHONE starts with training active. Prove its card
+     clears the measured 4x2 dock and does not geometrically bury any 44px
+     dock target. The dock is intentionally focus-locked at welcome, so the
+     probe temporarily enables pointer hit-testing without clicking anything;
+     the training lock is restored before this target closes. */
+  const t3p = await send('Target.createTarget', { url: 'about:blank' });
+  const at3p = await send('Target.attachToTarget', { targetId: t3p.targetId, flatten: true });
+  const trp = at3p.sessionId;
+  await send('Runtime.enable', {}, trp);
+  await send('Page.enable', {}, trp);
+  await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true }, trp);
+  await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 }, trp);
+  await send('Page.navigate', { url: URL2 }, trp);
+  await sleep(3000);
+  const evalTp = async (expr) => {
+    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, trp);
+    if (r.exceptionDetails) throw new Error('phone training eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
+    return r.result.value;
+  };
+  const phoneTrainingCheck = `(()=>{ const bad=[];
+    const card=document.getElementById('tutcard'), dock=document.getElementById('dock');
+    const box=(el)=>{ if(!el) return null; const b=el.getBoundingClientRect();
+      return b.width>0&&b.height>0 ? {l:b.left,t:b.top,r:b.right,b:b.bottom,w:b.width,h:b.height} : null; };
+    const cb=box(card), db=box(dock);
+    if(!cb) bad.push('training card is not visible');
+    if(!db) bad.push('training dock is not visible');
+    if(cb&&db&&cb.l<db.r-1&&cb.r>db.l+1&&cb.t<db.b-1&&cb.b>db.t+1) bad.push('training card overlaps dock');
+    const priorDockPointer=dock&&dock.style.pointerEvents;
+    if(dock) dock.style.pointerEvents='auto';
+    const buttons=dock?[...dock.querySelectorAll('button')]:[];
+    if(buttons.length!==8) bad.push('training dock does not expose eight buttons: '+buttons.length);
+    for(const button of buttons){ const b=button.getBoundingClientRect();
+      if(Math.abs(b.width-44)>1||Math.abs(b.height-44)>1) bad.push(button.id+' is not a 44px training target');
+      const hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
+      if(!hit||!button.contains(hit)) bad.push(button.id+' is buried at its centre during training');
+    }
+    if(dock) dock.style.pointerEvents=priorDockPointer;
+    return bad; })()`;
+  const phoneTraining = await evalTp(phoneTrainingCheck);
+  if (phoneTraining.length) fails.push('PHONE TRAINING/DOCK drift: ' + phoneTraining.join(' · '));
+  /* Discriminating control: pin the card to the dock's own bottom inset. The
+     same outcome checker must see both the overlap and buried button centres,
+     then the exact inline value is restored. */
+  const phoneTrainingCtl = await evalTp(`(()=>{ const card=document.getElementById('tutcard'), prev=card.style.bottom;
+    card.style.bottom='12px'; const bad=${phoneTrainingCheck}; card.style.bottom=prev; return bad; })()`);
+  if (!phoneTrainingCtl.includes('training card overlaps dock')
+    || !phoneTrainingCtl.some((finding) => finding.includes('is buried at its centre during training'))) {
+    fails.push('PHONE TRAINING/DOCK CONTROL FAILED — injected burial went unseen: ' + JSON.stringify(phoneTrainingCtl));
+  }
+  await send('Target.closeTarget', { targetId: t3p.targetId });
 
   /* 4e. THE TRAINING DRILL — the six live lessons end-to-end on a FRESH
      ORIGIN (its own IndexedDB ⇒ a new expedition): welcome → find-earth →
@@ -585,9 +839,8 @@ try {
 } catch (e) {
   fails.push('harness: ' + e.message);
 } finally {
-  try { ws.close(); } catch { /* closing */ }
-  edge.kill();
-  server.close();
+  try { await browser.close(); } catch (e) { fails.push('browser close: ' + e.message); }
+  server.close(); server2.close();
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }

@@ -1,5 +1,18 @@
 # Celestial Frontier — Breeding & Sharing
 
+> **2026-08-11 v2 port sharing overlay:** A CF1 planet destination no longer
+> enters surface mode or pays landing outcomes by navigation alone. After the
+> charter check, the route must name a real member of the declared system; the
+> slice opens its live survey in system view and only the guarded Land command
+> enters Planetside. A decoded custom planet name is sanitized and stored only
+> after that route succeeds, the shared descriptor map is hydrated from the
+> save, and re-sharing carries the same name. Stale survey cards cannot silently
+> encode, chart or land the current system. Full canonical proof of the declared
+> galaxy-at-cell and star-at-coordinate is still open, so CF1 hierarchy
+> hardening is not complete. CFB also still drops hybrid parents; because combat
+> class/ability reads them, parent-tuple preservation needs an explicit parity
+> deviation and new compatibility tests.
+
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 art
 integration note below matches the reset source as of 2026-08-11. Carries v1.8.6
 and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.

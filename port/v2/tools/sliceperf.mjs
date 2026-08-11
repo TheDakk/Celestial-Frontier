@@ -7,15 +7,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
-import os from 'node:os';
-import { spawn, execSync } from 'node:child_process';
+import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { openChromiumCdp } from './browsercdp.mjs';
 
 const THROTTLE = +(process.argv[2] || 4);
+if (!Number.isFinite(THROTTLE) || THROTTLE < 1) throw new RangeError('CPU throttle must be a finite number >= 1');
 const here = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.join(here, '..', 'apps', 'game');
 const dist = path.join(appDir, 'dist');
-const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /* ALWAYS REBUILD. This was "build only if index.html is missing", so once
@@ -36,20 +36,20 @@ const server = http.createServer((req, res) => {
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
 const URL0 = 'http://127.0.0.1:' + server.address().port + '/';
 
-const udd = path.join(os.tmpdir(), 'cf-sliceperf-' + Date.now());
-const port = 9433 + (process.pid % 100);
-const edge = spawn(EDGE, ['--headless=new', '--no-sandbox', '--no-first-run',
-  '--disable-component-extensions-with-background-pages', '--disable-component-update', '--disable-background-networking',
-  '--remote-debugging-port=' + port, '--user-data-dir=' + udd, 'about:blank'], { stdio: 'ignore' });
-let ws0 = null;
-for (let t = 0; t < 50 && !ws0; t++) { await sleep(400); try { ws0 = (await (await fetch('http://127.0.0.1:' + port + '/json/version')).json()).webSocketDebuggerUrl; } catch { /* boot */ } }
-if (!ws0) { console.error('no CDP'); edge.kill(); process.exit(2); }
-const ws = new WebSocket(ws0);
-let mid = 0; const pend = new Map();
-ws.onmessage = (ev) => { const m = JSON.parse(ev.data); if (m.id && pend.has(m.id)) { const p = pend.get(m.id); pend.delete(m.id); m.error ? p.rej(new Error(m.error.message)) : p.res(m.result); } };
-await new Promise((r) => { ws.onopen = r; });
-const send = (method, params = {}, sessionId) => new Promise((res, rej) => { const id = ++mid; pend.set(id, { res, rej }); ws.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params })); });
+let browser;
+try {
+  browser = await openChromiumCdp({
+    label: 'slice performance profile',
+    userDataPrefix: 'cf-sliceperf',
+    commandTimeoutMs: 30000,
+  });
+} catch (error) {
+  server.close();
+  throw error;
+}
+const send = browser.send;
 
+try {
 const t = await send('Target.createTarget', { url: 'about:blank' });
 const at = await send('Target.attachToTarget', { targetId: t.targetId, flatten: true });
 const sess = at.sessionId;
@@ -110,4 +110,11 @@ console.log(`  painted:    ${painted > 0 ? painted + 'ms' : 'NEVER'}`);
 console.log(`  answerable: ${answerable > 0 ? answerable + 'ms' : (answerable === -2 ? '(tap missed — reposition the probe)' : 'NEVER')}`);
 console.log(`  galaxy rebuild (throttled): ${typeof galMs === 'number' ? Math.round(galMs) + 'ms' : galMs}`);
 console.log('  (v1.8.5 law: painted ≠ answerable — budgets land with plan §20)');
-ws.close(); edge.kill(); server.close();
+if (!(painted > 0) || !(answerable > 0) || !(typeof galMs === 'number' && galMs >= 0)) {
+  console.error('SLICE PERF: measurement incomplete — painted, answerable, and galaxy rebuild must all resolve');
+  process.exitCode = 1;
+}
+} finally {
+  try { await browser.close(); }
+  finally { server.close(); }
+}

@@ -8,4 +8,12 @@ export interface PlanetParams {
                              the golden corpus, not the type system, pins them */
 }
 export function planetParams(seed: number): PlanetParams;
-export function surfaceColor(P: PlanetParams, x: number, y: number, n?: unknown): unknown;
+export type SurfaceNoise = (x: number, y: number, octaves: number) => number;
+export type SurfaceRGB = [number, number, number];
+export function surfaceColor(
+  P: PlanetParams,
+  x: number,
+  y: number,
+  fbm: SurfaceNoise,
+  facts?: Record<string, unknown>,
+): SurfaceRGB;

@@ -82,7 +82,7 @@ export function initTraining(deps: TrainingDeps): void {
   cardEl.className = 'glass';
   cardEl.setAttribute('data-sel', 'tutcard');
   cardEl.style.cssText = 'background:rgba(10,16,30,0.96);box-shadow:0 10px 34px rgba(0,0,0,0.55);position:fixed;left:50%;transform:translateX(-50%);' +
-    'bottom:calc(env(safe-area-inset-bottom,0px) + 84px);' +   /* ABOVE the dock, always (CF1806-02's family) */
+    'bottom:calc(env(safe-area-inset-bottom,0px) + var(--dock-h,44px) + 40px);' +   /* measured dock + its 12px inset + 28px clearance */
     'width:min(440px,92vw);z-index:30;border-radius:14px;padding:14px 16px;color:#dbe7f8;font:13px/1.55 system-ui,sans-serif';
   document.body.appendChild(cardEl);
   spotEl = document.createElement('div');

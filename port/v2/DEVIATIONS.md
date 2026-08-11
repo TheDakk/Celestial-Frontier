@@ -910,12 +910,66 @@ duplicates).
 
 ## Correctness
 
-- ☐ **D-9i — string `maxGen` poisoning.** `_sanitizeSavedGenome` clamps
+- ★ **D-9i — string `maxGen` poisoning (fixed in the v2 importer, 2026-08-11).** `_sanitizeSavedGenome` clamps
   brood/fed/xp/hurt but not `gen`; `onSpeciesStored` assigns `entry.gen` raw after a
   coercing comparison, so a hostile save's `gen:'2'` lands in `stats.maxGen` and
-  persists into every future save. Found by the importer parity test (fixture pins
-  the string). *Port fix:* coerce at the comparison. One line; invisible to honest
-  saves.
+  persists into every future save. Found by the importer parity test (the frozen
+  v1.8.9 fixture still pins the string). The v2 importer now validates a finite,
+  nonnegative safe integer, stores the normalized number in both the genome and
+  `stats.maxGen`, and negative-controls strings, fractions, negatives, non-numbers,
+  and unsafe integers. Honest numeric generations remain byte-for-byte unchanged.
+- ✔ **D-SAVE-1 — a syntactically valid truncation is not a save (2026-08-11).** The lifted
+  importer deliberately hardens sparse objects into defaults, which is useful for creating a new
+  in-memory expedition and unsafe as proof that stored bytes may replace the last-known-good copy.
+  Explicit import and boot recovery now share a plain-object, supported-version, coherent-envelope
+  classifier. `{}`, `{view:null}`, primitives and arrays cannot overwrite progress; a proven backup
+  wins over a corrupt primary; an unsupported future version remains byte-protected with an update
+  message; and a transient IndexedDB failure releases its write hold only after a successful retry.
+  The repository also clears a rejected/blocked open Promise so one startup failure cannot poison the
+  whole session. This is intentional exploit/data-loss hardening over permissive v1 behavior.
+- ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
+  evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
+  forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
+  nonnegative safe integer and caps it at 10,000 (>138 continuous active days at 20 minutes/epoch);
+  the live clock uses the same ceiling. Honest frozen epochs remain unchanged. Persisting/rebuilding
+  exactly once at an epoch edge and pausing foreground-play accounting while hidden remain open.
+- ✔ **D-ROUTE-1 — a shared planet address focuses; only Land lands (2026-08-11).** The slice used to
+  turn a pasted/Atlas planet directly into `surface`, bypassing the only command that records landing,
+  progression and contact outcomes. It now requires the declared planet to exist in the system,
+  opens that live survey in system view, and reserves surface entry for the guarded Land action.
+  Repeat landings do not repay landfall progress; stale cards cannot land/chart/share another system;
+  Atlas rows retain complete galaxy/star coordinates; and an accepted CF1 name round-trips only after
+  route validation. Full galaxy-at-cell and star-at-coordinate canonicalization is still open.
+- ☐ **D-CF1-2 — prove the complete shared-address hierarchy.** Range checks plus planet-in-system
+  membership do not prove that the declared galaxy occupies its cell or that the declared star seed
+  occupies its coordinates. Resolve each level from deterministic source data and navigate only with
+  that canonical result; a forged inner seed must not borrow Sol's reachable coordinates.
+- ☐ **D-TRAIN-1 — restore legacy full-expedition tutorial snapshots.** Current-v2 restart owns a
+  reversible `{view}` snapshot and commits before reload. Imported v1 mid-training `tsnap` is a much
+  larger expedition record; finishing/skipping without a typed restore-before-clear transaction can
+  strand that real progress in an ignored field. The frozen `tut_midtraining` fixture must prove both
+  completion paths and injected write failure before this is closed.
+- ☐ **D-CFB-1 — preserve the deterministic parent tuple or ratify its loss.** The retained creature
+  codec drops `parents`, while combat class/ability reads them. Honest hybrids can therefore change
+  combat identity after a CFB round trip. A normalized two-uint32 tuple is the bounded candidate, but
+  because this corrects inherited behavior it needs an explicit compatibility decision and matchup
+  controls.
+- ☐ **D-IMPORT-1 — reconstruct Map/Set and genome semantics, not merely array shapes.** The current
+  importer contains a descriptor-crashing Compendium row, but malformed trait indices can still
+  produce NaN combat values, and duplicate conquest/bio/wave/tech/binder/charter rows do not yet
+  collapse with the original Maps/Sets' first/last-write semantics. Normalize numeric genes without
+  rewriting honest unwrapped `size`, contain irreparable rows, and rebuild keyed collections through
+  their actual abstractions.
+- ★ **D-CONTRACT-1 — handwritten declarations are executable contracts, not comments (2026-08-11).**
+  SurveyPhrases argument lists, PlanetGen's required `fbm`, WorldGen's `{stars,deco}` result,
+  CombatCore abilities/level/stat shapes and SpeciesTraits tables/options now match runtime. Contract
+  tests exercise the real APIs, and `npm run typecheck` includes the app configuration that first
+  exposed the drift.
+- ★ **D-UI-1 — lower mobile chrome is measured as a group (2026-08-11).** The phone dock wrapped
+  3/3/2 while context/hint/Planetside used fixed offsets, so green smoke evidence visibly covered
+  copy and controls. The port owns a 206×98 4×2 phone dock, publishes measured `--dock-h`/`--ctx-h`,
+  and derives every lower anchor from them. Browser smoke asserts pairwise clearance, row geometry,
+  button hit targets and CSS-variable equality, with an injected old-style overlap that must fail.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds
@@ -926,10 +980,12 @@ duplicates).
   descriptor text, and fixture parity would break on a non-en-US CI machine.
   *Port fix:* fixed-locale formatting (`toLocaleString('en-US')`) as an approved
   deviation, or a pure formatter. Cosmetic to players, structural for CI.
-- ★ **D-NAV — illegal navigation states unrepresentable.** The old build defended
-  `st.star.x` against null per frame after a crash shipped; `@cf/scene`'s state
-  machine rejects illegal transitions and clears deeper context on ascent, so the
-  class cannot exist. No parity cost — same legal states.
+- ☐ **D-NAV — legal transitions are guarded; illegal state shapes remain representable.** The old
+  build defended `st.star.x` against null per frame after a crash shipped. `@cf/scene` now rejects
+  illegal transitions and clears deeper context on ascent, but its current single nullable
+  `NavState` interface still permits a contextless `surface` value and retains caller object
+  references. Finish this with a discriminated union plus normalized copies; until then this is a
+  partial hardening, not a closed type theorem.
 - ★ **D-CLOCK — no wall-clock in the domain.** COSMIC_EPOCH's port takes an injected
   play-seconds source; the harvestclock invariant holds by construction. The no-DOM
   lint enforces `Math.random`/`Date.now` absence across every domain package —
@@ -956,11 +1012,11 @@ duplicates).
   `_sanitizeSavedGenome`, the ring-grade chain). The port already homes them in
   `@cf/domain-strays`; the *upstream* cleanup (moving them into [domain] modules in
   main.js) is optional and cosmetic.
-- ★ **D-STORE — one localStorage blob → §19.3 split stores.** The repository
-  separates meta/player/creatures/catalog/inventory/settings/journal/assetcache with
-  atomic transactions and typed recovery — the single-blob format survives via
-  import/export for compatibility, but new-format persistence can be incremental
-  and partial-failure-safe.
+- ☐ **D-STORE — repository/recovery seam exists; §19.3 split stores do not yet.** The typed
+  repository owns IndexedDB open/retry, primary/backup promotion and recovery, but currently stores
+  the exported save as one blob in `meta`. Multi-tab last-writer-wins and incremental domain-store
+  transactions remain open; do not describe them as shipped until revisions/CAS or equivalent
+  transactional records land.
 
 ## Determinism / replayability
 

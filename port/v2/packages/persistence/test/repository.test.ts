@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createSaveRepository, createMemoryBackend, STORES } from '@cf/persistence';
+import { createSaveRepository, createMemoryBackend, createIndexedDBBackend, readSaveWithRecovery, STORES } from '@cf/persistence';
 
 describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', () => {
   it('write / readPrimary round-trips', async () => {
@@ -24,6 +24,39 @@ describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', ()
   it('recover on a genuinely fresh store is a no-op (no phantom resurrection)', async () => {
     const repo = createSaveRepository(createMemoryBackend());
     expect(await repo.recover()).toBeUndefined();
+  });
+  it('a transient read never rolls a newer primary back to an older backup', async () => {
+    let reads = 0, recoveries = 0;
+    const repository = {
+      async readPrimary() {
+        reads++;
+        if (reads === 1) throw new Error('injected first-open failure');
+        return 'newer-valid-primary';
+      },
+      async recover() { recoveries++; return 'older-valid-backup'; },
+    };
+    const classify = (raw: string) => raw.includes('valid') ? 'supported' as const : 'invalid' as const;
+    expect(await readSaveWithRecovery(repository, classify)).toEqual({ kind: 'transient-read' });
+    expect(recoveries).toBe(0);
+    expect(await readSaveWithRecovery(repository, classify)).toEqual({
+      kind: 'loaded', raw: 'newer-valid-primary', recovered: false,
+    });
+    expect(recoveries, 'retry replaced a valid newer primary with the stale backup').toBe(0);
+  });
+  it('only a successful retry proving the store is empty authorizes a fresh save', async () => {
+    let reads = 0, recoveries = 0;
+    const repository = {
+      async readPrimary() {
+        reads++;
+        if (reads === 1) throw new Error('injected first-open failure');
+        return undefined;
+      },
+      async recover() { recoveries++; return 'must-not-run'; },
+    };
+    const classify = () => 'supported' as const;
+    expect(await readSaveWithRecovery(repository, classify)).toEqual({ kind: 'transient-read' });
+    expect(await readSaveWithRecovery(repository, classify)).toEqual({ kind: 'fresh' });
+    expect(recoveries).toBe(0);
   });
   it('★ THE RESET LAW: primary AND backup die together — a reset must not resurrect via the backup', async () => {
     /* ⚠ REWRITTEN after its own negative control PASSED while the defect was
@@ -54,5 +87,107 @@ describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', ()
   });
   it('the §19.3 store set is complete, incl. the disposable asset cache', () => {
     expect([...STORES]).toEqual(['meta', 'player', 'creatures', 'catalog', 'inventory', 'settings', 'journal', 'assetcache']);
+  });
+  it('a rejected IndexedDB open is retried instead of poisoning the repository forever', async () => {
+    const prior = globalThis.indexedDB;
+    let attempts = 0;
+    const fakeDb = {
+      objectStoreNames: { contains: () => true },
+      createObjectStore: () => ({}),
+      close: () => {},
+      onclose: null,
+      onversionchange: null,
+      transaction: () => {
+        const tx = {
+          oncomplete: null as null | (() => void),
+          onerror: null,
+          onabort: null,
+          error: null,
+          objectStore: () => ({ get: () => ({ result: 'recovered' }) }),
+        };
+        queueMicrotask(() => tx.oncomplete?.());
+        return tx;
+      },
+    };
+    globalThis.indexedDB = {
+      open: () => {
+        attempts++;
+        const req = {
+          result: fakeDb,
+          error: new Error('first open failed'),
+          onupgradeneeded: null as null | (() => void),
+          onsuccess: null as null | (() => void),
+          onerror: null as null | (() => void),
+          onblocked: null as null | (() => void),
+        };
+        queueMicrotask(() => { if (attempts === 1) req.onerror?.(); else req.onsuccess?.(); });
+        return req;
+      },
+    } as unknown as IDBFactory;
+    try {
+      const backend = createIndexedDBBackend('retry-test');
+      await expect(backend.get('meta', 'save')).rejects.toThrow('first open failed');
+      await expect(backend.get('meta', 'save')).resolves.toBe('recovered');
+      expect(attempts).toBe(2);
+    } finally {
+      globalThis.indexedDB = prior;
+    }
+  });
+  it('a blocked attempt that later succeeds closes its abandoned database', async () => {
+    const prior = globalThis.indexedDB;
+    let attempts = 0;
+    let firstRequest: {
+      result: IDBDatabase;
+      onupgradeneeded: null | (() => void);
+      onsuccess: null | (() => void);
+      onerror: null | (() => void);
+      onblocked: null | (() => void);
+    } | null = null;
+    let orphanCloses = 0;
+    const transactionDb = (value: string, onClose = () => {}): IDBDatabase => ({
+      objectStoreNames: { contains: () => true },
+      createObjectStore: () => ({}),
+      close: onClose,
+      onclose: null,
+      onversionchange: null,
+      transaction: () => {
+        const tx = {
+          oncomplete: null as null | (() => void), onerror: null, onabort: null, error: null,
+          objectStore: () => ({ get: () => ({ result: value }) }),
+        };
+        queueMicrotask(() => tx.oncomplete?.());
+        return tx;
+      },
+    } as unknown as IDBDatabase);
+    const orphan = transactionDb('orphan', () => { orphanCloses++; });
+    const live = transactionDb('live');
+    globalThis.indexedDB = {
+      open: () => {
+        attempts++;
+        const req = {
+          result: attempts === 1 ? orphan : live,
+          error: null,
+          onupgradeneeded: null as null | (() => void),
+          onsuccess: null as null | (() => void),
+          onerror: null as null | (() => void),
+          onblocked: null as null | (() => void),
+        };
+        if (attempts === 1) {
+          firstRequest = req as typeof firstRequest;
+          queueMicrotask(() => req.onblocked?.());
+        } else queueMicrotask(() => req.onsuccess?.());
+        return req;
+      },
+    } as unknown as IDBFactory;
+    try {
+      const backend = createIndexedDBBackend('blocked-retry-test');
+      await expect(backend.get('meta', 'save')).rejects.toThrow('IndexedDB open blocked');
+      await expect(backend.get('meta', 'save')).resolves.toBe('live');
+      firstRequest!.onsuccess?.();
+      expect(orphanCloses).toBe(1);
+      expect(attempts).toBe(2);
+    } finally {
+      globalThis.indexedDB = prior;
+    }
   });
 });

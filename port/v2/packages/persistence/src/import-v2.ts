@@ -22,6 +22,7 @@ import {
 } from '@cf/domain-strays';
 import { describeSpecies, classifyRealm, ecologyRole, realmBiome, realmModifiers, sapienceTier } from '@cf/domain-genome';
 import type { Genome } from '@cf/domain-genome';
+import { sanitizeEpoch } from '@cf/domain-progression';
 
 export interface ContentRegistry {
   materials: string[];
@@ -83,19 +84,55 @@ export interface SaveStateV2 {
 
 const HARVEST_CD = 3600e3;   /* key anchor (CLAUDE.md) — the harvest stamp floor window */
 
-export function importSaveV2(raw: string | null | undefined, registry: ContentRegistry, now: number): { ok: false } | { ok: true; state: SaveStateV2 } {
-  try {
-    if (!raw) return { ok: false };
-    const data = JSON.parse(raw) as Record<string, unknown>;
+export type ImportSaveResult = { ok: false; reason: 'invalid' | 'future-version' } | { ok: true; state: SaveStateV2 };
 
-    const num = (v: unknown, d?: number): number => { const x = +(v as number); return Number.isFinite(x) ? x : (d || 0); };
+/** Import-sheet guard. Boot loading deliberately accepts sparse legacy data
+ * and hardens it into defaults; an explicit destructive import must prove it
+ * is a whole save envelope before replacing the stored expedition. */
+export function isPlausibleSaveEnvelope(value: unknown): value is Record<string, unknown> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  const data = value as Record<string, unknown>;
+  if (data.v !== undefined) {
+    const version = Number(data.v);
+    if (!Number.isSafeInteger(version) || version < 0 || version > 4) return false;
+  }
+  const epoch = Number(data.epoch);
+  return Number.isFinite(epoch) && epoch >= 0
+    && Array.isArray(data.codex) && Array.isArray(data.land);
+}
+
+export function importSaveV2(raw: string | null | undefined, registry: ContentRegistry, now: number): ImportSaveResult {
+  try {
+    if (!raw) return { ok: false, reason: 'invalid' };
+    const parsed = JSON.parse(raw) as unknown;
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return { ok: false, reason: 'invalid' };
+    const data = parsed as Record<string, unknown>;
+    if (data.v !== undefined) {
+      const version = Number(data.v);
+      if (Number.isSafeInteger(version) && version > 4) return { ok: false, reason: 'future-version' };
+      if (!Number.isSafeInteger(version) || version < 0) return { ok: false, reason: 'invalid' };
+    }
+
+    const num = (v: unknown, d?: number): number => {
+      const x = +(v as number);
+      return Number.isFinite(x) ? x : (d === undefined ? 0 : d);
+    };
     const clamp = (v: number, a: number, b: number): number => (v < a ? a : (v > b ? b : v));
+    /* D-9i: generations are counters, not free-form save payload. The v1
+       loader compared a string numerically and then stored the original
+       string, so the next `gen + 1` could concatenate. Keep every honest
+       integer unchanged, coerce legacy numeric strings once, and reject
+       fractional/negative/unsafe values instead of persisting poison. */
+    const generation = (v: unknown): number => {
+      const n = +(v as number);
+      return Number.isSafeInteger(n) && n >= 0 ? n : 0;
+    };
     /* CF-RR-002: `{}` where an array belongs loads EMPTY; the save survives */
     const _capA = (a: unknown, n: number): unknown[] => (Array.isArray(a) ? a.slice(0, n) : []);
     const itemBy = registry.items;
     const TIER_MAX = registry.tierMax;
 
-    const EPOCH_BASE = num(data.epoch);
+    const EPOCH_BASE = sanitizeEpoch(data.epoch);
     const customNames = new Map<string, string>();
     for (const kv of _capA(data.names, 5000) as Array<[unknown, unknown]>) {
       if (kv && typeof kv[0] === 'string') { const nm = cleanName(kv[1]); if (nm) customNames.set(kv[0], nm); }
@@ -241,8 +278,11 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
        surface; the grade rides ringGrade's region cap. */
     const codex = new Map<string, CodexEntry>();
     for (const e of _capA(data.codex, 1500) as Array<Record<string, unknown>>) {
+      try {
       const _sg = e && e.g && _sanitizeSavedGenome(e.g);
       if (!_sg) continue;
+      const savedGenome = _sg as Record<string, unknown>;
+      savedGenome.gen = generation(savedGenome.gen);
       const g = _sg as unknown as Genome;
       const from = String(e.f || '').replace(/[<>&"']/g, '').slice(0, 48) || null;
       const where = _sanitizeView(e.w) || null;
@@ -268,15 +308,18 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
          hybrids=1 against this importer's declaration zeros) */
       if (entry.hybrid) stats.hybrids = (stats.hybrids || 0) + 1;
       if (entry.tier != null && entry.tier > stats.best!) stats.best = entry.tier;
-      /* ⚠ BUG-FOR-BUG (ROADMAP 9i, found BY this parity test 2026-07-31):
-         _sanitizeSavedGenome clamps brood/fed/xp/hurt but NOT gen, and
-         onSpeciesStored assigns entry.gen RAW after a coercing comparison —
-         so a hostile save's gen:'2' (string) lands in stats.maxGen and
-         PERSISTS into every future save (maxGen+1 anywhere would concat).
-         The fixture pins the string; the port reproduces it until the fix
-         ships upstream as a deliberate v1.9 change. */
-      const _gen = (_sg as { gen?: number | string }).gen || 0;
-      if ((_gen as number) > (stats.maxGen as unknown as number)!) stats.maxGen = _gen as number;
+      /* Deliberate v2 hardening over the frozen v1.8.9 fixture: maxGen and
+         the genome now share the same validated numeric counter. */
+      const _gen = generation(savedGenome.gen);
+      if (_gen > stats.maxGen!) stats.maxGen = _gen;
+      } catch {
+        /* One malformed creature must never make the otherwise recoverable
+           expedition fail as a whole. The verbatim sanitizer deliberately
+           preserves honest out-of-range evolution drift (notably `size`), so
+           descriptor totality is contained at the entry boundary instead of
+           rewriting genome values on load. */
+        continue;
+      }
     }
     /* pre-v1.7 veteran: `seen` ABSENT (not empty) ⇒ everything already
        catalogued counts as viewed — the new-dot flood guard */
@@ -301,21 +344,31 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const _cw = (w: unknown): Record<string, unknown> | null => {
       if (!w || typeof w !== 'object') return null;
       const src = w as Record<string, unknown>;
+      const type = typeof src.type === 'string' && ['planet', 'star', 'galaxy'].includes(src.type) ? src.type : null;
+      if (!type) return null;
       const o: Record<string, unknown> = {};
       if (src.gal && typeof src.gal === 'object') {
         const g = src.gal as Record<string, unknown>;
-        const gx = num(g.x), gy = num(g.y);
-        if (Number.isFinite(gx) && Number.isFinite(gy)) {
-          const gal: Record<string, unknown> = { x: gx, y: gy };
+        const gx = +g.x!, gy = +g.y!, gs = +g.seed!;
+        if (Number.isFinite(gx) && Number.isFinite(gy) && Number.isFinite(gs)) {
+          const gal: Record<string, unknown> = { x: gx, y: gy, seed: gs };
           for (const gk of ['size', 'sp', 'tilt', 'rot', 'seed']) { const gv = num(g[gk], NaN); if (Number.isFinite(gv)) gal[gk] = gv; }
           for (const gk of ['home', 'quasar', 'dwarf']) if (g[gk]) gal[gk] = true;
           o.gal = gal;
         }
       }
+      if (!o.gal) return null;
       for (const k of ['pseed', 'sseed', 'seed', 'orb', 'm', 'pi']) { const v2 = num(src[k], NaN); if (Number.isFinite(v2)) o[k] = v2; }
-      if (src.star && typeof src.star === 'object') { const ss2 = num((src.star as Record<string, unknown>).seed, NaN); if (Number.isFinite(ss2)) o.star = { seed: ss2 }; }
-      if (typeof src.type === 'string' && ['planet', 'star', 'galaxy'].includes(src.type)) o.type = src.type;
-      return Object.keys(o).length ? o : null;
+      if (type === 'star' || type === 'planet') {
+        if (!src.star || typeof src.star !== 'object') return null;
+        const star = src.star as Record<string, unknown>;
+        const sx = +star.x!, sy = +star.y!, ss = +star.seed!;
+        if (!Number.isFinite(sx) || !Number.isFinite(sy) || !Number.isFinite(ss)) return null;
+        o.star = { x: sx, y: sy, seed: ss };
+      }
+      if (type === 'planet' && !Number.isFinite(+src.pseed!)) return null;
+      o.type = type;
+      return o;
     };
     const logMap = new Map<string, Record<string, unknown>>();
     for (const it of _capA(data.log, 150) as Array<Record<string, unknown>>) {
@@ -399,6 +452,6 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       },
     };
   } catch {
-    return { ok: false };
+    return { ok: false, reason: 'invalid' };
   }
 }

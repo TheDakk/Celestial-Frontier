@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { canon } from '../../../tests/parity.js';
-import { importSaveV2, type ContentRegistry, type SaveStateV2 } from '@cf/persistence';
+import { importSaveV2, isPlausibleSaveEnvelope, type ContentRegistry, type SaveStateV2 } from '@cf/persistence';
 
 /* ═══ THE LOAD-PATH PARITY TEST: importSaveV2 vs save-fixtures.json ═══
    The fixture holds post-boot state captured from the REAL
@@ -76,6 +76,33 @@ const UNIMPLEMENTED: Record<string, string> = {};
 const FIXTURE_NAMES = ['empty_object', 'veteran_rich', 'hostile_shapes', 'hostile_markup_caps',
   'pre_v17_veteran', 'hostile_arrays_as_objects', 'tut_midtraining', 'settings_spread', 'equip_integrity'] as const;
 
+/* The baseline is immutable v1.8.9 truth. D-9i is one deliberate v2
+   correction: that build retained hostile `gen:"2"` as a string in both
+   the codex genome and stats.maxGen. Project only those two exact leaves to
+   the approved numeric value; every other byte must still match. */
+const approvedExpected = (fixture: typeof FIXTURE_NAMES[number], field: string, encoded: string): string => {
+  /* D-SAVE-OPTIONAL-ID: v1's `num(v, NaN)` accidentally fell back through
+     `(d || 0)`, manufacturing zero-valued Atlas identity fields that were not
+     in the save. v2 preserves explicit zero but no longer invents absent
+     pseed-adjacent fields. These are the only immutable fixtures containing
+     such absent fields. */
+  if (field === 'logMap' && (fixture === 'veteran_rich' || fixture === 'hostile_markup_caps')) {
+    const value = JSON.parse(encoded) as Array<[string, { where?: Record<string, unknown> }]>;
+    for (const [, entry] of value) {
+      for (const key of ['m', 'orb', 'pi', 'seed', 'sseed']) delete entry.where?.[key];
+      if (entry.where?.star && typeof entry.where.star === 'object') {
+        Object.assign(entry.where.star, { x: 560, y: 170 });
+      }
+    }
+    return canon(value);
+  }
+  if (fixture !== 'hostile_markup_caps' || (field !== 'stats' && field !== 'codex')) return encoded;
+  const value = JSON.parse(encoded) as Record<string, unknown> | Array<[string, { g: Record<string, unknown> }]>;
+  if (field === 'stats') (value as Record<string, unknown>).maxGen = 2;
+  else for (const [, entry] of value as Array<[string, { g: Record<string, unknown> }]>) entry.g.gen = 2;
+  return canon(value);
+};
+
 describe('importSaveV2 — parity against the REAL load path (save-fixtures.json)', () => {
   it('every snapshot field is mapped or explicitly unimplemented (no silent gaps)', () => {
     const snapshotFields = Object.keys(FX.results.empty_object!);
@@ -92,7 +119,8 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
       for (const [field, project] of Object.entries(FIELD_MAP)) {
         if (!(field in want)) continue;
         const got = canon(project(state));
-        if (got !== want[field]) bad.push(field + '\n  want ' + String(want[field]).slice(0, 220) + '\n  got  ' + got.slice(0, 220));
+        const expected = approvedExpected(name, field, want[field]!);
+        if (got !== expected) bad.push(field + '\n  want ' + expected.slice(0, 220) + '\n  got  ' + got.slice(0, 220));
       }
       expect(bad, bad.join('\n')).toEqual([]);
     });
@@ -121,5 +149,83 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
     const row = (res as { ok: true; state: SaveStateV2 }).state.conquered[0]![1];
     expect(row.t).toBe(NOW);
     expect(row.e).toBeUndefined();
+  });
+  it('D-9i: generation strings become numbers and invalid counters cannot poison maxGen', () => {
+    const baseInput = FX.inputs.hostile_markup_caps as { codex: Array<{ g: Record<string, unknown> }> };
+    const importedGen = (value: unknown): { genome: unknown; max: unknown } => {
+      const input = structuredClone(baseInput);
+      input.codex[0]!.g.gen = value;
+      const res = importSaveV2(JSON.stringify(input), REGISTRY, NOW);
+      expect(res.ok).toBe(true);
+      const state = (res as { ok: true; state: SaveStateV2 }).state;
+      return { genome: state.codex[0]![1].g.gen, max: state.stats.maxGen };
+    };
+    expect(importedGen('2')).toEqual({ genome: 2, max: 2 });
+    for (const poison of [-1, 2.5, 'not-a-number', Number.MAX_SAFE_INTEGER + 1]) {
+      expect(importedGen(poison), String(poison)).toEqual({ genome: 0, max: 0 });
+    }
+  });
+  it('future save versions fail distinctly while current and legacy payloads remain loadable', () => {
+    expect(importSaveV2('{"v":5,"epoch":1,"codex":[],"land":[]}', REGISTRY, NOW))
+      .toEqual({ ok: false, reason: 'future-version' });
+    expect(importSaveV2('{"v":4,"epoch":1,"codex":[],"land":[]}', REGISTRY, NOW).ok).toBe(true);
+    expect(importSaveV2('{"epoch":1,"codex":[],"land":[]}', REGISTRY, NOW).ok).toBe(true);
+    for (const primitive of ['[]', '1', '"x"', 'true', 'null']) {
+      expect(importSaveV2(primitive, REGISTRY, NOW), primitive).toEqual({ ok: false, reason: 'invalid' });
+    }
+  });
+  it('epoch import is an integer with a bounded evolution cost', () => {
+    const epochOf = (epoch: unknown): number => {
+      const result = importSaveV2(JSON.stringify({ epoch, codex: [], land: [] }), REGISTRY, NOW);
+      expect(result.ok).toBe(true);
+      return (result as { ok: true; state: SaveStateV2 }).state.EPOCH_BASE;
+    };
+    expect(epochOf(12)).toBe(12);
+    expect(epochOf('12')).toBe(12);
+    expect(epochOf(1.1)).toBe(0);
+    expect(epochOf(-1)).toBe(0);
+    expect(epochOf(1e12)).toBe(10_000);
+  });
+  it('one malformed codex genome cannot reject the rest of a valid expedition', () => {
+    const input = structuredClone(FX.inputs.veteran_rich) as { codex: Array<Record<string, unknown>> };
+    const expected = importSaveV2(JSON.stringify(input), REGISTRY, NOW);
+    expect(expected.ok).toBe(true);
+    const expectedState = (expected as { ok: true; state: SaveStateV2 }).state;
+    input.codex.unshift({ g: { seed: 8675309, kingdom: 'fauna', metab: -1 }, f: 'hostile row' });
+    const recovered = importSaveV2(JSON.stringify(input), REGISTRY, NOW);
+    expect(recovered.ok).toBe(true);
+    const state = (recovered as { ok: true; state: SaveStateV2 }).state;
+    expect(state.codex).toEqual(expectedState.codex);
+    expect(state.essence).toBe(expectedState.essence);
+    expect(state.landed).toEqual(expectedState.landed);
+  });
+  it('Atlas travel keeps complete star identity and rejects partial route identities', () => {
+    const route = {
+      type: 'planet',
+      gal: { x: 90, y: -60, seed: 999, size: 14.5 },
+      star: { x: 560, y: 170, seed: 424242 },
+      pseed: 0,
+    };
+    const raw = { epoch: 0, codex: [], land: [], log: [
+      { id: 'good', title: 'good', where: route },
+      { id: 'bad-gal', title: 'bad', where: { type: 'galaxy', gal: {} } },
+      { id: 'bad-star', title: 'bad', where: { type: 'star', gal: route.gal, star: { seed: 1 } } },
+      { id: 'bad-planet', title: 'bad', where: { type: 'planet', gal: route.gal, star: route.star } },
+    ] };
+    const result = importSaveV2(JSON.stringify(raw), REGISTRY, NOW);
+    expect(result.ok).toBe(true);
+    const rows = new Map((result as { ok: true; state: SaveStateV2 }).state.logMap);
+    expect(rows.get('good')?.where).toEqual(route);
+    expect(rows.get('bad-gal')?.where).toBeNull();
+    expect(rows.get('bad-star')?.where).toBeNull();
+    expect(rows.get('bad-planet')?.where).toBeNull();
+  });
+  it('destructive-import envelope rejects sparse lookalikes but accepts real current and veteran saves', () => {
+    for (const bad of [null, [], 1, 'x', true, {}, { view: null }, { codex: {} }, { epoch: 0 }, { epoch: 0, codex: [], land: {} }]) {
+      expect(isPlausibleSaveEnvelope(bad), JSON.stringify(bad)).toBe(false);
+    }
+    const current = JSON.parse('{"v":4,"epoch":0,"codex":[],"land":[]}');
+    expect(isPlausibleSaveEnvelope(current)).toBe(true);
+    expect(isPlausibleSaveEnvelope(FX.inputs.veteran_rich)).toBe(true);
   });
 });
