@@ -15,8 +15,19 @@ named CF1 sharing, stale-card actions and repeat landfall outcomes are guarded;
 SessionRNG rejects hostile counters/keys; handwritten domain declarations match
 their runtime APIs; lazy species-art subscribers are retained; and the phone
 dock is a measured 4×2 layout with browser-backed non-overlap/hit-target
-negative controls. Browser smoke and performance tools now use the owned,
-portable CDP lifecycle.
+negative controls. Pixi now keeps its DPR-scaled backing store displayed in a
+viewport-sized CSS box, so phone visuals and hit coordinates agree. Browser smoke and
+performance tools now use the owned, portable CDP lifecycle.
+
+Survey-first descent is phone- and slow-device safe: one tap opens the typed
+survey card without teleporting, and its explicit 44px `Enter galaxy` or
+`Enter system` action performs the dive. The card may cover the body on a
+phone, so navigation does not depend on a second canvas tap or timing window.
+The browser gate proves desktop and real 390×844 touch galaxy entry, the exact
+base Sol node `{seed:424242,x:560,y:170}`, a real stage-0 fine-star action
+rejected by the Charter, and stage-2 entry into the touched fine star's exact
+`{seed,x,y}`. It requires `autoDensity` geometry and rejects DPR-sized CSS
+canvas and buried-action controls.
 
 Current battery: 23 Vitest files / 257 pass / 1 skip; root and app TypeScript;
 artunused; artaudit 23/0; coveragegap 1,010/1,010; speccheck 454/0/0;
