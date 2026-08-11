@@ -144,6 +144,12 @@ function exactSha(value, where) {
   assert(SHA.test(result), `${where}: expected lowercase SHA-256`);
   return result;
 }
+function productionAnchor(value, expected, where) {
+  assert(typeof value === 'number' && Number.isFinite(value)
+    && Math.abs(value - expected) < 1e-9,
+  `${where}: production anchor differs from the declared stage contract`);
+  return value;
+}
 function safeRelative(value, where, extension = null) {
   const relative = nonempty(value, where);
   assert(!relative.includes('\\'), `${where}: backslashes are forbidden`);
@@ -773,9 +779,9 @@ function validateHybrid(rootValue, expectedCommit, expectedBrowser) {
       } else {
         assert(stage.genome._earthName === undefined && stage.genome._earthBlend === expectedLineage.species
           && stage.genome._earthBlendKingdom === expectedLineage.set.slice('earth-'.length)
-          && stage.genome._anchorVal === ANCHORS[stageIndex]
           && /^lineage-(owned|verbatim)$/.test(stage.route),
         `${stageWhere}: inherited hybrid lineage/anchor/route provenance is missing`);
+        productionAnchor(stage.genome._anchorVal, ANCHORS[stageIndex], `${stageWhere}.genome._anchorVal`);
         assert(isObject(stage.stripped_lineage_control)
           && stage.stripped_lineage_control.differs_from_lineage === true
           && /^procedural-(owned|verbatim)$/.test(stage.stripped_lineage_control.route)
@@ -865,10 +871,11 @@ function validateHybrid(rootValue, expectedCommit, expectedBrowser) {
     const owner = lineageSpec.set.slice('earth-'.length);
     assert(row.ab_genome._earthBlend === row.species && row.ba_genome._earthBlend === row.species
       && row.ab_genome._earthBlendKingdom === owner && row.ba_genome._earthBlendKingdom === owner
-      && row.ab_genome._anchorVal === 0.73 && row.ba_genome._anchorVal === 0.73
       && /^lineage-(owned|verbatim)$/.test(row.ab_route)
       && /^lineage-(owned|verbatim)$/.test(row.ba_route),
     `${where}: AB/BA lineage owner, anchor, or production route is missing`);
+    productionAnchor(row.ab_genome._anchorVal, 0.73, `${where}.ab_genome._anchorVal`);
+    productionAnchor(row.ba_genome._anchorVal, 0.73, `${where}.ba_genome._anchorVal`);
     const ab = assetsByPath.get(safeRelative(row.ab_portrait_path, `${where}.ab_portrait_path`, '.png'));
     const ba = assetsByPath.get(safeRelative(row.ba_portrait_path, `${where}.ba_portrait_path`, '.png'));
     assert(ab?.kind === 'cache-portrait' && ba?.kind === 'cache-portrait'
@@ -1513,7 +1520,9 @@ function fixtureHybrid(root, commit) {
             : stageIndex === 4 ? [stages[3].genome.seed, inputGenomes[4].seed] : null;
       const genome = stageIndex === 0 ? structuredClone(inputGenomes[0])
         : { seed: lineageIndex * 100 + stageIndex, kingdom, _earthBlend: lineageSpec.species,
-          _earthBlendKingdom: kingdom, _anchorVal: ANCHORS[stageIndex], parents, _src: { fixture: true } };
+          _earthBlendKingdom: kingdom,
+          _anchorVal: stageIndex === 3 ? 0.45999999999999996 : ANCHORS[stageIndex],
+          parents, _src: { fixture: true } };
       stages.push({ identity: `${id}|${stageId}`, stage_id: stageId, stage_index: stageIndex,
         anchor: ANCHORS[stageIndex], genome, genome_sha256: sha256(stableJson(genome)),
         route: stageIndex === 0 ? 'named-owned' : 'lineage-owned',
@@ -1684,6 +1693,14 @@ function selftest() {
     const staleReload = JSON.parse(hybridManifestText); staleReload.reload_check.identical = false;
     fs.writeFileSync(hybridManifestPath, JSON.stringify(staleReload, null, 2) + '\n');
     expectFailure('hybrid reload check', () => validateHybrid(hybrid, commit, FIXTURE_BROWSER), /reload check/);
+    fs.writeFileSync(hybridManifestPath, hybridManifestText);
+    const staleAnchor = JSON.parse(hybridManifestText);
+    staleAnchor.lineages[0].stages[3].genome._anchorVal = 0.5;
+    staleAnchor.lineages[0].stages[3].genome_sha256 =
+      sha256(stableJson(staleAnchor.lineages[0].stages[3].genome));
+    fs.writeFileSync(hybridManifestPath, JSON.stringify(staleAnchor, null, 2) + '\n');
+    expectFailure('hybrid production anchor', () => validateHybrid(hybrid, commit, FIXTURE_BROWSER),
+      /production anchor differs/);
     fs.writeFileSync(hybridManifestPath, hybridManifestText);
     const staleParentChain = JSON.parse(hybridManifestText);
     staleParentChain.lineages[0].stages[1].genome.parents.reverse();
