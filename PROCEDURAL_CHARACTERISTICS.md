@@ -22,8 +22,9 @@ the procedural source as of 2026-08-11; dated B15 sections below remain legacy
 > Amoeba as the principal microbe row, routes exactly Fruit Bat, Eagle, Wolf,
 > Elephant, Chameleon, Dragonfly and Octopus through lineage-owned fauna painters,
 > and freezes Sea Turtle and Great White Shark on their reviewed legacy route.
-> Its visual status remains `OPEN / UNREVIEWED` until fresh clean-commit evidence
-> receives a new hash-bound judgment. Apple's prior
+> Clean source `03ea297` supplied that evidence and its external review returned
+> **PASS with optional polish only**. The archive's generated UNREVIEWED fields remain
+> immutable preparation metadata, and the result does not certify every bloodline. Apple's prior
 > repair remains historical context, and Vanilla Orchid r6 was independently PASS at source
 > SHA-256 `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`:
 > the pure portrait is byte-exact, all five stages are unique and integrated,
