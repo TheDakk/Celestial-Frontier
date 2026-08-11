@@ -349,16 +349,27 @@ async function runSelftest() {
   console.log('  exact browser provenance and no owned profile leakage: PASS');
 }
 
+async function printBrowserProvenance() {
+  const connection = await openChromiumCdp({
+    label: 'browser provenance probe',
+    userDataPrefix: 'cf-browser-provenance',
+  });
+  try { console.log(JSON.stringify(connection.browser)); }
+  finally { await connection.close(); }
+}
+
 const IS_MAIN = process.argv[1]
   && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
 if (IS_MAIN) {
-  if (process.argv.includes('--selftest')) {
-    runSelftest().catch((error) => {
+  const mode = process.argv.slice(2);
+  if (mode.length === 1 && (mode[0] === '--selftest' || mode[0] === '--print-json')) {
+    const action = mode[0] === '--selftest' ? runSelftest : printBrowserProvenance;
+    action().catch((error) => {
       console.error(error.stack || error.message);
       process.exitCode = 1;
     });
   } else {
-    console.error('usage: node tools/browsercdp.mjs --selftest');
+    console.error('usage: node tools/browsercdp.mjs --selftest | --print-json');
     process.exitCode = 2;
   }
 }

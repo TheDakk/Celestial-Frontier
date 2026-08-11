@@ -944,7 +944,7 @@ function routerWiring(source, label, functionName) {
   if (!(matches[0].params.length === 1 && identifier(matches[0].params[0], 'g'))) {
     contractError(matches[0], 'resolveOverride must have only its audited g parameter');
   }
-  for (const globalName of ['Object', 'String', 'Boolean']) {
+  for (const globalName of ['Object', 'String', 'Boolean', 'Set', 'Number', 'Math']) {
     if (writtenNames(label).has(globalName) || moduleBindings(label).has(globalName)) {
       contractError(matches[0], `trusted built-in ${globalName} is shadowed or reassigned`);
     }
@@ -953,6 +953,8 @@ function routerWiring(source, label, functionName) {
     ['isEarthKingdom', ['speciesoverrides.ts', 'isEarthKingdom']],
     ['hasNamedRoute', ['speciesoverrides.ts', 'hasNamedRoute']],
     ['lineageRenderKingdom', ['speciesoverrides.ts', 'lineageRenderKingdom']],
+    ['isReviewedFaunaLineage', ['speciesoverrides.ts', 'isReviewedFaunaLineage']],
+    ['applyReviewedFaunaLineageDrift', ['speciesoverrides.ts', 'applyReviewedFaunaLineageDrift']],
     ['resolveProcedural', ['speciesoverrides.ts', 'resolveProcedural']],
     ['newCanvas', ['speciesoverrides.ts', 'newCanvas']],
     ['newInk', ['speciesoverrides.ts', 'newInk']],
@@ -967,6 +969,8 @@ function routerWiring(source, label, functionName) {
     ['newCanvas', '4cc8d2bbcf61aa856a91cc41de06f0c0a3439bc3aae844279a703b031d091767'],
     ['newInk', '6d4f4e49abf74f243aadaf196c3ec273dc7ab104a3de90f8e3ec136bc6309a3a'],
     ['fitInk', '2146842c7bccbd9994870c2034be794cf5fd8057a2c0899ace2a7b40785a46b7'],
+    ['isReviewedFaunaLineage', '8bf404cff6320fc56c0f5621773250fc36352a4a903f4be868bf586264093df3'],
+    ['applyReviewedFaunaLineageDrift', '860df1e0c650e36ab009ac9b58551ed5082a8ef45d4f59e0e58ff5010a3bf7a1'],
   ]);
   const exactCanvasDependencies = new Map([
     ['S', '440'],
@@ -980,6 +984,14 @@ function routerWiring(source, label, functionName) {
         && source.slice(binding.node.init?.start, binding.node.init?.end) === expectedInitializer)) {
       contractError(binding?.node ?? matches[0], `canvas dependency ${dependency} changed from its audited initializer`);
     }
+  }
+  const reviewedLineageBinding = bindingFor(label, 'REVIEWED_FAUNA_LINEAGES');
+  const reviewedLineageInitializer = "new Set([\n  'Fruit Bat', 'Eagle', 'Wolf', 'Elephant', 'Chameleon', 'Dragonfly', 'Octopus',\n])";
+  if (!(stableBinding(reviewedLineageBinding) && reviewedLineageBinding.kind === 'variable'
+      && reviewedLineageBinding.label === label
+      && source.slice(reviewedLineageBinding.node.init?.start, reviewedLineageBinding.node.init?.end)
+        === reviewedLineageInitializer)) {
+    contractError(reviewedLineageBinding?.node ?? matches[0], 'reviewed fauna lineage allowlist changed');
   }
   for (const [helper, [expectedLabel, expectedName]] of helperProvenance) {
     const binding = bindingFor(label, helper);
@@ -996,7 +1008,7 @@ function routerWiring(source, label, functionName) {
   }
   exactTypes(body, [
     'VariableDeclaration', 'VariableDeclaration', 'VariableDeclaration', 'VariableDeclaration',
-    'VariableDeclaration', 'IfStatement', 'IfStatement', 'VariableDeclaration', 'IfStatement',
+    'VariableDeclaration', 'VariableDeclaration', 'IfStatement', 'IfStatement', 'VariableDeclaration', 'IfStatement',
     'IfStatement', 'IfStatement', 'VariableDeclaration', 'IfStatement', 'VariableDeclaration',
     'ExpressionStatement', 'ExpressionStatement', 'VariableDeclaration', 'ExpressionStatement',
     'ExpressionStatement', 'ReturnStatement',
@@ -1006,7 +1018,8 @@ function routerWiring(source, label, functionName) {
     ['blend', `String((g as { _earthBlend?: string })._earthBlend || '').replace(/[’‘]/g, "'")`],
     ['genomeKingdom', `isEarthKingdom(g.kingdom) ? g.kingdom : 'fauna'`],
     ['kingdom', 'earthName ? genomeKingdom : lineageRenderKingdom(g)'],
-    ['name', `earthName || (kingdom === 'flora' || kingdom === 'fungi' || kingdom === 'microbe' ? blend : '')`],
+    ['reviewedFaunaBlend', 'isReviewedFaunaLineage(g, kingdom, blend)'],
+    ['name', `earthName || (kingdom === 'flora' || kingdom === 'fungi' || kingdom === 'microbe' || reviewedFaunaBlend ? blend : '')`],
   ];
   for (let index = 0; index < prelude.length; index++) {
     const [name, expected] = prelude[index];
@@ -1015,26 +1028,26 @@ function routerWiring(source, label, functionName) {
       contractError(body[index], `${name} route input changed`);
     }
   }
-  if (!(body[5].test?.type === 'LogicalExpression' && body[5].test.operator === '&&'
-      && notIdentifier(body[5].test.left, 'name') && identifier(body[5].test.right, 'blend')
-      && returnNull(body[5].consequent) && !body[5].alternate)) {
-    contractError(body[5], 'named-route blend guard changed');
+  if (!(body[6].test?.type === 'LogicalExpression' && body[6].test.operator === '&&'
+      && notIdentifier(body[6].test.left, 'name') && identifier(body[6].test.right, 'blend')
+      && returnNull(body[6].consequent) && !body[6].alternate)) {
+    contractError(body[6], 'named-route blend guard changed');
   }
-  if (!(notIdentifier(body[6].test, 'name') && body[6].consequent?.type === 'ReturnStatement'
-      && body[6].consequent.argument?.type === 'CallExpression'
-      && identifier(body[6].consequent.argument.callee, 'resolveProcedural')
-      && body[6].consequent.argument.arguments.length === 1
-      && identifier(body[6].consequent.argument.arguments[0], 'g') && !body[6].alternate)) {
-    contractError(body[6], 'procedural fallthrough guard changed');
+  if (!(notIdentifier(body[7].test, 'name') && body[7].consequent?.type === 'ReturnStatement'
+      && body[7].consequent.argument?.type === 'CallExpression'
+      && identifier(body[7].consequent.argument.callee, 'resolveProcedural')
+      && body[7].consequent.argument.arguments.length === 1
+      && identifier(body[7].consequent.argument.arguments[0], 'g') && !body[7].alternate)) {
+    contractError(body[7], 'procedural fallthrough guard changed');
   }
 
-  const canonDeclarator = declaration(body[7], 'canon');
-  const canonIf = body[8];
+  const canonDeclarator = declaration(body[8], 'canon');
+  const canonIf = body[9];
   const floraIf = directKingdomBranch(body, 'flora');
   const faunaIf = directKingdomBranch(body, 'fauna');
-  const painterDeclarator = declaration(body[11], 'painter');
-  if (floraIf !== body[9] || faunaIf !== body[10]) {
-    contractError(body[9], 'kingdom route branches changed order or scope');
+  const painterDeclarator = declaration(body[12], 'painter');
+  if (floraIf !== body[10] || faunaIf !== body[11]) {
+    contractError(body[10], 'kingdom route branches changed order or scope');
   }
   const expectedDirectSelectors = new Map([
     ['canon', canonDeclarator],
@@ -1194,7 +1207,7 @@ function routerWiring(source, label, functionName) {
 
   exactTypes(canonIf.consequent?.body || [], [
     'VariableDeclaration', 'ExpressionStatement', 'ExpressionStatement', 'VariableDeclaration',
-    'ExpressionStatement', 'ExpressionStatement', 'ReturnStatement',
+    'ExpressionStatement', 'ExpressionStatement', 'ExpressionStatement', 'ReturnStatement',
   ], 'canon consumer');
   const canonCall = callStatement(canonIf.consequent.body[4]);
   if (!(identifier(canonIf.test, 'canon') && !canonIf.alternate
@@ -1204,8 +1217,9 @@ function routerWiring(source, label, functionName) {
       && inkDeclaration(canonIf.consequent.body[3])
       && identifier(canonCall?.callee, 'canon') && paintsInk(canonCall)
       && source.slice(canonCall.start, canonCall.end) === 'canon(ink.c, g, palette(g) as Pal)'
-      && exactFit(canonIf.consequent.body[5], "kingdom + ':' + name")
-      && returnDataUrl(canonIf.consequent.body[6]))) {
+      && exactCall(canonIf.consequent.body[5], 'applyReviewedFaunaLineageDrift(ink.c, g, name)')
+      && exactFit(canonIf.consequent.body[6], "kingdom + ':' + name")
+      && returnDataUrl(canonIf.consequent.body[7]))) {
     contractError(canonIf, 'canon lookup is not the guarded painter that feeds the returned canvas');
   }
 
@@ -1232,7 +1246,7 @@ function routerWiring(source, label, functionName) {
   exactTypes(faunaBody, [
     'VariableDeclaration', 'VariableDeclaration', 'IfStatement', 'VariableDeclaration',
     'ExpressionStatement', 'ExpressionStatement', 'VariableDeclaration', 'IfStatement',
-    'ExpressionStatement', 'ReturnStatement',
+    'ExpressionStatement', 'ExpressionStatement', 'ReturnStatement',
   ], 'fauna consumer');
   const faunaDispatch = faunaBody[7];
   const fpCall = faunaDispatch.consequent?.type === 'ExpressionStatement'
@@ -1251,12 +1265,13 @@ function routerWiring(source, label, functionName) {
       && quadArgument?.type === 'TSNonNullExpression' && identifier(quadArgument.expression, 'quad')
       && canvasDeclaration(faunaBody[3]) && exactCall(faunaBody[4], 'vignette(c, false)')
       && exactCall(faunaBody[5], 'floorFade(c)') && inkDeclaration(faunaBody[6])
-      && exactFit(faunaBody[8], "'fauna:' + name")
-      && returnDataUrl(faunaBody[9]))) {
+      && exactCall(faunaBody[8], 'applyReviewedFaunaLineageDrift(ink.c, g, name)')
+      && exactFit(faunaBody[9], "'fauna:' + name")
+      && returnDataUrl(faunaBody[10]))) {
     contractError(faunaIf, 'fauna selectors do not guard and feed the painter/fallback that returns the canvas');
   }
 
-  const tail = body.slice(11);
+  const tail = body.slice(12);
   exactTypes(tail, [
     'VariableDeclaration', 'IfStatement', 'VariableDeclaration', 'ExpressionStatement',
     'ExpressionStatement', 'VariableDeclaration', 'ExpressionStatement', 'ExpressionStatement',

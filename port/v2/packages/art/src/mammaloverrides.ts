@@ -186,9 +186,9 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* "overlapping keratin scales · long heavy tail · small conical head" */
   'Pangolin': { legs: 0.053, depth: 0.1126, len: 0.1754, neck: 0.032, back: 'arched', muzzle: 0.34, ears: 'tiny', tail: 'long', tailScale: 1.5, coat: 'plain', hue: '#9a8258', family: 'xenarthran' , mat: 'plate' },
   /* "gliding membrane between the limbs · black eye-stripe · long plume tail" */
-  'Sugar Glider': { legs: 0.0535, depth: 0.0779, len: 0.115, neck: 0.028, muzzle: 0.24, ears: 'large', tail: 'plume', face: 'mask', hue: '#9aa0a8', family: 'marsupial', patagium: true, carry: 0.40, pose: 'glide', gliderPlan: 'sugar-glider' },
+  'Sugar Glider': { legs: 0.0535, depth: 0.0779, len: 0.115, neck: 0.028, muzzle: 0.24, ears: 'large', tail: 'plume', face: 'mask', hue: '#9aa0a8', family: 'marsupial', carry: 0.40, gliderPlan: 'sugar-glider' },
   /* "gliding membrane · huge forward eyes · mottled bark-coloured coat" */
-  'Colugo': { legs: 0.0578, depth: 0.0937, len: 0.1229, neck: 0.030, muzzle: 0.26, ears: 'small', tail: 'long', coat: 'blotches', hue: '#8b7a63', patagium: true, carry: 0.40, pose: 'glide', gliderPlan: 'colugo' },
+  'Colugo': { legs: 0.0578, depth: 0.0937, len: 0.1229, neck: 0.030, muzzle: 0.26, ears: 'small', tail: 'long', coat: 'blotches', hue: '#8b7a63', carry: 0.40, gliderPlan: 'colugo' },
   /* ★ WAVE 10 — the pinnipeds had no route at all. They are the family plan
      wave 9 built: bulk resting on the ground, flippers instead of legs. The
      eared seals prop their chest UP on long fore-flippers; a true seal cannot,

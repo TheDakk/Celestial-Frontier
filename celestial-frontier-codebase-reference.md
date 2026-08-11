@@ -4,7 +4,7 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 overlay matches code and live handoff as of 2026-08-10.**
+> **Current port/v2 overlay matches code and live handoff as of 2026-08-11.**
 >
 > **v1.6 additions not yet folded into the sections below** (see ART_DIRECTION / PROCEDURAL_CHARACTERISTICS /
 > UI_PRESENTATION / SPECIES_AND_GENOME for detail): the Earth-bestiary rig system (`_rig*` per class) +
@@ -21,12 +21,17 @@
 > `packages/art/src/speciesart.ts` and displayed as DOM `<img>` portraits in the
 > Compendium/planetside UI. The genetics facade records the selected Earth
 > lineage's exact `_earthBlendKingdom`; `speciesoverrides.ts` sends fauna to the
-> lineage-aware HD fallback and flora/fungi/microbe to the exact kingdom+name
+> lineage-aware HD fallback except for the exact reviewed set Fruit Bat, Eagle,
+> Wolf, Elephant, Chameleon, Dragonfly and Octopus, whose marked hybrids use the
+> lineage-owned modern painter. Sea Turtle and Great White Shark remain protected
+> on the reviewed legacy route; flora/fungi/microbe use the exact kingdom+name
 > owner before generic procedural mapping. Portrait and thumb caches canonicalize
 > the complete deterministic genome because `A×B` and `B×A` can share a seed while
-> inheriting different traits. `hybridblendcheck.mjs` guards five exact ID+kingdom+name focused lineages
-> spanning every kingdom, final browser route/cache outcomes and eleven injected
-> negative controls; final all-bloodline certification remains OPEN.
+> inheriting different traits. The schema-v4 hybrid contract guards 13 exact
+> five-stage lineages /251 assets spanning every kingdom, including Amoeba as the
+> principal microbe row, plus route/cache/mixed-owner negative controls. The exact
+> source-`03ea297` package review returned **PASS with optional polish only**; the
+> sealed preparation status remains immutable and final all-bloodline certification remains open.
 >
 > `gp71rejudge.mjs` guards set-aware references; `gp71compare.mjs` exact-joins
 > old/current 1,250-image roots; `fullresetlayout.mjs` derives the official 181
@@ -46,12 +51,15 @@
 > verdicts are not a replacement full-catalogue score. Wave 1 is committed and
 > pushed as `d005090f`.
 >
-> Apple's continuity repair remains independently accepted. Vanilla Orchid r6 is
+> Apple's focused continuity repair remains independently accepted under its
+> historical ruler. Vanilla Orchid r6 was
 > independently PASS at `floraoverrides2.ts` SHA-256
 > `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`:
-> the pure portrait remains byte-exact, five stages are unique and progressively
-> farther from pure, defining organs survive, and joins remain continuous. The r6
-> evidence validates 234/234 assets and both browser orders. The earlier
+> the pure portrait remained byte-exact, five stages were unique and progressively
+> farther from pure, defining organs survived, and joins remained continuous. The
+> sealed schema-v3 evidence validated 234/234 assets and both browser orders; it is
+> superseded for the broader 2026-08-11 Platinum ruler by the 13-lineage /251-asset
+> schema-v4 contract. The earlier
 > `FAIL_BYTE_IDENTICAL_STAGES` state is closed diagnosis, not current status.
 > Whole-form routes return
 > before legacy generic painters; features behind that return are inert, while a
