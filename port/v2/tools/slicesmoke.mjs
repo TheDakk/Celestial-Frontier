@@ -931,26 +931,55 @@ try {
   const setProtectedPrimary = async (raw) => evalPh(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
     q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite'),os=tx.objectStore('meta');
       os.put(${JSON.stringify(raw)},'save'); os.delete('save_bak'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
-  const protectedBoot = async (raw) => {
+  const waitProtectedNotice = async (expectedTitle, timeoutMs = 3000) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = null;
+    while (Date.now() < deadline) {
+      last = await evalPh(`(()=>{ const title=(document.querySelector('#toast [data-sel=toast-title]')||{}).textContent||'';
+        const toast=document.getElementById('toast'),style=toast?getComputedStyle(toast):null;
+        const rect=toast?.getBoundingClientRect(),geometry=!!rect&&rect.width>0&&rect.height>0&&rect.right>0&&rect.bottom>0
+          &&rect.left<innerWidth&&rect.top<innerHeight;
+        const open=!!toast&&toast.style.opacity==='1'&&Number(style.opacity)>0&&style.display!=='none'&&style.visibility!=='hidden'
+          &&document.visibilityState==='visible'&&!document.hidden&&geometry;
+        return {title,open,inlineOpacity:toast?.style.opacity||'',computedOpacity:style?.opacity||'',visibility:document.visibilityState,
+          geometry,rect:rect?{x:rect.x,y:rect.y,width:rect.width,height:rect.height}:null}; })()`);
+      if (last.title === expectedTitle && last.open) return last;
+      await sleep(50);
+    }
+    throw new Error(`protected notice ${JSON.stringify(expectedTitle)} was not visibly rendered within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  let protectedNoticeControlRejected = false;
+  try { await waitProtectedNotice('__never_a_real_notice__', 150); }
+  catch { protectedNoticeControlRejected = true; }
+  if (!protectedNoticeControlRejected) fails.push('PROTECTED NOTICE WAITER CONTROL FAILED — a never-matching title reported visible');
+  const protectedBoot = async (raw, expectedTitle) => {
     await setProtectedPrimary(raw);
     /* This is a VISUAL notice gate. Make its page the active renderer before
        reading a CSS transition; background targets may intentionally pause
        animation frames and report computed opacity 0 despite an open toast. */
     await send('Target.activateTarget', { targetId: t2.targetId });
+    await send('Emulation.setFocusEmulationEnabled', { enabled: true }, ph);
+    await send('Page.bringToFront', {}, ph);
     await navigateToSlice(ph, URL0, 'protected-save boot');
-    await sleep(700);
-    return evalPh(`new Promise((resolve,reject)=>{ const title=(document.querySelector('#toast [data-sel=toast-title]')||{}).textContent||'';
-      const toast=document.getElementById('toast'),style=getComputedStyle(toast);
-      const open=toast.style.opacity==='1'&&Number(style.opacity)>0&&style.display!=='none'&&style.visibility!=='hidden'; const q=indexedDB.open('cf-v2-slice');
+    await send('Page.bringToFront', {}, ph);
+    const visual = await waitProtectedNotice(expectedTitle);
+    const stored = await evalPh(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
       q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
-        g.onsuccess=()=>{db.close();resolve({title,open,raw:String(g.result||'')})}; g.onerror=()=>reject(g.error); }; })`);
+        g.onsuccess=()=>{db.close();resolve(String(g.result||''))}; g.onerror=()=>reject(g.error); }; })`);
+    return { ...visual, raw: stored };
   };
   const futureRaw = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
-  const futureBoot = await protectedBoot(futureRaw);
+  const futureBoot = await protectedBoot(futureRaw, 'Update required');
   if (futureBoot.title !== 'Update required' || !futureBoot.open || futureBoot.raw !== futureRaw) {
     fails.push('FUTURE SAVE PROTECTION was not visible/byte-preserving on fast boot: ' + JSON.stringify(futureBoot));
   }
-  const corruptBoot = await protectedBoot('{}');
+  await evalPh(`(()=>{ document.getElementById('toast').style.visibility='hidden'; return true; })()`);
+  let hiddenNoticeControlRejected = false;
+  try { await waitProtectedNotice('Update required', 150); }
+  catch { hiddenNoticeControlRejected = true; }
+  await evalPh(`(()=>{ document.getElementById('toast').style.removeProperty('visibility'); return true; })()`);
+  if (!hiddenNoticeControlRejected) fails.push('PROTECTED NOTICE VISIBILITY CONTROL FAILED — an injected hidden toast reported visible');
+  const corruptBoot = await protectedBoot('{}', 'Save protected');
   if (corruptBoot.title !== 'Save protected' || !corruptBoot.open || corruptBoot.raw !== '{}') {
     fails.push('CORRUPT SAVE PROTECTION was not visible/byte-preserving on fast boot: ' + JSON.stringify(corruptBoot));
   }
