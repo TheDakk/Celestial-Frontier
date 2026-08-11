@@ -1,7 +1,25 @@
 # Earth Lineage, Breeding & Replayability
 
-_Design north star + build status. Matches code as of 2026-08-10 (full-catalogue reset).
+_Design north star + build status. Matches code as of 2026-08-11 (Platinum repair candidate).
 Companion to `ART_DIRECTION.md` and `PROCEDURAL_CHARACTERISTICS.md`._
+
+> **2026-08-11 Platinum correction:** the hash-bound current-generation review of clean
+> commit `79ce144` found that correct inheritance fields, distinct stage hashes, and the
+> earlier focused Apple/Vanilla judgments did not prove whole-form generational continuity.
+> The exact review is preserved at
+> `port/v2/reference/Celestial_Frontier_Current_Full_Generations_Platinum_Review_2026-08-10.md`
+> (SHA-256 `5af3a33f0648f96115a421ea64cc70f97846f62e89dc8631deeb310103c708c2`).
+> Fruit Bat, Eagle, Wolf, Dragonfly and Octopus failed on abrupt scaffold replacement;
+> Chameleon remained HOLD, Elephant needed polish, and Apple, Vanilla Orchid and Oyster
+> Mushroom lacked meaningful low-anchor drift. Sea Turtle and Great White Shark passed.
+> The repair therefore routes only the seven reviewed fauna rows (those five plus
+> Chameleon and Elephant) through their modern exact-name owner and applies deterministic,
+> anchor-bounded lineage traits before compositing. Sea Turtle and Great White Shark stay
+> on their frozen compatibility route. Apple, Vanilla, Oyster and a new principal Amoeba
+> row receive anchor-aware bred branches while pure named portraits remain protected.
+> Hybrid evidence schema v4 is 13 lineages ×5 stages /251 assets. This is a candidate
+> contract, not a visual PASS: the old archive stays sealed, and continuity remains OPEN
+> until fresh clean-commit evidence receives a new hash-bound human review.
 
 > **2026-08-10 reset correction:** the v2 override router had been sending bred
 > `_earthBlend` genomes through generic procedural painters before the lineage-aware
@@ -15,7 +33,8 @@ Companion to `ART_DIRECTION.md` and `PROCEDURAL_CHARACTERISTICS.md`._
 > browser pixels across all four kingdoms, duplicate names, both parent orders,
 > multi-generation/cache/repeat cases and injected failures.
 >
-> **The focused Apple and Vanilla continuity blockers are independently closed.**
+> **Historical bounded result (superseded for the broader Platinum ruler):** the focused
+> Apple and Vanilla continuity blockers were independently closed under their earlier scope.
 > Vanilla r6 passes at `floraoverrides2.ts` SHA-256
 > `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`.
 > Its pure portrait remains byte-exact to
@@ -53,8 +72,10 @@ crystalline metabolism, extreme limb layouts, exotic senses).
 
 - **Dominant anatomical scaffold** (not a 50/50 body average): a bred child of an
   Earth parent records the selected parent's exact catalogue owner (`crossGenome`
-  sets `_earthBlend` + `_earthBlendKingdom`). Fauna uses the HD lineage rig;
-  flora/fungi/microbe use the exact named owner with the child's palette/genes.
+  sets `_earthBlend` + `_earthBlendKingdom`). The seven Platinum-reviewed fauna
+  rows use their modern exact-name owner; protected Sea Turtle/Great White Shark
+  and unreviewed fauna retain the compatibility HD lineage route. Flora/fungi/
+  microbe use the exact named owner with the child's palette/genes.
   This set-qualified lineage propagates across generations even when the child's
   gameplay kingdom came from the other parent.
 - **Organic generational drift (no toggle — "part of the game"):** the Earth-anchor
@@ -90,9 +111,10 @@ Status: ✅ built · 🔶 partial · ⬜ backlog. Ordered roughly by value.
 
 ### Lineage depth
 - ✅ Dominant scaffold · organic drift · ancestry card · anchor strength.
-- 🔶 **Earth-hybrid phenotype adapter** — hybrids currently graft crest/tendrils/
-  spikes/eyes; extend to inherit compatible tail-type / limb-count / skin so drift
-  reads as "compatible inherited anatomy," not just color + spikes.
+- 🔶 **Earth-hybrid phenotype adapter** — the seven reviewed fauna, Apple, Vanilla,
+  Oyster and Amoeba now have bounded anchor-aware adapters while their signature
+  scaffolds remain owned. Extend the same reviewed pattern to additional fauna and
+  compatible tail-type / limb-count / skin traits only after lineage-specific proof.
 - 🔶 **Protected species markers** — guarantee 2–3 iconic markers survive drift
   (feline mane/face, avian beak, moose antler+muzzle) before overlays apply.
 - ⬜ **Compatibility translation** for radical crosses (§6.3): jelly tentacles →

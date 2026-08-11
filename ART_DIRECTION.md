@@ -703,8 +703,30 @@ and is explicitly `CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED`. It carries no
 verdicts, cannot substitute for the absent Wave 2e pre-edit baseline, and is not
 the final all-PASS certification ZIP.
 
+The independent Platinum review of that exact archive is now the governing
+current-generation repair input. It is preserved verbatim at
+`port/v2/reference/Celestial_Frontier_Current_Full_Generations_Platinum_Review_2026-08-10.md`
+(SHA-256 `5af3a33f0648f96115a421ea64cc70f97846f62e89dc8631deeb310103c708c2`).
+It did **not** certify Platinum. Sugar Glider and Flying Squirrel require distinct
+whole-form glider anatomy; Colugo requires a limited topology polish; five fauna
+hybrid rows fail on scaffold replacement, Chameleon remains HOLD, Elephant needs
+polish, and three non-fauna rows need stronger progressive drift. Sea Turtle,
+Great White Shark, the four reviewed bats, Flying Fish and Flying Gurnard remain
+protected. The old archive and its verdict stay sealed rather than being rewritten.
+
+The bounded repair contract is lineage-specific, not a new global body pass. Seven
+named reviewed fauna lineages (Fruit Bat, Eagle, Wolf, Elephant, Chameleon,
+Dragonfly and Octopus) use their modern whole-form owner for bred stages; Sea
+Turtle and Great White Shark remain on the frozen compatibility route. Apple,
+Vanilla Orchid, Oyster Mushroom and principal microbe Amoeba use anchor-aware bred
+branches with their pure named form protected. Hybrid schema v4 expands the matrix
+to 13×5 /251 assets and exact-controls both the migrated and frozen fauna routes.
+These are source/evidence requirements only: fresh successor pixels remain
+UNREVIEWED and continuity OPEN until a new hash-bound independent judgment lands.
+
 Hybrid route/cache ownership is technically correct, and the prior focused
-Apple and Vanilla continuity blockers are now independently closed. Vanilla r6
+Apple and Vanilla continuity blockers were independently closed under the earlier
+bounded ruler; the Platinum review supersedes that result for whole-matrix scope. Vanilla r6
 passes at `floraoverrides2.ts` SHA-256
 `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`:
 its pure portrait is byte-exact, all five stages remain recognizably Vanilla,
@@ -741,17 +763,21 @@ impossible Apricot/Plum arms inside the Cherry/Peach/Pear-only branch and
 unreachable Lime/Orange alternatives after dedicated citrus returns were
 removed. All 58 tree target/control rows stayed byte-identical at 440/300/132
 (0/174 drift), and all 332 Earth-flora native portraits stayed byte-identical.
-Apple's integrated hybrid variation is independently PASS: all five stages are
+Historically, Apple's integrated hybrid variation was independently PASS under its
+bounded tree-continuity ruler: all five stages are
 distinct with strictly increasing pure-distance, while all 58 tree rows remain
 exact across the three delivery sizes. The judge evidence is
 `C:\Users\Nick\.codex\visualizations\2026\08\09\019fe72d-20c7-73a0-bac7-d2c64d10673d\flora-tree-focus\evidence-apple-continuity-judge`.
 
 ## 2026-08-10 reset Wave 2a — anatomy-first family batches
 
-Wave 2a continues the same literal, source-frozen ruler. Mammal A is
-independently **4/4 PASS** (Colugo, Sugar Glider, Fur Seal, Sea Lion): gliding
+Wave 2a continues the same literal, source-frozen ruler. Mammal A was
+independently **4/4 PASS** under that bounded ruler (Colugo, Sugar Glider, Fur Seal, Sea Lion): gliding
 membranes, plume/fur, limb contacts and pinniped flippers now read as integrated
-whole-form anatomy at 440/300/132, while 71 protected controls remain exact.
+whole-form anatomy at 440/300/132, while 71 protected controls remain exact. The later
+Platinum family-comparison ruler reopened Sugar Glider and Colugo and added Flying
+Squirrel; that broader result does not erase the historical evidence, but it governs
+the current repair.
 
 The INVERT winning route independently closes **13/13 PASS**: seven worm forms
 (Earthworm, Flatworm, Ice Worm, Lancelet, Marine Worm, Polychaete Worm, Scale

@@ -1667,7 +1667,8 @@ function resetTreeSignature(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string)
        transformed after painting—and a 0.90 child therefore stays visibly
        much closer to pure Apple than the 0.22 floor descendant. */
     const anchor = Math.max(0.22, Math.min(0.90, Number(g._anchorVal)));
-    const drift = 1 - anchor;
+    const linear = Math.max(0, Math.min(1, (1 - anchor) / 0.78));
+    const drift = linear * linear * (3 - 2 * linear);
     const childSeed = ((Number(g.seed) || 0) ^ Math.imul((Number(g.body) || 0) + 1, 0x45d9f3b)
       ^ Math.imul((Number(g.form) || 0) + 1, 0x119de1f3) ^ Math.imul((Number(g.color) || 0) + 1, 0x27d4eb2d)) >>> 0;
     const gene = (salt: number): number => mixF(childSeed, salt) / 4294967296 * 2 - 1;
@@ -1687,6 +1688,17 @@ function resetTreeSignature(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string)
     const width = 0.105 * (1 - drift * (0.15 + gene(0x72) * 0.025));
     const lean = -0.035 + drift * (0.050 + gene(0x73) * 0.010);
     trunk(lift, width, bark, lean, 0.060 + drift * (0.012 + gene(0x74) * 0.004), 7);
+    /* Buttress roots enter only as the anchor falls and remain continuous with
+       the trunk; they are a growth-form change, not a ground decal. */
+    const rootCount = Math.floor(drift * 5.99);
+    c.strokeStyle = limbBark; c.lineCap = 'round';
+    for (let i = 0; i < rootCount; i++) {
+      const side = i & 1 ? -1 : 1, rank = Math.floor(i / 2) + 1;
+      c.lineWidth = S * (0.018 + drift * 0.010) / Math.sqrt(rank);
+      c.beginPath(); c.moveTo(cx + side * S * 0.018, base - S * (0.025 + rank * 0.005));
+      c.quadraticCurveTo(cx + side * S * (0.08 + rank * 0.025), base + S * (0.002 + rank * 0.006),
+        cx + side * S * (0.14 + rank * 0.045), base + S * (0.025 + rank * 0.006)); c.stroke();
+    }
 
     const pureCanopy: ReadonlyArray<readonly [number, number, number, number]> = [
       [-0.25, 0.36, 0.18, 0.10], [-0.10, 0.45, 0.17, 0.11],
@@ -1694,10 +1706,10 @@ function resetTreeSignature(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string)
     ];
     const canopy = pureCanopy.map(([ox, oy, rx, ry], i) => {
       const side = ox < 0 ? -1 : 1;
-      return [ox * (1 - drift * (0.12 + gene(0x80 + i) * 0.025)) + side * drift * gene(0x90 + i) * 0.010,
-        oy + drift * (0.040 + gene(0xa0 + i) * 0.009),
-        rx * (1 - drift * (0.10 + gene(0xb0 + i) * 0.035)),
-        ry * (1 + drift * (0.10 + gene(0xc0 + i) * 0.030))] as const;
+      return [ox * (1 - drift * (0.24 + gene(0x80 + i) * 0.040)) + side * drift * gene(0x90 + i) * 0.018,
+        oy + drift * (0.070 + gene(0xa0 + i) * 0.014),
+        rx * (1 - drift * (0.25 + gene(0xb0 + i) * 0.050)),
+        ry * (1 + drift * (0.42 + gene(0xc0 + i) * 0.055))] as const;
     });
     canopyMass(canopy, foliage);
     const pureBoughs: ReadonlyArray<readonly [number, number, number, number, number]> = [
@@ -1708,8 +1720,8 @@ function resetTreeSignature(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string)
       const [sx, sy, ox, oy, bend] = pureBoughs[i]!, side = ox < 0 ? -1 : 1;
       const rootX = sx + drift * (0.012 + gene(0xd0 + i) * 0.004);
       const rootY = sy + drift * (0.025 + gene(0xe0 + i) * 0.006);
-      const tipX = ox * (1 - drift * (0.11 + gene(0xf0 + i) * 0.025)) + side * drift * gene(0x100 + i) * 0.010;
-      const tipY = oy + drift * (0.045 + gene(0x110 + i) * 0.009);
+      const tipX = ox * (1 - drift * (0.22 + gene(0xf0 + i) * 0.040)) + side * drift * gene(0x100 + i) * 0.018;
+      const tipY = oy + drift * (0.075 + gene(0x110 + i) * 0.014);
       const ex = cx + S * tipX, ey = base - S * tipY;
       limb(cx + S * rootX, base - S * rootY, ex, ey, limbBark,
         S * 0.019 * (1 - drift * (0.12 + gene(0x120 + i) * 0.020)),
@@ -1717,9 +1729,17 @@ function resetTreeSignature(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string)
       const outward = ex < cx ? -2.62 : -0.52;
       const leafLen = S * 0.095 * (1 - drift * (0.08 + gene(0x140 + i) * 0.025));
       for (let n = 0; n < 4; n++) {
-        const u = n / 3, angle = outward + (u - 0.5) * (1.35 + drift * 0.28) + drift * gene(0x150 + i * 4 + n) * 0.10;
+        const u = n / 3, angle = outward + (u - 0.5) * (1.35 + drift * 0.68) + drift * gene(0x150 + i * 4 + n) * 0.18;
         recheckLeaf(c, leafPal, ex + (u - 0.5) * S * 0.035, ey + Math.abs(u - 0.5) * S * 0.018,
           angle, leafLen * (0.88 + (n & 1) * 0.12), 'broad', true);
+      }
+      /* Low-anchor crystal/membrane buds share the bough endpoint, so the new
+         organ visibly grows from the tree rather than floating over it. */
+      if (i < Math.floor(drift * 4.99)) {
+        const crystalH = S * (0.025 + drift * (0.035 + i * 0.004));
+        c.fillStyle = `rgba(${Math.min(255, leafPal.cr + 92) | 0},${Math.min(255, leafPal.cg + 108) | 0},${Math.min(255, leafPal.cb + 124) | 0},${(0.20 + drift * 0.58).toFixed(3)})`;
+        c.beginPath(); c.moveTo(ex - S * 0.010, ey); c.lineTo(ex, ey - crystalH);
+        c.lineTo(ex + S * 0.011, ey); c.closePath(); c.fill();
       }
     }
     const blossoms: ReadonlyArray<Point> = [[-0.25, 0.42], [-0.11, 0.51], [0.15, 0.49]];
@@ -1731,8 +1751,16 @@ function resetTreeSignature(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string)
     const apples: ReadonlyArray<Point> = [[-0.29, 0.34], [0.07, 0.43], [0.27, 0.34]];
     for (let i = 0; i < apples.length; i++) {
       const [ox, oy] = apples[i]!;
-      stalkFruit(ox * (1 - drift * 0.10) + drift * gene(0x190 + i) * 0.012,
-        oy + drift * (0.038 + gene(0x1a0 + i) * 0.008), 'pome', fruitHue,
+      const fruitX = ox * (1 - drift * 0.10) + drift * gene(0x190 + i) * 0.012;
+      const fruitY = oy + drift * (0.038 + gene(0x1a0 + i) * 0.008);
+      if (drift > 0.20) {
+        const glow = c.createRadialGradient(cx + S * fruitX, base - S * fruitY, 1,
+          cx + S * fruitX, base - S * fruitY, S * (0.025 + drift * 0.040));
+        glow.addColorStop(0, `rgba(255,232,144,${(0.10 + drift * 0.40).toFixed(3)})`);
+        glow.addColorStop(1, 'rgba(255,232,144,0)'); c.fillStyle = glow;
+        c.beginPath(); c.arc(cx + S * fruitX, base - S * fruitY, S * (0.025 + drift * 0.040), 0, TAU); c.fill();
+      }
+      stalkFruit(fruitX, fruitY, 'pome', fruitHue,
         0.041 * (1 - drift * (0.08 + gene(0x1b0 + i) * 0.020)), 0.026 + drift * 0.008);
     }
     return true;
@@ -3450,7 +3478,8 @@ function recheckVine(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string): void 
        its bark support, succulent stem, nodes, attached roots, leaves, flower
        and green pods move together instead of receiving an alien decal. */
     const anchor = Math.max(0.22, Math.min(0.90, Number(g._anchorVal)));
-    const drift = 1 - anchor;
+    const linear = Math.max(0, Math.min(1, (1 - anchor) / 0.78));
+    const drift = linear * linear * (3 - 2 * linear);
     const childSeed = ((Number(g.seed) || 0) ^ Math.imul((Number(g.body) || 0) + 1, 0x45d9f3b)
       ^ Math.imul((Number(g.form) || 0) + 1, 0x119de1f3) ^ Math.imul((Number(g.color) || 0) + 1, 0x27d4eb2d)) >>> 0;
     const gene = (salt: number): number => mixF(childSeed, salt) / 4294967296 * 2 - 1;
@@ -3496,14 +3525,28 @@ function recheckVine(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string): void 
       const ox = pureOx + (curveOx - pureOx) * drift, oy = pureOy + (curveOy - pureOy) * drift;
       const x = cx + S * ox, y = base - S * oy;
       const angle = side < 0 ? -2.50 - drift * (0.12 + gene(0x70 + i) * 0.04) : -0.60 + drift * (0.11 + gene(0x80 + i) * 0.04);
-      recheckLeaf(c, leafPal, x, y, angle, S * 0.15 * (1 + drift * (0.10 + gene(0x90 + i) * 0.025)), 'lance');
-      const rootAlpha = i < 4 ? 0.84 * (1 - drift * 0.90) : 0.84;
+      recheckLeaf(c, leafPal, x, y, angle, S * 0.15 * (1 + drift * (0.30 + gene(0x90 + i) * 0.045)), 'lance');
+      const rootAlpha = 0.76 + drift * 0.16;
       c.strokeStyle = `rgba(224,216,176,${rootAlpha.toFixed(3)})`; c.lineWidth = Math.max(1.7, S * 0.0045);
       const pureRootX = x + S * 0.08, pureRootY = y + S * 0.07;
-      const gripBlend = i < 4 ? drift * 0.12 : drift;
+      const gripBlend = i < 4 ? drift * 0.55 : drift;
       const gripX = pureRootX + (supportX + supportW * 0.12 - pureRootX) * gripBlend;
-      const gripY = pureRootY + (y + S * (0.055 + drift * 0.018) - pureRootY) * gripBlend;
+      const gripY = pureRootY + (y + S * (0.055 + drift * (0.055 + (i % 3) * 0.010)) - pureRootY) * gripBlend;
       c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo((x + gripX) * 0.5, y + S * (0.025 + drift * 0.012), gripX, gripY); c.stroke();
+    }
+
+    /* Additional low-anchor aerial roots emerge at real vine nodes and either
+       clasp the support or hang free. Count and reach are monotonic. */
+    const aerialRoots = Math.floor(drift * 5.99);
+    c.strokeStyle = `rgba(${Math.min(255, leafPal.cr + 108) | 0},${Math.min(255, leafPal.cg + 104) | 0},${Math.min(255, leafPal.cb + 88) | 0},${(0.24 + drift * 0.58).toFixed(3)})`;
+    c.lineWidth = Math.max(1.8, S * (0.0045 + drift * 0.003)); c.lineCap = 'round';
+    for (let i = 0; i < aerialRoots; i++) {
+      const t = 0.24 + i * 0.105, [rootOx, rootOy] = pointAt(t);
+      const x = cx + S * rootOx, y = base - S * rootOy, side = i & 1 ? -1 : 1;
+      const endX = i % 3 === 0 ? supportX + supportW * 0.18 : x + side * S * (0.09 + drift * 0.055);
+      const endY = y + S * (0.10 + drift * (0.055 + i * 0.006));
+      c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(x + side * S * 0.035, y + S * 0.055, endX, endY); c.stroke();
+      c.beginPath(); c.moveTo(endX, endY); c.lineTo(endX + side * S * 0.025, endY + S * 0.022); c.stroke();
     }
 
     const [podOx, podOy] = pointAt(0.58), podRootX = cx + S * podOx, podRootY = base - S * podOy;
@@ -3517,14 +3560,21 @@ function recheckVine(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string): void 
       const x = cx + S * (purePodOx + (variedPodOx - purePodOx) * drift);
       const y = base - S * (purePodOy + (variedPodOy - purePodOy) * drift);
       c.strokeStyle = stemCol; c.lineWidth = Math.max(1.8, S * 0.0045); c.beginPath(); c.moveTo(podRootX + S * 0.065, podRootY + S * 0.060); c.lineTo(x, y - S * 0.045); c.stroke();
-      recheckCone(c, x, y, S * 0.025 * (1 + drift * 0.08), S * 0.105 * (1 + drift * (0.10 + gene(0xc0 + i) * 0.025)), podCol);
+      recheckCone(c, x, y, S * 0.025 * (1 + drift * 0.30), S * 0.105 * (1 + drift * (0.42 + gene(0xc0 + i) * 0.050)), podCol);
     }
     const [flowerCurveOx, flowerCurveOy] = pointAt(0.76);
     const flowerOx = -0.03 + (flowerCurveOx + 0.03) * drift, flowerOy = 0.49 + (flowerCurveOy - 0.49) * drift;
     const flowerX = cx + S * flowerOx, flowerY = base - S * flowerOy;
     c.strokeStyle = stemCol; c.lineWidth = Math.max(2, S * 0.005); c.beginPath(); c.moveTo(flowerX, flowerY); c.lineTo(flowerX - S * (0.04 + drift * 0.018), flowerY - S * (0.02 + drift * 0.012)); c.stroke();
-    recheckFlower(c, flowerX - S * (0.05 + drift * 0.020), flowerY - S * (0.03 + drift * 0.012), 6,
-      S * 0.052 * (1 + drift * (0.09 + gene(0xd1) * 0.025)),
+    const bloomX = flowerX - S * (0.05 + drift * 0.020), bloomY = flowerY - S * (0.03 + drift * 0.012);
+    if (drift > 0.18) {
+      const glow = c.createRadialGradient(bloomX, bloomY, 1, bloomX, bloomY, S * (0.045 + drift * 0.070));
+      glow.addColorStop(0, `rgba(244,226,132,${(0.08 + drift * 0.38).toFixed(3)})`);
+      glow.addColorStop(1, 'rgba(244,226,132,0)'); c.fillStyle = glow;
+      c.beginPath(); c.arc(bloomX, bloomY, S * (0.045 + drift * 0.070), 0, TAU); c.fill();
+    }
+    recheckFlower(c, bloomX, bloomY, 6 + Math.floor(drift * 3.99),
+      S * 0.052 * (1 + drift * (0.34 + gene(0xd1) * 0.045)),
       rgb(242 + drift * (-12 + gene(0xd2) * 4), 238 + drift * (-6 + gene(0xd3) * 4), 224 + drift * (-25 + gene(0xd4) * 5)), '#d7b84c');
     return;
   }

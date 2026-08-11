@@ -499,7 +499,85 @@ function fungiChickenCanon(c: Ctx, g: G, _p: Pal): void {
   }
 }
 
-function fungiOysterCanon(c: Ctx, g: G, _p: Pal): void {
+function fungiOysterCanon(c: Ctx, g: G, pIn: Pal): void {
+  const lineage = g._earthBlend === 'Oyster Mushroom' && g._earthBlendKingdom === 'fungi'
+    && Number.isFinite(Number(g._anchorVal));
+  if (lineage) {
+    /* Preserve the lateral Pleurotus shelf colony while letting the child's
+       palette, cap material, gill organs and colony topology increase with the
+       inherited anchor distance. The pure path below remains untouched. */
+    const anchor = Math.max(0.22, Math.min(0.90, Number(g._anchorVal)));
+    const linear = Math.max(0, Math.min(1, (1 - anchor) / 0.78));
+    const drift = linear * linear * (3 - 2 * linear);
+    const r = mulberry32(((g.seed as number) ^ 0x0A57) >>> 0);
+    const mix = (a: number, b: number, t: number): number => Math.max(0, Math.min(255, Math.round(a + (b - a) * t)));
+    const rgb = (red: number, green: number, blue: number): string => `rgb(${red},${green},${blue})`;
+    const colourMix = drift * 0.72;
+    const capDark = rgb(mix(124, pIn.cr * 0.55, colourMix), mix(112, pIn.cg * 0.55, colourMix), mix(96, pIn.cb * 0.58, colourMix));
+    const capBase = rgb(mix(169, pIn.cr * 0.88, colourMix), mix(146, pIn.cg * 0.88, colourMix), mix(117, pIn.cb * 0.92, colourMix));
+    const capLight = rgb(mix(225, Math.min(255, pIn.cr * 1.30), colourMix), mix(214, Math.min(255, pIn.cg * 1.30), colourMix), mix(195, Math.min(255, pIn.cb * 1.34), colourMix));
+    const gill = rgb(mix(255, Math.min(255, pIn.cr + 105), drift * 0.58), mix(255, Math.min(255, pIn.cg + 112), drift * 0.58), mix(246, Math.min(255, pIn.cb + 124), drift * 0.58));
+    c.strokeStyle = rgb(mix(59, pIn.cr * 0.31, drift * 0.35), mix(38, pIn.cg * 0.27, drift * 0.35), mix(25, pIn.cb * 0.24, drift * 0.35));
+    c.lineWidth = S * (0.10 + drift * 0.025); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(S * 0.22, S * 0.72); c.quadraticCurveTo(S * (0.31 - drift * 0.025), S * 0.50, S * (0.38 + drift * 0.018), S * (0.20 - drift * 0.035)); c.stroke();
+    c.strokeStyle = `rgba(${mix(188, pIn.cr, drift * 0.38)},${mix(138, pIn.cg, drift * 0.38)},${mix(88, pIn.cb, drift * 0.38)},${(0.32 + drift * 0.20).toFixed(3)})`;
+    c.lineWidth = 2.2 + drift * 1.8;
+    for (let i = 0; i < 7; i++) {
+      const y = S * (0.25 + i * 0.07);
+      c.beginPath(); c.moveTo(S * 0.25, y); c.lineTo(S * (0.36 + drift * 0.018), y - S * (0.04 + drift * 0.008)); c.stroke();
+    }
+    const cap = (x: number, y: number, w: number, h: number, turn: number, index: number): void => {
+      c.save(); c.translate(x, y); c.rotate(turn);
+      c.fillStyle = gill;
+      c.beginPath(); c.moveTo(0, -h * 0.16);
+      c.quadraticCurveTo(w * (0.42 + drift * 0.05), h * (0.53 + drift * 0.07), w * 0.86, h * (0.47 + drift * 0.05));
+      c.quadraticCurveTo(w * (1.09 + drift * 0.06), h * 0.30, w * (1.03 + drift * 0.04), h * 0.06);
+      c.quadraticCurveTo(w * 0.58, h * (0.20 - drift * 0.04), 0, h * 0.15); c.closePath(); c.fill();
+      const top = c.createLinearGradient(0, -h, w, h);
+      top.addColorStop(0, capDark); top.addColorStop(0.46, capBase); top.addColorStop(1, capLight);
+      c.fillStyle = top;
+      c.beginPath(); c.moveTo(0, -h * 0.18);
+      c.quadraticCurveTo(w * (0.34 - drift * 0.04), -h * (0.82 + drift * 0.20), w * (0.79 + drift * 0.04), -h * (0.57 + drift * 0.12));
+      c.quadraticCurveTo(w * (1.05 + drift * 0.08), -h * (0.38 + drift * 0.06), w * (1.09 + drift * 0.04), 0);
+      c.quadraticCurveTo(w * (1.02 + drift * 0.04), h * 0.35, w * 0.78, h * (0.52 + drift * 0.05));
+      c.quadraticCurveTo(w * 0.37, h * (0.62 + drift * 0.06), 0, h * 0.15); c.closePath(); c.fill();
+      c.save(); c.beginPath(); c.moveTo(0, -h * 0.10); c.quadraticCurveTo(w * 0.48, h * 0.53, w * 0.90, h * 0.43);
+      c.quadraticCurveTo(w * 1.05, h * 0.27, w * 1.02, h * 0.08); c.quadraticCurveTo(w * 0.54, h * 0.25, 0, h * 0.14); c.closePath(); c.clip();
+      c.strokeStyle = gill; c.lineWidth = 1.7 + drift * 1.2;
+      const gills = 11 + Math.floor(drift * 5);
+      for (let k = 0; k < gills; k++) {
+        const offset = k - (gills - 1) / 2;
+        c.beginPath(); c.moveTo(w * 0.04, h * 0.06);
+        c.quadraticCurveTo(w * 0.40, h * (offset * 0.075), w * 0.97, h * (offset * 0.06 + 0.10)); c.stroke();
+      }
+      c.restore();
+      c.strokeStyle = `rgba(${Math.min(255, pIn.cr + 110) | 0},${Math.min(255, pIn.cg + 118) | 0},${Math.min(255, pIn.cb + 128) | 0},${(0.20 + drift * 0.64).toFixed(3)})`;
+      c.lineWidth = 2.0 + drift * 2.0; c.beginPath(); c.moveTo(w * 0.25, h * 0.46); c.quadraticCurveTo(w * 0.75, h * 0.68, w * 1.05, h * 0.08); c.stroke();
+      if (drift > 0.18) {
+        c.fillStyle = capLight;
+        const organs = Math.floor(drift * 4);
+        for (let organ = 0; organ < organs; organ++) {
+          const t = (organ + 1) / (organs + 1);
+          c.beginPath(); c.arc(w * (0.45 + t * 0.50), -h * (0.38 + (index & 1) * 0.08), 2 + drift * 3.5, 0, TAU); c.fill();
+        }
+      }
+      c.strokeStyle = gill; c.lineWidth = h * (0.22 + drift * 0.05); c.lineCap = 'round';
+      c.beginPath(); c.moveTo(-w * 0.10, 0); c.lineTo(w * (0.10 + drift * 0.03), h * 0.04); c.stroke();
+      c.restore();
+    };
+    const pureRows = [[0.37, 0.31, 0.30, 0.12, -0.32], [0.35, 0.41, 0.37, 0.14, -0.17], [0.34, 0.52, 0.40, 0.15, 0.02], [0.33, 0.63, 0.36, 0.13, 0.16], [0.35, 0.72, 0.30, 0.11, 0.28]] as const;
+    const count = 5 + Math.floor(drift * 2.99);
+    for (let i = 0; i < count; i++) {
+      const row = pureRows[i % pureRows.length]!;
+      const tier = Math.floor(i / pureRows.length);
+      const x = S * (row[0] + drift * ((i & 1 ? -1 : 1) * 0.020 + tier * 0.025));
+      const y = S * (row[1] + tier * 0.075 - drift * (0.010 + (i % 3) * 0.004));
+      const w = S * (row[2] * (1 + drift * (0.12 + (i % 2) * 0.10)) + r() * 0.018);
+      const h = S * row[3] * (1 + drift * (0.18 + (i % 3) * 0.07));
+      cap(x, y, w, h, row[4] + drift * (i & 1 ? -0.10 : 0.12), i);
+    }
+    return;
+  }
   /* Pleurotus is a cluster of fan caps: narrow at wood, broad at the free rim,
      with white radial gills visible below the cap. */
   const r = mulberry32(((g.seed as number) ^ 0x0A57) >>> 0);
@@ -659,7 +737,76 @@ function microbeAcidophileCanon(c: Ctx, g: G, _p: Pal): void {
   }
 }
 
-function microbeAmoebaCanon(c: Ctx, g: G, _p: Pal): void {
+function microbeAmoebaCanon(c: Ctx, g: G, pIn: Pal): void {
+  const lineage = g._earthBlend === 'Amoeba' && g._earthBlendKingdom === 'microbe'
+    && Number.isFinite(Number(g._anchorVal));
+  if (lineage) {
+    /* One continuous amoeboid cell remains the scaffold. Pseudopod reach,
+       membrane channels, budding satellites and habitat tint increase with
+       anchor distance; the nucleus and asymmetric crawl direction stay legible. */
+    const anchor = Math.max(0.22, Math.min(0.90, Number(g._anchorVal)));
+    const linear = Math.max(0, Math.min(1, (1 - anchor) / 0.78));
+    const drift = linear * linear * (3 - 2 * linear);
+    const r = mulberry32(((g.seed as number) ^ 0xA0EB) >>> 0);
+    const mix = (a: number, b: number, t: number): number => Math.max(0, Math.min(255, Math.round(a + (b - a) * t)));
+    const tint = drift * 0.76;
+    /* Habitat stays below the evidence silhouette threshold; inherited colour
+       belongs to the cell and its organs, not a bright full-frame rectangle. */
+    habitatWash(c,
+      `rgba(${mix(34, pIn.cr * 0.14, tint)},${mix(52, pIn.cg * 0.14, tint)},${mix(55, pIn.cb * 0.14, tint)},0.55)`,
+      `rgba(${mix(8, pIn.cr * 0.10, tint)},${mix(17, pIn.cg * 0.10, tint)},${mix(22, pIn.cb * 0.10, tint)},0.82)`);
+    const cx = S * 0.48, cy = S * 0.53;
+    const body = c.createRadialGradient(cx - S * 0.10, cy - S * 0.10, 3, cx, cy, S * (0.35 + drift * 0.05));
+    body.addColorStop(0, `rgba(${mix(214, Math.min(255, pIn.cr * 1.35), tint)},${mix(226, Math.min(255, pIn.cg * 1.35), tint)},${mix(211, Math.min(255, pIn.cb * 1.35), tint)},0.80)`);
+    body.addColorStop(0.62, `rgba(${mix(145, pIn.cr, tint)},${mix(168, pIn.cg, tint)},${mix(154, pIn.cb, tint)},0.66)`);
+    body.addColorStop(1, `rgba(${mix(82, pIn.cr * 0.55, tint)},${mix(111, pIn.cg * 0.55, tint)},${mix(103, pIn.cb * 0.58, tint)},0.52)`);
+    c.fillStyle = body; c.beginPath();
+    c.moveTo(cx - S * (0.40 + drift * 0.12), cy + S * 0.02);
+    c.quadraticCurveTo(cx - S * (0.35 + drift * 0.05), cy - S * 0.06, cx - S * 0.27, cy - S * (0.13 + drift * 0.04));
+    c.quadraticCurveTo(cx - S * 0.26, cy - S * (0.29 + drift * 0.07), cx - S * 0.10, cy - S * 0.22);
+    c.quadraticCurveTo(cx - S * 0.01, cy - S * 0.17, cx + S * 0.03, cy - S * (0.28 + drift * 0.05));
+    c.quadraticCurveTo(cx + S * 0.09, cy - S * (0.36 + drift * 0.08), cx + S * 0.16, cy - S * 0.20);
+    c.quadraticCurveTo(cx + S * 0.23, cy - S * 0.13, cx + S * (0.36 + drift * 0.04), cy - S * 0.12);
+    c.quadraticCurveTo(cx + S * (0.53 + drift * 0.09), cy - S * 0.12, cx + S * (0.42 + drift * 0.05), cy - S * 0.01);
+    c.quadraticCurveTo(cx + S * 0.34, cy + S * 0.07, cx + S * (0.34 + drift * 0.05), cy + S * 0.17);
+    c.quadraticCurveTo(cx + S * 0.31, cy + S * (0.31 + drift * 0.06), cx + S * 0.17, cy + S * 0.21);
+    c.quadraticCurveTo(cx + S * 0.09, cy + S * 0.16, cx + S * 0.03, cy + S * (0.31 + drift * 0.07));
+    c.quadraticCurveTo(cx - S * 0.02, cy + S * (0.39 + drift * 0.08), cx - S * 0.10, cy + S * 0.23);
+    c.quadraticCurveTo(cx - S * 0.16, cy + S * 0.15, cx - S * 0.27, cy + S * (0.20 + drift * 0.04));
+    c.quadraticCurveTo(cx - S * (0.42 + drift * 0.07), cy + S * 0.24, cx - S * 0.34, cy + S * 0.09);
+    c.quadraticCurveTo(cx - S * 0.35, cy + S * 0.05, cx - S * (0.40 + drift * 0.12), cy + S * 0.02);
+    c.closePath(); c.fill();
+    c.strokeStyle = `rgba(${mix(235, Math.min(255, pIn.cr + 105), tint)},${mix(247, Math.min(255, pIn.cg + 112), tint)},${mix(234, Math.min(255, pIn.cb + 118), tint)},0.84)`;
+    c.lineWidth = 3.1 + drift * 2.8; c.stroke();
+    const nx = cx - S * 0.015 + S * drift * 0.035, ny = cy - S * 0.015 - S * drift * 0.020;
+    c.fillStyle = `rgba(${mix(45, pIn.cr * 0.28, tint)},${mix(57, pIn.cg * 0.28, tint)},${mix(52, pIn.cb * 0.30, tint)},0.86)`;
+    c.beginPath(); c.arc(nx, ny, S * (0.055 + drift * 0.012), 0, TAU); c.fill();
+    c.strokeStyle = `rgba(${Math.min(255, pIn.cr + 120) | 0},${Math.min(255, pIn.cg + 125) | 0},${Math.min(255, pIn.cb + 132) | 0},${(0.18 + drift * 0.56).toFixed(3)})`;
+    c.lineWidth = 1.4 + drift * 1.8;
+    const channels = 3 + Math.floor(drift * 4);
+    for (let i = 0; i < channels; i++) {
+      const a = -2.55 + i * (4.55 / Math.max(1, channels - 1));
+      c.beginPath(); c.moveTo(nx, ny);
+      c.quadraticCurveTo(cx + Math.cos(a) * S * 0.12, cy + Math.sin(a) * S * 0.09,
+        cx + Math.cos(a) * S * (0.25 + drift * 0.09), cy + Math.sin(a) * S * (0.20 + drift * 0.07)); c.stroke();
+    }
+    const budFill = `rgba(${Math.min(255, pIn.cr + 98) | 0},${Math.min(255, pIn.cg + 104) | 0},${Math.min(255, pIn.cb + 112) | 0},${(0.22 + drift * 0.52).toFixed(3)})`;
+    const buds = Math.floor(drift * 4.99);
+    for (let i = 0; i < buds; i++) {
+      const a = -1.15 + i * 0.72, radius = S * (0.030 + drift * 0.012);
+      const x = cx + Math.cos(a) * S * (0.39 + drift * 0.05), y = cy + Math.sin(a) * S * (0.30 + drift * 0.05);
+      c.fillStyle = budFill;
+      c.beginPath(); c.arc(x, y, radius, 0, TAU); c.fill(); c.stroke();
+      c.fillStyle = `rgba(24,32,30,${(0.38 + drift * 0.32).toFixed(3)})`;
+      c.beginPath(); c.arc(x, y, radius * 0.28, 0, TAU); c.fill();
+    }
+    c.fillStyle = 'rgba(248,255,245,0.28)';
+    for (let i = 0; i < 58; i++) {
+      const a = r() * TAU, d = Math.sqrt(r()) * S * (0.19 + drift * 0.035);
+      c.beginPath(); c.arc(cx + Math.cos(a) * d, cy + Math.sin(a) * d * 0.72, S * (0.004 + r() * 0.010), 0, TAU); c.fill();
+    }
+    return;
+  }
   const r = mulberry32(((g.seed as number) ^ 0xA0EB) >>> 0);
   habitatWash(c, 'rgba(34,52,55,0.54)', 'rgba(8,17,22,0.92)');
   const cx = S * 0.48, cy = S * 0.53;
@@ -1319,6 +1466,9 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
 
 type EarthKingdom = 'fauna' | 'flora' | 'fungi' | 'microbe';
 const EARTH_KINGDOM_ORDER: readonly EarthKingdom[] = ['fauna', 'flora', 'fungi', 'microbe'];
+const REVIEWED_FAUNA_LINEAGES = new Set([
+  'Fruit Bat', 'Eagle', 'Wolf', 'Elephant', 'Chameleon', 'Dragonfly', 'Octopus',
+]);
 function isEarthKingdom(value: unknown): value is EarthKingdom {
   return typeof value === 'string' && (EARTH_KINGDOM_ORDER as readonly string[]).includes(value);
 }
@@ -1346,6 +1496,171 @@ export function lineageRenderKingdom(g: G): EarthKingdom {
   return candidates[0] ?? current;
 }
 
+/** The Platinum review approved the existing Sea Turtle and Great White Shark
+ * lineage renderer, while seven fauna lineages demonstrably changed body family
+ * at their first bred stage. Migrate only those exact set-qualified identities;
+ * markerless legacy saves and every unreviewed fauna lineage stay on the legacy
+ * compatibility route. */
+function isReviewedFaunaLineage(g: G, kingdom: EarthKingdom, blend: string): boolean {
+  return Boolean(blend && kingdom === 'fauna' && g._earthBlendKingdom === 'fauna'
+    && Number.isFinite(Number(g._anchorVal)) && REVIEWED_FAUNA_LINEAGES.has(blend));
+}
+
+/** Integrate bounded child traits after the reviewed whole-form painter and
+ * before fitInk. The named catalogue path never enters this helper. Geometry is
+ * lineage-fixed while its amplitude follows only the stored anchor, so each
+ * stage moves monotonically without consuming randomness or changing genetics. */
+function applyReviewedFaunaLineageDrift(c: Ctx, g: G, name: string): void {
+  if (!isReviewedFaunaLineage(g, 'fauna', name)) return;
+  const anchor = Math.max(0.22, Math.min(0.90, Number(g._anchorVal)));
+  const linear = Math.max(0, Math.min(1, (1 - anchor) / 0.78));
+  const drift = linear * linear * (3 - 2 * linear);
+  const p = palette(g);
+  const accent = `rgb(${Math.min(255, p.cr + 72) | 0},${Math.min(255, p.cg + 88) | 0},${Math.min(255, p.cb + 104) | 0})`;
+  const deep = `rgb(${Math.max(0, p.cr * 0.34) | 0},${Math.max(0, p.cg * 0.34) | 0},${Math.max(0, p.cb * 0.38) | 0})`;
+  const alpha = 0.18 + drift * 0.64;
+  c.save();
+  c.lineCap = 'round'; c.lineJoin = 'round';
+  c.strokeStyle = accent; c.fillStyle = accent; c.globalAlpha = alpha;
+
+  switch (name) {
+    case 'Fruit Bat': {
+      /* Living channels stay rooted at the shoulder, wrist and existing finger
+         rays; they change membrane material without replacing bat anatomy. */
+      c.lineWidth = 1.4 + drift * 3.2;
+      for (const side of [-1, 1] as const) {
+        const shoulderX = 220 + side * 21, wristX = 220 + side * 130;
+        c.beginPath(); c.moveTo(shoulderX, 214); c.quadraticCurveTo(220 + side * 76, 151, wristX, 170);
+        c.lineTo(220 + side * 196, 84); c.stroke();
+        c.beginPath(); c.moveTo(wristX, 170); c.lineTo(220 + side * 184, 183);
+        c.moveTo(wristX, 170); c.lineTo(220 + side * 153, 246);
+        c.moveTo(wristX, 170); c.lineTo(220 + side * 105, 304); c.stroke();
+        for (const [x, y] of [[wristX, 170], [220 + side * 153, 246]] as const) {
+          c.beginPath(); c.arc(x, y, 2 + drift * 4.2, 0, TAU); c.fill();
+        }
+      }
+      break;
+    }
+    case 'Eagle': {
+      /* Feather channels follow the folded wing; a restrained crest remains
+         rooted in the compact raptor skull rather than changing the bird plan. */
+      c.lineWidth = 1.6 + drift * 2.5;
+      for (let i = 0; i < 4; i++) {
+        c.beginPath(); c.moveTo(183 + i * 9, 202 + i * 13);
+        c.quadraticCurveTo(236 + i * 8, 219 + i * 12, 271 + i * 5, 269 + i * 9); c.stroke();
+      }
+      const crest = 7 + drift * 27;
+      c.strokeStyle = deep; c.lineWidth = 3 + drift * 3;
+      for (let i = -1; i <= 1; i++) {
+        c.beginPath(); c.moveTo(139 + i * 8, 91); c.quadraticCurveTo(137 + i * 12, 76 - crest * 0.32, 143 + i * 16, 91 - crest); c.stroke();
+      }
+      c.strokeStyle = accent; c.fillStyle = deep; c.globalAlpha = 0.12 + drift * 0.72;
+      const ocelli = 1 + Math.floor(drift * 3);
+      for (let i = 0; i < ocelli; i++) {
+        c.beginPath(); c.arc(207 + i * 21, 231 + i * 15, 3 + drift * 3.2, 0, TAU); c.fill(); c.stroke();
+      }
+      break;
+    }
+    case 'Wolf': {
+      /* A dorsal sensory ridge and coat channels grow from the canid back. The
+         muzzle, digitigrade legs, paws and brush tail remain painter-owned. */
+      const spines = 2 + Math.floor(drift * 5), height = 4 + drift * 18;
+      c.fillStyle = deep; c.strokeStyle = accent; c.lineWidth = 1.4 + drift * 2.2;
+      c.beginPath(); c.moveTo(137, 238); c.quadraticCurveTo(202, 213, 274, 225); c.stroke();
+      for (let i = 0; i < spines; i++) {
+        const t = (i + 1) / (spines + 1), x = 137 + t * 137, y = 238 - Math.sin(t * Math.PI) * 20;
+        c.beginPath(); c.moveTo(x - 5, y + 2); c.lineTo(x, y - height * (0.72 + Math.sin(t * Math.PI) * 0.28));
+        c.lineTo(x + 5, y + 2); c.closePath(); c.fill();
+      }
+      c.globalAlpha = 0.12 + drift * 0.48;
+      for (let i = 0; i < 4; i++) {
+        c.beginPath(); c.moveTo(159 + i * 25, 247); c.quadraticCurveTo(169 + i * 25, 267, 177 + i * 25, 283); c.stroke();
+      }
+      break;
+    }
+    case 'Elephant': {
+      /* Filled shield scales are clipped to the interior flank. Only an inset
+         seam carries accent colour, so no outline can leak over rump or tail. */
+      c.save(); c.beginPath(); c.ellipse(166, 260, 82, 48, -0.02, 0, TAU); c.clip();
+      const plates = 1 + Math.floor(drift * 4.99);
+      for (let i = 0; i < plates; i++) {
+        const x = 119 + i * 24, perspective = 1 - Math.abs(x - 167) / 310;
+        const y = 258 + Math.abs(i - (plates - 1) * 0.5) * 1.8;
+        const rx = (13 + drift * 3.5) * perspective, ry = (18 + drift * 4.0) * perspective;
+        c.globalAlpha = 0.07 + drift * 0.22; c.fillStyle = deep;
+        c.beginPath(); c.moveTo(x, y - ry);
+        c.quadraticCurveTo(x + rx, y - ry * 0.42, x + rx * 0.78, y + ry * 0.62);
+        c.quadraticCurveTo(x, y + ry, x - rx * 0.78, y + ry * 0.62);
+        c.quadraticCurveTo(x - rx, y - ry * 0.42, x, y - ry); c.closePath(); c.fill();
+        c.globalAlpha = 0.09 + drift * 0.32; c.strokeStyle = accent; c.lineWidth = 1.2 + drift * 1.8;
+        c.beginPath(); c.moveTo(x - rx * 0.67, y + ry * 0.24);
+        c.quadraticCurveTo(x, y - ry * 0.54, x + rx * 0.67, y + ry * 0.24); c.stroke();
+      }
+      c.restore();
+      /* A short organ row remains physically rooted on the dorsal contour. */
+      c.fillStyle = deep; c.globalAlpha = 0.10 + drift * 0.70;
+      const nodes = 1 + Math.floor(drift * 4);
+      for (let i = 0; i < nodes; i++) {
+        const x = 139 + i * 25, y = 184 - Math.sin((i + 1) / (nodes + 1) * Math.PI) * (5 + drift * 14);
+        c.beginPath(); c.moveTo(x - 6, 194); c.lineTo(x, y); c.lineTo(x + 6, 194); c.closePath(); c.fill();
+      }
+      break;
+    }
+    case 'Chameleon': {
+      /* Ocelli and a flank channel follow the compressed body. They leave the
+         branch grip, zygodactyl feet, eye turret and curled tail unobscured. */
+      c.strokeStyle = accent; c.lineWidth = 1.5 + drift * 2.6;
+      c.beginPath(); c.moveTo(159, 216); c.quadraticCurveTo(205, 188 - drift * 14, 249, 211); c.stroke();
+      const ocelli = 2 + Math.floor(drift * 5);
+      for (let i = 0; i < ocelli; i++) {
+        const t = (i + 1) / (ocelli + 1), x = 157 + t * 90, y = 213 - Math.sin(t * Math.PI) * 18;
+        c.fillStyle = i & 1 ? deep : accent; c.beginPath(); c.arc(x, y, 2.4 + drift * 4.2, 0, TAU); c.fill();
+      }
+      break;
+    }
+    case 'Dragonfly': {
+      /* Four deterministic rails follow the modern painter's exact two wing
+         pairs from thorax root toward their tips; none crosses the head/body. */
+      c.strokeStyle = accent; c.lineWidth = 1.2 + drift * 2.8;
+      const rails = [[199, 216, 275, 190, 336, 182], [199, 216, 275, 244, 336, 251],
+        [214, 222, 278, 227, 338, 232], [214, 222, 278, 217, 338, 212]] as const;
+      for (const [rootX, rootY, bendX, bendY, tipX, tipY] of rails) {
+        c.beginPath(); c.moveTo(rootX, rootY); c.quadraticCurveTo(bendX, bendY, tipX, tipY); c.stroke();
+        const branches = 1 + Math.floor(drift * 2);
+        for (let i = 0; i < branches; i++) {
+          const t = 0.38 + i * 0.20, x = rootX + (tipX - rootX) * t, y = rootY + (tipY - rootY) * t;
+          c.beginPath(); c.moveTo(x - 2, y - 3); c.lineTo(x + 7 + drift * 3, y + 3); c.stroke();
+        }
+      }
+      c.fillStyle = deep; c.globalAlpha = 0.14 + drift * 0.70;
+      const nodes = 1 + Math.floor(drift * 4);
+      for (let i = 0; i < nodes; i++) {
+        c.beginPath(); c.arc(187 + (i % 2) * 15, 207 + Math.floor(i / 2) * 16, 3 + drift * 3, 0, TAU); c.fill();
+      }
+      break;
+    }
+    case 'Octopus': {
+      /* Mantle channels and shallow inter-arm webbing grow across the exact
+         eight-arm crown. No stage deletes or hides an arm root or either eye. */
+      c.strokeStyle = accent; c.lineWidth = 1.5 + drift * 2.7;
+      for (let i = -2; i <= 2; i++) {
+        c.beginPath(); c.moveTo(220 + i * 19, 184); c.quadraticCurveTo(220 + i * 25, 137 - drift * 16, 220 + i * 15, 112); c.stroke();
+      }
+      c.fillStyle = accent; c.globalAlpha = 0.06 + drift * 0.26;
+      c.beginPath(); c.moveTo(150, 273); c.quadraticCurveTo(220, 238 - drift * 20, 290, 273);
+      c.quadraticCurveTo(220, 288 + drift * 14, 150, 273); c.closePath(); c.fill();
+      c.globalAlpha = 0.12 + drift * 0.62;
+      const nodes = 2 + Math.floor(drift * 5);
+      for (let i = 0; i < nodes; i++) {
+        const a = Math.PI * (0.18 + i / Math.max(1, nodes - 1) * 0.64);
+        c.beginPath(); c.arc(220 + Math.cos(a) * 62, 218 - Math.sin(a) * 64, 2.5 + drift * 3.4, 0, TAU); c.fill();
+      }
+      break;
+    }
+  }
+  c.restore();
+}
+
 export function resolveOverride(g: G): string | null {
   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it
      (Lion's Mane), which is exactly the mojibake Nick's audit caught */
@@ -1358,13 +1673,14 @@ export function resolveOverride(g: G): string | null {
   const blend = String((g as { _earthBlend?: string })._earthBlend || '').replace(/[’‘]/g, "'");
   const genomeKingdom: EarthKingdom = isEarthKingdom(g.kingdom) ? g.kingdom : 'fauna';
   const kingdom = earthName ? genomeKingdom : lineageRenderKingdom(g);
-  /* Earth-lineage fauna remains owned by the lineage-aware verbatim renderer.
-     Flora, fungi and microbes do not have an equivalent verbatim lineage rig,
-     so route their blend through the exact kingdom+name owner while passing the
-     CHILD genome through unchanged (including palette, traits and anchor data).
-     The kingdom-qualified lookup below prevents duplicate catalogue names from
-     crossing ownership boundaries. */
-  const name = earthName || (kingdom === 'flora' || kingdom === 'fungi' || kingdom === 'microbe' ? blend : '');
+  const reviewedFaunaBlend = isReviewedFaunaLineage(g, kingdom, blend);
+  /* Seven Platinum-reviewed fauna lineages use their named whole-form painter;
+     every other fauna lineage remains on the compatibility renderer. Flora,
+     fungi and microbes have no equivalent verbatim lineage rig, so route their
+     blend through the exact kingdom+name owner while passing the CHILD genome
+     through unchanged (including palette, traits and anchor data). The
+     kingdom-qualified lookup prevents duplicate names crossing ownership. */
+  const name = earthName || (kingdom === 'flora' || kingdom === 'fungi' || kingdom === 'microbe' || reviewedFaunaBlend ? blend : '');
   if (!name && blend) return null;
   if (!name) return resolveProcedural(g);
   /* ★ WAVE 18 — CANONICAL + CROSS-KINGDOM audit blockers. Four organisms live
@@ -1379,6 +1695,7 @@ export function resolveOverride(g: G): string | null {
     floorFade(c);
     const ink = newInk();
     canon(ink.c, g, palette(g) as Pal);
+    applyReviewedFaunaLineageDrift(ink.c, g, name);
     fitInk(ink.cv, c, kingdom + ':' + name);
     return cv.toDataURL();
   }
@@ -1409,6 +1726,7 @@ export function resolveOverride(g: G): string | null {
     const ink = newInk();
     if (fp) fp(ink.c, g, palette(g) as Pal, name);
     else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);
+    applyReviewedFaunaLineageDrift(ink.c, g, name);
     fitInk(ink.cv, c, 'fauna:' + name);
     return cv.toDataURL();
   }

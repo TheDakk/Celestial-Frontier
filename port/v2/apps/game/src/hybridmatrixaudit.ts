@@ -1,7 +1,7 @@
 /* Production-derived Earth-lineage continuity evidence.
 
    This page is intentionally separate from audit.ts: it renders a bounded
-   12-lineage x 5-stage matrix through the real makeGenome -> crossGenome ->
+   13-lineage x 5-stage matrix through the real makeGenome -> crossGenome ->
    speciesPortrait path and streams review artefacts to the Node driver. It
    never writes _earthBlend or _anchorVal. Machine checks cover provenance,
    determinism, routing, and cache independence; the visual seam decision is
@@ -24,7 +24,7 @@ interface LineageSpec {
   id: string;
   species: string;
   display: string;
-  kingdom: Exclude<EarthKingdom, 'microbe'>;
+  kingdom: EarthKingdom;
   challenge: Challenge;
   joins: string;
   crops: Crop[];
@@ -64,8 +64,9 @@ const ANCHORS = [1, 0.9, 0.73, 0.46, 0.22] as const;
 /* Cache collision evidence must have genuinely different expected pixels.
    Apple's exact named owner is seed/name driven, so AB and BA can have distinct
    full genomes yet correctly paint the same pixels; using it here would make a
-   seed-only cache test vacuous. Apple remains in the principal 12x5 matrix. */
+   seed-only cache test vacuous. Apple remains in the principal 13x5 matrix. */
 const CACHE_SUBSET = new Set(['fruit-bat', 'eagle', 'wolf', 'elephant', 'great-white-shark', 'dragonfly']);
+const OWNED_FAUNA_LINEAGES = new Set(['Fruit Bat', 'Eagle', 'Wolf', 'Elephant', 'Chameleon', 'Dragonfly', 'Octopus']);
 const GENE_KEYS = ['kingdom', 'color', 'form', 'body', 'loco', 'trait', 'size', 'diet',
   'head', 'limbs', 'skin', 'tail', 'pattern', 'eyes', 'behavior', 'habitat',
   'detail', 'accent', 'lumin', 'heat'] as const;
@@ -130,12 +131,12 @@ const L: LineageSpec[] = [
   },
   {
     id: 'eagle', species: 'Eagle', display: 'Eagle', kingdom: 'fauna',
-    challenge: 'dorsal-tail', joins: 'wing root; layered feathers; beak/head; legs',
+    challenge: 'dorsal-tail', joins: 'shoulder/wing root; folded layered feathers; beak/head; belly/leg root',
     crops: [
-      { id: 'left-wing', label: 'left wing / shoulder', x: 105, y: 165, w: 55, h: 55 },
-      { id: 'right-wing', label: 'right wing / shoulder', x: 280, y: 165, w: 55, h: 55 },
-      { id: 'beak-head', label: 'beak / head', x: 260, y: 104, w: 55, h: 55 },
-      { id: 'legs-body', label: 'legs / body', x: 202, y: 282, w: 55, h: 55 },
+      { id: 'shoulder-wing-root', label: 'shoulder / wing root', x: 166, y: 166, w: 55, h: 55 },
+      { id: 'folded-wing', label: 'folded wing / layered feathers', x: 220, y: 210, w: 55, h: 55 },
+      { id: 'beak-head', label: 'beak / head', x: 95, y: 112, w: 55, h: 55 },
+      { id: 'belly-leg-root', label: 'belly / leg root', x: 176, y: 286, w: 55, h: 55 },
     ],
   },
   {
@@ -182,20 +183,20 @@ const L: LineageSpec[] = [
     id: 'chameleon', species: 'Chameleon', display: 'Chameleon', kingdom: 'fauna',
     challenge: 'head-graft', joins: 'limb/body; grasping feet; tail; crest/frill',
     crops: [
-      { id: 'head-crest', label: 'head / crest', x: 275, y: 148, w: 55, h: 55 },
-      { id: 'front-foot', label: 'front limb / foot', x: 258, y: 270, w: 55, h: 55 },
-      { id: 'rear-foot', label: 'rear limb / foot', x: 153, y: 273, w: 55, h: 55 },
-      { id: 'tail-body', label: 'tail / body', x: 99, y: 201, w: 55, h: 55 },
+      { id: 'head-casque', label: 'head / casque', x: 218, y: 125, w: 55, h: 55 },
+      { id: 'front-limb-root', label: 'front limb / body root', x: 198, y: 180, w: 55, h: 55 },
+      { id: 'rear-foot-grip', label: 'rear foot / branch grip', x: 151, y: 218, w: 55, h: 55 },
+      { id: 'tail-body', label: 'tail / body root', x: 124, y: 174, w: 55, h: 55 },
     ],
   },
   {
     id: 'dragonfly', species: 'Dragonfly', display: 'Dragonfly', kingdom: 'fauna',
-    challenge: 'extra-eyes', joins: 'wing/thorax; six legs; antennae/eyes',
+    challenge: 'extra-eyes', joins: 'upper/lower wing roots; six legs; head/thorax',
     crops: [
-      { id: 'left-wing', label: 'left wing / thorax', x: 113, y: 166, w: 55, h: 55 },
-      { id: 'right-wing', label: 'right wing / thorax', x: 271, y: 166, w: 55, h: 55 },
-      { id: 'head-thorax', label: 'head / thorax', x: 191, y: 115, w: 55, h: 55 },
-      { id: 'legs-thorax', label: 'legs / thorax', x: 192, y: 249, w: 55, h: 55 },
+      { id: 'upper-wing-root', label: 'upper wing / thorax root', x: 178, y: 120, w: 55, h: 55 },
+      { id: 'lower-wing-root', label: 'lower wing / thorax root', x: 178, y: 150, w: 55, h: 55 },
+      { id: 'head-thorax', label: 'head / thorax', x: 126, y: 133, w: 55, h: 55 },
+      { id: 'legs-thorax', label: 'legs / thorax', x: 145, y: 149, w: 55, h: 55 },
     ],
   },
   {
@@ -236,6 +237,16 @@ const L: LineageSpec[] = [
       { id: 'centre-cap-stem', label: 'centre cap / stem', x: 193, y: 164, w: 55, h: 55 },
       { id: 'right-cap-stem', label: 'right cap / stem', x: 271, y: 211, w: 55, h: 55 },
       { id: 'colony-base', label: 'colony overlap / base', x: 192, y: 286, w: 55, h: 55 },
+    ],
+  },
+  {
+    id: 'amoeba', species: 'Amoeba', display: 'Microbe (Amoeba)', kingdom: 'microbe',
+    challenge: 'extra-eyes', joins: 'membrane/pseudopods; nucleus; vacuoles; colony edge',
+    crops: [
+      { id: 'leading-pseudopod', label: 'leading pseudopod / membrane', x: 20, y: 200, w: 55, h: 55 },
+      { id: 'upper-lobes', label: 'upper lobe / membrane', x: 205, y: 92, w: 55, h: 55 },
+      { id: 'nucleus', label: 'nucleus / vacuoles', x: 200, y: 190, w: 55, h: 55 },
+      { id: 'trailing-lobes', label: 'trailing membrane / satellite edge', x: 345, y: 155, w: 55, h: 55 },
     ],
   },
 ];
@@ -511,7 +522,12 @@ function bareMixedGenome(seed: number, kingdom: EarthKingdom, heat: number): Gen
   `mixed sentinel: bare ${kingdom} input carried lineage fields`);
   return genome;
 }
-function expectedLineageRoute(owner: EarthKingdom): RouteKind {
+function expectedLineageRoute(owner: EarthKingdom, name: string): RouteKind {
+  return owner === 'fauna' && !OWNED_FAUNA_LINEAGES.has(name)
+    ? 'lineage-verbatim'
+    : 'lineage-owned';
+}
+function expectedMarkerlessLineageRoute(owner: EarthKingdom): RouteKind {
   return owner === 'fauna' ? 'lineage-verbatim' : 'lineage-owned';
 }
 async function completeInputRecord(id: string, genome: Genome,
@@ -605,7 +621,7 @@ async function findMixedSentinel(request: MixedRequest): Promise<Record<string, 
   `${request.id}: selected Earth lineage owner was not preserved`);
 
   const outcome = await renderOutcome(found.child);
-  const expectedRoute = expectedLineageRoute(request.owner);
+  const expectedRoute = expectedLineageRoute(request.owner, request.name);
   assert(outcome.route === expectedRoute,
     `${request.id}: production route ${String(outcome.route)} did not follow ${request.owner} lineage owner`);
   const strippedGenome = withoutLineage(found.child);
@@ -616,14 +632,14 @@ async function findMixedSentinel(request: MixedRequest): Promise<Record<string, 
   delete markerlessGenome._earthBlendKingdom;
   const markerlessControl = await mixedControl(markerlessGenome, outcome.url);
   const legacyFallbackOwner = request.kind === 'duplicate-name-owner' ? request.childKingdom : request.owner;
-  assert(markerlessControl.route === expectedLineageRoute(legacyFallbackOwner),
+  assert(markerlessControl.route === expectedMarkerlessLineageRoute(legacyFallbackOwner),
     `${request.id}: markerless legacy fallback route changed`);
 
   let counterfactualOwnerControl: Record<string, unknown> | null = null;
   if (request.kind === 'duplicate-name-owner') {
     const counterfactual = { ...found.child, _earthBlendKingdom: request.other };
     counterfactualOwnerControl = await mixedControl(counterfactual, outcome.url);
-    assert(counterfactualOwnerControl.route === expectedLineageRoute(request.other),
+    assert(counterfactualOwnerControl.route === expectedLineageRoute(request.other, request.name),
       `${request.id}: counterfactual duplicate owner route changed`);
     assert(counterfactualOwnerControl.differs_from_selected_owner === true,
       `${request.id}: duplicate Green Algae owner selection did not change pixels`);
@@ -840,7 +856,7 @@ async function makeMixedSheet(rows: Array<Record<string, unknown> & { url: strin
 }
 
 async function run(): Promise<void> {
-  assert(L.length === 12, `matrix definition must contain 12 lineages, got ${L.length}`);
+  assert(L.length === 13, `matrix definition must contain 13 lineages, got ${L.length}`);
   assert(new Set(L.map((row) => row.id)).size === L.length, 'matrix definition has duplicate lineage ids');
   assert(new Set(L.map((row) => `${row.kingdom}\u0000${row.species}`)).size === L.length,
     'matrix definition has duplicate catalogue identities');
@@ -979,11 +995,9 @@ async function run(): Promise<void> {
       lineage_id: spec.id,
       set: `earth-${spec.kingdom}`,
       species: spec.species,
-      display: spec.display,
       challenge: spec.challenge,
-      joins: spec.joins,
-      crop_contract: { source_pixels: 55, output_pixels: 220, scale: 4, coordinates: spec.crops },
-      renderer_contract: 'route observed by the production resolver; lineage-owned and lineage-verbatim are both allowed migration states',
+      crop_contract: { source_pixels: 55, output_pixels: 220, scale: 4,
+        coordinates: spec.crops.map(({ x, y, w, h }) => ({ x, y, w, h })) },
       stage_pixel_unique_count: stagesByPixels.size,
       pixel_identity_groups: pixelIdentityGroups,
       anchor_visual_differentiation: pixelIdentityGroups.length
@@ -995,7 +1009,7 @@ async function run(): Promise<void> {
         { stage_id: 'next-alien', parent_a: 'earth-alien', parent_b: 'alien-2' },
         { stage_id: 'floor', parent_a: 'next-alien', parent_b: 'alien-3' },
       ],
-      stages: cells.map(({ url: _url, ...cell }) => cell),
+      stages: cells.map(({ url: _url, stage_label: _stageLabel, ...cell }) => cell),
       lineage_sheet: sheetPath,
       join_atlas: joinPath,
       visual_review_status: 'UNREVIEWED',
@@ -1056,9 +1070,9 @@ async function run(): Promise<void> {
     height: mixedSheet.height, identity: mixedSheetAsset.identity });
   await enqueue(mixedSheetAsset);
   const publicMixedReports = mixedReports.map(({ url: _url, ...record }) => record);
-  assert(lineageReports.length === 12, `expected 12 lineage reports, got ${lineageReports.length}`);
-  assert(lineageReports.reduce((sum, row) => sum + (row.stages as unknown[]).length, 0) === 60,
-    'principal matrix must contain exactly 60 stages');
+  assert(lineageReports.length === 13, `expected 13 lineage reports, got ${lineageReports.length}`);
+  assert(lineageReports.reduce((sum, row) => sum + (row.stages as unknown[]).length, 0) === 65,
+    'principal matrix must contain exactly 65 stages');
   assert(new Set(assets.map((asset) => asset.path)).size === assets.length, 'duplicate output asset path');
   assert(new Set(assets.map((asset) => `${asset.kind}\u0000${asset.identity}`)).size === assets.length,
     'duplicate output asset identity');
@@ -1070,7 +1084,7 @@ async function run(): Promise<void> {
     .filter((row) => (row.pixel_identity_groups as unknown[]).length > 0)
     .map((row) => String(row.lineage_id));
   state.report = {
-    schema: 'cf.hybrid-continuity.browser-report.v3',
+    schema: 'cf.hybrid-continuity.browser-report.v4',
     done: true,
     review_status: 'UNREVIEWED',
     visual_continuity_status: 'OPEN',
@@ -1083,7 +1097,7 @@ async function run(): Promise<void> {
     emit: EMIT,
     render_order: REVERSE ? 'reverse' : 'forward',
     summary: {
-      lineages: 12, principal_portraits: 60, cache_controls: 6,
+      lineages: 13, principal_portraits: 65, cache_controls: 6,
       cache_portraits: 12, mixed_kingdom_sentinels: 16, mixed_portraits: 16,
       assets: assets.length,
       pixel_identical_lineages: pixelIdenticalLineages.length,
@@ -1114,12 +1128,12 @@ async function run(): Promise<void> {
     assets,
   };
   state.done = true;
-  say(`hybrid continuity evidence ready: 12 lineages, 60 principal portraits, 16 mixed sentinels, ${assets.length} artefacts - continuity OPEN (${pixelIdenticalLineages.length} byte-identical lineage rows)`);
+  say(`hybrid continuity evidence ready: 13 lineages, 65 principal portraits, 16 mixed sentinels, ${assets.length} artefacts - continuity OPEN (${pixelIdenticalLineages.length} byte-identical lineage rows)`);
 }
 
 run().catch((error: unknown) => {
   state.error = error instanceof Error ? `${error.message}\n${error.stack || ''}` : String(error);
   state.done = true;
-  state.report = { schema: 'cf.hybrid-continuity.browser-report.v3', done: true, error: state.error };
+  state.report = { schema: 'cf.hybrid-continuity.browser-report.v4', done: true, error: state.error };
   say(`hybrid continuity evidence FAILED: ${state.error}`);
 });

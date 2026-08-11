@@ -183,7 +183,7 @@ export interface QuadSpec {
       hind legs with the forelimbs tucked (meerkat, prairie dog, ground
       squirrel). It rotates the SPINE, so the silhouette, coat, material,
       shading and rim all follow without knowing anything about it. */
-  pose?: 'sentinel' | 'hang' | 'glide';
+  pose?: 'sentinel' | 'hang';
   /* ★ WAVE 39 — THE OKAPI PROBLEM. Its coat runs on the HINDQUARTERS ONLY and
      is PALE on a dark ground — the exact inverse of what `coat:'stripes'` does,
      and its verifier called the inversion "real and damning". Two axes, both
@@ -224,8 +224,6 @@ export interface QuadSpec {
   pinnipedPose?: 'fur-seal' | 'sea-lion';
   /** Named glider whole-form: colugo encloses the tail; sugar glider does not. */
   gliderPlan?: 'colugo' | 'sugar-glider';
-  /** Legacy generic membrane switch, retained until a separately proven pixel-neutral cleanup. */
-  patagium?: boolean;
   /** Full-reset Wave 2b: exact named bear/cat/hyaena whole-form owner. */
   mammalBPlan?: 'ursid-r1' | 'felid-r1' | 'hyaenid-r1';
   /** Full-reset Wave 2c: exact named canid/procyonid/marsupial whole-form owner. */
@@ -486,152 +484,191 @@ export function nameSeedQ(name: string): number {
   return h >>> 0;
 }
 
-/** A glider is not a side-on quadruped with a sagging flank patch.  Colugo and
-    Sugar Glider both failed precisely because the old patagium could not join
-    neck, wrists, ankles and tail into one visible membrane.  This deliberately
-    narrow pose is opt-in, preserves every standing mammal, and gives those two
-    animals their read-at-a-glance plan before any coat decoration. */
-function faunaGlider(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<QuadSpec['gliderPlan']>): void {
+function gliderTone(p: Pal, k: number): string {
+  return `rgb(${Math.min(255, p.cr * k) | 0},${Math.min(255, p.cg * k) | 0},${Math.min(255, p.cb * k) | 0})`;
+}
+
+function gliderGrad(c: Ctx, p: Pal, x: number, y: number, radius: number): CanvasGradient {
+  const gg = c.createRadialGradient(x - radius * 0.35, y - radius * 0.40, 2, x, y, radius * 1.20);
+  gg.addColorStop(0, p.lit); gg.addColorStop(0.62, p.base); gg.addColorStop(1, p.dark);
+  return gg;
+}
+
+function gliderRim(c: Ctx, path: () => void, width: number): void {
+  c.save(); c.strokeStyle = 'rgba(216,228,246,0.44)'; c.lineWidth = width;
+  c.beginPath(); path(); c.stroke(); c.restore();
+}
+
+function gliderDigits(c: Ctx, x: number, y: number, angle: number, scale: number, colour: string, width?: number): void {
+  c.save(); c.translate(x, y); c.rotate(angle);
+  c.strokeStyle = colour; c.lineWidth = width ?? Math.max(1.5, scale * 0.075); c.lineCap = 'round';
+  for (const spread of [-0.38, -0.12, 0.14, 0.40]) {
+    c.beginPath(); c.moveTo(-scale * 0.08, 0);
+    c.quadraticCurveTo(scale * 0.38, spread * scale * 0.32, scale, spread * scale); c.stroke();
+  }
+  c.restore();
+}
+
+function gliderEye(c: Ctx, x: number, y: number, radius: number): void {
+  c.fillStyle = '#0b0d12'; c.beginPath(); c.arc(x, y, radius, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(239,246,250,0.94)'; c.beginPath();
+  c.arc(x - radius * 0.30, y - radius * 0.34, radius * 0.26, 0, TAU); c.fill();
+}
+
+/** Sugar Glider: a small possum in a three-quarter glide. The two patagia are
+    separate wrist-to-ankle sheets; the furry steering tail is never enclosed. */
+function faunaSugarGlider(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
   const p = pal(p0, spec);
-  const name = plan === 'colugo' ? 'Colugo' : 'Sugar Glider';
-  const r = mulberry32((((g.seed as number) ^ 0x4C1D ^ nameSeedQ(name)) >>> 0));
-  const colugo = plan === 'colugo';
-  const cx = S * 0.50, cy = S * (colugo ? 0.47 : 0.45);
-  const wing = S * (colugo ? 0.345 : 0.305);
-  const headR = S * (colugo ? 0.098 : 0.088);
-  const tone = (k: number): string => `rgb(${Math.min(255, p.cr * k) | 0},${Math.min(255, p.cg * k) | 0},${Math.min(255, p.cb * k) | 0})`;
+  const r = mulberry32((((g.seed as number) ^ 0x51A6 ^ nameSeedQ('Sugar Glider')) >>> 0));
+  const membrane = gliderTone(p, 0.70), bone = gliderTone(p, 0.42);
 
-  /* A shallow cast shadow gives the spread whole-form depth without inventing
-     a ground contact for an airborne animal. */
-  c.fillStyle = 'rgba(0,0,0,0.34)';
-  c.beginPath(); c.ellipse(cx, S * 0.83, S * 0.22, S * 0.025, 0, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(0,0,0,0.34)'; c.beginPath(); c.ellipse(225, 365, 144, 15, -0.04, 0, TAU); c.fill();
 
-  /* Sugar Glider's tail is a true furred appendage, rooted under the rump and
-     deliberately OUTSIDE the wrist-to-ankle membrane. The old dark stroke ran
-     across the body and read as a pasted stripe. This filled taper starts broad
-     beneath the torso and carries a broken fur rim for a body-length plume. */
-  if (!colugo) {
-    const tg = c.createLinearGradient(cx, cy + S * 0.10, cx - S * 0.25, cy + S * 0.39);
-    tg.addColorStop(0, tone(0.95)); tg.addColorStop(0.55, tone(0.67)); tg.addColorStop(1, tone(0.42));
-    c.fillStyle = tg; c.beginPath();
-    c.moveTo(cx - S * 0.038, cy + S * 0.105);
-    c.bezierCurveTo(cx - S * 0.112, cy + S * 0.18, cx - S * 0.265, cy + S * 0.245, cx - S * 0.282, cy + S * 0.350);
-    c.bezierCurveTo(cx - S * 0.291, cy + S * 0.408, cx - S * 0.205, cy + S * 0.432, cx - S * 0.150, cy + S * 0.370);
-    c.bezierCurveTo(cx - S * 0.101, cy + S * 0.300, cx - S * 0.014, cy + S * 0.205, cx + S * 0.038, cy + S * 0.105);
-    c.closePath(); c.fill();
-    c.strokeStyle = `rgba(${Math.min(255, p.cr * 1.28) | 0},${Math.min(255, p.cg * 1.24) | 0},${Math.min(255, p.cb * 1.20) | 0},0.44)`;
-    c.lineWidth = 1.7; c.lineCap = 'round';
-    /* Short fibres stay INSIDE the broad plume. Long radial strokes turned the
-       old attempt into a comb; width and tapered mass now carry bushiness. */
-    for (let i = 0; i < 24; i++) {
-      const t = (i + 0.5) / 24;
-      const x = cx - S * (0.052 + 0.205 * t) + (r() - 0.5) * S * 0.020;
-      const y = cy + S * (0.135 + 0.260 * t) + (r() - 0.5) * S * 0.010;
-      const side = i % 2 ? 1 : -1;
-      c.beginPath(); c.moveTo(x, y);
-      c.lineTo(x + side * S * (0.010 + r() * 0.006), y + S * (0.006 + r() * 0.006)); c.stroke();
-    }
+  /* A broad, cylindrical plume begins at the rump and trails behind the glide.
+     It is drawn first so no membrane seam can turn it into a leaf-shaped flap. */
+  const tg = c.createLinearGradient(226, 258, 63, 338);
+  tg.addColorStop(0, gliderTone(p, 1.05)); tg.addColorStop(0.58, gliderTone(p, 0.72)); tg.addColorStop(1, gliderTone(p, 0.38));
+  c.fillStyle = tg; c.beginPath();
+  c.moveTo(232, 246);
+  c.bezierCurveTo(193, 276, 137, 292, 77, 302);
+  c.bezierCurveTo(39, 309, 42, 348, 78, 351);
+  c.bezierCurveTo(132, 354, 184, 324, 240, 273);
+  c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(232,236,229,0.40)'; c.lineWidth = 1.6; c.lineCap = 'round';
+  for (let i = 0; i < 26; i++) {
+    const t = (i + 0.5) / 26, x = 220 - t * 151 + (r() - 0.5) * 7, y = 265 + t * 71 + (r() - 0.5) * 5;
+    c.beginPath(); c.moveTo(x, y); c.lineTo(x - 8 - r() * 5, y + (i % 2 ? 4 : -4)); c.stroke();
   }
 
-  /* Trace the one continuous membrane silhouette. Colugo's rear free edges
-     converge on the TAIL TIP itself, enclosing the entire tail. Sugar Glider's
-     stop at the ankles/rump, leaving its separate plume anatomically honest. */
-  const traceMembrane = (): void => {
-    c.beginPath();
-    c.moveTo(cx, cy - S * 0.175);
-    c.quadraticCurveTo(cx + S * 0.080, cy - S * 0.145, cx + wing, cy - S * 0.055);
-    c.quadraticCurveTo(cx + wing * 1.02, cy + S * 0.005, cx + wing * (colugo ? 0.73 : 0.76), cy + S * (colugo ? 0.215 : 0.220));
-    if (colugo) {
-      c.quadraticCurveTo(cx + S * 0.085, cy + S * 0.295, cx, cy + S * 0.385);
-      c.quadraticCurveTo(cx - S * 0.085, cy + S * 0.295, cx - wing * 0.73, cy + S * 0.215);
-    } else {
-      c.quadraticCurveTo(cx + S * 0.090, cy + S * 0.190, cx, cy + S * 0.155);
-      c.quadraticCurveTo(cx - S * 0.090, cy + S * 0.190, cx - wing * 0.76, cy + S * 0.220);
-    }
-    c.quadraticCurveTo(cx - wing * 1.02, cy + S * 0.005, cx - wing, cy - S * 0.055);
-    c.quadraticCurveTo(cx - S * 0.080, cy - S * 0.145, cx, cy - S * 0.175);
-    c.closePath();
+  const farMembrane = (): void => {
+    c.beginPath(); c.moveTo(246, 188);
+    c.bezierCurveTo(205, 166, 158, 140, 112, 128);
+    c.bezierCurveTo(112, 176, 120, 234, 141, 291);
+    c.bezierCurveTo(167, 278, 190, 263, 211, 245);
+    c.bezierCurveTo(218, 221, 233, 201, 246, 188); c.closePath();
   };
-  const mg = c.createRadialGradient(cx - wing * 0.16, cy - wing * 0.24, 8, cx, cy, wing * 1.38);
-  mg.addColorStop(0, `rgba(${Math.min(255, p.cr * 1.28) | 0},${Math.min(255, p.cg * 1.22) | 0},${Math.min(255, p.cb * 1.16) | 0},0.96)`);
-  mg.addColorStop(0.58, `rgba(${p.cr | 0},${p.cg | 0},${p.cb | 0},0.90)`);
-  mg.addColorStop(1, `rgba(${p.cr * 0.38 | 0},${p.cg * 0.38 | 0},${p.cb * 0.42 | 0},0.92)`);
-  c.fillStyle = mg; traceMembrane(); c.fill();
-  c.strokeStyle = 'rgba(232,239,232,0.82)'; c.lineWidth = 3.2; c.lineJoin = 'round'; c.stroke();
+  const nearMembrane = (): void => {
+    c.beginPath(); c.moveTo(266, 177);
+    c.bezierCurveTo(308, 151, 354, 116, 399, 90);
+    c.bezierCurveTo(400, 151, 381, 237, 345, 318);
+    c.bezierCurveTo(308, 285, 272, 262, 221, 252);
+    c.bezierCurveTo(238, 220, 252, 194, 266, 177); c.closePath();
+  };
+  c.fillStyle = membrane; farMembrane(); c.fill();
+  c.strokeStyle = 'rgba(233,239,232,0.76)'; c.lineWidth = 2.4; c.stroke();
+  c.fillStyle = gliderTone(p, 0.86); nearMembrane(); c.fill();
+  c.strokeStyle = 'rgba(240,243,234,0.86)'; c.lineWidth = 3; c.stroke();
 
-  if (colugo) {
-    c.save(); traceMembrane(); c.clip();
-    for (let i = 0; i < 46; i++) {
-      const x = cx + (r() - 0.5) * wing * 1.78, y = cy + (r() - 0.35) * S * 0.43;
-      softMark(c, x, y, S * (0.014 + r() * 0.020), S * (0.008 + r() * 0.014), i % 3 ? '76,88,64' : '176,165,128', i % 3 ? 0.40 : 0.28, r() * TAU);
-    }
-    c.restore();
+  /* Four explicit limb chains own the membrane corners. */
+  c.strokeStyle = bone; c.lineWidth = 8; c.lineCap = 'round'; c.lineJoin = 'round';
+  const limbs: ReadonlyArray<readonly [number, number, number, number, number, number]> = [
+    [246, 190, 175, 150, 112, 128], [267, 180, 336, 160, 399, 90],
+    [211, 244, 169, 266, 141, 291], [222, 250, 290, 255, 345, 318],
+  ];
+  for (const [x0, y0, x1, y1, x2, y2] of limbs) {
+    c.beginPath(); c.moveTo(x0, y0); c.lineTo(x1, y1); c.lineTo(x2, y2); c.stroke();
   }
+  /* Near-side joints leave the membrane rim and cross its surface. Re-state
+     them more strongly than the far limbs so wrist and ankle still read as
+     anatomy, rather than border decoration, at the 132px decision scale. */
+  c.strokeStyle = bone; c.lineWidth = 11;
+  c.beginPath(); c.moveTo(267, 180); c.lineTo(336, 160); c.lineTo(399, 90); c.stroke();
+  c.beginPath(); c.moveTo(222, 250); c.lineTo(290, 255); c.lineTo(345, 318); c.stroke();
+  c.fillStyle = bone;
+  for (const [x, y, rx, ry, angle] of [
+    [336, 160, 8, 7, -0.20], [399, 90, 10, 7, -0.18],
+    [290, 255, 8, 7, 0.12], [345, 318, 11, 8, 0.30],
+  ] as const) { c.beginPath(); c.ellipse(x, y, rx, ry, angle, 0, TAU); c.fill(); }
+  gliderDigits(c, 112, 128, -2.92, 15, bone); gliderDigits(c, 399, 90, -0.18, 22, bone, 2.8);
+  gliderDigits(c, 141, 291, 2.72, 14, bone); gliderDigits(c, 345, 318, 0.30, 21, bone, 2.8);
 
-  /* Shoulder-to-wrist and hip-to-ankle bones terminate on the free edge; short
-     digit rays make "to the fingertips" survive without pasted-on hands. */
-  c.strokeStyle = `rgba(${p.cr * 0.45 | 0},${p.cg * 0.42 | 0},${p.cb * 0.38 | 0},0.90)`;
-  c.lineWidth = 3.4; c.lineCap = 'round';
-  for (const side of [-1, 1]) {
-    const wristX = cx + side * wing, wristY = cy - S * 0.055;
-    const ankleX = cx + side * wing * (colugo ? 0.73 : 0.76), ankleY = cy + S * (colugo ? 0.215 : 0.220);
-    c.beginPath(); c.moveTo(cx + side * S * 0.040, cy - S * 0.045);
-    c.lineTo(cx + side * wing * 0.58, cy - S * 0.015); c.lineTo(wristX, wristY); c.stroke();
-    c.beginPath(); c.moveTo(cx + side * S * 0.028, cy + S * 0.065);
-    c.lineTo(cx + side * wing * 0.42, cy + S * 0.125); c.lineTo(ankleX, ankleY); c.stroke();
-    c.lineWidth = 1.8;
-    for (const dy of [-0.020, 0, 0.020]) {
-      c.beginPath(); c.moveTo(cx + side * wing * 0.88, cy - S * 0.043);
-      c.lineTo(wristX, wristY + S * dy); c.stroke();
-    }
-    c.lineWidth = 3.4;
-  }
+  const bodyG = c.createLinearGradient(177, 267, 298, 158);
+  bodyG.addColorStop(0, gliderTone(p, 0.48)); bodyG.addColorStop(0.58, p.base); bodyG.addColorStop(1, p.lit);
+  c.fillStyle = bodyG; c.beginPath(); c.ellipse(238, 216, 76, 43, -0.48, 0, TAU); c.fill();
+  gliderRim(c, () => c.ellipse(238, 216, 76, 43, -0.48, -2.8, 0.3), 2.2);
 
-  /* A central furred body overlaps every limb root. Colugo's body tapers into
-     the enclosed tail ridge and reaches the exact same tip as its membrane. */
-  const bodyG = c.createLinearGradient(cx - S * 0.05, cy - S * 0.10, cx + S * 0.06, cy + S * 0.20);
-  bodyG.addColorStop(0, tone(1.22)); bodyG.addColorStop(0.58, tone(0.90)); bodyG.addColorStop(1, tone(0.48));
-  c.fillStyle = bodyG; c.beginPath(); c.ellipse(cx, cy + S * 0.010, S * (colugo ? 0.064 : 0.058), S * (colugo ? 0.165 : 0.145), 0, 0, TAU); c.fill();
-  if (colugo) {
-    c.fillStyle = bodyG; c.beginPath();
-    c.moveTo(cx - S * 0.046, cy + S * 0.080);
-    c.bezierCurveTo(cx - S * 0.041, cy + S * 0.205, cx - S * 0.020, cy + S * 0.330, cx, cy + S * 0.385);
-    c.bezierCurveTo(cx + S * 0.020, cy + S * 0.330, cx + S * 0.041, cy + S * 0.205, cx + S * 0.046, cy + S * 0.080);
-    c.closePath(); c.fill();
-  }
+  /* Large bare rounded ears flank a possum-like face. */
+  c.fillStyle = '#7e6265';
+  c.beginPath(); c.ellipse(259, 120, 29, 37, -0.45, 0, TAU); c.fill();
+  c.beginPath(); c.ellipse(319, 137, 27, 36, 0.48, 0, TAU); c.fill();
+  c.fillStyle = gliderGrad(c, p, 289, 151, 55); c.beginPath(); c.ellipse(289, 151, 52, 47, -0.18, 0, TAU); c.fill();
+  c.fillStyle = gliderTone(p, 1.10); c.beginPath(); c.ellipse(307, 174, 28, 21, -0.22, 0, TAU); c.fill();
 
-  /* Ears are rooted behind the skull; Sugar Glider's large rounded ears flank
-     the face while Colugo keeps compact cups. */
-  c.fillStyle = tone(0.58);
-  for (const side of [-1, 1]) {
-    c.beginPath(); c.ellipse(cx + side * headR * 0.84, cy - S * 0.185, headR * (colugo ? 0.26 : 0.43), headR * (colugo ? 0.36 : 0.50), side * 0.35, 0, TAU); c.fill();
-  }
-  const bg = c.createRadialGradient(cx - headR * 0.32, cy - S * 0.18 - headR * 0.36, 2, cx, cy - S * 0.18, headR * 1.2);
-  bg.addColorStop(0, p.lit); bg.addColorStop(1, p.dark);
-  c.fillStyle = bg; c.beginPath(); c.ellipse(cx, cy - S * 0.18, headR, headR * 0.88, 0, 0, TAU); c.fill();
-  c.fillStyle = tone(1.08);
-  c.beginPath(); c.ellipse(cx, cy - S * 0.105, headR * 0.50, headR * 0.38, 0, 0, TAU); c.fill();
+  /* The diagnostic stripe runs forehead-to-nose and stops there. */
+  c.strokeStyle = '#20242b'; c.lineWidth = 10; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(273, 116); c.quadraticCurveTo(288, 142, 307, 174); c.stroke();
+  gliderEye(c, 274, 147, 16); gliderEye(c, 307, 150, 15);
+  c.fillStyle = '#d7a8a0'; c.beginPath(); c.ellipse(326, 177, 7, 5, -0.15, 0, TAU); c.fill();
+}
 
-  if (!colugo) {
-    /* Crown-to-nose facial stripe only: it ends at the pink nose and never
-       crosses the torso or impersonates the tail. */
-    c.fillStyle = 'rgba(27,29,36,0.92)'; c.beginPath();
-    c.moveTo(cx - headR * 0.18, cy - S * 0.258);
-    c.quadraticCurveTo(cx - headR * 0.13, cy - S * 0.180, cx - headR * 0.08, cy - S * 0.112);
-    c.quadraticCurveTo(cx, cy - S * 0.086, cx + headR * 0.08, cy - S * 0.112);
-    c.quadraticCurveTo(cx + headR * 0.13, cy - S * 0.180, cx + headR * 0.18, cy - S * 0.258);
-    c.closePath(); c.fill();
-  }
+/** Colugo: one continuous neck-to-finger-to-toe-to-tail patagium. The body is
+    carried horizontally inside an irregular three-quarter membrane, not a
+    mirrored diamond, and the tail remains visibly enclosed in its rear lobe. */
+function faunaColugo(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0xC01060 ^ nameSeedQ('Colugo')) >>> 0));
+  const bone = gliderTone(p, 0.38);
+  c.fillStyle = 'rgba(0,0,0,0.34)'; c.beginPath(); c.ellipse(232, 366, 156, 15, -0.02, 0, TAU); c.fill();
 
-  /* huge forward eyes are a colugo/sugar-glider identity cue, not decorative
-     highlights.  They deliberately break the head silhouette at thumbnail size. */
-  for (const side of [-1, 1]) {
-    const ex = cx + side * headR * 0.48, ey = cy - S * 0.19;
-    c.fillStyle = '#10131a'; c.beginPath(); c.arc(ex, ey, headR * 0.34, 0, TAU); c.fill();
-    c.fillStyle = 'rgba(236,244,250,0.90)'; c.beginPath(); c.arc(ex - headR * 0.10, ey - headR * 0.11, headR * 0.095, 0, TAU); c.fill();
+  const tracePatagium = (): void => {
+    c.beginPath();
+    c.moveTo(285, 150);                                      /* neck */
+    c.bezierCurveTo(326, 143, 365, 128, 404, 112);          /* near fingers */
+    c.bezierCurveTo(399, 174, 382, 242, 352, 306);          /* near toes */
+    c.bezierCurveTo(299, 321, 203, 318, 73, 292);           /* enclosed tail tip */
+    c.bezierCurveTo(92, 283, 107, 279, 127, 281);           /* far toes */
+    c.bezierCurveTo(112, 229, 97, 178, 91, 133);            /* far fingers */
+    c.bezierCurveTo(158, 141, 223, 147, 285, 150); c.closePath();
+  };
+  const mg = c.createLinearGradient(92, 128, 354, 309);
+  mg.addColorStop(0, gliderTone(p, 0.56)); mg.addColorStop(0.48, gliderTone(p, 1.02)); mg.addColorStop(1, gliderTone(p, 0.40));
+  c.fillStyle = mg; tracePatagium(); c.fill();
+  c.strokeStyle = 'rgba(229,235,221,0.78)'; c.lineWidth = 3; c.lineJoin = 'round'; c.stroke();
+
+  c.save(); tracePatagium(); c.clip();
+  for (let i = 0; i < 58; i++) {
+    const x = 104 + r() * 282, y = 135 + r() * 168;
+    softMark(c, x, y, 8 + r() * 17, 5 + r() * 11,
+      i % 4 ? '70,82,58' : '186,174,135', i % 4 ? 0.42 : 0.30, r() * TAU);
   }
-  c.fillStyle = colugo ? '#26231e' : '#d7a8a0';
-  c.beginPath(); c.arc(cx, cy - S * 0.105, headR * 0.13, 0, TAU); c.fill();
+  c.restore();
+
+  /* Limb roots and their terminal digits remain visible on the broad sheet. */
+  c.strokeStyle = bone; c.lineWidth = 8; c.lineCap = 'round'; c.lineJoin = 'round';
+  const limbs: ReadonlyArray<readonly [number, number, number, number, number, number]> = [
+    [273, 177, 335, 142, 404, 112], [263, 184, 169, 145, 91, 133],
+    [220, 249, 292, 279, 352, 306], [210, 251, 163, 269, 127, 281],
+  ];
+  for (const [x0, y0, x1, y1, x2, y2] of limbs) {
+    c.beginPath(); c.moveTo(x0, y0); c.lineTo(x1, y1); c.lineTo(x2, y2); c.stroke();
+  }
+  gliderDigits(c, 404, 112, -0.18, 16, bone); gliderDigits(c, 91, 133, -2.98, 16, bone);
+  gliderDigits(c, 352, 306, 0.24, 15, bone); gliderDigits(c, 127, 281, 2.82, 15, bone);
+
+  /* Broad torso and tail ridge make the enclosed rear anatomy explicit. */
+  const bodyG = c.createLinearGradient(304, 176, 87, 286);
+  bodyG.addColorStop(0, p.lit); bodyG.addColorStop(0.48, p.base); bodyG.addColorStop(1, gliderTone(p, 0.42));
+  c.fillStyle = bodyG; c.beginPath();
+  c.moveTo(291, 179); c.bezierCurveTo(270, 202, 254, 238, 218, 254);
+  c.bezierCurveTo(172, 274, 120, 284, 73, 292);
+  c.bezierCurveTo(126, 304, 190, 296, 239, 276);
+  c.bezierCurveTo(278, 260, 302, 221, 315, 190); c.closePath(); c.fill();
+
+  c.fillStyle = gliderTone(p, 0.58);
+  c.beginPath(); c.ellipse(292, 144, 18, 24, -0.40, 0, TAU); c.fill();
+  c.beginPath(); c.ellipse(332, 162, 17, 23, 0.48, 0, TAU); c.fill();
+  c.fillStyle = gliderGrad(c, p, 313, 178, 58); c.beginPath(); c.ellipse(313, 178, 54, 48, -0.14, 0, TAU); c.fill();
+  c.fillStyle = gliderTone(p, 1.08); c.beginPath(); c.ellipse(334, 197, 30, 22, -0.18, 0, TAU); c.fill();
+  gliderEye(c, 298, 174, 16); gliderEye(c, 329, 177, 15);
+  c.fillStyle = '#26231e'; c.beginPath(); c.ellipse(353, 199, 7, 5, -0.12, 0, TAU); c.fill();
+}
+
+function faunaGlider(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<QuadSpec['gliderPlan']>): void {
+  switch (plan) {
+    case 'sugar-glider': faunaSugarGlider(c, g, p0, spec); return;
+    case 'colugo': faunaColugo(c, g, p0, spec); return;
+    default: { const exhaustive: never = plan; return exhaustive; }
+  }
 }
 
 /** Fur seals and sea lions rotate their hind flippers FORWARD under the pelvis
@@ -4833,22 +4870,6 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       c.stroke();
     }
     c.restore();
-  }
-  if (spec.patagium) {
-    /* ★ GOLD AUDIT — THE PATAGIUM: drawn over the torso, sagging below the
-       belly between the two leg roots, with a pale free edge. On a standing
-       side view this loose flank sheet IS how a glider reads. */
-    const [fx2, fy2] = AX(0.80), [hx2, hy2] = AX(0.20);
-    const belly = Math.max(fy2 + RAD(0.80) * 0.7, hy2 + RAD(0.20) * 0.7);
-    c.fillStyle = `rgba(${p.cr * 0.52 | 0},${p.cg * 0.52 | 0},${p.cb * 0.50 | 0},0.95)`;
-    c.beginPath();
-    c.moveTo(fx2, fy2 + RAD(0.80) * 0.45);
-    c.quadraticCurveTo((fx2 + hx2) / 2, belly + bodyH * 0.85, hx2, hy2 + RAD(0.20) * 0.45);
-    c.quadraticCurveTo((fx2 + hx2) / 2, belly + bodyH * 0.10, fx2, fy2 + RAD(0.80) * 0.45);
-    c.closePath(); c.fill();
-    c.strokeStyle = 'rgba(242,236,224,0.80)'; c.lineWidth = 3;
-    c.beginPath(); c.moveTo(fx2, fy2 + RAD(0.80) * 0.45);
-    c.quadraticCurveTo((fx2 + hx2) / 2, belly + bodyH * 0.85, hx2, hy2 + RAD(0.20) * 0.45); c.stroke();
   }
   if (spec.udder) {
     /* ★ POLISH — the udder hangs from the belly ahead of the hind legs, with

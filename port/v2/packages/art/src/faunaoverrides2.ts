@@ -1756,6 +1756,95 @@ function shrewForm(c: Ctx, p: Pal): void {
   for (let i = -1; i <= 1; i++) { c.beginPath(); c.moveTo(hx + bh * 1.18, hy + bh * 0.22); c.lineTo(hx + bh * 2.55, hy + bh * (0.10 + i * 0.30)); c.stroke(); }
 }
 
+/** Flying Squirrel: an extended three-quarter glide instead of the standing
+    rodent painter's former belly sling. The two wrist-to-ankle sheets remain
+    separate, all four limb chains own a membrane corner, and the broad flat
+    tail trails independently as a steering rudder. */
+function flyingSquirrelGlider(c: Ctx, g: G, pIn: Pal, name: string): void {
+  const p = speciesHue(pIn, '#9a8f81');
+  const r = nrng(g, name, 0xF15C);
+  const tone = (k: number): string => `rgb(${Math.min(255, p.cr * k) | 0},${Math.min(255, p.cg * k) | 0},${Math.min(255, p.cb * k) | 0})`;
+  const bone = tone(0.42);
+  const digits = (x: number, y: number, angle: number, scale: number): void => {
+    c.save(); c.translate(x, y); c.rotate(angle);
+    c.strokeStyle = bone; c.lineWidth = Math.max(1.4, scale * 0.075); c.lineCap = 'round';
+    for (const spread of [-0.38, -0.12, 0.14, 0.40]) {
+      c.beginPath(); c.moveTo(-scale * 0.08, 0);
+      c.quadraticCurveTo(scale * 0.38, spread * scale * 0.32, scale, spread * scale); c.stroke();
+    }
+    c.restore();
+  };
+
+  c.fillStyle = 'rgba(0,0,0,0.34)'; c.beginPath(); c.ellipse(221, 365, 153, 15, -0.03, 0, TAU); c.fill();
+
+  /* A broad, flattened feather-tail streams behind the rump. Its closed fur
+     mass is neither the upright club of a resting squirrel nor a membrane. */
+  const tailG = c.createLinearGradient(171, 227, 31, 181);
+  tailG.addColorStop(0, tone(0.82)); tailG.addColorStop(0.52, tone(1.10)); tailG.addColorStop(1, tone(0.48));
+  c.fillStyle = tailG; c.beginPath();
+  c.moveTo(179, 219);
+  c.bezierCurveTo(135, 177, 83, 154, 36, 171);
+  c.bezierCurveTo(18, 180, 24, 205, 45, 213);
+  c.bezierCurveTo(91, 232, 137, 245, 184, 243);
+  c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(239,235,224,0.50)'; c.lineWidth = 1.7; c.lineCap = 'round';
+  for (let i = 0; i < 24; i++) {
+    const u = (i + 0.5) / 24, x = 165 - u * 124 + (r() - 0.5) * 5;
+    const y = 224 - Math.sin(u * Math.PI) * 45 + (r() - 0.5) * 5;
+    c.beginPath(); c.moveTo(x, y); c.lineTo(x - 10 - r() * 5, y + (i % 2 ? 4 : -4)); c.stroke();
+  }
+
+  /* The far sheet rises behind the back; the near sheet sweeps down toward
+     the viewer. Their unequal corners make the glide three-quarter, not a
+     mirrored kite, while each free edge stays taut wrist-to-ankle. */
+  c.fillStyle = `rgba(${p.cr * 0.57 | 0},${p.cg * 0.56 | 0},${p.cb * 0.53 | 0},0.94)`;
+  c.beginPath(); c.moveTo(255, 193);
+  c.bezierCurveTo(297, 151, 337, 109, 374, 75);
+  c.bezierCurveTo(289, 129, 178, 211, 78, 261);
+  c.bezierCurveTo(126, 256, 164, 249, 187, 239);
+  c.bezierCurveTo(212, 220, 234, 205, 255, 193); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(230,235,224,0.70)'; c.lineWidth = 2.3; c.stroke();
+
+  c.fillStyle = `rgba(${p.cr * 0.78 | 0},${p.cg * 0.76 | 0},${p.cb * 0.71 | 0},0.97)`;
+  c.beginPath(); c.moveTo(260, 207);
+  c.bezierCurveTo(309, 205, 356, 206, 405, 211);
+  c.bezierCurveTo(331, 255, 207, 317, 81, 343);
+  c.bezierCurveTo(125, 302, 158, 267, 184, 247);
+  c.bezierCurveTo(213, 232, 238, 218, 260, 207); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(240,240,229,0.84)'; c.lineWidth = 3; c.stroke();
+
+  c.strokeStyle = bone; c.lineWidth = 8; c.lineCap = 'round'; c.lineJoin = 'round';
+  const limbs: ReadonlyArray<readonly [number, number, number, number, number, number]> = [
+    [252, 193, 323, 129, 374, 75], [185, 237, 132, 251, 78, 261],
+    [260, 207, 337, 205, 405, 211], [184, 247, 130, 304, 81, 343],
+  ];
+  for (const [x0, y0, x1, y1, x2, y2] of limbs) {
+    c.beginPath(); c.moveTo(x0, y0); c.lineTo(x1, y1); c.lineTo(x2, y2); c.stroke();
+  }
+  digits(374, 75, -0.82, 15); digits(78, 261, 2.95, 14);
+  digits(405, 211, 0.04, 16); digits(81, 343, 2.50, 15);
+
+  /* The furred barrel overlaps every limb root. */
+  c.fillStyle = grad(c, p, 221, 219, 82); c.beginPath(); c.ellipse(220, 221, 79, 48, -0.12, 0, TAU); c.fill();
+  rim(c, () => c.ellipse(220, 221, 79, 48, -0.12, -2.8, 0.3), 2.2);
+  c.fillStyle = tone(1.18); c.beginPath(); c.ellipse(236, 235, 48, 25, -0.10, 0, TAU); c.fill();
+
+  /* Rounded low squirrel ears, huge dark eyes, blunt muzzle, orange incisors
+     and whiskers keep the animal legible when the glide pose dominates. */
+  c.fillStyle = tone(0.55);
+  c.beginPath(); c.ellipse(274, 158, 22, 26, -0.35, 0, TAU); c.fill();
+  c.beginPath(); c.ellipse(312, 165, 21, 25, 0.30, 0, TAU); c.fill();
+  c.fillStyle = grad(c, p, 303, 188, 55); c.beginPath(); c.ellipse(303, 190, 54, 46, -0.08, 0, TAU); c.fill();
+  c.fillStyle = tone(1.13); c.beginPath(); c.ellipse(335, 207, 35, 24, -0.06, 0, TAU); c.fill();
+  eye(c, 289, 187, 17); eye(c, 318, 188, 15);
+  c.fillStyle = '#2a211d'; c.beginPath(); c.ellipse(363, 207, 7, 5, 0, 0, TAU); c.fill();
+  c.fillStyle = '#d77f32'; c.beginPath(); c.roundRect(348, 215, 10, 15, 2); c.fill();
+  c.strokeStyle = 'rgba(244,239,226,0.62)'; c.lineWidth = 1.4;
+  for (const dy of [-10, 0, 10]) {
+    c.beginPath(); c.moveTo(337, 209 + dy * 0.28); c.quadraticCurveTo(372, 205 + dy, 405, 213 + dy * 1.15); c.stroke();
+  }
+}
+
 /** RODENT: compact haunched body, big round ears, prominent incisors */
 export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bushy' | 'furred' | 'stub'; ears: number; quills?: boolean; hue?: string;
     /* ★ wave 45 G11 — a LOW ROUNDED ear set into the fur. Nine species shared
@@ -1768,9 +1857,6 @@ export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bush
     /* rodent incisors are ORANGE-enamelled; a lagomorph's are white, and that
        is one of the clearest tells between the two groups. */
     lagomorph?: boolean;
-    /** ★ GOLD AUDIT — the flying squirrel's patagium: a loose gliding
-        membrane slung between fore- and hindlimb along the flank */
-    glide?: boolean;
     /** ★ GOLD AUDIT — the jerboa build: enormous hind legs, tiny forearms,
         a very long tufted balancing tail */
     biped?: boolean;
@@ -1893,20 +1979,6 @@ export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bush
      like the body it belongs to, it sits slightly proud of the flank, and the
      leg folds out of it to a foot on the ground. */
   const hipX = cx - bw * 0.40, hipY = cy + bh * 0.34;
-  if (opts.glide) {
-    /* ★ GOLD AUDIT — THE PATAGIUM, before the haunch so the leg overlaps it:
-       a loose furred membrane slung from the wrist line back to the ankle,
-       sagging below the belly — the one thing that says "glider". */
-    c.fillStyle = `rgba(${p.cr * 0.55 | 0},${p.cg * 0.55 | 0},${p.cb * 0.52 | 0},0.95)`;
-    c.beginPath();
-    c.moveTo(cx + bw * 0.70, cy + bh * 0.20);
-    c.quadraticCurveTo(cx + bw * 0.12, cy + bh * 3.10, hipX - bw * 0.22, cy + bh * 0.55);
-    c.quadraticCurveTo(cx + bw * 0.18, cy + bh * 0.42, cx + bw * 0.70, cy + bh * 0.20);
-    c.closePath(); c.fill();
-    c.strokeStyle = 'rgba(240,234,222,0.88)'; c.lineWidth = 3.4;   /* the pale free edge */
-    c.beginPath(); c.moveTo(cx + bw * 0.70, cy + bh * 0.20);
-    c.quadraticCurveTo(cx + bw * 0.12, cy + bh * 3.10, hipX - bw * 0.22, cy + bh * 0.55); c.stroke();
-  }
   if (opts.biped) {
     /* ★ GOLD AUDIT — THE JERBOA: a big haunch, one ENORMOUS hind leg (long
        thin tarsus to a long foot), and tiny forearms held at the chest. */
@@ -3372,7 +3444,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Pika': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a08363', tail: 'stub', ears: 0.54, earShape: 'nub', size: 0.84, pika: true, lagomorph: true }, n),
   'Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7c7a72', tail: 'bushy', ears: 0.62   }, n),
   'Ground Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#ab8b5e', tail: 'long', ears: 0.18, earShape: 'nub', tailBare: true, muzzle: 'blunt', size: 1.10 }, n),
-  'Flying Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#9a8f81', tail: 'bushy', ears: 0.38, earShape: 'nub', glide: true }, n),
+  'Flying Squirrel': (c, g, p, n) => flyingSquirrelGlider(c, g, p, n),
   'Chipmunk': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a8642f', tail: 'bushy', ears: 0.44, stripes: true, cheeks: true }, n),
   'Rabbit': (c, g, p, n) => smallRodent(c, g, p, { hue: '#8e7a5c', tail: 'stub', ears: 1.45 , puffTail: true, lagomorph: true  }, n),
   'Hare': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a37a4a', tail: 'stub', ears: 1.70 , blackEarTips: true, longHindFeet: true, lagomorph: true  }, n),

@@ -1,7 +1,7 @@
 # Procedural (Non-Earth) Characteristics — Catalog & Pass Map
 
 _Legacy v1 catalogue plus a current v2 reset overlay. The reset overlay matches
-the procedural source as of 2026-08-10; dated B15 sections below remain legacy
+the procedural source as of 2026-08-11; dated B15 sections below remain legacy
 `main.js` snapshots unless explicitly labelled current. Companion to
 `ART_DIRECTION.md` and `LINEAGE_AND_BREEDING.md`._
 
@@ -16,12 +16,18 @@ the procedural source as of 2026-08-10; dated B15 sections below remain legacy
 >
 > Set-qualified `_earthBlend` ownership and cache identity are guarded by final
 > browser pixels across all four kingdoms (`npm run hybridcheck` from `port/v2`).
-> Its current contract requires five exact ID+kingdom+name focused lineages covering fauna, flora,
-> fungi and microbes and rejects eleven injected negative controls. Apple's prior
-> repair remains accepted, and Vanilla Orchid r6 is independently PASS at source
+> The former schema-v3 result covered 12 lineages and 234 assets; it is now sealed
+> historical evidence, superseded for the broader 2026-08-11 Platinum ruler. The
+> live schema-v4 contract requires 13 exact five-stage lineages /251 assets, adds
+> Amoeba as the principal microbe row, routes exactly Fruit Bat, Eagle, Wolf,
+> Elephant, Chameleon, Dragonfly and Octopus through lineage-owned fauna painters,
+> and freezes Sea Turtle and Great White Shark on their reviewed legacy route.
+> Its visual status remains `OPEN / UNREVIEWED` until fresh clean-commit evidence
+> receives a new hash-bound judgment. Apple's prior
+> repair remains historical context, and Vanilla Orchid r6 was independently PASS at source
 > SHA-256 `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`:
 > the pure portrait is byte-exact, all five stages are unique and integrated,
-> progressive drift survives the 0.22 anchor floor, and the matrix validates
+> progressive drift survived the 0.22 anchor floor, and the historical matrix validated
 > 234/234 assets in both browser orders. The prior
 > `FAIL_BYTE_IDENTICAL_STAGES` result is diagnostic history. These focused
 > results do not certify every possible lineage or create a new catalogue tally.

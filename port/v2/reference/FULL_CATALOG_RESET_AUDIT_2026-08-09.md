@@ -17,7 +17,33 @@ follow-up merged as PR #9 at `989142d`. The Mac continuation is fail-closed
 before its first Wave-2e-scoped post-edit render because the ignored scoped
 baseline did not cross Git. PR #7 is historical/already merged; no reset PR exists.
 
-## Status: r1 frozen; Wave 2d 50/50 PASS/pushed; Wave 2e static source merged, review blocked
+## Status: Platinum repair source complete; clean-commit evidence and human verdict open
+
+The governing feedback artifact is
+`reference/Celestial_Frontier_Current_Full_Generations_Platinum_Review_2026-08-10.md`,
+SHA-256 `5af3a33f0648f96115a421ea64cc70f97846f62e89dc8631deeb310103c708c2`.
+It reviewed the sealed predecessor archive from source
+`79ce14460998d653ee753e49e8f8016e754c82e4`, archive SHA-256
+`18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`, and
+correctly withheld Platinum under a broader whole-form/continuity ruler. The
+archive and its narrower findings remain sealed history; they are not current
+certification.
+
+The bounded repair gives Sugar Glider, Flying Squirrel and Colugo three distinct
+whole forms. Exactly Fruit Bat, Eagle, Wolf, Elephant, Chameleon, Dragonfly and
+Octopus retain their modern named whole-form owners through the reviewed bred
+stages; Sea Turtle and Great White Shark remain protected on the reviewed legacy
+route. Apple, Vanilla Orchid and Oyster Mushroom receive stronger bounded drift,
+and Amoeba is the principal microbe row. Hybrid schema v4 is 13 lineages ×5
+stages /251 assets. The successor combined package is exactly 2,163 PNGs and
+remains **OPEN / UNREVIEWED / NOT CERTIFIED**. Browser-backed tools now share the
+portable `browsercdp` resolver and exact browser provenance. Provisional evidence
+is diagnostic only. Clean-commit capture/repeat/package is deliberately a post-commit action; its
+external sidecar and PR freshness transcript are authoritative, while human review remains OPEN.
+
+Draft PR #10 is repurposed from `openai/mac` into `develop` as `Address Platinum
+glider and lineage review`. It does not authorize merge, certification, release,
+or deployment. Wave 2e's missing ignored baseline remains a separate blocker.
 
 Nick stopped the GP7.1 remediation and explicitly reopened the entire catalogue
 after Fruit Bat exposed a false acceptance: the current animal does not read as
@@ -135,7 +161,9 @@ joins, and drift progressively farther from pure as the anchor falls.
 `hybridcheck` now requires five exact ID+kingdom+name focused lineages spanning all four kingdoms and
 rejects eleven injected negative controls, including focused-species substitution and simulated
 Vanilla stage collapse. This closes the prior focused Vanilla blocker, not every possible
-bloodline or the final 1,250-row certification.
+bloodline or the final 1,250-row certification. The 234-asset result remains
+sealed historical evidence and is superseded for the broader Platinum
+whole-form/continuity ruler; it is not a current schema-v4 verdict.
 
 ## Wave 2b: exact 51-target scope independently PASS
 
@@ -546,7 +574,23 @@ small Pixi living-preview surface over the same deterministic source, and only
 then (4) consider the Phase-5 mesh/skeletal production pipeline. A broad Pixi
 rewrite is not part of the current reset-foundation batch.
 
-## Hybrid continuity: focused Apple and Vanilla results closed; final scope open
+## Platinum continuity overlay: schema v4 repair implemented; judgment open
+
+The current ruler supersedes the older focused conclusion below without erasing
+it. Schema v4 binds 13 lineages ×5 stages /65 principal portraits /251 assets,
+including Amoeba as the microbe row. It requires the three glider whole forms,
+the exact seven-fauna modern-owner set, protected Sea Turtle/Great White Shark
+legacy pixels, stronger Apple/Vanilla Orchid/Oyster Mushroom drift, repeat/cache
+controls, and anatomy-specific joins. The successor package is 2,163 PNGs and
+must remain `OPEN / UNREVIEWED / NOT_CERTIFIED` until clean committed evidence
+receives a new hash-bound human verdict.
+
+## Historical schema-v3 focused continuity — 12 lineages /217 and 234 assets, superseded
+
+The records below remain valid for their original narrower ruler. The Platinum
+review supersedes them for current whole-form/continuity judgment; neither the
+217-asset diagnostic matrix nor the 234-asset focused result may be carried into
+schema v4 as a verdict.
 
 `hybridmatrix` renders 12 representative lineages through five real
 `crossGenome` stages: pure Earth, Earth×Earth (0.90), Earth×alien (0.73), a
@@ -574,7 +618,7 @@ orders. `hybridcheck` now binds five exact ID+kingdom+name focused lineages acro
 and negative-controls eleven independent failure shapes. The earlier Vanilla
 `FAIL_BYTE_IDENTICAL_STAGES` result is closed historical diagnosis.
 
-**Final hybrid certification remains OPEN.** These focused passes do not inspect
+**Final hybrid certification remained OPEN under that historical ruler.** These focused passes do not inspect
 every possible lineage or authorize a catalogue-wide seamlessness claim; the
 final clean hybrid evidence remains coupled to the eventual all-PASS reset.
 
@@ -587,8 +631,9 @@ v3 in `hybridmatrixaudit.ts` and `hybridmatrix.mjs` repairs the provenance model
 it distinguishes current catalogue ownership from retained legacy-route
 ownership, exercises both production routes, and negative-controls relabelling
 the legacy route as current membership. Its sentinels, selftest, and TypeScript
-check are green; the live run validated 234/234 assets in both stable browser
-orders. The harness bug was not an organism verdict.
+check are green; the historical live run validated 234/234 assets in both stable
+browser orders. The harness bug was not an organism verdict, and this result is
+not the current schema-v4 package.
 
 ## Reset acceptance ruler
 
@@ -688,9 +733,10 @@ npm.cmd run hybridmatrix -- --out=<NEW_CLEAN_HYBRID_EVIDENCE_NAME>
 Only after every row is PASS should packaging assemble native portraits,
 thumbnails, labelled/unlabeled family sheets, old/current comparisons,
 references, manifests, verdicts, gate transcript and provenance into the new
-dated ZIP. The current capture/layout/comparison compositor is portable through
-the exact browser resolver; the remaining Windows-only gates and the historical
-evidence recovery still run in the protocol-owned `openai/windows` worktree.
+dated ZIP. All browser-backed producers in this review path now use the shared
+portable `browsercdp` resolver and bind the exact browser record. Recovery of the
+missing historical Wave-2e evidence still belongs in the protocol-owned
+`openai/windows` worktree.
 Integrate source only by reviewed draft PR from the owning agent branch into
 `develop`. No `main` merge, release or deployment is authorized here.
 
@@ -703,33 +749,42 @@ comparison is blocked by the missing ignored baseline, and never reuse the final
 certification ZIP name or claim a new catalogue tally. This is a review handoff,
 not the all-PASS image-inclusive package governed by the paragraph above.
 
-That bounded handoff is now complete from clean evidence commit `79ce144`: exactly
+**Historical predecessor handoff — sealed and superseded for current review:**
+that bounded archive is complete from clean evidence commit `79ce144`: exactly
 2,146 PNGs (1,250 native portraits +196 catalogue strips +466 official layout
 sheets +234 representative hybrid assets), 472,304,848 ZIP bytes, SHA-256
 `18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`. Its
 machine-readable status remains `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED`, and
-hybrid continuity remains OPEN. It changes none of the certification blockers above.
+hybrid continuity remains OPEN. The feedback preserves those bytes as history
+while superseding their narrower continuity scope. The successor is 2,163 PNGs
+with schema-v4 13×5 /251-asset hybrid evidence. Its immutable ZIP sidecar and PR
+verification transcript are the authority for the final clean-commit generation;
+this live reference stays future-neutral so editing a “pending” marker cannot stale
+that evidence commit. Its human verdict remains OPEN. Neither package changes the
+certification blockers above.
 
 ## Immediate order
 
-1. PR #9 is merged into `develop` at `989142d`; its title and description were reviewed and require
-   no correction. Review docs-only draft PR #10 before it records that merged state on `develop`.
-   Do not claim a Wave-2e art verdict.
-2. The separate current-only review archive is produced and deep-reverified from clean evidence
-   commit `79ce144`; preserve it as `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED` with every visual
-   status unreviewed/open.
-3. OpenAI/Codex on Windows must first confirm `openai/windows` is clean, then
+1. Freeze the Platinum repair on one clean `openai/mac` commit; run the complete
+   static/browser/selftest battery without editing tracked source afterward.
+2. From that commit, generate repeat-exact glider and schema-v4 13×5 /251-asset
+   hybrid evidence, then the exact 2,163-PNG current-only archive and its
+   post-hoc freshness result. Leave all review verdict fields open/unreviewed.
+3. Push `openai/mac` and update draft PR #10 into `develop` with title `Address
+   Platinum glider and lineage review`. Review it; do not merge automatically,
+   deploy, certify, or release.
+4. Separately, OpenAI/Codex on Windows must first confirm `openai/windows` is clean, then
    recover/package the exact ignored Wave-2e pre-edit root plus its scoped
    capture/control recipe. Do not copy source files or begin a new baseline.
-4. After that evidence is verified against seal `BC424C8F…AA37` and index
+5. After that evidence is verified against seal `BC424C8F…AA37` and index
    `2AE4FDB1…26E3`, continue the 47-target post-edit A/B/repeat and independent
    review on the compatible clean worktree. Any substitute reconstruction needs
    Nick's explicit authorization and must reproduce both hashes from `2ed0f28`.
-5. Continue remaining r1 non-PASS rows only after Wave 2e closes, in bounded
+6. Continue remaining r1 non-PASS rows only after Wave 2e closes, in bounded
    owner/family waves. Preserve author separation and never edit a painter while
    its judge holds source frozen.
-6. After all rows close, repeat the complete clean 1,250 capture/layout/compare/
+7. After all rows close, repeat the complete clean 1,250 capture/layout/compare/
    collect sequence, rerun the clean hybrid matrix, and certify only a literal
-   1,250/1,250 PASS result.
-7. Build the certification image-inclusive ZIP only after certification. Until then, keep
-   GP7/GP7.1 quarantined and the full certification, ZIP, reset PR and release open.
+   1,250/1,250 PASS result. Build the certification image-inclusive ZIP only
+   after certification; until then, keep GP7/GP7.1 quarantined and the full
+   certification, ZIP, reset PR and release open.

@@ -1,4 +1,4 @@
-# ★ LIVE — Wave 2e Mac resume fail-closed on non-portable baseline (2026-08-11)
+# ★ LIVE — Platinum feedback repair ready for clean-commit evidence (2026-08-11)
 
 **Current worktree:** `/Users/nick/Projects/celestial-frontier-openai-mac` on
 `openai/mac`. Clean full-reset baseline HEAD is
@@ -9,16 +9,34 @@
 `5db90396dd0e33b5463ce40c32f6769c93e559be` and reached `develop` through merged
 PR #8 at `bb1a980`. The Mac resume verified the checkpoint and all four frozen art-source hashes,
 then failed closed before post-edit rendering because the ignored 288-row pre-edit evidence did not
-cross Git. The overridecheck false-positive is repaired and independently post-edit reviewed; no art
-source moved. A separate current-generation review ZIP now exists from clean evidence commit
-`79ce14460998d653ee753e49e8f8016e754c82e4`, with the production-anchor packager repair at
-`60b16ce`; it is explicitly **CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED** and is not Wave 2e A/B.
-Merged PR #9 integrated the Mac scanner/tooling and current-review-package repair into `develop` at
-`989142d`. Its reviewed description correctly preserves the missing-baseline boundary and the
-**CURRENT-ONLY / UNREVIEWED / NOT CERTIFIED** archive scope. PR #7 is historical/already merged.
-No reset merge, new full-catalogue verdict tally, 1,250-row certification package, release,
-deployment, or version bump exists. The docs-only merge-handoff correction is draft PR #10 from
-`openai/mac` into `develop`.
+cross Git. Merged PR #9 integrated the portable scanner/tooling and first current-review-package
+repair into `develop` at `989142d`.
+
+The governing feedback is preserved at
+`port/v2/reference/Celestial_Frontier_Current_Full_Generations_Platinum_Review_2026-08-10.md`,
+SHA-256 `5af3a33f0648f96115a421ea64cc70f97846f62e89dc8631deeb310103c708c2`.
+The byte-exact supplied Markdown intentionally retains its two original hard-break trailing spaces
+on lines 3–4; staged whitespace verification excludes only this immutable artifact.
+It reviewed the sealed predecessor archive from source
+`79ce14460998d653ee753e49e8f8016e754c82e4`, archive SHA-256
+`18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`, and correctly withheld
+Platinum. That archive remains valid historical evidence; its narrower continuity conclusions are
+superseded for the broader Platinum ruler.
+
+The bounded repair candidate now gives Sugar Glider, Flying Squirrel and Colugo three distinct
+whole forms; keeps exactly Fruit Bat, Eagle, Wolf, Elephant, Chameleon, Dragonfly and Octopus on
+their modern named lineage routes; protects Sea Turtle and Great White Shark on the reviewed legacy
+route; strengthens Apple, Vanilla Orchid and Oyster Mushroom drift; and adds Amoeba as the principal
+microbe row. Hybrid schema v4 is 13 lineages ×5 stages /251 assets. The successor combined package
+is 2,163 PNGs and remains **OPEN / UNREVIEWED / NOT CERTIFIED**. Browser-backed producers now share
+the portable `browsercdp` resolver and exact browser provenance. The provisional dirty-tree evidence
+is diagnostic only. Clean-commit capture/repeat/package is deliberately a post-commit action; its
+external sidecar and PR freshness transcript, rather than a self-referential hash in this commit,
+are the authority. Human review remains OPEN.
+
+Wave 2e remains separately blocked by its missing ignored baseline. Draft PR #10 is repurposed for
+this Platinum repair from `openai/mac` into `develop`. No merge, new full-catalogue verdict tally,
+certification, release, deployment, or version bump exists.
 
 Read first: `ROADMAP.md`, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`,
 `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`,
@@ -40,9 +58,10 @@ add scoped PASS results to that ledger:
 | Wave 2c catalogue | 56 | 56 PASS | committed/pushed `dc015cf` |
 | Wave 2d catalogue | 50 | 50 PASS | committed/pushed `2ed0f28` |
 
-Wave 2d is Mammal D 16 + Bird B3 27 + Invert III 7. Vanilla Orchid r6 remains
-a separate focused continuity PASS with 234/234 assets. None of these scoped
-closures replaces the 1,250-row ledger.
+Wave 2d is Mammal D 16 + Bird B3 27 + Invert III 7. Vanilla Orchid r6's 234/234
+focused continuity result remains sealed history, but that narrower verdict is
+**superseded for the broader Platinum continuity ruler**. None of these scoped
+closures replaces the 1,250-row ledger or supplies a current hybrid verdict.
 
 ## Wave 2d exact closure
 
@@ -237,7 +256,7 @@ and deployment all remain **OPEN**.
    coveragegap 1,010/1,010; artaudit 23/0; overridecheck/overridecontrol; `git diff --check` PASS.
 7. Bird reset FAIL scope is exhausted: B1–B3 exactly cover all 76 frozen-r1
    Bird FAIL rows. Do not reopen the 26 frozen-PASS birds.
-8. **Separate current-generation review archive produced:**
+8. **Sealed predecessor current-generation archive — historical and superseded for current review:**
    `Celestial_Frontier_Current_Full_Generations_Review_2026-08-10_79ce144.zip`,
    472,304,848 bytes, SHA-256
    `18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`. It binds
@@ -245,48 +264,53 @@ and deployment all remain **OPEN**.
    top-level directory with exactly 2,146 PNGs: 1,250 native portraits (631 fauna +332 flora +27
    fungi +20 microbe +240 procedural), 196 catalogue strips, 466 official layout sheets, and 234
    representative hybrid assets. Its manifest says `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED`;
-   hybrid continuity remains OPEN and the included review template is blank and hash-bound. This
-   fulfills the requested current review handoff only. Run a fresh literal 1,250-row review after
-   all remaining repair rows close; certification and its separate dated image-inclusive ZIP still
-   come after—not before—that all-fresh collector.
+   hybrid continuity remains OPEN and the included review template is blank and hash-bound. The
+   Platinum feedback reopens its narrower 234-asset continuity scope; do not present this predecessor
+   archive as the current repaired package. Its schema-v4 successor is 13×5 /251 hybrid assets and
+   2,163 PNGs total and remains `OPEN / UNREVIEWED / NOT_CERTIFIED`. The immutable successor ZIP
+   sidecar and PR verification transcript—not a mutable “pending” marker here—are the authority for
+   its clean source commit and freshness. Certification and its separate dated image-inclusive ZIP
+   still come only after an all-fresh collector.
 
 ## Parallel Git handoff
 
-Current side: OpenAI/Codex on macOS, branch `openai/mac` — PR #9, `Repair Wave 2e review tooling and
-add current-generation package`, merged into `develop` at `989142d`. Its source is unchanged after
-merge: scanner repair `1e1497e`, portable evidence producer/package `79ce144`, and anchor-tolerance
-repair `60b16ce` remain committed, reviewed, and synchronized. The requested current-only archive
-is complete and deep-reverified. Post-edit Wave 2e art review remains blocked because the exact
-ignored baseline is absent. This merge-handoff correction is docs-only draft PR #10.
+Current side: OpenAI/Codex on macOS, branch `openai/mac` — the Platinum repair source candidate is
+complete. Its post-commit evidence remains UNREVIEWED and must be checked through the external
+sidecar and PR freshness transcript before merge. Draft PR #10 is being repurposed for this
+repair. Wave 2e remains separately blocked because its ignored baseline did not cross machines.
 
-GitHub step: review draft PR #10 at <https://github.com/TheDakk/Celestial-Frontier/pull/10> and,
-only when satisfied, merge it into `develop`; never merge it automatically. Merged PR #9's existing
-title and description were verified correct and need no change.
+GitHub step: review draft PR #10 at <https://github.com/TheDakk/Celestial-Frontier/pull/10> using
+the PR freshness transcript and immutable package sidecar as the evidence authority; merge it into
+`develop` only when satisfied. No automatic merge is authorized.
 
-PR details: base `develop`; source `openai/mac`; title `Record merged PR #9 handoff`; description
-`Records the verified merge of PR #9 (989142d) in the live roadmap, port handoff, and reset-audit
-reference. Why: those live documents still described #9 as an open draft after it had merged.
-Verification: git diff --check. Docs-only: no source, art, evidence, certification, release, or
-deployment change. After merge, Anthropic/Claude Code syncs only from a clean anthropic/windows
-worktree using git fetch origin followed by git merge origin/develop.` Existing PR #10 title and
-description match these fields and need no change.
+PR details: base `develop`; source `openai/mac`; title `Address Platinum glider and lineage review`;
+description `Implements the repairs required by the hash-bound Platinum review: three distinct
+whole-form gliders; exact seven-fauna modern lineage routing with Sea Turtle and Great White Shark
+protected; stronger Apple, Vanilla Orchid and Oyster Mushroom drift; and Amoeba as the principal
+microbe row. Preserves the exact feedback artifact and upgrades hybrid evidence to schema v4
+(13x5 /251 assets) plus the current-only package to 2,163 PNGs with exact blank-input validation,
+six-field browser provenance, non-overwriting sidecar publication and post-hoc freshness checks.
+Verification: typecheck, Vitest, artunused, speccheck, coveragegap, artaudit, overridecheck and its
+negative controls, hybrid browser audit, hybridmatrix/currentreviewpackage/gliderreview/browser
+selftests, clean-commit capture/repeat/package verification, and git diff --check. Evidence remains
+OPEN / UNREVIEWED / NOT CERTIFIED; the missing Wave 2e baseline remains blocked. After merge,
+Anthropic/Claude Code synchronizes only from a clean anthropic/windows worktree with git fetch
+origin then git merge origin/develop. No release, deployment, certification or version bump is
+included.`
 
-Other side: Anthropic/Claude Code on Windows, branch `anthropic/windows`, need not be opened now.
-At its next coding batch and only from a clean worktree, run `git fetch origin` and then
-`git merge origin/develop` on `anthropic/windows`. If that worktree is dirty, do not pull, switch,
-or merge; inspect and safely finish or commit its own work first. Do not copy files manually.
+Other side: Anthropic/Claude Code on Windows, branch `anthropic/windows`, does not have this repair
+yet and need not be opened now. Only after PR #10 merges, at its next coding batch and from a clean
+worktree, run `git fetch origin` then `git merge origin/develop`; if dirty, do not pull, switch, or
+merge first. Do not copy files manually.
 
-Evidence side: Nick does need to open OpenAI/Codex on Windows now, branch `openai/windows`, only to
-confirm the worktree is clean and recover/package the exact ignored Wave-2e baseline plus its scoped
-capture/control recipe. Do not copy source files, switch branches, or merge there. `develop` now
-contains the Mac repair, but not the ignored baseline.
-
-Release status: `develop` includes merged PR #9 at `989142d`; docs-only draft PR #10 is pending.
-`main` and the live site remain unchanged. No release, deployment, certification, or version bump occurred.
+Release status: `develop` includes merged PR #9 at `989142d`; Platinum repair draft PR #10 remains
+pending. `main` and the live site are unchanged. No merge of PR #10, release, deployment,
+certification, or version bump has occurred.
 
 # Historical Wave-2c/Wave-2d-opening handoff — superseded by Wave 2d closure
 
-_Retained verbatim below for history._
+_Retained below for history. Its schema-v3 /234-asset continuity claims are
+superseded for the broader Platinum ruler and are not current verdicts._
 
 # ★ LIVE — Wave 2c pushed; Wave 2d active (2026-08-10)
 
@@ -467,6 +491,9 @@ live site remain unchanged; no release or deployment occurred.
 
 # Historical Wave-2b/Wave-2c-opening handoff — superseded by Wave 2c closure
 
+_Any schema-v3 /234-asset continuity statement below is sealed historical
+evidence, superseded for the broader Platinum ruler._
+
 _Retained verbatim below for history._
 
 # ★ LIVE — Wave 2b pushed; Wave 2c active (2026-08-10)
@@ -594,6 +621,8 @@ site remain unchanged; no release or deployment occurred.
 
 > The former live block below is preserved verbatim for provenance. Its Vanilla
 > blocker and opening Wave-2 next steps are superseded by the live block above.
+> Its schema-v3 /234-asset findings are likewise historical and cannot be carried
+> into the schema-v4 Platinum judgment.
 
 # ★ LIVE — Wave 1 committed; Wave 2 family repairs underway (2026-08-10)
 
@@ -654,7 +683,7 @@ its protected controls and deterministic repeats. Do not add 177 to 516 and
 claim a new catalogue score: changed scoped pixels need a later complete
 post-Wave-1 collector run, and the rest of the catalogue has not been rejudged.
 
-## Hybrid closure: Apple independently PASS; Vanilla continuity failing
+## Historical schema-v3 /234-asset hybrid closure — superseded by Platinum ruler
 
 Apple's continuity repair is independently judged PASS at `floraoverrides2.ts` SHA-256
 `D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`.
@@ -730,6 +759,8 @@ deployment has occurred.
 
 > The former live block below is preserved for provenance. Its clean-foundation
 > capture sequence has completed and is superseded by the r1/Wave-1 record above.
+> The 12-lineage /217-asset matrix below is also superseded by schema v4's
+> 13-lineage /251-asset Platinum scope; retain it only as diagnostic history.
 
 # ★ LIVE — reset foundation ready to commit; fresh 1,250-row judging next (2026-08-10)
 
@@ -788,7 +819,7 @@ are unchanged from refine2d. The exact record is
 This is four frozen rows, not a catalogue score. Any new bat pixel requires a
 new hash-bound review.
 
-## Hybrid and graphics boundary
+## Historical 12-lineage /217-asset hybrid boundary — superseded by schema v4
 
 The provisional 12-lineage × 5-stage matrix proves route/cache mechanics and
 records 217 assets, but visual continuity is **OPEN**. Fruit Bat changes renderer
