@@ -694,6 +694,12 @@ or procedural-plan hashes. The complete fresh result is **516 PASS / 14 POLISH /
 720 FAIL** and is not certification-eligible. No final all-PASS collection or
 image-inclusive ZIP exists.
 
+Nick's 2026-08-10 request for a full current-generation ZIP is a separate
+review handoff: all 1,250 current native portraits, current family packets, and
+representative hybrid stages may be exported from one clean commit as
+`UNREVIEWED / CURRENT-ONLY`. That archive cannot carry verdicts, substitute for
+the absent Wave 2e pre-edit baseline, or become the final certification ZIP.
+
 Hybrid route/cache ownership is technically correct, and the prior focused
 Apple and Vanilla continuity blockers are now independently closed. Vanilla r6
 passes at `floraoverrides2.ts` SHA-256

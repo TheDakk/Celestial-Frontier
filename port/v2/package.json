@@ -23,6 +23,7 @@
     "speciesexport": "node tools/speciesexport.mjs",
     "hybridcheck": "node tools/hybridblendcheck.mjs",
     "hybridmatrix": "node tools/hybridmatrix.mjs",
+    "currentreviewpackage": "node tools/currentreviewpackage.mjs",
     "gp71compare": "node tools/gp71compare.mjs",
     "fullresetlayout": "node tools/fullresetlayout.mjs",
     "fullresetreview": "node tools/fullresetreview.mjs",

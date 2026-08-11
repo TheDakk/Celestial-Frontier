@@ -178,11 +178,14 @@ not cross Git, and has no tracked scoped-capture/reconstruction recipe. Its
 recorded seal `BC424C8F…AA37` and index `2AE4FDB1…26E3` therefore cannot be
 independently verified here. Recover the exact Windows evidence or explicitly
 authorize a deterministic reconstruction from pre-edit `2ed0f28` that
-reproduces both hashes before A/B promotion. The current browser review path is
-also Windows-bound: `gp71rejudge`, `speciesstrip`, `speciesaudit`,
-`hybridblendcheck`, and `fullresetlayout` (including `fullresetreview`'s packet
-compositor) hard-code the Windows Edge executable, so their historical passes
-are not fresh Mac results.
+reproduces both hashes before A/B promotion. A bounded portability seam now lets
+`gp71rejudge --prepare` and `fullresetlayout --packets` resolve an exact
+Chromium-family executable through `CF_BROWSER` or checked platform paths, so a
+new **current-only, unreviewed** Mac catalogue export can be prepared. The same
+resolver reaches `fullresetreview` through its imported packet compositor, but
+that does not unlock Wave 2e A/B because the scoped old evidence is still
+absent. `speciesstrip`, `speciesaudit`, and `hybridblendcheck` remain separately
+Windows-bound. Historical Windows passes are not fresh Mac results.
 
 The separate `overridecheck` blocker is closed: pinned Rolldown 1.2.1/Oxc parses
 each complete TypeScript art source as an AST, and only literal string
@@ -273,6 +276,8 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 
 | Tool | Role |
 |---|---|
+| `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. |
+| `node tools/browsercdp.mjs --selftest` | Negative-controls browser startup metadata, child exit, WebSocket and command timeouts, pending-command rejection, bounded shutdown, exact version provenance, and owned-profile cleanup. |
 | `node tools/proceduralnames.mjs --selftest` | Proves the exact 240-row bridge among full, drift, and render procedural identities. |
 | `node tools/rejudgecards.mjs --drift=<file> --out=<dir> [--control] [--full]` | Builds indexed drift, unchanged-control, or full-catalogue review strips and packets from the current renderer. |
 | `node tools/speciesstrip.mjs "<name,...>" [out.png]` | Renders a small named Earth/procedural strip for targeted visual diagnosis; `npm run stripcheck` exercises its positive and rejection controls. |
@@ -289,6 +294,14 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 | `npm run speciesexport` | Rebuilds and verifies the 1,250 native 440×440 portraits and per-set ZIPs. |
 | `npm run cataloguecards` | Alias for `rejudgecards --full`; generates the family-grouped complete-catalogue contact sheets and packets. |
 | `npm run gp7package` | Verifies portrait/contact coverage, records SHA-256 hashes, and assembles the dated complete-review ZIP. |
+| `npm run currentreviewpackage -- --catalogue=<capture> --layout=<layout> --hybrid=<matrix> --output=<new.zip>` | Creates a new extracted-and-reverified **UNREVIEWED current-state** package spanning the exact 1,250 catalogue rows, official packet layout, and representative five-stage hybrid evidence. It rejects verdict/certification material and never replaces the later all-PASS certification ZIP. |
+
+Nick explicitly requested a full current-generation review archive on 2026-08-10.
+That bounded deliverable is allowed before certification only when its README and
+manifest say **UNREVIEWED / CURRENT-ONLY**, bind one clean commit, preserve every
+producer manifest and hash, and state that the missing Wave 2e pre-edit evidence
+prevents old/current comparison or promotion. It is not the dated image-inclusive
+certification package described below.
 
 The complete reset recapture sequence, after a bounded repair wave is committed
 and the worktree is clean at a full 40-hex HEAD, is:

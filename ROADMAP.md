@@ -134,10 +134,11 @@
 ##    documented Windows claim, not independently verified Mac evidence. Do not substitute a new
 ##    baseline or begin A/B promotion until the exact root is recovered or a user-authorized
 ##    deterministic reconstruction from pre-edit 2ed0f28 reproduces both frozen hashes.
-##    The browser review path is also not Mac-ready: gp71rejudge, speciesstrip, speciesaudit,
-##    hybridblendcheck and fullresetlayout (including fullresetreview's compositor) hard-code the
-##    Windows Edge path. Their historical Windows passes are not current Mac results; do not patch
-##    that separate portability boundary inside this scanner-only batch.
+##    A bounded portability seam now lets gp71rejudge and fullresetlayout/fullresetreview use an
+##    exact `CF_BROWSER` or checked platform browser path. That enables a fresh current-only Mac
+##    export, but the absent scoped baseline still blocks Wave 2e A/B. Speciesstrip, speciesaudit,
+##    and hybridblendcheck remain separately Windows-bound; their historical Windows passes are not
+##    current Mac results.
 ## 5. Source-only implementation is static-green but deliberately UNJUDGED. Frozen pause SHAs:
 ##    quadruped `AE8E3830EF57233EB43ABE0F594E335A050A1DB3375F08781FF61549B0C6D288`; mammal
 ##    `74BBD77CD8BA8E3C22D503AD42FB667EDB74AF6ED3C73551ED283223B28CF80B`; fauna2
@@ -184,6 +185,11 @@
 ## 7. Bird reset FAIL scope is exhausted: B1–B3 exactly cover all 76 frozen-r1 Bird FAIL rows; do not
 ##    reopen the 26 frozen-PASS birds. Only after every remaining row closes may a clean 1,250 collector, final hybrid evidence,
 ##    literal certification and dated image-inclusive ZIP begin.
+## 8. Nick separately requested one full current-generation review archive on 2026-08-10. The
+##    bounded Mac producer may package all 1,250 current native portraits, current family packets,
+##    and a clean representative hybrid matrix only as `UNREVIEWED / CURRENT-ONLY`. It must bind a
+##    clean commit, preserve exact manifests/hashes, reject verdict/certification material, and state
+##    that the absent Wave 2e baseline still blocks old/current comparison and visual promotion.
 
 ## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
 ## Current side: OpenAI/Codex on macOS, branch openai/mac — scanner/tools repair commit 1e1497e is

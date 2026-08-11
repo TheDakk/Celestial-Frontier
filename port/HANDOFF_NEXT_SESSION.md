@@ -186,10 +186,11 @@ and deployment all remain **OPEN**.
    negative-control implementation cannot yet be independently verified on Mac. Do not substitute
    a new baseline or begin post-edit A/B promotion until the exact root is recovered, or Nick
    explicitly authorizes deterministic reconstruction from pre-edit `2ed0f28` and both frozen hashes
-   are reproduced. The browser path is separately Windows-bound: `gp71rejudge`, `speciesstrip`,
-   `speciesaudit`, `hybridblendcheck`, and `fullresetlayout` (including `fullresetreview`'s packet
-   compositor) hard-code the Windows Edge executable. Their prior Windows passes are not fresh Mac
-   evidence, and no portability repair is included in this scanner-only batch.
+   are reproduced. A bounded portability seam now lets `gp71rejudge` and
+   `fullresetlayout`/`fullresetreview` resolve an exact `CF_BROWSER` or checked platform browser,
+   which permits a separate current-only Mac export. That does not replace the absent scoped
+   baseline or unlock Wave 2e A/B. `speciesstrip`, `speciesaudit`, and `hybridblendcheck` remain
+   Windows-bound, and their prior Windows passes are not fresh Mac evidence.
 5. **Paused static-green source state; not a visual verdict:**
    `quadrupedoverrides.ts` `AE8E3830EF57233EB43ABE0F594E335A050A1DB3375F08781FF61549B0C6D288`;
    `mammaloverrides.ts` `74BBD77CD8BA8E3C22D503AD42FB667EDB74AF6ED3C73551ED283223B28CF80B`;

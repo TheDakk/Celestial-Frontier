@@ -373,11 +373,12 @@ tracked scoped-capture or reconstruction script. The documented hashes are not
 enough to recover the protected roster, pixels, or negative-control mechanics.
 Fail closed: recover the exact evidence or explicitly authorize deterministic
 reconstruction from pre-edit `2ed0f28` that reproduces both hashes before any
-current/repeat comparison or visual promotion. On Mac, the browser review path
-is separately blocked because `gp71rejudge`, `speciesstrip`, `speciesaudit`,
-`hybridblendcheck`, and `fullresetlayout` (including the `fullresetreview`
-compositor) hard-code Windows Edge. Prior Windows passes must not be promoted as
-fresh Mac gate results.
+current/repeat comparison or visual promotion. A bounded portability seam now
+lets `gp71rejudge` and `fullresetlayout`/`fullresetreview` resolve an exact
+`CF_BROWSER` or checked platform browser, so a separate current-only Mac export
+is possible. That does not restore the missing Wave 2e baseline or promote any
+historical Windows pass as a fresh Mac gate result. `speciesstrip`,
+`speciesaudit`, and `hybridblendcheck` remain separately Windows-bound.
 
 The known scanner false-positive is separately closed. Pinned Rolldown 1.2.1/Oxc
 parses each complete TypeScript art source as an AST; only literal string
@@ -632,9 +633,15 @@ The clean baseline sequence completed once at `bc26e8`; its 516/14/720 result is
 frozen. The command shape below remains mandatory for each future complete
 post-repair capture: first commit the independently reviewed and gate-green
 source on its protocol-owned agent branch, require a clean complete 40-hex HEAD,
-and write only to new never-overwritten directories. The current browser tools
-remain Windows-Edge-bound, so these commands run from `port/v2` on Windows until
-a separately reviewed portability repair lands:
+and write only to new never-overwritten directories. A bounded 2026-08-10
+portability seam lets `gp71rejudge --prepare`, `fullresetlayout --packets`, and
+`fullresetreview --compare` resolve an exact browser via `CF_BROWSER` or checked
+platform paths. Each comparison requires exact six-field browser-provenance
+equality across the current capture preparation, official layout packet
+manifest, and decisive comparison renderer, then binds that record into its
+comparison index. The missing historical baseline and separately Windows-bound
+review gates still block a Mac A/B promotion; comparator portability alone does
+not restore that evidence:
 
 ```powershell
 node tools/gp71rejudge.mjs --prepare --out=<NEW_CURRENT_EVIDENCE> --date=2026-08-10
@@ -680,27 +687,40 @@ npm.cmd run hybridmatrix -- --out=<NEW_CLEAN_HYBRID_EVIDENCE_NAME>
 Only after every row is PASS should packaging assemble native portraits,
 thumbnails, labelled/unlabeled family sheets, old/current comparisons,
 references, manifests, verdicts, gate transcript and provenance into the new
-dated ZIP. While the browser tools remain Windows-bound, run those captures in
-the protocol-owned `openai/windows` worktree; integrate by reviewed draft PR
-from the owning agent branch into `develop`. No `main` merge, release or
-deployment is authorized here.
+dated ZIP. The current capture/layout/comparison compositor is portable through
+the exact browser resolver; the remaining Windows-only gates and the historical
+evidence recovery still run in the protocol-owned `openai/windows` worktree.
+Integrate source only by reviewed draft PR from the owning agent branch into
+`develop`. No `main` merge, release or deployment is authorized here.
+
+Nick separately requested a **current full-generations review archive** on
+2026-08-10. It may contain the freshly rendered 1,250 native portraits, current
+labelled/unlabelled family packets, and clean representative hybrid matrix, but
+must be manifest-bound and visibly marked `UNREVIEWED / CURRENT-ONLY`. It must
+reject verdict and certification artifacts, state that Wave 2e old/current
+comparison is blocked by the missing ignored baseline, and never reuse the final
+certification ZIP name or claim a new catalogue tally. This is a review handoff,
+not the all-PASS image-inclusive package governed by the paragraph above.
 
 ## Immediate order
 
 1. Commit/push the independently reviewed Mac scanner repair on `openai/mac`
    and open only its draft PR into `develop`; do not claim a Wave-2e art verdict.
-2. OpenAI/Codex on Windows must first confirm `openai/windows` is clean, then
+2. Produce Nick's separate current-only review archive only from a clean,
+   committed Mac producer; preserve exact capture/layout/hybrid manifests and
+   keep every visual status unreviewed/open.
+3. OpenAI/Codex on Windows must first confirm `openai/windows` is clean, then
    recover/package the exact ignored Wave-2e pre-edit root plus its scoped
    capture/control recipe. Do not copy source files or begin a new baseline.
-3. After that evidence is verified against seal `BC424C8F…AA37` and index
+4. After that evidence is verified against seal `BC424C8F…AA37` and index
    `2AE4FDB1…26E3`, continue the 47-target post-edit A/B/repeat and independent
    review on the compatible clean worktree. Any substitute reconstruction needs
    Nick's explicit authorization and must reproduce both hashes from `2ed0f28`.
-4. Continue remaining r1 non-PASS rows only after Wave 2e closes, in bounded
+5. Continue remaining r1 non-PASS rows only after Wave 2e closes, in bounded
    owner/family waves. Preserve author separation and never edit a painter while
    its judge holds source frozen.
-5. After all rows close, repeat the complete clean 1,250 capture/layout/compare/
+6. After all rows close, repeat the complete clean 1,250 capture/layout/compare/
    collect sequence, rerun the clean hybrid matrix, and certify only a literal
    1,250/1,250 PASS result.
-6. Build the image-inclusive ZIP only after certification. Until then, keep
+7. Build the certification image-inclusive ZIP only after certification. Until then, keep
    GP7/GP7.1 quarantined and the full certification, ZIP, reset PR and release open.
