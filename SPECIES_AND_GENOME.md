@@ -5,7 +5,15 @@ overlay below matches `port/v2` as of 2026-08-11. ⚠ v1.8.9: every reader of th
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
-**Source of truth:** this doc is the DESIGN spec; main.js implements it.
+**Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
+runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract.
+
+> **2026-08-11 v2 executable-contract correction:** No genome, descriptor or
+> portrait output changed. The SpeciesTraits declaration now matches its tables:
+> `SP_COLOR` is a string list, `SP_HEX` is a string-to-hex record, and `FA_EYES`
+> is numeric. `colorGrade`/`spectral` options are genuinely optional, and the
+> grade option includes the runtime-supported suffix. Parity tests exercise the
+> shapes so later consumers cannot compile against a fictional table contract.
 
 > **2026-08-10 v2 full-catalogue reset:** `_earthName` identifies a fixed Earth
 > organism; bred descendants carry `_earthBlend`, `_earthBlendKingdom`, and

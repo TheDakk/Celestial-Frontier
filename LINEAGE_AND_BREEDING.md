@@ -43,8 +43,8 @@ Companion to `ART_DIRECTION.md` and `PROCEDURAL_CHARACTERISTICS.md`._
 > five stages are unique, preserve defining Vanilla organs, join continuously,
 > and drift progressively farther from pure as the anchor falls. The r6 matrix
 > validates 234/234 assets and both browser orders. `npm run hybridcheck` now
-> requires five exact ID+kingdom+name focused lineages covering all four kingdoms and rejects eleven
-> injected negative controls, including focused-species substitution and simulated Vanilla stage collapse.
+> requires five exact ID+kingdom+name focused lineages covering all four kingdoms and rejects fourteen
+> injected negative controls, including focused-species substitution, simulated Vanilla stage collapse and protected-route controls.
 > Schema v2's Green Algae stop was a real harness contract bug, not transient
 > provenance; schema v3 repairs current-catalogue vs retained-legacy-route
 > ownership and its sentinels are green. These focused results do not certify

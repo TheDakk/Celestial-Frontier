@@ -374,17 +374,82 @@ try {
     const setsHidden = document.getElementById('setpanel').style.display === 'none';
     document.getElementById('docksets').click();
     const rst = !!document.getElementById('setrestart');
+    const imp = !!document.getElementById('setimport');
     const vol = document.getElementById('setvol');
     vol.value = '30'; vol.dispatchEvent(new Event('input'));
     const v = st().sfxVol;
     document.querySelector('#setpanel [data-pnx]').click();
     const c = st().panelOpen;
-    return { a, b, setsHidden, v, c, rst }; })()`);
+    return { a, b, setsHidden, v, c, rst, imp }; })()`);
   if (law.a !== 'set') fails.push('settings panel did not open: ' + JSON.stringify(law.a));
   if (law.b !== 'codex' || !law.setsHidden) fails.push('ONE-PANEL LAW BROKEN — opening codex left settings up: ' + JSON.stringify(law));
   if (Math.abs(law.v - 0.3) > 1e-9) fails.push('volume slider did not drive save.sfxVol: ' + JSON.stringify(law.v));
   if (law.c !== null) fails.push('the corner ✕ did not close the panel: ' + JSON.stringify(law.c));
   if (!law.rst) fails.push('Settings lost the Restart-training control (the game promise)');
+  if (!law.imp) fails.push('Settings lost the Bring-expedition import control');
+
+  /* THE GUIDE IS A REAL PLAYER SURFACE, not merely persisted `guide` data or
+     developer Markdown. It replaces the dock's old import shortcut; import
+     remains reachable through Settings. Prove all seven bounded live topics,
+     the changed travel/save vocabulary and the persisted seen outcome. */
+  const guideCheck = `(()=>{ const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel');
+    const rows=panel?[...panel.querySelectorAll('[data-sel=guide-topic]')]:[];
+    const ids=rows.map((row)=>row.getAttribute('data-guide-topic'));
+    const required=['travel','land','atlas','charters','compendium','training','saves'];
+    const text=panel?.textContent||'';
+    return { open:S.api.state().panelOpen==='guide'&&!!panel&&panel.style.display!=='none',
+      ids,missing:required.filter((id)=>!ids.includes(id)),count:rows.length,text,
+      seen:S.api.state().seenGuide,
+      words:/Enter galaxy/.test(text)&&/Enter system/.test(text)&&/Land/.test(text)&&/Leave world/.test(text)
+        &&/Bring expedition/.test(text)&&/Save protected/.test(text),
+      stale:/double[- ]tap|tap twice|travels there instantly/i.test(text) }; })()`;
+  await evalIn(`(()=>{ const button=document.getElementById('dockguide'); button.focus(); button.click(); return true; })()`);
+  const guide = await evalIn(guideCheck);
+  if (!guide.open || guide.count !== 7 || guide.missing.length || !guide.seen || !guide.words || guide.stale) {
+    fails.push('GUIDE surface is missing live topics/copy or retained stale controls: ' + JSON.stringify(guide));
+  }
+  /* Negative control: make one required topic undiscoverable. The exact same
+     checker must identify `land`, or a green seven-topic result is vacuous. */
+  const guideCtl = await evalIn(`(()=>{ const row=document.querySelector('#guidepanel [data-guide-topic="land"]');
+    const prior=row&&row.getAttribute('data-guide-topic'); if(row) row.setAttribute('data-guide-topic','control-land');
+    const result=${guideCheck}; if(row) row.setAttribute('data-guide-topic',prior); return result; })()`);
+  if (!guideCtl.missing.includes('land')) {
+    fails.push('GUIDE CONTROL FAILED — removing the planetfall topic stayed green: ' + JSON.stringify(guideCtl));
+  }
+  /* Negative control in the other direction: append a known-obsolete gesture
+     claim without changing topic structure. The same checker must flag the
+     stale copy, or its vocabulary guard is only decorative. */
+  const guideStaleCtl = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel');
+    const marker=document.createElement('span'); marker.textContent='double-tap dives'; panel.appendChild(marker);
+    const result=${guideCheck}; marker.remove(); return result; })()`);
+  if (!guideStaleCtl.stale) {
+    fails.push('GUIDE CONTROL FAILED — injected stale double-tap copy stayed green: ' + JSON.stringify(guideStaleCtl));
+  }
+  const guideFocusBack = await evalIn(`(()=>{ document.querySelector('#guidepanel [data-pnx]').click();
+    return document.activeElement&&document.activeElement.id; })()`);
+  if (guideFocusBack !== 'dockguide') fails.push('closing Guide did not restore focus to its opener: ' + JSON.stringify(guideFocusBack));
+  /* Persisted means durable storage plus a new-document restore, not merely a
+     synchronous in-memory flag that some later unrelated save might carry. */
+  await waitDesktopValue('Guide seen-state storage commit', `new Promise((resolve)=>{ const q=indexedDB.open('cf-v2-slice');
+    q.onerror=()=>resolve(null); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
+      g.onsuccess=()=>{ let guide=0; try{guide=JSON.parse(String(g.result||''))?.guide||0}catch{} db.close(); resolve(guide===1?guide:null); };
+      g.onerror=()=>{db.close();resolve(null)}; }; })`);
+  await navigateToSlice(sess, URL0, 'Guide seen-state reload');
+  const guideReload = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (!guideReload.seenGuide) fails.push('GUIDE seen-state did not survive its isolated storage/reload outcome');
+
+  const importAccess = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
+    document.getElementById('docksets').click();
+    const button=document.getElementById('setimport'); if(button) button.click();
+    const sheet=document.getElementById('importsheet');
+    return { button:!!button, open:!!sheet&&sheet.style.display!=='none', panel:S.api.state().panelOpen,
+      focus:document.activeElement&&document.activeElement.id,
+      oldDock:!!document.getElementById('docksave') }; })()`);
+  if (!importAccess.button || !importAccess.open || importAccess.panel !== null
+    || importAccess.focus !== 'importtext' || importAccess.oldDock) {
+    fails.push('SETTINGS IMPORT path is missing, unfocused, or still duplicated in the dock: ' + JSON.stringify(importAccess));
+  }
+  await evalIn(`(()=>{ document.getElementById('importclose').click(); return true; })()`);
   /* FOCUS RESTORATION: closing returns focus to the opener button */
   const focusBack = await evalIn(`(()=>{ const b=document.getElementById('docksets');
     b.focus(); b.click();
@@ -421,6 +486,38 @@ try {
     }
   }
   const planetShareCode = surveyed.planetCode;
+  /* Same numeric seed is not a complete star identity. Reproduce the stale-
+     card exploit directly: survey real Sol/Earth, move to a forged-coordinate
+     Sol node accepted by the still-open CF1 hierarchy boundary, then ask the
+     dock to reopen/land/share the prior card. Every effect must be refused. */
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
+  await waitDesktopValue('stale-card setup ascent', `window.__CF_SLICE__.api.state().mode==='galaxy'`);
+  await evalIn(`window.__CF_SLICE__.api.descendSystem({seed:424242,x:9999,y:9999})`);
+  await waitDesktopValue('stale-card forged-coordinate setup', `(()=>{ const s=window.__CF_SLICE__.api.state();
+    return s.mode==='system'&&s.star===424242&&s.starX===9999&&s.starY===9999?s:null; })()`);
+  const staleCardBlocked = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
+    const atlasBefore=S.api.state().atlasCount; document.getElementById('docksurvey').click();
+    const share=S.api.cardShareCode(); document.querySelector('#survey [data-act="add"]')?.click(); S.api.landHere();
+    const s=S.api.state(); return {mode:s.mode,cardOpen:s.cardOpen,share,landed:s.save.landed.slice(),
+      atlasBefore,atlasAfter:s.atlasCount,starX:s.starX,starY:s.starY}; })()`);
+  if (staleCardBlocked.mode !== 'system' || staleCardBlocked.cardOpen || staleCardBlocked.share !== null
+    || staleCardBlocked.atlasAfter !== staleCardBlocked.atlasBefore || staleCardBlocked.landed.includes(133)
+    || staleCardBlocked.starX !== 9999 || staleCardBlocked.starY !== 9999) {
+    fails.push('STALE CARD IDENTITY: real-Sol Earth card acted inside same-seed forged coordinates: ' + JSON.stringify(staleCardBlocked));
+  }
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
+  await waitDesktopValue('stale-card return to galaxy', `window.__CF_SLICE__.api.state().mode==='galaxy'`);
+  await evalIn(`window.__CF_SLICE__.api.descendSystem({seed:424242,x:560,y:170})`);
+  await waitDesktopValue('stale-card return to real Sol', `(()=>{ const s=window.__CF_SLICE__.api.state();
+    return s.mode==='system'&&s.starX===560&&s.starY===170?s:null; })()`);
+  const restoredEarthCard = await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.api.surveyOn(2); return S.api.state(); })()`);
+  if (!restoredEarthCard.cardOpen || restoredEarthCard.cardTitle !== 'Earth') {
+    fails.push('STALE CARD IDENTITY: real Earth card did not recover after rejected forged context: ' + JSON.stringify(restoredEarthCard));
+  }
   await evalIn(`window.__CF_SLICE__.api.landHere()`);
   await sleep(300);
   /* THE LIVING PLANETSIDE: Earth's ground survey shows its real roster,
@@ -487,8 +584,9 @@ try {
   await sleep(500);
   const repeatLand = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (!repeatLand.objective.includes('1 / 2')) fails.push('repeat Earth landing double-credited chapter progression: ' + JSON.stringify(repeatLand.objective));
-  /* Escape first closes an open survey card, then climbs. Drive the actual
-     focus law to its outcome rather than assuming the card state away. */
+  /* Escape consumes any open surface card while lifting in the same action;
+     from outer modes it closes a card before the next press climbs. Drive the
+     actual focus law to its outcome rather than assuming card state away. */
   for (let i = 0; i < 5; i++) {
     if (await evalIn(`window.__CF_SLICE__.api.state().mode`) === 'universe') break;
     await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
@@ -736,6 +834,70 @@ try {
   if (!phChromeCtl.some((b) => b === 'hintpill overlaps dock')) {
     fails.push('PHONE LOWER CHROME CONTROL FAILED — an injected hint/dock overlap went unseen: ' + JSON.stringify(phChromeCtl));
   }
+  /* Settings import is a true modal outcome. It must cover the high-z phone
+     dock, own focus, and consume Escape instead of letting the world behind it
+     close a card or ascend. Recreate the old z=11 layering as the control. */
+  const phoneImportModalCheck = `(()=>{ const sheet=document.getElementById('importsheet'),dock=document.getElementById('dock'),probe=document.getElementById('dockguide');
+    if(!sheet||!dock||!probe) return {ok:false,why:'missing'};
+    const b=probe.getBoundingClientRect(),x=(b.left+b.right)/2,y=(b.top+b.bottom)/2,hit=document.elementFromPoint(x,y);
+    const ss=getComputedStyle(sheet),ds=getComputedStyle(dock),visible=ss.display!=='none'&&ss.visibility!=='hidden';
+    const blocked=!!hit&&sheet.contains(hit),focus=document.activeElement&&document.activeElement.id;
+    return {ok:visible&&blocked&&Number(ss.zIndex)>Number(ds.zIndex)&&focus==='importtext',visible,blocked,focus,
+      sheetZ:ss.zIndex,dockZ:ds.zIndex,hit:hit&&(hit.id||hit.tagName),mode:window.__CF_SLICE__.api.state().mode}; })()`;
+  await evalPh(`(()=>{ document.getElementById('docksets').click(); document.getElementById('setimport').click(); return true; })()`);
+  const phoneImportModal = await evalPh(phoneImportModalCheck);
+  if (!phoneImportModal.ok) {
+    fails.push('PHONE SETTINGS IMPORT: modal did not own focus/stacking over the dock: ' + JSON.stringify(phoneImportModal));
+  }
+  const phoneImportModalCtl = await evalPh(`(()=>{ const sheet=document.getElementById('importsheet'),prior=sheet.style.zIndex;
+    sheet.style.zIndex='11'; const result=${phoneImportModalCheck}; sheet.style.zIndex=prior; return result; })()`);
+  if (phoneImportModalCtl.ok || phoneImportModalCtl.blocked) {
+    fails.push('PHONE SETTINGS IMPORT CONTROL FAILED — injected low-z modal still blocked the dock: ' + JSON.stringify(phoneImportModalCtl));
+  }
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Tab', code: 'Tab', modifiers: 8 }, ph);
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab', modifiers: 8 }, ph);
+  const phoneImportShiftWrap = await evalPh(`document.activeElement&&document.activeElement.id`);
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Tab', code: 'Tab' }, ph);
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab' }, ph);
+  const phoneImportForwardWrap = await evalPh(`document.activeElement&&document.activeElement.id`);
+  if (phoneImportShiftWrap !== 'importclose' || phoneImportForwardWrap !== 'importtext') {
+    fails.push('PHONE SETTINGS IMPORT: modal focus did not wrap internally: '
+      + JSON.stringify([phoneImportShiftWrap, phoneImportForwardWrap]));
+  }
+  const phoneImportMode = phoneImportModal.mode;
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, ph);
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, ph);
+  const phoneImportClosed = await evalPh(`(()=>{ const sheet=document.getElementById('importsheet'),s=window.__CF_SLICE__.api.state();
+    return {closed:sheet.style.display==='none',mode:s.mode,focus:document.activeElement&&document.activeElement.id}; })()`);
+  if (!phoneImportClosed.closed || phoneImportClosed.mode !== phoneImportMode || phoneImportClosed.focus !== 'docksets') {
+    fails.push('PHONE SETTINGS IMPORT: Escape did not close only the modal and restore focus: ' + JSON.stringify(phoneImportClosed));
+  }
+  /* A high-z panel that merely fits the viewport can still bury the dock's
+     top row. Open the real Guide at 390×844 and compare rendered rectangles;
+     the shared panel cap must leave a visible gap above the measured dock. */
+  const phoneGuideClearanceCheck = `(()=>{ const panel=document.getElementById('guidepanel'),dock=document.getElementById('dock');
+    if(!panel||!dock) return {ok:false,why:'missing'};
+    const p=panel.getBoundingClientRect(),d=dock.getBoundingClientRect(),cs=getComputedStyle(panel);
+    const visible=cs.display!=='none'&&cs.visibility!=='hidden'&&p.width>0&&p.height>0;
+    const gap=d.top-p.bottom;
+    return {ok:visible&&gap>=8,visible,gap,maxHeight:cs.maxHeight,
+      panel:{top:p.top,bottom:p.bottom,height:p.height},dock:{top:d.top,bottom:d.bottom,height:d.height}}; })()`;
+  await evalPh(`(()=>{ document.getElementById('dockguide').click(); return true; })()`);
+  const phoneGuideClearance = await evalPh(phoneGuideClearanceCheck);
+  if (!phoneGuideClearance.ok) {
+    fails.push('PHONE GUIDE CLEARANCE: the open panel does not clear the measured dock by 8px: ' + JSON.stringify(phoneGuideClearance));
+  }
+  /* Recreate the superseded shared-panel cap exactly. With the full seven
+     topics it extends over the dock; the same rectangle checker must turn
+     red before the current cap is restored. */
+  const phoneGuideClearanceCtl = await evalPh(`(()=>{ const panel=document.getElementById('guidepanel'),prior=panel.style.maxHeight;
+    panel.style.maxHeight='calc(100vh - var(--topbar-h) - 96px)'; const result=${phoneGuideClearanceCheck};
+    panel.style.maxHeight=prior; return result; })()`);
+  if (phoneGuideClearanceCtl.ok || !(phoneGuideClearanceCtl.gap < 0)) {
+    fails.push('PHONE GUIDE CLEARANCE CONTROL FAILED — the injected old max-height did not reproduce dock overlap: '
+      + JSON.stringify(phoneGuideClearanceCtl));
+  }
+  await evalPh(`(()=>{ document.querySelector('#guidepanel [data-pnx]').click(); return true; })()`);
   const phPainted = await evalPh(`(async()=>{ const S=window.__CF_SLICE__;
     const px=await S.app.renderer.extract.pixels({ target: S.app.stage, frame: S.app.renderer.screen });
     const d=px.pixels||px; let lit=0; for(let i=0;i<d.length;i+=4){ if(d[i]+d[i+1]+d[i+2]>60) lit++; } return lit; })()`);
@@ -770,6 +932,16 @@ try {
     const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, navPh);
     if (r.exceptionDetails) throw new Error('phone navigation eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
     return r.result.value;
+  };
+  const waitNavPhValue = async (label, expr, timeoutMs = 6000) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = null;
+    while (Date.now() < deadline) {
+      last = await evalNavPh(expr);
+      if (last) return last;
+      await sleep(50);
+    }
+    throw new Error(`${label} did not reach its phone outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
   await evalNavPh(`(()=>{ document.querySelector('[data-sel=tutskip]').click(); return true; })()`);
   await sleep(300);
@@ -820,6 +992,94 @@ try {
     fails.push('PHONE TRAVEL: touching the visible card action did not enter the exact Milky Way node: '
       + JSON.stringify([phoneDive.mode, phoneDive.gal, phoneDive.galX, phoneDive.galY]));
   }
+
+  /* 4d1-planetfall. Touch devices need a complete round trip, not merely a
+     way down: survey Earth, touch the real 44px Land action, then touch the
+     surface card's real 44px Leave-world action back to system. A desktop
+     Escape assertion cannot prove either control exists or can be reached. */
+  await evalNavPh(`(()=>{ window.__CF_SLICE__.api.descendSystem({seed:424242,x:560,y:170}); return true; })()`);
+  await waitNavPhValue('phone Sol setup', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'&&s.star===424242?s:null; })()`);
+  await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(2); })()`);
+  /* Help requested from an open body card must be readable above that card.
+     Global panel z cannot change because Training relies on Atlas below the
+     survey; prove the Guide-specific z24 layer and recreate z22 as control. */
+  const phoneGuideOverCardCheck = `(()=>{ const guide=document.getElementById('guidepanel'),survey=document.getElementById('survey');
+    if(!guide||!survey) return {ok:false,why:'missing'}; const g=guide.getBoundingClientRect(),s=survey.getBoundingClientRect();
+    const l=Math.max(g.left,s.left),r=Math.min(g.right,s.right),t=Math.max(g.top,s.top),b=Math.min(g.bottom,s.bottom);
+    if(!(r>l&&b>t)) return {ok:false,why:'no-overlap',guide:{x:g.x,y:g.y,w:g.width,h:g.height},survey:{x:s.x,y:s.y,w:s.width,h:s.height}};
+    const x=(l+r)/2,y=(t+b)/2,hit=document.elementFromPoint(x,y),gz=Number(getComputedStyle(guide).zIndex),sz=Number(getComputedStyle(survey).zIndex);
+    return {ok:guide.style.display!=='none'&&gz>sz&&!!hit&&guide.contains(hit),x,y,gz,sz,
+      hit:hit&&(hit.id||hit.getAttribute&&hit.getAttribute('data-guide-topic')||hit.tagName)}; })()`;
+  await evalNavPh(`(()=>{ document.getElementById('dockguide').click(); return true; })()`);
+  const phoneGuideOverCard = await evalNavPh(phoneGuideOverCardCheck);
+  if (!phoneGuideOverCard.ok) {
+    fails.push('PHONE GUIDE LAYER: Guide did not render above a real Earth survey card: ' + JSON.stringify(phoneGuideOverCard));
+  }
+  const phoneGuideOverCardCtl = await evalNavPh(`(()=>{ const guide=document.getElementById('guidepanel'),prior=guide.style.zIndex;
+    guide.style.zIndex='22'; const result=${phoneGuideOverCardCheck}; guide.style.zIndex=prior; return result; })()`);
+  if (phoneGuideOverCardCtl.ok || !(phoneGuideOverCardCtl.gz < phoneGuideOverCardCtl.sz)) {
+    fails.push('PHONE GUIDE LAYER CONTROL FAILED — injected z22 Guide stayed above the survey: ' + JSON.stringify(phoneGuideOverCardCtl));
+  }
+  await evalNavPh(`(()=>{ document.querySelector('#guidepanel [data-pnx]').click(); return true; })()`);
+  const phoneCardActionCheck = (act) => `(()=>{ const S=window.__CF_SLICE__,state=S.api.state();
+    const button=document.querySelector('#survey [data-act="${act}"]');
+    if(!button) return {state,ok:false,why:'missing'};
+    const b=button.getBoundingClientRect(),x=(b.left+b.right)/2,y=(b.top+b.bottom)/2;
+    const hit=document.elementFromPoint(x,y);
+    return {state,ok:b.width>0&&b.height>=44&&!!hit&&button.contains(hit),label:(button.textContent||'').trim(),
+      x,y,w:b.width,h:b.height,hit:hit&&(hit.id||hit.getAttribute&&hit.getAttribute('data-act')||hit.tagName)}; })()`;
+  const phoneLand = await evalNavPh(phoneCardActionCheck('landcta'));
+  if (phoneLand.state.mode !== 'system' || !phoneLand.state.cardOpen || !phoneLand.ok || !/Land/.test(phoneLand.label)) {
+    fails.push('PHONE PLANETFALL: Earth did not expose a reachable 44px Land action: ' + JSON.stringify(phoneLand));
+  }
+  if (phoneLand.ok) await touchNav(phoneLand.x, phoneLand.y);
+  const phoneSurface = await waitNavPhValue('phone Earth landing', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='surface'?s:null; })()`);
+  if (!phoneSurface.save.landed.includes(133) || !phoneSurface.objective.includes('1 / 2')) {
+    fails.push('PHONE PLANETFALL: touch landing did not bank exactly the first Earth outcome: ' + JSON.stringify(phoneSurface));
+  }
+  const phoneLeave = await evalNavPh(phoneCardActionCheck('leaveworld'));
+  if (!phoneLeave.ok || phoneLeave.label !== '⬆ Leave world') {
+    fails.push('PHONE PLANETFALL: surface did not expose its exact reachable 44px Leave-world action: ' + JSON.stringify(phoneLeave));
+  }
+  /* Both failure directions are required. Missing: remove the routing
+     attribute without moving geometry. Buried: keep the element but make its
+     centre click through. Restore each mutation before the real touch. */
+  if (phoneLeave.ok) {
+    const phoneLeaveMissingCtl = await evalNavPh(`(()=>{ const button=document.querySelector('#survey [data-act="leaveworld"]');
+      button.removeAttribute('data-act'); const result=${phoneCardActionCheck('leaveworld')};
+      button.setAttribute('data-act','leaveworld'); return result; })()`);
+    if (phoneLeaveMissingCtl.ok || phoneLeaveMissingCtl.why !== 'missing') {
+      fails.push('PHONE LEAVE CONTROL FAILED — an injected missing action stayed green: ' + JSON.stringify(phoneLeaveMissingCtl));
+    }
+    const phoneLeaveBuriedCtl = await evalNavPh(`(()=>{ const button=document.querySelector('#survey [data-act="leaveworld"]'),prior=button.style.pointerEvents;
+      button.style.pointerEvents='none'; const result=${phoneCardActionCheck('leaveworld')};
+      button.style.pointerEvents=prior; return result; })()`);
+    if (phoneLeaveBuriedCtl.ok) {
+      fails.push('PHONE LEAVE CONTROL FAILED — an injected buried action stayed green: ' + JSON.stringify(phoneLeaveBuriedCtl));
+    }
+    await touchNav(phoneLeave.x, phoneLeave.y);
+  }
+  const phoneLifted = await waitNavPhValue('phone Leave-world return', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'?s:null; })()`);
+  if (phoneLifted.cardOpen || !phoneLifted.save.landed.includes(133) || !phoneLifted.objective.includes('1 / 2')) {
+    fails.push('PHONE PLANETFALL: Leave world changed landing credit or left the surface card open: ' + JSON.stringify(phoneLifted));
+  }
+  /* The HUD/Guide also promise Escape as a lift-off path. Re-land without a
+     second reward, then prove ONE Escape consumes the open surface card and
+     ascends in the same action rather than merely hiding the card. */
+  await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(2); })()`);
+  const phoneReland = await evalNavPh(phoneCardActionCheck('landcta'));
+  if (!phoneReland.ok) fails.push('PHONE ESCAPE LIFT: repeat Earth card lost its Land action: ' + JSON.stringify(phoneReland));
+  else await touchNav(phoneReland.x, phoneReland.y);
+  await waitNavPhValue('phone repeat Earth landing', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='surface'&&s.cardOpen?s:null; })()`);
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, navPh);
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, navPh);
+  const phoneEscapeLifted = await waitNavPhValue('phone single-Escape lift', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'?s:null; })()`);
+  if (phoneEscapeLifted.cardOpen || !phoneEscapeLifted.objective.includes('1 / 2')) {
+    fails.push('PHONE ESCAPE LIFT: one Escape did not lift cleanly or repeat landing paid again: ' + JSON.stringify(phoneEscapeLifted));
+  }
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, navPh);
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, navPh);
+  await waitNavPhValue('phone return to galaxy after planetfall', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='galaxy'?s:null; })()`);
 
   /* 4d0-charter. Drive a REAL non-Sol fine-star body and card action while
      this phone origin is still stage 0. The action must flow through the
@@ -1156,12 +1416,30 @@ try {
   await sleep(1500);
   await evalT(`(()=>{ window.__CF_SLICE__.api.surveyOn(2); return 1; })()`);   /* tap Earth = survey */
   if (await step() !== 'survey-tour') fails.push('DRILL: surveying Earth did not advance find-earth: ' + await step());
+  const surveyTourCopy = await evalT(`(document.querySelector('[data-sel=tuttext]')||{}).textContent||''`);
+  if (!/press Land on a world card/i.test(surveyTourCopy) || /dive toward a world/i.test(surveyTourCopy)) {
+    fails.push('DRILL COPY: survey-tour does not teach the real explicit Land action: ' + JSON.stringify(surveyTourCopy));
+  }
   const shotTut = await send('Page.captureScreenshot', { format: 'png' }, tr);
   fs.writeFileSync(path.join(OUT, 'slice-training.png'), Buffer.from(shotTut.data, 'base64'));
   await evalT(`(()=>{ document.querySelector('[data-sel=tutbtn]').click(); return 1; })()`);
   if (await step() !== 'atlas-add') fails.push('DRILL: Got It did not reach atlas-add: ' + await step());
+  const atlasAddCopy = await evalT(`(()=>{ const text=(document.querySelector('[data-sel=tuttext]')||{}).textContent||'';
+    const label=(document.querySelector('#survey [data-act=add]')||{}).textContent||'';
+    return {text,label:label.trim()}; })()`);
+  if (!/highlighted Star Atlas action/i.test(atlasAddCopy.text)
+    || /\+ Add to Star Atlas|Confirm in Star Atlas/i.test(atlasAddCopy.text)
+    || atlasAddCopy.label !== '+ Add to Star Atlas') {
+    fails.push('DRILL COPY: Atlas instruction is not label-neutral across fresh/replay actions: ' + JSON.stringify(atlasAddCopy));
+  }
   await evalT(`(()=>{ document.querySelector('#survey [data-act=add]').click(); return 1; })()`);
   if (await step() !== 'atlas-open') fails.push('DRILL: +Add did not advance (atlas-add event): ' + await step());
+  const atlasOpenCopy = await evalT(`(document.querySelector('[data-sel=tuttext]')||{}).textContent||''`);
+  if (!/returns to its live system survey/i.test(atlasOpenCopy)
+    || !/Land remains your choice/i.test(atlasOpenCopy)
+    || /travels there instantly/i.test(atlasOpenCopy)) {
+    fails.push('DRILL COPY: Atlas travel still implies direct/automatic planetfall: ' + JSON.stringify(atlasOpenCopy));
+  }
   const atl = await evalT(`window.__CF_SLICE__.api.state().atlasCount`);
   if (atl !== 1) fails.push('DRILL: Earth did not land in the Atlas: ' + atl);
   await evalT(`(()=>{ document.getElementById('railatlas').click(); return 1; })()`);
@@ -1195,6 +1473,6 @@ try {
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · SURVEY-FIRST (one tap = the galaxy card + ping, explicit Enter action = dive; real 390×844 touch outcome; COSMIC_EPOCH ticking) · CHARTER stage-0 gate live · Milky Way · Sol · LANDED ON EARTH with the survey card speaking · THE REAL SAVE SURVIVED RELOAD (importSaveV2 ⇄ exportSaveV2 through IndexedDB) · ZOOM LADDER with the empty-space control · Sun marker + fine stars at depth · GATE C REHEARSED (garbage refused; the veteran fixture imported through the sheet path and booted as Dakk, surface view restored) · THE PHONE LEG (390×844 @3x, touch): veteran followed across targets, painted, pinch zooms · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · GUIDE (seven live topics, stale-copy controls, persisted seen state) · SETTINGS IMPORT reachable and focused · SURVEY-FIRST (one tap = the galaxy card + ping, explicit Enter action = dive; real 390×844 touch outcome; COSMIC_EPOCH ticking) · CHARTER stage-0 gate live · Milky Way · Sol · LANDED ON EARTH with the survey card speaking · THE REAL SAVE SURVIVED RELOAD (importSaveV2 ⇄ exportSaveV2 through IndexedDB) · ZOOM LADDER with the empty-space control · Sun marker + fine stars at depth · GATE C REHEARSED (garbage refused; the veteran fixture imported through the sheet path and booted as Dakk, surface view restored) · THE PHONE LEG (390×844 @3x, touch): Land → Leave world round-trip, veteran followed across targets, painted, pinch zooms · zero console errors.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-earth · slice-solmark · slice-phone');
 process.exit(0);

@@ -26,6 +26,15 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 `ROADMAP.md` (current state), and `celestial-frontier-codebase-reference.md`.
 (`HANDOFF.md` is a frozen v1.0 handoff, kept for history — not current state.)
 
+Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
+workspace plus a playable Pixi/browser slice. Its current Guide is a bounded
+field manual for the systems already live in that slice, and its Field Training
+currently covers the six chart/travel/landing lessons plus an honest graduation.
+The legacy game's full searchable Guide, tooltip deep-links, advanced briefings,
+and the rest of its 21-step training arc are still port work—not silently claimed as
+complete. From `port/v2`, run `npm install`, `npm test`, `npm run typecheck`, and
+`npm run smoke`; see its README for the full current battery and open gates.
+
 ## Develop
 
 ```
@@ -41,7 +50,7 @@ node tools/smoke.js        # jsdom interaction suite (~553 checks incl. the
                            #   full 21-step Field Training tutorial)
 node tools/uilayout.js     # a REAL headless browser: computed boxes + 44px touch
                            #   floors + elementFromPoint hit-tests across 10
-                           #   viewports (~763 checks). jsdom has NO layout, so
+                           #   viewports (787 checks). jsdom has NO layout, so
                            #   this is the only gate that sees a CSS rule which is
                            #   present, correct and completely inert.
 node tools/balance-sim.js  # archetype win-rate band + ability-theme art band
@@ -75,11 +84,14 @@ node tools/sizedrift-check.js
                            #   load unchanged. A clamp added in one release rewrote
                            #   ~12% of bred creatures into titanic ones on next load;
                            #   this fails on that build and passes on the fix.
+node tools/harvestclock-check.js
+                           # CLOCK GUARD. Winds the device clock forward a day and
+                           #   proves a settled world grants no offline harvest.
 ```
 
 Each of the above accepts a build to test (`--url=` / `--src=`), so a new check can be
 replayed against an older build to prove it catches the bug it was written for. Do that
-before believing a pass: seven checks in this project's history have gone green while the
+before believing a pass: multiple checks in this project's history have gone green while the
 thing they guarded was broken.
 
 **Play it live:** https://celestialfrontier.github.io/ — this repo is the source of

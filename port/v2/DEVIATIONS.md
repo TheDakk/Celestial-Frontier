@@ -970,6 +970,37 @@ duplicates).
   copy and controls. The port owns a 206×98 4×2 phone dock, publishes measured `--dock-h`/`--ctx-h`,
   and derives every lower anchor from them. Browser smoke asserts pairwise clearance, row geometry,
   button hit targets and CSS-variable equality, with an injected old-style overlap that must fail.
+- ★ **D-UI-2 — DPR-scaled pixels and player input share one coordinate space (2026-08-11).**
+  Pixi now uses `autoDensity`, keeping a DPR-scaled backing store inside a viewport-sized CSS
+  canvas instead of doubling the displayed box and halving pointer coordinates on DPR-2 phones.
+  Galaxy and star survey cards expose explicit minimum-44px Enter actions, so a card covering its
+  selected body cannot make navigation depend on a second canvas tap. Touch Planetside likewise
+  exposes a minimum-44px **Leave world** action through the same ascent path as Escape/right-click.
+  Planet-card actions also bind the captured galaxy+star `{seed,x,y}` composite, not seed alone.
+  Browser smoke drives the real touch and desktop outcomes and rejects injected density, buried-
+  action and same-seed/different-coordinate stale-card regressions.
+- ★ **D-GUIDE-1 — the dock Guide describes only what this slice can actually do (2026-08-11).**
+  The former dock import shortcut is now a working seven-topic **Guide to the Universe** covering
+  live travel, planetfall, Atlas/sharing, Charters/reach, Compendium/Records, Field Training and save
+  protection; first open persists `seenGuide`. Import moved to **Settings → Bring expedition** and
+  still enters the one guarded loader through a top-layer `aria-modal` dialog with internal Tab
+  wrapping and Escape/focus restoration; the old low-z click-through state is a negative control.
+  Guide alone uses z24 above the z23 survey card so help remains readable without disturbing the
+  other panels' Training order; a real card intersection and injected z22 layer are browser controls.
+  The legacy searchable encyclopedia, tooltip deep-links and
+  Advanced Briefings remain OPEN rather than being represented by a dead or overclaiming surface.
+- ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
+  six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
+  the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson
+  without paying duplicate landfall progress. Cache, feed, breed, duel, hazard, healing, forge and
+  the rest of the legacy 21-step curriculum remain OPEN. D-TRAIN-1 separately guards the imported
+  full-expedition `tsnap` restoration boundary.
+- ★ **D-ART-LOAD — lazy art readiness is shared but invalidation is bounded per view (2026-08-11).**
+  One in-flight import Promise now accepts the latest callback for each of Compendium, Planetside
+  and prefetch. An idle prefetch can no longer swallow a later view subscription, while a 1,500-row
+  Compendium registers once outside its row map instead of retaining 1,500 callbacks and launching
+  1,500 full-list rerenders when the chunk resolves. Import failure clears the Promise for a later
+  retry; Compendium virtualization and texture-memory proof remain OPEN.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds
@@ -1630,8 +1661,8 @@ duplicates).
   `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`: the pure portrait stays
   byte-exact, all five stages preserve defining Vanilla organs with continuous joins, and pixel
   distance from pure increases as the anchor falls. The r6 matrix validates 234/234 assets in both
-  browser orders. `hybridcheck` now requires five exact ID+kingdom+name focused lineages spanning all four kingdoms and
-  rejects eleven injected failures, including focused-species substitution and a simulated Vanilla stage collapse. **A representative
+  browser orders. This repair introduced a guard with five exact ID+kingdom+name focused lineages spanning all four kingdoms and
+  eleven injected failures; the current guard has since grown to **fourteen**, including focused-species substitution, a simulated Vanilla stage collapse and protected-route controls. **A representative
   lineage test cannot protect an omitted lineage; put the reported failure itself in the positive
   set and reproduce it in the negative set.**
 

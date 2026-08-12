@@ -40,16 +40,16 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
     },
     {
       id: 'survey-tour', spot: '#survey', btn: 'Got It', allow: ['#survey'],
-      text: () => 'This is a <b>survey card</b> — every world, star and galaxy has one: atmosphere, climate, life, hazards. The universe is generated, so every explorer sees this exact card at Earth. A card is only the view from orbit — dive toward a world and confirm the descent to land, and the ground survey opens the rest.',
+      text: () => 'This is a <b>survey card</b> — every world, star and galaxy has one: atmosphere, climate, life, hazards. The universe is generated, so every explorer sees this exact card at Earth. A card is only the view from orbit — press <b>Land</b> on a world card to make planetfall, and the ground survey opens the rest.',
     },
     {
       id: 'atlas-add', spot: '#survey [data-act="add"]', allow: ['#survey'],
-      text: () => 'Chart it. Tap <b>+ Add to Star Atlas</b> on Earth’s card — the Atlas is how you find your way back across the infinite.',
+      text: () => 'Chart it. Tap the highlighted <b>Star Atlas</b> action on Earth’s card — it adds a new chart or confirms the one you already carry. The Atlas is how you find your way back across the infinite.',
       when: (t, d) => t === 'atlas-add' && d.id === 'p133',
     },
     {
       id: 'atlas-open', spot: '#dockatlas', allow: ['#dockatlas', '#railatlas', '#atlaspanel'],
-      text: () => 'Earth is charted — your Atlas’s first entry. Open the <b>Star Atlas</b> (the dock — or the right rail on desktop). Tapping any entry travels there instantly.',
+      text: () => 'Earth is charted — your Atlas’s first entry. Open the <b>Star Atlas</b> (the dock — or the right rail on desktop). Tapping a planet entry returns to its live system survey; <b>Land</b> remains your choice.',
       when: (t, d) => t === 'atlas-open' && !!d.open,
     },
     {

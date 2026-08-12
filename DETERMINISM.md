@@ -15,11 +15,13 @@
 > harnesses use one owned CDP process/profile with bounded shutdown and cleanup;
 > static generation remains independent of browser timing.
 
-**STATUS:** matches code as of 2026-07-30 (verified against main.js + tools/). The 2026-07-30
-pass added §6's "WHEN art is drawn is not fingerprint input", corrected the layout gate to 10
+**STATUS:** legacy sections match `main.js` + `tools/` as of 2026-07-31; the
+v2 overlay matches `port/v2` as of 2026-08-11. The 2026-07-30 pass added §6's
+"WHEN art is drawn is not fingerprint input", corrected the layout gate to 10
 viewports, and registered `bootperf.js` + `simrun dom` in the battery.
 **Purpose:** the single law that governs the whole game — every world, genome, descriptor, portrait, duel and share code is a pure function of seeds, so the same address regenerates byte-for-byte on every device, forever, with no server.
-**Source of truth:** this doc is the DESIGN spec; main.js + tools/ implement it.
+**Source of truth:** this doc is the DESIGN spec; `main.js` + `tools/` implement
+the legacy sections, and `port/v2` implements the dated port overlay.
 
 ## 1. Overview
 There is one shared universe and it is never stored — it is *math*. A galaxy, star,
@@ -170,6 +172,10 @@ byte-identical, or be an authorized single-key re-pin. Practical guide:
   (compare loop, lines 23–37).
 
 ### The verification battery
+The current primary battery is **nine suites**: four every-batch gates plus five
+focused on-demand guards. `systems-check.js` remains an additional targeted
+domain/save harness; it is useful, but is not one of those nine release-suite slots.
+
 - **`tools/validate.js`** — the one-shot loop: `build.js` (main.js → html) → `checks.js`
   (node --check, CSS brace balance, duplicate ids, domain grep) → `make-probe-build.js`
   → `harness.js` → fingerprint compare vs baseline. Run after every batch of edits.
@@ -180,11 +186,17 @@ byte-identical, or be an authorized single-key re-pin. Practical guide:
 - **`tools/balance-sim.js`** — archetype fairness: every ability's overall win rate vs
   the field must sit in the 42–58% band (head-to-head counters allowed).
 - **`tools/uilayout.js`** — the LAYOUT gate: drives real headless Edge over CDP across
-  **10 viewports** (~683 checks; the 744×1133 band joined in v1.8.4). See UI_PRESENTATION.md.
+  **10 viewports** (787 checks; the 744×1133 band joined in v1.8.4). See UI_PRESENTATION.md.
 - **`tools/bootperf.js`** — cold boot in a real browser: separates *painted* from
   *answerable* and enforces the art-hold law. Fingerprint-neutral by construction (below).
 - **`tools/simrun.js dom`** — UI reachability: drives the real controls instead of the
   probe hooks. Fingerprint-neutral (it changes *how* actions are invoked, not their maths).
+- **`tools/duelxp-check.js`** — reward outcome: drives a real friendly duel and proves
+  the XP reached the ledger rather than calling the award helper directly.
+- **`tools/sizedrift-check.js`** — save round-trip outcome: proves an honestly bred
+  genome survives save/load without the removed `size` clamp rewriting it.
+- **`tools/harvestclock-check.js`** — clock exploit outcome: advances the simulated
+  device wall clock and proves a settled world grants no offline harvest.
 - Supporting: `build.js`, `checks.js`, `make-probe-build.js`, `harness.js`, `probe.js`,
   `fake2d.js`, plus `rarity-sanity.js` / `simrun.js` sims.
 

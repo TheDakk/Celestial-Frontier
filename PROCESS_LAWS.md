@@ -97,6 +97,14 @@ roughly by how often they have bitten.
 ⚠ DOC/CODE DISAGREEMENT IS A FINDING EITHER WAY. CF1802-09 (free cataloguing) was a case where
   the GUIDE was right — "the survey reveals the roster; it catalogues nothing" — and the CODE
   had drifted. Check which one is wrong before "updating" the doc.
+⚠ **DEVELOPER MARKDOWN IS NOT PLAYER-FACING DOCUMENTATION.** The v2 slice changed its travel,
+  save-protection and mobile controls while its persisted `seenGuide` field had no live Guide at
+  all. Every player-visible change must update the relevant system reference **and**, in the same
+  batch, every live in-game explanation it affects: Guide topics, contextual hints, Training and
+  release/update copy where those surfaces exist. Prove the rendered wording against the real
+  action outcome in a browser and inject stale wording as a negative control. A bounded port Guide
+  must describe only systems that are actually live; never fill a parity gap by advertising dormant
+  legacy mechanics.
 
 ---
 

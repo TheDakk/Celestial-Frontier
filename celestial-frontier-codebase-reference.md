@@ -7,7 +7,7 @@
 > **Current port/v2 overlay matches code and live handoff as of 2026-08-11.**
 >
 > **2026-08-11 v2 integration/hardening overlay:** PR #10 merged the Platinum
-> repair into `develop` at `61cc058`. The next bounded port batch makes the app
+> repair into `develop` at `61cc058`. The current bounded port candidate makes the app
 > TypeScript configuration and v2 browser gates part of CI; narrows the DOM
 > compatibility waiver; hardens SessionRNG; protects sparse/corrupt/future saves
 > and IndexedDB retries; bounds cosmic epoch; preserves complete Atlas star
@@ -21,6 +21,22 @@
 > ownership/memory proof, live HD planet replacement, clock/visibility policy,
 > then living organism rigs and biome scenes. Platinum-approved static portraits
 > remain frozen; optional polish is not a mandate to repaint them.
+>
+> The live v2 interaction surface now also uses Pixi `autoDensity` so its CSS
+> canvas and hit coordinates stay viewport-sized at DPR > 1; survey cards expose
+> minimum-44px **Enter galaxy / Enter system** actions, and touch Planetside has
+> a minimum-44px **Leave world** action. The eighth dock slot opens a bounded
+> seven-topic **Guide to the Universe** and persists `seenGuide`; import moved to
+> **Settings → Bring expedition** through the same guarded loader and a top-layer
+> focus-trapped modal. Planet cards bind the captured galaxy+star `{seed,x,y}`
+> context before Land/Atlas/Share, rejecting equal-seed coordinate substitution.
+> Guide alone renders above an open survey card; other panel stacking remains
+> unchanged for Training. Field Training
+> is six live chart/travel/landing lessons plus an honest graduation. The legacy
+> searchable Guide, tooltip deep-links, Advanced Briefings and the rest of the
+> 21-step curriculum remain OPEN. Lazy species art uses one shared load Promise
+> and one latest subscriber per view, so prefetch cannot strand Compendium or
+> Planetside and a 1,500-row list cannot retain 1,500 rerender callbacks.
 >
 > **v1.6 additions not yet folded into the sections below** (see ART_DIRECTION / PROCEDURAL_CHARACTERISTICS /
 > UI_PRESENTATION / SPECIES_AND_GENOME for detail): the Earth-bestiary rig system (`_rig*` per class) +
@@ -273,7 +289,7 @@ Edit `main.js`, never the html in place, and validate before shipping:
    headless **jsdom boot** (zero errors required), and a **50-probe determinism
    fingerprint** that must match the v1.0 baseline (`tools/baseline.json`) byte for byte.
 4. Ship the updated `celestial-frontier.html` only when everything passes (§12 lists
-   the full seven-suite battery and which four gate every batch).
+   the full nine-suite battery and which four gate every batch).
 
 > ⚠ **`node tools/extract.js` is NOT part of this loop.** This section used to open with
 > it as step 1, which is the most dangerous stale instruction this file has ever carried:
@@ -653,7 +669,8 @@ Compendium / Star Atlas / Cosmic Events / Settings.
 
 ### Guide, tooltips & Field Training (v1.1)
 - **Guide to the Universe** (`?` button, `@section guide`): a data-driven manual —
-  `GUIDE` holds 9 categories × 26 topics `{id, t, k, body}` with live search
+  `GUIDE` holds 43 authored topic records `{id, t, k, body}` across 9 categories;
+  41 are live and `beacon` / `events` are retained but dormant. It provides live search
   (title/keyword/body), category drill-down, topic cross-links via
   `<span data-gt="id">`, and a deep-link API `openGuideTopic(id)`.
 - **Tooltips** (`@section tooltips`): any `[data-tip]` element shows a one-line
@@ -842,31 +859,35 @@ domain-determinism grep, headless jsdom boot with zero errors, and a **50-probe*
 fingerprint over the deterministic core (world-gen, descriptors, genomes, duels,
 share codes) that must match the v1.0 baseline byte for byte.
 
-**The battery is now SEVEN suites, not one** (four gate every batch and `deploy.js`
-enforces them; the last three are run on demand):
+**The primary battery is now NINE suites, not one** (four gate every batch and
+`deploy.js` enforces them; the last five are run on demand):
 
 | Suite | What it can see | Gate? |
 |---|---|---|
 | `validate.js` | build + 9 static gates + the 50-probe fingerprint | every batch |
 | `smoke.js` | jsdom: real flows, the full 21-step training, ~553 checks | every batch |
-| `uilayout.js` | **a real headless browser**: computed boxes, 44px touch floors, and `elementFromPoint` hit-tests across 10 viewports (~763 checks, incl. a 63-point reachability grid on the training card against each raisable surface in **both** card positions) | every batch |
+| `uilayout.js` | **a real headless browser**: computed boxes, 44px touch floors, and `elementFromPoint` hit-tests across 10 viewports (787 checks, incl. a 63-point reachability grid on the training card against each raisable surface in **both** card positions) | every batch |
 | `balance-sim.js` | 17 archetype win-rate band + 55 ability-theme art band | every batch |
 | `bootperf.js` | **cold boot in a real browser over gzipped HTTP**: decomposes first-interactive into network / in-DOM / painted / **answerable**, plus a longtask census split at the gate. `--assert` enforces the art-hold law | on demand |
 | `simrun.js dom` | **UI reachability**: takes actions through the real controls and proves the press *landed*; reports `absent` / `disabled` / `dead` / `uncovered` | on demand |
 | `duelxp-check.js` | **reward outcomes**: drives the real friendly-duel arena and reads the ledger afterwards — proves the XP *arrived*, not that `awardXP` works | on demand |
+| `sizedrift-check.js` | **save round-trip outcome**: proves an honestly bred genome survives save/load unchanged and rejects the removed clamp that rewrote ordinary high `size` genes | on demand |
+| `harvestclock-check.js` | **clock exploit outcome**: advances the device wall clock and proves a settled world grants no offline harvest | on demand |
 
 `uilayout.js` exists because jsdom has no layout: a rule can be present, correct
 and **completely inert**, and only a real browser can tell you. It accepts
 `--url=FILE`, so a new gate can be replayed against an older build to prove it
 catches the bug it was written for.
 
-`bootperf.js` and `simrun.js dom` close two blind spots that were *structural*, not
+`bootperf.js` and `simrun.js dom` close two UI blind spots that were *structural*, not
 oversights. **Painted ≠ answerable**: a gate can be drawn and hit-testable while the
 main thread is too busy to respond, and `waitForSelector(visible)` cannot tell the
 difference — that ambiguity misdiagnosed the cold-boot outlier for three builds.
 **API ≠ reachable**: the high-volume expedition tiers call ~28 probe hooks directly,
 so a bot calling `craftItem()` could never notice a dead Craft button (CF1802-07).
-Neither jsdom nor the fingerprint can see either problem by construction.
+Neither jsdom nor the fingerprint can see either problem by construction. The
+other three on-demand suites guard real reward, save-round-trip and clock outcomes
+whose helper-level checks had previously allowed player-visible regressions through.
 
 ⚠ Both were **negative-controlled in both directions** before being believed, and both
 found bugs in *themselves* first. Do not trust a green run from either until you have
@@ -917,7 +938,7 @@ surface), since panel/picker actions are the ones no harness here drives yet.
 - **SOLID restructure (June 2026):** script reorganized into domain/app modules with
   a verification toolkit (`tools/`) — behavior identical, fingerprint pinned (49 probes at the
   time; the baseline has since grown to **50** — see §12).
-- **v1.1 (June 2026):** **Guide to the Universe** (searchable 26-topic manual replaces
+- **v1.1 (June 2026):** **Guide to the Universe** (the full searchable manual replaces
   the Primer); **tooltip system** (`data-tip`/`data-guide`, Settings toggle, long-press
   on touch); **Field Training** — a 21-step, event-gated, fully sandboxed new-player
   tutorial (Earth charting, training cache, feed/breed/duel/heal practice, scripted
