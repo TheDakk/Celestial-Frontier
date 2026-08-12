@@ -188,20 +188,29 @@ bound while `Browser.getVersion` answered in 2 ms; `last:null`. The report retai
 56 executed +1 product-blocked =57, `omitted=[]`, and 0 retries. No persona or
 preview evidence was produced; preserve #206 red without retry.
 
-The only retained 3,145,728-pixel/canvas repair evidence captured before source freeze
-is non-authoritative `dirty-diagnostic` glass evidence: Edge 151 PASS 12/12, 57/57,
-`blocked=[]`, `omitted=[]`, 0 findings/
-instrument failures/retries in 52,851 ms, report SHA-256
-`faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`.
-Reloads were 173–186 ms. Exact 8K was 180 ms, `performanceNow` 155.9 ms, target
-cycles 1/6 ms and heartbeats 1/0 ms at DPR `0.3079201435678004`; its two
-2,365×1,330 outgoing stores collapsed to 1×1 and the replacement pair remained
-6,290,900 pixels combined.
-A clean-head exact battery and new commit-bound preview for the immutable executable
-source remain required. Live Git/PR state determines commit/push/check status, and whichever
-final pushed tip is selected requires matching CI before Nick may approve the one-time
-PR #11 candidate command below. No host creation, publication, human play, Ready,
-merge, release, deployment, or version authority follows from the diagnostic or prior artifact.
+Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
+underlies the current/forthcoming documentation-only tip (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
+Its exact sequential battery passed root validate/smoke and layout 787/787, v2 273/1
+plus all gates, one-attempt slice smoke 0 findings/10 screenshots, certifying glass
+12/12 and 57/57 with empty blocked/omitted ledgers and zero findings/instrument
+failures/retries, nine automated-only personas, and terminal-only performance.
+Root layout report was `d0d9a9b3c58f996e5fb7b10f21aa98c974272531f10ccdb945cd026942429252`;
+slice smoke report/log were `b835f79764f4e22a2179ab74f9412491ee4d81730e775889372461d64ddd0474` /
+`538f4a36919cd947e7631f4eb786acbcd3a6e356ce55719843c8080004295087`;
+glass report was `7fe33219e70361140ebc931f0d77fca0976a46fe51eecc42815f41eba110980c`.
+Exact 8K was 203 ms / `performanceNow` 158.2 ms, targets 1/10 ms and heartbeats
+0/0 ms; persona JSON/Markdown reports were
+`c10c9e33542ed57b4c51683c0ddf3f1bbc468696a025e88ef2d1e500209581bc` /
+`1c9961515028a716ba064ca32ea9dd3ef2d41118cfde4c76b24c16520daa2d14`.
+Exact preview `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at the
+separate dev origin with `publishable:false`: manifest
+`758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`, 37 files /
+10,186,537 bytes, content `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`,
+tree `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. Exact docs tip/upstream/CI is live;
+its final pushed tip needs matching CI. After green CI, Nick may explicitly approve
+the one-time PR #11 candidate command below. No host/publication/human/Ready/merge/
+release/deployment/version authority follows.
 
 Pushed head `8b8a740286a56591cac9dc5734a2fba4c088939b` passed its exact local
 battery. Matching test-battery #200, run `31577395120` / job `94052496287`,

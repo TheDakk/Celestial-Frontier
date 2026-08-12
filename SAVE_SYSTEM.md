@@ -274,17 +274,21 @@
 > retries, and no persona/preview evidence. It is not a save, import, durability,
 > renderer-release, navigation, or boot-readiness failure.
 >
-> The only retained repair evidence captured before source freeze is a non-authoritative
-> `dirty-diagnostic`. One full
-> Edge 151 diagnostic passed 12/12 and 57/57 with `blocked=[]`, `omitted=[]`, 0
-> findings/instrument failures/retries in 52,851 ms; report SHA-256
-> `faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`.
-> Reloads were 173–186 ms; exact 8K was 180 ms, `performanceNow` 155.9 ms,
-> cycles 1/6 ms and heartbeats 1/0 ms at DPR `0.3079201435678004`. Both
-> 2,365×1,330 outgoing stores collapsed to 1×1; the replacement pair remained
-> 6,290,900 pixels combined. A clean-head exact battery for the immutable executable
-> source remains required; live Git/PR state determines commit/push status, and whichever
-> final pushed tip is selected requires matching CI. No save-format change occurred.
+> Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
+> underlies the current/forthcoming documentation-only tip (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+> snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
+> Root preflight warned Edge 151 vs pin 150; validate/smoke and layout 787/787 across
+> 10/10 passed; v2 passed 273/1 plus all gates. One-attempt slice smoke passed 0
+> findings/10 screenshots in 105,217 ms (`b835f79764f4e22a2179ab74f9412491ee4d81730e775889372461d64ddd0474`),
+> and certifying glass passed 12/12, 57/57, empty blocked/omitted and zero findings/
+> instrument failures/retries in 52,557 ms (`7fe33219e70361140ebc931f0d77fca0976a46fe51eecc42815f41eba110980c`).
+> Exact 8K was 203 ms / `performanceNow` 158.2 ms, targets 1/10 ms, heartbeats 0/0 ms;
+> outgoing 2,365×1,330 stores →1×1 and replacement stayed 6,290,900 pixels combined.
+> Nine automated-only personas and terminal-only 581/659/73/152 ms performance passed;
+> exact preview `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at the
+> separate dev origin with `publishable:false`. Exact docs tip/upstream/CI is live and its
+> final pushed tip needs matching CI. No save-format, host/human/Ready/merge/release/
+> deployment/version authority follows.
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay

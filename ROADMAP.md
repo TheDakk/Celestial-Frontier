@@ -216,32 +216,37 @@ failures, 56 executed plus 1 product-blocked control =57, `omitted=[]`, and 0 re
 No persona or preview evidence was produced. Preserve #206 red without retry; it proves
 post-ready resize answerability failure, not save/import/durability/navigation failure.
 
-The frozen executable+release-content diagnostic source rooted at base commit
-`558e0565d368a0b81d86d99fd380ebc50d30bc02` (status SHA-256
-`9f29639063e5ce99a67df20d2f4326c00219d9124ad077cf185b9b1b4c6ca3b9`, working-tree
-SHA-256 `10db987195398251b49ff81911b135f059bac968f26adca0571cecc796bf260a`)
-underlies only the final documentation precision tip and remains non-authoritative
-`dirty-diagnostic` evidence. One-attempt Edge 151 smoke passed with 0 findings,
-10 screenshots and 0 retries in 105,025 ms (report SHA-256
-`1abd2fa000bce079370b4f3ba483d65b2862644f6fd47345c5292aa2ee374cd5`). Full glass
-passed 12/12 and 57/57 with `blocked=[]`, `omitted=[]`, 0 findings/instrument
-failures/retries in 52,851 ms (report SHA-256
-`faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`); reloads were
-173–186 ms. Exact desktop-8k was 180 ms total, `performanceNow` 155.9 ms, target
-cycles 1/6 ms and heartbeats 1/0 ms at DPR `0.3079201435678004`; outgoing and
-replacement canvases were 2,365×1,330 each, outgoing collapsed to 1×1, and the
-replacement pair remained 6,290,900 pixels combined. All nine automated-only personas
-passed (JSON SHA-256 `f334a0bfff85f3e8cefd9fa187ac92e1df1efb9e37c3daf1314442feea024d81`;
-Markdown SHA-256 `d8de9968d3a5bae3ccf63c517655a4fb40ece4e472e13dafcf8dd9cce68bf94f`).
-This supports the cap and strengthened controls but remains pre-freeze diagnostic evidence.
-A clean-head exact battery for the immutable executable source remains required; live Git/PR state determines the
-final documentation tip, and whichever final pushed tip is selected requires matching CI.
+Immutable clean executable evidence source
+`df1c28b31d15cd554d36f9b4ca65d8765366a5df` underlies the current/forthcoming documentation-only tip;
+its clean status SHA-256 is `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`
+and source-snapshot digest is `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+Root preflight warned only that Edge 151 differs from pin 150, then validate/smoke passed;
+root layout `exact-df1c28b-root-layout` passed 787/787 across 10/10 in 75,544 ms
+(report `d0d9a9b3c58f996e5fb7b10f21aa98c974272531f10ccdb945cd026942429252`).
+V2 passed 273 with 1 skip plus all gates. One-attempt slice smoke passed 0 findings /
+10 screenshots / no retry in 105,217 ms (report `b835f79764f4e22a2179ab74f9412491ee4d81730e775889372461d64ddd0474`;
+log `538f4a36919cd947e7631f4eb786acbcd3a6e356ce55719843c8080004295087`).
+Certifying glass passed 12/12 and 57/57, `blocked=[]`, `omitted=[]`, with 0 findings/
+instrument failures/retries in 52,557 ms (report `7fe33219e70361140ebc931f0d77fca0976a46fe51eecc42815f41eba110980c`);
+reloads were 175–203 ms. Exact 8K was 203 ms: arm 2, import→release complete 11,
+release→commit 33, commit→ready 127 ms, `performanceNow` 158.2 ms, targets 1/10 ms,
+heartbeats 0/0 ms; 2,365×1,330 outgoing stores collapsed to 1×1 and replacement
+remained 2,365×1,330 each /6,290,900 combined. Nine automated-only personas passed
+(JSON `c10c9e33542ed57b4c51683c0ddf3f1bbc468696a025e88ef2d1e500209581bc`;
+Markdown `1c9961515028a716ba064ca32ea9dd3ef2d41118cfde4c76b24c16520daa2d14`),
+and terminal-only performance was 581/659/73/152 ms painted/answerable/press→panel/rebuild.
+Preview `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at the separate
+development origin with `publishable:false`: manifest `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`,
+37 files /10,186,537 bytes, content `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`,
+tree `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. Exact docs tip/upstream/CI is live;
+the final pushed docs tip needs matching CI. No host, publication, human-play, Ready,
+merge, release, deployment or version authority follows.
 
 `overridecontrol` remains exclusive and must not overlap any build/browser/evidence producer.
-Because the new manual preview workflow
-is not dispatchable until it exists on the default branch, PR #11's pre-merge candidate must use
-the equivalent explicitly approved local packaging command recorded in
-`port/DEVELOPMENT_PREVIEW.md`; the workflow becomes the normal path after the infrastructure lands
+Because the new manual preview workflow is not dispatchable until it exists on the default
+branch, after matching green CI and explicit Nick approval any PR #11 pre-merge candidate may
+use the equivalent local packaging command recorded in `port/DEVELOPMENT_PREVIEW.md`; no such
+approval or publication is implied. The workflow becomes normal after the infrastructure lands
 on `develop`.
 
 Even a green automated battery is not merge authority. A real human playtest against the
@@ -275,18 +280,19 @@ human play remains the judge of motion, readability, comfort and perceived quali
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — test-battery #206 is the latest
-immutable pushed evidence at `558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577`
-is tree-identical, and the run remains red without retry. The only retained repair evidence
-captured before source freeze is non-authoritative `dirty-diagnostic` evidence. Resolve exact tip/upstream/check state live;
+immutable pushed CI evidence at `558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577`
+is tree-identical, and the run remains red without retry. Immutable executable evidence source
+`df1c28b31d15cd554d36f9b4ca65d8765366a5df` passed the exact clean-head local battery and
+underlies the current/forthcoming documentation-only tip. Resolve exact tip/upstream/check state live;
 #201–#206 remain preserved red without retry.
 
 **GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`),
 #202 (`31594595288` / `94106996466`), #203 (`31602984470` / `94134750800`), and
 #204 (`31612817092` / `94168172635`), #205 (`31621227550` / `94196289291`), and
 #206 (`31635297321` / `94243979205`) without retry. Read `git rev-parse HEAD`,
-`git status --short --branch`, and PR #11 checks. Freeze the repair as an immutable clean
-executable source and run its exact battery; live state determines commit/push status, and
-whichever final pushed tip is selected requires matching green CI. Only after green CI,
+`git status --short --branch`, and PR #11 checks. Push the current `openai/mac` tip only if
+its upstream is behind; live state determines commit/push status, and whichever final pushed
+tip is selected requires matching green CI. Only after green CI,
 obtain host approval, publish the separate-origin preview,
 complete/record human play, resolve/retest findings, and let Nick click **Ready for review** before
 a normal merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add work to
@@ -362,17 +368,13 @@ merged PR #10.
   > its 8K reload/ready chain, then its later 5K resize target timed out at 2,003 ms while the
   > browser heartbeat answered in 2 ms: one product finding, 0 instrument failures, 56 executed +
   > 1 product-blocked =57, `omitted=[]`, 0 retries, and no persona/preview output. The frozen
-  > 3,145,728-pixel/canvas repair has only a non-authoritative dirty-diagnostic evidence set,
-  > frozen with its release-content at base `558e0565d368a0b81d86d99fd380ebc50d30bc02`
-  > (status SHA-256 `9f29639063e5ce99a67df20d2f4326c00219d9124ad077cf185b9b1b4c6ca3b9`;
-  > working-tree SHA-256 `10db987195398251b49ff81911b135f059bac968f26adca0571cecc796bf260a`).
-  > Smoke passed in 105,025 ms (SHA-256 `1abd2fa000bce079370b4f3ba483d65b2862644f6fd47345c5292aa2ee374cd5`);
-  > glass passed 12/12 and 57/57 in 52,851 ms (SHA-256
-  > `faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`), and nine
-  > automated-only personas passed (JSON `f334a0bfff85f3e8cefd9fa187ac92e1df1efb9e37c3daf1314442feea024d81`;
-  > Markdown `d8de9968d3a5bae3ccf63c517655a4fb40ece4e472e13dafcf8dd9cce68bf94f`).
-  > A clean-head exact battery for the immutable executable source remains required; tip/upstream/check state
-  > is read live, and whichever final pushed tip is selected requires matching green CI.
+  > 3,145,728-pixel/canvas repair has exact clean executable evidence at immutable
+  > `df1c28b31d15cd554d36f9b4ca65d8765366a5df`: root layout 787/787, v2 273/1 plus
+  > all gates, one-attempt smoke 0/10, certifying glass 12/12 and 57/57 with empty
+  > blocked/omitted ledgers and zero findings/instrument failures/retries, nine automated-only
+  > personas, terminal-only performance and an Edge 151-smoked separate-origin preview with
+  > `publishable:false`. Exact docs tip/upstream/check state is read live, and the final pushed
+  > docs tip requires matching green CI.
   > The prior local review artifact is bound to
   > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. After the
   > matching CI is green, complete and record a multi-lens human playtest against that exact preview before marking

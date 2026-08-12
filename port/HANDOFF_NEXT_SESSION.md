@@ -386,21 +386,33 @@ bound while `Browser.getVersion` answered in 2 ms; `last:null`. The sole
 `omitted=[]`, 0 retries. No persona or preview evidence was produced. Preserve
 #206 red without retry.
 
-The only retained repair evidence captured before source freeze is non-authoritative
-`dirty-diagnostic` evidence. One full
-Edge 151 glass run passed 12/12, 57/57, `blocked=[]`, `omitted=[]`, 0 findings/
-instrument failures/retries in 52,851 ms; report SHA-256
-`faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`.
-Reloads were 173–186 ms. Exact 8K was 180 ms, `performanceNow` 155.9 ms, target
-cycles 1/6 ms and heartbeats 1/0 ms at DPR `0.3079201435678004`; outgoing and
-replacement stores were 2,365×1,330 each, outgoing collapsed to 1×1, and the
-replacement pair remained 6,290,900 pixels combined. This diagnostic does not
-certify a source.
+Immutable clean executable evidence source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
+underlies the current/forthcoming documentation-only tip (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
+Root preflight warned Edge 151 vs pin 150; validate/smoke and layout 787/787 across
+10/10 passed in 75,544 ms (`exact-df1c28b-root-layout`; report
+`d0d9a9b3c58f996e5fb7b10f21aa98c974272531f10ccdb945cd026942429252`);
+v2 passed 273/1 plus all gates. One-attempt smoke passed 0 findings/10 screenshots
+in 105,217 ms (`b835f79764f4e22a2179ab74f9412491ee4d81730e775889372461d64ddd0474`;
+log `538f4a36919cd947e7631f4eb786acbcd3a6e356ce55719843c8080004295087`).
+Certifying glass passed 12/12, 57/57, empty blocked/omitted, zero findings/instrument
+failures/retries in 52,557 ms (`7fe33219e70361140ebc931f0d77fca0976a46fe51eecc42815f41eba110980c`).
+Reload range was 175–203 ms. Exact 8K was 203 ms / `performanceNow` 158.2 ms,
+arm/import→release/release→commit/commit→ready phases 2/11/33/127 ms, targets
+1/10 ms, heartbeats 0/0 ms; outgoing 2,365×1,330 stores →1×1 and replacement stayed
+6,290,900 pixels combined. Nine automated-only personas passed (JSON
+`c10c9e33542ed57b4c51683c0ddf3f1bbc468696a025e88ef2d1e500209581bc`; Markdown
+`1c9961515028a716ba064ca32ea9dd3ef2d41118cfde4c76b24c16520daa2d14`), and
+terminal-only 581/659/73/152 ms painted/answerable/press→panel/rebuild passed.
+Preview `dev-preview-exact-df1c28b-20260812T211642Z`
+passed Edge 151 at the separate dev origin with `publishable:false`, manifest
+`758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`, 37 files /
+10,186,537 bytes, content
+`98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`, tree
+`435c363e3e049f353e74ce71ed2a5fb4e3514c69`.
 
-A clean-head exact battery for the immutable executable source remains required. Live Git/PR
-state decides exact tip, upstream, commit/push, and check status; whichever final
-pushed tip is selected requires matching green CI before human playtest against its
-commit-bound separate-origin preview. Record full commit,
+Live Git/PR state decides the exact docs tip, upstream and checks; its final pushed tip
+requires matching green CI before human playtest against its commit-bound preview. Record full commit,
 `preview.json` content hash, URL, tester/device/browser, save state, findings and
 retest in `port/playtests/`. Do not mark PR #11 Ready or merge before every human
 finding is resolved or explicitly dispositioned and affected gates are rerun.
@@ -418,18 +430,19 @@ scenes are the higher-value visual work.
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — test-battery #206 is the latest
-immutable pushed evidence at `558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577`
-is tree-identical, and the run remains red without retry. The only retained repair evidence
-captured before source freeze is non-authoritative `dirty-diagnostic` evidence. Resolve exact tip/upstream/check state live;
+immutable pushed CI evidence at `558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577`
+is tree-identical, and the run remains red without retry. Immutable executable evidence source
+`df1c28b31d15cd554d36f9b4ca65d8765366a5df` passed the exact clean-head local battery and
+underlies the current/forthcoming documentation-only tip. Resolve exact tip/upstream/check state live;
 prior #201–#206 remain preserved red without retry.
 
 **GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`),
 #202 (`31594595288` / `94106996466`), #203 (`31602984470` / `94134750800`), and
 #204 (`31612817092` / `94168172635`), #205 (`31621227550` / `94196289291`), and
 #206 (`31635297321` / `94243979205`) without retry. Read `git rev-parse HEAD`,
-`git status --short --branch`, and PR #11 checks. Freeze an immutable clean repair
-source and run its exact battery; live state determines commit/push status, and whichever
-final pushed tip is selected requires matching green CI. After green CI, obtain host approval, publish the separate-origin preview,
+`git status --short --branch`, and PR #11 checks. Push the current `openai/mac` tip only
+if its upstream is behind; live state determines commit/push status, and whichever final
+pushed tip is selected requires matching green CI. After green CI, obtain host approval, publish the separate-origin preview,
 complete/record human play, resolve/retest findings, and only then let Nick mark Ready and normally
 merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add work to merged PR #10.
 
@@ -505,15 +518,16 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > a concurrent browser heartbeat. #206 passed reload/ready and its initial heartbeat-backed
   > confirmations, then the later 5K resize target timed out at 2,003 ms while the browser heartbeat
   > answered in 2 ms: 1 product finding, 0 instrument failures, 56 executed +1 blocked =57,
-  > `omitted=[]`, 0 retries, and no persona/preview evidence. The frozen 3,145,728-pixel/canvas
-  > repair has only a dirty-diagnostic Edge 151 glass PASS (SHA-256
-  > `faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`):
-  > 12/12, 57/57, `blocked=[]`, `omitted=[]`, zero findings/instrument failures/retries,
-  > 2,365×1,330 twin stores and bounded resize target/heartbeat/ticker evidence. A clean-head
-  > exact battery for the immutable executable source remains required. Exact tip/upstream/check and
-  > commit/push status is read live, and whichever final pushed tip is selected requires matching
-  > CI. The prior local artifact is bound to
-  > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. After the
+  > `omitted=[]`, 0 retries, and no persona/preview evidence. The repair then passed the exact
+  > clean sequential battery at immutable executable source
+  > `df1c28b31d15cd554d36f9b4ca65d8765366a5df`: root layout 787/787, v2 273/1 plus
+  > every gate, one-attempt smoke 0/10, certifying glass 12/12 and 57/57 with empty
+  > blocked/omitted ledgers and zero findings/instrument failures/retries, nine automated-only
+  > personas and terminal-only performance. Exact preview
+  > `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at
+  > `https://dev-celestialfrontier.github.io` with `publishable:false`. Exact docs tip/
+  > upstream/check state is read live, and its final pushed tip requires matching CI.
+  > No host or publication is authorized. After the
   > matching CI is green, complete and record a multi-lens human playtest against that exact preview before marking
   > this PR Ready or merging. The static Platinum-reviewed portrait set is unchanged; later visual
   > work remains living rigs/animation and biome scenes. After merge, Anthropic/Claude Code may

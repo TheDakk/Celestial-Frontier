@@ -569,11 +569,13 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > stopped and stale-ticker controls must fail alongside the geometry, pointer, backing and ownership
 > controls. The current repair changes the resource ceiling; it does **not** optimize away the
 > existing scene rerender, so do not document a quality-tier/rerender optimization that did not land.
-> The current full Edge 151 `dirty-diagnostic` PASS is non-authoritative despite 12/12, 57/57,
-> zero findings/instrument failures/retries (report SHA-256
-> `faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`). Such
-> evidence can guide the repair, but a clean-head exact battery for the immutable source and matching CI for
-> whichever final pushed tip is selected remain the certification boundary.
+> Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
+> passed the sequential exact battery: root layout 787/787, v2 273/1 plus all gates,
+> one-attempt smoke 0/10, certifying glass 12/12 and 57/57 with empty blocked/omitted
+> ledgers and zero findings/instrument failures/retries, nine automated-only personas,
+> terminal-only performance, and an Edge 151-smoked separate-origin preview with
+> `publishable:false`. Exact docs tip/upstream/check state remains live, and the final
+> pushed docs tip requires matching CI; no human or publication authority follows.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
