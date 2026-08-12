@@ -931,11 +931,14 @@ duplicates).
   retains the exact submitted text, including legal surrounding whitespace. File selection is
   browser-decoded to text, so the external moderator file remains the byte-for-byte authority. This is intentional exploit/data-loss hardening over
   permissive v1 behavior.
-- ✔ **D-SAVE-2 — intentional replacement reloads own outgoing renderer release (closed in clean
-  executable evidence `20896ad`, 2026-08-12).** Training restart after its reversible view
+- ✔ **D-SAVE-2 — intentional replacement reloads own pre-await ticker quiescence and outgoing
+  renderer release (closed in exact clean executable evidence `7d9980e`, 2026-08-12).** Training restart after its reversible view
   commit, supported expedition import after its replacement-envelope commit, and the storage-
   health retry after rediscovering real bytes now share one code-owned transition. It blocks new
-  ordinary persistence, cancels the preference debounce, removes renderer-resize listeners,
+  ordinary persistence and synchronously stops a running outgoing ticker when the exclusive claim
+  is acquired, before any persistence await. Only the exact failed/rolled-back owner may restart a
+  ticker its claim stopped; invalid import bytes reject before claim without disturbing play. A
+  successful transition cancels the preference debounce, removes renderer-resize listeners,
   destroys Pixi with global and child texture resources, detaches its view, and collapses both the
   application and backdrop canvases to at most 1×1 before one task boundary and `location.reload()`.
   The optional CDP binding exports those postconditions, the replacement reason and outgoing
@@ -943,16 +946,13 @@ duplicates).
   `cf-v2-slice-ready/v1` tail binding is emitted only after load, persistence, complete input/slice
   wiring, a first ticker turn, an animation frame and a later task. It is
   intentionally not a `pagehide` listener: browser-cache restoration must not revive a destroyed
-  application. This addresses a plausible 8K old/new backing-store overlap without claiming CI
+  application. The diagnostic `cf-v2-import-phase/v1` stream binds the exact operation and old
+  document/session/default context/loader; requires `invoked` with a running ticker and ordered
+  claim/persistence/write/release stages with it stopped; and shares one absolute 20-second deadline
+  that begins before the bounded non-awaiting arm. IndexedDB durability is not raced against a
+  timeout. This addresses 8K renderer pressure without claiming CI
   #201 proved GPU exhaustion; that run proved only the replacement-lifecycle ambiguity described
-  under D-UI-3. Clean exact commit `20896ad410b48ae0c407a9f3d6885d30ec6657b1`
-  passed the complete battery. Full glass passed 12/12 with 50/50 controls and all
-  12 release witnesses; desktop-8k recorded both 5,461×3,072 canvases →1×1,
-  renderer/stage released, detached view, release→commit 31 ms, commit→ready 148 ms,
-  `performanceNow` 177 ms, confirmation 1 ms and total 212 ms. `20896ad` underlies a
-  docs-only handoff tip; exact tip/upstream/
-  check state is read live, and the final pushed tip requires matching green CI.
-  The clean executable outcome closes this implementation item.
+  under D-UI-3.
   Test-battery #203 (`31602984470` / `94134750800`) later preserved a distinct
   pre-release pressure failure at exact pushed `38e4f362`: all preceding gates and
   `smoke:ci` passed, but desktop-8k reached 20,015 ms before any release/navigation/
@@ -960,15 +960,20 @@ duplicates).
   ticker was still rendering across the durable-write wait and teardown under CI
   software rendering. This is not save corruption or a reported write rejection,
   and the run is not retried or hidden by a longer deadline.
-  The follow-on repair stops a running ticker synchronously at the exclusive
-  replacement claim, before any await; only that exact failed/rolled-back owner may
-  restart a ticker it stopped. Invalid input rejects before claim without disturbing
-  play. Diagnostic import emits a context-bound exact phase sequence from invocation
-  through claim, persistence/write, and release under one absolute 20-second deadline
-  that begins before its bounded arm command. It neither retries nor races IndexedDB
-  with a timeout. Full dirty-source diagnostic glass passed 12/12 and 52/52 controls,
-  with all 12 phase/release/ready paths and no findings, instrument failures, omitted
-  controls, or retries; exact clean-commit evidence and matching CI remain required.
+  Before the final stable battery, one smoke attempt correctly refused mixed-source evidence
+  because tracked docs changed during its run (`source identity changed during slice smoke`).
+  That single execution had no automatic retry and is coordination/instrument evidence, not a
+  product failure. Clean exact commit `7d9980e37e60f0cec8cb840e75098872b9cc90d0`
+  then passed the complete battery. Exact-source glass passed 12/12 with 52/52 controls,
+  `omitted=[]`, 0 findings/instrument failures/retries and all 12 exact phase/release/ready paths
+  at digest `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+  Replacement totals were 194–239 ms; desktop-8k recorded a 3 ms arm, ticker true only at
+  `invoked`, 21 ms phase span, 0 ms write, 19 ms release, both 5,461×3,072 canvases →1×1,
+  `performanceNow` 199.5 ms, 1 ms confirmation and 239 ms total. One-attempt smoke passed
+  0 findings / 10 screenshots and all nine automated personas passed. `7d9980e` underlies the
+  forthcoming/current docs-only handoff tip; exact tip/upstream/check state is read live, and the
+  final pushed tip still requires matching green CI. The exact clean executable outcome closes
+  this implementation item; human play and release authority remain separate.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
@@ -1089,29 +1094,36 @@ duplicates).
   `import-threw`, classifier rejection, or reported repository-write failure; the red is a post-
   request replacement-lifecycle/instrument finding and must not be retried away.
 
-  Clean executable commit `20896ad410b48ae0c407a9f3d6885d30ec6657b1` gives Training restart/import/storage recovery one mutually
-  exclusive replacement transaction, requires the D-SAVE-2 resource-release witness, then separates a
+  Clean executable commit `7d9980e37e60f0cec8cb840e75098872b9cc90d0` gives Training restart/import/storage recovery one mutually
+  exclusive replacement transaction, synchronously stops its outgoing ticker before any await,
+  requires the D-SAVE-2 event-owned import-phase and resource-release witnesses, then separates a
   20-second import transaction, 5-second observed navigation commit, and 20-second new-loader boot.
   Old-context loss cannot start boot by itself. A stable changed loader starts that clock, and only
   its ready changed document token may pass. Bounded Page/Runtime/Inspector/Network evidence names
   crash, unreachable navigation, replacement exception and fatal document load. The existing
-  `replacement-document-loader-token-phase` control plus new `reload-resource-release` control cover
+  `import-phase-sequence`, `replacement-ticker-quiescence`,
+  `replacement-document-loader-token-phase` and `reload-resource-release` controls cover
   stuck and just-late phase transitions, same-loader mutation, premature context loss, duplicate/invalid witnesses,
-  retained canvases, unreleased renderer and over-budget pixels. Its complete clean battery passed:
+  retained canvases, a stopped-before-invocation or running-after-claim ticker, unreleased renderer
+  and over-budget pixels. Its complete clean battery passed:
   root preflight selftest/preflight (only Edge 151 versus pinned Edge 150 drift), fingerprint/smoke,
-  final `exact-20896ad-root-layout` 787/787 across 10/10 viewports, rarity 60M/0,
+  root layout selftest plus final `exact-7d9980e-root-layout` 787/787 across 10/10 viewports, rarity 60M/0,
   dead-code 3 tooling references, v2 273/1 and every gate/selftest, and one-attempt smoke 0 findings /
-  10 screenshots. Committed/certifying glass passed 12/12 viewports and 50/50 controls with
+  10 screenshots. Exact-source certifying glass passed 12/12 viewports and 52/52 controls with
   `omitted=[]`, 0 findings/instrument failures/retries, digest
   `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
-  All 12 witnesses passed; desktop-8k recorded both 5,461×3,072 canvases →1×1, released renderer/
-  stage, detached view, release→commit 31 ms, commit→ready 148 ms, `performanceNow` 177 ms,
-  confirmation 1 ms and total 212 ms; all viewport totals were 170–212 ms. All nine personas passed;
-  terminal-only performance was 586/666/77/151 ms. Exact 37-file preview
-  `dev-preview-exact-20896ad` verified and browser-smoked at 320×568 for content
-  `3a2e5285184cf392a10916270f5d3d449d72d78bb6afb0b6bd29d45d6b1a6b50` with
-  `publishable:false`. Prior #201 remains red without retry. `20896ad` underlies a
-  docs-only handoff tip; exact tip/upstream/check state is read live, the final
+  All 12 exact phase/release/ready paths passed in 194–239 ms. Desktop-8k recorded a 3 ms arm,
+  21 ms import-phase span with ticker true only at `invoked`, 0 ms write, 19 ms release, both
+  5,461×3,072 canvases →1×1, `performanceNow` 199.5 ms, 1 ms confirmation and 239 ms total.
+  All nine personas passed. The malformed initial `npm run perf -- --runs=4` was rejected before
+  browser startup; the correct single terminal diagnostic was 646/726/74/157 ms and was not a
+  retry of an evidence failure. Exact 37-file / 10,170,996-byte preview
+  `dev-preview-exact-7d9980e` verified and browser-smoked under Edge 151 at 320×568 for content
+  `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
+  `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, expected separate origin,
+  production distinct and `publishable:false`. Prior #201
+  remains red without retry. `7d9980e` underlies the forthcoming/current docs-only handoff tip;
+  exact tip/upstream/check state is read live, the final
   pushed tip requires matching green CI, and the separate-origin human playtest remains open.
 
   Matching test-battery #202, run `31594595288` / job `94106996466`, completed once without retry
@@ -1136,7 +1148,7 @@ duplicates).
   The exact clean battery above supersedes the provisional dirty diagnostic as current evidence.
   Matching final-tip CI and the separate-origin human playtest remain pending; human certification,
   Ready, merge, version, preview publication and deployment boundaries are unchanged.
-  Test-battery #203 (`31602984470` / `94134750800`) then failed once without retry only
+  Earlier test-battery #203 (`31602984470` / `94134750800`) failed once without retry only
   in desktop-8k import before the release boundary: the old 5,461×3,072 Pixi ticker
   remained live while the durable write and teardown awaited service. The follow-on
   product repair quiesces it synchronously at the exclusive claim and restores it only
@@ -1145,9 +1157,11 @@ duplicates).
   import clock before its bounded non-awaiting arm command. The new
   `import-phase-sequence` and `replacement-ticker-quiescence` controls reject both
   ticker directions, missing/reordered/wrong-context receipts, and just-late evidence;
-  no timeout increase, retry, or IndexedDB timeout race is introduced. Dirty-source
-  full glass passed 12/12 viewports and 52/52 controls with zero findings/instrument
-  failures/omissions/retries; exact clean-commit evidence and matching CI remain open.
+  no timeout increase, retry, or IndexedDB timeout race is introduced. Before the exact clean
+  evidence above, one mixed-source smoke execution correctly refused when tracked docs changed
+  during its run; it had no automatic retry and was an instrument/coordination refusal, not a
+  product failure. The exact clean commit closes the implementation/evidence item; matching final-
+  tip CI and the separate-origin human playtest remain open.
 - ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
   the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson

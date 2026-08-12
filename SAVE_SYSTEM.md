@@ -112,18 +112,28 @@
 > increase, automatic retry, or `Promise.race` around IndexedDB durability.
 >
 > **Evidence boundary:** immutable executable evidence source
-> `20896ad410b48ae0c407a9f3d6885d30ec6657b1` passed its complete exact
-> sequential battery. One-attempt smoke
+> `7d9980e37e60f0cec8cb840e75098872b9cc90d0` passed its complete exact
+> sequential battery. Root preflight selftest/preflight, validate/fingerprint,
+> root smoke, layout selftest plus `exact-7d9980e-root-layout` 787/787 across
+> 10/10 viewports, rarity 60M/0, dead-code review, v2 273 pass / 1 skip and every
+> type/art/override/coverage/spec/instrument selftest all passed. One-attempt smoke
 > passed with 0 findings / 10 screenshots, including the real restart/import/
-> duplicate-import interlocks and rollback. Committed/certifying glass passed
-> 12/12 viewports and 50/50 controls with `omitted=[]`, 0 findings/instrument
+> duplicate-import interlocks and rollback. Exact-source certifying glass passed
+> 12/12 viewports and 52/52 controls with `omitted=[]`, 0 findings/instrument
 > failures/retries, working-tree
 > digest `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
-> All 12 release witnesses passed; desktop-8k recorded both 5,461×3,072 canvases
-> collapsing to 1×1, renderer/stage released, view detached, release→commit in
-> 31 ms, commit→ready in 148 ms, `performanceNow` 177 ms, confirmation in 1 ms
-> and 212 ms total. All viewport totals were 170–212 ms. Prior CI #201 remains
-> preserved red without retry. `20896ad` underlies a docs-only handoff tip. Exact tip/upstream/
+> All 12 exact import-phase/release/ready paths passed; replacement totals were
+> 194–239 ms. Desktop-8k recorded a 3 ms arm, 21 ms import-phase span with the
+> ticker true only at `invoked`, 0 ms primary write, 19 ms release, both
+> 5,461×3,072 canvases collapsing to 1×1, `performanceNow` 199.5 ms, 1 ms
+> confirmation and 239 ms total. All nine automated personas passed, still not a
+> human playtest. Exact preview `dev-preview-exact-7d9980e` verified and browser-
+> smoked 37 files / 10,170,996 bytes under Edge 151 for the expected separate
+> origin, with content SHA-256
+> `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`,
+> production distinct and `publishable:false`. Prior CI #201 remains preserved
+> red without retry. `7d9980e` underlies the forthcoming/current docs-only
+> handoff tip. Exact tip/upstream/
 > check state is read live, and the final pushed tip requires matching green CI.
 > CI #202, run `31594595288` / job `94106996466`, is also preserved red without
 > retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`: every earlier gate
@@ -143,16 +153,14 @@
 > awaited service under CI software rendering. It is not evidence of save
 > corruption or a rejected repository write.
 >
-> The current repair is frozen in uncommitted source pending an exact clean
-> commit battery and matching CI. At final proof digest
-> `f25a190468d2be42f48b352c5c2b818524ab5e083e73715e7f5d488301b46f42`,
-> dirty-source full certifying-structure glass passed 12/12 viewports and all
-> 52/52 controls with `omitted=[]`, 0 findings, instrument failures, or retries,
-> and all 12 exact import-phase/release/ready paths. A later smoke attempt correctly
-> refused mixed-source evidence because tracked documentation changed during its
-> run; stable exact-commit smoke/glass/persona evidence remains pending. Diagnostic
-> results are not certification provenance; live Git/PR commands remain authoritative
-> for the eventual committed tip.
+> Before the stable-source battery, one smoke attempt correctly refused mixed-
+> source evidence because tracked documentation changed during its run (`source
+> identity changed during slice smoke`). That single execution had no automatic
+> retry and remains coordination/instrument evidence, not a product failure. The
+> local battery and package do not authorize preview publication, human
+> certification, Ready, merge, versioning, or deployment. The initial malformed
+> `npm run perf -- --runs=4` command was likewise rejected before any browser;
+> the correct one-run diagnostic was not a retry of an evidence failure.
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay

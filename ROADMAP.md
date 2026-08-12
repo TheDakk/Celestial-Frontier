@@ -30,7 +30,7 @@
   `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`.
 - Executable/evidence head:
   immutable executable evidence source
-  `20896ad410b48ae0c407a9f3d6885d30ec6657b1`; its complete clean sequential
+  `7d9980e37e60f0cec8cb840e75098872b9cc90d0`; its complete clean sequential
   battery passed. It underlies a docs-only handoff tip. Exact tip/upstream/
   CI state is live authority from `git rev-parse HEAD`,
   `git status --short --branch`, and PR #11 checks. Prior
@@ -46,8 +46,8 @@
   job [`94134750800`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470/job/94134750800),
   remains preserved red without retry at exact pushed `38e4f362`; it passed every preceding
   gate and 11 glass rows, then desktop-8k crossed the unchanged import bound before the first
-  release receipt. The current replacement-ticker repair is described below and still requires
-  exact clean-commit evidence plus matching new-head CI. Draft PR #11 is open at
+  release receipt. The replacement-ticker repair is described below and now has exact clean-
+  commit local evidence; matching final-tip CI is still required. Draft PR #11 is open at
   https://github.com/TheDakk/Celestial-Frontier/pull/11.
 - Read next: `PROCESS_LAWS.md` · `PARALLEL_GIT_PROTOCOL.md` · `README.md` ·
   `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `SAVE_SYSTEM.md` ·
@@ -157,21 +157,13 @@ IndexedDB timeout race.
 The follow-on repair stops the ticker synchronously when an operation wins the exclusive
 replacement claim, before the first await, and restores it only when that exact owner rolls
 back after having stopped a running ticker. Its event-owned import phases name claim,
-prior-persist wait, primary write, and release under the original absolute deadline. On the
-final dirty diagnostic digest
-`f25a190468d2be42f48b352c5c2b818524ab5e083e73715e7f5d488301b46f42`, full
-glass passed 12/12 viewports and 52/52 controls with `omitted=[]`, zero findings,
-instrument failures, or retries, and all 12 exact phase/release/ready paths; replacement
-totals were 194–253 ms. Desktop-8k recorded a 3 ms arm, ticker true only at
-`invoked`, 1 ms primary write, 29 ms release, both 5,461×3,072 canvases →1×1,
-`performanceNow` 198.1 ms, 1 ms confirmation, and 253 ms total. A later smoke attempt
-correctly refused mixed-source evidence because documentation changed while it ran
-(`source identity changed during slice smoke`); that one-attempt refusal is retained as a
-coordination/instrument result, not a product failure, and was not retried on moving bytes.
-Stable exact-commit smoke/glass/persona evidence and matching CI remain required.
+prior-persist wait, primary write, and release under the original absolute deadline.
 
-Immutable executable/evidence source `20896ad410b48ae0c407a9f3d6885d30ec6657b1`
-contains and validates the completed two-sided repair:
+One earlier smoke attempt correctly refused mixed-source evidence because tracked documentation
+changed while it ran (`source identity changed during slice smoke`). That single execution had no
+automatic retry and remains preserved as a coordination/instrument refusal, not a product failure.
+After the source was frozen, immutable executable/evidence source
+`7d9980e37e60f0cec8cb840e75098872b9cc90d0` validated the completed two-sided repair:
 
 - Product: Training restart, supported expedition import and the storage-health retry synchronously
   claim one mutually exclusive replacement transaction, then share one explicit code-owned reload
@@ -195,30 +187,31 @@ Its exact clean sequential battery passed:
 
 - root preflight selftest and owned-CDP preflight passed, with only the expected Edge 151 versus
   pinned Edge 150 drift warning; validate passed with the baseline fingerprint and root smoke passed;
-- certifying layout run `exact-20896ad-root-layout` passed all sealed 787/787 outcomes across 10/10
-  viewports and exact-run verification passed;
+- root layout selftest passed; certifying run `exact-7d9980e-root-layout` passed all sealed 787/787
+  outcomes across 10/10 viewports and exact-run verification passed;
 - rarity completed 60M trials with 0 downgrades, and dead-code review found 3 tooling references;
 - v2 passed 24 test files / 273 tests with 1 skip and every type, art, override, coverage, spec and
   instrument-selftest gate;
 - one-attempt `smoke:ci` passed with 0 findings / 10 screenshots; smoke, glass and persona evidence
   share working-tree digest
   `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`;
-- committed/certifying full glass passed 12/12 viewports and 50/50 controls with `omitted=[]`,
-  0 findings, 0 instrument failures and 0 retries. All 12 reload
-  witnesses passed; desktop-8k recorded both 5,461×3,072 canvases collapsing to 1×1, renderer/stage
-  released, view detached, release→commit in 31 ms, commit→ready in 148 ms,
-  `performanceNow` 177 ms, confirmation in 1 ms and 212 ms total. Across all viewports replacement
-  totaled 170–212 ms and the maximum browser-native timestamp was 177 ms;
+- exact-source certifying glass passed 12/12 viewports and 52/52 controls with `omitted=[]`,
+  0 findings, 0 instrument failures and 0 retries. All 12 import-phase/release/ready paths passed;
+  replacement totals were 194–239 ms. Desktop-8k recorded a 3 ms bounded arm, 21 ms exact import-
+  phase span with the ticker true only at `invoked`, 0 ms primary write, 19 ms release, both
+  5,461×3,072 canvases collapsing to 1×1, `performanceNow` 199.5 ms, 1 ms confirmation and
+  239 ms total;
 - all 9 bounded automated personas passed, still explicitly not a human playtest;
-- the terminal-only 4× performance diagnostic recorded 586 ms painted / 666 ms answerable /
-  77 ms press→panel / 151 ms rebuild; and
-- exact 37-file preview `dev-preview-exact-20896ad` verified and browser-smoked PASS at 320×568
-  for expected origin
-  `https://dev-celestialfrontier.github.io`, content SHA-256
-  `3a2e5285184cf392a10916270f5d3d449d72d78bb6afb0b6bd29d45d6b1a6b50`, with
-  `publishable: false`.
+- the first performance command, malformed as `npm run perf -- --runs=4`, was rejected before a
+  browser launched. The correct single terminal-only run then recorded 646 ms painted / 726 ms
+  answerable / 74 ms press→panel / 157 ms rebuild; this was not a retry of an evidence failure; and
+- exact 37-file / 10,170,996-byte preview `dev-preview-exact-7d9980e` verified and browser-smoked
+  PASS under Edge 151 at 320×568 for expected origin
+  `https://dev-celestialfrontier.github.io`, distinct from production, content SHA-256
+  `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
+  `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, with `publishable: false`.
 
-`20896ad` underlies a docs-only handoff tip. Live Git/PR state decides its exact current
+`7d9980e` underlies the forthcoming/current docs-only handoff tip. Live Git/PR state decides its exact current
 tip/upstream/check status; the final pushed tip requires matching green CI before preview/human
 play may begin.
 
@@ -260,7 +253,7 @@ human play remains the judge of motion, readability, comfort and perceived quali
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — executable/evidence head
-`20896ad410b48ae0c407a9f3d6885d30ec6657b1` is the immutable source for the complete clean
+`7d9980e37e60f0cec8cb840e75098872b9cc90d0` is the immutable source for the complete clean
 sequential battery recorded above and underlies a docs-only handoff tip. Resolve exact current
 tip/upstream/check state live; prior #201, #202, and #203 remain preserved red without retry.
 
@@ -315,9 +308,9 @@ merged PR #10.
   > gate onto the same owned port-0 CDP launcher and adds ignored atomic pass/fail/instrument-fail
   > evidence, stale-PASS/exit-73 selftest, exact-run freshness and a separate required CI upload;
   > automated personas are explicitly not a human playtest. Clean executable evidence is bound to
-  > local commit `20896ad410b48ae0c407a9f3d6885d30ec6657b1`: root fingerprint/smoke/preflight
+  > local commit `7d9980e37e60f0cec8cb840e75098872b9cc90d0`: root fingerprint/smoke/preflight
   > and sealed layout 787/787, v2 273 pass / 1 skip plus every gate/selftest, one-attempt smoke,
-  > committed glass 12/12 with 50/50 controls, 12 valid replacement witnesses and 170–212 ms
+  > committed glass 12/12 with 52/52 controls, 12 exact import/release/ready paths and 194–239 ms
   > replacement totals, nine automated personas, and exact 37-file preview verify/browser PASS.
   > Prior #201 (`31586917924` / `94082765087`), #202
   > (`31594595288` / `94106996466`), and #203 (`31602984470` / `94134750800`)

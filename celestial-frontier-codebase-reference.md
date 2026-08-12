@@ -179,27 +179,9 @@
 > latency—not evidence of a 61-second product boot, save rejection or product
 > failure—and remains preserved without retry.
 >
-> Immutable executable evidence source `20896ad410b48ae0c407a9f3d6885d30ec6657b1`
-> passed its complete exact battery: root preflight selftest/preflight (only the
-> expected Edge 151 versus pinned Edge 150 warning), validate/fingerprint and smoke;
-> final `exact-20896ad-root-layout` 787/787 across 10/10 viewports and exact
-> verification; rarity 60M/0 downgrades; dead-code 3 tooling references; v2 24
-> files / 273 tests / 1 skip plus every gate/selftest; one-attempt smoke 0 findings /
-> 10 screenshots; and committed/certifying glass 12/12 viewports, 50/50 controls,
-> `omitted=[]`, 0 findings/instrument failures/retries with working-tree digest
-> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
-> All 12 reload witnesses passed; desktop-8k proved both 5,461×3,072 canvases →1×1,
-> renderer/stage released, view detached, release→commit 31 ms, commit→ready
-> 148 ms, `performanceNow` 177 ms, confirmation 1 ms and total 212 ms. All viewport
-> totals were 170–212 ms; maximum browser-native time was 177 ms. Nine automated
-> personas passed. The terminal-only 4× diagnostic was 586/666/77/151 ms
-> (painted/answerable/press→panel/rebuild). Exact 37-file preview
-> `dev-preview-exact-20896ad` verified and browser-smoked PASS at 320×568 for expected origin
-> `https://dev-celestialfrontier.github.io`, content
-> `3a2e5285184cf392a10916270f5d3d449d72d78bb6afb0b6bd29d45d6b1a6b50`,
-> `publishable:false`. Prior #201 and #202 remain preserved red without retry.
-> `20896ad` underlies a docs-only handoff tip; exact tip/upstream/check state is read
-> live.
+> Prior immutable executable source `20896ad410b48ae0c407a9f3d6885d30ec6657b1`
+> remains preserved clean evidence for the post-write release/ready contract before
+> the ticker-quiescence repair. Prior #201 and #202 remain preserved red without retry.
 >
 > Test-battery #203, run
 > [`31602984470`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470) /
@@ -214,19 +196,36 @@
 > corruption or a reported repository-write rejection. Preserve #203 without
 > retry, timeout increase, or an IndexedDB timeout race.
 >
-> The frozen repair remains uncommitted and therefore diagnostic. At dirty-source
-> digest `f25a190468d2be42f48b352c5c2b818524ab5e083e73715e7f5d488301b46f42`,
-> full certifying-structure glass passed 12/12 viewports, 52/52 controls,
-> `omitted=[]`, 0 findings,
-> instrument failures or retries, and all 12 exact import-phase/release/ready
-> paths. Replacement totals were 194–253 ms.
-> Desktop-8k recorded a 3 ms arm, exact seven-stage no-active-persist path with
-> ticker true only at `invoked`, 31 ms phase span, 1 ms write, 29 ms release,
-> both 5,461×3,072 canvases →1×1, `performanceNow` 198.1 ms, 1 ms confirmation,
-> and 253 ms total. A later smoke attempt correctly refused mixed-source evidence
-> because tracked documentation changed during its run; stable exact-commit smoke/
-> glass/persona remain pending. This cannot replace an exact clean committed battery or
-> matching CI. The final pushed tip requires both before preview/human play. The
+> Before clean certification, one smoke attempt correctly refused mixed-source evidence
+> because tracked documentation changed during its run (`source identity changed during
+> slice smoke`). That single execution had no automatic retry and remains coordination/
+> instrument evidence, not a product failure.
+>
+> Immutable executable source `7d9980e37e60f0cec8cb840e75098872b9cc90d0`
+> then passed the complete exact sequential battery: root preflight selftest and
+> owned-CDP preflight (only Edge 151 versus pinned Edge 150 drift), validate/fingerprint,
+> root smoke, root layout selftest, `exact-7d9980e-root-layout` 787/787 across 10/10
+> viewports plus exact-run verification, rarity 60M/0, dead-code 3 tooling references,
+> v2 24 files / 273 tests / 1 skip, and every type/art/override/coverage/spec/instrument
+> selftest. One-attempt `smoke:ci` passed 0 findings / 10 screenshots. Exact-source
+> certifying glass at working-tree digest
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`
+> passed 12/12 viewports, 52/52 controls, `omitted=[]`, 0 findings/instrument failures/
+> retries, and all 12 exact import-phase/release/ready paths in 194–239 ms. Desktop-8k
+> recorded a 3 ms arm, 21 ms phase span with ticker true only at `invoked`, 0 ms write,
+> 19 ms release, both 5,461×3,072 canvases →1×1, `performanceNow` 199.5 ms, 1 ms
+> confirmation and 239 ms total. Nine automated personas passed. The initial malformed
+> `npm run perf -- --runs=4` command was rejected before browser startup; the correct
+> single terminal diagnostic recorded 646/726/74/157 ms (painted/answerable/press→panel/
+> rebuild) and was not a retry of an evidence failure. Exact 37-file / 10,170,996-byte
+> preview `dev-preview-exact-7d9980e` verified and browser-smoked PASS under Edge 151 at
+> 320×568 for expected origin `https://dev-celestialfrontier.github.io`, distinct from
+> production, content SHA-256
+> `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
+> `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, `publishable:false`.
+> `7d9980e` underlies the forthcoming/current
+> docs-only handoff tip; exact tip/upstream/check state is read live. Matching final-tip
+> CI remains required before preview/human play. The
 > artifact is origin-bound but not authorized for hosting or
 > publication; human playtest, Ready and merge authority remain open.
 > Development preview origin/package requirements live in
