@@ -463,6 +463,26 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > A deadline belongs to the phase being exited as well as the phase that remains
 > stuck: just-late import→navigation, navigation→boot, and boot→ready transitions
 > must fail, even when their destination state is otherwise valid.
+>
+> **Correction earned by test-battery #202:** a deadline-aware loop is still not a deadline-aware
+> witness when it serially awaits blocking CDP commands. That run reached its first replacement
+> observation after 61.163 seconds because one loop could spend up to 30 seconds each in
+> `Page.getFrameTree`, `Runtime.evaluate({awaitPromise:true})`, and another frame-tree read. The red
+> result therefore did not prove a 61-second product boot or save failure; it proved the observer
+> could sleep through the evidence it was meant to time. Phase authority must come from sticky CDP
+> event receipts carrying their arrival timestamps: the exact target session, default top-frame
+> execution context, context identity/generation/origin, changed loader, URL and changed document
+> token. The payload's browser-native `performance.now()` must itself be strictly below the
+> 20-second boot budget (the exact boundary is a failing control), so a descheduled Node observer
+> cannot compress a genuinely late product boot into an apparently timely receipt. A replacement
+> page emits the optional `cf-v2-slice-ready/v1` binding only after load,
+> complete slice wiring, persistence readiness, at least one ticker turn, an animation frame and a
+> later task. The harness then performs one short, phase-owned confirmation in that exact context;
+> a command timeout may be shorter than the connection-wide ceiling but never extend it. Reject
+> missing, duplicate, malformed, wrong-session/context/loader/token/URL, pre-commit and just-late
+> witnesses, and keep fatal events outside any bounded diagnostic ring. This tail witness means
+> **boot publication plus a serviced event-loop turn**. It is not the 50 ms answerability metric;
+> later driven outcomes remain the proof that controls answer.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next

@@ -86,7 +86,15 @@
 > the Pixi application with its global/child texture resources, detaches the
 > application view, and collapses both the application and backdrop canvases to
 > at most 1×1 before a one-task-boundary `location.reload()`. The optional CDP
-> seam reports those postconditions outside the dying execution context. This
+> seam reports those postconditions, the exact replacement reason and the outgoing
+> document token outside the dying execution context. The replacement document's
+> separate optional `cf-v2-slice-ready/v1` tail binding is emitted only after load,
+> persistence and complete input/slice wiring, the first ticker turn, an animation
+> frame and a later task. Glass accepts it only from the exact target session and
+> new default top context on the committed changed loader, with a changed token and
+> phase-owned deadline, then performs one at-most-2-second confirmation in that
+> context. The tail witness is boot-publication evidence, not a claim that the
+> separate 50 ms answerability criterion has passed. This
 > teardown is deliberately not installed on generic `pagehide`: a browser-cache
 > restore must never revive a Pixi application that the app destroyed.
 >
@@ -102,6 +110,19 @@
 > and a ready replacement in 230 ms. Prior CI #201 remains preserved red without
 > retry. `d801338` underlies the non-executable handoff tip. Exact tip/upstream/
 > check state is read live, and the final pushed tip requires matching green CI.
+> CI #202, run `31594595288` / job `94106996466`, is also preserved red without
+> retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`: every earlier gate
+> and `smoke:ci` passed, while desktop-8k glass first observed replacement state
+> at 61.163 seconds. The serial three-command probe could itself consume up to
+> roughly 90 seconds, so #202 is instrument ambiguity, not a save rejection or
+> proof of a slow product boot. A non-authoritative dirty diagnostic of the
+> event-owned repair passed glass 12/12, 50/50 controls and all 12 witnesses with
+> 0 findings/instrument failures/retries, 170–216 ms replacement totals and digest
+> `d247209d66a7d3a26ffd484066fecc92f05b4511e542f917f848715fcc53d295`.
+> Desktop-8k released both 5,461×3,072 stores to 1×1, committed in 32 ms,
+> reached the ready binding 146 ms later (`performanceNow` 176.2 ms), confirmed
+> it in 2 ms and completed in 216 ms. It remains diagnostic pending a clean commit, exact battery and matching
+> CI.
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
