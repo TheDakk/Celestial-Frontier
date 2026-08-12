@@ -126,6 +126,31 @@ run and retain that run URL with the playtest report.
 
 ### Current PR #11 provenance finding
 
+The browser-provenance defect below remains preserved history, but it is no longer
+the latest PR-head stop. Test-battery #205, run `31621227550` / job
+`94196289291`, completed once without retry at exact pushed
+`c57305fbf30af2bc8158ff46af1ec49ec4455d95` and is **RED** after every preceding
+gate and `smoke:ci` passed. Desktop-8k completed import, release, changed-loader
+navigation, all 12 boot stages and ready; its next exact-context command timed out
+at two seconds. No concurrent browser-process heartbeat was recorded, so the run
+is strong evidence of post-ready target starvation but cannot retrospectively
+prove the browser/CDP transport was healthy. It is preserved without retry.
+
+The cited follow-on two-tier-density/dual-heartbeat browser evidence was captured
+from a `dirty-diagnostic` source state and is non-authoritative: targeted desktop-8k passed non-certifying
+(`e77e9727cb019740bd756188be18f444ac1d3f5d666e49f727f355c73b7c3c2d`);
+one-attempt smoke passed 0 findings /10 screenshots /105,207 ms
+(`fb1800320926532c0df6c782cd630c45e37bcea6906c4bbd953111b7605b43c8`);
+full glass passed 12/12 and 57/57 with `blocked=[]`, `omitted=[]`, zero findings/
+instrument failures/retries /53,918 ms
+(`dff0829a3eb8dba67ee0da7c51ae6748fe4ff9bc8652ee1d617657f3133794cb`);
+all nine automated personas passed, still not human play; terminal-only performance
+was 605/686/76/159 ms. One sandboxed listener preflight failed `EPERM`, and one
+harness-only floating-width assertion was corrected once without retrying a
+product failure. These results do not authorize a candidate package or host.
+Run the clean-head exact battery, push it, and require matching CI
+before asking Nick to approve the one-time PR #11 candidate command below.
+
 Pushed head `8b8a740286a56591cac9dc5734a2fba4c088939b` passed its exact local
 battery. Matching test-battery #200, run `31577395120` / job `94052496287`,
 passed every root/product/v2 gate, one-attempt slice smoke, the complete

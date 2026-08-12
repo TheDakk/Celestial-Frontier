@@ -367,22 +367,67 @@ const playSeconds = (): number => (performance.now() - playT0) / 1000;
 const TOUCH_DPR = navigator.maxTouchPoints > 0
   || (typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches);
 /* The app and its full-viewport 2D backdrop coexist. Treat one 4096² store
-   as their aggregate pixel budget, not as permission for two 4096² stores. */
+   as their aggregate pixel budget, not as permission for two 4096² stores.
+   CSS viewports larger than one half-budget are an ultra-density stress case:
+   preserve native backing through UHD 3840×2160, then halve the simultaneous allocation
+   so an 8K software renderer remains answerable after publishing readiness. */
 const MAX_FULL_VIEWPORT_BACKING_PIXELS = 16_777_216;
 const FULL_VIEWPORT_CANVAS_COUNT = 2;
 const MAX_BACKING_PIXELS_PER_CANVAS = MAX_FULL_VIEWPORT_BACKING_PIXELS / FULL_VIEWPORT_CANVAS_COUNT;
-const effectiveDpr = (): number => {
+const MAX_ULTRA_VIEWPORT_BACKING_PIXELS_PER_CANVAS = MAX_BACKING_PIXELS_PER_CANVAS / 2;
+const roundedBackingPixels = (width: number, height: number, resolution: number): number =>
+  Math.max(1, Math.round(width * resolution)) * Math.max(1, Math.round(height * resolution));
+const fitResolutionToPixelCap = (
+  requested: number, width: number, height: number, pixelCap: number,
+): number => {
+  const dimensionFloor = Math.min(1 / width, 1 / height);
+  let low = dimensionFloor;
+  let high = Math.max(dimensionFloor, requested);
+  if (roundedBackingPixels(width, height, high) <= pixelCap) return high;
+  /* The square-root memory bound is continuous, while both Canvas and Pixi
+     round backing dimensions independently. Find the greatest representable
+     resolution whose actual rounded width×height still fits the selected cap. */
+  for (let i = 0; i < 64; i++) {
+    const mid = low + (high - low) / 2;
+    if (mid === low || mid === high) break;
+    if (roundedBackingPixels(width, height, mid) <= pixelCap) low = mid;
+    else high = mid;
+  }
+  return low;
+};
+type RendererDensityPlan = Readonly<{
+  dpr: number;
+  backingPixelCapPerCanvas: number;
+  viewportWidth: number;
+  viewportHeight: number;
+}>;
+const effectiveDensityPlan = (): RendererDensityPlan => {
+  const viewportWidth = Math.max(1, innerWidth);
+  const viewportHeight = Math.max(1, innerHeight);
+  const viewportPixels = viewportWidth * viewportHeight;
+  const backingPixelCapPerCanvas = viewportPixels > MAX_BACKING_PIXELS_PER_CANVAS
+    ? MAX_ULTRA_VIEWPORT_BACKING_PIXELS_PER_CANVAS
+    : MAX_BACKING_PIXELS_PER_CANVAS;
   const device = Number.isFinite(devicePixelRatio) ? Math.max(1, devicePixelRatio) : 1;
   const heatCap = TOUCH_DPR ? 2 : 3;
-  const memoryCap = Math.sqrt(MAX_BACKING_PIXELS_PER_CANVAS / Math.max(1, innerWidth * innerHeight));
-  /* A CSS viewport can exceed one canvas's half-budget at 5K/8K. Pixi
-     supports sub-1 resolution while autoDensity preserves the CSS box, so
-     keep the aggregate twin-canvas ceiling instead of silently exceeding it
-     at the old DPR-1 floor. */
-  const dimensionFloor = Math.min(1 / Math.max(1, innerWidth), 1 / Math.max(1, innerHeight));
-  return Math.max(dimensionFloor, Math.min(device, heatCap, memoryCap));
+  const memoryCap = Math.sqrt(backingPixelCapPerCanvas / viewportPixels);
+  /* A CSS viewport can exceed one canvas's standard half-budget beyond UHD.
+     Pixi supports sub-1 resolution while autoDensity preserves the CSS box,
+     so keep the selected twin-canvas ceiling instead of silently exceeding
+     it at the old DPR-1 floor. */
+  const dimensionFloor = Math.min(1 / viewportWidth, 1 / viewportHeight);
+  const requested = Math.max(dimensionFloor, Math.min(device, heatCap, memoryCap));
+  return {
+    dpr: fitResolutionToPixelCap(
+      requested, viewportWidth, viewportHeight, backingPixelCapPerCanvas,
+    ),
+    backingPixelCapPerCanvas,
+    viewportWidth,
+    viewportHeight,
+  };
 };
-let DPR = effectiveDpr();
+let densityPlan = effectiveDensityPlan();
+let DPR = densityPlan.dpr;
 const minWH = (): number => Math.max(80, Math.min(innerWidth, innerHeight));   /* floor: a zero-sized window must not mint z=0 → NaN cameras (audit #8) */
 
 let nav: NavState = NAV_HOME;
@@ -2973,7 +3018,9 @@ async function loadSave(): Promise<void> {
      starve the async boot work that makes the document answerable. */
   emitBootPhase('app-init-start');
   await app.init({
-    background: 0x05070d, resizeTo: window, antialias: true,
+    background: 0x05070d,
+    width: densityPlan.viewportWidth, height: densityPlan.viewportHeight,
+    antialias: true,
     resolution: DPR, autoDensity: true, autoStart: false,
   });
   emitBootPhase('app-init-complete');
@@ -2989,13 +3036,57 @@ async function loadSave(): Promise<void> {
   { const r = mulberry32(5); for (let i = 0; i < 900; i++) bgStars.push({ x: r(), y: r(), s: r() * 1.1 + 0.2, o: r() * 0.5 + 0.15 }); }
   let _bgKey = '';
   let activeBackdropCanvas: HTMLCanvasElement | null = null;
+  let backdropGeneration = 0;
+  let backdropTransitionPeakPixels = 0;
+  let backdropTransitionBudgetPixels = densityPlan.backingPixelCapPerCanvas * 2;
+  const ownedBackdropPixels = (): number => app.canvas.width * app.canvas.height
+    + (activeBackdropCanvas?.width ?? 0) * (activeBackdropCanvas?.height ?? 0);
+  const releaseBackdrop = (): void => {
+    const old = bgSpr.texture;
+    const priorCanvas = activeBackdropCanvas;
+    bgSpr.texture = Texture.EMPTY;
+    activeBackdropCanvas = null;
+    if (old && old !== Texture.EMPTY) old.destroy(true);
+    if (priorCanvas) {
+      priorCanvas.width = 1;
+      priorCanvas.height = 1;
+    }
+  };
+  const applyRendererDensity = (plan: RendererDensityPlan): void => {
+    /* Own viewport resizing instead of Pixi's ResizePlugin. Two same-aspect
+       ultra viewports can resolve to the same integer backing dimensions;
+       CanvasSource then (correctly) reports "not resized" and skips its CSS
+       and Texture.frame refresh even though the logical viewport changed.
+       The backing store may stay put, but CSS, texture metadata and the
+       screen/hit-test rectangle must still follow the exact CSS viewport. */
+    app.renderer.resize(plan.viewportWidth, plan.viewportHeight, plan.dpr);
+    app.renderer.view.texture.update();
+    app.canvas.style.width = `${plan.viewportWidth}px`;
+    app.canvas.style.height = `${plan.viewportHeight}px`;
+    app.screen.width = plan.viewportWidth;
+    app.screen.height = plan.viewportHeight;
+  };
   const rebuildBackdrop = (): void => {
     const W = app.screen.width, H = app.screen.height;
     const k = W + '|' + H + '|' + DPR.toFixed(4);
     if (k === _bgKey || W < 2) return;
     _bgKey = k;
+    /* Release the old full-viewport store before allocating its replacement.
+       App + old backdrop + new backdrop would otherwise create a transient
+       three-store peak even though the settled twin stores satisfy the
+       selected aggregate budget. This all happens in one JS task, so the
+       stage cannot render between detaching the old texture and installing
+       the new one. */
+    releaseBackdrop();
     const cv = document.createElement('canvas');
     cv.width = Math.max(1, Math.round(W * DPR)); cv.height = Math.max(1, Math.round(H * DPR));
+    /* Include any still-owned prior backdrop in the observed allocation
+       peak. The expected value is app+new because releaseBackdrop ran first;
+       moving allocation above release would make this exact witness red. */
+    backdropTransitionPeakPixels = Math.max(
+      backdropTransitionPeakPixels,
+      ownedBackdropPixels() + cv.width * cv.height,
+    );
     const g = cv.getContext('2d')!; g.scale(DPR, DPR);
     const bg = g.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, Math.max(W, H) * 0.75);
     bg.addColorStop(0, '#0a0a1e'); bg.addColorStop(0.6, '#05050f'); bg.addColorStop(1, '#020208');
@@ -3003,35 +3094,54 @@ async function loadSave(): Promise<void> {
     g.fillStyle = '#aab4e0';
     for (const s of bgStars) { g.globalAlpha = s.o * 0.5; g.fillRect(s.x * W, s.y * H, s.s, s.s); }
     g.globalAlpha = 1;
-    const old = bgSpr.texture;
-    const priorCanvas = activeBackdropCanvas;
     bgSpr.texture = Texture.from(cv);
     activeBackdropCanvas = cv;
     bgSpr.width = W; bgSpr.height = H;
-    if (old && old !== Texture.EMPTY) old.destroy(true);
-    /* Texture destruction releases Pixi's source/GPU ownership; explicitly
-       collapse the detached 2D backing too so a density/viewport rebuild does
-       not wait for browser GC before returning its pixel allocation. */
-    if (priorCanvas && priorCanvas !== cv) {
-      priorCanvas.width = 1;
-      priorCanvas.height = 1;
-    }
+    backdropGeneration++;
   };
+  /* app.init is asynchronous. Re-read the viewport before allocating the
+     first backing stores so a resize during renderer negotiation cannot
+     leave the app on the stale pre-init density plan. */
+  densityPlan = effectiveDensityPlan();
+  DPR = densityPlan.dpr;
+  applyRendererDensity(densityPlan);
+  backdropTransitionPeakPixels = app.canvas.width * app.canvas.height;
+  backdropTransitionBudgetPixels = densityPlan.backingPixelCapPerCanvas * 2;
   rebuildBackdrop();
   emitBootPhase('backdrop-complete');
   const syncRendererDensity = (): void => {
-    const next = effectiveDpr();
-    if (Math.abs(next - DPR) > 0.001) {
+    const nextDensityPlan = effectiveDensityPlan();
+    const next = nextDensityPlan.dpr;
+    const densityChanged = next !== DPR
+      || nextDensityPlan.backingPixelCapPerCanvas !== densityPlan.backingPixelCapPerCanvas
+      || nextDensityPlan.viewportWidth !== densityPlan.viewportWidth
+      || nextDensityPlan.viewportHeight !== densityPlan.viewportHeight;
+    if (densityChanged) {
+      const priorBudget = densityPlan.backingPixelCapPerCanvas * 2;
+      backdropTransitionPeakPixels = ownedBackdropPixels();
+      backdropTransitionBudgetPixels = Math.max(
+        priorBudget, nextDensityPlan.backingPixelCapPerCanvas * 2,
+      );
+      /* Drop the old full-viewport backdrop before resizing the renderer.
+         Across the ordinary/ultra threshold, resizing first would briefly
+         combine a new-tier app canvas with the larger old-tier backdrop and
+         exceed the newly selected simultaneous-owner budget. */
+      releaseBackdrop();
+      densityPlan = nextDensityPlan;
       DPR = next;
-      app.renderer.resolution = DPR;
-      app.renderer.resize(innerWidth, innerHeight);
+      applyRendererDensity(densityPlan);
       _bgKey = '';
       /* Texture-backed scene art was baked for the prior scale tier. Rebuild
          the current mode so a monitor/DPR transition upgrades the scene, not
          only the Pixi backing store and backdrop. */
       rerender({ preserveSurvey: true });
+      /* Change both simultaneous full-viewport stores in one transaction.
+         A deferred backdrop rebuild briefly retained the ordinary-tier
+         canvas after the app had already advertised the ultra-tier cap. */
+      rebuildBackdrop();
+    } else {
+      densityPlan = nextDensityPlan;
     }
-    setTimeout(rebuildBackdrop, 50);
   };
   addEventListener('resize', syncRendererDensity);
   visualViewport?.addEventListener('resize', syncRendererDensity);
@@ -3131,9 +3241,15 @@ async function loadSave(): Promise<void> {
         fsMode: save.fsMode, toneMode: save.toneMode, fontMode: save.fontMode,
         glassA: getComputedStyle(document.documentElement).getPropertyValue('--glass-a').trim(),
         rendererDpr: app.renderer.resolution,
+        eventResolution: app.renderer.events.resolution,
+        backingPixelCapPerCanvas: densityPlan.backingPixelCapPerCanvas,
+        viewportWidth: densityPlan.viewportWidth, viewportHeight: densityPlan.viewportHeight,
         backingWidth: app.canvas.width, backingHeight: app.canvas.height,
         backdropBackingWidth: activeBackdropCanvas?.width ?? 0,
         backdropBackingHeight: activeBackdropCanvas?.height ?? 0,
+        backdropLogicalWidth: bgSpr.width, backdropLogicalHeight: bgSpr.height,
+        backdropGeneration,
+        backdropTransitionPeakPixels, backdropTransitionBudgetPixels,
         combinedBackingPixels: app.canvas.width * app.canvas.height
           + (activeBackdropCanvas?.width ?? 0) * (activeBackdropCanvas?.height ?? 0),
         keyboardTarget: keyboardTargetKey,
@@ -3488,6 +3604,9 @@ async function loadSave(): Promise<void> {
             saveReady: !!save, viewConnected: app.canvas.isConnected,
             rendererReady: !!app.renderer && app.canvas.width > 1 && app.canvas.height > 1,
             stageReady: !!app.stage, tickerTicks,
+            rendererDpr: app.renderer.resolution,
+            backingPixelCapPerCanvas: densityPlan.backingPixelCapPerCanvas,
+            viewportWidth: densityPlan.viewportWidth, viewportHeight: densityPlan.viewportHeight,
             backingWidth: app.canvas.width, backingHeight: app.canvas.height,
             backdropBackingWidth, backdropBackingHeight,
             combinedBackingPixels: app.canvas.width * app.canvas.height

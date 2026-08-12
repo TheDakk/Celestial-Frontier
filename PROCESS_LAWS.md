@@ -517,6 +517,39 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > application readiness—and increasing the boot timeout does not repair resource ownership or
 > startup order.
 
+> **Correction earned by test-battery #205:** publishing every ordered boot stage and the ready
+> event does not prove the target can service the *next* turn. At exact pushed
+> `c57305fbf30af2bc8158ff46af1ec49ec4455d95`, every preceding gate and `smoke:ci`
+> passed; desktop-8k completed import, write, release, changed-loader navigation, all 12 boot
+> stages, and ready at browser-native `performanceNow` about 3,733 ms. Its sole exact-context
+> confirmation then timed out at the unchanged two-second bound. Because that run did not send a
+> concurrent browser-process heartbeat, it is strong pixel-linear evidence of post-ready target
+> starvation but cannot retrospectively distinguish an unanswerable target from a stalled browser/
+> CDP transport. Preserve the single red execution; do not retry it or promote the likely diagnosis
+> into proof the instrument did not collect.
+> **Ready must be followed by bounded target evidence and an independent transport discriminator.**
+> The matrix now sends two strict, no-retry, at-most-two-second confirmation cycles in the exact
+> ready context. Each target command is issued concurrently with root-session
+> `Browser.getVersion`; the second target command resolves only on a later Pixi ticker callback
+> scheduled after the render listener. A target timeout or lost context while that browser heartbeat
+> remains timely is a product answerability finding; a missing, malformed, timed-out, or late
+> heartbeat is an instrument/transport failure. The five-row command ledger binds the import arm
+> and both target/heartbeat pairs to their roles, cycles, session/context, await mode, ticker
+> priority, and strict deadlines. Product failure may explicitly block later controls, but it may
+> never be laundered into a generic omitted-control instrument failure: reports distinguish
+> executed, `blockedNegativeControls`, and `omittedNegativeControls`.
+>
+> The same correction tightened the resource ruler. Native backing is retained through UHD
+> 3,840×2,160. A viewport strictly larger than 8,388,608 CSS pixels selects an ultra tier of
+> 4,194,304 pixels per canvas / 8,388,608 aggregate; exact rounded-dimension fitting prevents a
+> fractional DPR from rounding over its cap. Desktop-8k therefore owns two 2,730×1,536 stores
+> (4,193,280 each / 8,386,560 combined), not the prior pair of 3,862×2,172 stores. On a live
+> density/viewport transition the old backdrop is destroyed and collapsed before either replacement
+> full-viewport store is allocated, and an exact transition peak/budget witness fails if settled or
+> transient ownership exceeds the selected tier. Same-backing-dimension viewport changes still
+> refresh CSS size, Pixi screen/texture metadata, event resolution, hit coordinates, backdrop
+> logical size, and generation; backing dimensions alone are not a resize outcome.
+
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
 GitHub Actions step lost that step-local `CF_BROWSER`, selected an installed Linux Edge through

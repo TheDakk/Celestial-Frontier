@@ -97,8 +97,13 @@
 > frame and a later task. Glass accepts it only from the exact target session and
 > new default top context on the committed changed loader, with a changed token and
 > phase-owned deadline, then performs one at-most-2-second confirmation in that
-> context. The tail witness is boot-publication evidence, not a claim that the
-> separate 50 ms answerability criterion has passed. This
+> context. It then requires a second no-retry target confirmation from a later
+> post-render Pixi ticker turn. Both target commands run concurrently with a
+> root-session `Browser.getVersion` heartbeat and own their own strict two-second
+> bounds. A timely browser heartbeat plus an unanswerable exact target is a
+> product finding; an unhealthy heartbeat is instrument/transport failure. The
+> tail witness is boot-publication evidence, not by itself a claim of sustained
+> answerability. This
 > teardown is deliberately not installed on generic `pagehide`: a browser-cache
 > restore must never revive a Pixi application that the app destroyed.
 > For diagnostic imports, a separate event-owned `cf-v2-import-phase/v1` stream
@@ -118,9 +123,15 @@
 > origin/loader/document token, requires ticker false through `wiring-complete`
 > and true from `ticker-started`, and stays inside the original boot deadline.
 > Browser load/FCP is not a substitute for this application-owned sequence.
-> The Pixi and backdrop canvases likewise share one 4,096²-pixel aggregate budget
-> instead of each owning that full allowance; each remains no larger than native
-> 4K, and the 8K fixture resolves each to 3,862×2,172 / 16,776,528 pixels combined.
+> The Pixi and backdrop canvases use a two-tier simultaneous-owner budget. Native
+> backing is retained through UHD 3,840×2,160. A viewport strictly above
+> 8,388,608 CSS pixels selects 4,194,304 backing pixels per canvas /8,388,608
+> aggregate, fitted against the *rounded* backing dimensions; desktop-8k resolves
+> to 2,730×1,536 each /8,386,560 combined. On a density/viewport transition the
+> old backdrop texture/canvas is destroyed and collapsed before replacement
+> allocation, with exact peak/budget evidence. A same-integer-backing resize still
+> updates CSS size, Pixi screen/texture/event geometry, pointer mapping, backdrop
+> logical dimensions, and generation.
 >
 > **Evidence boundary:** immutable executable evidence source
 > `7d9980e37e60f0cec8cb840e75098872b9cc90d0` passed its complete exact
@@ -200,6 +211,33 @@
 > and `publishable:false`. `46fb627` underlies a forthcoming/current docs-only tip;
 > live Git/PR checks decide exact tip/upstream status, and matching final-pushed-tip
 > CI remains pending before preview/human play.
+> CI #205, run `31621227550` / job `94196289291`, is preserved **RED** without
+> retry at exact pushed `c57305fbf30af2bc8158ff46af1ec49ec4455d95`.
+> Every preceding gate and `smoke:ci` passed. Desktop-8k completed import,
+> primary write, renderer release, changed-loader navigation, all 12 boot phases,
+> and ready at browser-native `performanceNow` about 3,733 ms; only the following
+> exact-context confirmation timed out at two seconds. No concurrent browser
+> heartbeat was recorded, so #205 is strong evidence of post-ready target
+> starvation, not proof that browser/CDP transport remained healthy. It is not a
+> save, import, durability, release, or navigation failure.
+>
+> The cited follow-on two-tier density/dual-heartbeat browser evidence was captured
+> from a `dirty-diagnostic` source state and is non-authoritative. A targeted
+> desktop-8k diagnostic passed
+> non-certifying (report SHA-256
+> `e77e9727cb019740bd756188be18f444ac1d3f5d666e49f727f355c73b7c3c2d`).
+> The dirty-diagnostic one-attempt smoke capture passed 0 findings /10 screenshots in 105,207 ms
+> (`fb1800320926532c0df6c782cd630c45e37bcea6906c4bbd953111b7605b43c8`),
+> and the full glass capture passed 12/12, 57/57 controls, `blocked=[]`, `omitted=[]`,
+> zero findings/instrument failures/retries in 53,918 ms
+> (`dff0829a3eb8dba67ee0da7c51ae6748fe4ff9bc8652ee1d617657f3133794cb`).
+> Desktop-8k was 180 ms total /160.6 ms `performanceNow` /7 ms post-render
+> confirmation, with 2,730×1,536→1×1 outgoing canvases. Nine automated
+> personas passed and terminal-only performance was 605/686/76/159 ms. One
+> sandboxed listen preflight failed `EPERM`; one harness-only floating-width
+> assertion reported `7680.000000000001`, was corrected once, and did not retry a
+> product failure. A clean-head exact battery, push and matching CI are still
+> required before any preview/human step. No save-format change occurred.
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay

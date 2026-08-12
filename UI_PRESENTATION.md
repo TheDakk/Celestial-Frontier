@@ -105,13 +105,19 @@
 > client line left inside the 1px border, preventing a hidden two-pixel scroll
 > overflow. A++ also preserves notification hierarchy: the toast title remains
 > 19px while its body is 16px rather than being flattened to one size.
-> Renderer density remains dynamic after resize/visual-viewport change:
-> `effectiveDpr()` caps touch at 2 / desktop at 3 and budgets the application
-> canvas plus full-viewport backdrop together, not independently. The pair share
-> an aggregate 4,096² / 16,777,216-pixel backing budget, split equally; displays
-> through native 4K remain native, while desktop-8k uses two 3,862×2,172 backings
-> (16,776,528 pixels combined). `autoDensity` keeps CSS and hit coordinates
-> viewport-sized while backdrop texture replacement destroys its old texture.
+> Renderer density remains dynamic after resize/visual-viewport change. The
+> selected plan retains the touch-2 / desktop-3 heat caps and native backing
+> through UHD 3,840×2,160. Ordinary viewports may use 8,388,608 backing pixels
+> per canvas / 16,777,216 aggregate; a viewport **strictly larger** than
+> 8,388,608 CSS pixels selects the ultra tier of 4,194,304 per canvas /
+> 8,388,608 aggregate. Exact rounded-dimension fitting keeps fractional DPR from
+> rounding over the selected cap, so desktop-8k uses two 2,730×1,536 stores
+> (4,193,280 each / 8,386,560 combined). `autoDensity` keeps CSS and hit
+> coordinates viewport-sized. A live transition destroys and collapses the old
+> backdrop before resizing/allocating its replacement, records the exact
+> transition peak against its budget, and refreshes Pixi screen/texture/event
+> geometry even when a same-aspect viewport change happens to retain the same
+> integer backing dimensions.
 >
 > Species art remains a lazy chunk, but readiness is now one shared Promise with
 > one latest subscriber per interested view. An idle prefetch can no longer
@@ -142,14 +148,22 @@
 > later task does the optional `cf-v2-slice-ready/v1` tail event publish. Glass
 > accepts exactly one event from the
 > exact target session and new default top context/generation/origin on the changed
-> loader, with the expected URL and changed token, then runs one phase-owned,
-> at-most-2-second confirmation in that context. Sticky receipt timestamps—not
-> serial Page/Runtime polling—own the deadlines. The payload's browser-native
+> loader, with the expected URL and changed token, then runs two strict,
+> no-retry, at-most-2-second confirmation cycles in that context. Each target
+> command is issued concurrently with root-session `Browser.getVersion`; cycle 1
+> samples immediately, while cycle 2 resolves from a one-shot Pixi ticker callback
+> after the render listener and must advance the ready ticker count. A timely
+> browser heartbeat plus an unanswerable/lost target is a product finding; an
+> unhealthy or late heartbeat is an instrument/transport failure. The exact
+> five-command ledger records the import arm and both target/heartbeat pairs.
+> Sticky receipt timestamps—not serial Page/Runtime polling—own the deadlines.
+> The payload's browser-native
 > `performanceNow` must be strictly below 20 seconds, with the exact boundary a
 > failing control, so observer descheduling cannot make a genuinely late product
-> boot look timely. This witnesses complete boot
-> publication plus a serviced event-loop turn; it is not the 50 ms answerability
-> criterion, which later driven outcomes still prove.
+> boot look timely. The ready chain plus both confirmations witnesses publication,
+> an immediate serviced target turn, and a later post-render ticker turn; ready by
+> itself is not steady-state answerability, and later driven outcomes remain
+> authoritative.
 >
 > The product produces that witness from one code-owned path used by its three
 > intentional reloads: Training restart, supported expedition import, and the
@@ -172,7 +186,12 @@
 > boot, same-loader token mutation, early context loss, just-late transitions,
 > missing/reordered/identity-mismatched boot stages, early/running tickers,
 > retained canvases, unreleased renderer, and over-budget aggregate backing
-> pixels. The run remains single-attempt—a red result is never retried into green.
+> pixels. `ready-confirmation-heartbeat`, `ready-confirmation-ticker-progress`,
+> `ultra-viewport-render-budget`, and `ultra-same-backing-resize` extend the full
+> plan to 57 controls. The report separates executed, product-blocked, and omitted
+> controls so a product answerability failure cannot be overwritten by a generic
+> instrument omission. The run remains single-attempt—a red result is never
+> retried into green.
 > An event-owned `cf-v2-import-phase/v1` stream now proves the pre-release half:
 > `invoked` begins with the ticker running; `claimed`, persistence wait/write, and
 > release stages require it stopped. The absolute 20-second import clock begins
@@ -322,6 +341,41 @@
 > tip; live Git/PR checks determine exact tip/upstream status, and matching CI for
 > the final pushed docs tip remains pending. Host, human play, Ready, merge,
 > release, deployment and version authority remain unchanged.
+>
+> Matching test-battery #205, run
+> [`31621227550`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31621227550) /
+> job [`94196289291`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31621227550/job/94196289291),
+> completed once without retry at exact pushed head
+> `c57305fbf30af2bc8158ff46af1ec49ec4455d95` and is **RED**. Every preceding
+> gate and `smoke:ci` passed. Desktop-8k completed import, write, release,
+> changed-loader navigation, all 12 application boot stages, and ready at
+> browser-native `performanceNow` about 3,733 ms; the exact-context confirmation
+> alone timed out at two seconds. #205 carried no concurrent browser-process
+> heartbeat, so it remains strong evidence of post-ready target starvation but
+> not retrospective proof that browser/CDP transport was healthy. Preserve it
+> without retry.
+>
+> The cited two-tier density and dual-confirmation browser evidence was captured
+> from a **`dirty-diagnostic` source state** based on pushed `c57305f` and is
+> non-authoritative. One sandboxed listener attempt failed preflight
+> with `EPERM`, and one harness-only exact-width assertion reported
+> `7680.000000000001`; the assertion was corrected once and no product failure
+> was retried. The targeted desktop-8k diagnostic then passed non-certifying
+> (report SHA-256
+> `e77e9727cb019740bd756188be18f444ac1d3f5d666e49f727f355c73b7c3c2d`).
+> The dirty-diagnostic one-attempt smoke capture passed 0 findings /10 screenshots in 105,207 ms
+> (`fb1800320926532c0df6c782cd630c45e37bcea6906c4bbd953111b7605b43c8`).
+> The dirty-diagnostic full-glass capture passed 12/12 viewports, planned/executed 57/57,
+> `blocked=[]`, `omitted=[]`, 0 findings/instrument failures/retries in 53,918 ms
+> (`dff0829a3eb8dba67ee0da7c51ae6748fe4ff9bc8652ee1d617657f3133794cb`).
+> Its 12 reloads were 174–199 ms; desktop-8k was 180 ms total,
+> `performanceNow` 160.6 ms, and a 7 ms post-render confirmation, with both
+> 2,730×1,536 outgoing canvases collapsing to 1×1. All nine automated personas
+> passed—still not human play—and the terminal-only profile was
+> 605/686/76/159 ms. A clean-head exact sequential battery, push, matching CI,
+> approved separate-origin preview, and recorded human play remain required;
+> none of these diagnostic results authorizes host creation, publication, Ready,
+> merge, release, deployment, or a version bump.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
 v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve

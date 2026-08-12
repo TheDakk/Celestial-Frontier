@@ -6,6 +6,50 @@
 > working doc crossed ~285KB / 4,272 lines and stopped reading in one pass.
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
+## ARCHIVED 2026-08-12 — superseded `46fb627` exact-evidence handoff
+## Moved from ROADMAP.md verbatim during the #205 repair refresh.
+
+`7d9980e` remains immutable prior exact evidence for ticker quiescence; current repair evidence is
+bound to clean executable source `46fb627640e42ea0f43e2e144529884a959d1e72` below. That source
+underlies a forthcoming/current docs-only handoff tip. Live Git/PR state decides its exact final
+tip/upstream/check status, and matching pushed-tip CI remains required before preview/human play.
+
+Matching test-battery #204, run
+[`31612817092`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092) /
+job [`94168172635`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092/job/94168172635),
+completed once without retry at exact pushed head
+`4cee7d807b8f9258e370aad31c30756269f95a96` and is **RED**. Every earlier root/product/v2
+gate and `smoke:ci` passed. Desktop-8k's arm command queued for 9,504 ms; durable write and release
+completed, release took 35 ms, the changed loader committed 45 ms later, and replacement load /
+first-contentful-paint arrived at 231 / 268 ms. No fatal event occurred, yet no ready witness
+arrived inside 20 seconds. This is not a save/import/navigation failure. The replacement document
+allocated two full 16,777,216-pixel canvases and Pixi auto-started its ticker before asynchronous
+boot wiring, so software rendering could starve the very work required to publish readiness.
+Preserve #204 without retry or a longer deadline.
+
+Clean executable source `46fb627640e42ea0f43e2e144529884a959d1e72` passed the exact local
+battery. One malformed operator invocation of `--verify-run` caused a local Edge SIGABRT and
+overwrote the root-layout report; the chronology is preserved, and one correctly formed rerun
+plus verification then passed `exact-46fb627-root-layout`, the sealed 787/787 outcomes across
+10/10 viewports. V2 passed 273 tests / 1 skip plus all type, art, override, coverage, spec and
+instrument gates/selftests. One-attempt `smoke:ci` passed with 0 findings / 10 screenshots.
+
+Full certifying glass at source-snapshot digest
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a` passed 12/12
+viewports, 53/53 planned/executed controls, `omitted=[]`, 0 findings/instrument failures/retries
+and 170–197 ms totals. Desktop-8k recorded 190 ms total, a 2 ms arm, 15 ms
+`invoked`→`release-complete`, 1 ms primary write, 35 ms release→changed-loader commit and 137 ms
+commit→ready, with all 12 boot stages, `performanceNow` 170.5 ms and 1 ms confirmation. Both
+outgoing 3,862×2,172 canvases collapsed
+to 1×1; the replacement pair remained 3,862×2,172 each / 16,776,528 pixels combined. All nine
+automated personas passed, still not a human playtest; terminal-only performance was
+595/676/76/168 ms. Exact preview manifest `dev-preview-exact-46fb627` records 37 files /
+10,176,376 bytes, content SHA-256
+`4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`, exact `port/v2`
+tree `0d47d77a303244fd8ce325a5d2ec975dac0c86ca`, expected origin
+`https://dev-celestialfrontier.github.io`, production distinct and `publishable:false`.
+Matching CI for the final pushed docs tip remains pending.
+
 ## ══════════ ARCHIVED 2026-08-12 — exact `7d9980e` ticker-quiescence evidence batch ══════════
 ## ══════════ Moved from ROADMAP.md verbatim during the `46fb627` exact-evidence refresh. ══════════
 

@@ -43,12 +43,17 @@
 > resolver and `ws` transport but retains its legacy CDP lifecycle.
 >
 > The live v2 interaction surface uses Pixi `autoDensity` so its CSS canvas and
-> hit coordinates stay viewport-sized at DPR > 1. `effectiveDpr()` follows the
-> touch-2 / desktop-3 heat caps and gives the application canvas plus full-screen
-> backdrop one aggregate 4,096² / 16,777,216-pixel backing budget, split equally,
-> then resynchronizes renderer/backdrop density after viewport changes. Displays
-> through native 4K remain native; desktop-8k gives each canvas 3,862×2,172 pixels
-> for 16,776,528 combined. Survey
+> hit coordinates stay viewport-sized at DPR > 1. `effectiveDensityPlan()`
+> follows the touch-2 / desktop-3 heat caps and retains native backing through
+> UHD 3,840×2,160. Ordinary viewports may use 8,388,608 backing pixels per
+> full-screen canvas /16,777,216 aggregate; a viewport strictly above 8,388,608
+> CSS pixels selects the ultra tier of 4,194,304 per canvas /8,388,608 aggregate.
+> `fitResolutionToPixelCap()` searches against the actual rounded width and
+> height, so desktop-8k owns two 2,730×1,536 stores (8,386,560 pixels combined)
+> without rounding above cap. Density transitions release and collapse the prior
+> backdrop before resizing/allocating the replacement, record exact peak and
+> budget ownership, then update Pixi screen/texture/event geometry even when a
+> same-aspect logical resize retains the same integer backing dimensions. Survey
 > cards expose minimum-44px **Enter galaxy / Enter system** actions, and touch
 > Planetside has a minimum-44px **Leave world** action. The eighth dock slot opens
 > the canonical **Guide to the Universe**: `guide-content.ts` carries a
@@ -120,20 +125,32 @@
 > default top context, generation, origin, changed loader and document token.
 > Ticker state must remain false through `wiring-complete` and true thereafter;
 > only after the real tick/render, animation frame and later task does the
-> replacement emit the optional `cf-v2-slice-ready/v1` tail binding. One phase-
-> owned, at-most-2-second `Runtime.evaluate` then confirms that
-> exact ready context; `browsercdp.send()` permits a shorter per-command timeout
-> but never one above its connection-wide ceiling. Its browser-native
+> replacement emit the optional `cf-v2-slice-ready/v1` tail binding. Two strict,
+> no-retry, at-most-2-second target cycles then confirm that exact ready context.
+> Each `Runtime.evaluate` is sent concurrently with root-session
+> `Browser.getVersion`; cycle 1 samples immediately and cycle 2 awaits a one-shot
+> Pixi ticker callback scheduled after the render listener, with a strictly
+> advancing tick count. A timely browser heartbeat plus a timed-out/lost exact
+> context is `product-unanswerable-after-ready`; an unhealthy heartbeat or
+> malformed protocol outcome is instrument/transport failure. The live command
+> ledger contains exactly five bound rows: import arm, cycle-1 target/heartbeat,
+> and cycle-2 target/heartbeat. `browsercdp.send()` permits a shorter per-command
+> timeout but never one above its connection-wide ceiling. Its browser-native
 > `performanceNow` must also be strictly below 20 seconds; an exact-boundary
 > control fails, preventing Node observer descheduling from laundering a late
-> product boot. The tail binding witnesses
-> boot publication plus a serviced event-loop turn, not the separate 50 ms
-> answerability metric. `replacement-document-loader-token-phase`,
+> product boot. Ready is publication evidence; the two confirmations additionally
+> prove an immediate target turn and a later post-render ticker turn, while later
+> driven controls remain the broader answerability outcomes.
+> `replacement-document-loader-token-phase`,
 > `reload-resource-release`, and `replacement-boot-phase-sequence` negative-control
 > same-loader token mutation, lost/rejected phases, wrong/duplicate/malformed
 > session-context-loader-token events, stalled or just-late transitions, missing/
 > reordered/identity-mismatched boot stages, early/running tickers, retained
-> canvases, unreleased renderer and over-budget aggregate backing pixels. Sticky
+> canvases, unreleased renderer and over-budget aggregate backing pixels.
+> `ready-confirmation-heartbeat`, `ready-confirmation-ticker-progress`,
+> `ultra-viewport-render-budget`, and `ultra-same-backing-resize` bring the plan
+> to 57. Reports distinguish executed, product-blocked, and omitted controls so a
+> product failure is not overwritten by a generic instrument omission. Sticky
 > fatal Page/Runtime/Inspector/Network events
 > remain authoritative even when the bounded diagnostic ring rolls over; the
 > command never retries a red run. `import-phase-sequence` and
@@ -276,6 +293,37 @@
 > live Git/PR checks decide its exact tip/upstream state and matching final-pushed-
 > tip CI remains pending. No preview host, human play, Ready, merge, release,
 > deployment or version authority follows from local automation.
+>
+> Matching test-battery #205, run
+> [`31621227550`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31621227550) /
+> job [`94196289291`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31621227550/job/94196289291),
+> completed once without retry at exact pushed
+> `c57305fbf30af2bc8158ff46af1ec49ec4455d95` and remains **RED**. Every
+> preceding gate and `smoke:ci` passed. Desktop-8k completed import/write/release,
+> changed-loader navigation, all 12 boot stages, and ready at browser-native
+> `performanceNow` about 3,733 ms; only the next exact-context command timed out
+> at two seconds. With no concurrent browser heartbeat, #205 is strong evidence
+> of post-ready target starvation but not retrospective proof of healthy browser/
+> CDP transport. Preserve it without retry.
+>
+> The cited follow-on two-tier/dual-heartbeat browser evidence was captured from
+> a `dirty-diagnostic` source state based on `c57305f` and is non-authoritative.
+> One sandboxed listener attempt
+> failed preflight with `EPERM`; one harness-only width check produced
+> `7680.000000000001`, was corrected once, and did not rerun a product failure.
+> Targeted desktop-8k then passed as a non-certifying diagnostic (SHA-256
+> `e77e9727cb019740bd756188be18f444ac1d3f5d666e49f727f355c73b7c3c2d`).
+> The dirty-diagnostic smoke capture passed once with 0 findings /10 screenshots in 105,207 ms
+> (`fb1800320926532c0df6c782cd630c45e37bcea6906c4bbd953111b7605b43c8`).
+> The dirty-diagnostic full-glass capture passed 12/12, planned/executed 57/57, `blocked=[]`,
+> `omitted=[]`, 0 findings/instrument failures/retries in 53,918 ms
+> (`dff0829a3eb8dba67ee0da7c51ae6748fe4ff9bc8652ee1d617657f3133794cb`).
+> Its 12 reloads were 174–199 ms; desktop-8k was 180 ms /
+> `performanceNow` 160.6 ms /7 ms post-render confirmation, with both outgoing
+> 2,730×1,536 canvases collapsing to 1×1. Nine automated personas passed, still
+> not human play; terminal-only performance was 605/686/76/159 ms. A clean-head
+> exact battery, push and matching CI remain mandatory before the already
+> separate host/human/Ready/merge/release/deploy/version authority boundaries.
 >
 > **v1.6 additions not yet folded into the sections below** (see ART_DIRECTION / PROCEDURAL_CHARACTERISTICS /
 > UI_PRESENTATION / SPECIES_AND_GENOME for detail): the Earth-bestiary rig system (`_rig*` per class) +
