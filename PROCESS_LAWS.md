@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-11. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-12. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -438,6 +438,16 @@ raw output and structured commit/browser evidence, and surfaces the first scoped
 related count. Never make a flaky-looking failure green through blind retries; either prove an
 expected bounded wait from observable state or leave the red run as evidence while correcting the
 instrument or product.
+
+⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
+product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
+GitHub Actions step lost that step-local `CF_BROWSER`, selected an installed Linux Edge through
+fallback order, and failed before CDP created a page. That red browser check never exercised the
+packaged page or product. Pin one exact browser at job scope for every browser-owning process, resolve it
+fail-closed before long gates, and record the executable in evidence. A prior green browser step
+does not certify the next process's provenance. Do not turn this class of failure green with a
+retry, a longer startup bound, a fallback reorder, or by clearing the last diagnostic mentioned
+on stderr; repair the scope and require matching new-head CI.
 
 ⚠⚠ **CLEAN BEFORE + CLEAN AFTER DOES NOT PROVE THE BYTES BETWEEN WERE CLEAN.**
 `overridecontrol` deliberately rewrites a production art source, runs its failing control, and

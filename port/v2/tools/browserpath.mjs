@@ -55,6 +55,8 @@ export function browserCandidates(explicit = process.env.CF_BROWSER) {
     assert(path.isAbsolute(explicit), 'CF_BROWSER must be an absolute path');
     return [explicit];
   }
+  assert(process.env.GITHUB_ACTIONS !== 'true',
+    'GitHub Actions requires an explicit CF_BROWSER path');
   return [...DEFAULT_CANDIDATES];
 }
 
@@ -85,6 +87,9 @@ function runSelftest() {
     const fixture = path.join(temporary, process.platform === 'win32' ? 'browser-fixture.exe' : 'browser-fixture');
     fs.writeFileSync(fixture, process.platform === 'win32' ? Buffer.from('MZfixture') : '#!/bin/sh\nexit 0\n');
     fs.chmodSync(fixture, 0o755);
+    const explicitSelected = findChromiumBrowser(browserCandidates(fixture));
+    assert(explicitSelected === fs.realpathSync(fixture),
+      'SELFTEST explicit browser did not resolve to its exact real path');
     const selected = findChromiumBrowser([path.join(temporary, 'missing'), fixture]);
     assert(selected === path.resolve(fixture), 'SELFTEST did not select the first real file');
     expectRejected('missing browser', () => findChromiumBrowser([path.join(temporary, 'missing')]),
@@ -105,17 +110,26 @@ function runSelftest() {
     expectRejected('non-executable browser', () => findChromiumBrowser([nonExecutable]),
       /no Chromium-family browser found/);
     const priorExplicit = process.env.CF_BROWSER;
+    const priorGithubActions = process.env.GITHUB_ACTIONS;
     try {
+      delete process.env.CF_BROWSER;
+      process.env.GITHUB_ACTIONS = 'true';
+      expectRejected('CI missing explicit browser', () => browserCandidates(),
+        /GitHub Actions requires an explicit CF_BROWSER path/);
       process.env.CF_BROWSER = path.join(temporary, 'explicit-missing');
       expectRejected('invalid explicit browser', () => findChromiumBrowser(), /from CF_BROWSER/);
     } finally {
       if (priorExplicit === undefined) delete process.env.CF_BROWSER;
       else process.env.CF_BROWSER = priorExplicit;
+      if (priorGithubActions === undefined) delete process.env.GITHUB_ACTIONS;
+      else process.env.GITHUB_ACTIONS = priorGithubActions;
     }
   } finally {
     fs.rmSync(temporary, { recursive: true, force: true });
   }
   console.log('BROWSER PATH SELFTEST PASS');
+  console.log('  explicit browser exact real path: PASS');
+  console.log('  GitHub Actions without explicit CF_BROWSER: rejected');
   console.log('  first real executable candidate: PASS');
   console.log('  explicit invalid CF_BROWSER fallback: rejected');
   console.log('  executable symlink: canonicalized to its real target');
