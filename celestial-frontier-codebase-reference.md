@@ -235,9 +235,8 @@
 > production, content SHA-256
 > `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
 > `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, `publishable:false`.
-> `7d9980e` remains immutable prior exact evidence and does not certify #204.
-> Exact tip/upstream/check state is read live; the repair requires a clean
-> executable commit, exact battery, push and matching CI before preview/human play. The
+> `7d9980e` remains immutable prior exact evidence. Current repair evidence is
+> bound to clean executable source `46fb627` below. The
 > artifact is origin-bound but not authorized for hosting or
 > publication; human playtest, Ready and merge authority remain open.
 > Development preview origin/package requirements live in
@@ -257,18 +256,26 @@
 > this is not an import, repository-write, release, navigation, load or FCP
 > failure. Preserve the single red execution without retry or deadline growth.
 >
-> The aggregate-budget / explicit-start repair currently has stable dirty-source
-> diagnostics only, not authoritative certification. Source digest
-> `721418cb1b0cd258ffcd35e614401aba0d26951ea2d02866c6651e2d6cd7c896`
-> passed targeted desktop-8k in 218 ms, one-attempt smoke with 0 findings /10
-> screenshots, and certifying-shaped glass with 12/12 viewports, 53/53 controls,
-> `omitted=[]`, zero findings/instrument failures/retries in 193–214 ms. Exact 8K
-> recorded 214 ms total, 1 ms arm, 18 ms `invoked`→`release-complete`, 1 ms write,
-> all 12 boot stages, `performanceNow` 178.7 ms, 1 ms confirmation and two
-> 3,862×2,172 canvases. All nine automated personas passed; terminal performance
-> was 637/723/77/157 ms. A clean executable commit, exact full battery, push and
-> matching CI remain pending. No preview host, human play, Ready, merge, release,
-> deployment or version authority follows from these diagnostics.
+> Immutable executable source `46fb627640e42ea0f43e2e144529884a959d1e72`
+> passed the exact local battery. One malformed `--verify-run` operator invocation
+> caused local SIGABRT/report overwrite; one correct rerun plus verification passed
+> `exact-46fb627-root-layout`, 787/787 across 10/10. V2 passed 273/1 plus every
+> gate/selftest; one-attempt smoke passed 0/10. Full certifying glass at source-snapshot digest
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`
+> passed 12/12, planned/executed 53/53, `omitted=[]`, zero findings/instrument
+> failures/retries in 170–197 ms. Exact 8K was 190 ms total: 2 ms arm, 35 ms
+> release→changed-loader commit, 137 ms commit→ready, `performanceNow` 170.5 ms,
+> 1 ms confirmation, both outgoing 3,862×2,172 canvases →1×1 and the replacement
+> pair at 16,776,528 pixels combined. Nine automated personas passed; terminal-
+> only performance was 595/676/76/168 ms. Manifest
+> `dev-preview-exact-46fb627` records 37 files /10,176,376 bytes, content SHA-256
+> `4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`,
+> exact tree `0d47d77a303244fd8ce325a5d2ec975dac0c86ca`, expected origin
+> `https://dev-celestialfrontier.github.io`, production distinct and
+> `publishable:false`. `46fb627` underlies a forthcoming/current docs-only tip;
+> live Git/PR checks decide its exact tip/upstream state and matching final-pushed-
+> tip CI remains pending. No preview host, human play, Ready, merge, release,
+> deployment or version authority follows from local automation.
 >
 > **v1.6 additions not yet folded into the sections below** (see ART_DIRECTION / PROCEDURAL_CHARACTERISTICS /
 > UI_PRESENTATION / SPECIES_AND_GENOME for detail): the Earth-bestiary rig system (`_rig*` per class) +

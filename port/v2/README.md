@@ -196,8 +196,7 @@ of an evidence failure. Exact 37-file / 10,170,996-byte preview
 content `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`,
 exact `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, `publishable:false`.
 `7d9980e` remains immutable prior evidence from the preceding docs-only handoff;
-exact tip/upstream/check state is live. It does not certify the
-current #204 repair, whose clean commit/exact battery/push/CI remain pending.
+current #204 repair evidence is bound to clean source `46fb627` below.
 Prior #201 and #202 stay preserved red without retry. `overridecontrol` remains exclusive
 and may not overlap any browser, build or evidence producer.
 
@@ -236,17 +235,27 @@ true thereafter. Per-stage/deadline controls reject missing, reordered, wrong-
 identity, early-ticker and late evidence, while smoke asserts fresh-boot and
 post-import ticker outcomes.
 
-Stable dirty-source diagnostics at digest
-`721418cb1b0cd258ffcd35e614401aba0d26951ea2d02866c6651e2d6cd7c896`
-are encouraging but non-authoritative: targeted 8K PASS 218 ms; one-attempt
-smoke PASS 0 findings /10 screenshots; certifying-shaped glass PASS 12/12,
-53/53, `omitted=[]`, zero findings/instrument failures/retries in 193–214 ms.
-Exact 8K was 214 ms total, 1 ms arm, 18 ms `invoked`→`release-complete`, 1 ms
-write, all 12 stages, `performanceNow` 178.7 ms, 1 ms confirmation and two
-3,862×2,172 canvases. Nine automated personas passed; terminal performance was
-637/723/77/157 ms. A clean executable commit, exact full battery, push and
-matching CI remain pending. Host, human play, Ready, merge, release, deployment
-and version authority remain unchanged.
+Immutable executable source `46fb627640e42ea0f43e2e144529884a959d1e72`
+passed the exact local battery. One malformed `--verify-run` operator invocation
+caused local SIGABRT/report overwrite; one correct rerun plus verification then
+passed `exact-46fb627-root-layout`, 787/787 across 10/10. V2 passed 273/1 and all
+gates/selftests; one-attempt smoke passed 0 findings /10 screenshots. Full
+certifying glass at source-snapshot digest
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`
+passed 12/12, planned/executed 53/53, `omitted=[]`, zero findings/instrument
+failures/retries in 170–197 ms. Exact 8K was 190 ms total: 2 ms arm, 35 ms
+release→changed-loader commit, 137 ms commit→ready, `performanceNow` 170.5 ms,
+1 ms confirmation, outgoing 3,862×2,172 canvases →1×1 and the replacement pair
+at 16,776,528 pixels combined. Nine automated personas passed; terminal-only
+performance was 595/676/76/168 ms. Manifest `dev-preview-exact-46fb627` records
+37 files /10,176,376 bytes, content SHA-256
+`4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`, exact
+tree `0d47d77a303244fd8ce325a5d2ec975dac0c86ca`, expected origin
+`https://dev-celestialfrontier.github.io`, production distinct and
+`publishable:false`. `46fb627` underlies a forthcoming/current docs-only tip;
+live Git/PR checks determine exact tip/upstream status, and matching CI for the
+final pushed docs tip remains pending. Host, human play, Ready, merge, release,
+deployment and version authority remain unchanged.
 
 Before the stable-source battery above, one smoke attempt correctly refused mixed-
 source evidence because tracked documentation changed during its run (`source

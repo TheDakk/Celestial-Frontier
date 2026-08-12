@@ -274,9 +274,8 @@
 > from production, content SHA-256
 > `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
 > `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, `publishable:false`.
-> `7d9980e` remains immutable prior exact evidence and does not certify the #204
-> repair. Exact tip/upstream/check status is read live; that repair still requires
-> a clean executable commit, exact battery, push and matching CI. The
+> `7d9980e` remains immutable prior exact evidence. Current repair evidence is
+> bound to `46fb627640e42ea0f43e2e144529884a959d1e72` below. The
 > artifact is bound to `https://dev-celestialfrontier.github.io`, but no host or
 > publication is authorized and the separate-origin human playtest is still
 > required before Ready or merge.
@@ -302,19 +301,27 @@
 > as first-attempt evidence; it is not an import, write, release, navigation,
 > load or FCP failure, and it must not be retried or hidden by a longer deadline.
 >
-> The current aggregate-budget / stopped-through-wiring repair has stable dirty-
-> source diagnostics only and is not authoritative certification. Against source
-> digest `721418cb1b0cd258ffcd35e614401aba0d26951ea2d02866c6651e2d6cd7c896`,
-> targeted desktop-8k passed in 218 ms; full one-attempt smoke passed with 0/10
-> findings/screenshots; and the certifying-shaped glass matrix passed 12/12
-> viewports, 53/53 controls, `omitted=[]`, zero findings/instrument failures/
-> retries in 193–214 ms. Exact desktop-8k recorded 214 ms total, a 1 ms arm,
-> 18 ms `invoked`→`release-complete` span, 1 ms primary write, all 12 boot stages,
-> `performanceNow` 178.7 ms, 1 ms confirmation and two 3,862×2,172 canvases.
-> All nine automated personas passed; the terminal performance diagnostic was
-> 637/723/77/157 ms. A clean executable commit, its exact full battery, push and
-> matching CI remain pending; host, human play, Ready, merge, release, deployment
-> and version authority remain unchanged.
+> Immutable executable source `46fb627640e42ea0f43e2e144529884a959d1e72`
+> passed the exact local battery. One malformed `--verify-run` operator invocation
+> caused local SIGABRT and report overwrite; one correct rerun plus verification
+> then passed `exact-46fb627-root-layout`, 787/787 across 10/10 viewports. V2
+> passed 273 tests /1 skip and all gates/selftests; one-attempt smoke passed 0
+> findings /10 screenshots. Full certifying glass at source-snapshot digest
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`
+> passed 12/12, planned/executed 53/53, `omitted=[]`, zero findings/instrument
+> failures/retries in 170–197 ms. Exact 8K was 190 ms total: 2 ms arm, 35 ms
+> release→changed-loader commit, 137 ms commit→ready, `performanceNow` 170.5 ms
+> and 1 ms confirmation; both outgoing 3,862×2,172 canvases collapsed to 1×1,
+> while the replacement pair remained 16,776,528 pixels combined. All nine
+> automated personas passed, still not a human playtest; terminal-only performance
+> was 595/676/76/168 ms. Manifest `dev-preview-exact-46fb627` records 37 files /
+> 10,176,376 bytes, content SHA-256
+> `4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`,
+> expected origin `https://dev-celestialfrontier.github.io`, production distinct
+> and `publishable:false`. `46fb627` underlies a forthcoming/current docs-only
+> tip; live Git/PR checks determine exact tip/upstream status, and matching CI for
+> the final pushed docs tip remains pending. Host, human play, Ready, merge,
+> release, deployment and version authority remain unchanged.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
 v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve
