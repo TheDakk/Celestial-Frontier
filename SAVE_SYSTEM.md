@@ -16,21 +16,38 @@
 > and primitives cannot erase progress.
 > The player-facing import door now lives at **Settings → Bring expedition**;
 > moving it out of the eighth dock slot did not create a second loader or weaken
-> any byte-protection rule. That dock slot now opens the bounded v2 Guide, whose
-> first open updates the existing `guide`/`seenGuide` save field through the
-> ordinary protected persistence path.
+> any byte-protection rule. That dock slot now opens the canonical v2 Guide
+> catalogue (9 categories /43 authored ids /41 legacy-live topics); first open
+> updates the existing `guide`/`seenGuide` save field through the ordinary
+> protected persistence path. Guide content itself is source-addressed code, not
+> duplicated into the save. The complete 56-entry v1 release archive is likewise
+> immutable content; `rn`/`rnSeen` remains only a seen-version marker. The
+> separate v2 development bulletin is deliberately unversioned and cannot mark
+> itself seen or fire an update surface. No version was bumped.
 > The import door is a top-layer `aria-modal` dialog: Tab stays inside its live
-> fields, Escape closes only the dialog and restores Settings focus, and a real
-> 390×844 browser control proves the old low-z layer would expose the dock.
+> textarea/button/file controls are explicitly named, the file picker has a
+> keyboard-operable visible trigger, Escape closes only the dialog and restores
+> Settings focus, and a real 390×844 browser control proves the old low-z layer
+> would expose the dock.
 >
 > The importer also normalizes `gen`/`maxGen` to nonnegative safe integers,
 > contains a malformed Compendium row instead of rejecting the whole expedition,
 > caps cosmic epoch at 10,000 to bound retained O(epoch) ecology work, timestamps
 > new Atlas rows, and preserves/requires complete galaxy/star coordinates for
-> travelable Atlas destinations. Honest out-of-range bred `size` remains
+> travelable Atlas destinations. Imported legacy Atlas entries whose routes
+> lack those coordinates remain visible with a disabled, explicit
+> route-unavailable label rather than a dead travel action. Honest
+> out-of-range bred `size` remains
 > untouched. A live planet card snapshots and compares the complete galaxy/star
 > `{seed,x,y}` identity before Land, Atlas or Share may act, so an equal seed at
-> different coordinates cannot rebase stale actions. Current-v2 Field Training restart uses a reversible `{view}`
+> different coordinates cannot rebase stale actions. Imported `fs`, `tone`,
+> `font`, `rm` and `gt` values are not inert metadata: the v2 Settings surface
+> now applies the whitelisted body classes, true reduced-motion policy and a
+> contrast-safe 0.82..0.98 rendered glass-tint floor. Older stored 0.40/0.72
+> values remain byte-compatible until the player moves the slider; the UI
+> never renders below 0.82, while an explicit new choice persists through the
+> same exporter. Clipboard success/failure is session UI state only and writes
+> nothing. Current-v2 Field Training restart uses a reversible `{view}`
 > snapshot; restoring the older v1 full-expedition `tsnap` schema is still a
 > Gate-C blocker. The repository still stores one exported blob rather than the
 > planned split/CAS records, so multi-tab last-writer-wins is also open.
@@ -43,9 +60,21 @@
 > Future/corrupt-save notices are critical boot outcomes, so they bypass the
 > ordinary toast debounce and are browser-tested as both visible and
 > byte-preserving before the fast-boot notification window can hide them.
+>
+> Explicit replacement import is serialized against ordinary persistence. It
+> cancels the pending preference debounce, waits for any already-started save
+> write to finish, holds new ordinary writes, and only then stores the proven
+> complete replacement envelope. This prevents an older same-tab settings
+> autosave from racing behind and overwriting the imported expedition. JSON
+> classification and the live primary use the whitespace-trimmed candidate,
+> while the best-effort `cf_v2_import_original` keepsake receives the exact
+> submitted text, including legal surrounding whitespace. File selection is
+> decoded to text by the browser; the moderator's external source file remains
+> the authoritative byte-for-byte backup, including when browser storage refuses
+> the extra keepsake.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
-matches `port/v2` as of 2026-08-11. ⚠ Read the v1.8.7 section (a reverted
+matches `port/v2` as of 2026-08-12. ⚠ Read the v1.8.7 section (a reverted
 `size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`,
 harvest on play time).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated

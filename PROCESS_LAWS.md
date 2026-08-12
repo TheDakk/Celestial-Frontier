@@ -102,9 +102,10 @@ roughly by how often they have bitten.
   all. Every player-visible change must update the relevant system reference **and**, in the same
   batch, every live in-game explanation it affects: Guide topics, contextual hints, Training and
   release/update copy where those surfaces exist. Prove the rendered wording against the real
-  action outcome in a browser and inject stale wording as a negative control. A bounded port Guide
-  must describe only systems that are actually live; never fill a parity gap by advertising dormant
-  legacy mechanics.
+  action outcome in a browser and inject stale wording as a negative control. A port Guide must stay
+  source-addressed to the mature canonical Guide; capability-aware bodies describe only systems that
+  are actually live, account for every authored legacy topic, and keep intentionally dormant topics
+  recorded but player-hidden rather than advertising them as usable.
 
 ---
 
@@ -421,3 +422,31 @@ shape reaches a nested dereference. For every lifted JavaScript boundary, pair c
 with runtime calls that exercise the returned shape and failure surface. Run the consumer app's own
 TypeScript configuration too; a workspace-root check can omit the exact program that exposes the
 drift. Treat declaration-only edits as behavior risk until those two directions agree.
+
+⚠⚠ **A DEVELOPMENT PATH IS NOT A DEVELOPMENT ORIGIN.** Browser persistence is isolated by
+scheme + host + port, not by a URL pathname. A GitHub Pages project site under
+`celestialfrontier.github.io/<repo>/` would share IndexedDB and localStorage with production even
+if its repository and visible path were different. Human previews require a genuinely separate
+HTTPS origin, a visible DEV + full-commit binding, a content-hashed manifest, noindex policy, and
+a runtime refusal on the production origin. Packaging and publication are separate approvals:
+ordinary CI artifacts remain remote-blocked, and no preview action may imply a version bump,
+release, `main` update, or live-site deployment.
+
+⚠ **A RETRY IS NOT A DIAGNOSIS.** The v2 browser gate had several intermediate red builds while
+the harness learned document readiness and outcome timing. CI runs it once, retains the complete
+raw output and structured commit/browser evidence, and surfaces the first scoped failure plus a
+related count. Never make a flaky-looking failure green through blind retries; either prove an
+expected bounded wait from observable state or leave the red run as evidence while correcting the
+instrument or product.
+
+⚠⚠ **CLEAN BEFORE + CLEAN AFTER DOES NOT PROVE THE BYTES BETWEEN WERE CLEAN.**
+`overridecontrol` deliberately rewrites a production art source, runs its failing control, and
+restores the file. A concurrent Vite/browser/evidence process once captured that transient poison,
+then both commands ended with a clean tree; the resulting false boot was neither source truth nor
+valid evidence. Every transient source-mutating control and every byte-producing browser/build gate
+in a shared worktree must use `port/v2/tools/workspacelock.mjs` for mutual exclusion. Never overlap
+`overridecontrol` with Vite, browser, preview, screenshot, or evidence work, and never put a parent
+lock around a child gate that acquires the same lock. Clean/review and approved preview packages add
+a second boundary: Vite builds an isolated `git archive` snapshot of the exact HEAD `port/v2` tree,
+not the working tree. Only explicitly dirty, nonpublishable local previews may build working-tree
+bytes.

@@ -10,10 +10,12 @@ import http from 'node:http';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
+import { acquireWorkspaceLock } from './workspacelock.mjs';
 
 const THROTTLE = +(process.argv[2] || 4);
 if (!Number.isFinite(THROTTLE) || THROTTLE < 1) throw new RangeError('CPU throttle must be a finite number >= 1');
 const here = path.dirname(fileURLToPath(import.meta.url));
+acquireWorkspaceLock('v2 performance build and browser profile');
 const appDir = path.join(here, '..', 'apps', 'game');
 const dist = path.join(appDir, 'dist');
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

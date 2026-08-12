@@ -27,13 +27,16 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 (`HANDOFF.md` is a frozen v1.0 handoff, kept for history — not current state.)
 
 Active v2 development lives in [`port/v2`](port/v2/README.md): a TypeScript
-workspace plus a playable Pixi/browser slice. Its current Guide is a bounded
-field manual for the systems already live in that slice, and its Field Training
-currently covers the six chart/travel/landing lessons plus an honest graduation.
-The legacy game's full searchable Guide, tooltip deep-links, advanced briefings,
-and the rest of its 21-step training arc are still port work—not silently claimed as
-complete. From `port/v2`, run `npm install`, `npm test`, `npm run typecheck`, and
-`npm run smoke`; see its README for the full current battery and open gates.
+workspace plus a playable Pixi/browser slice. Its Guide is now a source-addressed
+continuation of the mature manual: all 9 categories /43 authored IDs /41 player
+topics remain searchable and cross-linked, while capability-aware v2 copy marks
+unported mechanics honestly instead of repeating their legacy promises. The exact
+56-release/398-bullet legacy history is present beside a separate unversioned v2 development
+draft; the draft cannot trigger an update popup or bump a version. Field Training
+currently covers the six chart/travel/landing lessons plus an honest graduation;
+tooltip deep-links, Advanced Briefings, and the rest of the 21-step training arc
+remain port work. From `port/v2`, run `npm install`, `npm test`, `npm run typecheck`,
+and `npm run smoke`; see its README for the full current battery and open gates.
 
 ## Develop
 
@@ -96,6 +99,20 @@ thing they guarded was broken.
 
 **Play it live:** https://celestialfrontier.github.io/ — this repo is the source of
 truth; the user-site repo is just the deploy target.
+
+**Human-test the v2 development build:** use the commit-bound package and
+separate-origin procedure in [`port/DEVELOPMENT_PREVIEW.md`](port/DEVELOPMENT_PREVIEW.md).
+A GitHub Pages project path under `celestialfrontier.github.io` is deliberately
+forbidden because it would share production browser storage. CI packaging does
+not publish a site; the separate preview owner/hostname has not yet been chosen,
+created or deployed. Clean preview evidence is built from an isolated exact-HEAD
+snapshot, and the shared workspace lock prevents Vite/browser evidence from
+overlapping the source-mutating `overridecontrol` negative control. Structured
+slice-smoke, 12-viewport glass-matrix (including 8K), and automated-persona
+reports retain matching provenance; the persona synthesis is explicitly not a
+human playtest. PR #11 stays draft until a real multi-lens human playtest against
+the exact preview is recorded, findings are resolved/retested, and final local
+plus GitHub checks pass on the frozen pushed head.
 
 `original/celestial-frontier-v1.0.html` is the pristine pre-refactor build the
 determinism baseline was captured from. Hard rule: nothing nondeterministic may

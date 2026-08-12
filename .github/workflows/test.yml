@@ -55,11 +55,25 @@ jobs:
           npm run overridecontrol
           npm run coveragegap
           node tools/speccheck.mjs
-      - name: v2 real-browser slice smoke
+      - name: v2 real-browser, responsive, and automated-persona evidence
         working-directory: port/v2
-        run: npm run smoke
+        run: |
+          npm run smoke:report:selftest
+          npm run glassmatrix:selftest
+          npm run persona:selftest
+          npm run smoke:ci
+          npm run glassmatrix
+          npm run persona:report
         env:
           CF_BROWSER: /usr/bin/google-chrome
+      - name: package origin-isolated v2 development preview
+        if: success()
+        working-directory: port/v2
+        env:
+          PREVIEW_OUTPUT: apps/game/smoke/dev-preview-ci-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          npm run preview:package -- --origin=https://dev-celestialfrontier.github.io --output="$PREVIEW_OUTPUT"
+          npm run preview:smoke -- --root="$PREVIEW_OUTPUT"
       - name: archive reports
         if: always()
         uses: actions/upload-artifact@v6
@@ -68,4 +82,26 @@ jobs:
           path: |
             tools/current.json
             tools/uilayout-report.json
+            port/v2/apps/game/smoke/slice-smoke-report.json
+            port/v2/apps/game/smoke/slice-smoke.log
+            port/v2/apps/game/smoke/glassmatrix-report.json
+            port/v2/apps/game/smoke/automated-persona-report.json
+            port/v2/apps/game/smoke/automated-persona-report.md
           if-no-files-found: ignore
+          retention-days: 14
+      - name: archive v2 browser evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: v2-browser-evidence
+          path: port/v2/apps/game/smoke/slice-*.png
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: archive playable v2 development preview
+        if: success()
+        uses: actions/upload-artifact@v6
+        with:
+          name: v2-development-preview
+          path: port/v2/apps/game/smoke/dev-preview-ci-${{ github.run_id }}-${{ github.run_attempt }}
+          if-no-files-found: error
+          retention-days: 14

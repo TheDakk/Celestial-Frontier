@@ -4,7 +4,7 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 overlay matches code and live handoff as of 2026-08-11.**
+> **Current port/v2 overlay matches code and live handoff as of 2026-08-12.**
 >
 > **2026-08-11 v2 integration/hardening overlay:** PR #10 merged the Platinum
 > repair into `develop` at `61cc058`. The current bounded port candidate makes the app
@@ -22,21 +22,47 @@
 > then living organism rigs and biome scenes. Platinum-approved static portraits
 > remain frozen; optional polish is not a mandate to repaint them.
 >
-> The live v2 interaction surface now also uses Pixi `autoDensity` so its CSS
-> canvas and hit coordinates stay viewport-sized at DPR > 1; survey cards expose
-> minimum-44px **Enter galaxy / Enter system** actions, and touch Planetside has
-> a minimum-44px **Leave world** action. The eighth dock slot opens a bounded
-> seven-topic **Guide to the Universe** and persists `seenGuide`; import moved to
-> **Settings → Bring expedition** through the same guarded loader and a top-layer
-> focus-trapped modal. Planet cards bind the captured galaxy+star `{seed,x,y}`
-> context before Land/Atlas/Share, rejecting equal-seed coordinate substitution.
-> Guide alone renders above an open survey card; other panel stacking remains
-> unchanged for Training. Field Training
-> is six live chart/travel/landing lessons plus an honest graduation. The legacy
-> searchable Guide, tooltip deep-links, Advanced Briefings and the rest of the
-> 21-step curriculum remain OPEN. Lazy species art uses one shared load Promise
+> The live v2 interaction surface uses Pixi `autoDensity` so its CSS canvas and
+> hit coordinates stay viewport-sized at DPR > 1. `effectiveDpr()` follows the
+> touch-2 / desktop-3 heat caps and a 16,777,216-pixel backing-store ceiling,
+> then resynchronizes renderer/backdrop density after viewport changes. Survey
+> cards expose minimum-44px **Enter galaxy / Enter system** actions, and touch
+> Planetside has a minimum-44px **Leave world** action. The eighth dock slot opens
+> the canonical **Guide to the Universe**: `guide-content.ts` carries a
+> source-addressed v1.8.9 snapshot of all 9 categories /43 authored stable ids /41
+> legacy-live topics, category browsing, search and `data-gt` cross-links. A
+> capability table supplies current copy for partial systems and explicit
+> unavailable copy for unported mechanics; dormant `beacon` / `events` remain
+> retained but hidden. `release-content.ts` similarly preserves all 56 legacy
+> releases /398 bullets and keeps an unversioned v2 development draft separate;
+> `V2_CURRENT_RELEASE_VERSION` is `null`, so it cannot trigger an update or imply
+> a bump. First Guide open persists `seenGuide`. Import moved to **Settings →
+> Bring expedition** through the same guarded loader and a named, focus-trapped
+> top-layer modal. The live primary is parsed from the whitespace-trimmed JSON
+> candidate, while the best-effort `cf_v2_import_original` keepsake retains the
+> exact submitted text; a selected file is browser-decoded to text, so the
+> moderator-held external file remains the byte-for-byte authority. Planet cards bind the captured galaxy+star `{seed,x,y}` context
+> before Land/Atlas/Share, rejecting equal-seed coordinate substitution.
+> Guide and Settings render above an open survey card; other panel stacking
+> remains unchanged for Training. Field Training is six live
+> chart/travel/landing lessons plus an honest graduation. Tooltip deep-links,
+> Advanced Briefings, the full 21-step curriculum and full legacy `tsnap`
+> restoration remain OPEN. Lazy species art uses one shared load Promise
 > and one latest subscriber per view, so prefetch cannot strand Compendium or
 > Planetside and a 1,500-row list cannot retain 1,500 rerender callbacks.
+>
+> V2 now applies imported Text size / tone / font preferences, a contrast-safe
+> 0.82..0.98 glass floor, safe-area and measured dock/context/hint offsets,
+> minimum-44px panel/touch controls, focus-visible and forced-colors treatments,
+> named sliders/import controls and opener focus restoration. Motion Auto tracks
+> the OS live; Reduced removes CSS transitions/animation and freezes Pixi ambient
+> clocks while snapping camera/fade state. The canvas is a named keyboard region:
+> arrows cycle the actual rendered galaxies/stars/planets, Enter/Space invokes the
+> same survey path, +/- zooms at the target and Escape releases it, with a visible
+> ring and polite live announcement. Clipboard denial selects the exact CF1 code
+> in Search and says Copy is unavailable; it never reports a false success.
+> Development preview origin/package requirements live in
+> `port/DEVELOPMENT_PREVIEW.md`; they do not constitute a release or deployment.
 >
 > **v1.6 additions not yet folded into the sections below** (see ART_DIRECTION / PROCEDURAL_CHARACTERISTICS /
 > UI_PRESENTATION / SPECIES_AND_GENOME for detail): the Earth-bestiary rig system (`_rig*` per class) +
@@ -453,29 +479,23 @@ stalk+fronds+bloom, fungi = mushrooms, fauna = assembled anatomy). Cached in
 glow** behind the portrait (ability-theme color for fauna, nourished-stat color for flora).
 
 ### Rarity grades
-`GRADE_TIERS` (15 tiers, `TIER_MAX = 14`): **Common, Uncommon, Notable, Rare, Exotic,
-Legendary, Anomalous, Unique**, then the **deep spectrum** added in v1.3: **Mythic
-(~1/22k), Celestial (~1/91k), Primordial (~1/333k), Transcendent (1/1M)**, then the
-**summit grades**: **Empyrean (~1/3.3M), Eternal (~1/11M), Omnipotent (~1/33M)** —
-all but unrollable; in practice they belong to max-boost bloodlines and Apex Guardians.
-High-tier palette (v1.3 deep pass): aqua Mythic `#3fe8c8`, starlight Celestial `#a8c8ff`,
-ember Primordial `#ff8a4a`, white-light Transcendent `#f4f8ff`, dawnfire Empyrean
-`#ffc24f`, twilight Eternal `#9a8aff`, Omnipotent `#ff7ae8` (static fallback). Tier ≥ 12
-renders with the **iridescent foil** CSS (`.gbadge.irid` shimmer badge; `.iridframe::after`
-animated prismatic ring on the specimen card — see the style block's v1.3 section).
+The player-facing `RARITY_V17` ladder has ten grades: **Common, Uncommon, Notable,
+Rare, Exotic, Legendary, Mythic, Celestial, Primordial, Transcendent**. The internal
+`GRADE_TIERS` / `TIER_MAX = 14` shape remains for deterministic raw rolls, sorting,
+old saves, art prefixes, and forced Apex/Paragon indices, but raw tiers 10–14 all
+display as **Transcendent** with the same `#F7F1FF` presentation. The retired
+Empyrean/Eternal/Omnipotent names survive only as internal art-label prefixes; they
+are not separate visible rarity grades or collectible slots.
 Specimen cards (`showReveal`) wear a `.gbadge` grade badge; the character sheet shows
 "Highest grade ever reached" (a statistic, not an achievement — the summit is deliberately
 chased, not checklisted) and "Apex Guardians felled".
-`rarityRoll` / `speciesGrade` / `colorGrade` assign grade; higher tiers play bigger
-stings, tinted FX bursts, and grant stardust bonuses (§9). All bands past Unique were
-**carved out of the top of the old Unique band**, so under the same seed a v1.2 grade
-either holds or climbs — determinism never downgrades a creature (verified over 60M
-seeds by `tools/rarity-sanity.js`). Spectral designations beyond Prismatic fuse the
-tier's finish with the domain's hue word ("Radiant Fire", "Primordial Black") and wear
-the tier's hex from `GRADE_TIERS`. Boost clamps (`colorGrade`, `spectral`) cap at
-`TIER_MAX`, so heavily boosted bloodlines (size + glow + wild + deep generations) can
-breed past Unique. No "own all 15 tiers" achievement exists by design — `tiers12`
-(any 12 distinct) is the collection ceiling.
+`rarityRoll` / `speciesGrade` / `colorGrade` retain the raw deterministic score; higher
+scores still drive sorting, stings, FX, and Stardust bonuses (§9). `displayRarity(raw)`
+is the single player-facing clamp. Spectral art designations may still combine an
+internal prefix with a domain hue (for example "Radiant Fire"), but badges, filters,
+items, and collection progress use the ten-grade display ladder. `tiersOwned()` clamps
+raw 9–14 to display tier 9, and the historical `tiers12` ID now truthfully awards all
+ten displayed grades rather than asking for retired slots.
 
 ### Apex Guardians (v1.3)
 `guardianFor(pseed)` (Genome module): ~1 in 40 worlds passes the gate
@@ -690,6 +710,20 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   Guide footer credit (`#gcredit`) is the permanent link to the **cumulative**
   history. **House rule: `GAME_VERSION` bumps only when Dakk says so** — but
   every player-visible change is appended to the v-next entry as it is built.
+- **Current v2 counterpart** (`port/v2/apps/game/src/guide-content.ts`,
+  `release-content.ts`, wired by `main.ts`): `LEGACY_GUIDE_CATEGORIES` and
+  `LEGACY_RELEASES` are exact source-addressed snapshots, guarded by
+  `tests/guide-release.test.ts`. `getGuideCatalogue` defaults to 41 player topics
+  (dormant hidden, unavailable retained with honest copy); `getGuideTopic` and
+  `searchGuide` keep stable ids, search and live cross-links. `fillGuide` /
+  `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
+  `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
+  supplies the unversioned v2 development entry followed by the 56 legacy
+  releases. `getCurrentV2Release()` returns nothing while
+  `V2_CURRENT_RELEASE_VERSION === null`; `showUnseenV2Release()` therefore
+  cannot mutate `rnSeen` or open an update until an authorized shipped v2 entry
+  exists. This ports the data model, browsing and cumulative-history door; v2
+  tooltip deep-link triggers and Advanced Briefings are still open.
 - **Update watch** (same section): `tools/deploy.js` stamps `BUILD_ID` with the
   git sha and publishes `version.json` beside the game. Live sessions poll it
   every 10 min and on `visibilitychange` (iOS Safari resurrects stale tabs);
