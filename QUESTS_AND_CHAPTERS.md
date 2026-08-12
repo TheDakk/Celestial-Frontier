@@ -25,6 +25,19 @@ implement the dated port overlay.
 > injected write-failure proof for that shape remain OPEN. Repeating the Earth
 > Land action during an explicit training replay may emit the lesson event, but
 > it does not mint a second landfall/progression reward.
+> While a lesson is active, Field Training owns Escape before the global
+> card/ascent handler. Escape therefore retains the current lesson navigation,
+> keeps any required survey card reachable, and restores the lesson's logical
+> focus target instead of stranding welcome or survey-tour.
+>
+> The v2 Guide no longer invents a parallel tutorial summary. It preserves the
+> mature Guide's 9-category /43-authored-id /41-legacy-live inventory and marks
+> Training as only partly available, with capability-aware copy that names the
+> six-lesson boundary above. Guide search and cross-links therefore cannot make
+> an unported feeding, breeding, duel, healing, forge, horizon or Charter lesson
+> look playable. Completing the real 21-step v2 curriculum and restoring the
+> legacy full-state `tsnap` are still separate OPEN outcomes; the unversioned v2
+> release draft does not claim either one complete.
 
 ## ⚠ v1.8.4 — weekly charters, the clock, and the objective chip
 

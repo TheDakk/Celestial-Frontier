@@ -25,6 +25,7 @@ export interface TrainingDeps {
   isDone: () => boolean;
   setDone: (v: boolean) => void;
   persist: () => void;
+  closePanels: () => void;
 }
 
 export function buildSteps(deps: TrainingDeps): TutStep[] {
@@ -39,11 +40,11 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
       when: (t, d) => t === 'survey' && d.planetSeed === 133,
     },
     {
-      id: 'survey-tour', spot: '#survey', btn: 'Got It', allow: ['#survey'],
+      id: 'survey-tour', spot: '#survey', btn: 'Got It', allow: ['#survey [data-sel="title"]'],
       text: () => 'This is a <b>survey card</b> — every world, star and galaxy has one: atmosphere, climate, life, hazards. The universe is generated, so every explorer sees this exact card at Earth. A card is only the view from orbit — press <b>Land</b> on a world card to make planetfall, and the ground survey opens the rest.',
     },
     {
-      id: 'atlas-add', spot: '#survey [data-act="add"]', allow: ['#survey'],
+      id: 'atlas-add', spot: '#survey [data-act="add"]', allow: ['#survey [data-act="add"]'],
       text: () => 'Chart it. Tap the highlighted <b>Star Atlas</b> action on Earth’s card — it adds a new chart or confirms the one you already carry. The Atlas is how you find your way back across the infinite.',
       when: (t, d) => t === 'atlas-add' && d.id === 'p133',
     },
@@ -53,8 +54,8 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
       when: (t, d) => t === 'atlas-open' && !!d.open,
     },
     {
-      id: 'land', spot: '#survey [data-act="landcta"]', allow: ['#survey', '#cosmos'],
-      text: () => 'Now stand on it. Press <b>Land</b> on Earth’s card — home never waves you off. <b>Planetside</b> opens: the world at ground level, painted from its own survey. Out there, hostile worlds fight the descent — the card always shows your odds first.',
+      id: 'land', spot: '#survey [data-act="landcta"]', allow: ['#survey [data-act="landcta"]'],
+      text: () => 'Now stand on it. Press <b>Land</b> on Earth’s card. <b>Planetside</b> opens: the world at ground level, painted from its own survey. This development slice does not simulate the mature game’s hostile descent odds or wave-offs yet; the Guide marks those systems as still to come.',
       when: (t, d) => t === 'landfall' && d.planetSeed === 133,
     },
     {
@@ -71,26 +72,62 @@ let stepIdx = -1;
 let deps0: TrainingDeps | null = null;
 let cardEl: HTMLElement | null = null;
 let spotEl: HTMLElement | null = null;
+let announceEl: HTMLElement | null = null;
 let spotTimer = 0;
+let focusTimer = 0;
+let announceTimer = 0;
+let focusBeforeTraining: HTMLElement | null = null;
+let allowedRoots: HTMLElement[] = [];
+let redirectingFocus = false;
+
+const CHROME = [
+  '#dock', '#raillft', '#railrgt', '#searchbox', '#setpanel', '#guidepanel',
+  '#codexpanel', '#recpanel', '#atlaspanel', '#chpanel', '#survey', '#importsheet',
+];
+const FOCUSABLE = 'button:not([disabled]),a[href],input:not([disabled]):not([type="hidden"]),' +
+  'select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+interface LockState {
+  inert: boolean;
+  pointerEvents: string;
+  opacity: string;
+}
+const locked = new Map<HTMLElement, LockState>();
 
 export function initTraining(deps: TrainingDeps): void {
   deps0 = deps;
   if (deps.isDone()) return;
+  focusBeforeTraining = document.activeElement instanceof HTMLElement && document.activeElement !== document.body
+    ? document.activeElement : null;
   steps = buildSteps(deps);
   cardEl = document.createElement('div');
   cardEl.id = 'tutcard';
   cardEl.className = 'glass';
   cardEl.setAttribute('data-sel', 'tutcard');
+  cardEl.setAttribute('role', 'region');
+  cardEl.setAttribute('aria-label', 'Field Training');
+  cardEl.setAttribute('tabindex', '-1');
   cardEl.style.cssText = 'background:rgba(10,16,30,0.96);box-shadow:0 10px 34px rgba(0,0,0,0.55);position:fixed;left:50%;transform:translateX(-50%);' +
-    'bottom:calc(env(safe-area-inset-bottom,0px) + var(--dock-h,44px) + 40px);' +   /* measured dock + its 12px inset + 28px clearance */
-    'width:min(440px,92vw);z-index:30;border-radius:14px;padding:14px 16px;color:#dbe7f8;font:13px/1.55 system-ui,sans-serif';
+    'bottom:calc(var(--safe-bottom,0px) + var(--dock-h,44px) + 40px);' +   /* measured dock + its 12px inset + 28px clearance */
+    'width:min(440px,calc(100vw - var(--safe-left,0px) - var(--safe-right,0px) - 16px));box-sizing:border-box;' +
+    'max-height:calc(100dvh - var(--safe-top,0px) - var(--safe-bottom,0px) - var(--dock-h,44px) - 56px);overflow:auto;' +
+    'z-index:30;border-radius:14px;padding:14px 16px;color:var(--ink,#dbe7f8);font:inherit;line-height:1.55';
   document.body.appendChild(cardEl);
   spotEl = document.createElement('div');
   spotEl.id = 'tutspot';
   spotEl.style.cssText = 'position:fixed;border:2px solid #ffd9a0;border-radius:12px;pointer-events:none;' +
     'z-index:29;box-shadow:0 0 0 4000px rgba(3,5,10,0.25);display:none;transition:all 0.25s';
   document.body.appendChild(spotEl);
+  announceEl = document.createElement('div');
+  announceEl.id = 'tutlive';
+  announceEl.className = 'sr-only';
+  announceEl.setAttribute('role', 'status');
+  announceEl.setAttribute('aria-live', 'polite');
+  announceEl.setAttribute('aria-atomic', 'true');
+  document.body.appendChild(announceEl);
   document.body.classList.add('training');
+  document.addEventListener('keydown', guardTrainingKeydown, true);
+  document.addEventListener('focusin', guardTrainingFocus, true);
+  document.addEventListener('pointerdown', guardTrainingPointer, true);
   stepIdx = 0;
   renderStep();
   spotTimer = window.setInterval(placeSpot, 300);   /* the spotlight follows layout changes */
@@ -104,16 +141,29 @@ function renderStep(): void {
   if (stepIdx >= steps.length) { finish(false); return; }
   const st = steps[stepIdx]!;
   cardEl.innerHTML =
-    `<div style="color:#8fa3c4;font-size:11px;letter-spacing:0.06em;margin-bottom:4px">FIELD TRAINING · ${stepIdx + 1} / ${steps.length}</div>` +
-    `<div data-sel="tuttext">${st.text()}</div>` +
+    `<div id="tutstephead" style="color:var(--faint,#8fa3c4);font-size:.85em;letter-spacing:0.06em;margin-bottom:4px">FIELD TRAINING · ${stepIdx + 1} / ${steps.length}</div>` +
+    `<div id="tutsteptext" data-sel="tuttext">${st.text()}</div>` +
     '<div style="display:flex;gap:10px;align-items:center;margin-top:10px">' +
-    (st.btn ? `<button data-sel="tutbtn" style="background:#1d3a5e;color:#eaf2ff;border:1px solid #caa24f;border-radius:9px;padding:9px 16px;cursor:pointer;min-height:44px;font:12.5px system-ui">${esc(st.btn)}</button>` : '') +
-    '<button data-sel="tutskip" style="background:none;border:0;color:#7f96ba;cursor:pointer;font:11.5px system-ui;text-decoration:underline;min-height:44px">Skip training — you lose nothing, and Settings can restart it</button>' +
+    (st.btn ? `<button data-sel="tutbtn" style="background:#1d3a5e;color:var(--ink,#eaf2ff);border:1px solid #caa24f;border-radius:9px;padding:9px 16px;cursor:pointer;min-height:44px;font:inherit">${esc(st.btn)}</button>` : '') +
+    '<button data-sel="tutskip" style="background:none;border:0;color:var(--dim,#7f96ba);cursor:pointer;font:inherit;font-size:.9em;text-decoration:underline;min-height:44px">Skip training — you lose nothing, and Settings can restart it</button>' +
     '</div>';
+  cardEl.scrollTop = 0;
+  cardEl.setAttribute('aria-labelledby', 'tutstephead');
+  cardEl.setAttribute('aria-describedby', 'tutsteptext');
   cardEl.querySelector('[data-sel=tutbtn]')?.addEventListener('click', () => advance());
   cardEl.querySelector('[data-sel=tutskip]')!.addEventListener('click', () => finish(true));
   applyAllow(st);
+  if (st.id === 'land') {
+    /* `atlas-open` advances from inside the panel's onOpen callback. Close on
+       the next turn, after openPanel has finished displaying Atlas, so the
+       inert chart cannot survive over the Earth Land action or graduation. */
+    window.setTimeout(() => {
+      if (trainingActive() && steps[stepIdx] === st) deps0?.closePanels();
+    }, 0);
+  }
   placeSpot();
+  queueLessonFocus(st);
+  queueLessonAnnouncement(st);
   /* CF1805-01: publish where the card TOP sits, so raisable surfaces clear it */
   document.documentElement.style.setProperty('--tut-bot', Math.round(cardEl.getBoundingClientRect().top) + 'px');
 }
@@ -130,40 +180,203 @@ function placeSpot(): void {
   spotEl.style.height = (r.height + 12) + 'px';
 }
 function applyAllow(st: TutStep): void {
-  /* the focus lockdown, light edition: chrome outside the lesson's allow
-     list goes inert; the canvas stays free only when '#cosmos' is allowed */
-  const chrome = ['#dock', '#raillft', '#railrgt', '#searchbox', '#setpanel', '#codexpanel', '#recpanel', '#atlaspanel', '#survey'];
+  /* Training is a two-part keyboard scope: its own card plus the current
+     lesson surface. Pointer blocking alone left every forbidden control in
+     the Tab order, so disallowed roots now become natively inert. When an
+     allowed control lives inside a shared rail/dock, only its siblings are
+     inert; this keeps the desktop Atlas button as real as the phone one. */
+  restoreLocks();
   const allow = st.allow || [];
-  for (const sel of chrome) {
+  allowedRoots = [];
+  for (const sel of allow) {
+    if (sel === '#cosmos') {
+      const canvas = document.querySelector('canvas') as HTMLElement | null;
+      if (canvas) allowedRoots.push(canvas);
+      continue;
+    }
+    for (const node of document.querySelectorAll<HTMLElement>(sel)) allowedRoots.push(node);
+  }
+  allowedRoots = [...new Set(allowedRoots)];
+
+  for (const sel of CHROME) {
     const el = document.querySelector(sel) as HTMLElement | null;
     if (!el) continue;
-    const allowed = allow.some((a) => a === sel || a.startsWith(sel + ' ') || sel === '#dock' && allow.some((x) => x.startsWith('#dock')));
-    el.style.pointerEvents = allowed || allow.includes(sel) ? '' : 'none';
-    el.style.opacity = allowed || allow.includes(sel) ? '' : '0.45';
-  }
-  /* per-button dock allowance (e.g. only the Atlas button glows open) */
-  for (const b of document.querySelectorAll('#dock button')) {
-    const el = b as HTMLElement;
-    const id = '#' + el.id;
-    const on = allow.includes(id);
-    if (allow.some((a) => a.startsWith('#dock') && a !== '#dock')) {
-      el.style.pointerEvents = on ? '' : 'none';
-      el.style.opacity = on ? '' : '0.35';
-      (document.getElementById('dock') as HTMLElement).style.pointerEvents = '';
-      (document.getElementById('dock') as HTMLElement).style.opacity = '';
+    const rootAllowed = allowedRoots.some((root) => root === el || root.contains(el));
+    const hasAllowedDescendant = allowedRoots.some((root) => el.contains(root));
+    if (rootAllowed) continue;
+    if (!hasAllowedDescendant) {
+      lockElement(el, 0.45);
+      continue;
+    }
+    /* A shared container (dock/rail) cannot itself be inert when one of its
+       children is today's control. Lock every other keyboard control. */
+    for (const control of el.querySelectorAll<HTMLElement>(FOCUSABLE)) {
+      if (!allowedRoots.some((root) => root === control || root.contains(control) || control.contains(root))) {
+        lockElement(control, 0.35);
+      }
     }
   }
   const canvas = document.querySelector('canvas') as HTMLElement | null;
-  if (canvas) canvas.style.pointerEvents = allow.includes('#cosmos') || !trainingActive() ? '' : 'none';
+  if (canvas && !allowedRoots.includes(canvas)) lockElement(canvas, 1);
 }
 function clearAllow(): void {
-  for (const sel of ['#dock', '#raillft', '#railrgt', '#searchbox', '#setpanel', '#codexpanel', '#recpanel', '#atlaspanel', '#survey']) {
-    const el = document.querySelector(sel) as HTMLElement | null;
-    if (el) { el.style.pointerEvents = ''; el.style.opacity = ''; }
+  restoreLocks();
+  allowedRoots = [];
+}
+function lockElement(el: HTMLElement, opacity: number): void {
+  if (!locked.has(el)) {
+    locked.set(el, {
+      inert: el.hasAttribute('inert'),
+      pointerEvents: el.style.pointerEvents,
+      opacity: el.style.opacity,
+    });
   }
-  for (const b of document.querySelectorAll('#dock button')) { (b as HTMLElement).style.pointerEvents = ''; (b as HTMLElement).style.opacity = ''; }
-  const canvas = document.querySelector('canvas') as HTMLElement | null;
-  if (canvas) canvas.style.pointerEvents = '';
+  el.setAttribute('inert', '');
+  el.style.pointerEvents = 'none';
+  if (opacity < 1) el.style.opacity = String(opacity);
+}
+function restoreLocks(): void {
+  for (const [el, state] of locked) {
+    if (!state.inert) el.removeAttribute('inert');
+    el.style.pointerEvents = state.pointerEvents;
+    el.style.opacity = state.opacity;
+  }
+  locked.clear();
+}
+function visible(el: HTMLElement): boolean {
+  if (!el.isConnected || el.closest('[inert]')) return false;
+  const style = getComputedStyle(el);
+  return style.display !== 'none' && style.visibility !== 'hidden' && el.getClientRects().length > 0;
+}
+function focusablesWithin(root: HTMLElement): HTMLElement[] {
+  const out: HTMLElement[] = [];
+  if (root.matches(FOCUSABLE)) out.push(root);
+  out.push(...root.querySelectorAll<HTMLElement>(FOCUSABLE));
+  return out.filter(visible);
+}
+function trainingFocusables(): HTMLElement[] {
+  const out: HTMLElement[] = [];
+  if (cardEl) out.push(...focusablesWithin(cardEl));
+  for (const root of allowedRoots) out.push(...focusablesWithin(root));
+  return [...new Set(out)];
+}
+function inTrainingScope(el: HTMLElement): boolean {
+  return !!cardEl?.contains(el) || allowedRoots.some((root) => root === el || root.contains(el));
+}
+function focusWithoutScroll(el: HTMLElement | null): boolean {
+  if (!el || !visible(el)) return false;
+  try { el.focus({ preventScroll: true }); } catch { el.focus(); }
+  /* The lesson itself may scroll on short landscape screens. Keep the page
+     fixed, but reveal the newly focused lesson action inside that bounded
+     card; preventScroll alone can focus a completely clipped button. */
+  if (cardEl?.contains(el)) {
+    const er = el.getBoundingClientRect(), cr = cardEl.getBoundingClientRect();
+    if (er.top < cr.top || er.bottom > cr.bottom) el.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+  return document.activeElement === el;
+}
+function preferredLessonFocus(st: TutStep): HTMLElement | null {
+  const primary = cardEl?.querySelector<HTMLElement>('[data-sel="tutbtn"]');
+  if (primary && visible(primary)) return primary;
+  if (st.spot) {
+    const spot = document.querySelector<HTMLElement>(st.spot);
+    if (spot) {
+      const target = focusablesWithin(spot)[0];
+      if (target) return target;
+    }
+  }
+  for (const root of allowedRoots) {
+    const target = focusablesWithin(root)[0];
+    if (target) return target;
+  }
+  return cardEl?.querySelector<HTMLElement>('[data-sel="tutskip"]') || cardEl;
+}
+function queueLessonFocus(st: TutStep): void {
+  clearTimeout(focusTimer);
+  /* Let the game-event caller finish its own DOM choreography first. This
+     matters when Atlas onOpen advances the lesson before the panel manager
+     seats and focuses its close button. The lesson wins on the same turn. */
+  focusTimer = window.setTimeout(() => {
+    if (!trainingActive() || steps[stepIdx] !== st) return;
+    focusWithoutScroll(preferredLessonFocus(st));
+  }, 0);
+}
+function queueLessonAnnouncement(st: TutStep): void {
+  clearTimeout(announceTimer);
+  const lessonText = cardEl?.querySelector<HTMLElement>('[data-sel="tuttext"]')?.textContent?.trim() || '';
+  announceTimer = window.setTimeout(() => {
+    if (!announceEl || !trainingActive() || steps[stepIdx] !== st) return;
+    announceEl.textContent = `Field Training, step ${stepIdx + 1} of ${steps.length}. ${lessonText}`;
+  }, 0);
+}
+function retainLessonSurface(st: TutStep): void {
+  /* Survey lessons are authoritative over their card. Escape is captured
+     before the global card-close/ascent handler, so this is normally only a
+     retention check. If another same-turn action hid the card, ask its
+     existing dock event to reopen the last valid survey instead of mutating
+     card state here and bypassing main.ts's navigation guards. */
+  if (st.id !== 'survey-tour' && st.id !== 'atlas-add' && st.id !== 'land') return;
+  const survey = document.querySelector<HTMLElement>('#survey');
+  if (survey && visible(survey) && survey.getAttribute('aria-hidden') !== 'true') return;
+  document.getElementById('docksurvey')?.dispatchEvent(new MouseEvent('click', {
+    bubbles: true,
+    cancelable: true,
+    view: window,
+  }));
+}
+function guardTrainingKeydown(event: KeyboardEvent): void {
+  if (!trainingActive()) return;
+  const st = steps[stepIdx]!;
+  if (event.key === 'Escape') {
+    /* Training owns Escape while a lesson is active. Letting the global
+       handler close the required survey or ascend strands the lesson while
+       its event target is no longer reachable. Capture and consume the key
+       completely, retain the required lesson surface, then restore the
+       lesson's preferred keyboard target after this event turn. */
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    retainLessonSurface(st);
+    queueLessonFocus(st);
+    return;
+  }
+  if (event.key !== 'Tab') return;
+  const focusable = trainingFocusables();
+  if (!focusable.length) {
+    event.preventDefault();
+    focusWithoutScroll(cardEl);
+    return;
+  }
+  const current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  const at = current ? focusable.indexOf(current) : -1;
+  if (at < 0 || (!event.shiftKey && at === focusable.length - 1) || (event.shiftKey && at === 0)) {
+    event.preventDefault();
+    focusWithoutScroll(event.shiftKey ? focusable[focusable.length - 1]! : focusable[0]!);
+  }
+}
+function guardTrainingFocus(event: FocusEvent): void {
+  if (!trainingActive() || redirectingFocus || !(event.target instanceof HTMLElement) || inTrainingScope(event.target)) return;
+  redirectingFocus = true;
+  focusWithoutScroll(preferredLessonFocus(steps[stepIdx]!));
+  redirectingFocus = false;
+}
+function guardTrainingPointer(event: PointerEvent): void {
+  if (!trainingActive() || !(event.target instanceof HTMLElement) || inTrainingScope(event.target)) return;
+  /* Native inert correctly suppresses activation, but a pointer press on an
+     inert surface can still blur the lesson action to <body> without firing
+     focusin. Consume that press and restore the current logical lesson
+     focus so the next keyboard action remains deterministic. */
+  event.preventDefault();
+  event.stopPropagation();
+  focusWithoutScroll(preferredLessonFocus(steps[stepIdx]!));
+}
+function restoreFocusAfterTraining(): void {
+  const prior = focusBeforeTraining;
+  focusBeforeTraining = null;
+  if (focusWithoutScroll(prior)) return;
+  const surveyAction = document.querySelector<HTMLElement>('#survey button:not([disabled])');
+  if (focusWithoutScroll(surveyAction)) return;
+  focusWithoutScroll(document.querySelector('canvas') as HTMLElement | null);
 }
 function advance(): void {
   stepIdx++;
@@ -172,14 +385,22 @@ function advance(): void {
 }
 function finish(skipped: boolean): void {
   stepIdx = steps.length;
+  clearTimeout(focusTimer);
+  clearTimeout(announceTimer);
+  document.removeEventListener('keydown', guardTrainingKeydown, true);
+  document.removeEventListener('focusin', guardTrainingFocus, true);
+  document.removeEventListener('pointerdown', guardTrainingPointer, true);
   clearAllow();
   cardEl?.remove(); cardEl = null;
   spotEl?.remove(); spotEl = null;
+  announceEl?.remove(); announceEl = null;
   clearInterval(spotTimer);
   document.body.classList.remove('training');
   document.documentElement.style.removeProperty('--tut-bot');
+  deps0?.closePanels();
   deps0?.setDone(true);
   deps0?.persist();
+  window.setTimeout(restoreFocusAfterTraining, 0);
   void skipped;
 }
 

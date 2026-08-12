@@ -224,8 +224,19 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
     for (const bad of [null, [], 1, 'x', true, {}, { view: null }, { codex: {} }, { epoch: 0 }, { epoch: 0, codex: [], land: {} }]) {
       expect(isPlausibleSaveEnvelope(bad), JSON.stringify(bad)).toBe(false);
     }
-    const current = JSON.parse('{"v":4,"epoch":0,"codex":[],"land":[]}');
+    expect(isPlausibleSaveEnvelope({ epoch: 0, codex: [], land: [] })).toBe(false);
+    expect(isPlausibleSaveEnvelope({ v: 4, epoch: 0, codex: [], land: [] })).toBe(false);
+    expect(isPlausibleSaveEnvelope({
+      v: 4, epoch: 0, view: null, codex: [], land: [], items: [], log: [],
+      pstats: {}, me: 'Explorer', hp: 1, essence: 0, asc: 0, ascp: {},
+    })).toBe(false);
+    const current = { ...(FX.inputs.veteran_rich as Record<string, unknown>), v: 4 };
     expect(isPlausibleSaveEnvelope(current)).toBe(true);
     expect(isPlausibleSaveEnvelope(FX.inputs.veteran_rich)).toBe(true);
+    const oneBadField = { ...current, cargo: {} };
+    expect(isPlausibleSaveEnvelope(oneBadField)).toBe(true);
+    const repaired = importSaveV2(JSON.stringify(oneBadField), REGISTRY, NOW);
+    expect(repaired.ok).toBe(true);
+    if (repaired.ok) expect(repaired.state.cargo).toEqual([]);
   });
 });

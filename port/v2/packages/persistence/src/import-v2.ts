@@ -94,11 +94,25 @@ export function isPlausibleSaveEnvelope(value: unknown): value is Record<string,
   const data = value as Record<string, unknown>;
   if (data.v !== undefined) {
     const version = Number(data.v);
-    if (!Number.isSafeInteger(version) || version < 0 || version > 4) return false;
+    /* cfcc_save_v2's real writer has always emitted schema v4. Treating a
+       hand-written v0-v3 marker as compatibility evidence would let a
+       plausible partial object harden into defaults and replace a full
+       expedition. Unversioned mature fixtures remain supported below. */
+    if (version !== 4) return false;
   }
-  const epoch = Number(data.epoch);
-  return Number.isFinite(epoch) && epoch >= 0
-    && Array.isArray(data.codex) && Array.isArray(data.land);
+  const signature = ['epoch', 'view', 'hp', 'pstats', 'fs', 'tone', 'font', 'snd',
+    'fx', 'chart', 'vol', 'rm', 'cx', 'land', 'cont', 'chs', 'chp', 'me',
+    'essence', 'conq', 'cargo', 'items', 'eq', 'asc', 'ascp', 'names',
+    'surveyed', 'gals', 'surf', 'starK', 'ptypes', 'log', 'home', 'prime',
+    'codex', 'at', 'scout'] as const;
+  /* This common signature is emitted by the first v4 writer (v1.5) and the
+     current exporter. It spans navigation, settings, inventory/equipment,
+     identity, progression, records, and Atlas/Compendium state so a
+     truncation cannot merely retain the first dozen obvious sentinels. */
+  /* Completeness is key PRESENCE, deliberately not pre-sanitizer types.
+     Addendum B/CF-RR-002 requires one malformed field to lose that field,
+     never roll the otherwise complete expedition back to an older backup. */
+  return signature.every((key) => Object.prototype.hasOwnProperty.call(data, key));
 }
 
 export function importSaveV2(raw: string | null | undefined, registry: ContentRegistry, now: number): ImportSaveResult {

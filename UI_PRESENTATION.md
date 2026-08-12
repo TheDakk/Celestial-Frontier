@@ -1,6 +1,6 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-11 v2 port overlay (matches `port/v2` code):** The phone slice now
+> **2026-08-12 v2 port overlay (matches `port/v2` code):** The phone slice now
 > owns an explicit 206×98, 4×2 dock and publishes measured `--dock-h` and
 > `--ctx-h`. Context, hint and Planetside offsets derive from those values, so a
 > wrapped line, safe-area change or media-query change cannot bury copy beneath
@@ -32,15 +32,21 @@
 > the same ascent state machine as Escape/right-click; returning to orbit never
 > depends on a keyboard or a precision zoom-out gesture.
 >
-> The eighth phone-dock slot is now a real **Guide — v2 field manual** rather
-> than the old import shortcut. Its seven bounded topics cover the core
-> live-slice controls and safety rules it currently documents. It persists
-> `seenGuide`; save import moved without loss to **Settings → Bring expedition**.
-> This is not the legacy
-> searchable Guide, tooltip deep-link network, or Advanced Briefings surface,
-> all of which remain open port scope. The slice's Field Training likewise owns
-> six real chart/travel/landing lessons plus an honest graduation, not the full
-> legacy 21-step curriculum.
+> The eighth phone-dock slot now opens the canonical **Guide to the Universe**
+> rather than the old import shortcut or a second seven-topic manual. V2 carries
+> the mature inventory—9 categories /43 authored stable topic ids /41
+> legacy-live topics—plus category drill-down, title/keyword/body search and
+> `data-gt` cross-links. A capability layer substitutes current-slice copy for
+> partially ported systems and a visible **Not yet in v2** explanation for
+> unported systems; dormant `beacon` / `events` remain retained in the source
+> contract but hidden from the 41-topic player catalogue. First open persists
+> `seenGuide`; import moved without loss to **Settings → Bring expedition**.
+> The same panel exposes all 56 immutable legacy release entries plus a separate
+> unversioned v2 development draft. The draft cannot trigger the one-time update
+> surface; no v2 version exists until Nick authorizes one. Tooltip deep links and
+> Advanced Briefings remain open port scope. The slice's Field Training likewise
+> owns six real chart/travel/landing lessons plus an honest graduation, not the
+> full legacy 21-step curriculum.
 > **Settings → Bring expedition** opens above every dock/panel as a true
 > `aria-modal` dialog, keeps Tab focus inside, and lets Escape close only the
 > dialog before restoring Settings focus. The phone gate injects its old z=11
@@ -49,9 +55,52 @@
 > at least 8px clearance above the measured dock. Its negative control injects
 > the superseded fixed `max-height` and must reproduce the overlap, so the check
 > cannot pass by measuring only the dock or an unopened panel.
-> Guide alone sits at z24 above the z23 survey card; the other panels retain
-> their Training-sensitive order. A real Earth-card intersection and injected
-> z22 Guide prove that requesting help never hides the manual behind the card.
+> Guide and Settings sit at z24 above the z23 survey card. Outside Field
+> Training, Compendium, Records, Star Atlas, and Charters also rise to z24 so
+> every ordinary phone panel remains operable over a populated card; Training
+> keeps its step-specific card/panel order. Real Earth-card intersections and
+> injected low-layer controls prove these surfaces are not merely present
+> underneath the card.
+> Every panel now reserves a dedicated 44px right gutter for its sticky Close
+> control, so scrolling content cannot render or receive focus beneath that
+> target. Closing still prefers the exact opener; if a desktop rail opener has
+> become hidden because Survey reopened, focus falls back to Survey and then to
+> the exploration canvas instead of remaining on a hidden close control.
+> On every ≤900px landed layout, populated Planetside owns the limited
+> mid-screen reading band, so the objective yields until ascent. Portrait keeps
+> the trail visible; short landscape also yields the trail because the strip,
+> trail and objective cannot share that safe band at A++ while retaining 44px
+> actions. Planetside's top edge begins below the measured top chrome
+> (`--topbar-h + 6px`), not beneath it. The matrix separately proves portrait
+> trail retention, mobile objective yield/restoration, landscape trail yield,
+> top clearance, and forced-visible controls.
+>
+> The responsive glass/accessibility pass is now behavioral rather than just
+> cosmetic. Safe-area variables drive top, side and bottom anchors; rendered
+> dock/context/hint heights feed the remaining offsets; 320px portrait through
+> ultrawide and phone-landscape geometries are exercised. Glass tint has an
+> 0.82 contrast floor (up to 0.98), a solid fallback when backdrop blur is
+> unavailable, and forced-colors treatment. Touch and panel controls are at
+> least 44px; focus-visible is unmistakable; sliders and import controls have
+> names; panels focus their close control and return focus to their opener; the
+> import modal traps Tab and restores Settings focus.
+> Saved Text size / Text tone / Font preferences now apply to the live DOM and
+> remeasure the chrome. Motion Auto follows the OS live; Reduced removes CSS
+> animation/transitions and also freezes Pixi ambient clocks, snaps camera/fade
+> state and gates Planetside organisms. The canvas is a named focusable region:
+> arrows cycle the rendered galaxy/star/planet targets, Enter/Space opens the
+> same survey card, +/- zooms around the target, Escape releases it, a visible
+> ring marks it and a polite live region announces it. Clipboard refusal never
+> reports success: the exact CF1 code is selected in Search with an honest
+> browser-copy instruction.
+> The dock remains a 44px pointer/focus target while its icon uses the 42px
+> client line left inside the 1px border, preventing a hidden two-pixel scroll
+> overflow. A++ also preserves notification hierarchy: the toast title remains
+> 19px while its body is 16px rather than being flattened to one size.
+> Renderer density remains dynamic after resize/visual-viewport change:
+> `effectiveDpr()` caps touch at 2 / desktop at 3 and additionally limits a
+> backing store to 16,777,216 pixels. `autoDensity` keeps CSS and hit coordinates
+> viewport-sized while backdrop texture replacement destroys its old texture.
 >
 > Species art remains a lazy chunk, but readiness is now one shared Promise with
 > one latest subscriber per interested view. An idle prefetch can no longer
@@ -63,10 +112,26 @@
 > than print a profile-shaped success. The current profile is not yet a release
 > budget gate: cold repetitions, long-task/memory budgets, Compendium
 > virtualization, scene-texture disposal, live HD planet replacement and fuller
-> reduced-motion/hidden-tab behavior remain open.
+> hidden-tab behavior remain open. The v2 static preview packaging/hosting
+> contract is documented separately in `port/DEVELOPMENT_PREVIEW.md`; a preview
+> is development evidence, never a release or production deployment.
+>
+> **Current dirty-batch evidence (not final PR-head evidence):** on the
+> post-policy snapshot bound by working-tree SHA-256
+> `88d1996909134596302a2f8558cef553220816ab48ee356f970132a5309f6293`,
+> `smoke:ci` passed with 0 findings and 10
+> screenshots; the full isolated `glassmatrix` passed all 12 viewports including
+> 8K with 0 findings, 0 instrument failures, 0 omitted planned controls and 0
+> retries; and `persona:report` passed all 9 bounded automated personas. The
+> 390×844 DPR-3 four-run performance diagnostic also passed: painted 658ms,
+> answerable 734ms, press→panel 70ms and galaxy rebuild 178ms. The exact-keepsake
+> repair and documentation sync followed that snapshot. These are
+> pre-freeze working-copy diagnostics, not exact-commit evidence, matching CI,
+> a release performance budget, or a human playtest. The exact-commit full
+> battery, matching CI and separate-origin human playtest remain required.
 
 **STATUS:** legacy sections match `main.js` + the html as of 2026-07-31; the
-v2 overlay matches `port/v2` as of 2026-08-11. The addenda at the end preserve
+v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve
 **THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
 its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
 full-screen surface, and any surface raised over training must clear the lesson

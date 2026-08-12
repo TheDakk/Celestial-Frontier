@@ -19,23 +19,30 @@ negative controls. Pixi now keeps its DPR-scaled backing store displayed in a
 viewport-sized CSS box, so phone visuals and hit coordinates agree. Browser smoke and
 performance tools now use the owned, portable CDP lifecycle.
 
-The former save-import dock slot now opens a real **Guide — v2 field manual**.
-Its seven live topics cover survey/travel, planetfall, Atlas/CF1 sharing,
-Charters, Compendium/Records, Field Training restart, and save protection;
-opening it persists the existing `seenGuide` field. Save import remains available
-under **Settings → Bring expedition**, where the same complete-envelope and
+The former save-import dock slot now opens the source-addressed **Guide to the
+Universe**, not a replacement mini-manual. It retains all 9 mature categories,
+43 authored stable IDs and 41 player topics with search, categories, native-keyboard
+cross-links and capability-aware v2 copy. Non-dormant unported mechanics remain
+discoverable but are explicitly unavailable; intentionally dormant topics remain
+source-recorded and player-hidden. No legacy promise is presented as current behavior.
+Opening it persists the existing `seenGuide` field. The Guide also carries the full
+56-release/398-bullet legacy history beside a separate unversioned v2 development
+draft. That draft cannot trigger the one-time update popup, update `rnSeen`, or bump a
+version. Save import remains available
+under **Settings → Save data → Bring expedition**, where the same complete-envelope and
 future/corrupt-byte protections apply. The import surface is an `aria-modal`
 top layer with internal Tab wrapping and Escape-only close/focus restoration;
-the phone gate rejects its former low-z click-through state. This is deliberately a bounded manual for
-the current slice, not a claim that the legacy searchable Guide, tooltip
-deep-links, advanced briefings, or every late-game system has already been ported.
+the phone gate rejects its former low-z click-through state. This is deliberately
+an honest manual for the current slice, not a claim that tooltip deep-links,
+Advanced Briefings, or every late-game system has already been ported.
 Field Training is equally explicit about its boundary: the slice runs the six
 welcome/find-Earth/survey/chart/Atlas/land lessons and then an honest
 "Finish for now" step. Cache, feeding, breeding, duel, hazard, healing, forge,
 and the rest of the legacy 21-step curriculum remain open with their systems.
-Guide alone uses z24 above an open z23 survey card (without changing the other
-panels' Training-sensitive order); the phone gate injects z22 and requires the
-rendered Guide/card intersection to fail.
+Outside Training, ordinary panels use z24 above an open z23 survey card. During
+Training, the intentional lesson choreography remains authoritative and keyboard
+focus is locked to the live lesson. The phone gate injects the former lower panel
+layer and requires the rendered panel/card intersection to fail.
 
 Survey-first descent is phone- and slow-device safe: one tap opens the typed
 survey card without teleporting, and its explicit 44px `Enter galaxy` or
@@ -53,19 +60,44 @@ On touch, Planetside also exposes a minimum-44px **Leave world** action wired to
 the same guarded ascent state machine as Escape/right-click, so a phone player
 never needs a keyboard or a zoom gesture merely to return to orbit.
 
-Current battery: 23 Vitest files / 257 pass / 1 skip; root and app TypeScript;
-artunused; artaudit 23/0; coveragegap 1,010/1,010; speccheck 454/0/0;
-overridecheck 1,014/1,014 routes and 1,010/1,010 catalogue species plus controls
-through CV; the production hybrid guard with 14 injected regressions;
-hybridmatrix/currentreviewpackage/browser selftests; real browser slice smoke;
-and a portable phone performance profile. This battery describes the bounded
-batch, not a production-release certificate.
+The last incremental run before final integration edits reached 24 Vitest files /
+271 pass / 1 skip, root and app TypeScript, the static art/route gates, targeted
+real-browser smoke/glass checks, and the portable phone performance profile.
+Those results are not a final verdict for the subsequently changed working tree.
+The frozen pushed PR head must rerun the full sequential local battery and matching
+GitHub CI; `overridecontrol` remains exclusive and may not overlap any browser,
+build or evidence producer.
+
+Human development playtests use a commit-bound static package, not the live
+site. `npm run preview:package -- --origin=https://<separate-preview-host>`
+adds a visible DEV/commit banner, runtime origin refusal, noindex policy, and a
+hash inventory in `preview.json`. Clean packages build from an isolated
+`git archive` snapshot of exact HEAD and record the exact `port/v2` tree and
+dependency-lock hash; the mutable working tree is used only by explicitly dirty,
+nonpublishable local previews. It is `publishable:false` and loopback-only
+unless the default-branch manual workflow creates a publication candidate. For the one PR
+that introduces that workflow, Nick may explicitly approve the equivalent local clean-
+pushed-head candidate command documented in `port/DEVELOPMENT_PREVIEW.md`.
+`npm run preview:verify -- --verify=<root>`
+rechecks an extracted package. The origin must not be
+`celestialfrontier.github.io` or a path beneath it because those paths share
+production browser storage. The separate preview owner/hostname remains a
+pending decision; packaging does not deploy. Structured evidence comprises a
+single-run slice-smoke JSON/log/screenshots, a 12-viewport glass-matrix report including
+8K, and same-provenance automated-persona JSON/Markdown. The automated synthesis
+is not a human playtest. PR #11 remains draft until a real multi-lens playtest is
+recorded against the exact preview, every finding is resolved or explicitly
+dispositioned and retested, and the final head is green. The hosting decision,
+manual approval flow, storage boundary, CI artifacts, and human test record are
+defined in [`../DEVELOPMENT_PREVIEW.md`](../DEVELOPMENT_PREVIEW.md) and
+[`../playtests/PLAYTEST_TEMPLATE.md`](../playtests/PLAYTEST_TEMPLATE.md).
 
 Highest-priority open v2 work is now semantic and runtime-owned: canonicalize
 the full CF1 galaxy→star→planet hierarchy; restore imported legacy full-state
 tutorial snapshots; decide and preserve hybrid parent identity in CFB codes;
-finish the remaining legacy Field Training arc and grow the bounded Guide into
-the full searchable/manual + tooltip/advanced-briefing surface as those systems land;
+finish the remaining legacy Field Training arc and keep the canonical Guide's
+current-safe topic bodies synchronized as systems land; add tooltip deep-links and
+the Advanced Briefing surface;
 virtualize the 1,500-row Compendium; own/destroy Pixi canvas textures and add a
 memory plateau gate; attach completed HD planet textures to live sprites;
 persist/invalidate epoch edges and settle hidden-tab/reduced-motion policy;
@@ -350,6 +382,10 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 
 | Tool | Role |
 |---|---|
+| `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, and package tampering; then creates, verifies, and real-browser-boots a clean-commit static human-playtest package built from an isolated exact-HEAD snapshot with a visible DEV/commit banner, guarded module loader, `robots.txt`, and `preview.json` tree/lock/byte hashes. The shared workspace lock prevents overlap with source-mutating controls; the 320×568 boot requires the banner to clear the dock. Default output is remote-blocked; the default-branch manual workflow normally creates approved candidates, with PR #11's explicitly approved clean-head local bootstrap documented separately. It never deploys. |
+| `npm run smoke:ci` | Runs the authoritative real-browser `slicesmoke.mjs` exactly once, retains complete stdout/stderr in `slice-smoke.log`, and writes commit/branch/working-tree/browser/screenshot-bound `slice-smoke-report.json`. `smokereport` owns one full-lifetime workspace lock and passes a validated one-child inherited lease to `slicesmoke`, retaining the lock through screenshot hashing and report finalization. A failure prints the first scoped diagnosis plus a related count; it never retries a red run. |
+| `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion and DPR without retrying; it owns the shared workspace lock while building/browsing. |
+| `npm run persona:selftest` / `npm run persona:report` | Joins only passing slice-smoke and glass-matrix evidence with matching commit/branch and dirty-tree digest into `automated-persona-report.{json,md}`. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |
 | `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. |
 | `node tools/browsercdp.mjs --selftest` | Negative-controls browser startup metadata, child exit, WebSocket and command timeouts, pending-command rejection, bounded shutdown, exact version provenance, and owned-profile cleanup. |
 | `node tools/proceduralnames.mjs --selftest` | Proves the exact 240-row bridge among full, drift, and render procedural identities. |

@@ -128,6 +128,52 @@ same lines, Git stops with a conflict rather than silently losing either
 change. Resolve that conflict on the agent branch, test, push, and let the
 pull request update.
 
+## Resumable batch and human-preview record
+
+Every coding batch must leave enough committed context for either OpenAI/Codex
+or Anthropic/Claude Code to resume without reconstructing decisions from chat.
+Before the Git handoff, the current agent must record:
+
+1. the exact branch, full commit, draft PR, upstream/develop relationship, and
+   whether any scoped working-copy changes remain;
+2. player-visible behavior changed, affected source files, and every in-game
+   Guide/Training/release-note surface updated (or an explicit reason a surface
+   does not yet exist in the port);
+3. refreshed current-state system references and codebase map, plus the lean
+   `ROADMAP.md` handoff; chronological history is appended/archived under the
+   standing doc-hygiene law rather than deleted;
+4. every check run, its result, and the deliberate failing control for each new
+   instrument; a rerun is never used to erase or conceal a red result. For the
+   current v2 UI contract, retain the exact-run slice-smoke report/log/screenshots,
+   the 12-viewport glass report including 8K, and the matching-provenance automated-
+   persona JSON/Markdown; automated personas never count as a human playtest;
+5. open findings, the exact next implementation/retest step, and its owner;
+6. for a human preview, the separate origin, full source commit, `preview.json`
+   content hash, tester/device lens, and the committed report under
+   `port/playtests/`.
+
+The development preview is evidence and a play surface, not a Git transport or
+source of truth. Never copy code back from a hosted preview. Build it from a
+clean pushed commit using `port/v2/tools/devpreview.mjs`; the clean path builds
+from an isolated `git archive` snapshot of exact HEAD rather than mutable
+working-tree bytes. Publish it only through
+the separately approved host process in `port/DEVELOPMENT_PREVIEW.md`, and keep
+the production `celestialfrontier.github.io` origin untouched. A preview URL,
+artifact name, or mutable “latest” label never replaces the full commit and
+content hash.
+
+`npm run overridecontrol` is an **exclusive, transient source-mutating gate**.
+It must never overlap Vite, a browser run, screenshots, packaging, or any other
+evidence producer in the same worktree. Compliant mutators/builders acquire the
+shared `port/v2/tools/workspacelock.mjs` lock and fail with the current owner
+instead of waiting or retrying. `smokereport` owns one lock for its full evidence
+lifetime, passes a validated single-child inherited lease to `slicesmoke`, and
+retains that same ownership through the exact run, screenshot hashing and report
+finalization. The child must not acquire an unrelated second lock, and the lease
+must not be reusable by another process or child. If an older/unintegrated tool
+does not yet use the shared lock, sequence it explicitly; a clean status on both
+sides cannot detect a temporary edit that was built and then restored.
+
 ## Releases
 
 `develop` reaches `main`, and `main` reaches the separate

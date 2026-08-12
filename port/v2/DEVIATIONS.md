@@ -926,7 +926,11 @@ duplicates).
   wins over a corrupt primary; an unsupported future version remains byte-protected with an update
   message; and a transient IndexedDB failure releases its write hold only after a successful retry.
   The repository also clears a rejected/blocked open Promise so one startup failure cannot poison the
-  whole session. This is intentional exploit/data-loss hardening over permissive v1 behavior.
+  whole session. Replacement import cancels/drains ordinary persistence before the proven primary
+  write. Its classification and primary use trimmed JSON, but the optional local recovery keepsake
+  retains the exact submitted text, including legal surrounding whitespace. File selection is
+  browser-decoded to text, so the external moderator file remains the byte-for-byte authority. This is intentional exploit/data-loss hardening over
+  permissive v1 behavior.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
@@ -965,11 +969,13 @@ duplicates).
   CombatCore abilities/level/stat shapes and SpeciesTraits tables/options now match runtime. Contract
   tests exercise the real APIs, and `npm run typecheck` includes the app configuration that first
   exposed the drift.
-- ★ **D-UI-1 — lower mobile chrome is measured as a group (2026-08-11).** The phone dock wrapped
+- ★ **D-UI-1 — lower mobile chrome is measured as a group (2026-08-12).** The phone dock wrapped
   3/3/2 while context/hint/Planetside used fixed offsets, so green smoke evidence visibly covered
   copy and controls. The port owns a 206×98 4×2 phone dock, publishes measured `--dock-h`/`--ctx-h`,
   and derives every lower anchor from them. Browser smoke asserts pairwise clearance, row geometry,
   button hit targets and CSS-variable equality, with an injected old-style overlap that must fail.
+  Each dock button remains a 44px target while its icon uses the 42px client line inside the 1px
+  border, eliminating the hidden two-pixel overflow without shrinking the action.
 - ★ **D-UI-2 — DPR-scaled pixels and player input share one coordinate space (2026-08-11).**
   Pixi now uses `autoDensity`, keeping a DPR-scaled backing store inside a viewport-sized CSS
   canvas instead of doubling the displayed box and halving pointer coordinates on DPR-2 phones.
@@ -979,16 +985,56 @@ duplicates).
   Planet-card actions also bind the captured galaxy+star `{seed,x,y}` composite, not seed alone.
   Browser smoke drives the real touch and desktop outcomes and rejects injected density, buried-
   action and same-seed/different-coordinate stale-card regressions.
-- ★ **D-GUIDE-1 — the dock Guide describes only what this slice can actually do (2026-08-11).**
-  The former dock import shortcut is now a working seven-topic **Guide to the Universe** covering
-  live travel, planetfall, Atlas/sharing, Charters/reach, Compendium/Records, Field Training and save
-  protection; first open persists `seenGuide`. Import moved to **Settings → Bring expedition** and
-  still enters the one guarded loader through a top-layer `aria-modal` dialog with internal Tab
-  wrapping and Escape/focus restoration; the old low-z click-through state is a negative control.
-  Guide alone uses z24 above the z23 survey card so help remains readable without disturbing the
-  other panels' Training order; a real card intersection and injected z22 layer are browser controls.
-  The legacy searchable encyclopedia, tooltip deep-links and
-  Advanced Briefings remain OPEN rather than being represented by a dead or overclaiming surface.
+- ★ **D-GUIDE-1 — the port continues the mature Guide; it does not fork a second manual
+  (2026-08-11).** The temporary seven-topic literal is gone. `guide-content.ts` carries an exact,
+  SHA-256-bound v1.8.9 Guide snapshot: 9 categories, 43 authored stable topic ids and 41 legacy-live
+  topics (`beacon` / `events` retained as dormant), with category drill-down, keyword/body search and
+  live `data-gt` cross-links. A typed capability table substitutes v2-current copy for partially
+  ported systems and an explicit **Not yet in v2** explanation for unported systems, so stable ids
+  remain linkable without advertising dead mechanics. Its test fails on source-hash drift, missing or
+  duplicate ids, a broken cross-link, capability overclaim and a capability underclaim. First open
+  persists `seenGuide`. Import remains at **Settings → Bring expedition** through the one guarded
+  loader and its named, top-layer `aria-modal` dialog with internal Tab wrapping and Escape/focus
+  restoration. Guide uses z24 above the z23 survey card. Tooltip deep-links and Advanced Briefings
+  remain OPEN; the Guide model existing does not claim those interaction layers are ported.
+- ★ **D-RELEASE-1 — legacy history, v2 draft copy and a shipped version are three different states
+  (2026-08-11).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
+  398 bullets, v1.8.9 first and v1.0 last. The v2 development bulletin is separate, explicitly
+  `draft`, `version:null` and `Unreleased`; `V2_CURRENT_RELEASE_VERSION` is `null` and the shipped-v2
+  list is empty. Therefore draft copy can appear in the cumulative Guide history but can never fire
+  the mature one-time update rule or mutate `rnSeen`. Hash/parity and negative-control tests protect
+  the archive and patch-line selector. No v1.8.9 mutation, version bump, release or deployment is
+  implied.
+- ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
+  (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
+  heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces
+  a contrast-safe 0.82..0.98 glass floor with no-blur and forced-colors fallbacks; and makes touch/
+  panel controls at least 44px. Text size/tone/font save fields now change the rendered DOM and
+  trigger remeasurement without flattening hierarchy: under A++ a toast title remains 19px above
+  its 16px body. Panels reserve a dedicated right gutter for the sticky 44px Close target. Focus-
+  visible, labelled sliders/import inputs, panel opener restoration and modal Tab containment are
+  explicit; if Survey reopening hides a desktop rail opener, closing falls back to Survey and then
+  the canvas rather than stranding focus on the hidden panel control. Motion Auto follows the OS
+  live; Reduced freezes Pixi ambient time, snaps camera/fade state, gates organism animation and
+  removes CSS animation/transitions.
+  The canvas is a named focusable region whose arrows cycle the actual rendered body inventory,
+  Enter/Space calls its survey path, +/- zooms at the selected target and Escape releases it; a
+  visible focus ring and polite live region expose the state. Clipboard refusal selects the exact CF1
+  in Search and announces **Copy unavailable** instead of lying. `effectiveDpr()` retains the touch-2
+  / desktop-3 heat caps, adds a 16,777,216-pixel backing-store ceiling, and resynchronizes Pixi plus
+  backdrop density on viewport changes while destroying the replaced backdrop texture. On every
+  ≤900px landed layout, populated Planetside owns the objective's limited reading band until ascent;
+  portrait retains the trail, while short landscape also yields the trail and begins Planetside below
+  measured top chrome. On the post-policy dirty snapshot bound by working-tree SHA-256
+  `88d1996909134596302a2f8558cef553220816ab48ee356f970132a5309f6293`, `smoke:ci` passed with 0 findings and
+  10 screenshots; the full isolated matrix passed all 12 viewports including 8K with 0 findings,
+  0 instrument failures, 0 omitted planned controls and 0 retries; and `persona:report` passed all
+  9 bounded automated personas. The 390×844 DPR-3 four-run performance diagnostic passed at painted
+  658ms, answerable 734ms, press→panel 70ms and galaxy rebuild 178ms. The exact-keepsake repair and
+  documentation sync followed that snapshot. These results are pre-freeze
+  diagnostics, not exact-commit evidence, matching CI, an approved performance budget, or a human
+  playtest. The exact-commit full battery, matching CI and separate-origin human playtest remain
+  required.
 - ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
   the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson

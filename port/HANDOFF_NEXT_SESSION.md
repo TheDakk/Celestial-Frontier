@@ -1,122 +1,149 @@
-# ★ LIVE — draft PR #11: v2 hardening + player-guide/doc parity (2026-08-11)
+# ★ LIVE — draft PR #11: v2 hardening + playtest readiness (2026-08-12)
 
 **Current integration state:** PR #10 merged normally into `develop` at
 `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`. OpenAI/Codex remains on
-`openai/mac`. This batch's Git authority is the latest pushed `openai/mac`
-commit carrying the files described here; the working copy may be ahead only
-while publication is in progress. It protects sparse/corrupt/future save bytes,
-restores IndexedDB retry, bounds hostile epoch input, validates Atlas route
-identity, closes duplicate landfall, composite-identity stale-card and external-code landing
-outcomes, round-trips accepted custom world names, fixes lazy-art subscribers
-and declaration drift, hardens SessionRNG, makes phone lower chrome a measured
-4×2 layout, enables Pixi `autoDensity` for correct DPR/CSS sizing, and makes survey-first descent use an explicit 44px card action proven
-by real 390×844 touch input, ports the browser harnesses, and adds core v2
-test/type/art/browser-smoke gates to CI. The static portrait pixel set covered
-by the package-level Platinum PASS remains frozen. The next major visual work is
-living rigs/animation and biome/ecology scenes, not a blanket repaint.
-Real-browser proof covers desktop pointer and real 390×844 touch entry into the
-exact Milky Way node, the actual Sol sprite, a real stage-0 non-Sol Charter
-rejection, and stage-2 entry into a deterministic visible fine star. It compares
-seed+x+y identity and rejects the former DPR-sized CSS canvas and buried travel
-actions.
+`openai/mac`; the pushed baseline at this handoff's start is
+`fc10ed67fcf31ffeece09d8fd4239a07a0815108`. The current batch has intentional
+scoped working-copy changes and is not publication evidence until it is frozen
+in one clean pushed commit. Draft PR #11 is open at
+https://github.com/TheDakk/Celestial-Frontier/pull/11.
 
-The follow-up closes the current player-copy gap: the eighth dock slot now opens
-a bounded seven-topic v2 field manual, while import moves to Settings → Save data
-→ Bring expedition so the measured 4×2 dock remains intact. The manual covers
-the live survey/Enter flow, guarded Land and a minimum-44px Leave action, Atlas
-and CF1, Charter reach, Compendium/Records, Field Training restart, and protected
-saves. Training wording works for fresh `+ Add` and veteran `★ Confirm`, returns
-planet entry to the actual system survey, and teaches Land rather than a
-nonexistent planet-zoom step. Browser smoke proves all seven topics, immediate
-IndexedDB+reload persistence of `seenGuide`, a focus-trapped top-layer import
-modal, exact copy/action alignment, an 8px Guide/dock clearance, and real
-390×844 touch Earth Land→Leave→system plus one-Escape lift-off. Missing-topic,
-stale-copy, old-max-height Guide/dock-overlap, Guide-behind-card, low-z modal and missing/buried-
-Leave controls all fail closed; a same-seed/different-coordinate system cannot
-reuse the old planet card for Land, Atlas or Share. This is a manual for the systems that are live now. The searchable legacy
-Guide (43 authored topics, 41 currently live), tooltip deep-links/advanced
-briefings, the full 21-step Training
-arc (v2 currently has six real lessons plus an honest graduation), and release/
-update-modal/version machinery remain open Phase 4 work.
+The batch audits and hardens the already-ported Phase-4 slice: sparse/corrupt/
+newer save protection, IndexedDB retry, bounded hostile epochs, Atlas and
+composite-scene identity, single-credit landfall, external-code landing guards,
+named-world CF1 round trips, retained lazy-art subscribers, SessionRNG and
+declaration parity, measured 4×2 phone chrome, correct Pixi DPR/CSS pointer
+geometry, and explicit minimum-44px survey descent actions. Browser flows cover
+desktop and phone navigation, Charter rejection/success, protected save import,
+Land/Leave and stale-action rejection.
 
-**Current gates:** Vitest 23 files / 257 pass / 1 skip; root+app TypeScript;
-artunused; artaudit 23/0; coveragegap 1,010/1,010; speccheck 454/0/0;
-overridecheck 1,014/1,014 routes +1,010/1,010 species and controls through CV;
-production hybrid guard with 14 injected regressions; hybridmatrix/currentreviewpackage/browser
-selftests; real-browser smoke; portable
-performance profile; and diff-check. The formal reset certificate, Wave 2e's
-missing baseline, release, deploy and version bump remain open/absent.
+The dock Guide is the source-addressed continuation of the mature in-game Guide,
+not a parallel manual: **9 categories, 43 authored stable IDs and 41 player
+topics**, with search, native-keyboard cross-links, capability-aware current copy
+and honest unavailable states. Save import remains under **Settings → Save data →
+Bring expedition**. The same Guide exposes the exact **56-release/398-bullet** legacy
+history beside an unversioned `V2_DRAFT_RELEASE`. The draft cannot open the
+one-time shipped bulletin, mutate `rnSeen`, or bump a version;
+`V2_CURRENT_RELEASE_VERSION` remains unset pending Nick's authorization.
 
-**Player-copy rule and remaining parity:** update the bounded Guide, contextual
-hints and Training copy in the same batch as every player-visible change. Port
-the full Guide/tooltips/briefings/21-step Training/release surface as its systems
-become live; do not advertise dormant v1 mechanics. **Next technical order:**
-complete canonical CF1 galaxy→star→planet proof;
+The responsive glass contract now spans **12 viewports including 8K**: safe
+areas, minimum targets, contrast, focus continuity, assistive state, display
+preferences, reduced motion and bounded DPR. Panels reserve a dedicated 44px
+sticky-close gutter and restore focus to their opener, or to Survey/canvas when
+a desktop rail opener has become hidden. On landed ≤900px layouts the objective
+yields to populated Planetside until ascent; portrait retains the trail, while
+short landscape also yields the trail and begins Planetside below measured top
+chrome. Dock icons use the 42px client line inside their 44px target, and A++ retains a larger toast-title tier.
+Training retains its intentional layer choreography and keyboard focus lock;
+ordinary panels remain above survey cards outside Training. The v2 Training arc
+still contains the six current chart/travel/landing lessons plus an honest
+graduation. Tooltip deep-links, Advanced Briefings and the rest of the legacy
+21-step curriculum remain open.
+
+Structured evidence consists of one-run slice-smoke JSON/log/screenshots, a
+12-viewport glass-matrix JSON report, and matching-provenance automated-persona
+JSON/Markdown labeled **AUTOMATED — NOT A HUMAN PLAYTEST**. Development-preview
+packaging binds exact commit/tree/lockfile/byte hashes, shows a DEV banner and
+refuses production/path origins. The actual separate preview owner/hostname has
+not been chosen or published; use either the recommended separate
+`dev-celestialfrontier` owner site or an approved dedicated custom hostname.
+
+**Evidence status:** earlier incremental runs reached 24 Vitest files /271 pass /
+1 skip, both TypeScript configs, static art/route gates and targeted browser/
+performance checks. Source and test edits continued afterward, so those results
+are not the final PR-head verdict. On the post-policy dirty snapshot bound by
+working-tree SHA-256 `88d1996909134596302a2f8558cef553220816ab48ee356f970132a5309f6293`,
+`smoke:ci` passed with 0 findings and 10 screenshots; the full isolated
+`glassmatrix` passed all 12 viewports including 8K with 0 findings, 0 instrument
+failures, 0 omitted planned controls and 0 retries; and `persona:report` passed
+all 9 bounded automated personas. The 390×844 DPR-3 four-run performance
+diagnostic passed at painted 658ms, answerable 734ms, press→panel 70ms and galaxy
+rebuild 178ms. The exact-keepsake repair and documentation sync followed that
+snapshot. These are pre-freeze diagnostics, not exact-commit evidence,
+matching CI, an approved performance budget, or a human playtest. Freeze the final head in a commit, run the full
+sequential local battery, then push it and require matching GitHub CI before completing a real multi-lens human
+playtest against its commit-bound separate-origin preview. Record full commit,
+`preview.json` content hash, URL, tester/device/browser, save state, findings and
+retest in `port/playtests/`. Do not mark PR #11 Ready or merge before every human
+finding is resolved or explicitly dispositioned and affected gates are rerun.
+
+**Next technical order:** complete canonical CF1 galaxy→star→planet proof;
 restore imported legacy full-expedition `tsnap`; decide CFB parent preservation;
-virtualize Compendium; own/destroy Pixi canvas textures with a memory plateau
-gate; attach completed HD planet tiers; persist/invalidate epoch edges and settle
-visibility/reduced-motion policy; finish Gate-B/type/state boundaries and
-split-store/CAS persistence; then Phase 5 living actors and Phase 6 biome scenes.
+complete live Training/tooltips/Advanced Briefings; virtualize Compendium;
+own/destroy Pixi canvas textures with a memory plateau gate; attach completed HD
+planet tiers; persist/invalidate epoch edges and settle visibility/reduced-motion
+policy; finish Gate-B/type/state boundaries and split-store/CAS persistence;
+then Phase 5 living actors and Phase 6's 43 biome/ecology scenes. The static
+Platinum-reviewed portrait set remains frozen; human play, living rigs and biome
+scenes are the higher-value visual work.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — PR #10 is merged
-into `develop`; draft PR #11 is already open at
-https://github.com/TheDakk/Celestial-Frontier/pull/11. This batch is authoritative
-at the latest pushed `openai/mac` commit carrying the files described above.
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — this batch remains
+uncommitted/unpushed at the handoff point recorded above. Draft PR #11 exists,
+but its current remote head does not yet contain the complete working batch.
 
-**GitHub step:** draft PR #11
-(https://github.com/TheDakk/Celestial-Frontier/pull/11) is the separate
-integration vehicle. After each pushed follow-up, OpenAI/Codex keeps its body
-synchronized with the copy-ready description below. Nick then reviews its
-checks and diff, clicks **Ready for review**, and uses the normal merge into
-`develop` only when satisfied. Never add this batch to merged PR #10,
-auto-merge it, squash/rebase it, or target `main`.
+**GitHub step:** keep PR #11 draft. Freeze the scoped batch in a commit, run the
+final sequential local battery on that exact commit, then push it and require
+matching CI. Update the PR body with that exact head and results,
+build the approved separate-origin preview, complete and record the human
+playtest, and resolve/retest findings. Only then may Nick click **Ready for
+review**, review the final diff/checks, and normally merge into `develop`. Never
+auto-merge, squash/rebase, retarget `main`, or add this work to merged PR #10.
 
-**PR details:** base `develop`; source `openai/mac`; title
-`Harden v2 persistence, navigation, mobile UI, and CI`; description
-`Audits and hardens the already-ported v2 slice. Protects sparse/corrupt and newer saves;
-restores IndexedDB retries; bounds hostile epoch input; validates Atlas routes; prevents duplicate
-landfall credit, composite-identity stale-card actions, external-code landing bypass and named-world share loss; fixes
-lazy species-art races and TypeScript declaration drift; hardens SessionRNG; and makes the phone dock
-a measured 4x2 non-overlap contract. Enables Pixi autoDensity so the DPR-scaled backing store retains
-a viewport-sized CSS box and logical pointer coordinates agree. Replaces timing-sensitive second-tap
-descent with minimum-44px Enter galaxy / Enter system survey-card actions. Adds a dock-accessible
-seven-topic v2 field manual for the current live-slice flow; moves save import to Settings > Save data >
-Bring expedition so the dock stays 4x2; aligns Training copy with fresh/veteran Atlas labels and the
-real system-survey > Land flow; and adds a visible minimum-44px Leave world action. Real-browser smoke
-proves desktop galaxy navigation and exact base-Sol identity {seed:424242,x:560,y:170}, real 390×844
-touch galaxy navigation, Land > Leave > system plus one-Escape lift-off, all required Guide topics
-plus immediate IndexedDB+reload persisted seen state and 8px dock clearance, a focus-trapped top-layer
-Settings import, same-seed/different-coordinate stale planet actions rejected, a real stage-0 fine-star
-action rejected by the Charter gate, stage-2 success
-preserving the touched target's exact {seed,x,y}, and visible byte-preserving protected-save notices;
-injected stale-document, fixed-wait, DPR-sized-canvas, hidden-notice, missing-topic, stale-copy,
-Guide/dock-overlap, Guide/card layering, low-z modal, same-seed card, click-through and missing/buried-action regressions fail. Ports the browser
-smoke/perf harnesses and adds core v2
-test/type/art/browser-smoke gates to CI. Refreshes the project landing page, current system references,
-Guide/Training contract, test counts and operational commands; the full searchable legacy Guide,
-tooltip deep-links/advanced briefings, full 21-step Training and release/update machinery remain open.
-The static flora/fauna/procedural pixel set covered by the package-level Platinum PASS remains unchanged
-except for a type-only art correction with identical runtime value. Verification includes 23-file
-Vitest (257 pass /1 skip), both TypeScript configs, artunused/artaudit/coverage/speccheck/override
-controls, hybrid/current-review/browser selftests, real-browser smoke/perf, and diff-check. Remaining
-canonical CF1 hierarchy, legacy full-expedition tutorial snapshot restore, CFB parent preservation,
-Compendium virtualization, Pixi texture lifecycle, HD planet replacement, epoch-edge/visibility policy,
-living rigs and biome scenes are explicitly deferred. After merge, Anthropic/Claude Code synchronizes
-only from a clean anthropic/windows worktree with git fetch origin then git merge origin/develop. No
-release, deployment, certification, main change, live-site change, or version bump is included.`
+**PR details:**
+
+- Base branch: `develop`
+- Source branch: `openai/mac`
+- Title: `Harden v2 persistence, navigation, responsive UI, and playtest readiness`
+- Copy-ready description:
+
+  > Audits and hardens the already-ported v2 slice. Protects sparse, corrupt and newer saves;
+  > restores IndexedDB retries; bounds hostile epoch input; validates Atlas and composite scene
+  > identity; prevents duplicate landfall credit, stale-card actions, external-code landing bypass
+  > and named-world share loss; retains lazy-art subscribers; aligns TypeScript declarations; and
+  > strengthens SessionRNG. Makes the phone dock a measured 4×2 contract, fixes Pixi DPR/CSS
+  > pointer geometry, and replaces timing-sensitive descent with explicit minimum-44px survey-card
+  > actions. Restores the source-addressed in-game Guide with its canonical 9 categories, 43
+  > authored IDs and 41 player topics, searchable capability-aware copy and native keyboard
+  > cross-links, and keeps protected import at Settings → Save data → Bring expedition. Preserves
+  > the exact 56-release/398-bullet legacy history and keeps current v2 work
+  > in an unversioned `V2_DRAFT_RELEASE` that cannot trigger the shipped-update popup or mutate
+  > `rnSeen`. Improves safe areas, contrast, focus, assistive state, display preferences, reduced
+  > motion and bounded DPR across a 12-viewport glass matrix including 8K. Panels reserve a 44px
+  > sticky-close gutter and hidden rail openers fall back to Survey/canvas. On landed touch layouts,
+  > the objective yields to Planetside; portrait retains the trail while short landscape yields it
+  > and starts Planetside below measured top chrome. Adds provenance-bound
+  > smoke, glass and automated-persona reports plus commit-bound development-preview packaging;
+  > automated personas are explicitly not a human playtest. The preview requires a separately
+  > approved origin, which has not been chosen or published. Final verification is publication-
+  > contingent: freeze the final head in a commit, run the sequential local battery, then push
+  > and require matching GitHub CI,
+  > then complete and record a multi-lens human playtest against that exact preview before marking
+  > this PR Ready or merging. The static Platinum-reviewed portrait set is unchanged; later visual
+  > work remains living rigs/animation and biome scenes. After merge, Anthropic/Claude Code may
+  > synchronize only from a clean `anthropic/windows` worktree with `git fetch origin` then
+  > `git merge origin/develop`. No release, deployment, certification, `main` change, live-site
+  > change or version bump is included.
 
 **Other side:** Anthropic/Claude Code on Windows, branch `anthropic/windows`,
-need not be opened now and does not have this batch until the draft PR merges.
-At its next coding batch after that merge, and only from a clean worktree, run
-`git fetch origin` then `git merge origin/develop`; if dirty, do not pull,
-switch, or merge first, and never copy files manually between worktrees.
+does not need to be opened now and does not have this batch. It may continue
+unrelated work but must not expect these changes or copy files manually. Only
+after PR #11 merges, at its next coding batch and from a clean worktree, run
+`git fetch origin` then `git merge origin/develop`. If dirty, do not pull,
+switch or merge until its own work is safely finished/committed.
 
-**Release status:** PR #11 is open, draft, unmerged. `develop` remains at merged
-PR #10 (`61cc058`) and receives this batch only through a reviewed normal merge
-of PR #11. `main` and the live site remain unchanged. No release, deployment,
-certification, or version bump is included.
+**Release status:** PR #11 is open, draft and unmerged. `develop` remains at
+merged PR #10 (`61cc058`); `main` and https://celestialfrontier.github.io/ are
+unchanged. No release, deployment, certification, preview publication or version
+bump has occurred.
+
+**Preview bootstrap note:** GitHub cannot manually dispatch a workflow until its
+file exists on the default branch. Since PR #11 introduces
+`development-preview-package.yml`, its own pre-merge candidate uses the equivalent
+Nick-approved local clean/pushed-head command in `port/DEVELOPMENT_PREVIEW.md`.
+After that workflow reaches `develop`, later candidates use the reviewed manual
+workflow. Neither path deploys without a separately approved host action.
 
 # HISTORICAL/SUPERSEDED — Platinum repair human PASS; PR #10 pre-merge handoff
 

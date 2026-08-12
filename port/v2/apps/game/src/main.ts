@@ -13,8 +13,8 @@
    · Settings/Compendium/Records · search (code-paste travel) · the shipped
    audio stings · COSMIC_EPOCH on play time.
 
-   Still ahead (recorded in ROADMAP's NEXT): the 21-step training port,
-   Star Atlas, rarity stings, ring↔planet mutual shadows, PROTO star disk,
+   Still ahead (recorded in ROADMAP's NEXT): the remaining 15 lessons of the complete 21-step training port,
+   full Atlas chart/favorites presentation, rarity stings, ring↔planet mutual shadows, PROTO star disk,
    biome vista surfaces (Phase 6). Static deterministic Canvas species portraits
    are live; retained Pixi actors, meshes, and portrait animation remain Phase 5. */
 import { Application, Container, Graphics, Sprite, Texture, Text, extensions, CullerPlugin } from 'pixi.js';
@@ -28,6 +28,14 @@ import {
 import { initAudio, playWhoosh, playSurveyPing, applySfxGain } from '@cf/audio';
 import { registerPanel, fillPanel, togglePanel, openPanel, closePanels, openPanelId } from './panels.js';
 import { initTraining, gameEvent, trainingActive, trainingStepId } from './training.js';
+import {
+  getGuideCatalogue, getGuideTopic, searchGuide,
+  type GuideCategoryId, type GuideTopicId, type GuideTopicView,
+} from './guide-content.js';
+import {
+  getCurrentV2Release, getReleaseHistory, hasUnseenV2Release,
+  type ReleaseNoteView, type V2ShippedRelease,
+} from './release-content.js';
 import {
   NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, viewToNav,
   universeGalaxies, galaxyCell, galaxyCellWindow, systemScene,
@@ -126,13 +134,20 @@ function syncCtxH(): void {
      rendered height rather than assuming one line and covering the copy. */
   document.documentElement.style.setProperty('--ctx-h', ctxEl.offsetHeight + 'px');
 }
+function syncHintH(): void {
+  /* A++ can enlarge the hint. The caption reads its rendered height rather
+     than retaining the default-font offset and overlapping it. */
+  document.documentElement.style.setProperty('--hint-h', hintEl.offsetHeight + 'px');
+}
 new ResizeObserver(syncTopbarH).observe(topbarEl);
 new ResizeObserver(syncDockH).observe(dockEl);
 new ResizeObserver(syncCtxH).observe(ctxEl);
+new ResizeObserver(syncHintH).observe(hintEl);
 addEventListener('resize', () => {
   syncTopbarH();
   syncDockH();
   syncCtxH();
+  syncHintH();
   /* rotation moves minWH while the ascend floors read gz0/sz0 live (audit
      #8) — recompute for the mode you are IN so the thresholds agree */
   if (nav.mode === 'galaxy') gz0 = 0.42 * minWH() / GR;
@@ -166,7 +181,19 @@ let playT0 = 0;
 const playSeconds = (): number => (performance.now() - playT0) / 1000;
 const TOUCH_DPR = navigator.maxTouchPoints > 0
   || (typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches);
-const DPR = Math.min(devicePixelRatio, TOUCH_DPR ? 2 : 3);
+const MAX_BACKING_PIXELS = 16_777_216;   /* one 4096² backing store, before the backdrop twin */
+const effectiveDpr = (): number => {
+  const device = Number.isFinite(devicePixelRatio) ? Math.max(1, devicePixelRatio) : 1;
+  const heatCap = TOUCH_DPR ? 2 : 3;
+  const memoryCap = Math.sqrt(MAX_BACKING_PIXELS / Math.max(1, innerWidth * innerHeight));
+  /* A CSS viewport itself can exceed 4096² pixels (5K/8K desktops). Pixi
+     supports sub-1 resolution while autoDensity preserves the CSS box, so
+     keep the advertised backing-pixel ceiling instead of silently doubling
+     it at the old DPR-1 floor. */
+  const dimensionFloor = Math.min(1 / Math.max(1, innerWidth), 1 / Math.max(1, innerHeight));
+  return Math.max(dimensionFloor, Math.min(device, heatCap, memoryCap));
+};
+let DPR = effectiveDpr();
 const minWH = (): number => Math.max(80, Math.min(innerWidth, innerHeight));   /* floor: a zero-sized window must not mint z=0 → NaN cameras (audit #8) */
 
 let nav: NavState = NAV_HOME;
@@ -184,7 +211,13 @@ let sz0 = 0.40 * minWH() / SYS_R;
 const card = document.createElement('aside');
 card.id = 'survey';
 card.className = 'glass';
+card.setAttribute('role', 'region');
+card.setAttribute('aria-label', 'Survey card');
+card.setAttribute('aria-hidden', 'true');
 document.body.appendChild(card);
+const surveyDockEl = document.getElementById('docksurvey')!;
+const chartsDockEl = document.getElementById('dockcharts')!;
+let surveyFocusReturn: HTMLElement | null = null;
 let lastCard: Descriptor | null = null;
 let cardCtx: {
   p: PlanetNode;
@@ -194,6 +227,7 @@ let cardCtx: {
 interface CardTravelAction { label: 'Enter galaxy' | 'Enter system'; run: () => void; }
 let cardTravelAction: CardTravelAction | null = null;
 function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTravelAction | null = null): void {
+  if (document.activeElement === app.canvas) surveyFocusReturn = app.canvas;
   cardTravelAction = travelAction;
   if (actionsHtml === undefined) cardCtx = null;
   lastCard = d;
@@ -204,61 +238,89 @@ function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTrave
     : '';
   card.innerHTML =
     `<h2 data-sel="title" style="margin:0 0 2px;font-size:17px;color:#f4f8ff">${esc(d.title)}</h2>` +
-    `<div data-sel="sub" style="color:#8fa3c4;margin-bottom:10px">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
+    `<div data-sel="sub" style="color:var(--dim);margin-bottom:10px">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
     travelHtml +
     (actionsHtml || '') +   /* the card's ACTION ROW (Land · +Atlas · share) — buttons are trusted markup, never save text */
     (d.rows as Array<[string, string, string?]>).map(([k, v, cls]) =>
-      `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" style="margin:4px 0"><span style="color:#8fa3c4">${esc(k)}</span><br>${esc(v)}</div>`).join('');
+      `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" style="margin:4px 0"><span style="color:var(--dim)">${esc(k)}</span><br>${esc(v)}</div>`).join('');
   card.style.display = 'block';
+  card.setAttribute('aria-hidden', 'false');
   document.body.classList.add('card-open');
-  document.getElementById('docksurvey')!.classList.add('on');
+  surveyDockEl.classList.add('on');
+  surveyDockEl.setAttribute('aria-expanded', 'true');
 }
-function hideSurvey(): void {
+function hideSurvey(restoreFocus = false): void {
   card.style.display = 'none';
+  card.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('card-open');
-  document.getElementById('docksurvey')!.classList.remove('on');
+  surveyDockEl.classList.remove('on');
+  surveyDockEl.setAttribute('aria-expanded', 'false');
+  if (restoreFocus && surveyFocusReturn?.isConnected) {
+    const target = surveyFocusReturn;
+    surveyFocusReturn = null;
+    queueMicrotask(() => target.focus());
+  }
 }
 function invalidateSurveyTravel(): void {
   cardTravelAction = null;
+  surveyFocusReturn = null;
   card.querySelector('[data-act="travel"]')?.remove();
 }
 
 /* ---- the save-import sheet (Phase 4's second UI component; GATE C's front
    door): paste or pick your cfcc_save_v2 blob — VALIDATED through the real
-   importSaveV2 first, stored verbatim, and the ORIGINAL kept as an untouched
-   keepsake in cf_v2_import_original (the live save evolves through
-   exportSaveV2 from the first boot — audit #2's honest wording). ---- */
+   importSaveV2 first and stored as primary. The player's external backup
+   remains the authoritative exact copy; the app only ATTEMPTS an additional
+   untouched local keepsake because browser storage may refuse it. ---- */
 const sheet = document.createElement('div');
 sheet.id = 'importsheet';
 sheet.setAttribute('role', 'dialog');
 sheet.setAttribute('aria-modal', 'true');
 sheet.setAttribute('aria-label', 'Bring your expedition');
-sheet.style.cssText = 'position:fixed;inset:0;background:rgba(4,6,12,0.7);display:none;z-index:40';
+sheet.style.cssText = 'position:fixed;inset:0;padding:calc(var(--safe-top,0px) + 16px) calc(var(--safe-right,0px) + 16px) calc(var(--safe-bottom,0px) + 16px) calc(var(--safe-left,0px) + 16px);' +
+  'box-sizing:border-box;align-items:center;justify-content:center;overflow:hidden;background:rgba(4,6,12,0.7);display:none;z-index:40';
 sheet.innerHTML =
-  '<div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,92vw);' +
-  'box-sizing:border-box;max-height:calc(100vh - 32px);overflow:auto;background:rgba(10,16,30,0.97);border:1px solid #2a3c5e;border-radius:12px;padding:18px;color:#cfe0f4;font:13px/1.5 system-ui,sans-serif">' +
-  '<b style="font-size:15px">Bring your expedition</b><br>' +
-  '<span style="color:#8fa3c4">Paste your save below (in the live game: DevTools → Application → Local Storage → <code>cfcc_save_v2</code> — copy the value), or pick a file. It is checked by the real loader before anything is stored; your blob is kept byte-for-byte.</span>' +
-  '<textarea id="importtext" style="width:100%;height:120px;margin:10px 0;background:#0b1220;color:#cfe0f4;border:1px solid #22304a;border-radius:8px;padding:8px;box-sizing:border-box;font:12px monospace"></textarea>' +
+  '<div style="position:relative;width:min(520px,100%);box-sizing:border-box;max-height:100%;overflow:auto;' +
+  'background:rgba(10,16,30,0.97);border:1px solid #2a3c5e;border-radius:12px;padding:18px;color:#cfe0f4;font:13px/1.5 system-ui,sans-serif">' +
+  '<h2 style="font-size:15px;margin:0 0 4px">Bring your expedition</h2>' +
+  '<span data-sel="import-safety" style="color:var(--dim)">Paste or pick a moderator-provided copied expedition save. Keep that external moderator backup as the authoritative exact copy. The app checks the save before storing it and attempts an additional exact local keepsake after import, but browser storage can refuse that keepsake.</span>' +
+  '<textarea id="importtext" aria-label="Paste expedition save data" style="width:100%;height:120px;margin:10px 0;background:#0b1220;color:#cfe0f4;border:1px solid #22304a;border-radius:8px;padding:8px;box-sizing:border-box;font:12px monospace"></textarea>' +
   '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
   '<button id="importgo" style="background:#1d3a5e;color:#eaf2ff;border:1px solid #3a5c8e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Import & reload</button>' +
-  '<label style="background:#14233c;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px;display:inline-flex;align-items:center">pick file<input id="importfile" type="file" accept=".json,.txt" style="display:none"></label>' +
-  '<button id="importclose" style="background:transparent;color:#8fa3c4;border:1px solid #22304a;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">close</button>' +
-  '</div><div id="importmsg" style="margin-top:8px;color:#e8a0a0"></div></div>';
+  '<button id="importpick" type="button" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Pick file</button>' +
+  '<input id="importfile" aria-label="Choose an expedition save file" type="file" accept=".json,.txt" tabindex="-1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">' +
+  '<button id="importclose" style="background:transparent;color:var(--dim);border:1px solid #22304a;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">close</button>' +
+  '</div><div id="importmsg" role="alert" aria-live="assertive" aria-atomic="true" style="margin-top:8px;color:#e8a0a0"></div></div>';
 document.body.appendChild(sheet);
+const importBackgroundState: Array<{ el: HTMLElement; inert: boolean; ariaHidden: string | null }> = [];
 /* ---- THE DOCK: eight live controls, every press proven by an EFFECT (the
    simrun-dom law — a dead button never ships). charts/sound flip the REAL
    save fields and persist through exportSaveV2. ---- */
 function openImportSheet(): void {
   closePanels();
-  sheet.style.display = 'block';
+  importBackgroundState.length = 0;
+  for (const child of [...document.body.children]) {
+    if (!(child instanceof HTMLElement) || child === sheet) continue;
+    importBackgroundState.push({ el: child, inert: child.inert, ariaHidden: child.getAttribute('aria-hidden') });
+    child.inert = true;
+    child.setAttribute('aria-hidden', 'true');
+  }
+  sheet.style.display = 'flex';
   (sheet.querySelector('#importtext') as HTMLTextAreaElement | null)?.focus();
 }
 function closeImportSheet(): void {
   sheet.style.display = 'none';
+  for (const { el, inert, ariaHidden } of importBackgroundState.splice(0)) {
+    el.inert = inert;
+    if (ariaHidden === null) el.removeAttribute('aria-hidden'); else el.setAttribute('aria-hidden', ariaHidden);
+  }
   document.getElementById('docksets')?.focus();
 }
-document.getElementById('docksurvey')!.addEventListener('click', () => {
+document.addEventListener('focusin', (event) => {
+  if (sheet.style.display === 'none' || sheet.contains(event.target as Node)) return;
+  (sheet.querySelector<HTMLElement>('#importtext') || sheet.querySelector<HTMLElement>('button'))?.focus();
+}, true);
+surveyDockEl.addEventListener('click', () => {
   /* re-show the LAST card (no rebuild — the fold law's no-rebuild spirit) */
   if (cardCtx && !activeCardPlanetWhere()) {
     cardCtx = null;
@@ -268,14 +330,17 @@ document.getElementById('docksurvey')!.addEventListener('click', () => {
   }
   if (card.style.display === 'none' && card.innerHTML) {
     card.style.display = 'block';
+    card.setAttribute('aria-hidden', 'false');
     document.body.classList.add('card-open');
-    document.getElementById('docksurvey')!.classList.add('on');
+    surveyDockEl.classList.add('on');
+    surveyDockEl.setAttribute('aria-expanded', 'true');
   } else hideSurvey();
 });
-document.getElementById('dockcharts')!.addEventListener('click', () => {
+chartsDockEl.addEventListener('click', () => {
   if (!save) return;   /* pre-boot click (audit #3) */
   save.chartsOn = !save.chartsOn;
-  document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
+  chartsDockEl.classList.toggle('on', save.chartsOn);
+  chartsDockEl.setAttribute('aria-pressed', String(save.chartsOn));
   if (chartLayer) chartLayer.visible = save.chartsOn;
   fillSettings();   /* the panel mirrors the dock (and vice versa) */
   void persistView();
@@ -284,44 +349,88 @@ document.getElementById('dockcharts')!.addEventListener('click', () => {
 /* ---- SETTINGS (the first rail panel): every control drives a REAL save
    field and persists through exportSaveV2 — sound, volume (the squared-
    taper bus), charts, motion (Auto follows the OS), the glass tint ---- */
+const reducedMotionQuery = matchMedia('(prefers-reduced-motion: reduce)');
 function motionOK(): boolean {
   /* main.js motionOK: Auto (-1) follows the OS preference LIVE */
-  return save.motionMode === -1 ? !matchMedia('(prefers-reduced-motion: reduce)').matches : save.motionMode === 0;
+  return save.motionMode === -1 ? !reducedMotionQuery.matches : save.motionMode === 0;
 }
 function applyGlass(): void {
-  const a = Math.min(Math.max(save.glassTint, 0.40), 0.98);
+  /* Bright space art sits directly behind every panel. The old 0.40 floor
+     can reduce secondary copy to roughly 1–2.5:1, so v2 enforces the first
+     contrast-safe glass tier while retaining the player's more-solid choice. */
+  const a = Math.min(Math.max(save.glassTint, 0.82), 0.98);
   document.documentElement.style.setProperty('--glass-a', String(a));
 }
+function applyDisplayPreferences(): void {
+  const body = document.body;
+  body.classList.remove('fs-lg', 'fs-xl', 'tone-bright', 'tone-max', 'font-sys', 'font-mono');
+  if (save.fsMode) body.classList.add(save.fsMode);
+  if (save.toneMode) body.classList.add(save.toneMode);
+  if (save.fontMode) body.classList.add(save.fontMode);
+  body.classList.toggle('motion-reduced', !motionOK());
+  applyGlass();
+  syncTopbarH(); syncDockH(); syncCtxH(); syncHintH();
+}
+reducedMotionQuery.addEventListener('change', () => {
+  if (save?.motionMode === -1) applyDisplayPreferences();
+});
 function fillSettings(): void {
   if (!save) return;   /* a click before boot finishes must not throw */
   fillPanel('set',
     '<h3>Settings</h3>' +
-    `<div class="row"><label>Sound</label><button id="setsnd" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'On' : 'Off'}</button></div>` +
-    `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
-    `<div class="row"><label>Star charts</label><button id="setcharts" class="${save.chartsOn ? 'on' : ''}">${save.chartsOn ? 'On' : 'Off'}</button></div>` +
-    `<div class="row"><label>Motion</label><span class="seg">` +
-    [[-1, 'Auto'], [0, 'Full'], [1, 'Reduced']].map(([v, t]) =>
-      `<button data-motion="${v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
+    `<div class="row"><label>Sound</label><button id="setsnd" aria-label="Sound" aria-pressed="${save.sndOn}" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" aria-label="Sound volume" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
+    `<div class="row"><label>Text size</label><span class="seg" role="group" aria-label="Text size">` +
+    [['', 'A'], ['fs-lg', 'A+'], ['fs-xl', 'A++']].map(([v, t]) =>
+      `<button data-pref="size" data-value="${v}" aria-pressed="${save.fsMode === v}" class="${save.fsMode === v ? 'on' : ''}">${t}</button>`).join('') +
     '</span></div>' +
-    `<div class="row"><label>Panel tint</label><input id="setglass" type="range" min="40" max="98" value="${Math.round(save.glassTint * 100)}"></div>` +
+    `<div class="row"><label>Text tone</label><span class="seg" role="group" aria-label="Text tone">` +
+    [['', 'Soft'], ['tone-bright', 'Bright'], ['tone-max', 'Max']].map(([v, t]) =>
+      `<button data-pref="tone" data-value="${v}" aria-pressed="${save.toneMode === v}" class="${save.toneMode === v ? 'on' : ''}">${t}</button>`).join('') +
+    '</span></div>' +
+    `<div class="row"><label>Font</label><span class="seg" role="group" aria-label="Font">` +
+    [['', 'Rounded'], ['font-sys', 'System'], ['font-mono', 'Mono']].map(([v, t]) =>
+      `<button data-pref="font" data-value="${v}" aria-pressed="${save.fontMode === v}" class="${save.fontMode === v ? 'on' : ''}">${t}</button>`).join('') +
+    '</span></div>' +
+    `<div class="row"><label>Star charts</label><button id="setcharts" aria-label="Star charts" aria-pressed="${save.chartsOn}" class="${save.chartsOn ? 'on' : ''}">${save.chartsOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Motion</label><span class="seg" role="group" aria-label="Motion">` +
+    [[-1, 'Auto'], [0, 'Full'], [1, 'Reduced']].map(([v, t]) =>
+      `<button data-motion="${v}" aria-pressed="${save.motionMode === v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
+    '</span></div>' +
+    `<div class="row"><label>Panel tint</label><input id="setglass" aria-label="Panel tint" type="range" min="82" max="98" value="${Math.round(Math.max(save.glassTint, 0.82) * 100)}"></div>` +
     `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>` +
     `<div class="row"><label>Save data</label><button id="setimport" data-sel="set-import">Bring expedition</button></div>`);
   const el = document.getElementById('setpanel')!;
-  el.querySelector('#setsnd')!.addEventListener('click', () => { save.sndOn = !save.sndOn; fillSettings(); void persistView(); });
+  const refillAndFocus = (selector: string): void => {
+    fillSettings();
+    el.querySelector<HTMLElement>(selector)?.focus();
+  };
+  el.querySelector('#setsnd')!.addEventListener('click', () => {
+    save.sndOn = !save.sndOn; refillAndFocus('#setsnd'); void persistView();
+  });
   el.querySelector('#setvol')!.addEventListener('input', (e) => {
     save.sfxVol = (+(e.target as HTMLInputElement).value) / 100;
     applySfxGain();   /* the shared bus retapers live */
     persistSoon();
   });
+  for (const b of el.querySelectorAll<HTMLElement>('[data-pref]')) b.addEventListener('click', () => {
+    const value = b.dataset.value || '';
+    if (b.dataset.pref === 'size') save.fsMode = value;
+    else if (b.dataset.pref === 'tone') save.toneMode = value;
+    else if (b.dataset.pref === 'font') save.fontMode = value;
+    const selector = `[data-pref="${b.dataset.pref}"][data-value="${CSS.escape(value)}"]`;
+    applyDisplayPreferences(); refillAndFocus(selector); void persistView();
+  });
   el.querySelector('#setcharts')!.addEventListener('click', () => {
     save.chartsOn = !save.chartsOn;
-    document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
+    chartsDockEl.classList.toggle('on', save.chartsOn);
+    chartsDockEl.setAttribute('aria-pressed', String(save.chartsOn));
     if (chartLayer) chartLayer.visible = save.chartsOn;
-    fillSettings(); void persistView();
+    refillAndFocus('#setcharts'); void persistView();
   });
   for (const b of el.querySelectorAll('[data-motion]')) b.addEventListener('click', () => {
     save.motionMode = +(b as HTMLElement).dataset.motion!;
-    fillSettings(); void persistView();
+    applyDisplayPreferences(); refillAndFocus(`[data-motion="${save.motionMode}"]`); void persistView();
   });
   el.querySelector('#setrestart')!.addEventListener('click', async (event) => {
     /* Veteran restart is a reversible drill: begin in Sol where the lesson
@@ -356,77 +465,213 @@ function fillSettings(): void {
   });
 }
 
-/* ---- GUIDE — the bounded v2 field manual. The legacy game owns a larger
-   searchable encyclopedia; this surface documents the current live-slice flow,
-   so updated interaction and save rules do
-   not exist only in developer Markdown. ---- */
-const GUIDE_TOPICS = [
-  {
-    id: 'travel', title: 'Survey and travel',
-    body: 'Drag to pan and wheel or pinch to zoom. Tap a galaxy or star once to open its survey card. Press <b>Enter galaxy</b> or <b>Enter system</b> on that card to travel; deep zoom over the same body also descends. <b>Escape</b> closes the top surface or rises one level.',
-  },
-  {
-    id: 'land', title: 'Worlds and planetfall',
-    body: 'A planet address from Search or the Star Atlas returns you to its live system survey. It never lands for you. Press <b>Land</b> on the current planet card to enter Planetside; only the first landing earns new landfall progress. On touch, press <b>Leave world</b> to return to the system; right-click or Escape also lifts off.',
-  },
-  {
-    id: 'atlas', title: 'Star Atlas and sharing',
-    body: 'Use the <b>Star Atlas</b> action on a planet card to chart it. <b>Share</b> copies a deterministic CF1 address; an accepted custom planet name travels with that address. Atlas entries reopen the destination survey, where Land remains a separate choice.',
-  },
-  {
-    id: 'charters', title: 'Charters and reach',
-    body: 'Your current Charter controls how far the expedition may travel. A blocked Enter action leaves you where you are and names the milestone that opens the route. Review live goals in <b>Charters</b>.',
-  },
-  {
-    id: 'compendium', title: 'Compendium and Records',
-    body: 'The <b>Compendium</b> holds discovered life; choose a row for its portrait, description and battle-stat profile. Search accepts species names or CF1 addresses. <b>Records</b> summarizes exploration and the recent journal.',
-  },
-  {
-    id: 'training', title: 'Field Training',
-    body: 'Field Training teaches the real chart, travel and Land flow. <b>Settings → Restart</b> begins the drill in Sol and restores your pre-training view when you finish or skip. If saving fails, the restart is cancelled and your expedition stays unchanged.',
-  },
-  {
-    id: 'saves', title: 'Save protection',
-    body: 'Open <b>Settings → Bring expedition</b> to import a complete supported save. A proven backup recovers a damaged primary; otherwise a newer-build, incomplete or corrupt stored expedition is held unchanged and announced as <b>Update required</b> or <b>Save protected</b>. Ordinary play cannot silently overwrite it.',
-  },
-] as const;
+/* ---- GUIDE + RELEASE HISTORY — one source-addressed continuation of the
+   mature v1 manual, not a second seven-topic manual. All 43 authored IDs and
+   the 56-release archive remain synchronized to v1.8.9; current capability
+   copy replaces any legacy promise whose mechanic is not yet live in v2. ---- */
+const GUIDE_CATALOGUE = getGuideCatalogue();
+let guideCategory: GuideCategoryId | null = null;
+let guideTopic: GuideTopicId | null = null;
+function guideBodyEl(): HTMLElement | null {
+  return document.querySelector('#guidepanel [data-sel="guide-body"]');
+}
+function guideCategoryOf(id: GuideTopicId): (typeof GUIDE_CATALOGUE)[number] | undefined {
+  return GUIDE_CATALOGUE.find((category) => category.topics.some((topic) => topic.id === id));
+}
+function guideTopicRow(topic: GuideTopicView, icon = '•'): string {
+  const status = topic.availability === 'unavailable' ? 'Not yet in v2'
+    : topic.availability === 'partial' ? 'Partly live' : 'Live';
+  return `<button class="guide-item" data-sel="guide-topic" data-guide-topic="${topic.id}" data-guide-availability="${topic.availability}">` +
+    `<span class="guide-icon">${icon}</span><span><b>${esc(topic.title)}</b><small>${esc(status)}</small></span><span aria-hidden="true">›</span></button>`;
+}
+function interactiveGuideBody(source: string): string {
+  /* Legacy Guide cross-links are trusted source-addressed HTML spans. V2
+     upgrades them to native buttons so the same links work by touch,
+     pointer, keyboard, and assistive technology. */
+  const template = document.createElement('template');
+  template.innerHTML = source;
+  for (const span of template.content.querySelectorAll<HTMLElement>('span[data-gt]')) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'guide-inline-link';
+    button.dataset.gt = span.dataset.gt;
+    button.innerHTML = span.innerHTML;
+    span.replaceWith(button);
+  }
+  return template.innerHTML;
+}
+function focusGuide(selector: string): void {
+  guideBodyEl()?.querySelector<HTMLElement>(selector)?.focus();
+}
+function renderGuideMenu(focusResult = false): void {
+  guideCategory = null; guideTopic = null;
+  const body = guideBodyEl(); if (!body) return;
+  body.innerHTML = GUIDE_CATALOGUE.map((category) =>
+    `<button class="guide-item guide-category" data-guide-category="${category.id}"><span class="guide-icon">${category.icon}</span>` +
+    `<span><b>${esc(category.title)}</b><small>${esc(category.blurb)} · ${category.topics.length} topics</small></span><span aria-hidden="true">›</span></button>`).join('');
+  body.scrollTop = 0;
+  if (focusResult) focusGuide('[data-guide-category]');
+}
+function renderGuideCategory(id: GuideCategoryId, focusResult = false): void {
+  const category = GUIDE_CATALOGUE.find((candidate) => candidate.id === id);
+  const body = guideBodyEl(); if (!category || !body) return;
+  guideCategory = id; guideTopic = null;
+  body.innerHTML = `<button class="guide-back" data-guide-home>‹ All topics</button>` +
+    category.topics.map((topic) => guideTopicRow(topic, category.icon)).join('');
+  body.scrollTop = 0;
+  if (focusResult) focusGuide('[data-guide-home]');
+}
+function renderGuideTopic(id: GuideTopicId, focusResult = false): void {
+  const topic = getGuideTopic(id);
+  const category = guideCategoryOf(id);
+  const body = guideBodyEl(); if (!topic || !category || !body) return;
+  guideCategory = category.id; guideTopic = id;
+  const status = topic.availability === 'unavailable' ? 'Not yet available in v2'
+    : topic.availability === 'partial' ? 'Partly available in this development build'
+      : 'Available in this development build';
+  const siblings = category.topics.filter((candidate) => candidate.id !== id).slice(0, 4);
+  body.innerHTML = `<button class="guide-back" data-guide-category="${category.id}">‹ ${esc(category.title)}</button>` +
+    `<article class="guide-topic"><h4 tabindex="-1" data-guide-heading>${category.icon} ${esc(topic.title)}</h4>` +
+    `<div class="guide-status" data-guide-status="${topic.availability}">${esc(status)}</div>${interactiveGuideBody(topic.body)}` +
+    (siblings.length ? `<div class="guide-related"><b>Also in ${esc(category.title)}</b>` +
+      siblings.map((candidate) => `<button data-guide-topic="${candidate.id}">${esc(candidate.title)}</button>`).join('') + '</div>' : '') +
+    '</article>';
+  body.scrollTop = 0;
+  if (focusResult) focusGuide('[data-guide-category]');
+}
+function renderGuideSearch(query: string): void {
+  const body = guideBodyEl(); if (!body) return;
+  const hits = searchGuide(query);
+  if (query.trim().length < 2) { renderGuideMenu(); return; }
+  body.innerHTML = hits.length
+    ? hits.map((topic) => guideTopicRow(topic, guideCategoryOf(topic.id)?.icon || '•')).join('')
+    : `<div class="empty">Nothing matches “${esc(query.trim())}”. Try “landing”, “save”, “breeding”, or “stardust”.</div>`;
+  body.scrollTop = 0;
+}
+function renderReleaseHistory(focusResult = false): void {
+  const body = guideBodyEl(); if (!body) return;
+  const releases = getReleaseHistory({ includeDraft: true });
+  body.innerHTML = '<button class="guide-back" data-guide-home>‹ Guide</button>' +
+    '<div class="guide-release-intro"><b>Expedition bulletins</b><br>' +
+    'The v2 development entry is unversioned and cannot trigger an update popup. The complete v1 history below remains immutable.</div>' +
+    releases.map((release, index) => `<button class="guide-item" data-release-index="${index}">` +
+      `<span class="guide-icon">${release.status === 'draft' ? '🧪' : '✦'}</span><span><b>${release.version ? 'v' + esc(release.version) + ' · ' : ''}${esc(release.title)}</b>` +
+      `<small>${release.status === 'draft' ? 'UNRELEASED DEVELOPMENT' : esc(release.date) + (release.status === 'shipped' ? ' · v2 release' : ' · legacy release')}</small></span><span aria-hidden="true">›</span></button>`).join('');
+  body.scrollTop = 0;
+  if (focusResult) focusGuide('[data-guide-home]');
+}
+function renderRelease(index: number, focusResult = false, releases = getReleaseHistory({ includeDraft: true })): void {
+  const release = releases[index];
+  const body = guideBodyEl(); if (!release || !body) return;
+  body.innerHTML = '<button class="guide-back" data-guide-releases>‹ All bulletins</button>' +
+    `<article class="guide-topic"><h4 tabindex="-1" data-guide-heading>${release.version ? 'v' + esc(release.version) + ' · ' : ''}${esc(release.title)}</h4>` +
+    `<div class="guide-status" data-guide-status="${release.status}">${release.status === 'draft' ? 'UNRELEASED DEVELOPMENT · no version bump' : esc(release.date) + (release.status === 'shipped' ? ' · v2 release' : ' · legacy v1 history')}</div>` +
+    release.sections.map((section) => `<h5>${section.heading}</h5><ul>${section.bullets.map((bullet) => `<li>${bullet}</li>`).join('')}</ul>`).join('') + '</article>';
+  body.scrollTop = 0;
+  if (focusResult) focusGuide('[data-guide-releases]');
+}
+let pendingReleaseBulletin: V2ShippedRelease | null = null;
+function showV2ReleaseBulletin(
+  current: V2ShippedRelease,
+  history: readonly ReleaseNoteView[] = getReleaseHistory(),
+): boolean {
+  if (!hasUnseenV2Release(save.rnSeen, current)) return false;
+  /* A first expedition owns one blocking onboarding surface at a time. Queue
+     a shipped bulletin until Training is finished/skipped instead of opening
+     the Guide underneath its lesson card and marking unseen copy as read. */
+  if (trainingActive()) { pendingReleaseBulletin = current; return false; }
+  const index = history.findIndex((release) => release.status === 'shipped' && release.version === current.version);
+  if (index < 0) return false;
+  openPanel('guide', null);
+  renderRelease(index, true, history);
+  save.rnSeen = current.version;
+  pendingReleaseBulletin = null;
+  void persistView();
+  return true;
+}
+function showUnseenV2Release(): boolean {
+  /* The mature one-time bulletin rule is ready before the first v2 release,
+     but an unversioned development draft can never trigger it. Nick alone
+     authorizes V2_CURRENT_RELEASE_VERSION in release-content.ts. */
+  const current = getCurrentV2Release();
+  if (!current) return false;
+  const history = getReleaseHistory({ includeDraft: true });
+  return showV2ReleaseBulletin(current, history);
+}
+function flushPendingReleaseBulletin(): void {
+  const current = pendingReleaseBulletin;
+  if (!current || trainingActive()) return;
+  const history = getReleaseHistory({ includeDraft: true, shippedReleases: [current] });
+  showV2ReleaseBulletin(current, history);
+}
 function fillGuide(): void {
   if (!save) return;
   fillPanel('guide',
     '<h3>Guide to the Universe</h3>' +
-    '<div class="sub" style="margin:0 0 10px">The controls and safety rules for the systems available in this expedition.</div>' +
-    GUIDE_TOPICS.map((topic) =>
-      `<div class="centry" data-sel="guide-topic" data-guide-topic="${topic.id}"><b>${topic.title}</b><div class="sub" style="margin-top:3px">${topic.body}</div></div>`).join(''));
+    '<div class="guide-tools"><input id="guidesearch" type="search" autocomplete="off" aria-label="Search the Guide" placeholder="Search 41 Guide topics">' +
+    '<button data-guide-releases>Release history</button></div>' +
+    '<div class="sub guide-scope">The mature manual, adapted to what is actually live in this v2 development build. Unported active systems stay visible and honestly marked; intentionally dormant topics remain recorded but hidden.</div>' +
+    '<div class="guide-body" data-sel="guide-body"></div>');
+  renderGuideMenu();
   if (!save.seenGuide) {
     save.seenGuide = true;
     void persistView();
   }
 }
+document.getElementById('guidepanel')!.addEventListener('input', (event) => {
+  if ((event.target as HTMLElement).id === 'guidesearch') renderGuideSearch((event.target as HTMLInputElement).value);
+});
+document.getElementById('guidepanel')!.addEventListener('click', (event) => {
+  const target = event.target as HTMLElement;
+  const topicEl = target.closest<HTMLElement>('[data-guide-topic],[data-gt]');
+  const topic = (topicEl?.dataset.guideTopic || topicEl?.dataset.gt) as GuideTopicId | undefined;
+  const category = target.closest<HTMLElement>('[data-guide-category]')?.dataset.guideCategory as GuideCategoryId | undefined;
+  const releaseIndex = target.closest<HTMLElement>('[data-release-index]')?.dataset.releaseIndex;
+  if (topic) renderGuideTopic(topic, true);
+  else if (category) renderGuideCategory(category, true);
+  else if (releaseIndex !== undefined) renderRelease(+releaseIndex, true);
+  else if (target.closest('[data-guide-releases]')) renderReleaseHistory(true);
+  else if (target.closest('[data-guide-home]')) renderGuideMenu(true);
+});
 
 /* ---- COMPENDIUM (read-only over the save's codex — the real catalog).
    Large catalogs get virtualization later (plan bullet); the list caps at
    the save's own 1500-entry bound today. ---- */
-function fillCodex(filter?: string): void {
+let codexFilter = '';
+function fillCodex(filter?: string, focusIndex?: number): void {
   if (!save) return;
-  const f = (filter || '').toLowerCase();
+  codexFilter = filter ?? codexFilter;
+  const f = codexFilter.toLowerCase();
   /* Subscribe the VIEW once, not once per creature. With the shared import
      Promise, putting this inside `rows.map` retained up to 1,500 callbacks;
      resolving the chunk then launched 1,500 eager full-list rerenders. */
-  if (!SA) ensureSA('codex', () => { if (openPanelId() === 'codex') fillCodex(filter); });
+  if (!SA) ensureSA('codex', () => {
+    if (openPanelId() !== 'codex') return;
+    /* The lazy art chunk may resolve after keyboard focus has entered the
+       list. Repainting thumbnails replaces the panel subtree, so carry the
+       logical close/row target across that async refill instead of dropping
+       focus to body on slower devices. */
+    const active = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const rowIndex = active?.closest<HTMLElement>('[data-ci]')?.dataset.ci;
+    const closeFocused = !!active?.closest('#codexpanel [data-pnx]');
+    fillCodex(codexFilter, rowIndex === undefined ? undefined : +rowIndex);
+    if (closeFocused) document.querySelector<HTMLElement>('#codexpanel [data-pnx]')?.focus();
+  });
   const rows = save.codex
     .map(([, e], i) => ({ e, i }))
     .filter(({ e }) => !f || (e.name + ' ' + e.kind + ' ' + e.realm).toLowerCase().includes(f));
   fillPanel('codex',
-    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${rows.length}</span>${f ? ` <span class="sub" style="color:#8fa3c4;font-size:12px">· “${esc(filter)}”</span>` : ''}</h3>` +
+    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${rows.length}</span>${f ? ` <span class="sub" style="color:var(--dim);font-size:12px">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
     (rows.length === 0
-      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — the Compendium fills as you discover life.'}</div>`
+      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — imported discoveries appear here. Live catalogue writing arrives with the discovery path.'}</div>`
       : rows.map(({ e, i }) => {
         let th = '';
         if (SA) { try { th = SA.speciesThumb(e.g as never); } catch { /* text row still reads */ } }
-        return `<div class="centry" data-sel="codex-entry" data-ci="${i}" style="cursor:pointer;display:flex;gap:10px;align-items:center">` +
+        return `<button type="button" class="centry" data-sel="codex-entry" data-ci="${i}" style="display:flex;gap:10px;align-items:center">` +
           (th ? `<img src="${th}" alt="" style="width:44px;height:44px;border-radius:8px;border:1px solid #22304a;background:#0b1220;flex:0 0 44px">` : '') +
-          `<span style="min-width:0"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><div class="sub">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</div></span></div>`;
+          `<span style="min-width:0"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><span class="sub" style="display:block">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</span></span></button>`;
       }).join('')));
+  if (focusIndex !== undefined) document.querySelector<HTMLElement>(`#codexpanel [data-ci="${focusIndex}"]`)?.focus();
 }
 /* the Compendium DETAIL CARD: the whole domain stack speaking for one
    creature — describeSpecies (fixture-pinned sentences + fauna enrichments),
@@ -460,7 +705,7 @@ function fillCodexDetail(idx: number): void {
         const v = st[k] || 0;
         return `<div class="row" style="min-height:24px" data-sel="detail-stat"><label style="flex:0 0 84px">${esc(names[i] || k)}</label>` +
           `<span style="flex:1;height:9px;border-radius:999px;background:#16202f;overflow:hidden"><span style="display:block;height:100%;width:${Math.round((v / mx) * 100)}%;background:${esc(hues[i] || '#7ec8f0')}"></span></span>` +
-          `<span style="flex:0 0 40px;text-align:right;color:#9fb6d6">${Math.round(v)}</span></div>`;
+          `<span style="flex:0 0 40px;text-align:right;color:var(--dim)">${Math.round(v)}</span></div>`;
       }).join('') +
       (['diet', 'anatomy', 'temper', 'sense', 'repro', 'life', 'metab', 'habitat', 'behavior'] as const)
         .filter((k) => (d as Record<string, unknown>)[k])
@@ -468,8 +713,10 @@ function fillCodexDetail(idx: number): void {
   } catch {
     body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
   }
-  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#7ec8f0;cursor:pointer;font:13px system-ui;padding:4px 8px 4px 0">‹ Compendium</button></h3><div data-sel="codex-detail">${body}</div>`);
-  document.getElementById('codexback')!.addEventListener('click', () => fillCodex());
+  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}</div>`);
+  const back = document.getElementById('codexback')!;
+  back.addEventListener('click', () => fillCodex(codexFilter, idx));
+  back.focus();
 }
 function fillRecords(): void {
   if (!save) return;
@@ -477,7 +724,8 @@ function fillRecords(): void {
   const counts: Array<[string, number]> = [
     ['galaxies seen', save.galSeen.length], ['systems charted', save.sysSeen.length],
     ['worlds landed', save.landed.length], ['world types met', save.ptypesSeen.length],
-    ['star kinds met', save.starKindsSeen.length], ['surveys', save.surveyedSet.length],
+    ['star kinds met', save.starKindsSeen.length], ['species catalogued', save.codex.length],
+    ['surveys', save.surveyedSet.length],
   ];
   const jr = save.journal.slice(-40).reverse();
   fillPanel('rec',
@@ -486,7 +734,7 @@ function fillRecords(): void {
     (st.essenceEarned ? `<div class="row" style="min-height:26px"><label>stardust earned</label><span style="color:#ffd9a0">✦ ${st.essenceEarned}</span></div>` : '') +
     '<h3 style="margin-top:14px">Journal</h3>' +
     (jr.length === 0
-      ? '<div class="empty" data-sel="journal-empty">No entries yet — the journal writes itself as you explore.</div>'
+      ? '<div class="empty" data-sel="journal-empty">No imported Journal entries yet — live Journal writing is not connected in this development slice.</div>'
       : jr.map((j) => `<div class="centry" data-sel="journal-entry"><b>${esc(j.n)}</b><div class="sub">${esc(j.w)}</div></div>`).join('')));
 }
 /* THE STAR ATLAS ('log' in the game): every charted place, tap to TRAVEL
@@ -498,16 +746,21 @@ function fillAtlas(): void {
     `<h3>Star Atlas <span style="color:#7ec8f0" data-sel="atlas-count">${rows.length}</span></h3>` +
     (rows.length === 0
       ? '<div class="empty" data-sel="atlas-empty">Nothing charted yet — tap “+ Add to Star Atlas” on any survey card.</div>'
-      : rows.map(([id, e]) =>
-        `<div class="centry" data-sel="atlas-entry" data-aid="${esc(id)}" style="cursor:pointer"><b>${esc(String(e.title || id))}</b>${e.badge ? ` <span class="sub">· ${esc(String(e.badge))}</span>` : ''}<div class="sub">${esc(String(e.sub || ''))}</div></div>`).join('')));
+      : rows.map(([id, e]) => {
+        const travelable = !!e.where;
+        const unavailable = travelable ? '' : ' · route unavailable in this build';
+        return `<button type="button" class="centry" data-sel="atlas-entry" data-aid="${esc(id)}"${travelable ? '' : ' disabled aria-disabled="true"'}><b>${esc(String(e.title || id))}</b>${e.badge ? ` <span class="sub">· ${esc(String(e.badge))}</span>` : ''}<span class="sub" style="display:block">${esc(String(e.sub || ''))}${unavailable}</span></button>`;
+      }).join('')));
 }
 document.getElementById('atlaspanel')!.addEventListener('click', (e) => {
   const row = (e.target as HTMLElement).closest('[data-aid]');
   if (!row || !save) return;
   const hit = save.logMap.find(([id]) => id === (row as HTMLElement).dataset.aid);
   if (hit && hit[1].where) {
+    const keyboard = document.activeElement === row;
     closePanels();
-    jumpToView(hit[1].where as Record<string, unknown>);
+    const moved = jumpToView(hit[1].where as Record<string, unknown>);
+    if (keyboard && moved) app.canvas.focus();
   }
 });
 /* CHARTERS — the Ascent's chapter book over the pure data + the save's
@@ -522,9 +775,9 @@ function fillCharters(): void {
         const have = Math.min(save.ascProg[g.id] || 0, g.n);
         const pct = Math.round((have / g.n) * 100);
         return `<div class="row" style="min-height:24px" data-sel="charter-goal"><label style="font-size:12px">${esc(g.t)}</label>` +
-          `<span style="flex:0 0 90px;display:flex;align-items:center;gap:6px"><span style="flex:1;height:7px;border-radius:999px;background:#16202f;overflow:hidden"><span style="display:block;height:100%;width:${pct}%;background:${have >= g.n ? '#caa24f' : '#7ec8f0'}"></span></span><span style="color:#8fa3c4;font-size:11px">${have}/${g.n}</span></span></div>`;
+          `<span style="flex:0 0 90px;display:flex;align-items:center;gap:6px"><span style="flex:1;height:7px;border-radius:999px;background:#16202f;overflow:hidden"><span style="display:block;height:100%;width:${pct}%;background:${have >= g.n ? '#caa24f' : '#7ec8f0'}"></span></span><span style="color:var(--dim);font-size:11px">${have}/${g.n}</span></span></div>`;
       }).join('');
-      return `<div class="centry" data-sel="charter-ch" data-chstate="${state}" style="${state === 'ahead' ? 'opacity:0.55' : ''}">` +
+      return `<div class="centry" data-sel="charter-ch" data-chstate="${state}" style="${state === 'ahead' ? 'border-left:3px solid #405477;padding-left:8px' : ''}">` +
         `<b style="${state === 'current' ? 'color:#ffd9a0' : ''}">${state === 'done' ? '✓ ' : ''}${esc(ch.name)}</b>` +
         `<div class="sub" style="margin:2px 0 6px">${esc(ch.intro)}</div>` +
         (state === 'ahead' ? '' : goals) + '</div>';
@@ -538,7 +791,14 @@ document.getElementById('dockatlas')!.addEventListener('click', () => togglePane
 document.getElementById('railatlas')!.addEventListener('click', () => togglePanel('atlas'));
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
 registerPanel({ id: 'guide', el: document.getElementById('guidepanel')!, btns: [document.getElementById('dockguide')], onOpen: fillGuide });
-registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: () => fillCodex() });
+registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: () => {
+  /* An ordinary Compendium open is a fresh catalogue view. Search may apply
+     a query immediately after opening, while detail → Back deliberately
+     keeps the active query. Without this reset, closing a search result and
+     reopening from the dock silently retained a hidden filter. */
+  codexFilter = '';
+  fillCodex('');
+} });
 registerPanel({ id: 'rec', el: document.getElementById('recpanel')!, btns: [document.getElementById('dockrecords'), document.getElementById('railrecords')], onOpen: fillRecords });
 document.getElementById('docksets')!.addEventListener('click', () => togglePanel('set'));
 document.getElementById('dockguide')!.addEventListener('click', () => togglePanel('guide'));
@@ -576,7 +836,8 @@ function jumpToView(view: Record<string, unknown>, incomingName: string | null =
   if (n2.mode === 'surface' && !focusPlanet) return false;
   if (n2.mode !== 'universe' && n2.gal) {
     if (!withinReachOf(primeCount(), n2.gal.x, n2.gal.y)) {
-      toast('⬆ Beyond Your Charter', ascHintFor(ascStage()));
+      toast('⬆ Beyond Your Charter', ascStage() < 3 ? ascHintFor(ascStage())
+        : 'Collect prime signatures to extend your reach — ' + currentRegionOf(primeCount()).name + ' for now.');
       return false;
     }
     if (n2.star && !ascAllowsStar(ascStage(), n2.gal.seed, n2.star)) {
@@ -608,19 +869,36 @@ function jumpToView(view: Record<string, unknown>, incomingName: string | null =
 }
 searchEl.addEventListener('keydown', (e) => {
   if (e.key !== 'Enter') return;
+  /* Search owns Enter. Prevent the browser's type=search default action from
+     dispatching a secondary implicit activation after this handler has
+     opened/focused a panel or navigated the canvas. */
+  e.preventDefault();
+  e.stopPropagation();
   const q = searchEl.value.trim();
   if (!q) return;
   const dec = decodeWhere(q) as { where: Record<string, unknown>; name: string | null } | null;
   if (dec && dec.where) {
-    if (jumpToView(dec.where, dec.name)) searchEl.value = '';
-    searchEl.blur();
+    if (jumpToView(dec.where, dec.name)) {
+      searchEl.value = '';
+      /* Route rendering replaces scene/card DOM synchronously. Continue the
+         keyboard journey at the live action when a planet card opened, or
+         at the exploration canvas for galaxy/star destinations. A rejected
+         code deliberately keeps its query and focus for correction. */
+      queueMicrotask(() => {
+        const action = card.querySelector<HTMLElement>('[data-act="landcta"],[data-act="travel"]');
+        (action || app.canvas).focus();
+      });
+    } else searchEl.focus();
     return;
   }
   /* not a code — a Compendium name filter */
-  openPanel('codex');
+  openPanel('codex', searchEl);
   fillCodex(q);
+  (document.querySelector<HTMLElement>('#codexpanel [data-ci]')
+    || document.querySelector<HTMLElement>('#codexpanel [data-pnx]'))?.focus();
 });
 sheet.querySelector('#importclose')!.addEventListener('click', closeImportSheet);
+sheet.querySelector('#importpick')!.addEventListener('click', () => (sheet.querySelector('#importfile') as HTMLInputElement).click());
 sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
   const f = (e.target as HTMLInputElement).files?.[0];
   if (!f) return;
@@ -628,34 +906,52 @@ sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
 });
 async function importBlob(raw: string): Promise<string | null> {
   /* returns an error message, or null on success (then we reload) */
-  const imp = importSaveV2(raw, REGISTRY, Date.now());
+  /* JSON permits surrounding whitespace. Keep the exact submitted text
+     for the recovery keepsake, while retaining the importer's historical
+     trimmed candidate for classification and the live primary. */
+  const checkedRaw = raw.trim();
+  const imp = importSaveV2(checkedRaw, REGISTRY, Date.now());
   if (!imp.ok && imp.reason === 'future-version') return 'This save is from a newer Celestial Frontier build. Update first; nothing was stored.';
   if (!imp.ok) return 'That does not load as a Celestial Frontier save — nothing was stored.';
   /* the real loader hardens ANY object into a fresh save — fine at boot,
      dangerous in an import sheet (an accidental "{}" would wipe the stored
      expedition). Require a face we recognize before we overwrite. */
   try {
-    const o = JSON.parse(raw) as unknown;
+    const o = JSON.parse(checkedRaw) as unknown;
     if (!isPlausibleSaveEnvelope(o)) return 'That parses, but is not a complete save envelope — nothing was stored.';
   } catch { return 'That does not load as a Celestial Frontier save — nothing was stored.'; }
-  try { await repo.write(raw); } catch { return 'Storage refused the write (private mode?).'; }
-  /* the ORIGINAL paste is kept as an untouched keepsake (audit #2): the live
-     save evolves through exportSaveV2 from the first frame, so any field the
-     port's schema does not yet carry would otherwise be unrecoverable —
-     exactly the wrong failure mode for Gate C's real veteran save */
+  /* Import is a replacement transaction, not another autosave. Cancel a
+     pending slider debounce, stop new exports, and let an export already in
+     flight settle before the validated bytes become primary. Otherwise an
+     older settings snapshot can win the race after the import write. */
+  clearTimeout(_persistT); _persistT = 0;
+  importWriteInFlight = true;
+  if (activePersist) await activePersist.catch(() => false);
+  try { await repo.write(checkedRaw); }
+  catch {
+    importWriteInFlight = false;
+    return 'Storage refused the write (private mode?).';
+  }
+  /* Best-effort extra keepsake only: the external moderator backup remains
+     authoritative. The live primary evolves through exportSaveV2 from the
+     first frame, so retain the exact input locally when browser storage
+     permits it, without blocking an otherwise valid import when it does not. */
   try { localStorage.setItem('cf_v2_import_original', raw); } catch { /* keepsake only */ }
   location.reload();
   return null;
 }
 sheet.querySelector('#importgo')!.addEventListener('click', () => {
-  const raw = (sheet.querySelector('#importtext') as HTMLTextAreaElement).value.trim();
+  const raw = (sheet.querySelector('#importtext') as HTMLTextAreaElement).value;
   void importBlob(raw).then((err) => { if (err) (sheet.querySelector('#importmsg') as HTMLElement).textContent = err; });
 });
 
 /* ---- the charter toast (main.js charterBlock/ascBlock: name the BUILD) ---- */
 const toastEl = document.createElement('div');
 toastEl.id = 'toast';
-toastEl.style.cssText = 'position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 112px);transform:translateX(-50%);max-width:min(480px,90vw);' +
+toastEl.setAttribute('role', 'status');
+toastEl.setAttribute('aria-live', 'polite');
+toastEl.setAttribute('aria-atomic', 'true');
+toastEl.style.cssText = 'position:fixed;left:50%;bottom:calc(var(--safe-bottom,0px) + 112px);transform:translateX(-50%);max-width:min(480px,calc(100vw - var(--safe-left,0px) - var(--safe-right,0px) - 20px));box-sizing:border-box;' +
   'background:rgba(10,16,30,0.94);color:#cfe0f4;font:13px/1.5 system-ui,sans-serif;padding:10px 16px;' +
   'border:1px solid #2a3c5e;border-radius:10px;opacity:0;transition:opacity 0.35s;pointer-events:none';
 document.body.appendChild(toastEl);
@@ -664,6 +960,7 @@ function toast(title: string, msg: string, force = false): void {
   const now = performance.now();
   if (!force && now - _toastT < 1800) return;   /* the game's re-fire guard (review catch: parking inside a gate) */
   _toastT = now;
+  toastEl.setAttribute('aria-live', force ? 'assertive' : 'polite');
   toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><br>${esc(msg)}`;   /* every sink escapes (audit #6) */
   toastEl.style.opacity = '1';
   clearTimeout(_toastHide);
@@ -673,14 +970,17 @@ const primeCount = (): number => Object.keys(save.primeFill || {}).length;
 const ascStage = (): 0 | 1 | 2 | 3 => ascStageOf(save.items, save.ascCh);
 
 function updateChips(): void {
-  playerChipEl.innerHTML = `⚙ ${esc(save.explorerName || 'Explorer')} <span class="dim">— ✦ ${save.essence} · ${save.landed.length} worlds</span>`;
+  playerChipEl.innerHTML = `⚙ ${esc(save.explorerName || 'Explorer')} <span class="dim">— ✦ ${save.essence}<span class="player-worlds"> · ${save.landed.length} worlds</span></span>`;
   hpFillEl.style.width = Math.max(0, Math.min(100, (save.hp / Math.max(1, save.HP_MAX)) * 100)) + '%';
   hpTxtEl.textContent = `${save.hp}/${save.HP_MAX} HP`;
   primeChipEl.textContent = `✦ Prime Codex ${primeCount()} / 9`;
   const o = currentObjective(save.ascCh, save.ascProg);
-  objChipEl.innerHTML = o
+  const liveGoal = save.ascCh < ASC_CHAPTERS_DATA.length
+    ? ASC_CHAPTERS_DATA[save.ascCh]!.goals.find((goal) => goal.ev === 'landfall' && (save.ascProg[goal.id] || 0) < goal.n)
+    : null;
+  objChipEl.innerHTML = !o ? '' : liveGoal
     ? `⬆ ${esc(o.text)} · <span class="prog" data-sel="objprog">${o.have} / ${o.need}</span>`
-    : '';
+    : `⬆ ${esc(o.chapter)} continues when its next gameplay system arrives`;
   syncTopbarH();   /* the chip wraps on narrow phones — remeasure, never guess */
 }
 function hudText(): void {
@@ -859,7 +1159,8 @@ function terminatorSpr(starCol: string): HTMLCanvasElement {
 }
 
 /* ---- zoom-dependent bookkeeping ---- */
-interface StarEntry { spr: Sprite; s: number; seed: number; }
+interface StarNodeRef { seed: number; x: number; y: number; c?: string; s: number; }
+interface StarEntry { spr: Sprite; star: StarNodeRef; }
 interface ScreenScaled { obj: Container; f: number; }   /* scale = f / cam.z */
 const galaxySpins: Array<{ spr: Sprite; base: number }> = [];
 let uniNodes: GalaxyNode[] = [];   /* cached universe composition — checkTransitions runs per tick */
@@ -894,11 +1195,12 @@ const zCut = (): number => {
 };
 let fineLayer: Container | null = null;
 let fineWin: { fx0: number; fy0: number; fx1: number; fy1: number } | null = null;
-let fineStarTargets: Array<{ spr: Sprite; star: { seed: number; x: number; y: number } }> = [];
+let fineStarTargets: Array<{ spr: Sprite; star: StarNodeRef }> = [];
 let lastZBucket = 0;
 const zBucket = (): number => Math.round(Math.log(cam.z) / Math.log(1.15));
 interface Orbiter { c: Container; kind: 'planet' | 'moon' | 'rock' | 'dwarf' | 'beam'; orb: number; sp?: number; a0?: number; mul?: number; pOrb?: number; face?: Sprite[]; cloud?: { wrap: Container; a: Sprite; b: Sprite; pr: number }; }
 let orbiters: Orbiter[] = [];
+let planetTargets: Array<{ holder: Container; planet: PlanetNode }> = [];
 let sysLabels: Array<{ t: Text; getPos: (time: number) => { x: number; y: number } }> = [];
 let sysStar: { seed: number; col: string; kind: string; starR: number } | null = null;
 let chartLayer: Container | null = null;   /* Star charts (chartsOn, OFF by default — v1.3.6, Nick's call) */
@@ -916,7 +1218,7 @@ function clearWorld(): void {
   galStars = []; galTwinkle = []; screenScaled = [];
   solMark = null; bhDisc = null; fineLayer = null; fineWin = null;
   fineStarTargets = [];
-  orbiters = []; sysLabels = []; sysStar = null; starSurfSpr = null; surfClouds = null; chartLayer = null;
+  orbiters = []; planetTargets = []; sysLabels = []; sysStar = null; starSurfSpr = null; surfClouds = null; chartLayer = null;
   galAnims = []; wormPos = null;
   uniLabels = []; uniPulse = []; charterFx = null; webLayer = null; fogFx = [];
   sysComets = []; visitorFx = null;
@@ -1184,7 +1486,7 @@ function drawGalaxy(galSeed: number): void {
         });
       });
       world.addChild(spr);
-      const entry = { spr, s: s.s, seed: s.seed };
+      const entry = { spr, star: { seed: s.seed, x: s.x, y: s.y, c: s.c, s: s.s } };
       galStars.push(entry);
       if (s.s > 1.3) galTwinkle.push(entry);
       if ((s as { sol?: boolean }).sol) buildSolMark(s.x, s.y);
@@ -1320,7 +1622,7 @@ function updateFineLayer(force: boolean): void {
         });
       });
       fineLayer.addChild(spr);
-      fineStarTargets.push({ spr, star: { seed: s.seed, x: s.x, y: s.y } });
+      fineStarTargets.push({ spr, star: { seed: s.seed, x: s.x, y: s.y, c: s.c, s: s.s } });
     }
   }
   /* under the black hole disc, over the base stars */
@@ -1337,7 +1639,7 @@ function updateZoomDependent(): void {
   if (nav.mode === 'universe') { applyUniverseGates(); updateUniverseCtx(); }
   if (nav.mode === 'galaxy') {
     const bR = baseR();
-    for (const st of galStars) { const D = st.s * bR * 8; st.spr.width = D; st.spr.height = D; }
+    for (const st of galStars) { const D = st.star.s * bR * 8; st.spr.width = D; st.spr.height = D; }
     updateFineLayer(true);   /* fine sizes track baseR via the rebuild */
     if (solMark) solMark.visible = cam.z > minWH() / 900;
     if (bhDisc) bhDisc.visible = cam.z > minWH() / 700;
@@ -1488,6 +1790,7 @@ function drawSystem(starSeed: number): void {
       ent.cloud = { wrap: cw, a: ca, b: cb, pr };
     }
     orbiters.push(ent);
+    planetTargets.push({ holder, planet: p });
     /* moons — typed lit spheres on Kepler-ish drifts (main.js ~5290) */
     const solM = (SOL_MOONS as Record<string, Array<{ t: number }>>)[String(p.P.seed)] || [];
     for (let m = 0; m < p.moons; m++) {
@@ -1620,17 +1923,32 @@ function rebuildSystemHD(): void {
 }
 
 /* ---- navigation (every transition through the tested state machine) ---- */
-function rerender(): void {
-  invalidateSurveyTravel();
-  hideSurvey();
-  if (nav.mode !== 'surface') sideEl.style.display = 'none';
+function rerender(options: { preserveSurvey?: boolean } = {}): void {
+  /* A density-only rebuild replaces Pixi textures, not the player's selected
+     object. Navigation transitions invalidate the card as before; monitor/
+     DPR changes preserve its exact DOM, full-identity context, and action. */
+  if (!options.preserveSurvey) {
+    invalidateSurveyTravel();
+    hideSurvey();
+  }
+  document.body.classList.toggle('surface-mode', nav.mode === 'surface');
+  if (nav.mode !== 'surface') {
+    sideEl.style.display = 'none';
+    document.documentElement.style.removeProperty('--planetside-top');
+  }
   stSeam.gal = nav.gal; stSeam.star = nav.star;   /* the describePick seam stays true */
   if (nav.mode === 'universe') drawUniverse();
   else if (nav.mode === 'galaxy' && nav.gal) drawGalaxy(nav.gal.seed);
   else if (nav.mode === 'system' && nav.star) drawSystem(nav.star.seed);
   else if (nav.mode === 'surface' && nav.star && nav.planet) {
     const p = systemScene(nav.star.seed).planets.find((q) => q.seed === nav.planet!.seed);
-    if (p) drawSurface(p); else { nav = NAV_HOME; drawUniverse(); }   /* a stale seed never bricks boot */
+    if (p) drawSurface(p); else {
+      nav = NAV_HOME;
+      document.body.classList.remove('surface-mode');
+      sideEl.style.display = 'none';
+      document.documentElement.style.removeProperty('--planetside-top');
+      drawUniverse();
+    }   /* a stale seed never bricks boot */
   }
   world.alpha = 0.25;   /* the mode fade (st.fade), eased back in the ticker */
   hudText();
@@ -1753,7 +2071,7 @@ function buildCardActions(p: PlanetNode): string {
       ? '<button data-act="leaveworld" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">⬆ Leave world</button>'
       : '<button data-act="landcta" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">⛳ Land</button>') +
     (charted && !trainingAdd
-      ? '<span style="color:#8fa3c4;align-self:center;font-size:12px">★ charted</span>'
+      ? '<span style="color:var(--dim);align-self:center;font-size:12px">★ charted</span>'
       : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">' +
         (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
     '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
@@ -1781,6 +2099,23 @@ function cardShareCode(): string | null {
   /* A stale planet card must never silently encode the current system. The
      visible card and copied address are one atomic context. */
   return where ? encodeWhere(where as never, customNames.get('p' + cardCtx!.p.seed)) as string : null;
+}
+async function copyShareCode(code: string): Promise<boolean> {
+  try {
+    if (!navigator.clipboard?.writeText) throw new Error('clipboard unavailable');
+    await navigator.clipboard.writeText(code);
+    toast('⧉ Share code copied', 'Paste it into any explorer’s search bar to guide them here.', true);
+    return true;
+  } catch {
+    /* Never claim a copy that the browser denied. Put the exact code in a
+       familiar editable surface and select it so keyboard/touch assistive
+       copy remains one honest action away. */
+    searchEl.value = code;
+    searchEl.focus();
+    searchEl.select();
+    toast('Copy unavailable', 'The share code is selected in Search. Use your browser’s Copy command.', true);
+    return false;
+  }
 }
 function doLand(): void {
   if (!cardCtx || !activeCardPlanetWhere()) return;
@@ -1827,6 +2162,7 @@ function addToAtlas(): void {
 card.addEventListener('click', (e) => {
   const act = (e.target as HTMLElement).closest('[data-act]');
   if (!act) return;
+  const keyboard = document.activeElement === act;
   const a = (act as HTMLElement).dataset.act;
   if (a === 'travel') {
     const action = cardTravelAction;
@@ -1834,41 +2170,60 @@ card.addEventListener('click', (e) => {
     cardTravelAction = null;
     (act as HTMLButtonElement).disabled = true;
     action.run();
-  } else if (a === 'landcta') doLand();
+    if (keyboard) app.canvas.focus();
+  } else if (a === 'landcta') {
+    doLand();
+    if (keyboard) card.querySelector<HTMLElement>('[data-act="leaveworld"]')?.focus();
+  }
   else if (a === 'leaveworld') {
     if (nav.mode !== 'surface' || nav.planet?.seed !== cardCtx?.p.seed || !activeCardPlanetWhere()) return;
     hideSurvey();
     goUp();
+    if (keyboard) app.canvas.focus();
   }
-  else if (a === 'add') addToAtlas();
+  else if (a === 'add') {
+    addToAtlas();
+    if (keyboard) (card.querySelector<HTMLElement>('[data-act="add"]') || surveyDockEl).focus();
+  }
   else if (a === 'share') {
     const code = cardShareCode();
-    if (code) {
-      void navigator.clipboard?.writeText(code).catch(() => { /* headless */ });
-      toast('⧉ Share code copied', 'Paste it into any explorer’s search bar to guide them here.');
-    }
+    if (code) void copyShareCode(code);
   }
 });
 const sideEl = document.createElement('div');
 sideEl.id = 'planetside';
 sideEl.className = 'glass';
-sideEl.style.cssText = 'position:fixed;left:12px;bottom:calc(env(safe-area-inset-bottom,0px) + var(--dock-h) + var(--ctx-h) + 86px);' +
-  'max-width:min(560px,72vw);display:none;z-index:14;border-radius:12px;padding:8px 10px;' +
+sideEl.style.cssText = 'position:fixed;left:calc(var(--safe-left,0px) + 12px);bottom:calc(var(--safe-bottom,0px) + var(--dock-h) + var(--ctx-h) + 86px);' +
+  'max-width:min(560px,calc(100vw - var(--safe-left,0px) - var(--safe-right,0px) - 24px));box-sizing:border-box;display:none;z-index:21;border-radius:12px;padding:8px 10px;' +
   'overflow-x:auto;white-space:nowrap;scrollbar-width:thin';
 document.body.appendChild(sideEl);
+function syncPlanetsideLayout(): void {
+  if (getComputedStyle(sideEl).display === 'none' || nav.mode !== 'surface') {
+    document.documentElement.style.removeProperty('--planetside-top');
+    return;
+  }
+  const r = sideEl.getBoundingClientRect();
+  if (r.width > 0 && r.height > 0) document.documentElement.style.setProperty('--planetside-top', r.top.toFixed(2) + 'px');
+}
+new ResizeObserver(syncPlanetsideLayout).observe(sideEl);
+addEventListener('resize', syncPlanetsideLayout, { passive: true });
 function fillPlanetside(p: PlanetNode, starSeed: number): void {
   /* THE LIVING PLANETSIDE: the world's REAL roster (planetSpecies through
      the biosphere replica), each wearing its hdart portrait — the strip is
      Phase 4 chrome; the full walkable vista is Phase 6's. */
   const roster = worldRoster(p, starSeed);
-  if (!roster.length) { sideEl.style.display = 'none'; return; }
+  if (!roster.length) {
+    sideEl.style.display = 'none';
+    syncPlanetsideLayout();
+    return;
+  }
   if (!SA && nav.star) {
     const p0 = p, s0 = starSeed;
     ensureSA('planetside', () => {
       if (nav.mode === 'surface' && nav.planet?.seed === p0.seed && nav.star?.seed === s0) fillPlanetside(p0, s0);
     });
   }
-  sideEl.innerHTML = '<div style="font-size:10.5px;letter-spacing:0.06em;color:#8fa3c4;margin:0 0 6px">PLANETSIDE — the ground survey</div>' +
+  sideEl.innerHTML = '<div style="font-size:10.5px;letter-spacing:0.06em;color:var(--dim);margin:0 0 6px">PLANETSIDE — the ground survey</div>' +
     roster.map((g) => {
       let th = '';
       if (SA) { try { th = SA.speciesThumb(g as never); } catch { /* text chip still reads */ } }
@@ -1879,6 +2234,7 @@ function fillPlanetside(p: PlanetNode, starSeed: number): void {
         '<div style="font-size:10px;color:#b7c8e4;max-width:72px;overflow:hidden;text-overflow:ellipsis">' + esc(nm) + '</div></span>';
     }).join('');
   sideEl.style.display = 'block';
+  syncPlanetsideLayout();
 }
 function drawSurface(p: PlanetNode): void {
   /* surface mode, slice edition: the world fills the view as its painterly
@@ -1886,6 +2242,7 @@ function drawSurface(p: PlanetNode): void {
      roster — every species row is real Ecology output.
      FIT the globe to the viewport (phone catch: at z=1 the 420px master
      overfilled a 390px screen as blur; the globe should present itself) */
+  document.body.classList.add('surface-mode');
   clearWorld();
   const R = 210;
   const fitZ = Math.min(1, (minWH() * 0.78) / (R * 2));
@@ -2013,17 +2370,210 @@ function zoomLimits(): [number, number] {
   return [0.45, Math.max(0.9, (mw / 420) * 1.6)];
 }
 
+/* ---- keyboard exploration — the canvas is a named, focusable region.
+   Arrow keys cycle the same rendered bodies that pointer handlers own;
+   Enter opens the same survey card/action and +/- zoom around that target. */
+interface KeyboardWorldTarget {
+  key: string;
+  label: string;
+  priority: number;
+  screen: () => { x: number; y: number };
+  world: { x: number; y: number };
+  activate: () => void;
+}
+let keyboardTargetKey: string | null = null;
+let keyboardRing: HTMLElement | null = null;
+let keyboardLive: HTMLElement | null = null;
+let pointerFocusingCanvas = false;
+function currentKeyboardTargets(): KeyboardWorldTarget[] {
+  const targets: KeyboardWorldTarget[] = [];
+  if (nav.mode === 'universe') {
+    for (const galaxy of uniNodes) targets.push({
+      key: `galaxy:${galaxy.seed}:${galaxy.x}:${galaxy.y}`,
+      label: galaxy.home ? 'Milky Way — you are here' : galaxyName(galaxy.seed),
+      priority: galaxy.home ? 0 : 1,
+      world: { x: galaxy.x, y: galaxy.y },
+      screen: () => world.toGlobal({ x: galaxy.x, y: galaxy.y }),
+      activate: () => surveyCard(
+        describePick({ kind: galaxy.quasar ? 'quasar' : galaxy.radio ? 'radio' : 'galaxy', data: galaxy } as never),
+        { label: 'Enter galaxy', run: () => descendGalaxy(galaxy) },
+      ),
+    });
+  } else if (nav.mode === 'galaxy') {
+    const seen = new Set<string>();
+    for (const [tier, entries] of [[1, galStars], [2, fineStarTargets]] as const) for (const entry of entries) {
+      const star = entry.star;
+      const key = `star:${star.seed}:${star.x}:${star.y}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      targets.push({
+        key,
+        label: star.seed === SOL_SEED ? 'Sun — our star' : starName(star.seed),
+        priority: star.seed === SOL_SEED ? 0 : tier,
+        world: { x: star.x, y: star.y },
+        screen: () => world.toGlobal({ x: star.x, y: star.y }),
+        activate: () => surveyCard(describePick({ kind: 'star', data: star } as never), {
+          label: 'Enter system', run: () => descendSystem(star),
+        }),
+      });
+    }
+  } else if (nav.mode === 'system' && nav.star) {
+    for (const target of planetTargets) targets.push({
+      key: `planet:${nav.star.seed}:${target.planet.seed}`,
+      label: target.planet.name,
+      priority: target.planet.seed === 133 ? 0 : 1,
+      world: { x: target.holder.position.x, y: target.holder.position.y },
+      screen: () => target.holder.getGlobalPosition(),
+      activate: () => surveyPlanet(target.planet, nav.star!.seed),
+    });
+  }
+  const visible = targets.filter((target) => {
+    const point = target.screen();
+    return point.x >= 12 && point.y >= 12 && point.x <= innerWidth - 12 && point.y <= innerHeight - 12;
+  });
+  return (visible.length ? visible : targets).sort((a, b) => {
+    if (a.priority !== b.priority) return a.priority - b.priority;
+    const ap = a.screen(), bp = b.screen();
+    return ap.y - bp.y || ap.x - bp.x || a.key.localeCompare(b.key);
+  });
+}
+function announceKeyboardTarget(target: KeyboardWorldTarget | null): void {
+  if (!keyboardLive) return;
+  keyboardLive.textContent = target
+    ? `${target.label}. Press Enter to survey; plus or minus to zoom.`
+    : 'World target released.';
+}
+function selectKeyboardTarget(step: number): void {
+  const targets = currentKeyboardTargets();
+  if (!targets.length) { keyboardTargetKey = null; announceKeyboardTarget(null); return; }
+  const current = targets.findIndex((target) => target.key === keyboardTargetKey);
+  const next = current < 0 ? (step < 0 ? targets.length - 1 : 0) : (current + step + targets.length) % targets.length;
+  keyboardTargetKey = targets[next]!.key;
+  announceKeyboardTarget(targets[next]!);
+  renderKeyboardTarget();
+}
+function renderKeyboardTarget(): void {
+  if (!keyboardRing || document.activeElement !== app.canvas || !keyboardTargetKey) {
+    if (keyboardRing) keyboardRing.style.display = 'none';
+    return;
+  }
+  const target = currentKeyboardTargets().find((candidate) => candidate.key === keyboardTargetKey);
+  if (!target) { keyboardTargetKey = null; keyboardRing.style.display = 'none'; return; }
+  const point = target.screen();
+  keyboardRing.style.display = 'block';
+  keyboardRing.style.left = point.x + 'px';
+  keyboardRing.style.top = point.y + 'px';
+  keyboardRing.querySelector('span')!.textContent = target.label;
+}
+function installKeyboardExploration(): void {
+  app.canvas.tabIndex = 0;
+  app.canvas.setAttribute('role', 'region');
+  app.canvas.setAttribute('aria-label', 'Explore the generated universe');
+  app.canvas.setAttribute('aria-describedby', 'cosmoshelp');
+  const help = document.createElement('p');
+  help.id = 'cosmoshelp'; help.className = 'sr-only';
+  help.textContent = 'Arrow keys cycle visible galaxies, stars, or worlds. Enter surveys. Plus and minus zoom. Escape releases the target.';
+  keyboardLive = document.createElement('div');
+  keyboardLive.id = 'cosmoslive'; keyboardLive.className = 'sr-only';
+  keyboardLive.setAttribute('aria-live', 'polite'); keyboardLive.setAttribute('aria-atomic', 'true');
+  keyboardRing = document.createElement('div');
+  keyboardRing.id = 'cosmosfocus'; keyboardRing.setAttribute('aria-hidden', 'true');
+  keyboardRing.innerHTML = '<span></span>';
+  document.body.append(help, keyboardLive, keyboardRing);
+  app.canvas.addEventListener('pointerdown', () => {
+    /* A pointer click focuses a canvas too, but must not secretly arm a
+       keyboard target that consumes the player's next Escape. */
+    pointerFocusingCanvas = true;
+    keyboardTargetKey = null;
+    renderKeyboardTarget();
+    /* Browser focus is a later default action in the pointer/mouse sequence;
+       a microtask can clear this flag before that action runs. */
+    setTimeout(() => { pointerFocusingCanvas = false; }, 0);
+  }, { capture: true });
+  app.canvas.addEventListener('focus', () => {
+    if (pointerFocusingCanvas) { pointerFocusingCanvas = false; renderKeyboardTarget(); return; }
+    if (!keyboardTargetKey) selectKeyboardTarget(1); else renderKeyboardTarget();
+  });
+  app.canvas.addEventListener('blur', renderKeyboardTarget);
+  app.canvas.addEventListener('keydown', (event) => {
+    if (['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(event.key)) {
+      event.preventDefault(); event.stopPropagation();
+      selectKeyboardTarget(event.key === 'ArrowLeft' || event.key === 'ArrowUp' ? -1 : 1);
+      return;
+    }
+    const target = currentKeyboardTargets().find((candidate) => candidate.key === keyboardTargetKey);
+    if ((event.key === 'Enter' || event.key === ' ') && target) {
+      event.preventDefault(); event.stopPropagation(); target.activate(); keyboardTargetKey = null; renderKeyboardTarget();
+      card.querySelector<HTMLElement>('button')?.focus();
+      return;
+    }
+    if ((event.key === '+' || event.key === '=' || event.key === '-' || event.key === '_') && target) {
+      event.preventDefault(); event.stopPropagation();
+      const [lo, hi] = zoomLimits();
+      camT.x = target.world.x; camT.y = target.world.y;
+      camT.z = Math.min(hi, Math.max(lo, camT.z * (event.key === '-' || event.key === '_' ? 0.82 : 1.22)));
+      return;
+    }
+    if (event.key === 'Escape' && keyboardTargetKey) {
+      event.preventDefault(); event.stopPropagation(); keyboardTargetKey = null; announceKeyboardTarget(null); renderKeyboardTarget();
+    }
+  });
+}
+
 /* ---- the save/reload leg — THE REAL PIPELINE ---- */
 async function persistView(): Promise<boolean> {
-  if (persistHold) return false;   /* a failed boot read holds writes until the player acts */
-  try {
+  if (persistHold || importWriteInFlight) return false;   /* protected/replacement bytes own storage */
+  const write = async (): Promise<boolean> => { try {
     save.savedView = navToView(nav);
     save.EPOCH_BASE = epochClock.current();   /* play time accumulates across sessions (doSave writes COSMIC_EPOCH) */
+    if (smokeRejectNextPersist) {
+      /* Browser evidence needs a deterministic storage-rejection outcome;
+         this diagnostics-only latch enters the same rollback branch as an
+         IndexedDB failure without changing ordinary repository behavior. */
+      smokeRejectNextPersist = false;
+      throw new Error('slice-smoke injected persistence rejection');
+    }
     await repo.write(exportSaveV2(save, Date.now()));
     return true;
-  } catch { return false; /* private mode: session continues unsaved */ }
+  } catch { return false; /* private mode: session continues unsaved */ } };
+  const prior = activePersist;
+  const run = prior ? prior.catch(() => false).then(write) : write();
+  activePersist = run;
+  try { return await run; }
+  finally { if (activePersist === run) activePersist = null; }
 }
 let _persistT = 0;
+let importWriteInFlight = false;
+let activePersist: Promise<boolean> | null = null;
+let smokeRejectNextPersist = false;
+let smokeImportRaceRelease: (() => void) | null = null;
+function smokeArmImportRace(staleRaw: string): boolean {
+  /* Diagnostics-only ordering witness. The armed active persist writes its
+     stale snapshot only after release. A valid import started before that
+     release must await this write, then replace it. Removing importBlob's
+     await reverses the two real repository transactions and stale wins. */
+  if (activePersist || importWriteInFlight || smokeImportRaceRelease) return false;
+  let releaseGate: (() => void) | null = null;
+  const gate = new Promise<void>((resolve) => { releaseGate = resolve; });
+  const run = gate.then(async () => { await repo.write(staleRaw); return true; });
+  activePersist = run;
+  smokeImportRaceRelease = () => {
+    const release = releaseGate;
+    smokeImportRaceRelease = null;
+    release?.();
+  };
+  void run.then(
+    () => { if (activePersist === run) activePersist = null; },
+    () => { if (activePersist === run) activePersist = null; },
+  );
+  return true;
+}
+function smokeReleaseImportRace(): boolean {
+  const release = smokeImportRaceRelease;
+  if (!release) return false;
+  release();
+  return true;
+}
 function persistSoon(): void {
   /* slider-friendly: one export per drag, not one per input event (audit #5) */
   clearTimeout(_persistT);
@@ -2120,8 +2670,9 @@ async function loadSave(): Promise<void> {
   (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
   initAudio({ sndOn: () => save.sndOn, sfxVol: () => save.sfxVol });   /* the save's own audio settings */
   /* dock + chrome mirror the save from the first frame */
-  document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
-  applyGlass();
+  chartsDockEl.classList.toggle('on', save.chartsOn);
+  chartsDockEl.setAttribute('aria-pressed', String(save.chartsOn));
+  applyDisplayPreferences();
   syncTopbarH();
   syncDockH();
   syncCtxH();
@@ -2152,8 +2703,13 @@ async function loadSave(): Promise<void> {
         save.tutSnapPending = null;
         rerender();
       }
+      /* Training schedules its own post-finish focus restoration at 0ms.
+         Open a queued bulletin on the next turn so the bulletin's Back
+         control remains the final, visible keyboard focus target. */
+      if (v) setTimeout(flushPendingReleaseBulletin, 20);
     },
     persist: () => { void persistView(); },
+    closePanels,
   });
 }
 
@@ -2164,6 +2720,7 @@ async function loadSave(): Promise<void> {
      halving Pixi hit coordinates and moving the home galaxy offscreen. */
   await app.init({ background: 0x05070d, resizeTo: window, antialias: true, resolution: DPR, autoDensity: true });
   document.body.appendChild(app.canvas);
+  installKeyboardExploration();
   /* THE BACKDROP (drawBackdrop, main.js 3560 — verbatim recipe): the seeded
      900-star field under a deep radial wash, rebuilt per viewport, screen-
      space behind the world. The flat black is gone at every mode. */
@@ -2175,7 +2732,7 @@ async function loadSave(): Promise<void> {
   let _bgKey = '';
   const rebuildBackdrop = (): void => {
     const W = app.screen.width, H = app.screen.height;
-    const k = W + '|' + H;
+    const k = W + '|' + H + '|' + DPR.toFixed(4);
     if (k === _bgKey || W < 2) return;
     _bgKey = k;
     const cv = document.createElement('canvas');
@@ -2193,7 +2750,22 @@ async function loadSave(): Promise<void> {
     if (old && old !== Texture.EMPTY) old.destroy(true);
   };
   rebuildBackdrop();
-  addEventListener('resize', () => setTimeout(rebuildBackdrop, 50));
+  const syncRendererDensity = (): void => {
+    const next = effectiveDpr();
+    if (Math.abs(next - DPR) > 0.001) {
+      DPR = next;
+      app.renderer.resolution = DPR;
+      app.renderer.resize(innerWidth, innerHeight);
+      _bgKey = '';
+      /* Texture-backed scene art was baked for the prior scale tier. Rebuild
+         the current mode so a monitor/DPR transition upgrades the scene, not
+         only the Pixi backing store and backdrop. */
+      rerender({ preserveSurvey: true });
+    }
+    setTimeout(rebuildBackdrop, 50);
+  };
+  addEventListener('resize', syncRendererDensity);
+  visualViewport?.addEventListener('resize', syncRendererDensity);
   app.stage.addChild(world);
   /* Publish the browser-audit surface only after persistence has produced a
      complete SaveStateV2 and the first scene is rendered. Publishing it
@@ -2201,6 +2773,7 @@ async function loadSave(): Promise<void> {
      still unassigned, turning a readiness race into a misleading app fault. */
   await loadSave();
   rerender();
+  showUnseenV2Release();
   /* diagnostics handle for tools/slicesmoke.mjs — a WebGL canvas reads BLACK
      through 2D drawImage without preserveDrawingBuffer, so the smoke asks
      Pixi's extract (which re-renders) instead of scraping the canvas */
@@ -2212,6 +2785,7 @@ async function loadSave(): Promise<void> {
     api: {
       state: () => ({
         mode: nav.mode, gal: nav.gal?.seed ?? null, star: nav.star?.seed ?? null,
+        planet: nav.planet?.seed ?? null,
         galX: nav.gal?.x ?? null, galY: nav.gal?.y ?? null,
         starX: nav.star?.x ?? null, starY: nav.star?.y ?? null,
         fine: !!fineLayer, solVisible: !!(solMark && solMark.visible),
@@ -2225,10 +2799,17 @@ async function loadSave(): Promise<void> {
         objective: objChipEl.textContent || '',
         chartsOn: save.chartsOn, chartsVisible: !!(chartLayer && chartLayer.visible),
         panelOpen: openPanelId(), codexCount: save.codex.length, seenGuide: save.seenGuide,
+        rnSeen: save.rnSeen ?? null, releasePending: pendingReleaseBulletin?.version ?? null,
         tutActive: trainingActive(), tutStep: trainingStepId(), tutDone: save.tutDone,
+        tutSnapshotPending: save.tutSnapPending,
         atlasCount: save.logMap.length,
         sfxVol: save.sfxVol, motionMode: save.motionMode,
+        fsMode: save.fsMode, toneMode: save.toneMode, fontMode: save.fontMode,
         glassA: getComputedStyle(document.documentElement).getPropertyValue('--glass-a').trim(),
+        rendererDpr: app.renderer.resolution,
+        backingWidth: app.canvas.width, backingHeight: app.canvas.height,
+        keyboardTarget: keyboardTargetKey,
+        tickerTicks,
         topbarH: getComputedStyle(document.documentElement).getPropertyValue('--topbar-h'),
         save: {
           name: save.explorerName, essence: save.essence,
@@ -2236,8 +2817,25 @@ async function loadSave(): Promise<void> {
         },
       }),
       importBlob,   /* Gate C's front door, drivable by the smoke */
+      __smokeArmImportRace: smokeArmImportRace,
+      __smokeReleaseImportRace: smokeReleaseImportRace,
+      __smokeRejectNextPersist: () => {
+        if (smokeRejectNextPersist) return false;
+        smokeRejectNextPersist = true;
+        return true;
+      },
+      __smokePersistAfterDebounce: () => { persistSoon(); return true; },
+      __smokePersistNow: persistView,
       encodeHere,   /* the share-code round trip, drivable by the smoke */
       cardShareCode,
+      showReleaseFixture: (version = '2.0.0-test') => {
+        const fixture: V2ShippedRelease = {
+          status: 'shipped', version, title: 'Browser fixture bulletin', date: 'Test only',
+          sections: [{ category: 'Under the Hood', bullets: ['Positive-path fixture; not a release.'] }],
+        };
+        const history = getReleaseHistory({ includeDraft: true, shippedReleases: [fixture] });
+        return showV2ReleaseBulletin(fixture, history);
+      },
       fineStarTarget: () => {
         for (const target of fineStarTargets) {
           const point = world.toGlobal({ x: target.star.x, y: target.star.y });
@@ -2301,14 +2899,19 @@ async function loadSave(): Promise<void> {
     }
   });
 
+  let tickerTicks = 0;
   app.ticker.add((tk) => {
-    /* eased camera — exponential approach to the target, framerate-aware */
-    const k = 1 - Math.pow(0.0025, tk.deltaMS / 1000);
+    tickerTicks++;
+    /* Reduced motion is a rendered-state policy, not just a CSS preference:
+       navigation snaps, fades finish, and every ambient clock below receives
+       t=0. Full/Auto keep the framerate-aware ease and living scene. */
+    const animate = motionOK();
+    const k = animate ? 1 - Math.pow(0.0025, tk.deltaMS / 1000) : 1;
     cam.x += (camT.x - cam.x) * k; cam.y += (camT.y - cam.y) * k; cam.z += (camT.z - cam.z) * k;
     world.position.set(app.screen.width / 2 - cam.x * cam.z, app.screen.height / 2 - cam.y * cam.z);
     world.scale.set(cam.z);
-    if (world.alpha < 1) world.alpha = Math.min(1, world.alpha + tk.deltaMS / 400);
-    const t = performance.now() * 0.001;
+    if (world.alpha < 1) world.alpha = animate ? Math.min(1, world.alpha + tk.deltaMS / 400) : 1;
+    const t = animate ? performance.now() * 0.001 : 0;
     /* the biological clock ticks on PLAY time (ecology reads the global) */
     (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
     /* galaxies turn on cosmic time — barely perceptible (main.js ~3742) */
@@ -2325,7 +2928,7 @@ async function loadSave(): Promise<void> {
       for (const up of uniPulse) up.spr.alpha = 0.55 + 0.45 * Math.abs(Math.sin(t * 6 + up.seed % 10));
       /* drifting fog-of-war: the CLOUD PATTERN moves, the puffs stay put
          (main.js 3766 — noise phase drifts at 5/s) */
-      if (charterFx && charterFx.visible && fogFx.length && motionOK()) {
+      if (charterFx && charterFx.visible && fogFx.length && animate) {
         const drift = t * 5;
         for (const F of fogFx) {
           const n = (UNOISE as (x: number, y: number, o: number) => number)((F.wx + drift) / UCELL * 0.16, (F.wy - drift * 0.4) / UCELL * 0.16, 3);
@@ -2335,7 +2938,7 @@ async function loadSave(): Promise<void> {
     } else if (nav.mode === 'galaxy') {
       updateFineLayer(false);
       /* the bright stars breathe (main.js 4165) — stilled under reduced motion */
-      if (motionOK()) for (const st of galTwinkle) st.spr.alpha = 0.82 + 0.18 * Math.sin(t * 2.4 + (st.seed % 97));
+      for (const st of galTwinkle) st.spr.alpha = 0.82 + 0.18 * Math.sin(t * 2.4 + (st.star.seed % 97));
       if (bhDisc) { bhDisc.rotation = t * 0.3; bhDisc.scale.y = bhDisc.scale.x * 0.55; }
       /* wormhole lensing · remnant cores · newborn protostars (main.js 4109/4218) */
       for (const ga of galAnims) {
@@ -2353,7 +2956,7 @@ async function loadSave(): Promise<void> {
           o.c.position.set(Math.cos(a) * o.orb, Math.sin(a) * o.orb);
           if (o.face) { const aim = a + Math.PI + 2.522; o.face[0]!.rotation = aim; o.face[1]!.rotation = a; }
           if (o.cloud) {
-            const vis = o.cloud.pr * cam.z > 22 && motionOK();   /* the Renderer's close-up gate */
+            const vis = o.cloud.pr * cam.z > 22;   /* close-up gate; t=0 freezes the deck under Reduced */
             o.cloud.wrap.visible = vis;
             if (vis) {
               const co = (t * 1.6) % (o.cloud.pr * 2);
@@ -2415,6 +3018,7 @@ async function loadSave(): Promise<void> {
     }
     /* screen-constant labels/markers (the Renderer's 1/c.z font trick) */
     for (const ss of screenScaled) ss.obj.scale.set(ss.f / Math.max(cam.z, 1e-6));
+    renderKeyboardTarget();
   });
 
   /* input: drag pan · wheel zoom (cursor-anchored) · pinch · right-click /
@@ -2495,6 +3099,7 @@ async function loadSave(): Promise<void> {
   }, { passive: false });
   app.canvas.addEventListener('contextmenu', (e) => { e.preventDefault(); hideSurvey(); goUp(); });
   addEventListener('keydown', (e) => {
+    if (e.defaultPrevented) return;
     if (sheet.style.display !== 'none' && e.key === 'Tab') {
       const focusable = [...sheet.querySelectorAll<HTMLElement>('textarea,button,input:not([type="hidden"]),[tabindex]:not([tabindex="-1"])')]
         .filter((el) => !('disabled' in el && (el as HTMLButtonElement).disabled) && el.offsetParent !== null);
@@ -2512,7 +3117,8 @@ async function loadSave(): Promise<void> {
     if (document.activeElement === searchEl) { searchEl.blur(); return; }
     if (openPanelId()) { closePanels(); return; }
     if (card.style.display !== 'none') {
-      hideSurvey();
+      const restoreCanvas = card.contains(document.activeElement);
+      hideSurvey(restoreCanvas);
       if (nav.mode === 'surface') goUp();
       return;
     }
