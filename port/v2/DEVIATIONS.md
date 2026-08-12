@@ -1088,7 +1088,7 @@ duplicates).
   the docs-only tip; matching CI and separate host/human/Ready/merge/release/
   deploy/version authority remain open.
 - ★ **D-UI-5 — geometry-correct very-large resize must remain answerable (repair frozen;
-  dirty diagnostic only, 2026-08-12).** Test-battery #206, run `31635297321` attempt 1 /
+  exact clean executable evidence, 2026-08-12).** Test-battery #206, run `31635297321` attempt 1 /
   job `94243979205`, completed once without retry at exact pushed
   `558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577` is tree-identical.
   Every preceding step and `smoke:ci` passed. Desktop-8k replacement reload passed in
@@ -1115,18 +1115,21 @@ duplicates).
   runs its existing full scene rerender; no scene-rerender optimization or separate
   scene-art quality tier landed.
 
-  Current evidence is a non-authoritative `dirty-diagnostic` capture only. One full
-  Edge 151 glass run passed 12/12, 57/57, `blocked=[]`, `omitted=[]`, 0 findings/
-  instrument failures/retries in 52,851 ms; report SHA-256
-  `faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`.
-  Reloads were 173–186 ms. Exact desktop-8k was 180 ms total, `performanceNow`
-  155.9 ms, target cycles 1/6 ms and heartbeats 1/0 ms at DPR
-  `0.3079201435678004`; outgoing/replacement canvases were 2,365×1,330 each,
-  outgoing collapsed to 1×1, and replacement remained 6,290,900 pixels combined.
-  This does not certify a source. A clean-head exact battery for the immutable executable
-  source remains required; live Git/PR state determines commit/push status, and whichever final
-  pushed tip is selected requires matching CI. Host, human play, Ready, merge, release,
-  deployment, and version authority remain separate.
+  Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
+  underlies the current/forthcoming documentation-only tip (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+  snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
+  Edge 151/pin-150 preflight warned; root validate/smoke and layout 787/787 across
+  10/10 passed; v2 passed 273/1 plus all gates. One-attempt slice smoke passed 0/10
+  in 105,217 ms (`b835f79764f4e22a2179ab74f9412491ee4d81730e775889372461d64ddd0474`).
+  Certifying glass passed 12/12, 57/57, empty blocked/omitted and zero findings/
+  instrument failures/retries in 52,557 ms (`7fe33219e70361140ebc931f0d77fca0976a46fe51eecc42815f41eba110980c`).
+  Exact 8K was 203 ms / `performanceNow` 158.2 ms, phases 2/11/33/127 ms, targets
+  1/10 ms and heartbeats 0/0 ms; outgoing 2,365×1,330 stores →1×1 and replacement
+  stayed 6,290,900 pixels combined. Nine automated-only personas and terminal-only
+  581/659/73/152 ms performance passed. Preview `dev-preview-exact-df1c28b-20260812T211642Z`
+  passed Edge 151 at the separate dev origin with `publishable:false`. Exact docs tip/
+  upstream/CI is live; its final pushed tip needs matching CI. No host/human/Ready/
+  merge/release/deploy/version authority follows.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
