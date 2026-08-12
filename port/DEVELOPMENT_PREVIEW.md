@@ -136,20 +136,49 @@ at two seconds. No concurrent browser-process heartbeat was recorded, so the run
 is strong evidence of post-ready target starvation but cannot retrospectively
 prove the browser/CDP transport was healthy. It is preserved without retry.
 
-The cited follow-on two-tier-density/dual-heartbeat browser evidence was captured
-from a `dirty-diagnostic` source state and is non-authoritative: targeted desktop-8k passed non-certifying
-(`e77e9727cb019740bd756188be18f444ac1d3f5d666e49f727f355c73b7c3c2d`);
-one-attempt smoke passed 0 findings /10 screenshots /105,207 ms
-(`fb1800320926532c0df6c782cd630c45e37bcea6906c4bbd953111b7605b43c8`);
-full glass passed 12/12 and 57/57 with `blocked=[]`, `omitted=[]`, zero findings/
-instrument failures/retries /53,918 ms
-(`dff0829a3eb8dba67ee0da7c51ae6748fe4ff9bc8652ee1d617657f3133794cb`);
-all nine automated personas passed, still not human play; terminal-only performance
-was 605/686/76/159 ms. One sandboxed listener preflight failed `EPERM`, and one
-harness-only floating-width assertion was corrected once without retrying a
-product failure. These results do not authorize a candidate package or host.
-Run the clean-head exact battery, push it, and require matching CI
-before asking Nick to approve the one-time PR #11 candidate command below.
+Prior diagnostic only: the earlier `dirty-diagnostic` targeted/smoke/glass captures
+based on `c57305f` remain non-authoritative; their sandbox `EPERM` and corrected
+floating-width assertion did not retry a product failure.
+
+Immutable executable source `135a635d066d1c67e3096dc134de9247267898d5`
+passed the complete exact sequential battery from clean source-status SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`
+and source-snapshot
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+A sandbox-only Edge SIGABRT interrupted preflight/CDP selftest; the same checks
+passed outside sandbox without product retry. Root validate, legacy smoke, rarity,
+and dead-code passed. Root layout
+`exact-135a635d066d-20260812T192848Z-root-layout` passed 787/787 across 10/10
+under Edge 151 in 75,532 ms; report SHA-256
+`7e2689c31e1095885ee8139bb395b40e799972461649efd100b631a4e6e9f85f`.
+V2 passed 273/1 plus all type/art/override/coverage/spec gates. One-attempt slice smoke passed 0 findings /
+10 screenshots /0 retries in 105,379 ms (report
+`c838f3e7dfdf161b7bfa6111c6979215a2ba439fdd44a4cb8e00a8cdf7c3d1a5`).
+Full certifying glass passed 12/12, 57/57 unique, `blocked=[]`, `omitted=[]`,
+zero findings/instrument failures/retries in 52,254 ms (report
+`1f14906d178528613fdf52db53ee4e1f84b6a48ceb21ad3a41bd9d0c5348b23b`).
+Reloads were 176–185 ms. Exact 8K was 185 ms total /2 ms arm /12 ms
+invoked→release /32 ms release→commit /122 ms commit→ready /152.2 ms
+`performanceNow`, with target confirmations 1/9 ms and heartbeats 1/1 ms;
+outgoing/replacement stores were 2,730×1,536 each, outgoing collapsed to 1×1,
+and replacement remained 8,386,560 combined pixels.
+Nine automated personas passed, still not human play; their JSON/Markdown SHA-256 are
+`c17c44fcb3d534707dc6186bbd4fbcae4d1cfea511bdec8a263ec48be4927a58` /
+`43d5d52e44d7d19aec597a3df5b2599c0da143bb7170d16c17ed141bd390d6b4`.
+Terminal-only performance was 578/659/76/170 ms.
+
+Exact preview `dev-preview-exact-135a635d066d-20260812T192848Z` browser-smoked
+PASS under Edge 151. Its `preview.json` SHA-256 is
+`0233984ca2bad28c189e979d4a30082d6137a06e8eac086c3b2525989813dd4e`;
+it records 37 files /10,186,230 bytes, content SHA-256
+`da4e066b447db073383f59dd592cd2a19a186d32ce13a2edd05fbc07e66aa10f`,
+exact `port/v2` tree `d1ab1d79fba4ba2939c3e1ec0661fb60498afb23`, expected origin
+`https://dev-celestialfrontier.github.io`, production distinct and
+`publishable:false`. It is a verified local review artifact, not a publication
+candidate. Live Git/status/PR checks determine the docs-only tip, which still
+requires matching CI before Nick may approve the one-time PR #11 candidate command
+below. No host creation, publication, human play, Ready, merge, release, deployment,
+or version authority follows from this artifact.
 
 Pushed head `8b8a740286a56591cac9dc5734a2fba4c088939b` passed its exact local
 battery. Matching test-battery #200, run `31577395120` / job `94052496287`,

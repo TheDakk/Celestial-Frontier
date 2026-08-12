@@ -203,7 +203,7 @@ of an evidence failure. Exact 37-file / 10,170,996-byte preview
 content `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`,
 exact `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, `publishable:false`.
 `7d9980e` remains immutable prior evidence from the preceding docs-only handoff;
-current #204 repair evidence is bound to clean source `46fb627` below.
+the later prior #204 repair evidence is bound to clean source `46fb627` below.
 Prior #201 and #202 stay preserved red without retry. `overridecontrol` remains exclusive
 and may not overlap any browser, build or evidence producer.
 
@@ -259,9 +259,8 @@ performance was 595/676/76/168 ms. Manifest `dev-preview-exact-46fb627` records
 `4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`, exact
 tree `0d47d77a303244fd8ce325a5d2ec975dac0c86ca`, expected origin
 `https://dev-celestialfrontier.github.io`, production distinct and
-`publishable:false`. `46fb627` underlies a forthcoming/current docs-only tip;
-live Git/PR checks determine exact tip/upstream status, and matching CI for the
-final pushed docs tip remains pending. Host, human play, Ready, merge, release,
+`publishable:false`. `46fb627` remains prior immutable exact evidence. Host,
+human play, Ready, merge, release,
 deployment and version authority remain unchanged.
 
 Test-battery #205, run
@@ -286,22 +285,44 @@ omission. The ultra-density controls also prove exact rounded cap/backing/peak
 ownership plus CSS/Pixi/EventSystem/pointer/backdrop changes when two logical
 viewports share the same backing dimensions.
 
-The cited follow-on evidence was captured from a `dirty-diagnostic` source state
-and is non-authoritative. One sandboxed
-listener preflight failed with `EPERM`; one harness-only width assertion reported
-`7680.000000000001`, was corrected once, and did not retry a product failure.
-Targeted desktop-8k then passed non-certifying (report SHA-256
-`e77e9727cb019740bd756188be18f444ac1d3f5d666e49f727f355c73b7c3c2d`).
-The dirty-diagnostic one-attempt smoke capture passed 0 findings /10 screenshots in 105,207 ms
-(`fb1800320926532c0df6c782cd630c45e37bcea6906c4bbd953111b7605b43c8`).
-The dirty-diagnostic full-glass capture passed 12/12, planned/executed 57/57, `blocked=[]`,
-`omitted=[]`, zero findings/instrument failures/retries in 53,918 ms
-(`dff0829a3eb8dba67ee0da7c51ae6748fe4ff9bc8652ee1d617657f3133794cb`):
-12 reloads were 174–199 ms, desktop-8k was 180 ms /160.6 ms
-`performanceNow` /7 ms cycle 2, and both 2,730×1,536 outgoing canvases became
-1×1. Nine automated personas passed (not human play); terminal-only performance
-was 605/686/76/159 ms. A clean-head exact battery, push and matching CI remain
-required before any separately authorized preview or human step.
+Prior diagnostic only: the earlier `dirty-diagnostic` targeted/smoke/glass
+captures based on `c57305f` remain non-authoritative; their sandbox `EPERM` and
+corrected `7680.000000000001` assertion did not retry a product failure.
+Immutable executable source `135a635d066d1c67e3096dc134de9247267898d5`
+passed the complete exact sequential battery from clean source-status SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`
+and source-snapshot
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+A sandbox-only Edge SIGABRT interrupted preflight/CDP selftest; the same checks
+passed outside sandbox without product retry. Root validate, legacy smoke,
+rarity and dead-code passed. Root layout run
+`exact-135a635d066d-20260812T192848Z-root-layout` passed 787/787 across 10/10
+under Edge 151 in 75,532 ms; report SHA-256
+`7e2689c31e1095885ee8139bb395b40e799972461649efd100b631a4e6e9f85f`.
+V2 passed 273/1 plus all type/art/override/coverage/spec gates. One-attempt slice
+smoke passed 0 findings /10 screenshots /0 retries in 105,379 ms; report SHA-256
+`c838f3e7dfdf161b7bfa6111c6979215a2ba439fdd44a4cb8e00a8cdf7c3d1a5`.
+Full certifying glass passed 12/12, 57/57 unique, `blocked=[]`, `omitted=[]`,
+zero findings/instrument failures/retries in 52,254 ms; report SHA-256
+`1f14906d178528613fdf52db53ee4e1f84b6a48ceb21ad3a41bd9d0c5348b23b`;
+reloads were 176–185 ms. Exact 8K was 185 ms /2 ms arm /12 ms invoked→release /
+32 ms release→commit /122 ms commit→ready /152.2 ms `performanceNow`, with
+target confirmations 1/9 ms and heartbeats 1/1 ms. Outgoing/replacement stores
+were 2,730×1,536 each; outgoing collapsed to 1×1 and replacement remained
+8,386,560 combined pixels. Nine automated personas passed, not human play;
+JSON/Markdown SHA-256 are
+`c17c44fcb3d534707dc6186bbd4fbcae4d1cfea511bdec8a263ec48be4927a58` /
+`43d5d52e44d7d19aec597a3df5b2599c0da143bb7170d16c17ed141bd390d6b4`.
+Terminal-only performance was 578/659/76/170 ms. Exact preview
+`dev-preview-exact-135a635d066d-20260812T192848Z` browser-smoked PASS under
+Edge 151; manifest SHA-256
+`0233984ca2bad28c189e979d4a30082d6137a06e8eac086c3b2525989813dd4e`,
+37 files /10,186,230 bytes, content
+`da4e066b447db073383f59dd592cd2a19a186d32ce13a2edd05fbc07e66aa10f`,
+tree `d1ab1d79fba4ba2939c3e1ec0661fb60498afb23`, expected separate origin,
+production distinct and `publishable:false`. Live Git/status/PR checks determine
+the docs-only tip; matching CI remains required before any separately authorized
+preview or human step.
 
 Before the stable-source battery above, one smoke attempt correctly refused mixed-
 source evidence because tracked documentation changed during its run (`source

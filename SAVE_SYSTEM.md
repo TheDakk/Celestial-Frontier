@@ -154,8 +154,8 @@
 > origin, with content SHA-256
 > `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`,
 > production distinct and `publishable:false`. Prior CI #201 remains preserved
-> red without retry. `7d9980e` remains immutable prior exact evidence; current
-> #204 repair evidence is bound to clean source `46fb627` below.
+> red without retry. `7d9980e` remains immutable prior exact evidence; the later
+> prior #204 repair evidence is bound to clean source `46fb627` below.
 > CI #202, run `31594595288` / job `94106996466`, is also preserved red without
 > retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`: every earlier gate
 > and `smoke:ci` passed, while desktop-8k glass first observed replacement state
@@ -208,9 +208,7 @@
 > `dev-preview-exact-46fb627` records 37 files /10,176,376 bytes, content SHA-256
 > `4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`,
 > expected origin `https://dev-celestialfrontier.github.io`, production distinct
-> and `publishable:false`. `46fb627` underlies a forthcoming/current docs-only tip;
-> live Git/PR checks decide exact tip/upstream status, and matching final-pushed-tip
-> CI remains pending before preview/human play.
+> and `publishable:false`. `46fb627` remains prior immutable exact evidence.
 > CI #205, run `31621227550` / job `94196289291`, is preserved **RED** without
 > retry at exact pushed `c57305fbf30af2bc8158ff46af1ec49ec4455d95`.
 > Every preceding gate and `smoke:ci` passed. Desktop-8k completed import,
@@ -221,23 +219,45 @@
 > starvation, not proof that browser/CDP transport remained healthy. It is not a
 > save, import, durability, release, or navigation failure.
 >
-> The cited follow-on two-tier density/dual-heartbeat browser evidence was captured
-> from a `dirty-diagnostic` source state and is non-authoritative. A targeted
-> desktop-8k diagnostic passed
-> non-certifying (report SHA-256
-> `e77e9727cb019740bd756188be18f444ac1d3f5d666e49f727f355c73b7c3c2d`).
-> The dirty-diagnostic one-attempt smoke capture passed 0 findings /10 screenshots in 105,207 ms
-> (`fb1800320926532c0df6c782cd630c45e37bcea6906c4bbd953111b7605b43c8`),
-> and the full glass capture passed 12/12, 57/57 controls, `blocked=[]`, `omitted=[]`,
-> zero findings/instrument failures/retries in 53,918 ms
-> (`dff0829a3eb8dba67ee0da7c51ae6748fe4ff9bc8652ee1d617657f3133794cb`).
-> Desktop-8k was 180 ms total /160.6 ms `performanceNow` /7 ms post-render
-> confirmation, with 2,730×1,536→1×1 outgoing canvases. Nine automated
-> personas passed and terminal-only performance was 605/686/76/159 ms. One
-> sandboxed listen preflight failed `EPERM`; one harness-only floating-width
-> assertion reported `7680.000000000001`, was corrected once, and did not retry a
-> product failure. A clean-head exact battery, push and matching CI are still
-> required before any preview/human step. No save-format change occurred.
+> Prior diagnostic only: the earlier `dirty-diagnostic` targeted/smoke/glass
+> captures based on `c57305f` remain non-authoritative; their sandbox `EPERM`
+> and corrected `7680.000000000001` harness assertion did not retry a product
+> failure. Immutable executable source
+> `135a635d066d1c67e3096dc134de9247267898d5` passed the complete exact
+> sequential battery from clean source-status SHA-256
+> `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`
+> and source-snapshot
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+> A sandbox-only Edge SIGABRT interrupted preflight/CDP selftest; the same checks
+> passed outside sandbox without a product retry. Root validate, legacy smoke,
+> rarity and dead-code passed. Root layout
+> `exact-135a635d066d-20260812T192848Z-root-layout` passed 787/787 across 10/10
+> under Edge 151 in 75,532 ms; report SHA-256
+> `7e2689c31e1095885ee8139bb395b40e799972461649efd100b631a4e6e9f85f`.
+> V2 passed 273/1 plus all type/art/override/coverage/spec gates. One-attempt
+> slice smoke passed 0 findings /10 screenshots /0 retries in 105,379 ms;
+> report SHA-256 `c838f3e7dfdf161b7bfa6111c6979215a2ba439fdd44a4cb8e00a8cdf7c3d1a5`.
+> Full certifying glass passed 12/12, 57/57 unique, `blocked=[]`, `omitted=[]`,
+> zero findings/instrument failures/retries in 52,254 ms; report SHA-256
+> `1f14906d178528613fdf52db53ee4e1f84b6a48ceb21ad3a41bd9d0c5348b23b`;
+> reloads were 176–185 ms. Exact 8K was 185 ms /2 ms arm /12 ms
+> invoked→release /32 ms release→commit /122 ms commit→ready /152.2 ms
+> `performanceNow`, with target confirmations 1/9 ms and heartbeats 1/1 ms.
+> Outgoing/replacement canvases were 2,730×1,536 each; outgoing collapsed to
+> 1×1 and the replacement pair remained 8,386,560 pixels. Nine automated
+> personas passed (not human play), with JSON/Markdown SHA-256
+> `c17c44fcb3d534707dc6186bbd4fbcae4d1cfea511bdec8a263ec48be4927a58` /
+> `43d5d52e44d7d19aec597a3df5b2599c0da143bb7170d16c17ed141bd390d6b4`;
+> terminal-only performance was 578/659/76/170 ms. Exact preview
+> `dev-preview-exact-135a635d066d-20260812T192848Z` browser-smoked PASS under
+> Edge 151; manifest SHA-256
+> `0233984ca2bad28c189e979d4a30082d6137a06e8eac086c3b2525989813dd4e`,
+> 37 files /10,186,230 bytes, content
+> `da4e066b447db073383f59dd592cd2a19a186d32ce13a2edd05fbc07e66aa10f`,
+> tree `d1ab1d79fba4ba2939c3e1ec0661fb60498afb23`, expected separate origin,
+> production distinct and `publishable:false`. Live Git/status/PR checks determine
+> the docs-only tip; matching CI and all host/human/Ready/merge/release/deploy/
+> version boundaries remain open. No save-format change occurred.
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay

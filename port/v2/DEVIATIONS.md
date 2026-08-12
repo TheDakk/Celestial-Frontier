@@ -971,11 +971,11 @@ duplicates).
   `invoked`, 21 ms phase span, 0 ms write, 19 ms release, both 5,461×3,072 canvases →1×1,
   `performanceNow` 199.5 ms, 1 ms confirmation and 239 ms total. One-attempt smoke passed
   0 findings / 10 screenshots and all nine automated personas passed. `7d9980e` remains immutable
-  prior evidence for D-SAVE-2; current handoff evidence is `46fb627` under D-SAVE-3 below. The exact
+  prior evidence for D-SAVE-2; the later prior D-SAVE-3 evidence is `46fb627` below. The exact
   clean executable outcome closes this implementation item; human play and release authority remain
   separate.
 - ✔ **D-SAVE-3 — simultaneous full-viewport resources share one budget and boot wiring owns
-  ticker start (closed in exact clean executable evidence `46fb627`, 2026-08-12).** Test-battery #204
+  ticker start (first closed in exact clean executable evidence `46fb627`, 2026-08-12).** Test-battery #204
   (`31612817092` / `94168172635`) completed once without retry at exact pushed
   `4cee7d807b8f9258e370aad31c30756269f95a96` and remains red. All earlier gates and
   `smoke:ci` passed. Desktop-8k's arm queued for 9,504 ms; import/write, 35 ms release,
@@ -1009,12 +1009,12 @@ duplicates).
   records 37 files /10,176,376 bytes, content SHA-256
   `4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`, tree
   `0d47d77a303244fd8ce325a5d2ec975dac0c86ca`, expected separate origin and
-  `publishable:false`. `46fb627` underlies a forthcoming/current docs-only tip;
-  live Git/PR checks decide exact tip/upstream state, and matching final-pushed-tip
-  CI remains pending. Human play, Ready, merge, release, deployment and version
+  `publishable:false`. `46fb627` remains prior immutable exact evidence. Human
+  play, Ready, merge, release, deployment and version
   authority remain open.
 - ★ **D-UI-4 — ready publication is not post-render answerability; ultra backing is a
-  separate density tier (implementation complete, clean authority pending, 2026-08-12).**
+  separate density tier (implementation complete with exact clean executable evidence,
+  2026-08-12).**
   Test-battery #205 (`31621227550` / `94196289291`) completed once without retry
   at exact pushed `c57305fbf30af2bc8158ff46af1ec49ec4455d95` and remains red.
   Every preceding gate and `smoke:ci` passed. Desktop-8k completed import, primary
@@ -1049,21 +1049,44 @@ duplicates).
   `ready-confirmation-ticker-progress`, `ultra-viewport-render-budget`, and
   `ultra-same-backing-resize` carry deliberate failure cases in both directions.
 
-  The cited browser evidence was captured from a **`dirty-diagnostic`, non-authoritative**
-  source state based on pushed `c57305f`. One sandboxed listener preflight failed `EPERM`;
-  one harness-only exact-width assertion reported `7680.000000000001`, was corrected
-  once, and did not retry a product failure. Targeted 8K passed non-certifying
-  (`e77e9727cb019740bd756188be18f444ac1d3f5d666e49f727f355c73b7c3c2d`).
-  The dirty-diagnostic smoke capture passed once, 0 findings /10 screenshots /105,207 ms
-  (`fb1800320926532c0df6c782cd630c45e37bcea6906c4bbd953111b7605b43c8`).
-  The dirty-diagnostic full-glass capture passed 12/12, 57/57, `blocked=[]`, `omitted=[]`, 0 findings/
-  instrument failures/retries /53,918 ms
-  (`dff0829a3eb8dba67ee0da7c51ae6748fe4ff9bc8652ee1d617657f3133794cb`),
-  with 12 reloads at 174–199 ms and 8K at 180 ms /160.6 ms ready /7 ms cycle 2 /
-  2,730×1,536→1×1 outgoing stores. Nine automated personas passed, still not a
-  human playtest; terminal-only performance was 605/686/76/159 ms. A clean-head
-  exact battery, push and matching CI remain open, as do separate host/human/Ready/
-  merge/release/deploy/version authority.
+  Prior diagnostic only: the earlier `dirty-diagnostic` targeted/smoke/glass
+  captures based on `c57305f` remain non-authoritative; their sandbox `EPERM`
+  and corrected `7680.000000000001` assertion did not retry a product failure.
+  Immutable executable source `135a635d066d1c67e3096dc134de9247267898d5`
+  passed the complete exact sequential battery from clean source-status SHA-256
+  `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`
+  and source-snapshot
+  `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+  A sandbox-only Edge SIGABRT interrupted preflight/CDP selftest; the same checks
+  passed outside sandbox without product retry. Root validate, legacy smoke,
+  rarity and dead-code passed. Root layout
+  `exact-135a635d066d-20260812T192848Z-root-layout` passed 787/787 across 10/10
+  under Edge 151 in 75,532 ms; report
+  `7e2689c31e1095885ee8139bb395b40e799972461649efd100b631a4e6e9f85f`.
+  V2 passed 273/1 plus all type/art/override/coverage/spec gates. One-attempt
+  slice smoke passed 0 findings /10 screenshots /0 retries in 105,379 ms; report
+  `c838f3e7dfdf161b7bfa6111c6979215a2ba439fdd44a4cb8e00a8cdf7c3d1a5`.
+  Full certifying glass passed 12/12, 57/57 unique, `blocked=[]`, `omitted=[]`,
+  zero findings/instrument failures/retries in 52,254 ms; report
+  `1f14906d178528613fdf52db53ee4e1f84b6a48ceb21ad3a41bd9d0c5348b23b`,
+  with reloads at 176–185 ms. Exact 8K was 185 ms /2 ms arm /12 ms
+  invoked→release /32 ms release→commit /122 ms commit→ready /152.2 ms
+  `performanceNow`; target confirmations were 1/9 ms and heartbeats 1/1 ms.
+  Outgoing/replacement stores were 2,730×1,536 each; outgoing collapsed to 1×1
+  and replacement remained 8,386,560 combined pixels. Nine automated personas
+  passed—not human play—with JSON/Markdown SHA-256
+  `c17c44fcb3d534707dc6186bbd4fbcae4d1cfea511bdec8a263ec48be4927a58` /
+  `43d5d52e44d7d19aec597a3df5b2599c0da143bb7170d16c17ed141bd390d6b4`;
+  terminal-only performance was 578/659/76/170 ms. Exact preview
+  `dev-preview-exact-135a635d066d-20260812T192848Z` browser-smoked PASS under
+  Edge 151; manifest
+  `0233984ca2bad28c189e979d4a30082d6137a06e8eac086c3b2525989813dd4e`,
+  37 files /10,186,230 bytes, content
+  `da4e066b447db073383f59dd592cd2a19a186d32ce13a2edd05fbc07e66aa10f`,
+  tree `d1ab1d79fba4ba2939c3e1ec0661fb60498afb23`, expected separate origin,
+  production distinct and `publishable:false`. Live Git/status/PR checks determine
+  the docs-only tip; matching CI and separate host/human/Ready/merge/release/
+  deploy/version authority remain open.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
@@ -1213,9 +1236,9 @@ duplicates).
   `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
   `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, expected separate origin,
   production distinct and `publishable:false`. Prior #201
-  remains red without retry. `7d9980e` is immutable prior evidence; D-SAVE-3's current clean
-  evidence is `46fb627`. Live Git/PR checks decide exact tip/upstream state, matching CI for the
-  final pushed docs tip is pending, and the separate-origin human playtest remains open.
+  remains red without retry. `7d9980e` is immutable prior evidence; D-SAVE-3's later prior clean
+  evidence is `46fb627`. Live Git/PR checks decide exact tip/upstream/check state; whichever final
+  pushed docs tip is selected requires matching CI. The separate-origin human playtest remains open.
 
   Matching test-battery #202, run `31594595288` / job `94106996466`, completed once without retry
   at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53` and is **RED**. Every earlier root/
@@ -1229,17 +1252,23 @@ duplicates).
   `replacementNavigationOutcome`, `importReleaseOutcome` and `replacementReadyOutcome` decisions.
   It requires the prior release reason/token/context/session, a changed top-frame loader, and one
   valid ready tail event from the exact new default context/generation/origin/session/loader/token/
-  URL before the phase-owned deadlines. A single at-most-2-second Runtime call confirms that exact
-  context. The payload's browser-native `performanceNow` must be strictly below 20 seconds, and an
-  exact-boundary control fails, so observer descheduling cannot compress a genuinely late boot.
-  Fatal events remain sticky outside the bounded diagnostic ring. Missing, duplicate,
-  malformed, wrong-context and just-late events fail closed. The ready event proves complete boot
-  publication plus a serviced event-loop turn, not the separate 50 ms answerability metric.
+  URL before the phase-owned deadlines. Two strict at-most-2-second exact-context cycles follow.
+  Each sends its target Runtime command concurrently with root-session `Browser.getVersion`; cycle
+  2 waits for a later post-render Pixi ticker turn. The exact five-row ledger records the import arm
+  plus both target/heartbeat pairs. A lost or late target with a timely heartbeat is a product
+  answerability finding; a bad or late heartbeat is an instrument/transport failure. The payload's
+  browser-native `performanceNow` must be strictly below 20 seconds, and an exact-boundary control
+  fails, so observer descheduling cannot compress a genuinely late boot. Fatal events remain sticky
+  outside the bounded diagnostic ring. Missing, duplicate, malformed, wrong-context and just-late
+  events fail closed. The ready event proves complete boot publication plus a serviced event-loop
+  turn; both confirmation cycles prove bounded post-ready commandability, not the separate 50 ms
+  answerability metric.
 
-  The exact `7d9980e` battery above remains immutable evidence for that repair; current D-SAVE-3
-  evidence is bound to clean executable source `46fb627` above. Matching CI for the final pushed
-  docs tip and the separate-origin human playtest remain pending; human certification, Ready,
-  merge, version, preview publication and deployment boundaries are unchanged.
+  The exact `7d9980e` battery above remains immutable evidence for that repair; later prior D-SAVE-3
+  evidence is bound to clean executable source `46fb627` above. Live Git/PR checks decide exact
+  tip/upstream/check state, and whichever final pushed docs tip is selected requires matching CI.
+  Separate-origin human playtest, human certification, Ready, merge, version, preview publication
+  and deployment remain separate authority boundaries.
   Earlier test-battery #203 (`31602984470` / `94134750800`) failed once without retry only
   in desktop-8k import before the release boundary: the old 5,461×3,072 Pixi ticker
   remained live while the durable write and teardown awaited service. The follow-on
@@ -1252,8 +1281,9 @@ duplicates).
   no timeout increase, retry, or IndexedDB timeout race is introduced. Before the exact clean
   evidence above, one mixed-source smoke execution correctly refused when tracked docs changed
   during its run; it had no automatic retry and was an instrument/coordination refusal, not a
-  product failure. That exact clean commit closes D-SAVE-2; clean source `46fb627` closes the
-  local implementation/evidence side of D-SAVE-3 while matching final-pushed-tip CI remains open.
+  product failure. That exact clean commit closes D-SAVE-2; later prior clean source `46fb627`
+  closes the local implementation/evidence side of D-SAVE-3. Live Git/PR checks decide exact
+  tip/upstream/check state, and whichever final pushed tip is selected requires matching CI.
 - ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
   the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson
