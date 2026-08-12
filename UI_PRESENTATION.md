@@ -236,46 +236,44 @@
 > #203 as first-attempt evidence; do not retry it or lengthen the deadline.
 >
 > Immutable executable evidence source
-> `20896ad410b48ae0c407a9f3d6885d30ec6657b1` passed its exact sequential battery.
+> `7d9980e37e60f0cec8cb840e75098872b9cc90d0` passed its exact sequential battery.
 > Root preflight selftest/preflight, validate/fingerprint and smoke passed; the
 > only preflight note was Edge 151 versus pinned Edge 150 drift. Certifying run
-> `exact-20896ad-root-layout` passed the sealed 787/787 inventory across 10/10
-> viewports and exact verification. Rarity completed 60M/0 downgrades and dead-code review
+> selftest passed, then `exact-7d9980e-root-layout` passed the sealed 787/787
+> inventory across 10/10 viewports and exact verification. Rarity completed 60M/0 downgrades and dead-code review
 > found 3 tooling references. V2 passed 24 files / 273 tests / 1 skip plus every
 > gate/selftest; one-attempt smoke passed 0 findings / 10 screenshots.
 >
-> Committed/certifying glass passed 12/12 viewports, 50/50 controls,
+> Exact-source certifying glass passed 12/12 viewports, 52/52 controls,
 > `omitted=[]`, 0 findings/instrument failures/retries, with working-tree digest
 > `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
-> All 12 reload witnesses passed; desktop-8k recorded both 5,461×3,072 backings
-> collapsing to 1×1, renderer/stage released, view detached, release→commit in
-> 31 ms, commit→ready in 148 ms, `performanceNow` 177 ms, confirmation in 1 ms
-> and 212 ms total. All viewport totals were 170–212 ms and maximum browser-native
-> time was 177 ms. All nine automated personas passed. The terminal-only 4×
-> diagnostic recorded 586 ms painted / 666 ms answerable / 77 ms press→panel /
-> 151 ms rebuild. Exact 37-file preview `dev-preview-exact-20896ad` verified and
-> browser-smoked PASS at 320×568 for expected origin
-> `https://dev-celestialfrontier.github.io`, content SHA-256
-> `3a2e5285184cf392a10916270f5d3d449d72d78bb6afb0b6bd29d45d6b1a6b50`,
-> `publishable:false`. `20896ad` underlies a docs-only handoff tip. Exact
+> All 12 exact import-phase/release/ready paths passed, with replacement totals
+> of 194–239 ms. Desktop-8k recorded a 3 ms arm, 21 ms import-phase span with
+> the ticker true only at `invoked`, 0 ms write, 19 ms release, both
+> 5,461×3,072 backings collapsing to 1×1, `performanceNow` 199.5 ms, 1 ms
+> confirmation and 239 ms total. All nine automated personas passed. The initial
+> malformed `npm run perf -- --runs=4` command was rejected before a browser
+> launched; the correct single terminal diagnostic then recorded 646 ms painted /
+> 726 ms answerable / 74 ms press→panel / 157 ms rebuild, not a retry of an
+> evidence failure. Exact 37-file / 10,170,996-byte preview
+> `dev-preview-exact-7d9980e` verified and browser-smoked PASS under Edge 151 at
+> 320×568 for expected origin `https://dev-celestialfrontier.github.io`, distinct
+> from production, content SHA-256
+> `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
+> `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, `publishable:false`.
+> `7d9980e` underlies the forthcoming/
+> current docs-only handoff tip. Exact
 > tip/upstream/check status is read live, and the final pushed tip requires
 > matching green CI. The
 > artifact is bound to `https://dev-celestialfrontier.github.io`, but no host or
 > publication is authorized and the separate-origin human playtest is still
 > required before Ready or merge.
 >
-> The frozen #203 repair remains uncommitted and therefore diagnostic only. At
-> final proof digest `f25a190468d2be42f48b352c5c2b818524ab5e083e73715e7f5d488301b46f42`,
-> full certifying-structure glass passed 12/12 viewports, all 52/52 controls,
-> `omitted=[]`, 0 findings/instrument failures/retries, and all 12 exact import-
-> phase/release/ready paths. The 8K row
-> recorded a 3 ms arm, primary-write completion 1 ms after claim, 29 ms
-> release teardown, 253 ms total, 198.1 ms replacement `performanceNow`, 1 ms
-> confirmation, and both 5,461×3,072 canvases collapsing to 1×1. Exact digest and
-> timing provenance must be read from the retained post-proof report. A subsequent
-> smoke attempt refused mixed-source evidence because tracked documentation changed
-> during its run; stable exact-commit smoke/glass/persona remain pending. None of
-> this substitutes for matching CI or human play.
+> Before that stable-source battery, one smoke attempt refused mixed-source
+> evidence because tracked documentation changed during its run (`source identity
+> changed during slice smoke`). The single execution had no automatic retry and
+> remains a coordination/instrument refusal, not a product failure. None of the
+> automated results substitutes for matching CI or human play.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
 v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve

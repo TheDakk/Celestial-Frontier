@@ -105,7 +105,7 @@ mutable-tree diagnostic completed 787/787 across 10 viewports, but is not exact-
 certification.
 
 Matching test-battery #201, run `31586917924` / job `94082765087`, completed
-once without retry on that pushed head and is **RED**. Every preceding root,
+once without retry on pushed `4560269b8767dc48bb82e3b1f9d82ca835a84aad` and is **RED**. Every preceding root,
 product and v2 gate—including `smoke:ci`—passed. Only the desktop-8k preference-
 fixture import leg instrument-failed after its former 20-second replacement wait:
 the old loader remained while the old slice token and import phase were absent.
@@ -113,7 +113,7 @@ This is a replacement-lifecycle/instrument finding after reload was requested,
 not a save-classifier rejection or reported repository-write error. Do not rerun
 unchanged #201 or lengthen its timeout to mask it.
 
-Immutable executable evidence source `20896ad410b48ae0c407a9f3d6885d30ec6657b1`
+Immutable executable evidence source `7d9980e37e60f0cec8cb840e75098872b9cc90d0`
 makes the product's Training-restart,
 supported-import and storage-retry reloads claim one mutually exclusive replacement
 transaction before awaiting. The claim synchronously stops a running outgoing
@@ -169,22 +169,29 @@ new boundary, including stopped-before-`invoked`, running-after-claim, and exact
 deadline-late evidence. No timeout increases, retries, or `Promise.race` around
 IndexedDB durability are used.
 
-The complete clean `20896ad` battery passed: root preflight selftest/preflight
+The complete clean `7d9980e` battery passed: root preflight selftest/preflight
 (only Edge 151 versus pinned Edge 150 drift), validate/fingerprint and smoke;
-`exact-20896ad-root-layout` 787/787 across 10/10 viewports; rarity 60M/0;
+root layout selftest plus `exact-7d9980e-root-layout` 787/787 across 10/10
+viewports and exact verification; rarity 60M/0;
 dead-code 3 known tooling references; v2 24 files /273 tests /1 skip plus every
 type/art/override/coverage/spec/instrument gate; and one-attempt smoke 0 findings /
-10 screenshots. Committed/certifying glass passed 12/12 viewports, 50/50 controls,
-`omitted=[]`, 0 findings/instrument failures/retries and all 12 witnesses at digest
+10 screenshots. Exact-source certifying glass passed 12/12 viewports, 52/52 controls,
+`omitted=[]`, 0 findings/instrument failures/retries and all 12 exact import-phase/
+release/ready paths at digest
 `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
-Replacement totals were 170–212 ms with maximum browser-native time 177 ms;
-desktop-8k released 5,461×3,072→1×1 for both canvases, release→commit 31 ms,
-commit→ready 148 ms, `performanceNow` 177 ms, confirmation 1 ms and total 212 ms.
-Nine personas passed; the terminal-only 4× diagnostic was 586/666/77/151 ms.
-Exact 37-file preview `dev-preview-exact-20896ad` verified and browser-smoked PASS
-at 320×568 for `https://dev-celestialfrontier.github.io`, content
-`3a2e5285184cf392a10916270f5d3d449d72d78bb6afb0b6bd29d45d6b1a6b50`,
-`publishable:false`. `20896ad` underlies a docs-only handoff tip; exact tip/
+Replacement totals were 194–239 ms; desktop-8k recorded a 3 ms arm, 21 ms
+import-phase span with ticker true only at `invoked`, 0 ms write, 19 ms release,
+5,461×3,072→1×1 for both canvases, `performanceNow` 199.5 ms, 1 ms confirmation
+and 239 ms total. Nine personas passed. The malformed initial
+`npm run perf -- --runs=4` command was rejected before browser startup; the correct
+single terminal diagnostic then recorded 646/726/74/157 ms and was not a retry
+of an evidence failure. Exact 37-file / 10,170,996-byte preview
+`dev-preview-exact-7d9980e` verified and browser-smoked PASS under Edge 151 at
+320×568 for `https://dev-celestialfrontier.github.io`, distinct from production,
+content `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`,
+exact `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, `publishable:false`.
+`7d9980e` underlies the forthcoming/current
+docs-only handoff tip; exact tip/
 upstream/check state is live, and matching final-tip CI remains required. Prior
 #201 and #202 stay preserved red without retry. `overridecontrol` remains exclusive
 and may not overlap any browser, build or evidence producer.
@@ -201,20 +208,12 @@ through the durable-write wait and teardown under CI software rendering. This is
 a pre-release renderer-pressure cliff, not save corruption or a reported
 repository-write failure. Preserve it without retry or a longer deadline.
 
-The frozen repair is still uncommitted, so its evidence is diagnostic only. At
-dirty-source digest
-`f25a190468d2be42f48b352c5c2b818524ab5e083e73715e7f5d488301b46f42`,
-full certifying-structure glass passed 12/12 viewports, 52/52 controls,
-`omitted=[]`, 0 findings,
-instrument failures or retries, all 12 exact phase/release/ready paths, and
-replacement totals of 194–253 ms. Desktop-
-8k recorded a 3 ms arm, the exact seven-stage no-active-persist sequence with
-ticker true only at `invoked`, 31 ms phase span, 1 ms write, 29 ms release,
-both 5,461×3,072 canvases →1×1, `performanceNow` 198.1 ms, 1 ms confirmation,
-and 253 ms total. A later smoke attempt correctly refused mixed-source evidence
-because tracked documentation changed during its run; stable exact-commit smoke/
-glass/persona remain pending. Exact clean committed evidence and matching CI remain required
-before preview/human play.
+Before the stable-source battery above, one smoke attempt correctly refused mixed-
+source evidence because tracked documentation changed during its run (`source
+identity changed during slice smoke`). That single execution had no automatic
+retry and remains coordination/instrument evidence, not a product failure. Exact
+tip/upstream/check state is live; matching final-tip CI remains required before
+preview/human play.
 
 Human development playtests use a commit-bound static package, not the live
 site. `npm run preview:package -- --origin=https://<separate-preview-host>`
