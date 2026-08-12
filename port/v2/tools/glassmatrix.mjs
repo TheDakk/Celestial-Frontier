@@ -27,12 +27,55 @@ const appDir = path.join(here, '..', 'apps', 'game');
 const dist = path.join(appDir, 'dist');
 const repoRoot = path.resolve(here, '..', '..', '..');
 const evidenceDir = path.join(appDir, 'smoke');
-/* The renderer and its texture-backed 2D backdrop coexist. Treat the old
-   4096² allowance as their aggregate budget, not as permission for each
-   canvas to allocate 4096² independently. The equal half-budget also keeps
-   expected DPR honest before either backing store is created. */
-const MAX_TWIN_BACKING_PIXELS = 4096 * 4096;
-const MAX_CANVAS_BACKING_PIXELS = MAX_TWIN_BACKING_PIXELS / 2;
+/* The renderer and its texture-backed 2D backdrop coexist. Ordinary
+   viewports retain the 4096² aggregate budget, split equally. A CSS viewport
+   larger than one ordinary half-budget selects the ultra tier and halves the
+   per-canvas allowance again; otherwise an 8K software renderer can publish
+   ready while monopolising every later target turn. */
+const DEFAULT_CANVAS_BACKING_PIXELS = 8_388_608;
+const ULTRA_VIEWPORT_CSS_PIXELS = 8_388_608;
+const ULTRA_CANVAS_BACKING_PIXELS = 4_194_304;
+const MAX_TWIN_BACKING_PIXELS = DEFAULT_CANVAS_BACKING_PIXELS * 2;
+const backingPixelCapForViewport = (width, height) => (
+  Number.isFinite(width) && Number.isFinite(height)
+  && width > 0 && height > 0
+  && width * height > ULTRA_VIEWPORT_CSS_PIXELS
+    ? ULTRA_CANVAS_BACKING_PIXELS
+    : DEFAULT_CANVAS_BACKING_PIXELS
+);
+const roundedBackingPixels = (width, height, resolution) =>
+  Math.max(1, Math.round(width * resolution)) * Math.max(1, Math.round(height * resolution));
+function fitResolutionToPixelCap(requested, width, height, pixelCap) {
+  const dimensionFloor = Math.min(1 / width, 1 / height);
+  let low = dimensionFloor;
+  let high = Math.max(dimensionFloor, requested);
+  if (roundedBackingPixels(width, height, high) <= pixelCap) return high;
+  for (let index = 0; index < 64; index++) {
+    const mid = low + (high - low) / 2;
+    if (mid === low || mid === high) break;
+    if (roundedBackingPixels(width, height, mid) <= pixelCap) low = mid;
+    else high = mid;
+  }
+  return low;
+}
+function expectedDensityPlan(viewport) {
+  const width = Number(viewport?.width);
+  const height = Number(viewport?.height);
+  const deviceDpr = Number(viewport?.dpr ?? 1);
+  if (!Number.isInteger(width) || width <= 0 || !Number.isInteger(height) || height <= 0
+    || !Number.isFinite(deviceDpr) || deviceDpr <= 0) return null;
+  const backingPixelCapPerCanvas = backingPixelCapForViewport(width, height);
+  const requested = Math.min(
+    Math.max(1, deviceDpr), viewport?.mobile ? 2 : 3,
+    Math.sqrt(backingPixelCapPerCanvas / (width * height)),
+  );
+  const dpr = fitResolutionToPixelCap(requested, width, height, backingPixelCapPerCanvas);
+  return {
+    width, height, dpr, backingPixelCapPerCanvas,
+    backingWidth: Math.max(1, Math.round(width * dpr)),
+    backingHeight: Math.max(1, Math.round(height * dpr)),
+  };
+}
 /* Import settlement, navigation commit, and replacement boot are separate
    observable phases. Bound each to the same budget as a fresh slice boot;
    never let time spent waiting for the old loader to leave consume the new
@@ -51,6 +94,14 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const startedAt = Date.now();
 let runSource = null;
 let runReloadEvidence = [];
+class ProductAnswerabilityFinding extends Error {
+  constructor(message, evidence, finding = null) {
+    super(message);
+    this.name = 'ProductAnswerabilityFinding';
+    this.evidence = evidence;
+    this.finding = finding;
+  }
+}
 const VETERAN_PREF_RAW = (() => {
   const fixture = JSON.parse(fs.readFileSync(
     path.join(here, '..', '..', 'baseline-v1.8.9', 'save-fixtures.json'), 'utf8',
@@ -172,6 +223,10 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'replacement-ticker-quiescence',
   'replacement-boot-phase-sequence',
   'reload-resource-release',
+  'ready-confirmation-heartbeat',
+  'ready-confirmation-ticker-progress',
+  'ultra-viewport-render-budget',
+  'ultra-same-backing-resize',
 ]);
 
 function compactReloadEvent(event, requestUrls, at) {
@@ -251,7 +306,7 @@ function fatalReloadEvent(events) {
       && !row.canceled && row.errorText !== 'net::ERR_ABORTED')) || null;
 }
 
-function validateReloadReleaseWitness(payload) {
+function validateReloadReleaseWitness(payload, viewport) {
   let witness = payload;
   if (typeof witness === 'string') {
     try { witness = JSON.parse(witness); }
@@ -290,21 +345,29 @@ function validateReloadReleaseWitness(payload) {
       return { ok: false, why: `release witness ${name} retained a canvas larger than 1x1`, witness };
     }
   }
+  const plan = expectedDensityPlan(viewport);
+  if (!plan) {
+    return { ok: false, why: 'release witness viewport policy is invalid', witness };
+  }
+  const backingPixelCapPerCanvas = plan.backingPixelCapPerCanvas;
   const combinedBeforePixels = beforePixels.appCanvas + beforePixels.backdropCanvas;
-  if (combinedBeforePixels > MAX_TWIN_BACKING_PIXELS) {
-    return { ok: false, why: 'release witness canvases exceeded the aggregate twin backing-pixel budget', witness };
+  if (combinedBeforePixels > backingPixelCapPerCanvas * 2) {
+    return { ok: false, why: 'release witness canvases exceeded the selected aggregate twin backing-pixel budget', witness };
   }
   for (const name of ['appCanvas', 'backdropCanvas']) {
     const canvas = witness[name];
     if (canvas.beforeWidth <= 1 || canvas.beforeHeight <= 1 || beforePixels[name] <= 1
-      || beforePixels[name] > MAX_CANVAS_BACKING_PIXELS) {
-      return { ok: false, why: `release witness ${name} did not capture a meaningful bounded half-budget pre-release canvas`, witness };
+      || beforePixels[name] > backingPixelCapPerCanvas) {
+      return { ok: false, why: `release witness ${name} did not capture a meaningful bounded selected-tier pre-release canvas`, witness };
+    }
+    if (canvas.beforeWidth !== plan.backingWidth || canvas.beforeHeight !== plan.backingHeight) {
+      return { ok: false, why: `release witness ${name} did not match the exact selected-density backing dimensions`, witness };
     }
   }
   return { ok: true, why: null, witness };
 }
 
-function validateSliceReadyWitness(payload) {
+function validateSliceReadyWitness(payload, expectedViewport) {
   let witness = payload;
   if (typeof witness === 'string') {
     try { witness = JSON.parse(witness); }
@@ -328,19 +391,39 @@ function validateSliceReadyWitness(payload) {
   }
   const backingFields = [
     'backingWidth', 'backingHeight', 'backdropBackingWidth', 'backdropBackingHeight',
-    'combinedBackingPixels',
+    'combinedBackingPixels', 'backingPixelCapPerCanvas', 'viewportWidth', 'viewportHeight',
   ];
   if (!backingFields.every((field) => Number.isInteger(witness[field]))) {
     return { ok: false, why: 'slice-ready witness twin backing dimensions are invalid', witness };
+  }
+  if (witness.viewportWidth <= 0 || witness.viewportHeight <= 0
+    || witness.backingPixelCapPerCanvas <= 0) {
+    return { ok: false, why: 'slice-ready witness viewport backing policy is invalid', witness };
+  }
+  const plan = expectedDensityPlan(expectedViewport ?? {
+    width: witness.viewportWidth, height: witness.viewportHeight, dpr: witness.rendererDpr,
+  });
+  const selectedCap = backingPixelCapForViewport(witness.viewportWidth, witness.viewportHeight);
+  if (witness.backingPixelCapPerCanvas !== selectedCap
+    || !plan || !Number.isFinite(witness.rendererDpr)
+    || Math.abs(witness.rendererDpr - plan.dpr) > 1e-12
+    || (expectedViewport && (witness.viewportWidth !== expectedViewport.width
+      || witness.viewportHeight !== expectedViewport.height
+      || selectedCap !== backingPixelCapForViewport(expectedViewport.width, expectedViewport.height)))) {
+    return { ok: false, why: 'slice-ready witness selected backing tier/viewport is invalid', witness };
   }
   const appPixels = witness.backingWidth * witness.backingHeight;
   const backdropPixels = witness.backdropBackingWidth * witness.backdropBackingHeight;
   if (witness.backingWidth <= 1 || witness.backingHeight <= 1
     || witness.backdropBackingWidth <= 1 || witness.backdropBackingHeight <= 1
-    || appPixels > MAX_CANVAS_BACKING_PIXELS
-    || backdropPixels > MAX_CANVAS_BACKING_PIXELS
+    || appPixels > selectedCap
+    || backdropPixels > selectedCap
+    || witness.backingWidth !== witness.backdropBackingWidth
+    || witness.backingHeight !== witness.backdropBackingHeight
+    || witness.backingWidth !== plan.backingWidth
+    || witness.backingHeight !== plan.backingHeight
     || witness.combinedBackingPixels !== appPixels + backdropPixels
-    || witness.combinedBackingPixels > MAX_TWIN_BACKING_PIXELS) {
+    || witness.combinedBackingPixels > selectedCap * 2) {
     return { ok: false, why: 'slice-ready witness twin backing budget is invalid', witness };
   }
   if (!Number.isFinite(witness.performanceNow) || witness.performanceNow < 0
@@ -656,36 +739,208 @@ function confirmationDeadlineOutcome(endedAt, bootDeadline) {
     : { ok: false, why: 'bounded slice-ready confirmation completed after the replacement boot deadline' };
 }
 
-async function runBoundedReadyConfirmation({
-  send, sessionId, executionContextId, expression, bootDeadline,
-  maxTimeoutMs = PHASE_PROBE_TIMEOUT_MS, now = Date.now,
-}) {
-  const remaining = bootDeadline - now();
-  if (remaining <= 0) {
-    return { ok: false, why: 'timely slice-ready witness was not processed before its boot deadline', command: null, result: null };
+function confirmationCommandDeadlineOutcome(endedAt, startedAt, timeoutMs) {
+  if (!Number.isFinite(endedAt) || !Number.isFinite(startedAt)
+    || !Number.isInteger(timeoutMs) || timeoutMs <= 0) {
+    return { ok: false, why: 'slice-ready confirmation command deadline evidence is invalid' };
   }
-  const timeoutMs = Math.max(1, Math.min(maxTimeoutMs, remaining));
-  const startedAt = now();
-  try {
-    const result = await send('Runtime.evaluate', {
-      expression, contextId: executionContextId, returnByValue: true, awaitPromise: false,
-    }, sessionId, { timeoutMs });
-    const endedAt = now();
-    const command = { method: 'Runtime.evaluate', startedAt, endedAt,
-      durationMs: endedAt - startedAt, timeoutMs, status: 'completed' };
-    const deadline = confirmationDeadlineOutcome(endedAt, bootDeadline);
-    return deadline.ok
-      ? { ok: true, why: null, command, result }
-      : { ok: false, why: deadline.why, command, result };
-  } catch (error) {
-    const endedAt = now();
+  return endedAt < startedAt + timeoutMs
+    ? { ok: true, why: null }
+    : { ok: false, why: 'bounded slice-ready confirmation command completed at or after its exact timeout' };
+}
+
+async function runBoundedReadyConfirmation({
+  send, sessionId, executionContextId, expression, readyReceiptAt, bootDeadline,
+  maxTimeoutMs = PHASE_PROBE_TIMEOUT_MS, now = Date.now, cycle = 1,
+  postRenderPriority = null,
+}) {
+  if (!Number.isFinite(readyReceiptAt) || !Number.isFinite(bootDeadline)
+    || readyReceiptAt >= bootDeadline) {
     return {
-      ok: false, why: `bounded slice-ready confirmation instrument failed (${error.message})`,
-      command: { method: 'Runtime.evaluate', startedAt, endedAt,
-        durationMs: endedAt - startedAt, timeoutMs, status: 'failed', error: error.message },
-      result: null,
+      ok: false, classification: 'instrument-or-transport-failure',
+      why: 'slice-ready confirmation was not anchored to a timely ready witness',
+      commands: [], result: null, heartbeat: null,
     };
   }
+  const timeoutMs = maxTimeoutMs;
+  const startedAt = now();
+  const observe = (method, role, params, commandSessionId) => {
+    let pending;
+    try { pending = send(method, params, commandSessionId, { timeoutMs }); }
+    catch (error) { pending = Promise.reject(error); }
+    return Promise.resolve(pending).then((result) => {
+      const endedAt = now();
+      return {
+        result, error: null,
+        command: { method, role, cycle, startedAt, endedAt,
+          durationMs: endedAt - startedAt, timeoutMs, status: 'completed',
+          sessionId: commandSessionId ?? null,
+          executionContextId: method === 'Runtime.evaluate' ? params.contextId ?? null : null,
+          awaitPromise: method === 'Runtime.evaluate' ? params.awaitPromise === true : null,
+          postRenderPriority: method === 'Runtime.evaluate' ? postRenderPriority : null },
+      };
+    }, (error) => {
+      const endedAt = now();
+      const message = error instanceof Error ? error.message : String(error);
+      const timedOut = new RegExp(`timed out waiting for ${method.replace('.', '\\.')}`, 'i').test(message);
+      return {
+        result: null, error: message, timedOut,
+        command: { method, role, cycle, startedAt, endedAt,
+          durationMs: endedAt - startedAt, timeoutMs,
+          status: timedOut ? 'timed-out' : 'failed', error: message,
+          sessionId: commandSessionId ?? null,
+          executionContextId: method === 'Runtime.evaluate' ? params.contextId ?? null : null,
+          awaitPromise: method === 'Runtime.evaluate' ? params.awaitPromise === true : null,
+          postRenderPriority: method === 'Runtime.evaluate' ? postRenderPriority : null },
+      };
+    });
+  }
+  /* Send both commands before awaiting either. Browser.getVersion bypasses
+     the target session/main thread, so it discriminates page starvation from
+     a dead CDP/browser transport without granting either command more time. */
+  const awaitPromise = Number.isFinite(postRenderPriority);
+  const targetExpression = awaitPromise
+    ? `new Promise((resolve)=>{ const S=window.__CF_SLICE__;
+        if(!S?.app?.ticker?.started){ resolve({ready:false,token:S?.documentToken||null,
+          href:location.href,readyState:document.readyState,error:'ticker is not running'}); return; }
+        S.app.ticker.addOnce(()=>resolve(${expression}),undefined,${postRenderPriority});
+      })`
+    : expression;
+  const targetPending = observe('Runtime.evaluate', 'target-exact-context', {
+    expression: targetExpression, contextId: executionContextId, returnByValue: true, awaitPromise,
+  }, sessionId);
+  const heartbeatPending = observe('Browser.getVersion', 'browser-process-heartbeat', {}, undefined);
+  const [target, heartbeat] = await Promise.all([targetPending, heartbeatPending]);
+  const commands = [target.command, heartbeat.command];
+  const heartbeatCommandDeadline = confirmationCommandDeadlineOutcome(
+    heartbeat.command.endedAt, heartbeat.command.startedAt, heartbeat.command.timeoutMs,
+  );
+  const targetCommandDeadline = confirmationCommandDeadlineOutcome(
+    target.command.endedAt, target.command.startedAt, target.command.timeoutMs,
+  );
+  if (!heartbeat.error && !heartbeatCommandDeadline.ok) {
+    heartbeat.command.status = 'completed-late';
+  }
+  if (!target.error && !targetCommandDeadline.ok) {
+    target.command.status = 'completed-late';
+  }
+  const heartbeatValid = !heartbeat.error && heartbeatCommandDeadline.ok
+    && typeof heartbeat.result?.product === 'string' && !!heartbeat.result.product
+    && typeof heartbeat.result?.protocolVersion === 'string' && !!heartbeat.result.protocolVersion;
+  if (!heartbeatValid) {
+    const detail = heartbeat.error || heartbeatCommandDeadline.why
+      || 'Browser.getVersion returned incomplete provenance';
+    return {
+      ok: false, classification: 'instrument-or-transport-failure',
+      why: `bounded slice-ready browser heartbeat failed (${detail})`,
+      commands, result: target.result, heartbeat: heartbeat.result,
+    };
+  }
+  if (target.error) {
+    const contextLost = /(?:execution context (?:was )?destroyed|cannot find context|cannot find context with specified id|inspected target navigated or closed)/i
+      .test(target.error);
+    return target.timedOut || contextLost
+      ? {
+        ok: false, classification: 'product-unanswerable-after-ready',
+        why: target.timedOut
+          ? `replacement app emitted ready but its exact target context was unanswerable within ${timeoutMs}ms while the browser process remained responsive`
+          : `replacement app emitted ready but then lost its exact target context while the browser process remained responsive (${target.error})`,
+        commands, result: null, heartbeat: heartbeat.result,
+      }
+      : {
+        ok: false, classification: 'instrument-or-transport-failure',
+        why: `bounded slice-ready target confirmation failed (${target.error})`,
+        commands, result: null, heartbeat: heartbeat.result,
+      };
+  }
+  if (!targetCommandDeadline.ok) {
+    const lateWhy = targetCommandDeadline.why;
+    return {
+      ok: false, classification: 'product-unanswerable-after-ready',
+      why: `replacement app emitted ready but its exact target context completed outside the ${timeoutMs}ms command bound while the browser process remained responsive (${lateWhy})`,
+      commands, result: target.result, heartbeat: heartbeat.result,
+    };
+  }
+  return {
+    ok: true, classification: 'confirmed', why: null,
+    commands, result: target.result, heartbeat: heartbeat.result,
+  };
+}
+
+async function runBoundedOutcomeHeartbeatProbe({
+  send, sessionId, executionContextId, expression,
+  maxTimeoutMs = PHASE_PROBE_TIMEOUT_MS, now = Date.now,
+}) {
+  const anchoredAt = now();
+  return runBoundedReadyConfirmation({
+    send, sessionId, executionContextId, expression,
+    /* This helper reuses the same concurrent target/browser transport seam;
+       its one-millisecond synthetic anchor is only the prerequisite accepted
+       by that seam. The outcome owns a fresh independent command deadline. */
+    readyReceiptAt: anchoredAt, bootDeadline: anchoredAt + 1,
+    maxTimeoutMs, now, cycle: 0, postRenderPriority: null,
+  });
+}
+
+function reloadCommandLedgerOutcome(commands, { sessionId, executionContextId }) {
+  if (!Array.isArray(commands) || commands.length !== 5) {
+    return { ok: false, why: 'replacement command ledger did not contain one import arm and two target/heartbeat cycles' };
+  }
+  const expected = [
+    ['Runtime.evaluate/import-arm', 'import-arm', 0, sessionId, null, false, null],
+    ['Runtime.evaluate', 'target-exact-context', 1, sessionId, executionContextId, false, null],
+    ['Browser.getVersion', 'browser-process-heartbeat', 1, null, null, null, null],
+    ['Runtime.evaluate', 'target-exact-context', 2, sessionId, executionContextId, true, -50],
+    ['Browser.getVersion', 'browser-process-heartbeat', 2, null, null, null, null],
+  ];
+  for (let index = 0; index < expected.length; index++) {
+    const row = commands[index];
+    const [method, role, cycle, expectedSessionId, expectedContextId,
+      expectedAwaitPromise, expectedPostRenderPriority] = expected[index];
+    if (!row || row.method !== method || row.role !== role || row.cycle !== cycle
+      || row.status !== 'completed' || row.sessionId !== expectedSessionId
+      || row.executionContextId !== expectedContextId
+      || row.awaitPromise !== expectedAwaitPromise
+      || row.postRenderPriority !== expectedPostRenderPriority
+      || !Number.isFinite(row.startedAt) || !Number.isFinite(row.endedAt)
+      || row.endedAt < row.startedAt || !Number.isInteger(row.timeoutMs) || row.timeoutMs <= 0
+      || row.endedAt >= row.startedAt + row.timeoutMs) {
+      return { ok: false, why: `replacement command ledger row ${index + 1} is missing, duplicated, mis-scoped, or late` };
+    }
+  }
+  return { ok: true, why: null };
+}
+
+function confirmationStateOutcome(state, witnessed, expectedUrl, expectedViewport, priorTickerTicks = null) {
+  const expectedPlan = expectedDensityPlan(expectedViewport);
+  const expectedCap = expectedPlan?.backingPixelCapPerCanvas;
+  if (!state?.ready || state.token !== witnessed.token || state.href !== expectedUrl
+    || state.readyState !== 'complete' || state.viewConnected !== true
+    || state.rendererReady !== true || state.stageReady !== true || state.tickerStarted !== true
+    || !Number.isInteger(state.tickerTicks) || state.tickerTicks < 1
+    || state.backingWidth !== witnessed.backingWidth
+    || state.backingHeight !== witnessed.backingHeight
+    || state.backdropBackingWidth !== witnessed.backdropBackingWidth
+    || state.backdropBackingHeight !== witnessed.backdropBackingHeight
+    || state.combinedBackingPixels !== witnessed.combinedBackingPixels
+    || !Number.isFinite(state.rendererDpr)
+    || Math.abs(state.rendererDpr - witnessed.rendererDpr) > 1e-12
+    || Math.abs(state.rendererDpr - expectedPlan?.dpr) > 1e-12
+    || state.backingPixelCapPerCanvas !== witnessed.backingPixelCapPerCanvas
+    || state.backingPixelCapPerCanvas !== expectedCap
+    || state.viewportWidth !== witnessed.viewportWidth
+    || state.viewportHeight !== witnessed.viewportHeight
+    || state.viewportWidth !== expectedViewport?.width
+    || state.viewportHeight !== expectedViewport?.height) {
+    return { ok: false, why: 'bounded slice-ready confirmation disagreed with the witness or selected viewport tier', state };
+  }
+  if (priorTickerTicks !== null && state.tickerTicks <= priorTickerTicks) {
+    return { ok: false, why: 'second bounded slice-ready confirmation did not observe a newer ticker turn', state };
+  }
+  if (state.tickerTicks < witnessed.tickerTicks) {
+    return { ok: false, why: 'bounded slice-ready confirmation observed a ticker count older than the ready witness', state };
+  }
+  return { ok: true, why: null, state };
 }
 
 async function runBoundedImportArm({
@@ -703,8 +958,9 @@ async function runBoundedImportArm({
       expression, returnByValue: true, awaitPromise: false,
     }, sessionId, { timeoutMs });
     const endedAt = now();
-    const command = { method: 'Runtime.evaluate/import-arm', startedAt, endedAt,
-      durationMs: endedAt - startedAt, timeoutMs, status: 'completed' };
+    const command = { method: 'Runtime.evaluate/import-arm', role: 'import-arm', cycle: 0,
+      startedAt, endedAt, durationMs: endedAt - startedAt, timeoutMs, status: 'completed',
+      sessionId, executionContextId: null, awaitPromise: false, postRenderPriority: null };
     return endedAt < importDeadline
       ? { ok: true, why: null, command, result }
       : { ok: false, why: 'bounded import arm completed after its import deadline', command, result };
@@ -712,8 +968,10 @@ async function runBoundedImportArm({
     const endedAt = now();
     return {
       ok: false, why: `bounded import arm instrument failed (${error.message})`,
-      command: { method: 'Runtime.evaluate/import-arm', startedAt, endedAt,
-        durationMs: endedAt - startedAt, timeoutMs, status: 'failed', error: error.message },
+      command: { method: 'Runtime.evaluate/import-arm', role: 'import-arm', cycle: 0,
+        startedAt, endedAt, durationMs: endedAt - startedAt, timeoutMs,
+        status: 'failed', error: error.message, sessionId, executionContextId: null,
+        awaitPromise: false, postRenderPriority: null },
       result: null,
     };
   }
@@ -722,6 +980,8 @@ async function runBoundedImportArm({
 async function reloadPhaseSelftest() {
   const failures = [];
   const priorToken = 'old-document-token', priorLoaderId = 'old-loader';
+  const ordinaryViewport = { width: 4096, height: 2048, dpr: 1, mobile: false };
+  const ultraViewport = { width: 7680, height: 4320, dpr: 1, mobile: false };
   const eventRequests = new Map([['document-request', 'http://127.0.0.1:1234/']]);
   const fatalFixtures = [
     compactReloadEvent({ method: 'Runtime.exceptionThrown', params: {
@@ -751,7 +1011,7 @@ async function reloadPhaseSelftest() {
     appCanvas: { beforeWidth: 4096, beforeHeight: 2048, afterWidth: 1, afterHeight: 1 },
     backdropCanvas: { beforeWidth: 4096, beforeHeight: 2048, afterWidth: 0, afterHeight: 0 },
   };
-  const releaseAccepted = validateReloadReleaseWitness(JSON.stringify(validRelease));
+  const releaseAccepted = validateReloadReleaseWitness(JSON.stringify(validRelease), ordinaryViewport);
   if (!releaseAccepted.ok) {
     failures.push(`valid reload-resource witness was rejected: ${JSON.stringify(releaseAccepted)}`);
   }
@@ -823,24 +1083,35 @@ async function reloadPhaseSelftest() {
   }
   const retainedCanvas = structuredClone(validRelease);
   retainedCanvas.appCanvas.afterWidth = 2;
-  const retainedRejected = validateReloadReleaseWitness(JSON.stringify(retainedCanvas));
+  const retainedRejected = validateReloadReleaseWitness(JSON.stringify(retainedCanvas), ordinaryViewport);
   if (retainedRejected.ok || !/larger than 1x1/.test(retainedRejected.why || '')) {
     failures.push(`retained reload canvas was accepted: ${JSON.stringify(retainedRejected)}`);
   }
   const unreleasedRenderer = structuredClone(validRelease);
   unreleasedRenderer.rendererReleased = false;
-  const rendererRejected = validateReloadReleaseWitness(unreleasedRenderer);
+  const rendererRejected = validateReloadReleaseWitness(unreleasedRenderer, ordinaryViewport);
   if (rendererRejected.ok || !/rendererReleased/.test(rendererRejected.why || '')) {
     failures.push(`unreleased renderer witness was accepted: ${JSON.stringify(rendererRejected)}`);
   }
   const oversizedCanvas = structuredClone(validRelease);
-  oversizedCanvas.appCanvas.beforeWidth = 2;
-  oversizedCanvas.appCanvas.beforeHeight = 2;
   oversizedCanvas.backdropCanvas.beforeWidth = 4096;
   oversizedCanvas.backdropCanvas.beforeHeight = 2049;
-  const oversizedRejected = validateReloadReleaseWitness(oversizedCanvas);
-  if (oversizedRejected.ok || !/half-budget/.test(oversizedRejected.why || '')) {
+  const oversizedRejected = validateReloadReleaseWitness(oversizedCanvas, ordinaryViewport);
+  if (oversizedRejected.ok || !/aggregate twin/.test(oversizedRejected.why || '')) {
     failures.push(`over-budget reload canvas was accepted: ${JSON.stringify(oversizedRejected)}`);
+  }
+  const underResolvedRelease = structuredClone(validRelease);
+  underResolvedRelease.appCanvas.beforeWidth = 1;
+  underResolvedRelease.appCanvas.beforeHeight = 1;
+  const underResolvedReleaseRejected = validateReloadReleaseWitness(underResolvedRelease, ordinaryViewport);
+  if (underResolvedReleaseRejected.ok || !/meaningful bounded selected-tier/.test(underResolvedReleaseRejected.why || '')) {
+    failures.push(`under-resolved reload canvas was accepted: ${JSON.stringify(underResolvedReleaseRejected)}`);
+  }
+  const asymmetricRelease = structuredClone(validRelease);
+  asymmetricRelease.backdropCanvas.beforeWidth = 4095;
+  const asymmetricReleaseRejected = validateReloadReleaseWitness(asymmetricRelease, ordinaryViewport);
+  if (asymmetricReleaseRejected.ok || !/exact selected-density/.test(asymmetricReleaseRejected.why || '')) {
+    failures.push(`asymmetric reload canvases were accepted: ${JSON.stringify(asymmetricReleaseRejected)}`);
   }
   /* With exactly two strict half-budget canvases, the aggregate ceiling is
      mathematically implied. Keep the explicit sum invariant anyway, and
@@ -851,20 +1122,23 @@ async function reloadPhaseSelftest() {
   combinedOversized.appCanvas.beforeHeight = 3072;
   combinedOversized.backdropCanvas.beforeWidth = 3072;
   combinedOversized.backdropCanvas.beforeHeight = 3072;
-  const combinedRejected = validateReloadReleaseWitness(combinedOversized);
+  const combinedRejected = validateReloadReleaseWitness(combinedOversized, ordinaryViewport);
   if (combinedRejected.ok || !/aggregate twin/.test(combinedRejected.why || '')) {
     failures.push(`combined over-budget reload canvases were accepted: ${JSON.stringify(combinedRejected)}`);
   }
   const readyPayload = {
     schema: 'cf-v2-slice-ready/v1', status: 'ready', token: 'replacement-token',
     href: 'http://127.0.0.1:1234/', readyState: 'complete', saveReady: true,
-    viewConnected: true, rendererReady: true, stageReady: true, tickerTicks: 1,
+    viewConnected: true, rendererReady: true, stageReady: true, tickerTicks: 2,
     backingWidth: 4096, backingHeight: 2048,
     backdropBackingWidth: 4096, backdropBackingHeight: 2048,
     combinedBackingPixels: MAX_TWIN_BACKING_PIXELS,
+    rendererDpr: 1,
+    backingPixelCapPerCanvas: DEFAULT_CANVAS_BACKING_PIXELS,
+    viewportWidth: ordinaryViewport.width, viewportHeight: ordinaryViewport.height,
     performanceNow: 123,
   };
-  const readyValidation = validateSliceReadyWitness(JSON.stringify(readyPayload));
+  const readyValidation = validateSliceReadyWitness(JSON.stringify(readyPayload), ordinaryViewport);
   const readyRow = {
     at: 129, sessionId: 'target-session', executionContextId: 7, loaderId: 'replacement-loader',
     context: { active: true, isDefault: true, frameId: 'top-frame', generation: 2,
@@ -987,27 +1261,219 @@ async function reloadPhaseSelftest() {
     || !/after the replacement boot deadline/.test(confirmationAtDeadline.why || '')) {
     failures.push(`bounded confirmation deadline control failed: ${JSON.stringify({ confirmationBeforeDeadline, confirmationAtDeadline })}`);
   }
-  let confirmationCalls = 0;
-  const confirmationTimeout = await runBoundedReadyConfirmation({
-    send: async () => { confirmationCalls++; throw new Error('timed out waiting for Runtime.evaluate'); },
-    sessionId: 'target-session', executionContextId: 7, expression: 'true',
-    bootDeadline: 130, now: (() => { const times = [120, 121, 129]; return () => times.shift() ?? 129; })(),
-  });
-  if (confirmationTimeout.ok || confirmationCalls !== 1
-    || confirmationTimeout.command?.status !== 'failed'
-    || !/timed out waiting/.test(confirmationTimeout.why || '')) {
-    failures.push(`bounded confirmation timeout did not fail once without retry: ${JSON.stringify({ confirmationCalls, confirmationTimeout })}`);
+  const heartbeatFixture = { product: 'Chrome/150', protocolVersion: '1.3' };
+  const makeConfirmationControl = ({ cycle = 1, postRenderPriority = null } = {}) => {
+    let fakeNow = 100;
+    const calls = [];
+    const pending = new Map();
+    const outcome = runBoundedReadyConfirmation({
+      send(method, params, commandSessionId, options) {
+        calls.push({ method, params, commandSessionId, options });
+        return new Promise((resolve, reject) => pending.set(method, { resolve, reject }));
+      },
+      sessionId: 'target-session', executionContextId: 7, expression: 'true',
+      readyReceiptAt: 99, bootDeadline: 10_000, maxTimeoutMs: PHASE_PROBE_TIMEOUT_MS,
+      now: () => fakeNow, cycle, postRenderPriority,
+    });
+    return {
+      calls, pending, outcome,
+      settle(method, value, at, reject = false) {
+        fakeNow = at;
+        const owner = pending.get(method);
+        if (!owner) throw new Error(`missing confirmation control command ${method}`);
+        reject ? owner.reject(value) : owner.resolve(value);
+      },
+    };
+  };
+  const bothPass = makeConfirmationControl();
+  bothPass.settle('Runtime.evaluate', { result: { value: true } }, 101);
+  await Promise.resolve();
+  bothPass.settle('Browser.getVersion', heartbeatFixture, 102);
+  const bothPassOutcome = await bothPass.outcome;
+  if (!bothPassOutcome.ok || bothPassOutcome.classification !== 'confirmed'
+    || bothPass.calls.length !== 2 || bothPassOutcome.commands.length !== 2
+    || bothPass.calls[0]?.method !== 'Runtime.evaluate'
+    || bothPass.calls[0]?.commandSessionId !== 'target-session'
+    || bothPass.calls[0]?.params?.contextId !== 7
+    || bothPass.calls[1]?.method !== 'Browser.getVersion'
+    || bothPass.calls[1]?.commandSessionId !== undefined
+    || bothPassOutcome.commands.some((row) => row.status !== 'completed'
+      || row.startedAt !== 100 || row.timeoutMs !== PHASE_PROBE_TIMEOUT_MS)) {
+    failures.push(`target/heartbeat positive control failed: ${JSON.stringify({ calls: bothPass.calls, outcome: bothPassOutcome })}`);
   }
-  let lateConfirmationCalls = 0;
-  const lateConfirmation = await runBoundedReadyConfirmation({
-    send: async () => { lateConfirmationCalls++; return { result: { value: true } }; },
-    sessionId: 'target-session', executionContextId: 7, expression: 'true',
-    bootDeadline: 130, now: (() => { const times = [120, 121, 130]; return () => times.shift() ?? 130; })(),
-  });
-  if (lateConfirmation.ok || lateConfirmationCalls !== 1
-    || lateConfirmation.command?.status !== 'completed'
-    || !/after the replacement boot deadline/.test(lateConfirmation.why || '')) {
-    failures.push(`late successful confirmation did not fail once with coherent evidence: ${JSON.stringify({ lateConfirmationCalls, lateConfirmation })}`);
+  const postRenderPass = makeConfirmationControl({ cycle: 2, postRenderPriority: -50 });
+  postRenderPass.settle('Runtime.evaluate', { result: { value: true } }, 101);
+  await Promise.resolve();
+  postRenderPass.settle('Browser.getVersion', heartbeatFixture, 102);
+  const postRenderPassOutcome = await postRenderPass.outcome;
+  if (!postRenderPassOutcome.ok || postRenderPassOutcome.classification !== 'confirmed'
+    || postRenderPass.calls[0]?.params?.awaitPromise !== true
+    || !/ticker\.addOnce/.test(postRenderPass.calls[0]?.params?.expression || '')
+    || !/,undefined,-50\)/.test(postRenderPass.calls[0]?.params?.expression || '')) {
+    failures.push(`post-render confirmation scheduling control failed: ${JSON.stringify({ calls: postRenderPass.calls, outcome: postRenderPassOutcome })}`);
+  }
+  {
+    let fakeNow = 10_050;
+    const nearDeadline = runBoundedReadyConfirmation({
+      send: async (method) => method === 'Runtime.evaluate'
+        ? { result: { value: true } } : heartbeatFixture,
+      sessionId: 'target-session', executionContextId: 7, expression: 'true',
+      readyReceiptAt: 9_999, bootDeadline: 10_000,
+      maxTimeoutMs: PHASE_PROBE_TIMEOUT_MS, now: () => fakeNow,
+    });
+    fakeNow = 10_100;
+    const nearDeadlineOutcome = await nearDeadline;
+    if (!nearDeadlineOutcome.ok
+      || nearDeadlineOutcome.commands.some((row) => row.timeoutMs !== PHASE_PROBE_TIMEOUT_MS)) {
+      failures.push(`timely near-deadline ready witness lost its independent confirmation window: ${JSON.stringify(nearDeadlineOutcome)}`);
+    }
+    const lateReadyOutcome = await runBoundedReadyConfirmation({
+      send: async () => { throw new Error('late ready must not issue a command'); },
+      sessionId: 'target-session', executionContextId: 7, expression: 'true',
+      readyReceiptAt: 10_000, bootDeadline: 10_000, now: () => 10_001,
+    });
+    if (lateReadyOutcome.ok || lateReadyOutcome.commands.length
+      || !/timely ready witness/.test(lateReadyOutcome.why || '')) {
+      failures.push(`late ready witness was granted a confirmation window: ${JSON.stringify(lateReadyOutcome)}`);
+    }
+  }
+  const commandLedger = [
+    { method: 'Runtime.evaluate/import-arm', role: 'import-arm', cycle: 0,
+      startedAt: 90, endedAt: 99, durationMs: 9, timeoutMs: PHASE_PROBE_TIMEOUT_MS,
+      status: 'completed', sessionId: 'target-session', executionContextId: null,
+      awaitPromise: false, postRenderPriority: null },
+    ...bothPassOutcome.commands,
+    ...postRenderPassOutcome.commands,
+  ];
+  const commandLedgerOptions = { sessionId: 'target-session', executionContextId: 7 };
+  const commandLedgerAccepted = reloadCommandLedgerOutcome(commandLedger, commandLedgerOptions);
+  if (!commandLedgerAccepted.ok) {
+    failures.push(`valid replacement command ledger was rejected: ${JSON.stringify(commandLedgerAccepted)}`);
+  }
+  const commandLedgerControls = [
+    ['missing', commandLedger.slice(0, -1)],
+    ['duplicate', [...commandLedger, commandLedger.at(-1)]],
+    ['wrong-role', commandLedger.map((row, index) => index === 2 ? { ...row, role: 'target-exact-context' } : row)],
+    ['wrong-cycle', commandLedger.map((row, index) => index === 3 ? { ...row, cycle: 1 } : row)],
+    ['wrong-session', commandLedger.map((row, index) => index === 1 ? { ...row, sessionId: null } : row)],
+    ['wrong-context', commandLedger.map((row, index) => index === 3 ? { ...row, executionContextId: 8 } : row)],
+    ['wrong-await', commandLedger.map((row, index) => index === 3 ? { ...row, awaitPromise: false } : row)],
+    ['wrong-priority', commandLedger.map((row, index) => index === 3 ? { ...row, postRenderPriority: 0 } : row)],
+  ];
+  for (const [label, rows] of commandLedgerControls) {
+    const outcome = reloadCommandLedgerOutcome(rows, commandLedgerOptions);
+    if (outcome.ok) failures.push(`${label} replacement command-ledger control stayed green`);
+  }
+  const targetTimeout = makeConfirmationControl();
+  targetTimeout.settle('Browser.getVersion', heartbeatFixture, 101);
+  await Promise.resolve();
+  targetTimeout.settle('Runtime.evaluate', new Error('timed out waiting for Runtime.evaluate'), 2_100, true);
+  const targetTimeoutOutcome = await targetTimeout.outcome;
+  if (targetTimeoutOutcome.ok || targetTimeoutOutcome.classification !== 'product-unanswerable-after-ready'
+    || targetTimeout.calls.length !== 2
+    || targetTimeoutOutcome.commands.find((row) => row.method === 'Runtime.evaluate')?.status !== 'timed-out'
+    || targetTimeoutOutcome.commands.find((row) => row.method === 'Browser.getVersion')?.status !== 'completed') {
+    failures.push(`target-timeout/browser-heartbeat control was not classified as product-unanswerable: ${JSON.stringify({ calls: targetTimeout.calls, outcome: targetTimeoutOutcome })}`);
+  }
+  {
+    let fakeNow = 100;
+    const pending = new Map();
+    const outcomePending = runBoundedOutcomeHeartbeatProbe({
+      send(method) {
+        return new Promise((resolve, reject) => pending.set(method, { resolve, reject }));
+      },
+      sessionId: 'target-session', executionContextId: 7,
+      expression: `({ok:false,error:'injected product state'})`,
+      maxTimeoutMs: PHASE_PROBE_TIMEOUT_MS, now: () => fakeNow,
+    });
+    fakeNow = 101;
+    pending.get('Browser.getVersion').resolve(heartbeatFixture);
+    await Promise.resolve();
+    fakeNow = 2_100;
+    pending.get('Runtime.evaluate').reject(new Error('timed out waiting for Runtime.evaluate'));
+    const outcome = await outcomePending;
+    if (outcome.ok || outcome.classification !== 'product-unanswerable-after-ready'
+      || outcome.commands.length !== 2) {
+      failures.push(`bounded product-outcome heartbeat seam misclassified target starvation: ${JSON.stringify(outcome)}`);
+    }
+  }
+  const targetContextLost = makeConfirmationControl();
+  targetContextLost.settle('Browser.getVersion', heartbeatFixture, 101);
+  await Promise.resolve();
+  targetContextLost.settle('Runtime.evaluate', new Error('Cannot find context with specified id'), 102, true);
+  const targetContextLostOutcome = await targetContextLost.outcome;
+  if (targetContextLostOutcome.ok
+    || targetContextLostOutcome.classification !== 'product-unanswerable-after-ready'
+    || !/lost its exact target context/.test(targetContextLostOutcome.why || '')) {
+    failures.push(`lost-target-context/browser-heartbeat control was misclassified: ${JSON.stringify(targetContextLostOutcome)}`);
+  }
+  const targetProtocolFailure = makeConfirmationControl();
+  targetProtocolFailure.settle('Browser.getVersion', heartbeatFixture, 101);
+  await Promise.resolve();
+  targetProtocolFailure.settle('Runtime.evaluate', new Error('Malformed CDP response'), 102, true);
+  const targetProtocolFailureOutcome = await targetProtocolFailure.outcome;
+  if (targetProtocolFailureOutcome.ok
+    || targetProtocolFailureOutcome.classification !== 'instrument-or-transport-failure') {
+    failures.push(`target protocol failure was not kept instrument-fail: ${JSON.stringify(targetProtocolFailureOutcome)}`);
+  }
+  const bothTimeout = makeConfirmationControl();
+  bothTimeout.settle('Runtime.evaluate', new Error('timed out waiting for Runtime.evaluate'), 2_100, true);
+  await Promise.resolve();
+  bothTimeout.settle('Browser.getVersion', new Error('timed out waiting for Browser.getVersion'), 2_100, true);
+  const bothTimeoutOutcome = await bothTimeout.outcome;
+  if (bothTimeoutOutcome.ok || bothTimeoutOutcome.classification !== 'instrument-or-transport-failure'
+    || bothTimeout.calls.length !== 2
+    || bothTimeoutOutcome.commands.some((row) => row.status !== 'timed-out')) {
+    failures.push(`dual-timeout control was not classified as instrument/transport failure: ${JSON.stringify({ calls: bothTimeout.calls, outcome: bothTimeoutOutcome })}`);
+  }
+  const heartbeatLate = makeConfirmationControl();
+  heartbeatLate.settle('Runtime.evaluate', { result: { value: true } }, 101);
+  await Promise.resolve();
+  heartbeatLate.settle('Browser.getVersion', heartbeatFixture, 2_100);
+  const heartbeatLateOutcome = await heartbeatLate.outcome;
+  if (heartbeatLateOutcome.ok || heartbeatLateOutcome.classification !== 'instrument-or-transport-failure'
+    || heartbeatLateOutcome.commands.find((row) => row.method === 'Browser.getVersion')?.status !== 'completed-late'
+    || !/heartbeat failed/.test(heartbeatLateOutcome.why || '')) {
+    failures.push(`exact-boundary heartbeat control was accepted: ${JSON.stringify(heartbeatLateOutcome)}`);
+  }
+  const targetLate = makeConfirmationControl();
+  targetLate.settle('Browser.getVersion', heartbeatFixture, 101);
+  await Promise.resolve();
+  targetLate.settle('Runtime.evaluate', { result: { value: true } }, 2_100);
+  const targetLateOutcome = await targetLate.outcome;
+  if (targetLateOutcome.ok || targetLateOutcome.classification !== 'product-unanswerable-after-ready'
+    || targetLateOutcome.commands.find((row) => row.method === 'Runtime.evaluate')?.status !== 'completed-late'
+    || !/2000ms command bound/.test(targetLateOutcome.why || '')) {
+    failures.push(`exact-boundary target control was accepted: ${JSON.stringify(targetLateOutcome)}`);
+  }
+  const confirmedState = {
+    ready: true, token: readyPayload.token, href: readyPayload.href,
+    readyState: 'complete', viewConnected: true, rendererReady: true,
+    stageReady: true, tickerStarted: true, tickerTicks: 2,
+    backingWidth: readyPayload.backingWidth, backingHeight: readyPayload.backingHeight,
+    backdropBackingWidth: readyPayload.backdropBackingWidth,
+    backdropBackingHeight: readyPayload.backdropBackingHeight,
+    combinedBackingPixels: readyPayload.combinedBackingPixels,
+    rendererDpr: readyPayload.rendererDpr,
+    backingPixelCapPerCanvas: readyPayload.backingPixelCapPerCanvas,
+    viewportWidth: readyPayload.viewportWidth, viewportHeight: readyPayload.viewportHeight,
+  };
+  const firstState = confirmationStateOutcome(confirmedState, readyPayload, readyPayload.href, ordinaryViewport);
+  const secondState = confirmationStateOutcome({ ...confirmedState, tickerTicks: 3 }, readyPayload,
+    readyPayload.href, ordinaryViewport, confirmedState.tickerTicks);
+  const stalledSecondState = confirmationStateOutcome(confirmedState, readyPayload,
+    readyPayload.href, ordinaryViewport, confirmedState.tickerTicks);
+  const olderThanWitnessState = confirmationStateOutcome({
+    ...confirmedState, tickerTicks: readyPayload.tickerTicks - 1,
+  }, readyPayload, readyPayload.href, ordinaryViewport);
+  const staleDprState = confirmationStateOutcome({
+    ...confirmedState, rendererDpr: confirmedState.rendererDpr / 2,
+  }, readyPayload, readyPayload.href, ordinaryViewport);
+  if (!firstState.ok || !secondState.ok || stalledSecondState.ok
+    || !/newer ticker turn/.test(stalledSecondState.why || '')
+    || olderThanWitnessState.ok || !/older than the ready witness/.test(olderThanWitnessState.why || '')
+    || staleDprState.ok || !/selected viewport tier/.test(staleDprState.why || '')) {
+    failures.push(`two-cycle ticker-progress control failed: ${JSON.stringify({ firstState, secondState, stalledSecondState, olderThanWitnessState, staleDprState })}`);
   }
   let importArmTimeoutCalls = 0;
   const importArmTimeout = await runBoundedImportArm({
@@ -1034,8 +1500,8 @@ async function reloadPhaseSelftest() {
   const readyControls = [
     ['missing', [], 'pending'],
     ['duplicate', [readyRow, readyRow], 'failed'],
-    ['same-token', [{ ...readyRow, validation: validateSliceReadyWitness({ ...readyPayload, token: priorToken }) }], 'failed'],
-    ['wrong-url', [{ ...readyRow, validation: validateSliceReadyWitness({ ...readyPayload, href: 'http://wrong.invalid/' }) }], 'failed'],
+    ['same-token', [{ ...readyRow, validation: validateSliceReadyWitness({ ...readyPayload, token: priorToken }, ordinaryViewport) }], 'failed'],
+    ['wrong-url', [{ ...readyRow, validation: validateSliceReadyWitness({ ...readyPayload, href: 'http://wrong.invalid/' }, ordinaryViewport) }], 'failed'],
     ['wrong-context', [{ ...readyRow, context: { isDefault: false, frameId: 'top-frame' } }], 'failed'],
     ['wrong-session', [{ ...readyRow, sessionId: 'other-session' }], 'failed'],
     ['destroyed-context', [readyRow], 'failed', { contextStillActive: false }],
@@ -1052,29 +1518,87 @@ async function reloadPhaseSelftest() {
       failures.push(`${label} slice-ready control was accepted: ${JSON.stringify(outcome)}`);
     }
   }
-  const incompleteReady = validateSliceReadyWitness({ ...readyPayload, viewConnected: false });
+  const incompleteReady = validateSliceReadyWitness({ ...readyPayload, viewConnected: false }, ordinaryViewport);
   if (incompleteReady.ok || !/complete wired/.test(incompleteReady.why || '')) {
     failures.push(`incomplete slice-ready payload was accepted: ${JSON.stringify(incompleteReady)}`);
   }
-  const malformedReady = validateSliceReadyWitness('{bad json');
+  const malformedReady = validateSliceReadyWitness('{bad json', ordinaryViewport);
   if (malformedReady.ok || !/not JSON/.test(malformedReady.why || '')) {
     failures.push(`malformed slice-ready payload was accepted: ${JSON.stringify(malformedReady)}`);
   }
   const missingTwinReadyPayload = { ...readyPayload };
   delete missingTwinReadyPayload.backdropBackingWidth;
-  const missingTwinReady = validateSliceReadyWitness(missingTwinReadyPayload);
+  const missingTwinReady = validateSliceReadyWitness(missingTwinReadyPayload, ordinaryViewport);
   if (missingTwinReady.ok || !/twin backing dimensions/.test(missingTwinReady.why || '')) {
     failures.push(`slice-ready payload missing backdrop evidence was accepted: ${JSON.stringify(missingTwinReady)}`);
   }
   const falseCombinedReady = validateSliceReadyWitness({
     ...readyPayload, combinedBackingPixels: readyPayload.combinedBackingPixels - 1,
-  });
+  }, ordinaryViewport);
   if (falseCombinedReady.ok || !/twin backing budget/.test(falseCombinedReady.why || '')) {
     failures.push(`slice-ready payload with a false combined count was accepted: ${JSON.stringify(falseCombinedReady)}`);
   }
+  const ultraReadyPayload = {
+    ...readyPayload,
+    backingWidth: 2730, backingHeight: 1536,
+    backdropBackingWidth: 2730, backdropBackingHeight: 1536,
+    combinedBackingPixels: 2730 * 1536 * 2,
+    rendererDpr: expectedDensityPlan(ultraViewport).dpr,
+    backingPixelCapPerCanvas: ULTRA_CANVAS_BACKING_PIXELS,
+    viewportWidth: ultraViewport.width, viewportHeight: ultraViewport.height,
+  };
+  const ultraReady = validateSliceReadyWitness(ultraReadyPayload, ultraViewport);
+  if (!ultraReady.ok) {
+    failures.push(`valid ultra-viewport selected-tier witness was rejected: ${JSON.stringify(ultraReady)}`);
+  }
+  const staleUltraDpr = validateSliceReadyWitness({
+    ...ultraReadyPayload, rendererDpr: readyPayload.rendererDpr,
+  }, ultraViewport);
+  if (staleUltraDpr.ok || !/selected backing tier/.test(staleUltraDpr.why || '')) {
+    failures.push(`stale ultra renderer DPR was accepted: ${JSON.stringify(staleUltraDpr)}`);
+  }
+  const underResolvedUltra = validateSliceReadyWitness({
+    ...ultraReadyPayload,
+    backingWidth: 2, backingHeight: 2,
+    backdropBackingWidth: 2, backdropBackingHeight: 2,
+    combinedBackingPixels: 8,
+  }, ultraViewport);
+  if (underResolvedUltra.ok || !/twin backing budget/.test(underResolvedUltra.why || '')) {
+    failures.push(`under-resolved ultra witness was accepted: ${JSON.stringify(underResolvedUltra)}`);
+  }
+  const asymmetricUltra = validateSliceReadyWitness({
+    ...ultraReadyPayload,
+    backdropBackingWidth: ultraReadyPayload.backdropBackingWidth - 1,
+    combinedBackingPixels: ultraReadyPayload.backingWidth * ultraReadyPayload.backingHeight
+      + (ultraReadyPayload.backdropBackingWidth - 1) * ultraReadyPayload.backdropBackingHeight,
+  }, ultraViewport);
+  if (asymmetricUltra.ok || !/twin backing budget/.test(asymmetricUltra.why || '')) {
+    failures.push(`asymmetric ultra witness was accepted: ${JSON.stringify(asymmetricUltra)}`);
+  }
+  if (backingPixelCapForViewport(4096, 2048) !== DEFAULT_CANVAS_BACKING_PIXELS
+    || backingPixelCapForViewport(4097, 2048) !== ULTRA_CANVAS_BACKING_PIXELS) {
+    failures.push('ultra backing tier did not switch strictly above the 8,388,608 CSS-pixel threshold');
+  }
+  const oldUltraReady = validateSliceReadyWitness({
+    ...ultraReadyPayload,
+    backingWidth: 3862, backingHeight: 2172,
+    backdropBackingWidth: 3862, backdropBackingHeight: 2172,
+    combinedBackingPixels: 3862 * 2172 * 2,
+  }, ultraViewport);
+  if (oldUltraReady.ok || !/twin backing budget/.test(oldUltraReady.why || '')) {
+    failures.push(`old 8K half-budget dimensions survived the ultra policy: ${JSON.stringify(oldUltraReady)}`);
+  }
+  const oldUltraRelease = validateReloadReleaseWitness({
+    ...validRelease,
+    appCanvas: { ...validRelease.appCanvas, beforeWidth: 3862, beforeHeight: 2172 },
+    backdropCanvas: { ...validRelease.backdropCanvas, beforeWidth: 3862, beforeHeight: 2172 },
+  }, ultraViewport);
+  if (oldUltraRelease.ok || !/selected aggregate twin/.test(oldUltraRelease.why || '')) {
+    failures.push(`old 8K release dimensions survived the ultra policy: ${JSON.stringify(oldUltraRelease)}`);
+  }
   const productClockLate = validateSliceReadyWitness({
     ...readyPayload, performanceNow: REPLACEMENT_READY_TIMEOUT_MS,
-  });
+  }, ordinaryViewport);
   if (productClockLate.ok || !/performance timestamp/.test(productClockLate.why || '')) {
     failures.push(`just-late browser-native slice-ready timestamp was accepted: ${JSON.stringify(productClockLate)}`);
   }
@@ -1097,8 +1621,8 @@ async function reloadPhaseSelftest() {
   const releaseControls = [
     ['missing', [], 'pending'],
     ['duplicate', [releaseRow, releaseRow], 'failed'],
-    ['wrong-reason', [{ ...releaseRow, validation: validateReloadReleaseWitness({ ...validRelease, reason: 'training-restart' }) }], 'failed'],
-    ['wrong-token', [{ ...releaseRow, validation: validateReloadReleaseWitness({ ...validRelease, documentToken: 'other-token' }) }], 'failed'],
+    ['wrong-reason', [{ ...releaseRow, validation: validateReloadReleaseWitness({ ...validRelease, reason: 'training-restart' }, ordinaryViewport) }], 'failed'],
+    ['wrong-token', [{ ...releaseRow, validation: validateReloadReleaseWitness({ ...validRelease, documentToken: 'other-token' }, ordinaryViewport) }], 'failed'],
     ['wrong-context', [{ ...releaseRow, context: { ...releaseRow.context, uniqueId: 'other-context' } }], 'failed'],
     ['wrong-loader', [{ ...releaseRow, loaderId: 'other-loader' }], 'failed'],
     ['wrong-session', [{ ...releaseRow, sessionId: 'other-session' }], 'failed'],
@@ -1139,12 +1663,12 @@ async function reloadPhaseSelftest() {
   return failures;
 }
 function writeReport({ status, exitCode, browser, findings, instrumentFailures, controlsRun,
-  executedControls = [], source = runSource || sourceIdentity() }) {
+  executedControls = [], blockedControls = [], source = runSource || sourceIdentity() }) {
   const counts = new Map();
   for (const { row } of findings) counts.set(row.code, (counts.get(row.code) || 0) + 1);
   const endedAt = Date.now();
-  const executed = [...new Set(executedControls)].filter((name) => NEGATIVE_CONTROLS.includes(name)).sort();
-  const omitted = NEGATIVE_CONTROLS.filter((name) => !executed.includes(name));
+  const coverage = controlCoverageOutcome(executedControls, blockedControls);
+  if (!coverage.ok) throw new Error(`invalid negative-control coverage: ${coverage.why}`);
   const report = {
     schema: 'cf-v2-glassmatrix/v1',
     status,
@@ -1159,11 +1683,14 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
       /* This is an execution ledger, not a planned-coverage claim. A
          targeted viewport remains diagnostic and reports only controls that
          actually ran; controls conditioned on other matrix classes stay in
-         omittedNegativeControls. A full run is rejected below if any
-         planned control did not execute. */
-      negativeControls: executed,
+         omittedNegativeControls. A product failure may explicitly block
+         later controls; those stay visible in blockedNegativeControls and
+         can never produce PASS. A full run is rejected below if any planned
+         control is neither executed nor product-blocked. */
+      negativeControls: coverage.executed,
       plannedNegativeControls: [...NEGATIVE_CONTROLS],
-      omittedNegativeControls: omitted,
+      blockedNegativeControls: coverage.blocked,
+      omittedNegativeControls: coverage.omitted,
       automaticRetries: 0,
     },
     summary: {
@@ -1201,6 +1728,105 @@ async function reportSelftest() {
   };
   const counts = new Map();
   for (const { row } of fixture.findings) counts.set(row.code, (counts.get(row.code) || 0) + 1);
+  const reportCommands = [
+    { method: 'Runtime.evaluate/import-arm', role: 'import-arm', cycle: 0,
+      startedAt: 1, endedAt: 2, durationMs: 1, timeoutMs: 2000, status: 'completed',
+      sessionId: 'target-session', executionContextId: null, awaitPromise: false, postRenderPriority: null },
+    { method: 'Runtime.evaluate', role: 'target-exact-context', cycle: 1,
+      startedAt: 3, endedAt: 4, durationMs: 1, timeoutMs: 2000, status: 'completed',
+      sessionId: 'target-session', executionContextId: 7, awaitPromise: false, postRenderPriority: null },
+    { method: 'Browser.getVersion', role: 'browser-process-heartbeat', cycle: 1,
+      startedAt: 3, endedAt: 4, durationMs: 1, timeoutMs: 2000, status: 'completed',
+      sessionId: null, executionContextId: null, awaitPromise: null, postRenderPriority: null },
+    { method: 'Runtime.evaluate', role: 'target-exact-context', cycle: 2,
+      startedAt: 5, endedAt: 6, durationMs: 1, timeoutMs: 2000, status: 'completed',
+      sessionId: 'target-session', executionContextId: 7, awaitPromise: true, postRenderPriority: -50 },
+    { method: 'Browser.getVersion', role: 'browser-process-heartbeat', cycle: 2,
+      startedAt: 5, endedAt: 6, durationMs: 1, timeoutMs: 2000, status: 'completed',
+      sessionId: null, executionContextId: null, awaitPromise: null, postRenderPriority: null },
+  ];
+  const reportLedger = reloadCommandLedgerOutcome(reportCommands, {
+    sessionId: 'target-session', executionContextId: 7,
+  });
+  if (!reportLedger.ok) throw new Error(`GLASS MATRIX REPORT SELFTEST: valid command ledger rejected (${reportLedger.why})`);
+  const executedBeforeProductFailure = [NEGATIVE_CONTROLS[0]];
+  const productBlocks = [{ name: 'ultra-same-backing-resize',
+    viewport: 'desktop-8k', findingCode: 'REPLACEMENT_UNANSWERABLE_AFTER_READY' }];
+  const productBlockedCoverage = controlCoverageOutcome(executedBeforeProductFailure, productBlocks);
+  const overlapCoverage = controlCoverageOutcome(
+    [...executedBeforeProductFailure, productBlocks[0].name], productBlocks,
+  );
+  if (!productBlockedCoverage.ok
+    || productBlockedCoverage.omitted.length !== NEGATIVE_CONTROLS.length - 2
+    || productBlockedCoverage.blocked.length !== 1
+    || overlapCoverage.ok) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: product-blocked control accounting failed (${JSON.stringify({ productBlockedCoverage, overlapCoverage })})`);
+  }
+  const pointerPass = ultraPointerOutcome({ x: 53, y: 47 }, 53, 47);
+  const missingPointer = ultraPointerOutcome(null, 53, 47);
+  const offsetPointer = ultraPointerOutcome({ x: 70, y: 47 }, 53, 47);
+  if (!combineUltraResizePointerOutcome({ ok: true }, pointerPass).ok
+    || combineUltraResizePointerOutcome({ ok: true }, missingPointer).ok
+    || combineUltraResizePointerOutcome({ ok: true }, offsetPointer).ok) {
+    throw new Error('GLASS MATRIX REPORT SELFTEST: real-pointer resize outcome controls failed');
+  }
+  const resizeExecuted = ultraControlExecutionOutcome({
+    downshift: { ok: true }, restored: { ok: true }, controlsDiscriminated: true,
+  });
+  const resizeBlockedDown = ultraControlExecutionOutcome({
+    downshift: { ok: false }, restored: { ok: true }, controlsDiscriminated: true,
+  });
+  const resizeBlockedRestore = ultraControlExecutionOutcome({
+    downshift: { ok: true }, restored: { ok: false }, controlsDiscriminated: true,
+  });
+  const resizeVacuous = ultraControlExecutionOutcome({
+    downshift: { ok: true }, restored: { ok: true }, controlsDiscriminated: false,
+  });
+  if (!resizeExecuted.executed || resizeExecuted.blocked
+    || !resizeBlockedDown.blocked || resizeBlockedDown.executed
+    || !resizeBlockedRestore.blocked || resizeBlockedRestore.executed
+    || resizeVacuous.executed || resizeVacuous.blocked) {
+    throw new Error('GLASS MATRIX REPORT SELFTEST: same-backing positive/control accounting failed');
+  }
+  const injectedRows = Array.from({ length: 6 }, () => ({
+    controlApplied: true, restored: true, outcome: { ok: false },
+  }));
+  if (!ultraResizeInjectionControlsOutcome(injectedRows).ok
+    || ultraResizeInjectionControlsOutcome(injectedRows.slice(0, 3)).ok
+    || ultraResizeInjectionControlsOutcome(injectedRows.map((row, index) => index === 1
+      ? { ...row, error: 'injected control threw' } : row)).ok
+    || ultraResizeInjectionControlsOutcome(injectedRows.map((row, index) => index === 1
+      ? { ...row, outcome: { ok: false, error: 'predicate state unavailable' } } : row)).ok
+    || ultraResizeInjectionControlsOutcome(injectedRows.map((row, index) => index === 2
+      ? { ...row, controlApplied: false } : row)).ok
+    || ultraResizeInjectionControlsOutcome(injectedRows.map((row, index) => index === 3
+      ? { ...row, outcome: { ok: true } } : row)).ok) {
+    throw new Error('GLASS MATRIX REPORT SELFTEST: same-backing live injection evidence failed closed incorrectly');
+  }
+  if (!targetedProductRemainderBlocked('primary-phone', true)
+    || targetedProductRemainderBlocked(null, true)
+    || targetedProductRemainderBlocked('primary-phone', false)) {
+    throw new Error('GLASS MATRIX REPORT SELFTEST: targeted product-failure remainder accounting failed');
+  }
+  const primaryBlocked = productBlockedSuffixForViewport(
+    'primary-phone', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', [],
+  );
+  const landscapeBlocked = productBlockedSuffixForViewport(
+    'phone-landscape', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', [],
+  );
+  const ultraBlocked = productBlockedSuffixForViewport(
+    'desktop-8k', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', [],
+  );
+  const primaryAlreadyExecuted = productBlockedSuffixForViewport(
+    'primary-phone', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', ['forced-colors-system-mapping'],
+  );
+  if (primaryBlocked.length !== 1 || primaryBlocked[0].name !== 'forced-colors-system-mapping'
+    || landscapeBlocked.length !== 1 || landscapeBlocked[0].name !== 'mobile-landscape-surface-chrome-yield'
+    || ultraBlocked.length !== 1 || ultraBlocked[0].name !== 'ultra-same-backing-resize'
+    || primaryAlreadyExecuted.length !== 0
+    || productBlockedSuffixForViewport('small-phone', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', []).length) {
+    throw new Error('GLASS MATRIX REPORT SELFTEST: full/targeted product-blocked suffix accounting failed');
+  }
   const shaped = {
     schema: 'cf-v2-glassmatrix/v1', status: fixture.status, scope: 'full-certifying', certifying: true,
     viewportInventory: viewportInventory(),
@@ -1208,6 +1834,7 @@ async function reportSelftest() {
       selftestRan: fixture.controlsRun,
       negativeControls: [...NEGATIVE_CONTROLS],
       plannedNegativeControls: [...NEGATIVE_CONTROLS],
+      blockedNegativeControls: [],
       omittedNegativeControls: [],
       automaticRetries: 0,
     },
@@ -1219,7 +1846,7 @@ async function reportSelftest() {
       releaseWitness: { validation: { ok: true } },
       bootPhases: [{ validation: { ok: true }, at: 9 }],
       readyWitness: { validation: { ok: true }, at: 10 },
-      commands: [{ method: 'Runtime.evaluate', durationMs: 1, timeoutMs: 2000, status: 'completed' }],
+      commands: reportCommands,
       events: [{ method: 'Page.lifecycleEvent', name: 'DOMContentLoaded', loaderId: 'replacement-loader' }],
     }],
     instrumentFailures: fixture.instrumentFailures,
@@ -1228,6 +1855,7 @@ async function reportSelftest() {
     || shaped.scope !== 'full-certifying' || shaped.certifying !== true
     || shaped.viewportInventory.length !== 12 || shaped.summary.counts.TARGET_TOO_SMALL !== 1
     || shaped.findings[0].actual.height !== 20 || shaped.controlSummary.automaticRetries !== 0
+    || shaped.controlSummary.blockedNegativeControls.length !== 0
     || shaped.controlSummary.omittedNegativeControls.length !== 0
     || shaped.reloadEvidence[0]?.viewport !== 'desktop-8k'
     || shaped.reloadEvidence[0]?.status !== 'failed'
@@ -1236,6 +1864,15 @@ async function reportSelftest() {
     || shaped.reloadEvidence[0]?.bootPhases?.[0]?.validation?.ok !== true
     || shaped.reloadEvidence[0]?.readyWitness?.validation?.ok !== true
     || shaped.reloadEvidence[0]?.commands?.[0]?.timeoutMs !== PHASE_PROBE_TIMEOUT_MS
+    || shaped.reloadEvidence[0]?.commands?.length !== 5
+    || shaped.reloadEvidence[0]?.commands?.[0]?.method !== 'Runtime.evaluate/import-arm'
+    || shaped.reloadEvidence[0]?.commands?.filter((row) => row.method === 'Runtime.evaluate').length !== 2
+    || shaped.reloadEvidence[0]?.commands?.filter((row) => row.method === 'Browser.getVersion').length !== 2
+    || shaped.reloadEvidence[0]?.commands?.[3]?.cycle !== 2
+    || shaped.reloadEvidence[0]?.commands?.[3]?.sessionId !== 'target-session'
+    || shaped.reloadEvidence[0]?.commands?.[3]?.executionContextId !== 7
+    || shaped.reloadEvidence[0]?.commands?.[3]?.awaitPromise !== true
+    || shaped.reloadEvidence[0]?.commands?.[3]?.postRenderPriority !== -50
     || shaped.reloadEvidence[0]?.events?.[0]?.name !== 'DOMContentLoaded'
     || !['non-glass-background-chain', 'settings-pressed-focus', 'guide-render-focus',
       'motion-css-policy', 'ordinary-panel-centre-close', 'opener-expanded-controls',
@@ -1668,18 +2305,23 @@ function installAuditHarness() {
     }
     const state = window.__CF_SLICE__?.api?.state?.();
     if (!state || Math.abs(Number(state.rendererDpr) - expectedDpr) > 0.01
-      || Number(state.backingWidth) !== canvas.width || Number(state.backingHeight) !== canvas.height) {
+      || Number(state.backingWidth) !== canvas.width || Number(state.backingHeight) !== canvas.height
+      || Number(state.backingPixelCapPerCanvas) !== Number(maxBackingPixels)
+      || Number(state.viewportWidth) !== innerWidth || Number(state.viewportHeight) !== innerHeight) {
       out.push(issue('RENDERER_DPR_CONTRACT', surface, 'canvas', state ? {
         rendererDpr: state.rendererDpr, reportedBacking: [state.backingWidth, state.backingHeight],
         canvasBacking: [canvas.width, canvas.height],
-      } : null, { rendererDpr: expectedDpr, reportedBacking: 'matches live canvas backing' }));
+        backingPixelCapPerCanvas: state.backingPixelCapPerCanvas,
+        viewport: [state.viewportWidth, state.viewportHeight],
+      } : null, { rendererDpr: expectedDpr, reportedBacking: 'matches live canvas backing',
+        backingPixelCapPerCanvas: maxBackingPixels, viewport: [innerWidth, innerHeight] }));
     }
     const backingPixels = canvas.width * canvas.height;
     if (backingPixels > maxBackingPixels) {
       out.push(issue('CANVAS_BACKING_PIXEL_CEILING', surface, 'canvas', {
         width: canvas.width, height: canvas.height, pixels: backingPixels,
         css: [round(r.width), round(r.height)], rendererDpr: state?.rendererDpr ?? null,
-      }, { maxPixels: maxBackingPixels, rationale: '4096² bounded backing-store budget at 8K and extreme aspect ratios' }));
+      }, { maxPixels: maxBackingPixels, rationale: 'selected ordinary/ultra backing-store budget at extreme viewport areas' }));
     }
     return out;
   };
@@ -2064,6 +2706,78 @@ function formatIssue(context, row) {
   return `[${row.code}] ${context.viewport}/${context.surface} ${row.element}: actual=${JSON.stringify(row.actual)} expected=${JSON.stringify(row.expected)}`;
 }
 
+function ultraPointerOutcome(pointer, expectedX, expectedY) {
+  const ok = Number.isFinite(pointer?.x) && Number.isFinite(pointer?.y)
+    && Math.abs(pointer.x - expectedX) < 2 && Math.abs(pointer.y - expectedY) < 2;
+  return { ok, pointer: pointer ?? null, expected: [expectedX, expectedY] };
+}
+
+function combineUltraResizePointerOutcome(resize, pointer) {
+  return { ...(resize || { ok: false }), ok: resize?.ok === true && pointer?.ok === true,
+    realPointer: pointer || { ok: false, pointer: null } };
+}
+
+function ultraControlExecutionOutcome({ downshift, restored, controlsDiscriminated }) {
+  if (downshift?.ok !== true) {
+    return { executed: false, blocked: true, findingCode: 'ULTRA_VIEWPORT_RESIZE_STALE' };
+  }
+  if (restored?.ok !== true) {
+    return { executed: false, blocked: true, findingCode: 'ULTRA_VIEWPORT_RESIZE_NOT_RESTORED' };
+  }
+  return controlsDiscriminated === true
+    ? { executed: true, blocked: false, findingCode: null }
+    : { executed: false, blocked: false, findingCode: null };
+}
+
+function ultraResizeInjectionControlsOutcome(rows) {
+  if (!Array.isArray(rows) || rows.length !== 6) {
+    return { ok: false, why: 'same-backing resize control set was incomplete' };
+  }
+  for (const row of rows) {
+    if (!row || row.error || row.controlApplied !== true || row.restored !== true
+      || !row.outcome || row.outcome.error || row.outcome.ok !== false) {
+      return { ok: false, why: 'same-backing resize injection did not apply, restore, and reject its predicate', row };
+    }
+  }
+  return { ok: true, why: null };
+}
+
+function targetedProductRemainderBlocked(selectedViewport, productFailure) {
+  return typeof selectedViewport === 'string' && !!selectedViewport && productFailure === true;
+}
+
+function productBlockedSuffixForViewport(viewport, findingCode, executedControls = []) {
+  const uniqueReachableSuffix = {
+    'primary-phone': ['forced-colors-system-mapping'],
+    'phone-landscape': ['mobile-landscape-surface-chrome-yield'],
+    'desktop-8k': ['ultra-same-backing-resize'],
+  }[viewport] || [];
+  const executed = new Set(executedControls);
+  return uniqueReachableSuffix.filter((name) => !executed.has(name)).map((name) => ({
+    name, viewport, findingCode,
+  }));
+}
+
+function controlCoverageOutcome(executedControls = [], blockedControls = []) {
+  const executed = [...new Set(executedControls)];
+  const blockedRows = blockedControls.map((row) => typeof row === 'string'
+    ? { name: row, viewport: null, findingCode: null } : row);
+  const blockedNames = blockedRows.map((row) => row?.name);
+  const invalid = [...executed, ...blockedNames].filter((name) => !NEGATIVE_CONTROLS.includes(name));
+  const duplicateBlocked = blockedNames.filter((name, index) => blockedNames.indexOf(name) !== index);
+  const overlap = blockedNames.filter((name) => executed.includes(name));
+  if (invalid.length || duplicateBlocked.length || overlap.length
+    || blockedRows.some((row) => typeof row?.name !== 'string')) {
+    return { ok: false, why: 'negative-control coverage contained unknown, duplicate, or executed-and-blocked rows' };
+  }
+  return {
+    ok: true,
+    executed: executed.filter((name) => NEGATIVE_CONTROLS.includes(name)).sort(),
+    blocked: blockedRows.slice().sort((a, b) => a.name.localeCompare(b.name)),
+    omitted: NEGATIVE_CONTROLS.filter((name) => !executed.includes(name) && !blockedNames.includes(name)),
+  };
+}
+
 async function main() {
   if (selftestOnly) {
     await reportSelftest();
@@ -2088,10 +2802,13 @@ async function main() {
   const findings = [], instrumentFailures = [];
   const browserVersions = [];
   const executedControls = new Set();
+  const productBlockedControls = new Map();
+  let targetedProductFailure = false;
   const recordControls = (...names) => {
     for (const name of names) {
       if (!NEGATIVE_CONTROLS.includes(name)) throw new Error(`unknown negative control ${JSON.stringify(name)}`);
       executedControls.add(name);
+      productBlockedControls.delete(name);
     }
   };
   for (const failure of await reloadPhaseSelftest()) {
@@ -2100,7 +2817,8 @@ async function main() {
   recordControls(
     'replacement-document-loader-token-phase', 'import-phase-sequence',
     'replacement-ticker-quiescence', 'replacement-boot-phase-sequence',
-    'reload-resource-release',
+    'reload-resource-release', 'ready-confirmation-heartbeat',
+    'ready-confirmation-ticker-progress', 'ultra-viewport-render-budget',
   );
   let controlsRun = false, hpControlRun = false, settingsWidthControlRun = false,
     planetsideControlRun = false, panelPlanetsideControlRun = false,
@@ -2166,10 +2884,10 @@ async function main() {
           const validation = event.params.name === IMPORT_PHASE_BINDING
             ? validateImportPhaseWitness(event.params.payload)
             : event.params.name === RELOAD_RELEASE_BINDING
-              ? validateReloadReleaseWitness(event.params.payload)
+              ? validateReloadReleaseWitness(event.params.payload, vp)
               : event.params.name === BOOT_PHASE_BINDING
                 ? validateBootPhaseWitness(event.params.payload)
-                : validateSliceReadyWitness(event.params.payload);
+                : validateSliceReadyWitness(event.params.payload, vp);
           const target = event.params.name === IMPORT_PHASE_BINDING
             ? reloadImportPhases
             : event.params.name === RELOAD_RELEASE_BINDING
@@ -2277,6 +2995,50 @@ async function main() {
           }
           throw new Error(`${vp.label}/${label}: outcome did not arrive within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
         };
+        /* Geometry/state predicates are product outcomes, while target
+           starvation and browser transport loss are distinct failures. Poll
+           through a short exact-context command paired with a root-browser
+           heartbeat. Answerable false state is returned to addOutcome;
+           heartbeat-proven target starvation becomes a product liveness
+           finding; heartbeat loss remains instrument/transport failure. */
+        const observeOutcome = async (expression, accept, executionContextId, timeoutMs) => {
+          const until = Date.now() + timeoutMs;
+          let last = null;
+          const commands = [];
+          while (Date.now() < until) {
+            const remaining = until - Date.now();
+            const probe = await runBoundedOutcomeHeartbeatProbe({
+              send, sessionId: session, executionContextId, expression,
+              maxTimeoutMs: Math.max(1, Math.min(PHASE_PROBE_TIMEOUT_MS, remaining)),
+            });
+            commands.push(...probe.commands);
+            if (!probe.ok) {
+              const evidence = { viewport: vp.label, expression, commands, last,
+                classification: probe.classification, why: probe.why };
+              if (probe.classification === 'product-unanswerable-after-ready') {
+                throw new ProductAnswerabilityFinding(
+                  `${vp.label}: product outcome target was unanswerable while the browser process remained responsive (${probe.why})`,
+                  evidence,
+                  {
+                    code: 'ULTRA_VIEWPORT_RESIZE_UNANSWERABLE',
+                    surface: 'ultra-same-backing-resize', element: 'canvas',
+                    expected: 'the same-backing viewport transition remains externally answerable within the bounded target command while the browser process is responsive',
+                  },
+                );
+              }
+              throw new Error(`${vp.label}: bounded product outcome probe failed (${JSON.stringify(evidence)})`);
+            }
+            if (probe.result?.exceptionDetails) {
+              throw new Error(`${vp.label}: bounded product outcome expression threw (${String(
+                probe.result.exceptionDetails.exception?.description
+                || probe.result.exceptionDetails.text || 'page evaluation failed')})`);
+            }
+            last = probe.result?.result?.value;
+            if (accept(last)) return { settled: true, value: last, commands };
+            if (Date.now() < until) await sleep(50);
+          }
+          return { settled: false, value: last, commands };
+        };
         const waitForReload = async (label, priorToken, priorFrame, priorContext, phaseId, importDeadline, {
           importTimeoutMs = IMPORT_SETTLE_TIMEOUT_MS,
           navigationTimeoutMs = NAVIGATION_COMMIT_TIMEOUT_MS,
@@ -2299,59 +3061,80 @@ async function main() {
             commands: [...reloadCommands],
             events: [...reloadEvents],
           });
-          const fail = (why) => {
+          const fail = (why, classification = 'instrument-or-transport-failure') => {
             const evidence = diagnosticEvidence(why);
+            evidence.classification = classification;
             runReloadEvidence.push(evidence);
-            throw new Error(`${vp.label}/${label}: ${why} (evidence ${JSON.stringify(evidence)})`);
+            const message = `${vp.label}/${label}: ${why} (evidence ${JSON.stringify(evidence)})`;
+            if (classification === 'product-unanswerable-after-ready') {
+              throw new ProductAnswerabilityFinding(message, evidence);
+            }
+            throw new Error(message);
           };
           const confirmReady = async (readyRow) => {
-            const confirmation = await runBoundedReadyConfirmation({
-              send, sessionId: session, executionContextId: readyRow.executionContextId,
-              bootDeadline,
-              expression: `(()=>{ const S=window.__CF_SLICE__; try { const s=S?.api?.state(); return {
-                  ready:!!s?.save,token:S?.documentToken||null,href:location.href,
-                  readyState:document.readyState,viewConnected:!!S?.app?.canvas?.isConnected,
-                  backingWidth:S?.app?.canvas?.width||0,backingHeight:S?.app?.canvas?.height||0,
-                  backdropBackingWidth:s?.backdropBackingWidth||0,
-                  backdropBackingHeight:s?.backdropBackingHeight||0,
-                  combinedBackingPixels:s?.combinedBackingPixels||0};
-                } catch(error) { return {ready:false,token:S?.documentToken||null,href:location.href,
-                  readyState:document.readyState,error:String(error?.message||error)}; } })()`,
-            });
-            if (confirmation.command) reloadCommands.push(confirmation.command);
-            if (!confirmation.ok) fail(confirmation.why);
-            const result = confirmation.result;
-            if (result.exceptionDetails) {
-              fail(`bounded slice-ready confirmation threw (${String(result.exceptionDetails.exception?.description
-                || result.exceptionDetails.text || 'page evaluation failed')})`);
-            }
-            const state = result.result?.value;
             const witnessed = readyRow.validation.witness;
-            if (!state?.ready || state.token !== witnessed.token || state.href !== url
-              || state.readyState !== 'complete' || state.viewConnected !== true
-              || state.backingWidth !== witnessed.backingWidth
-              || state.backingHeight !== witnessed.backingHeight
-              || state.backdropBackingWidth !== witnessed.backdropBackingWidth
-              || state.backdropBackingHeight !== witnessed.backdropBackingHeight
-              || state.combinedBackingPixels !== witnessed.combinedBackingPixels) {
-              fail(`bounded slice-ready confirmation disagreed with the witness (${JSON.stringify(state)})`);
-            }
-            const active = runtimeContexts.get(readyRow.executionContextId);
-            if (!active || active.uniqueId !== readyRow.context?.uniqueId
-              || currentTopLoaderId !== commit.loaderId) {
-              fail('replacement context/loader changed during slice-ready confirmation');
-            }
-            if (reloadFatalEvents.length) {
-              fail(`replacement target failed (${JSON.stringify(reloadFatalEvents[0])})`);
-            }
-            const navigationNow = replacementNavigationOutcome(reloadTopNavigations, {
-              priorLoaderId: priorFrame.loaderId, priorFrameId: priorFrame.frameId,
-              expectedUrl: url, releaseAt: reloadReleaseWitnesses[0].at, navigationDeadline,
-            });
-            if (navigationNow.status !== 'ready' || navigationNow.row.loaderId !== commit.loaderId) {
-              fail(`replacement loader changed during confirmation (${navigationNow.why || navigationNow.status})`);
-            }
-            return state;
+            const expression = `(()=>{ const S=window.__CF_SLICE__; try { const s=S?.api?.state(); return {
+                ready:!!s?.save,token:S?.documentToken||null,href:location.href,
+                readyState:document.readyState,viewConnected:!!S?.app?.canvas?.isConnected,
+                rendererReady:!!S?.app?.renderer&&S.app.canvas.width>1&&S.app.canvas.height>1,
+                stageReady:!!S?.app?.stage,tickerStarted:!!S?.app?.ticker?.started,
+                tickerTicks:s?.tickerTicks??null,
+                backingWidth:s?.backingWidth||0,backingHeight:s?.backingHeight||0,
+                backdropBackingWidth:s?.backdropBackingWidth||0,
+                backdropBackingHeight:s?.backdropBackingHeight||0,
+                combinedBackingPixels:s?.combinedBackingPixels||0,
+                rendererDpr:s?.rendererDpr??null,
+                backingPixelCapPerCanvas:s?.backingPixelCapPerCanvas||0,
+                viewportWidth:s?.viewportWidth||0,viewportHeight:s?.viewportHeight||0};
+              } catch(error) { return {ready:false,token:S?.documentToken||null,href:location.href,
+                readyState:document.readyState,error:String(error?.message||error)}; } })()`;
+            const confirmCycle = async (cycle, priorTickerTicks = null) => {
+              /* Cycle two installs one one-shot callback after Pixi's LOW
+                 render listener (UTILITY=-50). The command itself waits for
+                 that exact completed ticker/render turn inside the same 2s
+                 bound; an arbitrary Node sleep can race ahead of the next
+                 rAF and falsely report a healthy slow renderer as stalled. */
+              const confirmation = await runBoundedReadyConfirmation({
+                send, sessionId: session, executionContextId: readyRow.executionContextId,
+                readyReceiptAt: readyRow.at, bootDeadline, expression, cycle,
+                postRenderPriority: priorTickerTicks === null ? null : -50,
+              });
+              reloadCommands.push(...confirmation.commands);
+              if (!confirmation.ok) fail(confirmation.why, confirmation.classification);
+              const result = confirmation.result;
+              if (result.exceptionDetails) {
+                fail(`bounded slice-ready confirmation threw (${String(result.exceptionDetails.exception?.description
+                  || result.exceptionDetails.text || 'page evaluation failed')})`);
+              }
+              const state = result.result?.value;
+              if (!state || typeof state !== 'object' || Array.isArray(state)) {
+                fail(`bounded slice-ready confirmation returned no structured state (${JSON.stringify(result)})`);
+              }
+              const stateOutcome = confirmationStateOutcome(state, witnessed, url, vp, priorTickerTicks);
+              if (!stateOutcome.ok) fail(`${stateOutcome.why} (${JSON.stringify(state)})`,
+                'product-unanswerable-after-ready');
+              const active = runtimeContexts.get(readyRow.executionContextId);
+              if (!active || active.uniqueId !== readyRow.context?.uniqueId
+                || currentTopLoaderId !== commit.loaderId) {
+                fail('replacement context/loader changed during slice-ready confirmation',
+                  'product-unanswerable-after-ready');
+              }
+              if (reloadFatalEvents.length) {
+                fail(`replacement target failed (${JSON.stringify(reloadFatalEvents[0])})`,
+                  'product-unanswerable-after-ready');
+              }
+              const navigationNow = replacementNavigationOutcome(reloadTopNavigations, {
+                priorLoaderId: priorFrame.loaderId, priorFrameId: priorFrame.frameId,
+                expectedUrl: url, releaseAt: reloadReleaseWitnesses[0].at, navigationDeadline,
+              });
+              if (navigationNow.status !== 'ready' || navigationNow.row.loaderId !== commit.loaderId) {
+                fail(`replacement loader changed during confirmation (${navigationNow.why || navigationNow.status})`,
+                  'product-unanswerable-after-ready');
+              }
+              return state;
+            };
+            const first = await confirmCycle(1);
+            return confirmCycle(2, first.tickerTicks);
           };
           while (true) {
             if (reloadFatalEvents.length) fail(`replacement target failed (${JSON.stringify(reloadFatalEvents[0])})`);
@@ -2452,6 +3235,10 @@ async function main() {
               fail('slice-ready witness did not follow the exact replacement boot operation/context');
             }
             const state = await confirmReady(readyOutcome.row);
+            const commandLedger = reloadCommandLedgerOutcome(reloadCommands, {
+              sessionId: session, executionContextId: readyOutcome.row.executionContextId,
+            });
+            if (!commandLedger.ok) fail(`replacement confirmation command ledger failed closed (${commandLedger.why})`);
             const now = Date.now();
             return {
               ...state, elapsedMs: now - beganAt,
@@ -2474,11 +3261,8 @@ async function main() {
            still be on touch laptops, and a narrower desktop exemption made
            the same control pass or fail based only on emulation metadata. */
         const targetFloor = 44;
-        const expectedDpr = Math.min(
-          vp.dpr,
-          vp.mobile ? 2 : 3,
-          Math.sqrt(MAX_CANVAS_BACKING_PIXELS / (vp.width * vp.height)),
-        );
+        const maxBackingPixels = backingPixelCapForViewport(vp.width, vp.height);
+        const expectedDpr = expectedDensityPlan(vp).dpr;
         const common = {
           targetFloor,
           safe: vp.safe || {},
@@ -2509,7 +3293,7 @@ async function main() {
           interactiveRoots: ['#tutcard'], contrastSelectors: ['#tutcard'],
           focusSelectors: ['[data-sel=tutskip]'],
           overlapPairs: [...common.overlapPairs, ['#tutcard', '#dock']],
-          canvas: true, expectedDpr, maxBackingPixels: MAX_CANVAS_BACKING_PIXELS,
+          canvas: true, expectedDpr, maxBackingPixels,
         }));
         {
           /* Import a real rich expedition with an intentionally unfinished
@@ -2569,7 +3353,11 @@ async function main() {
                 stageReady:!!S.app.stage,tickerTicks:s.tickerTicks,
                 backingWidth:S.app.canvas.width,backingHeight:S.app.canvas.height,
                 backdropBackingWidth:s.backdropBackingWidth,backdropBackingHeight:s.backdropBackingHeight,
-                combinedBackingPixels:s.combinedBackingPixels,performanceNow:performance.now()});
+                combinedBackingPixels:s.combinedBackingPixels,
+                rendererDpr:s.rendererDpr,
+                backingPixelCapPerCanvas:s.backingPixelCapPerCanvas,
+                viewportWidth:s.viewportWidth,viewportHeight:s.viewportHeight,
+                performanceNow:performance.now()});
                 window.${SLICE_READY_BINDING}(payload);window.${SLICE_READY_BINDING}(payload);return true;})()`);
               for (let i = 0; i < 50 && reloadReadyWitnesses.length < 2; i++) await sleep(10);
               const duplicate = replacementReadyOutcome(reloadReadyWitnesses, {
@@ -2646,6 +3434,7 @@ async function main() {
               phaseId, importDeadline,
             );
             runReloadEvidence.push({ viewport: vp.label, ...ready.reloadEvidence });
+
           } finally {
             reloadCaptureArmed = false;
             requestUrls.clear();
@@ -2668,6 +3457,194 @@ async function main() {
         if (matrixStart.mode !== 'universe') {
           instrumentFailures.push(`${vp.label}: preference fixture did not return to the universe after Training Skip (${JSON.stringify(matrixStart)})`);
         }
+        if (vp.label === 'desktop-8k') {
+          /* 8K and 5120×2880 deliberately share a rounded 2730×1536
+             backing, but not a logical viewport or renderer/EventSystem
+             resolution. Exercise the transition only after Training releases
+             pointer containment so a genuine CDP pointer event can prove
+             Pixi maps client coordinates into the resized stage. */
+          const plan8k = expectedDensityPlan(vp);
+          const downshiftViewport = { width: 5120, height: 2880, dpr: vp.dpr, mobile: vp.mobile };
+          const plan5k = expectedDensityPlan(downshiftViewport);
+          if (plan8k.backingWidth !== plan5k.backingWidth
+            || plan8k.backingHeight !== plan5k.backingHeight) {
+            throw new Error(`${vp.label}: same-backing resize fixture premise drifted (${JSON.stringify({ plan8k, plan5k })})`);
+          }
+          const expectedTransitionPeakPixels = plan8k.backingWidth * plan8k.backingHeight * 2;
+          const expectedTransitionBudgetPixels = Math.max(
+            plan8k.backingPixelCapPerCanvas, plan5k.backingPixelCapPerCanvas,
+          ) * 2;
+          const resizeFrame = await topFrameState();
+          const resizeContexts = [...runtimeContexts.values()].filter((row) => row.active
+            && row.isDefault && row.frameId === resizeFrame.frameId);
+          const resizeContext = resizeContexts.length === 1 ? resizeContexts[0] : null;
+          if (!resizeContext?.uniqueId || resizeContext.origin !== new URL(url).origin) {
+            throw new Error(`${vp.label}: same-backing resize exact context unavailable (${JSON.stringify({ resizeFrame, resizeContexts })})`);
+          }
+          const beforeResize = await evalIn('window.__CF_SLICE__.api.state()');
+          const ultraResizeOutcome = (width, height, plan, priorGeneration) => `(()=>{
+            try { const S=window.__CF_SLICE__; if(!S?.api?.state||!S?.app?.canvas||!S?.app?.renderer?.events)
+              return {ok:false,error:'slice/app/state/EventSystem unavailable after resize'};
+            const s=S.api.state(),c=S.app.canvas,r=c.getBoundingClientRect(),p={x:0,y:0};
+            S.app.renderer.events.mapPositionToPoint(p,${width}*.37,${height}*.61);
+            return {ok:innerWidth===${width}&&innerHeight===${height}
+                &&s?.viewportWidth===${width}&&s?.viewportHeight===${height}
+                &&S?.app?.screen?.width===${width}&&S?.app?.screen?.height===${height}
+                &&Math.abs((r?.width||0)-${width})<0.5&&Math.abs((r?.height||0)-${height})<0.5
+                &&Math.abs((s?.rendererDpr??-1)-${plan.dpr})<1e-12
+                &&Math.abs((s?.eventResolution??-1)-${plan.dpr})<1e-12
+                &&Math.abs(p.x-${width}*.37)<2&&Math.abs(p.y-${height}*.61)<2
+                &&s?.backingPixelCapPerCanvas===${plan.backingPixelCapPerCanvas}
+                &&s?.backingWidth===${plan.backingWidth}&&s?.backingHeight===${plan.backingHeight}
+                &&s?.backdropBackingWidth===${plan.backingWidth}
+                &&s?.backdropBackingHeight===${plan.backingHeight}
+                &&s?.combinedBackingPixels===${plan.backingWidth * plan.backingHeight * 2}
+                &&Math.abs((s?.backdropLogicalWidth??-1)-${width})<0.01
+                &&Math.abs((s?.backdropLogicalHeight??-1)-${height})<0.01
+                &&s?.backdropGeneration>${priorGeneration}
+                &&Number.isInteger(s?.backdropTransitionPeakPixels)
+                &&Number.isInteger(s?.backdropTransitionBudgetPixels)
+                &&s.backdropTransitionPeakPixels===${expectedTransitionPeakPixels}
+                &&s.backdropTransitionBudgetPixels===${expectedTransitionBudgetPixels},
+              viewport:[innerWidth,innerHeight],reported:[s?.viewportWidth,s?.viewportHeight],
+              screen:[S?.app?.screen?.width,S?.app?.screen?.height],rect:[r?.width,r?.height],
+              dpr:[s?.rendererDpr,s?.eventResolution],mapped:[p.x,p.y],
+              backing:[s?.backingWidth,s?.backingHeight,s?.backdropBackingWidth,s?.backdropBackingHeight],
+              backdrop:[s?.backdropLogicalWidth,s?.backdropLogicalHeight,s?.backdropGeneration],
+              transition:[s?.backdropTransitionPeakPixels,s?.backdropTransitionBudgetPixels],
+              combined:s?.combinedBackingPixels,cap:s?.backingPixelCapPerCanvas};
+            } catch(error) { return {ok:false,error:String(error?.message||error)}; } })()`;
+          await send('Emulation.setDeviceMetricsOverride', {
+            width: downshiftViewport.width, height: downshiftViewport.height,
+            deviceScaleFactor: downshiftViewport.dpr, mobile: downshiftViewport.mobile,
+          }, session);
+          const downshiftObservation = await observeOutcome(ultraResizeOutcome(
+            downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration,
+          ), (value) => value?.ok === true, resizeContext.id, 10000);
+          let downshift = downshiftObservation.value || {
+            ok: false, why: 'same-backing 5K resize returned no structured product state',
+          };
+          downshift.settledWithinBound = downshiftObservation.settled;
+          const pointerArm = await observeOutcome(`(()=>{try{const S=window.__CF_SLICE__;
+            if(!S?.app?.stage?.once)return {ok:false,error:'stage pointer wiring unavailable'};
+            window.__CF_ULTRA_POINTER__=null;S.app.stage.once('globalpointermove',
+              (event)=>{window.__CF_ULTRA_POINTER__={x:event.global.x,y:event.global.y};});
+            return {ok:true};}catch(error){return {ok:false,error:String(error?.message||error)};}})()`,
+          () => true, resizeContext.id, PHASE_PROBE_TIMEOUT_MS);
+          const pointerX = downshiftViewport.width * 0.53, pointerY = downshiftViewport.height * 0.47;
+          let pointerObservation = { settled: false, value: null, commands: [] };
+          if (pointerArm.value?.ok) {
+            await send('Input.dispatchMouseEvent', { type: 'mouseMoved', x: pointerX, y: pointerY,
+              button: 'none' }, session);
+            pointerObservation = await observeOutcome(
+              `(()=>{try{return window.__CF_ULTRA_POINTER__||null;}catch(error){return {error:String(error?.message||error)};}})()`,
+              (value) => Number.isFinite(value?.x) && Number.isFinite(value?.y),
+              resizeContext.id, 5000,
+            );
+          }
+          const pointerResult = ultraPointerOutcome(pointerObservation.value, pointerX, pointerY);
+          downshift = combineUltraResizePointerOutcome(downshift, pointerResult);
+          downshift.pointerArm = pointerArm.value;
+          downshift.pointerSettledWithinBound = pointerObservation.settled;
+          addOutcome(vp.label, 'ultra-same-backing-resize', 'ULTRA_VIEWPORT_RESIZE_STALE', 'canvas', downshift,
+            'a same-backing 8K→5K transition updates DPR, EventSystem mapping, CSS, Pixi screen, pointer hit geometry and the logical backdrop atomically');
+          let resizeControlsDiscriminated = false;
+          if (downshift.ok) {
+            const injectedOutcome = async (expression) => (await observeOutcome(
+              expression, () => true, resizeContext.id, PHASE_PROBE_TIMEOUT_MS,
+            )).value;
+            const staleGeometryControl = await injectedOutcome(`(()=>{ let c=null,priorStyle=null,priorScreen=null;
+              try { const S=window.__CF_SLICE__;c=S.app.canvas;priorStyle=c.style.width;priorScreen=S.app.screen.width;
+                c.style.width='4000px';S.app.screen.width=4000;
+                const controlApplied=c.style.width==='4000px'&&S.app.screen.width===4000;
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration)};
+                c.style.width=priorStyle;S.app.screen.width=priorScreen;
+                return {controlApplied,restored:c.style.width===priorStyle&&S.app.screen.width===priorScreen,outcome};
+              } catch(error) { if(c&&priorStyle!==null)c.style.width=priorStyle;if(window.__CF_SLICE__&&priorScreen!==null)window.__CF_SLICE__.app.screen.width=priorScreen;
+                return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
+            const staleEventControl = await injectedOutcome(`(()=>{ let events=null,prior=null;
+              try { const S=window.__CF_SLICE__;events=S.app.renderer.events;prior=events.resolution;
+                events.resolution=${plan8k.dpr};const controlApplied=Math.abs(events.resolution-${plan8k.dpr})<1e-12;
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration)};
+                events.resolution=prior;return {controlApplied,restored:events.resolution===prior,outcome};
+              } catch(error) { if(events&&prior!==null)events.resolution=prior;
+                return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
+            const staleBackdropControl = await injectedOutcome(`(()=>{ let S=null,prior=null;
+              try { S=window.__CF_SLICE__;prior=S.api.state;
+                S.api.state=()=>({...prior(),backdropLogicalWidth:${vp.width},backdropGeneration:${beforeResize.backdropGeneration}});
+                const controlApplied=S.api.state!==prior;
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration)};
+                S.api.state=prior;return {controlApplied,restored:S.api.state===prior,outcome};
+              } catch(error) { if(S&&prior)S.api.state=prior;
+                return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
+            const transitionPeakControl = await injectedOutcome(`(()=>{ let S=null,prior=null;
+              try { S=window.__CF_SLICE__;prior=S.api.state;
+                S.api.state=()=>{const s=prior();return {...s,backdropTransitionPeakPixels:s.backdropTransitionBudgetPixels+1};};
+                const controlApplied=S.api.state().backdropTransitionPeakPixels===S.api.state().backdropTransitionBudgetPixels+1;
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration)};
+                S.api.state=prior;return {controlApplied,restored:S.api.state===prior,outcome};
+              } catch(error) { if(S&&prior)S.api.state=prior;
+                return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
+            const transitionUnderreportControl = await injectedOutcome(`(()=>{ let S=null,prior=null;
+              try { S=window.__CF_SLICE__;prior=S.api.state;
+                S.api.state=()=>{const s=prior();return {...s,backdropTransitionPeakPixels:${expectedTransitionPeakPixels - 1}};};
+                const controlApplied=S.api.state().backdropTransitionPeakPixels===${expectedTransitionPeakPixels - 1};
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration)};
+                S.api.state=prior;return {controlApplied,restored:S.api.state===prior,outcome};
+              } catch(error) { if(S&&prior)S.api.state=prior;
+                return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
+            const transitionInflatedBudgetControl = await injectedOutcome(`(()=>{ let S=null,prior=null;
+              try { S=window.__CF_SLICE__;prior=S.api.state;
+                S.api.state=()=>{const s=prior();return {...s,backdropTransitionBudgetPixels:${expectedTransitionBudgetPixels + 1}};};
+                const controlApplied=S.api.state().backdropTransitionBudgetPixels===${expectedTransitionBudgetPixels + 1};
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration)};
+                S.api.state=prior;return {controlApplied,restored:S.api.state===prior,outcome};
+              } catch(error) { if(S&&prior)S.api.state=prior;
+                return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
+            const missingPointerControl = combineUltraResizePointerOutcome(
+              { ...downshift, ok: true }, ultraPointerOutcome(null, pointerX, pointerY),
+            );
+            const offsetPointerControl = combineUltraResizePointerOutcome(
+              { ...downshift, ok: true }, ultraPointerOutcome({ x: pointerX + 20, y: pointerY }, pointerX, pointerY),
+            );
+            const injectedControls = ultraResizeInjectionControlsOutcome([
+              staleGeometryControl, staleEventControl, staleBackdropControl, transitionPeakControl,
+              transitionUnderreportControl, transitionInflatedBudgetControl,
+            ]);
+            if (!injectedControls.ok || missingPointerControl.ok || offsetPointerControl.ok) {
+              instrumentFailures.push(`${vp.label}: same-backing resize injection stayed green (${JSON.stringify({ staleGeometryControl, staleEventControl, staleBackdropControl, transitionPeakControl, transitionUnderreportControl, transitionInflatedBudgetControl, missingPointerControl, offsetPointerControl })})`);
+            } else {
+              resizeControlsDiscriminated = true;
+            }
+          }
+          const downshiftGeneration = Number.isInteger(downshift?.backdrop?.[2])
+            ? downshift.backdrop[2] : beforeResize.backdropGeneration;
+          await send('Emulation.setDeviceMetricsOverride', {
+            width: vp.width, height: vp.height, deviceScaleFactor: vp.dpr, mobile: vp.mobile,
+          }, session);
+          const restoreObservation = await observeOutcome(ultraResizeOutcome(
+            vp.width, vp.height, plan8k, downshiftGeneration,
+          ), (value) => value?.ok === true, resizeContext.id, 10000);
+          const restored = restoreObservation.value || {
+            ok: false, why: 'same-backing 8K restore returned no structured product state',
+          };
+          restored.settledWithinBound = restoreObservation.settled;
+          addOutcome(vp.label, 'ultra-same-backing-resize', 'ULTRA_VIEWPORT_RESIZE_NOT_RESTORED', 'canvas', restored,
+            'restoring 8K restores its exact DPR, pointer mapping, CSS/Pixi screen and a fresh logical backdrop');
+          const resizeControlOutcome = ultraControlExecutionOutcome({
+            downshift, restored, controlsDiscriminated: resizeControlsDiscriminated,
+          });
+          if (resizeControlOutcome.executed) {
+            recordControls('ultra-same-backing-resize');
+          } else if (resizeControlOutcome.blocked) {
+            productBlockedControls.set('ultra-same-backing-resize', {
+              name: 'ultra-same-backing-resize', viewport: vp.label,
+              findingCode: resizeControlOutcome.findingCode,
+            });
+          } else {
+            instrumentFailures.push(`${vp.label}: same-backing resize controls did not discriminate from green positive baselines`);
+          }
+        }
 
         /* Synthetic controls must run outside Training's real focus scope.
            Running them on the welcome lesson makes the product correctly
@@ -2687,7 +3664,12 @@ async function main() {
             'survey-expanded-controls', 'pseudo-placeholder-contrast', 'cumulative-opacity-contrast',
             'typography-no-shrink-hierarchy', 'panel-open-focus', 'clipped-without-scroll',
           );
-          const canvasControl = await evalIn(`(()=>{ const canvas=document.querySelector('canvas'),prior=[canvas.style.width,canvas.style.height]; canvas.style.width=Math.max(100,innerWidth/2)+'px';const out=window.__CF_GLASS_AUDIT__.canvasIssues('selftest',Math.min(devicePixelRatio,2));canvas.style.width=prior[0];canvas.style.height=prior[1];return out;})()`);
+          const canvasBaseline = await evalIn(`window.__CF_GLASS_AUDIT__.canvasIssues('selftest',${expectedDpr},${maxBackingPixels})`);
+          if (canvasBaseline.some((row) => row.code === 'CANVAS_CSS_VIEWPORT'
+            || row.code === 'CANVAS_DPR_DRIFT' || row.code === 'RENDERER_DPR_CONTRACT')) {
+            instrumentFailures.push(`SELFTEST canvas baseline was already red (${JSON.stringify(canvasBaseline)})`);
+          }
+          const canvasControl = await evalIn(`(()=>{ const canvas=document.querySelector('canvas'),prior=[canvas.style.width,canvas.style.height]; canvas.style.width=Math.max(100,innerWidth/2)+'px';const out=window.__CF_GLASS_AUDIT__.canvasIssues('selftest',${expectedDpr},${maxBackingPixels});canvas.style.width=prior[0];canvas.style.height=prior[1];return out;})()`);
           if (!canvasControl.some((row) => row.code === 'CANVAS_CSS_VIEWPORT')) instrumentFailures.push('SELFTEST injected narrow CSS canvas was accepted');
           if (!canvasControl.some((row) => row.code === 'CANVAS_DPR_DRIFT')) instrumentFailures.push('SELFTEST injected backing/CSS density drift was accepted');
           recordControls('canvas-css-fit', 'canvas-backing-density');
@@ -2703,7 +3685,7 @@ async function main() {
           contrastSelectors: ['#playerchip', '#hpbar', '#searchbox', '#trail', '#objchip', '#ctxbar', '#hintpill', '#raillft button', '#railrgt button'],
           placeholderSelectors: ['#searchbox'], maxContrastReports: 24,
           focusSelectors: vp.label === 'primary-phone' || vp.label === 'desktop' ? ['#searchbox', '#dockguide', '#docksets'] : [],
-          canvas: true, expectedDpr, maxBackingPixels: MAX_CANVAS_BACKING_PIXELS,
+          canvas: true, expectedDpr, maxBackingPixels,
         }));
         const hpLabelCheck = `(()=>{ const track=document.querySelector('#hpbar .track'),fill=document.querySelector('#hpbar .fill'),txt=document.querySelector('#hpbar .txt');
           if(!track||!fill||!txt)return {ok:false,why:'missing'};
@@ -3451,6 +4433,9 @@ async function main() {
             return {ok:s.mode==='system'&&s.cardOpen&&s.cardTitle===${JSON.stringify(densityCardBefore.title)}&&!!action&&r.width>=44&&r.height>=44&&(hit===action||action?.contains(hit)),
               mode:s.mode,title:s.cardTitle,action:action?.textContent||null,width:r?.width||0,height:r?.height||0,hit:hit?.tagName||null}; })()`;
           const dprWidth = vp.width - 1;
+          const dprPlan = expectedDensityPlan({
+            width: dprWidth, height: vp.height, dpr: 1, mobile: vp.mobile,
+          });
           await send('Emulation.setDeviceMetricsOverride', { width: dprWidth, height: vp.height, deviceScaleFactor: 1, mobile: vp.mobile }, session);
           await sleep(500);
           const liveDpr = await evalIn('devicePixelRatio');
@@ -3458,8 +4443,9 @@ async function main() {
           add(vp.label, 'dpr-change', await audit({
             ...common, surface: 'dpr-change', root: '#dock', textMin: 1,
             viewportExpected: { width: dprWidth, height: vp.height, dpr: 1 },
-            interactiveRoots: ['#dock'], contrastSelectors: [], canvas: true, expectedDpr: 1,
-            maxBackingPixels: MAX_CANVAS_BACKING_PIXELS,
+            interactiveRoots: ['#dock'], contrastSelectors: [], canvas: true,
+            expectedDpr: dprPlan.dpr,
+            maxBackingPixels: dprPlan.backingPixelCapPerCanvas,
           }));
           const densityCardAfter = await evalIn(densityCardCheck);
           if (!densityCardAfter.ok) findings.push({ context: { viewport: vp.label, surface: 'dpr-card-preservation' }, row: {
@@ -3472,7 +4458,28 @@ async function main() {
           recordControls('dpr-card-preservation');
         }
       } catch (error) {
-        instrumentFailures.push(`${vp.label}: ${error.message}`);
+        if (error instanceof ProductAnswerabilityFinding) {
+          const findingCode = error.finding?.code || 'REPLACEMENT_UNANSWERABLE_AFTER_READY';
+          if (viewportLabel) targetedProductFailure = true;
+          const findingSurface = error.finding?.surface || 'replacement-ready-answerability';
+          findings.push({ context: { viewport: vp.label, surface: findingSurface }, row: {
+            code: findingCode,
+            surface: findingSurface, element: error.finding?.element || 'replacement target main thread',
+            actual: { message: error.message, evidence: error.evidence },
+            expected: error.finding?.expected || 'two exact-context confirmations each answer within 2000ms with a concurrent responsive browser-process heartbeat and a newer ticker turn on cycle 2',
+          } });
+          /* Record only controls uniquely reachable in the aborted
+             viewport's remaining suffix. Controls belonging to other
+             viewport classes stay omitted in targeted reports; full reports
+             can distinguish product-blocked coverage from instrument loss. */
+          for (const row of productBlockedSuffixForViewport(
+            vp.label, findingCode, executedControls,
+          )) {
+            productBlockedControls.set(row.name, row);
+          }
+        } else {
+          instrumentFailures.push(`${vp.label}: ${error.message}`);
+        }
       } finally {
         if (targetId && browser) {
           try { await browser.send('Target.closeTarget', { targetId }); } catch { /* disposal below is authoritative */ }
@@ -3497,41 +4504,51 @@ async function main() {
     || endingSource.workingTreeSha256 !== runSource.workingTreeSha256) {
     instrumentFailures.push(`source changed during matrix: start=${JSON.stringify(runSource)} end=${JSON.stringify(endingSource)}`);
   }
-  if (!controlsRun) instrumentFailures.push('injected matrix controls never ran');
-  if (!hpControlRun) instrumentFailures.push('HP dual-background contrast control never ran');
-  if (!settingsWidthControlRun) instrumentFailures.push('Settings horizontal-overflow control never ran');
-  if (!planetsideControlRun) instrumentFailures.push('Planetside surface-ownership controls never ran');
-  if (!panelPlanetsideControlRun) instrumentFailures.push('panel/Planetside synthesized layering control never ran');
-  if (!chromeYieldControlRun) instrumentFailures.push('mobile chrome yield control never ran');
-  if (!chromeRestoreControlRun) instrumentFailures.push('mobile chrome restore-direction control never ran');
-  if (!objectiveYieldControlRun && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900)) {
+  /* A targeted diagnostic that is itself product-blocked cannot execute the
+     remainder of that one viewport. Full certification still requires all
+     global sentinels; only the explicit reachable suffix in the control
+     ledger may be product-blocked there. */
+  const targetedProductBlocked = targetedProductRemainderBlocked(viewportLabel, targetedProductFailure);
+  if (!controlsRun && !targetedProductBlocked) instrumentFailures.push('injected matrix controls never ran');
+  if (!hpControlRun && !targetedProductBlocked) instrumentFailures.push('HP dual-background contrast control never ran');
+  if (!settingsWidthControlRun && !targetedProductBlocked) instrumentFailures.push('Settings horizontal-overflow control never ran');
+  if (!planetsideControlRun && !targetedProductBlocked) instrumentFailures.push('Planetside surface-ownership controls never ran');
+  if (!panelPlanetsideControlRun && !targetedProductBlocked) instrumentFailures.push('panel/Planetside synthesized layering control never ran');
+  if (!chromeYieldControlRun && !targetedProductBlocked) instrumentFailures.push('mobile chrome yield control never ran');
+  if (!chromeRestoreControlRun && !targetedProductBlocked) instrumentFailures.push('mobile chrome restore-direction control never ran');
+  if (!objectiveYieldControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900)) {
     instrumentFailures.push('mobile landed-objective yield control never ran');
   }
-  if (!topChromeControlRun) instrumentFailures.push('Planetside/top-chrome clearance control never ran');
-  if (!portraitBandControlRun && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900 && vp.width <= vp.height)) {
+  if (!topChromeControlRun && !targetedProductBlocked) instrumentFailures.push('Planetside/top-chrome clearance control never ran');
+  if (!portraitBandControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900 && vp.width <= vp.height)) {
     instrumentFailures.push('Planetside portrait-band viability control never ran');
   }
-  if (!portraitFallbackControlRun && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900 && vp.width <= vp.height)) {
+  if (!portraitFallbackControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900 && vp.width <= vp.height)) {
     instrumentFailures.push('Planetside portrait trail-fallback control never ran');
   }
-  if (!modalControlRun) instrumentFailures.push('import modal containment control never ran');
-  if (!modalLiveControlRun) instrumentFailures.push('import live-error control never ran');
-  if (!closeLabelControlRun) instrumentFailures.push('panel close accessible-name control never ran');
-  if (!hiddenOpenerControlRun && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {
+  if (!modalControlRun && !targetedProductBlocked) instrumentFailures.push('import modal containment control never ran');
+  if (!modalLiveControlRun && !targetedProductBlocked) instrumentFailures.push('import live-error control never ran');
+  if (!closeLabelControlRun && !targetedProductBlocked) instrumentFailures.push('panel close accessible-name control never ran');
+  if (!hiddenOpenerControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {
     instrumentFailures.push('hidden panel-opener focus fallback control never ran');
   }
-  if (!reloadBindingControlRun) instrumentFailures.push('live slice-ready binding controls never ran');
+  if (!reloadBindingControlRun && !targetedProductBlocked) instrumentFailures.push('live slice-ready binding controls never ran');
   const browser = browserVersions.length ? {
     ...browserVersions[0],
     consistentAcrossViewports: browserVersions.every((row) => JSON.stringify(row) === JSON.stringify(browserVersions[0])),
   } : null;
   if (browser && !browser.consistentAcrossViewports) instrumentFailures.push('browser version changed within the matrix');
-  const omittedControls = NEGATIVE_CONTROLS.filter((name) => !executedControls.has(name));
-  if (!viewportLabel && omittedControls.length) {
-    instrumentFailures.push(`full matrix omitted planned negative controls: ${omittedControls.join(', ')}`);
+  const blockedControls = [...productBlockedControls.values()]
+    .filter((row) => !executedControls.has(row.name));
+  const coverage = controlCoverageOutcome([...executedControls], blockedControls);
+  if (!coverage.ok) {
+    instrumentFailures.push(`negative-control coverage failed closed: ${coverage.why}`);
+  } else if (!viewportLabel && coverage.omitted.length) {
+    instrumentFailures.push(`full matrix omitted planned negative controls: ${coverage.omitted.join(', ')}`);
   }
   if (instrumentFailures.length) {
-    writeReport({ status: 'instrument-fail', exitCode: 2, browser, findings, instrumentFailures, controlsRun, executedControls: [...executedControls] });
+    writeReport({ status: 'instrument-fail', exitCode: 2, browser, findings, instrumentFailures, controlsRun,
+      executedControls: [...executedControls], blockedControls });
     console.error('GLASS MATRIX INSTRUMENT FAILURE');
     for (const failure of instrumentFailures) console.error('- ' + failure);
     if (findings.length) {
@@ -3542,7 +4559,8 @@ async function main() {
     return;
   }
   if (findings.length) {
-    writeReport({ status: 'fail', exitCode: 1, browser, findings, instrumentFailures, controlsRun, executedControls: [...executedControls] });
+    writeReport({ status: 'fail', exitCode: 1, browser, findings, instrumentFailures, controlsRun,
+      executedControls: [...executedControls], blockedControls });
     const counts = new Map();
     for (const { row } of findings) counts.set(row.code, (counts.get(row.code) || 0) + 1);
     console.error(`GLASS MATRIX PRODUCT FINDINGS — ${findings.length} across ${MATRIX_VIEWPORTS.length} viewport classes`);
@@ -3551,7 +4569,8 @@ async function main() {
     process.exitCode = 1;
     return;
   }
-  writeReport({ status: 'pass', exitCode: 0, browser, findings, instrumentFailures, controlsRun, executedControls: [...executedControls] });
+  writeReport({ status: 'pass', exitCode: 0, browser, findings, instrumentFailures, controlsRun,
+    executedControls: [...executedControls], blockedControls });
   if (viewportLabel) {
     console.log(`GLASS MATRIX TARGETED DIAGNOSTIC PASS — ${viewportLabel}; this does not certify the 12-viewport matrix.`);
     console.log(`diagnostic evidence: apps/game/smoke/${path.basename(reportPath)}`);

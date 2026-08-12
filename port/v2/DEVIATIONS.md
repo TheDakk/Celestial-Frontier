@@ -1013,6 +1013,57 @@ duplicates).
   live Git/PR checks decide exact tip/upstream state, and matching final-pushed-tip
   CI remains pending. Human play, Ready, merge, release, deployment and version
   authority remain open.
+- ★ **D-UI-4 — ready publication is not post-render answerability; ultra backing is a
+  separate density tier (implementation complete, clean authority pending, 2026-08-12).**
+  Test-battery #205 (`31621227550` / `94196289291`) completed once without retry
+  at exact pushed `c57305fbf30af2bc8158ff46af1ec49ec4455d95` and remains red.
+  Every preceding gate and `smoke:ci` passed. Desktop-8k completed import, primary
+  write, renderer release, changed-loader navigation, all 12 boot stages, and
+  `cf-v2-slice-ready/v1` at browser-native `performanceNow` about 3,733 ms. Its
+  following exact-context confirmation alone timed out at the unchanged two-second
+  bound. Because #205 had no concurrent browser-process heartbeat, it is strong
+  pixel-linear evidence of post-ready target starvation but cannot retrospectively
+  prove browser/CDP transport stayed healthy. Preserve it without retry.
+
+  The product retains native backing through UHD 3,840×2,160. A viewport strictly
+  larger than 8,388,608 CSS pixels selects an ultra tier of 4,194,304 backing
+  pixels per canvas /8,388,608 aggregate. `fitResolutionToPixelCap` compares the
+  actual independently rounded backing dimensions, making 8K exactly 2,730×1,536
+  each /8,386,560 combined. Density transitions destroy/collapse the prior backdrop
+  before resizing or allocating its replacement and publish exact transition peak/
+  budget evidence. Same-backing logical resizes still update canvas CSS size, Pixi
+  screen/texture metadata, EventSystem resolution and real pointer mapping, backdrop
+  logical size and generation; backing-width change is not used as a proxy.
+
+  The harness follows timely ready with two independent, strict, no-retry,
+  at-most-two-second exact-context cycles. Each target command is sent concurrently
+  with root-session `Browser.getVersion`; cycle 2 is awaited from a one-shot Pixi
+  ticker callback at priority -50 after the render listener and must advance the
+  ready tick count. A timed-out/lost target with a timely heartbeat is a product
+  answerability finding; a bad/late heartbeat is instrument/transport failure. An
+  exact five-row ledger binds import arm plus both target/heartbeat pairs to role,
+  cycle, session/context, await mode, priority and deadline. The 57-control plan
+  separately records executed, `blockedNegativeControls`, and
+  `omittedNegativeControls`, so an answerability product finding cannot be replaced
+  by an omission instrument error. Controls `ready-confirmation-heartbeat`,
+  `ready-confirmation-ticker-progress`, `ultra-viewport-render-budget`, and
+  `ultra-same-backing-resize` carry deliberate failure cases in both directions.
+
+  The cited browser evidence was captured from a **`dirty-diagnostic`, non-authoritative**
+  source state based on pushed `c57305f`. One sandboxed listener preflight failed `EPERM`;
+  one harness-only exact-width assertion reported `7680.000000000001`, was corrected
+  once, and did not retry a product failure. Targeted 8K passed non-certifying
+  (`e77e9727cb019740bd756188be18f444ac1d3f5d666e49f727f355c73b7c3c2d`).
+  The dirty-diagnostic smoke capture passed once, 0 findings /10 screenshots /105,207 ms
+  (`fb1800320926532c0df6c782cd630c45e37bcea6906c4bbd953111b7605b43c8`).
+  The dirty-diagnostic full-glass capture passed 12/12, 57/57, `blocked=[]`, `omitted=[]`, 0 findings/
+  instrument failures/retries /53,918 ms
+  (`dff0829a3eb8dba67ee0da7c51ae6748fe4ff9bc8652ee1d617657f3133794cb`),
+  with 12 reloads at 174–199 ms and 8K at 180 ms /160.6 ms ready /7 ms cycle 2 /
+  2,730×1,536→1×1 outgoing stores. Nine automated personas passed, still not a
+  human playtest; terminal-only performance was 605/686/76/159 ms. A clean-head
+  exact battery, push and matching CI remain open, as do separate host/human/Ready/
+  merge/release/deploy/version authority.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a

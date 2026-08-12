@@ -852,7 +852,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
         'Panels reserve a full 44-pixel lane for their sticky Close action. If a desktop rail action becomes hidden when Survey returns, closing moves keyboard focus to Survey or the exploration canvas instead of leaving it behind the panel.',
         'On landed touch layouts, the objective yields to populated Planetside until ascent. Portrait keeps the trail when a useful roster band fits; on the shortest screens only that noninteractive trail yields, leaving at least 72 pixels of vertically scrollable Planetside instead of covering its specimens. Short landscape also yields the trail. Dock icons stay centred inside their 44-pixel actions without hidden scrolling, and A++ keeps toast titles visibly larger than their message text.',
         'Keyboard explorers can cycle visible galaxies, stars, and worlds on the canvas, survey with Enter, and use the same explicit card actions as touch and pointer players.',
-        'Very large displays now share one full-scene pixel budget between the live starfield and its backdrop, preserving sharp native-4K presentation without allocating two full 8K backing stores.',
+        'Very large displays preserve sharp native UHD presentation, then switch to a lower ultra-display density above that size so the live starfield and backdrop stay responsive without allocating two full 8K backing stores.',
       ]),
     }),
     Object.freeze({
@@ -882,13 +882,14 @@ export const V2_DRAFT_RELEASE = Object.freeze({
     Object.freeze({
       category: 'Under the Hood',
       bullets: Object.freeze([
-        'Deterministic domain facades, strict TypeScript programs, IndexedDB persistence, and real-browser smoke, 12-viewport glass, and nine-lens automated-persona checks form the current development gate; the portable four-run phone performance profile remains diagnostic until budgets are approved.',
+        'Deterministic domain facades, strict TypeScript programs, IndexedDB persistence, and real-browser smoke, 12-viewport glass, and nine-lens automated-persona checks form the current development gate; the portable 4×-throttled phone performance profile remains diagnostic until budgets are approved.',
         'Legacy v1.8.9 release history remains byte-parity checked and separate from this unversioned development draft.',
         'A separate-origin, commit-bound development preview package carries a visible DEV banner, no-index policy, byte inventory, and no production deployment permission for human playtests.',
         'Responsive glass and persona playtest tools record machine-readable outcomes and retain a red run without automatic retries or cascade-hiding. Import settlement and replacement-page startup are observed separately, and a reload passes only after both the browser loader and document token change.',
         'Reload evidence now separates import settlement, navigation commit, and new-document boot; requires a valid renderer/canvas release witness; and retains browser lifecycle, runtime, crash, and document-load diagnostics under deliberate failing controls.',
         'Import evidence now records the exact claim, prior-save wait, primary write, and renderer-release sequence under one absolute deadline, including two-way proof that the outgoing ticker runs before claim and stays stopped afterward.',
         'Replacement pages keep Pixi paused through save loading, scene and slice publication, and input wiring, then prove a real tick, render, animation frame, and later task through a 12-stage boot witness before declaring ready.',
+        'Responsive evidence now follows ready with both an immediate exact-page check and a later post-render ticker check, while an independent browser heartbeat distinguishes an unanswerable scene from a broken test connection.',
       ]),
     }),
   ]),
