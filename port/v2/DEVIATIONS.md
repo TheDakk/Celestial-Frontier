@@ -1127,11 +1127,11 @@ duplicates).
   1/10 ms and heartbeats 0/0 ms; outgoing 2,365×1,330 stores →1×1 and replacement
   stayed 6,290,900 pixels combined. Nine automated-only personas and terminal-only
   581/659/73/152 ms performance passed. Preview `dev-preview-exact-df1c28b-20260812T211642Z`
-  passed Edge 151 at the separate dev origin with `publishable:false`. Exact docs tip/
-  upstream/CI is live; its final pushed tip needs matching CI. No host/human/Ready/
+  passed Edge 151 at the separate dev origin with `publishable:false`. That source remains
+  prior #206 evidence; current #207 repair authority is the clean `6554b2b` block below. No host/human/Ready/
   merge/release/deploy/version authority follows.
-- ★ **D-UI-6 — adjacent import/release bindings share one ordinal ruler (repair diagnostic;
-  clean exact certification pending, 2026-08-12).** Test-battery #207, run
+- ★ **D-UI-6 — adjacent import/release bindings share one ordinal ruler (exact clean local
+  evidence; matching CI pending, 2026-08-12).** Test-battery #207, run
   `31642880191` attempt 1 / job `94269466117`, completed without retry at exact pushed
   `ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
   `8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. Every prior gate,
@@ -1149,16 +1149,28 @@ duplicates).
   wrong-provenance, early boot/ready, and overlong phase streams including a duplicate sequence-8
   terminal fail closed.
 
-  One full Edge 151 dirty diagnostic passed 12/12 and 57/57 in 52,364 ms with empty blocked/
-  omitted ledgers and zero findings/instrument failures/retries. Tablet-portrait carried ordinals
-  6/7/8 in 175 ms; desktop-8k completed in 182 ms with 1/10 ms targets and 1/1 ms heartbeats.
-  Report `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`
-  is bound to pushed `ff9bebb` plus uncommitted harness bytes: captured status
-  `3eeb0195adc02c4c58b71da388df5d09668e91f5786d7def6b5f248412dcb84d` and snapshot
-  `9a30754815548d98d4cdd474cd633d48791cc5a8ef1d59a2f7fa76a220c6e926`. Later doc
-  writes do not recertify it. Only a clean-head exact battery and matching green CI on whichever
-  pushed tip contains the repair can supersede it; no human, host, Ready, merge, release,
-  deployment, or version authority follows.
+  The prior dirty diagnostic (report
+  `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`) remains
+  chronology only. Immutable executable source
+  `6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the complete exact clean battery.
+  Its first sandboxed preflight Edge launch SIGABRTed before CDP; the same invocation passed
+  when permitted with only Edge 151/pin-150 drift, an environment launch refusal and not a
+  product retry. Root gates and exact layout 787/787 across 10/10 passed (report
+  `58dc4ef4456fac012b2e8f0aa801917b5579cffe435fd4576827ff29bcbb4b78`); v2 passed 273/1
+  and every static/art/coverage gate; one-attempt smoke passed 0 findings/10 screenshots.
+  Certifying glass passed 12/12 and 57/57 in 54,877 ms with exact 6/7/8 tails on every
+  row, empty blocked/omitted ledgers, and zero findings/instrument failures/retries. Tablet-
+  portrait was 196 ms with 2/1/1/7/0 ms commands; exact 8K was 197 ms with
+  1/1/0/7/0 ms commands, release→commit 34 ms, commit→ready 131 ms, outgoing
+  2,365×1,330 twins →1×1, and replacement 6,290,900 pixels combined. Smoke/glass report
+  hashes are `139b10ea16d17c109d5b624fa75daf73291d98f5ad8fe7df569501829ab5f844` /
+  `a05ba65e28ac94b146b051164c1b22195bfaa7509bd47d9631561fc394920b6c`.
+  Nine automated-only personas and terminal-only 635/717/77/151 ms performance passed.
+  Preview `dev-preview-exact-6554b2b-20260812T184000Z` passed Edge 151 at the separate
+  dev origin with `publishable:false` and content
+  `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`.
+  This source underlies the forthcoming/current docs-only tip; the selected pushed tip still
+  requires matching CI. No human, host, Ready, merge, release, deployment, or version authority follows.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
