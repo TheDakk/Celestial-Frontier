@@ -118,30 +118,51 @@
 > V2 browser smoke and root `uilayout.js` use the owned portable CDP lifecycle.
 > Legacy `bootperf.js` shares their executable resolver and pinned `ws` transport
 > but retains its fixed-port/startup/cleanup lifecycle; unresolved performance metrics fail rather
-> than print a profile-shaped success. The glass matrix's import/reload witness
-> is likewise fail-closed: an armed import phase, top-frame loader id and per-
-> document token must agree, and only a ready document with both a changed
-> loader and changed token can pass. Import settlement and replacement boot have
-> separate 20-second bounds; `replacement-document-loader-token-phase` rejects
-> same-document token mutation, lost/rejected phases and loader/evaluation races.
-> The run remains single-attempt—a red result is never retried into green. The current profile is not yet a release
+> than print a profile-shaped success. The glass matrix's import/reload contract
+> is likewise fail-closed. The current repair treats import settlement, navigation
+> commit, and replacement boot as three separately witnessed phases: import owns
+> a 20-second transaction bound, the old top-frame loader gets 5 seconds to change
+> after reload is observed, and only that changed stable loader starts the new
+> document's independent 20-second boot budget. Exactly one
+> `cf-v2-reload-release/v1` witness must first prove Pixi renderer/stage release,
+> application-view detachment, and collapse of the application/backdrop canvases
+> to at most 1×1. A vanished old execution context is not navigation evidence by
+> itself, and only a ready new document with both changed loader and changed token
+> may pass.
+>
+> The product produces that witness from one code-owned path used by its three
+> intentional reloads: Training restart, supported expedition import, and the
+> storage-retry reload. Each first claims one mutually exclusive replacement
+> transaction before awaiting. The chosen flow blocks ordinary persistence, destroys Pixi and global/
+> child texture resources, detaches and shrinks both outgoing backing canvases,
+> then crosses one task boundary before `location.reload()`. It does not use a
+> generic `pagehide` teardown, because a browser-cache restore must not revive a
+> destroyed application. The harness retains bounded Page, Runtime, Inspector,
+> and Network lifecycle/failure evidence and fails on duplicate/invalid release
+> witnesses, crash, unreachable navigation, replacement exception, fatal document
+> load, loader reversion, wrong URL, or any missed phase. The paired controls
+> `replacement-document-loader-token-phase` and `reload-resource-release` reject
+> stalled navigation, stalled new-loader boot, same-loader token mutation, early
+> context loss, just-late transitions across all three deadlines, retained canvases, unreleased renderer, and over-budget backing
+> pixels. The run remains single-attempt—a red result is never retried into green.
+> The current profile is not yet a release
 > budget gate: cold repetitions, long-task/memory budgets, Compendium
 > virtualization, scene-texture disposal, live HD planet replacement and fuller
 > hidden-tab behavior remain open. The v2 static preview packaging/hosting
 > contract is documented separately in `port/DEVELOPMENT_PREVIEW.md`; a preview
 > is development evidence, never a release or production deployment.
 >
-> **Current repair evidence (not yet pushed/CI evidence):** pushed commit
+> **Current repair evidence:** pushed commit
 > `8b8a740286a56591cac9dc5734a2fba4c088939b` passed its exact sequential local
 > battery and repaired test-battery #199's desktop-8k reload witness plus
 > small-phone Planetside/trail collision. Matching test-battery #200 passed every
 > root/product/v2 gate, the one-attempt smoke, complete 12-viewport glass matrix,
 > automated personas and preview packaging; only preview CDP startup failed before
 > a page existed because that step lost the previous step's Chrome environment and
-> selected Linux Edge. Local commit `4d14a75e934536dc5f204e40c74f666cc9514df4`
-> pins Chrome at job scope but is not pushed.
+> selected Linux Edge. Pushed commit `4d14a75e934536dc5f204e40c74f666cc9514df4`
+> pins Chrome at job scope.
 >
-> Clean local commit `08379d8c072c7eb22e2a029d666972c86d496326` carries the follow-on
+> Clean code/tool commit `08379d8c072c7eb22e2a029d666972c86d496326` carries the follow-on
 > root-layout repair. `uilayout.js`
 > now consumes the v2-owned resolver/launcher: port 0 plus `DevToolsActivePort`,
 > exact browser provenance, early-exit and bounded stderr diagnosis, bounded
@@ -153,14 +174,38 @@
 > runs certify only their requested viewport subset. The selftest removes one
 > sealed outcome while keeping counts consistent and requires rejection. Its first sandboxed Edge
 > diagnostic preserved SIGABRT as red; a separately permitted mutable-tree run
-> then completed 787/787 across 10 viewports. The subsequent exact-`08379d8`
-> sequential battery passed root fingerprint/smoke/layout 787/787, v2 24 files / 273
+> then completed 787/787 across 10 viewports. Executable/evidence head
+> `4560269b8767dc48bb82e3b1f9d82ca835a84aad`, a docs-only tip over `08379d8`,
+> then passed its exact sequential battery: root fingerprint/smoke/layout 787/787, v2 24 files / 273
 > pass / 1 skip, one-attempt smoke with 0 findings / 10 screenshots, the certifying
 > 12-viewport glass matrix with 0 findings / 0 instrument failures, 9 matching
 > automated personas, and exact preview verify/browser smoke at 320×568. The preview
-> content hash is `f84eae95cbb97051ecb0bd6c6cac25c86ac49043043f64173b14486aa4f0e12a`
-> and remains `publishable:false`. A final docs-only commit, matching exact-head rerun,
-> push, GitHub CI, and the separate-origin human playtest remain required.
+> content hash is `3f05c7cc218e4a3b49d5fff7a36270552a0e4129f305b681a51bb3c16826eb8f`
+> and remains `publishable:false`.
+>
+> Matching test-battery #201, run
+> [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
+> job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
+> completed once without retry and is **RED**. Every preceding root/product/v2
+> gate, including one-attempt `smoke:ci`, passed. Only the desktop-8k preference-
+> fixture import leg instrument-failed: after the 20-second replacement wait, the
+> old top-frame loader still owned the frame while the old slice token/import
+> phase were absent. That is a replacement-lifecycle/instrument finding after
+> reload was requested, not a save-classifier rejection, `import-rejected`, or
+> reported repository-write error. It must not be erased by rerunning unchanged
+> code.
+>
+> The three-phase/release-witness repair described above is presently an
+> uncommitted worktree change. Pure controls pass. A targeted desktop-8k diagnostic
+> witnessed both 5,461×3,072 backings collapse to 1×1, renderer/stage release,
+> view detachment and a changed-loader/token replacement ready in 198ms; stable-
+> source `smoke:ci` passed the real Restart/import/duplicate-import interlocks and rollback. Final
+> mutable-source glass passed 12/12 viewports and 50/50 controls without omissions/findings/
+> instrument failures/retries; all nine matching automated personas passed. The exact-head local
+> battery, push, and matching GitHub CI remain required. The
+> artifact is bound to `https://dev-celestialfrontier.github.io`, but no host or
+> publication is authorized and the separate-origin human playtest is still
+> required before Ready or merge.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
 v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve

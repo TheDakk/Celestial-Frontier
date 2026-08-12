@@ -28,15 +28,19 @@
 - Owner/branch: OpenAI/Codex on `openai/mac`.
 - Integration baseline: PR #10 merged normally into `develop` at
   `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`.
-- Current pushed PR head:
-  `8b8a740286a56591cac9dc5734a2fba4c088939b`. Local code/tool head
-  `08379d8c072c7eb22e2a029d666972c86d496326` is two unpushed commits ahead:
-  `4d14a75e934536dc5f204e40c74f666cc9514df4` repairs job-scoped browser
-  provenance and `08379d8c072c7eb22e2a029d666972c86d496326` completes the owned
-  root-layout launcher/report and battery hardening. The clean exact-`08379d8`
-  sequential local battery passed. This final docs-only handoff must now be
-  committed; because that advances HEAD, the matching exact-head rerun, push and
-  GitHub CI remain required. Draft PR #11 is open at
+- Executable/evidence head:
+  `4560269b8767dc48bb82e3b1f9d82ca835a84aad`, pushed on PR #11. It is the
+  docs-only handoff tip over code/tool commit
+  `08379d8c072c7eb22e2a029d666972c86d496326`, and its exact sequential local
+  battery passed. Matching test-battery #201, run
+  [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
+  job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
+  completed once without retry and is **RED** only at the desktop-8k preference-
+  import replacement lifecycle; every prior gate including `smoke:ci` passed.
+  Current product/harness/doc repairs are uncommitted; pure controls, targeted
+  desktop-8k and stable-source smoke diagnostics pass, while full/exact evidence
+  remains pending. Use `git rev-parse HEAD` and `git status --short` for the exact
+  current state. Draft PR #11 is open at
   https://github.com/TheDakk/Celestial-Frontier/pull/11.
 - Read next: `PROCESS_LAWS.md` · `PARALLEL_GIT_PROTOCOL.md` · `README.md` ·
   `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `SAVE_SYSTEM.md` ·
@@ -125,13 +129,14 @@ the next step/process did not inherit it, so the resolver selected Linux Edge at
 the check failed before it created a target or evaluated any packaged page. The trailing
 D-Bus diagnostic is Edge/runner startup evidence, not a product or package finding.
 
-Local commit `4d14a75e934536dc5f204e40c74f666cc9514df4` binds the exact Chrome
+Pushed commit `4d14a75e934536dc5f204e40c74f666cc9514df4` binds the exact Chrome
 path at job scope in both CI workflows and resolves it fail-closed before the long battery, so
-every browser-owning process has the same explicit provenance. It is not pushed. Environment is
-per step/process; a prior green browser step does not pin the next one. Do not rerun the unchanged
-red head, add a retry, lengthen the startup bound, or clear D-Bus merely to turn #200 green.
+every browser-owning process has the same explicit provenance. Environment is per step/process; a
+prior green browser step does not pin the next one. Retries, a longer startup bound, or clearing
+D-Bus would not repair the #200 provenance defect.
 
-The current mutable follow-on removes the root layout gate's remaining second launcher. It now
+Completed code/tool commit `08379d8c072c7eb22e2a029d666972c86d496326` removes the root layout
+gate's remaining second launcher. It now
 consumes `port/v2/tools/browserpath.mjs` plus `browsercdp.mjs`: browser-assigned port 0 through
 `DevToolsActivePort`, exact executable/version provenance, early-exit and bounded stderr
 diagnosis, bounded TERM→KILL cleanup, and validated profile removal. Its ignored report is
@@ -151,7 +156,8 @@ The targeted lock refresh also moves root `undici` 7.27.2→7.29.0 and v2 `nanoi
 vulnerabilities. These are tooling/dependency-evidence changes, not shipped runtime changes.
 The original sandboxed Edge diagnostic ended in SIGABRT and remains red evidence; the separately
 permitted mutable-tree 787/787 run remains only the diagnostic that preceded the clean commit.
-Clean code/tool commit `08379d8c072c7eb22e2a029d666972c86d496326` then passed this exact
+Executable/evidence head `4560269b8767dc48bb82e3b1f9d82ca835a84aad`, a docs-only tip over
+clean code/tool commit `08379d8c072c7eb22e2a029d666972c86d496326`, then passed this exact
 sequential local evidence battery:
 
 - both root and v2 `npm ci` installs and audits reported 0 vulnerabilities;
@@ -165,12 +171,51 @@ sequential local evidence battery:
 - all instrument selftests passed; one-attempt `smoke:ci` passed with 0 findings / 10 screenshots;
   the certifying 12-viewport glass run passed all 12 with 0 findings / 0 instrument failures; and
   all 9 automated personas passed, still explicitly not a human playtest;
-- the 4× performance diagnostic recorded 610 ms painted / 691 ms answerable / 76 ms press /
-  150 ms rebuild; and
+- the terminal-only, non-provenance-bound 4× performance diagnostic recorded 608 ms painted /
+  691 ms answerable / 77 ms press→panel / 167 ms rebuild; and
 - the exact preview artifact verified and browser-smoked at 320×568 for
   `https://dev-celestialfrontier.github.io`, content SHA-256
-  `f84eae95cbb97051ecb0bd6c6cac25c86ac49043043f64173b14486aa4f0e12a`, with
+  `3f05c7cc218e4a3b49d5fff7a36270552a0e4129f305b681a51bb3c16826eb8f`, with
   `publishable: false`.
+
+Test-battery #201, run
+[`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
+job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
+is the matching GitHub run for pushed evidence head `4560269`. It completed once, with no retry,
+and is **RED**. Every preceding root, product and v2 gate—including one-attempt `smoke:ci`—passed.
+Only the desktop-8k preference-fixture import leg instrument-failed: its former replacement wait
+expired after 20 seconds while the old top-frame loader remained and that document's slice token/
+import phase were absent. The failure occurred after reload was requested; it is not an import-
+classifier rejection, `import-rejected`, `import-threw`, or reported repository-write error. Do
+not rerun unchanged #201 or lengthen its timeout to turn the record green.
+
+The current uncommitted repair is two-sided:
+
+- Product: Training restart, supported expedition import and the storage-health retry synchronously
+  claim one mutually exclusive replacement transaction, then share one explicit code-owned reload
+  path. It blocks ordinary persistence, removes renderer-density
+  listeners, destroys Pixi with global/child texture resources, detaches its view, shrinks both
+  application and backdrop canvases to at most 1×1, emits an optional CDP release witness, then
+  crosses one task boundary before `location.reload()`. It is deliberately not a generic
+  `pagehide` teardown, so browser-cache restoration cannot revive a destroyed application.
+- Harness: exactly one valid release witness must precede three independent phases—a 20-second
+  import transaction, 5-second observed navigation commit, and 20-second boot beginning only at a
+  stable changed loader. Old-context loss alone is not navigation. A ready changed document token
+  is still required. Bounded Page/Runtime/Inspector/Network evidence diagnoses crash, unreachable
+  navigation, replacement exception and fatal document load. Controls
+  `replacement-document-loader-token-phase` and `reload-resource-release` reject stalled phases,
+  just-late boundary transitions, same-loader mutation, premature context loss, duplicate/invalid release, retained canvases,
+  unreleased renderer and over-budget backing pixels, with zero retries.
+
+Current mutable-source diagnostics pass: instrument selftests; one targeted desktop-8k run whose
+release witness recorded application/backdrop 5,461×3,072→1×1, detached view, released renderer/
+stage and changed loader/token in 198ms; and one stable-source `smoke:ci` run covering the real
+Restart/import/duplicate-import interlocks and rollback. Final mutable-source glass passed all 12
+viewports and 50/50 controls without omissions/findings/instrument failures/retries; matching
+automated personas passed all nine bounded lenses. An earlier smoke attempt correctly instrument-failed when
+documentation changed mid-run; it is preserved as mixed-source refusal, not counted as a product
+result. The exact-head battery, commit, push and matching new-head CI remain required before
+preview/human play may begin; mutable-source diagnostics do not replace clean provenance.
 
 `overridecontrol` remains exclusive and must not overlap any build/browser/evidence producer.
 Because the new manual preview workflow
@@ -195,7 +240,8 @@ finding, rerun affected gates, then update the PR body with exact final evidence
 4. Complete the remaining live Field Training lessons, tooltip deep-links and Advanced
    Briefings while keeping the canonical Guide capability-aware.
 5. Virtualize the 1,500-row Compendium and bound/cancel thumbnail work.
-6. Own/destroy Pixi canvas textures and add a travel-memory plateau gate.
+6. Finish general Pixi canvas-texture ownership beyond the explicit replacement-reload teardown
+   and add a travel-memory plateau gate.
 7. Attach the generated HD planet texture to the live sprite.
 8. Persist/invalidate epoch edges and settle hidden-tab/reduced-motion policy.
 9. Close the remaining literal Gate-B DOM/type boundaries and split-store/CAS persistence.
@@ -208,20 +254,18 @@ human play remains the judge of motion, readability, comfort and perceived quali
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — pushed head
-`8b8a740286a56591cac9dc5734a2fba4c088939b`; local clean code/tool head
-`08379d8c072c7eb22e2a029d666972c86d496326` is two unpushed commits ahead and passed
-the exact sequential battery recorded above. This docs-only final handoff is the only current
-working-tree batch. Draft PR #11 exists, but its remote head contains neither local commit.
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — executable/evidence head
+`4560269b8767dc48bb82e3b1f9d82ca835a84aad` is pushed and passed the exact sequential
+battery recorded above, but matching test-battery #201 is red only at desktop-8k replacement
+lifecycle. The product/harness/docs repair is uncommitted with passing pure-control,
+targeted desktop-8k and stable-source smoke diagnostics; full/exact evidence is pending.
 
-**GitHub step:** keep PR #11 draft. Commit this docs-only final handoff, rerun the final sequential
-local battery on that new exact head, then push all local commits and require matching CI; do not
-rerun or timeout-mask #200. Update the PR body with that exact head and results, obtain explicit
-host approval, build/publish the separate-origin preview, complete and record the human playtest, and
-resolve/retest findings.
-Only then may Nick click **Ready for review**, review the final diff/checks, and normally merge
-into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add this work to merged
-PR #10.
+**GitHub step:** none now; keep PR #11 draft and preserve red run `31586917924` / job
+`94082765087` without retry. Finish the repair, controls, targeted 8K proof and exact-head battery;
+commit/push `openai/mac`; then require matching new-head CI. Only after that is green, obtain host
+approval, publish the separate-origin preview, complete/record human play, resolve/retest findings,
+and let Nick click **Ready for review** before a normal merge into `develop`. Never auto-merge,
+squash/rebase, retarget `main`, or add work to merged PR #10.
 
 **PR details:**
 
@@ -246,19 +290,23 @@ PR #10.
   > sticky-close gutter and hidden rail openers fall back to Survey/canvas. On landed touch layouts,
   > the objective yields to Planetside; short landscape yields the trail, while portrait retains it
   > only when a useful 72px roster plus 6px clearance fits and otherwise yields only that trail for a
-  > vertically scrollable Planetside. The responsive gate observes import settlement and replacement
-  > boot as separate 20-second phases and requires both loader and document token to change, with no
-  > retry. Adds provenance-bound
+  > vertically scrollable Planetside. The three intentional replacement reloads explicitly release
+  > Pixi/global resources, detach and collapse the outgoing application/backdrop canvases, and cross
+  > one task boundary before navigation without a generic pagehide teardown. The responsive gate
+  > requires that release witness, then independently observes a 20-second import transaction,
+  > 5-second navigation commit and 20-second new-loader boot; it still requires changed loader plus
+  > changed document token with no retry. Adds provenance-bound
   > smoke, glass and automated-persona reports plus commit-bound development-preview packaging;
   > pins the CI browser at job scope so a later preview process cannot silently switch from Chrome
   > to Linux Edge when a preceding step's environment expires. Moves the root 10-viewport layout
   > gate onto the same owned port-0 CDP launcher and adds ignored atomic pass/fail/instrument-fail
   > evidence, stale-PASS/exit-73 selftest, exact-run freshness and a separate required CI upload;
-  > automated personas are explicitly not a human playtest. The local review artifact is bound to
-  > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. Final verification is publication-
-  > contingent: freeze the final head in a commit, run the sequential local battery, then push
-  > and require matching GitHub CI,
-  > then complete and record a multi-lens human playtest against that exact preview before marking
+  > automated personas are explicitly not a human playtest. Prior local executable evidence is bound
+  > to `4560269b8767dc48bb82e3b1f9d82ca835a84aad`; matching test-battery #201 (run
+  > `31586917924`, job `94082765087`) is preserved red only at desktop-8k replacement lifecycle.
+  > The current repair still requires a commit, exact-head battery, push and matching green CI. The local review artifact is bound to
+  > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. After the
+  > matching CI is green, complete and record a multi-lens human playtest against that exact preview before marking
   > this PR Ready or merging. The static Platinum-reviewed portrait set is unchanged; later visual
   > work remains living rigs/animation and biome scenes. After merge, Anthropic/Claude Code may
   > synchronize only from a clean `anthropic/windows` worktree with `git fetch origin` then

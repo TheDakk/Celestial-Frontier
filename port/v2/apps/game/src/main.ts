@@ -105,6 +105,82 @@ gSeam.customNames = customNames;   /* one app-owned map shared with descriptor s
 extensions.add(CullerPlugin);   /* offscreen sprites skip render — thousands of stars, one flag */
 
 const app = new Application();
+type ReloadCanvasRelease = {
+  beforeWidth: number;
+  beforeHeight: number;
+  afterWidth: number;
+  afterHeight: number;
+};
+type ReplacementReloadReason = 'training-restart' | 'save-import' | 'storage-retry';
+type ReloadReleaseWitness = {
+  schema: 'cf-v2-reload-release/v1';
+  status: 'released' | 'release-failed';
+  error: string | null;
+  reason: ReplacementReloadReason;
+  rendererReleased: boolean;
+  stageReleased: boolean;
+  viewDetached: boolean;
+  appCanvas: ReloadCanvasRelease;
+  backdropCanvas: ReloadCanvasRelease;
+};
+const unreleasedCanvas = (): ReloadCanvasRelease => ({
+  beforeWidth: 0, beforeHeight: 0, afterWidth: 0, afterHeight: 0,
+});
+let releaseRendererForReload = (reason: ReplacementReloadReason): ReloadReleaseWitness => ({
+  schema: 'cf-v2-reload-release/v1', status: 'release-failed',
+  error: 'renderer release hook was not initialized', reason,
+  rendererReleased: false, stageReleased: false, viewDetached: false,
+  appCanvas: unreleasedCanvas(), backdropCanvas: unreleasedCanvas(),
+});
+let replacementReloadScheduled = false;
+let replacementReloadPending = false;
+type ReplacementTransaction = Readonly<{ reason: ReplacementReloadReason; token: symbol }>;
+let replacementTransaction: ReplacementTransaction | null = null;
+function claimReplacementTransaction(reason: ReplacementReloadReason): ReplacementTransaction | null {
+  /* A reason string is not ownership: two rapid imports have the same reason
+     but are distinct writes. One opaque claim per operation prevents either
+     flow from releasing/reloading while another same-kind write is pending. */
+  if (replacementTransaction) return null;
+  const claim = Object.freeze({ reason, token: Symbol(reason) });
+  replacementTransaction = claim;
+  clearTimeout(_persistT); _persistT = 0;
+  return claim;
+}
+function releaseReplacementTransaction(claim: ReplacementTransaction): void {
+  if (!replacementReloadScheduled && replacementTransaction === claim) replacementTransaction = null;
+}
+function scheduleReplacementReload(claim: ReplacementTransaction): void {
+  /* These are the app's three intentional, durable-write reloads. Release
+     the old 8K renderer/backdrop before asking the browser to construct the
+     replacement document; otherwise two capped backing stores can overlap
+     during navigation. This is deliberately not a pagehide teardown: a
+     BFCache restore must never revive an Application that we destroyed. */
+  if (replacementReloadScheduled || replacementTransaction !== claim) return;
+  const { reason } = claim;
+  replacementReloadScheduled = true;
+  replacementReloadPending = true;
+  let witness: ReloadReleaseWitness;
+  try { witness = releaseRendererForReload(reason); }
+  catch (error) {
+    witness = {
+      schema: 'cf-v2-reload-release/v1', status: 'release-failed',
+      error: error instanceof Error ? error.message : String(error), reason,
+      rendererReleased: false, stageReleased: false, viewDetached: false,
+      appCanvas: unreleasedCanvas(), backdropCanvas: unreleasedCanvas(),
+    };
+  }
+  /* Runtime.addBinding installs this optional diagnostics seam before the
+     page boots. Ordinary play has no such property. CDP receives the release
+     evidence outside the dying execution context, so a vanished global can
+     never masquerade as a replacement page becoming ready. */
+  try {
+    const binding = (window as unknown as Record<string, unknown>).__cfReloadReleaseWitness;
+    if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
+  } catch { /* evidence harness fails closed when its binding is absent/broken */ }
+  /* One task boundary lets WebGL context loss/canvas resize settle and lets
+     importBlob resolve, without retrying or hiding a failed navigation. */
+  setTimeout(() => location.reload(), 0);
+}
 /* ---- THE PHASE 4 CHROME (UI_PRESENTATION contracts): the unified topbar
    (trail · player chip · objective chip) publishing --topbar-h, the hint
    pill, the Georgia-italic caption line, and the 44px dock. Static DOM in
@@ -481,6 +557,11 @@ function fillSettings(): void {
     /* Veteran restart is a reversible drill: begin in Sol where the lesson
        is winnable, then restore the exact pre-drill view on skip/finish. */
     const button = event.currentTarget as HTMLButtonElement;
+    const replacement = claimReplacementTransaction('training-restart');
+    if (!replacement) {
+      toast('Save replacement underway', 'Finish the current expedition replacement before restarting Field Training.');
+      return;
+    }
     const prior = save.tutDone;
     const priorSnapshot = save.tutSnapPending;
     const priorNav = nav;
@@ -493,8 +574,9 @@ function fillSettings(): void {
       star: { seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y },
       planet: null,
     };
-    if (await persistView()) location.reload();
+    if (await persistView(replacement)) scheduleReplacementReload(replacement);
     else {
+      releaseReplacementTransaction(replacement);
       save.tutDone = prior;
       save.tutSnapPending = priorSnapshot;
       nav = priorNav;
@@ -965,6 +1047,10 @@ async function importBlob(raw: string): Promise<string | null> {
     const o = JSON.parse(checkedRaw) as unknown;
     if (!isPlausibleSaveEnvelope(o)) return 'That parses, but is not a complete save envelope — nothing was stored.';
   } catch { return 'That does not load as a Celestial Frontier save — nothing was stored.'; }
+  const replacement = claimReplacementTransaction('save-import');
+  if (!replacement) {
+    return 'Another expedition replacement is finishing. Wait for its reload, then try again.';
+  }
   /* Import is a replacement transaction, not another autosave. Cancel a
      pending slider debounce, stop new exports, and let an export already in
      flight settle before the validated bytes become primary. Otherwise an
@@ -975,6 +1061,7 @@ async function importBlob(raw: string): Promise<string | null> {
   try { await repo.write(checkedRaw); }
   catch {
     importWriteInFlight = false;
+    releaseReplacementTransaction(replacement);
     return 'Storage refused the write (private mode?).';
   }
   /* Best-effort extra keepsake only: the external moderator backup remains
@@ -982,7 +1069,7 @@ async function importBlob(raw: string): Promise<string | null> {
      first frame, so retain the exact input locally when browser storage
      permits it, without blocking an otherwise valid import when it does not. */
   try { localStorage.setItem('cf_v2_import_original', raw); } catch { /* keepsake only */ }
-  location.reload();
+  scheduleReplacementReload(replacement);
   return null;
 }
 sheet.querySelector('#importgo')!.addEventListener('click', () => {
@@ -2569,8 +2656,9 @@ function installKeyboardExploration(): void {
 }
 
 /* ---- the save/reload leg — THE REAL PIPELINE ---- */
-async function persistView(): Promise<boolean> {
-  if (persistHold || importWriteInFlight) return false;   /* protected/replacement bytes own storage */
+async function persistView(replacementOwner: ReplacementTransaction | null = null): Promise<boolean> {
+  if (persistHold || importWriteInFlight || replacementReloadPending
+    || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
   const write = async (): Promise<boolean> => { try {
     save.savedView = navToView(nav);
     save.EPOCH_BASE = epochClock.current();   /* play time accumulates across sessions (doSave writes COSMIC_EPOCH) */
@@ -2624,6 +2712,7 @@ function smokeReleaseImportRace(): boolean {
 }
 function persistSoon(): void {
   /* slider-friendly: one export per drag, not one per input event (audit #5) */
+  if (replacementReloadPending) return;
   clearTimeout(_persistT);
   _persistT = window.setTimeout(() => { void persistView(); }, 400);
 }
@@ -2778,6 +2867,7 @@ async function loadSave(): Promise<void> {
   const bgStars: Array<{ x: number; y: number; s: number; o: number }> = [];
   { const r = mulberry32(5); for (let i = 0; i < 900; i++) bgStars.push({ x: r(), y: r(), s: r() * 1.1 + 0.2, o: r() * 0.5 + 0.15 }); }
   let _bgKey = '';
+  let activeBackdropCanvas: HTMLCanvasElement | null = null;
   const rebuildBackdrop = (): void => {
     const W = app.screen.width, H = app.screen.height;
     const k = W + '|' + H + '|' + DPR.toFixed(4);
@@ -2793,9 +2883,18 @@ async function loadSave(): Promise<void> {
     for (const s of bgStars) { g.globalAlpha = s.o * 0.5; g.fillRect(s.x * W, s.y * H, s.s, s.s); }
     g.globalAlpha = 1;
     const old = bgSpr.texture;
+    const priorCanvas = activeBackdropCanvas;
     bgSpr.texture = Texture.from(cv);
+    activeBackdropCanvas = cv;
     bgSpr.width = W; bgSpr.height = H;
     if (old && old !== Texture.EMPTY) old.destroy(true);
+    /* Texture destruction releases Pixi's source/GPU ownership; explicitly
+       collapse the detached 2D backing too so a density/viewport rebuild does
+       not wait for browser GC before returning its pixel allocation. */
+    if (priorCanvas && priorCanvas !== cv) {
+      priorCanvas.width = 1;
+      priorCanvas.height = 1;
+    }
   };
   rebuildBackdrop();
   const syncRendererDensity = (): void => {
@@ -2814,6 +2913,57 @@ async function loadSave(): Promise<void> {
   };
   addEventListener('resize', syncRendererDensity);
   visualViewport?.addEventListener('resize', syncRendererDensity);
+  releaseRendererForReload = (reason): ReloadReleaseWitness => {
+    const view = app.canvas;
+    const backdrop = activeBackdropCanvas;
+    const before = (canvas: HTMLCanvasElement | null): ReloadCanvasRelease => ({
+      beforeWidth: canvas?.width ?? 0,
+      beforeHeight: canvas?.height ?? 0,
+      afterWidth: canvas?.width ?? 0,
+      afterHeight: canvas?.height ?? 0,
+    });
+    const appCanvas = before(view);
+    const backdropCanvas = before(backdrop);
+    let error: string | null = null;
+    removeEventListener('resize', syncRendererDensity);
+    visualViewport?.removeEventListener('resize', syncRendererDensity);
+    try {
+      app.destroy(
+        { removeView: true, releaseGlobalResources: true },
+        { children: true, texture: true, textureSource: true },
+      );
+    } catch (caught) {
+      error = caught instanceof Error ? caught.message : String(caught);
+    }
+    /* Destroying the renderer/context owns GPU cleanup. Shrinking both
+       captured canvases makes the CPU-side backing release an observable
+       synchronous postcondition instead of a hope that GC runs before boot. */
+    try { view.width = 1; view.height = 1; }
+    catch (caught) { error ??= caught instanceof Error ? caught.message : String(caught); }
+    if (backdrop) {
+      try { backdrop.width = 1; backdrop.height = 1; }
+      catch (caught) { error ??= caught instanceof Error ? caught.message : String(caught); }
+    }
+    appCanvas.afterWidth = view.width;
+    appCanvas.afterHeight = view.height;
+    backdropCanvas.afterWidth = backdrop?.width ?? 0;
+    backdropCanvas.afterHeight = backdrop?.height ?? 0;
+    activeBackdropCanvas = null;
+    const releasedApp = app as unknown as { renderer: unknown; stage: unknown };
+    const rendererReleased = releasedApp.renderer == null;
+    const stageReleased = releasedApp.stage == null;
+    const viewDetached = !view.isConnected;
+    const complete = !error && rendererReleased && stageReleased && viewDetached
+      && appCanvas.beforeWidth > 1 && appCanvas.beforeHeight > 1
+      && backdropCanvas.beforeWidth > 1 && backdropCanvas.beforeHeight > 1
+      && appCanvas.afterWidth <= 1 && appCanvas.afterHeight <= 1
+      && backdropCanvas.afterWidth <= 1 && backdropCanvas.afterHeight <= 1;
+    if (!complete && !error) error = 'Pixi/canvas release postcondition failed';
+    return {
+      schema: 'cf-v2-reload-release/v1', status: complete ? 'released' : 'release-failed',
+      error, reason, rendererReleased, stageReleased, viewDetached, appCanvas, backdropCanvas,
+    };
+  };
   app.stage.addChild(world);
   /* Publish the browser-audit surface only after persistence has produced a
      complete SaveStateV2 and the first scene is rendered. Publishing it
@@ -3087,7 +3237,12 @@ async function loadSave(): Promise<void> {
              If retry reveals real bytes, never overwrite them with the
              temporary fresh in-memory state: reload through the full
              classifier/recovery path. */
-          location.reload();
+          const replacement = claimReplacementTransaction('storage-retry');
+          if (!replacement) {
+            toast('Save replacement underway', 'The current expedition replacement will finish before storage recovery continues.');
+            return;
+          }
+          scheduleReplacementReload(replacement);
           return;
         }
         if (retryRead.kind === 'protected') {

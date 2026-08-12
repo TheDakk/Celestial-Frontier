@@ -91,33 +91,69 @@
 > `planetside-portrait-band-viability` and
 > `planetside-portrait-trail-fallback` prove both directions.
 >
-> The matrix import fixture is witnessed as two observable phases rather than a
-> blind reload delay. `reloadProbeDecision()` binds an explicit import phase to
-> the current per-document token and top-frame loader id, then accepts only a
-> ready replacement for which both loader and token changed. Import settlement
-> and replacement boot each own a separate 20-second bound. Same-document token
-> mutation, phase loss/rejection, missing loader witnesses, and a loader change
-> during evaluation fail closed under
-> `replacement-document-loader-token-phase`; the command never retries a red
-> run. Test-battery #199, run `31571459050` / job `94034164092`, exposed the former
+> The matrix import fixture is witnessed as three observable phases rather than
+> a blind reload delay. `reloadProbeDecision()` and `advanceReloadClocks()` bind
+> the explicit import phase to the old per-document token/top-frame loader,
+> allow 20 seconds for the import transaction, allow 5 seconds for an observed
+> reload to commit a changed stable loader, and only then start the replacement
+> document's independent 20-second boot budget. Old-context/global loss alone is
+> not navigation or boot evidence. Success requires exactly one valid
+> `cf-v2-reload-release/v1` witness plus a ready replacement whose loader and
+> document token both changed. `replacement-document-loader-token-phase` and
+> `reload-resource-release` negative-control same-loader token mutation, lost/
+> rejected phases, context/loader evaluation races, stalled or just-late transitions, stalled
+> new-loader boot, retained canvases, unreleased renderer and over-budget backing
+> pixels. Bounded Page/Runtime/Inspector/Network rows diagnose crashes,
+> unreachable navigation, replacement exceptions and fatal document loads; the
+> command never retries a red run.
+>
+> `scheduleReplacementReload()` is the product half of that contract. All three
+> intentional replacement transitions—Training restart after `persistView()`,
+> accepted `importBlob()` after `repo.write()`, and the storage retry after real
+> bytes reappear—first claim one mutually exclusive replacement transaction, then
+> stop ordinary persistence and call the boot-installed
+> `releaseRendererForReload()`, and cross one task boundary before
+> `location.reload()`. The release hook removes renderer-density listeners,
+> destroys Pixi with global/child texture resources, detaches `app.canvas`, and
+> collapses both it and `activeBackdropCanvas` to at most 1×1. It optionally emits
+> the release witness through a CDP `Runtime.addBinding` seam before the execution
+> context dies. This path is deliberately not registered on generic `pagehide`:
+> a browser-cache restoration must not revive a destroyed Pixi application.
+>
+> Test-battery #199, run `31571459050` / job `94034164092`, exposed the former
 > old-token 10-second timeout at desktop-8k and a small-phone Planetside/trail
 > overlap on pushed `33ea341`. Pushed repair
 > `8b8a740286a56591cac9dc5734a2fba4c088939b` passed its exact sequential local
 > battery. Matching test-battery #200 passed every root/product/v2 gate, one-run
 > smoke, full 12-viewport matrix, personas and preview packaging; only final preview
 > CDP startup failed before a page existed after that process lost the previous
-> step's Chrome environment and selected Linux Edge. Local unpushed
-> `4d14a75e934536dc5f204e40c74f666cc9514df4` moves the browser pin to job scope.
-> Clean local commit `08379d8c072c7eb22e2a029d666972c86d496326` carries the shared
-> root-layout launcher/report implementation. Its sandboxed Edge SIGABRT remains
-> preserved red; the subsequent exact sequential battery passed root fingerprint,
-> smoke and sealed 787/787 layout evidence, v2 24 files / 273 pass / 1 skip,
-> one-attempt smoke (0 findings / 10 screenshots), certifying 12-viewport glass
-> (0 findings / 0 instrument failures), 9 matching automated personas, and exact
+> step's Chrome environment and selected Linux Edge. Pushed
+> `4d14a75e934536dc5f204e40c74f666cc9514df4` moves the browser pin to job scope,
+> and `08379d8c072c7eb22e2a029d666972c86d496326` carries the shared root-layout
+> launcher/report. Executable/evidence head
+> `4560269b8767dc48bb82e3b1f9d82ca835a84aad` then passed the exact sequential
+> local battery: root fingerprint/smoke/sealed 787/787 layout, v2 273 pass / 1 skip,
+> one-attempt smoke, certifying 12-viewport glass, 9 automated personas and exact
 > 320×568 preview verify/browser smoke. Preview content is
-> `f84eae95cbb97051ecb0bd6c6cac25c86ac49043043f64173b14486aa4f0e12a`
-> with `publishable:false`. A final docs-only commit, matching exact-head rerun,
-> push and matching CI remain required.
+> `3f05c7cc218e4a3b49d5fff7a36270552a0e4129f305b681a51bb3c16826eb8f`
+> with `publishable:false`.
+>
+> Matching test-battery #201, run
+> [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
+> job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
+> completed once without retry and is **RED**. Every preceding gate, including
+> `smoke:ci`, passed. Only desktop-8k preference import instrument-failed after
+> the former 20-second replacement wait while the old loader remained and its
+> slice token/import phase were absent. That is not a save-classifier rejection
+> or reported repository-write error. The product/harness repair above is an
+> uncommitted worktree change. Pure controls pass; targeted 8K witnessed both
+> 5,461×3,072 backings collapse to 1×1, released renderer/stage, detached view and
+> changed-loader/token readiness in 198ms; stable-source smoke passed the real
+> Restart/import/duplicate-import interlocks and rollback. Final mutable-source glass passed 12/12
+> viewports and 50/50 controls without omissions/findings/instrument failures/retries; all nine
+> matching automated personas passed. Exact-head battery, push and matching CI remain pending. The
+> artifact is origin-bound but not authorized for hosting or
+> publication; human playtest, Ready and merge authority remain open.
 > Development preview origin/package requirements live in
 > `port/DEVELOPMENT_PREVIEW.md`; they do not constitute a release or deployment.
 >

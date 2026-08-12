@@ -439,6 +439,31 @@ related count. Never make a flaky-looking failure green through blind retries; e
 expected bounded wait from observable state or leave the red run as evidence while correcting the
 instrument or product.
 
+⚠⚠ **A DYING EXECUTION CONTEXT IS NOT A NAVIGATION COMMIT, AND NAVIGATION DOES NOT
+PROVE THE OLD RENDERER RELEASED.** Test-battery #201 passed the one-attempt browser smoke and every
+earlier gate, then the desktop-8k import leg spent its former 20-second "replacement" budget on the
+old top-frame loader after that document's slice token and import-phase global had disappeared. That
+state is ambiguous: it proves neither a ready replacement nor an import rejection. It also does not,
+by itself, prove the plausible high-resolution GPU/backing-store overlap was the root cause.
+> **The remedy is two-sided and phase-owned.** The app's three intentional reloads—Training restart,
+> accepted expedition import, and storage-health retry—use one explicit code-owned release path:
+> synchronously claim one mutually exclusive replacement transaction before any await, stop ordinary
+> persistence, remove resize listeners, destroy Pixi with its global/child resources,
+> detach the view, shrink the application and backdrop canvases to at most 1×1, emit an optional
+> out-of-context diagnostic witness, then cross one task boundary before reload. Do **not** install
+> that teardown on generic `pagehide`; a browser-cache restore must not revive a destroyed app.
+> The harness independently bounds import settlement, navigation commit, and replacement boot. A
+> vanished global may be tolerated only after reload/navigation is observed; the 5-second navigation
+> clock ends only at a changed stable loader, and only then does the new document receive its own
+> 20-second boot clock. Require exactly one valid release witness and a changed loader + changed
+> document token; retain Page/Runtime/Inspector/Network diagnostics; fail closed on crash, unreachable
+> navigation, exception, fatal document load, phase regression, duplicate witness, or retained
+> canvas. Negative-control both `replacement-document-loader-token-phase` and
+> `reload-resource-release`, and never retry the first red result away.
+> A deadline belongs to the phase being exited as well as the phase that remains
+> stuck: just-late import→navigation, navigation→boot, and boot→ready transitions
+> must fail, even when their destination state is otherwise valid.
+
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
 GitHub Actions step lost that step-local `CF_BROWSER`, selected an installed Linux Edge through

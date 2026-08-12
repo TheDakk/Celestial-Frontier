@@ -1,6 +1,6 @@
 # Celestial Frontier — Save System
 
-> **2026-08-11 v2 port overlay (matches `port/v2` code):** The browser slice now
+> **2026-08-12 v2 port overlay (matches `port/v2` code):** The browser slice now
 > distinguishes a fresh store, a supported coherent save, an unsupported future
 > version, a corrupt/sparse payload, and a transient storage failure. Only a
 > supported coherent payload may replace the last-known-good backup. Corrupt
@@ -72,6 +72,31 @@
 > decoded to text by the browser; the moderator's external source file remains
 > the authoritative byte-for-byte backup, including when browser storage refuses
 > the extra keepsake.
+>
+> The three intentional v2 replacement-page transitions—current Training
+> restart after its view snapshot commits, supported expedition import after the
+> replacement envelope commits, and storage-health retry after real bytes are
+> rediscovered—share one code-owned reload path. It blocks new ordinary writes,
+> and each flow synchronously claims the one replacement transaction before its
+> first await, so Training restart cannot tear down the page while an import is
+> still committing (or vice versa). A refused/failed transaction releases that
+> claim and restores the prior state.
+> The chosen flow
+> cancels the preference debounce, removes renderer-resize listeners, destroys
+> the Pixi application with its global/child texture resources, detaches the
+> application view, and collapses both the application and backdrop canvases to
+> at most 1×1 before a one-task-boundary `location.reload()`. The optional CDP
+> seam reports those postconditions outside the dying execution context. This
+> teardown is deliberately not installed on generic `pagehide`: a browser-cache
+> restore must never revive a Pixi application that the app destroyed.
+>
+> **Evidence boundary:** this reload-lifecycle repair is currently an uncommitted
+> worktree change. Pure instrument controls pass; one targeted desktop-8k run
+> witnessed both 5,461×3,072 backings collapse to 1×1, renderer/stage release,
+> view detachment, changed loader/token and a ready replacement in 198ms; and a
+> stable-source one-attempt smoke passed the real restart/import interlock and
+> rollback. The full browser matrix, exact-head battery and matching CI remain
+> pending; no save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
 matches `port/v2` as of 2026-08-12. ⚠ Read the v1.8.7 section (a reverted

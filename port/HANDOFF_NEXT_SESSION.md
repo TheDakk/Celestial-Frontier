@@ -2,19 +2,25 @@
 
 **Current integration state:** PR #10 merged normally into `develop` at
 `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`. OpenAI/Codex remains on
-`openai/mac`; the current pushed PR head is
-`8b8a740286a56591cac9dc5734a2fba4c088939b`. Local code/tool head
-`08379d8c072c7eb22e2a029d666972c86d496326` is two unpushed commits ahead and
-has passed the exact sequential local battery described below. Matching
-test-battery #200, run `31577395120` / job `94052496287`, passed every root,
-product, v2, one-run smoke, full 12-viewport glass, automated-persona and
-preview-package gate. Only final preview CDP startup failed before a page existed:
-that new step lost the preceding step's Chrome environment and selected Linux
-Edge. Local commit `4d14a75e934536dc5f204e40c74f666cc9514df4`
-contains the job-scoped Chrome provenance repair; `08379d8c072c7eb22e2a029d666972c86d496326`
-completes the root-layout launcher/report hardening. This final docs-only handoff
-must be committed, then the matching exact-head battery rerun, push and CI remain
-required. Draft PR #11 is open at
+`openai/mac`; executable/evidence head
+`4560269b8767dc48bb82e3b1f9d82ca835a84aad` is pushed on PR #11 and passed the
+exact sequential local battery described below. Matching test-battery #201,
+run [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
+job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
+completed once without retry and is red only at the desktop-8k preference-import
+replacement lifecycle; every preceding gate including `smoke:ci` passed. Current
+product/harness/docs repair files are uncommitted; pure controls, targeted desktop-8k and
+stable-source smoke diagnostics pass while full/exact evidence remains pending.
+Historical test-battery #200,
+run `31577395120` / job `94052496287`, passed every root, product, v2, one-run
+smoke, full 12-viewport glass, automated-persona and preview-package gate; only
+final preview CDP startup failed before a page existed after that step lost the
+preceding step's Chrome environment and selected Linux Edge. Commit
+`4d14a75e934536dc5f204e40c74f666cc9514df4` contains the job-scoped browser
+provenance repair; `08379d8c072c7eb22e2a029d666972c86d496326` completes the
+root-layout launcher/report hardening; and docs-only `4560269` is the prior local
+evidence head. Use `git rev-parse HEAD` and `git status --short` for the current state.
+Draft PR #11 is open at
 https://github.com/TheDakk/Celestial-Frontier/pull/11.
 
 The batch audits and hardens the already-ported Phase-4 slice: sparse/corrupt/
@@ -59,9 +65,9 @@ A HUMAN PLAYTEST**. Root layout writes `running` then terminal `pass`, `fail`, o
 `instrument-fail`, retains legacy `results`, and binds exact run/browser provenance.
 Development-preview
 packaging binds exact commit/tree/lockfile/byte hashes, shows a DEV banner and
-refuses production/path origins. The actual separate preview owner/hostname has
-not been chosen or published; use either the recommended separate
-`dev-celestialfrontier` owner site or an approved dedicated custom hostname.
+refuses production/path origins. The exact local artifact is bound to
+`https://dev-celestialfrontier.github.io`, but no owner-site repository/host or
+publication has been approved or created.
 
 **Evidence status:** GitHub test-battery #199, run `31571459050` / job
 `94034164092`, exposed the old desktop-8k reload ambiguity and small-phone
@@ -80,11 +86,10 @@ matrix including 8K, automated-persona synthesis and `preview:package`. Only
 the check stopped before a target or packaged page existed. This is CI browser-
 provenance failure, not a game, glass, package or human-preview finding.
 
-Local commit `4d14a75e934536dc5f204e40c74f666cc9514df4` pins the exact Chrome path
+Pushed commit `4d14a75e934536dc5f204e40c74f666cc9514df4` pins the exact Chrome path
 at job scope in both workflows and resolves it fail-closed before the long battery;
-it remains unpushed. Browser provenance is per step/process, not workflow memory.
-Do not rerun the unchanged red head, add retries, lengthen startup or clear D-Bus
-to hide the failure.
+browser provenance is per step/process, not workflow memory. Do not add retries,
+lengthen startup or clear D-Bus to hide a future recurrence.
 
 The clean follow-on at `08379d8c072c7eb22e2a029d666972c86d496326` moves root
 `uilayout.js` onto the same v2-owned resolver/CDP
@@ -104,17 +109,40 @@ through `browsercdp` and selftests excluded Node lines plus an executable non-br
 The bounded lock refresh moves root `undici` 7.27.2→7.29.0 and v2 `nanoid`
 3.3.16→3.3.18 within existing ranges; clean `npm ci` on both surfaces reports zero
 vulnerabilities. This is tooling evidence, not a shipped runtime or release-note change.
-The first sandboxed Edge diagnostic preserved SIGABRT as red. The clean exact-`08379d8`
-battery then passed: both clean installs/audits at 0 vulnerabilities; root validate/fingerprint,
+The first sandboxed Edge diagnostic preserved SIGABRT as red. Executable/evidence head
+`4560269b8767dc48bb82e3b1f9d82ca835a84aad`, a docs-only tip over clean code/tool
+`08379d8`, then passed: both clean installs/audits at 0 vulnerabilities; root validate/fingerprint,
 smoke, owned-CDP preflight, layout selftest and 787/787 exact-report verification; rarity 60M
 with 0 downgrades; v2 24 files / 273 pass / 1 skip, type/art/override/coverage/spec gates and all
 instrument controls; one-attempt smoke with 0 findings / 10 screenshots; certifying 12-viewport
-glass with 0 findings / 0 instrument failures; 9 matching automated personas; the 4× phone
-diagnostic at 610 ms painted / 691 ms answerable / 76 ms press / 150 ms rebuild; and exact preview
+glass with 0 findings / 0 instrument failures; 9 matching automated personas; the terminal-only,
+non-provenance-bound 4× phone diagnostic at 608 ms painted / 691 ms answerable / 77 ms
+press→panel / 167 ms rebuild; and exact preview
 verify/browser PASS at 320×568 for content
-`f84eae95cbb97051ecb0bd6c6cac25c86ac49043043f64173b14486aa4f0e12a`
-(`publishable:false`). Commit this docs-only handoff, rerun that battery on the new exact head,
-push both local commits, and require matching new-head GitHub CI before completing a real multi-lens human
+`3f05c7cc218e4a3b49d5fff7a36270552a0e4129f305b681a51bb3c16826eb8f`
+(`publishable:false`). Test-battery #201, run
+[`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) / job
+[`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
+is the matching GitHub run and is **RED**. It passed every earlier gate including `smoke:ci`; only
+desktop-8k preference import instrument-failed after a 20-second replacement wait while the old
+loader remained and its slice token/import phase were absent. This is not a save rejection or
+reported write error and must not be retried away.
+
+The current uncommitted repair makes the product's three intentional reloads claim one mutually
+exclusive replacement transaction, then gives them one explicit Pixi/global-resource release,
+view detachment, application/backdrop 1×1 collapse and one-task barrier;
+it avoids generic `pagehide` teardown for browser-cache safety. Glass requires that bound release
+witness, then separately bounds import at 20 seconds, observed navigation at 5 seconds and new-
+loader boot at 20 seconds. It retains Page/Runtime/Inspector/Network diagnosis and adds
+`reload-resource-release` beside `replacement-document-loader-token-phase`, still with zero retries.
+Its pure controls also reject transitions that arrive just after any prior phase deadline.
+Pure selftests pass. A targeted desktop-8k diagnostic witnessed both 5,461×3,072 backings collapse
+to 1×1 plus released renderer/stage, detached view, changed loader/token and ready replacement in
+198ms. Stable-source `smoke:ci` passed the real Restart/import/duplicate-import interlocks and
+rollback; the prior attempt's mixed-source refusal remains preserved. Final mutable-source glass
+passed all 12 viewports and 50/50 controls without omissions/findings/instrument failures/retries;
+matching automated personas passed all nine bounded lenses. Exact-head battery, commit/push and
+matching CI remain pending. Require matching CI to pass before human
 playtest against its commit-bound separate-origin preview. Record full commit,
 `preview.json` content hash, URL, tester/device/browser, save state, findings and
 retest in `port/playtests/`. Do not mark PR #11 Ready or merge before every human
@@ -123,7 +151,7 @@ finding is resolved or explicitly dispositioned and affected gates are rerun.
 **Next technical order:** complete canonical CF1 galaxy→star→planet proof;
 restore imported legacy full-expedition `tsnap`; decide CFB parent preservation;
 complete live Training/tooltips/Advanced Briefings; virtualize Compendium;
-own/destroy Pixi canvas textures with a memory plateau gate; attach completed HD
+finish general Pixi canvas-texture ownership beyond explicit reload teardown and add a memory plateau gate; attach completed HD
 planet tiers; persist/invalidate epoch edges and settle visibility/reduced-motion
 policy; finish Gate-B/type/state boundaries and split-store/CAS persistence;
 then Phase 5 living actors and Phase 6's 43 biome/ecology scenes. The static
@@ -132,21 +160,18 @@ scenes are the higher-value visual work.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — pushed head
-`8b8a740286a56591cac9dc5734a2fba4c088939b` is product-, smoke-, full-glass-,
-persona- and package-green locally and through test-battery #200. The only red gate
-is preview's pre-page CDP startup after browser provenance fell out of scope. Local
-`08379d8c072c7eb22e2a029d666972c86d496326` is two unpushed commits ahead and passed
-the exact sequential battery; only this docs-only handoff remains uncommitted. Draft PR
-#11 exists, but its current remote head contains neither local commit.
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — executable/evidence head
+`4560269b8767dc48bb82e3b1f9d82ca835a84aad` is pushed and passed the exact sequential
+local battery, but matching #201 is red only at desktop-8k replacement lifecycle. The current
+product/harness/docs repair is uncommitted with passing pure-control, targeted desktop-8k and
+stable-source smoke diagnostics; full/exact evidence remains pending.
 
-**GitHub step:** keep PR #11 draft. Commit this final docs-only handoff,
-run the final sequential local battery on that exact commit, then push all local commits
-and require matching new-head CI; do not rerun or timeout-mask #200. Update the PR body with that exact head and results,
-build the approved separate-origin preview, complete and record the human
-playtest, and resolve/retest findings. Only then may Nick click **Ready for
-review**, review the final diff/checks, and normally merge into `develop`. Never
-auto-merge, squash/rebase, retarget `main`, or add this work to merged PR #10.
+**GitHub step:** none now; keep PR #11 draft and preserve red run `31586917924` / job
+`94082765087` without retry. Finish the repair, controls, targeted 8K and exact-head battery;
+commit/push `openai/mac`; then require matching new-head CI. After green CI, obtain host approval,
+publish the separate-origin preview, complete/record human play, resolve/retest findings, and only
+then let Nick mark Ready and normally merge into `develop`. Never auto-merge, squash/rebase,
+retarget `main`, or add work to merged PR #10.
 
 **PR details:**
 
@@ -171,19 +196,23 @@ auto-merge, squash/rebase, retarget `main`, or add this work to merged PR #10.
   > sticky-close gutter and hidden rail openers fall back to Survey/canvas. On landed touch layouts,
   > the objective yields to Planetside; short landscape yields the trail, while portrait retains it
   > only when a useful 72px roster plus 6px clearance fits and otherwise yields only that trail for a
-  > vertically scrollable Planetside. The responsive gate observes import settlement and replacement
-  > boot as separate 20-second phases and requires both loader and document token to change, with no
-  > retry. Adds provenance-bound
+  > vertically scrollable Planetside. The three intentional replacement reloads explicitly release
+  > Pixi/global resources, detach and collapse outgoing application/backdrop canvases, and cross one
+  > task boundary before navigation without generic pagehide teardown. The responsive gate requires
+  > that release witness, then independently observes a 20-second import transaction, 5-second
+  > navigation commit and 20-second new-loader boot; changed loader plus changed document token remain
+  > required with no retry. Adds provenance-bound
   > smoke, glass and automated-persona reports plus commit-bound development-preview packaging;
   > pins the CI browser at job scope so a later preview process cannot silently switch from Chrome
   > to Linux Edge when a preceding step's environment expires. Moves the root 10-viewport layout
   > gate onto the same owned port-0 CDP launcher and adds ignored atomic pass/fail/instrument-fail
   > evidence, stale-PASS/exit-73 selftest, exact-run freshness and a separate required CI upload;
-  > automated personas are explicitly not a human playtest. The preview requires a separately
-  > approved origin, which has not been chosen or published. Final verification is publication-
-  > contingent: freeze the final head in a commit, run the sequential local battery, then push
-  > and require matching GitHub CI,
-  > then complete and record a multi-lens human playtest against that exact preview before marking
+  > automated personas are explicitly not a human playtest. Prior local executable evidence is
+  > bound to `4560269b8767dc48bb82e3b1f9d82ca835a84aad`; matching test-battery #201 (run
+  > `31586917924`, job `94082765087`) is preserved red only at desktop-8k replacement lifecycle.
+  > The current repair still requires a commit, exact-head battery, push and matching green CI. The local artifact is bound to
+  > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. After the
+  > matching CI is green, complete and record a multi-lens human playtest against that exact preview before marking
   > this PR Ready or merging. The static Platinum-reviewed portrait set is unchanged; later visual
   > work remains living rigs/animation and biome scenes. After merge, Anthropic/Claude Code may
   > synchronize only from a clean `anthropic/windows` worktree with `git fetch origin` then
@@ -204,7 +233,7 @@ bump has occurred.
 
 **Preview bootstrap note:** GitHub cannot manually dispatch a workflow until its
 file exists on the default branch. Since PR #11 introduces
-`development-preview-package.yml`, its own pre-merge candidate uses the equivalent
+`development-preview-package.yml`, its exact pre-merge review artifact used the equivalent
 Nick-approved local clean/pushed-head command in `port/DEVELOPMENT_PREVIEW.md`.
 After that workflow reaches `develop`, later candidates use the reviewed manual
 workflow. Neither path deploys without a separately approved host action.

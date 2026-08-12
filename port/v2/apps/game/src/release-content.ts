@@ -873,6 +873,8 @@ export const V2_DRAFT_RELEASE = Object.freeze({
         'Imported Star Atlas entries with incomplete legacy route coordinates remain visible but are honestly labelled and disabled instead of presenting a dead travel action.',
         'The primary objective chip stops at the currently live landfall boundary instead of directing players toward mining, crafting, combat, or other goal writers that are not yet ported.',
         'Active Field Training lessons now own Escape, retaining required navigation and survey state instead of ascending or closing the only action a lesson needs.',
+        'Intentional Training restart, expedition-import, and storage-recovery reloads release the outgoing full-resolution scene before the replacement page starts, preventing old and new canvases from overlapping on very large displays.',
+        'Training restart, expedition import, and storage recovery now claim one mutually exclusive replacement transaction before waiting, so one flow cannot reload while another is still committing or roll back the wrong expedition.',
       ]),
     }),
     Object.freeze({
@@ -882,6 +884,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
         'Legacy v1.8.9 release history remains byte-parity checked and separate from this unversioned development draft.',
         'A separate-origin, commit-bound development preview package carries a visible DEV banner, no-index policy, byte inventory, and no production deployment permission for human playtests.',
         'Responsive glass and persona playtest tools record machine-readable outcomes and retain a red run without automatic retries or cascade-hiding. Import settlement and replacement-page startup are observed separately, and a reload passes only after both the browser loader and document token change.',
+        'Reload evidence now separates import settlement, navigation commit, and new-document boot; requires a valid renderer/canvas release witness; and retains browser lifecycle, runtime, crash, and document-load diagnostics under deliberate failing controls.',
       ]),
     }),
   ]),

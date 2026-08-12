@@ -931,6 +931,20 @@ duplicates).
   retains the exact submitted text, including legal surrounding whitespace. File selection is
   browser-decoded to text, so the external moderator file remains the byte-for-byte authority. This is intentional exploit/data-loss hardening over
   permissive v1 behavior.
+- ☐ **D-SAVE-2 — intentional replacement reloads own outgoing renderer release (worktree
+  repair, browser evidence pending 2026-08-12).** Training restart after its reversible view
+  commit, supported expedition import after its replacement-envelope commit, and the storage-
+  health retry after rediscovering real bytes now share one code-owned transition. It blocks new
+  ordinary persistence, cancels the preference debounce, removes renderer-resize listeners,
+  destroys Pixi with global and child texture resources, detaches its view, and collapses both the
+  application and backdrop canvases to at most 1×1 before one task boundary and `location.reload()`.
+  The optional CDP binding exports those postconditions outside the dying execution context. It is
+  intentionally not a `pagehide` listener: browser-cache restoration must not revive a destroyed
+  application. This addresses a plausible 8K old/new backing-store overlap without claiming CI
+  #201 proved GPU exhaustion; that run proved only the replacement-lifecycle ambiguity described
+  under D-UI-3. Static/source inspection is current. Targeted desktop-8k evidence, the release-
+  witness negative control, full one-attempt matrix, exact-head battery, push, and matching CI are
+  still required before this item closes.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
@@ -1036,20 +1050,36 @@ duplicates).
   proves its useful strip and fixed-chrome clearance, then proves exact restoration.
 
   Pushed commit `33ea34191c817a8e78eea598c31981f8208e939b` passed its exact local battery,
-  but GitHub test-battery run `31571459050` / job `94034164092` failed in the v2 real-browser/
-  responsive/persona step. `smoke:ci` passed once; the following glass run saw the old ready document
-  token through the former 10-second desktop-8k import/reload wait and also recorded the small-phone
-  Planetside/trail overlap. The repair arms an explicit import phase, witnesses the top-frame loader
-  on both sides of evaluation, and accepts only a ready replacement with changed loader and changed
-  token. Import settlement and replacement boot have separate 20-second limits, while same-document
-  token mutation, lost/rejected phases and loader/evaluation races fail closed under
-  `replacement-document-loader-token-phase`; the run still has zero retries. Post-repair evidence is
-  limited to `node --check tools/glassmatrix.mjs`, `npm run glassmatrix:selftest`, both TypeScript
-  programs via `npm run typecheck`, and `git diff --check`. Targeted real-browser diagnostics for the
-  small-phone portrait branch and desktop-8k import/reload path also pass on the mutable repair
-  snapshot; they are explicitly non-certifying. Current `smoke:ci`, the full 12-viewport matrix and
-  persona synthesis, the repair commit and exact-head battery, matching CI, and separate-origin human
-  playtest remain pending.
+  but GitHub test-battery #199, run `31571459050` / job `94034164092`, failed in the v2
+  real-browser/responsive/persona step. `smoke:ci` passed once; the following glass run saw the old
+  ready document token through the former 10-second desktop-8k import/reload wait and also recorded
+  the small-phone Planetside/trail overlap. Pushed `8b8a740` gave import settlement and replacement
+  boot separate 20-second bounds, paired loader/token readiness, and the responsive portrait repair.
+  Its exact local battery and matching test-battery #200 glass leg passed.
+
+  Matching test-battery #201, run `31586917924` / job `94082765087`, completed once without retry on
+  pushed evidence head `4560269b8767dc48bb82e3b1f9d82ca835a84aad` and is **RED**. Every preceding
+  root/product/v2 gate, including `smoke:ci`, passed. Only the desktop-8k preference import leg
+  instrument-failed: the former replacement clock expired after 20 seconds while the old top-frame
+  loader remained and its slice token/import phase were absent. There was no `import-rejected`,
+  `import-threw`, classifier rejection, or reported repository-write failure; the red is a post-
+  request replacement-lifecycle/instrument finding and must not be retried away.
+
+  The current uncommitted repair first gives Training restart/import/storage recovery one mutually
+  exclusive replacement transaction, requires the D-SAVE-2 resource-release witness, then separates a
+  20-second import transaction, 5-second observed navigation commit, and 20-second new-loader boot.
+  Old-context loss cannot start boot by itself. A stable changed loader starts that clock, and only
+  its ready changed document token may pass. Bounded Page/Runtime/Inspector/Network evidence names
+  crash, unreachable navigation, replacement exception and fatal document load. The existing
+  `replacement-document-loader-token-phase` control plus new `reload-resource-release` control cover
+  stuck and just-late phase transitions, same-loader mutation, premature context loss, duplicate/invalid witnesses,
+  retained canvases, unreleased renderer and over-budget pixels. Pure selftests pass; a targeted
+  desktop-8k diagnostic witnessed both 5,461×3,072 backings collapse to 1×1, released renderer/
+  stage, detached view and changed-loader/token readiness in 198ms; stable-source `smoke:ci` passed
+  the real Restart/import/duplicate-import interlocks and rollback. Final mutable-source glass
+  passed 12/12 viewports and 50/50 controls without omissions/findings/instrument failures/retries;
+  all nine matching automated personas passed. Exact-head battery, push, matching CI and separate-
+  origin human playtest remain pending.
 - ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
   the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson

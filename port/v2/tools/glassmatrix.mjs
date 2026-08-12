@@ -28,15 +28,20 @@ const dist = path.join(appDir, 'dist');
 const repoRoot = path.resolve(here, '..', '..', '..');
 const evidenceDir = path.join(appDir, 'smoke');
 const MAX_BACKING_PIXELS = 4096 * 4096;
-/* Import settlement and replacement boot are separate observable phases.
-   Bound each to the same budget as a fresh slice boot; never turn one
-   unobserved 10-second sleep into a larger unobserved sleep. */
+/* Import settlement, navigation commit, and replacement boot are separate
+   observable phases. Bound each to the same budget as a fresh slice boot;
+   never let time spent waiting for the old loader to leave consume the new
+   document's boot budget. */
 const SLICE_READY_TIMEOUT_MS = 20000;
 const IMPORT_SETTLE_TIMEOUT_MS = SLICE_READY_TIMEOUT_MS;
+const NAVIGATION_COMMIT_TIMEOUT_MS = 5000;
 const REPLACEMENT_READY_TIMEOUT_MS = SLICE_READY_TIMEOUT_MS;
+const MAX_RELOAD_EVENTS = 48;
+const RELOAD_RELEASE_BINDING = '__cfReloadReleaseWitness';
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const startedAt = Date.now();
 let runSource = null;
+let runReloadEvidence = [];
 const VETERAN_PREF_RAW = (() => {
   const fixture = JSON.parse(fs.readFileSync(
     path.join(here, '..', '..', 'baseline-v1.8.9', 'save-fixtures.json'), 'utf8',
@@ -154,6 +159,7 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'modal-background-containment-restore', 'modal-live-error', 'panel-close-accessible-name',
   'hidden-panel-opener-focus-fallback',
   'replacement-document-loader-token-phase',
+  'reload-resource-release',
 ]);
 
 function reloadProbeDecision(probe, priorToken, priorLoaderId, phaseId) {
@@ -161,40 +167,260 @@ function reloadProbeDecision(probe, priorToken, priorLoaderId, phaseId) {
   const loaderIdBefore = typeof probe?.loaderIdBefore === 'string' ? probe.loaderIdBefore : null;
   const loaderId = typeof probe?.loaderId === 'string' ? probe.loaderId : null;
   const phase = probe?.phase && typeof probe.phase === 'object' ? probe.phase : null;
-  if (!loaderIdBefore || !loaderId) return { status: 'failed', ok: false, why: 'top-frame loader id unavailable' };
+  const result = (status, ok = false, why = null) => ({ status, ok, why, loaderId });
+  if (!loaderIdBefore || !loaderId) return result('failed', false, 'top-frame loader id unavailable');
   /* Bind the evaluated token to one stable loader. A navigation that commits
      between Runtime.evaluate and Page.getFrameTree could otherwise pair an
      old document's mutable token with the new loader and manufacture a pass. */
-  if (loaderIdBefore !== loaderId) return { status: 'replacement-pending', ok: false };
+  if (loaderIdBefore !== loaderId) {
+    return result(loaderId === priorLoaderId ? 'navigation-pending' : 'replacement-boot-pending');
+  }
   const tokenChanged = !!token && token !== priorToken;
   const loaderChanged = !!loaderId && loaderId !== priorLoaderId;
   if (probe?.ready && tokenChanged && loaderChanged) {
-    return { status: 'replacement-ready', ok: true };
+    return result('replacement-ready', true);
   }
   if (tokenChanged && !loaderChanged) {
-    return { status: 'failed', ok: false, why: 'document token changed without a top-frame loader transition' };
+    return result('failed', false, 'document token changed without a top-frame loader transition');
   }
-  if (token === priorToken) {
-    /* Once the loader changes, the old execution context may have supplied
-       this poll just before navigation committed. The unchanged token is
-       never success, but the replacement gets its own bounded boot phase. */
-    if (loaderChanged) return { status: 'replacement-pending', ok: false };
-    if (!phase) return { status: 'failed', ok: false, why: 'same-loader/token document lost its armed import phase' };
-    if (phase.id !== phaseId) return { status: 'failed', ok: false, why: 'same-loader/token document exposed the wrong import phase id' };
+  if (!loaderChanged) {
+    /* The old loader still owns this stable evaluation. Losing either the
+       slice token or the armed phase here is not replacement evidence by
+       itself. Context teardown may race slightly ahead of the frame-tree
+       loader update, so the clock layer accepts this one unavailable state
+       only after reload/navigation was independently observed. */
+    if (token === null && !phase) return result('old-loader-unavailable');
+    if (token !== priorToken) return result('failed', false, 'old-loader document lost its slice token before navigation');
+    if (!phase) return result('failed', false, 'old-loader document lost its armed import phase');
+    if (phase.id !== phaseId) return result('failed', false, 'old-loader document exposed the wrong import phase id');
+    if (phase.status === 'import-rejected' || phase.status === 'import-threw') {
+      return result('failed', false, `${phase.status}: ${phase.error || 'no diagnostic'}`);
+    }
+    if (phase.status === 'import-pending') return result('import-pending');
+    if (phase.status === 'reload-requested') return result('navigation-pending');
+    return result('failed', false, `unknown import phase ${JSON.stringify(phase.status)}`);
   }
   if (phase) {
-    if (phase.id !== phaseId) return { status: 'failed', ok: false, why: 'import phase id changed before replacement readiness' };
+    if (phase.id !== phaseId) return result('failed', false, 'replacement document exposed the wrong import phase id');
     if (phase.status === 'import-rejected' || phase.status === 'import-threw') {
-      return { status: 'failed', ok: false, why: `${phase.status}: ${phase.error || 'no diagnostic'}` };
+      return result('failed', false, `${phase.status}: ${phase.error || 'no diagnostic'}`);
     }
-    if (phase.status === 'import-pending') return { status: 'import-pending', ok: false };
-    if (phase.status === 'reload-requested') return { status: 'replacement-pending', ok: false };
-    return { status: 'failed', ok: false, why: `unknown import phase ${JSON.stringify(phase.status)}` };
   }
-  /* The armed phase disappears with the old execution context. Until the
-     new document publishes its token this is replacement boot, not another
-     import wait and never evidence that the stale token was acceptable. */
-  return { status: 'replacement-pending', ok: false };
+  /* A stable changed loader is replacement-boot evidence, never readiness.
+     The prior token can be observed briefly while execution contexts turn
+     over, and a missing token is expected until the new slice publishes. */
+  return result('replacement-boot-pending');
+}
+
+function advanceReloadClocks(decision, now, clocks, {
+  navigationTimeoutMs, replacementTimeoutMs,
+}) {
+  const next = { ...clocks };
+  const failed = (why) => ({ action: 'failed', why, clocks: next });
+  if (decision.status === 'failed') return failed(decision.why || 'reload probe failed');
+  if (decision.status === 'replacement-ready') {
+    if (next.navigationDeadline === null) {
+      return failed('replacement document became ready before navigation was observed');
+    }
+    if (next.replacementLoaderId && decision.loaderId !== next.replacementLoaderId) {
+      return failed('replacement loader changed again before readiness');
+    }
+    next.replacementLoaderId ||= decision.loaderId;
+    if (next.bootDeadline === null) {
+      if (now >= next.navigationDeadline) {
+        return failed('navigation commit deadline expired before replacement readiness');
+      }
+      next.bootDeadline = now + replacementTimeoutMs;
+    }
+    if (now >= next.bootDeadline) return failed('replacement boot deadline expired before readiness');
+    return { action: 'ready', why: null, clocks: next };
+  }
+  if (decision.status === 'import-pending') {
+    if (next.navigationDeadline !== null || next.bootDeadline !== null) {
+      return failed('reload phase regressed to import-pending');
+    }
+    if (now >= next.importDeadline) return failed('import transaction deadline expired');
+    return { action: 'continue', why: null, clocks: next };
+  }
+  if (decision.status === 'navigation-pending') {
+    if (next.bootDeadline !== null || next.replacementLoaderId !== null) {
+      return failed('top-frame loader reverted after replacement boot began');
+    }
+    if (next.navigationDeadline === null) {
+      if (now >= next.importDeadline) {
+        return failed('import transaction deadline expired before navigation');
+      }
+      next.navigationDeadline = now + navigationTimeoutMs;
+    }
+    if (now >= next.navigationDeadline) return failed('navigation commit deadline expired');
+    return { action: 'continue', why: null, clocks: next };
+  }
+  if (decision.status === 'old-loader-unavailable') {
+    if (next.bootDeadline !== null || next.replacementLoaderId !== null) {
+      return failed('top-frame loader reverted after replacement boot began');
+    }
+    if (next.navigationDeadline === null) {
+      return failed('old-loader context disappeared before reload/navigation was observed');
+    }
+    if (now >= next.navigationDeadline) return failed('navigation commit deadline expired');
+    return { action: 'continue', why: null, clocks: next };
+  }
+  if (decision.status === 'replacement-boot-pending') {
+    if (!decision.loaderId) return failed('replacement boot has no loader id');
+    if (next.replacementLoaderId && decision.loaderId !== next.replacementLoaderId) {
+      return failed('replacement loader changed again during boot');
+    }
+    if (next.navigationDeadline === null) {
+      return failed('replacement loader appeared before navigation was observed');
+    }
+    if (next.bootDeadline === null) {
+      if (now >= next.navigationDeadline) {
+        return failed('navigation commit deadline expired before replacement boot');
+      }
+      next.replacementLoaderId = decision.loaderId;
+      next.bootDeadline = now + replacementTimeoutMs;
+    }
+    if (now >= next.bootDeadline) return failed('replacement boot deadline expired');
+    return { action: 'continue', why: null, clocks: next };
+  }
+  return failed(`unknown reload decision ${JSON.stringify(decision.status)}`);
+}
+
+function compactReloadEvent(event, requestUrls, at) {
+  const method = typeof event?.method === 'string' ? event.method : '';
+  const params = event?.params && typeof event.params === 'object' ? event.params : {};
+  if (method === 'Network.requestWillBeSent') {
+    if (typeof params.requestId === 'string' && typeof params.request?.url === 'string') {
+      requestUrls.set(params.requestId, params.request.url);
+    }
+    return null;
+  }
+  if (method === 'Network.loadingFinished') {
+    if (typeof params.requestId === 'string') requestUrls.delete(params.requestId);
+    return null;
+  }
+  if (method === 'Network.loadingFailed') {
+    const row = {
+      at, method, requestId: params.requestId || null,
+      url: requestUrls.get(params.requestId) || null,
+      type: params.type || null, errorText: params.errorText || null,
+      canceled: params.canceled === true, blockedReason: params.blockedReason || null,
+    };
+    if (typeof params.requestId === 'string') requestUrls.delete(params.requestId);
+    return row;
+  }
+  if (method === 'Page.lifecycleEvent') {
+    return {
+      at, method, name: params.name || null, frameId: params.frameId || null,
+      loaderId: params.loaderId || null,
+    };
+  }
+  if (method === 'Page.frameNavigated') {
+    const frame = params.frame && typeof params.frame === 'object' ? params.frame : {};
+    return {
+      at, method, frameId: frame.id || null, parentId: frame.parentId || null,
+      loaderId: frame.loaderId || null, url: frame.url || null,
+      unreachableUrl: frame.unreachableUrl || null,
+    };
+  }
+  if (method === 'Page.frameStartedLoading' || method === 'Page.frameStoppedLoading') {
+    return { at, method, frameId: params.frameId || null };
+  }
+  if (method === 'Page.loadEventFired' || method === 'Page.domContentEventFired') {
+    return { at, method };
+  }
+  if (method === 'Runtime.exceptionThrown') {
+    const details = params.exceptionDetails && typeof params.exceptionDetails === 'object'
+      ? params.exceptionDetails : {};
+    return {
+      at, method, text: details.text || null, url: details.url || null,
+      lineNumber: Number.isInteger(details.lineNumber) ? details.lineNumber : null,
+      columnNumber: Number.isInteger(details.columnNumber) ? details.columnNumber : null,
+      description: details.exception?.description || null,
+    };
+  }
+  if (method === 'Inspector.targetCrashed' || method === 'Target.targetCrashed') {
+    return {
+      at, method, targetId: params.targetId || null,
+      status: params.status || null, errorCode: params.errorCode ?? null,
+    };
+  }
+  return null;
+}
+
+function pushBoundedReloadEvent(events, row) {
+  if (!row) return;
+  events.push(row);
+  if (events.length > MAX_RELOAD_EVENTS) events.splice(0, events.length - MAX_RELOAD_EVENTS);
+}
+
+function fatalReloadEvent(events) {
+  return events.find((row) => row.method === 'Inspector.targetCrashed'
+    || row.method === 'Target.targetCrashed'
+    || row.method === 'Runtime.exceptionThrown'
+    || (row.method === 'Page.frameNavigated' && !!row.unreachableUrl)
+    || (row.method === 'Network.loadingFailed' && row.type === 'Document'
+      && !row.canceled && row.errorText !== 'net::ERR_ABORTED')) || null;
+}
+
+function observedNavigationDeadline(events, releaseReady, beganAt, importDeadline, navigationTimeoutMs) {
+  if (!releaseReady) return { deadline: null, why: null };
+  const loading = events.find((row) => row.method === 'Page.frameStartedLoading' && row.at >= beganAt);
+  if (!loading) return { deadline: null, why: null };
+  if (loading.at >= importDeadline) {
+    return { deadline: null, why: 'import transaction deadline expired before observed navigation' };
+  }
+  return { deadline: loading.at + navigationTimeoutMs, why: null };
+}
+
+function validateReloadReleaseWitness(payload) {
+  let witness = payload;
+  if (typeof witness === 'string') {
+    try { witness = JSON.parse(witness); }
+    catch { return { ok: false, why: 'release witness payload is not JSON', witness: null }; }
+  }
+  if (!witness || typeof witness !== 'object' || Array.isArray(witness)) {
+    return { ok: false, why: 'release witness payload is not an object', witness: null };
+  }
+  if (witness.schema !== 'cf-v2-reload-release/v1') {
+    return { ok: false, why: 'release witness schema mismatch', witness };
+  }
+  if (witness.status !== 'released' || witness.error !== null) {
+    return { ok: false, why: `release witness reported ${JSON.stringify(witness.status)} / ${JSON.stringify(witness.error)}`, witness };
+  }
+  for (const field of ['rendererReleased', 'stageReleased', 'viewDetached']) {
+    if (witness[field] !== true) return { ok: false, why: `release witness ${field} is not true`, witness };
+  }
+  for (const name of ['appCanvas', 'backdropCanvas']) {
+    const canvas = witness[name];
+    if (!canvas || typeof canvas !== 'object' || Array.isArray(canvas)) {
+      return { ok: false, why: `release witness ${name} is missing`, witness };
+    }
+    const values = ['beforeWidth', 'beforeHeight', 'afterWidth', 'afterHeight'];
+    if (!values.every((field) => Number.isInteger(canvas[field]) && canvas[field] >= 0)) {
+      return { ok: false, why: `release witness ${name} dimensions are invalid`, witness };
+    }
+    const beforePixels = canvas.beforeWidth * canvas.beforeHeight;
+    if (canvas.beforeWidth <= 1 || canvas.beforeHeight <= 1 || beforePixels <= 1
+      || beforePixels > MAX_BACKING_PIXELS) {
+      return { ok: false, why: `release witness ${name} did not capture a meaningful bounded pre-release canvas`, witness };
+    }
+    if (canvas.afterWidth > 1 || canvas.afterHeight > 1) {
+      return { ok: false, why: `release witness ${name} retained a canvas larger than 1x1`, witness };
+    }
+  }
+  return { ok: true, why: null, witness };
+}
+
+function requireReloadReleaseWitness(decision, witnesses) {
+  if (!['navigation-pending', 'old-loader-unavailable', 'replacement-boot-pending', 'replacement-ready']
+    .includes(decision?.status)) return { ok: true, why: null };
+  if (!Array.isArray(witnesses) || witnesses.length !== 1) {
+    return { ok: false, why: `reload advanced with ${Array.isArray(witnesses) ? witnesses.length : 0} release witnesses` };
+  }
+  const validation = witnesses[0]?.validation;
+  if (!validation?.ok) return { ok: false, why: validation?.why || 'reload release witness is invalid' };
+  return { ok: true, why: null };
 }
 
 function reloadPhaseSelftest() {
@@ -205,6 +431,7 @@ function reloadPhaseSelftest() {
     if (actual.status !== status || actual.ok !== ok) {
       failures.push(`${label}: got ${JSON.stringify(actual)}, expected ${JSON.stringify({ status, ok })}`);
     }
+    return actual;
   };
   expect('same-token ready import must remain pending', {
     ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
@@ -213,8 +440,8 @@ function reloadPhaseSelftest() {
   expect('same-token ready reload request must remain pending', {
     ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
     phase: { id: phaseId, status: 'reload-requested', error: null },
-  }, 'replacement-pending');
-  expect('different ready token and loader are the only success', {
+  }, 'navigation-pending');
+  const replacementReady = expect('different ready token and stable changed loader are the only success', {
     ready: true, token: 'replacement-token', loaderIdBefore: 'replacement-loader',
     loaderId: 'replacement-loader', phase: null,
   }, 'replacement-ready', true);
@@ -233,17 +460,169 @@ function reloadPhaseSelftest() {
   expect('lost same-token phase fails closed', {
     ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId, phase: null,
   }, 'failed');
+  const oldLoaderUnavailable = expect('old-loader global loss is classified without manufacturing replacement boot', {
+    ready: false, token: null, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId, phase: null,
+  }, 'old-loader-unavailable');
   expect('loader transition during token probe cannot pass', {
     ready: true, token: 'mutated-token', loaderIdBefore: priorLoaderId,
     loaderId: 'replacement-loader', phase: null,
-  }, 'replacement-pending');
-  expect('replacement boot without a token stays pending', {
+  }, 'replacement-boot-pending');
+  const replacementBoot = expect('changed-loader replacement boot without a token stays pending', {
     ready: false, token: null, loaderIdBefore: 'replacement-loader',
     loaderId: 'replacement-loader', phase: null,
-  }, 'replacement-pending');
+  }, 'replacement-boot-pending');
+  expect('stable changed loader with the stale token cannot pass', {
+    ready: true, token: priorToken, loaderIdBefore: 'replacement-loader',
+    loaderId: 'replacement-loader', phase: null,
+  }, 'replacement-boot-pending');
   expect('missing loader id fails closed', {
     ready: false, token: null, loaderIdBefore: null, loaderId: null, phase: null,
   }, 'failed');
+
+  const clockOptions = { navigationTimeoutMs: 20, replacementTimeoutMs: 30 };
+  const baseClocks = {
+    importDeadline: 1000, navigationDeadline: null, bootDeadline: null,
+    replacementLoaderId: null,
+  };
+  const navigationPending = reloadProbeDecision({
+    ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
+    phase: { id: phaseId, status: 'reload-requested', error: null },
+  }, priorToken, priorLoaderId, phaseId);
+  const navigationArmed = advanceReloadClocks(navigationPending, 100, baseClocks, clockOptions);
+  if (navigationArmed.action !== 'continue' || navigationArmed.clocks.navigationDeadline !== 120
+    || navigationArmed.clocks.bootDeadline !== null) {
+    failures.push(`stuck-navigation clock did not arm independently: ${JSON.stringify(navigationArmed)}`);
+  }
+  const navigationExpired = advanceReloadClocks(navigationPending, 120, navigationArmed.clocks, clockOptions);
+  if (navigationExpired.action !== 'failed' || navigationExpired.why !== 'navigation commit deadline expired') {
+    failures.push(`stuck-navigation control did not fail closed: ${JSON.stringify(navigationExpired)}`);
+  }
+  const unavailableUnarmed = advanceReloadClocks(oldLoaderUnavailable, 100, baseClocks, clockOptions);
+  if (unavailableUnarmed.action !== 'failed'
+    || unavailableUnarmed.why !== 'old-loader context disappeared before reload/navigation was observed') {
+    failures.push(`unobserved old-loader context loss did not fail closed: ${JSON.stringify(unavailableUnarmed)}`);
+  }
+  const unavailableArmed = advanceReloadClocks(oldLoaderUnavailable, 110, navigationArmed.clocks, clockOptions);
+  if (unavailableArmed.action !== 'continue'
+    || unavailableArmed.clocks.navigationDeadline !== navigationArmed.clocks.navigationDeadline
+    || unavailableArmed.clocks.bootDeadline !== null) {
+    failures.push(`observed navigation did not tolerate bounded old-context loss: ${JSON.stringify(unavailableArmed)}`);
+  }
+  const lateNavigation = advanceReloadClocks(navigationPending, 1000, baseClocks, clockOptions);
+  if (lateNavigation.action !== 'failed'
+    || lateNavigation.why !== 'import transaction deadline expired before navigation') {
+    failures.push(`late import→navigation transition was accepted: ${JSON.stringify(lateNavigation)}`);
+  }
+  const lateBoot = advanceReloadClocks(replacementBoot, 120, navigationArmed.clocks, clockOptions);
+  if (lateBoot.action !== 'failed'
+    || lateBoot.why !== 'navigation commit deadline expired before replacement boot') {
+    failures.push(`late navigation→boot transition was accepted: ${JSON.stringify(lateBoot)}`);
+  }
+  const bootArmed = advanceReloadClocks(replacementBoot, 110, navigationArmed.clocks, clockOptions);
+  if (bootArmed.action !== 'continue' || bootArmed.clocks.bootDeadline !== 140
+    || bootArmed.clocks.navigationDeadline !== 120
+    || bootArmed.clocks.replacementLoaderId !== 'replacement-loader') {
+    failures.push(`replacement-boot clock did not arm at the changed loader: ${JSON.stringify(bootArmed)}`);
+  }
+  const bootExpired = advanceReloadClocks(replacementBoot, 140, bootArmed.clocks, clockOptions);
+  if (bootExpired.action !== 'failed' || bootExpired.why !== 'replacement boot deadline expired') {
+    failures.push(`changed-loader boot-stall control did not fail closed: ${JSON.stringify(bootExpired)}`);
+  }
+  const lateReady = advanceReloadClocks(replacementReady, 140, bootArmed.clocks, clockOptions);
+  if (lateReady.action !== 'failed'
+    || lateReady.why !== 'replacement boot deadline expired before readiness') {
+    failures.push(`late boot→ready transition was accepted: ${JSON.stringify(lateReady)}`);
+  }
+  const readyOutcome = advanceReloadClocks(replacementReady, 111, bootArmed.clocks, clockOptions);
+  if (readyOutcome.action !== 'ready' || readyOutcome.clocks.replacementLoaderId !== 'replacement-loader') {
+    failures.push(`stable changed-loader/token success was not accepted: ${JSON.stringify(readyOutcome)}`);
+  }
+  const eventRequests = new Map([['document-request', 'http://127.0.0.1:1234/']]);
+  const fatalFixtures = [
+    compactReloadEvent({ method: 'Runtime.exceptionThrown', params: {
+      exceptionDetails: { text: 'Uncaught', url: 'app.js', lineNumber: 3,
+        exception: { description: 'Error: injected replacement boot failure' } },
+    } }, eventRequests, 1),
+    compactReloadEvent({ method: 'Inspector.targetCrashed', params: {} }, eventRequests, 2),
+    compactReloadEvent({ method: 'Network.loadingFailed', params: {
+      requestId: 'document-request', type: 'Document', errorText: 'net::ERR_FAILED', canceled: false,
+    } }, eventRequests, 3),
+  ];
+  for (const [index, row] of fatalFixtures.entries()) {
+    if (!row || fatalReloadEvent([row]) !== row) {
+      failures.push(`fatal reload-event fixture ${index} was not diagnosed: ${JSON.stringify(row)}`);
+    }
+  }
+  const canceledRequest = compactReloadEvent({ method: 'Network.loadingFailed', params: {
+    requestId: 'canceled-request', type: 'Document', errorText: 'net::ERR_ABORTED', canceled: true,
+  } }, new Map([['canceled-request', 'http://127.0.0.1:1234/']]), 4);
+  if (!canceledRequest || fatalReloadEvent([canceledRequest])) {
+    failures.push(`benign canceled document request was treated as fatal: ${JSON.stringify(canceledRequest)}`);
+  }
+  const beforeNavigationEvent = observedNavigationDeadline([], true, 100, 200, 20);
+  const afterNavigationEvent = observedNavigationDeadline([
+    { method: 'Page.frameStartedLoading', at: 110 },
+  ], true, 100, 200, 20);
+  const lateNavigationEvent = observedNavigationDeadline([
+    { method: 'Page.frameStartedLoading', at: 200 },
+  ], true, 100, 200, 20);
+  if (beforeNavigationEvent.deadline !== null || afterNavigationEvent.deadline !== 130
+    || afterNavigationEvent.why !== null
+    || lateNavigationEvent.why !== 'import transaction deadline expired before observed navigation') {
+    failures.push(`mid-probe navigation-event clock handoff failed closed: ${JSON.stringify({ beforeNavigationEvent, afterNavigationEvent, lateNavigationEvent })}`);
+  }
+  const validRelease = {
+    schema: 'cf-v2-reload-release/v1', status: 'released', error: null,
+    rendererReleased: true, stageReleased: true, viewDetached: true,
+    appCanvas: { beforeWidth: 4096, beforeHeight: 4096, afterWidth: 1, afterHeight: 1 },
+    backdropCanvas: { beforeWidth: 4096, beforeHeight: 4096, afterWidth: 0, afterHeight: 0 },
+  };
+  const releaseAccepted = validateReloadReleaseWitness(JSON.stringify(validRelease));
+  if (!releaseAccepted.ok) {
+    failures.push(`valid reload-resource witness was rejected: ${JSON.stringify(releaseAccepted)}`);
+  }
+  if (NAVIGATION_COMMIT_TIMEOUT_MS !== 5000 || REPLACEMENT_READY_TIMEOUT_MS !== 20000) {
+    failures.push(`reload phase budgets drifted: navigation=${NAVIGATION_COMMIT_TIMEOUT_MS} boot=${REPLACEMENT_READY_TIMEOUT_MS}`);
+  }
+  const retainedCanvas = structuredClone(validRelease);
+  retainedCanvas.appCanvas.afterWidth = 2;
+  const retainedRejected = validateReloadReleaseWitness(JSON.stringify(retainedCanvas));
+  if (retainedRejected.ok || !/larger than 1x1/.test(retainedRejected.why || '')) {
+    failures.push(`retained reload canvas was accepted: ${JSON.stringify(retainedRejected)}`);
+  }
+  const unreleasedRenderer = structuredClone(validRelease);
+  unreleasedRenderer.rendererReleased = false;
+  const rendererRejected = validateReloadReleaseWitness(unreleasedRenderer);
+  if (rendererRejected.ok || !/rendererReleased/.test(rendererRejected.why || '')) {
+    failures.push(`unreleased renderer witness was accepted: ${JSON.stringify(rendererRejected)}`);
+  }
+  const oversizedCanvas = structuredClone(validRelease);
+  oversizedCanvas.backdropCanvas.beforeWidth = 4097;
+  oversizedCanvas.backdropCanvas.beforeHeight = 4097;
+  const oversizedRejected = validateReloadReleaseWitness(oversizedCanvas);
+  if (oversizedRejected.ok || !/meaningful bounded/.test(oversizedRejected.why || '')) {
+    failures.push(`over-budget reload canvas was accepted: ${JSON.stringify(oversizedRejected)}`);
+  }
+  const validWitnessRows = [{ validation: releaseAccepted }];
+  const missingWitnessRejected = requireReloadReleaseWitness(navigationPending, []);
+  if (missingWitnessRejected.ok || !/0 release witnesses/.test(missingWitnessRejected.why || '')) {
+    failures.push(`navigation without a release witness was accepted: ${JSON.stringify(missingWitnessRejected)}`);
+  }
+  const invalidWitnessRejected = requireReloadReleaseWitness(replacementBoot, [{ validation: retainedRejected }]);
+  if (invalidWitnessRejected.ok || !/larger than 1x1/.test(invalidWitnessRejected.why || '')) {
+    failures.push(`replacement boot with an invalid release witness was accepted: ${JSON.stringify(invalidWitnessRejected)}`);
+  }
+  const witnessedReady = requireReloadReleaseWitness(replacementReady, validWitnessRows);
+  if (!witnessedReady.ok) {
+    failures.push(`replacement readiness with one valid release witness was rejected: ${JSON.stringify(witnessedReady)}`);
+  }
+  const lifecycle = compactReloadEvent({ method: 'Page.lifecycleEvent', params: {
+    name: 'DOMContentLoaded', frameId: 'top-frame', loaderId: 'replacement-loader',
+  } }, new Map(), 5);
+  if (!lifecycle || lifecycle.name !== 'DOMContentLoaded'
+    || lifecycle.loaderId !== 'replacement-loader') {
+    failures.push(`reload lifecycle evidence was not retained: ${JSON.stringify(lifecycle)}`);
+  }
   return failures;
 }
 function writeReport({ status, exitCode, browser, findings, instrumentFailures, controlsRun,
@@ -284,6 +663,7 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
       viewport: context.viewport, surface: context.surface, code: row.code,
       element: row.element, actual: row.actual, expected: row.expected,
     })),
+    reloadEvidence: [...runReloadEvidence],
     instrumentFailures: [...instrumentFailures],
     durationMs: endedAt - startedAt,
   };
@@ -320,6 +700,11 @@ function reportSelftest() {
     },
     summary: { findingCount: fixture.findings.length, instrumentFailureCount: fixture.instrumentFailures.length, counts: Object.fromEntries(counts) },
     findings: fixture.findings.map(({ context, row }) => ({ viewport: context.viewport, surface: context.surface, ...row })),
+    reloadEvidence: [{
+      viewport: 'desktop-8k', priorLoaderId: 'old-loader', replacementLoaderId: 'replacement-loader',
+      releaseWitness: { validation: { ok: true } },
+      events: [{ method: 'Page.lifecycleEvent', name: 'DOMContentLoaded', loaderId: 'replacement-loader' }],
+    }],
     instrumentFailures: fixture.instrumentFailures,
   };
   if (shaped.schema !== 'cf-v2-glassmatrix/v1' || shaped.status !== 'fail'
@@ -327,16 +712,20 @@ function reportSelftest() {
     || shaped.viewportInventory.length !== 12 || shaped.summary.counts.TARGET_TOO_SMALL !== 1
     || shaped.findings[0].actual.height !== 20 || shaped.controlSummary.automaticRetries !== 0
     || shaped.controlSummary.omittedNegativeControls.length !== 0
+    || shaped.reloadEvidence[0]?.viewport !== 'desktop-8k'
+    || shaped.reloadEvidence[0]?.releaseWitness?.validation?.ok !== true
+    || shaped.reloadEvidence[0]?.events?.[0]?.name !== 'DOMContentLoaded'
     || !['non-glass-background-chain', 'settings-pressed-focus', 'guide-render-focus',
       'motion-css-policy', 'ordinary-panel-centre-close', 'opener-expanded-controls',
       'pseudo-placeholder-contrast', 'typography-no-shrink-hierarchy', 'backing-pixel-ceiling',
-      'forced-colors-system-mapping', 'panel-open-focus', 'replacement-document-loader-token-phase']
+      'forced-colors-system-mapping', 'panel-open-focus', 'replacement-document-loader-token-phase',
+      'reload-resource-release']
       .every((name) => shaped.controlSummary.negativeControls.includes(name))) {
     throw new Error('GLASS MATRIX REPORT SELFTEST: injected finding/report grouping drifted');
   }
   console.log('GLASS MATRIX REPORT SELFTEST: PASS');
   console.log('  injected finding retained; 12 viewport definitions retained; retry policy remains zero');
-  console.log('  same-loader token mutation rejected; phased import/replacement outcomes fail closed');
+  console.log('  phased import/navigation/replacement clocks fail closed; reload resources require a bound release witness');
 }
 
 const MIME = Object.freeze({
@@ -1158,6 +1547,7 @@ async function main() {
     reportSelftest();
     return;
   }
+  runReloadEvidence = [];
   const releaseLock = acquireWorkspaceLock('v2 responsive glass matrix');
   try {
     runSource = sourceIdentity();
@@ -1185,7 +1575,7 @@ async function main() {
   for (const failure of reloadPhaseSelftest()) {
     instrumentFailures.push(`RELOAD PHASE SELFTEST ${failure}`);
   }
-  recordControls('replacement-document-loader-token-phase');
+  recordControls('replacement-document-loader-token-phase', 'reload-resource-release');
   let controlsRun = false, hpControlRun = false, settingsWidthControlRun = false,
     planetsideControlRun = false, panelPlanetsideControlRun = false,
     chromeYieldControlRun = false, chromeRestoreControlRun = false, chromeLandscapeControlRun = false,
@@ -1208,8 +1598,35 @@ async function main() {
          resources can outlive a disposed incognito target long enough for a
          late matrix row to inherit GPU pressure from the first ten rows. */
       let browser = null, browserContextId = null, targetId = null;
+      let eventSessionId = null, reloadCaptureArmed = false;
+      const reloadEvents = [], reloadReleaseWitnesses = [], requestUrls = new Map();
+      const onBrowserEvent = (event) => {
+        if (event?.sessionId && eventSessionId && event.sessionId !== eventSessionId) return;
+        if (event?.sessionId && !eventSessionId) return;
+        if (event?.method === 'Target.targetCrashed' && targetId
+          && event.params?.targetId && event.params.targetId !== targetId) return;
+        if (reloadCaptureArmed && event?.method === 'Runtime.bindingCalled'
+          && event.params?.name === RELOAD_RELEASE_BINDING) {
+          const validation = validateReloadReleaseWitness(event.params.payload);
+          reloadReleaseWitnesses.push({
+            at: Date.now(), executionContextId: event.params.executionContextId ?? null,
+            validation,
+          });
+          pushBoundedReloadEvent(reloadEvents, {
+            at: Date.now(), method: 'Runtime.bindingCalled', name: RELOAD_RELEASE_BINDING,
+            executionContextId: event.params.executionContextId ?? null,
+            valid: validation.ok, why: validation.why,
+          });
+          return;
+        }
+        const row = compactReloadEvent(event, requestUrls, Date.now());
+        if (reloadCaptureArmed) pushBoundedReloadEvent(reloadEvents, row);
+      };
       try {
-        browser = await openChromiumCdp({ label: `glass matrix ${vp.label}`, userDataPrefix: 'cf-glassmatrix', commandTimeoutMs: 30000 });
+        browser = await openChromiumCdp({
+          label: `glass matrix ${vp.label}`, userDataPrefix: 'cf-glassmatrix',
+          commandTimeoutMs: 30000, onEvent: onBrowserEvent,
+        });
         browserVersions.push(browser.browser);
         const send = browser.send;
         const context = await send('Target.createBrowserContext', { disposeOnDetach: true });
@@ -1218,8 +1635,13 @@ async function main() {
         targetId = target.targetId;
         const attached = await send('Target.attachToTarget', { targetId, flatten: true });
         const session = attached.sessionId;
+        eventSessionId = session;
         await send('Runtime.enable', {}, session);
+        await send('Runtime.addBinding', { name: RELOAD_RELEASE_BINDING }, session);
         await send('Page.enable', {}, session);
+        await send('Inspector.enable', {}, session);
+        await send('Network.enable', {}, session);
+        await send('Page.setLifecycleEventsEnabled', { enabled: true }, session);
         await send('Emulation.setDeviceMetricsOverride', { width: vp.width, height: vp.height, deviceScaleFactor: vp.dpr, mobile: vp.mobile }, session);
         await send('Emulation.setTouchEmulationEnabled', { enabled: vp.mobile, maxTouchPoints: vp.mobile ? 5 : 1 }, session);
         if (vp.safe) {
@@ -1235,19 +1657,32 @@ async function main() {
           if (result.exceptionDetails) throw new Error(String(result.exceptionDetails.exception?.description || result.exceptionDetails.text || 'page evaluation failed'));
           return result.result.value;
         };
-        const topLoaderId = async () => {
+        const topFrameState = async () => {
           const tree = await send('Page.getFrameTree', {}, session);
-          const loaderId = tree?.frameTree?.frame?.loaderId;
+          const frame = tree?.frameTree?.frame;
+          const loaderId = frame?.loaderId;
           if (typeof loaderId !== 'string' || !loaderId) {
-            throw new Error(`${vp.label}: top-frame loader id unavailable (${JSON.stringify(tree?.frameTree?.frame || null)})`);
+            throw new Error(`${vp.label}: top-frame loader id unavailable (${JSON.stringify(frame || null)})`);
           }
-          return loaderId;
+          return {
+            loaderId, frameId: typeof frame.id === 'string' ? frame.id : null,
+            url: typeof frame.url === 'string' ? frame.url : null,
+            unreachableUrl: typeof frame.unreachableUrl === 'string' && frame.unreachableUrl
+              ? frame.unreachableUrl : null,
+            mimeType: typeof frame.mimeType === 'string' ? frame.mimeType : null,
+          };
         };
+        const topLoaderId = async () => (await topFrameState()).loaderId;
         const deadline = Date.now() + SLICE_READY_TIMEOUT_MS;
         let ready = null;
         while (Date.now() < deadline) {
           try {
-            ready = await evalIn(`(()=>{ const S=window.__CF_SLICE__; try { const s=S?.api?.state(); return {ready:!!s?.save,token:S?.documentToken||null,why:s?.save?'':'save unavailable'}; } catch(error) { return {ready:false,token:null,why:String(error?.message||error)}; } })()`);
+            ready = await evalIn(`(()=>{ const S=window.__CF_SLICE__; try { const s=S?.api?.state(); return {
+              ready:!!s?.save,token:S?.documentToken||null,
+              why:!S?'slice absent':!S.api?'slice api absent':s?.save?'':'slice state incomplete',
+              readyState:document.readyState,href:location.href};
+            } catch(error) { return {ready:false,token:S?.documentToken||null,why:String(error?.message||error),
+              readyState:document.readyState,href:location.href}; } })()`);
           } catch (error) { ready = { ready: false, why: error.message }; }
           if (ready?.ready && ready.token) break;
           await sleep(50);
@@ -1270,48 +1705,118 @@ async function main() {
         };
         const waitForReload = async (label, priorToken, priorLoaderId, phaseId, {
           importTimeoutMs = IMPORT_SETTLE_TIMEOUT_MS,
+          navigationTimeoutMs = NAVIGATION_COMMIT_TIMEOUT_MS,
           replacementTimeoutMs = REPLACEMENT_READY_TIMEOUT_MS,
         } = {}) => {
           const beganAt = Date.now();
-          const importDeadline = beganAt + importTimeoutMs;
-          let replacementDeadline = null;
+          let clocks = {
+            importDeadline: beganAt + importTimeoutMs,
+            navigationDeadline: null,
+            bootDeadline: null,
+            replacementLoaderId: null,
+          };
           let last = null, decision = null;
+          const diagnostic = () => JSON.stringify({
+            priorLoaderId, expectedUrl: url, elapsedMs: Date.now() - beganAt,
+            clocks, last, releaseWitnesses: reloadReleaseWitnesses, events: reloadEvents,
+          });
+          const observeNavigationStart = () => {
+            const releaseReady = reloadReleaseWitnesses.length === 1
+              && reloadReleaseWitnesses[0].validation.ok;
+            if (!releaseReady || clocks.navigationDeadline !== null || clocks.bootDeadline !== null) return;
+            const observed = observedNavigationDeadline(reloadEvents, releaseReady, beganAt,
+              clocks.importDeadline, navigationTimeoutMs);
+            if (observed.why) throw new Error(`${vp.label}/${label}: ${observed.why} (evidence ${diagnostic()})`);
+            if (observed.deadline !== null) clocks.navigationDeadline = observed.deadline;
+          };
           while (true) {
-            let loaderIdBefore;
-            try { loaderIdBefore = await topLoaderId(); }
+            observeNavigationStart();
+            const fatalBefore = fatalReloadEvent(reloadEvents);
+            if (fatalBefore) {
+              throw new Error(`${vp.label}/${label}: replacement target failed (${JSON.stringify(fatalBefore)}; evidence ${diagnostic()})`);
+            }
+            if (reloadReleaseWitnesses.length > 1) {
+              throw new Error(`${vp.label}/${label}: reload resource release emitted duplicate witnesses (evidence ${diagnostic()})`);
+            }
+            if (reloadReleaseWitnesses[0] && !reloadReleaseWitnesses[0].validation.ok) {
+              throw new Error(`${vp.label}/${label}: reload resource release failed closed (${reloadReleaseWitnesses[0].validation.why}; evidence ${diagnostic()})`);
+            }
+            let frameBefore;
+            try { frameBefore = await topFrameState(); }
             catch (error) {
-              throw new Error(`${vp.label}/${label}: pre-evaluation loader witness failed closed (${error.message})`);
+              throw new Error(`${vp.label}/${label}: pre-evaluation frame witness failed closed (${error.message}; evidence ${diagnostic()})`);
             }
             try {
               last = await evalIn(`(()=>{ const S=window.__CF_SLICE__,P=window.__CF_GLASS_RELOAD_PHASE__; try {
                 const s=S?.api?.state(); return {ready:!!s?.save,token:S?.documentToken||null,
-                  why:s?.save?'':'save unavailable',phase:P?{id:String(P.id||''),status:String(P.status||''),error:P.error==null?null:String(P.error)}:null};
+                  why:!S?'slice absent':!S.api?'slice api absent':s?.save?'':'slice state incomplete',
+                  readyState:document.readyState,href:location.href,
+                  phase:P?{id:String(P.id||''),status:String(P.status||''),error:P.error==null?null:String(P.error)}:null};
               } catch(error) { return {ready:false,token:S?.documentToken||null,why:String(error?.message||error),
+                  readyState:document.readyState,href:location.href,
                   phase:P?{id:String(P.id||''),status:String(P.status||''),error:P.error==null?null:String(P.error)}:null}; } })()`);
             } catch (error) {
-              /* Losing the old execution context is positive evidence that
-                 replacement boot began, but it is not readiness. */
-              last = { ready: false, token: null, phase: null, why: error.message };
+              /* Execution-context loss is neither success nor a phase by
+                 itself; the two frame witnesses below decide whether the
+                 old loader is still navigating or a replacement is booting. */
+              last = { ready: false, token: null, phase: null, readyState: null, href: null, why: error.message };
             }
-            last.loaderIdBefore = loaderIdBefore;
-            try { last.loaderId = await topLoaderId(); }
+            let frameAfter;
+            try { frameAfter = await topFrameState(); }
             catch (error) {
-              throw new Error(`${vp.label}/${label}: loader witness failed closed (${error.message}; last ${JSON.stringify(last)})`);
+              throw new Error(`${vp.label}/${label}: post-evaluation frame witness failed closed (${error.message}; evidence ${diagnostic()})`);
             }
+            last.loaderIdBefore = frameBefore.loaderId;
+            last.loaderId = frameAfter.loaderId;
+            last.frameBefore = frameBefore;
+            last.frame = frameAfter;
+            if (frameAfter.unreachableUrl || (frameAfter.url && frameAfter.url !== url)) {
+              throw new Error(`${vp.label}/${label}: replacement frame left the expected app URL (evidence ${diagnostic()})`);
+            }
+            if (frameBefore.loaderId === frameAfter.loaderId && last.href
+              && frameAfter.url && last.href !== frameAfter.url) {
+              throw new Error(`${vp.label}/${label}: stable loader paired evaluation with a different document URL (evidence ${diagnostic()})`);
+            }
+            const fatalAfter = fatalReloadEvent(reloadEvents);
+            if (fatalAfter) {
+              throw new Error(`${vp.label}/${label}: replacement target failed (${JSON.stringify(fatalAfter)}; evidence ${diagnostic()})`);
+            }
+            /* Page.frameStartedLoading can arrive while Runtime.evaluate or
+               Page.getFrameTree is in flight. Consume it again before the
+               transition decision so a real changed loader cannot outrun the
+               event-to-clock handoff. */
+            observeNavigationStart();
             decision = reloadProbeDecision(last, priorToken, priorLoaderId, phaseId);
-            if (decision.ok) return { ...last, elapsedMs: Date.now() - beganAt };
-            if (decision.status === 'failed') {
-              throw new Error(`${vp.label}/${label}: import/reload failed closed (${decision.why}; last ${JSON.stringify(last)})`);
+            const witnessRequirement = requireReloadReleaseWitness(decision, reloadReleaseWitnesses);
+            if (!witnessRequirement.ok) {
+              throw new Error(`${vp.label}/${label}: reload resource release failed closed (${witnessRequirement.why}; evidence ${diagnostic()})`);
             }
             const now = Date.now();
-            if (decision.status === 'replacement-pending' && replacementDeadline === null) {
-              replacementDeadline = now + replacementTimeoutMs;
+            const progress = advanceReloadClocks(decision, now, clocks, {
+              navigationTimeoutMs, replacementTimeoutMs,
+            });
+            clocks = progress.clocks;
+            if (progress.action === 'ready') {
+              return {
+                ...last, elapsedMs: now - beganAt,
+                reloadEvidence: {
+                  priorLoaderId,
+                  replacementLoaderId: clocks.replacementLoaderId,
+                  elapsedMs: now - beganAt,
+                  releaseWitness: reloadReleaseWitnesses[0],
+                  events: [...reloadEvents],
+                },
+              };
             }
-            if (decision.status === 'import-pending' && now >= importDeadline) {
-              throw new Error(`${vp.label}/${label}: import transaction did not settle within ${importTimeoutMs}ms (last ${JSON.stringify(last)})`);
-            }
-            if (decision.status === 'replacement-pending' && now >= replacementDeadline) {
-              throw new Error(`${vp.label}/${label}: replacement document did not become ready within ${replacementTimeoutMs}ms after reload began (last ${JSON.stringify(last)})`);
+            if (progress.action === 'failed') {
+              const timeout = progress.why === 'import transaction deadline expired'
+                ? `import transaction did not settle within ${importTimeoutMs}ms`
+                : progress.why === 'navigation commit deadline expired'
+                  ? `top-frame loader did not change within ${navigationTimeoutMs}ms after reload was requested`
+                  : progress.why === 'replacement boot deadline expired'
+                    ? `replacement document did not become ready within ${replacementTimeoutMs}ms after the loader changed`
+                    : `import/reload failed closed (${progress.why})`;
+              throw new Error(`${vp.label}/${label}: ${timeout} (evidence ${diagnostic()})`);
             }
             await sleep(50);
           }
@@ -1365,23 +1870,33 @@ async function main() {
           const priorToken = ready.token;
           const priorLoaderId = await topLoaderId();
           const phaseId = crypto.randomUUID();
-          const armed = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
-            if(!S?.api?.importBlob||S.documentToken!==${JSON.stringify(priorToken)})return {armed:false,why:'slice/token changed before import arm'};
-            const phase={id:${JSON.stringify(phaseId)},status:'import-pending',error:null};
-            Object.defineProperty(window,'__CF_GLASS_RELOAD_PHASE__',{value:phase,writable:false,configurable:true});
-            try {
-              const pending=S.api.importBlob(${JSON.stringify(VETERAN_PREF_RAW)});
-              void Promise.resolve(pending).then((error)=>{
-                if(error===null)phase.status='reload-requested';
-                else { phase.status='import-rejected'; phase.error=String(error||'import returned no success'); }
-              },(error)=>{ phase.status='import-threw'; phase.error=String(error?.message||error); });
-            } catch(error) { phase.status='import-threw'; phase.error=String(error?.message||error); }
-            return {armed:true,token:S.documentToken,phase:{...phase}};
-          })()`);
-          if (!armed?.armed || armed.token !== priorToken || armed.phase?.id !== phaseId) {
-            throw new Error(`${vp.label}/preference fixture import: could not arm observed replacement transaction (${JSON.stringify(armed)})`);
+          reloadEvents.length = 0;
+          reloadReleaseWitnesses.length = 0;
+          requestUrls.clear();
+          reloadCaptureArmed = true;
+          try {
+            const armed = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
+              if(!S?.api?.importBlob||S.documentToken!==${JSON.stringify(priorToken)})return {armed:false,why:'slice/token changed before import arm'};
+              const phase={id:${JSON.stringify(phaseId)},status:'import-pending',error:null};
+              Object.defineProperty(window,'__CF_GLASS_RELOAD_PHASE__',{value:phase,writable:false,configurable:true});
+              try {
+                const pending=S.api.importBlob(${JSON.stringify(VETERAN_PREF_RAW)});
+                void Promise.resolve(pending).then((error)=>{
+                  if(error===null)phase.status='reload-requested';
+                  else { phase.status='import-rejected'; phase.error=String(error||'import returned no success'); }
+                },(error)=>{ phase.status='import-threw'; phase.error=String(error?.message||error); });
+              } catch(error) { phase.status='import-threw'; phase.error=String(error?.message||error); }
+              return {armed:true,token:S.documentToken,phase:{...phase}};
+            })()`);
+            if (!armed?.armed || armed.token !== priorToken || armed.phase?.id !== phaseId) {
+              throw new Error(`${vp.label}/preference fixture import: could not arm observed replacement transaction (${JSON.stringify(armed)})`);
+            }
+            ready = await waitForReload('preference fixture import', priorToken, priorLoaderId, phaseId);
+            runReloadEvidence.push({ viewport: vp.label, ...ready.reloadEvidence });
+          } finally {
+            reloadCaptureArmed = false;
+            requestUrls.clear();
           }
-          ready = await waitForReload('preference fixture import', priorToken, priorLoaderId, phaseId);
           await evalIn(`(${installAuditHarness.toString()})()`);
           await waitFor('preference Training', `window.__CF_SLICE__.api.state().tutActive && window.__CF_SLICE__.api.state().codexCount>=3 && document.querySelector('[data-sel=tuttext]')?.textContent?.trim().length>60`);
           add(vp.label, 'training-preferences', await audit({
