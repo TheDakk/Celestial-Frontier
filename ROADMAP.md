@@ -28,10 +28,10 @@
 - Owner/branch: OpenAI/Codex on `openai/mac`.
 - Integration baseline: PR #10 merged normally into `develop` at
   `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`.
-- Pushed/evidence head:
-  `c57305fbf30af2bc8158ff46af1ec49ec4455d95`; matching test-battery #205 is
-  preserved red. The browser results below were captured earlier from a
-  `dirty-diagnostic` source state and are non-authoritative. Exact tip/upstream/
+- Executable/evidence head:
+  immutable executable source
+  `135a635d066d1c67e3096dc134de9247267898d5` passed the complete exact local
+  battery and underlies a forthcoming/current docs-only handoff tip. Exact tip/upstream/
   CI state is live authority from `git rev-parse HEAD`,
   `git status --short --branch`, and PR #11 checks. Prior
   test-battery #201, run
@@ -189,8 +189,8 @@ verbatim in `ROADMAP_ARCHIVE.md`; they are prior evidence, not the current #204 
 The superseded `46fb627` exact battery and #204 chronology moved verbatim to
 `ROADMAP_ARCHIVE.md`. #201–#205 remain preserved red without retry.
 
-The cited browser evidence was captured from a **`dirty-diagnostic`, non-authoritative**
-source state based on pushed `c57305f`.
+Prior diagnostic only: browser evidence captured from a `dirty-diagnostic` source
+state based on pushed `c57305f` is non-authoritative.
 One sandboxed listener preflight failed `EPERM`; one harness-only width check reported
 `7680.000000000001`, was corrected once, and did not retry a product failure. Targeted
 desktop-8k passed non-certifying (SHA-256
@@ -202,8 +202,43 @@ retries /53,918 ms (SHA-256
 `dff0829a3eb8dba67ee0da7c51ae6748fe4ff9bc8652ee1d617657f3133794cb`); its 12 reloads
 were 174–199 ms and 8K was 180 ms /160.6 ms ready /7 ms cycle 2, with both
 2,730×1,536 outgoing canvases collapsing to 1×1. Nine automated personas passed—not a human
-playtest—and terminal-only performance was 605/686/76/159 ms. A clean-head exact battery,
-push, and matching CI remain required before any host/human step.
+playtest—and terminal-only performance was 605/686/76/159 ms.
+
+Immutable executable source `135a635d066d1c67e3096dc134de9247267898d5`
+passed the complete exact sequential battery from clean source-status SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` and
+source-snapshot digest
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+A sandbox-only Edge SIGABRT interrupted preflight/CDP selftest; the same checks passed
+outside the sandbox, so this is instrument/environment chronology, not a product retry.
+Root validate, legacy smoke, rarity and dead-code review passed. Root layout run
+`exact-135a635d066d-20260812T192848Z-root-layout` passed the sealed 787/787 outcomes
+across 10/10 viewports under Edge 151 in 75,532 ms; report SHA-256
+`7e2689c31e1095885ee8139bb395b40e799972461649efd100b631a4e6e9f85f`.
+V2 passed 273 tests /1 skip plus every type, art, override, coverage and spec gate.
+One-attempt slice smoke passed 0 findings /10 screenshots /0 retries in 105,379 ms;
+report SHA-256 `c838f3e7dfdf161b7bfa6111c6979215a2ba439fdd44a4cb8e00a8cdf7c3d1a5`.
+Full certifying glass passed 12/12, 57/57 unique controls, `blocked=[]`, `omitted=[]`,
+0 findings/instrument failures/retries in 52,254 ms; report SHA-256
+`1f14906d178528613fdf52db53ee4e1f84b6a48ceb21ad3a41bd9d0c5348b23b`,
+with reloads at 176–185 ms. Exact desktop-8k was 185 ms total: 2 ms arm,
+12 ms `invoked`→release complete, 32 ms release→commit, 122 ms commit→ready,
+`performanceNow` 152.2 ms, target confirmations 1/9 ms and concurrent heartbeats
+1/1 ms. Both outgoing 2,730×1,536 canvases collapsed to 1×1; the replacement pair
+remained 2,730×1,536 each /8,386,560 pixels combined. All nine automated personas
+passed—not a human playtest—with JSON/Markdown SHA-256
+`c17c44fcb3d534707dc6186bbd4fbcae4d1cfea511bdec8a263ec48be4927a58` /
+`43d5d52e44d7d19aec597a3df5b2599c0da143bb7170d16c17ed141bd390d6b4`.
+Terminal-only performance was 578/659/76/170 ms. Preview
+`dev-preview-exact-135a635d066d-20260812T192848Z` browser-smoked PASS under Edge 151;
+its manifest SHA-256 is
+`0233984ca2bad28c189e979d4a30082d6137a06e8eac086c3b2525989813dd4e`,
+covering 37 files /10,186,230 bytes, content SHA-256
+`da4e066b447db073383f59dd592cd2a19a186d32ce13a2edd05fbc07e66aa10f`,
+exact `port/v2` tree `d1ab1d79fba4ba2939c3e1ec0661fb60498afb23`, expected separate origin
+`https://dev-celestialfrontier.github.io`, production distinct and `publishable:false`.
+Live Git/status/PR checks determine the exact docs-only tip; the final pushed tip
+requires matching CI before any host/human step.
 
 `overridecontrol` remains exclusive and must not overlap any build/browser/evidence producer.
 Because the new manual preview workflow
@@ -242,9 +277,9 @@ human play remains the judge of motion, readability, comfort and perceived quali
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — pushed head
-`c57305fbf30af2bc8158ff46af1ec49ec4455d95` has preserved red #205; the cited
-browser evidence was captured as `dirty-diagnostic` and is non-authoritative. Resolve exact current
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — immutable executable evidence
+source `135a635d066d1c67e3096dc134de9247267898d5` passed the complete exact local
+battery and underlies a forthcoming/current docs-only tip. Resolve exact current
 tip/upstream/check state live; #201–#205 remain preserved red without retry.
 
 **GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`),
@@ -303,28 +338,28 @@ merged PR #10.
   > to Linux Edge when a preceding step's environment expires. Moves the root 10-viewport layout
   > gate onto the same owned port-0 CDP launcher and adds ignored atomic pass/fail/instrument-fail
   > evidence, stale-PASS/exit-73 selftest, exact-run freshness and a separate required CI upload;
-  > automated personas are explicitly not a human playtest. Clean executable evidence is bound to
-  > `46fb627640e42ea0f43e2e144529884a959d1e72`: after one transparently recorded malformed
-  > `--verify-run` invocation caused local SIGABRT/report overwrite, the single correct root-layout
-  > rerun plus verification passed 787/787 across 10/10; v2 passed 273/1 and every gate/selftest;
-  > one-attempt smoke passed 0/10; certifying glass passed 12/12 with planned/executed 53/53,
-  > `omitted=[]`, zero findings/instrument failures/retries and 170–197 ms totals; and all nine
-  > automated personas passed. Exact 8K was 190 ms total /2 ms arm /35 ms release→commit /
-  > 137 ms commit→ready /170.5 ms `performanceNow` /1 ms confirmation, with outgoing
-  > 3,862×2,172 canvases →1×1 and the replacement pair at 16,776,528 combined pixels. Terminal-only
-  > performance was 595/676/76/168 ms. The exact 37-file /10,176,376-byte
-  > `dev-preview-exact-46fb627` manifest records content SHA-256
-  > `4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`, the expected
-  > separate origin and `publishable:false`.
+  > automated personas are explicitly not a human playtest. Immutable executable source
+  > `135a635d066d1c67e3096dc134de9247267898d5` passed root validate/smoke/rarity/
+  > dead-code, exact root layout 787/787 across 10/10, v2 273/1 plus every gate, one-attempt
+  > smoke 0 findings/10 screenshots/0 retries, and certifying glass 12/12 with 57/57 unique
+  > controls, `blocked=[]`, `omitted=[]`, zero findings/instrument failures/retries. Exact 8K
+  > was 185 ms total /152.2 ms `performanceNow`, with target confirmations 1/9 ms,
+  > heartbeats 1/1 ms, outgoing 2,730×1,536 canvases →1×1 and the replacement pair at
+  > 8,386,560 combined pixels. All nine automated personas passed; terminal-only performance
+  > was 578/659/76/170 ms. Exact preview
+  > `dev-preview-exact-135a635d066d-20260812T192848Z` browser-smoked PASS under Edge 151,
+  > records 37 files /10,186,230 bytes and content SHA-256
+  > `da4e066b447db073383f59dd592cd2a19a186d32ce13a2edd05fbc07e66aa10f`, with the
+  > expected separate origin and `publishable:false`.
   > Prior #201 (`31586917924` / `94082765087`), #202
   > (`31594595288` / `94106996466`), #203 (`31602984470` / `94134750800`), and #204
   > (`31612817092` / `94168172635`), and #205 (`31621227550` / `94196289291`)
   > remain preserved red without retry; #202 exposed serial CDP
   > observer latency, #203 exposed pre-release 8K renderer pressure, and #204 exposed twin full-
   > resolution replacement allocations plus pre-wiring ticker startup. #205 reached ready and then
-  > lost its two-second target confirmation without a concurrent browser heartbeat; the current
-  > dual-heartbeat/ultra-density evidence was captured as `dirty-diagnostic` and is non-authoritative;
-  > a clean-head exact battery remains required. Exact tip/upstream/check status is read
+  > lost its two-second target confirmation without a concurrent browser heartbeat. Earlier
+  > dirty-diagnostic follow-on evidence remains prior non-authoritative diagnosis; `135a635` is
+  > the immutable clean executable evidence. Exact tip/upstream/check status is read
   > live; the final pushed non-executable
   > handoff tip requires matching green CI. The local review artifact is bound to
   > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. After the
