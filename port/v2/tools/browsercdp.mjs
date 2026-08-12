@@ -215,17 +215,22 @@ export async function openChromiumCdp({
     child.on('exit', (code, signal) => rejectPending(terminalError(
       `browser exited (exit=${String(code)} signal=${String(signal)})`)));
 
-    const send = (method, params = {}, sessionId) => {
+    const send = (method, params = {}, sessionId, options = {}) => {
       if (eventHandlerError) return Promise.reject(eventHandlerError);
       if (closed || ws.readyState !== WebSocketImpl.OPEN) {
         return Promise.reject(terminalError(`cannot send ${method}; CDP is not open`));
+      }
+      const timeoutMs = options?.timeoutMs ?? commandTimeoutMs;
+      if (!Number.isInteger(timeoutMs) || timeoutMs <= 0 || timeoutMs > commandTimeoutMs) {
+        return Promise.reject(terminalError(
+          `${method} command timeout must be a positive integer no greater than ${commandTimeoutMs}`));
       }
       return new Promise((resolve, reject) => {
         const id = ++messageId;
         const timer = setTimeout(() => {
           pending.delete(id);
           reject(terminalError(`timed out waiting for ${method}`));
-        }, commandTimeoutMs);
+        }, timeoutMs);
         pending.set(id, {
           resolve(value) { clearTimeout(timer); resolve(value); },
           reject(error) { clearTimeout(timer); reject(error); },
@@ -377,6 +382,16 @@ async function runSelftest() {
         expression: 'new Promise(() => {})', awaitPromise: true, returnByValue: true,
       }, attached.sessionId), /timed out waiting for Runtime\.evaluate/);
 
+      const boundedStartedAt = Date.now();
+      await expectRejectedAsync('CDP per-command timeout', () => connection.send('Runtime.evaluate', {
+        expression: 'new Promise(() => {})', awaitPromise: true, returnByValue: true,
+      }, attached.sessionId, { timeoutMs: 75 }), /timed out waiting for Runtime\.evaluate/);
+      assert(Date.now() - boundedStartedAt < 750,
+        'SELFTEST per-command timeout did not honor its shorter phase-owned bound');
+      await expectRejectedAsync('CDP per-command timeout expansion', () => connection.send(
+        'Browser.getVersion', {}, undefined, { timeoutMs: 1501 },
+      ), /no greater than 1500/);
+
       const pending = connection.send('Runtime.evaluate', {
         expression: 'new Promise(() => {})', awaitPromise: true, returnByValue: true,
       }, attached.sessionId);
@@ -426,7 +441,7 @@ async function runSelftest() {
   console.log('  browser child exit and profile cleanup: PASS');
   console.log(`  early-exit code + bounded stderr diagnostics: ${process.platform === 'win32' ? 'covered by child-exit control' : 'PASS'}`);
   console.log('  WebSocket open timeout and cleanup: PASS');
-  console.log('  CDP command error and timeout: rejected');
+  console.log('  CDP command error, global timeout, and shorter phase-owned timeout: rejected');
   console.log('  CDP events forwarded; event-handler failure rejected and cleaned up');
   console.log('  pending command rejected during bounded close: PASS');
   console.log('  exact browser provenance and no owned profile leakage: PASS');

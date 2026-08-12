@@ -38,6 +38,8 @@ const NAVIGATION_COMMIT_TIMEOUT_MS = 5000;
 const REPLACEMENT_READY_TIMEOUT_MS = SLICE_READY_TIMEOUT_MS;
 const MAX_RELOAD_EVENTS = 48;
 const RELOAD_RELEASE_BINDING = '__cfReloadReleaseWitness';
+const SLICE_READY_BINDING = '__cfSliceReadyWitness';
+const PHASE_PROBE_TIMEOUT_MS = 2000;
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const startedAt = Date.now();
 let runSource = null;
@@ -162,130 +164,6 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'reload-resource-release',
 ]);
 
-function reloadProbeDecision(probe, priorToken, priorLoaderId, phaseId) {
-  const token = typeof probe?.token === 'string' ? probe.token : null;
-  const loaderIdBefore = typeof probe?.loaderIdBefore === 'string' ? probe.loaderIdBefore : null;
-  const loaderId = typeof probe?.loaderId === 'string' ? probe.loaderId : null;
-  const phase = probe?.phase && typeof probe.phase === 'object' ? probe.phase : null;
-  const result = (status, ok = false, why = null) => ({ status, ok, why, loaderId });
-  if (!loaderIdBefore || !loaderId) return result('failed', false, 'top-frame loader id unavailable');
-  /* Bind the evaluated token to one stable loader. A navigation that commits
-     between Runtime.evaluate and Page.getFrameTree could otherwise pair an
-     old document's mutable token with the new loader and manufacture a pass. */
-  if (loaderIdBefore !== loaderId) {
-    return result(loaderId === priorLoaderId ? 'navigation-pending' : 'replacement-boot-pending');
-  }
-  const tokenChanged = !!token && token !== priorToken;
-  const loaderChanged = !!loaderId && loaderId !== priorLoaderId;
-  if (probe?.ready && tokenChanged && loaderChanged) {
-    return result('replacement-ready', true);
-  }
-  if (tokenChanged && !loaderChanged) {
-    return result('failed', false, 'document token changed without a top-frame loader transition');
-  }
-  if (!loaderChanged) {
-    /* The old loader still owns this stable evaluation. Losing either the
-       slice token or the armed phase here is not replacement evidence by
-       itself. Context teardown may race slightly ahead of the frame-tree
-       loader update, so the clock layer accepts this one unavailable state
-       only after reload/navigation was independently observed. */
-    if (token === null && !phase) return result('old-loader-unavailable');
-    if (token !== priorToken) return result('failed', false, 'old-loader document lost its slice token before navigation');
-    if (!phase) return result('failed', false, 'old-loader document lost its armed import phase');
-    if (phase.id !== phaseId) return result('failed', false, 'old-loader document exposed the wrong import phase id');
-    if (phase.status === 'import-rejected' || phase.status === 'import-threw') {
-      return result('failed', false, `${phase.status}: ${phase.error || 'no diagnostic'}`);
-    }
-    if (phase.status === 'import-pending') return result('import-pending');
-    if (phase.status === 'reload-requested') return result('navigation-pending');
-    return result('failed', false, `unknown import phase ${JSON.stringify(phase.status)}`);
-  }
-  if (phase) {
-    if (phase.id !== phaseId) return result('failed', false, 'replacement document exposed the wrong import phase id');
-    if (phase.status === 'import-rejected' || phase.status === 'import-threw') {
-      return result('failed', false, `${phase.status}: ${phase.error || 'no diagnostic'}`);
-    }
-  }
-  /* A stable changed loader is replacement-boot evidence, never readiness.
-     The prior token can be observed briefly while execution contexts turn
-     over, and a missing token is expected until the new slice publishes. */
-  return result('replacement-boot-pending');
-}
-
-function advanceReloadClocks(decision, now, clocks, {
-  navigationTimeoutMs, replacementTimeoutMs,
-}) {
-  const next = { ...clocks };
-  const failed = (why) => ({ action: 'failed', why, clocks: next });
-  if (decision.status === 'failed') return failed(decision.why || 'reload probe failed');
-  if (decision.status === 'replacement-ready') {
-    if (next.navigationDeadline === null) {
-      return failed('replacement document became ready before navigation was observed');
-    }
-    if (next.replacementLoaderId && decision.loaderId !== next.replacementLoaderId) {
-      return failed('replacement loader changed again before readiness');
-    }
-    next.replacementLoaderId ||= decision.loaderId;
-    if (next.bootDeadline === null) {
-      if (now >= next.navigationDeadline) {
-        return failed('navigation commit deadline expired before replacement readiness');
-      }
-      next.bootDeadline = now + replacementTimeoutMs;
-    }
-    if (now >= next.bootDeadline) return failed('replacement boot deadline expired before readiness');
-    return { action: 'ready', why: null, clocks: next };
-  }
-  if (decision.status === 'import-pending') {
-    if (next.navigationDeadline !== null || next.bootDeadline !== null) {
-      return failed('reload phase regressed to import-pending');
-    }
-    if (now >= next.importDeadline) return failed('import transaction deadline expired');
-    return { action: 'continue', why: null, clocks: next };
-  }
-  if (decision.status === 'navigation-pending') {
-    if (next.bootDeadline !== null || next.replacementLoaderId !== null) {
-      return failed('top-frame loader reverted after replacement boot began');
-    }
-    if (next.navigationDeadline === null) {
-      if (now >= next.importDeadline) {
-        return failed('import transaction deadline expired before navigation');
-      }
-      next.navigationDeadline = now + navigationTimeoutMs;
-    }
-    if (now >= next.navigationDeadline) return failed('navigation commit deadline expired');
-    return { action: 'continue', why: null, clocks: next };
-  }
-  if (decision.status === 'old-loader-unavailable') {
-    if (next.bootDeadline !== null || next.replacementLoaderId !== null) {
-      return failed('top-frame loader reverted after replacement boot began');
-    }
-    if (next.navigationDeadline === null) {
-      return failed('old-loader context disappeared before reload/navigation was observed');
-    }
-    if (now >= next.navigationDeadline) return failed('navigation commit deadline expired');
-    return { action: 'continue', why: null, clocks: next };
-  }
-  if (decision.status === 'replacement-boot-pending') {
-    if (!decision.loaderId) return failed('replacement boot has no loader id');
-    if (next.replacementLoaderId && decision.loaderId !== next.replacementLoaderId) {
-      return failed('replacement loader changed again during boot');
-    }
-    if (next.navigationDeadline === null) {
-      return failed('replacement loader appeared before navigation was observed');
-    }
-    if (next.bootDeadline === null) {
-      if (now >= next.navigationDeadline) {
-        return failed('navigation commit deadline expired before replacement boot');
-      }
-      next.replacementLoaderId = decision.loaderId;
-      next.bootDeadline = now + replacementTimeoutMs;
-    }
-    if (now >= next.bootDeadline) return failed('replacement boot deadline expired');
-    return { action: 'continue', why: null, clocks: next };
-  }
-  return failed(`unknown reload decision ${JSON.stringify(decision.status)}`);
-}
-
 function compactReloadEvent(event, requestUrls, at) {
   const method = typeof event?.method === 'string' ? event.method : '';
   const params = event?.params && typeof event.params === 'object' ? event.params : {};
@@ -363,16 +241,6 @@ function fatalReloadEvent(events) {
       && !row.canceled && row.errorText !== 'net::ERR_ABORTED')) || null;
 }
 
-function observedNavigationDeadline(events, releaseReady, beganAt, importDeadline, navigationTimeoutMs) {
-  if (!releaseReady) return { deadline: null, why: null };
-  const loading = events.find((row) => row.method === 'Page.frameStartedLoading' && row.at >= beganAt);
-  if (!loading) return { deadline: null, why: null };
-  if (loading.at >= importDeadline) {
-    return { deadline: null, why: 'import transaction deadline expired before observed navigation' };
-  }
-  return { deadline: loading.at + navigationTimeoutMs, why: null };
-}
-
 function validateReloadReleaseWitness(payload) {
   let witness = payload;
   if (typeof witness === 'string') {
@@ -387,6 +255,12 @@ function validateReloadReleaseWitness(payload) {
   }
   if (witness.status !== 'released' || witness.error !== null) {
     return { ok: false, why: `release witness reported ${JSON.stringify(witness.status)} / ${JSON.stringify(witness.error)}`, witness };
+  }
+  if (!['training-restart', 'save-import', 'storage-retry'].includes(witness.reason)) {
+    return { ok: false, why: 'release witness reason is invalid', witness };
+  }
+  if (typeof witness.documentToken !== 'string' || !witness.documentToken) {
+    return { ok: false, why: 'release witness document token is missing', witness };
   }
   for (const field of ['rendererReleased', 'stageReleased', 'viewDetached']) {
     if (witness[field] !== true) return { ok: false, why: `release witness ${field} is not true`, witness };
@@ -412,131 +286,185 @@ function validateReloadReleaseWitness(payload) {
   return { ok: true, why: null, witness };
 }
 
-function requireReloadReleaseWitness(decision, witnesses) {
-  if (!['navigation-pending', 'old-loader-unavailable', 'replacement-boot-pending', 'replacement-ready']
-    .includes(decision?.status)) return { ok: true, why: null };
-  if (!Array.isArray(witnesses) || witnesses.length !== 1) {
-    return { ok: false, why: `reload advanced with ${Array.isArray(witnesses) ? witnesses.length : 0} release witnesses` };
+function validateSliceReadyWitness(payload) {
+  let witness = payload;
+  if (typeof witness === 'string') {
+    try { witness = JSON.parse(witness); }
+    catch { return { ok: false, why: 'slice-ready witness payload is not JSON', witness: null }; }
   }
-  const validation = witnesses[0]?.validation;
-  if (!validation?.ok) return { ok: false, why: validation?.why || 'reload release witness is invalid' };
-  return { ok: true, why: null };
+  if (!witness || typeof witness !== 'object' || Array.isArray(witness)) {
+    return { ok: false, why: 'slice-ready witness payload is not an object', witness: null };
+  }
+  if (witness.schema !== 'cf-v2-slice-ready/v1' || witness.status !== 'ready') {
+    return { ok: false, why: 'slice-ready witness schema/status mismatch', witness };
+  }
+  if (typeof witness.token !== 'string' || !witness.token
+    || typeof witness.href !== 'string' || !witness.href) {
+    return { ok: false, why: 'slice-ready witness token/URL is missing', witness };
+  }
+  if (witness.readyState !== 'complete' || witness.saveReady !== true
+    || witness.viewConnected !== true || witness.rendererReady !== true
+    || witness.stageReady !== true || !Number.isInteger(witness.tickerTicks)
+    || witness.tickerTicks < 1) {
+    return { ok: false, why: 'slice-ready witness did not report a complete wired app', witness };
+  }
+  if (!Number.isInteger(witness.backingWidth) || !Number.isInteger(witness.backingHeight)
+    || witness.backingWidth <= 1 || witness.backingHeight <= 1
+    || witness.backingWidth * witness.backingHeight > MAX_BACKING_PIXELS) {
+    return { ok: false, why: 'slice-ready witness backing dimensions are invalid', witness };
+  }
+  if (!Number.isFinite(witness.performanceNow) || witness.performanceNow < 0
+    || witness.performanceNow >= REPLACEMENT_READY_TIMEOUT_MS) {
+    return { ok: false, why: 'slice-ready witness performance timestamp is invalid', witness };
+  }
+  return { ok: true, why: null, witness };
 }
 
-function reloadPhaseSelftest() {
-  const failures = [];
-  const priorToken = 'old-document-token', priorLoaderId = 'old-loader', phaseId = 'armed-phase';
-  const expect = (label, probe, status, ok = false) => {
-    const actual = reloadProbeDecision(probe, priorToken, priorLoaderId, phaseId);
-    if (actual.status !== status || actual.ok !== ok) {
-      failures.push(`${label}: got ${JSON.stringify(actual)}, expected ${JSON.stringify({ status, ok })}`);
-    }
-    return actual;
-  };
-  expect('same-token ready import must remain pending', {
-    ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
-    phase: { id: phaseId, status: 'import-pending', error: null },
-  }, 'import-pending');
-  expect('same-token ready reload request must remain pending', {
-    ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
-    phase: { id: phaseId, status: 'reload-requested', error: null },
-  }, 'navigation-pending');
-  const replacementReady = expect('different ready token and stable changed loader are the only success', {
-    ready: true, token: 'replacement-token', loaderIdBefore: 'replacement-loader',
-    loaderId: 'replacement-loader', phase: null,
-  }, 'replacement-ready', true);
-  expect('same-document token mutation must fail closed', {
-    ready: true, token: 'mutated-token', loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
-    phase: { id: phaseId, status: 'import-pending', error: null },
-  }, 'failed');
-  expect('restored same-document token remains pending after mutation control', {
-    ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
-    phase: { id: phaseId, status: 'import-pending', error: null },
-  }, 'import-pending');
-  expect('import rejection fails closed', {
-    ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
-    phase: { id: phaseId, status: 'import-rejected', error: 'fixture refused' },
-  }, 'failed');
-  expect('lost same-token phase fails closed', {
-    ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId, phase: null,
-  }, 'failed');
-  const oldLoaderUnavailable = expect('old-loader global loss is classified without manufacturing replacement boot', {
-    ready: false, token: null, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId, phase: null,
-  }, 'old-loader-unavailable');
-  expect('loader transition during token probe cannot pass', {
-    ready: true, token: 'mutated-token', loaderIdBefore: priorLoaderId,
-    loaderId: 'replacement-loader', phase: null,
-  }, 'replacement-boot-pending');
-  const replacementBoot = expect('changed-loader replacement boot without a token stays pending', {
-    ready: false, token: null, loaderIdBefore: 'replacement-loader',
-    loaderId: 'replacement-loader', phase: null,
-  }, 'replacement-boot-pending');
-  expect('stable changed loader with the stale token cannot pass', {
-    ready: true, token: priorToken, loaderIdBefore: 'replacement-loader',
-    loaderId: 'replacement-loader', phase: null,
-  }, 'replacement-boot-pending');
-  expect('missing loader id fails closed', {
-    ready: false, token: null, loaderIdBefore: null, loaderId: null, phase: null,
-  }, 'failed');
+function replacementNavigationOutcome(events, {
+  priorLoaderId, priorFrameId, expectedUrl, releaseAt, navigationDeadline,
+}) {
+  const topChanges = events.filter((row) => row.method === 'Page.frameNavigated'
+    && row.parentId === null && row.loaderId && row.loaderId !== priorLoaderId
+    && row.at >= releaseAt);
+  if (!topChanges.length) return { status: 'pending', row: null, why: null };
+  const row = topChanges[0];
+  if (topChanges.some((entry) => entry.loaderId !== row.loaderId)) {
+    return { status: 'failed', row, why: 'top-frame loader changed more than once during replacement' };
+  }
+  if (row.frameId !== priorFrameId) {
+    return { status: 'failed', row, why: 'replacement navigation changed the top-frame identity' };
+  }
+  if (row.url !== expectedUrl || row.unreachableUrl) {
+    return { status: 'failed', row, why: 'replacement navigation left the expected app URL' };
+  }
+  if (row.at >= navigationDeadline) {
+    return { status: 'failed', row, why: 'navigation commit deadline expired before changed loader' };
+  }
+  return { status: 'ready', row, why: null };
+}
 
-  const clockOptions = { navigationTimeoutMs: 20, replacementTimeoutMs: 30 };
-  const baseClocks = {
-    importDeadline: 1000, navigationDeadline: null, bootDeadline: null,
-    replacementLoaderId: null,
-  };
-  const navigationPending = reloadProbeDecision({
-    ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
-    phase: { id: phaseId, status: 'reload-requested', error: null },
-  }, priorToken, priorLoaderId, phaseId);
-  const navigationArmed = advanceReloadClocks(navigationPending, 100, baseClocks, clockOptions);
-  if (navigationArmed.action !== 'continue' || navigationArmed.clocks.navigationDeadline !== 120
-    || navigationArmed.clocks.bootDeadline !== null) {
-    failures.push(`stuck-navigation clock did not arm independently: ${JSON.stringify(navigationArmed)}`);
+function importReleaseOutcome(witnesses, {
+  priorToken, priorLoaderId, priorFrameId, priorContextUniqueId, priorContextGeneration,
+  expectedOrigin, expectedSessionId, importDeadline,
+}) {
+  if (!Array.isArray(witnesses) || witnesses.length === 0) {
+    return { status: 'pending', row: null, why: null };
   }
-  const navigationExpired = advanceReloadClocks(navigationPending, 120, navigationArmed.clocks, clockOptions);
-  if (navigationExpired.action !== 'failed' || navigationExpired.why !== 'navigation commit deadline expired') {
-    failures.push(`stuck-navigation control did not fail closed: ${JSON.stringify(navigationExpired)}`);
+  if (witnesses.length !== 1) {
+    return { status: 'failed', row: witnesses[0] || null, why: `replacement emitted ${witnesses.length} release witnesses` };
   }
-  const unavailableUnarmed = advanceReloadClocks(oldLoaderUnavailable, 100, baseClocks, clockOptions);
-  if (unavailableUnarmed.action !== 'failed'
-    || unavailableUnarmed.why !== 'old-loader context disappeared before reload/navigation was observed') {
-    failures.push(`unobserved old-loader context loss did not fail closed: ${JSON.stringify(unavailableUnarmed)}`);
+  const row = witnesses[0];
+  if (!row.validation?.ok) {
+    return { status: 'failed', row, why: row.validation?.why || 'release witness is invalid' };
   }
-  const unavailableArmed = advanceReloadClocks(oldLoaderUnavailable, 110, navigationArmed.clocks, clockOptions);
-  if (unavailableArmed.action !== 'continue'
-    || unavailableArmed.clocks.navigationDeadline !== navigationArmed.clocks.navigationDeadline
-    || unavailableArmed.clocks.bootDeadline !== null) {
-    failures.push(`observed navigation did not tolerate bounded old-context loss: ${JSON.stringify(unavailableArmed)}`);
+  const witness = row.validation.witness;
+  if (witness.reason !== 'save-import' || witness.documentToken !== priorToken) {
+    return { status: 'failed', row, why: 'release witness is not owned by the armed save import' };
   }
-  const lateNavigation = advanceReloadClocks(navigationPending, 1000, baseClocks, clockOptions);
-  if (lateNavigation.action !== 'failed'
-    || lateNavigation.why !== 'import transaction deadline expired before navigation') {
-    failures.push(`late import→navigation transition was accepted: ${JSON.stringify(lateNavigation)}`);
+  if (row.sessionId !== expectedSessionId || row.loaderId !== priorLoaderId
+    || !row.context?.active || !row.context.isDefault
+    || row.context.frameId !== priorFrameId
+    || row.context.uniqueId !== priorContextUniqueId
+    || row.context.generation !== priorContextGeneration
+    || row.context.origin !== expectedOrigin) {
+    return { status: 'failed', row, why: 'release witness did not come from the armed old top-frame context' };
   }
-  const lateBoot = advanceReloadClocks(replacementBoot, 120, navigationArmed.clocks, clockOptions);
-  if (lateBoot.action !== 'failed'
-    || lateBoot.why !== 'navigation commit deadline expired before replacement boot') {
-    failures.push(`late navigation→boot transition was accepted: ${JSON.stringify(lateBoot)}`);
+  if (row.at >= importDeadline) {
+    return { status: 'failed', row, why: 'import transaction deadline expired before release witness' };
   }
-  const bootArmed = advanceReloadClocks(replacementBoot, 110, navigationArmed.clocks, clockOptions);
-  if (bootArmed.action !== 'continue' || bootArmed.clocks.bootDeadline !== 140
-    || bootArmed.clocks.navigationDeadline !== 120
-    || bootArmed.clocks.replacementLoaderId !== 'replacement-loader') {
-    failures.push(`replacement-boot clock did not arm at the changed loader: ${JSON.stringify(bootArmed)}`);
+  return { status: 'ready', row, why: null };
+}
+
+function replacementReadyOutcome(witnesses, {
+  priorToken, priorFrameId, priorContextUniqueId, priorContextGeneration,
+  expectedUrl, expectedOrigin,
+  expectedSessionId, replacementLoaderId, releaseAt, commitAt, bootDeadline,
+  contextStillActive = true,
+}) {
+  if (!Array.isArray(witnesses) || witnesses.length === 0) {
+    return { status: 'pending', row: null, why: null };
   }
-  const bootExpired = advanceReloadClocks(replacementBoot, 140, bootArmed.clocks, clockOptions);
-  if (bootExpired.action !== 'failed' || bootExpired.why !== 'replacement boot deadline expired') {
-    failures.push(`changed-loader boot-stall control did not fail closed: ${JSON.stringify(bootExpired)}`);
+  if (witnesses.length !== 1) {
+    return { status: 'failed', row: witnesses[0] || null, why: `replacement emitted ${witnesses.length} slice-ready witnesses` };
   }
-  const lateReady = advanceReloadClocks(replacementReady, 140, bootArmed.clocks, clockOptions);
-  if (lateReady.action !== 'failed'
-    || lateReady.why !== 'replacement boot deadline expired before readiness') {
-    failures.push(`late boot→ready transition was accepted: ${JSON.stringify(lateReady)}`);
+  const row = witnesses[0];
+  if (!row.validation?.ok) {
+    return { status: 'failed', row, why: row.validation?.why || 'slice-ready witness is invalid' };
   }
-  const readyOutcome = advanceReloadClocks(replacementReady, 111, bootArmed.clocks, clockOptions);
-  if (readyOutcome.action !== 'ready' || readyOutcome.clocks.replacementLoaderId !== 'replacement-loader') {
-    failures.push(`stable changed-loader/token success was not accepted: ${JSON.stringify(readyOutcome)}`);
+  const witness = row.validation.witness;
+  if (row.sessionId !== expectedSessionId || !contextStillActive
+    || !row.context?.active || !row.context.isDefault
+    || row.context.frameId !== priorFrameId
+    || typeof row.context.uniqueId !== 'string' || !row.context.uniqueId
+    || row.context.uniqueId === priorContextUniqueId
+    || !Number.isInteger(row.context.generation)
+    || row.context.generation <= priorContextGeneration
+    || row.context.origin !== expectedOrigin
+    || row.context.createdAt < releaseAt) {
+    return { status: 'failed', row, why: 'slice-ready witness did not come from the default top-frame context' };
   }
+  if (row.loaderId !== replacementLoaderId) {
+    return { status: 'failed', row, why: 'slice-ready witness was not bound to the replacement loader' };
+  }
+  if (witness.token === priorToken) {
+    return { status: 'failed', row, why: 'slice-ready witness retained the prior document token' };
+  }
+  if (witness.href !== expectedUrl) {
+    return { status: 'failed', row, why: 'slice-ready witness URL does not match the app URL' };
+  }
+  if (row.at < commitAt) {
+    return { status: 'failed', row, why: 'slice-ready witness arrived before replacement navigation committed' };
+  }
+  if (row.at >= bootDeadline) {
+    return { status: 'failed', row, why: 'replacement boot deadline expired before slice-ready witness' };
+  }
+  return { status: 'ready', row, why: null };
+}
+
+function confirmationDeadlineOutcome(endedAt, bootDeadline) {
+  if (!Number.isFinite(endedAt) || !Number.isFinite(bootDeadline)) {
+    return { ok: false, why: 'slice-ready confirmation deadline evidence is invalid' };
+  }
+  return endedAt < bootDeadline
+    ? { ok: true, why: null }
+    : { ok: false, why: 'bounded slice-ready confirmation completed after the replacement boot deadline' };
+}
+
+async function runBoundedReadyConfirmation({
+  send, sessionId, executionContextId, expression, bootDeadline,
+  maxTimeoutMs = PHASE_PROBE_TIMEOUT_MS, now = Date.now,
+}) {
+  const remaining = bootDeadline - now();
+  if (remaining <= 0) {
+    return { ok: false, why: 'timely slice-ready witness was not processed before its boot deadline', command: null, result: null };
+  }
+  const timeoutMs = Math.max(1, Math.min(maxTimeoutMs, remaining));
+  const startedAt = now();
+  try {
+    const result = await send('Runtime.evaluate', {
+      expression, contextId: executionContextId, returnByValue: true, awaitPromise: false,
+    }, sessionId, { timeoutMs });
+    const endedAt = now();
+    const command = { method: 'Runtime.evaluate', startedAt, endedAt,
+      durationMs: endedAt - startedAt, timeoutMs, status: 'completed' };
+    const deadline = confirmationDeadlineOutcome(endedAt, bootDeadline);
+    return deadline.ok
+      ? { ok: true, why: null, command, result }
+      : { ok: false, why: deadline.why, command, result };
+  } catch (error) {
+    const endedAt = now();
+    return {
+      ok: false, why: `bounded slice-ready confirmation instrument failed (${error.message})`,
+      command: { method: 'Runtime.evaluate', startedAt, endedAt,
+        durationMs: endedAt - startedAt, timeoutMs, status: 'failed', error: error.message },
+      result: null,
+    };
+  }
+}
+
+async function reloadPhaseSelftest() {
+  const failures = [];
+  const priorToken = 'old-document-token', priorLoaderId = 'old-loader';
   const eventRequests = new Map([['document-request', 'http://127.0.0.1:1234/']]);
   const fatalFixtures = [
     compactReloadEvent({ method: 'Runtime.exceptionThrown', params: {
@@ -559,20 +487,9 @@ function reloadPhaseSelftest() {
   if (!canceledRequest || fatalReloadEvent([canceledRequest])) {
     failures.push(`benign canceled document request was treated as fatal: ${JSON.stringify(canceledRequest)}`);
   }
-  const beforeNavigationEvent = observedNavigationDeadline([], true, 100, 200, 20);
-  const afterNavigationEvent = observedNavigationDeadline([
-    { method: 'Page.frameStartedLoading', at: 110 },
-  ], true, 100, 200, 20);
-  const lateNavigationEvent = observedNavigationDeadline([
-    { method: 'Page.frameStartedLoading', at: 200 },
-  ], true, 100, 200, 20);
-  if (beforeNavigationEvent.deadline !== null || afterNavigationEvent.deadline !== 130
-    || afterNavigationEvent.why !== null
-    || lateNavigationEvent.why !== 'import transaction deadline expired before observed navigation') {
-    failures.push(`mid-probe navigation-event clock handoff failed closed: ${JSON.stringify({ beforeNavigationEvent, afterNavigationEvent, lateNavigationEvent })}`);
-  }
   const validRelease = {
     schema: 'cf-v2-reload-release/v1', status: 'released', error: null,
+    reason: 'save-import', documentToken: priorToken,
     rendererReleased: true, stageReleased: true, viewDetached: true,
     appCanvas: { beforeWidth: 4096, beforeHeight: 4096, afterWidth: 1, afterHeight: 1 },
     backdropCanvas: { beforeWidth: 4096, beforeHeight: 4096, afterWidth: 0, afterHeight: 0 },
@@ -603,18 +520,162 @@ function reloadPhaseSelftest() {
   if (oversizedRejected.ok || !/meaningful bounded/.test(oversizedRejected.why || '')) {
     failures.push(`over-budget reload canvas was accepted: ${JSON.stringify(oversizedRejected)}`);
   }
-  const validWitnessRows = [{ validation: releaseAccepted }];
-  const missingWitnessRejected = requireReloadReleaseWitness(navigationPending, []);
-  if (missingWitnessRejected.ok || !/0 release witnesses/.test(missingWitnessRejected.why || '')) {
-    failures.push(`navigation without a release witness was accepted: ${JSON.stringify(missingWitnessRejected)}`);
+  const readyPayload = {
+    schema: 'cf-v2-slice-ready/v1', status: 'ready', token: 'replacement-token',
+    href: 'http://127.0.0.1:1234/', readyState: 'complete', saveReady: true,
+    viewConnected: true, rendererReady: true, stageReady: true, tickerTicks: 1,
+    backingWidth: 4096, backingHeight: 4096,
+    performanceNow: 123,
+  };
+  const readyValidation = validateSliceReadyWitness(JSON.stringify(readyPayload));
+  const readyRow = {
+    at: 129, sessionId: 'target-session', executionContextId: 7, loaderId: 'replacement-loader',
+    context: { active: true, isDefault: true, frameId: 'top-frame', generation: 2,
+      uniqueId: 'replacement-context', origin: 'http://127.0.0.1:1234',
+      createdAt: 111 }, validation: readyValidation,
+  };
+  const navigationRows = [{
+    at: 110, method: 'Page.frameNavigated', frameId: 'top-frame', parentId: null,
+    loaderId: 'replacement-loader', url: readyPayload.href, unreachableUrl: null,
+  }];
+  const navigationOutcome = replacementNavigationOutcome(navigationRows, {
+    priorLoaderId, priorFrameId: 'top-frame', expectedUrl: readyPayload.href,
+    releaseAt: 100, navigationDeadline: 120,
+  });
+  if (navigationOutcome.status !== 'ready' || navigationOutcome.row?.loaderId !== 'replacement-loader') {
+    failures.push(`valid event-owned replacement navigation was rejected: ${JSON.stringify(navigationOutcome)}`);
   }
-  const invalidWitnessRejected = requireReloadReleaseWitness(replacementBoot, [{ validation: retainedRejected }]);
-  if (invalidWitnessRejected.ok || !/larger than 1x1/.test(invalidWitnessRejected.why || '')) {
-    failures.push(`replacement boot with an invalid release witness was accepted: ${JSON.stringify(invalidWitnessRejected)}`);
+  const childNavigation = replacementNavigationOutcome([{
+    ...navigationRows[0], parentId: 'top-frame', frameId: 'child-frame',
+  }], {
+    priorLoaderId, priorFrameId: 'top-frame', expectedUrl: readyPayload.href,
+    releaseAt: 100, navigationDeadline: 120,
+  });
+  if (childNavigation.status !== 'pending') {
+    failures.push(`child-frame navigation manufactured replacement boot: ${JSON.stringify(childNavigation)}`);
   }
-  const witnessedReady = requireReloadReleaseWitness(replacementReady, validWitnessRows);
-  if (!witnessedReady.ok) {
-    failures.push(`replacement readiness with one valid release witness was rejected: ${JSON.stringify(witnessedReady)}`);
+  const lateNavigationCommit = replacementNavigationOutcome([
+    { ...navigationRows[0], at: 120 },
+  ], {
+    priorLoaderId, priorFrameId: 'top-frame', expectedUrl: readyPayload.href,
+    releaseAt: 100, navigationDeadline: 120,
+  });
+  if (lateNavigationCommit.status !== 'failed' || !/deadline/.test(lateNavigationCommit.why || '')) {
+    failures.push(`just-late event-owned navigation was accepted: ${JSON.stringify(lateNavigationCommit)}`);
+  }
+  const readyOptions = {
+    priorToken, priorFrameId: 'top-frame', priorContextUniqueId: 'old-context',
+    priorContextGeneration: 1,
+    expectedUrl: readyPayload.href, expectedOrigin: 'http://127.0.0.1:1234',
+    expectedSessionId: 'target-session', replacementLoaderId: 'replacement-loader',
+    releaseAt: 100, commitAt: 110,
+    bootDeadline: 130,
+  };
+  const eventReady = replacementReadyOutcome([readyRow], readyOptions);
+  if (eventReady.status !== 'ready') {
+    failures.push(`valid event-owned slice readiness was rejected: ${JSON.stringify(eventReady)}`);
+  }
+  /* Observer scheduling is not product timing. A witness received before
+     its deadline remains timely even if the next Node loop turn is 60s
+     later; the bounded confirmation below is diagnosed separately. */
+  const delayedObserverReady = replacementReadyOutcome([readyRow], readyOptions);
+  if (delayedObserverReady.status !== 'ready') {
+    failures.push(`timely binding became late when observer processing was delayed: ${JSON.stringify(delayedObserverReady)}`);
+  }
+  const confirmationBeforeDeadline = confirmationDeadlineOutcome(129, 130);
+  const confirmationAtDeadline = confirmationDeadlineOutcome(130, 130);
+  if (!confirmationBeforeDeadline.ok || confirmationAtDeadline.ok
+    || !/after the replacement boot deadline/.test(confirmationAtDeadline.why || '')) {
+    failures.push(`bounded confirmation deadline control failed: ${JSON.stringify({ confirmationBeforeDeadline, confirmationAtDeadline })}`);
+  }
+  let confirmationCalls = 0;
+  const confirmationTimeout = await runBoundedReadyConfirmation({
+    send: async () => { confirmationCalls++; throw new Error('timed out waiting for Runtime.evaluate'); },
+    sessionId: 'target-session', executionContextId: 7, expression: 'true',
+    bootDeadline: 130, now: (() => { const times = [120, 121, 129]; return () => times.shift() ?? 129; })(),
+  });
+  if (confirmationTimeout.ok || confirmationCalls !== 1
+    || confirmationTimeout.command?.status !== 'failed'
+    || !/timed out waiting/.test(confirmationTimeout.why || '')) {
+    failures.push(`bounded confirmation timeout did not fail once without retry: ${JSON.stringify({ confirmationCalls, confirmationTimeout })}`);
+  }
+  let lateConfirmationCalls = 0;
+  const lateConfirmation = await runBoundedReadyConfirmation({
+    send: async () => { lateConfirmationCalls++; return { result: { value: true } }; },
+    sessionId: 'target-session', executionContextId: 7, expression: 'true',
+    bootDeadline: 130, now: (() => { const times = [120, 121, 130]; return () => times.shift() ?? 130; })(),
+  });
+  if (lateConfirmation.ok || lateConfirmationCalls !== 1
+    || lateConfirmation.command?.status !== 'completed'
+    || !/after the replacement boot deadline/.test(lateConfirmation.why || '')) {
+    failures.push(`late successful confirmation did not fail once with coherent evidence: ${JSON.stringify({ lateConfirmationCalls, lateConfirmation })}`);
+  }
+  const readyControls = [
+    ['missing', [], 'pending'],
+    ['duplicate', [readyRow, readyRow], 'failed'],
+    ['same-token', [{ ...readyRow, validation: validateSliceReadyWitness({ ...readyPayload, token: priorToken }) }], 'failed'],
+    ['wrong-url', [{ ...readyRow, validation: validateSliceReadyWitness({ ...readyPayload, href: 'http://wrong.invalid/' }) }], 'failed'],
+    ['wrong-context', [{ ...readyRow, context: { isDefault: false, frameId: 'top-frame' } }], 'failed'],
+    ['wrong-session', [{ ...readyRow, sessionId: 'other-session' }], 'failed'],
+    ['destroyed-context', [readyRow], 'failed', { contextStillActive: false }],
+    ['old-context-reuse', [{ ...readyRow, context: { ...readyRow.context, uniqueId: 'old-context' } }], 'failed'],
+    ['old-context-generation', [{ ...readyRow, context: { ...readyRow.context, generation: 1 } }], 'failed'],
+    ['wrong-origin', [{ ...readyRow, context: { ...readyRow.context, origin: 'http://wrong.invalid' } }], 'failed'],
+    ['wrong-loader', [{ ...readyRow, loaderId: 'other-loader' }], 'failed'],
+    ['before-commit', [{ ...readyRow, at: 109 }], 'failed'],
+    ['just-late', [{ ...readyRow, at: 130 }], 'failed'],
+  ];
+  for (const [label, rows, status, overrides = {}] of readyControls) {
+    const outcome = replacementReadyOutcome(rows, { ...readyOptions, ...overrides });
+    if (outcome.status !== status) {
+      failures.push(`${label} slice-ready control was accepted: ${JSON.stringify(outcome)}`);
+    }
+  }
+  const incompleteReady = validateSliceReadyWitness({ ...readyPayload, viewConnected: false });
+  if (incompleteReady.ok || !/complete wired/.test(incompleteReady.why || '')) {
+    failures.push(`incomplete slice-ready payload was accepted: ${JSON.stringify(incompleteReady)}`);
+  }
+  const malformedReady = validateSliceReadyWitness('{bad json');
+  if (malformedReady.ok || !/not JSON/.test(malformedReady.why || '')) {
+    failures.push(`malformed slice-ready payload was accepted: ${JSON.stringify(malformedReady)}`);
+  }
+  const productClockLate = validateSliceReadyWitness({
+    ...readyPayload, performanceNow: REPLACEMENT_READY_TIMEOUT_MS,
+  });
+  if (productClockLate.ok || !/performance timestamp/.test(productClockLate.why || '')) {
+    failures.push(`just-late browser-native slice-ready timestamp was accepted: ${JSON.stringify(productClockLate)}`);
+  }
+  const releaseRow = {
+    at: 100, sessionId: 'target-session', loaderId: priorLoaderId,
+    context: { active: true, isDefault: true, frameId: 'top-frame', generation: 1,
+      uniqueId: 'old-context', origin: 'http://127.0.0.1:1234' },
+    validation: releaseAccepted,
+  };
+  const releaseOptions = {
+    priorToken, priorLoaderId, priorFrameId: 'top-frame', priorContextUniqueId: 'old-context',
+    priorContextGeneration: 1,
+    expectedOrigin: 'http://127.0.0.1:1234', expectedSessionId: 'target-session',
+    importDeadline: 110,
+  };
+  const importRelease = importReleaseOutcome([releaseRow], releaseOptions);
+  if (importRelease.status !== 'ready') {
+    failures.push(`valid import-owned release was rejected: ${JSON.stringify(importRelease)}`);
+  }
+  const releaseControls = [
+    ['missing', [], 'pending'],
+    ['duplicate', [releaseRow, releaseRow], 'failed'],
+    ['wrong-reason', [{ ...releaseRow, validation: validateReloadReleaseWitness({ ...validRelease, reason: 'training-restart' }) }], 'failed'],
+    ['wrong-token', [{ ...releaseRow, validation: validateReloadReleaseWitness({ ...validRelease, documentToken: 'other-token' }) }], 'failed'],
+    ['wrong-context', [{ ...releaseRow, context: { ...releaseRow.context, uniqueId: 'other-context' } }], 'failed'],
+    ['wrong-loader', [{ ...releaseRow, loaderId: 'other-loader' }], 'failed'],
+    ['wrong-session', [{ ...releaseRow, sessionId: 'other-session' }], 'failed'],
+    ['just-late', [{ ...releaseRow, at: 110 }], 'failed'],
+  ];
+  for (const [label, rows, status] of releaseControls) {
+    const outcome = importReleaseOutcome(rows, releaseOptions);
+    if (outcome.status !== status) {
+      failures.push(`${label} import-release control was accepted: ${JSON.stringify(outcome)}`);
+    }
   }
   const lifecycle = compactReloadEvent({ method: 'Page.lifecycleEvent', params: {
     name: 'DOMContentLoaded', frameId: 'top-frame', loaderId: 'replacement-loader',
@@ -622,6 +683,25 @@ function reloadPhaseSelftest() {
   if (!lifecycle || lifecycle.name !== 'DOMContentLoaded'
     || lifecycle.loaderId !== 'replacement-loader') {
     failures.push(`reload lifecycle evidence was not retained: ${JSON.stringify(lifecycle)}`);
+  }
+  const secondLoader = replacementNavigationOutcome([
+    navigationRows[0], { ...navigationRows[0], at: 115, loaderId: 'second-loader' },
+  ], {
+    priorLoaderId, priorFrameId: 'top-frame', expectedUrl: readyPayload.href,
+    releaseAt: 100, navigationDeadline: 120,
+  });
+  if (secondLoader.status !== 'failed' || !/more than once/.test(secondLoader.why || '')) {
+    failures.push(`second replacement loader was accepted: ${JSON.stringify(secondLoader)}`);
+  }
+  const stickyFatal = [];
+  stickyFatal.push(fatalFixtures[0]);
+  const diagnosticRing = [];
+  pushBoundedReloadEvent(diagnosticRing, fatalFixtures[0]);
+  for (let i = 0; i < MAX_RELOAD_EVENTS + 10; i++) {
+    pushBoundedReloadEvent(diagnosticRing, { at: i, method: 'Page.lifecycleEvent', name: `benign-${i}` });
+  }
+  if (diagnosticRing.includes(fatalFixtures[0]) || fatalReloadEvent(stickyFatal) !== fatalFixtures[0]) {
+    failures.push('sticky fatal authority did not survive diagnostic-ring eviction');
   }
   return failures;
 }
@@ -672,8 +752,8 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
   return report;
 }
 
-function reportSelftest() {
-  const reloadFailures = reloadPhaseSelftest();
+async function reportSelftest() {
+  const reloadFailures = await reloadPhaseSelftest();
   if (reloadFailures.length) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: replacement-document controls failed (${reloadFailures.join('; ')})`);
   }
@@ -703,6 +783,8 @@ function reportSelftest() {
     reloadEvidence: [{
       viewport: 'desktop-8k', priorLoaderId: 'old-loader', replacementLoaderId: 'replacement-loader',
       releaseWitness: { validation: { ok: true } },
+      readyWitness: { validation: { ok: true }, at: 10 },
+      commands: [{ method: 'Runtime.evaluate', durationMs: 1, timeoutMs: 2000, status: 'completed' }],
       events: [{ method: 'Page.lifecycleEvent', name: 'DOMContentLoaded', loaderId: 'replacement-loader' }],
     }],
     instrumentFailures: fixture.instrumentFailures,
@@ -714,6 +796,8 @@ function reportSelftest() {
     || shaped.controlSummary.omittedNegativeControls.length !== 0
     || shaped.reloadEvidence[0]?.viewport !== 'desktop-8k'
     || shaped.reloadEvidence[0]?.releaseWitness?.validation?.ok !== true
+    || shaped.reloadEvidence[0]?.readyWitness?.validation?.ok !== true
+    || shaped.reloadEvidence[0]?.commands?.[0]?.timeoutMs !== PHASE_PROBE_TIMEOUT_MS
     || shaped.reloadEvidence[0]?.events?.[0]?.name !== 'DOMContentLoaded'
     || !['non-glass-background-chain', 'settings-pressed-focus', 'guide-render-focus',
       'motion-css-policy', 'ordinary-panel-centre-close', 'opener-expanded-controls',
@@ -725,7 +809,7 @@ function reportSelftest() {
   }
   console.log('GLASS MATRIX REPORT SELFTEST: PASS');
   console.log('  injected finding retained; 12 viewport definitions retained; retry policy remains zero');
-  console.log('  phased import/navigation/replacement clocks fail closed; reload resources require a bound release witness');
+  console.log('  phased import/navigation/replacement clocks fail closed; release and boot-ready bindings own their deadlines');
 }
 
 const MIME = Object.freeze({
@@ -1544,7 +1628,7 @@ function formatIssue(context, row) {
 
 async function main() {
   if (selftestOnly) {
-    reportSelftest();
+    await reportSelftest();
     return;
   }
   runReloadEvidence = [];
@@ -1572,7 +1656,7 @@ async function main() {
       executedControls.add(name);
     }
   };
-  for (const failure of reloadPhaseSelftest()) {
+  for (const failure of await reloadPhaseSelftest()) {
     instrumentFailures.push(`RELOAD PHASE SELFTEST ${failure}`);
   }
   recordControls('replacement-document-loader-token-phase', 'reload-resource-release');
@@ -1582,7 +1666,7 @@ async function main() {
     objectiveYieldControlRun = false, topChromeControlRun = false, portraitBandControlRun = false,
     portraitFallbackControlRun = false,
     modalControlRun = false, modalLiveControlRun = false, closeLabelControlRun = false,
-    hiddenOpenerControlRun = false;
+    hiddenOpenerControlRun = false, reloadBindingControlRun = false;
   const add = (viewport, surface, rows) => {
     for (const row of rows || []) findings.push({ context: { viewport, surface }, row });
   };
@@ -1599,28 +1683,66 @@ async function main() {
          late matrix row to inherit GPU pressure from the first ten rows. */
       let browser = null, browserContextId = null, targetId = null;
       let eventSessionId = null, reloadCaptureArmed = false;
-      const reloadEvents = [], reloadReleaseWitnesses = [], requestUrls = new Map();
+      let contextSequence = 0, currentTopLoaderId = null;
+      const runtimeContexts = new Map();
+      const reloadEvents = [], reloadReleaseWitnesses = [], reloadReadyWitnesses = [],
+        reloadTopNavigations = [], reloadFatalEvents = [], reloadCommands = [], requestUrls = new Map();
       const onBrowserEvent = (event) => {
         if (event?.sessionId && eventSessionId && event.sessionId !== eventSessionId) return;
         if (event?.sessionId && !eventSessionId) return;
         if (event?.method === 'Target.targetCrashed' && targetId
           && event.params?.targetId && event.params.targetId !== targetId) return;
+        const at = Date.now();
+        if (event?.method === 'Runtime.executionContextsCleared') {
+          runtimeContexts.clear();
+        } else if (event?.method === 'Runtime.executionContextDestroyed') {
+          runtimeContexts.delete(event.params?.executionContextId);
+        } else if (event?.method === 'Runtime.executionContextCreated') {
+          const context = event.params?.context;
+          const id = context?.id;
+          if (Number.isInteger(id)) runtimeContexts.set(id, {
+            active: true, id, uniqueId: typeof context.uniqueId === 'string' ? context.uniqueId : null,
+            generation: ++contextSequence,
+            origin: typeof context.origin === 'string' ? context.origin : null,
+            frameId: typeof context.auxData?.frameId === 'string' ? context.auxData.frameId : null,
+            isDefault: context.auxData?.isDefault === true, createdAt: at,
+          });
+        }
+        if (event?.method === 'Page.frameNavigated' && !event.params?.frame?.parentId) {
+          const frame = event.params?.frame || {};
+          currentTopLoaderId = typeof frame.loaderId === 'string' ? frame.loaderId : null;
+          if (reloadCaptureArmed) reloadTopNavigations.push({
+            at, method: 'Page.frameNavigated', frameId: frame.id || null, parentId: null,
+            loaderId: frame.loaderId || null, url: frame.url || null,
+            unreachableUrl: frame.unreachableUrl || null,
+          });
+        }
         if (reloadCaptureArmed && event?.method === 'Runtime.bindingCalled'
-          && event.params?.name === RELOAD_RELEASE_BINDING) {
-          const validation = validateReloadReleaseWitness(event.params.payload);
-          reloadReleaseWitnesses.push({
-            at: Date.now(), executionContextId: event.params.executionContextId ?? null,
+          && [RELOAD_RELEASE_BINDING, SLICE_READY_BINDING].includes(event.params?.name)) {
+          const executionContextId = event.params.executionContextId ?? null;
+          const context = runtimeContexts.get(executionContextId);
+          const validation = event.params.name === RELOAD_RELEASE_BINDING
+            ? validateReloadReleaseWitness(event.params.payload)
+            : validateSliceReadyWitness(event.params.payload);
+          const target = event.params.name === RELOAD_RELEASE_BINDING
+            ? reloadReleaseWitnesses : reloadReadyWitnesses;
+          target.push({
+            at, sessionId: event.sessionId || null, executionContextId,
+            loaderId: currentTopLoaderId, context: context ? { ...context } : null,
             validation,
           });
           pushBoundedReloadEvent(reloadEvents, {
-            at: Date.now(), method: 'Runtime.bindingCalled', name: RELOAD_RELEASE_BINDING,
-            executionContextId: event.params.executionContextId ?? null,
+            at, method: 'Runtime.bindingCalled', name: event.params.name,
+            executionContextId,
             valid: validation.ok, why: validation.why,
           });
           return;
         }
-        const row = compactReloadEvent(event, requestUrls, Date.now());
-        if (reloadCaptureArmed) pushBoundedReloadEvent(reloadEvents, row);
+        const row = compactReloadEvent(event, requestUrls, at);
+        if (reloadCaptureArmed) {
+          pushBoundedReloadEvent(reloadEvents, row);
+          if (row && fatalReloadEvent([row])) reloadFatalEvents.push(row);
+        }
       };
       try {
         browser = await openChromiumCdp({
@@ -1638,6 +1760,7 @@ async function main() {
         eventSessionId = session;
         await send('Runtime.enable', {}, session);
         await send('Runtime.addBinding', { name: RELOAD_RELEASE_BINDING }, session);
+        await send('Runtime.addBinding', { name: SLICE_READY_BINDING }, session);
         await send('Page.enable', {}, session);
         await send('Inspector.enable', {}, session);
         await send('Network.enable', {}, session);
@@ -1672,7 +1795,6 @@ async function main() {
             mimeType: typeof frame.mimeType === 'string' ? frame.mimeType : null,
           };
         };
-        const topLoaderId = async () => (await topFrameState()).loaderId;
         const deadline = Date.now() + SLICE_READY_TIMEOUT_MS;
         let ready = null;
         while (Date.now() < deadline) {
@@ -1703,122 +1825,136 @@ async function main() {
           }
           throw new Error(`${vp.label}/${label}: outcome did not arrive within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
         };
-        const waitForReload = async (label, priorToken, priorLoaderId, phaseId, {
+        const waitForReload = async (label, priorToken, priorFrame, priorContext, {
           importTimeoutMs = IMPORT_SETTLE_TIMEOUT_MS,
           navigationTimeoutMs = NAVIGATION_COMMIT_TIMEOUT_MS,
           replacementTimeoutMs = REPLACEMENT_READY_TIMEOUT_MS,
-        } = {}) => {
+          } = {}) => {
           const beganAt = Date.now();
-          let clocks = {
-            importDeadline: beganAt + importTimeoutMs,
-            navigationDeadline: null,
-            bootDeadline: null,
-            replacementLoaderId: null,
-          };
-          let last = null, decision = null;
+          const importDeadline = beganAt + importTimeoutMs;
+          let navigationDeadline = null, bootDeadline = null, commit = null;
+          const expectedOrigin = new URL(url).origin;
           const diagnostic = () => JSON.stringify({
-            priorLoaderId, expectedUrl: url, elapsedMs: Date.now() - beganAt,
-            clocks, last, releaseWitnesses: reloadReleaseWitnesses, events: reloadEvents,
+            priorFrame, priorContext, expectedUrl: url, elapsedMs: Date.now() - beganAt,
+            clocks: { importDeadline, navigationDeadline, bootDeadline,
+              replacementLoaderId: commit?.loaderId || null },
+            releaseWitnesses: reloadReleaseWitnesses,
+            readyWitnesses: reloadReadyWitnesses,
+            topNavigations: reloadTopNavigations,
+            fatalEvents: reloadFatalEvents,
+            commands: reloadCommands,
+            events: reloadEvents,
           });
-          const observeNavigationStart = () => {
-            const releaseReady = reloadReleaseWitnesses.length === 1
-              && reloadReleaseWitnesses[0].validation.ok;
-            if (!releaseReady || clocks.navigationDeadline !== null || clocks.bootDeadline !== null) return;
-            const observed = observedNavigationDeadline(reloadEvents, releaseReady, beganAt,
-              clocks.importDeadline, navigationTimeoutMs);
-            if (observed.why) throw new Error(`${vp.label}/${label}: ${observed.why} (evidence ${diagnostic()})`);
-            if (observed.deadline !== null) clocks.navigationDeadline = observed.deadline;
+          const fail = (why) => {
+            throw new Error(`${vp.label}/${label}: ${why} (evidence ${diagnostic()})`);
+          };
+          const confirmReady = async (readyRow) => {
+            const confirmation = await runBoundedReadyConfirmation({
+              send, sessionId: session, executionContextId: readyRow.executionContextId,
+              bootDeadline,
+              expression: `(()=>{ const S=window.__CF_SLICE__; try { const s=S?.api?.state(); return {
+                  ready:!!s?.save,token:S?.documentToken||null,href:location.href,
+                  readyState:document.readyState,viewConnected:!!S?.app?.canvas?.isConnected,
+                  backingWidth:S?.app?.canvas?.width||0,backingHeight:S?.app?.canvas?.height||0};
+                } catch(error) { return {ready:false,token:S?.documentToken||null,href:location.href,
+                  readyState:document.readyState,error:String(error?.message||error)}; } })()`,
+            });
+            if (confirmation.command) reloadCommands.push(confirmation.command);
+            if (!confirmation.ok) fail(confirmation.why);
+            const result = confirmation.result;
+            if (result.exceptionDetails) {
+              fail(`bounded slice-ready confirmation threw (${String(result.exceptionDetails.exception?.description
+                || result.exceptionDetails.text || 'page evaluation failed')})`);
+            }
+            const state = result.result?.value;
+            const witnessed = readyRow.validation.witness;
+            if (!state?.ready || state.token !== witnessed.token || state.href !== url
+              || state.readyState !== 'complete' || state.viewConnected !== true
+              || state.backingWidth !== witnessed.backingWidth
+              || state.backingHeight !== witnessed.backingHeight) {
+              fail(`bounded slice-ready confirmation disagreed with the witness (${JSON.stringify(state)})`);
+            }
+            const active = runtimeContexts.get(readyRow.executionContextId);
+            if (!active || active.uniqueId !== readyRow.context?.uniqueId
+              || currentTopLoaderId !== commit.loaderId) {
+              fail('replacement context/loader changed during slice-ready confirmation');
+            }
+            if (reloadFatalEvents.length) {
+              fail(`replacement target failed (${JSON.stringify(reloadFatalEvents[0])})`);
+            }
+            const navigationNow = replacementNavigationOutcome(reloadTopNavigations, {
+              priorLoaderId: priorFrame.loaderId, priorFrameId: priorFrame.frameId,
+              expectedUrl: url, releaseAt: reloadReleaseWitnesses[0].at, navigationDeadline,
+            });
+            if (navigationNow.status !== 'ready' || navigationNow.row.loaderId !== commit.loaderId) {
+              fail(`replacement loader changed during confirmation (${navigationNow.why || navigationNow.status})`);
+            }
+            return state;
           };
           while (true) {
-            observeNavigationStart();
-            const fatalBefore = fatalReloadEvent(reloadEvents);
-            if (fatalBefore) {
-              throw new Error(`${vp.label}/${label}: replacement target failed (${JSON.stringify(fatalBefore)}; evidence ${diagnostic()})`);
-            }
-            if (reloadReleaseWitnesses.length > 1) {
-              throw new Error(`${vp.label}/${label}: reload resource release emitted duplicate witnesses (evidence ${diagnostic()})`);
-            }
-            if (reloadReleaseWitnesses[0] && !reloadReleaseWitnesses[0].validation.ok) {
-              throw new Error(`${vp.label}/${label}: reload resource release failed closed (${reloadReleaseWitnesses[0].validation.why}; evidence ${diagnostic()})`);
-            }
-            let frameBefore;
-            try { frameBefore = await topFrameState(); }
-            catch (error) {
-              throw new Error(`${vp.label}/${label}: pre-evaluation frame witness failed closed (${error.message}; evidence ${diagnostic()})`);
-            }
-            try {
-              last = await evalIn(`(()=>{ const S=window.__CF_SLICE__,P=window.__CF_GLASS_RELOAD_PHASE__; try {
-                const s=S?.api?.state(); return {ready:!!s?.save,token:S?.documentToken||null,
-                  why:!S?'slice absent':!S.api?'slice api absent':s?.save?'':'slice state incomplete',
-                  readyState:document.readyState,href:location.href,
-                  phase:P?{id:String(P.id||''),status:String(P.status||''),error:P.error==null?null:String(P.error)}:null};
-              } catch(error) { return {ready:false,token:S?.documentToken||null,why:String(error?.message||error),
-                  readyState:document.readyState,href:location.href,
-                  phase:P?{id:String(P.id||''),status:String(P.status||''),error:P.error==null?null:String(P.error)}:null}; } })()`);
-            } catch (error) {
-              /* Execution-context loss is neither success nor a phase by
-                 itself; the two frame witnesses below decide whether the
-                 old loader is still navigating or a replacement is booting. */
-              last = { ready: false, token: null, phase: null, readyState: null, href: null, why: error.message };
-            }
-            let frameAfter;
-            try { frameAfter = await topFrameState(); }
-            catch (error) {
-              throw new Error(`${vp.label}/${label}: post-evaluation frame witness failed closed (${error.message}; evidence ${diagnostic()})`);
-            }
-            last.loaderIdBefore = frameBefore.loaderId;
-            last.loaderId = frameAfter.loaderId;
-            last.frameBefore = frameBefore;
-            last.frame = frameAfter;
-            if (frameAfter.unreachableUrl || (frameAfter.url && frameAfter.url !== url)) {
-              throw new Error(`${vp.label}/${label}: replacement frame left the expected app URL (evidence ${diagnostic()})`);
-            }
-            if (frameBefore.loaderId === frameAfter.loaderId && last.href
-              && frameAfter.url && last.href !== frameAfter.url) {
-              throw new Error(`${vp.label}/${label}: stable loader paired evaluation with a different document URL (evidence ${diagnostic()})`);
-            }
-            const fatalAfter = fatalReloadEvent(reloadEvents);
-            if (fatalAfter) {
-              throw new Error(`${vp.label}/${label}: replacement target failed (${JSON.stringify(fatalAfter)}; evidence ${diagnostic()})`);
-            }
-            /* Page.frameStartedLoading can arrive while Runtime.evaluate or
-               Page.getFrameTree is in flight. Consume it again before the
-               transition decision so a real changed loader cannot outrun the
-               event-to-clock handoff. */
-            observeNavigationStart();
-            decision = reloadProbeDecision(last, priorToken, priorLoaderId, phaseId);
-            const witnessRequirement = requireReloadReleaseWitness(decision, reloadReleaseWitnesses);
-            if (!witnessRequirement.ok) {
-              throw new Error(`${vp.label}/${label}: reload resource release failed closed (${witnessRequirement.why}; evidence ${diagnostic()})`);
-            }
-            const now = Date.now();
-            const progress = advanceReloadClocks(decision, now, clocks, {
-              navigationTimeoutMs, replacementTimeoutMs,
+            if (reloadFatalEvents.length) fail(`replacement target failed (${JSON.stringify(reloadFatalEvents[0])})`);
+            const release = importReleaseOutcome(reloadReleaseWitnesses, {
+              priorToken, priorLoaderId: priorFrame.loaderId, priorFrameId: priorFrame.frameId,
+              priorContextUniqueId: priorContext.uniqueId,
+              priorContextGeneration: priorContext.generation, expectedOrigin,
+              expectedSessionId: session, importDeadline,
             });
-            clocks = progress.clocks;
-            if (progress.action === 'ready') {
-              return {
-                ...last, elapsedMs: now - beganAt,
-                reloadEvidence: {
-                  priorLoaderId,
-                  replacementLoaderId: clocks.replacementLoaderId,
-                  elapsedMs: now - beganAt,
-                  releaseWitness: reloadReleaseWitnesses[0],
-                  events: [...reloadEvents],
-                },
-              };
+            if (release.status === 'failed') fail(`reload resource release failed closed (${release.why})`);
+            if (release.status === 'pending') {
+              if (reloadReadyWitnesses.length) fail('slice-ready witness arrived before import release/navigation');
+              if (Date.now() >= importDeadline) fail(`import transaction did not settle within ${importTimeoutMs}ms`);
+              await sleep(20);
+              continue;
             }
-            if (progress.action === 'failed') {
-              const timeout = progress.why === 'import transaction deadline expired'
-                ? `import transaction did not settle within ${importTimeoutMs}ms`
-                : progress.why === 'navigation commit deadline expired'
-                  ? `top-frame loader did not change within ${navigationTimeoutMs}ms after reload was requested`
-                  : progress.why === 'replacement boot deadline expired'
-                    ? `replacement document did not become ready within ${replacementTimeoutMs}ms after the loader changed`
-                    : `import/reload failed closed (${progress.why})`;
-              throw new Error(`${vp.label}/${label}: ${timeout} (evidence ${diagnostic()})`);
+            navigationDeadline ??= release.row.at + navigationTimeoutMs;
+            const navigation = replacementNavigationOutcome(reloadTopNavigations, {
+              priorLoaderId: priorFrame.loaderId, priorFrameId: priorFrame.frameId,
+              expectedUrl: url, releaseAt: release.row.at, navigationDeadline,
+            });
+            if (navigation.status === 'failed') fail(`import/reload failed closed (${navigation.why})`);
+            if (navigation.status === 'pending') {
+              if (reloadReadyWitnesses.length) fail('slice-ready witness arrived before replacement navigation committed');
+              if (Date.now() >= navigationDeadline) {
+                fail(`top-frame loader did not change within ${navigationTimeoutMs}ms after resource release`);
+              }
+              await sleep(20);
+              continue;
             }
-            await sleep(50);
+            commit ??= navigation.row;
+            bootDeadline ??= commit.at + replacementTimeoutMs;
+            const readyOutcome = replacementReadyOutcome(reloadReadyWitnesses, {
+              priorToken, priorFrameId: priorFrame.frameId,
+              priorContextUniqueId: priorContext.uniqueId,
+              priorContextGeneration: priorContext.generation,
+              expectedUrl: url, expectedOrigin,
+              expectedSessionId: session, replacementLoaderId: commit.loaderId,
+              releaseAt: release.row.at, commitAt: commit.at, bootDeadline,
+              contextStillActive: !!reloadReadyWitnesses[0]
+                && runtimeContexts.get(reloadReadyWitnesses[0].executionContextId)?.uniqueId
+                  === reloadReadyWitnesses[0].context?.uniqueId,
+            });
+            if (readyOutcome.status === 'failed') fail(`import/reload failed closed (${readyOutcome.why})`);
+            if (readyOutcome.status === 'pending') {
+              if (Date.now() >= bootDeadline) {
+                fail(`replacement document did not emit boot-ready within ${replacementTimeoutMs}ms after the loader changed`);
+              }
+              await sleep(20);
+              continue;
+            }
+            const state = await confirmReady(readyOutcome.row);
+            const now = Date.now();
+            return {
+              ...state, elapsedMs: now - beganAt,
+              reloadEvidence: {
+                priorLoaderId: priorFrame.loaderId,
+                replacementLoaderId: commit.loaderId,
+                elapsedMs: now - beganAt,
+                releaseWitness: release.row,
+                readyWitness: readyOutcome.row,
+                commands: [...reloadCommands],
+                events: [...reloadEvents],
+              },
+            };
           }
         };
         /* Use one unambiguous product floor everywhere. Desktop users may
@@ -1868,10 +2004,69 @@ async function main() {
              Training is freshly rendered from saved state, while keeping
              Compendium/Records/Atlas/Charters populated for the panel pass. */
           const priorToken = ready.token;
-          const priorLoaderId = await topLoaderId();
+          const priorFrame = await topFrameState();
+          const priorContexts = [...runtimeContexts.values()].filter((row) => row.active
+            && row.isDefault && row.frameId === priorFrame.frameId);
+          const priorContext = priorContexts.length === 1 ? priorContexts[0] : null;
+          if (!priorContext?.uniqueId || priorContext.origin !== new URL(url).origin) {
+            throw new Error(`${vp.label}/preference fixture import: default top-frame context unavailable (${JSON.stringify({ priorFrame, contexts: [...runtimeContexts.values()] })})`);
+          }
+          if (!reloadBindingControlRun) {
+            reloadEvents.length = 0;
+            reloadReleaseWitnesses.length = 0;
+            reloadReadyWitnesses.length = 0;
+            reloadTopNavigations.length = 0;
+            reloadFatalEvents.length = 0;
+            reloadCommands.length = 0;
+            reloadCaptureArmed = true;
+            try {
+              await evalIn(`window.${SLICE_READY_BINDING}('{bad json')`);
+              for (let i = 0; i < 50 && reloadReadyWitnesses.length < 1; i++) await sleep(10);
+              const malformed = reloadReadyWitnesses[0];
+              if (reloadReadyWitnesses.length !== 1 || malformed?.validation?.ok
+                || malformed?.context?.uniqueId !== priorContext.uniqueId
+                || malformed?.sessionId !== session) {
+                throw new Error(`${vp.label}: malformed live slice-ready binding control was not rejected (${JSON.stringify(reloadReadyWitnesses)})`);
+              }
+              reloadReadyWitnesses.length = 0;
+              await evalIn(`(()=>{ const S=window.__CF_SLICE__,s=S.api.state(),payload=JSON.stringify({
+                schema:'cf-v2-slice-ready/v1',status:'ready',token:S.documentToken,href:location.href,
+                readyState:document.readyState,saveReady:!!s.save,viewConnected:S.app.canvas.isConnected,
+                rendererReady:!!S.app.renderer&&S.app.canvas.width>1&&S.app.canvas.height>1,
+                stageReady:!!S.app.stage,tickerTicks:s.tickerTicks,
+                backingWidth:S.app.canvas.width,backingHeight:S.app.canvas.height,performanceNow:performance.now()});
+                window.${SLICE_READY_BINDING}(payload);window.${SLICE_READY_BINDING}(payload);return true;})()`);
+              for (let i = 0; i < 50 && reloadReadyWitnesses.length < 2; i++) await sleep(10);
+              const duplicate = replacementReadyOutcome(reloadReadyWitnesses, {
+                priorToken: 'synthetic-other-token', priorFrameId: priorFrame.frameId,
+                priorContextUniqueId: 'synthetic-old-context',
+                priorContextGeneration: priorContext.generation - 1,
+                expectedUrl: url, expectedOrigin: new URL(url).origin,
+                expectedSessionId: session, replacementLoaderId: priorFrame.loaderId,
+                releaseAt: 0, commitAt: 0, bootDeadline: Date.now() + 1000,
+              });
+              if (duplicate.status !== 'failed' || !/2 slice-ready witnesses/.test(duplicate.why || '')) {
+                throw new Error(`${vp.label}: duplicate live slice-ready binding control stayed green (${JSON.stringify({ duplicate, rows: reloadReadyWitnesses })})`);
+              }
+              reloadBindingControlRun = true;
+            } finally {
+              reloadCaptureArmed = false;
+              reloadEvents.length = 0;
+              reloadReleaseWitnesses.length = 0;
+              reloadReadyWitnesses.length = 0;
+              reloadTopNavigations.length = 0;
+              reloadFatalEvents.length = 0;
+              reloadCommands.length = 0;
+              requestUrls.clear();
+            }
+          }
           const phaseId = crypto.randomUUID();
           reloadEvents.length = 0;
           reloadReleaseWitnesses.length = 0;
+          reloadReadyWitnesses.length = 0;
+          reloadTopNavigations.length = 0;
+          reloadFatalEvents.length = 0;
+          reloadCommands.length = 0;
           requestUrls.clear();
           reloadCaptureArmed = true;
           try {
@@ -1891,7 +2086,7 @@ async function main() {
             if (!armed?.armed || armed.token !== priorToken || armed.phase?.id !== phaseId) {
               throw new Error(`${vp.label}/preference fixture import: could not arm observed replacement transaction (${JSON.stringify(armed)})`);
             }
-            ready = await waitForReload('preference fixture import', priorToken, priorLoaderId, phaseId);
+            ready = await waitForReload('preference fixture import', priorToken, priorFrame, priorContext);
             runReloadEvidence.push({ viewport: vp.label, ...ready.reloadEvidence });
           } finally {
             reloadCaptureArmed = false;
@@ -2767,6 +2962,7 @@ async function main() {
   if (!hiddenOpenerControlRun && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {
     instrumentFailures.push('hidden panel-opener focus fallback control never ran');
   }
+  if (!reloadBindingControlRun) instrumentFailures.push('live slice-ready binding controls never ran');
   const browser = browserVersions.length ? {
     ...browserVersions[0],
     consistentAcrossViewports: browserVersions.every((row) => JSON.stringify(row) === JSON.stringify(browserVersions[0])),

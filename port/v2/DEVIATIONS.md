@@ -938,7 +938,10 @@ duplicates).
   ordinary persistence, cancels the preference debounce, removes renderer-resize listeners,
   destroys Pixi with global and child texture resources, detaches its view, and collapses both the
   application and backdrop canvases to at most 1×1 before one task boundary and `location.reload()`.
-  The optional CDP binding exports those postconditions outside the dying execution context. It is
+  The optional CDP binding exports those postconditions, the replacement reason and outgoing
+  document token outside the dying execution context. The replacement's separate optional
+  `cf-v2-slice-ready/v1` tail binding is emitted only after load, persistence, complete input/slice
+  wiring, a first ticker turn, an animation frame and a later task. It is
   intentionally not a `pagehide` listener: browser-cache restoration must not revive a destroyed
   application. This addresses a plausible 8K old/new backing-store overlap without claiming CI
   #201 proved GPU exhaustion; that run proved only the replacement-lifecycle ambiguity described
@@ -1092,6 +1095,36 @@ duplicates).
   `publishable:false`. Prior #201 remains red without retry. `d801338` underlies the
   non-executable handoff tip; exact tip/upstream/check state is read live, the final
   pushed tip requires matching green CI, and the separate-origin human playtest remains open.
+
+  Matching test-battery #202, run `31594595288` / job `94106996466`, completed once without retry
+  at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53` and is **RED**. Every earlier root/
+  product/v2 gate and `smoke:ci` passed. Only desktop-8k glass import/replacement instrument-failed
+  when the former serial observer first returned at 61.163 seconds. Its two frame-tree reads around
+  one awaited Runtime evaluation each inherited a 30-second command ceiling, so #202 proves
+  observer ambiguity, not a 61-second application boot, save rejection or product failure. It is
+  preserved without retry or a timeout increase.
+
+  The current instrument repair uses sticky receipt timestamps and pure
+  `replacementNavigationOutcome`, `importReleaseOutcome` and `replacementReadyOutcome` decisions.
+  It requires the prior release reason/token/context/session, a changed top-frame loader, and one
+  valid ready tail event from the exact new default context/generation/origin/session/loader/token/
+  URL before the phase-owned deadlines. A single at-most-2-second Runtime call confirms that exact
+  context. The payload's browser-native `performanceNow` must be strictly below 20 seconds, and an
+  exact-boundary control fails, so observer descheduling cannot compress a genuinely late boot.
+  Fatal events remain sticky outside the bounded diagnostic ring. Missing, duplicate,
+  malformed, wrong-context and just-late events fail closed. The ready event proves complete boot
+  publication plus a serviced event-loop turn, not the separate 50 ms answerability metric.
+
+  Its full dirty diagnostic is explicitly non-authoritative: base
+  `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`, digest
+  `d247209d66a7d3a26ffd484066fecc92f05b4511e542f917f848715fcc53d295`.
+  Glass passed 12/12 viewports, 50/50 controls, all 12 replacement witnesses and 0 findings/
+  instrument failures/retries, with 170–216 ms replacement totals. Desktop-8k released both
+  5,461×3,072 stores to 1×1, committed in 32 ms, emitted ready 146 ms later
+  (`performanceNow` 176.2 ms), confirmed in 2 ms, and completed in 216 ms. This remains
+  repair-direction evidence pending a clean commit, exact
+  sequential battery and matching CI; human play, Ready, merge, version, preview publication and
+  deployment boundaries are unchanged.
 - ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
   the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson

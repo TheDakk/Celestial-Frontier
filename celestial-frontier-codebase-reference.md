@@ -92,19 +92,31 @@
 > `planetside-portrait-trail-fallback` prove both directions.
 >
 > The matrix import fixture is witnessed as three observable phases rather than
-> a blind reload delay. `reloadProbeDecision()` and `advanceReloadClocks()` bind
-> the explicit import phase to the old per-document token/top-frame loader,
-> allow 20 seconds for the import transaction, allow 5 seconds for an observed
-> reload to commit a changed stable loader, and only then start the replacement
-> document's independent 20-second boot budget. Old-context/global loss alone is
-> not navigation or boot evidence. Success requires exactly one valid
-> `cf-v2-reload-release/v1` witness plus a ready replacement whose loader and
-> document token both changed. `replacement-document-loader-token-phase` and
+> a blind reload delay. Sticky CDP event receipts—not a serial polling command—
+> bind the explicit import to its old document token, default top execution
+> context and top-frame loader; allow 20 seconds for exactly one valid
+> `cf-v2-reload-release/v1` witness; allow 5 seconds from that receipt for a
+> top-frame commit with a changed loader; and only then start the replacement
+> document's independent 20-second boot budget. `replacementNavigationOutcome()`,
+> `importReleaseOutcome()` and `replacementReadyOutcome()` validate receipt time,
+> exact target session, default top-frame context identity/generation/origin,
+> expected URL, changed loader and changed document token. Old-context/global loss
+> alone is not navigation or boot evidence. The replacement emits the optional
+> `cf-v2-slice-ready/v1` tail binding after load, complete slice/input wiring,
+> persistence readiness, the first ticker turn, an animation frame and a later
+> task. One phase-owned, at-most-2-second `Runtime.evaluate` then confirms that
+> exact ready context; `browsercdp.send()` permits a shorter per-command timeout
+> but never one above its connection-wide ceiling. Its browser-native
+> `performanceNow` must also be strictly below 20 seconds; an exact-boundary
+> control fails, preventing Node observer descheduling from laundering a late
+> product boot. The tail binding witnesses
+> boot publication plus a serviced event-loop turn, not the separate 50 ms
+> answerability metric. `replacement-document-loader-token-phase` and
 > `reload-resource-release` negative-control same-loader token mutation, lost/
-> rejected phases, context/loader evaluation races, stalled or just-late transitions, stalled
-> new-loader boot, retained canvases, unreleased renderer and over-budget backing
-> pixels. Bounded Page/Runtime/Inspector/Network rows diagnose crashes,
-> unreachable navigation, replacement exceptions and fatal document loads; the
+> rejected phases, wrong/duplicate/malformed session-context-loader-token events,
+> stalled or just-late transitions, retained canvases, unreleased renderer and
+> over-budget backing pixels. Sticky fatal Page/Runtime/Inspector/Network events
+> remain authoritative even when the bounded diagnostic ring rolls over; the
 > command never retries a red run.
 >
 > `scheduleReplacementReload()` is the product half of that contract. All three
@@ -140,6 +152,27 @@
 > the former 20-second replacement wait while the old loader remained and its
 > slice token/import phase were absent. That is not a save-classifier rejection
 > or reported repository-write error.
+>
+> Matching test-battery #202, run
+> [`31594595288`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288) /
+> job [`94106996466`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288/job/94106996466),
+> completed once without retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`
+> and is **RED**. Every earlier root/product/v2 gate and `smoke:ci` passed. Only
+> desktop-8k glass import/replacement instrument-failed after its first observer
+> result arrived at 61.163 seconds. The former probe serially awaited three CDP
+> commands that each owned a 30-second ceiling, so this is ambiguous instrument
+> latency—not evidence of a 61-second product boot, save rejection or product
+> failure—and remains preserved without retry.
+>
+> The event-owned repair has one explicitly non-authoritative dirty diagnostic at
+> base commit `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`, working-tree digest
+> `d247209d66a7d3a26ffd484066fecc92f05b4511e542f917f848715fcc53d295`.
+> Full glass passed 12/12 viewports, 50/50 controls, all 12 replacement witnesses,
+> and 0 findings / instrument failures / retries; replacement totals were
+> 170–216 ms. Desktop-8k recorded 5,461×3,072→1×1 for both outgoing canvases,
+> release→commit in 32 ms, commit→ready in 146 ms (`performanceNow` 176.2 ms),
+> a 2 ms bounded confirmation, and 216 ms total. This proves the repair direction only. It cannot replace the
+> forthcoming clean commit, exact sequential battery, or matching CI.
 >
 > Immutable executable evidence source `d80133876b7156dc32b19be3e97222921deea9f0`
 > passed its complete exact battery: root

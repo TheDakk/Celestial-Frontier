@@ -119,16 +119,26 @@
 > Legacy `bootperf.js` shares their executable resolver and pinned `ws` transport
 > but retains its fixed-port/startup/cleanup lifecycle; unresolved performance metrics fail rather
 > than print a profile-shaped success. The glass matrix's import/reload contract
-> is likewise fail-closed. The current repair treats import settlement, navigation
-> commit, and replacement boot as three separately witnessed phases: import owns
-> a 20-second transaction bound, the old top-frame loader gets 5 seconds to change
-> after reload is observed, and only that changed stable loader starts the new
-> document's independent 20-second boot budget. Exactly one
-> `cf-v2-reload-release/v1` witness must first prove Pixi renderer/stage release,
+> is likewise fail-closed. Import settlement, navigation commit, and replacement
+> boot are three separately witnessed phases: exactly one
+> `cf-v2-reload-release/v1` event must arrive within the 20-second import bound and
+> prove Pixi renderer/stage release,
 > application-view detachment, and collapse of the application/backdrop canvases
-> to at most 1×1. A vanished old execution context is not navigation evidence by
-> itself, and only a ready new document with both changed loader and changed token
-> may pass.
+> to at most 1×1; the top-frame loader then gets 5 seconds to commit a change; and
+> only that committed loader starts the new document's independent 20-second boot
+> budget. A vanished old execution context is not navigation evidence by itself.
+> The replacement's optional `cf-v2-slice-ready/v1` tail event is emitted after
+> load, complete slice/input wiring, persistence readiness, the first ticker turn,
+> an animation frame and a later task. Glass accepts exactly one event from the
+> exact target session and new default top context/generation/origin on the changed
+> loader, with the expected URL and changed token, then runs one phase-owned,
+> at-most-2-second confirmation in that context. Sticky receipt timestamps—not
+> serial Page/Runtime polling—own the deadlines. The payload's browser-native
+> `performanceNow` must be strictly below 20 seconds, with the exact boundary a
+> failing control, so observer descheduling cannot make a genuinely late product
+> boot look timely. This witnesses complete boot
+> publication plus a serviced event-loop turn; it is not the 50 ms answerability
+> criterion, which later driven outcomes still prove.
 >
 > The product produces that witness from one code-owned path used by its three
 > intentional reloads: Training restart, supported expedition import, and the
@@ -187,6 +197,27 @@
 > reload was requested, not a save-classifier rejection, `import-rejected`, or
 > reported repository-write error. It must not be erased by rerunning unchanged
 > code.
+>
+> Matching test-battery #202, run
+> [`31594595288`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288) /
+> job [`94106996466`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288/job/94106996466),
+> completed once without retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`
+> and remains **RED**. Every earlier root/product/v2 gate and `smoke:ci` passed;
+> only desktop-8k glass import/replacement instrument-failed when the former
+> observer first returned at 61.163 seconds. That observer serially awaited three
+> CDP commands with 30-second ceilings, so #202 does not prove a 61-second product
+> boot, save rejection or presentation failure. It is preserved instrument
+> ambiguity, without retry or a timeout increase.
+>
+> The event-owned repair's full dirty diagnostic is explicitly non-authoritative:
+> base `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`, working-tree digest
+> `d247209d66a7d3a26ffd484066fecc92f05b4511e542f917f848715fcc53d295`.
+> Glass passed 12/12 viewports, 50/50 controls, all 12 replacement witnesses and
+> 0 findings/instrument failures/retries; replacement totals were 170–216 ms.
+> Desktop-8k collapsed both 5,461×3,072 stores to 1×1, recorded release→commit
+> in 32 ms, commit→ready in 146 ms (`performanceNow` 176.2 ms), a 2 ms
+> confirmation and 216 ms total. A clean
+> commit, exact sequential battery and matching CI are still required.
 >
 > Immutable executable evidence source
 > `d80133876b7156dc32b19be3e97222921deea9f0` passed its exact sequential battery. Root

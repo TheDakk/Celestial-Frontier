@@ -105,6 +105,7 @@ gSeam.customNames = customNames;   /* one app-owned map shared with descriptor s
 extensions.add(CullerPlugin);   /* offscreen sprites skip render — thousands of stars, one flag */
 
 const app = new Application();
+const DOCUMENT_TOKEN = crypto.randomUUID();
 type ReloadCanvasRelease = {
   beforeWidth: number;
   beforeHeight: number;
@@ -117,6 +118,7 @@ type ReloadReleaseWitness = {
   status: 'released' | 'release-failed';
   error: string | null;
   reason: ReplacementReloadReason;
+  documentToken: string;
   rendererReleased: boolean;
   stageReleased: boolean;
   viewDetached: boolean;
@@ -129,6 +131,7 @@ const unreleasedCanvas = (): ReloadCanvasRelease => ({
 let releaseRendererForReload = (reason: ReplacementReloadReason): ReloadReleaseWitness => ({
   schema: 'cf-v2-reload-release/v1', status: 'release-failed',
   error: 'renderer release hook was not initialized', reason,
+  documentToken: DOCUMENT_TOKEN,
   rendererReleased: false, stageReleased: false, viewDetached: false,
   appCanvas: unreleasedCanvas(), backdropCanvas: unreleasedCanvas(),
 });
@@ -165,6 +168,7 @@ function scheduleReplacementReload(claim: ReplacementTransaction): void {
     witness = {
       schema: 'cf-v2-reload-release/v1', status: 'release-failed',
       error: error instanceof Error ? error.message : String(error), reason,
+      documentToken: DOCUMENT_TOKEN,
       rendererReleased: false, stageReleased: false, viewDetached: false,
       appCanvas: unreleasedCanvas(), backdropCanvas: unreleasedCanvas(),
     };
@@ -2961,7 +2965,8 @@ async function loadSave(): Promise<void> {
     if (!complete && !error) error = 'Pixi/canvas release postcondition failed';
     return {
       schema: 'cf-v2-reload-release/v1', status: complete ? 'released' : 'release-failed',
-      error, reason, rendererReleased, stageReleased, viewDetached, appCanvas, backdropCanvas,
+      error, reason, documentToken: DOCUMENT_TOKEN,
+      rendererReleased, stageReleased, viewDetached, appCanvas, backdropCanvas,
     };
   };
   app.stage.addChild(world);
@@ -2976,7 +2981,7 @@ async function loadSave(): Promise<void> {
      through 2D drawImage without preserveDrawingBuffer, so the smoke asks
      Pixi's extract (which re-renders) instead of scraping the canvas */
   (window as unknown as Record<string, unknown>).__CF_SLICE__ = {
-    documentToken: crypto.randomUUID(),   /* reload/import waits must reject the prior document's still-live handle */
+    documentToken: DOCUMENT_TOKEN,   /* reload/import waits must reject the prior document's still-live handle */
     app, world, cam, camT,   /* camT drives the zoom-transition smoke leg */
     /* test API for tools/slicesmoke.mjs — drives the SAME functions the
        pointer handlers call; no parallel logic to drift */
@@ -3327,4 +3332,32 @@ async function loadSave(): Promise<void> {
     }
     goUp();
   });
+  /* Runtime.addBinding installs this optional readiness seam before the
+     document starts. Emit only after the complete slice, ticker, pointer,
+     keyboard and persistence wiring above exists, allow the first animation
+     frame, then cross one task boundary. This narrowly witnesses complete
+     boot publication plus a serviced event-loop turn; later matrix actions
+     remain the outcome/answerability proof. Ordinary play has no binding. */
+  const emitBootReady = (): void => {
+    requestAnimationFrame(() => {
+      if (tickerTicks < 1) { emitBootReady(); return; }
+      setTimeout(() => {
+        try {
+          const binding = (window as unknown as Record<string, unknown>).__cfSliceReadyWitness;
+          if (typeof binding !== 'function') return;
+          (binding as (payload: string) => unknown)(JSON.stringify({
+            schema: 'cf-v2-slice-ready/v1', status: 'ready', token: DOCUMENT_TOKEN,
+            href: location.href, readyState: document.readyState,
+            saveReady: !!save, viewConnected: app.canvas.isConnected,
+            rendererReady: !!app.renderer && app.canvas.width > 1 && app.canvas.height > 1,
+            stageReady: !!app.stage, tickerTicks,
+            backingWidth: app.canvas.width, backingHeight: app.canvas.height,
+            performanceNow: performance.now(),
+          }));
+        } catch { /* the evidence harness fails closed if its optional seam is broken */ }
+      }, 0);
+    });
+  };
+  if (document.readyState === 'complete') emitBootReady();
+  else addEventListener('load', emitBootReady, { once: true });
 })();

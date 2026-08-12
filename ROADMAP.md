@@ -37,7 +37,11 @@
   test-battery #201, run
   [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
   job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
-  remains preserved red without retry on the superseded `4560269` source. Draft PR #11 is open at
+  remains preserved red without retry on the superseded `4560269` source. Test-battery #202,
+  run [`31594595288`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288) /
+  job [`94106996466`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288/job/94106996466),
+  likewise remains preserved red without retry at pushed `93f75a93`; its only failure is the
+  ambiguous desktop-8k serial readiness observer described below. Draft PR #11 is open at
   https://github.com/TheDakk/Celestial-Frontier/pull/11.
 - Read next: `PROCESS_LAWS.md` · `PARALLEL_GIT_PROTOCOL.md` · `README.md` ·
   `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `SAVE_SYSTEM.md` ·
@@ -99,6 +103,15 @@ Evidence is now structured and provenance-bound:
   and are labeled **AUTOMATED — NOT A HUMAN PLAYTEST**;
 - the development-preview package is bound to a full commit, source tree, lockfile and byte
   hashes, visibly marked DEV, and refused on production/path origins.
+
+Replacement readiness is now event-owned rather than serialized through Page/Runtime polls.
+Exactly one prior-context release, a changed top-frame-loader commit and one optional
+`cf-v2-slice-ready/v1` event from the new default top context/session/generation/origin/loader/
+token/URL must arrive inside the independent import/navigation/boot deadlines. The app emits that
+tail event after load, persistence and complete slice/input wiring, at least one ticker turn, an
+animation frame and a later task; its browser-native timestamp must itself be strictly below 20
+seconds. One at-most-2-second command confirms the exact context. This means complete boot
+publication plus a serviced turn, not the separate 50 ms answerability outcome.
 
 The exact local review artifact is bound to the recommended separate origin
 `https://dev-celestialfrontier.github.io`, but no preview host or publication is authorized or
@@ -205,6 +218,28 @@ Its exact clean sequential battery passed:
   `e59cfe336ef3c5bde06423bf127e922a27a9bb0f4055014c3d03629244a308d2`, with
   `publishable: false`.
 
+Matching test-battery #202, run
+[`31594595288`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288) /
+job [`94106996466`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288/job/94106996466),
+completed once without retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`
+and is **RED**. Every preceding root/product/v2 gate and `smoke:ci` passed. Only
+desktop-8k glass import/replacement instrument-failed when its first observer result arrived at
+61.163 seconds. That loop serially awaited two frame-tree calls around an awaited Runtime call,
+each with a 30-second command ceiling; #202 therefore proves observer ambiguity, not a 61-second
+product boot, save rejection or product failure. Preserve it without retry or a timeout increase.
+
+The current event-owned repair has a post-clock-guard full dirty diagnostic at base `93f75a93`,
+working-tree digest `d247209d66a7d3a26ffd484066fecc92f05b4511e542f917f848715fcc53d295`:
+glass passed
+12/12 viewports, 50/50 controls, all 12 replacement witnesses and 0 findings/instrument failures/
+retries, with 170–216 ms replacement totals. Desktop-8k released both 5,461×3,072 stores to
+1×1, committed in 32 ms, emitted ready 146 ms later (`performanceNow` 176.2 ms), confirmed in
+2 ms and completed in 216 ms.
+After the browser-native-clock guard landed, a targeted desktop-8k diagnostic also passed in
+215 ms with `performanceNow` 178.7 ms and dirty digest beginning `6162f109`; concurrent doc edits
+make that digest intentionally non-final. Both runs are **diagnostic only**. A clean executable
+commit, exact sequential battery and matching CI are still required before preview/human play.
+
 `d801338` underlies the non-executable handoff tip. Live Git/PR state decides its exact current
 tip/upstream/check status; the final pushed tip requires matching green CI before preview/human
 play may begin.
@@ -251,8 +286,9 @@ human play remains the judge of motion, readability, comfort and perceived quali
 sequential battery recorded above and underlies a non-executable handoff tip. Resolve exact current
 tip/upstream/check state live; prior #201 remains preserved red without retry.
 
-**GitHub step:** keep PR #11 draft and preserve red run `31586917924` / job `94082765087`
-without retry. Read `git rev-parse HEAD`, `git status --short --branch`, and PR #11 checks; if
+**GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`)
+and #202 (`31594595288` / `94106996466`) without retry. Read `git rev-parse HEAD`,
+`git status --short --branch`, and PR #11 checks; if
 `origin/openai/mac` is behind the current tip, push it, then require matching green CI for that
 final pushed tip. Only after green CI, obtain host approval, publish the separate-origin preview,
 complete/record human play, resolve/retest findings, and let Nick click **Ready for review** before
@@ -285,9 +321,11 @@ merged PR #10.
   > vertically scrollable Planetside. The three intentional replacement reloads explicitly release
   > Pixi/global resources, detach and collapse the outgoing application/backdrop canvases, and cross
   > one task boundary before navigation without a generic pagehide teardown. The responsive gate
-  > requires that release witness, then independently observes a 20-second import transaction,
-  > 5-second navigation commit and 20-second new-loader boot; it still requires changed loader plus
-  > changed document token with no retry. Adds provenance-bound
+  > requires that release witness, then uses sticky CDP receipt times to independently observe a
+  > 20-second import transaction, 5-second navigation commit and 20-second new-loader boot. Exactly
+  > one `cf-v2-slice-ready/v1` event from the new default top context/session/loader/token/URL, with
+  > a browser-native timestamp strictly below the boot bound, precedes one at-most-2-second exact-
+  > context confirmation; no serial poll or retry owns the verdict. Adds provenance-bound
   > smoke, glass and automated-persona reports plus commit-bound development-preview packaging;
   > pins the CI browser at job scope so a later preview process cannot silently switch from Chrome
   > to Linux Edge when a preceding step's environment expires. Moves the root 10-viewport layout
@@ -297,8 +335,10 @@ merged PR #10.
   > local commit `d80133876b7156dc32b19be3e97222921deea9f0`: root fingerprint/smoke/preflight
   > and sealed layout 787/787, v2 273 pass / 1 skip plus every gate/selftest, one-attempt smoke,
   > glass 12/12 with 50/50 controls and 12 valid release witnesses, nine automated personas, and
-  > preview browser PASS. Prior #201 (run `31586917924`, job `94082765087`) remains preserved red
-  > without retry. Exact tip/upstream/check status is read live; the final pushed non-executable
+  > preview browser PASS. Prior #201 (`31586917924` / `94082765087`) and #202
+  > (`31594595288` / `94106996466`) remain preserved red without retry; #202 exposed serial CDP
+  > observer latency rather than a proven product failure. Exact tip/upstream/check status is read
+  > live; the final pushed non-executable
   > handoff tip requires matching green CI. The local review artifact is bound to
   > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. After the
   > matching CI is green, complete and record a multi-lens human playtest against that exact preview before marking
