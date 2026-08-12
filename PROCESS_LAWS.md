@@ -615,8 +615,9 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > 34 ms release→commit, 131 ms commit→ready, outgoing 2,365×1,330 twins →1×1, and the
 > replacement at 6,290,900 combined pixels. Nine automated-only personas and terminal-only
 > 635/717/77/151 ms performance passed. Exact preview
-> `dev-preview-exact-6554b2b-20260812T184000Z` passed Edge 151 at the separate dev origin with
-> `publishable:false`. Live Git/PR state determines the forthcoming/current docs-only tip; the
+> `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151 over loopback,
+> bound to the expected separate development origin, with `publishable:false`. Live Git/PR state
+> determines the forthcoming/current docs-only tip; the
 > selected pushed tip still requires matching CI, and no human, host, Ready, merge, release,
 > deploy, or version authority follows.
 

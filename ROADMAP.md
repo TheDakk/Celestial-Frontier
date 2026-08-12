@@ -147,7 +147,7 @@ of this batch.
 ### Evidence status and stop condition
 
 The mixed-source smoke refusal and immutable `7d9980e` ticker-quiescence battery remain preserved
-verbatim in `ROADMAP_ARCHIVE.md`; they are prior evidence, not the current #204 certification.
+verbatim in `ROADMAP_ARCHIVE.md`; they are prior evidence, not current repair authority.
 
 The superseded `46fb627` exact battery and #204 chronology moved verbatim to
 `ROADMAP_ARCHIVE.md`. #201–#207 remain preserved red without retry.
@@ -214,8 +214,8 @@ replacement stayed 6,290,900 pixels combined. Nine automated-only personas passe
 `08328ed2c760b722caa9f76259fe22a8dfcf1e36624086d388e19628774eb176`), and
 terminal-only performance was 635/717/77/151 ms.
 
-Preview `dev-preview-exact-6554b2b-20260812T184000Z` passed Edge 151 at the separate
-development origin with `publishable:false`: manifest
+Preview `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151
+over loopback, bound to the expected separate development origin, with `publishable:false`: manifest
 `98a64b750d1def5c7895cbd780a35558863f000c5a3fbcf4c3945dd927d5ce04`, 37 files /
 10,186,537 bytes, content `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`,
 tree `986116980e7b7a224f210508b4872b5d7f5621ac`, registry
@@ -367,8 +367,9 @@ merged PR #10.
   > 0 findings/10 screenshots, certifying glass 12/12 and 57/57 with exact 6/7/8 tails,
   > empty blocked/omitted ledgers and zero findings/instrument failures/retries, nine
   > automated-only personas, and terminal-only performance. Exact preview
-  > `dev-preview-exact-6554b2b-20260812T184000Z` passed Edge 151 at the separate dev origin
-  > with `publishable:false`; its content SHA-256 is
+  > `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151 over
+  > loopback, bound to the expected separate development origin, with `publishable:false`;
+  > its content SHA-256 is
   > `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`. The frozen
   > 3,145,728-pixel/canvas repair has exact clean executable evidence at immutable
   > `df1c28b31d15cd554d36f9b4ca65d8765366a5df`: root layout 787/787, v2 273/1 plus

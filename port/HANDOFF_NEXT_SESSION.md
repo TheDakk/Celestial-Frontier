@@ -434,8 +434,8 @@ portrait was 196 ms with tail timestamps 1786574427588/7591/7591 and command dur
 (JSON `fc8d6da1e0b18d824b5403121e87b02ee9423d9592f3221d2ff1819d20629e05`;
 Markdown `08328ed2c760b722caa9f76259fe22a8dfcf1e36624086d388e19628774eb176`), plus
 terminal-only 635/717/77/151 ms performance. Exact preview
-`dev-preview-exact-6554b2b-20260812T184000Z` passed Edge 151 at the separate dev origin
-with `publishable:false`: manifest
+`dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151 over loopback,
+bound to the expected separate development origin, with `publishable:false`: manifest
 `98a64b750d1def5c7895cbd780a35558863f000c5a3fbcf4c3945dd927d5ce04`, 37 files /
 10,186,537 bytes, content `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`,
 tree `986116980e7b7a224f210508b4872b5d7f5621ac`, registry
@@ -460,8 +460,8 @@ arm/import→release/release→commit/commit→ready phases 2/11/33/127 ms, targ
 `c10c9e33542ed57b4c51683c0ddf3f1bbc468696a025e88ef2d1e500209581bc`; Markdown
 `1c9961515028a716ba064ca32ea9dd3ef2d41118cfde4c76b24c16520daa2d14`), and
 terminal-only 581/659/73/152 ms painted/answerable/press→panel/rebuild passed.
-Preview `dev-preview-exact-df1c28b-20260812T211642Z`
-passed Edge 151 at the separate dev origin with `publishable:false`, manifest
+Preview `dev-preview-exact-df1c28b-20260812T211642Z` was browser-smoked under Edge 151 over
+loopback, bound to the expected separate development origin, with `publishable:false`, manifest
 `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`, 37 files /
 10,186,537 bytes, content
 `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`, tree
@@ -589,8 +589,9 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > certifying glass 12/12 and 57/57 with exact 6/7/8 tails, empty blocked/omitted
   > ledgers and zero findings/instrument failures/retries, nine automated-only personas,
   > terminal-only performance, and Edge 151 preview
-  > `dev-preview-exact-6554b2b-20260812T184000Z` at the separate dev origin with
-  > `publishable:false` and content
+  > `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151 over
+  > loopback, bound to the expected separate development origin, with `publishable:false`
+  > and content
   > `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`.
   > The #206 repair passed the exact
   > clean sequential battery at immutable executable source

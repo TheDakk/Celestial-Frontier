@@ -1127,7 +1127,8 @@ duplicates).
   1/10 ms and heartbeats 0/0 ms; outgoing 2,365×1,330 stores →1×1 and replacement
   stayed 6,290,900 pixels combined. Nine automated-only personas and terminal-only
   581/659/73/152 ms performance passed. Preview `dev-preview-exact-df1c28b-20260812T211642Z`
-  passed Edge 151 at the separate dev origin with `publishable:false`. That source remains
+  was browser-smoked under Edge 151 over loopback, bound to the expected separate development
+  origin, with `publishable:false`. That source remains
   prior #206 evidence; current #207 repair authority is the clean `6554b2b` block below. No host/human/Ready/
   merge/release/deploy/version authority follows.
 - ★ **D-UI-6 — adjacent import/release bindings share one ordinal ruler (exact clean local
@@ -1166,8 +1167,9 @@ duplicates).
   hashes are `139b10ea16d17c109d5b624fa75daf73291d98f5ad8fe7df569501829ab5f844` /
   `a05ba65e28ac94b146b051164c1b22195bfaa7509bd47d9631561fc394920b6c`.
   Nine automated-only personas and terminal-only 635/717/77/151 ms performance passed.
-  Preview `dev-preview-exact-6554b2b-20260812T184000Z` passed Edge 151 at the separate
-  dev origin with `publishable:false` and content
+  Preview `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151
+  over loopback, bound to the expected separate development origin, with `publishable:false`
+  and content
   `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`.
   This source underlies the forthcoming/current docs-only tip; the selected pushed tip still
   requires matching CI. No human, host, Ready, merge, release, deployment, or version authority follows.
