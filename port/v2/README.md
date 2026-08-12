@@ -387,8 +387,8 @@ automated-only personas passed (JSON
 `fc8d6da1e0b18d824b5403121e87b02ee9423d9592f3221d2ff1819d20629e05`; Markdown
 `08328ed2c760b722caa9f76259fe22a8dfcf1e36624086d388e19628774eb176`), plus
 terminal-only 635/717/77/151 ms performance. Preview
-`dev-preview-exact-6554b2b-20260812T184000Z` passed Edge 151 at the separate dev origin
-with `publishable:false`: manifest
+`dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151 over loopback,
+bound to the expected separate development origin, with `publishable:false`: manifest
 `98a64b750d1def5c7895cbd780a35558863f000c5a3fbcf4c3945dd927d5ce04`, content
 `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`, tree
 `986116980e7b7a224f210508b4872b5d7f5621ac`, registry

@@ -210,8 +210,9 @@ zero findings/instrument failures/retries; all nine automated-only personas and 
 performance passed. Smoke/glass reports are
 `139b10ea16d17c109d5b624fa75daf73291d98f5ad8fe7df569501829ab5f844` /
 `a05ba65e28ac94b146b051164c1b22195bfaa7509bd47d9631561fc394920b6c`.
-Exact preview `dev-preview-exact-6554b2b-20260812T184000Z` passed
-Edge 151 at the separate development origin with `publishable:false`. Its manifest SHA-256 is
+Exact preview `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151
+over loopback, bound to the expected separate development origin, with `publishable:false`.
+Its manifest SHA-256 is
 `98a64b750d1def5c7895cbd780a35558863f000c5a3fbcf4c3945dd927d5ce04`, covering
 37 files /10,186,537 bytes, content
 `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`, exact tree

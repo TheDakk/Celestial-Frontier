@@ -404,8 +404,8 @@
 > 131 ms, ready `performanceNow` 163.6 ms, outgoing 2,365×1,330 twins →1×1, and
 > replacement 6,290,900 pixels combined. Nine automated-only personas and terminal-only
 > 635/717/77/151 ms performance passed. Preview
-> `dev-preview-exact-6554b2b-20260812T184000Z` passed Edge 151 at the separate dev origin
-> with `publishable:false` and content SHA-256
+> `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151 over loopback,
+> bound to the expected separate development origin, with `publishable:false` and content SHA-256
 > `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`.
 > This source underlies the forthcoming/current docs-only tip; the selected pushed tip requires
 > matching CI. No host/human/Ready/merge/release/deploy/version authority follows.
