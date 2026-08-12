@@ -142,10 +142,11 @@
 
     /* ---- rail panels (the one-panel law lives in panels.ts) ---- */
     .panel { position: fixed; top: calc(var(--topbar-h) + 6px); left: 8px;
-      bottom: auto; max-height: calc(100vh - var(--topbar-h) - 96px);   /* HUG the content (bot critique #3) */
+      bottom: auto; max-height: calc(100vh - var(--topbar-h) - var(--dock-h) - env(safe-area-inset-bottom, 0px) - 30px);   /* hug content, clear measured dock */
       width: min(360px, 92vw); overflow: auto; z-index: 22;
       border-radius: 14px; padding: 10px 14px 14px; box-sizing: border-box;
       box-shadow: 0 8px 28px rgba(0,0,0,0.5); }
+    #guidepanel { z-index: 24; }   /* player-requested help must sit above the z23 survey card */
     .panel h3 { margin: 2px 0 10px; font-size: 11.5px; letter-spacing: 0.14em;
       text-transform: uppercase; color: #e8c87a;
       border-bottom: 1px solid rgba(34,48,74,0.6); padding-bottom: 8px; }
@@ -192,9 +193,10 @@
     <button id="dockatlas" aria-label="Star Atlas"><span class="ico">🌐</span>atlas</button>
     <button id="dockcharts" aria-label="star charts"><span class="ico">📈</span>charts</button>
     <button id="docksets" aria-label="settings"><span class="ico">⚙</span>settings</button>
-    <button id="docksave" aria-label="save import"><span class="ico">📥</span>save</button>
+    <button id="dockguide" aria-label="Guide"><span class="ico">?</span>guide</button>
   </nav>
   <aside id="setpanel" class="glass panel" aria-label="Settings"></aside>
+  <aside id="guidepanel" class="glass panel" aria-label="Guide"></aside>
   <aside id="codexpanel" class="glass panel" aria-label="Compendium"></aside>
   <aside id="recpanel" class="glass panel" aria-label="Records"></aside>
   <aside id="atlaspanel" class="glass panel" aria-label="Star Atlas"></aside>

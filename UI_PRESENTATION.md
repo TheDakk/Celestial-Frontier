@@ -25,6 +25,38 @@
 > a stage-0 non-Sol fine-star Charter rejection and a deterministic stage-2
 > fine star, compares exact `{seed,x,y}` identity, and includes buried-action
 > controls.
+> Planet cards bind the complete captured galaxy+star `{seed,x,y}` identity;
+> smoke deliberately moves an Earth card to a same-seed/different-coordinate
+> system and requires Land, Atlas and Share to remain unavailable.
+> On touch, Planetside supplies a minimum-44px **Leave world** action that calls
+> the same ascent state machine as Escape/right-click; returning to orbit never
+> depends on a keyboard or a precision zoom-out gesture.
+>
+> The eighth phone-dock slot is now a real **Guide — v2 field manual** rather
+> than the old import shortcut. Its seven bounded topics cover the core
+> live-slice controls and safety rules it currently documents. It persists
+> `seenGuide`; save import moved without loss to **Settings → Bring expedition**.
+> This is not the legacy
+> searchable Guide, tooltip deep-link network, or Advanced Briefings surface,
+> all of which remain open port scope. The slice's Field Training likewise owns
+> six real chart/travel/landing lessons plus an honest graduation, not the full
+> legacy 21-step curriculum.
+> **Settings → Bring expedition** opens above every dock/panel as a true
+> `aria-modal` dialog, keeps Tab focus inside, and lets Escape close only the
+> dialog before restoring Settings focus. The phone gate injects its old z=11
+> layer and must observe the dock become exposed.
+> On a 390×844 phone, browser smoke also opens the real Guide panel and requires
+> at least 8px clearance above the measured dock. Its negative control injects
+> the superseded fixed `max-height` and must reproduce the overlap, so the check
+> cannot pass by measuring only the dock or an unopened panel.
+> Guide alone sits at z24 above the z23 survey card; the other panels retain
+> their Training-sensitive order. A real Earth-card intersection and injected
+> z22 Guide prove that requesting help never hides the manual behind the card.
+>
+> Species art remains a lazy chunk, but readiness is now one shared Promise with
+> one latest subscriber per interested view. An idle prefetch can no longer
+> swallow a later Compendium/Planetside refill, and a 1,500-row Compendium cannot
+> retain 1,500 callbacks and replay the whole list 1,500 times when art arrives.
 >
 > Browser smoke and performance tools use the owned portable CDP lifecycle and
 > always rebuild before capture; unresolved performance metrics now fail rather
@@ -33,11 +65,12 @@
 > virtualization, scene-texture disposal, live HD planet replacement and fuller
 > reduced-motion/hidden-tab behavior remain open.
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js + the html). Three addenda at the end: THE ART-HOLD LAW (v1.8.5), THE TRAINING LAYOUT CONTRACT (v1.8.6) and its part two (v1.8.7) — a raised board must clear BOTH the lesson card and the dock.
-the end of this file: **THE ART-HOLD LAW** (shipped in v1.8.5) — nothing expensive may be synthesised
-behind a blocking full-screen surface — with the *painted ≠ answerable* distinction that found it;
-and **THE TRAINING LAYOUT CONTRACT** (round 8, CF1805-01) — a surface that can be raised above the
-lesson card must also join the `--tut-bot` positioning contract, or the raise buries the instruction.
+**STATUS:** legacy sections match `main.js` + the html as of 2026-07-31; the
+v2 overlay matches `port/v2` as of 2026-08-11. The addenda at the end preserve
+**THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
+its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
+full-screen surface, and any surface raised over training must clear the lesson
+card through `--tut-bot` while also preserving its dock clearance.
 **Purpose:** the mobile-first presentation layer — the unified topbar, the one-panel-at-
 a-time manager, the "fold language", the vista box, the cards, and the platform caps —
 plus the headless layout gate that guards them.
@@ -62,7 +95,8 @@ plus the headless layout gate that guards them.
 > worlds now PLACE creatures (they were skipped by the land block). Gas giants (`_hdDeckScene`) carry
 > native AERIAL life (Earth life unsupported). Coverage sheets: `tools/sheets/biome-coverage.js`
 > (MODE=earth|proc, EMPTY=1); integrity gate: `tools/biome-audit.js`.
-**Source of truth:** this doc is the DESIGN spec; main.js + tools/ implement it.
+**Source of truth:** this doc is the DESIGN spec; `main.js` + `tools/` implement
+the legacy sections, and `port/v2` implements the dated port overlay.
 
 ## 1. Overview
 Primary device is **iPhone** (CLAUDE.md rule 10). The whole chrome hangs off a single
@@ -70,7 +104,7 @@ unified topbar whose height is measured, not guessed, and published as CSS custo
 properties so every surface aligns. Panels obey one law — opening one closes the rest, a
 corner ✕ closes it, a tap on empty space closes it — while true modals (fights, prompts)
 stand apart. jsdom runs logic but does NO layout, so a dedicated CDP gate
-(`tools/uilayout.js`) drives real headless Edge across 9 viewports to catch the bugs the
+(`tools/uilayout.js`) drives real headless Edge across 10 viewports to catch the bugs the
 logic battery is blind to by construction.
 
 ## 2. Rules & mechanics
@@ -188,7 +222,7 @@ rule 9: the catalogue is "Compendium"; "Prime Codex"/"Cosmic Codex" keep "Codex"
 - DPR cap: **2** touch / **3** desktop. Notification cap: **60** (50 saved). Art cache
   cap: **1,200**; thumb cache cap: **500** (`_thumbSet`). Icon/portrait master: **144px**.
 - `PANELS`: 11 surfaces (7 rail with ✕, 4 header). `MODAL_SEL`: 15 modal ids.
-- Layout gate: **9 viewports** (see §6).
+- Layout gate: **10 viewports** (see §6).
 
 ## 4. Data / save fields
 UI presentation persists via settings fields (full list in SAVE_SYSTEM.md): `tips`
@@ -218,8 +252,8 @@ contract is the one UI-adjacent path that needs a re-pin — see DETERMINISM.md.
 - Cards — `#itemcard` 13747; character sheet `openSheet`/`closeSheet` 16303/16329,
   `renderDoll`/`paperdollAvatar` 10945; Shipyard `closeYard` 13884; reveal fold 8878.
 - Caps — notification 9576 / 10212; art cache 1900; 144px masters 14151.
-- Layout gate — **`tools/uilayout.js`**: VIEWPORTS list (9): iphone-se, iphone,
-  iphone-max, android, ipad-port, ipad-land, laptop, desktop, wide (uilayout.js 29–39);
+- Layout gate — **`tools/uilayout.js`**: VIEWPORTS list (10): iphone-se, iphone,
+  iphone-max, android, ipad-port, ipad-mini, ipad-land, laptop, desktop, wide;
   SURFACES 41–50; laws = ✕ corner, z-order, no side-scroll, no clipped text; drives real
   Edge over CDP; proof sheets to `tools/uisheets/`; exit 1 on any FAIL.
 
@@ -351,7 +385,7 @@ mirror `TUT_PRI_SURF`; **change one and change the other.**
 ### How it is gated
 - **smoke** proves the JS half: at steps 5 / 6 / 8 the right surface carries `.tutpri`, `#logbtn`
   never masquerades as `#log`, and the marks clear at graduation.
-- **tools/uilayout.js** proves the half smoke cannot see — a `training` probe on all 9 viewports
+- **tools/uilayout.js** proves the half smoke cannot see — a `training` probe on all 10 viewports
   that publishes `--tut-bot` the way `_tutSpot` does, then **hit-tests** (`elementFromPoint`) the
   dock chips, each open board, the card on the LAND step, and Settings › Audio.
   Replayed against the v1.8.2 build with `--url=`, it reproduces the original report on all three

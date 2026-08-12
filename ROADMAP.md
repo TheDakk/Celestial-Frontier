@@ -21,7 +21,7 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-11 · PR #10 MERGED; DRAFT PR #11 IS THE V2 HARDENING VEHICLE ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-11 · DRAFT PR #11: V2 HARDENING + PLAYER-GUIDE/DOC PARITY ◀◀◀
 
 ## ★ COLD START — READ THIS BLOCK, THEN THE LINKED REFERENCES
 ## Workspace: /Users/nick/Projects/celestial-frontier-openai-mac
@@ -40,7 +40,7 @@
 ##
 ## The current `openai/mac` batch audits and hardens the already-ported v2 slice. It repairs sparse/
 ## future-save overwrite paths and IndexedDB retry; bounds hostile cosmic epochs; validates Atlas
-## identities; prevents repeated landfall credit, stale-card actions and external-code landing
+## identities; prevents repeated landfall credit, composite-identity stale-card actions and external-code landing
 ## bypass; restores named-world CF1 round trips; fixes lazy-art subscriber races and port-authored
 ## declaration drift; strengthens SessionRNG; makes the phone dock a measured 4×2 geometry contract;
 ## enables Pixi `autoDensity` and fixes the DPR backing-canvas/CSS-size mismatch that halved phone hit coordinates;
@@ -51,22 +51,43 @@
 ## the actual Sol sprite, a real stage-0 non-Sol Charter rejection, and stage-2 entry into a
 ## deterministic visible fine star; seed+x+y identity, the former DPR-sized CSS canvas, and buried
 ## travel actions are all outcome-checked.
+##
+## The same PR now closes the live-slice player-copy gap instead of leaving the new controls only in
+## developer Markdown. The eighth phone-dock slot opens a bounded seven-topic v2 field manual; save
+## import moves to Settings → Save data → Bring expedition, preserving the measured 4×2 dock.
+## The manual covers survey/Enter actions, guarded Land and explicit minimum-44px Leave, Atlas/CF1,
+## Charter reach, Compendium/Records, Field Training restart, and protected saves. Training copy is
+## label-neutral for fresh `+ Add` versus veteran `★ Confirm`, returns planet entry to the real system
+## survey, and teaches Land rather than a nonexistent planet-zoom step. Browser smoke proves every
+## guide topic, immediate IndexedDB+reload persistence of `seenGuide`, a focus-trapped top-layer
+## import modal, exact copy/action alignment, an 8px Guide/dock clearance, and real 390×844 touch
+## Earth Land→Leave→system plus one-Escape lift-off. Missing-topic, stale-copy, old-max-height
+## Guide/dock-overlap, Guide-behind-card, low-z modal, and missing/buried-Leave controls all fail closed; a same-seed/
+## different-coordinate system cannot reuse the old planet card for Land, Atlas or Share.
+## This is honest CURRENT-SLICE guidance, not full legacy parity: the searchable legacy Guide
+## (43 authored topics, 41 currently live),
+## tooltip deep-links/advanced briefings, the full 21-step Training arc (v2 currently has six real
+## lessons plus an honest graduation), and release/update-modal/version machinery remain Phase 4 work.
 ## verification: Vitest 23 files / 257 pass / 1 skip; both TypeScript configs; artunused;
 ## artaudit 23/0; coveragegap 1,010/1,010; speccheck
 ## 454/0/0; overridecheck 1,014/1,014 routes +1,010/1,010 species and controls through CV;
 ## hybrid browser guard with 14 injected regressions; hybridmatrix/currentreviewpackage/browser
 ## selftests; real browser slice smoke; and the portable phone performance profile are green.
 ##
-## NEXT after this batch: (1) canonicalize the complete CF1 galaxy→star→planet hierarchy;
-## (2) restore imported legacy full-expedition `tsnap` before clearing it; (3) decide/fix CFB parent
-## preservation because parent loss changes hybrid combat identity; (4) virtualize the 1,500-row
-## Compendium and make thumbnail work bounded/cancellable; (5) own/destroy Pixi canvas textures and
-## add a travel-memory plateau gate; (6) attach the generated HD planet texture to the live sprite;
-## (7) persist/invalidate on epoch edges and settle hidden-tab/reduced-motion policy; (8) close the
-## remaining literal Gate-B DOM/type boundaries and split-store/CAS persistence; then advance living
-## organism rigs and biome/ecology presentation. Read next: PROCESS_LAWS.md · PARALLEL_GIT_PROTOCOL.md ·
-## port/v2/README.md · port/v2/DEVIATIONS.md · SAVE_SYSTEM.md · UI_PRESENTATION.md ·
-## BREEDING_AND_SHARING.md · PROGRESSION.md · port/HANDOFF_NEXT_SESSION.md.
+## NEXT after this batch: keep the bounded field manual, contextual hints and Training copy synchronized
+## in every player-facing batch; port the full Guide/tooltips/briefings/21-step Training/release surface
+## as their live systems arrive, never by advertising dormant v1 mechanics. Technical order: (1)
+## canonicalize the complete CF1 galaxy→star→planet hierarchy; (2) restore imported legacy full-
+## expedition `tsnap` before clearing it; (3) decide/fix CFB parent preservation because parent loss
+## changes hybrid combat identity; (4) virtualize the 1,500-row Compendium and make thumbnail work
+## bounded/cancellable; (5) own/destroy Pixi canvas textures and add a travel-memory plateau gate;
+## (6) attach the generated HD planet texture to the live sprite; (7) persist/invalidate on epoch
+## edges and settle hidden-tab/reduced-motion policy; (8) close the remaining literal Gate-B DOM/type
+## boundaries and split-store/CAS persistence; then advance living organism rigs and biome/ecology
+## presentation. Read next: PROCESS_LAWS.md · PARALLEL_GIT_PROTOCOL.md · README.md · port/v2/README.md ·
+## port/v2/DEVIATIONS.md · SAVE_SYSTEM.md · UI_PRESENTATION.md · QUESTS_AND_CHAPTERS.md ·
+## BREEDING_AND_SHARING.md · LINEAGE_AND_BREEDING.md · ART_DIRECTION.md · PROGRESSION.md ·
+## port/HANDOFF_NEXT_SESSION.md.
 
 ## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
 ## Current side: OpenAI/Codex on macOS, branch `openai/mac`. PR #10 merged normally into `develop`
@@ -82,25 +103,35 @@
 ## PR details: base `develop`; source `openai/mac`; title `Harden v2 persistence, navigation, mobile UI, and CI`;
 ## description `Audits and hardens the already-ported v2 slice. Protects sparse/corrupt and newer saves;
 ## restores IndexedDB retries; bounds hostile epoch input; validates Atlas routes; prevents duplicate
-## landfall credit, stale-card actions, external-code landing bypass and named-world share loss; fixes
+## landfall credit, composite-identity stale-card actions, external-code landing bypass and named-world share loss; fixes
 ## lazy species-art races and TypeScript declaration drift; hardens SessionRNG; and makes the phone dock
 ## a measured 4x2 non-overlap contract. Enables Pixi autoDensity so the DPR-scaled backing store retains
 ## a viewport-sized CSS box and logical pointer coordinates agree. Replaces timing-sensitive second-tap
-## descent with minimum-44px Enter galaxy / Enter system survey-card actions. Real-browser smoke proves
-## desktop galaxy navigation and exact base-Sol identity {seed:424242,x:560,y:170}, real 390×844 touch
-## galaxy navigation, a real stage-0 fine-star card action rejected by the Charter gate, and stage-2
-## fine-star success preserving the touched target's exact {seed,x,y}; injected DPR-sized-canvas and
-## click-through/buried-action regressions fail. Ports the browser smoke/perf harnesses and adds core v2
-## test/type/art/browser-smoke gates to CI. The static flora/fauna/procedural pixel set covered by the
-## package-level Platinum PASS remains unchanged except for a type-only art correction with identical
-## runtime value. Verification includes 23-file Vitest, both TypeScript configs,
-## artunused/artaudit/coverage/speccheck/override controls, evidence-packager and browser selftests,
-## real-browser smoke/perf, and diff-check. Remaining canonical CF1 hierarchy, legacy full-expedition
-## tutorial snapshot restore, CFB parent preservation, Compendium virtualization, Pixi texture lifecycle,
-## HD planet replacement, epoch-edge/visibility policy, living rigs and biome scenes are explicitly
-## deferred. After merge, Anthropic/Claude Code synchronizes only from a clean anthropic/windows
-## worktree with git fetch origin then git merge origin/develop. No release, deployment,
-## certification, or version bump is included.`
+## descent with minimum-44px Enter galaxy / Enter system survey-card actions. Adds a dock-accessible
+## seven-topic v2 field manual for the current live-slice flow; moves save import to Settings > Save data >
+## Bring expedition so the dock stays 4x2; aligns Training copy with fresh/veteran Atlas labels and the
+## real system-survey > Land flow; and adds a visible minimum-44px Leave world action. Real-browser smoke
+## proves desktop galaxy navigation and exact base-Sol identity {seed:424242,x:560,y:170}, real 390×844
+## touch galaxy navigation, Land > Leave > system plus one-Escape lift-off, all required Guide topics
+## plus immediate IndexedDB+reload persisted seen state and 8px dock clearance, a focus-trapped top-layer
+## Settings import, same-seed/different-coordinate stale planet actions rejected, a real stage-0 fine-star
+## action rejected by the Charter gate, stage-2 success
+## preserving the touched target's exact {seed,x,y}, and visible byte-preserving protected-save notices;
+## injected stale-document, fixed-wait, DPR-sized-canvas, hidden-notice, missing-topic, stale-copy,
+## Guide/dock-overlap, Guide/card layering, low-z modal, same-seed card, click-through and missing/buried-action regressions fail. Ports the browser
+## smoke/perf harnesses and adds core v2
+## test/type/art/browser-smoke gates to CI. Refreshes the project landing page, current system references,
+## Guide/Training contract, test counts and operational commands; the full searchable legacy Guide,
+## tooltip deep-links/advanced briefings, full 21-step Training and release/update machinery remain open.
+## The static flora/fauna/procedural pixel set covered by the package-level Platinum PASS remains unchanged
+## except for a type-only art correction with identical runtime value. Verification includes 23-file
+## Vitest (257 pass /1 skip), both TypeScript configs, artunused/artaudit/coverage/speccheck/override
+## controls, hybrid/current-review/browser selftests, real-browser smoke/perf, and diff-check. Remaining
+## canonical CF1 hierarchy, legacy full-expedition tutorial snapshot restore, CFB parent preservation,
+## Compendium virtualization, Pixi texture lifecycle, HD planet replacement, epoch-edge/visibility policy,
+## living rigs and biome scenes are explicitly deferred. After merge, Anthropic/Claude Code synchronizes
+## only from a clean anthropic/windows worktree with git fetch origin then git merge origin/develop. No
+## release, deployment, certification, main change, live-site change, or version bump is included.`
 ## Other side: Anthropic/Claude Code on Windows, branch anthropic/windows, need not be opened now.
 ## It does not have this batch until that draft PR merges. At its next coding batch after the merge,
 ## and only from a clean worktree, run `git fetch origin` then `git merge origin/develop`; if dirty,

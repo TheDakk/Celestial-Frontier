@@ -144,7 +144,7 @@ function setHint(t: string): void {
   if (t === _hintTxt) return;
   _hintTxt = t;
   /* verbs light up blue — the golden's scanability (static strings only) */
-  hintEl.innerHTML = t.replace(/\b(tap|drag|zoom|press|right-click|Escape|wheel|pinch)\b/gi, '<b class="kw">$1</b>');
+  hintEl.innerHTML = t.replace(/\b(tap|drag|zoom|press|Enter|Land|Leave|right-click|Escape|wheel|pinch)\b/gi, '<b class="kw">$1</b>');
 }
 function setTrail(segs: string[]): void {
   trailEl.innerHTML = segs.map((s, i) =>
@@ -186,7 +186,11 @@ card.id = 'survey';
 card.className = 'glass';
 document.body.appendChild(card);
 let lastCard: Descriptor | null = null;
-let cardCtx: { p: PlanetNode; starSeed: number } | null = null;
+let cardCtx: {
+  p: PlanetNode;
+  gal: NonNullable<NavState['gal']>;
+  star: NonNullable<NavState['star']>;
+} | null = null;
 interface CardTravelAction { label: 'Enter galaxy' | 'Enter system'; run: () => void; }
 let cardTravelAction: CardTravelAction | null = null;
 function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTravelAction | null = null): void {
@@ -226,10 +230,13 @@ function invalidateSurveyTravel(): void {
    exportSaveV2 from the first boot — audit #2's honest wording). ---- */
 const sheet = document.createElement('div');
 sheet.id = 'importsheet';
-sheet.style.cssText = 'position:fixed;inset:0;background:rgba(4,6,12,0.7);display:none;z-index:11';
+sheet.setAttribute('role', 'dialog');
+sheet.setAttribute('aria-modal', 'true');
+sheet.setAttribute('aria-label', 'Bring your expedition');
+sheet.style.cssText = 'position:fixed;inset:0;background:rgba(4,6,12,0.7);display:none;z-index:40';
 sheet.innerHTML =
   '<div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,92vw);' +
-  'background:rgba(10,16,30,0.97);border:1px solid #2a3c5e;border-radius:12px;padding:18px;color:#cfe0f4;font:13px/1.5 system-ui,sans-serif">' +
+  'box-sizing:border-box;max-height:calc(100vh - 32px);overflow:auto;background:rgba(10,16,30,0.97);border:1px solid #2a3c5e;border-radius:12px;padding:18px;color:#cfe0f4;font:13px/1.5 system-ui,sans-serif">' +
   '<b style="font-size:15px">Bring your expedition</b><br>' +
   '<span style="color:#8fa3c4">Paste your save below (in the live game: DevTools → Application → Local Storage → <code>cfcc_save_v2</code> — copy the value), or pick a file. It is checked by the real loader before anything is stored; your blob is kept byte-for-byte.</span>' +
   '<textarea id="importtext" style="width:100%;height:120px;margin:10px 0;background:#0b1220;color:#cfe0f4;border:1px solid #22304a;border-radius:8px;padding:8px;box-sizing:border-box;font:12px monospace"></textarea>' +
@@ -239,10 +246,18 @@ sheet.innerHTML =
   '<button id="importclose" style="background:transparent;color:#8fa3c4;border:1px solid #22304a;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">close</button>' +
   '</div><div id="importmsg" style="margin-top:8px;color:#e8a0a0"></div></div>';
 document.body.appendChild(sheet);
-/* ---- THE DOCK: four live controls, every press proven by an EFFECT (the
+/* ---- THE DOCK: eight live controls, every press proven by an EFFECT (the
    simrun-dom law — a dead button never ships). charts/sound flip the REAL
    save fields and persist through exportSaveV2. ---- */
-document.getElementById('docksave')!.addEventListener('click', () => { sheet.style.display = 'block'; });
+function openImportSheet(): void {
+  closePanels();
+  sheet.style.display = 'block';
+  (sheet.querySelector('#importtext') as HTMLTextAreaElement | null)?.focus();
+}
+function closeImportSheet(): void {
+  sheet.style.display = 'none';
+  document.getElementById('docksets')?.focus();
+}
 document.getElementById('docksurvey')!.addEventListener('click', () => {
   /* re-show the LAST card (no rebuild — the fold law's no-rebuild spirit) */
   if (cardCtx && !activeCardPlanetWhere()) {
@@ -289,7 +304,8 @@ function fillSettings(): void {
       `<button data-motion="${v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
     '</span></div>' +
     `<div class="row"><label>Panel tint</label><input id="setglass" type="range" min="40" max="98" value="${Math.round(save.glassTint * 100)}"></div>` +
-    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>`);
+    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>` +
+    `<div class="row"><label>Save data</label><button id="setimport" data-sel="set-import">Bring expedition</button></div>`);
   const el = document.getElementById('setpanel')!;
   el.querySelector('#setsnd')!.addEventListener('click', () => { save.sndOn = !save.sndOn; fillSettings(); void persistView(); });
   el.querySelector('#setvol')!.addEventListener('input', (e) => {
@@ -333,10 +349,58 @@ function fillSettings(): void {
       toast('Save unavailable', 'Field Training was not restarted; your current expedition is unchanged.');
     }
   });
+  el.querySelector('#setimport')!.addEventListener('click', openImportSheet);
   el.querySelector('#setglass')!.addEventListener('input', (e) => {
     save.glassTint = (+(e.target as HTMLInputElement).value) / 100;
     applyGlass(); persistSoon();
   });
+}
+
+/* ---- GUIDE — the bounded v2 field manual. The legacy game owns a larger
+   searchable encyclopedia; this surface documents the current live-slice flow,
+   so updated interaction and save rules do
+   not exist only in developer Markdown. ---- */
+const GUIDE_TOPICS = [
+  {
+    id: 'travel', title: 'Survey and travel',
+    body: 'Drag to pan and wheel or pinch to zoom. Tap a galaxy or star once to open its survey card. Press <b>Enter galaxy</b> or <b>Enter system</b> on that card to travel; deep zoom over the same body also descends. <b>Escape</b> closes the top surface or rises one level.',
+  },
+  {
+    id: 'land', title: 'Worlds and planetfall',
+    body: 'A planet address from Search or the Star Atlas returns you to its live system survey. It never lands for you. Press <b>Land</b> on the current planet card to enter Planetside; only the first landing earns new landfall progress. On touch, press <b>Leave world</b> to return to the system; right-click or Escape also lifts off.',
+  },
+  {
+    id: 'atlas', title: 'Star Atlas and sharing',
+    body: 'Use the <b>Star Atlas</b> action on a planet card to chart it. <b>Share</b> copies a deterministic CF1 address; an accepted custom planet name travels with that address. Atlas entries reopen the destination survey, where Land remains a separate choice.',
+  },
+  {
+    id: 'charters', title: 'Charters and reach',
+    body: 'Your current Charter controls how far the expedition may travel. A blocked Enter action leaves you where you are and names the milestone that opens the route. Review live goals in <b>Charters</b>.',
+  },
+  {
+    id: 'compendium', title: 'Compendium and Records',
+    body: 'The <b>Compendium</b> holds discovered life; choose a row for its portrait, description and battle-stat profile. Search accepts species names or CF1 addresses. <b>Records</b> summarizes exploration and the recent journal.',
+  },
+  {
+    id: 'training', title: 'Field Training',
+    body: 'Field Training teaches the real chart, travel and Land flow. <b>Settings → Restart</b> begins the drill in Sol and restores your pre-training view when you finish or skip. If saving fails, the restart is cancelled and your expedition stays unchanged.',
+  },
+  {
+    id: 'saves', title: 'Save protection',
+    body: 'Open <b>Settings → Bring expedition</b> to import a complete supported save. A proven backup recovers a damaged primary; otherwise a newer-build, incomplete or corrupt stored expedition is held unchanged and announced as <b>Update required</b> or <b>Save protected</b>. Ordinary play cannot silently overwrite it.',
+  },
+] as const;
+function fillGuide(): void {
+  if (!save) return;
+  fillPanel('guide',
+    '<h3>Guide to the Universe</h3>' +
+    '<div class="sub" style="margin:0 0 10px">The controls and safety rules for the systems available in this expedition.</div>' +
+    GUIDE_TOPICS.map((topic) =>
+      `<div class="centry" data-sel="guide-topic" data-guide-topic="${topic.id}"><b>${topic.title}</b><div class="sub" style="margin-top:3px">${topic.body}</div></div>`).join(''));
+  if (!save.seenGuide) {
+    save.seenGuide = true;
+    void persistView();
+  }
 }
 
 /* ---- COMPENDIUM (read-only over the save's codex — the real catalog).
@@ -473,9 +537,11 @@ registerPanel({ id: 'atlas', el: document.getElementById('atlaspanel')!, btns: [
 document.getElementById('dockatlas')!.addEventListener('click', () => togglePanel('atlas'));
 document.getElementById('railatlas')!.addEventListener('click', () => togglePanel('atlas'));
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
+registerPanel({ id: 'guide', el: document.getElementById('guidepanel')!, btns: [document.getElementById('dockguide')], onOpen: fillGuide });
 registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: () => fillCodex() });
 registerPanel({ id: 'rec', el: document.getElementById('recpanel')!, btns: [document.getElementById('dockrecords'), document.getElementById('railrecords')], onOpen: fillRecords });
 document.getElementById('docksets')!.addEventListener('click', () => togglePanel('set'));
+document.getElementById('dockguide')!.addEventListener('click', () => togglePanel('guide'));
 document.getElementById('dockcodex')!.addEventListener('click', () => togglePanel('codex'));
 document.getElementById('railcodex')!.addEventListener('click', () => togglePanel('codex'));
 document.getElementById('dockrecords')!.addEventListener('click', () => togglePanel('rec'));
@@ -554,7 +620,7 @@ searchEl.addEventListener('keydown', (e) => {
   openPanel('codex');
   fillCodex(q);
 });
-sheet.querySelector('#importclose')!.addEventListener('click', () => { sheet.style.display = 'none'; });
+sheet.querySelector('#importclose')!.addEventListener('click', closeImportSheet);
 sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
   const f = (e.target as HTMLInputElement).files?.[0];
   if (!f) return;
@@ -632,7 +698,7 @@ function hudText(): void {
     setCtx('every dot is one of ~' + fmtBig(gs2.stars) + ' stars sharing ~' + fmtBig(gs2.planets) + ' worlds — zoom deeper and more keep resolving');
   } else if (nav.mode === 'system' && nav.gal && nav.star) {
     setTrail([galaxyName(nav.gal.seed), starName(nav.star.seed)]);
-    setHint('tap a world to survey & land · zoom out to rise');
+    setHint('tap a world to survey · press Land on its card · zoom out to rise');
     const sys = systemScene(nav.star.seed);
     const raw = systemFor(nav.star.seed) as { binary?: unknown };
     const desc = nav.star.seed === 424242 ? 'Sol — humanity’s own yellow star' : 'this star';
@@ -643,7 +709,7 @@ function hudText(): void {
   } else if (nav.mode === 'surface' && nav.gal && nav.star && nav.planet) {
     const p = systemScene(nav.star.seed).planets.find((q) => q.seed === nav.planet!.seed);
     setTrail([galaxyName(nav.gal.seed), starName(nav.star.seed), p ? p.name : 'Surface']);
-    setHint('right-click or Escape to lift off');
+    setHint('press Leave world, right-click, or Escape to lift off');
     setCtx('planetfall — the survey card carries the world’s roster');
   }
 }
@@ -1658,31 +1724,39 @@ function worldRoster(p: PlanetNode, starSeed: number): Array<Record<string, unkn
    a tap SURVEYS — the card opens with its ACTION ROW (Land · + Add to Star
    Atlas · ⧉ share code); pressing LAND is its own act. */
 function surveyPlanet(p: PlanetNode, starSeed: number): void {
+  if (!nav.gal || !nav.star || nav.star.seed !== starSeed) return;
   const sys = systemFor(starSeed);
   const d = planetDescriptor(p.P, sys, { name: p.name, orb: p.orb } as never) as Descriptor;
   const customName = customNames.get('p' + p.seed);
   if (customName) {
     d.title = customName;
-    d.sub = (d.sub ? d.sub + ' · ' : '') + 'named by you';
+    d.sub = (d.sub ? d.sub + ' · ' : '') + 'custom name';
   }
-  cardCtx = { p, starSeed };
+  cardCtx = {
+    p,
+    gal: { ...nav.gal },
+    star: { ...nav.star },
+  };
   showSurvey(d, buildCardActions(p));
   playSurveyPing();   /* the ACT of surveying answers back (main.js) */
   gameEvent('survey', { planetSeed: p.seed });
 }
 function buildCardActions(p: PlanetNode): string {
   const charted = save && save.logMap.some(([id]) => id === 'p' + p.seed);
+  const onThisSurface = nav.mode === 'surface' && nav.planet?.seed === p.seed && nav.star?.seed === cardCtx?.star.seed;
   /* A veteran replay already has Earth charted. Keep the real Add action in
      the drill so the atlas-add step cannot spotlight a missing control;
      addToAtlas is idempotent and still emits the training event. */
   const trainingAdd = p.seed === 133 && trainingActive();
   return '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px">' +
-    '<button data-act="landcta" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:40px;font:12px system-ui">⛳ Land</button>' +
+    (onThisSurface
+      ? '<button data-act="leaveworld" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">⬆ Leave world</button>'
+      : '<button data-act="landcta" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">⛳ Land</button>') +
     (charted && !trainingAdd
       ? '<span style="color:#8fa3c4;align-self:center;font-size:12px">★ charted</span>'
-      : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:40px;font:12px system-ui">' +
+      : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">' +
         (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
-    '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:40px;font:12px system-ui">⧉ share code</button>' +
+    '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
     '</div>';
 }
 function surveyAndLand(p: PlanetNode, starSeed: number): void {
@@ -1691,12 +1765,14 @@ function surveyAndLand(p: PlanetNode, starSeed: number): void {
   doLand();
 }
 function activeCardPlanetWhere(): Record<string, unknown> | null {
-  if (!cardCtx || !nav.gal || !nav.star || nav.star.seed !== cardCtx.starSeed) return null;
+  if (!cardCtx || !nav.gal || !nav.star
+    || nav.gal.seed !== cardCtx.gal.seed || nav.gal.x !== cardCtx.gal.x || nav.gal.y !== cardCtx.gal.y
+    || nav.star.seed !== cardCtx.star.seed || nav.star.x !== cardCtx.star.x || nav.star.y !== cardCtx.star.y) return null;
   const live = systemScene(nav.star.seed).planets.some((planet) => planet.seed === cardCtx!.p.seed);
   if (!live) return null;
   return {
-    type: 'planet', gal: { ...nav.gal },
-    star: { x: nav.star.x, y: nav.star.y, seed: nav.star.seed },
+    type: 'planet', gal: { ...cardCtx.gal },
+    star: { ...cardCtx.star },
     pseed: cardCtx.p.seed,
   };
 }
@@ -1724,6 +1800,7 @@ function doLand(): void {
     stSeam.gal = nav.gal; stSeam.star = nav.star;
     playWhoosh();   /* planetfall */
     drawSurface(p); hudText(); void persistView();
+    if (lastCard) showSurvey(lastCard, buildCardActions(p));
     /* A repeated landing is not new progression. The one exception is the
        explicit veteran training replay: its lesson waits for the action,
        but still receives no second landfall credit. */
@@ -1758,6 +1835,11 @@ card.addEventListener('click', (e) => {
     (act as HTMLButtonElement).disabled = true;
     action.run();
   } else if (a === 'landcta') doLand();
+  else if (a === 'leaveworld') {
+    if (nav.mode !== 'surface' || nav.planet?.seed !== cardCtx?.p.seed || !activeCardPlanetWhere()) return;
+    hideSurvey();
+    goUp();
+  }
   else if (a === 'add') addToAtlas();
   else if (a === 'share') {
     const code = cardShareCode();
@@ -2142,7 +2224,7 @@ async function loadSave(): Promise<void> {
         trail: trailEl.textContent || '', ctx: ctxEl.textContent || '',
         objective: objChipEl.textContent || '',
         chartsOn: save.chartsOn, chartsVisible: !!(chartLayer && chartLayer.visible),
-        panelOpen: openPanelId(), codexCount: save.codex.length,
+        panelOpen: openPanelId(), codexCount: save.codex.length, seenGuide: save.seenGuide,
         tutActive: trainingActive(), tutStep: trainingStepId(), tutDone: save.tutDone,
         atlasCount: save.logMap.length,
         sfxVol: save.sfxVol, motionMode: save.motionMode,
@@ -2413,12 +2495,27 @@ async function loadSave(): Promise<void> {
   }, { passive: false });
   app.canvas.addEventListener('contextmenu', (e) => { e.preventDefault(); hideSurvey(); goUp(); });
   addEventListener('keydown', (e) => {
+    if (sheet.style.display !== 'none' && e.key === 'Tab') {
+      const focusable = [...sheet.querySelectorAll<HTMLElement>('textarea,button,input:not([type="hidden"]),[tabindex]:not([tabindex="-1"])')]
+        .filter((el) => !('disabled' in el && (el as HTMLButtonElement).disabled) && el.offsetParent !== null);
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (first && last && (e.shiftKey ? document.activeElement === first : document.activeElement === last)) {
+        e.preventDefault();
+        (e.shiftKey ? last : first).focus();
+      }
+      return;
+    }
     if (e.key !== 'Escape') return;
     /* the Escape ORDER (the game's focus law): a focused search field
        yields first, then panels, then the survey card, then ascent */
+    if (sheet.style.display !== 'none') { closeImportSheet(); return; }
     if (document.activeElement === searchEl) { searchEl.blur(); return; }
     if (openPanelId()) { closePanels(); return; }
-    if (card.style.display !== 'none') { hideSurvey(); return; }
+    if (card.style.display !== 'none') {
+      hideSurvey();
+      if (nav.mode === 'surface') goUp();
+      return;
+    }
     goUp();
   });
 })();

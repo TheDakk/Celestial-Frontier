@@ -30,7 +30,7 @@ jobs:
         run: node tools/validate.js
       - name: smoke (jsdom gameplay flows)
         run: node tools/smoke.js
-      - name: layout (9 viewports)
+      - name: layout (10 viewports)
         run: node tools/uilayout.js
         env:
           CF_BROWSER: /usr/bin/google-chrome

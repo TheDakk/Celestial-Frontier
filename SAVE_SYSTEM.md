@@ -14,13 +14,23 @@
 > bounded attempt was abandoned immediately closes that late orphan database.
 > Explicit import uses the same envelope guard, so `{}`, `{view:null}`, arrays
 > and primitives cannot erase progress.
+> The player-facing import door now lives at **Settings → Bring expedition**;
+> moving it out of the eighth dock slot did not create a second loader or weaken
+> any byte-protection rule. That dock slot now opens the bounded v2 Guide, whose
+> first open updates the existing `guide`/`seenGuide` save field through the
+> ordinary protected persistence path.
+> The import door is a top-layer `aria-modal` dialog: Tab stays inside its live
+> fields, Escape closes only the dialog and restores Settings focus, and a real
+> 390×844 browser control proves the old low-z layer would expose the dock.
 >
 > The importer also normalizes `gen`/`maxGen` to nonnegative safe integers,
 > contains a malformed Compendium row instead of rejecting the whole expedition,
 > caps cosmic epoch at 10,000 to bound retained O(epoch) ecology work, timestamps
 > new Atlas rows, and preserves/requires complete galaxy/star coordinates for
 > travelable Atlas destinations. Honest out-of-range bred `size` remains
-> untouched. Current-v2 Field Training restart uses a reversible `{view}`
+> untouched. A live planet card snapshots and compares the complete galaxy/star
+> `{seed,x,y}` identity before Land, Atlas or Share may act, so an equal seed at
+> different coordinates cannot rebase stale actions. Current-v2 Field Training restart uses a reversible `{view}`
 > snapshot; restoring the older v1 full-expedition `tsnap` schema is still a
 > Gate-C blocker. The repository still stores one exported blob rather than the
 > planned split/CAS records, so multi-tab last-writer-wins is also open.
@@ -34,11 +44,15 @@
 > ordinary toast debounce and are browser-tested as both visible and
 > byte-preserving before the fast-boot notification window can hide them.
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js). ⚠ Read the v1.8.7 section (a reverted `size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`, harvest on play time).
+**STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
+matches `port/v2` as of 2026-08-11. ⚠ Read the v1.8.7 section (a reverted
+`size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`,
+harvest on play time).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated
 from seeds) to `localStorage` under one hardened key, with load-time coerce/clamp so a
 tampered or truncated save can never inject markup or poison the numbers.
-**Source of truth:** this doc is the DESIGN spec; main.js + tools/ implement it.
+**Source of truth:** this doc is the DESIGN spec; `main.js` + `tools/` implement
+the legacy sections, and `port/v2` implements the dated port overlay.
 
 ## ⚠ v1.8.4 — `_sanitizeSavedGenome` mirrors `normGenome`
 

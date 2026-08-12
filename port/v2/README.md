@@ -1,4 +1,4 @@
-# Celestial Frontier v2 — the TypeScript port (Phase 1+)
+# Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
 ## Current port status — 2026-08-11
 
@@ -19,6 +19,24 @@ negative controls. Pixi now keeps its DPR-scaled backing store displayed in a
 viewport-sized CSS box, so phone visuals and hit coordinates agree. Browser smoke and
 performance tools now use the owned, portable CDP lifecycle.
 
+The former save-import dock slot now opens a real **Guide — v2 field manual**.
+Its seven live topics cover survey/travel, planetfall, Atlas/CF1 sharing,
+Charters, Compendium/Records, Field Training restart, and save protection;
+opening it persists the existing `seenGuide` field. Save import remains available
+under **Settings → Bring expedition**, where the same complete-envelope and
+future/corrupt-byte protections apply. The import surface is an `aria-modal`
+top layer with internal Tab wrapping and Escape-only close/focus restoration;
+the phone gate rejects its former low-z click-through state. This is deliberately a bounded manual for
+the current slice, not a claim that the legacy searchable Guide, tooltip
+deep-links, advanced briefings, or every late-game system has already been ported.
+Field Training is equally explicit about its boundary: the slice runs the six
+welcome/find-Earth/survey/chart/Atlas/land lessons and then an honest
+"Finish for now" step. Cache, feeding, breeding, duel, hazard, healing, forge,
+and the rest of the legacy 21-step curriculum remain open with their systems.
+Guide alone uses z24 above an open z23 survey card (without changing the other
+panels' Training-sensitive order); the phone gate injects z22 and requires the
+rendered Guide/card intersection to fail.
+
 Survey-first descent is phone- and slow-device safe: one tap opens the typed
 survey card without teleporting, and its explicit 44px `Enter galaxy` or
 `Enter system` action performs the dive. The card may cover the body on a
@@ -28,6 +46,12 @@ base Sol node `{seed:424242,x:560,y:170}`, a real stage-0 fine-star action
 rejected by the Charter, and stage-2 entry into the touched fine star's exact
 `{seed,x,y}`. It requires `autoDensity` geometry and rejects DPR-sized CSS
 canvas and buried-action controls.
+Planet cards separately snapshot the complete galaxy+star `{seed,x,y}` context;
+a same-seed/different-coordinate browser control proves stale Land, Atlas and
+Share actions cannot be rebound to another node.
+On touch, Planetside also exposes a minimum-44px **Leave world** action wired to
+the same guarded ascent state machine as Escape/right-click, so a phone player
+never needs a keyboard or a zoom gesture merely to return to orbit.
 
 Current battery: 23 Vitest files / 257 pass / 1 skip; root and app TypeScript;
 artunused; artaudit 23/0; coveragegap 1,010/1,010; speccheck 454/0/0;
@@ -40,6 +64,8 @@ batch, not a production-release certificate.
 Highest-priority open v2 work is now semantic and runtime-owned: canonicalize
 the full CF1 galaxy→star→planet hierarchy; restore imported legacy full-state
 tutorial snapshots; decide and preserve hybrid parent identity in CFB codes;
+finish the remaining legacy Field Training arc and grow the bounded Guide into
+the full searchable/manual + tooltip/advanced-briefing surface as those systems land;
 virtualize the 1,500-row Compendium; own/destroy Pixi canvas textures and add a
 memory plateau gate; attach completed HD planet textures to live sprites;
 persist/invalidate epoch edges and settle hidden-tab/reduced-motion policy;
@@ -107,7 +133,7 @@ The pure portrait remains byte-exact to
 `3f6834b7f984b35186fa1c441eeb4537d3e5793d446e447b021a1e3687939a25`;
 all five stages are unique and progress meaningfully from pure through the 0.22
 anchor floor. `hybridcheck` now requires five exact ID+kingdom+name focused lineages spanning all four
-kingdoms and rejects eleven injected negative controls, including focused-species
+kingdoms and rejects fourteen injected negative controls, including focused-species
 substitution and Vanilla stage collapse. The prior `FAIL_BYTE_IDENTICAL_STAGES` blocker is closed. Broader
 all-bloodline and full-catalogue certification remains OPEN.
 
@@ -333,7 +359,7 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 | `npm run gp7conformity -- --input <extracted-recheck-dir>` | Validates a 1,250-row ledger/manifest/results/index join and reports direct vs carried remediation work. `--certify` rejects every carried or non-PASS row; it guards ledger provenance and never substitutes for rendering or visual review. |
 | `node tools/gp71rejudge.mjs --prepare --out=gp71-rejudge --date=2026-08-09` | Builds the separate GP7.1 all-fresh 1,250-portrait / 196-packet evidence set, with no generated verdicts. `--collect` refuses partial, stale, or misaligned packet verdicts. |
 | `node tools/gp71compare.mjs --verify-only --old-root=<old> --current-root=<current> --catalogue=<current-index>` | Exact-joins two complete 1,250-image evidence roots; generation mode writes hash-bound family-organized old/current sheets to a new output directory. |
-| `npm run hybridcheck` | Drives the real browser art wrapper and proves set-qualified lineage pixels across five exact ID+kingdom+name focused lineages spanning fauna/flora/fungi/microbe, Earth/alien parent orders, multi-generation cases, duplicate names, swapped-parent cache separation and deterministic repeats; eleven injected negative controls must all be rejected. |
+| `npm run hybridcheck` | Drives the real browser art wrapper and proves set-qualified lineage pixels across five exact ID+kingdom+name focused lineages spanning fauna/flora/fungi/microbe, Earth/alien parent orders, multi-generation cases, duplicate names, swapped-parent cache separation and deterministic repeats; fourteen injected negative controls must all be rejected. |
 | `npm run hybridmatrix -- --out=<new-name-under-apps/game/smoke>` | Writes the 13-lineage × 5-stage production hybrid continuity matrix—including principal microbe lineage Amoeba—plus cards, silhouettes, 4× join crops, repeat/reload proof and reversed-parent cache controls to a new 251-asset evidence root. It deliberately reports visual continuity OPEN until independently judged. |
 | `npm run fullresetlayout -- --prepare --evidence=<current-root> --out=<new-layout> --per=10 --packets --source-commit=<40-hex>` | From a clean commit-bound 1,250-image root, derives the official 181 families / 233 packets, 46 procedural plan families, exact set/species contracts and labelled/unlabeled packet evidence. `--verify` is the read-only counterpart. |
 | `npm run fullresetreview -- --compare …` / `--template` / `--collect` / `--certify` | Binds each row to native 440px, unlabeled 300px, actual unlabeled 132px, labelled old/current and exact contract hashes; creates empty fresh verdicts, collects only complete matching review, and certifies only 1,250 fresh PASS. See the copy-ready sequence below. |
@@ -404,7 +430,7 @@ The package gate accepted all review records and emitted
 
 The Phase 1–3 record below stands as history:
 
-**Phase 2 was** (2026-07-31): Phase 2 so far: `@cf/domain-progression` (COSMIC_EPOCH clock + harvest readiness — injected play-time source, so the harvestclock invariant holds by construction; bodies mirror v1.8.9) and `@cf/persistence` (§19.3 stores · repository with the CF-RR-002 recovery semantics · in-memory + IndexedDB backends; IDB's end-to-end proof lands with Phase 3's browser slice). ⚠ The reset-law test was REWRITTEN after its own negative control passed with the defect live — recover() short-circuits on a missing primary, so the vacuous assertion never saw a surviving backup; the test now drives the real resurrection scenario (reset → new corrupt write → recover must find nothing). ★★★ **PHASE 2 AUTOMATABLE SIDE COMPLETE.** importSaveV2 (11/11 parity over the 72-field surface vs real-boot fixtures; found ROADMAP 9i — string maxGen poisoning, reproduced bug-for-bug) · exportSaveV2 (doSave mirror) · **the round-trip fixed point** (stable from round two; round one moves exactly what a live doSave moves) · repository flow end-to-end (corrupt → recover → veteran survives byte-identical). Root gates: `npm run savefixtures` (9 real-boot fixtures) + `contentregistry` (validation surface). Gate C blocked solely on Nick's real save (tools/savefixtures.js takes it verbatim). **★★★ PHASE 3 IS RUNNING: the Pixi vertical slice (apps/game) drives Gate D's core loop in a real browser** — universe → Milky Way → Sol → Earth surface, painterly art via @cf/art (GalaxyArt/ThumbArt/renderer painters lifted verbatim), the game's ZOOM-DRIVEN transitions (checkTransitions semantics, camT-intent based), Renderer LOD gates (fine-star resolve layer, Sun marker at SOL_POS, baseR star sizing), painterly system view (corona/BH/NS primaries, live orbit angles, terminator, banded rings, typed moons, belt/kuiper rocks, dwarfs), pinch + cursor-anchored wheel, SURVEY-FIRST input (one tap = the describePick card + sonar ping, double-tap dives), a STREAMING universe (camera-windowed cells; the wormhole's seeded jump works, reach-clamped) with the full deep-sky population (cosmic web + captions, quasars/blazars, radio-galaxy lobes, tidal bridges, galaxy names, the charter ring/veil/fog, the OBS_R edge), **the CHARTER/ASCENT GATES live and pure** (@cf/scene/charter.ts — stage 0 Sol-only → 3 everywhere, reach by REGIONS; blocked dives toast the build that opens the ring), comets + the interstellar visitor in system view, COSMIC_EPOCH running on play time (@cf/domain-progression's clock; supernova sites render epoch-anchored), the game's shipped stings via **@cf/audio** (whoosh/ping over the save's own sndOn/sfxVol; §15 voice scope stays gated behind the listening test), **and THE REAL SAVE LOOP: the slice boots through importSaveV2 and persists through exportSaveV2 over IndexedDB — nav rides the save's `view` (viewToNav ⇄ navToView through the real _sanitizeView), landings ride `land`, EPOCH_BASE accumulates.** `npm run smoke` (tools/slicesmoke.mjs, headless Edge/CDP) is the standing gate: the full loop + the zoom ladder with an empty-space negative control + the real-save assertions, zero console errors. See ROADMAP's Phase 3 blocks for the batch history and NEXT.
+**Phase 2 was** (2026-07-31): Phase 2 so far: `@cf/domain-progression` (COSMIC_EPOCH clock + harvest readiness — injected play-time source, so the harvestclock invariant holds by construction; bodies mirror v1.8.9) and `@cf/persistence` (§19.3 stores · repository with the CF-RR-002 recovery semantics · in-memory + IndexedDB backends; IDB's end-to-end proof lands with Phase 3's browser slice). ⚠ The reset-law test was REWRITTEN after its own negative control passed with the defect live — recover() short-circuits on a missing primary, so the vacuous assertion never saw a surviving backup; the test now drives the real resurrection scenario (reset → new corrupt write → recover must find nothing). ★★★ **PHASE 2 AUTOMATABLE SIDE COMPLETE.** importSaveV2 (11/11 parity over the 72-field surface vs real-boot fixtures; found ROADMAP 9i — string maxGen poisoning, reproduced bug-for-bug) · exportSaveV2 (doSave mirror) · **the round-trip fixed point** (stable from round two; round one moves exactly what a live doSave moves) · repository flow end-to-end (corrupt → recover → veteran survives byte-identical). Root gates: `npm run savefixtures` (9 real-boot fixtures) + `contentregistry` (validation surface). Gate C blocked solely on Nick's real save (tools/savefixtures.js takes it verbatim). **★★★ PHASE 3 IS RUNNING: the Pixi vertical slice (apps/game) drives Gate D's core loop in a real browser** — universe → Milky Way → Sol → Earth surface, painterly art via @cf/art (GalaxyArt/ThumbArt/renderer painters lifted verbatim), the game's ZOOM-DRIVEN transitions (checkTransitions semantics, camT-intent based), Renderer LOD gates (fine-star resolve layer, Sun marker at SOL_POS, baseR star sizing), painterly system view (corona/BH/NS primaries, live orbit angles, terminator, banded rings, typed moons, belt/kuiper rocks, dwarfs), pinch + cursor-anchored wheel, SURVEY-FIRST input (one tap = the describePick card + sonar ping; its explicit Enter action dives), a STREAMING universe (camera-windowed cells; the wormhole's seeded jump works, reach-clamped) with the full deep-sky population (cosmic web + captions, quasars/blazars, radio-galaxy lobes, tidal bridges, galaxy names, the charter ring/veil/fog, the OBS_R edge), **the CHARTER/ASCENT GATES live and pure** (@cf/scene/charter.ts — stage 0 Sol-only → 3 everywhere, reach by REGIONS; blocked dives toast the build that opens the ring), comets + the interstellar visitor in system view, COSMIC_EPOCH running on play time (@cf/domain-progression's clock; supernova sites render epoch-anchored), the game's shipped stings via **@cf/audio** (whoosh/ping over the save's own sndOn/sfxVol; §15 voice scope stays gated behind the listening test), **and THE REAL SAVE LOOP: the slice boots through importSaveV2 and persists through exportSaveV2 over IndexedDB — nav rides the save's `view` (viewToNav ⇄ navToView through the real _sanitizeView), landings ride `land`, EPOCH_BASE accumulates.** `npm run smoke` (tools/slicesmoke.mjs, headless Edge/CDP) is the standing gate: the full loop + the zoom ladder with an empty-space negative control + the real-save assertions, zero console errors. See ROADMAP's Phase 3 blocks for the batch history and NEXT.
 
 Phase 1 record:
 16 test files · 161 tests · 200,000+ golden cases + the 50-probe fingerprint surface, all green from TypeScript; `npx tsc --noEmit` strict clean.

@@ -15,7 +15,9 @@ The clean full-reset baseline is commit
 merged PR #8 at `bb1a980`; its Mac scanner/tooling and current-review-package
 follow-up merged as PR #9 at `989142d`. The Mac continuation is fail-closed
 before its first Wave-2e-scoped post-edit render because the ignored scoped
-baseline did not cross Git. PR #7 is historical/already merged; no reset PR exists.
+baseline did not cross Git. PR #7 is historical/already merged. The bounded
+Platinum repair merged through PR #10 at `61cc058`; no formal full-reset
+certification PR exists.
 
 ## Status: Platinum repair package-level human PASS received; formal reset certification open
 
@@ -45,10 +47,12 @@ and returns **PASS with optional polish only / APPROVE**, with no blocker-level 
 The sealed archive's `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED` fields remain immutable
 preparation metadata; the review is a separate package-level verdict, not formal reset certification.
 
-Draft PR #10 carries the result from `openai/mac` into `develop` as `Address Platinum
-glider and lineage review`. It may be reviewed and normally merged by Nick; it does
-not authorize automatic merge, formal certification, release, or deployment. Wave
-2e's missing ignored baseline remains a separate blocker.
+PR #10, `Address Platinum glider and lineage review`, merged normally from
+`openai/mac` into `develop` at `61cc058`. Draft PR #11 is the separate current
+vehicle for v2 hardening plus player-guide/document parity; it leaves the sealed
+art package and static portrait set unchanged. It may be reviewed and normally
+merged by Nick, but does not authorize automatic merge, formal certification,
+release, or deployment. Wave 2e's missing ignored baseline remains a separate blocker.
 
 Nick stopped the GP7.1 remediation and explicitly reopened the entire catalogue
 after Fruit Bat exposed a false acceptance: the current animal does not read as
@@ -775,8 +779,10 @@ certification blockers above.
    source `03ea297e4f8ec61461310b0312a7363027ce90e3` and archive SHA-256
    `ef7a6e9bb720ab6e6e1497569ade194b471ed7ab63449ee94ea5c94c57372f4b`;
    never rewrite the sealed ZIP.
-2. Review draft PR #10 from `openai/mac` into `develop`; do not merge automatically,
-   deploy, certify, or release. The optional polish list does not block this PR.
+2. Treat PR #10 integration as complete at `61cc058`. Review draft PR #11 from
+   `openai/mac` into `develop` for the separate v2 hardening plus player-guide/
+   document-parity batch; do not merge automatically, deploy, certify, or release.
+   The optional art-polish list remains optional and outside PR #11.
 3. Keep the frozen 516/14/720 ledger and literal 1,250-row certification unchanged;
    this package-level review is not `fullresetreview --collect/--certify` output.
 4. Separately, OpenAI/Codex on Windows must first confirm `openai/windows` is clean, then

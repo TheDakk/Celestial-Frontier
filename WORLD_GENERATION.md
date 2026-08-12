@@ -1,8 +1,20 @@
 # Celestial Frontier — World & Universe Generation
 
-**STATUS:** matches code as of 2026-07-23 (verified against main.js).
+**STATUS:** legacy mechanics match `main.js` as of 2026-07-23; the v2 type-contract
+overlay below matches `port/v2` as of 2026-08-11.
 **Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.
-**Source of truth:** this doc is the DESIGN spec; main.js implements it. Art rules in ART_DIRECTION.md. The biome CONTENT catalog is `BIOME_ATLAS.md` at the repo root (audited and promoted there from `tools/` on 2026-07-31; it had existed since 2026-07-21, and an earlier same-day note in these docs wrongly declared it missing — see ART_DIRECTION §6.1).
+**Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
+runtime and `port/v2/packages/domain/{planetgen,worldgen,surveyphrases}` own the
+dated port contracts. Art rules live in ART_DIRECTION.md. The biome CONTENT catalog is `BIOME_ATLAS.md` at the repo root (audited and promoted there from `tools/` on 2026-07-31; it had existed since 2026-07-21, and an earlier same-day note in these docs wrongly declared it missing — see ART_DIRECTION §6.1).
+
+> **2026-08-11 v2 executable-contract correction:** This batch changes no
+> generated values. It makes the hand-written declarations tell the truth:
+> `PlanetGen.surfaceColor` requires the fBm callback and returns an RGB tuple;
+> `WorldGen.starsInCell` returns `{stars, deco}` rather than an array; and the
+> SurveyPhrases atmosphere/climate/water parameter lists match the lifted
+> functions. Parity tests execute those real result shapes. The complete CF1
+> galaxy-at-cell and star-at-coordinate canonical hierarchy is still OPEN; a
+> type correction is not proof of that routing theorem.
 
 ## 1. Overview
 

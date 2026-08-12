@@ -11,9 +11,12 @@
 > Repeat planet landings no longer bank an extra landfall; a veteran training
 > replay may still receive its lesson event without receiving progression credit.
 
-**STATUS:** matches code as of 2026-07-30 (verified against main.js). See the 2026-07-30 addendum at the end — three advertised XP awards were dead until then.
+**STATUS:** legacy sections match `main.js` as of 2026-07-30; the v2 overlay
+matches `port/v2` as of 2026-08-11. See the 2026-07-30 addendum at the end —
+three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
-**Source of truth:** this doc is the DESIGN spec; main.js implements it.
+**Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
+sections, and `port/v2` implements the dated port overlay.
 
 ## 1. Overview
 Progression runs on three parallel tracks, none of which touch world/creature *generation* (the fingerprint law):
