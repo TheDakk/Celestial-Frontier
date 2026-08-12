@@ -106,8 +106,11 @@
 > overflow. A++ also preserves notification hierarchy: the toast title remains
 > 19px while its body is 16px rather than being flattened to one size.
 > Renderer density remains dynamic after resize/visual-viewport change:
-> `effectiveDpr()` caps touch at 2 / desktop at 3 and additionally limits a
-> backing store to 16,777,216 pixels. `autoDensity` keeps CSS and hit coordinates
+> `effectiveDpr()` caps touch at 2 / desktop at 3 and budgets the application
+> canvas plus full-viewport backdrop together, not independently. The pair share
+> an aggregate 4,096² / 16,777,216-pixel backing budget, split equally; displays
+> through native 4K remain native, while desktop-8k uses two 3,862×2,172 backings
+> (16,776,528 pixels combined). `autoDensity` keeps CSS and hit coordinates
 > viewport-sized while backdrop texture replacement destroys its old texture.
 >
 > Species art remains a lazy chunk, but readiness is now one shared Promise with
@@ -127,9 +130,17 @@
 > to at most 1×1; the top-frame loader then gets 5 seconds to commit a change; and
 > only that committed loader starts the new document's independent 20-second boot
 > budget. A vanished old execution context is not navigation evidence by itself.
-> The replacement's optional `cf-v2-slice-ready/v1` tail event is emitted after
-> load, complete slice/input wiring, persistence readiness, the first ticker turn,
-> an animation frame and a later task. Glass accepts exactly one event from the
+> The replacement initializes Pixi with `autoStart:false` and keeps its ticker
+> stopped through save load, scene render, slice publication and input wiring.
+> Its exact event-owned `cf-v2-boot-phase/v1` sequence is `app-init-start` →
+> `app-init-complete` → `backdrop-complete` → `save-load-start` →
+> `save-load-complete` → `scene-rendered` → `slice-published` →
+> `wiring-complete` → `ticker-started` → `first-tick` → `ready-scheduled` →
+> `ready-emitted`. Each receipt binds the exact session, default top context,
+> generation, origin, loader and document token; the ticker must be false through
+> wiring and true thereafter. Only after a real tick/render, animation frame and
+> later task does the optional `cf-v2-slice-ready/v1` tail event publish. Glass
+> accepts exactly one event from the
 > exact target session and new default top context/generation/origin on the changed
 > loader, with the expected URL and changed token, then runs one phase-owned,
 > at-most-2-second confirmation in that context. Sticky receipt timestamps—not
@@ -155,10 +166,12 @@
 > destroyed application. The harness retains bounded Page, Runtime, Inspector,
 > and Network lifecycle/failure evidence and fails on duplicate/invalid release
 > witnesses, crash, unreachable navigation, replacement exception, fatal document
-> load, loader reversion, wrong URL, or any missed phase. The paired controls
-> `replacement-document-loader-token-phase` and `reload-resource-release` reject
-> stalled navigation, stalled new-loader boot, same-loader token mutation, early
-> context loss, just-late transitions across all three deadlines, retained canvases, unreleased renderer, and over-budget backing
+> load, loader reversion, wrong URL, or any missed phase. The controls
+> `replacement-document-loader-token-phase`, `reload-resource-release`, and
+> `replacement-boot-phase-sequence` reject stalled navigation, stalled new-loader
+> boot, same-loader token mutation, early context loss, just-late transitions,
+> missing/reordered/identity-mismatched boot stages, early/running tickers,
+> retained canvases, unreleased renderer, and over-budget aggregate backing
 > pixels. The run remains single-attempt—a red result is never retried into green.
 > An event-owned `cf-v2-import-phase/v1` stream now proves the pre-release half:
 > `invoked` begins with the ticker running; `claimed`, persistence wait/write, and
@@ -261,10 +274,9 @@
 > from production, content SHA-256
 > `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
 > `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, `publishable:false`.
-> `7d9980e` underlies the forthcoming/
-> current docs-only handoff tip. Exact
-> tip/upstream/check status is read live, and the final pushed tip requires
-> matching green CI. The
+> `7d9980e` remains immutable prior exact evidence and does not certify the #204
+> repair. Exact tip/upstream/check status is read live; that repair still requires
+> a clean executable commit, exact battery, push and matching CI. The
 > artifact is bound to `https://dev-celestialfrontier.github.io`, but no host or
 > publication is authorized and the separate-origin human playtest is still
 > required before Ready or merge.
@@ -274,6 +286,35 @@
 > changed during slice smoke`). The single execution had no automatic retry and
 > remains a coordination/instrument refusal, not a product failure. None of the
 > automated results substitutes for matching CI or human play.
+>
+> Matching test-battery #204, run
+> [`31612817092`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092) /
+> job [`94168172635`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092/job/94168172635),
+> completed once without retry at exact pushed head
+> `4cee7d807b8f9258e370aad31c30756269f95a96` and is **RED**. Every earlier gate
+> and one-attempt `smoke:ci` passed. Desktop-8k import, primary write, 35 ms
+> renderer release, navigation, changed loader at 45 ms, load at 231 ms and FCP
+> at 268 ms were healthy after the arm command had queued for 9,504 ms; the new
+> document then emitted no ready witness within its independent 20-second budget
+> and no fatal event. The failure exposed two concurrent boot costs: each
+> full-viewport canvas could allocate the full 16,777,216-pixel ceiling, and Pixi
+> auto-started before asynchronous save/scene/slice/input wiring. Preserve #204
+> as first-attempt evidence; it is not an import, write, release, navigation,
+> load or FCP failure, and it must not be retried or hidden by a longer deadline.
+>
+> The current aggregate-budget / stopped-through-wiring repair has stable dirty-
+> source diagnostics only and is not authoritative certification. Against source
+> digest `721418cb1b0cd258ffcd35e614401aba0d26951ea2d02866c6651e2d6cd7c896`,
+> targeted desktop-8k passed in 218 ms; full one-attempt smoke passed with 0/10
+> findings/screenshots; and the certifying-shaped glass matrix passed 12/12
+> viewports, 53/53 controls, `omitted=[]`, zero findings/instrument failures/
+> retries in 193–214 ms. Exact desktop-8k recorded 214 ms total, a 1 ms arm,
+> 18 ms `invoked`→`release-complete` span, 1 ms primary write, all 12 boot stages,
+> `performanceNow` 178.7 ms, 1 ms confirmation and two 3,862×2,172 canvases.
+> All nine automated personas passed; the terminal performance diagnostic was
+> 637/723/77/157 ms. A clean executable commit, its exact full battery, push and
+> matching CI remain pending; host, human play, Ready, merge, release, deployment
+> and version authority remain unchanged.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
 v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve

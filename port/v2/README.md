@@ -16,7 +16,12 @@ SessionRNG rejects hostile counters/keys; handwritten domain declarations match
 their runtime APIs; lazy species-art subscribers are retained; and the phone
 dock is a measured 4×2 layout with browser-backed non-overlap/hit-target
 negative controls. Pixi now keeps its DPR-scaled backing store displayed in a
-viewport-sized CSS box, so phone visuals and hit coordinates agree. Browser smoke and
+viewport-sized CSS box, so phone visuals and hit coordinates agree. Its application
+canvas and full-viewport backdrop share one aggregate 4,096² /16,777,216-pixel
+budget, half each: native density is retained through 4K and 8K uses two
+3,862×2,172 backings (16,776,528 pixels combined). Pixi initializes with
+`autoStart:false` through save/scene/slice/input wiring, then proves a real tick/
+render, animation frame and later task before ready. Browser smoke and
 performance tools now use the owned, portable CDP lifecycle; the root legacy
 `tools/uilayout.js` gate consumes that same resolver/launcher rather than carrying
 an independent fixed-port lifecycle.
@@ -190,10 +195,10 @@ of an evidence failure. Exact 37-file / 10,170,996-byte preview
 320×568 for `https://dev-celestialfrontier.github.io`, distinct from production,
 content `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`,
 exact `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, `publishable:false`.
-`7d9980e` underlies the forthcoming/current
-docs-only handoff tip; exact tip/
-upstream/check state is live, and matching final-tip CI remains required. Prior
-#201 and #202 stay preserved red without retry. `overridecontrol` remains exclusive
+`7d9980e` remains immutable prior evidence from the preceding docs-only handoff;
+exact tip/upstream/check state is live. It does not certify the
+current #204 repair, whose clean commit/exact battery/push/CI remain pending.
+Prior #201 and #202 stay preserved red without retry. `overridecontrol` remains exclusive
 and may not overlap any browser, build or evidence producer.
 
 Test-battery #203, run
@@ -207,6 +212,41 @@ command, or event evidence. The outgoing 5,461×3,072 Pixi ticker was still live
 through the durable-write wait and teardown under CI software rendering. This is
 a pre-release renderer-pressure cliff, not save corruption or a reported
 repository-write failure. Preserve it without retry or a longer deadline.
+
+Test-battery #204, run
+[`31612817092`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092) /
+job [`94168172635`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092/job/94168172635),
+completed once without retry at exact pushed head
+`4cee7d807b8f9258e370aad31c30756269f95a96` and remains **RED**. Every earlier
+root/product/v2 gate and `smoke:ci` passed. Desktop-8k's arm command queued for
+9,504 ms, then import/write, 35 ms release, navigation, changed loader at 45 ms,
+load at 231 ms and FCP at 268 ms were healthy; the new document emitted no ready
+witness within 20 seconds and no fatal event. The cause was two independent full
+16,777,216-pixel full-viewport allocations plus Pixi auto-starting before async
+boot wiring. This is not an import, write, release, navigation, load or FCP
+failure. Preserve the single execution without retry or deadline growth.
+
+The repair gives the twin canvases one aggregate budget and adds an exact
+event-owned `cf-v2-boot-phase/v1` sequence: `app-init-start`, `app-init-complete`,
+`backdrop-complete`, `save-load-start`, `save-load-complete`, `scene-rendered`,
+`slice-published`, `wiring-complete`, `ticker-started`, `first-tick`,
+`ready-scheduled`, `ready-emitted`. Every stage binds the target session/default
+context/generation/origin/loader/token; the ticker is false through wiring and
+true thereafter. Per-stage/deadline controls reject missing, reordered, wrong-
+identity, early-ticker and late evidence, while smoke asserts fresh-boot and
+post-import ticker outcomes.
+
+Stable dirty-source diagnostics at digest
+`721418cb1b0cd258ffcd35e614401aba0d26951ea2d02866c6651e2d6cd7c896`
+are encouraging but non-authoritative: targeted 8K PASS 218 ms; one-attempt
+smoke PASS 0 findings /10 screenshots; certifying-shaped glass PASS 12/12,
+53/53, `omitted=[]`, zero findings/instrument failures/retries in 193–214 ms.
+Exact 8K was 214 ms total, 1 ms arm, 18 ms `invoked`→`release-complete`, 1 ms
+write, all 12 stages, `performanceNow` 178.7 ms, 1 ms confirmation and two
+3,862×2,172 canvases. Nine automated personas passed; terminal performance was
+637/723/77/157 ms. A clean executable commit, exact full battery, push and
+matching CI remain pending. Host, human play, Ready, merge, release, deployment
+and version authority remain unchanged.
 
 Before the stable-source battery above, one smoke attempt correctly refused mixed-
 source evidence because tracked documentation changed during its run (`source
@@ -532,7 +572,7 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 |---|---|
 | `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, and package tampering; then creates, verifies, and real-browser-boots a clean-commit static human-playtest package built from an isolated exact-HEAD snapshot with a visible DEV/commit banner, guarded module loader, `robots.txt`, and `preview.json` tree/lock/byte hashes. The shared workspace lock prevents overlap with source-mutating controls; the 320×568 boot requires the banner to clear the dock. Browser provenance belongs to each process: CI pins the same exact `CF_BROWSER` at job scope so the packaging step cannot fall back to another installed browser. Default output is remote-blocked; the default-branch manual workflow normally creates approved candidates, with PR #11's explicitly approved clean-head local bootstrap documented separately. It never deploys. |
 | `npm run smoke:ci` | Runs the authoritative real-browser `slicesmoke.mjs` exactly once, retains complete stdout/stderr in `slice-smoke.log`, and writes commit/branch/working-tree/browser/screenshot-bound `slice-smoke-report.json`. `smokereport` owns one full-lifetime workspace lock and passes a validated one-child inherited lease to `slicesmoke`, retaining the lock through screenshot hashing and report finalization. A failure prints the first scoped diagnosis plus a related count; it never retries a red run. |
-| `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion and DPR without retrying. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`. Import/reload owns `import-phase-sequence`, `replacement-ticker-quiescence`, `replacement-document-loader-token-phase`, and `reload-resource-release`: an exact-operation `cf-v2-import-phase/v1` stream requires the ticker running at `invoked`, stopped from claim through release, ordered persistence/write/release stages, and one absolute 20-second clock that starts before a bounded non-awaiting arm command. Sticky receipts then require exactly one reason/token-bound Pixi/application/backdrop release witness, a changed-top-loader commit within 5 seconds, and exactly one `cf-v2-slice-ready/v1` event from the exact new default top context/session/loader/token/URL inside its independent 20-second boot bound; the payload's browser-native `performanceNow` must also be strictly below that bound, and one at-most-2-second command confirms the context. Bounded sticky Page/Runtime/Inspector/Network evidence diagnoses failure. The tail witness is boot publication plus a serviced turn, not the 50 ms answerability gate. No retry, timeout increase, or IndexedDB timeout race is used. The command owns the shared workspace lock while building/browsing. |
+| `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion, aggregate twin-canvas DPR and boot order without retrying. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`. Import/reload owns `import-phase-sequence`, `replacement-ticker-quiescence`, `replacement-document-loader-token-phase`, `reload-resource-release`, and `replacement-boot-phase-sequence`: the exact import stream requires ticker-running invocation, a stopped claim/write/release, and one absolute 20-second clock before the bounded arm. Sticky receipts require release, a changed-loader commit within 5 seconds, then the exact 12-stage `cf-v2-boot-phase/v1` sequence and one `cf-v2-slice-ready/v1` tail from the new session/context/generation/origin/loader/token within 20 seconds. The ticker stays false through wiring and true thereafter; browser-native `performanceNow` is strictly below the bound, followed by one at-most-2-second confirmation. Bounded sticky failure evidence diagnoses red. No retry, timeout increase, or IndexedDB timeout race is used. The command owns the shared workspace lock while building/browsing. |
 | `npm run persona:selftest` / `npm run persona:report` | Joins only passing slice-smoke and glass-matrix evidence with matching commit/branch and dirty-tree digest into `automated-persona-report.{json,md}`. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |
 | `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools, including root `tools/uilayout.js`; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. Environment scope is process-local: a green browser in one workflow step does not pin the resolver in the next. CI therefore supplies the exact path at job scope and resolves it before long gates. |
 | `node tools/browsercdp.mjs --selftest` | Uses the manifest/lock-declared `ws` transport and owns port-0 `DevToolsActivePort` startup, complete `Browser.getVersion` provenance, early-exit plus bounded stderr head/tail diagnosis, WebSocket and command bounds, pending-command rejection, bounded TERM→KILL shutdown, and validated profile cleanup. A caller may choose a shorter positive per-command timeout for a phase-owned confirmation but cannot exceed the connection-wide ceiling; the selftest rejects both a deliberately stalled short command and attempted ceiling expansion. Root `tools/uilayout.js` consumes this launcher and adds stale-report, exact-run, and sealed-inventory controls. Root preflight launches this same probe; legacy `bootperf` shares the resolver/`ws` transport but not this lifecycle. |

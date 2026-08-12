@@ -974,6 +974,35 @@ duplicates).
   forthcoming/current docs-only handoff tip; exact tip/upstream/check state is read live, and the
   final pushed tip still requires matching green CI. The exact clean executable outcome closes
   this implementation item; human play and release authority remain separate.
+- ★ **D-SAVE-3 — simultaneous full-viewport resources share one budget and boot wiring owns
+  ticker start (repair pending exact clean evidence, 2026-08-12).** Test-battery #204
+  (`31612817092` / `94168172635`) completed once without retry at exact pushed
+  `4cee7d807b8f9258e370aad31c30756269f95a96` and remains red. All earlier gates and
+  `smoke:ci` passed. Desktop-8k's arm queued for 9,504 ms; import/write, 35 ms release,
+  navigation, changed loader at 45 ms, load at 231 ms and FCP at 268 ms were healthy,
+  then the replacement emitted no ready witness inside 20 seconds and no fatal event.
+  Root cause was two independent full 16,777,216-pixel canvas allocations plus Pixi
+  `autoStart` before async save/scene/slice/input wiring—not save corruption or an
+  import/write/release/navigation/load/FCP failure.
+
+  The repair gives the application and backdrop canvases one aggregate 4,096² budget,
+  half each: native through 4K and 3,862×2,172 each at 8K (16,776,528 combined). Pixi
+  stays stopped through wiring, then performs a real tick/render, animation frame and
+  later task. Exact `cf-v2-boot-phase/v1` stages `app-init-start`, `app-init-complete`,
+  `backdrop-complete`, `save-load-start`, `save-load-complete`, `scene-rendered`,
+  `slice-published`, `wiring-complete`, `ticker-started`, `first-tick`,
+  `ready-scheduled`, `ready-emitted` bind session/context/generation/origin/loader/token;
+  ticker false-through-wiring/true-after and per-stage/deadline controls fail closed.
+
+  Stable dirty-source diagnostics at digest
+  `721418cb1b0cd258ffcd35e614401aba0d26951ea2d02866c6651e2d6cd7c896` passed
+  targeted 8K in 218 ms, smoke 0/10, certifying-shaped glass 12/12 and 53/53 with
+  `omitted=[]`, zero findings/instrument failures/retries in 193–214 ms, and nine
+  automated personas. Exact 8K was 214 ms total /1 ms arm /18 ms invoked→release /
+  1 ms write /178.7 ms ready /1 ms confirmation with all 12 stages and both
+  3,862×2,172 canvases; terminal performance was 637/723/77/157 ms. These are
+  non-authoritative until a clean executable commit, exact battery, push and matching
+  CI. Human play, Ready, merge, release, deployment and version authority remain open.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
@@ -1064,7 +1093,8 @@ duplicates).
   Enter/Space calls its survey path, +/- zooms at the selected target and Escape releases it; a
   visible focus ring and polite live region expose the state. Clipboard refusal selects the exact CF1
   in Search and announces **Copy unavailable** instead of lying. `effectiveDpr()` retains the touch-2
-  / desktop-3 heat caps, adds a 16,777,216-pixel backing-store ceiling, and resynchronizes Pixi plus
+  / desktop-3 heat caps, gives the application canvas plus backdrop one aggregate
+  16,777,216-pixel backing-store budget split equally, and resynchronizes Pixi plus
   backdrop density on viewport changes while destroying the replaced backdrop texture. On every
   ≤900px landed layout, populated Planetside owns the objective's limited reading band until ascent;
   short landscape yields the trail and begins Planetside below measured top chrome. Portrait derives
@@ -1122,9 +1152,9 @@ duplicates).
   `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
   `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, expected separate origin,
   production distinct and `publishable:false`. Prior #201
-  remains red without retry. `7d9980e` underlies the forthcoming/current docs-only handoff tip;
-  exact tip/upstream/check state is read live, the final
-  pushed tip requires matching green CI, and the separate-origin human playtest remains open.
+  remains red without retry. `7d9980e` is immutable prior evidence and does not certify #204;
+  exact tip/upstream/check state is read live. D-SAVE-3 requires a clean repair commit, exact
+  battery, push and matching CI, and the separate-origin human playtest remains open.
 
   Matching test-battery #202, run `31594595288` / job `94106996466`, completed once without retry
   at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53` and is **RED**. Every earlier root/
@@ -1145,9 +1175,10 @@ duplicates).
   malformed, wrong-context and just-late events fail closed. The ready event proves complete boot
   publication plus a serviced event-loop turn, not the separate 50 ms answerability metric.
 
-  The exact clean battery above supersedes the provisional dirty diagnostic as current evidence.
-  Matching final-tip CI and the separate-origin human playtest remain pending; human certification,
-  Ready, merge, version, preview publication and deployment boundaries are unchanged.
+  The exact `7d9980e` battery above remains immutable evidence for that repair but predates #204
+  and does not certify D-SAVE-3. Its clean repair commit/battery/push/CI and the separate-origin
+  human playtest remain pending; human certification, Ready, merge, version, preview publication
+  and deployment boundaries are unchanged.
   Earlier test-battery #203 (`31602984470` / `94134750800`) failed once without retry only
   in desktop-8k import before the release boundary: the old 5,461×3,072 Pixi ticker
   remained live while the durable write and teardown awaited service. The follow-on
@@ -1160,8 +1191,8 @@ duplicates).
   no timeout increase, retry, or IndexedDB timeout race is introduced. Before the exact clean
   evidence above, one mixed-source smoke execution correctly refused when tracked docs changed
   during its run; it had no automatic retry and was an instrument/coordination refusal, not a
-  product failure. The exact clean commit closes the implementation/evidence item; matching final-
-  tip CI and the separate-origin human playtest remain open.
+  product failure. That exact clean commit closes D-SAVE-2 only; D-SAVE-3 records #204 and the
+  aggregate-budget / explicit-start repair still awaiting clean exact evidence.
 - ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
   the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson
