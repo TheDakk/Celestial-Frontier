@@ -92,19 +92,52 @@ Edge at `/opt/microsoft/msedge/microsoft-edge`, which never wrote
 `DevToolsActivePort`. This is a CI browser-provenance failure, not a product,
 responsive, package, or preview-page finding. The workflow repair pins Chrome at
 job scope in both CI workflows and resolves it fail-closed before the long battery.
-That workflow repair is local commit
-`4d14a75e934536dc5f204e40c74f666cc9514df4` and remains unpushed. The follow-on
-root-layout repair now shares the owned launcher and creates ignored atomic schema-v2
+That workflow repair is pushed commit
+`4d14a75e934536dc5f204e40c74f666cc9514df4`. Follow-on commit
+`08379d8c072c7eb22e2a029d666972c86d496326` moves root layout to the owned
+launcher and creates ignored atomic schema-v2
 run/browser/status evidence with stale-PASS/exit-73 and exact-run freshness controls.
 Full layout PASS also binds the exact 787 `viewport/surface/name` inventory to the
 sealed v1.8.9 report; targeted viewports remain scoped. Its selftest deletes one
 sealed outcome, keeps the summary counts consistent, and still requires rejection.
 Its initial sandboxed Edge launch preserved SIGABRT as red; a separately permitted
 mutable-tree diagnostic completed 787/787 across 10 viewports, but is not exact-head
-certification. The combined repair still requires a new clean commit, full exact-head
-battery, push and matching CI.
-Do not rerun the unchanged red head, retry the browser, lengthen startup, or clear
-D-Bus to mask the evidence. `overridecontrol` remains exclusive and may not
+certification. Pushed evidence head
+`4560269b8767dc48bb82e3b1f9d82ca835a84aad` passed its exact sequential local
+battery, including root 787/787 layout, v2 273 pass / 1 skip, one-attempt smoke,
+full 12-viewport glass, nine automated personas and the 320×568 preview smoke.
+
+Matching test-battery #201, run `31586917924` / job `94082765087`, completed
+once without retry on that pushed head and is **RED**. Every preceding root,
+product and v2 gate—including `smoke:ci`—passed. Only the desktop-8k preference-
+fixture import leg instrument-failed after its former 20-second replacement wait:
+the old loader remained while the old slice token and import phase were absent.
+This is a replacement-lifecycle/instrument finding after reload was requested,
+not a save-classifier rejection or reported repository-write error. Do not rerun
+unchanged #201 or lengthen its timeout to mask it.
+
+The current uncommitted worktree repair makes the product's Training-restart,
+supported-import and storage-retry reloads claim one mutually exclusive replacement
+transaction before awaiting, then explicitly release the outgoing Pixi
+application/global resources, detach the view, and collapse both application and
+backdrop canvases to at most 1×1 before a one-task reload barrier. It is code-owned,
+not a generic `pagehide` teardown, so browser-cache restoration cannot revive a
+destroyed app. An optional CDP binding emits the release postconditions outside the
+dying context. Glass then observes a 20-second import transaction, 5-second
+navigation commit, and independent 20-second new-loader boot; requires exactly one
+valid release witness plus changed loader and document token; and retains bounded
+Page/Runtime/Inspector/Network failure evidence. The paired
+`replacement-document-loader-token-phase` and `reload-resource-release` controls
+reject the ambiguous and resource-retention paths, including just-late transitions
+at every phase boundary, with zero retries.
+
+Its instrument selftest passes. A targeted desktop-8k diagnostic witnessed both
+5,461×3,072 backings collapse to 1×1, released renderer/stage, detached view and a
+changed-loader/token ready replacement in 198ms. Stable-source `smoke:ci` passed the
+real Restart/import/duplicate-import interlocks and rollback. Final mutable-source glass passed all
+12 viewports and 50/50 controls without omissions/findings/instrument failures/retries; matching
+automated personas passed all nine bounded lenses. Exact-head local battery, commit, push and
+matching CI remain required. `overridecontrol` remains exclusive and may not
 overlap any browser, build or evidence producer.
 
 Human development playtests use a commit-bound static package, not the live
@@ -120,8 +153,9 @@ pushed-head candidate command documented in `port/DEVELOPMENT_PREVIEW.md`.
 `npm run preview:verify -- --verify=<root>`
 rechecks an extracted package. The origin must not be
 `celestialfrontier.github.io` or a path beneath it because those paths share
-production browser storage. The separate preview owner/hostname remains a
-pending decision; packaging does not deploy. Structured evidence comprises a
+production browser storage. The exact local artifact is bound to
+`https://dev-celestialfrontier.github.io`, but no owner-site repository/host or
+publication is approved or present; packaging does not deploy. Structured evidence comprises a
 single-run slice-smoke JSON/log/screenshots, a 12-viewport glass-matrix report including
 8K, and same-provenance automated-persona JSON/Markdown. The automated synthesis
 is not a human playtest. PR #11 remains draft until a real multi-lens playtest is
@@ -138,7 +172,7 @@ finish the remaining legacy Field Training arc and keep the canonical Guide's
 current-safe topic bodies synchronized as systems land; add tooltip deep-links and
 the Advanced Briefing surface;
 virtualize the 1,500-row Compendium; own/destroy Pixi canvas textures and add a
-memory plateau gate; attach completed HD planet textures to live sprites;
+memory plateau gate beyond the explicit replacement-reload teardown; attach completed HD planet textures to live sprites;
 persist/invalidate epoch edges and settle hidden-tab/reduced-motion policy;
 then close remaining literal Gate-B boundaries and split-store/CAS persistence.
 Static Platinum-reviewed portraits are deliberately frozen. The next major art
@@ -423,7 +457,7 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 |---|---|
 | `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, and package tampering; then creates, verifies, and real-browser-boots a clean-commit static human-playtest package built from an isolated exact-HEAD snapshot with a visible DEV/commit banner, guarded module loader, `robots.txt`, and `preview.json` tree/lock/byte hashes. The shared workspace lock prevents overlap with source-mutating controls; the 320×568 boot requires the banner to clear the dock. Browser provenance belongs to each process: CI pins the same exact `CF_BROWSER` at job scope so the packaging step cannot fall back to another installed browser. Default output is remote-blocked; the default-branch manual workflow normally creates approved candidates, with PR #11's explicitly approved clean-head local bootstrap documented separately. It never deploys. |
 | `npm run smoke:ci` | Runs the authoritative real-browser `slicesmoke.mjs` exactly once, retains complete stdout/stderr in `slice-smoke.log`, and writes commit/branch/working-tree/browser/screenshot-bound `slice-smoke-report.json`. `smokereport` owns one full-lifetime workspace lock and passes a validated one-child inherited lease to `slicesmoke`, retaining the lock through screenshot hashing and report finalization. A failure prints the first scoped diagnosis plus a related count; it never retries a red run. |
-| `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion and DPR without retrying. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`; import/reload owns `replacement-document-loader-token-phase`, separate 20-second import/replacement bounds, and requires a ready document with changed loader plus changed token. The command owns the shared workspace lock while building/browsing. |
+| `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion and DPR without retrying. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`. Import/reload owns `replacement-document-loader-token-phase` plus `reload-resource-release`: a 20-second import transaction, 5-second navigation commit and 20-second new-loader boot are independent; exactly one valid Pixi/application/backdrop release witness must precede a ready changed loader + changed document token; and bounded Page/Runtime/Inspector/Network evidence diagnoses failure. The command owns the shared workspace lock while building/browsing. |
 | `npm run persona:selftest` / `npm run persona:report` | Joins only passing slice-smoke and glass-matrix evidence with matching commit/branch and dirty-tree digest into `automated-persona-report.{json,md}`. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |
 | `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools, including root `tools/uilayout.js`; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. Environment scope is process-local: a green browser in one workflow step does not pin the resolver in the next. CI therefore supplies the exact path at job scope and resolves it before long gates. |
 | `node tools/browsercdp.mjs --selftest` | Uses the manifest/lock-declared `ws` transport and owns port-0 `DevToolsActivePort` startup, complete `Browser.getVersion` provenance, early-exit plus bounded stderr head/tail diagnosis, WebSocket and command bounds, pending-command rejection, bounded TERM→KILL shutdown, and validated profile cleanup. Its selftest negative-controls each boundary; root `tools/uilayout.js` consumes this launcher and adds stale-report, exact-run, and sealed-inventory controls. Root preflight launches this same probe; legacy `bootperf` shares the resolver/`ws` transport but not this lifecycle. |

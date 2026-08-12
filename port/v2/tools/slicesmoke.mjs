@@ -1264,12 +1264,16 @@ try {
      valid first, stale second, and this post-reload primary/state assertion
      fails with "Stale Autosave Must Lose". */
   const desktopImportToken = await sliceToken(sess);
-  const importRace = await evalIn(`(()=>{ const api=window.__CF_SLICE__.api;
+  const importRace = await evalIn(`(async()=>{ const api=window.__CF_SLICE__.api;
     const armed=api.__smokeArmImportRace(${JSON.stringify(STALE_AUTOSAVE_RAW)});
-    if(!armed)return {armed,released:false}; void api.importBlob(${JSON.stringify(vrRaw)});
-    return {armed,released:api.__smokeReleaseImportRace()}; })()`).catch(() => ({ armed: false, released: false }));
-  if (!importRace.armed || !importRace.released) {
-    fails.push('IMPORT/AUTOSAVE RACE: diagnostics ordering witness did not arm/release: ' + JSON.stringify(importRace));
+    if(!armed)return {armed,released:false,duplicate:null};
+    void api.importBlob(${JSON.stringify(vrRaw)});
+    const duplicate=await api.importBlob(${JSON.stringify(STALE_AUTOSAVE_RAW)});
+    return {armed,duplicate,released:api.__smokeReleaseImportRace()}; })()`)
+    .catch(() => ({ armed: false, released: false, duplicate: null }));
+  if (!importRace.armed || !importRace.released
+    || !/another expedition replacement is finishing/i.test(importRace.duplicate || '')) {
+    fails.push('IMPORT/AUTOSAVE/DUPLICATE RACE: ordering or unique-operation claim did not hold: ' + JSON.stringify(importRace));
     try { await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(vrRaw)})`); }
     catch { /* fallback only keeps later smoke diagnostics reachable */ }
   }
@@ -1285,7 +1289,7 @@ try {
   if (vet.codexCount !== 3) fails.push('veteran Compendium count wrong (want 3): ' + JSON.stringify(vet.codexCount));
   if (!postRacePrimary || postRacePrimary.me !== 'Dakk' || postRacePrimary.essence !== 5000
     || postRacePrimary.me === 'Stale Autosave Must Lose') {
-    fails.push('IMPORT/AUTOSAVE RACE: imported primary did not remain authoritative after reload/settle: '
+    fails.push('IMPORT/AUTOSAVE/DUPLICATE RACE: imported primary did not remain authoritative after reload/settle: '
       + JSON.stringify({ state: vet.save, storedName: postRacePrimary?.me, storedEssence: postRacePrimary?.essence }));
   }
 
@@ -1296,10 +1300,15 @@ try {
   const restartBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
   const restartBeforeToken = await sliceToken(sess);
   const restartBeforeRaw = await evalIn(READ_PRIMARY_EXPRESSION);
-  const restartClick = await evalIn(`(()=>{ const api=window.__CF_SLICE__.api;
+  const restartClick = await evalIn(`(async()=>{ const api=window.__CF_SLICE__.api;
     document.getElementById('docksets').click(); const button=document.getElementById('setrestart');
-    const armed=api.__smokeRejectNextPersist(); button?.click(); return {armed,button:!!button}; })()`);
-  await sleep(250);
+    const held=api.__smokeArmImportRace(${JSON.stringify(restartBeforeRaw)});
+    const armed=api.__smokeRejectNextPersist(); button?.click();
+    await Promise.resolve();
+    const interlock=await api.importBlob(${JSON.stringify(vrRaw)});
+    const released=api.__smokeReleaseImportRace();
+    return {armed,held,released,interlock,button:!!button}; })()`);
+  await sleep(500);
   const restartOutcomeCheck = `(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('setrestart'),toast=document.getElementById('toast');
     const style=toast?getComputedStyle(toast):null,r=toast?.getBoundingClientRect(),title=(toast?.querySelector('[data-sel=toast-title]')?.textContent||'').trim();
     const visible=!!toast&&toast.style.opacity==='1'&&Number(style?.opacity)>0&&style?.visibility!=='hidden'&&!!r&&r.width>0&&r.height>0;
@@ -1312,9 +1321,10 @@ try {
   const restartOutcome = await evalIn(restartOutcomeCheck);
   const restartAfterToken = await sliceToken(sess);
   const restartAfterRaw = await evalIn(READ_PRIMARY_EXPRESSION);
-  if (!restartClick.armed || !restartClick.button || !restartOutcome.ok
+  if (!restartClick.armed || !restartClick.held || !restartClick.released || !restartClick.button
+    || !/another expedition replacement is finishing/i.test(restartClick.interlock || '') || !restartOutcome.ok
     || restartAfterToken !== restartBeforeToken || restartAfterRaw !== restartBeforeRaw) {
-    fails.push('TRAINING RESTART REJECTION: rollback/refusal/byte outcome drifted: ' + JSON.stringify({
+    fails.push('TRAINING RESTART/IMPORT INTERLOCK: arbitration, rollback, refusal, or byte outcome drifted: ' + JSON.stringify({
       click: restartClick, outcome: restartOutcome, noReload: restartAfterToken === restartBeforeToken,
       primaryPreserved: restartAfterRaw === restartBeforeRaw,
     }));
