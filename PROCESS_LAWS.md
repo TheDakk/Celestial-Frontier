@@ -498,6 +498,24 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > IndexedDB durability in a generic timeout race: it can report failure while a write later commits
 > and recreate the overwrite race the ordering protects. Negative-control both ticker directions,
 > phase identity/order/context/deadline, and rollback resumption.
+>
+> **Correction earned by test-battery #204:** healthy import, renderer release, changed-loader
+> navigation, document load, and first contentful paint still do not prove the replacement app can
+> finish boot. Desktop-8k completed all of those, with no fatal event, then emitted no ready witness
+> inside 20 seconds. Two independently “capped” full-viewport canvases had each consumed the entire
+> 4,096² allowance, and Pixi auto-started before asynchronous save/scene/slice/input wiring. Under
+> software rendering, those choices can starve the work that makes the app usable even though the
+> browser has painted HTML.
+> **Budget aggregate resources at their simultaneous owner, and keep producers dormant until their
+> consumers are wired.** The application and backdrop now split one aggregate twin-canvas budget;
+> each remains no larger than native 4K. Pixi initializes with `autoStart:false`, stays stopped
+> through save load, scene publication, slice publication and input wiring, then proves a real
+> tick/render, animation frame and later task before ready. A complete boot witness must carry the
+> exact replacement session/context/generation/origin/loader/token through every ordered stage, with
+> the ticker false through wiring and true only after the explicit start. Negative-control every
+> stage, identity, ticker direction and deadline. Load/FCP is browser-document evidence—not
+> application readiness—and increasing the boot timeout does not repair resource ownership or
+> startup order.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next

@@ -141,6 +141,33 @@ type ReloadReleaseWitness = {
   appCanvas: ReloadCanvasRelease;
   backdropCanvas: ReloadCanvasRelease;
 };
+type BootPhaseStage =
+  | 'app-init-start' | 'app-init-complete' | 'backdrop-complete'
+  | 'save-load-start' | 'save-load-complete' | 'scene-rendered'
+  | 'slice-published' | 'wiring-complete' | 'ticker-started'
+  | 'first-tick' | 'ready-scheduled' | 'ready-emitted';
+type BootPhaseWitness = {
+  schema: 'cf-v2-boot-phase/v1';
+  documentToken: string;
+  sequence: number;
+  stage: BootPhaseStage;
+  tickerStarted: boolean;
+  performanceNow: number;
+  error: null;
+};
+let bootPhaseSequence = 0;
+function emitBootPhase(stage: BootPhaseStage): void {
+  const witness: BootPhaseWitness = {
+    schema: 'cf-v2-boot-phase/v1', documentToken: DOCUMENT_TOKEN,
+    sequence: ++bootPhaseSequence, stage,
+    tickerStarted: app.ticker?.started === true,
+    performanceNow: performance.now(), error: null,
+  };
+  try {
+    const binding = (window as unknown as Record<string, unknown>).__cfBootPhaseWitness;
+    if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
+  } catch { /* optional diagnostics must never strand ordinary boot */ }
+}
 const unreleasedCanvas = (): ReloadCanvasRelease => ({
   beforeWidth: 0, beforeHeight: 0, afterWidth: 0, afterHeight: 0,
 });
@@ -339,15 +366,19 @@ let playT0 = 0;
 const playSeconds = (): number => (performance.now() - playT0) / 1000;
 const TOUCH_DPR = navigator.maxTouchPoints > 0
   || (typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches);
-const MAX_BACKING_PIXELS = 16_777_216;   /* one 4096² backing store, before the backdrop twin */
+/* The app and its full-viewport 2D backdrop coexist. Treat one 4096² store
+   as their aggregate pixel budget, not as permission for two 4096² stores. */
+const MAX_FULL_VIEWPORT_BACKING_PIXELS = 16_777_216;
+const FULL_VIEWPORT_CANVAS_COUNT = 2;
+const MAX_BACKING_PIXELS_PER_CANVAS = MAX_FULL_VIEWPORT_BACKING_PIXELS / FULL_VIEWPORT_CANVAS_COUNT;
 const effectiveDpr = (): number => {
   const device = Number.isFinite(devicePixelRatio) ? Math.max(1, devicePixelRatio) : 1;
   const heatCap = TOUCH_DPR ? 2 : 3;
-  const memoryCap = Math.sqrt(MAX_BACKING_PIXELS / Math.max(1, innerWidth * innerHeight));
-  /* A CSS viewport itself can exceed 4096² pixels (5K/8K desktops). Pixi
+  const memoryCap = Math.sqrt(MAX_BACKING_PIXELS_PER_CANVAS / Math.max(1, innerWidth * innerHeight));
+  /* A CSS viewport can exceed one canvas's half-budget at 5K/8K. Pixi
      supports sub-1 resolution while autoDensity preserves the CSS box, so
-     keep the advertised backing-pixel ceiling instead of silently doubling
-     it at the old DPR-1 floor. */
+     keep the aggregate twin-canvas ceiling instead of silently exceeding it
+     at the old DPR-1 floor. */
   const dimensionFloor = Math.min(1 / Math.max(1, innerWidth), 1 / Math.max(1, innerHeight));
   return Math.max(dimensionFloor, Math.min(device, heatCap, memoryCap));
 };
@@ -2936,8 +2967,16 @@ async function loadSave(): Promise<void> {
 (async () => {
   /* autoDensity keeps the DPR-scaled backing store at CSS viewport size.
      Without it a DPR-2 phone displayed a 780px canvas inside 390 CSS px,
-     halving Pixi hit coordinates and moving the home galaxy offscreen. */
-  await app.init({ background: 0x05070d, resizeTo: window, antialias: true, resolution: DPR, autoDensity: true });
+     halving Pixi hit coordinates and moving the home galaxy offscreen.
+     Hold the ticker until persistence, scene publication, and every input
+     listener are wired: at 8K, even one premature full-canvas render can
+     starve the async boot work that makes the document answerable. */
+  emitBootPhase('app-init-start');
+  await app.init({
+    background: 0x05070d, resizeTo: window, antialias: true,
+    resolution: DPR, autoDensity: true, autoStart: false,
+  });
+  emitBootPhase('app-init-complete');
   document.body.appendChild(app.canvas);
   installKeyboardExploration();
   /* THE BACKDROP (drawBackdrop, main.js 3560 — verbatim recipe): the seeded
@@ -2979,6 +3018,7 @@ async function loadSave(): Promise<void> {
     }
   };
   rebuildBackdrop();
+  emitBootPhase('backdrop-complete');
   const syncRendererDensity = (): void => {
     const next = effectiveDpr();
     if (Math.abs(next - DPR) > 0.001) {
@@ -3052,8 +3092,11 @@ async function loadSave(): Promise<void> {
      complete SaveStateV2 and the first scene is rendered. Publishing it
      before this await let a slower CI browser call state() while `save` was
      still unassigned, turning a readiness race into a misleading app fault. */
+  emitBootPhase('save-load-start');
   await loadSave();
+  emitBootPhase('save-load-complete');
   rerender();
+  emitBootPhase('scene-rendered');
   showUnseenV2Release();
   /* diagnostics handle for tools/slicesmoke.mjs — a WebGL canvas reads BLACK
      through 2D drawImage without preserveDrawingBuffer, so the smoke asks
@@ -3089,6 +3132,10 @@ async function loadSave(): Promise<void> {
         glassA: getComputedStyle(document.documentElement).getPropertyValue('--glass-a').trim(),
         rendererDpr: app.renderer.resolution,
         backingWidth: app.canvas.width, backingHeight: app.canvas.height,
+        backdropBackingWidth: activeBackdropCanvas?.width ?? 0,
+        backdropBackingHeight: activeBackdropCanvas?.height ?? 0,
+        combinedBackingPixels: app.canvas.width * app.canvas.height
+          + (activeBackdropCanvas?.width ?? 0) * (activeBackdropCanvas?.height ?? 0),
         keyboardTarget: keyboardTargetKey,
         tickerTicks,
         topbarH: getComputedStyle(document.documentElement).getPropertyValue('--topbar-h'),
@@ -3168,6 +3215,7 @@ async function loadSave(): Promise<void> {
       },
     },
   };
+  emitBootPhase('slice-published');
   /* the CMB band-pick (main.js ringPick): a tap on EMPTY space near the
      observable-universe ring — and only there — opens the origin card */
   app.stage.eventMode = 'static';
@@ -3181,8 +3229,13 @@ async function loadSave(): Promise<void> {
   });
 
   let tickerTicks = 0;
+  let firstTickPublished = false;
   app.ticker.add((tk) => {
     tickerTicks++;
+    if (!firstTickPublished) {
+      firstTickPublished = true;
+      emitBootPhase('first-tick');
+    }
     /* Reduced motion is a rendered-state policy, not just a CSS preference:
        navigation snaps, fades finish, and every ambient clock below receives
        t=0. Full/Auto keep the framerate-aware ease and living scene. */
@@ -3410,6 +3463,9 @@ async function loadSave(): Promise<void> {
     }
     goUp();
   });
+  emitBootPhase('wiring-complete');
+  app.start();
+  emitBootPhase('ticker-started');
   /* Runtime.addBinding installs this optional readiness seam before the
      document starts. Emit only after the complete slice, ticker, pointer,
      keyboard and persistence wiring above exists, allow the first animation
@@ -3419,19 +3475,27 @@ async function loadSave(): Promise<void> {
   const emitBootReady = (): void => {
     requestAnimationFrame(() => {
       if (tickerTicks < 1) { emitBootReady(); return; }
+      emitBootPhase('ready-scheduled');
       setTimeout(() => {
         try {
           const binding = (window as unknown as Record<string, unknown>).__cfSliceReadyWitness;
           if (typeof binding !== 'function') return;
-          (binding as (payload: string) => unknown)(JSON.stringify({
+          const backdropBackingWidth = activeBackdropCanvas?.width ?? 0;
+          const backdropBackingHeight = activeBackdropCanvas?.height ?? 0;
+          const payload = JSON.stringify({
             schema: 'cf-v2-slice-ready/v1', status: 'ready', token: DOCUMENT_TOKEN,
             href: location.href, readyState: document.readyState,
             saveReady: !!save, viewConnected: app.canvas.isConnected,
             rendererReady: !!app.renderer && app.canvas.width > 1 && app.canvas.height > 1,
             stageReady: !!app.stage, tickerTicks,
             backingWidth: app.canvas.width, backingHeight: app.canvas.height,
+            backdropBackingWidth, backdropBackingHeight,
+            combinedBackingPixels: app.canvas.width * app.canvas.height
+              + backdropBackingWidth * backdropBackingHeight,
             performanceNow: performance.now(),
-          }));
+          });
+          emitBootPhase('ready-emitted');
+          (binding as (payload: string) => unknown)(payload);
         } catch { /* the evidence harness fails closed if its optional seam is broken */ }
       }, 0);
     });

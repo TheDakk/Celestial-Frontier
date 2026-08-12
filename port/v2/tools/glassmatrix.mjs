@@ -27,7 +27,12 @@ const appDir = path.join(here, '..', 'apps', 'game');
 const dist = path.join(appDir, 'dist');
 const repoRoot = path.resolve(here, '..', '..', '..');
 const evidenceDir = path.join(appDir, 'smoke');
-const MAX_BACKING_PIXELS = 4096 * 4096;
+/* The renderer and its texture-backed 2D backdrop coexist. Treat the old
+   4096² allowance as their aggregate budget, not as permission for each
+   canvas to allocate 4096² independently. The equal half-budget also keeps
+   expected DPR honest before either backing store is created. */
+const MAX_TWIN_BACKING_PIXELS = 4096 * 4096;
+const MAX_CANVAS_BACKING_PIXELS = MAX_TWIN_BACKING_PIXELS / 2;
 /* Import settlement, navigation commit, and replacement boot are separate
    observable phases. Bound each to the same budget as a fresh slice boot;
    never let time spent waiting for the old loader to leave consume the new
@@ -39,6 +44,7 @@ const REPLACEMENT_READY_TIMEOUT_MS = SLICE_READY_TIMEOUT_MS;
 const MAX_RELOAD_EVENTS = 48;
 const IMPORT_PHASE_BINDING = '__cfImportPhaseWitness';
 const RELOAD_RELEASE_BINDING = '__cfReloadReleaseWitness';
+const BOOT_PHASE_BINDING = '__cfBootPhaseWitness';
 const SLICE_READY_BINDING = '__cfSliceReadyWitness';
 const PHASE_PROBE_TIMEOUT_MS = 2000;
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -164,6 +170,7 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'replacement-document-loader-token-phase',
   'import-phase-sequence',
   'replacement-ticker-quiescence',
+  'replacement-boot-phase-sequence',
   'reload-resource-release',
 ]);
 
@@ -268,6 +275,7 @@ function validateReloadReleaseWitness(payload) {
   for (const field of ['rendererReleased', 'stageReleased', 'viewDetached']) {
     if (witness[field] !== true) return { ok: false, why: `release witness ${field} is not true`, witness };
   }
+  const beforePixels = {};
   for (const name of ['appCanvas', 'backdropCanvas']) {
     const canvas = witness[name];
     if (!canvas || typeof canvas !== 'object' || Array.isArray(canvas)) {
@@ -277,13 +285,20 @@ function validateReloadReleaseWitness(payload) {
     if (!values.every((field) => Number.isInteger(canvas[field]) && canvas[field] >= 0)) {
       return { ok: false, why: `release witness ${name} dimensions are invalid`, witness };
     }
-    const beforePixels = canvas.beforeWidth * canvas.beforeHeight;
-    if (canvas.beforeWidth <= 1 || canvas.beforeHeight <= 1 || beforePixels <= 1
-      || beforePixels > MAX_BACKING_PIXELS) {
-      return { ok: false, why: `release witness ${name} did not capture a meaningful bounded pre-release canvas`, witness };
-    }
+    beforePixels[name] = canvas.beforeWidth * canvas.beforeHeight;
     if (canvas.afterWidth > 1 || canvas.afterHeight > 1) {
       return { ok: false, why: `release witness ${name} retained a canvas larger than 1x1`, witness };
+    }
+  }
+  const combinedBeforePixels = beforePixels.appCanvas + beforePixels.backdropCanvas;
+  if (combinedBeforePixels > MAX_TWIN_BACKING_PIXELS) {
+    return { ok: false, why: 'release witness canvases exceeded the aggregate twin backing-pixel budget', witness };
+  }
+  for (const name of ['appCanvas', 'backdropCanvas']) {
+    const canvas = witness[name];
+    if (canvas.beforeWidth <= 1 || canvas.beforeHeight <= 1 || beforePixels[name] <= 1
+      || beforePixels[name] > MAX_CANVAS_BACKING_PIXELS) {
+      return { ok: false, why: `release witness ${name} did not capture a meaningful bounded half-budget pre-release canvas`, witness };
     }
   }
   return { ok: true, why: null, witness };
@@ -311,10 +326,22 @@ function validateSliceReadyWitness(payload) {
     || witness.tickerTicks < 1) {
     return { ok: false, why: 'slice-ready witness did not report a complete wired app', witness };
   }
-  if (!Number.isInteger(witness.backingWidth) || !Number.isInteger(witness.backingHeight)
-    || witness.backingWidth <= 1 || witness.backingHeight <= 1
-    || witness.backingWidth * witness.backingHeight > MAX_BACKING_PIXELS) {
-    return { ok: false, why: 'slice-ready witness backing dimensions are invalid', witness };
+  const backingFields = [
+    'backingWidth', 'backingHeight', 'backdropBackingWidth', 'backdropBackingHeight',
+    'combinedBackingPixels',
+  ];
+  if (!backingFields.every((field) => Number.isInteger(witness[field]))) {
+    return { ok: false, why: 'slice-ready witness twin backing dimensions are invalid', witness };
+  }
+  const appPixels = witness.backingWidth * witness.backingHeight;
+  const backdropPixels = witness.backdropBackingWidth * witness.backdropBackingHeight;
+  if (witness.backingWidth <= 1 || witness.backingHeight <= 1
+    || witness.backdropBackingWidth <= 1 || witness.backdropBackingHeight <= 1
+    || appPixels > MAX_CANVAS_BACKING_PIXELS
+    || backdropPixels > MAX_CANVAS_BACKING_PIXELS
+    || witness.combinedBackingPixels !== appPixels + backdropPixels
+    || witness.combinedBackingPixels > MAX_TWIN_BACKING_PIXELS) {
+    return { ok: false, why: 'slice-ready witness twin backing budget is invalid', witness };
   }
   if (!Number.isFinite(witness.performanceNow) || witness.performanceNow < 0
     || witness.performanceNow >= REPLACEMENT_READY_TIMEOUT_MS) {
@@ -415,6 +442,108 @@ function importPhaseOutcome(rows, {
   return terminal === 'release-complete'
     ? { status: 'ready', rows, lastStage: terminal, why: null }
     : { status: 'pending', rows, lastStage: terminal, why: null };
+}
+
+const BOOT_PHASE_STAGES = Object.freeze([
+  'app-init-start', 'app-init-complete', 'backdrop-complete',
+  'save-load-start', 'save-load-complete', 'scene-rendered',
+  'slice-published', 'wiring-complete', 'ticker-started', 'first-tick',
+  'ready-scheduled', 'ready-emitted',
+]);
+function validateBootPhaseWitness(payload) {
+  let witness = payload;
+  if (typeof witness === 'string') {
+    try { witness = JSON.parse(witness); }
+    catch { return { ok: false, why: 'boot-phase witness payload is not JSON', witness: null }; }
+  }
+  if (!witness || typeof witness !== 'object' || Array.isArray(witness)) {
+    return { ok: false, why: 'boot-phase witness payload is not an object', witness: null };
+  }
+  if (witness.schema !== 'cf-v2-boot-phase/v1'
+    || typeof witness.documentToken !== 'string' || !witness.documentToken
+    || !BOOT_PHASE_STAGES.includes(witness.stage)
+    || !Number.isInteger(witness.sequence) || witness.sequence < 1
+    || typeof witness.tickerStarted !== 'boolean'
+    || !Number.isFinite(witness.performanceNow) || witness.performanceNow < 0
+    || witness.performanceNow >= REPLACEMENT_READY_TIMEOUT_MS
+    || witness.error !== null) {
+    return { ok: false, why: 'boot-phase witness fields are invalid', witness };
+  }
+  return { ok: true, why: null, witness };
+}
+
+function replacementBootPhaseOutcome(rows, {
+  priorToken, priorFrameId, priorContextUniqueId, priorContextGeneration,
+  expectedOrigin, expectedSessionId, replacementLoaderId,
+  releaseAt, commitAt, bootDeadline, contextStillActive = true,
+}) {
+  if (!Array.isArray(rows) || rows.length === 0) {
+    return { status: 'pending', rows: [], lastStage: null, documentToken: null, why: null };
+  }
+  if (rows.length > BOOT_PHASE_STAGES.length) {
+    return { status: 'failed', rows, lastStage: rows.at(-1)?.validation?.witness?.stage || null,
+      documentToken: rows[0]?.validation?.witness?.documentToken || null,
+      why: 'boot-phase witness sequence is duplicate or overlong' };
+  }
+  const first = rows[0];
+  const firstContext = first.context;
+  const firstToken = first.validation?.witness?.documentToken || null;
+  let priorPerformanceNow = -1;
+  let priorReceiptAt = -1;
+  for (let index = 0; index < rows.length; index++) {
+    const row = rows[index];
+    if (!row.validation?.ok) {
+      return { status: 'failed', rows, lastStage: index ? rows[index - 1].validation?.witness?.stage : null,
+        documentToken: firstToken, why: row.validation?.why || 'boot-phase witness is invalid' };
+    }
+    const witness = row.validation.witness;
+    if (!contextStillActive || row.sessionId !== expectedSessionId
+      || row.loaderId !== replacementLoaderId
+      || !row.context?.active || !row.context.isDefault
+      || row.context.frameId !== priorFrameId
+      || typeof row.context.uniqueId !== 'string' || !row.context.uniqueId
+      || row.context.uniqueId === priorContextUniqueId
+      || !Number.isInteger(row.context.generation)
+      || row.context.generation <= priorContextGeneration
+      || row.context.origin !== expectedOrigin
+      || row.context.createdAt < releaseAt
+      || row.executionContextId !== first.executionContextId
+      || row.context.uniqueId !== firstContext?.uniqueId
+      || row.context.generation !== firstContext?.generation) {
+      return { status: 'failed', rows, lastStage: witness.stage,
+        documentToken: firstToken,
+        why: 'boot-phase witness did not come from the active replacement top-frame context' };
+    }
+    if (!firstToken || firstToken === priorToken || witness.documentToken !== firstToken) {
+      return { status: 'failed', rows, lastStage: witness.stage,
+        documentToken: firstToken, why: 'boot-phase witness retained or changed document identity' };
+    }
+    if (row.at < commitAt || row.at >= bootDeadline) {
+      return { status: 'failed', rows, lastStage: witness.stage,
+        documentToken: firstToken, why: `replacement boot deadline/commit boundary failed at ${witness.stage}` };
+    }
+    if (witness.sequence !== index + 1 || witness.stage !== BOOT_PHASE_STAGES[index]) {
+      return { status: 'failed', rows, lastStage: witness.stage,
+        documentToken: firstToken,
+        why: 'boot-phase witness sequence is missing, duplicate, or reordered' };
+    }
+    const tickerShouldRun = index >= BOOT_PHASE_STAGES.indexOf('ticker-started');
+    if (witness.tickerStarted !== tickerShouldRun) {
+      return { status: 'failed', rows, lastStage: witness.stage,
+        documentToken: firstToken,
+        why: `replacement ticker state is invalid at ${witness.stage}` };
+    }
+    if (witness.performanceNow < priorPerformanceNow || row.at < priorReceiptAt) {
+      return { status: 'failed', rows, lastStage: witness.stage,
+        documentToken: firstToken, why: 'boot-phase clocks moved backwards' };
+    }
+    priorPerformanceNow = witness.performanceNow;
+    priorReceiptAt = row.at;
+  }
+  const lastStage = rows.at(-1).validation.witness.stage;
+  return rows.length === BOOT_PHASE_STAGES.length
+    ? { status: 'ready', rows, lastStage, documentToken: firstToken, why: null }
+    : { status: 'pending', rows, lastStage, documentToken: firstToken, why: null };
 }
 
 function replacementNavigationOutcome(events, {
@@ -619,8 +748,8 @@ async function reloadPhaseSelftest() {
     schema: 'cf-v2-reload-release/v1', status: 'released', error: null,
     reason: 'save-import', documentToken: priorToken,
     rendererReleased: true, stageReleased: true, viewDetached: true,
-    appCanvas: { beforeWidth: 4096, beforeHeight: 4096, afterWidth: 1, afterHeight: 1 },
-    backdropCanvas: { beforeWidth: 4096, beforeHeight: 4096, afterWidth: 0, afterHeight: 0 },
+    appCanvas: { beforeWidth: 4096, beforeHeight: 2048, afterWidth: 1, afterHeight: 1 },
+    backdropCanvas: { beforeWidth: 4096, beforeHeight: 2048, afterWidth: 0, afterHeight: 0 },
   };
   const releaseAccepted = validateReloadReleaseWitness(JSON.stringify(validRelease));
   if (!releaseAccepted.ok) {
@@ -705,17 +834,34 @@ async function reloadPhaseSelftest() {
     failures.push(`unreleased renderer witness was accepted: ${JSON.stringify(rendererRejected)}`);
   }
   const oversizedCanvas = structuredClone(validRelease);
-  oversizedCanvas.backdropCanvas.beforeWidth = 4097;
-  oversizedCanvas.backdropCanvas.beforeHeight = 4097;
+  oversizedCanvas.appCanvas.beforeWidth = 2;
+  oversizedCanvas.appCanvas.beforeHeight = 2;
+  oversizedCanvas.backdropCanvas.beforeWidth = 4096;
+  oversizedCanvas.backdropCanvas.beforeHeight = 2049;
   const oversizedRejected = validateReloadReleaseWitness(oversizedCanvas);
-  if (oversizedRejected.ok || !/meaningful bounded/.test(oversizedRejected.why || '')) {
+  if (oversizedRejected.ok || !/half-budget/.test(oversizedRejected.why || '')) {
     failures.push(`over-budget reload canvas was accepted: ${JSON.stringify(oversizedRejected)}`);
+  }
+  /* With exactly two strict half-budget canvases, the aggregate ceiling is
+     mathematically implied. Keep the explicit sum invariant anyway, and
+     exercise its own diagnosis with two dimensions that were individually
+     plausible under the former 4096²-per-canvas rule. */
+  const combinedOversized = structuredClone(validRelease);
+  combinedOversized.appCanvas.beforeWidth = 3072;
+  combinedOversized.appCanvas.beforeHeight = 3072;
+  combinedOversized.backdropCanvas.beforeWidth = 3072;
+  combinedOversized.backdropCanvas.beforeHeight = 3072;
+  const combinedRejected = validateReloadReleaseWitness(combinedOversized);
+  if (combinedRejected.ok || !/aggregate twin/.test(combinedRejected.why || '')) {
+    failures.push(`combined over-budget reload canvases were accepted: ${JSON.stringify(combinedRejected)}`);
   }
   const readyPayload = {
     schema: 'cf-v2-slice-ready/v1', status: 'ready', token: 'replacement-token',
     href: 'http://127.0.0.1:1234/', readyState: 'complete', saveReady: true,
     viewConnected: true, rendererReady: true, stageReady: true, tickerTicks: 1,
-    backingWidth: 4096, backingHeight: 4096,
+    backingWidth: 4096, backingHeight: 2048,
+    backdropBackingWidth: 4096, backdropBackingHeight: 2048,
+    combinedBackingPixels: MAX_TWIN_BACKING_PIXELS,
     performanceNow: 123,
   };
   const readyValidation = validateSliceReadyWitness(JSON.stringify(readyPayload));
@@ -762,6 +908,68 @@ async function reloadPhaseSelftest() {
     releaseAt: 100, commitAt: 110,
     bootDeadline: 130,
   };
+  const bootRows = BOOT_PHASE_STAGES.map((stage, index) => ({
+    at: 111 + index, sessionId: 'target-session', executionContextId: 7,
+    loaderId: 'replacement-loader',
+    context: { ...readyRow.context },
+    validation: validateBootPhaseWitness({
+      schema: 'cf-v2-boot-phase/v1', documentToken: readyPayload.token,
+      stage, sequence: index + 1,
+      tickerStarted: index >= BOOT_PHASE_STAGES.indexOf('ticker-started'),
+      performanceNow: index + 1, error: null,
+    }),
+  }));
+  const bootOptions = {
+    priorToken, priorFrameId: 'top-frame', priorContextUniqueId: 'old-context',
+    priorContextGeneration: 1, expectedOrigin: 'http://127.0.0.1:1234',
+    expectedSessionId: 'target-session', replacementLoaderId: 'replacement-loader',
+    releaseAt: 100, commitAt: 110, bootDeadline: 130,
+  };
+  const exactBoot = replacementBootPhaseOutcome(bootRows, bootOptions);
+  if (exactBoot.status !== 'ready' || exactBoot.documentToken !== readyPayload.token
+    || exactBoot.lastStage !== 'ready-emitted') {
+    failures.push(`valid replacement boot-phase sequence was rejected: ${JSON.stringify(exactBoot)}`);
+  }
+  const partialBoot = replacementBootPhaseOutcome(bootRows.slice(0, 5), bootOptions);
+  if (partialBoot.status !== 'pending' || partialBoot.lastStage !== 'save-load-complete') {
+    failures.push(`valid partial replacement boot-phase sequence was not pending: ${JSON.stringify(partialBoot)}`);
+  }
+  const missingBoot = bootRows.filter((_, index) => index !== 5);
+  const reorderedBoot = [...bootRows];
+  [reorderedBoot[4], reorderedBoot[5]] = [reorderedBoot[5], reorderedBoot[4]];
+  const bootControls = [
+    ['missing', missingBoot, {}, /sequence/],
+    ['reordered', reorderedBoot, {}, /sequence/],
+    ['duplicate', [...bootRows.slice(0, 5), bootRows[4], ...bootRows.slice(5)], {}, /duplicate or overlong/],
+    ['early-ticker', bootRows.map((row, index) => index === 4 ? {
+      ...row, validation: validateBootPhaseWitness({ ...row.validation.witness, tickerStarted: true }),
+    } : row), {}, /ticker state/],
+    ['stopped-after-start', bootRows.map((row, index) => index === 9 ? {
+      ...row, validation: validateBootPhaseWitness({ ...row.validation.witness, tickerStarted: false }),
+    } : row), {}, /ticker state/],
+    ['just-late', bootRows.map((row, index) => index === 10 ? {
+      ...row, at: bootOptions.bootDeadline,
+    } : row), {}, /deadline/],
+    ['wrong-token', bootRows.map((row, index) => index === 4 ? {
+      ...row, validation: validateBootPhaseWitness({ ...row.validation.witness, documentToken: 'wrong-token' }),
+    } : row), {}, /document identity/],
+    ['wrong-context', bootRows.map((row, index) => index === 4 ? {
+      ...row, context: { ...row.context, uniqueId: 'wrong-context' },
+    } : row), {}, /active replacement top-frame context/],
+    ['wrong-session', bootRows.map((row, index) => index === 4 ? {
+      ...row, sessionId: 'wrong-session',
+    } : row), {}, /active replacement top-frame context/],
+    ['wrong-loader', bootRows.map((row, index) => index === 4 ? {
+      ...row, loaderId: 'wrong-loader',
+    } : row), {}, /active replacement top-frame context/],
+    ['destroyed-context', bootRows, { contextStillActive: false }, /active replacement top-frame context/],
+  ];
+  for (const [label, rows, overrides, diagnosis] of bootControls) {
+    const outcome = replacementBootPhaseOutcome(rows, { ...bootOptions, ...overrides });
+    if (outcome.status !== 'failed' || !diagnosis.test(outcome.why || '')) {
+      failures.push(`${label} replacement boot-phase control was accepted: ${JSON.stringify(outcome)}`);
+    }
+  }
   const eventReady = replacementReadyOutcome([readyRow], readyOptions);
   if (eventReady.status !== 'ready') {
     failures.push(`valid event-owned slice readiness was rejected: ${JSON.stringify(eventReady)}`);
@@ -851,6 +1059,18 @@ async function reloadPhaseSelftest() {
   const malformedReady = validateSliceReadyWitness('{bad json');
   if (malformedReady.ok || !/not JSON/.test(malformedReady.why || '')) {
     failures.push(`malformed slice-ready payload was accepted: ${JSON.stringify(malformedReady)}`);
+  }
+  const missingTwinReadyPayload = { ...readyPayload };
+  delete missingTwinReadyPayload.backdropBackingWidth;
+  const missingTwinReady = validateSliceReadyWitness(missingTwinReadyPayload);
+  if (missingTwinReady.ok || !/twin backing dimensions/.test(missingTwinReady.why || '')) {
+    failures.push(`slice-ready payload missing backdrop evidence was accepted: ${JSON.stringify(missingTwinReady)}`);
+  }
+  const falseCombinedReady = validateSliceReadyWitness({
+    ...readyPayload, combinedBackingPixels: readyPayload.combinedBackingPixels - 1,
+  });
+  if (falseCombinedReady.ok || !/twin backing budget/.test(falseCombinedReady.why || '')) {
+    failures.push(`slice-ready payload with a false combined count was accepted: ${JSON.stringify(falseCombinedReady)}`);
   }
   const productClockLate = validateSliceReadyWitness({
     ...readyPayload, performanceNow: REPLACEMENT_READY_TIMEOUT_MS,
@@ -994,8 +1214,10 @@ async function reportSelftest() {
     summary: { findingCount: fixture.findings.length, instrumentFailureCount: fixture.instrumentFailures.length, counts: Object.fromEntries(counts) },
     findings: fixture.findings.map(({ context, row }) => ({ viewport: context.viewport, surface: context.surface, ...row })),
     reloadEvidence: [{
-      viewport: 'desktop-8k', priorLoaderId: 'old-loader', replacementLoaderId: 'replacement-loader',
+      viewport: 'desktop-8k', status: 'failed', failure: 'injected boot stall',
+      priorLoaderId: 'old-loader', replacementLoaderId: 'replacement-loader',
       releaseWitness: { validation: { ok: true } },
+      bootPhases: [{ validation: { ok: true }, at: 9 }],
       readyWitness: { validation: { ok: true }, at: 10 },
       commands: [{ method: 'Runtime.evaluate', durationMs: 1, timeoutMs: 2000, status: 'completed' }],
       events: [{ method: 'Page.lifecycleEvent', name: 'DOMContentLoaded', loaderId: 'replacement-loader' }],
@@ -1008,7 +1230,10 @@ async function reportSelftest() {
     || shaped.findings[0].actual.height !== 20 || shaped.controlSummary.automaticRetries !== 0
     || shaped.controlSummary.omittedNegativeControls.length !== 0
     || shaped.reloadEvidence[0]?.viewport !== 'desktop-8k'
+    || shaped.reloadEvidence[0]?.status !== 'failed'
+    || shaped.reloadEvidence[0]?.failure !== 'injected boot stall'
     || shaped.reloadEvidence[0]?.releaseWitness?.validation?.ok !== true
+    || shaped.reloadEvidence[0]?.bootPhases?.[0]?.validation?.ok !== true
     || shaped.reloadEvidence[0]?.readyWitness?.validation?.ok !== true
     || shaped.reloadEvidence[0]?.commands?.[0]?.timeoutMs !== PHASE_PROBE_TIMEOUT_MS
     || shaped.reloadEvidence[0]?.events?.[0]?.name !== 'DOMContentLoaded'
@@ -1016,13 +1241,13 @@ async function reportSelftest() {
       'motion-css-policy', 'ordinary-panel-centre-close', 'opener-expanded-controls',
       'pseudo-placeholder-contrast', 'typography-no-shrink-hierarchy', 'backing-pixel-ceiling',
       'forced-colors-system-mapping', 'panel-open-focus', 'replacement-document-loader-token-phase',
-      'reload-resource-release']
+      'replacement-boot-phase-sequence', 'reload-resource-release']
       .every((name) => shaped.controlSummary.negativeControls.includes(name))) {
     throw new Error('GLASS MATRIX REPORT SELFTEST: injected finding/report grouping drifted');
   }
   console.log('GLASS MATRIX REPORT SELFTEST: PASS');
   console.log('  injected finding retained; 12 viewport definitions retained; retry policy remains zero');
-  console.log('  import subphases, synchronous ticker quiescence, navigation, release, and boot-ready deadlines fail closed');
+  console.log('  import, release, exact boot subphases, twin-canvas budgets, navigation, and boot-ready deadlines fail closed');
 }
 
 const MIME = Object.freeze({
@@ -1874,7 +2099,8 @@ async function main() {
   }
   recordControls(
     'replacement-document-loader-token-phase', 'import-phase-sequence',
-    'replacement-ticker-quiescence', 'reload-resource-release',
+    'replacement-ticker-quiescence', 'replacement-boot-phase-sequence',
+    'reload-resource-release',
   );
   let controlsRun = false, hpControlRun = false, settingsWidthControlRun = false,
     planetsideControlRun = false, panelPlanetsideControlRun = false,
@@ -1901,7 +2127,7 @@ async function main() {
       let eventSessionId = null, reloadCaptureArmed = false;
       let contextSequence = 0, currentTopLoaderId = null;
       const runtimeContexts = new Map();
-      const reloadEvents = [], reloadImportPhases = [], reloadReleaseWitnesses = [], reloadReadyWitnesses = [],
+      const reloadEvents = [], reloadImportPhases = [], reloadReleaseWitnesses = [], reloadBootPhases = [], reloadReadyWitnesses = [],
         reloadTopNavigations = [], reloadFatalEvents = [], reloadCommands = [], requestUrls = new Map();
       const onBrowserEvent = (event) => {
         if (event?.sessionId && eventSessionId && event.sessionId !== eventSessionId) return;
@@ -1934,18 +2160,22 @@ async function main() {
           });
         }
         if (reloadCaptureArmed && event?.method === 'Runtime.bindingCalled'
-          && [IMPORT_PHASE_BINDING, RELOAD_RELEASE_BINDING, SLICE_READY_BINDING].includes(event.params?.name)) {
+          && [IMPORT_PHASE_BINDING, RELOAD_RELEASE_BINDING, BOOT_PHASE_BINDING, SLICE_READY_BINDING].includes(event.params?.name)) {
           const executionContextId = event.params.executionContextId ?? null;
           const context = runtimeContexts.get(executionContextId);
           const validation = event.params.name === IMPORT_PHASE_BINDING
             ? validateImportPhaseWitness(event.params.payload)
             : event.params.name === RELOAD_RELEASE_BINDING
               ? validateReloadReleaseWitness(event.params.payload)
-              : validateSliceReadyWitness(event.params.payload);
+              : event.params.name === BOOT_PHASE_BINDING
+                ? validateBootPhaseWitness(event.params.payload)
+                : validateSliceReadyWitness(event.params.payload);
           const target = event.params.name === IMPORT_PHASE_BINDING
             ? reloadImportPhases
             : event.params.name === RELOAD_RELEASE_BINDING
-              ? reloadReleaseWitnesses : reloadReadyWitnesses;
+              ? reloadReleaseWitnesses
+              : event.params.name === BOOT_PHASE_BINDING
+                ? reloadBootPhases : reloadReadyWitnesses;
           target.push({
             at, sessionId: event.sessionId || null, executionContextId,
             loaderId: currentTopLoaderId, context: context ? { ...context } : null,
@@ -1981,6 +2211,7 @@ async function main() {
         await send('Runtime.enable', {}, session);
         await send('Runtime.addBinding', { name: IMPORT_PHASE_BINDING }, session);
         await send('Runtime.addBinding', { name: RELOAD_RELEASE_BINDING }, session);
+        await send('Runtime.addBinding', { name: BOOT_PHASE_BINDING }, session);
         await send('Runtime.addBinding', { name: SLICE_READY_BINDING }, session);
         await send('Page.enable', {}, session);
         await send('Inspector.enable', {}, session);
@@ -2054,20 +2285,24 @@ async function main() {
           const beganAt = importDeadline - importTimeoutMs;
           let navigationDeadline = null, bootDeadline = null, commit = null;
           const expectedOrigin = new URL(url).origin;
-          const diagnostic = () => JSON.stringify({
+          const diagnosticEvidence = (failure = null) => ({
+            viewport: vp.label, label, status: failure ? 'failed' : 'running', failure,
             priorFrame, priorContext, expectedUrl: url, elapsedMs: Date.now() - beganAt,
             clocks: { importDeadline, navigationDeadline, bootDeadline,
               replacementLoaderId: commit?.loaderId || null },
-            importPhases: reloadImportPhases,
-            releaseWitnesses: reloadReleaseWitnesses,
-            readyWitnesses: reloadReadyWitnesses,
-            topNavigations: reloadTopNavigations,
-            fatalEvents: reloadFatalEvents,
-            commands: reloadCommands,
-            events: reloadEvents,
+            importPhases: [...reloadImportPhases],
+            releaseWitnesses: [...reloadReleaseWitnesses],
+            bootPhases: [...reloadBootPhases],
+            readyWitnesses: [...reloadReadyWitnesses],
+            topNavigations: [...reloadTopNavigations],
+            fatalEvents: [...reloadFatalEvents],
+            commands: [...reloadCommands],
+            events: [...reloadEvents],
           });
           const fail = (why) => {
-            throw new Error(`${vp.label}/${label}: ${why} (evidence ${diagnostic()})`);
+            const evidence = diagnosticEvidence(why);
+            runReloadEvidence.push(evidence);
+            throw new Error(`${vp.label}/${label}: ${why} (evidence ${JSON.stringify(evidence)})`);
           };
           const confirmReady = async (readyRow) => {
             const confirmation = await runBoundedReadyConfirmation({
@@ -2076,7 +2311,10 @@ async function main() {
               expression: `(()=>{ const S=window.__CF_SLICE__; try { const s=S?.api?.state(); return {
                   ready:!!s?.save,token:S?.documentToken||null,href:location.href,
                   readyState:document.readyState,viewConnected:!!S?.app?.canvas?.isConnected,
-                  backingWidth:S?.app?.canvas?.width||0,backingHeight:S?.app?.canvas?.height||0};
+                  backingWidth:S?.app?.canvas?.width||0,backingHeight:S?.app?.canvas?.height||0,
+                  backdropBackingWidth:s?.backdropBackingWidth||0,
+                  backdropBackingHeight:s?.backdropBackingHeight||0,
+                  combinedBackingPixels:s?.combinedBackingPixels||0};
                 } catch(error) { return {ready:false,token:S?.documentToken||null,href:location.href,
                   readyState:document.readyState,error:String(error?.message||error)}; } })()`,
             });
@@ -2092,7 +2330,10 @@ async function main() {
             if (!state?.ready || state.token !== witnessed.token || state.href !== url
               || state.readyState !== 'complete' || state.viewConnected !== true
               || state.backingWidth !== witnessed.backingWidth
-              || state.backingHeight !== witnessed.backingHeight) {
+              || state.backingHeight !== witnessed.backingHeight
+              || state.backdropBackingWidth !== witnessed.backdropBackingWidth
+              || state.backdropBackingHeight !== witnessed.backdropBackingHeight
+              || state.combinedBackingPixels !== witnessed.combinedBackingPixels) {
               fail(`bounded slice-ready confirmation disagreed with the witness (${JSON.stringify(state)})`);
             }
             const active = runtimeContexts.get(readyRow.executionContextId);
@@ -2131,6 +2372,7 @@ async function main() {
             if (release.status === 'failed') fail(`reload resource release failed closed (${release.why})`);
             if (release.status === 'pending') {
               if (reloadReadyWitnesses.length) fail('slice-ready witness arrived before import release/navigation');
+              if (reloadBootPhases.length) fail('replacement boot phase arrived before import release/navigation');
               if (Date.now() >= importDeadline) {
                 fail(`import transaction did not settle within ${importTimeoutMs}ms; last phase ${importPhase.lastStage || 'none'}`);
               }
@@ -2156,6 +2398,7 @@ async function main() {
             if (navigation.status === 'failed') fail(`import/reload failed closed (${navigation.why})`);
             if (navigation.status === 'pending') {
               if (reloadReadyWitnesses.length) fail('slice-ready witness arrived before replacement navigation committed');
+              if (reloadBootPhases.length) fail('replacement boot phase arrived before replacement navigation committed');
               if (Date.now() >= navigationDeadline) {
                 fail(`top-frame loader did not change within ${navigationTimeoutMs}ms after resource release`);
               }
@@ -2164,6 +2407,21 @@ async function main() {
             }
             commit ??= navigation.row;
             bootDeadline ??= commit.at + replacementTimeoutMs;
+            const bootFirst = reloadBootPhases[0];
+            const bootPhase = replacementBootPhaseOutcome(reloadBootPhases, {
+              priorToken, priorFrameId: priorFrame.frameId,
+              priorContextUniqueId: priorContext.uniqueId,
+              priorContextGeneration: priorContext.generation,
+              expectedOrigin, expectedSessionId: session,
+              replacementLoaderId: commit.loaderId,
+              releaseAt: release.row.at, commitAt: commit.at, bootDeadline,
+              contextStillActive: !!bootFirst
+                && runtimeContexts.get(bootFirst.executionContextId)?.uniqueId
+                  === bootFirst.context?.uniqueId,
+            });
+            if (bootPhase.status === 'failed') {
+              fail(`replacement boot phase failed closed (${bootPhase.why})`);
+            }
             const readyOutcome = replacementReadyOutcome(reloadReadyWitnesses, {
               priorToken, priorFrameId: priorFrame.frameId,
               priorContextUniqueId: priorContext.uniqueId,
@@ -2178,21 +2436,33 @@ async function main() {
             if (readyOutcome.status === 'failed') fail(`import/reload failed closed (${readyOutcome.why})`);
             if (readyOutcome.status === 'pending') {
               if (Date.now() >= bootDeadline) {
-                fail(`replacement document did not emit boot-ready within ${replacementTimeoutMs}ms after the loader changed`);
+                fail(`replacement document did not emit boot-ready within ${replacementTimeoutMs}ms after the loader changed; last boot phase ${bootPhase.lastStage || 'none'}`);
               }
               await sleep(20);
               continue;
+            }
+            if (bootPhase.status !== 'ready') {
+              fail(`slice-ready witness arrived before the complete boot-phase sequence (last ${bootPhase.lastStage || 'none'})`);
+            }
+            const finalBootRow = bootPhase.rows.at(-1);
+            if (bootPhase.documentToken !== readyOutcome.row.validation.witness.token
+              || finalBootRow.at > readyOutcome.row.at
+              || finalBootRow.executionContextId !== readyOutcome.row.executionContextId
+              || finalBootRow.context?.uniqueId !== readyOutcome.row.context?.uniqueId) {
+              fail('slice-ready witness did not follow the exact replacement boot operation/context');
             }
             const state = await confirmReady(readyOutcome.row);
             const now = Date.now();
             return {
               ...state, elapsedMs: now - beganAt,
               reloadEvidence: {
+                status: 'pass',
                 priorLoaderId: priorFrame.loaderId,
                 replacementLoaderId: commit.loaderId,
                 elapsedMs: now - beganAt,
                 importPhases: [...reloadImportPhases],
                 releaseWitness: release.row,
+                bootPhases: [...reloadBootPhases],
                 readyWitness: readyOutcome.row,
                 commands: [...reloadCommands],
                 events: [...reloadEvents],
@@ -2207,7 +2477,7 @@ async function main() {
         const expectedDpr = Math.min(
           vp.dpr,
           vp.mobile ? 2 : 3,
-          Math.sqrt(MAX_BACKING_PIXELS / (vp.width * vp.height)),
+          Math.sqrt(MAX_CANVAS_BACKING_PIXELS / (vp.width * vp.height)),
         );
         const common = {
           targetFloor,
@@ -2239,7 +2509,7 @@ async function main() {
           interactiveRoots: ['#tutcard'], contrastSelectors: ['#tutcard'],
           focusSelectors: ['[data-sel=tutskip]'],
           overlapPairs: [...common.overlapPairs, ['#tutcard', '#dock']],
-          canvas: true, expectedDpr, maxBackingPixels: MAX_BACKING_PIXELS,
+          canvas: true, expectedDpr, maxBackingPixels: MAX_CANVAS_BACKING_PIXELS,
         }));
         {
           /* Import a real rich expedition with an intentionally unfinished
@@ -2258,6 +2528,7 @@ async function main() {
             reloadEvents.length = 0;
             reloadImportPhases.length = 0;
             reloadReleaseWitnesses.length = 0;
+            reloadBootPhases.length = 0;
             reloadReadyWitnesses.length = 0;
             reloadTopNavigations.length = 0;
             reloadFatalEvents.length = 0;
@@ -2273,6 +2544,15 @@ async function main() {
                 throw new Error(`${vp.label}: malformed live import-phase binding control was not rejected (${JSON.stringify(reloadImportPhases)})`);
               }
               reloadImportPhases.length = 0;
+              await evalIn(`window.${BOOT_PHASE_BINDING}('{bad json')`);
+              for (let i = 0; i < 50 && reloadBootPhases.length < 1; i++) await sleep(10);
+              const malformedBoot = reloadBootPhases[0];
+              if (reloadBootPhases.length !== 1 || malformedBoot?.validation?.ok
+                || malformedBoot?.context?.uniqueId !== priorContext.uniqueId
+                || malformedBoot?.sessionId !== session) {
+                throw new Error(`${vp.label}: malformed live boot-phase binding control was not rejected (${JSON.stringify(reloadBootPhases)})`);
+              }
+              reloadBootPhases.length = 0;
               await evalIn(`window.${SLICE_READY_BINDING}('{bad json')`);
               for (let i = 0; i < 50 && reloadReadyWitnesses.length < 1; i++) await sleep(10);
               const malformed = reloadReadyWitnesses[0];
@@ -2287,7 +2567,9 @@ async function main() {
                 readyState:document.readyState,saveReady:!!s.save,viewConnected:S.app.canvas.isConnected,
                 rendererReady:!!S.app.renderer&&S.app.canvas.width>1&&S.app.canvas.height>1,
                 stageReady:!!S.app.stage,tickerTicks:s.tickerTicks,
-                backingWidth:S.app.canvas.width,backingHeight:S.app.canvas.height,performanceNow:performance.now()});
+                backingWidth:S.app.canvas.width,backingHeight:S.app.canvas.height,
+                backdropBackingWidth:s.backdropBackingWidth,backdropBackingHeight:s.backdropBackingHeight,
+                combinedBackingPixels:s.combinedBackingPixels,performanceNow:performance.now()});
                 window.${SLICE_READY_BINDING}(payload);window.${SLICE_READY_BINDING}(payload);return true;})()`);
               for (let i = 0; i < 50 && reloadReadyWitnesses.length < 2; i++) await sleep(10);
               const duplicate = replacementReadyOutcome(reloadReadyWitnesses, {
@@ -2307,6 +2589,7 @@ async function main() {
               reloadEvents.length = 0;
               reloadImportPhases.length = 0;
               reloadReleaseWitnesses.length = 0;
+              reloadBootPhases.length = 0;
               reloadReadyWitnesses.length = 0;
               reloadTopNavigations.length = 0;
               reloadFatalEvents.length = 0;
@@ -2318,6 +2601,7 @@ async function main() {
           reloadEvents.length = 0;
           reloadImportPhases.length = 0;
           reloadReleaseWitnesses.length = 0;
+          reloadBootPhases.length = 0;
           reloadReadyWitnesses.length = 0;
           reloadTopNavigations.length = 0;
           reloadFatalEvents.length = 0;
@@ -2419,7 +2703,7 @@ async function main() {
           contrastSelectors: ['#playerchip', '#hpbar', '#searchbox', '#trail', '#objchip', '#ctxbar', '#hintpill', '#raillft button', '#railrgt button'],
           placeholderSelectors: ['#searchbox'], maxContrastReports: 24,
           focusSelectors: vp.label === 'primary-phone' || vp.label === 'desktop' ? ['#searchbox', '#dockguide', '#docksets'] : [],
-          canvas: true, expectedDpr, maxBackingPixels: MAX_BACKING_PIXELS,
+          canvas: true, expectedDpr, maxBackingPixels: MAX_CANVAS_BACKING_PIXELS,
         }));
         const hpLabelCheck = `(()=>{ const track=document.querySelector('#hpbar .track'),fill=document.querySelector('#hpbar .fill'),txt=document.querySelector('#hpbar .txt');
           if(!track||!fill||!txt)return {ok:false,why:'missing'};
@@ -3175,7 +3459,7 @@ async function main() {
             ...common, surface: 'dpr-change', root: '#dock', textMin: 1,
             viewportExpected: { width: dprWidth, height: vp.height, dpr: 1 },
             interactiveRoots: ['#dock'], contrastSelectors: [], canvas: true, expectedDpr: 1,
-            maxBackingPixels: MAX_BACKING_PIXELS,
+            maxBackingPixels: MAX_CANVAS_BACKING_PIXELS,
           }));
           const densityCardAfter = await evalIn(densityCardCheck);
           if (!densityCardAfter.ok) findings.push({ context: { viewport: vp.label, surface: 'dpr-card-preservation' }, row: {

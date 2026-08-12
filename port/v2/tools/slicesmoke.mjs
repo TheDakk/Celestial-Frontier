@@ -297,7 +297,40 @@ try {
   catch { transitionWaitControlRejected = true; }
   if (!transitionWaitControlRejected) fails.push('TRANSITION WAITER CONTROL FAILED — a never-true outcome reported ready');
 
+  /* Smoke owns the player-facing scheduler outcome, while glass owns the
+     replacement phase/resource-release contract. A published slice is not
+     playable until Pixi has serviced at least one tick and remains running.
+     Every call deliberately stops the live app, re-runs the same predicate,
+     then restores it so a checker that forgets scheduler liveness cannot
+     pass either a fresh boot or a replacement boot. */
+  const bootTickerOutcomeCheck = `(()=>{ const S=window.__CF_SLICE__,state=S?.api?.state?.();
+    const tickerTicks=Number(state?.tickerTicks??0),tickerStarted=S?.app?.ticker?.started===true;
+    return {ok:Number.isFinite(tickerTicks)&&tickerTicks>=1&&tickerStarted,
+      tickerTicks,tickerStarted,documentToken:typeof S?.documentToken==='string'?S.documentToken:null}; })()`;
+  const assertBootTickerRunning = async (label) => {
+    const outcome = await waitDesktopValue(`${label} ticker outcome`,
+      `(()=>{ const result=${bootTickerOutcomeCheck}; return result.ok?result:null; })()`);
+    const tickControl = await evalIn(`(()=>{ const api=window.__CF_SLICE__.api,priorState=api.state;
+      let result; try { api.state=()=>({...priorState(),tickerTicks:0}); result=${bootTickerOutcomeCheck}; }
+      finally { api.state=priorState; }
+      return result; })()`);
+    if (tickControl.ok || tickControl.tickerTicks !== 0 || !tickControl.tickerStarted) {
+      fails.push(`${label.toUpperCase()} TICK CONTROL FAILED — a running boot with zero serviced ticks stayed green: `
+        + JSON.stringify(tickControl));
+    }
+    const control = await evalIn(`(()=>{ const app=window.__CF_SLICE__.app,wasStarted=app.ticker.started===true;
+      app.stop(); let result; try { result=${bootTickerOutcomeCheck}; }
+      finally { if(wasStarted) app.start(); }
+      return {...result,wasStarted,restarted:app.ticker.started===true}; })()`);
+    if (control.ok || control.tickerStarted || !control.wasStarted || !control.restarted) {
+      fails.push(`${label.toUpperCase()} TICKER CONTROL FAILED — a deliberately stopped boot stayed green or was not restored: `
+        + JSON.stringify(control));
+    }
+    return outcome;
+  };
+
   /* 1. booted: canvas mounted, HUD says universe */
+  await assertBootTickerRunning('fresh first boot');
   const boot = await evalIn(`({ canvas: !!document.querySelector('canvas'), topbar: !!document.getElementById('topbar'), st: window.__CF_SLICE__ ? window.__CF_SLICE__.api.state() : null,
     hintKw: [...document.querySelectorAll('#hintpill .kw')].map((node) => node.textContent) })`);
   if (!boot.canvas) fails.push('no <canvas> — Pixi never mounted');
@@ -1245,6 +1278,7 @@ try {
       + JSON.stringify(whitespaceImportStart));
   }
   await waitForSlice(sess, 'desktop exact-keepsake whitespace import', { previousToken: whitespaceImportToken });
+  await assertBootTickerRunning('post-import replacement boot');
   const whitespaceKeepsake = await evalIn(`(()=>{ const expected=${JSON.stringify(whitespaceImportRaw)};
     const actual=localStorage.getItem('cf_v2_import_original');
     return {exact:actual===expected,actualLength:actual?.length??null,expectedLength:expected.length,

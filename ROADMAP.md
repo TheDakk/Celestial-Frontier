@@ -31,7 +31,8 @@
 - Executable/evidence head:
   immutable executable evidence source
   `7d9980e37e60f0cec8cb840e75098872b9cc90d0`; its complete clean sequential
-  battery passed. It underlies a docs-only handoff tip. Exact tip/upstream/
+  battery passed before #204 and remains prior evidence, not certification of
+  the current repair. Exact tip/upstream/
   CI state is live authority from `git rev-parse HEAD`,
   `git status --short --branch`, and PR #11 checks. Prior
   test-battery #201, run
@@ -46,8 +47,14 @@
   job [`94134750800`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470/job/94134750800),
   remains preserved red without retry at exact pushed `38e4f362`; it passed every preceding
   gate and 11 glass rows, then desktop-8k crossed the unchanged import bound before the first
-  release receipt. The replacement-ticker repair is described below and now has exact clean-
-  commit local evidence; matching final-tip CI is still required. Draft PR #11 is open at
+  release receipt. Test-battery #204, run
+  [`31612817092`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092) /
+  job [`94168172635`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092/job/94168172635),
+  remains preserved red without retry at exact pushed `4cee7d80`; its import/write/release/
+  navigation/load/FCP path was healthy, but desktop-8k emitted no application-ready witness
+  inside the unchanged boot bound. The twin-backing/boot-order repair is described below and
+  remains dirty diagnostic work pending a clean commit, exact battery, push and matching CI.
+  Draft PR #11 is open at
   https://github.com/TheDakk/Celestial-Frontier/pull/11.
 - Read next: `PROCESS_LAWS.md` · `PARALLEL_GIT_PROTOCOL.md` · `README.md` ·
   `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `SAVE_SYSTEM.md` ·
@@ -124,6 +131,16 @@ tail event after load, persistence and complete slice/input wiring, at least one
 animation frame and a later task; its browser-native timestamp must itself be strictly below 20
 seconds. One at-most-2-second command confirms the exact context. This means complete boot
 publication plus a serviced turn, not the separate 50 ms answerability outcome.
+
+The current repair treats density as an aggregate full-viewport allocation, not a per-canvas
+allowance. The Pixi application and backdrop split one 4,096²-pixel budget equally; each remains
+no larger than native 4K, and the 8K fixture now uses 3,862×2,172 per canvas / 16,776,528 pixels
+combined. Pixi boots with `autoStart:false` through save load, scene publication, slice publication
+and input wiring, then starts explicitly and proves one real tick/render, animation frame and later
+task before ready. An exact 12-stage `cf-v2-boot-phase/v1` stream is bound to the replacement
+session/context/generation/origin/loader/token; its ticker is false through wiring and true only
+from `ticker-started`. Per-stage identity/order/ticker/deadline controls prevent load or FCP from
+standing in for application readiness.
 
 The exact local review artifact is bound to the recommended separate origin
 `https://dev-celestialfrontier.github.io`, but no preview host or publication is authorized or
@@ -211,9 +228,35 @@ Its exact clean sequential battery passed:
   `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
   `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, with `publishable: false`.
 
-`7d9980e` underlies the forthcoming/current docs-only handoff tip. Live Git/PR state decides its exact current
-tip/upstream/check status; the final pushed tip requires matching green CI before preview/human
-play may begin.
+`7d9980e` remains immutable prior exact evidence; it does not certify the #204 repair. Live
+Git/PR state decides the exact current docs-only tip/upstream/check status. The repair first
+requires a clean executable commit and exact battery, then matching pushed-tip CI before preview/
+human play may begin.
+
+Matching test-battery #204, run
+[`31612817092`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092) /
+job [`94168172635`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092/job/94168172635),
+completed once without retry at exact pushed head
+`4cee7d807b8f9258e370aad31c30756269f95a96` and is **RED**. Every earlier root/product/v2
+gate and `smoke:ci` passed. Desktop-8k's arm command queued for 9,504 ms; durable write and release
+completed, release took 35 ms, the changed loader committed 45 ms later, and replacement load /
+first-contentful-paint arrived at 231 / 268 ms. No fatal event occurred, yet no ready witness
+arrived inside 20 seconds. This is not a save/import/navigation failure. The replacement document
+allocated two full 16,777,216-pixel canvases and Pixi auto-started its ticker before asynchronous
+boot wiring, so software rendering could starve the very work required to publish readiness.
+Preserve #204 without retry or a longer deadline.
+
+The repair is currently supported only by dirty, stable diagnostic evidence at source digest
+`721418cb1b0cd258ffcd35e614401aba0d26951ea2d02866c6651e2d6cd7c896` on committed base
+`4cee7d807b8f9258e370aad31c30756269f95a96`: targeted 8K passed in 218 ms; one-attempt
+`smoke:ci` passed with 0 findings / 10 screenshots; certifying-shaped glass passed 12/12
+viewports and 53/53 controls with `omitted=[]`, 0 findings/instrument failures/retries and
+193–214 ms totals; all 12 exact boot paths passed. Desktop-8k recorded a 1 ms arm, 18 ms import-
+through-release, 1 ms write, 3,862×2,172 for both canvases, 16,776,528 combined pixels,
+`performanceNow` 178.7 ms, 1 ms confirmation and 214 ms total. All nine automated personas
+passed; terminal-only performance was 637/723/77/157 ms. These are not authoritative clean-
+commit evidence. Freeze a clean executable commit, run its exact battery, push it, and require
+matching new-head CI before any preview/human-play step.
 
 `overridecontrol` remains exclusive and must not overlap any build/browser/evidence producer.
 Because the new manual preview workflow
@@ -254,12 +297,14 @@ human play remains the judge of motion, readability, comfort and perceived quali
 
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — executable/evidence head
 `7d9980e37e60f0cec8cb840e75098872b9cc90d0` is the immutable source for the complete clean
-sequential battery recorded above and underlies a docs-only handoff tip. Resolve exact current
-tip/upstream/check state live; prior #201, #202, and #203 remain preserved red without retry.
+sequential battery recorded above and underlies the current pushed baseline. The #204 repair is
+dirty diagnostic work pending a clean executable commit and exact battery. Resolve exact current
+tip/upstream/check state live; prior #201, #202, #203, and #204 remain preserved red without retry.
 
 **GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`),
-#202 (`31594595288` / `94106996466`), and #203 (`31602984470` / `94134750800`)
-without retry. Read `git rev-parse HEAD`,
+#202 (`31594595288` / `94106996466`), #203 (`31602984470` / `94134750800`), and
+#204 (`31612817092` / `94168172635`) without retry. First freeze the #204 repair in a clean
+executable commit and complete its exact local battery. Then read `git rev-parse HEAD`,
 `git status --short --branch`, and PR #11 checks; if
 `origin/openai/mac` is behind the current tip, push it, then require matching green CI for that
 final pushed tip. Only after green CI, obtain host approval, publish the separate-origin preview,
@@ -301,7 +346,10 @@ merged PR #10.
   > quiesces the outgoing ticker before any durable-write await and restores it only on exact-
   > owner rollback. An exact-operation import-phase stream requires the ticker running at
   > invocation, stopped through claim/write/release, and begins its absolute deadline before the
-  > bounded arm command; no IndexedDB timeout race is used. Adds provenance-bound
+  > bounded arm command; no IndexedDB timeout race is used. The two full-viewport canvases now
+  > share one 4,096²-pixel aggregate budget, and Pixi remains stopped until save/scene/slice/input
+  > wiring completes. A 12-stage boot witness proves exact replacement identity and that the ticker
+  > starts only for a real tick/render/rAF/task before ready; load/FCP alone cannot pass. Adds provenance-bound
   > smoke, glass and automated-persona reports plus commit-bound development-preview packaging;
   > pins the CI browser at job scope so a later preview process cannot silently switch from Chrome
   > to Linux Edge when a preceding step's environment expires. Moves the root 10-viewport layout
@@ -313,9 +361,10 @@ merged PR #10.
   > committed glass 12/12 with 52/52 controls, 12 exact import/release/ready paths and 194–239 ms
   > replacement totals, nine automated personas, and exact 37-file preview verify/browser PASS.
   > Prior #201 (`31586917924` / `94082765087`), #202
-  > (`31594595288` / `94106996466`), and #203 (`31602984470` / `94134750800`)
-  > remain preserved red without retry; #202 exposed serial CDP observer latency, while #203
-  > exposed pre-release 8K renderer pressure before the first release witness. Exact tip/upstream/check status is read
+  > (`31594595288` / `94106996466`), #203 (`31602984470` / `94134750800`), and #204
+  > (`31612817092` / `94168172635`) remain preserved red without retry; #202 exposed serial CDP
+  > observer latency, #203 exposed pre-release 8K renderer pressure, and #204 exposed twin full-
+  > resolution replacement allocations plus pre-wiring ticker startup. Exact tip/upstream/check status is read
   > live; the final pushed non-executable
   > handoff tip requires matching green CI. The local review artifact is bound to
   > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. After the

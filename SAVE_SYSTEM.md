@@ -110,6 +110,17 @@
 > import deadline begins before the bounded, non-awaiting CDP arm command; neither
 > that command nor any later witness gets a fresh clock. There is no timeout
 > increase, automatic retry, or `Promise.race` around IndexedDB durability.
+> The replacement app also initializes Pixi with `autoStart:false`. Save loading,
+> scene render, slice publication and complete input wiring happen while its
+> ticker is stopped; only then does the app start it and require one real tick/
+> render, animation frame and later task before emitting ready. A separate exact
+> 12-stage `cf-v2-boot-phase/v1` stream binds the new session/context/generation/
+> origin/loader/document token, requires ticker false through `wiring-complete`
+> and true from `ticker-started`, and stays inside the original boot deadline.
+> Browser load/FCP is not a substitute for this application-owned sequence.
+> The Pixi and backdrop canvases likewise share one 4,096²-pixel aggregate budget
+> instead of each owning that full allowance; each remains no larger than native
+> 4K, and the 8K fixture resolves each to 3,862×2,172 / 16,776,528 pixels combined.
 >
 > **Evidence boundary:** immutable executable evidence source
 > `7d9980e37e60f0cec8cb840e75098872b9cc90d0` passed its complete exact
@@ -132,9 +143,9 @@
 > origin, with content SHA-256
 > `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`,
 > production distinct and `publishable:false`. Prior CI #201 remains preserved
-> red without retry. `7d9980e` underlies the forthcoming/current docs-only
-> handoff tip. Exact tip/upstream/
-> check state is read live, and the final pushed tip requires matching green CI.
+> red without retry. `7d9980e` remains immutable prior exact evidence and does
+> not certify #204's repair. Exact tip/upstream/check state is read live; the
+> repair still requires a clean executable commit, exact battery, push and CI.
 > CI #202, run `31594595288` / job `94106996466`, is also preserved red without
 > retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`: every earlier gate
 > and `smoke:ci` passed, while desktop-8k glass first observed replacement state
@@ -152,6 +163,16 @@
 > 5,461×3,072 Pixi ticker remained active while the durable write and teardown
 > awaited service under CI software rendering. It is not evidence of save
 > corruption or a rejected repository write.
+> CI #204, run `31612817092` / job `94168172635`, is preserved **RED** without
+> retry at exact pushed head `4cee7d807b8f9258e370aad31c30756269f95a96`.
+> Every earlier gate and `smoke:ci` passed. Its 8K arm queued for 9,504 ms;
+> durable write, 35 ms renderer release, changed-loader navigation 45 ms later,
+> load at 231 ms and FCP at 268 ms were all healthy, with no fatal event. No
+> ready witness arrived inside the unchanged 20-second boot bound. That is not a
+> save, import, write or navigation failure: both replacement canvases allocated
+> the full 16,777,216-pixel allowance and Pixi auto-started before asynchronous
+> save/scene/slice/input wiring, starving application readiness under software
+> rendering. Preserve #204 without retry or a timeout increase.
 >
 > Before the stable-source battery, one smoke attempt correctly refused mixed-
 > source evidence because tracked documentation changed during its run (`source
@@ -161,6 +182,17 @@
 > certification, Ready, merge, versioning, or deployment. The initial malformed
 > `npm run perf -- --runs=4` command was likewise rejected before any browser;
 > the correct one-run diagnostic was not a retry of an evidence failure.
+> The #204 repair currently has only dirty stable diagnostics at base
+> `4cee7d807b8f9258e370aad31c30756269f95a96`, source digest
+> `721418cb1b0cd258ffcd35e614401aba0d26951ea2d02866c6651e2d6cd7c896`:
+> targeted 8K passed in 218 ms; one-attempt smoke passed 0 findings / 10
+> screenshots; certifying-shaped glass passed 12/12, 53/53 controls,
+> `omitted=[]`, 0 findings/instrument failures/retries and 193–214 ms totals;
+> desktop-8k recorded a 1 ms arm, 18 ms import-through-release, 1 ms write,
+> both 3,862×2,172 canvases, `performanceNow` 178.7 ms, 1 ms confirmation and
+> 214 ms total. All nine automated personas passed. This evidence is not
+> authoritative: a clean commit, exact battery, push and matching CI remain
+> mandatory before preview or human play.
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay

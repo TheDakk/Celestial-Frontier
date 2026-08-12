@@ -44,8 +44,11 @@
 >
 > The live v2 interaction surface uses Pixi `autoDensity` so its CSS canvas and
 > hit coordinates stay viewport-sized at DPR > 1. `effectiveDpr()` follows the
-> touch-2 / desktop-3 heat caps and a 16,777,216-pixel backing-store ceiling,
-> then resynchronizes renderer/backdrop density after viewport changes. Survey
+> touch-2 / desktop-3 heat caps and gives the application canvas plus full-screen
+> backdrop one aggregate 4,096² / 16,777,216-pixel backing budget, split equally,
+> then resynchronizes renderer/backdrop density after viewport changes. Displays
+> through native 4K remain native; desktop-8k gives each canvas 3,862×2,172 pixels
+> for 16,776,528 combined. Survey
 > cards expose minimum-44px **Enter galaxy / Enter system** actions, and touch
 > Planetside has a minimum-44px **Leave world** action. The eighth dock slot opens
 > the canonical **Guide to the Universe**: `guide-content.ts` carries a
@@ -108,21 +111,30 @@
 > `importReleaseOutcome()` and `replacementReadyOutcome()` validate receipt time,
 > exact target session, default top-frame context identity/generation/origin,
 > expected URL, changed loader and changed document token. Old-context/global loss
-> alone is not navigation or boot evidence. The replacement emits the optional
-> `cf-v2-slice-ready/v1` tail binding after load, complete slice/input wiring,
-> persistence readiness, the first ticker turn, an animation frame and a later
-> task. One phase-owned, at-most-2-second `Runtime.evaluate` then confirms that
+> alone is not navigation or boot evidence. Pixi initializes with
+> `autoStart:false`; the replacement emits the exact event-owned
+> `cf-v2-boot-phase/v1` sequence `app-init-start`, `app-init-complete`,
+> `backdrop-complete`, `save-load-start`, `save-load-complete`, `scene-rendered`,
+> `slice-published`, `wiring-complete`, `ticker-started`, `first-tick`,
+> `ready-scheduled`, `ready-emitted`. Each stage binds the target session,
+> default top context, generation, origin, changed loader and document token.
+> Ticker state must remain false through `wiring-complete` and true thereafter;
+> only after the real tick/render, animation frame and later task does the
+> replacement emit the optional `cf-v2-slice-ready/v1` tail binding. One phase-
+> owned, at-most-2-second `Runtime.evaluate` then confirms that
 > exact ready context; `browsercdp.send()` permits a shorter per-command timeout
 > but never one above its connection-wide ceiling. Its browser-native
 > `performanceNow` must also be strictly below 20 seconds; an exact-boundary
 > control fails, preventing Node observer descheduling from laundering a late
 > product boot. The tail binding witnesses
 > boot publication plus a serviced event-loop turn, not the separate 50 ms
-> answerability metric. `replacement-document-loader-token-phase` and
-> `reload-resource-release` negative-control same-loader token mutation, lost/
-> rejected phases, wrong/duplicate/malformed session-context-loader-token events,
-> stalled or just-late transitions, retained canvases, unreleased renderer and
-> over-budget backing pixels. Sticky fatal Page/Runtime/Inspector/Network events
+> answerability metric. `replacement-document-loader-token-phase`,
+> `reload-resource-release`, and `replacement-boot-phase-sequence` negative-control
+> same-loader token mutation, lost/rejected phases, wrong/duplicate/malformed
+> session-context-loader-token events, stalled or just-late transitions, missing/
+> reordered/identity-mismatched boot stages, early/running tickers, retained
+> canvases, unreleased renderer and over-budget aggregate backing pixels. Sticky
+> fatal Page/Runtime/Inspector/Network events
 > remain authoritative even when the bounded diagnostic ring rolls over; the
 > command never retries a red run. `import-phase-sequence` and
 > `replacement-ticker-quiescence` additionally reject missing/reordered/wrong-
@@ -223,13 +235,40 @@
 > production, content SHA-256
 > `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
 > `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, `publishable:false`.
-> `7d9980e` underlies the forthcoming/current
-> docs-only handoff tip; exact tip/upstream/check state is read live. Matching final-tip
-> CI remains required before preview/human play. The
+> `7d9980e` remains immutable prior exact evidence and does not certify #204.
+> Exact tip/upstream/check state is read live; the repair requires a clean
+> executable commit, exact battery, push and matching CI before preview/human play. The
 > artifact is origin-bound but not authorized for hosting or
 > publication; human playtest, Ready and merge authority remain open.
 > Development preview origin/package requirements live in
 > `port/DEVELOPMENT_PREVIEW.md`; they do not constitute a release or deployment.
+>
+> Matching test-battery #204, run
+> [`31612817092`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092) /
+> job [`94168172635`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092/job/94168172635),
+> completed once without retry at exact pushed head
+> `4cee7d807b8f9258e370aad31c30756269f95a96` and remains **RED**. All earlier
+> gates plus `smoke:ci` passed. Desktop-8k import/write/release/navigation/load/FCP
+> were healthy: the arm command queued for 9,504 ms, release completed in 35 ms,
+> the changed loader arrived at 45 ms, load at 231 ms and FCP at 268 ms. The new
+> document then produced no ready witness within 20 seconds and no fatal event.
+> Root cause was the combination of two independent full 16,777,216-pixel
+> full-viewport allocations and Pixi `autoStart` before asynchronous boot wiring;
+> this is not an import, repository-write, release, navigation, load or FCP
+> failure. Preserve the single red execution without retry or deadline growth.
+>
+> The aggregate-budget / explicit-start repair currently has stable dirty-source
+> diagnostics only, not authoritative certification. Source digest
+> `721418cb1b0cd258ffcd35e614401aba0d26951ea2d02866c6651e2d6cd7c896`
+> passed targeted desktop-8k in 218 ms, one-attempt smoke with 0 findings /10
+> screenshots, and certifying-shaped glass with 12/12 viewports, 53/53 controls,
+> `omitted=[]`, zero findings/instrument failures/retries in 193–214 ms. Exact 8K
+> recorded 214 ms total, 1 ms arm, 18 ms `invoked`→`release-complete`, 1 ms write,
+> all 12 boot stages, `performanceNow` 178.7 ms, 1 ms confirmation and two
+> 3,862×2,172 canvases. All nine automated personas passed; terminal performance
+> was 637/723/77/157 ms. A clean executable commit, exact full battery, push and
+> matching CI remain pending. No preview host, human play, Ready, merge, release,
+> deployment or version authority follows from these diagnostics.
 >
 > **v1.6 additions not yet folded into the sections below** (see ART_DIRECTION / PROCEDURAL_CHARACTERISTICS /
 > UI_PRESENTATION / SPECIES_AND_GENOME for detail): the Earth-bestiary rig system (`_rig*` per class) +
