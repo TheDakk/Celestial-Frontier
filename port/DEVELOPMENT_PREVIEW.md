@@ -74,8 +74,8 @@ not by silently changing save keys in a test build. `tools/devpreview.mjs` there
   working tree;
 - emits `publishable:false` by default, and its runtime refuses every remote origin. The
   default-branch manual approval workflow normally passes
-  `--approved-publication-candidate`; PR #11's one-time, explicitly Nick-approved local
-  bootstrap may pass the same flag from its clean pushed head. The flag binds
+  `--approved-publication-candidate`; after matching green CI, Nick may explicitly approve
+  PR #11's one-time local bootstrap from its clean pushed head. The flag binds
   `publishable:true`, but neither path deploys anything;
 - writes only to the ignored `port/v2/apps/game/smoke/dev-preview-*` evidence root and
   never touches the production site repository.
@@ -124,10 +124,10 @@ run and retain that run URL with the playtest report.
 
 ## CI and publication flow
 
-### Current PR #11 provenance finding
+### Current PR #11 evidence state
 
-The browser-provenance defect below remains preserved history, but it is no longer
-the latest PR-head stop. Test-battery #205, run `31621227550` / job
+The browser-provenance defect below remains preserved history. Test-battery #205,
+run `31621227550` / job
 `94196289291`, completed once without retry at exact pushed
 `c57305fbf30af2bc8158ff46af1ec49ec4455d95` and is **RED** after every preceding
 gate and `smoke:ci` passed. Desktop-8k completed import, release, changed-loader
@@ -174,11 +174,34 @@ it records 37 files /10,186,230 bytes, content SHA-256
 `da4e066b447db073383f59dd592cd2a19a186d32ce13a2edd05fbc07e66aa10f`,
 exact `port/v2` tree `d1ab1d79fba4ba2939c3e1ec0661fb60498afb23`, expected origin
 `https://dev-celestialfrontier.github.io`, production distinct and
-`publishable:false`. It is a verified local review artifact, not a publication
-candidate. Live Git/status/PR checks determine the docs-only tip, which still
-requires matching CI before Nick may approve the one-time PR #11 candidate command
-below. No host creation, publication, human play, Ready, merge, release, deployment,
-or version authority follows from this artifact.
+`publishable:false`. It is a prior verified local review artifact, not a publication
+candidate and not evidence for the #206 repair.
+
+Test-battery #206, run `31635297321` attempt 1 / job `94243979205`, completed
+without retry at exact pushed `558e0565d368a0b81d86d99fd380ebc50d30bc02`;
+merge `e160577` is tree-identical. Every preceding step and `smoke:ci` passed, but
+desktop-8k reload first passed in 8,749 ms, ready published at `performanceNow`
+2,578.6 ms, and its target cycles took 1,905/1,910 ms with 3/1 ms heartbeats.
+The later 5,120×2,880 resize target timed out at 2,003 ms against a strict 2,000 ms
+bound while `Browser.getVersion` answered in 2 ms; `last:null`. The report retained the sole
+`ULTRA_VIEWPORT_RESIZE_UNANSWERABLE` product finding, 0 instrument failures,
+56 executed +1 product-blocked =57, `omitted=[]`, and 0 retries. No persona or
+preview evidence was produced; preserve #206 red without retry.
+
+The only retained 3,145,728-pixel/canvas repair evidence captured before source freeze
+is non-authoritative `dirty-diagnostic` glass evidence: Edge 151 PASS 12/12, 57/57,
+`blocked=[]`, `omitted=[]`, 0 findings/
+instrument failures/retries in 52,851 ms, report SHA-256
+`faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`.
+Reloads were 173–186 ms. Exact 8K was 180 ms, `performanceNow` 155.9 ms, target
+cycles 1/6 ms and heartbeats 1/0 ms at DPR `0.3079201435678004`; its two
+2,365×1,330 outgoing stores collapsed to 1×1 and the replacement pair remained
+6,290,900 pixels combined.
+A clean-head exact battery and new commit-bound preview for the immutable executable
+source remain required. Live Git/PR state determines commit/push/check status, and whichever
+final pushed tip is selected requires matching CI before Nick may approve the one-time
+PR #11 candidate command below. No host creation, publication, human play, Ready,
+merge, release, deployment, or version authority follows from the diagnostic or prior artifact.
 
 Pushed head `8b8a740286a56591cac9dc5734a2fba4c088939b` passed its exact local
 battery. Matching test-battery #200, run `31577395120` / job `94052496287`,

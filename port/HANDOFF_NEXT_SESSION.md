@@ -2,10 +2,10 @@
 
 **Current integration state:** PR #10 merged normally into `develop` at
 `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`. OpenAI/Codex remains on
-`openai/mac`; immutable executable evidence source
-`135a635d066d1c67e3096dc134de9247267898d5` passed the complete exact local
-battery and underlies a forthcoming/current docs-only handoff tip. Exact
-tip/upstream/CI state is live authority from
+`openai/mac`. Latest immutable CI evidence is test-battery #206 at exact pushed
+`558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577` is tree-identical,
+and the run remains red without retry. Immutable `135a635` remains prior exact
+clean evidence, not #206 repair authority. Exact tip/upstream/CI state is live authority from
 `git rev-parse HEAD`, `git status --short --branch`, and PR #11 checks. Prior test-battery #201,
 run [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
 job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
@@ -30,8 +30,9 @@ Test-battery #204, run
 job [`94168172635`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092/job/94168172635),
 completed once without retry at exact pushed head
 `4cee7d807b8f9258e370aad31c30756269f95a96` and remains red. All earlier gates
-plus `smoke:ci` passed; the exact failure and current clean local repair evidence
-are recorded below. Matching CI for the final pushed docs tip remains required.
+plus `smoke:ci` passed; the exact failure and later prior clean repair evidence
+are recorded below as prior history. Whichever final pushed repair tip is selected
+requires matching CI.
 Test-battery #205, run
 [`31621227550`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31621227550) /
 job [`94196289291`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31621227550/job/94196289291),
@@ -41,6 +42,13 @@ ready after the full replacement/boot chain, then its sole two-second exact-cont
 confirmation timed out. With no concurrent browser-process heartbeat, this is
 strong evidence of post-ready target starvation but not retrospective proof of
 healthy browser/CDP transport.
+Test-battery #206, run
+[`31635297321`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321) /
+job [`94243979205`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321/job/94243979205),
+completed attempt 1 without retry at exact pushed
+`558e0565d368a0b81d86d99fd380ebc50d30bc02` and remains red; merge `e160577`
+is tree-identical. All preceding steps and `smoke:ci` passed. The exact resize
+answerability finding and non-authoritative repair diagnostic are recorded below.
 Historical test-battery #200,
 run `31577395120` / job `94052496287`, passed every root, product, v2, one-run
 smoke, full 12-viewport glass, automated-persona and preview-package gate; only
@@ -74,10 +82,13 @@ The responsive glass contract now spans **12 viewports including 8K**: safe
 areas, minimum targets, contrast, focus continuity, assistive state, display
 preferences, reduced motion and bounded DPR. Native backing remains through UHD
 3,840×2,160; a viewport strictly above 8,388,608 CSS pixels selects an ultra
-tier of 4,194,304 pixels per canvas /8,388,608 aggregate. Exact rounded fitting
-makes desktop-8k two 2,730×1,536 stores /8,386,560 pixels combined. Backdrop
+tier of 3,145,728 pixels per canvas /6,291,456 aggregate. Exact rounded fitting
+makes desktop-8k and 5,120×2,880 two 2,365×1,330 stores /6,290,900 pixels combined. Backdrop
 replacement releases before allocation and same-backing logical resizes still
-refresh Pixi/EventSystem/pointer geometry. Panels reserve a dedicated 44px
+refresh Pixi/EventSystem/pointer geometry. Downshift and restore each require a
+strict target/browser-heartbeat pair, an advancing later post-render ticker turn,
+and stopped/stale-ticker controls. The existing full scene rerender remains; no
+scene-rerender optimization or separate scene-art quality tier landed. Panels reserve a dedicated 44px
 sticky-close gutter and restore focus to their opener, or to Survey/canvas when
 a desktop rail opener has become hidden. On landed ≤900px layouts the objective
 yields to populated Planetside until ascent; short landscape yields the trail.
@@ -300,11 +311,14 @@ so #205 is strong pixel-linear evidence of post-ready target starvation but not
 retrospective proof of healthy browser/CDP transport. Preserve it without retry.
 
 The follow-on repair retains native backing through UHD 3,840×2,160,
-then selects 4,194,304 pixels/canvas /8,388,608 aggregate strictly above
-8,388,608 CSS pixels. Exact rounded fitting makes 8K 2,730×1,536 per store;
+then selects 3,145,728 pixels/canvas /6,291,456 aggregate strictly above
+8,388,608 CSS pixels. Exact rounded fitting makes 8K and 5K 2,365×1,330 per store;
 old backdrop destruction precedes allocation and an exact transition peak/budget
 is published. Same-backing logical resizes refresh CSS, Pixi screen/texture,
-EventSystem, pointer and backdrop geometry. After timely ready the harness sends
+EventSystem, pointer and backdrop geometry. Downshift and restore each use a strict
+target/`Browser.getVersion` pair and later advancing post-render ticker witness,
+with stopped/stale ticker controls. No scene-rerender optimization landed; the
+existing full scene rerender remains. After timely ready the harness sends
 two strict, no-retry, at-most-two-second exact-context cycles concurrently with
 root-session `Browser.getVersion`; cycle 2 is a later post-render ticker turn.
 Its exact five-row ledger and 57-control executed/product-blocked/omitted report
@@ -359,9 +373,33 @@ manifest SHA-256
 tree `d1ab1d79fba4ba2939c3e1ec0661fb60498afb23`, expected separate origin,
 production distinct and `publishable:false`.
 
-Live Git/PR state decides the exact final docs tip, upstream and check status. Push
-that tip and require matching green CI before
-human playtest against its
+Matching test-battery #206, run `31635297321` attempt 1 / job `94243979205`,
+completed once without retry at exact pushed
+`558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577` is tree-identical.
+Every preceding step and `smoke:ci` passed. Desktop-8k reload passed in 8,749 ms;
+ready published at `performanceNow` 2,578.6 ms, and initial target cycles took
+1,905/1,910 ms with 3/1 ms heartbeats. The later 5,120×2,880 transition's
+exact-context `Runtime.evaluate` timed out at 2,003 ms against the strict 2,000 ms
+bound while `Browser.getVersion` answered in 2 ms; `last:null`. The sole
+`ULTRA_VIEWPORT_RESIZE_UNANSWERABLE` is a product finding: 12 viewports,
+1 product finding, 0 instrument failures, 56 executed +1 product-blocked =57,
+`omitted=[]`, 0 retries. No persona or preview evidence was produced. Preserve
+#206 red without retry.
+
+The only retained repair evidence captured before source freeze is non-authoritative
+`dirty-diagnostic` evidence. One full
+Edge 151 glass run passed 12/12, 57/57, `blocked=[]`, `omitted=[]`, 0 findings/
+instrument failures/retries in 52,851 ms; report SHA-256
+`faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`.
+Reloads were 173–186 ms. Exact 8K was 180 ms, `performanceNow` 155.9 ms, target
+cycles 1/6 ms and heartbeats 1/0 ms at DPR `0.3079201435678004`; outgoing and
+replacement stores were 2,365×1,330 each, outgoing collapsed to 1×1, and the
+replacement pair remained 6,290,900 pixels combined. This diagnostic does not
+certify a source.
+
+A clean-head exact battery for the immutable executable source remains required. Live Git/PR
+state decides exact tip, upstream, commit/push, and check status; whichever final
+pushed tip is selected requires matching green CI before human playtest against its
 commit-bound separate-origin preview. Record full commit,
 `preview.json` content hash, URL, tester/device/browser, save state, findings and
 retest in `port/playtests/`. Do not mark PR #11 Ready or merge before every human
@@ -379,18 +417,19 @@ scenes are the higher-value visual work.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — immutable executable evidence
-source `135a635d066d1c67e3096dc134de9247267898d5` passed the complete exact local
-battery and underlies a forthcoming/current docs-only tip. Resolve exact current tip/upstream/check state live; prior #201,
-#202, #203, #204 and #205 remain preserved red without retry.
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — test-battery #206 is the latest
+immutable pushed evidence at `558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577`
+is tree-identical, and the run remains red without retry. The only retained repair evidence
+captured before source freeze is non-authoritative `dirty-diagnostic` evidence. Resolve exact tip/upstream/check state live;
+prior #201–#206 remain preserved red without retry.
 
 **GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`),
 #202 (`31594595288` / `94106996466`), #203 (`31602984470` / `94134750800`), and
-#204 (`31612817092` / `94168172635`), and #205
-(`31621227550` / `94196289291`) without retry. Read `git rev-parse HEAD`,
-`git status --short --branch`, and PR #11 checks; if
-`origin/openai/mac` is behind the current tip, push it and
-require matching green CI for that final pushed tip. After green CI, obtain host approval, publish the separate-origin preview,
+#204 (`31612817092` / `94168172635`), #205 (`31621227550` / `94196289291`), and
+#206 (`31635297321` / `94243979205`) without retry. Read `git rev-parse HEAD`,
+`git status --short --branch`, and PR #11 checks. Freeze an immutable clean repair
+source and run its exact battery; live state determines commit/push status, and whichever
+final pushed tip is selected requires matching green CI. After green CI, obtain host approval, publish the separate-origin preview,
 complete/record human play, resolve/retest findings, and only then let Nick mark Ready and normally
 merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add work to merged PR #10.
 
@@ -430,8 +469,10 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > owner rollback. An exact-operation import-phase stream requires ticker-running invocation,
   > stopped claim/write/release, and one absolute deadline beginning before its bounded arm;
   > no IndexedDB timeout race is used. Retains native backing through UHD, then uses an exact
-  > rounded 4,194,304-pixel/canvas ultra tier (2,730×1,536 each at 8K), releases the old backdrop
-  > before replacement allocation, and records exact transition peak/budget. Initializes Pixi
+  > rounded 3,145,728-pixel/canvas ultra tier (2,365×1,330 each at 8K and 5K), releases the old backdrop
+  > before replacement allocation, and records exact transition peak/budget. Both resize directions
+  > require bounded target/heartbeat evidence and a later advancing ticker turn; stopped/stale ticker
+  > controls fail, while the existing scene rerender remains unoptimized. Initializes Pixi
   > with `autoStart:false` through save/scene/slice/input wiring, and requires an exact 12-stage
   > session/context/generation/origin/loader/token boot witness with the ticker false through
   > wiring and true after a real tick/render, animation frame and later task. Adds provenance-bound
@@ -440,7 +481,7 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > to Linux Edge when a preceding step's environment expires. Moves the root 10-viewport layout
   > gate onto the same owned port-0 CDP launcher and adds ignored atomic pass/fail/instrument-fail
   > evidence, stale-PASS/exit-73 selftest, exact-run freshness and a separate required CI upload;
-  > automated personas are explicitly not a human playtest. Immutable executable source
+  > automated personas are explicitly not a human playtest. Prior immutable executable source
   > `135a635d066d1c67e3096dc134de9247267898d5` passed root validate/smoke/rarity/
   > dead-code, exact root layout 787/787 across 10/10, v2 273/1 plus every gate, one-attempt
   > smoke 0 findings/10 screenshots/0 retries, and certifying glass 12/12 with 57/57 unique
@@ -455,15 +496,23 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > expected separate origin and `publishable:false`.
   > Prior #201 (`31586917924` / `94082765087`), #202
   > (`31594595288` / `94106996466`), and #203 (`31602984470` / `94134750800`)
-  > plus #204 (`31612817092` / `94168172635`) and #205
-  > (`31621227550` / `94196289291`) remain preserved red without retry; #202 exposed
+  > plus #204 (`31612817092` / `94168172635`), #205
+  > (`31621227550` / `94196289291`), and #206 (`31635297321` / `94243979205`)
+  > remain preserved red without retry; #202 exposed
   > serial observer latency, #203 exposed pre-release 8K renderer pressure before the first
   > release witness; #204 isolated post-load readiness pressure after healthy import/write/
   > release/navigation/load/FCP; #205 reached ready then lost its exact-context confirmation without
-  > a concurrent browser heartbeat. Earlier dirty-diagnostic follow-on evidence remains prior
-  > non-authoritative diagnosis; `135a635` is the immutable clean executable evidence. Exact
-  > tip/upstream/check status is read live, and matching CI
-  > for the final pushed docs tip remains required. The local artifact is bound to
+  > a concurrent browser heartbeat. #206 passed reload/ready and its initial heartbeat-backed
+  > confirmations, then the later 5K resize target timed out at 2,003 ms while the browser heartbeat
+  > answered in 2 ms: 1 product finding, 0 instrument failures, 56 executed +1 blocked =57,
+  > `omitted=[]`, 0 retries, and no persona/preview evidence. The frozen 3,145,728-pixel/canvas
+  > repair has only a dirty-diagnostic Edge 151 glass PASS (SHA-256
+  > `faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`):
+  > 12/12, 57/57, `blocked=[]`, `omitted=[]`, zero findings/instrument failures/retries,
+  > 2,365×1,330 twin stores and bounded resize target/heartbeat/ticker evidence. A clean-head
+  > exact battery for the immutable executable source remains required. Exact tip/upstream/check and
+  > commit/push status is read live, and whichever final pushed tip is selected requires matching
+  > CI. The prior local artifact is bound to
   > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. After the
   > matching CI is green, complete and record a multi-lens human playtest against that exact preview before marking
   > this PR Ready or merging. The static Platinum-reviewed portrait set is unchanged; later visual
@@ -486,8 +535,9 @@ bump has occurred.
 
 **Preview bootstrap note:** GitHub cannot manually dispatch a workflow until its
 file exists on the default branch. Since PR #11 introduces
-`development-preview-package.yml`, its exact pre-merge review artifact used the equivalent
-Nick-approved local clean/pushed-head command in `port/DEVELOPMENT_PREVIEW.md`.
+`development-preview-package.yml`, any exact pre-merge review candidate must, after matching
+green CI and explicit Nick approval, use the local clean/pushed-head command in
+`port/DEVELOPMENT_PREVIEW.md`. No such #206 candidate exists yet.
 After that workflow reaches `develop`, later candidates use the reviewed manual
 workflow. Neither path deploys without a separately approved host action.
 

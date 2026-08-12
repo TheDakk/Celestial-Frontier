@@ -550,6 +550,31 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > refresh CSS size, Pixi screen/texture metadata, event resolution, hit coordinates, backdrop
 > logical size, and generation; backing dimensions alone are not a resize outcome.
 
+> **Correction earned by test-battery #206:** a resize can eventually publish perfect geometry
+> and still monopolize the exact target long enough to be a product failure. Attempt 1 of run
+> `31635297321` / job `94243979205` at pushed
+> `558e0565d368a0b81d86d99fd380ebc50d30bc02` (tree-identical merge `e160577`) passed
+> every preceding step and `smoke:ci`. Desktop-8k also passed replacement reload and both initial
+> ready confirmations, but its later 8K→5,120×2,880 transition left the exact-context
+> `Runtime.evaluate` unanswered for 2,003 ms against the strict 2,000 ms bound while concurrent
+> `Browser.getVersion` answered in 2 ms. The report correctly retained the sole
+> `ULTRA_VIEWPORT_RESIZE_UNANSWERABLE` product finding, 0 instrument failures, 56 executed plus
+> 1 product-blocked control =57, `omitted=[]`, and 0 retries. Do not reclassify that as transport
+> ambiguity, retry it green, or raise the deadline.
+> **Responsive geometry requires bounded answerability throughout the transition.** Preserve native
+> UHD. Above the existing ultra threshold, the app now caps each simultaneous full-viewport store
+> at 3,145,728 pixels; exact rounding makes both 8K and 5K 2,365×1,330 each /6,290,900 combined.
+> Test both downshift and restore with a strict exact-target command paired concurrently with a
+> browser-process heartbeat, then require an advancing later post-render ticker turn. Deliberately
+> stopped and stale-ticker controls must fail alongside the geometry, pointer, backing and ownership
+> controls. The current repair changes the resource ceiling; it does **not** optimize away the
+> existing scene rerender, so do not document a quality-tier/rerender optimization that did not land.
+> The current full Edge 151 `dirty-diagnostic` PASS is non-authoritative despite 12/12, 57/57,
+> zero findings/instrument failures/retries (report SHA-256
+> `faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`). Such
+> evidence can guide the repair, but a clean-head exact battery for the immutable source and matching CI for
+> whichever final pushed tip is selected remain the certification boundary.
+
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
 GitHub Actions step lost that step-local `CF_BROWSER`, selected an installed Linux Edge through

@@ -47,13 +47,17 @@
 > follows the touch-2 / desktop-3 heat caps and retains native backing through
 > UHD 3,840×2,160. Ordinary viewports may use 8,388,608 backing pixels per
 > full-screen canvas /16,777,216 aggregate; a viewport strictly above 8,388,608
-> CSS pixels selects the ultra tier of 4,194,304 per canvas /8,388,608 aggregate.
+> CSS pixels selects the ultra tier of 3,145,728 per canvas /6,291,456 aggregate.
 > `fitResolutionToPixelCap()` searches against the actual rounded width and
-> height, so desktop-8k owns two 2,730×1,536 stores (8,386,560 pixels combined)
-> without rounding above cap. Density transitions release and collapse the prior
+> height, so desktop-8k and 5,120×2,880 each own two 2,365×1,330 stores
+> (6,290,900 pixels combined) without rounding above cap. Density transitions release and collapse the prior
 > backdrop before resizing/allocating the replacement, record exact peak and
 > budget ownership, then update Pixi screen/texture/event geometry even when a
-> same-aspect logical resize retains the same integer backing dimensions. Survey
+> same-aspect logical resize retains the same integer backing dimensions. Both
+> downshift and restore require a strict exact-target/`Browser.getVersion` pair,
+> an advancing later post-render ticker turn, and stopped/stale-ticker negative
+> controls. The transition still uses the existing full scene rerender; this is an
+> allocation tier, not a newly implemented scene-art quality tier. Survey
 > cards expose minimum-44px **Enter galaxy / Enter system** actions, and touch
 > Planetside has a minimum-44px **Leave world** action. The eighth dock slot opens
 > the canonical **Guide to the Universe**: `guide-content.ts` carries a
@@ -343,6 +347,33 @@
 > production distinct and `publishable:false`. Live Git/status/PR checks determine
 > the docs-only tip; matching CI and host/human/Ready/merge/release/deploy/version
 > authority remain open.
+>
+> Test-battery #206, run
+> [`31635297321`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321) /
+> job [`94243979205`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321/job/94243979205),
+> completed attempt 1 without retry at exact pushed
+> `558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577` is tree-identical.
+> All earlier steps and `smoke:ci` passed. The 8K reload passed in 8,749 ms;
+> ready `performanceNow` was 2,578.6 ms, and target cycles were 1,905/1,910 ms
+> with 3/1 ms heartbeats. The later 5,120×2,880 transition's exact-context
+> `Runtime.evaluate` timed out at 2,003 ms versus the strict 2,000 ms bound while
+> `Browser.getVersion` answered in 2 ms; `last:null`. The sole
+> `ULTRA_VIEWPORT_RESIZE_UNANSWERABLE` is a product answerability finding: all 12
+> viewports ran, with 1 product finding, 0 instrument failures, 56 executed plus
+> 1 product-blocked control =57, `omitted=[]`, 0 retries, and no persona/preview
+> output. Preserve #206 red without retry.
+>
+> The frozen cap/control repair is currently evidenced only by a non-authoritative
+> dirty diagnostic. One full Edge 151 run passed 12/12, 57/57, `blocked=[]`,
+> `omitted=[]`, 0 findings/instrument failures/retries in 52,851 ms; report SHA-256
+> `faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`.
+> Reloads were 173–186 ms; exact 8K was 180 ms, `performanceNow` 155.9 ms,
+> target cycles 1/6 ms and heartbeats 1/0 ms at DPR `0.3079201435678004`.
+> Outgoing/replacement stores were 2,365×1,330 each, outgoing collapsed to 1×1,
+> and replacement remained 6,290,900 pixels combined. A clean-head exact battery for the
+> immutable executable source remains required; live Git/PR state determines commit/push
+> status, and whichever final pushed tip is selected requires matching CI. No host,
+> human play, Ready, merge, release, deployment, or version authority follows.
 >
 > **v1.6 additions not yet folded into the sections below** (see ART_DIRECTION / PROCEDURAL_CHARACTERISTICS /
 > UI_PRESENTATION / SPECIES_AND_GENOME for detail): the Earth-bestiary rig system (`_rig*` per class) +

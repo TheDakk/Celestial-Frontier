@@ -109,15 +109,19 @@
 > selected plan retains the touch-2 / desktop-3 heat caps and native backing
 > through UHD 3,840×2,160. Ordinary viewports may use 8,388,608 backing pixels
 > per canvas / 16,777,216 aggregate; a viewport **strictly larger** than
-> 8,388,608 CSS pixels selects the ultra tier of 4,194,304 per canvas /
-> 8,388,608 aggregate. Exact rounded-dimension fitting keeps fractional DPR from
-> rounding over the selected cap, so desktop-8k uses two 2,730×1,536 stores
-> (4,193,280 each / 8,386,560 combined). `autoDensity` keeps CSS and hit
+> 8,388,608 CSS pixels selects the ultra tier of 3,145,728 per canvas /
+> 6,291,456 aggregate. Exact rounded-dimension fitting keeps fractional DPR from
+> rounding over the selected cap, so desktop-8k and 5,120×2,880 each use two
+> 2,365×1,330 stores (3,145,450 each / 6,290,900 combined). `autoDensity` keeps CSS and hit
 > coordinates viewport-sized. A live transition destroys and collapses the old
 > backdrop before resizing/allocating its replacement, records the exact
 > transition peak against its budget, and refreshes Pixi screen/texture/event
 > geometry even when a same-aspect viewport change happens to retain the same
-> integer backing dimensions.
+> integer backing dimensions. Downshift and restore each require a strict exact-
+> target/`Browser.getVersion` pair plus an advancing later post-render ticker turn;
+> stopped and stale tickers fail deliberate controls. The existing scene rerender
+> still runs on the transition—this repair lowers the resource ceiling and does not
+> introduce a separate art-quality tier or scene-rerender optimization.
 >
 > Species art remains a lazy chunk, but readiness is now one shared Promise with
 > one latest subscriber per interested view. An idle prefetch can no longer
@@ -392,6 +396,35 @@
 > production distinct and `publishable:false`. Live Git/status/PR checks determine
 > the exact docs-only tip; matching CI, host approval, human play, Ready, merge,
 > release, deployment and version authority remain separate and open.
+>
+> Test-battery #206, run
+> [`31635297321`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321) /
+> job [`94243979205`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321/job/94243979205),
+> completed attempt 1 without retry at exact pushed
+> `558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577` is tree-identical.
+> Every preceding step and `smoke:ci` passed. The 8K reload passed in 8,749 ms,
+> ready published at `performanceNow` 2,578.6 ms, and initial target cycles completed
+> in 1,905/1,910 ms with 3/1 ms heartbeats. The later 5,120×2,880 transition's
+> exact-context `Runtime.evaluate` timed out at 2,003 ms against the strict 2,000 ms
+> bound while `Browser.getVersion` answered in 2 ms; `last:null`. That sole
+> `ULTRA_VIEWPORT_RESIZE_UNANSWERABLE` result is a product finding, not instrument
+> ambiguity. Glass covered all 12 viewports with 1 product finding, 0 instrument
+> failures, 56 executed plus 1 product-blocked control =57, `omitted=[]`, and 0
+> retries. No persona or preview evidence was produced. Preserve #206 red without retry.
+>
+> The only retained repair evidence captured before source freeze is a non-authoritative
+> `dirty-diagnostic`. One full Edge 151
+> diagnostic passed 12/12, 57/57, `blocked=[]`, `omitted=[]`, 0 findings/instrument
+> failures/retries in 52,851 ms; report SHA-256
+> `faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`.
+> Reloads were 173–186 ms. Exact 8K was 180 ms, `performanceNow` 155.9 ms, target
+> cycles 1/6 ms and heartbeats 1/0 ms at DPR `0.3079201435678004`; outgoing and
+> replacement stores were 2,365×1,330 each, outgoing collapsed to 1×1, and the
+> replacement pair remained 6,290,900 pixels combined. This capture is
+> non-authoritative. A clean-head exact battery for the immutable executable source remains
+> required; live Git/PR state determines commit/push status, and whichever final
+> pushed tip is selected requires matching CI. Host, human play, Ready, merge,
+> release, deployment, and version authority remain separate.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
 v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve
