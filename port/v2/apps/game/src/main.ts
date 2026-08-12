@@ -113,6 +113,22 @@ type ReloadCanvasRelease = {
   afterHeight: number;
 };
 type ReplacementReloadReason = 'training-restart' | 'save-import' | 'storage-retry';
+type ImportPhaseStage =
+  | 'invoked' | 'validation-rejected' | 'claim-rejected' | 'claimed'
+  | 'waiting-active-persist' | 'no-active-persist' | 'active-persist-settled'
+  | 'primary-write-started' | 'primary-write-complete' | 'primary-write-rejected'
+  | 'release-started' | 'release-complete';
+type ImportPhaseWitness = {
+  schema: 'cf-v2-import-phase/v1';
+  phaseId: string;
+  reason: 'save-import';
+  documentToken: string;
+  stage: ImportPhaseStage;
+  sequence: number;
+  tickerStarted: boolean;
+  performanceNow: number;
+  error: string | null;
+};
 type ReloadReleaseWitness = {
   schema: 'cf-v2-reload-release/v1';
   status: 'released' | 'release-failed';
@@ -137,22 +153,39 @@ let releaseRendererForReload = (reason: ReplacementReloadReason): ReloadReleaseW
 });
 let replacementReloadScheduled = false;
 let replacementReloadPending = false;
-type ReplacementTransaction = Readonly<{ reason: ReplacementReloadReason; token: symbol }>;
+type ReplacementTransaction = Readonly<{
+  reason: ReplacementReloadReason;
+  token: symbol;
+  tickerWasStarted: boolean;
+}>;
 let replacementTransaction: ReplacementTransaction | null = null;
 function claimReplacementTransaction(reason: ReplacementReloadReason): ReplacementTransaction | null {
   /* A reason string is not ownership: two rapid imports have the same reason
      but are distinct writes. One opaque claim per operation prevents either
      flow from releasing/reloading while another same-kind write is pending. */
   if (replacementTransaction) return null;
-  const claim = Object.freeze({ reason, token: Symbol(reason) });
+  /* Stop the outgoing renderer before the first persistence await. At an 8K
+     software-rendered viewport, allowing another 16.7M-pixel frame to start
+     can starve the IndexedDB completion task for the whole import budget.
+     A failed replacement restarts only a ticker that this claim stopped; a
+     successful replacement destroys it while quiescent. */
+  const tickerWasStarted = app.ticker?.started === true;
+  if (tickerWasStarted) app.stop();
+  const claim = Object.freeze({ reason, token: Symbol(reason), tickerWasStarted });
   replacementTransaction = claim;
   clearTimeout(_persistT); _persistT = 0;
   return claim;
 }
 function releaseReplacementTransaction(claim: ReplacementTransaction): void {
-  if (!replacementReloadScheduled && replacementTransaction === claim) replacementTransaction = null;
+  if (!replacementReloadScheduled && replacementTransaction === claim) {
+    replacementTransaction = null;
+    if (claim.tickerWasStarted && app.ticker && !app.ticker.started) app.start();
+  }
 }
-function scheduleReplacementReload(claim: ReplacementTransaction): void {
+function scheduleReplacementReload(
+  claim: ReplacementTransaction,
+  afterRelease?: (witness: ReloadReleaseWitness) => void,
+): void {
   /* These are the app's three intentional, durable-write reloads. Release
      the old 8K renderer/backdrop before asking the browser to construct the
      replacement document; otherwise two capped backing stores can overlap
@@ -181,6 +214,8 @@ function scheduleReplacementReload(claim: ReplacementTransaction): void {
     const binding = (window as unknown as Record<string, unknown>).__cfReloadReleaseWitness;
     if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
   } catch { /* evidence harness fails closed when its binding is absent/broken */ }
+  try { afterRelease?.(witness); }
+  catch { /* optional evidence must never strand a completed durable write */ }
   /* One task boundary lets WebGL context loss/canvas resize settle and lets
      importBlob resolve, without retrying or hiding a failed navigation. */
   setTimeout(() => location.reload(), 0);
@@ -1035,35 +1070,75 @@ sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
   if (!f) return;
   void f.text().then((txt) => { (sheet.querySelector('#importtext') as HTMLTextAreaElement).value = txt; });
 });
-async function importBlob(raw: string): Promise<string | null> {
+async function importBlob(raw: string, diagnosticPhaseId?: string): Promise<string | null> {
   /* returns an error message, or null on success (then we reload) */
+  let phaseSequence = 0;
+  const phase = (stage: ImportPhaseStage, error: string | null = null): void => {
+    if (typeof diagnosticPhaseId !== 'string' || !diagnosticPhaseId) return;
+    const witness: ImportPhaseWitness = {
+      schema: 'cf-v2-import-phase/v1', phaseId: diagnosticPhaseId,
+      reason: 'save-import', documentToken: DOCUMENT_TOKEN,
+      stage, sequence: ++phaseSequence,
+      tickerStarted: app.ticker?.started === true,
+      performanceNow: performance.now(), error,
+    };
+    try {
+      const binding = (window as unknown as Record<string, unknown>).__cfImportPhaseWitness;
+      if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
+    } catch { /* optional evidence is fail-closed in the harness */ }
+  };
+  phase('invoked');
   /* JSON permits surrounding whitespace. Keep the exact submitted text
      for the recovery keepsake, while retaining the importer's historical
      trimmed candidate for classification and the live primary. */
   const checkedRaw = raw.trim();
   const imp = importSaveV2(checkedRaw, REGISTRY, Date.now());
-  if (!imp.ok && imp.reason === 'future-version') return 'This save is from a newer Celestial Frontier build. Update first; nothing was stored.';
-  if (!imp.ok) return 'That does not load as a Celestial Frontier save — nothing was stored.';
+  if (!imp.ok && imp.reason === 'future-version') {
+    phase('validation-rejected', 'future-version');
+    return 'This save is from a newer Celestial Frontier build. Update first; nothing was stored.';
+  }
+  if (!imp.ok) {
+    phase('validation-rejected', 'invalid save payload');
+    return 'That does not load as a Celestial Frontier save — nothing was stored.';
+  }
   /* the real loader hardens ANY object into a fresh save — fine at boot,
      dangerous in an import sheet (an accidental "{}" would wipe the stored
      expedition). Require a face we recognize before we overwrite. */
   try {
     const o = JSON.parse(checkedRaw) as unknown;
-    if (!isPlausibleSaveEnvelope(o)) return 'That parses, but is not a complete save envelope — nothing was stored.';
-  } catch { return 'That does not load as a Celestial Frontier save — nothing was stored.'; }
+    if (!isPlausibleSaveEnvelope(o)) {
+      phase('validation-rejected', 'incomplete save envelope');
+      return 'That parses, but is not a complete save envelope — nothing was stored.';
+    }
+  } catch {
+    phase('validation-rejected', 'invalid JSON');
+    return 'That does not load as a Celestial Frontier save — nothing was stored.';
+  }
   const replacement = claimReplacementTransaction('save-import');
   if (!replacement) {
+    phase('claim-rejected', 'another replacement transaction already owns the app');
     return 'Another expedition replacement is finishing. Wait for its reload, then try again.';
   }
+  phase('claimed');
   /* Import is a replacement transaction, not another autosave. Cancel a
      pending slider debounce, stop new exports, and let an export already in
      flight settle before the validated bytes become primary. Otherwise an
      older settings snapshot can win the race after the import write. */
   clearTimeout(_persistT); _persistT = 0;
   importWriteInFlight = true;
-  if (activePersist) await activePersist.catch(() => false);
-  try { await repo.write(checkedRaw); }
+  const priorPersist = activePersist;
+  phase(priorPersist ? 'waiting-active-persist' : 'no-active-persist');
+  if (priorPersist) {
+    await priorPersist.catch(() => false);
+    phase('active-persist-settled');
+  }
+  phase('primary-write-started');
+  try {
+    await repo.write(checkedRaw);
+    phase('primary-write-complete');
+  }
   catch {
+    phase('primary-write-rejected', 'storage refused the primary write');
     importWriteInFlight = false;
     releaseReplacementTransaction(replacement);
     return 'Storage refused the write (private mode?).';
@@ -1073,7 +1148,10 @@ async function importBlob(raw: string): Promise<string | null> {
      first frame, so retain the exact input locally when browser storage
      permits it, without blocking an otherwise valid import when it does not. */
   try { localStorage.setItem('cf_v2_import_original', raw); } catch { /* keepsake only */ }
-  scheduleReplacementReload(replacement);
+  phase('release-started');
+  scheduleReplacementReload(replacement, (witness) => {
+    phase('release-complete', witness.error);
+  });
   return null;
 }
 sheet.querySelector('#importgo')!.addEventListener('click', () => {

@@ -143,7 +143,12 @@
 > The product produces that witness from one code-owned path used by its three
 > intentional reloads: Training restart, supported expedition import, and the
 > storage-retry reload. Each first claims one mutually exclusive replacement
-> transaction before awaiting. The chosen flow blocks ordinary persistence, destroys Pixi and global/
+> transaction before awaiting. Claiming synchronously stops a running outgoing
+> Pixi ticker before the first persistence wait. Only the exact owner of a failed
+> or rolled-back replacement may restart a ticker that its claim stopped; a
+> successful flow destroys the app while it is already quiescent, and pre-claim
+> invalid import rejection leaves the live renderer untouched. The chosen flow
+> blocks ordinary persistence, destroys Pixi and global/
 > child texture resources, detaches and shrinks both outgoing backing canvases,
 > then crosses one task boundary before `location.reload()`. It does not use a
 > generic `pagehide` teardown, because a browser-cache restore must not revive a
@@ -155,6 +160,14 @@
 > stalled navigation, stalled new-loader boot, same-loader token mutation, early
 > context loss, just-late transitions across all three deadlines, retained canvases, unreleased renderer, and over-budget backing
 > pixels. The run remains single-attempt—a red result is never retried into green.
+> An event-owned `cf-v2-import-phase/v1` stream now proves the pre-release half:
+> `invoked` begins with the ticker running; `claimed`, persistence wait/write, and
+> release stages require it stopped. The absolute 20-second import clock begins
+> before one bounded non-awaiting arm command and is never renewed. Controls
+> `import-phase-sequence` and `replacement-ticker-quiescence` reject missing,
+> reordered, wrong-operation/context, just-late, and still-rendering evidence.
+> IndexedDB itself is not wrapped in a timeout race, and no retry or timeout
+> increase turns a red import green.
 > The current profile is not yet a release
 > budget gate: cold repetitions, long-task/memory budgets, Compendium
 > virtualization, scene-texture disposal, live HD planet replacement and fuller
@@ -209,6 +222,19 @@
 > boot, save rejection or presentation failure. It is preserved instrument
 > ambiguity, without retry or a timeout increase.
 >
+> Matching test-battery #203, run
+> [`31602984470`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470) /
+> job [`94134750800`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470/job/94134750800),
+> completed once without retry at exact pushed head
+> `38e4f362533e272f56f708229f7a037f38ae8951` and is **RED**. All root,
+> product, v2 and `smoke:ci` gates before glass passed. Eleven viewport rows
+> passed; only desktop-8k import reached its 20,015 ms bound before any release,
+> ready, navigation, fatal, command or event witness appeared. The outgoing
+> 5,461×3,072 Pixi ticker was still scheduling software-rendered frames across
+> the durable-write wait and teardown. This is a pre-release renderer-pressure
+> cliff, not proof of save corruption or a rejected repository write. Preserve
+> #203 as first-attempt evidence; do not retry it or lengthen the deadline.
+>
 > Immutable executable evidence source
 > `20896ad410b48ae0c407a9f3d6885d30ec6657b1` passed its exact sequential battery.
 > Root preflight selftest/preflight, validate/fingerprint and smoke passed; the
@@ -237,6 +263,19 @@
 > artifact is bound to `https://dev-celestialfrontier.github.io`, but no host or
 > publication is authorized and the separate-origin human playtest is still
 > required before Ready or merge.
+>
+> The frozen #203 repair remains uncommitted and therefore diagnostic only. At
+> final proof digest `f25a190468d2be42f48b352c5c2b818524ab5e083e73715e7f5d488301b46f42`,
+> full certifying-structure glass passed 12/12 viewports, all 52/52 controls,
+> `omitted=[]`, 0 findings/instrument failures/retries, and all 12 exact import-
+> phase/release/ready paths. The 8K row
+> recorded a 3 ms arm, primary-write completion 1 ms after claim, 29 ms
+> release teardown, 253 ms total, 198.1 ms replacement `performanceNow`, 1 ms
+> confirmation, and both 5,461×3,072 canvases collapsing to 1×1. Exact digest and
+> timing provenance must be read from the retained post-proof report. A subsequent
+> smoke attempt refused mixed-source evidence because tracked documentation changed
+> during its run; stable exact-commit smoke/glass/persona remain pending. None of
+> this substitutes for matching CI or human play.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
 v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve

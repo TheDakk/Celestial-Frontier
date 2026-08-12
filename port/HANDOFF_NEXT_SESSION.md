@@ -17,6 +17,14 @@ job [`94106996466`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/3
 also completed once without retry and remains preserved red at pushed
 `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`; its only failure is the ambiguous
 desktop-8k serial readiness observer described below.
+Test-battery #203, run
+[`31602984470`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470) /
+job [`94134750800`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470/job/94134750800),
+also completed once without retry and remains preserved red at exact pushed
+`38e4f362533e272f56f708229f7a037f38ae8951`; every earlier gate and 11
+glass rows passed, then desktop-8k crossed the unchanged import bound before the
+first release receipt. The replacement-ticker repair below still requires exact
+clean-commit evidence and matching new-head CI.
 Historical test-battery #200,
 run `31577395120` / job `94052496287`, passed every root, product, v2, one-run
 smoke, full 12-viewport glass, automated-persona and preview-package gate; only
@@ -169,6 +177,13 @@ instrument latency, not evidence of a 61-second product boot, save rejection or
 product failure. Preserve it without retry or a timeout increase.
 
 The repair moves phase authority to sticky CDP receipts: exactly one
+event-owned `cf-v2-import-phase/v1` stream first binds the exact operation and
+old document/session/default context/loader. It requires the outgoing ticker
+running at `invoked`, stopped from exclusive claim through persistence/write/
+release, and one immutable 20-second deadline beginning before its bounded
+non-awaiting arm command. Only the exact failed/rolled-back owner may restore a
+ticker it stopped; pre-claim invalid input leaves play untouched. IndexedDB
+durability is not wrapped in a timeout race. Then exactly one
 reason/token-bound release from the prior default top context, one changed
 top-frame-loader commit, and exactly one `cf-v2-slice-ready/v1` event from the
 new default top context/session/generation/origin/loader/token/URL before the
@@ -181,6 +196,32 @@ timely. One phase-owned, at-most-2-second Runtime command confirms the exact
 context. Fatal events remain sticky outside bounded diagnostics. This proves
 boot publication plus a serviced event-loop turn, not the separate 50 ms
 answerability metric; later driven controls remain authoritative.
+
+Matching test-battery #203, run `31602984470` / job `94134750800`, completed
+once without retry at exact pushed `38e4f362533e272f56f708229f7a037f38ae8951`
+and is **RED**. All earlier root/product/v2 gates and `smoke:ci` passed. Eleven
+glass rows passed; desktop-8k reached 20,015 ms before any release, ready,
+navigation, fatal, command, or diagnostic event. The outgoing 5,461×3,072 Pixi
+ticker was still rendering across the durable-write wait and teardown under CI
+software rendering. This is a real pre-release renderer-pressure cliff, not
+save corruption or a reported repository-write rejection. Preserve it without
+retry, timeout increase, or an IndexedDB timeout race.
+
+The follow-on repair quiesces the ticker synchronously at the exclusive claim
+before any await and restores it only on exact-owner rollback. Its import-phase
+stream names claim, prior-persist wait, primary write, and release under the
+unchanged absolute deadline. On dirty diagnostic digest
+`f25a190468d2be42f48b352c5c2b818524ab5e083e73715e7f5d488301b46f42`,
+full glass passed 12/12 and 52/52 controls with `omitted=[]`, no findings,
+instrument failures, or retries, and all 12 exact phase/release/ready paths.
+Replacement totals were 194–253 ms; desktop-8k recorded a 3 ms arm, ticker true
+only at `invoked`, 1 ms write, 29 ms release, both 5,461×3,072 canvases →1×1,
+`performanceNow` 198.1 ms, 1 ms confirmation, and 253 ms total. A subsequent
+smoke attempt correctly refused because tracked documentation changed during its
+run (`source identity changed during slice smoke`); this one-attempt mixed-source
+refusal is retained as coordination/instrument evidence, not a product failure,
+and was not retried on moving bytes. Stable exact-commit smoke/glass/persona and
+matching CI remain required.
 
 `20896ad` underlies a docs-only handoff tip. Live Git/PR state decides its exact current
 tip/upstream/check status; require matching green CI for the final pushed tip before human
@@ -204,10 +245,11 @@ scenes are the higher-value visual work.
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — executable/evidence head
 `20896ad410b48ae0c407a9f3d6885d30ec6657b1` is the immutable source for the complete clean
 sequential battery and underlies a docs-only handoff tip. Resolve exact current tip/upstream/
-check state live; prior #201 and #202 remain preserved red without retry.
+check state live; prior #201, #202, and #203 remain preserved red without retry.
 
-**GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`)
-and #202 (`31594595288` / `94106996466`) without retry. Read `git rev-parse HEAD`,
+**GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`),
+#202 (`31594595288` / `94106996466`), and #203 (`31602984470` / `94134750800`)
+without retry. Read `git rev-parse HEAD`,
 `git status --short --branch`, and PR #11 checks; if
 `origin/openai/mac` is behind the current tip, push it, then require matching green CI for that
 final pushed tip. After green CI, obtain host approval, publish the separate-origin preview,
@@ -244,7 +286,11 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > import transaction, 5-second navigation commit and 20-second new-loader boot. Exactly one
   > `cf-v2-slice-ready/v1` event from the new default top context/session/loader/token/URL, with a
   > browser-native timestamp strictly below the boot bound, precedes one at-most-2-second exact-
-  > context confirmation; no serial poll or retry owns the verdict. Adds provenance-bound
+  > context confirmation; no serial poll or retry owns the verdict. Replacement ownership now
+  > quiesces the outgoing ticker before any durable-write await and restores it only on exact-
+  > owner rollback. An exact-operation import-phase stream requires ticker-running invocation,
+  > stopped claim/write/release, and one absolute deadline beginning before its bounded arm;
+  > no IndexedDB timeout race is used. Adds provenance-bound
   > smoke, glass and automated-persona reports plus commit-bound development-preview packaging;
   > pins the CI browser at job scope so a later preview process cannot silently switch from Chrome
   > to Linux Edge when a preceding step's environment expires. Moves the root 10-viewport layout
@@ -255,9 +301,10 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > and sealed layout 787/787, v2 273 pass / 1 skip plus every gate/selftest, one-attempt smoke,
   > committed glass 12/12 with 50/50 controls, 12 valid replacement witnesses and 170–212 ms
   > replacement totals, nine automated personas, and exact 37-file preview verify/browser PASS.
-  > Prior #201 (`31586917924` / `94082765087`) and #202
-  > (`31594595288` / `94106996466`) remain preserved red without retry; #202 exposed serial CDP
-  > observer latency rather than a proven product failure. Exact tip/upstream/check status is read
+  > Prior #201 (`31586917924` / `94082765087`), #202
+  > (`31594595288` / `94106996466`), and #203 (`31602984470` / `94134750800`)
+  > remain preserved red without retry; #202 exposed serial observer latency, while #203 exposed
+  > pre-release 8K renderer pressure before the first release witness. Exact tip/upstream/check status is read
   > live; the final pushed non-executable
   > handoff tip requires matching green CI. The local artifact is bound to
   > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. After the

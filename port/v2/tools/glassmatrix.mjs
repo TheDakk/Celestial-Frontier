@@ -37,6 +37,7 @@ const IMPORT_SETTLE_TIMEOUT_MS = SLICE_READY_TIMEOUT_MS;
 const NAVIGATION_COMMIT_TIMEOUT_MS = 5000;
 const REPLACEMENT_READY_TIMEOUT_MS = SLICE_READY_TIMEOUT_MS;
 const MAX_RELOAD_EVENTS = 48;
+const IMPORT_PHASE_BINDING = '__cfImportPhaseWitness';
 const RELOAD_RELEASE_BINDING = '__cfReloadReleaseWitness';
 const SLICE_READY_BINDING = '__cfSliceReadyWitness';
 const PHASE_PROBE_TIMEOUT_MS = 2000;
@@ -161,6 +162,8 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'modal-background-containment-restore', 'modal-live-error', 'panel-close-accessible-name',
   'hidden-panel-opener-focus-fallback',
   'replacement-document-loader-token-phase',
+  'import-phase-sequence',
+  'replacement-ticker-quiescence',
   'reload-resource-release',
 ]);
 
@@ -320,6 +323,100 @@ function validateSliceReadyWitness(payload) {
   return { ok: true, why: null, witness };
 }
 
+const IMPORT_PHASE_STAGES = Object.freeze([
+  'invoked', 'validation-rejected', 'claim-rejected', 'claimed',
+  'waiting-active-persist', 'no-active-persist', 'active-persist-settled',
+  'primary-write-started', 'primary-write-complete', 'primary-write-rejected',
+  'release-started', 'release-complete',
+]);
+function validateImportPhaseWitness(payload) {
+  let witness = payload;
+  if (typeof witness === 'string') {
+    try { witness = JSON.parse(witness); }
+    catch { return { ok: false, why: 'import-phase witness payload is not JSON', witness: null }; }
+  }
+  if (!witness || typeof witness !== 'object' || Array.isArray(witness)) {
+    return { ok: false, why: 'import-phase witness payload is not an object', witness: null };
+  }
+  if (witness.schema !== 'cf-v2-import-phase/v1'
+    || witness.reason !== 'save-import'
+    || typeof witness.phaseId !== 'string' || !witness.phaseId
+    || typeof witness.documentToken !== 'string' || !witness.documentToken
+    || !IMPORT_PHASE_STAGES.includes(witness.stage)
+    || !Number.isInteger(witness.sequence) || witness.sequence < 1
+    || typeof witness.tickerStarted !== 'boolean'
+    || !Number.isFinite(witness.performanceNow) || witness.performanceNow < 0
+    || !(witness.error === null || typeof witness.error === 'string')) {
+    return { ok: false, why: 'import-phase witness fields are invalid', witness };
+  }
+  return { ok: true, why: null, witness };
+}
+
+function importPhaseOutcome(rows, {
+  phaseId, priorToken, priorLoaderId, priorFrameId, priorContextUniqueId,
+  priorContextGeneration, expectedOrigin, expectedSessionId, importDeadline,
+}) {
+  if (!Array.isArray(rows) || rows.length === 0) {
+    return { status: 'pending', rows: [], lastStage: null, why: null };
+  }
+  let sequence = 0;
+  const stages = [];
+  for (const row of rows) {
+    if (!row.validation?.ok) {
+      return { status: 'failed', rows, lastStage: stages.at(-1) || null,
+        why: row.validation?.why || 'import-phase witness is invalid' };
+    }
+    const witness = row.validation.witness;
+    if (row.sessionId !== expectedSessionId || row.loaderId !== priorLoaderId
+      || !row.context?.active || !row.context.isDefault
+      || row.context.frameId !== priorFrameId
+      || row.context.uniqueId !== priorContextUniqueId
+      || row.context.generation !== priorContextGeneration
+      || row.context.origin !== expectedOrigin
+      || witness.phaseId !== phaseId || witness.documentToken !== priorToken) {
+      return { status: 'failed', rows, lastStage: stages.at(-1) || null,
+        why: 'import-phase witness did not come from the armed old top-frame operation' };
+    }
+    if (row.at >= importDeadline) {
+      return { status: 'failed', rows, lastStage: witness.stage,
+        why: `import deadline expired at ${witness.stage}` };
+    }
+    if (witness.sequence !== ++sequence) {
+      return { status: 'failed', rows, lastStage: witness.stage,
+        why: 'import-phase witness sequence is missing, duplicate, or reordered' };
+    }
+    if (witness.stage === 'invoked' && !witness.tickerStarted) {
+      return { status: 'failed', rows, lastStage: witness.stage,
+        why: 'outgoing renderer ticker was not active when import began' };
+    }
+    if (witness.stage !== 'invoked' && witness.tickerStarted) {
+      return { status: 'failed', rows, lastStage: witness.stage,
+        why: `outgoing renderer ticker remained active at ${witness.stage}` };
+    }
+    stages.push(witness.stage);
+  }
+  if (stages[0] !== 'invoked') {
+    return { status: 'failed', rows, lastStage: stages.at(-1) || null,
+      why: 'import-phase sequence did not begin at invoked' };
+  }
+  const terminal = stages.at(-1);
+  if (['validation-rejected', 'claim-rejected', 'primary-write-rejected'].includes(terminal)) {
+    return { status: 'failed', rows, lastStage: terminal, why: `import stopped at ${terminal}` };
+  }
+  const path = stages.includes('waiting-active-persist')
+    ? ['invoked', 'claimed', 'waiting-active-persist', 'active-persist-settled',
+      'primary-write-started', 'primary-write-complete', 'release-started', 'release-complete']
+    : ['invoked', 'claimed', 'no-active-persist', 'primary-write-started',
+      'primary-write-complete', 'release-started', 'release-complete'];
+  if (!path.slice(0, stages.length).every((stage, index) => stages[index] === stage)) {
+    return { status: 'failed', rows, lastStage: terminal,
+      why: `import-phase stages are out of order (${stages.join(' -> ')})` };
+  }
+  return terminal === 'release-complete'
+    ? { status: 'ready', rows, lastStage: terminal, why: null }
+    : { status: 'pending', rows, lastStage: terminal, why: null };
+}
+
 function replacementNavigationOutcome(events, {
   priorLoaderId, priorFrameId, expectedUrl, releaseAt, navigationDeadline,
 }) {
@@ -462,6 +559,37 @@ async function runBoundedReadyConfirmation({
   }
 }
 
+async function runBoundedImportArm({
+  send, sessionId, expression, importDeadline,
+  maxTimeoutMs = IMPORT_SETTLE_TIMEOUT_MS, now = Date.now,
+}) {
+  const remaining = importDeadline - now();
+  if (remaining <= 0) {
+    return { ok: false, why: 'import arm began after its import deadline', command: null, result: null };
+  }
+  const timeoutMs = Math.max(1, Math.min(maxTimeoutMs, remaining));
+  const startedAt = now();
+  try {
+    const result = await send('Runtime.evaluate', {
+      expression, returnByValue: true, awaitPromise: false,
+    }, sessionId, { timeoutMs });
+    const endedAt = now();
+    const command = { method: 'Runtime.evaluate/import-arm', startedAt, endedAt,
+      durationMs: endedAt - startedAt, timeoutMs, status: 'completed' };
+    return endedAt < importDeadline
+      ? { ok: true, why: null, command, result }
+      : { ok: false, why: 'bounded import arm completed after its import deadline', command, result };
+  } catch (error) {
+    const endedAt = now();
+    return {
+      ok: false, why: `bounded import arm instrument failed (${error.message})`,
+      command: { method: 'Runtime.evaluate/import-arm', startedAt, endedAt,
+        durationMs: endedAt - startedAt, timeoutMs, status: 'failed', error: error.message },
+      result: null,
+    };
+  }
+}
+
 async function reloadPhaseSelftest() {
   const failures = [];
   const priorToken = 'old-document-token', priorLoaderId = 'old-loader';
@@ -500,6 +628,69 @@ async function reloadPhaseSelftest() {
   }
   if (NAVIGATION_COMMIT_TIMEOUT_MS !== 5000 || REPLACEMENT_READY_TIMEOUT_MS !== 20000) {
     failures.push(`reload phase budgets drifted: navigation=${NAVIGATION_COMMIT_TIMEOUT_MS} boot=${REPLACEMENT_READY_TIMEOUT_MS}`);
+  }
+  const phaseOptions = {
+    phaseId: 'phase-1', priorToken, priorLoaderId, priorFrameId: 'top-frame',
+    priorContextUniqueId: 'old-context', priorContextGeneration: 1,
+    expectedOrigin: 'http://127.0.0.1:1234', expectedSessionId: 'target-session',
+    importDeadline: 110,
+  };
+  const phaseStages = [
+    ['invoked', true], ['claimed', false], ['no-active-persist', false],
+    ['primary-write-started', false], ['primary-write-complete', false],
+    ['release-started', false], ['release-complete', false],
+  ];
+  const phaseRows = phaseStages.map(([stage, tickerStarted], index) => ({
+    at: 100 + index, sessionId: 'target-session', executionContextId: 5,
+    loaderId: priorLoaderId,
+    context: { active: true, isDefault: true, frameId: 'top-frame', generation: 1,
+      uniqueId: 'old-context', origin: 'http://127.0.0.1:1234' },
+    validation: validateImportPhaseWitness({
+      schema: 'cf-v2-import-phase/v1', phaseId: 'phase-1', reason: 'save-import',
+      documentToken: priorToken, stage, sequence: index + 1, tickerStarted,
+      performanceNow: 500 + index, error: null,
+    }),
+  }));
+  const phaseSuccess = importPhaseOutcome(phaseRows, phaseOptions);
+  if (phaseSuccess.status !== 'ready' || phaseSuccess.lastStage !== 'release-complete') {
+    failures.push(`valid import-phase sequence was rejected: ${JSON.stringify(phaseSuccess)}`);
+  }
+  const waitingRows = [phaseRows[0], phaseRows[1], {
+    ...phaseRows[2], validation: validateImportPhaseWitness({
+      ...phaseRows[2].validation.witness, stage: 'waiting-active-persist', sequence: 3,
+    }),
+  }];
+  const waiting = importPhaseOutcome(waitingRows, phaseOptions);
+  if (waiting.status !== 'pending' || waiting.lastStage !== 'waiting-active-persist') {
+    failures.push(`pending active-persist phase was not diagnosed: ${JSON.stringify(waiting)}`);
+  }
+  const phaseControls = [
+    ['missing-start', phaseRows.slice(1), 'failed'],
+    ['duplicate', [...phaseRows.slice(0, 2), phaseRows[1]], 'failed'],
+    ['wrong-phase', phaseRows.map((row, index) => index === 2 ? {
+      ...row, validation: validateImportPhaseWitness({ ...row.validation.witness, phaseId: 'other-phase' }),
+    } : row), 'failed'],
+    ['wrong-token', phaseRows.map((row, index) => index === 2 ? {
+      ...row, validation: validateImportPhaseWitness({ ...row.validation.witness, documentToken: 'other-token' }),
+    } : row), 'failed'],
+    ['wrong-session', phaseRows.map((row, index) => index === 2 ? { ...row, sessionId: 'other-session' } : row), 'failed'],
+    ['wrong-context', phaseRows.map((row, index) => index === 2 ? {
+      ...row, context: { ...row.context, uniqueId: 'other-context' },
+    } : row), 'failed'],
+    ['wrong-loader', phaseRows.map((row, index) => index === 2 ? { ...row, loaderId: 'other-loader' } : row), 'failed'],
+    ['ticker-stopped-before-invoked', phaseRows.map((row, index) => index === 0 ? {
+      ...row, validation: validateImportPhaseWitness({ ...row.validation.witness, tickerStarted: false }),
+    } : row), 'failed'],
+    ['ticker-running-after-claim', phaseRows.map((row, index) => index === 1 ? {
+      ...row, validation: validateImportPhaseWitness({ ...row.validation.witness, tickerStarted: true }),
+    } : row), 'failed'],
+    ['just-late', phaseRows.map((row, index) => index === phaseRows.length - 1 ? { ...row, at: 110 } : row), 'failed'],
+  ];
+  for (const [label, rows, status] of phaseControls) {
+    const outcome = importPhaseOutcome(rows, phaseOptions);
+    if (outcome.status !== status) {
+      failures.push(`${label} import-phase control was accepted: ${JSON.stringify(outcome)}`);
+    }
   }
   const retainedCanvas = structuredClone(validRelease);
   retainedCanvas.appCanvas.afterWidth = 2;
@@ -609,6 +800,28 @@ async function reloadPhaseSelftest() {
     || lateConfirmation.command?.status !== 'completed'
     || !/after the replacement boot deadline/.test(lateConfirmation.why || '')) {
     failures.push(`late successful confirmation did not fail once with coherent evidence: ${JSON.stringify({ lateConfirmationCalls, lateConfirmation })}`);
+  }
+  let importArmTimeoutCalls = 0;
+  const importArmTimeout = await runBoundedImportArm({
+    send: async () => { importArmTimeoutCalls++; throw new Error('timed out waiting for Runtime.evaluate'); },
+    sessionId: 'target-session', expression: 'true', importDeadline: 130,
+    now: (() => { const times = [120, 121, 129]; return () => times.shift() ?? 129; })(),
+  });
+  if (importArmTimeout.ok || importArmTimeoutCalls !== 1
+    || importArmTimeout.command?.status !== 'failed'
+    || !/instrument failed/.test(importArmTimeout.why || '')) {
+    failures.push(`bounded import-arm timeout did not fail once without retry: ${JSON.stringify({ importArmTimeoutCalls, importArmTimeout })}`);
+  }
+  let lateImportArmCalls = 0;
+  const lateImportArm = await runBoundedImportArm({
+    send: async () => { lateImportArmCalls++; return { result: { value: true } }; },
+    sessionId: 'target-session', expression: 'true', importDeadline: 130,
+    now: (() => { const times = [120, 121, 130]; return () => times.shift() ?? 130; })(),
+  });
+  if (lateImportArm.ok || lateImportArmCalls !== 1
+    || lateImportArm.command?.status !== 'completed'
+    || !/after its import deadline/.test(lateImportArm.why || '')) {
+    failures.push(`late successful import arm did not fail once with coherent evidence: ${JSON.stringify({ lateImportArmCalls, lateImportArm })}`);
   }
   const readyControls = [
     ['missing', [], 'pending'],
@@ -809,7 +1022,7 @@ async function reportSelftest() {
   }
   console.log('GLASS MATRIX REPORT SELFTEST: PASS');
   console.log('  injected finding retained; 12 viewport definitions retained; retry policy remains zero');
-  console.log('  phased import/navigation/replacement clocks fail closed; release and boot-ready bindings own their deadlines');
+  console.log('  import subphases, synchronous ticker quiescence, navigation, release, and boot-ready deadlines fail closed');
 }
 
 const MIME = Object.freeze({
@@ -1659,7 +1872,10 @@ async function main() {
   for (const failure of await reloadPhaseSelftest()) {
     instrumentFailures.push(`RELOAD PHASE SELFTEST ${failure}`);
   }
-  recordControls('replacement-document-loader-token-phase', 'reload-resource-release');
+  recordControls(
+    'replacement-document-loader-token-phase', 'import-phase-sequence',
+    'replacement-ticker-quiescence', 'reload-resource-release',
+  );
   let controlsRun = false, hpControlRun = false, settingsWidthControlRun = false,
     planetsideControlRun = false, panelPlanetsideControlRun = false,
     chromeYieldControlRun = false, chromeRestoreControlRun = false, chromeLandscapeControlRun = false,
@@ -1685,7 +1901,7 @@ async function main() {
       let eventSessionId = null, reloadCaptureArmed = false;
       let contextSequence = 0, currentTopLoaderId = null;
       const runtimeContexts = new Map();
-      const reloadEvents = [], reloadReleaseWitnesses = [], reloadReadyWitnesses = [],
+      const reloadEvents = [], reloadImportPhases = [], reloadReleaseWitnesses = [], reloadReadyWitnesses = [],
         reloadTopNavigations = [], reloadFatalEvents = [], reloadCommands = [], requestUrls = new Map();
       const onBrowserEvent = (event) => {
         if (event?.sessionId && eventSessionId && event.sessionId !== eventSessionId) return;
@@ -1718,14 +1934,18 @@ async function main() {
           });
         }
         if (reloadCaptureArmed && event?.method === 'Runtime.bindingCalled'
-          && [RELOAD_RELEASE_BINDING, SLICE_READY_BINDING].includes(event.params?.name)) {
+          && [IMPORT_PHASE_BINDING, RELOAD_RELEASE_BINDING, SLICE_READY_BINDING].includes(event.params?.name)) {
           const executionContextId = event.params.executionContextId ?? null;
           const context = runtimeContexts.get(executionContextId);
-          const validation = event.params.name === RELOAD_RELEASE_BINDING
-            ? validateReloadReleaseWitness(event.params.payload)
-            : validateSliceReadyWitness(event.params.payload);
-          const target = event.params.name === RELOAD_RELEASE_BINDING
-            ? reloadReleaseWitnesses : reloadReadyWitnesses;
+          const validation = event.params.name === IMPORT_PHASE_BINDING
+            ? validateImportPhaseWitness(event.params.payload)
+            : event.params.name === RELOAD_RELEASE_BINDING
+              ? validateReloadReleaseWitness(event.params.payload)
+              : validateSliceReadyWitness(event.params.payload);
+          const target = event.params.name === IMPORT_PHASE_BINDING
+            ? reloadImportPhases
+            : event.params.name === RELOAD_RELEASE_BINDING
+              ? reloadReleaseWitnesses : reloadReadyWitnesses;
           target.push({
             at, sessionId: event.sessionId || null, executionContextId,
             loaderId: currentTopLoaderId, context: context ? { ...context } : null,
@@ -1759,6 +1979,7 @@ async function main() {
         const session = attached.sessionId;
         eventSessionId = session;
         await send('Runtime.enable', {}, session);
+        await send('Runtime.addBinding', { name: IMPORT_PHASE_BINDING }, session);
         await send('Runtime.addBinding', { name: RELOAD_RELEASE_BINDING }, session);
         await send('Runtime.addBinding', { name: SLICE_READY_BINDING }, session);
         await send('Page.enable', {}, session);
@@ -1825,19 +2046,19 @@ async function main() {
           }
           throw new Error(`${vp.label}/${label}: outcome did not arrive within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
         };
-        const waitForReload = async (label, priorToken, priorFrame, priorContext, {
+        const waitForReload = async (label, priorToken, priorFrame, priorContext, phaseId, importDeadline, {
           importTimeoutMs = IMPORT_SETTLE_TIMEOUT_MS,
           navigationTimeoutMs = NAVIGATION_COMMIT_TIMEOUT_MS,
           replacementTimeoutMs = REPLACEMENT_READY_TIMEOUT_MS,
           } = {}) => {
-          const beganAt = Date.now();
-          const importDeadline = beganAt + importTimeoutMs;
+          const beganAt = importDeadline - importTimeoutMs;
           let navigationDeadline = null, bootDeadline = null, commit = null;
           const expectedOrigin = new URL(url).origin;
           const diagnostic = () => JSON.stringify({
             priorFrame, priorContext, expectedUrl: url, elapsedMs: Date.now() - beganAt,
             clocks: { importDeadline, navigationDeadline, bootDeadline,
               replacementLoaderId: commit?.loaderId || null },
+            importPhases: reloadImportPhases,
             releaseWitnesses: reloadReleaseWitnesses,
             readyWitnesses: reloadReadyWitnesses,
             topNavigations: reloadTopNavigations,
@@ -1893,6 +2114,14 @@ async function main() {
           };
           while (true) {
             if (reloadFatalEvents.length) fail(`replacement target failed (${JSON.stringify(reloadFatalEvents[0])})`);
+            const importPhase = importPhaseOutcome(reloadImportPhases, {
+              phaseId, priorToken, priorLoaderId: priorFrame.loaderId,
+              priorFrameId: priorFrame.frameId,
+              priorContextUniqueId: priorContext.uniqueId,
+              priorContextGeneration: priorContext.generation, expectedOrigin,
+              expectedSessionId: session, importDeadline,
+            });
+            if (importPhase.status === 'failed') fail(`import phase failed closed (${importPhase.why})`);
             const release = importReleaseOutcome(reloadReleaseWitnesses, {
               priorToken, priorLoaderId: priorFrame.loaderId, priorFrameId: priorFrame.frameId,
               priorContextUniqueId: priorContext.uniqueId,
@@ -1902,9 +2131,22 @@ async function main() {
             if (release.status === 'failed') fail(`reload resource release failed closed (${release.why})`);
             if (release.status === 'pending') {
               if (reloadReadyWitnesses.length) fail('slice-ready witness arrived before import release/navigation');
-              if (Date.now() >= importDeadline) fail(`import transaction did not settle within ${importTimeoutMs}ms`);
+              if (Date.now() >= importDeadline) {
+                fail(`import transaction did not settle within ${importTimeoutMs}ms; last phase ${importPhase.lastStage || 'none'}`);
+              }
               await sleep(20);
               continue;
+            }
+            if (importPhase.status !== 'ready') {
+              fail(`release witness arrived before a complete import-phase sequence (last ${importPhase.lastStage || 'none'})`);
+            }
+            const liveStages = importPhase.rows.map((row) => row.validation.witness.stage);
+            const expectedLiveStages = [
+              'invoked', 'claimed', 'no-active-persist', 'primary-write-started',
+              'primary-write-complete', 'release-started', 'release-complete',
+            ];
+            if (JSON.stringify(liveStages) !== JSON.stringify(expectedLiveStages)) {
+              fail(`preference import inherited unexpected prior persistence (${liveStages.join(' -> ')})`);
             }
             navigationDeadline ??= release.row.at + navigationTimeoutMs;
             const navigation = replacementNavigationOutcome(reloadTopNavigations, {
@@ -1949,6 +2191,7 @@ async function main() {
                 priorLoaderId: priorFrame.loaderId,
                 replacementLoaderId: commit.loaderId,
                 elapsedMs: now - beganAt,
+                importPhases: [...reloadImportPhases],
                 releaseWitness: release.row,
                 readyWitness: readyOutcome.row,
                 commands: [...reloadCommands],
@@ -2013,6 +2256,7 @@ async function main() {
           }
           if (!reloadBindingControlRun) {
             reloadEvents.length = 0;
+            reloadImportPhases.length = 0;
             reloadReleaseWitnesses.length = 0;
             reloadReadyWitnesses.length = 0;
             reloadTopNavigations.length = 0;
@@ -2020,6 +2264,15 @@ async function main() {
             reloadCommands.length = 0;
             reloadCaptureArmed = true;
             try {
+              await evalIn(`window.${IMPORT_PHASE_BINDING}('{bad json')`);
+              for (let i = 0; i < 50 && reloadImportPhases.length < 1; i++) await sleep(10);
+              const malformedPhase = reloadImportPhases[0];
+              if (reloadImportPhases.length !== 1 || malformedPhase?.validation?.ok
+                || malformedPhase?.context?.uniqueId !== priorContext.uniqueId
+                || malformedPhase?.sessionId !== session) {
+                throw new Error(`${vp.label}: malformed live import-phase binding control was not rejected (${JSON.stringify(reloadImportPhases)})`);
+              }
+              reloadImportPhases.length = 0;
               await evalIn(`window.${SLICE_READY_BINDING}('{bad json')`);
               for (let i = 0; i < 50 && reloadReadyWitnesses.length < 1; i++) await sleep(10);
               const malformed = reloadReadyWitnesses[0];
@@ -2052,6 +2305,7 @@ async function main() {
             } finally {
               reloadCaptureArmed = false;
               reloadEvents.length = 0;
+              reloadImportPhases.length = 0;
               reloadReleaseWitnesses.length = 0;
               reloadReadyWitnesses.length = 0;
               reloadTopNavigations.length = 0;
@@ -2062,6 +2316,7 @@ async function main() {
           }
           const phaseId = crypto.randomUUID();
           reloadEvents.length = 0;
+          reloadImportPhases.length = 0;
           reloadReleaseWitnesses.length = 0;
           reloadReadyWitnesses.length = 0;
           reloadTopNavigations.length = 0;
@@ -2070,23 +2325,42 @@ async function main() {
           requestUrls.clear();
           reloadCaptureArmed = true;
           try {
-            const armed = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
+            const importStartedAt = Date.now();
+            const importDeadline = importStartedAt + IMPORT_SETTLE_TIMEOUT_MS;
+            const importArm = await runBoundedImportArm({
+              send, sessionId: session, importDeadline,
+              expression: `(()=>{ const S=window.__CF_SLICE__;
               if(!S?.api?.importBlob||S.documentToken!==${JSON.stringify(priorToken)})return {armed:false,why:'slice/token changed before import arm'};
               const phase={id:${JSON.stringify(phaseId)},status:'import-pending',error:null};
               Object.defineProperty(window,'__CF_GLASS_RELOAD_PHASE__',{value:phase,writable:false,configurable:true});
               try {
-                const pending=S.api.importBlob(${JSON.stringify(VETERAN_PREF_RAW)});
+                const tickerStarted=!!S.app?.ticker?.started;
+                const pending=S.api.importBlob(${JSON.stringify(VETERAN_PREF_RAW)},${JSON.stringify(phaseId)});
+                const tickerStopped=S.app?.ticker?.started===false;
                 void Promise.resolve(pending).then((error)=>{
                   if(error===null)phase.status='reload-requested';
                   else { phase.status='import-rejected'; phase.error=String(error||'import returned no success'); }
                 },(error)=>{ phase.status='import-threw'; phase.error=String(error?.message||error); });
+                return {armed:true,token:S.documentToken,phase:{...phase},tickerStarted,tickerStopped};
               } catch(error) { phase.status='import-threw'; phase.error=String(error?.message||error); }
-              return {armed:true,token:S.documentToken,phase:{...phase}};
-            })()`);
+              return {armed:true,token:S.documentToken,phase:{...phase},tickerStarted:!!S.app?.ticker?.started,tickerStopped:false};
+            })()`,
+            });
+            if (importArm.command) reloadCommands.push(importArm.command);
+            if (!importArm.ok) {
+              throw new Error(`${vp.label}/preference fixture import: ${importArm.why}`);
+            }
+            const armed = importArm.result.result?.value;
             if (!armed?.armed || armed.token !== priorToken || armed.phase?.id !== phaseId) {
               throw new Error(`${vp.label}/preference fixture import: could not arm observed replacement transaction (${JSON.stringify(armed)})`);
             }
-            ready = await waitForReload('preference fixture import', priorToken, priorFrame, priorContext);
+            if (!armed.tickerStarted || !armed.tickerStopped) {
+              throw new Error(`${vp.label}/preference fixture import: replacement claim did not synchronously quiesce the outgoing ticker (${JSON.stringify(armed)})`);
+            }
+            ready = await waitForReload(
+              'preference fixture import', priorToken, priorFrame, priorContext,
+              phaseId, importDeadline,
+            );
             runReloadEvidence.push({ viewport: vp.label, ...ready.reloadEvidence });
           } finally {
             reloadCaptureArmed = false;

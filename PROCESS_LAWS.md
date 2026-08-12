@@ -483,6 +483,21 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > witnesses, and keep fatal events outside any bounded diagnostic ring. This tail witness means
 > **boot publication plus a serviced event-loop turn**. It is not the 50 ms answerability metric;
 > later driven outcomes remain the proof that controls answer.
+>
+> **Correction earned by test-battery #203:** an end-of-transaction release witness cannot
+> diagnose or prevent renderer pressure *before* that witness. Eleven viewport rows completed,
+> while desktop-8k crossed the unchanged 20-second import bound before any release/navigation/
+> ready event; the outgoing 5,461×3,072 Pixi ticker was still allowed to render throughout the
+> durable-write wait and teardown. A replacement transaction must therefore quiesce the outgoing
+> renderer synchronously when its exclusive claim is acquired, before its first await, and resume
+> only when that exact failed/rolled-back owner had stopped a running ticker. Invalid input that
+> rejects before claim must leave play untouched. Diagnostic imports must expose an event-owned,
+> exact-operation sequence from invocation and claim through persistence, durable write, and
+> release, with the ticker running only at invocation. Start one immutable deadline before the
+> bounded non-awaiting arm command; never give a late command or phase a fresh clock. Do not wrap
+> IndexedDB durability in a generic timeout race: it can report failure while a write later commits
+> and recreate the overwrite race the ordering protects. Negative-control both ticker directions,
+> phase identity/order/context/deadline, and rollback resumption.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
