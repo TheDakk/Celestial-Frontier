@@ -125,13 +125,16 @@
 > Browser load/FCP is not a substitute for this application-owned sequence.
 > The Pixi and backdrop canvases use a two-tier simultaneous-owner budget. Native
 > backing is retained through UHD 3,840×2,160. A viewport strictly above
-> 8,388,608 CSS pixels selects 4,194,304 backing pixels per canvas /8,388,608
+> 8,388,608 CSS pixels selects 3,145,728 backing pixels per canvas /6,291,456
 > aggregate, fitted against the *rounded* backing dimensions; desktop-8k resolves
-> to 2,730×1,536 each /8,386,560 combined. On a density/viewport transition the
+> to 2,365×1,330 each /6,290,900 combined, as does 5,120×2,880. On a density/viewport transition the
 > old backdrop texture/canvas is destroyed and collapsed before replacement
 > allocation, with exact peak/budget evidence. A same-integer-backing resize still
 > updates CSS size, Pixi screen/texture/event geometry, pointer mapping, backdrop
-> logical dimensions, and generation.
+> logical dimensions, and generation. Downshift and restore each require a bounded
+> target plus concurrent browser heartbeat, then an advancing later post-render
+> ticker turn; stopped/stale ticker controls fail closed. The existing scene rerender
+> remains—no scene-rerender optimization landed.
 >
 > **Evidence boundary:** immutable executable evidence source
 > `7d9980e37e60f0cec8cb840e75098872b9cc90d0` passed its complete exact
@@ -258,6 +261,30 @@
 > production distinct and `publishable:false`. Live Git/status/PR checks determine
 > the docs-only tip; matching CI and all host/human/Ready/merge/release/deploy/
 > version boundaries remain open. No save-format change occurred.
+> CI #206, run `31635297321` attempt 1 / job `94243979205`, is preserved **RED**
+> without retry at exact pushed `558e0565d368a0b81d86d99fd380ebc50d30bc02`;
+> merge `e160577` is tree-identical. All preceding steps and `smoke:ci` passed.
+> Desktop-8k reload passed in 8,749 ms, ready published at `performanceNow`
+> 2,578.6 ms, and target cycles completed in 1,905/1,910 ms with 3/1 ms
+> heartbeats. The later 5,120×2,880 resize target timed out at 2,003 ms against
+> the strict 2,000 ms bound while `Browser.getVersion` answered in 2 ms;
+> `last:null`. The sole `ULTRA_VIEWPORT_RESIZE_UNANSWERABLE` is therefore a
+> product finding, not an instrument failure: 12 viewports, 1 product finding,
+> 0 instrument failures, 56 executed +1 product-blocked =57, `omitted=[]`, 0
+> retries, and no persona/preview evidence. It is not a save, import, durability,
+> renderer-release, navigation, or boot-readiness failure.
+>
+> The only retained repair evidence captured before source freeze is a non-authoritative
+> `dirty-diagnostic`. One full
+> Edge 151 diagnostic passed 12/12 and 57/57 with `blocked=[]`, `omitted=[]`, 0
+> findings/instrument failures/retries in 52,851 ms; report SHA-256
+> `faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`.
+> Reloads were 173–186 ms; exact 8K was 180 ms, `performanceNow` 155.9 ms,
+> cycles 1/6 ms and heartbeats 1/0 ms at DPR `0.3079201435678004`. Both
+> 2,365×1,330 outgoing stores collapsed to 1×1; the replacement pair remained
+> 6,290,900 pixels combined. A clean-head exact battery for the immutable executable
+> source remains required; live Git/PR state determines commit/push status, and whichever
+> final pushed tip is selected requires matching CI. No save-format change occurred.
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay

@@ -29,12 +29,12 @@ const repoRoot = path.resolve(here, '..', '..', '..');
 const evidenceDir = path.join(appDir, 'smoke');
 /* The renderer and its texture-backed 2D backdrop coexist. Ordinary
    viewports retain the 4096² aggregate budget, split equally. A CSS viewport
-   larger than one ordinary half-budget selects the ultra tier and halves the
-   per-canvas allowance again; otherwise an 8K software renderer can publish
-   ready while monopolising every later target turn. */
+   larger than one ordinary half-budget selects a 3,145,728-pixel per-canvas
+   ultra tier; otherwise an 8K software renderer can publish ready while
+   monopolising every later target turn or same-backing resize. */
 const DEFAULT_CANVAS_BACKING_PIXELS = 8_388_608;
 const ULTRA_VIEWPORT_CSS_PIXELS = 8_388_608;
-const ULTRA_CANVAS_BACKING_PIXELS = 4_194_304;
+const ULTRA_CANVAS_BACKING_PIXELS = 3_145_728;
 const MAX_TWIN_BACKING_PIXELS = DEFAULT_CANVAS_BACKING_PIXELS * 2;
 const backingPixelCapForViewport = (width, height) => (
   Number.isFinite(width) && Number.isFinite(height)
@@ -870,6 +870,7 @@ async function runBoundedReadyConfirmation({
 async function runBoundedOutcomeHeartbeatProbe({
   send, sessionId, executionContextId, expression,
   maxTimeoutMs = PHASE_PROBE_TIMEOUT_MS, now = Date.now,
+  cycle = 0, postRenderPriority = null,
 }) {
   const anchoredAt = now();
   return runBoundedReadyConfirmation({
@@ -878,7 +879,7 @@ async function runBoundedOutcomeHeartbeatProbe({
        its one-millisecond synthetic anchor is only the prerequisite accepted
        by that seam. The outcome owns a fresh independent command deadline. */
     readyReceiptAt: anchoredAt, bootDeadline: anchoredAt + 1,
-    maxTimeoutMs, now, cycle: 0, postRenderPriority: null,
+    maxTimeoutMs, now, cycle, postRenderPriority,
   });
 }
 
@@ -1308,6 +1309,7 @@ async function reloadPhaseSelftest() {
   const postRenderPassOutcome = await postRenderPass.outcome;
   if (!postRenderPassOutcome.ok || postRenderPassOutcome.classification !== 'confirmed'
     || postRenderPass.calls[0]?.params?.awaitPromise !== true
+    || !/ticker is not running/.test(postRenderPass.calls[0]?.params?.expression || '')
     || !/ticker\.addOnce/.test(postRenderPass.calls[0]?.params?.expression || '')
     || !/,undefined,-50\)/.test(postRenderPass.calls[0]?.params?.expression || '')) {
     failures.push(`post-render confirmation scheduling control failed: ${JSON.stringify({ calls: postRenderPass.calls, outcome: postRenderPassOutcome })}`);
@@ -1540,9 +1542,9 @@ async function reloadPhaseSelftest() {
   }
   const ultraReadyPayload = {
     ...readyPayload,
-    backingWidth: 2730, backingHeight: 1536,
-    backdropBackingWidth: 2730, backdropBackingHeight: 1536,
-    combinedBackingPixels: 2730 * 1536 * 2,
+    backingWidth: 2365, backingHeight: 1330,
+    backdropBackingWidth: 2365, backdropBackingHeight: 1330,
+    combinedBackingPixels: 2365 * 1330 * 2,
     rendererDpr: expectedDensityPlan(ultraViewport).dpr,
     backingPixelCapPerCanvas: ULTRA_CANVAS_BACKING_PIXELS,
     viewportWidth: ultraViewport.width, viewportHeight: ultraViewport.height,
@@ -1578,6 +1580,29 @@ async function reloadPhaseSelftest() {
   if (backingPixelCapForViewport(4096, 2048) !== DEFAULT_CANVAS_BACKING_PIXELS
     || backingPixelCapForViewport(4097, 2048) !== ULTRA_CANVAS_BACKING_PIXELS) {
     failures.push('ultra backing tier did not switch strictly above the 8,388,608 CSS-pixel threshold');
+  }
+  const nativeUhdPlan = expectedDensityPlan({ width: 3840, height: 2160, dpr: 1, mobile: false });
+  if (nativeUhdPlan?.dpr !== 1 || nativeUhdPlan?.backingWidth !== 3840
+    || nativeUhdPlan?.backingHeight !== 2160
+    || nativeUhdPlan?.backingPixelCapPerCanvas !== DEFAULT_CANVAS_BACKING_PIXELS) {
+    failures.push(`native UHD backing was degraded by the ultra tier: ${JSON.stringify(nativeUhdPlan)}`);
+  }
+  const priorUltraReady = validateSliceReadyWitness({
+    ...ultraReadyPayload,
+    backingWidth: 2730, backingHeight: 1536,
+    backdropBackingWidth: 2730, backdropBackingHeight: 1536,
+    combinedBackingPixels: 2730 * 1536 * 2,
+  }, ultraViewport);
+  if (priorUltraReady.ok || !/twin backing budget/.test(priorUltraReady.why || '')) {
+    failures.push(`prior 4,194,304-pixel ultra policy survived the answerability repair: ${JSON.stringify(priorUltraReady)}`);
+  }
+  const priorUltraRelease = validateReloadReleaseWitness({
+    ...validRelease,
+    appCanvas: { ...validRelease.appCanvas, beforeWidth: 2730, beforeHeight: 1536 },
+    backdropCanvas: { ...validRelease.backdropCanvas, beforeWidth: 2730, beforeHeight: 1536 },
+  }, ultraViewport);
+  if (priorUltraRelease.ok || !/selected aggregate twin/.test(priorUltraRelease.why || '')) {
+    failures.push(`prior 4,194,304-pixel ultra release survived the answerability repair: ${JSON.stringify(priorUltraRelease)}`);
   }
   const oldUltraReady = validateSliceReadyWitness({
     ...ultraReadyPayload,
@@ -1788,7 +1813,7 @@ async function reportSelftest() {
     || resizeVacuous.executed || resizeVacuous.blocked) {
     throw new Error('GLASS MATRIX REPORT SELFTEST: same-backing positive/control accounting failed');
   }
-  const injectedRows = Array.from({ length: 6 }, () => ({
+  const injectedRows = Array.from({ length: 8 }, () => ({
     controlApplied: true, restored: true, outcome: { ok: false },
   }));
   if (!ultraResizeInjectionControlsOutcome(injectedRows).ok
@@ -2730,7 +2755,7 @@ function ultraControlExecutionOutcome({ downshift, restored, controlsDiscriminat
 }
 
 function ultraResizeInjectionControlsOutcome(rows) {
-  if (!Array.isArray(rows) || rows.length !== 6) {
+  if (!Array.isArray(rows) || rows.length !== 8) {
     return { ok: false, why: 'same-backing resize control set was incomplete' };
   }
   for (const row of rows) {
@@ -3001,7 +3026,9 @@ async function main() {
            heartbeat. Answerable false state is returned to addOutcome;
            heartbeat-proven target starvation becomes a product liveness
            finding; heartbeat loss remains instrument/transport failure. */
-        const observeOutcome = async (expression, accept, executionContextId, timeoutMs) => {
+        const observeOutcome = async (expression, accept, executionContextId, timeoutMs, {
+          cycle = 0, postRenderPriority = null, singleAttempt = false,
+        } = {}) => {
           const until = Date.now() + timeoutMs;
           let last = null;
           const commands = [];
@@ -3010,6 +3037,7 @@ async function main() {
             const probe = await runBoundedOutcomeHeartbeatProbe({
               send, sessionId: session, executionContextId, expression,
               maxTimeoutMs: Math.max(1, Math.min(PHASE_PROBE_TIMEOUT_MS, remaining)),
+              cycle, postRenderPriority,
             });
             commands.push(...probe.commands);
             if (!probe.ok) {
@@ -3035,6 +3063,7 @@ async function main() {
             }
             last = probe.result?.result?.value;
             if (accept(last)) return { settled: true, value: last, commands };
+            if (singleAttempt) return { settled: false, value: last, commands };
             if (Date.now() < until) await sleep(50);
           }
           return { settled: false, value: last, commands };
@@ -3458,7 +3487,7 @@ async function main() {
           instrumentFailures.push(`${vp.label}: preference fixture did not return to the universe after Training Skip (${JSON.stringify(matrixStart)})`);
         }
         if (vp.label === 'desktop-8k') {
-          /* 8K and 5120×2880 deliberately share a rounded 2730×1536
+          /* 8K and 5120×2880 deliberately share a rounded 2365×1330
              backing, but not a logical viewport or renderer/EventSystem
              resolution. Exercise the transition only after Training releases
              pointer containment so a genuine CDP pointer event can prove
@@ -3482,7 +3511,10 @@ async function main() {
             throw new Error(`${vp.label}: same-backing resize exact context unavailable (${JSON.stringify({ resizeFrame, resizeContexts })})`);
           }
           const beforeResize = await evalIn('window.__CF_SLICE__.api.state()');
-          const ultraResizeOutcome = (width, height, plan, priorGeneration) => `(()=>{
+          if (!Number.isInteger(beforeResize.tickerTicks)) {
+            throw new Error(`${vp.label}: same-backing resize began without a valid ticker baseline (${JSON.stringify(beforeResize)})`);
+          }
+          const ultraResizeOutcome = (width, height, plan, priorGeneration, priorTickerTicks) => `(()=>{
             try { const S=window.__CF_SLICE__; if(!S?.api?.state||!S?.app?.canvas||!S?.app?.renderer?.events)
               return {ok:false,error:'slice/app/state/EventSystem unavailable after resize'};
             const s=S.api.state(),c=S.app.canvas,r=c.getBoundingClientRect(),p={x:0,y:0};
@@ -3502,6 +3534,8 @@ async function main() {
                 &&Math.abs((s?.backdropLogicalWidth??-1)-${width})<0.01
                 &&Math.abs((s?.backdropLogicalHeight??-1)-${height})<0.01
                 &&s?.backdropGeneration>${priorGeneration}
+                &&S.app.ticker.started===true&&Number.isInteger(s?.tickerTicks)
+                &&s.tickerTicks>${priorTickerTicks}
                 &&Number.isInteger(s?.backdropTransitionPeakPixels)
                 &&Number.isInteger(s?.backdropTransitionBudgetPixels)
                 &&s.backdropTransitionPeakPixels===${expectedTransitionPeakPixels}
@@ -3511,6 +3545,7 @@ async function main() {
               dpr:[s?.rendererDpr,s?.eventResolution],mapped:[p.x,p.y],
               backing:[s?.backingWidth,s?.backingHeight,s?.backdropBackingWidth,s?.backdropBackingHeight],
               backdrop:[s?.backdropLogicalWidth,s?.backdropLogicalHeight,s?.backdropGeneration],
+              ticker:[S.app.ticker.started,s?.tickerTicks],
               transition:[s?.backdropTransitionPeakPixels,s?.backdropTransitionBudgetPixels],
               combined:s?.combinedBackingPixels,cap:s?.backingPixelCapPerCanvas};
             } catch(error) { return {ok:false,error:String(error?.message||error)}; } })()`;
@@ -3520,11 +3555,24 @@ async function main() {
           }, session);
           const downshiftObservation = await observeOutcome(ultraResizeOutcome(
             downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration,
+            beforeResize.tickerTicks,
           ), (value) => value?.ok === true, resizeContext.id, 10000);
           let downshift = downshiftObservation.value || {
             ok: false, why: 'same-backing 5K resize returned no structured product state',
           };
           downshift.settledWithinBound = downshiftObservation.settled;
+          if (downshift.ok) {
+            const postRenderPriorTicks = downshift.ticker[1];
+            const postRenderObservation = await observeOutcome(ultraResizeOutcome(
+              downshiftViewport.width, downshiftViewport.height, plan5k,
+              beforeResize.backdropGeneration, postRenderPriorTicks,
+            ), (value) => value?.ok === true, resizeContext.id, PHASE_PROBE_TIMEOUT_MS, {
+              cycle: 2, postRenderPriority: -50, singleAttempt: true,
+            });
+            downshift.postRender = postRenderObservation.value;
+            downshift.postRenderCommands = postRenderObservation.commands;
+            downshift.ok = postRenderObservation.settled && postRenderObservation.value?.ok === true;
+          }
           const pointerArm = await observeOutcome(`(()=>{try{const S=window.__CF_SLICE__;
             if(!S?.app?.stage?.once)return {ok:false,error:'stage pointer wiring unavailable'};
             window.__CF_ULTRA_POINTER__=null;S.app.stage.once('globalpointermove',
@@ -3557,7 +3605,7 @@ async function main() {
               try { const S=window.__CF_SLICE__;c=S.app.canvas;priorStyle=c.style.width;priorScreen=S.app.screen.width;
                 c.style.width='4000px';S.app.screen.width=4000;
                 const controlApplied=c.style.width==='4000px'&&S.app.screen.width===4000;
-                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration)};
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration, beforeResize.tickerTicks)};
                 c.style.width=priorStyle;S.app.screen.width=priorScreen;
                 return {controlApplied,restored:c.style.width===priorStyle&&S.app.screen.width===priorScreen,outcome};
               } catch(error) { if(c&&priorStyle!==null)c.style.width=priorStyle;if(window.__CF_SLICE__&&priorScreen!==null)window.__CF_SLICE__.app.screen.width=priorScreen;
@@ -3565,7 +3613,7 @@ async function main() {
             const staleEventControl = await injectedOutcome(`(()=>{ let events=null,prior=null;
               try { const S=window.__CF_SLICE__;events=S.app.renderer.events;prior=events.resolution;
                 events.resolution=${plan8k.dpr};const controlApplied=Math.abs(events.resolution-${plan8k.dpr})<1e-12;
-                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration)};
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration, beforeResize.tickerTicks)};
                 events.resolution=prior;return {controlApplied,restored:events.resolution===prior,outcome};
               } catch(error) { if(events&&prior!==null)events.resolution=prior;
                 return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
@@ -3573,7 +3621,7 @@ async function main() {
               try { S=window.__CF_SLICE__;prior=S.api.state;
                 S.api.state=()=>({...prior(),backdropLogicalWidth:${vp.width},backdropGeneration:${beforeResize.backdropGeneration}});
                 const controlApplied=S.api.state!==prior;
-                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration)};
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration, beforeResize.tickerTicks)};
                 S.api.state=prior;return {controlApplied,restored:S.api.state===prior,outcome};
               } catch(error) { if(S&&prior)S.api.state=prior;
                 return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
@@ -3581,7 +3629,7 @@ async function main() {
               try { S=window.__CF_SLICE__;prior=S.api.state;
                 S.api.state=()=>{const s=prior();return {...s,backdropTransitionPeakPixels:s.backdropTransitionBudgetPixels+1};};
                 const controlApplied=S.api.state().backdropTransitionPeakPixels===S.api.state().backdropTransitionBudgetPixels+1;
-                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration)};
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration, beforeResize.tickerTicks)};
                 S.api.state=prior;return {controlApplied,restored:S.api.state===prior,outcome};
               } catch(error) { if(S&&prior)S.api.state=prior;
                 return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
@@ -3589,7 +3637,7 @@ async function main() {
               try { S=window.__CF_SLICE__;prior=S.api.state;
                 S.api.state=()=>{const s=prior();return {...s,backdropTransitionPeakPixels:${expectedTransitionPeakPixels - 1}};};
                 const controlApplied=S.api.state().backdropTransitionPeakPixels===${expectedTransitionPeakPixels - 1};
-                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration)};
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration, beforeResize.tickerTicks)};
                 S.api.state=prior;return {controlApplied,restored:S.api.state===prior,outcome};
               } catch(error) { if(S&&prior)S.api.state=prior;
                 return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
@@ -3597,7 +3645,22 @@ async function main() {
               try { S=window.__CF_SLICE__;prior=S.api.state;
                 S.api.state=()=>{const s=prior();return {...s,backdropTransitionBudgetPixels:${expectedTransitionBudgetPixels + 1}};};
                 const controlApplied=S.api.state().backdropTransitionBudgetPixels===${expectedTransitionBudgetPixels + 1};
-                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration)};
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration, beforeResize.tickerTicks)};
+                S.api.state=prior;return {controlApplied,restored:S.api.state===prior,outcome};
+              } catch(error) { if(S&&prior)S.api.state=prior;
+                return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
+            const stoppedTickerControl = await injectedOutcome(`(()=>{ let ticker=null,wasStarted=false;
+              try { const S=window.__CF_SLICE__;ticker=S.app.ticker;wasStarted=ticker.started;ticker.stop();
+                const controlApplied=ticker.started===false;
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration, beforeResize.tickerTicks)};
+                if(wasStarted)ticker.start();return {controlApplied,restored:ticker.started===wasStarted,outcome};
+              } catch(error) { if(ticker&&wasStarted)ticker.start();
+                return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
+            const staleTickerControl = await injectedOutcome(`(()=>{ let S=null,prior=null;
+              try { S=window.__CF_SLICE__;prior=S.api.state;
+                S.api.state=()=>({...prior(),tickerTicks:${beforeResize.tickerTicks}});
+                const controlApplied=S.api.state().tickerTicks===${beforeResize.tickerTicks};
+                const outcome=${ultraResizeOutcome(downshiftViewport.width, downshiftViewport.height, plan5k, beforeResize.backdropGeneration, beforeResize.tickerTicks)};
                 S.api.state=prior;return {controlApplied,restored:S.api.state===prior,outcome};
               } catch(error) { if(S&&prior)S.api.state=prior;
                 return {controlApplied:false,restored:false,outcome:null,error:String(error?.message||error)}; } })()`);
@@ -3610,25 +3673,40 @@ async function main() {
             const injectedControls = ultraResizeInjectionControlsOutcome([
               staleGeometryControl, staleEventControl, staleBackdropControl, transitionPeakControl,
               transitionUnderreportControl, transitionInflatedBudgetControl,
+              stoppedTickerControl, staleTickerControl,
             ]);
             if (!injectedControls.ok || missingPointerControl.ok || offsetPointerControl.ok) {
-              instrumentFailures.push(`${vp.label}: same-backing resize injection stayed green (${JSON.stringify({ staleGeometryControl, staleEventControl, staleBackdropControl, transitionPeakControl, transitionUnderreportControl, transitionInflatedBudgetControl, missingPointerControl, offsetPointerControl })})`);
+              instrumentFailures.push(`${vp.label}: same-backing resize injection stayed green (${JSON.stringify({ staleGeometryControl, staleEventControl, staleBackdropControl, transitionPeakControl, transitionUnderreportControl, transitionInflatedBudgetControl, stoppedTickerControl, staleTickerControl, missingPointerControl, offsetPointerControl })})`);
             } else {
               resizeControlsDiscriminated = true;
             }
           }
           const downshiftGeneration = Number.isInteger(downshift?.backdrop?.[2])
             ? downshift.backdrop[2] : beforeResize.backdropGeneration;
+          const downshiftTickerTicks = Number.isInteger(downshift?.postRender?.ticker?.[1])
+            ? downshift.postRender.ticker[1]
+            : Number.isInteger(downshift?.ticker?.[1]) ? downshift.ticker[1] : beforeResize.tickerTicks;
           await send('Emulation.setDeviceMetricsOverride', {
             width: vp.width, height: vp.height, deviceScaleFactor: vp.dpr, mobile: vp.mobile,
           }, session);
           const restoreObservation = await observeOutcome(ultraResizeOutcome(
-            vp.width, vp.height, plan8k, downshiftGeneration,
+            vp.width, vp.height, plan8k, downshiftGeneration, downshiftTickerTicks,
           ), (value) => value?.ok === true, resizeContext.id, 10000);
           const restored = restoreObservation.value || {
             ok: false, why: 'same-backing 8K restore returned no structured product state',
           };
           restored.settledWithinBound = restoreObservation.settled;
+          if (restored.ok) {
+            const postRenderPriorTicks = restored.ticker[1];
+            const postRenderObservation = await observeOutcome(ultraResizeOutcome(
+              vp.width, vp.height, plan8k, downshiftGeneration, postRenderPriorTicks,
+            ), (value) => value?.ok === true, resizeContext.id, PHASE_PROBE_TIMEOUT_MS, {
+              cycle: 2, postRenderPriority: -50, singleAttempt: true,
+            });
+            restored.postRender = postRenderObservation.value;
+            restored.postRenderCommands = postRenderObservation.commands;
+            restored.ok = postRenderObservation.settled && postRenderObservation.value?.ok === true;
+          }
           addOutcome(vp.label, 'ultra-same-backing-resize', 'ULTRA_VIEWPORT_RESIZE_NOT_RESTORED', 'canvas', restored,
             'restoring 8K restores its exact DPR, pointer mapping, CSS/Pixi screen and a fresh logical backdrop');
           const resizeControlOutcome = ultraControlExecutionOutcome({

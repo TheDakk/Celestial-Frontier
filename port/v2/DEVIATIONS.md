@@ -1013,8 +1013,8 @@ duplicates).
   play, Ready, merge, release, deployment and version
   authority remain open.
 - ★ **D-UI-4 — ready publication is not post-render answerability; ultra backing is a
-  separate density tier (implementation complete with exact clean executable evidence,
-  2026-08-12).**
+  separate density tier (narrow #205 repair closed in prior exact clean evidence;
+  broader resize answerability superseded by D-UI-5 below, 2026-08-12).**
   Test-battery #205 (`31621227550` / `94196289291`) completed once without retry
   at exact pushed `c57305fbf30af2bc8158ff46af1ec49ec4455d95` and remains red.
   Every preceding gate and `smoke:ci` passed. Desktop-8k completed import, primary
@@ -1025,7 +1025,7 @@ duplicates).
   pixel-linear evidence of post-ready target starvation but cannot retrospectively
   prove browser/CDP transport stayed healthy. Preserve it without retry.
 
-  The product retains native backing through UHD 3,840×2,160. A viewport strictly
+  The #205 follow-on retained native backing through UHD 3,840×2,160. A viewport strictly
   larger than 8,388,608 CSS pixels selects an ultra tier of 4,194,304 backing
   pixels per canvas /8,388,608 aggregate. `fitResolutionToPixelCap` compares the
   actual independently rounded backing dimensions, making 8K exactly 2,730×1,536
@@ -1087,6 +1087,46 @@ duplicates).
   production distinct and `publishable:false`. Live Git/status/PR checks determine
   the docs-only tip; matching CI and separate host/human/Ready/merge/release/
   deploy/version authority remain open.
+- ★ **D-UI-5 — geometry-correct very-large resize must remain answerable (repair frozen;
+  dirty diagnostic only, 2026-08-12).** Test-battery #206, run `31635297321` attempt 1 /
+  job `94243979205`, completed once without retry at exact pushed
+  `558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577` is tree-identical.
+  Every preceding step and `smoke:ci` passed. Desktop-8k replacement reload passed in
+  8,749 ms, ready published at browser-native `performanceNow` 2,578.6 ms, and its two
+  ready target cycles completed in 1,905/1,910 ms with 3/1 ms browser heartbeats.
+  The later 8K→5,120×2,880 same-backing transition then produced the sole product
+  finding, `ULTRA_VIEWPORT_RESIZE_UNANSWERABLE`: exact-context `Runtime.evaluate`
+  timed out at 2,003 ms against the strict 2,000 ms bound while concurrent
+  `Browser.getVersion` answered in 2 ms; `last:null`. The matrix traversed all 12
+  viewports with 1 product finding, 0 instrument failures, 56 executed plus
+  1 product-blocked control =57, `omitted=[]`, and 0 retries. No persona or preview
+  evidence was produced. Preserve #206 red without retry or a deadline increase.
+
+  The frozen repair keeps UHD 3,840×2,160 native. Strictly above the existing
+  8,388,608-CSS-pixel threshold, each simultaneous full-viewport canvas is capped at
+  3,145,728 pixels /6,291,456 aggregate. Exact rounding makes both 8K and
+  5,120×2,880 use 2,365×1,330 stores (3,145,450 each /6,290,900 combined).
+  Backdrop destruction still precedes replacement allocation, and logical resize still
+  refreshes canvas CSS, Pixi screen/texture/EventSystem state, pointer mapping, backdrop
+  dimensions/generation, and exact transition peak/budget. Downshift and restore each
+  require a strict target probe paired concurrently with `Browser.getVersion`, followed
+  by an advancing later post-render ticker turn. Deliberately stopped and stale tickers
+  fail alongside the established geometry/pointer/ownership controls. The product still
+  runs its existing full scene rerender; no scene-rerender optimization or separate
+  scene-art quality tier landed.
+
+  Current evidence is a non-authoritative `dirty-diagnostic` capture only. One full
+  Edge 151 glass run passed 12/12, 57/57, `blocked=[]`, `omitted=[]`, 0 findings/
+  instrument failures/retries in 52,851 ms; report SHA-256
+  `faa399ec1ef1e07aa384937594683f07d74227497e10302eee213b91f3aabc8c`.
+  Reloads were 173–186 ms. Exact desktop-8k was 180 ms total, `performanceNow`
+  155.9 ms, target cycles 1/6 ms and heartbeats 1/0 ms at DPR
+  `0.3079201435678004`; outgoing/replacement canvases were 2,365×1,330 each,
+  outgoing collapsed to 1×1, and replacement remained 6,290,900 pixels combined.
+  This does not certify a source. A clean-head exact battery for the immutable executable
+  source remains required; live Git/PR state determines commit/push status, and whichever final
+  pushed tip is selected requires matching CI. Host, human play, Ready, merge, release,
+  deployment, and version authority remain separate.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
