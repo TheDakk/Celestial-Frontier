@@ -174,14 +174,7 @@
 > runs certify only their requested viewport subset. The selftest removes one
 > sealed outcome while keeping counts consistent and requires rejection. Its first sandboxed Edge
 > diagnostic preserved SIGABRT as red; a separately permitted mutable-tree run
-> then completed 787/787 across 10 viewports. Executable/evidence head
-> `4560269b8767dc48bb82e3b1f9d82ca835a84aad`, a docs-only tip over `08379d8`,
-> then passed its exact sequential battery: root fingerprint/smoke/layout 787/787, v2 24 files / 273
-> pass / 1 skip, one-attempt smoke with 0 findings / 10 screenshots, the certifying
-> 12-viewport glass matrix with 0 findings / 0 instrument failures, 9 matching
-> automated personas, and exact preview verify/browser smoke at 320×568. The preview
-> content hash is `3f05c7cc218e4a3b49d5fff7a36270552a0e4129f305b681a51bb3c16826eb8f`
-> and remains `publishable:false`.
+> then completed 787/787 across 10 viewports.
 >
 > Matching test-battery #201, run
 > [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
@@ -195,14 +188,30 @@
 > reported repository-write error. It must not be erased by rerunning unchanged
 > code.
 >
-> The three-phase/release-witness repair described above is presently an
-> uncommitted worktree change. Pure controls pass. A targeted desktop-8k diagnostic
-> witnessed both 5,461×3,072 backings collapse to 1×1, renderer/stage release,
-> view detachment and a changed-loader/token replacement ready in 198ms; stable-
-> source `smoke:ci` passed the real Restart/import/duplicate-import interlocks and rollback. Final
-> mutable-source glass passed 12/12 viewports and 50/50 controls without omissions/findings/
-> instrument failures/retries; all nine matching automated personas passed. The exact-head local
-> battery, push, and matching GitHub CI remain required. The
+> Immutable executable evidence source
+> `d80133876b7156dc32b19be3e97222921deea9f0` passed its exact sequential battery. Root
+> installs/audits reported 0 vulnerabilities; validate/fingerprint, smoke and
+> preflight passed. Layout selftest passed; final run
+> `exact-d801338-root-layout-final` passed 787/787 and exact verification. One
+> earlier malformed verifier invocation spawned a run and overwrote the report
+> with `instrument-fail`; correcting that operator command before the final run
+> was not a product retry. Rarity completed 60M/0 downgrades and dead-code review
+> found 3 tooling references. V2 passed 24 files / 273 tests / 1 skip plus every
+> gate/selftest; one-attempt smoke passed 0 findings / 10 screenshots.
+>
+> Full glass passed 12/12 viewports, 50/50 controls, 0 omitted/findings/instrument
+> failures/retries, with working-tree digest
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+> All 12 reload witnesses passed; desktop-8k recorded both 5,461×3,072 backings
+> collapsing to 1×1, renderer/stage released, view detached, changed loader/token
+> and a ready replacement in 230 ms. All nine automated personas passed. The 4×
+> diagnostic recorded 643 ms painted / 726 ms answerable / 77 ms press→panel /
+> 152 ms rebuild. Preview verify/browser passed at 320×568 for expected origin
+> `https://dev-celestialfrontier.github.io`, content SHA-256
+> `e59cfe336ef3c5bde06423bf127e922a27a9bb0f4055014c3d03629244a308d2`,
+> `publishable:false`. `d801338` underlies the non-executable handoff tip. Exact
+> tip/upstream/check status is read live, and the final pushed tip requires
+> matching green CI. The
 > artifact is bound to `https://dev-celestialfrontier.github.io`, but no host or
 > publication is authorized and the separate-origin human playtest is still
 > required before Ready or merge.

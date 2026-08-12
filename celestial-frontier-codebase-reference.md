@@ -130,13 +130,7 @@
 > step's Chrome environment and selected Linux Edge. Pushed
 > `4d14a75e934536dc5f204e40c74f666cc9514df4` moves the browser pin to job scope,
 > and `08379d8c072c7eb22e2a029d666972c86d496326` carries the shared root-layout
-> launcher/report. Executable/evidence head
-> `4560269b8767dc48bb82e3b1f9d82ca835a84aad` then passed the exact sequential
-> local battery: root fingerprint/smoke/sealed 787/787 layout, v2 273 pass / 1 skip,
-> one-attempt smoke, certifying 12-viewport glass, 9 automated personas and exact
-> 320×568 preview verify/browser smoke. Preview content is
-> `3f05c7cc218e4a3b49d5fff7a36270552a0e4129f305b681a51bb3c16826eb8f`
-> with `publishable:false`.
+> launcher/report.
 >
 > Matching test-battery #201, run
 > [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
@@ -145,13 +139,29 @@
 > `smoke:ci`, passed. Only desktop-8k preference import instrument-failed after
 > the former 20-second replacement wait while the old loader remained and its
 > slice token/import phase were absent. That is not a save-classifier rejection
-> or reported repository-write error. The product/harness repair above is an
-> uncommitted worktree change. Pure controls pass; targeted 8K witnessed both
-> 5,461×3,072 backings collapse to 1×1, released renderer/stage, detached view and
-> changed-loader/token readiness in 198ms; stable-source smoke passed the real
-> Restart/import/duplicate-import interlocks and rollback. Final mutable-source glass passed 12/12
-> viewports and 50/50 controls without omissions/findings/instrument failures/retries; all nine
-> matching automated personas passed. Exact-head battery, push and matching CI remain pending. The
+> or reported repository-write error.
+>
+> Immutable executable evidence source `d80133876b7156dc32b19be3e97222921deea9f0`
+> passed its complete exact battery: root
+> installs/audits 0 vulnerabilities plus validate/fingerprint, smoke and preflight;
+> layout selftest plus final `exact-d801338-root-layout-final` 787/787 and exact
+> verification; rarity 60M/0 downgrades; dead-code 3 tooling references; v2 24
+> files / 273 tests / 1 skip plus every gate/selftest; one-attempt smoke 0 findings /
+> 10 screenshots; and full glass 12/12 viewports, 50/50 controls, 0 omitted/
+> findings/instrument failures/retries with working-tree digest
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+> One malformed verifier invocation before the final layout run spawned/overwrote
+> an `instrument-fail` report; correcting the operator command was not a product
+> retry. All 12 reload witnesses passed; desktop-8k proved both 5,461×3,072
+> canvases →1×1, renderer/stage released, view detached, changed loader/token and
+> ready replacement in 230 ms. Nine automated personas passed. The 4× diagnostic
+> was 643/726/77/152 ms (painted/answerable/press→panel/rebuild). Preview verify/
+> browser passed at 320×568 for expected origin
+> `https://dev-celestialfrontier.github.io`, content
+> `e59cfe336ef3c5bde06423bf127e922a27a9bb0f4055014c3d03629244a308d2`,
+> `publishable:false`. Prior #201 remains preserved red without retry. `d801338`
+> underlies the non-executable handoff tip; exact tip/upstream/check state is read
+> live, and the final pushed tip requires matching green CI. The
 > artifact is origin-bound but not authorized for hosting or
 > publication; human playtest, Ready and merge authority remain open.
 > Development preview origin/package requirements live in
