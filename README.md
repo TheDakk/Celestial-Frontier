@@ -119,7 +119,13 @@ overlapping the source-mutating `overridecontrol` negative control. Structured
 root-layout, slice-smoke, 12-viewport glass-matrix (including 8K), and automated-
 persona reports retain matching provenance; root layout CI verifies its exact run
 id before a separate always-run upload, and the persona synthesis is explicitly not a
-human playtest. PR #11 stays draft until a real multi-lens human playtest against
+human playtest. The glass reload observer orders its operation-phase and generic release
+bindings with one scoped receipt ordinal: only release-started N → release N+1 →
+release-complete N+2 can pass, while the producer-legal intermediate waits under the
+unchanged import deadline. Immutable one-attempt CI #207 remains red because the prior
+observer rejected that valid intermediate; one dirty diagnostic pass is not clean-head
+certification. PR #11 stays draft until matching clean-head CI is green and a real
+multi-lens human playtest against
 the exact preview is recorded, findings are resolved/retested, and final local
 plus GitHub checks pass on the frozen pushed head.
 

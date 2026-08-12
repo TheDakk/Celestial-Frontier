@@ -188,8 +188,30 @@ bound while `Browser.getVersion` answered in 2 ms; `last:null`. The report retai
 56 executed +1 product-blocked =57, `omitted=[]`, and 0 retries. No persona or
 preview evidence was produced; preserve #206 red without retry.
 
+Test-battery #207, run `31642880191` attempt 1 / job `94269466117`, completed
+without retry at exact pushed `ff9bebb22aaac0e95cd406e1e15737898452911a`;
+merge `8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. Every prior
+gate, `smoke:ci`, and 11 glass rows passed. Tablet-portrait alone instrument-failed
+when the valid healthy release witness was observed between ordered
+`release-started` and `release-complete`. The report retains 0 product findings,
+1 instrument failure, 57 planned/listed controls, `blocked=[]`, `omitted=[]`, 0 retries,
+and no persona/preview output. Preserve #207 red without retry; it produced no review
+candidate.
+
+The scoped receipt-ordinal repair has one full dirty-tree Edge 151 diagnostic PASS:
+12/12 viewports, 57/57 controls, empty blocked/omitted ledgers, 0 findings/instrument
+failures/retries, and 52,364 ms. Tablet-portrait carried the exact 6/7/8 tail in
+175 ms; desktop-8k completed in 182 ms with 1/10 ms targets and 1/1 ms heartbeats.
+Report `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`
+is bound to pushed `ff9bebb` plus the exact captured uncommitted harness state (status
+`3eeb0195adc02c4c58b71da388df5d09668e91f5786d7def6b5f248412dcb84d`, snapshot
+`9a30754815548d98d4cdd474cd633d48791cc5a8ef1d59a2f7fa76a220c6e926`). Later
+documentation edits do not make it a clean package input. A frozen clean exact commit,
+full battery, push, and matching green CI remain prerequisites to any separately approved
+candidate command. No host/publication/human/Ready/merge/release/deploy/version authority follows.
+
 Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
-underlies the current/forthcoming documentation-only tip (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
 snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
 Its exact sequential battery passed root validate/smoke and layout 787/787, v2 273/1
 plus all gates, one-attempt slice smoke 0 findings/10 screenshots, certifying glass

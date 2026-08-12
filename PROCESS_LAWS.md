@@ -577,6 +577,41 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > `publishable:false`. Exact docs tip/upstream/check state remains live, and the final
 > pushed docs tip requires matching CI; no human or publication authority follows.
 
+> **Correction earned by test-battery #207:** adjacent producer emissions are not an atomic
+> observer state. Attempt 1 of run `31642880191` / job `94269466117` at exact pushed
+> `ff9bebb22aaac0e95cd406e1e15737898452911a` (tree-identical merge
+> `8dfe018590edf8a5d15291730c873869b96caae2`) passed every preceding gate,
+> `smoke:ci`, and 11 glass rows. Tablet-portrait then received a valid release witness
+> after ordered `release-started` but before `release-complete`; the observer woke between
+> those two synchronous producer bindings and rejected the healthy intermediate state. The
+> release itself proved renderer/stage destruction, detached view, 1×1 application/backdrop
+> canvases, and null error. Preserve the one-attempt red: 0 product findings, 1 instrument
+> failure, 57 planned/listed controls, `blocked=[]`, `omitted=[]`, 0 retries, and no persona/
+> preview output.
+> **A cross-channel order needs one shared ruler, not two independently complete ledgers.**
+> Assign a monotonic receipt ordinal only across the operation-specific import-phase and generic
+> release bindings for one armed capture. The successful terminal must be exactly
+> `release-started` at N → release witness at N+1 → `release-complete` at N+2. A valid
+> release-first intermediate stays pending only under the original unchanged 20-second import
+> deadline; its receipt may anchor the separate navigation clock but never renew the import clock.
+> Reject phase-complete-first, release before `release-started`, interposed/nonadjacent evidence,
+> missing or late terminal evidence, duplicate/malformed/wrong-provenance bindings, early boot/
+> ready, and overlong phase streams including a duplicate sequence-8 terminal. Do not defer every
+> inconsistency until timeout: impossible order fails immediately, while only the one producer-
+> legal intermediate waits.
+>
+> One dirty-tree Edge 151 diagnostic passed 12/12 and 57/57 in 52,364 ms with empty blocked/
+> omitted ledgers and 0 findings/instrument failures/retries; tablet-portrait proved ordinals
+> 6/7/8 in 175 ms and desktop-8k completed in 182 ms with 1/10 ms targets and 1/1 ms
+> heartbeats. Its report SHA-256 is
+> `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`, bound to
+> pushed `ff9bebb` plus uncommitted harness bytes (`dirty-diagnostic`, captured status
+> `3eeb0195adc02c4c58b71da388df5d09668e91f5786d7def6b5f248412dcb84d`, snapshot
+> `9a30754815548d98d4cdd474cd633d48791cc5a8ef1d59a2f7fa76a220c6e926`). Later doc
+> changes do not recertify that snapshot. It is diagnosis only until a frozen clean exact commit,
+> full battery, push, and matching CI pass; no human, host, Ready, merge, release, deploy, or
+> version authority follows.
+
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
 GitHub Actions step lost that step-local `CF_BROWSER`, selected an installed Linux Edge through

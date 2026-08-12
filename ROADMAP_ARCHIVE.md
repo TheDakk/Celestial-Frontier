@@ -6,6 +6,82 @@
 > working doc crossed ~285KB / 4,272 lines and stopped reading in one pass.
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
+## ARCHIVED 2026-08-12 — #207 hygiene move: prior #199–#206 evidence blocks
+## Moved from ROADMAP.md verbatim during the #207 instrument-race refresh; the
+## sub-blocks retain their former live-file order.
+
+### Prior #199–#203 chronology and ticker-quiescence repair
+
+The archived evidence ledger retains the exact #199–#202 chronology and launcher/dependency
+repairs. In brief: #199 exposed the old 8K reload ambiguity and short-phone Planetside overlap;
+#200 passed the product matrix but exposed step-local Chrome provenance loss in preview smoke;
+#201 preserved an old-loader replacement-lifecycle red; and #202 proved the serial CDP observer
+could outlive its phase clock. None was retried away. Their fixes are in `8b8a740`, `4d14a75`,
+`08379d8`, and clean exact evidence source `20896ad`; the full text is newest-first in
+`ROADMAP_ARCHIVE.md`.
+
+Matching test-battery #203, run
+[`31602984470`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470) /
+job [`94134750800`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470/job/94134750800),
+completed once without retry at exact pushed head
+`38e4f362533e272f56f708229f7a037f38ae8951` and is **RED**. All root/product/v2
+gates and `smoke:ci` before glass passed. Eleven glass rows passed; desktop-8k alone
+reached 20,015 ms before any release, ready, navigation, fatal, command, or diagnostic
+event receipt. The outgoing 5,461×3,072 Pixi ticker was still live across the durable-
+write wait and teardown under CI software rendering. This is a real pre-release
+renderer-pressure cliff, not evidence of corrupt imported bytes or a reported repository-
+write rejection. Preserve #203; do not retry it, increase the deadline, or introduce an
+IndexedDB timeout race.
+
+The follow-on repair stops the ticker synchronously when an operation wins the exclusive
+replacement claim, before the first await, and restores it only when that exact owner rolls
+back after having stopped a running ticker. Its event-owned import phases name claim,
+prior-persist wait, primary write, and release under the original absolute deadline.
+
+### #206 red and exact `df1c28b` repair evidence
+
+Test-battery #206, run
+[`31635297321`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321) /
+job [`94243979205`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321/job/94243979205),
+completed attempt 1 without retry at exact pushed head
+`558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577` is tree-identical.
+All prior steps and `smoke:ci` passed. Desktop-8k reload passed in 8,749 ms; ready
+published at browser-native `performanceNow` 2,578.6 ms, and its two target cycles
+completed in 1,905/1,910 ms with 3/1 ms browser heartbeats. The later 8K→5,120×2,880
+same-backing transition produced the sole product finding,
+`ULTRA_VIEWPORT_RESIZE_UNANSWERABLE`: exact-context `Runtime.evaluate` timed out at
+2,003 ms against the strict 2,000 ms bound while `Browser.getVersion` answered in 2 ms;
+`last:null`. The 12-viewport report therefore records 1 product finding, 0 instrument
+failures, 56 executed plus 1 product-blocked control =57, `omitted=[]`, and 0 retries.
+No persona or preview evidence was produced. Preserve #206 red without retry; it proves
+post-ready resize answerability failure, not save/import/durability/navigation failure.
+
+Immutable clean executable evidence source
+`df1c28b31d15cd554d36f9b4ca65d8765366a5df` underlies the current/forthcoming documentation-only tip;
+its clean status SHA-256 is `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`
+and source-snapshot digest is `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+Root preflight warned only that Edge 151 differs from pin 150, then validate/smoke passed;
+root layout `exact-df1c28b-root-layout` passed 787/787 across 10/10 in 75,544 ms
+(report `d0d9a9b3c58f996e5fb7b10f21aa98c974272531f10ccdb945cd026942429252`).
+V2 passed 273 with 1 skip plus all gates. One-attempt slice smoke passed 0 findings /
+10 screenshots / no retry in 105,217 ms (report `b835f79764f4e22a2179ab74f9412491ee4d81730e775889372461d64ddd0474`;
+log `538f4a36919cd947e7631f4eb786acbcd3a6e356ce55719843c8080004295087`).
+Certifying glass passed 12/12 and 57/57, `blocked=[]`, `omitted=[]`, with 0 findings/
+instrument failures/retries in 52,557 ms (report `7fe33219e70361140ebc931f0d77fca0976a46fe51eecc42815f41eba110980c`);
+reloads were 175–203 ms. Exact 8K was 203 ms: arm 2, import→release complete 11,
+release→commit 33, commit→ready 127 ms, `performanceNow` 158.2 ms, targets 1/10 ms,
+heartbeats 0/0 ms; 2,365×1,330 outgoing stores collapsed to 1×1 and replacement
+remained 2,365×1,330 each /6,290,900 combined. Nine automated-only personas passed
+(JSON `c10c9e33542ed57b4c51683c0ddf3f1bbc468696a025e88ef2d1e500209581bc`;
+Markdown `1c9961515028a716ba064ca32ea9dd3ef2d41118cfde4c76b24c16520daa2d14`),
+and terminal-only performance was 581/659/73/152 ms painted/answerable/press→panel/rebuild.
+Preview `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at the separate
+development origin with `publishable:false`: manifest `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`,
+37 files /10,186,537 bytes, content `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`,
+tree `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. Exact docs tip/upstream/CI is live;
+the final pushed docs tip needs matching CI. No host, publication, human-play, Ready,
+merge, release, deployment or version authority follows.
+
 ## ARCHIVED 2026-08-12 — prior `135a635` exact evidence and dirty diagnostic
 ## Moved from ROADMAP.md verbatim during the #206 repair refresh.
 

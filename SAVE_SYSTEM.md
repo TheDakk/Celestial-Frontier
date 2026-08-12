@@ -115,6 +115,12 @@
 > import deadline begins before the bounded, non-awaiting CDP arm command; neither
 > that command nor any later witness gets a fresh clock. There is no timeout
 > increase, automatic retry, or `Promise.race` around IndexedDB durability.
+> Import-phase and generic release bindings also share one capture-scoped monotonic
+> receipt ordinal. A successful terminal must be exactly `release-started` N → release
+> N+1 → `release-complete` N+2. Only the valid release-first intermediate remains
+> pending under that unchanged deadline; phase-complete-first, premature, nonadjacent,
+> missing, late, duplicate, malformed, wrong-provenance, early boot/ready, and an
+> overlong sequence-8 duplicate terminal fail closed.
 > The replacement app also initializes Pixi with `autoStart:false`. Save loading,
 > scene render, slice publication and complete input wiring happen while its
 > ticker is stopped; only then does the app start it and require one real tick/
@@ -273,9 +279,30 @@
 > 0 instrument failures, 56 executed +1 product-blocked =57, `omitted=[]`, 0
 > retries, and no persona/preview evidence. It is not a save, import, durability,
 > renderer-release, navigation, or boot-readiness failure.
+> CI #207, run `31642880191` attempt 1 / job `94269466117`, is preserved **RED**
+> without retry at exact pushed `ff9bebb22aaac0e95cd406e1e15737898452911a`;
+> merge `8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. All prior gates,
+> `smoke:ci`, and 11 glass rows passed. Tablet-portrait alone instrument-failed when
+> the healthy release witness was observed between ordered `release-started` and
+> `release-complete`. Release proved renderer/stage destruction, detached view, 1×1
+> canvases, and null error. The report records 0 product findings, 1 instrument failure,
+> 57 listed controls, `blocked=[]`, `omitted=[]`, 0 retries, and no persona/preview output.
+> This is a harness observation race, not a save, durability, release, navigation, boot,
+> or viewport failure.
+>
+> One Edge 151 dirty diagnostic passed 12/12 and 57/57 in 52,364 ms with zero
+> findings/instrument failures/retries and empty blocked/omitted ledgers. Tablet-portrait
+> proved ordinals 6/7/8 in 175 ms; desktop-8k completed in 182 ms with 1/10 ms targets
+> and 1/1 ms heartbeats. Report
+> `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`
+> retains its exact pre-doc-write `dirty-diagnostic` provenance (captured status
+> `3eeb0195adc02c4c58b71da388df5d09668e91f5786d7def6b5f248412dcb84d`, snapshot
+> `9a30754815548d98d4cdd474cd633d48791cc5a8ef1d59a2f7fa76a220c6e926`). It is
+> non-authoritative; only a clean-head exact battery and matching CI on whichever pushed tip
+> contains the repair can supersede it.
 >
 > Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
-> underlies the current/forthcoming documentation-only tip (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+> remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
 > snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
 > Root preflight warned Edge 151 vs pin 150; validate/smoke and layout 787/787 across
 > 10/10 passed; v2 passed 273/1 plus all gates. One-attempt slice smoke passed 0

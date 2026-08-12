@@ -117,7 +117,8 @@
 > `cf-v2-reload-release/v1` witness within that same import bound; allow 5 seconds from that receipt for a
 > top-frame commit with a changed loader; and only then start the replacement
 > document's independent 20-second boot budget. `replacementNavigationOutcome()`,
-> `importReleaseOutcome()` and `replacementReadyOutcome()` validate receipt time,
+> `importReleaseOutcome()`, `importReleaseSequenceOutcome()` and
+> `replacementReadyOutcome()` validate receipt time,
 > exact target session, default top-frame context identity/generation/origin,
 > expected URL, changed loader and changed document token. Old-context/global loss
 > alone is not navigation or boot evidence. Pixi initializes with
@@ -162,6 +163,12 @@
 > operation receipts, a stopped ticker before `invoked`, a running ticker after
 > claim, and exact-boundary-late arm or phase evidence. No timeout increase or
 > `Promise.race` is placed around IndexedDB durability.
+> The import-phase and generic release binding handler assigns a monotonic ordinal
+> only across those two binding kinds for one armed capture. A successful terminal is
+> exactly `release-started` N → release N+1 → `release-complete` N+2. Only that
+> release-first intermediate remains pending under the unchanged import deadline;
+> phase-complete-first, premature, nonadjacent, missing, late, duplicate, malformed,
+> wrong-provenance, early boot/ready, and overlong phase evidence fail closed.
 >
 > `scheduleReplacementReload()` is the product half of that contract. All three
 > intentional replacement transitions—Training restart after `persistView()`,
@@ -363,8 +370,32 @@
 > 1 product-blocked control =57, `omitted=[]`, 0 retries, and no persona/preview
 > output. Preserve #206 red without retry.
 >
+> Test-battery #207, run
+> [`31642880191`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191) /
+> job [`94269466117`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191/job/94269466117),
+> completed attempt 1 without retry at exact pushed
+> `ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
+> `8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. All prior gates,
+> `smoke:ci`, and 11 glass rows passed. Tablet-portrait alone instrument-failed
+> because a healthy valid release witness arrived between `release-started` and
+> `release-complete` and the observer rejected that intermediate. Release itself
+> was healthy. The report records 0 product findings, 1 instrument failure, 57
+> planned/listed controls, empty blocked/omitted ledgers, 0 retries, and no persona/
+> preview output. Preserve #207 red without retry.
+>
+> One Edge 151 dirty diagnostic passed 12/12 and 57/57 in 52,364 ms with zero
+> findings/instrument failures/retries. Tablet-portrait proved ordinals 6/7/8 in
+> 175 ms; desktop-8k completed in 182 ms with 1/10 ms targets and 1/1 ms heartbeats.
+> Report `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`
+> remains bound to its exact pre-doc-write dirty snapshot at pushed `ff9bebb`
+> (captured status `3eeb0195adc02c4c58b71da388df5d09668e91f5786d7def6b5f248412dcb84d`,
+> working tree `9a30754815548d98d4cdd474cd633d48791cc5a8ef1d59a2f7fa76a220c6e926`).
+> It is diagnostic only; only a clean-head exact battery and matching CI on whichever pushed tip
+> contains the repair can supersede it;
+> no host/human/Ready/merge/release/deploy/version authority follows.
+>
 > Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
-> underlies the current/forthcoming documentation-only tip (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+> remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
 > snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
 > Root preflight warned Edge 151 vs pin 150; validate/smoke, layout 787/787 across 10/10,
 > v2 273/1 plus all gates and one-attempt slice smoke 0/10 passed. Certifying glass passed
