@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
+import WebSocket from 'ws';
 import { fileURLToPath } from 'node:url';
 import { findChromiumBrowser } from './browserpath.mjs';
 
@@ -40,7 +41,8 @@ async function terminateChildProcess(child, childClosed, label, timeoutMs) {
   }
   if (!await waitForResolution(childClosed, timeoutMs)) {
     child.stderr?.destroy?.();
-    fail(`${label}: browser exited but its stdio did not close within the shutdown bound`);
+    assert(await waitForResolution(childClosed, timeoutMs),
+      `${label}: browser exited but its stdio did not close within the shutdown bound`);
   }
 }
 function portable(value) { return value.split(path.sep).join('/'); }
@@ -100,16 +102,23 @@ export async function openChromiumCdp({
     '--disable-component-update', '--disable-component-extensions-with-background-pages',
     '--remote-debugging-port=0', `--user-data-dir=${userData}`, 'about:blank',
   ], { stdio: ['ignore', 'ignore', 'pipe'] });
-  let stderr = '';
+  let stderrHead = '';
+  let stderrTail = '';
+  let stderrBytes = 0;
   let spawnError = null;
   let exitDescription = null;
-  child.stderr.on('data', (chunk) => { stderr += chunk.toString(); });
+  child.stderr.on('data', (chunk) => {
+    const text = chunk.toString();
+    stderrBytes += Buffer.byteLength(text);
+    if (stderrHead.length < 600) stderrHead = (stderrHead + text).slice(0, 600);
+    stderrTail = (stderrTail + text).slice(-600);
+  });
   child.on('error', (error) => { spawnError = error; });
   child.on('exit', (code, signal) => { exitDescription = `exit=${String(code)} signal=${String(signal)}`; });
   const childClosed = new Promise((resolve) => child.once('close', resolve));
   const terminateOwnedBrowser = async () => {
-    await terminateChildProcess(child, childClosed, label, shutdownTimeoutMs);
-    removeOwnedUserData(userData, temporary, userDataPrefix);
+    try { await terminateChildProcess(child, childClosed, label, shutdownTimeoutMs); }
+    finally { removeOwnedUserData(userData, temporary, userDataPrefix); }
   };
 
   let endpoint = null;
@@ -126,9 +135,21 @@ export async function openChromiumCdp({
     if (endpoint === null) await sleep(Math.min(100, Math.max(1, startupDeadline - Date.now())));
   }
   if (endpoint === null) {
-    const detail = spawnError?.message || exitDescription || stderr.trim().slice(-300);
+    const timedOut = !spawnError && !exitDescription;
+    const stderr = stderrBytes
+      ? stderrHead.trim() === stderrTail.trim()
+        ? `stderr=${JSON.stringify(stderrHead.trim())}`
+        : `stderr-head=${JSON.stringify(stderrHead.trim())}; stderr-tail=${JSON.stringify(stderrTail.trim())}`
+      : '';
+    const detail = [
+      `pid=${String(child.pid ?? 'unknown')}`,
+      spawnError ? `spawn=${spawnError.message}` : '',
+      exitDescription || '',
+      timedOut ? `startup-timeout=${startupTimeoutMs}ms` : '',
+      stderr,
+    ].filter(Boolean).join('; ');
     await terminateOwnedBrowser();
-    fail(`${label}: browser CDP did not start at ${browserFile}${detail ? ` (${detail})` : ''}`);
+    fail(`${label}: browser CDP did not start at ${browserFile} (${detail})`);
   }
 
   let ws = null;
@@ -225,7 +246,7 @@ export async function openChromiumCdp({
       js_version: requiredString(version.jsVersion, `${label} JS version`),
       protocol_version: requiredString(version.protocolVersion, `${label} protocol version`),
     });
-    return { send, browser, close };
+    return { send, browser, pid: child.pid, close };
   } catch (error) {
     await close();
     fail(error.message.startsWith(`${label}:`) ? error.message : `${label}: CDP setup failed (${error.message})`);
@@ -297,6 +318,20 @@ async function runSelftest() {
       startupTimeoutMs: 1500, shutdownTimeoutMs: 500,
     }), /browser CDP did not start|browser exited/);
     assertNoOwnedProfiles(childPrefix, 'browser child exit cleanup');
+
+    if (process.platform !== 'win32') {
+      const markerBrowser = path.join(endpointFixture, 'marker-browser');
+      fs.writeFileSync(markerBrowser,
+        '#!/bin/sh\nprintf "CF_BROWSER_SELFTEST_EARLY_EXIT\\n" >&2\nexit 73\n');
+      fs.chmodSync(markerBrowser, 0o755);
+      const markerPrefix = `${base}-marker`;
+      process.env.CF_BROWSER = markerBrowser;
+      await expectRejectedAsync('browser exit diagnostics', () => openChromiumCdp({
+        label: 'CDP selftest exit diagnostics', userDataPrefix: markerPrefix,
+        startupTimeoutMs: 1500, shutdownTimeoutMs: 500,
+      }), /exit=73[\s\S]*CF_BROWSER_SELFTEST_EARLY_EXIT/);
+      assertNoOwnedProfiles(markerPrefix, 'browser exit diagnostics cleanup');
+    }
 
     process.env.CF_BROWSER = actualBrowser;
     class NeverOpeningWebSocket {
@@ -389,6 +424,7 @@ async function runSelftest() {
   console.log('  exit-without-close: rejected; owned pipe released');
   console.log('  SIGTERM-resistant child: escalated to bounded SIGKILL');
   console.log('  browser child exit and profile cleanup: PASS');
+  console.log(`  early-exit code + bounded stderr diagnostics: ${process.platform === 'win32' ? 'covered by child-exit control' : 'PASS'}`);
   console.log('  WebSocket open timeout and cleanup: PASS');
   console.log('  CDP command error and timeout: rejected');
   console.log('  CDP events forwarded; event-handler failure rejected and cleaned up');

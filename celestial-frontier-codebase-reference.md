@@ -22,6 +22,26 @@
 > then living organism rigs and biome scenes. Platinum-approved static portraits
 > remain frozen; optional polish is not a mandate to repaint them.
 >
+> **2026-08-12 root browser-harness overlay:** legacy `tools/uilayout.js` now
+> consumes the v2-owned browser resolver and raw-CDP launcher instead of owning a
+> second candidate list, guessed port, WebSocket loop and cleanup path. The shared
+> lifecycle uses browser-assigned port 0 plus `DevToolsActivePort`, records exact
+> executable/`Browser.getVersion` provenance, retains bounded startup stderr,
+> detects early exit, and performs bounded TERM→KILL shutdown with validated
+> profile removal. Layout evidence is an ignored atomic schema-v2 report that
+> transitions from `running` to terminal `pass`, `fail`, or `instrument-fail`
+> while retaining the legacy `results` array. Full PASS additionally matches all
+> 787 `viewport/surface/name` keys from the sealed v1.8.9 layout report; targeted
+> runs remain scoped. `--selftest` replaces a seeded stale PASS with an exit-73 red
+> record, proves freshness/cleanup, then removes one sealed outcome with consistent
+> counts and requires rejection;
+> `--verify-run=ID` rejects the wrong attempt. CI runs both before separately
+> uploading the required report. Root and v2 manifests/locks both declare the
+> pinned `ws` transport and Node `^20.19.0 || ^22.13.0 || >=24.0.0`. Root preflight
+> launches the selected executable through `browsercdp`; its selftest rejects
+> executable non-browsers and excluded Node lines. `bootperf` shares the executable
+> resolver and `ws` transport but retains its legacy CDP lifecycle.
+>
 > The live v2 interaction surface uses Pixi `autoDensity` so its CSS canvas and
 > hit coordinates stay viewport-sized at DPR > 1. `effectiveDpr()` follows the
 > touch-2 / desktop-3 heat caps and a 16,777,216-pixel backing-store ceiling,
@@ -79,15 +99,19 @@
 > mutation, phase loss/rejection, missing loader witnesses, and a loader change
 > during evaluation fail closed under
 > `replacement-document-loader-token-phase`; the command never retries a red
-> run. This repair follows test-battery run `31571459050` / job `94034164092` at
-> pushed commit `33ea34191c817a8e78eea598c31981f8208e939b`: `smoke:ci`
-> passed once, then glassmatrix retained the former old-token 10-second timeout
-> at desktop-8k and recorded a small-phone Planetside/trail overlap. Only static
-> checks plus targeted real-browser diagnostics for the small-phone portrait and
-> desktop-8k import/reload paths are green on the mutable repair snapshot. Those
-> narrow diagnostics are non-certifying; current smoke, the complete 12-viewport
-> matrix/persona synthesis, a repair commit, exact full battery and matching CI
-> remain pending.
+> run. Test-battery #199, run `31571459050` / job `94034164092`, exposed the former
+> old-token 10-second timeout at desktop-8k and a small-phone Planetside/trail
+> overlap on pushed `33ea341`. Pushed repair
+> `8b8a740286a56591cac9dc5734a2fba4c088939b` passed its exact sequential local
+> battery. Matching test-battery #200 passed every root/product/v2 gate, one-run
+> smoke, full 12-viewport matrix, personas and preview packaging; only final preview
+> CDP startup failed before a page existed after that process lost the previous
+> step's Chrome environment and selected Linux Edge. Local unpushed
+> `4d14a75e934536dc5f204e40c74f666cc9514df4` moves the browser pin to job scope.
+> The follow-on shared root-layout launcher/report implementation remains mutable:
+> its sandboxed Edge SIGABRT is preserved red and its separately permitted 787/787
+> run is diagnostic only. A new clean commit, exact sequential battery, push and
+> matching CI remain required.
 > Development preview origin/package requirements live in
 > `port/DEVELOPMENT_PREVIEW.md`; they do not constitute a release or deployment.
 >
@@ -927,7 +951,7 @@ share codes) that must match the v1.0 baseline byte for byte.
 |---|---|---|
 | `validate.js` | build + 9 static gates + the 50-probe fingerprint | every batch |
 | `smoke.js` | jsdom: real flows, the full 21-step training, ~553 checks | every batch |
-| `uilayout.js` | **a real headless browser**: computed boxes, 44px touch floors, and `elementFromPoint` hit-tests across 10 viewports (787 checks, incl. a 63-point reachability grid on the training card against each raisable surface in **both** card positions) | every batch |
+| `uilayout.js` | **a real headless browser through the shared owned CDP launcher**: computed boxes, 44px touch floors, and `elementFromPoint` hit-tests across 10 viewports (787 checks, incl. a 63-point reachability grid on the training card against each raisable surface in **both** card positions); ignored atomic schema-v2 evidence binds exact browser/run/status, full PASS binds the sealed v1.8.9 report's exact 787-key inventory, targeted runs remain scoped, and `--selftest` / `--verify-run=ID` enforce completeness/freshness | every batch |
 | `balance-sim.js` | 17 archetype win-rate band + 55 ability-theme art band | every batch |
 | `bootperf.js` | **cold boot in a real browser over gzipped HTTP**: decomposes first-interactive into network / in-DOM / painted / **answerable**, plus a longtask census split at the gate. `--assert` enforces the art-hold law | on demand |
 | `simrun.js dom` | **UI reachability**: takes actions through the real controls and proves the press *landed*; reports `absent` / `disabled` / `dead` / `uncovered` | on demand |
@@ -938,7 +962,9 @@ share codes) that must match the v1.0 baseline byte for byte.
 `uilayout.js` exists because jsdom has no layout: a rule can be present, correct
 and **completely inert**, and only a real browser can tell you. It accepts
 `--url=FILE`, so a new gate can be replayed against an older build to prove it
-catches the bug it was written for.
+catches the bug it was written for. It records `running` before launch and atomically
+replaces that with terminal `pass`, `fail`, or `instrument-fail`; CI verifies the
+exact assigned run id before uploading the ignored report in its own always-run step.
 
 `bootperf.js` and `simrun.js dom` close two UI blind spots that were *structural*, not
 oversights. **Painted ≠ answerable**: a gate can be drawn and hit-testable while the

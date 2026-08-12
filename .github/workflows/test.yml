@@ -29,12 +29,24 @@ jobs:
           which google-chrome || which chromium-browser || echo "no chrome found"
           node port/v2/tools/browserpath.mjs --print
       - run: npm ci
+      - name: preflight contract selftest
+        run: npm run preflight:selftest
       - name: validate (fingerprint + render + invariants)
         run: node tools/validate.js
       - name: smoke (jsdom gameplay flows)
         run: node tools/smoke.js
       - name: layout (10 viewports)
-        run: node tools/uilayout.js
+        env:
+          CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          node tools/uilayout.js --selftest
+          node tools/uilayout.js
+      - name: verify root layout evidence freshness
+        if: always()
+        env:
+          CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          node tools/uilayout.js --verify-run="$CF_UILAYOUT_RUN_ID"
       - name: rarity sanity
         run: node tools/rarity-sanity.js
       - name: dead code scan
@@ -84,13 +96,20 @@ jobs:
           name: battery-reports
           path: |
             tools/current.json
-            tools/uilayout-report.json
             port/v2/apps/game/smoke/slice-smoke-report.json
             port/v2/apps/game/smoke/slice-smoke.log
             port/v2/apps/game/smoke/glassmatrix-report.json
             port/v2/apps/game/smoke/automated-persona-report.json
             port/v2/apps/game/smoke/automated-persona-report.md
           if-no-files-found: ignore
+          retention-days: 14
+      - name: archive root layout evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: root-layout-evidence
+          path: tools/uilayout-report.json
+          if-no-files-found: error
           retention-days: 14
       - name: archive v2 browser evidence
         if: always()

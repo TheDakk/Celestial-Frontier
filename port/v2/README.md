@@ -17,7 +17,12 @@ their runtime APIs; lazy species-art subscribers are retained; and the phone
 dock is a measured 4×2 layout with browser-backed non-overlap/hit-target
 negative controls. Pixi now keeps its DPR-scaled backing store displayed in a
 viewport-sized CSS box, so phone visuals and hit coordinates agree. Browser smoke and
-performance tools now use the owned, portable CDP lifecycle.
+performance tools now use the owned, portable CDP lifecycle; the root legacy
+`tools/uilayout.js` gate consumes that same resolver/launcher rather than carrying
+an independent fixed-port lifecycle.
+This workspace and the repository root both declare/lock the raw-CDP `ws`
+transport and support Node `^20.19.0 || ^22.13.0 || >=24.0.0`; install each surface
+with its own `npm install` / `npm ci` before running its tools.
 
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,
@@ -87,7 +92,17 @@ Edge at `/opt/microsoft/msedge/microsoft-edge`, which never wrote
 `DevToolsActivePort`. This is a CI browser-provenance failure, not a product,
 responsive, package, or preview-page finding. The workflow repair pins Chrome at
 job scope in both CI workflows and resolves it fail-closed before the long battery.
-It still requires a new clean commit, exact-head battery, push and matching CI.
+That workflow repair is local commit
+`4d14a75e934536dc5f204e40c74f666cc9514df4` and remains unpushed. The follow-on
+root-layout repair now shares the owned launcher and creates ignored atomic schema-v2
+run/browser/status evidence with stale-PASS/exit-73 and exact-run freshness controls.
+Full layout PASS also binds the exact 787 `viewport/surface/name` inventory to the
+sealed v1.8.9 report; targeted viewports remain scoped. Its selftest deletes one
+sealed outcome, keeps the summary counts consistent, and still requires rejection.
+Its initial sandboxed Edge launch preserved SIGABRT as red; a separately permitted
+mutable-tree diagnostic completed 787/787 across 10 viewports, but is not exact-head
+certification. The combined repair still requires a new clean commit, full exact-head
+battery, push and matching CI.
 Do not rerun the unchanged red head, retry the browser, lengthen startup, or clear
 D-Bus to mask the evidence. `overridecontrol` remains exclusive and may not
 overlap any browser, build or evidence producer.
@@ -410,8 +425,8 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 | `npm run smoke:ci` | Runs the authoritative real-browser `slicesmoke.mjs` exactly once, retains complete stdout/stderr in `slice-smoke.log`, and writes commit/branch/working-tree/browser/screenshot-bound `slice-smoke-report.json`. `smokereport` owns one full-lifetime workspace lock and passes a validated one-child inherited lease to `slicesmoke`, retaining the lock through screenshot hashing and report finalization. A failure prints the first scoped diagnosis plus a related count; it never retries a red run. |
 | `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion and DPR without retrying. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`; import/reload owns `replacement-document-loader-token-phase`, separate 20-second import/replacement bounds, and requires a ready document with changed loader plus changed token. The command owns the shared workspace lock while building/browsing. |
 | `npm run persona:selftest` / `npm run persona:report` | Joins only passing slice-smoke and glass-matrix evidence with matching commit/branch and dirty-tree digest into `automated-persona-report.{json,md}`. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |
-| `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. Environment scope is process-local: a green browser in one workflow step does not pin the resolver in the next. CI therefore supplies the exact path at job scope and resolves it before long gates. |
-| `node tools/browsercdp.mjs --selftest` | Negative-controls browser startup metadata, child exit, WebSocket and command timeouts, pending-command rejection, bounded shutdown, exact version provenance, and owned-profile cleanup. |
+| `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools, including root `tools/uilayout.js`; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. Environment scope is process-local: a green browser in one workflow step does not pin the resolver in the next. CI therefore supplies the exact path at job scope and resolves it before long gates. |
+| `node tools/browsercdp.mjs --selftest` | Uses the manifest/lock-declared `ws` transport and owns port-0 `DevToolsActivePort` startup, complete `Browser.getVersion` provenance, early-exit plus bounded stderr head/tail diagnosis, WebSocket and command bounds, pending-command rejection, bounded TERM→KILL shutdown, and validated profile cleanup. Its selftest negative-controls each boundary; root `tools/uilayout.js` consumes this launcher and adds stale-report, exact-run, and sealed-inventory controls. Root preflight launches this same probe; legacy `bootperf` shares the resolver/`ws` transport but not this lifecycle. |
 | `node tools/proceduralnames.mjs --selftest` | Proves the exact 240-row bridge among full, drift, and render procedural identities. |
 | `node tools/rejudgecards.mjs --drift=<file> --out=<dir> [--control] [--full]` | Builds indexed drift, unchanged-control, or full-catalogue review strips and packets from the current renderer. |
 | `node tools/speciesstrip.mjs "<name,...>" [out.png]` | Renders a small named Earth/procedural strip for targeted visual diagnosis; `npm run stripcheck` exercises its positive and rejection controls. |
@@ -513,7 +528,8 @@ npm run proofsheet    # the art+sound verdict sheet (golden vs slice, one page)
 
 Layout per `PORT_MASTER_PLAN_v4.0.md` §18: `packages/domain/<module>/`. Toolchain pinned
 exact: typescript 7.0.2 · vitest 4.1.10 · @types/node. Isolated from the game's dependency
-set — `tools/deps.pinned.json` stays acorn + jsdom.
+set. Root evidence dependencies are declared in `tools/deps.pinned.json`; the shared
+raw-CDP launcher also declares `ws` in both root and v2 install surfaces.
 
 ## The port rule (Gate B: "preserve exact JavaScript numeric semantics")
 
