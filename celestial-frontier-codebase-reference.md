@@ -108,10 +108,16 @@
 > CDP startup failed before a page existed after that process lost the previous
 > step's Chrome environment and selected Linux Edge. Local unpushed
 > `4d14a75e934536dc5f204e40c74f666cc9514df4` moves the browser pin to job scope.
-> The follow-on shared root-layout launcher/report implementation remains mutable:
-> its sandboxed Edge SIGABRT is preserved red and its separately permitted 787/787
-> run is diagnostic only. A new clean commit, exact sequential battery, push and
-> matching CI remain required.
+> Clean local commit `08379d8c072c7eb22e2a029d666972c86d496326` carries the shared
+> root-layout launcher/report implementation. Its sandboxed Edge SIGABRT remains
+> preserved red; the subsequent exact sequential battery passed root fingerprint,
+> smoke and sealed 787/787 layout evidence, v2 24 files / 273 pass / 1 skip,
+> one-attempt smoke (0 findings / 10 screenshots), certifying 12-viewport glass
+> (0 findings / 0 instrument failures), 9 matching automated personas, and exact
+> 320×568 preview verify/browser smoke. Preview content is
+> `f84eae95cbb97051ecb0bd6c6cac25c86ac49043043f64173b14486aa4f0e12a`
+> with `publishable:false`. A final docs-only commit, matching exact-head rerun,
+> push and matching CI remain required.
 > Development preview origin/package requirements live in
 > `port/DEVELOPMENT_PREVIEW.md`; they do not constitute a release or deployment.
 >

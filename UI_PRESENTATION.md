@@ -131,7 +131,7 @@
 > contract is documented separately in `port/DEVELOPMENT_PREVIEW.md`; a preview
 > is development evidence, never a release or production deployment.
 >
-> **Current repair evidence (not final PR-head evidence):** pushed commit
+> **Current repair evidence (not yet pushed/CI evidence):** pushed commit
 > `8b8a740286a56591cac9dc5734a2fba4c088939b` passed its exact sequential local
 > battery and repaired test-battery #199's desktop-8k reload witness plus
 > small-phone Planetside/trail collision. Matching test-battery #200 passed every
@@ -141,7 +141,8 @@
 > selected Linux Edge. Local commit `4d14a75e934536dc5f204e40c74f666cc9514df4`
 > pins Chrome at job scope but is not pushed.
 >
-> The follow-on root-layout repair is still a mutable implementation. `uilayout.js`
+> Clean local commit `08379d8c072c7eb22e2a029d666972c86d496326` carries the follow-on
+> root-layout repair. `uilayout.js`
 > now consumes the v2-owned resolver/launcher: port 0 plus `DevToolsActivePort`,
 > exact browser provenance, early-exit and bounded stderr diagnosis, bounded
 > TERM→KILL cleanup, and owned-profile removal. It atomically replaces its ignored
@@ -152,10 +153,14 @@
 > runs certify only their requested viewport subset. The selftest removes one
 > sealed outcome while keeping counts consistent and requires rejection. Its first sandboxed Edge
 > diagnostic preserved SIGABRT as red; a separately permitted mutable-tree run
-> then completed 787/787 across 10 viewports. That PASS is diagnostic, not
-> post-change exact-head evidence. The repair still requires a clean commit, full
-> sequential exact-commit battery, push, matching GitHub CI, and the separate-origin
-> human playtest.
+> then completed 787/787 across 10 viewports. The subsequent exact-`08379d8`
+> sequential battery passed root fingerprint/smoke/layout 787/787, v2 24 files / 273
+> pass / 1 skip, one-attempt smoke with 0 findings / 10 screenshots, the certifying
+> 12-viewport glass matrix with 0 findings / 0 instrument failures, 9 matching
+> automated personas, and exact preview verify/browser smoke at 320×568. The preview
+> content hash is `f84eae95cbb97051ecb0bd6c6cac25c86ac49043043f64173b14486aa4f0e12a`
+> and remains `publishable:false`. A final docs-only commit, matching exact-head rerun,
+> push, GitHub CI, and the separate-origin human playtest remain required.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
 v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve
