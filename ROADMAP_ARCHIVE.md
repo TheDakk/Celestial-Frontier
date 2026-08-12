@@ -6,6 +6,40 @@
 > working doc crossed ~285KB / 4,272 lines and stopped reading in one pass.
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
+## ARCHIVED 2026-08-12 — cold-start summaries for preserved CI #201–#206
+## Moved from ROADMAP.md verbatim during the exact `6554b2b` evidence refresh.
+
+  Prior test-battery #201, run
+  [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
+  job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
+  remains preserved red without retry on the superseded `4560269` source. Test-battery #202,
+  run [`31594595288`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288) /
+  job [`94106996466`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288/job/94106996466),
+  likewise remains preserved red without retry at pushed `93f75a93`; its only failure is the
+  ambiguous desktop-8k serial readiness observer described below. Test-battery #203, run
+  [`31602984470`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470) /
+  job [`94134750800`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470/job/94134750800),
+  remains preserved red without retry at exact pushed `38e4f362`; it passed every preceding
+  gate and 11 glass rows, then desktop-8k crossed the unchanged import bound before the first
+  release receipt. Test-battery #204, run
+  [`31612817092`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092) /
+  job [`94168172635`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092/job/94168172635),
+  remains preserved red without retry at exact pushed `4cee7d80`; its import/write/release/
+  navigation/load/FCP path was healthy, but desktop-8k emitted no application-ready witness
+  inside the unchanged boot bound. Test-battery #205, run
+  [`31621227550`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31621227550) /
+  job [`94196289291`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31621227550/job/94196289291),
+  remains preserved red without retry at exact pushed `c57305fb`: every prior gate passed,
+  desktop-8k completed the full ready chain, then its sole exact-context confirmation timed out.
+  It had no concurrent browser heartbeat, so post-ready target starvation is strongly suggested
+  but not retrospectively proven apart from browser/CDP transport.
+  Test-battery #206, run
+  [`31635297321`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321) /
+  job [`94243979205`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321/job/94243979205),
+  remains preserved red without retry at exact pushed `558e0565`; its later 5K resize target
+  timed out while the concurrent browser heartbeat remained healthy. The exact repair and clean
+  `df1c28b` evidence are preserved below and in `ROADMAP_ARCHIVE.md`.
+
 ## ARCHIVED 2026-08-12 — #207 hygiene move: prior #199–#206 evidence blocks
 ## Moved from ROADMAP.md verbatim during the #207 instrument-race refresh; the
 ## sub-blocks retain their former live-file order.

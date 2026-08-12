@@ -198,17 +198,30 @@ when the valid healthy release witness was observed between ordered
 and no persona/preview output. Preserve #207 red without retry; it produced no review
 candidate.
 
-The scoped receipt-ordinal repair has one full dirty-tree Edge 151 diagnostic PASS:
-12/12 viewports, 57/57 controls, empty blocked/omitted ledgers, 0 findings/instrument
-failures/retries, and 52,364 ms. Tablet-portrait carried the exact 6/7/8 tail in
-175 ms; desktop-8k completed in 182 ms with 1/10 ms targets and 1/1 ms heartbeats.
-Report `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`
-is bound to pushed `ff9bebb` plus the exact captured uncommitted harness state (status
-`3eeb0195adc02c4c58b71da388df5d09668e91f5786d7def6b5f248412dcb84d`, snapshot
-`9a30754815548d98d4cdd474cd633d48791cc5a8ef1d59a2f7fa76a220c6e926`). Later
-documentation edits do not make it a clean package input. A frozen clean exact commit,
-full battery, push, and matching green CI remain prerequisites to any separately approved
-candidate command. No host/publication/human/Ready/merge/release/deploy/version authority follows.
+The prior dirty #207 diagnostic (report
+`805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`) remains
+chronology only. Immutable executable source
+`6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the complete sequential exact clean
+battery. Root gates and exact layout 787/787 across 10/10 passed (report
+`58dc4ef4456fac012b2e8f0aa801917b5579cffe435fd4576827ff29bcbb4b78`); v2 passed 273/1 plus
+all gates; one-attempt smoke passed 0 findings/10 screenshots; certifying glass passed
+12/12 and 57/57 with exact 6/7/8 tails on every row, empty blocked/omitted ledgers, and
+zero findings/instrument failures/retries; all nine automated-only personas and terminal-only
+performance passed. Smoke/glass reports are
+`139b10ea16d17c109d5b624fa75daf73291d98f5ad8fe7df569501829ab5f844` /
+`a05ba65e28ac94b146b051164c1b22195bfaa7509bd47d9631561fc394920b6c`.
+Exact preview `dev-preview-exact-6554b2b-20260812T184000Z` passed
+Edge 151 at the separate development origin with `publishable:false`. Its manifest SHA-256 is
+`98a64b750d1def5c7895cbd780a35558863f000c5a3fbcf4c3945dd927d5ce04`, covering
+37 files /10,186,537 bytes, content
+`04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`, exact tree
+`986116980e7b7a224f210508b4872b5d7f5621ac`, registry
+`8a290b25fc8ff27ca7f23f00367121a78a5e8af0`, lock
+`b81617792187b3e76c7f1586ed311d540f1451acadb85c369ffcd2c4571229cb`, and separate
+development/production origins. This clean artifact is still not publication authority. Live
+Git/PR state determines the forthcoming/current docs-only tip; its selected pushed tip requires
+matching CI before any separately approved candidate command. No host/publication/human/Ready/
+merge/release/deploy/version authority follows.
 
 Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
 remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
@@ -229,9 +242,9 @@ Exact preview `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at th
 separate dev origin with `publishable:false`: manifest
 `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`, 37 files /
 10,186,537 bytes, content `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`,
-tree `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. Exact docs tip/upstream/CI is live;
-its final pushed tip needs matching CI. After green CI, Nick may explicitly approve
-the one-time PR #11 candidate command below. No host/publication/human/Ready/merge/
+tree `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. That artifact remains prior #206
+evidence; current candidate boundaries are in the clean `6554b2b` block above. After matching
+green CI, Nick may explicitly approve the one-time PR #11 candidate command below. No host/publication/human/Ready/merge/
 release/deployment/version authority follows.
 
 Pushed head `8b8a740286a56591cac9dc5734a2fba4c088939b` passed its exact local

@@ -574,8 +574,8 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > one-attempt smoke 0/10, certifying glass 12/12 and 57/57 with empty blocked/omitted
 > ledgers and zero findings/instrument failures/retries, nine automated-only personas,
 > terminal-only performance, and an Edge 151-smoked separate-origin preview with
-> `publishable:false`. Exact docs tip/upstream/check state remains live, and the final
-> pushed docs tip requires matching CI; no human or publication authority follows.
+> `publishable:false`. That source remains prior #206 evidence; current #207 repair authority
+> is the clean `6554b2b` block below. No human or publication authority follows.
 
 > **Correction earned by test-battery #207:** adjacent producer emissions are not an atomic
 > observer state. Attempt 1 of run `31642880191` / job `94269466117` at exact pushed
@@ -600,17 +600,25 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > inconsistency until timeout: impossible order fails immediately, while only the one producer-
 > legal intermediate waits.
 >
-> One dirty-tree Edge 151 diagnostic passed 12/12 and 57/57 in 52,364 ms with empty blocked/
-> omitted ledgers and 0 findings/instrument failures/retries; tablet-portrait proved ordinals
-> 6/7/8 in 175 ms and desktop-8k completed in 182 ms with 1/10 ms targets and 1/1 ms
-> heartbeats. Its report SHA-256 is
-> `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`, bound to
-> pushed `ff9bebb` plus uncommitted harness bytes (`dirty-diagnostic`, captured status
-> `3eeb0195adc02c4c58b71da388df5d09668e91f5786d7def6b5f248412dcb84d`, snapshot
-> `9a30754815548d98d4cdd474cd633d48791cc5a8ef1d59a2f7fa76a220c6e926`). Later doc
-> changes do not recertify that snapshot. It is diagnosis only until a frozen clean exact commit,
-> full battery, push, and matching CI pass; no human, host, Ready, merge, release, deploy, or
-> version authority follows.
+> The earlier dirty diagnostic (report
+> `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`) remains
+> chronology only. Immutable executable source
+> `6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the complete clean exact battery.
+> Its first sandboxed preflight Edge launch SIGABRTed before CDP; the same invocation passed when
+> permitted, with only the expected Edge 151/pin-150 warning—an environment launch refusal, not
+> a product retry. Root gates and exact layout 787/787 across 10/10 passed (report
+> `58dc4ef4456fac012b2e8f0aa801917b5579cffe435fd4576827ff29bcbb4b78`); v2 passed 273/1 and
+> every static/art/coverage gate; one-attempt smoke passed 0 findings/10 screenshots. Certifying
+> glass passed 12/12 and 57/57 in 54,877 ms with exact 6/7/8 tails on every row, empty blocked/
+> omitted ledgers, and 0 findings/instrument failures/retries. Tablet-portrait was 196 ms with
+> 2/1/1/7/0 ms command durations; desktop-8k was 197 ms with 1/1/0/7/0 ms commands,
+> 34 ms release→commit, 131 ms commit→ready, outgoing 2,365×1,330 twins →1×1, and the
+> replacement at 6,290,900 combined pixels. Nine automated-only personas and terminal-only
+> 635/717/77/151 ms performance passed. Exact preview
+> `dev-preview-exact-6554b2b-20260812T184000Z` passed Edge 151 at the separate dev origin with
+> `publishable:false`. Live Git/PR state determines the forthcoming/current docs-only tip; the
+> selected pushed tip still requires matching CI, and no human, host, Ready, merge, release,
+> deploy, or version authority follows.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next

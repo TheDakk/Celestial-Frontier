@@ -5,9 +5,10 @@
 `openai/mac`. Latest immutable CI evidence is test-battery #207 at exact pushed
 `ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
 `8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical, and the instrument
-run remains red without retry. Immutable `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
-remains prior exact clean executable evidence for the #206 repair, not #207 harness
-repair authority. Exact tip/upstream/CI state is live authority from
+run remains red without retry. Immutable executable source
+`6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the complete exact clean local
+battery for the #207 repair and underlies the forthcoming/current docs-only tip.
+Exact tip/upstream/CI state is live authority from
 `git rev-parse HEAD`, `git status --short --branch`, and PR #11 checks. Prior test-battery #201,
 run [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
 job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
@@ -408,16 +409,38 @@ remains pending under the unchanged original 20-second import deadline; phase-co
 premature, nonadjacent, missing, late, duplicate, malformed, wrong-provenance, early boot/
 ready, and overlong phase evidence fail closed.
 
-One full Edge 151 dirty diagnostic passed 12/12 and 57/57 in 52,364 ms, with empty
-blocked/omitted ledgers and zero findings/instrument failures/retries. Tablet-portrait
-proved ordinals 6/7/8 in 175 ms; desktop-8k completed in 182 ms with 1/10 ms targets
-and 1/1 ms heartbeats. Report
-`805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b` retains
-its exact pre-doc-write `dirty-diagnostic` provenance at pushed `ff9bebb`: captured status
-`3eeb0195adc02c4c58b71da388df5d09668e91f5786d7def6b5f248412dcb84d`, snapshot
-`9a30754815548d98d4cdd474cd633d48791cc5a8ef1d59a2f7fa76a220c6e926`.
-Later docs do not recertify it. Clean exact commit/battery/push plus matching CI remain
-required before any host/human step.
+The prior dirty #207 diagnostic (report
+`805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`) remains
+chronology only. Immutable executable source `6554b2be652c083bc9ff7ed11c2f928e90b74660`
+passed the sequential exact clean battery at status/snapshot
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` /
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+A first sandboxed preflight Edge launch SIGABRTed before CDP; the same invocation passed
+when permitted with only the expected Edge 151/pin-150 warning—an environment refusal,
+not a product retry. Root gates and `exact-6554b2b-root-layout` 787/787 across 10/10
+passed in 75,532 ms (report
+`58dc4ef4456fac012b2e8f0aa801917b5579cffe435fd4576827ff29bcbb4b78`). V2 passed
+273/1 plus all static/art/coverage gates. One-attempt smoke passed 0 findings/10
+screenshots in 105,430 ms (report
+`139b10ea16d17c109d5b624fa75daf73291d98f5ad8fe7df569501829ab5f844`; log
+`76a40b9bd8f88dd5f5ebdc09271c0ed289478795d6cd011338df349438ef62b8`).
+Certifying glass passed 12/12 and 57/57 in 54,877 ms with exact 6/7/8 tails on every
+row, empty blocked/omitted ledgers, and 0 findings/instrument failures/retries (report
+`a05ba65e28ac94b146b051164c1b22195bfaa7509bd47d9631561fc394920b6c`). Tablet-
+portrait was 196 ms with tail timestamps 1786574427588/7591/7591 and command durations
+2/1/1/7/0; exact 8K was 197 ms with tail timestamps 1786574452829/2832/2832, commands
+1/1/0/7/0, 34 ms release→commit, 131 ms commit→ready, outgoing 2,365×1,330 twins
+→1×1, and replacement 6,290,900 pixels combined. Nine automated-only personas passed
+(JSON `fc8d6da1e0b18d824b5403121e87b02ee9423d9592f3221d2ff1819d20629e05`;
+Markdown `08328ed2c760b722caa9f76259fe22a8dfcf1e36624086d388e19628774eb176`), plus
+terminal-only 635/717/77/151 ms performance. Exact preview
+`dev-preview-exact-6554b2b-20260812T184000Z` passed Edge 151 at the separate dev origin
+with `publishable:false`: manifest
+`98a64b750d1def5c7895cbd780a35558863f000c5a3fbcf4c3945dd927d5ce04`, 37 files /
+10,186,537 bytes, content `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`,
+tree `986116980e7b7a224f210508b4872b5d7f5621ac`, registry
+`8a290b25fc8ff27ca7f23f00367121a78a5e8af0`, lock
+`b81617792187b3e76c7f1586ed311d540f1451acadb85c369ffcd2c4571229cb`.
 
 Immutable clean executable evidence source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
 remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
@@ -444,7 +467,7 @@ passed Edge 151 at the separate dev origin with `publishable:false`, manifest
 `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`, tree
 `435c363e3e049f353e74ce71ed2a5fb4e3514c69`.
 
-Live Git/PR state decides the exact docs tip, upstream and checks; its final pushed tip
+Live Git/PR state decides the exact docs tip, upstream and checks; the selected pushed tip
 requires matching green CI before human playtest against its commit-bound preview. Record full commit,
 `preview.json` content hash, URL, tester/device/browser, save state, findings and
 retest in `port/playtests/`. Do not mark PR #11 Ready or merge before every human
@@ -465,10 +488,10 @@ scenes are the higher-value visual work.
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — test-battery #207 is the latest
 immutable pushed CI evidence at `ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
 `8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical, and the instrument run remains
-red without retry. The receipt-ordinal repair has only dirty diagnostic evidence; only a clean-head
-exact battery and matching CI on whichever pushed tip contains it can supersede that evidence.
-Resolve tip/upstream/check state live; prior #201–#207
-remain preserved red without retry. Prior clean `df1c28b` remains #206 repair evidence.
+red without retry. Immutable executable source `6554b2be652c083bc9ff7ed11c2f928e90b74660`
+passed the complete exact clean local battery and underlies the forthcoming/current docs-only tip.
+Resolve tip/upstream/check state live; the selected pushed tip requires matching CI, and prior
+#201–#207 remain preserved red without retry.
 
 **GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`),
 #202 (`31594595288` / `94106996466`), #203 (`31602984470` / `94134750800`), and
@@ -560,9 +583,15 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > `omitted=[]`, 0 retries, and no persona/preview evidence. #207 passed all prior gates and 11
   > glass rows, then tablet-portrait rejected the valid release-between-phase intermediate: 0 product
   > findings, 1 instrument failure, 57 listed controls, empty blocked/omitted ledgers, 0 retries,
-  > and no persona/preview output. Its ordinal repair has a full dirty diagnostic PASS (report
-  > `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`); only a clean-head
-  > exact battery and matching CI on whichever pushed tip contains the repair can supersede it.
+  > and no persona/preview output. Its prior dirty diagnostic remains chronology only. Immutable
+  > executable source `6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the exact clean
+  > battery: root layout 787/787, v2 273/1 plus all gates, one-attempt smoke 0/10,
+  > certifying glass 12/12 and 57/57 with exact 6/7/8 tails, empty blocked/omitted
+  > ledgers and zero findings/instrument failures/retries, nine automated-only personas,
+  > terminal-only performance, and Edge 151 preview
+  > `dev-preview-exact-6554b2b-20260812T184000Z` at the separate dev origin with
+  > `publishable:false` and content
+  > `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`.
   > The #206 repair passed the exact
   > clean sequential battery at immutable executable source
   > `df1c28b31d15cd554d36f9b4ca65d8765366a5df`: root layout 787/787, v2 273/1 plus
@@ -571,7 +600,7 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > personas and terminal-only performance. Exact preview
   > `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at
   > `https://dev-celestialfrontier.github.io` with `publishable:false`. Exact docs tip/
-  > upstream/check state is read live, and its final pushed tip requires matching CI.
+  > upstream/check state is read live, and the selected pushed tip requires matching CI.
   > No host or publication is authorized. After the
   > matching CI is green, complete and record a multi-lens human playtest against that exact preview before marking
   > this PR Ready or merging. The static Platinum-reviewed portrait set is unchanged; later visual

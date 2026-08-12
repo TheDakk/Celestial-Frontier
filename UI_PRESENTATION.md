@@ -430,16 +430,29 @@
 > 57 planned/listed controls, empty blocked/omitted ledgers, 0 retries, and no persona/
 > preview output. Preserve #207 red; this is an observer race, not a product/UI failure.
 >
-> One Edge 151 dirty diagnostic passed 12/12 and 57/57 in 52,364 ms with zero
-> findings/instrument failures/retries. Tablet-portrait proved ordinals 6/7/8 in
-> 175 ms; desktop-8k completed in 182 ms with 1/10 ms targets and 1/1 ms heartbeats.
-> Report `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`
-> is bound to the exact pre-doc-write dirty snapshot at pushed `ff9bebb` (captured status
-> `3eeb0195adc02c4c58b71da388df5d09668e91f5786d7def6b5f248412dcb84d`, working tree
-> `9a30754815548d98d4cdd474cd633d48791cc5a8ef1d59a2f7fa76a220c6e926`). It remains
-> diagnostic; only a clean-head exact battery and matching CI on whichever pushed tip contains
-> the repair can supersede it. It grants no human,
-> host, Ready, merge, release, deploy, or version authority.
+> The dirty #207 diagnostic (report
+> `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`) remains
+> chronology only. Immutable executable source
+> `6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the complete exact clean battery.
+> A first sandboxed preflight Edge launch SIGABRTed before CDP; the same invocation passed
+> when permitted with only expected Edge 151/pin-150 drift, an environment launch refusal and
+> not a product retry. Root gates and exact layout 787/787 across 10/10 passed (report
+> `58dc4ef4456fac012b2e8f0aa801917b5579cffe435fd4576827ff29bcbb4b78`); v2 passed
+> 273/1 plus all gates; one-attempt smoke passed 0 findings/10 screenshots in 105,430 ms
+> (report `139b10ea16d17c109d5b624fa75daf73291d98f5ad8fe7df569501829ab5f844`).
+> Certifying glass passed 12/12 and 57/57 in 54,877 ms with exact 6/7/8 tails on every
+> row, empty blocked/omitted ledgers, and zero findings/instrument failures/retries (report
+> `a05ba65e28ac94b146b051164c1b22195bfaa7509bd47d9631561fc394920b6c`). Tablet-
+> portrait was 196 ms with commands 2/1/1/7/0 and ready `performanceNow` 166.3 ms.
+> Exact 8K was 197 ms with commands 1/1/0/7/0, release→commit 34 ms, commit→ready
+> 131 ms, ready `performanceNow` 163.6 ms, outgoing 2,365×1,330 twins →1×1, and
+> replacement at 6,290,900 combined pixels. Nine automated-only personas and terminal-only
+> 635/717/77/151 ms performance passed. Preview
+> `dev-preview-exact-6554b2b-20260812T184000Z` passed Edge 151 at the separate dev origin
+> with `publishable:false` and content
+> `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`.
+> This source underlies the forthcoming/current docs-only tip; the selected pushed tip still
+> requires matching CI. No human, host, Ready, merge, release, deploy, or version authority follows.
 >
 > Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
 > remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
@@ -459,8 +472,9 @@
 > `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at the separate dev
 > origin with `publishable:false`, manifest `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`,
 > content `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`, tree
-> `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. Exact docs tip/upstream/CI is live;
-> its final pushed tip needs matching CI. No host/human/Ready/merge/release/deploy/version authority follows.
+> `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. That source remains prior #206 evidence;
+> current #207 repair authority is the clean `6554b2b` block above. No host/human/Ready/
+> merge/release/deploy/version authority follows.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
 v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve
