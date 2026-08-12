@@ -185,6 +185,13 @@ new boundary, including stopped-before-`invoked`, running-after-claim, and exact
 deadline-late evidence. No timeout increases, retries, or `Promise.race` around
 IndexedDB durability are used.
 
+The import-phase and generic release bindings now share one capture-scoped monotonic
+receipt ordinal. The only successful terminal is `release-started` N → release N+1 →
+`release-complete` N+2. The producer-legal release-first intermediate remains pending
+under the same original import deadline; phase-complete-first, premature, nonadjacent,
+missing, late, duplicate, malformed, wrong-provenance, early boot/ready, and an overlong
+sequence-8 terminal fail closed.
+
 The complete clean `7d9980e` battery passed: root preflight selftest/preflight
 (only Edge 151 versus pinned Edge 150 drift), validate/fingerprint and smoke;
 root layout selftest plus `exact-7d9980e-root-layout` 787/787 across 10/10
@@ -343,8 +350,32 @@ The matrix ran 12 viewports with 1 product finding, 0 instrument failures, 56 ex
 plus 1 product-blocked control =57, `omitted=[]`, and 0 retries. No persona or preview
 evidence was produced. Preserve #206 red without retry.
 
+Test-battery #207, run
+[`31642880191`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191) /
+job [`94269466117`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191/job/94269466117),
+completed attempt 1 without retry at exact pushed
+`ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
+`8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. Every prior gate,
+`smoke:ci`, and 11 glass rows passed. Tablet-portrait alone instrument-failed because
+the valid release witness was observed between ordered `release-started` and
+`release-complete`; release itself was healthy. The report retained 0 product findings,
+1 instrument failure, 57 planned/listed controls, `blocked=[]`, `omitted=[]`, 0 retries,
+and no persona/preview output. Preserve #207 red without retry.
+
+One Edge 151 dirty diagnostic passed 12/12 and 57/57 in 52,364 ms with empty blocked/
+omitted ledgers and zero findings/instrument failures/retries; tablet-portrait proved
+ordinals 6/7/8 in 175 ms and desktop-8k completed in 182 ms with 1/10 ms targets and
+1/1 ms heartbeats. Report
+`805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b` is bound to
+the exact pre-doc-write dirty snapshot at pushed `ff9bebb` (captured status
+`3eeb0195adc02c4c58b71da388df5d09668e91f5786d7def6b5f248412dcb84d`, working tree
+`9a30754815548d98d4cdd474cd633d48791cc5a8ef1d59a2f7fa76a220c6e926`). It is
+non-authoritative; only a clean-head exact battery and matching CI on whichever pushed tip
+contains the repair can supersede it. No host,
+human, Ready, merge, release, deploy, or version authority follows.
+
 Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
-underlies the current/forthcoming documentation-only tip (clean status SHA-256
+remains prior exact #206 executable evidence (clean status SHA-256
 `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`; snapshot
 `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`). Root
 preflight warned Edge 151 vs pin 150; validate/smoke and exact layout 787/787 across
@@ -683,7 +714,7 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 |---|---|
 | `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, and package tampering; then creates, verifies, and real-browser-boots a clean-commit static human-playtest package built from an isolated exact-HEAD snapshot with a visible DEV/commit banner, guarded module loader, `robots.txt`, and `preview.json` tree/lock/byte hashes. The shared workspace lock prevents overlap with source-mutating controls; the 320×568 boot requires the banner to clear the dock. Browser provenance belongs to each process: CI pins the same exact `CF_BROWSER` at job scope so the packaging step cannot fall back to another installed browser. Default output is remote-blocked; the default-branch manual workflow normally creates approved candidates, while Nick may explicitly approve PR #11's clean-head local bootstrap only after matching green CI. It never deploys. |
 | `npm run smoke:ci` | Runs the authoritative real-browser `slicesmoke.mjs` exactly once, retains complete stdout/stderr in `slice-smoke.log`, and writes commit/branch/working-tree/browser/screenshot-bound `slice-smoke-report.json`. `smokereport` owns one full-lifetime workspace lock and passes a validated one-child inherited lease to `slicesmoke`, retaining the lock through screenshot hashing and report finalization. A failure prints the first scoped diagnosis plus a related count; it never retries a red run. |
-| `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion, aggregate twin-canvas DPR and boot order without retrying. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`. Import/reload owns `import-phase-sequence`, `replacement-ticker-quiescence`, `replacement-document-loader-token-phase`, `reload-resource-release`, and `replacement-boot-phase-sequence`: the exact import stream requires ticker-running invocation, a stopped claim/write/release, and one absolute 20-second clock before the bounded arm. Sticky receipts require release, a changed-loader commit within 5 seconds, then the exact 12-stage `cf-v2-boot-phase/v1` sequence and one `cf-v2-slice-ready/v1` tail from the new session/context/generation/origin/loader/token within 20 seconds. The ticker stays false through wiring and true thereafter; browser-native `performanceNow` is strictly below the bound. Two strict at-most-2-second post-ready cycles each pair an exact-context target probe with an independent browser-process heartbeat, with cycle two awaiting a later post-render ticker turn; the import arm plus both pairs form the exact five-row command ledger. The same-backing ultra control applies that target/heartbeat discriminator to both downshift and restore, requires a later advancing ticker turn, and rejects stopped/stale ticker states. Bounded sticky failure evidence diagnoses red and separates a target-only product answerability failure from transport/instrument failure. No retry, timeout increase, or IndexedDB timeout race is used. The command owns the shared workspace lock while building/browsing. |
+| `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion, aggregate twin-canvas DPR and boot order without retrying. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`. Import/reload owns `import-phase-sequence`, `replacement-ticker-quiescence`, `replacement-document-loader-token-phase`, `reload-resource-release`, and `replacement-boot-phase-sequence`: the exact import stream requires ticker-running invocation, a stopped claim/write/release, and one absolute 20-second clock before the bounded arm. A capture-scoped ordinal requires the exact release-started N → release N+1 → release-complete N+2 tail; only the valid release-first intermediate waits under that unchanged clock. Sticky receipts then require a changed-loader commit within 5 seconds, the exact 12-stage `cf-v2-boot-phase/v1` sequence, and one `cf-v2-slice-ready/v1` tail from the new session/context/generation/origin/loader/token within 20 seconds. The ticker stays false through wiring and true thereafter; browser-native `performanceNow` is strictly below the bound. Two strict at-most-2-second post-ready cycles each pair an exact-context target probe with an independent browser-process heartbeat, with cycle two awaiting a later post-render ticker turn; the import arm plus both pairs form the exact five-row command ledger. The same-backing ultra control applies that target/heartbeat discriminator to both downshift and restore, requires a later advancing ticker turn, and rejects stopped/stale ticker states. Bounded sticky failure evidence diagnoses red and separates a target-only product answerability failure from transport/instrument failure. No retry, timeout increase, or IndexedDB timeout race is used. The command owns the shared workspace lock while building/browsing. |
 | `npm run persona:selftest` / `npm run persona:report` | Joins only passing slice-smoke and glass-matrix evidence with matching commit/branch and dirty-tree digest into `automated-persona-report.{json,md}`. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |
 | `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools, including root `tools/uilayout.js`; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. Environment scope is process-local: a green browser in one workflow step does not pin the resolver in the next. CI therefore supplies the exact path at job scope and resolves it before long gates. |
 | `node tools/browsercdp.mjs --selftest` | Uses the manifest/lock-declared `ws` transport and owns port-0 `DevToolsActivePort` startup, complete `Browser.getVersion` provenance, early-exit plus bounded stderr head/tail diagnosis, WebSocket and command bounds, pending-command rejection, bounded TERM→KILL shutdown, and validated profile cleanup. A caller may choose a shorter positive per-command timeout for a phase-owned confirmation but cannot exceed the connection-wide ceiling; the selftest rejects both a deliberately stalled short command and attempted ceiling expansion. Root `tools/uilayout.js` consumes this launcher and adds stale-report, exact-run, and sealed-inventory controls. Root preflight launches this same probe; legacy `bootperf` shares the resolver/`ws` transport but not this lifecycle. |

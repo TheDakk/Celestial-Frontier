@@ -518,7 +518,8 @@ function importPhaseOutcome(rows, {
       'primary-write-started', 'primary-write-complete', 'release-started', 'release-complete']
     : ['invoked', 'claimed', 'no-active-persist', 'primary-write-started',
       'primary-write-complete', 'release-started', 'release-complete'];
-  if (!path.slice(0, stages.length).every((stage, index) => stages[index] === stage)) {
+  if (stages.length > path.length
+    || !stages.every((stage, index) => path[index] === stage)) {
     return { status: 'failed', rows, lastStage: terminal,
       why: `import-phase stages are out of order (${stages.join(' -> ')})` };
   }
@@ -682,6 +683,57 @@ function importReleaseOutcome(witnesses, {
     return { status: 'failed', row, why: 'import transaction deadline expired before release witness' };
   }
   return { status: 'ready', row, why: null };
+}
+
+function importReleaseSequenceOutcome(importPhase, release, now, importDeadline) {
+  if (!importPhase || !release || !Number.isFinite(now) || !Number.isFinite(importDeadline)) {
+    return { status: 'failed', why: 'import/release sequence evidence is invalid' };
+  }
+  if (importPhase.status === 'failed') {
+    return { status: 'failed', why: `import phase failed (${importPhase.why || 'unknown'})` };
+  }
+  if (release.status === 'failed') {
+    return { status: 'failed', why: `release witness failed (${release.why || 'unknown'})` };
+  }
+  if (importPhase.status === 'ready' && release.status === 'pending') {
+    return { status: 'failed', why: 'release-complete arrived before the release witness' };
+  }
+  if (release.status === 'ready' && importPhase.status === 'pending') {
+    if (importPhase.lastStage !== 'release-started') {
+      return { status: 'failed', why: `release witness arrived before release-started (phase ${importPhase.lastStage || 'none'})` };
+    }
+    const releaseStarted = importPhase.rows.at(-1);
+    if (!Number.isInteger(releaseStarted?.receiptOrdinal)
+      || !Number.isInteger(release.row?.receiptOrdinal)
+      || release.row.receiptOrdinal !== releaseStarted.receiptOrdinal + 1) {
+      return { status: 'failed', why: 'release witness was not the binding immediately after release-started' };
+    }
+    if (now >= importDeadline) {
+      return { status: 'failed', why: `import/release sequence did not settle before the import deadline (phase ${importPhase.lastStage || 'none'}; release ${release.status})` };
+    }
+    return { status: 'pending', why: null };
+  }
+  if (importPhase.status === 'pending' || release.status === 'pending') {
+    if (now >= importDeadline) {
+      return { status: 'failed', why: `import/release sequence did not settle before the import deadline (phase ${importPhase.lastStage || 'none'}; release ${release.status})` };
+    }
+    return { status: 'pending', why: null };
+  }
+  if (importPhase.status !== 'ready' || release.status !== 'ready') {
+    return { status: 'failed', why: 'import/release sequence entered an unknown state' };
+  }
+  const releaseStarted = importPhase.rows.at(-2);
+  const releaseComplete = importPhase.rows.at(-1);
+  if (releaseStarted?.validation?.witness?.stage !== 'release-started'
+    || releaseComplete?.validation?.witness?.stage !== 'release-complete'
+    || !Number.isInteger(releaseStarted.receiptOrdinal)
+    || !Number.isInteger(release.row?.receiptOrdinal)
+    || !Number.isInteger(releaseComplete.receiptOrdinal)
+    || release.row.receiptOrdinal !== releaseStarted.receiptOrdinal + 1
+    || releaseComplete.receiptOrdinal !== release.row.receiptOrdinal + 1) {
+    return { status: 'failed', why: 'release bindings were not the exact release-started -> released -> release-complete tail' };
+  }
+  return { status: 'ready', why: null };
 }
 
 function replacementReadyOutcome(witnesses, {
@@ -1031,7 +1083,9 @@ async function reloadPhaseSelftest() {
     ['release-started', false], ['release-complete', false],
   ];
   const phaseRows = phaseStages.map(([stage, tickerStarted], index) => ({
-    at: 100 + index, sessionId: 'target-session', executionContextId: 5,
+    at: index >= 5 ? 105 : 100 + index,
+    receiptOrdinal: index < 6 ? index + 1 : index + 2,
+    sessionId: 'target-session', executionContextId: 5,
     loaderId: priorLoaderId,
     context: { active: true, isDefault: true, frameId: 'top-frame', generation: 1,
       uniqueId: 'old-context', origin: 'http://127.0.0.1:1234' },
@@ -1075,6 +1129,12 @@ async function reloadPhaseSelftest() {
       ...row, validation: validateImportPhaseWitness({ ...row.validation.witness, tickerStarted: true }),
     } : row), 'failed'],
     ['just-late', phaseRows.map((row, index) => index === phaseRows.length - 1 ? { ...row, at: 110 } : row), 'failed'],
+    ['overlong-terminal', [...phaseRows, {
+      ...phaseRows.at(-1), receiptOrdinal: 9,
+      validation: validateImportPhaseWitness({
+        ...phaseRows.at(-1).validation.witness, sequence: 8,
+      }),
+    }], 'failed'],
   ];
   for (const [label, rows, status] of phaseControls) {
     const outcome = importPhaseOutcome(rows, phaseOptions);
@@ -1628,7 +1688,7 @@ async function reloadPhaseSelftest() {
     failures.push(`just-late browser-native slice-ready timestamp was accepted: ${JSON.stringify(productClockLate)}`);
   }
   const releaseRow = {
-    at: 100, sessionId: 'target-session', loaderId: priorLoaderId,
+    at: 100, receiptOrdinal: 7, sessionId: 'target-session', loaderId: priorLoaderId,
     context: { active: true, isDefault: true, frameId: 'top-frame', generation: 1,
       uniqueId: 'old-context', origin: 'http://127.0.0.1:1234' },
     validation: releaseAccepted,
@@ -1646,9 +1706,15 @@ async function reloadPhaseSelftest() {
   const releaseControls = [
     ['missing', [], 'pending'],
     ['duplicate', [releaseRow, releaseRow], 'failed'],
+    ['malformed', [{ ...releaseRow, validation: validateReloadReleaseWitness('{bad json', ordinaryViewport) }], 'failed'],
     ['wrong-reason', [{ ...releaseRow, validation: validateReloadReleaseWitness({ ...validRelease, reason: 'training-restart' }, ordinaryViewport) }], 'failed'],
     ['wrong-token', [{ ...releaseRow, validation: validateReloadReleaseWitness({ ...validRelease, documentToken: 'other-token' }, ordinaryViewport) }], 'failed'],
     ['wrong-context', [{ ...releaseRow, context: { ...releaseRow.context, uniqueId: 'other-context' } }], 'failed'],
+    ['wrong-frame', [{ ...releaseRow, context: { ...releaseRow.context, frameId: 'other-frame' } }], 'failed'],
+    ['wrong-generation', [{ ...releaseRow, context: { ...releaseRow.context, generation: 2 } }], 'failed'],
+    ['wrong-origin', [{ ...releaseRow, context: { ...releaseRow.context, origin: 'http://127.0.0.1:9999' } }], 'failed'],
+    ['nondefault-context', [{ ...releaseRow, context: { ...releaseRow.context, isDefault: false } }], 'failed'],
+    ['inactive-context', [{ ...releaseRow, context: { ...releaseRow.context, active: false } }], 'failed'],
     ['wrong-loader', [{ ...releaseRow, loaderId: 'other-loader' }], 'failed'],
     ['wrong-session', [{ ...releaseRow, sessionId: 'other-session' }], 'failed'],
     ['just-late', [{ ...releaseRow, at: 110 }], 'failed'],
@@ -1658,6 +1724,57 @@ async function reloadPhaseSelftest() {
     if (outcome.status !== status) {
       failures.push(`${label} import-release control was accepted: ${JSON.stringify(outcome)}`);
     }
+  }
+  const alignedReleaseRow = { ...releaseRow, at: 105 };
+  const alignedRelease = importReleaseOutcome([alignedReleaseRow], releaseOptions);
+  const releaseFirstPending = importReleaseSequenceOutcome(
+    importPhaseOutcome(phaseRows.slice(0, -1), phaseOptions), alignedRelease, 105, 110,
+  );
+  if (releaseFirstPending.status !== 'pending') {
+    failures.push(`adjacent release-first event ordering did not remain pending: ${JSON.stringify(releaseFirstPending)}`);
+  }
+  const releaseFirstComplete = importReleaseSequenceOutcome(
+    phaseSuccess, alignedRelease, 106, 110,
+  );
+  if (releaseFirstComplete.status !== 'ready') {
+    failures.push(`adjacent release-first event ordering did not settle ready: ${JSON.stringify(releaseFirstComplete)}`);
+  }
+  const missingReleaseComplete = importReleaseSequenceOutcome(
+    importPhaseOutcome(phaseRows.slice(0, -1), phaseOptions), alignedRelease, 110, 110,
+  );
+  if (missingReleaseComplete.status !== 'failed' || !/deadline/.test(missingReleaseComplete.why || '')) {
+    failures.push(`missing release-complete did not fail at the exact import deadline: ${JSON.stringify(missingReleaseComplete)}`);
+  }
+  const phaseFirstPending = importReleaseSequenceOutcome(
+    phaseSuccess, importReleaseOutcome([], releaseOptions), 106, 110,
+  );
+  if (phaseFirstPending.status !== 'failed' || !/before the release witness/.test(phaseFirstPending.why || '')) {
+    failures.push(`impossible phase-complete-first ordering was not rejected: ${JSON.stringify(phaseFirstPending)}`);
+  }
+  const phaseFirstComplete = importReleaseSequenceOutcome(
+    phaseSuccess, importReleaseOutcome([{ ...alignedReleaseRow, at: 107, receiptOrdinal: 9 }], releaseOptions), 107, 110,
+  );
+  if (phaseFirstComplete.status !== 'failed' || !/exact release-started/.test(phaseFirstComplete.why || '')) {
+    failures.push(`late phase-first release was accepted: ${JSON.stringify(phaseFirstComplete)}`);
+  }
+  const missingReleaseWitness = importReleaseSequenceOutcome(
+    importPhaseOutcome(phaseRows.slice(0, -1), phaseOptions), importReleaseOutcome([], releaseOptions), 110, 110,
+  );
+  if (missingReleaseWitness.status !== 'failed' || !/deadline/.test(missingReleaseWitness.why || '')) {
+    failures.push(`missing release witness did not fail at the exact import deadline: ${JSON.stringify(missingReleaseWitness)}`);
+  }
+  const prematureRelease = importReleaseSequenceOutcome(
+    importPhaseOutcome(phaseRows.slice(0, 5), phaseOptions), alignedRelease, 105, 110,
+  );
+  if (prematureRelease.status !== 'failed' || !/before release-started/.test(prematureRelease.why || '')) {
+    failures.push(`release before release-started was accepted: ${JSON.stringify(prematureRelease)}`);
+  }
+  const interposedBinding = importReleaseSequenceOutcome(
+    importPhaseOutcome(phaseRows.slice(0, -1), phaseOptions),
+    importReleaseOutcome([{ ...alignedReleaseRow, receiptOrdinal: 8 }], releaseOptions), 105, 110,
+  );
+  if (interposedBinding.status !== 'failed' || !/immediately after release-started/.test(interposedBinding.why || '')) {
+    failures.push(`non-adjacent release binding was accepted: ${JSON.stringify(interposedBinding)}`);
   }
   const lifecycle = compactReloadEvent({ method: 'Page.lifecycleEvent', params: {
     name: 'DOMContentLoaded', frameId: 'top-frame', loaderId: 'replacement-loader',
@@ -2868,7 +2985,7 @@ async function main() {
          late matrix row to inherit GPU pressure from the first ten rows. */
       let browser = null, browserContextId = null, targetId = null;
       let eventSessionId = null, reloadCaptureArmed = false;
-      let contextSequence = 0, currentTopLoaderId = null;
+      let contextSequence = 0, currentTopLoaderId = null, reloadBindingReceiptOrdinal = 0;
       const runtimeContexts = new Map();
       const reloadEvents = [], reloadImportPhases = [], reloadReleaseWitnesses = [], reloadBootPhases = [], reloadReadyWitnesses = [],
         reloadTopNavigations = [], reloadFatalEvents = [], reloadCommands = [], requestUrls = new Map();
@@ -2919,14 +3036,16 @@ async function main() {
               ? reloadReleaseWitnesses
               : event.params.name === BOOT_PHASE_BINDING
                 ? reloadBootPhases : reloadReadyWitnesses;
+          const receiptOrdinal = [IMPORT_PHASE_BINDING, RELOAD_RELEASE_BINDING].includes(event.params.name)
+            ? ++reloadBindingReceiptOrdinal : null;
           target.push({
             at, sessionId: event.sessionId || null, executionContextId,
             loaderId: currentTopLoaderId, context: context ? { ...context } : null,
-            validation,
+            receiptOrdinal, validation,
           });
           pushBoundedReloadEvent(reloadEvents, {
             at, method: 'Runtime.bindingCalled', name: event.params.name,
-            executionContextId,
+            executionContextId, receiptOrdinal,
             valid: validation.ok, why: validation.why,
           });
           return;
@@ -3182,17 +3301,26 @@ async function main() {
               expectedSessionId: session, importDeadline,
             });
             if (release.status === 'failed') fail(`reload resource release failed closed (${release.why})`);
-            if (release.status === 'pending') {
+            if (release.status === 'ready') {
+              /* The product deliberately emits the generic released-resource
+                 binding immediately before its operation-specific
+                 release-complete binding. CDP can wake this loop between
+                 those adjacent events. Anchor navigation to the immutable
+                 release receipt now, but let the exact phase ledger settle
+                 under the original import deadline. */
+              navigationDeadline ??= release.row.at + navigationTimeoutMs;
+            }
+            const importReleaseSequence = importReleaseSequenceOutcome(
+              importPhase, release, Date.now(), importDeadline,
+            );
+            if (importReleaseSequence.status === 'failed') {
+              fail(`import/release sequence failed closed (${importReleaseSequence.why})`);
+            }
+            if (importReleaseSequence.status === 'pending') {
               if (reloadReadyWitnesses.length) fail('slice-ready witness arrived before import release/navigation');
               if (reloadBootPhases.length) fail('replacement boot phase arrived before import release/navigation');
-              if (Date.now() >= importDeadline) {
-                fail(`import transaction did not settle within ${importTimeoutMs}ms; last phase ${importPhase.lastStage || 'none'}`);
-              }
               await sleep(20);
               continue;
-            }
-            if (importPhase.status !== 'ready') {
-              fail(`release witness arrived before a complete import-phase sequence (last ${importPhase.lastStage || 'none'})`);
             }
             const liveStages = importPhase.rows.map((row) => row.validation.witness.stage);
             const expectedLiveStages = [
@@ -3202,7 +3330,6 @@ async function main() {
             if (JSON.stringify(liveStages) !== JSON.stringify(expectedLiveStages)) {
               fail(`preference import inherited unexpected prior persistence (${liveStages.join(' -> ')})`);
             }
-            navigationDeadline ??= release.row.at + navigationTimeoutMs;
             const navigation = replacementNavigationOutcome(reloadTopNavigations, {
               priorLoaderId: priorFrame.loaderId, priorFrameId: priorFrame.frameId,
               expectedUrl: url, releaseAt: release.row.at, navigationDeadline,
@@ -3411,6 +3538,7 @@ async function main() {
               reloadTopNavigations.length = 0;
               reloadFatalEvents.length = 0;
               reloadCommands.length = 0;
+              reloadBindingReceiptOrdinal = 0;
               requestUrls.clear();
             }
           }
@@ -3423,6 +3551,7 @@ async function main() {
           reloadTopNavigations.length = 0;
           reloadFatalEvents.length = 0;
           reloadCommands.length = 0;
+          reloadBindingReceiptOrdinal = 0;
           requestUrls.clear();
           reloadCaptureArmed = true;
           try {

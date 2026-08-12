@@ -1116,7 +1116,7 @@ duplicates).
   scene-art quality tier landed.
 
   Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
-  underlies the current/forthcoming documentation-only tip (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+  remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
   snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
   Edge 151/pin-150 preflight warned; root validate/smoke and layout 787/787 across
   10/10 passed; v2 passed 273/1 plus all gates. One-attempt slice smoke passed 0/10
@@ -1130,6 +1130,35 @@ duplicates).
   passed Edge 151 at the separate dev origin with `publishable:false`. Exact docs tip/
   upstream/CI is live; its final pushed tip needs matching CI. No host/human/Ready/
   merge/release/deploy/version authority follows.
+- ★ **D-UI-6 — adjacent import/release bindings share one ordinal ruler (repair diagnostic;
+  clean exact certification pending, 2026-08-12).** Test-battery #207, run
+  `31642880191` attempt 1 / job `94269466117`, completed without retry at exact pushed
+  `ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
+  `8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. Every prior gate,
+  `smoke:ci`, and 11 glass rows passed. Tablet-portrait alone instrument-failed when
+  a valid healthy release witness was received between ordered `release-started` and
+  `release-complete`, but the harness treated that producer-legal intermediate as terminal.
+  The report records 0 product findings, 1 instrument failure, 57 planned/listed controls,
+  `blocked=[]`, `omitted=[]`, 0 retries, and no persona/preview output. Preserve #207 red.
+
+  The repair gives only the import-phase and generic release bindings one monotonic ordinal
+  within an armed capture. The successful tail is exactly `release-started` N → release N+1 →
+  `release-complete` N+2. The valid release-first intermediate stays pending under the unchanged
+  original 20-second import deadline; the release receipt may anchor navigation without renewing
+  import. Phase-complete-first, premature, nonadjacent, missing, late, duplicate, malformed,
+  wrong-provenance, early boot/ready, and overlong phase streams including a duplicate sequence-8
+  terminal fail closed.
+
+  One full Edge 151 dirty diagnostic passed 12/12 and 57/57 in 52,364 ms with empty blocked/
+  omitted ledgers and zero findings/instrument failures/retries. Tablet-portrait carried ordinals
+  6/7/8 in 175 ms; desktop-8k completed in 182 ms with 1/10 ms targets and 1/1 ms heartbeats.
+  Report `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`
+  is bound to pushed `ff9bebb` plus uncommitted harness bytes: captured status
+  `3eeb0195adc02c4c58b71da388df5d09668e91f5786d7def6b5f248412dcb84d` and snapshot
+  `9a30754815548d98d4cdd474cd633d48791cc5a8ef1d59a2f7fa76a220c6e926`. Later doc
+  writes do not recertify it. Only a clean-head exact battery and matching green CI on whichever
+  pushed tip contains the repair can supersede it; no human, host, Ready, merge, release,
+  deployment, or version authority follows.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
@@ -1309,7 +1338,7 @@ duplicates).
 
   The exact `7d9980e` battery above remains immutable evidence for that repair; later prior D-SAVE-3
   evidence is bound to clean executable source `46fb627` above. Live Git/PR checks decide exact
-  tip/upstream/check state, and whichever final pushed docs tip is selected requires matching CI.
+  tip/upstream/check state; whichever pushed tip contains the #207 repair requires matching CI.
   Separate-origin human playtest, human certification, Ready, merge, version, preview publication
   and deployment remain separate authority boundaries.
   Earlier test-battery #203 (`31602984470` / `94134750800`) failed once without retry only

@@ -2,10 +2,12 @@
 
 **Current integration state:** PR #10 merged normally into `develop` at
 `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`. OpenAI/Codex remains on
-`openai/mac`. Latest immutable CI evidence is test-battery #206 at exact pushed
-`558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577` is tree-identical,
-and the run remains red without retry. Immutable `135a635` remains prior exact
-clean evidence, not #206 repair authority. Exact tip/upstream/CI state is live authority from
+`openai/mac`. Latest immutable CI evidence is test-battery #207 at exact pushed
+`ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
+`8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical, and the instrument
+run remains red without retry. Immutable `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
+remains prior exact clean executable evidence for the #206 repair, not #207 harness
+repair authority. Exact tip/upstream/CI state is live authority from
 `git rev-parse HEAD`, `git status --short --branch`, and PR #11 checks. Prior test-battery #201,
 run [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
 job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
@@ -386,8 +388,39 @@ bound while `Browser.getVersion` answered in 2 ms; `last:null`. The sole
 `omitted=[]`, 0 retries. No persona or preview evidence was produced. Preserve
 #206 red without retry.
 
+Test-battery #207, run
+[`31642880191`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191) /
+job [`94269466117`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191/job/94269466117),
+completed attempt 1 without retry at exact pushed
+`ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
+`8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. Every prior gate,
+`smoke:ci`, and 11 glass rows passed. Tablet-portrait alone instrument-failed because
+the valid release witness arrived after `release-started` and before `release-complete`,
+and the observer rejected that healthy intermediate. Release itself proved released
+renderer/stage, detached view, 1×1 canvases, and null error. The report records 0 product
+findings, 1 instrument failure, 57 planned/listed controls, `blocked=[]`, `omitted=[]`,
+0 retries, and no persona/preview output. Preserve #207 red without retry.
+
+The harness repair assigns a monotonic receipt ordinal only to import-phase and generic
+release bindings in one armed capture. A successful tail is exactly `release-started` N →
+release N+1 → `release-complete` N+2. Only the producer-legal release-first intermediate
+remains pending under the unchanged original 20-second import deadline; phase-complete-first,
+premature, nonadjacent, missing, late, duplicate, malformed, wrong-provenance, early boot/
+ready, and overlong phase evidence fail closed.
+
+One full Edge 151 dirty diagnostic passed 12/12 and 57/57 in 52,364 ms, with empty
+blocked/omitted ledgers and zero findings/instrument failures/retries. Tablet-portrait
+proved ordinals 6/7/8 in 175 ms; desktop-8k completed in 182 ms with 1/10 ms targets
+and 1/1 ms heartbeats. Report
+`805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b` retains
+its exact pre-doc-write `dirty-diagnostic` provenance at pushed `ff9bebb`: captured status
+`3eeb0195adc02c4c58b71da388df5d09668e91f5786d7def6b5f248412dcb84d`, snapshot
+`9a30754815548d98d4cdd474cd633d48791cc5a8ef1d59a2f7fa76a220c6e926`.
+Later docs do not recertify it. Clean exact commit/battery/push plus matching CI remain
+required before any host/human step.
+
 Immutable clean executable evidence source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
-underlies the current/forthcoming documentation-only tip (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
 snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
 Root preflight warned Edge 151 vs pin 150; validate/smoke and layout 787/787 across
 10/10 passed in 75,544 ms (`exact-df1c28b-root-layout`; report
@@ -429,17 +462,19 @@ scenes are the higher-value visual work.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — test-battery #206 is the latest
-immutable pushed CI evidence at `558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577`
-is tree-identical, and the run remains red without retry. Immutable executable evidence source
-`df1c28b31d15cd554d36f9b4ca65d8765366a5df` passed the exact clean-head local battery and
-underlies the current/forthcoming documentation-only tip. Resolve exact tip/upstream/check state live;
-prior #201–#206 remain preserved red without retry.
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — test-battery #207 is the latest
+immutable pushed CI evidence at `ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
+`8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical, and the instrument run remains
+red without retry. The receipt-ordinal repair has only dirty diagnostic evidence; only a clean-head
+exact battery and matching CI on whichever pushed tip contains it can supersede that evidence.
+Resolve tip/upstream/check state live; prior #201–#207
+remain preserved red without retry. Prior clean `df1c28b` remains #206 repair evidence.
 
 **GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`),
 #202 (`31594595288` / `94106996466`), #203 (`31602984470` / `94134750800`), and
 #204 (`31612817092` / `94168172635`), #205 (`31621227550` / `94196289291`), and
-#206 (`31635297321` / `94243979205`) without retry. Read `git rev-parse HEAD`,
+#206 (`31635297321` / `94243979205`), and #207 (`31642880191` / `94269466117`)
+without retry. Read `git rev-parse HEAD`,
 `git status --short --branch`, and PR #11 checks. Push the current `openai/mac` tip only
 if its upstream is behind; live state determines commit/push status, and whichever final
 pushed tip is selected requires matching green CI. After green CI, obtain host approval, publish the separate-origin preview,
@@ -477,7 +512,10 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > `cf-v2-slice-ready/v1` event from the new default top context/session/loader/token/URL, with a
   > browser-native timestamp strictly below the boot bound, precedes two strict at-most-2-second
   > exact-context cycles, each concurrent with a root browser-process heartbeat; cycle 2 runs on
-  > a later post-render Pixi ticker turn. No serial poll or retry owns the verdict. Replacement ownership now
+  > a later post-render Pixi ticker turn. Import/release bindings share a scoped ordinal and accept
+  > only release-started N → release N+1 → release-complete N+2; only that intermediate waits under
+  > the unchanged import deadline, while impossible/missing/late/wrong-provenance tails fail closed.
+  > No serial poll or retry owns the verdict. Replacement ownership now
   > quiesces the outgoing ticker before any durable-write await and restores it only on exact-
   > owner rollback. An exact-operation import-phase stream requires ticker-running invocation,
   > stopped claim/write/release, and one absolute deadline beginning before its bounded arm;
@@ -510,7 +548,8 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > Prior #201 (`31586917924` / `94082765087`), #202
   > (`31594595288` / `94106996466`), and #203 (`31602984470` / `94134750800`)
   > plus #204 (`31612817092` / `94168172635`), #205
-  > (`31621227550` / `94196289291`), and #206 (`31635297321` / `94243979205`)
+  > (`31621227550` / `94196289291`), #206 (`31635297321` / `94243979205`), and #207
+  > (`31642880191` / `94269466117`)
   > remain preserved red without retry; #202 exposed
   > serial observer latency, #203 exposed pre-release 8K renderer pressure before the first
   > release witness; #204 isolated post-load readiness pressure after healthy import/write/
@@ -518,7 +557,13 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > a concurrent browser heartbeat. #206 passed reload/ready and its initial heartbeat-backed
   > confirmations, then the later 5K resize target timed out at 2,003 ms while the browser heartbeat
   > answered in 2 ms: 1 product finding, 0 instrument failures, 56 executed +1 blocked =57,
-  > `omitted=[]`, 0 retries, and no persona/preview evidence. The repair then passed the exact
+  > `omitted=[]`, 0 retries, and no persona/preview evidence. #207 passed all prior gates and 11
+  > glass rows, then tablet-portrait rejected the valid release-between-phase intermediate: 0 product
+  > findings, 1 instrument failure, 57 listed controls, empty blocked/omitted ledgers, 0 retries,
+  > and no persona/preview output. Its ordinal repair has a full dirty diagnostic PASS (report
+  > `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`); only a clean-head
+  > exact battery and matching CI on whichever pushed tip contains the repair can supersede it.
+  > The #206 repair passed the exact
   > clean sequential battery at immutable executable source
   > `df1c28b31d15cd554d36f9b4ca65d8765366a5df`: root layout 787/787, v2 273/1 plus
   > every gate, one-attempt smoke 0/10, certifying glass 12/12 and 57/57 with empty
@@ -551,7 +596,7 @@ bump has occurred.
 file exists on the default branch. Since PR #11 introduces
 `development-preview-package.yml`, any exact pre-merge review candidate must, after matching
 green CI and explicit Nick approval, use the local clean/pushed-head command in
-`port/DEVELOPMENT_PREVIEW.md`. No such #206 candidate exists yet.
+`port/DEVELOPMENT_PREVIEW.md`. No #207-repair candidate is authorized or published.
 After that workflow reaches `develop`, later candidates use the reviewed manual
 workflow. Neither path deploys without a separately approved host action.
 
