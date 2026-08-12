@@ -2,10 +2,11 @@
 
 **Current integration state:** PR #10 merged normally into `develop` at
 `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`. OpenAI/Codex remains on
-`openai/mac`; the pushed baseline at this handoff's start is
-`fc10ed67fcf31ffeece09d8fd4239a07a0815108`. The current batch has intentional
-scoped working-copy changes and is not publication evidence until it is frozen
-in one clean pushed commit. Draft PR #11 is open at
+`openai/mac`; the current pushed PR head is
+`33ea34191c817a8e78eea598c31981f8208e939b`. Its exact local battery passed,
+but matching test-battery run `31571459050` found the two issues now being
+repaired. The current repair has intentional scoped working-copy changes and is
+not publication evidence until frozen in a new clean pushed commit. Draft PR #11 is open at
 https://github.com/TheDakk/Celestial-Frontier/pull/11.
 
 The batch audits and hardens the already-ported Phase-4 slice: sparse/corrupt/
@@ -31,9 +32,12 @@ areas, minimum targets, contrast, focus continuity, assistive state, display
 preferences, reduced motion and bounded DPR. Panels reserve a dedicated 44px
 sticky-close gutter and restore focus to their opener, or to Survey/canvas when
 a desktop rail opener has become hidden. On landed ≤900px layouts the objective
-yields to populated Planetside until ascent; portrait retains the trail, while
-short landscape also yields the trail and begins Planetside below measured top
-chrome. Dock icons use the 42px client line inside their 44px target, and A++ retains a larger toast-title tier.
+yields to populated Planetside until ascent; short landscape yields the trail.
+Portrait measures fixed top chrome, the last visible trail edge and safe/dock/
+context lower chrome. It retains the trail when a useful 72px roster plus 6px
+clearance fits; otherwise only that noninteractive trail yields while a minimum-
+72px vertically scrollable Planetside remains usable and restores the trail when
+space returns. Dock icons use the 42px client line inside their 44px target, and A++ retains a larger toast-title tier.
 Training retains its intentional layer choreography and keyboard focus lock;
 ordinary panels remain above survey cards outside Training. The v2 Training arc
 still contains the six current chart/travel/landing lessons plus an honest
@@ -48,20 +52,31 @@ refuses production/path origins. The actual separate preview owner/hostname has
 not been chosen or published; use either the recommended separate
 `dev-celestialfrontier` owner site or an approved dedicated custom hostname.
 
-**Evidence status:** earlier incremental runs reached 24 Vitest files /271 pass /
-1 skip, both TypeScript configs, static art/route gates and targeted browser/
-performance checks. Source and test edits continued afterward, so those results
-are not the final PR-head verdict. On the post-policy dirty snapshot bound by
-working-tree SHA-256 `88d1996909134596302a2f8558cef553220816ab48ee356f970132a5309f6293`,
-`smoke:ci` passed with 0 findings and 10 screenshots; the full isolated
-`glassmatrix` passed all 12 viewports including 8K with 0 findings, 0 instrument
-failures, 0 omitted planned controls and 0 retries; and `persona:report` passed
-all 9 bounded automated personas. The 390×844 DPR-3 four-run performance
-diagnostic passed at painted 658ms, answerable 734ms, press→panel 70ms and galaxy
-rebuild 178ms. The exact-keepsake repair and documentation sync followed that
-snapshot. These are pre-freeze diagnostics, not exact-commit evidence,
-matching CI, an approved performance budget, or a human playtest. Freeze the final head in a commit, run the full
-sequential local battery, then push it and require matching GitHub CI before completing a real multi-lens human
+**Evidence status:** pushed commit
+`33ea34191c817a8e78eea598c31981f8208e939b` passed its exact local battery,
+but matching GitHub test-battery #199, run `31571459050` / job
+`94034164092`, failed in the v2 real-browser/responsive/persona step after
+24m01 (30m39 job). Its single `smoke:ci` run passed. The glass matrix then saw
+the old ready document token through the former one-piece 10-second desktop-8k
+reload window and also recorded small-phone `PLANETSIDE_TOP_CHROME_OVERLAP`
+(Planetside `[12,103,308,248]`, trail `[3.82,96,316.18,127.5]`).
+
+The current repair gives import settlement and replacement boot separate
+20-second bounds, witnesses an explicit import phase plus the top-frame loader
+and document token, and passes only a ready document with both loader and token
+changed. `replacement-document-loader-token-phase` rejects lost/rejected phases,
+same-document token mutation and loader/evaluation races without retrying.
+`planetside-portrait-band-viability` proves a 72px useful scrolling band, visible
+heading/reachable specimen and 6px trail separation, with a removed-cap collision
+control. `planetside-portrait-trail-fallback` tightens the lower safe rectangle
+enough to force the trail to yield, proves the strip remains usable, and proves exact restoration.
+Only `node --check tools/glassmatrix.mjs`, `npm run glassmatrix:selftest`, both
+root and app TypeScript programs via `npm run typecheck`, and `git diff --check`
+are green after this repair. Targeted real-browser diagnostics for the small-phone portrait branch
+and desktop-8k import/reload path also pass on the mutable repair snapshot; they are non-certifying.
+Do not call it final. Run current `smoke:ci` and the complete 12-viewport matrix/persona synthesis,
+freeze the repair commit, run the full sequential exact-head battery, then push it and require
+matching GitHub CI before completing a real multi-lens human
 playtest against its commit-bound separate-origin preview. Record full commit,
 `preview.json` content hash, URL, tester/device/browser, save state, findings and
 retest in `port/playtests/`. Do not mark PR #11 Ready or merge before every human
@@ -79,9 +94,10 @@ scenes are the higher-value visual work.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — this batch remains
-uncommitted/unpushed at the handoff point recorded above. Draft PR #11 exists,
-but its current remote head does not yet contain the complete working batch.
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — pushed head
+`33ea34191c817a8e78eea598c31981f8208e939b` is the red-CI diagnosis baseline;
+the Planetside and reload-witness repair remains uncommitted/unpushed. Draft PR #11 exists,
+but its current remote head does not yet contain this repair.
 
 **GitHub step:** keep PR #11 draft. Freeze the scoped batch in a commit, run the
 final sequential local battery on that exact commit, then push it and require
@@ -112,8 +128,11 @@ auto-merge, squash/rebase, retarget `main`, or add this work to merged PR #10.
   > `rnSeen`. Improves safe areas, contrast, focus, assistive state, display preferences, reduced
   > motion and bounded DPR across a 12-viewport glass matrix including 8K. Panels reserve a 44px
   > sticky-close gutter and hidden rail openers fall back to Survey/canvas. On landed touch layouts,
-  > the objective yields to Planetside; portrait retains the trail while short landscape yields it
-  > and starts Planetside below measured top chrome. Adds provenance-bound
+  > the objective yields to Planetside; short landscape yields the trail, while portrait retains it
+  > only when a useful 72px roster plus 6px clearance fits and otherwise yields only that trail for a
+  > vertically scrollable Planetside. The responsive gate observes import settlement and replacement
+  > boot as separate 20-second phases and requires both loader and document token to change, with no
+  > retry. Adds provenance-bound
   > smoke, glass and automated-persona reports plus commit-bound development-preview packaging;
   > automated personas are explicitly not a human playtest. The preview requires a separately
   > approved origin, which has not been chosen or published. Final verification is publication-

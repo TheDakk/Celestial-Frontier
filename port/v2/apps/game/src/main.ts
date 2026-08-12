@@ -119,6 +119,9 @@ const ctxEl = document.getElementById('ctxbar')!;
 const hintEl = document.getElementById('hintpill')!;
 const topbarEl = document.getElementById('topbar')!;
 const dockEl = document.getElementById('dock')!;
+const surfaceTopChromeEls = ['topbar', 'searchbox', 'objchip']
+  .map((id) => document.getElementById(id)!) as HTMLElement[];
+let lastSurfaceTrailBottom = 0;
 const esc = (s: unknown): string => String(s ?? '').replace(/[<>&"']/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c]!));
 function syncTopbarH(): void {
   /* the game's height-sync law: MEASURED, never guessed (main.js 119) */
@@ -128,26 +131,66 @@ function syncDockH(): void {
   /* Phone owns two rows while desktop owns one. All lower chrome reads the
      measured result, so a media-query or safe-area change cannot bury it. */
   document.documentElement.style.setProperty('--dock-h', dockEl.offsetHeight + 'px');
+  syncSurfaceChromeBottom();
 }
 function syncCtxH(): void {
   /* The contextual line can wrap on a phone. Planetside anchors above its
      rendered height rather than assuming one line and covering the copy. */
   document.documentElement.style.setProperty('--ctx-h', ctxEl.offsetHeight + 'px');
+  syncSurfaceChromeBottom();
 }
 function syncHintH(): void {
   /* A++ can enlarge the hint. The caption reads its rendered height rather
      than retaining the default-font offset and overlapping it. */
   document.documentElement.style.setProperty('--hint-h', hintEl.offsetHeight + 'px');
 }
+function syncSurfaceChromeBottom(): void {
+  /* Portrait Planetside is bottom-anchored above measured lower chrome. Its
+     upper bound must be measured too: at 320px/A++ the trail is lower than the
+     HP bar, and a natural-height roster otherwise rises through that trail.
+     If fewer than 72 useful pixels remain, the noninteractive trail yields;
+     retaining its last visible edge prevents that choice oscillating. */
+  const renderedBottom = (el: HTMLElement): number | null => {
+    const style = getComputedStyle(el);
+    const rect = el.getBoundingClientRect();
+    return style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity) > 0
+      && rect.width > 0 && rect.height > 0 ? rect.bottom : null;
+  };
+  const trailBottom = renderedBottom(trailEl);
+  if (trailBottom !== null) lastSurfaceTrailBottom = trailBottom;
+  let fixedBottom = 0;
+  for (const el of surfaceTopChromeEls) {
+    const bottom = renderedBottom(el);
+    if (bottom !== null) fixedBottom = Math.max(fixedBottom, bottom);
+  }
+  const withTrailBottom = Math.max(fixedBottom, lastSurfaceTrailBottom);
+  const side = document.getElementById('planetside');
+  const sideRect = side?.getBoundingClientRect();
+  const sideStyle = side ? getComputedStyle(side) : null;
+  const sideVisible = !!sideRect && !!sideStyle && sideStyle.display !== 'none'
+    && sideStyle.visibility !== 'hidden' && sideRect.width > 0 && sideRect.height > 0;
+  const portraitPhone = matchMedia('(max-width: 900px) and (orientation: portrait)').matches;
+  const overlaysYieldChrome = document.body.classList.contains('card-open')
+    || document.body.classList.contains('panel-open');
+  const yieldTrail = document.body.classList.contains('surface-mode') && portraitPhone
+    && !overlaysYieldChrome && sideVisible && sideRect!.bottom - withTrailBottom - 6 < 72;
+  document.body.classList.toggle('surface-trail-yield', yieldTrail);
+  const visibleBottom = Math.max(fixedBottom, trailBottom ?? (portraitPhone ? lastSurfaceTrailBottom : 0));
+  document.documentElement.style.setProperty('--surface-chrome-bottom',
+    (yieldTrail ? fixedBottom : visibleBottom).toFixed(2) + 'px');
+}
 new ResizeObserver(syncTopbarH).observe(topbarEl);
 new ResizeObserver(syncDockH).observe(dockEl);
 new ResizeObserver(syncCtxH).observe(ctxEl);
 new ResizeObserver(syncHintH).observe(hintEl);
+for (const el of surfaceTopChromeEls) new ResizeObserver(syncSurfaceChromeBottom).observe(el);
+new MutationObserver(syncSurfaceChromeBottom).observe(document.body, { attributes: true, attributeFilter: ['class'] });
 addEventListener('resize', () => {
   syncTopbarH();
   syncDockH();
   syncCtxH();
   syncHintH();
+  syncSurfaceChromeBottom();
   /* rotation moves minWH while the ascend floors read gz0/sz0 live (audit
      #8) — recompute for the mode you are IN so the thresholds agree */
   if (nav.mode === 'galaxy') gz0 = 0.42 * minWH() / GR;
@@ -246,6 +289,7 @@ function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTrave
   card.style.display = 'block';
   card.setAttribute('aria-hidden', 'false');
   document.body.classList.add('card-open');
+  syncSurfaceChromeBottom();
   surveyDockEl.classList.add('on');
   surveyDockEl.setAttribute('aria-expanded', 'true');
 }
@@ -253,6 +297,7 @@ function hideSurvey(restoreFocus = false): void {
   card.style.display = 'none';
   card.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('card-open');
+  syncSurfaceChromeBottom();
   surveyDockEl.classList.remove('on');
   surveyDockEl.setAttribute('aria-expanded', 'false');
   if (restoreFocus && surveyFocusReturn?.isConnected) {
@@ -369,7 +414,7 @@ function applyDisplayPreferences(): void {
   if (save.fontMode) body.classList.add(save.fontMode);
   body.classList.toggle('motion-reduced', !motionOK());
   applyGlass();
-  syncTopbarH(); syncDockH(); syncCtxH(); syncHintH();
+  syncTopbarH(); syncDockH(); syncCtxH(); syncHintH(); syncSurfaceChromeBottom();
 }
 reducedMotionQuery.addEventListener('change', () => {
   if (save?.motionMode === -1) applyDisplayPreferences();
@@ -1012,6 +1057,7 @@ function hudText(): void {
     setHint('press Leave world, right-click, or Escape to lift off');
     setCtx('planetfall — the survey card carries the world’s roster');
   }
+  syncSurfaceChromeBottom();
 }
 function updateUniverseCtx(): void {
   /* the Renderer's universe caption ladder (main.js 3788), verbatim text */
@@ -2200,10 +2246,12 @@ document.body.appendChild(sideEl);
 function syncPlanetsideLayout(): void {
   if (getComputedStyle(sideEl).display === 'none' || nav.mode !== 'surface') {
     document.documentElement.style.removeProperty('--planetside-top');
+    syncSurfaceChromeBottom();
     return;
   }
   const r = sideEl.getBoundingClientRect();
   if (r.width > 0 && r.height > 0) document.documentElement.style.setProperty('--planetside-top', r.top.toFixed(2) + 'px');
+  syncSurfaceChromeBottom();
 }
 new ResizeObserver(syncPlanetsideLayout).observe(sideEl);
 addEventListener('resize', syncPlanetsideLayout, { passive: true });

@@ -67,13 +67,21 @@
 > become hidden because Survey reopened, focus falls back to Survey and then to
 > the exploration canvas instead of remaining on a hidden close control.
 > On every ≤900px landed layout, populated Planetside owns the limited
-> mid-screen reading band, so the objective yields until ascent. Portrait keeps
-> the trail visible; short landscape also yields the trail because the strip,
-> trail and objective cannot share that safe band at A++ while retaining 44px
-> actions. Planetside's top edge begins below the measured top chrome
-> (`--topbar-h + 6px`), not beneath it. The matrix separately proves portrait
-> trail retention, mobile objective yield/restoration, landscape trail yield,
-> top clearance, and forced-visible controls.
+> mid-screen reading band, so the objective yields until ascent. Portrait now
+> measures visible fixed top chrome plus the last visible trail edge, and the
+> already measured safe/dock/context lower chrome. `syncDockH` and `syncCtxH`
+> rerun the classification after asynchronous chrome changes. It retains the
+> trail only when a useful **72px Planetside roster band
+> plus 6px clearance** fits; otherwise `surface-trail-yield` hides only the
+> noninteractive trail. Planetside keeps a 72px floor and `overflow-y:auto`, so
+> its heading and specimens remain vertically reachable instead of collapsing
+> or rising through the trail. Short landscape continues to yield the trail,
+> and Planetside begins below measured top chrome. The matrix names the two-way
+> portrait controls `planetside-portrait-band-viability` (remove the cap and
+> reproduce the collision) and `planetside-portrait-trail-fallback` (force the
+> tight branch, prove a useful scrolling strip, then restore the trail), in
+> addition to objective yield/restoration, landscape yield and top-clearance
+> controls.
 >
 > The responsive glass/accessibility pass is now behavioral rather than just
 > cosmetic. Safe-area variables drive top, side and bottom anchors; rendered
@@ -109,26 +117,36 @@
 >
 > Browser smoke and performance tools use the owned portable CDP lifecycle and
 > always rebuild before capture; unresolved performance metrics now fail rather
-> than print a profile-shaped success. The current profile is not yet a release
+> than print a profile-shaped success. The glass matrix's import/reload witness
+> is likewise fail-closed: an armed import phase, top-frame loader id and per-
+> document token must agree, and only a ready document with both a changed
+> loader and changed token can pass. Import settlement and replacement boot have
+> separate 20-second bounds; `replacement-document-loader-token-phase` rejects
+> same-document token mutation, lost/rejected phases and loader/evaluation races.
+> The run remains single-attempt—a red result is never retried into green. The current profile is not yet a release
 > budget gate: cold repetitions, long-task/memory budgets, Compendium
 > virtualization, scene-texture disposal, live HD planet replacement and fuller
 > hidden-tab behavior remain open. The v2 static preview packaging/hosting
 > contract is documented separately in `port/DEVELOPMENT_PREVIEW.md`; a preview
 > is development evidence, never a release or production deployment.
 >
-> **Current dirty-batch evidence (not final PR-head evidence):** on the
-> post-policy snapshot bound by working-tree SHA-256
-> `88d1996909134596302a2f8558cef553220816ab48ee356f970132a5309f6293`,
-> `smoke:ci` passed with 0 findings and 10
-> screenshots; the full isolated `glassmatrix` passed all 12 viewports including
-> 8K with 0 findings, 0 instrument failures, 0 omitted planned controls and 0
-> retries; and `persona:report` passed all 9 bounded automated personas. The
-> 390×844 DPR-3 four-run performance diagnostic also passed: painted 658ms,
-> answerable 734ms, press→panel 70ms and galaxy rebuild 178ms. The exact-keepsake
-> repair and documentation sync followed that snapshot. These are
-> pre-freeze working-copy diagnostics, not exact-commit evidence, matching CI,
-> a release performance budget, or a human playtest. The exact-commit full
-> battery, matching CI and separate-origin human playtest remain required.
+> **Current repair evidence (not final PR-head evidence):** pushed commit
+> `33ea34191c817a8e78eea598c31981f8208e939b` passed its exact local battery, but
+> test-battery run `31571459050` / job `94034164092` failed in the v2 real-
+> browser/responsive/persona step. Its one-attempt `smoke:ci` passed; the glass
+> run then timed out at desktop-8k while the old ready document token remained
+> visible for the former single 10-second reload window, and it recorded a
+> `PLANETSIDE_TOP_CHROME_OVERLAP` on small-phone portrait. That red run is the
+> evidence for the phased reload witness and measured portrait-band repair
+> above, not something to retry away. Post-repair evidence is currently limited
+> to static/self-tests: `node --check tools/glassmatrix.mjs`,
+> `npm run glassmatrix:selftest`, `npm run typecheck`, and `git diff --check`.
+> Targeted real-browser diagnostics for the small-phone portrait branch and
+> desktop-8k import/reload path also pass on the mutable repair snapshot. Those
+> narrow diagnostics are not certification: current `smoke:ci`, the complete
+> 12-viewport matrix/persona synthesis, the repair's exact commit and full
+> sequential local battery, matching GitHub CI, and the separate-origin human
+> playtest remain pending.
 
 **STATUS:** legacy sections match `main.js` + the html as of 2026-07-31; the
 v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve

@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## Current port status — 2026-08-11
+## Current port status — 2026-08-12
 
 The 14 planned deterministic domain facades are present and the port has a
 playable Pixi/browser slice, but the old milestone record below is not a claim
@@ -59,14 +59,36 @@ Share actions cannot be rebound to another node.
 On touch, Planetside also exposes a minimum-44px **Leave world** action wired to
 the same guarded ascent state machine as Escape/right-click, so a phone player
 never needs a keyboard or a zoom gesture merely to return to orbit.
+On portrait phones, the populated Planetside strip measures visible fixed top
+chrome plus the last visible trail edge and the lower safe/dock/context chrome.
+`syncDockH` and `syncCtxH` reclassify after asynchronous chrome changes. The trail remains visible when a
+useful 72px roster band plus 6px separation fits; when it does not,
+`surface-trail-yield` hides only that noninteractive trail. The roster retains a
+72px minimum, scrolls vertically when clipped, and restores the trail when the
+band grows again. `planetside-portrait-band-viability` removes the cap to
+recreate the collision; `planetside-portrait-trail-fallback` forces and then
+restores the tight branch while proving the roster remains useful and reachable.
 
-The last incremental run before final integration edits reached 24 Vitest files /
-271 pass / 1 skip, root and app TypeScript, the static art/route gates, targeted
-real-browser smoke/glass checks, and the portable phone performance profile.
-Those results are not a final verdict for the subsequently changed working tree.
-The frozen pushed PR head must rerun the full sequential local battery and matching
-GitHub CI; `overridecontrol` remains exclusive and may not overlap any browser,
-build or evidence producer.
+Pushed commit `33ea34191c817a8e78eea598c31981f8208e939b` passed its exact
+local battery, but GitHub test-battery run `31571459050` / job `94034164092`
+failed in the v2 real-browser/responsive/persona step. Its single `smoke:ci` run
+passed. The glass matrix then observed the old ready token for the former one-
+piece 10-second reload wait at desktop-8k and also recorded the small-phone
+Planetside/trail overlap. The repair now arms the import Promise as an explicit
+phase, witnesses the top-frame loader before and after evaluation, and requires
+both loader id and per-document token to change before replacement readiness can
+pass. Import settlement and replacement boot have separate 20-second bounds;
+same-document token mutation, phase loss/rejection, and loader/evaluation races
+fail closed under `replacement-document-loader-token-phase`. There is still no
+retry. Post-repair evidence is only static/self-test so far:
+`node --check tools/glassmatrix.mjs`, `npm run glassmatrix:selftest`,
+`npm run typecheck`, and `git diff --check`. Targeted real-browser diagnostics
+for the small-phone portrait branch and desktop-8k import/reload path also pass
+on the mutable repair snapshot. They are not a complete matrix or certification.
+Current `smoke:ci`, the full 12-viewport matrix/persona synthesis, the repair's
+exact commit and sequential local battery, and matching GitHub CI remain pending;
+`overridecontrol` remains exclusive and may not overlap any browser, build or
+evidence producer.
 
 Human development playtests use a commit-bound static package, not the live
 site. `npm run preview:package -- --origin=https://<separate-preview-host>`
@@ -384,7 +406,7 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 |---|---|
 | `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, and package tampering; then creates, verifies, and real-browser-boots a clean-commit static human-playtest package built from an isolated exact-HEAD snapshot with a visible DEV/commit banner, guarded module loader, `robots.txt`, and `preview.json` tree/lock/byte hashes. The shared workspace lock prevents overlap with source-mutating controls; the 320×568 boot requires the banner to clear the dock. Default output is remote-blocked; the default-branch manual workflow normally creates approved candidates, with PR #11's explicitly approved clean-head local bootstrap documented separately. It never deploys. |
 | `npm run smoke:ci` | Runs the authoritative real-browser `slicesmoke.mjs` exactly once, retains complete stdout/stderr in `slice-smoke.log`, and writes commit/branch/working-tree/browser/screenshot-bound `slice-smoke-report.json`. `smokereport` owns one full-lifetime workspace lock and passes a validated one-child inherited lease to `slicesmoke`, retaining the lock through screenshot hashing and report finalization. A failure prints the first scoped diagnosis plus a related count; it never retries a red run. |
-| `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion and DPR without retrying; it owns the shared workspace lock while building/browsing. |
+| `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion and DPR without retrying. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`; import/reload owns `replacement-document-loader-token-phase`, separate 20-second import/replacement bounds, and requires a ready document with changed loader plus changed token. The command owns the shared workspace lock while building/browsing. |
 | `npm run persona:selftest` / `npm run persona:report` | Joins only passing slice-smoke and glass-matrix evidence with matching commit/branch and dirty-tree digest into `automated-persona-report.{json,md}`. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |
 | `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. |
 | `node tools/browsercdp.mjs --selftest` | Negative-controls browser startup metadata, child exit, WebSocket and command timeouts, pending-command rejection, bounded shutdown, exact version provenance, and owned-profile cleanup. |
