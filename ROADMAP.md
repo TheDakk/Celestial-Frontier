@@ -29,17 +29,14 @@
 - Integration baseline: PR #10 merged normally into `develop` at
   `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`.
 - Current pushed PR head:
-  `8b8a740286a56591cac9dc5734a2fba4c088939b`. Its exact local battery passed
-  and it closes the product/instrument findings from test-battery #199. Matching
-  test-battery #200, run `31577395120` / job `94052496287`, passed every root,
-  product, v2, one-run smoke, complete 12-viewport glass, automated-persona and
-  preview-package gate; only the final preview browser check failed before a page
-  existed because its new workflow step lost the Chrome environment and selected
-  Linux Edge. Local commit `4d14a75e934536dc5f204e40c74f666cc9514df4`
-  pins browser provenance at job scope but is one unpushed commit ahead of that
-  remote head. The follow-on root-layout launcher/report repair remains a mutable
-  working batch and requires a new clean commit, exact-head battery, push and
-  matching CI. Draft PR #11 is open at
+  `8b8a740286a56591cac9dc5734a2fba4c088939b`. Local code/tool head
+  `08379d8c072c7eb22e2a029d666972c86d496326` is two unpushed commits ahead:
+  `4d14a75e934536dc5f204e40c74f666cc9514df4` repairs job-scoped browser
+  provenance and `08379d8c072c7eb22e2a029d666972c86d496326` completes the owned
+  root-layout launcher/report and battery hardening. The clean exact-`08379d8`
+  sequential local battery passed. This final docs-only handoff must now be
+  committed; because that advances HEAD, the matching exact-head rerun, push and
+  GitHub CI remain required. Draft PR #11 is open at
   https://github.com/TheDakk/Celestial-Frontier/pull/11.
 - Read next: `PROCESS_LAWS.md` · `PARALLEL_GIT_PROTOCOL.md` · `README.md` ·
   `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `SAVE_SYSTEM.md` ·
@@ -102,11 +99,11 @@ Evidence is now structured and provenance-bound:
 - the development-preview package is bound to a full commit, source tree, lockfile and byte
   hashes, visibly marked DEV, and refused on production/path origins.
 
-The hosting choice is still pending. A preview must use a genuinely separate web origin:
-either the recommended separate `dev-celestialfrontier` GitHub owner with its owner-site repo,
-or an approved dedicated custom hostname. Do not create a project path under
-`celestialfrontier.github.io`; it would share production browser storage. No preview host,
-publication, release, live deployment, `main` update, or version bump is part of this batch.
+The exact local review artifact is bound to the recommended separate origin
+`https://dev-celestialfrontier.github.io`, but no preview host or publication is authorized or
+present. Do not create a project path under `celestialfrontier.github.io`; it would share
+production browser storage. No release, live deployment, `main` update, or version bump is part
+of this batch.
 
 ### Evidence status and stop condition
 
@@ -152,11 +149,31 @@ shares the executable resolver and `ws`, but explicitly retains its legacy CDP l
 The targeted lock refresh also moves root `undici` 7.27.2→7.29.0 and v2 `nanoid`
 3.3.16→3.3.18 within existing ranges; clean `npm ci` on both install surfaces reports zero
 vulnerabilities. These are tooling/dependency-evidence changes, not shipped runtime changes.
-The original sandboxed Edge diagnostic ended in SIGABRT and remains red evidence. A separately
-permitted mutable-tree diagnostic completed 787/787 checks across 10 viewports; it is diagnostic,
-not a post-change browser certification. This repair still needs a new clean commit, exact
-sequential battery, clean review, push and matching GitHub CI. `overridecontrol` remains exclusive
-and must not overlap any build/browser/evidence producer. Because the new manual preview workflow
+The original sandboxed Edge diagnostic ended in SIGABRT and remains red evidence; the separately
+permitted mutable-tree 787/787 run remains only the diagnostic that preceded the clean commit.
+Clean code/tool commit `08379d8c072c7eb22e2a029d666972c86d496326` then passed this exact
+sequential local evidence battery:
+
+- both root and v2 `npm ci` installs and audits reported 0 vulnerabilities;
+- root validate passed with the baseline fingerprint, smoke passed, preflight selftest passed,
+  and the owned-CDP preflight passed with the expected Edge 151 pin-drift warning;
+- layout selftest passed, then full layout passed 787/787 across 10 viewports and its exact report
+  id verified; rarity completed 60M trials with 0 downgrades; dead-code review found only 3 tooling
+  references;
+- v2 passed 24 test files / 273 tests with 1 skip, both type checks and `artunused`, `artaudit`
+  23/0, override 1014/1014, restored `overridecontrol`, coverage 1010/1010, and spec 454/0/0;
+- all instrument selftests passed; one-attempt `smoke:ci` passed with 0 findings / 10 screenshots;
+  the certifying 12-viewport glass run passed all 12 with 0 findings / 0 instrument failures; and
+  all 9 automated personas passed, still explicitly not a human playtest;
+- the 4× performance diagnostic recorded 610 ms painted / 691 ms answerable / 76 ms press /
+  150 ms rebuild; and
+- the exact preview artifact verified and browser-smoked at 320×568 for
+  `https://dev-celestialfrontier.github.io`, content SHA-256
+  `f84eae95cbb97051ecb0bd6c6cac25c86ac49043043f64173b14486aa4f0e12a`, with
+  `publishable: false`.
+
+`overridecontrol` remains exclusive and must not overlap any build/browser/evidence producer.
+Because the new manual preview workflow
 is not dispatchable until it exists on the default branch, PR #11's pre-merge candidate must use
 the equivalent explicitly approved local packaging command recorded in
 `port/DEVELOPMENT_PREVIEW.md`; the workflow becomes the normal path after the infrastructure lands
@@ -192,17 +209,15 @@ human play remains the judge of motion, readability, comfort and perceived quali
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — pushed head
-`8b8a740286a56591cac9dc5734a2fba4c088939b` is product-, smoke-, full-glass-,
-persona- and package-green locally and through GitHub test-battery #200. The only red
-gate is the pre-page preview CDP startup caused by step-scoped browser provenance. Local
-`4d14a75e934536dc5f204e40c74f666cc9514df4` contains the job-scoped Chrome repair but
-is unpushed; root-layout launcher/report hardening is still uncommitted. Draft PR #11 exists,
-but its remote head contains neither follow-on.
+`8b8a740286a56591cac9dc5734a2fba4c088939b`; local clean code/tool head
+`08379d8c072c7eb22e2a029d666972c86d496326` is two unpushed commits ahead and passed
+the exact sequential battery recorded above. This docs-only final handoff is the only current
+working-tree batch. Draft PR #11 exists, but its remote head contains neither local commit.
 
-**GitHub step:** keep PR #11 draft. Freeze the root-layout repair in a new clean commit, run the
-final sequential local battery on that exact commit, then push the local commits and require
-matching CI; do not rerun or timeout-mask #200. Update the PR body with that exact head and results,
-build the approved separate-origin preview, complete and record the human playtest, and
+**GitHub step:** keep PR #11 draft. Commit this docs-only final handoff, rerun the final sequential
+local battery on that new exact head, then push all local commits and require matching CI; do not
+rerun or timeout-mask #200. Update the PR body with that exact head and results, obtain explicit
+host approval, build/publish the separate-origin preview, complete and record the human playtest, and
 resolve/retest findings.
 Only then may Nick click **Ready for review**, review the final diff/checks, and normally merge
 into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add this work to merged
@@ -239,8 +254,8 @@ PR #10.
   > to Linux Edge when a preceding step's environment expires. Moves the root 10-viewport layout
   > gate onto the same owned port-0 CDP launcher and adds ignored atomic pass/fail/instrument-fail
   > evidence, stale-PASS/exit-73 selftest, exact-run freshness and a separate required CI upload;
-  > automated personas are explicitly not a human playtest. The preview requires a separately
-  > approved origin, which has not been chosen or published. Final verification is publication-
+  > automated personas are explicitly not a human playtest. The local review artifact is bound to
+  > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. Final verification is publication-
   > contingent: freeze the final head in a commit, run the sequential local battery, then push
   > and require matching GitHub CI,
   > then complete and record a multi-lens human playtest against that exact preview before marking
