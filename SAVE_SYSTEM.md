@@ -90,13 +90,19 @@
 > teardown is deliberately not installed on generic `pagehide`: a browser-cache
 > restore must never revive a Pixi application that the app destroyed.
 >
-> **Evidence boundary:** this reload-lifecycle repair is currently an uncommitted
-> worktree change. Pure instrument controls pass; one targeted desktop-8k run
-> witnessed both 5,461×3,072 backings collapse to 1×1, renderer/stage release,
-> view detachment, changed loader/token and a ready replacement in 198ms; and a
-> stable-source one-attempt smoke passed the real restart/import interlock and
-> rollback. The full browser matrix, exact-head battery and matching CI remain
-> pending; no save-format or version change is involved.
+> **Evidence boundary:** immutable executable evidence source
+> `d80133876b7156dc32b19be3e97222921deea9f0` passed its complete exact
+> sequential battery. One-attempt smoke
+> passed with 0 findings / 10 screenshots, including the real restart/import/
+> duplicate-import interlocks and rollback. Full glass passed 12/12 viewports and
+> 50/50 controls with 0 omitted/findings/instrument failures/retries, working-tree
+> digest `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+> All 12 release witnesses passed; desktop-8k recorded both 5,461×3,072 canvases
+> collapsing to 1×1, renderer/stage released, view detached, changed loader/token
+> and a ready replacement in 230 ms. Prior CI #201 remains preserved red without
+> retry. `d801338` underlies the non-executable handoff tip. Exact tip/upstream/
+> check state is read live, and the final pushed tip requires matching green CI.
+> No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
 matches `port/v2` as of 2026-08-12. ⚠ Read the v1.8.7 section (a reverted

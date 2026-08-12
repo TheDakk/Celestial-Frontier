@@ -102,10 +102,7 @@ sealed v1.8.9 report; targeted viewports remain scoped. Its selftest deletes one
 sealed outcome, keeps the summary counts consistent, and still requires rejection.
 Its initial sandboxed Edge launch preserved SIGABRT as red; a separately permitted
 mutable-tree diagnostic completed 787/787 across 10 viewports, but is not exact-head
-certification. Pushed evidence head
-`4560269b8767dc48bb82e3b1f9d82ca835a84aad` passed its exact sequential local
-battery, including root 787/787 layout, v2 273 pass / 1 skip, one-attempt smoke,
-full 12-viewport glass, nine automated personas and the 320×568 preview smoke.
+certification.
 
 Matching test-battery #201, run `31586917924` / job `94082765087`, completed
 once without retry on that pushed head and is **RED**. Every preceding root,
@@ -116,7 +113,8 @@ This is a replacement-lifecycle/instrument finding after reload was requested,
 not a save-classifier rejection or reported repository-write error. Do not rerun
 unchanged #201 or lengthen its timeout to mask it.
 
-The current uncommitted worktree repair makes the product's Training-restart,
+Immutable executable evidence source `d80133876b7156dc32b19be3e97222921deea9f0`
+makes the product's Training-restart,
 supported-import and storage-retry reloads claim one mutually exclusive replacement
 transaction before awaiting, then explicitly release the outgoing Pixi
 application/global resources, detach the view, and collapse both application and
@@ -131,13 +129,25 @@ Page/Runtime/Inspector/Network failure evidence. The paired
 reject the ambiguous and resource-retention paths, including just-late transitions
 at every phase boundary, with zero retries.
 
-Its instrument selftest passes. A targeted desktop-8k diagnostic witnessed both
-5,461×3,072 backings collapse to 1×1, released renderer/stage, detached view and a
-changed-loader/token ready replacement in 198ms. Stable-source `smoke:ci` passed the
-real Restart/import/duplicate-import interlocks and rollback. Final mutable-source glass passed all
-12 viewports and 50/50 controls without omissions/findings/instrument failures/retries; matching
-automated personas passed all nine bounded lenses. Exact-head local battery, commit, push and
-matching CI remain required. `overridecontrol` remains exclusive and may not
+Its complete clean battery passed: root installs/audits 0 vulnerabilities plus
+validate/fingerprint, smoke and preflight; layout selftest plus final
+`exact-d801338-root-layout-final` 787/787 and exact verification; rarity 60M/0;
+dead-code 3 tooling references; v2 24 files /273 tests /1 skip plus every gate/
+selftest; and one-attempt smoke 0 findings /10 screenshots. One earlier malformed
+verifier invocation spawned and overwrote an `instrument-fail` layout report;
+correcting that operator command before the final run was not a product retry.
+
+Full glass passed 12/12 viewports, 50/50 controls, 0 omitted/findings/instrument
+failures/retries, digest
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+All 12 release witnesses passed; desktop-8k recorded both 5,461×3,072 canvases
+→1×1, renderer/stage released, view detached, changed loader/token and ready in
+230 ms. Nine personas passed; the 4× diagnostic was 643/726/77/152 ms. Preview
+verify/browser passed at 320×568 for `https://dev-celestialfrontier.github.io`,
+content `e59cfe336ef3c5bde06423bf127e922a27a9bb0f4055014c3d03629244a308d2`,
+`publishable:false`. Prior #201 remains preserved red without retry. `d801338`
+underlies the non-executable handoff tip; exact tip/upstream/check state is read
+live, and the final pushed tip requires matching green CI. `overridecontrol` remains exclusive and may not
 overlap any browser, build or evidence producer.
 
 Human development playtests use a commit-bound static package, not the live

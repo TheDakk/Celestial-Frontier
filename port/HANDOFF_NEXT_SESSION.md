@@ -3,14 +3,14 @@
 **Current integration state:** PR #10 merged normally into `develop` at
 `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`. OpenAI/Codex remains on
 `openai/mac`; executable/evidence head
-`4560269b8767dc48bb82e3b1f9d82ca835a84aad` is pushed on PR #11 and passed the
-exact sequential local battery described below. Matching test-battery #201,
+`d80133876b7156dc32b19be3e97222921deea9f0` is the immutable source that passed
+the complete clean sequential local battery described below and underlies a
+non-executable handoff tip. Exact tip/upstream/CI state is live authority from
+`git rev-parse HEAD`, `git status --short --branch`, and PR #11 checks. Prior test-battery #201,
 run [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
 job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
-completed once without retry and is red only at the desktop-8k preference-import
-replacement lifecycle; every preceding gate including `smoke:ci` passed. Current
-product/harness/docs repair files are uncommitted; pure controls, targeted desktop-8k and
-stable-source smoke diagnostics pass while full/exact evidence remains pending.
+completed once without retry and remains preserved red on superseded pushed
+`4560269`; it is not retried or hidden by the new evidence.
 Historical test-battery #200,
 run `31577395120` / job `94052496287`, passed every root, product, v2, one-run
 smoke, full 12-viewport glass, automated-persona and preview-package gate; only
@@ -18,8 +18,7 @@ final preview CDP startup failed before a page existed after that step lost the
 preceding step's Chrome environment and selected Linux Edge. Commit
 `4d14a75e934536dc5f204e40c74f666cc9514df4` contains the job-scoped browser
 provenance repair; `08379d8c072c7eb22e2a029d666972c86d496326` completes the
-root-layout launcher/report hardening; and docs-only `4560269` is the prior local
-evidence head. Use `git rev-parse HEAD` and `git status --short` for the current state.
+root-layout launcher/report hardening; `d801338` is the current exact executable evidence.
 Draft PR #11 is open at
 https://github.com/TheDakk/Celestial-Frontier/pull/11.
 
@@ -109,26 +108,16 @@ through `browsercdp` and selftests excluded Node lines plus an executable non-br
 The bounded lock refresh moves root `undici` 7.27.2→7.29.0 and v2 `nanoid`
 3.3.16→3.3.18 within existing ranges; clean `npm ci` on both surfaces reports zero
 vulnerabilities. This is tooling evidence, not a shipped runtime or release-note change.
-The first sandboxed Edge diagnostic preserved SIGABRT as red. Executable/evidence head
-`4560269b8767dc48bb82e3b1f9d82ca835a84aad`, a docs-only tip over clean code/tool
-`08379d8`, then passed: both clean installs/audits at 0 vulnerabilities; root validate/fingerprint,
-smoke, owned-CDP preflight, layout selftest and 787/787 exact-report verification; rarity 60M
-with 0 downgrades; v2 24 files / 273 pass / 1 skip, type/art/override/coverage/spec gates and all
-instrument controls; one-attempt smoke with 0 findings / 10 screenshots; certifying 12-viewport
-glass with 0 findings / 0 instrument failures; 9 matching automated personas; the terminal-only,
-non-provenance-bound 4× phone diagnostic at 608 ms painted / 691 ms answerable / 77 ms
-press→panel / 167 ms rebuild; and exact preview
-verify/browser PASS at 320×568 for content
-`3f05c7cc218e4a3b49d5fff7a36270552a0e4129f305b681a51bb3c16826eb8f`
-(`publishable:false`). Test-battery #201, run
+The first sandboxed Edge diagnostic preserved SIGABRT as red. Prior test-battery #201, run
 [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) / job
 [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
-is the matching GitHub run and is **RED**. It passed every earlier gate including `smoke:ci`; only
+remains **RED** on pushed `4560269`, without retry. It passed every earlier gate including `smoke:ci`; only
 desktop-8k preference import instrument-failed after a 20-second replacement wait while the old
 loader remained and its slice token/import phase were absent. This is not a save rejection or
 reported write error and must not be retried away.
 
-The current uncommitted repair makes the product's three intentional reloads claim one mutually
+Immutable executable source `d80133876b7156dc32b19be3e97222921deea9f0` makes the
+product's three intentional reloads claim one mutually
 exclusive replacement transaction, then gives them one explicit Pixi/global-resource release,
 view detachment, application/backdrop 1×1 collapse and one-task barrier;
 it avoids generic `pagehide` teardown for browser-cache safety. Glass requires that bound release
@@ -136,13 +125,29 @@ witness, then separately bounds import at 20 seconds, observed navigation at 5 s
 loader boot at 20 seconds. It retains Page/Runtime/Inspector/Network diagnosis and adds
 `reload-resource-release` beside `replacement-document-loader-token-phase`, still with zero retries.
 Its pure controls also reject transitions that arrive just after any prior phase deadline.
-Pure selftests pass. A targeted desktop-8k diagnostic witnessed both 5,461×3,072 backings collapse
-to 1×1 plus released renderer/stage, detached view, changed loader/token and ready replacement in
-198ms. Stable-source `smoke:ci` passed the real Restart/import/duplicate-import interlocks and
-rollback; the prior attempt's mixed-source refusal remains preserved. Final mutable-source glass
-passed all 12 viewports and 50/50 controls without omissions/findings/instrument failures/retries;
-matching automated personas passed all nine bounded lenses. Exact-head battery, commit/push and
-matching CI remain pending. Require matching CI to pass before human
+The exact clean sequential battery passed:
+
+- root installs/audits reported 0 vulnerabilities; validate/fingerprint, smoke and preflight passed;
+- layout selftest passed, then `exact-d801338-root-layout-final` passed 787/787 and exact verification.
+  One earlier malformed verifier invocation spawned a run and overwrote the report with
+  `instrument-fail`; correcting that operator command before the final run was not a product retry;
+- rarity completed 60M trials / 0 downgrades; dead-code review found 3 tooling references;
+- v2 passed 24 files / 273 tests / 1 skip plus all type/art/override/coverage/spec and instrument
+  gates/selftests;
+- one-attempt smoke passed with 0 findings / 10 screenshots;
+- full glass passed 12/12 viewports, 50/50 controls, 0 omitted/findings/instrument failures/retries,
+  working-tree digest `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+  All 12 release witnesses passed; desktop-8k recorded 5,461×3,072→1×1 for both canvases,
+  released renderer/stage, detached view, changed loader/token and ready replacement in 230 ms;
+- all 9 bounded automated personas passed; 4× performance diagnostics were 643 ms painted /
+  726 ms answerable / 77 ms press→panel / 152 ms rebuild; and
+- preview verify/browser passed at 320×568 for expected origin
+  `https://dev-celestialfrontier.github.io`, content SHA-256
+  `e59cfe336ef3c5bde06423bf127e922a27a9bb0f4055014c3d03629244a308d2`,
+  `publishable:false`.
+
+`d801338` underlies the non-executable handoff tip. Live Git/PR state decides its exact current
+tip/upstream/check status; require matching green CI for the final pushed tip before human
 playtest against its commit-bound separate-origin preview. Record full commit,
 `preview.json` content hash, URL, tester/device/browser, save state, findings and
 retest in `port/playtests/`. Do not mark PR #11 Ready or merge before every human
@@ -161,17 +166,16 @@ scenes are the higher-value visual work.
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — executable/evidence head
-`4560269b8767dc48bb82e3b1f9d82ca835a84aad` is pushed and passed the exact sequential
-local battery, but matching #201 is red only at desktop-8k replacement lifecycle. The current
-product/harness/docs repair is uncommitted with passing pure-control, targeted desktop-8k and
-stable-source smoke diagnostics; full/exact evidence remains pending.
+`d80133876b7156dc32b19be3e97222921deea9f0` is the immutable source for the complete clean
+sequential battery and underlies a non-executable handoff tip. Resolve exact current tip/upstream/
+check state live; prior #201 remains preserved red without retry.
 
-**GitHub step:** none now; keep PR #11 draft and preserve red run `31586917924` / job
-`94082765087` without retry. Finish the repair, controls, targeted 8K and exact-head battery;
-commit/push `openai/mac`; then require matching new-head CI. After green CI, obtain host approval,
-publish the separate-origin preview, complete/record human play, resolve/retest findings, and only
-then let Nick mark Ready and normally merge into `develop`. Never auto-merge, squash/rebase,
-retarget `main`, or add work to merged PR #10.
+**GitHub step:** keep PR #11 draft and preserve red run `31586917924` / job `94082765087`
+without retry. Read `git rev-parse HEAD`, `git status --short --branch`, and PR #11 checks; if
+`origin/openai/mac` is behind the current tip, push it, then require matching green CI for that
+final pushed tip. After green CI, obtain host approval, publish the separate-origin preview,
+complete/record human play, resolve/retest findings, and only then let Nick mark Ready and normally
+merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add work to merged PR #10.
 
 **PR details:**
 
@@ -207,10 +211,13 @@ retarget `main`, or add work to merged PR #10.
   > to Linux Edge when a preceding step's environment expires. Moves the root 10-viewport layout
   > gate onto the same owned port-0 CDP launcher and adds ignored atomic pass/fail/instrument-fail
   > evidence, stale-PASS/exit-73 selftest, exact-run freshness and a separate required CI upload;
-  > automated personas are explicitly not a human playtest. Prior local executable evidence is
-  > bound to `4560269b8767dc48bb82e3b1f9d82ca835a84aad`; matching test-battery #201 (run
-  > `31586917924`, job `94082765087`) is preserved red only at desktop-8k replacement lifecycle.
-  > The current repair still requires a commit, exact-head battery, push and matching green CI. The local artifact is bound to
+  > automated personas are explicitly not a human playtest. Clean executable evidence is bound to
+  > local commit `d80133876b7156dc32b19be3e97222921deea9f0`: root fingerprint/smoke/preflight
+  > and sealed layout 787/787, v2 273 pass / 1 skip plus every gate/selftest, one-attempt smoke,
+  > glass 12/12 with 50/50 controls and 12 valid release witnesses, nine automated personas, and
+  > preview browser PASS. Prior #201 (run `31586917924`, job `94082765087`) remains preserved red
+  > without retry. Exact tip/upstream/check status is read live; the final pushed non-executable
+  > handoff tip requires matching green CI. The local artifact is bound to
   > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. After the
   > matching CI is green, complete and record a multi-lens human playtest against that exact preview before marking
   > this PR Ready or merging. The static Platinum-reviewed portrait set is unchanged; later visual
