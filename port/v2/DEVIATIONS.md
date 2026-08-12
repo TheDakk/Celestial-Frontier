@@ -953,6 +953,22 @@ duplicates).
   docs-only handoff tip; exact tip/upstream/
   check state is read live, and the final pushed tip requires matching green CI.
   The clean executable outcome closes this implementation item.
+  Test-battery #203 (`31602984470` / `94134750800`) later preserved a distinct
+  pre-release pressure failure at exact pushed `38e4f362`: all preceding gates and
+  `smoke:ci` passed, but desktop-8k reached 20,015 ms before any release/navigation/
+  ready/fatal/command/event receipt; 11 other rows passed. The outgoing 5,461×3,072
+  ticker was still rendering across the durable-write wait and teardown under CI
+  software rendering. This is not save corruption or a reported write rejection,
+  and the run is not retried or hidden by a longer deadline.
+  The follow-on repair stops a running ticker synchronously at the exclusive
+  replacement claim, before any await; only that exact failed/rolled-back owner may
+  restart a ticker it stopped. Invalid input rejects before claim without disturbing
+  play. Diagnostic import emits a context-bound exact phase sequence from invocation
+  through claim, persistence/write, and release under one absolute 20-second deadline
+  that begins before its bounded arm command. It neither retries nor races IndexedDB
+  with a timeout. Full dirty-source diagnostic glass passed 12/12 and 52/52 controls,
+  with all 12 phase/release/ready paths and no findings, instrument failures, omitted
+  controls, or retries; exact clean-commit evidence and matching CI remain required.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
@@ -1120,6 +1136,18 @@ duplicates).
   The exact clean battery above supersedes the provisional dirty diagnostic as current evidence.
   Matching final-tip CI and the separate-origin human playtest remain pending; human certification,
   Ready, merge, version, preview publication and deployment boundaries are unchanged.
+  Test-battery #203 (`31602984470` / `94134750800`) then failed once without retry only
+  in desktop-8k import before the release boundary: the old 5,461×3,072 Pixi ticker
+  remained live while the durable write and teardown awaited service. The follow-on
+  product repair quiesces it synchronously at the exclusive claim and restores it only
+  on exact-owner rollback. Glass now retains the exact event-owned import sequence
+  (`invoked` running; claim/write/release stopped) and starts the unchanged 20-second
+  import clock before its bounded non-awaiting arm command. The new
+  `import-phase-sequence` and `replacement-ticker-quiescence` controls reject both
+  ticker directions, missing/reordered/wrong-context receipts, and just-late evidence;
+  no timeout increase, retry, or IndexedDB timeout race is introduced. Dirty-source
+  full glass passed 12/12 viewports and 52/52 controls with zero findings/instrument
+  failures/omissions/retries; exact clean-commit evidence and matching CI remain open.
 - ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
   the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson

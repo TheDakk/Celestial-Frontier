@@ -6,6 +6,72 @@
 > working doc crossed ~285KB / 4,272 lines and stopped reading in one pass.
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
+## ══════════ ARCHIVED 2026-08-12 — PR #11 evidence runs #199–#202 and launcher follow-on ══════════
+## ══════════ Moved from ROADMAP.md verbatim; original span was lines 136–198. ══════════
+
+GitHub test-battery #199, run `31571459050` / job `94034164092`, first exposed
+the former desktop-8k reload ambiguity and small-phone Planetside/trail overlap.
+Pushed commit `8b8a740286a56591cac9dc5734a2fba4c088939b` repairs both: import
+settlement and replacement boot have separate observable 20-second phases and require a changed
+top-frame loader plus document token; portrait Planetside retains a 72px useful/scrollable band
+with 6px clearance and yields only the noninteractive trail when required. Their deliberate
+failing controls and the exact sequential local battery passed.
+
+Matching GitHub test-battery #200, run `31577395120` / job `94052496287`, then
+passed every root, product and v2 gate, the single `smoke:ci` attempt, the complete
+12-viewport matrix including 8K, the matching-provenance automated-persona synthesis,
+and `preview:package`. Only the final `preview:smoke` browser startup failed. The
+preceding evidence step pinned `/usr/bin/google-chrome` only in its own environment;
+the next step/process did not inherit it, so the resolver selected Linux Edge at
+`/opt/microsoft/msedge/microsoft-edge`. Edge never produced `DevToolsActivePort`, and
+the check failed before it created a target or evaluated any packaged page. The trailing
+D-Bus diagnostic is Edge/runner startup evidence, not a product or package finding.
+
+Pushed commit `4d14a75e934536dc5f204e40c74f666cc9514df4` binds the exact Chrome
+path at job scope in both CI workflows and resolves it fail-closed before the long battery, so
+every browser-owning process has the same explicit provenance. Environment is per step/process; a
+prior green browser step does not pin the next one. Retries, a longer startup bound, or clearing
+D-Bus would not repair the #200 provenance defect.
+
+Completed code/tool commit `08379d8c072c7eb22e2a029d666972c86d496326` removes the root layout
+gate's remaining second launcher. It now
+consumes `port/v2/tools/browserpath.mjs` plus `browsercdp.mjs`: browser-assigned port 0 through
+`DevToolsActivePort`, exact executable/version provenance, early-exit and bounded stderr
+diagnosis, bounded TERM→KILL cleanup, and validated profile removal. Its ignored report is
+atomically replaced from `running` to terminal `pass`, `fail`, or `instrument-fail`; legacy
+`results` remain. A full PASS must match the sealed v1.8.9 report's exact 787
+`viewport/surface/name` inventory; targeted viewport runs remain scoped diagnostics. `--selftest`
+seeds a stale PASS, forces exit 73 with a marker, proves current red replacement/wrong-run
+rejection/cleanup, then removes one sealed outcome with internally consistent counts and requires
+that plausible incomplete PASS to fail. CI assigns an exact id, runs selftest + gate +
+`--verify-run=ID`, then uploads the report separately with missing evidence treated as an error.
+Both root and v2 install surfaces now declare/lock the `ws` transport and supported Node lines
+`^20.19.0 || ^22.13.0 || >=24.0.0`. Root preflight launches the selected executable through the
+owned CDP probe; its selftest rejects executable non-browsers and excluded Node lines. `bootperf`
+shares the executable resolver and `ws`, but explicitly retains its legacy CDP lifecycle.
+The targeted lock refresh also moves root `undici` 7.27.2→7.29.0 and v2 `nanoid`
+3.3.16→3.3.18 within existing ranges; clean `npm ci` on both install surfaces reports zero
+vulnerabilities. These are tooling/dependency-evidence changes, not shipped runtime changes.
+The original sandboxed Edge diagnostic ended in SIGABRT and remains red evidence; the separately
+permitted mutable-tree 787/787 run remains only the diagnostic that preceded the clean commit.
+Prior test-battery #201, run
+[`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
+job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
+remains preserved **RED** on pushed `4560269`, without retry. Every preceding root/product/v2 gate,
+including `smoke:ci`, passed; only desktop-8k preference import instrument-failed after its former
+20-second replacement wait while the old loader remained and its slice token/import phase were
+absent. It was not a save rejection or reported repository-write failure.
+
+Matching test-battery #202, run
+[`31594595288`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288) /
+job [`94106996466`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288/job/94106996466),
+completed once without retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`
+and is **RED**. Every preceding root/product/v2 gate and `smoke:ci` passed. Only
+desktop-8k glass import/replacement instrument-failed when its first observer result arrived at
+61.163 seconds. That loop serially awaited two frame-tree calls around an awaited Runtime call,
+each with a 30-second command ceiling; #202 therefore proves observer ambiguity, not a 61-second
+product boot, save rejection or product failure. Preserve it without retry or a timeout increase.
+
 ## ══════════ ARCHIVED 2026-08-12 — superseded PR #11 player-guide/doc-parity handoff ══════════
 ## ══════════ Moved from ROADMAP.md verbatim; original span was lines 24–141. ══════════
 

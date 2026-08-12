@@ -79,8 +79,12 @@
 > rediscovered—share one code-owned reload path. It blocks new ordinary writes,
 > and each flow synchronously claims the one replacement transaction before its
 > first await, so Training restart cannot tear down the page while an import is
-> still committing (or vice versa). A refused/failed transaction releases that
-> claim and restores the prior state.
+> still committing (or vice versa). The claim also stops the outgoing Pixi ticker
+> synchronously, before any persistence wait. A refused/failed transaction may
+> restart it only when that exact claim stopped a previously running ticker; a
+> successful replacement destroys the already-quiescent renderer. Invalid import
+> bytes are rejected before any claim, so ordinary play and its ticker are left
+> unchanged.
 > The chosen flow
 > cancels the preference debounce, removes renderer-resize listeners, destroys
 > the Pixi application with its global/child texture resources, detaches the
@@ -97,6 +101,15 @@
 > separate 50 ms answerability criterion has passed. This
 > teardown is deliberately not installed on generic `pagehide`: a browser-cache
 > restore must never revive a Pixi application that the app destroyed.
+> For diagnostic imports, a separate event-owned `cf-v2-import-phase/v1` stream
+> binds one phase id and the outgoing document/session/context/loader. Its exact
+> successful sequence is `invoked` (ticker running) → `claimed` → either
+> `no-active-persist` or `waiting-active-persist` / `active-persist-settled` →
+> `primary-write-started` → `primary-write-complete` → `release-started` →
+> `release-complete`, with the ticker stopped after `invoked`. The one 20-second
+> import deadline begins before the bounded, non-awaiting CDP arm command; neither
+> that command nor any later witness gets a fresh clock. There is no timeout
+> increase, automatic retry, or `Promise.race` around IndexedDB durability.
 >
 > **Evidence boundary:** immutable executable evidence source
 > `20896ad410b48ae0c407a9f3d6885d30ec6657b1` passed its complete exact
@@ -120,6 +133,26 @@
 > proof of a slow product boot. Matching final-tip CI remains required; the clean
 > local battery does not authorize preview publication, human certification,
 > Ready, merge, versioning or deployment.
+> CI #203, run `31602984470` / job `94134750800`, is preserved **RED** without
+> retry at exact pushed head `38e4f362533e272f56f708229f7a037f38ae8951`.
+> Every preceding gate, including `smoke:ci`, passed; only the desktop-8k
+> preference import failed after 20,015 ms before any release, replacement-ready,
+> navigation, fatal, command, or event evidence appeared. Eleven other viewport
+> rows passed. This was a pre-release renderer-pressure finding: the outgoing
+> 5,461×3,072 Pixi ticker remained active while the durable write and teardown
+> awaited service under CI software rendering. It is not evidence of save
+> corruption or a rejected repository write.
+>
+> The current repair is frozen in uncommitted source pending an exact clean
+> commit battery and matching CI. At final proof digest
+> `f25a190468d2be42f48b352c5c2b818524ab5e083e73715e7f5d488301b46f42`,
+> dirty-source full certifying-structure glass passed 12/12 viewports and all
+> 52/52 controls with `omitted=[]`, 0 findings, instrument failures, or retries,
+> and all 12 exact import-phase/release/ready paths. A later smoke attempt correctly
+> refused mixed-source evidence because tracked documentation changed during its
+> run; stable exact-commit smoke/glass/persona evidence remains pending. Diagnostic
+> results are not certification provenance; live Git/PR commands remain authoritative
+> for the eventual committed tip.
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay

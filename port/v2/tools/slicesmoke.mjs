@@ -807,8 +807,9 @@ try {
     const cs=msg?getComputedStyle(msg):null,r=msg?.getBoundingClientRect();
     const text=msg?.textContent||'',visible=!!r&&r.width>0&&r.height>0&&cs?.display!=='none'&&cs?.visibility!=='hidden';
     const role=msg?.getAttribute('role')||null,live=msg?.getAttribute('aria-live')||null,atomic=msg?.getAttribute('aria-atomic')||null;
-    return {ok:sheet?.style.display!=='none'&&text===${JSON.stringify(INVALID_IMPORT_ERROR)}&&visible&&role==='alert'&&live==='assertive'&&atomic==='true',
-      text,visible,role,live,atomic}; })()`;
+    const tickerStarted=window.__CF_SLICE__.app.ticker.started===true;
+    return {ok:sheet?.style.display!=='none'&&text===${JSON.stringify(INVALID_IMPORT_ERROR)}&&visible&&role==='alert'&&live==='assertive'&&atomic==='true'&&tickerStarted,
+      text,visible,role,live,atomic,tickerStarted}; })()`;
   await evalIn(`(()=>{ const input=document.getElementById('importtext'),msg=document.getElementById('importmsg');
     input.value='this is not JSON'; msg.textContent=''; document.getElementById('importgo').click(); return true; })()`);
   const importError = await waitDesktopValue('invalid Import button visible error', `(()=>{ const result=${importErrorCheck}; return result.text?result:null; })()`);
@@ -822,6 +823,11 @@ try {
     msg.removeAttribute('role'); msg.removeAttribute('aria-live'); const result=${importErrorCheck};
     if(role!==null) msg.setAttribute('role',role); if(live!==null) msg.setAttribute('aria-live',live); return result; })()`);
   if (importErrorCtl.ok) fails.push('IMPORT ERROR ALERT CONTROL FAILED — removed role/live stayed green: ' + JSON.stringify(importErrorCtl));
+  const importTickerCtl = await evalIn(`(()=>{ const app=window.__CF_SLICE__.app;app.stop();const result=${importErrorCheck};app.start();return result;})()`);
+  if (importTickerCtl.ok || importTickerCtl.tickerStarted) {
+    fails.push('IMPORT VALIDATION TICKER CONTROL FAILED — stopped renderer stayed green after rejected pre-claim input: '
+      + JSON.stringify(importTickerCtl));
+  }
   await evalIn(`(()=>{ document.getElementById('importclose').click(); return true; })()`);
   /* FOCUS RESTORATION: closing returns focus to the opener button */
   const focusBack = await evalIn(`(()=>{ const b=document.getElementById('docksets');
@@ -1309,15 +1315,16 @@ try {
     const released=api.__smokeReleaseImportRace();
     return {armed,held,released,interlock,button:!!button}; })()`);
   await sleep(500);
-  const restartOutcomeCheck = `(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('setrestart'),toast=document.getElementById('toast');
+  const restartOutcomeCheck = `(()=>{ const S=window.__CF_SLICE__,s=S.api.state(),button=document.getElementById('setrestart'),toast=document.getElementById('toast');
     const style=toast?getComputedStyle(toast):null,r=toast?.getBoundingClientRect(),title=(toast?.querySelector('[data-sel=toast-title]')?.textContent||'').trim();
     const visible=!!toast&&toast.style.opacity==='1'&&Number(style?.opacity)>0&&style?.visibility!=='hidden'&&!!r&&r.width>0&&r.height>0;
     const exact=s.mode===${JSON.stringify(restartBefore.mode)}&&s.gal===${JSON.stringify(restartBefore.gal)}
       &&s.star===${JSON.stringify(restartBefore.star)}&&s.planet===${JSON.stringify(restartBefore.planet)}
       &&s.tutDone===${JSON.stringify(restartBefore.tutDone)}&&s.tutActive===${JSON.stringify(restartBefore.tutActive)}
       &&JSON.stringify(s.tutSnapshotPending)===${JSON.stringify(JSON.stringify(restartBefore.tutSnapshotPending))};
-    return {ok:exact&&!!button&&!button.disabled&&visible&&title==='Save unavailable'&&/was not restarted/i.test(toast?.textContent||''),
-      exact,button:!!button,disabled:button?.disabled??null,visible,title,text:toast?.textContent||'',state:s}; })()`;
+    const tickerStarted=S.app.ticker.started===true;
+    return {ok:exact&&!!button&&!button.disabled&&visible&&title==='Save unavailable'&&/was not restarted/i.test(toast?.textContent||'')&&tickerStarted,
+      exact,button:!!button,disabled:button?.disabled??null,visible,title,text:toast?.textContent||'',tickerStarted,state:s}; })()`;
   const restartOutcome = await evalIn(restartOutcomeCheck);
   const restartAfterToken = await sliceToken(sess);
   const restartAfterRaw = await evalIn(READ_PRIMARY_EXPRESSION);
@@ -1337,6 +1344,11 @@ try {
   if (restartOutcomeCtl.ok || restartOutcomeCtl.exact) {
     fails.push('TRAINING RESTART REJECTION CONTROL FAILED — injected rollback mutation/disabled button/hidden refusal stayed green: '
       + JSON.stringify(restartOutcomeCtl));
+  }
+  const restartTickerCtl = await evalIn(`(()=>{ const app=window.__CF_SLICE__.app;app.stop();const result=${restartOutcomeCheck};app.start();return result;})()`);
+  if (restartTickerCtl.ok || restartTickerCtl.tickerStarted) {
+    fails.push('TRAINING RESTART TICKER CONTROL FAILED — rollback with stopped outgoing ticker stayed green: '
+      + JSON.stringify(restartTickerCtl));
   }
   await evalIn(`(()=>{ document.querySelector('#setpanel [data-pnx]')?.click(); return true; })()`);
   /* A non-code Search owns one filtered Compendium visit. Detail → Back

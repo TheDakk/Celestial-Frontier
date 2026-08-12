@@ -91,11 +91,18 @@
 > `planetside-portrait-band-viability` and
 > `planetside-portrait-trail-fallback` prove both directions.
 >
-> The matrix import fixture is witnessed as three observable phases rather than
-> a blind reload delay. Sticky CDP event receipts—not a serial polling command—
-> bind the explicit import to its old document token, default top execution
-> context and top-frame loader; allow 20 seconds for exactly one valid
-> `cf-v2-reload-release/v1` witness; allow 5 seconds from that receipt for a
+> The matrix import fixture is witnessed as event-owned phases rather than a
+> blind reload delay. One `cf-v2-import-phase/v1` stream binds the exact phase id,
+> old document token, target session/default top execution context, and top-frame
+> loader. A successful no-pending-save path is `invoked` (ticker running) →
+> `claimed` → `no-active-persist` → `primary-write-started` →
+> `primary-write-complete` → `release-started` → `release-complete`, with the
+> ticker stopped after `invoked`; the alternate path inserts
+> `waiting-active-persist` / `active-persist-settled`. Its absolute 20-second
+> clock begins before one bounded `Runtime.evaluate({awaitPromise:false})` arm
+> command, which receives no fresh deadline and is recorded with the evidence.
+> Sticky CDP receipts then require exactly one valid
+> `cf-v2-reload-release/v1` witness within that same import bound; allow 5 seconds from that receipt for a
 > top-frame commit with a changed loader; and only then start the replacement
 > document's independent 20-second boot budget. `replacementNavigationOutcome()`,
 > `importReleaseOutcome()` and `replacementReadyOutcome()` validate receipt time,
@@ -117,12 +124,17 @@
 > stalled or just-late transitions, retained canvases, unreleased renderer and
 > over-budget backing pixels. Sticky fatal Page/Runtime/Inspector/Network events
 > remain authoritative even when the bounded diagnostic ring rolls over; the
-> command never retries a red run.
+> command never retries a red run. `import-phase-sequence` and
+> `replacement-ticker-quiescence` additionally reject missing/reordered/wrong-
+> operation receipts, a stopped ticker before `invoked`, a running ticker after
+> claim, and exact-boundary-late arm or phase evidence. No timeout increase or
+> `Promise.race` is placed around IndexedDB durability.
 >
 > `scheduleReplacementReload()` is the product half of that contract. All three
 > intentional replacement transitions—Training restart after `persistView()`,
 > accepted `importBlob()` after `repo.write()`, and the storage retry after real
 > bytes reappear—first claim one mutually exclusive replacement transaction, then
+> stop a running outgoing Pixi ticker synchronously before any persistence await,
 > stop ordinary persistence and call the boot-installed
 > `releaseRendererForReload()`, and cross one task boundary before
 > `location.reload()`. The release hook removes renderer-density listeners,
@@ -130,7 +142,10 @@
 > collapses both it and `activeBackdropCanvas` to at most 1×1. It optionally emits
 > the release witness through a CDP `Runtime.addBinding` seam before the execution
 > context dies. This path is deliberately not registered on generic `pagehide`:
-> a browser-cache restoration must not revive a destroyed Pixi application.
+> a browser-cache restoration must not revive a destroyed Pixi application. A
+> failed or rolled-back flow restarts only a ticker that its exact claim stopped;
+> a successful replacement destroys the already-quiescent app. Invalid import
+> bytes reject before claim and leave the live ticker unchanged.
 >
 > Test-battery #199, run `31571459050` / job `94034164092`, exposed the former
 > old-token 10-second timeout at desktop-8k and a small-phone Planetside/trail
@@ -184,7 +199,34 @@
 > `3a2e5285184cf392a10916270f5d3d449d72d78bb6afb0b6bd29d45d6b1a6b50`,
 > `publishable:false`. Prior #201 and #202 remain preserved red without retry.
 > `20896ad` underlies a docs-only handoff tip; exact tip/upstream/check state is read
-> live, and the final pushed tip requires matching green CI. The
+> live.
+>
+> Test-battery #203, run
+> [`31602984470`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470) /
+> job [`94134750800`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470/job/94134750800),
+> completed once without retry at exact pushed head
+> `38e4f362533e272f56f708229f7a037f38ae8951` and remains **RED**. Every
+> preceding root/product/v2 gate and `smoke:ci` passed. Eleven glass viewport rows
+> passed; only desktop-8k import reached 20,015 ms before any release, ready,
+> navigation, fatal, command, or event evidence. The outgoing 5,461×3,072 Pixi
+> ticker remained active across the durable-write await and teardown under CI
+> software rendering. This is a pre-release renderer-pressure cliff, not save
+> corruption or a reported repository-write rejection. Preserve #203 without
+> retry, timeout increase, or an IndexedDB timeout race.
+>
+> The frozen repair remains uncommitted and therefore diagnostic. At dirty-source
+> digest `f25a190468d2be42f48b352c5c2b818524ab5e083e73715e7f5d488301b46f42`,
+> full certifying-structure glass passed 12/12 viewports, 52/52 controls,
+> `omitted=[]`, 0 findings,
+> instrument failures or retries, and all 12 exact import-phase/release/ready
+> paths. Replacement totals were 194–253 ms.
+> Desktop-8k recorded a 3 ms arm, exact seven-stage no-active-persist path with
+> ticker true only at `invoked`, 31 ms phase span, 1 ms write, 29 ms release,
+> both 5,461×3,072 canvases →1×1, `performanceNow` 198.1 ms, 1 ms confirmation,
+> and 253 ms total. A later smoke attempt correctly refused mixed-source evidence
+> because tracked documentation changed during its run; stable exact-commit smoke/
+> glass/persona remain pending. This cannot replace an exact clean committed battery or
+> matching CI. The final pushed tip requires both before preview/human play. The
 > artifact is origin-bound but not authorized for hosting or
 > publication; human playtest, Ready and merge authority remain open.
 > Development preview origin/package requirements live in
