@@ -3,9 +3,9 @@
 **Current integration state:** PR #10 merged normally into `develop` at
 `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`. OpenAI/Codex remains on
 `openai/mac`; executable/evidence head
-`d80133876b7156dc32b19be3e97222921deea9f0` is the immutable source that passed
+`20896ad410b48ae0c407a9f3d6885d30ec6657b1` is the immutable source that passed
 the complete clean sequential local battery described below and underlies a
-non-executable handoff tip. Exact tip/upstream/CI state is live authority from
+docs-only handoff tip. Exact tip/upstream/CI state is live authority from
 `git rev-parse HEAD`, `git status --short --branch`, and PR #11 checks. Prior test-battery #201,
 run [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
 job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
@@ -24,7 +24,7 @@ final preview CDP startup failed before a page existed after that step lost the
 preceding step's Chrome environment and selected Linux Edge. Commit
 `4d14a75e934536dc5f204e40c74f666cc9514df4` contains the job-scoped browser
 provenance repair; `08379d8c072c7eb22e2a029d666972c86d496326` completes the
-root-layout launcher/report hardening; `d801338` is the current exact executable evidence.
+root-layout launcher/report hardening; `20896ad` is the current exact executable evidence.
 Draft PR #11 is open at
 https://github.com/TheDakk/Celestial-Frontier/pull/11.
 
@@ -122,34 +122,40 @@ desktop-8k preference import instrument-failed after a 20-second replacement wai
 loader remained and its slice token/import phase were absent. This is not a save rejection or
 reported write error and must not be retried away.
 
-Immutable executable source `d80133876b7156dc32b19be3e97222921deea9f0` makes the
+Immutable executable source `20896ad410b48ae0c407a9f3d6885d30ec6657b1` makes the
 product's three intentional reloads claim one mutually
 exclusive replacement transaction, then gives them one explicit Pixi/global-resource release,
 view detachment, application/backdrop 1×1 collapse and one-task barrier;
-it avoids generic `pagehide` teardown for browser-cache safety. Glass requires that bound release
-witness, then separately bounds import at 20 seconds, observed navigation at 5 seconds and new-
-loader boot at 20 seconds. It retains Page/Runtime/Inspector/Network diagnosis and adds
+it avoids generic `pagehide` teardown for browser-cache safety. Glass uses sticky receipt times to
+bind release/import at 20 seconds, changed-loader navigation at 5 seconds and new-loader boot at
+20 seconds. Exactly one ready event from the exact new default context/session/loader/token/URL,
+with browser-native time below the boot limit, precedes one at-most-2-second confirmation. It
+retains sticky Page/Runtime/Inspector/Network diagnosis and adds
 `reload-resource-release` beside `replacement-document-loader-token-phase`, still with zero retries.
 Its pure controls also reject transitions that arrive just after any prior phase deadline.
 The exact clean sequential battery passed:
 
-- root installs/audits reported 0 vulnerabilities; validate/fingerprint, smoke and preflight passed;
-- layout selftest passed, then `exact-d801338-root-layout-final` passed 787/787 and exact verification.
-  One earlier malformed verifier invocation spawned a run and overwrote the report with
-  `instrument-fail`; correcting that operator command before the final run was not a product retry;
+- root preflight selftest/preflight, validate/fingerprint and smoke passed; preflight reported only
+  the expected Edge 151 versus pinned Edge 150 drift warning;
+- `exact-20896ad-root-layout` passed the sealed 787/787 inventory across 10/10 viewports and exact
+  verification;
 - rarity completed 60M trials / 0 downgrades; dead-code review found 3 tooling references;
 - v2 passed 24 files / 273 tests / 1 skip plus all type/art/override/coverage/spec and instrument
   gates/selftests;
-- one-attempt smoke passed with 0 findings / 10 screenshots;
-- full glass passed 12/12 viewports, 50/50 controls, 0 omitted/findings/instrument failures/retries,
-  working-tree digest `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+- one-attempt smoke passed with 0 findings / 10 screenshots; smoke/glass/persona evidence shares
+  working-tree digest `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`;
+- committed/certifying full glass passed 12/12 viewports, 50/50 controls, `omitted=[]`, and
+  0 findings/instrument failures/retries.
   All 12 release witnesses passed; desktop-8k recorded 5,461×3,072→1×1 for both canvases,
-  released renderer/stage, detached view, changed loader/token and ready replacement in 230 ms;
-- all 9 bounded automated personas passed; 4× performance diagnostics were 643 ms painted /
-  726 ms answerable / 77 ms press→panel / 152 ms rebuild; and
-- preview verify/browser passed at 320×568 for expected origin
+  released renderer/stage, detached view, release→commit 31 ms, commit→ready 148 ms,
+  `performanceNow` 177 ms, confirmation 1 ms and total 212 ms. All viewport totals were
+  170–212 ms; maximum browser-native time was 177 ms;
+- all 9 bounded automated personas passed; terminal-only 4× performance diagnostics were
+  586 ms painted / 666 ms answerable / 77 ms press→panel / 151 ms rebuild; and
+- exact 37-file preview `dev-preview-exact-20896ad` verified and browser-smoked PASS at 320×568
+  for expected origin
   `https://dev-celestialfrontier.github.io`, content SHA-256
-  `e59cfe336ef3c5bde06423bf127e922a27a9bb0f4055014c3d03629244a308d2`,
+  `3a2e5285184cf392a10916270f5d3d449d72d78bb6afb0b6bd29d45d6b1a6b50`,
   `publishable:false`.
 
 Matching test-battery #202, run `31594595288` / job `94106996466`, completed
@@ -176,18 +182,7 @@ context. Fatal events remain sticky outside bounded diagnostics. This proves
 boot publication plus a serviced event-loop turn, not the separate 50 ms
 answerability metric; later driven controls remain authoritative.
 
-The current full dirty diagnostic is explicitly non-authoritative: base
-`93f75a93ab80a3b199e55b5b49d9488e8fc57f53`, working-tree digest
-`d247209d66a7d3a26ffd484066fecc92f05b4511e542f917f848715fcc53d295`.
-Glass passed 12/12 viewports, 50/50 controls, all 12 replacement witnesses and
-0 findings/instrument failures/retries, with 170–216 ms replacement totals.
-Desktop-8k released both 5,461×3,072 stores to 1×1, committed in 32 ms, emitted
-ready 146 ms later (`performanceNow` 176.2 ms), confirmed in 2 ms and completed
-in 216 ms. It is repair-
-direction evidence only; a clean commit, exact sequential battery and matching
-CI remain mandatory.
-
-`d801338` underlies the non-executable handoff tip. Live Git/PR state decides its exact current
+`20896ad` underlies a docs-only handoff tip. Live Git/PR state decides its exact current
 tip/upstream/check status; require matching green CI for the final pushed tip before human
 playtest against its commit-bound separate-origin preview. Record full commit,
 `preview.json` content hash, URL, tester/device/browser, save state, findings and
@@ -207,9 +202,9 @@ scenes are the higher-value visual work.
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — executable/evidence head
-`d80133876b7156dc32b19be3e97222921deea9f0` is the immutable source for the complete clean
-sequential battery and underlies a non-executable handoff tip. Resolve exact current tip/upstream/
-check state live; prior #201 remains preserved red without retry.
+`20896ad410b48ae0c407a9f3d6885d30ec6657b1` is the immutable source for the complete clean
+sequential battery and underlies a docs-only handoff tip. Resolve exact current tip/upstream/
+check state live; prior #201 and #202 remain preserved red without retry.
 
 **GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`)
 and #202 (`31594595288` / `94106996466`) without retry. Read `git rev-parse HEAD`,
@@ -256,10 +251,11 @@ merge into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add w
   > gate onto the same owned port-0 CDP launcher and adds ignored atomic pass/fail/instrument-fail
   > evidence, stale-PASS/exit-73 selftest, exact-run freshness and a separate required CI upload;
   > automated personas are explicitly not a human playtest. Clean executable evidence is bound to
-  > local commit `d80133876b7156dc32b19be3e97222921deea9f0`: root fingerprint/smoke/preflight
+  > commit `20896ad410b48ae0c407a9f3d6885d30ec6657b1`: root fingerprint/smoke/preflight
   > and sealed layout 787/787, v2 273 pass / 1 skip plus every gate/selftest, one-attempt smoke,
-  > glass 12/12 with 50/50 controls and 12 valid release witnesses, nine automated personas, and
-  > preview browser PASS. Prior #201 (`31586917924` / `94082765087`) and #202
+  > committed glass 12/12 with 50/50 controls, 12 valid replacement witnesses and 170–212 ms
+  > replacement totals, nine automated personas, and exact 37-file preview verify/browser PASS.
+  > Prior #201 (`31586917924` / `94082765087`) and #202
   > (`31594595288` / `94106996466`) remain preserved red without retry; #202 exposed serial CDP
   > observer latency rather than a proven product failure. Exact tip/upstream/check status is read
   > live; the final pushed non-executable

@@ -209,38 +209,29 @@
 > boot, save rejection or presentation failure. It is preserved instrument
 > ambiguity, without retry or a timeout increase.
 >
-> The event-owned repair's full dirty diagnostic is explicitly non-authoritative:
-> base `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`, working-tree digest
-> `d247209d66a7d3a26ffd484066fecc92f05b4511e542f917f848715fcc53d295`.
-> Glass passed 12/12 viewports, 50/50 controls, all 12 replacement witnesses and
-> 0 findings/instrument failures/retries; replacement totals were 170–216 ms.
-> Desktop-8k collapsed both 5,461×3,072 stores to 1×1, recorded release→commit
-> in 32 ms, commit→ready in 146 ms (`performanceNow` 176.2 ms), a 2 ms
-> confirmation and 216 ms total. A clean
-> commit, exact sequential battery and matching CI are still required.
->
 > Immutable executable evidence source
-> `d80133876b7156dc32b19be3e97222921deea9f0` passed its exact sequential battery. Root
-> installs/audits reported 0 vulnerabilities; validate/fingerprint, smoke and
-> preflight passed. Layout selftest passed; final run
-> `exact-d801338-root-layout-final` passed 787/787 and exact verification. One
-> earlier malformed verifier invocation spawned a run and overwrote the report
-> with `instrument-fail`; correcting that operator command before the final run
-> was not a product retry. Rarity completed 60M/0 downgrades and dead-code review
+> `20896ad410b48ae0c407a9f3d6885d30ec6657b1` passed its exact sequential battery.
+> Root preflight selftest/preflight, validate/fingerprint and smoke passed; the
+> only preflight note was Edge 151 versus pinned Edge 150 drift. Certifying run
+> `exact-20896ad-root-layout` passed the sealed 787/787 inventory across 10/10
+> viewports and exact verification. Rarity completed 60M/0 downgrades and dead-code review
 > found 3 tooling references. V2 passed 24 files / 273 tests / 1 skip plus every
 > gate/selftest; one-attempt smoke passed 0 findings / 10 screenshots.
 >
-> Full glass passed 12/12 viewports, 50/50 controls, 0 omitted/findings/instrument
-> failures/retries, with working-tree digest
+> Committed/certifying glass passed 12/12 viewports, 50/50 controls,
+> `omitted=[]`, 0 findings/instrument failures/retries, with working-tree digest
 > `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
 > All 12 reload witnesses passed; desktop-8k recorded both 5,461×3,072 backings
-> collapsing to 1×1, renderer/stage released, view detached, changed loader/token
-> and a ready replacement in 230 ms. All nine automated personas passed. The 4×
-> diagnostic recorded 643 ms painted / 726 ms answerable / 77 ms press→panel /
-> 152 ms rebuild. Preview verify/browser passed at 320×568 for expected origin
+> collapsing to 1×1, renderer/stage released, view detached, release→commit in
+> 31 ms, commit→ready in 148 ms, `performanceNow` 177 ms, confirmation in 1 ms
+> and 212 ms total. All viewport totals were 170–212 ms and maximum browser-native
+> time was 177 ms. All nine automated personas passed. The terminal-only 4×
+> diagnostic recorded 586 ms painted / 666 ms answerable / 77 ms press→panel /
+> 151 ms rebuild. Exact 37-file preview `dev-preview-exact-20896ad` verified and
+> browser-smoked PASS at 320×568 for expected origin
 > `https://dev-celestialfrontier.github.io`, content SHA-256
-> `e59cfe336ef3c5bde06423bf127e922a27a9bb0f4055014c3d03629244a308d2`,
-> `publishable:false`. `d801338` underlies the non-executable handoff tip. Exact
+> `3a2e5285184cf392a10916270f5d3d449d72d78bb6afb0b6bd29d45d6b1a6b50`,
+> `publishable:false`. `20896ad` underlies a docs-only handoff tip. Exact
 > tip/upstream/check status is read live, and the final pushed tip requires
 > matching green CI. The
 > artifact is bound to `https://dev-celestialfrontier.github.io`, but no host or

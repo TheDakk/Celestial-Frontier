@@ -113,7 +113,7 @@ This is a replacement-lifecycle/instrument finding after reload was requested,
 not a save-classifier rejection or reported repository-write error. Do not rerun
 unchanged #201 or lengthen its timeout to mask it.
 
-Immutable executable evidence source `d80133876b7156dc32b19be3e97222921deea9f0`
+Immutable executable evidence source `20896ad410b48ae0c407a9f3d6885d30ec6657b1`
 makes the product's Training-restart,
 supported-import and storage-retry reloads claim one mutually exclusive replacement
 transaction before awaiting, then explicitly release the outgoing Pixi
@@ -121,34 +121,13 @@ application/global resources, detach the view, and collapse both application and
 backdrop canvases to at most 1×1 before a one-task reload barrier. It is code-owned,
 not a generic `pagehide` teardown, so browser-cache restoration cannot revive a
 destroyed app. An optional CDP binding emits the release postconditions outside the
-dying context. Glass then observes a 20-second import transaction, 5-second
-navigation commit, and independent 20-second new-loader boot; requires exactly one
-valid release witness plus changed loader and document token; and retains bounded
-Page/Runtime/Inspector/Network failure evidence. The paired
+dying context. Glass uses sticky receipts to bound a 20-second import/release,
+5-second changed-loader navigation commit and independent 20-second new-loader
+boot; requires one valid release plus one exact-context ready event and a short
+confirmation; and retains sticky Page/Runtime/Inspector/Network failure evidence. The paired
 `replacement-document-loader-token-phase` and `reload-resource-release` controls
 reject the ambiguous and resource-retention paths, including just-late transitions
 at every phase boundary, with zero retries.
-
-Its complete clean battery passed: root installs/audits 0 vulnerabilities plus
-validate/fingerprint, smoke and preflight; layout selftest plus final
-`exact-d801338-root-layout-final` 787/787 and exact verification; rarity 60M/0;
-dead-code 3 tooling references; v2 24 files /273 tests /1 skip plus every gate/
-selftest; and one-attempt smoke 0 findings /10 screenshots. One earlier malformed
-verifier invocation spawned and overwrote an `instrument-fail` layout report;
-correcting that operator command before the final run was not a product retry.
-
-Full glass passed 12/12 viewports, 50/50 controls, 0 omitted/findings/instrument
-failures/retries, digest
-`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
-All 12 release witnesses passed; desktop-8k recorded both 5,461×3,072 canvases
-→1×1, renderer/stage released, view detached, changed loader/token and ready in
-230 ms. Nine personas passed; the 4× diagnostic was 643/726/77/152 ms. Preview
-verify/browser passed at 320×568 for `https://dev-celestialfrontier.github.io`,
-content `e59cfe336ef3c5bde06423bf127e922a27a9bb0f4055014c3d03629244a308d2`,
-`publishable:false`. Prior #201 remains preserved red without retry. `d801338`
-underlies the non-executable handoff tip; exact tip/upstream/check state is read
-live, and the final pushed tip requires matching green CI. `overridecontrol` remains exclusive and may not
-overlap any browser, build or evidence producer.
 
 Test-battery #202, run
 [`31594595288`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288) /
@@ -176,15 +155,25 @@ Missing, duplicate, malformed, wrong-
 session/context/generation/origin/loader/token/URL, pre-commit and just-late events
 fail closed; sticky fatal events survive bounded diagnostic-ring rollover.
 
-One full dirty diagnostic is intentionally non-authoritative: base commit
-`93f75a93ab80a3b199e55b5b49d9488e8fc57f53`, working-tree digest
-`d247209d66a7d3a26ffd484066fecc92f05b4511e542f917f848715fcc53d295`.
-Glass passed 12/12 viewports, 50/50 controls, all 12 replacement witnesses and
-0 findings/instrument failures/retries, with 170–216 ms replacement totals.
-Desktop-8k released both 5,461×3,072 canvases to 1×1, committed the replacement
-loader in 32 ms, received ready 146 ms later (`performanceNow` 176.2 ms),
-confirmed it in 2 ms, and completed in 216 ms. This is repair-direction evidence only; a clean commit, exact
-sequential battery and matching CI remain required.
+The complete clean `20896ad` battery passed: root preflight selftest/preflight
+(only Edge 151 versus pinned Edge 150 drift), validate/fingerprint and smoke;
+`exact-20896ad-root-layout` 787/787 across 10/10 viewports; rarity 60M/0;
+dead-code 3 known tooling references; v2 24 files /273 tests /1 skip plus every
+type/art/override/coverage/spec/instrument gate; and one-attempt smoke 0 findings /
+10 screenshots. Committed/certifying glass passed 12/12 viewports, 50/50 controls,
+`omitted=[]`, 0 findings/instrument failures/retries and all 12 witnesses at digest
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+Replacement totals were 170–212 ms with maximum browser-native time 177 ms;
+desktop-8k released 5,461×3,072→1×1 for both canvases, release→commit 31 ms,
+commit→ready 148 ms, `performanceNow` 177 ms, confirmation 1 ms and total 212 ms.
+Nine personas passed; the terminal-only 4× diagnostic was 586/666/77/151 ms.
+Exact 37-file preview `dev-preview-exact-20896ad` verified and browser-smoked PASS
+at 320×568 for `https://dev-celestialfrontier.github.io`, content
+`3a2e5285184cf392a10916270f5d3d449d72d78bb6afb0b6bd29d45d6b1a6b50`,
+`publishable:false`. `20896ad` underlies a docs-only handoff tip; exact tip/
+upstream/check state is live, and matching final-tip CI remains required. Prior
+#201 and #202 stay preserved red without retry. `overridecontrol` remains exclusive
+and may not overlap any browser, build or evidence producer.
 
 Human development playtests use a commit-bound static package, not the live
 site. `npm run preview:package -- --origin=https://<separate-preview-host>`
