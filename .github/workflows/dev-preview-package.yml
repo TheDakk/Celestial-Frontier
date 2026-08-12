@@ -26,6 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     environment: development-preview-package
+    env:
+      CF_BROWSER: /usr/bin/google-chrome
     steps:
       - name: validate manual authorization and source branch
         shell: bash
@@ -57,6 +59,9 @@ jobs:
           node-version: 26
           cache: npm
           cache-dependency-path: port/v2/package-lock.json
+      - name: browser provenance
+        working-directory: port/v2
+        run: node tools/browserpath.mjs --print
       - name: install v2 workspace
         working-directory: port/v2
         run: npm ci
@@ -71,6 +76,8 @@ jobs:
           npm run overridecontrol
           npm run coveragegap
           node tools/speccheck.mjs
+          node tools/browserpath.mjs --selftest
+          node tools/browsercdp.mjs --selftest
           npm run smoke:report:selftest
           npm run glassmatrix:selftest
           npm run persona:selftest
@@ -86,6 +93,7 @@ jobs:
       - name: build commit-bound preview artifact
         working-directory: port/v2
         env:
+          CF_BROWSER: /usr/bin/google-chrome
           PREVIEW_ORIGIN: ${{ inputs.preview_origin }}
           PREVIEW_OUTPUT: apps/game/smoke/dev-preview-manual-${{ github.run_id }}-${{ github.run_attempt }}
         run: |

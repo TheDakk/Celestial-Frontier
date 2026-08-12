@@ -69,26 +69,28 @@ band grows again. `planetside-portrait-band-viability` removes the cap to
 recreate the collision; `planetside-portrait-trail-fallback` forces and then
 restores the tight branch while proving the roster remains useful and reachable.
 
-Pushed commit `33ea34191c817a8e78eea598c31981f8208e939b` passed its exact
-local battery, but GitHub test-battery run `31571459050` / job `94034164092`
-failed in the v2 real-browser/responsive/persona step. Its single `smoke:ci` run
-passed. The glass matrix then observed the old ready token for the former one-
-piece 10-second reload wait at desktop-8k and also recorded the small-phone
-Planetside/trail overlap. The repair now arms the import Promise as an explicit
-phase, witnesses the top-frame loader before and after evaluation, and requires
-both loader id and per-document token to change before replacement readiness can
-pass. Import settlement and replacement boot have separate 20-second bounds;
-same-document token mutation, phase loss/rejection, and loader/evaluation races
-fail closed under `replacement-document-loader-token-phase`. There is still no
-retry. Post-repair evidence is only static/self-test so far:
-`node --check tools/glassmatrix.mjs`, `npm run glassmatrix:selftest`,
-`npm run typecheck`, and `git diff --check`. Targeted real-browser diagnostics
-for the small-phone portrait branch and desktop-8k import/reload path also pass
-on the mutable repair snapshot. They are not a complete matrix or certification.
-Current `smoke:ci`, the full 12-viewport matrix/persona synthesis, the repair's
-exact commit and sequential local battery, and matching GitHub CI remain pending;
-`overridecontrol` remains exclusive and may not overlap any browser, build or
-evidence producer.
+GitHub test-battery #199, run `31571459050` / job `94034164092`, exposed the
+former desktop-8k reload ambiguity and small-phone Planetside/trail overlap.
+Pushed commit `8b8a740286a56591cac9dc5734a2fba4c088939b` repairs both: import
+settlement and replacement boot have separate 20-second bounds, a changed top-
+frame loader plus document token is required, and portrait Planetside preserves
+a useful 72px scrolling band with a measured trail fallback. The deliberate
+failing controls and exact sequential local battery passed.
+
+Matching GitHub test-battery #200, run `31577395120` / job `94052496287`,
+passed all root/product/v2 gates, the single `smoke:ci` run, the complete
+12-viewport glass matrix including 8K, matching-provenance automated personas,
+and `preview:package`. Only final `preview:smoke` failed before a page existed.
+The preceding evidence step set `CF_BROWSER=/usr/bin/google-chrome` only for its
+own process; the preview step did not inherit it, so the resolver selected Linux
+Edge at `/opt/microsoft/msedge/microsoft-edge`, which never wrote
+`DevToolsActivePort`. This is a CI browser-provenance failure, not a product,
+responsive, package, or preview-page finding. The workflow repair pins Chrome at
+job scope in both CI workflows and resolves it fail-closed before the long battery.
+It still requires a new clean commit, exact-head battery, push and matching CI.
+Do not rerun the unchanged red head, retry the browser, lengthen startup, or clear
+D-Bus to mask the evidence. `overridecontrol` remains exclusive and may not
+overlap any browser, build or evidence producer.
 
 Human development playtests use a commit-bound static package, not the live
 site. `npm run preview:package -- --origin=https://<separate-preview-host>`
@@ -404,11 +406,11 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 
 | Tool | Role |
 |---|---|
-| `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, and package tampering; then creates, verifies, and real-browser-boots a clean-commit static human-playtest package built from an isolated exact-HEAD snapshot with a visible DEV/commit banner, guarded module loader, `robots.txt`, and `preview.json` tree/lock/byte hashes. The shared workspace lock prevents overlap with source-mutating controls; the 320×568 boot requires the banner to clear the dock. Default output is remote-blocked; the default-branch manual workflow normally creates approved candidates, with PR #11's explicitly approved clean-head local bootstrap documented separately. It never deploys. |
+| `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, and package tampering; then creates, verifies, and real-browser-boots a clean-commit static human-playtest package built from an isolated exact-HEAD snapshot with a visible DEV/commit banner, guarded module loader, `robots.txt`, and `preview.json` tree/lock/byte hashes. The shared workspace lock prevents overlap with source-mutating controls; the 320×568 boot requires the banner to clear the dock. Browser provenance belongs to each process: CI pins the same exact `CF_BROWSER` at job scope so the packaging step cannot fall back to another installed browser. Default output is remote-blocked; the default-branch manual workflow normally creates approved candidates, with PR #11's explicitly approved clean-head local bootstrap documented separately. It never deploys. |
 | `npm run smoke:ci` | Runs the authoritative real-browser `slicesmoke.mjs` exactly once, retains complete stdout/stderr in `slice-smoke.log`, and writes commit/branch/working-tree/browser/screenshot-bound `slice-smoke-report.json`. `smokereport` owns one full-lifetime workspace lock and passes a validated one-child inherited lease to `slicesmoke`, retaining the lock through screenshot hashing and report finalization. A failure prints the first scoped diagnosis plus a related count; it never retries a red run. |
 | `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion and DPR without retrying. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`; import/reload owns `replacement-document-loader-token-phase`, separate 20-second import/replacement bounds, and requires a ready document with changed loader plus changed token. The command owns the shared workspace lock while building/browsing. |
 | `npm run persona:selftest` / `npm run persona:report` | Joins only passing slice-smoke and glass-matrix evidence with matching commit/branch and dirty-tree digest into `automated-persona-report.{json,md}`. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |
-| `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. |
+| `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. Environment scope is process-local: a green browser in one workflow step does not pin the resolver in the next. CI therefore supplies the exact path at job scope and resolves it before long gates. |
 | `node tools/browsercdp.mjs --selftest` | Negative-controls browser startup metadata, child exit, WebSocket and command timeouts, pending-command rejection, bounded shutdown, exact version provenance, and owned-profile cleanup. |
 | `node tools/proceduralnames.mjs --selftest` | Proves the exact 240-row bridge among full, drift, and render procedural identities. |
 | `node tools/rejudgecards.mjs --drift=<file> --out=<dir> [--control] [--full]` | Builds indexed drift, unchanged-control, or full-catalogue review strips and packets from the current renderer. |

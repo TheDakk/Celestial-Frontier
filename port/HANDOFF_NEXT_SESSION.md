@@ -3,10 +3,14 @@
 **Current integration state:** PR #10 merged normally into `develop` at
 `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`. OpenAI/Codex remains on
 `openai/mac`; the current pushed PR head is
-`33ea34191c817a8e78eea598c31981f8208e939b`. Its exact local battery passed,
-but matching test-battery run `31571459050` found the two issues now being
-repaired. The current repair has intentional scoped working-copy changes and is
-not publication evidence until frozen in a new clean pushed commit. Draft PR #11 is open at
+`8b8a740286a56591cac9dc5734a2fba4c088939b`. Its exact local battery passed
+and it closes test-battery #199's product/instrument findings. Matching
+test-battery #200, run `31577395120` / job `94052496287`, passed every root,
+product, v2, one-run smoke, full 12-viewport glass, automated-persona and
+preview-package gate. Only final preview CDP startup failed before a page existed:
+that new step lost the preceding step's Chrome environment and selected Linux
+Edge. The job-scoped Chrome provenance repair still requires a new clean commit,
+exact-head battery, push and matching CI. Draft PR #11 is open at
 https://github.com/TheDakk/Celestial-Frontier/pull/11.
 
 The batch audits and hardens the already-ported Phase-4 slice: sparse/corrupt/
@@ -52,31 +56,29 @@ refuses production/path origins. The actual separate preview owner/hostname has
 not been chosen or published; use either the recommended separate
 `dev-celestialfrontier` owner site or an approved dedicated custom hostname.
 
-**Evidence status:** pushed commit
-`33ea34191c817a8e78eea598c31981f8208e939b` passed its exact local battery,
-but matching GitHub test-battery #199, run `31571459050` / job
-`94034164092`, failed in the v2 real-browser/responsive/persona step after
-24m01 (30m39 job). Its single `smoke:ci` run passed. The glass matrix then saw
-the old ready document token through the former one-piece 10-second desktop-8k
-reload window and also recorded small-phone `PLANETSIDE_TOP_CHROME_OVERLAP`
-(Planetside `[12,103,308,248]`, trail `[3.82,96,316.18,127.5]`).
+**Evidence status:** GitHub test-battery #199, run `31571459050` / job
+`94034164092`, exposed the old desktop-8k reload ambiguity and small-phone
+Planetside/trail overlap. Pushed commit
+`8b8a740286a56591cac9dc5734a2fba4c088939b` repairs both with separate
+import/replacement phases, changed-loader plus changed-token readiness, a useful
+72px scrollable portrait roster and trail fallback; their failing controls and
+the exact sequential local battery passed.
 
-The current repair gives import settlement and replacement boot separate
-20-second bounds, witnesses an explicit import phase plus the top-frame loader
-and document token, and passes only a ready document with both loader and token
-changed. `replacement-document-loader-token-phase` rejects lost/rejected phases,
-same-document token mutation and loader/evaluation races without retrying.
-`planetside-portrait-band-viability` proves a 72px useful scrolling band, visible
-heading/reachable specimen and 6px trail separation, with a removed-cap collision
-control. `planetside-portrait-trail-fallback` tightens the lower safe rectangle
-enough to force the trail to yield, proves the strip remains usable, and proves exact restoration.
-Only `node --check tools/glassmatrix.mjs`, `npm run glassmatrix:selftest`, both
-root and app TypeScript programs via `npm run typecheck`, and `git diff --check`
-are green after this repair. Targeted real-browser diagnostics for the small-phone portrait branch
-and desktop-8k import/reload path also pass on the mutable repair snapshot; they are non-certifying.
-Do not call it final. Run current `smoke:ci` and the complete 12-viewport matrix/persona synthesis,
-freeze the repair commit, run the full sequential exact-head battery, then push it and require
-matching GitHub CI before completing a real multi-lens human
+Matching GitHub test-battery #200, run `31577395120` / job `94052496287`,
+passed all root/product/v2 gates, one-attempt `smoke:ci`, the complete 12-viewport
+matrix including 8K, automated-persona synthesis and `preview:package`. Only
+`preview:smoke` failed: its process did not inherit the previous step's
+`CF_BROWSER=/usr/bin/google-chrome`, so the resolver selected Linux Edge at
+`/opt/microsoft/msedge/microsoft-edge`. Edge never wrote `DevToolsActivePort`;
+the check stopped before a target or packaged page existed. This is CI browser-
+provenance failure, not a game, glass, package or human-preview finding.
+
+The repair pins the exact Chrome path at job scope in both workflows and resolves
+it fail-closed before the long battery. Browser provenance is per step/process,
+not workflow memory. Do not rerun the unchanged red head, add retries, lengthen
+startup or clear D-Bus to hide the failure. Freeze the workflow repair in a new
+commit, run the full sequential exact-head battery, push, and require matching
+new-head GitHub CI before completing a real multi-lens human
 playtest against its commit-bound separate-origin preview. Record full commit,
 `preview.json` content hash, URL, tester/device/browser, save state, findings and
 retest in `port/playtests/`. Do not mark PR #11 Ready or merge before every human
@@ -95,13 +97,15 @@ scenes are the higher-value visual work.
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — pushed head
-`33ea34191c817a8e78eea598c31981f8208e939b` is the red-CI diagnosis baseline;
-the Planetside and reload-witness repair remains uncommitted/unpushed. Draft PR #11 exists,
-but its current remote head does not yet contain this repair.
+`8b8a740286a56591cac9dc5734a2fba4c088939b` is product-, smoke-, full-glass-,
+persona- and package-green locally and through test-battery #200. The only red gate
+is preview's pre-page CDP startup after browser provenance fell out of scope; the
+job-scoped Chrome repair remains uncommitted/unpushed. Draft PR #11 exists, but
+its current remote head does not yet contain that workflow repair.
 
-**GitHub step:** keep PR #11 draft. Freeze the scoped batch in a commit, run the
-final sequential local battery on that exact commit, then push it and require
-matching CI. Update the PR body with that exact head and results,
+**GitHub step:** keep PR #11 draft. Freeze the browser-provenance repair in a commit,
+run the final sequential local battery on that exact commit, then push it and require
+matching new-head CI; do not rerun or timeout-mask #200. Update the PR body with that exact head and results,
 build the approved separate-origin preview, complete and record the human
 playtest, and resolve/retest findings. Only then may Nick click **Ready for
 review**, review the final diff/checks, and normally merge into `develop`. Never
@@ -134,6 +138,8 @@ auto-merge, squash/rebase, retarget `main`, or add this work to merged PR #10.
   > boot as separate 20-second phases and requires both loader and document token to change, with no
   > retry. Adds provenance-bound
   > smoke, glass and automated-persona reports plus commit-bound development-preview packaging;
+  > pins the CI browser at job scope so a later preview process cannot silently switch from Chrome
+  > to Linux Edge when a preceding step's environment expires;
   > automated personas are explicitly not a human playtest. The preview requires a separately
   > approved origin, which has not been chosen or published. Final verification is publication-
   > contingent: freeze the final head in a commit, run the sequential local battery, then push

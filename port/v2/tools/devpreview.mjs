@@ -32,6 +32,11 @@ const evidenceRoot = path.join(appDir, 'smoke');
 const PROD_ORIGIN = 'https://celestialfrontier.github.io';
 const SCHEMA = 'cf-dev-preview/v2';
 const DEFAULT_ORIGIN = 'https://dev-celestialfrontier.github.io';
+const CI_PREVIEW_BROWSER = '/usr/bin/google-chrome';
+const CONTROLLED_PREVIEW_WORKFLOWS = Object.freeze([
+  '.github/workflows/test.yml',
+  '.github/workflows/dev-preview-package.yml',
+]);
 
 function fail(message) { throw new Error(message); }
 function assert(condition, message) { if (!condition) fail(message); }
@@ -185,6 +190,120 @@ function validateOutputPath(output) {
     'preview output directory must start with dev-preview-');
   assert(!fs.existsSync(resolved), `refusing to overwrite existing preview package: ${resolved}`);
   return resolved;
+}
+
+function yamlIndent(line, where) {
+  const whitespace = (line.match(/^[ \t]*/) || [''])[0];
+  assert(!whitespace.includes('\t'), `${where}: tabs make workflow scope ambiguous`);
+  return whitespace.length;
+}
+
+function workflowBlockEnd(lines, start, indent) {
+  for (let index = start + 1; index < lines.length; index++) {
+    const trimmed = lines[index].trim();
+    if (trimmed && !trimmed.startsWith('#') && yamlIndent(lines[index], `workflow line ${index + 1}`) <= indent) {
+      return index;
+    }
+  }
+  return lines.length;
+}
+
+export function assertPreviewWorkflowBrowserContract(source, label = 'preview workflow') {
+  assert(typeof source === 'string' && source.trim(), `${label}: workflow source is empty`);
+  const lines = source.split(/\r?\n/);
+  const smokeLines = lines.flatMap((line, index) =>
+    /\bnpm\s+run\s+preview:smoke\b/.test(line) ? [index] : []);
+  assert(smokeLines.length === 1,
+    `${label}: expected exactly one npm run preview:smoke step, found ${smokeLines.length}`);
+  const smokeLine = smokeLines[0];
+
+  const jobsLines = lines.flatMap((line, index) => line.trim() === 'jobs:' ? [index] : []);
+  assert(jobsLines.length === 1, `${label}: expected one jobs mapping, found ${jobsLines.length}`);
+  const jobsLine = jobsLines[0];
+  const jobsIndent = yamlIndent(lines[jobsLine], `${label} jobs`);
+  const jobsEnd = workflowBlockEnd(lines, jobsLine, jobsIndent);
+  assert(smokeLine > jobsLine && smokeLine < jobsEnd,
+    `${label}: preview smoke command is not inside jobs`);
+
+  const jobIndent = jobsIndent + 2;
+  const jobHeaders = [];
+  for (let index = jobsLine + 1; index < jobsEnd; index++) {
+    if (yamlIndent(lines[index], `${label} line ${index + 1}`) === jobIndent
+      && /^[A-Za-z0-9_-]+:\s*(?:#.*)?$/.test(lines[index].trim())) jobHeaders.push(index);
+  }
+  const owningJobs = jobHeaders.filter((start, position) => {
+    const end = jobHeaders[position + 1] ?? jobsEnd;
+    return smokeLine > start && smokeLine < end;
+  });
+  assert(owningJobs.length === 1, `${label}: preview smoke job ownership is ambiguous`);
+  const jobLine = owningJobs[0];
+  const jobPosition = jobHeaders.indexOf(jobLine);
+  const jobEnd = jobHeaders[jobPosition + 1] ?? jobsEnd;
+  const jobName = lines[jobLine].trim().slice(0, -1);
+
+  const directJobEnv = [];
+  const directSteps = [];
+  for (let index = jobLine + 1; index < jobEnd; index++) {
+    if (yamlIndent(lines[index], `${label} line ${index + 1}`) !== jobIndent + 2) continue;
+    if (lines[index].trim() === 'env:') directJobEnv.push(index);
+    if (lines[index].trim() === 'steps:') directSteps.push(index);
+  }
+  assert(directJobEnv.length === 1,
+    `${label}: job ${jobName} lacks one exact job-level browser environment`);
+  const jobEnvLine = directJobEnv[0];
+  const jobEnvEnd = workflowBlockEnd(lines, jobEnvLine, jobIndent + 2);
+  const jobBrowserPins = [];
+  for (let index = jobEnvLine + 1; index < jobEnvEnd; index++) {
+    if (yamlIndent(lines[index], `${label} line ${index + 1}`) === jobIndent + 4
+      && /^CF_BROWSER\s*:/.test(lines[index].trim())) jobBrowserPins.push(lines[index].trim());
+  }
+  assert(jobBrowserPins.length === 1 && jobBrowserPins[0] === `CF_BROWSER: ${CI_PREVIEW_BROWSER}`,
+    `${label}: job ${jobName} lacks exact job-level CF_BROWSER: ${CI_PREVIEW_BROWSER}`);
+
+  assert(directSteps.length === 1, `${label}: job ${jobName} must own one steps sequence`);
+  const stepsLine = directSteps[0];
+  const stepsEnd = Math.min(workflowBlockEnd(lines, stepsLine, jobIndent + 2), jobEnd);
+  assert(smokeLine > stepsLine && smokeLine < stepsEnd,
+    `${label}: preview smoke command is not inside job ${jobName}'s steps`);
+  const stepIndent = jobIndent + 4;
+  const stepHeaders = [];
+  for (let index = stepsLine + 1; index < stepsEnd; index++) {
+    if (yamlIndent(lines[index], `${label} line ${index + 1}`) === stepIndent
+      && lines[index].trim().startsWith('- ')) stepHeaders.push(index);
+  }
+  const owningSteps = stepHeaders.filter((start, position) => {
+    const end = stepHeaders[position + 1] ?? stepsEnd;
+    return smokeLine >= start && smokeLine < end;
+  });
+  assert(owningSteps.length === 1, `${label}: preview smoke step ownership is ambiguous`);
+  const stepLine = owningSteps[0];
+  const stepPosition = stepHeaders.indexOf(stepLine);
+  const stepEnd = stepHeaders[stepPosition + 1] ?? stepsEnd;
+
+  const stepEnvLines = [];
+  for (let index = stepLine + 1; index < stepEnd; index++) {
+    const trimmed = lines[index].trim();
+    assert(!(/\bCF_BROWSER\b/.test(trimmed) && !/^CF_BROWSER\s*:/.test(trimmed)),
+      `${label}: preview smoke step reassigns CF_BROWSER in its command`);
+    if (yamlIndent(lines[index], `${label} line ${index + 1}`) === stepIndent + 2
+      && trimmed === 'env:') stepEnvLines.push(index);
+  }
+  assert(stepEnvLines.length <= 1, `${label}: preview smoke step has ambiguous env mappings`);
+  if (stepEnvLines.length === 1) {
+    const stepEnvLine = stepEnvLines[0];
+    const stepEnvEnd = Math.min(workflowBlockEnd(lines, stepEnvLine, stepIndent + 2), stepEnd);
+    const stepBrowserPins = [];
+    for (let index = stepEnvLine + 1; index < stepEnvEnd; index++) {
+      if (yamlIndent(lines[index], `${label} line ${index + 1}`) === stepIndent + 4
+        && /^CF_BROWSER\s*:/.test(lines[index].trim())) stepBrowserPins.push(lines[index].trim());
+    }
+    assert(stepBrowserPins.length <= 1, `${label}: preview smoke step has ambiguous CF_BROWSER pins`);
+    if (stepBrowserPins.length === 1) {
+      assert(stepBrowserPins[0] === `CF_BROWSER: ${CI_PREVIEW_BROWSER}`,
+        `${label}: preview smoke step conflicts with the job browser pin`);
+    }
+  }
+  return Object.freeze({ job: jobName, browser: CI_PREVIEW_BROWSER, smokeLine: smokeLine + 1 });
 }
 
 function transformHtml(source, { expectedOrigin, entryName, commit, shortCommit, clean, publishable }) {
@@ -485,6 +604,60 @@ function expectRejected(label, work, pattern) {
 }
 
 function runSelftest() {
+  const validWorkflow = [
+    'name: fixture',
+    'jobs:',
+    '  battery:',
+    '    env:',
+    `      CF_BROWSER: ${CI_PREVIEW_BROWSER}`,
+    '    steps:',
+    '      - name: package preview',
+    '        run: |',
+    '          npm run preview:package',
+    '          npm run preview:smoke -- --root=fixture',
+  ].join('\n');
+  assertPreviewWorkflowBrowserContract(validWorkflow, 'SELFTEST valid job-level pin');
+  const previousStepOnly = [
+    'name: fixture',
+    'jobs:',
+    '  battery:',
+    '    steps:',
+    '      - name: prior browser gate',
+    '        env:',
+    `          CF_BROWSER: ${CI_PREVIEW_BROWSER}`,
+    '        run: npm run glassmatrix',
+    '      - name: package preview',
+    '        run: npm run preview:smoke -- --root=fixture',
+  ].join('\n');
+  expectRejected('previous-step-only browser pin',
+    () => assertPreviewWorkflowBrowserContract(previousStepOnly, 'SELFTEST previous-step-only'),
+    /lacks one exact job-level browser environment/);
+  const duplicateSmoke = `${validWorkflow}\n      - name: duplicate preview\n        run: npm run preview:smoke -- --root=duplicate\n`;
+  expectRejected('duplicate preview smoke',
+    () => assertPreviewWorkflowBrowserContract(duplicateSmoke, 'SELFTEST duplicate'),
+    /expected exactly one npm run preview:smoke step, found 2/);
+  const conflictingStepPin = validWorkflow.replace(
+    '      - name: package preview\n',
+    '      - name: package preview\n        env:\n          CF_BROWSER: /usr/bin/microsoft-edge\n',
+  );
+  expectRejected('conflicting preview-step browser pin',
+    () => assertPreviewWorkflowBrowserContract(conflictingStepPin, 'SELFTEST conflicting step'),
+    /preview smoke step conflicts with the job browser pin/);
+  const commandOverride = validWorkflow.replace(
+    '          npm run preview:smoke -- --root=fixture',
+    '          CF_BROWSER=/usr/bin/microsoft-edge npm run preview:smoke -- --root=fixture',
+  );
+  expectRejected('preview-step command browser override',
+    () => assertPreviewWorkflowBrowserContract(commandOverride, 'SELFTEST command override'),
+    /preview smoke step reassigns CF_BROWSER in its command/);
+  for (const relative of CONTROLLED_PREVIEW_WORKFLOWS) {
+    const contract = assertPreviewWorkflowBrowserContract(
+      fs.readFileSync(path.join(repoRoot, relative), 'utf8'), relative,
+    );
+    assert(contract.browser === CI_PREVIEW_BROWSER,
+      `SELFTEST ${relative}: workflow browser contract changed`);
+  }
+
   assert(validatePreviewOrigin(DEFAULT_ORIGIN) === DEFAULT_ORIGIN, 'SELFTEST valid separate origin rejected');
   expectRejected('production origin', () => validatePreviewOrigin(PROD_ORIGIN), /production origin/);
   expectRejected('same-origin project path', () => validatePreviewOrigin(`${PROD_ORIGIN}/dev-preview/`),
@@ -608,6 +781,8 @@ function runSelftest() {
     fs.rmSync(resolved, { recursive: true });
   }
   console.log('DEV PREVIEW SELFTEST: PASS');
+  console.log('  workflow browser provenance: exact job-level Chrome pin in both controlled workflows');
+  console.log('  previous-step-only/conflicting/command-override/duplicate preview-smoke controls: rejected');
   console.log('  production/same-origin/insecure/path origins: rejected');
   console.log('  output outside the owned ignored evidence root: rejected');
   console.log('  unapproved review artifact: remote execution rejected');

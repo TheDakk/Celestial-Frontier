@@ -135,6 +135,7 @@ try {
     || (event.method === 'Runtime.consoleAPICalled' && event.params.type === 'error'));
   if (errors.length) throw new Error(`packaged app emitted ${errors.length} console error(s): ${JSON.stringify(errors[0].params).slice(0, 400)}`);
   console.log(`DEV PREVIEW BROWSER CHECK: PASS — ${manifest.source.commit}`);
+  console.log(`  browser ${browser.browser.product}; executable ${browser.browser.executable}`);
   console.log(`  loopback boot mode ${outcome.state.mode}; 320x568 banner clear of dock`);
   console.log(`  expected remote origin ${manifest.expectedOrigin}; publishable ${String(manifest.publishable)}`);
 } catch (error) {

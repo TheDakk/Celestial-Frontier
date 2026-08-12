@@ -29,10 +29,14 @@
 - Integration baseline: PR #10 merged normally into `develop` at
   `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`.
 - Current pushed PR head:
-  `33ea34191c817a8e78eea598c31981f8208e939b`. Its exact local battery passed,
-  but matching test-battery run `31571459050` found the two issues now under
-  repair. The current repair has intentional scoped working-copy changes and is
-  not publication evidence until frozen in a new clean pushed commit. Draft PR #11 is open at
+  `8b8a740286a56591cac9dc5734a2fba4c088939b`. Its exact local battery passed
+  and it closes the product/instrument findings from test-battery #199. Matching
+  test-battery #200, run `31577395120` / job `94052496287`, passed every root,
+  product, v2, one-run smoke, complete 12-viewport glass, automated-persona and
+  preview-package gate; only the final preview browser check failed before a page
+  existed because its new workflow step lost the Chrome environment and selected
+  Linux Edge. The scoped browser-provenance repair still requires a new clean
+  commit, exact-head battery, push and matching CI. Draft PR #11 is open at
   https://github.com/TheDakk/Celestial-Frontier/pull/11.
 - Read next: `PROCESS_LAWS.md` · `PARALLEL_GIT_PROTOCOL.md` · `README.md` ·
   `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `SAVE_SYSTEM.md` ·
@@ -100,38 +104,31 @@ publication, release, live deployment, `main` update, or version bump is part of
 
 ### Evidence status and stop condition
 
-Pushed commit `33ea34191c817a8e78eea598c31981f8208e939b` passed its exact local
-battery. Matching GitHub test-battery #199, run `31571459050` / job
-`94034164092`, failed in the v2 real-browser/responsive/persona step after
-24m01 (30m39 job). Its one-attempt `smoke:ci` passed. The glass run then waited
-through the former single 10-second desktop-8k reload window while still seeing
-the old ready document token; it also recorded `PLANETSIDE_TOP_CHROME_OVERLAP`
-on small-phone portrait (Planetside `[12,103,308,248]`, trail
-`[3.82,96,316.18,127.5]`). Product findings were correctly not reported as a
-green matrix after the instrument failure.
+GitHub test-battery #199, run `31571459050` / job `94034164092`, first exposed
+the former desktop-8k reload ambiguity and small-phone Planetside/trail overlap.
+Pushed commit `8b8a740286a56591cac9dc5734a2fba4c088939b` repairs both: import
+settlement and replacement boot have separate observable 20-second phases and require a changed
+top-frame loader plus document token; portrait Planetside retains a 72px useful/scrollable band
+with 6px clearance and yields only the noninteractive trail when required. Their deliberate
+failing controls and the exact sequential local battery passed.
 
-The repair makes both truths observable. `replacement-document-loader-token-phase`
-arms the import Promise, binds it to one phase id plus the current top-frame loader and
-document token, and accepts only a ready replacement with both a changed loader and changed
-token. Import settlement and replacement boot have separate 20-second bounds; lost/rejected
-phases, same-document token mutation, missing loader evidence and loader/evaluation races fail
-closed. It never retries. `planetside-portrait-band-viability` proves the post-close 72px/
-heading/specimen/vertical-scroll/6px-clearance outcome and reproduces the collision by removing
-the cap with tall content; `planetside-portrait-trail-fallback` tightens the lower safe rectangle
-enough to force the fallback, proves the useful strip and fixed-chrome clearance, then proves exact restoration.
+Matching GitHub test-battery #200, run `31577395120` / job `94052496287`, then
+passed every root, product and v2 gate, the single `smoke:ci` attempt, the complete
+12-viewport matrix including 8K, the matching-provenance automated-persona synthesis,
+and `preview:package`. Only the final `preview:smoke` browser startup failed. The
+preceding evidence step pinned `/usr/bin/google-chrome` only in its own environment;
+the next step/process did not inherit it, so the resolver selected Linux Edge at
+`/opt/microsoft/msedge/microsoft-edge`. Edge never produced `DevToolsActivePort`, and
+the check failed before it created a target or evaluated any packaged page. The trailing
+D-Bus diagnostic is Edge/runner startup evidence, not a product or package finding.
 
-Post-repair evidence is currently limited to static/self-tests: `node --check tools/glassmatrix.mjs`,
-`npm run glassmatrix:selftest`, both root and app TypeScript programs via
-`npm run typecheck`, and `git diff --check`. Targeted real-browser diagnostics for the small-phone
-portrait branch and desktop-8k import/reload path also pass on the mutable repair snapshot. They are
-non-certifying. Do **not** report the repair green from these checks: current `smoke:ci`, the complete
-12-viewport matrix/persona synthesis, a clean commit, full sequential exact-head local battery,
-clean diff/status review, push, and matching GitHub CI remain required before any preview or human playtest.
-`overridecontrol` is exclusive and must not overlap any build/browser/evidence producer.
-
-The exact-head order is: freeze the source in a commit; run the full local battery against that
-commit; if it stays green, push it and require matching CI. A repair creates a new commit and
-restarts that order. Do not cite a pre-commit working-tree run as final evidence. Because the new
+The repair binds the exact Chrome path at job scope in both CI workflows and resolves it
+fail-closed before the long battery, so every browser-owning process has the same explicit
+provenance. Environment is per step/process; a prior green browser step does not pin the next
+one. Do not rerun the unchanged red head, add a retry, lengthen the startup bound, or clear
+D-Bus merely to turn #200 green. This workflow repair creates a new head and must repeat the
+exact sequential local battery, clean review, push and matching GitHub CI. `overridecontrol`
+remains exclusive and must not overlap any build/browser/evidence producer. Because the new
 manual preview workflow is not dispatchable until it exists on the default branch, PR #11's
 pre-merge candidate must use the equivalent explicitly approved local packaging command recorded
 in `port/DEVELOPMENT_PREVIEW.md`; the workflow becomes the normal path after the infrastructure
@@ -167,13 +164,15 @@ human play remains the judge of motion, readability, comfort and perceived quali
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — pushed head
-`33ea34191c817a8e78eea598c31981f8208e939b` is the red-CI diagnosis baseline;
-the Planetside and reload-witness repair remains uncommitted/unpushed. Draft PR #11 exists, but
-its remote head does not yet contain this repair.
+`8b8a740286a56591cac9dc5734a2fba4c088939b` is product-, smoke-, full-glass-,
+persona- and package-green locally and through GitHub test-battery #200. The only red
+gate is the pre-page preview CDP startup caused by step-scoped browser provenance; the
+job-scoped Chrome repair still needs a new commit, exact-head battery and push. Draft PR #11
+exists, but its remote head does not yet contain that workflow repair.
 
-**GitHub step:** keep PR #11 draft. Freeze the scoped batch in a commit, run the final sequential
-local battery on that exact commit, then push it and require matching CI. Update the PR body with
-that exact head and results, build the approved
+**GitHub step:** keep PR #11 draft. Freeze the browser-provenance repair in a new commit, run the
+final sequential local battery on that exact commit, then push it and require matching CI; do not
+rerun or timeout-mask #200. Update the PR body with that exact head and results, build the approved
 separate-origin preview, complete and record the human playtest, and resolve/retest findings.
 Only then may Nick click **Ready for review**, review the final diff/checks, and normally merge
 into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add this work to merged
@@ -206,6 +205,8 @@ PR #10.
   > boot as separate 20-second phases and requires both loader and document token to change, with no
   > retry. Adds provenance-bound
   > smoke, glass and automated-persona reports plus commit-bound development-preview packaging;
+  > pins the CI browser at job scope so a later preview process cannot silently switch from Chrome
+  > to Linux Edge when a preceding step's environment expires;
   > automated personas are explicitly not a human playtest. The preview requires a separately
   > approved origin, which has not been chosen or published. Final verification is publication-
   > contingent: freeze the final head in a commit, run the sequential local battery, then push

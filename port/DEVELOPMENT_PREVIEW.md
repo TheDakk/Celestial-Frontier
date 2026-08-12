@@ -106,6 +106,13 @@ owned real Chromium harness at 320×568. It requires the app, canvas, manifest b
 compact DEV banner to be live; the banner must be pointer-transparent and clear of the dock.
 Both CI packaging workflows run this outcome check before uploading the artifact.
 
+Browser provenance is owned by each process. A `CF_BROWSER` value attached to one GitHub
+Actions step does not carry into the next step merely because both belong to the same job.
+Both preview-producing jobs therefore pin the exact CI browser at job scope and resolve it
+fail-closed before the long battery; every later smoke, matrix, and preview process inherits
+the same selection. Do not depend on fallback ordering when a runner has several Chromium-
+family browsers installed.
+
 `preview:verify` proves package integrity and the safety metadata. It does not assert that a
 commit is still the newest development commit. The full 40-character commit and
 exact `source.buildInput.tree` plus `contentSha256` in `preview.json` are the authority;
@@ -116,6 +123,31 @@ manifest, and hashes together. Download publication candidates from the named tr
 run and retain that run URL with the playtest report.
 
 ## CI and publication flow
+
+### Current PR #11 provenance finding
+
+Pushed head `8b8a740286a56591cac9dc5734a2fba4c088939b` passed its exact local
+battery. Matching test-battery #200, run `31577395120` / job `94052496287`,
+passed every root/product/v2 gate, one-attempt slice smoke, the complete
+12-viewport glass matrix including 8K, matching automated-persona synthesis, and
+the commit-bound preview package/verification. Only the final preview browser
+check failed. Its preceding workflow step had pinned `/usr/bin/google-chrome`
+inside that step only; the new preview step started without the pin and the
+resolver selected Linux Edge at `/opt/microsoft/msedge/microsoft-edge`. Edge did
+not create `DevToolsActivePort`, so the check stopped before creating a browser
+target or evaluating any packaged page. The trailing D-Bus message is runner/
+Edge startup evidence, not a game, package, origin-guard, banner, or 320×568
+layout finding.
+Because the artifact upload is success-gated, that verified package was not retained as
+`v2-development-preview`; it is not a playtest candidate.
+
+The repair moves the exact Chrome pin to job scope in both the ordinary and
+manual preview workflows and performs an early fail-closed resolution. It must
+be frozen in a new head and pass the sequential exact-head local battery plus
+matching GitHub CI; #200 remains red evidence and must not be rerun, retried, or
+made green by lengthening startup or clearing D-Bus. This infrastructure repair
+does not authorize publication. The separate-origin hosting choice and genuine
+human playtest remain required before PR #11 may leave draft or merge.
 
 On green v2 browser and glass-matrix gates, the ordinary PR battery emits three distinct
 artifacts (available report/log evidence is still uploaded when a gate is red):

@@ -11,6 +11,8 @@ jobs:
   battery:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      CF_BROWSER: /usr/bin/google-chrome
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -25,6 +27,7 @@ jobs:
           node --version
           npm --version
           which google-chrome || which chromium-browser || echo "no chrome found"
+          node port/v2/tools/browserpath.mjs --print
       - run: npm ci
       - name: validate (fingerprint + render + invariants)
         run: node tools/validate.js
@@ -32,8 +35,6 @@ jobs:
         run: node tools/smoke.js
       - name: layout (10 viewports)
         run: node tools/uilayout.js
-        env:
-          CF_BROWSER: /usr/bin/google-chrome
       - name: rarity sanity
         run: node tools/rarity-sanity.js
       - name: dead code scan
@@ -58,18 +59,20 @@ jobs:
       - name: v2 real-browser, responsive, and automated-persona evidence
         working-directory: port/v2
         run: |
+          node tools/browserpath.mjs --selftest
+          node tools/browsercdp.mjs --selftest
           npm run smoke:report:selftest
           npm run glassmatrix:selftest
           npm run persona:selftest
+          npm run preview:selftest
           npm run smoke:ci
           npm run glassmatrix
           npm run persona:report
-        env:
-          CF_BROWSER: /usr/bin/google-chrome
       - name: package origin-isolated v2 development preview
         if: success()
         working-directory: port/v2
         env:
+          CF_BROWSER: /usr/bin/google-chrome
           PREVIEW_OUTPUT: apps/game/smoke/dev-preview-ci-${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           npm run preview:package -- --origin=https://dev-celestialfrontier.github.io --output="$PREVIEW_OUTPUT"
