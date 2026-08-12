@@ -932,7 +932,7 @@ duplicates).
   browser-decoded to text, so the external moderator file remains the byte-for-byte authority. This is intentional exploit/data-loss hardening over
   permissive v1 behavior.
 - ✔ **D-SAVE-2 — intentional replacement reloads own outgoing renderer release (closed in clean
-  local evidence `d801338`, 2026-08-12).** Training restart after its reversible view
+  executable evidence `20896ad`, 2026-08-12).** Training restart after its reversible view
   commit, supported expedition import after its replacement-envelope commit, and the storage-
   health retry after rediscovering real bytes now share one code-owned transition. It blocks new
   ordinary persistence, cancels the preference debounce, removes renderer-resize listeners,
@@ -945,11 +945,12 @@ duplicates).
   intentionally not a `pagehide` listener: browser-cache restoration must not revive a destroyed
   application. This addresses a plausible 8K old/new backing-store overlap without claiming CI
   #201 proved GPU exhaustion; that run proved only the replacement-lifecycle ambiguity described
-  under D-UI-3. Clean exact commit `d80133876b7156dc32b19be3e97222921deea9f0`
+  under D-UI-3. Clean exact commit `20896ad410b48ae0c407a9f3d6885d30ec6657b1`
   passed the complete battery. Full glass passed 12/12 with 50/50 controls and all
   12 release witnesses; desktop-8k recorded both 5,461×3,072 canvases →1×1,
-  renderer/stage released, detached view, changed loader/token and ready replacement
-  in 230 ms. `d801338` underlies the non-executable handoff tip; exact tip/upstream/
+  renderer/stage released, detached view, release→commit 31 ms, commit→ready 148 ms,
+  `performanceNow` 177 ms, confirmation 1 ms and total 212 ms. `20896ad` underlies a
+  docs-only handoff tip; exact tip/upstream/
   check state is read live, and the final pushed tip requires matching green CI.
   The clean executable outcome closes this implementation item.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
@@ -1072,7 +1073,7 @@ duplicates).
   `import-threw`, classifier rejection, or reported repository-write failure; the red is a post-
   request replacement-lifecycle/instrument finding and must not be retried away.
 
-  Clean executable commit `d80133876b7156dc32b19be3e97222921deea9f0` first gives Training restart/import/storage recovery one mutually
+  Clean executable commit `20896ad410b48ae0c407a9f3d6885d30ec6657b1` gives Training restart/import/storage recovery one mutually
   exclusive replacement transaction, requires the D-SAVE-2 resource-release witness, then separates a
   20-second import transaction, 5-second observed navigation commit, and 20-second new-loader boot.
   Old-context loss cannot start boot by itself. A stable changed loader starts that clock, and only
@@ -1081,19 +1082,20 @@ duplicates).
   `replacement-document-loader-token-phase` control plus new `reload-resource-release` control cover
   stuck and just-late phase transitions, same-loader mutation, premature context loss, duplicate/invalid witnesses,
   retained canvases, unreleased renderer and over-budget pixels. Its complete clean battery passed:
-  root install/audit, fingerprint/smoke/preflight, final sealed layout 787/787, rarity 60M/0,
+  root preflight selftest/preflight (only Edge 151 versus pinned Edge 150 drift), fingerprint/smoke,
+  final `exact-20896ad-root-layout` 787/787 across 10/10 viewports, rarity 60M/0,
   dead-code 3 tooling references, v2 273/1 and every gate/selftest, and one-attempt smoke 0 findings /
-  10 screenshots. One malformed layout-verifier invocation spawned/overwrote an instrument-fail
-  report before the final `exact-d801338-root-layout-final` run; the operator correction was not a
-  product retry. Full glass passed 12/12 viewports and 50/50 controls with 0 omitted/findings/
-  instrument failures/retries, digest
+  10 screenshots. Committed/certifying glass passed 12/12 viewports and 50/50 controls with
+  `omitted=[]`, 0 findings/instrument failures/retries, digest
   `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
   All 12 witnesses passed; desktop-8k recorded both 5,461×3,072 canvases →1×1, released renderer/
-  stage, detached view and changed-loader/token readiness in 230 ms. All nine personas passed;
-  preview browser passed at 320×568 for content
-  `e59cfe336ef3c5bde06423bf127e922a27a9bb0f4055014c3d03629244a308d2` with
-  `publishable:false`. Prior #201 remains red without retry. `d801338` underlies the
-  non-executable handoff tip; exact tip/upstream/check state is read live, the final
+  stage, detached view, release→commit 31 ms, commit→ready 148 ms, `performanceNow` 177 ms,
+  confirmation 1 ms and total 212 ms; all viewport totals were 170–212 ms. All nine personas passed;
+  terminal-only performance was 586/666/77/151 ms. Exact 37-file preview
+  `dev-preview-exact-20896ad` verified and browser-smoked at 320×568 for content
+  `3a2e5285184cf392a10916270f5d3d449d72d78bb6afb0b6bd29d45d6b1a6b50` with
+  `publishable:false`. Prior #201 remains red without retry. `20896ad` underlies a
+  docs-only handoff tip; exact tip/upstream/check state is read live, the final
   pushed tip requires matching green CI, and the separate-origin human playtest remains open.
 
   Matching test-battery #202, run `31594595288` / job `94106996466`, completed once without retry
@@ -1115,16 +1117,9 @@ duplicates).
   malformed, wrong-context and just-late events fail closed. The ready event proves complete boot
   publication plus a serviced event-loop turn, not the separate 50 ms answerability metric.
 
-  Its full dirty diagnostic is explicitly non-authoritative: base
-  `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`, digest
-  `d247209d66a7d3a26ffd484066fecc92f05b4511e542f917f848715fcc53d295`.
-  Glass passed 12/12 viewports, 50/50 controls, all 12 replacement witnesses and 0 findings/
-  instrument failures/retries, with 170–216 ms replacement totals. Desktop-8k released both
-  5,461×3,072 stores to 1×1, committed in 32 ms, emitted ready 146 ms later
-  (`performanceNow` 176.2 ms), confirmed in 2 ms, and completed in 216 ms. This remains
-  repair-direction evidence pending a clean commit, exact
-  sequential battery and matching CI; human play, Ready, merge, version, preview publication and
-  deployment boundaries are unchanged.
+  The exact clean battery above supersedes the provisional dirty diagnostic as current evidence.
+  Matching final-tip CI and the separate-origin human playtest remain pending; human certification,
+  Ready, merge, version, preview publication and deployment boundaries are unchanged.
 - ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
   the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson

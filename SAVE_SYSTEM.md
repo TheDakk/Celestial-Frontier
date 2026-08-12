@@ -99,30 +99,27 @@
 > restore must never revive a Pixi application that the app destroyed.
 >
 > **Evidence boundary:** immutable executable evidence source
-> `d80133876b7156dc32b19be3e97222921deea9f0` passed its complete exact
+> `20896ad410b48ae0c407a9f3d6885d30ec6657b1` passed its complete exact
 > sequential battery. One-attempt smoke
 > passed with 0 findings / 10 screenshots, including the real restart/import/
-> duplicate-import interlocks and rollback. Full glass passed 12/12 viewports and
-> 50/50 controls with 0 omitted/findings/instrument failures/retries, working-tree
+> duplicate-import interlocks and rollback. Committed/certifying glass passed
+> 12/12 viewports and 50/50 controls with `omitted=[]`, 0 findings/instrument
+> failures/retries, working-tree
 > digest `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
 > All 12 release witnesses passed; desktop-8k recorded both 5,461×3,072 canvases
-> collapsing to 1×1, renderer/stage released, view detached, changed loader/token
-> and a ready replacement in 230 ms. Prior CI #201 remains preserved red without
-> retry. `d801338` underlies the non-executable handoff tip. Exact tip/upstream/
+> collapsing to 1×1, renderer/stage released, view detached, release→commit in
+> 31 ms, commit→ready in 148 ms, `performanceNow` 177 ms, confirmation in 1 ms
+> and 212 ms total. All viewport totals were 170–212 ms. Prior CI #201 remains
+> preserved red without retry. `20896ad` underlies a docs-only handoff tip. Exact tip/upstream/
 > check state is read live, and the final pushed tip requires matching green CI.
 > CI #202, run `31594595288` / job `94106996466`, is also preserved red without
 > retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`: every earlier gate
 > and `smoke:ci` passed, while desktop-8k glass first observed replacement state
 > at 61.163 seconds. The serial three-command probe could itself consume up to
 > roughly 90 seconds, so #202 is instrument ambiguity, not a save rejection or
-> proof of a slow product boot. A non-authoritative dirty diagnostic of the
-> event-owned repair passed glass 12/12, 50/50 controls and all 12 witnesses with
-> 0 findings/instrument failures/retries, 170–216 ms replacement totals and digest
-> `d247209d66a7d3a26ffd484066fecc92f05b4511e542f917f848715fcc53d295`.
-> Desktop-8k released both 5,461×3,072 stores to 1×1, committed in 32 ms,
-> reached the ready binding 146 ms later (`performanceNow` 176.2 ms), confirmed
-> it in 2 ms and completed in 216 ms. It remains diagnostic pending a clean commit, exact battery and matching
-> CI.
+> proof of a slow product boot. Matching final-tip CI remains required; the clean
+> local battery does not authorize preview publication, human certification,
+> Ready, merge, versioning or deployment.
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
