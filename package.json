@@ -4,6 +4,7 @@
   "description": "Verification toolkit for the Celestial Frontier single-file game",
   "scripts": {
     "preflight": "node tools/preflight.js",
+    "preflight:selftest": "node tools/preflight.js --selftest",
     "preflight:ci": "node tools/preflight.js --assert-pin",
     "goldenseeds": "node tools/goldenseeds.js --check",
     "goldenseeds:capture": "node tools/goldenseeds.js --capture",
@@ -15,7 +16,8 @@
     "validate": "node tools/validate.js",
     "smoke": "node tools/smoke.js",
     "layout": "node tools/uilayout.js",
-    "test": "node tools/validate.js && node tools/smoke.js && node tools/uilayout.js",
+    "layout:selftest": "node tools/uilayout.js --selftest",
+    "test": "node tools/validate.js && node tools/smoke.js && node tools/uilayout.js --selftest && node tools/uilayout.js",
     "deploy": "node tools/deploy.js",
     "savefixtures": "node tools/savefixtures.js --check",
     "savefixtures:capture": "node tools/savefixtures.js --capture"
@@ -24,9 +26,13 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24.0.0"
+  },
   "dependencies": {
     "acorn": "^8.17.0",
-    "jsdom": "^29.1.1"
+    "jsdom": "^29.1.1",
+    "ws": "^8.18.3"
   },
   "private": true
 }

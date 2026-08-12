@@ -115,8 +115,9 @@
 > swallow a later Compendium/Planetside refill, and a 1,500-row Compendium cannot
 > retain 1,500 callbacks and replay the whole list 1,500 times when art arrives.
 >
-> Browser smoke and performance tools use the owned portable CDP lifecycle and
-> always rebuild before capture; unresolved performance metrics now fail rather
+> V2 browser smoke and root `uilayout.js` use the owned portable CDP lifecycle.
+> Legacy `bootperf.js` shares their executable resolver and pinned `ws` transport
+> but retains its fixed-port/startup/cleanup lifecycle; unresolved performance metrics fail rather
 > than print a profile-shaped success. The glass matrix's import/reload witness
 > is likewise fail-closed: an armed import phase, top-frame loader id and per-
 > document token must agree, and only a ready document with both a changed
@@ -131,24 +132,32 @@
 > is development evidence, never a release or production deployment.
 >
 > **Current repair evidence (not final PR-head evidence):** pushed commit
-> `33ea34191c817a8e78eea598c31981f8208e939b` passed its exact local battery, but
-> test-battery run `31571459050` / job `94034164092` failed in the v2 real-
-> browser/responsive/persona step. Its one-attempt `smoke:ci` passed; the glass
-> run then timed out at desktop-8k while the old ready document token remained
-> visible for the former single 10-second reload window, and it recorded a
-> `PLANETSIDE_TOP_CHROME_OVERLAP` on small-phone portrait. That red run is the
-> evidence for the phased reload witness and measured portrait-band repair
-> above, not something to retry away. Post-repair evidence is currently limited
-> to static/self-tests: `node --check tools/glassmatrix.mjs`,
-> `npm run glassmatrix:selftest`, `npm run typecheck`, and `git diff --check`.
-> Targeted real-browser diagnostics for the small-phone portrait branch and
-> desktop-8k import/reload path also pass on the mutable repair snapshot. Those
-> narrow diagnostics are not certification: current `smoke:ci`, the complete
-> 12-viewport matrix/persona synthesis, the repair's exact commit and full
-> sequential local battery, matching GitHub CI, and the separate-origin human
-> playtest remain pending.
+> `8b8a740286a56591cac9dc5734a2fba4c088939b` passed its exact sequential local
+> battery and repaired test-battery #199's desktop-8k reload witness plus
+> small-phone Planetside/trail collision. Matching test-battery #200 passed every
+> root/product/v2 gate, the one-attempt smoke, complete 12-viewport glass matrix,
+> automated personas and preview packaging; only preview CDP startup failed before
+> a page existed because that step lost the previous step's Chrome environment and
+> selected Linux Edge. Local commit `4d14a75e934536dc5f204e40c74f666cc9514df4`
+> pins Chrome at job scope but is not pushed.
+>
+> The follow-on root-layout repair is still a mutable implementation. `uilayout.js`
+> now consumes the v2-owned resolver/launcher: port 0 plus `DevToolsActivePort`,
+> exact browser provenance, early-exit and bounded stderr diagnosis, bounded
+> TERM→KILL cleanup, and owned-profile removal. It atomically replaces its ignored
+> schema-v2 report from `running` to terminal `pass` / `fail` /
+> `instrument-fail`, preserves legacy `results`, and supports a stale-PASS/exit-73
+> `--selftest` plus exact `--verify-run=ID` freshness. A full PASS must reproduce
+> the sealed v1.8.9 report's exact 787 `viewport/surface/name` outcomes; targeted
+> runs certify only their requested viewport subset. The selftest removes one
+> sealed outcome while keeping counts consistent and requires rejection. Its first sandboxed Edge
+> diagnostic preserved SIGABRT as red; a separately permitted mutable-tree run
+> then completed 787/787 across 10 viewports. That PASS is diagnostic, not
+> post-change exact-head evidence. The repair still requires a clean commit, full
+> sequential exact-commit battery, push, matching GitHub CI, and the separate-origin
+> human playtest.
 
-**STATUS:** legacy sections match `main.js` + the html as of 2026-07-31; the
+**STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
 v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve
 **THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
 its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
@@ -187,7 +196,8 @@ unified topbar whose height is measured, not guessed, and published as CSS custo
 properties so every surface aligns. Panels obey one law — opening one closes the rest, a
 corner ✕ closes it, a tap on empty space closes it — while true modals (fights, prompts)
 stand apart. jsdom runs logic but does NO layout, so a dedicated CDP gate
-(`tools/uilayout.js`) drives real headless Edge across 10 viewports to catch the bugs the
+(`tools/uilayout.js`) drives the resolved Chromium-family browser through the shared owned
+launcher across 10 viewports to catch the bugs the
 logic battery is blind to by construction.
 
 ## 2. Rules & mechanics
@@ -338,7 +348,12 @@ contract is the one UI-adjacent path that needs a re-pin — see DETERMINISM.md.
 - Layout gate — **`tools/uilayout.js`**: VIEWPORTS list (10): iphone-se, iphone,
   iphone-max, android, ipad-port, ipad-mini, ipad-land, laptop, desktop, wide;
   SURFACES 41–50; laws = ✕ corner, z-order, no side-scroll, no clipped text; drives real
-  Edge over CDP; proof sheets to `tools/uisheets/`; exit 1 on any FAIL.
+  Chromium through the shared owned CDP launcher; proof sheets to `tools/uisheets/`;
+  ignored atomic `celestial-frontier/uilayout-report@2` retains the legacy result rows
+  plus exact run/browser/terminal status; full PASS binds all 787
+  viewport/surface/name keys to `port/baseline-v1.8.9/uilayout-report.json`, while
+  `--vp` remains diagnostic scope; `--selftest` and `--verify-run=ID` fail closed;
+  exit 1 on product FAIL and 2 on instrument failure.
 
 ## 7. Open questions / pending
 - `ROADMAP.md` shows ongoing device-pass / overlay-eater work — the layout gate exists

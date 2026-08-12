@@ -11,11 +11,15 @@
 > The v2 no-DOM gate no longer grants whole-file waivers to CombatCore and
 > WorldGen. It permits exactly the three retained compatibility expressions
 > (`document` paperdoll, `document` avatar and WorldGen canvas creation), and a
-> negative control proves an additional DOM reference fails. Browser-backed
-> harnesses use one owned CDP process/profile with bounded shutdown and cleanup;
-> static generation remains independent of browser timing.
+> negative control proves an additional DOM reference fails. V2 browser harnesses
+> and the root layout gate consume the shared owned CDP resolver/lifecycle:
+> browser-assigned port 0 through `DevToolsActivePort`, exact version provenance,
+> bounded startup/commands/shutdown, and validated profile cleanup. Legacy
+> `bootperf` shares the executable resolver and pinned `ws` transport but retains
+> its older lifecycle.
+> Static generation remains independent of browser timing.
 
-**STATUS:** legacy sections match `main.js` + `tools/` as of 2026-07-31; the
+**STATUS:** legacy sections match `main.js` + `tools/` as of 2026-08-12; the
 v2 overlay matches `port/v2` as of 2026-08-11. The 2026-07-30 pass added §6's
 "WHEN art is drawn is not fingerprint input", corrected the layout gate to 10
 viewports, and registered `bootperf.js` + `simrun dom` in the battery.
@@ -185,8 +189,13 @@ domain/save harness; it is useful, but is not one of those nine release-suite sl
   inheritance, import hardening (`normGenome`), guardians, deterministic duels.
 - **`tools/balance-sim.js`** — archetype fairness: every ability's overall win rate vs
   the field must sit in the 42–58% band (head-to-head counters allowed).
-- **`tools/uilayout.js`** — the LAYOUT gate: drives real headless Edge over CDP across
-  **10 viewports** (787 checks; the 744×1133 band joined in v1.8.4). See UI_PRESENTATION.md.
+- **`tools/uilayout.js`** — the LAYOUT gate: drives the resolved Chromium-family browser
+  through the shared owned CDP launcher across **10 viewports** (787 checks; the 744×1133
+  band joined in v1.8.4). Its ignored atomic schema-v2 report binds exact browser/run
+  provenance. A full PASS also binds the exact 787 `viewport/surface/name` inventory to
+  the sealed v1.8.9 layout report; targeted runs are scoped diagnostics. `--selftest`
+  rejects a count-consistent PASS missing one sealed outcome, and `--verify-run=ID`
+  fails closed on stale evidence. See UI_PRESENTATION.md.
 - **`tools/bootperf.js`** — cold boot in a real browser: separates *painted* from
   *answerable* and enforces the art-hold law. Fingerprint-neutral by construction (below).
 - **`tools/simrun.js dom`** — UI reachability: drives the real controls instead of the

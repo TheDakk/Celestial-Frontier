@@ -37,11 +37,14 @@ currently covers the six chart/travel/landing lessons plus an honest graduation;
 tooltip deep-links, Advanced Briefings, and the rest of the 21-step training arc
 remain port work. From `port/v2`, run `npm install`, `npm test`, `npm run typecheck`,
 and `npm run smoke`; see its README for the full current battery and open gates.
+Both root and v2 install surfaces declare the pinned raw-CDP `ws` transport and
+support Node `^20.19.0 || ^22.13.0 || >=24.0.0`.
 
 ## Develop
 
 ```
-npm install                # once (acorn + jsdom, dev-only)
+npm install                # once (acorn + jsdom + ws, dev/test-only)
+npm run preflight:selftest # rejects excluded Node lines and executable non-browsers
 node tools/build.js        # main.js -> html   (⚠ NEVER extract.js after editing main.js —
                            #   it regenerates main.js FROM the html and discards your edits)
 node tools/validate.js     # main.js -> html, then all checks: syntax, CSS braces,
@@ -51,11 +54,16 @@ node tools/validate.js     # main.js -> html, then all checks: syntax, CSS brace
                            #   50-probe fingerprint vs the v1.0 baseline
 node tools/smoke.js        # jsdom interaction suite (~553 checks incl. the
                            #   full 21-step Field Training tutorial)
+npm run layout:selftest    # rejects stale layout evidence and launcher/cleanup drift
 node tools/uilayout.js     # a REAL headless browser: computed boxes + 44px touch
                            #   floors + elementFromPoint hit-tests across 10
                            #   viewports (787 checks). jsdom has NO layout, so
                            #   this is the only gate that sees a CSS rule which is
-                           #   present, correct and completely inert.
+                           #   present, correct and completely inert. It uses the
+                           #   shared owned CDP launcher and writes an ignored,
+                           #   exact-browser/run-bound schema-v2 report. Full PASS
+                           #   must match the sealed v1.8.9 787-outcome inventory;
+                           #   --vp runs remain scoped diagnostics.
 node tools/balance-sim.js  # archetype win-rate band + ability-theme art band
 node tools/deploy.js --release X.Y.Z
                            # re-runs the whole gate, then copies the build into
@@ -108,8 +116,9 @@ not publish a site; the separate preview owner/hostname has not yet been chosen,
 created or deployed. Clean preview evidence is built from an isolated exact-HEAD
 snapshot, and the shared workspace lock prevents Vite/browser evidence from
 overlapping the source-mutating `overridecontrol` negative control. Structured
-slice-smoke, 12-viewport glass-matrix (including 8K), and automated-persona
-reports retain matching provenance; the persona synthesis is explicitly not a
+root-layout, slice-smoke, 12-viewport glass-matrix (including 8K), and automated-
+persona reports retain matching provenance; root layout CI verifies its exact run
+id before a separate always-run upload, and the persona synthesis is explicitly not a
 human playtest. PR #11 stays draft until a real multi-lens human playtest against
 the exact preview is recorded, findings are resolved/retested, and final local
 plus GitHub checks pass on the frozen pushed head.

@@ -443,11 +443,38 @@ instrument or product.
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
 GitHub Actions step lost that step-local `CF_BROWSER`, selected an installed Linux Edge through
 fallback order, and failed before CDP created a page. That red browser check never exercised the
-packaged page or product. Pin one exact browser at job scope for every browser-owning process, resolve it
-fail-closed before long gates, and record the executable in evidence. A prior green browser step
-does not certify the next process's provenance. Do not turn this class of failure green with a
-retry, a longer startup bound, a fallback reorder, or by clearing the last diagnostic mentioned
-on stderr; repair the scope and require matching new-head CI.
+packaged page or product. Pin one exact browser at job scope for every browser-owning process and
+resolve it fail-closed before long gates. Every raw-CDP gate must consume the shared executable
+resolver and pinned `ws` transport; any gate claiming the shared owned lifecycle must actually use
+it instead of carrying a guessed port, WebSocket loop or cleanup path. The owned launcher uses a
+unique profile, asks Chromium for port 0, reads its
+`DevToolsActivePort`, records exact `Browser.getVersion` provenance, detects early child exit,
+retains bounded stderr head and tail, and performs bounded TERM→KILL shutdown plus profile removal.
+Legacy `bootperf` shares the executable resolver and `ws` transport but still owns its older CDP
+lifecycle, so none of the owned launcher's lifecycle guarantees may be attributed to it yet.
+A prior green browser step does not certify the next process's provenance. Do not turn this class
+of failure green with a retry, a longer startup bound, a fallback reorder, or by clearing the last
+diagnostic mentioned on stderr; repair the scope and require matching new-head CI.
+
+The report is process state too. A tracked last-run JSON can survive a launcher failure and make a
+red current run look accompanied by green evidence. Browser gates must atomically replace stale
+output with a `running` record before launch, then write a terminal `pass`, `fail`, or
+`instrument-fail` record while retaining any legacy result rows consumers still need. Generated
+reports are ignored working evidence, not source. Negative-control this boundary by seeding a stale
+PASS, forcing a diagnosed early exit, and proving the current red record replaces it and cleanup
+finishes. CI must verify the exact current run id before a separate always-run upload whose missing
+file is an error; a filename, successful prior attempt, or artifact upload alone is not freshness.
+A full layout PASS must also match the sealed v1.8.9 baseline's complete 787-entry
+`viewport/surface/name` inventory. Counting 787 rows is insufficient: remove one expected outcome,
+repair all summary counts, and the selftest must still reject the report. A targeted viewport run
+is explicitly scoped diagnostic evidence and must never be promoted as the full inventory.
+
+Executable dependencies are a two-install-surface contract. Both root and `port/v2` manifests and
+locks declare the pinned `ws` transport and the supported Node lines
+`^20.19.0 || ^22.13.0 || >=24.0.0`. Preflight must launch the selected executable through the same
+owned CDP path used for provenance—not merely check that a path exists—and its selftest must reject
+both an executable non-browser and excluded Node lines. A dependency check that accepts `/bin/true`
+or an unsupported odd/intermediate Node line is another green-but-unrunnable battery.
 
 ⚠⚠ **CLEAN BEFORE + CLEAN AFTER DOES NOT PROVE THE BYTES BETWEEN WERE CLEAN.**
 `overridecontrol` deliberately rewrites a production art source, runs its failing control, and

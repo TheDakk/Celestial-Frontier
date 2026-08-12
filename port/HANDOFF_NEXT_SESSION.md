@@ -9,8 +9,11 @@ test-battery #200, run `31577395120` / job `94052496287`, passed every root,
 product, v2, one-run smoke, full 12-viewport glass, automated-persona and
 preview-package gate. Only final preview CDP startup failed before a page existed:
 that new step lost the preceding step's Chrome environment and selected Linux
-Edge. The job-scoped Chrome provenance repair still requires a new clean commit,
-exact-head battery, push and matching CI. Draft PR #11 is open at
+Edge. Local commit `4d14a75e934536dc5f204e40c74f666cc9514df4`
+contains the job-scoped Chrome provenance repair but remains one unpushed commit
+ahead of the remote head. Root-layout launcher/report hardening is a mutable
+follow-on that still requires a new clean commit, exact-head battery, push and
+matching CI. Draft PR #11 is open at
 https://github.com/TheDakk/Celestial-Frontier/pull/11.
 
 The batch audits and hardens the already-ported Phase-4 slice: sparse/corrupt/
@@ -48,9 +51,12 @@ still contains the six current chart/travel/landing lessons plus an honest
 graduation. Tooltip deep-links, Advanced Briefings and the rest of the legacy
 21-step curriculum remain open.
 
-Structured evidence consists of one-run slice-smoke JSON/log/screenshots, a
-12-viewport glass-matrix JSON report, and matching-provenance automated-persona
-JSON/Markdown labeled **AUTOMATED — NOT A HUMAN PLAYTEST**. Development-preview
+Structured evidence consists of an ignored atomic schema-v2 root-layout report,
+one-run slice-smoke JSON/log/screenshots, a 12-viewport glass-matrix JSON report,
+and matching-provenance automated-persona JSON/Markdown labeled **AUTOMATED — NOT
+A HUMAN PLAYTEST**. Root layout writes `running` then terminal `pass`, `fail`, or
+`instrument-fail`, retains legacy `results`, and binds exact run/browser provenance.
+Development-preview
 packaging binds exact commit/tree/lockfile/byte hashes, shows a DEV banner and
 refuses production/path origins. The actual separate preview owner/hostname has
 not been chosen or published; use either the recommended separate
@@ -73,12 +79,34 @@ matrix including 8K, automated-persona synthesis and `preview:package`. Only
 the check stopped before a target or packaged page existed. This is CI browser-
 provenance failure, not a game, glass, package or human-preview finding.
 
-The repair pins the exact Chrome path at job scope in both workflows and resolves
-it fail-closed before the long battery. Browser provenance is per step/process,
-not workflow memory. Do not rerun the unchanged red head, add retries, lengthen
-startup or clear D-Bus to hide the failure. Freeze the workflow repair in a new
-commit, run the full sequential exact-head battery, push, and require matching
-new-head GitHub CI before completing a real multi-lens human
+Local commit `4d14a75e934536dc5f204e40c74f666cc9514df4` pins the exact Chrome path
+at job scope in both workflows and resolves it fail-closed before the long battery;
+it remains unpushed. Browser provenance is per step/process, not workflow memory.
+Do not rerun the unchanged red head, add retries, lengthen startup or clear D-Bus
+to hide the failure.
+
+The mutable follow-on moves root `uilayout.js` onto the same v2-owned resolver/CDP
+launcher: browser-assigned port 0 plus `DevToolsActivePort`, exact browser version
+provenance, early-exit and bounded stderr diagnosis, bounded TERM→KILL cleanup and
+validated profile removal. Its report is ignored and atomically replaces any stale
+result. A full PASS must match the sealed v1.8.9 report's exact 787
+`viewport/surface/name` inventory; targeted viewport runs are scoped diagnostics.
+`--selftest` seeds a stale PASS, forces an exit-73 marker, proves current red
+replacement/wrong-run rejection/cleanup, then removes one sealed outcome with
+consistent counts and requires rejection. CI assigns an exact run id, runs selftest +
+gate + `--verify-run=ID`, and separately uploads the required report. Root and v2
+install surfaces both declare/lock `ws` and Node
+`^20.19.0 || ^22.13.0 || >=24.0.0`; preflight now launches the selected executable
+through `browsercdp` and selftests excluded Node lines plus an executable non-browser.
+`bootperf` shares the executable resolver and `ws` but retains its legacy CDP lifecycle.
+The bounded lock refresh moves root `undici` 7.27.2→7.29.0 and v2 `nanoid`
+3.3.16→3.3.18 within existing ranges; clean `npm ci` on both surfaces reports zero
+vulnerabilities. This is tooling evidence, not a shipped runtime or release-note change.
+The first sandboxed Edge diagnostic preserved SIGABRT as red. A separately permitted
+mutable-tree diagnostic completed 787/787 across 10 viewports, but is not post-change
+exact-head browser evidence. Freeze this follow-on in a new clean commit, run the full
+sequential exact-head battery, push both local commits, and require matching new-head
+GitHub CI before completing a real multi-lens human
 playtest against its commit-bound separate-origin preview. Record full commit,
 `preview.json` content hash, URL, tester/device/browser, save state, findings and
 retest in `port/playtests/`. Do not mark PR #11 Ready or merge before every human
@@ -99,13 +127,14 @@ scenes are the higher-value visual work.
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — pushed head
 `8b8a740286a56591cac9dc5734a2fba4c088939b` is product-, smoke-, full-glass-,
 persona- and package-green locally and through test-battery #200. The only red gate
-is preview's pre-page CDP startup after browser provenance fell out of scope; the
-job-scoped Chrome repair remains uncommitted/unpushed. Draft PR #11 exists, but
-its current remote head does not yet contain that workflow repair.
+is preview's pre-page CDP startup after browser provenance fell out of scope. Local
+`4d14a75e934536dc5f204e40c74f666cc9514df4` contains the job-scoped Chrome repair
+but is unpushed; root-layout launcher/report hardening remains uncommitted. Draft PR
+#11 exists, but its current remote head contains neither follow-on.
 
-**GitHub step:** keep PR #11 draft. Freeze the browser-provenance repair in a commit,
-run the final sequential local battery on that exact commit, then push it and require
-matching new-head CI; do not rerun or timeout-mask #200. Update the PR body with that exact head and results,
+**GitHub step:** keep PR #11 draft. Freeze the root-layout repair in a new clean commit,
+run the final sequential local battery on that exact commit, then push the local commits
+and require matching new-head CI; do not rerun or timeout-mask #200. Update the PR body with that exact head and results,
 build the approved separate-origin preview, complete and record the human
 playtest, and resolve/retest findings. Only then may Nick click **Ready for
 review**, review the final diff/checks, and normally merge into `develop`. Never
@@ -139,7 +168,9 @@ auto-merge, squash/rebase, retarget `main`, or add this work to merged PR #10.
   > retry. Adds provenance-bound
   > smoke, glass and automated-persona reports plus commit-bound development-preview packaging;
   > pins the CI browser at job scope so a later preview process cannot silently switch from Chrome
-  > to Linux Edge when a preceding step's environment expires;
+  > to Linux Edge when a preceding step's environment expires. Moves the root 10-viewport layout
+  > gate onto the same owned port-0 CDP launcher and adds ignored atomic pass/fail/instrument-fail
+  > evidence, stale-PASS/exit-73 selftest, exact-run freshness and a separate required CI upload;
   > automated personas are explicitly not a human playtest. The preview requires a separately
   > approved origin, which has not been chosen or published. Final verification is publication-
   > contingent: freeze the final head in a commit, run the sequential local battery, then push

@@ -5,27 +5,33 @@ The v1.0 assertion suites were lost with the original working environment
 equivalence harness that boots the whole game headlessly and fingerprints its
 deterministic core.
 
-Requires Node ≥ 18 and `npm install` at the repo root (acorn + jsdom).
+Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
+(acorn + jsdom + ws).
 
 > ## ⚠ `npm install` IS NOT ENOUGH — two suites need a real browser
 >
 > **Run `npm run preflight` on any new machine before trusting the battery.**
 >
-> `package.json` declares only **acorn** and **jsdom**. But `uilayout.js` and
-> `bootperf.js` drive a **real browser** — they `spawn` a system binary headless and
-> talk to it over CDP. There is no Playwright, no Puppeteer, no npm browser driver
+> `package.json` declares **acorn**, **jsdom**, and the raw-CDP **ws** transport. But `uilayout.js` and
+> `bootperf.js` drive a **real browser** — a system binary runs headless and is
+> controlled over CDP. There is no Playwright, no Puppeteer, no npm browser driver
 > anywhere in `tools/`. So a clean clone that runs `npm install` gets **seven of the
-> nine suites**, and the two that need a browser fail with `Edge not found` — or, worse,
+> nine suites**, and the two that need a browser cannot run — or, worse,
 > simply never get run and the battery looks complete.
 >
 > This went undeclared until **2026-07-31**, when port Phase 0's Gate A deliverable
 > *"reproduce all executable dependencies in a clean CI environment"* surfaced it
 > (ROADMAP 9h).
 >
-> **Resolution order** (identical in both files, and repeated in `preflight.js`):
-> `$CF_BROWSER` → Windows Edge → `/usr/bin/google-chrome` → `chromium-browser` →
-> `chromium` → macOS Chrome. So CI works today — set `CF_BROWSER` — it was just never
-> written down.
+> **Browser ownership:** `uilayout.js` consumes the shared
+> `port/v2/tools/browserpath.mjs` resolver and `browsercdp.mjs` launcher. An exact
+> `$CF_BROWSER` is authoritative; CI requires it at job scope. The launcher uses
+> browser-assigned port 0 plus `DevToolsActivePort`, records the canonical executable
+> and complete `Browser.getVersion` provenance, retains bounded startup stderr, detects
+> early exit, and owns bounded shutdown/profile cleanup. Root preflight and
+> `bootperf.js` invoke that same executable resolver, so they cannot validate or select
+> a different browser; bootperf still owns its older CDP lifecycle and is not covered by
+> the launcher's lifecycle claims.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,
@@ -39,20 +45,26 @@ Requires Node ≥ 18 and `npm install` at the repo root (acorn + jsdom).
 ```
 npm run preflight            # check + report; drift warns
 npm run preflight:ci         # drift is a hard failure
+node tools/preflight.js --selftest  # discriminates supported/excluded Node lines
 node tools/preflight.js --json
 ```
 
-Checks node against the declared minimum, confirms the npm packages resolve, then
-resolves the browser exactly the way the gates do and compares its version to the pin.
+Checks Node against the declared supported release lines, confirms the npm packages
+resolve, then launches the same canonical browser used by `uilayout.js` through its
+owned CDP probe and compares `Browser.getVersion` to the pin. An executable that is not
+a working Chromium-family browser is therefore blocking, not a warning. `bootperf.js`
+uses the same executable resolver and pinned `ws` transport, but retains its legacy
+fixed-port/startup/cleanup lifecycle.
 Exit 0 = everything required is present; exit 1 = a suite cannot run.
 
 > **Negative-controlled in both directions before it shipped, and it caught itself.**
 > The first version trusted `$CF_BROWSER` without checking the path existed, so
-> `CF_BROWSER=/nope` reported **PASS, exit 0** — while `uilayout.js` would hard-exit(2)
-> on the same value. A green-but-wrong state *inside the check written to prevent green-
-> but-wrong states*. Fixed to match `uilayout.js:83`. The three controls that must keep
-> holding: normal run → exit 0 · bogus `CF_BROWSER` → exit 1 · drift under
-> `--assert-pin` → exit 1.
+> `CF_BROWSER=/nope` reported **PASS, exit 0** — while the layout gate rejected the
+> same value. A green-but-wrong state *inside the check written to prevent green-
+> but-wrong states*. Fixed so preflight and the shared resolver both reject it. Required
+> controls now include: supported Node lines accepted · 20.18/21/22.12/23 rejected · an
+> executable non-browser rejected by a real CDP launch · normal browser run → exit 0 ·
+> bogus `CF_BROWSER` → exit 1 · drift under `--assert-pin` → exit 1.
 
 > ## ⚠ NEVER run `tools/extract.js` after editing `main.js`
 >
@@ -181,6 +193,7 @@ at the 6 kHz ceiling.
 node tools/build.js            # main.js -> html
 node tools/validate.js         # builds, then ALL checks below + the fingerprint
 node tools/smoke.js            # jsdom interaction suite (incl. full tutorial)
+npm run layout:selftest        # fail-closed launcher/report/freshness negative control
 node tools/uilayout.js         # REAL headless browser: computed boxes + hit-tests
                                #   across 10 viewports (add --shots for screenshots,
                                #   --vp=iphone,desktop to narrow, --url=FILE to
@@ -351,6 +364,45 @@ sanctioned way to reach a binding inside the game IIFE.
 **The generalisation, which is still open work:** the external round has asked five
 times for this treatment across *all* nine advertised XP awards. Three were dead as
 of round 8. Only the duel ones have an outcome test today.
+
+## uilayout.js — owned launcher and current-run evidence
+
+`uilayout.js` now uses the same owned raw-CDP resolver/lifecycle as the v2 browser
+gates. Chromium chooses an unused port and publishes it through the owned profile's
+`DevToolsActivePort`; the tool records the canonical executable plus product,
+revision, user agent, JavaScript version and protocol version. Startup and commands
+are bounded, an early browser exit retains its exit state and bounded stderr head and
+tail, and cleanup owns TERM→KILL escalation plus removal of only its validated profile.
+
+Every ordinary invocation atomically replaces `tools/uilayout-report.json` with
+schema `celestial-frontier/uilayout-report@2`: first `running`, then terminal `pass`,
+`fail`, or `instrument-fail`. The report is generated and ignored, but preserves the
+legacy top-level `results` rows. It also binds a run id, target/viewport scope, exact
+browser provenance, counts, timing and a structured failure. A terminal targeted PASS is
+valid only for its requested viewport subset. A full 10-viewport PASS additionally binds
+the exact 787 `viewport/surface/name` outcome inventory to the sealed
+`port/baseline-v1.8.9/uilayout-report.json`; the old baseline remains immutable evidence.
+
+```
+npm run layout:selftest
+CF_UILAYOUT_RUN_ID=local-review-001 node tools/uilayout.js
+node tools/uilayout.js --verify-run=local-review-001
+```
+
+The selftest never accepts the prior report by filename: it seeds a stale PASS, runs
+an executable that exits 73 with `UILAYOUT_SELFTEST_EARLY_EXIT`, and requires a
+current `instrument-fail` report with that diagnosis, a rejected stale run id, and no
+owned profile leak. It also removes one sealed outcome, repairs the summary counts so they
+remain internally consistent, and requires inventory verification to reject that plausible
+but incomplete PASS. `--verify-run=ID` accepts only the exact terminal schema-v2 run;
+CI assigns the id, runs selftest + gate + verification, then uploads this report in a
+separate always-run artifact step where a missing file is an error.
+
+The first mutable-tree diagnostic through the new launcher preserved a sandboxed Edge
+SIGABRT as red startup evidence. A separately permitted diagnostic then completed all
+787 checks across 10 viewports. That second run proves reachability only; neither run
+is exact-head certification. The implementation still needs a clean commit, the full
+sequential exact-commit battery, push, and matching GitHub CI.
 
 ## uilayout.js — the training-card reachability pass
 

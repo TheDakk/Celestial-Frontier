@@ -35,8 +35,11 @@
   product, v2, one-run smoke, complete 12-viewport glass, automated-persona and
   preview-package gate; only the final preview browser check failed before a page
   existed because its new workflow step lost the Chrome environment and selected
-  Linux Edge. The scoped browser-provenance repair still requires a new clean
-  commit, exact-head battery, push and matching CI. Draft PR #11 is open at
+  Linux Edge. Local commit `4d14a75e934536dc5f204e40c74f666cc9514df4`
+  pins browser provenance at job scope but is one unpushed commit ahead of that
+  remote head. The follow-on root-layout launcher/report repair remains a mutable
+  working batch and requires a new clean commit, exact-head battery, push and
+  matching CI. Draft PR #11 is open at
   https://github.com/TheDakk/Celestial-Frontier/pull/11.
 - Read next: `PROCESS_LAWS.md` · `PARALLEL_GIT_PROTOCOL.md` · `README.md` ·
   `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `SAVE_SYSTEM.md` ·
@@ -88,6 +91,9 @@ remain open until their systems are live.
 
 Evidence is now structured and provenance-bound:
 
+- root `uilayout-report.json` is ignored per-run evidence: atomic schema v2 writes
+  `running` before launch, then terminal `pass`, `fail`, or `instrument-fail` with
+  exact run/browser provenance while retaining legacy `results`;
 - `slice-smoke-report.json` plus its complete log and browser screenshots records one real
   browser run without retrying a failure;
 - `glassmatrix-report.json` records the 12-viewport responsive/accessibility run;
@@ -122,17 +128,39 @@ the next step/process did not inherit it, so the resolver selected Linux Edge at
 the check failed before it created a target or evaluated any packaged page. The trailing
 D-Bus diagnostic is Edge/runner startup evidence, not a product or package finding.
 
-The repair binds the exact Chrome path at job scope in both CI workflows and resolves it
-fail-closed before the long battery, so every browser-owning process has the same explicit
-provenance. Environment is per step/process; a prior green browser step does not pin the next
-one. Do not rerun the unchanged red head, add a retry, lengthen the startup bound, or clear
-D-Bus merely to turn #200 green. This workflow repair creates a new head and must repeat the
-exact sequential local battery, clean review, push and matching GitHub CI. `overridecontrol`
-remains exclusive and must not overlap any build/browser/evidence producer. Because the new
-manual preview workflow is not dispatchable until it exists on the default branch, PR #11's
-pre-merge candidate must use the equivalent explicitly approved local packaging command recorded
-in `port/DEVELOPMENT_PREVIEW.md`; the workflow becomes the normal path after the infrastructure
-lands on `develop`.
+Local commit `4d14a75e934536dc5f204e40c74f666cc9514df4` binds the exact Chrome
+path at job scope in both CI workflows and resolves it fail-closed before the long battery, so
+every browser-owning process has the same explicit provenance. It is not pushed. Environment is
+per step/process; a prior green browser step does not pin the next one. Do not rerun the unchanged
+red head, add a retry, lengthen the startup bound, or clear D-Bus merely to turn #200 green.
+
+The current mutable follow-on removes the root layout gate's remaining second launcher. It now
+consumes `port/v2/tools/browserpath.mjs` plus `browsercdp.mjs`: browser-assigned port 0 through
+`DevToolsActivePort`, exact executable/version provenance, early-exit and bounded stderr
+diagnosis, bounded TERM→KILL cleanup, and validated profile removal. Its ignored report is
+atomically replaced from `running` to terminal `pass`, `fail`, or `instrument-fail`; legacy
+`results` remain. A full PASS must match the sealed v1.8.9 report's exact 787
+`viewport/surface/name` inventory; targeted viewport runs remain scoped diagnostics. `--selftest`
+seeds a stale PASS, forces exit 73 with a marker, proves current red replacement/wrong-run
+rejection/cleanup, then removes one sealed outcome with internally consistent counts and requires
+that plausible incomplete PASS to fail. CI assigns an exact id, runs selftest + gate +
+`--verify-run=ID`, then uploads the report separately with missing evidence treated as an error.
+Both root and v2 install surfaces now declare/lock the `ws` transport and supported Node lines
+`^20.19.0 || ^22.13.0 || >=24.0.0`. Root preflight launches the selected executable through the
+owned CDP probe; its selftest rejects executable non-browsers and excluded Node lines. `bootperf`
+shares the executable resolver and `ws`, but explicitly retains its legacy CDP lifecycle.
+The targeted lock refresh also moves root `undici` 7.27.2→7.29.0 and v2 `nanoid`
+3.3.16→3.3.18 within existing ranges; clean `npm ci` on both install surfaces reports zero
+vulnerabilities. These are tooling/dependency-evidence changes, not shipped runtime changes.
+The original sandboxed Edge diagnostic ended in SIGABRT and remains red evidence. A separately
+permitted mutable-tree diagnostic completed 787/787 checks across 10 viewports; it is diagnostic,
+not a post-change browser certification. This repair still needs a new clean commit, exact
+sequential battery, clean review, push and matching GitHub CI. `overridecontrol` remains exclusive
+and must not overlap any build/browser/evidence producer. Because the new manual preview workflow
+is not dispatchable until it exists on the default branch, PR #11's pre-merge candidate must use
+the equivalent explicitly approved local packaging command recorded in
+`port/DEVELOPMENT_PREVIEW.md`; the workflow becomes the normal path after the infrastructure lands
+on `develop`.
 
 Even a green automated battery is not merge authority. A real human playtest against the
 commit-bound separate-origin preview is required before **Ready for review** or merge. Record
@@ -166,14 +194,16 @@ human play remains the judge of motion, readability, comfort and perceived quali
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — pushed head
 `8b8a740286a56591cac9dc5734a2fba4c088939b` is product-, smoke-, full-glass-,
 persona- and package-green locally and through GitHub test-battery #200. The only red
-gate is the pre-page preview CDP startup caused by step-scoped browser provenance; the
-job-scoped Chrome repair still needs a new commit, exact-head battery and push. Draft PR #11
-exists, but its remote head does not yet contain that workflow repair.
+gate is the pre-page preview CDP startup caused by step-scoped browser provenance. Local
+`4d14a75e934536dc5f204e40c74f666cc9514df4` contains the job-scoped Chrome repair but
+is unpushed; root-layout launcher/report hardening is still uncommitted. Draft PR #11 exists,
+but its remote head contains neither follow-on.
 
-**GitHub step:** keep PR #11 draft. Freeze the browser-provenance repair in a new commit, run the
-final sequential local battery on that exact commit, then push it and require matching CI; do not
-rerun or timeout-mask #200. Update the PR body with that exact head and results, build the approved
-separate-origin preview, complete and record the human playtest, and resolve/retest findings.
+**GitHub step:** keep PR #11 draft. Freeze the root-layout repair in a new clean commit, run the
+final sequential local battery on that exact commit, then push the local commits and require
+matching CI; do not rerun or timeout-mask #200. Update the PR body with that exact head and results,
+build the approved separate-origin preview, complete and record the human playtest, and
+resolve/retest findings.
 Only then may Nick click **Ready for review**, review the final diff/checks, and normally merge
 into `develop`. Never auto-merge, squash/rebase, retarget `main`, or add this work to merged
 PR #10.
@@ -206,7 +236,9 @@ PR #10.
   > retry. Adds provenance-bound
   > smoke, glass and automated-persona reports plus commit-bound development-preview packaging;
   > pins the CI browser at job scope so a later preview process cannot silently switch from Chrome
-  > to Linux Edge when a preceding step's environment expires;
+  > to Linux Edge when a preceding step's environment expires. Moves the root 10-viewport layout
+  > gate onto the same owned port-0 CDP launcher and adds ignored atomic pass/fail/instrument-fail
+  > evidence, stale-PASS/exit-73 selftest, exact-run freshness and a separate required CI upload;
   > automated personas are explicitly not a human playtest. The preview requires a separately
   > approved origin, which has not been chosen or published. Final verification is publication-
   > contingent: freeze the final head in a commit, run the sequential local battery, then push

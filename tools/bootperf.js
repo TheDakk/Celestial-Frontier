@@ -48,20 +48,16 @@ const path = require('path');
 const http = require('http');
 const zlib = require('zlib');
 const os = require('os');
-const { spawn } = require('child_process');
+const { execFileSync, spawn } = require('child_process');
+const WebSocketImpl = require('ws');
 const root = path.join(__dirname, '..');
 
-/* browser resolution — identical list to uilayout.js so both gates agree on
-   which browser "a real browser" means (CF_BROWSER wins, for CI portability) */
-const EDGE = process.env.CF_BROWSER || [
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-  'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
-  '/usr/bin/google-chrome',
-  '/usr/bin/chromium-browser',
-  '/usr/bin/chromium',
-  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-].find((p) => { try { return fs.existsSync(p); } catch (_) { return false; } }) ||
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
+/* Browser provenance is shared with preflight and uilayout even though this legacy
+   cold-boot tool still owns its older fixed-port CDP lifecycle. An invalid explicit
+   path or a machine with no supported executable now fails before measurements. */
+const EDGE = execFileSync(process.execPath,
+  [path.join(root, 'port', 'v2', 'tools', 'browserpath.mjs'), '--print'],
+  { cwd: root, env: process.env, encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'] }).trim();
 
 const arg = (name, dflt) => {
   const a = process.argv.find((x) => x.startsWith('--' + name + '='));
@@ -165,7 +161,7 @@ function probeSource(saveArm) {
 })();`;
 }
 
-/* ================= CDP plumbing (stdlib only: fetch + native WebSocket) ================= */
+/* ================= CDP plumbing (raw fetch + pinned ws transport) ================= */
 let seq = 0, ws = null, pend = new Map();
 function send(method, params, sessionId) {
   const id = ++seq;
@@ -193,7 +189,7 @@ async function launch() {
     try { const v = await (await fetch('http://127.0.0.1:' + port + '/json/version')).json(); browserWs = v.webSocketDebuggerUrl; } catch (_) {}
   }
   if (!browserWs) { try { proc.kill(); } catch (_) {} throw new Error('CDP endpoint never came up'); }
-  ws = new WebSocket(browserWs);
+  ws = new WebSocketImpl(browserWs);
   ws.onmessage = (ev) => {
     const m = JSON.parse(ev.data);
     if (m.id && pend.has(m.id)) { const p = pend.get(m.id); pend.delete(m.id); m.error ? p.rej(new Error(m.error.message)) : p.res(m.result); }
