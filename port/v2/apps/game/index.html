@@ -16,6 +16,7 @@
        above 900px these are rail surfaces, not a dock). */
     :root {
       --glass-a: 0.84; --topbar-h: 96px; --dock-h: 44px; --ctx-h: 32px; --hint-h: 24px;
+      --surface-chrome-bottom: 128px;
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-right: env(safe-area-inset-right, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -152,6 +153,16 @@
       body.surface-mode #survey {
         max-height: max(44px, calc(var(--planetside-top, 100dvh) - var(--topbar-h) - 14px));
       }
+      /* A short portrait keeps the trail. Cap the populated strip to the live
+         band between the lowest VISIBLE top-chrome edge and the already-
+         measured lower chrome; only the strip scrolls when A++ cannot fit. */
+      body.surface-mode #planetside {
+        max-height: max(72px, calc(100dvh - var(--safe-bottom) - var(--dock-h) - var(--ctx-h) - 92px - var(--surface-chrome-bottom)));
+        overflow-y: auto !important;
+      }
+      /* If a genuinely short portrait cannot retain a useful 72px roster
+         viewport plus 6px clearance, the noninteractive trail yields. */
+      body.surface-mode.surface-trail-yield #trail { display: none; }
     }
     @media (max-width: 900px) and (orientation: landscape) {
       /* The short landscape safe rectangle cannot fit the populated world

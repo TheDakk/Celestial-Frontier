@@ -61,6 +61,33 @@
 > same survey path, +/- zooms at the target and Escape releases it, with a visible
 > ring and polite live announcement. Clipboard denial selects the exact CF1 code
 > in Search and says Copy is unavailable; it never reports a false success.
+> Portrait Planetside now derives its usable band from visible fixed top chrome,
+> the last visible trail edge, and measured safe/dock/context lower chrome. It
+> retains the trail only when a 72px useful roster plus 6px clearance fits;
+> otherwise `syncSurfaceChromeBottom()` applies `surface-trail-yield` to hide the
+> noninteractive trail while preserving a minimum-72px vertically scrollable
+> roster. `syncDockH()` and `syncCtxH()` reclassify after asynchronous chrome
+> measurement, and space restoration restores the trail. Glass-matrix controls
+> `planetside-portrait-band-viability` and
+> `planetside-portrait-trail-fallback` prove both directions.
+>
+> The matrix import fixture is witnessed as two observable phases rather than a
+> blind reload delay. `reloadProbeDecision()` binds an explicit import phase to
+> the current per-document token and top-frame loader id, then accepts only a
+> ready replacement for which both loader and token changed. Import settlement
+> and replacement boot each own a separate 20-second bound. Same-document token
+> mutation, phase loss/rejection, missing loader witnesses, and a loader change
+> during evaluation fail closed under
+> `replacement-document-loader-token-phase`; the command never retries a red
+> run. This repair follows test-battery run `31571459050` / job `94034164092` at
+> pushed commit `33ea34191c817a8e78eea598c31981f8208e939b`: `smoke:ci`
+> passed once, then glassmatrix retained the former old-token 10-second timeout
+> at desktop-8k and recorded a small-phone Planetside/trail overlap. Only static
+> checks plus targeted real-browser diagnostics for the small-phone portrait and
+> desktop-8k import/reload paths are green on the mutable repair snapshot. Those
+> narrow diagnostics are non-certifying; current smoke, the complete 12-viewport
+> matrix/persona synthesis, a repair commit, exact full battery and matching CI
+> remain pending.
 > Development preview origin/package requirements live in
 > `port/DEVELOPMENT_PREVIEW.md`; they do not constitute a release or deployment.
 >

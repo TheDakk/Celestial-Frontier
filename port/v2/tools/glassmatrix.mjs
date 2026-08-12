@@ -28,6 +28,12 @@ const dist = path.join(appDir, 'dist');
 const repoRoot = path.resolve(here, '..', '..', '..');
 const evidenceDir = path.join(appDir, 'smoke');
 const MAX_BACKING_PIXELS = 4096 * 4096;
+/* Import settlement and replacement boot are separate observable phases.
+   Bound each to the same budget as a fresh slice boot; never turn one
+   unobserved 10-second sleep into a larger unobserved sleep. */
+const SLICE_READY_TIMEOUT_MS = 20000;
+const IMPORT_SETTLE_TIMEOUT_MS = SLICE_READY_TIMEOUT_MS;
+const REPLACEMENT_READY_TIMEOUT_MS = SLICE_READY_TIMEOUT_MS;
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const startedAt = Date.now();
 let runSource = null;
@@ -143,10 +149,103 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'training-focused-action-visibility', 'settings-horizontal-overflow',
   'planetside-surface-ownership', 'panel-planetside-layering',
   'mobile-chrome-yield-restore', 'mobile-landscape-surface-chrome-yield', 'planetside-top-chrome-clearance',
+  'planetside-portrait-band-viability', 'planetside-portrait-trail-fallback',
   'mobile-surface-objective-yield',
   'modal-background-containment-restore', 'modal-live-error', 'panel-close-accessible-name',
   'hidden-panel-opener-focus-fallback',
+  'replacement-document-loader-token-phase',
 ]);
+
+function reloadProbeDecision(probe, priorToken, priorLoaderId, phaseId) {
+  const token = typeof probe?.token === 'string' ? probe.token : null;
+  const loaderIdBefore = typeof probe?.loaderIdBefore === 'string' ? probe.loaderIdBefore : null;
+  const loaderId = typeof probe?.loaderId === 'string' ? probe.loaderId : null;
+  const phase = probe?.phase && typeof probe.phase === 'object' ? probe.phase : null;
+  if (!loaderIdBefore || !loaderId) return { status: 'failed', ok: false, why: 'top-frame loader id unavailable' };
+  /* Bind the evaluated token to one stable loader. A navigation that commits
+     between Runtime.evaluate and Page.getFrameTree could otherwise pair an
+     old document's mutable token with the new loader and manufacture a pass. */
+  if (loaderIdBefore !== loaderId) return { status: 'replacement-pending', ok: false };
+  const tokenChanged = !!token && token !== priorToken;
+  const loaderChanged = !!loaderId && loaderId !== priorLoaderId;
+  if (probe?.ready && tokenChanged && loaderChanged) {
+    return { status: 'replacement-ready', ok: true };
+  }
+  if (tokenChanged && !loaderChanged) {
+    return { status: 'failed', ok: false, why: 'document token changed without a top-frame loader transition' };
+  }
+  if (token === priorToken) {
+    /* Once the loader changes, the old execution context may have supplied
+       this poll just before navigation committed. The unchanged token is
+       never success, but the replacement gets its own bounded boot phase. */
+    if (loaderChanged) return { status: 'replacement-pending', ok: false };
+    if (!phase) return { status: 'failed', ok: false, why: 'same-loader/token document lost its armed import phase' };
+    if (phase.id !== phaseId) return { status: 'failed', ok: false, why: 'same-loader/token document exposed the wrong import phase id' };
+  }
+  if (phase) {
+    if (phase.id !== phaseId) return { status: 'failed', ok: false, why: 'import phase id changed before replacement readiness' };
+    if (phase.status === 'import-rejected' || phase.status === 'import-threw') {
+      return { status: 'failed', ok: false, why: `${phase.status}: ${phase.error || 'no diagnostic'}` };
+    }
+    if (phase.status === 'import-pending') return { status: 'import-pending', ok: false };
+    if (phase.status === 'reload-requested') return { status: 'replacement-pending', ok: false };
+    return { status: 'failed', ok: false, why: `unknown import phase ${JSON.stringify(phase.status)}` };
+  }
+  /* The armed phase disappears with the old execution context. Until the
+     new document publishes its token this is replacement boot, not another
+     import wait and never evidence that the stale token was acceptable. */
+  return { status: 'replacement-pending', ok: false };
+}
+
+function reloadPhaseSelftest() {
+  const failures = [];
+  const priorToken = 'old-document-token', priorLoaderId = 'old-loader', phaseId = 'armed-phase';
+  const expect = (label, probe, status, ok = false) => {
+    const actual = reloadProbeDecision(probe, priorToken, priorLoaderId, phaseId);
+    if (actual.status !== status || actual.ok !== ok) {
+      failures.push(`${label}: got ${JSON.stringify(actual)}, expected ${JSON.stringify({ status, ok })}`);
+    }
+  };
+  expect('same-token ready import must remain pending', {
+    ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
+    phase: { id: phaseId, status: 'import-pending', error: null },
+  }, 'import-pending');
+  expect('same-token ready reload request must remain pending', {
+    ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
+    phase: { id: phaseId, status: 'reload-requested', error: null },
+  }, 'replacement-pending');
+  expect('different ready token and loader are the only success', {
+    ready: true, token: 'replacement-token', loaderIdBefore: 'replacement-loader',
+    loaderId: 'replacement-loader', phase: null,
+  }, 'replacement-ready', true);
+  expect('same-document token mutation must fail closed', {
+    ready: true, token: 'mutated-token', loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
+    phase: { id: phaseId, status: 'import-pending', error: null },
+  }, 'failed');
+  expect('restored same-document token remains pending after mutation control', {
+    ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
+    phase: { id: phaseId, status: 'import-pending', error: null },
+  }, 'import-pending');
+  expect('import rejection fails closed', {
+    ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId,
+    phase: { id: phaseId, status: 'import-rejected', error: 'fixture refused' },
+  }, 'failed');
+  expect('lost same-token phase fails closed', {
+    ready: true, token: priorToken, loaderIdBefore: priorLoaderId, loaderId: priorLoaderId, phase: null,
+  }, 'failed');
+  expect('loader transition during token probe cannot pass', {
+    ready: true, token: 'mutated-token', loaderIdBefore: priorLoaderId,
+    loaderId: 'replacement-loader', phase: null,
+  }, 'replacement-pending');
+  expect('replacement boot without a token stays pending', {
+    ready: false, token: null, loaderIdBefore: 'replacement-loader',
+    loaderId: 'replacement-loader', phase: null,
+  }, 'replacement-pending');
+  expect('missing loader id fails closed', {
+    ready: false, token: null, loaderIdBefore: null, loaderId: null, phase: null,
+  }, 'failed');
+  return failures;
+}
 function writeReport({ status, exitCode, browser, findings, instrumentFailures, controlsRun,
   executedControls = [], source = runSource || sourceIdentity() }) {
   const counts = new Map();
@@ -194,6 +293,10 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
 }
 
 function reportSelftest() {
+  const reloadFailures = reloadPhaseSelftest();
+  if (reloadFailures.length) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: replacement-document controls failed (${reloadFailures.join('; ')})`);
+  }
   const fixture = {
     status: 'fail', exitCode: 1,
     browser: { product: 'Selftest/1', protocol_version: '1' },
@@ -227,12 +330,13 @@ function reportSelftest() {
     || !['non-glass-background-chain', 'settings-pressed-focus', 'guide-render-focus',
       'motion-css-policy', 'ordinary-panel-centre-close', 'opener-expanded-controls',
       'pseudo-placeholder-contrast', 'typography-no-shrink-hierarchy', 'backing-pixel-ceiling',
-      'forced-colors-system-mapping', 'panel-open-focus']
+      'forced-colors-system-mapping', 'panel-open-focus', 'replacement-document-loader-token-phase']
       .every((name) => shaped.controlSummary.negativeControls.includes(name))) {
     throw new Error('GLASS MATRIX REPORT SELFTEST: injected finding/report grouping drifted');
   }
   console.log('GLASS MATRIX REPORT SELFTEST: PASS');
   console.log('  injected finding retained; 12 viewport definitions retained; retry policy remains zero');
+  console.log('  same-loader token mutation rejected; phased import/replacement outcomes fail closed');
 }
 
 const MIME = Object.freeze({
@@ -1078,10 +1182,15 @@ async function main() {
       executedControls.add(name);
     }
   };
+  for (const failure of reloadPhaseSelftest()) {
+    instrumentFailures.push(`RELOAD PHASE SELFTEST ${failure}`);
+  }
+  recordControls('replacement-document-loader-token-phase');
   let controlsRun = false, hpControlRun = false, settingsWidthControlRun = false,
     planetsideControlRun = false, panelPlanetsideControlRun = false,
     chromeYieldControlRun = false, chromeRestoreControlRun = false, chromeLandscapeControlRun = false,
-    objectiveYieldControlRun = false, topChromeControlRun = false,
+    objectiveYieldControlRun = false, topChromeControlRun = false, portraitBandControlRun = false,
+    portraitFallbackControlRun = false,
     modalControlRun = false, modalLiveControlRun = false, closeLabelControlRun = false,
     hiddenOpenerControlRun = false;
   const add = (viewport, surface, rows) => {
@@ -1126,7 +1235,15 @@ async function main() {
           if (result.exceptionDetails) throw new Error(String(result.exceptionDetails.exception?.description || result.exceptionDetails.text || 'page evaluation failed'));
           return result.result.value;
         };
-        const deadline = Date.now() + 20000;
+        const topLoaderId = async () => {
+          const tree = await send('Page.getFrameTree', {}, session);
+          const loaderId = tree?.frameTree?.frame?.loaderId;
+          if (typeof loaderId !== 'string' || !loaderId) {
+            throw new Error(`${vp.label}: top-frame loader id unavailable (${JSON.stringify(tree?.frameTree?.frame || null)})`);
+          }
+          return loaderId;
+        };
+        const deadline = Date.now() + SLICE_READY_TIMEOUT_MS;
         let ready = null;
         while (Date.now() < deadline) {
           try {
@@ -1151,17 +1268,53 @@ async function main() {
           }
           throw new Error(`${vp.label}/${label}: outcome did not arrive within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
         };
-        const waitForReload = async (label, priorToken, timeoutMs = 10000) => {
-          const until = Date.now() + timeoutMs;
-          let last = null;
-          while (Date.now() < until) {
+        const waitForReload = async (label, priorToken, priorLoaderId, phaseId, {
+          importTimeoutMs = IMPORT_SETTLE_TIMEOUT_MS,
+          replacementTimeoutMs = REPLACEMENT_READY_TIMEOUT_MS,
+        } = {}) => {
+          const beganAt = Date.now();
+          const importDeadline = beganAt + importTimeoutMs;
+          let replacementDeadline = null;
+          let last = null, decision = null;
+          while (true) {
+            let loaderIdBefore;
+            try { loaderIdBefore = await topLoaderId(); }
+            catch (error) {
+              throw new Error(`${vp.label}/${label}: pre-evaluation loader witness failed closed (${error.message})`);
+            }
             try {
-              last = await evalIn(`(()=>{ const S=window.__CF_SLICE__; try { const s=S?.api?.state(); return {ready:!!s?.save,token:S?.documentToken||null,why:s?.save?'':'save unavailable'}; } catch(error) { return {ready:false,token:null,why:String(error?.message||error)}; } })()`);
-              if (last?.ready && last.token && last.token !== priorToken) return last;
-            } catch (error) { last = { ready: false, token: null, why: error.message }; }
+              last = await evalIn(`(()=>{ const S=window.__CF_SLICE__,P=window.__CF_GLASS_RELOAD_PHASE__; try {
+                const s=S?.api?.state(); return {ready:!!s?.save,token:S?.documentToken||null,
+                  why:s?.save?'':'save unavailable',phase:P?{id:String(P.id||''),status:String(P.status||''),error:P.error==null?null:String(P.error)}:null};
+              } catch(error) { return {ready:false,token:S?.documentToken||null,why:String(error?.message||error),
+                  phase:P?{id:String(P.id||''),status:String(P.status||''),error:P.error==null?null:String(P.error)}:null}; } })()`);
+            } catch (error) {
+              /* Losing the old execution context is positive evidence that
+                 replacement boot began, but it is not readiness. */
+              last = { ready: false, token: null, phase: null, why: error.message };
+            }
+            last.loaderIdBefore = loaderIdBefore;
+            try { last.loaderId = await topLoaderId(); }
+            catch (error) {
+              throw new Error(`${vp.label}/${label}: loader witness failed closed (${error.message}; last ${JSON.stringify(last)})`);
+            }
+            decision = reloadProbeDecision(last, priorToken, priorLoaderId, phaseId);
+            if (decision.ok) return { ...last, elapsedMs: Date.now() - beganAt };
+            if (decision.status === 'failed') {
+              throw new Error(`${vp.label}/${label}: import/reload failed closed (${decision.why}; last ${JSON.stringify(last)})`);
+            }
+            const now = Date.now();
+            if (decision.status === 'replacement-pending' && replacementDeadline === null) {
+              replacementDeadline = now + replacementTimeoutMs;
+            }
+            if (decision.status === 'import-pending' && now >= importDeadline) {
+              throw new Error(`${vp.label}/${label}: import transaction did not settle within ${importTimeoutMs}ms (last ${JSON.stringify(last)})`);
+            }
+            if (decision.status === 'replacement-pending' && now >= replacementDeadline) {
+              throw new Error(`${vp.label}/${label}: replacement document did not become ready within ${replacementTimeoutMs}ms after reload began (last ${JSON.stringify(last)})`);
+            }
             await sleep(50);
           }
-          throw new Error(`${vp.label}/${label}: replacement document did not arrive within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
         };
         /* Use one unambiguous product floor everywhere. Desktop users may
            still be on touch laptops, and a narrower desktop exemption made
@@ -1210,8 +1363,25 @@ async function main() {
              Training is freshly rendered from saved state, while keeping
              Compendium/Records/Atlas/Charters populated for the panel pass. */
           const priorToken = ready.token;
-          await evalIn(`(()=>{ void window.__CF_SLICE__.api.importBlob(${JSON.stringify(VETERAN_PREF_RAW)}); return true; })()`);
-          ready = await waitForReload('preference fixture import', priorToken);
+          const priorLoaderId = await topLoaderId();
+          const phaseId = crypto.randomUUID();
+          const armed = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
+            if(!S?.api?.importBlob||S.documentToken!==${JSON.stringify(priorToken)})return {armed:false,why:'slice/token changed before import arm'};
+            const phase={id:${JSON.stringify(phaseId)},status:'import-pending',error:null};
+            Object.defineProperty(window,'__CF_GLASS_RELOAD_PHASE__',{value:phase,writable:false,configurable:true});
+            try {
+              const pending=S.api.importBlob(${JSON.stringify(VETERAN_PREF_RAW)});
+              void Promise.resolve(pending).then((error)=>{
+                if(error===null)phase.status='reload-requested';
+                else { phase.status='import-rejected'; phase.error=String(error||'import returned no success'); }
+              },(error)=>{ phase.status='import-threw'; phase.error=String(error?.message||error); });
+            } catch(error) { phase.status='import-threw'; phase.error=String(error?.message||error); }
+            return {armed:true,token:S.documentToken,phase:{...phase}};
+          })()`);
+          if (!armed?.armed || armed.token !== priorToken || armed.phase?.id !== phaseId) {
+            throw new Error(`${vp.label}/preference fixture import: could not arm observed replacement transaction (${JSON.stringify(armed)})`);
+          }
+          ready = await waitForReload('preference fixture import', priorToken, priorLoaderId, phaseId);
           await evalIn(`(${installAuditHarness.toString()})()`);
           await waitFor('preference Training', `window.__CF_SLICE__.api.state().tutActive && window.__CF_SLICE__.api.state().codexCount>=3 && document.querySelector('[data-sel=tuttext]')?.textContent?.trim().length>60`);
           add(vp.label, 'training-preferences', await audit({
@@ -1543,15 +1713,20 @@ async function main() {
            HP/search/trail/objective despite clearing the dock. */
         await evalIn(`document.getElementById('docksurvey')?.click()`);
         await waitFor('survey closed for top-chrome clearance', `!window.__CF_SLICE__.api.state().cardOpen`);
+        await waitFor('deferred lower/top chrome measurement after survey close', `(()=>{ const root=getComputedStyle(document.documentElement),ctx=document.getElementById('ctxbar'),dock=document.getElementById('dock'),trail=document.getElementById('trail'),fixed=['topbar','searchbox','objchip'].map(id=>document.getElementById(id)),fallback=document.body.classList.contains('surface-trail-yield');
+          const visibleBottom=(el)=>{const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0?r.bottom:0;},
+            expectedTop=Math.max(...fixed.map(visibleBottom),fallback?0:visibleBottom(trail));
+          return Math.abs(parseFloat(root.getPropertyValue('--ctx-h'))-ctx.offsetHeight)<0.6&&Math.abs(parseFloat(root.getPropertyValue('--dock-h'))-dock.offsetHeight)<0.6&&Math.abs(parseFloat(root.getPropertyValue('--surface-chrome-bottom'))-expectedTop)<0.6;})()`);
         const mobileSurfaceYieldsObjective = vp.width <= 900;
         const landscapeSurfaceYieldsTrail = vp.width <= 900 && vp.width > vp.height;
-        const chromeRestoreCheck = `(()=>{ const rows=['trail','objchip'].map(id=>{const el=document.getElementById(id);return {id,text:(el?.textContent||'').trim(),display:el?getComputedStyle(el).display:'missing'};});
-          return {ok:rows.every(r=>r.text.length>0&&(r.id==='trail'?${landscapeSurfaceYieldsTrail ? "r.display==='none'" : "r.display!=='none'"}:${mobileSurfaceYieldsObjective ? "r.display==='none'" : "r.display!=='none'"})),rows};})()`;
+        const portraitSurface = vp.width <= 900 && vp.width <= vp.height;
+        const chromeRestoreCheck = `(()=>{ const fallback=document.body.classList.contains('surface-trail-yield'),rows=['trail','objchip'].map(id=>{const el=document.getElementById(id);return {id,text:(el?.textContent||'').trim(),display:el?getComputedStyle(el).display:'missing'};});
+          return {ok:rows.every(r=>r.text.length>0&&(r.id==='trail'?${landscapeSurfaceYieldsTrail ? "r.display==='none'" : portraitSurface ? "r.display===(fallback?'none':'block')" : "r.display!=='none'"}:${mobileSurfaceYieldsObjective ? "r.display==='none'" : "r.display!=='none'"})),rows,fallback};})()`;
         addOutcome(vp.label, 'survey-chrome-restore', 'MOBILE_CHROME_NOT_RESTORED', '#trail,#objchip', await evalIn(chromeRestoreCheck),
           landscapeSurfaceYieldsTrail
             ? 'short-landscape surface mode keeps populated trail/objective rows yielded to Planetside'
             : mobileSurfaceYieldsObjective
-              ? 'landed portrait restores the trail while the objective yields to populated Planetside'
+              ? 'landed portrait restores the trail when a useful band fits, otherwise marks the bounded trail-yield fallback; the objective yields throughout'
               : 'closing the last card restores every populated desktop trail/objective surface');
         if (!chromeRestoreControlRun) {
           chromeRestoreControlRun = true;
@@ -1577,6 +1752,59 @@ async function main() {
           if (objectiveControl.ok) instrumentFailures.push(`${vp.label}: forced-visible landed objective injection stayed green (${JSON.stringify(objectiveControl)})`);
           recordControls('mobile-surface-objective-yield');
         }
+        if (portraitSurface) {
+          /* This is intentionally POST-card-close. Earlier Planetside checks
+             run while Survey hides the trail and cannot see the reported
+             320x568/A++ collision or a false-green one-pixel strip. */
+          const portraitBandCheck = `(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),
+            head=side?.firstElementChild,specimen=side?.querySelector('[data-sel="planetside-sp"]');
+            if(!side||!trail||!head||!specimen)return {ok:false,why:'missing populated band surface'};
+            const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ts=getComputedStyle(trail),ss=getComputedStyle(side),prior=side.scrollTop;
+            const trailVisible=ts.display!=='none'&&ts.visibility!=='hidden'&&t.width>0&&t.height>0,
+              gap=trailVisible?a.top-t.bottom:null,inside=(r)=>r.bottom>a.top+1&&r.top<a.bottom-1;
+            const headAtRest=head.getBoundingClientRect(),specimenAtRest=specimen.getBoundingClientRect(),headVisible=inside(headAtRest),specimenVisible=inside(specimenAtRest);
+            const clipped=side.scrollHeight>side.clientHeight+1,maxScroll=Math.max(0,side.scrollHeight-side.clientHeight);
+            side.scrollTop=side.scrollHeight;const observedScroll=side.scrollTop,specimenAfterScroll=specimen.getBoundingClientRect(),specimenReachable=specimenVisible||inside(specimenAfterScroll);side.scrollTop=prior;
+            const scrollContract=!clipped||((ss.overflowY==='auto'||ss.overflowY==='scroll')&&maxScroll>0&&observedScroll>0&&specimenReachable),
+              meaningful=a.height>=71&&side.clientHeight>=68,clear=trailVisible?gap>=5.5:document.body.classList.contains('surface-trail-yield'),
+              policy=trailVisible?!document.body.classList.contains('surface-trail-yield'):document.body.classList.contains('surface-trail-yield');
+            return {ok:meaningful&&clear&&policy&&headVisible&&specimenReachable&&scrollContract,meaningful,clear,policy,headVisible,specimenVisible,specimenReachable,scrollContract,
+              trailVisible,gap,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,
+              overflowY:ss.overflowY,maxScroll,observedScroll,surfaceChromeBottom:getComputedStyle(document.documentElement).getPropertyValue('--surface-chrome-bottom').trim(),
+              fallback:document.body.classList.contains('surface-trail-yield')}; })()`;
+          addOutcome(vp.label, 'planetside-portrait-band', 'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', await evalIn(portraitBandCheck),
+            'post-close Planetside keeps at least a useful 72px band, 6px trail clearance, a visible heading, and a visible or vertically reachable specimen');
+          if (!portraitBandControlRun) {
+            portraitBandControlRun = true;
+            const bandControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),prior=side.getAttribute('style'),tall=document.createElement('div');
+              tall.setAttribute('data-cf-control','portrait-tall-content');tall.style.height='96px';side.appendChild(tall);side.style.setProperty('max-height','none','important');
+              const result=${portraitBandCheck};tall.remove();if(prior===null)side.removeAttribute('style');else side.setAttribute('style',prior);return result;})()`);
+            if (bandControl.ok || !bandControl.trailVisible || !(bandControl.gap < 5.5)) {
+              instrumentFailures.push(`${vp.label}: removed-cap/tall-content control did not reproduce the visible trail collision (${JSON.stringify(bandControl)})`);
+            }
+            recordControls('planetside-portrait-band-viability');
+          }
+          if (!portraitFallbackControlRun) {
+            portraitFallbackControlRun = true;
+            /* Tighten the lower safe rectangle through the same CSS variable
+               the product reads. The fallback must be an observable policy,
+               not a one-way class toggle that leaves the strip collapsed. */
+            const fallbackControl = await evalIn(`(()=>{ const root=document.documentElement,side=document.getElementById('planetside'),trail=document.getElementById('trail'),prior=root.style.getPropertyValue('--safe-bottom'),
+              beforeSide=side.getBoundingClientRect(),beforeTrail=trail.getBoundingClientRect(),baseSafe=parseFloat(getComputedStyle(root).getPropertyValue('--safe-bottom'))||0,
+              forcedSafe=baseSafe+Math.max(8,beforeSide.bottom-beforeTrail.bottom-6-64);
+              root.style.setProperty('--safe-bottom',forcedSafe+'px');window.dispatchEvent(new Event('resize'));
+              const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ss=getComputedStyle(side),ts=getComputedStyle(trail),fallback=document.body.classList.contains('surface-trail-yield'),
+                meaningful=a.height>=71&&side.clientHeight>=68,scrollOk=side.scrollHeight<=side.clientHeight+1||((ss.overflowY==='auto'||ss.overflowY==='scroll')&&side.scrollHeight>side.clientHeight),
+                fixedRows=['playerchip','hpbar','searchbox','objchip'].map(id=>{const el=document.getElementById(id),s=getComputedStyle(el),r=el.getBoundingClientRect(),visible=s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;return {id,visible,gap:a.top-r.bottom};}),
+                fixedClear=fixedRows.every(row=>!row.visible||row.gap>=5.5);
+              const tight={ok:fallback&&ts.display==='none'&&meaningful&&scrollOk&&fixedClear,fallback,trailDisplay:ts.display,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,overflowY:ss.overflowY,fixedClear,fixedRows,baseSafe,forcedSafe};
+              if(prior)root.style.setProperty('--safe-bottom',prior);else root.style.removeProperty('--safe-bottom');window.dispatchEvent(new Event('resize'));
+              const restoredStyle=getComputedStyle(trail),restored=!document.body.classList.contains('surface-trail-yield')&&restoredStyle.display!=='none';
+              return {ok:tight.ok&&restored,tight,restored,restoredClass:document.body.classList.contains('surface-trail-yield'),restoredDisplay:restoredStyle.display};})()`);
+            if (!fallbackControl.ok) instrumentFailures.push(`${vp.label}: forced-tight portrait did not yield trail with a useful strip and restore exactly (${JSON.stringify(fallbackControl)})`);
+            recordControls('planetside-portrait-trail-fallback');
+          }
+        }
         const topChromeCheck = `(()=>{ const side=document.getElementById('planetside'),a=side?.getBoundingClientRect();if(!side||!a)return {ok:false,why:'missing'};
           const rows=['playerchip','hpbar','searchbox','trail','objchip'].map(id=>{const el=document.getElementById(id),s=el?getComputedStyle(el):null,r=el?.getBoundingClientRect();
             const visible=!!el&&s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;
@@ -1586,7 +1814,8 @@ async function main() {
           'Planetside clears every visible player/HP/search/trail/objective surface');
         if (!topChromeControlRun) {
           topChromeControlRun = true;
-          const topControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),target=['playerchip','hpbar','searchbox','trail','objchip'].map(id=>document.getElementById(id)).find(el=>{if(!el)return false;const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&r.width>0&&r.height>0;}),
+          const topControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),visible=(el)=>{if(!el)return false;const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&r.width>0&&r.height>0;},
+            target=visible(trail)?trail:['playerchip','hpbar','searchbox','objchip'].map(id=>document.getElementById(id)).find(visible),
             a=side.getBoundingClientRect(),b=target.getBoundingClientRect(),prior=side.style.transform;
             side.style.setProperty('transform','translate('+(b.left-a.left)+'px,'+(b.top-a.top)+'px)','important');const result=${topChromeCheck};side.style.transform=prior;return result;})()`);
           if (topControl.ok) instrumentFailures.push(`${vp.label}: Planetside/top-chrome overlap injection stayed green (${JSON.stringify(topControl)})`);
@@ -2007,8 +2236,16 @@ async function main() {
   if (!panelPlanetsideControlRun) instrumentFailures.push('panel/Planetside synthesized layering control never ran');
   if (!chromeYieldControlRun) instrumentFailures.push('mobile chrome yield control never ran');
   if (!chromeRestoreControlRun) instrumentFailures.push('mobile chrome restore-direction control never ran');
-  if (!objectiveYieldControlRun) instrumentFailures.push('mobile landed-objective yield control never ran');
+  if (!objectiveYieldControlRun && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900)) {
+    instrumentFailures.push('mobile landed-objective yield control never ran');
+  }
   if (!topChromeControlRun) instrumentFailures.push('Planetside/top-chrome clearance control never ran');
+  if (!portraitBandControlRun && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900 && vp.width <= vp.height)) {
+    instrumentFailures.push('Planetside portrait-band viability control never ran');
+  }
+  if (!portraitFallbackControlRun && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900 && vp.width <= vp.height)) {
+    instrumentFailures.push('Planetside portrait trail-fallback control never ran');
+  }
   if (!modalControlRun) instrumentFailures.push('import modal containment control never ran');
   if (!modalLiveControlRun) instrumentFailures.push('import live-error control never ran');
   if (!closeLabelControlRun) instrumentFailures.push('panel close accessible-name control never ran');

@@ -1024,17 +1024,32 @@ duplicates).
   / desktop-3 heat caps, adds a 16,777,216-pixel backing-store ceiling, and resynchronizes Pixi plus
   backdrop density on viewport changes while destroying the replaced backdrop texture. On every
   ≤900px landed layout, populated Planetside owns the objective's limited reading band until ascent;
-  portrait retains the trail, while short landscape also yields the trail and begins Planetside below
-  measured top chrome. On the post-policy dirty snapshot bound by working-tree SHA-256
-  `88d1996909134596302a2f8558cef553220816ab48ee356f970132a5309f6293`, `smoke:ci` passed with 0 findings and
-  10 screenshots; the full isolated matrix passed all 12 viewports including 8K with 0 findings,
-  0 instrument failures, 0 omitted planned controls and 0 retries; and `persona:report` passed all
-  9 bounded automated personas. The 390×844 DPR-3 four-run performance diagnostic passed at painted
-  658ms, answerable 734ms, press→panel 70ms and galaxy rebuild 178ms. The exact-keepsake repair and
-  documentation sync followed that snapshot. These results are pre-freeze
-  diagnostics, not exact-commit evidence, matching CI, an approved performance budget, or a human
-  playtest. The exact-commit full battery, matching CI and separate-origin human playtest remain
-  required.
+  short landscape yields the trail and begins Planetside below measured top chrome. Portrait derives
+  its top bound from visible fixed chrome plus the last visible trail edge and its lower bound from
+  measured safe/dock/context chrome. It keeps the trail only when a useful 72px roster plus 6px
+  separation fits; otherwise `surface-trail-yield` hides only the noninteractive trail and exposes a
+  vertically scrollable Planetside with the same 72px floor, restoring the trail when space returns.
+  `syncDockH` and `syncCtxH` rerun that classification after asynchronous measured changes. The
+  post-close `planetside-portrait-band-viability` control proves the 72px/header/specimen/scroll/
+  clearance outcome and reproduces the exact collision by removing the cap and adding tall content;
+  `planetside-portrait-trail-fallback` tightens the lower safe rectangle enough to force the fallback,
+  proves its useful strip and fixed-chrome clearance, then proves exact restoration.
+
+  Pushed commit `33ea34191c817a8e78eea598c31981f8208e939b` passed its exact local battery,
+  but GitHub test-battery run `31571459050` / job `94034164092` failed in the v2 real-browser/
+  responsive/persona step. `smoke:ci` passed once; the following glass run saw the old ready document
+  token through the former 10-second desktop-8k import/reload wait and also recorded the small-phone
+  Planetside/trail overlap. The repair arms an explicit import phase, witnesses the top-frame loader
+  on both sides of evaluation, and accepts only a ready replacement with changed loader and changed
+  token. Import settlement and replacement boot have separate 20-second limits, while same-document
+  token mutation, lost/rejected phases and loader/evaluation races fail closed under
+  `replacement-document-loader-token-phase`; the run still has zero retries. Post-repair evidence is
+  limited to `node --check tools/glassmatrix.mjs`, `npm run glassmatrix:selftest`, both TypeScript
+  programs via `npm run typecheck`, and `git diff --check`. Targeted real-browser diagnostics for the
+  small-phone portrait branch and desktop-8k import/reload path also pass on the mutable repair
+  snapshot; they are explicitly non-certifying. Current `smoke:ci`, the full 12-viewport matrix and
+  persona synthesis, the repair commit and exact-head battery, matching CI, and separate-origin human
+  playtest remain pending.
 - ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
   the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson
