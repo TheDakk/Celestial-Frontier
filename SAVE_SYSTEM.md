@@ -143,9 +143,8 @@
 > origin, with content SHA-256
 > `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`,
 > production distinct and `publishable:false`. Prior CI #201 remains preserved
-> red without retry. `7d9980e` remains immutable prior exact evidence and does
-> not certify #204's repair. Exact tip/upstream/check state is read live; the
-> repair still requires a clean executable commit, exact battery, push and CI.
+> red without retry. `7d9980e` remains immutable prior exact evidence; current
+> #204 repair evidence is bound to clean source `46fb627` below.
 > CI #202, run `31594595288` / job `94106996466`, is also preserved red without
 > retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`: every earlier gate
 > and `smoke:ci` passed, while desktop-8k glass first observed replacement state
@@ -182,17 +181,25 @@
 > certification, Ready, merge, versioning, or deployment. The initial malformed
 > `npm run perf -- --runs=4` command was likewise rejected before any browser;
 > the correct one-run diagnostic was not a retry of an evidence failure.
-> The #204 repair currently has only dirty stable diagnostics at base
-> `4cee7d807b8f9258e370aad31c30756269f95a96`, source digest
-> `721418cb1b0cd258ffcd35e614401aba0d26951ea2d02866c6651e2d6cd7c896`:
-> targeted 8K passed in 218 ms; one-attempt smoke passed 0 findings / 10
-> screenshots; certifying-shaped glass passed 12/12, 53/53 controls,
-> `omitted=[]`, 0 findings/instrument failures/retries and 193–214 ms totals;
-> desktop-8k recorded a 1 ms arm, 18 ms import-through-release, 1 ms write,
-> both 3,862×2,172 canvases, `performanceNow` 178.7 ms, 1 ms confirmation and
-> 214 ms total. All nine automated personas passed. This evidence is not
-> authoritative: a clean commit, exact battery, push and matching CI remain
-> mandatory before preview or human play.
+> Immutable executable source `46fb627640e42ea0f43e2e144529884a959d1e72`
+> passed the exact local battery. One malformed `--verify-run` operator invocation
+> caused local SIGABRT/report overwrite; one correct rerun plus verification then
+> passed `exact-46fb627-root-layout` at 787/787 across 10/10 viewports. V2 passed
+> 273/1 plus all gates/selftests, and one-attempt smoke passed 0 findings /10
+> screenshots. Full certifying glass at source-snapshot digest
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`
+> passed 12/12, planned/executed 53/53, `omitted=[]`, zero findings/instrument
+> failures/retries in 170–197 ms. Exact 8K was 190 ms total: 2 ms arm, 35 ms
+> release→changed-loader commit, 137 ms commit→ready, `performanceNow` 170.5 ms,
+> 1 ms confirmation, and two 3,862×2,172 replacement canvases /16,776,528 pixels
+> combined after both outgoing canvases collapsed to 1×1. Nine automated personas
+> passed; terminal-only performance was 595/676/76/168 ms. Exact preview manifest
+> `dev-preview-exact-46fb627` records 37 files /10,176,376 bytes, content SHA-256
+> `4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`,
+> expected origin `https://dev-celestialfrontier.github.io`, production distinct
+> and `publishable:false`. `46fb627` underlies a forthcoming/current docs-only tip;
+> live Git/PR checks decide exact tip/upstream status, and matching final-pushed-tip
+> CI remains pending before preview/human play.
 > No save-format or version change is involved.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay

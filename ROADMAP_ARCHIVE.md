@@ -6,6 +6,61 @@
 > working doc crossed ~285KB / 4,272 lines and stopped reading in one pass.
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
+## ══════════ ARCHIVED 2026-08-12 — exact `7d9980e` ticker-quiescence evidence batch ══════════
+## ══════════ Moved from ROADMAP.md verbatim during the `46fb627` exact-evidence refresh. ══════════
+
+One earlier smoke attempt correctly refused mixed-source evidence because tracked documentation
+changed while it ran (`source identity changed during slice smoke`). That single execution had no
+automatic retry and remains preserved as a coordination/instrument refusal, not a product failure.
+After the source was frozen, immutable executable/evidence source
+`7d9980e37e60f0cec8cb840e75098872b9cc90d0` validated the completed two-sided repair:
+
+- Product: Training restart, supported expedition import and the storage-health retry synchronously
+  claim one mutually exclusive replacement transaction, then share one explicit code-owned reload
+  path. It blocks ordinary persistence, removes renderer-density
+  listeners, destroys Pixi with global/child texture resources, detaches its view, shrinks both
+  application and backdrop canvases to at most 1×1, emits an optional CDP release witness, then
+  crosses one task boundary before `location.reload()`. It is deliberately not a generic
+  `pagehide` teardown, so browser-cache restoration cannot revive a destroyed application.
+- Harness: sticky event receipts independently bound a 20-second import/release, 5-second changed-
+  loader navigation commit and 20-second boot. Exactly one valid release witness must precede a
+  ready event from the exact new default top context/session/loader/token/URL; its browser-native
+  `performanceNow` must itself be below 20 seconds, and one at-most-2-second command confirms that
+  context. Old-context loss alone is not navigation, and tail readiness is not the separate 50 ms
+  answerability outcome. Bounded sticky Page/Runtime/Inspector/Network evidence diagnoses crash,
+  unreachable navigation, replacement exception and fatal document load. Controls
+  `replacement-document-loader-token-phase` and `reload-resource-release` reject stalled phases,
+  just-late boundary transitions, same-loader mutation, premature context loss, duplicate/invalid release, retained canvases,
+  unreleased renderer and over-budget backing pixels, with zero retries.
+
+Its exact clean sequential battery passed:
+
+- root preflight selftest and owned-CDP preflight passed, with only the expected Edge 151 versus
+  pinned Edge 150 drift warning; validate passed with the baseline fingerprint and root smoke passed;
+- root layout selftest passed; certifying run `exact-7d9980e-root-layout` passed all sealed 787/787
+  outcomes across 10/10 viewports and exact-run verification passed;
+- rarity completed 60M trials with 0 downgrades, and dead-code review found 3 tooling references;
+- v2 passed 24 test files / 273 tests with 1 skip and every type, art, override, coverage, spec and
+  instrument-selftest gate;
+- one-attempt `smoke:ci` passed with 0 findings / 10 screenshots; smoke, glass and persona evidence
+  share working-tree digest
+  `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`;
+- exact-source certifying glass passed 12/12 viewports and 52/52 controls with `omitted=[]`,
+  0 findings, 0 instrument failures and 0 retries. All 12 import-phase/release/ready paths passed;
+  replacement totals were 194–239 ms. Desktop-8k recorded a 3 ms bounded arm, 21 ms exact import-
+  phase span with the ticker true only at `invoked`, 0 ms primary write, 19 ms release, both
+  5,461×3,072 canvases collapsing to 1×1, `performanceNow` 199.5 ms, 1 ms confirmation and
+  239 ms total;
+- all 9 bounded automated personas passed, still explicitly not a human playtest;
+- the first performance command, malformed as `npm run perf -- --runs=4`, was rejected before a
+  browser launched. The correct single terminal-only run then recorded 646 ms painted / 726 ms
+  answerable / 74 ms press→panel / 157 ms rebuild; this was not a retry of an evidence failure; and
+- exact 37-file / 10,170,996-byte preview `dev-preview-exact-7d9980e` verified and browser-smoked
+  PASS under Edge 151 at 320×568 for expected origin
+  `https://dev-celestialfrontier.github.io`, distinct from production, content SHA-256
+  `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
+  `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, with `publishable: false`.
+
 ## ══════════ ARCHIVED 2026-08-12 — PR #11 evidence runs #199–#202 and launcher follow-on ══════════
 ## ══════════ Moved from ROADMAP.md verbatim; original span was lines 136–198. ══════════
 

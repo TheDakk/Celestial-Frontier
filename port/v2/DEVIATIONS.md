@@ -970,12 +970,12 @@ duplicates).
   Replacement totals were 194–239 ms; desktop-8k recorded a 3 ms arm, ticker true only at
   `invoked`, 21 ms phase span, 0 ms write, 19 ms release, both 5,461×3,072 canvases →1×1,
   `performanceNow` 199.5 ms, 1 ms confirmation and 239 ms total. One-attempt smoke passed
-  0 findings / 10 screenshots and all nine automated personas passed. `7d9980e` underlies the
-  forthcoming/current docs-only handoff tip; exact tip/upstream/check state is read live, and the
-  final pushed tip still requires matching green CI. The exact clean executable outcome closes
-  this implementation item; human play and release authority remain separate.
-- ★ **D-SAVE-3 — simultaneous full-viewport resources share one budget and boot wiring owns
-  ticker start (repair pending exact clean evidence, 2026-08-12).** Test-battery #204
+  0 findings / 10 screenshots and all nine automated personas passed. `7d9980e` remains immutable
+  prior evidence for D-SAVE-2; current handoff evidence is `46fb627` under D-SAVE-3 below. The exact
+  clean executable outcome closes this implementation item; human play and release authority remain
+  separate.
+- ✔ **D-SAVE-3 — simultaneous full-viewport resources share one budget and boot wiring owns
+  ticker start (closed in exact clean executable evidence `46fb627`, 2026-08-12).** Test-battery #204
   (`31612817092` / `94168172635`) completed once without retry at exact pushed
   `4cee7d807b8f9258e370aad31c30756269f95a96` and remains red. All earlier gates and
   `smoke:ci` passed. Desktop-8k's arm queued for 9,504 ms; import/write, 35 ms release,
@@ -994,15 +994,25 @@ duplicates).
   `ready-scheduled`, `ready-emitted` bind session/context/generation/origin/loader/token;
   ticker false-through-wiring/true-after and per-stage/deadline controls fail closed.
 
-  Stable dirty-source diagnostics at digest
-  `721418cb1b0cd258ffcd35e614401aba0d26951ea2d02866c6651e2d6cd7c896` passed
-  targeted 8K in 218 ms, smoke 0/10, certifying-shaped glass 12/12 and 53/53 with
-  `omitted=[]`, zero findings/instrument failures/retries in 193–214 ms, and nine
-  automated personas. Exact 8K was 214 ms total /1 ms arm /18 ms invoked→release /
-  1 ms write /178.7 ms ready /1 ms confirmation with all 12 stages and both
-  3,862×2,172 canvases; terminal performance was 637/723/77/157 ms. These are
-  non-authoritative until a clean executable commit, exact battery, push and matching
-  CI. Human play, Ready, merge, release, deployment and version authority remain open.
+  Immutable executable source `46fb627640e42ea0f43e2e144529884a959d1e72`
+  passed the exact local battery. One malformed `--verify-run` operator invocation
+  caused local SIGABRT/report overwrite; one correct rerun plus verification passed
+  `exact-46fb627-root-layout`, 787/787 across 10/10. V2 passed 273/1 and all
+  gates/selftests; one-attempt smoke passed 0/10. Full certifying glass at source-snapshot digest
+  `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`
+  passed 12/12, planned/executed 53/53, `omitted=[]`, zero findings/instrument
+  failures/retries in 170–197 ms. Exact 8K was 190 ms total: 2 ms arm, 35 ms
+  release→changed-loader commit, 137 ms commit→ready, `performanceNow` 170.5 ms,
+  1 ms confirmation, outgoing 3,862×2,172 canvases →1×1 and the replacement pair
+  at 16,776,528 combined pixels. Nine automated personas passed; terminal-only
+  performance was 595/676/76/168 ms. Exact manifest `dev-preview-exact-46fb627`
+  records 37 files /10,176,376 bytes, content SHA-256
+  `4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`, tree
+  `0d47d77a303244fd8ce325a5d2ec975dac0c86ca`, expected separate origin and
+  `publishable:false`. `46fb627` underlies a forthcoming/current docs-only tip;
+  live Git/PR checks decide exact tip/upstream state, and matching final-pushed-tip
+  CI remains pending. Human play, Ready, merge, release, deployment and version
+  authority remain open.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
@@ -1152,9 +1162,9 @@ duplicates).
   `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
   `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, expected separate origin,
   production distinct and `publishable:false`. Prior #201
-  remains red without retry. `7d9980e` is immutable prior evidence and does not certify #204;
-  exact tip/upstream/check state is read live. D-SAVE-3 requires a clean repair commit, exact
-  battery, push and matching CI, and the separate-origin human playtest remains open.
+  remains red without retry. `7d9980e` is immutable prior evidence; D-SAVE-3's current clean
+  evidence is `46fb627`. Live Git/PR checks decide exact tip/upstream state, matching CI for the
+  final pushed docs tip is pending, and the separate-origin human playtest remains open.
 
   Matching test-battery #202, run `31594595288` / job `94106996466`, completed once without retry
   at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53` and is **RED**. Every earlier root/
@@ -1175,10 +1185,10 @@ duplicates).
   malformed, wrong-context and just-late events fail closed. The ready event proves complete boot
   publication plus a serviced event-loop turn, not the separate 50 ms answerability metric.
 
-  The exact `7d9980e` battery above remains immutable evidence for that repair but predates #204
-  and does not certify D-SAVE-3. Its clean repair commit/battery/push/CI and the separate-origin
-  human playtest remain pending; human certification, Ready, merge, version, preview publication
-  and deployment boundaries are unchanged.
+  The exact `7d9980e` battery above remains immutable evidence for that repair; current D-SAVE-3
+  evidence is bound to clean executable source `46fb627` above. Matching CI for the final pushed
+  docs tip and the separate-origin human playtest remain pending; human certification, Ready,
+  merge, version, preview publication and deployment boundaries are unchanged.
   Earlier test-battery #203 (`31602984470` / `94134750800`) failed once without retry only
   in desktop-8k import before the release boundary: the old 5,461×3,072 Pixi ticker
   remained live while the durable write and teardown awaited service. The follow-on
@@ -1191,8 +1201,8 @@ duplicates).
   no timeout increase, retry, or IndexedDB timeout race is introduced. Before the exact clean
   evidence above, one mixed-source smoke execution correctly refused when tracked docs changed
   during its run; it had no automatic retry and was an instrument/coordination refusal, not a
-  product failure. That exact clean commit closes D-SAVE-2 only; D-SAVE-3 records #204 and the
-  aggregate-budget / explicit-start repair still awaiting clean exact evidence.
+  product failure. That exact clean commit closes D-SAVE-2; clean source `46fb627` closes the
+  local implementation/evidence side of D-SAVE-3 while matching final-pushed-tip CI remains open.
 - ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
   the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson
