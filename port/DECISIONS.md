@@ -9,7 +9,8 @@ instead, so the plan stays the reference it was delivered as and the decisions s
 > ## ⚠ DECIDED ≠ IMPLEMENTED
 >
 > Phase 0's deliverable is to **decide** the open design items, not to ship them. Every
-> decision below is **recorded now and implemented in the port**, not in a v1.8.x release.
+> decision below is **recorded now and will be implemented only in the port**, not in a v1.8.x
+> release. A recorded decision remains planned until its executable outcome and gates land.
 > Two reasons, and both matter:
 >
 > 1. **Implementing now would move fixtures that were just pinned.** A `voiceOf` change
@@ -23,6 +24,16 @@ instead, so the plan stays the reference it was delivered as and the decisions s
 >
 > If any of these should land in the live HTML build sooner, that is a separate, deliberate
 > call — and it means re-capturing the affected fixture in the same batch.
+
+---
+
+### Current catalogue-count erratum for the supplied master
+
+`PORT_MASTER_PLAN_v4.0.md` is intentionally immutable and twice uses “1,014-entry catalogue.”
+Current executable authority distinguishes **1,010 canonical kingdom-qualified identities** from
+**1,014 set-qualified compatibility routes**. Implementations, persistence IDs and completion
+counts use 1,010 identities; routing/parity coverage may report 1,014 routes. This current-layer
+erratum prevents the historical wording from creating four duplicate canonical records.
 
 ---
 
@@ -132,3 +143,74 @@ creature/biome presentation anyway with proper time budgeted. A/B evidence:
 | Desktop training rail overlap | ROADMAP 11 — decide desktop behaviour before the Phase 4 UI parity gate. |
 | Archetype economics | The reviewer's §2.3 addition — deep-engagement archetypes lose on both counters. Decision 1 above is a partial answer, not the whole one. |
 | Remaining old backlog | Triage into fix-before-port vs inherit-and-fix. |
+
+---
+
+## Decided 2026-08-13 (Nick) — exploration, ships, loot, companions and HD audio
+
+These are product-direction decisions. They are recorded now and implemented only through
+the staged gates in `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md`; they do not make the current
+Phase-4 slice feature-complete.
+
+### 7. Core progression — **CAPABILITY-BUILDING EXPLORATION**
+
+Celestial Frontier grows from a basic explorer into a universe-conquering expedition through
+materials, crafting, increasingly capable ships and wider reach. The useful comparison is the
+constructive exploration/building loop of Minecraft: learn a place, gather what it offers,
+build a capability, and use that capability to reach a qualitatively new place.
+
+### 8. Loot — **DETERMINISTIC EARNED ITEM INSTANCES**
+
+The equipment chase takes inspiration from Diablo and Path of Exile, but rewards are earned
+in play, source/ranges are transparent, and reload cannot reroll them. Stable item instances,
+provenance and exact-once reward receipts replace deeper use of legacy slot-scoped `equipAff`.
+Paid random rewards, hidden odds, expiring rewards and engagement-pressure rerolls are out.
+
+### 9. Creature ownership — **CATALOGUE SPECIES ≠ LIVING COMPANION**
+
+The port separates a discovered species record from owned living creature instances so two
+individuals can share a species while retaining their own nickname, lineage, XP, care,
+injury, bond, memories and assignment. Breeding/feeding/combat/dispatch target the individual;
+the catalogue discovery is not the consumable object. Finite Tame/Scavenge/Sample outcomes are
+the acquisition writers: every success creates/updates the catalogue identity, fauna Tame may
+create a living instance, and non-fauna verbs create specimens/resources.
+
+Normal v2 companion breeding is nonlethal. Both parent instances remain owned and enter a bounded
+active-play Recovery assignment that temporarily blocks breeding, combat and dispatch. The child
+inherits half of the lower parent's `fed` value, with reversed-parent vectors proving symmetry.
+Legacy v1 parent consumption remains historical behavior; any future irreversible Fusion is
+separately named, optional, expressly confirmed and never required for alien progression.
+
+### 10. Companion missions — **ACTIVE-PLAY, EXACT-ONCE, NONLETHAL BY DEFAULT**
+
+Companions may be dispatched on visible-risk missions and return with deterministic materials,
+gear, blueprints, lore and mementos. The receipt is sealed and persisted at dispatch, progress
+uses a dedicated persisted visible-and-answerable active-play millisecond clock rather than the
+wall clock or capped ecology epoch, and claim is transactional/idempotent. One repository lease
+advances time; every reward-bearing/destructive mutation—not claim alone—is revision checked.
+Dispatch does not permanently kill a bonded companion; any separately named irreversible
+combat mode requires explicit informed consent.
+
+### 11. Ship presentation — **MECHANICS AND SILHOUETTE SHARE ONE STATE**
+
+The Shipyard must visibly improve the vessel as real research/items land. A pure visual state
+uses the same reach selector as travel: four strongly readable chassis stages plus installed
+hardpoints, with an honest generic legacy-refit state for veteran chapter fallback. Art never
+awards progression and three views may not disagree about the ship.
+
+### 12. Audio — **FULL LOCAL HD IDENTITY, WITH HONEST BIOLOGICAL COVERAGE**
+
+Every kingdom-qualified Earth catalogue row receives an intentional sound mapping and every
+procedural/hybrid creature receives a recognizable deterministic profile. This means curated
+family palettes, synthesis and selectively licensed signature recordings—not scraping or
+claiming an authentic recording exists for every organism. Flora, fungi and microbes receive
+ecological/interaction sonification, not counterfeit animal calls. Combat, Guardians, ships,
+biomes and UI share a bounded accessible mixer. Profile/cue identity is deterministic; rendered
+PCM is not promised byte-identical across browsers/hardware.
+
+### 13. Player relationship — **MASTERY AND ATTACHMENT, NEVER DARK PATTERNS**
+
+The game may be deep, surprising and highly replayable. It must not create compulsion through
+streak decay, FOMO, punishment for taking a break, paid random rewards, hidden odds, expiring
+missions, energy sales or manipulative notifications. Bond grows from varied meaningful play,
+not attendance maintenance. Automated retention is never a release criterion.

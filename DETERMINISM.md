@@ -1,5 +1,30 @@
 # Celestial Frontier — Determinism Discipline
 
+> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** The hardened
+> `@cf/domain-sessionrng` service is currently a tested primitive only; no live v2
+> combat, loot, breeding or expedition action consumes/persists it. A browser
+> session seed that changes on reload is not sufficient reward authority because
+> it permits outcome rerolls.
+>
+> **PLANNED, not implemented:** player-action determinism uses a save-lifetime
+> uint32 seed plus isolated domain counters and monotonic ordinals. Dispatch and
+> combat advance their domain exactly once and persist `{schema,seed,ordinal}`
+> with the complete immutable receipt **before** revealing an outcome. Claim and
+> presentation consume that stored receipt; they never draw RNG. Loot instance ids
+> derive from the stable mission/battle id plus receipt ordinal, not from a base
+> item id or mutable clock. A fixed generation schema orders every table, item,
+> rarity, compatible-affix, tier and value draw so unrelated domains cannot shift
+> one another when content grows.
+>
+> Readiness uses persisted active-play duration, not `Date.now()` and not an
+> unverifiable offline interval. Combat transcript, cue tokens and reward mutations
+> are sibling outputs of one deterministic receipt, preventing animation timing or
+> replay from paying twice. Verification must prove same-seed replay, reload
+> stability, domain-order isolation and exact-once claim, then negative-control a
+> reset counter, claim-time roll, reordered draw, wall-clock advance and stale-tab
+> duplicate. These contracts are not part of the current fingerprint or Guide until
+> the gameplay and persistence consumers land.
+
 > **2026-08-11 v2 port overlay:** `@cf/domain-sessionrng` now requires uint32
 > session seeds/counters, 1–64 printable-ASCII domain names, prototype-safe
 > `Map` ownership, and a fail-closed counter-exhaustion boundary. Tests reject

@@ -1,5 +1,38 @@
 # Earth Lineage, Breeding & Replayability
 
+> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** Current lineage
+> code owns deterministic ancestry, Earth-scaffold inheritance and portrait
+> continuity; it does not yet provide v2 living-creature instances, expeditions,
+> bond or a Chronicle. The next arc must preserve the central player-respect law
+> below by separating `CatalogSpecies` discovery from stable `CreatureInstance`
+> ownership before any companion can leave the roster.
+>
+> **PLANNED, not implemented:** each creature instance carries a stable nickname,
+> lineage, assignment, bounded bond state and an append-only/bounded Chronicle of
+> meaningful memories such as first landing, first safe return, a notable battle,
+> discovery or offspring. Bond never decays, has no daily streak or expiring task,
+> and repeated low-effort actions cannot grind it indefinitely. Its mechanical
+> effects are small bounded sidegrades—roles, expressions, dialogue and traversal
+> specialties—rather than a mandatory power multiplier; any creature can train
+> any role. Expeditions cannot kill, delete, breed or replace the companion, and
+> an away/favorite guard is enforced below the UI. Normal v2 breeding likewise
+> preserves both living parent instances: child creation grants half the lower
+> parent's `fed` and atomically assigns both parents to a bounded active-play
+> Recovery that blocks breeding, dispatch and combat until complete. Legacy v1
+> parent consumption remains historical parity only. Any future irreversible
+> **Fusion** is separately named, optional, informed-confirmed and never required
+> for progression. The Chronicle must reference stable creature/world/mission ids
+> and remain valid across rename, reload and catalogue deduplication. These are
+> design contracts only and remain unavailable in the v2 Guide until implemented
+> and outcome-tested.
+>
+> A later **Expedition Museum** is a player-curated, read-only projection over those
+> receipt-backed Chronicle memories, named lineages, selected mementos and world records.
+> It does not own a second unbounded history, add a reward faucet, or ask players to keep a
+> companion active through streaks or expiring tasks. A companion's story must remain its
+> story after a rename, a migration or catalogue deduplication; the Museum may reference the
+> stable IDs but never becomes the identity authority.
+
 _Design north star + build status. Matches code as of 2026-08-11 (Platinum repair reviewed).
 Companion to `ART_DIRECTION.md` and `PROCEDURAL_CHARACTERISTICS.md`._
 
@@ -55,7 +88,10 @@ The central rule (Nick): **never make the player choose between keeping a belove
 Earth creature and participating in the alien progression system — the game lets
 them do both.** Earth life gives recognizable ancestry & attachment; pure alien
 life gives surprise & evolutionary possibility; breeding connects the two without
-making either obsolete.
+making either obsolete. The planned v2 implementation makes that literal: normal
+breeding never consumes either living parent; its disclosed, bounded Recovery is a
+temporary assignment, not loss. Irreversible Fusion, if it ever exists, is an
+optional named side mode and not an alien-progression gate.
 
 ## Three creature origins
 
@@ -125,10 +161,16 @@ Status: ✅ built · 🔶 partial · ⬜ backlog. Ordered roughly by value.
 ### Attachment & progression (§§9, 11–13)
 - ⬜ Named bloodlines · lineage history (ancestors, worlds, mutations, offspring).
 - ⬜ Lineage archive / genetic vault / family tree (retired creatures preserved).
+- ⬜ Bounded Companion Chronicle plus player-curated Expedition Museum: receipt-backed
+  firsts, returns, discoveries and mementos stay referentially correct across rename,
+  migration and duplicate catalogue species; neither surface is a reward faucet or
+  retention-pressure dashboard.
 - ⬜ Signature-trait stabilization (a favored trait passes more reliably).
 - ⬜ Role specialization (scout/harvest/traversal/…) so non-combat lineages matter.
 - ⬜ Collection goals: family mastery, genetic collection (colors/heads/tails/eyes).
-- ⬜ Breeding risk/tradeoffs + no-dead-end recovery (samples, backcross, restoration).
+- ⬜ Implement non-consuming normal breeding, half-lower-parent `fed` inheritance,
+  bounded active-play Recovery and reversed-parent outcome vectors; keep any
+  irreversible Fusion optional, separately named and outside progression.
 
 ### Replayability (§8) & world (§14)
 - 🔶 Discoverability breadth — vagrant is one channel; add seasonal/biome-band

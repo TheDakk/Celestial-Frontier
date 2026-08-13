@@ -1,5 +1,33 @@
 # Celestial Frontier — Breeding & Sharing
 
+> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** Breeding,
+> feeding, creature ownership mutations and companion dispatch are not live in
+> the current v2 slice; their Guide topics correctly remain **Unavailable**.
+> Legacy v1.8.9 stores species discovery and a living owned specimen in the same
+> Codex row, so deleting/consuming that row also erases the only identity available
+> for XP, injury, fed state, naming and ancestry. That representation cannot safely
+> support duplicates, stable attachment or an away companion.
+>
+> **PLANNED, not implemented:** persistence separates immutable/discovery-facing
+> `CatalogSpecies` (`speciesId`, genome identity, first-seen provenance) from
+> owned `CreatureInstance` (`creatureId`, `speciesId`, genome, nickname, origin,
+> XP, injury, fed/brood, bond, lineage and assignment). Share codes continue to
+> describe reproducible genome/species content; ownership, bond and assignment
+> never ride an ordinary challenger code. A dispatched instance is command-layer
+> locked against feed, breed, conquest, sharing/deletion and a second dispatch;
+> every consumer checks the assignment, not merely button visibility. Dispatch is
+> nonlethal and recall-before-ready is always safe. **Normal v2 companion breeding
+> is also nonlethal and non-consuming:** both parent instances remain owned, the
+> child receives half the lower parent's `fed`, and the same atomic transaction
+> places both parents into a bounded active-play **Recovery** assignment. Recovery
+> blocks breeding, dispatch and combat until complete; the duration is disclosed
+> before confirmation and never advances from wall time. The legacy v1.8.9
+> parent-consumption rules documented below remain historical current-v1 truth,
+> not the planned companion contract. Any future irreversible **Fusion** must be a
+> separately named, optional, informed-confirmed mode and can never be required for
+> progression. Bond and Chronicle memories reward varied shared firsts, never
+> timers, streaks, decay or repetitive farming.
+
 > **2026-08-11 v2 port sharing overlay:** A CF1 planet destination no longer
 > enters surface mode or pays landing outcomes by navigation alone. After the
 > charter check, the route must name a real member of the declared system; the
@@ -58,7 +86,9 @@ a child of an Earth parent keeps that parent's Earth RIG + wears the child's ali
 Two coupled systems:
 
 - **Husbandry** — three flows over one picker (`openPicker`, ~L11946):
-  - **Breed** (`breedPair`, ~L11845): pair two same-kind creatures into a hybrid bloodline; **both parents are consumed win or lose**.
+  - **Breed** (`breedPair`, ~L11845): legacy v1.8.9 pairs two same-kind creatures
+    into a hybrid bloodline; **both parents are consumed win or lose**. This is
+    historical parity, not the planned non-consuming v2 companion rule above.
   - **Feed** (`feedPair`, ~L11893): feed a flora to a fauna for permanent bloodline growth; **the flora is always consumed on eat**; a toxic roll wounds (or kills) the beast.
   - **Heal** (`healExplorer`, ~L12181): the player eats a flora to restore HP and permanently grow one battle stat; **flora consumed**; a toxic roll wounds the player but **never kills** them.
 - **Sharing / codes** — deterministic, paste-anywhere strings:
@@ -161,9 +191,15 @@ the roll"; the range itself was wrong.
 **Now:** the band is computed from stats with `fed` stripped from both parents, and when either
 parent carries `fed` the card says so outright — *"fed bloodline does not carry over"*.
 
-⏳ **OPEN DESIGN QUESTION (Nick's call, not changed):** *should* a child inherit some `fed`?
-`brood` is summed, so the inconsistency is real. It interacts with the `fed` ceiling added in the
-same release (see PROGRESSION.md). Deliberately left alone rather than changed quietly.
+**PLANNED V2 DECISION (Nick, authoritative; not implemented):** the child inherits
+**50% of the LOWER parent's `fed`**. Legacy v1.8.9 still starts the child at zero,
+so its current preview remains correct for that build; v2 changes the outcome and
+preview together when living-instance breeding lands. The resolver clamps both
+inputs to `0..200`, computes `0.5 × min(parentA.fed,parentB.fed)` once inside the
+child-creation transaction, and is parent-order invariant. Required reversed
+vectors include `80/30 → 15` and `30/80 → 15`, `200/50 → 25` and `50/200 → 25`,
+plus `0/200 → 0` in both orders. No preview-only calculation may become a second
+authority.
 
 ---
 

@@ -6,8 +6,9 @@ extraction, cosmic gear — are now **IMPLEMENTED** (2026-07-23); the **authorit
 **Relationship to v1.6:** v1.6 "The Living Frontier" (the painterly art overhaul) shipped first. This
 arc extends the same painterly engine + ARPG presentation from *living* things to the **made** things
 (gear, materials, the ship) and reworks **world rarity into a landing discovery**.
-**Matches code as of:** 2026-07-23 — core proposals implemented in v1.7 source; see
-`MATERIALS_AND_GEAR.md` for the spec of record.
+**Legacy status verified:** 2026-08-13 — core proposals are present in the v1.8.9 source;
+see `MATERIALS_AND_GEAR.md` for the spec of record and the dated overlay below for the
+separate v2 boundary.
 
 > **2026-08-13 v2 presentation decision:** the original discovery rationale is now the
 > binding port behavior. V2 never renders a survey row titled **Spectral class**. A
@@ -20,6 +21,28 @@ arc extends the same painterly engine + ARPG presentation from *living* things t
 > Spectral-class survey row. The older
 > world-only ladder and “remove star rarity” passages below are preserved as superseded
 > design history, not current v2 instructions.
+
+> **2026-08-13 v2 next-arc overlay — approved design, not current implementation:**
+> Legacy v1.8.9 already gives one deterministic scout hull additive Jump Drive, Array,
+> Intergalactic Drive, Auto-Extractor and Corona Scoop details. V2 currently has none of
+> the Cargo, Shipyard, crafting/research, upgrade or ship-art surfaces, so the older art is
+> precedent rather than a live port feature. The approved port derives one pure
+> `ShipVisualState` from the same normalized item/`ascCh` facts used for reach: four
+> silhouette-readable chassis (Scout/Chemical → Jump/Interstellar → Array/Survey Cruiser
+> → Intergalactic/Frontier), with extractor and scoop as optional hardpoints. The legacy
+> completed-`ascCh` fallback maps to an honest veteran refit when drive items are absent;
+> visuals never award or revoke reach.
+>
+> Shipyard begins with deterministic static composition and may own one bounded Pixi
+> preview for motion. That preview pauses hidden/reduced-motion and disposes its textures,
+> filters and particles on close. The adjacent collection/inventory asset law is equally
+> strict: virtualize the possible 1,500 creature rows, deliver asynchronous 132px
+> thumbnails, reserve the 440px master for detail, and require a repeated-cycle browser
+> memory plateau with a failing unbounded/no-disposal control. The player-facing ladder
+> teaches mastery through readable capability—each chassis says what exploration power
+> was earned, each hardpoint says what optional tool was built, and rarity/cosmetics never
+> pretend to be mechanical strength. These are approved next-arc constraints, not release
+> notes or claims about the current development build.
 
 The arc has two headline pillars plus supporting streams:
 
@@ -173,7 +196,8 @@ Extend the [[celestial-frontier-hd-engine-law]] to the made things.
   (144px+ masters, proof-sheeted), retiring the emoji/simple `partIcon`/`elemIcon` art.
 - **Ship progression art:** the ship already gains each built system; deepen this into **discrete
   painterly hull tiers** that read as a real glow-up as you build outward and progress — not just
-  bolt-ons. Ship "pictures upgrade as you progress."
+  bolt-ons. Ship "pictures upgrade as you progress." Here, “already” refers to the legacy additive
+  `shipImage()` implementation; the distinct v2 silhouettes and their lifecycle remain open.
 - All render-only → **fingerprint-safe** (layers on after the Pillar-1/2 re-pin, with no further
   determinism risk).
 

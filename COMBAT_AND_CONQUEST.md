@@ -1,7 +1,75 @@
 # Celestial Frontier — Combat & Conquest
 
-**STATUS:** legacy mechanics match `main.js` as of 2026-07-31; the v2
-type-contract overlay below matches `port/v2` as of 2026-08-11. The `size` arc CLOSED in v1.8.9 — see the 2026-07-31 addendum; all six readers now share one helper and the fingerprint held.
+> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** The v2 port
+> currently has executable `battleStats`/`runDuel` parity contracts but no live
+> duel, conquest, Guardian encounter or reward action. Legacy v1.8.9 remains the
+> current mechanics authority: it deterministically resolves the fight, then
+> app-layer code separately performs cues, wounds, Compendium changes, Stardust,
+> XP and the single-slot conquest affix. One known legacy bug remains: ordinary
+> conquest-loss +3 XP and near-break +5 XP use the same
+> `conqloss:<planetSeed>` first-award key, so the +3 award forecloses the intended
+> +5 upgrade. The port must use distinct base/upgrade keys or a stored maximum
+> with a delta, and outcome-test both event orders.
+>
+> **PLANNED, not implemented:** one immutable `CombatReceipt` binds battle id,
+> schema, combatant identities, deterministic seed/ordinal, complete transcript,
+> outcome, cue tokens and every reward/wound/ownership mutation. Presentation
+> consumes transcript → cues; persistence consumes the same receipt → rewards,
+> exactly once. A Guardian receipt also carries its one-time deterministic
+> authored `GearInstance`/material reward and capture result; the conquered-world
+> guard remains the anti-farm authority. This receipt must be committed before a
+> result is revealed and survive reload without rerolling or replaying rewards.
+> Companion dispatch is a separate, explicitly nonlethal system: **no dispatch
+> permadeath**. Existing conquest risk may remain only as an informed, separately
+> chosen action. Combat, conquest and Guardians stay **Unavailable** in the v2
+> Guide until the real controls and reward outcomes exist.
+
+**STATUS:** legacy mechanics reverified against `celestial-frontier.html` on
+2026-08-13; the v2 type-contract overlay remains planned, not implemented. The
+`size` arc CLOSED in v1.8.9 — see the 2026-07-31 addendum; all six readers now
+share one helper and the fingerprint held.
+
+## 0. v2 combat decision and counterplay contract (approved, not implemented)
+
+The current deterministic resolver is a useful event source, but it is **not yet
+a combat decision model**. A battle screen must never turn a resolved stat
+comparison into a theatrical set of buttons that do not change the receipt. Before
+shipping a v2 duel, field mission, conquest, or Guardian UI, define and prove this
+player loop:
+
+1. **Read:** a dossier states the encounter's visible hazard/role signals, stakes,
+   possible reward family, and the basis of its forecast. It may use only facts
+   derived by the real resolver or disclosed authored encounter rules; it must not
+   invent a type advantage, hide a scripted immunity, or claim certainty from a
+   sample estimate.
+2. **Prepare:** the player chooses a real champion/party, equipment and any
+   supported role/loadout inputs. Each shown threat has at least one legible
+   preparation response and an accompanying trade-off. Candidate interactions
+   already visible in the legacy transcript include initiative/openers, control,
+   evasion, mitigation versus shred, sustain, burst and execution; no label becomes
+   a v2 mechanic until its exact modifier, reader and counter are authored together.
+3. **Commit:** the exact selected inputs, seed/ordinal, encounter identity and
+   disclosed risk are sealed into the `CombatReceipt` before resolution. If a future
+   encounter offers no meaningful choice beyond a champion, it presents an honest
+   champion decision rather than fake tactics.
+4. **Learn:** the result replays the transcript in player language—what happened,
+   which prepared response mattered, and why the reward/injury settled. It cannot
+   roll a second visual, audio, XP or loot outcome.
+
+Counterplay is a readability promise, not a demand for an overloaded action bar:
+the player must be able to name one plausible response to the visible danger and
+understand what that response gives up. A stronger general build may still win, and
+a correct response may still carry risk, but a loss may not be caused by a hidden
+rule or a control whose state never reaches the resolver.
+
+**Required proof before combat UI:** a decision matrix binds every displayed threat,
+response, affected resolver input and trade-off; outcome tests drive the real
+selection/commit path; a deliberately disconnected option fails; transcript/reward/
+injury receipt replay is exact after reload and stale-tab conflict; and human players
+can explain their choice and the outcome without reading developer documentation.
+Party roles, encounter phases and Guardian-specific rules remain design work, not
+current v2 Guide capability.
+
 **Purpose:** How creatures fight — the stat budget, seeded duel resolution, innate arts (classes + archetypes), and named Apex Guardians — and how conquest settles a world: the mercy law, re-win prevention, and the depth tax that grades every field wound by distance.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/combatcore` owns the dated port contract.
@@ -22,7 +90,8 @@ for fauna, always-on **class** innates). Two combatants run a fully **seeded**
 duel (`runDuel`) — same seeds, same fight, every time. Conquest fields a champion
 (you, or a Compendium fauna) against a world's **apex native**: an elemental
 Titan, a named **Apex Guardian**, or the world's strongest wild fauna. Win and the
-world is settled (safe bioscans + hourly Stardust); lose and the **mercy law**
+world is settled (safe bioscans + Stardust after two persisted active-play
+epochs); lose and the **mercy law**
 decides whether your champion crawls home wounded or is lost forever. Field wounds
 outside battle are graded by the **depth tax** — near-certain survival at home,
 genuinely biting at the Frontier.
@@ -43,7 +112,7 @@ size:  s[0] += size*4;  s[3] = max(6, s[3] - size*2)   // bigger = more vitality
 diet:  s[1] += min(10, diet*2)                          // ferocity
 bonus: (brood*22 + fed*10) spread evenly across all 5   // bred bloodlines + well-fed beasts
 _mult: if >1, s[i] = round(s[i] * _mult)                // region/titan scaling (app-layer)
-_wf:   world-field ×1.12 on one stat (DEFENDERS ONLY)   // lava→fer, ice→res, gas→agi, ocean→vit, desert→ins
+_wf:   defender field: lava/ice/gas/desert ×1.12; ocean vitality ×1.10
 hurt:  s[i] = max(4, round(s[i] * (1 - min(0.85,hurt)*0.55)))   // persistent wounds bite
 ```
 Returns `{vit, fer, res, agi, ins, tier, total, hex, name, cls, lvl, ab}`.
@@ -53,7 +122,7 @@ byte-identically to the v1.0 baseline (the fingerprint stands).
 ### 2.2 Abilities — `abilityOf(g)` + class innates
 - **`abilityOf(g)`**: picks a themed art from `ABILITY_THEMES[abilityTheme(g)]` or an `ARCHETYPES` entry via `hashInt(seed,0xAB1,5) % POOL`. Magnitude `m = clamp(floor(tier/3), 0, 4)` → I–V. Hybrids (70%) inherit the *other* parent's archetype. **Apex** genomes get a "Sovereign" art at full magnitude (m=4) plus a flat `taken ×= 0.90` (a guardian's hide turns a tenth of all harm).
 - **Class innates** (`classKit(g)`, fauna only): each fauna rolls a **class** (`classOf`, rarity-gated by the class's `minTier`). A class supplies up to three always-on innate **hook** bundles from `ARCHETYPES`. Slots open with level: `n = 1 + (lvl>=3) + (lvl>=6)`. Hooks merge into `ab` in `battleStats` (`dmg`/`taken`/`first` multiply; booleans OR; numbers add). **Levels add hooks, never raw stats** — power comes through wins.
-- **`levelOf(g) = min(9, floor(sqrt(max(0,xp)/6)))`** — quadratic (6·l²): L3 ≈ 7 wins, L6 ≈ 27, L9 ≈ 61. XP awards: duels **+8**, conquests **+20** (+ world tier), guardians **+60**.
+- **`levelOf(g) = min(9, floor(sqrt(max(0,xp)/6)))`** — quadratic (6·l²): L3 ≈ 7 wins, L6 ≈ 27, L9 ≈ 61. XP awards: duels **+8**, conquests **+20 + world tier**, guardians **+60 + world tier**.
 
 ### 2.3 `runDuel(mine, theirs)` — seeded resolution
 ```
@@ -64,7 +133,7 @@ maxA/B = vit*3;  hpA=maxA, hpB=maxB;  first turn = higher agi
 Per strike (attacker `att`, defender `def`):
 - **shock/stun**: a staggered fighter loses its strike (`skip`).
 - **dodge** (`def.ab.dodge`, camouflage): defender slips the blow entirely.
-- **crit**: `r() < att.ins/420 + att.ab.critB` → damage ×1.7.
+- **crit**: `r() < min(0.95, att.ins/420 + att.ab.critB)` → damage ×1.7.
 - base damage: `att.fer*(1+ramp)*(0.8+r()*0.5) - def.res*0.45`.
 - **strike/ability fields** (all guarded so legacy sets consume the identical rng):
   - `dmg` (smite) ×, `taken` (aegis) ×, **`first`** (ambush) × on the opener only (`fs`),
@@ -73,7 +142,12 @@ Per strike (attacker `att`, defender `def`):
   - `cap` (bulwark — caps any single blow), `thorns` (bleeds attacker), `stun` (staggers next strike),
   - `drink` (thirst — lifesteal on crit), `dbl` (echo — a second strike some rounds).
 - Round-end ticks: `regen` (mend), `ramp` (fury builds), `burn` (affliction DoT).
-- Cap: **26 rounds**. Winner: whoever drops the other to 0, else higher remaining HP fraction (double-KO → `null`).
+- Cap: **26 rounds**. Winner: whoever drops the other to 0, else higher
+  remaining HP fraction. An exact surviving-fraction tie uses the seeded
+  combatant-seed coin
+  `(hashInt(hashInt(mine.genome.seed>>>0,0x9E37,0x71EB),
+  theirs.genome.seed>>>0,0x85EB)>>>9)&1`; it is never handed to one side by
+  `>=`. A double-KO remains `null`.
 
 ### 2.4 Apex Guardians — `guardianFor(pseed)`
 ```
@@ -99,7 +173,7 @@ Priority: **Titan** (elemental, `_mult = 1.15 + region*0.03`, wears its element 
 2. Picker lists you (`playerCombatant`) + all Compendium fauna. **Odds come from `trueOdds(champ, native, 160)`** (v1.8, closing CF1715-09): 160 seeded `runDuel` replays with the pairing seed varied per sample, memoised per matchup (cache cleared past 400 entries), returning `{p, close, n}`. `oddsBand(p)` maps it to **Favored ≥0.75 · Even ≥0.45 · Dangerous ≥0.15 · Overwhelming**, and `oddsWhy` names up to three deciding factors. The old `winEstimate` (`A.total/(A.total+B.total)`, clamped 0.05–0.95) survives **only as the `catch` fallback** — an external audit found it disagreed with the true band in **113 of 120** matchups.
    - **Presentation (v1.8.3):** `_oddsPct` prints **`<1%`** and **`>99%`** rather than a rounded 0% or 100% — 160 samples cannot distinguish 0 from ~0.6%, and an absolute claims certainty the estimate does not have.
 3. `runConquestBattle` runs `fightNow(champ, native)`; `onResolve`:
-   - **Win**: `conquered.set(planetSeed, {t:0, tier})`, `gameEvent('conquest')`, a 40%-chance **loot affix** on a worn item, guardian → stored to Compendium, titan → `claimSignature`, Stardust `sd = 8 + tier*5 + (guardian?40:0)`, XP (`guardian?60:20 + tier`). A champion that won at **<55% HP** takes a scar: `hurt += (0.55-frac)*0.7`, capped 0.85.
+   - **Win**: `conquered.set(planetSeed, {t:0, tier})`, `gameEvent('conquest')`, a 40%-chance **loot affix** on a worn item, guardian → stored to Compendium, titan → `claimSignature`, Stardust `sd = 8 + tier*5 + (guardian?40:0)`, XP **`(guardian ? 60 : 20) + tier`**. A champion that won at **<55% HP** takes a scar: `hurt += (0.55-frac)*0.7`, capped 0.85.
    - **Loss**: see the mercy law (§2.7).
 
 ### 2.7 The Mercy Law (loss handling)
@@ -144,7 +218,9 @@ flora:   [1.3,  0.6,  1.45, 0.4,  1.25]
 fungi:   [1.1,  0.75, 1.1,  0.65, 1.4]
 microbe: [0.75, 0.95, 0.75, 1.55, 1.0]
 ```
-Budget `= 170 + tier*38 + floor(r()*30)`. World-field bonus `×1.12` (defenders).
+Budget `= 170 + tier*38 + floor(r()*30)`. Defender world fields multiply lava
+Ferocity, ice Resilience, gas Agility and desert Insight by `1.12`; ocean
+Vitality is the deliberate `1.10` exception.
 Hurt penalty `×(1 - min(0.85,hurt)*0.55)`.
 
 **`GUARDIAN_EPITHETS`** (16, indexed by `g.ep`):
@@ -158,13 +234,20 @@ Guardian tiers: 12 Empyrean (70%) / 13 Eternal (25%) / 14 Omnipotent (5%); spawn
 
 **`ARCHETYPES`** (17 innate arts; `mk(m)` gives magnitude I–V): smite (`dmg`), aegis (`taken`), dot (`burn`), fury (`ramp`), ambush (`first`), eye (`critB`), veil (`dodge`), mend (`regen`), echo (`dbl`), thirst (`drink`+`critB`), thorns (`thorns`), rend (`shred`), reck (`execB`), bulwark (`cap`), shock (`stun`), roulette (`gambit`), enrage.
 
-**Conquest math**: crit `ins/420 + critB`, ×1.7; base `fer*(1+ramp)*(0.8+r()*0.5) - res*0.45`; reckoning triggers under 50% HP; 26-round cap; HP = `vit*3`.
+**Conquest math**: crit `min(0.95, ins/420 + critB)`, ×1.7; base
+`fer*(1+ramp)*(0.8+r()*0.5) - res*0.45`; reckoning triggers under 50% HP;
+26-round cap; HP = `vit*3`; an exact surviving-fraction tie uses the nested
+seeded combatant-seed coin described in §2.3.
 
 **Creature condition** (`creatureCondition`): <0.05 Healthy · <0.3 Bruised · <0.6 Injured · ≥0.6 Critical (0.85 = the mercy floor).
 
 ## 4. Data / save fields
 
-- **`conquered`** — `Map<planetSeed, {t, tier}>`; `t` = last harvest time (0 at settle → immediately harvestable after `HARVEST_CD`), `tier` = world tier for yield. Presence = "held" (blocks re-conquest; makes bioscans safe).
+- **`conquered`** — `Map<planetSeed, {t, tier, e?}>`; `e` is the authoritative
+  `COSMIC_EPOCH` of the last harvest, and absence is the deliberate one-time
+  ready migration. `tier` drives yield. `t` is retained legacy timestamp/clamp
+  data and does not gate readiness. Presence = "held" (blocks re-conquest;
+  makes bioscans safe).
 - **`g.hurt`** — persistent wound 0..0.85 on a genome; drives `battleStats` penalty and `creatureCondition`. **Stripped from shared codes** (`normGenome` deletes `hurt`/`xp`/`_mult`/`_wf`) — challengers arrive fresh.
 - **`g.xp`** — win-fed; `levelOf` derives level. Exhibit codes may carry a clamped level (`o.x`) for showcase only (`decodeCreature` sets `exhibit:true`, never owned/breedable).
 - **`g.apex`** — guardian/titan tier band (12–14); `g.ep` = epithet index; `g.brood`/`g.fed` = breeding/feeding bonuses; `g._cradle` = Earth-starter flag.
@@ -175,7 +258,13 @@ Guardian tiers: 12 Empyrean (70%) / 13 Eternal (25%) / 14 Omnipotent (5%); spawn
 
 - **Seeded, replayable**: `battleStats` (`mulberry32(seed^0x57A7)`), `runDuel` (`mulberry32(hashInt(seedA,seedB,0xD0E1))` — **no `Math.random`**, so a given matchup always plays out identically), `guardianFor`, `apexNative` scaling, `abilityOf`, `classOf`/`classKit`. This is part of the seeded law the 49/50-probe fingerprint guards.
 - **Guarding for the baseline**: `hurt`, `_mult`, `_wf`, `brood`, `fed`, and class-hook merges are all behind guards so an unmodified genome computes byte-identically to the v1.0 baseline. Never regenerate the baseline to pass — a mismatch means real behavior changed.
-- **Non-deterministic (intentional, app-layer)**: which candidate you field, loot-affix *trigger* uses seeded rolls (`mulberry32(hashInt(planetSeed,0x5901/0x5902,…))`) so the spoils are deterministic per world; conquest *outcome* is deterministic given champion + native. The one clock input is `HARVEST_CD` timing and `COSMIC_EPOCH`, neither of which feeds generation.
+- **Non-deterministic (intentional, app-layer)**: which candidate you field,
+  while the loot-affix *trigger* uses seeded rolls
+  (`mulberry32(hashInt(planetSeed,0x5901/0x5902,…))`) so the spoils are
+  deterministic per world; conquest *outcome* is deterministic given champion +
+  native. Harvest readiness uses `COSMIC_EPOCH` and `HARVEST_EPOCHS = 2`;
+  `HARVEST_CD` is vestigial load/display-clamp data and gates nothing. Neither
+  clock value feeds generation.
 
 ## 6. Code anchors (functions + ~line numbers)
 
@@ -193,7 +282,11 @@ Guardian tiers: 12 Empyrean (70%) / 13 Eternal (25%) / 14 Omnipotent (5%); spawn
 
 - **Conquered can't re-win** — enforced twice: `conquerPlanet` early-returns "You already hold this world." on `conquered.has(planetSeed)` (~L13183), and `guardianFor` / the conquest card are skipped for held worlds so a fallen guardian never re-appears. Settled worlds switch to the Harvest button. Verified.
 - **Mercy is bred-lineage only, once per mend** — the `_bred` regex (`/\(bred\)/`) plus the `!_wasCritical` gate close the reroll-farm and lose-to-heal seams; wild-born hybrids are deliberately excluded. Verified in `onResolve` loss branch.
-- **Both breed parents consumed** — `breedPair` removes both parents win or lose (~L11856); relevant because a bred champion lost to conquest is gone unless the mercy law spares it.
+- **Legacy v1.8.9 consumes both breed parents** — `breedPair` removes both parents
+  win or lose (~L11856); relevant because a legacy bred champion lost to conquest
+  is gone unless the mercy law spares it. Planned v2 normal companion breeding is
+  non-consuming and uses bounded Recovery; this invariant remains current-v1
+  parity, not the future companion rule.
 - **Rare-find stardust only for genuinely-new species** — a fallen guardian only pays its Compendium reward / cinematic when `_storeSpecies` actually stores it (new); cross-ref CAPTURE_AND_BIOSPHERE §7.
 - **Depth-tax comment drift** — the ×2.2 in the header comment predates the six-rung array; treat `DEPTH_TAX[5] = 2.5` as truth. Flag for a comment fix on the next combat pass (docs-only; no code change here).
 - **Pending/uncertain**: `_mult` region scaling for titans (`1.15 + region*0.03`) vs guardians/natives (`1 + region*0.14`) is a first-pass balance ("confirm the win rate by playtest/deep-sim" per the code comment) — the numbers may shift; this doc tracks current values, not a frozen balance target.

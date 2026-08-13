@@ -5,6 +5,28 @@
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 overlay matches code and live handoff as of 2026-08-13.**
+> **2026-08-13 exploration/ship/loot/companion/audio review:** The executable v2
+> boundary remains the Phase-4 travel/survey slice. `apps/game/src/main.ts` renders the
+> read-only Compendium through `@cf/art/species`, consumes `@cf/domain-combatcore`
+> battle stats for specimen detail, and uses only the lifted whoosh/survey stings from
+> `@cf/audio`. `@cf/persistence` round-trips legacy cargo/items/equipment/affix/tech/
+> creature fields, but Inventory, Shipyard, mining/crafting, item-instance loot,
+> breeding/care, live combat/Guardians and companion missions have no v2 command owner.
+> The current Guide correctly keeps those capabilities unavailable.
+>
+> The approved ownership graph is specified in
+> `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md`: catalogue species split from living
+> `CreatureInstance`; stackable definitions/materials split from `GearInstance`;
+> `ShipVisualState` is a pure projection of the same normalized reach state used by
+> travel; companion mission loot is an immutable dispatch-time receipt claimed once
+> through revisioned persistence; audio resolves a versioned profile/cue plan without
+> consuming simulation RNG. These are planned module boundaries, not current exports.
+> Before adding content scale, virtualize the 1,500-entry Compendium, swap mounted rows
+> to true 132px thumbnails, bound decoded pixels/jobs/resources, and prove ordinary
+> Canvas/Pixi transitions plateau. The present one-blob, last-writer-wins repository is
+> insufficient for two-tab exact-once claims and must gain compare-and-swap or one
+> authoritative serialized coordinator.
+>
 > **2026-08-13 branch publication overlay:** `.github/workflows/test.yml` runs the exact
 > battery for push events on both `main` and `develop`. Only a successful push battery can
 > trigger `.github/workflows/publish-branch-sites.yml`, which checks out that event's full SHA
@@ -911,10 +933,14 @@ Trait arrays drive description & art: `FA_HABITAT`, `FA_LOCO`, `FA_BODY`, `FA_SK
 `ecologyRole`, `realmModifiers`.
 
 ### Art
-`speciesPortrait(g)` renders per-kingdom SVG art (microbe = cell cluster, flora =
-stalk+fronds+bloom, fungi = mushrooms, fauna = assembled anatomy). Cached in
-`speciesArtCache` (**capped at 1,200** with eviction). Reveal cards show a **biome-colored
-glow** behind the portrait (ability-theme color for fauna, nourished-stat color for flora).
+`speciesPortrait(g)` renders per-kingdom painterly **Canvas** art (microbe = cell cluster,
+flora = stalk+fronds+bloom, fungi = mushrooms, fauna = assembled anatomy). The full portrait
+LRU is device-capped at **96 on phones / 256 otherwise** and the separate 132px thumbnail LRU
+is capped at **600**; `pagehide` clears only the full portrait LRU today. The first cold thumbnail call still returns the
+440px source while its asynchronous downscale is produced, which is why current v2 planning
+requires virtualization and a completed-thumbnail replacement path. Reveal cards show a
+**biome-colored glow** behind the portrait (ability-theme color for fauna, nourished-stat color
+for flora).
 
 ### Rarity grades
 The player-facing `RARITY_V17` ladder has ten grades: **Common, Uncommon, Notable,
@@ -1075,7 +1101,7 @@ live by `syncTopbarH` + ResizeObserver):
 | Element id | What |
 |---|---|
 | `#panel` | Survey card (scrollable; bookmark row; conquer/share buttons; "locked" pin hint at top-left). |
-| `#sheet` / `#sheetcard` | **v1.5 THE CHARACTER SCREEN** — centered overlay (z 24) holding three regions: `#sheetstats` (contains `#stats`), `#doll` (full-body `paperdollAvatar()` + 9 sockets absolutely positioned via `DOLL_ANCHORS` + ship thumb + picker + effect readout), `#sheetcargo` (contains `#cargo`). `openSheet(view)`/`closeSheet()`; `statsOpen`/`cargoOpen` mirror `sheetOpen` for legacy callers. One PANELS entry (`id:'sheet'`, btns `#rank,#cargobtn`); ✕ seated on open. Mobile stacks doll → stats → cargo. |
+| `#sheet` / `#sheetcard` | **v1.5 THE CHARACTER SCREEN** — centered overlay (z 24) holding three regions: `#sheetstats` (contains `#stats`), `#doll` (full-body `paperdollAvatar()` + 9 sockets absolutely positioned via `DOLL_ANCHORS` + picker + effect readout), `#sheetcargo` (contains `#cargo`). `openSheet(view)`/`closeSheet()`; `statsOpen`/`cargoOpen` mirror `sheetOpen` for legacy callers. One PANELS entry (`id:'sheet'`, btns `#rank,#cargobtn`); ✕ seated on open. Mobile stacks doll → stats → cargo. The separate legacy ship portrait renders in Shipyard `#yardship`, not on the paper doll. |
 | `#stats` | Expedition stats REGION inside the sheet (rank/score, **clickable** battle-stat rows, collapsible **Statistics** + **Achievements**, nameplate picker, rarity ladder). No longer position:fixed. |
 | `#codex` / `#codexbtn` | **Compendium** (species). |
 | `#log` / `#logbtn` | **Star Atlas** (bookmarks). |
@@ -1318,7 +1344,8 @@ for a name.
 - **No economy exploits found:** flora consumed on eat; both breed parents consumed;
   feed multiplier normalized & capped; rare-find stardust only on genuinely new species;
   conquered worlds can't be re-won; duel codes touch only cosmetic counters.
-- **Performance:** art cache capped (1,200); DPR capped (3); notifications capped (60);
+- **Performance:** full portrait cache device-capped (96 phone /256 otherwise), thumbnail cache
+  capped (600); DPR capped (3); notifications capped (60);
   survey panel rebuilds only on content change; frame loop has error recovery; FX
   particles & event timers are cleaned up.
 
@@ -1504,7 +1531,7 @@ fingerprint stayed byte-identical):
 - **Fabricator + equipment** (`@section fabricator`): `ITEMS` recipe catalog
   (T1 parts → T2 components → T3 ship systems + gear; costs audited against Sol's
   actual seeded veins so Chapter 1 is craftable at home), `craftItem`/`equipItem`,
-  five `EQ_SLOTS` on the character sheet, `partIcon()` painterly icons.
+  nine `EQ_SLOTS` on the character sheet, `partIcon()` painterly icons.
   `_equipBonus(key)` is the single gear socket read by: `descentFor`/`descentBonus(P)`
   (land, per-family `landfam`, `land100`), `_descRoll` (struts scrape cut), `routeHit`
   (`scut` wound cut), `attemptContact` (contact %), `healExplorer` (heal %),

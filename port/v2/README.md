@@ -2,6 +2,19 @@
 
 ## Current port status — 2026-08-13
 
+> **Next-arc architecture review (2026-08-13):**
+> `../../EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` is the approved cross-system
+> implementation contract. It does not widen the current Guide capabilities. Inventory,
+> Shipyard/build actions, item-instance loot, living companion ownership/dispatch, live
+> breeding/combat/Guardians and the full audio layer remain unimplemented. The required
+> order is ownership first—virtualized portraits and memory plateau, shared ship reach/
+> visual state, separate catalogue/creature and base-item/gear-instance identities,
+> revisioned exact-once reward receipts—then content scale. The current audit also makes
+> capability-aware Charter projection/copy, the wall-clock Auto-Extractor exploit,
+> Compendium decoded-image exposure and long-session texture/audio ownership explicit
+> prerequisites. Planned systems stay unavailable in the Guide until real actions,
+> reload/persistence, reachability and negative-controlled outcome gates exist.
+
 This playtest line is **Celestial Frontier v2.0 development**. The identity is
 centralized in `version.json` and appears with the full source commit inside the
 Guide only—never as a corner badge. It does not authorize a production release:
