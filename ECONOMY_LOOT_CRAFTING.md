@@ -1,12 +1,131 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js). ⭐ Read the v1.8.8 RESOLVED section at the end FIRST — harvest now runs on PLAY time, and the long-open CF1805-05 clock exploit is closed by removing the wall clock rather than defending it.
+> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** The playable v2
+> slice currently preserves and displays imported economy state; it does **not**
+> yet run mining, fabrication, equipment changes, conquest loot, Guardian loot or
+> companion expeditions. The mature v1.8.9 table review is 47 materials and 62
+> item definitions: 9 T1 parts, 6 T2 components, **5** ship systems
+> (`jumpdrive`, `array`, `igdrive`, `autoext`, `cscoop`), and 42 slotted gear
+> definitions across 9 sockets, including the 9 Signature Relics. There are 6
+> live legacy affix definitions. Those counts and every recipe/material/effect
+> reference need executable manifest validation before the economy ports.
+>
+> The current `items` count map plus `equip[slot] = baseId` and
+> `equipAff[slot] = {k,v,forId}` are a **legacy slot-scoped bonus model**, not
+> true per-copy item identity: two copies of one base item cannot retain different
+> affixes, item levels, sockets or provenance. The source formula is
+> `roll = 0.5 + 0.5*r`; `mag = lo + (hi-lo)*roll*(0.6+0.4*t)`, with
+> `t = min(1,tier/9)`. The older formula corrected below was documentation drift.
+> Also OPEN in current v1 is the Auto-Extractor's wall-clock anchor: advancing the
+> device clock, collecting the capped 30 loads, then repeating after reload can
+> mint further loads. Its 30-load cap limits one collection; it does not make the
+> wall clock trustworthy.
+>
+> **PLANNED, not implemented:** stackable materials/components remain counts, but
+> equippable loot becomes a real `GearInstance` keyed by stable `instanceId`, with
+> its own `schema`, `baseId`, item level, rarity/quality, implicits,
+> `generation:{seed,ordinal}`, sockets/upgrades and immutable `sourceActionId`.
+> That action identity names the exact craft, companion-mission dispatch,
+> conquest/Guardian battle, discovery or legacy-migration receipt that made the
+> object; it is not expedition-only. `instanceId` derives from that source action
+> plus the receipt-local ordinal. Natural rolls have **0–2 compatible prefixes and
+> 0–2 compatible suffixes**. An optional crafted modifier and its disclosed
+> drawback are stored separately from those natural slots, so crafting cannot
+> masquerade as another random prefix/suffix. A fixed roll pipeline chooses
+> table/base → item level → rarity budget → compatible affixes without replacement
+> → tier/range/value → validation and caps. Companion-mission and
+> conquest/Guardian rewards are immutable dispatch/battle
+> receipts, so opening or claiming a result never rolls it again. Guardian
+> victories should grant a deterministic, one-time authored reward rather than a
+> farmable jackpot; ordinary expedition returns must always have a disclosed useful
+> floor and feed fabrication rather than replace it. Auto-Extractor and companion-
+> mission readiness use a dedicated persisted `activePlayMs` clock advanced by one
+> visible/answerable cross-tab owner; they never use `Date.now()` or the capped
+> ecology/legacy-harvest `COSMIC_EPOCH`. All of these
+> mechanics remain **Unavailable** in the v2 Guide until their real actions,
+> persistence, outcomes and negative controls are live.
+
+**STATUS:** legacy mechanics reverified against `celestial-frontier.html` on
+2026-08-13. ⭐ Read the v1.8.8 RESOLVED section at the end FIRST — harvest now
+runs on PLAY time, and the long-open CF1805-05 clock exploit is closed by
+removing the wall clock rather than defending it.
 **Purpose:** The material economy — mining dead worlds into Cargo, spending it at the Shipyard (Fabricator + Research), crafting the gear/relic ladder, the item tooltip card, and the v1.6 AFFIX/LOOT core that imbues worn gear with seeded bonus stats.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 **Cross-reference (v1.7):** the full v1.7 Forge economy — the 47-material registry with
 families/tiers, world-cosmic veins (`cosmicVeinFor`), stellar extraction (`skimStar`),
 the 7 cosmic gear pieces (`cg-*`), and the salvage system — is specified in
 `MATERIALS_AND_GEAR.md`. This doc no longer describes the complete engineer track.
+
+## 0. v2 loot usability, pacing and construction contract (approved, not implemented)
+
+The planned item-instance economy must feel like an understandable ARPG chase, not
+a spreadsheet of concealed rolls. This section is a future acceptance contract; none
+of its surfaces exist in the current v2 slice.
+
+### 0.1 Transparent, useful loot
+
+- Every `GearInstance` inspect surface shows its base identity, item level, rarity,
+  quality, implicits, affix tiers/ranges, tags, source/provenance, upgrade state,
+  sockets and any crafted modifier or drawback. “Rare” never substitutes for those
+  separate facts.
+- Tags are shared authored vocabulary: they explain what a piece can affect, which
+  recipes/affix pools can target it, and why an item is incompatible. They are not
+  decorative keywords or hidden eligibility rules.
+- Compare always means **this exact candidate versus the exact equipped instance**
+  in the selected slot, including conditional effects and a plain-language delta.
+  A comparison must say when a result depends on encounter/biome/party context
+  rather than presenting a false universal upgrade arrow.
+- Inventory supports bounded filters and sort keys for slot, tag, source, rarity,
+  item level, upgrade, favorite/locked state and salvage eligibility. A filter can
+  narrow a list; it cannot delete, hide a pending receipt, or make a protected item
+  destructible.
+- Salvage is an inspect-first action against one `instanceId`, with a disclosed
+  deterministic output preview, explicit protection/favorite guards and a
+  revision-checked destruction receipt. There is no bulk action that silently eats
+  a unique, equipped, locked or pending-reward item.
+- Targeted crafting names the desired base and allowed tag/family, fixed costs,
+  possible tier/range and any drawback **before** spending. Its result is derived
+  from the craft `sourceActionId` and ordinal. It is not an infinite paid reroll or
+  a disguised random-prefix slot; random earned drops and targeted crafting have
+  distinct, inspectable jobs.
+
+### 0.2 Sources, sinks and no-dead-end pacing
+
+Before tuning exact costs, the port needs a versioned source/sink ledger. Each
+reward-bearing action must name its finite or active-play source, receipt owner,
+maximum useful output and the capability it feeds. Each sink must name what it
+unlocks, whether it is permanent/consumptive, and how a player who made a reasonable
+early choice can recover. The intended categories are:
+
+| Flow | Planned player purpose | Boundary |
+|---|---|---|
+| Survey/landing, finite deposits and skims | reveal and gather Cargo for the next visible build | no hidden infinite vein or offline accumulation |
+| Capture/discovery, missions and combat | earn specimens, knowledge, story and source-specific gear families | receipt-backed; no reload reroll or duplicate claim |
+| Research, Fabrication and ship projects | convert known materials into reach, access, efficiency or expression | disclosed requirements and one canonical capability owner |
+| Repair/care, targeted craft and salvage | make build changes and recover part of a bad/obsolete choice | bounded, inspectable, never a mandatory maintenance tax |
+| Optional world projects | create a visible lasting place/capability on a chosen world | no passive income, decay, daily upkeep or unattended resource production |
+
+Pacing is accepted through reproducible scenario simulations and human play, not
+through retention metrics. At minimum, fresh-save, first-return, mid-reach and
+inventory-full scenarios must model expected/minimum/maximum receipt flows, finite
+resource depletion, conversion loss, recovery from a missed roll, and the next
+reachable capability. The first complete journey in `QUESTS_AND_CHAPTERS.md` is the
+initial gate: no valid ordinary path may end with an impossible material, a missing
+writer, a permanently spent mandatory specimen, or an unexplained resource shortage.
+Seeds/scenario inputs, table versions and acceptance bands must be committed with any
+balance change so a later cost edit is reviewable rather than anecdotal.
+
+### 0.3 Later bounded world projects
+
+After the core gather/build/capture loop works, a player may choose a small number
+of durable **world projects**—for example a scanner relay, field lab, shelter,
+cargo beacon or observatory. A project is a deliberate build with a canonical world
+identity, visible construction state, finite cost and a specific capability or
+expression result. It does not turn a planet into an unattended factory: no idle
+income, deterioration, raids, fuel tax, real-time maintenance, daily check-in or
+punishment for leaving. Project state belongs to the same revision-checked save and
+receipt discipline as crafting; it cannot be duplicated in two tabs or grant a
+second build reward on reload.
 
 ## 1. Overview
 Dead worlds carry elements; life carries legends. This system is the **engineer's track** — parallel to the Prime Codex — turning ore into capability rather than story.
@@ -18,7 +137,10 @@ The loop:
 4. **Equip** gear on the paperdoll's nine sockets; effects fold through `_equipBonus`.
 5. **Loot:** winning a conquest can **imbue a worn piece** with a seeded **affix** — the loot chase begins at the point of a sword.
 
-Two currencies feed it: mined **elements** (hard, finite per world) and **☄ Stardust** (`essence`, soft — harvested hourly from settled worlds; documented for the collection side in `PROGRESSION.md`).
+Two currencies feed it: mined **elements** (hard, finite per world) and
+**☄ Stardust** (`essence`, soft — harvested from settled worlds after
+`HARVEST_EPOCHS = 2`, approximately 40 minutes of active play; documented for
+the collection side in `PROGRESSION.md`).
 
 ## 2. Rules & mechanics
 
@@ -38,7 +160,11 @@ Two currencies feed it: mined **elements** (hard, finite per world) and **☄ St
 - **Field samples:** first footfall on any world (home aside) grants up to two of its elements + a few ☄ Stardust, richer on rarer worlds.
 
 ### The Stardust harvest (settled-world faucet)
-- `doHarvest(d)`: a conquered world yields **`6 + tier·4` ☄** once per **`HARVEST_CD = 3600e3` (1 hour)**. Between harvests the card reads "Settled — replenishing"; `fmtRemain` shows the countdown.
+- `doHarvest(d)`: a conquered world yields **`6 + tier·4` ☄** after
+  **`HARVEST_EPOCHS = 2`** since its saved `conq[].e` stamp—approximately 40
+  minutes of active play. `_harvestReady` is the one predicate used by the card,
+  button, cache key and award path. An absent `e` is ready once for migration;
+  claiming stores the current `COSMIC_EPOCH`. `HARVEST_CD` gates nothing.
 
 ### Shipyard: Research + Fabricator
 - One panel (right-rail 🛠) holds the ship portrait, the **Research Bench**, and the **Fabricator**, recipes **folded by category**.
@@ -69,9 +195,9 @@ Two currencies feed it: mined **elements** (hard, finite per world) and **☄ St
 - `openItemCard` / `closeItemCard` toggle the `#itemcard` element (created and appended at load).
 
 ### The AFFIX / LOOT core (v1.6)
-- **Per-instance gear bonuses.** `equipAff` = `{slot → {k, v, forId}}` (save **`ea`**) — a seeded affix bound to *that exact item in that slot*.
+- **Legacy slot-scoped gear bonus (not a true item instance).** `equipAff` = `{slot → {k, v, forId}}` (save **`ea`**) — a seeded affix bound to the equipped base item id in that slot; duplicate copies still have no separate identity.
 - `AFFIX_DEFS` (6 kinds): `yield` (10–35%), `strike` (2–6%), `scut` (8–25% lighter bioscan wounds), `contact` (+4–12 first-contact/capture), `land` (+4–12 descent safety), `heal` (8–20% flora healing). `pct:1` kinds store a fraction (2-dp), `pct:0` kinds store an integer.
-- `rollAffix(seed, tier)`: `r = mulberry32(hashInt(seed, 0xAFF1, tier+1))`; pick a def; magnitude `mag = lo + (hi−lo)·(0.4+0.6·r)·(0.7+0.3·t)`, where `t = min(1, tier/9)` — **deeper worlds roll stronger**. (v1.7 power curve: the tier factor reaches full strength at tier **9**, was capped at 6, so loot keeps scaling into the deep spectrum.)
+- `rollAffix(seed, tier)`: `r = mulberry32(hashInt(seed, 0xAFF1, tier+1))`; pick a def; `roll = 0.5 + 0.5·r`; magnitude `mag = lo + (hi−lo)·roll·(0.6+0.4·t)`, where `t = min(1, tier/9)` — **deeper worlds roll stronger**. (v1.7 power curve: the tier factor reaches full strength at tier **9**, was capped at 6, so loot keeps scaling into the deep spectrum.)
 - `_slotAffix(slot)` returns the affix **only while its exact piece is still worn** (`forId === equip[slot]`) — swap the piece out and the bonus goes dormant. `_affLabel` formats the "✦ +N% …" line. `_equipBonus` folds a live affix into the worn total.
 - **First faucet — conquest spoils.** On a conquest win, if you have any worn gear, a **40%** seeded gate (`mulberry32(hashInt(planetSeed,0x5901,2)) < 0.4`) imbues a **random worn piece**: `slot` chosen by `hashInt(planetSeed,0x5902,3)`, `aff = rollAffix(planetSeed, worldTier)`, `aff.forId = equip[slot]`, `equipAff[slot] = aff`. Toasts "✦ Spoils of Conquest — your \<gear\> takes on this world's character."
 
@@ -80,7 +206,9 @@ Two currencies feed it: mined **elements** (hard, finite per world) and **☄ St
 - **Reserve:** `round((420 + 0..380) · (1 + tier·0.35))` pulls per world.
 - **Rich strike:** `0.05 + tier·0.01 + _equipBonus('strike')`. **Biome trickle:** `< 0.25`.
 - **Auto-Extractor:** 1 load / 600000 ms, cap **30**.
-- **`HARVEST_CD = 3600e3`** (1 h); harvest yield **`6 + tier·4` ☄**.
+- **`HARVEST_EPOCHS = 2`** (approximately 40 minutes of active play); harvest
+  yield **`6 + tier·4` ☄**. `HARVEST_CD = 3600e3` remains vestigial
+  load/display-clamp data only.
 - **`AFFIX_DEFS`** (k · range · unit):
   | k | lo | hi | unit |
   |---|----|----|------|
@@ -90,11 +218,11 @@ Two currencies feed it: mined **elements** (hard, finite per world) and **☄ St
   | contact | 4 | 12 | flat first-contact/capture |
   | land | 4 | 12 | flat descent safety |
   | heal | 0.08 | 0.20 | % flora healing |
-- **Affix magnitude:** `lo + (hi−lo)·(0.4+0.6·r)·(0.7+0.3·t)`, `t = min(1, tier/9)` (v1.7; was `tier/6`).
+- **Affix magnitude:** `lo + (hi−lo)·(0.5+0.5·r)·(0.6+0.4·t)`, `t = min(1, tier/9)` (v1.7; was `tier/6`).
 - **Conquest imbue gate:** 40%.
 - `MATERIALS` — 47-entry registry (names via `matName()`; `ELEM_NAME`'s 42 symbols kept only as a legacy name fallback). `RARE_VEIN = [Ag, Au, Pt, Ir, U, Nd, Pm, Vg, Pz]` (index climbs with world rarity). `BIOME_VEIN = {geode:Nd, carbon:Pm, glass:Vg, magmasea:Pz}`.
 - `DEPOSIT_PROFILES` per ptype: rocky/metal/lava/ice/desert/gas/venus/dwarf/moon (see code — the seeded palette each world type mines from).
-- **Item ladder headcount:** 9 T1 parts, 6 T2 components, 4 T3 ship systems, ~20 gear pieces across 9 sockets, 9 Signature relics.
+- **Item ladder headcount:** 9 T1 parts, 6 T2 components, **5** ship systems, and 42 slotted gear definitions across 9 sockets (including 9 Signature Relics) = 62 item definitions total.
 
 ## 4. Data / save fields
 - **`ea`** — `equipAff` (the affix core): each slot's `{k, v, forId}`. On load: kept only if `k ∈ AFFIX_DEFS`, `forId` is a string, and `equip[slot] === forId`; `v` is coerced and **clamped 0..the affix's own `def.hi`** (v1.6 fix — was a flat 0..5 that silently truncated legit `contact`/`land` rolls above 5).
@@ -113,7 +241,9 @@ Two currencies feed it: mined **elements** (hard, finite per world) and **☄ St
 - `ELEM_NAME` — **13368**; `DEPOSIT_PROFILES` — **13374**; `RARE_VEIN` — **13385**; `depositsFor` — **13386**; `BIOME_VEIN` — **13402**.
 - `reserveFor` — **13422**; `mineYieldMult` — **13429**; `minePending` — **13431**; `mineWorld` — **13438**.
 - `MINE_BURST` / `_mineRun` — **13511 / 13510**; `mineStop` — **13512**; `mineToggle` — **13515**.
-- `HARVEST_CD` — **13013**; `doHarvest` — **13340**; field samples — **7810–7817**.
+- `HARVEST_EPOCHS` / `_harvestReady` / `doHarvest` own current readiness;
+  `HARVEST_CD` survives only in the legacy load/display clamp. Field samples are
+  owned by the landing outcome path.
 - `TECHS` — **13530**; `driveMult` — **13539**.
 - `_itemStats` — **13726**; `_matUses` — **13741**; `#itemcard` element — **13747**; `renderItemCard` — **13749**; `openItemCard`/`closeItemCard` — **13780/13781**.
 - `ITEMS` — **13925**; relic block — **13990–14002**; `ITEM_BY` — **14004**; `EQ_SLOTS` — **14007**; `items`/`equip`/`itemCount` — **14018–14020**.

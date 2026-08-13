@@ -1,14 +1,176 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
-**STATUS:** matches code as of 2026-07-30 (verified against main.js). Carries a v1.8.6 (external round 8) update — see the ⚠ v1.8.6 notes inline.
-**Shipped:** v1.8.0 "The Connection" · corrected and widened in v1.8.4 "Clear Ground".
+**STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
+2026-07-30. The dated v2 next-arc overlay below matches the development boundary and approved
+direction as of **2026-08-13**. It is a plan, not a claim that the systems are live.
+**Shipped (production v1):** v1.8.0 "The Connection" · corrected and widened in v1.8.4
+"Clear Ground".
 
 **Purpose:** everything the game makes a sound with. Written after an external round found the
 whole layer undocumented despite being the largest single feature of v1.8.
 
 ---
 
-## 1. The one architectural rule
+## 0. v2.0 next-arc overlay — approved direction, not implemented (2026-08-13)
+
+### 0.1 Truth boundary
+
+The current v2 development package is **stings-only**. `@cf/audio` lifts the synthesized rarity,
+survey and navigation stings; the application currently calls survey ping and travel whoosh, while
+the rarity sting remains an exported discovery seam. Current v2 Settings expose only master Sound
+and volume. There are no v2 creature calls, combat or Guardian cues, ambience, music, recorded
+assets, asset loader, category mixer, concurrency manager or audio-package tests. Imported
+`vce`/`cbx` creature-voice and battle-sound preferences are preserved by persistence but are not
+yet live controls.
+
+Everything below this paragraph is an **approved next-arc contract**. Capability-aware Guide copy
+and release notes must continue to describe only the stings that actually work until each later
+stage lands with its tests and listening evidence.
+
+### 0.2 Deterministic identity means stable data, not identical rendered bytes
+
+The portable invariant is:
+
+```text
+audio-relevant immutable phenotype + exact catalogue owner + surviving lineage
+  + audio resolver version -> AudioSignature
+AudioSignature -> AudioIdentityProfile + CreatureCallPlan
+```
+
+`AudioSignature` is an immutable typed projection, not a copy or hash of the complete mutable
+genome/creature record. It contains only fields that can define audible identity: selected stable
+phenotype genes, exact catalogue owner, normalized lineage inputs that survive persistence and the
+audio resolver version. Mutable progression, condition and relationship fields -- `xp`, `hurt`,
+`fed`, `brood`, `assignment` and `bond` -- are excluded. Changing any one of them must leave the
+serialized signature, identity profile and call plan exactly unchanged.
+
+The profile and cue plan must be finite, stable and reproducible without consuming or perturbing
+gameplay RNG. The same creature therefore keeps its palette, register, phrase grammar, rhythm,
+articulation and event plan across devices and shared expeditions. **Rendered PCM is not promised
+to be byte-identical.** Web Audio oscillators, filters, resampling and output hardware differ by
+browser/device, and presentation-only noise in v1 is not a cross-engine PCM contract. Tests compare
+typed profiles, palette IDs and cue plans; they do not hash browser waveforms. Decorative jitter is
+allowed only when it cannot alter identity, simulation, saves or authoritative tests.
+
+### 0.3 Typed runtime, buses and lifecycle
+
+The v2 package grows in stages behind one typed event boundary:
+
+1. Pure `AudioSignature`, `AudioIdentityProfile`, `CreatureCallPlan`, `CombatCuePlan` and
+   `AudioEvent` data modules, with no DOM, AudioContext or gameplay-state mutation.
+2. A Web Audio engine owning `master -> music | ambience | creature | combat/gameplay | UI` buses,
+   a safety limiter and explicit category routing. A narration bus is reserved until narration
+   really exists; an empty slider is not a feature.
+3. A voice manager with priorities, per-family cooldowns, concurrency groups, voice stealing and
+   exact stop/disconnect ownership. Short synthesized layers remain where they are distinctive;
+   licensed local source palettes may be layered in later.
+4. Gesture-safe context activation, honest blocked/suspended UI state, visible-tab resume,
+   context-loss recovery, mute-before-create behavior, loop shutdown, route-transition cleanup and
+   explicit `dispose()`. A hidden tab stops long-lived work. The approved ambience policy is
+   **RESTART on visibility return**, re-armed safely when a browser requires another gesture.
+
+The approved v2 settings surface retains master volume and adds category gains only as their buses
+become real. It restores independent Creature voices and Battle sound from the existing `vce` and
+`cbx` fields, then may add dynamic-range profile, mono output, reduced-intensity/high-frequency
+comfort, meaningful-sound captions and mute-when-unfocused. Reduced motion remains a visual choice;
+it must not silently infer a hearing preference. No essential state, danger or success may be
+audio-only: every meaningful cue has text, icon, animation or another equivalent.
+
+### 0.4 Earth catalogue, kingdoms and hybrids
+
+The current catalogue has **1,010 Earth identities owning 1,014 set-qualified route rows** because
+four display names occur in two sets. Audio joins use the exact catalogue set/kingdom + name (or a
+stronger stable ID), never a bare display name. A shared pure taxonomy may expose family/rig,
+body/movement, habitat and sound-palette IDs to art and audio; audio must not import a private
+browser painter or recreate its classifier from memory.
+
+The honest player promise is: **each specimen receives a deterministic sonic signature assembled
+from a curated biological/ecological family palette and synthesis.** It is not “every biological
+species has its own recorded sample.” Fauna may select vocal/foley families. Flora, fungi and
+microbes receive environmental or Compendium sonification appropriate to their kingdom and can
+never fall through to a mammal call. Select iconic Earth species may receive an exact licensed
+signature override when the rights ledger and listening review support it.
+
+The visual cache may continue to use the complete plain genome as its pixel identity. Audio instead
+keys the immutable `AudioSignature` projection defined in §0.2. For Earth-lineage hybrids, that
+projection includes the `_earthBlend` name, exact `_earthBlendKingdom` owner and `_anchorVal` blend
+already used by the portrait route, plus only selected audio-relevant phenotype and surviving
+lineage fields. Reverse-parent children that share a seed but differ in those audible inputs must
+not alias; changes only to `xp`, `hurt`, `fed`, `brood`, `assignment` or `bond` must not change the
+voice. The current share format does not preserve complete parent objects, so the audio resolver
+may rely only on lineage fields that actually survive normalization. If complete parent signatures
+become necessary, that requires an explicit versioned sharing/save design.
+
+The already-settled voice corrections remain **planned, not implemented in v2**: retain `legacy`
+as an emergency definition but exclude it from ordinary procedural selection, and replace both
+hard f0 clips with a soft-saturation curve tuned only after human listening.
+
+### 0.5 Combat, Guardians and environmental cues
+
+Combat audio consumes the completed deterministic duel transcript after simulation. A pure
+`combatCuePlan(result, participants)` maps existing dodge, stun, damage, critical, first-strike,
+execute, thorns, lifesteal, burn/regen and defeat events plus ability theme and body/material weight;
+it never changes `runDuel`, advances its RNG or invents an outcome. Every cue owns a matching visual
+or caption token. Guardian entrance/phase/victory/defeat motifs derive from the existing planet
+seed, tier, epithet and ability fields, without changing `guardianFor`. Combat and Guardians are
+not playable in the current v2 slice, so none of those cues may be advertised live yet. The legacy
+skip path is silent; v2 must explicitly settle any result-only skip motif before implementing it.
+
+Biome ambience later layers atmosphere, weather, terrain/water, hazard and distant ecology from a
+typed environment profile. Silence is a valid layer, especially for vacuum, caves and abyssal
+spaces. Environmental sonification must not imply that fauna exists on fauna-free worlds or turn
+flora/fungi/microbes into animal calls. See `BIOME_ATLAS.md` and `CAPTURE_AND_BIOSPHERE.md` for the
+presentation-only ecology link; it changes no roster, capture odds, yield or epoch rule.
+
+### 0.6 Budgets, cache ownership and acceptance
+
+Initial full-mix active-voice targets are **20–28 low/mobile, 28–40 standard mobile/tablet, 40–56
+desktop standard and 56–72 desktop high**. Inside that mix, Gate G begins with at most **8
+simultaneous creature-call emitters** and **120 live AudioNodes**. Those scopes are different: an
+eight-creature cap is not an eight-voice whole-game mix. Real phones may require lower values.
+
+Encoded download bytes and decoded `AudioBuffer` bytes are separate budgets. Their exact tier caps
+must be measured and locked in `budgets.json` before recorded media is accepted; there is no
+approved byte number today, so this document does not manufacture one. The loader uses in-flight
+fetch/decode deduplication and a decoded-buffer LRU capped by **bytes**, not item count. Profile/plan
+caches are bounded and keyed by the serialized immutable `AudioSignature` (which includes resolver
+version); per-creature rendered PCM is never cached. Travel, combat and background/foreground
+cycles must plateau in encoded/decoded bytes, active sources, creature emitters and total nodes,
+and every evicted/stopped source must disconnect.
+
+Automation must cover resolver determinism/ranges, the complete 1,010-identity/1,014-route join,
+non-fauna routing, profile collisions, lifecycle, settings defaults, manifest integrity, cache
+plateaus, concurrency stealing, transcript-to-cue coverage and Guardian stability. Every new
+instrument needs a deliberate failing control. Identity tests also require negative controls that
+mutate `xp`, `hurt`, `fed`, `brood`, `assignment` and `bond` one at a time and prove the serialized
+`AudioSignature`, `AudioIdentityProfile` and `CreatureCallPlan` remain exactly unchanged; paired
+positive controls vary representative audio-relevant phenotype, exact-owner and lineage inputs.
+Automation can prove structure and cleanup, not appeal.
+**Human listening remains the quality gate:** headphones, phone speaker, mono, low volume,
+reduced-intensity mix and long sessions, including blinded specimen-to-call matching for Earth,
+procedural and hybrid examples. Profile uniqueness alone is not perceptual identification.
+
+### 0.7 Rights, privacy and delivery
+
+Future source palettes may contain project-owned recordings, CC0/public-domain material, or media
+with explicit commercial modification and redistribution rights. No scraping, vague “fair use,”
+unlicensed biological catalogue, human/celebrity voice cloning or biometric likeness is accepted.
+The root code license does not automatically license third-party media.
+
+`AUDIO_LICENSES.md` is the current empty human-readable rights ledger. Before the first media asset
+lands, add its machine-readable companion manifest. Each asset record carries stable ID,
+creator/source, license and stored proof, commercial/derivative/redistribution/attribution terms,
+acquisition date, processing chain,
+original + runtime SHA-256, version, codec, duration, loop points, loudness, peak and tags. CI fails
+closed on a missing/incompatible right, hash drift, missing file or orphan asset.
+
+Runtime audio stays local/offline or same-origin with a silent/local fallback. It never needs a
+microphone, `getUserMedia`, uploads, remote TTS, behavioural telemetry or third-party call-home, and
+it must not disclose a genome/share identity through a network request.
+
+---
+
+## 1. The production-v1 architectural rule
 
 **Every sound is synthesised at runtime. There is never a sample.**
 
@@ -21,9 +183,11 @@ arc at **+8 ms load / +3 ms DOMContentLoaded**, and the arc's payload cost at **
 > ⚠ Do not describe this as "zero added payload" — an external round correctly called that an
 > overstatement. It is zero *audio-media* payload.
 
-A second consequence: **a voice is a parameter set, not a recording.** The same genome therefore
-sounds byte-identical on every device and through every shared creature code, which makes voices
-part of the determinism guarantee rather than an exception to it.
+A second consequence: **a voice is a parameter set, not a recording.** The same genome resolves to
+the same v1 profile parameters through every shared creature code. It does **not** render
+byte-identical PCM on every device: Web Audio rendering is browser/hardware dependent, and v1's
+presentation-noise buffers are not seeded identity data. Stable profile/cue-plan data—not PCM
+hashes—is the portable determinism guarantee.
 
 ---
 
@@ -67,9 +231,11 @@ real, not a volume trim (externally verified).
 
 `voiceOf(g)` resolves a genome to `{kind, f0, rich, nz, vib, vibD, dur, sweep}`, deterministically.
 
-1. **A named Earth animal sounds like itself.** `_earthArt(name).rig` gives the rig, and the rig
-   selects a `_VOICE` archetype — the *same taxonomy the art uses*, so a creature's voice and its
-   portrait are derived from one shared idea of what it is.
+1. **A named Earth animal selects its classified rig-family archetype.** `_earthArt(name).rig`
+   selects a coarse `_VOICE` family — it is not a recording or exact biological-species call.
+   The reveal path also calls `playVoice` for every kingdom while `_earthArt` falls back to mammal,
+   so production v1 can give flora, fungi or microbes an animal-like call. That is a documented
+   legacy flaw, not a behavior to port.
 2. **A hybrid drifts.** `_blendVoice(base, alien, 1-anchor)` uses the renderer's own
    `_anchorVal` law, so a bloodline's voice drifts alien at exactly the rate its body does. Earth ×
    Earth pins at anchor 0.90 forever; each alien cross weakens it.
@@ -84,8 +250,9 @@ A wolf roars (mammal, 148 Hz), a sparrow chirps (bird, 2068 Hz), a blue whale si
 187 Hz over 1.20 s), a rattlesnake hisses (serpent, 630 Hz, noise 0.95).
 
 `legacy` is documented as the fallback for a genome with no rig, but it is in `_VOICE_KEYS`, so
-~5.5% of procedural creatures roll it as a first-class 18th family. Probably fine, probably not
-intended — flagged, not changed.
+~5.5% of procedural creatures roll it as a first-class 18th family in production v1.8.9. The port
+decision is settled: keep the definition as a fallback but exclude it from ordinary procedural
+selection. That correction is planned, not implemented; current v2 has no creature-voice resolver.
 
 ### Genes the voice reads (v1.8.4)
 
@@ -157,8 +324,9 @@ in the shrillest band of human hearing.
 > it is an amplitude taper, so it improves comfort and does nothing for identity. Second, and more
 > useful: **test each named Earth rig family independently, not only the global population.** A
 > per-family defect is invisible in an aggregate where that family is 4 of 631 classified fauna.
-> Candidate fixes: lower the Bat base further, or replace the hard clip with soft saturation so
-> the top of the range compresses instead of collapsing. Needs the human listening test either way.
+> The port decision is now settled at **soft saturation at both bounds** so the extremes compress
+> rather than collapse. The exact curve still waits for the human listening test, and the change is
+> not implemented in the current stings-only v2 package.
 
 ---
 
@@ -191,8 +359,10 @@ Before v1.8 a whole duel played exactly one sound, at the very end.
 (`_vistaDismiss`), `visibilitychange` → hidden, master Sound off, and any `ambienceStart` (which
 stops the previous bed first). Ramped down over 0.5 s, nodes stopped 700 ms later.
 
-⏳ **Known, deliberate:** nothing restarts the bed when the tab becomes visible again, so returning
-to a vista leaves it silent. Flagged as a design decision, not chosen silently.
+**Production v1.8.9 behavior:** nothing restarts the bed when the tab becomes visible again, so
+returning to a vista leaves it silent. The port decision is now settled at **RESTART**, with a
+gesture-safe re-arm when the browser blocks automatic resume. It remains planned, not implemented
+in the current stings-only v2 package.
 
 ---
 
@@ -252,10 +422,12 @@ most aggressive temperament is the boldest; two genomes differing only in `trait
 produce different voices; a bat-family voice still moves with size rather than pinning at the
 clamp; `ambienceStop` exists and is callable.
 
-**What no harness here can do is judge whether any of it sounds good.** Playwright runs with
-`--mute-audio`, and no external persona fleet reads an audio signal, so a flat A/B from one is
-meaningless rather than reassuring — an external round said exactly this and declined to score it.
+**What no harness here can do is judge whether any of it sounds good.** The repository has no
+audio-capture or perceptual oracle, and no external persona fleet hears an audio signal, so a flat
+A/B from one is meaningless rather than reassuring — an external round said exactly this and
+declined to score it.
 
-**A human listening test is the only instrument that can answer it**, and the three prerequisites
-an external round named (the mute lifecycle, the 540-voice vocabulary, the mis-keyed temperament)
-are all now fixed — so that test is worth running before committing to any large audio expansion.
+**A human listening test is the only instrument that can answer it.** The legacy lifecycle and
+profile corrections make the test useful, but it has not been run and the clamp curve still must be
+tuned from its evidence. Gate G therefore remains open before any large v2 audio expansion can be
+called complete.

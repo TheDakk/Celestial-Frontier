@@ -1500,6 +1500,45 @@ duplicates).
   the exported save as one blob in `meta`. Multi-tab last-writer-wins and incremental domain-store
   transactions remain open; do not describe them as shipped until revisions/CAS or equivalent
   transactional records land.
+- ☐ **D-IDENTITY-LOOT — catalogue, creature and gear ownership must split before the
+  companion/loot arc (2026-08-13).** Legacy Codex rows conflate a discovered species with
+  one living specimen, while `items`/`equipAff` conflate a base definition with a rolled
+  equipped copy. That cannot support duplicate companions, stable attachment, away-state,
+  provenance or multiple affixed copies. The approved delta in
+  `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` introduces `CatalogSpecies`,
+  `CreatureInstance` and `GearInstance` with explicit migration; imported fields remaining
+  round-trippable is not proof the live systems exist.
+- ☐ **D-CAPTURE-OWNER — survey is not an acquisition writer (2026-08-13).** Current v2
+  can reveal life and display imported Compendium rows but has no live Tame, Scavenge, Sample or
+  Biosphere Yield action. Before collection/breeding/dispatch can be advertised, port finite
+  receipt-backed acquisition: every successful verb creates/updates `CatalogSpecies`; fauna Tame
+  may create a stable `CreatureInstance`; Scavenge/Sample create specimens/resources, never living
+  companions. Miss/Worked Out, reload and stale-tab controls must prove no free page, duplicate
+  creature, reroll or double spend.
+- ☐ **D-RECEIPT — companion/Guardian loot requires revisioned exact-once persistence
+  (2026-08-13).** Roll and commit a save-lifetime RNG ordinal plus immutable receipt at
+  dispatch/encounter settlement, not at reveal/claim. A dedicated persisted visible-and-answerable
+  active-play millisecond clock owns readiness; it is not the capped ecology epoch. One leased tab
+  advances it and stale deltas fail. Revision checks cover every reward/destructive mutation,
+  including capture, craft/salvage, feed/breed/recovery, dispatch/recall, combat settlement and
+  deletion—not mission claim alone. Same-parent/same-world stale-writer controls are required;
+  wall-clock advance, reload, double-click and a stale second tab must not reroll or duplicate
+  rewards. Current one-blob last-writer-wins persistence is insufficient; CAS or one
+  authoritative serialized coordinator is prerequisite work.
+- ☐ **D-CHARTER-CAP — current objectives can name actions the slice does not own
+  (2026-08-13).** After live landfall goals, the canonical projection can expose mining,
+  fabrication, bioscan, conquest or breeding and blocked travel can name a nonexistent
+  Shipyard. Keep the canonical data for parity, but current v2 presentation must stop at or
+  explicitly mark the playable frontier until the real outcome writers/surfaces exist.
+- ☐ **D-COMPENDIUM-MEM — eager full-source thumbnails are not a bounded catalogue
+  (2026-08-13).** Up to 1,500 rows can synchronously paint/mount 440px data URLs before the
+  asynchronous 132px cache result exists, so entry-count caches do not bound decoded DOM
+  images. Window rows/jobs, swap to actual thumbnails, budget decoded pixels/bytes and prove
+  a warm plateau with an unbounded/no-disposal negative control before the inventory arc.
+- ☐ **D-AUTOEXTRACT-CLOCK — legacy Auto-Extractor accrual still trusts `Date.now()`
+  (2026-08-13).** Clock-forward plus reload/visit can mint another bounded batch. Port it to
+  persisted active-play progress with an absent-field migration and a clock-wind outcome test;
+  never reuse the wall-clock pattern for companion missions.
 
 ## Determinism / replayability
 

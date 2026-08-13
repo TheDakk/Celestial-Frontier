@@ -1,8 +1,9 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
 **STATUS:** §1 verified against code as of **2026-07-31 (v1.8.9)**. §§2–4 are design-pack content and are
-NOT derivable from source — see PROVENANCE below. Audited and promoted from `tools/` to the repo root
-during port **Phase 0** (Gate A); the file itself dates from 2026-07-20.
+NOT derivable from source — see PROVENANCE below. The approved, unimplemented environmental-audio
+overlay matches the v2 next-arc contract as of **2026-08-13**. Audited and promoted from `tools/` to
+the repo root during port **Phase 0** (Gate A); the file itself dates from 2026-07-20.
 
 _Originally generated 2026-07-20 from: live `BIOME_SETS` (main.js) + data-pack CSVs (01_EARTH 93 ·
 02_NON_EARTH 315) + Additional Biomes file. Colors are PROPOSED signatures for the biome→dot /
@@ -43,6 +44,63 @@ biome→vista tint._
 > `magmasea`. And `hotglow` sits in the audit's `GAS` list, whose other three members (`banded`,
 > `ammonia`, `stormeye`) do carry floater fauna — `hotglow` carries none, making it a fifth case
 > rather than a gas-biome norm. Separately, **17** biomes carry `flora:[]`.
+
+## 0 · v2.0 next-arc environmental sonification (approved, not implemented — 2026-08-13)
+
+The current v2 development package is stings-only. It does not yet play biome ambience, weather,
+distant ecology, creature calls or music. Production v1.8.9 retains its synthesized ambience beds;
+this overlay does not change them, the 43 live biome profiles, roster selection, descent, hazards,
+rarity or any design-pack status below.
+
+The future environment resolver consumes one typed, deterministic biome identity and produces a
+presentation-only soundscape plan from atmosphere, weather, terrain/water, pressure, gravity,
+hazard and **the life that actually exists there**. That plan may choose silence, authored local
+stems, synthesized layers and distant ecological events, but it never feeds generation or changes
+mechanics. Its palette ID and event plan are stable; browser-rendered PCM is not a byte-identity
+contract. The 43 source-derived v1 profiles and §§2–4 design-pack lists remain different evidence
+surfaces—none of the 93/315/additional entries becomes live merely because audio planning names it.
+
+Ecology is kingdom-aware. Fauna may contribute distant calls or locomotion/foley. Flora, fungi and
+microbes contribute wind-through-form, growth, spore, substrate, water, chemical or instrument-style
+sonification; they do not borrow animal voices. Fauna-free worlds must never emit implied animals,
+and empty/silent zones remain intentional rather than being filled for constant stimulation. A
+biosphere or future companion may modulate density only from visible current state; audio cannot
+reveal an undiscovered roster, pre-land rarity, capture outcome or hidden mechanical advantage.
+
+The implementation seam is a stable `ambientAudioProfile`/environment event plan shared by no
+browser painter: art and audio may read the same pure biome/ecology taxonomy, but each owns its own
+renderer, cache and lifecycle. The mixer, same-origin rights manifest, decoded-byte/node budgets,
+background restart policy, captions and human listening gate are defined in `AUDIO.md` §0.
+
+## 0.1 · v2 world-opportunity presentation contract (approved, not implemented — 2026-08-13)
+
+`WORLD_GENERATION.md` owns the future canonical World Opportunity Manifest; this atlas supplies
+only its **biome compatibility and presentation vocabulary**. No opportunity resolver, capture
+writer, project site, loot source, anomaly, blueprint, Guardian lead or extra biome is live in v2
+because this section exists.
+
+For the 43 source-derived live profiles, a future compatibility layer may describe how terrain,
+weather, hazard, life forms and atmosphere make an already-generated opportunity readable:
+
+| Opportunity family | Biome contribution | What it must not do |
+|---|---|---|
+| Resources | communicate plausible finite deposit/skim context and extraction hazard | mint Cargo or change deposit RNG |
+| Creature/biosphere lead | show compatible ecology and preparation context | reveal an exact unowned species or create a specimen |
+| Anomaly, blueprint or lore lead | establish a recognizable visual/environmental theme | promise a hidden reward, reroll it, or turn design-pack names into live content |
+| Hazard/Guardian lead | make risk, environmental preparation and encounter tone legible | hide a mechanical immunity, predetermine a battle result, or replace combat counterplay |
+| Optional world project | match a later relay/lab/shelter/beacon/observatory to a sensible setting | generate idle income, upkeep, decay or a private infinite resource source |
+
+The resolver consumes the exact live biome identity plus the canonical world opportunity identity;
+it does not use a bare display name and it does not make every biome produce every family. A
+fauna-free profile remains fauna-free in art, audio and opportunity presentation. A rare biome may
+make a signal feel extraordinary, but cannot disclose an item roll, post-landing rarity or capture
+success before the owning action settles.
+
+The 93 Earth, 315 non-Earth and Additional lists in §§2–4 remain design-pack candidates. They may
+inform future authored compatibility work only after they are independently integrated, versioned
+and tested; they are not legal runtime keys for a v2 opportunity table simply because this document
+names them. The first complete player journey must use only actual current-runtime identities and
+actions, not an atlas-only placeholder.
 
 ## 1 · LIVE biomes (43, in the game now — colored FIRST in Phase 4)
 

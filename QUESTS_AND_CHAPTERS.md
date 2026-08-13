@@ -1,5 +1,37 @@
 # Celestial Frontier — Quests & Chapters
 
+> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** The current v2
+> Charter facade banks real landfalls and can then identify a later mining goal,
+> but mining, combat, crafting, breeding and companion dispatch are not live. The
+> objective surface must therefore stop at, or explicitly label, the playable
+> frontier rather than presenting the first unported goal as an available action.
+> Existing legacy **Expedition Charters** remain their own quest-board concept;
+> the planned companion mission loop below must not silently inherit weekly expiry,
+> wall-clock or static-reward semantics from them.
+>
+> **PLANNED, not implemented:** a companion mission is an explicit player-owned
+> state machine, `away → ready → claimed` or `away → recalled`, with canonical
+> target `{galaxy:{seed,x,y},star:{seed,x,y},planet:{seed}}`, stable companion ids,
+> `dispatchedAtActivePlayMs`, `readyAtActivePlayMs` and an immutable dispatch-time
+> reward receipt. `activePlayMs` is a dedicated persisted monotonic clock, not the
+> capped ecology/legacy-harvest `COSMIC_EPOCH`: exactly one cross-tab lease owner
+> advances it while its session is visible and answerable, then persists and
+> rebases a fresh runtime segment on reload or ownership handoff. Wall time and
+> overlapping tabs never advance it. Recall before readiness is a terminal safe
+> transition that pays nothing and releases only that mission's assignments;
+> ready rewards never expire and wait until inventory can accept them.
+> There is no dispatch permadeath, daily streak, countdown pressure, push nag,
+> paid reroll or empty-return roulette. Every mission discloses duration, reachable
+> reward family/range and a useful floor. A single quiet ready notification is
+> enough.
+>
+> Mission/Charter/Chapter progress listens to the **claimed receipt outcome**, not
+> a button press or mutable aggregate counter. Capability-aware objectives skip
+> mechanics whose writers are absent. Guide, Training and Charter copy must continue
+> to call companion expeditions **Unavailable** until dispatch, reload, readiness,
+> recall and exact-once claim are all reachable through their real controls and
+> verified outcomes.
+
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
 below matches `port/v2` as of 2026-08-11. Carries v1.8.6 and v1.8.7
 (external rounds 8 and 9) updates — see the ⚠ notes inline.
@@ -38,6 +70,64 @@ implement the dated port overlay.
 > look playable. Completing the real 21-step v2 curriculum and restoring the
 > legacy full-state `tsnap` are still separate OPEN outcomes; the unversioned v2
 > release draft does not claim either one complete.
+
+## 0. First complete journey gate (approved product definition, not live)
+
+The first 30–60 minute journey is the first proof that Celestial Frontier is more
+than a polished survey slice. It is a **human play window**, not a session-length,
+retention or notification target. Current v2 ends honestly after its six real
+lessons; this sequence must not be added to Field Training, Charters, the Guide or
+release content until every numbered outcome is executable, persistent and
+negative-controlled.
+
+The intended fresh-save path is:
+
+1. **Survey** a reachable world and understand one truthful opportunity signal.
+2. **Gather** finite, visible materials through a real landing/extraction action.
+3. **Craft** one useful component or tool with a clear source/cost/result.
+4. **Tame** or otherwise earn one real owned Companion through the acquisition
+   writer—not through survey, a static roster or a catalogue row.
+5. **Upgrade the ship** through the Shipyard so the owned build visibly changes
+   both reach and `ShipVisualState`.
+6. **Reach somewhere new** that the starter vessel genuinely could not access and
+   encounter a different legible opportunity.
+7. **Return** with a meaningful, receipt-backed material, item, story, Companion
+   memory or blueprint that explains the next choice.
+
+The order is intentional: every verb should answer the previous question rather
+than opening a parallel grind bar. Friendly/field combat or a Guardian lead may be
+an optional, clearly prepared branch in this first journey, but no new player is
+forced into an opaque high-stakes conquest to complete it.
+
+### Acceptance before calling the journey complete
+
+- A clean fresh save completes the ordinary route with no console action, hidden
+  prerequisite, weekly rollover, wall-clock wait, paid/random reroll or out-of-doc
+  knowledge. A failed finite/capture attempt has a visible recovery path and does
+  not permanently strand the expedition.
+- Each transition crosses a real ownership boundary: canonical world opportunity →
+  landing/extraction receipt → Cargo/Inventory → craft receipt → owned Companion
+  identity → ship capability/visual projection → newly reachable world → return
+  receipt. Reload, inventory-full, double-press and stale-tab controls prove each
+  outcome is exactly once.
+- The player can state what they discovered, why the chosen craft/Companion/ship
+  mattered, what changed visually and mechanically, and what a return reward is
+  for. Human tests assess comprehension, agency, delight, fatigue and accessibility;
+  they do not optimize time-on-task.
+- Scenario simulations in `ECONOMY_LOOT_CRAFTING.md` cover expected/minimum/
+  maximum resources and finite-world depletion, while a human playtest proves the
+  actual 30–60 minute route. Neither substitute for the other.
+
+### Later constructive world projects
+
+Once that journey is complete, optional **world projects** can extend the
+Minecraft-like build fantasy without creating chores. A scanner relay, field lab,
+shelter, cargo beacon or observatory is a finite, player-chosen construction tied to
+a canonical world and an explicit receipt. It has a visible completed state and a
+specific reach/access/efficiency/expression purpose, but no unattended production,
+decay, fuel tax, daily task, raid pressure or penalty for leaving. Project objectives
+appear only when their construction action and result are genuinely available; they
+are never used as filler Charter goals.
 
 ## ⚠ v1.8.4 — weekly charters, the clock, and the objective chip
 

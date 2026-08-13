@@ -44,6 +44,19 @@ and `npm run smoke`; see its README for the full current battery and open gates.
 Both root and v2 install surfaces declare the pinned raw-CDP `ws` transport and
 support Node `^20.19.0 || ^22.13.0 || >=24.0.0`.
 
+The approved next-stage product contract is
+[`EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md`](EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md).
+It connects the planned Inventory/character portrait, visibly upgrading Shipyard,
+item-instance loot, creature/companion ownership, active-play return missions, combat/
+Guardian receipts and full HD audio into one deterministic capability ladder. It also
+records the current implementation boundary and unfinished-system inventory: these are
+design and acceptance contracts, not claims that the Phase-4 Guide capabilities are live.
+The player-respect rule is explicit—mastery, attachment and discovery without streak decay,
+FOMO, paid random rewards, expiring missions or punishment for taking a break.
+Any future recorded/source audio also follows the empty-until-proven rights contract in
+[`AUDIO_LICENSES.md`](AUDIO_LICENSES.md); no scraping, unclear redistribution right,
+remote voice service, microphone capture, or voice cloning is part of the plan.
+
 ## Develop
 
 ```

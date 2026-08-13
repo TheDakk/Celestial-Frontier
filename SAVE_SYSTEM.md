@@ -1,5 +1,62 @@
 # Celestial Frontier — Save System
 
+> **2026-08-13 v2 next-arc overlay — PLANNED, not current code:** The current
+> v2 repository still persists one exported save blob and has no revision/CAS
+> authority; multiple tabs are last-writer-wins. `@cf/domain-sessionrng` exists as
+> a hardened primitive but gameplay does not yet persist a save-lifetime action
+> seed/counter through it. The legacy sanitizer and lifted v2 importer also accept
+> arrays where map-shaped `ascProg`, `chProg` or `prime` objects are expected
+> because arrays are JavaScript objects; those fields must explicitly reject
+> arrays. Finally,
+> `xpFirsts` grows without a live bound while only its newest 4,000 keys are saved,
+> so a sufficiently long expedition can lose older one-time-award authority on
+> reload and re-arm it. A FIFO truncation is not a safe anti-farm ledger.
+>
+> The next compatible schema separates `CatalogSpecies`, `CreatureInstance`,
+> stackable inventory, `GearInstance`, missions and immutable receipts while
+> retaining a supported legacy import adapter. Every `GearInstance` persists its
+> own `schema`, `generation:{seed,ordinal}` and immutable `sourceActionId`; that
+> source action is the exact craft, companion-mission dispatch, conquest/Guardian
+> battle, discovery or legacy-migration action/receipt, never an expedition-only
+> identity. Its `instanceId` derives from `sourceActionId + ordinal`.
+>
+> A mission has a stable id/ordinal, canonical target
+> `{galaxy:{seed,x,y},star:{seed,x,y},planet:{seed}}`, companion assignment and the
+> legal states `away → ready → claimed` or `away → recalled`. At dispatch—**before UI
+> acknowledgement**—one transaction advances the save-lifetime RNG domain ordinal,
+> creates and stores the complete immutable loot/XP/bond/Chronicle/injury receipt,
+> records active-play readiness, locks the companion and increments the save
+> revision. Return/claim never generates rewards; it compare-and-swaps the expected
+> revision, applies that receipt and clears that exact assignment once. Double
+> click, reload and a stale second tab must all converge on one claim. A full
+> inventory leaves the receipt pending rather than dropping loot. Recall is a
+> terminal zero-reward transition that releases only that mission's assignments;
+> it cannot apply the sealed receipt.
+>
+> Creature assignment is a discriminated mission-or-Recovery record. Normal v2
+> breeding atomically creates the child, assigns `fed = 0.5 × min(parentA.fed,
+> parentB.fed)`, keeps both parents owned and starts a disclosed bounded Recovery
+> for each. Recovery blocks breed/dispatch/combat until its active-play deadline.
+> Legacy parent consumption remains import/history behavior only; any future
+> irreversible Fusion is a separately named, optional, informed-confirmed action
+> and never a progression prerequisite.
+>
+> Cross-tab coordination needs repository revisions/CAS plus a broadcast invalidation
+> path; aggregate counters remain derived displays, not grant authority. Mission,
+> Recovery and planned Auto-Extractor readiness use a dedicated persisted monotonic
+> `activePlayMs`, **not** capped `COSMIC_EPOCH`. Only one tab holding the cross-tab
+> clock lease may advance it, and only while that exact session is visible and
+> answerable. Accrual commits under the same revision authority as gameplay. On
+> boot or lease handoff, the new owner rebases a fresh monotonic runtime segment
+> from the persisted `activePlayMs`; page-local timestamps never cross sessions,
+> overlapping tabs never both accrue, and `Date.now()` never enters the calculation.
+> `COSMIC_EPOCH` remains the separately capped ecology/legacy-harvest clock.
+> Migration must create
+> deterministic legacy creature/gear ids, preserve old `ea` behavior until converted,
+> reject corrupt/duplicate instance rows without erasing the coherent remainder, and
+> fixed-point round-trip every supported shape. Nothing in this planned overlay
+> changes the current save envelope, Guide, release marker or import behavior.
+
 > **2026-08-13 v2 port overlay (matches `port/v2` code):** The browser slice now
 > distinguishes a fresh store, a supported coherent save, an unsupported future
 > version, a corrupt/sparse payload, and a transient storage failure. Only a

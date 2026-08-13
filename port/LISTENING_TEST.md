@@ -1,11 +1,19 @@
 # The Human Listening Test — protocol (Gate G prerequisite)
 
+> **2026-08-13 review:** Run this protocol in two separately reported stages. Stage A is the
+> existing v1.8.9 synthesized-voice baseline below; the current v2 Phase-4 build still has
+> navigation/survey stings only and cannot substitute for it. Stage B begins only after the
+> v2 mixer, kingdom-qualified creature profiles, combat/Guardian cues and accessibility
+> controls exist. It tests recognizable identity and mix quality—not whether rendered PCM is
+> byte-identical. See `../AUDIO.md`, `../AUDIO_LICENSES.md`, and
+> `../EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md`.
+
 **Why this exists:** §15 is 904 lines of audio plan resting on 2 of 24 testers, neither
 substantive. The reviewer's measurement unblocked it (533 distinct voices → 199,707 of
 200,000 unique; duplicate-in-50 down from 91.3% → 0.6%), and every further ounce of audio
-scope — voices, ambience, the mixer — is **gated on this test**. No automated fleet can run
-it: Playwright ships `--mute-audio`. Only Nick can recruit; this file makes the session
-runnable the day players exist.
+scope — voices, ambience, the mixer — is **gated on this test**. No automated fleet or current
+repository harness supplies an audio-capture/perceptual oracle. Only Nick can recruit; this file
+makes the session runnable the day players exist.
 
 ## Setup
 
@@ -46,8 +54,35 @@ Score 1–5 unless noted:
   restart as a bug.
 - **§15 sizing:** whether the port's audio phase is 8 weeks or 16 rests on questions 1–2.
 
+## Stage B — v2 HD identity and combat mix (future gate)
+
+When the v2 systems exist, recruit the same 12–24-player minimum and add blinded matching:
+
+1. hear one call, then choose its specimen from four same-scale candidates;
+2. hear two related calls and identify parent/offspring or two hybrids sharing one lineage;
+3. identify a familiar companion after its name/card is hidden;
+4. distinguish dodge, stun, critical, status, injury, victory and Guardian warnings using
+   both audio and their matching caption/visual token;
+5. compare the same encounter on phone speaker, headphones, mono, late-night/dynamic-range
+   mode and reduced-intensity mode;
+6. play a 45–60 minute creature/combat/ship session and record fatigue, masking, repetition,
+   frightening peaks and any important event that became audio-only.
+
+Include Earth fauna, flora/fungi/microbe sonification, procedural creatures, both parent orders
+of at least three hybrids, one named Guardian, two ship stages and three biomes. Do not ask
+“does this sound realistic?” alone; ask whether it is recognizable, belongs to the visible
+body/place/action, remains pleasant, and communicates no exclusive gameplay information.
+
+Stage B cannot pass until the rights manifest is complete, active-node/decoded-memory/visibility
+gates pass, and real iPhone/Android thermal sessions show no runaway heat or battery behavior.
+Profile-hash uniqueness, route coverage and automated audio backends are preconditions—not a
+human listening verdict.
+
 ## Mechanics
 
 - One facilitator note-sheet per player; no discussion between arms until both sessions done.
 - Record device model + headphone type. Phone-speaker sessions in a QUIET room.
 - Results land in `audits/listening-test-<date>/` (the audits/ committed-bundle rule).
+- Stage B results additionally bind exact source commit, audio resolver/content-manifest
+  versions, device/browser, output mode, save/encounter seeds and the matching rights-manifest
+  digest so later tuning can be compared honestly.

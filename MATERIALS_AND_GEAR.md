@@ -1,17 +1,42 @@
 # Celestial Frontier — Materials, Ingredients, Crafting & Gear (v1.7 "The Forge")
 
 **Status:** CANONICAL design of record for v1.7 "The Forge". FULL adoption — no lean MVP.
-**Matches code as of:** 2026-07-23 — the §3 roster exists as the **`MATERIALS` registry** (all 47 with
+**Matches legacy code as of:** 2026-08-13 — the §3 roster exists as the **`MATERIALS` registry** (all 47 with
 family/tier/class/job), and the economy is now **wired**: all 7 cosmics are obtainable + craftable — the 5
 world-cosmics via tier-gated veins (`cosmicVeinFor`, §6 note), the 2 stellar via star skimming (`skimStar`,
 §8 note), each anchoring an endgame gear piece (`cg-*`, §17 note). This landed **fp-SAFE (no re-pin)** — the
 cosmics are a separate lit vein, so `depositsFor` and every existing world stay byte-identical. **Still design
-(not yet built):** the §22 gear×tier + ship-hull art. *(2026-07-26: the §5 per-deposit resolver shipped —
+(not yet built in its approved form):** the §22 gear-family×tier masters and **distinct v2** ship-hull
+stages. Legacy v1.8.9 already has deterministic additive `shipImage()` art—a scout hull gains each
+built system—but that is one evolving silhouette, not the four-stage v2 target. *(2026-07-26: the §5 per-deposit resolver shipped —
 `resolvedDepositTier`, grounded cards grade each vein for that world; the §24 power-curve pass ran — archetype
 band restored via the balance sim, two dead relics retuned as sidegrades, sim joined the deploy gate.)*
-**Build phase:** the vocabulary rode Phase A; the Forge economy is Phase B (source-only,
-bundled — live is v1.6.4).
+**Build phase:** the legacy Forge economy and additive ship image are bundled in v1.8.9;
+the distinct v2 presentation and progression boundary is the dated overlay below.
 **Related:** `RARITY_UNIVERSAL.md`, `FORGE_AND_DISCOVERY.md`, `ECONOMY_LOOT_CRAFTING.md`.
+
+> **2026-08-13 v2 next-arc overlay — approved design, not current behavior:** V2
+> currently preserves imported Cargo, items, equipment, technologies and Ascent state,
+> but it does not expose an inventory, Fabricator, Research Bench, Shipyard, upgrade action
+> or ship visual. Its read-only Compendium is also not the finished inventory-delivery
+> pattern: as many as 1,500 eager rows can receive full 440px portraits before 132px
+> thumbnails finish, so virtualization and a real-browser memory plateau gate come first.
+> The approved surface mounts only a bounded visible window, delivers 132px creature
+> thumbnails asynchronously, opens the selected 440px detail on demand, and explicitly
+> releases stale/closed work.
+>
+> Ship presentation consumes a pure `ShipVisualState` shared with the exact reach-stage
+> decision. The four capability chassis are Scout/Chemical, Jump/Interstellar,
+> Array/Survey Cruiser and Intergalactic/Frontier; Auto-Extractor and Corona Scoop remain
+> independent hardpoints. A legacy `ascCh`-complete save with no drive item receives an
+> honest veteran-refit chassis rather than a bare full-reach scout or a falsely installed
+> named drive. The Shipyard may own one bounded disposable Pixi preview, paused while
+> hidden/reduced-motion and torn down on close; list/inventory portraits stay static.
+> This is a mastery and capability ladder, not a rarity ladder: progression unlocks
+> understandable functions, tier and craftsmanship tune strength, and rarity continues to
+> describe identity/scarcity rather than substitute for power. None of these v2 surfaces is
+> advertised as implemented until its outcomes, save round-trip, memory plateau and visual
+> proof sheets pass.
 
 ## 0. Locked decisions (Nick, 2026-07-22)
 - **STEAM is the destination.** The game is being built toward a Steam release, so depth is the product —
@@ -403,7 +428,9 @@ then the bespoke art registry is laid over it and proof-sheeted.
 > ice's identity once everything else moved off it); Vg/Pz keep their faceted-gem masters (they ARE gems). The
 > 7 cosmics are bespoke in the cosmic branch (mini-star / bound coronal loop / genesis clast / ancient monolith /
 > nebula-backed void tear / time-ringed shard / Einstein-ring dark mass). Proof-sheet: `tools/sheets/materials47.js`
-> → reviewed at 47/47 distinct, no recolor pairs. STILL OPEN in §22: gear family×tier masters + ship hull tiers.
+> → reviewed at 47/47 distinct, no recolor pairs. STILL OPEN in §22: gear family×tier masters + the
+> distinct four-stage v2 hull treatment. The legacy additive `shipImage()` progression exists and is
+> proof-sheeted, but it does not close that v2 silhouette/ownership target.
 
 ## 23. ARPG item windows — Diablo 2 / Path of Exile feel (Nick, 2026-07-23, LOCKED)
 

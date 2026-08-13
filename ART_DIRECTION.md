@@ -8,6 +8,52 @@ decisions we actually made). Content catalogs (`BIOME_ATLAS.md` at the repo root
 fauna/flora data-pack CSVs) remain the *content* source of truth; this is the *direction* source
 of truth.
 
+## 2026-08-13 v2 next-arc overlay — approved direction, not current implementation
+
+**Current implementation:** `port/v2` already paints deterministic static species art and uses it
+for the read-only Compendium and Planetside roster. The Compendium list is still eager: a save may
+carry 1,500 entries, and a cold row currently receives the full 440px portrait while a 132px
+thumbnail is derived later. Cache entry counts do not bound the full portraits retained by mounted
+rows, so this is an open CPU/decode/memory risk, not a completed delivery system. V2 has no Cargo,
+Shipyard, ship portrait, crafting, research, or ship-upgrade presentation yet. Legacy v1.8.9 does
+have deterministic additive ship art in `shipImage()`—the scout gains visible drive, array,
+extractor and scoop details—but that one base silhouette is a reference, not proof that the v2
+distinct-hull target is built.
+
+**Approved next-arc direction:** dense creature collections use a virtualized list and asynchronous
+132px delivery, with only the visible window and a small overscan mounted. The 440px master belongs
+to the selected detail card. Placeholder-to-thumbnail replacement must preserve identity, focus and
+scroll; stale jobs cancel; decoded-pixel/byte budgets and explicit close/disposal ownership replace
+entry-count optimism. A real-browser maximum-catalogue cycle must plateau after warm-up, and a
+deliberate no-virtualization/no-disposal control must fail before the gate is trusted.
+
+Ship art is driven by one pure `ShipVisualState` projection shared with the reach ladder—art never
+writes progression. Four chassis stages must pass the same two-second silhouette test as organisms:
+**Scout / Chemical**, **Jump / Interstellar**, **Array / Survey Cruiser**, and
+**Intergalactic / Frontier**. Built Auto-Extractor and Corona Scoop systems are legible hardpoints,
+not extra chassis tiers. The legacy `ascCh` completion fallback must resolve to an honest veteran
+refit state even when an old save has no drive item; it must not show a bare scout with full reach or
+claim that a missing named system is installed. Shipyard may add one bounded Pixi preview for engine,
+beacon and dish motion, but it pauses while hidden or under reduced motion and destroys its owned
+textures, filters and particles on close. Dense inventory rows remain static DOM images.
+
+The visual ladder respects player mastery: every stage first communicates the capability the player
+earned, then adds craft and ornament. Optional systems remain recognizable without turning rarity
+into power, hiding a mechanical requirement behind decoration, or making veterans re-earn access.
+No blanket repaint of the 1,250 portraits is authorized by this arc; the existing scoped visual-review
+rulers remain in force.
+
+**Later experience surfaces, also planned rather than live:** the first complete journey must make
+the next possibility visible before its rules are explained: an opportunity on a world, a finite
+resource or companion lead, a Shipyard before/after state, and a farther destination that the new
+capability reaches. A future optional Outpost/project layer uses the same grammar—one readable
+purpose, finite inputs, a visible world/ship change and no background-maintenance treadmill. The
+Expedition Chronicle/Museum is a player-curated display of receipt-backed discoveries, companions,
+ship refits, missions and Guardian trophies; it is not a second event store, a rarity wall or a
+retention dashboard. Human review must judge those surfaces at phone, desktop and sustained-use
+scales: no automated art count can decide whether a build feels earned, a personal record feels
+meaningful, or a dense history remains restful to read.
+
 ---
 
 ## 0. Source documents (Nick's uploads, all folded in here)
