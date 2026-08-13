@@ -3066,7 +3066,8 @@ async function main() {
     objectiveYieldControlRun = false, topChromeControlRun = false, portraitBandControlRun = false,
     portraitFallbackControlRun = false,
     modalControlRun = false, modalLiveControlRun = false, closeLabelControlRun = false,
-    hiddenOpenerControlRun = false, reloadBindingControlRun = false;
+    hiddenOpenerControlRun = false, reloadBindingControlRun = false,
+    releaseDetailControlRun = false, releaseTailControlRun = false;
   const add = (viewport, surface, rows) => {
     for (const row of rows || []) findings.push({ context: { viewport, surface }, row });
   };
@@ -4391,11 +4392,15 @@ async function main() {
             'post-close Planetside keeps at least a useful 72px band, 6px trail clearance, a visible heading, and a visible or vertically reachable specimen');
           if (!portraitBandControlRun) {
             portraitBandControlRun = true;
-            const bandControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),prior=side.getAttribute('style'),tall=document.createElement('div');
-              tall.setAttribute('data-cf-control','portrait-tall-content');tall.style.height='96px';side.appendChild(tall);side.style.setProperty('max-height','none','important');
-              const result=${portraitBandCheck};tall.remove();if(prior===null)side.removeAttribute('style');else side.setAttribute('style',prior);return result;})()`);
+            /* Reproduce the reported geometry directly. Removing a cap and
+               appending arbitrary content only collided on the shortest
+               portrait and went green in a targeted primary-phone run. */
+            const bandControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),prior=side.style.getPropertyValue('transform'),priority=side.style.getPropertyPriority('transform'),
+              a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),dy=t.bottom-1-a.top;
+              side.style.setProperty('transform','translateY('+dy+'px)','important');const result=${portraitBandCheck};
+              if(prior)side.style.setProperty('transform',prior,priority);else side.style.removeProperty('transform');return result;})()`);
             if (bandControl.ok || !bandControl.trailVisible || !(bandControl.gap < 5.5)) {
-              instrumentFailures.push(`${vp.label}: removed-cap/tall-content control did not reproduce the visible trail collision (${JSON.stringify(bandControl)})`);
+              instrumentFailures.push(`${vp.label}: explicit portrait-band/trail collision stayed green (${JSON.stringify(bandControl)})`);
             }
             recordControls('planetside-portrait-band-viability');
           }
@@ -4549,10 +4554,14 @@ async function main() {
         addOutcome(vp.label, 'guide-cross-link', 'GUIDE_NAVIGATION_FOCUS_OUTCOME', '#guidepanel [data-guide-category]',
           await evalIn(`window.__CF_GLASS_AUDIT__.navigationOutcome('#guidepanel','[data-guide-category]','.guide-topic',160)`),
           'Guide cross-link renders its destination and places focus on the destination Back control');
+        const guideReleaseBaseline = await evalIn(`(()=>{ const state=window.__CF_SLICE__.api.state();
+          return {rnSeen:state.rnSeen,releasePending:state.releasePending};})()`);
         await evalIn(`document.querySelector('#guidepanel .guide-tools [data-guide-releases]')?.click()`);
         await waitFor('release archive', `document.querySelectorAll('#guidepanel [data-release-index]').length>=50`);
-        const developmentArchive = await evalIn(`(()=>{ const first=document.querySelector('#guidepanel [data-release-index="0"]'),text=first?.textContent||'';
-          return {ok:!!first&&/v2\\.0/.test(text)&&/UNRELEASED DEVELOPMENT/.test(text),text};})()`);
+        const developmentArchive = await evalIn(`(()=>{ const first=document.querySelector('#guidepanel [data-release-index="0"]'),text=first?.textContent||'',
+          state=window.__CF_SLICE__.api.state();return {ok:!!first&&text.includes('v2.0')&&/UNRELEASED DEVELOPMENT/.test(text)
+            &&state.rnSeen===${JSON.stringify(guideReleaseBaseline.rnSeen)}&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
+            text,rnSeen:state.rnSeen,releasePending:state.releasePending};})()`);
         addOutcome(vp.label, 'release-history', 'GUIDE_DEVELOPMENT_RELEASE_IDENTITY', '#guidepanel [data-release-index="0"]', developmentArchive,
           'the draft archive row displays v2.0 while remaining explicitly unreleased development copy');
         addOutcome(vp.label, 'release-history', 'GUIDE_NAVIGATION_FOCUS_OUTCOME', '#guidepanel [data-guide-home]',
@@ -4573,6 +4582,93 @@ async function main() {
           required: [{ selector: '.guide-topic', min: 1, textMin: 180 }, { selector: '.guide-status', min: 1 }, { selector: '.guide-topic h5', min: 1 }, { selector: '.guide-topic li', min: 1 }],
           interactiveRoots: ['#guidepanel'], contrastSelectors: ['#guidepanel'], overlapPairs: [['#guidepanel', '#dock']],
         }));
+        const developmentDetailCheck = `(()=>{ const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel'),article=panel?.querySelector('.guide-topic'),
+          headings=article?[...article.querySelectorAll('h5')].map((node)=>(node.textContent||'').trim()):[],
+          bullets=article?[...article.querySelectorAll('li')].map((node)=>(node.textContent||'').trim()):[],text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
+          title=article?.querySelector('[data-guide-heading]')?.textContent||'';
+          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'];
+          const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
+            ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
+            ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
+          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
+          return {ok:identity
+            &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
+            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===43&&bullets.every((bullet)=>bullet.length>0)
+            &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)&&/RARITY IS NOT A SPECTRAL CLASS/.test(text)
+            &&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text)&&state.rnSeen===${JSON.stringify(guideReleaseBaseline.rnSeen)}
+            &&honest&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
+            identity,honest,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),rnSeen:state.rnSeen,
+            releasePending:state.releasePending};})()`;
+        const developmentDetail = await evalIn(developmentDetailCheck);
+        addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
+          'A New Foundation renders the exact five-section, 43-outcome development inventory without changing shipped-release state');
+        if (!releaseDetailControlRun) {
+          releaseDetailControlRun = true;
+          const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
+            headings=[...article.querySelectorAll('h5')],items=[...article.querySelectorAll('li')],title=article.querySelector('[data-guide-heading]'),priorState=S.api.state;
+            const a=headings[0]?.textContent||'',b=headings[1]?.textContent||'',middle=items[12],parent=middle?.parentNode,next=middle?.nextSibling;
+            const titleText=title?.textContent||'',claim=items[1],claimText=claim?.textContent||'';
+            let order=null,inventory=null,identity=null,overclaim=null,authority=null,error=null;
+            try {
+              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim)throw new Error('development-detail control fixture missing');
+              headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
+              headings[0].textContent=a;headings[1].textContent=b;
+              middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
+              title.textContent=titleText.replace('v2.0','v2x0');identity=${developmentDetailCheck};title.textContent=titleText;
+              claim.textContent='Mining is now playable.';overclaim=${developmentDetailCheck};claim.textContent=claimText;
+              S.api.state=()=>({...priorState(),rnSeen:'v2-control'});authority=${developmentDetailCheck};
+            } catch(cause) { error=String(cause?.message||cause); }
+            finally {
+              if(headings[0])headings[0].textContent=a;if(headings[1])headings[1].textContent=b;
+              if(middle&&parent&&!middle.isConnected)parent.insertBefore(middle,next);if(title)title.textContent=titleText;if(claim)claim.textContent=claimText;S.api.state=priorState;
+            }
+            const restored=headings[0]?.textContent===a&&headings[1]?.textContent===b&&middle?.isConnected===true
+              &&title?.textContent===titleText&&claim?.textContent===claimText&&S.api.state===priorState;
+            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===42
+              &&identity?.ok===false&&identity?.identity===false&&overclaim?.ok===false&&overclaim?.honest===false
+              &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
+              order,inventory,identity,overclaim,authority,restored,error};})()`);
+          if (!detailControls.ok) {
+            instrumentFailures.push(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
+          }
+          recordControls('guide-render-focus');
+        }
+        if (vp.label === 'primary-phone' || vp.label === 'desktop') {
+          const releaseTailCheck = `(()=>{ const panel=document.getElementById('guidepanel'),items=panel?[...panel.querySelectorAll('.guide-topic li')]:[],tail=items.at(-1);
+            if(!panel||!tail)return {ok:false,why:'missing panel or tail'};const p=panel.getBoundingClientRect(),r=tail.getBoundingClientRect(),overflowY=getComputedStyle(panel).overflowY,
+              maxScroll=Math.max(0,panel.scrollHeight-panel.clientHeight),scrollable=/^(auto|scroll)$/.test(overflowY)&&maxScroll>0,
+              advanced=panel.scrollTop>0&&panel.scrollTop>=maxScroll-2,visible=r.top>=p.top-1&&r.bottom<=p.bottom+1;
+            return {ok:scrollable&&advanced&&visible&&(tail.textContent||'').toLowerCase().includes('production remains the v1.8.9 main-branch site'),
+              overflowY,advanced,visible,scrollTop:panel.scrollTop,maxScroll,text:tail.textContent||''};})()`;
+          const releasePoint = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),r=panel.getBoundingClientRect();panel.scrollTop=0;
+            return {x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};})()`);
+          for (let i = 0; i < 3; i++) {
+            await send('Input.dispatchMouseEvent', { type: 'mouseWheel', x: releasePoint.x, y: releasePoint.y,
+              deltaX: 0, deltaY: 10000 }, session);
+          }
+          await sleep(100);
+          addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_TAIL_REACH', '#guidepanel .guide-topic li:last-child',
+            await evalIn(releaseTailCheck),
+            'real user scrolling reaches the final v2.0 development note inside the visible Guide viewport');
+          if (vp.label === 'primary-phone') {
+            const priorOverflow = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),style=panel.style,
+              prior={value:style.getPropertyValue('overflow-y'),priority:style.getPropertyPriority('overflow-y')};
+              style.setProperty('overflow-y','hidden','important');panel.scrollTop=0;return prior;})()`);
+            for (let i = 0; i < 3; i++) {
+              await send('Input.dispatchMouseEvent', { type: 'mouseWheel', x: releasePoint.x, y: releasePoint.y,
+                deltaX: 0, deltaY: 10000 }, session);
+            }
+            await sleep(100);
+            const hiddenTailControl = await evalIn(releaseTailCheck);
+            await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),prior=${JSON.stringify(priorOverflow)};
+              if(prior.value)panel.style.setProperty('overflow-y',prior.value,prior.priority);else panel.style.removeProperty('overflow-y');panel.scrollTop=0;})()`);
+            if (hiddenTailControl.ok || hiddenTailControl.overflowY !== 'hidden' || hiddenTailControl.scrollTop !== 0) {
+              instrumentFailures.push(`${vp.label}: hidden-overflow release-tail injection stayed user-reachable (${JSON.stringify(hiddenTailControl)})`);
+            } else {
+              releaseTailControlRun = true;
+            }
+          }
+        }
         await evalIn(`document.querySelector('#guidepanel [data-pnx]')?.click()`);
         addOutcome(vp.label, 'guide', 'PANEL_DISCLOSURE_STATE', '#dockguide',
           await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome('#dockguide','#guidepanel',false)`),
@@ -4941,6 +5037,12 @@ async function main() {
   }
   if (!hiddenOpenerControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {
     instrumentFailures.push('hidden panel-opener focus fallback control never ran');
+  }
+  if (!releaseDetailControlRun && !targetedProductBlocked) {
+    instrumentFailures.push('development release detail controls never ran');
+  }
+  if (!releaseTailControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.label === 'primary-phone')) {
+    instrumentFailures.push('development release hidden-overflow tail control never ran');
   }
   if (!reloadBindingControlRun && !targetedProductBlocked) instrumentFailures.push('live slice-ready binding controls never ran');
   const browser = browserVersions.length ? {

@@ -337,6 +337,10 @@ try {
   if (!boot.topbar) fails.push('no #topbar — the Phase 4 shell is missing');
   if (!boot.st || boot.st.mode !== 'universe') fails.push('not in universe mode at boot: ' + JSON.stringify(boot.st && boot.st.mode));
   if (boot.st && boot.st.panelOpen !== null) fails.push('the v2.0 development identity opened as a shipped production release popup: ' + JSON.stringify(boot.st.panelOpen));
+  if (boot.st && (boot.st.releasePending !== null || boot.st.rnSeen !== '0')) {
+    fails.push('the v2.0 development draft queued or marked itself seen on a fresh boot: '
+      + JSON.stringify({ releasePending: boot.st.releasePending, rnSeen: boot.st.rnSeen }));
+  }
   if (boot.st && boot.st.trail !== 'Cosmos') fails.push('trail at boot is not Cosmos: ' + JSON.stringify(boot.st.trail));
   if (boot.st && !(parseFloat(boot.st.topbarH) > 20)) fails.push('--topbar-h not measured: ' + JSON.stringify(boot.st.topbarH));
   if (boot.st && !boot.st.ctx) fails.push('the caption line is empty at boot');
@@ -830,12 +834,107 @@ try {
     || !/imported\/current HP/i.test(hpGuide.text) || /Not yet available in v2/.test(hpGuide.text)) {
     fails.push('GUIDE HP boundary did not render the live read-only meter honestly: ' + JSON.stringify(hpGuide));
   }
+  const releaseBaseline = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state();
+    return {rnSeen:s.rnSeen,releasePending:s.releasePending}; })()`);
+  if (releaseBaseline.rnSeen !== '0' || releaseBaseline.releasePending !== null) {
+    fails.push('GUIDE draft release state changed before Release history opened: ' + JSON.stringify(releaseBaseline));
+  }
   const releaseGuide = await evalIn(`(()=>{ document.querySelector('#guidepanel [data-guide-releases]')?.click();
-    const rows=[...document.querySelectorAll('#guidepanel [data-release-index]')],first=rows[0],second=rows[1];
-    return {count:rows.length,first:first?.textContent||'',second:second?.textContent||''}; })()`);
+    const S=window.__CF_SLICE__,rows=[...document.querySelectorAll('#guidepanel [data-release-index]')],first=rows[0],second=rows[1],s=S.api.state();
+    return {count:rows.length,first:first?.textContent||'',second:second?.textContent||'',rnSeen:s.rnSeen,releasePending:s.releasePending}; })()`);
   if (releaseGuide.count !== 57 || !/v2\.0/.test(releaseGuide.first)
-    || !/UNRELEASED DEVELOPMENT/.test(releaseGuide.first) || !/v1\.8\.9/.test(releaseGuide.second)) {
+    || !/UNRELEASED DEVELOPMENT/.test(releaseGuide.first) || !/v1\.8\.9/.test(releaseGuide.second)
+    || releaseGuide.rnSeen !== releaseBaseline.rnSeen || releaseGuide.releasePending !== releaseBaseline.releasePending) {
     fails.push('GUIDE release history did not preserve draft/legacy separation and full inventory: ' + JSON.stringify(releaseGuide));
+  }
+  const releaseDraftCheck = `(()=>{ const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel'),article=panel?.querySelector('.guide-topic');
+    const headings=article?[...article.querySelectorAll('h5')].map((row)=>row.textContent?.trim()||''):[];
+    const bullets=article?[...article.querySelectorAll('li')].map((row)=>row.textContent?.trim()||''):[];
+    const text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),title=article?.querySelector('[data-guide-heading]')?.textContent||'';
+    const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
+      ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
+      ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
+    return {title,identity:title.includes('v2.0 · A New Foundation'),
+      status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,headings,bulletCount:bullets.length,
+      populated:bullets.length===43&&bullets.every((bullet)=>bullet.length>0),
+      canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
+      complete:/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)&&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text),
+      honest:!overclaim&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
+      authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
+  await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
+  const releaseDraft = await evalIn(releaseDraftCheck);
+  if (!releaseDraft.identity || releaseDraft.status !== 'draft'
+    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 43 || !releaseDraft.complete
+    || !releaseDraft.honest || !releaseDraft.authority || releaseDraft.releasePending !== releaseBaseline.releasePending
+    || releaseDraft.rnSeen !== releaseBaseline.rnSeen) {
+    fails.push('GUIDE v2.0 development bulletin is incomplete or changed shipped-release state: '
+      + JSON.stringify({ ...releaseDraft, baseline: releaseBaseline }));
+  }
+  const releaseOrderCtl = await evalIn(`(()=>{ const headings=[...document.querySelectorAll('#guidepanel .guide-topic h5')];
+    if(headings.length<2)return {canonical:true,error:'missing headings'}; const a=headings[0].textContent,b=headings[1].textContent;
+    headings[0].textContent=b;headings[1].textContent=a;const result=${releaseDraftCheck};headings[0].textContent=a;headings[1].textContent=b;return result; })()`);
+  if (releaseOrderCtl.canonical) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — reordering two v2.0 categories stayed canonical: ' + JSON.stringify(releaseOrderCtl));
+  }
+  const releaseInventoryCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][12];
+    if(!row)return {populated:true,error:'missing control row'};const parent=row.parentNode,next=row.nextSibling;row.remove();const result=${releaseDraftCheck};
+    parent.insertBefore(row,next);return result; })()`);
+  if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 42) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet stayed complete: ' + JSON.stringify(releaseInventoryCtl));
+  }
+  const releaseCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+    .find((item)=>/ONE SURFACE, ONE CLOSE/.test(item.textContent||''));if(!row)return {complete:true,error:'missing sentinel row'};
+    const prior=row.textContent;row.textContent='Required player outcome removed';const result=${releaseDraftCheck};row.textContent=prior;return result; })()`);
+  if (releaseCopyCtl.complete) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — removing a required v2.0 outcome stayed complete: ' + JSON.stringify(releaseCopyCtl));
+  }
+  const releaseVersionCtl = await evalIn(`(()=>{ const heading=document.querySelector('#guidepanel .guide-topic [data-guide-heading]');
+    if(!heading)return {identity:true,error:'missing release heading'};const prior=heading.textContent;heading.textContent=prior.replace('v2.0','v2x0');
+    const result=${releaseDraftCheck};heading.textContent=prior;return result; })()`);
+  if (releaseVersionCtl.identity) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — mutating the v2.0 punctuation preserved exact identity: ' + JSON.stringify(releaseVersionCtl));
+  }
+  const releaseOverclaimCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][1];
+    if(!row)return {honest:true,error:'missing overclaim control row'};const prior=row.textContent;row.textContent='Mining is now playable.';
+    const result=${releaseDraftCheck};row.textContent=prior;return result; })()`);
+  if (releaseOverclaimCtl.honest) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — an injected unported-feature claim stayed honest: ' + JSON.stringify(releaseOverclaimCtl));
+  }
+  const releaseAuthorityCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,prior=S.api.state;let result;
+    try{S.api.state=()=>({...prior(),rnSeen:'2.0'});result=${releaseDraftCheck};}finally{S.api.state=prior;}return result;})()`);
+  if (releaseAuthorityCtl.authority || releaseAuthorityCtl.rnSeen === releaseBaseline.rnSeen) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — mutating draft seen-state stayed authoritative: ' + JSON.stringify(releaseAuthorityCtl));
+  }
+  const releaseTailCheck = `(()=>{ const panel=document.getElementById('guidepanel'),items=panel?[...panel.querySelectorAll('.guide-topic li')]:[],tail=items.at(-1);
+    if(!panel||!tail)return {ok:false};const p=panel.getBoundingClientRect(),r=tail.getBoundingClientRect(),overflowY=getComputedStyle(panel).overflowY,
+      maxScroll=Math.max(0,panel.scrollHeight-panel.clientHeight),scrollable=/^(auto|scroll)$/.test(overflowY)&&maxScroll>0,
+      advanced=panel.scrollTop>0&&panel.scrollTop>=maxScroll-2,visible=r.top>=p.top-1&&r.bottom<=p.bottom+1;
+    return {ok:scrollable&&advanced&&visible,overflowY,advanced,visible,scrollTop:panel.scrollTop,maxScroll,
+      scrollHeight:panel.scrollHeight,clientHeight:panel.clientHeight,text:tail.textContent||''}; })()`;
+  const releaseScrollPoint = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),r=panel.getBoundingClientRect();panel.scrollTop=0;
+    return {x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};})()`);
+  for (let i = 0; i < 3; i++) {
+    await send('Input.dispatchMouseEvent', { type: 'mouseWheel', x: releaseScrollPoint.x, y: releaseScrollPoint.y,
+      deltaX: 0, deltaY: 10000 }, sess);
+  }
+  await sleep(100);
+  const releaseTail = await evalIn(releaseTailCheck);
+  if (!releaseTail.ok || !releaseTail.text.toLowerCase().includes('production remains the v1.8.9 main-branch site')) {
+    fails.push('GUIDE v2.0 development bulletin tail is not scroll-reachable: ' + JSON.stringify(releaseTail));
+  }
+  const releaseOverflowPrior = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),style=panel.style;
+    const prior={value:style.getPropertyValue('overflow-y'),priority:style.getPropertyPriority('overflow-y')};
+    style.setProperty('overflow-y','hidden','important');panel.scrollTop=0;return prior;})()`);
+  for (let i = 0; i < 3; i++) {
+    await send('Input.dispatchMouseEvent', { type: 'mouseWheel', x: releaseScrollPoint.x, y: releaseScrollPoint.y,
+      deltaX: 0, deltaY: 10000 }, sess);
+  }
+  await sleep(100);
+  const releaseTailCtl = await evalIn(releaseTailCheck);
+  await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),prior=${JSON.stringify(releaseOverflowPrior)};
+    if(prior.value)panel.style.setProperty('overflow-y',prior.value,prior.priority);else panel.style.removeProperty('overflow-y');panel.scrollTop=0;})()`);
+  if (releaseTailCtl.ok || releaseTailCtl.overflowY !== 'hidden' || releaseTailCtl.scrollTop !== 0) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — clipping the expanded bulletin tail stayed reachable: ' + JSON.stringify(releaseTailCtl));
   }
   const guideFocusBack = await evalIn(`(()=>{ document.querySelector('#guidepanel [data-pnx]').click();
     return document.activeElement&&document.activeElement.id; })()`);
@@ -849,6 +948,11 @@ try {
   await navigateToSlice(sess, URL0, 'Guide seen-state reload');
   const guideReload = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (!guideReload.seenGuide) fails.push('GUIDE seen-state did not survive its isolated storage/reload outcome');
+  if (guideReload.releasePending !== releaseBaseline.releasePending || guideReload.rnSeen !== releaseBaseline.rnSeen) {
+    fails.push('GUIDE draft release changed shipped-release state after persistence/reload: '
+      + JSON.stringify({ baseline: releaseBaseline, rnSeenAfter: guideReload.rnSeen,
+        releasePending: guideReload.releasePending }));
+  }
 
   const importAccess = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
     document.getElementById('docksets').click();
