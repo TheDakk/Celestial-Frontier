@@ -739,6 +739,15 @@ A prior green browser step does not certify the next process's provenance. Do no
 of failure green with a retry, a longer startup bound, a fallback reorder, or by clearing the last
 diagnostic mentioned on stderr; repair the scope and require matching new-head CI.
 
+On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
+crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread
+`TransformProcessType` / `_RegisterApplication` SIGABRT within 100 ms of launch; the system log
+showed denied LaunchServices and WindowServer lookups. That is an environment refusal before CDP,
+page creation, GPU allocation, or game code—not a product crash and not memory pressure. The shared
+launch boundary rejects `CODEX_SANDBOX=seatbelt` before spawning Chromium and instructs the agent to
+use approved elevated execution. Negative-control the environment check without launching a real
+browser; the actual browser outcome still requires a permitted process.
+
 The report is process state too. A tracked last-run JSON can survive a launcher failure and make a
 red current run look accompanied by green evidence. Browser gates must atomically replace stale
 output with a `running` record before launch, then write a terminal `pass`, `fail`, or

@@ -29,7 +29,7 @@
     "preview:package": "node tools/devpreview.mjs",
     "preview:verify": "node tools/devpreview.mjs",
     "preview:smoke": "node tools/devpreviewcheck.mjs",
-    "preview:selftest": "node tools/devpreview.mjs --selftest",
+    "preview:selftest": "node tools/devpreview.mjs --selftest && node tools/devpreviewcheck.mjs --selftest",
     "proofsheet": "node tools/proofsheet.mjs",
     "perf": "node tools/sliceperf.mjs",
     "speciesaudit": "node tools/speciesaudit.mjs",

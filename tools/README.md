@@ -32,6 +32,13 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > `bootperf.js` invoke that same executable resolver, so they cannot validate or select
 > a different browser; bootperf still owns its older CDP lifecycle and is not covered by
 > the launcher's lifecycle claims.
+> On macOS, Chromium cannot register with LaunchServices from inside the Codex
+> Seatbelt profile. The resolver/launcher therefore rejects
+> `CODEX_SANDBOX=seatbelt` before browser spawn and directs the command through
+> approved elevated execution. This prevents an environment refusal from creating
+> a misleading Edge crash report before CDP or a page exists. The two historical
+> `port/spike` screenshot launchers also resolve through this guard; current macOS-
+> capable repository browser tools therefore fail before spawn inside Seatbelt.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,
