@@ -370,12 +370,12 @@ const TOUCH_DPR = navigator.maxTouchPoints > 0
    as their aggregate pixel budget, not as permission for two 4096² stores.
    CSS viewports larger than one half-budget are an ultra-density stress case:
    preserve native backing through UHD 3840×2160, then cap each simultaneous
-   store at 3,145,728 pixels so a slow software renderer retains
+   store at 2,073,600 pixels (1,920×1,080) so a slow software renderer retains
    sustained answerability after publishing readiness and across resize. */
 const MAX_FULL_VIEWPORT_BACKING_PIXELS = 16_777_216;
 const FULL_VIEWPORT_CANVAS_COUNT = 2;
 const MAX_BACKING_PIXELS_PER_CANVAS = MAX_FULL_VIEWPORT_BACKING_PIXELS / FULL_VIEWPORT_CANVAS_COUNT;
-const MAX_ULTRA_VIEWPORT_BACKING_PIXELS_PER_CANVAS = 3_145_728;
+const MAX_ULTRA_VIEWPORT_BACKING_PIXELS_PER_CANVAS = 2_073_600;
 const roundedBackingPixels = (width: number, height: number, resolution: number): number =>
   Math.max(1, Math.round(width * resolution)) * Math.max(1, Math.round(height * resolution));
 const fitResolutionToPixelCap = (

@@ -1128,8 +1128,8 @@ duplicates).
   stayed 6,290,900 pixels combined. Nine automated-only personas and terminal-only
   581/659/73/152 ms performance passed. Preview `dev-preview-exact-df1c28b-20260812T211642Z`
   was browser-smoked under Edge 151 over loopback, bound to the expected separate development
-  origin, with `publishable:false`. That source remains
-  prior #206 evidence; current #207 repair authority is the clean `6554b2b` block below. No host/human/Ready/
+  origin, with `publishable:false`. That source and clean `6554b2b` below remain
+  prior evidence; current #208 repair authority is pending a clean committed exact battery. No host/human/Ready/
   merge/release/deploy/version authority follows.
 - ★ **D-UI-6 — adjacent import/release bindings share one ordinal ruler (exact clean local
   evidence; matching CI pending, 2026-08-12).** Test-battery #207, run
@@ -1171,8 +1171,50 @@ duplicates).
   over loopback, bound to the expected separate development origin, with `publishable:false`
   and content
   `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`.
-  This source underlies the forthcoming/current docs-only tip; the selected pushed tip still
-  requires matching CI. No human, host, Ready, merge, release, deployment, or version authority follows.
+  That immutable source remains prior #207 executable evidence; live Git/PR state determines
+  the current tip, upstream, and checks, and the selected pushed tip still requires matching CI.
+  No human, host, Ready, merge, release, deployment, or version authority follows.
+- ★ **D-UI-7 — fixed ultra backing tier restores sustained answerability (dirty diagnostic
+  PASS only; clean exact authority pending, 2026-08-12).** Test-battery #208, run
+  `31649176954` attempt 1 / job `94289516851`, completed without retry at exact pushed
+  head `ee8bc281c424b5a8f998dc7327372e5f5a18067d`; merge `8fc6b4fc` is tree-identical,
+  and branch-flow `31649175614` / job `94289512873` passed. Steps 1–15 and `smoke:ci`
+  passed. The first 11 glass rows passed; desktop-8k alone reported
+  `REPLACEMENT_UNANSWERABLE_AFTER_READY`. Its valid 2,365×1,330 pair /6,290,900 pixels
+  scheduled ready at browser performance 584.3 ms but emitted at 3,143.8 ms, a
+  2,559.5 ms main-thread gap. Exact target cycle 1 timed out at 2,003 ms against the
+  unchanged strict 2,000 ms bound while the concurrent browser heartbeat answered in
+  1 ms; no fatal occurred. The complete report records 12 rows, 1 product finding,
+  0 instrument failures, 57 planned controls with `ultra-same-backing-resize`
+  product-blocked, `omitted=[]`, 0 retries, and no persona/preview output. Preserve
+  #208 red without retry.
+
+  The repair stays deterministic: native backing remains through UHD; strictly above
+  8,388,608 CSS pixels, each simultaneous full-viewport canvas is capped at 2,073,600
+  pixels /4,147,200 aggregate. Exact desktop-8k and 5,120×2,880 both resolve to
+  1,920×1,080, at DPR 0.25 and 0.375 respectively. The unchanged two-second target,
+  concurrent heartbeat, ready, ticker, runtime-resize, pointer, and no-retry contracts
+  guard sustained responsiveness rather than a one-shot pause. Literal positives assert
+  the new dimensions and budget; former 2,365×1,330 ready/release shapes, existing
+  2,730×1,536 shapes, threshold/UHD, pointer, resize, and stopped/stale ticker cases are
+  negative controls.
+
+  The only dirty-worktree browser diagnostic remains non-authoritative. Sandbox loopback
+  `EPERM` prevented its first launch before any browser; its sole permitted product
+  execution—not a retry—then passed Edge 151 in 53,881 ms, 12/12 rows and 57/57
+  controls, with `blocked=[]`, `omitted=[]`, and 0 findings/instrument failures/retries.
+  Its 407,207-byte report SHA-256 is
+  `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`; source
+  commit/status/snapshot identities are `2a24606`,
+  `1ba44ac499d8ff4b0ddcc719935ff1d739cf5f323d0b803d82bd042aa195fe0c`, and
+  `b577cb831f002a02479a49c60a03555d066dad73951656ea56beff0ff261ce98`.
+  Reloads were 173–200 ms. Exact 8K was 180 ms / browser performance 162.6 ms,
+  with 2 ms arm, 1/1 and 10/0 ms target/heartbeat pairs, 33 ms release→commit,
+  130 ms commit→ready, exact ordinal tail 6/7/8 at 1,786,578,287,580 /583 /583,
+  and two 1,920×1,080 stores /4,147,200 pixels. The runtime same-backing control
+  passed in the ledger; no separate 5K timing/state evidence is claimed. Clean committed
+  exact battery evidence and matching pushed-tip CI remain required before host, human,
+  Ready, merge, release, deployment, or version authority.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a

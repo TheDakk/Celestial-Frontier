@@ -561,21 +561,22 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > `ULTRA_VIEWPORT_RESIZE_UNANSWERABLE` product finding, 0 instrument failures, 56 executed plus
 > 1 product-blocked control =57, `omitted=[]`, and 0 retries. Do not reclassify that as transport
 > ambiguity, retry it green, or raise the deadline.
-> **Responsive geometry requires bounded answerability throughout the transition.** Preserve native
-> UHD. Above the existing ultra threshold, the app now caps each simultaneous full-viewport store
+> **Responsive geometry requires bounded answerability throughout the transition.** The #206 repair
+> preserved native UHD and, above the existing ultra threshold, capped each simultaneous full-viewport store
 > at 3,145,728 pixels; exact rounding makes both 8K and 5K 2,365×1,330 each /6,290,900 combined.
 > Test both downshift and restore with a strict exact-target command paired concurrently with a
 > browser-process heartbeat, then require an advancing later post-render ticker turn. Deliberately
 > stopped and stale-ticker controls must fail alongside the geometry, pointer, backing and ownership
-> controls. The current repair changes the resource ceiling; it does **not** optimize away the
+> controls. That repair changed the resource ceiling; it did **not** optimize away the
 > existing scene rerender, so do not document a quality-tier/rerender optimization that did not land.
 > Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
 > passed the sequential exact battery: root layout 787/787, v2 273/1 plus all gates,
 > one-attempt smoke 0/10, certifying glass 12/12 and 57/57 with empty blocked/omitted
 > ledgers and zero findings/instrument failures/retries, nine automated-only personas,
 > terminal-only performance, and an Edge 151-smoked separate-origin preview with
-> `publishable:false`. That source remains prior #206 evidence; current #207 repair authority
-> is the clean `6554b2b` block below. No human or publication authority follows.
+> `publishable:false`. That source and clean `6554b2b` below remain prior evidence; current
+> #208 repair authority is pending a clean committed exact battery. No human or publication
+> authority follows.
 
 > **Correction earned by test-battery #207:** adjacent producer emissions are not an atomic
 > observer state. Attempt 1 of run `31642880191` / job `94269466117` at exact pushed
@@ -616,10 +617,49 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > replacement at 6,290,900 combined pixels. Nine automated-only personas and terminal-only
 > 635/717/77/151 ms performance passed. Exact preview
 > `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151 over loopback,
-> bound to the expected separate development origin, with `publishable:false`. Live Git/PR state
-> determines the forthcoming/current docs-only tip; the
+> bound to the expected separate development origin, with `publishable:false`. That immutable
+> source remains prior #207 executable evidence; live Git/PR state determines the current tip,
+> upstream, and checks. The
 > selected pushed tip still requires matching CI, and no human, host, Ready, merge, release,
 > deploy, or version authority follows.
+
+> **Correction earned by test-battery #208:** a backing allocation may be inside its stated cap,
+> emit every release/boot witness in order, and still fail the user-facing response contract.
+> Attempt 1 of run `31649176954` / job `94289516851` at exact pushed head
+> `ee8bc281c424b5a8f998dc7327372e5f5a18067d` (tree-identical merge `8fc6b4fc`) passed
+> steps 1–15, `smoke:ci`, and the first 11 glass rows. Desktop-8k allocated a valid
+> 2,365×1,330 pair /6,290,900 pixels and scheduled ready at browser performance 584.3 ms,
+> yet ready did not emit until 3,143.8 ms—a 2,559.5 ms main-thread gap. Exact target cycle 1
+> then timed out at 2,003 ms against the unchanged 2,000 ms bound while the concurrent
+> browser-process heartbeat answered in 1 ms; there was no fatal. The report correctly
+> retained `REPLACEMENT_UNANSWERABLE_AFTER_READY`, 1 product finding, 0 instrument failures,
+> 57 planned controls with `ultra-same-backing-resize` product-blocked, `omitted=[]`, and
+> 0 retries. Preserve #208 red; do not retry it green or call a scheduled-but-undelivered
+> ready event an answerable product.
+>
+> **A resource cap is accepted by its sustained response outcome, not merely by its arithmetic.**
+> Keep native backing through UHD so fast/native/common displays retain quality. Strictly above
+> 8,388,608 CSS pixels, use one deterministic fixed ceiling of 2,073,600 pixels per simultaneous
+> full-viewport canvas /4,147,200 aggregate. Exact rounded fitting makes desktop-8k DPR 0.25 and
+> 5K DPR 0.375 both 1,920×1,080 per store. Do not substitute runtime-adaptive quality, a one-shot
+> ticker pause, a longer target bound, a looser heartbeat, an early ready, or a retry: those change
+> the contract or make identical inputs depend on machine timing. The unchanged exact target/
+> heartbeat pair, later post-render ticker witness, runtime resize, pointer geometry, release/ready
+> provenance, and zero-retry policy remain the acceptance boundary.
+>
+> Test the policy in both directions. Literal positives must assert 1,920×1,080 and 4,147,200;
+> the former 2,365×1,330 ready and release shapes must fail, as must the existing 2,730×1,536
+> shapes, while threshold/native-UHD, runtime same-backing resize, pointer, ownership, and stopped/
+> stale ticker controls remain. A dirty-worktree browser pass can diagnose but cannot certify the
+> fix. Here, sandbox loopback `EPERM` prevented the first launch before any browser; the one
+> permitted product run—not a retry—passed Edge 151 in 53,881 ms, 12/12 rows and 57/57 controls,
+> with empty blocked/omitted ledgers and zero findings/instrument failures/retries (report
+> `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`). Exact 8K was
+> 180 ms / browser performance 162.6 ms with 2 ms arm, target/heartbeat pairs 1/1 and 10/0 ms,
+> 33 ms release→commit, 130 ms commit→ready, exact 6/7/8 release tail, and two 1,920×1,080
+> stores /4,147,200 pixels. The runtime same-backing control passed in the ledger; do not infer
+> unrecorded 5K timing/state evidence. Clean committed exact battery evidence and matching pushed-
+> tip CI are still required before human, host, Ready, merge, release, deployment, or version authority.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next

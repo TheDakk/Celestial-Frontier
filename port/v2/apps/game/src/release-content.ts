@@ -852,7 +852,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
         'Panels reserve a full 44-pixel lane for their sticky Close action. If a desktop rail action becomes hidden when Survey returns, closing moves keyboard focus to Survey or the exploration canvas instead of leaving it behind the panel.',
         'On landed touch layouts, the objective yields to populated Planetside until ascent. Portrait keeps the trail when a useful roster band fits; on the shortest screens only that noninteractive trail yields, leaving at least 72 pixels of vertically scrollable Planetside instead of covering its specimens. Short landscape also yields the trail. Dock icons stay centred inside their 44-pixel actions without hidden scrolling, and A++ keeps toast titles visibly larger than their message text.',
         'Keyboard explorers can cycle visible galaxies, stars, and worlds on the canvas, survey with Enter, and use the same explicit card actions as touch and pointer players.',
-        'Very large displays preserve sharp native UHD presentation, then switch to a lower ultra-display density above that size so the live starfield and backdrop stay responsive without allocating two full 8K backing stores.',
+        'Very large displays preserve sharp native UHD presentation, then use a capped ultra-display tier of up to 2,073,600 backing pixels per full-viewport canvas so the live starfield, backdrop, and controls stay responsive without allocating two full 8K backing stores.',
         'Moving between very large viewport sizes now keeps the live scene responsive while preserving the current location and open survey.',
       ]),
     }),

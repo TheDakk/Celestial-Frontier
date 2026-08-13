@@ -18,9 +18,10 @@ dock is a measured 4×2 layout with browser-backed non-overlap/hit-target
 negative controls. Pixi now keeps its DPR-scaled backing store displayed in a
 viewport-sized CSS box, so phone visuals and hit coordinates agree. Native
 backing is retained through UHD 3,840×2,160. A viewport strictly larger than
-8,388,608 CSS pixels selects an ultra tier of 3,145,728 backing pixels per
-canvas /6,291,456 aggregate, fitted against exact rounded dimensions; 8K and
-5,120×2,880 each use two 2,365×1,330 stores (6,290,900 pixels combined). The prior backdrop is
+8,388,608 CSS pixels selects an ultra tier of 2,073,600 backing pixels per
+canvas /4,147,200 aggregate, fitted against exact rounded dimensions; 8K and
+5,120×2,880 each use two 1,920×1,080 stores (4,147,200 pixels combined), at DPR
+0.25 and 0.375 respectively. The prior backdrop is
 destroyed/collapsed before its replacement allocation, and same-backing logical
 resizes still refresh Pixi CSS/screen/texture/event and pointer geometry. Downshift
 and restore each require an exact target/browser-heartbeat pair, an advancing later
@@ -394,9 +395,46 @@ bound to the expected separate development origin, with `publishable:false`: man
 `986116980e7b7a224f210508b4872b5d7f5621ac`, registry
 `8a290b25fc8ff27ca7f23f00367121a78a5e8af0`, and lock
 `b81617792187b3e76c7f1586ed311d540f1451acadb85c369ffcd2c4571229cb`.
-This source underlies the forthcoming/current docs-only tip; live Git/PR state determines
-tip/push/check authority, and the selected pushed tip needs matching CI. No host, human,
+That immutable source remains prior #207 executable evidence; live Git/PR state determines
+the current tip, upstream, and checks, and the selected pushed tip needs matching CI. No host, human,
 Ready, merge, release, deploy, or version authority follows.
+
+Test-battery #208, run
+[`31649176954`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954) /
+job [`94289516851`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954/job/94289516851),
+completed attempt 1 without retry at exact pushed head
+`ee8bc281c424b5a8f998dc7327372e5f5a18067d`; merge `8fc6b4fc` is tree-identical,
+and branch-flow run `31649175614` / job `94289512873` passed. Steps 1–15 and
+`smoke:ci` passed. Desktop-8k alone then reported
+`REPLACEMENT_UNANSWERABLE_AFTER_READY`: the valid 2,365×1,330 replacement pair
+scheduled ready at browser performance 584.3 ms but emitted at 3,143.8 ms, a
+2,559.5 ms main-thread gap. Exact target cycle 1 timed out at 2,003 ms against the
+unchanged strict 2,000 ms bound while `Browser.getVersion` answered in 1 ms; no
+fatal event occurred. All 12 rows ran, the first 11 passed, and the report records
+1 product finding, 0 instrument failures, 57 planned controls with
+`ultra-same-backing-resize` product-blocked, `omitted=[]`, 0 retries, and no
+persona/preview output. Preserve #208 red without retry.
+
+The fixed deterministic repair preserves native UHD and caps each simultaneous
+full-viewport canvas above 8,388,608 CSS pixels at 2,073,600 pixels /4,147,200
+aggregate. Exact 8K DPR 0.25 and 5K DPR 0.375 therefore both produce
+1,920×1,080 stores. The two-second target, heartbeat, ready, ticker, resize,
+pointer, and zero-retry contracts stay unchanged. Literal new-shape positives and
+former 2,365×1,330 plus existing 2,730×1,536 ready/release negatives prevent an
+old policy from passing.
+
+The sole dirty-worktree browser diagnostic remains non-authoritative. Sandbox
+loopback `EPERM` prevented its first launch before any browser opened; the one
+permitted product execution—not a retry—then passed under Edge 151 in 53,881 ms,
+12/12 rows and 57/57 controls, with `blocked=[]`, `omitted=[]`, and zero findings/
+instrument failures/retries. Its 407,207-byte report SHA-256 is
+`d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`.
+Exact 8K was 180 ms / browser performance 162.6 ms, with 2 ms arm, target/heartbeat
+pairs 1/1 and 10/0 ms, 33 ms release→commit, 130 ms commit→ready, exact ordinal
+tail 6/7/8, and two 1,920×1,080 stores /4,147,200 pixels. The runtime
+same-backing control passed in the ledger; no separate 5K timing/state evidence is
+claimed. Clean committed exact battery evidence and matching pushed-tip CI remain
+required before host, human, Ready, merge, release, deploy, or version authority.
 
 Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
 remains prior exact #206 executable evidence (clean status SHA-256
@@ -419,7 +457,8 @@ plus terminal-only 581/659/73/152 ms performance. Exact preview
 origin with `publishable:false`: manifest `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`,
 37 files /10,186,537 bytes, content `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`,
 tree `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. That source remains prior #206
-evidence; current #207 repair authority is the clean `6554b2b` block above. No
+evidence; both it and clean `6554b2b` remain prior evidence, while current #208
+repair authority is pending a clean committed exact battery. No
 host/human/Ready/merge/release/deploy/version authority follows.
 
 Human development playtests use a commit-bound static package, not the live
