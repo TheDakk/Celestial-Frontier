@@ -28,20 +28,18 @@
 - Owner/branch: OpenAI/Codex on `openai/mac`.
 - Integration baseline: PR #10 merged normally into `develop` at
   `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`.
-- Latest immutable CI evidence: test-battery #207, run
-  [`31642880191`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191) /
-  job [`94269466117`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191/job/94269466117),
+- Latest immutable CI evidence: test-battery #208, run
+  [`31649176954`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954) /
+  job [`94289516851`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954/job/94289516851),
   completed attempt 1 without retry at exact pushed
-  `ff9bebb22aaac0e95cd406e1e15737898452911a` and remains **RED**. Merge
-  `8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical to that head.
-  Every preceding gate and `smoke:ci` passed; the sole tablet-portrait glass
-  instrument failure is the release-binding observation race described below.
-  Immutable executable source `6554b2be652c083bc9ff7ed11c2f928e90b74660`
-  passed the exact clean local battery for the #207 harness repair; matching pushed-tip CI
-  is still required.
+  `ee8bc281c424b5a8f998dc7327372e5f5a18067d` and remains **RED**. Merge
+  `8fc6b4fc` is tree-identical; branch-flow run `31649175614` / job `94289512873`
+  passed. Steps 1–15 and `smoke:ci` passed; the sole desktop-8k product-answerability
+  finding is described below. The fixed-cap repair has only non-authoritative dirty-
+  worktree diagnostic evidence; clean committed exact evidence and matching CI remain open.
   Exact tip/upstream/check state is live authority
   from `git rev-parse HEAD`, `git status --short --branch`, and PR #11 checks.
-  CI #201–#206 remain preserved red without retry; their exact run/job/head diagnoses and
+  CI #201–#208 remain preserved red without retry; their exact run/job/head diagnoses and
   repair evidence are newest-first in `ROADMAP_ARCHIVE.md` and the live system references.
   Draft PR #11 is open at
   https://github.com/TheDakk/Celestial-Frontier/pull/11.
@@ -124,8 +122,9 @@ ticker turn after render. The five-command ledger and separate executed/product-
 control accounting distinguish product answerability from instrument/transport failure.
 
 The frozen repair retains native backing through UHD 3,840×2,160. A viewport strictly above
-8,388,608 CSS pixels selects 3,145,728 pixels/canvas /6,291,456 aggregate; exact rounded fitting
-makes both 8K and 5,120×2,880 use 2,365×1,330 per canvas /6,290,900 combined. The old backdrop is
+8,388,608 CSS pixels selects a fixed cap of 2,073,600 pixels/canvas /4,147,200 aggregate;
+exact rounded fitting makes tested 8K DPR 0.25 and 5,120×2,880 DPR 0.375 use
+1,920×1,080 per canvas /4,147,200 combined. The old backdrop is
 destroyed and collapsed before replacement allocation, transition peak/budget is explicit, and
 same-backing logical resizes still refresh CSS/Pixi/EventSystem/pointer/backdrop geometry. Both
 downshift and restore require a strict target probe plus `Browser.getVersion` heartbeat, an
@@ -150,7 +149,7 @@ The mixed-source smoke refusal and immutable `7d9980e` ticker-quiescence battery
 verbatim in `ROADMAP_ARCHIVE.md`; they are prior evidence, not current repair authority.
 
 The superseded `46fb627` exact battery and #204 chronology moved verbatim to
-`ROADMAP_ARCHIVE.md`. #201–#207 remain preserved red without retry.
+`ROADMAP_ARCHIVE.md`. #201–#208 remain preserved red without retry.
 
 The prior `c57305f` dirty diagnostic and immutable `135a635` exact clean battery moved
 verbatim to `ROADMAP_ARCHIVE.md`; they remain historical evidence, not #206 repair authority.
@@ -158,72 +157,54 @@ verbatim to `ROADMAP_ARCHIVE.md`; they remain historical evidence, not #206 repa
 The #206 red and immutable clean `df1c28b` repair evidence moved verbatim to
 `ROADMAP_ARCHIVE.md`; that clean battery remains prior executable evidence.
 
-Test-battery #207, run
-[`31642880191`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191) /
-job [`94269466117`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191/job/94269466117),
+The #207 red and immutable clean `6554b2b` repair evidence moved verbatim to
+`ROADMAP_ARCHIVE.md`; that source remains prior executable evidence.
+
+Test-battery #208, run
+[`31649176954`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954) /
+job [`94289516851`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954/job/94289516851),
 completed attempt 1 without retry at exact pushed head
-`ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
-`8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. All preceding
-root/product/v2 gates and `smoke:ci` passed. Tablet-portrait alone instrument-failed:
-the valid `cf-v2-reload-release/v1` witness arrived after ordered `release-started`
-and before `release-complete`, but the observer woke in that valid intermediate state
-and failed immediately. Release itself was healthy: renderer/stage released, view
-detached, application/backdrop canvases collapsed to 1×1, error null. The report
-contains 0 product findings, 1 instrument failure, 57 planned/listed controls,
-`blocked=[]`, `omitted=[]`, and 0 retries. The other 11 rows, including desktop-8k,
-passed. Persona and preview steps were not reached. Preserve #207 red without retry;
-it is not a product, save, durability, release, navigation, boot, or viewport failure.
+`ee8bc281c424b5a8f998dc7327372e5f5a18067d`; merge `8fc6b4fc` is tree-identical,
+while branch-flow run `31649175614` / job `94289512873` passed. Steps 1–15 and
+`smoke:ci` passed. The first 11 glass rows passed; desktop-8k alone reported
+`REPLACEMENT_UNANSWERABLE_AFTER_READY`. Its valid 2,365×1,330 replacement pair /
+6,290,900 pixels remained under the 3,145,728-per-canvas cap. The import arm recorded
+2,481 ms; release tail 6/7/8, changed-loader commit, and all boot stages were healthy,
+with first tick at browser performance 540.8 ms. Ready scheduled at 584.3 ms but emitted at
+3,143.8 ms, a 2,559.5 ms main-thread gap. Exact target cycle 1 then timed out at
+2,003 ms against the unchanged strict 2,000 ms bound while the concurrent browser
+heartbeat answered in 1 ms; no fatal occurred. The complete 12-row report records
+1 product finding, 0 instrument failures, 57 planned controls with
+`ultra-same-backing-resize` product-blocked, `omitted=[]`, 0 retries, and no persona/
+preview output. Glass artifact SHA-256 is
+`3c9fac42025345428da4ea0841db86bb3c30cba95460f871f49488758020e9ac`; smoke
+report/log/current digest prefixes are `c211cdd1…`, `fd2bad70…`, and `68fe3432…`;
+artifact IDs are `9162555913`, `9162556125`, and `9162556467`. Preserve #208 red.
 
-The scoped harness repair assigns one monotonic receipt ordinal only to the import-phase
-and release bindings in each armed capture. A successful tail must be exactly
-`release-started` at N → release witness at N+1 → `release-complete` at N+2. Only the
-valid release-first intermediate remains pending, under the unchanged original 20-second
-import deadline; navigation may anchor to that valid release receipt without renewing the
-import clock. Phase-complete-first, premature, nonadjacent, missing, late, duplicate,
-malformed, wrong-provenance, early boot/ready, and an overlong sequence-8 duplicate terminal
-all fail closed.
+The deterministic repair keeps native backing through UHD and caps each simultaneous
+full-viewport canvas above 8,388,608 CSS pixels at 2,073,600 pixels /4,147,200
+aggregate. Exact tested 8K DPR 0.25 and 5K DPR 0.375 resolve to 1,920×1,080 each.
+Literal positives cover the new dimensions/budget; former 2,365×1,330 ready/release
+shapes and existing 2,730×1,536 shapes fail as negatives, alongside threshold/UHD,
+runtime resize, pointer, and ticker controls. The two-second target, heartbeat, ready,
+and zero-retry contracts are unchanged.
 
-The prior dirty #207 diagnostic (report
-`805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`) remains
-preserved for chronology only; it is superseded as repair evidence by the clean exact battery.
-
-Immutable executable source `6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the
-complete sequential exact battery from clean status/snapshot SHA-256
-`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` /
-`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
-The first sandboxed preflight Edge launch SIGABRTed before CDP; the same invocation passed
-when permitted, with only the expected Edge 151 versus pin 150 warning. This is an environment
-launch refusal, not a product retry. Root gates passed; `exact-6554b2b-root-layout` passed
-787/787 across 10/10 in 75,532 ms (report
-`58dc4ef4456fac012b2e8f0aa801917b5579cffe435fd4576827ff29bcbb4b78`). V2 passed
-273 tests /1 skip and all static/art/coverage gates. One-attempt smoke passed in 105,430 ms
-with 0 findings /10 screenshots (report
-`139b10ea16d17c109d5b624fa75daf73291d98f5ad8fe7df569501829ab5f844`; log
-`76a40b9bd8f88dd5f5ebdc09271c0ed289478795d6cd011338df349438ef62b8`).
-Certifying glass passed in 54,877 ms: 12/12, 57/57, `blocked=[]`, `omitted=[]`, 0
-findings/instrument failures/retries, and exact 6/7/8 tails on every row (report
-`a05ba65e28ac94b146b051164c1b22195bfaa7509bd47d9631561fc394920b6c`);
-reloads were 171–260 ms. Tablet-portrait was 196 ms with tail timestamps
-1786574427588/7591/7591, command durations 2/1/1/7/0 ms, and ready
-`performanceNow` 166.3 ms. Exact 8K was 197 ms with tail timestamps
-1786574452829/2832/2832,
-release→commit 34 ms, commit→ready 131 ms, ready `performanceNow` 163.6 ms, and
-command durations 1/1/0/7/0 ms; outgoing 2,365×1,330 twins collapsed to 1×1 and the
-replacement stayed 6,290,900 pixels combined. Nine automated-only personas passed (JSON
-`fc8d6da1e0b18d824b5403121e87b02ee9423d9592f3221d2ff1819d20629e05`; Markdown
-`08328ed2c760b722caa9f76259fe22a8dfcf1e36624086d388e19628774eb176`), and
-terminal-only performance was 635/717/77/151 ms.
-
-Preview `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151
-over loopback, bound to the expected separate development origin, with `publishable:false`: manifest
-`98a64b750d1def5c7895cbd780a35558863f000c5a3fbcf4c3945dd927d5ce04`, 37 files /
-10,186,537 bytes, content `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`,
-tree `986116980e7b7a224f210508b4872b5d7f5621ac`, registry
-`8a290b25fc8ff27ca7f23f00367121a78a5e8af0`, and lock
-`b81617792187b3e76c7f1586ed311d540f1451acadb85c369ffcd2c4571229cb`.
-This clean executable source underlies the forthcoming/current docs-only tip; live Git/PR state
-determines its exact tip, push, and checks, and the selected pushed tip still needs matching CI.
-No host, publication, human-play, Ready, merge, release, deployment, or version authority follows.
+The sole dirty-worktree browser diagnostic remains non-authoritative. Sandbox loopback
+`EPERM` stopped its first launch before any browser; the one permitted product run—not
+a retry—then passed Edge 151 in 53,881 ms, 12/12 rows and 57/57 controls, with empty
+blocked/omitted ledgers and zero findings/instrument failures/retries. Its 407,207-byte
+report SHA-256 is
+`d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`; source
+commit/status/snapshot identities are `2a24606`,
+`1ba44ac499d8ff4b0ddcc719935ff1d739cf5f323d0b803d82bd042aa195fe0c`, and
+`b577cb831f002a02479a49c60a03555d066dad73951656ea56beff0ff261ce98`.
+Reloads were 173–200 ms. Exact 8K was 180 ms / browser performance 162.6 ms,
+with 2 ms arm, target/heartbeat pairs 1/1 and 10/0 ms, 33 ms release→commit,
+130 ms commit→ready, ordinal tail 6/7/8 at 1,786,578,287,580 /583 /583, and two
+1,920×1,080 stores /4,147,200 pixels. The runtime same-backing control passed in
+the ledger; no separate 5K timing/state evidence is claimed. Clean committed exact
+battery evidence and matching pushed-tip CI remain required. No host, publication,
+human-play, Ready, merge, release, deployment, or version authority follows.
 
 `overridecontrol` remains exclusive and must not overlap any build/browser/evidence producer.
 Because the new manual preview workflow is not dispatchable until it exists on the default
@@ -262,18 +243,18 @@ human play remains the judge of motion, readability, comfort and perceived quali
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — test-battery #207 is the latest
-immutable pushed CI evidence at `ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
-`8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical, and the instrument run remains
-red without retry. Immutable executable source `6554b2be652c083bc9ff7ed11c2f928e90b74660`
-passed the complete exact clean local battery for the ordinal-tail repair and underlies the
-forthcoming/current docs-only tip. Resolve tip/upstream/check state live; the final selected
-pushed tip requires matching CI, and #201–#207 remain preserved red without retry.
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac` — test-battery #208 is the latest
+immutable pushed CI evidence at `ee8bc281c424b5a8f998dc7327372e5f5a18067d`; merge
+`8fc6b4fc` is tree-identical, and the product-answerability run remains red without retry.
+The fixed 2,073,600-pixel/canvas repair has only a non-authoritative dirty diagnostic PASS;
+clean committed exact battery evidence remains pending. Resolve tip/upstream/check state live;
+the selected pushed tip requires matching CI, and #201–#208 remain preserved red without retry.
 
 **GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`),
 #202 (`31594595288` / `94106996466`), #203 (`31602984470` / `94134750800`), and
 #204 (`31612817092` / `94168172635`), #205 (`31621227550` / `94196289291`), and
-#206 (`31635297321` / `94243979205`), and #207 (`31642880191` / `94269466117`)
+#206 (`31635297321` / `94243979205`), #207 (`31642880191` / `94269466117`), and
+#208 (`31649176954` / `94289516851`)
 without retry. Read `git rev-parse HEAD`,
 `git status --short --branch`, and PR #11 checks. Push the current `openai/mac` tip only if
 its upstream is behind; live state determines commit/push status, and whichever final pushed
@@ -323,8 +304,8 @@ merged PR #10.
   > owner rollback. An exact-operation import-phase stream requires the ticker running at
   > invocation, stopped through claim/write/release, and begins its absolute deadline before the
   > bounded arm command; no IndexedDB timeout race is used. Native backing remains through UHD;
-  > larger viewports use an exact rounded 3,145,728-pixel/canvas ultra tier (8K and 5K are
-  > 2,365×1,330 each), with old-backdrop release before replacement allocation. Downshift and
+  > larger viewports use a fixed 2,073,600-pixel/canvas cap (tested 8K and 5K 16:9 are
+  > 1,920×1,080 each), with old-backdrop release before replacement allocation. Downshift and
   > restore require target/heartbeat evidence plus a later advancing ticker turn; this repair does
   > not optimize the existing scene rerender. Pixi remains stopped until save/scene/slice/input
   > wiring completes. A 12-stage boot witness proves exact replacement identity and that the ticker
@@ -350,7 +331,8 @@ merged PR #10.
   > Prior #201 (`31586917924` / `94082765087`), #202
   > (`31594595288` / `94106996466`), #203 (`31602984470` / `94134750800`), and #204
   > (`31612817092` / `94168172635`), #205 (`31621227550` / `94196289291`), and #206
-  > (`31635297321` / `94243979205`), and #207 (`31642880191` / `94269466117`) remain preserved red
+  > (`31635297321` / `94243979205`), #207 (`31642880191` / `94269466117`), and #208
+  > (`31649176954` / `94289516851`) remain preserved red
   > without retry; #202 exposed serial CDP
   > observer latency, #203 exposed pre-release 8K renderer pressure, and #204 exposed twin full-
   > resolution replacement allocations plus pre-wiring ticker startup. #205 reached ready and then
@@ -361,7 +343,14 @@ merged PR #10.
   > earlier gate and 11 glass rows, then tablet-portrait exposed a valid release witness between
   > release-started and release-complete that the observer rejected prematurely: 0 product findings,
   > 1 instrument failure, 57 listed controls, empty blocked/omitted ledgers, 0 retries, and no
-  > persona/preview output. Its prior dirty diagnostic remains chronology only. Immutable
+  > persona/preview output. #208 passed steps 1–15, `smoke:ci`, and 11 glass rows,
+  > then exact 8K target cycle 1 timed out at 2,003 ms while the concurrent heartbeat answered
+  > in 1 ms after ready scheduling→emission had already stalled 2,559.5 ms: 1 product finding,
+  > 0 instrument failures, 57 planned with the runtime same-backing control product-blocked,
+  > `omitted=[]`, 0 retries, and no persona/preview output. Preserve every red run without retry.
+  > The current fixed-cap repair's sole dirty diagnostic passed 12/12 and 57/57 under Edge 151
+  > but remains non-authoritative pending clean committed exact battery evidence and matching CI.
+  > The prior #207 dirty diagnostic remains chronology only. Immutable
   > executable source `6554b2be652c083bc9ff7ed11c2f928e90b74660` then passed the exact clean
   > battery: root layout 787/787 across 10/10, v2 273/1 plus all gates, one-attempt smoke
   > 0 findings/10 screenshots, certifying glass 12/12 and 57/57 with exact 6/7/8 tails,
@@ -370,7 +359,7 @@ merged PR #10.
   > `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151 over
   > loopback, bound to the expected separate development origin, with `publishable:false`;
   > its content SHA-256 is
-  > `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`. The frozen
+  > `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`. The prior
   > 3,145,728-pixel/canvas repair has exact clean executable evidence at immutable
   > `df1c28b31d15cd554d36f9b4ca65d8765366a5df`: root layout 787/787, v2 273/1 plus
   > all gates, one-attempt smoke 0/10, certifying glass 12/12 and 57/57 with empty

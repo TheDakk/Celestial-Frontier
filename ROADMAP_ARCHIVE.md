@@ -6,6 +6,76 @@
 > working doc crossed ~285KB / 4,272 lines and stopped reading in one pass.
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
+## ARCHIVED 2026-08-12 — #207 red and immutable `6554b2b` repair evidence
+## Moved from ROADMAP.md verbatim during the #208 product-answerability refresh.
+
+Test-battery #207, run
+[`31642880191`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191) /
+job [`94269466117`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191/job/94269466117),
+completed attempt 1 without retry at exact pushed head
+`ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
+`8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. All preceding
+root/product/v2 gates and `smoke:ci` passed. Tablet-portrait alone instrument-failed:
+the valid `cf-v2-reload-release/v1` witness arrived after ordered `release-started`
+and before `release-complete`, but the observer woke in that valid intermediate state
+and failed immediately. Release itself was healthy: renderer/stage released, view
+detached, application/backdrop canvases collapsed to 1×1, error null. The report
+contains 0 product findings, 1 instrument failure, 57 planned/listed controls,
+`blocked=[]`, `omitted=[]`, and 0 retries. The other 11 rows, including desktop-8k,
+passed. Persona and preview steps were not reached. Preserve #207 red without retry;
+it is not a product, save, durability, release, navigation, boot, or viewport failure.
+
+The scoped harness repair assigns one monotonic receipt ordinal only to the import-phase
+and release bindings in each armed capture. A successful tail must be exactly
+`release-started` at N → release witness at N+1 → `release-complete` at N+2. Only the
+valid release-first intermediate remains pending, under the unchanged original 20-second
+import deadline; navigation may anchor to that valid release receipt without renewing the
+import clock. Phase-complete-first, premature, nonadjacent, missing, late, duplicate,
+malformed, wrong-provenance, early boot/ready, and an overlong sequence-8 duplicate terminal
+all fail closed.
+
+The prior dirty #207 diagnostic (report
+`805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`) remains
+preserved for chronology only; it is superseded as repair evidence by the clean exact battery.
+
+Immutable executable source `6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the
+complete sequential exact battery from clean status/snapshot SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` /
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+The first sandboxed preflight Edge launch SIGABRTed before CDP; the same invocation passed
+when permitted, with only the expected Edge 151 versus pin 150 warning. This is an environment
+launch refusal, not a product retry. Root gates passed; `exact-6554b2b-root-layout` passed
+787/787 across 10/10 in 75,532 ms (report
+`58dc4ef4456fac012b2e8f0aa801917b5579cffe435fd4576827ff29bcbb4b78`). V2 passed
+273 tests /1 skip and all static/art/coverage gates. One-attempt smoke passed in 105,430 ms
+with 0 findings /10 screenshots (report
+`139b10ea16d17c109d5b624fa75daf73291d98f5ad8fe7df569501829ab5f844`; log
+`76a40b9bd8f88dd5f5ebdc09271c0ed289478795d6cd011338df349438ef62b8`).
+Certifying glass passed in 54,877 ms: 12/12, 57/57, `blocked=[]`, `omitted=[]`, 0
+findings/instrument failures/retries, and exact 6/7/8 tails on every row (report
+`a05ba65e28ac94b146b051164c1b22195bfaa7509bd47d9631561fc394920b6c`);
+reloads were 171–260 ms. Tablet-portrait was 196 ms with tail timestamps
+1786574427588/7591/7591, command durations 2/1/1/7/0 ms, and ready
+`performanceNow` 166.3 ms. Exact 8K was 197 ms with tail timestamps
+1786574452829/2832/2832,
+release→commit 34 ms, commit→ready 131 ms, ready `performanceNow` 163.6 ms, and
+command durations 1/1/0/7/0 ms; outgoing 2,365×1,330 twins collapsed to 1×1 and the
+replacement stayed 6,290,900 pixels combined. Nine automated-only personas passed (JSON
+`fc8d6da1e0b18d824b5403121e87b02ee9423d9592f3221d2ff1819d20629e05`; Markdown
+`08328ed2c760b722caa9f76259fe22a8dfcf1e36624086d388e19628774eb176`), and
+terminal-only performance was 635/717/77/151 ms.
+
+Preview `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151
+over loopback, bound to the expected separate development origin, with `publishable:false`: manifest
+`98a64b750d1def5c7895cbd780a35558863f000c5a3fbcf4c3945dd927d5ce04`, 37 files /
+10,186,537 bytes, content `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`,
+tree `986116980e7b7a224f210508b4872b5d7f5621ac`, registry
+`8a290b25fc8ff27ca7f23f00367121a78a5e8af0`, and lock
+`b81617792187b3e76c7f1586ed311d540f1451acadb85c369ffcd2c4571229cb`.
+This clean executable source underlies the forthcoming/current docs-only tip; live Git/PR state
+determines its exact tip, push, and checks, and the selected pushed tip still needs matching CI.
+No host, publication, human-play, Ready, merge, release, deployment, or version authority follows.
+
 ## ARCHIVED 2026-08-12 — cold-start summaries for preserved CI #201–#206
 ## Moved from ROADMAP.md verbatim during the exact `6554b2b` evidence refresh.
 

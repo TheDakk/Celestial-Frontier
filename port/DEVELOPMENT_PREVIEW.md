@@ -219,10 +219,34 @@ Its manifest SHA-256 is
 `986116980e7b7a224f210508b4872b5d7f5621ac`, registry
 `8a290b25fc8ff27ca7f23f00367121a78a5e8af0`, lock
 `b81617792187b3e76c7f1586ed311d540f1451acadb85c369ffcd2c4571229cb`, and separate
-development/production origins. This clean artifact is still not publication authority. Live
-Git/PR state determines the forthcoming/current docs-only tip; its selected pushed tip requires
+development/production origins. This clean artifact is still not publication authority and its
+immutable source remains prior #207 executable evidence. Live Git/PR state determines the current
+tip, upstream, and checks; its selected pushed tip requires
 matching CI before any separately approved candidate command. No host/publication/human/Ready/
 merge/release/deploy/version authority follows.
+
+Test-battery #208, run `31649176954` attempt 1 / job `94289516851`, completed
+without retry at exact pushed head `ee8bc281c424b5a8f998dc7327372e5f5a18067d`;
+merge `8fc6b4fc` is tree-identical and branch-flow run `31649175614` / job
+`94289512873` passed. Steps 1–15 and `smoke:ci` passed, but desktop-8k alone
+reported `REPLACEMENT_UNANSWERABLE_AFTER_READY`: ready scheduling at browser
+performance 584.3 ms was followed by emission at 3,143.8 ms, a 2,559.5 ms gap,
+then exact target cycle 1 timed out at 2,003 ms while the concurrent heartbeat
+answered in 1 ms. The complete 12-row glass report retained 1 product finding,
+0 instrument failures, 57 planned controls with the runtime same-backing control
+product-blocked, `omitted=[]`, and 0 retries. Preserve #208 red without retry. It
+produced no persona or preview artifact and grants no playtest/candidate authority.
+
+The current fixed repair preserves native UHD and makes exact desktop-8k DPR 0.25
+and 5K DPR 0.375 use two 1,920×1,080 stores /4,147,200 pixels combined. The only
+dirty-worktree browser diagnostic remains non-authoritative: its first sandbox
+launch failed pre-browser on loopback `EPERM`; its sole permitted product run—not
+a retry—passed Edge 151 in 53,881 ms, 12/12 rows and 57/57 controls, with empty
+blocked/omitted ledgers and zero findings/instrument failures/retries (report
+`d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`).
+It did not run personas or build/verify/browser-smoke a preview, and therefore is
+not a preview candidate. Clean committed exact battery evidence, matching pushed-tip
+CI, the separate host decision, explicit candidate approval, and human play remain open.
 
 Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
 remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
@@ -244,7 +268,8 @@ separate dev origin with `publishable:false`: manifest
 `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`, 37 files /
 10,186,537 bytes, content `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`,
 tree `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. That artifact remains prior #206
-evidence; current candidate boundaries are in the clean `6554b2b` block above. After matching
+evidence; clean `6554b2b` also remains prior evidence, while current #208 candidate
+boundaries await clean committed exact evidence and matching CI. After matching
 green CI, Nick may explicitly approve the one-time PR #11 candidate command below. No host/publication/human/Ready/merge/
 release/deployment/version authority follows.
 

@@ -29,12 +29,12 @@ const repoRoot = path.resolve(here, '..', '..', '..');
 const evidenceDir = path.join(appDir, 'smoke');
 /* The renderer and its texture-backed 2D backdrop coexist. Ordinary
    viewports retain the 4096² aggregate budget, split equally. A CSS viewport
-   larger than one ordinary half-budget selects a 3,145,728-pixel per-canvas
+   larger than one ordinary half-budget selects a 2,073,600-pixel per-canvas
    ultra tier; otherwise an 8K software renderer can publish ready while
    monopolising every later target turn or same-backing resize. */
 const DEFAULT_CANVAS_BACKING_PIXELS = 8_388_608;
 const ULTRA_VIEWPORT_CSS_PIXELS = 8_388_608;
-const ULTRA_CANVAS_BACKING_PIXELS = 3_145_728;
+const ULTRA_CANVAS_BACKING_PIXELS = 2_073_600;
 const MAX_TWIN_BACKING_PIXELS = DEFAULT_CANVAS_BACKING_PIXELS * 2;
 const backingPixelCapForViewport = (width, height) => (
   Number.isFinite(width) && Number.isFinite(height)
@@ -1600,12 +1600,24 @@ async function reloadPhaseSelftest() {
   if (falseCombinedReady.ok || !/twin backing budget/.test(falseCombinedReady.why || '')) {
     failures.push(`slice-ready payload with a false combined count was accepted: ${JSON.stringify(falseCombinedReady)}`);
   }
+  const ultra5kViewport = { width: 5120, height: 2880, dpr: 1, mobile: false };
+  const ultra8kPlan = expectedDensityPlan(ultraViewport);
+  const ultra5kPlan = expectedDensityPlan(ultra5kViewport);
+  if (ultra8kPlan?.dpr !== 0.25 || ultra5kPlan?.dpr !== 0.375
+    || ultra8kPlan?.backingPixelCapPerCanvas !== ULTRA_CANVAS_BACKING_PIXELS
+    || ultra5kPlan?.backingPixelCapPerCanvas !== ULTRA_CANVAS_BACKING_PIXELS
+    || ultra8kPlan?.backingWidth !== 1920 || ultra8kPlan?.backingHeight !== 1080
+    || ultra5kPlan?.backingWidth !== 1920 || ultra5kPlan?.backingHeight !== 1080
+    || ultra8kPlan.backingWidth * ultra8kPlan.backingHeight * 2 !== 4_147_200
+    || ultra5kPlan.backingWidth * ultra5kPlan.backingHeight * 2 !== 4_147_200) {
+    failures.push(`exact 8K/5K ultra-density policy drifted: ${JSON.stringify({ ultra8kPlan, ultra5kPlan })}`);
+  }
   const ultraReadyPayload = {
     ...readyPayload,
-    backingWidth: 2365, backingHeight: 1330,
-    backdropBackingWidth: 2365, backdropBackingHeight: 1330,
-    combinedBackingPixels: 2365 * 1330 * 2,
-    rendererDpr: expectedDensityPlan(ultraViewport).dpr,
+    backingWidth: 1920, backingHeight: 1080,
+    backdropBackingWidth: 1920, backdropBackingHeight: 1080,
+    combinedBackingPixels: 1920 * 1080 * 2,
+    rendererDpr: ultra8kPlan.dpr,
     backingPixelCapPerCanvas: ULTRA_CANVAS_BACKING_PIXELS,
     viewportWidth: ultraViewport.width, viewportHeight: ultraViewport.height,
   };
@@ -1646,6 +1658,26 @@ async function reloadPhaseSelftest() {
     || nativeUhdPlan?.backingHeight !== 2160
     || nativeUhdPlan?.backingPixelCapPerCanvas !== DEFAULT_CANVAS_BACKING_PIXELS) {
     failures.push(`native UHD backing was degraded by the ultra tier: ${JSON.stringify(nativeUhdPlan)}`);
+  }
+  const supersededUltraReady = validateSliceReadyWitness({
+    ...ultraReadyPayload,
+    /* Retain the new selected-cap field so only the superseded dimensions
+       can make this control red. */
+    backingPixelCapPerCanvas: ULTRA_CANVAS_BACKING_PIXELS,
+    backingWidth: 2365, backingHeight: 1330,
+    backdropBackingWidth: 2365, backdropBackingHeight: 1330,
+    combinedBackingPixels: 2365 * 1330 * 2,
+  }, ultraViewport);
+  if (supersededUltraReady.ok || !/twin backing budget/.test(supersededUltraReady.why || '')) {
+    failures.push(`superseded 3,145,728-pixel ultra dimensions survived the answerability repair: ${JSON.stringify(supersededUltraReady)}`);
+  }
+  const supersededUltraRelease = validateReloadReleaseWitness({
+    ...validRelease,
+    appCanvas: { ...validRelease.appCanvas, beforeWidth: 2365, beforeHeight: 1330 },
+    backdropCanvas: { ...validRelease.backdropCanvas, beforeWidth: 2365, beforeHeight: 1330 },
+  }, ultraViewport);
+  if (supersededUltraRelease.ok || !/selected aggregate twin/.test(supersededUltraRelease.why || '')) {
+    failures.push(`superseded 3,145,728-pixel ultra release survived the answerability repair: ${JSON.stringify(supersededUltraRelease)}`);
   }
   const priorUltraReady = validateSliceReadyWitness({
     ...ultraReadyPayload,
@@ -3616,7 +3648,7 @@ async function main() {
           instrumentFailures.push(`${vp.label}: preference fixture did not return to the universe after Training Skip (${JSON.stringify(matrixStart)})`);
         }
         if (vp.label === 'desktop-8k') {
-          /* 8K and 5120×2880 deliberately share a rounded 2365×1330
+          /* 8K and 5120×2880 deliberately share an exact 1920×1080
              backing, but not a logical viewport or renderer/EventSystem
              resolution. Exercise the transition only after Training releases
              pointer containment so a genuine CDP pointer event can prove

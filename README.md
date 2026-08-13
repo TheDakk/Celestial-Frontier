@@ -122,10 +122,12 @@ id before a separate always-run upload, and the persona synthesis is explicitly 
 human playtest. The glass reload observer orders its operation-phase and generic release
 bindings with one scoped receipt ordinal: only release-started N → release N+1 →
 release-complete N+2 can pass, while the producer-legal intermediate waits under the
-unchanged import deadline. Immutable one-attempt CI #207 remains red because the prior
-observer rejected that valid intermediate. Immutable executable source `6554b2b` now
-has a complete clean exact local battery; the selected pushed docs tip still needs matching
-CI. PR #11 stays draft until matching CI is green and a real
+unchanged import deadline. Immutable one-attempt CI #208 remains red: its 8K replacement
+published ready, but the exact page target then missed the unchanged two-second response
+bound while the browser-process heartbeat stayed healthy. The current repair keeps native
+backing through UHD, then caps each full-viewport canvas at 2,073,600 backing pixels above
+that tier (the tested 8K/5K 16:9 cases resolve to 1,920×1,080); its passing dirty-worktree glass run is diagnostic only, and a clean committed
+exact battery plus matching pushed-tip CI are still required. PR #11 stays draft until matching CI is green and a real
 multi-lens human playtest against
 the exact preview is recorded, findings are resolved/retested, and final local
 plus GitHub checks pass on the frozen pushed head.

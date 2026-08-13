@@ -47,10 +47,11 @@
 > follows the touch-2 / desktop-3 heat caps and retains native backing through
 > UHD 3,840×2,160. Ordinary viewports may use 8,388,608 backing pixels per
 > full-screen canvas /16,777,216 aggregate; a viewport strictly above 8,388,608
-> CSS pixels selects the ultra tier of 3,145,728 per canvas /6,291,456 aggregate.
+> CSS pixels selects the ultra tier of 2,073,600 per canvas /4,147,200 aggregate.
 > `fitResolutionToPixelCap()` searches against the actual rounded width and
-> height, so desktop-8k and 5,120×2,880 each own two 2,365×1,330 stores
-> (6,290,900 pixels combined) without rounding above cap. Density transitions release and collapse the prior
+> height, so desktop-8k and 5,120×2,880 each own two 1,920×1,080 stores
+> (4,147,200 pixels combined), at DPR 0.25 and 0.375 respectively, without
+> rounding above cap. Density transitions release and collapse the prior
 > backdrop before resizing/allocating the replacement, record exact peak and
 > budget ownership, then update Pixi screen/texture/event geometry even when a
 > same-aspect logical resize retains the same integer backing dimensions. Both
@@ -407,8 +408,40 @@
 > `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151 over loopback,
 > bound to the expected separate development origin, with `publishable:false` and content SHA-256
 > `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`.
-> This source underlies the forthcoming/current docs-only tip; the selected pushed tip requires
-> matching CI. No host/human/Ready/merge/release/deploy/version authority follows.
+> That immutable source remains prior #207 executable evidence; live Git/PR state determines
+> the current tip, upstream, and checks, and the selected pushed tip requires matching CI.
+> No host/human/Ready/merge/release/deploy/version authority follows.
+>
+> Test-battery #208, run
+> [`31649176954`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954) /
+> job [`94289516851`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954/job/94289516851),
+> completed attempt 1 without retry at exact pushed head
+> `ee8bc281c424b5a8f998dc7327372e5f5a18067d`; merge `8fc6b4fc` is tree-identical,
+> and branch-flow run `31649175614` / job `94289512873` passed. Steps 1–15 and
+> `smoke:ci` passed. Desktop-8k alone then reported
+> `REPLACEMENT_UNANSWERABLE_AFTER_READY`: valid 2,365×1,330 replacement stores
+> scheduled ready at browser performance 584.3 ms but emitted at 3,143.8 ms, a
+> 2,559.5 ms gap; exact target cycle 1 timed out at 2,003 ms against the strict
+> 2,000 ms bound while the concurrent heartbeat answered in 1 ms, with no fatal.
+> The complete 12-row report records 1 product finding, 0 instrument failures,
+> 57 planned controls with `ultra-same-backing-resize` product-blocked,
+> `omitted=[]`, 0 retries, and no persona/preview output. Preserve #208 red.
+>
+> The current fixed tier above 8,388,608 CSS pixels is 2,073,600 pixels per
+> simultaneous canvas /4,147,200 aggregate, producing exact 1,920×1,080 stores at
+> 8K DPR 0.25 and 5K DPR 0.375 while leaving native UHD unchanged. The unchanged
+> two-second/heartbeat/ready/retry contracts and literal old/new-shape negative
+> controls make this a sustained deterministic product repair rather than a pause.
+> The sole dirty-worktree browser diagnostic is non-authoritative: sandbox loopback
+> `EPERM` prevented its first pre-browser launch, then its only product run—not a
+> retry—passed Edge 151 in 53,881 ms, 12/12 rows and 57/57 controls, with empty
+> blocked/omitted ledgers and zero findings/instrument failures/retries (report
+> `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`).
+> Exact 8K was 180 ms / browser performance 162.6 ms, with 2 ms arm, 1/1 and
+> 10/0 ms target/heartbeat pairs, 33 ms release→commit, 130 ms commit→ready,
+> ordered 6/7/8 release tail, and two 1,920×1,080 stores. The runtime same-backing
+> control passed in the ledger; no separate 5K timing/state evidence is claimed.
+> Clean committed exact battery evidence and matching pushed-tip CI remain required.
 >
 > Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
 > remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
@@ -424,7 +457,8 @@
 > dev origin with `publishable:false`, manifest `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`,
 > content `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`, tree
 > `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. That source remains prior #206 evidence;
-> current #207 repair authority is the clean `6554b2b` block above. No host/human/Ready/
+> both it and clean `6554b2b` remain prior evidence; current #208 repair authority is
+> pending a clean committed exact battery. No host/human/Ready/
 > merge/release/deploy/version authority follows.
 >
 > **v1.6 additions not yet folded into the sections below** (see ART_DIRECTION / PROCEDURAL_CHARACTERISTICS /

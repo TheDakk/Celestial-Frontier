@@ -131,9 +131,10 @@
 > Browser load/FCP is not a substitute for this application-owned sequence.
 > The Pixi and backdrop canvases use a two-tier simultaneous-owner budget. Native
 > backing is retained through UHD 3,840×2,160. A viewport strictly above
-> 8,388,608 CSS pixels selects 3,145,728 backing pixels per canvas /6,291,456
+> 8,388,608 CSS pixels selects 2,073,600 backing pixels per canvas /4,147,200
 > aggregate, fitted against the *rounded* backing dimensions; desktop-8k resolves
-> to 2,365×1,330 each /6,290,900 combined, as does 5,120×2,880. On a density/viewport transition the
+> to 1,920×1,080 each at DPR 0.25, while 5,120×2,880 resolves to the same backing
+> at DPR 0.375. On a density/viewport transition the
 > old backdrop texture/canvas is destroyed and collapsed before replacement
 > allocation, with exact peak/budget evidence. A same-integer-backing resize still
 > updates CSS size, Pixi screen/texture/event geometry, pointer mapping, backdrop
@@ -314,8 +315,50 @@
 > over loopback, bound to the expected separate development origin, with `publishable:false`
 > and content SHA-256
 > `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`.
-> The source underlies the forthcoming/current docs-only tip; live Git/PR state determines
-> tip/push/check authority and the selected pushed tip requires matching CI.
+> That immutable source remains prior #207 executable evidence; live Git/PR state determines
+> the current tip, upstream, and checks, and the selected pushed tip requires matching CI.
+>
+> CI #208, run `31649176954` attempt 1 / job `94289516851`, is preserved **RED**
+> without retry at exact pushed head `ee8bc281c424b5a8f998dc7327372e5f5a18067d`;
+> merge `8fc6b4fc` is tree-identical, while branch-flow run `31649175614` / job
+> `94289512873` passed. Steps 1–15 and `smoke:ci` passed. Glass then completed its
+> first 11 rows before desktop-8k alone reported
+> `REPLACEMENT_UNANSWERABLE_AFTER_READY`: the valid 2,365×1,330 replacement pair
+> used 6,290,900 pixels, ready was scheduled at browser performance 584.3 ms but
+> emitted at 3,143.8 ms—a 2,559.5 ms main-thread gap—and exact target cycle 1
+> timed out at 2,003 ms against the unchanged strict 2,000 ms bound while the
+> concurrent browser heartbeat answered in 1 ms. No fatal event occurred. The
+> full 12-row report records 1 product finding, 0 instrument failures, 57 planned
+> controls with `ultra-same-backing-resize` product-blocked, `omitted=[]`, and
+> 0 retries; no persona or preview evidence followed. This is a sustained product
+> answerability failure, not a save, import, durability, release, navigation,
+> ready-provenance, browser-health, or instrument failure.
+>
+> The deterministic repair retains native backing through UHD and, strictly above
+> 8,388,608 CSS pixels, caps each simultaneous full-viewport canvas at 2,073,600
+> pixels /4,147,200 aggregate. Desktop-8k and 5,120×2,880 therefore resolve to
+> 1,920×1,080 each, at DPR 0.25 and 0.375 respectively. The two-second target,
+> concurrent heartbeat, ready contract, and zero-retry policy are unchanged.
+> Literal harness positives cover the new dimensions and budget; the former
+> 2,365×1,330 ready/release shapes and existing 2,730×1,536 shapes fail as negative
+> controls, alongside threshold/UHD, runtime resize, pointer, and ticker controls.
+>
+> The sole dirty-worktree browser diagnostic is chronology, not certification.
+> Its first sandbox launch failed before a browser opened on loopback `EPERM`; the
+> one permitted product execution then passed under Edge 151 in 53,881 ms—not a
+> retry—with 12/12 rows, 57/57 controls, empty blocked/omitted ledgers, and
+> 0 findings/instrument failures/retries (407,207-byte report SHA-256
+> `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`).
+> Source commit/status/snapshot identities were `2a24606`,
+> `1ba44ac499d8ff4b0ddcc719935ff1d739cf5f323d0b803d82bd042aa195fe0c`, and
+> `b577cb831f002a02479a49c60a03555d066dad73951656ea56beff0ff261ce98`.
+> Reloads were 173–200 ms; exact 8K was 180 ms with ready performance 162.6 ms,
+> with a 2 ms arm and target1/heartbeat1/target2/heartbeat2 at 1/1/10/0 ms, release→commit
+> 33 ms, commit→ready 130 ms, ordered release tail 6/7/8 at
+> 1,786,578,287,580 /583 /583, and two 1,920×1,080 replacement stores /4,147,200
+> pixels combined. The runtime same-backing control passed in the control ledger;
+> this diagnostic does not claim separate 5K timing/state evidence. Clean committed
+> exact battery evidence and matching pushed-tip CI are still required.
 >
 > Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
 > remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
@@ -329,8 +372,9 @@
 > outgoing 2,365×1,330 stores →1×1 and replacement stayed 6,290,900 pixels combined.
 > Nine automated-only personas and terminal-only 581/659/73/152 ms performance passed;
 > exact preview `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at the
-> separate dev origin with `publishable:false`. That source remains prior #206 evidence;
-> current #207 repair authority is the clean `6554b2b` block above. No save-format,
+> separate dev origin with `publishable:false`. Both this source and clean `6554b2b`
+> remain prior evidence; current #208 repair authority is still pending a clean committed
+> exact battery. No save-format,
 > host/human/Ready/merge/release/
 > deployment/version authority follows.
 > No save-format or version change is involved.
