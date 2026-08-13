@@ -55,9 +55,12 @@
 > unported systems; dormant `beacon` / `events` remain retained in the source
 > contract but hidden from the 41-topic player catalogue. First open persists
 > `seenGuide`; import moved without loss to **Settings → Bring expedition**.
-> The same panel exposes all 56 immutable legacy release entries plus a separate
-> v2.0 development bulletin. That identity cannot trigger the one-time update
-> surface; no v2 production version exists until Nick authorizes one. Tooltip deep links and
+> The same panel exposes all 56 immutable legacy release entries plus **A New
+> Foundation**, the cumulative categorized v2.0 development bulletin. It summarizes
+> every implemented playtest layer while keeping unavailable port work out of its
+> promises. The long draft is browser-checked for canonical section order and a
+> reachable final bullet; opening and reloading it cannot change `rnSeen` or create
+> a shipped-update state. No v2 production version exists until Nick authorizes one. Tooltip deep links and
 > Advanced Briefings remain open port scope. The slice's Field Training likewise
 > owns six real chart/travel/landing lessons plus an honest graduation, not the
 > full legacy 21-step curriculum.

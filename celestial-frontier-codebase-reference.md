@@ -79,9 +79,12 @@
 > capability table supplies current copy for partial systems and explicit
 > unavailable copy for unported mechanics; dormant `beacon` / `events` remain
 > retained but hidden. `release-content.ts` similarly preserves all 56 legacy
-> releases /398 bullets and keeps a v2.0 development bulletin separate;
-> `V2_CURRENT_RELEASE_VERSION` is `null`, so that playtest identity cannot trigger
-> an update or imply a production release. The Guide also renders the full source
+> releases /398 bullets and keeps **A New Foundation**, the cumulative categorized
+> v2.0 development bulletin, separate. Its implemented-outcome outline is explicitly
+> `draft` / `Unreleased`; structural and rendered controls require canonical section
+> order, unique nonempty bullets, scroll-reachable tail copy, and unchanged `rnSeen` /
+> `releasePending` across open and reload. `V2_CURRENT_RELEASE_VERSION` is `null`,
+> so that playtest identity cannot trigger an update or imply a production release. The Guide also renders the full source
 > commit supplied by the guarded development package. First Guide open persists
 > `seenGuide`. Import moved to **Settings →
 > Bring expedition** through the same guarded loader and a named, focus-trapped
@@ -1153,8 +1156,11 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `searchGuide` keep stable ids, search and live cross-links. `fillGuide` /
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
-  supplies the v2.0 development entry followed by the 56 legacy releases. That
-  version is development identity only. `getCurrentV2Release()` returns nothing while
+  supplies **A New Foundation**, the cumulative v2.0 development entry, followed
+  by the 56 legacy releases. Its exact five-section /43-bullet implemented-outcome
+  inventory is checked structurally and in the rendered Guide, including real-scroll
+  tail reach and unchanged shipped-release state. That version is development identity
+  only. `getCurrentV2Release()` returns nothing while
   `V2_CURRENT_RELEASE_VERSION === null`; `showUnseenV2Release()` therefore
   cannot mutate `rnSeen` or open an update until an authorized shipped v2 entry
   exists. This ports the data model, browsing and cumulative-history door; v2

@@ -52,9 +52,12 @@ cross-links and capability-aware v2 copy. Non-dormant unported mechanics remain
 discoverable but are explicitly unavailable; intentionally dormant topics remain
 source-recorded and player-hidden. No legacy promise is presented as current behavior.
 Opening it persists the existing `seenGuide` field. The Guide also carries the full
-56-release/398-bullet legacy history beside a separate v2.0 development
-bulletin. That playtest identity cannot trigger the one-time update popup, update
-`rnSeen`, or create a production release. Save import remains available
+56-release/398-bullet legacy history beside **A New Foundation**, the cumulative
+categorized v2.0 development bulletin. The draft summarizes the implemented playtest
+surface rather than the open roadmap; tests require canonical section order, unique
+nonempty bullets, the key player-facing outcomes, and a scroll-reachable final item.
+That playtest identity cannot trigger the one-time update popup, update `rnSeen`,
+create `releasePending`, or create a production release. Save import remains available
 under **Settings → Save data → Bring expedition**, where the same complete-envelope and
 future/corrupt-byte protections apply. The import surface is an `aria-modal`
 top layer with internal Tab wrapping and Escape-only close/focus restoration;

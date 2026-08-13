@@ -1292,12 +1292,15 @@ duplicates).
   remain OPEN; the Guide model existing does not claim those interaction layers are ported.
 - ★ **D-RELEASE-1 — legacy history, v2 development identity and a shipped version are three different states
   (updated 2026-08-13).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
-  398 bullets, v1.8.9 first and v1.0 last. The v2 development bulletin is separate, explicitly
-  `draft`, `version:"2.0"` and `Unreleased`; v2.0 identifies the playtest product, while
-  `V2_CURRENT_RELEASE_VERSION` is `null` and the shipped-v2 list is empty. Therefore draft copy can appear in the cumulative Guide history but can never fire
-  the mature one-time update rule or mutate `rnSeen`. Hash/parity and negative-control tests protect
-  the archive and patch-line selector. No v1.8.9 mutation, production version, release or deployment is
-  implied.
+  398 bullets, v1.8.9 first and v1.0 last. **A New Foundation** is the separate cumulative v2.0
+  development bulletin: a categorized, implemented-outcome technical outline whose explicit
+  `draft`, `version:"2.0"` and `Unreleased` state does not turn open roadmap work into a promise.
+  `V2_CURRENT_RELEASE_VERSION` is `null` and the shipped-v2 list is empty. Therefore draft copy
+  can appear in the cumulative Guide history but can never fire the mature one-time update rule,
+  create `releasePending`, or mutate `rnSeen`, including after persistence/reload. Structure,
+  key-outcome, rendered-tail and negative-control tests guard this boundary without freezing the
+  mutable draft behind a content hash. Hash/parity tests separately protect the legacy archive and
+  patch-line selector. No v1.8.9 mutation, production version, release or deployment is implied.
 - ★ **D-PRESENT-1 — Spectral remains deterministic data, not a v2 player class
   (2026-08-13).** The auto-lifted descriptors retain `.designation`, `spectral()` and seeded color
   words for parity and art. The application presentation filters every legacy `Spectral class` row.

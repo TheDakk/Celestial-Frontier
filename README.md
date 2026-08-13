@@ -31,10 +31,12 @@ workspace plus a playable Pixi/browser slice. Its Guide is now a source-addresse
 continuation of the mature manual: all 9 categories /43 authored IDs /41 player
 topics remain searchable and cross-linked, while capability-aware v2 copy marks
 unported mechanics honestly instead of repeating their legacy promises. The exact
-56-release/398-bullet legacy history is present beside a separate **v2.0 development**
-bulletin. `v2.0` identifies the playtest build only: it is not a production release,
-`V2_CURRENT_RELEASE_VERSION` remains `null`, and the bulletin cannot trigger an update
-popup or mutate the seen-release marker. Field Training
+56-release/398-bullet legacy history is present beside **A New Foundation**, the
+cumulative **v2.0 development** bulletin. Its categorized technical outline summarizes
+the complete implemented playtest surface and explicitly stops at the current slice
+instead of advertising open port work. `v2.0` identifies the playtest build only: the
+bulletin remains `draft` / `Unreleased`, `V2_CURRENT_RELEASE_VERSION` remains `null`,
+and reading it cannot trigger an update popup or mutate the seen-release marker. Field Training
 currently covers the six chart/travel/landing lessons plus an honest graduation;
 tooltip deep-links, Advanced Briefings, and the rest of the 21-step training arc
 remain port work. From `port/v2`, run `npm install`, `npm test`, `npm run typecheck`,
