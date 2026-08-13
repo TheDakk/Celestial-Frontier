@@ -22,6 +22,7 @@ import {
   V2_CURRENT_RELEASE_VERSION,
   V2_DEVELOPMENT_VERSION,
   V2_DRAFT_RELEASE,
+  V2_RELEASE_CATEGORIES,
   V2_SHIPPED_RELEASES,
   getCurrentV2Release,
   getLegacyReleaseLine,
@@ -235,12 +236,89 @@ describe('legacy and v2 release channels', () => {
   it('keeps the v2.0 development identity separate from the production release channel', () => {
     expect(V2_DEVELOPMENT_VERSION).toBe('2.0');
     expect(V2_DRAFT_RELEASE.status).toBe('draft');
+    expect(V2_DRAFT_RELEASE.id).toBe('v2-development');
     expect(V2_DRAFT_RELEASE.version).toBe(V2_DEVELOPMENT_VERSION);
+    expect(V2_DRAFT_RELEASE.title).toBe('A New Foundation');
+    expect(V2_DRAFT_RELEASE.date).toBe('Unreleased');
     expect(V2_CURRENT_RELEASE_VERSION).toBeNull();
     expect(V2_SHIPPED_RELEASES).toEqual([]);
     expect(getCurrentV2Release()).toBeUndefined();
     expect(hasUnseenV2Release(undefined)).toBe(false);
     expect(hasUnseenV2Release('1.8.9')).toBe(false);
+  });
+
+  it('keeps the cumulative v2.0 bulletin structured, unique, and bound to key outcomes', () => {
+    const expectedCategories = [
+      'New Features & Systems', 'UI Enhancements', 'Gameplay', 'Bug Fixes', 'Under the Hood',
+    ];
+    const requiredCopy = [
+      /TypeScript and Pixi v2 development build/,
+      /Star Atlas, read-only Compendium, Records, Charters, Settings, Field Training/,
+      /exactly one 44-pixel top-right Close action/,
+      /bottom-right dock edge/,
+      /CF1 addresses preserve galaxy, star, planet, coordinates/,
+      /Six real lessons/,
+      /no longer show a player-facing Spectral class row/,
+      /All 56 v1 releases and 398 legacy bullets/,
+      /successful develop push battery/,
+      /mechanics that are not yet playable are labelled instead of promised/,
+      /Automated lenses still do not replace human play/,
+      /production remains the v1\.8\.9 main-branch site/,
+    ];
+    const forbiddenOverclaims = [
+      /\b(?:mining|crafting|combat|capture|breeding)\b[^.!?]{0,80}\b(?:is|are)\s+(?:now\s+)?(?:playable|available|live)\b/i,
+      /\bv2(?:\.0)?\s+(?:port|game|build)\s+(?:is\s+)?(?:complete|finished|production[- ]ready|fully ported)\b/i,
+      /\b(?:all|every)\s+legacy\s+(?:system|mechanic|feature)s?\b[^.!?]{0,80}\b(?:ported|playable|available|live)\b/i,
+    ];
+    const bulletinOutcome = (sections: readonly {
+      readonly category: string;
+      readonly bullets: readonly string[];
+    }[]) => {
+      const categories = sections.map((section) => section.category);
+      const bullets = sections.flatMap((section) => section.bullets);
+      const copy = bullets.join('\n');
+      return {
+        categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
+        canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
+        inventory: bullets.length === 43,
+        populated: sections.every((section) => section.bullets.length > 0)
+          && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
+          && new Set(bullets).size === bullets.length,
+        required: requiredCopy.every((pattern) => pattern.test(copy)),
+        honest: forbiddenOverclaims.every((pattern) => !pattern.test(copy)),
+      };
+    };
+    const outcome = bulletinOutcome(V2_DRAFT_RELEASE.sections);
+    expect(outcome).toEqual({
+      categories: true, canonical: true, inventory: true, populated: true, required: true, honest: true,
+    });
+
+    const reordered = [...V2_DRAFT_RELEASE.sections];
+    [reordered[0], reordered[1]] = [reordered[1]!, reordered[0]!];
+    expect(bulletinOutcome(reordered).categories).toBe(false);
+    const missingMiddle = V2_DRAFT_RELEASE.sections.map((section, index) => ({
+      category: section.category,
+      bullets: index === 1 ? section.bullets.filter((_, bulletIndex) => bulletIndex !== 3) : section.bullets,
+    }));
+    expect(bulletinOutcome(missingMiddle).inventory).toBe(false);
+    const missingRequired = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'Automated lenses still do not replace human play.',
+        'Automated evidence boundary removed.',
+      )),
+    }));
+    expect(bulletinOutcome(missingRequired).required).toBe(false);
+    const injectedOverclaim = V2_DRAFT_RELEASE.sections.map((section, sectionIndex) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet, bulletIndex) => (
+        sectionIndex === 0 && bulletIndex === 1 ? 'Mining is now playable.' : bullet
+      )),
+    }));
+    const overclaimOutcome = bulletinOutcome(injectedOverclaim);
+    expect(overclaimOutcome).toMatchObject({
+      categories: true, canonical: true, inventory: true, populated: true, required: true, honest: false,
+    });
   });
 
   it('positive control: an injected shipped bulletin obeys the one-time decision without authorizing a version', () => {

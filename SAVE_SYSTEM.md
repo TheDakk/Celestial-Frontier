@@ -1,6 +1,6 @@
 # Celestial Frontier — Save System
 
-> **2026-08-12 v2 port overlay (matches `port/v2` code):** The browser slice now
+> **2026-08-13 v2 port overlay (matches `port/v2` code):** The browser slice now
 > distinguishes a fresh store, a supported coherent save, an unsupported future
 > version, a corrupt/sparse payload, and a transient storage failure. Only a
 > supported coherent payload may replace the last-known-good backup. Corrupt
@@ -22,8 +22,9 @@
 > protected persistence path. Guide content itself is source-addressed code, not
 > duplicated into the save. The complete 56-entry v1 release archive is likewise
 > immutable content; `rn`/`rnSeen` remains only a seen-version marker. The
-> separate v2 development bulletin is deliberately unversioned and cannot mark
-> itself seen or fire an update surface. No version was bumped.
+> separate **A New Foundation** bulletin is an unshipped v2.0 development draft:
+> opening the cumulative notes cannot mark them seen, create `releasePending`,
+> or fire an update surface. No production version was authorized or bumped.
 > The import door is a top-layer `aria-modal` dialog: Tab stays inside its live
 > textarea/button/file controls are explicitly named, the file picker has a
 > keyboard-operable visible trigger, Escape closes only the dialog and restores

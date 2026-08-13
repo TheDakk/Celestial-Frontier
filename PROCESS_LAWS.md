@@ -124,6 +124,15 @@ release decision, or production action.
   source-addressed to the mature canonical Guide; capability-aware bodies describe only systems that
   are actually live, account for every authored legacy topic, and keep intentionally dormant topics
   recorded but player-hidden rather than advertising them as usable.
+⚠ **A RELEASE BULLETIN IS AN OUTCOME MAP, NOT A COMMIT LOG OR A ROADMAP.** Follow the mature
+  category order and its compact technical-outline voice, but summarize what the player can actually
+  use now rather than narrating patches, gates, or unfinished plans. A cumulative x.0 development
+  entry may be comprehensive without pretending open mechanics are shipped: omit inapplicable empty
+  categories, name current-slice limits honestly, and keep draft identity separate from production
+  release authority. Test the mutable draft semantically rather than freezing it behind a whole-copy
+  hash: canonical unique sections, nonempty unique bullets, required implemented outcomes, forbidden
+  overclaims, a browser-reachable final item, and proof that reading/reloading the draft cannot mutate
+  the shipped-release marker. Continue to content-address the immutable legacy archive separately.
 
 ⚠ **RARITY DATA AND RARITY PRESENTATION ARE DIFFERENT CONTRACTS.** The lifted deterministic
 descriptor may continue to calculate a `spectral()` designation and keep color words for seeded
