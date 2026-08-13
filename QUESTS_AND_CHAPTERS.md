@@ -1,8 +1,43 @@
 # Celestial Frontier — Quests & Chapters
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js). Carries v1.8.6 and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.
-**Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and the Field Training tutorial (**21 steps**, all counted).
-**Source of truth:** this doc is the DESIGN spec; main.js implements it.
+**STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
+below matches `port/v2` as of 2026-08-11. Carries v1.8.6 and v1.8.7
+(external rounds 8 and 9) updates — see the ⚠ notes inline.
+**Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and Field Training. The **21-step** curriculum described below is the legacy game; the current v2 boundary is explicit here.
+**Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
+sections, and `port/v2/apps/game/src/training.ts` plus its `main.ts` wiring
+implement the dated port overlay.
+
+> **2026-08-11 v2 Field Training overlay:** The playable slice currently owns
+> six real lesson cards—welcome, find Earth, read the survey, chart Earth, open
+> the Atlas, and Land—followed by an honest **Finish for now** graduation. It
+> advances only from the real survey/Atlas/landfall events and must not be
+> described as the full legacy 21-step curriculum. Cache/specimen handling,
+> feeding, breeding, duels, hazards, healing, tray/search/sheet, forging,
+> horizon/Charter lessons and the finale remain OPEN until their live systems
+> exist in v2.
+>
+> Veteran restart in **Settings** stores a bounded `{view}` snapshot, moves the
+> drill to Sol, and commits before reload; a failed write cancels the restart and
+> restores the current expedition in memory. Finish and skip restore that
+> current-v2 view before persisting. Imported legacy mid-training saves carry a
+> much larger full-expedition `tsnap`; typed restore-before-clear behavior and
+> injected write-failure proof for that shape remain OPEN. Repeating the Earth
+> Land action during an explicit training replay may emit the lesson event, but
+> it does not mint a second landfall/progression reward.
+> While a lesson is active, Field Training owns Escape before the global
+> card/ascent handler. Escape therefore retains the current lesson navigation,
+> keeps any required survey card reachable, and restores the lesson's logical
+> focus target instead of stranding welcome or survey-tour.
+>
+> The v2 Guide no longer invents a parallel tutorial summary. It preserves the
+> mature Guide's 9-category /43-authored-id /41-legacy-live inventory and marks
+> Training as only partly available, with capability-aware copy that names the
+> six-lesson boundary above. Guide search and cross-links therefore cannot make
+> an unported feeding, breeding, duel, healing, forge, horizon or Charter lesson
+> look playable. Completing the real 21-step v2 curriculum and restoring the
+> legacy full-state `tsnap` are still separate OPEN outcomes; the unversioned v2
+> release draft does not claim either one complete.
 
 ## ⚠ v1.8.4 — weekly charters, the clock, and the objective chip
 

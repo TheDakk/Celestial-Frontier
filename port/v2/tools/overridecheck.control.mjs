@@ -67,8 +67,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { acquireWorkspaceLock } from './workspacelock.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
+acquireWorkspaceLock('overridecheck.control source mutations');
 const root = path.join(here, '..');
 const SRC = path.join(root, 'packages/art/src');
 const VICTIM = path.join(SRC, 'faunaoverrides2.ts');

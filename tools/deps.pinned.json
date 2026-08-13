@@ -3,7 +3,7 @@
     "DECLARED EXECUTABLE DEPENDENCIES — port Phase 0, Gate A deliverable #2:",
     "'reproduce all executable dependencies in a clean CI environment'.",
     "",
-    "WHY THIS FILE EXISTS (ROADMAP 9h): package.json declares only acorn and jsdom, but",
+    "WHY THIS FILE EXISTS (ROADMAP 9h): package.json declares acorn, jsdom and ws, but",
     "tools/uilayout.js and tools/bootperf.js drive a REAL browser — they spawn a system",
     "binary over CDP. There is no Playwright, no Puppeteer, no npm driver anywhere in",
     "tools/. So `npm install` on a clean clone silently leaves TWO of the nine suites",
@@ -15,9 +15,9 @@
   "capturedAt": "2026-07-31",
   "capturedAgainst": "v1.8.9 (tag v1.8.9, commit 92098e9)",
   "node": {
-    "min": "20.0.0",
+    "supported": "^20.19.0 || ^22.13.0 || >=24.0.0",
     "verifiedWith": "v26.5.1",
-    "_comment": "min is the floor the toolkit is believed to need; verifiedWith is what Gate A evidence was actually produced on."
+    "_comment": "Matches jsdom's supported Node lines; verifiedWith is what Gate A evidence was actually produced on."
   },
   "npm": {
     "verifiedWith": "11.17.0"
@@ -25,7 +25,8 @@
   "packages": {
     "_comment": "From package.json. `npm install` provisions these; preflight only confirms they resolve.",
     "acorn": "^8.17.0",
-    "jsdom": "^29.1.1"
+    "jsdom": "^29.1.1",
+    "ws": "^8.18.3"
   },
   "browser": {
     "required": true,
@@ -54,12 +55,15 @@
       "$CF_BROWSER",
       "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
       "C:/Program Files/Microsoft/Edge/Application/msedge.exe",
+      "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "/Applications/Chromium.app/Contents/MacOS/Chromium",
+      "/usr/bin/microsoft-edge",
       "/usr/bin/google-chrome",
       "/usr/bin/chromium-browser",
-      "/usr/bin/chromium",
-      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      "/usr/bin/chromium"
     ],
-    "_resolutionNote": "This list is DUPLICATED verbatim in uilayout.js (~24) and bootperf.js (~56). Preflight repeats it a third time so it can check without importing either. Two-sources-one-truth hazard — see ROADMAP 9h; the port should have one resolver."
+    "_resolutionNote": "This declared order mirrors port/v2/tools/browserpath.mjs. Preflight, uilayout and bootperf all invoke that one negative-controlled resolver; uilayout also consumes the shared browsercdp lifecycle, while bootperf lifecycle migration remains open."
   },
   "gatesRequiringBrowser": {
     "uilayout": "PASS, 787 checks / 10 viewports (on the pinned revision)",

@@ -22,6 +22,16 @@
 export const EPOCH_TICK = 1200;
 /** Epochs of play before a settled world pays again (~40 min of exploring). */
 export const HARVEST_EPOCHS = 2;
+/** Algorithmic safety ceiling. One epoch is 20 minutes of active play, so
+    10,000 represents more than 138 continuous active days. Ecology's
+    verbatim evolution walks once per epoch; an unbounded imported value can
+    otherwise lock the main thread for minutes or effectively forever. */
+export const MAX_COSMIC_EPOCH = 10_000;
+
+export function sanitizeEpoch(value: unknown): number {
+  const epoch = +(value as number);
+  return Number.isSafeInteger(epoch) && epoch >= 0 ? Math.min(epoch, MAX_COSMIC_EPOCH) : 0;
+}
 
 /** A conquest ledger row: `t` is a DISPLAY stamp (gates nothing since
     v1.8.8); `e` is the epoch at last harvest — ABSENT means READY (a
@@ -37,9 +47,14 @@ export interface EpochClock {
 
 /** playSeconds: monotonic seconds of PLAY this session (not wall time). */
 export function createEpochClock(epochBase: number, playSeconds: () => number, tick: number = EPOCH_TICK): EpochClock {
-  const base = Number.isFinite(+epochBase) ? Math.max(0, +epochBase) : 0;
+  const base = sanitizeEpoch(epochBase);
+  const safeTick = Number.isFinite(tick) && tick > 0 ? tick : EPOCH_TICK;
   return {
-    current(): number { return base + Math.floor(playSeconds() / tick); },
+    current(): number {
+      const elapsed = +playSeconds();
+      const steps = Number.isFinite(elapsed) && elapsed > 0 ? Math.floor(elapsed / safeTick) : 0;
+      return Math.min(MAX_COSMIC_EPOCH, base + steps);
+    },
     base(): number { return base; },
   };
 }
@@ -56,7 +71,7 @@ export function harvestReady(c: ConquestRow | null | undefined, cosmicEpoch: num
     the deliberate single ready cycle. */
 export function clampHarvestEpoch(e: unknown, epochBase: number): number {
   const x = +(e as number); const v = Number.isFinite(x) ? x : 0;
-  return Math.max(0, Math.min(epochBase, v));
+  return Math.max(0, Math.min(sanitizeEpoch(epochBase), v));
 }
 
 /** Record a harvest: readiness restarts from the CURRENT epoch. */

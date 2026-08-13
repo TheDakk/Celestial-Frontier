@@ -37,9 +37,12 @@ This is a multi-batch arc. It is written down in full so a cold session can pick
 > and returns **PASS with optional polish only / APPROVE**. The archive's embedded
 > `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED` status is immutable preparation
 > metadata; the human PASS is a separate package-level overlay, not formal certification.
-> Draft PR #10 carries the result from `openai/mac` into `develop` as `Address
-> Platinum glider and lineage review`; review and normal merge are now the GitHub
-> step, while automatic merge, formal certification, release, and deployment remain unauthorized.
+> PR #10, `Address Platinum glider and lineage review`, merged normally from
+> `openai/mac` into `develop` at `61cc058`. Draft PR #11 is now the separate
+> `openai/mac` → `develop` vehicle for v2 hardening plus player-guide/document
+> parity; it leaves the sealed art package and static portrait set unchanged.
+> Review and normal merge of PR #11 are the current GitHub step, while automatic
+> merge, formal certification, release, and deployment remain unauthorized.
 
 > **Historical frozen checkpoint, 2026-08-10 — superseded for the broader
 > Platinum ruler:** the official 181-family /233-packet reset review is

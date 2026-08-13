@@ -45,12 +45,15 @@ if (!process.argv.includes('--skip-gate')) {
      drifted out of the 42-58 band unnoticed because nothing was watching.
      It is deterministic (fixed trial seeds), so it can gate without flaking.
      It reads tools/probe-build.html, which validate.js writes first. */
-  for (const t of ['validate.js', 'smoke.js', 'uilayout.js', 'balance-sim.js']) {
-    console.log('deploy gate — running tools/' + t + ' …');
+  for (const [t, args] of [
+    ['validate.js', []], ['smoke.js', []], ['uilayout.js', ['--selftest']],
+    ['uilayout.js', []], ['balance-sim.js', []],
+  ]) {
+    console.log('deploy gate — running tools/' + t + (args.length ? ' ' + args.join(' ') : '') + ' …');
     try {
-      execFileSync(process.execPath, [path.join(__dirname, t)], { cwd: root, stdio: 'inherit', timeout: 600000 });
+      execFileSync(process.execPath, [path.join(__dirname, t), ...args], { cwd: root, stdio: 'inherit', timeout: 600000 });
     } catch (e) {
-      console.error('\nDEPLOY ABORTED — tools/' + t + ' failed. Fix it (or --skip-gate for a declared emergency).');
+      console.error('\nDEPLOY ABORTED — tools/' + t + (args.length ? ' ' + args.join(' ') : '') + ' failed. Fix it (or --skip-gate for a declared emergency).');
       process.exit(1);
     }
   }

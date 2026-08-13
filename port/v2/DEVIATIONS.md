@@ -910,12 +910,529 @@ duplicates).
 
 ## Correctness
 
-- ☐ **D-9i — string `maxGen` poisoning.** `_sanitizeSavedGenome` clamps
+- ★ **D-9i — string `maxGen` poisoning (fixed in the v2 importer, 2026-08-11).** `_sanitizeSavedGenome` clamps
   brood/fed/xp/hurt but not `gen`; `onSpeciesStored` assigns `entry.gen` raw after a
   coercing comparison, so a hostile save's `gen:'2'` lands in `stats.maxGen` and
-  persists into every future save. Found by the importer parity test (fixture pins
-  the string). *Port fix:* coerce at the comparison. One line; invisible to honest
-  saves.
+  persists into every future save. Found by the importer parity test (the frozen
+  v1.8.9 fixture still pins the string). The v2 importer now validates a finite,
+  nonnegative safe integer, stores the normalized number in both the genome and
+  `stats.maxGen`, and negative-controls strings, fractions, negatives, non-numbers,
+  and unsafe integers. Honest numeric generations remain byte-for-byte unchanged.
+- ✔ **D-SAVE-1 — a syntactically valid truncation is not a save (2026-08-11).** The lifted
+  importer deliberately hardens sparse objects into defaults, which is useful for creating a new
+  in-memory expedition and unsafe as proof that stored bytes may replace the last-known-good copy.
+  Explicit import and boot recovery now share a plain-object, supported-version, coherent-envelope
+  classifier. `{}`, `{view:null}`, primitives and arrays cannot overwrite progress; a proven backup
+  wins over a corrupt primary; an unsupported future version remains byte-protected with an update
+  message; and a transient IndexedDB failure releases its write hold only after a successful retry.
+  The repository also clears a rejected/blocked open Promise so one startup failure cannot poison the
+  whole session. Replacement import cancels/drains ordinary persistence before the proven primary
+  write. Its classification and primary use trimmed JSON, but the optional local recovery keepsake
+  retains the exact submitted text, including legal surrounding whitespace. File selection is
+  browser-decoded to text, so the external moderator file remains the byte-for-byte authority. This is intentional exploit/data-loss hardening over
+  permissive v1 behavior.
+- ✔ **D-SAVE-2 — intentional replacement reloads own pre-await ticker quiescence and outgoing
+  renderer release (closed in exact clean executable evidence `7d9980e`, 2026-08-12).** Training restart after its reversible view
+  commit, supported expedition import after its replacement-envelope commit, and the storage-
+  health retry after rediscovering real bytes now share one code-owned transition. It blocks new
+  ordinary persistence and synchronously stops a running outgoing ticker when the exclusive claim
+  is acquired, before any persistence await. Only the exact failed/rolled-back owner may restart a
+  ticker its claim stopped; invalid import bytes reject before claim without disturbing play. A
+  successful transition cancels the preference debounce, removes renderer-resize listeners,
+  destroys Pixi with global and child texture resources, detaches its view, and collapses both the
+  application and backdrop canvases to at most 1×1 before one task boundary and `location.reload()`.
+  The optional CDP binding exports those postconditions, the replacement reason and outgoing
+  document token outside the dying execution context. The replacement's separate optional
+  `cf-v2-slice-ready/v1` tail binding is emitted only after load, persistence, complete input/slice
+  wiring, a first ticker turn, an animation frame and a later task. It is
+  intentionally not a `pagehide` listener: browser-cache restoration must not revive a destroyed
+  application. The diagnostic `cf-v2-import-phase/v1` stream binds the exact operation and old
+  document/session/default context/loader; requires `invoked` with a running ticker and ordered
+  claim/persistence/write/release stages with it stopped; and shares one absolute 20-second deadline
+  that begins before the bounded non-awaiting arm. IndexedDB durability is not raced against a
+  timeout. This addresses 8K renderer pressure without claiming CI
+  #201 proved GPU exhaustion; that run proved only the replacement-lifecycle ambiguity described
+  under D-UI-3.
+  Test-battery #203 (`31602984470` / `94134750800`) later preserved a distinct
+  pre-release pressure failure at exact pushed `38e4f362`: all preceding gates and
+  `smoke:ci` passed, but desktop-8k reached 20,015 ms before any release/navigation/
+  ready/fatal/command/event receipt; 11 other rows passed. The outgoing 5,461×3,072
+  ticker was still rendering across the durable-write wait and teardown under CI
+  software rendering. This is not save corruption or a reported write rejection,
+  and the run is not retried or hidden by a longer deadline.
+  Before the final stable battery, one smoke attempt correctly refused mixed-source evidence
+  because tracked docs changed during its run (`source identity changed during slice smoke`).
+  That single execution had no automatic retry and is coordination/instrument evidence, not a
+  product failure. Clean exact commit `7d9980e37e60f0cec8cb840e75098872b9cc90d0`
+  then passed the complete battery. Exact-source glass passed 12/12 with 52/52 controls,
+  `omitted=[]`, 0 findings/instrument failures/retries and all 12 exact phase/release/ready paths
+  at digest `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+  Replacement totals were 194–239 ms; desktop-8k recorded a 3 ms arm, ticker true only at
+  `invoked`, 21 ms phase span, 0 ms write, 19 ms release, both 5,461×3,072 canvases →1×1,
+  `performanceNow` 199.5 ms, 1 ms confirmation and 239 ms total. One-attempt smoke passed
+  0 findings / 10 screenshots and all nine automated personas passed. `7d9980e` remains immutable
+  prior evidence for D-SAVE-2; the later prior D-SAVE-3 evidence is `46fb627` below. The exact
+  clean executable outcome closes this implementation item; human play and release authority remain
+  separate.
+- ✔ **D-SAVE-3 — simultaneous full-viewport resources share one budget and boot wiring owns
+  ticker start (first closed in exact clean executable evidence `46fb627`, 2026-08-12).** Test-battery #204
+  (`31612817092` / `94168172635`) completed once without retry at exact pushed
+  `4cee7d807b8f9258e370aad31c30756269f95a96` and remains red. All earlier gates and
+  `smoke:ci` passed. Desktop-8k's arm queued for 9,504 ms; import/write, 35 ms release,
+  navigation, changed loader at 45 ms, load at 231 ms and FCP at 268 ms were healthy,
+  then the replacement emitted no ready witness inside 20 seconds and no fatal event.
+  Root cause was two independent full 16,777,216-pixel canvas allocations plus Pixi
+  `autoStart` before async save/scene/slice/input wiring—not save corruption or an
+  import/write/release/navigation/load/FCP failure.
+
+  The repair gives the application and backdrop canvases one aggregate 4,096² budget,
+  half each: native through 4K and 3,862×2,172 each at 8K (16,776,528 combined). Pixi
+  stays stopped through wiring, then performs a real tick/render, animation frame and
+  later task. Exact `cf-v2-boot-phase/v1` stages `app-init-start`, `app-init-complete`,
+  `backdrop-complete`, `save-load-start`, `save-load-complete`, `scene-rendered`,
+  `slice-published`, `wiring-complete`, `ticker-started`, `first-tick`,
+  `ready-scheduled`, `ready-emitted` bind session/context/generation/origin/loader/token;
+  ticker false-through-wiring/true-after and per-stage/deadline controls fail closed.
+
+  Immutable executable source `46fb627640e42ea0f43e2e144529884a959d1e72`
+  passed the exact local battery. One malformed `--verify-run` operator invocation
+  caused local SIGABRT/report overwrite; one correct rerun plus verification passed
+  `exact-46fb627-root-layout`, 787/787 across 10/10. V2 passed 273/1 and all
+  gates/selftests; one-attempt smoke passed 0/10. Full certifying glass at source-snapshot digest
+  `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`
+  passed 12/12, planned/executed 53/53, `omitted=[]`, zero findings/instrument
+  failures/retries in 170–197 ms. Exact 8K was 190 ms total: 2 ms arm, 35 ms
+  release→changed-loader commit, 137 ms commit→ready, `performanceNow` 170.5 ms,
+  1 ms confirmation, outgoing 3,862×2,172 canvases →1×1 and the replacement pair
+  at 16,776,528 combined pixels. Nine automated personas passed; terminal-only
+  performance was 595/676/76/168 ms. Exact manifest `dev-preview-exact-46fb627`
+  records 37 files /10,176,376 bytes, content SHA-256
+  `4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`, tree
+  `0d47d77a303244fd8ce325a5d2ec975dac0c86ca`, expected separate origin and
+  `publishable:false`. `46fb627` remains prior immutable exact evidence. Human
+  play, Ready, merge, release, deployment and version
+  authority remain open.
+- ★ **D-UI-4 — ready publication is not post-render answerability; ultra backing is a
+  separate density tier (narrow #205 repair closed in prior exact clean evidence;
+  broader resize answerability superseded by D-UI-5 below, 2026-08-12).**
+  Test-battery #205 (`31621227550` / `94196289291`) completed once without retry
+  at exact pushed `c57305fbf30af2bc8158ff46af1ec49ec4455d95` and remains red.
+  Every preceding gate and `smoke:ci` passed. Desktop-8k completed import, primary
+  write, renderer release, changed-loader navigation, all 12 boot stages, and
+  `cf-v2-slice-ready/v1` at browser-native `performanceNow` about 3,733 ms. Its
+  following exact-context confirmation alone timed out at the unchanged two-second
+  bound. Because #205 had no concurrent browser-process heartbeat, it is strong
+  pixel-linear evidence of post-ready target starvation but cannot retrospectively
+  prove browser/CDP transport stayed healthy. Preserve it without retry.
+
+  The #205 follow-on retained native backing through UHD 3,840×2,160. A viewport strictly
+  larger than 8,388,608 CSS pixels selects an ultra tier of 4,194,304 backing
+  pixels per canvas /8,388,608 aggregate. `fitResolutionToPixelCap` compares the
+  actual independently rounded backing dimensions, making 8K exactly 2,730×1,536
+  each /8,386,560 combined. Density transitions destroy/collapse the prior backdrop
+  before resizing or allocating its replacement and publish exact transition peak/
+  budget evidence. Same-backing logical resizes still update canvas CSS size, Pixi
+  screen/texture metadata, EventSystem resolution and real pointer mapping, backdrop
+  logical size and generation; backing-width change is not used as a proxy.
+
+  The harness follows timely ready with two independent, strict, no-retry,
+  at-most-two-second exact-context cycles. Each target command is sent concurrently
+  with root-session `Browser.getVersion`; cycle 2 is awaited from a one-shot Pixi
+  ticker callback at priority -50 after the render listener and must advance the
+  ready tick count. A timed-out/lost target with a timely heartbeat is a product
+  answerability finding; a bad/late heartbeat is instrument/transport failure. An
+  exact five-row ledger binds import arm plus both target/heartbeat pairs to role,
+  cycle, session/context, await mode, priority and deadline. The 57-control plan
+  separately records executed, `blockedNegativeControls`, and
+  `omittedNegativeControls`, so an answerability product finding cannot be replaced
+  by an omission instrument error. Controls `ready-confirmation-heartbeat`,
+  `ready-confirmation-ticker-progress`, `ultra-viewport-render-budget`, and
+  `ultra-same-backing-resize` carry deliberate failure cases in both directions.
+
+  Prior diagnostic only: the earlier `dirty-diagnostic` targeted/smoke/glass
+  captures based on `c57305f` remain non-authoritative; their sandbox `EPERM`
+  and corrected `7680.000000000001` assertion did not retry a product failure.
+  Immutable executable source `135a635d066d1c67e3096dc134de9247267898d5`
+  passed the complete exact sequential battery from clean source-status SHA-256
+  `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`
+  and source-snapshot
+  `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+  A sandbox-only Edge SIGABRT interrupted preflight/CDP selftest; the same checks
+  passed outside sandbox without product retry. Root validate, legacy smoke,
+  rarity and dead-code passed. Root layout
+  `exact-135a635d066d-20260812T192848Z-root-layout` passed 787/787 across 10/10
+  under Edge 151 in 75,532 ms; report
+  `7e2689c31e1095885ee8139bb395b40e799972461649efd100b631a4e6e9f85f`.
+  V2 passed 273/1 plus all type/art/override/coverage/spec gates. One-attempt
+  slice smoke passed 0 findings /10 screenshots /0 retries in 105,379 ms; report
+  `c838f3e7dfdf161b7bfa6111c6979215a2ba439fdd44a4cb8e00a8cdf7c3d1a5`.
+  Full certifying glass passed 12/12, 57/57 unique, `blocked=[]`, `omitted=[]`,
+  zero findings/instrument failures/retries in 52,254 ms; report
+  `1f14906d178528613fdf52db53ee4e1f84b6a48ceb21ad3a41bd9d0c5348b23b`,
+  with reloads at 176–185 ms. Exact 8K was 185 ms /2 ms arm /12 ms
+  invoked→release /32 ms release→commit /122 ms commit→ready /152.2 ms
+  `performanceNow`; target confirmations were 1/9 ms and heartbeats 1/1 ms.
+  Outgoing/replacement stores were 2,730×1,536 each; outgoing collapsed to 1×1
+  and replacement remained 8,386,560 combined pixels. Nine automated personas
+  passed—not human play—with JSON/Markdown SHA-256
+  `c17c44fcb3d534707dc6186bbd4fbcae4d1cfea511bdec8a263ec48be4927a58` /
+  `43d5d52e44d7d19aec597a3df5b2599c0da143bb7170d16c17ed141bd390d6b4`;
+  terminal-only performance was 578/659/76/170 ms. Exact preview
+  `dev-preview-exact-135a635d066d-20260812T192848Z` browser-smoked PASS under
+  Edge 151; manifest
+  `0233984ca2bad28c189e979d4a30082d6137a06e8eac086c3b2525989813dd4e`,
+  37 files /10,186,230 bytes, content
+  `da4e066b447db073383f59dd592cd2a19a186d32ce13a2edd05fbc07e66aa10f`,
+  tree `d1ab1d79fba4ba2939c3e1ec0661fb60498afb23`, expected separate origin,
+  production distinct and `publishable:false`. Live Git/status/PR checks determine
+  the docs-only tip; matching CI and separate host/human/Ready/merge/release/
+  deploy/version authority remain open.
+- ★ **D-UI-5 — geometry-correct very-large resize must remain answerable (repair frozen;
+  exact clean executable evidence, 2026-08-12).** Test-battery #206, run `31635297321` attempt 1 /
+  job `94243979205`, completed once without retry at exact pushed
+  `558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577` is tree-identical.
+  Every preceding step and `smoke:ci` passed. Desktop-8k replacement reload passed in
+  8,749 ms, ready published at browser-native `performanceNow` 2,578.6 ms, and its two
+  ready target cycles completed in 1,905/1,910 ms with 3/1 ms browser heartbeats.
+  The later 8K→5,120×2,880 same-backing transition then produced the sole product
+  finding, `ULTRA_VIEWPORT_RESIZE_UNANSWERABLE`: exact-context `Runtime.evaluate`
+  timed out at 2,003 ms against the strict 2,000 ms bound while concurrent
+  `Browser.getVersion` answered in 2 ms; `last:null`. The matrix traversed all 12
+  viewports with 1 product finding, 0 instrument failures, 56 executed plus
+  1 product-blocked control =57, `omitted=[]`, and 0 retries. No persona or preview
+  evidence was produced. Preserve #206 red without retry or a deadline increase.
+
+  The frozen repair keeps UHD 3,840×2,160 native. Strictly above the existing
+  8,388,608-CSS-pixel threshold, each simultaneous full-viewport canvas is capped at
+  3,145,728 pixels /6,291,456 aggregate. Exact rounding makes both 8K and
+  5,120×2,880 use 2,365×1,330 stores (3,145,450 each /6,290,900 combined).
+  Backdrop destruction still precedes replacement allocation, and logical resize still
+  refreshes canvas CSS, Pixi screen/texture/EventSystem state, pointer mapping, backdrop
+  dimensions/generation, and exact transition peak/budget. Downshift and restore each
+  require a strict target probe paired concurrently with `Browser.getVersion`, followed
+  by an advancing later post-render ticker turn. Deliberately stopped and stale tickers
+  fail alongside the established geometry/pointer/ownership controls. The product still
+  runs its existing full scene rerender; no scene-rerender optimization or separate
+  scene-art quality tier landed.
+
+  Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
+  remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+  snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
+  Edge 151/pin-150 preflight warned; root validate/smoke and layout 787/787 across
+  10/10 passed; v2 passed 273/1 plus all gates. One-attempt slice smoke passed 0/10
+  in 105,217 ms (`b835f79764f4e22a2179ab74f9412491ee4d81730e775889372461d64ddd0474`).
+  Certifying glass passed 12/12, 57/57, empty blocked/omitted and zero findings/
+  instrument failures/retries in 52,557 ms (`7fe33219e70361140ebc931f0d77fca0976a46fe51eecc42815f41eba110980c`).
+  Exact 8K was 203 ms / `performanceNow` 158.2 ms, phases 2/11/33/127 ms, targets
+  1/10 ms and heartbeats 0/0 ms; outgoing 2,365×1,330 stores →1×1 and replacement
+  stayed 6,290,900 pixels combined. Nine automated-only personas and terminal-only
+  581/659/73/152 ms performance passed. Preview `dev-preview-exact-df1c28b-20260812T211642Z`
+  was browser-smoked under Edge 151 over loopback, bound to the expected separate development
+  origin, with `publishable:false`. That source and clean `6554b2b` below remain
+  prior evidence; clean `307b8aaf` is current local #208 executable evidence. No host/human/Ready/
+  merge/release/deploy/version authority follows.
+- ★ **D-UI-6 — adjacent import/release bindings share one ordinal ruler (exact clean local
+  evidence; selected pushed tip requires matching CI, 2026-08-12).** Test-battery #207, run
+  `31642880191` attempt 1 / job `94269466117`, completed without retry at exact pushed
+  `ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
+  `8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. Every prior gate,
+  `smoke:ci`, and 11 glass rows passed. Tablet-portrait alone instrument-failed when
+  a valid healthy release witness was received between ordered `release-started` and
+  `release-complete`, but the harness treated that producer-legal intermediate as terminal.
+  The report records 0 product findings, 1 instrument failure, 57 planned/listed controls,
+  `blocked=[]`, `omitted=[]`, 0 retries, and no persona/preview output. Preserve #207 red.
+
+  The repair gives only the import-phase and generic release bindings one monotonic ordinal
+  within an armed capture. The successful tail is exactly `release-started` N → release N+1 →
+  `release-complete` N+2. The valid release-first intermediate stays pending under the unchanged
+  original 20-second import deadline; the release receipt may anchor navigation without renewing
+  import. Phase-complete-first, premature, nonadjacent, missing, late, duplicate, malformed,
+  wrong-provenance, early boot/ready, and overlong phase streams including a duplicate sequence-8
+  terminal fail closed.
+
+  The prior dirty diagnostic (report
+  `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`) remains
+  chronology only. Immutable executable source
+  `6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the complete exact clean battery.
+  Its first sandboxed preflight Edge launch SIGABRTed before CDP; the same invocation passed
+  when permitted with only Edge 151/pin-150 drift, an environment launch refusal and not a
+  product retry. Root gates and exact layout 787/787 across 10/10 passed (report
+  `58dc4ef4456fac012b2e8f0aa801917b5579cffe435fd4576827ff29bcbb4b78`); v2 passed 273/1
+  and every static/art/coverage gate; one-attempt smoke passed 0 findings/10 screenshots.
+  Certifying glass passed 12/12 and 57/57 in 54,877 ms with exact 6/7/8 tails on every
+  row, empty blocked/omitted ledgers, and zero findings/instrument failures/retries. Tablet-
+  portrait was 196 ms with 2/1/1/7/0 ms commands; exact 8K was 197 ms with
+  1/1/0/7/0 ms commands, release→commit 34 ms, commit→ready 131 ms, outgoing
+  2,365×1,330 twins →1×1, and replacement 6,290,900 pixels combined. Smoke/glass report
+  hashes are `139b10ea16d17c109d5b624fa75daf73291d98f5ad8fe7df569501829ab5f844` /
+  `a05ba65e28ac94b146b051164c1b22195bfaa7509bd47d9631561fc394920b6c`.
+  Nine automated-only personas and terminal-only 635/717/77/151 ms performance passed.
+  Preview `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151
+  over loopback, bound to the expected separate development origin, with `publishable:false`
+  and content
+  `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`.
+  That immutable source remains prior #207 executable evidence; live Git/PR state determines
+  the current tip, upstream, and checks, and the selected pushed tip still requires matching CI.
+  No human, host, Ready, merge, release, deployment, or version authority follows.
+- ★ **D-UI-7 — fixed ultra backing tier restores sustained answerability (immutable clean
+  exact local evidence; selected pushed tip requires matching CI, 2026-08-12).** Test-battery #208, run
+  `31649176954` attempt 1 / job `94289516851`, completed without retry at exact pushed
+  head `ee8bc281c424b5a8f998dc7327372e5f5a18067d`; merge `8fc6b4fc` is tree-identical,
+  and branch-flow `31649175614` / job `94289512873` passed. Steps 1–15 and `smoke:ci`
+  passed. The first 11 glass rows passed; desktop-8k alone reported
+  `REPLACEMENT_UNANSWERABLE_AFTER_READY`. Its valid 2,365×1,330 pair /6,290,900 pixels
+  scheduled ready at browser performance 584.3 ms but emitted at 3,143.8 ms, a
+  2,559.5 ms main-thread gap. Exact target cycle 1 timed out at 2,003 ms against the
+  unchanged strict 2,000 ms bound while the concurrent browser heartbeat answered in
+  1 ms; no fatal occurred. The complete report records 12 rows, 1 product finding,
+  0 instrument failures, 57 planned controls with `ultra-same-backing-resize`
+  product-blocked, `omitted=[]`, 0 retries, and no persona/preview output. Preserve
+  #208 red without retry.
+
+  The repair stays deterministic: native backing remains through UHD; strictly above
+  8,388,608 CSS pixels, each simultaneous full-viewport canvas is capped at 2,073,600
+  pixels /4,147,200 aggregate. Exact desktop-8k and 5,120×2,880 both resolve to
+  1,920×1,080, at DPR 0.25 and 0.375 respectively. The unchanged two-second target,
+  concurrent heartbeat, ready, ticker, runtime-resize, pointer, and no-retry contracts
+  guard sustained responsiveness rather than a one-shot pause. Literal positives assert
+  the new dimensions and budget; former 2,365×1,330 ready/release shapes, existing
+  2,730×1,536 shapes, threshold/UHD, pointer, resize, and stopped/stale ticker cases are
+  negative controls.
+
+  The `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`
+  dirty-worktree PASS is prior diagnostic chronology only. Immutable clean executable source
+  `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed from committed clean bytes
+  (status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`, snapshot
+  `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`). Root
+  layout passed 787/787 across 10/10 (`c42a50873ad01a91dd439860f41f1d695a7d2bf5c41521ed8b7eb768b7ee4975`);
+  v2 passed 273/1 plus all gates; one-attempt smoke passed 0/10 in 105,339 ms
+  (`90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723`; log
+  `fe8c5d42eec2a09641f3f551486046559cd4c5956591b5a7d71a25b48d926af1`).
+  Glass passed 12/12 unique rows and 57/57 controls in 53,083 ms with exact 6/7/8 tails,
+  five-command ledgers, `blocked=[]`, `omitted=[]`, and zero findings/instrument failures/
+  retries (`42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f`).
+  Exact 8K was 171 ms / browser performance 161.9 ms, commands 1/1/1/3/0 ms,
+  33/129 ms release→commit/commit→ready, and two 1,920×1,080 stores /4,147,200 pixels
+  at DPR 0.25; terminal-only performance was 606/685/74/171 ms. Automated persona
+  JSON/Markdown hashes are `61d73fc9e11f55bc99f153aa6483661d1dc143104dab4d0cb728a48b68b485c5` /
+  `fdd7ce423cee68ef2584190bb056afd4b32a41c4158957da0e3a571b02f8c495`.
+  Preview `dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was browser-smoked
+  under Edge 151 over loopback, bound to expected separate origin
+  `https://dev-celestialfrontier.github.io`, with `publishable:false`; manifest/content/tree
+  hashes are `1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d` /
+  `5db7790977071235ed164fb8f382bd67421c9fd5e834a504cdb4e1a1e8f47589` /
+  `5b8e1f649b1259f96f5de6d7e8aca0377bc2cf10`. Live Git/PR state determines current
+  tip/upstream/checks; the selected pushed tip requires matching CI. No host, human,
+  Ready, merge, release, deployment, or version authority follows.
+- ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
+  evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
+  forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
+  nonnegative safe integer and caps it at 10,000 (>138 continuous active days at 20 minutes/epoch);
+  the live clock uses the same ceiling. Honest frozen epochs remain unchanged. Persisting/rebuilding
+  exactly once at an epoch edge and pausing foreground-play accounting while hidden remain open.
+- ✔ **D-ROUTE-1 — a shared planet address focuses; only Land lands (2026-08-11).** The slice used to
+  turn a pasted/Atlas planet directly into `surface`, bypassing the only command that records landing,
+  progression and contact outcomes. It now requires the declared planet to exist in the system,
+  opens that live survey in system view, and reserves surface entry for the guarded Land action.
+  Repeat landings do not repay landfall progress; stale cards cannot land/chart/share another system;
+  Atlas rows retain complete galaxy/star coordinates; and an accepted CF1 name round-trips only after
+  route validation. Full galaxy-at-cell and star-at-coordinate canonicalization is still open.
+- ☐ **D-CF1-2 — prove the complete shared-address hierarchy.** Range checks plus planet-in-system
+  membership do not prove that the declared galaxy occupies its cell or that the declared star seed
+  occupies its coordinates. Resolve each level from deterministic source data and navigate only with
+  that canonical result; a forged inner seed must not borrow Sol's reachable coordinates.
+- ☐ **D-TRAIN-1 — restore legacy full-expedition tutorial snapshots.** Current-v2 restart owns a
+  reversible `{view}` snapshot and commits before reload. Imported v1 mid-training `tsnap` is a much
+  larger expedition record; finishing/skipping without a typed restore-before-clear transaction can
+  strand that real progress in an ignored field. The frozen `tut_midtraining` fixture must prove both
+  completion paths and injected write failure before this is closed.
+- ☐ **D-CFB-1 — preserve the deterministic parent tuple or ratify its loss.** The retained creature
+  codec drops `parents`, while combat class/ability reads them. Honest hybrids can therefore change
+  combat identity after a CFB round trip. A normalized two-uint32 tuple is the bounded candidate, but
+  because this corrects inherited behavior it needs an explicit compatibility decision and matchup
+  controls.
+- ☐ **D-IMPORT-1 — reconstruct Map/Set and genome semantics, not merely array shapes.** The current
+  importer contains a descriptor-crashing Compendium row, but malformed trait indices can still
+  produce NaN combat values, and duplicate conquest/bio/wave/tech/binder/charter rows do not yet
+  collapse with the original Maps/Sets' first/last-write semantics. Normalize numeric genes without
+  rewriting honest unwrapped `size`, contain irreparable rows, and rebuild keyed collections through
+  their actual abstractions.
+- ★ **D-CONTRACT-1 — handwritten declarations are executable contracts, not comments (2026-08-11).**
+  SurveyPhrases argument lists, PlanetGen's required `fbm`, WorldGen's `{stars,deco}` result,
+  CombatCore abilities/level/stat shapes and SpeciesTraits tables/options now match runtime. Contract
+  tests exercise the real APIs, and `npm run typecheck` includes the app configuration that first
+  exposed the drift.
+- ★ **D-UI-1 — lower mobile chrome is measured as a group (2026-08-12).** The phone dock wrapped
+  3/3/2 while context/hint/Planetside used fixed offsets, so green smoke evidence visibly covered
+  copy and controls. The port owns a 206×98 4×2 phone dock, publishes measured `--dock-h`/`--ctx-h`,
+  and derives every lower anchor from them. Browser smoke asserts pairwise clearance, row geometry,
+  button hit targets and CSS-variable equality, with an injected old-style overlap that must fail.
+  Each dock button remains a 44px target while its icon uses the 42px client line inside the 1px
+  border, eliminating the hidden two-pixel overflow without shrinking the action.
+- ★ **D-UI-2 — DPR-scaled pixels and player input share one coordinate space (2026-08-11).**
+  Pixi now uses `autoDensity`, keeping a DPR-scaled backing store inside a viewport-sized CSS
+  canvas instead of doubling the displayed box and halving pointer coordinates on DPR-2 phones.
+  Galaxy and star survey cards expose explicit minimum-44px Enter actions, so a card covering its
+  selected body cannot make navigation depend on a second canvas tap. Touch Planetside likewise
+  exposes a minimum-44px **Leave world** action through the same ascent path as Escape/right-click.
+  Planet-card actions also bind the captured galaxy+star `{seed,x,y}` composite, not seed alone.
+  Browser smoke drives the real touch and desktop outcomes and rejects injected density, buried-
+  action and same-seed/different-coordinate stale-card regressions.
+- ★ **D-GUIDE-1 — the port continues the mature Guide; it does not fork a second manual
+  (2026-08-11).** The temporary seven-topic literal is gone. `guide-content.ts` carries an exact,
+  SHA-256-bound v1.8.9 Guide snapshot: 9 categories, 43 authored stable topic ids and 41 legacy-live
+  topics (`beacon` / `events` retained as dormant), with category drill-down, keyword/body search and
+  live `data-gt` cross-links. A typed capability table substitutes v2-current copy for partially
+  ported systems and an explicit **Not yet in v2** explanation for unported systems, so stable ids
+  remain linkable without advertising dead mechanics. Its test fails on source-hash drift, missing or
+  duplicate ids, a broken cross-link, capability overclaim and a capability underclaim. First open
+  persists `seenGuide`. Import remains at **Settings → Bring expedition** through the one guarded
+  loader and its named, top-layer `aria-modal` dialog with internal Tab wrapping and Escape/focus
+  restoration. Guide uses z24 above the z23 survey card. Tooltip deep-links and Advanced Briefings
+  remain OPEN; the Guide model existing does not claim those interaction layers are ported.
+- ★ **D-RELEASE-1 — legacy history, v2 draft copy and a shipped version are three different states
+  (2026-08-11).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
+  398 bullets, v1.8.9 first and v1.0 last. The v2 development bulletin is separate, explicitly
+  `draft`, `version:null` and `Unreleased`; `V2_CURRENT_RELEASE_VERSION` is `null` and the shipped-v2
+  list is empty. Therefore draft copy can appear in the cumulative Guide history but can never fire
+  the mature one-time update rule or mutate `rnSeen`. Hash/parity and negative-control tests protect
+  the archive and patch-line selector. No v1.8.9 mutation, version bump, release or deployment is
+  implied.
+- ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
+  (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
+  heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces
+  a contrast-safe 0.82..0.98 glass floor with no-blur and forced-colors fallbacks; and makes touch/
+  panel controls at least 44px. Text size/tone/font save fields now change the rendered DOM and
+  trigger remeasurement without flattening hierarchy: under A++ a toast title remains 19px above
+  its 16px body. Panels reserve a dedicated right gutter for the sticky 44px Close target. Focus-
+  visible, labelled sliders/import inputs, panel opener restoration and modal Tab containment are
+  explicit; if Survey reopening hides a desktop rail opener, closing falls back to Survey and then
+  the canvas rather than stranding focus on the hidden panel control. Motion Auto follows the OS
+  live; Reduced freezes Pixi ambient time, snaps camera/fade state, gates organism animation and
+  removes CSS animation/transitions.
+  The canvas is a named focusable region whose arrows cycle the actual rendered body inventory,
+  Enter/Space calls its survey path, +/- zooms at the selected target and Escape releases it; a
+  visible focus ring and polite live region expose the state. Clipboard refusal selects the exact CF1
+  in Search and announces **Copy unavailable** instead of lying. `effectiveDpr()` retains the touch-2
+  / desktop-3 heat caps, gives the application canvas plus backdrop one aggregate
+  16,777,216-pixel backing-store budget split equally, and resynchronizes Pixi plus
+  backdrop density on viewport changes while destroying the replaced backdrop texture. On every
+  ≤900px landed layout, populated Planetside owns the objective's limited reading band until ascent;
+  short landscape yields the trail and begins Planetside below measured top chrome. Portrait derives
+  its top bound from visible fixed chrome plus the last visible trail edge and its lower bound from
+  measured safe/dock/context chrome. It keeps the trail only when a useful 72px roster plus 6px
+  separation fits; otherwise `surface-trail-yield` hides only the noninteractive trail and exposes a
+  vertically scrollable Planetside with the same 72px floor, restoring the trail when space returns.
+  `syncDockH` and `syncCtxH` rerun that classification after asynchronous measured changes. The
+  post-close `planetside-portrait-band-viability` control proves the 72px/header/specimen/scroll/
+  clearance outcome and reproduces the exact collision by removing the cap and adding tall content;
+  `planetside-portrait-trail-fallback` tightens the lower safe rectangle enough to force the fallback,
+  proves its useful strip and fixed-chrome clearance, then proves exact restoration.
+
+  Pushed commit `33ea34191c817a8e78eea598c31981f8208e939b` passed its exact local battery,
+  but GitHub test-battery #199, run `31571459050` / job `94034164092`, failed in the v2
+  real-browser/responsive/persona step. `smoke:ci` passed once; the following glass run saw the old
+  ready document token through the former 10-second desktop-8k import/reload wait and also recorded
+  the small-phone Planetside/trail overlap. Pushed `8b8a740` gave import settlement and replacement
+  boot separate 20-second bounds, paired loader/token readiness, and the responsive portrait repair.
+  Its exact local battery and matching test-battery #200 glass leg passed.
+
+  Matching test-battery #201, run `31586917924` / job `94082765087`, completed once without retry on
+  pushed evidence head `4560269b8767dc48bb82e3b1f9d82ca835a84aad` and is **RED**. Every preceding
+  root/product/v2 gate, including `smoke:ci`, passed. Only the desktop-8k preference import leg
+  instrument-failed: the former replacement clock expired after 20 seconds while the old top-frame
+  loader remained and its slice token/import phase were absent. There was no `import-rejected`,
+  `import-threw`, classifier rejection, or reported repository-write failure; the red is a post-
+  request replacement-lifecycle/instrument finding and must not be retried away.
+
+  Clean executable commit `7d9980e37e60f0cec8cb840e75098872b9cc90d0` gives Training restart/import/storage recovery one mutually
+  exclusive replacement transaction, synchronously stops its outgoing ticker before any await,
+  requires the D-SAVE-2 event-owned import-phase and resource-release witnesses, then separates a
+  20-second import transaction, 5-second observed navigation commit, and 20-second new-loader boot.
+  Old-context loss cannot start boot by itself. A stable changed loader starts that clock, and only
+  its ready changed document token may pass. Bounded Page/Runtime/Inspector/Network evidence names
+  crash, unreachable navigation, replacement exception and fatal document load. The existing
+  `import-phase-sequence`, `replacement-ticker-quiescence`,
+  `replacement-document-loader-token-phase` and `reload-resource-release` controls cover
+  stuck and just-late phase transitions, same-loader mutation, premature context loss, duplicate/invalid witnesses,
+  retained canvases, a stopped-before-invocation or running-after-claim ticker, unreleased renderer
+  and over-budget pixels. Its complete clean battery passed:
+  root preflight selftest/preflight (only Edge 151 versus pinned Edge 150 drift), fingerprint/smoke,
+  root layout selftest plus final `exact-7d9980e-root-layout` 787/787 across 10/10 viewports, rarity 60M/0,
+  dead-code 3 tooling references, v2 273/1 and every gate/selftest, and one-attempt smoke 0 findings /
+  10 screenshots. Exact-source certifying glass passed 12/12 viewports and 52/52 controls with
+  `omitted=[]`, 0 findings/instrument failures/retries, digest
+  `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+  All 12 exact phase/release/ready paths passed in 194–239 ms. Desktop-8k recorded a 3 ms arm,
+  21 ms import-phase span with ticker true only at `invoked`, 0 ms write, 19 ms release, both
+  5,461×3,072 canvases →1×1, `performanceNow` 199.5 ms, 1 ms confirmation and 239 ms total.
+  All nine personas passed. The malformed initial `npm run perf -- --runs=4` was rejected before
+  browser startup; the correct single terminal diagnostic was 646/726/74/157 ms and was not a
+  retry of an evidence failure. Exact 37-file / 10,170,996-byte preview
+  `dev-preview-exact-7d9980e` verified and browser-smoked under Edge 151 at 320×568 for content
+  `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
+  `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, expected separate origin,
+  production distinct and `publishable:false`. Prior #201
+  remains red without retry. `7d9980e` is immutable prior evidence; D-SAVE-3's later prior clean
+  evidence is `46fb627`. Live Git/PR checks decide exact tip/upstream/check state; whichever final
+  pushed docs tip is selected requires matching CI. The separate-origin human playtest remains open.
+
+  Matching test-battery #202, run `31594595288` / job `94106996466`, completed once without retry
+  at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53` and is **RED**. Every earlier root/
+  product/v2 gate and `smoke:ci` passed. Only desktop-8k glass import/replacement instrument-failed
+  when the former serial observer first returned at 61.163 seconds. Its two frame-tree reads around
+  one awaited Runtime evaluation each inherited a 30-second command ceiling, so #202 proves
+  observer ambiguity, not a 61-second application boot, save rejection or product failure. It is
+  preserved without retry or a timeout increase.
+
+  The current instrument repair uses sticky receipt timestamps and pure
+  `replacementNavigationOutcome`, `importReleaseOutcome` and `replacementReadyOutcome` decisions.
+  It requires the prior release reason/token/context/session, a changed top-frame loader, and one
+  valid ready tail event from the exact new default context/generation/origin/session/loader/token/
+  URL before the phase-owned deadlines. Two strict at-most-2-second exact-context cycles follow.
+  Each sends its target Runtime command concurrently with root-session `Browser.getVersion`; cycle
+  2 waits for a later post-render Pixi ticker turn. The exact five-row ledger records the import arm
+  plus both target/heartbeat pairs. A lost or late target with a timely heartbeat is a product
+  answerability finding; a bad or late heartbeat is an instrument/transport failure. The payload's
+  browser-native `performanceNow` must be strictly below 20 seconds, and an exact-boundary control
+  fails, so observer descheduling cannot compress a genuinely late boot. Fatal events remain sticky
+  outside the bounded diagnostic ring. Missing, duplicate, malformed, wrong-context and just-late
+  events fail closed. The ready event proves complete boot publication plus a serviced event-loop
+  turn; both confirmation cycles prove bounded post-ready commandability, not the separate 50 ms
+  answerability metric.
+
+  The exact `7d9980e` battery above remains immutable evidence for that repair; later prior D-SAVE-3
+  evidence is bound to clean executable source `46fb627` above. Live Git/PR checks decide exact
+  tip/upstream/check state; whichever pushed tip contains the #207 repair requires matching CI.
+  Separate-origin human playtest, human certification, Ready, merge, version, preview publication
+  and deployment remain separate authority boundaries.
+  Earlier test-battery #203 (`31602984470` / `94134750800`) failed once without retry only
+  in desktop-8k import before the release boundary: the old 5,461×3,072 Pixi ticker
+  remained live while the durable write and teardown awaited service. The follow-on
+  product repair quiesces it synchronously at the exclusive claim and restores it only
+  on exact-owner rollback. Glass now retains the exact event-owned import sequence
+  (`invoked` running; claim/write/release stopped) and starts the unchanged 20-second
+  import clock before its bounded non-awaiting arm command. The new
+  `import-phase-sequence` and `replacement-ticker-quiescence` controls reject both
+  ticker directions, missing/reordered/wrong-context receipts, and just-late evidence;
+  no timeout increase, retry, or IndexedDB timeout race is introduced. Before the exact clean
+  evidence above, one mixed-source smoke execution correctly refused when tracked docs changed
+  during its run; it had no automatic retry and was an instrument/coordination refusal, not a
+  product failure. That exact clean commit closes D-SAVE-2; later prior clean source `46fb627`
+  closes the local implementation/evidence side of D-SAVE-3. Live Git/PR checks decide exact
+  tip/upstream/check state, and whichever final pushed tip is selected requires matching CI.
+- ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
+  six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
+  the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson
+  without paying duplicate landfall progress. Cache, feed, breed, duel, hazard, healing, forge and
+  the rest of the legacy 21-step curriculum remain OPEN. D-TRAIN-1 separately guards the imported
+  full-expedition `tsnap` restoration boundary.
+- ★ **D-ART-LOAD — lazy art readiness is shared but invalidation is bounded per view (2026-08-11).**
+  One in-flight import Promise now accepts the latest callback for each of Compendium, Planetside
+  and prefetch. An idle prefetch can no longer swallow a later view subscription, while a 1,500-row
+  Compendium registers once outside its row map instead of retaining 1,500 callbacks and launching
+  1,500 full-list rerenders when the chunk resolves. Import failure clears the Promise for a later
+  retry; Compendium virtualization and texture-memory proof remain OPEN.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds
@@ -926,10 +1443,12 @@ duplicates).
   descriptor text, and fixture parity would break on a non-en-US CI machine.
   *Port fix:* fixed-locale formatting (`toLocaleString('en-US')`) as an approved
   deviation, or a pure formatter. Cosmetic to players, structural for CI.
-- ★ **D-NAV — illegal navigation states unrepresentable.** The old build defended
-  `st.star.x` against null per frame after a crash shipped; `@cf/scene`'s state
-  machine rejects illegal transitions and clears deeper context on ascent, so the
-  class cannot exist. No parity cost — same legal states.
+- ☐ **D-NAV — legal transitions are guarded; illegal state shapes remain representable.** The old
+  build defended `st.star.x` against null per frame after a crash shipped. `@cf/scene` now rejects
+  illegal transitions and clears deeper context on ascent, but its current single nullable
+  `NavState` interface still permits a contextless `surface` value and retains caller object
+  references. Finish this with a discriminated union plus normalized copies; until then this is a
+  partial hardening, not a closed type theorem.
 - ★ **D-CLOCK — no wall-clock in the domain.** COSMIC_EPOCH's port takes an injected
   play-seconds source; the harvestclock invariant holds by construction. The no-DOM
   lint enforces `Math.random`/`Date.now` absence across every domain package —
@@ -956,11 +1475,11 @@ duplicates).
   `_sanitizeSavedGenome`, the ring-grade chain). The port already homes them in
   `@cf/domain-strays`; the *upstream* cleanup (moving them into [domain] modules in
   main.js) is optional and cosmetic.
-- ★ **D-STORE — one localStorage blob → §19.3 split stores.** The repository
-  separates meta/player/creatures/catalog/inventory/settings/journal/assetcache with
-  atomic transactions and typed recovery — the single-blob format survives via
-  import/export for compatibility, but new-format persistence can be incremental
-  and partial-failure-safe.
+- ☐ **D-STORE — repository/recovery seam exists; §19.3 split stores do not yet.** The typed
+  repository owns IndexedDB open/retry, primary/backup promotion and recovery, but currently stores
+  the exported save as one blob in `meta`. Multi-tab last-writer-wins and incremental domain-store
+  transactions remain open; do not describe them as shipped until revisions/CAS or equivalent
+  transactional records land.
 
 ## Determinism / replayability
 
@@ -1574,8 +2093,8 @@ duplicates).
   `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`: the pure portrait stays
   byte-exact, all five stages preserve defining Vanilla organs with continuous joins, and pixel
   distance from pure increases as the anchor falls. The r6 matrix validates 234/234 assets in both
-  browser orders. `hybridcheck` now requires five exact ID+kingdom+name focused lineages spanning all four kingdoms and
-  rejects eleven injected failures, including focused-species substitution and a simulated Vanilla stage collapse. **A representative
+  browser orders. This repair introduced a guard with five exact ID+kingdom+name focused lineages spanning all four kingdoms and
+  eleven injected failures; the current guard has since grown to **fourteen**, including focused-species substitution, a simulated Vanilla stage collapse and protected-route controls. **A representative
   lineage test cannot protect an omitted lineage; put the reported failure itself in the positive
   set and reproduce it in the negative set.**
 

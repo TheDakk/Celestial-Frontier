@@ -2,7 +2,7 @@
    Port Phase 0 / Gate A deliverable #2: "reproduce all executable dependencies in a
    clean CI environment."
 
-   WHY (ROADMAP 9h): package.json declares only acorn + jsdom, but uilayout.js and
+   WHY (ROADMAP 9h): package.json declares acorn + jsdom + ws, but uilayout.js and
    bootperf.js spawn a REAL system browser over CDP. There is no npm browser driver
    anywhere in tools/. `npm install` on a clean clone therefore leaves TWO of the nine
    suites silently unrunnable — and nothing said so until 2026-07-31.
@@ -37,14 +37,46 @@ const ok   = (m, d) => { out.push({ level: 'PASS', msg: m, detail: d || '' }); }
 const bad  = (m, d) => { out.push({ level: 'FAIL', msg: m, detail: d || '' }); fail++; };
 const soft = (m, d) => { out.push({ level: 'WARN', msg: m, detail: d || '' }); warn++; };
 
+const nodeIsSupported = (version) => {
+  const parts = String(version).replace(/^v/, '').split('.');
+  if (parts.length < 2 || parts.some((part) => !/^\d+$/.test(part))) return false;
+  const [major, minor] = parts.map(Number);
+  return (major === 20 && minor >= 19) || (major === 22 && minor >= 13) || major >= 24;
+};
+
+if (process.argv.includes('--selftest')) {
+  const cases = [
+    ['20.18.9', false], ['20.19.0', true], ['21.7.0', false],
+    ['22.12.0', false], ['22.13.0', true], ['23.9.0', false], ['24.0.0', true],
+  ];
+  for (const [version, expected] of cases) {
+    if (nodeIsSupported(version) !== expected) {
+      throw new Error(`PREFLIGHT SELFTEST Node ${version}: expected ${expected}`);
+    }
+  }
+  let nonBrowserRejected = null;
+  try {
+    execFileSync(process.execPath, [__filename, '--json'], {
+      cwd: root, env: { ...process.env, CF_BROWSER: process.execPath },
+      encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 6000,
+    });
+  } catch (error) { nonBrowserRejected = error; }
+  if (!nonBrowserRejected || nonBrowserRejected.status !== 1
+    || !/NO LAUNCHABLE BROWSER FOUND/.test(String(nonBrowserRejected.stdout || ''))) {
+    throw new Error('PREFLIGHT SELFTEST executable non-browser was accepted or misdiagnosed');
+  }
+  console.log('PREFLIGHT SELFTEST PASS');
+  console.log('  supported and excluded Node lines discriminated');
+  console.log('  executable non-browser rejected by the real CDP probe');
+  process.exit(0);
+}
+
 /* ---------- node ---------- */
 {
   const cur = process.version;
-  const num = (v) => String(v).replace(/^v/, '').split('.').map((n) => parseInt(n, 10) || 0);
-  const [a, b, c] = num(cur), [x, y, z] = num(PIN.node.min);
-  const gte = a > x || (a === x && (b > y || (b === y && c >= z)));
-  if (gte) ok('node ' + cur, 'min ' + PIN.node.min + ' · Gate A evidence produced on ' + PIN.node.verifiedWith);
-  else bad('node ' + cur + ' is below the declared minimum ' + PIN.node.min, 'upgrade node');
+  const supported = nodeIsSupported(cur);
+  if (supported) ok('node ' + cur, 'supported ' + PIN.node.supported + ' · Gate A evidence produced on ' + PIN.node.verifiedWith);
+  else bad('node ' + cur + ' is outside the declared range ' + PIN.node.supported, 'use a supported even-numbered Node release');
 }
 
 /* ---------- npm packages ---------- */
@@ -64,64 +96,45 @@ for (const name of Object.keys(PIN.packages)) {
 }
 
 /* ---------- the browser — the whole reason this file exists ---------- */
-const resolveBrowser = () => {
-  /* ⚠ CF_BROWSER MUST STILL EXIST ON DISK. The first version of this file trusted the
-     env var without checking, so `CF_BROWSER=/nope` reported PASS + exit 0 while
-     uilayout.js would hard-exit(2) with "Edge not found" — a green-but-wrong state
-     inside the very check written to prevent that. Caught by negative-controlling this
-     file in both directions (CLAUDE.md rule 7) before it ever shipped. uilayout.js:83
-     does the same existence check; match it or this stops describing what the gates do. */
-  if (process.env.CF_BROWSER) {
-    const p = process.env.CF_BROWSER;
-    let here = false;
-    try { here = fs.existsSync(p); } catch (_) { here = false; }
-    return here ? { path: p, via: '$CF_BROWSER' } : { path: p, via: '$CF_BROWSER', missing: true };
-  }
-  /* ⚠ this list is duplicated from uilayout.js (~24) and bootperf.js (~56). If they
-     diverge, this check silently stops describing what the gates actually run. */
-  const candidates = PIN.browser.resolutionOrder.filter((p) => !p.startsWith('$'));
-  for (const p of candidates) {
-    try { if (fs.existsSync(p)) return { path: p, via: 'auto-detected' }; } catch (_) { /* keep looking */ }
-  }
-  return null;
-};
-
-const browserVersion = (bin) => {
-  /* Windows: the binary does not print --version usefully, so read the file's product
-     version. POSIX: ask the binary. */
-  if (/\.exe$/i.test(bin)) {
-    try {
-      const ps = 'powershell.exe';
-      const cmd = "(Get-Item '" + bin.replace(/\//g, '\\') + "').VersionInfo.ProductVersion";
-      return execFileSync(ps, ['-NoProfile', '-Command', cmd],
-        { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
-    } catch (_) { return ''; }
-  }
+const probeBrowser = () => {
+  /* One resolver and launch path must own provenance for preflight and uilayout. The
+     first preflight accepted any existing executable (even /bin/true), while the gate
+     could not open CDP. Run the shared owned launcher and require Browser.getVersion. */
+  const probe = path.join(root, 'port', 'v2', 'tools', 'browsercdp.mjs');
   try {
-    return execFileSync(bin, ['--version'],
-      { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
-  } catch (_) { return ''; }
+    const stdout = execFileSync(process.execPath, [probe, '--print-json'], {
+      cwd: root, env: process.env, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'],
+    }).trim();
+    const browser = JSON.parse(stdout);
+    if (!browser || typeof browser.executable !== 'string' || !browser.executable
+      || typeof browser.product !== 'string' || !browser.product
+      || typeof browser.revision !== 'string' || !browser.revision) {
+      throw new Error('shared browser probe returned incomplete provenance');
+    }
+    const match = browser.product.match(/^(?:Edg|Chrome|Chromium|HeadlessChrome)\/(\d+\.\d+\.\d+\.\d+)$/);
+    if (!match) throw new Error(`shared browser probe returned an unsupported product: ${browser.product}`);
+    return { browser, version: match[1], via: process.env.CF_BROWSER ? '$CF_BROWSER' : 'shared browserpath resolver' };
+  } catch (error) {
+    const stderr = String(error.stderr || '').trim();
+    return { error: stderr || error.message || 'shared browser launch probe failed' };
+  }
 };
 
 {
-  const found = resolveBrowser();
-  if (!found) {
-    bad('NO BROWSER FOUND — uilayout and bootperf CANNOT RUN',
-        'set CF_BROWSER=/path/to/chrome-or-edge, or install one of: ' +
+  const found = probeBrowser();
+  if (found.error) {
+    bad('NO LAUNCHABLE BROWSER FOUND — uilayout and bootperf CANNOT RUN',
+        found.error + ' · set CF_BROWSER=/absolute/path/to/chrome-or-edge or install one of: ' +
         PIN.browser.resolutionOrder.filter((p) => !p.startsWith('$')).join(' · '));
-  } else if (found.missing) {
-    bad('CF_BROWSER points at a path that DOES NOT EXIST — uilayout and bootperf CANNOT RUN',
-        found.path + ' — uilayout.js exits(2) on this. Fix the env var or unset it to fall back to auto-detection.');
   } else {
-    const ver = browserVersion(found.path);
+    const ver = found.version;
     const pinned = PIN.browser.pinned.version;
-    if (!ver) {
-      soft('browser found but version unreadable', found.path + ' (' + found.via + ') · pinned ' + pinned);
-    } else if (ver === pinned) {
-      ok('browser ' + ver + ' — matches pin', found.path + ' (' + found.via + ')');
+    if (ver === pinned) {
+      ok('browser ' + found.browser.product + ' — launches over CDP and matches pin',
+        found.browser.executable + ' (' + found.via + ')');
     } else {
-      const m = 'BROWSER REVISION DRIFT: found ' + ver + ', pinned ' + pinned;
-      const d = found.path + ' (' + found.via + ') — layout thresholds were set on the pinned ' +
+      const m = 'BROWSER REVISION DRIFT: found ' + found.browser.product + ', pinned ' + pinned;
+      const d = found.browser.executable + ' (' + found.via + ') — CDP launch succeeded; layout thresholds were set on the pinned ' +
                 'revision (Addendum D). Treat as a RE-BASELINE DECISION, not a regression: re-run ' +
                 'uilayout, and if the numbers move, record the new revision in tools/deps.pinned.json.';
       if (ASSERT) bad(m, d); else soft(m, d);

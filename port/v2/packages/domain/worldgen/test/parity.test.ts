@@ -26,7 +26,12 @@ describe('@cf/domain-worldgen — golden ×1,000 + seven baseline probes', () =>
   });
   it('starsInCell probe (home galaxy, two cells)', () => {
     const prof = galaxyProfile(999);
-    expect(canon([starsInCell(999, prof, 0, 0), starsInCell(999, prof, 2, -1)])).toBe(probeRaw('starsInCell'));
+    const cells = [starsInCell(999, prof, 0, 0), starsInCell(999, prof, 2, -1)];
+    expect(canon(cells)).toBe(probeRaw('starsInCell'));
+    for (const cell of cells) {
+      expect(Array.isArray(cell.stars)).toBe(true);
+      expect(Array.isArray(cell.deco)).toBe(true);
+    }
   });
   it('fineStarsInCell probe', () => {
     const prof = galaxyProfile(999);

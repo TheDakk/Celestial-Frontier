@@ -1,10 +1,400 @@
 # Celestial Frontier — Save System
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js). ⚠ Read the v1.8.7 section (a reverted `size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`, harvest on play time).
+> **2026-08-12 v2 port overlay (matches `port/v2` code):** The browser slice now
+> distinguishes a fresh store, a supported coherent save, an unsupported future
+> version, a corrupt/sparse payload, and a transient storage failure. Only a
+> supported coherent payload may replace the last-known-good backup. Corrupt
+> primaries attempt one recovery; without a proven backup they remain protected
+> from writes, as do future-version bytes. A thrown primary read is unknown—not
+> proof of corruption—so it never calls recovery or rolls a valid newer primary
+> back to an older backup. Its transient hold clears only after a later read
+> proves a genuinely fresh store; a supported or protected payload reloads or
+> stays protected instead. Rejected/blocked IndexedDB open Promises are no
+> longer cached forever, and a blocked native request that succeeds after its
+> bounded attempt was abandoned immediately closes that late orphan database.
+> Explicit import uses the same envelope guard, so `{}`, `{view:null}`, arrays
+> and primitives cannot erase progress.
+> The player-facing import door now lives at **Settings → Bring expedition**;
+> moving it out of the eighth dock slot did not create a second loader or weaken
+> any byte-protection rule. That dock slot now opens the canonical v2 Guide
+> catalogue (9 categories /43 authored ids /41 legacy-live topics); first open
+> updates the existing `guide`/`seenGuide` save field through the ordinary
+> protected persistence path. Guide content itself is source-addressed code, not
+> duplicated into the save. The complete 56-entry v1 release archive is likewise
+> immutable content; `rn`/`rnSeen` remains only a seen-version marker. The
+> separate v2 development bulletin is deliberately unversioned and cannot mark
+> itself seen or fire an update surface. No version was bumped.
+> The import door is a top-layer `aria-modal` dialog: Tab stays inside its live
+> textarea/button/file controls are explicitly named, the file picker has a
+> keyboard-operable visible trigger, Escape closes only the dialog and restores
+> Settings focus, and a real 390×844 browser control proves the old low-z layer
+> would expose the dock.
+>
+> The importer also normalizes `gen`/`maxGen` to nonnegative safe integers,
+> contains a malformed Compendium row instead of rejecting the whole expedition,
+> caps cosmic epoch at 10,000 to bound retained O(epoch) ecology work, timestamps
+> new Atlas rows, and preserves/requires complete galaxy/star coordinates for
+> travelable Atlas destinations. Imported legacy Atlas entries whose routes
+> lack those coordinates remain visible with a disabled, explicit
+> route-unavailable label rather than a dead travel action. Honest
+> out-of-range bred `size` remains
+> untouched. A live planet card snapshots and compares the complete galaxy/star
+> `{seed,x,y}` identity before Land, Atlas or Share may act, so an equal seed at
+> different coordinates cannot rebase stale actions. Imported `fs`, `tone`,
+> `font`, `rm` and `gt` values are not inert metadata: the v2 Settings surface
+> now applies the whitelisted body classes, true reduced-motion policy and a
+> contrast-safe 0.82..0.98 rendered glass-tint floor. Older stored 0.40/0.72
+> values remain byte-compatible until the player moves the slider; the UI
+> never renders below 0.82, while an explicit new choice persists through the
+> same exporter. Clipboard success/failure is session UI state only and writes
+> nothing. Current-v2 Field Training restart uses a reversible `{view}`
+> snapshot; restoring the older v1 full-expedition `tsnap` schema is still a
+> Gate-C blocker. The repository still stores one exported blob rather than the
+> planned split/CAS records, so multi-tab last-writer-wins is also open.
+>
+> One historical compatibility bridge remains exact and narrow: the first
+> IndexedDB slice's two-field `{nav,view}` envelope is accepted only when those
+> are the only top-level keys, `nav` has exactly `mode/gal/star/planet`, and both
+> route copies agree after sanitization. It preserves that route and immediately
+> migrates to the complete v4 envelope; nearby sparse shapes remain protected.
+> Future/corrupt-save notices are critical boot outcomes, so they bypass the
+> ordinary toast debounce and are browser-tested as both visible and
+> byte-preserving before the fast-boot notification window can hide them.
+>
+> Explicit replacement import is serialized against ordinary persistence. It
+> cancels the pending preference debounce, waits for any already-started save
+> write to finish, holds new ordinary writes, and only then stores the proven
+> complete replacement envelope. This prevents an older same-tab settings
+> autosave from racing behind and overwriting the imported expedition. JSON
+> classification and the live primary use the whitespace-trimmed candidate,
+> while the best-effort `cf_v2_import_original` keepsake receives the exact
+> submitted text, including legal surrounding whitespace. File selection is
+> decoded to text by the browser; the moderator's external source file remains
+> the authoritative byte-for-byte backup, including when browser storage refuses
+> the extra keepsake.
+>
+> The three intentional v2 replacement-page transitions—current Training
+> restart after its view snapshot commits, supported expedition import after the
+> replacement envelope commits, and storage-health retry after real bytes are
+> rediscovered—share one code-owned reload path. It blocks new ordinary writes,
+> and each flow synchronously claims the one replacement transaction before its
+> first await, so Training restart cannot tear down the page while an import is
+> still committing (or vice versa). The claim also stops the outgoing Pixi ticker
+> synchronously, before any persistence wait. A refused/failed transaction may
+> restart it only when that exact claim stopped a previously running ticker; a
+> successful replacement destroys the already-quiescent renderer. Invalid import
+> bytes are rejected before any claim, so ordinary play and its ticker are left
+> unchanged.
+> The chosen flow
+> cancels the preference debounce, removes renderer-resize listeners, destroys
+> the Pixi application with its global/child texture resources, detaches the
+> application view, and collapses both the application and backdrop canvases to
+> at most 1×1 before a one-task-boundary `location.reload()`. The optional CDP
+> seam reports those postconditions, the exact replacement reason and the outgoing
+> document token outside the dying execution context. The replacement document's
+> separate optional `cf-v2-slice-ready/v1` tail binding is emitted only after load,
+> persistence and complete input/slice wiring, the first ticker turn, an animation
+> frame and a later task. Glass accepts it only from the exact target session and
+> new default top context on the committed changed loader, with a changed token and
+> phase-owned deadline, then performs one at-most-2-second confirmation in that
+> context. It then requires a second no-retry target confirmation from a later
+> post-render Pixi ticker turn. Both target commands run concurrently with a
+> root-session `Browser.getVersion` heartbeat and own their own strict two-second
+> bounds. A timely browser heartbeat plus an unanswerable exact target is a
+> product finding; an unhealthy heartbeat is instrument/transport failure. The
+> tail witness is boot-publication evidence, not by itself a claim of sustained
+> answerability. This
+> teardown is deliberately not installed on generic `pagehide`: a browser-cache
+> restore must never revive a Pixi application that the app destroyed.
+> For diagnostic imports, a separate event-owned `cf-v2-import-phase/v1` stream
+> binds one phase id and the outgoing document/session/context/loader. Its exact
+> successful sequence is `invoked` (ticker running) → `claimed` → either
+> `no-active-persist` or `waiting-active-persist` / `active-persist-settled` →
+> `primary-write-started` → `primary-write-complete` → `release-started` →
+> `release-complete`, with the ticker stopped after `invoked`. The one 20-second
+> import deadline begins before the bounded, non-awaiting CDP arm command; neither
+> that command nor any later witness gets a fresh clock. There is no timeout
+> increase, automatic retry, or `Promise.race` around IndexedDB durability.
+> Import-phase and generic release bindings also share one capture-scoped monotonic
+> receipt ordinal. A successful terminal must be exactly `release-started` N → release
+> N+1 → `release-complete` N+2. Only the valid release-first intermediate remains
+> pending under that unchanged deadline; phase-complete-first, premature, nonadjacent,
+> missing, late, duplicate, malformed, wrong-provenance, early boot/ready, and an
+> overlong sequence-8 duplicate terminal fail closed.
+> The replacement app also initializes Pixi with `autoStart:false`. Save loading,
+> scene render, slice publication and complete input wiring happen while its
+> ticker is stopped; only then does the app start it and require one real tick/
+> render, animation frame and later task before emitting ready. A separate exact
+> 12-stage `cf-v2-boot-phase/v1` stream binds the new session/context/generation/
+> origin/loader/document token, requires ticker false through `wiring-complete`
+> and true from `ticker-started`, and stays inside the original boot deadline.
+> Browser load/FCP is not a substitute for this application-owned sequence.
+> The Pixi and backdrop canvases use a two-tier simultaneous-owner budget. Native
+> backing is retained through UHD 3,840×2,160. A viewport strictly above
+> 8,388,608 CSS pixels selects 2,073,600 backing pixels per canvas /4,147,200
+> aggregate, fitted against the *rounded* backing dimensions; desktop-8k resolves
+> to 1,920×1,080 each at DPR 0.25, while 5,120×2,880 resolves to the same backing
+> at DPR 0.375. On a density/viewport transition the
+> old backdrop texture/canvas is destroyed and collapsed before replacement
+> allocation, with exact peak/budget evidence. A same-integer-backing resize still
+> updates CSS size, Pixi screen/texture/event geometry, pointer mapping, backdrop
+> logical dimensions, and generation. Downshift and restore each require a bounded
+> target plus concurrent browser heartbeat, then an advancing later post-render
+> ticker turn; stopped/stale ticker controls fail closed. The existing scene rerender
+> remains—no scene-rerender optimization landed.
+>
+> **Evidence boundary:** immutable executable evidence source
+> `7d9980e37e60f0cec8cb840e75098872b9cc90d0` passed its complete exact
+> sequential battery. Root preflight selftest/preflight, validate/fingerprint,
+> root smoke, layout selftest plus `exact-7d9980e-root-layout` 787/787 across
+> 10/10 viewports, rarity 60M/0, dead-code review, v2 273 pass / 1 skip and every
+> type/art/override/coverage/spec/instrument selftest all passed. One-attempt smoke
+> passed with 0 findings / 10 screenshots, including the real restart/import/
+> duplicate-import interlocks and rollback. Exact-source certifying glass passed
+> 12/12 viewports and 52/52 controls with `omitted=[]`, 0 findings/instrument
+> failures/retries, working-tree
+> digest `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+> All 12 exact import-phase/release/ready paths passed; replacement totals were
+> 194–239 ms. Desktop-8k recorded a 3 ms arm, 21 ms import-phase span with the
+> ticker true only at `invoked`, 0 ms primary write, 19 ms release, both
+> 5,461×3,072 canvases collapsing to 1×1, `performanceNow` 199.5 ms, 1 ms
+> confirmation and 239 ms total. All nine automated personas passed, still not a
+> human playtest. Exact preview `dev-preview-exact-7d9980e` verified and browser-
+> smoked 37 files / 10,170,996 bytes under Edge 151 for the expected separate
+> origin, with content SHA-256
+> `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`,
+> production distinct and `publishable:false`. Prior CI #201 remains preserved
+> red without retry. `7d9980e` remains immutable prior exact evidence; the later
+> prior #204 repair evidence is bound to clean source `46fb627` below.
+> CI #202, run `31594595288` / job `94106996466`, is also preserved red without
+> retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`: every earlier gate
+> and `smoke:ci` passed, while desktop-8k glass first observed replacement state
+> at 61.163 seconds. The serial three-command probe could itself consume up to
+> roughly 90 seconds, so #202 is instrument ambiguity, not a save rejection or
+> proof of a slow product boot. Matching final-tip CI remains required; the clean
+> local battery does not authorize preview publication, human certification,
+> Ready, merge, versioning or deployment.
+> CI #203, run `31602984470` / job `94134750800`, is preserved **RED** without
+> retry at exact pushed head `38e4f362533e272f56f708229f7a037f38ae8951`.
+> Every preceding gate, including `smoke:ci`, passed; only the desktop-8k
+> preference import failed after 20,015 ms before any release, replacement-ready,
+> navigation, fatal, command, or event evidence appeared. Eleven other viewport
+> rows passed. This was a pre-release renderer-pressure finding: the outgoing
+> 5,461×3,072 Pixi ticker remained active while the durable write and teardown
+> awaited service under CI software rendering. It is not evidence of save
+> corruption or a rejected repository write.
+> CI #204, run `31612817092` / job `94168172635`, is preserved **RED** without
+> retry at exact pushed head `4cee7d807b8f9258e370aad31c30756269f95a96`.
+> Every earlier gate and `smoke:ci` passed. Its 8K arm queued for 9,504 ms;
+> durable write, 35 ms renderer release, changed-loader navigation 45 ms later,
+> load at 231 ms and FCP at 268 ms were all healthy, with no fatal event. No
+> ready witness arrived inside the unchanged 20-second boot bound. That is not a
+> save, import, write or navigation failure: both replacement canvases allocated
+> the full 16,777,216-pixel allowance and Pixi auto-started before asynchronous
+> save/scene/slice/input wiring, starving application readiness under software
+> rendering. Preserve #204 without retry or a timeout increase.
+>
+> Before the stable-source battery, one smoke attempt correctly refused mixed-
+> source evidence because tracked documentation changed during its run (`source
+> identity changed during slice smoke`). That single execution had no automatic
+> retry and remains coordination/instrument evidence, not a product failure. The
+> local battery and package do not authorize preview publication, human
+> certification, Ready, merge, versioning, or deployment. The initial malformed
+> `npm run perf -- --runs=4` command was likewise rejected before any browser;
+> the correct one-run diagnostic was not a retry of an evidence failure.
+> Immutable executable source `46fb627640e42ea0f43e2e144529884a959d1e72`
+> passed the exact local battery. One malformed `--verify-run` operator invocation
+> caused local SIGABRT/report overwrite; one correct rerun plus verification then
+> passed `exact-46fb627-root-layout` at 787/787 across 10/10 viewports. V2 passed
+> 273/1 plus all gates/selftests, and one-attempt smoke passed 0 findings /10
+> screenshots. Full certifying glass at source-snapshot digest
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`
+> passed 12/12, planned/executed 53/53, `omitted=[]`, zero findings/instrument
+> failures/retries in 170–197 ms. Exact 8K was 190 ms total: 2 ms arm, 35 ms
+> release→changed-loader commit, 137 ms commit→ready, `performanceNow` 170.5 ms,
+> 1 ms confirmation, and two 3,862×2,172 replacement canvases /16,776,528 pixels
+> combined after both outgoing canvases collapsed to 1×1. Nine automated personas
+> passed; terminal-only performance was 595/676/76/168 ms. Exact preview manifest
+> `dev-preview-exact-46fb627` records 37 files /10,176,376 bytes, content SHA-256
+> `4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`,
+> expected origin `https://dev-celestialfrontier.github.io`, production distinct
+> and `publishable:false`. `46fb627` remains prior immutable exact evidence.
+> CI #205, run `31621227550` / job `94196289291`, is preserved **RED** without
+> retry at exact pushed `c57305fbf30af2bc8158ff46af1ec49ec4455d95`.
+> Every preceding gate and `smoke:ci` passed. Desktop-8k completed import,
+> primary write, renderer release, changed-loader navigation, all 12 boot phases,
+> and ready at browser-native `performanceNow` about 3,733 ms; only the following
+> exact-context confirmation timed out at two seconds. No concurrent browser
+> heartbeat was recorded, so #205 is strong evidence of post-ready target
+> starvation, not proof that browser/CDP transport remained healthy. It is not a
+> save, import, durability, release, or navigation failure.
+>
+> Prior diagnostic only: the earlier `dirty-diagnostic` targeted/smoke/glass
+> captures based on `c57305f` remain non-authoritative; their sandbox `EPERM`
+> and corrected `7680.000000000001` harness assertion did not retry a product
+> failure. Immutable executable source
+> `135a635d066d1c67e3096dc134de9247267898d5` passed the complete exact
+> sequential battery from clean source-status SHA-256
+> `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`
+> and source-snapshot
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+> A sandbox-only Edge SIGABRT interrupted preflight/CDP selftest; the same checks
+> passed outside sandbox without a product retry. Root validate, legacy smoke,
+> rarity and dead-code passed. Root layout
+> `exact-135a635d066d-20260812T192848Z-root-layout` passed 787/787 across 10/10
+> under Edge 151 in 75,532 ms; report SHA-256
+> `7e2689c31e1095885ee8139bb395b40e799972461649efd100b631a4e6e9f85f`.
+> V2 passed 273/1 plus all type/art/override/coverage/spec gates. One-attempt
+> slice smoke passed 0 findings /10 screenshots /0 retries in 105,379 ms;
+> report SHA-256 `c838f3e7dfdf161b7bfa6111c6979215a2ba439fdd44a4cb8e00a8cdf7c3d1a5`.
+> Full certifying glass passed 12/12, 57/57 unique, `blocked=[]`, `omitted=[]`,
+> zero findings/instrument failures/retries in 52,254 ms; report SHA-256
+> `1f14906d178528613fdf52db53ee4e1f84b6a48ceb21ad3a41bd9d0c5348b23b`;
+> reloads were 176–185 ms. Exact 8K was 185 ms /2 ms arm /12 ms
+> invoked→release /32 ms release→commit /122 ms commit→ready /152.2 ms
+> `performanceNow`, with target confirmations 1/9 ms and heartbeats 1/1 ms.
+> Outgoing/replacement canvases were 2,730×1,536 each; outgoing collapsed to
+> 1×1 and the replacement pair remained 8,386,560 pixels. Nine automated
+> personas passed (not human play), with JSON/Markdown SHA-256
+> `c17c44fcb3d534707dc6186bbd4fbcae4d1cfea511bdec8a263ec48be4927a58` /
+> `43d5d52e44d7d19aec597a3df5b2599c0da143bb7170d16c17ed141bd390d6b4`;
+> terminal-only performance was 578/659/76/170 ms. Exact preview
+> `dev-preview-exact-135a635d066d-20260812T192848Z` browser-smoked PASS under
+> Edge 151; manifest SHA-256
+> `0233984ca2bad28c189e979d4a30082d6137a06e8eac086c3b2525989813dd4e`,
+> 37 files /10,186,230 bytes, content
+> `da4e066b447db073383f59dd592cd2a19a186d32ce13a2edd05fbc07e66aa10f`,
+> tree `d1ab1d79fba4ba2939c3e1ec0661fb60498afb23`, expected separate origin,
+> production distinct and `publishable:false`. Live Git/status/PR checks determine
+> the docs-only tip; matching CI and all host/human/Ready/merge/release/deploy/
+> version boundaries remain open. No save-format change occurred.
+> CI #206, run `31635297321` attempt 1 / job `94243979205`, is preserved **RED**
+> without retry at exact pushed `558e0565d368a0b81d86d99fd380ebc50d30bc02`;
+> merge `e160577` is tree-identical. All preceding steps and `smoke:ci` passed.
+> Desktop-8k reload passed in 8,749 ms, ready published at `performanceNow`
+> 2,578.6 ms, and target cycles completed in 1,905/1,910 ms with 3/1 ms
+> heartbeats. The later 5,120×2,880 resize target timed out at 2,003 ms against
+> the strict 2,000 ms bound while `Browser.getVersion` answered in 2 ms;
+> `last:null`. The sole `ULTRA_VIEWPORT_RESIZE_UNANSWERABLE` is therefore a
+> product finding, not an instrument failure: 12 viewports, 1 product finding,
+> 0 instrument failures, 56 executed +1 product-blocked =57, `omitted=[]`, 0
+> retries, and no persona/preview evidence. It is not a save, import, durability,
+> renderer-release, navigation, or boot-readiness failure.
+> CI #207, run `31642880191` attempt 1 / job `94269466117`, is preserved **RED**
+> without retry at exact pushed `ff9bebb22aaac0e95cd406e1e15737898452911a`;
+> merge `8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. All prior gates,
+> `smoke:ci`, and 11 glass rows passed. Tablet-portrait alone instrument-failed when
+> the healthy release witness was observed between ordered `release-started` and
+> `release-complete`. Release proved renderer/stage destruction, detached view, 1×1
+> canvases, and null error. The report records 0 product findings, 1 instrument failure,
+> 57 listed controls, `blocked=[]`, `omitted=[]`, 0 retries, and no persona/preview output.
+> This is a harness observation race, not a save, durability, release, navigation, boot,
+> or viewport failure.
+>
+> The dirty #207 diagnostic (report
+> `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`) remains
+> chronology only. Immutable executable source
+> `6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the complete sequential exact
+> clean battery at status/snapshot
+> `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` /
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+> Its first sandboxed preflight Edge launch SIGABRTed before CDP; the same invocation passed
+> when permitted with only Edge 151/pin-150 drift—an environment refusal, not a product retry.
+> Root gates and exact layout 787/787 across 10/10 passed (report
+> `58dc4ef4456fac012b2e8f0aa801917b5579cffe435fd4576827ff29bcbb4b78`); v2 passed 273/1 plus all gates;
+> one-attempt smoke passed 0 findings/10 screenshots in 105,430 ms (report
+> `139b10ea16d17c109d5b624fa75daf73291d98f5ad8fe7df569501829ab5f844`; log
+> `76a40b9bd8f88dd5f5ebdc09271c0ed289478795d6cd011338df349438ef62b8`).
+> Certifying glass passed 12/12 and 57/57 in 54,877 ms with exact 6/7/8 tails on every
+> row, empty blocked/omitted ledgers, and 0 findings/instrument failures/retries (report
+> `a05ba65e28ac94b146b051164c1b22195bfaa7509bd47d9631561fc394920b6c`). Tablet-
+> portrait was 196 ms; exact 8K was 197 ms with 34 ms release→commit, 131 ms
+> commit→ready, outgoing 2,365×1,330 twins →1×1, and replacement at 6,290,900 pixels.
+> Nine automated-only personas and terminal-only 635/717/77/151 ms performance passed.
+> Preview `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151
+> over loopback, bound to the expected separate development origin, with `publishable:false`
+> and content SHA-256
+> `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`.
+> That immutable source remains prior #207 executable evidence; live Git/PR state determines
+> the current tip, upstream, and checks, and the selected pushed tip requires matching CI.
+>
+> CI #208, run `31649176954` attempt 1 / job `94289516851`, is preserved **RED**
+> without retry at exact pushed head `ee8bc281c424b5a8f998dc7327372e5f5a18067d`;
+> merge `8fc6b4fc` is tree-identical, while branch-flow run `31649175614` / job
+> `94289512873` passed. Steps 1–15 and `smoke:ci` passed. Glass then completed its
+> first 11 rows before desktop-8k alone reported
+> `REPLACEMENT_UNANSWERABLE_AFTER_READY`: the valid 2,365×1,330 replacement pair
+> used 6,290,900 pixels, ready was scheduled at browser performance 584.3 ms but
+> emitted at 3,143.8 ms—a 2,559.5 ms main-thread gap—and exact target cycle 1
+> timed out at 2,003 ms against the unchanged strict 2,000 ms bound while the
+> concurrent browser heartbeat answered in 1 ms. No fatal event occurred. The
+> full 12-row report records 1 product finding, 0 instrument failures, 57 planned
+> controls with `ultra-same-backing-resize` product-blocked, `omitted=[]`, and
+> 0 retries; no persona or preview evidence followed. This is a sustained product
+> answerability failure, not a save, import, durability, release, navigation,
+> ready-provenance, browser-health, or instrument failure.
+>
+> The deterministic repair retains native backing through UHD and, strictly above
+> 8,388,608 CSS pixels, caps each simultaneous full-viewport canvas at 2,073,600
+> pixels /4,147,200 aggregate. Desktop-8k and 5,120×2,880 therefore resolve to
+> 1,920×1,080 each, at DPR 0.25 and 0.375 respectively. The two-second target,
+> concurrent heartbeat, ready contract, and zero-retry policy are unchanged.
+> Literal harness positives cover the new dimensions and budget; the former
+> 2,365×1,330 ready/release shapes and existing 2,730×1,536 shapes fail as negative
+> controls, alongside threshold/UHD, runtime resize, pointer, and ticker controls.
+>
+> The `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`
+> dirty-worktree PASS is prior diagnostic chronology only. Immutable clean executable source
+> `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed from committed clean bytes
+> (status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`, snapshot
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`). Root layout
+> passed 787/787 across 10/10 (`c42a50873ad01a91dd439860f41f1d695a7d2bf5c41521ed8b7eb768b7ee4975`);
+> v2 passed 273/1 plus all gates; one-attempt smoke passed 0/10 in 105,339 ms
+> (`90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723`; log
+> `fe8c5d42eec2a09641f3f551486046559cd4c5956591b5a7d71a25b48d926af1`). Glass
+> passed 12/12 unique rows and 57/57 controls in 53,083 ms with exact 6/7/8 tails,
+> five-command ledgers, empty blocked/omitted ledgers and zero findings/instrument failures/
+> retries (`42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f`). Exact
+> 8K was 171 ms / browser performance 161.9 ms, commands 1/1/1/3/0 ms, 33/129 ms
+> release→commit/commit→ready, and two 1,920×1,080 stores /4,147,200 pixels at DPR 0.25;
+> terminal-only performance was 606/685/74/171 ms. Preview
+> `dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was browser-smoked under
+> Edge 151 over loopback, bound to expected separate origin
+> `https://dev-celestialfrontier.github.io`, with `publishable:false` (manifest
+> `1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d`, content
+> `5db7790977071235ed164fb8f382bd67421c9fd5e834a504cdb4e1a1e8f47589`). Live
+> Git/PR state determines current tip/upstream/checks; the selected pushed tip requires
+> matching CI.
+>
+> Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
+> remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+> snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
+> Root preflight warned Edge 151 vs pin 150; validate/smoke and layout 787/787 across
+> 10/10 passed; v2 passed 273/1 plus all gates. One-attempt slice smoke passed 0
+> findings/10 screenshots in 105,217 ms (`b835f79764f4e22a2179ab74f9412491ee4d81730e775889372461d64ddd0474`),
+> and certifying glass passed 12/12, 57/57, empty blocked/omitted and zero findings/
+> instrument failures/retries in 52,557 ms (`7fe33219e70361140ebc931f0d77fca0976a46fe51eecc42815f41eba110980c`).
+> Exact 8K was 203 ms / `performanceNow` 158.2 ms, targets 1/10 ms, heartbeats 0/0 ms;
+> outgoing 2,365×1,330 stores →1×1 and replacement stayed 6,290,900 pixels combined.
+> Nine automated-only personas and terminal-only 581/659/73/152 ms performance passed;
+> exact preview `dev-preview-exact-df1c28b-20260812T211642Z` was browser-smoked under
+> Edge 151 over loopback, bound to the expected separate dev origin, with `publishable:false`.
+> Both this source and clean `6554b2b`
+> remain prior evidence; clean `307b8aaf` is the current local #208 executable evidence.
+> No save-format,
+> host/human/Ready/merge/release/
+> deployment/version authority follows.
+> No save-format or version change is involved.
+
+**STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
+matches `port/v2` as of 2026-08-12. ⚠ Read the v1.8.7 section (a reverted
+`size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`,
+harvest on play time).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated
 from seeds) to `localStorage` under one hardened key, with load-time coerce/clamp so a
 tampered or truncated save can never inject markup or poison the numbers.
-**Source of truth:** this doc is the DESIGN spec; main.js + tools/ implement it.
+**Source of truth:** this doc is the DESIGN spec; `main.js` + `tools/` implement
+the legacy sections, and `port/v2` implements the dated port overlay.
 
 ## ⚠ v1.8.4 — `_sanitizeSavedGenome` mirrors `normGenome`
 
