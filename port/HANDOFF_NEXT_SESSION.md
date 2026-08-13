@@ -1,85 +1,130 @@
-# ★ LIVE — Arc 0 merged, green, and development-published; Arc 1 next (2026-08-13)
+# ★ LIVE — Arc 0 stabilization repair in working copy; exact-head CI and DEV publication pending (2026-08-13)
 
-## Terminal integration and publication record
+## Live Git and publication state
 
-Arc 0 PR [#18](https://github.com/TheDakk/Celestial-Frontier/pull/18) completed normally from
-`openai/mac` into `develop`. Its final PR head was
-`e9bb20f08e14e56f2cabeb36cd4827c107ac906d`; the integration merge is
-`c5aadc8a08424ddfc919bc2e4489b79e0f25b076`, with parents
-`f780d15349bc20bc222e920a020c72e3b96cabdd` and
-`e9bb20f08e14e56f2cabeb36cd4827c107ac906d`, and tree
-`e3b36e4f6a44ac2e74a95d0e7483c99ed81caea`.
+OpenAI/Codex is on `openai/mac`. The repair working copy is based on
+`69985e7b337ba070997c66dc793383ff30acd128`, which is both local HEAD and current
+`origin/develop` before this batch. It is not yet a frozen/pushed repair head; resolve the branch,
+worktree, upstream, PR and workflows live before any Git action.
 
-| Layer | Terminal evidence |
+Documentation follow-up PR #19's `develop` push battery, run `31726083132`, was **success**. Its mapped
+publisher run `31728733734` then stopped safely before deploy:
+
+| Publisher job | Terminal outcome |
 | --- | --- |
-| PR branch-flow | Run `31717086739`, job `94504420311` — **success**. |
-| PR test battery | Run `31717089096`, job `94504427844` — **success**. |
-| `develop` push battery | Run `31720030810`, job `94514394878` — **success**. |
-| Mapped publisher | Run `31722287785`: DEV job `94521949660` — **success**; production job `94521950228` — **skipped**. |
+| Development `94543538353` | **Failed** starting exact Chrome at the 15-second CDP startup bound, after candidate validation produced content SHA-256 `d7d6550b84882b20f826c1a79abe8a756305799a28fff4f4424e1baa561ded0b`. |
+| Production `94543539013` | **Skipped**. |
 
-The isolated DEV origin `https://dev-celestialfrontier.github.io/` is live as **v2.0 development**
-`develop-c5aadc8a0842`, from source
-`c5aadc8a08424ddfc919bc2e4489b79e0f25b076`, with `publishable: true` and content SHA-256
+The isolated noindex DEV origin therefore still serves the last successful Arc 0 package:
+**v2.0 development** build `develop-c5aadc8a0842`, source
+`c5aadc8a08424ddfc919bc2e4489b79e0f25b076`, content SHA-256
 `8bd6c26c86ffac287797fe4112d86052b71437e8155770a72907a6bb06dc91ff`.
-That automatic DEV publication is a noindex play surface, not human-play proof, release or
-production authority. Production was untouched: its publisher job skipped; no `develop` → `main`
-merge, production version bump, release, manual deploy or direct site write occurred.
+No deploy step ran for the newer candidate. `main`, production Pages, release identity and version
+remain untouched.
 
-## Current executable Arc 0 truth
+## Stabilization repair truth
 
-### Charter: truthful present action, preserved canonical legacy data
+### Linux mapped-publisher startup phase
 
-`ASC_CHAPTERS_DATA`, imported `ascCh` / `ascProg`, and `bankLandfall` compatibility remain intact.
-The player-facing projection is pure and stage-aware: it shows only current writable landfall
-goals, gates non-Sol landfalls on actual saved drive reach, and never treats a nonterminal chapter
-number alone as reach. Completing every visible landfall presents an honest boundary rather than
-fabricating a completion, drive, reach tier, Shipyard or another unported action. Terminal veteran
-state renders a generic Charter record rather than a phantom chapter/objective.
+The shared generic owned launcher keeps its 15-second startup contract. The exact development-
+preview verification caller alone receives explicit bounded 30-second startup and command limits.
+This repairs the observed Linux cold-start phase without a retry and without loosening the later
+page/runtime/product checks.
 
-### CF1: source-derived address and strict raw external planet Search
+The caller-options control captures those exact limits on every platform. On POSIX, a delayed-
+endpoint wrapper starts real Chromium immediately in a nested profile but withholds the endpoint
+visible to the owned caller until 16 seconds: generic 15 seconds must reject, while exact preview
+30 seconds must connect, answer `Browser.getVersion`, close and clean its profile. The positive
+process receives its full budget rather than losing 16 seconds before spawn.
 
-`resolveCF1WorldAddress` re-generates and proves semantic CF1 galaxy → star → planet identity and
-returns generated parent/display metadata. Accepted planet navigation and re-share use that returned
-address; a public presentation tuple cannot become canonical. Raw external CF1 `t:'p'` Search now
-rejects before tolerant decode when its identity is not exact: finite two-decimal coordinates,
-uint32 numeric seeds, and the 8,192-character raw cap are all enforced before navigation or
-persistence. The focused browser proof includes accepted Earth with injected size discarded and
-rejection controls for forged same-reach parents and fractional identity.
+### macOS Edge crash diagnosis and prevention
 
-## Explicitly partial boundary
+All three supplied Edge `.ips` files report the same Node-parented launch abort under
+`com.openai.codex`/ChatGPT: main-thread `TransformProcessType` → `_RegisterApplication` SIGABRT
+within 100 ms. The paired macOS log shows denied LaunchServices/WindowServer registration. This is
+a Codex Seatbelt environment refusal before CDP, page creation, GPU allocation or game code, with
+no memory-pressure signature; it is not an Arc 0/game crash.
 
-`D-CF1-2` remains **partial**. Saved-view boot and persisted Atlas bytes can be repaired/coerced
-before their later canonical surface navigation; galaxy-only/star-only CF1 Search/Atlas, generated
-descents, and all future ownership/reward/receipt writers require their own strict source-derived
-ingress proof. Do not treat Arc 0 as universal address/receipt closure.
+The shared resolver/owned launch boundary and v2 spike launch surfaces now detect macOS Codex
+Seatbelt and refuse before spawn with an actionable permitted-host instruction. The environment
+negative control leaves a marker executable untouched. Preflight separately clears that advisory
+environment for its executable-negative control so `/path/to/node` still has to launch and fail as
+a non-browser. No new Edge `.ips` appeared after this batch's permitted-host browser runs.
+
+## Current local working-copy evidence
+
+| Check | Outcome |
+| --- | --- |
+| Full v2 tests | **PASS** — 25 files, 283 passed, 1 skipped. |
+| Root + app TypeScript | **PASS**. |
+| Focused Arc 0 review | **PASS** — 42/42, no Arc 0 regression found. |
+| Real `npm run smoke` | **PASS**. |
+| Combined preview selftest | **PASS** — captured options plus generic-fail/exact-pass delayed endpoint. |
+| `preflight:selftest` | **PASS**. |
+| Permitted-host preflight | **PASS** — expected Edge 151/pinned Edge 150 warning only. |
+| Permitted-host owned-launcher selftest | **PASS** — Seatbelt marker untouched. |
+| Syntax/scoped diff checks | **PASS**. |
+
+These results cover the current working copy only. Final commit/head, push, PR URL, exact-head PR
+jobs, integration merge, `develop` push battery, approved candidate and mapped DEV publication are
+**pending**. Preserve the first exact-head CI/publication result; do not retry a red run into a
+success claim.
 
 ## Next implementation order
 
-1. Start Arc 1 only from a clean, current agent branch: Compendium virtualization/resource ownership
-   and pure reach-shared `ShipVisualState`.
-2. Extend CF1 identity proof before attaching any world-bound ownership or receipt writer.
-3. Keep item/economy, engineering, capture, companions, combat, audio, legacy and human-play work
-   behind their own real-action and outcome evidence. Do not extend Charter copy beyond live actions.
+1. Freeze and push the stabilization repair; require its exact PR head to be clean, mergeable and
+   terminal-green. Nick's standing proceed authority then permits a normal eligible merge into
+   `develop` and monitoring of the exact push battery/mapped DEV publication without another
+   generic prompt. It does not authorize marking a draft Ready, bypassing red/ambiguous evidence,
+   `develop` → `main`, version/release decisions, manual Pages writes or production deployment.
+2. Verify that the mapped DEV package advances from retained `c5aadc` to the exact merged repair
+   commit and candidate hash. A failure must leave the retained package live.
+3. Start Arc 1 from clean synchronized bytes: Compendium virtualization/resource ownership, then
+   pure reach-shared `ShipVisualState`.
+4. Keep `D-CF1-2` partial and extend source-derived identity before world-bound ownership/reward/
+   receipt writers. Economy, engineering, capture, companions, combat, audio, legacy and human
+   play remain behind their own real-action/outcome evidence.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS — Arc 0 is merged at
-`c5aadc8a08424ddfc919bc2e4489b79e0f25b076`; local `openai/mac` equals `origin/develop`.
-This terminal-doc change is not yet committed or pushed.
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac`; uncommitted stabilization working
+copy on base `69985e7b337ba070997c66dc793383ff30acd128`. Final commit/push/PR/CI/publication pending.
 
-**GitHub step:** none for Arc 0. Its PR, required `develop` battery and mapped DEV publication
-are terminal-success. Future scoped work still goes through an agent branch → draft PR → `develop`.
+**GitHub step:** once local review is frozen, push `openai/mac` and create/update its draft PR into
+`develop`. Do not mark a draft Ready under standing authority. Once that exact head is otherwise
+clean, mergeable and terminal-green, standing proceed permits its normal eligible merge and
+publication monitoring without another generic confirmation.
 
-**PR details:** not needed now. Completed PR #18 used base `develop`, source `openai/mac`, title
-`Make Charter goals actionable and canonicalize planet-share Search`; it included no release or
-production deployment.
+**PR details:**
 
-**Other side:** Anthropic/Claude Code on Windows does not need to be opened now. At its next
-coding batch, only from a clean worktree, fetch `origin`, inspect state, then merge current
-`origin/develop` into `anthropic/windows`; never copy files manually.
+- Base branch: `develop`
+- Source branch: `openai/mac`
+- Copy-ready title: `Stabilize development browser launch and publication`
+- Copy-ready description:
 
-**Release status:** `develop` and the isolated DEV play surface carry the verified Arc 0 build.
-`main` and production remain untouched. No production release, deployment or version bump occurred.
+  > Repairs the Arc 0 development-publication infrastructure after the exact Linux Chrome process
+  > exceeded the prior 15-second CDP startup bound. The generic launcher keeps that bound; only the
+  > exact development-preview caller receives bounded 30-second startup/command limits, backed by
+  > captured-options and delayed-endpoint controls proving the generic caller rejects while the
+  > preview caller starts, answers and cleans up. It also prevents macOS Codex Seatbelt browser
+  > launches before spawn across the shared launcher and spike tools, so Edge cannot reach the
+  > pre-CDP LaunchServices SIGABRT seen in the three supplied crash reports, and hardens preflight's
+  > executable negative control. Verification: full v2 tests (25 files, 283 passed, 1 skipped),
+  > root/app typecheck, Arc 0 focused 42/42, real browser smoke, combined preview selftest,
+  > preflight selftest and permitted-host preflight, owned-launcher selftest including an untouched
+  > Seatbelt marker, syntax checks and scoped diff checks all pass. After merge, both agent
+  > environments can synchronize from the repaired `develop`; final exact-head CI and mapped DEV
+  > publication remain required. This PR includes no `develop` → `main` merge, production release,
+  > version bump, manual Pages write or production deployment.
+
+**Other side:** Anthropic/Claude Code on Windows does not need to be opened now and does not yet
+have the unmerged repair. It may continue unrelated work but must not expect these bytes or copy
+files manually. After merge, at its next coding batch and only from a clean worktree, fetch
+`origin`, inspect state, then merge current `origin/develop` into `anthropic/windows`.
+
+**Release status:** `develop` remains `69985e7b337ba070997c66dc793383ff30acd128`; DEV remains the
+retained `c5aadc` package after the newer publisher stopped before deploy. `main` and production
+are untouched. No production release, deployment or version bump occurred.
 
 # HISTORICAL/SUPERSEDED — draft PR #11 pre-merge handoff (2026-08-12)
 

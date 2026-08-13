@@ -28,6 +28,18 @@ function assert(condition, message) {
   if (!condition) throw new Error(`browser path: ${message}`);
 }
 
+/* Chromium cannot complete macOS LaunchServices registration inside the
+   Codex Seatbelt profile. Spawning it there produces a SIGABRT crash report
+   before CDP. Approved/out-of-sandbox commands do not carry this marker. */
+export function assertBrowserLaunchAllowed(
+  platform = process.platform,
+  codexSandbox = process.env.CODEX_SANDBOX,
+) {
+  if (platform === 'darwin' && codexSandbox === 'seatbelt') {
+    throw new Error('browser launch: refusing macOS Chromium inside the Codex Seatbelt sandbox; rerun this browser command with approved elevated execution');
+  }
+}
+
 function canonicalExecutable(file) {
   try {
     const canonical = fs.realpathSync(file);
@@ -109,6 +121,11 @@ function runSelftest() {
     fs.chmodSync(nonExecutable, 0o644);
     expectRejected('non-executable browser', () => findChromiumBrowser([nonExecutable]),
       /no Chromium-family browser found/);
+    expectRejected('macOS Codex Seatbelt launch',
+      () => assertBrowserLaunchAllowed('darwin', 'seatbelt'),
+      /refusing macOS Chromium inside the Codex Seatbelt sandbox/);
+    assertBrowserLaunchAllowed('darwin', null);
+    assertBrowserLaunchAllowed('linux', 'seatbelt');
     const priorExplicit = process.env.CF_BROWSER;
     const priorGithubActions = process.env.GITHUB_ACTIONS;
     try {
@@ -134,13 +151,17 @@ function runSelftest() {
   console.log('  explicit invalid CF_BROWSER fallback: rejected');
   console.log('  executable symlink: canonicalized to its real target');
   console.log('  missing and non-executable candidates: rejected');
+  console.log('  macOS Codex Seatbelt browser launch: rejected before spawn');
 }
 
 const IS_MAIN = process.argv[1]
   && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
 if (IS_MAIN) {
   if (process.argv.includes('--selftest')) runSelftest();
-  else if (process.argv.includes('--print')) console.log(findChromiumBrowser());
+  else if (process.argv.includes('--print')) {
+    assertBrowserLaunchAllowed();
+    console.log(findChromiumBrowser());
+  }
   else {
     console.error('usage: node tools/browserpath.mjs --print | --selftest');
     process.exitCode = 2;

@@ -12,7 +12,7 @@ import path from 'node:path';
 import { spawn } from 'node:child_process';
 import WebSocket from 'ws';
 import { fileURLToPath } from 'node:url';
-import { findChromiumBrowser } from './browserpath.mjs';
+import { assertBrowserLaunchAllowed, findChromiumBrowser } from './browserpath.mjs';
 
 function fail(message) { throw new Error(message); }
 function assert(condition, message) { if (!condition) fail(message); }
@@ -93,6 +93,7 @@ export async function openChromiumCdp({
   assert(typeof WebSocketImpl === 'function' && Number.isInteger(WebSocketImpl.OPEN),
     `${label}: WebSocket implementation is invalid`);
   assert(typeof onEvent === 'function', `${label}: CDP event handler is invalid`);
+  assertBrowserLaunchAllowed();
   const browserFile = findChromiumBrowser();
   const temporary = fs.realpathSync(os.tmpdir());
   const userData = path.join(temporary,
@@ -281,6 +282,7 @@ function assertNoOwnedProfiles(prefix, where) {
 async function runSelftest() {
   const actualBrowser = findChromiumBrowser();
   const priorExplicit = process.env.CF_BROWSER;
+  const priorCodexSandbox = process.env.CODEX_SANDBOX;
   const nonce = crypto.randomBytes(5).toString('hex');
   const base = `cf-browsercdp-selftest-${nonce}`;
   const endpointFixture = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), `${base}-endpoint-`));
@@ -315,6 +317,28 @@ async function runSelftest() {
     await terminateChildProcess(resistantChild, resistantClose, 'CDP selftest resistant child', 20);
     assert(JSON.stringify(resistantSignals) === JSON.stringify(['SIGTERM', 'SIGKILL']),
       `SELFTEST resistant child: expected TERM/KILL escalation, got ${resistantSignals.join(', ')}`);
+
+    if (process.platform === 'darwin') {
+      const seatbeltBrowser = path.join(endpointFixture, 'seatbelt-marker-browser.mjs');
+      const seatbeltTouched = path.join(endpointFixture, 'seatbelt-browser-was-spawned');
+      const seatbeltPrefix = `${base}-seatbelt`;
+      fs.writeFileSync(seatbeltBrowser,
+        `#!/usr/bin/env node\nimport fs from 'node:fs';\nfs.writeFileSync(${JSON.stringify(seatbeltTouched)}, 'spawned');\n`);
+      fs.chmodSync(seatbeltBrowser, 0o755);
+      try {
+        process.env.CF_BROWSER = seatbeltBrowser;
+        process.env.CODEX_SANDBOX = 'seatbelt';
+        await expectRejectedAsync('macOS Codex Seatbelt pre-spawn refusal', () => openChromiumCdp({
+          label: 'CDP selftest macOS Seatbelt', userDataPrefix: seatbeltPrefix,
+        }), /refusing macOS Chromium inside the Codex Seatbelt sandbox/);
+        assert(!fs.existsSync(seatbeltTouched),
+          'SELFTEST macOS Seatbelt guard touched the browser executable');
+        assertNoOwnedProfiles(seatbeltPrefix, 'macOS Seatbelt pre-spawn refusal');
+      } finally {
+        if (priorCodexSandbox === undefined) delete process.env.CODEX_SANDBOX;
+        else process.env.CODEX_SANDBOX = priorCodexSandbox;
+      }
+    }
 
     const childPrefix = `${base}-child`;
     process.env.CF_BROWSER = process.execPath;
@@ -432,12 +456,15 @@ async function runSelftest() {
   } finally {
     if (priorExplicit === undefined) delete process.env.CF_BROWSER;
     else process.env.CF_BROWSER = priorExplicit;
+    if (priorCodexSandbox === undefined) delete process.env.CODEX_SANDBOX;
+    else process.env.CODEX_SANDBOX = priorCodexSandbox;
     fs.rmSync(endpointFixture, { recursive: true, force: true });
   }
   console.log('BROWSER CDP SELFTEST PASS');
   console.log('  malformed DevToolsActivePort: rejected');
   console.log('  exit-without-close: rejected; owned pipe released');
   console.log('  SIGTERM-resistant child: escalated to bounded SIGKILL');
+  console.log(`  macOS Codex Seatbelt pre-spawn refusal: ${process.platform === 'darwin' ? 'PASS; executable untouched' : 'covered by portable resolver selftest'}`);
   console.log('  browser child exit and profile cleanup: PASS');
   console.log(`  early-exit code + bounded stderr diagnostics: ${process.platform === 'win32' ? 'covered by child-exit control' : 'PASS'}`);
   console.log('  WebSocket open timeout and cleanup: PASS');

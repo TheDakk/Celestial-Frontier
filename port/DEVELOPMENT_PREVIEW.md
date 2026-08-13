@@ -124,6 +124,14 @@ Guide to show v2.0 plus the full manifest commit.
 Every CI/publication workflow that packages a preview runs this outcome check before
 upload or publication.
 
+The package browser check owns a fixed 30-second CDP startup allowance; the shared
+launcher keeps its 15-second default for other evidence tools. `preview:selftest`
+captures the exact caller options on every platform and completes a real-browser
+outcome. On POSIX it starts Chrome immediately while withholding the ready CDP
+endpoint for 16 seconds, proving the generic allowance rejects without stealing
+startup time from the exact preview caller. This is a bounded repair for browser
+startup variance, not a retry or a workflow/job timeout increase.
+
 Browser provenance is owned by each process. A `CF_BROWSER` value attached to one GitHub
 Actions step does not carry into the next step merely because both belong to the same job.
 All preview-producing jobs therefore pin the exact CI browser at job scope and resolve it
