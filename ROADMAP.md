@@ -20,7 +20,6 @@
 ## the SESSION HANDOFF here so WHAT'S DONE / NEXT reflect reality. Rewrite the handoff in place — the
 ## roadmap stays a one-screen read. History is one file away, git-diffable.
 ## ▶▶▶ SESSION HANDOFF — 2026-08-12 · MERGED PR #11: BRANCH-SITE PUBLICATION ◀◀◀
-
 ### Cold start
 
 - Workspace: `/Users/nick/Projects/celestial-frontier-openai-mac`.
