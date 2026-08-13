@@ -770,3 +770,34 @@ lock around a child gate that acquires the same lock. Clean/review and approved 
 a second boundary: Vite builds an isolated `git archive` snapshot of the exact HEAD `port/v2` tree,
 not the working tree. Only explicitly dirty, nonpublishable local previews may build working-tree
 bytes.
+
+## Deep play must respect the player (2026-08-13)
+
+Celestial Frontier may pursue deep mastery, attachment, surprise, long-term collecting and a
+universe players enjoy thinking about away from the screen. It must not translate that ambition
+into compulsion machinery. No implementation or acceptance metric may optimize streaks, FOMO,
+punishment for taking a break, paid random rewards, hidden odds, expiring missions, energy sales,
+variable-pressure notifications, or loss whose purpose is to manufacture urgency. Active-play
+progress is allowed; absence penalties are not. Random loot is earned, source/ranges are disclosed,
+and a ready reward waits until the player chooses to claim it.
+
+This law is testable in part—no wall-clock reward owner, no expiry, no paid-random path, no hidden
+pool—but the quality boundary remains human: does the loop create curiosity and meaningful choice,
+or pressure and maintenance? Retention, session length and notification response are never release
+criteria.
+
+## Design documentation is not Guide capability (2026-08-13)
+
+System docs may define a future Inventory, Shipyard, loot, Companion, combat or audio contract in
+enough detail for either agent to implement it. The in-game Guide must continue to describe only
+executable outcomes. A capability changes from unavailable/partial only after its real action,
+persistence/reload, touch/keyboard reachability and negative-controlled outcome gate exist. A type,
+pure resolver, imported legacy field, static portrait, planned table or design document is not a
+player feature.
+
+Large cross-system changes begin with an identity/ownership audit. Species catalogue rows are not
+owned creature instances; base item definitions are not rolled gear instances; visual ship state is
+not a second progression authority; an audio profile is not a biological recording. Name each owner
+before adding content volume, then grep every reader/writer/importer/exporter before migration or
+deletion. “Unused by the current slice” is not proof that compatibility, fixture or planned lazy
+freight is defunct.

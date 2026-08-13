@@ -15,6 +15,12 @@ two places where the shipped implementation differs from the §3 plan, and one i
 > must use plain ten-tier language, never a Spectral-class row. This overlay changes presentation, not raw tiers, seeded hues,
 > fixture parity, or the immutable v1.8.9 release history.
 
+> **2026-08-13 cross-system review:** The ten-name ladder remains the shared display
+> vocabulary for future loot and Guardian rewards, not a shortcut that makes every value
+> one scale. Item level, quality, affix tier, upgrade and companion bond stay independent.
+> Drop pools disclose their source/ranges and reload cannot reroll a receipt. See
+> `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md`; this direction is not yet a live v2 faucet.
+
 > ### ⚠ RE-VERIFIED 2026-07-31 — the plan and the implementation differ in mechanism
 >
 > **1. Names/colors are NOT routed through `displayRarity`.** §3 item 4 specifies that `speciesGrade`,
