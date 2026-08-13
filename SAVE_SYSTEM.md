@@ -343,22 +343,28 @@
 > 2,365×1,330 ready/release shapes and existing 2,730×1,536 shapes fail as negative
 > controls, alongside threshold/UHD, runtime resize, pointer, and ticker controls.
 >
-> The sole dirty-worktree browser diagnostic is chronology, not certification.
-> Its first sandbox launch failed before a browser opened on loopback `EPERM`; the
-> one permitted product execution then passed under Edge 151 in 53,881 ms—not a
-> retry—with 12/12 rows, 57/57 controls, empty blocked/omitted ledgers, and
-> 0 findings/instrument failures/retries (407,207-byte report SHA-256
-> `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`).
-> Source commit/status/snapshot identities were `2a24606`,
-> `1ba44ac499d8ff4b0ddcc719935ff1d739cf5f323d0b803d82bd042aa195fe0c`, and
-> `b577cb831f002a02479a49c60a03555d066dad73951656ea56beff0ff261ce98`.
-> Reloads were 173–200 ms; exact 8K was 180 ms with ready performance 162.6 ms,
-> with a 2 ms arm and target1/heartbeat1/target2/heartbeat2 at 1/1/10/0 ms, release→commit
-> 33 ms, commit→ready 130 ms, ordered release tail 6/7/8 at
-> 1,786,578,287,580 /583 /583, and two 1,920×1,080 replacement stores /4,147,200
-> pixels combined. The runtime same-backing control passed in the control ledger;
-> this diagnostic does not claim separate 5K timing/state evidence. Clean committed
-> exact battery evidence and matching pushed-tip CI are still required.
+> The `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`
+> dirty-worktree PASS is prior diagnostic chronology only. Immutable clean executable source
+> `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed from committed clean bytes
+> (status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`, snapshot
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`). Root layout
+> passed 787/787 across 10/10 (`c42a50873ad01a91dd439860f41f1d695a7d2bf5c41521ed8b7eb768b7ee4975`);
+> v2 passed 273/1 plus all gates; one-attempt smoke passed 0/10 in 105,339 ms
+> (`90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723`; log
+> `fe8c5d42eec2a09641f3f551486046559cd4c5956591b5a7d71a25b48d926af1`). Glass
+> passed 12/12 unique rows and 57/57 controls in 53,083 ms with exact 6/7/8 tails,
+> five-command ledgers, empty blocked/omitted ledgers and zero findings/instrument failures/
+> retries (`42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f`). Exact
+> 8K was 171 ms / browser performance 161.9 ms, commands 1/1/1/3/0 ms, 33/129 ms
+> release→commit/commit→ready, and two 1,920×1,080 stores /4,147,200 pixels at DPR 0.25;
+> terminal-only performance was 606/685/74/171 ms. Preview
+> `dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was browser-smoked under
+> Edge 151 over loopback, bound to expected separate origin
+> `https://dev-celestialfrontier.github.io`, with `publishable:false` (manifest
+> `1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d`, content
+> `5db7790977071235ed164fb8f382bd67421c9fd5e834a504cdb4e1a1e8f47589`). Live
+> Git/PR state determines current tip/upstream/checks; the selected pushed tip requires
+> matching CI.
 >
 > Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
 > remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
@@ -371,10 +377,11 @@
 > Exact 8K was 203 ms / `performanceNow` 158.2 ms, targets 1/10 ms, heartbeats 0/0 ms;
 > outgoing 2,365×1,330 stores →1×1 and replacement stayed 6,290,900 pixels combined.
 > Nine automated-only personas and terminal-only 581/659/73/152 ms performance passed;
-> exact preview `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at the
-> separate dev origin with `publishable:false`. Both this source and clean `6554b2b`
-> remain prior evidence; current #208 repair authority is still pending a clean committed
-> exact battery. No save-format,
+> exact preview `dev-preview-exact-df1c28b-20260812T211642Z` was browser-smoked under
+> Edge 151 over loopback, bound to the expected separate dev origin, with `publishable:false`.
+> Both this source and clean `6554b2b`
+> remain prior evidence; clean `307b8aaf` is the current local #208 executable evidence.
+> No save-format,
 > host/human/Ready/merge/release/
 > deployment/version authority follows.
 > No save-format or version change is involved.

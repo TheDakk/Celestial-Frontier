@@ -238,15 +238,28 @@ product-blocked, `omitted=[]`, and 0 retries. Preserve #208 red without retry. I
 produced no persona or preview artifact and grants no playtest/candidate authority.
 
 The current fixed repair preserves native UHD and makes exact desktop-8k DPR 0.25
-and 5K DPR 0.375 use two 1,920×1,080 stores /4,147,200 pixels combined. The only
-dirty-worktree browser diagnostic remains non-authoritative: its first sandbox
-launch failed pre-browser on loopback `EPERM`; its sole permitted product run—not
-a retry—passed Edge 151 in 53,881 ms, 12/12 rows and 57/57 controls, with empty
-blocked/omitted ledgers and zero findings/instrument failures/retries (report
-`d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`).
-It did not run personas or build/verify/browser-smoke a preview, and therefore is
-not a preview candidate. Clean committed exact battery evidence, matching pushed-tip
-CI, the separate host decision, explicit candidate approval, and human play remain open.
+and 5K DPR 0.375 use two 1,920×1,080 stores /4,147,200 pixels combined. The
+`d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`
+dirty-worktree PASS is prior diagnostic chronology only. Immutable clean executable source
+`307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed root layout 787/787 across
+10/10, v2 273/1 plus all gates, one-attempt smoke 0/10, and glass 12/12 unique rows /
+57/57 controls with exact 6/7/8 tails, empty blocked/omitted ledgers and zero findings,
+instrument failures, or retries. Glass/smoke/root-layout hashes are
+`42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f` /
+`90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723` /
+`c42a50873ad01a91dd439860f41f1d695a7d2bf5c41521ed8b7eb768b7ee4975`.
+Exact 8K was 171 ms / browser performance 161.9 ms, commands 1/1/1/3/0 ms,
+33/129 ms release→commit/commit→ready, and two 1,920×1,080 stores /4,147,200
+pixels; terminal-only performance was 606/685/74/171 ms. Exact preview
+`dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was verified and browser-
+smoked under Edge 151 over loopback, bound to expected separate origin
+`https://dev-celestialfrontier.github.io`, with `publishable:false`: manifest
+`1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d`,
+content `5db7790977071235ed164fb8f382bd67421c9fd5e834a504cdb4e1a1e8f47589`,
+tree `5b8e1f649b1259f96f5de6d7e8aca0377bc2cf10`, 37 files /10,186,644 bytes.
+This remains local evidence, not host/publication/human/Ready/merge/release/deploy/version
+authority. Live Git/PR determines current tip/upstream/checks; the selected final pushed
+tip requires matching CI, the separate host decision, explicit candidate approval, and human play.
 
 Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
 remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
@@ -263,13 +276,14 @@ Exact 8K was 203 ms / `performanceNow` 158.2 ms, targets 1/10 ms and heartbeats
 0/0 ms; persona JSON/Markdown reports were
 `c10c9e33542ed57b4c51683c0ddf3f1bbc468696a025e88ef2d1e500209581bc` /
 `1c9961515028a716ba064ca32ea9dd3ef2d41118cfde4c76b24c16520daa2d14`.
-Exact preview `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at the
-separate dev origin with `publishable:false`: manifest
+Exact preview `dev-preview-exact-df1c28b-20260812T211642Z` was browser-smoked under
+Edge 151 over loopback, bound to the expected separate dev origin, with `publishable:false`:
+manifest
 `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`, 37 files /
 10,186,537 bytes, content `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`,
 tree `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. That artifact remains prior #206
-evidence; clean `6554b2b` also remains prior evidence, while current #208 candidate
-boundaries await clean committed exact evidence and matching CI. After matching
+evidence; clean `6554b2b` also remains prior evidence, while clean `307b8aaf` is the
+current local #208 executable and preview evidence. After matching
 green CI, Nick may explicitly approve the one-time PR #11 candidate command below. No host/publication/human/Ready/merge/
 release/deployment/version authority follows.
 

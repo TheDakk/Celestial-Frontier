@@ -35,8 +35,9 @@
   `ee8bc281c424b5a8f998dc7327372e5f5a18067d` and remains **RED**. Merge
   `8fc6b4fc` is tree-identical; branch-flow run `31649175614` / job `94289512873`
   passed. Steps 1–15 and `smoke:ci` passed; the sole desktop-8k product-answerability
-  finding is described below. The fixed-cap repair has only non-authoritative dirty-
-  worktree diagnostic evidence; clean committed exact evidence and matching CI remain open.
+  finding is described below. Immutable clean executable source
+  `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed the exact clean local battery for
+  the fixed-cap repair; matching CI for whichever final pushed tip is selected remains open.
   Exact tip/upstream/check state is live authority
   from `git rev-parse HEAD`, `git status --short --branch`, and PR #11 checks.
   CI #201–#208 remain preserved red without retry; their exact run/job/head diagnoses and
@@ -189,21 +190,31 @@ shapes and existing 2,730×1,536 shapes fail as negatives, alongside threshold/U
 runtime resize, pointer, and ticker controls. The two-second target, heartbeat, ready,
 and zero-retry contracts are unchanged.
 
-The sole dirty-worktree browser diagnostic remains non-authoritative. Sandbox loopback
-`EPERM` stopped its first launch before any browser; the one permitted product run—not
-a retry—then passed Edge 151 in 53,881 ms, 12/12 rows and 57/57 controls, with empty
-blocked/omitted ledgers and zero findings/instrument failures/retries. Its 407,207-byte
-report SHA-256 is
-`d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`; source
-commit/status/snapshot identities are `2a24606`,
-`1ba44ac499d8ff4b0ddcc719935ff1d739cf5f323d0b803d82bd042aa195fe0c`, and
-`b577cb831f002a02479a49c60a03555d066dad73951656ea56beff0ff261ce98`.
-Reloads were 173–200 ms. Exact 8K was 180 ms / browser performance 162.6 ms,
-with 2 ms arm, target/heartbeat pairs 1/1 and 10/0 ms, 33 ms release→commit,
-130 ms commit→ready, ordinal tail 6/7/8 at 1,786,578,287,580 /583 /583, and two
-1,920×1,080 stores /4,147,200 pixels. The runtime same-backing control passed in
-the ledger; no separate 5K timing/state evidence is claimed. Clean committed exact
-battery evidence and matching pushed-tip CI remain required. No host, publication,
+The `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`
+dirty-worktree PASS is prior diagnostic chronology only. Immutable clean executable source
+`307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed the exact battery from committed,
+clean bytes (status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`, snapshot
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`): root layout
+787/787 across 10/10 (`c42a50873ad01a91dd439860f41f1d695a7d2bf5c41521ed8b7eb768b7ee4975`),
+v2 273/1 plus all gates, and one-attempt smoke 0 findings/10 screenshots in 105,339 ms
+(`90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723`;
+log `fe8c5d42eec2a09641f3f551486046559cd4c5956591b5a7d71a25b48d926af1`).
+Certifying glass passed 12/12 unique rows and 57/57 controls in 53,083 ms, with exact
+6/7/8 release tails, five-command ledgers, empty blocked/omitted ledgers and zero findings/
+instrument failures/retries (`42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f`).
+Exact 8K was 171 ms / browser performance 161.9 ms, commands 1/1/1/3/0 ms,
+33 ms release→commit, 129 ms commit→ready, 1,920×1,080 stores at DPR 0.25 and the
+2,073,600-per-canvas /4,147,200-combined cap; outgoing twins collapsed to 1×1.
+Automated-only persona JSON/Markdown hashes are `61d73fc9e11f55bc99f153aa6483661d1dc143104dab4d0cb728a48b68b485c5` /
+`fdd7ce423cee68ef2584190bb056afd4b32a41c4158957da0e3a571b02f8c495`; terminal-only
+performance was 606/685/74/171 ms. Preview
+`dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was browser-smoked under Edge 151
+over loopback, bound to expected separate origin `https://dev-celestialfrontier.github.io`,
+with `publishable:false`; manifest/content/tree hashes are
+`1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d` /
+`5db7790977071235ed164fb8f382bd67421c9fd5e834a504cdb4e1a1e8f47589` /
+`5b8e1f649b1259f96f5de6d7e8aca0377bc2cf10`. Live Git/PR state determines current
+tip/upstream/checks; the selected final pushed tip requires matching CI. No host, publication,
 human-play, Ready, merge, release, deployment, or version authority follows.
 
 `overridecontrol` remains exclusive and must not overlap any build/browser/evidence producer.
@@ -246,8 +257,8 @@ human play remains the judge of motion, readability, comfort and perceived quali
 **Current side:** OpenAI/Codex on macOS, branch `openai/mac` — test-battery #208 is the latest
 immutable pushed CI evidence at `ee8bc281c424b5a8f998dc7327372e5f5a18067d`; merge
 `8fc6b4fc` is tree-identical, and the product-answerability run remains red without retry.
-The fixed 2,073,600-pixel/canvas repair has only a non-authoritative dirty diagnostic PASS;
-clean committed exact battery evidence remains pending. Resolve tip/upstream/check state live;
+Immutable clean executable source `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed the
+exact clean local battery for the 2,073,600-pixel/canvas repair. Resolve tip/upstream/check state live;
 the selected pushed tip requires matching CI, and #201–#208 remain preserved red without retry.
 
 **GitHub step:** keep PR #11 draft and preserve red #201 (`31586917924` / `94082765087`),
@@ -348,18 +359,18 @@ merged PR #10.
   > in 1 ms after ready scheduling→emission had already stalled 2,559.5 ms: 1 product finding,
   > 0 instrument failures, 57 planned with the runtime same-backing control product-blocked,
   > `omitted=[]`, 0 retries, and no persona/preview output. Preserve every red run without retry.
-  > The current fixed-cap repair's sole dirty diagnostic passed 12/12 and 57/57 under Edge 151
-  > but remains non-authoritative pending clean committed exact battery evidence and matching CI.
-  > The prior #207 dirty diagnostic remains chronology only. Immutable
-  > executable source `6554b2be652c083bc9ff7ed11c2f928e90b74660` then passed the exact clean
-  > battery: root layout 787/787 across 10/10, v2 273/1 plus all gates, one-attempt smoke
-  > 0 findings/10 screenshots, certifying glass 12/12 and 57/57 with exact 6/7/8 tails,
-  > empty blocked/omitted ledgers and zero findings/instrument failures/retries, nine
-  > automated-only personas, and terminal-only performance. Exact preview
-  > `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151 over
-  > loopback, bound to the expected separate development origin, with `publishable:false`;
-  > its content SHA-256 is
-  > `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`. The prior
+  > The `d8684c…` dirty fixed-cap PASS is prior diagnostic chronology only. Immutable clean
+  > executable source `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed the exact local battery:
+  > root layout 787/787 across 10/10, v2 273/1 plus all gates, one-attempt smoke 0/10,
+  > certifying glass 12/12 and 57/57 with exact 6/7/8 tails and zero findings/instrument
+  > failures/retries, nine automated-only personas, and terminal-only 606/685/74/171 ms.
+  > Exact 8K was 171 ms / 161.9 ms, five commands 1/1/1/3/0 ms, 33/129 ms
+  > release→commit/commit→ready, and two 1,920×1,080 stores /4,147,200 pixels. Exact preview
+  > `dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was browser-smoked under Edge 151
+  > over loopback, bound to the expected separate development origin, with `publishable:false`.
+  > Its glass/smoke/preview-manifest hashes are `42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f` /
+  > `90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723` /
+  > `1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d`. The prior
   > 3,145,728-pixel/canvas repair has exact clean executable evidence at immutable
   > `df1c28b31d15cd554d36f9b4ca65d8765366a5df`: root layout 787/787, v2 273/1 plus
   > all gates, one-attempt smoke 0/10, certifying glass 12/12 and 57/57 with empty
@@ -367,10 +378,11 @@ merged PR #10.
   > personas, terminal-only performance and an Edge 151-smoked separate-origin preview with
   > `publishable:false`. Exact docs tip/upstream/check state is read live, and the selected pushed
   > tip requires matching green CI.
-  > The prior local review artifact is bound to
-  > `https://dev-celestialfrontier.github.io`, but no host or publication is authorized. After the
-  > matching CI is green, complete and record a multi-lens human playtest against that exact preview before marking
-  > this PR Ready or merging. The static Platinum-reviewed portrait set is unchanged; later visual
+  > The existing local review artifacts are `publishable:false`; no host or publication is
+  > authorized. After matching CI is green and Nick explicitly approves a publication candidate,
+  > package and publish a commit-bound candidate from the selected final pushed head at the
+  > separate development origin, then complete and record a multi-lens human playtest against
+  > that matching candidate before marking this PR Ready or merging. The static Platinum-reviewed portrait set is unchanged; later visual
   > work remains living rigs/animation and biome scenes. After merge, Anthropic/Claude Code may
   > synchronize only from a clean `anthropic/windows` worktree with `git fetch origin` then
   > `git merge origin/develop`. No release, deployment, certification, `main` change, live-site

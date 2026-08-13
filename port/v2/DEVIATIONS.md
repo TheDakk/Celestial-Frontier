@@ -1129,10 +1129,10 @@ duplicates).
   581/659/73/152 ms performance passed. Preview `dev-preview-exact-df1c28b-20260812T211642Z`
   was browser-smoked under Edge 151 over loopback, bound to the expected separate development
   origin, with `publishable:false`. That source and clean `6554b2b` below remain
-  prior evidence; current #208 repair authority is pending a clean committed exact battery. No host/human/Ready/
+  prior evidence; clean `307b8aaf` is current local #208 executable evidence. No host/human/Ready/
   merge/release/deploy/version authority follows.
 - ★ **D-UI-6 — adjacent import/release bindings share one ordinal ruler (exact clean local
-  evidence; matching CI pending, 2026-08-12).** Test-battery #207, run
+  evidence; selected pushed tip requires matching CI, 2026-08-12).** Test-battery #207, run
   `31642880191` attempt 1 / job `94269466117`, completed without retry at exact pushed
   `ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
   `8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. Every prior gate,
@@ -1174,8 +1174,8 @@ duplicates).
   That immutable source remains prior #207 executable evidence; live Git/PR state determines
   the current tip, upstream, and checks, and the selected pushed tip still requires matching CI.
   No human, host, Ready, merge, release, deployment, or version authority follows.
-- ★ **D-UI-7 — fixed ultra backing tier restores sustained answerability (dirty diagnostic
-  PASS only; clean exact authority pending, 2026-08-12).** Test-battery #208, run
+- ★ **D-UI-7 — fixed ultra backing tier restores sustained answerability (immutable clean
+  exact local evidence; selected pushed tip requires matching CI, 2026-08-12).** Test-battery #208, run
   `31649176954` attempt 1 / job `94289516851`, completed without retry at exact pushed
   head `ee8bc281c424b5a8f998dc7327372e5f5a18067d`; merge `8fc6b4fc` is tree-identical,
   and branch-flow `31649175614` / job `94289512873` passed. Steps 1–15 and `smoke:ci`
@@ -1199,22 +1199,31 @@ duplicates).
   2,730×1,536 shapes, threshold/UHD, pointer, resize, and stopped/stale ticker cases are
   negative controls.
 
-  The only dirty-worktree browser diagnostic remains non-authoritative. Sandbox loopback
-  `EPERM` prevented its first launch before any browser; its sole permitted product
-  execution—not a retry—then passed Edge 151 in 53,881 ms, 12/12 rows and 57/57
-  controls, with `blocked=[]`, `omitted=[]`, and 0 findings/instrument failures/retries.
-  Its 407,207-byte report SHA-256 is
-  `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`; source
-  commit/status/snapshot identities are `2a24606`,
-  `1ba44ac499d8ff4b0ddcc719935ff1d739cf5f323d0b803d82bd042aa195fe0c`, and
-  `b577cb831f002a02479a49c60a03555d066dad73951656ea56beff0ff261ce98`.
-  Reloads were 173–200 ms. Exact 8K was 180 ms / browser performance 162.6 ms,
-  with 2 ms arm, 1/1 and 10/0 ms target/heartbeat pairs, 33 ms release→commit,
-  130 ms commit→ready, exact ordinal tail 6/7/8 at 1,786,578,287,580 /583 /583,
-  and two 1,920×1,080 stores /4,147,200 pixels. The runtime same-backing control
-  passed in the ledger; no separate 5K timing/state evidence is claimed. Clean committed
-  exact battery evidence and matching pushed-tip CI remain required before host, human,
-  Ready, merge, release, deployment, or version authority.
+  The `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`
+  dirty-worktree PASS is prior diagnostic chronology only. Immutable clean executable source
+  `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed from committed clean bytes
+  (status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`, snapshot
+  `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`). Root
+  layout passed 787/787 across 10/10 (`c42a50873ad01a91dd439860f41f1d695a7d2bf5c41521ed8b7eb768b7ee4975`);
+  v2 passed 273/1 plus all gates; one-attempt smoke passed 0/10 in 105,339 ms
+  (`90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723`; log
+  `fe8c5d42eec2a09641f3f551486046559cd4c5956591b5a7d71a25b48d926af1`).
+  Glass passed 12/12 unique rows and 57/57 controls in 53,083 ms with exact 6/7/8 tails,
+  five-command ledgers, `blocked=[]`, `omitted=[]`, and zero findings/instrument failures/
+  retries (`42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f`).
+  Exact 8K was 171 ms / browser performance 161.9 ms, commands 1/1/1/3/0 ms,
+  33/129 ms release→commit/commit→ready, and two 1,920×1,080 stores /4,147,200 pixels
+  at DPR 0.25; terminal-only performance was 606/685/74/171 ms. Automated persona
+  JSON/Markdown hashes are `61d73fc9e11f55bc99f153aa6483661d1dc143104dab4d0cb728a48b68b485c5` /
+  `fdd7ce423cee68ef2584190bb056afd4b32a41c4158957da0e3a571b02f8c495`.
+  Preview `dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was browser-smoked
+  under Edge 151 over loopback, bound to expected separate origin
+  `https://dev-celestialfrontier.github.io`, with `publishable:false`; manifest/content/tree
+  hashes are `1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d` /
+  `5db7790977071235ed164fb8f382bd67421c9fd5e834a504cdb4e1a1e8f47589` /
+  `5b8e1f649b1259f96f5de6d7e8aca0377bc2cf10`. Live Git/PR state determines current
+  tip/upstream/checks; the selected pushed tip requires matching CI. No host, human,
+  Ready, merge, release, deployment, or version authority follows.
 - ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
