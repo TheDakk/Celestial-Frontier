@@ -16,6 +16,12 @@ checks the exact event SHA and branch, uses a target-specific deploy key, stamps
 requests, manual agent runs, and failed batteries cannot publish. This public DEV surface is a
 playtest convenience, not human-play, Ready, merge, release, or production authority.
 
+**Standing execution authority (Nick, 2026-08-13):** after a scoped agent PR into `develop`
+is clean, mergeable, and terminal-green on its required battery, Codex or Claude Code may perform
+that normal merge and monitor the resulting automatic DEV publication without a new prompt.
+The authorization is limited to this existing mapped publisher; it does not authorize manual
+site writes, a new host/key, `develop` → `main`, a release, or a production deployment.
+
 GitHub Pages provides at most one user/organization site per account. Its default URL is
 `https://<owner>.github.io/`; additional project sites use
 `https://<owner>.github.io/<repository>/`. See GitHub's current

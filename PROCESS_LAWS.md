@@ -90,6 +90,13 @@ repository. The repository-owned publisher receives one target-specific deploy k
 the exact `test-battery` push succeeds: `main` publishes production and `develop` publishes the
 separate noindex DEV origin. Pull-request, manual, and failed-battery runs have no publication
 authority; the development site is never merge/release/production authority.
+⚠ **A GREEN, REVIEWED AGENT PR MAY FOLLOW ITS NORMAL INTEGRATION PATH WITHOUT A SECOND
+MERGE PROMPT.** Nick's standing authorization (2026-08-13) lets Codex or Claude Code merge a
+scoped agent-branch PR into `develop` only after the required battery is terminal-success and
+the PR is clean/mergeable, then monitor the exact resulting push battery and automatic mapped
+branch-site publication. This never includes `develop` → `main`, conflict shortcuts, red or
+unfinished checks, force pushes, manual Pages writes, new external destinations/secrets,
+versioning, release approval, or production deployment.
 ⚠ LINE ENDINGS ARE PART OF THE BUILD CONTRACT — .gitattributes pins LF. Without it a fresh
   clone on Windows (autocrlf=true) checks out CRLF, and make-probe-build.js cannot find the game
   IIFE anchor "

@@ -27,9 +27,10 @@
 - Owner/branch: OpenAI/Codex on `openai/mac`.
 - Integration baseline: PR #11 merged normally into `develop` at `d2dcd08`; final branch-flow and
   test-battery passed once without retry.
-- A successful push-triggered battery alone may publish its exact SHA: `main` → production and
-  `develop` → `https://dev-celestialfrontier.github.io/`. DEV is distinct, noindexed, and
-  visibly stamped; PR/manual/failed runs cannot publish or claim human-play/Ready/release authority.
+- Standing authority (Nick, 2026-08-13): an agent may merge its scoped clean/mergeable PR into
+  `develop` after required battery terminal-green, then monitor exact push publication: `main` → production;
+  `develop` → `https://dev-celestialfrontier.github.io/`; DEV is distinct/noindexed/stamped—never `main`,
+  red-check bypass, manual Pages/targets/keys, or inferred release/version/production-deploy authority.
 - Latest immutable CI evidence: test-battery #208, run
   [`31649176954`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954) /
   job [`94289516851`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954/job/94289516851),
