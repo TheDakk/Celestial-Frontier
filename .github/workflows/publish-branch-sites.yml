@@ -50,12 +50,16 @@ jobs:
       github.event.workflow_run.event == 'push' &&
       github.event.workflow_run.head_branch == 'develop'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     concurrency:
       group: cf-development-pages
       cancel-in-progress: false
     env:
       CF_PUBLISH_SOURCE_BRANCH: develop
       CF_PUBLISH_SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
+      CF_BROWSER: /usr/bin/google-chrome
+      CF_PREVIEW_ORIGIN: https://dev-celestialfrontier.github.io
+      CF_PREVIEW_OUTPUT: ${{ github.workspace }}/port/v2/apps/game/smoke/dev-preview-publish-${{ github.run_id }}-${{ github.run_attempt }}
       PAGES_DEPLOY_KEY: ${{ secrets.CF_DEVELOPMENT_PAGES_DEPLOY_KEY }}
     steps:
       - uses: actions/checkout@v5
@@ -64,6 +68,18 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 26
+          cache: npm
+          cache-dependency-path: port/v2/package-lock.json
+      - name: install exact v2 workspace dependencies
+        working-directory: port/v2
+        run: npm ci
+      - name: build and browser-smoke exact development candidate
+        working-directory: port/v2
+        run: |
+          node tools/browserpath.mjs --print
+          npm run preview:selftest
+          npm run preview:package -- --origin="$CF_PREVIEW_ORIGIN" --output="$CF_PREVIEW_OUTPUT" --approved-publication-candidate
+          npm run preview:smoke -- --root="$CF_PREVIEW_OUTPUT"
       - name: configure development-only deploy key
         run: |
           set -euo pipefail
@@ -77,4 +93,4 @@ jobs:
       - name: verify publisher controls and publish development
         run: |
           node tools/publish-branch-site.js --selftest
-          node tools/publish-branch-site.js --channel development
+          node tools/publish-branch-site.js --channel development --package-root="$CF_PREVIEW_OUTPUT"

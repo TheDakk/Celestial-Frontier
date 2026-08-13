@@ -31,8 +31,10 @@ workspace plus a playable Pixi/browser slice. Its Guide is now a source-addresse
 continuation of the mature manual: all 9 categories /43 authored IDs /41 player
 topics remain searchable and cross-linked, while capability-aware v2 copy marks
 unported mechanics honestly instead of repeating their legacy promises. The exact
-56-release/398-bullet legacy history is present beside a separate unversioned v2 development
-draft; the draft cannot trigger an update popup or bump a version. Field Training
+56-release/398-bullet legacy history is present beside a separate **v2.0 development**
+bulletin. `v2.0` identifies the playtest build only: it is not a production release,
+`V2_CURRENT_RELEASE_VERSION` remains `null`, and the bulletin cannot trigger an update
+popup or mutate the seen-release marker. Field Training
 currently covers the six chart/travel/landing lessons plus an honest graduation;
 tooltip deep-links, Advanced Briefings, and the rest of the 21-step training arc
 remain port work. From `port/v2`, run `npm install`, `npm test`, `npm run typecheck`,
@@ -66,11 +68,12 @@ node tools/uilayout.js     # a REAL headless browser: computed boxes + 44px touc
                            #   --vp runs remain scoped diagnostics.
 node tools/balance-sim.js  # archetype win-rate band + ability-theme art band
 node tools/publish-branch-site.js --selftest
-                           # publisher negative controls: branch/build marker and
-                           #   development noindex/banner isolation.
+                           # publisher negative controls: branch/build identity,
+                           #   exact v2 package, and development origin/noindex/
+                           #   manifest isolation. Development identity is Guide-only.
                            # Successful push batteries publish automatically:
-                           #   main -> https://celestialfrontier.github.io/
-                           #   develop -> https://dev-celestialfrontier.github.io/
+                           #   main -> immutable root v1.8.9 production HTML
+                           #   develop -> tested v2.0 development package
 ```
 
 Run on demand rather than every batch — each closes a blind spot the four gates above
@@ -110,46 +113,24 @@ truth; the user-site repo is just the deploy target.
 
 **Development HTML:** successful push batteries publish `develop` to
 https://dev-celestialfrontier.github.io/ after all gates pass. It is a separate
-origin and visibly stamped `DEV · <commit>`; it must never be used as a path under
-the production origin. **Human-test the v2 development build:** use the commit-bound package and
-separate-origin procedure in [`port/DEVELOPMENT_PREVIEW.md`](port/DEVELOPMENT_PREVIEW.md).
-A GitHub Pages project path under `celestialfrontier.github.io` is deliberately
-forbidden because it would share production browser storage. CI packaging does
-not publish a site; the separate preview owner/hostname has not yet been chosen,
-created or deployed. Clean preview evidence is built from an isolated exact-HEAD
-snapshot, and the shared workspace lock prevents Vite/browser evidence from
-overlapping the source-mutating `overridecontrol` negative control. Structured
-root-layout, slice-smoke, 12-viewport glass-matrix (including 8K), and automated-
-persona reports retain matching provenance; root layout CI verifies its exact run
-id before a separate always-run upload, and the persona synthesis is explicitly not a
-human playtest. The glass reload observer orders its operation-phase and generic release
-bindings with one scoped receipt ordinal: only release-started N → release N+1 →
-release-complete N+2 can pass, while the producer-legal intermediate waits under the
-unchanged import deadline. Immutable one-attempt CI #208 remains red: its 8K replacement
-published ready, but the exact page target then missed the unchanged two-second response
-bound while the browser-process heartbeat stayed healthy. The current repair keeps native
-backing through UHD, then caps each full-viewport canvas at 2,073,600 backing pixels above
-that tier (the tested 8K/5K 16:9 cases resolve to 1,920×1,080). The `d8684c…` dirty
-PASS is prior diagnostic chronology only. Immutable clean executable source
-`307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed root layout 787/787, v2
-273/1 plus all gates, one-attempt smoke 0/10, and certifying glass 12/12 and 57/57
-with exact 6/7/8 release tails, empty blocked/omitted ledgers, and zero findings,
-instrument failures, or retries. Exact 8K was 171 ms / browser performance 161.9 ms,
-five commands 1/1/1/3/0 ms, 33/129 ms release→commit/commit→ready, and two
-1,920×1,080 stores /4,147,200 pixels at DPR 0.25; terminal-only performance was
-606/685/74/171 ms. Glass/smoke/root-layout hashes are
-`42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f` /
-`90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723` /
-`c42a50873ad01a91dd439860f41f1d695a7d2bf5c41521ed8b7eb768b7ee4975`.
-Preview `dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was browser-smoked
-under Edge 151 over loopback, bound to expected separate origin
-`https://dev-celestialfrontier.github.io`, with `publishable:false` (manifest
-`1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d`).
-Live Git/PR state determines current tip/upstream/checks; whichever final pushed tip
-is selected requires matching CI. PR #11 stays draft until that matching CI is green and a real
-multi-lens human playtest against
-the exact preview is recorded, findings are resolved/retested, and final local
-plus GitHub checks pass on the frozen pushed head.
+origin and must never be recreated as a path under the production origin. The
+development publisher mirrors the already-tested, browser-smoked `port/v2` package;
+production `main` continues to publish the immutable root v1.8.9 HTML. The development
+page identifies itself as **Celestial Frontier v2.0 development** plus the full source
+commit inside the Guide only—there is no floating corner badge. Runtime origin refusal,
+`noindex`/`robots.txt`, the byte-hashed manifest, exact-commit archive build, shared
+version file, and generated `version.json` remain mandatory safeguards.
+
+**Human-test the v2 development build:** follow the commit-bound procedure in
+[`port/DEVELOPMENT_PREVIEW.md`](port/DEVELOPMENT_PREVIEW.md) and record the exact URL,
+full commit, manifest content hash, device/browser lens, starting save, findings, and
+retest. A successful publication is a play surface, not proof of human play, merge,
+release, or production readiness. Clean preview evidence is built from an isolated
+exact-HEAD snapshot, and the shared workspace lock prevents Vite/browser evidence from
+overlapping the source-mutating `overridecontrol` negative control. Structured root
+layout, one-run slice smoke, 12-viewport glass matrix, and same-provenance automated
+persona reports remain evidence; automated personas are not a human playtest. Resolve
+current branch, commit, PR, and check state from live Git/GitHub rather than this README.
 
 `original/celestial-frontier-v1.0.html` is the pristine pre-refactor build the
 determinism baseline was captured from. Hard rule: nothing nondeterministic may

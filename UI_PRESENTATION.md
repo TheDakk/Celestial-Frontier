@@ -1,6 +1,20 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-12 v2 port overlay (matches `port/v2` code):** The phone slice now
+> **2026-08-13 v2 development overlay (matches the current `port/v2` contract):**
+> Desktop notifications now rise from the bottom-right utility edge above the measured
+> dock; Settings and Records open from that same bottom-right anchor. Panel padding,
+> row spacing, dividers, corner radii and inset borders use one balanced glass grammar.
+> Every panel and Survey card owns exactly one 44px top-right Close action—refill code
+> preserves it, duplicate seating is removed, and no close control may detach to the
+> upper-left. Survey cards suppress the legacy **Spectral class** row. Planet rarity is
+> absent before landing and appears afterward as a plain ten-tier rarity name; internal
+> deterministic spectral colors and real stellar G/K/M/remnant classifications remain.
+> Development identity appears only in the Guide as **Celestial Frontier v2.0
+> development** plus the full source commit. There is no floating DEV badge. `v2.0` is
+> a playtest identity, not a production release: the legacy v1.8.9 history is immutable,
+> `V2_CURRENT_RELEASE_VERSION` stays `null`, and no one-time update popup may fire.
+>
+> **2026-08-12 v2 port base overlay:** The phone slice now
 > owns an explicit 206×98, 4×2 dock and publishes measured `--dock-h` and
 > `--ctx-h`. Context, hint and Planetside offsets derive from those values, so a
 > wrapped line, safe-area change or media-query change cannot bury copy beneath
@@ -42,8 +56,8 @@
 > contract but hidden from the 41-topic player catalogue. First open persists
 > `seenGuide`; import moved without loss to **Settings → Bring expedition**.
 > The same panel exposes all 56 immutable legacy release entries plus a separate
-> unversioned v2 development draft. The draft cannot trigger the one-time update
-> surface; no v2 version exists until Nick authorizes one. Tooltip deep links and
+> v2.0 development bulletin. That identity cannot trigger the one-time update
+> surface; no v2 production version exists until Nick authorizes one. Tooltip deep links and
 > Advanced Briefings remain open port scope. The slice's Field Training likewise
 > owns six real chart/travel/landing lessons plus an honest graduation, not the
 > full legacy 21-step curriculum.
@@ -61,9 +75,9 @@
 > keeps its step-specific card/panel order. Real Earth-card intersections and
 > injected low-layer controls prove these surfaces are not merely present
 > underneath the card.
-> Every panel now reserves a dedicated 44px right gutter for its sticky Close
-> control, so scrolling content cannot render or receive focus beneath that
-> target. Closing still prefers the exact opener; if a desktop rail opener has
+> Every panel now seats exactly one 44px top-right Close control in its own header
+> geometry, so scrolling content cannot render or receive focus beneath that
+> target and refill cannot duplicate it. Closing still prefers the exact opener; if a desktop rail opener has
 > become hidden because Survey reopened, focus falls back to Survey and then to
 > the exploration canvas instead of remaining on a hidden close control.
 > On every ≤900px landed layout, populated Planetside owns the limited
@@ -104,7 +118,9 @@
 > The dock remains a 44px pointer/focus target while its icon uses the 42px
 > client line left inside the 1px border, preventing a hidden two-pixel scroll
 > overflow. A++ also preserves notification hierarchy: the toast title remains
-> 19px while its body is 16px rather than being flattened to one size.
+> 19px while its body is 16px rather than being flattened to one size. On desktop,
+> the toast, Settings, and Records use the bottom-right utility edge rather than
+> appearing over the upper-left navigation rail.
 > Renderer density remains dynamic after resize/visual-viewport change. The
 > selected plan retains the touch-2 / desktop-3 heat caps and native backing
 > through UHD 3,840×2,160. Ordinary viewports may use 8,388,608 backing pixels

@@ -33,7 +33,7 @@ import {
   type GuideCategoryId, type GuideTopicId, type GuideTopicView,
 } from './guide-content.js';
 import {
-  getCurrentV2Release, getReleaseHistory, hasUnseenV2Release,
+  getCurrentV2Release, getReleaseHistory, hasUnseenV2Release, V2_DEVELOPMENT_VERSION,
   type ReleaseNoteView, type V2ShippedRelease,
 } from './release-content.js';
 import {
@@ -61,6 +61,7 @@ import {
 } from '@cf/persistence';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
+document.title = `Celestial Frontier v${V2_DEVELOPMENT_VERSION} — Development`;
 installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt fully replaces the hooks */
 /* THE PORTRAIT ENGINE IS A LAZY CHUNK: ~352KB gzip of species art stays off the boot
    path; the first Compendium/planetside view kicks the load and refills
@@ -265,6 +266,24 @@ const surfaceTopChromeEls = ['topbar', 'searchbox', 'objchip']
   .map((id) => document.getElementById(id)!) as HTMLElement[];
 let lastSurfaceTrailBottom = 0;
 const esc = (s: unknown): string => String(s ?? '').replace(/[<>&"']/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c]!));
+type DevelopmentPreviewIdentity = Readonly<{
+  sourceCommit: string;
+  shortCommit: string;
+  sourceState: string;
+  expectedOrigin: string;
+  publishable: boolean;
+  developmentVersion: string;
+}>;
+const previewIdentity = (globalThis as typeof globalThis & {
+  __CF_DEV_PREVIEW__?: DevelopmentPreviewIdentity;
+}).__CF_DEV_PREVIEW__;
+function guideBuildIdentity(): string {
+  const source = previewIdentity?.sourceCommit;
+  const build = source && /^[0-9a-f]{40}$/.test(source)
+    ? `<span data-sel="guide-build-commit">Build ${esc(source)}</span>`
+    : '<span data-sel="guide-build-commit">Local development source</span>';
+  return `<div class="guide-build" data-sel="guide-build"><b>Celestial Frontier v${esc(V2_DEVELOPMENT_VERSION)} development</b>${build}</div>`;
+}
 function syncTopbarH(): void {
   /* the game's height-sync law: MEASURED, never guessed (main.js 119) */
   document.documentElement.style.setProperty('--topbar-h', topbarEl.offsetHeight + 'px');
@@ -471,13 +490,23 @@ function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTrave
       `<button data-act="travel" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">${esc(travelAction.label)}</button>` +
       '</div>'
     : '';
+  const rows = (d.rows as Array<[string, string, string?]>).filter(([key]) => key !== 'Spectral class');
+  const isPlanet = typeof d.planetSeed === 'number';
+  const landedPlanet = isPlanet && !!save?.landed.includes(d.planetSeed as number);
+  const rarityName = d.designation?.name;
+  const rarityVisible = typeof rarityName === 'string' && (!isPlanet || landedPlanet);
+  const rarity = rarityVisible
+    ? `<div data-row="Rarity" class="survey-row"><span>Rarity</span><br>${esc(rarityName)}</div>`
+    : '';
   card.innerHTML =
-    `<h2 data-sel="title" style="margin:0 0 2px;font-size:17px;color:#f4f8ff">${esc(d.title)}</h2>` +
-    `<div data-sel="sub" style="color:var(--dim);margin-bottom:10px">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
+    '<div class="survey-head">' +
+    `<div><h2 data-sel="title">${esc(d.title)}</h2>` +
+    `<div data-sel="sub">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div></div>` +
+    '<button type="button" class="surface-close" data-survey-close aria-label="Close Survey card">✕</button></div>' +
     travelHtml +
     (actionsHtml || '') +   /* the card's ACTION ROW (Land · +Atlas · share) — buttons are trusted markup, never save text */
-    (d.rows as Array<[string, string, string?]>).map(([k, v, cls]) =>
-      `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" style="margin:4px 0"><span style="color:var(--dim)">${esc(k)}</span><br>${esc(v)}</div>`).join('');
+    rarity + rows.map(([k, v, cls]) =>
+      `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" class="survey-row"><span>${esc(k)}</span><br>${esc(v)}</div>`).join('');
   card.style.display = 'block';
   card.setAttribute('aria-hidden', 'false');
   document.body.classList.add('card-open');
@@ -566,6 +595,7 @@ surveyDockEl.addEventListener('click', () => {
     return;
   }
   if (card.style.display === 'none' && card.innerHTML) {
+    surveyFocusReturn = surveyDockEl;
     card.style.display = 'block';
     card.setAttribute('aria-hidden', 'false');
     document.body.classList.add('card-open');
@@ -796,7 +826,7 @@ function renderReleaseHistory(focusResult = false): void {
   const releases = getReleaseHistory({ includeDraft: true });
   body.innerHTML = '<button class="guide-back" data-guide-home>‹ Guide</button>' +
     '<div class="guide-release-intro"><b>Expedition bulletins</b><br>' +
-    'The v2 development entry is unversioned and cannot trigger an update popup. The complete v1 history below remains immutable.</div>' +
+    `v${esc(V2_DEVELOPMENT_VERSION)} names this development playtest but cannot trigger a production update popup. The complete v1 history below remains immutable.</div>` +
     releases.map((release, index) => `<button class="guide-item" data-release-index="${index}">` +
       `<span class="guide-icon">${release.status === 'draft' ? '🧪' : '✦'}</span><span><b>${release.version ? 'v' + esc(release.version) + ' · ' : ''}${esc(release.title)}</b>` +
       `<small>${release.status === 'draft' ? 'UNRELEASED DEVELOPMENT' : esc(release.date) + (release.status === 'shipped' ? ' · v2 release' : ' · legacy release')}</small></span><span aria-hidden="true">›</span></button>`).join('');
@@ -808,7 +838,7 @@ function renderRelease(index: number, focusResult = false, releases = getRelease
   const body = guideBodyEl(); if (!release || !body) return;
   body.innerHTML = '<button class="guide-back" data-guide-releases>‹ All bulletins</button>' +
     `<article class="guide-topic"><h4 tabindex="-1" data-guide-heading>${release.version ? 'v' + esc(release.version) + ' · ' : ''}${esc(release.title)}</h4>` +
-    `<div class="guide-status" data-guide-status="${release.status}">${release.status === 'draft' ? 'UNRELEASED DEVELOPMENT · no version bump' : esc(release.date) + (release.status === 'shipped' ? ' · v2 release' : ' · legacy v1 history')}</div>` +
+    `<div class="guide-status" data-guide-status="${release.status}">${release.status === 'draft' ? `v${esc(V2_DEVELOPMENT_VERSION)} DEVELOPMENT · not a production release` : esc(release.date) + (release.status === 'shipped' ? ' · v2 release' : ' · legacy v1 history')}</div>` +
     release.sections.map((section) => `<h5>${section.heading}</h5><ul>${section.bullets.map((bullet) => `<li>${bullet}</li>`).join('')}</ul>`).join('') + '</article>';
   body.scrollTop = 0;
   if (focusResult) focusGuide('[data-guide-releases]');
@@ -833,9 +863,8 @@ function showV2ReleaseBulletin(
   return true;
 }
 function showUnseenV2Release(): boolean {
-  /* The mature one-time bulletin rule is ready before the first v2 release,
-     but an unversioned development draft can never trigger it. Nick alone
-     authorizes V2_CURRENT_RELEASE_VERSION in release-content.ts. */
+  /* The mature one-time bulletin rule is ready before the first production
+     v2 release, but the v2.0 development identity can never trigger it. */
   const current = getCurrentV2Release();
   if (!current) return false;
   const history = getReleaseHistory({ includeDraft: true });
@@ -851,6 +880,7 @@ function fillGuide(): void {
   if (!save) return;
   fillPanel('guide',
     '<h3>Guide to the Universe</h3>' +
+    guideBuildIdentity() +
     '<div class="guide-tools"><input id="guidesearch" type="search" autocomplete="off" aria-label="Search the Guide" placeholder="Search 41 Guide topics">' +
     '<button data-guide-releases>Release history</button></div>' +
     '<div class="sub guide-scope">The mature manual, adapted to what is actually live in this v2 development build. Unported active systems stay visible and honestly marked; intentionally dormant topics remain recorded but hidden.</div>' +
@@ -1242,9 +1272,7 @@ toastEl.id = 'toast';
 toastEl.setAttribute('role', 'status');
 toastEl.setAttribute('aria-live', 'polite');
 toastEl.setAttribute('aria-atomic', 'true');
-toastEl.style.cssText = 'position:fixed;left:50%;bottom:calc(var(--safe-bottom,0px) + 112px);transform:translateX(-50%);max-width:min(480px,calc(100vw - var(--safe-left,0px) - var(--safe-right,0px) - 20px));box-sizing:border-box;' +
-  'background:rgba(10,16,30,0.94);color:#cfe0f4;font:13px/1.5 system-ui,sans-serif;padding:10px 16px;' +
-  'border:1px solid #2a3c5e;border-radius:10px;opacity:0;transition:opacity 0.35s;pointer-events:none';
+toastEl.className = 'glass';
 document.body.appendChild(toastEl);
 let _toastT = 0, _toastHide = 0;
 function toast(title: string, msg: string, force = false): void {
@@ -2452,6 +2480,10 @@ function addToAtlas(): void {
   if (cardCtx) showSurvey(lastCard!, buildCardActions(p));   /* refresh: the button becomes ★ charted */
 }
 card.addEventListener('click', (e) => {
+  if ((e.target as HTMLElement).closest('[data-survey-close]')) {
+    hideSurvey(true);
+    return;
+  }
   const act = (e.target as HTMLElement).closest('[data-act]');
   if (!act) return;
   const keyboard = document.activeElement === act;
@@ -2798,7 +2830,13 @@ function installKeyboardExploration(): void {
     const target = currentKeyboardTargets().find((candidate) => candidate.key === keyboardTargetKey);
     if ((event.key === 'Enter' || event.key === ' ') && target) {
       event.preventDefault(); event.stopPropagation(); target.activate(); keyboardTargetKey = null; renderKeyboardTarget();
-      card.querySelector<HTMLElement>('button')?.focus();
+      /* The keyboard survey outcome lands on the card's primary action, not
+         the header Close control. The Close remains the safe fallback for a
+         read-only descriptor with no deeper action. */
+      (card.querySelector<HTMLElement>('[data-act="travel"]')
+        || card.querySelector<HTMLElement>('[data-act="landcta"]')
+        || card.querySelector<HTMLElement>('[data-act="leaveworld"]')
+        || card.querySelector<HTMLElement>('[data-survey-close]'))?.focus();
       return;
     }
     if ((event.key === '+' || event.key === '=' || event.key === '-' || event.key === '_') && target) {

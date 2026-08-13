@@ -9,6 +9,18 @@ arc extends the same painterly engine + ARPG presentation from *living* things t
 **Matches code as of:** 2026-07-23 — core proposals implemented in v1.7 source; see
 `MATERIALS_AND_GEAR.md` for the spec of record.
 
+> **2026-08-13 v2 presentation decision:** the original discovery rationale is now the
+> binding port behavior. V2 never renders a survey row titled **Spectral class**. A
+> planet has no player-visible rarity before successful landing; after landing its card
+> uses the plain ten-tier grade (for example, **Rarity: Legendary**) with no spectral
+> color-word. This is a presentation filter only: internal deterministic `spectral()`
+> designations remain available for art/hue parity, and real astronomical spectral
+> classifications (G/K/M and stellar-remnant types) remain part of star identity. The
+> later universal-rarity decision remains design context, but it does not restore a
+> Spectral-class survey row. The older
+> world-only ladder and “remove star rarity” passages below are preserved as superseded
+> design history, not current v2 instructions.
+
 The arc has two headline pillars plus supporting streams:
 
 1. **Discovery** — world rarity becomes a *landing payoff*, not an orbital label (the "Spectral" rework).
@@ -99,7 +111,7 @@ planets.** A Legendary creature reads exactly like a Legendary world: just **"Le
   call. Determinism note: dropping glyphs is a **display-layer** change (fp-safe); *renaming/re-bucketing*
   grade words touches `speciesGrade`/`describeSpecies` text → part of the bundled v1.7 re-pin.
 
-### Remove the stars (minor side-note — secondary to the core flow above)
+### Historical “remove the stars” side-note — superseded by the later universal-rarity decision
 This is a small consequence, not part of the main planet vision — it can be parked without affecting
 anything above. Stars carry TWO overlapping "class" ideas today: their real astronomical **type**
 (`starClass` — red dwarf, blue giant, neutron star, black hole, with flavor descriptions) AND a rarity
@@ -111,7 +123,7 @@ as "a dying red supergiant"; they just carry **no rarity grade**.
 > the world callouts" (his ladder is words-only). Creature grades are **out of scope** for this change
 > unless Nick says otherwise — they keep their names + ★ glyphs.
 
-### Determinism / re-pin
+### Historical determinism / re-pin analysis
 - **Hiding rarity in orbit** = a *display gate* in the card-render layer → **fingerprint-safe, no re-pin**
   (the descriptor data is unchanged; the UI just doesn't show it until landing).
 - **Renaming the labels** (Spectral → world callouts) and **removing star rarity** change
@@ -189,15 +201,16 @@ on. To be spec'd on its own.
 
 ## Sequencing & risk
 
-1. **Materials economy + world-rarity rework FIRST** — these touch world generation / descriptor text →
-   one bundled **Nick-authorized re-pin** covers: material veins, the Spectral→world-callout rename, and
-   star-rarity removal. Get the deterministic spine locked before any art rides on it.
+1. **Historical v1.7 sequence:** materials economy + world-rarity rework first. The planned bundled
+   re-pin covered material veins and descriptor wording. For current v2, the Spectral-row retirement
+   is presentation-only and stars keep plain surveyed rarity; do not use this old sequence to remove
+   deterministic descriptor data or real stellar classification.
 2. **Art + ARPG windows SECOND** — all render-only → fingerprint-safe, layers on with zero determinism
    risk once the spine is pinned.
 3. **Audio** — parallel, independent.
 4. **Mobile-first throughout** (rule 10): tap-primary, hover as desktop enhancement.
 
-## Open decisions (for Nick)
+## Historical open decisions — resolved/superseded where noted above
 - Confirm "remove the stars" = drop rarity labeling from **stars** + drop **★ glyphs** from world
   callouts; creature grades unchanged.
 - The two summit world names are Nick's already (Unique for 7–9, Primordial for 10+) — confirm nothing

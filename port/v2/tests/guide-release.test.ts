@@ -20,6 +20,7 @@ import {
   LEGACY_RELEASES,
   LEGACY_RELEASE_SYNC,
   V2_CURRENT_RELEASE_VERSION,
+  V2_DEVELOPMENT_VERSION,
   V2_DRAFT_RELEASE,
   V2_SHIPPED_RELEASES,
   getCurrentV2Release,
@@ -231,9 +232,10 @@ describe('legacy and v2 release channels', () => {
     ]);
   });
 
-  it('keeps the v2 draft unversioned and incapable of triggering an update popup', () => {
+  it('keeps the v2.0 development identity separate from the production release channel', () => {
+    expect(V2_DEVELOPMENT_VERSION).toBe('2.0');
     expect(V2_DRAFT_RELEASE.status).toBe('draft');
-    expect(V2_DRAFT_RELEASE.version).toBeNull();
+    expect(V2_DRAFT_RELEASE.version).toBe(V2_DEVELOPMENT_VERSION);
     expect(V2_CURRENT_RELEASE_VERSION).toBeNull();
     expect(V2_SHIPPED_RELEASES).toEqual([]);
     expect(getCurrentV2Release()).toBeUndefined();
@@ -264,7 +266,7 @@ describe('legacy and v2 release channels', () => {
     const development = getReleaseHistory({ includeDraft: true });
     expect(development).toHaveLength(57);
     expect(development[0]?.status).toBe('draft');
-    expect(development[0]?.version).toBeNull();
+    expect(development[0]?.version).toBe('2.0');
     expect(development[1]?.version).toBe('1.8.9');
   });
 });

@@ -1,4 +1,85 @@
-# ★ LIVE — draft PR #11: v2 hardening + playtest readiness (2026-08-12)
+# ★ LIVE — v2.0 development-site and presentation correction (2026-08-13)
+
+The current batch keeps production and development deliberately separate. `main` continues
+to publish the immutable root v1.8.9 HTML. A successful `develop` push battery packages and
+browser-smokes the exact `port/v2` tree, then publishes that verified package to
+`https://dev-celestialfrontier.github.io/`. The development identity is **Celestial Frontier
+v2.0 development** plus the full source commit inside the Guide only; no corner DEV badge is
+allowed. The runtime origin refusal, noindex/robots policy, exact-archive manifest, byte
+inventory, shared version record and generated site `version.json` remain required.
+
+`v2.0` is a development/playtest identity, not a shipped release. The 56-release/398-bullet
+legacy v1 history remains immutable, `V2_CURRENT_RELEASE_VERSION` remains `null`, the shipped
+v2 list remains empty, and the development bulletin cannot open the one-time update surface
+or mutate `rnSeen`.
+
+The presentation correction retires the player-facing **Spectral class** survey row while
+preserving internal deterministic `spectral()` designations/colors and real stellar
+G/K/M/remnant classification. Planet rarity is absent before landing and appears afterward
+as the plain ten-tier grade. Desktop notifications rise from the bottom-right utility edge;
+Settings and Records use the same bottom-right anchor. Every panel and Survey card owns exactly
+one 44px top-right Close action, with balanced panel padding, row separators, radii and borders.
+
+The standing proceed authorization remains active: once a scoped agent PR is clean,
+mergeable and terminal-green on its required battery, Codex or Claude Code may normally merge
+it into `develop` and monitor the resulting push battery and mapped development publication
+without asking Nick again. This does not cover red/unfinished checks, conflicts, force pushes,
+new destinations/keys, manual Pages writes, `develop` → `main`, a production version, release,
+or deployment decision.
+
+Current branch, full commit, upstream relation, PR state, check results and hosted commit must
+be resolved from live Git/GitHub at handoff time. Do not copy a “latest green tip” into this
+reference. Historical CI and preview evidence below remains preserved chronology, not current
+authority.
+
+## Parallel Git handoff — exact five fields
+
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac`. Resolve the full HEAD,
+worktree/upstream state and exact completed checks live before committing or pushing. This
+batch owns the v2.0 development publisher/package identity, Guide-only build provenance,
+Spectral presentation filter, bottom-right utility layout, single-close ownership and matching
+current references.
+
+**GitHub step:** after scoped checks are terminal-green, commit and push the exact completed
+batch on `openai/mac`, then create or update the reviewed PR into `develop`. Under Nick's
+standing authorization, merge that exact clean/mergeable green head normally and monitor the
+resulting `develop` push battery and mapped development publication; no repeat proceed prompt is
+needed. Stop on any changed head, red/unfinished check, conflict or destination/release change.
+
+**PR details:**
+
+- Base branch: `develop`
+- Source branch: `openai/mac`
+- Title: `Publish the v2.0 development build and correct presentation regressions`
+- Copy-ready description:
+
+  > Publishes the tested exact `port/v2` package from successful `develop` push batteries while
+  > preserving the root v1.8.9 HTML on `main`. Centralizes the v2.0 development identity, shows
+  > v2.0 plus the full commit inside the Guide only, removes both corner DEV-badge paths, and
+  > retains the exact-origin, noindex/robots, archive-input, manifest, byte-inventory and site
+  > `version.json` guards. Keeps `V2_CURRENT_RELEASE_VERSION` null, the shipped-v2 list empty,
+  > and legacy v1.8.9 release history immutable, so the development bulletin cannot trigger the
+  > production update popup. Removes the player-facing Spectral-class survey row without changing
+  > deterministic spectral art data or real stellar classification; planet rarity stays hidden
+  > until landing and then uses the plain display grade. Moves desktop notifications, Settings
+  > and Records to the bottom-right utility edge, gives every panel and Survey card exactly one
+  > top-right Close action, and regularizes spacing, dividers and borders. Updates current process,
+  > preview, UI, rarity, codebase and handoff references while preserving historical evidence.
+  > Verification must be filled from the exact final head and include publisher/preview selftests,
+  > unit/type checks, one-run browser smoke and the responsive matrix with their deliberate
+  > negative controls. After merge, the other agent synchronizes only from `origin/develop` in a
+  > clean worktree. No `main` merge, production release or manual deployment is included.
+
+**Other side:** Anthropic/Claude Code does not need to be opened now. Until this PR merges,
+its branches do not contain the change and files must not be copied manually. At its next coding
+batch after merge, from its own clean approved branch/worktree, fetch origin and merge
+`origin/develop`; if dirty, finish or commit its own work before pulling or merging.
+
+**Release status:** v2.0 is development identity only. Do not report `develop`, either hosted
+site, `main`, CI, or a PR as updated until verified live. No production release or manual
+deployment is authorized by this handoff.
+
+# HISTORICAL/SUPERSEDED — draft PR #11 pre-merge handoff (2026-08-12)
 
 **Current integration state:** PR #10 merged normally into `develop` at
 `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`. OpenAI/Codex remains on
