@@ -19,15 +19,17 @@
 ## block older than the current one to the TOP of the archive's batch section, verbatim, then refresh
 ## the SESSION HANDOFF here so WHAT'S DONE / NEXT reflect reality. Rewrite the handoff in place — the
 ## roadmap stays a one-screen read. History is one file away, git-diffable.
-
-## ▶▶▶ SESSION HANDOFF — 2026-08-12 · DRAFT PR #11: V2 HARDENING + PLAYTEST READINESS ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-12 · MERGED PR #11: BRANCH-SITE PUBLICATION ◀◀◀
 
 ### Cold start
 
 - Workspace: `/Users/nick/Projects/celestial-frontier-openai-mac`.
 - Owner/branch: OpenAI/Codex on `openai/mac`.
-- Integration baseline: PR #10 merged normally into `develop` at
-  `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`.
+- Integration baseline: PR #11 merged normally into `develop` at `d2dcd08`; final branch-flow and
+  test-battery passed once without retry.
+- A successful push-triggered battery alone may publish its exact SHA: `main` → production and
+  `develop` → `https://dev-celestialfrontier.github.io/`. DEV is distinct, noindexed, and
+  visibly stamped; PR/manual/failed runs cannot publish or claim human-play/Ready/release authority.
 - Latest immutable CI evidence: test-battery #208, run
   [`31649176954`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954) /
   job [`94289516851`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954/job/94289516851),
@@ -37,13 +39,12 @@
   passed. Steps 1–15 and `smoke:ci` passed; the sole desktop-8k product-answerability
   finding is described below. Immutable clean executable source
   `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed the exact clean local battery for
-  the fixed-cap repair; matching CI for whichever final pushed tip is selected remains open.
+  the fixed-cap repair; PR #11 later passed matching CI at its final merged tip.
   Exact tip/upstream/check state is live authority
   from `git rev-parse HEAD`, `git status --short --branch`, and PR #11 checks.
   CI #201–#208 remain preserved red without retry; their exact run/job/head diagnoses and
   repair evidence are newest-first in `ROADMAP_ARCHIVE.md` and the live system references.
-  Draft PR #11 is open at
-  https://github.com/TheDakk/Celestial-Frontier/pull/11.
+  PR #11 is merged; current Git/branch/site status is live authority.
 - Read next: `PROCESS_LAWS.md` · `PARALLEL_GIT_PROTOCOL.md` · `README.md` ·
   `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `SAVE_SYSTEM.md` ·
   `UI_PRESENTATION.md` · `QUESTS_AND_CHAPTERS.md` ·
@@ -138,11 +139,11 @@ session/context/generation/origin/loader/token; its ticker is false through wiri
 from `ticker-started`. Per-stage identity/order/ticker/deadline controls prevent load or FCP from
 standing in for application readiness.
 
-The exact local review artifact is bound to the recommended separate origin
-`https://dev-celestialfrontier.github.io`, but no preview host or publication is authorized or
-present. Do not create a project path under `celestialfrontier.github.io`; it would share
-production browser storage. No release, live deployment, `main` update, or version bump is part
-of this batch.
+The dev branch site is now configured at the genuinely separate origin
+`https://dev-celestialfrontier.github.io`; only a passing `develop` push battery may update it.
+The separate v2 review artifact remains `publishable:false` and does not replace the required
+commit-bound human playtest. Do not create a project path under `celestialfrontier.github.io`;
+it would share production browser storage. No release or version bump is part of this batch.
 
 ### Evidence status and stop condition
 
@@ -378,11 +379,11 @@ merged PR #10.
   > personas, terminal-only performance and an Edge 151-smoked separate-origin preview with
   > `publishable:false`. Exact docs tip/upstream/check state is read live, and the selected pushed
   > tip requires matching green CI.
-  > The existing local review artifacts are `publishable:false`; no host or publication is
-  > authorized. After matching CI is green and Nick explicitly approves a publication candidate,
-  > package and publish a commit-bound candidate from the selected final pushed head at the
+  > The existing local review artifacts are `publishable:false`; they do not authorize a v2
+  > publication candidate. After matching CI is green and Nick explicitly approves a candidate,
+  > package and publish that commit-bound candidate from the selected final pushed head at the
   > separate development origin, then complete and record a multi-lens human playtest against
-  > that matching candidate before marking this PR Ready or merging. The static Platinum-reviewed portrait set is unchanged; later visual
+  > it before marking a future PR Ready or merging. The static Platinum-reviewed portrait set is unchanged; later visual
   > work remains living rigs/animation and biome scenes. After merge, Anthropic/Claude Code may
   > synchronize only from a clean `anthropic/windows` worktree with `git fetch origin` then
   > `git merge origin/develop`. No release, deployment, certification, `main` change, live-site

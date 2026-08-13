@@ -65,12 +65,12 @@ node tools/uilayout.js     # a REAL headless browser: computed boxes + 44px touc
                            #   must match the sealed v1.8.9 787-outcome inventory;
                            #   --vp runs remain scoped diagnostics.
 node tools/balance-sim.js  # archetype win-rate band + ability-theme art band
-node tools/deploy.js --release X.Y.Z
-                           # re-runs the whole gate, then copies the build into
-                           #   ../celestialfrontier.github.io and pushes -> live.
-                           #   The release target must match GAME_VERSION AND
-                           #   package.json. ⚠ THEN `git push origin main` — deploy
-                           #   ships the SITE repo only, so every release is TWO pushes.
+node tools/publish-branch-site.js --selftest
+                           # publisher negative controls: branch/build marker and
+                           #   development noindex/banner isolation.
+                           # Successful push batteries publish automatically:
+                           #   main -> https://celestialfrontier.github.io/
+                           #   develop -> https://dev-celestialfrontier.github.io/
 ```
 
 Run on demand rather than every batch — each closes a blind spot the four gates above
@@ -108,7 +108,10 @@ thing they guarded was broken.
 **Play it live:** https://celestialfrontier.github.io/ — this repo is the source of
 truth; the user-site repo is just the deploy target.
 
-**Human-test the v2 development build:** use the commit-bound package and
+**Development HTML:** successful push batteries publish `develop` to
+https://dev-celestialfrontier.github.io/ after all gates pass. It is a separate
+origin and visibly stamped `DEV · <commit>`; it must never be used as a path under
+the production origin. **Human-test the v2 development build:** use the commit-bound package and
 separate-origin procedure in [`port/DEVELOPMENT_PREVIEW.md`](port/DEVELOPMENT_PREVIEW.md).
 A GitHub Pages project path under `celestialfrontier.github.io` is deliberately
 forbidden because it would share production browser storage. CI packaging does

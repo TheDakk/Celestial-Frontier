@@ -5,6 +5,15 @@
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 overlay matches code and live handoff as of 2026-08-12.**
+> **2026-08-12 branch publication overlay:** `.github/workflows/test.yml` runs the exact
+> battery for push events on both `main` and `develop`. Only a successful push battery can
+> trigger `.github/workflows/publish-branch-sites.yml`, which checks out that event's full SHA
+> and invokes `tools/publish-branch-site.js`. `main` targets only
+> `CelestialFrontier/celestialfrontier.github.io`; `develop` targets only
+> `Dev-CelestialFrontier/dev-celestialfrontier.github.io`. Separate write-only deploy keys and
+> repository secrets prevent cross-target access; PR/manual/failed runs have none. Development
+> output is visibly DEV-stamped, noindexed, and `robots.txt`-blocked but remains public and is
+> not human-play or release authority.
 >
 > **2026-08-11 v2 integration/hardening overlay:** PR #10 merged the Platinum
 > repair into `develop` at `61cc058`. The current bounded port candidate makes the app

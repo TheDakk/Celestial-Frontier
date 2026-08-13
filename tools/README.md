@@ -210,10 +210,12 @@ node tools/bootperf.js         # COLD BOOT: decomposes first-interactive in a re
 node tools/duelxp-check.js     # REWARD OUTCOMES: plays a real duel, reads the ledger
 node tools/sizedrift-check.js  # guards the size clamp regression (see below)
 node tools/harvestclock-check.js # proves the harvest clock cannot be wound
-node tools/deploy.js --release X.Y.Z   # runs the whole battery, then ships
-node tools/deploy.js           # ship to https://celestialfrontier.github.io/ — stamps
-                               #   BUILD_ID with the git sha and publishes
-                               #   version.json so live sessions detect updates
+node tools/publish-branch-site.js --selftest
+                               # validates the post-battery branch publisher,
+                               # including its reject paths.
+# GitHub Actions publishes only after a successful push battery:
+#   main    -> https://celestialfrontier.github.io/
+#   develop -> https://dev-celestialfrontier.github.io/
 ```
 
 `validate.js` fails loudly if any step fails:
