@@ -55,6 +55,17 @@
 > development** plus the full source commit. There is no floating DEV badge. `v2.0` is
 > a playtest identity, not a production release: the legacy v1.8.9 history is immutable,
 > `V2_CURRENT_RELEASE_VERSION` stays `null`, and no one-time update popup may fire.
+> The current **Charters** panel renders one stage-aware projected record rather than the
+> raw legacy chapter book; `currentV2Objective` feeds the top chip from the same source.
+> Only a reachable live landfall goal may appear. After the visible landfall work is
+> complete, the panel and chip name the development-slice boundary rather than seating
+> mining, fabrication, Shipyard, reward or drive controls. Star/drive reach blocks use a
+> dedicated **Beyond Your Charter** toast: the next Charter system is unavailable in this
+> development slice. Galaxy-distance blocks use a distinct **Beyond Your Saved Reach** toast:
+> the saved Prime Signature radius ends there and its expansion is unavailable in this slice.
+> Either boundary can replace an ordinary Charted/Share notice immediately, while an unchanged
+> repeated block stays quiet. The matching Guide route/Charter copy carries both precise
+> capability boundaries and never promises Signature collection.
 >
 > **2026-08-12 v2 port base overlay:** The phone slice now
 > owns an explicit 206×98, 4×2 dock and publishes measured `--dock-h` and
@@ -585,7 +596,7 @@
 > merge/release/deploy/version authority follows.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
-v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve
+v2 overlay matches `port/v2` as of 2026-08-13. The addenda at the end preserve
 **THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
 its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
 full-screen surface, and any surface raised over training must clear the lesson

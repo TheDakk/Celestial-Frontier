@@ -3,10 +3,17 @@
 > **2026-08-13 v2 next-arc overlay — approved design, not current implementation:**
 > The current v2 slice preserves imported Cargo/items/equipment/technology/Ascent data and
 > uses built drive items plus compatible `ascCh` state for reach, but it has no Cargo,
-> Shipyard, crafting, research, upgrade actions or ship portrait. Only live goal writers
-> may be presented as actionable progression while those systems remain absent. Legacy
-> v1.8.9 does contain an additive deterministic ship picture; it is not a live v2 surface
-> and does not satisfy the approved distinct-silhouette target.
+> Shipyard, crafting, research, upgrade actions or ship portrait. The Charter board and
+> objective chip now consume a stage-aware landfall-only projection rather than raw legacy
+> chapter data: a fresh Sol expedition can complete its two live landfalls, then reaches an
+> honest boundary without gaining a drive, chapter, reward or reach tier. A **nonterminal**
+> saved chapter index never stands in for a missing drive; the explicit terminal legacy/veteran
+> fallback (`ascCh >= ASC_CHAPTER_COUNT`) still grants stage 3 even when item bytes are absent.
+> Only a real newly banked landfall can
+> advance an already canonical, drive-backed imported record. Only live goal writers may be
+> presented as actionable progression while those systems remain absent. Legacy v1.8.9 does
+> contain an additive deterministic ship picture; it is not a live v2 surface and does not
+> satisfy the approved distinct-silhouette target.
 >
 > The next arc defines one pure `ShipVisualState` projection shared with the reach-stage
 > decision. It yields four capability stages—Scout/Chemical, Jump/Interstellar,

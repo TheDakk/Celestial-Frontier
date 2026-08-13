@@ -1230,17 +1230,24 @@ duplicates).
   nonnegative safe integer and caps it at 10,000 (>138 continuous active days at 20 minutes/epoch);
   the live clock uses the same ceiling. Honest frozen epochs remain unchanged. Persisting/rebuilding
   exactly once at an epoch edge and pausing foreground-play accounting while hidden remain open.
-- ✔ **D-ROUTE-1 — a shared planet address focuses; only Land lands (2026-08-11).** The slice used to
+- ✔ **D-ROUTE-1 — a shared planet address focuses; only Land lands (2026-08-13).** The slice used to
   turn a pasted/Atlas planet directly into `surface`, bypassing the only command that records landing,
-  progression and contact outcomes. It now requires the declared planet to exist in the system,
-  opens that live survey in system view, and reserves surface entry for the guarded Land action.
-  Repeat landings do not repay landfall progress; stale cards cannot land/chart/share another system;
-  Atlas rows retain complete galaxy/star coordinates; and an accepted CF1 name round-trips only after
-  route validation. Full galaxy-at-cell and star-at-coordinate canonicalization is still open.
-- ☐ **D-CF1-2 — prove the complete shared-address hierarchy.** Range checks plus planet-in-system
-  membership do not prove that the declared galaxy occupies its cell or that the declared star seed
-  occupies its coordinates. Resolve each level from deterministic source data and navigate only with
-  that canonical result; a forged inner seed must not borrow Sol's reachable coordinates.
+  progression and contact outcomes. It now opens a valid external searched planet in live system survey
+  and reserves surface entry for guarded Land. Before reach, survey card, accepted custom name,
+  persisted view or navigation can see a Search-to-planet CF1 route, `jumpToView` runs the new source-
+  derived hierarchy resolver. Repeat landings do not repay landfall progress; stale cards cannot
+  land/chart/share another system; and a valid named CF1 route round-trips only after validation.
+- ◐ **D-CF1-2 — complete hierarchy proof is live for external planet-share ingress;
+  other ingress remains open (2026-08-13).** `resolveCF1WorldAddress` demands exact uint32 seeds and
+  finite coordinates, normalizes legacy two-decimal CF1 positions, re-derives the claimed galaxy from
+  nearby `UCELL` sources, resolves coarse/fine star provenance from its generator cells, and proves the
+  planet's unique `systemFor` ordinal. It fails closed on malformed, missing, ambiguous or source-error
+  candidates; `jumpToView` discards input parents and navigates only with the canonical result. Pure
+  controls cover Sol/Earth, a fine star, rounding across parent-cell edges, forged parent/star/planet,
+  malformed bytes and duplicate source ambiguity; browser smoke proves a same-reach forged parent cannot
+  change navigation, landing, Atlas, custom names, query or focus. This does **not** close saved-view
+  boot, Atlas-row, galaxy/star-only CF1, generated-descent or future ownership/receipt ingress. Wire and
+  outcome-test those callers before marking the wider identity/receipt boundary complete.
 - ☐ **D-TRAIN-1 — restore legacy full-expedition tutorial snapshots.** Current-v2 restart owns a
   reversible `{view}` snapshot and commits before reload. Imported v1 mid-training `tsnap` is a much
   larger expedition record; finishing/skipping without a typed restore-before-clear transaction can
@@ -1525,11 +1532,24 @@ duplicates).
   wall-clock advance, reload, double-click and a stale second tab must not reroll or duplicate
   rewards. Current one-blob last-writer-wins persistence is insufficient; CAS or one
   authoritative serialized coordinator is prerequisite work.
-- ☐ **D-CHARTER-CAP — current objectives can name actions the slice does not own
-  (2026-08-13).** After live landfall goals, the canonical projection can expose mining,
-  fabrication, bioscan, conquest or breeding and blocked travel can name a nonexistent
-  Shipyard. Keep the canonical data for parity, but current v2 presentation must stop at or
-  explicitly mark the playable frontier until the real outcome writers/surfaces exist.
+- ★ **D-CHARTER-CAP — current Charter presentation stops at the live frontier
+  (2026-08-13).** `ASC_CHAPTERS_DATA` remains verbatim canonical/import data, including
+  its unported mining, fabrication, bioscan, conquest and breeding goals. The player-facing
+  `projectV2Charter` / `currentV2Objective` path now filters to reachable landfall only,
+  drives both the board and chip from one stage-aware projection, and turns completed visible
+  landfall work into a development-slice boundary—not a synthetic chapter, drive, reward or
+  reach unlock. A nonterminal `ascCh` cannot expose non-Sol work without the corresponding
+  saved drive stage; the explicit terminal legacy/veteran fallback
+  (`ascCh >= ASC_CHAPTER_COUNT`) deliberately remains stage 3 even when drive-item bytes are
+  absent. Blocked star/drive travel says the next Charter system is unavailable; a galaxy beyond
+  the saved Prime Signature radius says its expansion is unavailable. Neither boundary directs
+  players to an absent Shipyard/build path or promises that Signatures can be collected or
+  written in this slice. `canAdvanceV2Chapter` retains canonical-completion eligibility,
+  while the app requires a real changed landfall bank before it changes `ascCh`. Focused
+  unit/Guide controls and real-browser smoke cover the visible projection, malformed
+  chapter-without-drive state, no-unported-copy boundary, and interrupted/repeated toast
+  outcome. Full legacy Charter writers, rewards, accepted chains and weeklies remain open;
+  this closes only the false current-slice presentation.
 - ☐ **D-COMPENDIUM-MEM — eager full-source thumbnails are not a bounded catalogue
   (2026-08-13).** Up to 1,500 rows can synchronously paint/mount 440px data URLs before the
   asynchronous 132px cache result exists, so entry-count caches do not bound decoded DOM
