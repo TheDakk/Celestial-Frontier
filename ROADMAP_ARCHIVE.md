@@ -6,6 +6,732 @@
 > working doc crossed ~285KB / 4,272 lines and stopped reading in one pass.
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
+## ARCHIVED 2026-08-12 — #207 red and immutable `6554b2b` repair evidence
+## Moved from ROADMAP.md verbatim during the #208 product-answerability refresh.
+
+Test-battery #207, run
+[`31642880191`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191) /
+job [`94269466117`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191/job/94269466117),
+completed attempt 1 without retry at exact pushed head
+`ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
+`8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. All preceding
+root/product/v2 gates and `smoke:ci` passed. Tablet-portrait alone instrument-failed:
+the valid `cf-v2-reload-release/v1` witness arrived after ordered `release-started`
+and before `release-complete`, but the observer woke in that valid intermediate state
+and failed immediately. Release itself was healthy: renderer/stage released, view
+detached, application/backdrop canvases collapsed to 1×1, error null. The report
+contains 0 product findings, 1 instrument failure, 57 planned/listed controls,
+`blocked=[]`, `omitted=[]`, and 0 retries. The other 11 rows, including desktop-8k,
+passed. Persona and preview steps were not reached. Preserve #207 red without retry;
+it is not a product, save, durability, release, navigation, boot, or viewport failure.
+
+The scoped harness repair assigns one monotonic receipt ordinal only to the import-phase
+and release bindings in each armed capture. A successful tail must be exactly
+`release-started` at N → release witness at N+1 → `release-complete` at N+2. Only the
+valid release-first intermediate remains pending, under the unchanged original 20-second
+import deadline; navigation may anchor to that valid release receipt without renewing the
+import clock. Phase-complete-first, premature, nonadjacent, missing, late, duplicate,
+malformed, wrong-provenance, early boot/ready, and an overlong sequence-8 duplicate terminal
+all fail closed.
+
+The prior dirty #207 diagnostic (report
+`805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`) remains
+preserved for chronology only; it is superseded as repair evidence by the clean exact battery.
+
+Immutable executable source `6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the
+complete sequential exact battery from clean status/snapshot SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` /
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+The first sandboxed preflight Edge launch SIGABRTed before CDP; the same invocation passed
+when permitted, with only the expected Edge 151 versus pin 150 warning. This is an environment
+launch refusal, not a product retry. Root gates passed; `exact-6554b2b-root-layout` passed
+787/787 across 10/10 in 75,532 ms (report
+`58dc4ef4456fac012b2e8f0aa801917b5579cffe435fd4576827ff29bcbb4b78`). V2 passed
+273 tests /1 skip and all static/art/coverage gates. One-attempt smoke passed in 105,430 ms
+with 0 findings /10 screenshots (report
+`139b10ea16d17c109d5b624fa75daf73291d98f5ad8fe7df569501829ab5f844`; log
+`76a40b9bd8f88dd5f5ebdc09271c0ed289478795d6cd011338df349438ef62b8`).
+Certifying glass passed in 54,877 ms: 12/12, 57/57, `blocked=[]`, `omitted=[]`, 0
+findings/instrument failures/retries, and exact 6/7/8 tails on every row (report
+`a05ba65e28ac94b146b051164c1b22195bfaa7509bd47d9631561fc394920b6c`);
+reloads were 171–260 ms. Tablet-portrait was 196 ms with tail timestamps
+1786574427588/7591/7591, command durations 2/1/1/7/0 ms, and ready
+`performanceNow` 166.3 ms. Exact 8K was 197 ms with tail timestamps
+1786574452829/2832/2832,
+release→commit 34 ms, commit→ready 131 ms, ready `performanceNow` 163.6 ms, and
+command durations 1/1/0/7/0 ms; outgoing 2,365×1,330 twins collapsed to 1×1 and the
+replacement stayed 6,290,900 pixels combined. Nine automated-only personas passed (JSON
+`fc8d6da1e0b18d824b5403121e87b02ee9423d9592f3221d2ff1819d20629e05`; Markdown
+`08328ed2c760b722caa9f76259fe22a8dfcf1e36624086d388e19628774eb176`), and
+terminal-only performance was 635/717/77/151 ms.
+
+Preview `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151
+over loopback, bound to the expected separate development origin, with `publishable:false`: manifest
+`98a64b750d1def5c7895cbd780a35558863f000c5a3fbcf4c3945dd927d5ce04`, 37 files /
+10,186,537 bytes, content `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`,
+tree `986116980e7b7a224f210508b4872b5d7f5621ac`, registry
+`8a290b25fc8ff27ca7f23f00367121a78a5e8af0`, and lock
+`b81617792187b3e76c7f1586ed311d540f1451acadb85c369ffcd2c4571229cb`.
+This clean executable source underlies the forthcoming/current docs-only tip; live Git/PR state
+determines its exact tip, push, and checks, and the selected pushed tip still needs matching CI.
+No host, publication, human-play, Ready, merge, release, deployment, or version authority follows.
+
+## ARCHIVED 2026-08-12 — cold-start summaries for preserved CI #201–#206
+## Moved from ROADMAP.md verbatim during the exact `6554b2b` evidence refresh.
+
+  Prior test-battery #201, run
+  [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
+  job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
+  remains preserved red without retry on the superseded `4560269` source. Test-battery #202,
+  run [`31594595288`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288) /
+  job [`94106996466`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288/job/94106996466),
+  likewise remains preserved red without retry at pushed `93f75a93`; its only failure is the
+  ambiguous desktop-8k serial readiness observer described below. Test-battery #203, run
+  [`31602984470`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470) /
+  job [`94134750800`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470/job/94134750800),
+  remains preserved red without retry at exact pushed `38e4f362`; it passed every preceding
+  gate and 11 glass rows, then desktop-8k crossed the unchanged import bound before the first
+  release receipt. Test-battery #204, run
+  [`31612817092`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092) /
+  job [`94168172635`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092/job/94168172635),
+  remains preserved red without retry at exact pushed `4cee7d80`; its import/write/release/
+  navigation/load/FCP path was healthy, but desktop-8k emitted no application-ready witness
+  inside the unchanged boot bound. Test-battery #205, run
+  [`31621227550`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31621227550) /
+  job [`94196289291`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31621227550/job/94196289291),
+  remains preserved red without retry at exact pushed `c57305fb`: every prior gate passed,
+  desktop-8k completed the full ready chain, then its sole exact-context confirmation timed out.
+  It had no concurrent browser heartbeat, so post-ready target starvation is strongly suggested
+  but not retrospectively proven apart from browser/CDP transport.
+  Test-battery #206, run
+  [`31635297321`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321) /
+  job [`94243979205`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321/job/94243979205),
+  remains preserved red without retry at exact pushed `558e0565`; its later 5K resize target
+  timed out while the concurrent browser heartbeat remained healthy. The exact repair and clean
+  `df1c28b` evidence are preserved below and in `ROADMAP_ARCHIVE.md`.
+
+## ARCHIVED 2026-08-12 — #207 hygiene move: prior #199–#206 evidence blocks
+## Moved from ROADMAP.md verbatim during the #207 instrument-race refresh; the
+## sub-blocks retain their former live-file order.
+
+### Prior #199–#203 chronology and ticker-quiescence repair
+
+The archived evidence ledger retains the exact #199–#202 chronology and launcher/dependency
+repairs. In brief: #199 exposed the old 8K reload ambiguity and short-phone Planetside overlap;
+#200 passed the product matrix but exposed step-local Chrome provenance loss in preview smoke;
+#201 preserved an old-loader replacement-lifecycle red; and #202 proved the serial CDP observer
+could outlive its phase clock. None was retried away. Their fixes are in `8b8a740`, `4d14a75`,
+`08379d8`, and clean exact evidence source `20896ad`; the full text is newest-first in
+`ROADMAP_ARCHIVE.md`.
+
+Matching test-battery #203, run
+[`31602984470`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470) /
+job [`94134750800`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470/job/94134750800),
+completed once without retry at exact pushed head
+`38e4f362533e272f56f708229f7a037f38ae8951` and is **RED**. All root/product/v2
+gates and `smoke:ci` before glass passed. Eleven glass rows passed; desktop-8k alone
+reached 20,015 ms before any release, ready, navigation, fatal, command, or diagnostic
+event receipt. The outgoing 5,461×3,072 Pixi ticker was still live across the durable-
+write wait and teardown under CI software rendering. This is a real pre-release
+renderer-pressure cliff, not evidence of corrupt imported bytes or a reported repository-
+write rejection. Preserve #203; do not retry it, increase the deadline, or introduce an
+IndexedDB timeout race.
+
+The follow-on repair stops the ticker synchronously when an operation wins the exclusive
+replacement claim, before the first await, and restores it only when that exact owner rolls
+back after having stopped a running ticker. Its event-owned import phases name claim,
+prior-persist wait, primary write, and release under the original absolute deadline.
+
+### #206 red and exact `df1c28b` repair evidence
+
+Test-battery #206, run
+[`31635297321`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321) /
+job [`94243979205`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321/job/94243979205),
+completed attempt 1 without retry at exact pushed head
+`558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577` is tree-identical.
+All prior steps and `smoke:ci` passed. Desktop-8k reload passed in 8,749 ms; ready
+published at browser-native `performanceNow` 2,578.6 ms, and its two target cycles
+completed in 1,905/1,910 ms with 3/1 ms browser heartbeats. The later 8K→5,120×2,880
+same-backing transition produced the sole product finding,
+`ULTRA_VIEWPORT_RESIZE_UNANSWERABLE`: exact-context `Runtime.evaluate` timed out at
+2,003 ms against the strict 2,000 ms bound while `Browser.getVersion` answered in 2 ms;
+`last:null`. The 12-viewport report therefore records 1 product finding, 0 instrument
+failures, 56 executed plus 1 product-blocked control =57, `omitted=[]`, and 0 retries.
+No persona or preview evidence was produced. Preserve #206 red without retry; it proves
+post-ready resize answerability failure, not save/import/durability/navigation failure.
+
+Immutable clean executable evidence source
+`df1c28b31d15cd554d36f9b4ca65d8765366a5df` underlies the current/forthcoming documentation-only tip;
+its clean status SHA-256 is `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`
+and source-snapshot digest is `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+Root preflight warned only that Edge 151 differs from pin 150, then validate/smoke passed;
+root layout `exact-df1c28b-root-layout` passed 787/787 across 10/10 in 75,544 ms
+(report `d0d9a9b3c58f996e5fb7b10f21aa98c974272531f10ccdb945cd026942429252`).
+V2 passed 273 with 1 skip plus all gates. One-attempt slice smoke passed 0 findings /
+10 screenshots / no retry in 105,217 ms (report `b835f79764f4e22a2179ab74f9412491ee4d81730e775889372461d64ddd0474`;
+log `538f4a36919cd947e7631f4eb786acbcd3a6e356ce55719843c8080004295087`).
+Certifying glass passed 12/12 and 57/57, `blocked=[]`, `omitted=[]`, with 0 findings/
+instrument failures/retries in 52,557 ms (report `7fe33219e70361140ebc931f0d77fca0976a46fe51eecc42815f41eba110980c`);
+reloads were 175–203 ms. Exact 8K was 203 ms: arm 2, import→release complete 11,
+release→commit 33, commit→ready 127 ms, `performanceNow` 158.2 ms, targets 1/10 ms,
+heartbeats 0/0 ms; 2,365×1,330 outgoing stores collapsed to 1×1 and replacement
+remained 2,365×1,330 each /6,290,900 combined. Nine automated-only personas passed
+(JSON `c10c9e33542ed57b4c51683c0ddf3f1bbc468696a025e88ef2d1e500209581bc`;
+Markdown `1c9961515028a716ba064ca32ea9dd3ef2d41118cfde4c76b24c16520daa2d14`),
+and terminal-only performance was 581/659/73/152 ms painted/answerable/press→panel/rebuild.
+Preview `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at the separate
+development origin with `publishable:false`: manifest `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`,
+37 files /10,186,537 bytes, content `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`,
+tree `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. Exact docs tip/upstream/CI is live;
+the final pushed docs tip needs matching CI. No host, publication, human-play, Ready,
+merge, release, deployment or version authority follows.
+
+## ARCHIVED 2026-08-12 — prior `135a635` exact evidence and dirty diagnostic
+## Moved from ROADMAP.md verbatim during the #206 repair refresh.
+
+Prior diagnostic only: browser evidence captured from a `dirty-diagnostic` source
+state based on pushed `c57305f` is non-authoritative.
+One sandboxed listener preflight failed `EPERM`; one harness-only width check reported
+`7680.000000000001`, was corrected once, and did not retry a product failure. Targeted
+desktop-8k passed non-certifying (SHA-256
+`e77e9727cb019740bd756188be18f444ac1d3f5d666e49f727f355c73b7c3c2d`). One-attempt
+smoke passed 0 findings /10 screenshots /105,207 ms (SHA-256
+`fb1800320926532c0df6c782cd630c45e37bcea6906c4bbd953111b7605b43c8`). Full glass passed
+12/12, planned/executed 57/57, `blocked=[]`, `omitted=[]`, 0 findings/instrument failures/
+retries /53,918 ms (SHA-256
+`dff0829a3eb8dba67ee0da7c51ae6748fe4ff9bc8652ee1d617657f3133794cb`); its 12 reloads
+were 174–199 ms and 8K was 180 ms /160.6 ms ready /7 ms cycle 2, with both
+2,730×1,536 outgoing canvases collapsing to 1×1. Nine automated personas passed—not a human
+playtest—and terminal-only performance was 605/686/76/159 ms.
+
+Immutable executable source `135a635d066d1c67e3096dc134de9247267898d5`
+passed the complete exact sequential battery from clean source-status SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` and
+source-snapshot digest
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+A sandbox-only Edge SIGABRT interrupted preflight/CDP selftest; the same checks passed
+outside the sandbox, so this is instrument/environment chronology, not a product retry.
+Root validate, legacy smoke, rarity and dead-code review passed. Root layout run
+`exact-135a635d066d-20260812T192848Z-root-layout` passed the sealed 787/787 outcomes
+across 10/10 viewports under Edge 151 in 75,532 ms; report SHA-256
+`7e2689c31e1095885ee8139bb395b40e799972461649efd100b631a4e6e9f85f`.
+V2 passed 273 tests /1 skip plus every type, art, override, coverage and spec gate.
+One-attempt slice smoke passed 0 findings /10 screenshots /0 retries in 105,379 ms;
+report SHA-256 `c838f3e7dfdf161b7bfa6111c6979215a2ba439fdd44a4cb8e00a8cdf7c3d1a5`.
+Full certifying glass passed 12/12, 57/57 unique controls, `blocked=[]`, `omitted=[]`,
+0 findings/instrument failures/retries in 52,254 ms; report SHA-256
+`1f14906d178528613fdf52db53ee4e1f84b6a48ceb21ad3a41bd9d0c5348b23b`,
+with reloads at 176–185 ms. Exact desktop-8k was 185 ms total: 2 ms arm,
+12 ms `invoked`→release complete, 32 ms release→commit, 122 ms commit→ready,
+`performanceNow` 152.2 ms, target confirmations 1/9 ms and concurrent heartbeats
+1/1 ms. Both outgoing 2,730×1,536 canvases collapsed to 1×1; the replacement pair
+remained 2,730×1,536 each /8,386,560 pixels combined. All nine automated personas
+passed—not a human playtest—with JSON/Markdown SHA-256
+`c17c44fcb3d534707dc6186bbd4fbcae4d1cfea511bdec8a263ec48be4927a58` /
+`43d5d52e44d7d19aec597a3df5b2599c0da143bb7170d16c17ed141bd390d6b4`.
+Terminal-only performance was 578/659/76/170 ms. Preview
+`dev-preview-exact-135a635d066d-20260812T192848Z` browser-smoked PASS under Edge 151;
+its manifest SHA-256 is
+`0233984ca2bad28c189e979d4a30082d6137a06e8eac086c3b2525989813dd4e`,
+covering 37 files /10,186,230 bytes, content SHA-256
+`da4e066b447db073383f59dd592cd2a19a186d32ce13a2edd05fbc07e66aa10f`,
+exact `port/v2` tree `d1ab1d79fba4ba2939c3e1ec0661fb60498afb23`, expected separate origin
+`https://dev-celestialfrontier.github.io`, production distinct and `publishable:false`.
+Live Git/status/PR checks determine the exact docs-only tip; the final pushed tip
+requires matching CI before any host/human step.
+
+## ARCHIVED 2026-08-12 — superseded `46fb627` exact-evidence handoff
+## Moved from ROADMAP.md verbatim during the #205 repair refresh.
+
+`7d9980e` remains immutable prior exact evidence for ticker quiescence; current repair evidence is
+bound to clean executable source `46fb627640e42ea0f43e2e144529884a959d1e72` below. That source
+underlies a forthcoming/current docs-only handoff tip. Live Git/PR state decides its exact final
+tip/upstream/check status, and matching pushed-tip CI remains required before preview/human play.
+
+Matching test-battery #204, run
+[`31612817092`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092) /
+job [`94168172635`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092/job/94168172635),
+completed once without retry at exact pushed head
+`4cee7d807b8f9258e370aad31c30756269f95a96` and is **RED**. Every earlier root/product/v2
+gate and `smoke:ci` passed. Desktop-8k's arm command queued for 9,504 ms; durable write and release
+completed, release took 35 ms, the changed loader committed 45 ms later, and replacement load /
+first-contentful-paint arrived at 231 / 268 ms. No fatal event occurred, yet no ready witness
+arrived inside 20 seconds. This is not a save/import/navigation failure. The replacement document
+allocated two full 16,777,216-pixel canvases and Pixi auto-started its ticker before asynchronous
+boot wiring, so software rendering could starve the very work required to publish readiness.
+Preserve #204 without retry or a longer deadline.
+
+Clean executable source `46fb627640e42ea0f43e2e144529884a959d1e72` passed the exact local
+battery. One malformed operator invocation of `--verify-run` caused a local Edge SIGABRT and
+overwrote the root-layout report; the chronology is preserved, and one correctly formed rerun
+plus verification then passed `exact-46fb627-root-layout`, the sealed 787/787 outcomes across
+10/10 viewports. V2 passed 273 tests / 1 skip plus all type, art, override, coverage, spec and
+instrument gates/selftests. One-attempt `smoke:ci` passed with 0 findings / 10 screenshots.
+
+Full certifying glass at source-snapshot digest
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a` passed 12/12
+viewports, 53/53 planned/executed controls, `omitted=[]`, 0 findings/instrument failures/retries
+and 170–197 ms totals. Desktop-8k recorded 190 ms total, a 2 ms arm, 15 ms
+`invoked`→`release-complete`, 1 ms primary write, 35 ms release→changed-loader commit and 137 ms
+commit→ready, with all 12 boot stages, `performanceNow` 170.5 ms and 1 ms confirmation. Both
+outgoing 3,862×2,172 canvases collapsed
+to 1×1; the replacement pair remained 3,862×2,172 each / 16,776,528 pixels combined. All nine
+automated personas passed, still not a human playtest; terminal-only performance was
+595/676/76/168 ms. Exact preview manifest `dev-preview-exact-46fb627` records 37 files /
+10,176,376 bytes, content SHA-256
+`4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`, exact `port/v2`
+tree `0d47d77a303244fd8ce325a5d2ec975dac0c86ca`, expected origin
+`https://dev-celestialfrontier.github.io`, production distinct and `publishable:false`.
+Matching CI for the final pushed docs tip remains pending.
+
+## ══════════ ARCHIVED 2026-08-12 — exact `7d9980e` ticker-quiescence evidence batch ══════════
+## ══════════ Moved from ROADMAP.md verbatim during the `46fb627` exact-evidence refresh. ══════════
+
+One earlier smoke attempt correctly refused mixed-source evidence because tracked documentation
+changed while it ran (`source identity changed during slice smoke`). That single execution had no
+automatic retry and remains preserved as a coordination/instrument refusal, not a product failure.
+After the source was frozen, immutable executable/evidence source
+`7d9980e37e60f0cec8cb840e75098872b9cc90d0` validated the completed two-sided repair:
+
+- Product: Training restart, supported expedition import and the storage-health retry synchronously
+  claim one mutually exclusive replacement transaction, then share one explicit code-owned reload
+  path. It blocks ordinary persistence, removes renderer-density
+  listeners, destroys Pixi with global/child texture resources, detaches its view, shrinks both
+  application and backdrop canvases to at most 1×1, emits an optional CDP release witness, then
+  crosses one task boundary before `location.reload()`. It is deliberately not a generic
+  `pagehide` teardown, so browser-cache restoration cannot revive a destroyed application.
+- Harness: sticky event receipts independently bound a 20-second import/release, 5-second changed-
+  loader navigation commit and 20-second boot. Exactly one valid release witness must precede a
+  ready event from the exact new default top context/session/loader/token/URL; its browser-native
+  `performanceNow` must itself be below 20 seconds, and one at-most-2-second command confirms that
+  context. Old-context loss alone is not navigation, and tail readiness is not the separate 50 ms
+  answerability outcome. Bounded sticky Page/Runtime/Inspector/Network evidence diagnoses crash,
+  unreachable navigation, replacement exception and fatal document load. Controls
+  `replacement-document-loader-token-phase` and `reload-resource-release` reject stalled phases,
+  just-late boundary transitions, same-loader mutation, premature context loss, duplicate/invalid release, retained canvases,
+  unreleased renderer and over-budget backing pixels, with zero retries.
+
+Its exact clean sequential battery passed:
+
+- root preflight selftest and owned-CDP preflight passed, with only the expected Edge 151 versus
+  pinned Edge 150 drift warning; validate passed with the baseline fingerprint and root smoke passed;
+- root layout selftest passed; certifying run `exact-7d9980e-root-layout` passed all sealed 787/787
+  outcomes across 10/10 viewports and exact-run verification passed;
+- rarity completed 60M trials with 0 downgrades, and dead-code review found 3 tooling references;
+- v2 passed 24 test files / 273 tests with 1 skip and every type, art, override, coverage, spec and
+  instrument-selftest gate;
+- one-attempt `smoke:ci` passed with 0 findings / 10 screenshots; smoke, glass and persona evidence
+  share working-tree digest
+  `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`;
+- exact-source certifying glass passed 12/12 viewports and 52/52 controls with `omitted=[]`,
+  0 findings, 0 instrument failures and 0 retries. All 12 import-phase/release/ready paths passed;
+  replacement totals were 194–239 ms. Desktop-8k recorded a 3 ms bounded arm, 21 ms exact import-
+  phase span with the ticker true only at `invoked`, 0 ms primary write, 19 ms release, both
+  5,461×3,072 canvases collapsing to 1×1, `performanceNow` 199.5 ms, 1 ms confirmation and
+  239 ms total;
+- all 9 bounded automated personas passed, still explicitly not a human playtest;
+- the first performance command, malformed as `npm run perf -- --runs=4`, was rejected before a
+  browser launched. The correct single terminal-only run then recorded 646 ms painted / 726 ms
+  answerable / 74 ms press→panel / 157 ms rebuild; this was not a retry of an evidence failure; and
+- exact 37-file / 10,170,996-byte preview `dev-preview-exact-7d9980e` verified and browser-smoked
+  PASS under Edge 151 at 320×568 for expected origin
+  `https://dev-celestialfrontier.github.io`, distinct from production, content SHA-256
+  `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
+  `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, with `publishable: false`.
+
+## ══════════ ARCHIVED 2026-08-12 — PR #11 evidence runs #199–#202 and launcher follow-on ══════════
+## ══════════ Moved from ROADMAP.md verbatim; original span was lines 136–198. ══════════
+
+GitHub test-battery #199, run `31571459050` / job `94034164092`, first exposed
+the former desktop-8k reload ambiguity and small-phone Planetside/trail overlap.
+Pushed commit `8b8a740286a56591cac9dc5734a2fba4c088939b` repairs both: import
+settlement and replacement boot have separate observable 20-second phases and require a changed
+top-frame loader plus document token; portrait Planetside retains a 72px useful/scrollable band
+with 6px clearance and yields only the noninteractive trail when required. Their deliberate
+failing controls and the exact sequential local battery passed.
+
+Matching GitHub test-battery #200, run `31577395120` / job `94052496287`, then
+passed every root, product and v2 gate, the single `smoke:ci` attempt, the complete
+12-viewport matrix including 8K, the matching-provenance automated-persona synthesis,
+and `preview:package`. Only the final `preview:smoke` browser startup failed. The
+preceding evidence step pinned `/usr/bin/google-chrome` only in its own environment;
+the next step/process did not inherit it, so the resolver selected Linux Edge at
+`/opt/microsoft/msedge/microsoft-edge`. Edge never produced `DevToolsActivePort`, and
+the check failed before it created a target or evaluated any packaged page. The trailing
+D-Bus diagnostic is Edge/runner startup evidence, not a product or package finding.
+
+Pushed commit `4d14a75e934536dc5f204e40c74f666cc9514df4` binds the exact Chrome
+path at job scope in both CI workflows and resolves it fail-closed before the long battery, so
+every browser-owning process has the same explicit provenance. Environment is per step/process; a
+prior green browser step does not pin the next one. Retries, a longer startup bound, or clearing
+D-Bus would not repair the #200 provenance defect.
+
+Completed code/tool commit `08379d8c072c7eb22e2a029d666972c86d496326` removes the root layout
+gate's remaining second launcher. It now
+consumes `port/v2/tools/browserpath.mjs` plus `browsercdp.mjs`: browser-assigned port 0 through
+`DevToolsActivePort`, exact executable/version provenance, early-exit and bounded stderr
+diagnosis, bounded TERM→KILL cleanup, and validated profile removal. Its ignored report is
+atomically replaced from `running` to terminal `pass`, `fail`, or `instrument-fail`; legacy
+`results` remain. A full PASS must match the sealed v1.8.9 report's exact 787
+`viewport/surface/name` inventory; targeted viewport runs remain scoped diagnostics. `--selftest`
+seeds a stale PASS, forces exit 73 with a marker, proves current red replacement/wrong-run
+rejection/cleanup, then removes one sealed outcome with internally consistent counts and requires
+that plausible incomplete PASS to fail. CI assigns an exact id, runs selftest + gate +
+`--verify-run=ID`, then uploads the report separately with missing evidence treated as an error.
+Both root and v2 install surfaces now declare/lock the `ws` transport and supported Node lines
+`^20.19.0 || ^22.13.0 || >=24.0.0`. Root preflight launches the selected executable through the
+owned CDP probe; its selftest rejects executable non-browsers and excluded Node lines. `bootperf`
+shares the executable resolver and `ws`, but explicitly retains its legacy CDP lifecycle.
+The targeted lock refresh also moves root `undici` 7.27.2→7.29.0 and v2 `nanoid`
+3.3.16→3.3.18 within existing ranges; clean `npm ci` on both install surfaces reports zero
+vulnerabilities. These are tooling/dependency-evidence changes, not shipped runtime changes.
+The original sandboxed Edge diagnostic ended in SIGABRT and remains red evidence; the separately
+permitted mutable-tree 787/787 run remains only the diagnostic that preceded the clean commit.
+Prior test-battery #201, run
+[`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
+job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
+remains preserved **RED** on pushed `4560269`, without retry. Every preceding root/product/v2 gate,
+including `smoke:ci`, passed; only desktop-8k preference import instrument-failed after its former
+20-second replacement wait while the old loader remained and its slice token/import phase were
+absent. It was not a save rejection or reported repository-write failure.
+
+Matching test-battery #202, run
+[`31594595288`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288) /
+job [`94106996466`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288/job/94106996466),
+completed once without retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`
+and is **RED**. Every preceding root/product/v2 gate and `smoke:ci` passed. Only
+desktop-8k glass import/replacement instrument-failed when its first observer result arrived at
+61.163 seconds. That loop serially awaited two frame-tree calls around an awaited Runtime call,
+each with a 30-second command ceiling; #202 therefore proves observer ambiguity, not a 61-second
+product boot, save rejection or product failure. Preserve it without retry or a timeout increase.
+
+## ══════════ ARCHIVED 2026-08-12 — superseded PR #11 player-guide/doc-parity handoff ══════════
+## ══════════ Moved from ROADMAP.md verbatim; original span was lines 24–141. ══════════
+
+## ▶▶▶ SESSION HANDOFF — 2026-08-11 · DRAFT PR #11: V2 HARDENING + PLAYER-GUIDE/DOC PARITY ◀◀◀
+
+## ★ COLD START — READ THIS BLOCK, THEN THE LINKED REFERENCES
+## Workspace: /Users/nick/Projects/celestial-frontier-openai-mac
+## Owner/branch: OpenAI/Codex on `openai/mac`. PR #10 merged normally into `develop`; the clean
+## integration baseline is `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`. The exact Platinum
+## repair archive/review remains sealed at source `03ea297e4f8ec61461310b0312a7363027ce90e3`:
+## 2,163 PNGs, ZIP SHA-256 `ef7a6e9bb720ab6e6e1497569ade194b471ed7ab63449ee94ea5c94c57372f4b`,
+## and external **PASS with optional polish only / APPROVE** review SHA-256
+## `1c6c49e74270e9c69800de5b10b031aacf73a7a30937350086e97bc712823b3f`. Its embedded
+## `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED` fields are immutable preparation metadata; the human
+## PASS is a separate package-level judgment, not formal 1,250-row certification. Do not blanket-
+## repaint the flora/fauna/procedural portrait set covered by that package-level PASS merely to
+## create activity. The optional watchlist is
+## equid stiffness, Colugo geometry, Eagle sharpness and conservative low-anchor plant/fungus drift.
+## The higher-value graphics work is Phase 5 living rigs/animation and Phase 6's 43 biome scenes.
+##
+## The current `openai/mac` batch audits and hardens the already-ported v2 slice. It repairs sparse/
+## future-save overwrite paths and IndexedDB retry; bounds hostile cosmic epochs; validates Atlas
+## identities; prevents repeated landfall credit, composite-identity stale-card actions and external-code landing
+## bypass; restores named-world CF1 round trips; fixes lazy-art subscriber races and port-authored
+## declaration drift; strengthens SessionRNG; makes the phone dock a measured 4×2 geometry contract;
+## enables Pixi `autoDensity` and fixes the DPR backing-canvas/CSS-size mismatch that halved phone hit coordinates;
+## makes survey-first descent use an explicit mobile-safe card action instead of a covered body or timing window;
+## makes browser smoke/perf portable and fail closed; adds core v2 test/type/art/browser-smoke gates
+## to CI; and makes the app's own TypeScript config part of `npm run typecheck`. Current
+## browser proof covers desktop pointer and real 390×844 touch entry into the exact Milky Way node,
+## the actual Sol sprite, a real stage-0 non-Sol Charter rejection, and stage-2 entry into a
+## deterministic visible fine star; seed+x+y identity, the former DPR-sized CSS canvas, and buried
+## travel actions are all outcome-checked.
+##
+## The same PR now closes the live-slice player-copy gap instead of leaving the new controls only in
+## developer Markdown. The eighth phone-dock slot opens a bounded seven-topic v2 field manual; save
+## import moves to Settings → Save data → Bring expedition, preserving the measured 4×2 dock.
+## The manual covers survey/Enter actions, guarded Land and explicit minimum-44px Leave, Atlas/CF1,
+## Charter reach, Compendium/Records, Field Training restart, and protected saves. Training copy is
+## label-neutral for fresh `+ Add` versus veteran `★ Confirm`, returns planet entry to the real system
+## survey, and teaches Land rather than a nonexistent planet-zoom step. Browser smoke proves every
+## guide topic, immediate IndexedDB+reload persistence of `seenGuide`, a focus-trapped top-layer
+## import modal, exact copy/action alignment, an 8px Guide/dock clearance, and real 390×844 touch
+## Earth Land→Leave→system plus one-Escape lift-off. Missing-topic, stale-copy, old-max-height
+## Guide/dock-overlap, Guide-behind-card, low-z modal, and missing/buried-Leave controls all fail closed; a same-seed/
+## different-coordinate system cannot reuse the old planet card for Land, Atlas or Share.
+## This is honest CURRENT-SLICE guidance, not full legacy parity: the searchable legacy Guide
+## (43 authored topics, 41 currently live),
+## tooltip deep-links/advanced briefings, the full 21-step Training arc (v2 currently has six real
+## lessons plus an honest graduation), and release/update-modal/version machinery remain Phase 4 work.
+## verification: Vitest 23 files / 257 pass / 1 skip; both TypeScript configs; artunused;
+## artaudit 23/0; coveragegap 1,010/1,010; speccheck
+## 454/0/0; overridecheck 1,014/1,014 routes +1,010/1,010 species and controls through CV;
+## hybrid browser guard with 14 injected regressions; hybridmatrix/currentreviewpackage/browser
+## selftests; real browser slice smoke; and the portable phone performance profile are green.
+##
+## NEXT after this batch: keep the bounded field manual, contextual hints and Training copy synchronized
+## in every player-facing batch; port the full Guide/tooltips/briefings/21-step Training/release surface
+## as their live systems arrive, never by advertising dormant v1 mechanics. Technical order: (1)
+## canonicalize the complete CF1 galaxy→star→planet hierarchy; (2) restore imported legacy full-
+## expedition `tsnap` before clearing it; (3) decide/fix CFB parent preservation because parent loss
+## changes hybrid combat identity; (4) virtualize the 1,500-row Compendium and make thumbnail work
+## bounded/cancellable; (5) own/destroy Pixi canvas textures and add a travel-memory plateau gate;
+## (6) attach the generated HD planet texture to the live sprite; (7) persist/invalidate on epoch
+## edges and settle hidden-tab/reduced-motion policy; (8) close the remaining literal Gate-B DOM/type
+## boundaries and split-store/CAS persistence; then advance living organism rigs and biome/ecology
+## presentation. Read next: PROCESS_LAWS.md · PARALLEL_GIT_PROTOCOL.md · README.md · port/v2/README.md ·
+## port/v2/DEVIATIONS.md · SAVE_SYSTEM.md · UI_PRESENTATION.md · QUESTS_AND_CHAPTERS.md ·
+## BREEDING_AND_SHARING.md · LINEAGE_AND_BREEDING.md · ART_DIRECTION.md · PROGRESSION.md ·
+## port/HANDOFF_NEXT_SESSION.md.
+
+## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
+## Current side: OpenAI/Codex on macOS, branch `openai/mac`. PR #10 merged normally into `develop`
+## at `61cc058abca0b37dcd5f44ff11012bf8b8dea4c9`; draft PR #11 is already open at
+## https://github.com/TheDakk/Celestial-Frontier/pull/11. This batch's Git authority is the latest
+## pushed `openai/mac` commit carrying the files described here; the working copy may be ahead only
+## while publication is in progress.
+## GitHub step: draft PR #11 (https://github.com/TheDakk/Celestial-Frontier/pull/11) is the separate
+## integration vehicle. After each pushed follow-up, OpenAI/Codex keeps its body synchronized with the
+## copy-ready description below. Nick then reviews its checks and diff, clicks **Ready for review**, and
+## uses the normal merge into `develop` only when satisfied. Never add this batch to merged PR #10,
+## auto-merge it, squash/rebase it, or target `main`.
+## PR details: base `develop`; source `openai/mac`; title `Harden v2 persistence, navigation, mobile UI, and CI`;
+## description `Audits and hardens the already-ported v2 slice. Protects sparse/corrupt and newer saves;
+## restores IndexedDB retries; bounds hostile epoch input; validates Atlas routes; prevents duplicate
+## landfall credit, composite-identity stale-card actions, external-code landing bypass and named-world share loss; fixes
+## lazy species-art races and TypeScript declaration drift; hardens SessionRNG; and makes the phone dock
+## a measured 4x2 non-overlap contract. Enables Pixi autoDensity so the DPR-scaled backing store retains
+## a viewport-sized CSS box and logical pointer coordinates agree. Replaces timing-sensitive second-tap
+## descent with minimum-44px Enter galaxy / Enter system survey-card actions. Adds a dock-accessible
+## seven-topic v2 field manual for the current live-slice flow; moves save import to Settings > Save data >
+## Bring expedition so the dock stays 4x2; aligns Training copy with fresh/veteran Atlas labels and the
+## real system-survey > Land flow; and adds a visible minimum-44px Leave world action. Real-browser smoke
+## proves desktop galaxy navigation and exact base-Sol identity {seed:424242,x:560,y:170}, real 390×844
+## touch galaxy navigation, Land > Leave > system plus one-Escape lift-off, all required Guide topics
+## plus immediate IndexedDB+reload persisted seen state and 8px dock clearance, a focus-trapped top-layer
+## Settings import, same-seed/different-coordinate stale planet actions rejected, a real stage-0 fine-star
+## action rejected by the Charter gate, stage-2 success
+## preserving the touched target's exact {seed,x,y}, and visible byte-preserving protected-save notices;
+## injected stale-document, fixed-wait, DPR-sized-canvas, hidden-notice, missing-topic, stale-copy,
+## Guide/dock-overlap, Guide/card layering, low-z modal, same-seed card, click-through and missing/buried-action regressions fail. Ports the browser
+## smoke/perf harnesses and adds core v2
+## test/type/art/browser-smoke gates to CI. Refreshes the project landing page, current system references,
+## Guide/Training contract, test counts and operational commands; the full searchable legacy Guide,
+## tooltip deep-links/advanced briefings, full 21-step Training and release/update machinery remain open.
+## The static flora/fauna/procedural pixel set covered by the package-level Platinum PASS remains unchanged
+## except for a type-only art correction with identical runtime value. Verification includes 23-file
+## Vitest (257 pass /1 skip), both TypeScript configs, artunused/artaudit/coverage/speccheck/override
+## controls, hybrid/current-review/browser selftests, real-browser smoke/perf, and diff-check. Remaining
+## canonical CF1 hierarchy, legacy full-expedition tutorial snapshot restore, CFB parent preservation,
+## Compendium virtualization, Pixi texture lifecycle, HD planet replacement, epoch-edge/visibility policy,
+## living rigs and biome scenes are explicitly deferred. After merge, Anthropic/Claude Code synchronizes
+## only from a clean anthropic/windows worktree with git fetch origin then git merge origin/develop. No
+## release, deployment, certification, main change, live-site change, or version bump is included.`
+## Other side: Anthropic/Claude Code on Windows, branch anthropic/windows, need not be opened now.
+## It does not have this batch until that draft PR merges. At its next coding batch after the merge,
+## and only from a clean worktree, run `git fetch origin` then `git merge origin/develop`; if dirty,
+## do not pull/switch/merge first, and never copy files manually between worktrees.
+## Release status: PR #11 is open, draft, unmerged. `develop` remains at merged PR #10 (`61cc058`)
+## and receives this batch only through a reviewed normal merge of PR #11. `main` and the live site
+## are unchanged. No release, deployment, certification, or version bump is included.
+
+## ══════════ ARCHIVED 2026-08-11 — Wave 2d/2e and Platinum repair arc completed ══════════
+## ══════════ Moved from ROADMAP.md verbatim; original span was lines 64–265. ══════════
+
+## ★ FROZEN FULL-RESET R1 BASELINE — COMPLETE REVIEW, NOT CERTIFICATION
+## The clean bc26e8 capture covers all 1,250 identities in 181 families /233 packets and remains
+## 516 PASS ·14 POLISH ·720 FAIL: fauna 151/6/474 · flora 125/0/207 · fungi 16/0/11 ·
+## microbes 12/2/6 · procedural 212/6/22 (PASS/POLISH/FAIL). Authority:
+## port/v2/apps/game/smoke/full-reset-results-2026-08-10-r1/results.json. Scoped wave results never
+## mutate this ledger and must not be added to 516.
+
+## ★ ACCEPTED CHECKPOINTS BELOW THE FROZEN LEDGER
+## Wave 1: committed/pushed d005090f; root 38 + fish 59 + tree 48 + fauna2 32 =177/177 scoped PASS.
+## Wave 2a: committed/pushed 00e499c; Mammal A 4 + worms/sessile 13 + S1–S3 15 =32/32 scoped PASS.
+## Wave 2b: committed/pushed 9c148f0; Mammal B 25 + Bird B1 21 + Invert I 5 =51/51 scoped PASS.
+## Wave 2c: committed/pushed dc015cf; Mammal C 13 + Bird B2 28 + Invert II 15 =56/56 scoped PASS.
+## Wave 2d: committed/pushed 2ed0f28; Mammal D 16 + Bird B3 27 + Invert III 7 =50/50 scoped PASS. Vanilla
+## Orchid r6 remains a separate 234-asset continuity PASS. None is a new
+## full-catalogue score.
+
+## ★ WAVE 2D — EXACTLY 50/50 AUTHOR-SEPARATED PASS
+## Mammal D: 16/16 PASS. The first shared preview failed closed on Fisher's tail silhouette,
+## Marten's ears, Wolverine's claws, Sea Otter's body rotation, Hyrax's ear scale, and Mole's
+## snout/forepaw separation. Bounded R2 changed those six. The first independent final judgment
+## returned 15 PASS /1 FAIL because Civet still lacked its long pointed muzzle; Civet-only R4
+## changed 3/3 surfaces, preserved the other 303 rows /909 surfaces, and independently closed 16/16.
+##
+## Bird B3: 27/27 PASS. The initial author screen was 11 candidate-ready /16 blocked: Chough · Crow ·
+## Raven · Peacock · Pheasant · Rooster · Quetzal · Sandgrouse · Cockatoo · Macaw · Parrot · Dove ·
+## Pigeon · Finch · Swift · Hornbill. R2 changed exactly those 16 and left only Pheasant's too-short
+## tail, Quetzal's too-short streamers, and Macaw's too-short tail open. R3 changed exactly those
+## three; the independent final judge returned 27 PASS /0 FAIL with 100 lane controls exact.
+##
+## Invert III: 7/7 PASS. Sea Spider · Camel Spider · Pseudoscorpion · Scorpion · Spider · Tarantula ·
+## Millipede received exact-name whole forms. The first screen kept Camel Spider open because its
+## paired chelicerae/gape vanished at 132px and Tarantula open because fangs/palps were weak. R2
+## changed exactly those two while the other five targets stayed exact; independent final judgment
+## returned 7 PASS /0 FAIL.
+
+## ★ FINAL WAVE-2D R4 EVIDENCE — SEALED; JUDGMENT COMPLETE
+## Pre-edit baseline seal: 7C68250E3BED9AE64FD5066A4D5389C45056600F09E48B1287253AB20E6B877F.
+## Final root: port/v2/apps/game/smoke/wave2d-shared-final-r4-evidence-2026-08-10.
+## Manifest SHA-256: DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE.
+## It binds 304 rows =50 targets +254 protected controls and 912 surfaces/run. Current/repeat is
+## exact on 912/912 surfaces; all 762 protected surfaces match the pre-edit baseline; all 150 target
+## surfaces changed. R4 changed only Civet's 3 surfaces; the other 303 rows /909 surfaces stayed
+## exact. All 1,824 PNG hash/dimension checks pass, three 139-file input snapshots have zero drift,
+## and all four negative controls were rejected.
+
+## ★ FROZEN WAVE-2D SOURCE SHAS
+## faunaoverrides.ts 63D7A9B1E3AE8E2FE359137A030E1AE8AEFC3328ACB5C88FB6E59E7F014A2DA2 ·
+## birdoverrides.ts 48FFA589F2273F0F29FD85DF1F05FD070477ADE70F1CDEB7698F5321E5702DC7 ·
+## quadrupedoverrides.ts 544F5A6582F467E744C5F2A3ABF0EDF61DE5A5180CF5658155594E5FF86316C1 ·
+## mammaloverrides.ts 776FB86FF9A42E348A9278F98F7DC03584568C65A09C637CB1D7BFA38BB7A46E ·
+## invertoverrides.ts 2BB40BD1838D6B6B01F09B01D3BC4CBE7B00D0F0C219FEA5926BF076A4F39677.
+
+## ★ PIXEL-NEUTRAL P2 CLEANUP — CLOSED WITH FRESH PROOF
+## The Wave-2c deferred cleanup is now source-explicit and pixel-neutral: Mammal C has an explicit
+## marsupial-c1 dispatcher arm; Skua's unreachable Snow-Petrel colour alternative is removed; and
+## exact Invert-II legacy non-hue options shadowed by named early returns are removed. The shared
+## pre-edit/final evidence keeps all 254 protected rows /762 surfaces byte-exact. These are
+## route-proven cleanup changes, not visual retcons.
+
+## ★ WHOLE-FORM / FAIL-CLOSED LAW
+## One named whole form owns silhouette, anatomy, attachments and material on one winning route.
+## Author screens authorize a capture, never a verdict. A changed pixel, green static gate or
+## current-only preview cannot replace an author-separated 440/300/132 A/B judgment. Reopen only
+## named blockers, freeze every accepted neighbour, and require exact repeat and source/input
+## provenance. A pasted seam, wrong posture, missing topology or card-size cue remains FAIL.
+
+## ★ FINAL INTEGRATED WAVE-2D GATES — GREEN; COMMITTED/PUSHED AS 2ED0F28
+## All five source SHAs and the 139-input aggregate 58553184F25A8E2D4EDBA4811BEE8087BCAA7E48AC2AD978D96D264FEC793CBC
+## stayed exact. git diff --check, typecheck and artunused PASS; Vitest 23 files /238 pass /1 skip;
+## speccheck 419/0/0 +5/5 selftest; coveragegap 1,010/1,010; artaudit 23 sources /0; tokencheck
+## selftest 16/16 (normal 445-value /23-dead /14-alias diagnostic is non-verdict); overridecheck
+## 1,014/1,014 routes +1,010/1,010 species; speciesaudit 1,250/1,250 with 0 fail/duplicate/clipped;
+## hybridcheck PASS with 11 negatives; hybridmatrix/speciesstrip/fullresetlayout selftests PASS;
+## fullresetreview PASS 10/10 join /6 packets /9 changed fixture. No nonignored generated leakage;
+## renderer drained. This authorizes only the Wave-2d checkpoint commit/push—not the reset PR, full
+## recertification, ZIP, merge, release, or deployment.
+## Full 1,250 recertification, its certification image-inclusive ZIP, reset PR, merge, release and
+## deployment remain OPEN.
+
+## ★ WAVE 2E — STATIC SOURCE MERGED; POST-EDIT REVIEW FAIL-CLOSED BEFORE FIRST CAPTURE
+## 1. Mammal E (13 bovids): Buffalo · Cow · Eland · Gaur · Gazelle · Hartebeest · Impala · Kudu ·
+##    Musk Ox · Oryx · Water Buffalo · Wildebeest · Yak. Owners: quadrupedoverrides.ts + mammaloverrides.ts.
+## 2. Fauna E (21 squamates): Agama · Anole · Gecko · Skink · Wall Lizard · Whiptail · Alligator Lizard ·
+##    Gila Monster · Horned Lizard · Grass Snake · King Snake · Rat Snake · Vine Snake · Water Snake ·
+##    Mountain Viper · Snake · Cobra · Cottonmouth · Mamba · Rattlesnake · Viper. Owner: faunaoverrides2.ts.
+## 3. Invert IV (13 insect-body rows): Bumblebee · Honeybee · Orchid Bee · Bee · Butterfly · Fly · Mantis ·
+##    Moth · Termite · Thrips · Wasp · Black Fly · Mosquito. Owner: invertoverrides.ts.
+## 4. The Windows handoff records a shared pre-edit union at
+##    `port/v2/apps/game/smoke/wave2e-shared-preedit-baseline-2026-08-10/baseline`:
+##    288 rows =47 targets +241 protected, 864 physical PNG hashes/dimensions, 3×139 source/input
+##    snapshots exact. Seal `BC424C8FC8D19DDC7A23F81A946CDE99AF2A7FED759129E132233E23C598AA37`;
+##    index `2AE4FDB1D443698A092304C22573D8604C07D5B42752E967549D6B038FCD26E3`.
+##    That root is under ignored `apps/game/smoke/`, is absent from the Mac clone and every Git ref,
+##    and has no tracked scoped-capture/reconstruction recipe. The seal/counts therefore remain a
+##    documented Windows claim, not independently verified Mac evidence. Do not substitute a new
+##    baseline or begin A/B promotion until the exact root is recovered or a user-authorized
+##    deterministic reconstruction from pre-edit 2ed0f28 reproduces both frozen hashes.
+##    A bounded portability seam now lets gp71rejudge and fullresetlayout/fullresetreview use an
+##    exact `CF_BROWSER` or checked platform browser path. That enables a fresh current-only Mac
+##    export, but the absent scoped baseline still blocks Wave 2e A/B. Speciesstrip, speciesaudit,
+##    and hybridblendcheck remain separately Windows-bound; their historical Windows passes are not
+##    current Mac results.
+## 5. Source-only implementation is static-green but deliberately UNJUDGED. Frozen pause SHAs:
+##    quadruped `AE8E3830EF57233EB43ABE0F594E335A050A1DB3375F08781FF61549B0C6D288`; mammal
+##    `74BBD77CD8BA8E3C22D503AD42FB667EDB74AF6ED3C73551ED283223B28CF80B`; fauna2
+##    `30B2E3E2BCDA4865EE81625805384B373423274E0634F8A50F8E4D5A20483378`; invert
+##    `6785058479456FF35EE3C44D9FC8F8A9A5467B7F61BBF3153854F93B090A5C1C`.
+##    Integrated pause checks: typecheck, artunused, Vitest 23 files/238 pass/1 skip, speccheck
+##    455 declared/0 unread/0 inert, and diff-check PASS. No Wave-2e-scoped old/current A/B export,
+##    440/300/132 comparison preview, deterministic A/B repeat, independent judgment, full gate
+##    closure, reset PR, certification package, merge, release, or deployment is authorized.
+## 6. `overridecheck` is repaired: pinned Rolldown 1.2.1/Oxc parses each complete TypeScript art
+##    source as an AST, and only literal string property/array nodes become route keys; every such
+##    key is validated regardless of length or alphabet, and malformed CANON keys cannot disappear.
+##    The coverage denominator is likewise the one parsed `_EARTH_NAMES` object with exactly four
+##    literal kingdom arrays; quote style cannot hide a species, its read-only `_earthNamePass`
+##    consumer is pinned, and post-initializer roster mutation is parser damage.
+##    Inline plan and ternary values cannot masquerade as keys, while templates, regexes,
+##    control-head/member-call slash context, Unicode identifiers and ASI cannot hide later routes. It reports
+##    1,014/1,014 live routes and 1,010/1,010 Earth species. The control harness requires exact exit 1
+##    plus finding-specific diagnostics and exercises both overcapture directions and the grammar traps.
+##    Full-source declaration traversal covers parenthesized, annotated, comment-separated and later
+##    `const` declarators; post-declaration writes/aliases and malformed route-table source exit 2.
+##    Every painter value must also be statically callable (and each quadruped spec an object)
+##    through immutable, unwritten exact local/import bindings; supported factories must return a
+##    direct callable expression. Neither `null!`, mutable aliases, nor truthy objects count as painters.
+##    The harness refuses concurrent
+##    source overwrite and restores all owned files. Wiring is measured only from supported
+##    route-selection initializer AST shapes **and their exact executable guard/call/fallback consumer
+##    chains, runtime selector precedence, exact vignette/floor/painter arguments, and
+##    `ink.c` → `fitInk(ink.cv,c,…)` → returned-`cv` path** inside parsed
+##    `resolveOverride`; disconnected consumers, always-false selector predicates, discarded/inert
+##    syntax, and later `OVERRIDE_COUNT` mentions cannot mask a disconnected table. Computed route
+##    members/methods outside exact audited consumer nodes fail closed. Recursive `.ts`/`.mts`/
+##    `.cts`/`.tsx` discovery rejects untracked executable sources and imports/re-exports; normalized
+##    full-path ownership resolves the actual exported declaration, not merely a same-file name.
+##    Resolver-priority shadow direction and complete
+##    kingdom-qualified route coverage are required; helper-shadowing resolver parameters or
+##    reassigned or implementation-drifted canvas helpers, direct trusted-global escape/poisoning,
+##    ownerless imports, and same-basename/wrong-export/wrong-path imports fail. This static sentinel
+##    assumes standard unmodified platform intrinsics and approved dependency implementations; it is not a sandbox against arbitrary hostile
+##    monkey-patching, and it does not replace runtime rendering or visual review.
+##    Independent post-edit provenance and resolver/compositor reviews returned PASS.
+##    Static gates: typecheck/artunused; Vitest 23 files/238 pass/1 skip; speccheck 455/0/0;
+##    coveragegap 1,010/1,010; artaudit 23/0; overridecheck/overridecontrol; diff-check all PASS.
+## 7. Bird reset FAIL scope is exhausted: B1–B3 exactly cover all 76 frozen-r1 Bird FAIL rows; do not
+##    reopen the 26 frozen-PASS birds. Only after every remaining row closes may a clean 1,250 collector, final hybrid evidence,
+##    literal certification and its dated certification image-inclusive ZIP begin.
+## 8. Nick separately requested one full current-generation review archive on 2026-08-10. It is now
+##    produced at `Celestial_Frontier_Current_Full_Generations_Review_2026-08-10_79ce144.zip` from
+##    clean evidence commit `79ce14460998d653ee753e49e8f8016e754c82e4`, using the independently
+##    reviewed packager plus anchor-tolerance repair at `60b16ce`. The archive is 472,304,848 bytes;
+##    SHA-256 `18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`.
+##    It deep-reverifies one top-level directory and exactly 2,146 PNGs: 1,250 current native
+##    portraits (631 fauna +332 flora +27 fungi +20 microbe +240 procedural), 196 catalogue strips,
+##    466 official layout sheets, and 234 representative hybrid assets. Its manifest says
+##    `CURRENT_ONLY / UNREVIEWED / NOT_CERTIFIED`, hybrid continuity remains OPEN, and its blank
+##    review template is hash-bound. Under its recorded clean-source producer trust boundary it
+##    contains no completed-verdict artifact or completed-status/schema field, and it does
+##    not replace the absent Wave 2e baseline, old/current A/B, or final all-PASS certification ZIP.
+
+## ★ PLATINUM FEEDBACK REPAIR — SOURCE/EVIDENCE COMPLETE; EXTERNAL HUMAN VERDICT PASS
+## 1. The governing ruler is the preserved `Celestial_Frontier_Current_Full_Generations_Platinum_Review_2026-08-10.md`
+##    at SHA-256 `5af3a33f0648f96115a421ea64cc70f97846f62e89dc8631deeb310103c708c2`.
+##    Both supplied reviews remain byte-exact. The first retains hard-break spaces on lines 3–4;
+##    the returned review retains them on lines 3, 4, 99, 108, 117, 129, 138, 147 and 157. Staged
+##    whitespace verification excludes only these two immutable artifacts and pairs that exclusion
+##    with exact `cmp` and SHA-256 checks.
+##    The reviewed archive remains sealed historical evidence at source `79ce144` /archive SHA-256
+##    `18080276385915e08e12c76a3413f46b5472953a7c8cca161d5be4fd6a699dc5`; its narrower
+##    focused checks were real but insufficient for the expanded whole-form/continuity ruler.
+## 2. Sugar Glider, Flying Squirrel and Colugo now use three distinct whole-form painters. Sugar
+##    keeps a possum face/stripe and independent plume; Flying Squirrel has squirrel skull/digits,
+##    four-corner patagia and a flattened rudder tail; Colugo uses a continuous neck/digit/toe/tail
+##    membrane. The glider gate freezes Bat/Fruit Bat/Insect-Eating Bat/Vampire Bat plus same-owner
+##    rodent/quadruped controls, and requires two clean repeat-exact post-edit captures.
+## 3. Exactly Fruit Bat, Eagle, Wolf, Elephant, Chameleon, Dragonfly and Octopus marked fauna
+##    hybrids now retain their modern named whole-form owner through all four bred stages. Sea
+##    Turtle and Great White Shark remain exact on the reviewed legacy route; no global fauna
+##    migration occurred. Apple, Vanilla Orchid and Oyster Mushroom receive stronger bounded
+##    anchor drift, and Amoeba is the new principal microbe five-stage row.
+## 4. Hybrid evidence schema v4 is 13 lineages ×5 stages /65 principal portraits /251 assets. Final
+##    clean-commit evidence is 5/5 pixel-unique on every row, production=fresh/repeat-stable, preserves
+##    all 36 available pure portrait/card/silhouette artifacts and all 30 Sea Turtle/Great White
+##    artifacts exactly, and binds joins to the actual Eagle, Chameleon, Dragonfly and Amoeba anatomy.
+## 5. The successor current-only package is exactly 2,163 PNGs =1,250 portraits +196 catalogue
+##    strips +466 layout sheets +251 hybrid assets. It accepts only exact generated blank review
+##    inputs, deep-reverifies after extraction, publishes outside the repository with a ZIP sidecar,
+##    and records `FRESH_FOR_CURRENT` only while source, producer, ruler and exact six-field browser
+##    provenance match. `--freshness=<zip-or-root>` reports the first `STALE_FOR_CURRENT` binding;
+##    stale history is retained, never overwritten or silently called corrupt. Source `03ea297` made
+##    `Celestial_Frontier_Current_Platinum_Repair_Full_Generations_Review_2026-08-11_03ea297.zip`,
+##    470,045,987 bytes at SHA-256 `ef7a6e9bb720ab6e6e1497569ade194b471ed7ab63449ee94ea5c94c57372f4b`.
+##    This review-document commit advances HEAD, so a later live `--freshness` check correctly reports
+##    `STALE_FOR_CURRENT: source commit differs`; that does not invalidate the sealed reviewed bytes.
+## 6. The byte-exact returned review at SHA-256 `1c6c49e74270e9c69800de5b10b031aacf73a7a30937350086e97bc712823b3f`
+##    names that archive and source and returns **PASS with optional polish only / APPROVE**. Horse
+##    stiffness, Colugo geometry, Eagle sharpness and conservative lower-anchor plant/fungus drift
+##    are optional polish, not blockers. The review has no embedded reviewer identity or ZIP digest;
+##    it assesses manifest completeness, high-risk categories and overall readiness rather than
+##    attesting individual inspection of every PNG. This handoff cross-binds both hashes but does not
+##    call it `fullresetreview --certify` output.
 
 ## ══════════ ARCHIVED 2026-08-10 — Wave 2c pushed; Wave 2d three-lane repair completed ══════════
 ## ══════════ Moved from ROADMAP.md verbatim; original span began at line 24. ══════════

@@ -1,14 +1,24 @@
 # Celestial Frontier — Rarity & Grades System
 
-**STATUS:** matches code as of **2026-07-31 (v1.8.9)**. Every value, threshold and line anchor below
-was re-extracted from `main.js` during port Phase 0 and verified, not carried forward.
+**STATUS:** legacy values match code as of **2026-07-31 (v1.8.9)**; the v2
+type-contract overlay below matches `port/v2` as of 2026-08-11. Every value,
+threshold and line anchor below was re-extracted from `main.js` during port
+Phase 0 and verified, not carried forward.
 
 **Purpose:** the authoritative description of how rarity works — the raw roll, the **two ladders**,
 how one collapses into the other, the merit boosts, ring caps, guardians and paragons.
 
-**Source of truth:** `main.js` implements this; where source and this doc disagree, **source wins and
-this doc gets fixed**. The ladder feeds the 50-probe determinism fingerprint — a mismatch means
-observable behavior changed.
+**Source of truth:** `main.js` implements the legacy runtime and
+`port/v2/packages/domain/speciestraits` owns the dated port contract; where
+source and this doc disagree, **source wins and this doc gets fixed**. The ladder
+feeds the 50-probe determinism fingerprint — a mismatch means observable behavior changed.
+
+> **2026-08-11 v2 executable-contract correction:** Runtime rarity values are
+> byte-unchanged. The port declaration now records that `colorGrade` and
+> `spectral` accept omitted/null options, and that `colorGrade` may receive the
+> runtime-supported suffix. It also types the shared color word/hex tables as
+> their real string-list and keyed-record shapes. Tests exercise the actual
+> calls; this is type parity, not a rarity rebalance or fingerprint re-pin.
 
 > ### ⚠ WHAT CHANGED IN THIS REFRESH (2026-07-31), and why the old version was dangerous
 >

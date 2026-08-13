@@ -1,0 +1,123 @@
+# Builds a commit-bound development preview for an approved human playtest.
+# This workflow uploads an artifact only. It has no Pages/deployment token and
+# cannot alter production or a preview host repository.
+name: development-preview-package
+
+on:
+  workflow_dispatch:
+    inputs:
+      preview_origin:
+        description: Separate HTTPS origin that will host the extracted artifact
+        required: true
+        default: https://dev-celestialfrontier.github.io
+        type: string
+      acknowledge_public_artifact:
+        description: I understand a published preview exposes this development build to its testers
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: Verify and package development preview
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: development-preview-package
+    env:
+      CF_BROWSER: /usr/bin/google-chrome
+    steps:
+      - name: validate manual authorization and source branch
+        shell: bash
+        env:
+          ACKNOWLEDGED: ${{ inputs.acknowledge_public_artifact }}
+          SOURCE_BRANCH: ${{ github.ref_name }}
+          SOURCE_REF_TYPE: ${{ github.ref_type }}
+        run: |
+          set -euo pipefail
+          if [[ "$ACKNOWLEDGED" != "true" ]]; then
+            echo "::error::The public-artifact acknowledgement is required."
+            exit 1
+          fi
+          if [[ "$SOURCE_REF_TYPE" != "branch" ]]; then
+            echo "::error::Development previews must be packaged from a branch, not $SOURCE_REF_TYPE."
+            exit 1
+          fi
+          case "$SOURCE_BRANCH" in
+            develop|openai/windows|openai/mac|anthropic/windows|anthropic/mac)
+              ;;
+            *)
+              echo "::error::Development previews may be packaged only from develop or an approved agent branch."
+              exit 1
+              ;;
+          esac
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          cache: npm
+          cache-dependency-path: port/v2/package-lock.json
+      - name: browser provenance
+        working-directory: port/v2
+        run: node tools/browserpath.mjs --print
+      - name: install v2 workspace
+        working-directory: port/v2
+        run: npm ci
+      - name: deterministic, type, and art gates
+        working-directory: port/v2
+        run: |
+          npm test
+          npm run typecheck
+          npm run artunused
+          npm run artaudit
+          npm run overridecheck
+          npm run overridecontrol
+          npm run coveragegap
+          node tools/speccheck.mjs
+          node tools/browserpath.mjs --selftest
+          node tools/browsercdp.mjs --selftest
+          npm run smoke:report:selftest
+          npm run glassmatrix:selftest
+          npm run persona:selftest
+          npm run preview:selftest
+      - name: real-browser, responsive, and automated-persona evidence
+        working-directory: port/v2
+        run: |
+          npm run smoke:ci
+          npm run glassmatrix
+          npm run persona:report
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+      - name: build commit-bound preview artifact
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+          PREVIEW_ORIGIN: ${{ inputs.preview_origin }}
+          PREVIEW_OUTPUT: apps/game/smoke/dev-preview-manual-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          npm run preview:package -- --origin="$PREVIEW_ORIGIN" --output="$PREVIEW_OUTPUT" --approved-publication-candidate
+          npm run preview:smoke -- --root="$PREVIEW_OUTPUT"
+      - name: upload structured browser evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: manual-preview-browser-evidence
+          path: |
+            port/v2/apps/game/smoke/slice-smoke-report.json
+            port/v2/apps/game/smoke/slice-smoke.log
+            port/v2/apps/game/smoke/glassmatrix-report.json
+            port/v2/apps/game/smoke/automated-persona-report.json
+            port/v2/apps/game/smoke/automated-persona-report.md
+            port/v2/apps/game/smoke/slice-*.png
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: upload playable development preview
+        if: success()
+        uses: actions/upload-artifact@v6
+        with:
+          name: manual-development-preview
+          path: port/v2/apps/game/smoke/dev-preview-manual-${{ github.run_id }}-${{ github.run_attempt }}
+          if-no-files-found: error
+          retention-days: 14

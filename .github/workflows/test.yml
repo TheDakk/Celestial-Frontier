@@ -1,5 +1,6 @@
-# CI (external review CF-RR): the same battery deploy.js enforces locally,
-# run on every push/PR so an untested commit can never sneak toward a release.
+# CI (external review CF-RR): release-facing root checks plus the core v2
+# parity/type/art/browser-smoke PR gates. Deployment has its own milestone
+# battery and is deliberately not changed by this port batch.
 name: test-battery
 on:
   push:
@@ -9,31 +10,85 @@ on:
 jobs:
   battery:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 45
+    env:
+      CF_BROWSER: /usr/bin/google-chrome
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
           node-version: 26   # parity with the local validation environment
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            port/v2/package-lock.json
       - name: environment
         run: |
           node --version
           npm --version
           which google-chrome || which chromium-browser || echo "no chrome found"
+          node port/v2/tools/browserpath.mjs --print
       - run: npm ci
+      - name: preflight contract selftest
+        run: npm run preflight:selftest
       - name: validate (fingerprint + render + invariants)
         run: node tools/validate.js
       - name: smoke (jsdom gameplay flows)
         run: node tools/smoke.js
-      - name: layout (9 viewports)
-        run: node tools/uilayout.js
+      - name: layout (10 viewports)
         env:
-          CF_BROWSER: /usr/bin/google-chrome
+          CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          node tools/uilayout.js --selftest
+          node tools/uilayout.js
+      - name: verify root layout evidence freshness
+        if: always()
+        env:
+          CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          node tools/uilayout.js --verify-run="$CF_UILAYOUT_RUN_ID"
       - name: rarity sanity
         run: node tools/rarity-sanity.js
       - name: dead code scan
         run: node tools/deadcode.js
+      - name: install v2 workspace
+        working-directory: port/v2
+        run: npm ci
+      - name: v2 parity and complete TypeScript surface
+        working-directory: port/v2
+        run: |
+          npm test
+          npm run typecheck
+          npm run artunused
+      - name: v2 art routing and coverage sentinels
+        working-directory: port/v2
+        run: |
+          npm run artaudit
+          npm run overridecheck
+          npm run overridecontrol
+          npm run coveragegap
+          node tools/speccheck.mjs
+      - name: v2 real-browser, responsive, and automated-persona evidence
+        working-directory: port/v2
+        run: |
+          node tools/browserpath.mjs --selftest
+          node tools/browsercdp.mjs --selftest
+          npm run smoke:report:selftest
+          npm run glassmatrix:selftest
+          npm run persona:selftest
+          npm run preview:selftest
+          npm run smoke:ci
+          npm run glassmatrix
+          npm run persona:report
+      - name: package origin-isolated v2 development preview
+        if: success()
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+          PREVIEW_OUTPUT: apps/game/smoke/dev-preview-ci-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          npm run preview:package -- --origin=https://dev-celestialfrontier.github.io --output="$PREVIEW_OUTPUT"
+          npm run preview:smoke -- --root="$PREVIEW_OUTPUT"
       - name: archive reports
         if: always()
         uses: actions/upload-artifact@v6
@@ -41,5 +96,34 @@ jobs:
           name: battery-reports
           path: |
             tools/current.json
-            tools/uilayout-report.json
+            port/v2/apps/game/smoke/slice-smoke-report.json
+            port/v2/apps/game/smoke/slice-smoke.log
+            port/v2/apps/game/smoke/glassmatrix-report.json
+            port/v2/apps/game/smoke/automated-persona-report.json
+            port/v2/apps/game/smoke/automated-persona-report.md
           if-no-files-found: ignore
+          retention-days: 14
+      - name: archive root layout evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: root-layout-evidence
+          path: tools/uilayout-report.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: archive v2 browser evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: v2-browser-evidence
+          path: port/v2/apps/game/smoke/slice-*.png
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: archive playable v2 development preview
+        if: success()
+        uses: actions/upload-artifact@v6
+        with:
+          name: v2-development-preview
+          path: port/v2/apps/game/smoke/dev-preview-ci-${{ github.run_id }}-${{ github.run_attempt }}
+          if-no-files-found: error
+          retention-days: 14

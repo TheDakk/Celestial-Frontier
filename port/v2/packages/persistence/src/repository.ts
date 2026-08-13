@@ -44,6 +44,37 @@ export interface SaveRepository {
   reset(): Promise<void>;
 }
 
+export type StoredPayloadStatus = 'supported' | 'future-version' | 'invalid';
+export type SaveReadOutcome =
+  | { kind: 'fresh' }
+  | { kind: 'loaded'; raw: string; recovered: boolean }
+  | { kind: 'protected'; raw: string; reason: 'future-version' | 'invalid' }
+  | { kind: 'transient-read' };
+
+/** Read/classify/recover orchestration shared by boot and a later storage
+ * retry. A thrown primary read is UNKNOWN, never evidence of corruption: it
+ * must not invoke recover(), which would re-read a valid newer primary and
+ * replace it with a stale backup. */
+export async function readSaveWithRecovery(
+  repository: Pick<SaveRepository, 'readPrimary' | 'recover'>,
+  classify: (raw: string) => StoredPayloadStatus,
+): Promise<SaveReadOutcome> {
+  let raw: string | undefined;
+  try { raw = await repository.readPrimary(); }
+  catch { return { kind: 'transient-read' }; }
+  if (raw === undefined) return { kind: 'fresh' };
+  const status = classify(raw);
+  if (status === 'supported') return { kind: 'loaded', raw, recovered: false };
+  if (status === 'future-version') return { kind: 'protected', raw, reason: status };
+  try {
+    const recovered = await repository.recover();
+    if (recovered !== undefined && classify(recovered) === 'supported') {
+      return { kind: 'loaded', raw: recovered, recovered: true };
+    }
+  } catch { /* the known-invalid primary remains protected */ }
+  return { kind: 'protected', raw, reason: 'invalid' };
+}
+
 export function createSaveRepository(backend: StorageBackend): SaveRepository {
   return {
     async write(payload: string): Promise<void> {
@@ -98,12 +129,31 @@ export function createMemoryBackend(): StorageBackend {
 export function createIndexedDBBackend(dbName = 'cf-v2', version = 1): StorageBackend {
   let dbp: Promise<IDBDatabase> | null = null;
   const open = (): Promise<IDBDatabase> => {
-    if (!dbp) dbp = new Promise((resolve, reject) => {
+    if (!dbp) {
+      const pending = new Promise<IDBDatabase>((resolve, reject) => {
       const req = indexedDB.open(dbName, version);
+      let abandoned = false;
       req.onupgradeneeded = () => { const db = req.result; for (const s of STORES) if (!db.objectStoreNames.contains(s)) db.createObjectStore(s); };
-      req.onsuccess = () => resolve(req.result);
-      req.onerror = () => reject(req.error as Error);
-    });
+      req.onsuccess = () => {
+        const db = req.result;
+        /* `blocked` is not terminal for the native request: after the old
+           tab closes, this same request may still succeed. If our bounded
+           attempt already rejected and a retry owns `dbp`, close that late
+           orphan immediately or it can accumulate and block upgrades/reset. */
+        if (abandoned) { db.close(); return; }
+        db.onclose = () => { if (dbp === pending) dbp = null; };
+        db.onversionchange = () => { db.close(); if (dbp === pending) dbp = null; };
+        resolve(db);
+      };
+      req.onerror = () => { abandoned = true; reject(req.error as Error); };
+      req.onblocked = () => { abandoned = true; reject(new Error(`IndexedDB open blocked: ${dbName}`)); };
+      });
+      dbp = pending;
+      /* A rejected open is a transient attempt, not a permanent repository
+         state. Retaining that rejected Promise makes every later player
+         retry fail without issuing a new indexedDB.open(). */
+      void pending.catch(() => { if (dbp === pending) dbp = null; });
+    }
     return dbp;
   };
   const done = (tx: IDBTransaction): Promise<void> => new Promise((resolve, reject) => {

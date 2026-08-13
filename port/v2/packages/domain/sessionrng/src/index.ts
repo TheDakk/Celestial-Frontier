@@ -48,20 +48,54 @@ function domainHash(domain: string): number {
   return h >>> 0;
 }
 
+const UINT32_MAX = 0xFFFF_FFFF;
+function checkedDomain(domain: string): string {
+  if (typeof domain !== 'string' || domain.length === 0 || domain.length > 64
+    || /[\u0000-\u001f\u007f]/.test(domain)) {
+    throw new RangeError('SessionRNG domain must be 1–64 printable characters');
+  }
+  return domain;
+}
+function checkedCounter(value: unknown, domain: string): number {
+  if (!Number.isSafeInteger(value) || (value as number) < 0 || (value as number) > UINT32_MAX) {
+    throw new RangeError(`SessionRNG draw counter for ${JSON.stringify(domain)} must be a uint32`);
+  }
+  return value as number;
+}
+
 /** Create (or RESUME, by passing a stored state's draws) a session stream. */
 export function createSessionRNG(seed: number, draws?: Record<string, number>): SessionRNG {
+  if (!Number.isSafeInteger(seed) || seed < 0 || seed > UINT32_MAX) {
+    throw new RangeError('SessionRNG seed must be a uint32');
+  }
   const s = seed >>> 0;
-  const counters: Record<string, number> = { ...(draws || {}) };
+  /* A Map is intentional. A plain object makes valid-looking domains such as
+     `toString` and `__proto__` read inherited values instead of counter zero,
+     and a hostile persisted state can therefore poison or freeze a stream. */
+  const counters = new Map<string, number>();
+  if (draws !== undefined) {
+    if (!draws || typeof draws !== 'object' || Array.isArray(draws)) {
+      throw new TypeError('SessionRNG draws must be an object');
+    }
+    for (const [domain, count] of Object.entries(draws)) {
+      counters.set(checkedDomain(domain), checkedCounter(count, domain));
+    }
+  }
   const value = (domain: string, n: number): number =>
     mulberry32(hashInt(s, domainHash(domain), n) >>> 0)();
   return {
     roll(domain: string): number {
-      const n = counters[domain] || 0;
-      counters[domain] = n + 1;
-      return value(domain, n);
+      const key = checkedDomain(domain);
+      const n = counters.get(key) ?? 0;
+      if (n === UINT32_MAX) throw new RangeError(`SessionRNG draw counter for ${JSON.stringify(key)} is exhausted`);
+      counters.set(key, n + 1);
+      return value(key, n);
     },
-    at(domain: string, n: number): number { return value(domain, n); },
-    state(): SessionRNGState { return { seed: s, draws: { ...counters } }; },
+    at(domain: string, n: number): number {
+      const key = checkedDomain(domain);
+      return value(key, checkedCounter(n, key));
+    },
+    state(): SessionRNGState { return { seed: s, draws: Object.fromEntries(counters) }; },
   };
 }
 

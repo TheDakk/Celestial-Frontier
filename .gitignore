@@ -2,6 +2,7 @@ node_modules/
 main.js
 tools/probe-build.html
 tools/current.json
+tools/uilayout-report.json
 work/
 extracted/
 files.zip

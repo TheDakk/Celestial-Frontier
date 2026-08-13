@@ -737,7 +737,7 @@ its pure portrait is byte-exact, all five stages remain recognizably Vanilla,
 their joins are continuous, and child-genome drift increases meaningfully as the
 anchor falls. The r6 root validates 234/234 assets and both browser orders.
 `hybridcheck` binds five exact ID+kingdom+name focused lineages across all four kingdoms and rejects
-eleven injected negative controls, including focused-species substitution and Vanilla stage collapse. The earlier
+fourteen injected negative controls, including focused-species substitution, Vanilla stage collapse and protected-route controls. The earlier
 dirty matrices and prior `FAIL_BYTE_IDENTICAL_STAGES` result are diagnostic
 history. This focused PASS is not a claim that every possible bloodline or the
 full catalogue is certified. The graphics upgrade remains staged: correct

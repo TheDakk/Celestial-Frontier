@@ -1,8 +1,8 @@
 // Viewport-matrix LAYOUT gate (v1.5.2c, Nick's device-pass mandate).
 // jsdom runs logic but performs NO layout — the ✕-bleed, z-order and
 // training-overlap bugs were invisible to the whole battery by
-// construction. This gate drives the REAL game in headless Edge over CDP
-// (stdlib only: fetch + native WebSocket) across phone/tablet/desktop
+// construction. This gate drives the REAL game in an owned Chromium-family
+// browser over raw CDP across phone/tablet/desktop
 // viewports and asserts the layout laws on every major surface:
 //   ✕ CORNER LAW   — the close sits inside its card corner, tappable,
 //                    never overlapping header text
@@ -15,26 +15,25 @@
 //
 // Usage: node tools/uilayout.js [--shots]
 'use strict';
+const crypto = require('crypto');
 const fs = require('fs');
+const os = require('os');
 const path = require('path');
-const { spawn } = require('child_process');
+const { execFileSync } = require('child_process');
 const root = path.join(__dirname, '..');
-/* browser resolution (CI portability): CF_BROWSER env wins; else the local
-   Windows Edge; else common Linux/macOS Chrome/Chromium install paths */
-const EDGE = process.env.CF_BROWSER || [
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-  'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
-  '/usr/bin/google-chrome',
-  '/usr/bin/chromium-browser',
-  '/usr/bin/chromium',
-  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-].find((p) => { try { return fs.existsSync(p); } catch (_) { return false; } }) ||
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const _urlArg = process.argv.find((a) => a.startsWith('--url='));
 const GAME = _urlArg ? _urlArg.slice(6) : 'file:///' + path.join(root, 'celestial-frontier.html').replace(/\\/g, '/');
 const _vpArg = process.argv.find((a) => a.startsWith('--vp='));
 const SHOTS = process.argv.includes('--shots');
 const SHEET_DIR = path.join(__dirname, 'uisheets');
+const REPORT_SCHEMA = 'celestial-frontier/uilayout-report@2';
+const BASELINE_REPORT_PATH = path.join(root, 'port', 'baseline-v1.8.9', 'uilayout-report.json');
+const REPORT_PATH = process.env.CF_UILAYOUT_REPORT
+  ? path.resolve(process.env.CF_UILAYOUT_REPORT) : path.join(__dirname, 'uilayout-report.json');
+const RUN_ID = process.env.CF_UILAYOUT_RUN_ID
+  || `local-${Date.now()}-${process.pid}-${crypto.randomBytes(5).toString('hex')}`;
+const STARTED_AT_MS = Date.now();
+let REPORT_BROWSER = null;
 
 const VIEWPORTS = [
   { id: 'iphone-se',   w: 375,  h: 667,  mobile: true,  dpr: 2 },
@@ -65,12 +64,7 @@ const SURFACES = [
   { id: 'tray',      btn: 'bell',     panel: 'tray' },
 ];
 
-let seq = 0, ws, pend = new Map();
-function send(method, params, sessionId) {
-  const id = ++seq;
-  ws.send(JSON.stringify({ id, method, params: params || {}, sessionId }));
-  return new Promise((res, rej) => pend.set(id, { res, rej }));
-}
+let send = null;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function evalIn(sess, expr) {
@@ -79,27 +73,168 @@ async function evalIn(sess, expr) {
   return r.result && r.result.value;
 }
 
-async function main() {
-  if (!fs.existsSync(EDGE)) { console.error('Edge not found at ' + EDGE); process.exit(2); }
-  if (SHOTS && !fs.existsSync(SHEET_DIR)) fs.mkdirSync(SHEET_DIR);
-  const udd = path.join(require('os').tmpdir(), 'cf-uilayout-' + Date.now());
-  const port = 9223 + (process.pid % 500);
-  const edge = spawn(EDGE, ['--headless=new', '--disable-gpu', '--no-sandbox', '--no-first-run',
-    '--remote-debugging-port=' + port, '--user-data-dir=' + udd, 'about:blank'], { stdio: 'ignore' });
-  let browserWs = null;
-  for (let t = 0; t < 60 && !browserWs; t++) {
-    await sleep(400);
-    try { const v = await (await fetch('http://127.0.0.1:' + port + '/json/version')).json(); browserWs = v.webSocketDebuggerUrl; } catch (_) {}
+function atomicWriteJson(file, value) {
+  const dir = path.dirname(file);
+  fs.mkdirSync(dir, { recursive: true });
+  const temp = path.join(dir, `.${path.basename(file)}.${process.pid}.${crypto.randomBytes(5).toString('hex')}.tmp`);
+  try {
+    fs.writeFileSync(temp, JSON.stringify(value, null, 1));
+    fs.renameSync(temp, file);
+  } finally {
+    if (fs.existsSync(temp)) fs.unlinkSync(temp);
   }
-  if (!browserWs) { console.error('CDP endpoint never came up'); edge.kill(); process.exit(2); }
-  ws = new WebSocket(browserWs);
-  ws.onmessage = (ev) => {
-    const m = JSON.parse(ev.data);
-    if (m.id && pend.has(m.id)) { const p = pend.get(m.id); pend.delete(m.id); m.error ? p.rej(new Error(m.error.message)) : p.res(m.result); }
-  };
-  await new Promise((r) => { ws.onopen = r; });
+}
 
-  const results = [];
+function reportFor(status, { browser = null, results = [], failure = null } = {}) {
+  const completedAtMs = status === 'running' ? null : Date.now();
+  const failed = results.filter((result) => result.ok === false).length;
+  const requested = VIEWPORTS.filter((viewport) => !_vpArg
+    || _vpArg.slice(5).split(',').includes(viewport.id));
+  const completedViewports = new Set(results.filter((result) => result.vp !== 'instrument')
+    .map((result) => result.vp)).size;
+  const currentResults = status === 'running' || status === 'instrument-fail'
+    ? [{ vp: 'instrument', surf: 'launcher', name: failure?.message || 'layout run is incomplete', ok: false,
+      detail: failure?.detail || `run ${RUN_ID} has no terminal product verdict` }]
+    : results;
+  return {
+    schema: REPORT_SCHEMA,
+    status,
+    run: {
+      id: RUN_ID,
+      startedAt: new Date(STARTED_AT_MS).toISOString(),
+      completedAt: completedAtMs === null ? null : new Date(completedAtMs).toISOString(),
+      durationMs: completedAtMs === null ? null : completedAtMs - STARTED_AT_MS,
+    },
+    target: { url: GAME, viewportIds: requested.map((viewport) => viewport.id), shots: SHOTS },
+    browser,
+    summary: {
+      checks: currentResults.length,
+      passed: currentResults.filter((result) => result.ok === true).length,
+      failed: status === 'running' || status === 'instrument-fail' ? 1 : failed,
+      completedViewports,
+      requestedViewports: requested.length,
+    },
+    failure,
+    results: currentResults,
+  };
+}
+
+function writeReport(status, options) { atomicWriteJson(REPORT_PATH, reportFor(status, options)); }
+
+function resultKey(result) { return `${result.vp}\u0000${result.surf}\u0000${result.name}`; }
+
+function expectedFullResultKeys() {
+  const baseline = JSON.parse(fs.readFileSync(BASELINE_REPORT_PATH, 'utf8'));
+  if (!Array.isArray(baseline.results) || baseline.results.length === 0) {
+    throw new Error('sealed layout baseline has no result inventory');
+  }
+  const keys = baseline.results.map(resultKey);
+  if (new Set(keys).size !== keys.length) {
+    throw new Error('sealed layout baseline result inventory contains duplicate keys');
+  }
+  return keys.sort();
+}
+
+function assertPassCoverage(report) {
+  if (report.target.viewportIds.length !== VIEWPORTS.length) return;
+  const actual = report.results.map(resultKey).sort();
+  const expected = expectedFullResultKeys();
+  if (actual.length !== expected.length || actual.some((key, index) => key !== expected[index])) {
+    const actualSet = new Set(actual);
+    const expectedSet = new Set(expected);
+    const missing = expected.filter((key) => !actualSet.has(key)).slice(0, 3);
+    const extra = actual.filter((key) => !expectedSet.has(key)).slice(0, 3);
+    throw new Error(`layout PASS result inventory drifted: ${actual.length}/${expected.length}`
+      + `${missing.length ? `; missing ${missing.join(' · ')}` : ''}`
+      + `${extra.length ? `; extra ${extra.join(' · ')}` : ''}`);
+  }
+}
+
+function finalizeInstrumentFailure(error, { file = REPORT_PATH, setExitCode = true, print = true } = {}) {
+  const detail = error.stack || error.message;
+  const failed = reportFor('instrument-fail', {
+    browser: REPORT_BROWSER,
+    failure: { message: error.message, detail, exitCode: 2 },
+  });
+  try { atomicWriteJson(file, failed); }
+  catch (reportError) { if (print) console.error(`layout report write failed: ${reportError.message}`); }
+  if (print) console.error(detail);
+  if (setExitCode) process.exitCode = 2;
+  return failed;
+}
+
+function verifyReport(file, expectedRunId) {
+  if (typeof expectedRunId !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$/.test(expectedRunId)) {
+    throw new Error(`layout report expected run id is invalid: ${JSON.stringify(expectedRunId)}`);
+  }
+  const report = JSON.parse(fs.readFileSync(file, 'utf8'));
+  if (report.schema !== REPORT_SCHEMA) throw new Error(`layout report schema drifted: ${String(report.schema)}`);
+  if (report.run?.id !== expectedRunId) throw new Error(`layout report run id mismatch: ${String(report.run?.id)}`);
+  if (!['pass', 'fail', 'instrument-fail'].includes(report.status)) {
+    throw new Error(`layout report is not terminal: ${String(report.status)}`);
+  }
+  const validDate = (value) => typeof value === 'string' && Number.isFinite(Date.parse(value));
+  if (!validDate(report.run?.startedAt) || !validDate(report.run?.completedAt)
+    || !Number.isInteger(report.run?.durationMs) || report.run.durationMs < 0) {
+    throw new Error('layout report has incomplete run timing');
+  }
+  const knownViewportIds = new Set(VIEWPORTS.map((viewport) => viewport.id));
+  const targetIds = report.target?.viewportIds;
+  if (typeof report.target?.url !== 'string' || !report.target.url
+    || typeof report.target?.shots !== 'boolean'
+    || !Array.isArray(targetIds) || targetIds.length === 0
+    || new Set(targetIds).size !== targetIds.length
+    || targetIds.some((id) => !knownViewportIds.has(id))) {
+    throw new Error('layout report has an invalid target viewport inventory');
+  }
+  if (!Array.isArray(report.results) || report.results.length === 0
+    || report.results.some((result) => typeof result?.vp !== 'string'
+      || typeof result?.surf !== 'string' || typeof result?.name !== 'string'
+      || typeof result?.ok !== 'boolean' || typeof result?.detail !== 'string')) {
+    throw new Error('layout report has malformed or empty results');
+  }
+  const passed = report.results.filter((result) => result.ok).length;
+  const failed = report.results.length - passed;
+  const completedIds = new Set(report.results
+    .filter((result) => result.vp !== 'instrument').map((result) => result.vp));
+  const summary = report.summary;
+  if (!summary || summary.checks !== report.results.length || summary.passed !== passed
+    || summary.failed !== failed || summary.completedViewports !== completedIds.size
+    || summary.requestedViewports !== targetIds.length
+    || [...completedIds].some((id) => !targetIds.includes(id))) {
+    throw new Error('layout report summary/count provenance is inconsistent');
+  }
+  const completeBrowser = report.browser && Number.isInteger(report.browser.pid) && report.browser.pid > 0
+    && ['executable', 'product', 'revision', 'user_agent', 'js_version', 'protocol_version']
+      .every((key) => typeof report.browser[key] === 'string' && report.browser[key].length > 0);
+  if (report.status === 'pass') {
+    if (report.failure !== null || !completeBrowser || failed !== 0
+      || completedIds.size !== targetIds.length || targetIds.some((id) => !completedIds.has(id))) {
+      throw new Error('layout PASS report is incomplete or contains a failing outcome');
+    }
+    assertPassCoverage(report);
+  } else if (failed === 0) {
+    throw new Error('layout red report lacks a failing outcome');
+  } else if (report.status === 'fail' && !completeBrowser) {
+    throw new Error('layout product-fail report lacks launched-browser provenance');
+  }
+  return report;
+}
+
+async function main() {
+  writeReport('running', { failure: { message: 'layout run has not completed', detail: `run ${RUN_ID}` } });
+  if (SHOTS && !fs.existsSync(SHEET_DIR)) fs.mkdirSync(SHEET_DIR);
+  const { openChromiumCdp } = await import('../port/v2/tools/browsercdp.mjs');
+  let browser = null;
+  try {
+    browser = await openChromiumCdp({
+      label: 'root UI layout gate', userDataPrefix: 'cf-uilayout',
+      commandTimeoutMs: 30000, startupTimeoutMs: 24000, shutdownTimeoutMs: 5000,
+    });
+    REPORT_BROWSER = { ...browser.browser, pid: browser.pid };
+    send = browser.send;
+
+    const results = [];
   const check = (vp, surf, name, ok, detail) => {
     results.push({ vp: vp.id, surf, name, ok, detail: detail || '' });
     if (!ok) console.log('FAIL  [' + vp.id + '] ' + surf + ' — ' + name + (detail ? '  (' + detail + ')' : ''));
@@ -551,10 +686,134 @@ async function main() {
   for (const r of results) { byVp[r.vp] = byVp[r.vp] || { pass: 0, fail: 0 }; byVp[r.vp][r.ok ? 'pass' : 'fail']++; }
   console.log('\n=== UI LAYOUT GATE ===');
   for (const k in byVp) console.log('  ' + k.padEnd(11) + ' ' + byVp[k].pass + ' pass' + (byVp[k].fail ? '  ' + byVp[k].fail + ' FAIL' : ''));
-  console.log(fails.length ? 'GATE: FAIL (' + fails.length + ')' : 'GATE: PASS (' + results.length + ' checks, ' + VIEWPORTS.length + ' viewports)');
-  fs.writeFileSync(path.join(__dirname, 'uilayout-report.json'), JSON.stringify({ results }, null, 1));
-  try { ws.close(); } catch (_) {}
-  edge.kill();
-  process.exit(fails.length ? 1 : 0);
+  const requestedViewportCount = VIEWPORTS.filter((viewport) => !_vpArg
+    || _vpArg.slice(5).split(',').includes(viewport.id)).length;
+  console.log(fails.length ? 'GATE: FAIL (' + fails.length + ')' : 'GATE: PASS (' + results.length + ' checks, ' + requestedViewportCount + ' viewports)');
+    writeReport(fails.length ? 'fail' : 'pass', { browser: REPORT_BROWSER, results });
+    await browser.close();
+    browser = null;
+    verifyReport(REPORT_PATH, RUN_ID);
+    process.exitCode = fails.length ? 1 : 0;
+  } finally {
+    if (browser) await browser.close();
+  }
 }
-main().catch((e) => { console.error(e); process.exit(2); });
+
+async function selftest() {
+  const tempRoot = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), 'cf-uilayout-selftest-'));
+  try {
+    const report = path.join(tempRoot, 'report.json');
+    atomicWriteJson(report, { schema: REPORT_SCHEMA, status: 'pass', run: { id: 'stale-pass' },
+      summary: { failed: 0, completedViewports: 10, requestedViewports: 10 }, failure: null,
+      results: [{ vp: 'stale', surf: 'stale', name: 'stale pass', ok: true, detail: '' }] });
+    const markerBrowser = process.platform === 'win32'
+      ? process.execPath : path.join(tempRoot, 'marker-browser');
+    if (process.platform !== 'win32') {
+      fs.writeFileSync(markerBrowser, '#!/bin/sh\nprintf "UILAYOUT_SELFTEST_EARLY_EXIT\\n" >&2\nexit 73\n');
+      fs.chmodSync(markerBrowser, 0o755);
+    }
+    const childEnv = { ...process.env, CF_BROWSER: markerBrowser, CF_UILAYOUT_REPORT: report,
+      CF_UILAYOUT_RUN_ID: 'selftest-current-run' };
+    const profileNames = () => fs.readdirSync(fs.realpathSync(os.tmpdir()))
+      .filter((name) => /^cf-uilayout-\d+-[0-9a-f]{16}$/.test(name)).sort();
+    const profilesBefore = profileNames();
+    let rejected = null;
+    const started = Date.now();
+    try {
+      execFileSync(process.execPath, [__filename], {
+        cwd: root, env: childEnv, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 6000,
+      });
+    } catch (error) { rejected = error; }
+    if (!rejected) throw new Error('SELFTEST early-exit browser was accepted');
+    if (rejected.status !== 2) throw new Error(`SELFTEST wrong instrument exit: ${String(rejected.status)}`);
+    const diagnostic = `${rejected.stdout || ''}\n${rejected.stderr || ''}`;
+    const expectedDiagnostic = process.platform === 'win32'
+      ? /browser CDP did not start[\s\S]*exit=[1-9]/
+      : /exit=73[\s\S]*UILAYOUT_SELFTEST_EARLY_EXIT/;
+    if (!expectedDiagnostic.test(diagnostic)) {
+      throw new Error(`SELFTEST lost exit/stderr diagnosis: ${diagnostic.slice(-1200)}`);
+    }
+    if (Date.now() - started >= 6000) throw new Error('SELFTEST early exit waited through the outer timeout');
+    const current = verifyReport(report, 'selftest-current-run');
+    if (current.status !== 'instrument-fail' || current.failure?.exitCode !== 2
+      || !current.results.some((result) => result.ok === false)) {
+      throw new Error('SELFTEST current red report did not replace the stale PASS');
+    }
+    let staleAccepted = false;
+    try { verifyReport(report, 'stale-pass'); staleAccepted = true; } catch (_) { /* expected */ }
+    if (staleAccepted) throw new Error('SELFTEST freshness accepted the prior run id');
+    const malformedCurrent = JSON.parse(JSON.stringify(current));
+    malformedCurrent.status = 'pass';
+    malformedCurrent.failure = null;
+    malformedCurrent.results = [{ vp: 'iphone', surf: 'fake', name: 'truncated pass', ok: true, detail: '' }];
+    malformedCurrent.summary = { failed: 0 };
+    malformedCurrent.browser = null;
+    atomicWriteJson(report, malformedCurrent);
+    let malformedAccepted = false;
+    try { verifyReport(report, 'selftest-current-run'); malformedAccepted = true; } catch (_) { /* expected */ }
+    if (malformedAccepted) throw new Error('SELFTEST accepted a truncated current-id PASS report');
+    atomicWriteJson(report, current);
+    const sealedResults = JSON.parse(fs.readFileSync(BASELINE_REPORT_PATH, 'utf8')).results;
+    const completePass = reportFor('pass', {
+      browser: { executable: '/selftest/browser', product: 'Selftest/1', revision: 'selftest',
+        user_agent: 'selftest', js_version: 'selftest', protocol_version: 'selftest', pid: 123 },
+      results: sealedResults,
+    });
+    atomicWriteJson(report, completePass);
+    verifyReport(report, RUN_ID);
+    completePass.results.pop();
+    completePass.summary.checks = completePass.results.length;
+    completePass.summary.passed = completePass.results.length;
+    completePass.summary.failed = 0;
+    completePass.summary.completedViewports = new Set(completePass.results.map((result) => result.vp)).size;
+    atomicWriteJson(report, completePass);
+    let missingOutcomeAccepted = false;
+    try { verifyReport(report, RUN_ID); missingOutcomeAccepted = true; } catch (_) { /* expected */ }
+    if (missingOutcomeAccepted) throw new Error('SELFTEST accepted a count-consistent PASS missing one sealed outcome');
+    atomicWriteJson(report, current);
+    const profilesAfter = profileNames();
+    const leaked = profilesAfter.filter((name) => !profilesBefore.includes(name));
+    if (leaked.length) throw new Error(`SELFTEST owned profile leaked: ${leaked.join(', ')}`);
+    const provenanceFixture = { executable: '/selftest/browser', product: 'Selftest/1',
+      revision: 'selftest', user_agent: 'selftest', js_version: 'selftest',
+      protocol_version: 'selftest', pid: 123 };
+    const priorReportBrowser = REPORT_BROWSER;
+    REPORT_BROWSER = provenanceFixture;
+    finalizeInstrumentFailure(new Error('injected post-launch failure'), {
+      file: report, setExitCode: false, print: false,
+    });
+    REPORT_BROWSER = priorReportBrowser;
+    const redWithProvenance = verifyReport(report, RUN_ID);
+    if (redWithProvenance.status !== 'instrument-fail'
+      || redWithProvenance.browser?.product !== provenanceFixture.product
+      || redWithProvenance.browser?.pid !== provenanceFixture.pid) {
+      throw new Error('SELFTEST real instrument finalizer lost launched-browser provenance');
+    }
+  } finally {
+    fs.rmSync(tempRoot, { recursive: true, force: true });
+  }
+  console.log('UI LAYOUT LAUNCHER SELFTEST: PASS');
+  console.log('  stale PASS replaced by current instrument-fail report');
+  console.log(`  early executable exit retained before startup bound${process.platform === 'win32' ? '' : ' (73 + stderr marker)'}`);
+  console.log('  mismatched run id rejected; owned browser profile cleaned');
+  console.log('  current-id truncated PASS report rejected');
+  console.log('  count-consistent PASS missing one sealed outcome rejected');
+  console.log('  post-launch instrument failure retains browser provenance');
+}
+
+if (process.argv.includes('--selftest')) {
+  selftest().catch((error) => { console.error(error.stack || error.message); process.exitCode = 1; });
+} else if (process.argv.some((arg) => arg.startsWith('--verify-run='))) {
+  try {
+    const verifyArgs = process.argv.filter((arg) => arg.startsWith('--verify-run='));
+    if (verifyArgs.length !== 1 || process.argv.length !== 3) {
+      throw new Error('usage: node tools/uilayout.js --verify-run=<exact-run-id>');
+    }
+    const expected = verifyArgs[0].slice('--verify-run='.length);
+    const report = verifyReport(REPORT_PATH, expected);
+    console.log(`UI LAYOUT REPORT VERIFIED — ${report.status} · run ${expected}`);
+    process.exitCode = report.status === 'pass' ? 0 : report.status === 'fail' ? 1 : 2;
+  } catch (error) { console.error(error.stack || error.message); process.exitCode = 2; }
+} else {
+  main().catch((error) => finalizeInstrumentFailure(error));
+}

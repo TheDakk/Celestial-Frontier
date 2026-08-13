@@ -1,8 +1,19 @@
 # Celestial Frontier — Combat & Conquest
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js). The `size` arc CLOSED in v1.8.9 — see the 2026-07-31 addendum; all six readers now share one helper and the fingerprint held.
+**STATUS:** legacy mechanics match `main.js` as of 2026-07-31; the v2
+type-contract overlay below matches `port/v2` as of 2026-08-11. The `size` arc CLOSED in v1.8.9 — see the 2026-07-31 addendum; all six readers now share one helper and the fingerprint held.
 **Purpose:** How creatures fight — the stat budget, seeded duel resolution, innate arts (classes + archetypes), and named Apex Guardians — and how conquest settles a world: the mercy law, re-win prevention, and the depth tax that grades every field wound by distance.
-**Source of truth:** this doc is the DESIGN spec; main.js implements it.
+**Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
+runtime and `port/v2/packages/domain/combatcore` owns the dated port contract.
+
+> **2026-08-11 v2 executable-contract correction:** Runtime and duel outcomes
+> are unchanged. The hand-written declaration now exposes the `BattleStats`
+> fields the function really returns (`tier`, `total`, `hex`, `name`, `cls`,
+> `lvl`, `ab`), models the ability theme/label/color plus hook values, and
+> records that `abilityTheme` returns a string. It also matches the real calls:
+> `levelOf` reads an `{xp}` object, a combatant may arrive without precomputed
+> stats, and `_statOpen` is a `Set`, not a function. Parity tests call these
+> shapes so the declaration is an executable boundary rather than commentary.
 
 ## 1. Overview
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createEpochClock, harvestReady, clampHarvestEpoch, markHarvested, EPOCH_TICK, HARVEST_EPOCHS } from '@cf/domain-progression';
+import { createEpochClock, harvestReady, clampHarvestEpoch, markHarvested, sanitizeEpoch, EPOCH_TICK, HARVEST_EPOCHS, MAX_COSMIC_EPOCH } from '@cf/domain-progression';
 
 /* These mirror tools/harvestclock-check.js's five invariants (the CLOCK
    GUARD born of CF1805-05: three failed wall-clock defences, then the clock
@@ -61,5 +61,17 @@ describe('@cf/domain-progression — the epoch clock', () => {
     expect(before.e).toBe(1);
     expect(harvestReady(after, 6)).toBe(false);
     expect(harvestReady(after, 6 + HARVEST_EPOCHS)).toBe(true);
+  });
+  it('hostile/fractional epochs cannot create an unbounded ecology loop', () => {
+    expect(sanitizeEpoch(12)).toBe(12);
+    expect(sanitizeEpoch('12')).toBe(12);
+    expect(sanitizeEpoch(1.1)).toBe(0);
+    expect(sanitizeEpoch(-1)).toBe(0);
+    expect(sanitizeEpoch(1e12)).toBe(MAX_COSMIC_EPOCH);
+    let play = 0;
+    const clock = createEpochClock(1e12, () => play);
+    expect(clock.current()).toBe(MAX_COSMIC_EPOCH);
+    play = 1e9;
+    expect(clock.current()).toBe(MAX_COSMIC_EPOCH);
   });
 });

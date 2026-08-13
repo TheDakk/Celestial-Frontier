@@ -1,10 +1,534 @@
 # Celestial Frontier — UI / Presentation System
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js + the html). Three addenda at the end: THE ART-HOLD LAW (v1.8.5), THE TRAINING LAYOUT CONTRACT (v1.8.6) and its part two (v1.8.7) — a raised board must clear BOTH the lesson card and the dock.
-the end of this file: **THE ART-HOLD LAW** (shipped in v1.8.5) — nothing expensive may be synthesised
-behind a blocking full-screen surface — with the *painted ≠ answerable* distinction that found it;
-and **THE TRAINING LAYOUT CONTRACT** (round 8, CF1805-01) — a surface that can be raised above the
-lesson card must also join the `--tut-bot` positioning contract, or the raise buries the instruction.
+> **2026-08-12 v2 port overlay (matches `port/v2` code):** The phone slice now
+> owns an explicit 206×98, 4×2 dock and publishes measured `--dock-h` and
+> `--ctx-h`. Context, hint and Planetside offsets derive from those values, so a
+> wrapped line, safe-area change or media-query change cannot bury copy beneath
+> the dock. The 390×844 real-browser leg checks pairwise rectangle clearance,
+> all eight button hit targets, exact rows/size, and CSS-variable equality, then
+> injects the old overlap and requires the gate to fail. Hint verbs also use real
+> word-boundary regex bytes, so `.kw` highlighting is tested as an outcome. A
+> separate fresh-origin phone leg keeps Field Training active, anchors its card
+> above measured `--dock-h`, proves all eight dock centres remain geometrically
+> clear, and rejects an injected training-card burial; the veteran phone capture
+> can no longer make that fresh-player layout pass vacuously.
+> Pixi also uses `autoDensity: true`: the backing store remains DPR-scaled
+> while the rendered canvas box equals the viewport. The phone gate injects the
+> former doubled CSS canvas and requires the density check to fail.
+>
+> Survey-first navigation is also phone- and slow-device safe: the first tap
+> opens the typed body card without teleporting, and its explicit 44px
+> `Enter galaxy` or `Enter system` action performs the dive. The card may cover
+> the body on a phone, so navigation never depends on a second canvas tap or a
+> timing window. The portable browser gate proves the desktop action and a real
+> 390×844 touch body→card-action outcome. It also drives the actual Sol sprite,
+> a stage-0 non-Sol fine-star Charter rejection and a deterministic stage-2
+> fine star, compares exact `{seed,x,y}` identity, and includes buried-action
+> controls.
+> Planet cards bind the complete captured galaxy+star `{seed,x,y}` identity;
+> smoke deliberately moves an Earth card to a same-seed/different-coordinate
+> system and requires Land, Atlas and Share to remain unavailable.
+> On touch, Planetside supplies a minimum-44px **Leave world** action that calls
+> the same ascent state machine as Escape/right-click; returning to orbit never
+> depends on a keyboard or a precision zoom-out gesture.
+>
+> The eighth phone-dock slot now opens the canonical **Guide to the Universe**
+> rather than the old import shortcut or a second seven-topic manual. V2 carries
+> the mature inventory—9 categories /43 authored stable topic ids /41
+> legacy-live topics—plus category drill-down, title/keyword/body search and
+> `data-gt` cross-links. A capability layer substitutes current-slice copy for
+> partially ported systems and a visible **Not yet in v2** explanation for
+> unported systems; dormant `beacon` / `events` remain retained in the source
+> contract but hidden from the 41-topic player catalogue. First open persists
+> `seenGuide`; import moved without loss to **Settings → Bring expedition**.
+> The same panel exposes all 56 immutable legacy release entries plus a separate
+> unversioned v2 development draft. The draft cannot trigger the one-time update
+> surface; no v2 version exists until Nick authorizes one. Tooltip deep links and
+> Advanced Briefings remain open port scope. The slice's Field Training likewise
+> owns six real chart/travel/landing lessons plus an honest graduation, not the
+> full legacy 21-step curriculum.
+> **Settings → Bring expedition** opens above every dock/panel as a true
+> `aria-modal` dialog, keeps Tab focus inside, and lets Escape close only the
+> dialog before restoring Settings focus. The phone gate injects its old z=11
+> layer and must observe the dock become exposed.
+> On a 390×844 phone, browser smoke also opens the real Guide panel and requires
+> at least 8px clearance above the measured dock. Its negative control injects
+> the superseded fixed `max-height` and must reproduce the overlap, so the check
+> cannot pass by measuring only the dock or an unopened panel.
+> Guide and Settings sit at z24 above the z23 survey card. Outside Field
+> Training, Compendium, Records, Star Atlas, and Charters also rise to z24 so
+> every ordinary phone panel remains operable over a populated card; Training
+> keeps its step-specific card/panel order. Real Earth-card intersections and
+> injected low-layer controls prove these surfaces are not merely present
+> underneath the card.
+> Every panel now reserves a dedicated 44px right gutter for its sticky Close
+> control, so scrolling content cannot render or receive focus beneath that
+> target. Closing still prefers the exact opener; if a desktop rail opener has
+> become hidden because Survey reopened, focus falls back to Survey and then to
+> the exploration canvas instead of remaining on a hidden close control.
+> On every ≤900px landed layout, populated Planetside owns the limited
+> mid-screen reading band, so the objective yields until ascent. Portrait now
+> measures visible fixed top chrome plus the last visible trail edge, and the
+> already measured safe/dock/context lower chrome. `syncDockH` and `syncCtxH`
+> rerun the classification after asynchronous chrome changes. It retains the
+> trail only when a useful **72px Planetside roster band
+> plus 6px clearance** fits; otherwise `surface-trail-yield` hides only the
+> noninteractive trail. Planetside keeps a 72px floor and `overflow-y:auto`, so
+> its heading and specimens remain vertically reachable instead of collapsing
+> or rising through the trail. Short landscape continues to yield the trail,
+> and Planetside begins below measured top chrome. The matrix names the two-way
+> portrait controls `planetside-portrait-band-viability` (remove the cap and
+> reproduce the collision) and `planetside-portrait-trail-fallback` (force the
+> tight branch, prove a useful scrolling strip, then restore the trail), in
+> addition to objective yield/restoration, landscape yield and top-clearance
+> controls.
+>
+> The responsive glass/accessibility pass is now behavioral rather than just
+> cosmetic. Safe-area variables drive top, side and bottom anchors; rendered
+> dock/context/hint heights feed the remaining offsets; 320px portrait through
+> ultrawide and phone-landscape geometries are exercised. Glass tint has an
+> 0.82 contrast floor (up to 0.98), a solid fallback when backdrop blur is
+> unavailable, and forced-colors treatment. Touch and panel controls are at
+> least 44px; focus-visible is unmistakable; sliders and import controls have
+> names; panels focus their close control and return focus to their opener; the
+> import modal traps Tab and restores Settings focus.
+> Saved Text size / Text tone / Font preferences now apply to the live DOM and
+> remeasure the chrome. Motion Auto follows the OS live; Reduced removes CSS
+> animation/transitions and also freezes Pixi ambient clocks, snaps camera/fade
+> state and gates Planetside organisms. The canvas is a named focusable region:
+> arrows cycle the rendered galaxy/star/planet targets, Enter/Space opens the
+> same survey card, +/- zooms around the target, Escape releases it, a visible
+> ring marks it and a polite live region announces it. Clipboard refusal never
+> reports success: the exact CF1 code is selected in Search with an honest
+> browser-copy instruction.
+> The dock remains a 44px pointer/focus target while its icon uses the 42px
+> client line left inside the 1px border, preventing a hidden two-pixel scroll
+> overflow. A++ also preserves notification hierarchy: the toast title remains
+> 19px while its body is 16px rather than being flattened to one size.
+> Renderer density remains dynamic after resize/visual-viewport change. The
+> selected plan retains the touch-2 / desktop-3 heat caps and native backing
+> through UHD 3,840×2,160. Ordinary viewports may use 8,388,608 backing pixels
+> per canvas / 16,777,216 aggregate; a viewport **strictly larger** than
+> 8,388,608 CSS pixels selects the ultra tier of 2,073,600 per canvas /
+> 4,147,200 aggregate. Exact rounded-dimension fitting keeps fractional DPR from
+> rounding over the selected cap, so desktop-8k and 5,120×2,880 each use two
+> 1,920×1,080 stores (2,073,600 each /4,147,200 combined), at DPR 0.25 and 0.375
+> respectively. `autoDensity` keeps CSS and hit
+> coordinates viewport-sized. A live transition destroys and collapses the old
+> backdrop before resizing/allocating its replacement, records the exact
+> transition peak against its budget, and refreshes Pixi screen/texture/event
+> geometry even when a same-aspect viewport change happens to retain the same
+> integer backing dimensions. Downshift and restore each require a strict exact-
+> target/`Browser.getVersion` pair plus an advancing later post-render ticker turn;
+> stopped and stale tickers fail deliberate controls. The existing scene rerender
+> still runs on the transition—this repair lowers the resource ceiling and does not
+> introduce a separate art-quality tier or scene-rerender optimization.
+>
+> Species art remains a lazy chunk, but readiness is now one shared Promise with
+> one latest subscriber per interested view. An idle prefetch can no longer
+> swallow a later Compendium/Planetside refill, and a 1,500-row Compendium cannot
+> retain 1,500 callbacks and replay the whole list 1,500 times when art arrives.
+>
+> V2 browser smoke and root `uilayout.js` use the owned portable CDP lifecycle.
+> Legacy `bootperf.js` shares their executable resolver and pinned `ws` transport
+> but retains its fixed-port/startup/cleanup lifecycle; unresolved performance metrics fail rather
+> than print a profile-shaped success. The glass matrix's import/reload contract
+> is likewise fail-closed. Import settlement, navigation commit, and replacement
+> boot are three separately witnessed phases: exactly one
+> `cf-v2-reload-release/v1` event must arrive within the 20-second import bound and
+> prove Pixi renderer/stage release,
+> application-view detachment, and collapse of the application/backdrop canvases
+> to at most 1×1; the top-frame loader then gets 5 seconds to commit a change; and
+> only that committed loader starts the new document's independent 20-second boot
+> budget. A vanished old execution context is not navigation evidence by itself.
+> The replacement initializes Pixi with `autoStart:false` and keeps its ticker
+> stopped through save load, scene render, slice publication and input wiring.
+> Its exact event-owned `cf-v2-boot-phase/v1` sequence is `app-init-start` →
+> `app-init-complete` → `backdrop-complete` → `save-load-start` →
+> `save-load-complete` → `scene-rendered` → `slice-published` →
+> `wiring-complete` → `ticker-started` → `first-tick` → `ready-scheduled` →
+> `ready-emitted`. Each receipt binds the exact session, default top context,
+> generation, origin, loader and document token; the ticker must be false through
+> wiring and true thereafter. Only after a real tick/render, animation frame and
+> later task does the optional `cf-v2-slice-ready/v1` tail event publish. Glass
+> accepts exactly one event from the
+> exact target session and new default top context/generation/origin on the changed
+> loader, with the expected URL and changed token, then runs two strict,
+> no-retry, at-most-2-second confirmation cycles in that context. Each target
+> command is issued concurrently with root-session `Browser.getVersion`; cycle 1
+> samples immediately, while cycle 2 resolves from a one-shot Pixi ticker callback
+> after the render listener and must advance the ready ticker count. A timely
+> browser heartbeat plus an unanswerable/lost target is a product finding; an
+> unhealthy or late heartbeat is an instrument/transport failure. The exact
+> five-command ledger records the import arm and both target/heartbeat pairs.
+> Sticky receipt timestamps—not serial Page/Runtime polling—own the deadlines.
+> Import-phase and generic release bindings share one capture-scoped monotonic
+> ordinal: a successful tail is exactly `release-started` N → release N+1 →
+> `release-complete` N+2. Only the valid release-first intermediate waits under
+> the unchanged import deadline. Phase-complete-first, premature, nonadjacent,
+> missing, late, duplicate, malformed, wrong-provenance, early boot/ready, and
+> an overlong sequence-8 duplicate terminal fail closed.
+> The payload's browser-native
+> `performanceNow` must be strictly below 20 seconds, with the exact boundary a
+> failing control, so observer descheduling cannot make a genuinely late product
+> boot look timely. The ready chain plus both confirmations witnesses publication,
+> an immediate serviced target turn, and a later post-render ticker turn; ready by
+> itself is not steady-state answerability, and later driven outcomes remain
+> authoritative.
+>
+> The product produces that witness from one code-owned path used by its three
+> intentional reloads: Training restart, supported expedition import, and the
+> storage-retry reload. Each first claims one mutually exclusive replacement
+> transaction before awaiting. Claiming synchronously stops a running outgoing
+> Pixi ticker before the first persistence wait. Only the exact owner of a failed
+> or rolled-back replacement may restart a ticker that its claim stopped; a
+> successful flow destroys the app while it is already quiescent, and pre-claim
+> invalid import rejection leaves the live renderer untouched. The chosen flow
+> blocks ordinary persistence, destroys Pixi and global/
+> child texture resources, detaches and shrinks both outgoing backing canvases,
+> then crosses one task boundary before `location.reload()`. It does not use a
+> generic `pagehide` teardown, because a browser-cache restore must not revive a
+> destroyed application. The harness retains bounded Page, Runtime, Inspector,
+> and Network lifecycle/failure evidence and fails on duplicate/invalid release
+> witnesses, crash, unreachable navigation, replacement exception, fatal document
+> load, loader reversion, wrong URL, or any missed phase. The controls
+> `replacement-document-loader-token-phase`, `reload-resource-release`, and
+> `replacement-boot-phase-sequence` reject stalled navigation, stalled new-loader
+> boot, same-loader token mutation, early context loss, just-late transitions,
+> missing/reordered/identity-mismatched boot stages, early/running tickers,
+> retained canvases, unreleased renderer, and over-budget aggregate backing
+> pixels. `ready-confirmation-heartbeat`, `ready-confirmation-ticker-progress`,
+> `ultra-viewport-render-budget`, and `ultra-same-backing-resize` extend the full
+> plan to 57 controls. The report separates executed, product-blocked, and omitted
+> controls so a product answerability failure cannot be overwritten by a generic
+> instrument omission. The run remains single-attempt—a red result is never
+> retried into green.
+> An event-owned `cf-v2-import-phase/v1` stream now proves the pre-release half:
+> `invoked` begins with the ticker running; `claimed`, persistence wait/write, and
+> release stages require it stopped. The absolute 20-second import clock begins
+> before one bounded non-awaiting arm command and is never renewed. Controls
+> `import-phase-sequence` and `replacement-ticker-quiescence` reject missing,
+> reordered, wrong-operation/context, just-late, and still-rendering evidence.
+> IndexedDB itself is not wrapped in a timeout race, and no retry or timeout
+> increase turns a red import green.
+> The current profile is not yet a release
+> budget gate: cold repetitions, long-task/memory budgets, Compendium
+> virtualization, scene-texture disposal, live HD planet replacement and fuller
+> hidden-tab behavior remain open. The v2 static preview packaging/hosting
+> contract is documented separately in `port/DEVELOPMENT_PREVIEW.md`; a preview
+> is development evidence, never a release or production deployment.
+>
+> **Earlier repair evidence:** pushed commit
+> `8b8a740286a56591cac9dc5734a2fba4c088939b` passed its exact sequential local
+> battery and repaired test-battery #199's desktop-8k reload witness plus
+> small-phone Planetside/trail collision. Matching test-battery #200 passed every
+> root/product/v2 gate, the one-attempt smoke, complete 12-viewport glass matrix,
+> automated personas and preview packaging; only preview CDP startup failed before
+> a page existed because that step lost the previous step's Chrome environment and
+> selected Linux Edge. Pushed commit `4d14a75e934536dc5f204e40c74f666cc9514df4`
+> pins Chrome at job scope.
+>
+> Clean code/tool commit `08379d8c072c7eb22e2a029d666972c86d496326` carries the follow-on
+> root-layout repair. `uilayout.js`
+> now consumes the v2-owned resolver/launcher: port 0 plus `DevToolsActivePort`,
+> exact browser provenance, early-exit and bounded stderr diagnosis, bounded
+> TERM→KILL cleanup, and owned-profile removal. It atomically replaces its ignored
+> schema-v2 report from `running` to terminal `pass` / `fail` /
+> `instrument-fail`, preserves legacy `results`, and supports a stale-PASS/exit-73
+> `--selftest` plus exact `--verify-run=ID` freshness. A full PASS must reproduce
+> the sealed v1.8.9 report's exact 787 `viewport/surface/name` outcomes; targeted
+> runs certify only their requested viewport subset. The selftest removes one
+> sealed outcome while keeping counts consistent and requires rejection. Its first sandboxed Edge
+> diagnostic preserved SIGABRT as red; a separately permitted mutable-tree run
+> then completed 787/787 across 10 viewports.
+>
+> Matching test-battery #201, run
+> [`31586917924`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924) /
+> job [`94082765087`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31586917924/job/94082765087),
+> completed once without retry and is **RED**. Every preceding root/product/v2
+> gate, including one-attempt `smoke:ci`, passed. Only the desktop-8k preference-
+> fixture import leg instrument-failed: after the 20-second replacement wait, the
+> old top-frame loader still owned the frame while the old slice token/import
+> phase were absent. That is a replacement-lifecycle/instrument finding after
+> reload was requested, not a save-classifier rejection, `import-rejected`, or
+> reported repository-write error. It must not be erased by rerunning unchanged
+> code.
+>
+> Matching test-battery #202, run
+> [`31594595288`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288) /
+> job [`94106996466`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31594595288/job/94106996466),
+> completed once without retry at pushed `93f75a93ab80a3b199e55b5b49d9488e8fc57f53`
+> and remains **RED**. Every earlier root/product/v2 gate and `smoke:ci` passed;
+> only desktop-8k glass import/replacement instrument-failed when the former
+> observer first returned at 61.163 seconds. That observer serially awaited three
+> CDP commands with 30-second ceilings, so #202 does not prove a 61-second product
+> boot, save rejection or presentation failure. It is preserved instrument
+> ambiguity, without retry or a timeout increase.
+>
+> Matching test-battery #203, run
+> [`31602984470`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470) /
+> job [`94134750800`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31602984470/job/94134750800),
+> completed once without retry at exact pushed head
+> `38e4f362533e272f56f708229f7a037f38ae8951` and is **RED**. All root,
+> product, v2 and `smoke:ci` gates before glass passed. Eleven viewport rows
+> passed; only desktop-8k import reached its 20,015 ms bound before any release,
+> ready, navigation, fatal, command or event witness appeared. The outgoing
+> 5,461×3,072 Pixi ticker was still scheduling software-rendered frames across
+> the durable-write wait and teardown. This is a pre-release renderer-pressure
+> cliff, not proof of save corruption or a rejected repository write. Preserve
+> #203 as first-attempt evidence; do not retry it or lengthen the deadline.
+>
+> Immutable executable evidence source
+> `7d9980e37e60f0cec8cb840e75098872b9cc90d0` passed its exact sequential battery.
+> Root preflight selftest/preflight, validate/fingerprint and smoke passed; the
+> only preflight note was Edge 151 versus pinned Edge 150 drift. Certifying run
+> selftest passed, then `exact-7d9980e-root-layout` passed the sealed 787/787
+> inventory across 10/10 viewports and exact verification. Rarity completed 60M/0 downgrades and dead-code review
+> found 3 tooling references. V2 passed 24 files / 273 tests / 1 skip plus every
+> gate/selftest; one-attempt smoke passed 0 findings / 10 screenshots.
+>
+> Exact-source certifying glass passed 12/12 viewports, 52/52 controls,
+> `omitted=[]`, 0 findings/instrument failures/retries, with working-tree digest
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+> All 12 exact import-phase/release/ready paths passed, with replacement totals
+> of 194–239 ms. Desktop-8k recorded a 3 ms arm, 21 ms import-phase span with
+> the ticker true only at `invoked`, 0 ms write, 19 ms release, both
+> 5,461×3,072 backings collapsing to 1×1, `performanceNow` 199.5 ms, 1 ms
+> confirmation and 239 ms total. All nine automated personas passed. The initial
+> malformed `npm run perf -- --runs=4` command was rejected before a browser
+> launched; the correct single terminal diagnostic then recorded 646 ms painted /
+> 726 ms answerable / 74 ms press→panel / 157 ms rebuild, not a retry of an
+> evidence failure. Exact 37-file / 10,170,996-byte preview
+> `dev-preview-exact-7d9980e` verified and browser-smoked PASS under Edge 151 at
+> 320×568 for expected origin `https://dev-celestialfrontier.github.io`, distinct
+> from production, content SHA-256
+> `a4a3d0f6300df1bf14a21149b53c0a4591283ae2e4ab3ab5b4034cdd130409a7`, exact
+> `port/v2` tree `5e90265993304c5b03e49a7baef2479ae2c37184`, `publishable:false`.
+> `7d9980e` remains immutable prior exact evidence. The later prior repair
+> evidence is bound to `46fb627640e42ea0f43e2e144529884a959d1e72` below. The
+> artifact is bound to `https://dev-celestialfrontier.github.io`, but no host or
+> publication is authorized and the separate-origin human playtest is still
+> required before Ready or merge.
+>
+> Before that stable-source battery, one smoke attempt refused mixed-source
+> evidence because tracked documentation changed during its run (`source identity
+> changed during slice smoke`). The single execution had no automatic retry and
+> remains a coordination/instrument refusal, not a product failure. None of the
+> automated results substitutes for matching CI or human play.
+>
+> Matching test-battery #204, run
+> [`31612817092`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092) /
+> job [`94168172635`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31612817092/job/94168172635),
+> completed once without retry at exact pushed head
+> `4cee7d807b8f9258e370aad31c30756269f95a96` and is **RED**. Every earlier gate
+> and one-attempt `smoke:ci` passed. Desktop-8k import, primary write, 35 ms
+> renderer release, navigation, changed loader at 45 ms, load at 231 ms and FCP
+> at 268 ms were healthy after the arm command had queued for 9,504 ms; the new
+> document then emitted no ready witness within its independent 20-second budget
+> and no fatal event. The failure exposed two concurrent boot costs: each
+> full-viewport canvas could allocate the full 16,777,216-pixel ceiling, and Pixi
+> auto-started before asynchronous save/scene/slice/input wiring. Preserve #204
+> as first-attempt evidence; it is not an import, write, release, navigation,
+> load or FCP failure, and it must not be retried or hidden by a longer deadline.
+>
+> Immutable executable source `46fb627640e42ea0f43e2e144529884a959d1e72`
+> passed the exact local battery. One malformed `--verify-run` operator invocation
+> caused local SIGABRT and report overwrite; one correct rerun plus verification
+> then passed `exact-46fb627-root-layout`, 787/787 across 10/10 viewports. V2
+> passed 273 tests /1 skip and all gates/selftests; one-attempt smoke passed 0
+> findings /10 screenshots. Full certifying glass at source-snapshot digest
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`
+> passed 12/12, planned/executed 53/53, `omitted=[]`, zero findings/instrument
+> failures/retries in 170–197 ms. Exact 8K was 190 ms total: 2 ms arm, 35 ms
+> release→changed-loader commit, 137 ms commit→ready, `performanceNow` 170.5 ms
+> and 1 ms confirmation; both outgoing 3,862×2,172 canvases collapsed to 1×1,
+> while the replacement pair remained 16,776,528 pixels combined. All nine
+> automated personas passed, still not a human playtest; terminal-only performance
+> was 595/676/76/168 ms. Manifest `dev-preview-exact-46fb627` records 37 files /
+> 10,176,376 bytes, content SHA-256
+> `4d7638e92c4d02cffb953c9588bb1fff2e4c38153c3ff4ad752687e4a0263b58`,
+> expected origin `https://dev-celestialfrontier.github.io`, production distinct
+> and `publishable:false`. `46fb627` remains prior immutable exact evidence; live
+> Git/PR checks determine exact tip/upstream status. Host, human play, Ready, merge,
+> release, deployment and version authority remain unchanged.
+>
+> Matching test-battery #205, run
+> [`31621227550`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31621227550) /
+> job [`94196289291`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31621227550/job/94196289291),
+> completed once without retry at exact pushed head
+> `c57305fbf30af2bc8158ff46af1ec49ec4455d95` and is **RED**. Every preceding
+> gate and `smoke:ci` passed. Desktop-8k completed import, write, release,
+> changed-loader navigation, all 12 application boot stages, and ready at
+> browser-native `performanceNow` about 3,733 ms; the exact-context confirmation
+> alone timed out at two seconds. #205 carried no concurrent browser-process
+> heartbeat, so it remains strong evidence of post-ready target starvation but
+> not retrospective proof that browser/CDP transport was healthy. Preserve it
+> without retry.
+>
+> Prior diagnostic only: the earlier `dirty-diagnostic` targeted/smoke/glass captures
+> based on `c57305f` remain non-authoritative; their sandbox `EPERM` and corrected
+> `7680.000000000001` harness assertion did not retry a product failure.
+> Immutable executable source `135a635d066d1c67e3096dc134de9247267898d5`
+> passed the complete exact sequential battery from clean source-status SHA-256
+> `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` and
+> source-snapshot
+> `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`.
+> A sandbox-only Edge SIGABRT interrupted preflight/CDP selftest; the same checks
+> passed outside sandbox without a product retry. Root validate, legacy smoke,
+> rarity and dead-code passed. Root layout
+> `exact-135a635d066d-20260812T192848Z-root-layout` passed 787/787 across 10/10
+> under Edge 151 in 75,532 ms (report SHA-256
+> `7e2689c31e1095885ee8139bb395b40e799972461649efd100b631a4e6e9f85f`).
+> V2 passed 273/1 plus all type/art/override/coverage/spec gates. One-attempt smoke
+> passed 0 findings /10 screenshots /0 retries in 105,379 ms (SHA-256
+> `c838f3e7dfdf161b7bfa6111c6979215a2ba439fdd44a4cb8e00a8cdf7c3d1a5`).
+> Full certifying glass passed 12/12, 57/57 unique, `blocked=[]`, `omitted=[]`,
+> zero findings/instrument failures/retries in 52,254 ms (SHA-256
+> `1f14906d178528613fdf52db53ee4e1f84b6a48ceb21ad3a41bd9d0c5348b23b`),
+> with reloads at 176–185 ms. Exact 8K was 185 ms total /2 ms arm /12 ms
+> invoked→release /32 ms release→commit /122 ms commit→ready /152.2 ms
+> `performanceNow`; target confirmations were 1/9 ms and heartbeats 1/1 ms.
+> Outgoing/replacement stores were 2,730×1,536 each; outgoing stores collapsed
+> to 1×1 and the replacement pair remained 8,386,560 combined pixels. All nine
+> automated personas passed—not human play—with JSON/Markdown SHA-256
+> `c17c44fcb3d534707dc6186bbd4fbcae4d1cfea511bdec8a263ec48be4927a58` /
+> `43d5d52e44d7d19aec597a3df5b2599c0da143bb7170d16c17ed141bd390d6b4`.
+> Terminal-only performance was 578/659/76/170 ms. Preview
+> `dev-preview-exact-135a635d066d-20260812T192848Z` browser-smoked PASS under
+> Edge 151; manifest SHA-256
+> `0233984ca2bad28c189e979d4a30082d6137a06e8eac086c3b2525989813dd4e`,
+> 37 files /10,186,230 bytes, content SHA-256
+> `da4e066b447db073383f59dd592cd2a19a186d32ce13a2edd05fbc07e66aa10f`,
+> tree `d1ab1d79fba4ba2939c3e1ec0661fb60498afb23`, expected separate origin,
+> production distinct and `publishable:false`. Live Git/status/PR checks determine
+> the exact docs-only tip; matching CI, host approval, human play, Ready, merge,
+> release, deployment and version authority remain separate and open.
+>
+> Test-battery #206, run
+> [`31635297321`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321) /
+> job [`94243979205`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31635297321/job/94243979205),
+> completed attempt 1 without retry at exact pushed
+> `558e0565d368a0b81d86d99fd380ebc50d30bc02`; merge `e160577` is tree-identical.
+> Every preceding step and `smoke:ci` passed. The 8K reload passed in 8,749 ms,
+> ready published at `performanceNow` 2,578.6 ms, and initial target cycles completed
+> in 1,905/1,910 ms with 3/1 ms heartbeats. The later 5,120×2,880 transition's
+> exact-context `Runtime.evaluate` timed out at 2,003 ms against the strict 2,000 ms
+> bound while `Browser.getVersion` answered in 2 ms; `last:null`. That sole
+> `ULTRA_VIEWPORT_RESIZE_UNANSWERABLE` result is a product finding, not instrument
+> ambiguity. Glass covered all 12 viewports with 1 product finding, 0 instrument
+> failures, 56 executed plus 1 product-blocked control =57, `omitted=[]`, and 0
+> retries. No persona or preview evidence was produced. Preserve #206 red without retry.
+>
+> Test-battery #207, run
+> [`31642880191`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191) /
+> job [`94269466117`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31642880191/job/94269466117),
+> completed attempt 1 without retry at exact pushed
+> `ff9bebb22aaac0e95cd406e1e15737898452911a`; merge
+> `8dfe018590edf8a5d15291730c873869b96caae2` is tree-identical. All prior gates,
+> `smoke:ci`, and 11 glass rows passed. Tablet-portrait alone instrument-failed when
+> a valid healthy release witness was received between ordered `release-started` and
+> `release-complete`. The report retained 0 product findings, 1 instrument failure,
+> 57 planned/listed controls, empty blocked/omitted ledgers, 0 retries, and no persona/
+> preview output. Preserve #207 red; this is an observer race, not a product/UI failure.
+>
+> The dirty #207 diagnostic (report
+> `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`) remains
+> chronology only. Immutable executable source
+> `6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the complete exact clean battery.
+> A first sandboxed preflight Edge launch SIGABRTed before CDP; the same invocation passed
+> when permitted with only expected Edge 151/pin-150 drift, an environment launch refusal and
+> not a product retry. Root gates and exact layout 787/787 across 10/10 passed (report
+> `58dc4ef4456fac012b2e8f0aa801917b5579cffe435fd4576827ff29bcbb4b78`); v2 passed
+> 273/1 plus all gates; one-attempt smoke passed 0 findings/10 screenshots in 105,430 ms
+> (report `139b10ea16d17c109d5b624fa75daf73291d98f5ad8fe7df569501829ab5f844`).
+> Certifying glass passed 12/12 and 57/57 in 54,877 ms with exact 6/7/8 tails on every
+> row, empty blocked/omitted ledgers, and zero findings/instrument failures/retries (report
+> `a05ba65e28ac94b146b051164c1b22195bfaa7509bd47d9631561fc394920b6c`). Tablet-
+> portrait was 196 ms with commands 2/1/1/7/0 and ready `performanceNow` 166.3 ms.
+> Exact 8K was 197 ms with commands 1/1/0/7/0, release→commit 34 ms, commit→ready
+> 131 ms, ready `performanceNow` 163.6 ms, outgoing 2,365×1,330 twins →1×1, and
+> replacement at 6,290,900 combined pixels. Nine automated-only personas and terminal-only
+> 635/717/77/151 ms performance passed. Preview
+> `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151 over loopback,
+> bound to the expected separate development origin, with `publishable:false` and content
+> `04bb2c095468a61834992c970a8ac7c364efb37df9ac4397966fd3a4bc43e69d`.
+> That immutable source remains prior #207 executable evidence; live Git/PR state determines
+> the current tip, upstream, and checks, and the selected pushed tip still requires matching CI.
+> No human, host, Ready, merge, release, deploy, or version authority follows.
+>
+> Test-battery #208, run
+> [`31649176954`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954) /
+> job [`94289516851`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31649176954/job/94289516851),
+> completed attempt 1 without retry at exact pushed head
+> `ee8bc281c424b5a8f998dc7327372e5f5a18067d`; merge `8fc6b4fc` is tree-identical,
+> and branch-flow run `31649175614` / job `94289512873` passed. Steps 1–15,
+> `smoke:ci`, and the first 11 glass rows passed. Desktop-8k alone reported
+> `REPLACEMENT_UNANSWERABLE_AFTER_READY`: its valid 2,365×1,330 pair /6,290,900
+> pixels scheduled ready at browser performance 584.3 ms but emitted at 3,143.8 ms,
+> a 2,559.5 ms main-thread gap. Exact target cycle 1 then timed out at 2,003 ms
+> against the unchanged strict 2,000 ms bound while the browser heartbeat answered
+> in 1 ms; no fatal event occurred. The full 12-row report retained 1 product
+> finding, 0 instrument failures, 57 planned controls with
+> `ultra-same-backing-resize` product-blocked, `omitted=[]`, 0 retries, and no
+> persona/preview output. Preserve #208 red without retry.
+>
+> The fixed repair described above targets sustained responsiveness, not a one-shot
+> ticker pause: UHD stays native and the larger tier deterministically resolves 8K
+> and 5K to 1,920×1,080 each /4,147,200 combined, while ready, two-second target,
+> concurrent-heartbeat, ticker, pointer, resize, and zero-retry contracts remain.
+> Literal new-shape positives and former 2,365×1,330 plus existing 2,730×1,536
+> ready/release negatives prevent stale policy from passing.
+>
+> The `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`
+> dirty-worktree PASS is prior diagnostic chronology only. Immutable clean executable source
+> `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed committed-clean root layout
+> 787/787 across 10/10 (`c42a50873ad01a91dd439860f41f1d695a7d2bf5c41521ed8b7eb768b7ee4975`),
+> v2 273/1 plus all gates, one-attempt smoke 0/10 in 105,339 ms
+> (`90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723`; log
+> `fe8c5d42eec2a09641f3f551486046559cd4c5956591b5a7d71a25b48d926af1`), and glass
+> 12/12 unique rows and 57/57 controls in 53,083 ms with exact 6/7/8 tails, empty
+> blocked/omitted ledgers and zero findings/instrument failures/retries
+> (`42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f`). Exact
+> 8K was 171 ms / browser performance 161.9 ms, commands 1/1/1/3/0 ms, 33/129 ms
+> release→commit/commit→ready, and two 1,920×1,080 stores /4,147,200 pixels at DPR 0.25;
+> terminal-only performance was 606/685/74/171 ms. Preview
+> `dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was browser-smoked under Edge
+> 151 over loopback, bound to expected separate origin `https://dev-celestialfrontier.github.io`,
+> with `publishable:false` (manifest `1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d`,
+> content `5db7790977071235ed164fb8f382bd67421c9fd5e834a504cdb4e1a1e8f47589`).
+> Live Git/PR determines current tip/upstream/checks; the selected pushed tip requires matching
+> CI. No host, human, Ready, merge, release, deployment, or version authority follows.
+>
+> Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
+> remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+> snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
+> Edge 151/pin-150 preflight warned; root validate/smoke, exact layout 787/787 across
+> 10/10 (`d0d9a9b3c58f996e5fb7b10f21aa98c974272531f10ccdb945cd026942429252`),
+> v2 273/1 plus all gates, and one-attempt slice smoke 0 findings/10 screenshots
+> (`b835f79764f4e22a2179ab74f9412491ee4d81730e775889372461d64ddd0474`) passed.
+> Certifying glass passed 12/12, 57/57, empty blocked/omitted and zero findings/
+> instrument failures/retries in 52,557 ms (`7fe33219e70361140ebc931f0d77fca0976a46fe51eecc42815f41eba110980c`).
+> Exact 8K was 203 ms / `performanceNow` 158.2 ms, phases 2/11/33/127 ms, targets
+> 1/10 ms, heartbeats 0/0 ms; 2,365×1,330 outgoing stores →1×1 and replacement
+> remained 6,290,900 pixels combined. Nine automated-only personas passed (JSON
+> `c10c9e33542ed57b4c51683c0ddf3f1bbc468696a025e88ef2d1e500209581bc`; Markdown
+> `1c9961515028a716ba064ca32ea9dd3ef2d41118cfde4c76b24c16520daa2d14`), plus
+> terminal-only 581/659/73/152 ms performance. Preview
+> `dev-preview-exact-df1c28b-20260812T211642Z` was browser-smoked under Edge 151 over
+> loopback, bound to the expected separate dev origin, with `publishable:false`, manifest
+> `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`,
+> content `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`, tree
+> `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. That source remains prior #206 evidence;
+> both it and clean `6554b2b` remain prior evidence; clean `307b8aaf` is current local
+> #208 executable evidence. No host/human/Ready/
+> merge/release/deploy/version authority follows.
+
+**STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
+v2 overlay matches `port/v2` as of 2026-08-12. The addenda at the end preserve
+**THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
+its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
+full-screen surface, and any surface raised over training must clear the lesson
+card through `--tut-bot` while also preserving its dock clearance.
 **Purpose:** the mobile-first presentation layer — the unified topbar, the one-panel-at-
 a-time manager, the "fold language", the vista box, the cards, and the platform caps —
 plus the headless layout gate that guards them.
@@ -29,7 +553,8 @@ plus the headless layout gate that guards them.
 > worlds now PLACE creatures (they were skipped by the land block). Gas giants (`_hdDeckScene`) carry
 > native AERIAL life (Earth life unsupported). Coverage sheets: `tools/sheets/biome-coverage.js`
 > (MODE=earth|proc, EMPTY=1); integrity gate: `tools/biome-audit.js`.
-**Source of truth:** this doc is the DESIGN spec; main.js + tools/ implement it.
+**Source of truth:** this doc is the DESIGN spec; `main.js` + `tools/` implement
+the legacy sections, and `port/v2` implements the dated port overlay.
 
 ## 1. Overview
 Primary device is **iPhone** (CLAUDE.md rule 10). The whole chrome hangs off a single
@@ -37,7 +562,8 @@ unified topbar whose height is measured, not guessed, and published as CSS custo
 properties so every surface aligns. Panels obey one law — opening one closes the rest, a
 corner ✕ closes it, a tap on empty space closes it — while true modals (fights, prompts)
 stand apart. jsdom runs logic but does NO layout, so a dedicated CDP gate
-(`tools/uilayout.js`) drives real headless Edge across 9 viewports to catch the bugs the
+(`tools/uilayout.js`) drives the resolved Chromium-family browser through the shared owned
+launcher across 10 viewports to catch the bugs the
 logic battery is blind to by construction.
 
 ## 2. Rules & mechanics
@@ -155,7 +681,7 @@ rule 9: the catalogue is "Compendium"; "Prime Codex"/"Cosmic Codex" keep "Codex"
 - DPR cap: **2** touch / **3** desktop. Notification cap: **60** (50 saved). Art cache
   cap: **1,200**; thumb cache cap: **500** (`_thumbSet`). Icon/portrait master: **144px**.
 - `PANELS`: 11 surfaces (7 rail with ✕, 4 header). `MODAL_SEL`: 15 modal ids.
-- Layout gate: **9 viewports** (see §6).
+- Layout gate: **10 viewports** (see §6).
 
 ## 4. Data / save fields
 UI presentation persists via settings fields (full list in SAVE_SYSTEM.md): `tips`
@@ -185,10 +711,15 @@ contract is the one UI-adjacent path that needs a re-pin — see DETERMINISM.md.
 - Cards — `#itemcard` 13747; character sheet `openSheet`/`closeSheet` 16303/16329,
   `renderDoll`/`paperdollAvatar` 10945; Shipyard `closeYard` 13884; reveal fold 8878.
 - Caps — notification 9576 / 10212; art cache 1900; 144px masters 14151.
-- Layout gate — **`tools/uilayout.js`**: VIEWPORTS list (9): iphone-se, iphone,
-  iphone-max, android, ipad-port, ipad-land, laptop, desktop, wide (uilayout.js 29–39);
+- Layout gate — **`tools/uilayout.js`**: VIEWPORTS list (10): iphone-se, iphone,
+  iphone-max, android, ipad-port, ipad-mini, ipad-land, laptop, desktop, wide;
   SURFACES 41–50; laws = ✕ corner, z-order, no side-scroll, no clipped text; drives real
-  Edge over CDP; proof sheets to `tools/uisheets/`; exit 1 on any FAIL.
+  Chromium through the shared owned CDP launcher; proof sheets to `tools/uisheets/`;
+  ignored atomic `celestial-frontier/uilayout-report@2` retains the legacy result rows
+  plus exact run/browser/terminal status; full PASS binds all 787
+  viewport/surface/name keys to `port/baseline-v1.8.9/uilayout-report.json`, while
+  `--vp` remains diagnostic scope; `--selftest` and `--verify-run=ID` fail closed;
+  exit 1 on product FAIL and 2 on instrument failure.
 
 ## 7. Open questions / pending
 - `ROADMAP.md` shows ongoing device-pass / overlay-eater work — the layout gate exists
@@ -318,7 +849,7 @@ mirror `TUT_PRI_SURF`; **change one and change the other.**
 ### How it is gated
 - **smoke** proves the JS half: at steps 5 / 6 / 8 the right surface carries `.tutpri`, `#logbtn`
   never masquerades as `#log`, and the marks clear at graduation.
-- **tools/uilayout.js** proves the half smoke cannot see — a `training` probe on all 9 viewports
+- **tools/uilayout.js** proves the half smoke cannot see — a `training` probe on all 10 viewports
   that publishes `--tut-bot` the way `_tutSpot` does, then **hit-tests** (`elementFromPoint`) the
   dock chips, each open board, the card on the LAND step, and Settings › Audio.
   Replayed against the v1.8.2 build with `--url=`, it reproduces the original report on all three

@@ -29,13 +29,16 @@ const FORBIDDEN: Array<[RegExp, string]> = [
   [/\bXMLHttpRequest\b/, 'network'],
 ];
 
-/* file → allowed patterns there, WITH the recorded reason */
-const EXCEPTIONS: Record<string, Array<{ re: RegExp; why: string }>> = {
+/* file → the exact legacy expressions allowed there, WITH the recorded
+   reason. These are deliberately narrower than a file-wide pattern waiver:
+   a newly added `document.*` in either file must still fail the gate. */
+const EXCEPTIONS: Record<string, Array<{ forbidden: RegExp; exact: RegExp; why: string }>> = {
   'combatcore/src/combatcore.verbatim.js': [
-    { re: /\bdocument\s*\./, why: 'playerAvatar/paperdollAvatar draw canvases — app-coupled exports documented in index.ts; no fixture path reaches them. They move to the app layer in Phase 2+.' },
+    { forbidden: /\bdocument\s*\./, exact: /const S2=240,cv=document\.createElement\(''\);cv\.width=cv\.height=S2;/, why: 'playerAvatar canvas is app-coupled and moves to the app layer.' },
+    { forbidden: /\bdocument\s*\./, exact: /const W2=360,H2=600,cv=document\.createElement\(''\);cv\.width=W2\*2;cv\.height=H2\*2;/, why: 'paperdollAvatar canvas is app-coupled and moves to the app layer.' },
   ],
   'worldgen/src/worldgen.verbatim.js': [
-    { re: /\bdocument\s*\./, why: '★ FINDING (2026-07-31): galaxyHaze draws a 2048px canvas INSIDE the WorldGen [domain] module — the source violates its OWN architecture rule ("domain: no DOM"). Only the Renderer (app) calls it; no fixture can serialize a canvas. Carried verbatim; flagged for relocation upstream (main.js) and to the art layer in Phase 4.' },
+    { forbidden: /\bdocument\s*\./, exact: /const T=2048, cv2=document\.createElement\(''\); cv2\.width=cv2\.height=T;/, why: 'galaxyHaze is a known legacy render helper awaiting art-layer relocation.' },
   ],
 };
 
@@ -58,6 +61,23 @@ function codeOnly(src: string): string {
     .replace(/`(?:[^`\\]|\\.)*`/g, '``');
 }
 
+function scanFile(rel: string, raw: string): string[] {
+  let src = codeOnly(raw);
+  const hits: string[] = [];
+  for (const exception of EXCEPTIONS[rel] || []) {
+    const matcher = new RegExp(exception.exact.source, exception.exact.flags.includes('g')
+      ? exception.exact.flags : exception.exact.flags + 'g');
+    const count = [...src.matchAll(matcher)].length;
+    if (count !== 1) {
+      hits.push(`legacy exception changed or duplicated (${exception.why}; found ${count})`);
+    } else {
+      src = src.replace(exception.exact, ' ');
+    }
+  }
+  for (const [re, why] of FORBIDDEN) if (re.test(src)) hits.push(`${re} (${why})`);
+  return hits;
+}
+
 describe('★ GATE B — no-DOM / no-nondeterminism lint over packages/domain', () => {
   const files = [...walk(domainRoot)];
   it(`scans a sane file set (${files.length} files)`, () => {
@@ -66,15 +86,14 @@ describe('★ GATE B — no-DOM / no-nondeterminism lint over packages/domain', 
   for (const f of files) {
     const rel = path.relative(domainRoot, f).replace(/\\/g, '/');
     it(rel, () => {
-      const src = codeOnly(fs.readFileSync(f, 'utf8'));
-      const allowed = EXCEPTIONS[rel] || [];
-      const hits: string[] = [];
-      for (const [re, why] of FORBIDDEN) {
-        if (!re.test(src)) continue;
-        if (allowed.some((a) => String(a.re) === String(re))) continue;
-        hits.push(`${re} (${why})`);
-      }
+      const hits = scanFile(rel, fs.readFileSync(f, 'utf8'));
       expect(hits, hits.join('; ')).toEqual([]);
     });
   }
+  it('negative control: an extra DOM access in an exempt file is still rejected', () => {
+    const rel = 'combatcore/src/combatcore.verbatim.js';
+    const raw = fs.readFileSync(path.join(domainRoot, rel), 'utf8')
+      + '\nfunction injectedDomRegression(){ document.body; }\n';
+    expect(scanFile(rel, raw).join('; ')).toMatch(/DOM access/);
+  });
 });

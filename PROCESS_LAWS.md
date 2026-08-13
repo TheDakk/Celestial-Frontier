@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-11. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-12. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -97,6 +97,15 @@ roughly by how often they have bitten.
 ⚠ DOC/CODE DISAGREEMENT IS A FINDING EITHER WAY. CF1802-09 (free cataloguing) was a case where
   the GUIDE was right — "the survey reveals the roster; it catalogues nothing" — and the CODE
   had drifted. Check which one is wrong before "updating" the doc.
+⚠ **DEVELOPER MARKDOWN IS NOT PLAYER-FACING DOCUMENTATION.** The v2 slice changed its travel,
+  save-protection and mobile controls while its persisted `seenGuide` field had no live Guide at
+  all. Every player-visible change must update the relevant system reference **and**, in the same
+  batch, every live in-game explanation it affects: Guide topics, contextual hints, Training and
+  release/update copy where those surfaces exist. Prove the rendered wording against the real
+  action outcome in a browser and inject stale wording as a negative control. A port Guide must stay
+  source-addressed to the mature canonical Guide; capability-aware bodies describe only systems that
+  are actually live, account for every authored legacy topic, and keep intentionally dormant topics
+  recorded but player-hidden rather than advertising them as usable.
 
 ---
 
@@ -391,3 +400,329 @@ state, while the external document supplies the human verdict. A package-level P
 literal per-row `--collect/--certify` output by wording alone, and it does not close unrelated blocked
 evidence. If the supplied review omits a reviewer identity, signature, or archive digest, record that
 limitation and the external cross-binding; never invent the missing attestation.
+
+---
+
+## Added 2026-08-11 (v2 integration audit)
+
+⚠⚠ **A TOTAL LOADER IS NOT AN AUTHENTIC SAVE CLASSIFIER.** A migration function may deliberately
+turn `{}`, partial legacy fields, or malformed rows into usable defaults so a session can continue.
+That does not authorize those bytes to replace a primary save or last-known-good backup. Classify
+storage/import input first: absent/fresh, coherent supported envelope, unsupported future version,
+corrupt/truncated payload, or transient storage failure. Only coherent supported data may be
+promoted. Future and corrupt bytes remain protected; a transient hold clears only after storage
+health is re-proven. Negative-control syntactically valid truncations, primitives/arrays, a future
+version, backup recovery, and a failed-then-successful database open. “The importer returned an
+object” proves availability, not preservation.
+
+⚠⚠ **A HANDWRITTEN DECLARATION MUST BE TESTED AGAINST THE RUNTIME IT CLAIMS.** TypeScript can make
+the wrong call shape compile perfectly when a `.d.ts` lies: an omitted required callback crashes,
+an array declared where an object exists selects the wrong path, and an incomplete combat-stat
+shape reaches a nested dereference. For every lifted JavaScript boundary, pair compile-time probes
+with runtime calls that exercise the returned shape and failure surface. Run the consumer app's own
+TypeScript configuration too; a workspace-root check can omit the exact program that exposes the
+drift. Treat declaration-only edits as behavior risk until those two directions agree.
+
+⚠⚠ **A DEVELOPMENT PATH IS NOT A DEVELOPMENT ORIGIN.** Browser persistence is isolated by
+scheme + host + port, not by a URL pathname. A GitHub Pages project site under
+`celestialfrontier.github.io/<repo>/` would share IndexedDB and localStorage with production even
+if its repository and visible path were different. Human previews require a genuinely separate
+HTTPS origin, a visible DEV + full-commit binding, a content-hashed manifest, noindex policy, and
+a runtime refusal on the production origin. Packaging and publication are separate approvals:
+ordinary CI artifacts remain remote-blocked, and no preview action may imply a version bump,
+release, `main` update, or live-site deployment.
+
+⚠ **A RETRY IS NOT A DIAGNOSIS.** The v2 browser gate had several intermediate red builds while
+the harness learned document readiness and outcome timing. CI runs it once, retains the complete
+raw output and structured commit/browser evidence, and surfaces the first scoped failure plus a
+related count. Never make a flaky-looking failure green through blind retries; either prove an
+expected bounded wait from observable state or leave the red run as evidence while correcting the
+instrument or product.
+
+⚠⚠ **A DYING EXECUTION CONTEXT IS NOT A NAVIGATION COMMIT, AND NAVIGATION DOES NOT
+PROVE THE OLD RENDERER RELEASED.** Test-battery #201 passed the one-attempt browser smoke and every
+earlier gate, then the desktop-8k import leg spent its former 20-second "replacement" budget on the
+old top-frame loader after that document's slice token and import-phase global had disappeared. That
+state is ambiguous: it proves neither a ready replacement nor an import rejection. It also does not,
+by itself, prove the plausible high-resolution GPU/backing-store overlap was the root cause.
+> **The remedy is two-sided and phase-owned.** The app's three intentional reloads—Training restart,
+> accepted expedition import, and storage-health retry—use one explicit code-owned release path:
+> synchronously claim one mutually exclusive replacement transaction before any await, stop ordinary
+> persistence, remove resize listeners, destroy Pixi with its global/child resources,
+> detach the view, shrink the application and backdrop canvases to at most 1×1, emit an optional
+> out-of-context diagnostic witness, then cross one task boundary before reload. Do **not** install
+> that teardown on generic `pagehide`; a browser-cache restore must not revive a destroyed app.
+> The harness independently bounds import settlement, navigation commit, and replacement boot. A
+> vanished global may be tolerated only after reload/navigation is observed; the 5-second navigation
+> clock ends only at a changed stable loader, and only then does the new document receive its own
+> 20-second boot clock. Require exactly one valid release witness and a changed loader + changed
+> document token; retain Page/Runtime/Inspector/Network diagnostics; fail closed on crash, unreachable
+> navigation, exception, fatal document load, phase regression, duplicate witness, or retained
+> canvas. Negative-control both `replacement-document-loader-token-phase` and
+> `reload-resource-release`, and never retry the first red result away.
+> A deadline belongs to the phase being exited as well as the phase that remains
+> stuck: just-late import→navigation, navigation→boot, and boot→ready transitions
+> must fail, even when their destination state is otherwise valid.
+>
+> **Correction earned by test-battery #202:** a deadline-aware loop is still not a deadline-aware
+> witness when it serially awaits blocking CDP commands. That run reached its first replacement
+> observation after 61.163 seconds because one loop could spend up to 30 seconds each in
+> `Page.getFrameTree`, `Runtime.evaluate({awaitPromise:true})`, and another frame-tree read. The red
+> result therefore did not prove a 61-second product boot or save failure; it proved the observer
+> could sleep through the evidence it was meant to time. Phase authority must come from sticky CDP
+> event receipts carrying their arrival timestamps: the exact target session, default top-frame
+> execution context, context identity/generation/origin, changed loader, URL and changed document
+> token. The payload's browser-native `performance.now()` must itself be strictly below the
+> 20-second boot budget (the exact boundary is a failing control), so a descheduled Node observer
+> cannot compress a genuinely late product boot into an apparently timely receipt. A replacement
+> page emits the optional `cf-v2-slice-ready/v1` binding only after load,
+> complete slice wiring, persistence readiness, at least one ticker turn, an animation frame and a
+> later task. The harness then performs one short, phase-owned confirmation in that exact context;
+> a command timeout may be shorter than the connection-wide ceiling but never extend it. Reject
+> missing, duplicate, malformed, wrong-session/context/loader/token/URL, pre-commit and just-late
+> witnesses, and keep fatal events outside any bounded diagnostic ring. This tail witness means
+> **boot publication plus a serviced event-loop turn**. It is not the 50 ms answerability metric;
+> later driven outcomes remain the proof that controls answer.
+>
+> **Correction earned by test-battery #203:** an end-of-transaction release witness cannot
+> diagnose or prevent renderer pressure *before* that witness. Eleven viewport rows completed,
+> while desktop-8k crossed the unchanged 20-second import bound before any release/navigation/
+> ready event; the outgoing 5,461×3,072 Pixi ticker was still allowed to render throughout the
+> durable-write wait and teardown. A replacement transaction must therefore quiesce the outgoing
+> renderer synchronously when its exclusive claim is acquired, before its first await, and resume
+> only when that exact failed/rolled-back owner had stopped a running ticker. Invalid input that
+> rejects before claim must leave play untouched. Diagnostic imports must expose an event-owned,
+> exact-operation sequence from invocation and claim through persistence, durable write, and
+> release, with the ticker running only at invocation. Start one immutable deadline before the
+> bounded non-awaiting arm command; never give a late command or phase a fresh clock. Do not wrap
+> IndexedDB durability in a generic timeout race: it can report failure while a write later commits
+> and recreate the overwrite race the ordering protects. Negative-control both ticker directions,
+> phase identity/order/context/deadline, and rollback resumption.
+>
+> **Correction earned by test-battery #204:** healthy import, renderer release, changed-loader
+> navigation, document load, and first contentful paint still do not prove the replacement app can
+> finish boot. Desktop-8k completed all of those, with no fatal event, then emitted no ready witness
+> inside 20 seconds. Two independently “capped” full-viewport canvases had each consumed the entire
+> 4,096² allowance, and Pixi auto-started before asynchronous save/scene/slice/input wiring. Under
+> software rendering, those choices can starve the work that makes the app usable even though the
+> browser has painted HTML.
+> **Budget aggregate resources at their simultaneous owner, and keep producers dormant until their
+> consumers are wired.** The application and backdrop now split one aggregate twin-canvas budget;
+> each remains no larger than native 4K. Pixi initializes with `autoStart:false`, stays stopped
+> through save load, scene publication, slice publication and input wiring, then proves a real
+> tick/render, animation frame and later task before ready. A complete boot witness must carry the
+> exact replacement session/context/generation/origin/loader/token through every ordered stage, with
+> the ticker false through wiring and true only after the explicit start. Negative-control every
+> stage, identity, ticker direction and deadline. Load/FCP is browser-document evidence—not
+> application readiness—and increasing the boot timeout does not repair resource ownership or
+> startup order.
+
+> **Correction earned by test-battery #205:** publishing every ordered boot stage and the ready
+> event does not prove the target can service the *next* turn. At exact pushed
+> `c57305fbf30af2bc8158ff46af1ec49ec4455d95`, every preceding gate and `smoke:ci`
+> passed; desktop-8k completed import, write, release, changed-loader navigation, all 12 boot
+> stages, and ready at browser-native `performanceNow` about 3,733 ms. Its sole exact-context
+> confirmation then timed out at the unchanged two-second bound. Because that run did not send a
+> concurrent browser-process heartbeat, it is strong pixel-linear evidence of post-ready target
+> starvation but cannot retrospectively distinguish an unanswerable target from a stalled browser/
+> CDP transport. Preserve the single red execution; do not retry it or promote the likely diagnosis
+> into proof the instrument did not collect.
+> **Ready must be followed by bounded target evidence and an independent transport discriminator.**
+> The matrix now sends two strict, no-retry, at-most-two-second confirmation cycles in the exact
+> ready context. Each target command is issued concurrently with root-session
+> `Browser.getVersion`; the second target command resolves only on a later Pixi ticker callback
+> scheduled after the render listener. A target timeout or lost context while that browser heartbeat
+> remains timely is a product answerability finding; a missing, malformed, timed-out, or late
+> heartbeat is an instrument/transport failure. The five-row command ledger binds the import arm
+> and both target/heartbeat pairs to their roles, cycles, session/context, await mode, ticker
+> priority, and strict deadlines. Product failure may explicitly block later controls, but it may
+> never be laundered into a generic omitted-control instrument failure: reports distinguish
+> executed, `blockedNegativeControls`, and `omittedNegativeControls`.
+>
+> The same correction tightened the resource ruler. Native backing is retained through UHD
+> 3,840×2,160. A viewport strictly larger than 8,388,608 CSS pixels selects an ultra tier of
+> 4,194,304 pixels per canvas / 8,388,608 aggregate; exact rounded-dimension fitting prevents a
+> fractional DPR from rounding over its cap. Desktop-8k therefore owns two 2,730×1,536 stores
+> (4,193,280 each / 8,386,560 combined), not the prior pair of 3,862×2,172 stores. On a live
+> density/viewport transition the old backdrop is destroyed and collapsed before either replacement
+> full-viewport store is allocated, and an exact transition peak/budget witness fails if settled or
+> transient ownership exceeds the selected tier. Same-backing-dimension viewport changes still
+> refresh CSS size, Pixi screen/texture metadata, event resolution, hit coordinates, backdrop
+> logical size, and generation; backing dimensions alone are not a resize outcome.
+
+> **Correction earned by test-battery #206:** a resize can eventually publish perfect geometry
+> and still monopolize the exact target long enough to be a product failure. Attempt 1 of run
+> `31635297321` / job `94243979205` at pushed
+> `558e0565d368a0b81d86d99fd380ebc50d30bc02` (tree-identical merge `e160577`) passed
+> every preceding step and `smoke:ci`. Desktop-8k also passed replacement reload and both initial
+> ready confirmations, but its later 8K→5,120×2,880 transition left the exact-context
+> `Runtime.evaluate` unanswered for 2,003 ms against the strict 2,000 ms bound while concurrent
+> `Browser.getVersion` answered in 2 ms. The report correctly retained the sole
+> `ULTRA_VIEWPORT_RESIZE_UNANSWERABLE` product finding, 0 instrument failures, 56 executed plus
+> 1 product-blocked control =57, `omitted=[]`, and 0 retries. Do not reclassify that as transport
+> ambiguity, retry it green, or raise the deadline.
+> **Responsive geometry requires bounded answerability throughout the transition.** The #206 repair
+> preserved native UHD and, above the existing ultra threshold, capped each simultaneous full-viewport store
+> at 3,145,728 pixels; exact rounding makes both 8K and 5K 2,365×1,330 each /6,290,900 combined.
+> Test both downshift and restore with a strict exact-target command paired concurrently with a
+> browser-process heartbeat, then require an advancing later post-render ticker turn. Deliberately
+> stopped and stale-ticker controls must fail alongside the geometry, pointer, backing and ownership
+> controls. That repair changed the resource ceiling; it did **not** optimize away the
+> existing scene rerender, so do not document a quality-tier/rerender optimization that did not land.
+> Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
+> passed the sequential exact battery: root layout 787/787, v2 273/1 plus all gates,
+> one-attempt smoke 0/10, certifying glass 12/12 and 57/57 with empty blocked/omitted
+> ledgers and zero findings/instrument failures/retries, nine automated-only personas,
+> terminal-only performance, and an Edge 151-smoked separate-origin preview with
+> `publishable:false`. That source and clean `6554b2b` below remain prior evidence; immutable
+> clean executable source `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` is the #208
+> repair's local executable authority. No human or publication
+> authority follows.
+
+> **Correction earned by test-battery #207:** adjacent producer emissions are not an atomic
+> observer state. Attempt 1 of run `31642880191` / job `94269466117` at exact pushed
+> `ff9bebb22aaac0e95cd406e1e15737898452911a` (tree-identical merge
+> `8dfe018590edf8a5d15291730c873869b96caae2`) passed every preceding gate,
+> `smoke:ci`, and 11 glass rows. Tablet-portrait then received a valid release witness
+> after ordered `release-started` but before `release-complete`; the observer woke between
+> those two synchronous producer bindings and rejected the healthy intermediate state. The
+> release itself proved renderer/stage destruction, detached view, 1×1 application/backdrop
+> canvases, and null error. Preserve the one-attempt red: 0 product findings, 1 instrument
+> failure, 57 planned/listed controls, `blocked=[]`, `omitted=[]`, 0 retries, and no persona/
+> preview output.
+> **A cross-channel order needs one shared ruler, not two independently complete ledgers.**
+> Assign a monotonic receipt ordinal only across the operation-specific import-phase and generic
+> release bindings for one armed capture. The successful terminal must be exactly
+> `release-started` at N → release witness at N+1 → `release-complete` at N+2. A valid
+> release-first intermediate stays pending only under the original unchanged 20-second import
+> deadline; its receipt may anchor the separate navigation clock but never renew the import clock.
+> Reject phase-complete-first, release before `release-started`, interposed/nonadjacent evidence,
+> missing or late terminal evidence, duplicate/malformed/wrong-provenance bindings, early boot/
+> ready, and overlong phase streams including a duplicate sequence-8 terminal. Do not defer every
+> inconsistency until timeout: impossible order fails immediately, while only the one producer-
+> legal intermediate waits.
+>
+> The earlier dirty diagnostic (report
+> `805b50cb9341dfa49df6136565f050609b65d78387975e3c90c54ca937f4713b`) remains
+> chronology only. Immutable executable source
+> `6554b2be652c083bc9ff7ed11c2f928e90b74660` passed the complete clean exact battery.
+> Its first sandboxed preflight Edge launch SIGABRTed before CDP; the same invocation passed when
+> permitted, with only the expected Edge 151/pin-150 warning—an environment launch refusal, not
+> a product retry. Root gates and exact layout 787/787 across 10/10 passed (report
+> `58dc4ef4456fac012b2e8f0aa801917b5579cffe435fd4576827ff29bcbb4b78`); v2 passed 273/1 and
+> every static/art/coverage gate; one-attempt smoke passed 0 findings/10 screenshots. Certifying
+> glass passed 12/12 and 57/57 in 54,877 ms with exact 6/7/8 tails on every row, empty blocked/
+> omitted ledgers, and 0 findings/instrument failures/retries. Tablet-portrait was 196 ms with
+> 2/1/1/7/0 ms command durations; desktop-8k was 197 ms with 1/1/0/7/0 ms commands,
+> 34 ms release→commit, 131 ms commit→ready, outgoing 2,365×1,330 twins →1×1, and the
+> replacement at 6,290,900 combined pixels. Nine automated-only personas and terminal-only
+> 635/717/77/151 ms performance passed. Exact preview
+> `dev-preview-exact-6554b2b-20260812T184000Z` was browser-smoked under Edge 151 over loopback,
+> bound to the expected separate development origin, with `publishable:false`. That immutable
+> source remains prior #207 executable evidence; live Git/PR state determines the current tip,
+> upstream, and checks. The
+> selected pushed tip still requires matching CI, and no human, host, Ready, merge, release,
+> deploy, or version authority follows.
+
+> **Correction earned by test-battery #208:** a backing allocation may be inside its stated cap,
+> emit every release/boot witness in order, and still fail the user-facing response contract.
+> Attempt 1 of run `31649176954` / job `94289516851` at exact pushed head
+> `ee8bc281c424b5a8f998dc7327372e5f5a18067d` (tree-identical merge `8fc6b4fc`) passed
+> steps 1–15, `smoke:ci`, and the first 11 glass rows. Desktop-8k allocated a valid
+> 2,365×1,330 pair /6,290,900 pixels and scheduled ready at browser performance 584.3 ms,
+> yet ready did not emit until 3,143.8 ms—a 2,559.5 ms main-thread gap. Exact target cycle 1
+> then timed out at 2,003 ms against the unchanged 2,000 ms bound while the concurrent
+> browser-process heartbeat answered in 1 ms; there was no fatal. The report correctly
+> retained `REPLACEMENT_UNANSWERABLE_AFTER_READY`, 1 product finding, 0 instrument failures,
+> 57 planned controls with `ultra-same-backing-resize` product-blocked, `omitted=[]`, and
+> 0 retries. Preserve #208 red; do not retry it green or call a scheduled-but-undelivered
+> ready event an answerable product.
+>
+> **A resource cap is accepted by its sustained response outcome, not merely by its arithmetic.**
+> Keep native backing through UHD so fast/native/common displays retain quality. Strictly above
+> 8,388,608 CSS pixels, use one deterministic fixed ceiling of 2,073,600 pixels per simultaneous
+> full-viewport canvas /4,147,200 aggregate. Exact rounded fitting makes desktop-8k DPR 0.25 and
+> 5K DPR 0.375 both 1,920×1,080 per store. Do not substitute runtime-adaptive quality, a one-shot
+> ticker pause, a longer target bound, a looser heartbeat, an early ready, or a retry: those change
+> the contract or make identical inputs depend on machine timing. The unchanged exact target/
+> heartbeat pair, later post-render ticker witness, runtime resize, pointer geometry, release/ready
+> provenance, and zero-retry policy remain the acceptance boundary.
+>
+> Test the policy in both directions. Literal positives must assert 1,920×1,080 and 4,147,200;
+> the former 2,365×1,330 ready and release shapes must fail, as must the existing 2,730×1,536
+> shapes, while threshold/native-UHD, runtime same-backing resize, pointer, ownership, and stopped/
+> stale ticker controls remain. A dirty-worktree browser pass can diagnose but cannot certify the
+> fix; the `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`
+> PASS is prior chronology only. Immutable clean executable source
+> `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed from committed clean bytes
+> (status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`,
+> snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
+> Root layout passed 787/787 across 10/10 (`c42a50873ad01a91dd439860f41f1d695a7d2bf5c41521ed8b7eb768b7ee4975`),
+> v2 passed 273/1 plus all gates, and one-attempt smoke passed 0/10 in 105,339 ms
+> (`90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723`; log
+> `fe8c5d42eec2a09641f3f551486046559cd4c5956591b5a7d71a25b48d926af1`).
+> Glass passed 12/12 unique rows and 57/57 controls in 53,083 ms with exact 6/7/8 tails,
+> five-command ledgers, empty blocked/omitted ledgers and zero findings/instrument failures/
+> retries (`42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f`).
+> Exact 8K was 171 ms / browser performance 161.9 ms, commands 1/1/1/3/0 ms,
+> 33/129 ms release→commit/commit→ready, and two 1,920×1,080 stores /4,147,200 pixels
+> at DPR 0.25; terminal-only performance was 606/685/74/171 ms. Automated persona JSON/
+> Markdown hashes are `61d73fc9e11f55bc99f153aa6483661d1dc143104dab4d0cb728a48b68b485c5` /
+> `fdd7ce423cee68ef2584190bb056afd4b32a41c4158957da0e3a571b02f8c495`.
+> Preview `dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was browser-smoked
+> under Edge 151 over loopback, bound to expected separate origin
+> `https://dev-celestialfrontier.github.io`, with `publishable:false`; manifest/content/tree
+> hashes are `1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d` /
+> `5db7790977071235ed164fb8f382bd67421c9fd5e834a504cdb4e1a1e8f47589` /
+> `5b8e1f649b1259f96f5de6d7e8aca0377bc2cf10`. Live Git/PR is authority for current
+> tip/upstream/checks; whichever final pushed tip is selected requires matching CI. No human,
+> host, Ready, merge, release, deployment, or version authority follows.
+
+⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
+product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
+GitHub Actions step lost that step-local `CF_BROWSER`, selected an installed Linux Edge through
+fallback order, and failed before CDP created a page. That red browser check never exercised the
+packaged page or product. Pin one exact browser at job scope for every browser-owning process and
+resolve it fail-closed before long gates. Every raw-CDP gate must consume the shared executable
+resolver and pinned `ws` transport; any gate claiming the shared owned lifecycle must actually use
+it instead of carrying a guessed port, WebSocket loop or cleanup path. The owned launcher uses a
+unique profile, asks Chromium for port 0, reads its
+`DevToolsActivePort`, records exact `Browser.getVersion` provenance, detects early child exit,
+retains bounded stderr head and tail, and performs bounded TERM→KILL shutdown plus profile removal.
+Legacy `bootperf` shares the executable resolver and `ws` transport but still owns its older CDP
+lifecycle, so none of the owned launcher's lifecycle guarantees may be attributed to it yet.
+A prior green browser step does not certify the next process's provenance. Do not turn this class
+of failure green with a retry, a longer startup bound, a fallback reorder, or by clearing the last
+diagnostic mentioned on stderr; repair the scope and require matching new-head CI.
+
+The report is process state too. A tracked last-run JSON can survive a launcher failure and make a
+red current run look accompanied by green evidence. Browser gates must atomically replace stale
+output with a `running` record before launch, then write a terminal `pass`, `fail`, or
+`instrument-fail` record while retaining any legacy result rows consumers still need. Generated
+reports are ignored working evidence, not source. Negative-control this boundary by seeding a stale
+PASS, forcing a diagnosed early exit, and proving the current red record replaces it and cleanup
+finishes. CI must verify the exact current run id before a separate always-run upload whose missing
+file is an error; a filename, successful prior attempt, or artifact upload alone is not freshness.
+A full layout PASS must also match the sealed v1.8.9 baseline's complete 787-entry
+`viewport/surface/name` inventory. Counting 787 rows is insufficient: remove one expected outcome,
+repair all summary counts, and the selftest must still reject the report. A targeted viewport run
+is explicitly scoped diagnostic evidence and must never be promoted as the full inventory.
+
+Executable dependencies are a two-install-surface contract. Both root and `port/v2` manifests and
+locks declare the pinned `ws` transport and the supported Node lines
+`^20.19.0 || ^22.13.0 || >=24.0.0`. Preflight must launch the selected executable through the same
+owned CDP path used for provenance—not merely check that a path exists—and its selftest must reject
+both an executable non-browser and excluded Node lines. A dependency check that accepts `/bin/true`
+or an unsupported odd/intermediate Node line is another green-but-unrunnable battery.
+
+⚠⚠ **CLEAN BEFORE + CLEAN AFTER DOES NOT PROVE THE BYTES BETWEEN WERE CLEAN.**
+`overridecontrol` deliberately rewrites a production art source, runs its failing control, and
+restores the file. A concurrent Vite/browser/evidence process once captured that transient poison,
+then both commands ended with a clean tree; the resulting false boot was neither source truth nor
+valid evidence. Every transient source-mutating control and every byte-producing browser/build gate
+in a shared worktree must use `port/v2/tools/workspacelock.mjs` for mutual exclusion. Never overlap
+`overridecontrol` with Vite, browser, preview, screenshot, or evidence work, and never put a parent
+lock around a child gate that acquires the same lock. Clean/review and approved preview packages add
+a second boundary: Vite builds an isolated `git archive` snapshot of the exact HEAD `port/v2` tree,
+not the working tree. Only explicitly dirty, nonpublishable local previews may build working-tree
+bytes.

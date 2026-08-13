@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
+import WebSocket from 'ws';
 import { fileURLToPath } from 'node:url';
 import { findChromiumBrowser } from './browserpath.mjs';
 
@@ -40,7 +41,8 @@ async function terminateChildProcess(child, childClosed, label, timeoutMs) {
   }
   if (!await waitForResolution(childClosed, timeoutMs)) {
     child.stderr?.destroy?.();
-    fail(`${label}: browser exited but its stdio did not close within the shutdown bound`);
+    assert(await waitForResolution(childClosed, timeoutMs),
+      `${label}: browser exited but its stdio did not close within the shutdown bound`);
   }
 }
 function portable(value) { return value.split(path.sep).join('/'); }
@@ -78,6 +80,7 @@ export async function openChromiumCdp({
   startupTimeoutMs = 15000,
   shutdownTimeoutMs = 5000,
   WebSocketImpl = WebSocket,
+  onEvent = () => {},
 }) {
   assert(typeof label === 'string' && label.trim(), 'CDP label is required');
   assert(/^[a-z0-9][a-z0-9-]*$/.test(userDataPrefix), `${label}: unsafe user-data prefix`);
@@ -89,6 +92,7 @@ export async function openChromiumCdp({
     `${label}: shutdown timeout must be a positive integer`);
   assert(typeof WebSocketImpl === 'function' && Number.isInteger(WebSocketImpl.OPEN),
     `${label}: WebSocket implementation is invalid`);
+  assert(typeof onEvent === 'function', `${label}: CDP event handler is invalid`);
   const browserFile = findChromiumBrowser();
   const temporary = fs.realpathSync(os.tmpdir());
   const userData = path.join(temporary,
@@ -98,16 +102,23 @@ export async function openChromiumCdp({
     '--disable-component-update', '--disable-component-extensions-with-background-pages',
     '--remote-debugging-port=0', `--user-data-dir=${userData}`, 'about:blank',
   ], { stdio: ['ignore', 'ignore', 'pipe'] });
-  let stderr = '';
+  let stderrHead = '';
+  let stderrTail = '';
+  let stderrBytes = 0;
   let spawnError = null;
   let exitDescription = null;
-  child.stderr.on('data', (chunk) => { stderr += chunk.toString(); });
+  child.stderr.on('data', (chunk) => {
+    const text = chunk.toString();
+    stderrBytes += Buffer.byteLength(text);
+    if (stderrHead.length < 600) stderrHead = (stderrHead + text).slice(0, 600);
+    stderrTail = (stderrTail + text).slice(-600);
+  });
   child.on('error', (error) => { spawnError = error; });
   child.on('exit', (code, signal) => { exitDescription = `exit=${String(code)} signal=${String(signal)}`; });
   const childClosed = new Promise((resolve) => child.once('close', resolve));
   const terminateOwnedBrowser = async () => {
-    await terminateChildProcess(child, childClosed, label, shutdownTimeoutMs);
-    removeOwnedUserData(userData, temporary, userDataPrefix);
+    try { await terminateChildProcess(child, childClosed, label, shutdownTimeoutMs); }
+    finally { removeOwnedUserData(userData, temporary, userDataPrefix); }
   };
 
   let endpoint = null;
@@ -124,14 +135,27 @@ export async function openChromiumCdp({
     if (endpoint === null) await sleep(Math.min(100, Math.max(1, startupDeadline - Date.now())));
   }
   if (endpoint === null) {
-    const detail = spawnError?.message || exitDescription || stderr.trim().slice(-300);
+    const timedOut = !spawnError && !exitDescription;
+    const stderr = stderrBytes
+      ? stderrHead.trim() === stderrTail.trim()
+        ? `stderr=${JSON.stringify(stderrHead.trim())}`
+        : `stderr-head=${JSON.stringify(stderrHead.trim())}; stderr-tail=${JSON.stringify(stderrTail.trim())}`
+      : '';
+    const detail = [
+      `pid=${String(child.pid ?? 'unknown')}`,
+      spawnError ? `spawn=${spawnError.message}` : '',
+      exitDescription || '',
+      timedOut ? `startup-timeout=${startupTimeoutMs}ms` : '',
+      stderr,
+    ].filter(Boolean).join('; ');
     await terminateOwnedBrowser();
-    fail(`${label}: browser CDP did not start at ${browserFile}${detail ? ` (${detail})` : ''}`);
+    fail(`${label}: browser CDP did not start at ${browserFile} (${detail})`);
   }
 
   let ws = null;
   let closed = false;
   let closePromise = null;
+  let eventHandlerError = null;
   let messageId = 0;
   const pending = new Map();
   const terminalError = (message) => new Error(`${label}: ${message}`);
@@ -178,6 +202,12 @@ export async function openChromiumCdp({
         const waiter = pending.get(message.id);
         pending.delete(message.id);
         message.error ? waiter.reject(terminalError(message.error.message)) : waiter.resolve(message.result);
+      } else if (message.method) {
+        try { onEvent(message); }
+        catch (error) {
+          eventHandlerError = terminalError(`CDP event handler failed (${error.message})`);
+          rejectPending(eventHandlerError);
+        }
       }
     };
     ws.onerror = () => rejectPending(terminalError('CDP WebSocket error'));
@@ -185,16 +215,22 @@ export async function openChromiumCdp({
     child.on('exit', (code, signal) => rejectPending(terminalError(
       `browser exited (exit=${String(code)} signal=${String(signal)})`)));
 
-    const send = (method, params = {}, sessionId) => {
+    const send = (method, params = {}, sessionId, options = {}) => {
+      if (eventHandlerError) return Promise.reject(eventHandlerError);
       if (closed || ws.readyState !== WebSocketImpl.OPEN) {
         return Promise.reject(terminalError(`cannot send ${method}; CDP is not open`));
+      }
+      const timeoutMs = options?.timeoutMs ?? commandTimeoutMs;
+      if (!Number.isInteger(timeoutMs) || timeoutMs <= 0 || timeoutMs > commandTimeoutMs) {
+        return Promise.reject(terminalError(
+          `${method} command timeout must be a positive integer no greater than ${commandTimeoutMs}`));
       }
       return new Promise((resolve, reject) => {
         const id = ++messageId;
         const timer = setTimeout(() => {
           pending.delete(id);
           reject(terminalError(`timed out waiting for ${method}`));
-        }, commandTimeoutMs);
+        }, timeoutMs);
         pending.set(id, {
           resolve(value) { clearTimeout(timer); resolve(value); },
           reject(error) { clearTimeout(timer); reject(error); },
@@ -215,7 +251,7 @@ export async function openChromiumCdp({
       js_version: requiredString(version.jsVersion, `${label} JS version`),
       protocol_version: requiredString(version.protocolVersion, `${label} protocol version`),
     });
-    return { send, browser, close };
+    return { send, browser, pid: child.pid, close };
   } catch (error) {
     await close();
     fail(error.message.startsWith(`${label}:`) ? error.message : `${label}: CDP setup failed (${error.message})`);
@@ -288,6 +324,20 @@ async function runSelftest() {
     }), /browser CDP did not start|browser exited/);
     assertNoOwnedProfiles(childPrefix, 'browser child exit cleanup');
 
+    if (process.platform !== 'win32') {
+      const markerBrowser = path.join(endpointFixture, 'marker-browser');
+      fs.writeFileSync(markerBrowser,
+        '#!/bin/sh\nprintf "CF_BROWSER_SELFTEST_EARLY_EXIT\\n" >&2\nexit 73\n');
+      fs.chmodSync(markerBrowser, 0o755);
+      const markerPrefix = `${base}-marker`;
+      process.env.CF_BROWSER = markerBrowser;
+      await expectRejectedAsync('browser exit diagnostics', () => openChromiumCdp({
+        label: 'CDP selftest exit diagnostics', userDataPrefix: markerPrefix,
+        startupTimeoutMs: 1500, shutdownTimeoutMs: 500,
+      }), /exit=73[\s\S]*CF_BROWSER_SELFTEST_EARLY_EXIT/);
+      assertNoOwnedProfiles(markerPrefix, 'browser exit diagnostics cleanup');
+    }
+
     process.env.CF_BROWSER = actualBrowser;
     class NeverOpeningWebSocket {
       static OPEN = 1;
@@ -303,9 +353,11 @@ async function runSelftest() {
     assertNoOwnedProfiles(openPrefix, 'WebSocket open-timeout cleanup');
 
     const livePrefix = `${base}-live`;
+    const liveEvents = [];
     const connection = await openChromiumCdp({
       label: 'CDP selftest live browser', userDataPrefix: livePrefix,
       commandTimeoutMs: 1500, startupTimeoutMs: 10000, shutdownTimeoutMs: 2000,
+      onEvent: (event) => liveEvents.push(event),
     });
     try {
       assert(connection.browser.executable === portable(actualBrowser),
@@ -317,9 +369,28 @@ async function runSelftest() {
         targetId: target.targetId, flatten: true,
       });
       await connection.send('Runtime.enable', {}, attached.sessionId);
+      await connection.send('Runtime.evaluate', {
+        expression: `console.log('cf-browsercdp-event-${nonce}')`, returnByValue: true,
+      }, attached.sessionId);
+      for (let i = 0; i < 20 && !liveEvents.some((event) =>
+        event.method === 'Runtime.consoleAPICalled'
+        && JSON.stringify(event.params).includes(`cf-browsercdp-event-${nonce}`)); i++) await sleep(10);
+      assert(liveEvents.some((event) => event.method === 'Runtime.consoleAPICalled'
+        && JSON.stringify(event.params).includes(`cf-browsercdp-event-${nonce}`)),
+      'SELFTEST CDP events were not forwarded to the owned handler');
       await expectRejectedAsync('CDP command timeout', () => connection.send('Runtime.evaluate', {
         expression: 'new Promise(() => {})', awaitPromise: true, returnByValue: true,
       }, attached.sessionId), /timed out waiting for Runtime\.evaluate/);
+
+      const boundedStartedAt = Date.now();
+      await expectRejectedAsync('CDP per-command timeout', () => connection.send('Runtime.evaluate', {
+        expression: 'new Promise(() => {})', awaitPromise: true, returnByValue: true,
+      }, attached.sessionId, { timeoutMs: 75 }), /timed out waiting for Runtime\.evaluate/);
+      assert(Date.now() - boundedStartedAt < 750,
+        'SELFTEST per-command timeout did not honor its shorter phase-owned bound');
+      await expectRejectedAsync('CDP per-command timeout expansion', () => connection.send(
+        'Browser.getVersion', {}, undefined, { timeoutMs: 1501 },
+      ), /no greater than 1500/);
 
       const pending = connection.send('Runtime.evaluate', {
         expression: 'new Promise(() => {})', awaitPromise: true, returnByValue: true,
@@ -333,6 +404,31 @@ async function runSelftest() {
       await connection.close();
     }
     assertNoOwnedProfiles(livePrefix, 'normal/command-timeout/pending cleanup');
+
+    const eventFailurePrefix = `${base}-event-failure`;
+    const eventFailure = await openChromiumCdp({
+      label: 'CDP selftest event failure', userDataPrefix: eventFailurePrefix,
+      commandTimeoutMs: 1500, startupTimeoutMs: 10000, shutdownTimeoutMs: 2000,
+      onEvent(event) {
+        if (event.method === 'Runtime.consoleAPICalled') throw new Error('injected event failure');
+      },
+    });
+    try {
+      const target = await eventFailure.send('Target.createTarget', { url: 'about:blank' });
+      const attached = await eventFailure.send('Target.attachToTarget', {
+        targetId: target.targetId, flatten: true,
+      });
+      await eventFailure.send('Runtime.enable', {}, attached.sessionId);
+      await eventFailure.send('Runtime.evaluate', {
+        expression: `console.log('cf-browsercdp-event-failure-${nonce}')`, returnByValue: true,
+      }, attached.sessionId).catch(() => { /* event may beat the response */ });
+      await sleep(20);
+      await expectRejectedAsync('CDP event-handler failure',
+        () => eventFailure.send('Browser.getVersion'), /event handler failed.*injected event failure/);
+    } finally {
+      await eventFailure.close();
+    }
+    assertNoOwnedProfiles(eventFailurePrefix, 'event-handler failure cleanup');
   } finally {
     if (priorExplicit === undefined) delete process.env.CF_BROWSER;
     else process.env.CF_BROWSER = priorExplicit;
@@ -343,8 +439,10 @@ async function runSelftest() {
   console.log('  exit-without-close: rejected; owned pipe released');
   console.log('  SIGTERM-resistant child: escalated to bounded SIGKILL');
   console.log('  browser child exit and profile cleanup: PASS');
+  console.log(`  early-exit code + bounded stderr diagnostics: ${process.platform === 'win32' ? 'covered by child-exit control' : 'PASS'}`);
   console.log('  WebSocket open timeout and cleanup: PASS');
-  console.log('  CDP command error and timeout: rejected');
+  console.log('  CDP command error, global timeout, and shorter phase-owned timeout: rejected');
+  console.log('  CDP events forwarded; event-handler failure rejected and cleaned up');
   console.log('  pending command rejected during bounded close: PASS');
   console.log('  exact browser provenance and no owned profile leakage: PASS');
 }

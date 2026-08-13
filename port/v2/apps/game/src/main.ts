@@ -5,7 +5,7 @@
    forwards input into the tested state machines.
 
    Live today: the full descent ladder with zoom-driven transitions ·
-   survey-first input (tap = describePick card, double-tap dives) · the
+   survey-first input (tap = describePick card, explicit card action = dive) · the
    charter/Ascent gates (toasting the build that opens the ring) · wormhole
    travel (reach-clamped) · comets/visitor/supernovae/moon terminators/cloud
    deck · THE REAL SAVE LOOP (importSaveV2 ⇄ exportSaveV2 over IndexedDB,
@@ -13,8 +13,8 @@
    · Settings/Compendium/Records · search (code-paste travel) · the shipped
    audio stings · COSMIC_EPOCH on play time.
 
-   Still ahead (recorded in ROADMAP's NEXT): the 21-step training port,
-   Star Atlas, rarity stings, ring↔planet mutual shadows, PROTO star disk,
+   Still ahead (recorded in ROADMAP's NEXT): the remaining 15 lessons of the complete 21-step training port,
+   full Atlas chart/favorites presentation, rarity stings, ring↔planet mutual shadows, PROTO star disk,
    biome vista surfaces (Phase 6). Static deterministic Canvas species portraits
    are live; retained Pixi actors, meshes, and portrait animation remain Phase 5. */
 import { Application, Container, Graphics, Sprite, Texture, Text, extensions, CullerPlugin } from 'pixi.js';
@@ -29,6 +29,14 @@ import { initAudio, playWhoosh, playSurveyPing, applySfxGain } from '@cf/audio';
 import { registerPanel, fillPanel, togglePanel, openPanel, closePanels, openPanelId } from './panels.js';
 import { initTraining, gameEvent, trainingActive, trainingStepId } from './training.js';
 import {
+  getGuideCatalogue, getGuideTopic, searchGuide,
+  type GuideCategoryId, type GuideTopicId, type GuideTopicView,
+} from './guide-content.js';
+import {
+  getCurrentV2Release, getReleaseHistory, hasUnseenV2Release,
+  type ReleaseNoteView, type V2ShippedRelease,
+} from './release-content.js';
+import {
   NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, viewToNav,
   universeGalaxies, galaxyCell, galaxyCellWindow, systemScene,
   ascStageOf, ascAllowsStar, reachRadiusOf, withinReachOf, currentRegionOf, ascHintFor,
@@ -38,33 +46,49 @@ import {
 import { galaxyProfile, galaxyHaze, systemFor, fineStarsInCell, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
 import { planetSpecies } from '@cf/domain-ecology';
 import { climateBand } from '@cf/domain-surveyphrases';
-import { SYS_R, UCELL, OBS_R, HOME_POS } from '@cf/domain-worldconfig';
+import { SYS_R, UCELL, OBS_R, HOME_GAL_SEED, HOME_POS, SOL_SEED, SOL_POS } from '@cf/domain-worldconfig';
 import { galaxyName, starName, properName } from '@cf/domain-naming';
 import { createEpochClock, type EpochClock } from '@cf/domain-progression';
 import { mulberry32, hashInt, TAU } from '@cf/domain-rand';
 import { installCaptureHooks, planetDescriptor, describePick, SOL_MOONS, galaxyStats, fmtBig, type Descriptor } from '@cf/domain-descriptors';
-import { encodeWhere, decodeWhere, _sanitizeView } from '@cf/domain-strays';
+import { cleanName, encodeWhere, decodeWhere, _sanitizeView } from '@cf/domain-strays';
 import { describeSpecies } from '@cf/domain-genome';
 import { battleStats, STAT_NAMES, STAT_HUES } from '@cf/domain-combatcore';
 import {
   createSaveRepository, createIndexedDBBackend,
-  importSaveV2, exportSaveV2, type SaveStateV2, type ContentRegistry,
+  importSaveV2, isPlausibleSaveEnvelope, exportSaveV2, readSaveWithRecovery,
+  type SaveStateV2, type ContentRegistry, type StoredPayloadStatus,
 } from '@cf/persistence';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
 installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt fully replaces the hooks */
-/* THE PORTRAIT ENGINE IS A LAZY CHUNK: 380KB of hdart stays off the boot
+/* THE PORTRAIT ENGINE IS A LAZY CHUNK: ~352KB gzip of species art stays off the boot
    path; the first Compendium/planetside view kicks the load and refills
    itself when the painters arrive (idle-prefetched after boot). */
 type SArt = { speciesPortrait: (g: Record<string, unknown>) => string; speciesThumb: (g: Record<string, unknown>) => string };
 let SA: SArt | null = null;
-let _saKicked = false;
-function ensureSA(onReady: () => void): boolean {
+let saPromise: Promise<SArt> | null = null;
+const saSubscribers = new Map<string, () => void>();
+function ensureSA(key: 'codex' | 'planetside' | 'prefetch', onReady: () => void): boolean {
   if (SA) return true;
-  if (!_saKicked) {
-    _saKicked = true;
-    void import('@cf/art/species').then((mod) => { SA = mod as unknown as SArt; onReady(); }).catch(() => { _saKicked = false; });
-  }
+  /* One latest invalidation per view. A raw Promise `.then` per call can
+     retain 1,500 Compendium-row callbacks and replay the whole list 1,500
+     times when the chunk resolves. Distinct views still all hear readiness. */
+  saSubscribers.set(key, onReady);
+  /* Every interested view subscribes to the same import. The old boolean
+     retained only the callback that STARTED the load; if the 3s prefetch
+     won the race, a Compendium/Planetside callback arriving in-flight was
+     discarded and the view stayed empty until reopened. */
+  saPromise ??= import('@cf/art/species')
+    .then((mod) => {
+      SA = mod as unknown as SArt;
+      const callbacks = [...saSubscribers.values()];
+      saSubscribers.clear();
+      for (const callback of callbacks) try { callback(); } catch { /* another subscribed view still refills */ }
+      return SA;
+    })
+    .catch((error) => { saPromise = null; throw error; });
+  void saPromise.catch(() => { /* a later request retries; latest subscribers stay queued */ });
   return false;
 }
 /* app-state seams the VERBATIM descriptor code reads as globals (D-ST in
@@ -74,12 +98,155 @@ function ensureSA(onReady: () => void): boolean {
 const REGISTRY = REGISTRY_JSON as unknown as ContentRegistry;
 const gSeam = globalThis as Record<string, unknown>;
 const stSeam: { gal: unknown; star: unknown } = { gal: null, star: null };
+const customNames = new Map<string, string>();
 gSeam.st ??= stSeam;
-gSeam.customNames ??= new Map();   /* player renames — Phase 4 wiring */
+gSeam.customNames = customNames;   /* one app-owned map shared with descriptor seams */
 
 extensions.add(CullerPlugin);   /* offscreen sprites skip render — thousands of stars, one flag */
 
 const app = new Application();
+const DOCUMENT_TOKEN = crypto.randomUUID();
+type ReloadCanvasRelease = {
+  beforeWidth: number;
+  beforeHeight: number;
+  afterWidth: number;
+  afterHeight: number;
+};
+type ReplacementReloadReason = 'training-restart' | 'save-import' | 'storage-retry';
+type ImportPhaseStage =
+  | 'invoked' | 'validation-rejected' | 'claim-rejected' | 'claimed'
+  | 'waiting-active-persist' | 'no-active-persist' | 'active-persist-settled'
+  | 'primary-write-started' | 'primary-write-complete' | 'primary-write-rejected'
+  | 'release-started' | 'release-complete';
+type ImportPhaseWitness = {
+  schema: 'cf-v2-import-phase/v1';
+  phaseId: string;
+  reason: 'save-import';
+  documentToken: string;
+  stage: ImportPhaseStage;
+  sequence: number;
+  tickerStarted: boolean;
+  performanceNow: number;
+  error: string | null;
+};
+type ReloadReleaseWitness = {
+  schema: 'cf-v2-reload-release/v1';
+  status: 'released' | 'release-failed';
+  error: string | null;
+  reason: ReplacementReloadReason;
+  documentToken: string;
+  rendererReleased: boolean;
+  stageReleased: boolean;
+  viewDetached: boolean;
+  appCanvas: ReloadCanvasRelease;
+  backdropCanvas: ReloadCanvasRelease;
+};
+type BootPhaseStage =
+  | 'app-init-start' | 'app-init-complete' | 'backdrop-complete'
+  | 'save-load-start' | 'save-load-complete' | 'scene-rendered'
+  | 'slice-published' | 'wiring-complete' | 'ticker-started'
+  | 'first-tick' | 'ready-scheduled' | 'ready-emitted';
+type BootPhaseWitness = {
+  schema: 'cf-v2-boot-phase/v1';
+  documentToken: string;
+  sequence: number;
+  stage: BootPhaseStage;
+  tickerStarted: boolean;
+  performanceNow: number;
+  error: null;
+};
+let bootPhaseSequence = 0;
+function emitBootPhase(stage: BootPhaseStage): void {
+  const witness: BootPhaseWitness = {
+    schema: 'cf-v2-boot-phase/v1', documentToken: DOCUMENT_TOKEN,
+    sequence: ++bootPhaseSequence, stage,
+    tickerStarted: app.ticker?.started === true,
+    performanceNow: performance.now(), error: null,
+  };
+  try {
+    const binding = (window as unknown as Record<string, unknown>).__cfBootPhaseWitness;
+    if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
+  } catch { /* optional diagnostics must never strand ordinary boot */ }
+}
+const unreleasedCanvas = (): ReloadCanvasRelease => ({
+  beforeWidth: 0, beforeHeight: 0, afterWidth: 0, afterHeight: 0,
+});
+let releaseRendererForReload = (reason: ReplacementReloadReason): ReloadReleaseWitness => ({
+  schema: 'cf-v2-reload-release/v1', status: 'release-failed',
+  error: 'renderer release hook was not initialized', reason,
+  documentToken: DOCUMENT_TOKEN,
+  rendererReleased: false, stageReleased: false, viewDetached: false,
+  appCanvas: unreleasedCanvas(), backdropCanvas: unreleasedCanvas(),
+});
+let replacementReloadScheduled = false;
+let replacementReloadPending = false;
+type ReplacementTransaction = Readonly<{
+  reason: ReplacementReloadReason;
+  token: symbol;
+  tickerWasStarted: boolean;
+}>;
+let replacementTransaction: ReplacementTransaction | null = null;
+function claimReplacementTransaction(reason: ReplacementReloadReason): ReplacementTransaction | null {
+  /* A reason string is not ownership: two rapid imports have the same reason
+     but are distinct writes. One opaque claim per operation prevents either
+     flow from releasing/reloading while another same-kind write is pending. */
+  if (replacementTransaction) return null;
+  /* Stop the outgoing renderer before the first persistence await. At an 8K
+     software-rendered viewport, allowing another 16.7M-pixel frame to start
+     can starve the IndexedDB completion task for the whole import budget.
+     A failed replacement restarts only a ticker that this claim stopped; a
+     successful replacement destroys it while quiescent. */
+  const tickerWasStarted = app.ticker?.started === true;
+  if (tickerWasStarted) app.stop();
+  const claim = Object.freeze({ reason, token: Symbol(reason), tickerWasStarted });
+  replacementTransaction = claim;
+  clearTimeout(_persistT); _persistT = 0;
+  return claim;
+}
+function releaseReplacementTransaction(claim: ReplacementTransaction): void {
+  if (!replacementReloadScheduled && replacementTransaction === claim) {
+    replacementTransaction = null;
+    if (claim.tickerWasStarted && app.ticker && !app.ticker.started) app.start();
+  }
+}
+function scheduleReplacementReload(
+  claim: ReplacementTransaction,
+  afterRelease?: (witness: ReloadReleaseWitness) => void,
+): void {
+  /* These are the app's three intentional, durable-write reloads. Release
+     the old 8K renderer/backdrop before asking the browser to construct the
+     replacement document; otherwise two capped backing stores can overlap
+     during navigation. This is deliberately not a pagehide teardown: a
+     BFCache restore must never revive an Application that we destroyed. */
+  if (replacementReloadScheduled || replacementTransaction !== claim) return;
+  const { reason } = claim;
+  replacementReloadScheduled = true;
+  replacementReloadPending = true;
+  let witness: ReloadReleaseWitness;
+  try { witness = releaseRendererForReload(reason); }
+  catch (error) {
+    witness = {
+      schema: 'cf-v2-reload-release/v1', status: 'release-failed',
+      error: error instanceof Error ? error.message : String(error), reason,
+      documentToken: DOCUMENT_TOKEN,
+      rendererReleased: false, stageReleased: false, viewDetached: false,
+      appCanvas: unreleasedCanvas(), backdropCanvas: unreleasedCanvas(),
+    };
+  }
+  /* Runtime.addBinding installs this optional diagnostics seam before the
+     page boots. Ordinary play has no such property. CDP receives the release
+     evidence outside the dying execution context, so a vanished global can
+     never masquerade as a replacement page becoming ready. */
+  try {
+    const binding = (window as unknown as Record<string, unknown>).__cfReloadReleaseWitness;
+    if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
+  } catch { /* evidence harness fails closed when its binding is absent/broken */ }
+  try { afterRelease?.(witness); }
+  catch { /* optional evidence must never strand a completed durable write */ }
+  /* One task boundary lets WebGL context loss/canvas resize settle and lets
+     importBlob resolve, without retrying or hiding a failed navigation. */
+  setTimeout(() => location.reload(), 0);
+}
 /* ---- THE PHASE 4 CHROME (UI_PRESENTATION contracts): the unified topbar
    (trail · player chip · objective chip) publishing --topbar-h, the hint
    pill, the Georgia-italic caption line, and the 44px dock. Static DOM in
@@ -93,14 +260,79 @@ const objChipEl = document.getElementById('objchip')!;
 const ctxEl = document.getElementById('ctxbar')!;
 const hintEl = document.getElementById('hintpill')!;
 const topbarEl = document.getElementById('topbar')!;
+const dockEl = document.getElementById('dock')!;
+const surfaceTopChromeEls = ['topbar', 'searchbox', 'objchip']
+  .map((id) => document.getElementById(id)!) as HTMLElement[];
+let lastSurfaceTrailBottom = 0;
 const esc = (s: unknown): string => String(s ?? '').replace(/[<>&"']/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c]!));
 function syncTopbarH(): void {
   /* the game's height-sync law: MEASURED, never guessed (main.js 119) */
   document.documentElement.style.setProperty('--topbar-h', topbarEl.offsetHeight + 'px');
 }
+function syncDockH(): void {
+  /* Phone owns two rows while desktop owns one. All lower chrome reads the
+     measured result, so a media-query or safe-area change cannot bury it. */
+  document.documentElement.style.setProperty('--dock-h', dockEl.offsetHeight + 'px');
+  syncSurfaceChromeBottom();
+}
+function syncCtxH(): void {
+  /* The contextual line can wrap on a phone. Planetside anchors above its
+     rendered height rather than assuming one line and covering the copy. */
+  document.documentElement.style.setProperty('--ctx-h', ctxEl.offsetHeight + 'px');
+  syncSurfaceChromeBottom();
+}
+function syncHintH(): void {
+  /* A++ can enlarge the hint. The caption reads its rendered height rather
+     than retaining the default-font offset and overlapping it. */
+  document.documentElement.style.setProperty('--hint-h', hintEl.offsetHeight + 'px');
+}
+function syncSurfaceChromeBottom(): void {
+  /* Portrait Planetside is bottom-anchored above measured lower chrome. Its
+     upper bound must be measured too: at 320px/A++ the trail is lower than the
+     HP bar, and a natural-height roster otherwise rises through that trail.
+     If fewer than 72 useful pixels remain, the noninteractive trail yields;
+     retaining its last visible edge prevents that choice oscillating. */
+  const renderedBottom = (el: HTMLElement): number | null => {
+    const style = getComputedStyle(el);
+    const rect = el.getBoundingClientRect();
+    return style.display !== 'none' && style.visibility !== 'hidden' && Number(style.opacity) > 0
+      && rect.width > 0 && rect.height > 0 ? rect.bottom : null;
+  };
+  const trailBottom = renderedBottom(trailEl);
+  if (trailBottom !== null) lastSurfaceTrailBottom = trailBottom;
+  let fixedBottom = 0;
+  for (const el of surfaceTopChromeEls) {
+    const bottom = renderedBottom(el);
+    if (bottom !== null) fixedBottom = Math.max(fixedBottom, bottom);
+  }
+  const withTrailBottom = Math.max(fixedBottom, lastSurfaceTrailBottom);
+  const side = document.getElementById('planetside');
+  const sideRect = side?.getBoundingClientRect();
+  const sideStyle = side ? getComputedStyle(side) : null;
+  const sideVisible = !!sideRect && !!sideStyle && sideStyle.display !== 'none'
+    && sideStyle.visibility !== 'hidden' && sideRect.width > 0 && sideRect.height > 0;
+  const portraitPhone = matchMedia('(max-width: 900px) and (orientation: portrait)').matches;
+  const overlaysYieldChrome = document.body.classList.contains('card-open')
+    || document.body.classList.contains('panel-open');
+  const yieldTrail = document.body.classList.contains('surface-mode') && portraitPhone
+    && !overlaysYieldChrome && sideVisible && sideRect!.bottom - withTrailBottom - 6 < 72;
+  document.body.classList.toggle('surface-trail-yield', yieldTrail);
+  const visibleBottom = Math.max(fixedBottom, trailBottom ?? (portraitPhone ? lastSurfaceTrailBottom : 0));
+  document.documentElement.style.setProperty('--surface-chrome-bottom',
+    (yieldTrail ? fixedBottom : visibleBottom).toFixed(2) + 'px');
+}
 new ResizeObserver(syncTopbarH).observe(topbarEl);
+new ResizeObserver(syncDockH).observe(dockEl);
+new ResizeObserver(syncCtxH).observe(ctxEl);
+new ResizeObserver(syncHintH).observe(hintEl);
+for (const el of surfaceTopChromeEls) new ResizeObserver(syncSurfaceChromeBottom).observe(el);
+new MutationObserver(syncSurfaceChromeBottom).observe(document.body, { attributes: true, attributeFilter: ['class'] });
 addEventListener('resize', () => {
   syncTopbarH();
+  syncDockH();
+  syncCtxH();
+  syncHintH();
+  syncSurfaceChromeBottom();
   /* rotation moves minWH while the ascend floors read gz0/sz0 live (audit
      #8) — recompute for the mode you are IN so the thresholds agree */
   if (nav.mode === 'galaxy') gz0 = 0.42 * minWH() / GR;
@@ -112,7 +344,7 @@ function setHint(t: string): void {
   if (t === _hintTxt) return;
   _hintTxt = t;
   /* verbs light up blue — the golden's scanability (static strings only) */
-  hintEl.innerHTML = t.replace(/(tap|drag|zoom|press|right-click|Escape|wheel|pinch)/gi, '<b class="kw">$1</b>');
+  hintEl.innerHTML = t.replace(/\b(tap|drag|zoom|press|Enter|Land|Leave|right-click|Escape|wheel|pinch)\b/gi, '<b class="kw">$1</b>');
 }
 function setTrail(segs: string[]): void {
   trailEl.innerHTML = segs.map((s, i) =>
@@ -134,7 +366,69 @@ let playT0 = 0;
 const playSeconds = (): number => (performance.now() - playT0) / 1000;
 const TOUCH_DPR = navigator.maxTouchPoints > 0
   || (typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches);
-const DPR = Math.min(devicePixelRatio, TOUCH_DPR ? 2 : 3);
+/* The app and its full-viewport 2D backdrop coexist. Treat one 4096² store
+   as their aggregate pixel budget, not as permission for two 4096² stores.
+   CSS viewports larger than one half-budget are an ultra-density stress case:
+   preserve native backing through UHD 3840×2160, then cap each simultaneous
+   store at 2,073,600 pixels (1,920×1,080) so a slow software renderer retains
+   sustained answerability after publishing readiness and across resize. */
+const MAX_FULL_VIEWPORT_BACKING_PIXELS = 16_777_216;
+const FULL_VIEWPORT_CANVAS_COUNT = 2;
+const MAX_BACKING_PIXELS_PER_CANVAS = MAX_FULL_VIEWPORT_BACKING_PIXELS / FULL_VIEWPORT_CANVAS_COUNT;
+const MAX_ULTRA_VIEWPORT_BACKING_PIXELS_PER_CANVAS = 2_073_600;
+const roundedBackingPixels = (width: number, height: number, resolution: number): number =>
+  Math.max(1, Math.round(width * resolution)) * Math.max(1, Math.round(height * resolution));
+const fitResolutionToPixelCap = (
+  requested: number, width: number, height: number, pixelCap: number,
+): number => {
+  const dimensionFloor = Math.min(1 / width, 1 / height);
+  let low = dimensionFloor;
+  let high = Math.max(dimensionFloor, requested);
+  if (roundedBackingPixels(width, height, high) <= pixelCap) return high;
+  /* The square-root memory bound is continuous, while both Canvas and Pixi
+     round backing dimensions independently. Find the greatest representable
+     resolution whose actual rounded width×height still fits the selected cap. */
+  for (let i = 0; i < 64; i++) {
+    const mid = low + (high - low) / 2;
+    if (mid === low || mid === high) break;
+    if (roundedBackingPixels(width, height, mid) <= pixelCap) low = mid;
+    else high = mid;
+  }
+  return low;
+};
+type RendererDensityPlan = Readonly<{
+  dpr: number;
+  backingPixelCapPerCanvas: number;
+  viewportWidth: number;
+  viewportHeight: number;
+}>;
+const effectiveDensityPlan = (): RendererDensityPlan => {
+  const viewportWidth = Math.max(1, innerWidth);
+  const viewportHeight = Math.max(1, innerHeight);
+  const viewportPixels = viewportWidth * viewportHeight;
+  const backingPixelCapPerCanvas = viewportPixels > MAX_BACKING_PIXELS_PER_CANVAS
+    ? MAX_ULTRA_VIEWPORT_BACKING_PIXELS_PER_CANVAS
+    : MAX_BACKING_PIXELS_PER_CANVAS;
+  const device = Number.isFinite(devicePixelRatio) ? Math.max(1, devicePixelRatio) : 1;
+  const heatCap = TOUCH_DPR ? 2 : 3;
+  const memoryCap = Math.sqrt(backingPixelCapPerCanvas / viewportPixels);
+  /* A CSS viewport can exceed one canvas's standard half-budget beyond UHD.
+     Pixi supports sub-1 resolution while autoDensity preserves the CSS box,
+     so keep the selected twin-canvas ceiling instead of silently exceeding
+     it at the old DPR-1 floor. */
+  const dimensionFloor = Math.min(1 / viewportWidth, 1 / viewportHeight);
+  const requested = Math.max(dimensionFloor, Math.min(device, heatCap, memoryCap));
+  return {
+    dpr: fitResolutionToPixelCap(
+      requested, viewportWidth, viewportHeight, backingPixelCapPerCanvas,
+    ),
+    backingPixelCapPerCanvas,
+    viewportWidth,
+    viewportHeight,
+  };
+};
+let densityPlan = effectiveDensityPlan();
+let DPR = densityPlan.dpr;
 const minWH = (): number => Math.max(80, Math.min(innerWidth, innerHeight));   /* floor: a zero-sized window must not mint z=0 → NaN cameras (audit #8) */
 
 let nav: NavState = NAV_HOME;
@@ -152,61 +446,138 @@ let sz0 = 0.40 * minWH() / SYS_R;
 const card = document.createElement('aside');
 card.id = 'survey';
 card.className = 'glass';
+card.setAttribute('role', 'region');
+card.setAttribute('aria-label', 'Survey card');
+card.setAttribute('aria-hidden', 'true');
 document.body.appendChild(card);
+const surveyDockEl = document.getElementById('docksurvey')!;
+const chartsDockEl = document.getElementById('dockcharts')!;
+let surveyFocusReturn: HTMLElement | null = null;
 let lastCard: Descriptor | null = null;
-function showSurvey(d: Descriptor, actionsHtml?: string): void {
+let cardCtx: {
+  p: PlanetNode;
+  gal: NonNullable<NavState['gal']>;
+  star: NonNullable<NavState['star']>;
+} | null = null;
+interface CardTravelAction { label: 'Enter galaxy' | 'Enter system'; run: () => void; }
+let cardTravelAction: CardTravelAction | null = null;
+function showSurvey(d: Descriptor, actionsHtml?: string, travelAction: CardTravelAction | null = null): void {
+  if (document.activeElement === app.canvas) surveyFocusReturn = app.canvas;
+  cardTravelAction = travelAction;
+  if (actionsHtml === undefined) cardCtx = null;
   lastCard = d;
+  const travelHtml = travelAction
+    ? '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px">' +
+      `<button data-act="travel" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">${esc(travelAction.label)}</button>` +
+      '</div>'
+    : '';
   card.innerHTML =
     `<h2 data-sel="title" style="margin:0 0 2px;font-size:17px;color:#f4f8ff">${esc(d.title)}</h2>` +
-    `<div data-sel="sub" style="color:#8fa3c4;margin-bottom:10px">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
+    `<div data-sel="sub" style="color:var(--dim);margin-bottom:10px">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
+    travelHtml +
     (actionsHtml || '') +   /* the card's ACTION ROW (Land · +Atlas · share) — buttons are trusted markup, never save text */
     (d.rows as Array<[string, string, string?]>).map(([k, v, cls]) =>
-      `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" style="margin:4px 0"><span style="color:#8fa3c4">${esc(k)}</span><br>${esc(v)}</div>`).join('');
+      `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" style="margin:4px 0"><span style="color:var(--dim)">${esc(k)}</span><br>${esc(v)}</div>`).join('');
   card.style.display = 'block';
+  card.setAttribute('aria-hidden', 'false');
   document.body.classList.add('card-open');
-  document.getElementById('docksurvey')!.classList.add('on');
+  syncSurfaceChromeBottom();
+  surveyDockEl.classList.add('on');
+  surveyDockEl.setAttribute('aria-expanded', 'true');
 }
-function hideSurvey(): void {
+function hideSurvey(restoreFocus = false): void {
   card.style.display = 'none';
+  card.setAttribute('aria-hidden', 'true');
   document.body.classList.remove('card-open');
-  document.getElementById('docksurvey')!.classList.remove('on');
+  syncSurfaceChromeBottom();
+  surveyDockEl.classList.remove('on');
+  surveyDockEl.setAttribute('aria-expanded', 'false');
+  if (restoreFocus && surveyFocusReturn?.isConnected) {
+    const target = surveyFocusReturn;
+    surveyFocusReturn = null;
+    queueMicrotask(() => target.focus());
+  }
+}
+function invalidateSurveyTravel(): void {
+  cardTravelAction = null;
+  surveyFocusReturn = null;
+  card.querySelector('[data-act="travel"]')?.remove();
 }
 
 /* ---- the save-import sheet (Phase 4's second UI component; GATE C's front
    door): paste or pick your cfcc_save_v2 blob — VALIDATED through the real
-   importSaveV2 first, stored verbatim, and the ORIGINAL kept as an untouched
-   keepsake in cf_v2_import_original (the live save evolves through
-   exportSaveV2 from the first boot — audit #2's honest wording). ---- */
+   importSaveV2 first and stored as primary. The player's external backup
+   remains the authoritative exact copy; the app only ATTEMPTS an additional
+   untouched local keepsake because browser storage may refuse it. ---- */
 const sheet = document.createElement('div');
 sheet.id = 'importsheet';
-sheet.style.cssText = 'position:fixed;inset:0;background:rgba(4,6,12,0.7);display:none;z-index:11';
+sheet.setAttribute('role', 'dialog');
+sheet.setAttribute('aria-modal', 'true');
+sheet.setAttribute('aria-label', 'Bring your expedition');
+sheet.style.cssText = 'position:fixed;inset:0;padding:calc(var(--safe-top,0px) + 16px) calc(var(--safe-right,0px) + 16px) calc(var(--safe-bottom,0px) + 16px) calc(var(--safe-left,0px) + 16px);' +
+  'box-sizing:border-box;align-items:center;justify-content:center;overflow:hidden;background:rgba(4,6,12,0.7);display:none;z-index:40';
 sheet.innerHTML =
-  '<div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,92vw);' +
+  '<div style="position:relative;width:min(520px,100%);box-sizing:border-box;max-height:100%;overflow:auto;' +
   'background:rgba(10,16,30,0.97);border:1px solid #2a3c5e;border-radius:12px;padding:18px;color:#cfe0f4;font:13px/1.5 system-ui,sans-serif">' +
-  '<b style="font-size:15px">Bring your expedition</b><br>' +
-  '<span style="color:#8fa3c4">Paste your save below (in the live game: DevTools → Application → Local Storage → <code>cfcc_save_v2</code> — copy the value), or pick a file. It is checked by the real loader before anything is stored; your blob is kept byte-for-byte.</span>' +
-  '<textarea id="importtext" style="width:100%;height:120px;margin:10px 0;background:#0b1220;color:#cfe0f4;border:1px solid #22304a;border-radius:8px;padding:8px;box-sizing:border-box;font:12px monospace"></textarea>' +
+  '<h2 style="font-size:15px;margin:0 0 4px">Bring your expedition</h2>' +
+  '<span data-sel="import-safety" style="color:var(--dim)">Paste or pick a moderator-provided copied expedition save. Keep that external moderator backup as the authoritative exact copy. The app checks the save before storing it and attempts an additional exact local keepsake after import, but browser storage can refuse that keepsake.</span>' +
+  '<textarea id="importtext" aria-label="Paste expedition save data" style="width:100%;height:120px;margin:10px 0;background:#0b1220;color:#cfe0f4;border:1px solid #22304a;border-radius:8px;padding:8px;box-sizing:border-box;font:12px monospace"></textarea>' +
   '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
   '<button id="importgo" style="background:#1d3a5e;color:#eaf2ff;border:1px solid #3a5c8e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Import & reload</button>' +
-  '<label style="background:#14233c;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px;display:inline-flex;align-items:center">pick file<input id="importfile" type="file" accept=".json,.txt" style="display:none"></label>' +
-  '<button id="importclose" style="background:transparent;color:#8fa3c4;border:1px solid #22304a;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">close</button>' +
-  '</div><div id="importmsg" style="margin-top:8px;color:#e8a0a0"></div></div>';
+  '<button id="importpick" type="button" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Pick file</button>' +
+  '<input id="importfile" aria-label="Choose an expedition save file" type="file" accept=".json,.txt" tabindex="-1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">' +
+  '<button id="importclose" style="background:transparent;color:var(--dim);border:1px solid #22304a;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">close</button>' +
+  '</div><div id="importmsg" role="alert" aria-live="assertive" aria-atomic="true" style="margin-top:8px;color:#e8a0a0"></div></div>';
 document.body.appendChild(sheet);
-/* ---- THE DOCK: four live controls, every press proven by an EFFECT (the
+const importBackgroundState: Array<{ el: HTMLElement; inert: boolean; ariaHidden: string | null }> = [];
+/* ---- THE DOCK: eight live controls, every press proven by an EFFECT (the
    simrun-dom law — a dead button never ships). charts/sound flip the REAL
    save fields and persist through exportSaveV2. ---- */
-document.getElementById('docksave')!.addEventListener('click', () => { sheet.style.display = 'block'; });
-document.getElementById('docksurvey')!.addEventListener('click', () => {
+function openImportSheet(): void {
+  closePanels();
+  importBackgroundState.length = 0;
+  for (const child of [...document.body.children]) {
+    if (!(child instanceof HTMLElement) || child === sheet) continue;
+    importBackgroundState.push({ el: child, inert: child.inert, ariaHidden: child.getAttribute('aria-hidden') });
+    child.inert = true;
+    child.setAttribute('aria-hidden', 'true');
+  }
+  sheet.style.display = 'flex';
+  (sheet.querySelector('#importtext') as HTMLTextAreaElement | null)?.focus();
+}
+function closeImportSheet(): void {
+  sheet.style.display = 'none';
+  for (const { el, inert, ariaHidden } of importBackgroundState.splice(0)) {
+    el.inert = inert;
+    if (ariaHidden === null) el.removeAttribute('aria-hidden'); else el.setAttribute('aria-hidden', ariaHidden);
+  }
+  document.getElementById('docksets')?.focus();
+}
+document.addEventListener('focusin', (event) => {
+  if (sheet.style.display === 'none' || sheet.contains(event.target as Node)) return;
+  (sheet.querySelector<HTMLElement>('#importtext') || sheet.querySelector<HTMLElement>('button'))?.focus();
+}, true);
+surveyDockEl.addEventListener('click', () => {
   /* re-show the LAST card (no rebuild — the fold law's no-rebuild spirit) */
+  if (cardCtx && !activeCardPlanetWhere()) {
+    cardCtx = null;
+    card.innerHTML = '';
+    hideSurvey();
+    return;
+  }
   if (card.style.display === 'none' && card.innerHTML) {
     card.style.display = 'block';
-    document.getElementById('docksurvey')!.classList.add('on');
+    card.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('card-open');
+    surveyDockEl.classList.add('on');
+    surveyDockEl.setAttribute('aria-expanded', 'true');
   } else hideSurvey();
 });
-document.getElementById('dockcharts')!.addEventListener('click', () => {
+chartsDockEl.addEventListener('click', () => {
   if (!save) return;   /* pre-boot click (audit #3) */
   save.chartsOn = !save.chartsOn;
-  document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
+  chartsDockEl.classList.toggle('on', save.chartsOn);
+  chartsDockEl.setAttribute('aria-pressed', String(save.chartsOn));
   if (chartLayer) chartLayer.visible = save.chartsOn;
   fillSettings();   /* the panel mirrors the dock (and vice versa) */
   void persistView();
@@ -215,77 +586,335 @@ document.getElementById('dockcharts')!.addEventListener('click', () => {
 /* ---- SETTINGS (the first rail panel): every control drives a REAL save
    field and persists through exportSaveV2 — sound, volume (the squared-
    taper bus), charts, motion (Auto follows the OS), the glass tint ---- */
+const reducedMotionQuery = matchMedia('(prefers-reduced-motion: reduce)');
 function motionOK(): boolean {
   /* main.js motionOK: Auto (-1) follows the OS preference LIVE */
-  return save.motionMode === -1 ? !matchMedia('(prefers-reduced-motion: reduce)').matches : save.motionMode === 0;
+  return save.motionMode === -1 ? !reducedMotionQuery.matches : save.motionMode === 0;
 }
 function applyGlass(): void {
-  const a = Math.min(Math.max(save.glassTint, 0.40), 0.98);
+  /* Bright space art sits directly behind every panel. The old 0.40 floor
+     can reduce secondary copy to roughly 1–2.5:1, so v2 enforces the first
+     contrast-safe glass tier while retaining the player's more-solid choice. */
+  const a = Math.min(Math.max(save.glassTint, 0.82), 0.98);
   document.documentElement.style.setProperty('--glass-a', String(a));
 }
+function applyDisplayPreferences(): void {
+  const body = document.body;
+  body.classList.remove('fs-lg', 'fs-xl', 'tone-bright', 'tone-max', 'font-sys', 'font-mono');
+  if (save.fsMode) body.classList.add(save.fsMode);
+  if (save.toneMode) body.classList.add(save.toneMode);
+  if (save.fontMode) body.classList.add(save.fontMode);
+  body.classList.toggle('motion-reduced', !motionOK());
+  applyGlass();
+  syncTopbarH(); syncDockH(); syncCtxH(); syncHintH(); syncSurfaceChromeBottom();
+}
+reducedMotionQuery.addEventListener('change', () => {
+  if (save?.motionMode === -1) applyDisplayPreferences();
+});
 function fillSettings(): void {
   if (!save) return;   /* a click before boot finishes must not throw */
   fillPanel('set',
     '<h3>Settings</h3>' +
-    `<div class="row"><label>Sound</label><button id="setsnd" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'On' : 'Off'}</button></div>` +
-    `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
-    `<div class="row"><label>Star charts</label><button id="setcharts" class="${save.chartsOn ? 'on' : ''}">${save.chartsOn ? 'On' : 'Off'}</button></div>` +
-    `<div class="row"><label>Motion</label><span class="seg">` +
-    [[-1, 'Auto'], [0, 'Full'], [1, 'Reduced']].map(([v, t]) =>
-      `<button data-motion="${v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
+    `<div class="row"><label>Sound</label><button id="setsnd" aria-label="Sound" aria-pressed="${save.sndOn}" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" aria-label="Sound volume" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
+    `<div class="row"><label>Text size</label><span class="seg" role="group" aria-label="Text size">` +
+    [['', 'A'], ['fs-lg', 'A+'], ['fs-xl', 'A++']].map(([v, t]) =>
+      `<button data-pref="size" data-value="${v}" aria-pressed="${save.fsMode === v}" class="${save.fsMode === v ? 'on' : ''}">${t}</button>`).join('') +
     '</span></div>' +
-    `<div class="row"><label>Panel tint</label><input id="setglass" type="range" min="40" max="98" value="${Math.round(save.glassTint * 100)}"></div>` +
-    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>`);
+    `<div class="row"><label>Text tone</label><span class="seg" role="group" aria-label="Text tone">` +
+    [['', 'Soft'], ['tone-bright', 'Bright'], ['tone-max', 'Max']].map(([v, t]) =>
+      `<button data-pref="tone" data-value="${v}" aria-pressed="${save.toneMode === v}" class="${save.toneMode === v ? 'on' : ''}">${t}</button>`).join('') +
+    '</span></div>' +
+    `<div class="row"><label>Font</label><span class="seg" role="group" aria-label="Font">` +
+    [['', 'Rounded'], ['font-sys', 'System'], ['font-mono', 'Mono']].map(([v, t]) =>
+      `<button data-pref="font" data-value="${v}" aria-pressed="${save.fontMode === v}" class="${save.fontMode === v ? 'on' : ''}">${t}</button>`).join('') +
+    '</span></div>' +
+    `<div class="row"><label>Star charts</label><button id="setcharts" aria-label="Star charts" aria-pressed="${save.chartsOn}" class="${save.chartsOn ? 'on' : ''}">${save.chartsOn ? 'On' : 'Off'}</button></div>` +
+    `<div class="row"><label>Motion</label><span class="seg" role="group" aria-label="Motion">` +
+    [[-1, 'Auto'], [0, 'Full'], [1, 'Reduced']].map(([v, t]) =>
+      `<button data-motion="${v}" aria-pressed="${save.motionMode === v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
+    '</span></div>' +
+    `<div class="row"><label>Panel tint</label><input id="setglass" aria-label="Panel tint" type="range" min="82" max="98" value="${Math.round(Math.max(save.glassTint, 0.82) * 100)}"></div>` +
+    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>` +
+    `<div class="row"><label>Save data</label><button id="setimport" data-sel="set-import">Bring expedition</button></div>`);
   const el = document.getElementById('setpanel')!;
-  el.querySelector('#setsnd')!.addEventListener('click', () => { save.sndOn = !save.sndOn; fillSettings(); void persistView(); });
+  const refillAndFocus = (selector: string): void => {
+    fillSettings();
+    el.querySelector<HTMLElement>(selector)?.focus();
+  };
+  el.querySelector('#setsnd')!.addEventListener('click', () => {
+    save.sndOn = !save.sndOn; refillAndFocus('#setsnd'); void persistView();
+  });
   el.querySelector('#setvol')!.addEventListener('input', (e) => {
     save.sfxVol = (+(e.target as HTMLInputElement).value) / 100;
     applySfxGain();   /* the shared bus retapers live */
     persistSoon();
   });
+  for (const b of el.querySelectorAll<HTMLElement>('[data-pref]')) b.addEventListener('click', () => {
+    const value = b.dataset.value || '';
+    if (b.dataset.pref === 'size') save.fsMode = value;
+    else if (b.dataset.pref === 'tone') save.toneMode = value;
+    else if (b.dataset.pref === 'font') save.fontMode = value;
+    const selector = `[data-pref="${b.dataset.pref}"][data-value="${CSS.escape(value)}"]`;
+    applyDisplayPreferences(); refillAndFocus(selector); void persistView();
+  });
   el.querySelector('#setcharts')!.addEventListener('click', () => {
     save.chartsOn = !save.chartsOn;
-    document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
+    chartsDockEl.classList.toggle('on', save.chartsOn);
+    chartsDockEl.setAttribute('aria-pressed', String(save.chartsOn));
     if (chartLayer) chartLayer.visible = save.chartsOn;
-    fillSettings(); void persistView();
+    refillAndFocus('#setcharts'); void persistView();
   });
   for (const b of el.querySelectorAll('[data-motion]')) b.addEventListener('click', () => {
     save.motionMode = +(b as HTMLElement).dataset.motion!;
-    fillSettings(); void persistView();
+    applyDisplayPreferences(); refillAndFocus(`[data-motion="${save.motionMode}"]`); void persistView();
   });
-  el.querySelector('#setrestart')!.addEventListener('click', () => {
-    /* the game's promise: Settings can restart the lessons any time */
+  el.querySelector('#setrestart')!.addEventListener('click', async (event) => {
+    /* Veteran restart is a reversible drill: begin in Sol where the lesson
+       is winnable, then restore the exact pre-drill view on skip/finish. */
+    const button = event.currentTarget as HTMLButtonElement;
+    const replacement = claimReplacementTransaction('training-restart');
+    if (!replacement) {
+      toast('Save replacement underway', 'Finish the current expedition replacement before restarting Field Training.');
+      return;
+    }
+    const prior = save.tutDone;
+    const priorSnapshot = save.tutSnapPending;
+    const priorNav = nav;
+    button.disabled = true;
+    save.tutSnapPending = { view: navToView(nav) };
     save.tutDone = false;
-    void persistView();
-    location.reload();
+    nav = {
+      mode: 'system',
+      gal: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y, size: 78, sp: 0, tilt: 0.62, rot: 0.5, home: true },
+      star: { seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y },
+      planet: null,
+    };
+    if (await persistView(replacement)) scheduleReplacementReload(replacement);
+    else {
+      releaseReplacementTransaction(replacement);
+      save.tutDone = prior;
+      save.tutSnapPending = priorSnapshot;
+      nav = priorNav;
+      save.savedView = navToView(priorNav);
+      button.disabled = false;
+      toast('Save unavailable', 'Field Training was not restarted; your current expedition is unchanged.');
+    }
   });
+  el.querySelector('#setimport')!.addEventListener('click', openImportSheet);
   el.querySelector('#setglass')!.addEventListener('input', (e) => {
     save.glassTint = (+(e.target as HTMLInputElement).value) / 100;
     applyGlass(); persistSoon();
   });
 }
 
+/* ---- GUIDE + RELEASE HISTORY — one source-addressed continuation of the
+   mature v1 manual, not a second seven-topic manual. All 43 authored IDs and
+   the 56-release archive remain synchronized to v1.8.9; current capability
+   copy replaces any legacy promise whose mechanic is not yet live in v2. ---- */
+const GUIDE_CATALOGUE = getGuideCatalogue();
+let guideCategory: GuideCategoryId | null = null;
+let guideTopic: GuideTopicId | null = null;
+function guideBodyEl(): HTMLElement | null {
+  return document.querySelector('#guidepanel [data-sel="guide-body"]');
+}
+function guideCategoryOf(id: GuideTopicId): (typeof GUIDE_CATALOGUE)[number] | undefined {
+  return GUIDE_CATALOGUE.find((category) => category.topics.some((topic) => topic.id === id));
+}
+function guideTopicRow(topic: GuideTopicView, icon = '•'): string {
+  const status = topic.availability === 'unavailable' ? 'Not yet in v2'
+    : topic.availability === 'partial' ? 'Partly live' : 'Live';
+  return `<button class="guide-item" data-sel="guide-topic" data-guide-topic="${topic.id}" data-guide-availability="${topic.availability}">` +
+    `<span class="guide-icon">${icon}</span><span><b>${esc(topic.title)}</b><small>${esc(status)}</small></span><span aria-hidden="true">›</span></button>`;
+}
+function interactiveGuideBody(source: string): string {
+  /* Legacy Guide cross-links are trusted source-addressed HTML spans. V2
+     upgrades them to native buttons so the same links work by touch,
+     pointer, keyboard, and assistive technology. */
+  const template = document.createElement('template');
+  template.innerHTML = source;
+  for (const span of template.content.querySelectorAll<HTMLElement>('span[data-gt]')) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'guide-inline-link';
+    button.dataset.gt = span.dataset.gt;
+    button.innerHTML = span.innerHTML;
+    span.replaceWith(button);
+  }
+  return template.innerHTML;
+}
+function focusGuide(selector: string): void {
+  guideBodyEl()?.querySelector<HTMLElement>(selector)?.focus();
+}
+function renderGuideMenu(focusResult = false): void {
+  guideCategory = null; guideTopic = null;
+  const body = guideBodyEl(); if (!body) return;
+  body.innerHTML = GUIDE_CATALOGUE.map((category) =>
+    `<button class="guide-item guide-category" data-guide-category="${category.id}"><span class="guide-icon">${category.icon}</span>` +
+    `<span><b>${esc(category.title)}</b><small>${esc(category.blurb)} · ${category.topics.length} topics</small></span><span aria-hidden="true">›</span></button>`).join('');
+  body.scrollTop = 0;
+  if (focusResult) focusGuide('[data-guide-category]');
+}
+function renderGuideCategory(id: GuideCategoryId, focusResult = false): void {
+  const category = GUIDE_CATALOGUE.find((candidate) => candidate.id === id);
+  const body = guideBodyEl(); if (!category || !body) return;
+  guideCategory = id; guideTopic = null;
+  body.innerHTML = `<button class="guide-back" data-guide-home>‹ All topics</button>` +
+    category.topics.map((topic) => guideTopicRow(topic, category.icon)).join('');
+  body.scrollTop = 0;
+  if (focusResult) focusGuide('[data-guide-home]');
+}
+function renderGuideTopic(id: GuideTopicId, focusResult = false): void {
+  const topic = getGuideTopic(id);
+  const category = guideCategoryOf(id);
+  const body = guideBodyEl(); if (!topic || !category || !body) return;
+  guideCategory = category.id; guideTopic = id;
+  const status = topic.availability === 'unavailable' ? 'Not yet available in v2'
+    : topic.availability === 'partial' ? 'Partly available in this development build'
+      : 'Available in this development build';
+  const siblings = category.topics.filter((candidate) => candidate.id !== id).slice(0, 4);
+  body.innerHTML = `<button class="guide-back" data-guide-category="${category.id}">‹ ${esc(category.title)}</button>` +
+    `<article class="guide-topic"><h4 tabindex="-1" data-guide-heading>${category.icon} ${esc(topic.title)}</h4>` +
+    `<div class="guide-status" data-guide-status="${topic.availability}">${esc(status)}</div>${interactiveGuideBody(topic.body)}` +
+    (siblings.length ? `<div class="guide-related"><b>Also in ${esc(category.title)}</b>` +
+      siblings.map((candidate) => `<button data-guide-topic="${candidate.id}">${esc(candidate.title)}</button>`).join('') + '</div>' : '') +
+    '</article>';
+  body.scrollTop = 0;
+  if (focusResult) focusGuide('[data-guide-category]');
+}
+function renderGuideSearch(query: string): void {
+  const body = guideBodyEl(); if (!body) return;
+  const hits = searchGuide(query);
+  if (query.trim().length < 2) { renderGuideMenu(); return; }
+  body.innerHTML = hits.length
+    ? hits.map((topic) => guideTopicRow(topic, guideCategoryOf(topic.id)?.icon || '•')).join('')
+    : `<div class="empty">Nothing matches “${esc(query.trim())}”. Try “landing”, “save”, “breeding”, or “stardust”.</div>`;
+  body.scrollTop = 0;
+}
+function renderReleaseHistory(focusResult = false): void {
+  const body = guideBodyEl(); if (!body) return;
+  const releases = getReleaseHistory({ includeDraft: true });
+  body.innerHTML = '<button class="guide-back" data-guide-home>‹ Guide</button>' +
+    '<div class="guide-release-intro"><b>Expedition bulletins</b><br>' +
+    'The v2 development entry is unversioned and cannot trigger an update popup. The complete v1 history below remains immutable.</div>' +
+    releases.map((release, index) => `<button class="guide-item" data-release-index="${index}">` +
+      `<span class="guide-icon">${release.status === 'draft' ? '🧪' : '✦'}</span><span><b>${release.version ? 'v' + esc(release.version) + ' · ' : ''}${esc(release.title)}</b>` +
+      `<small>${release.status === 'draft' ? 'UNRELEASED DEVELOPMENT' : esc(release.date) + (release.status === 'shipped' ? ' · v2 release' : ' · legacy release')}</small></span><span aria-hidden="true">›</span></button>`).join('');
+  body.scrollTop = 0;
+  if (focusResult) focusGuide('[data-guide-home]');
+}
+function renderRelease(index: number, focusResult = false, releases = getReleaseHistory({ includeDraft: true })): void {
+  const release = releases[index];
+  const body = guideBodyEl(); if (!release || !body) return;
+  body.innerHTML = '<button class="guide-back" data-guide-releases>‹ All bulletins</button>' +
+    `<article class="guide-topic"><h4 tabindex="-1" data-guide-heading>${release.version ? 'v' + esc(release.version) + ' · ' : ''}${esc(release.title)}</h4>` +
+    `<div class="guide-status" data-guide-status="${release.status}">${release.status === 'draft' ? 'UNRELEASED DEVELOPMENT · no version bump' : esc(release.date) + (release.status === 'shipped' ? ' · v2 release' : ' · legacy v1 history')}</div>` +
+    release.sections.map((section) => `<h5>${section.heading}</h5><ul>${section.bullets.map((bullet) => `<li>${bullet}</li>`).join('')}</ul>`).join('') + '</article>';
+  body.scrollTop = 0;
+  if (focusResult) focusGuide('[data-guide-releases]');
+}
+let pendingReleaseBulletin: V2ShippedRelease | null = null;
+function showV2ReleaseBulletin(
+  current: V2ShippedRelease,
+  history: readonly ReleaseNoteView[] = getReleaseHistory(),
+): boolean {
+  if (!hasUnseenV2Release(save.rnSeen, current)) return false;
+  /* A first expedition owns one blocking onboarding surface at a time. Queue
+     a shipped bulletin until Training is finished/skipped instead of opening
+     the Guide underneath its lesson card and marking unseen copy as read. */
+  if (trainingActive()) { pendingReleaseBulletin = current; return false; }
+  const index = history.findIndex((release) => release.status === 'shipped' && release.version === current.version);
+  if (index < 0) return false;
+  openPanel('guide', null);
+  renderRelease(index, true, history);
+  save.rnSeen = current.version;
+  pendingReleaseBulletin = null;
+  void persistView();
+  return true;
+}
+function showUnseenV2Release(): boolean {
+  /* The mature one-time bulletin rule is ready before the first v2 release,
+     but an unversioned development draft can never trigger it. Nick alone
+     authorizes V2_CURRENT_RELEASE_VERSION in release-content.ts. */
+  const current = getCurrentV2Release();
+  if (!current) return false;
+  const history = getReleaseHistory({ includeDraft: true });
+  return showV2ReleaseBulletin(current, history);
+}
+function flushPendingReleaseBulletin(): void {
+  const current = pendingReleaseBulletin;
+  if (!current || trainingActive()) return;
+  const history = getReleaseHistory({ includeDraft: true, shippedReleases: [current] });
+  showV2ReleaseBulletin(current, history);
+}
+function fillGuide(): void {
+  if (!save) return;
+  fillPanel('guide',
+    '<h3>Guide to the Universe</h3>' +
+    '<div class="guide-tools"><input id="guidesearch" type="search" autocomplete="off" aria-label="Search the Guide" placeholder="Search 41 Guide topics">' +
+    '<button data-guide-releases>Release history</button></div>' +
+    '<div class="sub guide-scope">The mature manual, adapted to what is actually live in this v2 development build. Unported active systems stay visible and honestly marked; intentionally dormant topics remain recorded but hidden.</div>' +
+    '<div class="guide-body" data-sel="guide-body"></div>');
+  renderGuideMenu();
+  if (!save.seenGuide) {
+    save.seenGuide = true;
+    void persistView();
+  }
+}
+document.getElementById('guidepanel')!.addEventListener('input', (event) => {
+  if ((event.target as HTMLElement).id === 'guidesearch') renderGuideSearch((event.target as HTMLInputElement).value);
+});
+document.getElementById('guidepanel')!.addEventListener('click', (event) => {
+  const target = event.target as HTMLElement;
+  const topicEl = target.closest<HTMLElement>('[data-guide-topic],[data-gt]');
+  const topic = (topicEl?.dataset.guideTopic || topicEl?.dataset.gt) as GuideTopicId | undefined;
+  const category = target.closest<HTMLElement>('[data-guide-category]')?.dataset.guideCategory as GuideCategoryId | undefined;
+  const releaseIndex = target.closest<HTMLElement>('[data-release-index]')?.dataset.releaseIndex;
+  if (topic) renderGuideTopic(topic, true);
+  else if (category) renderGuideCategory(category, true);
+  else if (releaseIndex !== undefined) renderRelease(+releaseIndex, true);
+  else if (target.closest('[data-guide-releases]')) renderReleaseHistory(true);
+  else if (target.closest('[data-guide-home]')) renderGuideMenu(true);
+});
+
 /* ---- COMPENDIUM (read-only over the save's codex — the real catalog).
    Large catalogs get virtualization later (plan bullet); the list caps at
    the save's own 1500-entry bound today. ---- */
-function fillCodex(filter?: string): void {
+let codexFilter = '';
+function fillCodex(filter?: string, focusIndex?: number): void {
   if (!save) return;
-  const f = (filter || '').toLowerCase();
+  codexFilter = filter ?? codexFilter;
+  const f = codexFilter.toLowerCase();
+  /* Subscribe the VIEW once, not once per creature. With the shared import
+     Promise, putting this inside `rows.map` retained up to 1,500 callbacks;
+     resolving the chunk then launched 1,500 eager full-list rerenders. */
+  if (!SA) ensureSA('codex', () => {
+    if (openPanelId() !== 'codex') return;
+    /* The lazy art chunk may resolve after keyboard focus has entered the
+       list. Repainting thumbnails replaces the panel subtree, so carry the
+       logical close/row target across that async refill instead of dropping
+       focus to body on slower devices. */
+    const active = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const rowIndex = active?.closest<HTMLElement>('[data-ci]')?.dataset.ci;
+    const closeFocused = !!active?.closest('#codexpanel [data-pnx]');
+    fillCodex(codexFilter, rowIndex === undefined ? undefined : +rowIndex);
+    if (closeFocused) document.querySelector<HTMLElement>('#codexpanel [data-pnx]')?.focus();
+  });
   const rows = save.codex
     .map(([, e], i) => ({ e, i }))
     .filter(({ e }) => !f || (e.name + ' ' + e.kind + ' ' + e.realm).toLowerCase().includes(f));
   fillPanel('codex',
-    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${rows.length}</span>${f ? ` <span class="sub" style="color:#8fa3c4;font-size:12px">· “${esc(filter)}”</span>` : ''}</h3>` +
+    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${rows.length}</span>${f ? ` <span class="sub" style="color:var(--dim);font-size:12px">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
     (rows.length === 0
-      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — the Compendium fills as you discover life.'}</div>`
+      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — imported discoveries appear here. Live catalogue writing arrives with the discovery path.'}</div>`
       : rows.map(({ e, i }) => {
         let th = '';
         if (SA) { try { th = SA.speciesThumb(e.g as never); } catch { /* text row still reads */ } }
-        else ensureSA(() => { if (openPanelId() === 'codex') fillCodex(filter); });
-        return `<div class="centry" data-sel="codex-entry" data-ci="${i}" style="cursor:pointer;display:flex;gap:10px;align-items:center">` +
+        return `<button type="button" class="centry" data-sel="codex-entry" data-ci="${i}" style="display:flex;gap:10px;align-items:center">` +
           (th ? `<img src="${th}" alt="" style="width:44px;height:44px;border-radius:8px;border:1px solid #22304a;background:#0b1220;flex:0 0 44px">` : '') +
-          `<span style="min-width:0"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><div class="sub">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</div></span></div>`;
+          `<span style="min-width:0"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><span class="sub" style="display:block">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</span></span></button>`;
       }).join('')));
+  if (focusIndex !== undefined) document.querySelector<HTMLElement>(`#codexpanel [data-ci="${focusIndex}"]`)?.focus();
 }
 /* the Compendium DETAIL CARD: the whole domain stack speaking for one
    creature — describeSpecies (fixture-pinned sentences + fauna enrichments),
@@ -306,7 +935,7 @@ function fillCodexDetail(idx: number): void {
     const names = STAT_NAMES as readonly string[], hues = STAT_HUES as readonly string[];
     let portrait = '';
     const idx0 = idx;
-    if (ensureSA(() => { if (openPanelId() === 'codex') fillCodexDetail(idx0); })) {
+    if (ensureSA('codex', () => { if (openPanelId() === 'codex') fillCodexDetail(idx0); })) {
       try { portrait = SA!.speciesPortrait(e.g as never); } catch { /* a genome the painter cannot dress — the card still reads */ }
     }
     body =
@@ -319,7 +948,7 @@ function fillCodexDetail(idx: number): void {
         const v = st[k] || 0;
         return `<div class="row" style="min-height:24px" data-sel="detail-stat"><label style="flex:0 0 84px">${esc(names[i] || k)}</label>` +
           `<span style="flex:1;height:9px;border-radius:999px;background:#16202f;overflow:hidden"><span style="display:block;height:100%;width:${Math.round((v / mx) * 100)}%;background:${esc(hues[i] || '#7ec8f0')}"></span></span>` +
-          `<span style="flex:0 0 40px;text-align:right;color:#9fb6d6">${Math.round(v)}</span></div>`;
+          `<span style="flex:0 0 40px;text-align:right;color:var(--dim)">${Math.round(v)}</span></div>`;
       }).join('') +
       (['diet', 'anatomy', 'temper', 'sense', 'repro', 'life', 'metab', 'habitat', 'behavior'] as const)
         .filter((k) => (d as Record<string, unknown>)[k])
@@ -327,8 +956,10 @@ function fillCodexDetail(idx: number): void {
   } catch {
     body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
   }
-  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#7ec8f0;cursor:pointer;font:13px system-ui;padding:4px 8px 4px 0">‹ Compendium</button></h3><div data-sel="codex-detail">${body}</div>`);
-  document.getElementById('codexback')!.addEventListener('click', () => fillCodex());
+  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}</div>`);
+  const back = document.getElementById('codexback')!;
+  back.addEventListener('click', () => fillCodex(codexFilter, idx));
+  back.focus();
 }
 function fillRecords(): void {
   if (!save) return;
@@ -336,7 +967,8 @@ function fillRecords(): void {
   const counts: Array<[string, number]> = [
     ['galaxies seen', save.galSeen.length], ['systems charted', save.sysSeen.length],
     ['worlds landed', save.landed.length], ['world types met', save.ptypesSeen.length],
-    ['star kinds met', save.starKindsSeen.length], ['surveys', save.surveyedSet.length],
+    ['star kinds met', save.starKindsSeen.length], ['species catalogued', save.codex.length],
+    ['surveys', save.surveyedSet.length],
   ];
   const jr = save.journal.slice(-40).reverse();
   fillPanel('rec',
@@ -345,7 +977,7 @@ function fillRecords(): void {
     (st.essenceEarned ? `<div class="row" style="min-height:26px"><label>stardust earned</label><span style="color:#ffd9a0">✦ ${st.essenceEarned}</span></div>` : '') +
     '<h3 style="margin-top:14px">Journal</h3>' +
     (jr.length === 0
-      ? '<div class="empty" data-sel="journal-empty">No entries yet — the journal writes itself as you explore.</div>'
+      ? '<div class="empty" data-sel="journal-empty">No imported Journal entries yet — live Journal writing is not connected in this development slice.</div>'
       : jr.map((j) => `<div class="centry" data-sel="journal-entry"><b>${esc(j.n)}</b><div class="sub">${esc(j.w)}</div></div>`).join('')));
 }
 /* THE STAR ATLAS ('log' in the game): every charted place, tap to TRAVEL
@@ -357,16 +989,21 @@ function fillAtlas(): void {
     `<h3>Star Atlas <span style="color:#7ec8f0" data-sel="atlas-count">${rows.length}</span></h3>` +
     (rows.length === 0
       ? '<div class="empty" data-sel="atlas-empty">Nothing charted yet — tap “+ Add to Star Atlas” on any survey card.</div>'
-      : rows.map(([id, e]) =>
-        `<div class="centry" data-sel="atlas-entry" data-aid="${esc(id)}" style="cursor:pointer"><b>${esc(String(e.title || id))}</b>${e.badge ? ` <span class="sub">· ${esc(String(e.badge))}</span>` : ''}<div class="sub">${esc(String(e.sub || ''))}</div></div>`).join('')));
+      : rows.map(([id, e]) => {
+        const travelable = !!e.where;
+        const unavailable = travelable ? '' : ' · route unavailable in this build';
+        return `<button type="button" class="centry" data-sel="atlas-entry" data-aid="${esc(id)}"${travelable ? '' : ' disabled aria-disabled="true"'}><b>${esc(String(e.title || id))}</b>${e.badge ? ` <span class="sub">· ${esc(String(e.badge))}</span>` : ''}<span class="sub" style="display:block">${esc(String(e.sub || ''))}${unavailable}</span></button>`;
+      }).join('')));
 }
 document.getElementById('atlaspanel')!.addEventListener('click', (e) => {
   const row = (e.target as HTMLElement).closest('[data-aid]');
   if (!row || !save) return;
   const hit = save.logMap.find(([id]) => id === (row as HTMLElement).dataset.aid);
   if (hit && hit[1].where) {
+    const keyboard = document.activeElement === row;
     closePanels();
-    jumpToView(hit[1].where as Record<string, unknown>);
+    const moved = jumpToView(hit[1].where as Record<string, unknown>);
+    if (keyboard && moved) app.canvas.focus();
   }
 });
 /* CHARTERS — the Ascent's chapter book over the pure data + the save's
@@ -381,9 +1018,9 @@ function fillCharters(): void {
         const have = Math.min(save.ascProg[g.id] || 0, g.n);
         const pct = Math.round((have / g.n) * 100);
         return `<div class="row" style="min-height:24px" data-sel="charter-goal"><label style="font-size:12px">${esc(g.t)}</label>` +
-          `<span style="flex:0 0 90px;display:flex;align-items:center;gap:6px"><span style="flex:1;height:7px;border-radius:999px;background:#16202f;overflow:hidden"><span style="display:block;height:100%;width:${pct}%;background:${have >= g.n ? '#caa24f' : '#7ec8f0'}"></span></span><span style="color:#8fa3c4;font-size:11px">${have}/${g.n}</span></span></div>`;
+          `<span style="flex:0 0 90px;display:flex;align-items:center;gap:6px"><span style="flex:1;height:7px;border-radius:999px;background:#16202f;overflow:hidden"><span style="display:block;height:100%;width:${pct}%;background:${have >= g.n ? '#caa24f' : '#7ec8f0'}"></span></span><span style="color:var(--dim);font-size:11px">${have}/${g.n}</span></span></div>`;
       }).join('');
-      return `<div class="centry" data-sel="charter-ch" data-chstate="${state}" style="${state === 'ahead' ? 'opacity:0.55' : ''}">` +
+      return `<div class="centry" data-sel="charter-ch" data-chstate="${state}" style="${state === 'ahead' ? 'border-left:3px solid #405477;padding-left:8px' : ''}">` +
         `<b style="${state === 'current' ? 'color:#ffd9a0' : ''}">${state === 'done' ? '✓ ' : ''}${esc(ch.name)}</b>` +
         `<div class="sub" style="margin:2px 0 6px">${esc(ch.intro)}</div>` +
         (state === 'ahead' ? '' : goals) + '</div>';
@@ -396,9 +1033,18 @@ registerPanel({ id: 'atlas', el: document.getElementById('atlaspanel')!, btns: [
 document.getElementById('dockatlas')!.addEventListener('click', () => togglePanel('atlas'));
 document.getElementById('railatlas')!.addEventListener('click', () => togglePanel('atlas'));
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
-registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: () => fillCodex() });
+registerPanel({ id: 'guide', el: document.getElementById('guidepanel')!, btns: [document.getElementById('dockguide')], onOpen: fillGuide });
+registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: () => {
+  /* An ordinary Compendium open is a fresh catalogue view. Search may apply
+     a query immediately after opening, while detail → Back deliberately
+     keeps the active query. Without this reset, closing a search result and
+     reopening from the dock silently retained a hidden filter. */
+  codexFilter = '';
+  fillCodex('');
+} });
 registerPanel({ id: 'rec', el: document.getElementById('recpanel')!, btns: [document.getElementById('dockrecords'), document.getElementById('railrecords')], onOpen: fillRecords });
 document.getElementById('docksets')!.addEventListener('click', () => togglePanel('set'));
+document.getElementById('dockguide')!.addEventListener('click', () => togglePanel('guide'));
 document.getElementById('dockcodex')!.addEventListener('click', () => togglePanel('codex'));
 document.getElementById('railcodex')!.addEventListener('click', () => togglePanel('codex'));
 document.getElementById('dockrecords')!.addEventListener('click', () => togglePanel('rec'));
@@ -416,16 +1062,25 @@ const searchEl = document.getElementById('searchbox') as HTMLInputElement;
 function encodeHere(): string | null {
   const v = navToView(nav);
   if (!v) return null;
-  return encodeWhere(v as never) as string;
+  const name = v.type === 'planet' && v.pseed != null ? customNames.get('p' + v.pseed) : null;
+  return encodeWhere(v as never, name || undefined) as string;
 }
-function jumpToView(view: Record<string, unknown>): boolean {
+function jumpToView(view: Record<string, unknown>, incomingName: string | null = null): boolean {
   if (!save) return false;   /* pre-boot paste (audit #3) */
   const v = _sanitizeView(view);
   if (!v) return false;
   const n2 = viewToNav(v);
+  /* External planet destinations focus the real world in system view; only
+     the explicit Land command may enter surface mode and bank outcomes.
+     Also reject a pseed that is not a member of the declared system. */
+  const focusPlanet = n2.mode === 'surface' && n2.star && n2.planet
+    ? systemScene(n2.star.seed).planets.find((planet) => planet.seed === n2.planet!.seed) || null
+    : null;
+  if (n2.mode === 'surface' && !focusPlanet) return false;
   if (n2.mode !== 'universe' && n2.gal) {
     if (!withinReachOf(primeCount(), n2.gal.x, n2.gal.y)) {
-      toast('⬆ Beyond Your Charter', ascHintFor(ascStage()));
+      toast('⬆ Beyond Your Charter', ascStage() < 3 ? ascHintFor(ascStage())
+        : 'Collect prime signatures to extend your reach — ' + currentRegionOf(primeCount()).name + ' for now.');
       return false;
     }
     if (n2.star && !ascAllowsStar(ascStage(), n2.gal.seed, n2.star)) {
@@ -433,73 +1088,170 @@ function jumpToView(view: Record<string, unknown>): boolean {
       return false;
     }
   }
-  nav = n2;
+  let acceptedName = false;
+  if (focusPlanet && incomingName) {
+    const name = cleanName(incomingName);
+    if (name) {
+      customNames.set('p' + focusPlanet.seed, name);
+      save.customNames = [...customNames.entries()];
+      acceptedName = true;
+    }
+  }
+  nav = focusPlanet
+    ? { mode: 'system', gal: n2.gal, star: n2.star, planet: null }
+    : n2;
   if (nav.mode === 'galaxy') { gz0 = 0.42 * minWH() / GR; camT.z = gz0 * 1.05; }
   else if (nav.mode === 'system') { sz0 = 0.40 * minWH() / SYS_R; camT.z = sz0 * 1.05; }
   else camT.z = 1;
   cam.z = camT.z * 0.7; cam.x = camT.x = 0; cam.y = camT.y = 0;
   playWhoosh();
   rerender();
+  if (focusPlanet && nav.star) surveyPlanet(focusPlanet, nav.star.seed);
+  if (acceptedName) void persistView();
   return true;
 }
 searchEl.addEventListener('keydown', (e) => {
   if (e.key !== 'Enter') return;
+  /* Search owns Enter. Prevent the browser's type=search default action from
+     dispatching a secondary implicit activation after this handler has
+     opened/focused a panel or navigated the canvas. */
+  e.preventDefault();
+  e.stopPropagation();
   const q = searchEl.value.trim();
   if (!q) return;
   const dec = decodeWhere(q) as { where: Record<string, unknown>; name: string | null } | null;
   if (dec && dec.where) {
-    if (jumpToView(dec.where)) searchEl.value = '';
-    searchEl.blur();
+    if (jumpToView(dec.where, dec.name)) {
+      searchEl.value = '';
+      /* Route rendering replaces scene/card DOM synchronously. Continue the
+         keyboard journey at the live action when a planet card opened, or
+         at the exploration canvas for galaxy/star destinations. A rejected
+         code deliberately keeps its query and focus for correction. */
+      queueMicrotask(() => {
+        const action = card.querySelector<HTMLElement>('[data-act="landcta"],[data-act="travel"]');
+        (action || app.canvas).focus();
+      });
+    } else searchEl.focus();
     return;
   }
   /* not a code — a Compendium name filter */
-  openPanel('codex');
+  openPanel('codex', searchEl);
   fillCodex(q);
+  (document.querySelector<HTMLElement>('#codexpanel [data-ci]')
+    || document.querySelector<HTMLElement>('#codexpanel [data-pnx]'))?.focus();
 });
-sheet.querySelector('#importclose')!.addEventListener('click', () => { sheet.style.display = 'none'; });
+sheet.querySelector('#importclose')!.addEventListener('click', closeImportSheet);
+sheet.querySelector('#importpick')!.addEventListener('click', () => (sheet.querySelector('#importfile') as HTMLInputElement).click());
 sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
   const f = (e.target as HTMLInputElement).files?.[0];
   if (!f) return;
   void f.text().then((txt) => { (sheet.querySelector('#importtext') as HTMLTextAreaElement).value = txt; });
 });
-async function importBlob(raw: string): Promise<string | null> {
+async function importBlob(raw: string, diagnosticPhaseId?: string): Promise<string | null> {
   /* returns an error message, or null on success (then we reload) */
-  const imp = importSaveV2(raw, REGISTRY, Date.now());
-  if (!imp.ok) return 'That does not load as a Celestial Frontier save — nothing was stored.';
+  let phaseSequence = 0;
+  const phase = (stage: ImportPhaseStage, error: string | null = null): void => {
+    if (typeof diagnosticPhaseId !== 'string' || !diagnosticPhaseId) return;
+    const witness: ImportPhaseWitness = {
+      schema: 'cf-v2-import-phase/v1', phaseId: diagnosticPhaseId,
+      reason: 'save-import', documentToken: DOCUMENT_TOKEN,
+      stage, sequence: ++phaseSequence,
+      tickerStarted: app.ticker?.started === true,
+      performanceNow: performance.now(), error,
+    };
+    try {
+      const binding = (window as unknown as Record<string, unknown>).__cfImportPhaseWitness;
+      if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
+    } catch { /* optional evidence is fail-closed in the harness */ }
+  };
+  phase('invoked');
+  /* JSON permits surrounding whitespace. Keep the exact submitted text
+     for the recovery keepsake, while retaining the importer's historical
+     trimmed candidate for classification and the live primary. */
+  const checkedRaw = raw.trim();
+  const imp = importSaveV2(checkedRaw, REGISTRY, Date.now());
+  if (!imp.ok && imp.reason === 'future-version') {
+    phase('validation-rejected', 'future-version');
+    return 'This save is from a newer Celestial Frontier build. Update first; nothing was stored.';
+  }
+  if (!imp.ok) {
+    phase('validation-rejected', 'invalid save payload');
+    return 'That does not load as a Celestial Frontier save — nothing was stored.';
+  }
   /* the real loader hardens ANY object into a fresh save — fine at boot,
      dangerous in an import sheet (an accidental "{}" would wipe the stored
      expedition). Require a face we recognize before we overwrite. */
   try {
-    const o = JSON.parse(raw) as Record<string, unknown>;
-    const KNOWN = ['me', 'essence', 'view', 'codex', 'land', 'stats', 'cargo', 'epoch', 'tut'];
-    if (!KNOWN.some((k) => k in o)) return 'That parses, but carries no save fields — nothing was stored.';
-  } catch { return 'That does not load as a Celestial Frontier save — nothing was stored.'; }
-  try { await repo.write(raw); } catch { return 'Storage refused the write (private mode?).'; }
-  /* the ORIGINAL paste is kept as an untouched keepsake (audit #2): the live
-     save evolves through exportSaveV2 from the first frame, so any field the
-     port's schema does not yet carry would otherwise be unrecoverable —
-     exactly the wrong failure mode for Gate C's real veteran save */
+    const o = JSON.parse(checkedRaw) as unknown;
+    if (!isPlausibleSaveEnvelope(o)) {
+      phase('validation-rejected', 'incomplete save envelope');
+      return 'That parses, but is not a complete save envelope — nothing was stored.';
+    }
+  } catch {
+    phase('validation-rejected', 'invalid JSON');
+    return 'That does not load as a Celestial Frontier save — nothing was stored.';
+  }
+  const replacement = claimReplacementTransaction('save-import');
+  if (!replacement) {
+    phase('claim-rejected', 'another replacement transaction already owns the app');
+    return 'Another expedition replacement is finishing. Wait for its reload, then try again.';
+  }
+  phase('claimed');
+  /* Import is a replacement transaction, not another autosave. Cancel a
+     pending slider debounce, stop new exports, and let an export already in
+     flight settle before the validated bytes become primary. Otherwise an
+     older settings snapshot can win the race after the import write. */
+  clearTimeout(_persistT); _persistT = 0;
+  importWriteInFlight = true;
+  const priorPersist = activePersist;
+  phase(priorPersist ? 'waiting-active-persist' : 'no-active-persist');
+  if (priorPersist) {
+    await priorPersist.catch(() => false);
+    phase('active-persist-settled');
+  }
+  phase('primary-write-started');
+  try {
+    await repo.write(checkedRaw);
+    phase('primary-write-complete');
+  }
+  catch {
+    phase('primary-write-rejected', 'storage refused the primary write');
+    importWriteInFlight = false;
+    releaseReplacementTransaction(replacement);
+    return 'Storage refused the write (private mode?).';
+  }
+  /* Best-effort extra keepsake only: the external moderator backup remains
+     authoritative. The live primary evolves through exportSaveV2 from the
+     first frame, so retain the exact input locally when browser storage
+     permits it, without blocking an otherwise valid import when it does not. */
   try { localStorage.setItem('cf_v2_import_original', raw); } catch { /* keepsake only */ }
-  location.reload();
+  phase('release-started');
+  scheduleReplacementReload(replacement, (witness) => {
+    phase('release-complete', witness.error);
+  });
   return null;
 }
 sheet.querySelector('#importgo')!.addEventListener('click', () => {
-  const raw = (sheet.querySelector('#importtext') as HTMLTextAreaElement).value.trim();
+  const raw = (sheet.querySelector('#importtext') as HTMLTextAreaElement).value;
   void importBlob(raw).then((err) => { if (err) (sheet.querySelector('#importmsg') as HTMLElement).textContent = err; });
 });
 
 /* ---- the charter toast (main.js charterBlock/ascBlock: name the BUILD) ---- */
 const toastEl = document.createElement('div');
 toastEl.id = 'toast';
-toastEl.style.cssText = 'position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 112px);transform:translateX(-50%);max-width:min(480px,90vw);' +
+toastEl.setAttribute('role', 'status');
+toastEl.setAttribute('aria-live', 'polite');
+toastEl.setAttribute('aria-atomic', 'true');
+toastEl.style.cssText = 'position:fixed;left:50%;bottom:calc(var(--safe-bottom,0px) + 112px);transform:translateX(-50%);max-width:min(480px,calc(100vw - var(--safe-left,0px) - var(--safe-right,0px) - 20px));box-sizing:border-box;' +
   'background:rgba(10,16,30,0.94);color:#cfe0f4;font:13px/1.5 system-ui,sans-serif;padding:10px 16px;' +
   'border:1px solid #2a3c5e;border-radius:10px;opacity:0;transition:opacity 0.35s;pointer-events:none';
 document.body.appendChild(toastEl);
 let _toastT = 0, _toastHide = 0;
-function toast(title: string, msg: string): void {
+function toast(title: string, msg: string, force = false): void {
   const now = performance.now();
-  if (now - _toastT < 1800) return;   /* the game's re-fire guard (review catch: parking inside a gate) */
+  if (!force && now - _toastT < 1800) return;   /* the game's re-fire guard (review catch: parking inside a gate) */
   _toastT = now;
+  toastEl.setAttribute('aria-live', force ? 'assertive' : 'polite');
   toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><br>${esc(msg)}`;   /* every sink escapes (audit #6) */
   toastEl.style.opacity = '1';
   clearTimeout(_toastHide);
@@ -509,14 +1261,17 @@ const primeCount = (): number => Object.keys(save.primeFill || {}).length;
 const ascStage = (): 0 | 1 | 2 | 3 => ascStageOf(save.items, save.ascCh);
 
 function updateChips(): void {
-  playerChipEl.innerHTML = `⚙ ${esc(save.explorerName || 'Explorer')} <span class="dim">— ✦ ${save.essence} · ${save.landed.length} worlds</span>`;
+  playerChipEl.innerHTML = `⚙ ${esc(save.explorerName || 'Explorer')} <span class="dim">— ✦ ${save.essence}<span class="player-worlds"> · ${save.landed.length} worlds</span></span>`;
   hpFillEl.style.width = Math.max(0, Math.min(100, (save.hp / Math.max(1, save.HP_MAX)) * 100)) + '%';
   hpTxtEl.textContent = `${save.hp}/${save.HP_MAX} HP`;
   primeChipEl.textContent = `✦ Prime Codex ${primeCount()} / 9`;
   const o = currentObjective(save.ascCh, save.ascProg);
-  objChipEl.innerHTML = o
+  const liveGoal = save.ascCh < ASC_CHAPTERS_DATA.length
+    ? ASC_CHAPTERS_DATA[save.ascCh]!.goals.find((goal) => goal.ev === 'landfall' && (save.ascProg[goal.id] || 0) < goal.n)
+    : null;
+  objChipEl.innerHTML = !o ? '' : liveGoal
     ? `⬆ ${esc(o.text)} · <span class="prog" data-sel="objprog">${o.have} / ${o.need}</span>`
-    : '';
+    : `⬆ ${esc(o.chapter)} continues when its next gameplay system arrives`;
   syncTopbarH();   /* the chip wraps on narrow phones — remeasure, never guess */
 }
 function hudText(): void {
@@ -525,16 +1280,16 @@ function hudText(): void {
   updateChips();
   if (nav.mode === 'universe') {
     setTrail(['Cosmos']);
-    setHint('tap a galaxy to survey · tap twice or zoom in to dive');
+    setHint('tap a galaxy to survey · Enter on its card or zoom in to dive');
     updateUniverseCtx();
   } else if (nav.mode === 'galaxy' && nav.gal) {
     setTrail(['Cosmos', galaxyName(nav.gal.seed)]);
-    setHint('tap a star to survey · tap twice to dive · zoom out to rise');
+    setHint('tap a star to survey · Enter on its card · zoom out to rise');
     const gs2 = galaxyStats(nav.gal as never) as { stars: number; planets: number };
     setCtx('every dot is one of ~' + fmtBig(gs2.stars) + ' stars sharing ~' + fmtBig(gs2.planets) + ' worlds — zoom deeper and more keep resolving');
   } else if (nav.mode === 'system' && nav.gal && nav.star) {
     setTrail([galaxyName(nav.gal.seed), starName(nav.star.seed)]);
-    setHint('tap a world to survey & land · zoom out to rise');
+    setHint('tap a world to survey · press Land on its card · zoom out to rise');
     const sys = systemScene(nav.star.seed);
     const raw = systemFor(nav.star.seed) as { binary?: unknown };
     const desc = nav.star.seed === 424242 ? 'Sol — humanity’s own yellow star' : 'this star';
@@ -545,9 +1300,10 @@ function hudText(): void {
   } else if (nav.mode === 'surface' && nav.gal && nav.star && nav.planet) {
     const p = systemScene(nav.star.seed).planets.find((q) => q.seed === nav.planet!.seed);
     setTrail([galaxyName(nav.gal.seed), starName(nav.star.seed), p ? p.name : 'Surface']);
-    setHint('right-click or Escape to lift off');
+    setHint('press Leave world, right-click, or Escape to lift off');
     setCtx('planetfall — the survey card carries the world’s roster');
   }
+  syncSurfaceChromeBottom();
 }
 function updateUniverseCtx(): void {
   /* the Renderer's universe caption ladder (main.js 3788), verbatim text */
@@ -695,23 +1451,17 @@ function terminatorSpr(starCol: string): HTMLCanvasElement {
 }
 
 /* ---- zoom-dependent bookkeeping ---- */
-interface StarEntry { spr: Sprite; s: number; seed: number; }
+interface StarNodeRef { seed: number; x: number; y: number; c?: string; s: number; }
+interface StarEntry { spr: Sprite; star: StarNodeRef; }
 interface ScreenScaled { obj: Container; f: number; }   /* scale = f / cam.z */
 const galaxySpins: Array<{ spr: Sprite; base: number }> = [];
 let uniNodes: GalaxyNode[] = [];   /* cached universe composition — checkTransitions runs per tick */
 let uniCell: { ux: number; uy: number } | null = null;   /* the streamed window's anchor cell */
-/* SURVEY-FIRST (the game's own flow): a tap SURVEYS — the card opens with a
-   sonar ping; travel is zooming in (checkTransitions) or a quick second tap
-   on the same thing. No silent teleports. */
-let lastTap: { key: string; t: number } = { key: '', t: -1e9 };
-function tapTwice(key: string): boolean {
-  const now = performance.now();
-  const twice = lastTap.key === key && now - lastTap.t < 400;
-  lastTap = twice ? { key: '', t: -1e9 } : { key, t: now };
-  return twice;
-}
-function surveyCard(d: unknown): void {
-  if (d) { showSurvey(d as Descriptor); playSurveyPing(); }
+/* SURVEY-FIRST: one tap opens the typed card; its explicit 44px travel
+   action performs the dive. The card can cover the body on a phone, so
+   navigation must never depend on a second canvas tap or a timing window. */
+function surveyCard(d: unknown, travelAction: CardTravelAction | null = null): void {
+  if (d) { showSurvey(d as Descriptor, undefined, travelAction); playSurveyPing(); }
 }
 let galStars: StarEntry[] = [];
 let galTwinkle: StarEntry[] = [];
@@ -737,10 +1487,12 @@ const zCut = (): number => {
 };
 let fineLayer: Container | null = null;
 let fineWin: { fx0: number; fy0: number; fx1: number; fy1: number } | null = null;
+let fineStarTargets: Array<{ spr: Sprite; star: StarNodeRef }> = [];
 let lastZBucket = 0;
 const zBucket = (): number => Math.round(Math.log(cam.z) / Math.log(1.15));
 interface Orbiter { c: Container; kind: 'planet' | 'moon' | 'rock' | 'dwarf' | 'beam'; orb: number; sp?: number; a0?: number; mul?: number; pOrb?: number; face?: Sprite[]; cloud?: { wrap: Container; a: Sprite; b: Sprite; pr: number }; }
 let orbiters: Orbiter[] = [];
+let planetTargets: Array<{ holder: Container; planet: PlanetNode }> = [];
 let sysLabels: Array<{ t: Text; getPos: (time: number) => { x: number; y: number } }> = [];
 let sysStar: { seed: number; col: string; kind: string; starR: number } | null = null;
 let chartLayer: Container | null = null;   /* Star charts (chartsOn, OFF by default — v1.3.6, Nick's call) */
@@ -757,7 +1509,8 @@ function clearWorld(): void {
   galaxySpins.length = 0;
   galStars = []; galTwinkle = []; screenScaled = [];
   solMark = null; bhDisc = null; fineLayer = null; fineWin = null;
-  orbiters = []; sysLabels = []; sysStar = null; starSurfSpr = null; surfClouds = null; chartLayer = null;
+  fineStarTargets = [];
+  orbiters = []; planetTargets = []; sysLabels = []; sysStar = null; starSurfSpr = null; surfClouds = null; chartLayer = null;
   galAnims = []; wormPos = null;
   uniLabels = []; uniPulse = []; charterFx = null; webLayer = null; fogFx = [];
   sysComets = []; visitorFx = null;
@@ -807,8 +1560,10 @@ function drawUniverse(): void {
   for (const g of uniNodes) {
     const sz = g.size;
     const onTap = (): void => {
-      if (tapTwice('g' + g.seed)) descendGalaxy(g);
-      else surveyCard(describePick({ kind: g.quasar ? 'quasar' : (g.radio ? 'radio' : 'galaxy'), data: g } as never));
+      surveyCard(
+        describePick({ kind: g.quasar ? 'quasar' : (g.radio ? 'radio' : 'galaxy'), data: g } as never),
+        { label: 'Enter galaxy', run: () => descendGalaxy(g) },
+      );
     };
     let label: [string, string, number] | null = null;   /* text, color, gate */
     if (g.quasar) {
@@ -1017,11 +1772,13 @@ function drawGalaxy(galSeed: number): void {
       spr.eventMode = 'static';
       spr.cursor = 'pointer';
       spr.on('pointertap', () => {
-        if (tapTwice('s' + s.seed)) descendSystem({ seed: s.seed, x: s.x, y: s.y });
-        else surveyCard(describePick({ kind: 'star', data: s } as never));
+        const star = { seed: s.seed, x: s.x, y: s.y };
+        surveyCard(describePick({ kind: 'star', data: s } as never), {
+          label: 'Enter system', run: () => descendSystem(star),
+        });
       });
       world.addChild(spr);
-      const entry = { spr, s: s.s, seed: s.seed };
+      const entry = { spr, star: { seed: s.seed, x: s.x, y: s.y, c: s.c, s: s.s } };
       galStars.push(entry);
       if (s.s > 1.3) galTwinkle.push(entry);
       if ((s as { sol?: boolean }).sol) buildSolMark(s.x, s.y);
@@ -1120,6 +1877,7 @@ function updateFineLayer(force: boolean): void {
   const on = cam.z > minWH() / 260;
   if (!on) {
     if (fineLayer) { world.removeChild(fineLayer); fineLayer.destroy({ children: true }); fineLayer = null; fineWin = null; }
+    fineStarTargets = [];
     return;
   }
   const W = app.screen.width, H = app.screen.height;   /* logical CSS px — renderer.width/resolution DOUBLE-divided on DPR-3 phones (the off-center-scene bug the perf probe caught) */
@@ -1134,6 +1892,7 @@ function updateFineLayer(force: boolean): void {
   if (!force && fineWin && win.fx0 === fineWin.fx0 && win.fy0 === fineWin.fy0 && win.fx1 === fineWin.fx1 && win.fy1 === fineWin.fy1) return;
   if (fineLayer) { world.removeChild(fineLayer); fineLayer.destroy({ children: true }); }
   fineLayer = new Container();
+  fineStarTargets = [];
   const prof = galaxyProfile(nav.gal.seed) as Record<string, unknown>;
   const bR = baseR();
   for (let fx = win.fx0; fx <= win.fx1; fx++) for (let fy = win.fy0; fy <= win.fy1; fy++) {
@@ -1145,11 +1904,17 @@ function updateFineLayer(force: boolean): void {
       spr.width = D; spr.height = D;
       spr.position.set(s.x, s.y);
       spr.cullable = true;
-      /* fine stars are DIVEABLE, same as the game's picks (main.js 4193) */
+      /* Fine stars obey the same survey-first card action as base stars. */
       spr.eventMode = 'static';
       spr.cursor = 'pointer';
-      spr.on('pointertap', () => descendSystem({ seed: s.seed, x: s.x, y: s.y }));
+      spr.on('pointertap', () => {
+        const star = { seed: s.seed, x: s.x, y: s.y };
+        surveyCard(describePick({ kind: 'star', data: s } as never), {
+          label: 'Enter system', run: () => descendSystem(star),
+        });
+      });
       fineLayer.addChild(spr);
+      fineStarTargets.push({ spr, star: { seed: s.seed, x: s.x, y: s.y, c: s.c, s: s.s } });
     }
   }
   /* under the black hole disc, over the base stars */
@@ -1166,7 +1931,7 @@ function updateZoomDependent(): void {
   if (nav.mode === 'universe') { applyUniverseGates(); updateUniverseCtx(); }
   if (nav.mode === 'galaxy') {
     const bR = baseR();
-    for (const st of galStars) { const D = st.s * bR * 8; st.spr.width = D; st.spr.height = D; }
+    for (const st of galStars) { const D = st.star.s * bR * 8; st.spr.width = D; st.spr.height = D; }
     updateFineLayer(true);   /* fine sizes track baseR via the rebuild */
     if (solMark) solMark.visible = cam.z > minWH() / 900;
     if (bhDisc) bhDisc.visible = cam.z > minWH() / 700;
@@ -1317,6 +2082,7 @@ function drawSystem(starSeed: number): void {
       ent.cloud = { wrap: cw, a: ca, b: cb, pr };
     }
     orbiters.push(ent);
+    planetTargets.push({ holder, planet: p });
     /* moons — typed lit spheres on Kepler-ish drifts (main.js ~5290) */
     const solM = (SOL_MOONS as Record<string, Array<{ t: number }>>)[String(p.P.seed)] || [];
     for (let m = 0; m < p.moons; m++) {
@@ -1449,16 +2215,32 @@ function rebuildSystemHD(): void {
 }
 
 /* ---- navigation (every transition through the tested state machine) ---- */
-function rerender(): void {
-  hideSurvey();
-  if (nav.mode !== 'surface') sideEl.style.display = 'none';
+function rerender(options: { preserveSurvey?: boolean } = {}): void {
+  /* A density-only rebuild replaces Pixi textures, not the player's selected
+     object. Navigation transitions invalidate the card as before; monitor/
+     DPR changes preserve its exact DOM, full-identity context, and action. */
+  if (!options.preserveSurvey) {
+    invalidateSurveyTravel();
+    hideSurvey();
+  }
+  document.body.classList.toggle('surface-mode', nav.mode === 'surface');
+  if (nav.mode !== 'surface') {
+    sideEl.style.display = 'none';
+    document.documentElement.style.removeProperty('--planetside-top');
+  }
   stSeam.gal = nav.gal; stSeam.star = nav.star;   /* the describePick seam stays true */
   if (nav.mode === 'universe') drawUniverse();
   else if (nav.mode === 'galaxy' && nav.gal) drawGalaxy(nav.gal.seed);
   else if (nav.mode === 'system' && nav.star) drawSystem(nav.star.seed);
   else if (nav.mode === 'surface' && nav.star && nav.planet) {
     const p = systemScene(nav.star.seed).planets.find((q) => q.seed === nav.planet!.seed);
-    if (p) drawSurface(p); else { nav = NAV_HOME; drawUniverse(); }   /* a stale seed never bricks boot */
+    if (p) drawSurface(p); else {
+      nav = NAV_HOME;
+      document.body.classList.remove('surface-mode');
+      sideEl.style.display = 'none';
+      document.documentElement.style.removeProperty('--planetside-top');
+      drawUniverse();
+    }   /* a stale seed never bricks boot */
   }
   world.alpha = 0.25;   /* the mode fade (st.fade), eased back in the ticker */
   hudText();
@@ -1551,23 +2333,40 @@ function worldRoster(p: PlanetNode, starSeed: number): Array<Record<string, unkn
 /* THE GAME'S TRUE TWO-STEP (find-earth/land training steps depend on it):
    a tap SURVEYS — the card opens with its ACTION ROW (Land · + Add to Star
    Atlas · ⧉ share code); pressing LAND is its own act. */
-let cardCtx: { p: PlanetNode; starSeed: number } | null = null;
 function surveyPlanet(p: PlanetNode, starSeed: number): void {
+  if (!nav.gal || !nav.star || nav.star.seed !== starSeed) return;
   const sys = systemFor(starSeed);
   const d = planetDescriptor(p.P, sys, { name: p.name, orb: p.orb } as never) as Descriptor;
-  cardCtx = { p, starSeed };
+  const customName = customNames.get('p' + p.seed);
+  if (customName) {
+    d.title = customName;
+    d.sub = (d.sub ? d.sub + ' · ' : '') + 'custom name';
+  }
+  cardCtx = {
+    p,
+    gal: { ...nav.gal },
+    star: { ...nav.star },
+  };
   showSurvey(d, buildCardActions(p));
   playSurveyPing();   /* the ACT of surveying answers back (main.js) */
   gameEvent('survey', { planetSeed: p.seed });
 }
 function buildCardActions(p: PlanetNode): string {
   const charted = save && save.logMap.some(([id]) => id === 'p' + p.seed);
+  const onThisSurface = nav.mode === 'surface' && nav.planet?.seed === p.seed && nav.star?.seed === cardCtx?.star.seed;
+  /* A veteran replay already has Earth charted. Keep the real Add action in
+     the drill so the atlas-add step cannot spotlight a missing control;
+     addToAtlas is idempotent and still emits the training event. */
+  const trainingAdd = p.seed === 133 && trainingActive();
   return '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px">' +
-    '<button data-act="landcta" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:40px;font:12px system-ui">⛳ Land</button>' +
-    (charted
-      ? '<span style="color:#8fa3c4;align-self:center;font-size:12px">★ charted</span>'
-      : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:40px;font:12px system-ui">+ Add to Star Atlas</button>') +
-    '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:40px;font:12px system-ui">⧉ share code</button>' +
+    (onThisSurface
+      ? '<button data-act="leaveworld" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">⬆ Leave world</button>'
+      : '<button data-act="landcta" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">⛳ Land</button>') +
+    (charted && !trainingAdd
+      ? '<span style="color:var(--dim);align-self:center;font-size:12px">★ charted</span>'
+      : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">' +
+        (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
+    '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
     '</div>';
 }
 function surveyAndLand(p: PlanetNode, starSeed: number): void {
@@ -1575,16 +2374,52 @@ function surveyAndLand(p: PlanetNode, starSeed: number): void {
   surveyPlanet(p, starSeed);
   doLand();
 }
+function activeCardPlanetWhere(): Record<string, unknown> | null {
+  if (!cardCtx || !nav.gal || !nav.star
+    || nav.gal.seed !== cardCtx.gal.seed || nav.gal.x !== cardCtx.gal.x || nav.gal.y !== cardCtx.gal.y
+    || nav.star.seed !== cardCtx.star.seed || nav.star.x !== cardCtx.star.x || nav.star.y !== cardCtx.star.y) return null;
+  const live = systemScene(nav.star.seed).planets.some((planet) => planet.seed === cardCtx!.p.seed);
+  if (!live) return null;
+  return {
+    type: 'planet', gal: { ...cardCtx.gal },
+    star: { ...cardCtx.star },
+    pseed: cardCtx.p.seed,
+  };
+}
+function cardShareCode(): string | null {
+  const where = activeCardPlanetWhere();
+  /* A stale planet card must never silently encode the current system. The
+     visible card and copied address are one atomic context. */
+  return where ? encodeWhere(where as never, customNames.get('p' + cardCtx!.p.seed)) as string : null;
+}
+async function copyShareCode(code: string): Promise<boolean> {
+  try {
+    if (!navigator.clipboard?.writeText) throw new Error('clipboard unavailable');
+    await navigator.clipboard.writeText(code);
+    toast('⧉ Share code copied', 'Paste it into any explorer’s search bar to guide them here.', true);
+    return true;
+  } catch {
+    /* Never claim a copy that the browser denied. Put the exact code in a
+       familiar editable surface and select it so keyboard/touch assistive
+       copy remains one honest action away. */
+    searchEl.value = code;
+    searchEl.focus();
+    searchEl.select();
+    toast('Copy unavailable', 'The share code is selected in Search. Use your browser’s Copy command.', true);
+    return false;
+  }
+}
 function doLand(): void {
-  if (!cardCtx) return;
+  if (!cardCtx || !activeCardPlanetWhere()) return;
   const p = cardCtx.p;
   const r = land(nav, { seed: p.seed });
   if (r.ok) {
     nav = r.state;
-    if (!save.landed.includes(p.seed)) save.landed.push(p.seed);   /* the game's `land` set */
+    const firstLand = !save.landed.includes(p.seed);
+    if (firstLand) save.landed.push(p.seed);   /* the game's `land` set */
     /* the Ascent hears the landfall — credit BANKS for every chapter from
        the current on (the review-catch rule, now pure in charter.ts) */
-    if (bankLandfall(save.ascCh, save.ascProg, p.seed) && chapterGoalsDone(save.ascCh, save.ascProg)) {
+    if (firstLand && bankLandfall(save.ascCh, save.ascProg, p.seed) && chapterGoalsDone(save.ascCh, save.ascProg)) {
       const done = ASC_CHAPTERS_DATA[save.ascCh]!;
       save.ascCh++;
       toast('★ ' + done.name + ' — complete', done.unlockNote);
@@ -1592,18 +2427,24 @@ function doLand(): void {
     stSeam.gal = nav.gal; stSeam.star = nav.star;
     playWhoosh();   /* planetfall */
     drawSurface(p); hudText(); void persistView();
-    gameEvent('landfall', { planetSeed: p.seed });
+    if (lastCard) showSurvey(lastCard, buildCardActions(p));
+    /* A repeated landing is not new progression. The one exception is the
+       explicit veteran training replay: its lesson waits for the action,
+       but still receives no second landfall credit. */
+    if (firstLand || (p.seed === 133 && trainingActive() && trainingStepId() === 'land')) {
+      gameEvent('landfall', { planetSeed: p.seed });
+    }
   }
 }
 function addToAtlas(): void {
-  if (!cardCtx || !save || !nav.gal || !nav.star) return;
+  const where = activeCardPlanetWhere();
+  if (!cardCtx || !save || !where) return;
   const p = cardCtx.p;
   const id = 'p' + p.seed;
   if (!save.logMap.some(([k]) => k === id)) {
     const d = card.querySelector('[data-sel=title]')?.textContent || p.name;
     const sub = card.querySelector('[data-sel=sub]')?.textContent || '';
-    const where = { type: 'planet', gal: { ...nav.gal }, star: { x: nav.star.x, y: nav.star.y, seed: nav.star.seed }, pseed: p.seed };
-    save.logMap.push([id, { id, title: d, sub, where }]);
+    save.logMap.push([id, { id, title: d, sub, where, t: Date.now() }]);
     void persistView();
     toast('★ Charted', d + ' joined your Star Atlas.');
   }
@@ -1613,35 +2454,73 @@ function addToAtlas(): void {
 card.addEventListener('click', (e) => {
   const act = (e.target as HTMLElement).closest('[data-act]');
   if (!act) return;
+  const keyboard = document.activeElement === act;
   const a = (act as HTMLElement).dataset.act;
-  if (a === 'landcta') doLand();
-  else if (a === 'add') addToAtlas();
+  if (a === 'travel') {
+    const action = cardTravelAction;
+    if (!action || card.style.display === 'none') return;
+    cardTravelAction = null;
+    (act as HTMLButtonElement).disabled = true;
+    action.run();
+    if (keyboard) app.canvas.focus();
+  } else if (a === 'landcta') {
+    doLand();
+    if (keyboard) card.querySelector<HTMLElement>('[data-act="leaveworld"]')?.focus();
+  }
+  else if (a === 'leaveworld') {
+    if (nav.mode !== 'surface' || nav.planet?.seed !== cardCtx?.p.seed || !activeCardPlanetWhere()) return;
+    hideSurvey();
+    goUp();
+    if (keyboard) app.canvas.focus();
+  }
+  else if (a === 'add') {
+    addToAtlas();
+    if (keyboard) (card.querySelector<HTMLElement>('[data-act="add"]') || surveyDockEl).focus();
+  }
   else if (a === 'share') {
-    const code = encodeHere() || (cardCtx ? (encodeWhere({ type: 'planet', gal: nav.gal, star: nav.star, pseed: cardCtx.p.seed } as never) as string) : null);
-    if (code) {
-      void navigator.clipboard?.writeText(code).catch(() => { /* headless */ });
-      toast('⧉ Share code copied', 'Paste it into any explorer’s search bar to guide them here.');
-    }
+    const code = cardShareCode();
+    if (code) void copyShareCode(code);
   }
 });
 const sideEl = document.createElement('div');
 sideEl.id = 'planetside';
 sideEl.className = 'glass';
-sideEl.style.cssText = 'position:fixed;left:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 148px);' +
-  'max-width:min(560px,72vw);display:none;z-index:14;border-radius:12px;padding:8px 10px;' +
+sideEl.style.cssText = 'position:fixed;left:calc(var(--safe-left,0px) + 12px);bottom:calc(var(--safe-bottom,0px) + var(--dock-h) + var(--ctx-h) + 86px);' +
+  'max-width:min(560px,calc(100vw - var(--safe-left,0px) - var(--safe-right,0px) - 24px));box-sizing:border-box;display:none;z-index:21;border-radius:12px;padding:8px 10px;' +
   'overflow-x:auto;white-space:nowrap;scrollbar-width:thin';
 document.body.appendChild(sideEl);
+function syncPlanetsideLayout(): void {
+  if (getComputedStyle(sideEl).display === 'none' || nav.mode !== 'surface') {
+    document.documentElement.style.removeProperty('--planetside-top');
+    syncSurfaceChromeBottom();
+    return;
+  }
+  const r = sideEl.getBoundingClientRect();
+  if (r.width > 0 && r.height > 0) document.documentElement.style.setProperty('--planetside-top', r.top.toFixed(2) + 'px');
+  syncSurfaceChromeBottom();
+}
+new ResizeObserver(syncPlanetsideLayout).observe(sideEl);
+addEventListener('resize', syncPlanetsideLayout, { passive: true });
 function fillPlanetside(p: PlanetNode, starSeed: number): void {
   /* THE LIVING PLANETSIDE: the world's REAL roster (planetSpecies through
      the biosphere replica), each wearing its hdart portrait — the strip is
      Phase 4 chrome; the full walkable vista is Phase 6's. */
   const roster = worldRoster(p, starSeed);
-  if (!roster.length) { sideEl.style.display = 'none'; return; }
-  sideEl.innerHTML = '<div style="font-size:10.5px;letter-spacing:0.06em;color:#8fa3c4;margin:0 0 6px">PLANETSIDE — the ground survey</div>' +
+  if (!roster.length) {
+    sideEl.style.display = 'none';
+    syncPlanetsideLayout();
+    return;
+  }
+  if (!SA && nav.star) {
+    const p0 = p, s0 = starSeed;
+    ensureSA('planetside', () => {
+      if (nav.mode === 'surface' && nav.planet?.seed === p0.seed && nav.star?.seed === s0) fillPlanetside(p0, s0);
+    });
+  }
+  sideEl.innerHTML = '<div style="font-size:10.5px;letter-spacing:0.06em;color:var(--dim);margin:0 0 6px">PLANETSIDE — the ground survey</div>' +
     roster.map((g) => {
       let th = '';
       if (SA) { try { th = SA.speciesThumb(g as never); } catch { /* text chip still reads */ } }
-      else if (nav.star) { const p0 = p, s0 = starSeed; ensureSA(() => { if (nav.mode === 'surface') fillPlanetside(p0, s0); }); }
       let nm = String((g as { _earthName?: string })._earthName || '');
       if (!nm) { try { nm = String((describeSpecies(g as never) as { name?: string }).name || ''); } catch { nm = 'specimen'; } }
       return '<span data-sel="planetside-sp" style="display:inline-block;text-align:center;margin-right:8px;vertical-align:top">' +
@@ -1649,6 +2528,7 @@ function fillPlanetside(p: PlanetNode, starSeed: number): void {
         '<div style="font-size:10px;color:#b7c8e4;max-width:72px;overflow:hidden;text-overflow:ellipsis">' + esc(nm) + '</div></span>';
     }).join('');
   sideEl.style.display = 'block';
+  syncPlanetsideLayout();
 }
 function drawSurface(p: PlanetNode): void {
   /* surface mode, slice edition: the world fills the view as its painterly
@@ -1656,6 +2536,7 @@ function drawSurface(p: PlanetNode): void {
      roster — every species row is real Ecology output.
      FIT the globe to the viewport (phone catch: at z=1 the 420px master
      overfilled a 390px screen as blur; the globe should present itself) */
+  document.body.classList.add('surface-mode');
   clearWorld();
   const R = 210;
   const fitZ = Math.min(1, (minWH() * 0.78) / (R * 2));
@@ -1783,22 +2664,265 @@ function zoomLimits(): [number, number] {
   return [0.45, Math.max(0.9, (mw / 420) * 1.6)];
 }
 
+/* ---- keyboard exploration — the canvas is a named, focusable region.
+   Arrow keys cycle the same rendered bodies that pointer handlers own;
+   Enter opens the same survey card/action and +/- zoom around that target. */
+interface KeyboardWorldTarget {
+  key: string;
+  label: string;
+  priority: number;
+  screen: () => { x: number; y: number };
+  world: { x: number; y: number };
+  activate: () => void;
+}
+let keyboardTargetKey: string | null = null;
+let keyboardRing: HTMLElement | null = null;
+let keyboardLive: HTMLElement | null = null;
+let pointerFocusingCanvas = false;
+function currentKeyboardTargets(): KeyboardWorldTarget[] {
+  const targets: KeyboardWorldTarget[] = [];
+  if (nav.mode === 'universe') {
+    for (const galaxy of uniNodes) targets.push({
+      key: `galaxy:${galaxy.seed}:${galaxy.x}:${galaxy.y}`,
+      label: galaxy.home ? 'Milky Way — you are here' : galaxyName(galaxy.seed),
+      priority: galaxy.home ? 0 : 1,
+      world: { x: galaxy.x, y: galaxy.y },
+      screen: () => world.toGlobal({ x: galaxy.x, y: galaxy.y }),
+      activate: () => surveyCard(
+        describePick({ kind: galaxy.quasar ? 'quasar' : galaxy.radio ? 'radio' : 'galaxy', data: galaxy } as never),
+        { label: 'Enter galaxy', run: () => descendGalaxy(galaxy) },
+      ),
+    });
+  } else if (nav.mode === 'galaxy') {
+    const seen = new Set<string>();
+    for (const [tier, entries] of [[1, galStars], [2, fineStarTargets]] as const) for (const entry of entries) {
+      const star = entry.star;
+      const key = `star:${star.seed}:${star.x}:${star.y}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      targets.push({
+        key,
+        label: star.seed === SOL_SEED ? 'Sun — our star' : starName(star.seed),
+        priority: star.seed === SOL_SEED ? 0 : tier,
+        world: { x: star.x, y: star.y },
+        screen: () => world.toGlobal({ x: star.x, y: star.y }),
+        activate: () => surveyCard(describePick({ kind: 'star', data: star } as never), {
+          label: 'Enter system', run: () => descendSystem(star),
+        }),
+      });
+    }
+  } else if (nav.mode === 'system' && nav.star) {
+    for (const target of planetTargets) targets.push({
+      key: `planet:${nav.star.seed}:${target.planet.seed}`,
+      label: target.planet.name,
+      priority: target.planet.seed === 133 ? 0 : 1,
+      world: { x: target.holder.position.x, y: target.holder.position.y },
+      screen: () => target.holder.getGlobalPosition(),
+      activate: () => surveyPlanet(target.planet, nav.star!.seed),
+    });
+  }
+  const visible = targets.filter((target) => {
+    const point = target.screen();
+    return point.x >= 12 && point.y >= 12 && point.x <= innerWidth - 12 && point.y <= innerHeight - 12;
+  });
+  return (visible.length ? visible : targets).sort((a, b) => {
+    if (a.priority !== b.priority) return a.priority - b.priority;
+    const ap = a.screen(), bp = b.screen();
+    return ap.y - bp.y || ap.x - bp.x || a.key.localeCompare(b.key);
+  });
+}
+function announceKeyboardTarget(target: KeyboardWorldTarget | null): void {
+  if (!keyboardLive) return;
+  keyboardLive.textContent = target
+    ? `${target.label}. Press Enter to survey; plus or minus to zoom.`
+    : 'World target released.';
+}
+function selectKeyboardTarget(step: number): void {
+  const targets = currentKeyboardTargets();
+  if (!targets.length) { keyboardTargetKey = null; announceKeyboardTarget(null); return; }
+  const current = targets.findIndex((target) => target.key === keyboardTargetKey);
+  const next = current < 0 ? (step < 0 ? targets.length - 1 : 0) : (current + step + targets.length) % targets.length;
+  keyboardTargetKey = targets[next]!.key;
+  announceKeyboardTarget(targets[next]!);
+  renderKeyboardTarget();
+}
+function renderKeyboardTarget(): void {
+  if (!keyboardRing || document.activeElement !== app.canvas || !keyboardTargetKey) {
+    if (keyboardRing) keyboardRing.style.display = 'none';
+    return;
+  }
+  const target = currentKeyboardTargets().find((candidate) => candidate.key === keyboardTargetKey);
+  if (!target) { keyboardTargetKey = null; keyboardRing.style.display = 'none'; return; }
+  const point = target.screen();
+  keyboardRing.style.display = 'block';
+  keyboardRing.style.left = point.x + 'px';
+  keyboardRing.style.top = point.y + 'px';
+  keyboardRing.querySelector('span')!.textContent = target.label;
+}
+function installKeyboardExploration(): void {
+  app.canvas.tabIndex = 0;
+  app.canvas.setAttribute('role', 'region');
+  app.canvas.setAttribute('aria-label', 'Explore the generated universe');
+  app.canvas.setAttribute('aria-describedby', 'cosmoshelp');
+  const help = document.createElement('p');
+  help.id = 'cosmoshelp'; help.className = 'sr-only';
+  help.textContent = 'Arrow keys cycle visible galaxies, stars, or worlds. Enter surveys. Plus and minus zoom. Escape releases the target.';
+  keyboardLive = document.createElement('div');
+  keyboardLive.id = 'cosmoslive'; keyboardLive.className = 'sr-only';
+  keyboardLive.setAttribute('aria-live', 'polite'); keyboardLive.setAttribute('aria-atomic', 'true');
+  keyboardRing = document.createElement('div');
+  keyboardRing.id = 'cosmosfocus'; keyboardRing.setAttribute('aria-hidden', 'true');
+  keyboardRing.innerHTML = '<span></span>';
+  document.body.append(help, keyboardLive, keyboardRing);
+  app.canvas.addEventListener('pointerdown', () => {
+    /* A pointer click focuses a canvas too, but must not secretly arm a
+       keyboard target that consumes the player's next Escape. */
+    pointerFocusingCanvas = true;
+    keyboardTargetKey = null;
+    renderKeyboardTarget();
+    /* Browser focus is a later default action in the pointer/mouse sequence;
+       a microtask can clear this flag before that action runs. */
+    setTimeout(() => { pointerFocusingCanvas = false; }, 0);
+  }, { capture: true });
+  app.canvas.addEventListener('focus', () => {
+    if (pointerFocusingCanvas) { pointerFocusingCanvas = false; renderKeyboardTarget(); return; }
+    if (!keyboardTargetKey) selectKeyboardTarget(1); else renderKeyboardTarget();
+  });
+  app.canvas.addEventListener('blur', renderKeyboardTarget);
+  app.canvas.addEventListener('keydown', (event) => {
+    if (['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(event.key)) {
+      event.preventDefault(); event.stopPropagation();
+      selectKeyboardTarget(event.key === 'ArrowLeft' || event.key === 'ArrowUp' ? -1 : 1);
+      return;
+    }
+    const target = currentKeyboardTargets().find((candidate) => candidate.key === keyboardTargetKey);
+    if ((event.key === 'Enter' || event.key === ' ') && target) {
+      event.preventDefault(); event.stopPropagation(); target.activate(); keyboardTargetKey = null; renderKeyboardTarget();
+      card.querySelector<HTMLElement>('button')?.focus();
+      return;
+    }
+    if ((event.key === '+' || event.key === '=' || event.key === '-' || event.key === '_') && target) {
+      event.preventDefault(); event.stopPropagation();
+      const [lo, hi] = zoomLimits();
+      camT.x = target.world.x; camT.y = target.world.y;
+      camT.z = Math.min(hi, Math.max(lo, camT.z * (event.key === '-' || event.key === '_' ? 0.82 : 1.22)));
+      return;
+    }
+    if (event.key === 'Escape' && keyboardTargetKey) {
+      event.preventDefault(); event.stopPropagation(); keyboardTargetKey = null; announceKeyboardTarget(null); renderKeyboardTarget();
+    }
+  });
+}
+
 /* ---- the save/reload leg — THE REAL PIPELINE ---- */
-async function persistView(): Promise<void> {
-  if (persistHold) return;   /* a failed boot read holds writes until the player acts */
-  try {
+async function persistView(replacementOwner: ReplacementTransaction | null = null): Promise<boolean> {
+  if (persistHold || importWriteInFlight || replacementReloadPending
+    || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
+  const write = async (): Promise<boolean> => { try {
     save.savedView = navToView(nav);
     save.EPOCH_BASE = epochClock.current();   /* play time accumulates across sessions (doSave writes COSMIC_EPOCH) */
+    if (smokeRejectNextPersist) {
+      /* Browser evidence needs a deterministic storage-rejection outcome;
+         this diagnostics-only latch enters the same rollback branch as an
+         IndexedDB failure without changing ordinary repository behavior. */
+      smokeRejectNextPersist = false;
+      throw new Error('slice-smoke injected persistence rejection');
+    }
     await repo.write(exportSaveV2(save, Date.now()));
-  } catch { /* private mode: session continues unsaved */ }
+    return true;
+  } catch { return false; /* private mode: session continues unsaved */ } };
+  const prior = activePersist;
+  const run = prior ? prior.catch(() => false).then(write) : write();
+  activePersist = run;
+  try { return await run; }
+  finally { if (activePersist === run) activePersist = null; }
 }
 let _persistT = 0;
+let importWriteInFlight = false;
+let activePersist: Promise<boolean> | null = null;
+let smokeRejectNextPersist = false;
+let smokeImportRaceRelease: (() => void) | null = null;
+function smokeArmImportRace(staleRaw: string): boolean {
+  /* Diagnostics-only ordering witness. The armed active persist writes its
+     stale snapshot only after release. A valid import started before that
+     release must await this write, then replace it. Removing importBlob's
+     await reverses the two real repository transactions and stale wins. */
+  if (activePersist || importWriteInFlight || smokeImportRaceRelease) return false;
+  let releaseGate: (() => void) | null = null;
+  const gate = new Promise<void>((resolve) => { releaseGate = resolve; });
+  const run = gate.then(async () => { await repo.write(staleRaw); return true; });
+  activePersist = run;
+  smokeImportRaceRelease = () => {
+    const release = releaseGate;
+    smokeImportRaceRelease = null;
+    release?.();
+  };
+  void run.then(
+    () => { if (activePersist === run) activePersist = null; },
+    () => { if (activePersist === run) activePersist = null; },
+  );
+  return true;
+}
+function smokeReleaseImportRace(): boolean {
+  const release = smokeImportRaceRelease;
+  if (!release) return false;
+  release();
+  return true;
+}
 function persistSoon(): void {
   /* slider-friendly: one export per drag, not one per input event (audit #5) */
+  if (replacementReloadPending) return;
   clearTimeout(_persistT);
   _persistT = window.setTimeout(() => { void persistView(); }, 400);
 }
-let persistHold = false;   /* a FAILED boot read must not let the boot persist overwrite evidence */
+let persistHold: false | 'transient-read' | 'protected-payload' = false;
+let persistRetrying = false;
+function isLegacySliceEnvelope(value: unknown): boolean {
+  /* e960e21–the full-save wiring stored this exact two-field envelope in
+     cf-v2-slice. Keep that one real compatibility bridge without turning
+     sparse objects back into whole-save evidence. Both copies of the route
+     must agree, and every identity needed by its mode must be finite. */
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  const data = value as Record<string, unknown>;
+  if (Object.keys(data).sort().join('|') !== 'nav|view') return false;
+  if (!data.nav || typeof data.nav !== 'object' || Array.isArray(data.nav)) return false;
+  const rawNav = data.nav as Record<string, unknown>;
+  if (Object.keys(rawNav).sort().join('|') !== 'gal|mode|planet|star') return false;
+  const mode = rawNav.mode;
+  if (!['universe', 'galaxy', 'system', 'surface'].includes(String(mode))) return false;
+  if (mode === 'universe') {
+    return data.view === null && rawNav.gal === null && rawNav.star === null && rawNav.planet === null;
+  }
+  const cleanView = _sanitizeView(data.view);
+  if (!cleanView) return false;
+  const fromView = viewToNav(cleanView);
+  if (fromView.mode !== mode) return false;
+  const sameRef = (raw: unknown, clean: { seed: number; x?: number; y?: number } | null, xy: boolean): boolean => {
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw) || !clean) return false;
+    const ref = raw as Record<string, unknown>;
+    if (!Number.isFinite(ref.seed) || Number(ref.seed) !== clean.seed) return false;
+    return !xy || (Number.isFinite(ref.x) && Number.isFinite(ref.y)
+      && Number(ref.x) === clean.x && Number(ref.y) === clean.y);
+  };
+  if (!sameRef(rawNav.gal, fromView.gal, true)) return false;
+  if (mode === 'galaxy') return rawNav.star === null && rawNav.planet === null;
+  if (!sameRef(rawNav.star, fromView.star, true)) return false;
+  if (mode === 'system') return rawNav.planet === null;
+  return sameRef(rawNav.planet, fromView.planet, false);
+}
+function importStoredPayload(payload: string | null): ReturnType<typeof importSaveV2> {
+  const result = importSaveV2(payload, REGISTRY, Date.now());
+  if (!result.ok || payload === null) return result;
+  try {
+    const parsed = JSON.parse(payload) as unknown;
+    return (isPlausibleSaveEnvelope(parsed) || isLegacySliceEnvelope(parsed))
+      ? result : { ok: false, reason: 'invalid' };
+  } catch { return { ok: false, reason: 'invalid' }; }
+}
+function storedPayloadStatus(payload: string): StoredPayloadStatus {
+  const result = importStoredPayload(payload);
+  return result.ok ? 'supported' : result.reason;
+}
 async function loadSave(): Promise<void> {
   /* THE RECOVERY CONTRACT, finally wired (audit finding #1 — the CF-RR-002
      path was built and tested in the repository but never called):
@@ -1807,23 +2931,27 @@ async function loadSave(): Promise<void> {
      the v1.8.9 loadSave semantic. A read that THREW (infra, not absence)
      holds all persists until a user action, so the boot's own write can
      never destroy the evidence. */
-  let raw: string | null = null;
-  let readThrew = false;
-  try { raw = (await repo.readPrimary()) ?? null; } catch { readThrew = true; }
-  let imp = importSaveV2(raw, REGISTRY, Date.now());
-  if (!imp.ok && (raw !== null || readThrew)) {
-    /* primary corrupt or unreadable — CF-RR-002: the backup takes its place ONCE */
-    try {
-      const rec = await repo.recover();
-      if (rec !== undefined) { raw = rec; imp = importSaveV2(raw, REGISTRY, Date.now()); }
-    } catch { /* backup unreachable too */ }
+  /* A sparse but syntactically valid truncation (`{}` / `{view:null}`)
+     hardens into defaults inside the legacy importer. That is useful for
+     constructing a fresh in-memory state, but it is NOT proof that a stored
+     payload is safe to promote over the last-known-good backup. */
+  const bootRead = await readSaveWithRecovery(repo, storedPayloadStatus);
+  const imp = bootRead.kind === 'loaded'
+    ? importStoredPayload(bootRead.raw)
+    : { ok: false as const, reason: bootRead.kind === 'protected' ? bootRead.reason : 'invalid' as const };
+  if (bootRead.kind === 'loaded') {
+    try { await repo.promoteLastKnownGood(bootRead.raw); } catch { /* keepsake only */ }
   }
-  if (imp.ok && raw) {
-    try { await repo.promoteLastKnownGood(raw); } catch { /* keepsake only */ }
-  }
-  persistHold = readThrew && !imp.ok;
+  /* A future save is valid evidence from a newer build, not corruption. Do
+     not replace it with a backup or let this older app write defaults over
+     it; the explicit import path remains available after updating. */
+  persistHold = bootRead.kind === 'transient-read' ? 'transient-read'
+    : bootRead.kind === 'protected' ? 'protected-payload' : false;
+  const protectedReason = bootRead.kind === 'protected' ? bootRead.reason : null;
   save = imp.ok ? imp.state
     : (importSaveV2('{}', REGISTRY, Date.now()) as { ok: true; state: SaveStateV2 }).state;   /* fresh expedition */
+  customNames.clear();
+  for (const [key, name] of save.customNames) customNames.set(key, name);
   /* the sanitized view → nav; viewToNav degrades toward home, so a
      hand-edited/corrupt view can never render an empty stage */
   nav = viewToNav(save.savedView);
@@ -1832,28 +2960,73 @@ async function loadSave(): Promise<void> {
   /* a truly EMPTY store is a NEW EXPEDITION — training runs, exactly like
      the game's new-run init (the absent-⇒-done default protects HELD saves,
      not fresh ones) */
-  if (raw === null && !readThrew) save.tutDone = false;
+  if (bootRead.kind === 'fresh') save.tutDone = false;
   playT0 = performance.now();
   epochClock = createEpochClock(save.EPOCH_BASE, playSeconds);
   (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
   initAudio({ sndOn: () => save.sndOn, sfxVol: () => save.sfxVol });   /* the save's own audio settings */
   /* dock + chrome mirror the save from the first frame */
-  document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
-  applyGlass();
+  chartsDockEl.classList.toggle('on', save.chartsOn);
+  chartsDockEl.setAttribute('aria-pressed', String(save.chartsOn));
+  applyDisplayPreferences();
   syncTopbarH();
-  setTimeout(() => ensureSA(() => { /* idle prefetch — warm before first use */ }), 3000);
+  syncDockH();
+  syncCtxH();
+  const warmSpeciesArt = (): void => {
+    if (!document.hidden) ensureSA('prefetch', () => { /* warm before first use */ });
+  };
+  if ('requestIdleCallback' in window) window.requestIdleCallback(warmSpeciesArt, { timeout: 5000 });
+  else setTimeout(warmSpeciesArt, 3000);
+  if (persistHold === 'protected-payload') {
+    setTimeout(() => toast(
+      protectedReason === 'future-version' ? 'Update required' : 'Save protected',
+      protectedReason === 'future-version'
+        ? 'This expedition was written by a newer build. It will not be changed here.'
+        : 'The stored expedition is incomplete and no proven backup loaded. It will not be overwritten.',
+      true,
+    ), 0);
+  }
   initTraining({
     explorerName: () => save.explorerName,
     isDone: () => save.tutDone,
-    setDone: (v) => { save.tutDone = v; },
+    setDone: (v) => {
+      save.tutDone = v;
+      if (v && save.tutSnapPending && typeof save.tutSnapPending === 'object'
+        && 'view' in save.tutSnapPending) {
+        const restored = _sanitizeView((save.tutSnapPending as { view: unknown }).view);
+        nav = viewToNav(restored);
+        save.savedView = restored;
+        save.tutSnapPending = null;
+        rerender();
+      }
+      /* Training schedules its own post-finish focus restoration at 0ms.
+         Open a queued bulletin on the next turn so the bulletin's Back
+         control remains the final, visible keyboard focus target. */
+      if (v) setTimeout(flushPendingReleaseBulletin, 20);
+    },
     persist: () => { void persistView(); },
+    closePanels,
   });
 }
 
 /* ---- boot ---- */
 (async () => {
-  await app.init({ background: 0x05070d, resizeTo: window, antialias: true, resolution: DPR });
+  /* autoDensity keeps the DPR-scaled backing store at CSS viewport size.
+     Without it a DPR-2 phone displayed a 780px canvas inside 390 CSS px,
+     halving Pixi hit coordinates and moving the home galaxy offscreen.
+     Hold the ticker until persistence, scene publication, and every input
+     listener are wired: at 8K, even one premature full-canvas render can
+     starve the async boot work that makes the document answerable. */
+  emitBootPhase('app-init-start');
+  await app.init({
+    background: 0x05070d,
+    width: densityPlan.viewportWidth, height: densityPlan.viewportHeight,
+    antialias: true,
+    resolution: DPR, autoDensity: true, autoStart: false,
+  });
+  emitBootPhase('app-init-complete');
   document.body.appendChild(app.canvas);
+  installKeyboardExploration();
   /* THE BACKDROP (drawBackdrop, main.js 3560 — verbatim recipe): the seeded
      900-star field under a deep radial wash, rebuilt per viewport, screen-
      space behind the world. The flat black is gone at every mode. */
@@ -1863,13 +3036,58 @@ async function loadSave(): Promise<void> {
   const bgStars: Array<{ x: number; y: number; s: number; o: number }> = [];
   { const r = mulberry32(5); for (let i = 0; i < 900; i++) bgStars.push({ x: r(), y: r(), s: r() * 1.1 + 0.2, o: r() * 0.5 + 0.15 }); }
   let _bgKey = '';
+  let activeBackdropCanvas: HTMLCanvasElement | null = null;
+  let backdropGeneration = 0;
+  let backdropTransitionPeakPixels = 0;
+  let backdropTransitionBudgetPixels = densityPlan.backingPixelCapPerCanvas * 2;
+  const ownedBackdropPixels = (): number => app.canvas.width * app.canvas.height
+    + (activeBackdropCanvas?.width ?? 0) * (activeBackdropCanvas?.height ?? 0);
+  const releaseBackdrop = (): void => {
+    const old = bgSpr.texture;
+    const priorCanvas = activeBackdropCanvas;
+    bgSpr.texture = Texture.EMPTY;
+    activeBackdropCanvas = null;
+    if (old && old !== Texture.EMPTY) old.destroy(true);
+    if (priorCanvas) {
+      priorCanvas.width = 1;
+      priorCanvas.height = 1;
+    }
+  };
+  const applyRendererDensity = (plan: RendererDensityPlan): void => {
+    /* Own viewport resizing instead of Pixi's ResizePlugin. Two same-aspect
+       ultra viewports can resolve to the same integer backing dimensions;
+       CanvasSource then (correctly) reports "not resized" and skips its CSS
+       and Texture.frame refresh even though the logical viewport changed.
+       The backing store may stay put, but CSS, texture metadata and the
+       screen/hit-test rectangle must still follow the exact CSS viewport. */
+    app.renderer.resize(plan.viewportWidth, plan.viewportHeight, plan.dpr);
+    app.renderer.view.texture.update();
+    app.canvas.style.width = `${plan.viewportWidth}px`;
+    app.canvas.style.height = `${plan.viewportHeight}px`;
+    app.screen.width = plan.viewportWidth;
+    app.screen.height = plan.viewportHeight;
+  };
   const rebuildBackdrop = (): void => {
     const W = app.screen.width, H = app.screen.height;
-    const k = W + '|' + H;
+    const k = W + '|' + H + '|' + DPR.toFixed(4);
     if (k === _bgKey || W < 2) return;
     _bgKey = k;
+    /* Release the old full-viewport store before allocating its replacement.
+       App + old backdrop + new backdrop would otherwise create a transient
+       three-store peak even though the settled twin stores satisfy the
+       selected aggregate budget. This all happens in one JS task, so the
+       stage cannot render between detaching the old texture and installing
+       the new one. */
+    releaseBackdrop();
     const cv = document.createElement('canvas');
     cv.width = Math.max(1, Math.round(W * DPR)); cv.height = Math.max(1, Math.round(H * DPR));
+    /* Include any still-owned prior backdrop in the observed allocation
+       peak. The expected value is app+new because releaseBackdrop ran first;
+       moving allocation above release would make this exact witness red. */
+    backdropTransitionPeakPixels = Math.max(
+      backdropTransitionPeakPixels,
+      ownedBackdropPixels() + cv.width * cv.height,
+    );
     const g = cv.getContext('2d')!; g.scale(DPR, DPR);
     const bg = g.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, Math.max(W, H) * 0.75);
     bg.addColorStop(0, '#0a0a1e'); bg.addColorStop(0.6, '#05050f'); bg.addColorStop(1, '#020208');
@@ -1877,24 +3095,134 @@ async function loadSave(): Promise<void> {
     g.fillStyle = '#aab4e0';
     for (const s of bgStars) { g.globalAlpha = s.o * 0.5; g.fillRect(s.x * W, s.y * H, s.s, s.s); }
     g.globalAlpha = 1;
-    const old = bgSpr.texture;
     bgSpr.texture = Texture.from(cv);
+    activeBackdropCanvas = cv;
     bgSpr.width = W; bgSpr.height = H;
-    if (old && old !== Texture.EMPTY) old.destroy(true);
+    backdropGeneration++;
   };
+  /* app.init is asynchronous. Re-read the viewport before allocating the
+     first backing stores so a resize during renderer negotiation cannot
+     leave the app on the stale pre-init density plan. */
+  densityPlan = effectiveDensityPlan();
+  DPR = densityPlan.dpr;
+  applyRendererDensity(densityPlan);
+  backdropTransitionPeakPixels = app.canvas.width * app.canvas.height;
+  backdropTransitionBudgetPixels = densityPlan.backingPixelCapPerCanvas * 2;
   rebuildBackdrop();
-  addEventListener('resize', () => setTimeout(rebuildBackdrop, 50));
+  emitBootPhase('backdrop-complete');
+  const syncRendererDensity = (): void => {
+    const nextDensityPlan = effectiveDensityPlan();
+    const next = nextDensityPlan.dpr;
+    const densityChanged = next !== DPR
+      || nextDensityPlan.backingPixelCapPerCanvas !== densityPlan.backingPixelCapPerCanvas
+      || nextDensityPlan.viewportWidth !== densityPlan.viewportWidth
+      || nextDensityPlan.viewportHeight !== densityPlan.viewportHeight;
+    if (densityChanged) {
+      const priorBudget = densityPlan.backingPixelCapPerCanvas * 2;
+      backdropTransitionPeakPixels = ownedBackdropPixels();
+      backdropTransitionBudgetPixels = Math.max(
+        priorBudget, nextDensityPlan.backingPixelCapPerCanvas * 2,
+      );
+      /* Drop the old full-viewport backdrop before resizing the renderer.
+         Across the ordinary/ultra threshold, resizing first would briefly
+         combine a new-tier app canvas with the larger old-tier backdrop and
+         exceed the newly selected simultaneous-owner budget. */
+      releaseBackdrop();
+      densityPlan = nextDensityPlan;
+      DPR = next;
+      applyRendererDensity(densityPlan);
+      _bgKey = '';
+      /* Texture-backed scene art was baked for the prior scale tier. Rebuild
+         the current mode so a monitor/DPR transition upgrades the scene, not
+         only the Pixi backing store and backdrop. */
+      rerender({ preserveSurvey: true });
+      /* Change both simultaneous full-viewport stores in one transaction.
+         A deferred backdrop rebuild briefly retained the ordinary-tier
+         canvas after the app had already advertised the ultra-tier cap. */
+      rebuildBackdrop();
+    } else {
+      densityPlan = nextDensityPlan;
+    }
+  };
+  addEventListener('resize', syncRendererDensity);
+  visualViewport?.addEventListener('resize', syncRendererDensity);
+  releaseRendererForReload = (reason): ReloadReleaseWitness => {
+    const view = app.canvas;
+    const backdrop = activeBackdropCanvas;
+    const before = (canvas: HTMLCanvasElement | null): ReloadCanvasRelease => ({
+      beforeWidth: canvas?.width ?? 0,
+      beforeHeight: canvas?.height ?? 0,
+      afterWidth: canvas?.width ?? 0,
+      afterHeight: canvas?.height ?? 0,
+    });
+    const appCanvas = before(view);
+    const backdropCanvas = before(backdrop);
+    let error: string | null = null;
+    removeEventListener('resize', syncRendererDensity);
+    visualViewport?.removeEventListener('resize', syncRendererDensity);
+    try {
+      app.destroy(
+        { removeView: true, releaseGlobalResources: true },
+        { children: true, texture: true, textureSource: true },
+      );
+    } catch (caught) {
+      error = caught instanceof Error ? caught.message : String(caught);
+    }
+    /* Destroying the renderer/context owns GPU cleanup. Shrinking both
+       captured canvases makes the CPU-side backing release an observable
+       synchronous postcondition instead of a hope that GC runs before boot. */
+    try { view.width = 1; view.height = 1; }
+    catch (caught) { error ??= caught instanceof Error ? caught.message : String(caught); }
+    if (backdrop) {
+      try { backdrop.width = 1; backdrop.height = 1; }
+      catch (caught) { error ??= caught instanceof Error ? caught.message : String(caught); }
+    }
+    appCanvas.afterWidth = view.width;
+    appCanvas.afterHeight = view.height;
+    backdropCanvas.afterWidth = backdrop?.width ?? 0;
+    backdropCanvas.afterHeight = backdrop?.height ?? 0;
+    activeBackdropCanvas = null;
+    const releasedApp = app as unknown as { renderer: unknown; stage: unknown };
+    const rendererReleased = releasedApp.renderer == null;
+    const stageReleased = releasedApp.stage == null;
+    const viewDetached = !view.isConnected;
+    const complete = !error && rendererReleased && stageReleased && viewDetached
+      && appCanvas.beforeWidth > 1 && appCanvas.beforeHeight > 1
+      && backdropCanvas.beforeWidth > 1 && backdropCanvas.beforeHeight > 1
+      && appCanvas.afterWidth <= 1 && appCanvas.afterHeight <= 1
+      && backdropCanvas.afterWidth <= 1 && backdropCanvas.afterHeight <= 1;
+    if (!complete && !error) error = 'Pixi/canvas release postcondition failed';
+    return {
+      schema: 'cf-v2-reload-release/v1', status: complete ? 'released' : 'release-failed',
+      error, reason, documentToken: DOCUMENT_TOKEN,
+      rendererReleased, stageReleased, viewDetached, appCanvas, backdropCanvas,
+    };
+  };
   app.stage.addChild(world);
+  /* Publish the browser-audit surface only after persistence has produced a
+     complete SaveStateV2 and the first scene is rendered. Publishing it
+     before this await let a slower CI browser call state() while `save` was
+     still unassigned, turning a readiness race into a misleading app fault. */
+  emitBootPhase('save-load-start');
+  await loadSave();
+  emitBootPhase('save-load-complete');
+  rerender();
+  emitBootPhase('scene-rendered');
+  showUnseenV2Release();
   /* diagnostics handle for tools/slicesmoke.mjs — a WebGL canvas reads BLACK
      through 2D drawImage without preserveDrawingBuffer, so the smoke asks
      Pixi's extract (which re-renders) instead of scraping the canvas */
   (window as unknown as Record<string, unknown>).__CF_SLICE__ = {
+    documentToken: DOCUMENT_TOKEN,   /* reload/import waits must reject the prior document's still-live handle */
     app, world, cam, camT,   /* camT drives the zoom-transition smoke leg */
     /* test API for tools/slicesmoke.mjs — drives the SAME functions the
        pointer handlers call; no parallel logic to drift */
     api: {
       state: () => ({
         mode: nav.mode, gal: nav.gal?.seed ?? null, star: nav.star?.seed ?? null,
+        planet: nav.planet?.seed ?? null,
+        galX: nav.gal?.x ?? null, galY: nav.gal?.y ?? null,
+        starX: nav.star?.x ?? null, starY: nav.star?.y ?? null,
         fine: !!fineLayer, solVisible: !!(solMark && solMark.visible),
         epoch: epochClock.current(),
         cardOpen: card.style.display !== 'none',
@@ -1905,11 +3233,28 @@ async function loadSave(): Promise<void> {
         trail: trailEl.textContent || '', ctx: ctxEl.textContent || '',
         objective: objChipEl.textContent || '',
         chartsOn: save.chartsOn, chartsVisible: !!(chartLayer && chartLayer.visible),
-        panelOpen: openPanelId(), codexCount: save.codex.length,
+        panelOpen: openPanelId(), codexCount: save.codex.length, seenGuide: save.seenGuide,
+        rnSeen: save.rnSeen ?? null, releasePending: pendingReleaseBulletin?.version ?? null,
         tutActive: trainingActive(), tutStep: trainingStepId(), tutDone: save.tutDone,
+        tutSnapshotPending: save.tutSnapPending,
         atlasCount: save.logMap.length,
         sfxVol: save.sfxVol, motionMode: save.motionMode,
+        fsMode: save.fsMode, toneMode: save.toneMode, fontMode: save.fontMode,
         glassA: getComputedStyle(document.documentElement).getPropertyValue('--glass-a').trim(),
+        rendererDpr: app.renderer.resolution,
+        eventResolution: app.renderer.events.resolution,
+        backingPixelCapPerCanvas: densityPlan.backingPixelCapPerCanvas,
+        viewportWidth: densityPlan.viewportWidth, viewportHeight: densityPlan.viewportHeight,
+        backingWidth: app.canvas.width, backingHeight: app.canvas.height,
+        backdropBackingWidth: activeBackdropCanvas?.width ?? 0,
+        backdropBackingHeight: activeBackdropCanvas?.height ?? 0,
+        backdropLogicalWidth: bgSpr.width, backdropLogicalHeight: bgSpr.height,
+        backdropGeneration,
+        backdropTransitionPeakPixels, backdropTransitionBudgetPixels,
+        combinedBackingPixels: app.canvas.width * app.canvas.height
+          + (activeBackdropCanvas?.width ?? 0) * (activeBackdropCanvas?.height ?? 0),
+        keyboardTarget: keyboardTargetKey,
+        tickerTicks,
         topbarH: getComputedStyle(document.documentElement).getPropertyValue('--topbar-h'),
         save: {
           name: save.explorerName, essence: save.essence,
@@ -1917,7 +3262,52 @@ async function loadSave(): Promise<void> {
         },
       }),
       importBlob,   /* Gate C's front door, drivable by the smoke */
+      __smokeArmImportRace: smokeArmImportRace,
+      __smokeReleaseImportRace: smokeReleaseImportRace,
+      __smokeRejectNextPersist: () => {
+        if (smokeRejectNextPersist) return false;
+        smokeRejectNextPersist = true;
+        return true;
+      },
+      __smokePersistAfterDebounce: () => { persistSoon(); return true; },
+      __smokePersistNow: persistView,
       encodeHere,   /* the share-code round trip, drivable by the smoke */
+      cardShareCode,
+      showReleaseFixture: (version = '2.0.0-test') => {
+        const fixture: V2ShippedRelease = {
+          status: 'shipped', version, title: 'Browser fixture bulletin', date: 'Test only',
+          sections: [{ category: 'Under the Hood', bullets: ['Positive-path fixture; not a release.'] }],
+        };
+        const history = getReleaseHistory({ includeDraft: true, shippedReleases: [fixture] });
+        return showV2ReleaseBulletin(fixture, history);
+      },
+      fineStarTarget: () => {
+        for (const target of fineStarTargets) {
+          const point = world.toGlobal({ x: target.star.x, y: target.star.y });
+          if (point.x < 0 || point.y < 0 || point.x > innerWidth || point.y > innerHeight) continue;
+          if (document.elementFromPoint(point.x, point.y) !== app.canvas) continue;
+          const bounds = target.spr.getBounds();
+          return { ...target.star, screenX: point.x, screenY: point.y, width: bounds.width, height: bounds.height };
+        }
+        return null;
+      },
+      fineStarProbe: () => {
+        let visible = 0;
+        let canvasHits = 0;
+        const samples: Array<{ x: number; y: number; hit: string }> = [];
+        for (const target of fineStarTargets) {
+          const point = world.toGlobal({ x: target.star.x, y: target.star.y });
+          if (point.x < 0 || point.y < 0 || point.x > innerWidth || point.y > innerHeight) continue;
+          visible++;
+          const hit = document.elementFromPoint(point.x, point.y);
+          if (hit === app.canvas) canvasHits++;
+          if (samples.length < 4) samples.push({
+            x: point.x, y: point.y,
+            hit: hit === app.canvas ? 'canvas' : (hit?.id || hit?.tagName.toLowerCase() || 'none'),
+          });
+        }
+        return { total: fineStarTargets.length, visible, canvasHits, samples };
+      },
       descendGalaxy: (seed: number) => {
         const g = uniNodes.find((n) => n.seed === seed);
         if (!g) return false;
@@ -1942,8 +3332,7 @@ async function loadSave(): Promise<void> {
       },
     },
   };
-  await loadSave();
-  rerender();
+  emitBootPhase('slice-published');
   /* the CMB band-pick (main.js ringPick): a tap on EMPTY space near the
      observable-universe ring — and only there — opens the origin card */
   app.stage.eventMode = 'static';
@@ -1956,14 +3345,24 @@ async function loadSave(): Promise<void> {
     }
   });
 
+  let tickerTicks = 0;
+  let firstTickPublished = false;
   app.ticker.add((tk) => {
-    /* eased camera — exponential approach to the target, framerate-aware */
-    const k = 1 - Math.pow(0.0025, tk.deltaMS / 1000);
+    tickerTicks++;
+    if (!firstTickPublished) {
+      firstTickPublished = true;
+      emitBootPhase('first-tick');
+    }
+    /* Reduced motion is a rendered-state policy, not just a CSS preference:
+       navigation snaps, fades finish, and every ambient clock below receives
+       t=0. Full/Auto keep the framerate-aware ease and living scene. */
+    const animate = motionOK();
+    const k = animate ? 1 - Math.pow(0.0025, tk.deltaMS / 1000) : 1;
     cam.x += (camT.x - cam.x) * k; cam.y += (camT.y - cam.y) * k; cam.z += (camT.z - cam.z) * k;
     world.position.set(app.screen.width / 2 - cam.x * cam.z, app.screen.height / 2 - cam.y * cam.z);
     world.scale.set(cam.z);
-    if (world.alpha < 1) world.alpha = Math.min(1, world.alpha + tk.deltaMS / 400);
-    const t = performance.now() * 0.001;
+    if (world.alpha < 1) world.alpha = animate ? Math.min(1, world.alpha + tk.deltaMS / 400) : 1;
+    const t = animate ? performance.now() * 0.001 : 0;
     /* the biological clock ticks on PLAY time (ecology reads the global) */
     (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
     /* galaxies turn on cosmic time — barely perceptible (main.js ~3742) */
@@ -1980,7 +3379,7 @@ async function loadSave(): Promise<void> {
       for (const up of uniPulse) up.spr.alpha = 0.55 + 0.45 * Math.abs(Math.sin(t * 6 + up.seed % 10));
       /* drifting fog-of-war: the CLOUD PATTERN moves, the puffs stay put
          (main.js 3766 — noise phase drifts at 5/s) */
-      if (charterFx && charterFx.visible && fogFx.length && motionOK()) {
+      if (charterFx && charterFx.visible && fogFx.length && animate) {
         const drift = t * 5;
         for (const F of fogFx) {
           const n = (UNOISE as (x: number, y: number, o: number) => number)((F.wx + drift) / UCELL * 0.16, (F.wy - drift * 0.4) / UCELL * 0.16, 3);
@@ -1990,7 +3389,7 @@ async function loadSave(): Promise<void> {
     } else if (nav.mode === 'galaxy') {
       updateFineLayer(false);
       /* the bright stars breathe (main.js 4165) — stilled under reduced motion */
-      if (motionOK()) for (const st of galTwinkle) st.spr.alpha = 0.82 + 0.18 * Math.sin(t * 2.4 + (st.seed % 97));
+      for (const st of galTwinkle) st.spr.alpha = 0.82 + 0.18 * Math.sin(t * 2.4 + (st.star.seed % 97));
       if (bhDisc) { bhDisc.rotation = t * 0.3; bhDisc.scale.y = bhDisc.scale.x * 0.55; }
       /* wormhole lensing · remnant cores · newborn protostars (main.js 4109/4218) */
       for (const ga of galAnims) {
@@ -2008,7 +3407,7 @@ async function loadSave(): Promise<void> {
           o.c.position.set(Math.cos(a) * o.orb, Math.sin(a) * o.orb);
           if (o.face) { const aim = a + Math.PI + 2.522; o.face[0]!.rotation = aim; o.face[1]!.rotation = a; }
           if (o.cloud) {
-            const vis = o.cloud.pr * cam.z > 22 && motionOK();   /* the Renderer's close-up gate */
+            const vis = o.cloud.pr * cam.z > 22;   /* close-up gate; t=0 freezes the deck under Reduced */
             o.cloud.wrap.visible = vis;
             if (vis) {
               const co = (t * 1.6) % (o.cloud.pr * 2);
@@ -2070,6 +3469,7 @@ async function loadSave(): Promise<void> {
     }
     /* screen-constant labels/markers (the Renderer's 1/c.z font trick) */
     for (const ss of screenScaled) ss.obj.scale.set(ss.f / Math.max(cam.z, 1e-6));
+    renderKeyboardTarget();
   });
 
   /* input: drag pan · wheel zoom (cursor-anchored) · pinch · right-click /
@@ -2078,7 +3478,43 @@ async function loadSave(): Promise<void> {
   let pinchD = 0;
   app.canvas.style.touchAction = 'none';
   app.canvas.addEventListener('pointerdown', (e) => {
-    persistHold = false;   /* the player is HERE — writes may resume */
+    /* A transient IDB read failure may clear once a real player is present.
+       A stored corrupt/future payload stays protected until explicit import;
+       one click must never authorize overwriting that evidence. */
+    if (persistHold === 'transient-read' && !persistRetrying) {
+      persistRetrying = true;
+      void readSaveWithRecovery(repo, storedPayloadStatus).then((retryRead) => {
+        if (persistHold !== 'transient-read') return;
+        if (retryRead.kind === 'loaded') {
+          /* The first read failed before we knew whether storage was empty.
+             If retry reveals real bytes, never overwrite them with the
+             temporary fresh in-memory state: reload through the full
+             classifier/recovery path. */
+          const replacement = claimReplacementTransaction('storage-retry');
+          if (!replacement) {
+            toast('Save replacement underway', 'The current expedition replacement will finish before storage recovery continues.');
+            return;
+          }
+          scheduleReplacementReload(replacement);
+          return;
+        }
+        if (retryRead.kind === 'protected') {
+          persistHold = 'protected-payload';
+          toast(retryRead.reason === 'future-version' ? 'Update required' : 'Save protected',
+            retryRead.reason === 'future-version'
+              ? 'This expedition was written by a newer build. It will not be changed here.'
+              : 'Stored expedition bytes appeared after retry but did not prove safe. They remain unchanged.', true);
+          return;
+        }
+        if (retryRead.kind === 'transient-read') throw new Error('storage retry still unavailable');
+        /* A successful retry that proves the store is genuinely empty may
+           finally authorize the new expedition's first write. */
+        persistHold = false;
+        void persistView();
+      }).catch(() => {
+        toast('Save unavailable', 'Storage is still unavailable. This expedition remains protected from overwrite.');
+      }).finally(() => { persistRetrying = false; });
+    }
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointers.size === 2) {
       const [a, b] = [...pointers.values()];
@@ -2119,12 +3555,71 @@ async function loadSave(): Promise<void> {
   }, { passive: false });
   app.canvas.addEventListener('contextmenu', (e) => { e.preventDefault(); hideSurvey(); goUp(); });
   addEventListener('keydown', (e) => {
+    if (e.defaultPrevented) return;
+    if (sheet.style.display !== 'none' && e.key === 'Tab') {
+      const focusable = [...sheet.querySelectorAll<HTMLElement>('textarea,button,input:not([type="hidden"]),[tabindex]:not([tabindex="-1"])')]
+        .filter((el) => !('disabled' in el && (el as HTMLButtonElement).disabled) && el.offsetParent !== null);
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (first && last && (e.shiftKey ? document.activeElement === first : document.activeElement === last)) {
+        e.preventDefault();
+        (e.shiftKey ? last : first).focus();
+      }
+      return;
+    }
     if (e.key !== 'Escape') return;
     /* the Escape ORDER (the game's focus law): a focused search field
        yields first, then panels, then the survey card, then ascent */
+    if (sheet.style.display !== 'none') { closeImportSheet(); return; }
     if (document.activeElement === searchEl) { searchEl.blur(); return; }
     if (openPanelId()) { closePanels(); return; }
-    if (card.style.display !== 'none') { hideSurvey(); return; }
+    if (card.style.display !== 'none') {
+      const restoreCanvas = card.contains(document.activeElement);
+      hideSurvey(restoreCanvas);
+      if (nav.mode === 'surface') goUp();
+      return;
+    }
     goUp();
   });
+  emitBootPhase('wiring-complete');
+  app.start();
+  emitBootPhase('ticker-started');
+  /* Runtime.addBinding installs this optional readiness seam before the
+     document starts. Emit only after the complete slice, ticker, pointer,
+     keyboard and persistence wiring above exists, allow the first animation
+     frame, then cross one task boundary. This narrowly witnesses complete
+     boot publication plus a serviced event-loop turn; later matrix actions
+     remain the outcome/answerability proof. Ordinary play has no binding. */
+  const emitBootReady = (): void => {
+    requestAnimationFrame(() => {
+      if (tickerTicks < 1) { emitBootReady(); return; }
+      emitBootPhase('ready-scheduled');
+      setTimeout(() => {
+        try {
+          const binding = (window as unknown as Record<string, unknown>).__cfSliceReadyWitness;
+          if (typeof binding !== 'function') return;
+          const backdropBackingWidth = activeBackdropCanvas?.width ?? 0;
+          const backdropBackingHeight = activeBackdropCanvas?.height ?? 0;
+          const payload = JSON.stringify({
+            schema: 'cf-v2-slice-ready/v1', status: 'ready', token: DOCUMENT_TOKEN,
+            href: location.href, readyState: document.readyState,
+            saveReady: !!save, viewConnected: app.canvas.isConnected,
+            rendererReady: !!app.renderer && app.canvas.width > 1 && app.canvas.height > 1,
+            stageReady: !!app.stage, tickerTicks,
+            rendererDpr: app.renderer.resolution,
+            backingPixelCapPerCanvas: densityPlan.backingPixelCapPerCanvas,
+            viewportWidth: densityPlan.viewportWidth, viewportHeight: densityPlan.viewportHeight,
+            backingWidth: app.canvas.width, backingHeight: app.canvas.height,
+            backdropBackingWidth, backdropBackingHeight,
+            combinedBackingPixels: app.canvas.width * app.canvas.height
+              + backdropBackingWidth * backdropBackingHeight,
+            performanceNow: performance.now(),
+          });
+          emitBootPhase('ready-emitted');
+          (binding as (payload: string) => unknown)(payload);
+        } catch { /* the evidence harness fails closed if its optional seam is broken */ }
+      }, 0);
+    });
+  };
+  if (document.readyState === 'complete') emitBootReady();
+  else addEventListener('load', emitBootReady, { once: true });
 })();

@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadFixture, checkGenerator, canon } from '../../../../tests/parity.js';
 import { probeRaw } from '../../../../tests/baseline.js';
-import { battleStats, abilityOf, abilityTheme, runDuel, encodeCreature, decodeCreature, normGenome } from '@cf/domain-combatcore';
+import { _statOpen, battleStats, abilityOf, abilityTheme, runDuel, encodeCreature, decodeCreature, levelOf, normGenome } from '@cf/domain-combatcore';
 import { cleanName } from '@cf/domain-strays';
 import { makeGenome } from '@cf/domain-genome';
 
@@ -26,6 +26,14 @@ describe('baseline probes (recipes mirror tools/probe.js exactly)', () => {
   it('abilityOf + abilityTheme probes', () => {
     expect(canon([G1(), G2()].map((g) => abilityOf(g)))).toBe(probeRaw('abilityOf'));
     expect(canon([G1(), G2()].map((g) => abilityTheme(g)))).toBe(probeRaw('abilityTheme'));
+    expect(typeof abilityTheme(G1())).toBe('string');
+  });
+  it('levelOf and _statOpen expose their real runtime contracts', () => {
+    expect(levelOf({ xp: 54 })).toBe(3);
+    expect(_statOpen).toBeInstanceOf(Set);
+    const stats = battleStats(G1());
+    expect(stats.total).toBe(stats.vit + stats.fer + stats.res + stats.agi + stats.ins);
+    expect(stats.ab).toMatchObject({ theme: abilityTheme(G1()) });
   });
   it('runDuel probe (deterministic duel, full transcript)', () => {
     const a = { name: 'A', genome: G1(), stats: battleStats(G1()) };
