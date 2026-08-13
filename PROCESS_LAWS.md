@@ -85,7 +85,11 @@ roughly by how often they have bitten.
   a comment warning about that exact trap.
 ⚠ RE-PIN PROCESS unchanged: field-diff proof → surgical single-probe re-pin → authorization
   recorded in baseline.json repins[]. Never regenerate the baseline to make a failure pass.
-⚠ DEPLOY = TWO PUSHES: deploy.js ships the SITE repo only; `git push origin main` syncs source.
+⚠ **BRANCH PUBLICATION FOLLOWS A PASSED PUSH BATTERY.** Agents never write a Pages
+repository. The repository-owned publisher receives one target-specific deploy key only after
+the exact `test-battery` push succeeds: `main` publishes production and `develop` publishes the
+separate noindex DEV origin. Pull-request, manual, and failed-battery runs have no publication
+authority; the development site is never merge/release/production authority.
 ⚠ LINE ENDINGS ARE PART OF THE BUILD CONTRACT — .gitattributes pins LF. Without it a fresh
   clone on Windows (autocrlf=true) checks out CRLF, and make-probe-build.js cannot find the game
   IIFE anchor "
