@@ -1,5 +1,49 @@
 # Celestial Frontier — Player Progression
 
+> **2026-08-13 v2 next-arc overlay — approved design, not current implementation:**
+> The current v2 slice preserves imported Cargo/items/equipment/technology/Ascent data and
+> uses built drive items plus compatible `ascCh` state for reach, but it has no Cargo,
+> Shipyard, crafting, research, upgrade actions or ship portrait. Only live goal writers
+> may be presented as actionable progression while those systems remain absent. Legacy
+> v1.8.9 does contain an additive deterministic ship picture; it is not a live v2 surface
+> and does not satisfy the approved distinct-silhouette target.
+>
+> The next arc defines one pure `ShipVisualState` projection shared with the reach-stage
+> decision. It yields four capability stages—Scout/Chemical, Jump/Interstellar,
+> Array/Survey Cruiser and Intergalactic/Frontier—plus independent Auto-Extractor and
+> Corona Scoop hardpoints. A legacy save completed through `ascCh` but lacking drive items
+> receives an honest veteran-refit chassis; it must not appear as a bare scout with full
+> reach or claim an absent named drive. Visual state never writes save progression. One
+> bounded Shipyard Pixi preview may animate the selected state, but it pauses when hidden
+> or reduced-motion and disposes its owned textures/filters/particles on close.
+>
+> Collection presentation follows the same player-respect rule. A possible 1,500-entry
+> Compendium is virtualized; visible rows receive asynchronous 132px thumbnails and the
+> selected creature alone receives its 440px detail master. The current eager/full-image
+> path remains a CPU/decode/memory risk until repeated maximum-catalogue cycles plateau in
+> a real browser and a deliberate unbounded/no-disposal control fails. Progression is a
+> mastery/capability ladder: every earned stage exposes a legible new exploration ability,
+> optional systems remain separately understandable, veterans keep earned access, and
+> rarity or ornament never stands in for mechanical power.
+>
+> **10/10 completion bar, planned rather than current v2:** before the game scales its
+> catalogue, a fresh explorer must be able to complete one comprehensible 30–60 minute
+> journey—discover a meaningful opportunity, learn what it needs, gather finite material,
+> make or improve something, form a companion connection, choose a prepared branch or hazard,
+> return with a lasting result and see a farther reachable possibility. Combat is not a
+> prerequisite for this Arc-4.5 gate; the order may be staged by the
+> live arc, but no Guide, Charter or visual promise may skip an unavailable action. A later
+> optional Outpost/project layer extends that loop with clearly disclosed finite projects
+> (relay, lab, shelter, cargo beacon or observatory), a before/after world projection and
+> no offline-maintenance or mandatory-income treadmill.
+>
+> The future **Expedition Chronicle/Museum** gives the player durable authorship over the
+> journey: selected receipt-backed discoveries, named companions and lineages, ship refits,
+> Companion mission returns, Guardian trophies and world records can be revisited or presented.
+> It is a read-only, player-curated projection over stable records—not a second unbounded
+> history store, a score substitute or a reward faucet. Rename, migration, reload and
+> catalogue deduplication must preserve the referent of every displayed memory.
+>
 > **2026-08-11 v2 port overlay:** `COSMIC_EPOCH` is accepted only as a
 > nonnegative safe integer and is capped at 10,000 (>138 continuous active days
 > at 20 minutes per epoch). The live injected play-time clock uses the same cap.
@@ -11,8 +55,8 @@
 > Repeat planet landings no longer bank an extra landfall; a veteran training
 > replay may still receive its lesson event without receiving progression credit.
 
-**STATUS:** legacy sections match `main.js` as of 2026-07-30; the v2 overlay
-matches `port/v2` as of 2026-08-11. See the 2026-07-30 addendum at the end —
+**STATUS:** legacy sections match `main.js` as of 2026-07-30; the dated v2 overlays
+match `port/v2` and the approved next-arc boundary as of 2026-08-13. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy

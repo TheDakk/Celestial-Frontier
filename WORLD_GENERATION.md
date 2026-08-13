@@ -16,6 +16,57 @@ dated port contracts. Art rules live in ART_DIRECTION.md. The biome CONTENT cata
 > galaxy-at-cell and star-at-coordinate canonical hierarchy is still OPEN; a
 > type correction is not proof of that routing theorem.
 
+> **2026-08-13 cross-system review:** The approved ship/loot/companion/audio arc in
+> `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` changes no generated world values.
+> Companion missions, loot provenance and Guardian receipts must reference the eventual
+> canonical galaxy → star → planet identity rather than a display name or partial seed.
+> Until that hierarchy proof closes, they remain unavailable in v2. Biome/hazard tags may
+> select transparent reward and audio palettes, but may not consume or reorder world RNG.
+
+## 0. v2 world-opportunity contract (approved, not implemented)
+
+The universe should give a player a reason to wonder about a destination before it
+becomes a checklist. The future **World Opportunity Manifest** is a pure,
+versioned projection of the canonical galaxy → star → planet identity. It is not a
+replacement for `planetParams`, `biomeFor`, the live survey, or a new promise that
+every world contains every reward type.
+
+For each reachable world, the manifest may truthfully advertise one or more of these
+opportunity families when the owning systems exist: finite **resources**; a
+**creature**/biosphere lead; an **anomaly**; a **blueprint** lead; a **lore** or
+Chronicle discovery; a readable **hazard**; or a **Guardian** lead. A meaningful
+world normally offers at least one legible reason to investigate, while rarity,
+hazards, access gates and player ownership determine which opportunities are actually
+actionable. A barren world may be valuable for a finite deposit, a route, a view or
+a story; it must not be padded with seven unrelated rewards merely to satisfy a
+template.
+
+The projection has four non-negotiable boundaries:
+
+1. **Canonical identity:** a receipt, project, mission target or discovery uses
+   the full galaxy coordinates/seed, star coordinates/seed and planet seed—not a
+   display name, raw biome key or partial seed. Until the CF1 hierarchy theorem is
+   complete, no new ownership writer may pretend this identity is resolved.
+2. **Independent determinism:** any future roll forks from a new named salt and
+   manifest version; it cannot consume an existing planet/system/biome stream,
+   change selection order, or reroll because a card is reopened, a cache evicts or
+   a result is claimed.
+3. **Honest knowledge:** a survey may show broad, equipment-appropriate signals
+   and visible preparation requirements, but cannot leak an unrevealed exact
+   creature, item roll, capture outcome, post-landing rarity, hidden reward or
+   Guardian result. A lead is a lead, not a false guarantee.
+4. **One owner per outcome:** the manifest points toward an action; it does not
+   grant Cargo, a catalogue discovery, a companion, a blueprint, loot or conquest
+   settlement. The corresponding landing/capture/craft/combat receipt owns that
+   mutation exactly once.
+
+`BIOME_ATLAS.md` supplies compatibility/presentation vocabulary, and
+`ECONOMY_LOOT_CRAFTING.md` owns sources, sinks and optional world projects. A later
+project site may be an opportunity, but a scanner relay, lab, shelter, cargo beacon
+or observatory must retain the no-idle-income/no-maintenance boundary there. The
+first 30–60 minute journey gate in `QUESTS_AND_CHAPTERS.md` must traverse real
+manifest → action → receipt links before this model is called playable.
+
 ## 1. Overview
 
 The universe is **procedural, infinite, and cell-based**. Nothing is stored — every galaxy, star, planet and biome is *recomputed from a seed* the instant it scrolls into view, then FIFO-cached. Two players on two devices who fly to the same coordinates see the byte-identical world, because every roll flows through the same three seeded primitives (`mulberry32`, `hashInt`, `cellRng`) and never through `Math.random()` / `Date.now()`.

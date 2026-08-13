@@ -1,5 +1,47 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-13 v2 next-arc overlay — approved design, NOT LIVE:** The current v2
+> Compendium is a read-only eager list and V2 has no Cargo, Shipyard, ship portrait,
+> crafting, research, or upgrade controls. A maximum imported catalogue can contain
+> 1,500 rows; cold rows currently receive the full 440px portrait before the asynchronous
+> 132px derivative is cached, so mounted DOM references can outrun the existing cache caps.
+> The next portrait surface virtualizes to the visible window plus bounded overscan,
+> delivers 132px thumbnails asynchronously with an identity-safe placeholder, and reserves
+> the 440px master for the selected detail. Scroll position, native keyboard focus and the
+> one-Close-owner law survive thumbnail arrival; stale work cancels on filter, close or
+> generation change. Decoded pixels/bytes, mounted rows and outstanding jobs are budgeted,
+> and repeated open/scroll/detail/close cycles must plateau in a real browser with a
+> deliberate unbounded-list/no-disposal control.
+>
+> The approved Shipyard is a new responsive panel, not a repurposed character sheet. Its
+> static presentation reads one pure `ShipVisualState` shared with the travel-reach
+> projection: Scout/Chemical, Jump/Interstellar, Array/Survey Cruiser and
+> Intergalactic/Frontier chassis, plus independent Auto-Extractor and Corona Scoop
+> hardpoints. The legacy `ascCh` veteran-completion fallback receives an honest refit
+> presentation even when no old drive item exists. A before/after build preview, installed-
+> system list and reach copy must all agree; art never grants capability. At most one Pixi
+> preview may animate engines, beacons or the array. It pauses when hidden/reduced-motion
+> and disposes scene-owned textures, filters and particles on panel close; no Pixi renderer
+> is created per inventory row. The progression layout is a player-respectful mastery
+> ladder: each earned capability has an immediately readable silhouette and named outcome,
+> optional systems remain legible hardpoints, and cosmetic rarity never impersonates power.
+>
+> **Later immersion surfaces, not live v2 panels:** a first complete journey should let a
+> fresh player see an opportunity, its finite cost, the build or companion choice it enables,
+> the risk it changes and the farther possibility it opens—without making the player decode a
+> spreadsheet or consult a hidden guide. A future optional Outpost/project board follows the
+> same language: one named purpose, disclosed finite inputs, visible before/after projection
+> and no idle-income, daily-maintenance or urgency loop. The Expedition Chronicle/Museum is a
+> player-curated read-only view of receipt-backed discoveries, companions, ship history,
+> missions, worlds and trophies; it never owns a second event log, creates a reward faucet or
+> masquerades as a retention dashboard.
+>
+> Automated personas and layout reports remain necessary but do not establish delight,
+> comprehension or attachment. The formal human cadence in `port/RUBRICS.md` reviews the
+> first 30–60 minutes, the first three sessions and a sustained session across phone/desktop
+> and accessibility lenses; it records clarity, agency, delight, meaningful choice,
+> attachment and fatigue—not retention pressure or engagement targets.
+>
 > **2026-08-13 v2 development overlay (matches the current `port/v2` contract):**
 > Desktop notifications now rise from the bottom-right utility edge above the measured
 > dock; Settings and Records open from that same bottom-right anchor. Panel padding,

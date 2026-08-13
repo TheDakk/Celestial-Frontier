@@ -1,8 +1,58 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js). See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as well as biosphere recovery, so EPOCH_TICK is a shared knob.
+**STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The approved,
+unimplemented v2 ecology/audio overlay matches the next-arc contract as of **2026-08-13**. See the
+2026-07-31 addendum — the epoch clock now drives the stardust harvest as well as biosphere recovery,
+so EPOCH_TICK is a shared knob.
 **Purpose:** How a surveyed world's revealed life earns Compendium pages — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
+
+## 0. v2.0 next-arc ecology/audio link (approved, not implemented — 2026-08-13)
+
+The current v2 development slice does not expose Tame, Scavenge, Sample, Biosphere Yield or living
+companions, and its audio is stings-only. The v1 mechanics and formulas below remain unchanged.
+This overlay specifies a later presentation link; it does not alter success odds, attempt spending,
+pool recovery, epoch cadence, Compendium ownership, rare-find rewards or capture randomness.
+
+Future capture audio is driven by typed outcomes after the authoritative action resolves:
+
+- **Tame** may use the targeted fauna specimen's deterministic call/foley signature.
+- **Scavenge** uses flora/fungi environmental sonification, never an animal-call fallback.
+- **Sample** uses microbe/substrate/instrument sonification rather than pretending a microorganism
+  has a recorded voice.
+- Miss, Worked Out, success and genuinely-new discovery remain distinct event/caption pairs; sound
+  never fires from a render function and never substitutes for visible odds, remaining attempts or
+  result text.
+
+The future acquisition writers are explicit and separate from that presentation layer:
+
+- Every successful Tame, Scavenge or Sample creates or updates the corresponding `CatalogSpecies`
+  discovery record.
+- A successful fauna Tame additionally creates a stable-ID `CreatureInstance` under the planned
+  catalogue-species/living-creature identity split.
+- Successful Scavenge and Sample create collected specimen/resource records or stacks, not living
+  `CreatureInstance` companions.
+- Miss and Worked Out create none of those acquisition records; attempt spending and Biosphere
+  Yield remain governed by the unchanged mechanics below.
+
+Biosphere state may later shape the audible density of **already revealed** local ecology: a full
+pool can sound active, Worked Out can become sparse, and epoch recovery can restore the same
+biome/kingdom palette. That is feedback on current visible state, not a new mechanic. It cannot leak
+an unrevealed roster, pre-land rarity, the next random target or whether the next roll will succeed.
+Fauna-free and silent biomes remain honest; flora, fungi and microbes receive their own ecological
+language. See `BIOME_ATLAS.md` §0.
+
+A future bonded companion owns a stable living-creature ID. Its visual identity may use the
+complete plain genome, while its voice uses the immutable typed `AudioSignature` projection derived
+only from audio-relevant phenotype, exact catalogue owner, surviving lineage and resolver version.
+It is not the catalogue species row, and two companions of one species may differ when those
+audible inputs differ. Mutable `xp`, `hurt`, `fed`, `brood`, `assignment` and `bond` are excluded;
+negative controls must prove that changing each one does not change the signature, profile or call
+plan. Hybrid identity uses only exact owner/anchor fields that survive the current share/save
+format until parent preservation is explicitly designed. Every meaningful call has a caption, icon
+or animation equivalent. Runtime audio remains local/offline, uses no microphone or voice cloning,
+and follows the rights, mixer, lifecycle, byte/node/concurrency and human-listening gates in
+`AUDIO.md` §0.
 
 ## 1. Overview
 

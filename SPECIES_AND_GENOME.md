@@ -1,7 +1,8 @@
 # Celestial Frontier — Species & Genome System
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 reset
-overlay below matches `port/v2` as of 2026-08-11. ⚠ v1.8.9: every reader of the
+overlay below matches `port/v2` as of 2026-08-11, and the approved, unimplemented
+audio-identity overlay matches the next-arc contract as of 2026-08-13. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
@@ -41,6 +42,33 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > binds 13×5 stages /251 assets. The exact source-`03ea297` package review returned
 > **PASS with optional polish only**; the sealed archive's generated UNREVIEWED status
 > remains its preparation state, and final all-bloodline certification remains open.
+
+> **2026-08-13 v2 next-arc audio identity — approved, not implemented:** Catalogue
+> identity and living-creature identity are separate. The Earth catalogue owns 1,010
+> identities and 1,014 set-qualified route rows; every art/audio join carries the exact
+> catalogue set/kingdom + species rather than a bare display name. A living specimen's
+> visual identity continues to use its canonical **complete plain genome**. Future audio
+> instead uses an immutable typed `AudioSignature` projection derived only from selected
+> audio-relevant phenotype fields, exact Earth owner when present, lineage markers that
+> survive persistence and an explicit resolver version. It excludes mutable `xp`, `hurt`,
+> `fed`, `brood`, `assignment` and `bond`. They may share a pure body/rig/habitat taxonomy,
+> but neither renderer owns the other's runtime. Same seed is insufficient when
+> reverse-parent children inherit different audio-relevant phenotype or lineage, while
+> changing any excluded mutable field must leave the signature, audio profile and cue plan
+> exactly unchanged. The audio product is stable typed data, not byte-identical browser PCM.
+> Current v2 remains stings-only; this paragraph changes no genome, save, portrait,
+> descriptor, Guide capability or player mechanic.
+>
+> Fauna will use curated biological/foley families; flora, fungi and microbes will receive
+> kingdom-appropriate ecological or Compendium sonification and must never fall through to
+> an animal voice. The promise is a recognizable deterministic specimen signature assembled
+> from curated palettes and synthesis, **not** one recorded sample for every Earth species.
+> Bred signatures blend from the `_earthBlend` name, exact `_earthBlendKingdom` owner and
+> `_anchorVal` fields that survive current normalization. They may not depend on complete
+> `parents` objects until the sharing/save contract explicitly preserves the required
+> lineage. Automated identity acceptance includes negative controls for each excluded
+> mutable field. See `AUDIO.md` §0 for the typed resolver, rights, listening and resource
+> gates.
 
 > **B15.4 classifier + naming (render/text-only, fp 50/50):** `FA_BODY[0]` renamed `"six-limbed"` →
 > `"sturdy-limbed"` (Plan 0 is now a "land grazer" whose limb count is set by the limb gene, not the
@@ -196,5 +224,4 @@ it explicitly. It is render ownership metadata, not a new RNG draw.
 
 ## 7. Open questions / pending
 - `FA_LIMBS` and `FA_EYES` are both length-6 arrays that intentionally alias `FA_SIZE`'s length, so a size roll and a limbs/eyes roll share the same modulus — deliberate, but worth remembering if `FA_SIZE` ever changes.
-- CLAUDE.md still calls the fingerprint "49-probe" in one place while the live in-game blurb (main.js ~12880) says "50-probe". Treat 50 as current; the docs lag.
 - The named-Earth rosters are app-layer strings with no test coverage tying a specific seed→name; only the "no duplicates per world" invariant is structural.

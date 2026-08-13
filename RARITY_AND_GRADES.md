@@ -29,6 +29,13 @@ feeds the 50-probe determinism fingerprint — a mismatch means observable behav
 > parity tests continue to assert internal `.designation`; browser/smoke outcomes assert
 > that the legacy row never reaches the player.
 
+> **2026-08-13 loot/companion review:** Future item-instance loot follows the universal
+> vocabulary without conflating independent axes. Creature/world rarity, item rarity,
+> item level, quality, affix tier, upgrade level and visual designation remain separately
+> named and persisted. Companion bond is not rarity and cannot rewrite a genome's grade.
+> These are planned contracts in `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md`; no current
+> v2 rarity outcome changed.
+
 > ### ⚠ WHAT CHANGED IN THIS REFRESH (2026-07-31), and why the old version was dangerous
 >
 > The previous version of this file described a **15-name** ladder (Common … Anomalous, Unique,
