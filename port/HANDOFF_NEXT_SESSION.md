@@ -1,153 +1,86 @@
-# ★ LIVE — Arc 0 Charter truth + canonical planet-share Search frozen; integration open (2026-08-13)
+# ★ LIVE — Arc 0 merged, green, and development-published; Arc 1 next (2026-08-13)
 
-## Scope and base
+## Terminal integration and publication record
 
-This live handoff supersedes the master-architecture/design-only state above. Arc 0 exact head
-`da64eb6df4f26b458bd136caff62ecedee702675` is pushed on `openai/mac`, based on integration
-base `f780d15349bc20bc222e920a020c72e3b96cabdd`. Draft PR
-[#18](https://github.com/TheDakk/Celestial-Frontier/pull/18) targets `develop`; its required
-branch-flow and test-battery evidence is pending. Resolve live branch/HEAD/upstream/worktree/PR/CI/
-publication state before any Git action. No integration, `develop` push battery, publication,
-`develop` → `main` merge, production version, release or deployment is claimed here.
+Arc 0 PR [#18](https://github.com/TheDakk/Celestial-Frontier/pull/18) completed normally from
+`openai/mac` into `develop`. Its final PR head was
+`e9bb20f08e14e56f2cabeb36cd4827c107ac906d`; the integration merge is
+`c5aadc8a08424ddfc919bc2e4489b79e0f25b076`, with parents
+`f780d15349bc20bc222e920a020c72e3b96cabdd` and
+`e9bb20f08e14e56f2cabeb36cd4827c107ac906d`, and tree
+`e3b36e4f6a44ac2e74a95d0e7483c99ed81caea`.
 
-Read `ROADMAP.md`, `PROCESS_LAWS.md` and `PARALLEL_GIT_PROTOCOL.md` first, then the current
-system references: `QUESTS_AND_CHAPTERS.md`, `PROGRESSION.md`, `UI_PRESENTATION.md`,
-`EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md`, `celestial-frontier-codebase-reference.md`,
-`port/v2/README.md` and `port/v2/DEVIATIONS.md`. The historical tail below remains history only.
+| Layer | Terminal evidence |
+| --- | --- |
+| PR branch-flow | Run `31717086739`, job `94504420311` — **success**. |
+| PR test battery | Run `31717089096`, job `94504427844` — **success**. |
+| `develop` push battery | Run `31720030810`, job `94514394878` — **success**. |
+| Mapped publisher | Run `31722287785`: DEV job `94521949660` — **success**; production job `94521950228` — **skipped**. |
 
-## Frozen Arc 0 source truth
+The isolated DEV origin `https://dev-celestialfrontier.github.io/` is live as **v2.0 development**
+`develop-c5aadc8a0842`, from source
+`c5aadc8a08424ddfc919bc2e4489b79e0f25b076`, with `publishable: true` and content SHA-256
+`8bd6c26c86ffac287797fe4112d86052b71437e8155770a72907a6bb06dc91ff`.
+That automatic DEV publication is a noindex play surface, not human-play proof, release or
+production authority. Production was untouched: its publisher job skipped; no `develop` → `main`
+merge, production version bump, release, manual deploy or direct site write occurred.
 
-### Charter projection: current action, canonical legacy data, honest boundary
+## Current executable Arc 0 truth
 
-`ASC_CHAPTERS_DATA` remains the canonical legacy chapter record, including its unported goals and
-`bankLandfall` banking rule. The app no longer renders that raw legacy record as a current-player
-promise. Its pure `projectV2Charter` / `currentV2Objective` projection uses saved `ascCh`,
-`ascProg` and the derived saved drive stage:
+### Charter: truthful present action, preserved canonical legacy data
 
-- it shows only current writable landfall goals;
-- a fresh stage-0 expedition sees the two Sol landfalls;
-- a non-Sol goal appears only when actual saved drive reach is at least Neighborhood stage;
-- a nonterminal chapter number alone never grants non-Sol reach;
-- completing every visible landfall becomes a boundary, never a fabricated canonical completion,
-  drive, reach tier or unavailable mining/fabrication/bioscan/conquest/breeding/Shipyard task;
-- a chapter can advance only after a new real landfall changes banked progress and canonical
-  completion is backed by the compatible saved stage; and
-- terminal veteran state (`ascCh >= ASC_CHAPTER_COUNT`) has no phantom chapter or objective. The
-  Charters panel instead shows a generic Charter record preserving established progress and reach.
+`ASC_CHAPTERS_DATA`, imported `ascCh` / `ascProg`, and `bankLandfall` compatibility remain intact.
+The player-facing projection is pure and stage-aware: it shows only current writable landfall
+goals, gates non-Sol landfalls on actual saved drive reach, and never treats a nonterminal chapter
+number alone as reach. Completing every visible landfall presents an honest boundary rather than
+fabricating a completion, drive, reach tier, Shipyard or another unported action. Terminal veteran
+state renders a generic Charter record rather than a phantom chapter/objective.
 
-Guide/release wording carries the same development-slice limit. No Charter writer beyond first
-landfall, no unported goal and no new reach reward has been fabricated.
+### CF1: source-derived address and strict raw external planet Search
 
-### Canonical CF1 address foundation: pure proof, source-derived output
+`resolveCF1WorldAddress` re-generates and proves semantic CF1 galaxy → star → planet identity and
+returns generated parent/display metadata. Accepted planet navigation and re-share use that returned
+address; a public presentation tuple cannot become canonical. Raw external CF1 `t:'p'` Search now
+rejects before tolerant decode when its identity is not exact: finite two-decimal coordinates,
+uint32 numeric seeds, and the 8,192-character raw cap are all enforced before navigation or
+persistence. The focused browser proof includes accepted Earth with injected size discarded and
+rejection controls for forged same-reach parents and fractional identity.
 
-`resolveCF1WorldAddress` is a pure resolver, not a blanket ingress or receipt implementation. It
-takes semantic galaxy/star/planet identity and proves the full generated CF1 hierarchy before it
-returns a canonical address. The return contains source-derived galaxy presentation metadata,
-parent cells, star layer, planet ordinal and stable key; no caller may retain presentation values
-from a public share tuple. The focused Earth proof yields generated size 78 rather than injected
-size 3999.
+## Explicitly partial boundary
 
-`jumpToView` calls the resolver for sanitized planet-surface navigation, including planet Atlas
-rows. That gives post-sanitize generator membership/canonical output only; it does not prove that a
-saved/Atlas row was strict before a prior repair/coercion.
+`D-CF1-2` remains **partial**. Saved-view boot and persisted Atlas bytes can be repaired/coerced
+before their later canonical surface navigation; galaxy-only/star-only CF1 Search/Atlas, generated
+descents, and all future ownership/reward/receipt writers require their own strict source-derived
+ingress proof. Do not treat Arc 0 as universal address/receipt closure.
 
-### Strict ingress wired now: raw external planet-share Search only
+## Next implementation order
 
-The raw external CF1 `t:'p'` Search route parses identity before the tolerant legacy
-decode/sanitize flow:
-
-- exact finite two-decimal coordinates: `g[0]`, `g[1]`, `s[0]` and `s[1]`;
-- exact uint32 numeric seeds: `g[6]`, `s[2]` and `p`;
-- an oversized CF1 paste above the 8,192-character raw input cap rejects before base64/JSON
-  allocation; and
-- no numeric-string, fractional, wrapping or truncating correction can become a destination.
-
-Only then does Search call the resolver, then it adopts the generated parent/display values for
-reach, navigation and re-share. Focused browser proof includes valid Earth acceptance with injected
-raw size discarded, a same-reach forged parent rejection with query/focus/nav/card/Atlas/landed/
-custom-name/saved-view unchanged, and malformed fractional raw identity rejection.
-
-## Intentionally open identity/ingress boundary
-
-D-CF1-2 is **partial**. Do not describe this batch as universal canonical-address closure. The
-following remain separate work:
-
-1. saved-view boot and persisted Atlas rows, which may already be repaired/coerced before their
-   later navigation; their surface route currently canonicalizes only after sanitize;
-2. galaxy-only and star-only CF1 Search/Atlas routes;
-3. generated descents; and
-4. all ownership, reward and receipt writers.
-
-No future world-bound writer may rely on public address payload fields; it must retain a
-source-derived canonical address from its own proven ingress route.
-
-## Confirmed frozen checks
-
-- Node syntax check — PASS.
-- `npm run typecheck` — PASS.
-- Full v2 tests — 25 files, 283 passing, 1 skipped.
-- Focused canonical-address controls — 8/8 PASS.
-- Real-browser smoke — PASS.
-- Structured real-browser smoke evidence — PASS, 0 findings (local dirty diagnostic only).
-- Full 12-viewport Glass Matrix — PASS, 57/57 controls, 0 findings/instrument failures/retries
-  (local dirty diagnostic only).
-- Automated persona evidence — PASS for 9 bounded personas; human comprehension, accessibility and
-  physical-device play remain required.
-- Scoped `git diff --check` — PASS.
-
-These are frozen local source/check outcomes, not a substitute for a reviewed PR, required CI
-battery, human play, `develop` push battery or automatic branch-site publication.
-
-## Immediate next work
-
-1. Preserve the exact whole-scope source head through review and its required PR battery; do not
-   prematurely state PR/battery/publisher success.
-2. Prove source-derived identity through saved views, Atlas, galaxy/star routes and generated
-   descents before any ownership/receipt work.
-3. Continue Arc 1 only after that: virtualized Compendium/resource ownership and pure
-   reach-shared ShipVisualState. The later item/economy, engineering, capture, companion, combat,
-   audio, legacy and human-play arcs remain planned, not current capabilities.
+1. Start Arc 1 only from a clean, current agent branch: Compendium virtualization/resource ownership
+   and pure reach-shared `ShipVisualState`.
+2. Extend CF1 identity proof before attaching any world-bound ownership or receipt writer.
+3. Keep item/economy, engineering, capture, companions, combat, audio, legacy and human-play work
+   behind their own real-action and outcome evidence. Do not extend Charter copy beyond live actions.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac`; Arc 0 exact head is
-`da64eb6df4f26b458bd136caff62ecedee702675`, based on
-`f780d15349bc20bc222e920a020c72e3b96cabdd`. It is pushed and represented by draft PR #18;
-no integration is recorded in this handoff.
+**Current side:** OpenAI/Codex on macOS — Arc 0 is merged at
+`c5aadc8a08424ddfc919bc2e4489b79e0f25b076`; local `openai/mac` equals `origin/develop`.
+This terminal-doc change is not yet committed or pushed.
 
-**GitHub step:** draft PR #18 is open from the exact head below into `develop`. Only its unchanged,
-clean, mergeable, terminal-green required-battery head may follow the standing normal-merge
-authority. Do not claim the later `develop` battery or mapped publisher until live evidence exists.
+**GitHub step:** none for Arc 0. Its PR, required `develop` battery and mapped DEV publication
+are terminal-success. Future scoped work still goes through an agent branch → draft PR → `develop`.
 
-**PR details:**
+**PR details:** not needed now. Completed PR #18 used base `develop`, source `openai/mac`, title
+`Make Charter goals actionable and canonicalize planet-share Search`; it included no release or
+production deployment.
 
-- Base branch: `develop`
-- Source branch: `openai/mac`
-- Copy-ready title: `Make Charter goals actionable and canonicalize planet-share Search`
-- Copy-ready description:
+**Other side:** Anthropic/Claude Code on Windows does not need to be opened now. At its next
+coding batch, only from a clean worktree, fetch `origin`, inspect state, then merge current
+`origin/develop` into `anthropic/windows`; never copy files manually.
 
-  > Implements the Arc 0 truth repair for the v2 slice: a stage-aware,
-  > landfall-only Charter projection that preserves canonical legacy data and veteran progress
-  > without promising unported systems; a pure source-derived CF1 galaxy → star → planet resolver;
-  > and strict raw external planet-share Search ingress that rejects forged or malformed public
-  > identity before navigation or persistence and uses generated metadata for accepted routes.
-  > Planet Atlas rows are canonicalized after sanitization, while raw saved/Atlas ingress remains
-  > open; galaxy/star routes, generated descents and future ownership/receipt writers also remain
-  > open. Verification: Node syntax check, typecheck, v2 tests 25 files/283 pass/1 skipped,
-  > focused address controls 8/8, real-browser smoke plus structured smoke evidence PASS,
-  > full 12-viewport Glass Matrix (57/57 controls) PASS, 9-persona automated evidence PASS,
-  > and scoped diff check. This PR includes
-  > no release, `develop` → `main` merge, deployment or publication. After merge, Anthropic/Claude
-  > Code may safely merge the then-current `origin/develop` into a clean agent branch.
+**Release status:** `develop` and the isolated DEV play surface carry the verified Arc 0 build.
+`main` and production remain untouched. No production release, deployment or version bump occurred.
 
-**Other side:** Anthropic/Claude Code on Windows, branch `anthropic/windows`, does not need to be
-opened now and does not have this unmerged work. After a merge into `develop`, at its next coding
-batch it must begin clean, fetch and merge the then-current `origin/develop` into
-`anthropic/windows`. Never copy files manually.
-
-**Release status:** Arc 0 draft PR #18 is open; no integration, required push battery, branch-site
-publication, production version, `develop` → `main` merge, release or deployment is recorded.
-Verify any `develop`, `main` or site state live.
 # HISTORICAL/SUPERSEDED — draft PR #11 pre-merge handoff (2026-08-12)
 
 **Current integration state:** PR #10 merged normally into `develop` at
