@@ -55,9 +55,15 @@ if (process.argv.includes('--selftest')) {
     }
   }
   let nonBrowserRejected = null;
+  const nonBrowserEnvironment = { ...process.env, CF_BROWSER: process.execPath };
+  /* This control deliberately launches Node as a fake browser. Remove only the
+     advisory Codex launch marker so the new macOS browser guard cannot satisfy
+     the test before the fake executable is actually touched. The child remains
+     inside the same OS sandbox; Node itself is permitted there. */
+  delete nonBrowserEnvironment.CODEX_SANDBOX;
   try {
     execFileSync(process.execPath, [__filename, '--json'], {
-      cwd: root, env: { ...process.env, CF_BROWSER: process.execPath },
+      cwd: root, env: nonBrowserEnvironment,
       encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 6000,
     });
   } catch (error) { nonBrowserRejected = error; }
