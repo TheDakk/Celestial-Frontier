@@ -4,16 +4,19 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 overlay matches code and live handoff as of 2026-08-12.**
-> **2026-08-12 branch publication overlay:** `.github/workflows/test.yml` runs the exact
+> **Current port/v2 overlay matches code and live handoff as of 2026-08-13.**
+> **2026-08-13 branch publication overlay:** `.github/workflows/test.yml` runs the exact
 > battery for push events on both `main` and `develop`. Only a successful push battery can
 > trigger `.github/workflows/publish-branch-sites.yml`, which checks out that event's full SHA
 > and invokes `tools/publish-branch-site.js`. `main` targets only
 > `CelestialFrontier/celestialfrontier.github.io`; `develop` targets only
 > `Dev-CelestialFrontier/dev-celestialfrontier.github.io`. Separate write-only deploy keys and
 > repository secrets prevent cross-target access; PR/manual/failed runs have none. Development
-> output is visibly DEV-stamped, noindexed, and `robots.txt`-blocked but remains public and is
-> not human-play or release authority.
+> publication accepts the already-tested exact `port/v2` package, while production preserves
+> the root v1.8.9 HTML. The development package is v2.0, noindexed and `robots.txt`-blocked;
+> runtime and manifest bind the full source commit, exact archive inputs, expected origin,
+> shared version and generated site `version.json`. Visible identity is inside the Guide only,
+> never a corner badge. The public development site is not human-play or release authority.
 >
 > **2026-08-11 v2 integration/hardening overlay:** PR #10 merged the Platinum
 > repair into `develop` at `61cc058`. The current bounded port candidate makes the app
@@ -76,9 +79,11 @@
 > capability table supplies current copy for partial systems and explicit
 > unavailable copy for unported mechanics; dormant `beacon` / `events` remain
 > retained but hidden. `release-content.ts` similarly preserves all 56 legacy
-> releases /398 bullets and keeps an unversioned v2 development draft separate;
-> `V2_CURRENT_RELEASE_VERSION` is `null`, so it cannot trigger an update or imply
-> a bump. First Guide open persists `seenGuide`. Import moved to **Settings →
+> releases /398 bullets and keeps a v2.0 development bulletin separate;
+> `V2_CURRENT_RELEASE_VERSION` is `null`, so that playtest identity cannot trigger
+> an update or imply a production release. The Guide also renders the full source
+> commit supplied by the guarded development package. First Guide open persists
+> `seenGuide`. Import moved to **Settings →
 > Bring expedition** through the same guarded loader and a named, focus-trapped
 > top-layer modal. The live primary is parsed from the whitespace-trimmed JSON
 > candidate, while the best-effort `cf_v2_import_original` keepsake retains the
@@ -92,6 +97,13 @@
 > restoration remain OPEN. Lazy species art uses one shared load Promise
 > and one latest subscriber per view, so prefetch cannot strand Compendium or
 > Planetside and a 1,500-row list cannot retain 1,500 rerender callbacks.
+> Survey presentation filters the legacy `Spectral class` descriptor row. Planet
+> rarity is absent before landing and shown afterward as the plain display-grade
+> name. Internal `.designation`/`spectral()` data remains deterministic for art and
+> parity, and real stellar G/K/M/remnant classification remains ordinary identity.
+> Each panel and Survey card owns exactly one top-right 44px Close action. On desktop,
+> notifications plus Settings and Records share the bottom-right utility edge; balanced
+> padding, separators and borders use the same glass geometry.
 >
 > V2 now applies imported Text size / tone / font preferences, a contrast-safe
 > 0.82..0.98 glass floor, safe-area and measured dock/context/hint offsets,
@@ -858,13 +870,17 @@ etc.) are pure functions of position/seed.
 - **Galaxies:** `galaxiesInCell`, `galaxyProfile`, `galaxyName`, `makeGalaxySprite`,
   `slimGal`. Special objects: quasars, wormholes (`galaxyWormhole`), supernova sites
   (`supernovaSites`), dwarf galaxies, CMB backdrop.
-- **Stars:** `starsInCell`, `starName`, `starClass`/`spectral` (real spectral classes
-  M/K/G/F/A/B/O, plus remnants: white dwarf, neutron star, magnetar, red giant, brown
-  dwarf, black hole). `starDescriptor`, `supernovaDescriptor`, `protostarDescriptor`.
+- **Stars:** `starsInCell`, `starName`, and `starClass` own real astronomical
+  M/K/G/F/A/B/O and remnant identity (white dwarf, neutron star, magnetar, red giant,
+  brown dwarf, black hole). The separate deterministic `spectral()` designation is
+  internal rarity/art data; current v2 does not render it as a **Spectral class** row.
+  `starDescriptor`, `supernovaDescriptor`, `protostarDescriptor` remain pure.
 - **Planets:** `planetParams(seed)` returns a `P` object with `type` (lava/venus/ice/
   ocean/desert/gas/rocky/terran…), `sizeMul`, `hue`, `ring`, `moons`, plus type-specific
-  fields. `planetDescriptor` builds the survey card text (atmosphere, climate, water,
-  gravity, magnetism, seasons, weather — all deterministic helper fns).
+  fields. `planetDescriptor` builds deterministic survey data (atmosphere, climate,
+  water, gravity, magnetism, seasons, weather, and an internal designation). V2's
+  presentation adapter hides the legacy Spectral row and withholds planet rarity until
+  successful landing, then displays only the plain ten-tier name.
 - **Moons:** count **scales with planet size** — `base = round((sizeMul-0.85)*3.1)`, `+4`
   for gas giants, `+1` for ice/ocean/terran, then a size-scaled random bump, **capped at
   16**. Gas giants get ~8–13 (Jupiter-like). Sol giants are hand-set (Jupiter 8, Saturn 7,
@@ -1137,8 +1153,8 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `searchGuide` keep stable ids, search and live cross-links. `fillGuide` /
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
-  supplies the unversioned v2 development entry followed by the 56 legacy
-  releases. `getCurrentV2Release()` returns nothing while
+  supplies the v2.0 development entry followed by the 56 legacy releases. That
+  version is development identity only. `getCurrentV2Release()` returns nothing while
   `V2_CURRENT_RELEASE_VERSION === null`; `showUnseenV2Release()` therefore
   cannot mutate `rnSeen` or open an update until an authorized shipped v2 entry
   exists. This ports the data model, browsing and cumulative-history door; v2

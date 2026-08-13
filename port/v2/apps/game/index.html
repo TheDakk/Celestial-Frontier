@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Celestial Frontier v2 — Phase 4 shell</title>
+  <title>Celestial Frontier v2.0 — Development</title>
   <style>
     /* THE GLASS SYSTEM — POSITION PARITY WITH THE GOLDEN SCREENS
        (port/baseline-v1.8.9/screens/ui-main-*.png): the top is FLOATING
@@ -145,6 +145,14 @@
       width: min(340px, calc(100vw - var(--safe-left) - var(--safe-right) - 24px)); overflow: auto; z-index: 23;
       color: #cfe0f4; padding: 14px; box-sizing: border-box; display: none;
       border-radius: 14px; box-shadow: 0 10px 34px rgba(0,0,0,0.55); }
+    .survey-head { display: grid; grid-template-columns: minmax(0,1fr) 44px; gap: 10px;
+      align-items: start; margin-bottom: 10px; padding-bottom: 10px;
+      border-bottom: 1px solid rgba(88,112,154,.72); }
+    .survey-head h2 { margin: 0 0 2px; font-size: 17px; color: #f4f8ff; }
+    .survey-head [data-sel="sub"] { color: var(--dim); }
+    .survey-row { margin: 0; padding: 7px 0; border-bottom: 1px solid rgba(64,84,119,.42); }
+    .survey-row:last-child { border-bottom: 0; padding-bottom: 0; }
+    .survey-row > span { color: var(--dim); }
     /* On a landed phone the card and living-world strip are both useful:
        stack them in portrait and split the safe rectangle in landscape.
        --planetside-top is measured from the real populated strip, so larger
@@ -214,6 +222,13 @@
        keeps the icon centred without creating a hidden 2px scroll overflow. */
     #dock button .ico { display: block; font-size: 16px; line-height: 42px; }
     #dock button.on { background: linear-gradient(rgba(202,162,79,0.14),rgba(202,162,79,0.14)), #0e1628; color: #ffe3a8; border-color: #caa24f; }
+    #toast { position: fixed; right: calc(var(--safe-right) + 12px);
+      bottom: calc(var(--safe-bottom) + var(--dock-h) + 24px);
+      width: min(360px, calc(100vw - var(--safe-left) - var(--safe-right) - 24px));
+      max-width: 480px; box-sizing: border-box; z-index: 30;
+      color: #cfe0f4; font: 13px/1.5 var(--ui); padding: 11px 14px;
+      border-radius: 12px; box-shadow: 0 8px 26px rgba(0,0,0,.48);
+      opacity: 0; transition: opacity .35s; pointer-events: none; }
     @media (max-width: 900px) {
       /* Eight controls have one explicit phone shape: four columns by two
          rows. A shrink-to-fit flex dock produced three rows at 390px and
@@ -249,24 +264,25 @@
     .panel { position: fixed; top: calc(var(--topbar-h) + 6px); left: calc(var(--safe-left) + 8px);
       bottom: auto; max-height: calc(100dvh - var(--topbar-h) - var(--dock-h) - var(--safe-bottom) - 30px);   /* hug content, clear measured dock */
       width: min(360px, calc(100vw - var(--safe-left) - var(--safe-right) - 16px)); overflow: auto; z-index: 22;
-      /* The extra right gutter belongs to the sticky 44px close control.
-         Panel content can scroll beneath vertically, but never beneath its
-         pointer/focus target horizontally. */
-      border-radius: 14px; padding: 10px 58px 14px 14px; box-sizing: border-box;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.5); }
+      border-radius: 14px; padding: 14px; box-sizing: border-box;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(126,160,210,.08); }
+    .surface-close { display: inline-grid; place-items: center; width: 44px; height: 44px;
+      min-width: 44px; min-height: 44px; box-sizing: border-box; border: 1px solid #405477;
+      border-radius: 11px; background: rgba(9,16,29,.88); color: var(--dim);
+      font: 700 15px/1 var(--ui); cursor: pointer; z-index: 2; }
+    .surface-close:hover { color: #fff; border-color: #7f98c2; background: rgba(28,43,68,.94); }
+    .panel-close { position: sticky; top: 0; float: right; margin: -4px -4px 6px 10px; }
     #guidepanel { z-index: 24; }   /* player-requested help must sit above the z23 survey card */
     #setpanel { z-index: 24; }   /* preferences must remain operable over a populated phone survey card */
     @media (max-width: 900px) {
       body:not(.training) :is(#codexpanel,#recpanel,#atlaspanel,#chpanel) { z-index: 24; }
     }
-    /* Clear the sticky floated close control before panel content begins.
-       Otherwise Settings' first right-aligned control can sit directly under
-       the 44px close target on a short desktop viewport. */
-    .panel h3 { clear: both; margin: 2px 0 10px; font-size: 11.5px; letter-spacing: 0.14em;
+    .panel h3 { min-height: 44px; display: flex; align-items: center; margin: 0 0 10px; font-size: 11.5px; letter-spacing: 0.14em;
       text-transform: uppercase; color: #e8c87a;
       border-bottom: 1px solid rgba(34,48,74,0.6); padding-bottom: 8px; }
-    .panel .row { display: flex; align-items: center; gap: 10px; margin: 8px 0;
-      min-height: 44px; }
+    .panel .row { display: flex; align-items: center; gap: 10px; margin: 0;
+      min-height: 44px; padding: 5px 0; border-bottom: 1px solid rgba(64,84,119,.38); }
+    .panel .row:last-child { border-bottom: 0; }
     .panel .row label { flex: 1; color: var(--dim); }
     .panel .row input[type=range] { flex: 1.4; height: 44px; accent-color: #7ec8f0; }
     .panel .seg { display: flex; gap: 4px; }
@@ -322,6 +338,16 @@
       text-decoration:underline; text-underline-offset:2px; cursor:pointer; }
     .guide-inline-link:focus-visible { border-radius:4px; }
     .guide-release-intro { padding: 8px; border: 1px solid #57709a; border-radius: 10px; margin-bottom: 4px; }
+    .guide-build { display: grid; gap: 2px; margin: 0 0 10px; padding: 9px 10px;
+      border: 1px solid #57709a; border-radius: 10px; background: rgba(31,48,76,.42);
+      color: var(--dim); overflow-wrap: anywhere; }
+    .guide-build b { color: #ffe0a0; }
+    .guide-build [data-sel="guide-build-commit"] { font: 10px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    @media (min-width: 901px) {
+      #setpanel, #recpanel { top: auto; left: auto; right: calc(var(--safe-right) + 12px);
+        bottom: calc(var(--safe-bottom) + var(--dock-h) + 24px);
+        max-height: calc(100dvh - var(--safe-top) - var(--safe-bottom) - var(--dock-h) - 48px); }
+    }
     .sr-only { position: fixed !important; width: 1px !important; height: 1px !important; padding: 0 !important;
       margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important;
       white-space: nowrap !important; border: 0 !important; }

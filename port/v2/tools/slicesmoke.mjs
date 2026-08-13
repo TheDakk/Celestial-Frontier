@@ -336,7 +336,7 @@ try {
   if (!boot.canvas) fails.push('no <canvas> — Pixi never mounted');
   if (!boot.topbar) fails.push('no #topbar — the Phase 4 shell is missing');
   if (!boot.st || boot.st.mode !== 'universe') fails.push('not in universe mode at boot: ' + JSON.stringify(boot.st && boot.st.mode));
-  if (boot.st && boot.st.panelOpen !== null) fails.push('an unversioned v2 development draft opened as a shipped release popup: ' + JSON.stringify(boot.st.panelOpen));
+  if (boot.st && boot.st.panelOpen !== null) fails.push('the v2.0 development identity opened as a shipped production release popup: ' + JSON.stringify(boot.st.panelOpen));
   if (boot.st && boot.st.trail !== 'Cosmos') fails.push('trail at boot is not Cosmos: ' + JSON.stringify(boot.st.trail));
   if (boot.st && !(parseFloat(boot.st.topbarH) > 20)) fails.push('--topbar-h not measured: ' + JSON.stringify(boot.st.topbarH));
   if (boot.st && !boot.st.ctx) fails.push('the caption line is empty at boot');
@@ -546,6 +546,15 @@ try {
   if (!st1.cardOpen || !st1.cardTitle) fails.push('single tap did not open the galaxy survey card: ' + JSON.stringify({ open: st1.cardOpen, title: st1.cardTitle }));
   if (st1.keyboardTarget !== null) fails.push('a pointer survey secretly armed the keyboard target: ' + JSON.stringify(st1.keyboardTarget));
   if (typeof st1.epoch !== 'number') fails.push('COSMIC_EPOCH clock not running: ' + JSON.stringify(st1.epoch));
+  const nonPlanetRarityCheck = `(()=>{ const card=document.getElementById('survey'),rarity=[...card.querySelectorAll('[data-row="Rarity"]')],
+    spectral=card.querySelectorAll('[data-row="Spectral class"]');return {ok:rarity.length===1&&spectral.length===0
+      &&(rarity[0].querySelector('span')?.textContent||'').trim()==='Rarity',rarityCount:rarity.length,
+      spectralCount:spectral.length,label:(rarity[0]?.querySelector('span')?.textContent||'').trim(),text:rarity[0]?.textContent||''};})()`;
+  const galaxyRarity = await evalIn(nonPlanetRarityCheck);
+  if (!galaxyRarity.ok) {
+    fails.push('GALAXY SURVEY: player-facing card did not replace Spectral class with one plain Rarity row: '
+      + JSON.stringify(galaxyRarity));
+  }
   const travelCheck = `(()=>{ const button=document.querySelector('#survey [data-act=travel]');
     if(!button) return {ok:false,why:'missing'}; const b=button.getBoundingClientRect();
     const hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
@@ -624,6 +633,11 @@ try {
     || !solSurvey.travel.ok || solSurvey.travel.label !== 'Enter system') {
     fails.push('BASE STAR SURVEY-FIRST broken — one Sol tap teleported or lacked its action: ' + JSON.stringify(solSurvey));
   }
+  const starRarity = await evalIn(nonPlanetRarityCheck);
+  if (!starRarity.ok) {
+    fails.push('STAR SURVEY: player-facing card did not replace Spectral class with one plain Rarity row: '
+      + JSON.stringify(starRarity));
+  }
   if (solSurvey.travel.ok) {
     await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: solSurvey.travel.x, y: solSurvey.travel.y, button: 'left', clickCount: 1 }, sess);
     await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: solSurvey.travel.x, y: solSurvey.travel.y, button: 'left', clickCount: 1 }, sess);
@@ -701,6 +715,20 @@ try {
     || !/mono/i.test(law.pref.font)) {
     fails.push('Settings accessibility preferences did not apply to rendered UI and save state: ' + JSON.stringify(law.pref));
   }
+  const registeredCloseCheck = `(()=>{ const ids=['setpanel','guidepanel','codexpanel','recpanel','atlaspanel','chpanel'];
+    const rows=ids.map(id=>({id,count:document.getElementById(id)?.querySelectorAll(':scope > [data-pnx]').length??-1}));
+    return {ok:rows.every(row=>row.count===1),rows};})()`;
+  const registeredCloses = await evalIn(registeredCloseCheck);
+  if (!registeredCloses.ok) {
+    fails.push('PANEL CLOSE INVENTORY: every registered panel must own exactly one direct close: '
+      + JSON.stringify(registeredCloses));
+  }
+  const duplicatePanelCloseCtl = await evalIn(`(()=>{ const panel=document.getElementById('setpanel'),extra=document.createElement('button');
+    extra.dataset.pnx='duplicate';extra.textContent='✕';panel.appendChild(extra);const result=${registeredCloseCheck};extra.remove();return result;})()`);
+  if (duplicatePanelCloseCtl.ok || duplicatePanelCloseCtl.rows.find((row)=>row.id==='setpanel')?.count !== 2) {
+    fails.push('PANEL CLOSE INVENTORY CONTROL FAILED — injected duplicate registered close stayed green: '
+      + JSON.stringify(duplicatePanelCloseCtl));
+  }
   const panelSwitchFocus = await evalIn(`(()=>{ const sets=document.getElementById('docksets'),guide=document.getElementById('dockguide');
     sets.focus(); sets.click(); guide.focus(); guide.click();
     const switched={panel:window.__CF_SLICE__.api.state().panelOpen,
@@ -723,15 +751,20 @@ try {
      history. Import remains reachable through Settings. */
   const guideCheck = `(()=>{ const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel');
     const categories=panel?[...panel.querySelectorAll('[data-guide-category]')]:[];
+    const builds=[...document.querySelectorAll('[data-sel="guide-build"]')];
     const text=panel?.textContent||'';
     return { open:S.api.state().panelOpen==='guide'&&!!panel&&panel.style.display!=='none',
       categoryCount:categories.length,categoryIds:categories.map((row)=>row.getAttribute('data-guide-category')),
       search:!!panel?.querySelector('#guidesearch'),releases:!!panel?.querySelector('[data-guide-releases]'),
+      buildCount:builds.length,buildInsideGuide:builds.length===1&&!!panel?.contains(builds[0]),
+      buildText:(builds[0]?.textContent||'').trim(),releasePending:S.api.state().releasePending,
       seen:S.api.state().seenGuide,text,stale:/double[- ]tap|tap twice|travels there instantly/i.test(text) }; })()`;
   await evalIn(`(()=>{ const button=document.getElementById('dockguide'); button.focus(); button.click(); return true; })()`);
   const guide = await evalIn(guideCheck);
   if (!guide.open || guide.categoryCount !== 9 || new Set(guide.categoryIds).size !== 9
-    || !guide.search || !guide.releases || !guide.seen || guide.stale) {
+    || !guide.search || !guide.releases || guide.buildCount !== 1 || !guide.buildInsideGuide
+    || !/Celestial Frontier v2\.0 development/i.test(guide.buildText)
+    || guide.releasePending !== null || !guide.seen || guide.stale) {
     fails.push('GUIDE canonical category/search/release surface is incomplete: ' + JSON.stringify(guide));
   }
   const shotGuide = await send('Page.captureScreenshot', { format: 'png' }, sess);
@@ -800,7 +833,8 @@ try {
   const releaseGuide = await evalIn(`(()=>{ document.querySelector('#guidepanel [data-guide-releases]')?.click();
     const rows=[...document.querySelectorAll('#guidepanel [data-release-index]')],first=rows[0],second=rows[1];
     return {count:rows.length,first:first?.textContent||'',second:second?.textContent||''}; })()`);
-  if (releaseGuide.count !== 57 || !/UNRELEASED DEVELOPMENT/.test(releaseGuide.first) || !/v1\.8\.9/.test(releaseGuide.second)) {
+  if (releaseGuide.count !== 57 || !/v2\.0/.test(releaseGuide.first)
+    || !/UNRELEASED DEVELOPMENT/.test(releaseGuide.first) || !/v1\.8\.9/.test(releaseGuide.second)) {
     fails.push('GUIDE release history did not preserve draft/legacy separation and full inventory: ' + JSON.stringify(releaseGuide));
   }
   const guideFocusBack = await evalIn(`(()=>{ document.querySelector('#guidepanel [data-pnx]').click();
@@ -890,12 +924,67 @@ try {
   if (!surveyed.ok || !surveyed.visible) fails.push('survey card did not open: ' + JSON.stringify(surveyed));
   else {
     if (surveyed.title !== 'Earth') fails.push('landed planet 2 of Sol but the card says: ' + JSON.stringify(surveyed.title));
-    for (const want of ['Spectral class', 'Life', 'Civilization']) {
+    for (const want of ['Life', 'Civilization']) {
       if (!surveyed.rows.includes(want)) fails.push('survey card missing the "' + want + '" row (rows: ' + surveyed.rows.join(', ') + ')');
+    }
+    /* Player presentation only: descriptor/parity science may retain its
+       deterministic spectral vocabulary internally, but a planet card must
+       neither expose that legacy row nor disclose Rarity before landfall. */
+    if (surveyed.rows.includes('Spectral class') || surveyed.rows.includes('Rarity')) {
+      fails.push('pre-land planet survey exposed internal spectral science or premature Rarity: ' + JSON.stringify(surveyed.rows));
     }
     if (!/^CF1-/.test(surveyed.planetCode || '') || surveyed.planetCode === surveyed.starCode) {
       fails.push('pre-landing planet Share did not bind a distinct planet address: ' + JSON.stringify([surveyed.starCode, surveyed.planetCode]));
     }
+  }
+  const surveyCloseCheck = `(()=>{ const card=document.getElementById('survey'),closes=card?[...card.querySelectorAll('[data-survey-close]')]:[],
+    close=closes[0]||null,foreign=card?[...card.querySelectorAll('[data-pnx]')]:[],c=card?.getBoundingClientRect(),r=close?.getBoundingClientRect(),
+    style=close?getComputedStyle(close):null,hit=r?document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2):null;
+    const visible=!!r&&r.width>=44&&r.height>=44&&style?.display!=='none'&&style?.visibility!=='hidden';
+    const inside=!!c&&!!r&&r.left>=c.left-1&&r.top>=c.top-1&&r.right<=c.right+1&&r.bottom<=c.bottom+1;
+    const rightGap=c&&r?c.right-r.right:null,scrollbarGutter=card?Math.max(0,card.offsetWidth-card.clientWidth):0,
+      contentRightGap=rightGap===null?null:rightGap-scrollbarGutter,topGap=c&&r?r.top-c.top:null;
+    const topRight=inside&&contentRightGap>=-1&&contentRightGap<=20&&topGap>=-1&&topGap<=20;
+    const owned=!!close&&!!hit&&(hit===close||close.contains(hit));
+    return {ok:!!card&&closes.length===1&&foreign.length===0&&visible&&topRight&&owned,count:closes.length,
+      foreignCount:foreign.length,visible,inside,topRight,owned,rightGap,scrollbarGutter,contentRightGap,topGap,
+      centre:r?{x:(r.left+r.right)/2,y:(r.top+r.bottom)/2}:null,hit:hit?.hasAttribute?.('data-survey-close')?'survey-close':hit?.tagName||null}; })()`;
+  const surveyClose = await evalIn(surveyCloseCheck);
+  if (!surveyClose.ok) {
+    fails.push('SURVEY CLOSE: Earth card does not own exactly one reachable top-right close: ' + JSON.stringify(surveyClose));
+  }
+  /* Recreate the reported legacy failure, including its detached upper-left
+     generic X. The same predicate must reject both a second close system and
+     a sole survey close moved out of its card corner. */
+  const duplicateSurveyCloseCtl = await evalIn(`(()=>{ const card=document.getElementById('survey'),extra=document.createElement('button');
+    extra.dataset.pnx='legacy-survey';extra.className='surface-close panel-close';extra.textContent='✕';
+    extra.style.cssText='position:fixed;left:0;top:0;right:auto;bottom:auto';card.appendChild(extra);
+    const result=${surveyCloseCheck};extra.remove();return result;})()`);
+  if (duplicateSurveyCloseCtl.ok || duplicateSurveyCloseCtl.foreignCount !== 1) {
+    fails.push('SURVEY CLOSE CONTROL FAILED — injected generic duplicate/upper-left X stayed green: '
+      + JSON.stringify(duplicateSurveyCloseCtl));
+  }
+  const misplacedSurveyCloseCtl = await evalIn(`(()=>{ const close=document.querySelector('#survey [data-survey-close]'),prior=close?.getAttribute('style');
+    if(close){close.style.setProperty('position','fixed','important');close.style.setProperty('left','0','important');
+      close.style.setProperty('top','0','important');close.style.setProperty('right','auto','important');close.style.setProperty('margin','0','important');}
+    const result=${surveyCloseCheck};if(close){if(prior===null)close.removeAttribute('style');else close.setAttribute('style',prior);}return result;})()`);
+  if (misplacedSurveyCloseCtl.ok || misplacedSurveyCloseCtl.topRight) {
+    fails.push('SURVEY CLOSE CONTROL FAILED — injected upper-left survey close stayed green: '
+      + JSON.stringify(misplacedSurveyCloseCtl));
+  }
+  if (surveyClose.ok && surveyClose.centre) {
+    await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: surveyClose.centre.x, y: surveyClose.centre.y, button: 'left', clickCount: 1 }, sess);
+    await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: surveyClose.centre.x, y: surveyClose.centre.y, button: 'left', clickCount: 1 }, sess);
+    await sleep(80);
+    const closed = await evalIn(`({closed:!window.__CF_SLICE__.api.state().cardOpen,canvasFocused:document.activeElement===document.querySelector('canvas')})`);
+    if (!closed.closed || !closed.canvasFocused) fails.push('SURVEY CLOSE: real pointer press did not close the card and restore its canvas opener: ' + JSON.stringify(closed));
+    await evalIn(`document.getElementById('docksurvey')?.click()`);
+    await waitDesktopValue('Earth survey reopened from dock after close outcome', `window.__CF_SLICE__.api.state().cardOpen`);
+    await evalIn(`document.querySelector('#survey [data-survey-close]')?.click()`);
+    const dockRestore = await evalIn(`({closed:!window.__CF_SLICE__.api.state().cardOpen,dockFocused:document.activeElement===document.getElementById('docksurvey')})`);
+    if (!dockRestore.closed || !dockRestore.dockFocused) fails.push('SURVEY CLOSE: dock reopen did not return focus to the Survey opener: ' + JSON.stringify(dockRestore));
+    await evalIn(`document.getElementById('docksurvey')?.click()`);
+    await waitDesktopValue('Earth survey reopened from dock after focus outcome', `window.__CF_SLICE__.api.state().cardOpen`);
   }
   const planetShareCode = surveyed.planetCode;
   /* Share feedback is an outcome, not a swallowed Clipboard promise. Denial
@@ -948,6 +1037,16 @@ try {
   }
   await evalIn(`window.__CF_SLICE__.api.landHere()`);
   await sleep(300);
+  const landedSurvey = await evalIn(`(()=>{ const S=window.__CF_SLICE__,card=document.getElementById('survey'),
+    rarity=[...card.querySelectorAll('[data-row="Rarity"]')],spectral=card.querySelectorAll('[data-row="Spectral class"]');
+    return {mode:S.api.state().mode,landed:S.api.state().save.landed.includes(133),rarityCount:rarity.length,
+      spectralCount:spectral.length,label:(rarity[0]?.querySelector('span')?.textContent||'').trim(),
+      value:(rarity[0]?.textContent||'').replace(/^\\s*Rarity\\s*/,'').trim()};})()`);
+  if (landedSurvey.mode !== 'surface' || !landedSurvey.landed || landedSurvey.rarityCount !== 1
+    || landedSurvey.spectralCount !== 0 || landedSurvey.label !== 'Rarity' || !landedSurvey.value) {
+    fails.push('LANDED PLANET SURVEY: Earth did not disclose exactly one plain Rarity row after landfall: '
+      + JSON.stringify(landedSurvey));
+  }
   /* THE LIVING PLANETSIDE: Earth's ground survey shows its real roster,
      each specimen wearing an hdart portrait */
   const side = await evalIn(`(()=>{ const el=document.getElementById('planetside');
