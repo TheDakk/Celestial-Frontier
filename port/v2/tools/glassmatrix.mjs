@@ -2336,6 +2336,57 @@ function installAuditHarness() {
       animationMs: round(animationMs), transitionMs: round(transitionMs),
     };
   };
+  const closeIntegrityOutcome = (rootSelector, closeSelector, forbiddenSelector = null, requireDirect = false) => {
+    const root = document.querySelector(rootSelector);
+    const closes = root ? [...root.querySelectorAll(closeSelector)] : [];
+    const forbidden = root && forbiddenSelector ? [...root.querySelectorAll(forbiddenSelector)] : [];
+    const close = closes[0] || null;
+    const a = root?.getBoundingClientRect(), b = close?.getBoundingClientRect();
+    const hit = b ? document.elementFromPoint((b.left + b.right) / 2, (b.top + b.bottom) / 2) : null;
+    const inside = !!a && !!b && b.left >= a.left - 1 && b.top >= a.top - 1
+      && b.right <= a.right + 1 && b.bottom <= a.bottom + 1;
+    const rightGap = a && b ? a.right - b.right : null;
+    const scrollbarGutter = root instanceof HTMLElement ? Math.max(0, root.offsetWidth - root.clientWidth) : 0;
+    const contentRightGap = rightGap === null ? null : rightGap - scrollbarGutter;
+    const topGap = a && b ? b.top - a.top : null;
+    const topRight = inside && contentRightGap >= -1 && contentRightGap <= 20 && topGap >= -1 && topGap <= 20;
+    const centreOwned = !!close && !!hit && (hit === close || close.contains(hit));
+    const direct = !!close && close.parentElement === root;
+    return {
+      ok: !!root && visible(root) && closes.length === 1 && forbidden.length === 0
+        && !!close && visible(close) && topRight && centreOwned && (!requireDirect || direct),
+      closeCount: closes.length, forbiddenCount: forbidden.length, direct, inside, topRight,
+      rightGap: rightGap === null ? null : round(rightGap), scrollbarGutter: round(scrollbarGutter),
+      contentRightGap: contentRightGap === null ? null : round(contentRightGap), topGap: topGap === null ? null : round(topGap),
+      centreOwned, hit: hit ? selectorName(hit) : null,
+      root: a ? [round(a.left), round(a.top), round(a.right), round(a.bottom)] : null,
+      close: b ? [round(b.left), round(b.top), round(b.right), round(b.bottom)] : null,
+    };
+  };
+  const rightBottomAnchorOutcome = (selector, dockSelector = '#dock') => {
+    const el = document.querySelector(selector), dock = document.querySelector(dockSelector);
+    const a = el?.getBoundingClientRect(), d = dock?.getBoundingClientRect();
+    const root = getComputedStyle(document.documentElement);
+    const safeRight = parseFloat(root.getPropertyValue('--safe-right')) || 0;
+    const safeBottom = parseFloat(root.getPropertyValue('--safe-bottom')) || 0;
+    const dockHeight = parseFloat(root.getPropertyValue('--dock-h')) || d?.height || 0;
+    const rightGap = a ? innerWidth - a.right : null;
+    const bottomGap = a ? innerHeight - a.bottom : null;
+    const expectedRight = safeRight + 12;
+    const expectedBottom = safeBottom + dockHeight + 24;
+    const dockClearance = a && d ? d.top - a.bottom : null;
+    return {
+      ok: innerWidth > 900 && !!el && visible(el) && !!dock && visible(dock)
+        && rightGap !== null && Math.abs(rightGap - expectedRight) <= 2
+        && bottomGap !== null && Math.abs(bottomGap - expectedBottom) <= 2
+        && dockClearance !== null && dockClearance >= 8,
+      rightGap: rightGap === null ? null : round(rightGap), expectedRight: round(expectedRight),
+      bottomGap: bottomGap === null ? null : round(bottomGap), expectedBottom: round(expectedBottom),
+      dockClearance: dockClearance === null ? null : round(dockClearance),
+      rect: a ? [round(a.left), round(a.top), round(a.right), round(a.bottom)] : null,
+      dock: d ? [round(d.left), round(d.top), round(d.right), round(d.bottom)] : null,
+    };
+  };
   const panelCloseOutcome = (panelSelector, closeSelector, openerSelector, preservedSelector) => {
     const panel = document.querySelector(panelSelector), close = panel?.querySelector(closeSelector) || null;
     const opener = document.querySelector(openerSelector), preserved = document.querySelector(preservedSelector);
@@ -2803,7 +2854,7 @@ function installAuditHarness() {
     document.body.classList.toggle('motion-reduced', motionPositive.classReduced);
     const panelOpener = document.createElement('button'); panelOpener.id = 'cf-control-panel-opener'; panelOpener.textContent = 'open';
     const panel = document.createElement('section'); panel.id = 'cf-control-panel'; panel.style.cssText = 'position:fixed;left:200px;top:8px;width:100px;height:80px;z-index:1001;background:#000';
-    panel.innerHTML = '<button data-control-close style="width:44px;height:44px">close</button>';
+    panel.innerHTML = '<button data-control-close style="position:absolute;right:0;top:0;width:44px;height:44px">close</button>';
     const preserved = document.createElement('div'); preserved.id = 'cf-control-preserved'; preserved.textContent = 'preserved'; preserved.style.cssText = 'position:fixed;left:200px;top:100px;width:80px;height:30px;z-index:1000';
     document.body.append(panelOpener, panel, preserved);
     panel.querySelector('[data-control-close]').addEventListener('click', () => { panel.style.display = 'none'; panelOpener.focus(); });
@@ -2814,10 +2865,22 @@ function installAuditHarness() {
     openFocusResult = openFocusOutcome('#cf-control-panel', '[data-control-close]');
     if (openFocusResult.ok) failures.push('panel open-focus omission stayed green');
     panel.querySelector('[data-control-close]').focus();
+    const close = panel.querySelector('[data-control-close]');
+    let closeIntegrity = closeIntegrityOutcome('#cf-control-panel', '[data-control-close]', null, true);
+    if (!closeIntegrity.ok) failures.push('panel close-integrity positive control failed: ' + JSON.stringify(closeIntegrity));
+    const duplicateClose = close.cloneNode(true); duplicateClose.removeAttribute('data-control-close'); duplicateClose.setAttribute('data-control-close-duplicate', ''); panel.appendChild(duplicateClose);
+    closeIntegrity = closeIntegrityOutcome('#cf-control-panel', '[data-control-close],[data-control-close-duplicate]', null, true);
+    if (closeIntegrity.ok || closeIntegrity.closeCount !== 2) failures.push('duplicate panel-close injection stayed green: ' + JSON.stringify(closeIntegrity));
+    duplicateClose.remove();
+    close.style.left = '0'; close.style.right = 'auto';
+    closeIntegrity = closeIntegrityOutcome('#cf-control-panel', '[data-control-close]', null, true);
+    if (closeIntegrity.ok || closeIntegrity.topRight) failures.push('upper-left panel-close injection stayed green: ' + JSON.stringify(closeIntegrity));
+    close.style.left = ''; close.style.right = '0px';
     let panelResult = panelCloseOutcome('#cf-control-panel', '[data-control-close]', '#cf-control-panel-opener', '#cf-control-preserved');
     if (!panelResult.ok) failures.push('panel centre-close positive control failed: ' + JSON.stringify(panelResult));
     panel.style.display = 'block';
-    const panelShield = document.createElement('div'); panelShield.id = 'cf-control-panel-shield'; panelShield.style.cssText = 'position:fixed;left:200px;top:8px;width:44px;height:44px;z-index:1002'; document.body.appendChild(panelShield);
+    const closeRect = close.getBoundingClientRect();
+    const panelShield = document.createElement('div'); panelShield.id = 'cf-control-panel-shield'; panelShield.style.cssText = `position:fixed;left:${closeRect.left}px;top:${closeRect.top}px;width:44px;height:44px;z-index:1002`; document.body.appendChild(panelShield);
     panelResult = panelCloseOutcome('#cf-control-panel', '[data-control-close]', '#cf-control-panel-opener', '#cf-control-preserved');
     if (panelResult.ok) failures.push('panel centre blocker stayed green');
     panelOpener.remove(); panel.remove(); preserved.remove(); panelShield.remove();
@@ -2849,7 +2912,8 @@ function installAuditHarness() {
   };
   window.__CF_GLASS_AUDIT__ = Object.freeze({
     audit, canvasIssues, safeProbe, viewportIssues, preferenceOutcome, choiceOutcome,
-    navigationOutcome, openFocusOutcome, forcedColorsOutcome, motionPolicyOutcome, panelCloseOutcome, openerOutcome, pressedOutcome,
+    navigationOutcome, openFocusOutcome, forcedColorsOutcome, motionPolicyOutcome, closeIntegrityOutcome,
+    rightBottomAnchorOutcome, panelCloseOutcome, openerOutcome, pressedOutcome,
     sceneSnapshot, sceneDelta, selftest,
   });
 }
@@ -2996,6 +3060,8 @@ async function main() {
   );
   let controlsRun = false, hpControlRun = false, settingsWidthControlRun = false,
     planetsideControlRun = false, panelPlanetsideControlRun = false,
+    closeIntegrityControlRun = false, toastAnchorControlRun = false,
+    settingsAnchorControlRun = false, recordsAnchorObserved = false,
     chromeYieldControlRun = false, chromeRestoreControlRun = false, chromeLandscapeControlRun = false,
     objectiveYieldControlRun = false, topChromeControlRun = false, portraitBandControlRun = false,
     portraitFallbackControlRun = false,
@@ -4008,6 +4074,25 @@ async function main() {
           ...common, surface: 'toast', root: '#toast', textMin: 20, fitSelectors: ['#toast'],
           interactiveRoots: [], contrastSelectors: ['#toast'], overlapPairs: [['#toast', '#dock']],
         }));
+        if (vp.width > 900) {
+          addOutcome(vp.label, 'toast', 'DESKTOP_UTILITY_ANCHOR', '#toast',
+            await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast')`),
+            'desktop notifications share the measured bottom-right utility edge above the dock');
+          if (!toastAnchorControlRun) {
+            toastAnchorControlRun = true;
+            const leftToastControl = await evalIn(`(()=>{ const toast=document.getElementById('toast'),prior=toast.getAttribute('style');
+              toast.style.setProperty('left','12px','important');toast.style.setProperty('right','auto','important');
+              const result=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast');
+              if(prior===null)toast.removeAttribute('style');else toast.setAttribute('style',prior);return result;})()`);
+            if (leftToastControl.ok || !Array.isArray(leftToastControl.rect)
+              || Math.abs(leftToastControl.rect[0] - 12) > 2) {
+              instrumentFailures.push(`${vp.label}: injected left-anchored toast stayed on the bottom-right utility edge (${JSON.stringify(leftToastControl)})`);
+            }
+            /* The standing viewport-fit control now also owns the reported
+               side-anchor regression; keep the sealed 57-name inventory. */
+            recordControls('viewport-fit');
+          }
+        }
 
         /* Populate the real Earth survey and Planetside strip through the
            same public browser-audit API used by the standing smoke journey. */
@@ -4033,9 +4118,41 @@ async function main() {
         addOutcome(vp.label, 'survey', 'SURVEY_DISCLOSURE_STATE', '#docksurvey',
           await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome('#docksurvey','#survey',true)`),
           'aria-controls names the real survey and aria-expanded is true while it is open');
+        addOutcome(vp.label, 'survey', 'SURVEY_CLOSE_INTEGRITY', '#survey [data-survey-close]',
+          await evalIn(`window.__CF_GLASS_AUDIT__.closeIntegrityOutcome('#survey','[data-survey-close]','[data-pnx]')`),
+          'the survey owns exactly one reachable top-right close and no generic panel close');
+        const surveyDisclosure = await evalIn(`(()=>{ const S=window.__CF_SLICE__,card=document.getElementById('survey'),
+          landed=S.api.state().save.landed.includes(133),rarity=[...card.querySelectorAll('[data-row="Rarity"]')],
+          spectral=card.querySelectorAll('[data-row="Spectral class"]'),label=(rarity[0]?.querySelector('span')?.textContent||'').trim();
+          return {ok:spectral.length===0&&rarity.length===(landed?1:0)&&(!landed||label==='Rarity'),landed,
+            rarityCount:rarity.length,spectralCount:spectral.length,label};})()`);
+        addOutcome(vp.label, 'survey', 'SURVEY_RARITY_DISCLOSURE', '#survey [data-row]', surveyDisclosure,
+          'player-facing survey hides internal Spectral class and shows one plain Rarity row only after planetfall');
+        if (!closeIntegrityControlRun) {
+          closeIntegrityControlRun = true;
+          const duplicateCloseControl = await evalIn(`(()=>{ const card=document.getElementById('survey'),extra=document.createElement('button');
+            extra.dataset.pnx='legacy-survey';extra.className='surface-close panel-close';extra.textContent='✕';
+            extra.style.cssText='position:fixed;left:0;top:0;right:auto;bottom:auto';card.appendChild(extra);
+            const result=window.__CF_GLASS_AUDIT__.closeIntegrityOutcome('#survey','[data-survey-close]','[data-pnx]');extra.remove();return result;})()`);
+          if (duplicateCloseControl.ok || duplicateCloseControl.forbiddenCount !== 1) {
+            instrumentFailures.push(`${vp.label}: injected generic duplicate/upper-left survey close stayed green (${JSON.stringify(duplicateCloseControl)})`);
+          }
+          const misplacedCloseControl = await evalIn(`(()=>{ const close=document.querySelector('#survey [data-survey-close]'),prior=close.getAttribute('style');
+            close.style.setProperty('position','fixed','important');close.style.setProperty('left','0','important');
+            close.style.setProperty('top','0','important');close.style.setProperty('right','auto','important');close.style.setProperty('margin','0','important');
+            const result=window.__CF_GLASS_AUDIT__.closeIntegrityOutcome('#survey','[data-survey-close]','[data-pnx]');
+            if(prior===null)close.removeAttribute('style');else close.setAttribute('style',prior);return result;})()`);
+          if (misplacedCloseControl.ok || misplacedCloseControl.topRight) {
+            instrumentFailures.push(`${vp.label}: injected upper-left survey close stayed green (${JSON.stringify(misplacedCloseControl)})`);
+          }
+          /* Extend the existing close control rather than growing the sealed
+             57-name inventory: it now rejects duplicates and bad corners. */
+          recordControls('ordinary-panel-centre-close');
+        }
         add(vp.label, 'survey', await audit({
           ...common, surface: 'survey', root: '#survey', textMin: 80,
-          required: [{ selector: '[data-sel=title]', min: 1, textMin: 5 }, { selector: '[data-row]', min: 3 }, { selector: '[data-act=landcta]', min: 1 }],
+          required: [{ selector: '[data-sel=title]', min: 1, textMin: 5 }, { selector: '[data-row]', min: 3 },
+            { selector: '[data-survey-close]', min: 1 }, { selector: '[data-act=landcta]', min: 1 }],
           interactiveRoots: ['#survey'], contrastSelectors: ['#survey'], overlapPairs: [['#survey', '#dock']],
         }));
         await evalIn('window.__CF_SLICE__.api.landHere()');
@@ -4112,6 +4229,15 @@ async function main() {
           addOutcome(vp.label, composition, 'PANEL_DISCLOSURE_STATE', opener,
             await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome(${JSON.stringify(opener)},${JSON.stringify(item.panel)},true)`),
             'visible opener names its panel and exposes expanded=true while the panel is open');
+          addOutcome(vp.label, composition, 'PANEL_CLOSE_INTEGRITY', `${item.panel} [data-pnx]`,
+            await evalIn(`window.__CF_GLASS_AUDIT__.closeIntegrityOutcome(${JSON.stringify(item.panel)},'[data-pnx]','[data-survey-close]',true)`),
+            'the registered panel owns exactly one direct, reachable top-right close');
+          if (vp.width > 900 && item.id === 'rec') {
+            recordsAnchorObserved = true;
+            addOutcome(vp.label, composition, 'DESKTOP_UTILITY_PANEL_ANCHOR', item.panel,
+              await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome(${JSON.stringify(item.panel)})`),
+              'desktop Records shares the measured bottom-right utility edge above the dock');
+          }
           add(vp.label, composition, await audit({
             ...common, surface: composition, root: item.panel, textMin: item.textMin,
             required: [{ selector: '[data-pnx]', min: 1 }, { selector: item.required, min: item.min }],
@@ -4319,9 +4445,20 @@ async function main() {
         addOutcome(vp.label, 'guide', 'PANEL_DISCLOSURE_STATE', '#dockguide',
           await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome('#dockguide','#guidepanel',true)`),
           'Guide opener names its panel and exposes expanded=true while open');
+        addOutcome(vp.label, 'guide', 'PANEL_CLOSE_INTEGRITY', '#guidepanel [data-pnx]',
+          await evalIn(`window.__CF_GLASS_AUDIT__.closeIntegrityOutcome('#guidepanel','[data-pnx]','[data-survey-close]',true)`),
+          'Guide owns exactly one direct, reachable top-right close');
+        const guideBuildIdentity = await evalIn(`(()=>{ const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel'),
+          builds=[...document.querySelectorAll('[data-sel="guide-build"]')],text=(builds[0]?.textContent||'').trim();
+          return {ok:builds.length===1&&panel.contains(builds[0])&&/Celestial Frontier v2\\.0 development/i.test(text)
+            &&S.api.state().releasePending===null,count:builds.length,inside:builds.length===1&&panel.contains(builds[0]),
+            text,releasePending:S.api.state().releasePending};})()`);
+        addOutcome(vp.label, 'guide', 'GUIDE_DEVELOPMENT_IDENTITY', '#guidepanel [data-sel="guide-build"]', guideBuildIdentity,
+          'one Guide-only v2.0 development identity is visible without a pending shipped-release popup');
         add(vp.label, 'guide', await audit({
           ...common, surface: 'guide', root: '#guidepanel', textMin: 200,
-          required: [{ selector: '[data-pnx]', min: 1 }, { selector: '#guidesearch', min: 1 }, { selector: '[data-guide-releases]', min: 1 }, { selector: '.guide-category', min: 9, textMin: 180 }],
+          required: [{ selector: '[data-pnx]', min: 1 }, { selector: '[data-sel="guide-build"]', min: 1, textMin: 25 },
+            { selector: '#guidesearch', min: 1 }, { selector: '[data-guide-releases]', min: 1 }, { selector: '.guide-category', min: 9, textMin: 180 }],
           interactiveRoots: ['#guidepanel'], contrastSelectors: ['#guidepanel'], placeholderSelectors: ['#guidesearch'], focusSelectors: ['#guidepanel [data-pnx]'],
           overlapPairs: [['#guidepanel', '#dock']],
         }));
@@ -4414,6 +4551,10 @@ async function main() {
           'Guide cross-link renders its destination and places focus on the destination Back control');
         await evalIn(`document.querySelector('#guidepanel .guide-tools [data-guide-releases]')?.click()`);
         await waitFor('release archive', `document.querySelectorAll('#guidepanel [data-release-index]').length>=50`);
+        const developmentArchive = await evalIn(`(()=>{ const first=document.querySelector('#guidepanel [data-release-index="0"]'),text=first?.textContent||'';
+          return {ok:!!first&&/v2\\.0/.test(text)&&/UNRELEASED DEVELOPMENT/.test(text),text};})()`);
+        addOutcome(vp.label, 'release-history', 'GUIDE_DEVELOPMENT_RELEASE_IDENTITY', '#guidepanel [data-release-index="0"]', developmentArchive,
+          'the draft archive row displays v2.0 while remaining explicitly unreleased development copy');
         addOutcome(vp.label, 'release-history', 'GUIDE_NAVIGATION_FOCUS_OUTCOME', '#guidepanel [data-guide-home]',
           await evalIn(`window.__CF_GLASS_AUDIT__.navigationOutcome('#guidepanel','[data-guide-home]','[data-release-index]',600)`),
           'release navigation renders the populated archive and places focus on the logical Guide Back control');
@@ -4445,6 +4586,26 @@ async function main() {
         addOutcome(vp.label, 'settings', 'PANEL_DISCLOSURE_STATE', '#docksets',
           await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome('#docksets','#setpanel',true)`),
           'Settings opener names its panel and exposes expanded=true while open');
+        addOutcome(vp.label, 'settings', 'PANEL_CLOSE_INTEGRITY', '#setpanel [data-pnx]',
+          await evalIn(`window.__CF_GLASS_AUDIT__.closeIntegrityOutcome('#setpanel','[data-pnx]','[data-survey-close]',true)`),
+          'Settings owns exactly one direct, reachable top-right close');
+        if (vp.width > 900) {
+          addOutcome(vp.label, 'settings', 'DESKTOP_UTILITY_PANEL_ANCHOR', '#setpanel',
+            await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#setpanel')`),
+            'desktop Settings shares the measured bottom-right utility edge above the dock');
+          if (!settingsAnchorControlRun) {
+            settingsAnchorControlRun = true;
+            const leftSettingsControl = await evalIn(`(()=>{ const panel=document.getElementById('setpanel'),prior=panel.getAttribute('style');
+              panel.style.setProperty('left','12px','important');panel.style.setProperty('right','auto','important');
+              const result=window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#setpanel');
+              if(prior===null)panel.removeAttribute('style');else panel.setAttribute('style',prior);return result;})()`);
+            if (leftSettingsControl.ok || !Array.isArray(leftSettingsControl.rect)
+              || Math.abs(leftSettingsControl.rect[0] - 12) > 2) {
+              instrumentFailures.push(`${vp.label}: injected left-anchored Settings did not turn the bottom-right anchor outcome red (${JSON.stringify(leftSettingsControl)})`);
+            }
+            recordControls('viewport-fit');
+          }
+        }
         add(vp.label, 'settings', await audit({
           ...common, surface: 'settings', root: '#setpanel', textMin: 80,
           required: [{ selector: '[data-pnx]', min: 1 }, { selector: '.row', min: 6 }, { selector: 'input[type=range]', min: 2 }],
@@ -4768,6 +4929,16 @@ async function main() {
   if (!modalControlRun && !targetedProductBlocked) instrumentFailures.push('import modal containment control never ran');
   if (!modalLiveControlRun && !targetedProductBlocked) instrumentFailures.push('import live-error control never ran');
   if (!closeLabelControlRun && !targetedProductBlocked) instrumentFailures.push('panel close accessible-name control never ran');
+  if (!closeIntegrityControlRun && !targetedProductBlocked) instrumentFailures.push('duplicate/misplaced close integrity controls never ran');
+  if (!toastAnchorControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {
+    instrumentFailures.push('desktop left-anchored toast control never ran');
+  }
+  if (!settingsAnchorControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {
+    instrumentFailures.push('desktop left-anchored Settings control never ran');
+  }
+  if (!recordsAnchorObserved && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {
+    instrumentFailures.push('desktop Records bottom-right anchor outcome never ran');
+  }
   if (!hiddenOpenerControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {
     instrumentFailures.push('hidden panel-opener focus fallback control never ran');
   }

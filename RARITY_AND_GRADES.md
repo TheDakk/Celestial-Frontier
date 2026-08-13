@@ -1,7 +1,7 @@
 # Celestial Frontier — Rarity & Grades System
 
 **STATUS:** legacy values match code as of **2026-07-31 (v1.8.9)**; the v2
-type-contract overlay below matches `port/v2` as of 2026-08-11. Every value,
+type and presentation overlays below match `port/v2` as of 2026-08-13. Every value,
 threshold and line anchor below was re-extracted from `main.js` during port
 Phase 0 and verified, not carried forward.
 
@@ -19,6 +19,15 @@ feeds the 50-probe determinism fingerprint — a mismatch means observable behav
 > runtime-supported suffix. It also types the shared color word/hex tables as
 > their real string-list and keyed-record shapes. Tests exercise the actual
 > calls; this is type parity, not a rarity rebalance or fingerprint re-pin.
+
+> **2026-08-13 v2 presentation boundary:** `spectral()` and `SPECTRA` remain
+> deterministic internal contracts because descriptor parity, art hue, epithets, and
+> seeded fixtures may depend on them. Their presence does **not** make **Spectral class**
+> a v2 player class. The app filters that legacy row at render time. Planet cards disclose
+> no rarity before landing and use the plain display-grade name afterward. Real stellar
+> G/K/M/remnant classification remains ordinary astronomical identity. The descriptor
+> parity tests continue to assert internal `.designation`; browser/smoke outcomes assert
+> that the legacy row never reaches the player.
 
 > ### ⚠ WHAT CHANGED IN THIS REFRESH (2026-07-31), and why the old version was dangerous
 >
@@ -186,7 +195,9 @@ callers are responsible for bounds.
 **`spectral(domain, seed, opts)` (1851–1861)** with `SPECTRA` (18 domains × 8 rungs) at **1831**. Below
 tier 8 the label/hex come from the domain spectrum while `name` comes from the collapsed ladder — a
 world's *color word* and its *rarity word* are deliberately different vocabularies. At tier ≥ 8 the
-tier's `pre` takes over, which is where "Empyrean Black" still surfaces as an **art label**.
+tier's `pre` takes over, which is where "Empyrean Black" survives as an **internal art label**.
+The legacy v1 descriptor can still emit that text for parity; current v2 presentation does not render
+it as a Spectral-class survey row.
 
 **`_rankAura` (8322)** — the portrait foil. Nothing below tier 4. Intensity: apex/par `0.30`; tier≥12
 `0.26`; tier≥8 `0.20`; else `0.10 + (tier-4)*0.02`. Apex burns molten gold `255,196,90`; paragon
