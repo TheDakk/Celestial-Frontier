@@ -1,84 +1,83 @@
-# ★ LIVE — v2.0 development-site and presentation correction (2026-08-13)
+# ★ LIVE — PR #13 merged; v2.0 development site published (2026-08-13)
 
-The current batch keeps production and development deliberately separate. `main` continues
-to publish the immutable root v1.8.9 HTML. A successful `develop` push battery packages and
-browser-smokes the exact `port/v2` tree, then publishes that verified package to
-`https://dev-celestialfrontier.github.io/`. The development identity is **Celestial Frontier
-v2.0 development** plus the full source commit inside the Guide only; no corner DEV badge is
-allowed. The runtime origin refusal, noindex/robots policy, exact-archive manifest, byte
-inventory, shared version record and generated site `version.json` remain required.
+PR #13 merged normally into `develop` at
+`9f4b12dbfb0cb8ba38003a0b79391a954372df24`. OpenAI/Codex's
+`openai/mac` branch was then fast-forwarded clean to that merge. This is the
+terminal state observed for PR #13; resolve any later HEAD, upstream, PR, check
+or hosted-build state live.
 
-`v2.0` is a development/playtest identity, not a shipped release. The 56-release/398-bullet
-legacy v1 history remains immutable, `V2_CURRENT_RELEASE_VERSION` remains `null`, the shipped
-v2 list remains empty, and the development bulletin cannot open the one-time update surface
-or mutate `rnSeen`.
+The branch products remain intentionally separate. `main` and production still
+serve the unchanged root v1.8.9 HTML. The successful `develop` path published
+the browser-smoked exact `port/v2` package to
+`https://dev-celestialfrontier.github.io/`. Its Guide shows **Celestial Frontier
+v2.0 development** plus full source commit
+`9f4b12dbfb0cb8ba38003a0b79391a954372df24`; neither historical corner
+badge is present. `v2.0` remains development identity only:
+`V2_CURRENT_RELEASE_VERSION` is `null`, the shipped-v2 list is empty, and
+the immutable v1.8.9 history cannot be converted into a production update.
 
-The presentation correction retires the player-facing **Spectral class** survey row while
-preserving internal deterministic `spectral()` designations/colors and real stellar
-G/K/M/remnant classification. Planet rarity is absent before landing and appears afterward
-as the plain ten-tier grade. Desktop notifications rise from the bottom-right utility edge;
-Settings and Records use the same bottom-right anchor. Every panel and Survey card owns exactly
-one 44px top-right Close action, with balanced panel padding, row separators, radii and borders.
+The merged presentation removes the player-facing **Spectral class** survey row
+while retaining deterministic `spectral()` designations/colors and real stellar
+G/K/M/remnant identity. Planet rarity is absent before landing and plain afterward.
+Desktop notifications, Settings and Records share the bottom-right utility edge;
+each panel and Survey card owns exactly one 44px top-right Close action with the
+balanced spacing/divider/border grammar.
 
-The standing proceed authorization remains active: once a scoped agent PR is clean,
-mergeable and terminal-green on its required battery, Codex or Claude Code may normally merge
-it into `develop` and monitor the resulting push battery and mapped development publication
-without asking Nick again. This does not cover red/unfinished checks, conflicts, force pushes,
-new destinations/keys, manual Pages writes, `develop` → `main`, a production version, release,
-or deployment decision.
+## Immutable PR #13 terminal evidence
 
-Current branch, full commit, upstream relation, PR state, check results and hosted commit must
-be resolved from live Git/GitHub at handoff time. Do not copy a “latest green tip” into this
-reference. Historical CI and preview evidence below remains preserved chronology, not current
-authority.
+- Exact PR CI runs `31666746749` and `31666748103`: green.
+- Resulting `develop` push battery `31668275811`, job `94347481886`:
+  all **24/24** required steps green.
+- Battery artifact IDs: `9169233822`, `9169234205`, `9169234724`,
+  and `9169235308`.
+- Branch-site publisher run `31669727316`: development job `94351673977`
+  succeeded; production job skipped.
+- Development destination commit:
+  `4d0fc348661aebc39660407a946a4c3dfa1a8e03`.
+- Approved-candidate content SHA-256:
+  `fab179e701a03b9659ab336bace0e91400ce496d374114c978dcc775448ebe32`.
+- The publisher has no artifact by design; the run/job and destination commit are
+  the publication evidence.
+- Production remained unchanged at v1.8.9. No `develop` → `main` merge,
+  production release or manual deployment occurred.
+
+These immutable facts certify PR #13 only. A hosted development build remains a
+public play surface, not proof of human play or production readiness. Human findings
+must bind URL, full source commit, manifest content hash, device/browser lens, starting
+save, outcome and retest.
+
+The standing proceed authorization remains active for future work: once a scoped
+agent PR is clean, mergeable and terminal-green on its required battery, Codex or
+Claude Code may normally merge that exact head into `develop` and monitor the
+resulting push battery and mapped publication without asking Nick again. It does not
+cover red/unfinished checks, changed heads, conflicts, force actions, new
+destinations/keys, manual Pages writes, `develop` → `main`, production
+versioning, release or deployment decisions.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac`. Resolve the full HEAD,
-worktree/upstream state and exact completed checks live before committing or pushing. This
-batch owns the v2.0 development publisher/package identity, Guide-only build provenance,
-Spectral presentation filter, bottom-right utility layout, single-close ownership and matching
-current references.
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac`. PR #13 is
+merged and the branch was fast-forwarded clean to
+`9f4b12dbfb0cb8ba38003a0b79391a954372df24`. Resolve subsequent state
+live.
 
-**GitHub step:** after scoped checks are terminal-green, commit and push the exact completed
-batch on `openai/mac`, then create or update the reviewed PR into `develop`. Under Nick's
-standing authorization, merge that exact clean/mergeable green head normally and monitor the
-resulting `develop` push battery and mapped development publication; no repeat proceed prompt is
-needed. Stop on any changed head, red/unfinished check, conflict or destination/release change.
+**GitHub step:** none for PR #13. It is merged and its mapped publication
+completed. A separately committed documentation refresh or later feature change
+must use its own normal agent-branch PR; never append work to or reuse PR #13.
 
-**PR details:**
+**PR details:** PR #13 is complete—base `develop`, source `openai/mac`,
+title `Publish the v2.0 development build and correct presentation regressions`,
+merged normally at `9f4b12dbfb0cb8ba38003a0b79391a954372df24`. No PR #13
+title or description update remains.
 
-- Base branch: `develop`
-- Source branch: `openai/mac`
-- Title: `Publish the v2.0 development build and correct presentation regressions`
-- Copy-ready description:
+**Other side:** Anthropic/Claude Code does not need to be opened now. At its next
+coding batch, from a clean `anthropic/windows` worktree, it may run
+`git fetch origin` and then `git merge origin/develop` to receive PR #13. If
+dirty, finish or commit its own work first; do not copy files manually.
 
-  > Publishes the tested exact `port/v2` package from successful `develop` push batteries while
-  > preserving the root v1.8.9 HTML on `main`. Centralizes the v2.0 development identity, shows
-  > v2.0 plus the full commit inside the Guide only, removes both corner DEV-badge paths, and
-  > retains the exact-origin, noindex/robots, archive-input, manifest, byte-inventory and site
-  > `version.json` guards. Keeps `V2_CURRENT_RELEASE_VERSION` null, the shipped-v2 list empty,
-  > and legacy v1.8.9 release history immutable, so the development bulletin cannot trigger the
-  > production update popup. Removes the player-facing Spectral-class survey row without changing
-  > deterministic spectral art data or real stellar classification; planet rarity stays hidden
-  > until landing and then uses the plain display grade. Moves desktop notifications, Settings
-  > and Records to the bottom-right utility edge, gives every panel and Survey card exactly one
-  > top-right Close action, and regularizes spacing, dividers and borders. Updates current process,
-  > preview, UI, rarity, codebase and handoff references while preserving historical evidence.
-  > Verification must be filled from the exact final head and include publisher/preview selftests,
-  > unit/type checks, one-run browser smoke and the responsive matrix with their deliberate
-  > negative controls. After merge, the other agent synchronizes only from `origin/develop` in a
-  > clean worktree. No `main` merge, production release or manual deployment is included.
-
-**Other side:** Anthropic/Claude Code does not need to be opened now. Until this PR merges,
-its branches do not contain the change and files must not be copied manually. At its next coding
-batch after merge, from its own clean approved branch/worktree, fetch origin and merge
-`origin/develop`; if dirty, finish or commit its own work before pulling or merging.
-
-**Release status:** v2.0 is development identity only. Do not report `develop`, either hosted
-site, `main`, CI, or a PR as updated until verified live. No production release or manual
-deployment is authorized by this handoff.
-
+**Release status:** `develop` and the isolated development site are updated at
+the verified commits above. `main` and production remain unchanged at v1.8.9.
+No production release or manual deployment occurred.
 # HISTORICAL/SUPERSEDED — draft PR #11 pre-merge handoff (2026-08-12)
 
 **Current integration state:** PR #10 merged normally into `develop` at
