@@ -1,104 +1,104 @@
-# ★ LIVE — PR #14 baseline published; A New Foundation draft pending (2026-08-13)
+# ★ LIVE — PR #15 merged; A New Foundation published to development (2026-08-13)
 
-PR #14, `Record the successful v2.0 development publication`, merged normally
-into `develop` at `7aa8d000c597957a9b5683ad3959a90c1170b352` from exact
-source head `0fd0d95465c51c684489db236777e19075cc3d9e`. OpenAI/Codex's
-`openai/mac` branch was then fast-forwarded to that merge before the current scoped
-work began. Resolve any later HEAD, worktree, upstream, PR, check or hosted-build
-state live.
+PR #15, `Publish the cumulative v2.0 development bulletin`, used exact head
+`6fad35d0eeb023baec23e27efaf357f86cd06e9b` and merged normally into
+`develop` at `c4a0258c981bba557be0d5df135b7006071bc065`. The exact head,
+tested synthetic merge and develop merge share tree
+`f0af4fec833dfc5567ae845c39d9c9031193e4f9`. The resulting push battery and
+mapped development publication completed. Resolve any later local, remote, PR,
+check or hosted state live.
 
 The branch products remain intentionally separate. `main` and production still
-serve the unchanged root v1.8.9 HTML. The successful `develop` path published the
-browser-smoked exact `port/v2` package to
-`https://dev-celestialfrontier.github.io/`. Its Guide shows **Celestial Frontier
-v2.0 development** with no corner DEV badge; published `version.json` binds source
-`7aa8d000c597957a9b5683ad3959a90c1170b352` and build
-`develop-7aa8d000c597`.
+serve the unchanged root v1.8.9 HTML. `develop` published the browser-smoked exact
+`port/v2` package to `https://dev-celestialfrontier.github.io/`. The verified PR #15
+package shows **Celestial Frontier v2.0 development**, build `develop-c4a0258c981b`,
+and **A New Foundation** with five canonical categories /43 outcome bullets.
 
-The current agent-branch batch replaces the generic draft notes with **A New
-Foundation**, a cumulative categorized v2.0 outcome map. It is not live at the
-PR #14 origin: `7aa8` still carries the earlier `Celestial Frontier development`
-bulletin title. The new title and copy may be called published only after this
-separate batch merges, its resulting `develop` battery passes, and the mapped
-publisher succeeds. `V2_CURRENT_RELEASE_VERSION` remains `null`, the shipped-v2
-list remains empty, and opening or reloading the draft cannot create
-`releasePending`, mutate `rnSeen`, or authorize a production release.
+The bulletin remains `draft` / `Unreleased`: `V2_CURRENT_RELEASE_VERSION` is
+`null`, the shipped-v2 list is empty, and reading or reloading it cannot create
+`releasePending`, mutate `rnSeen`, or fire the shipped update surface. The exact
+56-release/398-bullet v1 archive remains immutable. This is a development
+publication, not a production version or release.
 
-The cumulative bulletin records the already-merged presentation outcomes without
-changing their deterministic data: no player-facing **Spectral class** row, no
-planet rarity before landing and a plain grade afterward, bottom-right desktop
-notifications/Settings/Records, and exactly one top-right Close action per panel
-or Survey card.
+## Immutable PR #15 terminal evidence
 
-## Immutable PR #14 terminal evidence
-
-- PR runs `31670346748` / job `94353480474` (branch flow) and
-  `31670347810` / job `94353483495` (battery): green.
-- Resulting `develop` push battery `31672208188` / job `94359033458`:
+- PR branch-flow `31677782054` / job `94376069038` and battery
+  `31677784412` / job `94376076373`: attempt 1 green.
+- Battery synthetic merge: `2694c2adebe88c12e5319af77f44f02ae633fd0c`,
+  tree-equal to head `6fad35d0eeb023baec23e27efaf357f86cd06e9b`.
+- Develop merge: `c4a0258c981bba557be0d5df135b7006071bc065`, tree
+  `f0af4fec833dfc5567ae845c39d9c9031193e4f9`.
+- Resulting `develop` battery `31680134777` / job `94383477984`: attempt 1,
   all **24/24** required steps green.
-- Battery artifacts: `9170581190` (reports), `9170581559` (root layout),
-  `9170582194` (v2 browser evidence), and `9170582819` (v2 preview).
-- Branch-site publisher `31673490816`: development job `94362919537`
-  succeeded; production job `94362919808` skipped.
-- Development destination commit:
-  `488e36fabd693b4fdef404ce0fe2d334ae093bce`.
-- Approved-candidate content SHA-256:
-  `90234b793f18e76040cecbfcba3185dbdfa30d2d4bff8c307182ce0251f05d11`.
-- The publisher emits no artifact by design; its run/job and destination commit
-  are the publication evidence.
-- Production remained unchanged at v1.8.9. No `develop` → `main` merge,
-  production release or manual deployment occurred.
+- Artifacts and full SHA-256 digests:
+  - `9173984513` reports — `b96cded6985bc82c0b246cb512f4ffd533a62ddaa93d3b68fc9fd19e527591f3`;
+  - `9173985179` root layout — `02bcdabcde7e546cb389f52947b8c74199238e28616e52dfe7834e7e0dc9fb24`;
+  - `9173986273` v2 browser — `3b61fefe843d775b0a9c3633db34dd7b334e85b7bbb4ea8ac5f637094c088987`;
+  - `9173987355` v2 preview — `f6ecb26b696a8cb4af2bb0503ac9e5cd9b520dc6738bab417579425003ccd801`.
+- Publisher `31682429406`: development job `94390695366` succeeded;
+  production job `94390696143` skipped.
+- Approved content SHA-256:
+  `e56843be4051beb8304d0d066e2b71ac0b0b8b239b1236e0169307e6e9e0a16a`.
+- Development destination `d1095996bfddb2d8670ffc78a517b92cb83a2df8`, tree
+  `5bd811aa5f9feca4e9cf6efbbc1b306fa9d23f58`.
+- Production remained v1.8.9 at `0a5ee134d8e9724fdae909d75b3a5e3811e54166`.
+  No `develop` → `main` merge, production release or manual deployment occurred.
 
-These immutable facts certify PR #14 only, not the current bulletin diff or a
-future head. A hosted development build remains a public play surface, not proof
-of human play or production readiness. Human findings bind URL, full source commit,
-manifest content hash, device/browser lens, starting save, outcome and retest.
+These facts certify only PR #15 and its `c4a0258c` publication. The development
+site remains a public play surface, not proof of human play or production readiness.
+Human findings bind URL, full source commit, manifest content hash, device/browser
+lens, starting save, outcome and retest.
 
 The standing proceed authorization remains active: once a scoped agent PR is clean,
-mergeable and terminal-green on its required battery, Codex or Claude Code may
-normally merge that exact head into `develop` and monitor the resulting push battery
-and mapped publication without asking Nick again. It does not cover red/unfinished
-checks, changed heads, conflicts, force actions, new destinations/keys, manual Pages
+mergeable and terminal-green on its required battery, Codex or Claude Code may merge
+that exact head normally into `develop` and monitor the resulting push battery and
+mapped publication without asking Nick again. It does not cover changed heads,
+red/unfinished checks, conflicts, force actions, new destinations/keys, manual Pages
 writes, `develop` → `main`, production versioning, release or deployment decisions.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac`. The integration and
-last-published development baseline is merged PR #14 at
-`7aa8d000c597957a9b5683ad3959a90c1170b352`. **A New Foundation** is
-scoped agent-branch work without merge or publication authority yet. Resolve the
-exact worktree, pushed head, PR and checks live.
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac`. PR #15 is merged at
+`c4a0258c981bba557be0d5df135b7006071bc065` and its mapped development
+publication completed. The current scoped change is only this terminal documentation
+record; resolve its exact local/pushed head before Git action.
 
-**GitHub step:** after the scoped gates and diff-check pass, commit and push the
-exact `openai/mac` head and open a new PR to `develop`; never append to or reuse
-PR #14. Standing authority covers normal merge and mapped publication monitoring
-only when that unchanged PR head is clean, mergeable and terminal-green.
+**GitHub step:** after the documentation diff-check, commit and push `openai/mac`,
+then open a new docs-only PR to `develop`; do not reuse PR #15. Standing authority
+applies only after that unchanged new head is clean, mergeable and terminal-green.
 
-**PR details:** planned for this batch; replace with live PR metadata once opened.
+**PR details:** planned for this terminal record; replace with live metadata once opened.
 
 - Base branch: `develop`
 - Source branch: `openai/mac`
-- Copy-ready title: `Publish the cumulative v2.0 development bulletin`
+- Copy-ready title: `Record the published A New Foundation development bulletin`
 - Copy-ready description:
 
-  > Replaces the generic v2 draft notes with **A New Foundation**, a cumulative
-  > categorized outcome map of the implemented playtest slice. Adds semantic and
-  > browser controls for canonical sections, unique content, required player-visible
-  > outcomes, a reachable final item, and unchanged `rnSeen` / `releasePending`
-  > across open and reload. Refreshes current references while preserving the
-  > immutable 56-release/398-bullet v1 archive, `V2_CURRENT_RELEASE_VERSION === null`,
-  > the v2.0 development-only identity, and the unchanged v1.8.9 production site.
+  > Records the immutable terminal evidence for merged PR #15 and its successful
+  > mapped development publication: exact PR/synthetic/develop tree identity,
+  > attempt-one checks, the 24-step push battery, artifact IDs and digests, publisher
+  > jobs, destination commit/tree, manifest hash, and live v2.0 / **A New Foundation**
+  > identity. Changes only `ROADMAP.md` and `port/HANDOFF_NEXT_SESSION.md`; source and
+  > tests are unchanged. Verification: `git diff --check` passes, and the HANDOFF
+  > historical tail remains byte-identical to the pre-batch source. After this docs-only
+  > PR merges, Anthropic/Claude Code may
+  > synchronize from `origin/develop`. No production version, `develop` → `main`
+  > merge, manual release or deployment is included.
 
-**Other side:** Anthropic/Claude Code does not need to be opened now and must not
-copy this unmerged work. At its next batch, from a clean `anthropic/windows`
-worktree, resolve `origin/develop`; after this batch merges, use `git fetch origin`
-then `git merge origin/develop`. If dirty, finish or commit its own work first.
+**Other side:** Anthropic/Claude Code on Windows, branch `anthropic/windows`, does
+not need to be opened now. PR #15 is already in `origin/develop`; this terminal-doc
+refresh is not there until its own PR merges. At its next batch, from a clean worktree,
+fetch and merge the then-current `origin/develop`. If dirty, finish or commit its own
+work first; never copy files manually.
 
-**Release status:** `develop` remains published from PR #14 source `7aa8d000c597957a9b5683ad3959a90c1170b352`,
-destination `488e36fabd693b4fdef404ce0fe2d334ae093bce`, content SHA-256
-`90234b793f18e76040cecbfcba3185dbdfa30d2d4bff8c307182ce0251f05d11`.
-**A New Foundation is not live there yet.** `main` and production remain unchanged
-at v1.8.9; no production version, release or deployment is authorized.
+**Release status:** PR #15's verified development publication used source `c4a0258c981bba557be0d5df135b7006071bc065`,
+destination `d1095996bfddb2d8670ffc78a517b92cb83a2df8`, content SHA-256
+`e56843be4051beb8304d0d066e2b71ac0b0b8b239b1236e0169307e6e9e0a16a`, with
+v2.0 / build `develop-c4a0258c981b` / **A New Foundation**. Resolve any later
+automatic development publication live; it does not alter these immutable PR #15
+facts. At this observation, production remained unchanged v1.8.9 at
+`0a5ee134d8e9724fdae909d75b3a5e3811e54166`. This docs-only record does not
+authorize production versioning, release or deployment.
 # HISTORICAL/SUPERSEDED — draft PR #11 pre-merge handoff (2026-08-12)
 
 **Current integration state:** PR #10 merged normally into `develop` at
