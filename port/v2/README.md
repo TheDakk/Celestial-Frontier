@@ -9,11 +9,23 @@
 > breeding/combat/Guardians and the full audio layer remain unimplemented. The required
 > order is ownership first—virtualized portraits and memory plateau, shared ship reach/
 > visual state, separate catalogue/creature and base-item/gear-instance identities,
-> revisioned exact-once reward receipts—then content scale. The current audit also makes
-> capability-aware Charter projection/copy, the wall-clock Auto-Extractor exploit,
-> Compendium decoded-image exposure and long-session texture/audio ownership explicit
-> prerequisites. Planned systems stay unavailable in the Guide until real actions,
-> reload/persistence, reachability and negative-controlled outcome gates exist.
+> revisioned exact-once reward receipts—then content scale. The Charter current-truth
+> repair is now live: canonical legacy chapter bytes remain import/reach data, while the
+> board and objective chip share a stage-aware `projectV2Charter` /
+> `currentV2Objective` view that exposes only landfall the slice can actually write. A
+> completed visible landfall ends at an honest boundary; it cannot manufacture a chapter,
+> drive, reward or reach tier, and a nonterminal bare chapter index cannot substitute for a
+> saved drive. The explicit terminal legacy/veteran fallback (`ascCh >= ASC_CHAPTER_COUNT`)
+> deliberately remains stage 3 even when drive-item bytes are absent.
+> `@cf/scene/address.ts` also now re-derives a complete galaxy → star → planet hierarchy
+> from deterministic sources for external Search-to-planet CF1 routes before navigation or
+> persistence; malformed, forged and ambiguous candidates fail closed. That protection is
+> intentionally scoped: saved views, Atlas/non-planet routes, generated descents and future
+> ownership receipts still require canonical ingress work.
+> The wall-clock Auto-Extractor exploit, Compendium decoded-image exposure and long-session
+> texture/audio ownership remain explicit prerequisites. Planned systems stay unavailable
+> in the Guide until real actions, reload/persistence, reachability and negative-controlled
+> outcome gates exist.
 
 This playtest line is **Celestial Frontier v2.0 development**. The identity is
 centralized in `version.json` and appears with the full source commit inside the

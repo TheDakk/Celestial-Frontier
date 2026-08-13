@@ -66,7 +66,8 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 
 | System | Current v2 executable state | Next owned outcome |
 |---|---|---|
-| Universe travel, Survey, Planetside | Live, deterministic, save-backed | Complete canonical CF1 hierarchy and richer biome scenes |
+| Universe travel, Survey, Planetside | Live, deterministic, save-backed; Search-to-planet CF1 shares are source-derived before they can focus/navigate/name/persist | Extend the canonical proof to saved views, Atlas/non-planet routes and future receipt ingress; add richer biome scenes |
+| Charters / reach language | One current stage-aware landfall projection; imported drive/chapter facts still gate reach; no other v2 Charter writer or reward | Port complete outcome writers and only then expose their goals, transitions and rewards |
 | Compendium | Read-only rows, details and deterministic static portraits | Virtualized list, bounded thumbnail work, living selected preview |
 | Capture / specimen acquisition | No live v2 Tame, Scavenge, Sample or Biosphere Yield action | Port finite capture writers before owned companions or collection progression |
 | Inventory / character portrait | Imported legacy bytes preserved; no live surface | Instance-backed inventory, paper doll and item inspection |
@@ -517,7 +518,8 @@ fixture-pinned helpers are not dead code merely because the current slice does n
 
 Known audit queue:
 
-- Charter goals/copy currently expose unimplemented mining/fabrication/Shipyard paths.
+- The v2 Charter board/chip now stop at the landfall-only live frontier; complete
+  Charter writers, rewards, accepted chains and weeklies remain open.
 - Compendium virtualization and decoded-image plateau are release prerequisites.
 - ordinary scene textures and `_rgCache` need bounded ownership; small art caches have
   off-by-one caps;
@@ -612,7 +614,8 @@ cannot understand, enjoy or comfortably use it.
 
 ### Foundation and quality work still open
 
-- canonical CF1 galaxy → star → planet hierarchy;
+- canonical CF1 source proof is live for Search-to-planet share ingress; saved views,
+  Atlas/non-planet routes and future ownership-receipt ingress remain open;
 - imported legacy full-expedition training snapshot restore and CFB parent identity;
 - Compendium virtualization and bounded art/audio work;
 - Pixi/Canvas texture ownership and long-session memory plateau;
