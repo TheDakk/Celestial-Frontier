@@ -1321,7 +1321,22 @@ duplicates).
   `version.json`. The visible identity is rendered inside the Guide. Both historical corner-badge
   ids/styles are forbidden; origin refusal, noindex/robots and manifest verification remain the
   safety boundary. `main` continues the root v1.8.9 production package, while a green `develop`
-  push publishes the already-smoked exact v2 package.
+  push publishes the already-smoked exact v2 package. The final preview browser check alone owns
+  a fixed 30-second CDP-start allowance; generic evidence tools retain their 15-second default.
+  Every platform captures the exact caller options and runs a real browser outcome. On POSIX the
+  preview selftest starts Chrome immediately but withholds its ready CDP endpoint for 16 seconds,
+  so the old generic path must reject while the exact preview caller keeps its full startup window
+  and proves `Browser.getVersion` plus cleanup.
+- ★ **D-BROWSER-ENV — a macOS Codex Seatbelt abort is not a game crash
+  (2026-08-13).** Three supplied Edge reports have the same Node-parented main-thread
+  `TransformProcessType` / `_RegisterApplication` SIGABRT within 100 ms, before CDP, a page,
+  GPU allocation or game code; macOS logs confirm denied LaunchServices and WindowServer
+  lookups. The shared resolver/launcher now refuses the Codex Seatbelt environment before
+  spawning Chromium, with a marker-executable control proving no spawn/profile side effect;
+  the two historical spike renderers also resolve through that guarded boundary.
+  Actual browser evidence runs once through approved out-of-sandbox execution. This does not
+  change the browser pin, profiles, product resource budgets, or the separate CI preview
+  startup allowance above.
 - ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
   (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
   heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces

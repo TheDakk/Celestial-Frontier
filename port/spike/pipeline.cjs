@@ -22,6 +22,11 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const root = path.join(__dirname, '..', '..');
+const browserPathTool = path.join(root, 'port', 'v2', 'tools', 'browserpath.mjs');
+const browserFile = execFileSync(process.execPath, [browserPathTool, '--print'], {
+  encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'],
+}).trim();
+if (!browserFile) throw new Error('shared browser resolver returned an empty path');
 const main = fs.readFileSync(path.join(root, 'main.js'), 'utf8');
 
 /* — the same lift used by tools/proofsheet.js, verbatim — */
@@ -227,15 +232,30 @@ ${lifted}
 })().catch(e=>{ document.title='pipeline-error|'+(e&&e.message||e); });
 </script></body>`;
 
-fs.writeFileSync(path.join(__dirname, 'pipeline.html'), html);
-console.log('pipeline.html written (' + (html.length / 1024).toFixed(0) + ' KB, ' + LIFT.length + ' lifted names + vista block)');
-
+const HTML_OUT = path.join(__dirname, 'pipeline.html');
 const OUT = path.join(__dirname, 'pipeline-proof.png');
-try { fs.unlinkSync(OUT); } catch (_) {}
-const page = 'file:///' + path.join(__dirname, 'pipeline.html').replace(/\\/g, '/');
-execFileSync(process.env.CF_BROWSER || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', [
-  '--headless=new', '--disable-gpu', '--no-sandbox', '--no-first-run', '--hide-scrollbars',
-  '--force-device-scale-factor=1', '--window-size=1020,743', '--virtual-time-budget=15000',
-  '--screenshot=' + OUT, page,
-], { stdio: 'pipe', timeout: 180000 });
-console.log(fs.existsSync(OUT) ? 'pipeline-proof.png written (' + (fs.statSync(OUT).size / 1024).toFixed(0) + ' KB)' : 'NO SCREENSHOT');
+const PENDING_HTML = path.join(__dirname, `.pipeline-${process.pid}.pending.html`);
+const PENDING_OUT = path.join(__dirname, `.pipeline-proof-${process.pid}.pending.png`);
+if (fs.existsSync(PENDING_HTML) || fs.existsSync(PENDING_OUT)) {
+  throw new Error('refusing stale pending pipeline evidence');
+}
+try {
+  fs.writeFileSync(PENDING_HTML, html);
+  const page = 'file:///' + PENDING_HTML.replace(/\\/g, '/');
+  execFileSync(browserFile, [
+    '--headless=new', '--disable-gpu', '--no-sandbox', '--no-first-run', '--hide-scrollbars',
+    '--force-device-scale-factor=1', '--window-size=1020,743', '--virtual-time-budget=15000',
+    '--screenshot=' + PENDING_OUT, page,
+  ], { stdio: 'pipe', timeout: 180000 });
+  if (!fs.existsSync(PENDING_OUT) || !fs.statSync(PENDING_OUT).isFile()
+      || fs.statSync(PENDING_OUT).size <= 0) {
+    throw new Error('pipeline browser produced no nonempty screenshot');
+  }
+  fs.copyFileSync(PENDING_HTML, HTML_OUT);
+  fs.copyFileSync(PENDING_OUT, OUT);
+} finally {
+  if (fs.existsSync(PENDING_HTML)) fs.unlinkSync(PENDING_HTML);
+  if (fs.existsSync(PENDING_OUT)) fs.unlinkSync(PENDING_OUT);
+}
+console.log('pipeline.html written (' + (html.length / 1024).toFixed(0) + ' KB, ' + LIFT.length + ' lifted names + vista block)');
+console.log('pipeline-proof.png written (' + (fs.statSync(OUT).size / 1024).toFixed(0) + ' KB)');

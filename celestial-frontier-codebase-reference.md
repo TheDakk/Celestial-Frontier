@@ -102,7 +102,22 @@
 > pinned `ws` transport and Node `^20.19.0 || ^22.13.0 || >=24.0.0`. Root preflight
 > launches the selected executable through `browsercdp`; its selftest rejects
 > executable non-browsers and excluded Node lines. `bootperf` shares the executable
-> resolver and `ws` transport but retains its legacy CDP lifecycle.
+> resolver and `ws` transport but retains its legacy CDP lifecycle. The final
+> development-preview package check is the narrow exception to the 15-second
+> CDP-start default: its caller supplies a fixed 30-second start allowance after
+> exact packaging, while its generic command/shutdown bounds stay unchanged. Every
+> platform captures the exact options passed by that caller and completes a real
+> browser outcome. On POSIX the selftest starts Chrome immediately but withholds its
+> ready CDP endpoint for 16 seconds: the generic path times out while the exact preview
+> caller retains its full 30-second startup window, answers `Browser.getVersion`, and closes.
+> On macOS the shared launcher and the resolver's launch-facing `--print`
+> command also reject the Codex Seatbelt environment before spawn. Three supplied
+> Edge crash reports share a main-thread `TransformProcessType` /
+> `_RegisterApplication` SIGABRT within 100 ms; the system log confirms denied
+> LaunchServices and WindowServer lookups. Approved out-of-sandbox execution removes
+> the Seatbelt marker and remains the supported real-browser path. The historical
+> `port/spike` renderers resolve through the same launch-facing guard rather than
+> invoking a macOS browser directly.
 >
 > The live v2 interaction surface uses Pixi `autoDensity` so its CSS canvas and
 > hit coordinates stay viewport-sized at DPR > 1. `effectiveDensityPlan()`

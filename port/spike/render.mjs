@@ -7,11 +7,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import { assertBrowserLaunchAllowed, findChromiumBrowser } from '../v2/tools/browserpath.mjs';
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const OUT = path.join(dir, 'spike-proof.png');
+assertBrowserLaunchAllowed();
+const BROWSER = findChromiumBrowser();
+const PENDING_OUT = path.join(dir, `.spike-proof-${process.pid}.pending.png`);
+if (fs.existsSync(PENDING_OUT)) throw new Error(`refusing stale pending proof: ${PENDING_OUT}`);
 
-const EDGE = process.env.CF_BROWSER || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const MIME = { '.html': 'text/html', '.mjs': 'text/javascript', '.js': 'text/javascript', '.json': 'application/json', '.map': 'application/json' };
 
 const server = http.createServer((req, res) => {
@@ -29,18 +33,25 @@ server.listen(0, '127.0.0.1', () => {
   const url = `http://127.0.0.1:${server.address().port}/spike.html`;
   console.log('serving', url);
   try {
-    execFileSync(EDGE, [
+    execFileSync(BROWSER, [
       '--headless=new', '--disable-gpu', '--no-sandbox', '--no-first-run',
       '--hide-scrollbars', '--force-device-scale-factor=1',
       '--virtual-time-budget=12000',
       '--window-size=1046,690',
-      '--screenshot=' + OUT,
+      '--screenshot=' + PENDING_OUT,
       url,
     ], { stdio: ['ignore', 'ignore', 'pipe'], timeout: 120000 });
   } catch (e) {
     console.error('edge failed:', (e && e.message) || e);
   }
-  const ok = fs.existsSync(OUT);
+  const ok = fs.existsSync(PENDING_OUT) && fs.statSync(PENDING_OUT).isFile()
+    && fs.statSync(PENDING_OUT).size > 0;
+  if (ok) {
+    fs.copyFileSync(PENDING_OUT, OUT);
+    fs.unlinkSync(PENDING_OUT);
+  } else if (fs.existsSync(PENDING_OUT)) {
+    fs.unlinkSync(PENDING_OUT);
+  }
   console.log(ok ? 'wrote ' + path.relative(process.cwd(), OUT) + ' (' + (fs.statSync(OUT).size / 1024).toFixed(0) + ' KB)' : 'NO SCREENSHOT PRODUCED');
   server.close();
   process.exit(ok ? 0 : 1);
