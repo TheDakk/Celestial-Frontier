@@ -126,8 +126,24 @@ unchanged import deadline. Immutable one-attempt CI #208 remains red: its 8K rep
 published ready, but the exact page target then missed the unchanged two-second response
 bound while the browser-process heartbeat stayed healthy. The current repair keeps native
 backing through UHD, then caps each full-viewport canvas at 2,073,600 backing pixels above
-that tier (the tested 8K/5K 16:9 cases resolve to 1,920×1,080); its passing dirty-worktree glass run is diagnostic only, and a clean committed
-exact battery plus matching pushed-tip CI are still required. PR #11 stays draft until matching CI is green and a real
+that tier (the tested 8K/5K 16:9 cases resolve to 1,920×1,080). The `d8684c…` dirty
+PASS is prior diagnostic chronology only. Immutable clean executable source
+`307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed root layout 787/787, v2
+273/1 plus all gates, one-attempt smoke 0/10, and certifying glass 12/12 and 57/57
+with exact 6/7/8 release tails, empty blocked/omitted ledgers, and zero findings,
+instrument failures, or retries. Exact 8K was 171 ms / browser performance 161.9 ms,
+five commands 1/1/1/3/0 ms, 33/129 ms release→commit/commit→ready, and two
+1,920×1,080 stores /4,147,200 pixels at DPR 0.25; terminal-only performance was
+606/685/74/171 ms. Glass/smoke/root-layout hashes are
+`42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f` /
+`90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723` /
+`c42a50873ad01a91dd439860f41f1d695a7d2bf5c41521ed8b7eb768b7ee4975`.
+Preview `dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was browser-smoked
+under Edge 151 over loopback, bound to expected separate origin
+`https://dev-celestialfrontier.github.io`, with `publishable:false` (manifest
+`1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d`).
+Live Git/PR state determines current tip/upstream/checks; whichever final pushed tip
+is selected requires matching CI. PR #11 stays draft until that matching CI is green and a real
 multi-lens human playtest against
 the exact preview is recorded, findings are resolved/retested, and final local
 plus GitHub checks pass on the frozen pushed head.

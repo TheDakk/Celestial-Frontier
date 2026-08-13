@@ -479,18 +479,25 @@
 > Literal new-shape positives and former 2,365×1,330 plus existing 2,730×1,536
 > ready/release negatives prevent stale policy from passing.
 >
-> The only dirty-worktree browser diagnostic remains non-authoritative. A sandbox
-> loopback `EPERM` stopped the first launch before any browser; the sole permitted
-> product execution—not a retry—then passed Edge 151 in 53,881 ms, 12/12 rows and
-> 57/57 controls, with empty blocked/omitted ledgers and zero findings/instrument
-> failures/retries (407,207-byte report SHA-256
-> `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`).
-> Exact 8K was 180 ms / browser performance 162.6 ms, with a 2 ms arm,
-> target/heartbeat pairs 1/1 and 10/0 ms, 33 ms release→commit, 130 ms
-> commit→ready, ordered 6/7/8 release tail, and two 1,920×1,080 stores. The runtime
-> same-backing control passed in the ledger; no separate 5K timing/state evidence is
-> claimed. Clean committed exact battery evidence and matching pushed-tip CI remain
-> required before host, human, Ready, merge, release, deployment, or version authority.
+> The `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`
+> dirty-worktree PASS is prior diagnostic chronology only. Immutable clean executable source
+> `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed committed-clean root layout
+> 787/787 across 10/10 (`c42a50873ad01a91dd439860f41f1d695a7d2bf5c41521ed8b7eb768b7ee4975`),
+> v2 273/1 plus all gates, one-attempt smoke 0/10 in 105,339 ms
+> (`90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723`; log
+> `fe8c5d42eec2a09641f3f551486046559cd4c5956591b5a7d71a25b48d926af1`), and glass
+> 12/12 unique rows and 57/57 controls in 53,083 ms with exact 6/7/8 tails, empty
+> blocked/omitted ledgers and zero findings/instrument failures/retries
+> (`42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f`). Exact
+> 8K was 171 ms / browser performance 161.9 ms, commands 1/1/1/3/0 ms, 33/129 ms
+> release→commit/commit→ready, and two 1,920×1,080 stores /4,147,200 pixels at DPR 0.25;
+> terminal-only performance was 606/685/74/171 ms. Preview
+> `dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was browser-smoked under Edge
+> 151 over loopback, bound to expected separate origin `https://dev-celestialfrontier.github.io`,
+> with `publishable:false` (manifest `1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d`,
+> content `5db7790977071235ed164fb8f382bd67421c9fd5e834a504cdb4e1a1e8f47589`).
+> Live Git/PR determines current tip/upstream/checks; the selected pushed tip requires matching
+> CI. No host, human, Ready, merge, release, deployment, or version authority follows.
 >
 > Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
 > remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
@@ -507,12 +514,13 @@
 > `c10c9e33542ed57b4c51683c0ddf3f1bbc468696a025e88ef2d1e500209581bc`; Markdown
 > `1c9961515028a716ba064ca32ea9dd3ef2d41118cfde4c76b24c16520daa2d14`), plus
 > terminal-only 581/659/73/152 ms performance. Preview
-> `dev-preview-exact-df1c28b-20260812T211642Z` passed Edge 151 at the separate dev
-> origin with `publishable:false`, manifest `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`,
+> `dev-preview-exact-df1c28b-20260812T211642Z` was browser-smoked under Edge 151 over
+> loopback, bound to the expected separate dev origin, with `publishable:false`, manifest
+> `758a67e0fedda16392c5f1e0230c57dd0bc32c38aaab612abb816484afcaad02`,
 > content `98f1a6dcfb98be7e64269ed53323539ba185035571078eff2289accf43f9e2c0`, tree
 > `435c363e3e049f353e74ce71ed2a5fb4e3514c69`. That source remains prior #206 evidence;
-> both it and clean `6554b2b` remain prior evidence; current #208 repair authority is
-> pending a clean committed exact battery. No host/human/Ready/
+> both it and clean `6554b2b` remain prior evidence; clean `307b8aaf` is current local
+> #208 executable evidence. No host/human/Ready/
 > merge/release/deploy/version authority follows.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the

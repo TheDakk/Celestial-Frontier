@@ -574,8 +574,9 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > one-attempt smoke 0/10, certifying glass 12/12 and 57/57 with empty blocked/omitted
 > ledgers and zero findings/instrument failures/retries, nine automated-only personas,
 > terminal-only performance, and an Edge 151-smoked separate-origin preview with
-> `publishable:false`. That source and clean `6554b2b` below remain prior evidence; current
-> #208 repair authority is pending a clean committed exact battery. No human or publication
+> `publishable:false`. That source and clean `6554b2b` below remain prior evidence; immutable
+> clean executable source `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` is the #208
+> repair's local executable authority. No human or publication
 > authority follows.
 
 > **Correction earned by test-battery #207:** adjacent producer emissions are not an atomic
@@ -651,15 +652,31 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > the former 2,365×1,330 ready and release shapes must fail, as must the existing 2,730×1,536
 > shapes, while threshold/native-UHD, runtime same-backing resize, pointer, ownership, and stopped/
 > stale ticker controls remain. A dirty-worktree browser pass can diagnose but cannot certify the
-> fix. Here, sandbox loopback `EPERM` prevented the first launch before any browser; the one
-> permitted product run—not a retry—passed Edge 151 in 53,881 ms, 12/12 rows and 57/57 controls,
-> with empty blocked/omitted ledgers and zero findings/instrument failures/retries (report
-> `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`). Exact 8K was
-> 180 ms / browser performance 162.6 ms with 2 ms arm, target/heartbeat pairs 1/1 and 10/0 ms,
-> 33 ms release→commit, 130 ms commit→ready, exact 6/7/8 release tail, and two 1,920×1,080
-> stores /4,147,200 pixels. The runtime same-backing control passed in the ledger; do not infer
-> unrecorded 5K timing/state evidence. Clean committed exact battery evidence and matching pushed-
-> tip CI are still required before human, host, Ready, merge, release, deployment, or version authority.
+> fix; the `d8684c415a729222dd1a290e166a2a71ea79f72f2457d2ad144f434a82c30a8b`
+> PASS is prior chronology only. Immutable clean executable source
+> `307b8aaf90f31ef5cac585f3ab32c7e2c0d127af` passed from committed clean bytes
+> (status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`,
+> snapshot `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`).
+> Root layout passed 787/787 across 10/10 (`c42a50873ad01a91dd439860f41f1d695a7d2bf5c41521ed8b7eb768b7ee4975`),
+> v2 passed 273/1 plus all gates, and one-attempt smoke passed 0/10 in 105,339 ms
+> (`90af5806271ef30860da9b15bf96c1f76fd656289d1945e073f8290216278723`; log
+> `fe8c5d42eec2a09641f3f551486046559cd4c5956591b5a7d71a25b48d926af1`).
+> Glass passed 12/12 unique rows and 57/57 controls in 53,083 ms with exact 6/7/8 tails,
+> five-command ledgers, empty blocked/omitted ledgers and zero findings/instrument failures/
+> retries (`42d8637977cdca41659761626ea4edcee752ff57e0c9b76001ca6537d31d6e8f`).
+> Exact 8K was 171 ms / browser performance 161.9 ms, commands 1/1/1/3/0 ms,
+> 33/129 ms release→commit/commit→ready, and two 1,920×1,080 stores /4,147,200 pixels
+> at DPR 0.25; terminal-only performance was 606/685/74/171 ms. Automated persona JSON/
+> Markdown hashes are `61d73fc9e11f55bc99f153aa6483661d1dc143104dab4d0cb728a48b68b485c5` /
+> `fdd7ce423cee68ef2584190bb056afd4b32a41c4158957da0e3a571b02f8c495`.
+> Preview `dev-preview-exact-307b8aaf90f3-20260813T000806Z-59950` was browser-smoked
+> under Edge 151 over loopback, bound to expected separate origin
+> `https://dev-celestialfrontier.github.io`, with `publishable:false`; manifest/content/tree
+> hashes are `1a4f62bd5f351f62ed69c5d4670de43408ee41466e14dc0632ead3e5a95c148d` /
+> `5db7790977071235ed164fb8f382bd67421c9fd5e834a504cdb4e1a1e8f47589` /
+> `5b8e1f649b1259f96f5de6d7e8aca0377bc2cf10`. Live Git/PR is authority for current
+> tip/upstream/checks; whichever final pushed tip is selected requires matching CI. No human,
+> host, Ready, merge, release, deployment, or version authority follows.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
