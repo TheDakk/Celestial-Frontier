@@ -1,16 +1,20 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-**Status:** process reference, matches preview packaging and CI as of 2026-08-12.
-This is not a release record and does not authorize deployment.
+**Status:** process reference, matches preview packaging and branch-site publication as of
+2026-08-12. This is not a release record.
 
-## Separate-origin requirement; host choice pending
+## Separate-origin requirement; approved branch site
 
 Celestial Frontier should have a continuously usable **development preview**, but it must
 not be published as a path under `https://celestialfrontier.github.io/`.
 
-No preview owner, repository, hostname, or deployment has been created or approved yet.
-Choosing between the two valid options below is still a human hosting decision; the current
-source batch only prepares fail-closed packaging and evidence.
+The approved development owner is `Dev-CelestialFrontier`, with organization-site repository
+`dev-celestialfrontier.github.io` at `https://dev-celestialfrontier.github.io/`. A successful
+push-triggered `test-battery` on `develop` alone may publish the root HTML there; the publisher
+checks the exact event SHA and branch, uses a target-specific deploy key, stamps a visible
+`DEV · <commit>` banner, writes noindex/robots guards, and cannot target production. Pull
+requests, manual agent runs, and failed batteries cannot publish. This public DEV surface is a
+playtest convenience, not human-play, Ready, merge, release, or production authority.
 
 GitHub Pages provides at most one user/organization site per account. Its default URL is
 `https://<owner>.github.io/`; additional project sites use
@@ -21,7 +25,7 @@ would normally publish under a **path on the production host**, not at a new hos
 does not change the web origin, so it would share IndexedDB and localStorage with the live
 game.
 
-Use one of these genuinely separate origins:
+The chosen setup is the first of these genuinely separate-origin patterns:
 
 1. **Recommended GitHub-only option:** create a separate GitHub account or organization
    named `dev-celestialfrontier`, then create its required organization-site repository
@@ -259,7 +263,8 @@ content `5db7790977071235ed164fb8f382bd67421c9fd5e834a504cdb4e1a1e8f47589`,
 tree `5b8e1f649b1259f96f5de6d7e8aca0377bc2cf10`, 37 files /10,186,644 bytes.
 This remains local evidence, not host/publication/human/Ready/merge/release/deploy/version
 authority. Live Git/PR determines current tip/upstream/checks; the selected final pushed
-tip requires matching CI, the separate host decision, explicit candidate approval, and human play.
+tip requires matching CI, explicit candidate approval, and human play. The configured branch
+site does not itself approve a v2 publication candidate.
 
 Immutable clean executable source `df1c28b31d15cd554d36f9b4ca65d8765366a5df`
 remains prior exact #206 executable evidence (clean status `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;

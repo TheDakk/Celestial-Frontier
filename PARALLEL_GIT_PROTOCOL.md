@@ -156,9 +156,10 @@ The development preview is evidence and a play surface, not a Git transport or
 source of truth. Never copy code back from a hosted preview. Build it from a
 clean pushed commit using `port/v2/tools/devpreview.mjs`; the clean path builds
 from an isolated `git archive` snapshot of exact HEAD rather than mutable
-working-tree bytes. Publish it only through
-the separately approved host process in `port/DEVELOPMENT_PREVIEW.md`, and keep
-the production `celestialfrontier.github.io` origin untouched. A preview URL,
+working-tree bytes. The configured branch-site publisher may update only the
+mapped origin after its matching push battery passes; candidate publication
+still follows `port/DEVELOPMENT_PREVIEW.md`, and the production
+`celestialfrontier.github.io` origin remains isolated. A preview URL,
 artifact name, or mutable “latest” label never replaces the full commit and
 content hash.
 
@@ -176,6 +177,10 @@ sides cannot detect a temporary edit that was built and then restored.
 
 ## Releases
 
-`develop` reaches `main`, and `main` reaches the separate
-`celestialfrontier.github.io` repository, only at a user-approved release.
-Neither agent may deploy during ordinary development.
+`develop` reaches `main` only at a user-approved release. Agents never write either
+Pages repository directly. After a successful push-triggered `test-battery`, the
+repository-owned publisher may update exactly one isolated static target:
+`main` → `CelestialFrontier/celestialfrontier.github.io` and `develop` →
+`Dev-CelestialFrontier/dev-celestialfrontier.github.io`. PR and manual agent runs have
+no publication authority. The development site is a public, noindex play surface—not
+human-play, Ready, merge, release, or production-deployment authority.
