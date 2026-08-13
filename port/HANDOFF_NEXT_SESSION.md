@@ -2,11 +2,12 @@
 
 ## Scope and base
 
-This live handoff supersedes the master-architecture/design-only state above. Arc 0 has real frozen
-source behavior in the shared `openai/mac` worktree on integration base
-`f780d15349bc20bc222e920a020c72e3b96cabdd`; it is not yet a committed, pushed, reviewed or
-integrated change. Resolve the live branch/HEAD/upstream/worktree/PR/CI/publication state before any
-Git action. No Arc 0 PR, required branch battery, `develop` push battery, publication,
+This live handoff supersedes the master-architecture/design-only state above. Arc 0 exact head
+`da64eb6df4f26b458bd136caff62ecedee702675` is pushed on `openai/mac`, based on integration
+base `f780d15349bc20bc222e920a020c72e3b96cabdd`. Draft PR
+[#18](https://github.com/TheDakk/Celestial-Frontier/pull/18) targets `develop`; its required
+branch-flow and test-battery evidence is pending. Resolve live branch/HEAD/upstream/worktree/PR/CI/
+publication state before any Git action. No integration, `develop` push battery, publication,
 `develop` → `main` merge, production version, release or deployment is claimed here.
 
 Read `ROADMAP.md`, `PROCESS_LAWS.md` and `PARALLEL_GIT_PROTOCOL.md` first, then the current
@@ -109,14 +110,14 @@ battery, human play, `develop` push battery or automatic branch-site publication
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac`, Arc 0 based on
-`f780d15349bc20bc222e920a020c72e3b96cabdd`. The shared worktree carries frozen source, tests and
-docs; no Arc 0 commit, push, PR or integration is recorded in this handoff.
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac`; Arc 0 exact head is
+`da64eb6df4f26b458bd136caff62ecedee702675`, based on
+`f780d15349bc20bc222e920a020c72e3b96cabdd`. It is pushed and represented by draft PR #18;
+no integration is recorded in this handoff.
 
-**GitHub step:** none yet. Once the exact scoped head is reviewed, committed and pushed, open the
-PR below into `develop`. Only its unchanged, clean, mergeable, terminal-green required-battery head
-may follow the standing normal-merge authority. Do not claim the later `develop` battery or mapped
-publisher until live evidence exists.
+**GitHub step:** draft PR #18 is open from the exact head below into `develop`. Only its unchanged,
+clean, mergeable, terminal-green required-battery head may follow the standing normal-merge
+authority. Do not claim the later `develop` battery or mapped publisher until live evidence exists.
 
 **PR details:**
 
@@ -144,9 +145,9 @@ opened now and does not have this unmerged work. After a merge into `develop`, a
 batch it must begin clean, fetch and merge the then-current `origin/develop` into
 `anthropic/windows`. Never copy files manually.
 
-**Release status:** no Arc 0 PR, integration, required push battery, branch-site publication,
-production version, `develop` → `main` merge, release or deployment is recorded. Verify any
-`develop`, `main` or site state live.
+**Release status:** Arc 0 draft PR #18 is open; no integration, required push battery, branch-site
+publication, production version, `develop` → `main` merge, release or deployment is recorded.
+Verify any `develop`, `main` or site state live.
 # HISTORICAL/SUPERSEDED — draft PR #11 pre-merge handoff (2026-08-12)
 
 **Current integration state:** PR #10 merged normally into `develop` at
