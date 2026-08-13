@@ -1,0 +1,80 @@
+name: publish branch sites
+
+on:
+  workflow_run:
+    workflows: [test-battery]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  production:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: cf-production-pages
+      cancel-in-progress: false
+    env:
+      CF_PUBLISH_SOURCE_BRANCH: main
+      CF_PUBLISH_SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
+      PAGES_DEPLOY_KEY: ${{ secrets.CF_PRODUCTION_PAGES_DEPLOY_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+      - name: configure production-only deploy key
+        run: |
+          set -euo pipefail
+          test -n "$PAGES_DEPLOY_KEY"
+          key_dir="$RUNNER_TEMP/cf-production-pages-key"
+          install -d -m 700 "$key_dir"
+          printf '%s\n' "$PAGES_DEPLOY_KEY" > "$key_dir/id_ed25519"
+          chmod 600 "$key_dir/id_ed25519"
+          ssh-keyscan -H github.com > "$key_dir/known_hosts"
+          printf 'GIT_SSH_COMMAND=ssh -i %s/id_ed25519 -o UserKnownHostsFile=%s/known_hosts -o IdentitiesOnly=yes\n' "$key_dir" "$key_dir" >> "$GITHUB_ENV"
+      - name: verify publisher controls and publish production
+        run: |
+          node tools/publish-branch-site.js --selftest
+          node tools/publish-branch-site.js --channel production
+
+  development:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'develop'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: cf-development-pages
+      cancel-in-progress: false
+    env:
+      CF_PUBLISH_SOURCE_BRANCH: develop
+      CF_PUBLISH_SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
+      PAGES_DEPLOY_KEY: ${{ secrets.CF_DEVELOPMENT_PAGES_DEPLOY_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+      - name: configure development-only deploy key
+        run: |
+          set -euo pipefail
+          test -n "$PAGES_DEPLOY_KEY"
+          key_dir="$RUNNER_TEMP/cf-development-pages-key"
+          install -d -m 700 "$key_dir"
+          printf '%s\n' "$PAGES_DEPLOY_KEY" > "$key_dir/id_ed25519"
+          chmod 600 "$key_dir/id_ed25519"
+          ssh-keyscan -H github.com > "$key_dir/known_hosts"
+          printf 'GIT_SSH_COMMAND=ssh -i %s/id_ed25519 -o UserKnownHostsFile=%s/known_hosts -o IdentitiesOnly=yes\n' "$key_dir" "$key_dir" >> "$GITHUB_ENV"
+      - name: verify publisher controls and publish development
+        run: |
+          node tools/publish-branch-site.js --selftest
+          node tools/publish-branch-site.js --channel development
