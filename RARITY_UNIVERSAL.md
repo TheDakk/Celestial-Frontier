@@ -5,6 +5,16 @@
 two places where the shipped implementation differs from the §3 plan, and one instruction that is retracted.
 *(Previously: "awaiting Nick's deploy call", matched-as-of 2026-07-22 — both stale.)*
 
+> **2026-08-13 v2 display overlay (current port contract):** The universal ten-name
+> ladder remains player vocabulary, but **Spectral class** is retired as a visible
+> survey field. V2 filters that legacy descriptor row without changing deterministic
+> descriptor output. Planet rarity is completely absent before landing—there is no
+> “land to reveal” Spectral row—and appears after landing as a plain grade/callout.
+> Internal spectral color words remain seeded art data only. Real stellar spectral
+> classifications remain astronomical identity; any separately presented celestial rarity
+> must use plain ten-tier language, never a Spectral-class row. This overlay changes presentation, not raw tiers, seeded hues,
+> fixture parity, or the immutable v1.8.9 release history.
+
 > ### ⚠ RE-VERIFIED 2026-07-31 — the plan and the implementation differ in mechanism
 >
 > **1. Names/colors are NOT routed through `displayRarity`.** §3 item 4 specifies that `speciesGrade`,
@@ -37,7 +47,7 @@ two places where the shipped implementation differs from the §3 plan, and one i
 > **4. Star glyphs.** §3 item 6 says drop `entry.grade.star`. `star` is `''` on every tier so the output
 > is correct, but **16023** still concatenates the field. Harmless; noted so the doc does not overstate.
 
-**Historical status line, kept for context —** Phase A §3 items 1–12 ALL implemented; core relabel surgically re-pinned,
+**Legacy v1 Phase-A status, kept for context —** Phase A §3 items 1–12 ALL implemented; core relabel surgically re-pinned,
 presentation layer is fp-safe/UI-only). §3.10 discovery GATING: a world hides its grade until you LAND — the
 survey card's "Spectral class" row shows a "land to reveal" teaser and the card border stays neutral from orbit
 (gated on the existing `grounded` flag in `renderPanel`); stars/galaxies still reveal on survey (gate keys on

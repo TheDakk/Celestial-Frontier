@@ -1290,21 +1290,36 @@ duplicates).
   loader and its named, top-layer `aria-modal` dialog with internal Tab wrapping and Escape/focus
   restoration. Guide uses z24 above the z23 survey card. Tooltip deep-links and Advanced Briefings
   remain OPEN; the Guide model existing does not claim those interaction layers are ported.
-- ★ **D-RELEASE-1 — legacy history, v2 draft copy and a shipped version are three different states
-  (2026-08-11).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
+- ★ **D-RELEASE-1 — legacy history, v2 development identity and a shipped version are three different states
+  (updated 2026-08-13).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
   398 bullets, v1.8.9 first and v1.0 last. The v2 development bulletin is separate, explicitly
-  `draft`, `version:null` and `Unreleased`; `V2_CURRENT_RELEASE_VERSION` is `null` and the shipped-v2
-  list is empty. Therefore draft copy can appear in the cumulative Guide history but can never fire
+  `draft`, `version:"2.0"` and `Unreleased`; v2.0 identifies the playtest product, while
+  `V2_CURRENT_RELEASE_VERSION` is `null` and the shipped-v2 list is empty. Therefore draft copy can appear in the cumulative Guide history but can never fire
   the mature one-time update rule or mutate `rnSeen`. Hash/parity and negative-control tests protect
-  the archive and patch-line selector. No v1.8.9 mutation, version bump, release or deployment is
+  the archive and patch-line selector. No v1.8.9 mutation, production version, release or deployment is
   implied.
+- ★ **D-PRESENT-1 — Spectral remains deterministic data, not a v2 player class
+  (2026-08-13).** The auto-lifted descriptors retain `.designation`, `spectral()` and seeded color
+  words for parity and art. The application presentation filters every legacy `Spectral class` row.
+  A planet card contains no rarity before a successful landing; afterward it adds only the plain
+  ten-tier display name. Real G/K/M and stellar-remnant classifications remain star identity. Tests
+  must prove both the player outcome and the unchanged internal designation rather than editing the
+  verbatim descriptor fixture to make the text disappear.
+- ★ **D-DEV-ID-1 — v2.0/full-commit identity is Guide-only
+  (2026-08-13).** Preview schema v3 binds the shared v2 version, `develop-<short-commit>` build,
+  full source commit, exact archive inputs, byte inventory, expected origin and generated site
+  `version.json`. The visible identity is rendered inside the Guide. Both historical corner-badge
+  ids/styles are forbidden; origin refusal, noindex/robots and manifest verification remain the
+  safety boundary. `main` continues the root v1.8.9 production package, while a green `develop`
+  push publishes the already-smoked exact v2 package.
 - ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
   (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
   heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces
   a contrast-safe 0.82..0.98 glass floor with no-blur and forced-colors fallbacks; and makes touch/
   panel controls at least 44px. Text size/tone/font save fields now change the rendered DOM and
   trigger remeasurement without flattening hierarchy: under A++ a toast title remains 19px above
-  its 16px body. Panels reserve a dedicated right gutter for the sticky 44px Close target. Focus-
+  its 16px body. Panels and Survey each own exactly one 44px top-right Close target; refill removes
+  duplicate seating and balanced header/row padding plus separators keep the glass geometry symmetric. Focus-
   visible, labelled sliders/import inputs, panel opener restoration and modal Tab containment are
   explicit; if Survey reopening hides a desktop rail opener, closing falls back to Survey and then
   the canvas rather than stranding focus on the hidden panel control. Motion Auto follows the OS
@@ -1328,6 +1343,8 @@ duplicates).
   clearance outcome and reproduces the exact collision by removing the cap and adding tall content;
   `planetside-portrait-trail-fallback` tightens the lower safe rectangle enough to force the fallback,
   proves its useful strip and fixed-chrome clearance, then proves exact restoration.
+  On desktop, notifications, Settings and Records share the bottom-right utility edge above the
+  measured dock; none may fall back over the upper-left navigation rail.
 
   Pushed commit `33ea34191c817a8e78eea598c31981f8208e939b` passed its exact local battery,
   but GitHub test-battery #199, run `31571459050` / job `94034164092`, failed in the v2

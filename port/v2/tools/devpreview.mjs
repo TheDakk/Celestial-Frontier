@@ -30,12 +30,16 @@ const appDir = path.join(v2Root, 'apps', 'game');
 const distDir = path.join(appDir, 'dist');
 const evidenceRoot = path.join(appDir, 'smoke');
 const PROD_ORIGIN = 'https://celestialfrontier.github.io';
-const SCHEMA = 'cf-dev-preview/v2';
+const SCHEMA = 'cf-dev-preview/v3';
+const VERSION_SCHEMA = 'cf-v2-version/v1';
+const SITE_VERSION_SCHEMA = 'cf-development-site-version/v1';
+const DEVELOPMENT_CHANNEL = 'development';
 const DEFAULT_ORIGIN = 'https://dev-celestialfrontier.github.io';
 const CI_PREVIEW_BROWSER = '/usr/bin/google-chrome';
 const CONTROLLED_PREVIEW_WORKFLOWS = Object.freeze([
   '.github/workflows/test.yml',
   '.github/workflows/dev-preview-package.yml',
+  '.github/workflows/publish-branch-sites.yml',
 ]);
 
 function fail(message) { throw new Error(message); }
@@ -47,6 +51,20 @@ function git(args) {
 }
 function scriptJson(value) {
   return JSON.stringify(value).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
+}
+
+function readDevelopmentVersion(root) {
+  const versionPath = path.join(root, 'version.json');
+  assert(fs.existsSync(versionPath), `shared v2 version file is missing: ${versionPath}`);
+  let value;
+  try { value = JSON.parse(fs.readFileSync(versionPath, 'utf8')); }
+  catch (error) { fail(`shared v2 version file is invalid JSON: ${error.message}`); }
+  assert(value?.schema === VERSION_SCHEMA,
+    `shared v2 version schema must be ${VERSION_SCHEMA}`);
+  assert(typeof value.version === 'string'
+    && /^[0-9]+\.[0-9]+(?:\.[0-9]+)?(?:[-+][0-9A-Za-z.-]+)?$/.test(value.version),
+  `shared v2 version is invalid: ${String(value?.version)}`);
+  return Object.freeze({ schema: value.schema, version: value.version });
 }
 
 function safeTempRemove(root, prefix) {
@@ -306,7 +324,10 @@ export function assertPreviewWorkflowBrowserContract(source, label = 'preview wo
   return Object.freeze({ job: jobName, browser: CI_PREVIEW_BROWSER, smokeLine: smokeLine + 1 });
 }
 
-function transformHtml(source, { expectedOrigin, entryName, commit, shortCommit, clean, publishable }) {
+function transformHtml(source, {
+  expectedOrigin, entryName, commit, shortCommit, clean, publishable,
+  developmentVersion, buildId,
+}) {
   assert((source.match(/<head(?:\s[^>]*)?>/g) || []).length === 1,
     `${entryName}: expected exactly one <head>`);
   assert((source.match(/<body(?:\s[^>]*)?>/g) || []).length === 1,
@@ -325,6 +346,9 @@ function transformHtml(source, { expectedOrigin, entryName, commit, shortCommit,
     shortCommit,
     sourceState: clean ? 'committed' : 'dirty-local-only',
     publishable,
+    developmentVersion,
+    buildId,
+    channel: DEVELOPMENT_CHANNEL,
     entry,
   };
   const loader = `<script type="module" data-cf-dev-loader>
@@ -340,16 +364,14 @@ if((location.origin===info.expectedOrigin&&info.publishable)||local){
 }
 </script>`;
   const robots = '<meta name="robots" content="noindex,nofollow,noarchive,nosnippet" />';
-  const style = `<style data-cf-dev-banner-style>
-#cf-dev-preview-banner{position:fixed;right:max(1px,env(safe-area-inset-right,0px));bottom:max(1px,env(safe-area-inset-bottom,0px));z-index:2147483647;pointer-events:none;padding:4px 2px;border:1px solid #ffcc66;border-radius:999px;background:rgba(38,18,0,.92);color:#ffe0a3;font:700 7px/1 ui-monospace,SFMono-Regular,monospace;letter-spacing:.03em;box-shadow:0 1px 5px #000;text-transform:uppercase;opacity:.92;writing-mode:vertical-rl;transform:rotate(180deg)}
-</style>`;
-  const state = !clean ? 'dirty · local only' : publishable ? 'approved candidate' : 'review artifact';
-  const banner = `<div id="cf-dev-preview-banner" role="status" title="Development preview · ${commit} · ${state}" aria-label="Development preview, build ${commit}, ${state}">DEV · ${shortCommit.slice(0, 7)}</div>`;
   let html = source.replace(scripts[0][0], loader);
   html = html.replace(/\b(src|href)="\/([^"]+)"/g, '$1="./$2"');
-  html = html.replace(/<\/head>/, `${robots}\n${style}\n</head>`);
-  html = html.replace(/<body([^>]*)>/, `<body$1>\n${banner}`);
+  html = html.replace(/<\/head>/, `${robots}\n</head>`);
   assert(!/<script type="module"[^>]*\ssrc=/.test(html), `${entryName}: unguarded module entry survived`);
+  assert(!html.includes('cf-dev-preview-banner')
+    && !html.includes('cf-development-site-banner')
+    && !html.includes('data-cf-dev-banner-style'),
+    `${entryName}: a visible development corner badge survived packaging`);
   return html;
 }
 
@@ -389,6 +411,19 @@ export function verifyPackage(root) {
   assert(/^[0-9a-f]{40}$/.test(manifest.source?.commit || ''), 'preview manifest lacks a full source commit');
   assert(manifest.source?.shortCommit === manifest.source.commit.slice(0, 12),
     'preview manifest short/full commit binding drifted');
+  assert(typeof manifest.source?.branch === 'string'
+    && /^[A-Za-z0-9._/-]+$/.test(manifest.source.branch)
+    && !manifest.source.branch.split('/').includes('..'),
+  'preview manifest source branch is invalid');
+  assert(manifest.development?.versionSchema === VERSION_SCHEMA,
+    'preview manifest v2 version schema drifted');
+  assert(typeof manifest.development?.version === 'string'
+    && /^[0-9]+\.[0-9]+(?:\.[0-9]+)?(?:[-+][0-9A-Za-z.-]+)?$/.test(manifest.development.version),
+  'preview manifest lacks a valid development version');
+  assert(manifest.development?.build === `develop-${manifest.source.shortCommit}`,
+    'preview manifest build/full commit binding drifted');
+  assert(manifest.development?.channel === DEVELOPMENT_CHANNEL,
+    'preview manifest channel drifted');
   assert(['committed', 'dirty-local-only'].includes(manifest.source?.state),
     'preview manifest source state is invalid');
   assert(manifest.source?.buildInput && typeof manifest.source.buildInput === 'object',
@@ -422,12 +457,18 @@ export function verifyPackage(root) {
   assert(htmlEntries.includes('index.html'), 'preview package has no index.html');
   for (const entry of htmlEntries) {
     const html = fs.readFileSync(path.join(resolved, ...entry.split('/')), 'utf8');
-    assert(html.includes('data-cf-dev-loader') && html.includes('cf-dev-preview-banner'),
-      `${entry}: guarded loader or visible DEV banner is missing`);
+    assert(html.includes('data-cf-dev-loader'), `${entry}: guarded loader is missing`);
+    assert(!html.includes('cf-dev-preview-banner')
+      && !html.includes('cf-development-site-banner')
+      && !html.includes('data-cf-dev-banner-style'),
+      `${entry}: development identity must not appear as a visible corner badge`);
     assert(!/<script type="module"[^>]*\ssrc=/.test(html), `${entry}: unguarded module entry survived`);
     assert(html.includes(`"expectedOrigin":${JSON.stringify(manifest.expectedOrigin)}`)
       && html.includes(`"sourceCommit":${JSON.stringify(manifest.source.commit)}`)
-      && html.includes(`"publishable":${String(manifest.publishable)}`),
+      && html.includes(`"publishable":${String(manifest.publishable)}`)
+      && html.includes(`"developmentVersion":${JSON.stringify(manifest.development.version)}`)
+      && html.includes(`"buildId":${JSON.stringify(manifest.development.build)}`)
+      && html.includes(`"channel":${JSON.stringify(manifest.development.channel)}`),
     `${entry}: runtime origin/commit/publication guard disagrees with preview.json`);
     assert(html.includes('noindex,nofollow,noarchive,nosnippet'), `${entry}: robots meta contract is missing`);
     for (const match of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
@@ -436,6 +477,15 @@ export function verifyPackage(root) {
   }
   assert(fs.readFileSync(path.join(resolved, 'robots.txt'), 'utf8') === 'User-agent: *\nDisallow: /\n',
     'robots.txt does not disallow indexing');
+  const siteVersion = JSON.parse(fs.readFileSync(path.join(resolved, 'version.json'), 'utf8'));
+  assert(siteVersion.schema === SITE_VERSION_SCHEMA
+    && siteVersion.v === manifest.development.version
+    && siteVersion.version === manifest.development.version
+    && siteVersion.build === manifest.development.build
+    && siteVersion.sourceCommit === manifest.source.commit
+    && siteVersion.sourceBranch === manifest.source.branch
+    && siteVersion.channel === manifest.development.channel,
+  'version.json does not exactly bind version/build/commit/branch/channel to preview.json');
   return manifest;
 }
 
@@ -458,8 +508,11 @@ function packagePreviewLocked(args) {
   const commit = git(['rev-parse', 'HEAD']);
   assert(/^[0-9a-f]{40}$/.test(commit), 'git did not return a full source commit');
   const shortCommit = commit.slice(0, 12);
-  const branch = process.env.GITHUB_HEAD_REF || git(['branch', '--show-current'])
+  const branch = process.env.CF_PUBLISH_SOURCE_BRANCH
+    || process.env.GITHUB_HEAD_REF || git(['branch', '--show-current'])
     || process.env.GITHUB_REF_NAME || 'detached';
+  assert(/^[A-Za-z0-9._/-]+$/.test(branch) && !branch.split('/').includes('..'),
+    `unsafe preview source branch identity: ${branch}`);
   const dirtyLines = git(['status', '--porcelain=v1', '--untracked-files=all'])
     .split(/\r?\n/).filter(Boolean);
   const clean = dirtyLines.length === 0;
@@ -486,6 +539,7 @@ function packagePreviewLocked(args) {
   let buildDistDir = distDir;
   let viteVersion = null;
   let lockfileSha256 = null;
+  let developmentVersion = null;
   try {
     if (clean) {
       snapshot = exactCommitSnapshot(repoRoot, commit, [
@@ -496,6 +550,7 @@ function packagePreviewLocked(args) {
       buildAppDir = path.join(buildV2Root, 'apps', 'game');
       buildDistDir = path.join(buildAppDir, 'dist');
     }
+    developmentVersion = readDevelopmentVersion(buildV2Root).version;
     viteVersion = JSON.parse(fs.readFileSync(path.join(buildAppDir, 'package.json'), 'utf8')).devDependencies.vite;
     lockfileSha256 = sha256Bytes(fs.readFileSync(path.join(buildV2Root, 'package-lock.json')));
     execSync('npx vite build', { cwd: buildAppDir, stdio: 'inherit' });
@@ -516,14 +571,26 @@ function packagePreviewLocked(args) {
 
   const htmlFiles = fs.readdirSync(output).filter((name) => name.endsWith('.html')).sort();
   assert(htmlFiles.includes('index.html'), 'preview build has no index.html');
+  assert(developmentVersion, 'preview build did not resolve its shared v2 version');
+  const buildId = `develop-${shortCommit}`;
   for (const name of htmlFiles) {
     const file = path.join(output, name);
     const source = fs.readFileSync(file, 'utf8');
     fs.writeFileSync(file, transformHtml(source, {
       expectedOrigin, entryName: name, commit, shortCommit, clean, publishable,
+      developmentVersion, buildId,
     }));
   }
   fs.writeFileSync(path.join(output, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
+  fs.writeFileSync(path.join(output, 'version.json'), `${JSON.stringify({
+    schema: SITE_VERSION_SCHEMA,
+    v: developmentVersion,
+    version: developmentVersion,
+    build: buildId,
+    sourceCommit: commit,
+    sourceBranch: branch,
+    channel: DEVELOPMENT_CHANNEL,
+  }, null, 2)}\n`);
 
   const files = fileInventory(output);
   const manifest = {
@@ -533,6 +600,12 @@ function packagePreviewLocked(args) {
     expectedOrigin,
     productionOrigin: PROD_ORIGIN,
     publishable,
+    development: {
+      versionSchema: VERSION_SCHEMA,
+      version: developmentVersion,
+      build: buildId,
+      channel: DEVELOPMENT_CHANNEL,
+    },
     source: {
       commit,
       shortCommit,
@@ -675,9 +748,15 @@ function runSelftest() {
     shortCommit: 'a'.repeat(12),
     clean: true,
     publishable: true,
+    developmentVersion: '2.0',
+    buildId: `develop-${'a'.repeat(12)}`,
   });
-  assert(transformed.includes('data-cf-dev-loader') && transformed.includes(`>DEV · ${'a'.repeat(7)}<`),
-    'SELFTEST transform omitted loader/banner');
+  assert(transformed.includes('data-cf-dev-loader')
+    && transformed.includes('"developmentVersion":"2.0"')
+    && !transformed.includes('cf-dev-preview-banner')
+    && !transformed.includes('cf-development-site-banner')
+    && !transformed.includes('data-cf-dev-banner-style'),
+  'SELFTEST transform omitted the guarded Guide identity or retained a visible corner badge');
   assert(!/<script type="module"[^>]*\ssrc=/.test(transformed),
     'SELFTEST transform left an unguarded module entry');
   const loaderBody = (transformed.match(/<script type="module" data-cf-dev-loader>([\s\S]*?)<\/script>/) || [])[1];
@@ -703,6 +782,8 @@ function runSelftest() {
     shortCommit: 'b'.repeat(12),
     clean: true,
     publishable: false,
+    developmentVersion: '2.0',
+    buildId: `develop-${'b'.repeat(12)}`,
   });
   const reviewLoader = (reviewOnly.match(/<script type="module" data-cf-dev-loader>([\s\S]*?)<\/script>/) || [])[1];
   const reviewDocument = {
@@ -750,6 +831,15 @@ function runSelftest() {
   try {
     fs.writeFileSync(path.join(fixture, 'index.html'), transformed);
     fs.writeFileSync(path.join(fixture, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
+    fs.writeFileSync(path.join(fixture, 'version.json'), `${JSON.stringify({
+      schema: SITE_VERSION_SCHEMA,
+      v: '2.0',
+      version: '2.0',
+      build: `develop-${'a'.repeat(12)}`,
+      sourceCommit: 'a'.repeat(40),
+      sourceBranch: 'develop',
+      channel: DEVELOPMENT_CHANNEL,
+    }, null, 2)}\n`);
     const files = fileInventory(fixture);
     fs.writeFileSync(path.join(fixture, 'preview.json'), JSON.stringify({
       schema: SCHEMA,
@@ -757,8 +847,14 @@ function runSelftest() {
       expectedOrigin: DEFAULT_ORIGIN,
       productionOrigin: PROD_ORIGIN,
       publishable: true,
+      development: {
+        versionSchema: VERSION_SCHEMA,
+        version: '2.0',
+        build: `develop-${'a'.repeat(12)}`,
+        channel: DEVELOPMENT_CHANNEL,
+      },
       source: {
-        commit: 'a'.repeat(40), shortCommit: 'a'.repeat(12), state: 'committed', dirtyEntries: [],
+        commit: 'a'.repeat(40), shortCommit: 'a'.repeat(12), branch: 'develop', state: 'committed', dirtyEntries: [],
         buildInput: {
           mode: 'git-archive-exact-commit', subtree: 'port/v2', tree: 'c'.repeat(40),
           externalInputs: [{
@@ -781,13 +877,13 @@ function runSelftest() {
     fs.rmSync(resolved, { recursive: true });
   }
   console.log('DEV PREVIEW SELFTEST: PASS');
-  console.log('  workflow browser provenance: exact job-level Chrome pin in both controlled workflows');
+  console.log('  workflow browser provenance: exact job-level Chrome pin in all controlled workflows');
   console.log('  previous-step-only/conflicting/command-override/duplicate preview-smoke controls: rejected');
   console.log('  production/same-origin/insecure/path origins: rejected');
   console.log('  output outside the owned ignored evidence root: rejected');
   console.log('  unapproved review artifact: remote execution rejected');
   console.log('  transient working-tree poison: excluded from exact-commit snapshot');
-  console.log('  module entry: runtime-guarded; DEV banner + noindex injected');
+  console.log('  module entry: runtime-guarded; v2/full-commit identity reserved for Guide; no corner badge');
   console.log('  content tamper: rejected');
 }
 

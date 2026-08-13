@@ -36,13 +36,14 @@ export function registerPanel(def: PanelDef): void {
   seatPnx(def);
 }
 function seatPnx(def: PanelDef): void {
-  if (def.el.querySelector('[data-pnx]')) return;
+  const existing = [...def.el.querySelectorAll<HTMLElement>('[data-pnx]')];
+  for (const duplicate of existing.slice(1)) duplicate.remove();
+  if (existing[0]) return;
   const x = document.createElement('button');
   x.setAttribute('data-pnx', def.id);
   x.setAttribute('aria-label', 'Close ' + (def.el.getAttribute('aria-label') || def.id));
   x.textContent = '✕';
-  x.style.cssText = 'position:sticky;top:0;float:right;min-width:44px;min-height:44px;background:transparent;' +
-    'border:0;color:var(--dim);font-size:15px;cursor:pointer;z-index:2;transform:translateX(44px)';
+  x.className = 'surface-close panel-close';
   def.el.prepend(x);
 }
 /** refill a panel's content WITHOUT losing the sticky ✕ */

@@ -212,11 +212,22 @@ node tools/sizedrift-check.js  # guards the size clamp regression (see below)
 node tools/harvestclock-check.js # proves the harvest clock cannot be wound
 node tools/publish-branch-site.js --selftest
                                # validates the post-battery branch publisher,
-                               # including its reject paths.
+                               # including its channel/package/identity reject paths.
 # GitHub Actions publishes only after a successful push battery:
-#   main    -> https://celestialfrontier.github.io/
-#   develop -> https://dev-celestialfrontier.github.io/
+#   main    -> https://celestialfrontier.github.io/ (root v1.8.9 HTML)
+#   develop -> https://dev-celestialfrontier.github.io/ (exact tested port/v2 v2.0 package)
 ```
+
+Production and development deliberately use different package paths. Production replaces
+the root HTML's build placeholder and otherwise preserves the v1.8.9 game. Development
+requires `--package-root` and accepts only a verified `cf-dev-preview/v3` publication
+candidate whose full source commit, `develop` branch, clean exact-archive inputs, expected
+origin, shared v2.0 version, generated `version.json`, and byte inventory all agree. It
+mirrors that package into the development site so stale legacy files cannot survive. The
+package keeps its runtime origin refusal, `noindex` meta, disallowing `robots.txt`, and
+manifest; visible version/build identity appears only inside the Guide, never as a floating
+corner badge. The selftest must reject an unapproved artifact, a cross-channel branch, a
+missing production build placeholder, and stale destination bytes.
 
 `validate.js` fails loudly if any step fails:
 

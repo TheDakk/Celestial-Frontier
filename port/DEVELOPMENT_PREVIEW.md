@@ -1,7 +1,7 @@
 # Development Preview — Separate-Origin Human Playtesting
 
 **Status:** process reference, matches preview packaging and branch-site publication as of
-2026-08-12. This is not a release record.
+2026-08-13. This is not a release record.
 
 ## Separate-origin requirement; approved branch site
 
@@ -10,11 +10,20 @@ not be published as a path under `https://celestialfrontier.github.io/`.
 
 The approved development owner is `Dev-CelestialFrontier`, with organization-site repository
 `dev-celestialfrontier.github.io` at `https://dev-celestialfrontier.github.io/`. A successful
-push-triggered `test-battery` on `develop` alone may publish the root HTML there; the publisher
-checks the exact event SHA and branch, uses a target-specific deploy key, stamps a visible
-`DEV · <commit>` banner, writes noindex/robots guards, and cannot target production. Pull
+push-triggered `test-battery` on `develop` alone may publish the exact tested v2 package there; the publisher
+checks the exact event SHA and branch, uses a target-specific deploy key, packages and browser-
+smokes the exact `port/v2` v2.0 candidate, writes noindex/robots guards, and cannot target
+production. Visible identity—**Celestial Frontier v2.0 development** plus the full commit—lives
+inside the Guide only; there is no corner badge. Pull
 requests, manual agent runs, and failed batteries cannot publish. This public DEV surface is a
 playtest convenience, not human-play, Ready, merge, release, or production authority.
+
+**Standing execution authority (Nick, 2026-08-13):** after a scoped agent PR into `develop`
+is clean, mergeable, and terminal-green on its required battery, Codex or Claude Code may perform
+that normal merge and monitor the resulting automatic DEV publication without a new prompt.
+Do not ask again for a generic proceed after those same preconditions are met.
+The authorization is limited to this existing mapped publisher; it does not authorize manual
+site writes, a new host/key, `develop` → `main`, a release, or a production deployment.
 
 GitHub Pages provides at most one user/organization site per account. Its default URL is
 `https://<owner>.github.io/`; additional project sites use
@@ -25,7 +34,7 @@ would normally publish under a **path on the production host**, not at a new hos
 does not change the web origin, so it would share IndexedDB and localStorage with the live
 game.
 
-The chosen setup is the first of these genuinely separate-origin patterns:
+The chosen and implemented setup is the first of these genuinely separate-origin patterns:
 
 1. **Recommended GitHub-only option:** create a separate GitHub account or organization
    named `dev-celestialfrontier`, then create its required organization-site repository
@@ -60,8 +69,8 @@ not by silently changing save keys in a test build. `tools/devpreview.mjs` there
 - requires a root HTTPS origin;
 - replaces each built module entry with a runtime origin guard;
 - permits the guarded build to run only on that exact origin or loopback for local review;
-- injects a compact visible `DEV · <short-commit>` banner on every built HTML entry (the
-  full commit and source state remain available in its accessible label/title);
+- rejects either historical floating DEV-badge id/style and leaves visible version/build
+  identity to the in-game Guide;
 - injects `noindex,nofollow,noarchive,nosnippet` and writes a disallowing `robots.txt`;
 - binds every packaged byte to `preview.json` with SHA-256, the full source commit, source
   branch/state, exact `port/v2` Git tree, dependency-lock hash, build runtime, expected
@@ -76,16 +85,19 @@ not by silently changing save keys in a test build. `tools/devpreview.mjs` there
 - refuses dirty publication builds. `--allow-dirty` stamps `publishable:false` and
   `DIRTY · LOCAL ONLY` for local diagnosis only; this is the sole mode that builds the
   working tree;
+- reads the shared `port/v2/version.json`, binds v2.0 plus
+  `develop-<short-commit>` to the full commit, and writes the same identity to
+  `preview.json`, the guarded runtime global, and packaged `version.json`;
 - emits `publishable:false` by default, and its runtime refuses every remote origin. The
-  default-branch manual approval workflow normally passes
-  `--approved-publication-candidate`; after matching green CI, Nick may explicitly approve
-  PR #11's one-time local bootstrap from its clean pushed head. The flag binds
-  `publishable:true`, but neither path deploys anything;
+  reviewed candidate workflow and the mapped post-green `develop` publisher pass
+  `--approved-publication-candidate`. The flag binds `publishable:true`; only the mapped
+  branch publisher has destination write authority;
 - writes only to the ignored `port/v2/apps/game/smoke/dev-preview-*` evidence root and
   never touches the production site repository.
 
-The visible banner is part of the safety boundary. If it is absent, stop testing and report
-the URL; do not assume the page is the development build.
+The Guide identity, runtime binding and manifest are one safety boundary. Open the Guide and
+confirm v2.0 plus the manifest's full commit before testing. A floating
+`cf-dev-preview-banner` or `cf-development-site-banner` is itself a defect; stop and report it.
 
 ## Build and verify locally
 
@@ -107,12 +119,14 @@ nonpublishable. The producer and browser check also use the shared workspace loc
 fail closed rather than overlap `overridecontrol` or another source-mutating/build gate.
 `preview:smoke` then serves those exact packaged bytes over loopback and boots them in the
 owned real Chromium harness at 320×568. It requires the app, canvas, manifest binding, and
-compact DEV banner to be live; the banner must be pointer-transparent and clear of the dock.
-Both CI packaging workflows run this outcome check before uploading the artifact.
+Guide identity to be live; it rejects either historical corner badge id/style and requires the
+Guide to show v2.0 plus the full manifest commit.
+Every CI/publication workflow that packages a preview runs this outcome check before
+upload or publication.
 
 Browser provenance is owned by each process. A `CF_BROWSER` value attached to one GitHub
 Actions step does not carry into the next step merely because both belong to the same job.
-Both preview-producing jobs therefore pin the exact CI browser at job scope and resolve it
+All preview-producing jobs therefore pin the exact CI browser at job scope and resolve it
 fail-closed before the long battery; every later smoke, matrix, and preview process inherits
 the same selection. Do not depend on fallback ordering when a runner has several Chromium-
 family browsers installed.
@@ -126,9 +140,38 @@ they are not a cryptographic signature against a malicious party that rewrites t
 manifest, and hashes together. Download publication candidates from the named trusted Actions
 run and retain that run URL with the playtest report.
 
-## CI and publication flow
+## Current CI and publication flow
 
-### Current PR #11 evidence state
+The production and development channels intentionally publish different products:
+
+- a successful `main` push battery lets the production job package the root v1.8.9 HTML;
+- a successful `develop` push battery lets the development job install the exact v2
+  workspace, resolve its pinned browser, run preview selftests, build an approved candidate
+  from that exact commit, browser-smoke those bytes, and give only that package to the
+  development publisher;
+- the publisher verifies source branch/SHA/clean state, preview schema v3, full-commit
+  archive inputs, v2.0/build identity, origin refusal, `publishable:true`, byte inventory,
+  noindex/robots, and packaged `version.json`, then mirrors the package so stale legacy files
+  cannot survive;
+- the development deploy key can write only
+  `Dev-CelestialFrontier/dev-celestialfrontier.github.io`; the production key can write only
+  `CelestialFrontier/celestialfrontier.github.io`.
+
+Pull requests, manual agent runs, and red/unfinished push batteries cannot publish. The mapped
+post-green job is automatic under Nick's standing proceed authorization; agents monitor it
+without asking repeatedly, but stop for any failed check, branch/SHA mismatch, conflict, new
+destination/key, `develop` → `main`, release decision, or production action. A published v2.0
+site is still only a play surface. Human findings must bind the URL, full commit,
+`preview.json` content hash, device/browser lens, starting save, outcome and retest. Resolve the
+current branch tip, checks and hosted commit live; this reference does not freeze a “latest” run.
+
+## Historical PR #11 bootstrap and evidence record
+
+The following section records why the isolated package, browser pin and publication boundary
+exist. Its one-time bootstrap state is preserved as history and does not override the current
+automatic flow above.
+
+### PR #11 evidence state at that time
 
 The browser-provenance defect below remains preserved history. Test-battery #205,
 run `31621227550` / job
@@ -377,7 +420,8 @@ publication should be a distinct, manually approved workflow in that host reposi
 4. run `preview:verify` against the extracted root;
 5. compare `expectedOrigin`, full commit, and `contentSha256` with the playtest request;
 6. let the dedicated host workflow replace its preview contents and record that manifest;
-7. open the HTTPS URL and confirm the DEV banner shows the same short commit;
+7. open the HTTPS URL and confirm the Guide shows v2.0 plus the manifest's full commit and
+   that no floating DEV badge is present;
 8. create the playtest record from `port/playtests/PLAYTEST_TEMPLATE.md`.
 
 No source agent directly edits the production site repository or a preview-host worktree.

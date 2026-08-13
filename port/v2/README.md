@@ -1,6 +1,14 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## Current port status — 2026-08-12
+## Current port status — 2026-08-13
+
+This playtest line is **Celestial Frontier v2.0 development**. The identity is
+centralized in `version.json` and appears with the full source commit inside the
+Guide only—never as a corner badge. It does not authorize a production release:
+`V2_CURRENT_RELEASE_VERSION` remains `null`, the legacy v1.8.9 history remains
+immutable, and no one-time update bulletin can fire. A successful `develop` push
+battery publishes the tested exact v2 package to the separate development origin;
+`main` continues to publish the root v1.8.9 production HTML.
 
 The 14 planned deterministic domain facades are present and the port has a
 playable Pixi/browser slice, but the old milestone record below is not a claim
@@ -44,9 +52,9 @@ cross-links and capability-aware v2 copy. Non-dormant unported mechanics remain
 discoverable but are explicitly unavailable; intentionally dormant topics remain
 source-recorded and player-hidden. No legacy promise is presented as current behavior.
 Opening it persists the existing `seenGuide` field. The Guide also carries the full
-56-release/398-bullet legacy history beside a separate unversioned v2 development
-draft. That draft cannot trigger the one-time update popup, update `rnSeen`, or bump a
-version. Save import remains available
+56-release/398-bullet legacy history beside a separate v2.0 development
+bulletin. That playtest identity cannot trigger the one-time update popup, update
+`rnSeen`, or create a production release. Save import remains available
 under **Settings → Save data → Bring expedition**, where the same complete-envelope and
 future/corrupt-byte protections apply. The import surface is an `aria-modal`
 top layer with internal Tab wrapping and Escape-only close/focus restoration;
@@ -61,6 +69,15 @@ Outside Training, ordinary panels use z24 above an open z23 survey card. During
 Training, the intentional lesson choreography remains authoritative and keyboard
 focus is locked to the live lesson. The phone gate injects the former lower panel
 layer and requires the rendered panel/card intersection to fail.
+
+The current glass correction gives every panel and Survey card exactly one 44px
+top-right Close action; panel refill preserves that owner and removes duplicate seats.
+Balanced padding, row dividers and inset borders replace the uneven close gutter.
+Desktop notifications, Settings and Records share the bottom-right utility edge above
+the measured dock. Survey rendering filters the legacy `Spectral class` row without
+changing deterministic descriptor data: planet rarity is absent before landing and
+plain after landing, while internal seeded spectral colors and real stellar
+classification remain intact.
 
 Survey-first descent is phone- and slow-device safe: one tap opens the typed
 survey card without teleporting, and its explicit 44px `Enter galaxy` or
@@ -475,30 +492,28 @@ evidence; both it and clean `6554b2b` remain prior evidence, while clean `307b8a
 is the current local #208 executable evidence. No
 host/human/Ready/merge/release/deploy/version authority follows.
 
-Human development playtests use a commit-bound static package, not the live
-site. `npm run preview:package -- --origin=https://<separate-preview-host>`
-adds a visible DEV/commit banner, runtime origin refusal, noindex policy, and a
-hash inventory in `preview.json`. Clean packages build from an isolated
-`git archive` snapshot of exact HEAD and record the exact `port/v2` tree and
-dependency-lock hash; the mutable working tree is used only by explicitly dirty,
-nonpublishable local previews. It is `publishable:false` and loopback-only
-unless the default-branch manual workflow creates a publication candidate. For the one PR
-that introduces that workflow, Nick may explicitly approve the equivalent local clean-
-pushed-head candidate command documented in `port/DEVELOPMENT_PREVIEW.md`.
-`npm run preview:verify -- --verify=<root>`
-rechecks an extracted package. The origin must not be
-`celestialfrontier.github.io` or a path beneath it because those paths share
-production browser storage. The exact local artifact is bound to
-`https://dev-celestialfrontier.github.io`, but no owner-site repository/host or
-publication is approved or present; packaging does not deploy. Structured evidence comprises a
-single-run slice-smoke JSON/log/screenshots, a 12-viewport glass-matrix report including
-8K, and same-provenance automated-persona JSON/Markdown. The automated synthesis
-is not a human playtest. PR #11 remains draft until a real multi-lens playtest is
-recorded against the exact preview, every finding is resolved or explicitly
-dispositioned and retested, and the final head is green. The hosting decision,
-manual approval flow, storage boundary, CI artifacts, and human test record are
-defined in [`../DEVELOPMENT_PREVIEW.md`](../DEVELOPMENT_PREVIEW.md) and
+Human development playtests use the exact commit-bound package published at
+`https://dev-celestialfrontier.github.io/` after a successful `develop` push battery.
+`npm run preview:package -- --origin=https://dev-celestialfrontier.github.io`
+builds from an isolated `git archive` snapshot of exact HEAD and binds the shared
+v2.0 identity, `develop-<short-commit>` build, full commit, source tree, dependency
+lock, external content-registry blob, expected origin, storage contract, and byte
+inventory in `preview.json` plus `version.json`. Runtime origin refusal,
+`noindex` and a disallowing `robots.txt` remain mandatory. The visible identity
+appears inside the Guide as v2.0 development plus the full source commit; preview
+verification and browser smoke reject either historical corner-badge id/style.
+
+The default artifact remains `publishable:false` and loopback-only. The mapped
+post-green publisher creates and browser-smokes an approved exact-commit candidate,
+then mirrors only that verified package to the separate development repository; it
+never rebuilds or wraps the legacy root HTML. Production paths and same-origin project
+paths are rejected because they would share browser storage. Package verification and
+publication do not replace human play: record URL, full commit, manifest content hash,
+device/browser lens, starting save, findings, and retest using
+[`../DEVELOPMENT_PREVIEW.md`](../DEVELOPMENT_PREVIEW.md) and
 [`../playtests/PLAYTEST_TEMPLATE.md`](../playtests/PLAYTEST_TEMPLATE.md).
+Automated personas are evidence, not a human playtest. Resolve current Git, PR, and
+check state live; this reference intentionally carries no “latest tip is green” claim.
 
 Highest-priority open v2 work is now semantic and runtime-owned: canonicalize
 the full CF1 galaxy→star→planet hierarchy; restore imported legacy full-state
@@ -790,7 +805,7 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 
 | Tool | Role |
 |---|---|
-| `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, and package tampering; then creates, verifies, and real-browser-boots a clean-commit static human-playtest package built from an isolated exact-HEAD snapshot with a visible DEV/commit banner, guarded module loader, `robots.txt`, and `preview.json` tree/lock/byte hashes. The shared workspace lock prevents overlap with source-mutating controls; the 320×568 boot requires the banner to clear the dock. Browser provenance belongs to each process: CI pins the same exact `CF_BROWSER` at job scope so the packaging step cannot fall back to another installed browser. Default output is remote-blocked; the default-branch manual workflow normally creates approved candidates, while Nick may explicitly approve PR #11's clean-head local bootstrap only after matching green CI. It never deploys. |
+| `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, package tampering, version/build drift, and both historical corner badges; then creates, verifies, and real-browser-boots a clean-commit package from an isolated exact-HEAD snapshot. The guarded loader, `robots.txt`, `preview.json` tree/lock/input/byte hashes, shared v2.0 version and site `version.json` must agree. The 320×568 boot opens the Guide and requires v2.0 plus the full source commit with no floating badge. The shared workspace lock prevents overlap with source-mutating controls, and CI pins one exact `CF_BROWSER` at job scope. Default output is remote-blocked; only an approved candidate is eligible for the mapped post-green `develop` publisher, which separately owns deployment authority. |
 | `npm run smoke:ci` | Runs the authoritative real-browser `slicesmoke.mjs` exactly once, retains complete stdout/stderr in `slice-smoke.log`, and writes commit/branch/working-tree/browser/screenshot-bound `slice-smoke-report.json`. `smokereport` owns one full-lifetime workspace lock and passes a validated one-child inherited lease to `slicesmoke`, retaining the lock through screenshot hashing and report finalization. A failure prints the first scoped diagnosis plus a related count; it never retries a red run. |
 | `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion, aggregate twin-canvas DPR and boot order without retrying. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`. Import/reload owns `import-phase-sequence`, `replacement-ticker-quiescence`, `replacement-document-loader-token-phase`, `reload-resource-release`, and `replacement-boot-phase-sequence`: the exact import stream requires ticker-running invocation, a stopped claim/write/release, and one absolute 20-second clock before the bounded arm. A capture-scoped ordinal requires the exact release-started N → release N+1 → release-complete N+2 tail; only the valid release-first intermediate waits under that unchanged clock. Sticky receipts then require a changed-loader commit within 5 seconds, the exact 12-stage `cf-v2-boot-phase/v1` sequence, and one `cf-v2-slice-ready/v1` tail from the new session/context/generation/origin/loader/token within 20 seconds. The ticker stays false through wiring and true thereafter; browser-native `performanceNow` is strictly below the bound. Two strict at-most-2-second post-ready cycles each pair an exact-context target probe with an independent browser-process heartbeat, with cycle two awaiting a later post-render ticker turn; the import arm plus both pairs form the exact five-row command ledger. The same-backing ultra control applies that target/heartbeat discriminator to both downshift and restore, requires a later advancing ticker turn, and rejects stopped/stale ticker states. Bounded sticky failure evidence diagnoses red and separates a target-only product answerability failure from transport/instrument failure. No retry, timeout increase, or IndexedDB timeout race is used. The command owns the shared workspace lock while building/browsing. |
 | `npm run persona:selftest` / `npm run persona:report` | Joins only passing slice-smoke and glass-matrix evidence with matching commit/branch and dirty-tree digest into `automated-persona-report.{json,md}`. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |

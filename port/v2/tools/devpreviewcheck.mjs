@@ -1,5 +1,5 @@
 /* devpreviewcheck.mjs — boot the exact packaged development preview in a
-   real browser over loopback and verify its guard/banner/app outcome.
+   real browser over loopback and verify its guard/Guide-identity/app outcome.
 
    Usage: node tools/devpreviewcheck.mjs --root=<extracted-preview-root> */
 import fs from 'node:fs';
@@ -99,13 +99,12 @@ try {
       const result = await browser.send('Runtime.evaluate', {
         expression: `(()=>{ try {
           const dev=window.__CF_DEV_PREVIEW__, slice=window.__CF_SLICE__;
-          const banner=document.getElementById('cf-dev-preview-banner'), dock=document.getElementById('dock');
-          const box=(el)=>{ if(!el) return null; const b=el.getBoundingClientRect(); return {l:b.left,t:b.top,r:b.right,b:b.bottom,w:b.width,h:b.height}; };
-          const bb=box(banner), db=box(dock), overlap=!!bb&&!!db&&bb.l<db.r&&bb.r>db.l&&bb.t<db.b&&bb.b>db.t;
           const state=slice?.api?.state?.();
           return {ready:!!dev&&!!state&&!!document.querySelector('canvas'),dev,state:state?{mode:state.mode}:null,
-            banner:banner?{text:banner.textContent,title:banner.title,box:bb,pointer:getComputedStyle(banner).pointerEvents}:null,
-            dock:db,overlap,blocked:document.documentElement.dataset.cfPreviewBlocked||null};
+            badge:!!document.getElementById('cf-dev-preview-banner'),
+            legacyBadge:!!document.getElementById('cf-development-site-banner'),
+            badgeStyle:!!document.querySelector('[data-cf-dev-banner-style]'),
+            blocked:document.documentElement.dataset.cfPreviewBlocked||null};
         } catch(error){ return {ready:false,why:String(error&&error.message||error)}; } })()`,
         returnByValue: true,
       }, session);
@@ -121,22 +120,46 @@ try {
   if (outcome.blocked) throw new Error(`loopback package was blocked (${outcome.blocked})`);
   if (outcome.dev.sourceCommit !== manifest.source.commit
     || outcome.dev.expectedOrigin !== manifest.expectedOrigin
-    || outcome.dev.publishable !== manifest.publishable) {
+    || outcome.dev.publishable !== manifest.publishable
+    || outcome.dev.developmentVersion !== manifest.development.version
+    || outcome.dev.buildId !== manifest.development.build
+    || outcome.dev.channel !== manifest.development.channel) {
     throw new Error(`runtime/manifest binding drifted (${JSON.stringify(outcome.dev)})`);
   }
-  if (!outcome.banner || outcome.banner.text.trim() !== `DEV · ${manifest.source.shortCommit.slice(0, 7)}`
-    || outcome.banner.title !== `Development preview · ${manifest.source.commit} · ${manifest.source.state === 'dirty-local-only' ? 'dirty · local only' : manifest.publishable ? 'approved candidate' : 'review artifact'}`
-    || !(outcome.banner.box.w > 0 && outcome.banner.box.h > 0)
-    || outcome.banner.pointer !== 'none') {
-    throw new Error(`DEV banner is not visible/non-blocking/bound (${JSON.stringify(outcome.banner)})`);
+  if (outcome.badge || outcome.legacyBadge || outcome.badgeStyle) {
+    throw new Error(`development identity escaped the Guide into a corner badge (${JSON.stringify({ badge: outcome.badge, legacyBadge: outcome.legacyBadge, badgeStyle: outcome.badgeStyle })})`);
   }
-  if (outcome.overlap) throw new Error(`DEV banner overlaps the 320px gameplay dock (${JSON.stringify({ banner: outcome.banner.box, dock: outcome.dock })})`);
+  const opened = await browser.send('Runtime.evaluate', {
+    expression: `(()=>{ const button=document.getElementById('dockguide'); if(!button) return false; button.click(); return true; })()`,
+    returnByValue: true,
+  }, session);
+  if (opened.exceptionDetails || opened.result.value !== true) {
+    throw new Error('packaged app did not expose the Guide control');
+  }
+  const guideDeadline = Date.now() + 10000;
+  let guideIdentity = null;
+  while (Date.now() < guideDeadline) {
+    const result = await browser.send('Runtime.evaluate', {
+      expression: `(()=>{ const el=document.querySelector('[data-sel="guide-build"]'); return el?{text:el.textContent||'',visible:!!(el.getClientRects().length)}:null; })()`,
+      returnByValue: true,
+    }, session);
+    if (!result.exceptionDetails && result.result.value?.visible) {
+      guideIdentity = result.result.value;
+      break;
+    }
+    await sleep(50);
+  }
+  if (!guideIdentity
+    || !guideIdentity.text.includes(`v${manifest.development.version}`)
+    || !guideIdentity.text.includes(manifest.source.commit)) {
+    throw new Error(`Guide build identity lacks v${manifest.development.version} and the full source commit (${JSON.stringify(guideIdentity)})`);
+  }
   const errors = events.filter((event) => event.method === 'Runtime.exceptionThrown'
     || (event.method === 'Runtime.consoleAPICalled' && event.params.type === 'error'));
   if (errors.length) throw new Error(`packaged app emitted ${errors.length} console error(s): ${JSON.stringify(errors[0].params).slice(0, 400)}`);
   console.log(`DEV PREVIEW BROWSER CHECK: PASS — ${manifest.source.commit}`);
   console.log(`  browser ${browser.browser.product}; executable ${browser.browser.executable}`);
-  console.log(`  loopback boot mode ${outcome.state.mode}; 320x568 banner clear of dock`);
+  console.log(`  loopback boot mode ${outcome.state.mode}; no corner badge; Guide identity ${guideIdentity.text.trim()}`);
   console.log(`  expected remote origin ${manifest.expectedOrigin}; publishable ${String(manifest.publishable)}`);
 } catch (error) {
   exitCode = 1;

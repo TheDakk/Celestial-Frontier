@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-12. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-13. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -87,9 +87,23 @@ roughly by how often they have bitten.
   recorded in baseline.json repins[]. Never regenerate the baseline to make a failure pass.
 ⚠ **BRANCH PUBLICATION FOLLOWS A PASSED PUSH BATTERY.** Agents never write a Pages
 repository. The repository-owned publisher receives one target-specific deploy key only after
-the exact `test-battery` push succeeds: `main` publishes production and `develop` publishes the
-separate noindex DEV origin. Pull-request, manual, and failed-battery runs have no publication
-authority; the development site is never merge/release/production authority.
+the exact `test-battery` push succeeds: `main` preserves the immutable root v1.8.9 production
+HTML, while `develop` publishes the already-tested exact `port/v2` v2.0 development package to
+the separate noindex DEV origin. Development packaging must keep its full-commit manifest,
+origin refusal, noindex/robots guards and generated version identity; the visible identity lives
+inside the Guide, never in a floating corner badge. Pull-request, manual, and failed-battery runs
+have no publication authority; the development site is never merge/release/production authority.
+⚠ **A GREEN, REVIEWED AGENT PR MAY FOLLOW ITS NORMAL INTEGRATION PATH WITHOUT A SECOND
+MERGE PROMPT.** Nick's standing authorization (2026-08-13) lets Codex or Claude Code merge a
+scoped agent-branch PR into `develop` only after the required battery is terminal-success and
+the PR is clean/mergeable, then monitor the exact resulting push battery and automatic mapped
+branch-site publication. This never includes `develop` → `main`, conflict shortcuts, red or
+unfinished checks, force pushes, manual Pages writes, new external destinations/secrets,
+versioning, release approval, or production deployment.
+Once those exact preconditions are satisfied, this standing authorization is the prompt: do not
+ask Nick repeatedly for another generic “proceed” before the normal PR merge or publication
+monitor. Stop only for a real scope change, conflict, red/unfinished check, new destination/key,
+release decision, or production action.
 ⚠ LINE ENDINGS ARE PART OF THE BUILD CONTRACT — .gitattributes pins LF. Without it a fresh
   clone on Windows (autocrlf=true) checks out CRLF, and make-probe-build.js cannot find the game
   IIFE anchor "
@@ -110,6 +124,21 @@ authority; the development site is never merge/release/production authority.
   source-addressed to the mature canonical Guide; capability-aware bodies describe only systems that
   are actually live, account for every authored legacy topic, and keep intentionally dormant topics
   recorded but player-hidden rather than advertising them as usable.
+
+⚠ **RARITY DATA AND RARITY PRESENTATION ARE DIFFERENT CONTRACTS.** The lifted deterministic
+descriptor may continue to calculate a `spectral()` designation and keep color words for seeded
+art parity; that does not authorize a player-facing row named **Spectral class**. V2 survey cards
+filter that legacy row at the presentation boundary. A planet reveals no grade before a successful
+landing and then uses the plain ten-tier name (`Rarity: Legendary`, not a spectral color label).
+Real stellar classifications such as G/K/M or neutron star remain astronomical identity, and star/
+galaxy cards must not recreate the retired Spectral row. Test both directions: no pre-land leak or
+legacy row, plus unchanged internal designation data.
+
+⚠ **ONE SURFACE, ONE CLOSE OWNER.** A panel or survey card gets exactly one top-right 44px Close
+action. Refill code must preserve that owner without seating a second control; geometry tests must
+reject duplicate, detached, upper-left, and off-surface Close actions. Desktop notifications and
+Settings/Records share the bottom-right utility edge; balanced padding, row separators, and borders
+belong to the same presentation contract, not optional polish that may regress independently.
 
 ---
 
@@ -431,10 +460,12 @@ drift. Treat declaration-only edits as behavior risk until those two directions 
 scheme + host + port, not by a URL pathname. A GitHub Pages project site under
 `celestialfrontier.github.io/<repo>/` would share IndexedDB and localStorage with production even
 if its repository and visible path were different. Human previews require a genuinely separate
-HTTPS origin, a visible DEV + full-commit binding, a content-hashed manifest, noindex policy, and
-a runtime refusal on the production origin. Packaging and publication are separate approvals:
-ordinary CI artifacts remain remote-blocked, and no preview action may imply a version bump,
-release, `main` update, or live-site deployment.
+HTTPS origin, a Guide-visible v2.0 + full-commit binding, a content-hashed manifest, noindex
+policy, and a runtime refusal on the production origin. A corner badge is not the boundary and
+must not cover play; the Guide identity, runtime binding and manifest must agree. Packaging and
+publication remain distinct authority: ordinary CI artifacts are remote-blocked, while the mapped
+post-green-`develop` publisher accepts only the verified publication candidate for that exact
+commit. Neither path may imply a production version, release, `main` update, or live-site deploy.
 
 ⚠ **A RETRY IS NOT A DIAGNOSIS.** The v2 browser gate had several intermediate red builds while
 the harness learned document readiness and outcome timing. CI runs it once, retains the complete

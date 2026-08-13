@@ -2,7 +2,8 @@
 
 This protocol governs coordinated work by OpenAI/Codex and Anthropic/Claude
 Code on Celestial Frontier. It is deliberately conservative: agents can
-prepare and publish their own work, but never merge or deploy automatically.
+prepare and publish their own work, with the standing green-PR authorization
+defined below; no release authority is implied.
 
 ## Ownership
 
@@ -70,7 +71,17 @@ When a coding batch is complete:
    this even when the user does not ask for Git instructions.
 
 The agent may create or update a **draft** pull request from its own branch
-to `develop` when instructed, but it must never merge that pull request.
+to `develop` when instructed. Under Nick's standing authorization (2026-08-13),
+once that scoped PR is clean, mergeable, and has a completed successful required
+battery, an agent may complete its normal merge to `develop` without asking again,
+then monitor the resulting push battery and configured branch-site publication.
+That standing approval is the proceed instruction: do not request repeated generic
+confirmation after the same exact preconditions are met.
+This permission is limited to the reviewed PR's exact head and its normal
+integration path; it does not authorize merging `develop` to `main`, resolving
+conflicts by discarding work, bypassing a red/unfinished check, force pushes,
+manual Pages writes, new external targets/secrets, version changes, releases,
+or production deployment decisions.
 
 ## Required paired handoff reminder
 
@@ -161,7 +172,10 @@ mapped origin after its matching push battery passes; candidate publication
 still follows `port/DEVELOPMENT_PREVIEW.md`, and the production
 `celestialfrontier.github.io` origin remains isolated. A preview URL,
 artifact name, or mutable “latest” label never replaces the full commit and
-content hash.
+content hash. Development identity is **v2.0 development** plus the full source
+commit inside the in-game Guide only; no floating corner badge is allowed. The
+runtime origin refusal, noindex/robots policy, exact-input manifest, byte inventory,
+shared version record and generated site `version.json` remain mandatory.
 
 `npm run overridecontrol` is an **exclusive, transient source-mutating gate**.
 It must never overlap Vite, a browser run, screenshots, packaging, or any other
@@ -183,4 +197,9 @@ repository-owned publisher may update exactly one isolated static target:
 `main` → `CelestialFrontier/celestialfrontier.github.io` and `develop` →
 `Dev-CelestialFrontier/dev-celestialfrontier.github.io`. PR and manual agent runs have
 no publication authority. The development site is a public, noindex play surface—not
-human-play, Ready, merge, release, or production-deployment authority.
+human-play, Ready, merge, release, or production-deployment authority. Nick's standing
+2026-08-13 approval includes monitoring these automatic post-green-push publications;
+it does not permit manual Pages writes or expand the release boundary. `main` continues
+to publish the immutable root v1.8.9 HTML. `develop` publishes the browser-smoked exact
+`port/v2` package with a v2.0 development identity; v2.0 is not a shipped version,
+`V2_CURRENT_RELEASE_VERSION` remains `null`, and no update popup may result.

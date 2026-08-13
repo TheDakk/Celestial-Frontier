@@ -2,9 +2,14 @@
  * Canonical release-note data for the v2 browser app.
  *
  * The v1.8.9 bulletin remains immutable legacy history.  V2 development notes
- * live in a separate draft channel and cannot trigger a player update popup:
- * V2_CURRENT_RELEASE_VERSION stays null until Nick authorizes a version.
+ * live in a separate development channel and cannot trigger a player update
+ * popup: v2.0 names the playtest product, while
+ * V2_CURRENT_RELEASE_VERSION stays null until a production release is
+ * separately authorized.
  */
+import VERSION_DATA from '../../../version.json';
+
+export const V2_DEVELOPMENT_VERSION = VERSION_DATA.version;
 
 export type LegacyReleaseSection =
   readonly [heading: string, bullets: readonly string[]];
@@ -819,21 +824,21 @@ export interface V2ShippedRelease {
 export interface V2DraftRelease {
   readonly status: 'draft';
   readonly id: string;
-  readonly version: null;
+  readonly version: string;
   readonly title: string;
   readonly date: 'Unreleased';
   readonly sections: readonly V2ReleaseSection[];
 }
 
 /**
- * Development copy only.  This is intentionally not a version, not shipped,
- * and not eligible for update-popup comparison.
+ * Development copy only. v2.0 is the authorized playtest identity, not a
+ * shipped production release and not eligible for update-popup comparison.
  */
 export const V2_DRAFT_RELEASE = Object.freeze({
   status: 'draft',
   id: 'v2-development',
-  version: null,
-  title: 'Version 2 development',
+  version: V2_DEVELOPMENT_VERSION,
+  title: 'Celestial Frontier development',
   date: 'Unreleased',
   sections: Object.freeze([
     Object.freeze({
@@ -847,6 +852,9 @@ export const V2_DRAFT_RELEASE = Object.freeze({
       category: 'UI Enhancements',
       bullets: Object.freeze([
         'The development shell uses a responsive glass presentation with a measured phone dock and explicit survey-card Enter, Land, and Leave actions.',
+        'Development build identity now lives inside the Guide instead of covering the playable sky with a corner badge.',
+        'Desktop notifications and the Settings and Records surfaces share the bottom-right utility edge, with balanced panel spacing and stronger section borders.',
+        'Every open panel or survey card owns exactly one top-right Close action, so planet details cannot accumulate a duplicate or detached Close control.',
         'The mature Guide inventory is now the canonical content source for v2, with current-slice explanations and honest unavailable states for mechanics that have not been ported.',
         'Text size, text tone, font, panel tint, visible keyboard focus, 44-pixel controls, safe-area insets, and contrast-safe glass now adapt across phone, tablet, laptop, desktop, and ultrawide layouts.',
         'Panels reserve a full 44-pixel lane for their sticky Close action. If a desktop rail action becomes hidden when Survey returns, closing moves keyboard focus to Survey or the exploration canvas instead of leaving it behind the panel.',
@@ -878,14 +886,15 @@ export const V2_DRAFT_RELEASE = Object.freeze({
         'Intentional Training restart, expedition-import, and storage-recovery reloads release the outgoing full-resolution scene before the replacement page starts, preventing old and new canvases from overlapping on very large displays.',
         'Training restart, expedition import, and storage recovery now claim one mutually exclusive replacement transaction before waiting, so one flow cannot reload while another is still committing or roll back the wrong expedition.',
         'Replacement flows now pause the outgoing renderer before their first durable-write wait and restore it only after an exact-owner rollback, preventing very large software-rendered scenes from starving an accepted import before release.',
+        'Legacy color-class rows no longer appear in survey cards; deterministic spectral color remains an internal art language, while world rarity is disclosed plainly after planetfall.',
       ]),
     }),
     Object.freeze({
       category: 'Under the Hood',
       bullets: Object.freeze([
         'Deterministic domain facades, strict TypeScript programs, IndexedDB persistence, and real-browser smoke, 12-viewport glass, and nine-lens automated-persona checks form the current development gate; the portable 4×-throttled phone performance profile remains diagnostic until budgets are approved.',
-        'Legacy v1.8.9 release history remains byte-parity checked and separate from this unversioned development draft.',
-        'A separate-origin, commit-bound development preview package carries a visible DEV banner, no-index policy, byte inventory, and no production deployment permission for human playtests.',
+        'Legacy v1.8.9 release history remains byte-parity checked and separate from the v2.0 development channel.',
+        'A separate-origin, commit-bound development preview package carries Guide-visible version/build identity, a no-index policy, a byte inventory, and no production deployment permission.',
         'Responsive glass and persona playtest tools record machine-readable outcomes and retain a red run without automatic retries or cascade-hiding. Import settlement and replacement-page startup are observed separately, and a reload passes only after both the browser loader and document token change.',
         'Reload evidence now separates import settlement, navigation commit, and new-document boot; requires a valid renderer/canvas release witness; and retains browser lifecycle, runtime, crash, and document-load diagnostics under deliberate failing controls.',
         'Import evidence now records the exact claim, prior-save wait, primary write, and renderer-release sequence under one absolute deadline, including two-way proof that the outgoing ticker runs before claim and stays stopped afterward.',
@@ -896,7 +905,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
   ]),
 } as const satisfies V2DraftRelease);
 
-/** No v2 release has been authorized or shipped. */
+/** No v2 production release has been authorized or shipped. */
 export const V2_CURRENT_RELEASE_VERSION: null = null;
 export const V2_SHIPPED_RELEASES =
   Object.freeze([] as V2ShippedRelease[]);
@@ -958,7 +967,7 @@ function v2DraftView(release: V2DraftRelease): ReleaseNoteView {
   return Object.freeze({
     channel: 'v2',
     status: 'draft',
-    version: null,
+    version: release.version,
     title: release.title,
     date: release.date,
     sections: Object.freeze(release.sections.map((section) =>
