@@ -1,185 +1,152 @@
-# ★ LIVE — master architecture + 10/10 acceptance bar defined; implementation not started (2026-08-13)
+# ★ LIVE — Arc 0 Charter truth + canonical planet-share Search frozen; integration open (2026-08-13)
 
-The clean integration baseline before this documentation batch was
-`c20941c5b309f0f7d5160b04f869af85c3b905ba`. At that point OpenAI/Codex
-`openai/mac` equalled `origin/openai/mac` and `origin/develop` with no
-working-copy changes. The current batch creates and synchronizes the docs-only master
-architecture in `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` and the directly affected
-system references. It does not implement a gameplay capability.
+## Scope and base
 
-The branch products remain intentionally separate. The latest verified mapped development
-publication came from publisher `31688439513`: development job `94409926305`
-succeeded, production job `94409927127` skipped, destination
-`da5dc493ca9daaff6962012056016cb6cfb0e96b`, approved content SHA-256
-`69856a51bf2ad702651ac617265832363a0e14b6e50123d97176752c2166a8a0`
-and build `develop-c20941c5b309`. It certifies source
-`c20941c5b309f0f7d5160b04f869af85c3b905ba` only. Production remains unchanged
-v1.8.9 at `0a5ee134d8e9724fdae909d75b3a5e3811e54166`.
+This live handoff supersedes the master-architecture/design-only state above. Arc 0 has real frozen
+source behavior in the shared `openai/mac` worktree on integration base
+`f780d15349bc20bc222e920a020c72e3b96cabdd`; it is not yet a committed, pushed, reviewed or
+integrated change. Resolve the live branch/HEAD/upstream/worktree/PR/CI/publication state before any
+Git action. No Arc 0 PR, required branch battery, `develop` push battery, publication,
+`develop` → `main` merge, production version, release or deployment is claimed here.
 
-## Honest current boundary
+Read `ROADMAP.md`, `PROCESS_LAWS.md` and `PARALLEL_GIT_PROTOCOL.md` first, then the current
+system references: `QUESTS_AND_CHAPTERS.md`, `PROGRESSION.md`, `UI_PRESENTATION.md`,
+`EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md`, `celestial-frontier-codebase-reference.md`,
+`port/v2/README.md` and `port/v2/DEVIATIONS.md`. The historical tail below remains history only.
 
-Current v2 is still the playable Phase-4 exploration/survey slice. Universe travel, Survey
-and Planetside are deterministic and save-backed. Compendium is read-only with static
-deterministic portraits. Imported inventory/items/equipment/technology/Ascent bytes are
-preserved and compatible saved drive/chapter state can gate reach. Current audio is whoosh
-and survey ping.
+## Frozen Arc 0 source truth
 
-Still unimplemented: Inventory/Cargo and paper doll; Shipyard/research/fabrication/mining/
-skimming/salvage and ship visuals; item-instance loot; Tame/Scavenge/Sample and Biosphere
-Yield acquisition writers; care/breeding/companions; live duel/
-conquest/Guardians; Companion missions; and the full creature/combat/ship/biome audio mixer.
-The Guide and **A New Foundation** are unchanged because none of those outcomes landed.
+### Charter projection: current action, canonical legacy data, honest boundary
 
-The north star is a respectful mastery loop—Discover, Learn, Gather, Build, Raise, Risk,
-Return, Reach farther—with visible sources/ranges, finite resources, deterministic receipts
-and no paid randomness, streak pressure, expiring urgency, hidden odds or break punishment.
-Every capability has one gameplay owner, one visual projection and one Guide statement.
-Art never grants reach; rarity never substitutes for power; veterans do not re-earn access.
+`ASC_CHAPTERS_DATA` remains the canonical legacy chapter record, including its unported goals and
+`bankLandfall` banking rule. The app no longer renders that raw legacy record as a current-player
+promise. Its pure `projectV2Charter` / `currentV2Objective` projection uses saved `ascCh`,
+`ascProg` and the derived saved drive stage:
 
-The following are planned acceptance outcomes, not current v2 capabilities or Guide promises:
+- it shows only current writable landfall goals;
+- a fresh stage-0 expedition sees the two Sol landfalls;
+- a non-Sol goal appears only when actual saved drive reach is at least Neighborhood stage;
+- a nonterminal chapter number alone never grants non-Sol reach;
+- completing every visible landfall becomes a boundary, never a fabricated canonical completion,
+  drive, reach tier or unavailable mining/fabrication/bioscan/conquest/breeding/Shipyard task;
+- a chapter can advance only after a new real landfall changes banked progress and canonical
+  completion is backed by the compatible saved stage; and
+- terminal veteran state (`ascCh >= ASC_CHAPTER_COUNT`) has no phantom chapter or objective. The
+  Charters panel instead shows a generic Charter record preserving established progress and reach.
 
-- a fresh 30–60-minute complete journey: Survey an opportunity → Gather → Build → Tame →
-  improve the ship → reach somewhere new → Return with a meaningful result;
-- a deterministic world-opportunity model: each destination visibly signals some mix of
-  materials, creatures, ruins/anomalies, blueprints, hazards, lore or Guardian leads;
-- readable loot/economy: build tags, compare/inspect, visible source/range, deterministic
-  targeted crafting, filter/salvage rules, explicit source/sink/pacing review and aspirational
-  chase items by playstyle;
-- a combat decision model—roles, telegraphed intent, preparation, counterplay, retreat and
-  settlement terms—before battle UI expands;
-- later optional frontier projects (scanner relays, labs, shelters, cargo beacons,
-  observatories) plus a player legacy layer (Chronicle, museum, ship/discovery history,
-  Guardian trophies and share cards), with no decay, maintenance demand or mandatory offline
-  income; and
-- recurring human tests for the first 30 minutes, first three sessions and long sessions,
-  assessing delight, comprehension, agency, attachment, fatigue, accessibility, heat and
-  pacing rather than retention pressure.
+Guide/release wording carries the same development-slice limit. No Charter writer beyond first
+landfall, no unported goal and no new reach reward has been fabricated.
 
-The first complete journey is the integration gate: deeper breadth waits until humans can
-understand, choose through and enjoy that loop without hidden prerequisites, idle waits or fake
-progress.
+### Canonical CF1 address foundation: pure proof, source-derived output
 
-## P1/P2 findings and implementation order
+`resolveCF1WorldAddress` is a pure resolver, not a blanket ingress or receipt implementation. It
+takes semantic galaxy/star/planet identity and proves the full generated CF1 hierarchy before it
+returns a canonical address. The return contains source-derived galaxy presentation metadata,
+parent cells, star layer, planet ordinal and stable key; no caller may retain presentation values
+from a public share tuple. The focused Earth proof yields generated size 78 rather than injected
+size 3999.
 
-P1 before expansion:
+`jumpToView` calls the resolver for sanitized planet-surface navigation, including planet Atlas
+rows. That gives post-sanitize generator membership/canonical output only; it does not prove that a
+saved/Atlas row was strict before a prior repair/coercion.
 
-1. Charter goals/copy expose unimplemented mining, fabrication and Shipyard paths. Project
-   only actionable goals until the complete engineer outcome exists.
-2. The possible 1,500-row Compendium eagerly mounts full 440px sources before its 132px
-   derivatives finish. Virtualization, cancellation, replacement and a deliberately failing
-   decoded-memory plateau control precede richer portrait work.
-3. Survey alone cannot create a catalogue page or living companion. Port finite
-   Tame/Scavenge/Sample receipt writers before collection, breeding or dispatch becomes live.
+### Strict ingress wired now: raw external planet-share Search only
 
-P2 queue: ordinary Pixi/Canvas texture ownership and `_rgCache` bounds; off-by-one small
-art-cache caps; portrait-key churn from nonvisual `g.xp` after an exhaustive painter audit;
-Auto-Extractor clock wind; the missing biome-fauna profile route; executable economy-manifest/
-affix golden coverage after this batch corrected the formula/count docs; conquest-loss XP
-ledger overlap; and generated HD-art cleanup only through its lifter with parity/pixel proof.
+The raw external CF1 `t:'p'` Search route parses identity before the tolerant legacy
+decode/sanitize flow:
 
-Implementation order:
+- exact finite two-decimal coordinates: `g[0]`, `g[1]`, `s[0]` and `s[1]`;
+- exact uint32 numeric seeds: `g[6]`, `s[2]` and `p`;
+- an oversized CF1 paste above the 8,192-character raw input cap rejects before base64/JSON
+  allocation; and
+- no numeric-string, fractional, wrapping or truncating correction can become a destination.
 
-1. Repair actionable Charter projection/copy; prove the canonical CF1 galaxy → star → planet
-   identity seam before any world-bound ownership writer; define the deterministic
-   world-opportunity and first-journey contracts; and correct stale source/doc tables.
-2. Virtualize async 132px thumbnails, reserve 440px for detail, and introduce one pure
-   reach-shared `ShipVisualState` with four readable chassis plus owned hardpoints.
-3. Migrate to stable item instances and exact-instance inventory/equipment/salvage, with build
-   tags, comparisons, source/range inspection and source/sink/pacing proof.
-4. Port mining, skimming, research and fabrication with visible ship-build outcomes.
-5. Port finite Tame/Scavenge/Sample acquisition and Biosphere Yield, creating catalogue pages
-   and owned fauna through exact outcome receipts.
-6. Prove the fresh-start Survey → opportunity → Gather → Build → Tame → ship upgrade → farther
-   reach → meaningful Return journey with a first-time 30–60-minute human playtest.
-7. Add nonlethal breeding/recovery, care, bond, named memories, Chronicle and active-play
-   Companion missions with exact-once receipts.
-8. Specify and scenario-prove combat roles, telegraphing, counterplay, retreat and settlement
-   before presenting expanded battle UI.
-9. Present duel/conquest/Guardians from the deterministic transcript and settle all rewards
-   through outcome-tested receipts.
-10. Build the versioned mixer/audio lifecycle, then rights-ledgered Earth/family/hybrid,
-    combat/Guardian/ship/biome sound.
-11. Add the player legacy/museum and optional bounded frontier projects only after the core
-    loop passes: finite visible inputs, no decay, mandatory maintenance or offline-income loop.
-12. Integrate living selected previews, travel reuse, Guide/Training and recurring first-30-minute,
-    first-three-session and long-session human beta.
+Only then does Search call the resolver, then it adopts the generated parent/display values for
+reach, navigation and re-share. Focused browser proof includes valid Earth acceptance with injected
+raw size discarded, a same-reach forged parent rejection with query/focus/nav/card/Atlas/landed/
+custom-name/saved-view unchanged, and malformed fractional raw identity rejection.
 
-The four ship chassis are Scout/Chemical, Jump/Interstellar, Array/Survey Cruiser and
-Intergalactic/Frontier. Auto-Extractor and Corona Scoop are owned hardpoints. A legacy
-`ascCh`-complete save without drive items receives honest generic charter-refit provenance,
-never a bare full-reach scout or a falsely named installed drive. At most one selected Pixi
-preview exists; it pauses hidden/reduced-motion and disposes owned resources on close.
+## Intentionally open identity/ingress boundary
 
-Full unfinished inventory also retains Tame/Scavenge/Sample and finite Biosphere Yield;
-canonical CF1 hierarchy, protected `tsnap` restore,
-CFB parent identity, split-store/CAS persistence, HD planet replacement, living rigs, biome
-scenes, epoch/visibility policy, remaining Gate-B parity, ≤1-second answerability, whole-app
-accessibility, PWA/offline/rollback, formal 1,250-row/all-bloodline art certification,
-complete achievements/Charters/Stardust/endings, real
-veteran-save Gate C, human listening Gate G, physical-mobile Gate I and sustained heat QA.
-It now explicitly includes deterministic world opportunities; first-complete-journey pacing;
-loot source/sink/readability; combat counterplay; Chronicle/museum/shareable legacy; bounded
-frontier projects; and the recurring exact-preview human playtest cadence.
+D-CF1-2 is **partial**. Do not describe this batch as universal canonical-address closure. The
+following remain separate work:
 
-The standing proceed authorization remains active: once a scoped agent PR is clean,
-mergeable and terminal-green on its required battery, Codex or Claude Code may merge that
-exact head normally into `develop` and monitor the resulting push battery and mapped
-publication without asking Nick again. It does not cover changed heads, red/unfinished
-checks, conflicts, force actions, new destinations/keys, manual Pages writes,
-`develop` → `main`, production versioning, release or deployment decisions.
+1. saved-view boot and persisted Atlas rows, which may already be repaired/coerced before their
+   later navigation; their surface route currently canonicalizes only after sanitize;
+2. galaxy-only and star-only CF1 Search/Atlas routes;
+3. generated descents; and
+4. all ownership, reward and receipt writers.
+
+No future world-bound writer may rely on public address payload fields; it must retain a
+source-derived canonical address from its own proven ingress route.
+
+## Confirmed frozen checks
+
+- Node syntax check — PASS.
+- `npm run typecheck` — PASS.
+- Full v2 tests — 25 files, 283 passing, 1 skipped.
+- Focused canonical-address controls — 8/8 PASS.
+- Real-browser smoke — PASS.
+- Structured real-browser smoke evidence — PASS, 0 findings (local dirty diagnostic only).
+- Full 12-viewport Glass Matrix — PASS, 57/57 controls, 0 findings/instrument failures/retries
+  (local dirty diagnostic only).
+- Automated persona evidence — PASS for 9 bounded personas; human comprehension, accessibility and
+  physical-device play remain required.
+- Scoped `git diff --check` — PASS.
+
+These are frozen local source/check outcomes, not a substitute for a reviewed PR, required CI
+battery, human play, `develop` push battery or automatic branch-site publication.
+
+## Immediate next work
+
+1. Preserve the exact whole-scope source head through review and its required PR battery; do not
+   prematurely state PR/battery/publisher success.
+2. Prove source-derived identity through saved views, Atlas, galaxy/star routes and generated
+   descents before any ownership/receipt work.
+3. Continue Arc 1 only after that: virtualized Compendium/resource ownership and pure
+   reach-shared ShipVisualState. The later item/economy, engineering, capture, companion, combat,
+   audio, legacy and human-play arcs remain planned, not current capabilities.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac`. The clean pre-batch
-integration baseline was `c20941c5b309f0f7d5160b04f869af85c3b905ba`,
-equal to `origin/develop`. The current working copy is docs/design only; source, tests and
-player capabilities are unchanged.
+**Current side:** OpenAI/Codex on macOS, branch `openai/mac`, Arc 0 based on
+`f780d15349bc20bc222e920a020c72e3b96cabdd`. The shared worktree carries frozen source, tests and
+docs; no Arc 0 commit, push, PR or integration is recorded in this handoff.
 
-**GitHub step:** after scoped documentation verification, commit and push the exact
-`openai/mac` head and open a PR to `develop`. Standing authority applies only to that
-unchanged clean, mergeable and terminal-green head.
+**GitHub step:** none yet. Once the exact scoped head is reviewed, committed and pushed, open the
+PR below into `develop`. Only its unchanged, clean, mergeable, terminal-green required-battery head
+may follow the standing normal-merge authority. Do not claim the later `develop` battery or mapped
+publisher until live evidence exists.
 
 **PR details:**
 
 - Base branch: `develop`
 - Source branch: `openai/mac`
-- Copy-ready title: `Define the 10/10 exploration, ships, loot, companions, and audio roadmap`
+- Copy-ready title: `Make Charter goals actionable and canonicalize planet-share Search`
 - Copy-ready description:
 
-  > Defines the docs-only master architecture and 10/10 acceptance bar for the next Celestial
-  > Frontier mastery loop: a first complete 30–60-minute journey, deterministic world
-  > opportunities, bounded portrait delivery, visible ship progression, readable item-instance
-  > loot/economy, companions and active-play missions, combat counterplay before battle UI,
-  > later frontier projects/player legacy, recurring human playtests, and rights-ledgered HD
-  > audio. Refreshes the relevant system references, decisions, rubrics, codebase/readme maps
-  > and live handoffs; records the P1 Charter/Compendium findings and full P2 ownership, clock,
-  > reward and stale-contract queue. Current v2 boundaries remain explicit. No gameplay
-  > capability, in-game Guide/release bulletin, source, test,
-  > production version, `develop` → `main` merge, manual release or deployment is included.
-  > Verification: `git diff --check` and changed-Markdown local-link scan; verbatim ROADMAP
-  > archive proof and byte-exact HANDOFF historical tail; root golden seeds 198,000/198,000,
-  > code fixtures 108/108 with 6 invariants, audio profiles 200/200, rarity 60,000,000 with
-  > zero downgrades and dead-code scan with only 3 tooling-owned references; v2 Vitest
-  > 274 pass/1 skip, Guide 17/17, both TypeScript programs, unused-symbol check, spec
-  > 454/0/0, override routes 1,014/1,014, coverage 1,010/1,010, and glass/smoke-report/
-  > preview/persona selftests. Root validate and smoke also passed; the attempted local root
-  > layout run produced no product evidence because sandbox Edge SIGABRTed before CDP startup.
-  > The PR's required real-browser battery remains authoritative. After merge, Anthropic/Claude Code may
-  > synchronize from the then-current `origin/develop`.
+  > Implements the Arc 0 truth repair for the v2 slice: a stage-aware,
+  > landfall-only Charter projection that preserves canonical legacy data and veteran progress
+  > without promising unported systems; a pure source-derived CF1 galaxy → star → planet resolver;
+  > and strict raw external planet-share Search ingress that rejects forged or malformed public
+  > identity before navigation or persistence and uses generated metadata for accepted routes.
+  > Planet Atlas rows are canonicalized after sanitization, while raw saved/Atlas ingress remains
+  > open; galaxy/star routes, generated descents and future ownership/receipt writers also remain
+  > open. Verification: Node syntax check, typecheck, v2 tests 25 files/283 pass/1 skipped,
+  > focused address controls 8/8, real-browser smoke plus structured smoke evidence PASS,
+  > full 12-viewport Glass Matrix (57/57 controls) PASS, 9-persona automated evidence PASS,
+  > and scoped diff check. This PR includes
+  > no release, `develop` → `main` merge, deployment or publication. After merge, Anthropic/Claude
+  > Code may safely merge the then-current `origin/develop` into a clean agent branch.
 
-**Other side:** Anthropic/Claude Code on Windows, branch `anthropic/windows`, does not
-need to be opened now. This architecture batch is not available there until its PR merges.
-At its next coding batch after merge, from a clean worktree, fetch and merge the then-current
-`origin/develop`; if dirty, finish or commit its work first. Never copy files manually.
+**Other side:** Anthropic/Claude Code on Windows, branch `anthropic/windows`, does not need to be
+opened now and does not have this unmerged work. After a merge into `develop`, at its next coding
+batch it must begin clean, fetch and merge the then-current `origin/develop` into
+`anthropic/windows`. Never copy files manually.
 
-**Release status:** no source, gameplay capability, production version, release or
-deployment was performed by this batch. Last verified development evidence remains publisher
-`31688439513` / job `94409926305` at source
-`c20941c5b309f0f7d5160b04f869af85c3b905ba`, destination
-`da5dc493ca9daaff6962012056016cb6cfb0e96b`, content SHA-256
-`69856a51bf2ad702651ac617265832363a0e14b6e50123d97176752c2166a8a0` and build
-`develop-c20941c5b309`; production job `94409927127` skipped and production remains
-v1.8.9 at `0a5ee134d8e9724fdae909d75b3a5e3811e54166`.
+**Release status:** no Arc 0 PR, integration, required push battery, branch-site publication,
+production version, `develop` → `main` merge, release or deployment is recorded. Verify any
+`develop`, `main` or site state live.
 # HISTORICAL/SUPERSEDED — draft PR #11 pre-merge handoff (2026-08-12)
 
 **Current integration state:** PR #10 merged normally into `develop` at

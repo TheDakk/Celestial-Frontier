@@ -273,26 +273,26 @@ export const GUIDE_TOPIC_SUPPORT: Readonly<Record<GuideTopicId, GuideTopicSuppor
     ),
     landing: partial(
       ['planetfall'],
-      '<p>A planet address from Search or the Star Atlas returns to its live system survey when it is inside the expedition’s saved reach; it never lands for you. An out-of-reach route leaves you in place and names the milestone required. Press <b>Land</b> on the current planet card to enter Planetside. Only the first landing earns new landfall progress.</p><p>On touch, press the minimum-size <b>Leave world</b> action to return to the system. Right-click or <b>Escape</b> also lifts off. The legacy descent-risk and wave-off model is not yet part of this slice.</p>',
+      '<p>A planet address from Search or the Star Atlas returns to its live system survey when it is inside the expedition’s saved reach; it never lands for you. An out-of-reach route leaves you in place. A blocked star says the next Charter system is not available in this development slice. A galaxy beyond the saved Prime Signature radius says Prime Signature radius expansion is not available in this development slice. Press <b>Land</b> on the current planet card to enter Planetside. Only the first landing earns new landfall progress.</p><p>On touch, press the minimum-size <b>Leave world</b> action to return to the system. Right-click or <b>Escape</b> also lifts off. The legacy descent-risk and wave-off model is not yet part of this slice.</p>',
       'Guarded Land and explicit Leave are live; legacy descent odds and wave-off progression are not yet ported.',
       'Planetfall has not been connected in this build.',
     ),
     search: partial(
       ['search'],
-      '<p>The top-bar search accepts discovered species names and deterministic <b>CF1</b> world addresses. A valid world address inside the expedition’s saved reach reopens the destination’s system survey, where <b>Land</b> remains a separate choice. An out-of-reach address leaves the current view unchanged and names the required milestone.</p><p>Creature <b>CFB</b> challenge imports are not yet available in the v2 slice. See <span data-gt="codes">Share codes</span>.</p>',
+      '<p>The top-bar search accepts discovered species names and deterministic <b>CF1</b> world addresses. A valid world address inside the expedition’s saved reach reopens the destination’s system survey, where <b>Land</b> remains a separate choice. An out-of-reach address leaves the current view unchanged. A blocked star says the next Charter system is not available in this development slice. A galaxy beyond the saved Prime Signature radius says Prime Signature radius expansion is not available in this development slice.</p><p>Creature <b>CFB</b> challenge imports are not yet available in the v2 slice. See <span data-gt="codes">Share codes</span>.</p>',
       'Species lookup and CF1 travel are live; the broader legacy discovery index and CFB challenge flow remain open.',
       'Search has not been connected in this build.',
     ),
     codes: partial(
       ['cf1-sharing'],
-      '<p><b>Share</b> on a planet card prepares a deterministic <b>CF1</b> address for that exact galaxy, star, and planet. If the browser permits clipboard access it is copied; otherwise the exact address is selected in Search and the game tells you to use your browser’s Copy command. An accepted custom planet name travels with the address. Opening it returns another explorer to the live system survey when the destination is inside that expedition’s saved reach; otherwise the explorer stays put and is told which milestone is needed. It never bypasses the Land action.</p><p>CFB creature and Champion-code play is not yet available in this v2 slice. See <span data-gt="search">Search</span> and <span data-gt="atlas">The Star Atlas</span>.</p>',
+      '<p><b>Share</b> on a planet card prepares a deterministic <b>CF1</b> address for that exact galaxy, star, and planet. If the browser permits clipboard access it is copied; otherwise the exact address is selected in Search and the game tells you to use your browser’s Copy command. An accepted custom planet name travels with the address. Opening it returns another explorer to the live system survey when the destination is inside that expedition’s saved reach; otherwise the explorer stays put. A blocked star says the next Charter system is not available in this development slice. A galaxy beyond the saved Prime Signature radius says Prime Signature radius expansion is not available in this development slice. It never bypasses the Land action.</p><p>CFB creature and Champion-code play is not yet available in this v2 slice. See <span data-gt="search">Search</span> and <span data-gt="atlas">The Star Atlas</span>.</p>',
       'Exact CF1 world sharing is live; CFB creature sharing remains unavailable.',
       'CF1 world sharing has not been connected in this build.',
     ),
     charters: partial(
       ['charters'],
-      '<p>The <b>Charters</b> board displays the expedition’s imported/current Ascent chapter, goal counters, and completed or ahead chapters. In this slice, first landfall is the goal event that banks live; mining, crafting, combat, and the other displayed goal writers arrive with their systems.</p><p>Star reach is derived from the expedition’s saved drive items and compatible chapter state. Galaxy-distance reach is derived from its saved Prime Signature count. A blocked Enter action leaves you where you are and names the needed milestone. The full accepted-chain, reward, and weekly-charter economy from v1.8.9 is not yet ported.</p>',
-      'The chapter board, first-landfall banking, drive-based star gate, and Signature-based galaxy radius are live; other goal writers and accepted/weekly charters remain open.',
+      '<p>The <b>Charters</b> board presents the expedition’s current live landfall milestone and the saved chapter record that controls reach. First landfall banks live; it is the only Charter outcome this slice writes. Once a visible landfall milestone is complete, the board states that the next Charter action is not available instead of showing work you cannot finish.</p><p>Star reach is derived from the expedition’s saved drive items and compatible chapter state. Galaxy-distance reach is derived from its saved Prime Signature count. A blocked Enter action leaves you where you are. A blocked star says the next Charter system is not available in this development slice. A galaxy beyond the saved Prime Signature radius says Prime Signature radius expansion is not available in this development slice. The full accepted-chain, reward, and weekly-charter economy from v1.8.9 is not yet ported.</p>',
+      'The current Charter projection, first-landfall banking, drive-based star gate, and Signature-based galaxy radius are live; additional Charter outcomes and accepted/weekly charters remain open.',
       'The Charters board and reach contract have not been connected in this build.',
     ),
     beacon: unavailable(
@@ -301,7 +301,7 @@ export const GUIDE_TOPIC_SUPPORT: Readonly<Record<GuideTopicId, GuideTopicSuppor
     ),
     atlas: partial(
       ['atlas'],
-      '<p>Use <b>Star Atlas</b> on a planet card to chart it. The Atlas lists saved galaxies, stars, and worlds; choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level. An out-of-reach entry leaves you in place and names the milestone required. A world entry reopens its system survey, where Land remains separate. An older imported entry whose route coordinates are incomplete stays listed with an honest unavailable label instead of pretending it can travel.</p><p>Custom names and full composite coordinates are preserved. The legacy chart view, favorites, home marker, undo, and hyperlane presentation are not yet ported.</p>',
+      '<p>Use <b>Star Atlas</b> on a planet card to chart it. The Atlas lists saved galaxies, stars, and worlds; choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level. An out-of-reach entry leaves you in place. A blocked star says the next Charter system is not available in this development slice. A galaxy beyond the saved Prime Signature radius says Prime Signature radius expansion is not available in this development slice. A world entry reopens its system survey, where Land remains separate. An older imported entry whose route coordinates are incomplete stays listed with an honest unavailable label instead of pretending it can travel.</p><p>Custom names and full composite coordinates are preserved. The legacy chart view, favorites, home marker, undo, and hyperlane presentation are not yet ported.</p>',
       'List-based deterministic return travel is live; the full legacy Atlas presentation remains open.',
       'The Star Atlas has not been connected in this build.',
     ),
@@ -427,8 +427,8 @@ export const GUIDE_TOPIC_SUPPORT: Readonly<Record<GuideTopicId, GuideTopicSuppor
     ),
     ascent: partial(
       ['charters'],
-      '<p>The <b>Charters</b> board displays the imported/current Ascent chapter, its measured goal counters, and completed or ahead chapters. First landfall banks live now; other goal writers and full chapter completion rewards are not yet connected.</p><p>Saved drive items together with compatible chapter state gate star travel. Saved Prime Signatures set the galaxy-distance radius. The complete mature transitions, item rewards, unlock presentation, and accepted/weekly charter economy remain open.</p>',
-      'The current chapter display, first-landfall banking, drive-based star gate, and Signature-based galaxy radius are live; complete goal writers, rewards, and transitions remain open.',
+      '<p>The <b>Charters</b> board preserves the imported/current Ascent stage but projects only live landfall milestones. First landfall banks live now. Completing every visible landfall milestone never invents a chapter completion, reward, or reach tier; saved drive items together with compatible chapter state remain the source of star access.</p><p>Saved Prime Signatures set the galaxy-distance radius. The complete mature transitions, item rewards, unlock presentation, and accepted/weekly charter economy remain open.</p>',
+      'The current Charter projection, first-landfall banking, drive-based star gate, and Signature-based galaxy radius are live; complete outcome writers, rewards, and transitions remain open.',
       'The current Ascent goals and reach contract have not been connected in this build.',
     ),
     signatures: unavailable(
@@ -437,7 +437,7 @@ export const GUIDE_TOPIC_SUPPORT: Readonly<Record<GuideTopicId, GuideTopicSuppor
     ),
     regions: partial(
       ['frontier-reach'],
-      '<p>Entering a galaxy or system beyond the expedition’s saved reach is rejected without changing the current view, and the survey card names the milestone required to proceed. Star access comes from the saved drive stage (with compatible chapter state); the galaxy-distance radius comes from the saved Prime Signature count.</p><p>This slice enforces those imported progression facts but does not yet award new drives or Signatures. The complete region progression and far-field combat scaling remain open.</p>',
+      '<p>Entering a galaxy or system beyond the expedition’s saved reach is rejected without changing the current view. A blocked star says the next Charter system is not available in this development slice. A galaxy beyond the saved Prime Signature radius says Prime Signature radius expansion is not available in this development slice. Star access comes from the saved drive stage (with compatible chapter state); the galaxy-distance radius comes from the saved Prime Signature count.</p><p>This slice enforces those imported progression facts but does not yet award new drives or Signatures. The complete region progression and far-field combat scaling remain open.</p>',
       'Travel reach is enforced now; the full progression economy behind each frontier ring remains open.',
       'Frontier reach checks have not been connected in this build.',
     ),

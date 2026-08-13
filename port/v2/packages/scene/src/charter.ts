@@ -43,18 +43,33 @@ export function withinReachOf(primeCount: number, x: number, y: number): boolean
   return Math.hypot(x - HOME_POS.x, y - HOME_POS.y) <= reachRadiusOf(primeCount);
 }
 
-/** ascHint (main.js 22800) — the block names the BUILD that opens the ring. */
+/**
+ * Player-visible reach block for the current v2 slice. Saved drive/chapter
+ * state still enforces the canonical ladder, but this build cannot award or
+ * fabricate those systems. Never tell a fresh explorer to use the absent
+ * Shipyard, mine, or build their way through a gate.
+ */
 export function ascHintFor(stage: number): string {
-  return stage === 0 ? 'Sol is your charter for now — build the ⚡ Jump Drive at the 🛠 Shipyard.'
-    : stage === 1 ? 'Your drive reaches the Neighborhood — the 📡 Long-Range Array charts the whole galaxy.'
-      : 'The dark between galaxies needs the 🌌 Intergalactic Drive.';
+  return stage === 0 ? 'Sol is your charter for now. This development slice preserves reach but does not award the next Charter system.'
+    : stage === 1 ? 'Your saved reach covers the Neighborhood. The next Charter system is not available in this development slice.'
+      : 'Your saved reach is preserved. The next Charter system is not available in this development slice.';
+}
+
+/** A galaxy can also be blocked by the imported Prime Signature radius. That
+    is a different fact from a star/drive Charter gate: preserve the radius
+    and name its unavailable expansion without implying signatures can be
+    collected, written, or otherwise earned in this slice. */
+export function primeReachHint(): string {
+  return 'Your saved Prime Signature radius ends here. Prime Signature radius expansion is not available in this development slice.';
 }
 
 /* ---- the Ascent chapters as DATA (main.js 22758-22789, text verbatim).
    The source's goal filters are closures; here the two landfall filters are
-   expressed as a `scope` field so banking stays pure and testable. Non-
-   landfall goals (mine/craft/scan/…) are carried for the objective chip;
-   their events arrive when those systems port. ---- */
+   expressed as a `scope` field so banking stays pure and testable. Every
+   legacy goal remains canonical data for imported progression. The current
+   v2 presentation projects only actions that this slice can actually pay
+   for; it must never turn preserved legacy copy into a false player promise.
+   ---- */
 export const SOL_SEEDS: ReadonlySet<number> = new Set([131, 132, 133, 134, 135, 136, 137, 138]);
 export interface AscGoal { id: string; ev: string; n: number; t: string; scope?: 'sol' | 'nonsol'; }
 export interface AscChapter { id: string; name: string; intro: string; goals: AscGoal[]; unlockNote: string; }
@@ -120,7 +135,107 @@ export function chapterGoalsDone(ascCh: number, prog: Record<string, number>): b
   return ch.goals.every((g) => (prog[g.id] || 0) >= g.n);
 }
 
-/** the objective chip: the current chapter's first unfinished goal */
+/* The playable Phase-4 slice has one Charter writer: first landfall. Keep
+   that capability boundary in the pure scene layer so the board, objective
+   chip and chapter-advance seam cannot each make a different promise. The
+   full legacy data above is intentionally NOT rewritten or filtered in place:
+   imported saves retain their canonical progress and can still gate reach. */
+export type V2CharterState = 'actionable' | 'boundary' | 'complete';
+export interface V2CharterProjection {
+  readonly id: string;
+  readonly name: string;
+  readonly intro: string;
+  readonly goals: readonly AscGoal[];
+  readonly state: V2CharterState;
+  readonly note: string;
+}
+
+const V2_CHARTER_COPY: Readonly<Record<string, { intro: string }>> = Object.freeze({
+  ch1: Object.freeze({
+    intro: 'Start in Sol: make planetfall on two worlds. This is the live Charter journey in this development slice.',
+  }),
+  ch2: Object.freeze({
+    intro: 'Your imported expedition can record landfalls beyond Sol when its existing reach allows them.',
+  }),
+  ch3: Object.freeze({
+    intro: 'Your imported Charter record and existing reach are preserved in this development slice.',
+  }),
+});
+const V2_CHARTER_BOUNDARY_NOTE =
+  'Further Charter work opens only when its real actions are available in this development slice.';
+const V2_CHARTER_COMPLETE_NOTE =
+  'This imported chapter record is complete. Its established reach remains preserved.';
+
+/* A chapter number alone is not a travel entitlement. Imported saves can
+   preserve a completed chapter record while lacking its associated drive;
+   only the derived saved stage may expose a non-Sol landfall or advance that
+   record. Keep the default at Sol-only so an omitted caller fails closed. */
+function v2Stage(stage: number | undefined): number {
+  return Math.max(0, Math.min(3, Math.trunc(stage ?? 0)));
+}
+function goalIsInV2Reach(goal: AscGoal, stage: number): boolean {
+  return goal.scope !== 'nonsol' || stage >= 1;
+}
+function completionStageForChapter(ascCh: number): number {
+  return Math.min(ASC_CHAPTER_COUNT, ascCh + 1);
+}
+
+/**
+ * Player-facing view of the current Charter chapter. Only landfall has a
+ * reachable, outcome-writing path in v2 today. A visible live milestone may
+ * finish without making the canonical chapter complete; that is the boundary,
+ * not permission to manufacture a new reach tier.
+ */
+export function projectV2Charter(ascCh: number, prog: Record<string, number>, stage?: number): V2CharterProjection | null {
+  const ch = ASC_CHAPTERS_DATA[ascCh];
+  if (!ch) return null;
+  const savedStage = v2Stage(stage);
+  const goals = Object.freeze(ch.goals.filter((goal) => goal.ev === 'landfall' && goalIsInV2Reach(goal, savedStage)));
+  const actionable = goals.some((goal) => (prog[goal.id] || 0) < goal.n);
+  const complete = chapterGoalsDone(ascCh, prog);
+  const completionReachBacked = complete && savedStage >= completionStageForChapter(ascCh);
+  const copy = V2_CHARTER_COPY[ch.id];
+  /* The canonical chapter list is closed and versioned with the legacy game.
+     Still fail safe if a future source adds a chapter before its v2 copy:
+     preserve its name/id but never fall back to its potentially unavailable
+     legacy intro. */
+  const intro = copy?.intro || 'This imported Charter record is preserved in this development slice.';
+  return Object.freeze({
+    id: ch.id,
+    name: ch.name,
+    intro,
+    goals,
+    state: completionReachBacked ? 'complete' : (actionable ? 'actionable' : 'boundary'),
+    note: completionReachBacked ? V2_CHARTER_COMPLETE_NOTE : V2_CHARTER_BOUNDARY_NOTE,
+  });
+}
+
+/** The objective chip gets only the first unfinished live action, never the
+    next canonical goal after the slice boundary. */
+export function currentV2Objective(ascCh: number, prog: Record<string, number>, stage?: number):
+  { text: string; have: number; need: number; chapter: string } | null {
+  const projection = projectV2Charter(ascCh, prog, stage);
+  const goal = projection?.goals.find((candidate) => (prog[candidate.id] || 0) < candidate.n);
+  if (!projection || !goal) return null;
+  return {
+    text: goal.t,
+    have: Math.min(prog[goal.id] || 0, goal.n),
+    need: goal.n,
+    chapter: projection.name,
+  };
+}
+
+/**
+ * The app calls this after a real landfall. It deliberately keeps canonical
+ * completion as the authority: completing every currently visible live goal
+ * is a boundary state, not a synthetic chapter completion or reach unlock.
+ */
+export function canAdvanceV2Chapter(ascCh: number, prog: Record<string, number>, stage?: number): boolean {
+  return projectV2Charter(ascCh, prog, stage)?.state === 'complete';
+}
+
+/** Canonical/legacy objective order, retained for parity and import audits.
+    Current v2 UI must use currentV2Objective above. */
 export function currentObjective(ascCh: number, prog: Record<string, number>): { text: string; have: number; need: number; chapter: string } | null {
   const ch = ASC_CHAPTERS_DATA[ascCh];
   if (!ch) return null;   /* the Ascent is complete */
