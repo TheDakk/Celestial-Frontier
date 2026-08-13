@@ -11,3 +11,4 @@ export * from './universe.js';
 export * from './galaxy.js';
 export * from './system.js';
 export * from './charter.js';
+export * from './address.js';

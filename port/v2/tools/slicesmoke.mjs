@@ -53,12 +53,34 @@ const withCodeGalaxyPosition = (code, x, y) => {
   payload.g[1] = y;
   return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
 };
+const withCodeGalaxySize = (code, size) => {
+  const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
+  payload.g[2] = size;
+  return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
+};
 const withCodePlanetSeed = (code, seed) => {
   const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
   payload.p = seed;
   return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
 };
+const asStarCode = (code) => {
+  const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
+  payload.t = 's';
+  delete payload.p;
+  return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
+};
 const codeName = (code) => JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8')).n || null;
+const codeGalaxySize = (code) => JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8')).g?.[2] ?? null;
+/* Legacy decodeWhere repairs these fractional identity bytes into Earth.
+   Planet Search must reject them before its tolerant decode/sanitizer. */
+const COERCED_EARTH_PLANET_CODE = 'CF1-eyJ0IjoicCIsImciOls5MCwtNjAsNzgsMCwwLjYyLDAuNSw5OTkuOSwxXSwicyI6WzU2MCwxNzAsNDI0MjQyLjldLCJwIjoxMzMuOX0';
+/* Must be rejected before a base64/JSON decode and must not become a
+   Compendium filter just because legacy decodeWhere rejects it generically. */
+const CF1_SEARCH_MAX_LENGTH = 8192;
+const OVERSIZED_CF1_CODE = 'CF1-' + 'A'.repeat(CF1_SEARCH_MAX_LENGTH);
+if (OVERSIZED_CF1_CODE.length <= CF1_SEARCH_MAX_LENGTH) {
+  throw new Error('oversized CF1 smoke fixture did not exceed the shared input bound');
+}
 const VETERAN_RAW = JSON.stringify(JSON.parse(fs.readFileSync(
   path.join(here, '..', '..', 'baseline-v1.8.9', 'save-fixtures.json'), 'utf8',
 )).inputs.veteran_rich);
@@ -80,6 +102,15 @@ const VETERAN_STAGE3_RAW = (() => {
   save.asc = 3;
   save.items = [...(Array.isArray(save.items) ? save.items : []), ['igdrive', 1]];
   save.prime = {};
+  return JSON.stringify(save);
+})();
+/* Malformed chapter position is not a drive entitlement. This fixture has
+   Chapter 2 selected but no saved system that can reach a non-Sol world. */
+const MALFORMED_C2_REACH_RAW = (() => {
+  const save = JSON.parse(VETERAN_RAW);
+  save.asc = 1;
+  save.items = [];
+  save.ascp = {};
   return JSON.stringify(save);
 })();
 const SPARSE_V4_RAW = JSON.stringify({ v: 4, epoch: 0, codex: [], land: [] });
@@ -613,16 +644,35 @@ try {
   fs.writeFileSync(screenshotPath('galaxy'), Buffer.from(shot2.data, 'base64'));
 
   /* 3a-charter. THE ASCENT GATE, fresh save = stage 0 = SOL ONLY: a non-Sol
-     dive must be REFUSED with the charter toast naming the build. This
-     doubles as the gate's live negative control — if gating ever breaks,
-     this dive succeeds and fails the run. */
-  const gated = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
+     dive must be REFUSED with an honest current-slice boundary. This doubles
+     as the gate's live negative control — if gating ever breaks, this dive
+     succeeds and fails the run. */
+  const gated = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
     S.api.descendSystem({ seed: 31337, x: 300, y: 300 });
     const st=S.api.state();
-    return { mode: st.mode, stage: st.stage, toastOn: st.toastOn, toastText: st.toastText }; })()`);
+    return { before: {mode:before.mode,gal:before.gal,star:before.star},
+      mode: st.mode, gal: st.gal, star: st.star, stage: st.stage,
+      toastOn: st.toastOn, toastText: st.toastText }; })()`);
   if (gated.stage !== 0) fails.push('fresh save is not charter stage 0: ' + JSON.stringify(gated.stage));
-  if (gated.mode !== 'galaxy') fails.push('CHARTER GATE BROKEN — a stage-0 save dove into a non-Sol star: ' + gated.mode);
-  if (!gated.toastOn || !/Charter/.test(gated.toastText)) fails.push('charter block did not toast the build hint: ' + JSON.stringify(gated.toastText));
+  const preservedBlockedNav = (state) => state.mode === 'galaxy'
+    && state.gal === state.before.gal && state.star === state.before.star;
+  if (!preservedBlockedNav(gated)) {
+    fails.push('CHARTER GATE BROKEN — a stage-0 blocked dive changed navigation: ' + JSON.stringify(gated));
+  }
+  /* Negative control: an apparent block that actually entered a system must
+     fail the same navigation-outcome predicate before this gate is trusted. */
+  if (preservedBlockedNav({ ...gated, mode: 'system', star: 31337 })) {
+    fails.push('CHARTER GATE NAVIGATION CONTROL FAILED — a synthetic teleport stayed green');
+  }
+  if (!gated.toastOn || !/development slice/i.test(gated.toastText)
+    || /shipyard|\bbuild\b|mine|fabricat/i.test(gated.toastText)) {
+    fails.push('charter block did not expose an honest current-slice reach boundary: ' + JSON.stringify(gated.toastText));
+  }
+  const gateToastCtl = await evalIn(`(()=>{ const toast=document.getElementById('toast'),prior=toast.innerHTML;
+    toast.textContent='Build the Jump Drive at the Shipyard'; const text=toast.textContent||'';
+    const ok=/development slice/i.test(text)&&!/shipyard|\\bbuild\\b|mine|fabricat/i.test(text);
+    toast.innerHTML=prior; return {ok,text}; })()`);
+  if (gateToastCtl.ok) fails.push('CHARTER GATE COPY CONTROL FAILED — injected Shipyard direction stayed green: ' + JSON.stringify(gateToastCtl));
   const perf = await evalIn(`window.__CF_SLICE__.api.state().galaxyBuildMs`);
   console.log('  (galaxy rebuild: ' + (typeof perf === 'number' ? perf.toFixed(0) : '?') + 'ms)');
 
@@ -1240,9 +1290,18 @@ try {
      (decodeWhere → the sanitized view → the same charter gates). */
   const shareCode = planetShareCode;
   if (!shareCode || !/^CF1-/.test(shareCode)) fails.push('survey Share did not produce a CF1 planet code: ' + JSON.stringify(shareCode));
-  const namedShareCode = shareCode ? withCodeName(shareCode, 'Blue Earth') : shareCode;
-  const blockedShareCode = shareCode ? withCodeGalaxyPosition(shareCode, 1e7, 1e7) : shareCode;
+  /* Deliberately forge a display-only raw tuple on a valid Earth identity.
+     The accepted route must restore source size 78 and re-share 78, never 3999. */
+  const namedShareCode = shareCode ? withCodeName(withCodeGalaxySize(shareCode, 3999), 'Blue Earth') : shareCode;
+  const validStarShareCode = shareCode ? asStarCode(shareCode) : shareCode;
+  /* This remains a real CF1 route shape for the Charter boundary test below;
+     raw strictness is intentionally planet-only, so star codes stay supported. */
+  const blockedShareCode = shareCode ? withCodeGalaxyPosition(asStarCode(shareCode), 1e7, 1e7) : shareCode;
   const invalidPlanetShareCode = shareCode ? withCodePlanetSeed(shareCode, 4294967295) : shareCode;
+  /* Same staged reach and the real Sol/Earth members, but a parent galaxy
+     coordinate that legacy membership-only handling would have accepted. */
+  const forgedPlanetShareCode = shareCode
+    ? withCodeName(withCodeGalaxyPosition(shareCode, 90.01, -60), 'Forged Sol Earth') : shareCode;
   /* Repeat planetfall must be navigable without paying chapter progression
      twice. This rich fixture already completed the live landfall boundary,
      so compare the exact objective before/after instead of assuming the
@@ -1261,7 +1320,7 @@ try {
   await evalIn(`window.__CF_SLICE__.api.landOn(0)`);
   await sleep(450);
   const liveGoalBoundaryCheck = `(()=>{ const s=window.__CF_SLICE__.api.state();return {ok:s.mode==='surface'
-    &&/continues when its next gameplay system arrives/i.test(s.objective)&&!/Mine Sol|Fabricate|Assemble|Build the/i.test(s.objective),
+    &&/next Charter action is not available in this development slice/i.test(s.objective)&&!/mine|fabricat|shipyard|\\bbuild\\b/i.test(s.objective),
     mode:s.mode,objective:s.objective,landed:s.save.landed};})()`;
   const liveGoalBoundary = await evalIn(liveGoalBoundaryCheck);
   if (!liveGoalBoundary.ok || liveGoalBoundary.landed.length < 2) {
@@ -1325,18 +1384,33 @@ try {
   }
   await evalIn(`(()=>{ document.querySelector('#codexpanel [data-pnx]')?.click(); return true; })()`);   /* the ✕, so a route owns Search */
 
-  /* Both rejection classes are correction outcomes: a decoded planet seed
-     absent from its declared system, and a well-formed destination beyond the
-     charter. Real Enter retains exact query/Search focus with no side effect. */
+  /* All rejected CF1 routes are correction outcomes: an absent planet, a
+     same-reach forged parent hierarchy, raw fractional identity that legacy
+     decode would coerce into Earth, an oversized CF1 before base64 work, and
+     a star destination beyond Charter. Real Enter retains exact query/Search
+     focus without navigation, landing, Atlas, custom-name, persisted-view,
+     or Compendium-filter side effects. */
   for (const [rejection, rejectedCode] of [
     ['invalid-planet', invalidPlanetShareCode],
+    ['forged-parent', forgedPlanetShareCode],
+    ['coerced-planet', COERCED_EARTH_PLANET_CODE],
+    ['oversized-cf1', OVERSIZED_CF1_CODE],
     ['blocked-charter', blockedShareCode],
   ]) {
+    const beforeRejected = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state();return {
+      mode:s.mode,gal:s.gal,galX:s.galX,galY:s.galY,galSize:s.galSize,star:s.star,starX:s.starX,starY:s.starY,
+      cardOpen:s.cardOpen,atlas:s.atlasCount,landed:s.save.landed.slice(),names:s.save.customNames.slice(),savedView:s.save.savedView};})()`);
     await evalIn(`(()=>{ const s=document.getElementById('searchbox'); s.value=${JSON.stringify(String(rejectedCode))}; s.focus(); return true; })()`);
     await keyIn('Enter', 'Enter');
+    const expectedRejected = JSON.stringify(beforeRejected);
+    const expectedRejectedLiteral = JSON.stringify(expectedRejected);
     const rejectedSearchCheck = `(()=>{ const st=window.__CF_SLICE__.api.state(),s=document.getElementById('searchbox');
       return {ok:st.mode===${JSON.stringify(preJump)}&&st.panelOpen===null&&s.value===${JSON.stringify(String(rejectedCode))}
-          &&document.activeElement===s,mode:st.mode,panel:st.panelOpen,query:s.value,focus:document.activeElement===s}; })()`;
+          &&document.activeElement===s&&JSON.stringify({mode:st.mode,gal:st.gal,galX:st.galX,galY:st.galY,galSize:st.galSize,star:st.star,starX:st.starX,starY:st.starY,
+            cardOpen:st.cardOpen,atlas:st.atlasCount,landed:st.save.landed,names:st.save.customNames,savedView:st.save.savedView})===${expectedRejectedLiteral},
+        mode:st.mode,panel:st.panelOpen,query:s.value,focus:document.activeElement===s,
+        after:{mode:st.mode,gal:st.gal,galX:st.galX,galY:st.galY,galSize:st.galSize,star:st.star,starX:st.starX,starY:st.starY,
+          cardOpen:st.cardOpen,atlas:st.atlasCount,landed:st.save.landed,names:st.save.customNames,savedView:st.save.savedView}}; })()`;
     const rejectedSearch = await evalIn(rejectedSearchCheck);
     if (!rejectedSearch.ok) {
       fails.push('SEARCH REJECTED CF1 (' + rejection + '): address did not retain exact Search focus/query: ' + JSON.stringify(rejectedSearch));
@@ -1347,6 +1421,51 @@ try {
       fails.push('SEARCH REJECTED-CF1 CONTROL FAILED (' + rejection + ') — removed Search focus stayed green: '
         + JSON.stringify(rejectedFocusCtl));
     }
+    /* The forged-parent assertion must see all three forbidden effects, not
+       merely generic rejected-route behavior. The deliberate poisoned
+       expectation models one Atlas write, one landing, and one persisted
+       custom name; the exact same outcome predicate must reject it. */
+    if (rejection === 'forged-parent') {
+      const poisonedExpected = JSON.stringify({
+        ...beforeRejected,
+        atlas: beforeRejected.atlas + 1,
+        landed: [...beforeRejected.landed, 133],
+        names: [...beforeRejected.names, ['p133', 'Forged Sol Earth']],
+      });
+      const forgedParentCtl = await evalIn(rejectedSearchCheck.replace(
+        expectedRejectedLiteral,
+        JSON.stringify(poisonedExpected),
+      ));
+      if (forgedParentCtl.ok) {
+        fails.push('SEARCH FORGED-PARENT CONTROL FAILED — poisoned Atlas/land/name outcome stayed green: '
+          + JSON.stringify(forgedParentCtl));
+      }
+    }
+    /* Negative control for the input-bound branch: if the oversized code
+       ever falls through decodeWhere into a normal Compendium search, this
+       outcome turns green (panel + its close action own focus) and fails the
+       smoke rather than merely assuming the parser did not run. */
+    if (rejection === 'oversized-cf1') {
+      const oversizedFilterCtl = await evalIn(`(()=>{ const st=window.__CF_SLICE__.api.state(),s=document.getElementById('searchbox'),panel=document.getElementById('codexpanel');
+        return {ok:st.panelOpen==='codex'&&!!panel?.querySelector('.empty')&&document.activeElement!==s&&s.value===${JSON.stringify(OVERSIZED_CF1_CODE)},
+          panel:st.panelOpen,empty:!!panel?.querySelector('.empty'),focusSearch:document.activeElement===s,query:s.value}; })()`);
+      if (oversizedFilterCtl.ok) {
+        fails.push('SEARCH OVERSIZED-CF1 CONTROL FAILED — oversized CF1 fell through into a Compendium filter: '
+          + JSON.stringify(oversizedFilterCtl));
+      }
+    }
+  }
+
+  /* Star-only CF1 remains a supported legacy ingress while raw planet
+     identity gets its narrow proof. It must still reach Sol and hand focus
+     to the exploration canvas, not be mistaken for a rejected planet code. */
+  await evalIn(`(()=>{ const s=document.getElementById('searchbox'); s.value=${JSON.stringify(String(validStarShareCode))}; s.focus(); return true; })()`);
+  await keyIn('Enter', 'Enter');
+  const validStarSearch = await waitDesktopValue('valid CF1 star route', `(()=>{ const st=window.__CF_SLICE__.api.state(),s=document.getElementById('searchbox');
+    return st.mode==='system'&&st.star===424242&&!st.cardOpen&&s.value===''&&document.activeElement===window.__CF_SLICE__.app.canvas
+      ? {mode:st.mode,star:st.star,cardOpen:st.cardOpen,query:s.value,focus:true}:null; })()`);
+  if (!validStarSearch || validStarSearch.mode !== 'system') {
+    fails.push('SEARCH VALID STAR CF1: legacy in-reach star code did not remain supported: ' + JSON.stringify(validStarSearch));
   }
 
   /* The accepted planet route is the other half of the contract. Real Enter
@@ -1356,8 +1475,8 @@ try {
   await keyIn('Enter', 'Enter');
   const validPlanetSearchCheck = `(()=>{ const st=window.__CF_SLICE__.api.state(),s=document.getElementById('searchbox');
     const action=document.querySelector('#survey [data-act="landcta"]');
-    return {ok:st.mode==='system'&&st.star===424242&&st.cardTitle==='Blue Earth'&&!!action?.isConnected
-        &&action.tagName==='BUTTON'&&document.activeElement===action&&s.value==='',mode:st.mode,star:st.star,title:st.cardTitle,
+    return {ok:st.mode==='system'&&st.star===424242&&st.galSize===78&&st.cardTitle==='Blue Earth'&&!!action?.isConnected
+        &&action.tagName==='BUTTON'&&document.activeElement===action&&s.value==='',mode:st.mode,star:st.star,galSize:st.galSize,title:st.cardTitle,
       action:action?.getAttribute('data-act')||null,tag:action?.tagName||null,focus:document.activeElement===action,query:s.value}; })()`;
   const validPlanetSearch = await waitDesktopValue('valid CF1 keyboard focus handoff', `(()=>{ const result=${validPlanetSearchCheck};
     return result.mode==='system'&&result.title==='Blue Earth'?result:null; })()`);
@@ -1369,6 +1488,10 @@ try {
   if (validPlanetFocusCtl.ok) {
     fails.push('SEARCH VALID-CF1 CONTROL FAILED — removed Land focus stayed green: ' + JSON.stringify(validPlanetFocusCtl));
   }
+  const validPlanetSizeCtl = await evalIn(`(()=>{ const st=window.__CF_SLICE__.api.state(); return {ok:st.galSize===3999,galSize:st.galSize}; })()`);
+  if (validPlanetSizeCtl.ok) {
+    fails.push('SEARCH VALID-CF1 SIZE CONTROL FAILED — forged raw size survived canonical navigation: ' + JSON.stringify(validPlanetSizeCtl));
+  }
   const back = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (back.mode !== 'system' || back.star !== 424242 || back.cardTitle !== 'Blue Earth') {
     fails.push('planet Share did not focus Earth in Sol without bypassing Land: ' + JSON.stringify([back.mode, back.star, back.cardTitle]));
@@ -1376,8 +1499,8 @@ try {
   if (back.objective !== liveGoalBoundary.objective) fails.push('planet Share changed landfall progression without Land: '
     + JSON.stringify({ before: liveGoalBoundary.objective, after: back.objective }));
   const resharedNamedCode = await evalIn(`window.__CF_SLICE__.api.cardShareCode()`);
-  if (!resharedNamedCode || codeName(resharedNamedCode) !== 'Blue Earth') {
-    fails.push('named CF1 route did not survive display + v2 re-share: ' + JSON.stringify(resharedNamedCode));
+  if (!resharedNamedCode || codeName(resharedNamedCode) !== 'Blue Earth' || codeGalaxySize(resharedNamedCode) !== 78) {
+    fails.push('named CF1 route did not preserve source display metadata through v2 re-share: ' + JSON.stringify(resharedNamedCode));
   }
 
   /* 4b. THE ZOOM-DRIVEN TRANSITIONS (checkTransitions semantics) — the leg
@@ -1389,7 +1512,22 @@ try {
   const stG = await waitDesktopValue('system-to-galaxy zoom', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='galaxy'&&s.gal===999?s:null; })()`);
   if (stG.mode !== 'galaxy' || stG.gal !== 999) fails.push('zoom-out did not rise system→galaxy: ' + JSON.stringify([stG.mode, stG.gal]));
   await evalIn(`(()=>{ window.__CF_SLICE__.camT.z = 0.05; return 1; })()`);
-  const stU = await waitDesktopValue('galaxy-to-universe zoom', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='universe'?s:null; })()`);
+  const galaxyToUniverseState = `(()=>{ const S=window.__CF_SLICE__,s=S.api.state();return {
+    mode:s.mode,gal:s.gal,galX:s.galX,galY:s.galY,star:s.star,starX:s.starX,starY:s.starY,
+    cam:{x:S.cam.x,y:S.cam.y,z:S.cam.z},camT:{x:S.camT.x,y:S.camT.y,z:S.camT.z},
+    tickerStarted:S.app.ticker.started===true,tickerTicks:s.tickerTicks,
+    hidden:document.hidden,focus:document.hasFocus(),toast:s.toastText};})()`;
+  let stU;
+  try {
+    stU = await waitDesktopValue('galaxy-to-universe zoom', `(()=>{ const state=${galaxyToUniverseState};return state.mode==='universe'?state:null; })()`);
+  } catch (error) {
+    const state = await evalIn(galaxyToUniverseState).catch((diagnosticError) => ({ diagnosticError: String(diagnosticError) }));
+    const consoleErrors = events.filter((event) => event.method === 'Runtime.exceptionThrown'
+      || (event.method === 'Runtime.consoleAPICalled' && event.params.type === 'error'))
+      .slice(-3).map((event) => event.params);
+    throw new Error('galaxy-to-universe diagnostic: ' + JSON.stringify({ state, consoleErrors })
+      + ' · ' + (error instanceof Error ? error.message : String(error)));
+  }
   if (stU.mode !== 'universe') fails.push('zoom-out did not rise galaxy→universe: ' + stU.mode);
   /* Negative control: deep zoom in EMPTY space must NOT dive. Waiting a
      fixed interval can pass vacuously on a throttled target if no ticker
@@ -1763,14 +1901,18 @@ try {
     return { landed, jempty, jn }; })()`);
   if (!/worlds landed2$/.test(rec.landed.trim())) fails.push('Records did not count the veteran’s 2 landed worlds (fixture land=[133,134]): ' + JSON.stringify(rec.landed));
   if (!rec.jempty && rec.jn === 0) fails.push('Records journal rendered nothing at all');
-  /* CHARTERS: the chapter book over live ascProg (the veteran's progress) */
+  /* CHARTERS: the current-slice projection keeps one live landfall row and
+     never renders a legacy mining/fabrication/Shipyard directive. */
   const chp = await evalIn(`(()=>{ document.getElementById('dockcharters').click();
     const chs=[...document.querySelectorAll('#chpanel [data-sel=charter-ch]')];
-    const cur=chs.find(c=>c.dataset.chstate==='current');
+    const cur=chs.find(c=>c.dataset.chstate==='actionable'||c.dataset.chstate==='boundary'||c.dataset.chstate==='complete');
     const goals=document.querySelectorAll('#chpanel [data-sel=charter-goal]').length;
+    const text=document.getElementById('chpanel')?.textContent||'';
     document.querySelector('#chpanel [data-pnx]').click();
-    return { n:chs.length, cur:!!cur, goals }; })()`);
-  if (chp.n !== 3 || !chp.cur || !(chp.goals >= 4)) fails.push('Charters panel wrong: ' + JSON.stringify(chp));
+    return { n:chs.length, cur:!!cur, goals,text }; })()`);
+  if (chp.n !== 1 || !chp.cur || chp.goals > 1 || /mine|fabricat|shipyard|\bbuild\b/i.test(chp.text)) {
+    fails.push('Charters panel exposed an unavailable objective or lost its projected record: ' + JSON.stringify(chp));
+  }
 
   /* 4c-release. Exercise the dormant shipped-bulletin path with an explicit
      synthetic fixture. It may open exactly once for this veteran, must focus
@@ -2363,8 +2505,9 @@ try {
 
   /* 4d0-charter. Drive a REAL non-Sol fine-star body and card action while
      this phone origin is still stage 0. The action must flow through the
-     Charter gate, remain in the galaxy, and name the required build. This
-     catches a handler that teleports directly around descendSystem(). */
+     Charter gate, remain in the galaxy, and name the honest unavailable
+     boundary. This catches a handler that teleports directly around
+     descendSystem(). */
   await evalNavPh(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=0; S.camT.y=0; S.camT.z=2;
     S.cam.x=0; S.cam.y=0; S.cam.z=2; return true; })()`);
   await sleep(1600);
@@ -2386,8 +2529,9 @@ try {
   if (blockedFineSurvey.travel.ok) await touchNav(blockedFineSurvey.travel.x, blockedFineSurvey.travel.y);
   await sleep(350);
   const blockedFineDive = await evalNavPh(`window.__CF_SLICE__.api.state()`);
-  if (blockedFineDive.mode !== 'galaxy' || blockedFineDive.star !== null || blockedFineDive.stage !== 0
-    || !blockedFineDive.toastOn || !/Charter/.test(blockedFineDive.toastText)) {
+  if (blockedFineDive.mode !== 'galaxy' || blockedFineDive.gal !== 999 || blockedFineDive.star !== null || blockedFineDive.stage !== 0
+    || !blockedFineDive.toastOn || !/development slice/i.test(blockedFineDive.toastText)
+    || /shipyard|\bbuild\b|mine|fabricat/i.test(blockedFineDive.toastText)) {
     fails.push('CHARTER ACTION BYPASS — a real stage-0 fine-star card action was not blocked: '
       + JSON.stringify(blockedFineDive));
   }
@@ -2441,22 +2585,117 @@ try {
     fails.push('FINE STAR ACTION did not enter the exact touched target: '
       + JSON.stringify({ fineDive, fineTarget }));
   }
-  /* Stage 3 owns the Intergalactic Drive already. A galaxy beyond its saved
-     Signature radius must name Signatures—not tell the player to rebuild the
-     completed drive—and must preserve the current view/query. */
+  /* A saved stage-3 explorer may still meet its imported Prime Signature
+     radius boundary. That is not a Charter-system gate: the block must name
+     the saved radius and its unavailable expansion without promising that
+     Signatures can be collected or written. First create a real ordinary
+     Charted toast, then immediately drive the rejected CF1 action: boundary
+     copy must supersede it rather than ambient-toast debounce swallowing it. */
   const stage3Token = await sliceToken(navPh);
   try { await evalNavPh(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(VETERAN_STAGE3_RAW)})`); }
   catch { /* successful replacement reloads */ }
   await waitForSlice(navPh, 'stage-3 low-signature route fixture', { previousToken: stage3Token });
   await sleep(2400);
+  for (let i = 0; i < 3; i++) {
+    if (await evalNavPh(`window.__CF_SLICE__.api.state().mode`) === 'system') break;
+    await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, navPh);
+    await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, navPh);
+    await sleep(350);
+  }
+  const stage3Charted = await evalNavPh(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
+    const setup=before.mode==='system'&&S.api.surveyOn(0),add=document.querySelector('#survey [data-act=add]');
+    add?.click(); const after=S.api.state();
+    return {setup:!!setup,add:!!add,mode:after.mode,toast:after.toastText,toastSerial:after.toastSerial}; })()`);
+  if (!stage3Charted.setup || !stage3Charted.add || !/Charted/i.test(stage3Charted.toast)) {
+    fails.push('PRIME RADIUS BOUNDARY TOAST SETUP did not produce the real ordinary Charted toast: '
+      + JSON.stringify(stage3Charted));
+  }
   await evalNavPh(`(()=>{ const s=document.getElementById('searchbox');s.value=${JSON.stringify(String(blockedShareCode))};s.focus();return true;})()`);
   await dispatchKeyPress(navPh, 'Enter', 'Enter');
   await sleep(80);
-  const stage3Reach = await evalNavPh(`(()=>{ const s=window.__CF_SLICE__.api.state(),q=document.getElementById('searchbox');return {
-    mode:s.mode,stage:s.stage,toast:s.toastText,query:q.value,focus:document.activeElement===q};})()`);
-  if (stage3Reach.mode !== 'surface' || stage3Reach.stage !== 3 || !/prime signatures/i.test(stage3Reach.toast)
-    || /Intergalactic Drive/i.test(stage3Reach.toast) || stage3Reach.query !== String(blockedShareCode) || !stage3Reach.focus) {
-    fails.push('STAGE-3 REACH: out-of-radius CF1 did not stay put and name the Signature milestone: ' + JSON.stringify(stage3Reach));
+  const stage3PrimeRadiusBoundaryCheck = `(()=>{ const s=window.__CF_SLICE__.api.state(),q=document.getElementById('searchbox'),toast=s.toastText||'';return {
+    ok:s.mode===${JSON.stringify(stage3Charted.mode)}&&s.stage===3&&/Beyond Your Saved Reach/i.test(toast)
+      &&/Your saved Prime Signature radius ends here/i.test(toast)
+      &&/Prime Signature radius expansion is not available in this development slice/i.test(toast)
+      &&!/collect|earn|award|write|next Charter system|Intergalactic Drive|shipyard|\\bbuild\\b|mine|fabricat/i.test(toast)
+      &&q.value===${JSON.stringify(String(blockedShareCode))}&&document.activeElement===q,
+    mode:s.mode,stage:s.stage,toast,toastSerial:s.toastSerial,query:q.value,focus:document.activeElement===q};})()`;
+  const stage3Reach = await evalNavPh(stage3PrimeRadiusBoundaryCheck);
+  if (!stage3Reach.ok || stage3Reach.toastSerial !== stage3Charted.toastSerial + 1) {
+    fails.push('STAGE-3 PRIME RADIUS: immediate blocked CF1 did not replace ordinary copy with the honest saved-radius boundary: '
+      + JSON.stringify({ charted: stage3Charted, blocked: stage3Reach }));
+  }
+  const stage3BoundaryCtl = await evalNavPh(`(()=>{ const toast=document.getElementById('toast'),prior=toast.innerHTML;
+    toast.textContent='⬆ Beyond Your Saved Reach Your saved Prime Signature radius ends here. Prime Signature radius expansion is not available in this development slice. Collect Prime Signatures to expand it.'; const result=${stage3PrimeRadiusBoundaryCheck};toast.innerHTML=prior;return result;})()`);
+  if (stage3BoundaryCtl.ok) {
+    fails.push('STAGE-3 PRIME RADIUS COPY CONTROL FAILED — injected Signature-collection promise stayed green: '
+      + JSON.stringify(stage3BoundaryCtl));
+  }
+  const stage3CharterBoundaryCtl = await evalNavPh(`(()=>{ const toast=document.getElementById('toast'),prior=toast.innerHTML;
+    toast.textContent='⬆ Beyond Your Charter Your saved reach is preserved. The next Charter system is not available in this development slice.'; const result=${stage3PrimeRadiusBoundaryCheck};toast.innerHTML=prior;return result;})()`);
+  if (stage3CharterBoundaryCtl.ok) {
+    fails.push('STAGE-3 PRIME RADIUS TYPE CONTROL FAILED — injected Charter boundary stayed green: '
+      + JSON.stringify(stage3CharterBoundaryCtl));
+  }
+  /* A forced Share confirmation is allowed to supersede the boundary. The
+     SAME blocked route must then restore its explanation, not be mistaken
+     for a duplicate merely because its key is still inside the dedupe clock. */
+  const stage3ForcedShare = await evalNavPh(`(async()=>{ let copied='';
+    Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:(v)=>{copied=String(v);return Promise.resolve();}}});
+    const share=document.querySelector('#survey [data-act=share]');share?.click();await new Promise(r=>setTimeout(r,30));
+    const s=window.__CF_SLICE__.api.state();delete navigator.clipboard;
+    return {share:!!share,copied,toast:s.toastText,toastSerial:s.toastSerial}; })()`);
+  if (!stage3ForcedShare.share || !stage3ForcedShare.copied || !/Share code copied/i.test(stage3ForcedShare.toast)
+    || stage3ForcedShare.toastSerial !== stage3Reach.toastSerial + 1) {
+    fails.push('PRIME RADIUS BOUNDARY TOAST INTERRUPTION: real forced Share did not supersede the first boundary: '
+      + JSON.stringify({ boundary: stage3Reach, forcedShare: stage3ForcedShare }));
+  }
+  await evalNavPh(`(()=>{ const s=document.getElementById('searchbox');s.value=${JSON.stringify(String(blockedShareCode))};s.focus();return true;})()`);
+  await dispatchKeyPress(navPh, 'Enter', 'Enter');
+  await sleep(80);
+  const stage3Restored = await evalNavPh(stage3PrimeRadiusBoundaryCheck);
+  if (!stage3Restored.ok || stage3Restored.toastSerial !== stage3ForcedShare.toastSerial + 1) {
+    fails.push('PRIME RADIUS BOUNDARY TOAST RESTORE: same blocked CF1 did not restore its explanation after forced Share: '
+      + JSON.stringify({ forcedShare: stage3ForcedShare, restored: stage3Restored }));
+  }
+  await dispatchKeyPress(navPh, 'Enter', 'Enter');
+  await sleep(80);
+  const stage3Repeat = await evalNavPh(`(()=>{ const s=window.__CF_SLICE__.api.state(),q=document.getElementById('searchbox');return {
+    mode:s.mode,toast:s.toastText,toastSerial:s.toastSerial,query:q.value,focus:document.activeElement===q};})()`);
+  const dedupedBoundary = (first, repeated) => repeated.mode === first.mode
+    && repeated.toast === first.toast && repeated.toastSerial === first.toastSerial
+    && repeated.query === first.query && repeated.focus === first.focus;
+  if (!dedupedBoundary(stage3Restored, stage3Repeat)) {
+    fails.push('PRIME RADIUS BOUNDARY DEBOUNCE: identical rejected route re-announced or changed state: '
+      + JSON.stringify({ first: stage3Restored, repeated: stage3Repeat }));
+  }
+  if (dedupedBoundary(stage3Restored, { ...stage3Repeat, toastSerial: stage3Restored.toastSerial + 1 })) {
+    fails.push('PRIME RADIUS BOUNDARY DEBOUNCE CONTROL FAILED — synthetic re-announcement stayed green');
+  }
+
+  /* A malformed ascCh cannot stand in for a saved Jump Drive. Import through
+     the real front door, open the real Charter board, and prove no non-Sol
+     landfall goal reaches the player at stage 0. */
+  const malformedChapterToken = await sliceToken(navPh);
+  try { await evalNavPh(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(MALFORMED_C2_REACH_RAW)})`); }
+  catch { /* successful replacement reloads */ }
+  await waitForSlice(navPh, 'malformed Chapter-2 without reach fixture', { previousToken: malformedChapterToken });
+  await sleep(2400);
+  const malformedProjectionCheck = `(()=>{ const S=window.__CF_SLICE__;
+    const s=S.api.state(),panel=document.getElementById('chpanel'),text=panel?.textContent||'',goals=panel?.querySelectorAll('[data-sel=charter-goal]').length||0;
+    return {ok:s.stage===0&&goals===0&&!/Land on 3 worlds beyond Sol/i.test(text)
+      &&/development slice/i.test(text)&&/next Charter action is not available in this development slice/i.test(s.objective),
+      stage:s.stage,goals,text,objective:s.objective};})()`;
+  const malformedProjection = await evalNavPh(`(()=>{ document.getElementById('dockcharters')?.click();return ${malformedProjectionCheck};})()`);
+  if (!malformedProjection.ok) {
+    fails.push('MALFORMED CHAPTER REACH: ascCh without a saved drive exposed impossible Chapter-2 work: '
+      + JSON.stringify(malformedProjection));
+  }
+  const malformedProjectionCtl = await evalNavPh(`(()=>{ const panel=document.getElementById('chpanel'),prior=panel.innerHTML;
+    panel.insertAdjacentHTML('beforeend','<div>Land on 3 worlds beyond Sol</div>');const result=${malformedProjectionCheck};panel.innerHTML=prior;return result;})()`);
+  if (malformedProjectionCtl.ok) {
+    fails.push('MALFORMED CHAPTER REACH CONTROL FAILED — injected non-Sol goal stayed green: '
+      + JSON.stringify(malformedProjectionCtl));
   }
   await send('Target.closeTarget', { targetId: tNav.targetId });
 

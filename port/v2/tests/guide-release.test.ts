@@ -158,9 +158,12 @@ describe('v2 Guide capability filter', () => {
     expect(determinism?.body).not.toContain('duels fair, and events shared');
     expect(getGuideTopic('ascent')?.availability).toBe('partial');
     expect(getGuideTopic('ascent')?.body).toContain('First landfall banks live');
-    expect(getGuideTopic('ascent')?.body).toContain('Saved drive items');
+    expect(getGuideTopic('ascent')?.body).toContain('never invents a chapter completion');
+    expect(getGuideTopic('ascent')?.body).toContain('saved drive items');
     expect(getGuideTopic('ascent')?.body).toContain('Saved Prime Signatures');
-    expect(getGuideTopic('charters')?.body).toContain('first landfall');
+    expect(getGuideTopic('charters')?.body).toContain('First landfall banks live');
+    expect(getGuideTopic('charters')?.body).toContain('only Charter outcome this slice writes');
+    expect(getGuideTopic('charters')?.body).not.toMatch(/mine|fabricat|shipyard/i);
     expect(getGuideTopic('regions')?.body).toContain('saved drive stage');
     expect(getGuideTopic('regions')?.body).toContain('saved Prime Signature count');
     expect(getGuideTopic('achievements')?.availability).toBe('partial');
@@ -169,6 +172,45 @@ describe('v2 Guide capability filter', () => {
     expect(getGuideTopic('hp')?.availability).toBe('partial');
     expect(getGuideTopic('hp')?.body).toContain('read-only expedition fact');
     expect(getGuideTopic('hp')?.body).toContain('round-trippable');
+  });
+
+  it('keeps star/drive and saved Prime-radius route boundaries truthful and distinct', () => {
+    const reachableRouteTopics = ['landing', 'search', 'codes', 'charters', 'atlas', 'regions'] as const;
+    const hasHonestRouteBoundaries = (body: string): boolean => {
+      const charterSentence = body.match(/[^.!?]*next Charter system is not available in this development slice[^.!?]*/i)?.[0] || '';
+      const primeRadiusSentence = body.match(/[^.!?]*Prime Signature radius expansion is not available in this development slice[^.!?]*/i)?.[0] || '';
+      const engineeringOrMilestone = /mine|fabricat|shipyard|\bbuild\b|\bmilestone\b|\bneeded\b|\brequired\b/i;
+      return charterSentence.length > 0 && primeRadiusSentence.length > 0
+        && !engineeringOrMilestone.test(charterSentence)
+        && !/Prime Signature radius|collect|earn|award|write/i.test(charterSentence)
+        && !engineeringOrMilestone.test(primeRadiusSentence)
+        && !/collect|earn|award|write|next Charter system/i.test(primeRadiusSentence);
+    };
+    for (const id of reachableRouteTopics) {
+      const topic = getGuideTopic(id);
+      expect(topic, `${id} current Guide topic missing`).toBeDefined();
+      expect(topic!.body, `${id} includes unavailable engineering directions anywhere in its current support copy`)
+        .not.toMatch(/mine|fabricat|shipyard|\bbuild\b/i);
+      expect(hasHonestRouteBoundaries(topic!.body), `${id} conflates Charter and saved Prime-radius boundaries`)
+        .toBe(true);
+    }
+    /* Negative controls: an old engineering instruction, a generic boundary,
+       and a false Signature-collection promise must fail this same player
+       visible-copy predicate. */
+    expect(hasHonestRouteBoundaries(
+      'This route needs a build at the Shipyard before you can continue.',
+    )).toBe(false);
+    expect(hasHonestRouteBoundaries(
+      'This route says its next reach action is unavailable in this development slice until the required milestone is complete.',
+    )).toBe(false);
+    expect(hasHonestRouteBoundaries(
+      'A blocked star says the next Charter system is not available in this development slice. A galaxy beyond the saved Prime Signature radius says collect Prime Signatures to expand it.',
+    )).toBe(false);
+    const worldCodeBullet = V2_DRAFT_RELEASE.sections
+      .flatMap((section) => section.bullets)
+      .find((bullet) => bullet.includes('WORLD CODES KEEP THE WHOLE DESTINATION'));
+    expect(worldCodeBullet).toBeDefined();
+    expect(hasHonestRouteBoundaries(worldCodeBullet!)).toBe(true);
   });
 
   it('keeps the player Guide scope honest about deliberately hidden dormant topics', () => {
@@ -259,6 +301,7 @@ describe('legacy and v2 release channels', () => {
       /CF1 addresses preserve galaxy, star, planet, coordinates/,
       /Six real lessons/,
       /no longer show a player-facing Spectral class row/,
+      /primary chip and Charter board show only real landfall objectives/,
       /All 56 v1 releases and 398 legacy bullets/,
       /successful develop push battery/,
       /mechanics that are not yet playable are labelled instead of promised/,

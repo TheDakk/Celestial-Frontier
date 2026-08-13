@@ -872,7 +872,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
       category: 'Gameplay',
       bullets: Object.freeze([
         '🚀 SURVEY BEFORE YOU TRAVEL: One selection opens a card; explicit Enter galaxy, Enter system, Land, and Leave world actions make descent deliberate on mouse, touch, and keyboard instead of depending on a second tap or timing window.',
-        '🔗 WORLD CODES KEEP THE WHOLE DESTINATION: CF1 addresses preserve galaxy, star, planet, coordinates, and accepted custom names. An in-reach address returns to Survey without bypassing Land; an out-of-reach address leaves the explorer in place and names the milestone.',
+        '🔗 WORLD CODES KEEP THE WHOLE DESTINATION: CF1 addresses preserve galaxy, star, planet, coordinates, and accepted custom names. An in-reach address returns to Survey without bypassing Land; an out-of-reach address leaves the explorer in place. A blocked star says the next Charter system is not available in this development slice. A galaxy beyond the saved Prime Signature radius says Prime Signature radius expansion is not available in this development slice.',
         '🧭 THE ATLAS LEADS BACK: Charted galaxies, stars, and worlds can reopen their own navigation level through list-based deterministic travel, while incomplete imported routes remain visible with an honest unavailable label.',
         '🔎 SEARCH UNDERSTANDS DISCOVERIES AND ADDRESSES: The top-bar field filters imported Compendium life and accepts CF1 world codes, with an exact selected-text fallback when browser clipboard access is denied.',
         '🔒 THE FRONTIER HONORS YOUR PROGRESS: Saved drive and compatible chapter state gate star travel; saved Prime Signatures gate galaxy reach. A blocked destination never moves the camera or quietly skips the requirement.',
@@ -889,7 +889,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
         '🧷 CARDS ACT ON WHAT THEY SHOW: Land, Atlas, Share, and travel actions bind to full composite identity, preventing an equal seed at different coordinates from inheriting stale controls.',
         '🗺 OLD ATLAS ROWS NO LONGER PRETEND: Imported entries with incomplete legacy coordinates stay visible but disabled, rather than offering a travel action that cannot resolve its destination.',
         '📎 COPY FEEDBACK TELLS THE TRUTH: Clipboard denial no longer reports success; the exact world code is selected in Search with a browser-copy instruction.',
-        '📋 THE OBJECTIVE STOPS AT THE LIVE FRONTIER: The primary chip no longer points toward mining, crafting, combat, or other goal writers that are not yet playable in this slice.',
+        '📋 THE CHARTER STOPS AT THE LIVE FRONTIER: The primary chip and Charter board show only real landfall objectives in this playable development slice; unavailable progression is not presented as work to do.',
         '🎓 A LESSON OWNS ITS ESCAPE KEY: Active Field Training keeps the navigation and Survey state needed by the current step instead of ascending or closing the only required action.',
         '🎞 REDUCED MOTION ACTUALLY STILLS THE SCENE: Visual animation clocks, camera easing, fades, and decorative scene transforms stop or settle instead of leaving the most expensive motion running behind a preference.',
         '🌈 RARITY IS NOT A SPECTRAL CLASS: Survey cards no longer show a player-facing Spectral class row. Galaxies and stars show plain Rarity immediately; planets reveal plain Rarity only after landing. Seeded spectral color remains internal art data, and real stellar G/K/M/remnant classification remains astronomical identity.',

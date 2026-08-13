@@ -27,6 +27,34 @@
 > insufficient for two-tab exact-once claims and must gain compare-and-swap or one
 > authoritative serialized coordinator.
 >
+> **2026-08-13 Charter current-truth overlay:** `@cf/scene/charter.ts` still owns the
+> verbatim `ASC_CHAPTERS_DATA`, `bankLandfall`, canonical completion test and drive-derived
+> reach stage. The Phase-4 app must not render that legacy data directly. Its `fillCharters`
+> and top chip use `projectV2Charter` / `currentV2Objective` with the actual `ascStage()`:
+> only a reach-valid `landfall` goal is visible, the fresh Sol path stops at a development-slice
+> boundary, and no visible completion grants a drive, reward, canonical chapter or new reach.
+> `canAdvanceV2Chapter` still recognizes a complete drive-backed imported record, but
+> `doLand()` changes `ascCh` only after a newly changed real `bankLandfall` result. The tests
+> cover malformed chapter-without-drive input, blocked-route language, the one-card board,
+> and an ordinary toast being replaced/restored by the Charter boundary. Mining, fabrication,
+> bioscan, conquest, breeding, rewards, accepted chains and weeklies remain unported v2 work.
+>
+> **2026-08-13 canonical CF1-address overlay:** `@cf/scene/address.ts` introduces the
+> pure `resolveCF1WorldAddress` boundary. It accepts only exact uint32 seeds and finite
+> public coordinates, normalizes legacy two-decimal CF1 coordinates, probes neighboring
+> generator cells, and re-derives galaxy → coarse/fine star → planet ordinal from the
+> deterministic sources. It returns only source-derived hierarchy fields and fails closed
+> for malformed, missing, ambiguous or throwing source data. `jumpToView` now applies that
+> resolver to externally searched `type:'planet'` CF1 routes before reach, survey card,
+> custom name, persisted view or navigation can see the supplied parents; a valid route
+> still focuses system survey and only explicit Land enters the surface. The real-browser
+> control rejects a same-reach forged galaxy parent while preserving query, focus, nav,
+> Atlas, landings and names, and the pure suite covers Sol/Earth, a fine-layer world,
+> coordinate-boundary rounding, malformed/forged children and ambiguous generation.
+> This is deliberately **not** a universal ingress claim: boot-saved views, Atlas rows,
+> galaxy/star-only CF1 routes, generated descents and all future ownership/receipt writers
+> still need their own canonical boundary integration.
+>
 > **2026-08-13 branch publication overlay:** `.github/workflows/test.yml` runs the exact
 > battery for push events on both `main` and `develop`. Only a successful push battery can
 > trigger `.github/workflows/publish-branch-sites.yml`, which checks out that event's full SHA

@@ -123,7 +123,7 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(ascStageOf([], 3)).toBe(3);   /* all chapters done = free */
   });
   it('★ stage 0 is SOL ONLY; stage 1 the Neighborhood ring; foreign stars wait for the IG drive', async () => {
-    const { ascAllowsStar } = await import('@cf/scene');
+    const { ascAllowsStar, ascHintFor, primeReachHint } = await import('@cf/scene');
     const { SOL_POS } = await import('@cf/domain-worldconfig');
     const { ASC_RING_R } = await import('@cf/domain-strays');
     const sol = { x: SOL_POS.x, y: SOL_POS.y, seed: 424242 };
@@ -136,9 +136,39 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(ascAllowsStar(2, 999, far)).toBe(true);
     expect(ascAllowsStar(2, 1000, sol)).toBe(false);   /* foreign galaxy */
     expect(ascAllowsStar(3, 1000, sol)).toBe(true);
+    /* A star/drive gate and an imported galaxy-radius gate are distinct
+       facts. Both name the current-slice boundary without directing a fresh
+       player to absent mining/fabrication/Shipyard systems, but the radius
+       copy must not pretend the player can collect or write Signatures. */
+    const safeCharterCopy = (hint: string): boolean =>
+      /Charter system/i.test(hint)
+        && !/prime signature radius|shipyard|\bbuild\b|mine|fabricat/i.test(hint);
+    const safeCharterHint = (stage: number): boolean => safeCharterCopy(ascHintFor(stage));
+    const safePrimeRadiusHint = (hint: string): boolean =>
+      /Your saved Prime Signature radius ends here/i.test(hint)
+        && /Prime Signature radius expansion is not available in this development slice/i.test(hint)
+        && !/collect|earn|award|write|next Charter system|shipyard|\bbuild\b|mine|fabricat/i.test(hint);
+    expect(safeCharterHint(0)).toBe(true);
+    expect(safeCharterHint(1)).toBe(true);
+    expect(safeCharterHint(2)).toBe(true);
+    expect(safeCharterHint(3)).toBe(true);
+    expect(safePrimeRadiusHint(primeReachHint())).toBe(true);
+    /* Negative control: the legacy exhortation must fail the same outcome
+       check, proving the check is about the player-visible words. */
+    const legacyHint = 'Sol is your charter for now — build the ⚡ Jump Drive at the 🛠 Shipyard.';
+    expect(safeCharterCopy(legacyHint)).toBe(false);
+    expect(safePrimeRadiusHint(
+      'Your saved Prime Signature radius ends here. Collect Prime Signatures to expand it.',
+    )).toBe(false);
+    expect(safePrimeRadiusHint(
+      'Your saved reach is preserved. The next Charter system is not available in this development slice.',
+    )).toBe(false);
   });
   it('★ landfall BANKING: credit lands in every chapter from the current on (the review catch)', async () => {
-    const { bankLandfall, currentObjective, chapterGoalsDone } = await import('@cf/scene');
+    const {
+      ASC_CHAPTERS_DATA, ascStageOf, bankLandfall, canAdvanceV2Chapter, chapterGoalsDone,
+      currentObjective, currentV2Objective, projectV2Charter,
+    } = await import('@cf/scene');
     const prog: Record<string, number> = {};
     /* a Sol landing at chapter 0 banks c1-land only */
     expect(bankLandfall(0, prog, 133)).toBe(true);
@@ -152,13 +182,79 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     bankLandfall(0, prog, 134); bankLandfall(0, prog, 135);
     expect(prog['c1-land']).toBe(2);
     expect(bankLandfall(0, { 'c1-land': 2, 'c2-land': 3 }, 131)).toBe(false);
-    /* the chip shows the FIRST unfinished goal with true counts */
+    /* Canonical legacy order is preserved for imported progression/parity,
+       even though the live v2 chip must not render that next legacy goal. */
+    expect(ASC_CHAPTERS_DATA[0]!.goals.map((goal) => goal.id)).toEqual([
+      'c1-land', 'c1-mine', 'c1-part', 'c1-comp', 'c1-jump',
+    ]);
+    expect(ASC_CHAPTERS_DATA[0]!.intro).toContain('Mine the dead worlds');
     const o = currentObjective(0, prog)!;
     expect(o.text).toMatch(/Mine Sol/);   /* c1-land done → next goal */
     expect(currentObjective(0, {})!.text).toBe('Make planetfall on 2 worlds of Sol');
     expect(currentObjective(3, {})).toBeNull();   /* Ascent complete */
     expect(chapterGoalsDone(0, { 'c1-land': 2, 'c1-mine': 8, 'c1-part': 4, 'c1-comp': 2, 'c1-jump': 1 })).toBe(true);
     expect(chapterGoalsDone(0, { 'c1-land': 2 })).toBe(false);
+
+    /* The player-facing projection is a different contract: only outcomes
+       v2 can write are allowed through. This is the fresh-save state. */
+    const fresh: Record<string, number> = {};
+    const first = projectV2Charter(0, fresh, ascStageOf([], 0))!;
+    const visibleCopy = (view: typeof first): string =>
+      [view.name, view.intro, view.note, ...view.goals.map((goal) => goal.t)].join(' ');
+    const honestProjection = (view: typeof first): boolean =>
+      view.goals.every((goal) => goal.ev === 'landfall')
+        && !/mine|fabricat|shipyard|build the/i.test(visibleCopy(view));
+    expect(first.state).toBe('actionable');
+    expect(first.goals.map((goal) => goal.id)).toEqual(['c1-land']);
+    expect(currentV2Objective(0, fresh, ascStageOf([], 0))).toMatchObject({
+      text: 'Make planetfall on 2 worlds of Sol', have: 0, need: 2,
+    });
+    expect(honestProjection(first)).toBe(true);
+    /* Negative control: the same outcome check must reject a legacy mining
+       goal if one is accidentally appended to the view. */
+    const legacyMine = ASC_CHAPTERS_DATA[0]!.goals.find((goal) => goal.id === 'c1-mine')!;
+    expect(honestProjection({ ...first, goals: [...first.goals, legacyMine] })).toBe(false);
+
+    /* Two real Sol landfalls complete the only fresh-save visible milestone.
+       They must stop at the boundary rather than forging a mining/fabrication
+       completion, a Shipyard instruction, or an unearned reach stage. */
+    expect(bankLandfall(0, fresh, 133)).toBe(true);
+    expect(bankLandfall(0, fresh, 134)).toBe(true);
+    const boundary = projectV2Charter(0, fresh, ascStageOf([], 0))!;
+    expect(boundary.state).toBe('boundary');
+    expect(boundary.goals.map((goal) => goal.id)).toEqual(['c1-land']);
+    expect(honestProjection(boundary)).toBe(true);
+    expect(currentV2Objective(0, fresh, ascStageOf([], 0))).toBeNull();
+    expect(chapterGoalsDone(0, fresh)).toBe(false);
+    expect(canAdvanceV2Chapter(0, fresh, ascStageOf([], 0))).toBe(false);
+    /* Positive control: a genuinely complete imported canonical chapter can
+       still advance; the projection has not weakened or rewritten save data. */
+    const importedComplete = {
+      ...fresh, 'c1-mine': 8, 'c1-part': 4, 'c1-comp': 2, 'c1-jump': 1,
+    };
+    /* A malformed completion record does not manufacture its missing drive:
+       it cannot advance into Chapter 2 or advertise a non-Sol landfall. */
+    const unpoweredCompleteStage = ascStageOf([], 0);
+    expect(unpoweredCompleteStage).toBe(0);
+    expect(projectV2Charter(0, importedComplete, unpoweredCompleteStage)!.state).toBe('boundary');
+    expect(canAdvanceV2Chapter(0, importedComplete, unpoweredCompleteStage)).toBe(false);
+    /* Positive control: genuine imported drive state still recognizes the
+       canonical completion at the pure eligibility seam. The app also
+       requires a newly banked real landfall before it changes ascCh. */
+    const poweredCompleteStage = ascStageOf([['jumpdrive', 1]], 0);
+    expect(canAdvanceV2Chapter(0, importedComplete, poweredCompleteStage)).toBe(true);
+    expect(projectV2Charter(0, importedComplete, poweredCompleteStage)!.state).toBe('complete');
+    const saturatedSolRecord = { ...importedComplete };
+    expect(bankLandfall(0, saturatedSolRecord, 133)).toBe(false);
+    /* An ascCh alone is never reach. The safe default hides the Chapter 2
+       non-Sol goal; actual saved Jump Drive stage makes it visible. */
+    const malformedChapterTwoStage = ascStageOf([], 1);
+    expect(malformedChapterTwoStage).toBe(0);
+    expect(projectV2Charter(1, {}, malformedChapterTwoStage)!.goals).toEqual([]);
+    expect(currentV2Objective(1, {}, malformedChapterTwoStage)).toBeNull();
+    expect(projectV2Charter(1, {})!.goals).toEqual([]);
+    expect(projectV2Charter(1, {}, poweredCompleteStage)!.goals.map((goal) => goal.id)).toEqual(['c2-land']);
+    expect(projectV2Charter(2, {}, ascStageOf([['igdrive', 1]], 2))!.goals).toEqual([]);
   });
   it('reach grows by REGIONS as prime signatures land; home is always within reach', async () => {
     const { reachRadiusOf, withinReachOf, currentRegionOf } = await import('@cf/scene');

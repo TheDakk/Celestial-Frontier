@@ -37,10 +37,10 @@ import {
   type ReleaseNoteView, type V2ShippedRelease,
 } from './release-content.js';
 import {
-  NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, viewToNav,
+  NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, viewToNav, resolveCF1WorldAddress,
   universeGalaxies, galaxyCell, galaxyCellWindow, systemScene,
-  ascStageOf, ascAllowsStar, reachRadiusOf, withinReachOf, currentRegionOf, ascHintFor,
-  bankLandfall, chapterGoalsDone, currentObjective, ASC_CHAPTERS_DATA,
+  ascStageOf, ascAllowsStar, reachRadiusOf, withinReachOf, currentRegionOf, ascHintFor, primeReachHint,
+  bankLandfall, canAdvanceV2Chapter, currentV2Objective, projectV2Charter,
   GR, GCELL, type NavState, type GalaxyNode, type PlanetNode,
 } from '@cf/scene';
 import { galaxyProfile, galaxyHaze, systemFor, fineStarsInCell, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
@@ -1036,25 +1036,30 @@ document.getElementById('atlaspanel')!.addEventListener('click', (e) => {
     if (keyboard && moved) app.canvas.focus();
   }
 });
-/* CHARTERS — the Ascent's chapter book over the pure data + the save's
-   own progress (ascProg); the current chapter leads, done chapters fold */
+/* CHARTERS — current-slice projection over canonical saved chapter data.
+   The pure projection keeps legacy progress/reach intact while presenting
+   only real v2 actions; never render the unported canonical copy directly. */
 function fillCharters(): void {
   if (!save) return;
-  fillPanel('ch',
-    '<h3>Charters — the Ascent</h3>' +
-    ASC_CHAPTERS_DATA.map((ch, ci) => {
-      const state = ci < save.ascCh ? 'done' : (ci === save.ascCh ? 'current' : 'ahead');
-      const goals = ch.goals.map((g) => {
-        const have = Math.min(save.ascProg[g.id] || 0, g.n);
-        const pct = Math.round((have / g.n) * 100);
-        return `<div class="row" style="min-height:24px" data-sel="charter-goal"><label style="font-size:12px">${esc(g.t)}</label>` +
-          `<span style="flex:0 0 90px;display:flex;align-items:center;gap:6px"><span style="flex:1;height:7px;border-radius:999px;background:#16202f;overflow:hidden"><span style="display:block;height:100%;width:${pct}%;background:${have >= g.n ? '#caa24f' : '#7ec8f0'}"></span></span><span style="color:var(--dim);font-size:11px">${have}/${g.n}</span></span></div>`;
+  const projection = projectV2Charter(save.ascCh, save.ascProg, ascStage());
+  const chapter = !projection
+    ? '<div class="centry" data-sel="charter-ch" data-chstate="complete">' +
+        '<b>Charter record</b><div class="sub" style="margin:2px 0 6px">' +
+        'This expedition’s established Charter progress and reach are preserved.</div></div>'
+    : (() => {
+      const goals = projection.goals.map((goal) => {
+        const have = Math.min(save.ascProg[goal.id] || 0, goal.n);
+        const pct = Math.round((have / goal.n) * 100);
+        return `<div class="row" style="min-height:24px" data-sel="charter-goal"><label style="font-size:12px">${esc(goal.t)}</label>` +
+          `<span style="flex:0 0 90px;display:flex;align-items:center;gap:6px"><span style="flex:1;height:7px;border-radius:999px;background:#16202f;overflow:hidden"><span style="display:block;height:100%;width:${pct}%;background:${have >= goal.n ? '#caa24f' : '#7ec8f0'}"></span></span><span style="color:var(--dim);font-size:11px">${have}/${goal.n}</span></span></div>`;
       }).join('');
-      return `<div class="centry" data-sel="charter-ch" data-chstate="${state}" style="${state === 'ahead' ? 'border-left:3px solid #405477;padding-left:8px' : ''}">` +
-        `<b style="${state === 'current' ? 'color:#ffd9a0' : ''}">${state === 'done' ? '✓ ' : ''}${esc(ch.name)}</b>` +
-        `<div class="sub" style="margin:2px 0 6px">${esc(ch.intro)}</div>` +
-        (state === 'ahead' ? '' : goals) + '</div>';
-    }).join(''));
+      const note = projection.state === 'actionable' ? ''
+        : `<div class="sub" data-sel="charter-boundary" style="margin-top:8px">${esc(projection.note)}</div>`;
+      return `<div class="centry" data-sel="charter-ch" data-chstate="${projection.state}">` +
+        `<b style="${projection.state === 'actionable' ? 'color:#ffd9a0' : ''}">${projection.state === 'complete' ? '✓ ' : ''}${esc(projection.name)}</b>` +
+        `<div class="sub" style="margin:2px 0 6px">${esc(projection.intro)}</div>` + goals + note + '</div>';
+    })();
+  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter);
 }
 registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: fillCharters });
 document.getElementById('dockcharters')!.addEventListener('click', () => togglePanel('ch'));
@@ -1089,32 +1094,126 @@ document.getElementById('codexpanel')!.addEventListener('click', (e) => {
    and TRAVEL there (decodeWhere → the sanitized view → the same charter
    gates as every other descent), or type a name to filter the Compendium. */
 const searchEl = document.getElementById('searchbox') as HTMLInputElement;
+const CF1_PUBLIC_SEED_MAX = 0xffff_ffff;
+const CF1_SEARCH_MAX_LENGTH = 8192;
+type StrictCF1PlanetCandidate = {
+  galaxy: { seed: number; x: number; y: number };
+  star: { seed: number; x: number; y: number };
+  planet: { seed: number };
+};
+type StrictCF1PlanetPayload =
+  | { kind: 'not-planet' }
+  | { kind: 'invalid' }
+  | { kind: 'valid'; candidate: StrictCF1PlanetCandidate };
+
+/* `decodeWhere` deliberately repairs old/general CF1 routes so a bad number
+   cannot crash the camera. That tolerance is not identity proof: a public
+   planet share must provide its own exact raw hierarchy before the repair
+   layer can coerce 999.9/"999" into Earth. Galaxy/star routes intentionally
+   retain their legacy decoder semantics until their own ingress work. */
+function strictCF1PlanetCandidateFromSearchCode(code: string): StrictCF1PlanetPayload {
+  const marker = code.indexOf('CF1-');
+  if (marker < 0) return { kind: 'not-planet' };
+  /* Match decodeWhere's bound before any base64 or JSON allocation. Unlike
+     its generic decoder, Search must keep an oversized CF1 as a correction
+     outcome rather than falling through to a Compendium text filter. */
+  if (code.length > CF1_SEARCH_MAX_LENGTH) return { kind: 'invalid' };
+  let raw: unknown;
+  try {
+    let b64 = code.slice(marker + 4).trim().replace(/-/g, '+').replace(/_/g, '/');
+    while (b64.length % 4) b64 += '=';
+    const bytes = Uint8Array.from(atob(b64), (char) => char.charCodeAt(0));
+    raw = JSON.parse(new TextDecoder().decode(bytes));
+  } catch {
+    return { kind: 'not-planet' };
+  }
+  if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) return { kind: 'not-planet' };
+  const payload = raw as Record<string, unknown>;
+  if (payload.t !== 'p') return { kind: 'not-planet' };
+  const galaxy = payload.g, star = payload.s;
+  if (!Array.isArray(galaxy) || galaxy.length < 8 || !Array.isArray(star) || star.length < 3) return { kind: 'invalid' };
+  const exactSeed = (value: unknown): value is number => typeof value === 'number'
+    && Number.isInteger(value) && value >= 0 && value <= CF1_PUBLIC_SEED_MAX;
+  const exactCoordinate = (value: unknown): value is number => typeof value === 'number'
+    && Number.isFinite(value) && Math.abs(value) <= 1e7 && Math.round(value * 100) / 100 === value;
+  if (!exactCoordinate(galaxy[0]) || !exactCoordinate(galaxy[1]) || !exactSeed(galaxy[6])
+    || !exactCoordinate(star[0]) || !exactCoordinate(star[1]) || !exactSeed(star[2])
+    || !exactSeed(payload.p)) return { kind: 'invalid' };
+  return {
+    kind: 'valid',
+    candidate: {
+      galaxy: { x: galaxy[0], y: galaxy[1], seed: galaxy[6] },
+      star: { x: star[0], y: star[1], seed: star[2] },
+      planet: { seed: payload.p },
+    },
+  };
+}
 function encodeHere(): string | null {
   const v = navToView(nav);
   if (!v) return null;
   const name = v.type === 'planet' && v.pseed != null ? customNames.get('p' + v.pseed) : null;
   return encodeWhere(v as never, name || undefined) as string;
 }
-function jumpToView(view: Record<string, unknown>, incomingName: string | null = null): boolean {
+function jumpToView(
+  view: Record<string, unknown>,
+  incomingName: string | null = null,
+  externalPlanetCandidate: StrictCF1PlanetCandidate | null = null,
+): boolean {
   if (!save) return false;   /* pre-boot paste (audit #3) */
   const v = _sanitizeView(view);
   if (!v) return false;
-  const n2 = viewToNav(v);
+  let n2 = viewToNav(v);
   /* External planet destinations focus the real world in system view; only
-     the explicit Land command may enter surface mode and bank outcomes.
-     Also reject a pseed that is not a member of the declared system. */
+     the explicit Land command may enter surface mode and bank outcomes. A
+     public CF1 payload may claim any parent coordinates, so prove its full
+     galaxy → star → planet hierarchy before the reach gate, card, custom
+     name, save, or navigation state sees it. Search passes exact raw public
+     identity here before the tolerant legacy sanitizer; the resolver returns
+     the only route fields we retain, including source display metadata. */
+  if (n2.mode === 'surface' && n2.gal && n2.star && n2.planet) {
+    const canonical = resolveCF1WorldAddress(externalPlanetCandidate ?? {
+      galaxy: { seed: n2.gal.seed, x: n2.gal.x, y: n2.gal.y },
+      star: { seed: n2.star.seed, x: n2.star.x, y: n2.star.y },
+      planet: { seed: n2.planet.seed },
+    });
+    if (!canonical.ok) return false;
+    n2 = {
+      mode: 'surface',
+      gal: {
+        seed: canonical.address.galaxy.seed,
+        x: canonical.address.galaxy.x,
+        y: canonical.address.galaxy.y,
+        size: canonical.address.galaxy.size,
+        sp: canonical.address.galaxy.sp,
+        tilt: canonical.address.galaxy.tilt,
+        rot: canonical.address.galaxy.rot,
+        home: canonical.address.galaxy.home,
+        quasar: canonical.address.galaxy.quasar,
+        dwarf: canonical.address.galaxy.dwarf,
+      },
+      star: {
+        seed: canonical.address.star.seed,
+        x: canonical.address.star.x,
+        y: canonical.address.star.y,
+      },
+      planet: { seed: canonical.address.planet.seed },
+    };
+  }
+  /* A malformed planet surface view degrades in the verbatim sanitizer; do
+     not let that fallback masquerade as an accepted planet share route. */
+  if (v.type === 'planet' && n2.mode !== 'surface') return false;
+  /* Also reject a pseed that is not a member of the canonical system. */
   const focusPlanet = n2.mode === 'surface' && n2.star && n2.planet
     ? systemScene(n2.star.seed).planets.find((planet) => planet.seed === n2.planet!.seed) || null
     : null;
   if (n2.mode === 'surface' && !focusPlanet) return false;
   if (n2.mode !== 'universe' && n2.gal) {
     if (!withinReachOf(primeCount(), n2.gal.x, n2.gal.y)) {
-      toast('⬆ Beyond Your Charter', ascStage() < 3 ? ascHintFor(ascStage())
-        : 'Collect prime signatures to extend your reach — ' + currentRegionOf(primeCount()).name + ' for now.');
+      toastPrimeReachBoundary();
       return false;
     }
     if (n2.star && !ascAllowsStar(ascStage(), n2.gal.seed, n2.star)) {
-      toast('⬆ Beyond Your Charter', ascHintFor(ascStage()));
+      toastCharterBoundary(ascHintFor(ascStage()));
       return false;
     }
   }
@@ -1149,9 +1248,16 @@ searchEl.addEventListener('keydown', (e) => {
   e.stopPropagation();
   const q = searchEl.value.trim();
   if (!q) return;
+  const strictPlanet = strictCF1PlanetCandidateFromSearchCode(q);
+  if (strictPlanet.kind === 'invalid') {
+    /* A malformed planet code is a correction outcome, not a Compendium
+       query. Keep its exact text/focus so the explorer can repair it. */
+    searchEl.focus();
+    return;
+  }
   const dec = decodeWhere(q) as { where: Record<string, unknown>; name: string | null } | null;
   if (dec && dec.where) {
-    if (jumpToView(dec.where, dec.name)) {
+    if (jumpToView(dec.where, dec.name, strictPlanet.kind === 'valid' ? strictPlanet.candidate : null)) {
       searchEl.value = '';
       /* Route rendering replaces scene/card DOM synchronously. Continue the
          keyboard journey at the live action when a planet card opened, or
@@ -1162,6 +1268,10 @@ searchEl.addEventListener('keydown', (e) => {
         (action || app.canvas).focus();
       });
     } else searchEl.focus();
+    return;
+  }
+  if (strictPlanet.kind === 'valid') {
+    searchEl.focus();
     return;
   }
   /* not a code — a Compendium name filter */
@@ -1266,7 +1376,7 @@ sheet.querySelector('#importgo')!.addEventListener('click', () => {
   void importBlob(raw).then((err) => { if (err) (sheet.querySelector('#importmsg') as HTMLElement).textContent = err; });
 });
 
-/* ---- the charter toast (main.js charterBlock/ascBlock: name the BUILD) ---- */
+/* ---- the Charter toast: name the honest current-slice boundary ---- */
 const toastEl = document.createElement('div');
 toastEl.id = 'toast';
 toastEl.setAttribute('role', 'status');
@@ -1274,16 +1384,43 @@ toastEl.setAttribute('aria-live', 'polite');
 toastEl.setAttribute('aria-atomic', 'true');
 toastEl.className = 'glass';
 document.body.appendChild(toastEl);
-let _toastT = 0, _toastHide = 0;
-function toast(title: string, msg: string, force = false): void {
-  const now = performance.now();
-  if (!force && now - _toastT < 1800) return;   /* the game's re-fire guard (review catch: parking inside a gate) */
-  _toastT = now;
-  toastEl.setAttribute('aria-live', force ? 'assertive' : 'polite');
+let _toastT = 0, _toastHide = 0, _toastSerial = 0;
+let _boundaryToastKey = '', _boundaryToastT = -Infinity, _boundaryToastSerial = -1;
+const TOAST_DEDUP_MS = 1800;
+function showToast(title: string, msg: string, assertive: boolean): void {
+  toastEl.setAttribute('aria-live', assertive ? 'assertive' : 'polite');
   toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><br>${esc(msg)}`;   /* every sink escapes (audit #6) */
+  _toastSerial++;
   toastEl.style.opacity = '1';
   clearTimeout(_toastHide);
   _toastHide = window.setTimeout(() => { toastEl.style.opacity = '0'; }, 3600);
+}
+function toast(title: string, msg: string, force = false): void {
+  const now = performance.now();
+  if (!force && now - _toastT < TOAST_DEDUP_MS) return;   /* the game's re-fire guard (review catch: parking inside a gate) */
+  _toastT = now;
+  showToast(title, msg, force);
+}
+/* A blocked reach action is a distinct contract, not just another ambient
+   toast: it must replace a preceding Charted/Copy message immediately, while
+   an unchanged blocker remains quiet during zoom/tap re-fire. */
+function toastReachBoundary(title: string, msg: string): boolean {
+  const now = performance.now();
+  const key = title + '\n' + msg;
+  const boundaryStillVisible = toastEl.style.opacity === '1' && _toastSerial === _boundaryToastSerial;
+  if (key === _boundaryToastKey && boundaryStillVisible && now - _boundaryToastT < TOAST_DEDUP_MS) return false;
+  _boundaryToastKey = key;
+  _boundaryToastT = now;
+  _toastT = now;
+  showToast(title, msg, false);
+  _boundaryToastSerial = _toastSerial;
+  return true;
+}
+function toastCharterBoundary(msg: string): boolean {
+  return toastReachBoundary('⬆ Beyond Your Charter', msg);
+}
+function toastPrimeReachBoundary(): boolean {
+  return toastReachBoundary('⬆ Beyond Your Saved Reach', primeReachHint());
 }
 const primeCount = (): number => Object.keys(save.primeFill || {}).length;
 const ascStage = (): 0 | 1 | 2 | 3 => ascStageOf(save.items, save.ascCh);
@@ -1293,13 +1430,14 @@ function updateChips(): void {
   hpFillEl.style.width = Math.max(0, Math.min(100, (save.hp / Math.max(1, save.HP_MAX)) * 100)) + '%';
   hpTxtEl.textContent = `${save.hp}/${save.HP_MAX} HP`;
   primeChipEl.textContent = `✦ Prime Codex ${primeCount()} / 9`;
-  const o = currentObjective(save.ascCh, save.ascProg);
-  const liveGoal = save.ascCh < ASC_CHAPTERS_DATA.length
-    ? ASC_CHAPTERS_DATA[save.ascCh]!.goals.find((goal) => goal.ev === 'landfall' && (save.ascProg[goal.id] || 0) < goal.n)
-    : null;
-  objChipEl.innerHTML = !o ? '' : liveGoal
-    ? `⬆ ${esc(o.text)} · <span class="prog" data-sel="objprog">${o.have} / ${o.need}</span>`
-    : `⬆ ${esc(o.chapter)} continues when its next gameplay system arrives`;
+  const stage = ascStage();
+  const objective = currentV2Objective(save.ascCh, save.ascProg, stage);
+  const projection = projectV2Charter(save.ascCh, save.ascProg, stage);
+  objChipEl.innerHTML = objective
+    ? `⬆ ${esc(objective.text)} · <span class="prog" data-sel="objprog">${objective.have} / ${objective.need}</span>`
+    : projection?.state === 'boundary'
+      ? `⬆ ${esc(projection.name)} is recorded — the next Charter action is not available in this development slice`
+      : '';
   syncTopbarH();   /* the chip wraps on narrow phones — remeasure, never guess */
 }
 function hudText(): void {
@@ -2276,11 +2414,11 @@ function rerender(options: { preserveSurvey?: boolean } = {}): void {
 }
 /* descents EASE in: cam jumps wide, camT is the destination (the goTo feel) */
 function descendGalaxy(g: GalaxyNode): void {
-  /* the charter gates INTERGALACTIC reach (main.js 3391): an unreachable
-     galaxy holds you at its threshold and names the build that opens it */
+  /* The saved Prime Signature radius gates intergalactic reach. It is not a
+     drive/Charter gate, so preserve that distinction in the visible boundary. */
   if (!withinReachOf(primeCount(), g.x, g.y)) {
     camT.z = Math.min(camT.z, (0.55 * minWH() / Math.max(g.size, 8)) * 0.97);
-    toast('⬆ Beyond Your Charter', ascStage() < 3 ? ascHintFor(ascStage()) : 'Collect prime signatures to extend your reach — ' + currentRegionOf(primeCount()).name + ' for now.');
+    toastPrimeReachBoundary();
     return;
   }
   const r = enterGalaxy(nav, g);
@@ -2301,7 +2439,7 @@ function descendSystem(star: { seed: number; x: number; y: number }): void {
     const starZ = minWH() / 34;
     camT.z = Math.min(camT.z, starZ * 0.97);   /* park BELOW the dive trigger (the game's *0.97 precedent) */
     cam.z = Math.min(cam.z, starZ * 0.97);
-    toast('⬆ Beyond Your Charter', ascHintFor(ascStage()));
+    toastCharterBoundary(ascHintFor(ascStage()));
     return;
   }
   const r = enterSystem(nav, star);
@@ -2447,10 +2585,12 @@ function doLand(): void {
     if (firstLand) save.landed.push(p.seed);   /* the game's `land` set */
     /* the Ascent hears the landfall — credit BANKS for every chapter from
        the current on (the review-catch rule, now pure in charter.ts) */
-    if (firstLand && bankLandfall(save.ascCh, save.ascProg, p.seed) && chapterGoalsDone(save.ascCh, save.ascProg)) {
-      const done = ASC_CHAPTERS_DATA[save.ascCh]!;
+    if (firstLand && bankLandfall(save.ascCh, save.ascProg, p.seed)
+      && canAdvanceV2Chapter(save.ascCh, save.ascProg, ascStage())) {
+      const done = projectV2Charter(save.ascCh, save.ascProg, ascStage());
       save.ascCh++;
-      toast('★ ' + done.name + ' — complete', done.unlockNote);
+      toast('★ ' + (done?.name || 'Charter chapter') + ' — complete',
+        done?.note || 'This expedition’s established reach remains preserved.');
     }
     stSeam.gal = nav.gal; stSeam.star = nav.star;
     playWhoosh();   /* planetfall */
@@ -3259,14 +3399,14 @@ async function loadSave(): Promise<void> {
       state: () => ({
         mode: nav.mode, gal: nav.gal?.seed ?? null, star: nav.star?.seed ?? null,
         planet: nav.planet?.seed ?? null,
-        galX: nav.gal?.x ?? null, galY: nav.gal?.y ?? null,
+        galX: nav.gal?.x ?? null, galY: nav.gal?.y ?? null, galSize: nav.gal?.size ?? null,
         starX: nav.star?.x ?? null, starY: nav.star?.y ?? null,
         fine: !!fineLayer, solVisible: !!(solMark && solMark.visible),
         epoch: epochClock.current(),
         cardOpen: card.style.display !== 'none',
         cardTitle: card.querySelector('[data-sel=title]')?.textContent ?? null,
         stage: ascStage(), reach: reachRadiusOf(primeCount()),
-        toastOn: toastEl.style.opacity === '1', toastText: toastEl.textContent || '',
+        toastOn: toastEl.style.opacity === '1', toastText: toastEl.textContent || '', toastSerial: _toastSerial,
         galaxyBuildMs: lastGalaxyBuildMs,
         trail: trailEl.textContent || '', ctx: ctxEl.textContent || '',
         objective: objChipEl.textContent || '',
@@ -3296,7 +3436,9 @@ async function loadSave(): Promise<void> {
         topbarH: getComputedStyle(document.documentElement).getPropertyValue('--topbar-h'),
         save: {
           name: save.explorerName, essence: save.essence,
-          landed: save.landed.slice(), viewType: (save.savedView as { type?: string } | null)?.type ?? null,
+          landed: save.landed.slice(), customNames: save.customNames.map(([key, name]) => [key, name]),
+          viewType: (save.savedView as { type?: string } | null)?.type ?? null,
+          savedView: save.savedView,
         },
       }),
       importBlob,   /* Gate C's front door, drivable by the smoke */
