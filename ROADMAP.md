@@ -101,8 +101,15 @@ Measured on the last green develop battery: 33 minutes wall, of which glassmatri
 2-core software-rendering runner is the cost, not the instruments). Two changes landed:
 
 1. **`.github/workflows/test.yml` now runs five parallel jobs** — `root-gates`,
-   `v2-static`, `v2-smoke`, `v2-glass`, then `v2-persona-preview` joining their evidence.
-   Projected wall ≈ 23 min. Nothing weakened: every serial command still runs exactly once
+   `v2-static`, `v2-smoke`, `v2-glass`, then `v2-persona-preview` joining their evidence —
+   **plus a summary gate job named `battery`** that needs all five and fails unless every
+   one succeeded. The summary gate exists because the develop/main rulesets require one
+   status context named `battery` (the old serial job's name); the first parallel run was
+   green in every job yet sat "Expected — waiting for status" on that orphaned required
+   context until the gate restored the name. It can never satisfy the ruleset by being
+   skipped (`if: always()` + explicit per-need result check). Measured first parallel run:
+   **~11 min wall** (glass 9m42s · smoke 7m31s · root 3m39s · static 3m12s · persona
+   1m01s), down from 33 — and root-gates CI-proved the uilayout 30-second repair. Nothing weakened: every serial command still runs exactly once
    with unchanged one-attempt/no-retry semantics; the persona join and the
    `v2-development-preview` artifact still require ALL jobs green; the branch-site
    publisher keys on the whole workflow's conclusion (unchanged trigger); each
