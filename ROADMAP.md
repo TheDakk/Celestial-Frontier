@@ -78,16 +78,33 @@ Boundaries unchanged: no `develop` → `main`, no release/version/deploy, no man
 writes, no legacy/parity deletion without complete usage proof, draft PRs only from
 `anthropic/*` / `openai/*` into `develop`.
 
+### PR #21 battery attempt 1 — preserved red (instrument), repaired
+
+Test-battery run `31758515194` attempt 1 (job `94639563562`) on head `0c73ed1` failed at
+the root layout gate and is preserved without retry. Every prior step (preflight selftest,
+validate, jsdom smoke) passed; the layout gate — the battery job's **first real browser
+launch** — started the exact pinned Chrome (pid 2211, only benign D-Bus stderr) but had no
+`DevToolsActivePort` at uilayout's prior 24-second startup bound. The report correctly
+recorded `instrument-fail` and `--verify-run` correctly exited 2. This is the same
+diagnosed Linux runner cold-start phase that earned the exact development-preview caller
+its bounded 30-second allowance (PR #20), not the #200 browser-provenance class and not a
+product/docs finding. Repair: the root layout caller now owns the same bounded 30-second
+startup allowance (`tools/uilayout.js`), generic launcher default and command/shutdown
+bounds unchanged; the four current-state references naming the preview caller as the only
+30-second exception were corrected in the same batch. The new head requires its own
+matching CI; attempt 1 stays red evidence.
+
 ## Parallel Git handoff — exact five fields
 
 **Current side:** Anthropic/Claude Code on Windows, branch `anthropic/windows`,
 synchronized with `origin/develop` at `9aad1a4` before the batch. This batch adds
-`port/V2_FULL_SWEEP_2026-08-13.md` and refreshes ROADMAP/ROADMAP_ARCHIVE (docs only);
-committed and pushed on `anthropic/windows`.
+`port/V2_FULL_SWEEP_2026-08-13.md`, refreshes ROADMAP/ROADMAP_ARCHIVE, and carries the
+bounded uilayout cold-start repair above; committed and pushed on `anthropic/windows`.
 
-**GitHub step:** review the draft PR from `anthropic/windows` into `develop` (docs-only
-sweep + roadmap refresh). Under the standing 2026-08-13 authorization it may merge
-normally once clean, mergeable and terminal-green on its required battery.
+**GitHub step:** review draft PR #21 from `anthropic/windows` into `develop` (sweep docs +
+roadmap refresh + the bounded uilayout startup repair). Battery attempt 1 on `0c73ed1` is
+preserved red; the repaired head requires its own green battery. Under the standing
+2026-08-13 authorization it may merge normally once clean, mergeable and terminal-green.
 
 **PR details:**
 

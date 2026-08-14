@@ -124,8 +124,11 @@ Guide to show v2.0 plus the full manifest commit.
 Every CI/publication workflow that packages a preview runs this outcome check before
 upload or publication.
 
-The package browser check owns a fixed 30-second CDP startup allowance; the shared
-launcher keeps its 15-second default for other evidence tools. `preview:selftest`
+The package browser check owns a fixed 30-second CDP startup allowance, and the root
+layout gate (`tools/uilayout.js`) owns the same bounded allowance after the identical
+Linux cold-start phase recurred there (run `31758515194` attempt 1, first browser launch
+of the battery job); the shared launcher keeps its 15-second default for other evidence
+tools. `preview:selftest`
 captures the exact caller options on every platform and completes a real-browser
 outcome. On POSIX it starts Chrome immediately while withholding the ready CDP
 endpoint for 16 seconds, proving the generic allowance rejects without stealing

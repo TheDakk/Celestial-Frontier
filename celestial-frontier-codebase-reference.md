@@ -102,10 +102,13 @@
 > pinned `ws` transport and Node `^20.19.0 || ^22.13.0 || >=24.0.0`. Root preflight
 > launches the selected executable through `browsercdp`; its selftest rejects
 > executable non-browsers and excluded Node lines. `bootperf` shares the executable
-> resolver and `ws` transport but retains its legacy CDP lifecycle. The final
-> development-preview package check is the narrow exception to the 15-second
-> CDP-start default: its caller supplies a fixed 30-second start allowance after
-> exact packaging, while its generic command/shutdown bounds stay unchanged. Every
+> resolver and `ws` transport but retains its legacy CDP lifecycle. Two exact
+> callers deviate from the 15-second CDP-start default with a fixed bounded
+> 30-second allowance: the final development-preview package check (after exact
+> packaging) and the root layout gate `tools/uilayout.js` — the battery job's
+> first real browser launch, where the identical diagnosed Linux cold-start
+> phase recurred at its prior 24-second bound (run `31758515194` attempt 1).
+> Generic command/shutdown bounds stay unchanged for both. Every
 > platform captures the exact options passed by that caller and completes a real
 > browser outcome. On POSIX the selftest starts Chrome immediately but withholds its
 > ready CDP endpoint for 16 seconds: the generic path times out while the exact preview
