@@ -239,8 +239,8 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(projectV2Charter(0, importedComplete, unpoweredCompleteStage)!.state).toBe('boundary');
     expect(canAdvanceV2Chapter(0, importedComplete, unpoweredCompleteStage)).toBe(false);
     /* Positive control: genuine imported drive state still recognizes the
-       canonical completion at the pure eligibility seam. The app also
-       requires a newly banked real landfall before it changes ascCh. */
+       canonical completion at the pure eligibility seam. Reconciliation may
+       acknowledge it on a successful Land action without new goal credit. */
     const poweredCompleteStage = ascStageOf([['jumpdrive', 1]], 0);
     expect(canAdvanceV2Chapter(0, importedComplete, poweredCompleteStage)).toBe(true);
     expect(projectV2Charter(0, importedComplete, poweredCompleteStage)!.state).toBe('complete');
@@ -255,6 +255,92 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(projectV2Charter(1, {})!.goals).toEqual([]);
     expect(projectV2Charter(1, {}, poweredCompleteStage)!.goals.map((goal) => goal.id)).toEqual(['c2-land']);
     expect(projectV2Charter(2, {}, ascStageOf([['igdrive', 1]], 2))!.goals).toEqual([]);
+  });
+  it('Charter data is deeply immutable and malformed chapter indexes fail closed', async () => {
+    const { ASC_CHAPTERS_DATA, ASC_CHAPTER_COUNT, bankLandfall, projectV2Charter } =
+      await import('@cf/scene');
+    const complete = {
+      'c1-land': 2, 'c1-mine': 8, 'c1-part': 4, 'c1-comp': 2, 'c1-jump': 1,
+      'c2-land': 3,
+    };
+    const invalidChapters = [-1, -1_000_000, 0.5, Number.NaN, Number.POSITIVE_INFINITY,
+      ASC_CHAPTER_COUNT, ASC_CHAPTER_COUNT + 1];
+    for (const invalid of invalidChapters) {
+      const prog = { ...complete };
+      const before = JSON.stringify(prog);
+      expect(bankLandfall(invalid, prog, 133), `invalid ascCh ${String(invalid)}`).toBe(false);
+      expect(JSON.stringify(prog), `invalid ascCh ${String(invalid)} mutated progress`).toBe(before);
+      if (invalid !== ASC_CHAPTER_COUNT) expect(projectV2Charter(invalid, prog, 3)).toBeNull();
+    }
+
+    expect(Object.isFrozen(ASC_CHAPTERS_DATA)).toBe(true);
+    for (const chapter of ASC_CHAPTERS_DATA) {
+      expect(Object.isFrozen(chapter), chapter.id).toBe(true);
+      expect(Object.isFrozen(chapter.goals), `${chapter.id} goals`).toBe(true);
+      for (const goal of chapter.goals) expect(Object.isFrozen(goal), goal.id).toBe(true);
+      const projection = projectV2Charter(
+        Number(chapter.id.slice(2)) - 1, complete, 3,
+      );
+      for (const goal of projection?.goals ?? []) {
+        expect(Object.isFrozen(goal), `projected ${goal.id}`).toBe(true);
+      }
+    }
+
+    /* Negative control: Object.freeze on only the outer array does not satisfy
+       the same recursive ownership contract. */
+    const shallow = Object.freeze([{ goals: [{ id: 'mutable' }] }]);
+    const recursivelyFrozen = (chapters: readonly { goals: readonly object[] }[]): boolean =>
+      Object.isFrozen(chapters)
+        && chapters.every((chapter) => Object.isFrozen(chapter)
+          && Object.isFrozen(chapter.goals)
+          && chapter.goals.every(Object.isFrozen));
+    expect(recursivelyFrozen(shallow)).toBe(false);
+    expect(recursivelyFrozen(ASC_CHAPTERS_DATA)).toBe(true);
+
+    if (false) {
+      // @ts-expect-error Canonical chapter fields are compile-time readonly too.
+      ASC_CHAPTERS_DATA[0]!.name = 'mutated';
+      // @ts-expect-error Canonical goal arrays are compile-time readonly too.
+      ASC_CHAPTERS_DATA[0]!.goals.push(ASC_CHAPTERS_DATA[0]!.goals[0]!);
+      // @ts-expect-error Canonical goal fields are compile-time readonly too.
+      ASC_CHAPTERS_DATA[0]!.goals[0]!.n = 999;
+    }
+  });
+  it('reconciles every consecutive, reach-backed imported Charter completion', async () => {
+    const { reconcileV2Chapters } = await import('@cf/scene');
+    const c1 = {
+      'c1-land': 2, 'c1-mine': 8, 'c1-part': 4, 'c1-comp': 2, 'c1-jump': 1,
+    };
+    const c2 = {
+      ...c1, 'c2-land': 3, 'c2-scan': 2, 'c2-conq': 1, 'c2-array': 1,
+    };
+    const all = {
+      ...c2, 'c3-breed': 1, 'c3-gear': 2, 'c3-mine': 20, 'c3-ig': 1,
+    };
+
+    expect(reconcileV2Chapters(0, c1, 0)).toMatchObject({ nextChapter: 0, completed: [] });
+    expect(reconcileV2Chapters(0, c1, 1)).toMatchObject({
+      nextChapter: 1, completed: [{ id: 'ch1' }],
+    });
+    expect(reconcileV2Chapters(0, all, 3)).toMatchObject({
+      nextChapter: 3, completed: [{ id: 'ch1' }, { id: 'ch2' }, { id: 'ch3' }],
+    });
+    expect(reconcileV2Chapters(0, all, 1)).toMatchObject({
+      nextChapter: 1, completed: [{ id: 'ch1' }],
+    });
+    expect(reconcileV2Chapters(0, all, 2)).toMatchObject({
+      nextChapter: 2, completed: [{ id: 'ch1' }, { id: 'ch2' }],
+    });
+    expect(reconcileV2Chapters(0, c1, 3)).toMatchObject({
+      nextChapter: 1, completed: [{ id: 'ch1' }],
+    });
+    expect(reconcileV2Chapters(1, c2, 3)).toMatchObject({
+      nextChapter: 2, completed: [{ id: 'ch2' }],
+    });
+    expect(reconcileV2Chapters(3, all, 3)).toMatchObject({ nextChapter: 3, completed: [] });
+    for (const invalid of [-1, 0.5, Number.NaN, Number.POSITIVE_INFINITY, 4]) {
+      expect(reconcileV2Chapters(invalid, all, 3), String(invalid)).toBeNull();
+    }
   });
   it('reach grows by REGIONS as prime signatures land; home is always within reach', async () => {
     const { reachRadiusOf, withinReachOf, currentRegionOf } = await import('@cf/scene');

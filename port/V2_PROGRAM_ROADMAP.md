@@ -4,7 +4,8 @@
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
-> implemented with clean exact-head evidence in draft PR #24; later batches remain planned.
+> integrated in `develop` at merge `a1dabdeb4059292d67d7a89652e92fb317d750c7`. The Charter
+> SCN-1/SCN-2/SCN-6 slice is the active F1b batch; later F1b slices and product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -201,6 +202,23 @@ reviewable or join its natural owner:
   not an immutable session base;
 - lifted declaration/runtime corrections, façade warnings, and audio pre-init guard coverage;
 - right-rail/panel structural correction and similarly isolated UI contract work.
+
+**F1b Charter implementation record (2026-08-14):** the active bounded slice makes malformed
+chapter positions fail closed without changing progress, deeply freezes canonical Charter data and
+projected goal aliases, and separates first-landfall banking from stable-stage reconciliation after
+any successful Land. Every consecutive already-complete, reach-backed imported chapter may advance;
+the first incomplete/unpowered chapter stops, with no duplicate landing, progress, reward, drive or
+reach. A one-shot completion now replaces adjacent ambient feedback politely, and an already-open
+Charters board refills from the advanced ledger. Test-first unit controls failed on the
+throwing/mutable/missing-helper behavior. The repaired candidate passes the focused 18-test scene
+suite and both TypeScript configurations. Its real-browser proof covers an emulated-phone touch on
+already-landed Mercury, exact progress/reward/reach preservation, matched unpowered and
+powered-incomplete controls, immediate Share→completion replacement, IndexedDB/reload, and a separate
+desktop open-panel refill. Exact committed-head/CI evidence remains required
+before integration. The restored dirty candidate is green on the full 298-pass/1-skipped unit suite,
+both TypeScript configurations, unused-art audit, real-browser smoke, glass selftest and all 12
+viewport classes; this is diagnostic evidence until repeated from the intentional exact commit. Epoch,
+lifted declaration/runtime, audio pre-init and right-rail work remain separate F1b batches.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete

@@ -4638,50 +4638,68 @@ async function main() {
         }));
         const developmentDetailCheck = `(()=>{ const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel'),article=panel?.querySelector('.guide-topic'),
           headings=article?[...article.querySelectorAll('h5')].map((node)=>(node.textContent||'').trim()):[],
-          bullets=article?[...article.querySelectorAll('li')].map((node)=>(node.textContent||'').trim()):[],text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
+          bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((node)=>(node.textContent||'').trim()),text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
           title=article?.querySelector('[data-guide-heading]')?.textContent||'';
           const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'];
+          const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
+            recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
+            headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
+            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),
+            charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes';
           const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
             ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
           const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
-            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===43&&bullets.every((bullet)=>bullet.length>0)
-            &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)&&/RARITY IS NOT A SPECTRAL CLASS/.test(text)
+            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===44&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
+            &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
+            &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
+            &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
+            &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)
             &&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text)&&state.rnSeen===${JSON.stringify(guideReleaseBaseline.rnSeen)}
             &&honest&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
-            identity,honest,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),rnSeen:state.rnSeen,
+            identity,honest,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
+            charterPlacement,firstHeading,recoveryHeading,rnSeen:state.rnSeen,
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 43-outcome development inventory without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 44-outcome development inventory without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
             headings=[...article.querySelectorAll('h5')],items=[...article.querySelectorAll('li')],title=article.querySelector('[data-guide-heading]'),priorState=S.api.state;
             const a=headings[0]?.textContent||'',b=headings[1]?.textContent||'',middle=items[12],parent=middle?.parentNode,next=middle?.nextSibling;
-            const titleText=title?.textContent||'',claim=items[1],claimText=claim?.textContent||'';
-            let order=null,inventory=null,identity=null,overclaim=null,authority=null,error=null;
+            const titleText=title?.textContent||'',claim=items[1],claimText=claim?.textContent||'',
+              first=items.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
+              recovery=items.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
+              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling;
+            let order=null,inventory=null,identity=null,overclaim=null,firstContract=null,recoveryContract=null,placementContract=null,authority=null,error=null;
             try {
-              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim)throw new Error('development-detail control fixture missing');
+              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!first||!recovery||first===recovery||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
               title.textContent=titleText.replace('v2.0','v2x0');identity=${developmentDetailCheck};title.textContent=titleText;
               claim.textContent='Mining is now playable.';overclaim=${developmentDetailCheck};claim.textContent=claimText;
+              first.textContent='First-landfall contract removed';firstContract=${developmentDetailCheck};first.textContent=firstText;
+              recovery.textContent='Imported recovery contract removed';recoveryContract=${developmentDetailCheck};recovery.textContent=recoveryText;
+              first.parentNode.appendChild(recovery);placementContract=${developmentDetailCheck};recoveryParent.insertBefore(recovery,recoveryNext);
               S.api.state=()=>({...priorState(),rnSeen:'v2-control'});authority=${developmentDetailCheck};
             } catch(cause) { error=String(cause?.message||cause); }
             finally {
               if(headings[0])headings[0].textContent=a;if(headings[1])headings[1].textContent=b;
-              if(middle&&parent&&!middle.isConnected)parent.insertBefore(middle,next);if(title)title.textContent=titleText;if(claim)claim.textContent=claimText;S.api.state=priorState;
+              if(middle&&parent&&!middle.isConnected)parent.insertBefore(middle,next);if(title)title.textContent=titleText;if(claim)claim.textContent=claimText;
+              if(first)first.textContent=firstText;if(recovery){recovery.textContent=recoveryText;if(recoveryParent&&recovery.parentNode!==recoveryParent)recoveryParent.insertBefore(recovery,recoveryNext);}S.api.state=priorState;
             }
             const restored=headings[0]?.textContent===a&&headings[1]?.textContent===b&&middle?.isConnected===true
-              &&title?.textContent===titleText&&claim?.textContent===claimText&&S.api.state===priorState;
-            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===42
+              &&title?.textContent===titleText&&claim?.textContent===claimText&&first?.textContent===firstText
+              &&recovery?.textContent===recoveryText&&S.api.state===priorState;
+            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===43
               &&identity?.ok===false&&identity?.identity===false&&overclaim?.ok===false&&overclaim?.honest===false
+              &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
-              order,inventory,identity,overclaim,authority,restored,error};})()`);
+              order,inventory,identity,overclaim,firstContract,recoveryContract,placementContract,authority,restored,error};})()`);
           if (!detailControls.ok) {
             instrumentFailures.push(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
           }

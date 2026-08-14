@@ -17,6 +17,11 @@
 > drive, reward or reach tier, and a nonterminal bare chapter index cannot substitute for a
 > saved drive. The explicit terminal legacy/veteran fallback (`ascCh >= ASC_CHAPTER_COUNT`)
 > deliberately remains stage 3 even when drive-item bytes are absent.
+> Malformed chapter positions fail closed without changing progress, and the canonical Charter
+> array, chapters, goal arrays, goals, and projected aliases are recursively immutable.
+> Only a genuine first landing banks new progress. Any successful Land action separately
+> reconciles every consecutive canonically complete, reach-backed imported chapter even when
+> its landfall counters were saturated; it never re-banks or advances incomplete/unpowered data.
 > `@cf/scene/address.ts` also now re-derives a complete galaxy → star → planet hierarchy
 > from deterministic sources for external Search-to-planet CF1 routes before navigation or
 > persistence; malformed, forged and ambiguous candidates fail closed. That protection is
