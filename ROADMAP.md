@@ -76,18 +76,19 @@ the archive verbatim and refresh this handoff in place.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, `openai/mac`. This is a documentation-only planning batch
-for the complete V2 program map; product code is untouched. Verify the final commit/PR/check state
-live after this handoff is committed and pushed.
+**Current side:** OpenAI/Codex on macOS, `openai/mac`. The documentation-only complete V2 program
+map is pushed for review in draft PR #23; product code is untouched. Verify the exact PR head and
+check state live before any merge decision.
 
-**GitHub step:** create/review a draft PR from `openai/mac` into `develop` for the planning-document
-change only. Do not merge it as product/release authority; merge normally only after its required
+**GitHub step:** review draft PR #23 from `openai/mac` into `develop` for the planning-document
+change only. Do not treat it as product/release authority; merge normally only after its required
 documentation checks and both-agent review are satisfied.
 
 **PR details:**
 
 - Base branch: `develop`
 - Source branch: `openai/mac`
+- Draft PR: https://github.com/TheDakk/Celestial-Frontier/pull/23
 - Copy-ready title: `Add complete v2 program roadmap and refresh live handoff`
 - Copy-ready description: `Adds the comprehensive planning-only V2 program map: F1–F4 foundations,
   Arc 0–10 delivery sequence, current continuity/deviation ownership, Gates A–I, and explicit
