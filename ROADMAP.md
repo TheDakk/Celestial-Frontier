@@ -127,6 +127,13 @@ always-rebuild freshness law), viewport/control trimming, retries, docs-only gat
 skipping. A larger (4/8-core) runner remains the next lever if Nick wants sub-15-minute
 batteries and accepts the per-minute cost; the glass timing data will size that decision.
 
+3. **Agent-branch auto-sync (2026-08-14, Nick-requested):**
+   `.github/workflows/sync-agent-branches.yml` fast-forwards each agent branch that is
+   strictly behind `develop` on every `develop` push, so Nick no longer manually updates
+   branches after a merge. Divergent branches (unmerged agent work) are skipped with a
+   report line and keep the manual protocol merge; never force, never `main`. Local
+   clones still `git pull` at session start — the automation moves origin branches only.
+
 ## Parallel Git handoff — exact five fields
 
 **Current side:** Anthropic/Claude Code on Windows, branch `anthropic/windows`,
