@@ -944,11 +944,11 @@ duplicates).
   focused tests; omitting one required export key failed 9/22 direct round-trip tests. The real-
   browser control independently restored the old overwrite and produced named failures for both a
   future and corrupt backup because the persisted primary no longer produced the protected boot
-  outcome. With the repair restored, local candidate diagnostics passed 296 tests /1 skipped, both
-  TypeScript configurations, and full slice smoke; clean exact-head evidence is still pending. This
-  candidate is bounded to F1a: one-blob storage, revisions/CAS, multi-tab coordination, split stores,
-  receipt transactions, real migration proof, and the Gate-C veteran/device human criterion remain
-  open for F3 and the human gate.
+  outcome. With the repair restored, clean exact head `f7cf75f` passed 296 tests /1 skipped, both
+  TypeScript configurations, the unused-code type gate, and full slice smoke. This closes F1a only:
+  one-blob storage, revisions/CAS, multi-tab coordination, split stores, receipt transactions, real
+  migration proof, and the Gate-C veteran/device human criterion remain open for F3 and the human
+  gate.
 - ✔ **D-SAVE-2 — intentional replacement reloads own pre-await ticker quiescence and outgoing
   renderer release (closed in exact clean executable evidence `7d9980e`, 2026-08-12).** Training restart after its reversible view
   commit, supported expedition import after its replacement-envelope commit, and the storage-

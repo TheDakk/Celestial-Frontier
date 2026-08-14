@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-14 · F1A CANDIDATE LOCALLY GREEN; EXACT-HEAD PROOF NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-14 · F1A EXACT-HEAD GREEN; DRAFT PR #24 REVIEW NEXT ◀◀◀
 
 ### Cold start
 
@@ -39,8 +39,8 @@ the archive verbatim and refresh this handoff in place.
   fetch/pull step.
 - Claude's R1–R9 roadmap review is accepted and integrated. The two attached HD-audio proposals are
   accepted with explicit lineage and information-disclosure constraints recorded below.
-- This branch now contains the bounded F1a save-integrity implementation and synchronized docs. It
-  has not been merged into `develop`; resolve the draft PR and exact check state live.
+- This branch now contains the bounded F1a save-integrity implementation and synchronized docs in
+  draft PR #24. It has not been merged into `develop`; resolve the PR head/check state live.
 
 ### What changed in F1a
 
@@ -68,39 +68,38 @@ the archive verbatim and refresh this handoff in place.
 - Test-first old behavior: focused recovery/reset suite failed **2/36**; the missing-export-key
   control failed all **9** new fixture contracts; browser overwrite control failed by name for both
   future and corrupt backups. Every temporary defect was restored before certification.
-- Local candidate diagnostics: `npm test` **296 passed /1 skipped**; `npm run typecheck` passed root
-  + app configs; one full `npm run smoke` passed the complete browser loop with zero console errors.
-  These runs are not clean exact-head certification; commit and rerun before promoting `[EXEC]`.
+- Clean exact head `f7cf75f69332b88846aa6f19f41e64f888f0531c`: `npm test` **296 passed
+  /1 skipped**; `npm run typecheck` passed root + app configs; `npm run artunused` passed; one full
+  `npm run smoke` passed the complete browser loop with zero console errors.
 - Gate C is not declared closed. Real veteran/current-device import/readback and original-source
   preservation remain [HUMAN]. F3 still owns revisions/CAS, split stores, receipts, tab lease and
   migration authority.
 
 ### Next action
 
-1. Commit/push this bounded candidate and open a **draft** PR from `openai/mac` into `develop`.
-2. Claude reviews the exact draft diff, especially recovery classification ownership, reset growth,
-   exporter/classifier coupling, and the roadmap/audio wording. Do not start another batch inside
-   the same PR.
-3. After terminal-green checks and review resolution, the standing authority permits a normal merge
+1. Claude reviews draft PR #24's exact diff, especially recovery classification ownership, reset
+   growth, exporter/classifier coupling, and the roadmap/audio wording. Do not start another batch
+   inside the same PR.
+2. After terminal-green checks and review resolution, the standing authority permits a normal merge
    of that exact head and monitoring of the resulting `develop` battery/development publication.
-4. The next implementation PR scopes F1b's independent guardrails; if an item cannot stay narrow,
+3. The next implementation PR scopes F1b's independent guardrails; if an item cannot stay narrow,
    move it to its natural owner. F2 remains the next critical exploit/provenance closure before any
    world-bound ownership or reward writer.
 
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, `openai/mac`. F1a save-integrity code, executable controls,
-Claude roadmap refinements and approved HD-audio direction are locally diagnostic-green and ready
-for the first candidate commit; exact-head evidence remains pending.
+Claude roadmap refinements and approved HD-audio direction are pushed in draft PR #24 with clean
+exact-head evidence. Verify the current PR head/check state live.
 
-**GitHub step:** push `openai/mac`, create a draft PR into `develop`, and review its exact head. Do
-not mark it Ready or merge it while any required check or review concern is unresolved.
+**GitHub step:** review draft PR #24 from `openai/mac` into `develop`. Do not mark it Ready or merge
+it while any required check or review concern is unresolved.
 
 **PR details:**
 
 - Base branch: `develop`
 - Source branch: `openai/mac`
-- Draft PR: pending push/creation
+- Draft PR: https://github.com/TheDakk/Celestial-Frontier/pull/24
 - Copy-ready title: `Harden v2 save recovery and record approved HD audio direction`
 - Copy-ready description: `Implements bounded F1a save integrity: classify exact recovery bytes
   before primary replacement, clear the canonical store list on reset, and directly prove every
@@ -113,10 +112,10 @@ not mark it Ready or merge it while any required check or review concern is unre
   tab/receipts/migrations, F2 navigation work, later arcs, production versioning, deployment, and
   develop-to-main release work.`
 
-**Other side:** Anthropic/Claude Code should review the draft PR's exact diff after its URL is
-available; do not copy files manually. Nick does not need to open Claude until the draft is created.
-After a normal merge, the remote sync workflow fast-forwards a strictly-behind agent branch;
-Claude's clean local worktree still fetches and performs the ordinary trivial pull before work.
+**Other side:** Anthropic/Claude Code should review draft PR #24's exact diff now; do not copy files
+manually. Nick should open Claude for this review. After a normal merge, the remote sync workflow
+fast-forwards a strictly-behind agent branch; Claude's clean local worktree still fetches and
+performs the ordinary trivial pull before work.
 
 **Release status:** no release, deployment, version bump, `develop` → `main` merge, or manual site
 write is part of this batch.
