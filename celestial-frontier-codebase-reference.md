@@ -34,7 +34,7 @@
 > bytes leave the original invalid primary untouched, and a future primary still never
 > invokes recovery. The direct exporter contract proves all supported fixture families
 > satisfy the boot envelope, while repository reset clears the canonical complete
-> `STORES` list so future stores cannot escape a wipe. This candidate implements the bounded F1a
+> `STORES` list so future stores cannot escape a wipe. This implements the bounded F1a
 > pre-classification overwrite/reset-coverage repairs only. The current one-blob store,
 > cross-tab last-writer-wins behavior, split schema, CAS, receipt journal and migration
 > authority remain F3 work; Gate C still requires real veteran/device evidence.

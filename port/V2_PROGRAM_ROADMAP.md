@@ -3,9 +3,8 @@
 > **Status:** comprehensive planning baseline, created 2026-08-14.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
-> **Implementation status:** active, one bounded review branch at a time. The F1a save-integrity
-> candidate is implemented and locally diagnostic-green; clean exact-head evidence is pending.
-> Later batches remain planned.
+> **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
+> implemented with clean exact-head evidence in draft PR #24; later batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -174,23 +173,22 @@ Those belong to F3.
 
 **Exit evidence:**
 
-- [EXEC-TODO] Unit and real-repository outcomes for every recovery state above; candidate tests are
-  locally green and await clean exact-head binding.
-- [EXEC-TODO] Controls that restore pre-classification overwrite, omit a reset store, substitute a
+- [EXEC] Unit and real-repository outcomes for every recovery state above.
+- [EXEC] Controls that restore pre-classification overwrite, omit a reset store, substitute a
   malformed backup, and force a transient failure.
-- [EXEC-TODO] Browser reload proof through persisted IndexedDB data; the local candidate passed and
-  awaits a clean exact-head run.
+- [EXEC] Browser reload proof through persisted IndexedDB data.
 - [HUMAN] Gate C stays open until a real veteran/current-device save imports, reads back, and its
   original legacy source remains recoverable.
 
-**F1a candidate record (2026-08-14):** `SaveRepository.recover` now accepts the supported
+**F1a implementation record (2026-08-14):** `SaveRepository.recover` now accepts the supported
 classifier and proves the exact backup before replacement; reset clears the canonical `STORES`
 list; and every supported fixture family passes a direct exporter → boot-envelope contract. Unit
 test-first controls restored the old overwrite/reset omissions and failed 2 of 36 tests; an omitted
 export key failed all 9 direct fixture contracts; and the browser control named both future- and
-corrupt-backup overwrite cases. With the repair restored, local diagnostics passed 296 tests /1
-skipped, both TypeScript configurations, and the full real-browser slice smoke. These are not yet
-clean exact-head certification. F3 and the Gate-C human device/veteran-save criterion remain open.
+corrupt-backup overwrite cases. With the repair restored, clean exact head
+`f7cf75f69332b88846aa6f19f41e64f888f0531c` passed 296 tests /1 skipped, both TypeScript
+configurations, the unused-code type gate, and the full real-browser slice smoke. F3 and the Gate-C
+human device/veteran-save criterion remain open.
 
 ### 4.2 F1b — narrow, independently reviewable guardrails
 
