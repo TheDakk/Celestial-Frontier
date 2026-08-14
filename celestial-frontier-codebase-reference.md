@@ -57,8 +57,14 @@
 >
 > **2026-08-13 branch publication overlay (battery structure updated 2026-08-14):**
 > `.github/workflows/test.yml` runs the exact battery for push events on both `main` and
-> `develop`, and since 2026-08-14 as **five jobs**: `root-gates`, `v2-static`, `v2-smoke`
-> and `v2-glass` in parallel, then `v2-persona-preview` joining their evidence. The split
+> `develop`, and since 2026-08-14 as **five parallel jobs plus one summary gate**:
+> `root-gates`, `v2-static`, `v2-smoke` and `v2-glass` in parallel, then
+> `v2-persona-preview` joining their evidence, then a summary job named **`battery`**
+> that needs all five and fails unless every one succeeded. The summary job exists
+> because the develop/main branch rulesets require one status context named `battery`
+> (the old serial job); it keeps repository settings decoupled from internal job names
+> and can never satisfy the ruleset by being skipped (`if: always()` + explicit result
+> check). The split
 > exists because the two real-browser evidence commands owned 78% of the old 33-minute
 > serial wall (glassmatrix ~17 min, smoke:ci ~9 min on the 2-core software-rendering
 > runner). Every serial-battery command still runs exactly once with unchanged
