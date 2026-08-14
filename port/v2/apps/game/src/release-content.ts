@@ -883,7 +883,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
     Object.freeze({
       category: 'Bug Fixes',
       bullets: Object.freeze([
-        '💾 PROTECTED MEANS PROTECTED: Sparse, corrupt, transiently unavailable, and newer-build saves are classified before promotion, so unreadable or unsupported bytes cannot be silently replaced by a fresh expedition.',
+        '💾 PROTECTED MEANS PROTECTED: Sparse, corrupt, transiently unavailable, and newer-build saves are classified before promotion, and a recovery backup is proven safe before it can replace the primary. Invalid or future backup bytes cannot destroy the evidence they were meant to recover.',
         '🔄 AN IMPORT CANNOT BE OVERTAKEN: Expedition replacement cancels and drains queued preference writes, then claims one exclusive reload transaction so an older save cannot overwrite the imported expedition or another flow’s rollback.',
         '🧾 THE ORIGINAL IMPORT STAYS ORIGINAL: When browser storage allows the optional keepsake, it retains the exact submitted text, including legal surrounding JSON whitespace; the moderator-held source file remains the byte-for-byte authority.',
         '🧷 CARDS ACT ON WHAT THEY SHOW: Land, Atlas, Share, and travel actions bind to full composite identity, preventing an equal seed at different coordinates from inheriting stale controls.',

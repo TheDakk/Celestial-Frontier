@@ -2,7 +2,7 @@
 
 **STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
 2026-07-30. The dated v2 next-arc overlay below matches the development boundary and approved
-direction as of **2026-08-13**. It is a plan, not a claim that the systems are live.
+direction as of **2026-08-14**. It is a plan, not a claim that the systems are live.
 **Shipped (production v1):** v1.8.0 "The Connection" · corrected and widened in v1.8.4
 "Clear Ground".
 
@@ -11,7 +11,7 @@ whole layer undocumented despite being the largest single feature of v1.8.
 
 ---
 
-## 0. v2.0 next-arc overlay — approved direction, not implemented (2026-08-13)
+## 0. v2.0 next-arc overlay — approved direction, not implemented (2026-08-14)
 
 ### 0.1 Truth boundary
 
@@ -101,6 +101,15 @@ voice. The current share format does not preserve complete parent objects, so th
 may rely only on lineage fields that actually survive normalization. If complete parent signatures
 become necessary, that requires an explicit versioned sharing/save design.
 
+`D-CFB-1` owns the minimum compatibility decision. Preserving its ordered two-uint32 parent-seed
+tuple repairs lost lineage and can supply a stable lineage salt, but those seeds cannot reconstruct
+both parents' complete audible phenotype/owner profiles. The premium hybrid promise therefore
+requires either a versioned bounded parent-audio projection containing the signature inputs needed
+for the blend, or conservative wording and a deterministic fallback based on the child's phenotype,
+exact surviving owner/blend, anchor and ordered seed tuple. The tuple is never sorted. No
+implementation may claim it combines both complete parent voices until the selected representation
+round-trips and passes malformed/reverse-order controls.
+
 The already-settled voice corrections remain **planned, not implemented in v2**: retain `legacy`
 as an emergency definition but exclude it from ordinary procedural selection, and replace both
 hard f0 clips with a soft-saturation curve tuned only after human listening.
@@ -167,6 +176,74 @@ closed on a missing/incompatible right, hash drift, missing file or orphan asset
 Runtime audio stays local/offline or same-origin with a silent/local fallback. It never needs a
 microphone, `getUserMedia`, uploads, remote TTS, behavioural telemetry or third-party call-home, and
 it must not disclose a genome/share identity through a network request.
+
+### 0.8 Distant biosphere calls as a discovery layer
+
+**Player promise:** while approaching or surveying a living world, once the owning approach/survey
+surface has already presented a biosphere lead, faint distance-filtered calls can make that same
+lead audible before landing. The player hears that a place is worth investigating without audio
+becoming a hidden acquisition or spoiler channel.
+
+The deterministic contract is:
+
+```text
+canonicalWorldKey + already surfaced opportunity/survey-roster projection + audio resolver version
+  -> DistantEcologyHintPlan
+```
+
+The plan consumes the canonical world and the exact lead/roster projection the approach,
+survey, or opportunity owner has already made player-visible. It never keys on a bare planet seed,
+generates a second roster, selects a hidden/absent species, consumes gameplay RNG, or creates a
+catalogue page, reward, claim, save mutation or acquisition outcome. A recognizable species call requires equivalent visual
+information at the same semantic granularity; a generic life icon is not sufficient. Otherwise the
+audio hint must stay at the already-visible family/category level.
+
+Within this distant-discovery layer, eligible fauna-call stems route through the creature bus and
+habitat/ecological beds route through ambience. Explicit organism-identity auditions remain governed
+by the Creature voices control, including scientific/environmental identities for non-fauna. A mixed
+authored stem must preserve those category controls rather than making Creature voices an inert
+switch. Clustered/premixed layers stay inside the full-mix voice,
+emitter and node budgets; not every distant organism becomes a spatial node. The layer ducks below
+higher-priority UI/combat cues and honors the audio reduced-intensity setting. Route transition,
+hidden-tab shutdown and `dispose()` release every owned layer.
+
+A “silent world” control means the distant-call plan has no eligible call. It does not suppress an
+honest biome ambience bed or non-fauna ecological sonification. Acceptance requires same-world
+determinism, same-seed/different-canonical-world separation, a wrong/hidden-species failure, silent
+and non-fauna controls, gameplay-RNG before/after equality, resource plateau, matching visual
+information, priority-ducking/reduced-intensity controls and human listening for anticipation rather
+than noise.
+
+### 0.9 Expression on a stable audible identity
+
+**Player promise:** a companion always sounds like itself, but a completed care or adventure event
+can change how it expresses that identity. Injury can soften or shorten a call; feeding can select a
+contented articulation; earned bond can support a greeting. Recognizability is never traded for a
+mutable mood system.
+
+Identity and expression are separate contracts:
+
+```text
+immutable inputs -> AudioSignature -> AudioIdentityProfile + CreatureCallPlan
+CreatureCallPlan + settled AudioEvent -> CreatureExpressionCue
+```
+
+`CreatureCallPlan` is an invariant repertoire. `hurt`, `fed`, `bond`, care and assignment state do
+not change its serialized bytes, the signature or the identity profile. A separate pure resolver
+selects one transient cue from stable signature + stable completed-event identity + resolver
+version. Expression retains the creature's palette, register and phrase grammar; it changes only
+articulation inside that identity. It never reads SessionRNG, wall clock, AudioContext state, an
+idle-polled creature object, or an unsettled gameplay outcome.
+
+Expression attaches only to completed typed events such as feed outcome, injury applied, care,
+taming success, explicit selection, or companion-mission return. “Return greeting” never means
+returning to the app after an absence. There are no absence-triggered distress calls, attendance
+summons or pressure loops. Every meaningful expression has a text/visual/caption counterpart.
+
+Acceptance includes deterministic `(signature,event)` vectors; byte-equality of signature,
+identity profile and call plan across every mutable-state control; signature-drift, state-polling,
+absence-trigger and missing-caption controls; and blinded listening that still matches one creature
+across different expression states without long-session fatigue.
 
 ---
 

@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## Current port status — 2026-08-13
+## Current port status — 2026-08-14
 
 > **Next-arc architecture review (2026-08-13):**
 > `../../EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` is the approved cross-system
@@ -42,7 +42,10 @@ integration gaps: the app's own TypeScript configuration now participates in
 `npm run typecheck`; CI installs v2 and runs its core test/type/art/browser-smoke
 gates; the DOM waiver is narrowed
 to three exact compatibility expressions; sparse/corrupt and future save
-payloads cannot overwrite proven data; IndexedDB can recover after a failed
+payloads cannot overwrite proven data, and an invalid/future recovery backup is
+classified before it can replace an invalid primary. A direct contract proves
+all nine supported fixture families export a boot-accepted envelope, while reset
+clears the canonical complete store list. IndexedDB can recover after a failed
 open; hostile epoch input is bounded; Atlas route identity, planet landing,
 named CF1 sharing, stale-card actions and repeat landfall outcomes are guarded;
 SessionRNG rejects hostile counters/keys; handwritten domain declarations match
