@@ -1,0 +1,53 @@
+# Keeps the four agent branches from drifting behind develop. On every push
+# to develop (which only advances through merged, battery-green PRs), each
+# agent branch that is STRICTLY BEHIND develop — an ancestor, holding no
+# commits of its own — is fast-forwarded to develop's tip. A fast-forward of
+# a strictly-behind branch cannot lose work by construction. A branch that
+# has diverged (an agent mid-batch with unmerged commits) is SKIPPED with a
+# report line; that agent merges origin/develop itself from a clean worktree
+# per PARALLEL_GIT_PROTOCOL.md, exactly as before. This workflow never
+# touches main, never force-pushes, and never resolves conflicts. Local
+# clones still `git pull` at session start; this only moves the origin
+# branches so that pull is a trivial fast-forward.
+name: sync agent branches
+on:
+  push:
+    branches: [develop]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-agent-branches
+  cancel-in-progress: false
+
+jobs:
+  fast-forward:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: fast-forward agent branches that are strictly behind develop
+        run: |
+          set -euo pipefail
+          target=$(git rev-parse origin/develop)
+          echo "develop is $target"
+          for branch in anthropic/windows anthropic/mac openai/windows openai/mac; do
+            if ! git rev-parse --verify --quiet "origin/$branch" >/dev/null; then
+              echo "SKIP $branch: does not exist on origin"
+              continue
+            fi
+            head=$(git rev-parse "origin/$branch")
+            if [ "$head" = "$target" ]; then
+              echo "OK   $branch: already at develop"
+              continue
+            fi
+            if git merge-base --is-ancestor "origin/$branch" "$target"; then
+              git push origin "$target:refs/heads/$branch"
+              echo "FF   $branch: $head -> $target"
+            else
+              echo "SKIP $branch: carries commits not in develop (agent work in progress); it merges origin/develop itself per PARALLEL_GIT_PROTOCOL.md"
+            fi
+          done
