@@ -100,8 +100,11 @@ documentation checks and both-agent review are satisfied.
 
 **Other side:** Anthropic/Claude Code does not have this planning-doc change until it reaches
 `develop`. Claude should review the pushed draft PR or exact branch diff; do not copy files manually.
-After merge, Claude’s next clean batch fetches `origin` and merges the current `origin/develop` into
-its own agent branch. Nick does not need to open the other app until the draft is ready for review.
+After merge, the sync workflow fast-forwards a remote agent branch that is strictly behind
+`develop`; the next clean local Claude batch then fetches and performs the ordinary trivial
+`git pull`. A divergent branch with unmerged work is deliberately skipped and instead follows the
+normal clean-worktree merge of `origin/develop`. Nick does not need to open the other app until the
+draft is ready for review.
 
 **Release status:** no release, deployment, version bump, `develop` → `main` merge, or manual site
 write is part of this batch.
