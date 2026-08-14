@@ -94,17 +94,45 @@ bounds unchanged; the four current-state references naming the preview caller as
 30-second exception were corrected in the same batch. The new head requires its own
 matching CI; attempt 1 stays red evidence.
 
+### Battery optimization (2026-08-14, Nick-approved)
+
+Measured on the last green develop battery: 33 minutes wall, of which glassmatrix owned
+~17 min and smoke:ci ~9 min (the same commands take ~1 and ~2 min on a workstation — the
+2-core software-rendering runner is the cost, not the instruments). Two changes landed:
+
+1. **`.github/workflows/test.yml` now runs five parallel jobs** — `root-gates`,
+   `v2-static`, `v2-smoke`, `v2-glass`, then `v2-persona-preview` joining their evidence.
+   Projected wall ≈ 23 min. Nothing weakened: every serial command still runs exactly once
+   with unchanged one-attempt/no-retry semantics; the persona join and the
+   `v2-development-preview` artifact still require ALL jobs green; the branch-site
+   publisher keys on the whole workflow's conclusion (unchanged trigger); each
+   browser-owning job pins `CF_BROWSER` at job scope and re-proves provenance with its own
+   selftests. Artifact relocation: root evidence → `root-reports` + `root-layout-evidence`;
+   per-job `v2-smoke-evidence`/`v2-glass-evidence` (retained on red); `battery-reports`
+   re-joined by the final job.
+2. **glassmatrix now records per-viewport `viewportTimings`** (validated fail-closed: a
+   certifying PASS must time all 12 rows in order; malformed rows rejected; partial
+   timings stay legal on red — all four directions selftested), so the next optimization
+   decision (larger runner and/or matrix sharding) is measured, not guessed.
+
+Deliberately not done: Vite-build sharing between smoke and glass (violates the
+always-rebuild freshness law), viewport/control trimming, retries, docs-only gate
+skipping. A larger (4/8-core) runner remains the next lever if Nick wants sub-15-minute
+batteries and accepts the per-minute cost; the glass timing data will size that decision.
+
 ## Parallel Git handoff — exact five fields
 
 **Current side:** Anthropic/Claude Code on Windows, branch `anthropic/windows`,
-synchronized with `origin/develop` at `9aad1a4` before the batch. This batch adds
-`port/V2_FULL_SWEEP_2026-08-13.md`, refreshes ROADMAP/ROADMAP_ARCHIVE, and carries the
-bounded uilayout cold-start repair above; committed and pushed on `anthropic/windows`.
+synchronized with `origin/develop` at `9aad1a4` before the batch. This PR now carries:
+the sweep doc + roadmap refresh, the bounded uilayout cold-start repair, the parallel-job
+battery restructure + glassmatrix per-viewport timing, and the cross-agent pickup
+sections in both START_HERE docs; committed and pushed on `anthropic/windows`.
 
-**GitHub step:** review draft PR #21 from `anthropic/windows` into `develop` (sweep docs +
-roadmap refresh + the bounded uilayout startup repair). Battery attempt 1 on `0c73ed1` is
-preserved red; the repaired head requires its own green battery. Under the standing
-2026-08-13 authorization it may merge normally once clean, mergeable and terminal-green.
+**GitHub step:** review draft PR #21 from `anthropic/windows` into `develop`. Battery
+attempt 1 on `0c73ed1` is preserved red (uilayout cold start); each newer head requires
+its own green battery — the newest head is also the first live run of the parallel-job
+structure. Under the standing 2026-08-13 authorization it may merge normally once clean,
+mergeable and terminal-green.
 
 **PR details:**
 
