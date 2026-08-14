@@ -39,17 +39,25 @@
 > cross-tab last-writer-wins behavior, split schema, CAS, receipt journal and migration
 > authority remain F3 work; Gate C still requires real veteran/device evidence.
 >
-> **2026-08-13 Charter current-truth overlay:** `@cf/scene/charter.ts` still owns the
-> verbatim `ASC_CHAPTERS_DATA`, `bankLandfall`, canonical completion test and drive-derived
+> **2026-08-14 Charter current-truth overlay:** `@cf/scene/charter.ts` still owns the
+> verbatim `ASC_CHAPTERS_DATA`, `bankLandfall`, canonical completion test and system-derived
 > reach stage. The Phase-4 app must not render that legacy data directly. Its `fillCharters`
 > and top chip use `projectV2Charter` / `currentV2Objective` with the actual `ascStage()`:
 > only a reach-valid `landfall` goal is visible, the fresh Sol path stops at a development-slice
 > boundary, and no visible completion grants a drive, reward, canonical chapter or new reach.
-> `canAdvanceV2Chapter` still recognizes a complete drive-backed imported record, but
-> `doLand()` changes `ascCh` only after a newly changed real `bankLandfall` result. The tests
-> cover malformed chapter-without-drive input, blocked-route language, the one-card board,
-> and an ordinary toast being replaced/restored by the Charter boundary. Mining, fabrication,
-> bioscan, conquest, breeding, rewards, accepted chains and weeklies remain unported v2 work.
+> `bankLandfall` rejects non-integer, non-finite, negative, terminal and out-of-range chapter
+> positions without touching `ascProg`. The canonical array, chapters, goal arrays and goal
+> objects are deeply frozen, so the UI's projected goal aliases cannot rewrite process-wide
+> truth. `reconcileV2Chapters` evaluates one stable saved reach stage and advances every
+> consecutive complete projection. `doLand()` banks only a genuine first landing but reconciles
+> after every successful Land action, so a saturated imported record can recover without a
+> duplicate landing or progress write while incomplete and unpowered records remain still. Unit
+> controls cover malformed indexes, recursive ownership and 0→3/stop cases; a real-browser
+> emulated-phone Mercury touch re-land proves the exact ledger in memory, IndexedDB and reload for
+> powered, matched unpowered and powered-incomplete fixtures. The one-shot aggregate completion
+> replaces adjacent ambient feedback in the same polite status region, and an already-open Charters
+> panel refills from the advanced ledger. Mining, fabrication, bioscan, conquest, breeding, rewards,
+> accepted chains and weeklies remain unported v2 work.
 >
 > **2026-08-13 canonical CF1-address overlay:** `@cf/scene/address.ts` introduces the
 > pure `resolveCF1WorldAddress` boundary. It accepts only exact uint32 seeds and finite
@@ -1265,7 +1273,7 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
-  by the 56 legacy releases. Its exact five-section /43-bullet implemented-outcome
+  by the 56 legacy releases. Its exact five-section /44-bullet implemented-outcome
   inventory is checked structurally and in the rendered Guide, including real-scroll
   tail reach and unchanged shipped-release state. That version is development identity
   only. `getCurrentV2Release()` returns nothing while

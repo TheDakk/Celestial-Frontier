@@ -1578,17 +1578,23 @@ duplicates).
   drives both the board and chip from one stage-aware projection, and turns completed visible
   landfall work into a development-slice boundary—not a synthetic chapter, drive, reward or
   reach unlock. A nonterminal `ascCh` cannot expose non-Sol work without the corresponding
-  saved drive stage; the explicit terminal legacy/veteran fallback
+  saved reach stage; the explicit terminal legacy/veteran fallback
   (`ascCh >= ASC_CHAPTER_COUNT`) deliberately remains stage 3 even when drive-item bytes are
   absent. Blocked star/drive travel says the next Charter system is unavailable; a galaxy beyond
   the saved Prime Signature radius says its expansion is unavailable. Neither boundary directs
   players to an absent Shipyard/build path or promises that Signatures can be collected or
-  written in this slice. `canAdvanceV2Chapter` retains canonical-completion eligibility,
-  while the app requires a real changed landfall bank before it changes `ascCh`. Focused
-  unit/Guide controls and real-browser smoke cover the visible projection, malformed
-  chapter-without-drive state, no-unported-copy boundary, and interrupted/repeated toast
-  outcome. Full legacy Charter writers, rewards, accepted chains and weeklies remain open;
-  this closes only the false current-slice presentation.
+  written in this slice. F1b Charter hardening now rejects invalid `ascCh` landfall input without
+  mutating progress, recursively freezes the canonical array/chapters/goal arrays/goals and their
+  projected aliases, and runs `reconcileV2Chapters` after any successful Land action independently
+  of first-landfall banking. One stable saved reach stage may acknowledge every consecutive
+  already-complete imported chapter; the first incomplete/incompatible chapter stops the loop and
+  no progress, drive, reward or reach is invented. Focused unit/Guide controls and real-browser
+  emulated-phone Mercury touch re-land evidence cover the 0→3 saturated veteran outcome, exact unchanged
+  land/progress/reward/reach bytes, IndexedDB/reload persistence, and matched unpowered plus
+  powered-incomplete no-advance cases. A one-shot aggregate completion replaces adjacent ambient
+  feedback politely, and an already-open desktop Charters panel refills from the advanced ledger.
+  Full legacy Charter writers, rewards, accepted chains and weeklies, the other F1b slices and F2
+  remain open; this closes only D-CHARTER-CAP presentation plus SCN-1/SCN-2/SCN-6 hardening.
 - ☐ **D-COMPENDIUM-MEM — eager full-source thumbnails are not a bounded catalogue
   (2026-08-13).** Up to 1,500 rows can synchronously paint/mount 440px data URLs before the
   asynchronous 132px cache result exists, so entry-count caches do not bound decoded DOM
