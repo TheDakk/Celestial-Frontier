@@ -214,11 +214,15 @@ throwing/mutable/missing-helper behavior. The repaired candidate passes the focu
 suite and both TypeScript configurations. Its real-browser proof covers an emulated-phone touch on
 already-landed Mercury, exact progress/reward/reach preservation, matched unpowered and
 powered-incomplete controls, immediate Share→completion replacement, IndexedDB/reload, and a separate
-desktop open-panel refill. Exact committed-head/CI evidence remains required
-before integration. The restored dirty candidate is green on the full 298-pass/1-skipped unit suite,
-both TypeScript configurations, unused-art audit, real-browser smoke, glass selftest and all 12
-viewport classes; this is diagnostic evidence until repeated from the intentional exact commit. Epoch,
-lifted declaration/runtime, audio pre-init and right-rail work remain separate F1b batches.
+desktop open-panel refill. Clean exact commit `ce6ef639057944447da631bcced74a70da2750cc` passed the full
+298-pass/1-skipped unit suite, both TypeScript configurations, unused-art audit, real-browser smoke,
+glass selftest and all 12 viewport classes. Draft PR
+[#25](https://github.com/TheDakk/Celestial-Frontier/pull/25) test-battery run
+[`31813881697`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31813881697) independently
+passed v2 static, root gates, one-attempt smoke, 12-viewport glass, same-commit persona/preview and the
+final battery join at that SHA. Claude review and terminal CI on the final evidence-update head remain
+integration gates. Epoch, lifted declaration/runtime, audio pre-init and right-rail work remain
+separate F1b batches.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete
