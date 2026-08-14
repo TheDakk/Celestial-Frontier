@@ -31,7 +31,14 @@ Before every new coding batch:
 3. Run `git fetch origin` and inspect `git status --short --branch`.
 4. Only if the worktree is clean, safely bring the current branch up to date
    with its remote and merge the latest `origin/develop` into the current
-   agent branch when needed.
+   agent branch when needed. Note: `.github/workflows/sync-agent-branches.yml`
+   automatically fast-forwards any agent branch that is strictly behind
+   `develop` (an ancestor with no commits of its own) on every `develop`
+   push, so the ordinary case is a trivial `git pull` at session start. A
+   branch carrying unmerged agent work is deliberately never touched by that
+   automation — it is synchronized only by this manual merge step. The
+   automation never force-pushes, never resolves conflicts, and never
+   touches `main`.
 5. Never use `git reset --hard`, `git clean -fd`, rebase, force-push, or any
    operation that discards work. If Git reports a conflict, stop and report
    it unless the user explicitly asks for conflict resolution.

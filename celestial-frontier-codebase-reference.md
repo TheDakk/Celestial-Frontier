@@ -78,7 +78,11 @@
 > partial timings stay legal on red), so future runner/shard decisions are measured, not
 > guessed. Only a successful **workflow** conclusion — all five jobs — can
 > trigger `.github/workflows/publish-branch-sites.yml`, which checks out that event's full SHA
-> and invokes `tools/publish-branch-site.js`. `main` targets only
+> and invokes `tools/publish-branch-site.js`. A separate
+> `.github/workflows/sync-agent-branches.yml` runs on every `develop` push and
+> fast-forwards each agent branch that is strictly behind `develop`; diverged branches
+> (unmerged agent work) are skipped with a report line and follow the manual protocol
+> merge. It never force-pushes and never touches `main`. `main` targets only
 > `CelestialFrontier/celestialfrontier.github.io`; `develop` targets only
 > `Dev-CelestialFrontier/dev-celestialfrontier.github.io`. Separate write-only deploy keys and
 > repository secrets prevent cross-target access; PR/manual/failed runs have none. Development
