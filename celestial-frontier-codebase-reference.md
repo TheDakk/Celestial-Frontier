@@ -55,8 +55,28 @@
 > galaxy/star-only CF1 routes, generated descents and all future ownership/receipt writers
 > still need their own canonical boundary integration.
 >
-> **2026-08-13 branch publication overlay:** `.github/workflows/test.yml` runs the exact
-> battery for push events on both `main` and `develop`. Only a successful push battery can
+> **2026-08-13 branch publication overlay (battery structure updated 2026-08-14):**
+> `.github/workflows/test.yml` runs the exact battery for push events on both `main` and
+> `develop`, and since 2026-08-14 as **five parallel jobs plus one summary gate**:
+> `root-gates`, `v2-static`, `v2-smoke` and `v2-glass` in parallel, then
+> `v2-persona-preview` joining their evidence, then a summary job named **`battery`**
+> that needs all five and fails unless every one succeeded. The summary job exists
+> because the develop/main branch rulesets require one status context named `battery`
+> (the old serial job); it keeps repository settings decoupled from internal job names
+> and can never satisfy the ruleset by being skipped (`if: always()` + explicit result
+> check). The split
+> exists because the two real-browser evidence commands owned 78% of the old 33-minute
+> serial wall (glassmatrix ~17 min, smoke:ci ~9 min on the 2-core software-rendering
+> runner). Every serial-battery command still runs exactly once with unchanged
+> one-attempt/no-retry semantics; the persona join and the `v2-development-preview`
+> artifact still require ALL other jobs green; each browser-owning job pins `CF_BROWSER`
+> at job scope and re-proves provenance with its own selftests. Artifacts: root evidence
+> moved from the old combined bundle into `root-reports` + `root-layout-evidence`;
+> `v2-smoke-evidence`/`v2-glass-evidence` upload per-job (retained on red) and are
+> re-joined into `battery-reports` by the final job. The glass report now carries
+> per-viewport `viewportTimings` (validated: a certifying PASS must time all 12 rows;
+> partial timings stay legal on red), so future runner/shard decisions are measured, not
+> guessed. Only a successful **workflow** conclusion — all five jobs — can
 > trigger `.github/workflows/publish-branch-sites.yml`, which checks out that event's full SHA
 > and invokes `tools/publish-branch-site.js`. `main` targets only
 > `CelestialFrontier/celestialfrontier.github.io`; `develop` targets only
@@ -102,10 +122,13 @@
 > pinned `ws` transport and Node `^20.19.0 || ^22.13.0 || >=24.0.0`. Root preflight
 > launches the selected executable through `browsercdp`; its selftest rejects
 > executable non-browsers and excluded Node lines. `bootperf` shares the executable
-> resolver and `ws` transport but retains its legacy CDP lifecycle. The final
-> development-preview package check is the narrow exception to the 15-second
-> CDP-start default: its caller supplies a fixed 30-second start allowance after
-> exact packaging, while its generic command/shutdown bounds stay unchanged. Every
+> resolver and `ws` transport but retains its legacy CDP lifecycle. Two exact
+> callers deviate from the 15-second CDP-start default with a fixed bounded
+> 30-second allowance: the final development-preview package check (after exact
+> packaging) and the root layout gate `tools/uilayout.js` — the battery job's
+> first real browser launch, where the identical diagnosed Linux cold-start
+> phase recurred at its prior 24-second bound (run `31758515194` attempt 1).
+> Generic command/shutdown bounds stay unchanged for both. Every
 > platform captures the exact options passed by that caller and completes a real
 > browser outcome. On POSIX the selftest starts Chrome immediately but withholds its
 > ready CDP endpoint for 16 seconds: the generic path times out while the exact preview

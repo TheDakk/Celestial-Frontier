@@ -19,131 +19,141 @@
 ## block older than the current one to the TOP of the archive's batch section, verbatim, then refresh
 ## the SESSION HANDOFF here so WHAT'S DONE / NEXT reflect reality. Rewrite the handoff in place — the
 ## roadmap stays a one-screen read. History is one file away, git-diffable.
-## ▶▶▶ SESSION HANDOFF — 2026-08-13 · ARC 0 STABILIZATION REPAIR IN WORKTREE; EXACT-HEAD CI + DEV PUBLICATION PENDING ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-13 · V2 FULL SWEEP COMPLETE (PLANNING ONLY); ARC 1A SCOPE AWAITING NICK'S AGREEMENT ◀◀◀
 
 ### Cold start
 
-- Workspace: `/Users/nick/Projects/celestial-frontier-openai-mac`.
-- Owner/branch: OpenAI/Codex on `openai/mac`; never commit directly to `develop` or `main`.
-- Integration base and current local HEAD before this stabilization batch:
-  `69985e7b337ba070997c66dc793383ff30acd128`. It is also current `origin/develop`.
-  Resolve HEAD, upstream, worktree, PR/check and publication state live before any Git action;
-  this handoff records an in-progress working copy, not an exact pushed repair head.
+- This handoff was written by Anthropic/Claude Code on Windows
+  (`C:\Projects\celestial-frontier-anthropic-windows`, branch `anthropic/windows`). Each
+  agent works only from its own ownership row in `PARALLEL_GIT_PROTOCOL.md`.
+- Integration state: PR #20 merged the stabilization repair into `develop` at
+  `9aad1a423dd4ffbec35e369e4cc5386f14dce1aa`; its push battery and development publisher
+  both passed, and the DEV origin serves **v2.0 development** build `develop-9aad1a423dd4`.
+  `main`/production untouched. Resolve live Git/PR/check state before any Git action.
 - Read next: `PROCESS_LAWS.md` · `PARALLEL_GIT_PROTOCOL.md` ·
-  `celestial-frontier-codebase-reference.md` · `port/DEVELOPMENT_PREVIEW.md` ·
-  `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `port/HANDOFF_NEXT_SESSION.md`.
+  **`port/V2_FULL_SWEEP_2026-08-13.md`** (this batch's deliverable) ·
+  `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` · `celestial-frontier-codebase-reference.md` ·
+  `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `port/DEVELOPMENT_PREVIEW.md`.
 
-### Why stabilization interrupted Arc 1
+### What this batch did (planning only — no product code changed)
 
-Documentation follow-up PR #19 merged into `develop` at
-`69985e7b337ba070997c66dc793383ff30acd128`. Its push battery, run `31726083132`, was
-**success**, but mapped publisher run `31728733734` did not publish that exact commit:
+A full line-by-line review of the v2 product surface: `main.ts` and the app UI/system
+files, the persistence, scene, domain (17 facades + declarations), audio, and art-runtime
+packages, plus instrument-quality notes on the two browser audits. Platinum-frozen species
+tables, verbatim lifted bodies, and the tools battery were sampled, not re-judged. Local
+gates on the merged state: v2 tests **283 passed / 1 skipped**, root+app typecheck clean.
 
-| Publisher job | Exact terminal evidence |
-| --- | --- |
-| Development | Job `94543538353` — **failed** while starting exact Chrome at the 15-second CDP startup bound, after the approved candidate passed and produced content SHA-256 `d7d6550b84882b20f826c1a79abe8a756305799a28fff4f4424e1baa561ded0b`. |
-| Production | Job `94543539013` — **skipped**. |
+The complete findings register (~45 findings: 3 HIGH, ~17 MED), the vision-alignment
+assessment (Diablo/PoE loot · Minecraft/Satisfactory crafting · infinite exploration ·
+Pokémon taming · Spore discovery · never punishing), and the proposed batch ladder live in
+**`port/V2_FULL_SWEEP_2026-08-13.md`**. Highlights that shape the plan:
 
-No candidate deploy step ran. The noindex DEV origin therefore safely remains the prior Arc 0
-publication: **v2.0 development** build `develop-c5aadc8a0842`, source
-`c5aadc8a08424ddfc919bc2e4489b79e0f25b076`, content SHA-256
-`8bd6c26c86ffac287797fe4112d86052b71437e8155770a72907a6bb06dc91ff`.
-Production, `main`, release identity and production Pages were untouched.
+- **HIGH:** `recover()` overwrites the primary before classifying the backup (PER-1);
+  no test proves `exportSaveV2` output passes the boot envelope check (PER-2); the epoch
+  clock's `base()` doc tells the next wiring author to persist the wrong value (DOM-1).
+- **The live gate bypass:** star/galaxy CF1 routes still reach reach/charter gates with
+  forged coordinates — only planet routes are canonically proven (SCN-3).
+- **Arc 1A's defect confirmed at source:** `speciesThumb` returns 440px art synchronously
+  on miss; `fillCodex` mounts the whole list (D-COMPENDIUM-MEM), with a concrete lease-API
+  and `renderPortraitCanvas`-seam design ready in the sweep doc.
+- **Structural prep named before content arcs:** panel coexistence law, Guide
+  capability sign-off (the `unavailable()` full-legacy cliff), lesson framework,
+  `main.ts` split, persistence CAS/receipts, NavState union + ingress extension.
 
-### Repair in the current worktree
+### Next order (proposed — implementation starts only after Nick agrees scope)
 
-- The generic owned browser launcher retains its 15-second startup contract. Only the exact
-  development-preview verification caller receives bounded 30-second startup and command limits,
-  matching the observed Linux CI cold-start phase without adding a blind retry or weakening later
-  browser/product outcome checks.
-- The preview selftest captures the exact caller options on every platform. Its POSIX browser
-  control starts real Chromium immediately but withholds the outer CDP endpoint for 16 seconds:
-  the generic 15-second caller must reject, while the exact 30-second preview caller must start,
-  answer `Browser.getVersion`, close and clean up. This gives Chromium the full positive budget
-  instead of spending 16 seconds before process start.
-- The three supplied Edge `.ips` reports share one non-product signature: Node-launched Edge under
-  `com.openai.codex`/ChatGPT aborts on the main thread in
-  `TransformProcessType` → `_RegisterApplication` within 100 ms. macOS logs show Codex Seatbelt
-  denial at LaunchServices/WindowServer registration. This occurs before CDP, page creation, GPU
-  allocation or game code and shows no memory-pressure signature.
-- The shared resolver/owned launcher and the v2 spike launch surfaces now reject macOS Codex
-  Seatbelt before browser spawn with an actionable elevated-execution instruction. Preflight's
-  executable-negative control removes that advisory environment so it still proves a non-browser
-  executable was actually launched and rejected. No new Edge `.ips` appeared after the permitted
-  host-browser runs checked in this batch.
+1. **F1 hardening quickies** (save-integrity + law-guard fixes from the sweep, test-first).
+2. **Arc 1A — Compendium virtualization + leased 132px thumbnails** (windowed rows, lease
+   API, byte-budgeted caches, Planetside migration, `compendiummem` plateau gate with
+   bidirectional negative controls).
+3. **Arc 1B — Pixi/canvas texture ownership + long-session memory plateau gate.**
+4. **F2 NavState union + canonical ingress for star/galaxy/boot routes** (closes SCN-3);
+   **F3 persistence CAS + split stores + receipt journal + tab lease**; **F4 clock +
+   SessionRNG wiring** — all before any world-bound ownership/reward writer, then the
+   approved contract ladder (§13 of `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md`).
+5. Decision points for Nick are listed at the end of the sweep doc §4: batch order,
+   panel-coexistence law, Guide sign-off change, and the Arc 1A detail choices.
 
-### Current local evidence (working-copy scope)
+Boundaries unchanged: no `develop` → `main`, no release/version/deploy, no manual Pages
+writes, no legacy/parity deletion without complete usage proof, draft PRs only from
+`anthropic/*` / `openai/*` into `develop`.
 
-| Check | Result |
-| --- | --- |
-| Full v2 tests | **PASS** — 25 files, 283 passed, 1 skipped. |
-| Root + app typecheck | **PASS**. |
-| Arc 0 focused review | **PASS** — 42/42; no Arc 0 regression found. |
-| Real `npm run smoke` | **PASS** on the current working copy. |
-| Combined `npm run preview:selftest` | **PASS** with captured-options and delayed-endpoint controls. |
-| `preflight:selftest` | **PASS**. |
-| Permitted-host preflight | **PASS**, with only the expected Edge 151 versus pinned Edge 150 warning. |
-| Permitted-host `browsercdp` selftest | **PASS**, including proof that the Seatbelt marker executable remained untouched. |
-| Syntax and scoped diff checks | **PASS**. |
+### PR #21 battery attempt 1 — preserved red (instrument), repaired
 
-This is not final exact-head CI or publication evidence. Freeze the repair in a commit, push it,
-run the required PR battery once, and retain the first result. The PR URL/head, PR jobs,
-`develop` merge/push jobs, candidate hash and mapped DEV publication are all **pending**.
+Test-battery run `31758515194` attempt 1 (job `94639563562`) on head `0c73ed1` failed at
+the root layout gate and is preserved without retry. Every prior step (preflight selftest,
+validate, jsdom smoke) passed; the layout gate — the battery job's **first real browser
+launch** — started the exact pinned Chrome (pid 2211, only benign D-Bus stderr) but had no
+`DevToolsActivePort` at uilayout's prior 24-second startup bound. The report correctly
+recorded `instrument-fail` and `--verify-run` correctly exited 2. This is the same
+diagnosed Linux runner cold-start phase that earned the exact development-preview caller
+its bounded 30-second allowance (PR #20), not the #200 browser-provenance class and not a
+product/docs finding. Repair: the root layout caller now owns the same bounded 30-second
+startup allowance (`tools/uilayout.js`), generic launcher default and command/shutdown
+bounds unchanged; the four current-state references naming the preview caller as the only
+30-second exception were corrected in the same batch. The new head requires its own
+matching CI; attempt 1 stays red evidence.
 
-### Next order
+### Battery optimization (2026-08-14, Nick-approved)
 
-1. Finish the stabilization PR and require its exact clean head to be mergeable and terminal-green.
-   Nick's standing 2026-08-13 proceed authority then permits the normal merge into `develop` and
-   monitoring of the exact push battery and mapped DEV publication without another generic prompt.
-   It does not authorize marking a draft Ready, bypassing red/ambiguous evidence, `develop` →
-   `main`, a release/version decision, manual Pages write or production deployment.
-2. Confirm the mapped DEV origin advances from the retained `c5aadc` build to the exact merged
-   repair source and candidate hash; a failed publication must leave the retained build intact.
-3. Begin Arc 1 from the resulting clean, live-verified agent branch: Compendium virtualization and
-   resource ownership, then pure reach-shared `ShipVisualState`.
-4. Keep `D-CF1-2` partial: extend source-derived identity proof before adding any world-bound
-   ownership/reward/receipt writer. Keep later economy, engineering, capture, companions, combat,
-   audio, legacy and human-play work behind their own action/outcome proof.
+Measured on the last green develop battery: 33 minutes wall, of which glassmatrix owned
+~17 min and smoke:ci ~9 min (the same commands take ~1 and ~2 min on a workstation — the
+2-core software-rendering runner is the cost, not the instruments). Two changes landed:
+
+1. **`.github/workflows/test.yml` now runs five parallel jobs** — `root-gates`,
+   `v2-static`, `v2-smoke`, `v2-glass`, then `v2-persona-preview` joining their evidence —
+   **plus a summary gate job named `battery`** that needs all five and fails unless every
+   one succeeded. The summary gate exists because the develop/main rulesets require one
+   status context named `battery` (the old serial job's name); the first parallel run was
+   green in every job yet sat "Expected — waiting for status" on that orphaned required
+   context until the gate restored the name. It can never satisfy the ruleset by being
+   skipped (`if: always()` + explicit per-need result check). Measured first parallel run:
+   **~11 min wall** (glass 9m42s · smoke 7m31s · root 3m39s · static 3m12s · persona
+   1m01s), down from 33 — and root-gates CI-proved the uilayout 30-second repair. Nothing weakened: every serial command still runs exactly once
+   with unchanged one-attempt/no-retry semantics; the persona join and the
+   `v2-development-preview` artifact still require ALL jobs green; the branch-site
+   publisher keys on the whole workflow's conclusion (unchanged trigger); each
+   browser-owning job pins `CF_BROWSER` at job scope and re-proves provenance with its own
+   selftests. Artifact relocation: root evidence → `root-reports` + `root-layout-evidence`;
+   per-job `v2-smoke-evidence`/`v2-glass-evidence` (retained on red); `battery-reports`
+   re-joined by the final job.
+2. **glassmatrix now records per-viewport `viewportTimings`** (validated fail-closed: a
+   certifying PASS must time all 12 rows in order; malformed rows rejected; partial
+   timings stay legal on red — all four directions selftested), so the next optimization
+   decision (larger runner and/or matrix sharding) is measured, not guessed.
+
+Deliberately not done: Vite-build sharing between smoke and glass (violates the
+always-rebuild freshness law), viewport/control trimming, retries, docs-only gate
+skipping. A larger (4/8-core) runner remains the next lever if Nick wants sub-15-minute
+batteries and accepts the per-minute cost; the glass timing data will size that decision.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, branch `openai/mac`; the stabilization repair is an
-uncommitted working copy based on `develop` commit
-`69985e7b337ba070997c66dc793383ff30acd128`. Final repair commit, push, PR, CI, merge and mapped
-publication evidence are pending.
+**Current side:** Anthropic/Claude Code on Windows, branch `anthropic/windows`,
+synchronized with `origin/develop` at `9aad1a4` before the batch. This PR now carries:
+the sweep doc + roadmap refresh, the bounded uilayout cold-start repair, the parallel-job
+battery restructure + glassmatrix per-viewport timing, and the cross-agent pickup
+sections in both START_HERE docs; committed and pushed on `anthropic/windows`.
 
-**GitHub step:** after the scoped diff and required local evidence are frozen, push `openai/mac`
-and create/update its draft PR into `develop`. Do not mark a draft Ready under standing authority.
-Once the exact PR head is otherwise clean, mergeable and terminal-green, the standing proceed
-authority permits its normal eligible merge and monitoring without another generic confirmation.
+**GitHub step:** review draft PR #21 from `anthropic/windows` into `develop`. Battery
+attempt 1 on `0c73ed1` is preserved red (uilayout cold start); each newer head requires
+its own green battery — the newest head is also the first live run of the parallel-job
+structure. Under the standing 2026-08-13 authorization it may merge normally once clean,
+mergeable and terminal-green.
 
 **PR details:**
 
 - Base branch: `develop`
-- Source branch: `openai/mac`
-- Copy-ready title: `Stabilize development browser launch and publication`
-- Copy-ready description:
+- Source branch: `anthropic/windows`
+- Copy-ready title: `Record v2 full-sweep review and arc plan; refresh roadmap handoff`
+- Copy-ready description: see the draft PR body (summarizes the sweep, verification run,
+  cross-agent effect, and states that no release or deployment is included).
 
-  > Repairs the Arc 0 development-publication infrastructure after the exact Linux Chrome process
-  > exceeded the prior 15-second CDP startup bound. The generic launcher keeps that bound; only the
-  > exact development-preview caller receives bounded 30-second startup/command limits, backed by
-  > captured-options and delayed-endpoint controls proving the generic caller rejects while the
-  > preview caller starts, answers and cleans up. It also prevents macOS Codex Seatbelt browser
-  > launches before spawn across the shared launcher and spike tools, so Edge cannot reach the
-  > pre-CDP LaunchServices SIGABRT seen in the three supplied crash reports, and hardens preflight's
-  > executable negative control. Verification: full v2 tests (25 files, 283 passed, 1 skipped),
-  > root/app typecheck, Arc 0 focused 42/42, real browser smoke, combined preview selftest,
-  > preflight selftest and permitted-host preflight, owned-launcher selftest including an untouched
-  > Seatbelt marker, syntax checks and scoped diff checks all pass. After merge, both agent
-  > environments can synchronize from the repaired `develop`; final exact-head CI and mapped DEV
-  > publication remain required. This PR includes no `develop` → `main` merge, production release,
-  > version bump, manual Pages write or production deployment.
+**Other side:** OpenAI/Codex (macOS `openai/mac` / Windows `openai/windows`) does not have
+this docs batch until the PR merges. It may continue unrelated work but must not copy
+files manually. After merge, at its next coding batch and only from a clean worktree, it
+fetches `origin` and merges current `origin/develop` into its own branch.
 
-**Other side:** Anthropic/Claude Code on Windows does not need to be opened now and does not yet
-have this unmerged repair. It may continue unrelated work, but must not expect these bytes or copy
-files manually. After the PR merges, at its next coding batch and only from a clean worktree, fetch
-`origin`, inspect state, then merge current `origin/develop` into `anthropic/windows`.
-
-**Release status:** `develop` is still `69985e7b337ba070997c66dc793383ff30acd128`; the DEV site
-still serves the retained `c5aadc` build because the later mapped publisher failed before deploy.
-`main` and production are untouched. No production release, deployment or version bump occurred.
+**Release status:** `develop` remains `9aad1a4` until this PR merges; DEV origin serves
+build `develop-9aad1a423dd4`. `main`, production Pages and version identity untouched.
+No release or deployment performed.

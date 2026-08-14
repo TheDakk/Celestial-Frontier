@@ -124,8 +124,11 @@ Guide to show v2.0 plus the full manifest commit.
 Every CI/publication workflow that packages a preview runs this outcome check before
 upload or publication.
 
-The package browser check owns a fixed 30-second CDP startup allowance; the shared
-launcher keeps its 15-second default for other evidence tools. `preview:selftest`
+The package browser check owns a fixed 30-second CDP startup allowance, and the root
+layout gate (`tools/uilayout.js`) owns the same bounded allowance after the identical
+Linux cold-start phase recurred there (run `31758515194` attempt 1, first browser launch
+of the battery job); the shared launcher keeps its 15-second default for other evidence
+tools. `preview:selftest`
 captures the exact caller options on every platform and completes a real-browser
 outcome. On POSIX it starts Chrome immediately while withholding the ready CDP
 endpoint for 16 seconds, proving the generic allowance rejects without stealing
@@ -366,14 +369,20 @@ made green by lengthening startup or clearing D-Bus. This infrastructure repair
 does not authorize publication. The separate-origin hosting choice and genuine
 human playtest remain required before PR #11 may leave draft or merge.
 
-On green v2 browser and glass-matrix gates, the ordinary PR battery emits three distinct
-artifacts (available report/log evidence is still uploaded when a gate is red):
+The ordinary battery (parallel-job structure since 2026-08-14) emits these artifacts
+(per-job report/log evidence is still uploaded when that job is red):
 
-- `battery-reports`: root reports, `slice-smoke-report.json`,
-  `glassmatrix-report.json`, and the JSON/Markdown automated-persona synthesis;
+- `root-reports` + `root-layout-evidence`: the root fingerprint/current report and the
+  atomic uilayout evidence, from the `root-gates` job;
+- `v2-smoke-evidence` / `v2-glass-evidence`: `slice-smoke-report.json` + log and
+  `glassmatrix-report.json` (now including per-viewport `viewportTimings`), uploaded by
+  their own jobs so red runs retain evidence;
+- `battery-reports`: the joined smoke/glass/persona bundle assembled by the final
+  `v2-persona-preview` job;
 - `v2-browser-evidence`: the real-browser screenshots;
 - `v2-development-preview`: a loopback-playable, commit-bound review artifact, produced
-  only after the v2 browser smoke passes; `publishable:false` prevents remote execution.
+  by the final job only when **all** battery jobs are green; `publishable:false` prevents
+  remote execution.
 
 The separate `development-preview-package` workflow is manual (`workflow_dispatch`). GitHub
 exposes a manually dispatched workflow only after that workflow file exists on the repository's

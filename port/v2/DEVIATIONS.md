@@ -1321,8 +1321,11 @@ duplicates).
   `version.json`. The visible identity is rendered inside the Guide. Both historical corner-badge
   ids/styles are forbidden; origin refusal, noindex/robots and manifest verification remain the
   safety boundary. `main` continues the root v1.8.9 production package, while a green `develop`
-  push publishes the already-smoked exact v2 package. The final preview browser check alone owns
-  a fixed 30-second CDP-start allowance; generic evidence tools retain their 15-second default.
+  push publishes the already-smoked exact v2 package. The final preview browser check and the
+  root layout gate (`tools/uilayout.js` — the battery's first real browser launch; the same
+  diagnosed Linux cold-start phase recurred there at its prior 24-second bound in run
+  `31758515194` attempt 1) each own a fixed bounded 30-second CDP-start allowance; generic
+  evidence tools retain their 15-second default.
   Every platform captures the exact caller options and runs a real browser outcome. On POSIX the
   preview selftest starts Chrome immediately but withholds its ready CDP endpoint for 16 seconds,
   so the old generic path must reject while the exact preview caller keeps its full startup window

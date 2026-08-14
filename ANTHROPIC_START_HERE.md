@@ -92,6 +92,39 @@ Success means `git status --short --branch` shows only:
 with no changed-file lines below it. The work is then safely stored both on
 this computer and on GitHub.
 
+## Picking up after the other agent (cold start / new PR merged)
+
+The two agents (Anthropic/Claude Code and OpenAI/Codex) hand work to each other
+**only through Git**, and the state of the project is always readable from the
+repository itself. When you (or the other agent) pick the project up cold —
+including right after any PR merges into `develop` — the required sequence is:
+
+1. **Synchronize first, from a clean worktree only:** `git fetch origin`, inspect
+   `git status --short --branch`, then merge the latest `origin/develop` into this
+   agent's own branch per the startup procedure in `PARALLEL_GIT_PROTOCOL.md`.
+   Never copy files between worktrees.
+2. **Read, in this order:**
+   1. `ROADMAP.md` — the live session handoff: what just happened, what is next,
+      and the current five-field parallel-Git state.
+   2. `PROCESS_LAWS.md` — before touching UI, tests, or instruments.
+   3. `PARALLEL_GIT_PROTOCOL.md` — branch ownership, preflight report, completion
+      procedure, the paired handoff format, and the standing merge authorization.
+   4. `CLAUDE.md` (this side) / `AGENTS.md` (Codex side) — the agent's own rules.
+   5. The **current plan**: `port/V2_FULL_SWEEP_2026-08-13.md` (findings register +
+      batch ladder) and `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` (the approved
+      product contract and arc table).
+   6. Whatever task-relevant system docs the ROADMAP handoff points at — never
+      every historical file indiscriminately.
+3. **Give Nick the preflight report** (agent, folder, branch, sync state, docs
+   read, objective, integration path) before editing anything.
+4. **On completion:** run the required checks, update the owning Markdown in the
+   same batch, commit, push, refresh the ROADMAP handoff, and end with the exact
+   five-field paired handoff so the other agent can resume without this chat.
+
+Every batch must leave `ROADMAP.md` accurate enough that the OTHER agent could
+continue from it alone. If the handoff you find there contradicts live Git state,
+trust Git, say so, and fix the handoff in your batch.
+
 ## How work reaches the game
 
 ```text
