@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-14 · F1B CHARTER HARDENING ACTIVE ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-14 · F1B CHARTER PR #25 AWAITING CLAUDE REVIEW ◀◀◀
 
 ### Cold start
 
@@ -39,8 +39,10 @@ the archive verbatim and refresh this handoff in place.
 - F1a's exact merge passed `develop` test-battery run `31805771775`; mapped publication run
   `31807262793` also passed, and the development origin's version marker binds build
   `develop-a1dabdeb4059` to the full merge SHA. These IDs are evidence history; resolve newer state live.
-- The active branch contains only the bounded F1b Charter slice: SCN-1, SCN-2 and SCN-6 plus its
-  tests, Guide/release truth and synchronized references. It is not yet pushed or in a PR.
+- Clean exact commit `ce6ef639057944447da631bcced74a70da2750cc` contains only the bounded
+  F1b Charter slice: SCN-1, SCN-2 and SCN-6 plus its tests, Guide/release truth and synchronized
+  references. It is pushed as mergeable draft PR [#25](https://github.com/TheDakk/Celestial-Frontier/pull/25)
+  from `openai/mac` into `develop`; it remains a draft pending Claude's exact-diff review.
 
 ### Active F1b Charter contract
 
@@ -58,7 +60,7 @@ the archive verbatim and refresh this handoff in place.
 - Guide and the v2 development bulletin carry the revised player truth. Training is unchanged: the
   current six-step slice has no Charter lesson to update or advertise.
 
-### Candidate evidence so far
+### Evidence
 
 - Test-first focused scene run failed **2/18** on the old throwing/mutable/missing-reconciliation
   behavior. With the repair restored, the focused suite passes **18/18** and both TypeScript
@@ -75,31 +77,37 @@ the archive verbatim and refresh this handoff in place.
   exact reward/reach ledger, replaces an immediately preceding real Share notice, and has permanent
   missing/buried-action, wrong-stage, reward/reach and stale-Guide controls. A separate desktop target
   uses a browser mouse to open the visible Charter rail beside Survey and requires the board to leave
-  Chapter 1 after Land; its first two setup runs caught harness ordering/mobile-mode reload errors and were
-  retained red before the target was isolated. A valid one-step source mutation failed the exact 0→3
+  Chapter 1 after Land; its first two setup runs caught harness ordering/mobile-mode reload errors
+  and were retained red before the target was isolated. A valid one-step source mutation failed the exact 0→3
   unit assertion (**1/18**), and restored old bank-gated app wiring failed the named browser-touch,
-  notice and persisted chapter outcomes. With every mutation restored, the current dirty candidate
-  passes the full static suite (**298 passed /1 skipped**), both TypeScript configurations, the
-  unused-art audit, full real-browser smoke with zero console errors, the glass-matrix selftest, and
-  all **12** isolated viewport classes. These are local diagnostics, not clean exact-commit
-  certification; exact-head evidence remains pending until the intentional commit exists.
+  notice and persisted chapter outcomes. With every mutation restored, clean exact commit
+  `ce6ef639057944447da631bcced74a70da2750cc` passed the full static suite (**298 passed /1 skipped**),
+  both TypeScript configurations, the unused-art audit, full real-browser smoke with zero console
+  errors, the glass-matrix selftest, and all **12** isolated viewport classes. PR test-battery run
+  [`31813881697`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31813881697) independently
+  passed v2 static, every root gate, one-attempt v2 smoke, the 12-viewport glass gate, same-commit
+  persona/preview packaging and the final battery join at that exact SHA.
 
 ### Next actions
 
-1. Inspect the exact diff and retain only current code/docs plus permanent controls.
-2. Commit intentionally, obtain clean exact-head evidence, push `openai/mac`, and open one draft PR
-   into `develop`. Do not start another F1b slice inside it.
-3. Claude reviews that exact PR. After review resolution and terminal-green checks, standing authority
-   permits its normal merge and monitoring of the mapped `develop` battery/DEV publication.
+1. Claude reviews exact draft PR #25. Do not add another F1b slice or hand-copy files into its branch.
+2. Resolve only actionable review findings and require the final PR head to be terminal green; never
+   retry a red child blindly or mark the draft Ready as a workaround.
+3. After review resolution and terminal-green checks, standing authority permits its normal merge
+   and monitoring of the mapped `develop` battery/DEV publication.
 4. Continue the remaining F1b slices independently, then close F2 canonical ingress before any
    world-bound ownership, receipt or reward writer.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, `openai/mac`. The isolated F1b Charter candidate is local and
-under verification; no hand-copy or cross-worktree edit is permitted.
+**Current side:** OpenAI/Codex on macOS, `openai/mac`. The isolated F1b Charter implementation is
+pushed, and exact code/evidence head `ce6ef639057944447da631bcced74a70da2750cc` is green. This
+handoff update is documentation-only; resolve the final branch head live. No hand-copy or
+cross-worktree edit is permitted.
 
-**GitHub step:** none yet. After exact-head proof, open a draft PR from `openai/mac` into `develop`.
+**GitHub step:** draft PR [#25](https://github.com/TheDakk/Celestial-Frontier/pull/25) targets
+`develop` from `openai/mac`. Its exact code head passed test-battery run `31813881697`; Claude review
+and final-head CI after this evidence-only handoff update remain required.
 
 **PR details:**
 
@@ -114,11 +122,12 @@ under verification; no hand-copy or cross-worktree edit is permitted.
   exact reward/reach preservation, matched unpowered and powered-incomplete controls, guaranteed
   polite aggregate feedback, and an already-open board refresh. Updates Guide and v2 draft copy plus
   current Charter/progression references, deviations, program status and the live handoff. Explicitly
-  excludes other F1b work, F2, save-schema
-  changes, balancing/content arcs, production versioning, deployment and develop-to-main release work.`
+  excludes other F1b work, F2, save-schema changes, balancing/content arcs, production versioning,
+  deployment and develop-to-main release work.`
 
-**Other side:** Anthropic/Claude Code does not need to open yet. Once the draft PR exists, Nick should
-open Claude for exact-diff review; Claude must first fetch and normally fast-forward its clean branch.
+**Other side:** Nick should open Anthropic/Claude Code now for exact-diff review of PR #25. Claude must
+first fetch and normally fast-forward its clean `anthropic/mac` branch; it reviews the PR remotely and
+must not edit the OpenAI worktree.
 
 **Release status:** no release, deployment, version bump, `develop` → `main` merge, or manual site
 write is part of this batch.
