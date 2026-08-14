@@ -10,6 +10,14 @@ summary of it.
 
 ## Contents
 
+### `v2-program-review-2026-08-14/` — PR #23 roadmap and HD-audio direction review
+
+Two Markdown review inputs supplied after the complete v2 program roadmap was proposed: Claude's R1–R9
+roadmap critique and the approved distant-ecology/companion-expression audio addendum. Both original
+files are preserved byte-for-byte with SHA-256 values in the bundle README. Their accepted changes
+are integrated into the operational roadmap and audio/gate/decision references; the originals remain
+review/direction evidence rather than a claim that planned features are live.
+
 ### `round-7-v1.8.2/` — round 7, audited build `a9a13c7` (v1.8.2 "Steady Hands")
 
 The strongest round the project has had. **Start with `v1.8.2-fix-list.md`** — 25 findings, each

@@ -1,5 +1,14 @@
 import { describe, it, expect } from 'vitest';
-import { createSaveRepository, createMemoryBackend, createIndexedDBBackend, readSaveWithRecovery, STORES } from '@cf/persistence';
+import {
+  createSaveRepository, createMemoryBackend, createIndexedDBBackend,
+  readSaveWithRecovery, STORES, type StoredPayloadStatus,
+} from '@cf/persistence';
+
+const classifyFixturePayload = (raw: string): StoredPayloadStatus => {
+  if (raw.startsWith('supported:')) return 'supported';
+  if (raw.startsWith('future:')) return 'future-version';
+  return 'invalid';
+};
 
 describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', () => {
   it('write / readPrimary round-trips', async () => {
@@ -13,17 +22,17 @@ describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', ()
     await repo.write('v1');
     /* corrupt the primary before any promotion — nothing to recover */
     await repo.write('###corrupt###');
-    expect(await repo.recover()).toBeUndefined();
+    expect(await repo.recover((raw) => raw === 'v2')).toBeUndefined();
     /* now a payload proves it loads and is promoted; corruption recovers */
     await repo.write('v2');
     await repo.promoteLastKnownGood('v2');
     await repo.write('###corrupt###');
-    expect(await repo.recover()).toBe('v2');
+    expect(await repo.recover((raw) => raw === 'v2')).toBe('v2');
     expect(await repo.readPrimary()).toBe('v2');
   });
   it('recover on a genuinely fresh store is a no-op (no phantom resurrection)', async () => {
     const repo = createSaveRepository(createMemoryBackend());
-    expect(await repo.recover()).toBeUndefined();
+    expect(await repo.recover(() => true)).toBeUndefined();
   });
   it('a transient read never rolls a newer primary back to an older backup', async () => {
     let reads = 0, recoveries = 0;
@@ -58,6 +67,39 @@ describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', ()
     expect(await readSaveWithRecovery(repository, classify)).toEqual({ kind: 'fresh' });
     expect(recoveries).toBe(0);
   });
+  it('classifies a backup before replacement and preserves the invalid primary when no backup proves safe', async () => {
+    for (const unsafeBackup of ['invalid:truncated-backup', 'future:v99-backup']) {
+      const repo = createSaveRepository(createMemoryBackend());
+      await repo.write('invalid:original-primary');
+      await repo.promoteLastKnownGood(unsafeBackup);
+
+      expect(await readSaveWithRecovery(repo, classifyFixturePayload), unsafeBackup).toEqual({
+        kind: 'protected', raw: 'invalid:original-primary', reason: 'invalid',
+      });
+      expect(await repo.readPrimary(), `${unsafeBackup} replaced the protected primary before classification`)
+        .toBe('invalid:original-primary');
+    }
+  });
+  it('orchestrated recovery replaces an invalid primary only with a supported backup', async () => {
+    const repo = createSaveRepository(createMemoryBackend());
+    await repo.write('invalid:broken-primary');
+    await repo.promoteLastKnownGood('supported:last-known-good');
+
+    expect(await readSaveWithRecovery(repo, classifyFixturePayload)).toEqual({
+      kind: 'loaded', raw: 'supported:last-known-good', recovered: true,
+    });
+    expect(await repo.readPrimary()).toBe('supported:last-known-good');
+  });
+  it('a future-version primary never invokes recovery or yields to an older backup', async () => {
+    const repo = createSaveRepository(createMemoryBackend());
+    await repo.write('future:v99-primary');
+    await repo.promoteLastKnownGood('supported:older-backup');
+
+    expect(await readSaveWithRecovery(repo, classifyFixturePayload)).toEqual({
+      kind: 'protected', raw: 'future:v99-primary', reason: 'future-version',
+    });
+    expect(await repo.readPrimary()).toBe('future:v99-primary');
+  });
   it('★ THE RESET LAW: primary AND backup die together — a reset must not resurrect via the backup', async () => {
     /* ⚠ REWRITTEN after its own negative control PASSED while the defect was
        live (2026-07-31): asserting recover()===undefined right after reset is
@@ -72,7 +114,7 @@ describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', ()
     await repo.reset();
     expect(await repo.readPrimary()).toBeUndefined();
     await repo.write('###corrupt new expedition###');
-    expect(await repo.recover(), 'a pre-reset save resurrected through recovery').toBeUndefined();
+    expect(await repo.recover(() => true), 'a pre-reset save resurrected through recovery').toBeUndefined();
     expect(await repo.readPrimary()).toBe('###corrupt new expedition###');
   });
   it('apply() is atomic: a staged batch lands whole', async () => {
@@ -87,6 +129,19 @@ describe('@cf/persistence — repository + the CF-RR-002 recovery semantics', ()
   });
   it('the §19.3 store set is complete, incl. the disposable asset cache', () => {
     expect([...STORES]).toEqual(['meta', 'player', 'creatures', 'catalog', 'inventory', 'settings', 'journal', 'assetcache']);
+  });
+  it('reset clears every current store so split data cannot resurrect later', async () => {
+    const backend = createMemoryBackend();
+    const repo = createSaveRepository(backend);
+    for (const store of STORES) {
+      await backend.apply([{ store, key: `sentinel:${store}`, value: `held:${store}` }]);
+    }
+
+    await repo.reset();
+
+    for (const store of STORES) {
+      expect(await backend.keys(store), `${store} survived the repository reset`).toEqual([]);
+    }
   });
   it('a rejected IndexedDB open is retried instead of poisoning the repository forever', async () => {
     const prior = globalThis.indexedDB;
