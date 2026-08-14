@@ -229,7 +229,16 @@ async function main() {
   try {
     browser = await openChromiumCdp({
       label: 'root UI layout gate', userDataPrefix: 'cf-uilayout',
-      commandTimeoutMs: 30000, startupTimeoutMs: 24000, shutdownTimeoutMs: 5000,
+      /* This gate is the battery's FIRST real browser launch, so it pays the
+         whole Linux runner cold start. Run 31758515194 attempt 1 (job
+         94639563562) launched the exact pinned Chrome (pid 2211, only benign
+         D-Bus stderr) and still had no DevToolsActivePort at the prior 24s
+         bound — the same diagnosed cold-start phase that earned the exact
+         development-preview caller its bounded 30s. Same bounded remedy, this
+         caller only; the generic launcher default stays 15s, and command/
+         shutdown bounds are unchanged. Not a retry, and not the #200
+         provenance class (the right browser was selected and did start). */
+      commandTimeoutMs: 30000, startupTimeoutMs: 30000, shutdownTimeoutMs: 5000,
     });
     REPORT_BROWSER = { ...browser.browser, pid: browser.pid };
     send = browser.send;
