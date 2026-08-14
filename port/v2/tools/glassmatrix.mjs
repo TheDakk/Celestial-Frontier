@@ -94,6 +94,7 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const startedAt = Date.now();
 let runSource = null;
 let runReloadEvidence = [];
+let runViewportTimings = [];
 class ProductAnswerabilityFinding extends Error {
   constructor(message, evidence, finding = null) {
     super(message);
@@ -1836,6 +1837,31 @@ async function reloadPhaseSelftest() {
   }
   return failures;
 }
+function viewportTimingsOutcome(timings, { certifying, status }) {
+  /* Per-row timing is evidence, not decoration: every recorded row must be
+     well-formed, and a certifying PASS must have timed every matrix row
+     exactly once in order — a green report that silently lost its timing
+     rows would make the next optimization pass measure nothing. Red and
+     targeted runs legitimately carry partial timings. */
+  for (const row of timings) {
+    if (!row || typeof row.label !== 'string'
+      || !Number.isFinite(row.durationMs) || row.durationMs <= 0) {
+      return { ok: false, why: `malformed viewport timing row: ${JSON.stringify(row)}` };
+    }
+  }
+  if (certifying && status === 'pass') {
+    const expected = MATRIX_VIEWPORTS.map((vp) => vp.label);
+    const actual = timings.map((row) => row.label);
+    if (expected.length !== actual.length
+      || expected.some((label, index) => label !== actual[index])) {
+      return {
+        ok: false,
+        why: `certifying PASS must time every matrix row exactly once in order; expected ${JSON.stringify(expected)} got ${JSON.stringify(actual)}`,
+      };
+    }
+  }
+  return { ok: true, why: null };
+}
 function writeReport({ status, exitCode, browser, findings, instrumentFailures, controlsRun,
   executedControls = [], blockedControls = [], source = runSource || sourceIdentity() }) {
   const counts = new Map();
@@ -1843,6 +1869,10 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
   const endedAt = Date.now();
   const coverage = controlCoverageOutcome(executedControls, blockedControls);
   if (!coverage.ok) throw new Error(`invalid negative-control coverage: ${coverage.why}`);
+  const timingOutcome = viewportTimingsOutcome(runViewportTimings, {
+    certifying: !viewportLabel, status,
+  });
+  if (!timingOutcome.ok) throw new Error(`invalid viewport timing evidence: ${timingOutcome.why}`);
   const report = {
     schema: 'cf-v2-glassmatrix/v1',
     status,
@@ -1852,6 +1882,7 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
     source,
     browser: browser || null,
     viewportInventory: viewportInventory(),
+    viewportTimings: [...runViewportTimings],
     controlSummary: {
       selftestRan: controlsRun,
       /* This is an execution ledger, not a planned-coverage claim. A
@@ -2055,6 +2086,22 @@ async function reportSelftest() {
       'replacement-boot-phase-sequence', 'reload-resource-release']
       .every((name) => shaped.controlSummary.negativeControls.includes(name))) {
     throw new Error('GLASS MATRIX REPORT SELFTEST: injected finding/report grouping drifted');
+  }
+  /* Viewport timing evidence, both directions: a full certifying PASS must
+     carry one well-formed timing per matrix row in order; a missing row or a
+     non-finite duration is rejected; partial timings on a red run stay legal
+     so an instrument failure cannot be laundered into a timing failure. */
+  const timingFixture = MATRIX_VIEWPORTS.map((vp, index) => ({ label: vp.label, durationMs: 1000 + index }));
+  const timingPass = viewportTimingsOutcome(timingFixture, { certifying: true, status: 'pass' });
+  const timingMissingRow = viewportTimingsOutcome(timingFixture.slice(0, -1), { certifying: true, status: 'pass' });
+  const timingMalformed = viewportTimingsOutcome(
+    [{ label: 'desktop-8k', durationMs: Number.NaN }], { certifying: false, status: 'fail' },
+  );
+  const timingPartialRed = viewportTimingsOutcome(
+    timingFixture.slice(0, 3), { certifying: true, status: 'instrument-fail' },
+  );
+  if (!timingPass.ok || timingMissingRow.ok || timingMalformed.ok || !timingPartialRed.ok) {
+    throw new Error('GLASS MATRIX REPORT SELFTEST: viewport timing evidence controls failed');
   }
   console.log('GLASS MATRIX REPORT SELFTEST: PASS');
   console.log('  injected finding retained; 12 viewport definitions retained; retry policy remains zero');
@@ -3022,6 +3069,7 @@ async function main() {
     return;
   }
   runReloadEvidence = [];
+  runViewportTimings = [];
   const releaseLock = acquireWorkspaceLock('v2 responsive glass matrix');
   try {
     runSource = sourceIdentity();
@@ -3079,6 +3127,12 @@ async function main() {
   };
   try {
     for (const vp of MATRIX_VIEWPORTS) {
+      /* Per-row wall-clock ownership. CI runs this instrument ~20× slower
+         than a workstation (software raster, two cores); without per-row
+         timing that cost is unattributable and any future shard split would
+         be guessed, not measured. Recorded in the finally so red rows are
+         timed too; writeReport validates the evidence per scope/status. */
+      const viewportStartedAt = Date.now();
       /* A fresh owned browser per viewport is deliberate. Pixi/WebGL
          resources can outlive a disposed incognito target long enough for a
          late matrix row to inherit GPU pressure from the first ten rows. */
@@ -4988,6 +5042,7 @@ async function main() {
           try { await browser.close(); }
           catch (error) { instrumentFailures.push(`${vp.label}: owned browser cleanup failed (${error.message})`); }
         }
+        runViewportTimings.push({ label: vp.label, durationMs: Date.now() - viewportStartedAt });
       }
     }
   } finally {

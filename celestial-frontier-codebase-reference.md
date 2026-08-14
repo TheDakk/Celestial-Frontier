@@ -55,8 +55,22 @@
 > galaxy/star-only CF1 routes, generated descents and all future ownership/receipt writers
 > still need their own canonical boundary integration.
 >
-> **2026-08-13 branch publication overlay:** `.github/workflows/test.yml` runs the exact
-> battery for push events on both `main` and `develop`. Only a successful push battery can
+> **2026-08-13 branch publication overlay (battery structure updated 2026-08-14):**
+> `.github/workflows/test.yml` runs the exact battery for push events on both `main` and
+> `develop`, and since 2026-08-14 as **five jobs**: `root-gates`, `v2-static`, `v2-smoke`
+> and `v2-glass` in parallel, then `v2-persona-preview` joining their evidence. The split
+> exists because the two real-browser evidence commands owned 78% of the old 33-minute
+> serial wall (glassmatrix ~17 min, smoke:ci ~9 min on the 2-core software-rendering
+> runner). Every serial-battery command still runs exactly once with unchanged
+> one-attempt/no-retry semantics; the persona join and the `v2-development-preview`
+> artifact still require ALL other jobs green; each browser-owning job pins `CF_BROWSER`
+> at job scope and re-proves provenance with its own selftests. Artifacts: root evidence
+> moved from the old combined bundle into `root-reports` + `root-layout-evidence`;
+> `v2-smoke-evidence`/`v2-glass-evidence` upload per-job (retained on red) and are
+> re-joined into `battery-reports` by the final job. The glass report now carries
+> per-viewport `viewportTimings` (validated: a certifying PASS must time all 12 rows;
+> partial timings stay legal on red), so future runner/shard decisions are measured, not
+> guessed. Only a successful **workflow** conclusion — all five jobs — can
 > trigger `.github/workflows/publish-branch-sites.yml`, which checks out that event's full SHA
 > and invokes `tools/publish-branch-site.js`. `main` targets only
 > `CelestialFrontier/celestialfrontier.github.io`; `develop` targets only
