@@ -36,9 +36,10 @@ export interface SaveRepository {
   readPrimary(): Promise<string | undefined>;
   /** Call ONLY after a payload has proven it loads — promotes it to backup. */
   promoteLastKnownGood(payload: string): Promise<void>;
-  /** CF-RR-002 recovery: primary corrupt ⇒ restore backup ONCE. Returns the
-      recovered payload, or undefined when there is nothing to recover. */
-  recover(): Promise<string | undefined>;
+  /** CF-RR-002 recovery: read and classify the backup, then restore it ONCE
+      only when the supplied predicate proves those exact bytes supported.
+      Returns the recovered payload, or undefined when no safe recovery exists. */
+  recover(isSupported: (payload: string) => boolean): Promise<string | undefined>;
   /** The reset law: primary AND backup die together — a reset must not
       resurrect via the backup. Disposable caches go too. */
   reset(): Promise<void>;
@@ -67,8 +68,8 @@ export async function readSaveWithRecovery(
   if (status === 'supported') return { kind: 'loaded', raw, recovered: false };
   if (status === 'future-version') return { kind: 'protected', raw, reason: status };
   try {
-    const recovered = await repository.recover();
-    if (recovered !== undefined && classify(recovered) === 'supported') {
+    const recovered = await repository.recover((candidate) => classify(candidate) === 'supported');
+    if (recovered !== undefined) {
       return { kind: 'loaded', raw: recovered, recovered: true };
     }
   } catch { /* the known-invalid primary remains protected */ }
@@ -86,20 +87,22 @@ export function createSaveRepository(backend: StorageBackend): SaveRepository {
     async promoteLastKnownGood(payload: string): Promise<void> {
       await backend.apply([{ store: 'meta', key: BACKUP, value: payload }]);
     },
-    async recover(): Promise<string | undefined> {
+    async recover(isSupported): Promise<string | undefined> {
       const primary = await backend.get('meta', PRIMARY);
       if (primary === undefined) return undefined;        /* genuinely fresh — nothing to recover */
       const bak = await backend.get('meta', BACKUP);
       if (bak === undefined) return undefined;
+      /* The backup is untrusted storage input too. Classify the exact bytes
+         before any write: corrupt/future backup data must never destroy the
+         invalid primary whose evidence the caller is protecting. */
+      if (!isSupported(bak)) return undefined;
       await backend.apply([{ store: 'meta', key: PRIMARY, value: bak }]);
       return bak;
     },
     async reset(): Promise<void> {
-      await backend.apply([
-        { store: 'meta', key: PRIMARY },
-        { store: 'meta', key: BACKUP },
-      ]);
-      await backend.clear(['assetcache', 'journal']);
+      /* One canonical list owns both schema creation and wipe coverage. A
+         future authoritative store therefore joins reset automatically. */
+      await backend.clear(STORES);
     },
   };
 }

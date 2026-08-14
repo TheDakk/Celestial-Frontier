@@ -57,12 +57,16 @@
 > fixed-point round-trip every supported shape. Nothing in this planned overlay
 > changes the current save envelope, Guide, release marker or import behavior.
 
-> **2026-08-13 v2 port overlay (matches `port/v2` code):** The browser slice now
+> **2026-08-14 v2 port overlay (matches `port/v2` code):** The browser slice now
 > distinguishes a fresh store, a supported coherent save, an unsupported future
 > version, a corrupt/sparse payload, and a transient storage failure. Only a
 > supported coherent payload may replace the last-known-good backup. Corrupt
-> primaries attempt one recovery; without a proven backup they remain protected
-> from writes, as do future-version bytes. A thrown primary read is unknown—not
+> primaries attempt one recovery, but the backup is itself untrusted storage input:
+> its exact bytes are classified before any primary write. A supported backup may
+> replace an invalid primary; a corrupt or future backup leaves the original invalid
+> primary untouched. Without a proven backup the primary remains protected from
+> writes, as do future-version bytes. A future primary never yields to an older
+> supported backup. A thrown primary read is unknown—not
 > proof of corruption—so it never calls recovery or rolls a valid newer primary
 > back to an older backup. Its transient hold clears only after a later read
 > proves a genuinely fresh store; a supported or protected payload reloads or
@@ -70,7 +74,11 @@
 > longer cached forever, and a blocked native request that succeeds after its
 > bounded attempt was abandoned immediately closes that late orphan database.
 > Explicit import uses the same envelope guard, so `{}`, `{view:null}`, arrays
-> and primitives cannot erase progress.
+> and primitives cannot erase progress. A direct contract now feeds every supported
+> fixture family through `exportSaveV2` and the boot-envelope predicate, so the app's
+> writer cannot silently drift away from its next reader. Repository reset clears the
+> canonical complete `STORES` list rather than a hand-maintained subset; a store-growth
+> control seeds and proves every current store empty after reset.
 > The player-facing import door now lives at **Settings → Bring expedition**;
 > moving it out of the eighth dock slot did not create a second loader or weaken
 > any byte-protection rule. That dock slot now opens the canonical v2 Guide

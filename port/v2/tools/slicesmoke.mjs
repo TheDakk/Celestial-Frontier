@@ -2724,9 +2724,14 @@ try {
   /* Protected-save notices are CRITICAL boot outcomes and must bypass the
      ordinary 1.8s toast de-bounce. Exercise them before that window closes,
      and prove neither future nor corrupt bytes are rewritten. */
-  const setProtectedPrimary = async (raw) => evalPh(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
-    q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite'),os=tx.objectStore('meta');
-      os.put(${JSON.stringify(raw)},'save'); os.delete('save_bak'); tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
+  const setProtectedPrimary = async (raw, backup) => {
+    const backupWrite = backup === undefined
+      ? "os.delete('save_bak');"
+      : `os.put(${JSON.stringify(backup)},'save_bak');`;
+    return evalPh(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
+      q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite'),os=tx.objectStore('meta');
+        os.put(${JSON.stringify(raw)},'save'); ${backupWrite} tx.oncomplete=()=>{db.close();resolve(true)}; tx.onerror=()=>reject(tx.error); }; })`);
+  };
   const waitProtectedNotice = async (expectedTitle, timeoutMs = 3000) => {
     const deadline = Date.now() + timeoutMs;
     let last = null;
@@ -2748,8 +2753,8 @@ try {
   try { await waitProtectedNotice('__never_a_real_notice__', 150); }
   catch { protectedNoticeControlRejected = true; }
   if (!protectedNoticeControlRejected) fails.push('PROTECTED NOTICE WAITER CONTROL FAILED — a never-matching title reported visible');
-  const protectedBoot = async (raw, expectedTitle) => {
-    await setProtectedPrimary(raw);
+  const protectedBoot = async (raw, expectedTitle, backup) => {
+    await setProtectedPrimary(raw, backup);
     /* This is a VISUAL notice gate. Make its page the active renderer before
        reading a CSS transition; background targets may intentionally pause
        animation frames and report computed opacity 0 despite an open toast. */
@@ -2796,6 +2801,26 @@ try {
   if (partialV4Boot.title !== 'Save protected' || !partialV4Boot.open || partialV4Boot.raw !== PARTIAL_V4_RAW
     || !partialV4Boot.scheduled || partialV4Boot.directPersist !== false) {
     fails.push('PLAUSIBLE PARTIAL V4 SAVE PROTECTION was not visible/byte-preserving on fast boot: ' + JSON.stringify(partialV4Boot));
+  }
+  /* The recovery copy is untrusted storage input too. A future or corrupt
+     backup must be classified before it can replace the invalid primary; the
+     notice alone is insufficient because it is rendered from the pre-recovery
+     read and could look correct after the repository already destroyed it. */
+  for (const [label, unsafeBackup] of [
+    ['future backup', FUTURE_V99_RAW],
+    ['corrupt backup', '{"v":4,"epoch":'],
+  ]) {
+    try {
+      const unsafeRecovery = await protectedBoot('{}', 'Save protected', unsafeBackup);
+      if (unsafeRecovery.title !== 'Save protected' || !unsafeRecovery.open || unsafeRecovery.raw !== '{}'
+        || !unsafeRecovery.scheduled || unsafeRecovery.directPersist !== false) {
+        fails.push(`BACKUP CLASSIFY-BEFORE-SWAP (${label}) did not preserve the invalid primary: `
+          + JSON.stringify(unsafeRecovery));
+      }
+    } catch (error) {
+      fails.push(`BACKUP CLASSIFY-BEFORE-SWAP (${label}) changed the protected boot outcome: `
+        + String(error instanceof Error ? error.message : error));
+    }
   }
 
   /* Exact historical compatibility: the first IndexedDB slice wrote only

@@ -4,7 +4,7 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 overlay matches code and live handoff as of 2026-08-13.**
+> **Current port/v2 overlay matches code and live handoff as of 2026-08-14.**
 > **2026-08-13 exploration/ship/loot/companion/audio review:** The executable v2
 > boundary remains the Phase-4 travel/survey slice. `apps/game/src/main.ts` renders the
 > read-only Compendium through `@cf/art/species`, consumes `@cf/domain-combatcore`
@@ -26,6 +26,18 @@
 > Canvas/Pixi transitions plateau. The present one-blob, last-writer-wins repository is
 > insufficient for two-tab exact-once claims and must gain compare-and-swap or one
 > authoritative serialized coordinator.
+>
+> **2026-08-14 F1a save-integrity overlay:** `@cf/persistence` now treats both
+> recovery copies as untrusted input. `readSaveWithRecovery` supplies the coherent,
+> supported-envelope predicate to `SaveRepository.recover`; the repository classifies
+> the exact backup before it may replace an invalid primary. Corrupt or future backup
+> bytes leave the original invalid primary untouched, and a future primary still never
+> invokes recovery. The direct exporter contract proves all supported fixture families
+> satisfy the boot envelope, while repository reset clears the canonical complete
+> `STORES` list so future stores cannot escape a wipe. This candidate implements the bounded F1a
+> pre-classification overwrite/reset-coverage repairs only. The current one-blob store,
+> cross-tab last-writer-wins behavior, split schema, CAS, receipt journal and migration
+> authority remain F3 work; Gate C still requires real veteran/device evidence.
 >
 > **2026-08-13 Charter current-truth overlay:** `@cf/scene/charter.ts` still owns the
 > verbatim `ASC_CHAPTERS_DATA`, `bankLandfall`, canonical completion test and drive-derived

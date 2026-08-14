@@ -3,8 +3,13 @@
 > **Status:** comprehensive planning baseline, created 2026-08-14.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
-> **Implementation status:** planning only. This document does not authorize a product change,
-> release, deployment, version bump, or claim that a Gate is closed.
+> **Implementation status:** active, one bounded review branch at a time. The F1a save-integrity
+> candidate is implemented and locally diagnostic-green; clean exact-head evidence is pending.
+> Later batches remain planned.
+> This document does not authorize a release, deployment, version bump, or claim that an entire
+> Gate is closed.
+> **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
+> [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 
 ## 1. Purpose, authority, and status
 
@@ -169,12 +174,23 @@ Those belong to F3.
 
 **Exit evidence:**
 
-- [EXEC-TODO] Unit and real-repository outcomes for every recovery state above.
+- [EXEC-TODO] Unit and real-repository outcomes for every recovery state above; candidate tests are
+  locally green and await clean exact-head binding.
 - [EXEC-TODO] Controls that restore pre-classification overwrite, omit a reset store, substitute a
   malformed backup, and force a transient failure.
-- [EXEC-TODO] Browser reload proof through persisted IndexedDB data.
+- [EXEC-TODO] Browser reload proof through persisted IndexedDB data; the local candidate passed and
+  awaits a clean exact-head run.
 - [HUMAN] Gate C stays open until a real veteran/current-device save imports, reads back, and its
   original legacy source remains recoverable.
+
+**F1a candidate record (2026-08-14):** `SaveRepository.recover` now accepts the supported
+classifier and proves the exact backup before replacement; reset clears the canonical `STORES`
+list; and every supported fixture family passes a direct exporter → boot-envelope contract. Unit
+test-first controls restored the old overwrite/reset omissions and failed 2 of 36 tests; an omitted
+export key failed all 9 direct fixture contracts; and the browser control named both future- and
+corrupt-backup overwrite cases. With the repair restored, local diagnostics passed 296 tests /1
+skipped, both TypeScript configurations, and the full real-browser slice smoke. These are not yet
+clean exact-head certification. F3 and the Gate-C human device/veteran-save criterion remain open.
 
 ### 4.2 F1b — narrow, independently reviewable guardrails
 
@@ -220,6 +236,10 @@ render foreign content, land, bank Charter credit, persist, or award.
 
 F2 is the identity seam of Arc 0, not all of it. These items remain named sub-batches:
 
+The dependency spine shows Arc 0's critical path, not a blanket serial barrier. Each row's own
+placement rule determines what it blocks: later-bound decisions such as `D-CFB-1` and
+`D-IMPORT-1` remain open and visible, but do not mechanically block unrelated Arc 1A–1C work.
+
 | Item | Required outcome | Placement rule |
 | --- | --- | --- |
 | `D-TRAIN-1` | Imported full-expedition `tsnap` restores before clear; completion, skip, and write-failure preserve the real expedition. | Before Training can claim full migration. |
@@ -228,10 +248,18 @@ F2 is the identity seam of Arc 0, not all of it. These items remain named sub-ba
 | Charter/opportunity truth | Every surfaced opportunity maps to a live action; stale chapters cannot claim unbuilt systems. | Before new ownership/reward writers. |
 | Guide/Training/tooltip truth | Capability sign-off, real-system-only bodies, deep links, and Advanced Briefing placement. | Before an affected capability becomes available. |
 | Remaining open deltas | Biome fauna timing, locale, descriptor/state seam, domain haze ownership, and notification time source each receive named ownership. | Never leave a known delta as unowned “later.” |
+| `PER-5` imported strings | Decide and record validation for `lastAnomKey`/`frontierEnding`; do not silently change verbatim parity. | Before either value is rendered or trusted as authority. |
+| `DOM-5` package cycle | Assign and remove the `combatcore` ⇄ `strays` dependency cycle at an owned package seam. | Before stricter bundling or dependency enforcement relies on an acyclic graph. |
+| `MAIN-3` roster boundary | Separate the full canonical world roster from the eight-row Planetside preview/paging cap. | Before Arc 4 capture consumes roster identity. |
 
 **Arc 0 exit:** fresh saves receive no impossible live goal; surfaced opportunities map to real
-actions; imports preserve continuity; Guide truth is current; no ownership writer precedes canonical
-proof.
+actions; continuity required by every capability reached so far is preserved; Guide truth is
+current; no ownership writer precedes canonical proof.
+
+`D-CFB-1` is a minimum lineage-compatibility bridge, not proof that both parents' complete audible
+traits survive. Arc 7/8 must either persist a bounded versioned parent-audio projection or use the
+documented deterministic fallback; an ordered two-seed tuple alone cannot promise an exact blend of
+both parent voices.
 
 ### 4.5 Arc 1A — Compendium virtualization and thumbnail leasing
 
@@ -252,6 +280,9 @@ accessibility, or approved static art.
   lineage-sensitive portraits.
 - Create an internal canvas → canvas thumbnail seam that avoids the full-portrait encode/decode
   detour and full-cache pollution. Retain the already-fixed shared lazy-art subscription behavior.
+- Keep the DOM-mutating species-art chunk under app-shell lifecycle ownership: sequence its lazy
+  import only after the owning document/shell exists, and do not let non-DOM consumers import the
+  side-effectful module directly.
 - Budget decoded pixels/bytes, cache entries, jobs, and leases; trim correctly as phone caps shrink.
 - Move Planetside chips to the lease path without changing their structural semantics.
 
@@ -259,8 +290,9 @@ accessibility, or approved static art.
 1,500-row catalogue and proves mounted-row bound, `naturalWidth ≤ 132`, decoded resources,
 jobs/leases, populated surface, warm plateau, focus/detail/filter reachability, and close cleanup
 on phone/desktop. Independent negative controls reintroduce unwindowed rows, 440px mounting,
-missing lease release, and missing disposal. [HUMAN] review validates 132px list art, 300/440px
-detail art, text hierarchy, and focus behavior.
+missing lease release, and missing disposal. [HUMAN] review validates 132px list art and 440px
+Compendium detail art, text hierarchy, and focus behavior; the separate 300px surface remains
+art-review-packet evidence, not a Compendium delivery tier.
 
 ### 4.6 Arc 1B — Pixi/canvas resource ownership and plateaus
 
@@ -342,6 +374,11 @@ wall-clock exploit or a change to universe determinism.
 use `Date.now()` or bare `Math.random()`. Reduced Motion never slows progress.
 
 ## 5. Product Arc delivery plan
+
+**Charter co-delivery law:** when an Arc makes a system such as mining, fabrication, bioscan,
+capture, conquest, or breeding real, that same Arc ports and outcome-tests the system's Charter
+writer before exposing its goal. Arc 9A is the closure audit for cross-system chains, weeklies,
+rewards, ranks, and endings—not the first delivery point for every earlier system writer.
 
 ### 5.1 Arc 2 — item instances and readable economy
 
@@ -493,6 +530,10 @@ recorded assets, a category mixer, a concurrency manager, or complete audio pack
 - Pure deterministic `AudioSignature` → `AudioIdentityProfile` → `CreatureCallPlan`/cue-plan
   modules. Identity uses exact catalogue owner, selected immutable phenotype, and surviving lineage;
   mutable XP, injury, feeding, assignment, bond, and brood do not change a signature.
+- Pure `DistantEcologyHintPlan` and `CreatureExpressionCue` seams. Hint plans bind canonical world,
+  an already surfaced approach/survey lead or roster and resolver version; expression selection
+  binds an immutable call plan to one settled event identity without changing the
+  signature/profile/plan or consuming SessionRNG.
 - Typed event boundary and Web Audio engine: master → music, ambience, creature, combat/gameplay,
   and UI buses; limiter; real category routing; truthful blocked/suspended state.
 - Voice manager with priorities, cooldowns, concurrency groups, stealing, and exact stop/disconnect
@@ -508,9 +549,9 @@ concurrency/stealing proof; deliberate failing controls; [HUMAN] listening on he
 speaker, mono, low volume, and reduced-intensity settings.
 
 **Initial budget policy:** measure before locking encoded/decoded byte caps. The approved starting
-mix targets are 20–28 low/mobile, 28–40 standard mobile/tablet, 40–56 desktop standard, and 56–72
-desktop high. Gate G begins with at most eight creature emitters and 120 live nodes; these counts
-are distinct scopes, not interchangeable limits.
+full-mix active-voice targets are 20–28 low/mobile, 28–40 standard mobile/tablet, 40–56 desktop
+standard, and 56–72 desktop high. Gate G begins with at most eight creature emitters and 120 live
+nodes; these counts are distinct scopes, not interchangeable limits.
 
 ### 5.9 Arc 8 — HD audio and content
 
@@ -522,6 +563,17 @@ are distinct scopes, not interchangeable limits.
   microbes receive environmental/scientific sonification or correct palettes—not mammal fallbacks.
 - Add Earth, procedural, and hybrid creature voices; keep `legacy` fallback-only and tune pitch soft
   saturation after listening evidence.
+- Add an intentional Compendium detail-card audition action with the same stable voice used in
+  travel, return, and combat. List mount, focus, filtering, or virtualization never auto-plays it.
+- Add presentation-only distant biosphere calls during approach or survey, after that owning surface
+  has presented the matching lead. They key on canonical world identity, resolver version, and the
+  already player-visible opportunity/survey projection. A call cannot reveal an unsurfaced species,
+  create a discovery, or consume new gameplay RNG; its visual equivalent carries the same
+  information granularity, and the layer ducks under UI/combat while honoring audio reduced
+  intensity.
+- Add event-owned hurt/fed/care/bond/greeting expression cues selected from an immutable call-plan
+  repertoire. Expression may change articulation, never serialized signature/profile/plan, and may
+  not become an absence or attendance-pressure signal.
 - Add adaptive music; universe, celestial, planet, biome, ship, material, crafting, capture,
   combat, and Guardian layers; animation-linked foley; selective spatialization/reverb.
 - Use only local project-owned, public-domain/CC0, or explicitly commercially redistributable media.
@@ -538,9 +590,10 @@ heat and speaker/headphone/mono acceptance.
 Arc 9 closes player history and remaining current-system progression rather than leaving it between
 “feature parity” and optional projects.
 
-**9A — progression/records closure:** complete Charter writers/rewards/accepted chains/weeklies,
-ranks, achievements, Ascent, Prime Codex, events, Stardust, endings, Atlas/share closure, Records,
-collections, Binder, and Paragons. Every record has a real action owner and outcome proof.
+**9A — progression/records closure:** audit and close the per-system Charter writers delivered with
+their owning Arcs; complete cross-system rewards, accepted chains, weeklies, ranks, achievements,
+Ascent, Prime Codex, events, Stardust, endings, Atlas/share closure, Records, collections, Binder,
+and Paragons. Every record has a real action owner and outcome proof.
 
 **9B — Chronicle/projects/share expression:** build Chronicle/museum, ship/discovery/Guardian
 history, share cards, and optional finite frontier projects/outposts only after identity, ownership,
@@ -634,6 +687,10 @@ quasars, anomalies, planets, moons, rings, atmospheres, clouds, weather, oceans,
 auroras, descent/landing, material reveals, and all 43 biome profiles. One versioned `BiomeProfile`
 bridges visual/ecological/audio presentation so separate classifiers cannot drift.
 
+The current executable 43-biome key coverage does not yet prove that cross-modal binding. Arc 8
+adds the audio join, inventories every biome-presenting runtime consumer, and requires deliberately
+mismatched-profile plus alternate-classifier/bypass controls before it may be called complete.
+
 Gate F is [HUMAN] plus fixed-seed/device evidence: no LOD blotches, seams, incorrect occlusion,
 procedural repetition, detached visual action, or mobile heat regression.
 
@@ -677,6 +734,13 @@ A narration bus stays reserved until narration exists; an empty slider is not a 
   use appropriate environmental/scientific sonification and never fall through to mammal calls.
 - Animation foley attaches to stable event markers; not every ambient element creates a spatial
   node. Distant ecology uses clustered/premixed layers when appropriate.
+- Distant ecology hints consume the canonical, already surfaced approach/survey lead or roster. They
+  are presentation-only, never advertise a hidden species, carry a same-granularity visual cue,
+  duck under UI/combat, and honor audio reduced intensity.
+- Care, injury, feeding, bond, selection, and companion-mission-return expressions consume completed
+  typed events and resolve a transient cue from the stable call-plan repertoire; the plan itself
+  remains byte-stable, its palette/register/phrase grammar remain recognizable, and no idle poll or
+  absence-triggered distress loop exists.
 - Silence is an intentional layer for vacuum, caves, and abyssal spaces.
 
 ### 7.4 Rights, privacy, and delivery
@@ -700,13 +764,20 @@ validator with missing-row, hash-drift, license-drift, and orphan controls.
 Gate G needs more than deterministic profile uniqueness:
 
 - resolver/profile/cue-plan parity and full route mapping;
+- canonical-world/surfaced-lead-or-roster hint vectors, wrong/hidden-species and silent/non-fauna
+  controls, gameplay-RNG equality, same-granularity visual information, UI/combat ducking, audio
+  reduced-intensity behavior, and route/visibility cleanup;
+- event-owned expression vectors with invariant signature/profile/call-plan bytes, plus
+  state-polling, absence-trigger, signature-drift, and missing-caption controls;
 - current voice identity preservation;
 - gesture activation, mute-before-create, hidden-tab cleanup, restart/resume, and context-loss
   recovery;
 - bounded encoded/decoded bytes, sources, creature emitters, and AudioNodes with warm plateaus;
 - captions, mono, dynamic range, reduced intensity/high-frequency comfort, and no audio-only state;
 - [HUMAN] listening on headphones, phone speaker, mono, low volume, and long sessions, including
-  blinded specimen-to-call matching for Earth/procedural/hybrid examples;
+  blinded specimen-to-call matching for Earth/procedural/hybrid examples and same-creature matching
+  across different expression states, distant-call anticipation-versus-noise judgment, and
+  expression warmth-versus-fatigue judgment;
 - [HUMAN] music/ambience transition, repetition, fatigue, and device-heat acceptance.
 
 ## 8. Gate A–I coverage ledger
@@ -748,6 +819,9 @@ Each player-visible arc updates in the same batch:
 
 - its capability-aware Guide current/unavailable body;
 - relevant Training, tooltip, and Advanced Briefing path;
+- before the first new-system lesson, a capability-gated lesson definition over a typed event
+  boundary, selector-evaluated allow-scope at event time, resize/rotation geometry refresh, and
+  adjacent in-scope Tab behavior;
 - release draft text only for actually usable outcomes;
 - keyboard, touch, screen-reader, focus, Escape, Close-owner, and Reduced Motion behavior;
 - stale-wording negative control plus browser proof of rendered wording and real outcome.
@@ -764,6 +838,25 @@ No planned system is advertised as live, and no live system is silently absent f
 - New art/audio: fixed-seed proof, phone/desktop review, and required [HUMAN] acceptance.
 - Browser/preview evidence comes from a clean exact commit with manifest/tree/lock/byte binding.
   Mutating negative-control tools never overlap browser/build/evidence processes.
+
+**Recurring code-health, optimization, and balance rail:**
+
+- Every batch audits all readers, writers, callers, exports and resource owners around the touched
+  seam. Remove dead/defunct code only after static search plus runtime/fixture evidence proves zero
+  supported consumers and the compatibility/migration horizon permits removal; record what was
+  removed and which control would catch an accidental live-path deletion.
+- Optimize measured player or resource outcomes—answerability, frame/task time, allocation/decoded
+  bytes, active resources, network/build weight, heat or battery—not aesthetics of the source alone.
+  Keep before/after measurements, representative populated scenarios, regression budgets, and a
+  control that makes the bottleneck return. Refactoring for ownership remains behavior-preserving
+  until an approved product deviation says otherwise.
+- Balance changes require deterministic simulation vectors, faucet/sink and reachability analysis,
+  disclosed player-facing odds/costs/rewards, old-vs-new outcome comparison, exploit controls, and
+  [HUMAN] fun/clarity evidence where feel matters. Never hide grind, dynamic punishment, FOMO, or
+  retention pressure inside a tuning pass.
+- At every Arc boundary, run package/dependency-cycle, unused-export, unreachable-route, orphaned-
+  asset, stale-capability-copy and manifest-reference audits. Findings become named work in the
+  owning batch; unrelated cleanup does not hitchhike into a high-risk fix.
 
 ### 9.4 Human experience cadence
 
@@ -785,13 +878,17 @@ retention pressure or session-length targets.
 3. No wall-clock/bare-randomness reward, mission, extraction, or anti-reroll loop before F4.
 4. No Guide availability before action, persistence/reload, reachability, outcome test, and
    capability/body-revision sign-off.
-5. No broad Inventory/compare/vendor UI before layered panel/focus/Escape/Close policy and bounded
-   catalogue/resource behavior.
+5. No broad Inventory/compare/vendor UI before layered panel/focus/Escape/Close policy, bounded
+   catalogue/resource behavior, and a behavior-preserving split of `apps/game/src/main.ts` into
+   owned scene-draw, chrome, panel-content, replacement/boot-instrumentation, and search/travel
+   modules before Arc 2 UI expansion.
 6. No generic destructive `pagehide` renderer teardown; preserve bfcache.
 7. No blanket repaint of frozen static portraits as a substitute for living visual production proof.
 8. No broad HD audio scale before deterministic profile/mixer/lifecycle/budgets and human listening.
 9. No baseline re-pin, stale DOM, empty surface, dirty working copy, or blind retry used as evidence.
 10. No production/main/release assertion from a DEV preview or planning document.
+11. No speculative optimization, balance rewrite, or dead-code deletion without an owner, measured
+    before/after outcome, supported-consumer audit, rollback-safe scope, and negative control.
 
 ## 11. Work ownership and review protocol
 
