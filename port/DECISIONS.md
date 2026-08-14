@@ -214,3 +214,37 @@ The game may be deep, surprising and highly replayable. It must not create compu
 streak decay, FOMO, punishment for taking a break, paid random rewards, hidden odds, expiring
 missions, energy sales or manipulative notifications. Bond grows from varied meaningful play,
 not attendance maintenance. Automated retention is never a release criterion.
+
+---
+
+## Decided 2026-08-14 (Nick) — HD audio discovery and expression
+
+These two additions are approved product direction for Arcs 7–8. They do not change the current
+stings-only v2 slice, Guide availability, release identity, or production version.
+
+### 14. Distant biosphere calls — **PRESENTATION-ONLY, CANONICAL-ROSTER-BACKED DISCOVERY**
+
+While approaching or surveying, once that owning surface has presented a biosphere lead, a world
+may present faint distant calls from the same canonical, already player-visible lead/roster
+projection. The layer uses no second roster generation or
+gameplay RNG, never reveals an absent/hidden species, and cannot create a catalogue page, reward,
+claim, acquisition, or save mutation. A recognizable species hint requires equivalent visual
+information at the same semantic granularity. Arc 7 owns the typed hint plan, bus/lifecycle,
+accessibility, diagnostics, priority ducking, audio reduced-intensity behavior and budgets; Arc 8
+owns the authored roster-backed content and listening evidence.
+
+### 15. Companion expression — **EVENT-OWNED VARIANTS WITHIN IMMUTABLE AUDIBLE IDENTITY**
+
+Care, feeding, injury, taming, explicit selection and companion-mission return may select a
+different articulation from one creature's stable call-plan repertoire. A separate pure expression
+resolver consumes the settled event; `AudioSignature`, `AudioIdentityProfile` and
+`CreatureCallPlan` remain byte-identical across mutable state. No idle polling, wall clock,
+SessionRNG, app-return greeting, absence-triggered distress, attendance summons or pressure loop is
+allowed, and every meaningful cue has a text/visual/caption counterpart. Arc 7 owns the expression
+event seam and invariants; Arc 8 owns the authored variants and same-creature/different-state human
+listening gate.
+
+`D-CFB-1` remains an explicit compatibility decision. An ordered parent-seed tuple is the minimum
+lineage bridge and may act as a deterministic salt, but it cannot reconstruct both parents' complete
+audible traits. A true parent-voice blend needs a versioned bounded parent-audio projection; until
+that representation is selected and proven, the documented deterministic fallback applies.

@@ -3,7 +3,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { canon } from '../../../tests/parity.js';
-import { importSaveV2, exportSaveV2, createSaveRepository, createMemoryBackend, type ContentRegistry, type SaveStateV2 } from '@cf/persistence';
+import {
+  importSaveV2, exportSaveV2, isPlausibleSaveEnvelope,
+  createSaveRepository, createMemoryBackend, type ContentRegistry, type SaveStateV2,
+} from '@cf/persistence';
 
 /* ═══ THE ROUND-TRIP INVARIANT: import → export → import reaches a FIXED
    POINT after one pass. Round one legitimately moves data the way a live
@@ -38,6 +41,12 @@ describe('import → export → import: the fixed point', () => {
         const drift = Object.keys(o2).filter((k) => JSON.stringify(o2[k]) !== JSON.stringify(o3[k]));
         expect.fail('fields still drifting at round three (lossy codec): ' + drift.join(', '));
       }
+    });
+    it(`${name}: every app-produced export satisfies the boot envelope`, () => {
+      const state = importOk(JSON.stringify(FX.inputs[name]));
+      const exported = exportSaveV2(state, NOW);
+      expect(isPlausibleSaveEnvelope(JSON.parse(exported)),
+        'exportSaveV2 emitted bytes the next boot would classify as invalid').toBe(true);
     });
   }
   it('veteran_rich: the fields that must survive round ONE exactly (no live-write transform touches them)', () => {
@@ -100,7 +109,7 @@ describe('the repository flow, end to end (Phase 2 wiring)', () => {
     await repo.write('{"epoch": CORRUPT');
     expect(importSaveV2(await repo.readPrimary(), REGISTRY, NOW).ok).toBe(false);
     /* CF-RR-002: recovery restores the last payload that PROVED it loads */
-    const recovered = await repo.recover();
+    const recovered = await repo.recover((raw) => importSaveV2(raw, REGISTRY, NOW).ok);
     expect(recovered).toBeDefined();
     const s2 = importOk(recovered!);
     expect(canon(s2)).toBe(canon(s1));

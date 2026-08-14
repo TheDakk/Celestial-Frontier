@@ -931,6 +931,24 @@ duplicates).
   retains the exact submitted text, including legal surrounding whitespace. File selection is
   browser-decoded to text, so the external moderator file remains the byte-for-byte authority. This is intentional exploit/data-loss hardening over
   permissive v1 behavior.
+- ✔ **D-SAVE-4 — recovery proves the backup before replacing the primary; reset coverage grows
+  with the store registry (2026-08-14).** The recovery copy is untrusted storage input too.
+  `SaveRepository.recover` now receives the supported-envelope predicate and classifies the exact
+  backup before any write. A corrupt or unsupported-future backup cannot destroy the invalid
+  primary whose bytes are being protected; a supported backup still performs the one recovery,
+  and a future primary never invokes it. The direct exporter contract covers all nine supported
+  fixture families against the next-boot envelope predicate. Reset clears the canonical complete
+  `STORES` list, and its growth control seeds and proves every current store empty.
+
+  Test-first restoration of the old write-before-classify and partial-reset behavior failed 2/36
+  focused tests; omitting one required export key failed 9/22 direct round-trip tests. The real-
+  browser control independently restored the old overwrite and produced named failures for both a
+  future and corrupt backup because the persisted primary no longer produced the protected boot
+  outcome. With the repair restored, clean exact head `f7cf75f` passed 296 tests /1 skipped, both
+  TypeScript configurations, the unused-code type gate, and full slice smoke. This closes F1a only:
+  one-blob storage, revisions/CAS, multi-tab coordination, split stores, receipt transactions, real
+  migration proof, and the Gate-C veteran/device human criterion remain open for F3 and the human
+  gate.
 - ✔ **D-SAVE-2 — intentional replacement reloads own pre-await ticker quiescence and outgoing
   renderer release (closed in exact clean executable evidence `7d9980e`, 2026-08-12).** Training restart after its reversible view
   commit, supported expedition import after its replacement-envelope commit, and the storage-
@@ -1257,7 +1275,10 @@ duplicates).
   codec drops `parents`, while combat class/ability reads them. Honest hybrids can therefore change
   combat identity after a CFB round trip. A normalized two-uint32 tuple is the bounded candidate, but
   because this corrects inherited behavior it needs an explicit compatibility decision and matchup
-  controls.
+  controls. Hybrid audio is a second consumer: the ordered tuple can preserve lineage salt but cannot
+  reconstruct both parents' full audible traits. A premium parent-voice blend additionally needs a
+  versioned bounded parent-audio projection; representation, compatibility, malformed input and
+  reverse-order evidence remain open before either combat or audio may depend on it.
 - ☐ **D-IMPORT-1 — reconstruct Map/Set and genome semantics, not merely array shapes.** The current
   importer contains a descriptor-crashing Compendium row, but malformed trait indices can still
   produce NaN combat values, and duplicate conquest/bio/wave/tech/binder/charter rows do not yet
