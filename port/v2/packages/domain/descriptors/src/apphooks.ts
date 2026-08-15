@@ -112,9 +112,8 @@ export function installCaptureHooks(): void {
     planetThumb, starThumb, galaxyThumb, moonThumb, cometThumb, beltThumb,
     /* ★ found by the real-input tests, 2026-07-31: worldgen's galaxiesInCell
        reads GAL_SPRITES.length for the sprite-pool size — a free identifier
-       NO fixture path executed (all three probed cells are empty), so an
-       uncached ordinary generated-galaxy branch threw while parity stayed
-       green. Empty, special-only and cached branches may not read it. Only the
+       NO fixture path ever executed (all three probed cells are empty), so
+       worldgen sat parity-green while every POPULATED cell threw. Only the
        length is read; derive it from the verbatim seed pool. */
     GAL_SPRITES: new Array(GAL_SPRITE_SEEDS.length).fill(null),
   };

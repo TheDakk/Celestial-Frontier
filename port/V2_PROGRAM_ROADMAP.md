@@ -304,8 +304,32 @@ close CF1/F2, change generation, or close a Gate. Reviewed bounded commit
 `29601e478e99b2a114720e23b696e8fb7d79d33c` passes 299 tests /1 skip, both TypeScript programs,
 `artunused`, `git diff --check`, and the complete one-attempt real-browser slice smoke with zero
 console errors. Three independent read-only source, test and documentation audits are clean after
-their findings were resolved. PR review and exact-head CI remain integration gates; local evidence
-does not certify a later handoff-only head.
+their findings were resolved. The first pushed exact head is preserved red below. Claude review and
+a fresh repaired-head exact-CI run remain integration gates; local evidence cannot certify a later
+handoff head.
+
+**PR #27 exact-head CI sentinel note (2026-08-15):** draft PR
+[#27](https://github.com/TheDakk/Celestial-Frontier/pull/27) reached exact head
+`fe37753d66b52d66c08df878cd315cc7168dcb2e`. Test-battery run
+[`31886401312`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31886401312) completed with
+the full `v2 parity and complete TypeScript surface` step, `root-gates`, `v2-smoke` and `v2-glass`
+all green. The only red primary job was `v2-static`, which failed closed at the audited `apphooks.ts`
+authority-hash sentinel inside the art-routing/coverage step; `v2-persona-preview` skipped and
+`battery` failed only as the dependency cascade. The changed bytes were comment-only historical
+wording in a deliberately byte-pinned
+catalog wrapper. This is a provenance failure, not a WorldGen behavior, type, generation, route,
+coverage or browser finding; the head must not be retried and the sentinel must not be re-pinned.
+
+The bounded repair restores `packages/domain/descriptors/src/apphooks.ts` exactly to audited
+SHA-256 `c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a`
+and pre-batch blob `ba95d19349f3ae911f41a2903080c03816489767`. Corrected dependency truth
+remains in WorldGen-owned facade/declaration/tests and current references. On the restored bytes,
+`overridecheck` passes 1,014/1,014 routes with zero dead and 1,010/1,010 Earth coverage; every
+`overridecontrol` leg passes including the wrapper-byte and restored-clean controls; `artaudit`
+passes 23 sources/zero findings; `coveragegap` passes 1,010/1,010 with zero remaining; and
+`speccheck` passes 454/zero unread/zero inert. All 299 tests /1 skip, both TypeScript programs,
+`artunused` and `git diff --check` also pass. A new repaired commit/head, complete exact-head CI and
+Claude review remain required before integration.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete
