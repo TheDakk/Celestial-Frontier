@@ -40,7 +40,7 @@ import {
   NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, viewToNav, resolveCF1WorldAddress,
   universeGalaxies, galaxyCell, galaxyCellWindow, systemScene,
   ascStageOf, ascAllowsStar, reachRadiusOf, withinReachOf, currentRegionOf, ascHintFor, primeReachHint,
-  bankLandfall, canAdvanceV2Chapter, currentV2Objective, projectV2Charter,
+  bankLandfall, reconcileV2Chapters, currentV2Objective, projectV2Charter,
   GR, GCELL, type NavState, type GalaxyNode, type PlanetNode,
 } from '@cf/scene';
 import { galaxyProfile, galaxyHaze, systemFor, fineStarsInCell, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
@@ -1401,6 +1401,13 @@ function toast(title: string, msg: string, force = false): void {
   _toastT = now;
   showToast(title, msg, force);
 }
+/* Chapter reconciliation is a one-shot saved outcome: once ascCh moves, a
+   later action cannot replay its notice. Replace an ambient Copy/Charted
+   message without escalating the polite status region to assertive. */
+function toastCharterCompletion(title: string, msg: string): void {
+  _toastT = performance.now();
+  showToast(title, msg, false);
+}
 /* A blocked reach action is a distinct contract, not just another ambient
    toast: it must replace a preceding Charted/Copy message immediately, while
    an unchanged blocker remains quiet during zoom/tap re-fire. */
@@ -2582,16 +2589,31 @@ function doLand(): void {
   if (r.ok) {
     nav = r.state;
     const firstLand = !save.landed.includes(p.seed);
-    if (firstLand) save.landed.push(p.seed);   /* the game's `land` set */
-    /* the Ascent hears the landfall — credit BANKS for every chapter from
-       the current on (the review-catch rule, now pure in charter.ts) */
-    if (firstLand && bankLandfall(save.ascCh, save.ascProg, p.seed)
-      && canAdvanceV2Chapter(save.ascCh, save.ascProg, ascStage())) {
-      const done = projectV2Charter(save.ascCh, save.ascProg, ascStage());
-      save.ascCh++;
-      toast('★ ' + (done?.name || 'Charter chapter') + ' — complete',
-        done?.note || 'This expedition’s established reach remains preserved.');
+    if (firstLand) {
+      save.landed.push(p.seed);   /* the game's `land` set */
+      /* Credit banks forward only for a genuinely new landing. */
+      bankLandfall(save.ascCh, save.ascProg, p.seed);
     }
+    /* Reconcile separately from banking: an imported reach-backed chapter may
+       already be complete even when this landing adds no new credit. The pure
+       helper advances every consecutive canonical completion without making a
+       repeated landfall into another reward. */
+    const reconciliation = reconcileV2Chapters(save.ascCh, save.ascProg, ascStage());
+    if (reconciliation && reconciliation.nextChapter !== save.ascCh) {
+      const completed = reconciliation.completed;
+      const first = completed[0];
+      const last = completed[completed.length - 1];
+      save.ascCh = reconciliation.nextChapter;
+      toastCharterCompletion(completed.length === 1
+        ? '★ ' + (first?.name || 'Charter chapter') + ' — complete'
+        : `★ ${completed.length} Charter chapters — complete`,
+        completed.length === 1
+          ? (first?.note || 'This expedition’s established reach remains preserved.')
+          : `${first?.name || 'The first chapter'} through ${last?.name || 'the final chapter'} are now recorded. This expedition’s established reach remains preserved.`);
+    }
+    /* Panels and Survey deliberately coexist outside Training. If Charters is
+       already open, its rendered record must move with the saved ledger. */
+    if (openPanelId() === 'ch') fillCharters();
     stSeam.gal = nav.gal; stSeam.star = nav.star;
     playWhoosh();   /* planetfall */
     drawSurface(p); hudText(); void persistView();
@@ -3437,6 +3459,18 @@ async function loadSave(): Promise<void> {
         save: {
           name: save.explorerName, essence: save.essence,
           landed: save.landed.slice(), customNames: save.customNames.map(([key, name]) => [key, name]),
+          ascCh: save.ascCh, ascProg: { ...save.ascProg },
+          items: save.items.map(([id, count]) => [id, count]),
+          cargo: save.cargo.map(([id, count]) => [id, count]),
+          cgx: save.cgx.map(([id, count]) => [id, count]),
+          stats: { ...save.stats }, journal: save.journal.map((entry) => ({ ...entry })),
+          claimedSets: save.claimedSets.slice(), techOwned: save.techOwned.slice(),
+          unlocked: save.unlocked.slice(),
+          primeFill: Object.fromEntries(Object.entries(save.primeFill)
+            .map(([key, value]) => [key, { ...value }])),
+          frontierUnlocked: save.frontierUnlocked,
+          chWeek: save.chWeek, chProg: { ...save.chProg },
+          chacc: save.chacc.slice(), chDone: save.chDone.slice(),
           viewType: (save.savedView as { type?: string } | null)?.type ?? null,
           savedView: save.savedView,
         },

@@ -73,7 +73,11 @@ function removeOwnedUserData(userData, temporary, prefix) {
   fs.rmSync(resolved, { recursive: true });
 }
 
-export async function openChromiumCdp({
+function launchChromiumProcess({ browserFile, chromiumArgs }) {
+  return spawn(browserFile, chromiumArgs, { stdio: ['ignore', 'ignore', 'pipe'] });
+}
+
+async function openChromiumCdpWithLauncher({
   label,
   userDataPrefix,
   commandTimeoutMs = 15000,
@@ -81,7 +85,7 @@ export async function openChromiumCdp({
   shutdownTimeoutMs = 5000,
   WebSocketImpl = WebSocket,
   onEvent = () => {},
-}) {
+}, launchBrowser) {
   assert(typeof label === 'string' && label.trim(), 'CDP label is required');
   assert(/^[a-z0-9][a-z0-9-]*$/.test(userDataPrefix), `${label}: unsafe user-data prefix`);
   assert(Number.isInteger(commandTimeoutMs) && commandTimeoutMs > 0,
@@ -93,16 +97,18 @@ export async function openChromiumCdp({
   assert(typeof WebSocketImpl === 'function' && Number.isInteger(WebSocketImpl.OPEN),
     `${label}: WebSocket implementation is invalid`);
   assert(typeof onEvent === 'function', `${label}: CDP event handler is invalid`);
+  assert(typeof launchBrowser === 'function', `${label}: browser launcher is invalid`);
   assertBrowserLaunchAllowed();
   const browserFile = findChromiumBrowser();
   const temporary = fs.realpathSync(os.tmpdir());
   const userData = path.join(temporary,
     `${userDataPrefix}-${process.pid}-${crypto.randomBytes(8).toString('hex')}`);
-  const child = spawn(browserFile, [
+  const chromiumArgs = [
     '--headless=new', '--no-sandbox', '--no-first-run', '--disable-background-networking',
     '--disable-component-update', '--disable-component-extensions-with-background-pages',
     '--remote-debugging-port=0', `--user-data-dir=${userData}`, 'about:blank',
-  ], { stdio: ['ignore', 'ignore', 'pipe'] });
+  ];
+  const child = launchBrowser({ browserFile, chromiumArgs, userData });
   let stderrHead = '';
   let stderrTail = '';
   let stderrBytes = 0;
@@ -259,6 +265,10 @@ export async function openChromiumCdp({
   }
 }
 
+export async function openChromiumCdp(options) {
+  return await openChromiumCdpWithLauncher(options, launchChromiumProcess);
+}
+
 async function expectRejectedAsync(label, work, pattern) {
   let caught = null;
   try { await work(); } catch (error) { caught = error; }
@@ -363,24 +373,41 @@ async function runSelftest() {
     }
 
     process.env.CF_BROWSER = actualBrowser;
+    let endpointFixtureLaunches = 0;
+    let endpointFixtureSocketClosed = false;
+    const launchEndpointFixture = ({ userData }) => {
+      endpointFixtureLaunches++;
+      assert(endpointFixtureLaunches === 1,
+        'SELFTEST WebSocket open timeout launched its endpoint fixture more than once');
+      fs.mkdirSync(userData, { recursive: true });
+      fs.writeFileSync(path.join(userData, 'DevToolsActivePort'),
+        '9\n/devtools/browser/selftest\n');
+      return spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
+        stdio: ['ignore', 'ignore', 'pipe'],
+      });
+    };
     class NeverOpeningWebSocket {
       static OPEN = 1;
       constructor() { this.readyState = 0; }
-      close() { this.readyState = 3; }
+      close() { endpointFixtureSocketClosed = true; this.readyState = 3; }
     }
     const openPrefix = `${base}-open`;
-    await expectRejectedAsync('WebSocket open timeout', () => openChromiumCdp({
+    await expectRejectedAsync('WebSocket open timeout', () => openChromiumCdpWithLauncher({
       label: 'CDP selftest WebSocket timeout', userDataPrefix: openPrefix,
-      commandTimeoutMs: 200, startupTimeoutMs: 10000, shutdownTimeoutMs: 2000,
+      commandTimeoutMs: 200, startupTimeoutMs: 1000, shutdownTimeoutMs: 2000,
       WebSocketImpl: NeverOpeningWebSocket,
-    }), /timed out opening the CDP WebSocket/);
+    }, launchEndpointFixture), /timed out opening the CDP WebSocket/);
+    assert(endpointFixtureLaunches === 1,
+      `SELFTEST WebSocket open timeout: expected one endpoint fixture launch, got ${endpointFixtureLaunches}`);
+    assert(endpointFixtureSocketClosed,
+      'SELFTEST WebSocket open timeout did not close its injected socket');
     assertNoOwnedProfiles(openPrefix, 'WebSocket open-timeout cleanup');
 
     const livePrefix = `${base}-live`;
     const liveEvents = [];
     const connection = await openChromiumCdp({
       label: 'CDP selftest live browser', userDataPrefix: livePrefix,
-      commandTimeoutMs: 1500, startupTimeoutMs: 10000, shutdownTimeoutMs: 2000,
+      commandTimeoutMs: 1500, startupTimeoutMs: 30000, shutdownTimeoutMs: 2000,
       onEvent: (event) => liveEvents.push(event),
     });
     try {
@@ -467,7 +494,7 @@ async function runSelftest() {
   console.log(`  macOS Codex Seatbelt pre-spawn refusal: ${process.platform === 'darwin' ? 'PASS; executable untouched' : 'covered by portable resolver selftest'}`);
   console.log('  browser child exit and profile cleanup: PASS');
   console.log(`  early-exit code + bounded stderr diagnostics: ${process.platform === 'win32' ? 'covered by child-exit control' : 'PASS'}`);
-  console.log('  WebSocket open timeout and cleanup: PASS');
+  console.log('  WebSocket open timeout via one portable endpoint fixture and cleanup: PASS');
   console.log('  CDP command error, global timeout, and shorter phase-owned timeout: rejected');
   console.log('  CDP events forwarded; event-handler failure rejected and cleaned up');
   console.log('  pending command rejected during bounded close: PASS');

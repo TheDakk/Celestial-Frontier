@@ -1,10 +1,10 @@
 # Celestial Frontier — Quests & Chapters
 
-> **2026-08-13 v2 current-truth overlay — CURRENT versus PLANNED:** The current
+> **2026-08-14 v2 current-truth overlay — CURRENT versus PLANNED:** The current
 > v2 Charter facade preserves the canonical legacy `ASC_CHAPTERS_DATA` and imported
 > `ascCh` / `ascProg` bytes for parity and reach, but never renders that raw chapter
 > copy as a player instruction. `projectV2Charter` and `currentV2Objective` expose
-> only a landfall goal that the derived saved drive stage can actually reach and the
+> only a landfall goal that the derived saved reach stage can actually reach and the
 > slice can actually bank. A fresh stage-0 expedition sees the two-Sol-landfall
 > milestone; completing it reaches an explicit development-slice boundary, not a
 > mining, fabrication, Shipyard, reward, chapter or reach promise. Non-Sol landfall
@@ -38,7 +38,7 @@
 > verified outcomes.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
-below matches `port/v2` as of 2026-08-13. Carries v1.8.6 and v1.8.7
+below matches `port/v2` as of 2026-08-14. Carries v1.8.6 and v1.8.7
 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and Field Training. The **21-step** curriculum described below is the legacy game; the current v2 boundary is explicit here.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
@@ -76,7 +76,7 @@ implement the dated port overlay.
 > legacy full-state `tsnap` are still separate OPEN outcomes; the unversioned v2
 > release draft does not claim either one complete.
 
-> **2026-08-13 v2 Charter current-truth overlay:** `@cf/scene/charter.ts` keeps
+> **2026-08-14 v2 Charter current-truth overlay:** `@cf/scene/charter.ts` keeps
 > `ASC_CHAPTERS_DATA`, `chapterGoalsDone` and forward `bankLandfall` semantics intact
 > for imported progression. The current app instead gives `fillCharters` one
 > `projectV2Charter(save.ascCh, save.ascProg, ascStage())` record and gives the top
@@ -86,10 +86,14 @@ implement the dated port overlay.
 > number by itself is not reach: a malformed imported `ascCh` without the relevant saved drive
 > cannot expose a non-Sol goal. The explicit terminal legacy/veteran fallback
 > (`ascCh >= ASC_CHAPTER_COUNT`) deliberately remains stage 3 even when drive items are absent.
-> `canAdvanceV2Chapter` recognizes a fully canonical,
-> drive-backed imported completion, while the app still advances only after a newly
-> changed real `bankLandfall` outcome. Blocked routes use the same honest
-> development-slice boundary rather than naming an absent build path. The v1.8.9
+> `bankLandfall` fails closed without changing progress for malformed chapter positions,
+> and the canonical chapter array, chapters, goal arrays and goal objects—including
+> aliases projected to the UI—are recursively frozen. A genuine first landing alone banks
+> new progress. After any successful Land action, `reconcileV2Chapters` uses one stable saved
+> reach stage to advance every consecutive canonically complete imported chapter, even when
+> its landfall counters were already saturated; it stops at the first incomplete or
+> incompatible chapter and creates no drive, reward, missing goal or reach tier. Blocked routes
+> use the same honest development-slice boundary rather than naming an absent build path. The v1.8.9
 > chapter and weekly-charter mechanics below remain historical/legacy behavior, not
 > current v2 controls.
 
