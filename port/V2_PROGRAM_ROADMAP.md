@@ -273,8 +273,11 @@ spawn → endpoint → socket-open deadline, adds a validated socket cap clipped
 time, defaults that cap to startup rather than post-open command time, and retains the exact
 startup/command/shutdown budgets and no-retry rule. Portable delayed-open, explicit-cap,
 remaining-startup, pre-construction-expiry, guarded CONNECTING constructor-overrun, just-late-open,
-never-open and invalid-cap controls prove the phase
-boundaries and cleanup; matching new-head CI and Claude review remain integration gates.
+never-open and invalid-cap controls prove the phase boundaries and cleanup; matching new-head CI and
+Claude review remain integration gates.
+The bounded implementation and synchronized-reference commit is
+`cc0900bca0c8f4943bb064cb0d4bb21cad25dfdc`; complete local evidence does not replace fresh
+pushed-head CI.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete

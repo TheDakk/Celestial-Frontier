@@ -54,6 +54,9 @@ the archive verbatim and refresh this handoff in place.
   [`31870103561`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31870103561): v2-smoke
   stopped in the shared browser launcher selftest before gameplay, so it is not a certifying head and
   must not be retried unchanged.
+- Bounded instrument repair commit `cc0900bca0c8f4943bb064cb0d4bb21cad25dfdc` separates monotonic
+  startup/socket/command timing and contains the complete controlled cleanup repair plus synchronized
+  references. Its local evidence is green; fresh pushed-head CI remains the certification boundary.
 
 ### Active F1b UI-P1 contract
 
@@ -111,8 +114,8 @@ the archive verbatim and refresh this handoff in place.
 
 ### Next actions
 
-1. Commit and push the independently audited bounded instrument repair to draft PR #26. Do not retry
-   run `31870103561`.
+1. Push the independently audited bounded instrument repair and this handoff update to draft PR #26.
+   Do not retry run `31870103561`.
 2. Require fresh exact-head CI; only then request Claude review of
    the new exact head. Resolve only actionable findings on the same branch.
 3. Merge only a reviewed, terminal-green exact head under Nick's standing authority; monitor the
@@ -124,13 +127,14 @@ the archive verbatim and refresh this handoff in place.
 
 **Current side:** OpenAI/Codex on macOS, `openai/mac`, based on clean merge
 `bd49beb0693b45fdd57d4acad746ade79843a91e`. Bounded UI-P1 implementation commit
-`d6ccb9b810fc644437ed205e4f6dbed7974cdba1` is pushed with synchronized docs/tests. The current
-working tree additionally contains only the bounded browser socket-phase instrument repair and its
-current references; resolve its eventual commit and checks live.
+`d6ccb9b810fc644437ed205e4f6dbed7974cdba1` is pushed with synchronized docs/tests. Bounded browser
+socket-phase repair commit `cc0900bca0c8f4943bb064cb0d4bb21cad25dfdc` is locally committed with
+green local gates and synchronized references; this handoff-only status transition follows it.
 
 **GitHub step:** draft PR [#26](https://github.com/TheDakk/Celestial-Frontier/pull/26) targets
 `develop` from `openai/mac`. Its old exact head and run `31870103561` remain red history. Push a new
-repair head, then require Claude review and matching terminal-green CI. Do not reuse or edit merged
+head containing repair commit `cc0900bca0c8f4943bb064cb0d4bb21cad25dfdc`, then require Claude
+review and matching terminal-green CI. Do not reuse or edit merged
 PR #25 and do not copy files into an Anthropic worktree.
 
 **PR details:**
