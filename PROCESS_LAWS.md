@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-13. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-15. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -148,6 +148,17 @@ action. Refill code must preserve that owner without seating a second control; g
 reject duplicate, detached, upper-left, and off-surface Close actions. Desktop notifications and
 Settings/Records share the bottom-right utility edge; balanced padding, row separators, and borders
 belong to the same presentation contract, not optional polish that may regress independently.
+
+⚠ **A DISMISS MANAGER READS DECLARED NON-MODAL CHROME BOUNDARIES, NOT A SECOND ID LIST.** Flex/grid
+spacing inside an interactive chrome root belongs to that root; it is not empty sky merely because the pointer
+missed a child button. Panel content and registered openers remain manager-owned, while stable
+non-dismiss chrome declares one generic boundary marker at its actual root. Prove the reported
+geometry with real-browser pointer input and exact `elementFromPoint`: both desktop rail gaps keep the
+active panel open, removing either marker recreates dismissal, temporarily marking the same canvas
+point prevents dismissal, and restoring genuine unmarked sky closes. Deliberately outside actions
+such as Search remain outside until their coexistence policy changes. Delegated document handlers
+must also reject non-`Element` targets before calling `closest`; a type assertion is not a runtime
+guard. True modals remain a separate lifecycle and are not claimed by this boundary law.
 
 ---
 

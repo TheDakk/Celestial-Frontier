@@ -1487,6 +1487,19 @@ duplicates).
   product failure. That exact clean commit closes D-SAVE-2; later prior clean source `46fb627`
   closes the local implementation/evidence side of D-SAVE-3. Live Git/PR checks decide exact
   tip/upstream/check state, and whichever final pushed tip is selected requires matching CI.
+- ★ **D-UI-8 — declared chrome, not selector exceptions, owns outside dismissal
+  (2026-08-15).** The ported panel manager protected left-rail spacing through a literal
+  `#raillft` exception but omitted the structurally identical `#railrgt`; a real pointer in the
+  latter's 8px flex gap therefore closed an unrelated active panel and restored focus unexpectedly.
+  Stable non-dismiss roots now self-declare `data-panel-boundary`, while registered panels/openers
+  retain element-identity ownership and Search deliberately retains its parity outside-dismiss
+  behavior. Real-CDP smoke opens opposite-side panels with browser-mouse input, hit-tests the
+  exact root-owned gap in both rails, preserves panel/ARIA state, removes each marker independently
+  to recreate dismissal, and proves that temporarily owning then unowning the same canvas point
+  distinguishes chrome from genuine empty sky. Synthetic document-target `pointerdown` and `click`
+  also remain quiet because both delegated handlers now runtime-guard `Element` before `closest`.
+  This closes UI-P1 dismissal classification only; UI-P2/P3/P4, layered coexistence, Training
+  allow-scope, modal lifecycle and Escape ownership remain open.
 - ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
   the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson

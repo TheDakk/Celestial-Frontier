@@ -1,7 +1,8 @@
 /* panels.ts — THE PANEL MANAGER (UI_PRESENTATION's one-panel law, main.js
    ~16019): opening one panel closes the rest · every rail panel wears a
    corner ✕ seated FIRST and STICKY · a tap on empty space closes whatever
-   is open (unless the tap is inside a panel, on its button, or on a modal).
+   is open (unless the tap is inside a panel, on its button, on a modal, or
+   inside declared non-dismiss chrome).
    DOM-only — no game state in here; main.ts registers and fills. */
 
 export interface PanelDef {
@@ -14,6 +15,10 @@ export interface PanelDef {
 
 const PANELS: PanelDef[] = [];
 const MODAL_SEL = '#importsheet';   /* true modals stand apart from the law */
+/* Fixed and dynamic non-dismiss chrome declares this ownership on its own
+   root. Search intentionally remains outside this set until the later panel-
+   coexistence/Escape policy decides otherwise; true modals stay separate. */
+const PANEL_BOUNDARY_SEL = '[data-panel-boundary]';
 
 export function registerPanel(def: PanelDef): void {
   PANELS.push(def);
@@ -118,16 +123,19 @@ export function openPanelId(): string | null {
 
 /* tap-empty-to-close + the delegated corner ✕ (main.js 16056/16070) */
 document.addEventListener('pointerdown', (e) => {
-  const t = e.target as HTMLElement;
+  const t = e.target;
+  if (!(t instanceof Element)) return;
   if (t.closest(MODAL_SEL)) return;
   for (const p of PANELS) {
     if (p.el.contains(t)) return;
     for (const b of p.btns || []) if (b && b.contains(t)) return;
   }
-  if (t.closest('#dock') || t.closest('#survey') || t.closest('#topbar') || t.closest('#raillft')) return;
+  if (t.closest(PANEL_BOUNDARY_SEL)) return;
   closePanels();
 });
 document.addEventListener('click', (e) => {
-  const x = (e.target as HTMLElement).closest('[data-pnx]');
+  const target = e.target;
+  if (!(target instanceof Element)) return;
+  const x = target.closest('[data-pnx]');
   if (x) closePanels();
 });

@@ -864,7 +864,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
         '♿ ACCESSIBILITY IS PART OF THE SHELL: Text size, text tone, font, panel tint, visible focus, forced-colors treatment, minimum 44-pixel actions, named controls, focus restoration, and true reduced-motion behavior are built into the live surfaces.',
         '🧪 BUILD IDENTITY STAYS IN THE GUIDE: The development page shows Celestial Frontier v2.0 plus its full source commit inside the Guide, without covering the playable sky with a floating DEV badge.',
         '🔔 UTILITIES STAY IN THEIR CORNER: Desktop notifications rise above the measured bottom-right dock edge, and Settings and Records open from that same utility anchor with balanced spacing, dividers, radii, and inset borders.',
-        '✕ ONE SURFACE, ONE CLOSE: Every panel and Survey card owns exactly one 44-pixel top-right Close action; refilling a card cannot duplicate it, detach it to the upper-left, or strand keyboard focus behind a hidden surface.',
+        '✕ ONE SURFACE, ONE CLOSE: Every panel and Survey card owns exactly one 44-pixel top-right Close action; refilling a card cannot duplicate it, detach it to the upper-left, or strand keyboard focus behind a hidden surface. Spacing inside either desktop rail belongs to that command deck and leaves the active panel open; a genuine empty-sky press still dismisses it.',
         '🖥 SHARP WHERE IT COUNTS, RESPONSIVE WHERE IT HURTS: Native backing is preserved through UHD, while larger displays use a deterministic capped tier that keeps the live scene answerable without allocating two full-resolution 8K canvases.',
       ]),
     }),

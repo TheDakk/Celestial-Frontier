@@ -1,11 +1,14 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **Status:** comprehensive planning baseline, created 2026-08-14.
+> **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
+> 2026-08-15.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
-> integrated in `develop` at merge `a1dabdeb4059292d67d7a89652e92fb317d750c7`. The Charter
-> SCN-1/SCN-2/SCN-6 slice is the active F1b batch; later F1b slices and product batches remain planned.
+> integrated in `develop` at merge `a1dabdeb4059292d67d7a89652e92fb317d750c7`; Charter
+> SCN-1/SCN-2/SCN-6 is integrated at merge `bd49beb0693b45fdd57d4acad746ade79843a91e`.
+> UI-P1 registered panel-chrome dismissal is the active F1b batch; later F1b slices and product
+> batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -216,15 +219,17 @@ already-landed Mercury, exact progress/reward/reach preservation, matched unpowe
 powered-incomplete controls, immediate Share→completion replacement, IndexedDB/reload, and a separate
 desktop open-panel refill. Clean exact commit `ce6ef639057944447da631bcced74a70da2750cc` passed the full
 298-pass/1-skipped unit suite, both TypeScript configurations, unused-art audit, real-browser smoke,
-glass selftest and all 12 viewport classes. Draft PR
+glass selftest and all 12 viewport classes. PR
 [#25](https://github.com/TheDakk/Celestial-Frontier/pull/25) test-battery run
 [`31813881697`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31813881697) independently
 passed v2 static, root gates, one-attempt smoke, 12-viewport glass, same-commit persona/preview and the
-final battery join at that SHA. Claude review and terminal CI on the eventual instrument-repair head
-remain integration gates. Epoch, lifted declaration/runtime, audio pre-init and right-rail work remain
-separate F1b batches.
+final battery join at that SHA. Claude's exact-diff review was resolved and the final instrument-
+repair head `a0ee7666f5fb1edf22a0035acfeb7df1beebefe9` passed test-battery run
+[`31858641826`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31858641826). PR #25 then
+merged normally at `bd49beb0693b45fdd57d4acad746ade79843a91e`. Epoch, lifted
+declaration/runtime and audio pre-init remain separate F1b batches.
 
-**PR #25 final-head CI instrument note (2026-08-14):** the following evidence-only PR head
+**PR #25 final-head CI instrument note (updated 2026-08-15):** the following evidence-only PR head
 `a5896dc9a5e98c0f2037bb1cb16905b74e48feb1` did not invalidate
 that Charter evidence: run `31815658572` passed static, root, and full glass jobs, then v2 smoke
 stopped inside the shared browsercdp selftest before gameplay. Its injected WebSocket-timeout case
@@ -232,7 +237,26 @@ had launched real Chrome and could therefore reject on the earlier 10-second col
 bounded correction isolates that control behind one deterministic portable Node child and a valid
 owned endpoint, while only the following live provenance launch receives 30 seconds; the generic
 15-second default, later warm 10-second launch, command/shutdown bounds, and no-retry law remain.
-Matching fixed-head CI and exact-diff review remain integration gates.
+The repaired final head and review completed as recorded above. The exact merge then passed
+`develop` test-battery run
+[`31867609188`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31867609188); mapped
+publication run [`31868417305`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31868417305)
+served development build `develop-bd49beb0693b` with that full source SHA. Production remained
+skipped and unchanged.
+
+**F1b UI-P1 implementation record (2026-08-15, active bounded candidate):** the ported outside-
+dismiss handler used a literal left-rail exception but omitted the identical right rail, so a real
+pointer in its rendered 8px flex gap closed the active panel. Registered panel roots/openers retain
+element identity; stable top-bar, dock, Survey and rail chrome now self-declare one generic
+`data-panel-boundary`. Search deliberately retains its parity outside-dismiss/focus behavior, and
+modal, Training, coexistence and Escape policy are unchanged. A test-first real-CDP run failed on
+the exact right-gap close, missing boundary inventory, asymmetric left/right removal controls,
+non-Element document targets and an ignored owned-canvas control. With the repair restored, all
+298 tests/1 skip, both TypeScript programs and the complete one-attempt browser smoke pass: both
+browser-mouse rail gaps preserve panel/ARIA state, independently removing either marker recreates close,
+owned versus genuine-empty canvas points discriminate in both directions, and delegated pointer/
+click handlers fail closed on non-`Element` targets. Exact committed-head CI and independent review
+remain integration gates for this candidate; this record does not close the broader UI preparation.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete
@@ -857,6 +881,11 @@ Each player-visible arc updates in the same batch:
 - stale-wording negative control plus browser proof of rendered wording and real outcome.
 
 No planned system is advertised as live, and no live system is silently absent from the Guide.
+Outside-dismiss behavior also belongs to this law: panel content/openers use manager identity,
+stable non-dismiss chrome declares one root boundary, both desktop rail gaps receive browser-mouse
+hit-test/removal controls, and genuine unmarked canvas still closes. Do not infer preservation from
+`.glass`, ARIA role, or broad top chrome—Search intentionally remains an outside action until the
+later coexistence/Escape decision.
 
 ### 9.3 Performance, lifecycle, and evidence discipline
 

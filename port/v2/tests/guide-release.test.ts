@@ -301,6 +301,8 @@ describe('legacy and v2 release channels', () => {
       /TypeScript and Pixi v2 development build/,
       /Star Atlas, read-only Compendium, Records, Charters, Settings, Field Training/,
       /exactly one 44-pixel top-right Close action/,
+      /Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/,
+      /a genuine empty-sky press still dismisses it/,
       /bottom-right dock edge/,
       /CF1 addresses preserve galaxy, star, planet, coordinates/,
       /Six real lessons/,
@@ -358,6 +360,30 @@ describe('legacy and v2 release channels', () => {
       )),
     }));
     expect(bulletinOutcome(missingRequired).required).toBe(false);
+    const missingCloseContract = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'exactly one 44-pixel top-right Close action',
+        'Close-action outcome removed',
+      )),
+    }));
+    expect(bulletinOutcome(missingCloseContract).required).toBe(false);
+    const missingRailBoundary = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'leaves the active panel open',
+        'rail preservation outcome removed',
+      )),
+    }));
+    expect(bulletinOutcome(missingRailBoundary).required).toBe(false);
+    const missingEmptySky = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'a genuine empty-sky press still dismisses it',
+        'empty-sky dismissal outcome removed',
+      )),
+    }));
+    expect(bulletinOutcome(missingEmptySky).required).toBe(false);
     const injectedOverclaim = V2_DRAFT_RELEASE.sections.map((section, sectionIndex) => ({
       category: section.category,
       bullets: section.bullets.map((bullet, bulletIndex) => (
