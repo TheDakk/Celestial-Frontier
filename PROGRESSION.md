@@ -1,6 +1,6 @@
 # Celestial Frontier — Player Progression
 
-> **2026-08-13 v2 next-arc overlay — approved design, not current implementation:**
+> **2026-08-14 v2 overlay — CURRENT versus PLANNED:**
 > The current v2 slice preserves imported Cargo/items/equipment/technology/Ascent data and
 > uses built drive items plus compatible `ascCh` state for reach, but it has no Cargo,
 > Shipyard, crafting, research, upgrade actions or ship portrait. The Charter board and
@@ -9,9 +9,11 @@
 > honest boundary without gaining a drive, chapter, reward or reach tier. A **nonterminal**
 > saved chapter index never stands in for a missing drive; the explicit terminal legacy/veteran
 > fallback (`ascCh >= ASC_CHAPTER_COUNT`) still grants stage 3 even when item bytes are absent.
-> Only a real newly banked landfall can
-> advance an already canonical, drive-backed imported record. Only live goal writers may be
-> presented as actionable progression while those systems remain absent. Legacy v1.8.9 does
+> Only a world’s first landing banks new landfall progress. Any successful Land action can
+> reconcile every consecutive already-complete imported chapter proved by one stable saved
+> reach stage, even when its landfall counters were saturated; incomplete or unpowered records
+> remain unchanged, and reconciliation creates no progress, drive, reward or reach. Only live goal
+> writers may be presented as actionable progression while those systems remain absent. Legacy v1.8.9 does
 > contain an additive deterministic ship picture; it is not a live v2 surface and does not
 > satisfy the approved distinct-silhouette target.
 >
@@ -63,7 +65,7 @@
 > replay may still receive its lesson event without receiving progression credit.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-30; the dated v2 overlays
-match `port/v2` and the approved next-arc boundary as of 2026-08-13. See the 2026-07-30 addendum at the end —
+match `port/v2` and the approved next-arc boundary as of 2026-08-14. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy

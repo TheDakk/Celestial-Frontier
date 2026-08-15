@@ -113,6 +113,42 @@ const MALFORMED_C2_REACH_RAW = (() => {
   save.ascp = {};
   return JSON.stringify(save);
 })();
+const SATURATED_CHARTER_PROGRESS = Object.freeze({
+  'c1-land': 2, 'c1-mine': 8, 'c1-part': 4, 'c1-comp': 2, 'c1-jump': 1,
+  'c2-land': 3, 'c2-scan': 2, 'c2-conq': 1, 'c2-array': 1,
+  'c3-breed': 1, 'c3-gear': 2, 'c3-mine': 20, 'c3-ig': 1,
+});
+const INCOMPLETE_CHARTER_PROGRESS = Object.freeze({
+  ...SATURATED_CHARTER_PROGRESS,
+  'c1-mine': 7,
+});
+const charterFixtureRaw = (powered, progress = SATURATED_CHARTER_PROGRESS, label = null) => {
+  const save = JSON.parse(VETERAN_RAW);
+  save.me = label || (powered ? 'Reach-Backed Charter' : 'Unpowered Charter Control');
+  save.asc = 0;
+  save.ascp = { ...progress };
+  save.items = (Array.isArray(save.items) ? save.items : [])
+    .filter(([id]) => !['jumpdrive', 'array', 'igdrive'].includes(id));
+  if (powered) save.items.push(['jumpdrive', 1], ['array', 1], ['igdrive', 1]);
+  save.land = [131];
+  /* Export deliberately unions conquered/mined worlds into `land`. Keep this
+     fixture ownership-free so an unchanged re-land has one exact byte-level
+     membership contract rather than mistaking that canonical union for a bug. */
+  save.conq = [];
+  save.minedw = [];
+  save.mx = [];
+  save.view = {
+    type: 'star',
+    gal: { ...save.view.gal },
+    star: { x: 560, y: 170, seed: 424242 },
+  };
+  return JSON.stringify(save);
+};
+const SATURATED_CHARTER_RAW = charterFixtureRaw(true);
+const UNPOWERED_SATURATED_CHARTER_RAW = charterFixtureRaw(false);
+const POWERED_INCOMPLETE_CHARTER_RAW = charterFixtureRaw(
+  true, INCOMPLETE_CHARTER_PROGRESS, 'Powered Incomplete Charter Control',
+);
 const SPARSE_V4_RAW = JSON.stringify({ v: 4, epoch: 0, codex: [], land: [] });
 const PARTIAL_V4_RAW = JSON.stringify({
   v: 4, epoch: 0, view: null, codex: [], land: [], items: [], log: [],
@@ -884,6 +920,37 @@ try {
     || !/imported\/current HP/i.test(hpGuide.text) || /Not yet available in v2/.test(hpGuide.text)) {
     fails.push('GUIDE HP boundary did not render the live read-only meter honestly: ' + JSON.stringify(hpGuide));
   }
+  /* Charter recovery changes player-facing Guide truth, so prove both affected
+     topics render the action contract. Pure content lookup cannot establish
+     that fillGuide actually placed the revised body in the live panel. */
+  const renderedCharterGuideCheck = (expectedTitle) => `(()=>{ const panel=document.getElementById('guidepanel'),article=panel?.querySelector('.guide-topic'),
+    text=article?.textContent||'',title=article?.querySelector('h4')?.textContent?.trim()||'',
+    status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null;
+    const stale=/only Charter outcome this slice writes|requires (?:a )?(?:real )?(?:newly )?banked landfall|only after a newly changed/i.test(text);
+    return {ok:title.includes(${JSON.stringify(expectedTitle)})&&status==='partial'&&/only new Charter goal progress/i.test(text)&&/successful Land action/i.test(text)
+      &&/every consecutive imported chapter/i.test(text)&&/saved reach stage/i.test(text)&&/invents no/i.test(text)&&!stale,
+      title,status,stale,text};})()`;
+  const renderCharterGuideTopic = async (topic, query, expectedTitle) => evalIn(`(()=>{ const input=document.getElementById('guidesearch');
+    input.value=${JSON.stringify(query)};input.dispatchEvent(new Event('input',{bubbles:true}));
+    document.querySelector('[data-guide-topic=${JSON.stringify(topic)}]')?.click();return ${renderedCharterGuideCheck(expectedTitle)};})()`);
+  const chartersGuide = await renderCharterGuideTopic('charters', 'charters', 'Expedition Charters');
+  const ascentGuideIdentityCtl = await evalIn(renderedCharterGuideCheck('Chapters'));
+  if (ascentGuideIdentityCtl.ok || !/Expedition Charters/.test(ascentGuideIdentityCtl.title)) {
+    fails.push('GUIDE ASCENT IDENTITY CONTROL FAILED — leaving the prior Charter article in place stayed green: '
+      + JSON.stringify(ascentGuideIdentityCtl));
+  }
+  const ascentGuide = await renderCharterGuideTopic('ascent', 'ascent', 'Chapters');
+  if (!chartersGuide.ok || !ascentGuide.ok) {
+    fails.push('GUIDE Charter/Ascent recovery contract did not render in both live topics: '
+      + JSON.stringify({ chartersGuide, ascentGuide }));
+  }
+  const charterGuideStaleCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
+    marker=document.createElement('p');marker.textContent='First landfall banks live; it is the only Charter outcome this slice writes.';
+    article?.appendChild(marker);const result=${renderedCharterGuideCheck('Chapters')};marker.remove();return result;})()`);
+  if (charterGuideStaleCtl.ok || !charterGuideStaleCtl.stale) {
+    fails.push('GUIDE CHARTER COPY CONTROL FAILED — injected pre-recovery wording stayed current: '
+      + JSON.stringify(charterGuideStaleCtl));
+  }
   const releaseBaseline = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state();
     return {rnSeen:s.rnSeen,releasePending:s.releasePending}; })()`);
   if (releaseBaseline.rnSeen !== '0' || releaseBaseline.releasePending !== null) {
@@ -899,22 +966,31 @@ try {
   }
   const releaseDraftCheck = `(()=>{ const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel'),article=panel?.querySelector('.guide-topic');
     const headings=article?[...article.querySelectorAll('h5')].map((row)=>row.textContent?.trim()||''):[];
-    const bullets=article?[...article.querySelectorAll('li')].map((row)=>row.textContent?.trim()||''):[];
+    const bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((row)=>row.textContent?.trim()||'');
     const text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),title=article?.querySelector('[data-guide-heading]')?.textContent||'';
+    const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
+      recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
+      headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
+      firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),
+      charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes';
     const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
     return {title,identity:title.includes('v2.0 · A New Foundation'),
       status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,headings,bulletCount:bullets.length,
-      populated:bullets.length===43&&bullets.every((bullet)=>bullet.length>0),
+      populated:bullets.length===44&&bullets.every((bullet)=>bullet.length>0),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
-      complete:/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)&&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text),
+      complete:charterPlacement&&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
+        &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
+        &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
+        &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text),
+      charterPlacement,firstHeading,recoveryHeading,
       honest:!overclaim&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
       authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
   const releaseDraft = await evalIn(releaseDraftCheck);
   if (!releaseDraft.identity || releaseDraft.status !== 'draft'
-    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 43 || !releaseDraft.complete
+    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 44 || !releaseDraft.complete
     || !releaseDraft.honest || !releaseDraft.authority || releaseDraft.releasePending !== releaseBaseline.releasePending
     || releaseDraft.rnSeen !== releaseBaseline.rnSeen) {
     fails.push('GUIDE v2.0 development bulletin is incomplete or changed shipped-release state: '
@@ -929,7 +1005,7 @@ try {
   const releaseInventoryCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][12];
     if(!row)return {populated:true,error:'missing control row'};const parent=row.parentNode,next=row.nextSibling;row.remove();const result=${releaseDraftCheck};
     parent.insertBefore(row,next);return result; })()`);
-  if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 42) {
+  if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 43) {
     fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet stayed complete: ' + JSON.stringify(releaseInventoryCtl));
   }
   const releaseCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
@@ -937,6 +1013,22 @@ try {
     const prior=row.textContent;row.textContent='Required player outcome removed';const result=${releaseDraftCheck};row.textContent=prior;return result; })()`);
   if (releaseCopyCtl.complete) {
     fails.push('GUIDE RELEASE CONTROL FAILED — removing a required v2.0 outcome stayed complete: ' + JSON.stringify(releaseCopyCtl));
+  }
+  const releaseCharterCopyCtl = await evalIn(`(()=>{ const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
+    first=rows.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
+    recovery=rows.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||''));
+    if(!first||!recovery||first===recovery)return {first:{complete:true},recovery:{complete:true},placement:{complete:true},error:'missing/distinct Charter release rows'};
+    const firstText=first.textContent,recoveryText=recovery.textContent,recoveryParent=recovery.parentNode,recoveryNext=recovery.nextSibling;
+    first.textContent='First-landfall contract removed';const firstResult=${releaseDraftCheck};first.textContent=firstText;
+    recovery.textContent='Imported recovery contract removed';const recoveryResult=${releaseDraftCheck};recovery.textContent=recoveryText;
+    first.parentNode.appendChild(recovery);const placementResult=${releaseDraftCheck};recoveryParent.insertBefore(recovery,recoveryNext);
+    return {first:firstResult,recovery:recoveryResult,placement:placementResult,
+      restored:first.textContent===firstText&&recovery.textContent===recoveryText&&recovery.parentNode===recoveryParent};})()`);
+  if (releaseCharterCopyCtl.first.complete || releaseCharterCopyCtl.recovery.complete
+    || releaseCharterCopyCtl.placement.complete || releaseCharterCopyCtl.placement.charterPlacement
+    || !releaseCharterCopyCtl.restored) {
+    fails.push('GUIDE RELEASE CHARTER CONTROL FAILED — changed Charter statements were not both required: '
+      + JSON.stringify(releaseCharterCopyCtl));
   }
   const releaseVersionCtl = await evalIn(`(()=>{ const heading=document.querySelector('#guidepanel .guide-topic [data-guide-heading]');
     if(!heading)return {identity:true,error:'missing release heading'};const prior=heading.textContent;heading.textContent=prior.replace('v2.0','v2x0');
@@ -2697,7 +2789,262 @@ try {
     fails.push('MALFORMED CHAPTER REACH CONTROL FAILED — injected non-Sol goal stayed green: '
       + JSON.stringify(malformedProjectionCtl));
   }
+
+  /* A reach-backed imported chapter can already be canonically complete while
+     every landfall counter is saturated. Re-land a real, already-landed world
+     through the real-browser emulated-phone touch action: chapter recovery must run independently
+     of new banking, advance every consecutive completion, persist, and reload
+     without adding a landfall or touching the progress/reward ledgers. Matched
+     no-reach and powered-incomplete fixtures control entitlement and completeness. */
+  const charterRewardLedger = (state) => JSON.stringify({
+    reach: state.reach,
+    essence: state.save.essence,
+    items: state.save.items,
+    cargo: state.save.cargo,
+    cgx: state.save.cgx,
+    stats: state.save.stats,
+    journal: state.save.journal,
+    claimedSets: state.save.claimedSets,
+    techOwned: state.save.techOwned,
+    unlocked: state.save.unlocked,
+    primeFill: state.save.primeFill,
+    frontierUnlocked: state.save.frontierUnlocked,
+    chWeek: state.save.chWeek,
+    chProg: state.save.chProg,
+    chacc: state.save.chacc,
+    chDone: state.save.chDone,
+  });
+  const charterRelandOutcome = (state, baseline, expectedChapter, expectedStage) =>
+    state.mode === 'surface' && state.planet === 131
+      && state.stage === expectedStage && state.save.ascCh === expectedChapter
+      && JSON.stringify(state.save.landed) === baseline.landed
+      && JSON.stringify(state.save.ascProg) === baseline.ascProg
+      && charterRewardLedger(state) === baseline.rewards;
+  const reachBackedCharterReland = async (
+    raw, expectedProgress, expectedChapter, expectedStage, label,
+  ) => {
+    const importToken = await sliceToken(navPh);
+    try { await evalNavPh(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(raw)})`); }
+    catch { /* successful import replaces the document */ }
+    await waitForSlice(navPh, `${label} import`, { previousToken: importToken });
+    await waitNavPhValue(`${label} system restore`, `(()=>{ const s=window.__CF_SLICE__.api.state();
+      return s.mode==='system'&&s.star===424242?s:null; })()`);
+    /* Let the replacement document settle; the powered leg deliberately fires
+       a fresh Share notice immediately before Land to prove reconciliation can
+       replace an adjacent ambient outcome instead of being swallowed. */
+    await sleep(2000);
+    const imported = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+    const baseline = {
+      landed: JSON.stringify(imported.save.landed),
+      ascProg: JSON.stringify(imported.save.ascProg),
+      rewards: charterRewardLedger(imported),
+    };
+    if (imported.save.ascCh !== 0 || imported.stage !== expectedStage
+      || baseline.landed !== JSON.stringify([131])
+      || baseline.ascProg !== JSON.stringify(expectedProgress)) {
+      fails.push(`${label}: imported saturated Charter fixture did not retain its exact starting record: `
+        + JSON.stringify(imported));
+    }
+
+    const surveyed = await evalNavPh(`window.__CF_SLICE__.api.surveyOn(0)`);
+    const landAction = await evalNavPh(phoneCardActionCheck('landcta'));
+    if (!surveyed || !landAction.ok || !/Land/.test(landAction.label)) {
+      fails.push(`${label}: real already-landed Mercury card did not expose a reachable Land action: `
+        + JSON.stringify({ surveyed, landAction }));
+      return;
+    }
+    if (expectedChapter === 3) {
+      const missingAction = await evalNavPh(`(()=>{ const button=document.querySelector('#survey [data-act="landcta"]');
+        button.removeAttribute('data-act');const result=${phoneCardActionCheck('landcta')};
+        button.setAttribute('data-act','landcta');return result;})()`);
+      if (missingAction.ok || missingAction.why !== 'missing') {
+        fails.push(`${label} ACTION CONTROL FAILED — injected missing Land action stayed green: `
+          + JSON.stringify(missingAction));
+      }
+      const buriedAction = await evalNavPh(`(()=>{ const button=document.querySelector('#survey [data-act="landcta"]'),prior=button.style.pointerEvents;
+        button.style.pointerEvents='none';const result=${phoneCardActionCheck('landcta')};
+        button.style.pointerEvents=prior;return result;})()`);
+      if (buriedAction.ok) {
+        fails.push(`${label} ACTION CONTROL FAILED — injected buried Land action stayed green: `
+          + JSON.stringify(buriedAction));
+      }
+    }
+    const beforeTouch = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+    if (beforeTouch.mode !== 'system' || beforeTouch.save.ascCh !== 0
+      || JSON.stringify(beforeTouch.save.landed) !== baseline.landed
+      || JSON.stringify(beforeTouch.save.ascProg) !== baseline.ascProg
+      || charterRewardLedger(beforeTouch) !== baseline.rewards
+      || beforeTouch.toastSerial !== imported.toastSerial) {
+      fails.push(`${label}: Survey/card-open changed Charter or reward state before the Land touch: `
+        + JSON.stringify({ imported, beforeTouch }));
+    }
+    let beforeLand = beforeTouch;
+    if (expectedChapter === 3) {
+      const adjacentShare = await evalNavPh(`(async()=>{ let copied='';
+        Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:(value)=>{copied=String(value);return Promise.resolve();}}});
+        document.querySelector('#survey [data-act="share"]')?.click();await new Promise((resolve)=>setTimeout(resolve,30));
+        const state=window.__CF_SLICE__.api.state();delete navigator.clipboard;return {copied,state};})()`);
+      if (!adjacentShare.copied || !/Share code copied/i.test(adjacentShare.state.toastText)
+        || adjacentShare.state.toastSerial !== beforeTouch.toastSerial + 1
+        || adjacentShare.state.save.ascCh !== 0) {
+        fails.push(`${label}: real Share did not establish the adjacent-toast completion control: `
+          + JSON.stringify({ beforeTouch, adjacentShare }));
+      }
+      beforeLand = adjacentShare.state;
+    }
+    await touchNav(landAction.x, landAction.y);
+    const outcome = await waitNavPhValue(`${label} browser-touch re-land`, `(()=>{ const s=window.__CF_SLICE__.api.state();
+      return s.mode==='surface'&&s.planet===131?s:null; })()`);
+    if (!charterRelandOutcome(outcome, baseline, expectedChapter, expectedStage)) {
+      fails.push(`${label}: browser-touch re-land changed credit/rewards or failed the expected Charter recovery: `
+        + JSON.stringify({ baseline, outcome }));
+    }
+    if (expectedChapter === 3
+      && (!outcome.toastOn || outcome.toastSerial !== beforeLand.toastSerial + 1
+        || !/3 Charter chapters/i.test(outcome.toastText) || !/complete/i.test(outcome.toastText))) {
+      fails.push(`${label}: multi-chapter recovery did not replace the adjacent notice with one aggregate: `
+        + JSON.stringify({ beforeSerial: beforeLand.toastSerial, toastOn: outcome.toastOn,
+          toastSerial: outcome.toastSerial, toastText: outcome.toastText }));
+    }
+    if (expectedChapter === 0
+      && (outcome.toastSerial !== beforeLand.toastSerial || /Charter chapters?.*complete/i.test(outcome.toastText))) {
+      fails.push(`${label}: a no-advance control announced an unearned chapter completion: `
+        + JSON.stringify({ beforeSerial: beforeLand.toastSerial, toastSerial: outcome.toastSerial,
+          toastText: outcome.toastText }));
+    }
+    /* Predicate controls: the exact same observed outcome must reject both the
+       pre-fix no-advance state and a one-chapter-only implementation. */
+    for (const badAscCh of expectedChapter === 3 ? [0, 1] : [3]) {
+      const control = { ...outcome, save: { ...outcome.save, ascCh: badAscCh } };
+      if (charterRelandOutcome(control, baseline, expectedChapter, expectedStage)) {
+        fails.push(`${label} CONTROL FAILED — synthetic ascCh ${badAscCh} stayed green`);
+      }
+    }
+    const reachControl = { ...outcome, reach: outcome.reach + 1 };
+    const rewardControl = {
+      ...outcome,
+      save: { ...outcome.save, unlocked: [...outcome.save.unlocked, 'charter-control-reward'] },
+    };
+    if (charterRelandOutcome(reachControl, baseline, expectedChapter, expectedStage)
+      || charterRelandOutcome(rewardControl, baseline, expectedChapter, expectedStage)) {
+      fails.push(`${label} CONTROL FAILED — synthetic reach/reward mutation stayed green`);
+    }
+
+    const persisted = await waitNavPhValue(`${label} IndexedDB commit`, `(async()=>{
+      const raw=await (${READ_PRIMARY_EXPRESSION}),data=JSON.parse(raw);
+      return data.asc===${expectedChapter}&&data.view?.type==='planet'&&data.view?.pseed===131
+        ?{asc:data.asc,ascp:data.ascp,land:data.land,view:data.view}:null; })()`, 8000);
+    if (JSON.stringify(persisted.land) !== baseline.landed
+      || JSON.stringify(persisted.ascp) !== baseline.ascProg) {
+      fails.push(`${label}: persisted recovery changed landfall/progress bytes: `
+        + JSON.stringify({ baseline, persisted }));
+    }
+    await navigateToSlice(navPh, URL3, `${label} reload`);
+    const reloaded = await waitNavPhValue(`${label} reloaded surface`, `(()=>{ const s=window.__CF_SLICE__.api.state();
+      return s.mode==='surface'&&s.planet===131?s:null; })()`);
+    if (!charterRelandOutcome(reloaded, baseline, expectedChapter, expectedStage)) {
+      fails.push(`${label}: committed Charter recovery did not survive reload exactly: `
+        + JSON.stringify({ baseline, reloaded }));
+    }
+  };
+  await reachBackedCharterReland(
+    SATURATED_CHARTER_RAW, SATURATED_CHARTER_PROGRESS, 3, 3, 'SATURATED CHARTER RECOVERY',
+  );
+  await reachBackedCharterReland(
+    UNPOWERED_SATURATED_CHARTER_RAW, SATURATED_CHARTER_PROGRESS, 0, 0, 'UNPOWERED CHARTER CONTROL',
+  );
+  await reachBackedCharterReland(
+    POWERED_INCOMPLETE_CHARTER_RAW, INCOMPLETE_CHARTER_PROGRESS, 0, 3, 'INCOMPLETE CHARTER CONTROL',
+  );
+
   await send('Target.closeTarget', { targetId: tNav.targetId });
+
+  /* Desktop ordinary panels and Survey coexist. Use a desktop-owned target
+     from birth (changing CDP's mobile mode can reload a page), use browser-mouse
+     input to activate the visible rail, keep the board open during a browser-mouse
+     Land action, and require its DOM to refresh with ascCh. */
+  const tPanel = await send('Target.createTarget', { url: 'about:blank' });
+  const aPanel = await send('Target.attachToTarget', { targetId: tPanel.targetId, flatten: true });
+  const panelSession = aPanel.sessionId;
+  await send('Runtime.enable', {}, panelSession);
+  await send('Page.enable', {}, panelSession);
+  await send('Emulation.setDeviceMetricsOverride', {
+    width: 1280, height: 800, deviceScaleFactor: 1, mobile: false,
+  }, panelSession);
+  await navigateToSlice(panelSession, URL4, 'Charter desktop-panel boot');
+  const evalPanel = async (expr) => {
+    const r = await send('Runtime.evaluate', {
+      expression: expr, returnByValue: true, awaitPromise: true,
+    }, panelSession);
+    if (r.exceptionDetails) {
+      throw new Error('Charter desktop-panel eval threw: '
+        + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
+    }
+    return r.result.value;
+  };
+  const waitPanelValue = async (label, expr, timeoutMs = 6000) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = null;
+    while (Date.now() < deadline) {
+      last = await evalPanel(expr);
+      if (last) return last;
+      await sleep(50);
+    }
+    throw new Error(`${label} did not reach its desktop-panel outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  const panelImportToken = await sliceToken(panelSession);
+  try { await evalPanel(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(SATURATED_CHARTER_RAW)})`); }
+  catch { /* successful import replaces the document */ }
+  await waitForSlice(panelSession, 'CHARTER PANEL REFRESH import', { previousToken: panelImportToken });
+  await waitPanelValue('CHARTER PANEL REFRESH system + rail restore', `(()=>{ const s=window.__CF_SLICE__.api.state(),
+    rail=document.getElementById('railcharters'),r=rail?.getBoundingClientRect(),
+    x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,hit=r?document.elementFromPoint(x,y):null;
+    return innerWidth===1280&&innerHeight===800&&s.mode==='system'&&s.star===424242&&s.panelOpen===null&&rail&&r.width>0&&r.height>=44
+      &&getComputedStyle(rail).display!=='none'&&(hit===rail||rail.contains(hit))?{x,y,state:s}:null;})()`);
+  const railAction = await evalPanel(`(()=>{ const rail=document.getElementById('railcharters'),r=rail.getBoundingClientRect();
+    return {x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};})()`);
+  await send('Input.dispatchMouseEvent', {
+    type: 'mousePressed', x: railAction.x, y: railAction.y, button: 'left', clickCount: 1,
+  }, panelSession);
+  await send('Input.dispatchMouseEvent', {
+    type: 'mouseReleased', x: railAction.x, y: railAction.y, button: 'left', clickCount: 1,
+  }, panelSession);
+  await waitPanelValue('CHARTER PANEL REFRESH rail open', `window.__CF_SLICE__.api.state().panelOpen==='ch'`);
+  await evalPanel(`window.__CF_SLICE__.api.surveyOn(0)`);
+  const charterPanelCheck = `(()=>{ const state=window.__CF_SLICE__.api.state(),panel=document.getElementById('chpanel'),
+    text=panel?.textContent||'',record=panel?.querySelector('[data-sel="charter-ch"]');
+    return {ok:state.panelOpen==='ch'&&state.save.ascCh===3&&record?.getAttribute('data-chstate')==='complete'
+      &&/Charter record/.test(text)&&!/Chapter 1/.test(text),panelOpen:state.panelOpen,ascCh:state.save.ascCh,
+      state:record?.getAttribute('data-chstate')||null,text};})()`;
+  const panelBefore = await evalPanel(`(()=>{ const s=window.__CF_SLICE__.api.state(),panel=document.getElementById('chpanel');
+    return {panelOpen:s.panelOpen,ascCh:s.save.ascCh,text:panel?.textContent||'',land:${phoneCardActionCheck('landcta')}};})()`);
+  if (panelBefore.panelOpen !== 'ch' || panelBefore.ascCh !== 0 || !/Chapter 1/.test(panelBefore.text)
+    || !panelBefore.land.ok) {
+    fails.push('CHARTER PANEL REFRESH: desktop panel/Survey did not coexist before Land: '
+      + JSON.stringify(panelBefore));
+  } else {
+    await send('Input.dispatchMouseEvent', {
+      type: 'mousePressed', x: panelBefore.land.x, y: panelBefore.land.y, button: 'left', clickCount: 1,
+    }, panelSession);
+    await send('Input.dispatchMouseEvent', {
+      type: 'mouseReleased', x: panelBefore.land.x, y: panelBefore.land.y, button: 'left', clickCount: 1,
+    }, panelSession);
+    await waitPanelValue('CHARTER PANEL REFRESH browser mouse Land', `(()=>{ const s=window.__CF_SLICE__.api.state();
+      return s.mode==='surface'&&s.save.ascCh===3?s:null;})()`);
+    const panelAfter = await evalPanel(charterPanelCheck);
+    if (!panelAfter.ok) {
+      fails.push('CHARTER PANEL REFRESH: open board stayed on the pre-Land chapter: '
+        + JSON.stringify(panelAfter));
+    }
+    const stalePanelCtl = await evalPanel(`(()=>{ const panel=document.getElementById('chpanel'),prior=panel.innerHTML;
+      panel.innerHTML='<div data-sel="charter-ch" data-chstate="complete">Chapter 1 — stale</div>';
+      const result=${charterPanelCheck};panel.innerHTML=prior;return result;})()`);
+    if (stalePanelCtl.ok) {
+      fails.push('CHARTER PANEL REFRESH CONTROL FAILED — injected stale Chapter 1 board stayed green: '
+        + JSON.stringify(stalePanelCtl));
+    }
+  }
+  await send('Target.closeTarget', { targetId: tPanel.targetId });
 
   /* 4d2. THE RESOLUTION MATRIX (uilayout discipline, first slice tier):
      the geometry contract on tablet-portrait and a small phone too — the

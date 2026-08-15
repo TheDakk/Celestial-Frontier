@@ -71,9 +71,28 @@ export function primeReachHint(): string {
    for; it must never turn preserved legacy copy into a false player promise.
    ---- */
 export const SOL_SEEDS: ReadonlySet<number> = new Set([131, 132, 133, 134, 135, 136, 137, 138]);
-export interface AscGoal { id: string; ev: string; n: number; t: string; scope?: 'sol' | 'nonsol'; }
-export interface AscChapter { id: string; name: string; intro: string; goals: AscGoal[]; unlockNote: string; }
-export const ASC_CHAPTERS_DATA: readonly AscChapter[] = [
+export interface AscGoal {
+  readonly id: string;
+  readonly ev: string;
+  readonly n: number;
+  readonly t: string;
+  readonly scope?: 'sol' | 'nonsol';
+}
+export interface AscChapter {
+  readonly id: string;
+  readonly name: string;
+  readonly intro: string;
+  readonly goals: readonly AscGoal[];
+  readonly unlockNote: string;
+}
+function freezeAscChapter(chapter: AscChapter): AscChapter {
+  const goals = Object.freeze(chapter.goals.map((goal) => Object.freeze({ ...goal })));
+  return Object.freeze({ ...chapter, goals });
+}
+function freezeAscChapters(chapters: readonly AscChapter[]): readonly AscChapter[] {
+  return Object.freeze(chapters.map(freezeAscChapter));
+}
+export const ASC_CHAPTERS_DATA: readonly AscChapter[] = freezeAscChapters([
   {
     id: 'ch1', name: 'Chapter 1 — Off the Rock',
     intro: 'Sol is yours to learn — the rest of the sky is charts and longing. Mine the dead worlds, feed the Fabricator, and build the Jump Drive.',
@@ -108,13 +127,14 @@ export const ASC_CHAPTERS_DATA: readonly AscChapter[] = [
     ],
     unlockNote: 'The dark between galaxies is yours to cross — from here the Prime Codex Signatures extend the frontier, ring by ring.',
   },
-];
+]);
 
 /** ascEvent's banking rule for landfalls (main.js 22826 review catch):
     progress BANKS for every chapter from the current one on — a player who
     out-lands the current chapter must not lose the later credit. Mutates
     `prog` in place (the save's ascProg object); returns true if changed. */
 export function bankLandfall(ascCh: number, prog: Record<string, number>, planetSeed: number): boolean {
+  if (!Number.isInteger(ascCh) || ascCh < 0 || ascCh >= ASC_CHAPTERS_DATA.length) return false;
   let changed = false;
   for (let ci = ascCh; ci < ASC_CHAPTERS_DATA.length; ci++) {
     for (const g of ASC_CHAPTERS_DATA[ci]!.goals) {
@@ -135,9 +155,11 @@ export function chapterGoalsDone(ascCh: number, prog: Record<string, number>): b
   return ch.goals.every((g) => (prog[g.id] || 0) >= g.n);
 }
 
-/* The playable Phase-4 slice has one Charter writer: first landfall. Keep
-   that capability boundary in the pure scene layer so the board, objective
-   chip and chapter-advance seam cannot each make a different promise. The
+/* The playable Phase-4 slice has one NEW-GOAL writer: first landfall. Imported
+   chapter reconciliation may acknowledge already-proven progress, but creates
+   no goal credit, drive, reward, or reach. Keep that capability boundary in
+   the pure scene layer so the board, objective chip and chapter-advance seam
+   cannot each make a different promise. The
    full legacy data above is intentionally NOT rewritten or filtered in place:
    imported saves retain their canonical progress and can still gate reach. */
 export type V2CharterState = 'actionable' | 'boundary' | 'complete';
@@ -226,12 +248,42 @@ export function currentV2Objective(ascCh: number, prog: Record<string, number>, 
 }
 
 /**
- * The app calls this after a real landfall. It deliberately keeps canonical
- * completion as the authority: completing every currently visible live goal
- * is a boundary state, not a synthetic chapter completion or reach unlock.
+ * Canonical-completion eligibility retained for projections, reconciliation,
+ * and direct consumers. Completing every currently visible live goal is a
+ * boundary state, not a synthetic chapter completion or reach unlock.
  */
 export function canAdvanceV2Chapter(ascCh: number, prog: Record<string, number>, stage?: number): boolean {
   return projectV2Charter(ascCh, prog, stage)?.state === 'complete';
+}
+
+export interface V2CharterReconciliation {
+  readonly nextChapter: number;
+  readonly completed: readonly V2CharterProjection[];
+}
+
+/**
+ * Recover an imported expedition whose current chapter was already complete
+ * before this app observed a new landfall. One stable saved reach stage backs
+ * every transition; progress alone never manufactures reach. Invalid starting
+ * positions fail closed, and every consecutive canonical completion advances
+ * just as the mature app's chapter loop did.
+ */
+export function reconcileV2Chapters(
+  ascCh: number,
+  prog: Record<string, number>,
+  stage?: number,
+): V2CharterReconciliation | null {
+  if (!Number.isInteger(ascCh) || ascCh < 0 || ascCh > ASC_CHAPTER_COUNT) return null;
+  const savedStage = v2Stage(stage);
+  const completed: V2CharterProjection[] = [];
+  let nextChapter = ascCh;
+  while (nextChapter < ASC_CHAPTER_COUNT) {
+    const projection = projectV2Charter(nextChapter, prog, savedStage);
+    if (projection?.state !== 'complete') break;
+    completed.push(projection);
+    nextChapter++;
+  }
+  return Object.freeze({ nextChapter, completed: Object.freeze(completed) });
 }
 
 /** Canonical/legacy objective order, retained for parity and import audits.

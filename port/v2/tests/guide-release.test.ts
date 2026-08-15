@@ -157,14 +157,18 @@ describe('v2 Guide capability filter', () => {
     expect(determinism?.body).toContain('Shared timed events and creature duels');
     expect(determinism?.body).not.toContain('duels fair, and events shared');
     expect(getGuideTopic('ascent')?.availability).toBe('partial');
-    expect(getGuideTopic('ascent')?.body).toContain('First landfall banks live');
-    expect(getGuideTopic('ascent')?.body).toContain('never invents a chapter completion');
-    expect(getGuideTopic('ascent')?.body).toContain('saved drive items');
+    expect(getGuideTopic('ascent')?.body).toContain('first landing is the only new Charter goal progress');
+    expect(getGuideTopic('ascent')?.body).toContain('Any successful Land action');
+    expect(getGuideTopic('ascent')?.body).toContain('every consecutive imported chapter');
+    expect(getGuideTopic('ascent')?.body).toContain('invents no missing goal, drive, reward, or reach tier');
+    expect(getGuideTopic('ascent')?.body).toContain('saved reach stage');
     expect(getGuideTopic('ascent')?.body).toContain('Saved Prime Signatures');
-    expect(getGuideTopic('charters')?.body).toContain('First landfall banks live');
-    expect(getGuideTopic('charters')?.body).toContain('only Charter outcome this slice writes');
+    expect(getGuideTopic('charters')?.body).toContain('first landfall is the only new Charter goal progress');
+    expect(getGuideTopic('charters')?.body).toContain('After any successful Land action');
+    expect(getGuideTopic('charters')?.body).toContain('every consecutive imported chapter');
+    expect(getGuideTopic('charters')?.body).toContain('saved reach stage');
     expect(getGuideTopic('charters')?.body).not.toMatch(/mine|fabricat|shipyard/i);
-    expect(getGuideTopic('regions')?.body).toContain('saved drive stage');
+    expect(getGuideTopic('regions')?.body).toContain('saved reach stage');
     expect(getGuideTopic('regions')?.body).toContain('saved Prime Signature count');
     expect(getGuideTopic('achievements')?.availability).toBe('partial');
     expect(getGuideTopic('achievements')?.body).toContain('imported exploration counters');
@@ -300,8 +304,10 @@ describe('legacy and v2 release channels', () => {
       /bottom-right dock edge/,
       /CF1 addresses preserve galaxy, star, planet, coordinates/,
       /Six real lessons/,
+      /Only a world’s first landing banks the live landfall objective/,
       /no longer show a player-facing Spectral class row/,
       /primary chip and Charter board show only real landfall objectives/,
+      /Saturated veteran Charter records no longer wedge/,
       /All 56 v1 releases and 398 legacy bullets/,
       /successful develop push battery/,
       /mechanics that are not yet playable are labelled instead of promised/,
@@ -323,7 +329,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 43,
+        inventory: bullets.length === 44,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,

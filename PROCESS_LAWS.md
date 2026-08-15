@@ -739,6 +739,18 @@ A prior green browser step does not certify the next process's provenance. Do no
 of failure green with a retry, a longer startup bound, a fallback reorder, or by clearing the last
 diagnostic mentioned on stderr; repair the scope and require matching new-head CI.
 
+PR #25 exposed the same phase-ownership requirement inside the launcher selftest itself. Its
+WebSocket-open-timeout control first launched real Chrome and therefore could reject on a cold
+`DevToolsActivePort` startup timeout before the injected socket existed; run `31815658572`, v2-smoke
+job `94816585307`, failed in that earlier phase even though the same head's static, root, and glass
+jobs were green. A WebSocket-phase control must instead use a deterministic portable child behind a private launch
+seam, write one valid regular endpoint in the owned profile, and prove the short socket timeout,
+exactly one fixture launch, socket close, bounded child shutdown, and profile removal. The control
+must reject if the endpoint is absent or the injected socket is accepted. The selftest's following
+live provenance check is then its first real browser launch and may own the fixed 30-second
+cold-start allowance; the shared launcher default remains 15 seconds, its later warm launch remains
+10 seconds, command/shutdown bounds stay unchanged, and no retry or fallback is added.
+
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread
 `TransformProcessType` / `_RegisterApplication` SIGABRT within 100 ms of launch; the system log
