@@ -42,13 +42,18 @@
 > and accessibility lenses; it records clarity, agency, delight, meaningful choice,
 > attachment and fatigue—not retention pressure or engagement targets.
 >
-> **2026-08-13 v2 development overlay (matches the current `port/v2` contract):**
+> **2026-08-15 v2 development overlay (matches the current `port/v2` contract):**
 > Desktop notifications now rise from the bottom-right utility edge above the measured
 > dock; Settings and Records open from that same bottom-right anchor. Panel padding,
 > row spacing, dividers, corner radii and inset borders use one balanced glass grammar.
 > Every panel and Survey card owns exactly one 44px top-right Close action—refill code
 > preserves it, duplicate seating is removed, and no close control may detach to the
-> upper-left. Survey cards suppress the legacy **Spectral class** row. Planet rarity is
+> upper-left. Outside dismissal now reads one declarative boundary marker on the top bar,
+> dock, Survey and both desktop rails rather than a duplicated ID exception list. A real
+> pointer in either rendered 8px rail gap leaves the active panel and its ARIA state intact;
+> removing either marker recreates the close, while genuine unmarked canvas space still
+> dismisses. Search deliberately retains its established outside-dismiss/focus policy until
+> the later panel-coexistence/Escape decision. Survey cards suppress the legacy **Spectral class** row. Planet rarity is
 > absent before landing and appears afterward as a plain ten-tier rarity name; internal
 > deterministic spectral colors and real stellar G/K/M/remnant classifications remain.
 > Development identity appears only in the Guide as **Celestial Frontier v2.0
@@ -596,7 +601,7 @@
 > merge/release/deploy/version authority follows.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
-v2 overlay matches `port/v2` as of 2026-08-13. The addenda at the end preserve
+v2 overlay matches `port/v2` as of 2026-08-15. The addenda at the end preserve
 **THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
 its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
 full-screen surface, and any surface raised over training must clear the lesson

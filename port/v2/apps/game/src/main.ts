@@ -465,6 +465,7 @@ let sz0 = 0.40 * minWH() / SYS_R;
 const card = document.createElement('aside');
 card.id = 'survey';
 card.className = 'glass';
+card.dataset.panelBoundary = '';
 card.setAttribute('role', 'region');
 card.setAttribute('aria-label', 'Survey card');
 card.setAttribute('aria-hidden', 'true');

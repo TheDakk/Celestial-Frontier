@@ -4,7 +4,7 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 overlay matches code and live handoff as of 2026-08-14.**
+> **Current port/v2 overlay matches code and live handoff as of 2026-08-15.**
 > **2026-08-13 exploration/ship/loot/companion/audio review:** The executable v2
 > boundary remains the Phase-4 travel/survey slice. `apps/game/src/main.ts` renders the
 > read-only Compendium through `@cf/art/species`, consumes `@cf/domain-combatcore`
@@ -225,6 +225,13 @@
 > Each panel and Survey card owns exactly one top-right 44px Close action. On desktop,
 > notifications plus Settings and Records share the bottom-right utility edge; balanced
 > padding, separators and borders use the same glass geometry.
+> `panels.ts` retains element-identity ownership for registered panel roots/openers and reads
+> `data-panel-boundary` for non-dismiss chrome. The top bar, dock, Survey and both desktop rails
+> declare that metadata; Search intentionally does not. Real-CDP smoke hits the exact 8px gap in
+> each rail, requires the current panel/ARIA state to survive, removes each marker independently
+> to recreate dismissal, and proves the opposite direction on a hit-tested canvas point. Both
+> delegated document handlers reject non-`Element` targets before `closest`, restoring the legacy
+> event-boundary guard without changing modal, Training, Search or Escape policy.
 >
 > V2 now applies imported Text size / tone / font preferences, a contrast-safe
 > 0.82..0.98 glass floor, safe-area and measured dock/context/hint offsets,
