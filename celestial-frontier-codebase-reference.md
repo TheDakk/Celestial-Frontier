@@ -5,6 +5,16 @@
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 overlay matches code and live handoff as of 2026-08-15.**
+> **2026-08-15 F1b WorldGen contract overlay:** The byte-verbatim WorldGen body,
+> generated values, cache keys and call order are unchanged. Its typed surface
+> now exposes required own `GalaxyCellGalaxies.web` metadata and the exact
+> `SupernovaSite`/birth/remnant shape, with `supernovaSites`'s second parameter
+> documented as an epoch key rather than a requested count. The app consumes
+> those results without local casts. The facade also states the transitional
+> `GAL_SPRITES` precondition for a first uncached ordinary generated-galaxy
+> branch; `installCaptureHooks()` remains the current boot seam. This is
+> contract truth, not removal of the free-global dependency, D-HAZE, CF1/F2,
+> `_sanitizeSavedGenome` mutation, or F4 clock work.
 > **2026-08-13 exploration/ship/loot/companion/audio review:** The executable v2
 > boundary remains the Phase-4 travel/survey slice. `apps/game/src/main.ts` renders the
 > read-only Compendium through `@cf/art/species`, consumes `@cf/domain-combatcore`
@@ -1007,6 +1017,17 @@ etc.) are pure functions of position/seed.
 ---
 
 ## 4. World generation
+
+**Current v2 typed boundary (2026-08-15):** `galaxiesInCell` returns its
+memoized mutable galaxy array with required finite `[0,1]` `web` metadata, even
+when the array is empty. `supernovaSites(galaxySeed, epoch)` returns 1–3 typed
+sites, each with a typed `NS | shell | BH` remnant and 1–3 births; `epoch` is the
+deterministic cache/time key, not a count. A plain `number` cannot nominally
+prevent count misuse, so stronger epoch ownership remains F4. Import is safe,
+but an uncached ordinary galaxy/merger/dwarf generation path still needs the
+legacy-compatible 16-entry `GAL_SPRITES` binding installed first; empty,
+special-only, and cached paths may not read it. The app performs that installation
+before generation. `slimGal` is owned by Descriptors in v2, not WorldGen.
 
 - **Galaxies:** `galaxiesInCell`, `galaxyProfile`, `galaxyName`, `makeGalaxySprite`,
   `slimGal`. Special objects: quasars, wormholes (`galaxyWormhole`), supernova sites

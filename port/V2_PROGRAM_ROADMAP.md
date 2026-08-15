@@ -7,8 +7,9 @@
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
 > integrated in `develop` at merge `a1dabdeb4059292d67d7a89652e92fb317d750c7`; Charter
 > SCN-1/SCN-2/SCN-6 is integrated at merge `bd49beb0693b45fdd57d4acad746ade79843a91e`.
-> UI-P1 registered panel-chrome dismissal is the active F1b batch; later F1b slices and product
-> batches remain planned.
+> UI-P1 registered panel-chrome dismissal is integrated at merge
+> `b5e5d0a3b4bb4057fa6d251816454b370e8b2624`; the truthful WorldGen contract is the active
+> bounded F1b batch. Later F1b slices and product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -244,7 +245,7 @@ publication run [`31868417305`](https://github.com/TheDakk/Celestial-Frontier/ac
 served development build `develop-bd49beb0693b` with that full source SHA. Production remained
 skipped and unchanged.
 
-**F1b UI-P1 implementation record (2026-08-15, active bounded candidate):** the ported outside-
+**F1b UI-P1 implementation record (2026-08-15, integrated):** the ported outside-
 dismiss handler used a literal left-rail exception but omitted the identical right rail, so a real
 pointer in its rendered 8px flex gap closed the active panel. Registered panel roots/openers retain
 element identity; stable top-bar, dock, Survey and rail chrome now self-declare one generic
@@ -256,9 +257,16 @@ non-Element document targets and an ignored owned-canvas control. With the repai
 browser-mouse rail gaps preserve panel/ARIA state, independently removing either marker recreates close,
 owned versus genuine-empty canvas points discriminate in both directions, and delegated pointer/
 click handlers fail closed on non-`Element` targets. Implementation commit
-`d6ccb9b810fc644437ed205e4f6dbed7974cdba1` is pushed in
-draft PR [#26](https://github.com/TheDakk/Celestial-Frontier/pull/26); exact final-head CI and Claude
-review remain integration gates. This record does not close the broader UI preparation.
+`d6ccb9b810fc644437ed205e4f6dbed7974cdba1` and the bounded launcher repair culminated in exact PR
+head `c1bfc3b7674f5113dd7c9a0c6063fc99737ea1ba`; test-battery run
+[`31872279328`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31872279328) was terminal
+green. PR [#26](https://github.com/TheDakk/Celestial-Frontier/pull/26) then merged at
+`b5e5d0a3b4bb4057fa6d251816454b370e8b2624`. GitHub records no Claude review or PR comments, so
+this history does not claim one. The merge passed exact `develop` test-battery run
+[`31884952674`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31884952674); mapped
+publication run [`31885531363`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31885531363)
+served `develop-b5e5d0a3b4bb` with the full source SHA while production stayed skipped. This record
+does not close the broader UI preparation.
 
 **PR #26 exact-head CI instrument note (2026-08-15):** head
 `ea972a8f43fbe4a3382d1e1c00a2bd46f1606bbc` remains bound to red test-battery run
@@ -273,11 +281,29 @@ spawn → endpoint → socket-open deadline, adds a validated socket cap clipped
 time, defaults that cap to startup rather than post-open command time, and retains the exact
 startup/command/shutdown budgets and no-retry rule. Portable delayed-open, explicit-cap,
 remaining-startup, pre-construction-expiry, guarded CONNECTING constructor-overrun, just-late-open,
-never-open and invalid-cap controls prove the phase boundaries and cleanup; matching new-head CI and
-Claude review remain integration gates.
+never-open and invalid-cap controls prove the phase boundaries and cleanup. Those local controls
+still required fresh new-head CI; it later passed, while GitHub records no Claude review before the
+external integration described above.
 The bounded implementation and synchronized-reference commit is
-`cc0900bca0c8f4943bb064cb0d4bb21cad25dfdc`; complete local evidence does not replace fresh
-pushed-head CI.
+`cc0900bca0c8f4943bb064cb0d4bb21cad25dfdc`; exact final head
+`c1bfc3b7674f5113dd7c9a0c6063fc99737ea1ba` passed run `31872279328` and integrated as recorded
+above. The known-red run remains immutable history and was not retried.
+
+**F1b WorldGen truthful-contract implementation record (2026-08-15, active bounded candidate):**
+the byte-verbatim generator body, generated values, cache keys and call order remain unchanged.
+The typed facade exposes required own galaxy-cell `web` metadata and the exact supernova
+remnant/birth result, names the second supernova argument as the deterministic epoch key, and states
+the transitional `GAL_SPRITES` installation precondition for a first uncached ordinary
+generated-galaxy branch. The app consumes those types without local casts. Focused tests pin empty,
+special-only and ordinary-populated `web`, the exact baseline plus same-key cache identity,
+cross-epoch change, bounded
+site/birth shape, declaration semantics, and both missing-hook failure and installed-hook success.
+This closes DOM-2, DOM-3's missing-warning obligation, and only the WorldGen `.web` half of DOM-11.
+It does not remove the hook dependency, fix `_sanitizeSavedGenome`, install the live epoch bridge,
+close CF1/F2, change generation, or close a Gate. Final full evidence, commit, PR review and CI remain
+to be recorded before integration. The uncommitted candidate currently passes 299 tests /1 skip,
+both TypeScript programs, `artunused`, `git diff --check`, and the complete one-attempt real-browser
+slice smoke with zero console errors; local evidence does not certify a future commit.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete

@@ -1706,7 +1706,7 @@ function drawUniverse(): void {
   webLayer.eventMode = 'none';
   world.addChild(webLayer);
   for (let cx = uniCell.ux - R; cx <= uniCell.ux + R; cx++) for (let cy = uniCell.uy - R; cy <= uniCell.uy + R; cy++) {
-    const gl = galaxiesInCell(cx, cy) as unknown as GalaxyNode[] & { web?: number };
+    const gl = galaxiesInCell(cx, cy);
     const web = gl.web ?? 0;
     if (web > 0.5) {
       const b = new Sprite(Texture.from(webBlobSpr()));
@@ -1976,7 +1976,7 @@ function drawGalaxy(galSeed: number): void {
   }
   /* supernova aftermath — epoch-anchored: sites shift as COSMIC_EPOCH climbs
      (main.js 4214). Every death is a cloud; remnants keep their cores. */
-  for (const site of supernovaSites(galSeed, epochClock.current()) as Array<Record<string, unknown> & { x: number; y: number; seed: number; remnant: string; births: Array<{ x: number; y: number; seed: number }> }>) {
+  for (const site of supernovaSites(galSeed, epochClock.current())) {
     const ss = new Sprite(Texture.from(snSiteSprite(site.seed)));
     ss.anchor.set(0.5);
     ss.position.set(site.x, site.y);

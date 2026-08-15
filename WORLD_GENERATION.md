@@ -1,7 +1,7 @@
 # Celestial Frontier — World & Universe Generation
 
 **STATUS:** legacy mechanics match `main.js` as of 2026-07-23; the v2 type-contract
-overlay below matches `port/v2` as of 2026-08-11.
+overlay below matches `port/v2` as of 2026-08-15.
 **Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/{planetgen,worldgen,surveyphrases}` own the
@@ -15,6 +15,22 @@ dated port contracts. Art rules live in ART_DIRECTION.md. The biome CONTENT cata
 > functions. Parity tests execute those real result shapes. The complete CF1
 > galaxy-at-cell and star-at-coordinate canonical hierarchy is still OPEN; a
 > type correction is not proof of that routing theorem.
+
+> **2026-08-15 v2 WorldGen contract correction:** This batch changes no
+> generated value, cache key, call order, or lifted function body.
+> `galaxiesInCell(cx, cy)` is now typed as the mutable galaxy array the runtime
+> actually returns, including required own numeric `web` density metadata.
+> `supernovaSites(galaxySeed, epoch)` names its second argument as the
+> deterministic cosmic-time key—not a requested site count—and exposes the
+> exact remnant and protostar-birth result used by the app. TypeScript still
+> accepts any `number`; nominal epoch ownership remains future F4 work.
+>
+> Importing `@cf/domain-worldgen` is safe, but its transitional lifted seam is
+> not standalone for a first uncached branch that generates an ordinary galaxy,
+> merger, or dwarf: `GAL_SPRITES` must already be installed through the current
+> descriptors capture hook or a future real art owner. Empty, special-only, and
+> cached calls may not read that binding. The current app installs the hook
+> before WorldGen use. This documents the dependency; it does not remove it.
 
 > **2026-08-13 cross-system review:** The approved ship/loot/companion/audio arc in
 > `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` changes no generated world values.
@@ -85,6 +101,7 @@ One region is hand-anchored: the **home galaxy** (Milky Way, seed `999`) always 
 
 ### 2.1 Galaxies — `galaxiesInCell(cx,cy)` (~928)
 - Cell RNG: `cellRng(1, cx, cy)`. Density comes from a shared cosmic-web noise field `UNOISE = makeNoise(8181)`: `web = clamp((UNOISE(cx·0.11, cy·0.11, 4) − 0.34)/0.42, 0, 1)`. Galaxies cluster on filaments; voids stay dark.
+- The returned value is the memoized mutable galaxy array with an own finite `web` property clamped to `[0,1]`; empty and special-only cells carry that metadata too. It is density/presentation data, not canonical identity.
 - Population: `n=1` if `r() < 0.05 + web·0.85`; +1 more if `r()<web·0.45`; +1 more if `r()<web·0.18` (0–3 primaries per cell).
 - Each galaxy gets a random position inside the cell, `size 26–96`, a sprite index, tilt, rotation, and `seed = hashInt(2, cx·7+i, cy·13−i)`.
 - Extras (all seeded rolls): interacting merger pairs (`r()<0.045`), satellite dwarfs for big galaxies (`size>62 && r()<0.7`), rare quasars/blazars (`~0.012·web`), radio galaxies (`~0.010·web`).
@@ -97,6 +114,7 @@ One region is hand-anchored: the **home galaxy** (Milky Way, seed `999`) always 
 - Deep-sky deco (nebulae along arms, globular clusters in the `GR<rad<GR·1.7` halo, rogue planets, remnants) are seeded rolls off the same cell RNG. `GR = 1200` is the galactic disk radius.
 - **Sol injection:** the home galaxy's cell containing `SOL_POS {x:560,y:170}` always appends the Sol star (`seed 424242`, `sol:true`).
 - Two epoch-anchored systems layer on top: `galaxyWormhole(seed)` (a wormhole hides in ~6% of galaxies) and `supernovaSites(gseed, epoch)` (1–3 fresh remnants + newborn protostars per cosmic epoch — deterministic per epoch, so the galaxy *ages* identically for everyone).
+- `supernovaSites` cache-keys the epoch and returns 1–3 sites, each with remnant kind `NS`, `shell`, or `BH` and 1–3 deterministic protostar births. The argument is never a requested output count. This type contract neither installs the live epoch bridge nor proves CF1 hierarchy canonicalization.
 
 ### 2.3 Star class — `starClass(seed)` (~866)
 A single roll `r()` off `mulberry32(seed ^ 0x9e37)` maps to a stellar type (Sol is forced to class G). Governs color, drawn radius `r`, planet count, and habitable-zone distance:
