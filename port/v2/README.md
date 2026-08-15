@@ -53,8 +53,9 @@ all nine supported fixture families export a boot-accepted envelope, while reset
 clears the canonical complete store list. IndexedDB can recover after a failed
 open; hostile epoch input is bounded; Atlas route identity, planet landing,
 named CF1 sharing, stale-card actions and repeat landfall outcomes are guarded;
-SessionRNG rejects hostile counters/keys; handwritten domain declarations match
-their runtime APIs; lazy species-art subscribers are retained; and the phone
+SessionRNG rejects hostile counters/keys; the specifically audited handwritten
+domain declarations match their runtime APIs; lazy species-art subscribers are
+retained; and the phone
 dock is a measured 4×2 layout with browser-backed non-overlap/hit-target
 negative controls. Pixi now keeps its DPR-scaled backing store displayed in a
 viewport-sized CSS box, so phone visuals and hit coordinates agree. Native
@@ -77,6 +78,17 @@ an independent fixed-port lifecycle.
 This workspace and the repository root both declare/lock the raw-CDP `ws`
 transport and support Node `^20.19.0 || ^22.13.0 || >=24.0.0`; install each surface
 with its own `npm install` / `npm ci` before running its tools.
+
+The audited declaration statement is intentionally bounded, not a claim that
+every lifted surface has been exhaustively certified. WorldGen now declares the
+required own `galaxiesInCell(...).web` metadata and the exact supernova
+site/birth/remnant result, and names the second supernova parameter as the
+deterministic epoch key. The byte-verbatim generator is unchanged. Its facade
+also documents the transitional requirement that `GAL_SPRITES` be installed
+before a first uncached ordinary generated-galaxy branch; the app already does
+so. Empty, special-only, and cached calls may not read that binding. This closes
+the missing public warning, not the free-global dependency, CF1/F2, or F4 clock
+wiring, and `_sanitizeSavedGenome`'s separate DOM-11 mutation remains open.
 
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,
@@ -998,14 +1010,14 @@ syntax-broken test file is silently not collected — **count the test files, no
 | 3 | naming | names probe ×7 groups | speciesName slot closed by module 8 |
 | 4 | starcatalog | starClass ×10k + probe | |
 | 5 | planetgen | planetParams ×10k + probe | surfaceColor pinned transitively via Descriptors |
-| 6 | worldgen | systemFor ×1k + 6 probes | ⚠ `systemSol` probe **deferred**: fingerprint value encodes probe-order mutation (`_pal` cached by descriptor probes onto memoized P). Descriptors owes the replay. `slimGal` carried here temporarily (main.js:3014). |
+| 6 | worldgen | systemFor ×1k + 6 probes | ⚠ `systemSol` probe **deferred**: fingerprint value encodes probe-order mutation (`_pal` cached by descriptor probes onto memoized P). Descriptors owes the replay. `slimGal` was carried here temporarily and is now relocated to descriptors (main.js:3014). |
 | 7 | surveyphrases | climateBand ×1k | phrase builders pinned via planetDescriptor later |
 | 8 | speciestraits | 30k golden + 3 probes + **the 9g invariant guard** | GRADE_TIERS collapse finally has a test |
 | 9 | genome | 71k golden (makeGenome ×4 kingdoms, speciesGrade, sapienceTier, classifyRealm, guardianFor, describeSpecies) + 7 probes | **9g part 2**: the collapse now guarded END-TO-END through speciesGrade incl. forced apex tiers 12–14. lift.mjs REGISTRY rows for surveyphrases/speciestraits/genome filled (were placeholders) |
 | 10 | encutil | independent-truth (Node Buffer b64 as second implementation + hand-computed shade values) | ⚠ no fixture samples EncUtil directly — recorded in src; b64 pinned transitively when CombatCore's codec probes land |
 | 11 | genetics | crossGenome ×10k + crossGenome/evolveGenome probes + outcome invariants | ⚠ **NEW FIXTURE BLIND SPOT FOUND**: the golden recipe's consecutive parent seeds (s, s+1) collapse the mutation draw — the size-mutation branch is NEVER executed across all 10k cases (color 80% · trait 12.5% · size 0). Uniform with uncorrelated parents, so the game is fine; the corpus is not. Remedy queued for Gate B: ADD an uncorrelated-pair generator (never re-capture). Until then the invariant suite covers the branch with hashed-seed pairs |
 | 12 | ecology | planetSpecies probe (⚠ VACUOUS BY CAPTURE — probe.js passes level=2 vs string levels, stored value is literally `[]` since v1.0) + outcome invariants | ⚠ salt-perturbation negative control PASSES today (measured — no value pinning until planetDescriptor ×1k lands with module 13). COSMIC_EPOCH reads 0 in the lift (= capture condition); app layer wires the real epoch in Phase 2+. ★ `biomeFor` (golden ×1k) lives at main.js:10824 OUTSIDE the 14 domain modules — slimGal-style relocation, queued for Gate B |
-| 13 | descriptors | planetDescriptor + starDescriptor ×1k each (heavy) + 6 probes + **★ the systemSol REPLAY (deferred since module 6, now closed byte-for-byte)** | App hooks: `installCaptureHooks()` installs the capture-environment stand-ins (thumb stubs pinned to jsdom's `data:image/png;base64,`; planetThumb replays the `_pal` gas-palette cache; verbatim carries of `_cardFactsSet`, `_EARTH_NAMES`/`_earthNamePass` (631/334/27/22 roster), GAL_KIND — machine-extracted by `tools/lift-apphooks.mjs`). slimGal RELOCATED here from worldgen (thread closed). ★ FOUND: worldgen's `galaxiesInCell` read free `GAL_SPRITES` — no fixture cell is populated, so it was green while every REAL cell threw; hooked + real-input test added. Ecology's salt hole VERIFIED closed (0xB105 perturbation now fails 2 tests here) |
+| 13 | descriptors | planetDescriptor + starDescriptor ×1k each (heavy) + 6 probes + **★ the systemSol REPLAY (deferred since module 6, now closed byte-for-byte)** | App hooks: `installCaptureHooks()` installs the capture-environment stand-ins (thumb stubs pinned to jsdom's `data:image/png;base64,`; planetThumb replays the `_pal` gas-palette cache; verbatim carries of `_cardFactsSet`, `_EARTH_NAMES`/`_earthNamePass` (631/334/27/22 roster), GAL_KIND — machine-extracted by `tools/lift-apphooks.mjs`). slimGal RELOCATED here from worldgen (thread closed). ★ FOUND: worldgen's `galaxiesInCell` read free `GAL_SPRITES` — empty fixture cells hid failure on an uncached ordinary generated-galaxy branch; hooked + exact real-input test added. Ecology's salt hole VERIFIED closed (0xB105 perturbation now fails 2 tests here) |
 | 14 | combatcore | battleStats ×1k + 6 probes + **code-fixtures**: share/champion codes over the 23-genome adversarial corpus, normGenome hardener, cleanName | `@cf/domain-strays` founded (`tools/lift-strays.mjs`): cleanName carried verbatim (decodeCreature calls it; code-fixtures pins it). App-coupled exports (playerAvatar/statBlockHTML/…) documented as needing hooks. ⚠ whereCodes + sanitizeSavedGenome fixture buckets await the Gate B strays (encodeWhere/_sanitizeSavedGenome) — recorded in the test file |
 
 **Then Gate B close-out:** no-DOM-imports lint · SessionRNG (reviewer §2.1) · extend the
