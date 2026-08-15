@@ -128,7 +128,7 @@
 > then living organism rigs and biome scenes. Platinum-approved static portraits
 > remain frozen; optional polish is not a mandate to repaint them.
 >
-> **2026-08-12 root browser-harness overlay:** legacy `tools/uilayout.js` now
+> **2026-08-12 root browser-harness overlay; 2026-08-14 selftest update:** legacy `tools/uilayout.js` now
 > consumes the v2-owned browser resolver and raw-CDP launcher instead of owning a
 > second candidate list, guessed port, WebSocket loop and cleanup path. The shared
 > lifecycle uses browser-assigned port 0 plus `DevToolsActivePort`, records exact
@@ -146,15 +146,21 @@
 > pinned `ws` transport and Node `^20.19.0 || ^22.13.0 || >=24.0.0`. Root preflight
 > launches the selected executable through `browsercdp`; its selftest rejects
 > executable non-browsers and excluded Node lines. `bootperf` shares the executable
-> resolver and `ws` transport but retains its legacy CDP lifecycle. Two exact
-> callers deviate from the 15-second CDP-start default with a fixed bounded
-> 30-second allowance: the final development-preview package check (after exact
-> packaging) and the root layout gate `tools/uilayout.js` — the battery job's
-> first real browser launch, where the identical diagnosed Linux cold-start
-> phase recurred at its prior 24-second bound (run `31758515194` attempt 1).
-> Generic command/shutdown bounds stay unchanged for both. Every
-> platform captures the exact options passed by that caller and completes a real
-> browser outcome. On POSIX the selftest starts Chrome immediately but withholds its
+> resolver and `ws` transport but retains its legacy CDP lifecycle. Two evidence
+> callers continue to deviate from the 15-second CDP-start default with a fixed
+> bounded 30-second allowance: the final development-preview package check (after
+> exact packaging) and the root layout gate `tools/uilayout.js` — the battery job's first
+> real browser launch, where the identical diagnosed Linux cold-start phase
+> recurred at its prior 24-second bound (run `31758515194` attempt 1). The
+> browsercdp selftest's first real provenance launch also owns the fixed 30-second
+> allowance. The selftest isolates its
+> earlier injected WebSocket timeout behind a private launcher seam: the seam writes
+> one valid owned endpoint and starts one portable Node child to prove the 200-millisecond socket
+> timeout, exactly one fixture launch, socket close, child shutdown, and profile
+> cleanup without launching Chrome. Its later warm browser launch remains bounded at 10 seconds. Generic
+> command/shutdown bounds stay unchanged. Every platform captures the exact options
+> passed by the preview caller and completes a real browser outcome. On POSIX the
+> preview selftest starts Chrome immediately but withholds its
 > ready CDP endpoint for 16 seconds: the generic path times out while the exact preview
 > caller retains its full 30-second startup window, answers `Browser.getVersion`, and closes.
 > On macOS the shared launcher and the resolver's launch-facing `--print`

@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-14 · F1B CHARTER PR #25 AWAITING CLAUDE REVIEW ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-14 · F1B CHARTER PR #25 FINAL-HEAD CI REPAIR ◀◀◀
 
 ### Cold start
 
@@ -43,6 +43,13 @@ the archive verbatim and refresh this handoff in place.
   F1b Charter slice: SCN-1, SCN-2 and SCN-6 plus its tests, Guide/release truth and synchronized
   references. It is pushed as mergeable draft PR [#25](https://github.com/TheDakk/Celestial-Frontier/pull/25)
   from `openai/mac` into `develop`; it remains a draft pending Claude's exact-diff review.
+- The following evidence-only head `a5896dc9a5e98c0f2037bb1cb16905b74e48feb1` exposed an instrument
+  defect in test-battery run [`31815658572`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31815658572):
+  static, root, and full glass jobs passed, but v2 smoke stopped inside `browsercdp --selftest`
+  before gameplay. The WebSocket-timeout control launched real Chrome first, and the cold process
+  missed its explicit 10-second `DevToolsActivePort` bound before the injected socket existed.
+  Persona/preview was skipped and the final join was red only as dependency cascade. This is a
+  wrong-phase harness failure, not Charter or game evidence, and must not be retried.
 
 ### Active F1b Charter contract
 
@@ -87,27 +94,40 @@ the archive verbatim and refresh this handoff in place.
   [`31813881697`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31813881697) independently
   passed v2 static, every root gate, one-attempt v2 smoke, the 12-viewport glass gate, same-commit
   persona/preview packaging and the final battery join at that exact SHA.
+- The bounded harness repair keeps the exported launcher API intact and gives only the WebSocket
+  selftest a private launch seam. Its deterministic Node fixture writes one valid owned endpoint,
+  then proves the 200-millisecond socket timeout, socket close, bounded child termination, and
+  profile cleanup; a missing endpoint rejects in the wrong phase and fails the same predicate. The
+  separate live-provenance leg is now the selftest's first real browser launch and owns the existing
+  30-second cold-start allowance. The generic default stays 15 seconds, the later warm launch stays
+  10 seconds, and no retry was added. Syntax, diff hygiene, and the complete repaired raw-CDP
+  selftest pass locally; matching exact-head CI remains required.
+- Guide, Training, v2 draft release copy, balance, saves/schema, production version, release, and
+  deployment remain unchanged by this instrument-only repair.
 
 ### Next actions
 
-1. Claude reviews exact draft PR #25. Do not add another F1b slice or hand-copy files into its branch.
-2. Resolve only actionable review findings and require the final PR head to be terminal green; never
+1. Commit and push only the bounded browsercdp instrument repair to existing draft PR #25; require
+   a new test-battery run on that exact head rather than retrying run `31815658572`.
+2. Claude reviews the exact final diff. Do not add another F1b slice or hand-copy files into its branch.
+3. Resolve only actionable review findings and require the final PR head to be terminal green; never
    retry a red child blindly or mark the draft Ready as a workaround.
-3. After review resolution and terminal-green checks, standing authority permits its normal merge
+4. After review resolution and terminal-green checks, standing authority permits its normal merge
    and monitoring of the mapped `develop` battery/DEV publication.
-4. Continue the remaining F1b slices independently, then close F2 canonical ingress before any
+5. Continue the remaining F1b slices independently, then close F2 canonical ingress before any
    world-bound ownership, receipt or reward writer.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, `openai/mac`. The isolated F1b Charter implementation is
-pushed, and exact code/evidence head `ce6ef639057944447da631bcced74a70da2750cc` is green. This
-handoff update is documentation-only; resolve the final branch head live. No hand-copy or
-cross-worktree edit is permitted.
+**Current side:** OpenAI/Codex on macOS, `openai/mac`. The isolated F1b Charter implementation and
+its exact code head `ce6ef639057944447da631bcced74a70da2750cc` are green. The current bounded
+candidate additionally repairs only the final-head browsercdp instrument failure; resolve the exact
+branch head and checks live. No hand-copy or cross-worktree edit is permitted.
 
 **GitHub step:** draft PR [#25](https://github.com/TheDakk/Celestial-Frontier/pull/25) targets
-`develop` from `openai/mac`. Its exact code head passed test-battery run `31813881697`; Claude review
-and final-head CI after this evidence-only handoff update remain required.
+`develop` from `openai/mac`. Its exact Charter code head passed test-battery run `31813881697`; the
+evidence-only next head failed the wrong-phase browser selftest in run `31815658572`. Push the bounded
+instrument repair as a new head, then require Claude review and matching terminal-green CI.
 
 **PR details:**
 
@@ -121,13 +141,15 @@ and final-head CI after this evidence-only handoff update remain required.
   real-browser emulated-phone Mercury touch re-land that proves exact IndexedDB/reload behavior,
   exact reward/reach preservation, matched unpowered and powered-incomplete controls, guaranteed
   polite aggregate feedback, and an already-open board refresh. Updates Guide and v2 draft copy plus
-  current Charter/progression references, deviations, program status and the live handoff. Explicitly
-  excludes other F1b work, F2, save-schema changes, balancing/content arcs, production versioning,
-  deployment and develop-to-main release work.`
+  current Charter/progression references, deviations, program status and the live handoff. Also
+  isolates the CI launcher's injected WebSocket-timeout phase behind a portable Node endpoint
+  fixture while reserving the bounded cold-start allowance for the separate real provenance leg.
+  Explicitly excludes other F1b work, F2, save-schema changes, balancing/content arcs, production
+  versioning, deployment and develop-to-main release work.`
 
-**Other side:** Nick should open Anthropic/Claude Code now for exact-diff review of PR #25. Claude must
-first fetch and normally fast-forward its clean `anthropic/mac` branch; it reviews the PR remotely and
-must not edit the OpenAI worktree.
+**Other side:** after the repair head is pushed, Nick should open Anthropic/Claude Code for exact-diff
+review of PR #25. Claude must first fetch and normally fast-forward its clean `anthropic/mac` branch;
+it reviews the PR remotely and must not edit the OpenAI worktree.
 
 **Release status:** no release, deployment, version bump, `develop` → `main` merge, or manual site
 write is part of this batch.
