@@ -1296,6 +1296,22 @@ duplicates).
   half of DOM-11: `_sanitizeSavedGenome` mutation semantics remain open under D-STRAYS/D-IMPORT,
   and other declaration corners remain separately listed. Contract tests exercise the real APIs,
   and `npm run typecheck` includes the app configuration that first exposed the drift.
+- ★ **D-AUDIO-INIT — the exported sting seam is inert until its owner initializes it
+  (2026-08-15).** The lifted sting bodies read the application-owned `ac` binding before their own
+  synthesis `try` blocks, so a direct pre-init package call formerly escaped as `ReferenceError`.
+  The facade now makes every exported sting and `applySfxGain()` a pre-init no-op without creating
+  a context or editing the byte-verbatim bodies. Once initialized with the live save-backed
+  getters, Sound-off still prevents construction; an enabled call lazily prefers standard
+  `AudioContext`, falls back to `webkitAudioContext` only when the standard constructor is absent,
+  and reuses the context. Bounded package tests cover import and all four non-initializer public
+  operations, post-init dispatch, live mute state, constructor precedence/absence/failure and
+  suspended resume rejection. During the awaited save-load, the app assigns the save and then calls `initAudio()`
+  synchronously before later playable scene/input publication; no ordinary current pre-init action
+  route was reproduced. This closes DOM-12 as a package contract defect rather than claiming a
+  current-player crash.
+  Creature voices, ambience, combat/Guardian cues, music, buses/mixing, node ownership,
+  visibility/context-loss recovery, budgets, rights, device listening and all other Arc 7/8 /
+  Gate G acceptance remain open. No Guide/Training/release-copy or version change is implied.
 - ★ **D-UI-1 — lower mobile chrome is measured as a group (2026-08-12).** The phone dock wrapped
   3/3/2 while context/hint/Planetside used fixed offsets, so green smoke evidence visibly covered
   copy and controls. The port owns a 206×98 4×2 phone dock, publishes measured `--dock-h`/`--ctx-h`,

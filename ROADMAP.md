@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-15 · F1B WORLDGEN TRUTHFUL CONTRACT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-15 · F1B AUDIO PRE-INITIALIZATION CONTRACT ◀◀◀
 
 ### Cold start
 
@@ -25,170 +25,124 @@ the archive verbatim and refresh this handoff in place.
   `/celestial-frontier-openai-mac` on `openai/mac`; Claude macOS uses `anthropic/mac`; Windows uses
   the matching rows in `PARALLEL_GIT_PROTOCOL.md`.
 - Read in order: this handoff · `PROCESS_LAWS.md` · `PARALLEL_GIT_PROTOCOL.md` · `AGENTS.md` or
-  `CLAUDE.md` · [`port/V2_PROGRAM_ROADMAP.md`](port/V2_PROGRAM_ROADMAP.md) ·
+  `CLAUDE.md` · `AUDIO.md` · [`port/V2_PROGRAM_ROADMAP.md`](port/V2_PROGRAM_ROADMAP.md) ·
   `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` · `port/RUBRICS.md` · `port/DECISIONS.md` ·
   `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `port/DEVELOPMENT_PREVIEW.md`.
 - Resolve Git, PR, checks and publication live. Historical run IDs below are evidence, not an
   assertion about a newer tip. Never copy files manually between agent worktrees.
 
-### Integrated foundation
+### Integrated foundation through WorldGen
 
 - F1a remains integrated at `a1dabdeb4059292d67d7a89652e92fb317d750c7`; F1b Charter remains
-  integrated at `bd49beb0693b45fdd57d4acad746ade79843a91e`.
-- UI-P1 PR [#26](https://github.com/TheDakk/Celestial-Frontier/pull/26) reached exact head
-  `c1bfc3b7674f5113dd7c9a0c6063fc99737ea1ba` and passed terminal test-battery run
-  [`31872279328`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31872279328). It
-  merged at `b5e5d0a3b4bb4057fa6d251816454b370e8b2624`. GitHub records no review or PR comments,
-  so this handoff does not claim Claude reviewed that integration.
-- The exact merge passed every job and final join in `develop` test-battery run
-  [`31884952674`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31884952674). Mapped
-  publication run [`31885531363`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31885531363)
-  passed development and skipped production; the public manifest serves build
-  `develop-b5e5d0a3b4bb` with the full merge SHA.
-- Remote automation fast-forwarded agent branches. This worktree fetched and normally
-  fast-forwarded clean `openai/mac` to the exact merge before this batch; automation never
-  substitutes for the required local folder/branch/clean/fetch check.
+  integrated at `bd49beb0693b45fdd57d4acad746ade79843a91e`; UI-P1 remains integrated at
+  `b5e5d0a3b4bb4057fa6d251816454b370e8b2624`.
+- WorldGen PR [#27](https://github.com/TheDakk/Celestial-Frontier/pull/27) reached exact final head
+  `ce98236083f0f71df8b71013f502a6dc54321a31`. Three independent Codex read-only audits were clean
+  after their findings were resolved. GitHub recorded no Claude review or PR comments; Nick
+  explicitly authorized marking that exact terminal-green head Ready and merging without waiting
+  for Claude feedback.
+- PR #27 merged normally into `develop` at
+  `a50e593e2135f55ae8c37e6ece1f10c52701346b`. Exact-`develop` test-battery run
+  [`31892937375`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31892937375) passed
+  v2 static, root gates, one-attempt smoke, the 12-viewport Glass matrix, persona/preview and the
+  final join. Mapped publication run
+  [`31893693225`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31893693225) passed
+  development and skipped production.
+- The public DEV manifest serves build `develop-a50e593e2135` from the full merge SHA. Remote
+  automation fast-forwarded agent branches; this worktree fetched and normally fast-forwarded clean
+  `openai/mac` to that exact merge before audio work began. Automation never substitutes for the
+  required local folder/branch/clean/fetch check.
 
-### Active F1b WorldGen contract
+### Active F1b audio contract
 
-- DOM-2 was an API-description defect, not a reproduced current gameplay bug: the live caller
-  already passes `epochClock.current()`, but the handwritten declaration called the argument `n`
-  and returned `unknown`. It now declares `supernovaSites(galaxySeed, epoch): SupernovaSite[]`,
-  where `epoch` is the deterministic cosmic-time key and the exact remnant/birth result is typed.
-  A plain `number` still cannot nominally reject a count; stronger epoch ownership remains F4.
-- DOM-3 is closed only as the sweep-approved facade warning. Importing WorldGen is safe, while a
-  first uncached ordinary galaxy/merger/dwarf generation path still reads free `GAL_SPRITES`.
-  Empty, special-only and cached paths may not read it. The app installs the descriptors capture
-  hook before generation. No eager wrapper, dependency cycle, auto-install or standalone-safety
-  claim is introduced.
-- DOM-11 is split by owner. This batch types the required own numeric
-  `galaxiesInCell(...).web` metadata and removes the app's local `.web` cast. The unrelated
-  `_sanitizeSavedGenome` in-place mutation remains open under strays/import persistence work.
-- The byte-verbatim `worldgen.verbatim.js`, generator salts, generated values, cache keys/order,
-  rendering, navigation, saves, balance, CF1/F2 and clock wiring are unchanged. No Guide topic,
-  Training lesson, draft release bullet, version identity, production release or deployment changes.
+- DOM-12 is a real public-package contract defect: the lifted rarity, survey and navigation stings
+  call the application-owned free `ac()` seam before their local synthesis `try`, while the facade
+  formerly re-exported them directly. A package consumer could therefore throw before
+  `initAudio()`.
+- This is not recorded as a reproduced current-player crash. Current application boot assigns the
+  save and installs audio synchronously before publishing its playable scene/input path, and known
+  pre-boot navigation paths fail closed on the absent save.
+- The bounded repair keeps the exact five-export public API but makes every public sting and
+  `applySfxGain()` inert until successful initialization. After initialization, wrappers delegate
+  directly without adding a facade catch, so application-seam failures retain their prior behavior.
+  Initialization itself creates no context; Sound-off remains mute-before-create; the first enabled
+  sting lazily creates one context.
+- Constructor selection restores production-v1 compatibility: prefer standard `AudioContext`,
+  fall back to typed `webkitAudioContext` only when standard is absent, and fail silent when neither
+  exists or construction throws. This is compatibility coverage, not physical-iOS certification.
+- The byte-verbatim sting bodies, application boot/caller order, save schema, sound/volume meanings,
+  generated content, balance and deterministic identity remain unchanged. Creature voices,
+  ambience, combat/Guardian cues, music, mixing/buses, visibility/context-loss recovery, disposal,
+  node/voice/memory budgets, rights, device listening and commercial-quality acceptance remain
+  Arc 7/8 and Gate G work.
+- No Guide topic, Training lesson, v2 draft release bullet, development/production version,
+  production release or deployment changes. Existing player copy already describes only the live
+  stings and settings; the former exception has no proved playable route.
 
-### Test-first evidence
+### Evidence status
 
-- Before the declaration repair, the focused WorldGen suite failed the exact semantic sentinel:
-  `supernovaSites(seed, n): unknown` did not satisfy the epoch-keyed exact-result contract.
-- Permanent controls now prove: empty/cached cells retain own finite `[0,1]` `web`; array spread
-  drops it and fails; `NaN` fails; a home-only cell succeeds without the hook; exact ordinary cell
-  `(-6,4)` fails with `ReferenceError: GAL_SPRITES is not defined`; the official 16-slot hook then
-  yields four galaxies with sprite indices `[6,14,9,2]` and the same deterministic web density.
-- Supernova controls preserve the exact epoch-3 baseline, prove same-key cache identity, epoch 3 versus 4
-  change, epoch 99 still returns only 1–3 sites, exact remnant/birth shapes, and an invalid remnant
-  fails the validator.
-- Deliberate defect injections are restored: renaming `epoch` to `n` failed the declaration
-  sentinel; returning plain `Gal[]` failed the real `.web` consumer typecheck; restoring
-  `unknown` failed the supernova consumer typecheck.
-- Pre-CI local evidence for implementation commit
-  `29601e478e99b2a114720e23b696e8fb7d79d33c`: focused
-  WorldGen/Descriptors/Scene/Address suites pass 55 tests /1 skip; the full v2 suite passes
-  **299 tests /1 skip**; root and app TypeScript programs, `artunused`, `git diff --check`, and the
-  complete one-attempt real-browser slice smoke pass with zero console errors. Three independent
-  read-only source, test and documentation audits were clean after their findings were resolved;
-  those checks did not replace the complete static battery.
-- Draft PR [#27](https://github.com/TheDakk/Celestial-Frontier/pull/27) reached exact head
-  `fe37753d66b52d66c08df878cd315cc7168dcb2e`. That head is permanently non-certifying: test-battery
-  run [`31886401312`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31886401312)
-  completed with the full `v2 parity and complete TypeScript surface` step, `root-gates`, `v2-smoke`
-  and `v2-glass` all green. The only red primary job was `v2-static`, which failed closed because
-  `packages/domain/descriptors/src/apphooks.ts` no longer matched its audited authority hash;
-  `v2-persona-preview` skipped and `battery` failed only as the dependency cascade. Its sole change
-  was sharper historical prose. This is a provenance-sentinel failure, not a WorldGen runtime,
-  type, generation, art-routing, coverage or browser finding. Do not retry this head and do not
-  re-pin the sentinel.
-- The bounded repair restores `apphooks.ts` byte-for-byte to audited SHA-256
-  `c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a`
-  and pre-batch Git blob `ba95d19349f3ae911f41a2903080c03816489767`. Precise dependency
-  wording remains in the owning WorldGen facade, declaration, tests and refreshed references.
-- With those bytes restored, local `overridecheck` reports 1,014/1,014 routes, zero dead and
-  1,010/1,010 Earth coverage; every `overridecontrol` leg passes, including the catalog-wrapper
-  byte sentinel and restored-clean outcome; `artaudit` reports 23 sources/zero findings;
-  `coveragegap` reports 1,010/1,010 with zero remaining; `speccheck` reports 454 declared
-  fields/zero unread/zero inert; and all 299 tests /1 skip, both TypeScript programs, `artunused`
-  and `git diff --check` pass.
-- The byte-restored exact head `1a0839a95e595673409436bae27962e999f256a0` is also permanently
-  non-certifying. Test-battery run
-  [`31887203990`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31887203990) completed
-  with `v2-static`, `root-gates`, and `v2-smoke` green. `v2-glass` first passed its report selftest,
-  then correctly published an `instrument-fail` report with zero product findings and zero retries:
-  its ninth matrix browser (`desktop`) observed `DevToolsActivePort has an invalid port` after
-  364 milliseconds, while all eight earlier and all three later fresh-browser rows passed with the
-  same pinned Chrome 151 provenance. `v2-persona-preview` skipped and `battery` failed only as the
-  dependency cascade. No gameplay page was created for the failed row; do not retry this head.
-- That second red exposed a shared-launcher publication race, not a WorldGen, Glass outcome,
-  browser-pin, profile-reuse, or timeout defect. The old reader treated path existence as proof that
-  Chromium had finished publishing both endpoint lines and killed the one owned browser on the
-  first parser-invalid observation. A test-first port-only file with its endpoint line missing
-  reproduced the old `invalid port` failure; a separate syntactically valid-looking prefix proved
-  the old reader could construct a socket before publication stabilized. The bounded local repair
-  now requires two consecutive identical, fully valid snapshots inside the same absolute startup
-  deadline; parser-invalid regular-file content is treated as potentially incomplete, while wrong
-  file types, links, and unexpected I/O still fail immediately. A persistent malformed regular file
-  reaches the unchanged deadline
-  with its last parse diagnosis, constructs no socket, launches no second process, and cleans its
-  profile. The strengthened `browsercdp --selftest`, Glass report selftest, full 12-viewport Glass
-  matrix, one-attempt v2 smoke, root preflight/selftest, root layout selftest, and sealed 787-outcome
-  layout gate all pass locally on this exact working diff. The full v2 suite remains 299 tests /1
-  skip; both TypeScript programs, `artunused`, syntax, and diff hygiene pass. Local preflight records
-  Edge 151 launch success plus the expected non-blocking revision-drift warning against the Edge 150
-  baseline. Three independent final read-only audits of the launcher, permanent controls, shared
-  callers, and synchronized references are clean after their findings were resolved. A new
-  committed head, fresh CI, and Claude exact-diff review remain required.
+- The focused package suite passes **12/12**. It reproduces the raw pre-init `ReferenceError` while
+  all four non-initializer public operations stay inert, proves failed seam installation does not
+  enable dispatch, then exercises exact rarity-tier forwarding, survey and whoosh nodes, live mute
+  and `sfxVol²`, singleton reuse, standard-first/WebKit-only construction, absent/refused
+  constructors, and rejected/successful/synchronous suspended-resume paths.
+- Deliberate restored defects fail diagnostically: enabling the facade before initialization fails
+  two tests; reversing constructor precedence fails the standard-wins test; removing WebKit fails
+  both fallback directions; adding a facade-level catch fails the application-seam propagation
+  test; and falling back after a present standard constructor throws fails the absence-only law.
+- The combined candidate passes 26 test files with **311 passed /1 skipped**, both root and app
+  TypeScript programs, `artunused`, and `git diff --check`. The complete one-attempt real-browser
+  slice smoke passes the full Gate-D core-loop journey with existing live survey/travel callers and zero
+  console errors. This is route/lifecycle evidence, not a WebKit-device or audible-quality claim.
+- Two independent final read-only source/test/caller/documentation audits are clean after their
+  findings were resolved. The WorldGen handoff is archived byte-verbatim; current references and
+  the complete program agree on this bounded scope.
+- Final certification still requires a committed exact head, a fresh draft PR into `develop`,
+  terminal exact-head CI, Claude review or an exact-head waiver, normal integration, the resulting
+  `develop` battery, and mapped DEV publication.
 
 ### Next actions
 
-1. Commit and push one new PR #27 head; never retry either known-red head.
-2. Require fresh exact-head CI, then request Claude's exact-diff review. Resolve only actionable
-   findings on the same branch;
-   merge only the reviewed terminal-green exact head under Nick's standing authority.
-3. Monitor the resulting `develop` battery and mapped DEV publication. Then continue F1b as
-   separate audio pre-init and epoch-contract PRs, followed by F2 canonical ingress before any
-   world-bound ownership/reward/receipt writer.
+1. Commit and push the completed bounded candidate, open a draft PR from `openai/mac` into
+   `develop`, and require
+   fresh exact-head CI. Request Claude's exact-diff review unless Nick explicitly waives it for that
+   exact head; do not conflate the PR #27 waiver with this batch.
+2. Merge only a reviewed-or-explicitly-waived terminal-green exact head, monitor `develop` and DEV
+   publication, then continue the separate epoch-contract F1b slice before F2 canonical ingress.
+   No world-bound ownership/reward/receipt writer starts before F2.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, `openai/mac`, based on merged `develop` tip
-`b5e5d0a3b4bb4057fa6d251816454b370e8b2624`. Draft PR #27's pushed exact head
-`1a0839a95e595673409436bae27962e999f256a0` is permanently non-certifying in run
-`31887203990`; the earlier head/run `fe37753d…` / `31886401312` remains separate immutable red
-history. The working tree contains only the bounded shared-launcher publication repair and its
-synchronized current references; no new repaired head has been pushed.
+**Current side:** OpenAI/Codex on macOS, `openai/mac`, based on synchronized `develop` merge
+`a50e593e2135f55ae8c37e6ece1f10c52701346b`. The worktree contains only the completed bounded audio
+facade, its focused tests, synchronized current references, the archived WorldGen handoff and this
+live program/handoff update. Resolve commit/PR/check state live rather than inferring it from this
+pre-publication snapshot.
 
-**GitHub step:** existing draft PR [#27](https://github.com/TheDakk/Celestial-Frontier/pull/27)
-targets `develop` from `openai/mac`. Do not retry or review-finalize known-red head
-`1a0839a95e595673409436bae27962e999f256a0` or its earlier failed predecessor. Push the bounded
-launcher repair as a new head, require fresh exact-head CI, then obtain Claude review of that exact
-repaired diff.
+**GitHub step:** after the complete local evidence is green, commit and push `openai/mac`, then
+open a new **draft** PR targeting `develop`. Do not reuse PR #27, push to another agent branch,
+mark Ready, merge, touch `main`, or publish manually.
 
 **PR details:**
 
 - Base branch: `develop`
 - Source branch: `openai/mac`
-- Copy-ready title: `F1b: make WorldGen contracts truthful`
-- Copy-ready description: `Corrects the bounded WorldGen handwritten contract without changing
-  the byte-verbatim generator or any generated value. Types required galaxy-cell web metadata and
-  exact epoch-keyed supernova remnant/birth results, removes the two app-local casts, and documents
-  the transitional GAL_SPRITES precondition precisely. Focused controls prove empty/special/cached
-  behavior, exact missing-hook failure and hooked success, epoch stability/change, bounded result
-  shapes, and declaration/type regressions in both directions. Updates current WorldGen, port,
-  program, deviation, codebase-reference and handoff documents. Explicitly excludes generator
-  logic/cache/order, CF1/F2, epoch persistence, _sanitizeSavedGenome, audio, Guide/Training/release
-  copy, balance, versioning, production and deployment. Also restores the descriptor catalog
-  wrapper byte-for-byte after the first exact-head CI correctly rejected a prose-only change through
-  its audited hash sentinel; the precise warning remains in WorldGen-owned surfaces, and no sentinel
-  hash is re-pinned. The next exact head also hardens the shared raw-CDP reader after CI caught a
-  transient partial `DevToolsActivePort` publication: it accepts only two identical complete endpoint
-  observations inside the existing single-process startup deadline, preserves immediate unsafe-file
-  rejection and bounded cleanup, and adds staged-prefix plus persistent-malformed controls without a
-  retry, timeout increase, Glass-specific workaround, or product change.`
+- Copy-ready title: `F1b: harden the audio facade before initialization`
+- Copy-ready description: `Makes the existing stings-only @cf/audio public seam safe before its
+  application-owned initialization without changing the byte-verbatim synth bodies or application
+  boot order. Preserves the exact five-export API, lazy singleton context, live Sound/Volume gates
+  and squared gain taper; restores standard-first WebKit constructor parity; and adds bounded
+  package controls for raw-defect reproduction, all four non-initializer public operations, post-init synthesis,
+  live mute/gain, constructor precedence/failure, singleton reuse and suspended-resume rejection.
+  Updates AUDIO, port, deviation, codebase-reference, complete-program and live-handoff truth.
+  Explicitly records that no current playable pre-init route was reproduced and excludes Arc 7/8
+  content/mixer/lifecycle/budgets/listening, Guide/Training/release copy, saves, balance, versioning,
+  production and deployment.`
 
-**Other side:** do not ask Claude to review-finalize either known-red head. After the new repaired
-head is pushed and its exact CI is terminal green, Nick should open Anthropic/Claude Code; Claude
-fetches and normally fast-forwards clean `anthropic/mac`, then reviews the exact remote diff without
-editing this worktree.
+**Other side:** Claude need not act while the candidate is local. After the exact PR head is pushed
+and terminal green, Nick should open Anthropic/Claude Code unless he explicitly waives review for
+that exact head; Claude fetches and normally fast-forwards clean `anthropic/mac`, then reviews the
+remote diff without editing this worktree.
 
 **Release status:** no release, manual deployment, production version bump, `develop` → `main`
 merge, or direct site write is part of this batch.

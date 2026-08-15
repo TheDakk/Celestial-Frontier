@@ -15,6 +15,17 @@
 > branch; `installCaptureHooks()` remains the current boot seam. This is
 > contract truth, not removal of the free-global dependency, D-HAZE, CF1/F2,
 > `_sanitizeSavedGenome` mutation, or F4 clock work.
+> **2026-08-15 F1b audio package overlay:** The v2 package remains stings-only, but its public
+> rarity/survey/navigation stings and `applySfxGain()` now no-op before `initAudio()` installs the
+> save-backed seam. Initialization creates no context. After it, Sound-off prevents construction;
+> the first enabled sting lazily prefers standard `AudioContext`, falls back to
+> `webkitAudioContext` only when standard is absent, and reuses the context. Bounded package tests
+> cover pre-init safety, post-init dispatch, live mute state, constructor failure/fallback and
+> suspended resume rejection. During the awaited save-load, the app assigns the save and then calls
+> `initAudio()` synchronously before later playable scene/input publication; no ordinary current
+> pre-init action route to the former package exception was reproduced. This does not implement or
+> close Arc 7/8 or Gate G lifecycle, content, ownership, budget, rights, device or listening work, and it
+> changes no Guide/Training/release-copy capability or version identity.
 > **2026-08-13 exploration/ship/loot/companion/audio review:** The executable v2
 > boundary remains the Phase-4 travel/survey slice. `apps/game/src/main.ts` renders the
 > read-only Compendium through `@cf/art/species`, consumes `@cf/domain-combatcore`
@@ -1401,6 +1412,21 @@ Compendium / Star Atlas / Cosmic Events / Settings.
 
 > **See `AUDIO.md` for the full system** (creature voices, combat, ambience, the
 > feedback grammar, the toggles, and the traps). This section is the code map only.
+
+The current v2 package is deliberately narrower than production v1: its exact public surface is
+`initAudio`, the lifted rarity/survey/navigation stings, and the shared-gain updater. The three
+sting calls and gain updater are inert before `initAudio()` installs live Sound/Volume getters;
+initialization itself allocates nothing.
+Thereafter Sound-off remains mute-before-create, while an enabled call lazily selects standard
+`AudioContext` before the `webkitAudioContext` compatibility fallback and reuses the context.
+Focused package controls cover the pre-init/public surface in both directions and the constructor,
+mute and suspended-resume boundaries. During the awaited save-load, the application assigns the
+save and calls `initAudio()` synchronously before later playable scene/input publication; no
+ordinary current pre-init action route was reproduced. The repaired exception is therefore a
+package contract finding rather than a proved player route. Full engine lifecycle, voices,
+ambience, combat/Guardian cues, music, assets/rights, mixing, node/buffer ownership, budgets,
+device listening and quality acceptance
+remain open under Arc 7/8 and Gate G; no player-facing capability or version follows from this guard.
 
 **v1.8 "The Connection" added the largest part of this layer** and it is not
 described below: `voiceOf`/`playVoice` (deterministic per-genome creature voices

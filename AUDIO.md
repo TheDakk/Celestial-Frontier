@@ -1,8 +1,9 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
 **STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
-2026-07-30. The dated v2 next-arc overlay below matches the development boundary and approved
-direction as of **2026-08-14**. It is a plan, not a claim that the systems are live.
+2026-07-30. The dated v2 overlay below matches the development boundary and approved direction as
+of **2026-08-15**. It distinguishes the bounded sting package that is live from the later systems
+that remain a plan.
 **Shipped (production v1):** v1.8.0 "The Connection" · corrected and widened in v1.8.4
 "Clear Ground".
 
@@ -11,17 +12,32 @@ whole layer undocumented despite being the largest single feature of v1.8.
 
 ---
 
-## 0. v2.0 next-arc overlay — approved direction, not implemented (2026-08-14)
+## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-15)
 
 ### 0.1 Truth boundary
 
 The current v2 development package is **stings-only**. `@cf/audio` lifts the synthesized rarity,
 survey and navigation stings; the application currently calls survey ping and travel whoosh, while
 the rarity sting remains an exported discovery seam. Current v2 Settings expose only master Sound
-and volume. There are no v2 creature calls, combat or Guardian cues, ambience, music, recorded
-assets, asset loader, category mixer, concurrency manager or audio-package tests. Imported
-`vce`/`cbx` creature-voice and battle-sound preferences are preserved by persistence but are not
-yet live controls.
+and volume.
+
+The package facade is safe before application initialization: every exported sting and
+`applySfxGain()` is a no-op until `initAudio()` installs the save-backed seam. Initialization itself
+does not create a context. Afterward, Sound-off remains a real mute-before-create gate; the first
+enabled sting lazily chooses standard `AudioContext` first, falls back to `webkitAudioContext` only
+when the standard constructor is absent, and reuses the resulting context. A bounded package suite
+exercises import/pre-init safety, all four non-initializer public operations, post-init dispatch,
+live mute state, constructor precedence/fallback, unavailable or throwing constructors, and
+suspended-context resume rejection. This is contract/lifecycle hardening of the public package seam. During the
+awaited save-load, the current app assigns the save and then calls `initAudio()` synchronously,
+before later playable scene/input publication; no ordinary current pre-init action route to the
+former exception has been reproduced.
+
+There are still no v2 creature calls, combat or Guardian cues, ambience, music, recorded assets,
+asset loader, category mixer or concurrency manager. Imported `vce`/`cbx` creature-voice and
+battle-sound preferences are preserved by persistence but are not yet live controls. The bounded
+sting suite is not the complete lifecycle, content, budget, listening or device evidence required
+by Arc 7/8 and Gate G.
 
 Everything below this paragraph is an **approved next-arc contract**. Capability-aware Guide copy
 and release notes must continue to describe only the stings that actually work until each later
