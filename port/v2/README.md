@@ -90,6 +90,23 @@ so. Empty, special-only, and cached calls may not read that binding. This closes
 the missing public warning, not the free-global dependency, CF1/F2, or F4 clock
 wiring, and `_sanitizeSavedGenome`'s separate DOM-11 mutation remains open.
 
+The current `@cf/audio` boundary remains stings-only. Its exported rarity,
+survey and navigation stings plus `applySfxGain()` safely no-op before
+`initAudio()` installs the save-backed seam; initialization does not create an
+`AudioContext`. After initialization, Sound-off prevents context creation, the
+first enabled sting lazily prefers standard `AudioContext` and uses
+`webkitAudioContext` only when the standard constructor is absent, and one
+context is reused. The focused package suite covers import/pre-init safety,
+post-init dispatch, live mute state, constructor precedence/failure and
+suspended resume rejection without claiming audible quality. During the
+awaited save-load, the application assigns the save and then calls
+`initAudio()` synchronously before later playable scene/input publication; no
+ordinary current pre-init action route to the former package exception has
+been reproduced. Creature voices, ambience, combat/Guardian cues, music,
+mixer/node ownership, visibility/context-loss lifecycle, budgets, rights, listening and
+device evidence remain Arc 7/8 and Gate G work. This hardening changes no Guide
+capability, Training lesson, development-release bullet or version identity.
+
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,
 43 authored stable IDs and 41 player topics with search, categories, native-keyboard

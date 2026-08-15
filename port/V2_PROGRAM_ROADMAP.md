@@ -8,8 +8,9 @@
 > integrated in `develop` at merge `a1dabdeb4059292d67d7a89652e92fb317d750c7`; Charter
 > SCN-1/SCN-2/SCN-6 is integrated at merge `bd49beb0693b45fdd57d4acad746ade79843a91e`.
 > UI-P1 registered panel-chrome dismissal is integrated at merge
-> `b5e5d0a3b4bb4057fa6d251816454b370e8b2624`; the truthful WorldGen contract is the active
-> bounded F1b batch. Later F1b slices and product batches remain planned.
+> `b5e5d0a3b4bb4057fa6d251816454b370e8b2624`; the truthful WorldGen contract is integrated at
+> merge `a50e593e2135f55ae8c37e6ece1f10c52701346b`. Audio pre-initialization hardening is the active
+> bounded F1b batch. The epoch slice and later product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -227,8 +228,9 @@ passed v2 static, root gates, one-attempt smoke, 12-viewport glass, same-commit 
 final battery join at that SHA. Claude's exact-diff review was resolved and the final instrument-
 repair head `a0ee7666f5fb1edf22a0035acfeb7df1beebefe9` passed test-battery run
 [`31858641826`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31858641826). PR #25 then
-merged normally at `bd49beb0693b45fdd57d4acad746ade79843a91e`. Epoch, lifted
-declaration/runtime and audio pre-init remain separate F1b batches.
+merged normally at `bd49beb0693b45fdd57d4acad746ade79843a91e`. WorldGen declaration/runtime
+truth is integrated below; audio pre-initialization is active, while epoch and other declaration
+items remain separate F1b batches.
 
 **PR #25 final-head CI instrument note (updated 2026-08-15):** the following evidence-only PR head
 `a5896dc9a5e98c0f2037bb1cb16905b74e48feb1` did not invalidate
@@ -289,7 +291,7 @@ The bounded implementation and synchronized-reference commit is
 `c1bfc3b7674f5113dd7c9a0c6063fc99737ea1ba` passed run `31872279328` and integrated as recorded
 above. The known-red run remains immutable history and was not retried.
 
-**F1b WorldGen truthful-contract implementation record (2026-08-15, active bounded candidate):**
+**F1b WorldGen truthful-contract implementation record (2026-08-15, integrated):**
 the byte-verbatim generator body, generated values, cache keys and call order remain unchanged.
 The typed facade exposes required own galaxy-cell `web` metadata and the exact supernova
 remnant/birth result, names the second supernova argument as the deterministic epoch key, and states
@@ -300,13 +302,12 @@ cross-epoch change, bounded
 site/birth shape, declaration semantics, and both missing-hook failure and installed-hook success.
 This closes DOM-2, DOM-3's missing-warning obligation, and only the WorldGen `.web` half of DOM-11.
 It does not remove the hook dependency, fix `_sanitizeSavedGenome`, install the live epoch bridge,
-close CF1/F2, change generation, or close a Gate. Reviewed bounded commit
+close CF1/F2, change generation, or close a Gate. Bounded implementation commit
 `29601e478e99b2a114720e23b696e8fb7d79d33c` passes 299 tests /1 skip, both TypeScript programs,
 `artunused`, `git diff --check`, and the complete one-attempt real-browser slice smoke with zero
 console errors. Three independent read-only source, test and documentation audits are clean after
-their findings were resolved. The first pushed exact head is preserved red below. Claude review and
-fresh exact-CI on the eventual launcher-repair head remain integration gates; local evidence cannot
-certify a later handoff head.
+their findings were resolved. The first two pushed heads are preserved as separate immutable red
+records below; the final repaired head and integration are recorded after them.
 
 **PR #27 exact-head CI sentinel note (2026-08-15):** draft PR
 [#27](https://github.com/TheDakk/Celestial-Frontier/pull/27) reached exact head
@@ -359,8 +360,46 @@ Glass matrix, one-attempt v2 smoke, root preflight/selftest, root layout selftes
 hygiene all pass locally on the same working diff; local preflight also records a successful Edge
 151 launch and the expected non-blocking revision-drift warning against the Edge 150 baseline.
 Three independent final read-only source, control, caller and documentation audits are clean after
-their findings were resolved. A new pushed exact head, fresh CI, and Claude review remain required
-before integration.
+their findings were resolved.
+
+**PR #27 final integration record (2026-08-15):** exact final head
+`ce98236083f0f71df8b71013f502a6dc54321a31` passed every job and final join in test-battery run
+[`31889798455`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31889798455). GitHub
+recorded no Claude review or PR comments. Nick explicitly authorized marking that exact head Ready
+and merging without waiting for Claude feedback after three independent Codex audits were clean.
+PR #27 merged normally at `a50e593e2135f55ae8c37e6ece1f10c52701346b`; the merge passed every
+job and final join in `develop` run
+[`31892937375`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31892937375). Mapped
+publication run [`31893693225`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31893693225)
+passed development and skipped production; the public manifest serves build
+`develop-a50e593e2135` from that full merge SHA. This closes the bounded WorldGen batch, not
+CF1/F2, F4, `_sanitizeSavedGenome`, an entire Gate, production or release authority.
+
+**F1b audio pre-initialization implementation record (2026-08-15, active bounded candidate):**
+the lifted sting bodies call the application-owned free `ac()` seam before their local synthesis
+`try`, so the old direct package exports could throw when called before `initAudio()`. The current
+application calls audio initialization synchronously after assigning the save during the awaited
+save-load and before later playable scene/input publication; no ordinary current pre-init action
+route was reproduced. The bounded facade keeps the exact five public exports, makes every sting and
+`applySfxGain()` inert until successful initialization, then delegates without an added facade
+catch. Initialization remains allocation-free; Sound-off remains mute-before-create; the first
+enabled call lazily reuses one context. Standard
+`AudioContext` wins, with `webkitAudioContext` used only when standard is absent; missing or
+throwing constructors fail silent. Focused controls prove raw-defect reproduction, all four
+non-initializer public operations, post-init dispatch for all three stings, live mute/gain,
+constructor precedence/failure, singleton reuse and contained suspended-resume rejection. This
+slice does not edit the verbatim bodies or application boot order and does not implement Arc 7/8
+content, mixer, ownership, budgets, rights, device listening or Gate G. No
+Guide, Training, draft-release, version, production or deployment change follows from it.
+
+The completed working candidate passes the focused 12-test package suite and deliberate controls
+that restore early dispatch, reverse/remove WebKit selection, add a facade catch, or fall back after
+a present standard constructor throws. The combined v2 suite passes 26 files with 311 passed /1
+skip; both TypeScript programs, `artunused`, diff hygiene and the complete one-attempt real-browser
+slice smoke are green with zero console errors. Two independent final audits are clean after their
+findings were resolved. This is local candidate evidence only; a committed exact head, fresh PR
+battery, review or exact-head waiver, normal integration, `develop` battery and mapped DEV
+publication remain the certification path.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete
