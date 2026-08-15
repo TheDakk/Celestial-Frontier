@@ -124,13 +124,22 @@ Guide to show v2.0 plus the full manifest commit.
 Every CI/publication workflow that packages a preview runs this outcome check before
 upload or publication.
 
-The package browser check owns a fixed 30-second CDP startup allowance, and the root
-layout gate (`tools/uilayout.js`) owns the same bounded allowance after the identical
-Linux cold-start phase recurred there (run `31758515194` attempt 1, first browser launch
-of the battery job); the shared launcher keeps its 15-second default for other evidence
-tools. `preview:selftest`
-captures the exact caller options on every platform and completes a real-browser
-outcome. On POSIX it starts Chrome immediately while withholding the ready CDP
+Three phase-owned real-browser launch sites own a fixed 30-second CDP startup allowance: the
+package browser check; the root layout gate (`tools/uilayout.js`), after the identical Linux
+cold-start phase recurred there (run `31758515194` attempt 1, first browser launch of the battery
+job); and `browsercdp --selftest`'s first real `Browser.getVersion` provenance launch. The shared
+launcher keeps its 15-second default for other evidence tools, and the browsercdp selftest's later
+warm event-failure launch keeps its 10-second bound. The browsercdp selftest's earlier injected
+WebSocket-timeout phase launches no real browser: a private seam starts a portable Node child after
+writing one valid owned `DevToolsActivePort`, then requires the 200-millisecond socket timeout,
+socket close, bounded child shutdown, and profile cleanup. A missing endpoint therefore rejects in
+the wrong phase and fails the control instead of consuming a cold-browser allowance.
+This split follows the immutable diagnosis from run `31815658572`: the named WebSocket case had
+failed on its earlier 10-second Chrome-start phase. It adds no retry, fallback, workflow timeout,
+or command/shutdown expansion.
+
+`preview:selftest` captures the exact preview-caller options on every platform and completes a
+real-browser outcome. On POSIX it starts Chrome immediately while withholding the ready CDP
 endpoint for 16 seconds, proving the generic allowance rejects without stealing
 startup time from the exact preview caller. This is a bounded repair for browser
 startup variance, not a retry or a workflow/job timeout increase.

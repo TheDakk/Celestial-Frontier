@@ -220,9 +220,19 @@ glass selftest and all 12 viewport classes. Draft PR
 [#25](https://github.com/TheDakk/Celestial-Frontier/pull/25) test-battery run
 [`31813881697`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31813881697) independently
 passed v2 static, root gates, one-attempt smoke, 12-viewport glass, same-commit persona/preview and the
-final battery join at that SHA. Claude review and terminal CI on the final evidence-update head remain
-integration gates. Epoch, lifted declaration/runtime, audio pre-init and right-rail work remain
+final battery join at that SHA. Claude review and terminal CI on the eventual instrument-repair head
+remain integration gates. Epoch, lifted declaration/runtime, audio pre-init and right-rail work remain
 separate F1b batches.
+
+**PR #25 final-head CI instrument note (2026-08-14):** the following evidence-only PR head
+`a5896dc9a5e98c0f2037bb1cb16905b74e48feb1` did not invalidate
+that Charter evidence: run `31815658572` passed static, root, and full glass jobs, then v2 smoke
+stopped inside the shared browsercdp selftest before gameplay. Its injected WebSocket-timeout case
+had launched real Chrome and could therefore reject on the earlier 10-second cold-start phase. The
+bounded correction isolates that control behind one deterministic portable Node child and a valid
+owned endpoint, while only the following live provenance launch receives 30 seconds; the generic
+15-second default, later warm 10-second launch, command/shutdown bounds, and no-retry law remain.
+Matching fixed-head CI and exact-diff review remain integration gates.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete
