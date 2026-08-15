@@ -82,36 +82,58 @@ the archive verbatim and refresh this handoff in place.
 - Deliberate defect injections are restored: renaming `epoch` to `n` failed the declaration
   sentinel; returning plain `Gal[]` failed the real `.web` consumer typecheck; restoring
   `unknown` failed the supernova consumer typecheck.
-- Current local evidence: focused WorldGen/Descriptors/Scene/Address suites pass 55 tests /1 skip;
-  the full v2 suite passes **299 tests /1 skip**; root and app TypeScript programs, `artunused`,
-  and `git diff --check` pass. The complete one-attempt real-browser slice smoke passes the full
-  Guide/Training/settings/travel/survey/land/save/reload/phone journey with zero console errors.
-  Three independent read-only source, test and documentation audits are clean after every
-  actionable instrument finding was resolved. Bounded commit
-  `29601e478e99b2a114720e23b696e8fb7d79d33c` contains that exact reviewed candidate. Remote
-  exact-head CI and independent Claude exact-diff review remain pending and must be recorded before
-  integration.
+- Pre-CI local evidence for implementation commit
+  `29601e478e99b2a114720e23b696e8fb7d79d33c`: focused
+  WorldGen/Descriptors/Scene/Address suites pass 55 tests /1 skip; the full v2 suite passes
+  **299 tests /1 skip**; root and app TypeScript programs, `artunused`, `git diff --check`, and the
+  complete one-attempt real-browser slice smoke pass with zero console errors. Three independent
+  read-only source, test and documentation audits were clean after their findings were resolved;
+  those checks did not replace the complete static battery.
+- Draft PR [#27](https://github.com/TheDakk/Celestial-Frontier/pull/27) reached exact head
+  `fe37753d66b52d66c08df878cd315cc7168dcb2e`. That head is permanently non-certifying: test-battery
+  run [`31886401312`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31886401312)
+  completed with the full `v2 parity and complete TypeScript surface` step, `root-gates`, `v2-smoke`
+  and `v2-glass` all green. The only red primary job was `v2-static`, which failed closed because
+  `packages/domain/descriptors/src/apphooks.ts` no longer matched its audited authority hash;
+  `v2-persona-preview` skipped and `battery` failed only as the dependency cascade. Its sole change
+  was sharper historical prose. This is a provenance-sentinel failure, not a WorldGen runtime,
+  type, generation, art-routing, coverage or browser finding. Do not retry this head and do not
+  re-pin the sentinel.
+- The bounded repair restores `apphooks.ts` byte-for-byte to audited SHA-256
+  `c7544344733ce0efe0c08762b96bfa3d1ca8451e38b7617ef67aa8fde9a1329a`
+  and pre-batch Git blob `ba95d19349f3ae911f41a2903080c03816489767`. Precise dependency
+  wording remains in the owning WorldGen facade, declaration, tests and refreshed references.
+- With those bytes restored, local `overridecheck` reports 1,014/1,014 routes, zero dead and
+  1,010/1,010 Earth coverage; every `overridecontrol` leg passes, including the catalog-wrapper
+  byte sentinel and restored-clean outcome; `artaudit` reports 23 sources/zero findings;
+  `coveragegap` reports 1,010/1,010 with zero remaining; `speccheck` reports 454 declared
+  fields/zero unread/zero inert; and all 299 tests /1 skip, both TypeScript programs, `artunused`
+  and `git diff --check` pass. Fresh repaired-head CI and Claude exact-diff review remain required.
 
 ### Next actions
 
-1. Push bounded commit `29601e478e99b2a114720e23b696e8fb7d79d33c` plus this handoff update on
-   `openai/mac`; open a draft PR into `develop`.
-2. Require exact-head CI and Claude exact-diff review. Resolve only actionable findings on the
-   same branch; merge only the reviewed terminal-green exact head under Nick's standing authority.
+1. Commit only the bounded `apphooks.ts` byte restoration plus this synchronized handoff/program
+   status, then push the new head to existing draft PR #27; never retry the known-red head.
+2. Require fresh exact-head CI on the repaired head, then request Claude's exact-diff review.
+   Resolve only actionable findings on the same branch; merge only the reviewed terminal-green
+   exact head under Nick's standing authority.
 3. Monitor the resulting `develop` battery and mapped DEV publication. Then continue F1b as
    separate audio pre-init and epoch-contract PRs, followed by F2 canonical ingress before any
    world-bound ownership/reward/receipt writer.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, `openai/mac`, based on clean merged `develop` tip
-`b5e5d0a3b4bb4057fa6d251816454b370e8b2624`. Reviewed WorldGen implementation/reference commit
-`29601e478e99b2a114720e23b696e8fb7d79d33c` is locally committed with green local gates; this
-handoff-only exact-status update follows it.
+**Current side:** OpenAI/Codex on macOS, `openai/mac`, based on merged `develop` tip
+`b5e5d0a3b4bb4057fa6d251816454b370e8b2624`. Draft PR #27's pushed exact head
+`fe37753d66b52d66c08df878cd315cc7168dcb2e` is permanently non-certifying in run
+`31886401312`. The working tree contains the bounded audited-byte restoration for
+`packages/domain/descriptors/src/apphooks.ts` plus this exact-status update; the repaired head has
+not yet been pushed.
 
-**GitHub step:** push `openai/mac`, then create a draft PR targeting `develop`. Require matching
-terminal-green exact-head CI and Claude review. Do not append this work to merged PR #26 and do not
-copy files into an Anthropic worktree.
+**GitHub step:** existing draft PR [#27](https://github.com/TheDakk/Celestial-Frontier/pull/27)
+targets `develop` from `openai/mac`. Do not retry or review-finalize known-red head
+`fe37753d66b52d66c08df878cd315cc7168dcb2e`. Push the bounded restoration as a new head, require
+fresh exact-head CI, then obtain Claude review of that exact repaired diff.
 
 **PR details:**
 
@@ -126,11 +148,15 @@ copy files into an Anthropic worktree.
   shapes, and declaration/type regressions in both directions. Updates current WorldGen, port,
   program, deviation, codebase-reference and handoff documents. Explicitly excludes generator
   logic/cache/order, CF1/F2, epoch persistence, _sanitizeSavedGenome, audio, Guide/Training/release
-  copy, balance, versioning, production and deployment.`
+  copy, balance, versioning, production and deployment. Also restores the descriptor catalog
+  wrapper byte-for-byte after the first exact-head CI correctly rejected a prose-only change through
+  its audited hash sentinel; the precise warning remains in WorldGen-owned surfaces, and no sentinel
+  hash is re-pinned.`
 
-**Other side:** do not open Claude review until the candidate is committed, pushed and visible as
-a draft PR. Then Nick should open Anthropic/Claude Code; Claude fetches and normally fast-forwards
-its clean `anthropic/mac` branch and reviews the exact remote diff without editing this worktree.
+**Other side:** do not ask Claude to review-finalize the known-red head. After the repaired head is
+pushed and its exact CI is terminal green, Nick should open Anthropic/Claude Code; Claude fetches
+and normally fast-forwards clean `anthropic/mac`, then reviews the exact remote diff without editing
+this worktree.
 
 **Release status:** no release, manual deployment, production version bump, `develop` → `main`
 merge, or direct site write is part of this batch.
