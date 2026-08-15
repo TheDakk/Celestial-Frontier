@@ -81,13 +81,14 @@ the archive verbatim and refresh this handoff in place.
   real-browser smoke passes the original journey plus both browser-mouse rail gaps, independent marker
   removal, owned/unowned canvas directions, non-Element targets and zero console errors.
 - The synchronized static release semantics, unused-art audit, glass-matrix selftest and all 12
-  isolated viewport classes pass. Final committed-head CI and independent exact-diff review remain
-  required. Do not describe this uncommitted working tree as certified or integrated.
+  isolated viewport classes pass. Three independent read-only audits are clean after their findings
+  were resolved. Final PR-head CI and Claude exact-diff review remain required; local evidence does
+  not certify or integrate the candidate.
 
 ### Next actions
 
-1. Commit and push the bounded candidate, open a draft PR from `openai/mac` to `develop`, then
-   request Claude exact-diff review. Resolve only actionable findings on the same branch.
+1. Push this final handoff metadata to draft PR #26, then request Claude exact-diff review. Resolve
+   only actionable findings on the same branch.
 2. Merge only a reviewed, terminal-green exact head under Nick's standing authority; monitor the
    resulting `develop` battery and mapped DEV publication before the next PR.
 3. Continue remaining F1b as separate WorldGen declaration/runtime, audio pre-init and epoch-contract
@@ -96,10 +97,12 @@ the archive verbatim and refresh this handoff in place.
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, `openai/mac`, based on clean merge
-`bd49beb0693b45fdd57d4acad746ade79843a91e`. The working tree contains only the bounded UI-P1
-candidate and synchronized docs/tests; resolve its eventual commit and check state live.
+`bd49beb0693b45fdd57d4acad746ade79843a91e`. Bounded UI-P1 implementation commit
+`d6ccb9b810fc644437ed205e4f6dbed7974cdba1` is pushed with synchronized docs/tests; resolve the
+PR's final head and checks live.
 
-**GitHub step:** after local gates, commit/push `openai/mac` and open a draft PR into `develop`.
+**GitHub step:** draft PR [#26](https://github.com/TheDakk/Celestial-Frontier/pull/26) targets
+`develop` from `openai/mac`. Require Claude review and matching terminal-green CI on its final head.
 Do not reuse or edit merged PR #25 and do not copy files into an Anthropic worktree.
 
 **PR details:**
@@ -117,8 +120,8 @@ Do not reuse or edit merged PR #25 and do not copy files into an Anthropic workt
   modal/Training/coexistence/Escape refactors, UI-P2/P3/P4, saves, worldgen/CF1, balance/content,
   production versioning, deployment and develop-to-main release work.`
 
-**Other side:** do not open Claude yet. After the draft PR is pushed, Nick may open Anthropic/Claude
-Code for exact-diff review; Claude first fetches and normally fast-forwards its clean
+**Other side:** Nick should now open Anthropic/Claude Code for exact-diff review of PR #26. Claude
+first fetches and normally fast-forwards its clean
 `anthropic/mac` branch and reviews remotely without editing this worktree.
 
 **Release status:** no release, manual deployment, production version bump, `develop` → `main`
