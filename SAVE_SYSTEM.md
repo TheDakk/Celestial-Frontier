@@ -57,6 +57,19 @@
 > fixed-point round-trip every supported shape. Nothing in this planned overlay
 > changes the current save envelope, Guide, release marker or import behavior.
 
+> **2026-08-15 v2 epoch-snapshot overlay (current code):** The compatibility-
+> named `SaveStateV2.EPOCH_BASE` field carries the advancing snapshot written as
+> `epoch`; it is not synonymous with `EpochClock.base()`. On boot, the app creates
+> one clock from imported `EPOCH_BASE` and a fresh zero-origin monotonic elapsed
+> segment. Before an ordinary export, `persistView()` refreshes the carrier from
+> `epochClock.current()`; saving does not reconstruct the clock. A later boot
+> imports that serialized value as the next construction origin and starts a new
+> elapsed segment. The exporter remains clock-agnostic and cannot repair a caller
+> that supplied `base()`. A real-browser control now advances one epoch, persists
+> through the actual IndexedDB repository, reads the raw primary and reloads the
+> exact value; this does not claim automatic edge persistence, foreground-only
+> accrual, cross-tab safety, or the future `activePlayMs` lease.
+
 > **2026-08-14 v2 port overlay (matches `port/v2` code):** The browser slice now
 > distinguishes a fresh store, a supported coherent save, an unsupported future
 > version, a corrupt/sparse payload, and a transient storage failure. Only a
@@ -452,8 +465,8 @@
 > deployment/version authority follows.
 > No save-format or version change is involved.
 
-**STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
-matches `port/v2` as of 2026-08-12. ⚠ Read the v1.8.7 section (a reverted
+**STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlays
+match `port/v2` as of 2026-08-15. ⚠ Read the v1.8.7 section (a reverted
 `size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`,
 harvest on play time).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated

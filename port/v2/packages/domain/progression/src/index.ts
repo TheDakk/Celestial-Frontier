@@ -2,28 +2,36 @@
 
    THE CLOCK LAW (v1.8.8, "Paid for Playing"): an offline game cannot verify
    Date.now(). Three rounds of wall-clock mitigations failed before the
-   untrustworthy clock was REMOVED instead of defended. COSMIC_EPOCH is a
-   persisted, monotonic PLAY-TIME accumulator:
-       COSMIC_EPOCH = EPOCH_BASE + floor(playSeconds / EPOCH_TICK)
-   It never reads the OS clock, survives reloads (EPOCH_BASE saved as
-   `epoch`), and cannot be wound. The reviewer's own correction elevates it:
-   "the port's single time authority" for EVERY cooldown.
+   untrustworthy clock was REMOVED instead of defended. COSMIC_EPOCH is the
+   capped ecology/world-presentation epoch and retained legacy-harvest clock:
+       COSMIC_EPOCH = constructionBase + floor(elapsedSeconds / EPOCH_TICK)
+   It never reads the OS wall clock. The app injects one monotonic elapsed
+   session segment; visibility/answerability policy belongs to F4 and is not
+   implied by this domain API. Future missions, Recovery, and Auto-Extractor
+   readiness use the separate persisted activePlayMs authority.
+
+   PERSISTENCE RECIPE — the distinction base() versus current() is material:
+   1. On boot, construct once from the saved epoch and a fresh elapsed segment
+      whose origin is zero.
+   2. During that session, persist current(), never base(). Saving does not
+      reconstruct or rebase the live clock.
+   3. On the next boot, construct a new clock from the last serialized current()
+      snapshot and another fresh zero-origin elapsed segment.
+   Persisting base() freezes all progress made in the session. Rebasing while
+   reusing the old elapsed segment double-counts it.
 
    Constants and predicate bodies mirror v1.8.9 exactly (main.js ~12198,
-   ~18291, ~14243). The ONE deliberate difference: the time source is
-   INJECTED (seconds of play), so the domain stays clock-free and the
-   harvestclock invariant — wind the wall clock, gain nothing — holds BY
-   CONSTRUCTION, not by discipline. The app layer owns the real source
-   (performance.now()-based, as v1.8.9's perfTime). */
+   ~18291, ~14243). The time source remains injected so the domain stays
+   clock-free and winding the device clock grants nothing by construction. */
 
-/** Seconds of play per epoch — v1.7 balance: 240→1200 ("slow evolution, not
+/** Injected elapsed seconds per epoch — v1.7 balance: 240→1200 ("slow evolution, not
     a 4-min farm"). ⚠ SHARED knob: drives biosphere recovery AND harvest
     income — retune with both in view (ECONOMY_LOOT_CRAFTING.md). */
 export const EPOCH_TICK = 1200;
-/** Epochs of play before a settled world pays again (~40 min of exploring). */
+/** Epochs before the retained settled-world harvest predicate becomes ready. */
 export const HARVEST_EPOCHS = 2;
-/** Algorithmic safety ceiling. One epoch is 20 minutes of active play, so
-    10,000 represents more than 138 continuous active days. Ecology's
+/** Algorithmic safety ceiling. One epoch is 20 injected elapsed minutes, so
+    10,000 represents more than 138 continuous days. Ecology's
     verbatim evolution walks once per epoch; an unbounded imported value can
     otherwise lock the main thread for minutes or effectively forever. */
 export const MAX_COSMIC_EPOCH = 10_000;
@@ -39,19 +47,23 @@ export function sanitizeEpoch(value: unknown): number {
 export interface ConquestRow { t?: number; tier?: number; e?: number | null; }
 
 export interface EpochClock {
-  /** COSMIC_EPOCH now: epochBase + floor(playSeconds()/EPOCH_TICK). */
+  /** Advancing snapshot for ordinary persistence and epoch-aware consumers. */
   current(): number;
-  /** The persisted base — write this to the save as `epoch`. */
+  /** Immutable sanitized construction origin. Never use as the current save snapshot. */
   base(): number;
 }
 
-/** playSeconds: monotonic seconds of PLAY this session (not wall time). */
-export function createEpochClock(epochBase: number, playSeconds: () => number, tick: number = EPOCH_TICK): EpochClock {
+/**
+ * `elapsedSeconds` is one app-owned monotonic segment, starting at zero for
+ * each construction/rebase. Persist `current()`; rebuild only on a later boot
+ * from that serialized snapshot and a new zero-origin segment.
+ */
+export function createEpochClock(epochBase: number, elapsedSeconds: () => number, tick: number = EPOCH_TICK): EpochClock {
   const base = sanitizeEpoch(epochBase);
   const safeTick = Number.isFinite(tick) && tick > 0 ? tick : EPOCH_TICK;
   return {
     current(): number {
-      const elapsed = +playSeconds();
+      const elapsed = +elapsedSeconds();
       const steps = Number.isFinite(elapsed) && elapsed > 0 ? Math.floor(elapsed / safeTick) : 0;
       return Math.min(MAX_COSMIC_EPOCH, base + steps);
     },
@@ -60,7 +72,7 @@ export function createEpochClock(epochBase: number, playSeconds: () => number, t
 }
 
 /** v1.8.9 body, verbatim semantics (main.js:18297):
-    absent `e` ⇒ ready; otherwise ready after HARVEST_EPOCHS of play. */
+    absent `e` ⇒ ready; otherwise ready after HARVEST_EPOCHS. */
 export function harvestReady(c: ConquestRow | null | undefined, cosmicEpoch: number): boolean {
   return !!c && (c.e == null || (cosmicEpoch - (+c.e! || 0)) >= HARVEST_EPOCHS);
 }

@@ -9,8 +9,9 @@
 > SCN-1/SCN-2/SCN-6 is integrated at merge `bd49beb0693b45fdd57d4acad746ade79843a91e`.
 > UI-P1 registered panel-chrome dismissal is integrated at merge
 > `b5e5d0a3b4bb4057fa6d251816454b370e8b2624`; the truthful WorldGen contract is integrated at
-> merge `a50e593e2135f55ae8c37e6ece1f10c52701346b`. Audio pre-initialization hardening is the active
-> bounded F1b batch. The epoch slice and later product batches remain planned.
+> merge `a50e593e2135f55ae8c37e6ece1f10c52701346b`; audio pre-initialization hardening is integrated at
+> merge `44925f62abdfcdf9c17e512dd49a57a183e217ec`. The epoch persistence contract is the active
+> bounded F1b batch; later product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -229,7 +230,7 @@ final battery join at that SHA. Claude's exact-diff review was resolved and the 
 repair head `a0ee7666f5fb1edf22a0035acfeb7df1beebefe9` passed test-battery run
 [`31858641826`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31858641826). PR #25 then
 merged normally at `bd49beb0693b45fdd57d4acad746ade79843a91e`. WorldGen declaration/runtime
-truth is integrated below; audio pre-initialization is active, while epoch and other declaration
+truth and audio pre-initialization are integrated below; epoch is active, while other declaration
 items remain separate F1b batches.
 
 **PR #25 final-head CI instrument note (updated 2026-08-15):** the following evidence-only PR head
@@ -375,7 +376,7 @@ passed development and skipped production; the public manifest serves build
 `develop-a50e593e2135` from that full merge SHA. This closes the bounded WorldGen batch, not
 CF1/F2, F4, `_sanitizeSavedGenome`, an entire Gate, production or release authority.
 
-**F1b audio pre-initialization implementation record (2026-08-15, active bounded candidate):**
+**F1b audio pre-initialization implementation record (2026-08-15, integrated):**
 the lifted sting bodies call the application-owned free `ac()` seam before their local synthesis
 `try`, so the old direct package exports could throw when called before `initAudio()`. The current
 application calls audio initialization synchronously after assigning the save during the awaited
@@ -392,14 +393,47 @@ slice does not edit the verbatim bodies or application boot order and does not i
 content, mixer, ownership, budgets, rights, device listening or Gate G. No
 Guide, Training, draft-release, version, production or deployment change follows from it.
 
-The completed working candidate passes the focused 12-test package suite and deliberate controls
+The bounded candidate passed the focused 12-test package suite and deliberate controls
 that restore early dispatch, reverse/remove WebKit selection, add a facade catch, or fall back after
 a present standard constructor throws. The combined v2 suite passes 26 files with 311 passed /1
 skip; both TypeScript programs, `artunused`, diff hygiene and the complete one-attempt real-browser
 slice smoke are green with zero console errors. Two independent final audits are clean after their
-findings were resolved. This is local candidate evidence only; a committed exact head, fresh PR
-battery, review or exact-head waiver, normal integration, `develop` battery and mapped DEV
-publication remain the certification path.
+findings were resolved. Exact PR #28 head
+`f2f6b5b4c42eaace78ad45e3ed2ee9e345b4c8ba` passed approved-branch-flow run
+`31897329792` and every job/final join in test-battery run `31897329813`. GitHub recorded no review
+or PR comments, so this record does not claim Claude review. PR #28 then merged normally at
+`44925f62abdfcdf9c17e512dd49a57a183e217ec`. That merge passed every job/final join in exact-
+`develop` run [`31901215076`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31901215076).
+Mapped publication run [`31902113008`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31902113008)
+passed development, skipped production, and serves public DEV build `develop-44925f62abdf` from the
+full merge SHA. This closes only DOM-12's bounded package contract; Arc 7/8 and Gate G remain open.
+
+**F1b epoch persistence-contract implementation record (2026-08-15, active bounded candidate):**
+DOM-1 is confirmed as a HIGH future-wiring hazard rather than a reproduced current-player save
+defect. `EpochClock.base()` is the immutable sanitized construction origin, but its public JSDoc
+told consumers to persist it; following that instruction would freeze all elapsed progress. The
+current app already constructs once from imported `EPOCH_BASE` and a fresh monotonic page-residence
+segment, snapshots advancing `current()` before ordinary export, and constructs a new clock from
+the serialized snapshot after reload. The repair changes no executable clock math, balance, schema,
+bytes, importer/exporter behavior, or player-facing capability. It corrects the API/persistence
+contract, removes the false every-cooldown/foreground-play implication, and adds a two-session
+package test. The synchronized legacy codebase reference also corrects its stale `HARVEST_CD`
+description: that millisecond cadence is a retired display-stamp floor, while live harvest
+readiness has used `HARVEST_EPOCHS` against `COSMIC_EPOCH` since v1.8.8.
+
+The previous browser check only required a numeric epoch and would stay green if persistence used
+`base()`. The active smoke candidate now advances the real app source by one exact 1,200-second
+epoch, calls `persistView()`, reads the raw IndexedDB primary, reloads through a fresh document token,
+and requires the advancing snapshot to survive; stored-base and stale-reload substitutions are
+separate controls. This does not prove automatic epoch-edge saves, hidden-tab policy, live global-
+read timing, cross-tab safety, the separate leased `activePlayMs`, or SessionRNG. Focused progression
+tests pass 10/10; the complete v2 suite passes 26 files /312 tests with one skip, both TypeScript
+programs and `artunused` pass, and the final complete browser run is green with live/stored/reloaded
+epoch `1`. Deliberately restoring the old production `base()` write turns that same run red with
+`before:0, after:1, stored:0, reloaded:0`; restoring `current()` returns it to green without retry or
+timeout change. Three independent read-only source, harness/control and documentation/handoff audits
+are clean after their findings were resolved. Committed exact-head CI, review/waiver and integration
+evidence remain pending.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete

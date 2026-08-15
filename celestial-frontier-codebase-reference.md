@@ -26,6 +26,19 @@
 > pre-init action route to the former package exception was reproduced. This does not implement or
 > close Arc 7/8 or Gate G lifecycle, content, ownership, budget, rights, device or listening work, and it
 > changes no Guide/Training/release-copy capability or version identity.
+> **2026-08-15 F1b epoch persistence overlay:** `EpochClock.base()` is the
+> immutable sanitized construction origin; ordinary persistence must snapshot
+> the advancing `current()` value. The browser app already followed that recipe:
+> it constructs once from imported `SaveStateV2.EPOCH_BASE` and a fresh
+> monotonic page-residence segment, refreshes the compatibility-named carrier
+> from `current()` before export, and constructs a new clock from the serialized
+> snapshot after reload. The package comments and tests now state that saving
+> never rebases the live clock and carrying an old elapsed segment into a new
+> base would double-count it. Real-browser smoke advances one exact epoch, reads
+> the raw IndexedDB primary, and reloads the snapshot. Automatic edge saves,
+> hidden-time policy, live global-read timing, and SessionRNG remain F4. F3 owns
+> the CAS/revision/tab-lease substrate; F4 owns the persisted `activePlayMs`
+> clock/accrual policy. This is not a current-player data-loss finding.
 > **2026-08-13 exploration/ship/loot/companion/audio review:** The executable v2
 > boundary remains the Phase-4 travel/survey slice. `apps/game/src/main.ts` renders the
 > read-only Compendium through `@cf/art/species`, consumes `@cf/domain-combatcore`
@@ -1037,7 +1050,7 @@ etc.) are pure functions of position/seed.
 | `HOME_POS` | {x:90,y:-60} | home galaxy position |
 | `SOL_SEED` | 424242 | our solar system seed |
 | `PLAYER_SEED` | 0x50A1E5 | stable seed → deterministic duels vs the player |
-| `HARVEST_CD` | 3600e3 | 1-hour stardust-harvest cooldown (ms) |
+| `HARVEST_CD` | 3600e3 | legacy 1-hour wall-clock cadence; retired as the harvest gate in v1.8.8, retained only by the legacy load-time display-stamp floor |
 | `SAVE_KEY` | `'cfcc_save_v2'` | localStorage key (v1.5 fresh start; v1 read once for the farewell, then removed) |
 | Earth | planet seed **133** | home world, conquered from game start |
 
@@ -1200,7 +1213,8 @@ too. (Favoriting unlocks the **Curator** achievement.)
 
 ### Stardust economy (`essence`)
 The soft currency that boosts breeding odds (`stardustBonus`, `breedOdds`). Faucets:
-- **Harvesting** conquered worlds (`doHarvest`, 1-hour cooldown via `HARVEST_CD`).
+- **Harvesting** conquered worlds (`doHarvest`, readiness via `HARVEST_EPOCHS` against
+  `COSMIC_EPOCH`; `HARVEST_CD` is only the retired legacy display-stamp floor).
 - **Spoils of Conquest** — winning a world grants `8 + tier*5` stardust.
 - **Rare Find Bonus** — discovering Legendary+ (tier ≥ 5) species grants `tier−3`.
 Loaded value clamped 0–1e9.
@@ -1455,6 +1469,16 @@ presentation, the determinism ban covers domain modules only.
 ---
 
 ## 10. Save format (`localStorage['cfcc_save_v2']`)
+
+**Current v2 epoch carrier (2026-08-15):** the IndexedDB slice still exports one
+v4 JSON blob whose `epoch` field comes from `SaveStateV2.EPOCH_BASE`. That name is
+compatibility layering, not the `EpochClock.base()` method contract. The ordinary
+app refreshes it from `epochClock.current()` immediately before export; the next
+boot imports and sanitizes it, constructs one new clock with a fresh zero-origin
+elapsed segment, and does not rebase again after each save. The focused package
+test proves base/current/rebase semantics; real-browser smoke separately proves
+the actual current() → `persistView()` → raw IndexedDB → import/reload path across
+one exact epoch. Neither proves automatic epoch-edge saves or F3/F4 clock policy.
 
 **v1.5 FRESH START:** the key bumped `cfcc_save_v1` → `cfcc_save_v2` with **no
 migration** — the bump IS the wipe. `readLegacySave()` reads the old key once
