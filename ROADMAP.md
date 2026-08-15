@@ -86,28 +86,32 @@ the archive verbatim and refresh this handoff in place.
   the full v2 suite passes **299 tests /1 skip**; root and app TypeScript programs, `artunused`,
   and `git diff --check` pass. The complete one-attempt real-browser slice smoke passes the full
   Guide/Training/settings/travel/survey/land/save/reload/phone journey with zero console errors.
-  Committed-head CI and independent Claude exact-diff review remain pending and must be recorded
-  before integration.
+  Three independent read-only source, test and documentation audits are clean after every
+  actionable instrument finding was resolved. Bounded commit
+  `29601e478e99b2a114720e23b696e8fb7d79d33c` contains that exact reviewed candidate. Remote
+  exact-head CI and independent Claude exact-diff review remain pending and must be recorded before
+  integration.
 
 ### Next actions
 
-1. Finish the independent read-only review and resolve any actionable finding.
-2. Commit and push this bounded candidate on `openai/mac`; open a draft PR into `develop`.
-3. Require exact-head CI and Claude exact-diff review. Resolve only actionable findings on the
+1. Push bounded commit `29601e478e99b2a114720e23b696e8fb7d79d33c` plus this handoff update on
+   `openai/mac`; open a draft PR into `develop`.
+2. Require exact-head CI and Claude exact-diff review. Resolve only actionable findings on the
    same branch; merge only the reviewed terminal-green exact head under Nick's standing authority.
-4. Monitor the resulting `develop` battery and mapped DEV publication. Then continue F1b as
+3. Monitor the resulting `develop` battery and mapped DEV publication. Then continue F1b as
    separate audio pre-init and epoch-contract PRs, followed by F2 canonical ingress before any
    world-bound ownership/reward/receipt writer.
 
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, `openai/mac`, based on clean merged `develop` tip
-`b5e5d0a3b4bb4057fa6d251816454b370e8b2624`. The WorldGen candidate is intentionally uncommitted
-while final local browser evidence and independent review are still in progress.
+`b5e5d0a3b4bb4057fa6d251816454b370e8b2624`. Reviewed WorldGen implementation/reference commit
+`29601e478e99b2a114720e23b696e8fb7d79d33c` is locally committed with green local gates; this
+handoff-only exact-status update follows it.
 
-**GitHub step:** after final local gates, commit and push `openai/mac`, then create a draft PR
-targeting `develop`. Do not append this work to merged PR #26 and do not copy files into an
-Anthropic worktree.
+**GitHub step:** push `openai/mac`, then create a draft PR targeting `develop`. Require matching
+terminal-green exact-head CI and Claude review. Do not append this work to merged PR #26 and do not
+copy files into an Anthropic worktree.
 
 **PR details:**
 
