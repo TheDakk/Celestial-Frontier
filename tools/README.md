@@ -29,7 +29,15 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > browser-assigned port 0 plus `DevToolsActivePort`, records the canonical executable
 > and complete `Browser.getVersion` provenance, retains bounded startup stderr, detects
 > early exit, and owns bounded shutdown/profile cleanup. Root preflight and
-> `bootperf.js` invoke that same executable resolver, so they cannot validate or select
+> `uilayout` consume one monotonic, absolute spawn → endpoint → socket-open startup deadline;
+> WebSocket opening also has a validated phase cap that defaults to the startup budget
+> and is clipped to the startup time still remaining; only post-open CDP work consumes
+> the command ceiling. Portable controls prove delayed-open success, explicit-cap and
+> remaining-startup rejection, fail-closed pre-construction expiry, constructor-overrun
+> rejection with guarded CONNECTING cleanup, just-late-open rejection, invalid-cap pre-launch
+> rejection, and failure cleanup. Real-browser legs assert profile cleanup in `finally`
+> on either rejection or success. `bootperf.js` invokes that same
+> executable resolver, so it cannot validate or select
 > a different browser; bootperf still owns its older CDP lifecycle and is not covered by
 > the launcher's lifecycle claims.
 > On macOS, Chromium cannot register with LaunchServices from inside the Codex
@@ -389,7 +397,9 @@ of round 8. Only the duel ones have an outcome test today.
 
 `uilayout.js` now uses the same owned raw-CDP resolver/lifecycle as the v2 browser
 gates. Chromium chooses an unused port and publishes it through the owned profile's
-`DevToolsActivePort`; the tool records the canonical executable plus product,
+`DevToolsActivePort`; the shared launcher then opens its WebSocket inside the same
+absolute startup deadline before issuing `Browser.getVersion`. The tool records the
+canonical executable plus product,
 revision, user agent, JavaScript version and protocol version. Startup and commands
 are bounded, an early browser exit retains its exit state and bounded stderr head and
 tail, and cleanup owns TERM→KILL escalation plus removal of only its validated profile.

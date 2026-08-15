@@ -1,7 +1,7 @@
 # Development Preview — Separate-Origin Human Playtesting
 
 **Status:** process reference, matches preview packaging and branch-site publication as of
-2026-08-13. This is not a release record.
+2026-08-15. This is not a release record.
 
 ## Separate-origin requirement; approved branch site
 
@@ -137,6 +137,24 @@ the wrong phase and fails the control instead of consuming a cold-browser allowa
 This split follows the immutable diagnosis from run `31815658572`: the named WebSocket case had
 failed on its earlier 10-second Chrome-start phase. It adds no retry, fallback, workflow timeout,
 or command/shutdown expansion.
+
+Run `31870103561` exposed the complementary live-browser boundary: the first provenance leg found
+its valid `DevToolsActivePort` within 30 seconds, but WebSocket opening reused the 1,500-millisecond
+command ceiling and expired before `Browser.getVersion`. The launcher now treats startup as one
+monotonic, absolute spawn → endpoint → socket-open deadline and accepts a separately validated socket-open cap
+that can only consume the startup time still remaining. The socket cap defaults to the startup
+budget rather than the post-open command budget;
+the selftest's cold and warm real-browser legs explicitly own 15- and 10-second socket caps inside
+their unchanged 30- and 10-second startup budgets, while commands remain 1,500 milliseconds and
+shutdown remains 2 seconds. A delayed portable socket opens after a shorter command ceiling and
+answers fake provenance. Separate portable controls prove the explicit short socket cap, clipping
+to a shorter remaining startup budget, fail-closed exhaustion before socket construction,
+constructor-overrun rejection with a provisional CONNECTING-socket error guard, rejection of a
+just-late `onopen` before its overdue timer runs, one launch, socket/child closure, and profile
+cleanup. Nonpositive/fractional caps reject before launch.
+The real-browser legs assert profile cleanup in `finally` on either rejection or success; the
+portable rejection cases prove failure cleanup. This changes no retry, fallback, workflow timeout,
+browser selection, or product evidence rule.
 
 `preview:selftest` captures the exact preview-caller options on every platform and completes a
 real-browser outcome. On POSIX it starts Chrome immediately while withholding the ready CDP

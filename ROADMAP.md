@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-15 · F1B UI-P1 REGISTERED PANEL CHROME ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-15 · F1B UI-P1 PR #26 CI SOCKET-PHASE REPAIR ◀◀◀
 
 ### Cold start
 
@@ -48,6 +48,12 @@ the archive verbatim and refresh this handoff in place.
 - Remote branch synchronization fast-forwarded the agent branches. This Codex worktree fetched and
   normally fast-forwarded `openai/mac` to the same merge before UI-P1 began; remote automation never
   substitutes for the local clean/fetch/branch check.
+- Draft PR [#26](https://github.com/TheDakk/Celestial-Frontier/pull/26) carries UI-P1 from
+  `openai/mac` into `develop`. Exact head `ea972a8f43fbe4a3382d1e1c00a2bd46f1606bbc` is permanently
+  bound to red test-battery run
+  [`31870103561`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31870103561): v2-smoke
+  stopped in the shared browser launcher selftest before gameplay, so it is not a certifying head and
+  must not be retried unchanged.
 
 ### Active F1b UI-P1 contract
 
@@ -84,26 +90,48 @@ the archive verbatim and refresh this handoff in place.
   isolated viewport classes pass. Three independent read-only audits are clean after their findings
   were resolved. Final PR-head CI and Claude exact-diff review remain required; local evidence does
   not certify or integrate the candidate.
+- The red PR run exposed inherited instrument coupling, not a UI defect. The first live-provenance
+  browser found a valid `DevToolsActivePort` inside its 30-second startup allowance, constructed the
+  socket, then incorrectly reused the 1,500-millisecond command ceiling for WebSocket opening and
+  expired before `Browser.getVersion`. Static, root and full 12-viewport glass jobs passed; gameplay
+  smoke never ran, persona/preview was skipped, and the final join was red only as dependency
+  cascade. No smoke artifact exists, which is honest phase evidence rather than another finding.
+- Test first, a deterministic delayed socket failed because its 1-second socket budget was ignored
+  in favor of a 100-millisecond command ceiling. The bounded repair makes startup one monotonic,
+  absolute spawn → endpoint → socket-open deadline; a validated socket cap starts before construction
+  and can use only its remaining time. Cold and warm selftest legs own 15/10-second socket caps
+  inside unchanged 30/10-second startup budgets; commands stay at 1,500 milliseconds and shutdown
+  at 2 seconds. Delayed-open, explicit-cap,
+  remaining-startup clamp, pre-construction expiry, constructor-overrun plus CONNECTING-error guard,
+  just-late-open, never-open and invalid-cap controls now pass locally.
+  Portable rejection cases prove failure cleanup; both real-browser legs assert profile cleanup in
+  `finally` whether opening rejects or succeeds. The exact failed three-command phase also passes.
+  Preview's 16-second delayed-endpoint control, the full v2 smoke, glass selftest/all 12 viewports,
+  and the shared root layout selftest/all 787 outcomes across 10 viewports also pass.
 
 ### Next actions
 
-1. Push this final handoff metadata to draft PR #26, then request Claude exact-diff review. Resolve
-   only actionable findings on the same branch.
-2. Merge only a reviewed, terminal-green exact head under Nick's standing authority; monitor the
+1. Commit and push the independently audited bounded instrument repair to draft PR #26. Do not retry
+   run `31870103561`.
+2. Require fresh exact-head CI; only then request Claude review of
+   the new exact head. Resolve only actionable findings on the same branch.
+3. Merge only a reviewed, terminal-green exact head under Nick's standing authority; monitor the
    resulting `develop` battery and mapped DEV publication before the next PR.
-3. Continue remaining F1b as separate WorldGen declaration/runtime, audio pre-init and epoch-contract
+4. Continue remaining F1b as separate WorldGen declaration/runtime, audio pre-init and epoch-contract
    PRs, then F2 canonical ingress before any world-bound ownership/reward/receipt writer.
 
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, `openai/mac`, based on clean merge
 `bd49beb0693b45fdd57d4acad746ade79843a91e`. Bounded UI-P1 implementation commit
-`d6ccb9b810fc644437ed205e4f6dbed7974cdba1` is pushed with synchronized docs/tests; resolve the
-PR's final head and checks live.
+`d6ccb9b810fc644437ed205e4f6dbed7974cdba1` is pushed with synchronized docs/tests. The current
+working tree additionally contains only the bounded browser socket-phase instrument repair and its
+current references; resolve its eventual commit and checks live.
 
 **GitHub step:** draft PR [#26](https://github.com/TheDakk/Celestial-Frontier/pull/26) targets
-`develop` from `openai/mac`. Require Claude review and matching terminal-green CI on its final head.
-Do not reuse or edit merged PR #25 and do not copy files into an Anthropic worktree.
+`develop` from `openai/mac`. Its old exact head and run `31870103561` remain red history. Push a new
+repair head, then require Claude review and matching terminal-green CI. Do not reuse or edit merged
+PR #25 and do not copy files into an Anthropic worktree.
 
 **PR details:**
 
@@ -113,15 +141,20 @@ Do not reuse or edit merged PR #25 and do not copy files into an Anthropic workt
 - Copy-ready description: `Fixes the bounded UI-P1 outside-dismiss defect by replacing the
   asymmetric chrome-ID exception list with declarative root ownership for the top bar, dock, Survey
   and both desktop rails. Real-CDP smoke uses browser-mouse input on each rendered 8px rail gap,
-  preserves the active panel and ARIA state, removes each marker to recreate dismissal, distinguishes temporarily
-  owned from genuine empty canvas, preserves deliberate Search dismissal, and proves both delegated
-  document listeners fail closed on non-Element targets. Updates the v2 draft outcome and current
-  UI/process/program/reference/handoff documents. Explicitly excludes Search policy changes,
+  preserves the active panel and ARIA state, removes each marker to recreate dismissal,
+  distinguishes temporarily owned from genuine empty canvas, preserves deliberate Search dismissal,
+  and proves both delegated document listeners fail closed on non-Element targets. Updates the v2
+  draft outcome and current
+  UI/process/program/reference/handoff documents. Also separates browser WebSocket-open timing from
+  post-open command timing under one monotonic absolute startup deadline, with independent cap,
+  remaining-budget, constructor, just-late, never-open and cleanup controls and no retry or generic
+  timeout expansion. Explicitly excludes Search policy changes,
   modal/Training/coexistence/Escape refactors, UI-P2/P3/P4, saves, worldgen/CF1, balance/content,
   production versioning, deployment and develop-to-main release work.`
 
-**Other side:** Nick should now open Anthropic/Claude Code for exact-diff review of PR #26. Claude
-first fetches and normally fast-forwards its clean
+**Other side:** do not start or finalize Claude review on the known-red head. After the repaired PR
+head is pushed, Nick should open Anthropic/Claude Code for exact-diff review of PR #26. Claude first
+fetches and normally fast-forwards its clean
 `anthropic/mac` branch and reviews remotely without editing this worktree.
 
 **Release status:** no release, manual deployment, production version bump, `develop` → `main`
