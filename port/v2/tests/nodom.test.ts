@@ -21,10 +21,10 @@ const FORBIDDEN: Array<[RegExp, string]> = [
   [/\bsessionStorage\b/, 'storage'],
   [/\bnavigator\s*\./, 'browser global'],
   [/\bMath\.random\s*\(/, 'NONDETERMINISM — the cardinal sin (CLAUDE.md rule 1)'],
-  [/\bDate\.now\s*\(/, 'wall clock — COSMIC_EPOCH is the only time authority'],
+  [/\bDate\.now\s*\(/, 'device wall clock — forbidden in deterministic domains'],
   [/\bnew\s+Date\s*\(\s*\)/, 'wall clock'],
   [/\brequestAnimationFrame\b/, 'render loop — app layer'],
-  [/\bperformance\s*\.\s*now\b/, 'wall clock'],
+  [/\bperformance\s*\.\s*now\b/, 'runtime monotonic clock — app-owned/injected, not domain-owned'],
   [/\bfetch\s*\(/, 'network'],
   [/\bXMLHttpRequest\b/, 'network'],
 ];
