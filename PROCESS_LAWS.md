@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-13. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-15. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -148,6 +148,17 @@ action. Refill code must preserve that owner without seating a second control; g
 reject duplicate, detached, upper-left, and off-surface Close actions. Desktop notifications and
 Settings/Records share the bottom-right utility edge; balanced padding, row separators, and borders
 belong to the same presentation contract, not optional polish that may regress independently.
+
+⚠ **A DISMISS MANAGER READS DECLARED NON-MODAL CHROME BOUNDARIES, NOT A SECOND ID LIST.** Flex/grid
+spacing inside an interactive chrome root belongs to that root; it is not empty sky merely because the pointer
+missed a child button. Panel content and registered openers remain manager-owned, while stable
+non-dismiss chrome declares one generic boundary marker at its actual root. Prove the reported
+geometry with real-browser pointer input and exact `elementFromPoint`: both desktop rail gaps keep the
+active panel open, removing either marker recreates dismissal, temporarily marking the same canvas
+point prevents dismissal, and restoring genuine unmarked sky closes. Deliberately outside actions
+such as Search remain outside until their coexistence policy changes. Delegated document handlers
+must also reject non-`Element` targets before calling `closest`; a type assertion is not a runtime
+guard. True modals remain a separate lifecycle and are not claimed by this boundary law.
 
 ---
 
@@ -743,13 +754,35 @@ PR #25 exposed the same phase-ownership requirement inside the launcher selftest
 WebSocket-open-timeout control first launched real Chrome and therefore could reject on a cold
 `DevToolsActivePort` startup timeout before the injected socket existed; run `31815658572`, v2-smoke
 job `94816585307`, failed in that earlier phase even though the same head's static, root, and glass
-jobs were green. A WebSocket-phase control must instead use a deterministic portable child behind a private launch
-seam, write one valid regular endpoint in the owned profile, and prove the short socket timeout,
+jobs were green. A WebSocket-phase control must instead use a deterministic portable child behind
+a private launch seam, write one valid regular endpoint in the owned profile, and prove the short socket timeout,
 exactly one fixture launch, socket close, bounded child shutdown, and profile removal. The control
 must reject if the endpoint is absent or the injected socket is accepted. The selftest's following
 live provenance check is then its first real browser launch and may own the fixed 30-second
 cold-start allowance; the shared launcher default remains 15 seconds, its later warm launch remains
 10 seconds, command/shutdown bounds stay unchanged, and no retry or fallback is added.
+
+PR #26 exposed the remaining boundary between endpoint discovery and an open connection. In
+test-battery run `31870103561`, v2-smoke job `94977303036`, the first live-provenance leg found a
+valid `DevToolsActivePort` inside its 30-second allowance, constructed the real socket, then borrowed
+the deliberately tight 1,500-millisecond **command** ceiling for WebSocket opening and expired before
+`Browser.getVersion` or gameplay. Treat spawn → endpoint → socket-open as one absolute startup
+deadline measured by a monotonic clock, while also giving socket-open its own validated phase cap
+clipped to the remaining startup time; post-open commands and shutdown keep their independent
+ceilings. The socket cap defaults to the startup budget, never to the post-open command budget, and
+the selftest's real cold/warm legs
+declare bounded 15/10-second socket caps inside their unchanged 30/10-second startup budgets. Prove
+all boundaries with portable fixtures: a delayed socket must open after a shorter command ceiling
+and still answer `Browser.getVersion`; a socket delayed beyond its explicit short cap must reject;
+a longer socket cap must be clipped to the shorter absolute startup remainder; an exhausted
+deadline must reject before construction, and a constructor that consumes the remainder must reject
+immediately afterward; `onopen` delivered at or after its deadline must reject even if its overdue
+timer has not run. Every failure closes the socket when one exists,
+but setup must arm an error handler before closing a still-CONNECTING transport; it then terminates
+exactly one child and removes its profile. Nonpositive and fractional caps reject before
+launch. Real-browser legs must assert profile cleanup in `finally` on either rejection or success;
+the portable rejection controls are the deterministic proof of failure cleanup. Never answer this
+class with a retry, fallback, workflow-timeout increase, or wider startup/command/shutdown budget.
 
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread
