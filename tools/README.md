@@ -35,7 +35,14 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > the command ceiling. Portable controls prove delayed-open success, explicit-cap and
 > remaining-startup rejection, fail-closed pre-construction expiry, constructor-overrun
 > rejection with guarded CONNECTING cleanup, just-late-open rejection, invalid-cap pre-launch
-> rejection, and failure cleanup. Real-browser legs assert profile cleanup in `finally`
+> rejection, and failure cleanup. Endpoint discovery also requires two consecutive identical,
+> fully valid `DevToolsActivePort` snapshots: parser-invalid regular-file content is treated as
+> potentially incomplete inside
+> the same one-process startup deadline, while wrong file types/links fail immediately and
+> persistent malformed content fails at that deadline before any socket. Portable controls stage
+> a valid-looking prefix, a port-only file with its endpoint line missing, invalid endpoint syntax,
+> plus persistent malformed content and integrated unsafe-file rejection,
+> final-endpoint socket identity, one child, and cleanup. Real-browser legs assert profile cleanup in `finally`
 > on either rejection or success. `bootperf.js` invokes that same
 > executable resolver, so it cannot validate or select
 > a different browser; bootperf still owns its older CDP lifecycle and is not covered by
@@ -398,7 +405,10 @@ of round 8. Only the duel ones have an outcome test today.
 `uilayout.js` now uses the same owned raw-CDP resolver/lifecycle as the v2 browser
 gates. Chromium chooses an unused port and publishes it through the owned profile's
 `DevToolsActivePort`; the shared launcher then opens its WebSocket inside the same
-absolute startup deadline before issuing `Browser.getVersion`. The tool records the
+absolute startup deadline before issuing `Browser.getVersion`. The reader accepts the endpoint
+only after two identical complete valid snapshots, so progressive regular-file publication stays
+within that one launch/deadline; unsafe file types or links fail immediately and persistent
+malformed content fails at the deadline before socket construction. The tool records the
 canonical executable plus product,
 revision, user agent, JavaScript version and protocol version. Startup and commands
 are bounded, an early browser exit retains its exit state and bounded stderr head and

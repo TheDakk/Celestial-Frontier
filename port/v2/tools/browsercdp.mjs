@@ -17,6 +17,9 @@ import { assertBrowserLaunchAllowed, findChromiumBrowser } from './browserpath.m
 
 function fail(message) { throw new Error(message); }
 function assert(condition, message) { if (!condition) fail(message); }
+class ActiveEndpointContentError extends Error {
+  constructor(message) { super(message); this.name = 'ActiveEndpointContentError'; }
+}
 function sleep(ms) { return new Promise((resolve) => setTimeout(resolve, ms)); }
 async function waitForResolution(promise, timeoutMs) {
   return await new Promise((resolve) => {
@@ -53,15 +56,19 @@ function requiredString(value, where) {
 }
 function activeEndpoint(userData) {
   const file = path.join(userData, 'DevToolsActivePort');
-  if (!fs.existsSync(file)) return null;
-  const stat = fs.lstatSync(file);
+  const stat = fs.lstatSync(file, { throwIfNoEntry: false });
+  if (stat === undefined) return null;
   assert(stat.isFile() && !stat.isSymbolicLink(), 'DevToolsActivePort is not a real file');
-  const lines = fs.readFileSync(file, 'utf8').trim().split(/\r?\n/);
-  assert(lines.length >= 2 && /^[1-9]\d{0,4}$/.test(lines[0]), 'DevToolsActivePort has an invalid port');
+  const snapshot = fs.readFileSync(file, 'utf8');
+  const lines = snapshot.trim().split(/\r?\n/);
+  if (!(lines.length >= 2 && /^[1-9]\d{0,4}$/.test(lines[0]))) {
+    throw new ActiveEndpointContentError('DevToolsActivePort has an invalid port');
+  }
   const port = Number(lines[0]);
-  assert(port <= 65535 && /^\/devtools\/browser\/[A-Za-z0-9._-]+$/.test(lines[1]),
-    'DevToolsActivePort has an invalid browser endpoint');
-  return `ws://127.0.0.1:${port}${lines[1]}`;
+  if (!(port <= 65535 && /^\/devtools\/browser\/[A-Za-z0-9._-]+$/.test(lines[1]))) {
+    throw new ActiveEndpointContentError('DevToolsActivePort has an invalid browser endpoint');
+  }
+  return { endpoint: `ws://127.0.0.1:${port}${lines[1]}`, snapshot };
 }
 function removeOwnedUserData(userData, temporary, prefix) {
   if (!fs.existsSync(userData)) return;
@@ -138,12 +145,28 @@ async function openChromiumCdpWithLauncher({
   };
 
   let endpoint = null;
+  let endpointCandidate = null;
+  let endpointContentError = null;
+  let endpointContentErrorCount = 0;
   const startupDeadline = startupStartedAt + startupTimeoutMs;
   while (endpoint === null && nowMs() < startupDeadline) {
     if (spawnError || exitDescription) break;
-    try { endpoint = activeEndpoint(userData); }
+    try {
+      const observed = activeEndpoint(userData);
+      if (observed === null) {
+        endpointCandidate = null;
+      } else if (endpointCandidate?.snapshot === observed.snapshot) {
+        endpoint = observed.endpoint;
+      } else {
+        endpointCandidate = observed;
+      }
+    }
     catch (error) {
-      if (fs.existsSync(path.join(userData, 'DevToolsActivePort'))) {
+      endpointCandidate = null;
+      if (error instanceof ActiveEndpointContentError) {
+        endpointContentError = error;
+        endpointContentErrorCount++;
+      } else {
         await terminateOwnedBrowser();
         throw new Error(`${label}: ${error.message}`);
       }
@@ -162,6 +185,9 @@ async function openChromiumCdpWithLauncher({
       spawnError ? `spawn=${spawnError.message}` : '',
       exitDescription || '',
       timedOut ? `startup-timeout=${startupTimeoutMs}ms` : '',
+      endpointContentErrorCount ? `endpoint-invalid-observations=${endpointContentErrorCount}` : '',
+      endpointContentError ? `endpoint-last-error=${JSON.stringify(endpointContentError.message)}` : '',
+      endpointCandidate ? 'endpoint-valid-observations=1 (stability confirmation pending)' : '',
       stderr,
     ].filter(Boolean).join('; ');
     await terminateOwnedBrowser();
@@ -345,6 +371,19 @@ async function runSelftest() {
       'not-a-port\n/devtools/browser/selftest\n');
     await expectRejectedAsync('malformed DevToolsActivePort', async () => activeEndpoint(endpointFixture),
       /invalid port/);
+    const directoryEndpointFixture = path.join(endpointFixture, 'directory-endpoint');
+    fs.mkdirSync(path.join(directoryEndpointFixture, 'DevToolsActivePort'), { recursive: true });
+    await expectRejectedAsync('directory DevToolsActivePort', async () => activeEndpoint(directoryEndpointFixture),
+      /not a real file/);
+    if (process.platform !== 'win32') {
+      const symlinkEndpointFixture = path.join(endpointFixture, 'symlink-endpoint');
+      fs.mkdirSync(symlinkEndpointFixture);
+      fs.symlinkSync(path.join(endpointFixture, 'missing-endpoint-target'),
+        path.join(symlinkEndpointFixture, 'DevToolsActivePort'));
+      await expectRejectedAsync('dangling symlink DevToolsActivePort',
+        async () => activeEndpoint(symlinkEndpointFixture),
+        /not a real file/);
+    }
 
     let exitPipeDestroyed = false;
     const exitWithoutClose = {
@@ -417,6 +456,190 @@ async function runSelftest() {
     }
 
     process.env.CF_BROWSER = actualBrowser;
+    const unsafeEndpointCases = [
+      {
+        key: 'directory', create(activePortFile) {
+          fs.mkdirSync(activePortFile);
+        },
+      },
+      ...(process.platform === 'win32' ? [] : [{
+        key: 'dangling-symlink', create(activePortFile) {
+          fs.symlinkSync(`${activePortFile}-missing-target`, activePortFile);
+        },
+      }]),
+    ];
+    for (const scenario of unsafeEndpointCases) {
+      let launches = 0;
+      let childClosed = false;
+      let socketConstructions = 0;
+      const launchUnsafeEndpointFixture = ({ userData }) => {
+        launches++;
+        assert(launches === 1,
+          `SELFTEST unsafe ${scenario.key} endpoint launched more than once`);
+        fs.mkdirSync(userData, { recursive: true });
+        scenario.create(path.join(userData, 'DevToolsActivePort'));
+        const child = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
+          stdio: ['ignore', 'ignore', 'pipe'],
+        });
+        child.once('close', () => { childClosed = true; });
+        return child;
+      };
+      class UnsafeEndpointWebSocket {
+        static OPEN = 1;
+        constructor() { socketConstructions++; this.readyState = 0; }
+        close() { this.readyState = 3; }
+      }
+      const prefix = `${base}-unsafe-${scenario.key}`;
+      const label = `CDP selftest unsafe ${scenario.key} endpoint`;
+      const rejection = await expectRejectedAsync(`unsafe ${scenario.key} endpoint`,
+        () => openChromiumCdpWithLauncher({
+          label, userDataPrefix: prefix, commandTimeoutMs: 100,
+          startupTimeoutMs: 1000, shutdownTimeoutMs: 2000,
+          WebSocketImpl: UnsafeEndpointWebSocket,
+        }, launchUnsafeEndpointFixture),
+        /DevToolsActivePort is not a real file/);
+      assert(rejection.message === `${label}: DevToolsActivePort is not a real file`,
+        `SELFTEST unsafe ${scenario.key} endpoint was not rejected immediately (${rejection.message})`);
+      assert(launches === 1,
+        `SELFTEST unsafe ${scenario.key} endpoint: expected one launch, got ${launches}`);
+      assert(socketConstructions === 0,
+        `SELFTEST unsafe ${scenario.key} endpoint constructed a WebSocket`);
+      assert(childClosed,
+        `SELFTEST unsafe ${scenario.key} endpoint did not close its child`);
+      assertNoOwnedProfiles(prefix, `unsafe ${scenario.key} endpoint cleanup`);
+    }
+
+    const endpointPublicationCases = [
+      {
+        key: 'valid-prefix', initial: '9\n/devtools/browser/selftest-staged',
+        finalPath: '/devtools/browser/selftest-staged-complete',
+      },
+      {
+        key: 'missing-endpoint', initial: '9\n',
+        finalPath: '/devtools/browser/selftest-missing-endpoint-complete',
+      },
+      {
+        key: 'invalid-endpoint', initial: '9\n/devtools/browser/\n',
+        finalPath: '/devtools/browser/selftest-invalid-endpoint-complete',
+      },
+    ];
+    for (const scenario of endpointPublicationCases) {
+      let launches = 0;
+      let socketClosed = false;
+      let constructedUrl = null;
+      const expectedUrl = `ws://127.0.0.1:9${scenario.finalPath}`;
+      const launchEndpointPublicationFixture = ({ userData }) => {
+        launches++;
+        assert(launches === 1,
+          `SELFTEST ${scenario.key} endpoint fixture launched more than once`);
+        fs.mkdirSync(userData, { recursive: true });
+        const activePortFile = path.join(userData, 'DevToolsActivePort');
+        fs.writeFileSync(activePortFile, scenario.initial);
+        const child = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
+          stdio: ['ignore', 'ignore', 'pipe'],
+        });
+        const completeTimer = setTimeout(() => {
+          if (fs.existsSync(userData)) {
+            fs.writeFileSync(activePortFile, `9\n${scenario.finalPath}\n`);
+          }
+        }, 50);
+        child.once('close', () => clearTimeout(completeTimer));
+        return child;
+      };
+      class EndpointPublicationWebSocket {
+        static OPEN = 1;
+        constructor(url) {
+          constructedUrl = url;
+          assert(url === expectedUrl,
+            `SELFTEST ${scenario.key} endpoint constructed the wrong socket (${url})`);
+          this.readyState = 0;
+          this.openTimer = setTimeout(() => {
+            this.readyState = EndpointPublicationWebSocket.OPEN;
+            this.onopen?.();
+          }, 0);
+        }
+        send(payload) {
+          const message = JSON.parse(payload);
+          queueMicrotask(() => this.onmessage?.({ data: JSON.stringify({
+            id: message.id,
+            result: {
+              product: `Chrome/CDP-${scenario.key}`, revision: `${scenario.key}-revision`,
+              userAgent: `cf-browsercdp-${scenario.key}`, jsVersion: `${scenario.key}-js`,
+              protocolVersion: '1.3',
+            },
+          }) }));
+        }
+        close() {
+          clearTimeout(this.openTimer);
+          socketClosed = true;
+          this.readyState = 3;
+        }
+      }
+      const prefix = `${base}-${scenario.key}-endpoint`;
+      const connection = await openChromiumCdpWithLauncher({
+        label: `CDP selftest ${scenario.key} endpoint publication`, userDataPrefix: prefix,
+        commandTimeoutMs: 100, startupTimeoutMs: 1000, shutdownTimeoutMs: 2000,
+        WebSocketImpl: EndpointPublicationWebSocket,
+      }, launchEndpointPublicationFixture);
+      try {
+        assert(connection.browser.product === `Chrome/CDP-${scenario.key}`,
+          `SELFTEST ${scenario.key} endpoint did not reach Browser.getVersion`);
+      } finally {
+        await connection.close();
+      }
+      assert(launches === 1,
+        `SELFTEST ${scenario.key} endpoint: expected one launch, got ${launches}`);
+      assert(constructedUrl === expectedUrl,
+        `SELFTEST ${scenario.key} endpoint did not use the final complete endpoint`);
+      assert(socketClosed,
+        `SELFTEST ${scenario.key} endpoint did not close its injected socket`);
+      assertNoOwnedProfiles(prefix, `${scenario.key} endpoint publication cleanup`);
+    }
+
+    let malformedEndpointLaunches = 0;
+    let malformedEndpointChildClosed = false;
+    let malformedEndpointSocketConstructions = 0;
+    const launchMalformedEndpointFixture = ({ userData }) => {
+      malformedEndpointLaunches++;
+      assert(malformedEndpointLaunches === 1,
+        'SELFTEST persistent-malformed endpoint fixture launched more than once');
+      fs.mkdirSync(userData, { recursive: true });
+      fs.writeFileSync(path.join(userData, 'DevToolsActivePort'),
+        'not-a-port\n/devtools/browser/selftest-persistent-malformed\n');
+      const child = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
+        stdio: ['ignore', 'ignore', 'pipe'],
+      });
+      child.once('close', () => { malformedEndpointChildClosed = true; });
+      return child;
+    };
+    class MalformedEndpointWebSocket {
+      static OPEN = 1;
+      constructor() { malformedEndpointSocketConstructions++; this.readyState = 0; }
+      close() { this.readyState = 3; }
+    }
+    const malformedEndpointPrefix = `${base}-persistent-malformed-endpoint`;
+    let malformedEndpointClockReads = 0;
+    const malformedEndpointClockValues = [0, 0, 0, 1, 1, 2, 2, 3];
+    const malformedEndpointClock = () =>
+      malformedEndpointClockValues[malformedEndpointClockReads++] ?? 3;
+    await expectRejectedAsync('persistent malformed endpoint publication',
+      () => openChromiumCdpWithLauncher({
+        label: 'CDP selftest persistent malformed endpoint',
+        userDataPrefix: malformedEndpointPrefix,
+        commandTimeoutMs: 100, startupTimeoutMs: 3, shutdownTimeoutMs: 2000,
+        WebSocketImpl: MalformedEndpointWebSocket,
+      }, launchMalformedEndpointFixture, malformedEndpointClock),
+      /browser CDP did not start .*startup-timeout=3ms; endpoint-invalid-observations=3; endpoint-last-error="DevToolsActivePort has an invalid port"/);
+    assert(malformedEndpointLaunches === 1,
+      `SELFTEST persistent malformed endpoint: expected one launch, got ${malformedEndpointLaunches}`);
+    assert(malformedEndpointClockReads === malformedEndpointClockValues.length,
+      `SELFTEST persistent malformed endpoint did not consume its exact deadline observations (${malformedEndpointClockReads})`);
+    assert(malformedEndpointSocketConstructions === 0,
+      'SELFTEST persistent malformed endpoint constructed a WebSocket');
+    assert(malformedEndpointChildClosed,
+      'SELFTEST persistent malformed endpoint did not close its child');
+    assertNoOwnedProfiles(malformedEndpointPrefix, 'persistent malformed endpoint cleanup');
+
     let endpointFixtureLaunches = 0;
     let endpointFixtureSocketClosed = false;
     const launchEndpointFixture = ({ userData }) => {
@@ -513,13 +736,9 @@ async function runSelftest() {
       close() { this.readyState = 3; }
     }
     let deadlineClockReads = 0;
-    const expiredDeadlineClock = () => {
-      deadlineClockReads++;
-      if (deadlineClockReads === 1) return 0;
-      if (deadlineClockReads === 2) return 1;
-      if (deadlineClockReads === 3) return 2;
-      return 100;
-    };
+    const expiredDeadlineClockValues = [0, 1, 2, 2, 2, 100];
+    const expiredDeadlineClock = () =>
+      expiredDeadlineClockValues[deadlineClockReads++] ?? 100;
     const expiredDeadlinePrefix = `${base}-expired-startup`;
     await expectRejectedAsync('expired startup before WebSocket construction',
       () => openChromiumCdpWithLauncher({
@@ -824,12 +1043,15 @@ async function runSelftest() {
     fs.rmSync(endpointFixture, { recursive: true, force: true });
   }
   console.log('BROWSER CDP SELFTEST PASS');
-  console.log('  malformed DevToolsActivePort: rejected');
+  console.log(`  malformed/directory${process.platform === 'win32' ? '' : '/dangling-symlink'} DevToolsActivePort: rejected`);
   console.log('  exit-without-close: rejected; owned pipe released');
   console.log('  SIGTERM-resistant child: escalated to bounded SIGKILL');
   console.log(`  macOS Codex Seatbelt pre-spawn refusal: ${process.platform === 'darwin' ? 'PASS; executable untouched' : 'covered by portable resolver selftest'}`);
   console.log('  browser child exit and profile cleanup: PASS');
   console.log(`  early-exit code + bounded stderr diagnostics: ${process.platform === 'win32' ? 'covered by child-exit control' : 'PASS'}`);
+  console.log('  unsafe endpoint file type: immediate launcher rejection, child shutdown, profile cleanup');
+  console.log('  port-only, invalid-endpoint, and valid-looking-prefix publication: final stable endpoint only');
+  console.log('  persistent malformed endpoint: exact deadline re-observation before socket construction');
   console.log('  WebSocket open timeout via one portable endpoint fixture and cleanup: PASS');
   console.log('  configured socket cap and absolute remaining-startup clamp: PASS');
   console.log('  just-late WebSocket event: rejected before an overdue timer could pass it');

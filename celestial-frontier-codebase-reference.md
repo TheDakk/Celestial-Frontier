@@ -195,6 +195,22 @@
 > `port/spike` renderers resolve through the same launch-facing guard rather than
 > invoking a macOS browser directly.
 >
+> PR #27 run `31887203990` exposed the earlier endpoint-publication boundary during the
+> ninth fresh browser of the full Glass matrix: the final `DevToolsActivePort` path existed,
+> but the reader observed parser-invalid content and failed after 364 milliseconds;
+> all eight earlier and three later rows passed under the same pinned Chrome. The shared
+> launcher now requires two consecutive identical, fully valid raw snapshots before socket
+> construction. Parser-invalid regular-file content is treated as potentially incomplete only
+> within the existing one-process monotonic startup deadline. Wrong file types, symbolic links and
+> unexpected
+> filesystem errors fail immediately; persistent malformed content reaches the unchanged
+> deadline with its last parse diagnosis and no socket. Portable controls stage a
+> valid-looking endpoint prefix, a port-only file with its endpoint line missing, and invalid
+> endpoint syntax before their final values, and separately prove persistent-malformed rejection,
+> immediate unsafe-file cleanup, one launch, final-endpoint identity,
+> socket/child closure and profile cleanup. No retry, relaunch, per-viewport sleep, browser
+> reuse, fallback change or timeout expansion follows.
+>
 > The live v2 interaction surface uses Pixi `autoDensity` so its CSS canvas and
 > hit coordinates stay viewport-sized at DPR > 1. `effectiveDensityPlan()`
 > follows the touch-2 / desktop-3 heat caps and retains native backing through

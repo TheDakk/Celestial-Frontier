@@ -305,8 +305,8 @@ close CF1/F2, change generation, or close a Gate. Reviewed bounded commit
 `artunused`, `git diff --check`, and the complete one-attempt real-browser slice smoke with zero
 console errors. Three independent read-only source, test and documentation audits are clean after
 their findings were resolved. The first pushed exact head is preserved red below. Claude review and
-a fresh repaired-head exact-CI run remain integration gates; local evidence cannot certify a later
-handoff head.
+fresh exact-CI on the eventual launcher-repair head remain integration gates; local evidence cannot
+certify a later handoff head.
 
 **PR #27 exact-head CI sentinel note (2026-08-15):** draft PR
 [#27](https://github.com/TheDakk/Celestial-Frontier/pull/27) reached exact head
@@ -328,8 +328,39 @@ remains in WorldGen-owned facade/declaration/tests and current references. On th
 `overridecontrol` leg passes including the wrapper-byte and restored-clean controls; `artaudit`
 passes 23 sources/zero findings; `coveragegap` passes 1,010/1,010 with zero remaining; and
 `speccheck` passes 454/zero unread/zero inert. All 299 tests /1 skip, both TypeScript programs,
-`artunused` and `git diff --check` also pass. A new repaired commit/head, complete exact-head CI and
-Claude review remain required before integration.
+`artunused` and `git diff --check` also pass.
+
+**PR #27 shared-launcher publication note (2026-08-15):** the byte-restored exact head
+`1a0839a95e595673409436bae27962e999f256a0` is a second immutable red and must not be retried.
+Test-battery run
+[`31887203990`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31887203990) completed with
+`v2-static`, `root-gates`, and `v2-smoke` green. `v2-glass` passed its report selftest, then emitted
+an honest `instrument-fail` artifact with zero product findings and zero retries after its ninth
+fresh matrix browser (`desktop`) observed `DevToolsActivePort has an invalid port` in 364
+milliseconds; all eight earlier and all three later matrix rows passed with the same pinned Chrome
+151 provenance. `v2-persona-preview` skipped and `battery` failed only as the dependency cascade.
+This finding occurred before page creation and does not change the bounded WorldGen product scope.
+
+The shared launcher had treated `DevToolsActivePort` path existence as proof that Chromium had
+finished publishing both lines. Its bounded repair keeps one process and the existing monotonic
+startup deadline, but accepts an endpoint only after two consecutive identical, fully valid raw
+snapshots. Parser-invalid regular-file content is treated as potentially incomplete inside that
+deadline;
+wrong file types, symbolic links, and unexpected filesystem errors remain immediate failures. A
+persistent malformed file reaches the unchanged deadline with its last parse diagnosis, constructs
+no WebSocket, then cleans the one child and owned profile. Permanent portable controls cover a
+syntactically valid-looking prefix, a port-only file with its endpoint line missing, and invalid
+endpoint syntax that later become complete, plus persistent malformed content and unsafe file
+types. The old implementation fails the staged-prefix
+fixture; the strengthened local `browsercdp --selftest` passes. This adds no relaunch, retry, sleep,
+browser reuse, fallback change, or timeout expansion. The Glass report selftest, full 12-viewport
+Glass matrix, one-attempt v2 smoke, root preflight/selftest, root layout selftest, sealed
+787-outcome layout gate, 299 tests /1 skip, both TypeScript programs, `artunused`, syntax and diff
+hygiene all pass locally on the same working diff; local preflight also records a successful Edge
+151 launch and the expected non-blocking revision-drift warning against the Edge 150 baseline.
+Three independent final read-only source, control, caller and documentation audits are clean after
+their findings were resolved. A new pushed exact head, fresh CI, and Claude review remain required
+before integration.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete

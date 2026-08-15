@@ -108,15 +108,42 @@ the archive verbatim and refresh this handoff in place.
   byte sentinel and restored-clean outcome; `artaudit` reports 23 sources/zero findings;
   `coveragegap` reports 1,010/1,010 with zero remaining; `speccheck` reports 454 declared
   fields/zero unread/zero inert; and all 299 tests /1 skip, both TypeScript programs, `artunused`
-  and `git diff --check` pass. Fresh repaired-head CI and Claude exact-diff review remain required.
+  and `git diff --check` pass.
+- The byte-restored exact head `1a0839a95e595673409436bae27962e999f256a0` is also permanently
+  non-certifying. Test-battery run
+  [`31887203990`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31887203990) completed
+  with `v2-static`, `root-gates`, and `v2-smoke` green. `v2-glass` first passed its report selftest,
+  then correctly published an `instrument-fail` report with zero product findings and zero retries:
+  its ninth matrix browser (`desktop`) observed `DevToolsActivePort has an invalid port` after
+  364 milliseconds, while all eight earlier and all three later fresh-browser rows passed with the
+  same pinned Chrome 151 provenance. `v2-persona-preview` skipped and `battery` failed only as the
+  dependency cascade. No gameplay page was created for the failed row; do not retry this head.
+- That second red exposed a shared-launcher publication race, not a WorldGen, Glass outcome,
+  browser-pin, profile-reuse, or timeout defect. The old reader treated path existence as proof that
+  Chromium had finished publishing both endpoint lines and killed the one owned browser on the
+  first parser-invalid observation. A test-first port-only file with its endpoint line missing
+  reproduced the old `invalid port` failure; a separate syntactically valid-looking prefix proved
+  the old reader could construct a socket before publication stabilized. The bounded local repair
+  now requires two consecutive identical, fully valid snapshots inside the same absolute startup
+  deadline; parser-invalid regular-file content is treated as potentially incomplete, while wrong
+  file types, links, and unexpected I/O still fail immediately. A persistent malformed regular file
+  reaches the unchanged deadline
+  with its last parse diagnosis, constructs no socket, launches no second process, and cleans its
+  profile. The strengthened `browsercdp --selftest`, Glass report selftest, full 12-viewport Glass
+  matrix, one-attempt v2 smoke, root preflight/selftest, root layout selftest, and sealed 787-outcome
+  layout gate all pass locally on this exact working diff. The full v2 suite remains 299 tests /1
+  skip; both TypeScript programs, `artunused`, syntax, and diff hygiene pass. Local preflight records
+  Edge 151 launch success plus the expected non-blocking revision-drift warning against the Edge 150
+  baseline. Three independent final read-only audits of the launcher, permanent controls, shared
+  callers, and synchronized references are clean after their findings were resolved. A new
+  committed head, fresh CI, and Claude exact-diff review remain required.
 
 ### Next actions
 
-1. Commit only the bounded `apphooks.ts` byte restoration plus this synchronized handoff/program
-   status, then push the new head to existing draft PR #27; never retry the known-red head.
-2. Require fresh exact-head CI on the repaired head, then request Claude's exact-diff review.
-   Resolve only actionable findings on the same branch; merge only the reviewed terminal-green
-   exact head under Nick's standing authority.
+1. Commit and push one new PR #27 head; never retry either known-red head.
+2. Require fresh exact-head CI, then request Claude's exact-diff review. Resolve only actionable
+   findings on the same branch;
+   merge only the reviewed terminal-green exact head under Nick's standing authority.
 3. Monitor the resulting `develop` battery and mapped DEV publication. Then continue F1b as
    separate audio pre-init and epoch-contract PRs, followed by F2 canonical ingress before any
    world-bound ownership/reward/receipt writer.
@@ -125,15 +152,16 @@ the archive verbatim and refresh this handoff in place.
 
 **Current side:** OpenAI/Codex on macOS, `openai/mac`, based on merged `develop` tip
 `b5e5d0a3b4bb4057fa6d251816454b370e8b2624`. Draft PR #27's pushed exact head
-`fe37753d66b52d66c08df878cd315cc7168dcb2e` is permanently non-certifying in run
-`31886401312`. The working tree contains the bounded audited-byte restoration for
-`packages/domain/descriptors/src/apphooks.ts` plus this exact-status update; the repaired head has
-not yet been pushed.
+`1a0839a95e595673409436bae27962e999f256a0` is permanently non-certifying in run
+`31887203990`; the earlier head/run `fe37753d…` / `31886401312` remains separate immutable red
+history. The working tree contains only the bounded shared-launcher publication repair and its
+synchronized current references; no new repaired head has been pushed.
 
 **GitHub step:** existing draft PR [#27](https://github.com/TheDakk/Celestial-Frontier/pull/27)
 targets `develop` from `openai/mac`. Do not retry or review-finalize known-red head
-`fe37753d66b52d66c08df878cd315cc7168dcb2e`. Push the bounded restoration as a new head, require
-fresh exact-head CI, then obtain Claude review of that exact repaired diff.
+`1a0839a95e595673409436bae27962e999f256a0` or its earlier failed predecessor. Push the bounded
+launcher repair as a new head, require fresh exact-head CI, then obtain Claude review of that exact
+repaired diff.
 
 **PR details:**
 
@@ -151,12 +179,16 @@ fresh exact-head CI, then obtain Claude review of that exact repaired diff.
   copy, balance, versioning, production and deployment. Also restores the descriptor catalog
   wrapper byte-for-byte after the first exact-head CI correctly rejected a prose-only change through
   its audited hash sentinel; the precise warning remains in WorldGen-owned surfaces, and no sentinel
-  hash is re-pinned.`
+  hash is re-pinned. The next exact head also hardens the shared raw-CDP reader after CI caught a
+  transient partial `DevToolsActivePort` publication: it accepts only two identical complete endpoint
+  observations inside the existing single-process startup deadline, preserves immediate unsafe-file
+  rejection and bounded cleanup, and adds staged-prefix plus persistent-malformed controls without a
+  retry, timeout increase, Glass-specific workaround, or product change.`
 
-**Other side:** do not ask Claude to review-finalize the known-red head. After the repaired head is
-pushed and its exact CI is terminal green, Nick should open Anthropic/Claude Code; Claude fetches
-and normally fast-forwards clean `anthropic/mac`, then reviews the exact remote diff without editing
-this worktree.
+**Other side:** do not ask Claude to review-finalize either known-red head. After the new repaired
+head is pushed and its exact CI is terminal green, Nick should open Anthropic/Claude Code; Claude
+fetches and normally fast-forwards clean `anthropic/mac`, then reviews the exact remote diff without
+editing this worktree.
 
 **Release status:** no release, manual deployment, production version bump, `develop` → `main`
 merge, or direct site write is part of this batch.
