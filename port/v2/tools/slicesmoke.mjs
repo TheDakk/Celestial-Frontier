@@ -349,6 +349,27 @@ try {
     await dispatchKeyPress(sess, key, code, modifiers);
     await sleep(40);
   };
+  const clickDesktopPoint = async (point) => {
+    if (!point || !Number.isFinite(point.x) || !Number.isFinite(point.y)) {
+      throw new Error('desktop pointer point is not finite: ' + JSON.stringify(point));
+    }
+    await send('Input.dispatchMouseEvent', {
+      type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1,
+    }, sess);
+    await send('Input.dispatchMouseEvent', {
+      type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
+    }, sess);
+    await sleep(80);
+  };
+  const armDesktopPointerReceipt = async () => evalIn(`(()=>{ window.__cfPanelPointerAbort?.abort();
+    delete window.__cfPanelPointer;const controller=new AbortController();window.__cfPanelPointerAbort=controller;
+    document.addEventListener('pointerdown',(event)=>{ const target=event.target instanceof Element?event.target:null;
+      window.__cfPanelPointer={targetId:target?.id||null,tag:target?.tagName||null,x:event.clientX,y:event.clientY,
+        pointerType:event.pointerType||null};window.__cfPanelPointerAbort=null; },
+      {capture:true,once:true,signal:controller.signal});return true; })()`);
+  const takeDesktopPointerReceipt = async () => evalIn(`(()=>{ const receipt=window.__cfPanelPointer||null;
+    window.__cfPanelPointerAbort?.abort();delete window.__cfPanelPointerAbort;delete window.__cfPanelPointer;
+    return receipt; })()`);
   const waitDesktopValue = async (label, expr, timeoutMs = 6000) => {
     const deadline = Date.now() + timeoutMs;
     let last = null;
@@ -835,6 +856,168 @@ try {
       + JSON.stringify(panelSwitchFocus));
   }
 
+  /* UI-P1: flex spacing belongs to its rail, not to the sky behind it. The
+     reported target is the exact 8px root-owned gap—not either registered
+     button—so only real-browser pointer input plus elementFromPoint can prove
+     this document-level pointerdown law. Declarative boundary inventory and
+     independent removal controls keep the old asymmetric #raillft exception
+     from surviving beside the new mechanism. */
+  const panelBoundarySetup = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
+    if(before.cardOpen)document.querySelector('#survey [data-survey-close]')?.click();
+    if(S.api.state().panelOpen){const panel=[...document.querySelectorAll('.panel')]
+      .find((node)=>node.style.display!=='none');panel?.querySelector('[data-pnx]')?.click();}
+    const ids=['topbar','raillft','railrgt','dock','survey'];
+    const boundaries=ids.map((id)=>({id,present:document.getElementById(id)?.hasAttribute('data-panel-boundary')===true}));
+    const state=S.api.state();return {panelOpen:state.panelOpen,cardOpen:state.cardOpen,boundaries};})()`);
+  if (panelBoundarySetup.panelOpen !== null || panelBoundarySetup.cardOpen
+    || panelBoundarySetup.boundaries.some((row) => !row.present)) {
+    fails.push('PANEL BOUNDARY INVENTORY: setup or declared chrome ownership is incomplete: '
+      + JSON.stringify(panelBoundarySetup));
+  }
+  const railGapProbe = (railId, upperId, lowerId) => `(()=>{ const S=window.__CF_SLICE__,
+    rail=document.getElementById(${JSON.stringify(railId)}),upper=document.getElementById(${JSON.stringify(upperId)}),
+    lower=document.getElementById(${JSON.stringify(lowerId)}),rr=rail?.getBoundingClientRect(),
+    ur=upper?.getBoundingClientRect(),lr=lower?.getBoundingClientRect();
+    if(!rail||!upper||!lower||!rr||!ur||!lr)return {geometry:false,why:'missing rail fixture'};
+    const gap=lr.top-ur.bottom,point={x:(rr.left+rr.right)/2,y:(ur.bottom+lr.top)/2},hit=document.elementFromPoint(point.x,point.y),
+      state=S.api.state();
+    return {geometry:innerWidth===1280&&innerHeight===800&&getComputedStyle(rail).display==='flex'
+        &&rr.width>0&&rr.height>0&&Math.abs(gap-8)<=0.5&&point.x>rr.left&&point.x<rr.right
+        &&point.y>rr.top&&point.y<rr.bottom&&hit===rail,
+      gap,point,targetId:hit?.id||null,boundary:rail.hasAttribute('data-panel-boundary'),
+      panelOpen:state.panelOpen,cardOpen:state.cardOpen};})()`;
+  const railButtonPoint = (id) => `(()=>{ const button=document.getElementById(${JSON.stringify(id)}),
+    rect=button?.getBoundingClientRect(),x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0,
+    hit=rect?document.elementFromPoint(x,y):null;return {ok:!!button&&!!rect&&rect.width>0&&rect.height>=44
+      &&getComputedStyle(button).display!=='none'&&!!hit&&(hit===button||button.contains(hit)),x,y,targetId:hit?.id||null};})()`;
+  const openDesktopRailPanel = async (buttonId, panelId, label) => {
+    const point = await evalIn(railButtonPoint(buttonId));
+    if (!point.ok) {
+      fails.push(`${label}: visible rail opener was not browser-mouse hittable: ${JSON.stringify(point)}`);
+      return false;
+    }
+    await clickDesktopPoint(point);
+    const opened = await waitDesktopValue(`${label} open`, `window.__CF_SLICE__.api.state().panelOpen===${JSON.stringify(panelId)}`)
+      .catch(() => false);
+    if (!opened) fails.push(`${label}: browser-mouse rail opener did not open ${panelId}`);
+    return !!opened;
+  };
+  const closeDesktopPanel = async () => {
+    await evalIn(`(()=>{ const panel=[...document.querySelectorAll('.panel')].find((node)=>node.style.display!=='none');
+      panel?.querySelector('[data-pnx]')?.click();return window.__CF_SLICE__.api.state().panelOpen;})()`);
+    await sleep(40);
+  };
+  const rightGap = railGapProbe('railrgt', 'railatlas', 'railrecords');
+  const leftGap = railGapProbe('raillft', 'railcharters', 'railcodex');
+
+  if (await openDesktopRailPanel('railcodex', 'codex', 'RIGHT RAIL GAP')) {
+    const before = await evalIn(rightGap);
+    if (!before.geometry || before.cardOpen || before.panelOpen !== 'codex') {
+      fails.push('RIGHT RAIL GAP: reported 8px root-owned geometry was not established: ' + JSON.stringify(before));
+    } else {
+      await armDesktopPointerReceipt();
+      await clickDesktopPoint(before.point);
+      const receipt = await takeDesktopPointerReceipt();
+      const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('railcodex'),
+        panel=document.getElementById('codexpanel');return {panelOpen:s.panelOpen,expanded:button?.getAttribute('aria-expanded'),
+          hidden:panel?.getAttribute('aria-hidden')};})()`);
+      if (!before.boundary || receipt?.targetId !== 'railrgt' || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'codex'
+        || after.expanded !== 'true' || after.hidden !== 'false') {
+        fails.push('RIGHT RAIL GAP: real root-gap pointer dismissed or desynchronized the active panel: '
+          + JSON.stringify({ before, receipt, after }));
+      }
+    }
+    await closeDesktopPanel();
+  }
+  if (await openDesktopRailPanel('railrecords', 'rec', 'LEFT RAIL GAP')) {
+    const before = await evalIn(leftGap);
+    if (!before.geometry || before.cardOpen || before.panelOpen !== 'rec') {
+      fails.push('LEFT RAIL GAP: symmetric 8px root-owned geometry was not established: ' + JSON.stringify(before));
+    } else {
+      await armDesktopPointerReceipt();
+      await clickDesktopPoint(before.point);
+      const receipt = await takeDesktopPointerReceipt();
+      const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('railrecords'),
+        panel=document.getElementById('recpanel');return {panelOpen:s.panelOpen,expanded:button?.getAttribute('aria-expanded'),
+          hidden:panel?.getAttribute('aria-hidden')};})()`);
+      if (!before.boundary || receipt?.targetId !== 'raillft' || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'rec'
+        || after.expanded !== 'true' || after.hidden !== 'false') {
+        fails.push('LEFT RAIL GAP: real root-gap pointer dismissed or desynchronized the active panel: '
+          + JSON.stringify({ before, receipt, after }));
+      }
+    }
+    await closeDesktopPanel();
+  }
+  const railBoundaryRemovalControl = async ({ railId, gapCheck, buttonId, panelId, label }) => {
+    if (!await openDesktopRailPanel(buttonId, panelId, `${label} CONTROL`)) return;
+    const prior = await evalIn(`document.getElementById(${JSON.stringify(railId)})?.getAttribute('data-panel-boundary')??null`);
+    let before = null, receipt = null;
+    try {
+      await evalIn(`document.getElementById(${JSON.stringify(railId)})?.removeAttribute('data-panel-boundary')`);
+      before = await evalIn(gapCheck);
+      await armDesktopPointerReceipt();
+      await clickDesktopPoint(before.point);
+      receipt = await takeDesktopPointerReceipt();
+    } finally {
+      await evalIn(`(()=>{ const rail=document.getElementById(${JSON.stringify(railId)}),prior=${JSON.stringify(prior)};
+        if(prior===null)rail?.removeAttribute('data-panel-boundary');else rail?.setAttribute('data-panel-boundary',prior);})()`);
+    }
+    const after = await evalIn(`window.__CF_SLICE__.api.state().panelOpen`);
+    if (prior === null || !before?.geometry || before.boundary || before.panelOpen !== panelId
+      || receipt?.targetId !== railId || receipt?.pointerType !== 'mouse' || after !== null) {
+      fails.push(`${label} CONTROL FAILED — removing only the rail boundary did not recreate dismissal: `
+        + JSON.stringify({ prior, before, receipt, after }));
+    }
+    if (after !== null) await closeDesktopPanel();
+  };
+  await railBoundaryRemovalControl({
+    railId: 'railrgt', gapCheck: rightGap, buttonId: 'railcodex', panelId: 'codex', label: 'RIGHT RAIL BOUNDARY',
+  });
+  await railBoundaryRemovalControl({
+    railId: 'raillft', gapCheck: leftGap, buttonId: 'railrecords', panelId: 'rec', label: 'LEFT RAIL BOUNDARY',
+  });
+
+  /* Delegated document listeners are public event boundaries: a synthetic
+     or retargeted non-Element target must be ignored, never allowed to throw
+     before it can preserve the current panel. This restores the legacy guard
+     for both pointerdown dismissal and the delegated Close click. */
+  if (await openDesktopRailPanel('railrecords', 'rec', 'PANEL NON-ELEMENT TARGET')) {
+    const nonElementTarget = await evalIn(`new Promise((resolve)=>{ const errors=[];
+      const onError=(event)=>{errors.push(String(event.error?.message||event.message||'window error'));event.preventDefault();};
+      addEventListener('error',onError);document.dispatchEvent(new Event('pointerdown',{bubbles:true}));
+      document.dispatchEvent(new Event('click',{bubbles:true}));setTimeout(()=>{removeEventListener('error',onError);
+        resolve({errors,panelOpen:window.__CF_SLICE__.api.state().panelOpen});},0);})`);
+    if (nonElementTarget.errors.length || nonElementTarget.panelOpen !== 'rec') {
+      fails.push('PANEL NON-ELEMENT TARGET: delegated pointer/click handlers threw or changed state: '
+        + JSON.stringify(nonElementTarget));
+    }
+    await closeDesktopPanel();
+  }
+  /* Search keeps its established outside-dismiss policy in this bounded
+     repair. It is interactive glass, but it is not one of the declared panel
+     boundaries: a broad `.glass` or top-chrome exemption would silently
+     change focus/Escape behavior while fixing the rail. */
+  if (await openDesktopRailPanel('railcodex', 'codex', 'SEARCH OUTSIDE DISMISS')) {
+    const searchPoint = await evalIn(`(()=>{ const input=document.getElementById('searchbox'),rect=input?.getBoundingClientRect(),
+      x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0,hit=rect?document.elementFromPoint(x,y):null;
+      return {ok:!!input&&!!rect&&rect.width>0&&rect.height>0&&hit===input&&!input.hasAttribute('data-panel-boundary'),x,y};})()`);
+    let receipt = null;
+    if (searchPoint.ok) {
+      await armDesktopPointerReceipt();
+      await clickDesktopPoint(searchPoint);
+      receipt = await takeDesktopPointerReceipt();
+    }
+    const outcome = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),input=document.getElementById('searchbox');
+      const result={panelOpen:s.panelOpen,focused:document.activeElement===input,boundary:input?.hasAttribute('data-panel-boundary')===true};
+      input?.blur();return result;})()`);
+    if (!searchPoint.ok || receipt?.targetId !== 'searchbox' || receipt?.pointerType !== 'mouse'
+      || outcome.panelOpen !== null || !outcome.focused || outcome.boundary) {
+      fails.push('SEARCH OUTSIDE DISMISS: bounded rail ownership changed established Search dismissal/focus: '
+        + JSON.stringify({ searchPoint, receipt, outcome }));
+      if (outcome.panelOpen !== null) await closeDesktopPanel();
+    }
+  }
+
   /* THE GUIDE IS THE MATURE MANUAL, not a parallel seven-topic summary:
      9 categories / 43 authored stable IDs / 41 legacy-live topics, with
      capability-aware v2 copy, search, cross-links and the complete release
@@ -981,6 +1164,9 @@ try {
       populated:bullets.length===44&&bullets.every((bullet)=>bullet.length>0),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
       complete:charterPlacement&&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
+        &&/exactly one 44-pixel top-right Close action/.test(text)
+        &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
+        &&/a genuine empty-sky press still dismisses it/.test(text)
         &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
         &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
         &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text),
@@ -1008,11 +1194,29 @@ try {
   if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 43) {
     fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet stayed complete: ' + JSON.stringify(releaseInventoryCtl));
   }
-  const releaseCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+  const releaseCloseCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
     .find((item)=>/ONE SURFACE, ONE CLOSE/.test(item.textContent||''));if(!row)return {complete:true,error:'missing sentinel row'};
-    const prior=row.textContent;row.textContent='Required player outcome removed';const result=${releaseDraftCheck};row.textContent=prior;return result; })()`);
-  if (releaseCopyCtl.complete) {
-    fails.push('GUIDE RELEASE CONTROL FAILED — removing a required v2.0 outcome stayed complete: ' + JSON.stringify(releaseCopyCtl));
+    const prior=row.textContent;row.textContent=prior.replace('exactly one 44-pixel top-right Close action',
+      'Close-action outcome removed');const result=${releaseDraftCheck};row.textContent=prior;return result; })()`);
+  if (releaseCloseCopyCtl.complete) {
+    fails.push('GUIDE RELEASE CLOSE CONTROL FAILED — removing the original Close outcome stayed complete: '
+      + JSON.stringify(releaseCloseCopyCtl));
+  }
+  const releaseRailCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+    .find((item)=>/ONE SURFACE, ONE CLOSE/.test(item.textContent||''));if(!row)return {complete:true,error:'missing sentinel row'};
+    const prior=row.textContent;row.textContent=prior.replace('leaves the active panel open','rail preservation outcome removed');
+    const result=${releaseDraftCheck};row.textContent=prior;return result; })()`);
+  if (releaseRailCopyCtl.complete) {
+    fails.push('GUIDE RELEASE RAIL CONTROL FAILED — removing the rail-preservation outcome stayed complete: '
+      + JSON.stringify(releaseRailCopyCtl));
+  }
+  const releaseSkyCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+    .find((item)=>/ONE SURFACE, ONE CLOSE/.test(item.textContent||''));if(!row)return {complete:true,error:'missing sentinel row'};
+    const prior=row.textContent;row.textContent=prior.replace('a genuine empty-sky press still dismisses it',
+      'empty-sky dismissal outcome removed');const result=${releaseDraftCheck};row.textContent=prior;return result; })()`);
+  if (releaseSkyCopyCtl.complete) {
+    fails.push('GUIDE RELEASE EMPTY-SKY CONTROL FAILED — removing the dismissal outcome stayed complete: '
+      + JSON.stringify(releaseSkyCopyCtl));
   }
   const releaseCharterCopyCtl = await evalIn(`(()=>{ const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
     first=rows.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
@@ -1148,16 +1352,60 @@ try {
     document.querySelector('#setpanel [data-pnx]').click();
     return document.activeElement && document.activeElement.id; })()`);
   if (focusBack !== 'docksets') fails.push('closing a panel did not restore focus to its opener: ' + JSON.stringify(focusBack));
-  /* tap empty space closes (the document pointerdown law) */
+  /* True empty sky closes, but only when the same target is not deliberately
+     classified as owned chrome. This negative control prevents a checker
+     that ignores the new boundary metadata from blessing either direction. */
   await evalIn(`(()=>{ document.getElementById('docksets').click(); return 1; })()`);
   await sleep(250);
   const shotSet = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(screenshotPath('settings'), Buffer.from(shotSet.data, 'base64'));
-  await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: 900, y: 300, button: 'left', clickCount: 1 }, sess);
-  await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: 900, y: 300, button: 'left', clickCount: 1 }, sess);
-  await sleep(200);
-  const tapClose = await evalIn(`window.__CF_SLICE__.api.state().panelOpen`);
-  if (tapClose !== null) fails.push('tap-empty-to-close did not close the panel: ' + JSON.stringify(tapClose));
+  const emptySky = await evalIn(`(()=>{ const hit=document.elementFromPoint(900,300),state=window.__CF_SLICE__.api.state(),
+    scene=JSON.stringify({mode:state.mode,gal:state.gal,star:state.star,planet:state.planet,
+      galX:state.galX,galY:state.galY,starX:state.starX,starY:state.starY});
+    return {ok:hit instanceof HTMLCanvasElement&&!hit.closest('[data-panel-boundary],.panel,#importsheet'),
+      x:900,y:300,tag:hit?.tagName||null,id:hit?.id||null,panelOpen:state.panelOpen,cardOpen:state.cardOpen,
+      scene,prior:hit?.getAttribute?.('data-panel-boundary')??null};})()`);
+  if (!emptySky.ok || emptySky.panelOpen !== 'set' || emptySky.cardOpen) {
+    fails.push('TAP EMPTY SKY: fixed browser coordinate did not resolve to real unowned canvas with Settings open: '
+      + JSON.stringify(emptySky));
+  } else {
+    let shieldReceipt = null, canvasOwned = false, canvasRestore = null;
+    try {
+      canvasOwned = await evalIn(`(()=>{ const hit=document.elementFromPoint(900,300);
+        if(!(hit instanceof HTMLCanvasElement))return false;window.__cfPanelBoundaryCanvas=hit;
+        hit.setAttribute('data-panel-boundary','');return true;})()`);
+      await armDesktopPointerReceipt();
+      await clickDesktopPoint(emptySky);
+      shieldReceipt = await takeDesktopPointerReceipt();
+    } finally {
+      canvasRestore = await evalIn(`(()=>{ const hit=window.__cfPanelBoundaryCanvas,prior=${JSON.stringify(emptySky.prior)};
+        if(!(hit instanceof HTMLCanvasElement)){delete window.__cfPanelBoundaryCanvas;return false;}
+        if(prior===null)hit.removeAttribute('data-panel-boundary');else hit.setAttribute('data-panel-boundary',prior);
+        const restored=(hit.getAttribute('data-panel-boundary')??null)===prior;
+        delete window.__cfPanelBoundaryCanvas;return restored;})()`);
+    }
+    const shielded = await evalIn(`(()=>{ const state=window.__CF_SLICE__.api.state();return {panelOpen:state.panelOpen,
+      cardOpen:state.cardOpen,scene:JSON.stringify({mode:state.mode,gal:state.gal,star:state.star,planet:state.planet,
+        galX:state.galX,galY:state.galY,starX:state.starX,starY:state.starY})};})()`);
+    if (!canvasOwned || !canvasRestore || shieldReceipt?.tag !== 'CANVAS' || shieldReceipt?.pointerType !== 'mouse'
+      || shielded.panelOpen !== 'set' || shielded.cardOpen || shielded.scene !== emptySky.scene) {
+      fails.push('TAP EMPTY SKY CONTROL FAILED — temporarily owned canvas still dismissed Settings: '
+        + JSON.stringify({ emptySky, canvasOwned, canvasRestore, shieldReceipt, shielded }));
+      if (shielded.panelOpen === null) await evalIn(`document.getElementById('docksets').click()`);
+    }
+    await armDesktopPointerReceipt();
+    await clickDesktopPoint(emptySky);
+    const receipt = await takeDesktopPointerReceipt();
+    const tapClose = await evalIn(`(()=>{ const state=window.__CF_SLICE__.api.state();return {panelOpen:state.panelOpen,
+      cardOpen:state.cardOpen,scene:JSON.stringify({mode:state.mode,gal:state.gal,star:state.star,planet:state.planet,
+        galX:state.galX,galY:state.galY,starX:state.starX,starY:state.starY})};})()`);
+    if (receipt?.tag !== 'CANVAS' || receipt?.pointerType !== 'mouse' || tapClose.panelOpen !== null
+      || tapClose.cardOpen || tapClose.scene !== emptySky.scene) {
+      fails.push('tap-empty-to-close did not close the panel from a real canvas pointer: '
+        + JSON.stringify({ emptySky, receipt, tapClose }));
+      if (tapClose.panelOpen !== null) await closeDesktopPanel();
+    }
+  }
   const shot3 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(screenshotPath('sol'), Buffer.from(shot3.data, 'base64'));
   const surveyed = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
@@ -3728,6 +3976,6 @@ try {
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · SETTINGS IMPORT accessible and focused · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-guide · slice-settings · slice-training · slice-earth · slice-solmark · slice-phone');
 process.exit(0);

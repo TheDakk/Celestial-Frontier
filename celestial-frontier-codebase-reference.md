@@ -4,7 +4,7 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 overlay matches code and live handoff as of 2026-08-14.**
+> **Current port/v2 overlay matches code and live handoff as of 2026-08-15.**
 > **2026-08-13 exploration/ship/loot/companion/audio review:** The executable v2
 > boundary remains the Phase-4 travel/survey slice. `apps/game/src/main.ts` renders the
 > read-only Compendium through `@cf/art/species`, consumes `@cf/domain-combatcore`
@@ -128,7 +128,7 @@
 > then living organism rigs and biome scenes. Platinum-approved static portraits
 > remain frozen; optional polish is not a mandate to repaint them.
 >
-> **2026-08-12 root browser-harness overlay; 2026-08-14 selftest update:** legacy `tools/uilayout.js` now
+> **2026-08-12 root browser-harness overlay; 2026-08-15 selftest update:** legacy `tools/uilayout.js` now
 > consumes the v2-owned browser resolver and raw-CDP launcher instead of owning a
 > second candidate list, guessed port, WebSocket loop and cleanup path. The shared
 > lifecycle uses browser-assigned port 0 plus `DevToolsActivePort`, records exact
@@ -152,13 +152,26 @@
 > exact packaging) and the root layout gate `tools/uilayout.js` — the battery job's first
 > real browser launch, where the identical diagnosed Linux cold-start phase
 > recurred at its prior 24-second bound (run `31758515194` attempt 1). The
-> browsercdp selftest's first real provenance launch also owns the fixed 30-second
-> allowance. The selftest isolates its
+> browsercdp selftest's first real provenance launch also owns a fixed 30-second
+> absolute spawn → endpoint → socket-open allowance. The selftest isolates its
 > earlier injected WebSocket timeout behind a private launcher seam: the seam writes
 > one valid owned endpoint and starts one portable Node child to prove the 200-millisecond socket
 > timeout, exactly one fixture launch, socket close, child shutdown, and profile
-> cleanup without launching Chrome. Its later warm browser launch remains bounded at 10 seconds. Generic
-> command/shutdown bounds stay unchanged. Every platform captures the exact options
+> cleanup without launching Chrome. Run `31870103561` then proved that a valid endpoint does not
+> itself prove an open socket: the cold live leg reused its 1,500-millisecond command ceiling for
+> the handshake and failed before `Browser.getVersion`. `webSocketOpenTimeoutMs` now owns that phase,
+> defaults to the startup budget, and is clipped to the absolute startup time still remaining on a
+> monotonic clock. It begins before WebSocket construction, and `onopen` rechecks the deadline. A
+> delayed portable socket must outlive a 100-millisecond command ceiling, open inside its default
+> 1-second socket/startup budget, and answer fake provenance. Separate controls reject after an
+> explicit short socket cap, clip a longer socket cap to a shorter startup remainder, reject an
+> exhausted deadline before socket construction, reject a constructor that consumes the remaining
+> phase budget while requiring a provisional error handler before CONNECTING-socket cleanup, and
+> reject a just-late open before its overdue
+> timer runs; nonpositive/fractional caps reject before launch.
+> The cold live leg declares a 15-second socket cap inside its 30-second startup budget; its later
+> warm leg keeps 10 seconds for both. Both retain 1,500-millisecond command and 2-second shutdown
+> bounds, assert profile cleanup in `finally` on either rejection or success, and never retry. Every platform captures the exact options
 > passed by the preview caller and completes a real browser outcome. On POSIX the
 > preview selftest starts Chrome immediately but withholds its
 > ready CDP endpoint for 16 seconds: the generic path times out while the exact preview
@@ -225,6 +238,13 @@
 > Each panel and Survey card owns exactly one top-right 44px Close action. On desktop,
 > notifications plus Settings and Records share the bottom-right utility edge; balanced
 > padding, separators and borders use the same glass geometry.
+> `panels.ts` retains element-identity ownership for registered panel roots/openers and reads
+> `data-panel-boundary` for non-dismiss chrome. The top bar, dock, Survey and both desktop rails
+> declare that metadata; Search intentionally does not. Real-CDP smoke hits the exact 8px gap in
+> each rail, requires the current panel/ARIA state to survive, removes each marker independently
+> to recreate dismissal, and proves the opposite direction on a hit-tested canvas point. Both
+> delegated document handlers reject non-`Element` targets before `closest`, restoring the legacy
+> event-boundary guard without changing modal, Training, Search or Escape policy.
 >
 > V2 now applies imported Text size / tone / font preferences, a contrast-safe
 > 0.82..0.98 glass floor, safe-area and measured dock/context/hint offsets,
