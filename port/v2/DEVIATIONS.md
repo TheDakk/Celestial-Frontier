@@ -1285,11 +1285,17 @@ duplicates).
   collapse with the original Maps/Sets' first/last-write semantics. Normalize numeric genes without
   rewriting honest unwrapped `size`, contain irreparable rows, and rebuild keyed collections through
   their actual abstractions.
-- ★ **D-CONTRACT-1 — handwritten declarations are executable contracts, not comments (2026-08-11).**
-  SurveyPhrases argument lists, PlanetGen's required `fbm`, WorldGen's `{stars,deco}` result,
-  CombatCore abilities/level/stat shapes and SpeciesTraits tables/options now match runtime. Contract
-  tests exercise the real APIs, and `npm run typecheck` includes the app configuration that first
-  exposed the drift.
+- ★ **D-CONTRACT-1 — handwritten declarations are executable contracts, not comments (updated
+  2026-08-15).** The specifically audited SurveyPhrases, PlanetGen, SpeciesTraits, CombatCore and
+  WorldGen surfaces match runtime. WorldGen now exposes the required own
+  `galaxiesInCell(...).web` metadata and exact `SupernovaSite`/birth/remnant types, and names
+  `supernovaSites`'s second argument as the deterministic epoch key rather than a desired count.
+  Its facade documents that a first uncached ordinary generated-galaxy branch still requires
+  `GAL_SPRITES` installation. That warning closes DOM-3's missing-contract finding; it does not
+  remove the free-global seam or make the package standalone. This closes only WorldGen's `.web`
+  half of DOM-11: `_sanitizeSavedGenome` mutation semantics remain open under D-STRAYS/D-IMPORT,
+  and other declaration corners remain separately listed. Contract tests exercise the real APIs,
+  and `npm run typecheck` includes the app configuration that first exposed the drift.
 - ★ **D-UI-1 — lower mobile chrome is measured as a group (2026-08-12).** The phone dock wrapped
   3/3/2 while context/hint/Planetside used fixed offsets, so green smoke evidence visibly covered
   copy and controls. The port owns a 206×98 4×2 phone dock, publishes measured `--dock-h`/`--ctx-h`,
@@ -1635,8 +1641,10 @@ duplicates).
   (the consecutive-seed recipe never executed the size-mutation branch once in 10k
   cases — input correlation zeroed a branch's coverage).
 - ★ Real-input tests behind the vacuous probes (planetSpecies `[]`, galaxyDescriptor,
-  moonDescriptor, empty-cell galaxiesInCell — which hid a would-be crash on every
-  populated cell).
+  moonDescriptor, empty-cell galaxiesInCell — which hid a `GAL_SPRITES` failure on
+  an uncached ordinary generated-galaxy branch). The WorldGen control now proves
+  special-only success without the hook, exact ordinary-path failure without it,
+  then deterministic success after the official hook installs.
 - ★ The save-fixture harness (10 real-boot fixtures incl. recovery and the
   arrays-as-objects gate quirk) + content-registry gate + round-trip fixed point.
 - ★ The 9g rarity-collapse guard, data-level and end-to-end through speciesGrade.
