@@ -784,6 +784,23 @@ launch. Real-browser legs must assert profile cleanup in `finally` on either rej
 the portable rejection controls are the deterministic proof of failure cleanup. Never answer this
 class with a retry, fallback, workflow-timeout increase, or wider startup/command/shutdown budget.
 
+PR #27 exposed one earlier publication boundary: **A FILE PATH IS NOT A COMPLETE ENDPOINT.** In
+test-battery run `31887203990`, v2-glass job `95018147710`, the ninth fresh matrix browser exposed
+`DevToolsActivePort has an invalid port` only 364 milliseconds after launch; eight earlier and three
+later rows passed under the same pinned Chrome, and the report correctly retained zero product
+findings and zero retries. Chromium can create its final `DevToolsActivePort` path before both lines
+have been completely written. A shared launcher must therefore treat parser-invalid regular-file
+content as potentially incomplete inside the **same** single-process monotonic startup deadline,
+and must require two consecutive identical, fully valid raw snapshots before constructing the
+socket. A wrong file type, symbolic link, or unexpected filesystem error remains immediately fatal;
+a persistently malformed regular file fails at the unchanged deadline with its last parse diagnosis
+and zero socket constructions. Negative-control a valid-looking endpoint prefix, a port-only file
+with its endpoint line missing, invalid endpoint syntax that becomes complete, persistent malformed
+content, unsafe file types, exactly
+one child, final-endpoint socket identity, socket/child closure, and profile removal. Do not turn
+this into a browser relaunch, retry, per-viewport sleep, browser reuse, fallback change, or wider
+startup/socket/command/shutdown budget.
+
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread
 `TransformProcessType` / `_RegisterApplication` SIGABRT within 100 ms of launch; the system log

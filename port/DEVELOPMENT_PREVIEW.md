@@ -156,6 +156,21 @@ The real-browser legs assert profile cleanup in `finally` on either rejection or
 portable rejection cases prove failure cleanup. This changes no retry, fallback, workflow timeout,
 browser selection, or product evidence rule.
 
+Run `31887203990` exposed the preceding endpoint-publication boundary in the ninth fresh browser of
+the full Glass matrix: the final `DevToolsActivePort` pathname was observable before the reader saw
+two complete valid lines, so the old launcher rejected `invalid port` after 364 milliseconds even
+though all eight earlier and three later rows passed under the same pinned Chrome. The shared reader
+now requires two consecutive identical, fully valid raw snapshots before it constructs a socket.
+Parser-invalid regular-file content is treated as potentially incomplete only inside the existing
+single-process
+monotonic startup deadline; a wrong file type, symbolic link, or unexpected filesystem error still
+fails immediately, and persistent malformed content fails at that unchanged deadline with its last
+parse diagnosis and zero socket constructions. Portable controls stage a valid-looking endpoint
+prefix, a port-only file with its endpoint line missing, and invalid endpoint syntax before their
+final forms, and separately prove persistent malformed rejection, immediate unsafe-file cleanup,
+one child, final-endpoint socket identity, shutdown, and profile cleanup. This
+adds no relaunch, retry, sleep, browser reuse, fallback change, or timeout expansion.
+
 `preview:selftest` captures the exact preview-caller options on every platform and completes a
 real-browser outcome. On POSIX it starts Chrome immediately while withholding the ready CDP
 endpoint for 16 seconds, proving the generic allowance rejects without stealing
