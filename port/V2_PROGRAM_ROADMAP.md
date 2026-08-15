@@ -260,6 +260,22 @@ click handlers fail closed on non-`Element` targets. Implementation commit
 draft PR [#26](https://github.com/TheDakk/Celestial-Frontier/pull/26); exact final-head CI and Claude
 review remain integration gates. This record does not close the broader UI preparation.
 
+**PR #26 exact-head CI instrument note (2026-08-15):** head
+`ea972a8f43fbe4a3382d1e1c00a2bd46f1606bbc` remains bound to red test-battery run
+[`31870103561`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31870103561). Its
+v2-smoke job stopped in `browsercdp --selftest` before gameplay: the first live-provenance launch
+found a valid `DevToolsActivePort` inside 30 seconds, then WebSocket opening incorrectly borrowed
+the 1,500-millisecond command ceiling and expired before `Browser.getVersion`. This is inherited
+instrument coupling, not a UI-P1 product failure; the exact run's static, root and full glass jobs
+passed, while persona/preview skipped and the final join was a dependency cascade. The bounded
+repair makes startup one monotonic, absolute
+spawn → endpoint → socket-open deadline, adds a validated socket cap clipped to remaining startup
+time, defaults that cap to startup rather than post-open command time, and retains the exact
+startup/command/shutdown budgets and no-retry rule. Portable delayed-open, explicit-cap,
+remaining-startup, pre-construction-expiry, guarded CONNECTING constructor-overrun, just-late-open,
+never-open and invalid-cap controls prove the phase
+boundaries and cleanup; matching new-head CI and Claude review remain integration gates.
+
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete
 call-site → semantic-domain inventory.
