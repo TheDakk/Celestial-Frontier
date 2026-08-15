@@ -255,8 +255,10 @@ non-Element document targets and an ignored owned-canvas control. With the repai
 298 tests/1 skip, both TypeScript programs and the complete one-attempt browser smoke pass: both
 browser-mouse rail gaps preserve panel/ARIA state, independently removing either marker recreates close,
 owned versus genuine-empty canvas points discriminate in both directions, and delegated pointer/
-click handlers fail closed on non-`Element` targets. Exact committed-head CI and independent review
-remain integration gates for this candidate; this record does not close the broader UI preparation.
+click handlers fail closed on non-`Element` targets. Implementation commit
+`d6ccb9b810fc644437ed205e4f6dbed7974cdba1` is pushed in
+draft PR [#26](https://github.com/TheDakk/Celestial-Frontier/pull/26); exact final-head CI and Claude
+review remain integration gates. This record does not close the broader UI preparation.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete
