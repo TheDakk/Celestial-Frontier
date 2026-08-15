@@ -300,10 +300,12 @@ cross-epoch change, bounded
 site/birth shape, declaration semantics, and both missing-hook failure and installed-hook success.
 This closes DOM-2, DOM-3's missing-warning obligation, and only the WorldGen `.web` half of DOM-11.
 It does not remove the hook dependency, fix `_sanitizeSavedGenome`, install the live epoch bridge,
-close CF1/F2, change generation, or close a Gate. Final full evidence, commit, PR review and CI remain
-to be recorded before integration. The uncommitted candidate currently passes 299 tests /1 skip,
-both TypeScript programs, `artunused`, `git diff --check`, and the complete one-attempt real-browser
-slice smoke with zero console errors; local evidence does not certify a future commit.
+close CF1/F2, change generation, or close a Gate. Reviewed bounded commit
+`29601e478e99b2a114720e23b696e8fb7d79d33c` passes 299 tests /1 skip, both TypeScript programs,
+`artunused`, `git diff --check`, and the complete one-attempt real-browser slice smoke with zero
+console errors. Three independent read-only source, test and documentation audits are clean after
+their findings were resolved. PR review and exact-head CI remain integration gates; local evidence
+does not certify a later handoff-only head.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete
