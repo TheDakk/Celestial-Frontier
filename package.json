@@ -20,7 +20,9 @@
     "test": "node tools/validate.js && node tools/smoke.js && node tools/uilayout.js --selftest && node tools/uilayout.js",
     "deploy": "node tools/deploy.js",
     "savefixtures": "node tools/savefixtures.js --check",
-    "savefixtures:capture": "node tools/savefixtures.js --capture"
+    "savefixtures:capture": "node tools/savefixtures.js --capture",
+    "trainingcheckpoint": "node tools/training-restart-fixture.js --check",
+    "trainingcheckpoint:capture": "node tools/training-restart-fixture.js --capture"
   },
   "keywords": [],
   "author": "",

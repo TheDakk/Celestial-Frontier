@@ -1,0 +1,287 @@
+{
+  "_comment": "Genuine v1.8.9 Field Training restart checkpoint captured by driving the shipped controls; this is not the older synthetic tut_midtraining save fixture.",
+  "captureSchema": "cf-v1.8.9-training-restart-capture/v1",
+  "capturedAgainst": "v1.8.9",
+  "source": {
+    "fixtureFile": "save-fixtures.json",
+    "fixtureName": "veteran_rich",
+    "fixtureJsonByteLength": 3737,
+    "fixtureJsonSha256": "26da9dc04940132a2dd4627391ef4a1be57d6a758bf3b6efb4dc6b217c273a16",
+    "fixtureFileSha256": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
+    "gameHtmlFile": "../../celestial-frontier.html",
+    "gameHtmlSha256": "d9ebc00c06757a141f97c939c8503d51db991d0668ccadbed1eb556d566a2fd7",
+    "probeHarnessFile": "../../tools/_probeboot.js",
+    "probeHarnessSha256": "e20159437486c376e1b41424c3fd125e0d011299553646e859d46795770f7c06",
+    "captureDriverFile": "../../tools/training-restart-fixture.js",
+    "captureDriverSha256": "c3f710d90782f7ba812a2082288ce860e5f41ce16cec2c28b3eaba1fb9ec454a",
+    "actionPath": [
+      "Seed localStorage cfcc_save_v2 with JSON.stringify(inputs.veteran_rich)",
+      "Boot the real v1.8.9 document through tools/_probeboot.js",
+      "Click #setbtn",
+      "Click #retrainopt twice through the real legacy handler",
+      "Read JSON.parse(localStorage.cfcc_save_v2).tsnap"
+    ]
+  },
+  "observedErrors": [],
+  "observedTut": 0,
+  "settledSave": {
+    "normalization": {
+      "topLevelAt": "<capture-wall-clock-ms>"
+    },
+    "topLevelKeyCount": 96,
+    "normalizedJsonByteLength": 4425,
+    "normalizedSha256": "d9ab24f51bbb76f0e3270edd77eb3aeeab888296761cc989c8792523ac707332",
+    "surroundingTopLevelKeyCount": 95,
+    "normalizedSurroundingJsonByteLength": 2342,
+    "normalizedSurroundingSha256": "e1bcae22e94ae12471495ec2670441b237a22370a66bef7ee5274e416924d644"
+  },
+  "snapshotJsonByteLength": 2074,
+  "snapshotSha256": "2e2f7c566a27e79398ea18650de9ac6acf236e92235fc293e4815b8bfefa22e3",
+  "snapshot": {
+    "st": {
+      "surveys": 2,
+      "hybrids": 1,
+      "shares": 3,
+      "jumps": 41,
+      "best": 4,
+      "anomalies": 2,
+      "maxGen": 3,
+      "events": 5,
+      "duels": 7,
+      "duelwins": 4,
+      "breeds": 2,
+      "breedwins": 1,
+      "feeds": 9,
+      "feedfails": 1,
+      "harvests": 6,
+      "essenceEarned": 9000,
+      "guardians": 1,
+      "paragons": 0,
+      "mines": 14,
+      "crafts": 3,
+      "minedout": 1,
+      "skims": 2,
+      "cosmics": 1,
+      "bestRank": 3,
+      "landings": 12,
+      "charters": 2
+    },
+    "ps": {
+      "vit": 80,
+      "fer": 60,
+      "res": 70,
+      "agi": 50,
+      "ins": 40
+    },
+    "ac": [
+      "first",
+      "field10",
+      "fake"
+    ],
+    "es": 5000,
+    "c": [
+      {
+        "g": {
+          "seed": 1234,
+          "kingdom": "fauna",
+          "color": 9,
+          "form": 13,
+          "body": 5,
+          "loco": 11,
+          "trait": 7,
+          "size": 4,
+          "diet": 1,
+          "head": 0,
+          "limbs": 1,
+          "skin": 6,
+          "tail": 2,
+          "pattern": 3,
+          "eyes": 0,
+          "behavior": 10,
+          "habitat": 13,
+          "detail": 9,
+          "accent": 9,
+          "temper": 1,
+          "sense": 7,
+          "repro": 6,
+          "life": 0,
+          "metab": 2,
+          "lumin": false,
+          "gen": 0,
+          "heat": 0.5
+        },
+        "f": "Earth",
+        "w": {
+          "type": "planet",
+          "gal": {
+            "x": 90,
+            "y": -60,
+            "size": 14.5,
+            "sp": 4,
+            "tilt": 0.62,
+            "rot": 1.13,
+            "seed": 999,
+            "home": true,
+            "quasar": false,
+            "dwarf": false
+          },
+          "star": {
+            "x": 560,
+            "y": 170,
+            "seed": 424242
+          },
+          "pseed": 133
+        }
+      },
+      {
+        "g": {
+          "seed": 777,
+          "kingdom": "flora",
+          "color": 7,
+          "form": 4,
+          "body": 7,
+          "loco": 11,
+          "trait": 2,
+          "size": 4,
+          "diet": 3,
+          "head": 2,
+          "limbs": 5,
+          "skin": 8,
+          "tail": 4,
+          "pattern": 1,
+          "eyes": 2,
+          "behavior": 6,
+          "habitat": 10,
+          "detail": 4,
+          "accent": 12,
+          "temper": 8,
+          "sense": 4,
+          "repro": 0,
+          "life": 4,
+          "metab": 3,
+          "lumin": false,
+          "gen": 0,
+          "heat": 0.3
+        },
+        "f": "Mars",
+        "w": null
+      },
+      {
+        "g": {
+          "seed": 4242,
+          "kingdom": "fauna",
+          "color": 14,
+          "form": 7,
+          "body": 14,
+          "loco": 17,
+          "trait": 2,
+          "size": 9,
+          "diet": 3,
+          "head": 9,
+          "limbs": 2,
+          "skin": 3,
+          "tail": 1,
+          "pattern": 2,
+          "eyes": 3,
+          "behavior": 6,
+          "habitat": 6,
+          "detail": 2,
+          "accent": 13,
+          "temper": 6,
+          "sense": 0,
+          "repro": 3,
+          "life": 2,
+          "metab": 3,
+          "lumin": true,
+          "gen": 3,
+          "heat": 0.6,
+          "parents": [
+            1,
+            2
+          ]
+        },
+        "f": "Kepler",
+        "w": null
+      }
+    ],
+    "ca": [
+      [
+        "Fe",
+        40
+      ],
+      [
+        "Si",
+        12
+      ]
+    ],
+    "cx": [
+      [
+        "Fe",
+        5
+      ],
+      [
+        "Si",
+        12
+      ]
+    ],
+    "it": [
+      [
+        "plate",
+        3
+      ],
+      [
+        "lens",
+        1
+      ],
+      [
+        "cell",
+        2
+      ],
+      [
+        "headlamp",
+        1
+      ]
+    ],
+    "eq": {
+      "helmet": "headlamp"
+    },
+    "ea": {
+      "helmet": {
+        "k": "strike",
+        "v": 0.05,
+        "forId": "headlamp"
+      }
+    },
+    "e": {
+      "id": "p133",
+      "title": "Earth",
+      "sub": "The cradle",
+      "badge": "Home",
+      "star": "",
+      "sq": false,
+      "fav": true,
+      "t": 1753899100000,
+      "where": {
+        "type": "planet",
+        "gal": {
+          "x": 90,
+          "y": -60,
+          "size": 14.5,
+          "sp": 4,
+          "tilt": 0.62,
+          "rot": 1.13,
+          "seed": 999,
+          "home": true,
+          "quasar": false,
+          "dwarf": false
+        },
+        "star": {
+          "x": 0,
+          "y": 0,
+          "seed": 424242
+        },
+        "pseed": 133
+      }
+    }
+  }
+}

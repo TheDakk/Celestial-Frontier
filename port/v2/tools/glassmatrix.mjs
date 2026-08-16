@@ -113,8 +113,9 @@ const VETERAN_PREF_RAW = (() => {
   fixture.tut = 0;
   /* This fixture supplies populated panels and display preferences, not a
      navigation starting point. veteran_rich is saved on Earth's surface;
-     retaining that route leaves universe nodes unbuilt and makes every
-     later galaxy/survey setup fail for the wrong reason. */
+     clearing that route lets unfinished Training source-seat Sol. The matrix
+     uses the real post-Skip focus release and ascent below before universe
+     geometry begins. */
   fixture.view = null;
   return JSON.stringify(fixture);
 })();
@@ -322,7 +323,7 @@ function validateReloadReleaseWitness(payload, viewport) {
   if (witness.status !== 'released' || witness.error !== null) {
     return { ok: false, why: `release witness reported ${JSON.stringify(witness.status)} / ${JSON.stringify(witness.error)}`, witness };
   }
-  if (!['training-restart', 'save-import', 'storage-retry'].includes(witness.reason)) {
+  if (!['training-restart', 'training-complete', 'training-recovery', 'save-import', 'storage-retry'].includes(witness.reason)) {
     return { ok: false, why: 'release witness reason is invalid', witness };
   }
   if (typeof witness.documentToken !== 'string' || !witness.documentToken) {
@@ -3292,6 +3293,11 @@ async function main() {
           }
           throw new Error(`${vp.label}/${label}: outcome did not arrive within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
         };
+        const pressEscape = async () => {
+          const key = { key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 };
+          await send('Input.dispatchKeyEvent', { type: 'rawKeyDown', ...key }, session);
+          await send('Input.dispatchKeyEvent', { type: 'keyUp', ...key }, session);
+        };
         /* Geometry/state predicates are product outcomes, while target
            starvation and browser transport loss are distinct failures. Poll
            through a short exact-context command paired with a root-browser
@@ -3763,11 +3769,43 @@ async function main() {
             'fresh populated Training computes A++ size, Max tone, and Mono font');
         }
         await evalIn(`document.querySelector('[data-sel=tutskip]')?.click()`);
-        await waitFor('skip training', `!window.__CF_SLICE__.api.state().tutActive && !document.getElementById('tutcard')`);
-        const matrixStart = await evalIn('window.__CF_SLICE__.api.state()');
-        if (matrixStart.mode !== 'universe') {
-          instrumentFailures.push(`${vp.label}: preference fixture did not return to the universe after Training Skip (${JSON.stringify(matrixStart)})`);
-        }
+        /* D-TRAIN completion no longer fabricates Cosmos for a loaded,
+           unfinished save with no checkpoint. It source-seats Sol, commits
+           that exact route, and restores canvas focus with one selected
+           keyboard target. Drive the real focus law before the matrix's
+           universe surfaces: release that target without redrawing, then
+           ascend twice with strictly newer draw-tail receipts. */
+        const skipSol = await waitFor('skip training at proven Sol', `(()=>{ const s=window.__CF_SLICE__.api.state(),r=s.renderedScene,c=document.querySelector('canvas');
+          return !s.tutActive&&s.tutDone&&!document.getElementById('tutcard')
+            &&s.trainingRestoreWitness?.stage==='released'&&s.trainingRestoreWitness?.error===null
+            &&s.mode==='system'&&s.gal===999&&s.galX===90&&s.galY===-60&&s.galSize===78
+            &&s.star===424242&&s.starX===560&&s.starY===170&&s.planet===null
+            &&typeof s.navGalaxyKey==='string'&&s.navGalaxyKey.length>0
+            &&typeof s.navStarKey==='string'&&s.navStarKey.length>0&&s.navWorldKey===null
+            &&r?.serial>0&&r.mode==='system'&&r.galaxyKey===s.navGalaxyKey
+            &&r.starKey===s.navStarKey&&r.worldKey===null
+            &&document.activeElement===c&&s.keyboardTarget!==null?s:null; })()`);
+        await pressEscape();
+        const releasedSolTarget = await waitFor('release post-Training Sol target', `(()=>{ const s=window.__CF_SLICE__.api.state(),r=s.renderedScene,c=document.querySelector('canvas');
+          return s.mode==='system'&&s.gal===999&&s.galX===90&&s.galY===-60&&s.galSize===78
+            &&s.star===424242&&s.starX===560&&s.starY===170&&s.planet===null
+            &&typeof s.navGalaxyKey==='string'&&s.navGalaxyKey.length>0
+            &&typeof s.navStarKey==='string'&&s.navStarKey.length>0&&s.navWorldKey===null
+            &&r?.serial===${skipSol.renderedScene.serial}&&r.mode==='system'
+            &&r.galaxyKey===s.navGalaxyKey&&r.starKey===s.navStarKey&&r.worldKey===null
+            &&document.activeElement===c&&s.keyboardTarget===null?s:null; })()`);
+        await pressEscape();
+        const matrixGalaxy = await waitFor('post-Training Sol to home-galaxy ascent', `(()=>{ const s=window.__CF_SLICE__.api.state(),r=s.renderedScene;
+          return s.mode==='galaxy'&&s.gal===999&&s.galX===90&&s.galY===-60&&s.galSize===78
+            &&s.star===null&&s.planet===null&&typeof s.navGalaxyKey==='string'&&s.navGalaxyKey.length>0
+            &&s.navStarKey===null&&s.navWorldKey===null&&r?.serial>${releasedSolTarget.renderedScene.serial}
+            &&r.mode==='galaxy'&&r.galaxyKey===s.navGalaxyKey&&r.starKey===null&&r.worldKey===null?s:null; })()`);
+        await pressEscape();
+        await waitFor('post-Training home-galaxy to universe ascent', `(()=>{ const s=window.__CF_SLICE__.api.state(),r=s.renderedScene;
+          return s.mode==='universe'&&s.gal===null&&s.star===null&&s.planet===null
+            &&s.navGalaxyKey===null&&s.navStarKey===null&&s.navWorldKey===null
+            &&s.trail==='Cosmos'&&r?.serial>${matrixGalaxy.renderedScene.serial}
+            &&r.mode==='universe'&&r.galaxyKey===null&&r.starKey===null&&r.worldKey===null?s:null; })()`);
         if (vp.label === 'desktop-8k') {
           /* 8K and 5120×2880 deliberately share an exact 1920×1080
              backing, but not a logical viewport or renderer/EventSystem
@@ -4121,11 +4159,20 @@ async function main() {
         /* toast() intentionally ignores the first 1.8 seconds of a document;
            wait past that product rule instead of calling a helper directly. */
         await sleep(1900);
-        const blocked = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
-          const entered=S.api.descendGalaxy({seed:999,x:90,y:-60});
-          const accepted=S.api.descendSystem({seed:1664319693,x:-164.45360307302326,y:-117.94395204260945});
-          return {entered,accepted,beforeSerial:before.toastSerial,state:S.api.state()}; })()`);
-        if (!blocked.entered || blocked.accepted || blocked.state.mode !== 'galaxy' || blocked.state.gal !== 999
+        const blocked = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state(),r=before.renderedScene;
+          /* The 8K same-backing resize can cross the universe auto-dive
+             threshold while it proves live renderer answerability. Accept
+             that setup only when it already reached the exact, provenance-
+             keyed home galaxy with an agreeing draw-tail receipt. */
+          const alreadyHome=before.mode==='galaxy'&&before.gal===999&&before.galX===90&&before.galY===-60
+            &&before.galSize===78&&before.star===null&&before.planet===null
+            &&typeof before.navGalaxyKey==='string'&&before.navGalaxyKey.length>0
+            &&before.navStarKey===null&&before.navWorldKey===null&&r?.serial>0&&r.mode==='galaxy'
+            &&r.galaxyKey===before.navGalaxyKey&&r.starKey===null&&r.worldKey===null;
+          const reachedHome=alreadyHome||S.api.descendGalaxy({seed:999,x:90,y:-60});
+          const accepted=reachedHome&&S.api.descendSystem({seed:1664319693,x:-164.45360307302326,y:-117.94395204260945});
+          return {alreadyHome,reachedHome,accepted,beforeSerial:before.toastSerial,state:S.api.state()}; })()`);
+        if (!blocked.reachedHome || blocked.accepted || blocked.state.mode !== 'galaxy' || blocked.state.gal !== 999
           || blocked.state.stage >= 2 || blocked.state.toastSerial <= blocked.beforeSerial
           || !blocked.state.toastText.includes('Beyond Your Charter')) {
           instrumentFailures.push(`${vp.label}: could not enter the home galaxy to populate the toast (${JSON.stringify(blocked)})`);
@@ -4628,10 +4675,10 @@ async function main() {
               {id:'codes',required:['Before any shared galaxy, star, or planet route is accepted','uses only the source-verified destination','A stale or forged code leaves the current view unchanged and keeps the exact query in Search'],forbidden:['Opening it returns another explorer to the live system survey'],stale:'Share on a planet card prepares a deterministic CF1 address. Opening it returns another explorer to the live system survey when the destination is inside that expedition’s saved reach.'},
               {id:'atlas',required:['Each saved galaxy, star, or planet route is regenerated from the seeded universe','must produce a source-verified destination before its row can travel','A stale, forged, or incomplete imported route remains visible but disabled'],forbidden:['choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level'],stale:'Use Star Atlas on a planet card to chart it. The Atlas lists saved galaxies, stars, and worlds; choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level.'},
               {id:'determinism',required:['A CF1 address is a pointer into that shared math, not authority of its own','accepts only a source-verified match','a stale or forged address cannot replace the current view'],forbidden:['which is why deterministic CF1 addresses work without an account or game server'],stale:'The same supported coordinates resolve to the same galaxy, star, world, and current-slice survey, which is why deterministic CF1 addresses work without an account or game server.'},
-              {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry'],forbidden:['reload safely restarts Field Training from proven Sol'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.'},
-              {id:'saving',paragraph:1,required:['On reload, a saved galaxy, star, or planet location is regenerated from the seeded universe','accepted only when it is source-verified','If that saved location is stale, forged, or incomplete, the view returns safely to Cosmos','normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry'],forbidden:['reload safely restarts Field Training from proven Sol'],stale:'A newer-build, incomplete, or corrupt stored expedition remains protected, and there is no cloud account yet.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.'},
+              {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
+              {id:'saving',paragraph:1,required:['On reload, a saved galaxy, star, or planet location is regenerated from the seeded universe','accepted only when it is source-verified','If that saved location is stale, forged, or incomplete, the view returns safely to Cosmos','normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'A newer-build, incomplete, or corrupt stored expedition remains protected, and there is no cloud account yet.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
             ];
-            const check=(article,spec)=>{const text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),missing=spec.required.filter((part)=>!text.includes(part)),stale=spec.forbidden.filter((part)=>text.includes(part));return {ok:!!article&&missing.length===0&&stale.length===0,missing,stale,text};};
+            const check=(article,spec)=>{const text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),lower=text.toLowerCase(),missing=spec.required.filter((part)=>!text.includes(part)),stale=spec.forbidden.filter((part)=>lower.includes(part.toLowerCase()));return {ok:!!article&&missing.length===0&&stale.length===0,missing,stale,text};};
             let error=null;
             try {
               if(!panel||!(input instanceof HTMLInputElement))throw new Error('Guide panel/search missing');
@@ -4643,16 +4690,25 @@ async function main() {
                 if(!(article instanceof HTMLElement)||!(target instanceof HTMLElement))throw new Error('Guide topic did not render '+spec.id);
                 const current=check(article,spec),prior=target.innerHTML,priorText=(article.textContent||'');
                 target.textContent=spec.stale;const injected=check(article,spec);target.innerHTML=prior;
+                const requiredControls=[];
+                for(const part of spec.requiredControls||[]){
+                  target.innerHTML=prior.replace(part,'required Training contract removed');const result=check(article,spec);target.innerHTML=prior;
+                  requiredControls.push({part,result,rejected:prior.includes(part)&&result.ok===false&&result.missing.includes(part)});
+                }
                 let contradictory=null;
                 if(spec.contradiction){const marker=document.createElement('p');marker.textContent=spec.contradiction;article.appendChild(marker);
                   contradictory=check(article,spec);marker.remove();}
+                const contradictionControls=[];
+                for(const copy of spec.contradictions||[]){const marker=document.createElement('p');marker.textContent=copy;article.appendChild(marker);
+                  const result=check(article,spec);marker.remove();contradictionControls.push({copy,result,rejected:result.ok===false&&result.stale.length>0});}
                 const restored=(article.textContent||'')===priorText&&check(article,spec).ok;
-                rows.push({id:spec.id,current,injected,contradictory,controlRejected:injected.ok===false,
-                  contradictionRejected:!spec.contradiction||contradictory?.ok===false,restored});
+                rows.push({id:spec.id,current,injected,requiredControls,contradictory,contradictionControls,
+                  controlRejected:injected.ok===false,requiredControlsRejected:requiredControls.every((row)=>row.rejected),
+                  contradictionRejected:(!spec.contradiction||contradictory?.ok===false)&&contradictionControls.every((row)=>row.rejected),restored});
               }
             } catch(cause) { error=String(cause?.message||cause); }
             finally { if(input instanceof HTMLInputElement){input.value='';input.dispatchEvent(new Event('input',{bubbles:true}));} }
-            return {ok:!error&&rows.length===specs.length&&rows.every((row)=>row.current.ok&&row.controlRejected&&row.contradictionRejected&&row.restored),rows,error};})()`);
+            return {ok:!error&&rows.length===specs.length&&rows.every((row)=>row.current.ok&&row.controlRejected&&row.requiredControlsRejected&&row.contradictionRejected&&row.restored),rows,error};})()`);
           if (!renderedGuideIngress.ok) {
             instrumentFailures.push(`${vp.label}: rendered F2 Guide/stale-copy controls failed (${JSON.stringify(renderedGuideIngress)})`);
           }
@@ -4711,12 +4767,26 @@ async function main() {
             trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
               ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
               ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
-              ||/verification pauses[^.!?]{0,160}reload safely restarts Field Training from proven Sol/i.test(trainingText),
+              ||/verification pauses[^.!?]{0,160}reload safely restarts Field Training from proven Sol/i.test(trainingText)
+              ||/(?:older|legacy)[^.!?]{0,96}(?:checkpoint|Training)[^.!?]{0,96}(?:whole|entire) (?:save|expedition)/i.test(trainingText)
+              ||/(?:older|legacy)[^.!?]{0,96}checkpoint[^.!?]{0,96}restor(?:e|es|ed)[^.!?]{0,48}(?:the )?pre-Training view/i.test(trainingText)
+              ||/Skip from Welcome[^,;.!?]{0,80}(?:Earth|pre-Training view)/i.test(trainingText)
+              ||/complet(?:e|es|ed|ing)[^.!?]{0,64}(?:drill|Training)[^.!?]{0,48}(?:after Land)?[^.!?]{0,48}(?:Sol|pre-Training view)/i.test(trainingText)
+              ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:close|dismiss|continue|keep playing|keep exploring)/i.test(trainingText)
+              ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:discard|clear|overwrite|silently ignore)/i.test(trainingText),
             trainingContract=trainingHeading==='Gameplay'
               &&trainingText.includes('A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view')
               &&trainingText.includes('if verification pauses, that exact view stays saved')
               &&trainingText.includes('when Sol can still be verified, Training returns there')
-              &&trainingText.includes('reload can restart safely and retry')&&!trainingContradiction;
+              &&trainingText.includes('reload can restart safely and retry')
+              &&trainingText.includes('Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured')
+              &&trainingText.includes('every other expedition field is retained from the surrounding save')
+              &&trainingText.includes('That older checkpoint contains no saved view')
+              &&trainingText.includes('Skip from Welcome stays in Sol')
+              &&trainingText.includes('completing the drill after Land stays at Earth')
+              &&trainingText.includes('An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen')
+              &&trainingText.includes('leaves the stored expedition unchanged')
+              &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction;
           const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
             ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
@@ -4755,7 +4825,7 @@ async function main() {
               training=items.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
               firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',
               recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling;
-            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingContradictory=null,authority=null,error=null;
+            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,authority=null,error=null;
             try {
               if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!training||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
@@ -4779,8 +4849,16 @@ async function main() {
               training.textContent=trainingText.replace('if verification pauses, that exact view stays saved, and when Sol can still be verified, Training returns there so a reload can restart safely and retry',
                 'if verification pauses, that exact view stays saved and a reload safely restarts Field Training from proven Sol');
               trainingStale=${developmentDetailCheck};training.textContent=trainingText;
+              training.textContent=trainingText.replace('every other expedition field is retained from the surrounding save','surrounding-save ownership omitted');
+              trainingLegacyStale=${developmentDetailCheck};training.textContent=trainingText;
+              training.textContent=trainingText.replace('locks exploration behind a recovery screen','persistent recovery boundary omitted');
+              trainingRecoveryStale=${developmentDetailCheck};training.textContent=trainingText;
               training.textContent=trainingText+' Finish or Skip always restores immediately, even when verification pauses.';
               trainingContradictory=${developmentDetailCheck};training.textContent=trainingText;
+              training.textContent=trainingText+' Older v1.8.9 Training checkpoints restore the entire expedition and the pre-Training view. Skip from Welcome stays at Earth, while completing the drill after Land stays in Sol.';
+              trainingLegacyContradictory=${developmentDetailCheck};training.textContent=trainingText;
+              training.textContent=trainingText+' An unrecognized checkpoint can close recovery, clear the stored expedition, and continue exploring.';
+              trainingRecoveryContradictory=${developmentDetailCheck};training.textContent=trainingText;
               S.api.state=()=>({...priorState(),rnSeen:'v2-control'});authority=${developmentDetailCheck};
             } catch(cause) { error=String(cause?.message||cause); }
             finally {
@@ -4802,8 +4880,12 @@ async function main() {
               &&atlasRouteStale?.ok===false&&atlasRouteStale?.atlasRouteContract===false
               &&trainingStale?.ok===false&&trainingStale?.trainingContract===false
               &&trainingContradictory?.ok===false&&trainingContradictory?.honest===false&&trainingContradictory?.trainingContradiction===true
+              &&trainingLegacyStale?.ok===false&&trainingLegacyStale?.trainingContract===false
+              &&trainingRecoveryStale?.ok===false&&trainingRecoveryStale?.trainingContract===false
+              &&trainingLegacyContradictory?.ok===false&&trainingLegacyContradictory?.honest===false&&trainingLegacyContradictory?.trainingContradiction===true
+              &&trainingRecoveryContradictory?.ok===false&&trainingRecoveryContradictory?.honest===false&&trainingRecoveryContradictory?.trainingContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
-              order,inventory,identity,overclaim,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingContradictory,authority,restored,error};})()`);
+              order,inventory,identity,overclaim,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,authority,restored,error};})()`);
           if (!detailControls.ok) {
             instrumentFailures.push(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
           }

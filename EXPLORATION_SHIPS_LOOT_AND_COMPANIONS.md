@@ -1,13 +1,46 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
-**STATUS:** approved product direction and implementation contract as of **2026-08-15**.
+**STATUS:** approved product direction and implementation contract as of **2026-08-16**.
 The current `port/v2` build is still the playable Phase-4 exploration/survey slice; the
 Inventory, Shipyard, item-instance loot, capture/acquisition, companion-expedition, breeding, live-combat,
 Guardian and full-audio outcomes described here are **not yet implemented** unless a row
 below explicitly says otherwise. This document coordinates the existing system specs; it
 does not silently promote planned behavior into the in-game Guide.
 
-> **2026-08-15 F2 current-state overlay:** The runtime navigation foundation now
+> **2026-08-16 D-TRAIN-1 ownership overlay (current source; local browser
+> evidence recorded below; exact-head CI, integration, real-save Gate C, and
+> human authority remain open):** the genuine v1.8.9 Training checkpoint owns exactly
+> `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}`. That is a bounded compatibility
+> record, not a whole expedition and not an ownership receipt for future
+> Inventory, GearInstance, ship, companion, mission, combat, loot, project, or
+> Chronicle systems. Restore replaces only those eleven historical surfaces
+> inside the surrounding v4 save. In particular, `e.where` cannot mint route
+> authority and the checkpoint has no `view`: legacy Skip from Welcome retains
+> Sol, full completion after Land retains Earth, and only current-v2 `{view}`
+> restoration returns to the pre-Training route. An aggregate cannot mint an owned identity, and the compatible
+> optional `ever.v:1` cumulative carrier cannot become reward authority.
+>
+> Atomic restore-before-clear, loaded-unfinished write holds, and the persistent
+> inert recovery modal prevent Training from overwriting or visually advancing
+> a protected expedition. They do not create revisions/CAS, split stores,
+> receipts, local ownership migration, companion state, loot instances, or any
+> newly playable Guide capability. The outer schema remains v4 with an additive
+> nested-version carrier; no game/release version changes, and D-TRAIN-2 plus
+> real-save Gate C remain open.
+>
+> The ignored local Slice Smoke report is terminal PASS on Edge
+> `151.0.4129.86`, commit `b091f010011fa16bec457599b41274b7f92bb5e6`, in
+> 154,788 ms with 0 findings, 0 automatic retries and 10 screenshots; its raw log names the
+> genuine Training Skip/full-Finish, rescue/quarantine/retry/race and canonical-
+> Earth outcomes. Full-certifying Glass is separately terminal PASS in 57,476
+> ms across 12/12 viewports, with 57/57 negative controls, none blocked/omitted,
+> with 0 findings, 0 instrument failures and 0 automatic retries. Slice Smoke binds dirty tree
+> `465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`;
+> Glass binds `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5`.
+> This proves no ownership/receipt capability and is not this later documentation
+> state, exact-head CI, integration, Gate C, human, or release authority.
+
+> **2026-08-15 F2 historical-state overlay (pre-D-TRAIN-1):** The runtime navigation foundation now
 > source-proves galaxy, star and planet ingress across strict CF1 Search,
 > generated descent/actions, saved boot/import, Star Atlas and the exact current
 > Field Training `{view}` snapshot. Navigation uses deeply frozen source-derived
@@ -20,8 +53,8 @@ does not silently promote planned behavior into the in-game Guide.
 > keys, source cells/layer and planet ordinal are not serialized. A
 > deterministically invalid or no-longer-authorized saved route repairs only the
 > view to Cosmos, a transient source failure holds that field, and an Atlas row
-> without runtime proof remains visible but disabled. Richer legacy Training
-> snapshots remain D-TRAIN-1 work.
+> without runtime proof remains visible but disabled. At that boundary richer
+> legacy Training snapshots remained D-TRAIN-1 work.
 >
 > This foundation is not a world-bound ownership receipt. No Inventory, item
 > instance, mission, loot, capture, companion, combat, Guardian, project or
@@ -640,7 +673,7 @@ cannot understand, enjoy or comfortably use it.
 - canonical CF1 source proof is live for runtime galaxy/star/planet navigation,
   including saved views and Atlas; persisted ownership-receipt ingress and local
   ledger migration remain open;
-- imported legacy full-expedition training snapshot restore and CFB parent identity;
+- D-TRAIN-1 exact-head/integration plus real-save Gate-C evidence, and CFB parent identity;
 - Compendium virtualization and bounded art/audio work;
 - Pixi/Canvas texture ownership and long-session memory plateau;
 - live HD planet textures, living organism rigs and biome/ecology scenes;

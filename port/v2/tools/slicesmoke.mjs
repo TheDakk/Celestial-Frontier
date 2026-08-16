@@ -113,9 +113,67 @@ const OVERSIZED_CF1_CODE = 'CF1-' + 'A'.repeat(CF1_SEARCH_MAX_LENGTH);
 if (OVERSIZED_CF1_CODE.length <= CF1_SEARCH_MAX_LENGTH) {
   throw new Error('oversized CF1 smoke fixture did not exceed the shared input bound');
 }
-const VETERAN_RAW = JSON.stringify(JSON.parse(fs.readFileSync(
+const SAVE_FIXTURES = JSON.parse(fs.readFileSync(
   path.join(here, '..', '..', 'baseline-v1.8.9', 'save-fixtures.json'), 'utf8',
-)).inputs.veteran_rich);
+)).inputs;
+const VETERAN_RAW = JSON.stringify(SAVE_FIXTURES.veteran_rich);
+const GENUINE_TRAINING_CHECKPOINT = JSON.parse(fs.readFileSync(
+  path.join(here, '..', '..', 'baseline-v1.8.9', 'training-restart-fixture.json'), 'utf8',
+)).snapshot;
+const OLD_SYNTHETIC_TRAINING_CHECKPOINT = SAVE_FIXTURES.tut_midtraining.tsnap;
+const DTRAIN_OUTER_NAME = 'DTRAIN Outer Sentinel';
+const DTRAIN_OUTER_JOURNAL = Object.freeze({
+  s: 7, n: 'Outer journal', w: 'Sentinel', t: 1_753_899_950_000,
+});
+const dtrainRaw = ({ tut = 0, snapshot = GENUINE_TRAINING_CHECKPOINT, emptyAtlas = false } = {}) => {
+  const save = JSON.parse(VETERAN_RAW);
+  const earthView = save.view;
+  save.me = DTRAIN_OUTER_NAME;
+  save.tut = tut;
+  save.tsnap = structuredClone(snapshot);
+  save.view = { type: 'star', gal: { ...earthView.gal }, star: { ...earthView.star } };
+  /* Deliberately dirty every checkpoint-owned surface. A green restore must
+     come from the genuine eleven-key checkpoint, never the live drill state. */
+  save.shares = 901; save.jumps = 902; save.anomalies = 903; save.events = 904;
+  save.duels = 905; save.duelwins = 906; save.breeds = 907; save.breedwins = 908;
+  save.feeds = 909; save.feedfails = 910; save.harvests = 911; save.essenceEarned = 912;
+  save.guardians = 913; save.paragons = 914; save.mines = 915; save.crafts = 916;
+  save.minedout = 917; save.skims = 918; save.cosmics = 919; save.landings = 920;
+  save.charters = 921; save.br = 19;
+  save.pstats = { vit: 330, fer: 330, res: 330, agi: 330, ins: 330 };
+  save.hp = 55; save.essence = 1; save.ach = ['outer-live-only']; save.codex = [];
+  save.cargo = [['Au', 1]]; save.cgx = [['Au', 1]]; save.items = [['visor', 1]];
+  save.eq = { helmet: 'visor' }; save.ea = {};
+  /* These surrounding-expedition sentinels are outside the checkpoint and
+     therefore must survive the detached candidate and one canonical export. */
+  save.names = [['p901', 'Outer Name']];
+  save.conq = []; save.land = [901]; save.minedw = []; save.mx = [];
+  save.jrn = [{ ...DTRAIN_OUTER_JOURNAL }];
+  save.log = emptyAtlas ? [] : [{
+    id: 'p900', title: 'Outer sentinel', sub: 'Must survive', badge: 'Held',
+    star: 'Elsewhere', fav: false, t: 1_753_899_940_000, where: null,
+  }];
+  save.home = null;
+  return JSON.stringify(save);
+};
+const DTRAIN_LEGACY_RAW = dtrainRaw();
+const DTRAIN_RESCUE_RAW = dtrainRaw({ tut: 1 });
+const DTRAIN_FULL_FINISH_RAW = dtrainRaw({ emptyAtlas: true });
+const DTRAIN_NO_SNAPSHOT_RAW = (() => {
+  const save = JSON.parse(VETERAN_RAW);
+  save.me = 'DTRAIN No Snapshot';
+  save.tut = 0;
+  delete save.tsnap;
+  /* Keep the outer Earth surface in exact primary bytes. Runnable unfinished
+     Training must nevertheless seat the live lesson at freshly proven Sol. */
+  return JSON.stringify(save);
+})();
+const DTRAIN_OLD_SYNTHETIC_RAW = dtrainRaw({ snapshot: OLD_SYNTHETIC_TRAINING_CHECKPOINT });
+/* The over-limit string forces evidence retention to the exact primary only;
+   the app must quarantine it without observing or reserializing it. */
+const DTRAIN_HOSTILE_RAW = dtrainRaw({ snapshot: {
+  ...structuredClone(GENUINE_TRAINING_CHECKPOINT), hostile: 'X'.repeat(5000),
+} });
 const VETERAN_ARRAY_RAW = (() => {
   const save = JSON.parse(VETERAN_RAW);
   save.items = [...(Array.isArray(save.items) ? save.items : []), ['array', 1]];
@@ -148,9 +206,15 @@ const STALE_SAVED_ROUTE_RAW = (() => {
   };
   return JSON.stringify(save);
 })();
+const CURRENT_TRAINING_VIEW_SENTINEL = Object.freeze({
+  label: 'Current checkpoint display bytes', flags: Object.freeze(['retained', 'inert']),
+});
 const CURRENT_TRAINING_RESTORE_RAW = (() => {
   const save = JSON.parse(VETERAN_ATLAS_RAW);
-  const restoreView = save.view;
+  const restoreView = structuredClone(save.view);
+  /* Route proof deliberately projects this metadata away. The pending
+     checkpoint must still retain the complete bounded one-key evidence. */
+  restoreView.legacyTrainingDisplay = structuredClone(CURRENT_TRAINING_VIEW_SENTINEL);
   save.tut = 0;
   save.tsnap = { view: restoreView };
   save.view = {
@@ -330,6 +394,7 @@ const send = browser.send;
 const VIRTUAL_KEY = Object.freeze({
   Enter: 13, Space: 32, Escape: 27, Tab: 9,
   ArrowLeft: 37, ArrowUp: 38, ArrowRight: 39, ArrowDown: 40,
+  Minus: 189,
 });
 const dispatchKeyPress = async (session, key, code = key, modifiers = 0) => {
   const windowsVirtualKeyCode = VIRTUAL_KEY[code];
@@ -358,6 +423,138 @@ const dispatchKeyPress = async (session, key, code = key, modifiers = 0) => {
 };
 
 const fails = [];
+const DTRAIN_NATIVE_WRITE_BINDING = '__cfDtrainNativeWriteWitness';
+const RELOAD_RELEASE_BINDING = '__cfReloadReleaseWitness';
+const bindingPayloadsSince = (sessionId, mark, name) => events.slice(mark)
+  .map((event, offset) => ({ event, eventIndex: mark + offset }))
+  .filter(({ event }) => event.sessionId === sessionId
+    && event.method === 'Runtime.bindingCalled' && event.params?.name === name)
+  .map(({ event, eventIndex }) => {
+    try { return { ...JSON.parse(event.params.payload), eventIndex }; }
+    catch { return { schema: 'invalid-json', payload: event.params?.payload, eventIndex }; }
+  });
+const trainingWitnessesSince = (sessionId, mark) =>
+  bindingPayloadsSince(sessionId, mark, '__cfTrainingRestoreWitness');
+const dtrainNativeWritesSince = (sessionId, mark) =>
+  bindingPayloadsSince(sessionId, mark, DTRAIN_NATIVE_WRITE_BINDING);
+const reloadReleaseWitnessesSince = (sessionId, mark) =>
+  bindingPayloadsSince(sessionId, mark, RELOAD_RELEASE_BINDING);
+const dtrainNativeWriteArmExpression = (label) => `(()=>{
+  const binding=window[${JSON.stringify(DTRAIN_NATIVE_WRITE_BINDING)}],proto=IDBObjectStore.prototype;
+  if(typeof binding!=='function'||window.__cfDtrainNativeWritePatch)return false;
+  const original=proto.put,documentToken=window.__CF_SLICE__?.documentToken||'',label=${JSON.stringify(label)};
+  let sequence=0;
+  proto.put=function(value,key){
+    if(this?.name==='meta'&&key==='save'){
+      let parsed=null;try{parsed=typeof value==='string'?JSON.parse(value):null}catch{}
+      const row={schema:'cf-v2-idb-primary-put/v1',label,documentToken,sequence:++sequence,
+        store:this.name,key:String(key),length:typeof value==='string'?value.length:null,
+        tut:parsed?.tut??null,hasSnapshot:!!parsed&&Object.prototype.hasOwnProperty.call(parsed,'tsnap'),
+        rn:parsed?.rn??null,viewType:parsed?.view?.type??null};
+      try{binding(JSON.stringify(row))}catch{}
+    }
+    return Reflect.apply(original,this,arguments);
+  };
+  window.__cfDtrainNativeWritePatch={restore(){proto.put=original;delete window.__cfDtrainNativeWritePatch;}};
+  return true;
+})()`;
+const dtrainDebounceProbeArmExpression = `(()=>{
+  if(window.__cfDtrainDebounceProbe)return false;
+  const original=window.setTimeout;
+  let scheduled=0,fired=0;
+  window.setTimeout=function(callback,delay,...args){
+    if(delay===400){
+      scheduled++;
+      const wrapped=(...callbackArgs)=>{fired++;return typeof callback==='function'?callback(...callbackArgs):undefined};
+      return Reflect.apply(original,window,[wrapped,delay,...args]);
+    }
+    return Reflect.apply(original,window,[callback,delay,...args]);
+  };
+  window.__cfDtrainDebounceProbe={snapshot(){return {scheduled,fired}},restore(){window.setTimeout=original;delete window.__cfDtrainDebounceProbe;}};
+  return true;
+})()`;
+const assessDtrainNativeWrites = (entries, { label, documentToken, count }) => {
+  const reasons = [];
+  if (entries.length !== count) reasons.push(`write count ${entries.length} != ${count}`);
+  entries.forEach((entry, index) => {
+    if (entry.schema !== 'cf-v2-idb-primary-put/v1' || entry.label !== label
+      || entry.documentToken !== documentToken || entry.store !== 'meta' || entry.key !== 'save'
+      || !Number.isInteger(entry.sequence) || entry.sequence !== index + 1
+      || !Number.isInteger(entry.length) || entry.length <= 0) reasons.push(`invalid write ${index}`);
+  });
+  return { ok: reasons.length === 0, reasons, entries };
+};
+const assessTrainingReleaseWitnesses = (entries, { documentToken }) => {
+  const reasons = [];
+  if (entries.length !== 1) reasons.push(`release count ${entries.length} != 1`);
+  const witness = entries[0];
+  if (!witness || witness.schema !== 'cf-v2-reload-release/v1'
+    || witness.status !== 'released' || witness.error !== null
+    || witness.reason !== 'training-complete' || witness.documentToken !== documentToken
+    || witness.rendererReleased !== true || witness.stageReleased !== true || witness.viewDetached !== true) {
+    reasons.push('release fields');
+  }
+  for (const name of ['appCanvas', 'backdropCanvas']) {
+    const canvas = witness?.[name];
+    if (!canvas || !Number.isInteger(canvas.beforeWidth) || canvas.beforeWidth <= 1
+      || !Number.isInteger(canvas.beforeHeight) || canvas.beforeHeight <= 1
+      || !Number.isInteger(canvas.afterWidth) || canvas.afterWidth > 1
+      || !Number.isInteger(canvas.afterHeight) || canvas.afterHeight > 1) reasons.push(`${name} release`);
+  }
+  return { ok: reasons.length === 0, reasons, entries };
+};
+const nativeWritesBetweenStages = (nativeEntries, trainingEntries, from, to) => {
+  const left = trainingEntries.find((entry) => entry.stage === from)?.eventIndex;
+  const right = trainingEntries.find((entry) => entry.stage === to)?.eventIndex;
+  if (!Number.isInteger(left) || !Number.isInteger(right)) return [];
+  return nativeEntries.filter((entry) => entry.eventIndex > left && entry.eventIndex < right);
+};
+const assessTrainingWitnesses = (entries, {
+  intent, checkpointKind, stages, writes = 'complete', documentToken = null,
+  tickerMode = 'ordinary', errorByStage = writes === 'complete' ? {} : null,
+}) => {
+  const reasons = [];
+  const operationIds = [...new Set(entries.map((entry) => entry.operationId))];
+  if (operationIds.length !== 1) reasons.push(`operation count ${operationIds.length}`);
+  if (entries.length !== stages.length) reasons.push(`stage count ${entries.length} != ${stages.length}`);
+  if (JSON.stringify(entries.map((entry) => entry.stage)) !== JSON.stringify(stages)) {
+    reasons.push(`stages ${JSON.stringify(entries.map((entry) => entry.stage))}`);
+  }
+  entries.forEach((entry, index) => {
+    if (entry.schema !== 'cf-v2-training-restore/v1') reasons.push(`schema at ${index}`);
+    if (entry.intent !== intent) reasons.push(`intent at ${index}`);
+    if (entry.checkpointKind !== checkpointKind) reasons.push(`checkpoint kind at ${index}`);
+    if (entry.sequence !== index + 1) reasons.push(`sequence at ${index}`);
+    if (typeof entry.documentToken !== 'string' || !entry.documentToken
+      || (documentToken !== null && entry.documentToken !== documentToken)
+      || typeof entry.operationId !== 'string'
+      || !entry.operationId.startsWith(`${entry.documentToken}:`)) reasons.push(`operation identity at ${index}`);
+    if (!Number.isFinite(entry.performanceNow)
+      || (index > 0 && entry.performanceNow < entries[index - 1].performanceNow)) reasons.push(`monotonic time at ${index}`);
+    if (errorByStage !== null) {
+      const expected = Object.prototype.hasOwnProperty.call(errorByStage, entry.stage)
+        ? errorByStage[entry.stage] : null;
+      const matches = expected instanceof RegExp ? expected.test(String(entry.error || '')) : entry.error === expected;
+      if (!matches) reasons.push(`error at ${entry.stage}: ${JSON.stringify(entry.error)}`);
+    }
+    if (tickerMode !== 'ignore') {
+      const tickerExpected = tickerMode === 'busy' ? false
+        : entry.stage === 'invoked'
+          || entry.stage === 'validation-rejected'
+          || entry.stage === 'claim-rejected'
+          || entry.stage === 'released';
+      if (entry.tickerStarted !== tickerExpected) reasons.push(`ticker at ${entry.stage}`);
+    }
+  });
+  const starts = entries.filter((entry) => entry.stage === 'primary-write-started').length;
+  const completes = entries.filter((entry) => entry.stage === 'primary-write-complete').length;
+  const rejects = entries.filter((entry) => entry.stage === 'primary-write-rejected').length;
+  const wanted = writes === 'complete' ? [1, 1, 0] : writes === 'rejected' ? [1, 0, 1] : [0, 0, 0];
+  if (JSON.stringify([starts, completes, rejects]) !== JSON.stringify(wanted)) {
+    reasons.push(`write phases ${JSON.stringify([starts, completes, rejects])}`);
+  }
+  return { ok: reasons.length === 0, reasons, operationIds, entries };
+};
 const navKeyInventoryMatchesMode = (state) => {
   const galaxy = state?.navGalaxyKey;
   const star = state?.navStarKey;
@@ -448,6 +645,9 @@ try {
   const at = await send('Target.attachToTarget', { targetId: t.targetId, flatten: true });
   const sess = at.sessionId;
   await send('Runtime.enable', {}, sess);
+  await send('Runtime.addBinding', { name: '__cfTrainingRestoreWitness' }, sess);
+  await send('Runtime.addBinding', { name: DTRAIN_NATIVE_WRITE_BINDING }, sess);
+  await send('Runtime.addBinding', { name: RELOAD_RELEASE_BINDING }, sess);
   await send('Page.enable', {}, sess);
   await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false }, sess);
   let readinessControlRejected = false;
@@ -547,19 +747,29 @@ try {
     return outcome;
   };
 
-  /* 1. booted: canvas mounted, HUD says universe */
+  /* 1. booted: canvas mounted. Fresh unfinished Training owns the live
+     starting route and seats the player at source-proven Sol without first
+     persisting that runtime-only drill position. */
   await assertBootTickerRunning('fresh first boot');
   const boot = await evalIn(`({ canvas: !!document.querySelector('canvas'), topbar: !!document.getElementById('topbar'), st: window.__CF_SLICE__ ? window.__CF_SLICE__.api.state() : null,
     hintKw: [...document.querySelectorAll('#hintpill .kw')].map((node) => node.textContent) })`);
   if (!boot.canvas) fails.push('no <canvas> — Pixi never mounted');
   if (!boot.topbar) fails.push('no #topbar — the Phase 4 shell is missing');
-  if (!boot.st || boot.st.mode !== 'universe') fails.push('not in universe mode at boot: ' + JSON.stringify(boot.st && boot.st.mode));
+  if (!boot.st || boot.st.mode !== 'system' || boot.st.gal !== HOME_GALAXY.seed
+    || boot.st.galX !== HOME_GALAXY.x || boot.st.galY !== HOME_GALAXY.y || boot.st.galSize !== 78
+    || boot.st.star !== SOL_STAR.seed || boot.st.starX !== SOL_STAR.x || boot.st.starY !== SOL_STAR.y
+    || boot.st.planet !== null || boot.st.navGalaxyKey === null || boot.st.navStarKey === null
+    || boot.st.navWorldKey !== null) {
+    fails.push('fresh Training did not boot at exact source-proven Sol: ' + JSON.stringify(boot.st));
+  }
   if (boot.st && boot.st.panelOpen !== null) fails.push('the v2.0 development identity opened as a shipped production release popup: ' + JSON.stringify(boot.st.panelOpen));
   if (boot.st && (boot.st.releasePending !== null || boot.st.rnSeen !== '0')) {
     fails.push('the v2.0 development draft queued or marked itself seen on a fresh boot: '
       + JSON.stringify({ releasePending: boot.st.releasePending, rnSeen: boot.st.rnSeen }));
   }
-  if (boot.st && boot.st.trail !== 'Cosmos') fails.push('trail at boot is not Cosmos: ' + JSON.stringify(boot.st.trail));
+  if (boot.st && !boot.st.trail.includes('Sun (Sol)')) {
+    fails.push('fresh Training trail is not exact Sol: ' + JSON.stringify(boot.st.trail));
+  }
   if (boot.st && !(parseFloat(boot.st.topbarH) > 20)) fails.push('--topbar-h not measured: ' + JSON.stringify(boot.st.topbarH));
   if (boot.st && !boot.st.ctx) fails.push('the caption line is empty at boot');
   if (boot.st && !/Make planetfall on 2 worlds of Sol/.test(boot.st.objective)) fails.push('objective chip wrong at fresh boot: ' + JSON.stringify(boot.st.objective));
@@ -570,20 +780,18 @@ try {
     requireRenderedSceneMatch('FRESH BOOT', boot.st);
     const zeroReceipt = {
       ...boot.st,
-      renderedScene: {
-        serial: 0, mode: 'universe', galaxyKey: null, starKey: null, worldKey: null,
-      },
+      renderedScene: { ...boot.st.renderedScene, serial: 0 },
     };
     if (renderedSceneMatchesNav(zeroReceipt)) {
-      fails.push('RENDERED-SCENE RECEIPT CONTROL FAILED — initial universe-shaped serial 0 stayed green');
+      fails.push('RENDERED-SCENE RECEIPT CONTROL FAILED — initial Sol-shaped serial 0 stayed green');
     }
-    const universeForeignKey = {
+    const systemWorldKey = {
       ...boot.st,
-      navGalaxyKey: 'injected-universe-galaxy',
-      renderedScene: { ...boot.st.renderedScene, galaxyKey: 'injected-universe-galaxy' },
+      navWorldKey: 'injected-system-world',
+      renderedScene: { ...boot.st.renderedScene, worldKey: 'injected-system-world' },
     };
-    if (renderedSceneMatchesNav(universeForeignKey)) {
-      fails.push('RENDERED-SCENE KEY-INVENTORY CONTROL FAILED — universe accepted an agreeing non-null galaxy key');
+    if (renderedSceneMatchesNav(systemWorldKey)) {
+      fails.push('RENDERED-SCENE KEY-INVENTORY CONTROL FAILED — system accepted an agreeing non-null world key');
     }
   }
   const chromeA11yCheck = `(()=>{ const survey=document.getElementById('docksurvey'),card=document.getElementById('survey'),charts=document.getElementById('dockcharts');
@@ -604,7 +812,7 @@ try {
   /* 1a-training. a FRESH boot TRAINS (the game's new-expedition rule); the
      classic legs run as a veteran — Skip first, the game's own path, and
      skipping must persist. The full six-step drill runs later on its own
-     fresh origin. */
+     isolated origin with the genuine v1.8.9 restart checkpoint. */
   const tut0 = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (!tut0.tutActive || tut0.tutStep !== 'welcome') fails.push('a fresh boot did not open Field Training at welcome: ' + JSON.stringify([tut0.tutActive, tut0.tutStep]));
   const tutCardDock = await evalIn(`(()=>{ const c=document.getElementById('tutcard'); const d=document.getElementById('dock');
@@ -613,9 +821,54 @@ try {
   if (!tutCardDock || !tutCardDock.clear) fails.push('the lesson card covers the dock (CF1806-02 family): ' + JSON.stringify(tutCardDock));
   if (!tutCardDock || !/px/.test(tutCardDock.tutBot)) fails.push('--tut-bot not published (CF1805-01 contract): ' + JSON.stringify(tutCardDock && tutCardDock.tutBot));
   await evalIn(`(()=>{ document.querySelector('[data-sel=tutskip]').click(); return 1; })()`);
-  await sleep(300);
-  const tut1 = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const tut1 = await waitDesktopValue('fresh Training Skip completion', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return !s.tutActive&&s.tutDone&&s.trainingRestoreWitness?.stage==='released'?s:null;})()`);
   if (tut1.tutActive || !tut1.tutDone) fails.push('Skip training did not close + mark done: ' + JSON.stringify([tut1.tutActive, tut1.tutDone]));
+
+  /* Training restores focus to the canvas after teardown. Canvas focus
+     deliberately selects one keyboard target, whose first Escape releases
+     that target instead of ascending. Cross that real focus-restoration task
+     and prove the focus law before using the next two real Escapes for the
+     classic Sol -> Milky Way -> Cosmos ascent. */
+  const freshTrainingFocus = await waitDesktopValue('fresh post-Training canvas focus restoration', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return document.activeElement===document.querySelector('canvas')&&s.mode==='system'
+      &&s.gal===${HOME_GALAXY.seed}&&s.galX===${HOME_GALAXY.x}&&s.galY===${HOME_GALAXY.y}
+      &&s.star===${SOL_STAR.seed}&&s.starX===${SOL_STAR.x}&&s.starY===${SOL_STAR.y}&&s.planet===null
+      &&s.navGalaxyKey!==null&&s.navStarKey!==null&&s.navWorldKey===null&&s.keyboardTarget!==null?s:null;})()`);
+  await keyIn('Escape', 'Escape');
+  const freshReleasedKeyboardTarget = await waitDesktopValue('fresh post-Training keyboard-target release', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return document.activeElement===document.querySelector('canvas')&&s.mode==='system'
+      &&s.gal===${HOME_GALAXY.seed}&&s.star===${SOL_STAR.seed}&&s.planet===null
+      &&s.navGalaxyKey!==null&&s.navStarKey!==null&&s.navWorldKey===null&&s.keyboardTarget===null?s:null;})()`);
+  if (!renderedSceneMatchesNav(freshTrainingFocus) || !renderedSceneMatchesNav(freshReleasedKeyboardTarget)
+    || freshReleasedKeyboardTarget.renderedScene.serial !== freshTrainingFocus.renderedScene.serial) {
+    fails.push('FRESH FOCUS RESTORE: releasing the canvas keyboard target changed the rendered Sol scene: '
+      + JSON.stringify({ focused: freshTrainingFocus, released: freshReleasedKeyboardTarget }));
+  }
+  await keyIn('Escape', 'Escape');
+  const freshGalaxyAscent = await waitDesktopValue('fresh post-Training system-to-galaxy ascent', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return s.mode==='galaxy'&&s.gal===${HOME_GALAXY.seed}?s:null;})()`);
+  await keyIn('Escape', 'Escape');
+  const freshUniverseAscent = await waitDesktopValue('fresh post-Training galaxy-to-universe ascent', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return s.mode==='universe'&&s.gal===null&&s.star===null&&s.planet===null?s:null;})()`);
+  if (freshUniverseAscent.trail !== 'Cosmos' || freshUniverseAscent.navGalaxyKey !== null
+    || freshUniverseAscent.navStarKey !== null || freshUniverseAscent.navWorldKey !== null
+    || !renderedSceneAdvanced(tut1, freshGalaxyAscent)
+    || !renderedSceneAdvanced(freshGalaxyAscent, freshUniverseAscent)) {
+    fails.push('FRESH ASCENT: real Sol → Milky Way → Cosmos route or render receipts drifted: '
+      + JSON.stringify({ before: tut1, galaxy: freshGalaxyAscent, universe: freshUniverseAscent }));
+  }
+  const universeForeignKey = {
+    ...freshUniverseAscent,
+    navGalaxyKey: 'injected-universe-galaxy',
+    renderedScene: {
+      ...freshUniverseAscent.renderedScene,
+      mode: 'universe', galaxyKey: 'injected-universe-galaxy', starKey: null, worldKey: null,
+    },
+  };
+  if (renderedSceneMatchesNav(universeForeignKey)) {
+    fails.push('RENDERED-SCENE KEY-INVENTORY CONTROL FAILED — universe accepted an agreeing non-null galaxy key');
+  }
 
   /* 1b-keyboard. The canvas is a real keyboard-operable exploration region,
      not an aria label on an inert WebGL surface. Focusing it selects a
@@ -626,7 +879,12 @@ try {
       role:canvas?.getAttribute('role'),describedby:canvas?.getAttribute('aria-describedby'),
       target:window.__CF_SLICE__.api.state().keyboardTarget,
       ring:!!ring&&getComputedStyle(ring).display!=='none'&&!!rb&&rb.width>0&&rb.height>0}; })()`;
-  await evalIn(`(()=>{ const canvas=document.querySelector('canvas'); canvas?.focus(); return true; })()`);
+  /* The ascent leaves the canvas focused after the preceding target-release
+     Escape. Re-focusing an already focused element emits no focus event and
+     therefore cannot select a fresh rendered body. Exercise the same focus
+     boundary deterministically with a real blur -> focus transition before
+     the Enter outcome. */
+  await evalIn(`(()=>{ const canvas=document.querySelector('canvas'); canvas?.blur(); canvas?.focus(); return true; })()`);
   const keyboardFocus = await evalIn(keyboardFocusCheck);
   if (!keyboardFocus.canvas || !keyboardFocus.active || keyboardFocus.role !== 'region'
     || keyboardFocus.describedby !== 'cosmoshelp' || !keyboardFocus.target || !keyboardFocus.ring) {
@@ -1325,13 +1583,24 @@ try {
     text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
     status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
     required=['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view',
-      'If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry'],
+      'If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry',
+      'Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured',
+      'every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view',
+      'Skip from Welcome stays in Sol','completing the drill after Land stays at Earth',
+      'An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen',
+      'leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],
     missing=required.filter((part)=>!text.includes(part)),
     contradictory=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(text)
       ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(text)
       ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(text)
       ||/(?:reload|retry|restarts?|resumes?)[^.!?]{0,72}(?:Earth|surface|finish(?:ed)? (?:world|location)|last location)/i.test(text)
-      ||/verification pauses[^.!?]{0,160}reload safely restarts Field Training from proven Sol/i.test(text);
+      ||/verification pauses[^.!?]{0,160}reload safely restarts Field Training from proven Sol/i.test(text)
+      ||/(?:older|legacy)[^.!?]{0,96}(?:checkpoint|Training)[^.!?]{0,96}(?:whole|entire) (?:save|expedition)/i.test(text)
+      ||/(?:older|legacy)[^.!?]{0,96}checkpoint[^.!?]{0,96}restor(?:e|es|ed)[^.!?]{0,48}(?:the )?pre-Training view/i.test(text)
+      ||/Skip from Welcome[^,;.!?]{0,80}(?:Earth|pre-Training view)/i.test(text)
+      ||/complet(?:e|es|ed|ing)[^.!?]{0,64}(?:drill|Training)[^.!?]{0,48}(?:after Land)?[^.!?]{0,48}(?:Sol|pre-Training view)/i.test(text)
+      ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:close|dismiss|continue|keep playing|keep exploring)/i.test(text)
+      ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:discard|clear|overwrite|silently ignore)/i.test(text);
     return {ok:title.includes(${JSON.stringify(expectedTitle)})&&status==='partial'&&missing.length===0&&!contradictory,
       title,status,missing,contradictory,text};})()`;
   const renderTrainingRestoreGuideTopic = async (topic, expectedTitle) => evalIn(`(()=>{ const input=document.getElementById('guidesearch');
@@ -1345,14 +1614,28 @@ try {
   }
   const trainingRestoreGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
     paragraph=[...article.querySelectorAll('p')].find((node)=>(node.textContent||'').includes('normal Finish or Skip source-verifies')),
-    prior=paragraph?.innerHTML||'',marker=document.createElement('p');let missing=null,contradiction=null;
+    prior=paragraph?.innerHTML||'',marker=document.createElement('p');
+    let missing=null,legacyMissing=null,recoveryMissing=null,contradiction=null,legacyContradiction=null,recoveryContradiction=null;
     if(paragraph){paragraph.textContent='During Field Training, Finish or Skip restores the pre-training view.';
-      missing=${renderedTrainingRestoreGuideCheck('Your save & reset')};paragraph.innerHTML=prior;}
+      missing=${renderedTrainingRestoreGuideCheck('Your save & reset')};paragraph.innerHTML=prior;
+      paragraph.innerHTML=prior.replace('every other expedition field is retained from the surrounding save','surrounding-save ownership omitted');
+      legacyMissing=${renderedTrainingRestoreGuideCheck('Your save & reset')};paragraph.innerHTML=prior;
+      paragraph.innerHTML=prior.replace('locks exploration behind a recovery screen','persistent recovery boundary omitted');
+      recoveryMissing=${renderedTrainingRestoreGuideCheck('Your save & reset')};paragraph.innerHTML=prior;}
     marker.textContent='If verification pauses, a reload safely restarts Field Training from proven Sol.';article?.appendChild(marker);
     contradiction=${renderedTrainingRestoreGuideCheck('Your save & reset')};marker.remove();
+    marker.textContent='Older v1.8.9 Training checkpoints restore the entire expedition and the pre-Training view. Skip from Welcome stays at Earth, while completing the drill after Land stays in Sol.';article?.appendChild(marker);
+    legacyContradiction=${renderedTrainingRestoreGuideCheck('Your save & reset')};marker.remove();
+    marker.textContent='An unrecognized checkpoint can close recovery, clear the stored expedition, and continue exploring.';article?.appendChild(marker);
+    recoveryContradiction=${renderedTrainingRestoreGuideCheck('Your save & reset')};marker.remove();
     const restored=!!paragraph&&paragraph.innerHTML===prior&&${renderedTrainingRestoreGuideCheck('Your save & reset')}.ok;
-    return {ok:missing?.ok===false&&missing?.missing?.length>0&&contradiction?.ok===false&&contradiction?.contradictory===true&&restored,
-      missing,contradiction,restored};})()`);
+    return {ok:missing?.ok===false&&missing?.missing?.length>0
+      &&legacyMissing?.ok===false&&legacyMissing?.missing?.includes('every other expedition field is retained from the surrounding save')
+      &&recoveryMissing?.ok===false&&recoveryMissing?.missing?.includes('An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen')
+      &&contradiction?.ok===false&&contradiction?.contradictory===true
+      &&legacyContradiction?.ok===false&&legacyContradiction?.contradictory===true
+      &&recoveryContradiction?.ok===false&&recoveryContradiction?.contradictory===true&&restored,
+      missing,legacyMissing,recoveryMissing,contradiction,legacyContradiction,recoveryContradiction,restored};})()`);
   if (!trainingRestoreGuideCtl.ok) {
     fails.push('GUIDE TRAINING RESTORE COPY CONTROL FAILED — missing/absolute recovery copy did not turn the rendered outcome red: '
       + JSON.stringify(trainingRestoreGuideCtl));
@@ -1384,11 +1667,25 @@ try {
       trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
-        ||/verification pauses[^.!?]{0,160}reload safely restarts Field Training from proven Sol/i.test(trainingText),
+        ||/verification pauses[^.!?]{0,160}reload safely restarts Field Training from proven Sol/i.test(trainingText)
+        ||/(?:older|legacy)[^.!?]{0,96}(?:checkpoint|Training)[^.!?]{0,96}(?:whole|entire) (?:save|expedition)/i.test(trainingText)
+        ||/(?:older|legacy)[^.!?]{0,96}checkpoint[^.!?]{0,96}restor(?:e|es|ed)[^.!?]{0,48}(?:the )?pre-Training view/i.test(trainingText)
+        ||/Skip from Welcome[^,;.!?]{0,80}(?:Earth|pre-Training view)/i.test(trainingText)
+        ||/complet(?:e|es|ed|ing)[^.!?]{0,64}(?:drill|Training)[^.!?]{0,48}(?:after Land)?[^.!?]{0,48}(?:Sol|pre-Training view)/i.test(trainingText)
+        ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:close|dismiss|continue|keep playing|keep exploring)/i.test(trainingText)
+        ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:discard|clear|overwrite|silently ignore)/i.test(trainingText),
       trainingContract=trainingText.includes('A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view')
         &&trainingText.includes('if verification pauses, that exact view stays saved')
         &&trainingText.includes('when Sol can still be verified, Training returns there')
-        &&trainingText.includes('reload can restart safely and retry')&&!trainingContradiction;
+        &&trainingText.includes('reload can restart safely and retry')
+        &&trainingText.includes('Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured')
+        &&trainingText.includes('every other expedition field is retained from the surrounding save')
+        &&trainingText.includes('That older checkpoint contains no saved view')
+        &&trainingText.includes('Skip from Welcome stays in Sol')
+        &&trainingText.includes('completing the drill after Land stays at Earth')
+        &&trainingText.includes('An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen')
+        &&trainingText.includes('leaves the stored expedition unchanged')
+        &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction;
     const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
@@ -1472,12 +1769,25 @@ try {
     if(!row)return {stale:{complete:true},contradiction:{honest:true},error:'missing Training release row'};const prior=row.textContent;
     row.textContent=prior.replace('if verification pauses, that exact view stays saved, and when Sol can still be verified, Training returns there so a reload can restart safely and retry',
       'if verification pauses, that exact view stays saved and a reload safely restarts Field Training from proven Sol');
-    const stale=${releaseDraftCheck};row.textContent=prior+' Finish or Skip always restores immediately, even when verification pauses.';
-    const contradiction=${releaseDraftCheck};row.textContent=prior;
-    return {stale,contradiction,restored:row.textContent===prior};})()`);
+    const stale=${releaseDraftCheck};row.textContent=prior;
+    row.textContent=prior.replace('every other expedition field is retained from the surrounding save','surrounding-save ownership omitted');
+    const legacyStale=${releaseDraftCheck};row.textContent=prior;
+    row.textContent=prior.replace('locks exploration behind a recovery screen','persistent recovery boundary omitted');
+    const recoveryStale=${releaseDraftCheck};row.textContent=prior+' Finish or Skip always restores immediately, even when verification pauses.';
+    const contradiction=${releaseDraftCheck};row.textContent=prior+' Older v1.8.9 Training checkpoints restore the entire expedition and the pre-Training view. Skip from Welcome stays at Earth, while completing the drill after Land stays in Sol.';
+    const legacyContradiction=${releaseDraftCheck};row.textContent=prior+' An unrecognized checkpoint can close recovery, clear the stored expedition, and continue exploring.';
+    const recoveryContradiction=${releaseDraftCheck};row.textContent=prior;
+    return {stale,legacyStale,recoveryStale,contradiction,legacyContradiction,recoveryContradiction,restored:row.textContent===prior};})()`);
   if (releaseTrainingCopyCtl.stale.complete || releaseTrainingCopyCtl.stale.trainingContract
+    || releaseTrainingCopyCtl.legacyStale.complete || releaseTrainingCopyCtl.legacyStale.trainingContract
+    || releaseTrainingCopyCtl.recoveryStale.complete || releaseTrainingCopyCtl.recoveryStale.trainingContract
     || releaseTrainingCopyCtl.contradiction.complete || releaseTrainingCopyCtl.contradiction.honest
-    || releaseTrainingCopyCtl.contradiction.trainingContract || !releaseTrainingCopyCtl.restored) {
+    || releaseTrainingCopyCtl.contradiction.trainingContract || !releaseTrainingCopyCtl.contradiction.trainingContradiction
+    || releaseTrainingCopyCtl.legacyContradiction.complete || releaseTrainingCopyCtl.legacyContradiction.honest
+    || releaseTrainingCopyCtl.legacyContradiction.trainingContract || !releaseTrainingCopyCtl.legacyContradiction.trainingContradiction
+    || releaseTrainingCopyCtl.recoveryContradiction.complete || releaseTrainingCopyCtl.recoveryContradiction.honest
+    || releaseTrainingCopyCtl.recoveryContradiction.trainingContract || !releaseTrainingCopyCtl.recoveryContradiction.trainingContradiction
+    || !releaseTrainingCopyCtl.restored) {
     fails.push('GUIDE RELEASE TRAINING CONTROL FAILED — stale/contradictory restore claims stayed current: '
       + JSON.stringify(releaseTrainingCopyCtl));
   }
@@ -2612,9 +2922,15 @@ try {
   requireRenderedSceneMatch('TRAINING AUTHORIZATION BOOT', authTrainingBoot);
   const authTrainingLedger = (state) => JSON.stringify({
     ...state.save,
+    /* One canonical export unions retained landed identity with conquered
+       and mined worlds. That 2 → 6 normalization is expected save hygiene,
+       not Training ledger loss. Assert it separately and compare everything
+       else byte-for-byte at this diagnostic surface. */
+    landed: null,
     viewType: null,
     savedView: null,
   });
+  const authTrainingNormalizedLand = [133, 134, 101, 102, 103, 201];
   const authTrainingSkip = await evalIn(`(()=>{ const button=document.querySelector('[data-sel="tutskip"]');
     button?.click();return {pressed:!!button};})()`);
   const authTrainingRestored = await waitDesktopValue('unauthorized Training restore home fallback', `(()=>{ const s=window.__CF_SLICE__.api.state();
@@ -2622,6 +2938,8 @@ try {
   const authTrainingOutcome = (state) => state.mode === 'universe'
     && state.gal === null && state.star === null && state.planet === null
     && state.tutSnapshotPending === null && state.save.savedView === null
+    && JSON.stringify(authTrainingBoot.save.landed) === JSON.stringify([133, 134])
+    && JSON.stringify(state.save.landed) === JSON.stringify(authTrainingNormalizedLand)
     && authTrainingLedger(state) === authTrainingLedger(authTrainingBoot)
     && renderedSceneAdvanced(authTrainingBoot, state);
   if (!authTrainingSkip.pressed || !authTrainingOutcome(authTrainingRestored)) {
@@ -2642,6 +2960,7 @@ try {
   if (Object.prototype.hasOwnProperty.call(authTrainingRaw, 'tsnap') || authTrainingRaw.view !== null
     || authTrainingRaw.me !== importedExplorerName(TRAINING_AUTH_EXPLORER_NAME)
     || authTrainingRaw.essence !== 3456
+    || JSON.stringify(authTrainingRaw.land) !== JSON.stringify(authTrainingNormalizedLand)
     || Object.keys(authTrainingRaw.prime || {}).length !== 0) {
     fails.push('TRAINING AUTHORIZATION: home fallback/snapshot clear did not persist without ledger drift: '
       + JSON.stringify(authTrainingRaw));
@@ -2661,12 +2980,19 @@ try {
   await waitForSlice(sess, 'current one-key Training snapshot boot', { previousToken: trainingRestoreToken });
   await sleep(1800);
   const trainingRestoreBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const trainingRestoreHeldRaw = await evalIn(READ_PRIMARY_EXPRESSION);
+  const trainingRestoreHeld = JSON.parse(trainingRestoreHeldRaw);
+  const trainingRestoreEvidenceJSON = JSON.stringify(trainingRestoreSource.tsnap);
   if (trainingRestoreBoot.mode !== 'system' || trainingRestoreBoot.gal !== 999
     || trainingRestoreBoot.star !== 424242 || !trainingRestoreBoot.tutActive
     || trainingRestoreBoot.tutStep !== 'welcome'
-    || Object.keys(trainingRestoreBoot.tutSnapshotPending || {}).join('|') !== 'view') {
+    || trainingRestoreBoot.trainingCheckpointKind !== 'current-view'
+    || !trainingRestoreBoot.trainingCheckpointWriteHeld
+    || Object.keys(trainingRestoreBoot.tutSnapshotPending || {}).join('|') !== 'view'
+    || JSON.stringify(trainingRestoreBoot.tutSnapshotPending) !== trainingRestoreEvidenceJSON
+    || JSON.stringify(trainingRestoreHeld.tsnap) !== trainingRestoreEvidenceJSON) {
     fails.push('TRAINING ONE-KEY RESTORE: current pending snapshot did not boot in Sol/welcome intact: '
-      + JSON.stringify(trainingRestoreBoot));
+      + JSON.stringify({ state: trainingRestoreBoot, stored: trainingRestoreHeld.tsnap }));
   }
   requireRenderedSceneMatch('TRAINING SOURCE-ERROR SETUP BOOT', trainingRestoreBoot);
   /* A transient generator failure at restore is not stale-route evidence.
@@ -2693,60 +3019,71 @@ try {
         after: trainingSourceErrorSurface }));
   }
   requireRenderedSceneAdvance('TRAINING SOURCE-ERROR EARTH SURFACE SETUP', trainingRestoreBoot, trainingSourceErrorSurface);
-  await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  const trainingPracticePersist = await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  const trainingPracticeRaw = await evalIn(READ_PRIMARY_EXPRESSION);
+  if (trainingPracticePersist !== false || trainingPracticeRaw !== trainingRestoreHeldRaw) {
+    fails.push('TRAINING CHECKPOINT HOLD: practice navigation/persist rewrote the pending current-view primary: '
+      + JSON.stringify({ persist: trainingPracticePersist,
+        rawStable: trainingPracticeRaw === trainingRestoreHeldRaw }));
+  }
+  const currentSourceLabel = 'current-view-source-deferred';
+  const currentSourceNativeArmed = await evalIn(dtrainNativeWriteArmExpression(currentSourceLabel));
+  const currentSourceMark = events.length;
+  const currentSourceDocumentToken = await sliceToken(sess);
   const trainingSourceErrorArmed = await evalIn(`window.__CF_SLICE__.api.__smokeRejectNextTrainingRouteResolution()`);
   const trainingSourceErrorSkip = await evalIn(`(()=>{ const button=document.querySelector('[data-sel="tutskip"]');
     button?.click();return {pressed:!!button};})()`);
-  const trainingSourceErrorState = await waitDesktopValue('Training source-error safe Sol outcome', `(()=>{ const s=window.__CF_SLICE__.api.state();
-    return !s.tutActive&&!s.tutDone&&s.mode==='system'&&s.star===424242?s:null;})()`);
-  const trainingSourceErrorOutcome = (state) => state.mode === 'system'
-    && state.gal === 999 && state.galX === 90 && state.galY === -60 && state.galSize === 78
-    && state.star === 424242 && state.starX === 560 && state.starY === 170
-    && state.planet === null && state.planetOrdinal === null
-    && !state.tutActive && !state.tutDone
-    && Object.keys(state.tutSnapshotPending || {}).join('|') === 'view'
-    && state.save.viewType === 'star' && state.save.savedView?.star?.seed === 424242
-    && trainingRouteNeutralLedger(state) === trainingRouteNeutralLedger(trainingSourceErrorSurface)
-    && renderedSceneAdvanced(trainingSourceErrorSurface, state);
-  if (!trainingSourceErrorArmed || !trainingSourceErrorSkip.pressed
-    || !trainingSourceErrorOutcome(trainingSourceErrorState)) {
-    fails.push('TRAINING SOURCE ERROR: real Skip did not retain snapshot/incomplete status and return to canonical Sol: '
-      + JSON.stringify({ armed: trainingSourceErrorArmed, pressed: trainingSourceErrorSkip.pressed,
-        before: trainingSourceErrorSurface, after: trainingSourceErrorState }));
-  }
-  requireRenderedSceneAdvance('TRAINING SOURCE-ERROR SAFE SOL', trainingSourceErrorSurface, trainingSourceErrorState);
-  const trainingSourceErrorControls = [
-    { ...trainingSourceErrorState, tutSnapshotPending: null },
-    { ...trainingSourceErrorState, mode: 'surface', planet: 133, planetOrdinal: 2 },
-    { ...trainingSourceErrorState, renderedScene: trainingSourceErrorSurface.renderedScene },
-    { ...trainingSourceErrorState, navGalaxyKey: null, navStarKey: null, navWorldKey: null,
-      renderedScene: { ...trainingSourceErrorState.renderedScene, galaxyKey: null, starKey: null, worldKey: null } },
-  ];
-  if (trainingSourceErrorControls.some(trainingSourceErrorOutcome)) {
-    fails.push('TRAINING SOURCE-ERROR CONTROL FAILED — cleared snapshot, non-Sol nav, stale receipt, or null-key literal Sol stayed green');
-  }
-  await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
-  const trainingSourceErrorRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
-  if (trainingSourceErrorRaw.tut !== 0
-    || JSON.stringify(Object.keys(trainingSourceErrorRaw.tsnap || {})) !== JSON.stringify(['view'])
-    || trainingSourceErrorRaw.tsnap?.view?.type !== 'planet' || trainingSourceErrorRaw.tsnap?.view?.pseed !== 133
-    || trainingSourceErrorRaw.view?.type !== 'star'
-    || trainingSourceErrorRaw.view?.gal?.seed !== 999 || trainingSourceErrorRaw.view?.gal?.x !== 90
-    || trainingSourceErrorRaw.view?.gal?.y !== -60 || trainingSourceErrorRaw.view?.gal?.size !== 78
-    || trainingSourceErrorRaw.view?.star?.seed !== 424242 || trainingSourceErrorRaw.view?.star?.x !== 560
-    || trainingSourceErrorRaw.view?.star?.y !== 170) {
-    fails.push('TRAINING SOURCE ERROR: retained one-key snapshot/canonical Sol did not reach raw IndexedDB: '
-      + JSON.stringify({ tut: trainingSourceErrorRaw.tut, tsnap: trainingSourceErrorRaw.tsnap,
-        view: trainingSourceErrorRaw.view }));
-  }
-  await navigateToSlice(sess, URL0, 'Training source-error retry reload');
+  await waitForSlice(sess, 'Training source-error automatic replacement', {
+    previousToken: currentSourceDocumentToken,
+  });
   await sleep(1800);
   const trainingRetryBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const currentSourceTrainingWitness = assessTrainingWitnesses(
+    trainingWitnessesSince(sess, currentSourceMark),
+    {
+      intent: 'skip', checkpointKind: 'current-view',
+      stages: ['invoked', 'claimed', 'no-active-persist', 'candidate-started', 'source-deferred',
+        'primary-write-started', 'primary-write-complete', 'live-swap-complete', 'reload-scheduled'],
+      documentToken: currentSourceDocumentToken,
+    },
+  );
+  const currentSourceNativeWitness = assessDtrainNativeWrites(
+    dtrainNativeWritesSince(sess, currentSourceMark),
+    { label: currentSourceLabel, documentToken: currentSourceDocumentToken, count: 1 },
+  );
+  const currentSourceReleaseWitness = assessTrainingReleaseWitnesses(
+    reloadReleaseWitnessesSince(sess, currentSourceMark),
+    { documentToken: currentSourceDocumentToken },
+  );
+  const currentSourceTransactionWrites = nativeWritesBetweenStages(
+    currentSourceNativeWitness.entries,
+    currentSourceTrainingWitness.entries,
+    'primary-write-started',
+    'primary-write-complete',
+  );
+  if (!currentSourceNativeArmed || !trainingSourceErrorArmed || !trainingSourceErrorSkip.pressed
+    || !currentSourceTrainingWitness.ok || !currentSourceNativeWitness.ok
+    || currentSourceTransactionWrites.length !== 1 || !currentSourceReleaseWitness.ok) {
+    fails.push('TRAINING SOURCE ERROR: old-document operation/write/release evidence did not reach one automatic replacement: '
+      + JSON.stringify({ nativeArmed: currentSourceNativeArmed, routeArmed: trainingSourceErrorArmed,
+        pressed: trainingSourceErrorSkip.pressed, training: currentSourceTrainingWitness,
+        native: currentSourceNativeWitness, transactionWrites: currentSourceTransactionWrites,
+        release: currentSourceReleaseWitness }));
+  }
+  const currentSourceReleaseControl = structuredClone(currentSourceReleaseWitness.entries);
+  if (currentSourceReleaseControl[0]) currentSourceReleaseControl[0].rendererReleased = false;
+  if (assessTrainingReleaseWitnesses(currentSourceReleaseControl, {
+    documentToken: currentSourceDocumentToken,
+  }).ok) {
+    fails.push('TRAINING SOURCE-ERROR RELEASE CONTROL FAILED — an unreleased renderer stayed green');
+  }
   const trainingRetryBootOutcome = (state) => state.mode === 'system'
     && state.gal === 999 && state.galX === 90 && state.galY === -60 && state.galSize === 78
     && state.star === 424242 && state.starX === 560 && state.starY === 170
     && state.planet === null && !state.tutDone && state.tutActive && state.tutStep === 'welcome'
+    && state.trainingCheckpointKind === 'current-view' && state.trainingCheckpointWriteHeld
     && Object.keys(state.tutSnapshotPending || {}).join('|') === 'view'
+    && JSON.stringify(state.tutSnapshotPending) === trainingRestoreEvidenceJSON
     && state.save.viewType === 'star' && state.save.savedView?.star?.seed === 424242
     && renderedSceneMatchesNav(state);
   if (!trainingRetryBootOutcome(trainingRetryBoot)) {
@@ -2755,16 +3092,23 @@ try {
   }
   const trainingRetryControls = [
     { ...trainingRetryBoot, tutSnapshotPending: null },
+    { ...trainingRetryBoot, trainingCheckpointWriteHeld: false },
     { ...trainingRetryBoot, star: null, starX: null, starY: null },
     { ...trainingRetryBoot, renderedScene: { ...trainingRetryBoot.renderedScene, serial: 0 } },
   ];
   if (trainingRetryControls.some(trainingRetryBootOutcome)) {
     fails.push('TRAINING SOURCE-ERROR RELOAD CONTROL FAILED — cleared snapshot, non-Sol nav, or serial 0 stayed green');
   }
-  const trainingRetryRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  const trainingRetryRawText = await evalIn(READ_PRIMARY_EXPRESSION);
+  const trainingRetryRaw = JSON.parse(trainingRetryRawText);
   if (trainingRetryRaw.tut !== 0
     || JSON.stringify(Object.keys(trainingRetryRaw.tsnap || {})) !== JSON.stringify(['view'])
-    || trainingRetryRaw.view?.type !== 'star' || trainingRetryRaw.view?.star?.seed !== 424242) {
+    || JSON.stringify(trainingRetryRaw.tsnap) !== trainingRestoreEvidenceJSON
+    || trainingRetryRaw.view?.type !== 'star' || trainingRetryRaw.view?.star?.seed !== 424242
+    || currentSourceNativeWitness.entries[0]?.length !== trainingRetryRawText.length
+    || currentSourceNativeWitness.entries[0]?.tut !== 0
+    || currentSourceNativeWitness.entries[0]?.hasSnapshot !== true
+    || currentSourceNativeWitness.entries[0]?.viewType !== 'star') {
     fails.push('TRAINING SOURCE ERROR: reload did not retain raw incomplete/snapshot/Sol evidence: '
       + JSON.stringify({ tut: trainingRetryRaw.tut, tsnap: trainingRetryRaw.tsnap, view: trainingRetryRaw.view }));
   }
@@ -2779,16 +3123,40 @@ try {
         raw: trainingRetryRaw.land, reloaded: trainingRetryBoot.save.landed }));
   }
   const trainingLedgerExpected = trainingRouteNeutralLedger(trainingRetryBoot);
+  const currentRetryNativeLabel = 'current-view-source-retry';
+  const currentRetryNativeArmed = await evalIn(dtrainNativeWriteArmExpression(currentRetryNativeLabel));
+  const currentRetryMark = events.length;
+  const currentRetryToken = await sliceToken(sess);
   const trainingSkip = await evalIn(`(()=>{ const button=document.querySelector('[data-sel="tutskip"]');
     button?.click();return {pressed:!!button};})()`);
   const trainingRestored = await waitDesktopValue('current one-key Training route restore', `(()=>{ const s=window.__CF_SLICE__.api.state();
     return !s.tutActive&&s.tutDone&&s.mode==='surface'&&s.planet===133?s:null;})()`);
-  if (!trainingSkip.pressed || trainingRestored.planetOrdinal !== 2
+  const currentRetryWitness = assessTrainingWitnesses(trainingWitnessesSince(sess, currentRetryMark), {
+    intent: 'skip', checkpointKind: 'current-view',
+    stages: ['invoked', 'claimed', 'no-active-persist', 'candidate-started',
+      'primary-write-started', 'primary-write-complete', 'live-swap-complete', 'released'],
+    documentToken: currentRetryToken,
+  });
+  const currentRetryNativeWitness = assessDtrainNativeWrites(
+    dtrainNativeWritesSince(sess, currentRetryMark),
+    { label: currentRetryNativeLabel, documentToken: currentRetryToken, count: 1 },
+  );
+  const currentRetryTransactionWrites = nativeWritesBetweenStages(
+    currentRetryNativeWitness.entries, currentRetryWitness.entries,
+    'primary-write-started', 'primary-write-complete',
+  );
+  if (!currentRetryNativeArmed || !currentRetryWitness.ok || !currentRetryNativeWitness.ok
+    || currentRetryTransactionWrites.length !== 1
+    || !trainingSkip.pressed || trainingRestored.planetOrdinal !== 2
     || trainingRestored.tutSnapshotPending !== null
+    || trainingRestored.trainingCheckpointKind !== 'none'
+    || trainingRestored.trainingCheckpointWriteHeld
     || trainingRouteNeutralLedger(trainingRestored) !== trainingLedgerExpected
     || trainingRestored.atlasCount !== vet.atlasCount) {
     fails.push('TRAINING ONE-KEY RESTORE: one real Skip did not restore the exact source-proven route/ledger: '
-      + JSON.stringify({ pressed: trainingSkip.pressed, before: trainingRetryBoot, after: trainingRestored }));
+      + JSON.stringify({ pressed: trainingSkip.pressed, before: trainingRetryBoot, after: trainingRestored,
+        witness: currentRetryWitness, native: currentRetryNativeWitness,
+        transactionWrites: currentRetryTransactionWrites }));
   }
   requireRenderedSceneAdvance('TRAINING ONE-KEY RESTORE', trainingRetryBoot, trainingRestored);
   const currentTrainingRestoreOutcome = (state) => state.mode === 'surface'
@@ -2976,6 +3344,794 @@ try {
       + JSON.stringify(restartTickerCtl));
   }
   await evalIn(`(()=>{ document.querySelector('#setpanel [data-pnx]')?.click(); return true; })()`);
+
+  /* 4c-dtrain. Genuine v1.8.9 Field Training checkpoints are an eleven-field
+     transaction, not the old synthetic whole-save guess. Seed exact primary
+     bytes, drive the real lesson action, and consume the operation-local phase
+     binding so visible success cannot hide a second write or wrong ordering. */
+  const DTRAIN_LEGACY_KEYS = ['st', 'ps', 'ac', 'es', 'c', 'ca', 'cx', 'it', 'eq', 'ea', 'e'];
+  const DTRAIN_DIRECT_STATS = [
+    'shares', 'jumps', 'anomalies', 'events', 'duels', 'duelwins',
+    'breeds', 'breedwins', 'feeds', 'feedfails', 'harvests',
+    'essenceEarned', 'guardians', 'paragons', 'mines', 'crafts',
+    'minedout', 'skims', 'cosmics', 'landings', 'charters',
+  ];
+  const DTRAIN_SUCCESS_STAGES = [
+    'invoked', 'claimed', 'no-active-persist', 'candidate-started', 'earth-proven',
+    'primary-write-started', 'primary-write-complete', 'live-swap-complete', 'released',
+  ];
+  const DTRAIN_WAITED_SUCCESS_STAGES = [
+    'invoked', 'claimed', 'waiting-active-persist', 'active-persist-settled',
+    'candidate-started', 'earth-proven', 'primary-write-started',
+    'primary-write-complete', 'live-swap-complete', 'released',
+  ];
+  const dtrainSeedPrimary = async (raw, label) => {
+    const beforeToken = await sliceToken(sess);
+    await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
+      q.onerror=()=>reject(q.error);q.onsuccess=()=>{const db=q.result,tx=db.transaction('meta','readwrite');
+        tx.objectStore('meta').put(${JSON.stringify(raw)},'save');tx.oncomplete=()=>{db.close();resolve(true)};
+        tx.onerror=()=>reject(tx.error);};})`);
+    await navigateToSlice(sess, URL0, label);
+    await sleep(900);
+    const token = await sliceToken(sess);
+    const state = await evalIn(`window.__CF_SLICE__.api.state()`);
+    const stored = await evalIn(READ_PRIMARY_EXPRESSION);
+    if (!beforeToken || !token || token === beforeToken) {
+      fails.push(`${label.toUpperCase()}: direct fixture boot reused the prior document token`);
+    }
+    return { token, state, stored };
+  };
+  const dtrainRefusalState = (state) => JSON.stringify({
+    mode: state.mode, gal: state.gal, star: state.star, planet: state.planet,
+    navGalaxyKey: state.navGalaxyKey, navStarKey: state.navStarKey, navWorldKey: state.navWorldKey,
+    renderedScene: state.renderedScene,
+    tutActive: state.tutActive, tutStep: state.tutStep, tutDone: state.tutDone,
+    tutSnapshotPending: state.tutSnapshotPending,
+    trainingCheckpointKind: state.trainingCheckpointKind,
+    trainingCheckpointWriteHeld: state.trainingCheckpointWriteHeld,
+    trainingRecoveryMode: state.trainingRecoveryMode,
+    save: state.save,
+  });
+  const routeOwnsNoPrivateProof = (route) => {
+    if (!route || typeof route !== 'object') return false;
+    const forbidden = new Set(['parentCell', 'ordinal', 'layer', 'format', 'key']);
+    const pending = [route];
+    while (pending.length) {
+      const value = pending.pop();
+      if (!value || typeof value !== 'object') continue;
+      for (const [key, child] of Object.entries(value)) {
+        if (forbidden.has(key)) return false;
+        if (child && typeof child === 'object') pending.push(child);
+      }
+    }
+    return true;
+  };
+  const canonicalJson = (value) => {
+    if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
+    if (value && typeof value === 'object') {
+      return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`).join(',')}}`;
+    }
+    return JSON.stringify(value);
+  };
+  const DTRAIN_CANONICAL_GALAXY_VIEW = Object.freeze({
+    x: HOME_GALAXY.x, y: HOME_GALAXY.y, size: 78, sp: 0, tilt: 0.62, rot: 0.5,
+    seed: HOME_GALAXY.seed, home: true, quasar: false, dwarf: false,
+  });
+  const DTRAIN_CANONICAL_STAR_VIEW = Object.freeze({
+    x: SOL_STAR.x, y: SOL_STAR.y, seed: SOL_STAR.seed,
+  });
+  const dtrainExpectedRoute = (kind) => kind === 'earth'
+    ? { type: 'planet', gal: { ...DTRAIN_CANONICAL_GALAXY_VIEW }, star: { ...DTRAIN_CANONICAL_STAR_VIEW }, pseed: EARTH.seed }
+    : { type: 'star', gal: { ...DTRAIN_CANONICAL_GALAXY_VIEW }, star: { ...DTRAIN_CANONICAL_STAR_VIEW } };
+  const dtrainStateRouteAssessment = (state, runtimeKind, savedKind = runtimeKind) => {
+    const expectedView = dtrainExpectedRoute(savedKind);
+    const reasons = [];
+    const expectedMode = runtimeKind === 'earth' ? 'surface' : 'system';
+    if (state?.mode !== expectedMode || state?.gal !== HOME_GALAXY.seed
+      || state?.galX !== HOME_GALAXY.x || state?.galY !== HOME_GALAXY.y || state?.galSize !== 78
+      || state?.star !== SOL_STAR.seed || state?.starX !== SOL_STAR.x || state?.starY !== SOL_STAR.y) {
+      reasons.push('runtime route');
+    }
+    if (runtimeKind === 'earth') {
+      if (state?.planet !== EARTH.seed || state?.planetOrdinal !== EARTH.ordinal
+        || state?.navWorldKey === null) reasons.push('Earth leaf/ordinal/key');
+    } else if (state?.planet !== null || state?.navWorldKey !== null) reasons.push('Sol world inventory');
+    if (state?.navGalaxyKey === null || state?.navStarKey === null) reasons.push('parent provenance keys');
+    if (!renderedSceneMatchesNav(state)) reasons.push('render receipt');
+    if (canonicalJson(state?.save?.savedView) !== canonicalJson(expectedView)) {
+      reasons.push(`saved ${savedKind} route`);
+    }
+    return { ok: reasons.length === 0, reasons, expectedView };
+  };
+  /* The legacy checkpoint owns exactly st/ps/ac/es/c/ca/cx/it/eq/ea/e.
+     This projection removes only those fields' serialized products plus the
+     transaction envelope (clock/view/tutorial). Every other seeded whole-save field
+     remains under exact comparison after the importer's explicit one-pass
+     normalizations below. */
+  const DTRAIN_CHECKPOINT_RAW_FIELDS = new Set([
+    ...DTRAIN_DIRECT_STATS, 'br', 'pstats', 'ach', 'essence',
+    'codex', 'cargo', 'cgx', 'items', 'eq', 'ea', 'home',
+  ]);
+  const DTRAIN_TRANSACTION_RAW_FIELDS = new Set(['v', 'epoch', 'at', 'view', 'tut', 'tsnap']);
+  const dtrainOuterRawProjection = (raw) => {
+    const copy = structuredClone(raw || {});
+    for (const key of DTRAIN_CHECKPOINT_RAW_FIELDS) delete copy[key];
+    for (const key of DTRAIN_TRANSACTION_RAW_FIELDS) delete copy[key];
+    if (copy.ever && typeof copy.ever === 'object') {
+      copy.ever = { v: copy.ever.v, arrivals: copy.ever.arrivals };
+    }
+    copy.log = Array.isArray(copy.log) ? copy.log.filter((entry) => entry?.id !== 'p133') : [];
+    return copy;
+  };
+  const dtrainExpectedOuterRawProjection = (seedRaw, expectedLand, expectOuterAtlas, expectedRn) => {
+    const seed = JSON.parse(seedRaw);
+    /* Established importer/exporter normalizations, each independently
+       unrelated to Training restoration. */
+    seed.tech = ['scan1', 'hull1'];
+    seed.setsc = ['kingdoms'];
+    delete seed.surveys;             /* legacy input-only; runtime derives from surveyed */
+    seed.seen = [];                 /* f1234 is not a restored s-prefixed Codex id */
+    seed.scout = null;              /* nonexistent-id has no restored Codex row */
+    seed.wvo = [[901, 3], [902, 5]];/* importer clamps each wave-off count to five */
+    seed.prime = seed.prime?.stone ? { stone: structuredClone(seed.prime.stone) } : {};
+    if (seed.prime.stone?.where?.gal) {
+      seed.prime.stone.where.gal.quasar = false;
+      seed.prime.stone.where.gal.dwarf = false;
+    }
+    seed.ever = { v: 1, arrivals: 2 };
+    seed.land = expectedLand.slice();
+    if (expectedRn !== undefined) seed.rn = expectedRn;
+    seed.log = expectOuterAtlas ? [{
+      id: 'p900', title: 'Outer sentinel', sub: 'Must survive', thumb: null,
+      sq: false, badge: 'Held', where: null, fav: false, t: 1_753_899_940_000,
+      star: 'Elsewhere',
+    }] : [];
+    return dtrainOuterRawProjection(seed);
+  };
+  const dtrainOuterRawAssessment = (raw, seedRaw, expectedLand, expectOuterAtlas, expectedRn) => {
+    const actual = dtrainOuterRawProjection(raw);
+    const expected = dtrainExpectedOuterRawProjection(seedRaw, expectedLand, expectOuterAtlas, expectedRn);
+    const keys = [...new Set([...Object.keys(actual), ...Object.keys(expected)])].sort();
+    const reasons = keys.filter((key) => canonicalJson(actual[key]) !== canonicalJson(expected[key]))
+      .map((key) => `outer.${key}`);
+    return { ok: reasons.length === 0, reasons, actual, expected };
+  };
+  const dtrainExpectedCodex = GENUINE_TRAINING_CHECKPOINT.c.map((entry) => structuredClone(entry));
+  const dtrainExpectedEver = {
+    v: 1,
+    hybrids: GENUINE_TRAINING_CHECKPOINT.st.hybrids,
+    best: GENUINE_TRAINING_CHECKPOINT.st.best,
+    maxGen: GENUINE_TRAINING_CHECKPOINT.st.maxGen,
+    /* The captured checkpoint predates this cumulative carrier. Absence is
+       the exact zero migration; it must not inherit the dirty live value. */
+    scanhits: 0,
+    /* Arrival identity belongs to the surrounding expedition and is
+       re-derived from the two retained sysSeen keys, never the checkpoint. */
+    arrivals: 2,
+  };
+  const dtrainRestoredRawAssessment = (raw, {
+    seedRaw = DTRAIN_LEGACY_RAW,
+    expectedLand = [901],
+    expectOuterAtlas = true,
+    route = 'sol',
+    expectedRn,
+    atlasFalseDefaults = true,
+  } = {}) => {
+    const reasons = [];
+    const require = (condition, reason) => { if (!condition) reasons.push(reason); };
+    const earthRows = Array.isArray(raw?.log) ? raw.log.filter((entry) => entry?.id === 'p133') : [];
+    const earth = earthRows[0] || null;
+    /* The atomic restore candidate initially carries the source view's false
+       q/d defaults; a later ordinary import/export omits those false
+       Atlas-only fields. Pin the exact sampled write boundary either way.
+       Atlas history is display data; its actionable route is re-proven. */
+    const expectedEarth = {
+      id: 'p133', title: GENUINE_TRAINING_CHECKPOINT.e.title,
+      sub: GENUINE_TRAINING_CHECKPOINT.e.sub, thumb: null, sq: false,
+      badge: GENUINE_TRAINING_CHECKPOINT.e.badge,
+      where: {
+        type: 'planet',
+        gal: {
+          x: DTRAIN_CANONICAL_GALAXY_VIEW.x, y: DTRAIN_CANONICAL_GALAXY_VIEW.y,
+          size: DTRAIN_CANONICAL_GALAXY_VIEW.size, sp: DTRAIN_CANONICAL_GALAXY_VIEW.sp,
+          tilt: DTRAIN_CANONICAL_GALAXY_VIEW.tilt, rot: DTRAIN_CANONICAL_GALAXY_VIEW.rot,
+          seed: DTRAIN_CANONICAL_GALAXY_VIEW.seed, home: true,
+          ...(atlasFalseDefaults ? { quasar: false, dwarf: false } : {}),
+        },
+        star: { ...DTRAIN_CANONICAL_STAR_VIEW }, pseed: EARTH.seed,
+      },
+      fav: true,
+      t: GENUINE_TRAINING_CHECKPOINT.e.t, star: GENUINE_TRAINING_CHECKPOINT.e.star,
+    };
+    require(raw?.v === 4, 'schema v4');
+    require(Number.isInteger(raw?.epoch) && raw.epoch >= 0, 'finite epoch snapshot');
+    require(typeof raw?.at === 'number' && Number.isFinite(raw.at)
+      && raw.at >= JSON.parse(seedRaw).at, 'bounded write timestamp');
+    require(raw?.tut === 1, 'completed tutorial flag');
+    require(!Object.prototype.hasOwnProperty.call(raw || {}, 'tsnap'), 'checkpoint cleared');
+    for (const key of DTRAIN_DIRECT_STATS) {
+      require(raw?.[key] === GENUINE_TRAINING_CHECKPOINT.st[key], `checkpoint st.${key}`);
+    }
+    require(raw?.br === GENUINE_TRAINING_CHECKPOINT.st.bestRank, 'checkpoint st.bestRank');
+    require(canonicalJson(raw?.pstats) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.ps), 'checkpoint ps');
+    require(raw?.hp === 55, 'outer live HP under restored ceiling');
+    require(raw?.essence === GENUINE_TRAINING_CHECKPOINT.es, 'checkpoint es');
+    require(canonicalJson(raw?.ach) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.ac), 'checkpoint ac');
+    require(canonicalJson(raw?.cargo) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.ca), 'checkpoint ca');
+    require(canonicalJson(raw?.cgx) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.cx), 'checkpoint cx');
+    require(canonicalJson(raw?.items) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.it), 'checkpoint it');
+    require(canonicalJson(raw?.eq) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.eq), 'checkpoint eq');
+    require(canonicalJson(raw?.ea) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.ea), 'checkpoint ea');
+    require(canonicalJson(raw?.ever) === canonicalJson(dtrainExpectedEver), 'checkpoint cumulative carrier');
+    require(canonicalJson(raw?.codex) === canonicalJson(dtrainExpectedCodex), 'checkpoint c');
+    require(JSON.stringify((raw?.codex || []).map((entry) => [entry?.g?.seed, entry?.g?.gen, entry?.g?.parents || null]))
+      === JSON.stringify(GENUINE_TRAINING_CHECKPOINT.c.map((entry) => [entry?.g?.seed, entry?.g?.gen, entry?.g?.parents || null])),
+    'checkpoint bloodline identity');
+    require(raw?.home === 'p133', 'checkpoint Earth home binding');
+    require(earthRows.length === 1 && canonicalJson(earth) === canonicalJson(expectedEarth), 'checkpoint Earth Atlas row');
+    require(Array.isArray(raw?.log) && raw.log.length === (expectOuterAtlas ? 2 : 1), 'Atlas row inventory');
+    require(canonicalJson(raw?.view) === canonicalJson(dtrainExpectedRoute(route)), `exact ${route} saved route`);
+    require(routeOwnsNoPrivateProof(raw?.view) && routeOwnsNoPrivateProof(earth?.where), 'no serialized route provenance');
+    const outer = dtrainOuterRawAssessment(raw, seedRaw, expectedLand, expectOuterAtlas, expectedRn);
+    reasons.push(...outer.reasons);
+    return { ok: reasons.length === 0, reasons, outer };
+  };
+  const dtrainRestoredRawOutcome = (raw, options) => dtrainRestoredRawAssessment(raw, options).ok;
+  const dtrainAssertWitness = (label, mark, spec) => {
+    const entries = trainingWitnessesSince(sess, mark);
+    const result = assessTrainingWitnesses(entries, spec);
+    if (!result.ok) fails.push(`${label}: Training transaction witness drifted: ${JSON.stringify(result)}`);
+    return result;
+  };
+  if (JSON.stringify(Object.keys(GENUINE_TRAINING_CHECKPOINT)) !== JSON.stringify(DTRAIN_LEGACY_KEYS)) {
+    fails.push('D-TRAIN FIXTURE CONTROL FAILED — captured checkpoint is not the exact eleven-key v1.8.9 shape');
+  }
+
+  const dtrainUnknownRefusal = async (raw, label, expectSnapshot) => {
+    const booted = await dtrainSeedPrimary(raw, `${label} boot`);
+    const boot = booted.state;
+    if (boot.mode !== 'system' || boot.gal !== 999 || boot.star !== 424242
+      || boot.tutActive || boot.tutStep !== null || boot.tutDone
+      || boot.trainingCheckpointKind !== 'legacy-or-unknown' || !boot.trainingCheckpointWriteHeld
+      || boot.trainingRecoveryMode !== 'unknown-checkpoint'
+      || (expectSnapshot && boot.tutSnapshotPending === null)
+      || (!expectSnapshot && boot.tutSnapshotPending !== null)
+      || booted.stored !== raw || !renderedSceneMatchesNav(boot)) {
+      fails.push(`${label}: unknown checkpoint did not boot quarantined, held, and byte-exact: `
+        + JSON.stringify({ state: boot, byteExact: booted.stored === raw }));
+    }
+    const beforeState = dtrainRefusalState(boot);
+    const beforeRaw = booted.stored;
+    const mark = events.length;
+    const refusal = await evalIn(`(async()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('importsheet'),
+      close=document.getElementById('importclose'),retry=document.getElementById('importretry'),
+      title=(sheet?.querySelector('h2')?.textContent||'').trim(),safety=sheet?.querySelector('[data-sel="import-safety"]')?.textContent||'',
+      backgrounds=[...document.body.children].filter((node)=>node instanceof HTMLElement&&node!==sheet),
+      beforeCard=!!document.getElementById('tutcard'),beforeActions=document.querySelectorAll('[data-sel="tutbtn"],[data-sel="tutskip"]').length,
+      visible=!!sheet&&getComputedStyle(sheet).display==='flex'&&sheet.getBoundingClientRect().width>0,
+      backgroundInert=backgrounds.length>0&&backgrounds.every((node)=>node.inert&&node.getAttribute('aria-hidden')==='true');
+      const sheetExcludedBefore=!sheet.inert&&sheet.getAttribute('aria-hidden')!=='true',
+        control=backgrounds.find((node)=>node.inert&&node.getAttribute('aria-hidden')==='true');
+      if(control){control.inert=false;control.removeAttribute('aria-hidden');}
+      const controlExposed=!!control&&!control.inert&&control.getAttribute('aria-hidden')!=='true';
+      await Promise.resolve();await Promise.resolve();
+      const controlRelocked=!!control&&control.inert&&control.getAttribute('aria-hidden')==='true',
+        backgroundRelocked=backgrounds.every((node)=>node.inert&&node.getAttribute('aria-hidden')==='true'),
+        sheetExcludedAfter=!sheet.inert&&sheet.getAttribute('aria-hidden')!=='true',
+        unlockedBackgrounds=backgrounds.filter((node)=>!node.inert||node.getAttribute('aria-hidden')!=='true')
+          .map((node)=>({tag:node.tagName,id:node.id||null,inert:node.inert,ariaHidden:node.getAttribute('aria-hidden')}));
+      close?.click();const escape=new KeyboardEvent('keydown',{key:'Escape',code:'Escape',bubbles:true,cancelable:true});
+      document.dispatchEvent(escape);
+      const persist=await S.api.__smokePersistNow();
+      return {state:S.api.state(),beforeCard,beforeActions,persist,visible,mode:sheet?.dataset.mode||null,
+        title,safety,ariaLabel:sheet?.getAttribute('aria-label')||null,
+        closeHidden:close?.hidden??null,closeDisabled:close?.disabled??null,retryHidden:retry?.hidden??null,
+        escapeConsumed:escape.defaultPrevented,
+        focusInside:!!sheet?.contains(document.activeElement),backgroundInert,controlExposed,controlRelocked,
+        backgroundRelocked,sheetExcludedBefore,sheetExcludedAfter,unlockedBackgrounds,
+        afterVisible:getComputedStyle(sheet).display==='flex',afterCard:!!document.getElementById('tutcard'),
+        afterActions:document.querySelectorAll('[data-sel="tutbtn"],[data-sel="tutskip"]').length};})()`);
+    const afterRaw = await evalIn(READ_PRIMARY_EXPRESSION);
+    const afterToken = await sliceToken(sess);
+    const witness = trainingWitnessesSince(sess, mark);
+    if (refusal.beforeCard || refusal.beforeActions !== 0 || refusal.persist !== false
+      || refusal.afterCard || refusal.afterActions !== 0 || !refusal.visible || !refusal.afterVisible
+      || refusal.mode !== 'unknown-checkpoint' || refusal.title !== 'Field Training checkpoint protected'
+      || !/not recognized.*Exploration is locked/i.test(refusal.safety)
+      || refusal.ariaLabel !== refusal.title || refusal.closeHidden !== true || refusal.closeDisabled !== true
+      || refusal.retryHidden !== false || !refusal.escapeConsumed || !refusal.focusInside
+      || !refusal.backgroundInert || !refusal.controlExposed || !refusal.controlRelocked
+      || !refusal.backgroundRelocked || !refusal.sheetExcludedBefore || !refusal.sheetExcludedAfter
+      || refusal.unlockedBackgrounds.length !== 0
+      || dtrainRefusalState(refusal.state) !== beforeState || afterRaw !== beforeRaw
+      || afterToken !== booted.token || witness.length !== 0) {
+      fails.push(`${label}: quarantine modal exposed gameplay, changed evidence, wrote, reloaded, or became dismissible: `
+        + JSON.stringify({ refusal, stateStable: dtrainRefusalState(refusal.state) === beforeState,
+          rawStable: afterRaw === beforeRaw, tokenStable: afterToken === booted.token, witness }));
+    }
+  };
+  const noSnapshotBooted = await dtrainSeedPrimary(DTRAIN_NO_SNAPSHOT_RAW, 'D-TRAIN no-snapshot unfinished boot');
+  const noSnapshotBootOutcome = (state) => state.tutActive && !state.tutDone
+    && state.tutStep === 'welcome' && state.trainingCheckpointKind === 'none'
+    && state.trainingCheckpointWriteHeld && state.trainingRecoveryMode === null && state.mode === 'system'
+    && state.gal === 999 && state.star === 424242 && state.planet === null
+    && state.save.viewType === 'planet' && state.save.savedView?.pseed === 133
+    && state.navGalaxyKey !== null && state.navStarKey !== null && state.navWorldKey === null
+    && renderedSceneMatchesNav(state);
+  if (!noSnapshotBootOutcome(noSnapshotBooted.state)
+    || noSnapshotBooted.stored !== DTRAIN_NO_SNAPSHOT_RAW
+    || JSON.parse(noSnapshotBooted.stored).view?.type !== 'planet') {
+    fails.push('D-TRAIN NO-SNAPSHOT BOOT: unfinished outer-Earth expedition did not open Welcome at proven Sol without rewriting raw bytes: '
+      + JSON.stringify({ state: noSnapshotBooted.state,
+        byteExact: noSnapshotBooted.stored === DTRAIN_NO_SNAPSHOT_RAW,
+        rawView: JSON.parse(noSnapshotBooted.stored).view }));
+  }
+  const noSnapshotBootControl = {
+    ...noSnapshotBooted.state,
+    mode: 'surface', planet: 133, planetOrdinal: 2,
+    navWorldKey: 'injected-world',
+    renderedScene: {
+      ...noSnapshotBooted.state.renderedScene,
+      mode: 'surface', worldKey: 'injected-world',
+    },
+  };
+  if (noSnapshotBootOutcome(noSnapshotBootControl)) {
+    fails.push('D-TRAIN NO-SNAPSHOT BOOT CONTROL FAILED — injected outer Earth stayed green as proven Sol');
+  }
+  await dtrainUnknownRefusal(DTRAIN_OLD_SYNTHETIC_RAW, 'D-TRAIN OLD SYNTHETIC REFUSAL', true);
+  await dtrainUnknownRefusal(DTRAIN_HOSTILE_RAW, 'D-TRAIN HOSTILE-SHAPE REFUSAL', false);
+
+  /* `tut:1` beside a genuine checkpoint is the shipped stranding shape. It
+     must reopen incomplete. Hold an older active persist, then attempt an
+     import while Skip owns replacement: stale writes first, Training writes
+     exactly once last, and only the Training result may become live. */
+  const rescueBooted = await dtrainSeedPrimary(DTRAIN_RESCUE_RAW, 'D-TRAIN tut=1 rescue');
+  const rescueBoot = rescueBooted.state;
+  if (!rescueBoot.tutActive || rescueBoot.tutDone || rescueBoot.tutStep !== 'welcome'
+    || rescueBoot.mode !== 'system' || rescueBoot.gal !== 999 || rescueBoot.star !== 424242
+    || rescueBoot.navGalaxyKey === null || rescueBoot.navStarKey === null || rescueBoot.navWorldKey !== null
+    || !renderedSceneMatchesNav(rescueBoot)
+    || rescueBoot.trainingCheckpointKind !== 'legacy-v1'
+    || !rescueBoot.trainingCheckpointWriteHeld
+    || rescueBooted.stored !== DTRAIN_RESCUE_RAW
+    || JSON.stringify(Object.keys(rescueBoot.tutSnapshotPending || {})) !== JSON.stringify(DTRAIN_LEGACY_KEYS)) {
+    fails.push('D-TRAIN TUT=1 RESCUE: completed+checkpoint pair did not normalize to genuine pending Training: '
+      + JSON.stringify({ state: rescueBoot, byteExact: rescueBooted.stored === DTRAIN_RESCUE_RAW }));
+  }
+  const rescueNativeLabel = 'legacy-rescue-active-persist';
+  const rescueNativeArmed = await evalIn(dtrainNativeWriteArmExpression(rescueNativeLabel));
+  const rescueMark = events.length;
+  const rescueStart = await evalIn(`(async()=>{const api=window.__CF_SLICE__.api,
+    button=document.querySelector('[data-sel="tutskip"]'),armed=api.__smokeArmImportRace(${JSON.stringify(DTRAIN_RESCUE_RAW)});
+    button?.focus();button?.click();await Promise.resolve();const waiting=api.state().trainingRestoreWitness;
+    const competing=await api.importBlob(${JSON.stringify(VETERAN_RAW)});const released=api.__smokeReleaseImportRace();
+    return {armed,released,competing,button:!!button,disabled:button?.disabled??null,waiting};})()`);
+  const rescueDone = await waitDesktopValue('D-TRAIN rescued Skip completion', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return !s.tutActive&&s.tutDone&&s.trainingRestoreWitness?.stage==='released'?s:null;})()`);
+  await sleep(80);
+  const rescueRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  const rescueWitness = dtrainAssertWitness('D-TRAIN TUT=1 RESCUE', rescueMark, {
+    intent: 'skip', checkpointKind: 'legacy-v1', stages: DTRAIN_WAITED_SUCCESS_STAGES,
+    documentToken: rescueBooted.token,
+  });
+  const rescueNativeWitness = assessDtrainNativeWrites(dtrainNativeWritesSince(sess, rescueMark), {
+    label: rescueNativeLabel, documentToken: rescueBooted.token, count: 2,
+  });
+  const rescueStaleWrites = nativeWritesBetweenStages(
+    rescueNativeWitness.entries, rescueWitness.entries, 'waiting-active-persist', 'active-persist-settled',
+  );
+  const rescueTransactionWrites = nativeWritesBetweenStages(
+    rescueNativeWitness.entries, rescueWitness.entries, 'primary-write-started', 'primary-write-complete',
+  );
+  const rescueRawAssessment = dtrainRestoredRawAssessment(rescueRaw, { seedRaw: DTRAIN_RESCUE_RAW });
+  const rescueRouteAssessment = dtrainStateRouteAssessment(rescueDone, 'sol');
+  if (!rescueNativeArmed || !rescueNativeWitness.ok || rescueStaleWrites.length !== 1
+    || rescueTransactionWrites.length !== 1
+    || !rescueStart.armed || !rescueStart.released || !rescueStart.button || rescueStart.disabled !== true
+    || rescueStart.waiting?.stage !== 'waiting-active-persist'
+    || !/another expedition replacement is finishing/i.test(rescueStart.competing || '')
+    || !rescueRawAssessment.ok || !rescueRouteAssessment.ok
+    || rescueDone.trainingCheckpointKind !== 'none' || rescueDone.trainingCheckpointWriteHeld
+    || rescueDone.tutSnapshotPending !== null) {
+    fails.push('D-TRAIN TUT=1/ACTIVE-PERSIST/IMPORT: rescue, ordering, one-write result, or outer sentinels drifted: '
+      + JSON.stringify({ start: rescueStart, done: rescueDone, raw: rescueRaw, witness: rescueWitness,
+        native: rescueNativeWitness, staleWrites: rescueStaleWrites, transactionWrites: rescueTransactionWrites,
+        rawAssessment: rescueRawAssessment, routeAssessment: rescueRouteAssessment }));
+  }
+  const doubledRescueWitness = rescueWitness.entries.flatMap((entry) =>
+    entry.stage === 'primary-write-started' ? [entry, { ...entry }] : [entry]);
+  if (assessTrainingWitnesses(doubledRescueWitness, {
+    intent: 'skip', checkpointKind: 'legacy-v1', stages: DTRAIN_WAITED_SUCCESS_STAGES,
+    documentToken: rescueBooted.token,
+  }).ok) {
+    fails.push('D-TRAIN ONE-WRITE CONTROL FAILED — a duplicated Training write-start witness stayed green');
+  }
+  const privateProofControlRaw = structuredClone(rescueRaw);
+  privateProofControlRaw.log.find((entry) => entry.id === 'p133').where.ordinal = 2;
+  if (dtrainRestoredRawOutcome(privateProofControlRaw, { seedRaw: DTRAIN_RESCUE_RAW })
+    || dtrainRestoredRawOutcome({ ...rescueRaw, tsnap: GENUINE_TRAINING_CHECKPOINT }, { seedRaw: DTRAIN_RESCUE_RAW })) {
+    fails.push('D-TRAIN RAW CONTROL FAILED — serialized ordinal or uncleared checkpoint stayed green');
+  }
+  const dtrainOutcomeMutationControls = [
+    ['ever.scanhits', (raw) => { raw.ever.scanhits = 1; }],
+    ['ever.arrivals', (raw) => { raw.ever.arrivals = 1; }],
+    ['Earth title', (raw) => { raw.log.find((entry) => entry.id === 'p133').title = 'Not Earth'; }],
+    ['Earth sub', (raw) => { raw.log.find((entry) => entry.id === 'p133').sub = 'Changed'; }],
+    ['Earth badge', (raw) => { raw.log.find((entry) => entry.id === 'p133').badge = 'Changed'; }],
+    ['Earth favorite', (raw) => { raw.log.find((entry) => entry.id === 'p133').fav = false; }],
+    ['Earth timestamp', (raw) => { raw.log.find((entry) => entry.id === 'p133').t += 1; }],
+    ['Earth star label', (raw) => { raw.log.find((entry) => entry.id === 'p133').star = 'Sol'; }],
+    ['Earth home binding', (raw) => { raw.home = 'p901'; }],
+    ['outer Atlas row', (raw) => { raw.log.find((entry) => entry.id === 'p900').title = 'Changed'; }],
+    ['omitted outer wave-off ledger', (raw) => { delete raw.wvo; }],
+  ];
+  const dtrainUndetectedMutations = [];
+  for (const [label, mutate] of dtrainOutcomeMutationControls) {
+    const control = structuredClone(rescueRaw);
+    mutate(control);
+    if (dtrainRestoredRawOutcome(control, { seedRaw: DTRAIN_RESCUE_RAW })) dtrainUndetectedMutations.push(label);
+  }
+  if (dtrainUndetectedMutations.length) {
+    fails.push('D-TRAIN RESTORE CONTROL FAILED — exact carrier/Earth mutations stayed green: '
+      + JSON.stringify(dtrainUndetectedMutations));
+  }
+
+  /* Candidate proof fails before repository ownership reaches a write. The
+     real Skip must refuse in-place, publish one terminal released receipt,
+     and restore the outgoing ticker/focus without touching primary bytes. */
+  const candidateBooted = await dtrainSeedPrimary(DTRAIN_LEGACY_RAW, 'D-TRAIN candidate rejection');
+  const candidateBefore = dtrainRefusalState(candidateBooted.state);
+  const candidateNativeLabel = 'legacy-candidate-rejection';
+  const candidateNativeArmed = await evalIn(dtrainNativeWriteArmExpression(candidateNativeLabel));
+  const candidateMark = events.length;
+  const candidateArmed = await evalIn(`(()=>{const api=window.__CF_SLICE__.api,
+    button=document.querySelector('[data-sel="tutskip"]');button?.focus();
+    return {button:!!button,armed:api.__smokeRejectNextTrainingCandidateProof()};})()`);
+  await dispatchKeyPress(sess, 'Enter', 'Enter');
+  const candidateRejected = await waitDesktopValue('D-TRAIN candidate rejection rollback', `(()=>{const S=window.__CF_SLICE__,
+    s=S.api.state(),button=document.querySelector('[data-sel="tutskip"]'),status=document.querySelector('[data-sel="tutstatus"]');
+    return s.tutActive&&!button?.disabled&&status&&!status.hidden?{state:s,card:!!document.getElementById('tutcard'),
+      focus:document.activeElement===button,tickerStarted:S.app.ticker.started===true,text:status.textContent||''}:null;})()`);
+  const candidateRaw = await evalIn(READ_PRIMARY_EXPRESSION);
+  const candidateToken = await sliceToken(sess);
+  const candidateWitness = dtrainAssertWitness('D-TRAIN CANDIDATE REJECTION', candidateMark, {
+    intent: 'skip', checkpointKind: 'legacy-v1',
+    stages: ['invoked', 'claimed', 'no-active-persist', 'candidate-started', 'earth-proven',
+      'candidate-rejected', 'released'],
+    writes: 'none', documentToken: candidateBooted.token,
+    errorByStage: {
+      'candidate-rejected': 'Training replacement candidate failed source proof',
+      released: 'Training replacement candidate failed source proof',
+    },
+  });
+  const candidateNativeWitness = assessDtrainNativeWrites(dtrainNativeWritesSince(sess, candidateMark), {
+    label: candidateNativeLabel, documentToken: candidateBooted.token, count: 0,
+  });
+  if (!candidateNativeArmed || !candidateArmed.button || !candidateArmed.armed
+    || !candidateRejected.card || !candidateRejected.focus || !candidateRejected.tickerStarted
+    || !/could not be saved.*Nothing changed/i.test(candidateRejected.text)
+    || dtrainRefusalState(candidateRejected.state) !== candidateBefore
+    || candidateRaw !== candidateBooted.stored || candidateToken !== candidateBooted.token
+    || !candidateWitness.ok || !candidateNativeWitness.ok
+    || !/candidate.*failed source proof/i.test(candidateWitness.entries.at(-1)?.error || '')) {
+    fails.push('D-TRAIN CANDIDATE REJECTION: pre-write refusal changed state/raw, lost retry UI, or left the ticker stopped: '
+      + JSON.stringify({ candidateNativeArmed, candidateArmed, candidateRejected,
+        stateStable: dtrainRefusalState(candidateRejected.state) === candidateBefore,
+        rawStable: candidateRaw === candidateBooted.stored, tokenStable: candidateToken === candidateBooted.token,
+        witness: candidateWitness, native: candidateNativeWitness }));
+  }
+
+  /* A commit rejection is operation-local: no live swap, no reload, exact raw
+     byte identity and lesson focus remain. A second real Skip must use a new
+     operation id and succeed without inheriting the one-shot rejection. */
+  const rejectBooted = await dtrainSeedPrimary(DTRAIN_LEGACY_RAW, 'D-TRAIN commit rejection');
+  const rejectBefore = dtrainRefusalState(rejectBooted.state);
+  const rejectNativeLabel = 'legacy-commit-rejection-retry';
+  const rejectNativeArmed = await evalIn(dtrainNativeWriteArmExpression(rejectNativeLabel));
+  const rejectDebounceArmed = await evalIn(dtrainDebounceProbeArmExpression);
+  const rejectMark = events.length;
+  const rejectArmed = await evalIn(`(()=>{const api=window.__CF_SLICE__.api,
+    button=document.querySelector('[data-sel="tutskip"]');button?.focus();api.__smokePersistAfterDebounce();
+    return api.__smokeRejectNextTrainingCommit();})()`);
+  await dispatchKeyPress(sess, 'Enter', 'Enter');
+  const rejected = await waitDesktopValue('D-TRAIN rejected write rollback', `(()=>{const s=window.__CF_SLICE__.api.state(),
+    button=document.querySelector('[data-sel="tutskip"]'),status=document.querySelector('[data-sel="tutstatus"]');
+    return s.tutActive&&!button?.disabled&&status&&!status.hidden?{state:s,focus:document.activeElement===button,
+      tickerStarted:window.__CF_SLICE__.app.ticker.started===true,
+      text:status.textContent||'',busy:document.getElementById('tutcard')?.getAttribute('aria-busy')||null}:null;})()`);
+  await sleep(550);
+  const rejectedAfterDebounce = await evalIn(`(()=>{const S=window.__CF_SLICE__,probe=window.__cfDtrainDebounceProbe,
+    snapshot=probe?.snapshot()||null,state=S.api.state(),button=document.querySelector('[data-sel="tutskip"]');
+    probe?.restore();return {snapshot,state,focus:document.activeElement===button,tickerStarted:S.app.ticker.started===true};})()`);
+  const rejectedRaw = await evalIn(READ_PRIMARY_EXPRESSION);
+  const rejectedToken = await sliceToken(sess);
+  const rejectedWitness = dtrainAssertWitness('D-TRAIN COMMIT REJECTION', rejectMark, {
+    intent: 'skip', checkpointKind: 'legacy-v1',
+    stages: ['invoked', 'claimed', 'no-active-persist', 'candidate-started', 'earth-proven',
+      'primary-write-started', 'primary-write-rejected', 'released'],
+    writes: 'rejected', documentToken: rejectBooted.token,
+    errorByStage: {
+      'primary-write-rejected': 'slice-smoke injected Training commit rejection',
+      released: 'slice-smoke injected Training commit rejection',
+    },
+  });
+  const rejectedNativeWitness = assessDtrainNativeWrites(dtrainNativeWritesSince(sess, rejectMark), {
+    label: rejectNativeLabel, documentToken: rejectBooted.token, count: 0,
+  });
+  if (!rejectNativeArmed || !rejectDebounceArmed || !rejectArmed
+    || !rejected.focus || !rejected.tickerStarted || rejected.busy !== null
+    || !rejectedAfterDebounce.focus || !rejectedAfterDebounce.tickerStarted
+    || rejectedAfterDebounce.snapshot?.scheduled !== 2 || rejectedAfterDebounce.snapshot?.fired !== 1
+    || !/could not be saved.*Nothing changed/i.test(rejected.text)
+    || dtrainRefusalState(rejected.state) !== rejectBefore || rejectedRaw !== rejectBooted.stored
+    || dtrainRefusalState(rejectedAfterDebounce.state) !== rejectBefore
+    || !rejectedNativeWitness.ok
+    || rejectedToken !== rejectBooted.token
+    || !/injected Training commit rejection/i.test(rejectedWitness.entries.at(-1)?.error || '')) {
+    fails.push('D-TRAIN COMMIT REJECTION: rollback/focus/raw identity or operation witness drifted: '
+      + JSON.stringify({ rejectNativeArmed, rejectDebounceArmed, rejectArmed, rejected, rejectedAfterDebounce,
+        stateStable: dtrainRefusalState(rejected.state) === rejectBefore,
+        rawStable: rejectedRaw === rejectBooted.stored, tokenStable: rejectedToken === rejectBooted.token,
+        witness: rejectedWitness, native: rejectedNativeWitness }));
+  }
+  const retryMark = events.length;
+  await dispatchKeyPress(sess, 'Enter', 'Enter');
+  const retryDone = await waitDesktopValue('D-TRAIN rejected-write retry', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return !s.tutActive&&s.tutDone&&s.trainingRestoreWitness?.stage==='released'?s:null;})()`);
+  await sleep(80);
+  const retryRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  const retryWitness = dtrainAssertWitness('D-TRAIN COMMIT RETRY', retryMark, {
+    intent: 'skip', checkpointKind: 'legacy-v1', stages: DTRAIN_SUCCESS_STAGES,
+    documentToken: rejectBooted.token,
+  });
+  const retryNativeWitness = assessDtrainNativeWrites(dtrainNativeWritesSince(sess, retryMark), {
+    label: rejectNativeLabel, documentToken: rejectBooted.token, count: 1,
+  });
+  const retryTransactionWrites = nativeWritesBetweenStages(
+    retryNativeWitness.entries, retryWitness.entries, 'primary-write-started', 'primary-write-complete',
+  );
+  const retryRawAssessment = dtrainRestoredRawAssessment(retryRaw);
+  const retryRouteAssessment = dtrainStateRouteAssessment(retryDone, 'sol');
+  if (!retryRawAssessment.ok || !retryRouteAssessment.ok
+    || retryWitness.operationIds[0] === rejectedWitness.operationIds[0]
+    || !retryNativeWitness.ok || retryTransactionWrites.length !== 1
+    || retryDone.trainingCheckpointKind !== 'none' || retryDone.trainingCheckpointWriteHeld
+    || retryDone.tutSnapshotPending !== null || !renderedSceneMatchesNav(retryDone)) {
+    fails.push('D-TRAIN COMMIT RETRY: clean retry did not restore once under a fresh operation id: '
+      + JSON.stringify({ retryDone, retryRaw, rejectedWitness, retryWitness,
+        native: retryNativeWitness, transactionWrites: retryTransactionWrites,
+        rawAssessment: retryRawAssessment, routeAssessment: retryRouteAssessment }));
+  }
+
+  /* A failure after the one durable write is committed-state convergence,
+     never a retryable refusal. Force publication to throw, then require the
+     old-document receipts and a fresh document loaded from that exact commit. */
+  const publishBooted = await dtrainSeedPrimary(DTRAIN_LEGACY_RAW, 'D-TRAIN post-write publication rejection');
+  const publishNativeLabel = 'legacy-post-write-publication-rejection';
+  const publishNativeArmed = await evalIn(dtrainNativeWriteArmExpression(publishNativeLabel));
+  const publishMark = events.length;
+  const publishArmed = await evalIn(`(()=>{const api=window.__CF_SLICE__.api,
+    button=document.querySelector('[data-sel="tutskip"]');button?.focus();
+    return {button:!!button,armed:api.__smokeRejectNextTrainingPublish()};})()`);
+  await dispatchKeyPress(sess, 'Enter', 'Enter');
+  await waitForSlice(sess, 'D-TRAIN committed publication-failure replacement', {
+    previousToken: publishBooted.token,
+  });
+  await sleep(900);
+  const publishDone = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const publishUi = await evalIn(`({card:!!document.getElementById('tutcard'),
+    actions:document.querySelectorAll('[data-sel="tutbtn"],[data-sel="tutskip"]').length,
+    retryStatus:!!document.querySelector('[data-sel="tutstatus"]:not([hidden])')})`);
+  const publishRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  const publishWitness = dtrainAssertWitness('D-TRAIN POST-WRITE PUBLICATION REJECTION', publishMark, {
+    intent: 'skip', checkpointKind: 'legacy-v1',
+    stages: ['invoked', 'claimed', 'no-active-persist', 'candidate-started', 'earth-proven',
+      'primary-write-started', 'primary-write-complete', 'reload-scheduled'],
+    documentToken: publishBooted.token,
+    errorByStage: {
+      'reload-scheduled': 'slice-smoke injected post-durable Training publication failure',
+    },
+  });
+  const publishNativeWitness = assessDtrainNativeWrites(dtrainNativeWritesSince(sess, publishMark), {
+    label: publishNativeLabel, documentToken: publishBooted.token, count: 1,
+  });
+  const publishTransactionWrites = nativeWritesBetweenStages(
+    publishNativeWitness.entries, publishWitness.entries, 'primary-write-started', 'primary-write-complete',
+  );
+  const publishReleaseWitness = assessTrainingReleaseWitnesses(
+    reloadReleaseWitnessesSince(sess, publishMark), { documentToken: publishBooted.token },
+  );
+  const publishRawAssessment = dtrainRestoredRawAssessment(publishRaw);
+  const publishRouteAssessment = dtrainStateRouteAssessment(publishDone, 'sol');
+  if (!publishNativeArmed || !publishArmed.button || !publishArmed.armed
+    || !publishWitness.ok || publishWitness.entries.some((entry) => entry.stage === 'live-swap-complete')
+    || !/post-durable Training publication failure/i.test(publishWitness.entries.at(-1)?.error || '')
+    || !publishNativeWitness.ok || publishTransactionWrites.length !== 1 || !publishReleaseWitness.ok
+    || !publishRawAssessment.ok || !publishRouteAssessment.ok
+    || !publishDone.tutDone || publishDone.tutActive || publishDone.trainingCheckpointKind !== 'none'
+    || publishDone.trainingCheckpointWriteHeld || publishDone.tutSnapshotPending !== null
+    || publishUi.card || publishUi.actions !== 0 || publishUi.retryStatus
+    || !renderedSceneMatchesNav(publishDone)) {
+    fails.push('D-TRAIN POST-WRITE PUBLICATION REJECTION: committed state did not converge by reload exactly once without retry UI: '
+      + JSON.stringify({ publishNativeArmed, publishArmed, done: publishDone, ui: publishUi,
+        raw: publishRaw, witness: publishWitness, native: publishNativeWitness,
+        transactionWrites: publishTransactionWrites, release: publishReleaseWitness,
+        rawAssessment: publishRawAssessment, routeAssessment: publishRouteAssessment }));
+  }
+
+  /* The restored checkpoint Earth row must be bound to the final-import entry,
+     remain a canonical Atlas action, and reach explicit planetfall with a
+     non-null ordinal/key receipt. */
+  const atlasBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const atlasSetup = await evalIn(`(()=>{const opener=document.getElementById('railatlas');opener?.click();
+    const row=document.querySelector('#atlaspanel [data-aid="p133"]');row?.focus();
+    return {row:!!row,disabled:row?.disabled??null,focus:document.activeElement===row};})()`);
+  await dispatchKeyPress(sess, 'Enter', 'Enter');
+  const atlasSurvey = await waitDesktopValue('D-TRAIN canonical Earth Atlas travel', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return s.panelOpen===null&&s.mode==='system'&&s.star===424242&&s.cardOpen&&s.cardTitle==='Earth'?s:null;})()`);
+  const atlasLand = await evalIn(`(()=>{const button=document.querySelector('#survey [data-act="landcta"]');
+    button?.click();return !!button;})()`);
+  const atlasSurface = await waitDesktopValue('D-TRAIN explicit Earth planetfall', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return s.mode==='surface'&&s.planet===133&&s.planetOrdinal===2?s:null;})()`);
+  if (!atlasSetup.row || atlasSetup.disabled !== false || !atlasSetup.focus || !atlasLand
+    || atlasSurvey.navGalaxyKey === null || atlasSurvey.navStarKey === null || atlasSurvey.navWorldKey !== null
+    || atlasSurface.navWorldKey === null || !renderedSceneAdvanced(atlasBefore, atlasSurvey)
+    || !renderedSceneAdvanced(atlasSurvey, atlasSurface)) {
+    fails.push('D-TRAIN EARTH ATLAS: restored row was not a canonical system-survey → explicit Land route: '
+      + JSON.stringify({ atlasSetup, atlasSurvey, atlasLand, atlasSurface }));
+  }
+
+  /* Opposite arbitration direction: Import claims first while waiting on an
+     older persist. The real Skip must refuse busy in-place; only after release
+     may Import replace/reload the expedition. */
+  const importOwnerBooted = await dtrainSeedPrimary(DTRAIN_LEGACY_RAW, 'D-TRAIN import-owner race');
+  const importOwnerNativeLabel = 'import-owner-training-busy';
+  const importOwnerNativeArmed = await evalIn(dtrainNativeWriteArmExpression(importOwnerNativeLabel));
+  const importOwnerMark = events.length;
+  const importOwnerStart = await evalIn(`(async()=>{const api=window.__CF_SLICE__.api,
+    armed=api.__smokeArmImportRace(${JSON.stringify(DTRAIN_LEGACY_RAW)});
+    void api.importBlob(${JSON.stringify(VETERAN_RAW)});await Promise.resolve();
+    const button=document.querySelector('[data-sel="tutskip"]');button?.focus();button?.click();await Promise.resolve();
+    const status=document.querySelector('[data-sel="tutstatus"]');return {armed,button:!!button,
+      disabled:button?.disabled??null,focus:document.activeElement===button,text:status?.textContent||'',
+      hidden:status?.hidden??null,witness:api.state().trainingRestoreWitness};})()`);
+  const importOwnerRawBeforeRelease = await evalIn(READ_PRIMARY_EXPRESSION);
+  const importOwnerNativeBeforeRelease = dtrainNativeWritesSince(sess, importOwnerMark);
+  const importOwnerWitness = dtrainAssertWitness('D-TRAIN IMPORT-OWNER BUSY REFUSAL', importOwnerMark, {
+    intent: 'skip', checkpointKind: 'legacy-v1', stages: ['invoked', 'claim-rejected'],
+    writes: 'none', documentToken: importOwnerBooted.token, tickerMode: 'busy',
+    errorByStage: { 'claim-rejected': 'busy' },
+  });
+  if (!importOwnerStart.armed || !importOwnerStart.button || importOwnerStart.disabled
+    || !importOwnerStart.focus || importOwnerStart.hidden
+    || !/another save replacement.*Nothing changed/i.test(importOwnerStart.text)
+    || importOwnerStart.witness?.stage !== 'claim-rejected'
+    || importOwnerRawBeforeRelease !== importOwnerBooted.stored
+    || importOwnerNativeBeforeRelease.length !== 0
+    || importOwnerWitness.entries.at(-1)?.error !== 'busy') {
+    fails.push('D-TRAIN IMPORT-OWNER RACE: Training did not refuse busy in place before Import release: '
+      + JSON.stringify({ start: importOwnerStart,
+        rawStable: importOwnerRawBeforeRelease === importOwnerBooted.stored,
+        nativeBeforeRelease: importOwnerNativeBeforeRelease, witness: importOwnerWitness }));
+  }
+  const importOwnerReleased = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseImportRace()`);
+  await waitForSlice(sess, 'D-TRAIN import-owner replacement', { previousToken: importOwnerBooted.token });
+  await sleep(900);
+  const importOwnerDone = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const importOwnerNativeWitness = assessDtrainNativeWrites(dtrainNativeWritesSince(sess, importOwnerMark), {
+    label: importOwnerNativeLabel, documentToken: importOwnerBooted.token, count: 2,
+  });
+  if (!importOwnerNativeArmed || !importOwnerReleased || importOwnerDone.save.name !== 'Dakk'
+    || importOwnerDone.tutActive || !importOwnerNativeWitness.ok
+    || importOwnerNativeWitness.entries[0]?.length !== DTRAIN_LEGACY_RAW.length
+    || importOwnerNativeWitness.entries[0]?.tut !== 0
+    || importOwnerNativeWitness.entries[0]?.hasSnapshot !== true
+    || importOwnerNativeWitness.entries[1]?.length !== VETERAN_RAW.length
+    || importOwnerNativeWitness.entries[1]?.hasSnapshot !== false) {
+    fails.push('D-TRAIN IMPORT-OWNER RACE: owner did not finish its exact replacement after release: '
+      + JSON.stringify({ importOwnerNativeArmed, importOwnerReleased, importOwnerDone,
+        native: importOwnerNativeWitness }));
+  }
+
+  /* A transient Earth proof error must write one durable incomplete candidate,
+     reload at canonical Sol with the exact genuine checkpoint, and permit a
+     later real Skip to restore normally. */
+  const sourceBooted = await dtrainSeedPrimary(DTRAIN_LEGACY_RAW, 'D-TRAIN source-error');
+  if (!sourceBooted.state.tutActive || sourceBooted.state.tutDone
+    || sourceBooted.state.mode !== 'system' || sourceBooted.state.gal !== 999
+    || sourceBooted.state.star !== 424242 || !renderedSceneMatchesNav(sourceBooted.state)
+    || sourceBooted.state.trainingCheckpointKind !== 'legacy-v1'
+    || !sourceBooted.state.trainingCheckpointWriteHeld
+    || sourceBooted.stored !== DTRAIN_LEGACY_RAW) {
+    fails.push('D-TRAIN SOURCE-ERROR SETUP: pending checkpoint was not active, held, and byte-exact before completion: '
+      + JSON.stringify({ state: sourceBooted.state, byteExact: sourceBooted.stored === DTRAIN_LEGACY_RAW }));
+  }
+  const sourceNativeLabel = 'legacy-source-deferred';
+  const sourceNativeArmed = await evalIn(dtrainNativeWriteArmExpression(sourceNativeLabel));
+  const sourceMark = events.length;
+  const sourceArmed = await evalIn(`(()=>{const api=window.__CF_SLICE__.api,
+    button=document.querySelector('[data-sel="tutskip"]');const armed=api.__smokeRejectNextTrainingRouteResolution();
+    button?.click();return {armed,button:!!button};})()`);
+  await waitForSlice(sess, 'D-TRAIN source-error deferred reload', { previousToken: sourceBooted.token });
+  await sleep(900);
+  const sourceReload = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const sourceRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  const sourceWitness = dtrainAssertWitness('D-TRAIN SOURCE-ERROR DEFER', sourceMark, {
+    intent: 'skip', checkpointKind: 'legacy-v1',
+    stages: ['invoked', 'claimed', 'no-active-persist', 'candidate-started', 'source-deferred',
+      'primary-write-started', 'primary-write-complete', 'live-swap-complete', 'reload-scheduled'],
+    documentToken: sourceBooted.token,
+  });
+  const sourceNativeWitness = assessDtrainNativeWrites(dtrainNativeWritesSince(sess, sourceMark), {
+    label: sourceNativeLabel, documentToken: sourceBooted.token, count: 1,
+  });
+  const sourceTransactionWrites = nativeWritesBetweenStages(
+    sourceNativeWitness.entries, sourceWitness.entries, 'primary-write-started', 'primary-write-complete',
+  );
+  const sourceReleaseWitness = assessTrainingReleaseWitnesses(
+    reloadReleaseWitnessesSince(sess, sourceMark), { documentToken: sourceBooted.token },
+  );
+  if (!sourceNativeArmed || !sourceArmed.armed || !sourceArmed.button || sourceReload.mode !== 'system'
+    || sourceReload.gal !== 999 || sourceReload.star !== 424242
+    || sourceReload.navGalaxyKey === null || sourceReload.navStarKey === null
+    || sourceReload.navWorldKey !== null || !sourceReload.tutActive || sourceReload.tutDone
+    || sourceReload.tutStep !== 'welcome' || sourceReload.trainingCheckpointKind !== 'legacy-v1'
+    || !sourceReload.trainingCheckpointWriteHeld
+    || sourceRaw.tut !== 0 || JSON.stringify(sourceRaw.tsnap) !== JSON.stringify(GENUINE_TRAINING_CHECKPOINT)
+    || sourceRaw.view?.type !== 'star' || sourceRaw.view?.gal?.seed !== 999
+    || sourceRaw.view?.star?.seed !== 424242 || !routeOwnsNoPrivateProof(sourceRaw.view)
+    || !renderedSceneMatchesNav(sourceReload) || !sourceNativeWitness.ok
+    || sourceTransactionWrites.length !== 1 || !sourceReleaseWitness.ok) {
+    fails.push('D-TRAIN SOURCE-ERROR: deferred write/reload did not retain exact checkpoint at proven Sol: '
+      + JSON.stringify({ sourceNativeArmed, sourceArmed, sourceReload, sourceRaw, sourceWitness,
+        native: sourceNativeWitness, transactionWrites: sourceTransactionWrites,
+        release: sourceReleaseWitness }));
+  }
+  const sourceRetryNativeLabel = 'legacy-source-retry';
+  const sourceRetryNativeArmed = await evalIn(dtrainNativeWriteArmExpression(sourceRetryNativeLabel));
+  const sourceRetryMark = events.length;
+  await evalIn(`document.querySelector('[data-sel="tutskip"]')?.click()`);
+  const sourceRetryDone = await waitDesktopValue('D-TRAIN source-error retry completion', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return !s.tutActive&&s.tutDone&&s.trainingRestoreWitness?.stage==='released'?s:null;})()`);
+  await sleep(80);
+  const sourceRetryRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  const sourceRetryWitness = dtrainAssertWitness('D-TRAIN SOURCE-ERROR RETRY', sourceRetryMark, {
+    intent: 'skip', checkpointKind: 'legacy-v1', stages: DTRAIN_SUCCESS_STAGES,
+    documentToken: await sliceToken(sess),
+  });
+  const sourceRetryNativeWitness = assessDtrainNativeWrites(dtrainNativeWritesSince(sess, sourceRetryMark), {
+    label: sourceRetryNativeLabel, documentToken: await sliceToken(sess), count: 1,
+  });
+  const sourceRetryTransactionWrites = nativeWritesBetweenStages(
+    sourceRetryNativeWitness.entries, sourceRetryWitness.entries, 'primary-write-started', 'primary-write-complete',
+  );
+  const sourceRetryRawAssessment = dtrainRestoredRawAssessment(sourceRetryRaw);
+  const sourceRetryRouteAssessment = dtrainStateRouteAssessment(sourceRetryDone, 'sol');
+  if (!sourceRetryRawAssessment.ok || !sourceRetryRouteAssessment.ok
+    || sourceRetryDone.trainingCheckpointKind !== 'none'
+    || sourceRetryDone.trainingCheckpointWriteHeld || sourceRetryDone.tutSnapshotPending !== null
+    || !renderedSceneMatchesNav(sourceRetryDone)
+    || !sourceRetryNativeArmed || !sourceRetryNativeWitness.ok || sourceRetryTransactionWrites.length !== 1
+    || sourceRetryWitness.operationIds[0] === sourceWitness.operationIds[0]) {
+    fails.push('D-TRAIN SOURCE-ERROR RETRY: fresh-document retry did not restore and clear once: '
+      + JSON.stringify({ sourceRetryDone, sourceRetryRaw, sourceWitness, sourceRetryWitness,
+        sourceRetryNativeArmed, native: sourceRetryNativeWitness,
+        transactionWrites: sourceRetryTransactionWrites,
+        rawAssessment: sourceRetryRawAssessment, routeAssessment: sourceRetryRouteAssessment }));
+  }
+
+  /* Restore the exact normalized veteran state this pre-existing smoke section
+     established before D-TRAIN, so Compendium/Records expectations remain
+     independent of the new transaction probes. */
+  const postDtrainBaseline = await dtrainSeedPrimary(JSON.stringify(trainingRestoredRaw), 'post-D-TRAIN veteran baseline');
+  if (postDtrainBaseline.state.tutActive || !postDtrainBaseline.state.tutDone
+    || postDtrainBaseline.state.codexCount !== 3
+    || postDtrainBaseline.state.mode !== 'surface' || postDtrainBaseline.state.planet !== 133
+    || postDtrainBaseline.state.save.landed.length !== normalizedRecordsLandedCount) {
+    fails.push('D-TRAIN CLEANUP: normalized veteran baseline was not restored for later smoke legs: '
+      + JSON.stringify(postDtrainBaseline.state));
+  }
+
   /* A non-code Search owns one filtered Compendium visit. Detail → Back
      retains that query and exact row; closing then using the ordinary dock/
      rail entry starts a fresh full-catalogue visit. */
@@ -3283,9 +4439,65 @@ try {
     lastCycleSeen = seen;
     return null;
   };
+  /* Galaxy keyboard targets are intentionally viewport-bounded. Sol begins
+     just below the first Milky Way frame at this desktop geometry, so plain
+     ArrowRight cycling cannot reach it. Use only the documented keyboard
+     controls: clear the current target, ArrowLeft selects the bottom-most
+     visible star, and Minus centers that star while widening the view. Once
+     Sol becomes visible its priority makes the next ArrowRight select it. */
+  const keyboardPanTrail = [];
+  const seekPriorityK = async (prefix, attempts = 4) => {
+    for (let attempt = 0; attempt < attempts; attempt++) {
+      if (await evalK(`window.__CF_SLICE__.api.state().keyboardTarget!==null`)) await keyK('Escape', 'Escape');
+      await keyK('ArrowRight', 'ArrowRight');
+      const first = await evalK(`window.__CF_SLICE__.api.state().keyboardTarget`);
+      if (typeof first === 'string' && first.startsWith(prefix)) return first;
+      if (first === null) return null;
+      await keyK('Escape', 'Escape');
+      await keyK('ArrowLeft', 'ArrowLeft');
+      const edge = await evalK(`window.__CF_SLICE__.api.state().keyboardTarget`);
+      if (typeof edge !== 'string') return null;
+      const before = await evalK(`({x:window.__CF_SLICE__.camT.x,y:window.__CF_SLICE__.camT.y,z:window.__CF_SLICE__.camT.z})`);
+      await keyK('-', 'Minus');
+      await sleep(650);
+      const after = await evalK(`({x:window.__CF_SLICE__.camT.x,y:window.__CF_SLICE__.camT.y,z:window.__CF_SLICE__.camT.z})`);
+      const parts = edge.split(':');
+      keyboardPanTrail.push({ attempt, first, edge, before, after });
+      if (parts.length < 4 || after.x !== Number(parts[2]) || after.y !== Number(parts[3])
+        || !(after.z < before.z)) return null;
+    }
+    return null;
+  };
   await evalK(`(()=>{ document.querySelector('[data-sel=tutskip]')?.click(); return true; })()`);
-  await sleep(250);
-  await evalK(`(()=>{ document.querySelector('canvas')?.focus(); return true; })()`);
+  const keyboardSkip = await waitK('keyboard journey Training Skip completion', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return !s.tutActive&&s.tutDone&&s.trainingRestoreWitness?.stage==='released'?s:null;})()`);
+  const keyboardSkipFocus = await waitK('keyboard journey post-Training canvas focus', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return document.activeElement===document.querySelector('canvas')&&s.mode==='system'
+      &&s.gal===${HOME_GALAXY.seed}&&s.galX===${HOME_GALAXY.x}&&s.galY===${HOME_GALAXY.y}&&s.galSize===78
+      &&s.star===${SOL_STAR.seed}&&s.starX===${SOL_STAR.x}&&s.starY===${SOL_STAR.y}&&s.planet===null
+      &&s.navGalaxyKey!==null&&s.navStarKey!==null&&s.navWorldKey===null&&s.keyboardTarget!==null?s:null;})()`);
+  await keyK('Escape', 'Escape');
+  const keyboardTargetReleased = await waitK('keyboard journey target release', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return document.activeElement===document.querySelector('canvas')&&s.mode==='system'
+      &&s.gal===${HOME_GALAXY.seed}&&s.galX===${HOME_GALAXY.x}&&s.galY===${HOME_GALAXY.y}&&s.galSize===78
+      &&s.star===${SOL_STAR.seed}&&s.starX===${SOL_STAR.x}&&s.starY===${SOL_STAR.y}&&s.planet===null
+      &&s.navGalaxyKey!==null&&s.navStarKey!==null&&s.navWorldKey===null&&s.keyboardTarget===null?s:null;})()`);
+  await keyK('Escape', 'Escape');
+  const keyboardGalaxyAscent = await waitK('keyboard journey Sol to Milky Way ascent', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return s.mode==='galaxy'&&s.gal===${HOME_GALAXY.seed}&&s.star===null&&s.planet===null?s:null;})()`);
+  await keyK('Escape', 'Escape');
+  const keyboardUniverseAscent = await waitK('keyboard journey Milky Way to Cosmos ascent', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return s.mode==='universe'&&s.gal===null&&s.star===null&&s.planet===null?s:null;})()`);
+  if (!renderedSceneMatchesNav(keyboardSkipFocus) || !renderedSceneMatchesNav(keyboardTargetReleased)
+    || !renderedSceneAdvanced(keyboardSkipFocus, keyboardGalaxyAscent)
+    || !renderedSceneAdvanced(keyboardGalaxyAscent, keyboardUniverseAscent)
+    || keyboardSkipFocus.renderedScene.serial !== keyboardTargetReleased.renderedScene.serial
+    || !renderedSceneMatchesNav(keyboardUniverseAscent)) {
+    fails.push('KEYBOARD JOURNEY ASCENT: real target release or Sol -> Milky Way -> Cosmos receipts drifted: '
+      + JSON.stringify({ skip: keyboardSkip, focused: keyboardSkipFocus, released: keyboardTargetReleased,
+        galaxy: keyboardGalaxyAscent, universe: keyboardUniverseAscent }));
+  }
+  await evalK(`(()=>{ const canvas=document.querySelector('canvas'); canvas?.blur(); canvas?.focus(); return true; })()`);
   const galaxyTarget = await cycleK('galaxy:999:90:-60');
   if (!galaxyTarget) fails.push('KEYBOARD JOURNEY: could not select the Milky Way from the canvas');
   await keyK('Enter', 'Enter');
@@ -3298,8 +4510,9 @@ try {
   const kGalaxy = await waitK('keyboard enter galaxy', `(()=>{ const s=window.__CF_SLICE__.api.state();
     return s.mode==='galaxy'&&s.gal===999?{focus:document.activeElement===document.querySelector('canvas'),target:s.keyboardTarget}:null; })()`);
   if (!kGalaxy.focus) fails.push('KEYBOARD JOURNEY: Enter galaxy did not return canvas focus: ' + JSON.stringify(kGalaxy));
-  const solTarget = await cycleK('star:424242:560:170');
-  if (!solTarget) fails.push('KEYBOARD JOURNEY: could not select Sol from the galaxy canvas; cycled ' + JSON.stringify(lastCycleSeen));
+  const solTarget = await seekPriorityK('star:424242:560:170');
+  if (!solTarget) fails.push('KEYBOARD JOURNEY: could not reach/select Sol through keyboard pan+zoom: '
+    + JSON.stringify(keyboardPanTrail));
   await keyK('Enter', 'Enter');
   const kSolCard = await waitK('keyboard Sol card', `(()=>{ const s=window.__CF_SLICE__.api.state(),a=document.querySelector('#survey [data-act=travel]');
     return s.mode==='galaxy'&&s.cardOpen?{label:a?.textContent||'',focus:document.activeElement===a}:null; })()`);
@@ -3672,9 +4885,36 @@ try {
     }
     throw new Error(`${label} did not reach its phone outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
+  const pinchOutNavMode = async () => {
+    /* One bounded pinch-in reaches the current mode's clamped zoom-out
+       floor. End the gesture before starting the next so the same pointer
+       stream cannot accidentally consume two ascent transitions. */
+    await send('Input.dispatchTouchEvent', {
+      type: 'touchStart', touchPoints: [{ x: 80, y: 500, id: 1 }, { x: 310, y: 500, id: 2 }],
+    }, navPh);
+    await send('Input.dispatchTouchEvent', {
+      type: 'touchMove', touchPoints: [{ x: 194, y: 500, id: 1 }, { x: 195, y: 500, id: 2 }],
+    }, navPh);
+    await sleep(100);
+    await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }, navPh);
+  };
   await evalNavPh(`(()=>{ document.querySelector('[data-sel=tutskip]').click(); return true; })()`);
   const freshOriginReady = await waitNavPhValue('fresh empty-surface setup', `(()=>{ const s=window.__CF_SLICE__.api.state();
-    return !s.tutActive&&s.codexCount===0?{tutActive:s.tutActive,codexCount:s.codexCount,mode:s.mode}:null; })()`);
+    return !s.tutActive&&s.tutDone&&s.trainingRestoreWitness?.stage==='released'&&s.codexCount===0
+      &&s.mode==='system'&&s.gal===${HOME_GALAXY.seed}&&s.star===${SOL_STAR.seed}&&s.planet===null
+      &&s.navGalaxyKey!==null&&s.navStarKey!==null&&s.navWorldKey===null?s:null; })()`);
+  await pinchOutNavMode();
+  const freshPhoneGalaxy = await waitNavPhValue('fresh-phone Sol-to-Milky-Way pinch ascent', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return s.mode==='galaxy'&&s.gal===${HOME_GALAXY.seed}&&s.star===null&&s.planet===null?s:null;})()`);
+  await pinchOutNavMode();
+  const freshPhoneUniverse = await waitNavPhValue('fresh-phone Milky-Way-to-Cosmos pinch ascent', `(()=>{const s=window.__CF_SLICE__.api.state();
+    return s.mode==='universe'&&s.gal===null&&s.star===null&&s.planet===null?s:null;})()`);
+  if (!renderedSceneMatchesNav(freshOriginReady)
+    || !renderedSceneAdvanced(freshOriginReady, freshPhoneGalaxy)
+    || !renderedSceneAdvanced(freshPhoneGalaxy, freshPhoneUniverse)) {
+    fails.push('PHONE FRESH ASCENT: real pinch-out Sol -> Milky Way -> Cosmos receipts drifted: '
+      + JSON.stringify({ sol: freshOriginReady, galaxy: freshPhoneGalaxy, universe: freshPhoneUniverse }));
+  }
   /* This origin is genuinely fresh: prove the empty Compendium and Journal
      surfaces render the honest read-only boundary. The veteran desktop
      origin cannot exercise an empty-state outcome. */
@@ -4615,10 +5855,20 @@ try {
     || !phoneTrainingCtl.some((finding) => finding.includes('is buried at its centre during training'))) {
     fails.push('PHONE TRAINING/DOCK CONTROL FAILED — injected burial went unseen: ' + JSON.stringify(phoneTrainingCtl));
   }
+  /* Reuse this already-booted fresh-origin document only as the exact IDB
+     staging page for the full D-TRAIN Finish journey below. Closing it after
+     transaction completion prevents its live lesson/autosave from racing the
+     next document. */
+  const dtrainFullFixtureSeeded = await evalTp(`new Promise((resolve,reject)=>{const q=indexedDB.open('cf-v2-slice');
+    q.onerror=()=>reject(q.error);q.onsuccess=()=>{const db=q.result,tx=db.transaction('meta','readwrite');
+      tx.objectStore('meta').put(${JSON.stringify(DTRAIN_FULL_FINISH_RAW)},'save');
+      tx.oncomplete=()=>{db.close();resolve(true)};tx.onerror=()=>reject(tx.error);};})`);
+  if (!dtrainFullFixtureSeeded) fails.push('D-TRAIN FULL FINISH: genuine fixture was not staged on the phone origin');
   await send('Target.closeTarget', { targetId: t3p.targetId });
 
   /* 4e. THE TRAINING DRILL — the six live lessons end-to-end at the primary
-     390×844 PHONE geometry on a FRESH ORIGIN: welcome → find-earth →
+     390×844 PHONE geometry on an isolated origin seeded with the genuine
+     v1.8.9 restart checkpoint: welcome → find-earth →
      survey-tour → atlas-add → atlas-open → land → graduation, every advance
      on the REAL gameEvent the lesson teaches. This makes the real Land→grad
      Planetside hide/finish-restore proof exercise the mobile-only layout. */
@@ -4626,6 +5876,9 @@ try {
   const at3 = await send('Target.attachToTarget', { targetId: t3.targetId, flatten: true });
   const tr = at3.sessionId;
   await send('Runtime.enable', {}, tr);
+  await send('Runtime.addBinding', { name: '__cfTrainingRestoreWitness' }, tr);
+  await send('Runtime.addBinding', { name: DTRAIN_NATIVE_WRITE_BINDING }, tr);
+  await send('Runtime.addBinding', { name: RELOAD_RELEASE_BINDING }, tr);
   await send('Page.enable', {}, tr);
   await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true }, tr);
   await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 }, tr);
@@ -4656,7 +5909,22 @@ try {
       lockAction:lock?.getAttribute('data-act')||null,pointer:land?getComputedStyle(land).pointerEvents:null,
       x:r?(r.left+r.right)/2:null,y:r?(r.top+r.bottom)/2:null,mode:s.mode,step:s.tutStep,landed:s.save.landed}; })()`;
   const step = async () => evalT(`window.__CF_SLICE__.api.state().tutStep`);
-  if (await step() !== 'welcome') fails.push('DRILL: no welcome on the fresh origin: ' + await step());
+  if (await step() !== 'welcome') fails.push('DRILL: no welcome on the genuine-checkpoint origin: ' + await step());
+  const dtrainFullBoot = await evalT(`window.__CF_SLICE__.api.state()`);
+  const dtrainFullBootRaw = await evalT(READ_PRIMARY_EXPRESSION);
+  const dtrainFullBootRoute = dtrainStateRouteAssessment(dtrainFullBoot, 'sol');
+  if (dtrainFullBoot.trainingCheckpointKind !== 'legacy-v1'
+    || dtrainFullBoot.mode !== 'system' || dtrainFullBoot.gal !== 999 || dtrainFullBoot.star !== 424242
+    || dtrainFullBoot.navGalaxyKey === null || dtrainFullBoot.navStarKey === null
+    || dtrainFullBoot.navWorldKey !== null || !dtrainFullBootRoute.ok
+    || !dtrainFullBoot.trainingCheckpointWriteHeld || dtrainFullBoot.tutDone
+    || JSON.stringify(Object.keys(dtrainFullBoot.tutSnapshotPending || {})) !== JSON.stringify(DTRAIN_LEGACY_KEYS)
+    || dtrainFullBootRaw !== DTRAIN_FULL_FINISH_RAW
+    || JSON.stringify(dtrainFullBoot.save.landed) !== JSON.stringify([901])) {
+    fails.push('D-TRAIN FULL FINISH: genuine eleven-key checkpoint did not boot byte-exact before the real drill: '
+      + JSON.stringify({ state: dtrainFullBoot, routeAssessment: dtrainFullBootRoute,
+        byteExact: dtrainFullBootRaw === DTRAIN_FULL_FINISH_RAW }));
+  }
   const queuedRelease = await evalT(`(()=>{ const S=window.__CF_SLICE__,opened=S.api.showReleaseFixture(${JSON.stringify(RELEASE_FIXTURE_VERSION)}),s=S.api.state();
     return {opened,training:s.tutActive,step:s.tutStep,panel:s.panelOpen,pending:s.releasePending,rnSeen:s.rnSeen}; })()`);
   if (queuedRelease.opened || !queuedRelease.training || queuedRelease.step !== 'welcome'
@@ -4962,9 +6230,82 @@ try {
     || !/Field Training, step 7 of 7/i.test(gradFocus.announcement)) {
     fails.push('DRILL KEYBOARD: graduation was not focused and announced: ' + JSON.stringify(gradFocus));
   }
-  await keyT('Enter', 'Enter');
-  await sleep(400);
-  const done3 = await evalT(`window.__CF_SLICE__.api.state()`);
+  /* Hold an older persist across the native Finish activation, then attempt
+     the opposing Skip while completion is pending. Disabled/busy UI plus one
+     exact `finish` witness operation proves mixed activation cannot double-
+     commit or let a stale write win. */
+  const dtrainFinishToken = await sliceToken(tr);
+  const dtrainFinishNativeLabel = 'legacy-full-finish-with-bulletin';
+  const dtrainFinishNativeArmed = await evalT(dtrainNativeWriteArmExpression(dtrainFinishNativeLabel));
+  const dtrainFinishMark = events.length;
+  const dtrainGradRaw = await evalT(READ_PRIMARY_EXPRESSION);
+  if (dtrainGradRaw !== DTRAIN_FULL_FINISH_RAW) {
+    fails.push('D-TRAIN FULL FINISH HOLD: lesson practice rewrote primary storage before the completion transaction: '
+      + JSON.stringify({ rawStable: false }));
+  }
+  const dtrainFinishArmed = await evalT(`window.__CF_SLICE__.api.__smokeArmImportRace(${JSON.stringify(dtrainGradRaw)})`);
+  await dispatchKeyPress(tr, 'Enter', 'Enter');
+  const dtrainMixedFinish = await evalT(`(()=>{const S=window.__CF_SLICE__,card=document.getElementById('tutcard'),
+    skip=document.querySelector('[data-sel="tutskip"]'),before=S.api.state().trainingRestoreWitness;
+    skip?.click();const after=S.api.state().trainingRestoreWitness;return {skip:!!skip,disabled:skip?.disabled??null,
+      busy:card?.getAttribute('aria-busy')||null,before,after,released:S.api.__smokeReleaseImportRace()};})()`);
+  let done3 = null;
+  for (let i = 0; i < 80 && !done3; i++) {
+    const state = await evalT(`window.__CF_SLICE__.api.state()`);
+    if (!state.tutActive && state.tutDone && state.trainingRestoreWitness?.stage === 'released') done3 = state;
+    else await sleep(50);
+  }
+  if (!done3) done3 = await evalT(`window.__CF_SLICE__.api.state()`);
+  await sleep(80);
+  const dtrainFinishRaw = JSON.parse(await evalT(READ_PRIMARY_EXPRESSION));
+  const dtrainFinishWitness = assessTrainingWitnesses(
+    trainingWitnessesSince(tr, dtrainFinishMark),
+    {
+      intent: 'finish', checkpointKind: 'legacy-v1', stages: DTRAIN_WAITED_SUCCESS_STAGES,
+      documentToken: dtrainFinishToken,
+    },
+  );
+  if (!dtrainFinishWitness.ok) {
+    fails.push('D-TRAIN FULL FINISH: transaction witness drifted: ' + JSON.stringify(dtrainFinishWitness));
+  }
+  const dtrainFinishRawAssessment = dtrainRestoredRawAssessment(dtrainFinishRaw, {
+    seedRaw: DTRAIN_FULL_FINISH_RAW,
+    expectedLand: [901, 133],
+    expectOuterAtlas: false,
+    route: 'earth',
+    /* The queued synthetic shipped bulletin flushes only after the atomic
+       Training commit and legitimately advances this surrounding field. Its
+       ordinary re-export also normalizes false Atlas-only q/d defaults away. */
+    expectedRn: RELEASE_FIXTURE_VERSION,
+    atlasFalseDefaults: false,
+  });
+  const dtrainFinishRouteAssessment = dtrainStateRouteAssessment(done3, 'earth');
+  if (!dtrainFinishNativeArmed || !dtrainFinishArmed
+    || !dtrainMixedFinish.skip || dtrainMixedFinish.disabled !== true
+    || dtrainMixedFinish.busy !== 'true' || !dtrainMixedFinish.released
+    || dtrainMixedFinish.before?.stage !== 'waiting-active-persist'
+    || dtrainMixedFinish.after?.operationId !== dtrainMixedFinish.before?.operationId
+    || !dtrainFinishRawAssessment.ok || !dtrainFinishRouteAssessment.ok
+    || JSON.stringify(done3.save.landed) !== JSON.stringify([901, 133])
+    || done3.trainingCheckpointKind !== 'none' || done3.trainingCheckpointWriteHeld
+    || done3.tutSnapshotPending !== null || !renderedSceneMatchesNav(done3)) {
+    fails.push('D-TRAIN FULL FINISH: mixed activation, exact restore/outer fields, one-write result, or proof receipt drifted: '
+      + JSON.stringify({ dtrainFinishNativeArmed, dtrainFinishArmed, mixed: dtrainMixedFinish, done: done3,
+        raw: dtrainFinishRaw, witness: dtrainFinishWitness,
+        rawAssessment: dtrainFinishRawAssessment, routeAssessment: dtrainFinishRouteAssessment }));
+  }
+  const secondFinishControl = [
+    ...dtrainFinishWitness.entries,
+    ...dtrainFinishWitness.entries.map((entry) => ({
+      ...entry, operationId: `${entry.documentToken}:999`, sequence: entry.sequence,
+    })),
+  ];
+  if (assessTrainingWitnesses(secondFinishControl, {
+    intent: 'finish', checkpointKind: 'legacy-v1', stages: DTRAIN_WAITED_SUCCESS_STAGES,
+    documentToken: dtrainFinishToken,
+  }).ok) {
+    fails.push('D-TRAIN MIXED-ACTIVATION CONTROL FAILED — a second complete Finish operation stayed green');
+  }
   if (done3.tutActive || !done3.tutDone) fails.push('DRILL: graduation did not close training: ' + JSON.stringify([done3.tutActive, done3.tutDone]));
   if (done3.mode !== 'surface') fails.push('DRILL: the drill should end planetside: ' + done3.mode);
   const finishFocus = await evalT(`(()=>{ const active=document.activeElement,heading=document.querySelector('#guidepanel [data-guide-heading]'),back=document.querySelector('#guidepanel [data-sel="guide-body"] [data-guide-releases]'); return {
@@ -4988,6 +6329,44 @@ try {
     if (!trainingReleaseStored) await sleep(50);
   }
   if (!trainingReleaseStored) fails.push('DRILL/RELEASE QUEUE: rnSeen did not persist after the post-Training bulletin');
+  await sleep(30); /* let the CDP binding deliver the completed bulletin put */
+  /* The native primary-put stream distinguishes the older held write, the
+     one Training commit, and the deliberately separate bulletin seen-state
+     autosave. A third write cannot disguise itself as Training's commit. */
+  const dtrainFinishNativeWitness = assessDtrainNativeWrites(
+    dtrainNativeWritesSince(tr, dtrainFinishMark),
+    { label: dtrainFinishNativeLabel, documentToken: dtrainFinishToken, count: 3 },
+  );
+  const dtrainFinishStaleWrites = nativeWritesBetweenStages(
+    dtrainFinishNativeWitness.entries,
+    dtrainFinishWitness.entries,
+    'waiting-active-persist',
+    'active-persist-settled',
+  );
+  const dtrainFinishTransactionWrites = nativeWritesBetweenStages(
+    dtrainFinishNativeWitness.entries,
+    dtrainFinishWitness.entries,
+    'primary-write-started',
+    'primary-write-complete',
+  );
+  const dtrainFinishReleasedIndex = dtrainFinishWitness.entries
+    .find((entry) => entry.stage === 'released')?.eventIndex;
+  const dtrainFinishBulletinWrites = Number.isInteger(dtrainFinishReleasedIndex)
+    ? dtrainFinishNativeWitness.entries.filter((entry) => entry.eventIndex > dtrainFinishReleasedIndex)
+    : [];
+  const dtrainFinishSeedRn = JSON.parse(DTRAIN_FULL_FINISH_RAW).rn ?? null;
+  if (!dtrainFinishNativeWitness.ok || dtrainFinishStaleWrites.length !== 1
+    || dtrainFinishTransactionWrites.length !== 1 || dtrainFinishBulletinWrites.length !== 1
+    || dtrainFinishTransactionWrites[0]?.rn !== dtrainFinishSeedRn
+    || dtrainFinishBulletinWrites[0]?.rn !== RELEASE_FIXTURE_VERSION
+    || dtrainFinishTransactionWrites[0]?.tut !== 1
+    || dtrainFinishTransactionWrites[0]?.hasSnapshot !== false
+    || dtrainFinishBulletinWrites[0]?.tut !== 1
+    || dtrainFinishBulletinWrites[0]?.hasSnapshot !== false) {
+    fails.push('D-TRAIN FULL FINISH WRITE ISOLATION: stale, atomic completion, and bulletin follow-up writes were not three distinct native puts: '
+      + JSON.stringify({ native: dtrainFinishNativeWitness, stale: dtrainFinishStaleWrites,
+        transaction: dtrainFinishTransactionWrites, bulletin: dtrainFinishBulletinWrites }));
+  }
   await evalT(`(()=>{ document.querySelector('#guidepanel [data-pnx]')?.click(); return true; })()`);
   const restoredSideCheck = `(()=>{ const side=document.getElementById('planetside'),s=window.__CF_SLICE__.api.state(),style=side?getComputedStyle(side):null,r=side?.getBoundingClientRect();
     return {ok:s.mode==='surface'&&!s.tutActive&&style?.display!=='none'&&!!r&&r.width>0&&r.height>0,mode:s.mode,active:s.tutActive,
@@ -5030,6 +6409,6 @@ try {
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-guide · slice-settings · slice-training · slice-earth · slice-solmark · slice-phone');
 process.exit(0);

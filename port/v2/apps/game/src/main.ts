@@ -27,7 +27,11 @@ import {
 } from '@cf/art';
 import { initAudio, playWhoosh, playSurveyPing, applySfxGain } from '@cf/audio';
 import { registerPanel, fillPanel, togglePanel, openPanel, closePanels, openPanelId } from './panels.js';
-import { initTraining, gameEvent, trainingActive, trainingStepId } from './training.js';
+import {
+  initTraining, gameEvent, trainingActive, trainingStepId,
+  type TrainingEndIntent, type TrainingEndResult,
+} from './training.js';
+import { buildLegacyTrainingRestoreCandidate } from './training-restore.js';
 import {
   getGuideCatalogue, getGuideTopic, searchGuide,
   type GuideCategoryId, type GuideTopicId, type GuideTopicView,
@@ -63,7 +67,7 @@ import {
   createSaveRepository, createIndexedDBBackend,
   importSaveV2, isPlausibleSaveEnvelope, exportSaveV2, readSaveWithRecovery,
   type SaveStateV2, type ContentRegistry, type StoredPayloadStatus,
-  type ImportRouteIngressV2,
+  type ImportRouteIngressV2, type ImportTrainingSnapshotIngressV2,
 } from '@cf/persistence';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
@@ -119,7 +123,7 @@ type ReloadCanvasRelease = {
   afterWidth: number;
   afterHeight: number;
 };
-type ReplacementReloadReason = 'training-restart' | 'save-import' | 'storage-retry';
+type ReplacementReloadReason = 'training-restart' | 'training-complete' | 'training-recovery' | 'save-import' | 'storage-retry';
 type ImportPhaseStage =
   | 'invoked' | 'validation-rejected' | 'claim-rejected' | 'claimed'
   | 'waiting-active-persist' | 'no-active-persist' | 'active-persist-settled'
@@ -131,6 +135,24 @@ type ImportPhaseWitness = {
   reason: 'save-import';
   documentToken: string;
   stage: ImportPhaseStage;
+  sequence: number;
+  tickerStarted: boolean;
+  performanceNow: number;
+  error: string | null;
+};
+type TrainingRestoreStage =
+  | 'invoked' | 'validation-rejected' | 'claim-rejected' | 'claimed'
+  | 'waiting-active-persist' | 'no-active-persist' | 'active-persist-settled'
+  | 'candidate-started' | 'earth-proven' | 'source-deferred' | 'candidate-rejected'
+  | 'primary-write-started' | 'primary-write-complete' | 'primary-write-rejected'
+  | 'live-swap-complete' | 'reload-scheduled' | 'released';
+type TrainingRestoreWitness = {
+  schema: 'cf-v2-training-restore/v1';
+  operationId: string;
+  documentToken: string;
+  intent: TrainingEndIntent;
+  checkpointKind: ImportTrainingSnapshotIngressV2['kind'];
+  stage: TrainingRestoreStage;
   sequence: number;
   tickerStarted: boolean;
   performanceNow: number;
@@ -191,6 +213,7 @@ type ReplacementTransaction = Readonly<{
   reason: ReplacementReloadReason;
   token: symbol;
   tickerWasStarted: boolean;
+  persistWasScheduled: boolean;
 }>;
 let replacementTransaction: ReplacementTransaction | null = null;
 function claimReplacementTransaction(reason: ReplacementReloadReason): ReplacementTransaction | null {
@@ -205,22 +228,28 @@ function claimReplacementTransaction(reason: ReplacementReloadReason): Replaceme
      successful replacement destroys it while quiescent. */
   const tickerWasStarted = app.ticker?.started === true;
   if (tickerWasStarted) app.stop();
-  const claim = Object.freeze({ reason, token: Symbol(reason), tickerWasStarted });
+  const persistWasScheduled = _persistT !== 0;
+  const claim = Object.freeze({
+    reason, token: Symbol(reason), tickerWasStarted, persistWasScheduled,
+  });
   replacementTransaction = claim;
   clearTimeout(_persistT); _persistT = 0;
   return claim;
 }
-function releaseReplacementTransaction(claim: ReplacementTransaction): void {
+function releaseReplacementTransaction(claim: ReplacementTransaction, rearmPersist = true): void {
   if (!replacementReloadScheduled && replacementTransaction === claim) {
     replacementTransaction = null;
     if (claim.tickerWasStarted && app.ticker && !app.ticker.started) app.start();
+    /* A refused replacement must not silently discard a pending settings
+       slider write merely because ownership canceled its debounce timer. */
+    if (rearmPersist && claim.persistWasScheduled) persistSoon();
   }
 }
 function scheduleReplacementReload(
   claim: ReplacementTransaction,
   afterRelease?: (witness: ReloadReleaseWitness) => void,
 ): void {
-  /* These are the app's three intentional, durable-write reloads. Release
+  /* These are the app's intentional, durable-write reloads. Release
      the old 8K renderer/backdrop before asking the browser to construct the
      replacement document; otherwise two capped backing stores can overlap
      during navigation. This is deliberately not a pagehide teardown: a
@@ -385,11 +414,19 @@ let save: SaveStateV2;
 /* Import keeps raw route evidence outside the v4 save. Proven navigation is
    likewise runtime-only: exporter spreads no brands, keys, ordinals, or
    source cells into player bytes. */
-const atlasRouteStates = new WeakMap<Record<string, unknown>, NavState>();
+let atlasRouteStates = new WeakMap<Record<string, unknown>, NavState>();
 let importedRouteIngress: ImportRouteIngressV2 | null = null;
-let trainingSnapshotView: unknown = undefined;
+let trainingSnapshotIngress: ImportTrainingSnapshotIngressV2 = Object.freeze({ kind: 'none' });
+let trainingCheckpointWriteHeld = false;
+let trainingBootRouteBlocked = false;
+let trainingBootRuntimeOnlySeat = false;
 let savedRouteWriteHeld = false;
 let smokeRejectNextTrainingRouteResolution = false;
+let smokeRejectNextTrainingCandidateProof = false;
+let smokeRejectNextTrainingCommit = false;
+let smokeRejectNextTrainingPublish = false;
+let trainingRestoreOperationSerial = 0;
+let lastTrainingRestoreWitness: TrainingRestoreWitness | null = null;
 /* COSMIC_EPOCH, for real: construct once from the saved snapshot, then advance
    from an app-owned monotonic elapsed page-residence segment. This is not the
    future foreground-only activePlayMs policy: hidden-time treatment remains F4.
@@ -610,32 +647,95 @@ sheet.innerHTML =
   '<button id="importgo" style="background:#1d3a5e;color:#eaf2ff;border:1px solid #3a5c8e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Import & reload</button>' +
   '<button id="importpick" type="button" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Pick file</button>' +
   '<input id="importfile" aria-label="Choose an expedition save file" type="file" accept=".json,.txt" tabindex="-1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">' +
+  '<button id="importretry" type="button" hidden style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Reload to retry</button>' +
   '<button id="importclose" style="background:transparent;color:var(--dim);border:1px solid #22304a;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">close</button>' +
   '</div><div id="importmsg" role="alert" aria-live="assertive" aria-atomic="true" style="margin-top:8px;color:#e8a0a0"></div></div>';
 document.body.appendChild(sheet);
-const importBackgroundState: Array<{ el: HTMLElement; inert: boolean; ariaHidden: string | null }> = [];
+const importBackgroundState = new Map<HTMLElement, { inert: boolean; ariaHidden: string | null }>();
+let importBackgroundObserver: MutationObserver | null = null;
+type TrainingRecoveryLock = 'unknown-checkpoint' | 'route-unavailable';
+let trainingRecoveryLock: TrainingRecoveryLock | null = null;
+function rememberAndLockImportBackground(el: HTMLElement): void {
+  if (el === sheet) return;
+  if (!importBackgroundState.has(el)) {
+    importBackgroundState.set(el, { inert: el.inert, ariaHidden: el.getAttribute('aria-hidden') });
+  }
+  if (!el.inert) el.inert = true;
+  if (el.getAttribute('aria-hidden') !== 'true') el.setAttribute('aria-hidden', 'true');
+}
+function enforceImportBackgroundInert(): void {
+  for (const child of [...document.body.children]) {
+    if (child instanceof HTMLElement) rememberAndLockImportBackground(child);
+  }
+}
+function configureImportSheet(): void {
+  const title = sheet.querySelector<HTMLElement>('h2')!;
+  const safety = sheet.querySelector<HTMLElement>('[data-sel="import-safety"]')!;
+  const close = sheet.querySelector<HTMLButtonElement>('#importclose')!;
+  const retry = sheet.querySelector<HTMLButtonElement>('#importretry')!;
+  sheet.dataset.mode = trainingRecoveryLock || 'import';
+  if (trainingRecoveryLock) {
+    title.textContent = trainingRecoveryLock === 'unknown-checkpoint'
+      ? 'Field Training checkpoint protected'
+      : 'Field Training route unavailable';
+    safety.textContent = trainingRecoveryLock === 'unknown-checkpoint'
+      ? 'This checkpoint is not recognized by this build. Exploration is locked so no change can appear saved while its bytes remain protected. Update and reload, or import a trusted complete expedition.'
+      : 'Field Training could not verify its route to Sol. Exploration is locked so practice cannot become unsaved session-only progress. Reload to retry, or import a trusted complete expedition.';
+    close.hidden = true;
+    close.disabled = true;
+    retry.hidden = false;
+    sheet.setAttribute('aria-label', title.textContent || 'Field Training recovery');
+    return;
+  }
+  title.textContent = 'Bring your expedition';
+  safety.textContent = 'Paste or pick a moderator-provided copied expedition save. Keep that external moderator backup as the authoritative exact copy. The app checks the save before storing it and attempts an additional exact local keepsake after import, but browser storage can refuse that keepsake.';
+  close.hidden = false;
+  close.disabled = false;
+  retry.hidden = true;
+  sheet.setAttribute('aria-label', 'Bring your expedition');
+}
 /* ---- THE DOCK: eight live controls, every press proven by an EFFECT (the
    simrun-dom law — a dead button never ships). charts/sound flip the REAL
    save fields and persist through exportSaveV2. ---- */
 function openImportSheet(): void {
   closePanels();
-  importBackgroundState.length = 0;
-  for (const child of [...document.body.children]) {
-    if (!(child instanceof HTMLElement) || child === sheet) continue;
-    importBackgroundState.push({ el: child, inert: child.inert, ariaHidden: child.getAttribute('aria-hidden') });
-    child.inert = true;
-    child.setAttribute('aria-hidden', 'true');
+  configureImportSheet();
+  if (sheet.style.display !== 'none') {
+    enforceImportBackgroundInert();
+    (sheet.querySelector('#importtext') as HTMLTextAreaElement | null)?.focus();
+    return;
   }
+  importBackgroundState.clear();
+  enforceImportBackgroundInert();
+  importBackgroundObserver?.disconnect();
+  importBackgroundObserver = new MutationObserver(enforceImportBackgroundInert);
+  importBackgroundObserver.observe(document.body, {
+    attributes: true,
+    attributeFilter: ['inert', 'aria-hidden'],
+    childList: true,
+    subtree: true,
+  });
   sheet.style.display = 'flex';
   (sheet.querySelector('#importtext') as HTMLTextAreaElement | null)?.focus();
 }
 function closeImportSheet(): void {
+  if (trainingRecoveryLock) {
+    (sheet.querySelector<HTMLElement>('#importtext') || sheet.querySelector<HTMLElement>('button'))?.focus();
+    return;
+  }
+  importBackgroundObserver?.disconnect();
+  importBackgroundObserver = null;
   sheet.style.display = 'none';
-  for (const { el, inert, ariaHidden } of importBackgroundState.splice(0)) {
+  for (const [el, { inert, ariaHidden }] of importBackgroundState) {
     el.inert = inert;
     if (ariaHidden === null) el.removeAttribute('aria-hidden'); else el.setAttribute('aria-hidden', ariaHidden);
   }
+  importBackgroundState.clear();
   document.getElementById('docksets')?.focus();
+}
+function openTrainingRecoverySheet(reason: TrainingRecoveryLock): void {
+  trainingRecoveryLock = reason;
+  openImportSheet();
 }
 document.addEventListener('focusin', (event) => {
   if (sheet.style.display === 'none' || sheet.contains(event.target as Node)) return;
@@ -758,6 +858,10 @@ function fillSettings(): void {
     /* Veteran restart is a reversible drill: begin in Sol where the lesson
        is winnable, then restore the exact pre-drill view on skip/finish. */
     const button = event.currentTarget as HTMLButtonElement;
+    if (trainingSnapshotIngress.kind !== 'none' || trainingCheckpointWriteHeld) {
+      toast('Training checkpoint retained', 'Finish or recover the pending Field Training checkpoint before starting another drill. Nothing changed.');
+      return;
+    }
     const homeNav = trainingSolSystemNav();
     if (!homeNav) {
       toast('Route unavailable', 'Field Training could not verify the route to Sol. Your expedition is unchanged.');
@@ -770,7 +874,7 @@ function fillSettings(): void {
     }
     const prior = save.tutDone;
     const priorSnapshot = save.tutSnapPending;
-    const priorSnapshotView = trainingSnapshotView;
+    const priorSnapshotIngress = trainingSnapshotIngress;
     const priorNav = nav;
     const priorSavedView = save.savedView;
     const priorSavedRouteWriteHeld = savedRouteWriteHeld;
@@ -781,7 +885,7 @@ function fillSettings(): void {
        into the one-key snapshot instead of snapshotting the neutral fallback. */
     const snapshotView = savedRouteWriteHeld ? save.savedView : navToView(nav);
     save.tutSnapPending = { view: snapshotView };
-    trainingSnapshotView = snapshotView;
+    trainingSnapshotIngress = Object.freeze({ kind: 'current-view', view: snapshotView });
     save.tutDone = false;
     nav = homeNav;
     savedRouteWriteHeld = false;
@@ -790,7 +894,7 @@ function fillSettings(): void {
       releaseReplacementTransaction(replacement);
       save.tutDone = prior;
       save.tutSnapPending = priorSnapshot;
-      trainingSnapshotView = priorSnapshotView;
+      trainingSnapshotIngress = priorSnapshotIngress;
       nav = priorNav;
       save.savedView = priorSavedView;
       savedRouteWriteHeld = priorSavedRouteWriteHeld;
@@ -1182,13 +1286,24 @@ function resolveStrictAddress(
   return resolved.ok ? resolved.address : null;
 }
 type NavigationAuthorityFailure = 'prime-reach' | 'charter-reach';
-function navigationAuthorityFailure(target: NavState): NavigationAuthorityFailure | null {
+function navigationAuthorityFailureFor(
+  authoritySave: Pick<SaveStateV2, 'primeFill' | 'items' | 'ascCh'>,
+  target: NavState,
+): NavigationAuthorityFailure | null {
   if (target.mode === 'universe') return null;
-  if (!withinReachOf(primeCount(), target.gal.x, target.gal.y)) return 'prime-reach';
+  const candidatePrimeCount = Object.keys(authoritySave.primeFill || {}).length;
+  const candidateStage = ascStageOf(authoritySave.items, authoritySave.ascCh);
+  if (!withinReachOf(candidatePrimeCount, target.gal.x, target.gal.y)) return 'prime-reach';
   if ((target.mode === 'system' || target.mode === 'surface')
-    && !ascAllowsStar(ascStage(), target.gal.seed, target.star)) return 'charter-reach';
+    && !ascAllowsStar(candidateStage, target.gal.seed, target.star)) return 'charter-reach';
   return null;
 }
+function navigationAuthorityFailure(target: NavState): NavigationAuthorityFailure | null {
+  return navigationAuthorityFailureFor(save, target);
+}
+type TrainingRouteProofResult<T extends NavState> =
+  | { readonly ok: true; readonly state: T }
+  | { readonly ok: false; readonly reason: 'source-error' | 'unavailable' };
 function trainingSolSystemNav(): Extract<NavState, { mode: 'system' }> | null {
   const isSol = (state: NavState): state is Extract<NavState, { mode: 'system' }> =>
     state.mode === 'system'
@@ -1211,6 +1326,28 @@ function trainingSolSystemNav(): Extract<NavState, { mode: 'system' }> | null {
   if (!address.ok) return null;
   const resolved = navFromCanonicalCF1Address(address.address);
   return resolved.ok && isSol(resolved.state) ? resolved.state : null;
+}
+function trainingEarthSurfaceNav(): TrainingRouteProofResult<Extract<NavState, { mode: 'surface' }>> {
+  const address = resolveCF1WorldAddress({
+    galaxy: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y },
+    star: { seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y },
+    planet: { seed: 133 },
+  });
+  if (!address.ok) {
+    return { ok: false, reason: address.reason === 'source-error' ? 'source-error' : 'unavailable' };
+  }
+  const resolved = navFromCanonicalCF1Address(address.address);
+  if (!resolved.ok || resolved.state.mode !== 'surface') return { ok: false, reason: 'unavailable' };
+  const state = resolved.state;
+  const exact = state.gal.seed === HOME_GAL_SEED
+    && state.gal.x === HOME_POS.x && state.gal.y === HOME_POS.y
+    && state.star.seed === SOL_SEED && state.star.x === SOL_POS.x && state.star.y === SOL_POS.y
+    && state.planet.seed === 133 && state.planet.ordinal === 2
+    && getProvenGalaxyKey(state.gal) !== null
+    && getProvenStarKey(state.star) !== null
+    && getProvenPlanetKey(state.planet) !== null
+    && navigationAuthorityFailure(state) === null;
+  return exact ? { ok: true, state } : { ok: false, reason: 'unavailable' };
 }
 function jumpToProvenNav(target: NavState, incomingName: string | null = null): boolean {
   if (!save || target.mode === 'universe') return false;
@@ -1297,6 +1434,10 @@ searchEl.addEventListener('keydown', (e) => {
 });
 sheet.querySelector('#importclose')!.addEventListener('click', closeImportSheet);
 sheet.querySelector('#importpick')!.addEventListener('click', () => (sheet.querySelector('#importfile') as HTMLInputElement).click());
+sheet.querySelector('#importretry')!.addEventListener('click', () => {
+  const replacement = claimReplacementTransaction('training-recovery');
+  if (replacement) scheduleReplacementReload(replacement);
+});
 sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
   const f = (e.target as HTMLInputElement).files?.[0];
   if (!f) return;
@@ -3081,7 +3222,7 @@ function installKeyboardExploration(): void {
 
 /* ---- the save/reload leg — THE REAL PIPELINE ---- */
 async function persistView(replacementOwner: ReplacementTransaction | null = null): Promise<boolean> {
-  if (persistHold || importWriteInFlight || replacementReloadPending
+  if (persistHold || trainingCheckpointWriteHeld || importWriteInFlight || replacementReloadPending
     || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
   const write = async (): Promise<boolean> => { try {
     /* A transient generator failure is not proof that a valid imported route
@@ -3143,7 +3284,13 @@ function persistSoon(): void {
   /* slider-friendly: one export per drag, not one per input event (audit #5) */
   if (replacementReloadPending) return;
   clearTimeout(_persistT);
-  _persistT = window.setTimeout(() => { void persistView(); }, 400);
+  _persistT = window.setTimeout(() => {
+    /* The timeout id describes a pending debounce, not the last timeout that
+       happened to run. Replacement rollback consults this sentinel before it
+       decides whether a canceled settings write needs to be re-armed. */
+    _persistT = 0;
+    void persistView();
+  }, 400);
 }
 let persistHold: false | 'transient-read' | 'protected-payload' = false;
 let persistRetrying = false;
@@ -3198,6 +3345,284 @@ function storedPayloadStatus(payload: string): StoredPayloadStatus {
   const result = importStoredPayload(payload);
   return result.ok ? 'supported' : result.reason;
 }
+
+type PreparedTrainingCandidate = Readonly<{
+  raw: string;
+  state: SaveStateV2;
+  ingress: ImportRouteIngressV2;
+  nav: NavState;
+  atlasRoutes: WeakMap<Record<string, unknown>, NavState>;
+}>;
+
+function prepareTrainingCandidate(
+  candidate: SaveStateV2,
+  now: number,
+  expectedEarthKey: string | null,
+): PreparedTrainingCandidate | null {
+  /* First import the candidate before its one real write. This gives route
+     evidence the exact entry-object identities that a reload would see. */
+  const firstRaw = exportSaveV2(candidate, now);
+  const first = importSaveV2(firstRaw, REGISTRY, now);
+  if (!first.ok) return null;
+  const firstSavedRoute = resolveViewToNav(
+    first.ingress.savedView === undefined ? null : first.ingress.savedView,
+  );
+  if (!firstSavedRoute.ok
+    || navigationAuthorityFailureFor(first.state, firstSavedRoute.state) !== null) return null;
+  first.state.savedView = navToView(firstSavedRoute.state);
+
+  /* Mirror boot's F2 boundary on the detached copy. Atlas history remains
+     visible when source proof fails transiently; deterministic invalid rows
+     lose only their action route. Reach is intentionally checked on click. */
+  for (const [, entry] of first.state.logMap) {
+    const rawWhere = first.ingress.atlasWhere.get(entry);
+    if (rawWhere === null || rawWhere === undefined) {
+      entry.where = null;
+      continue;
+    }
+    const route = resolveViewToNav(rawWhere);
+    if (route.ok && route.state.mode !== 'universe') entry.where = navToView(route.state);
+    else if (route.ok || route.reason !== 'source-error') entry.where = null;
+  }
+
+  /* Export once more after field-local route repair, then bind runtime proof
+     only to this final import's exact objects. These are the exact bytes the
+     single repository transaction will commit. */
+  const raw = exportSaveV2(first.state, now);
+  const final = importSaveV2(raw, REGISTRY, now);
+  if (!final.ok) return null;
+  const savedRoute = resolveViewToNav(
+    final.ingress.savedView === undefined ? null : final.ingress.savedView,
+  );
+  if (!savedRoute.ok
+    || navigationAuthorityFailureFor(final.state, savedRoute.state) !== null) return null;
+  const atlasRoutes = new WeakMap<Record<string, unknown>, NavState>();
+  let earthKey: string | null = null;
+  for (const [id, entry] of final.state.logMap) {
+    const rawWhere = final.ingress.atlasWhere.get(entry);
+    if (rawWhere === null || rawWhere === undefined) continue;
+    const route = resolveViewToNav(rawWhere);
+    if (!route.ok || route.state.mode === 'universe') continue;
+    atlasRoutes.set(entry, route.state);
+    if (id === 'p133' && route.state.mode === 'surface') {
+      earthKey = getProvenPlanetKey(route.state.planet);
+    }
+  }
+  if (expectedEarthKey !== null && earthKey !== expectedEarthKey) return null;
+  return Object.freeze({
+    raw,
+    state: final.state,
+    ingress: final.ingress,
+    nav: savedRoute.state,
+    atlasRoutes,
+  });
+}
+
+async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndResult> {
+  const checkpoint = trainingSnapshotIngress;
+  const operationId = `${DOCUMENT_TOKEN}:${++trainingRestoreOperationSerial}`;
+  let sequence = 0;
+  const phase = (stage: TrainingRestoreStage, error: string | null = null): void => {
+    const witness: TrainingRestoreWitness = {
+      schema: 'cf-v2-training-restore/v1', operationId, documentToken: DOCUMENT_TOKEN,
+      intent, checkpointKind: checkpoint.kind, stage, sequence: ++sequence,
+      tickerStarted: app.ticker?.started === true,
+      performanceNow: performance.now(), error,
+    };
+    lastTrainingRestoreWitness = witness;
+    try {
+      const binding = (window as unknown as Record<string, unknown>).__cfTrainingRestoreWitness;
+      if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
+    } catch { /* optional diagnostics are fail-closed in the browser harness */ }
+  };
+  phase('invoked');
+
+  if (checkpoint.kind === 'legacy-or-unknown') {
+    phase('validation-rejected', 'unknown-snapshot');
+    return { kind: 'refused', reason: 'unknown-snapshot' };
+  }
+  if (persistHold) {
+    phase('validation-rejected', 'protected-storage');
+    return { kind: 'refused', reason: 'protected-storage' };
+  }
+  const replacement = claimReplacementTransaction('training-complete');
+  if (!replacement) {
+    phase('claim-rejected', 'busy');
+    return { kind: 'refused', reason: 'busy' };
+  }
+  phase('claimed');
+
+  let writeStarted = false;
+  let durablyWritten = false;
+  let durableOutcome: TrainingEndResult = { kind: 'completed' };
+  try {
+    const priorPersist = activePersist;
+    if (priorPersist) {
+      phase('waiting-active-persist');
+      await priorPersist.catch(() => false);
+      phase('active-persist-settled');
+    } else phase('no-active-persist');
+
+    phase('candidate-started');
+    const now = Date.now();
+    const epoch = epochClock.current();
+    const liveView = savedRouteWriteHeld ? save.savedView : navToView(nav);
+    const baseRaw = exportSaveV2({ ...save, EPOCH_BASE: epoch, savedView: liveView }, now);
+    const base = importSaveV2(baseRaw, REGISTRY, now);
+    if (!base.ok) throw new Error('detached Training candidate did not import');
+
+    let candidate = base.state;
+    let expectedEarthKey: string | null = null;
+    let outcome: TrainingEndResult = { kind: 'completed' };
+    let targetNav: NavState = nav;
+
+    if (checkpoint.kind === 'current-view') {
+      const restored = smokeRejectNextTrainingRouteResolution
+        ? (smokeRejectNextTrainingRouteResolution = false,
+            { ok: false as const, reason: 'source-error' as const })
+        : resolveViewToNav(checkpoint.view);
+      if (!restored.ok && restored.reason === 'source-error') {
+        const retryNav = trainingSolSystemNav();
+        if (!retryNav) throw new Error('Training retry route to Sol could not be proven');
+        candidate.tutDone = false;
+        /* `checkpoint.view` is deliberately only the bounded route-proof
+           projection. The detached imported candidate retains the complete
+           bounded one-key checkpoint, including legacy display metadata; a
+           transient source failure must preserve those exact bytes. */
+        candidate.tutSnapPending = base.state.tutSnapPending;
+        candidate.savedView = navToView(retryNav);
+        targetNav = retryNav;
+        outcome = { kind: 'deferred', reason: 'source-error' };
+        phase('source-deferred');
+      } else {
+        const authorized = restored.ok
+          && navigationAuthorityFailureFor(candidate, restored.state) === null;
+        targetNav = authorized ? restored.state : NAV_HOME;
+        candidate.savedView = authorized ? navToView(restored.state) : null;
+        candidate.tutDone = true;
+        candidate.tutSnapPending = null;
+      }
+    } else if (checkpoint.kind === 'legacy-v1') {
+      const earth = smokeRejectNextTrainingRouteResolution
+        ? (smokeRejectNextTrainingRouteResolution = false,
+            { ok: false as const, reason: 'source-error' as const })
+        : trainingEarthSurfaceNav();
+      if (!earth.ok) {
+        if (earth.reason !== 'source-error') throw new Error('legacy Earth route is unavailable');
+        const retryNav = trainingSolSystemNav();
+        if (!retryNav) throw new Error('Training retry route to Sol could not be proven');
+        candidate.tutDone = false;
+        candidate.tutSnapPending = checkpoint.snapshot;
+        candidate.savedView = navToView(retryNav);
+        targetNav = retryNav;
+        outcome = { kind: 'deferred', reason: 'source-error' };
+        phase('source-deferred');
+      } else {
+        expectedEarthKey = getProvenPlanetKey(earth.state.planet);
+        const restored = buildLegacyTrainingRestoreCandidate({
+          current: candidate,
+          checkpoint: checkpoint.snapshot,
+          registry: REGISTRY,
+          now,
+          epoch,
+          canonicalEarthView: navToView(earth.state)!,
+          completionView: navToView(targetNav),
+        });
+        if (!restored.ok || expectedEarthKey === null) {
+          throw new Error('legacy Training checkpoint candidate was rejected');
+        }
+        candidate = restored.state;
+        if (navigationAuthorityFailureFor(candidate, targetNav) !== null) {
+          targetNav = NAV_HOME;
+          candidate.savedView = null;
+        }
+        phase('earth-proven');
+      }
+    } else {
+      candidate.tutDone = true;
+      candidate.tutSnapPending = null;
+      if (navigationAuthorityFailureFor(candidate, targetNav) !== null) targetNav = NAV_HOME;
+      candidate.savedView = navToView(targetNav);
+    }
+    candidate.EPOCH_BASE = epoch;
+
+    const prepared = smokeRejectNextTrainingCandidateProof
+      ? (smokeRejectNextTrainingCandidateProof = false, null)
+      : prepareTrainingCandidate(candidate, now, expectedEarthKey);
+    if (!prepared) {
+      throw new Error('Training replacement candidate failed source proof');
+    }
+    phase('primary-write-started');
+    writeStarted = true;
+    const write = (async (): Promise<boolean> => {
+      if (smokeRejectNextTrainingCommit) {
+        smokeRejectNextTrainingCommit = false;
+        throw new Error('slice-smoke injected Training commit rejection');
+      }
+      await repo.write(prepared.raw);
+      return true;
+    })();
+    activePersist = write;
+    try { await write; }
+    finally { if (activePersist === write) activePersist = null; }
+    durablyWritten = true;
+    durableOutcome = outcome;
+    phase('primary-write-complete');
+
+    /* Publish only after durability. All route proof is bound to the final
+       import's exact objects; the global descriptor seam keeps its one Map. */
+    if (smokeRejectNextTrainingPublish) {
+      smokeRejectNextTrainingPublish = false;
+      throw new Error('slice-smoke injected post-durable Training publication failure');
+    }
+    save = prepared.state;
+    importedRouteIngress = prepared.ingress;
+    trainingSnapshotIngress = prepared.ingress.trainingSnapshot;
+    trainingCheckpointWriteHeld = trainingSnapshotIngress.kind !== 'none';
+    atlasRouteStates = prepared.atlasRoutes;
+    nav = prepared.nav;
+    savedRouteWriteHeld = false;
+    customNames.clear();
+    for (const [key, name] of save.customNames) customNames.set(key, name);
+    rerender({ skipPersist: true });
+    phase('live-swap-complete');
+
+    if (outcome.kind === 'deferred') {
+      /* The durable incomplete candidate opens Welcome from proven Sol in a
+         fresh document. Queue release so Training can tear down first. */
+      setTimeout(() => {
+        phase('reload-scheduled');
+        scheduleReplacementReload(replacement);
+      }, 0);
+    } else {
+      /* Completion resolves only after replacement ownership is released.
+         Training's awaiting continuation tears down its inert/focus scope in
+         the same microtask checkpoint, before any input task or restarted
+         animation frame can observe a writable-but-still-owned app. */
+      releaseReplacementTransaction(replacement, false);
+      phase('released');
+      setTimeout(flushPendingReleaseBulletin, 20);
+    }
+    return outcome;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    if (durablyWritten) {
+      /* A publication/render exception after the one durable write cannot be
+         reported as a retryable refusal: retrying would write twice. Converge
+         from the committed primary in a fresh document instead. */
+      phase('reload-scheduled', message);
+      setTimeout(() => scheduleReplacementReload(replacement), 0);
+      return durableOutcome;
+    }
+    phase(writeStarted ? 'primary-write-rejected' : 'candidate-rejected', message);
+    releaseReplacementTransaction(replacement);
+    /* The final refusal witness is emitted after ownership release so the
+       browser gate can prove a stopped outgoing ticker actually resumed. */
+    phase('released', message);
+    return { kind: 'refused', reason: 'write-failed' };
+  }
+}
+
 async function loadSave(): Promise<void> {
   /* THE RECOVERY CONTRACT, finally wired (audit finding #1 — the CF-RR-002
      path was built and tested in the repository but never called):
@@ -3261,15 +3686,49 @@ async function loadSave(): Promise<void> {
       entry.where = null;
     }
   }
-  trainingSnapshotView = importedRouteIngress.trainingSnapshot.kind === 'current-view'
-    ? importedRouteIngress.trainingSnapshot.view
-    : undefined;
+  trainingSnapshotIngress = importedRouteIngress.trainingSnapshot;
+  /* A pending checkpoint is the durable pre-drill authority. Ordinary
+     practice autosaves stay held so only the explicit restart write and the
+     atomic completion transaction may replace it. Unknown shapes are also
+     quarantined from the Training UI below. */
+  const loadedUnfinishedWithoutSnapshot = bootRead.kind === 'loaded'
+    && !save.tutDone
+    && trainingSnapshotIngress.kind === 'none';
+  trainingCheckpointWriteHeld = trainingSnapshotIngress.kind !== 'none'
+    || loadedUnfinishedWithoutSnapshot;
+  trainingBootRouteBlocked = false;
+  trainingBootRuntimeOnlySeat = false;
+  /* A truly EMPTY store is a NEW EXPEDITION — training runs, exactly like
+     the game's new-run init (the absent-⇒-done default protects HELD saves,
+     not fresh ones). Every runnable drill begins from a freshly source-proven
+     Sol system, matching the legacy restart/resume contract. An unknown
+     checkpoint is quarantined instead: ordinary Training actions would
+     mutate live ledgers before completion could refuse, contradicting the
+     promise that the unrecognized evidence remains untouched. */
+  if (bootRead.kind === 'fresh') save.tutDone = false;
+  const recognizedPendingTraining = !save.tutDone
+    && trainingSnapshotIngress.kind !== 'legacy-or-unknown';
+  if (recognizedPendingTraining) {
+    const solNav = trainingSolSystemNav();
+    if (solNav) {
+      nav = solNav;
+      if (bootRead.kind === 'fresh') {
+        save.savedView = navToView(solNav);
+        savedRouteWriteHeld = false;
+      } else {
+        /* Seat a resumed drill in Sol without making boot itself a partial
+           Training transaction. The pending checkpoint (or loaded
+           incomplete no-snapshot save) and outer route stay byte-exact until
+           the one atomic completion write decides the durable view. */
+        trainingBootRuntimeOnlySeat = true;
+      }
+    } else {
+      trainingBootRouteBlocked = true;
+      if (trainingSnapshotIngress.kind !== 'none') trainingCheckpointWriteHeld = true;
+    }
+  }
   if (nav.mode === 'galaxy') { camT.z = gz0 * 1.05; cam.z = camT.z; }
   else if (nav.mode === 'system') { camT.z = sz0 * 1.05; cam.z = camT.z; }
-  /* a truly EMPTY store is a NEW EXPEDITION — training runs, exactly like
-     the game's new-run init (the absent-⇒-done default protects HELD saves,
-     not fresh ones) */
-  if (bootRead.kind === 'fresh') save.tutDone = false;
   epochElapsedT0 = performance.now();
   epochClock = createEpochClock(save.EPOCH_BASE, epochElapsedSeconds);
   (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
@@ -3295,48 +3754,20 @@ async function loadSave(): Promise<void> {
       true,
     ), 0);
   }
+  if (trainingSnapshotIngress.kind === 'legacy-or-unknown') {
+    trainingRecoveryLock = 'unknown-checkpoint';
+  } else if (trainingBootRouteBlocked) {
+    trainingRecoveryLock = 'route-unavailable';
+  }
   initTraining({
     explorerName: () => save.explorerName,
-    isDone: () => save.tutDone,
-    setDone: (v) => {
-      save.tutDone = v;
-      if (v && trainingSnapshotView !== undefined) {
-        const restored = smokeRejectNextTrainingRouteResolution
-          ? (smokeRejectNextTrainingRouteResolution = false, { ok: false as const, reason: 'source-error' as const })
-          : resolveViewToNav(trainingSnapshotView);
-        if (!restored.ok && restored.reason === 'source-error') {
-          /* A transient generator failure is not evidence that the veteran's
-             pre-drill location is stale. Keep the exact one-key snapshot and
-             incomplete-training marker so the next load can retry it. The
-             lesson UI is already closed, so restore the proven Sol system
-             starting state before the Training module's persist callback. */
-          save.tutDone = false;
-          const retryNav = trainingSolSystemNav();
-          if (retryNav) {
-            nav = retryNav;
-            savedRouteWriteHeld = false;
-            save.savedView = navToView(nav);
-            rerender();
-          }
-          toast('Route verification paused', 'Your pre-training location is still saved. Reload to retry Field Training safely.', true);
-          return;
-        }
-        const authorized = restored.ok && navigationAuthorityFailure(restored.state) === null;
-        nav = authorized ? restored.state : NAV_HOME;
-        save.savedView = authorized ? navToView(nav) : null;
-        savedRouteWriteHeld = false;
-        save.tutSnapPending = null;
-        trainingSnapshotView = undefined;
-        rerender();
-      }
-      /* Training schedules its own post-finish focus restoration at 0ms.
-         Open a queued bulletin on the next turn so the bulletin's Back
-         control remains the final, visible keyboard focus target. */
-      if (v) setTimeout(flushPendingReleaseBulletin, 20);
-    },
-    persist: () => { void persistView(); },
+    isDone: () => save.tutDone
+      || trainingSnapshotIngress.kind === 'legacy-or-unknown'
+      || trainingBootRouteBlocked,
+    complete: completeTraining,
     closePanels,
   });
+  if (trainingRecoveryLock) openTrainingRecoverySheet(trainingRecoveryLock);
 }
 
 /* ---- boot ---- */
@@ -3536,9 +3967,10 @@ async function loadSave(): Promise<void> {
   emitBootPhase('save-load-start');
   await loadSave();
   emitBootPhase('save-load-complete');
-  rerender();
+  rerender({ skipPersist: trainingBootRuntimeOnlySeat });
+  trainingBootRuntimeOnlySeat = false;
   emitBootPhase('scene-rendered');
-  showUnseenV2Release();
+  if (!trainingRecoveryLock) showUnseenV2Release();
   /* diagnostics handle for tools/slicesmoke.mjs — a WebGL canvas reads BLACK
      through 2D drawImage without preserveDrawingBuffer, so the smoke asks
      Pixi's extract (which re-renders) instead of scraping the canvas */
@@ -3571,6 +4003,10 @@ async function loadSave(): Promise<void> {
         rnSeen: save.rnSeen ?? null, releasePending: pendingReleaseBulletin?.version ?? null,
         tutActive: trainingActive(), tutStep: trainingStepId(), tutDone: save.tutDone,
         tutSnapshotPending: save.tutSnapPending,
+        trainingCheckpointKind: trainingSnapshotIngress.kind,
+        trainingCheckpointWriteHeld,
+        trainingRecoveryMode: trainingRecoveryLock,
+        trainingRestoreWitness: lastTrainingRestoreWitness,
         atlasCount: save.logMap.length,
         atlasTravelable: save.logMap.filter(([, entry]) => atlasRouteStates.has(entry)).length,
         savedRouteWriteHeld,
@@ -3629,6 +4065,21 @@ async function loadSave(): Promise<void> {
       __smokeRejectNextTrainingRouteResolution: () => {
         if (smokeRejectNextTrainingRouteResolution) return false;
         smokeRejectNextTrainingRouteResolution = true;
+        return true;
+      },
+      __smokeRejectNextTrainingCandidateProof: () => {
+        if (smokeRejectNextTrainingCandidateProof) return false;
+        smokeRejectNextTrainingCandidateProof = true;
+        return true;
+      },
+      __smokeRejectNextTrainingCommit: () => {
+        if (smokeRejectNextTrainingCommit) return false;
+        smokeRejectNextTrainingCommit = true;
+        return true;
+      },
+      __smokeRejectNextTrainingPublish: () => {
+        if (smokeRejectNextTrainingPublish) return false;
+        smokeRejectNextTrainingPublish = true;
         return true;
       },
       __smokeStageHeldRouteAtHome: () => {
@@ -3967,7 +4418,12 @@ async function loadSave(): Promise<void> {
     if (e.key !== 'Escape') return;
     /* the Escape ORDER (the game's focus law): a focused search field
        yields first, then panels, then the survey card, then ascent */
-    if (sheet.style.display !== 'none') { closeImportSheet(); return; }
+    if (sheet.style.display !== 'none') {
+      e.preventDefault();
+      e.stopPropagation();
+      closeImportSheet();
+      return;
+    }
     if (document.activeElement === searchEl) { searchEl.blur(); return; }
     if (openPanelId()) { closePanels(); return; }
     if (card.style.display !== 'none') {
