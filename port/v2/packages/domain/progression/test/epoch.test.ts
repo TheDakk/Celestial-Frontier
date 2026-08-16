@@ -10,25 +10,50 @@ describe('@cf/domain-progression — the epoch clock', () => {
     expect(EPOCH_TICK).toBe(1200);
     expect(HARVEST_EPOCHS).toBe(2);
   });
-  it('advances only with PLAY seconds: epochBase + floor(play/tick)', () => {
-    let play = 0;
-    const clock = createEpochClock(7, () => play);
+  it('advances only with injected elapsed seconds: epochBase + floor(elapsed/tick)', () => {
+    let elapsed = 0;
+    const clock = createEpochClock(7, () => elapsed);
     expect(clock.current()).toBe(7);
-    play = 1199; expect(clock.current()).toBe(7);
-    play = 1200; expect(clock.current()).toBe(8);
-    play = 2 * 1200 + 5; expect(clock.current()).toBe(9);
+    elapsed = 1199; expect(clock.current()).toBe(7);
+    elapsed = 1200; expect(clock.current()).toBe(8);
+    elapsed = 2 * 1200 + 5; expect(clock.current()).toBe(9);
+  });
+  it('keeps one session origin and reconstructs from the latest current() snapshot', () => {
+    let firstElapsed = 0;
+    const firstSession = createEpochClock(7, () => firstElapsed);
+    expect(firstSession.base()).toBe(7);
+    expect(firstSession.current()).toBe(7);
+
+    firstElapsed = EPOCH_TICK;
+    const firstSnapshot = firstSession.current();
+    expect(firstSnapshot).toBe(8);
+    expect(firstSession.base()).toBe(7);
+    expect(firstSession.base()).not.toBe(firstSnapshot);
+
+    firstElapsed = 2 * EPOCH_TICK;
+    const latestSnapshot = firstSession.current();
+    expect(latestSnapshot).toBe(9);
+    expect(firstSession.base()).toBe(7);
+
+    let secondElapsed = 0;
+    const secondSession = createEpochClock(latestSnapshot, () => secondElapsed);
+    expect(secondSession.base()).toBe(9);
+    expect(secondSession.current()).toBe(9);
+    secondElapsed = EPOCH_TICK;
+    expect(secondSession.current()).toBe(10);
+    expect(secondSession.base()).toBe(9);
   });
   it('★ THE HARVESTCLOCK INVARIANT: a wound wall clock grants NOTHING — by construction there is no wall-clock input at all', () => {
-    /* v1.8.8's whole point, executable: the only input is play seconds.
-       Simulate "wind the device clock a day forward": play time unchanged. */
-    let play = 100;
-    const clock = createEpochClock(3, () => play);
+    /* v1.8.8's whole point, executable: the only input is injected elapsed seconds.
+       Simulate "wind the device clock a day forward": elapsed input unchanged. */
+    let elapsed = 100;
+    const clock = createEpochClock(3, () => elapsed);
     const world = markHarvested({ tier: 2 }, clock.current());
     expect(harvestReady(world, clock.current())).toBe(false);
-    /* a day of WALL time passes; zero play — nothing moves */
+    /* a day of WALL time passes; zero injected elapsed change — nothing moves */
     expect(harvestReady(world, clock.current())).toBe(false);
-    /* 2 epochs of PLAY pass — readiness arrives */
-    play += 2 * EPOCH_TICK;
+    /* two injected elapsed epochs pass — readiness arrives */
+    elapsed += 2 * EPOCH_TICK;
     expect(harvestReady(world, clock.current())).toBe(true);
   });
   it('readiness arrives at exactly HARVEST_EPOCHS, not before', () => {

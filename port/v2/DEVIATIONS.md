@@ -1242,12 +1242,22 @@ duplicates).
   `5b8e1f649b1259f96f5de6d7e8aca0377bc2cf10`. Live Git/PR state determines current
   tip/upstream/checks; the selected pushed tip requires matching CI. No host, human,
   Ready, merge, release, deployment, or version authority follows.
-- ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (2026-08-11).** Ecology's retained
+- ✔ **D-EPOCH-1 — imported cosmic time has an algorithmic ceiling (updated 2026-08-15).** Ecology's retained
   evolution walks once per epoch. A crafted `epoch=1e12` could therefore hang the app effectively
   forever, and a fractional epoch performed an accidental extra evolution. The port accepts only a
-  nonnegative safe integer and caps it at 10,000 (>138 continuous active days at 20 minutes/epoch);
-  the live clock uses the same ceiling. Honest frozen epochs remain unchanged. Persisting/rebuilding
-  exactly once at an epoch edge and pausing foreground-play accounting while hidden remain open.
+  nonnegative safe integer and caps it at 10,000; the live clock uses the same ceiling. Honest frozen
+  epochs remain unchanged. The current app source is monotonic page-residence elapsed time, not yet a
+  foreground-only active-play policy. Automatic epoch-edge persistence/invalidation and hidden-time
+  semantics remain open under F4.
+- ★ **D-EPOCH-PERSIST — the construction base is not the save snapshot (2026-08-15).** DOM-1 was a
+  developer-contract defect, not a reproduced current-player save failure: `EpochClock.base()` is
+  immutable, but its JSDoc told callers to persist it. The app already constructed once from imported
+  `EPOCH_BASE`, refreshed that compatibility-named carrier from advancing `current()` before export,
+  and rebuilt from the serialized snapshot only on the next boot. The package contract and focused
+  two-session test now distinguish those roles. Real-browser smoke advances one exact epoch, drives
+  `current()` through `persistView()` and raw IndexedDB, reloads it, and rejects stored-base and stale-
+  reload substitutions. This does not claim automatic edge durability, foreground-only accrual,
+  F3 CAS/revision/tab-lease completion, or F4 `activePlayMs`/SessionRNG completion.
 - ✔ **D-ROUTE-1 — a shared planet address focuses; only Land lands (2026-08-13).** The slice used to
   turn a pasted/Atlas planet directly into `surface`, bypassing the only command that records landing,
   progression and contact outcomes. It now opens a valid external searched planet in live system survey
@@ -1551,9 +1561,12 @@ duplicates).
   references. Finish this with a discriminated union plus normalized copies; until then this is a
   partial hardening, not a closed type theorem.
 - ★ **D-CLOCK — no wall-clock in the domain.** COSMIC_EPOCH's port takes an injected
-  play-seconds source; the harvestclock invariant holds by construction. The no-DOM
-  lint enforces `Math.random`/`Date.now` absence across every domain package —
-  the original could only enforce this by grep + discipline.
+  monotonic elapsed-segment source; the harvestclock invariant holds by construction. The current
+  app counts page residence, while F4 still owns visibility/answerability policy and exact edge
+  behavior. F3 supplies the CAS/revision/tab-lease substrate; F4 owns the separate persisted
+  `activePlayMs` clock/accrual policy for future mission/Recovery/Auto-Extractor readiness. The
+  no-DOM lint enforces `Math.random`/`Date.now`
+  absence across every domain package — the original could only enforce this by grep + discipline.
 
 ## Architecture / layering
 

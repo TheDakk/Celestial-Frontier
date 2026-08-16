@@ -49,6 +49,10 @@ export interface CodexEntry {
   where: Record<string, unknown> | null;
 }
 export interface SaveStateV2 {
+  /** Compatibility-named carrier for the advancing epoch snapshot. On boot
+   * it becomes a new EpochClock construction origin; ordinary app saves must
+   * refresh it from EpochClock.current() immediately before export. An
+   * in-memory assignment alone does not prove the repository write committed. */
   EPOCH_BASE: number; essence: number; explorerName: string; lastAnomKey: string | null;
   stats: Record<string, number>;
   pstats: Record<string, number>; hp: number; HP_MAX: number;
