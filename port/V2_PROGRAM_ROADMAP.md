@@ -516,6 +516,12 @@ This is mutable-working-tree evidence only. Exact-head PR CI, merge integration,
 `develop` battery/publication remain mandatory; this record does not close F2, Gate D, any other
 Gate, a release, versioning, or deployment authority.
 
+Draft PR [#30](https://github.com/TheDakk/Celestial-Frontier/pull/30) opened from exact implementation
+commit `3cc61f9d71b1073cacece8dfeb44c2dd2fd93b3d` into `develop`. The final publication-state handoff
+is a docs-only successor on that same PR; only its fresh live exact-head checks and review/waiver
+boundary may authorize integration. The initial implementation-head run is not reused as evidence
+for the successor.
+
 ### 4.4 Arc 0 completion — current truth, imports, and continuity
 
 F2 is the identity seam of Arc 0, not all of it. These items remain named sub-batches:
