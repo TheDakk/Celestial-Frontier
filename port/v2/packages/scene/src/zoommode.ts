@@ -1,84 +1,246 @@
-/* The four zoom modes, verbatim vocabulary from v1.8.9 (st.mode):
-   universe → galaxy → system → surface. Transitions carry their required
-   context — you cannot be "in a galaxy" without a galaxy — so an illegal
-   navigation is unrepresentable at the type level and REJECTED at runtime,
-   instead of surfacing later as the NaN-camera class of crash the old
-   load path had to defend against. */
+/* The four v1.8.9 zoom-mode names remain unchanged. What changes here is
+   authority: a seed-shaped caller object is no longer navigation context.
+   Every non-home state is built from runtime-proven CF1 hierarchy nodes,
+   frozen, and registered in this module's private provenance set. */
+import {
+  isCanonicalCF1Address,
+  isProvenGalaxy,
+  isProvenPlanet,
+  isProvenPlanetFor,
+  isProvenStar,
+  isProvenStarFor,
+  resolveCF1GalaxyAddress,
+  resolveCF1StarAddress,
+  resolveCF1WorldAddress,
+  type CF1AddressFailure,
+  type ProvenGalaxy,
+  type ProvenPlanet,
+  type ProvenStar,
+} from './address.js';
+
+declare const NAV_STATE_BRAND: unique symbol;
+
+interface NavStateBrand {
+  readonly [NAV_STATE_BRAND]: true;
+}
 
 export type ZoomMode = 'universe' | 'galaxy' | 'system' | 'surface';
 
-/* named optional fields, NOT an index signature — an index signature makes
-   concrete node types (GalaxyNode) unassignable, and the save-view spread
-   only needs the slimGal field set anyway */
-export interface GalRef { seed: number; x: number; y: number; size?: number; sp?: number; tilt?: number; rot?: number; home?: boolean; quasar?: boolean; dwarf?: boolean; }
-export interface StarRef { seed: number; x: number; y: number; }
-export interface PlanetRef { seed: number; }
-
-export interface NavState {
-  mode: ZoomMode;
-  gal: GalRef | null;
-  star: StarRef | null;
-  planet: PlanetRef | null;
+export interface UniverseNav extends NavStateBrand {
+  readonly mode: 'universe';
+  readonly gal: null;
+  readonly star: null;
+  readonly planet: null;
 }
 
-export const NAV_HOME: NavState = Object.freeze({ mode: 'universe', gal: null, star: null, planet: null });
-
-/* adjacency: each mode reaches only its neighbours (matching the game's
-   goTo ladder); leaving a level clears the deeper context so a stale
-   star/planet can never leak into the next descent (the st.star-null class
-   of per-frame crash, prevented structurally) */
-const UP: Record<ZoomMode, ZoomMode | null> = { universe: null, galaxy: 'universe', system: 'galaxy', surface: 'system' };
-
-export type NavResult = { ok: true; state: NavState } | { ok: false; reason: string };
-
-export function enterGalaxy(s: NavState, gal: GalRef): NavResult {
-  if (s.mode !== 'universe') return { ok: false, reason: 'enterGalaxy from ' + s.mode };
-  if (!gal || !Number.isFinite(gal.seed)) return { ok: false, reason: 'no galaxy' };
-  return { ok: true, state: { mode: 'galaxy', gal, star: null, planet: null } };
+export interface GalaxyNav extends NavStateBrand {
+  readonly mode: 'galaxy';
+  readonly gal: ProvenGalaxy;
+  readonly star: null;
+  readonly planet: null;
 }
-export function enterSystem(s: NavState, star: StarRef): NavResult {
-  if (s.mode !== 'galaxy' || !s.gal) return { ok: false, reason: 'enterSystem from ' + s.mode };
-  if (!star || !Number.isFinite(star.seed)) return { ok: false, reason: 'no star' };
-  return { ok: true, state: { mode: 'system', gal: s.gal, star, planet: null } };
+
+export interface SystemNav extends NavStateBrand {
+  readonly mode: 'system';
+  readonly gal: ProvenGalaxy;
+  readonly star: ProvenStar;
+  readonly planet: null;
 }
-export function land(s: NavState, planet: PlanetRef): NavResult {
-  if (s.mode !== 'system' || !s.star) return { ok: false, reason: 'land from ' + s.mode };
-  if (!planet || !Number.isFinite(planet.seed)) return { ok: false, reason: 'no planet' };
-  return { ok: true, state: { mode: 'surface', gal: s.gal, star: s.star, planet } };
+
+export interface SurfaceNav extends NavStateBrand {
+  readonly mode: 'surface';
+  readonly gal: ProvenGalaxy;
+  readonly star: ProvenStar;
+  readonly planet: ProvenPlanet;
 }
-export function ascend(s: NavState): NavResult {
-  const up = UP[s.mode];
-  if (!up) return { ok: false, reason: 'already at universe' };
+
+export type NavState = UniverseNav | GalaxyNav | SystemNav | SurfaceNav;
+
+export type NavTransitionFailure =
+  | 'unproven-nav-state'
+  | 'enter-galaxy-from-non-universe'
+  | 'unproven-galaxy'
+  | 'enter-system-from-non-galaxy'
+  | 'unproven-star'
+  | 'star-parent-mismatch'
+  | 'land-from-non-system'
+  | 'unproven-planet'
+  | 'planet-parent-mismatch'
+  | 'already-at-universe'
+  | 'unproven-address';
+
+export type NavResult<T extends NavState = NavState> =
+  | Readonly<{ ok: true; state: T }>
+  | Readonly<{ ok: false; reason: NavTransitionFailure }>;
+
+export type ResolveViewToNavFailure = CF1AddressFailure | NavTransitionFailure | 'malformed-view';
+export type ResolveViewToNavResult =
+  | Readonly<{ ok: true; state: NavState }>
+  | Readonly<{ ok: false; reason: ResolveViewToNavFailure }>;
+
+const PROVEN_NAV_STATES = new WeakSet<object>();
+
+function registerNav<T extends object>(value: T): T & NavStateBrand {
+  const frozen = Object.freeze(value) as T & NavStateBrand;
+  PROVEN_NAV_STATES.add(frozen);
+  return frozen;
+}
+
+function isProvenNavState(value: unknown): value is NavState {
+  return typeof value === 'object' && value !== null && PROVEN_NAV_STATES.has(value);
+}
+
+function success<T extends NavState>(state: T): NavResult<T> {
+  return Object.freeze({ ok: true, state });
+}
+
+function failure(reason: NavTransitionFailure): Readonly<{ ok: false; reason: NavTransitionFailure }> {
+  return Object.freeze({ ok: false, reason });
+}
+
+function viewFailure(reason: ResolveViewToNavFailure): ResolveViewToNavResult {
+  return Object.freeze({ ok: false, reason });
+}
+
+function galaxyNav(gal: ProvenGalaxy): GalaxyNav {
+  return registerNav({ mode: 'galaxy' as const, gal, star: null, planet: null });
+}
+
+function systemNav(gal: ProvenGalaxy, star: ProvenStar): SystemNav {
+  return registerNav({ mode: 'system' as const, gal, star, planet: null });
+}
+
+function surfaceNav(gal: ProvenGalaxy, star: ProvenStar, planet: ProvenPlanet): SurfaceNav {
+  return registerNav({ mode: 'surface' as const, gal, star, planet });
+}
+
+export const NAV_HOME: UniverseNav = registerNav({
+  mode: 'universe' as const,
+  gal: null,
+  star: null,
+  planet: null,
+});
+
+export function enterGalaxy(s: NavState, gal: ProvenGalaxy): NavResult<GalaxyNav> {
+  if (!isProvenNavState(s)) return failure('unproven-nav-state');
+  if (s.mode !== 'universe') return failure('enter-galaxy-from-non-universe');
+  if (!isProvenGalaxy(gal)) return failure('unproven-galaxy');
+  return success(galaxyNav(gal));
+}
+
+export function enterSystem(s: NavState, star: ProvenStar): NavResult<SystemNav> {
+  if (!isProvenNavState(s)) return failure('unproven-nav-state');
+  if (s.mode !== 'galaxy') return failure('enter-system-from-non-galaxy');
+  if (!isProvenStar(star)) return failure('unproven-star');
+  if (!isProvenStarFor(star, s.gal)) return failure('star-parent-mismatch');
+  return success(systemNav(s.gal, star));
+}
+
+export function land(s: NavState, planet: ProvenPlanet): NavResult<SurfaceNav> {
+  if (!isProvenNavState(s)) return failure('unproven-nav-state');
+  if (s.mode !== 'system') return failure('land-from-non-system');
+  if (!isProvenPlanet(planet)) return failure('unproven-planet');
+  if (!isProvenPlanetFor(planet, s.star)) return failure('planet-parent-mismatch');
+  return success(surfaceNav(s.gal, s.star, planet));
+}
+
+export function ascend(s: NavState): NavResult<UniverseNav | GalaxyNav | SystemNav> {
+  if (!isProvenNavState(s)) return failure('unproven-nav-state');
+  switch (s.mode) {
+    case 'universe': return failure('already-at-universe');
+    case 'galaxy': return success(NAV_HOME);
+    case 'system': return success(galaxyNav(s.gal));
+    case 'surface': return success(systemNav(s.gal, s.star));
+  }
+}
+
+/** Build navigation from one registered canonical address. Structural copies
+    are rejected even when they retain genuine child objects. */
+export function navFromCanonicalCF1Address(
+  address: unknown,
+): NavResult<GalaxyNav | SystemNav | SurfaceNav> {
+  if (!isCanonicalCF1Address(address)) return failure('unproven-address');
+  const galaxy = enterGalaxy(NAV_HOME, address.galaxy);
+  if (!galaxy.ok || !('star' in address)) return galaxy;
+  const system = enterSystem(galaxy.state, address.star);
+  if (!system.ok || !('planet' in address)) return system;
+  return land(system.state, address.planet);
+}
+
+function slimGalaxy(gal: ProvenGalaxy): Record<string, unknown> {
   return {
-    ok: true,
-    state: {
-      mode: up,
-      gal: up === 'universe' ? null : s.gal,
-      star: up === 'universe' || up === 'galaxy' ? null : s.star,
-      planet: null,   /* leaving a surface always clears the planet */
-    },
+    x: gal.x,
+    y: gal.y,
+    size: gal.size,
+    sp: gal.sp,
+    tilt: gal.tilt,
+    rot: gal.rot,
+    seed: gal.seed,
+    home: gal.home,
+    quasar: gal.quasar,
+    dwarf: gal.dwarf,
   };
 }
 
-/** serialize for the save's `view` (shape-compatible with _sanitizeView input) */
-export function navToView(s: NavState): Record<string, unknown> | null {
-  if (!s.gal) return null;
-  const o: Record<string, unknown> = { type: s.mode === 'surface' || s.mode === 'system' ? (s.planet ? 'planet' : 'star') : 'galaxy', gal: { ...s.gal } };
-  if (s.star) o.star = { x: s.star.x, y: s.star.y, seed: s.star.seed };
-  if (s.planet) o.pseed = s.planet.seed;
-  return o;
+function slimStar(star: ProvenStar): Record<string, unknown> {
+  return { x: star.x, y: star.y, seed: star.seed };
 }
 
-/** the inverse: a save's sanitized `view` (importSaveV2's savedView — the
-    _sanitizeView shape) back into a NavState. Degrades toward home rather
-    than inventing context: a 'planet' view without a star is a galaxy view;
-    no gal at all is the universe. */
-export function viewToNav(v: Record<string, unknown> | null | undefined): NavState {
-  if (!v || !v.gal || !Number.isFinite(+(v.gal as GalRef).seed)) return NAV_HOME;
-  const gal = v.gal as GalRef;
-  const star = (v.star && Number.isFinite(+(v.star as StarRef).seed)) ? (v.star as StarRef) : null;
-  const pseed = (v.pseed != null && Number.isFinite(+(v.pseed as number))) ? +(v.pseed as number) : null;
-  if (v.type === 'planet' && star && pseed != null) return { mode: 'surface', gal, star, planet: { seed: pseed } };
-  if ((v.type === 'star' || v.type === 'planet') && star) return { mode: 'system', gal, star, planet: null };
-  return { mode: 'galaxy', gal, star: null, planet: null };
+/** Exact legacy save/share projection. Runtime provenance and source-cell/
+    ordinal metadata deliberately never cross this serialization boundary. */
+export function navToView(s: NavState): Record<string, unknown> | null {
+  if (!isProvenNavState(s)) throw new TypeError('navToView requires a proven NavState');
+  switch (s.mode) {
+    case 'universe': return null;
+    case 'galaxy': return { type: 'galaxy', gal: slimGalaxy(s.gal) };
+    case 'system': return { type: 'star', gal: slimGalaxy(s.gal), star: slimStar(s.star) };
+    case 'surface': return {
+      type: 'planet',
+      gal: slimGalaxy(s.gal),
+      star: slimStar(s.star),
+      pseed: s.planet.seed,
+    };
+  }
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+/** Strict persisted/public view ingress. `null` alone is canonical home.
+    Non-null tiers must prove their complete claimed hierarchy; malformed
+    children never degrade into a lower, partially trusted mode. */
+export function resolveViewToNav(view: unknown): ResolveViewToNavResult {
+  if (view === null) return success(NAV_HOME);
+  if (!isRecord(view)) return viewFailure('malformed-view');
+
+  let resolved;
+  switch (view.type) {
+    case 'galaxy':
+      if (!Object.prototype.hasOwnProperty.call(view, 'gal')
+        || Object.prototype.hasOwnProperty.call(view, 'star')
+        || Object.prototype.hasOwnProperty.call(view, 'pseed')) return viewFailure('malformed-view');
+      resolved = resolveCF1GalaxyAddress({ galaxy: view.gal });
+      break;
+    case 'star':
+      if (!Object.prototype.hasOwnProperty.call(view, 'gal')
+        || !Object.prototype.hasOwnProperty.call(view, 'star')
+        || Object.prototype.hasOwnProperty.call(view, 'pseed')) return viewFailure('malformed-view');
+      resolved = resolveCF1StarAddress({ galaxy: view.gal, star: view.star });
+      break;
+    case 'planet':
+      if (!Object.prototype.hasOwnProperty.call(view, 'gal')
+        || !Object.prototype.hasOwnProperty.call(view, 'star')
+        || !Object.prototype.hasOwnProperty.call(view, 'pseed')) return viewFailure('malformed-view');
+      resolved = resolveCF1WorldAddress({
+        galaxy: view.gal,
+        star: view.star,
+        planet: { seed: view.pseed },
+      });
+      break;
+    default:
+      return viewFailure('malformed-view');
+  }
+  if (!resolved.ok) return viewFailure(resolved.reason);
+  return navFromCanonicalCF1Address(resolved.address);
 }

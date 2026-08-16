@@ -1,11 +1,34 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
-**STATUS:** approved product direction and implementation contract as of **2026-08-13**.
+**STATUS:** approved product direction and implementation contract as of **2026-08-15**.
 The current `port/v2` build is still the playable Phase-4 exploration/survey slice; the
 Inventory, Shipyard, item-instance loot, capture/acquisition, companion-expedition, breeding, live-combat,
 Guardian and full-audio outcomes described here are **not yet implemented** unless a row
 below explicitly says otherwise. This document coordinates the existing system specs; it
 does not silently promote planned behavior into the in-game Guide.
+
+> **2026-08-15 F2 current-state overlay:** The runtime navigation foundation now
+> source-proves galaxy, star and planet ingress across strict CF1 Search,
+> generated descent/actions, saved boot/import, Star Atlas and the exact current
+> Field Training `{view}` snapshot. Navigation uses deeply frozen source-derived
+> nodes and canonical parent keys. Planet identity includes the ordinal from the
+> unsorted generated system before orbit presentation sorting. A planet route
+> returns to its proven system survey and never bypasses Land.
+>
+> Persistence remains compatibility-shaped. Import retains bounded raw-route
+> evidence and Atlas row association only in runtime sidecars; proven nodes,
+> keys, source cells/layer and planet ordinal are not serialized. A
+> deterministically invalid or no-longer-authorized saved route repairs only the
+> view to Cosmos, a transient source failure holds that field, and an Atlas row
+> without runtime proof remains visible but disabled. Richer legacy Training
+> snapshots remain D-TRAIN-1 work.
+>
+> This foundation is not a world-bound ownership receipt. No Inventory, item
+> instance, mission, loot, capture, companion, combat, Guardian, project or
+> Chronicle writer may use a display route or runtime navigation object as
+> exact-once persistence authority. No local ledger was migrated, no schema or
+> version/release changed, and no browser, CI, human or rubric Gate is declared
+> complete by this document update.
 
 **Purpose:** turn Celestial Frontier's mature but separate exploration, materials, ship,
 creature, breeding and combat systems into one coherent long-term mastery loop. The player
@@ -66,7 +89,7 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 
 | System | Current v2 executable state | Next owned outcome |
 |---|---|---|
-| Universe travel, Survey, Planetside | Live, deterministic, save-backed; Search-to-planet CF1 shares are source-derived before they can focus/navigate/name/persist | Extend the canonical proof to saved views, Atlas/non-planet routes and future receipt ingress; add richer biome scenes |
+| Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
 | Charters / reach language | One current stage-aware landfall projection; imported drive/chapter facts still gate reach; no other v2 Charter writer or reward | Port complete outcome writers and only then expose their goals, transitions and rewards |
 | Compendium | Read-only rows, details and deterministic static portraits | Virtualized list, bounded thumbnail work, living selected preview |
 | Capture / specimen acquisition | No live v2 Tame, Scavenge, Sample or Biosphere Yield action | Port finite capture writers before owned companions or collection progression |
@@ -614,8 +637,9 @@ cannot understand, enjoy or comfortably use it.
 
 ### Foundation and quality work still open
 
-- canonical CF1 source proof is live for Search-to-planet share ingress; saved views,
-  Atlas/non-planet routes and future ownership-receipt ingress remain open;
+- canonical CF1 source proof is live for runtime galaxy/star/planet navigation,
+  including saved views and Atlas; persisted ownership-receipt ingress and local
+  ledger migration remain open;
 - imported legacy full-expedition training snapshot restore and CFB parent identity;
 - Compendium virtualization and bounded art/audio work;
 - Pixi/Canvas texture ownership and long-session memory plateau;

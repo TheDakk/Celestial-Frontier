@@ -1,5 +1,48 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-15 F2 canonical-ingress overlay (current code):** Search treats a
+> marked CF1 string as strict route input and supports galaxy, star and planet
+> tiers. Each candidate is source-proven before the existing Prime/Charter
+> authority check. A successful galaxy or star route opens its own level; a
+> planet route opens the exact live system survey and never presses Land. A
+> malformed, stale, forged, ambiguous, source-failed or out-of-reach code leaves
+> the current view unchanged and keeps the query in Search for correction.
+>
+> Saved boot/import routes and Atlas rows use the same resolver. A deterministically
+> bad saved location repairs only the view to Cosmos; a transient source error
+> holds that route field rather than destroying it. Atlas history stays listed,
+> but only rows with a private runtime proven-NavState sidecar are enabled. Live
+> galaxy/star/planet actions are rebound to regenerated proven nodes, and planet
+> actions include the source ordinal captured before orbit sorting; seed-only
+> diagnostics and stale structural card contexts cannot Survey or Land.
+>
+> The first real-browser F2 attempt reached an accepted galaxy and then went red:
+> `hudText()` passed the frozen `ProvenGalaxy` authority object to lifted
+> `galaxyStats()`, whose legacy memoizer writes `_stats` onto its input.
+> `statsForProvenGalaxy()` now passes a disposable mutable spread to that helper
+> and stores only a frozen `{stars,planets}` projection in an app-owned
+> `WeakMap<ProvenGalaxy,...>`. Provenance stays frozen; mutable presentation
+> caching never borrows the authority object.
+>
+> Current-v2 Training restart stores exactly `{view}`. A normal Finish or Skip
+> restores that route only after fresh source proof. If restore reports a
+> `source-error`, the exact snapshot remains pending and Training remains
+> incomplete; the app attempts to re-prove and persist the Sol system before the
+> next-load retry. If Sol itself cannot be proven, it does not forge that fallback
+> or discard the retained snapshot. Richer legacy/full-expedition snapshots are
+> not interpreted or restored here; D-TRAIN-1 remains open.
+>
+> Guide and development-draft copy describe source verification and field-local
+> route repair. The repaired complete one-attempt local `smoke:ci` is terminal-
+> green on the tested dirty-tree candidate, including the injected one-shot
+> Training source-error → proven-Sol → reload retry outcome. The complete
+> 12-viewport Glass Matrix is separately terminal-green; both reports bind Edge
+> `151.0.4129.86` and working-tree digest
+> `7dfa649eb7de017424b7ba1ba0b11ba1fd00dc02a5b99b6848e0f3c347acba9e`.
+> This is not exact-head CI, integration, human-sign-off or rubric-Gate
+> certification, and it changes no schema, production version, shipped release
+> or update-popup state.
+
 > **2026-08-13 v2 next-arc overlay — approved design, NOT LIVE:** The current v2
 > Compendium is a read-only eager list and V2 has no Cargo, Shipyard, ship portrait,
 > crafting, research, or upgrade controls. A maximum imported catalogue can contain

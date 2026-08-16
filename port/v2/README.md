@@ -2,6 +2,70 @@
 
 ## Current port status — 2026-08-15
 
+> **F2 canonical-ingress working-tree overlay (2026-08-15; implementation and
+> complete local browser outcome present, exact-head integration pending):** `@cf/scene` now treats every
+> current galaxy, star and planet navigation route as a candidate rather than
+> authority. The strict CF1 parser supports all three tiers; production resolvers regenerate
+> each claimed tier from WorldGen and mint deeply frozen `ProvenGalaxy`,
+> `ProvenStar` and `ProvenPlanet` values only after one unambiguous source
+> match. Runtime-private registries/keys bind each child to its canonical
+> parent. `NavState` is now a frozen discriminated union, and its smart
+> transitions reject structural clones, unproven nodes and cross-parent
+> composition without changing the current state. Planet identity includes
+> the ordinal from `systemFor(star).planets` **before** orbit presentation sort;
+> seed-only diagnostics no longer select a planet action.
+>
+> The common boundary now owns generated descent/actions, galaxy/star/planet
+> Search, saved-view boot/import, Atlas rows and the exact current one-key
+> Field Training `{view}` snapshot. Proof and Prime/Charter authorization occur
+> before destination navigation, an accepted custom name, a route-focused
+> planet card, Land, progression or persistence commit. A planet address still
+> stops at its system survey. Import keeps bounded pre-repair route evidence
+> outside `SaveStateV2`; Atlas actionability is a runtime `WeakMap` sidecar. Deterministically invalid or unauthorized
+> saved navigation repairs only `view` to Cosmos, while a `source-error` holds
+> that route field rather than treating it as stale. If current one-key
+> Training restoration pauses on that failure, the drill remains incomplete,
+> retains its exact snapshot, and conditionally returns to a newly proven Sol
+> before persistence so reload can reopen Welcome for a safe retry. Atlas history remains
+> visible but disabled without runtime proof. `navToView()` emits the unchanged
+> compatibility shape and serializes no proof brand, key, parent cell, star
+> layer or planet ordinal.
+>
+> The first F2 real-browser attempt was genuinely **red**: accepted galaxy
+> navigation reached `hudText()`, which passed a frozen `ProvenGalaxy` to the
+> lifted `galaxyStats()` helper; that helper memoizes by assigning `_stats` to
+> its argument. The scoped repair leaves provenance immutable and leaves the
+> lifted helper unchanged: the app supplies a disposable mutable caller-side
+> copy and stores only frozen `{stars,planets}` output in a
+> `WeakMap<ProvenGalaxy,...>` sidecar. Separately, `universeGalaxies()` now
+> copies and freezes each nested collision `bridge`, so mutating a composed
+> scene node cannot poison WorldGen's memoized source or a later composition.
+> The matching source mutation control is focused evidence; the browser smoke
+> is not presented as proof of that nested-copy contract.
+>
+> Final audit added held-route Training Restart transfer/rollback and non-null
+> provenance-key controls. A CI-format rendered-copy run then failed closed
+> because its bare expected title did not include the real Guide heading's
+> category icon, even though every required phrase was present and every
+> contradiction guard was false. The contained-title repair keeps the
+> cross-topic failure direction. The next diagnosed `npm run smoke:ci` passed
+> with zero findings/retries, ten fresh screenshots, Edge `151.0.4129.86`,
+> 138,305 ms, and working-tree digest
+> `7dfa649eb7de017424b7ba1ba0b11ba1fd00dc02a5b99b6848e0f3c347acba9e`.
+> The 12-viewport Glass Matrix binds that same digest/browser and passed in
+> 55,065 ms with zero findings or instrument failures. Browser/report
+> selftests, 27 files / 340 passed / 1 skipped, both TypeScript programs,
+> `artunused`, art routing/coverage/spec controls, diff hygiene and the
+> 790-module app build are green. This is local dirty-working-tree evidence,
+> not exact-head CI, integration or Gate-completion authority.
+>
+> F2 changes no save schema or generated share-code bytes, reach balance,
+> ownership or local ledger migration, reward/receipt writer, Guide capability
+> availability, Training lesson inventory, development/production version or
+> release, F3 CAS/revisions, or F4 clock/SessionRNG policy. D-TRAIN-1's richer legacy full-expedition
+> snapshot transaction remains open. The dated 2026-08-13 review below is
+> retained as the earlier, narrower Search-to-planet boundary it recorded.
+
 > **Next-arc architecture review (2026-08-13):**
 > `../../EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` is the approved cross-system
 > implementation contract. It does not widen the current Guide capabilities. Inventory,
@@ -596,9 +660,12 @@ device/browser lens, starting save, findings, and retest using
 Automated personas are evidence, not a human playtest. Resolve current Git, PR, and
 check state live; this reference intentionally carries no “latest tip is green” claim.
 
-Highest-priority open v2 work is now semantic and runtime-owned: canonicalize
-the full CF1 galaxy→star→planet hierarchy; restore imported legacy full-state
-tutorial snapshots; decide and preserve hybrid parent identity in CFB codes;
+Highest-priority active v2 work is to publish the bounded F2
+galaxy→star→planet ingress candidate, require exact-head PR CI, merge it only
+when authorized and green, then monitor the resulting `develop` battery and
+mapped development publication without widening it into ownership or receipt
+authority. After that, restore imported legacy
+full-state tutorial snapshots; decide and preserve hybrid parent identity in CFB codes;
 finish the remaining legacy Field Training arc and keep the canonical Guide's
 current-safe topic bodies synchronized as systems land; add tooltip deep-links and
 the Advanced Briefing surface;

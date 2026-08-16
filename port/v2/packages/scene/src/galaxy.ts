@@ -9,8 +9,9 @@
    GCELL=42 wide, content exists only for cell centers within GR=1200, and
    the Renderer clips its iteration window to ±(HALO/GCELL+1) with
    HALO = GR × 1.7. */
-import { starsInCell, galaxyProfile } from '@cf/domain-worldgen';
+import { starsInCell, fineStarsInCell, galaxyProfile } from '@cf/domain-worldgen';
 import { GR, GCELL } from '@cf/domain-worldconfig';
+import { isProvenGalaxy, type ProvenGalaxy } from './address.js';
 
 export interface StarNode { x: number; y: number; c: string; s: number; seed: number; sol?: boolean; }   /* sol: the Sun, injected at SOL_POS (main.js 1531) */
 export interface DecoNode { k: string; x: number; y: number; [k: string]: unknown; }
@@ -22,6 +23,30 @@ const HALO_CELLS = Math.floor((GR * 1.7) / GCELL) + 1;
     the domain (starsInCell memoizes); do not mutate what comes back. */
 export function galaxyCell(galSeed: number, prof: Record<string, unknown>, cx: number, cy: number): GalaxyCellContent {
   return starsInCell(galSeed, prof, cx, cy) as unknown as GalaxyCellContent;
+}
+
+/** App-facing cell composition requires a source-proven parent. The legacy
+    seed-only helper remains for pure whole-disc tests, never navigation. */
+export function provenGalaxyCell(
+  galaxy: ProvenGalaxy,
+  prof: Record<string, unknown>,
+  cx: number,
+  cy: number,
+): GalaxyCellContent {
+  if (!isProvenGalaxy(galaxy)) throw new TypeError('provenGalaxyCell requires a ProvenGalaxy');
+  return galaxyCell(galaxy.seed, prof, cx, cy);
+}
+
+/** Fine-star streaming stays behind the same proven-parent composition seam
+    as coarse cells; a rendered lookalike can never become descent authority. */
+export function galaxyFineCell(
+  galaxy: ProvenGalaxy,
+  prof: Record<string, unknown>,
+  fx: number,
+  fy: number,
+): readonly StarNode[] {
+  if (!isProvenGalaxy(galaxy)) throw new TypeError('galaxyFineCell requires a ProvenGalaxy');
+  return fineStarsInCell(galaxy.seed, prof, fx, fy) as unknown as readonly StarNode[];
 }
 
 /** The Renderer's viewport→cell window, verbatim clip semantics:

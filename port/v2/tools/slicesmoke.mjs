@@ -58,9 +58,28 @@ const withCodeGalaxySize = (code, size) => {
   payload.g[2] = size;
   return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
 };
+const withCodeStarPosition = (code, x, y) => {
+  const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
+  payload.s[0] = x;
+  payload.s[1] = y;
+  return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
+};
 const withCodePlanetSeed = (code, seed) => {
   const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
   payload.p = seed;
+  return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
+};
+const asGalaxyCode = (code, galaxy = null) => {
+  const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
+  payload.t = 'g';
+  if (galaxy) {
+    payload.g[0] = galaxy.x;
+    payload.g[1] = galaxy.y;
+    payload.g[6] = galaxy.seed;
+  }
+  delete payload.s;
+  delete payload.p;
+  delete payload.n;
   return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
 };
 const asStarCode = (code) => {
@@ -69,6 +88,19 @@ const asStarCode = (code) => {
   delete payload.p;
   return 'CF1-' + Buffer.from(JSON.stringify(payload)).toString('base64url').replace(/=+$/g, '');
 };
+const HOME_GALAXY = Object.freeze({ seed: 999, x: 90, y: -60 });
+const SOL_STAR = Object.freeze({ seed: 424242, x: 560, y: 170 });
+const MERCURY = Object.freeze({ seed: 131, ordinal: 0 });
+const EARTH = Object.freeze({ seed: 133, ordinal: 2 });
+/* A source-generated galaxy in universe cell (1,-4). Its 1,297.6-unit home
+   distance is beyond the zero-Signature 880-unit Solar Reach; unlike the
+   former 1e7 tuple, the live resolver must prove this real destination before
+   the smoke can observe the reach-law rejection. */
+const OUTER_REACH_GALAXY = Object.freeze({ seed: 618554626, x: 472.95, y: -1299.77 });
+const outerReachGalaxyView = () => ({
+  type: 'galaxy',
+  gal: { seed: OUTER_REACH_GALAXY.seed, x: OUTER_REACH_GALAXY.x, y: OUTER_REACH_GALAXY.y },
+});
 const codeName = (code) => JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8')).n || null;
 const codeGalaxySize = (code) => JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8')).g?.[2] ?? null;
 /* Legacy decodeWhere repairs these fractional identity bytes into Earth.
@@ -91,10 +123,65 @@ const VETERAN_ARRAY_RAW = (() => {
 })();
 const VETERAN_ATLAS_RAW = (() => {
   const save = JSON.parse(VETERAN_RAW);
-  save.log = [...(Array.isArray(save.log) ? save.log : []), {
-    id: 'legacy-star', title: 'Legacy chart', sub: 'Imported without complete coordinates', badge: 'Legacy',
-    where: { type: 'star', gal: { x: 90, y: -60, seed: 999 }, star: { seed: 777 } },
+  save.log = [...(Array.isArray(save.log) ? save.log : []),
+    {
+      id: 'legacy-star', title: 'Legacy chart', sub: 'Imported without complete coordinates', badge: 'Legacy',
+      where: { type: 'star', gal: { x: 90, y: -60, seed: 999 }, star: { seed: 777 } },
+    },
+    {
+      id: 'forged-earth', title: 'Forged Earth', sub: 'Imported with a stale parent', badge: 'Legacy',
+      where: {
+        type: 'planet', gal: { x: 90.01, y: -60, seed: 999 },
+        star: { x: 560, y: 170, seed: 424242 }, pseed: 133,
+      },
+    },
+  ];
+  return JSON.stringify(save);
+})();
+const STALE_SAVED_ROUTE_RAW = (() => {
+  const save = JSON.parse(VETERAN_ATLAS_RAW);
+  save.me = 'Field-local Route Repair';
+  save.essence = 4321;
+  save.view = {
+    ...save.view,
+    gal: { ...save.view.gal, x: 90.01, size: 3999 },
+  };
+  return JSON.stringify(save);
+})();
+const CURRENT_TRAINING_RESTORE_RAW = (() => {
+  const save = JSON.parse(VETERAN_ATLAS_RAW);
+  const restoreView = save.view;
+  save.tut = 0;
+  save.tsnap = { view: restoreView };
+  save.view = {
+    type: 'star', gal: { ...restoreView.gal }, star: { ...restoreView.star },
+  };
+  return JSON.stringify(save);
+})();
+const SAVED_AUTH_EXPLORER_NAME = 'Saved Reach Authorization Repair';
+const TRAINING_AUTH_EXPLORER_NAME = 'Training Reach Authorization Repair';
+const importedExplorerName = (name) => String(name).replace(/[<>&"']/g, '').trim().slice(0, 24);
+const OUTER_AUTH_SAVED_ROUTE_RAW = (() => {
+  const save = JSON.parse(VETERAN_ATLAS_RAW);
+  save.me = SAVED_AUTH_EXPLORER_NAME;
+  save.essence = 4321;
+  save.prime = {};
+  save.view = outerReachGalaxyView();
+  save.log = [...save.log, {
+    id: 'outer-galaxy', title: 'Outer Reach', sub: 'A proven destination beyond saved reach', badge: 'Remote',
+    where: outerReachGalaxyView(),
   }];
+  return JSON.stringify(save);
+})();
+const OUTER_AUTH_TRAINING_RAW = (() => {
+  const save = JSON.parse(VETERAN_ATLAS_RAW);
+  const home = save.view;
+  save.me = TRAINING_AUTH_EXPLORER_NAME;
+  save.essence = 3456;
+  save.prime = {};
+  save.tut = 0;
+  save.tsnap = { view: outerReachGalaxyView() };
+  save.view = { type: 'star', gal: { ...home.gal }, star: { ...home.star } };
   return JSON.stringify(save);
 })();
 const VETERAN_STAGE3_RAW = (() => {
@@ -271,6 +358,49 @@ const dispatchKeyPress = async (session, key, code = key, modifiers = 0) => {
 };
 
 const fails = [];
+const navKeyInventoryMatchesMode = (state) => {
+  const galaxy = state?.navGalaxyKey;
+  const star = state?.navStarKey;
+  const world = state?.navWorldKey;
+  const present = (key) => typeof key === 'string' && key.length > 0;
+  if (state?.mode === 'universe') return galaxy === null && star === null && world === null;
+  if (state?.mode === 'galaxy') return present(galaxy) && star === null && world === null;
+  if (state?.mode === 'system') return present(galaxy) && present(star) && world === null;
+  if (state?.mode === 'surface') return present(galaxy) && present(star) && present(world);
+  return false;
+};
+const renderedSceneMatchesNav = (state) => !!state?.renderedScene
+  && Number.isInteger(state.renderedScene.serial)
+  && state.renderedScene.serial > 0
+  && navKeyInventoryMatchesMode(state)
+  && state.renderedScene.mode === state.mode
+  && state.renderedScene.galaxyKey === state.navGalaxyKey
+  && state.renderedScene.starKey === state.navStarKey
+  && state.renderedScene.worldKey === state.navWorldKey;
+const requireRenderedSceneMatch = (label, state) => {
+  if (!renderedSceneMatchesNav(state)) {
+    fails.push(`${label}: rendered-scene receipt disagrees with the canonical navigation keys: `
+      + JSON.stringify({
+        mode: state?.mode,
+        nav: [state?.navGalaxyKey, state?.navStarKey, state?.navWorldKey],
+        rendered: state?.renderedScene,
+      }));
+  }
+};
+const renderedSceneAdvanced = (before, after) => renderedSceneMatchesNav(after)
+  && Number.isInteger(before?.renderedScene?.serial)
+  && after.renderedScene.serial > before.renderedScene.serial;
+const requireRenderedSceneAdvance = (label, before, after) => {
+  if (!renderedSceneAdvanced(before, after)) {
+    fails.push(`${label}: accepted navigation did not publish a newer draw-tail receipt: `
+      + JSON.stringify({
+        before: before?.renderedScene,
+        after: after?.renderedScene,
+        mode: after?.mode,
+        nav: [after?.navGalaxyKey, after?.navStarKey, after?.navWorldKey],
+      }));
+  }
+};
 const sliceToken = async (session) => {
   try {
     const r = await send('Runtime.evaluate', {
@@ -435,6 +565,26 @@ try {
   if (boot.st && !/Make planetfall on 2 worlds of Sol/.test(boot.st.objective)) fails.push('objective chip wrong at fresh boot: ' + JSON.stringify(boot.st.objective));
   if (!boot.hintKw.includes('tap') || !boot.hintKw.includes('zoom')) {
     fails.push('hint action verbs are not highlighted through real .kw nodes: ' + JSON.stringify(boot.hintKw));
+  }
+  if (boot.st) {
+    requireRenderedSceneMatch('FRESH BOOT', boot.st);
+    const zeroReceipt = {
+      ...boot.st,
+      renderedScene: {
+        serial: 0, mode: 'universe', galaxyKey: null, starKey: null, worldKey: null,
+      },
+    };
+    if (renderedSceneMatchesNav(zeroReceipt)) {
+      fails.push('RENDERED-SCENE RECEIPT CONTROL FAILED — initial universe-shaped serial 0 stayed green');
+    }
+    const universeForeignKey = {
+      ...boot.st,
+      navGalaxyKey: 'injected-universe-galaxy',
+      renderedScene: { ...boot.st.renderedScene, galaxyKey: 'injected-universe-galaxy' },
+    };
+    if (renderedSceneMatchesNav(universeForeignKey)) {
+      fails.push('RENDERED-SCENE KEY-INVENTORY CONTROL FAILED — universe accepted an agreeing non-null galaxy key');
+    }
   }
   const chromeA11yCheck = `(()=>{ const survey=document.getElementById('docksurvey'),card=document.getElementById('survey'),charts=document.getElementById('dockcharts');
     return {surveyControls:survey?.getAttribute('aria-controls')||null,surveyExpanded:survey?.getAttribute('aria-expanded')||null,
@@ -697,20 +847,55 @@ try {
   }
   if (!/Milky Way/.test(st2.trail)) fails.push('galaxy trail missing Milky Way: ' + JSON.stringify(st2.trail));
   if (!/stars sharing/.test(st2.ctx)) fails.push('galaxy caption (galaxyStats) missing: ' + JSON.stringify(st2.ctx));
+  requireRenderedSceneAdvance('GENERATED MILKY WAY ROUTE', st1, st2);
+  const galaxyNullKeyCtl = {
+    ...st2,
+    navGalaxyKey: null,
+    renderedScene: { ...st2.renderedScene, galaxyKey: null },
+  };
+  if (renderedSceneMatchesNav(galaxyNullKeyCtl)) {
+    fails.push('RENDERED-SCENE KEY-INVENTORY CONTROL FAILED — galaxy accepted agreeing null provenance keys');
+  }
   const shot2 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(screenshotPath('galaxy'), Buffer.from(shot2.data, 'base64'));
 
-  /* 3a-charter. THE ASCENT GATE, fresh save = stage 0 = SOL ONLY: a non-Sol
-     dive must be REFUSED with an honest current-slice boundary. This doubles
-     as the gate's live negative control — if gating ever breaks, this dive
-     succeeds and fails the run. */
-  const gated = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
-    S.api.descendSystem({ seed: 31337, x: 300, y: 300 });
-    const st=S.api.state();
-    return { before: {mode:before.mode,gal:before.gal,star:before.star},
-      mode: st.mode, gal: st.gal, star: st.star, stage: st.stage,
-      toastOn: st.toastOn, toastText: st.toastText }; })()`);
+  /* 3a-charter. THE ASCENT GATE, fresh save = stage 0 = SOL ONLY. Select the
+     next real generated star through the canvas keyboard surface, survey it,
+     then press its live Enter-system action. A fabricated 31337 tuple could
+     be rejected by source proof without ever exercising the Charter law. */
+  const gateBefore = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
+    S.app.canvas.focus(); return {mode:before.mode,gal:before.gal,star:before.star}; })()`);
+  let gateTarget = null;
+  const gateSelections = [];
+  for (let attempt = 0; attempt < 32; attempt++) {
+    await keyIn('ArrowRight', 'ArrowRight');
+    gateTarget = await evalIn(`window.__CF_SLICE__.api.state().keyboardTarget`);
+    gateSelections.push(gateTarget);
+    if (/^star:/.test(gateTarget || '') && !/:424242:/.test(gateTarget || '')) break;
+  }
+  const gateTargetIsNonSol = /^star:/.test(gateTarget || '') && !/:424242:/.test(gateTarget || '');
+  if (gateTargetIsNonSol) await keyIn('Enter', 'Enter');
+  const gateTravel = await evalIn(travelCheck);
+  if (gateTravel.ok) await clickDesktopPoint(gateTravel);
+  const gatedState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const gated = {
+    before: gateBefore,
+    target: gateTarget,
+    selections: gateSelections,
+    action: gateTravel,
+    mode: gatedState.mode,
+    gal: gatedState.gal,
+    star: gatedState.star,
+    stage: gatedState.stage,
+    toastOn: gatedState.toastOn,
+    toastText: gatedState.toastText,
+  };
   if (gated.stage !== 0) fails.push('fresh save is not charter stage 0: ' + JSON.stringify(gated.stage));
+  if (!gateTargetIsNonSol
+    || !gated.action.ok || gated.action.label !== 'Enter system') {
+    fails.push('CHARTER GATE SETUP did not select a genuine generated non-Sol star/action: '
+      + JSON.stringify(gated));
+  }
   const preservedBlockedNav = (state) => state.mode === 'galaxy'
     && state.gal === state.before.gal && state.star === state.before.star;
   if (!preservedBlockedNav(gated)) {
@@ -730,6 +915,7 @@ try {
     const ok=/development slice/i.test(text)&&!/shipyard|\\bbuild\\b|mine|fabricat/i.test(text);
     toast.innerHTML=prior; return {ok,text}; })()`);
   if (gateToastCtl.ok) fails.push('CHARTER GATE COPY CONTROL FAILED — injected Shipyard direction stayed green: ' + JSON.stringify(gateToastCtl));
+  if (gatedState.cardOpen) await keyIn('Escape', 'Escape');
   const perf = await evalIn(`window.__CF_SLICE__.api.state().galaxyBuildMs`);
   console.log('  (galaxy rebuild: ' + (typeof perf === 'number' ? perf.toFixed(0) : '?') + 'ms)');
 
@@ -761,6 +947,7 @@ try {
   }
   if (!stSys.trail.includes('Sun (Sol)')) fails.push('system trail missing Sun (Sol): ' + JSON.stringify(stSys.trail));
   if (!/8 worlds orbit Sol/.test(stSys.ctx)) fails.push('Sol caption wrong: ' + JSON.stringify(stSys.ctx));
+  requireRenderedSceneAdvance('GENERATED SOL ROUTE', solSurvey.state, stSys);
   /* the DOCK press must LAND (simrun-dom law): charts OFF by default
      (v1.3.6, Nick's call) → press → the chart layer becomes VISIBLE and the
      save field flips */
@@ -1134,6 +1321,42 @@ try {
     fails.push('GUIDE CHARTER COPY CONTROL FAILED — injected pre-recovery wording stayed current: '
       + JSON.stringify(charterGuideStaleCtl));
   }
+  const renderedTrainingRestoreGuideCheck = (expectedTitle) => `(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
+    text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
+    status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
+    required=['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view',
+      'If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry'],
+    missing=required.filter((part)=>!text.includes(part)),
+    contradictory=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(text)
+      ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(text)
+      ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(text)
+      ||/(?:reload|retry|restarts?|resumes?)[^.!?]{0,72}(?:Earth|surface|finish(?:ed)? (?:world|location)|last location)/i.test(text)
+      ||/verification pauses[^.!?]{0,160}reload safely restarts Field Training from proven Sol/i.test(text);
+    return {ok:title.includes(${JSON.stringify(expectedTitle)})&&status==='partial'&&missing.length===0&&!contradictory,
+      title,status,missing,contradictory,text};})()`;
+  const renderTrainingRestoreGuideTopic = async (topic, expectedTitle) => evalIn(`(()=>{ const input=document.getElementById('guidesearch');
+    input.value=${JSON.stringify(topic)};input.dispatchEvent(new Event('input',{bubbles:true}));
+    document.querySelector('[data-guide-topic=${JSON.stringify(topic)}]')?.click();return ${renderedTrainingRestoreGuideCheck(expectedTitle)};})()`);
+  const settingsTrainingRestoreGuide = await renderTrainingRestoreGuideTopic('settings', 'Settings');
+  const savingTrainingRestoreGuide = await renderTrainingRestoreGuideTopic('saving', 'Your save & reset');
+  if (!settingsTrainingRestoreGuide.ok || !savingTrainingRestoreGuide.ok) {
+    fails.push('GUIDE Field Training restore/source-verification boundary did not render in Settings and Saving: '
+      + JSON.stringify({ settingsTrainingRestoreGuide, savingTrainingRestoreGuide }));
+  }
+  const trainingRestoreGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
+    paragraph=[...article.querySelectorAll('p')].find((node)=>(node.textContent||'').includes('normal Finish or Skip source-verifies')),
+    prior=paragraph?.innerHTML||'',marker=document.createElement('p');let missing=null,contradiction=null;
+    if(paragraph){paragraph.textContent='During Field Training, Finish or Skip restores the pre-training view.';
+      missing=${renderedTrainingRestoreGuideCheck('Your save & reset')};paragraph.innerHTML=prior;}
+    marker.textContent='If verification pauses, a reload safely restarts Field Training from proven Sol.';article?.appendChild(marker);
+    contradiction=${renderedTrainingRestoreGuideCheck('Your save & reset')};marker.remove();
+    const restored=!!paragraph&&paragraph.innerHTML===prior&&${renderedTrainingRestoreGuideCheck('Your save & reset')}.ok;
+    return {ok:missing?.ok===false&&missing?.missing?.length>0&&contradiction?.ok===false&&contradiction?.contradictory===true&&restored,
+      missing,contradiction,restored};})()`);
+  if (!trainingRestoreGuideCtl.ok) {
+    fails.push('GUIDE TRAINING RESTORE COPY CONTROL FAILED — missing/absolute recovery copy did not turn the rendered outcome red: '
+      + JSON.stringify(trainingRestoreGuideCtl));
+  }
   const releaseBaseline = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state();
     return {rnSeen:s.rnSeen,releasePending:s.releasePending}; })()`);
   if (releaseBaseline.rnSeen !== '0' || releaseBaseline.releasePending !== null) {
@@ -1153,9 +1376,19 @@ try {
     const text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),title=article?.querySelector('[data-guide-heading]')?.textContent||'';
     const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
       recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
+      training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
       headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
       firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),
-      charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes';
+      charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
+      trainingText=training?.textContent||'',
+      trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
+        ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
+        ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
+        ||/verification pauses[^.!?]{0,160}reload safely restarts Field Training from proven Sol/i.test(trainingText),
+      trainingContract=trainingText.includes('A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view')
+        &&trainingText.includes('if verification pauses, that exact view stays saved')
+        &&trainingText.includes('when Sol can still be verified, Training returns there')
+        &&trainingText.includes('reload can restart safely and retry')&&!trainingContradiction;
     const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
@@ -1163,15 +1396,15 @@ try {
       status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,headings,bulletCount:bullets.length,
       populated:bullets.length===44&&bullets.every((bullet)=>bullet.length>0),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
-      complete:charterPlacement&&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
+      complete:charterPlacement&&trainingContract&&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
         &&/a genuine empty-sky press still dismisses it/.test(text)
         &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
         &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
         &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text),
-      charterPlacement,firstHeading,recoveryHeading,
-      honest:!overclaim&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
+      charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,
+      honest:!overclaim&&!trainingContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
       authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
   const releaseDraft = await evalIn(releaseDraftCheck);
@@ -1233,6 +1466,20 @@ try {
     || !releaseCharterCopyCtl.restored) {
     fails.push('GUIDE RELEASE CHARTER CONTROL FAILED — changed Charter statements were not both required: '
       + JSON.stringify(releaseCharterCopyCtl));
+  }
+  const releaseTrainingCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+    .find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||''));
+    if(!row)return {stale:{complete:true},contradiction:{honest:true},error:'missing Training release row'};const prior=row.textContent;
+    row.textContent=prior.replace('if verification pauses, that exact view stays saved, and when Sol can still be verified, Training returns there so a reload can restart safely and retry',
+      'if verification pauses, that exact view stays saved and a reload safely restarts Field Training from proven Sol');
+    const stale=${releaseDraftCheck};row.textContent=prior+' Finish or Skip always restores immediately, even when verification pauses.';
+    const contradiction=${releaseDraftCheck};row.textContent=prior;
+    return {stale,contradiction,restored:row.textContent===prior};})()`);
+  if (releaseTrainingCopyCtl.stale.complete || releaseTrainingCopyCtl.stale.trainingContract
+    || releaseTrainingCopyCtl.contradiction.complete || releaseTrainingCopyCtl.contradiction.honest
+    || releaseTrainingCopyCtl.contradiction.trainingContract || !releaseTrainingCopyCtl.restored) {
+    fails.push('GUIDE RELEASE TRAINING CONTROL FAILED — stale/contradictory restore claims stayed current: '
+      + JSON.stringify(releaseTrainingCopyCtl));
   }
   const releaseVersionCtl = await evalIn(`(()=>{ const heading=document.querySelector('#guidepanel .guide-topic [data-guide-heading]');
     if(!heading)return {identity:true,error:'missing release heading'};const prior=heading.textContent;heading.textContent=prior.replace('v2.0','v2x0');
@@ -1408,14 +1655,56 @@ try {
   }
   const shot3 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(screenshotPath('sol'), Buffer.from(shot3.data, 'base64'));
+  /* Real planet ingress cannot be proven by surveyOn diagnostics alone.
+     The read-only lookup identifies exact rendered geometry; CDP pointer and
+     keyboard events perform both player actions. A legacy numeric selector
+     and the same seed with the wrong source ordinal must identify nothing. */
+  const earthGeometry = await evalIn(`(()=>{ const api=window.__CF_SLICE__.api;return {
+    exact:(()=>{const target=api.planetScreenTarget(${JSON.stringify(EARTH)});return target?{
+      ...target,hit:document.elementFromPoint(target.screenX,target.screenY)===window.__CF_SLICE__.app.canvas}:null;})(),
+    legacy:api.planetScreenTarget(133),
+    wrong:api.planetScreenTarget({seed:133,ordinal:0})};})()`);
+  if (!earthGeometry.exact || earthGeometry.exact.seed !== 133 || earthGeometry.exact.ordinal !== 2
+    || !(earthGeometry.exact.width > 0) || !(earthGeometry.exact.height > 0)
+    || !earthGeometry.exact.hit || earthGeometry.legacy !== null || earthGeometry.wrong !== null) {
+    fails.push('PLANET TARGET LOOKUP: exact rendered Earth was missing or a legacy/wrong ordinal identified a target: '
+      + JSON.stringify(earthGeometry));
+  }
+  if (earthGeometry.exact) await clickDesktopPoint({
+    x: earthGeometry.exact.screenX,
+    y: earthGeometry.exact.screenY,
+  });
+  await sleep(250);
+  const pointerEarthSurvey = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state();return {
+    mode:s.mode,cardOpen:s.cardOpen,title:s.cardTitle,planet:s.planet,ordinal:s.planetOrdinal,
+    share:window.__CF_SLICE__.api.cardShareCode()};})()`);
+  if (pointerEarthSurvey.mode !== 'system' || !pointerEarthSurvey.cardOpen
+    || pointerEarthSurvey.title !== 'Earth' || pointerEarthSurvey.planet !== null
+    || pointerEarthSurvey.ordinal !== null || !/^CF1-/.test(pointerEarthSurvey.share || '')) {
+    fails.push('PLANET POINTER SURVEY: real rendered Earth pointer did not open the exact pre-Land survey: '
+      + JSON.stringify(pointerEarthSurvey));
+  }
+  if (pointerEarthSurvey.cardOpen) await keyIn('Escape', 'Escape');
+  if (await evalIn(`window.__CF_SLICE__.api.state().keyboardTarget!==null`)) await keyIn('Escape', 'Escape');
+  await evalIn(`window.__CF_SLICE__.app.canvas.focus()`);
+  await keyIn('ArrowRight', 'ArrowRight');
+  const keyboardEarthTarget = await evalIn(`window.__CF_SLICE__.api.state().keyboardTarget`);
+  if (keyboardEarthTarget !== 'planet:424242:133:2' || /:133:0$/.test(keyboardEarthTarget || '')) {
+    fails.push('PLANET KEYBOARD TARGET: first exact system target was not Earth ordinal 2: '
+      + JSON.stringify(keyboardEarthTarget));
+  }
+  await keyIn('Enter', 'Enter');
   const surveyed = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
-    if(!S.api.surveyOn(2)) return { ok:false, why:'surveyOn refused' };
     const card=document.getElementById('survey');
     const rows=[...card.querySelectorAll('[data-row]')].map(r=>r.getAttribute('data-row'));
     const title=(card.querySelector('[data-sel=title]')||{}).textContent;
-    return { ok:true, visible:card.style.display!=='none', title, rows, n:rows.length,
+    return { ok:S.api.state().cardOpen, visible:card.style.display!=='none', title, rows, n:rows.length,
+      keyboardTarget:S.api.state().keyboardTarget, focus:document.activeElement===card.querySelector('[data-act="landcta"]'),
       starCode:S.api.encodeHere(), planetCode:S.api.cardShareCode() }; })()`);
-  if (!surveyed.ok || !surveyed.visible) fails.push('survey card did not open: ' + JSON.stringify(surveyed));
+  if (!surveyed.ok || !surveyed.visible || surveyed.keyboardTarget !== null || !surveyed.focus) {
+    fails.push('PLANET KEYBOARD SURVEY: real Enter did not open Earth and focus its explicit Land action: '
+      + JSON.stringify(surveyed));
+  }
   else {
     if (surveyed.title !== 'Earth') fails.push('landed planet 2 of Sol but the card says: ' + JSON.stringify(surveyed.title));
     for (const want of ['Life', 'Civilization']) {
@@ -1497,39 +1786,77 @@ try {
   if (acceptedCopy.copied !== planetShareCode || !/Share code copied/.test(acceptedCopy.toast)) {
     fails.push('CLIPBOARD success did not copy the exact card address: ' + JSON.stringify(acceptedCopy));
   }
-  /* Same numeric seed is not a complete star identity. Reproduce the stale-
-     card exploit directly: survey real Sol/Earth, move to a forged-coordinate
-     Sol node accepted by the still-open CF1 hierarchy boundary, then ask the
-     dock to reopen/land/share the prior card. Every effect must be refused. */
+  /* Same numeric seed is not a complete star identity. The hostile diagnostic
+     descent itself must now be rejected, keep the rendered galaxy receipt
+     unchanged, and leave the invalidated Earth card unable to reopen/share/
+     chart/land. Then the exact source-generated Sol route must still work. */
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
   await waitDesktopValue('stale-card setup ascent', `window.__CF_SLICE__.api.state().mode==='galaxy'`);
-  await evalIn(`window.__CF_SLICE__.api.descendSystem({seed:424242,x:9999,y:9999})`);
-  await waitDesktopValue('stale-card forged-coordinate setup', `(()=>{ const s=window.__CF_SLICE__.api.state();
-    return s.mode==='system'&&s.star===424242&&s.starX===9999&&s.starY===9999?s:null; })()`);
+  const hostileDescent = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
+    const accepted=S.api.descendSystem({seed:424242,x:9999,y:9999}),after=S.api.state();
+    return {accepted,before,after}; })()`);
+  if (hostileDescent.accepted || hostileDescent.after.mode !== 'galaxy'
+    || hostileDescent.after.star !== null
+    || JSON.stringify(hostileDescent.after.renderedScene) !== JSON.stringify(hostileDescent.before.renderedScene)) {
+    fails.push('HOSTILE DIAGNOSTIC DESCENT: forged Sol coordinates changed navigation/render ownership: '
+      + JSON.stringify(hostileDescent));
+  }
+  requireRenderedSceneMatch('HOSTILE DIAGNOSTIC DESCENT REJECTION', hostileDescent.after);
   const staleCardBlocked = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
     const atlasBefore=S.api.state().atlasCount; document.getElementById('docksurvey').click();
     const share=S.api.cardShareCode(); document.querySelector('#survey [data-act="add"]')?.click(); S.api.landHere();
     const s=S.api.state(); return {mode:s.mode,cardOpen:s.cardOpen,share,landed:s.save.landed.slice(),
       atlasBefore,atlasAfter:s.atlasCount,starX:s.starX,starY:s.starY}; })()`);
-  if (staleCardBlocked.mode !== 'system' || staleCardBlocked.cardOpen || staleCardBlocked.share !== null
+  if (staleCardBlocked.mode !== 'galaxy' || staleCardBlocked.cardOpen || staleCardBlocked.share !== null
     || staleCardBlocked.atlasAfter !== staleCardBlocked.atlasBefore || staleCardBlocked.landed.includes(133)
-    || staleCardBlocked.starX !== 9999 || staleCardBlocked.starY !== 9999) {
-    fails.push('STALE CARD IDENTITY: real-Sol Earth card acted inside same-seed forged coordinates: ' + JSON.stringify(staleCardBlocked));
+    || staleCardBlocked.starX !== null || staleCardBlocked.starY !== null) {
+    fails.push('STALE CARD IDENTITY: rejected forged descent let the old Earth card act: ' + JSON.stringify(staleCardBlocked));
   }
-  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
-  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
-  await waitDesktopValue('stale-card return to galaxy', `window.__CF_SLICE__.api.state().mode==='galaxy'`);
-  await evalIn(`window.__CF_SLICE__.api.descendSystem({seed:424242,x:560,y:170})`);
-  await waitDesktopValue('stale-card return to real Sol', `(()=>{ const s=window.__CF_SLICE__.api.state();
+  await evalIn(`window.__CF_SLICE__.api.descendSystem(${JSON.stringify(SOL_STAR)})`);
+  const canonicalSolAfterHostile = await waitDesktopValue('stale-card return to real Sol', `(()=>{ const s=window.__CF_SLICE__.api.state();
     return s.mode==='system'&&s.starX===560&&s.starY===170?s:null; })()`);
-  const restoredEarthCard = await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.api.surveyOn(2); return S.api.state(); })()`);
-  if (!restoredEarthCard.cardOpen || restoredEarthCard.cardTitle !== 'Earth') {
+  requireRenderedSceneAdvance('HOSTILE DESCENT RECOVERY TO CANONICAL SOL', hostileDescent.after, canonicalSolAfterHostile);
+  await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  /* The diagnostics wrapper is an ingress boundary too. Neither the legacy
+     seed-only selector nor a right seed with the wrong source ordinal may
+     open a card, land, bank progression, repaint, or write storage. */
+  for (const [ordinalRejection, selectorSource] of [
+    ['legacy-number', '133'],
+    ['wrong-ordinal', '{seed:133,ordinal:0}'],
+  ]) {
+    const ordinalBefore = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state();return {
+      mode:s.mode,gal:s.gal,star:s.star,planet:s.planet,planetOrdinal:s.planetOrdinal,
+      cardOpen:s.cardOpen,cardTitle:s.cardTitle,panel:s.panelOpen,atlas:s.atlasCount,
+      objective:s.objective,navGalaxyKey:s.navGalaxyKey,navStarKey:s.navStarKey,navWorldKey:s.navWorldKey,
+      renderedScene:s.renderedScene,save:s.save};})()`);
+    const ordinalRawBefore = await evalIn(READ_PRIMARY_EXPRESSION);
+    const ordinalCalls = await evalIn(`(()=>{ const api=window.__CF_SLICE__.api;return {
+      surveyed:api.surveyOn(${selectorSource}),landed:api.landOn(${selectorSource})};})()`);
+    const ordinalAfter = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state();return {
+      mode:s.mode,gal:s.gal,star:s.star,planet:s.planet,planetOrdinal:s.planetOrdinal,
+      cardOpen:s.cardOpen,cardTitle:s.cardTitle,panel:s.panelOpen,atlas:s.atlasCount,
+      objective:s.objective,navGalaxyKey:s.navGalaxyKey,navStarKey:s.navStarKey,navWorldKey:s.navWorldKey,
+      renderedScene:s.renderedScene,save:s.save};})()`);
+    const ordinalRawAfter = await evalIn(READ_PRIMARY_EXPRESSION);
+    if (ordinalCalls.surveyed || ordinalCalls.landed
+      || JSON.stringify(ordinalAfter) !== JSON.stringify(ordinalBefore)
+      || ordinalRawAfter !== ordinalRawBefore) {
+      fails.push('PLANET ORDINAL REJECTION (' + ordinalRejection + '): diagnostics changed card/navigation/Land/Charter/ledger/render/storage: '
+        + JSON.stringify({ ordinalCalls, before: ordinalBefore, after: ordinalAfter,
+          rawStable: ordinalRawAfter === ordinalRawBefore }));
+    }
+    requireRenderedSceneMatch('PLANET ORDINAL REJECTION (' + ordinalRejection + ')', ordinalAfter);
+  }
+  const restoredEarthCard = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
+    const accepted=S.api.surveyOn(${JSON.stringify(EARTH)}); return {...S.api.state(),accepted}; })()`);
+  if (!restoredEarthCard.accepted || !restoredEarthCard.cardOpen || restoredEarthCard.cardTitle !== 'Earth') {
     fails.push('STALE CARD IDENTITY: real Earth card did not recover after rejected forged context: ' + JSON.stringify(restoredEarthCard));
   }
-  await evalIn(`window.__CF_SLICE__.api.landHere()`);
+  const exactOrdinalLand = await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)})`);
+  if (!exactOrdinalLand) fails.push('PLANET ORDINAL ACCEPTANCE: exact Earth {seed,ordinal} did not survey and Land');
   await sleep(300);
   const landedSurvey = await evalIn(`(()=>{ const S=window.__CF_SLICE__,card=document.getElementById('survey'),
     rarity=[...card.querySelectorAll('[data-row="Rarity"]')],spectral=card.querySelectorAll('[data-row="Spectral class"]');
@@ -1554,6 +1881,24 @@ try {
   if (stSurf.mode !== 'surface') fails.push('landing did not reach surface mode: ' + stSurf.mode);
   if (!/Earth/.test(stSurf.trail)) fails.push('surface trail missing Earth: ' + JSON.stringify(stSurf.trail));
   if (!stSurf.objective.includes('1 / 2')) fails.push('objective chip did not bank the Sol landfall (want 1 / 2): ' + JSON.stringify(stSurf.objective));
+  requireRenderedSceneAdvance('GENERATED EARTH ROUTE', restoredEarthCard, stSurf);
+  const renderedReceiptCtl = {
+    ...stSurf,
+    navWorldKey: `${String(stSurf.navWorldKey)}|injected-mismatch`,
+  };
+  if (renderedSceneMatchesNav(renderedReceiptCtl)) {
+    fails.push('RENDERED-SCENE RECEIPT CONTROL FAILED — an injected world-key mismatch stayed green');
+  }
+  const surfaceNullKeyCtl = {
+    ...stSurf,
+    navGalaxyKey: null,
+    navStarKey: null,
+    navWorldKey: null,
+    renderedScene: { ...stSurf.renderedScene, galaxyKey: null, starKey: null, worldKey: null },
+  };
+  if (renderedSceneMatchesNav(surfaceNullKeyCtl)) {
+    fails.push('RENDERED-SCENE KEY-INVENTORY CONTROL FAILED — surface accepted agreeing null provenance keys');
+  }
   await sleep(900);
   const shot4 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(screenshotPath('earth'), Buffer.from(shot4.data, 'base64'));
@@ -1566,6 +1911,7 @@ try {
   const st3 = await evalIn(`window.__CF_SLICE__.api.state()`);
   /* we landed on Earth before reloading — the SURFACE view must come back */
   if (st3.mode !== 'surface' || st3.gal !== 999 || st3.star !== 424242) fails.push('RELOAD lost the view — IndexedDB persistence failed: ' + JSON.stringify([st3.mode, st3.gal, st3.star]));
+  requireRenderedSceneMatch('SAVED EARTH RELOAD', st3);
   const saved = await evalIn(`window.__CF_SLICE__.api.state().save`);
   if (!saved) fails.push('api.state().save missing');
   else {
@@ -1633,11 +1979,19 @@ try {
   /* Deliberately forge a display-only raw tuple on a valid Earth identity.
      The accepted route must restore source size 78 and re-share 78, never 3999. */
   const namedShareCode = shareCode ? withCodeName(withCodeGalaxySize(shareCode, 3999), 'Blue Earth') : shareCode;
+  const validGalaxyShareCode = shareCode ? asGalaxyCode(withCodeGalaxySize(shareCode, 3999)) : shareCode;
   const validStarShareCode = shareCode ? asStarCode(shareCode) : shareCode;
-  /* This remains a real CF1 route shape for the Charter boundary test below;
-     raw strictness is intentionally planet-only, so star codes stay supported. */
-  const blockedShareCode = shareCode ? withCodeGalaxyPosition(asStarCode(shareCode), 1e7, 1e7) : shareCode;
+  /* A real generated galaxy, not an impossible 1e7 tuple, distinguishes a
+     saved Prime-radius block from strict source rejection. */
+  const blockedShareCode = shareCode ? asGalaxyCode(shareCode, OUTER_REACH_GALAXY) : shareCode;
   const invalidPlanetShareCode = shareCode ? withCodePlanetSeed(shareCode, 4294967295) : shareCode;
+  /* These two tiers were still routed through tolerant decodeWhere before
+     F2. Keep the real seed but spoof one source coordinate so only exact
+     galaxy/star regeneration can reject the otherwise plausible address. */
+  const forgedGalaxyShareCode = shareCode
+    ? withCodeGalaxyPosition(asGalaxyCode(shareCode), 90.01, -60) : shareCode;
+  const forgedStarShareCode = shareCode
+    ? withCodeStarPosition(asStarCode(shareCode), 560.01, 170) : shareCode;
   /* Same staged reach and the real Sol/Earth members, but a parent galaxy
      coordinate that legacy membership-only handling would have accepted. */
   const forgedPlanetShareCode = shareCode
@@ -1649,7 +2003,7 @@ try {
   const repeatObjectiveBefore = await evalIn(`window.__CF_SLICE__.api.state().objective`);
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await sleep(500);
-  await evalIn(`window.__CF_SLICE__.api.landOn(2)`);
+  await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)})`);
   await sleep(500);
   const repeatLand = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (repeatLand.objective !== repeatObjectiveBefore) fails.push('repeat Earth landing changed chapter progression: '
@@ -1657,7 +2011,7 @@ try {
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
   await sleep(350);
-  await evalIn(`window.__CF_SLICE__.api.landOn(0)`);
+  await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(MERCURY)})`);
   await sleep(450);
   const liveGoalBoundaryCheck = `(()=>{ const s=window.__CF_SLICE__.api.state();return {ok:s.mode==='surface'
     &&/next Charter action is not available in this development slice/i.test(s.objective)&&!/mine|fabricat|shipyard|\\bbuild\\b/i.test(s.objective),
@@ -1724,22 +2078,29 @@ try {
   }
   await evalIn(`(()=>{ document.querySelector('#codexpanel [data-pnx]')?.click(); return true; })()`);   /* the ✕, so a route owns Search */
 
-  /* All rejected CF1 routes are correction outcomes: an absent planet, a
-     same-reach forged parent hierarchy, raw fractional identity that legacy
-     decode would coerce into Earth, an oversized CF1 before base64 work, and
-     a star destination beyond Charter. Real Enter retains exact query/Search
-     focus without navigation, landing, Atlas, custom-name, persisted-view,
-     or Compendium-filter side effects. */
+  /* All rejected CF1 routes are correction outcomes: exact galaxy-only and
+     star-only source forgeries (the former tolerant SCN-3 ingress), an absent
+     planet, a same-reach forged planet parent, raw fractional identity that
+     legacy decode would coerce into Earth, an oversized CF1 before base64
+     work, and a genuine galaxy beyond saved Prime reach. Real Enter retains
+     exact query/Search focus without navigation, card, render receipt,
+     landing, Atlas, custom-name, persisted-view, Charter, reward-ledger,
+     raw-IDB, or Compendium-filter side effects. */
   for (const [rejection, rejectedCode] of [
+    ['forged-galaxy-only', forgedGalaxyShareCode],
+    ['forged-star-only', forgedStarShareCode],
     ['invalid-planet', invalidPlanetShareCode],
     ['forged-parent', forgedPlanetShareCode],
     ['coerced-planet', COERCED_EARTH_PLANET_CODE],
     ['oversized-cf1', OVERSIZED_CF1_CODE],
-    ['blocked-charter', blockedShareCode],
+    ['blocked-prime-reach', blockedShareCode],
   ]) {
     const beforeRejected = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state();return {
       mode:s.mode,gal:s.gal,galX:s.galX,galY:s.galY,galSize:s.galSize,star:s.star,starX:s.starX,starY:s.starY,
-      cardOpen:s.cardOpen,atlas:s.atlasCount,landed:s.save.landed.slice(),names:s.save.customNames.slice(),savedView:s.save.savedView};})()`);
+      planet:s.planet,planetOrdinal:s.planetOrdinal,cardOpen:s.cardOpen,cardTitle:s.cardTitle,
+      navGalaxyKey:s.navGalaxyKey,navStarKey:s.navStarKey,navWorldKey:s.navWorldKey,renderedScene:s.renderedScene,
+      atlas:s.atlasCount,codex:s.codexCount,objective:s.objective,save:s.save};})()`);
+    const beforeRejectedRaw = await evalIn(READ_PRIMARY_EXPRESSION);
     await evalIn(`(()=>{ const s=document.getElementById('searchbox'); s.value=${JSON.stringify(String(rejectedCode))}; s.focus(); return true; })()`);
     await keyIn('Enter', 'Enter');
     const expectedRejected = JSON.stringify(beforeRejected);
@@ -1747,13 +2108,22 @@ try {
     const rejectedSearchCheck = `(()=>{ const st=window.__CF_SLICE__.api.state(),s=document.getElementById('searchbox');
       return {ok:st.mode===${JSON.stringify(preJump)}&&st.panelOpen===null&&s.value===${JSON.stringify(String(rejectedCode))}
           &&document.activeElement===s&&JSON.stringify({mode:st.mode,gal:st.gal,galX:st.galX,galY:st.galY,galSize:st.galSize,star:st.star,starX:st.starX,starY:st.starY,
-            cardOpen:st.cardOpen,atlas:st.atlasCount,landed:st.save.landed,names:st.save.customNames,savedView:st.save.savedView})===${expectedRejectedLiteral},
+            planet:st.planet,planetOrdinal:st.planetOrdinal,cardOpen:st.cardOpen,cardTitle:st.cardTitle,
+            navGalaxyKey:st.navGalaxyKey,navStarKey:st.navStarKey,navWorldKey:st.navWorldKey,renderedScene:st.renderedScene,
+            atlas:st.atlasCount,codex:st.codexCount,objective:st.objective,save:st.save})===${expectedRejectedLiteral},
         mode:st.mode,panel:st.panelOpen,query:s.value,focus:document.activeElement===s,
         after:{mode:st.mode,gal:st.gal,galX:st.galX,galY:st.galY,galSize:st.galSize,star:st.star,starX:st.starX,starY:st.starY,
-          cardOpen:st.cardOpen,atlas:st.atlasCount,landed:st.save.landed,names:st.save.customNames,savedView:st.save.savedView}}; })()`;
+          planet:st.planet,planetOrdinal:st.planetOrdinal,cardOpen:st.cardOpen,cardTitle:st.cardTitle,
+          navGalaxyKey:st.navGalaxyKey,navStarKey:st.navStarKey,navWorldKey:st.navWorldKey,renderedScene:st.renderedScene,
+          atlas:st.atlasCount,codex:st.codexCount,objective:st.objective,save:st.save}}; })()`;
     const rejectedSearch = await evalIn(rejectedSearchCheck);
+    const afterRejectedRaw = await evalIn(READ_PRIMARY_EXPRESSION);
     if (!rejectedSearch.ok) {
       fails.push('SEARCH REJECTED CF1 (' + rejection + '): address did not retain exact Search focus/query: ' + JSON.stringify(rejectedSearch));
+    }
+    requireRenderedSceneMatch('SEARCH REJECTED CF1 (' + rejection + ')', rejectedSearch.after);
+    if (afterRejectedRaw !== beforeRejectedRaw) {
+      fails.push('SEARCH REJECTED CF1 (' + rejection + '): rejected address changed exact IndexedDB bytes');
     }
     const rejectedFocusCtl = await evalIn(`(()=>{ const s=document.getElementById('searchbox'),other=document.getElementById('dockguide');
       other?.focus(); const result=${rejectedSearchCheck}; s.focus(); return result; })()`);
@@ -1761,23 +2131,39 @@ try {
       fails.push('SEARCH REJECTED-CF1 CONTROL FAILED (' + rejection + ') — removed Search focus stayed green: '
         + JSON.stringify(rejectedFocusCtl));
     }
-    /* The forged-parent assertion must see all three forbidden effects, not
-       merely generic rejected-route behavior. The deliberate poisoned
-       expectation models one Atlas write, one landing, and one persisted
-       custom name; the exact same outcome predicate must reject it. */
+    /* Recreate the old tolerant tier outcome without mutating real nav: make
+       the audit surface report the spoofed accepted destination while exact
+       query/focus remain correction-shaped. The same predicate must turn red
+       on the navigation/render snapshot, independently of its focus clause. */
+    if (rejection === 'forged-galaxy-only' || rejection === 'forged-star-only') {
+      const oldTolerantCtl = await evalIn(`(()=>{ const S=window.__CF_SLICE__,original=S.api.state,live=original();
+        const accepted=${rejection === 'forged-galaxy-only'
+          ? `{...live,mode:'galaxy',gal:999,galX:90.01,galY:-60,star:null,starX:null,starY:null}`
+          : `{...live,mode:'system',gal:999,galX:90,galY:-60,star:424242,starX:560.01,starY:170}`};
+        S.api.state=()=>accepted;let result;try{result=${rejectedSearchCheck};}finally{S.api.state=original;}return result;})()`);
+      if (oldTolerantCtl.ok) {
+        fails.push('SEARCH ' + rejection.toUpperCase() + ' CONTROL FAILED — simulated tolerant accepted ingress stayed green: '
+          + JSON.stringify(oldTolerantCtl));
+      }
+    }
+    /* The forged-parent assertion must see the full forbidden effect family,
+       not merely generic rejected-route behavior. Poison Atlas, Land, custom
+       name, Charter, and reward state; the same predicate must reject it. */
     if (rejection === 'forged-parent') {
-      const poisonedExpected = JSON.stringify({
-        ...beforeRejected,
-        atlas: beforeRejected.atlas + 1,
-        landed: [...beforeRejected.landed, 133],
-        names: [...beforeRejected.names, ['p133', 'Forged Sol Earth']],
-      });
+      const poisoned = JSON.parse(JSON.stringify(beforeRejected));
+      poisoned.atlas += 1;
+      poisoned.save.landed.push(133);
+      poisoned.save.customNames.push(['p133', 'Forged Sol Earth']);
+      poisoned.save.ascCh += 1;
+      poisoned.save.essence += 1;
+      poisoned.save.stats.landfalls = (poisoned.save.stats.landfalls || 0) + 1;
+      const poisonedExpected = JSON.stringify(poisoned);
       const forgedParentCtl = await evalIn(rejectedSearchCheck.replace(
         expectedRejectedLiteral,
         JSON.stringify(poisonedExpected),
       ));
       if (forgedParentCtl.ok) {
-        fails.push('SEARCH FORGED-PARENT CONTROL FAILED — poisoned Atlas/land/name outcome stayed green: '
+        fails.push('SEARCH FORGED-PARENT CONTROL FAILED — poisoned Atlas/Land/name/Charter/reward outcome stayed green: '
           + JSON.stringify(forgedParentCtl));
       }
     }
@@ -1796,33 +2182,84 @@ try {
     }
   }
 
-  /* Star-only CF1 remains a supported legacy ingress while raw planet
-     identity gets its narrow proof. It must still reach Sol and hand focus
-     to the exploration canvas, not be mistaken for a rejected planet code. */
+  /* Strict source proof applies at every tier. A valid galaxy route opens its
+     own generated level, replaces forged display size with source size, and
+     hands focus back to the canvas with matching nav/render keys. */
+  const validGalaxyBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
+  await evalIn(`(()=>{ const s=document.getElementById('searchbox'); s.value=${JSON.stringify(String(validGalaxyShareCode))}; s.focus(); return true; })()`);
+  await keyIn('Enter', 'Enter');
+  const validGalaxySearch = await waitDesktopValue('valid strict CF1 galaxy route', `(()=>{ const st=window.__CF_SLICE__.api.state(),s=document.getElementById('searchbox');
+    return st.mode==='galaxy'&&st.gal===999&&!st.cardOpen&&s.value===''&&document.activeElement===window.__CF_SLICE__.app.canvas
+      ? {...st,focus:true,query:s.value}:null; })()`);
+  if (validGalaxySearch.galSize !== 78) {
+    fails.push('SEARCH VALID GALAXY CF1: source metadata did not replace the forged display size: '
+      + JSON.stringify({ galSize: validGalaxySearch.galSize }));
+  }
+  requireRenderedSceneAdvance('SEARCH VALID GALAXY CF1', validGalaxyBefore, validGalaxySearch);
+  const validGalaxyFocusCtl = await evalIn(`(()=>{ const other=document.getElementById('dockguide');other?.focus();
+    const st=window.__CF_SLICE__.api.state();const s=document.getElementById('searchbox');const ok=st.mode==='galaxy'
+      &&st.gal===999&&s.value===''&&document.activeElement===window.__CF_SLICE__.app.canvas;
+    window.__CF_SLICE__.app.canvas.focus();return {ok,focus:document.activeElement===window.__CF_SLICE__.app.canvas};})()`);
+  if (validGalaxyFocusCtl.ok || !validGalaxyFocusCtl.focus) {
+    fails.push('SEARCH VALID GALAXY CONTROL FAILED — removed canvas focus stayed green or was not restored: '
+      + JSON.stringify(validGalaxyFocusCtl));
+  }
+
+  /* Tail-vs-head control: a same-route Search keeps all keys identical, so a
+     receipt recorded before drawing would evade key-only checks. Abort once
+     immediately before the draw-tail record; the route/query/focus may still
+     complete, but serial advancement must turn red. Then repeat normally and
+     require a newer receipt to prove the instrument recovered. */
+  const tailAbortArmed = await evalIn(`window.__CF_SLICE__.api.__smokeAbortNextRenderBeforeReceipt()`);
+  await evalIn(`(()=>{ const s=document.getElementById('searchbox'); s.value=${JSON.stringify(String(validGalaxyShareCode))}; s.focus(); return true; })()`);
+  await keyIn('Enter', 'Enter');
+  const tailAbortedGalaxy = await waitDesktopValue('same-route galaxy draw-tail abort control', `(()=>{ const st=window.__CF_SLICE__.api.state(),s=document.getElementById('searchbox');
+    return st.mode==='galaxy'&&st.gal===999&&s.value===''&&document.activeElement===window.__CF_SLICE__.app.canvas?st:null; })()`);
+  if (!tailAbortArmed
+    || tailAbortedGalaxy.renderedScene.serial !== validGalaxySearch.renderedScene.serial
+    || renderedSceneAdvanced(validGalaxySearch, tailAbortedGalaxy)) {
+    fails.push('RENDERED-SCENE TAIL CONTROL FAILED — aborted same-route draw published or passed a newer receipt: '
+      + JSON.stringify({ tailAbortArmed, before: validGalaxySearch.renderedScene,
+        after: tailAbortedGalaxy.renderedScene }));
+  }
+  await evalIn(`(()=>{ const s=document.getElementById('searchbox'); s.value=${JSON.stringify(String(validGalaxyShareCode))}; s.focus(); return true; })()`);
+  await keyIn('Enter', 'Enter');
+  const tailRecoveredGalaxy = await waitDesktopValue('same-route galaxy draw-tail recovery', `(()=>{ const st=window.__CF_SLICE__.api.state(),s=document.getElementById('searchbox');
+    return st.mode==='galaxy'&&st.gal===999&&s.value===''&&document.activeElement===window.__CF_SLICE__.app.canvas
+      &&st.renderedScene.serial>${Number(tailAbortedGalaxy.renderedScene.serial)}?st:null; })()`);
+  requireRenderedSceneAdvance('RENDERED-SCENE TAIL RECOVERY', tailAbortedGalaxy, tailRecoveredGalaxy);
+
+  /* A valid strict star code must likewise reach Sol and hand focus to the
+     exploration canvas, not be mistaken for a rejected address. */
+  const validStarBefore = tailRecoveredGalaxy;
   await evalIn(`(()=>{ const s=document.getElementById('searchbox'); s.value=${JSON.stringify(String(validStarShareCode))}; s.focus(); return true; })()`);
   await keyIn('Enter', 'Enter');
   const validStarSearch = await waitDesktopValue('valid CF1 star route', `(()=>{ const st=window.__CF_SLICE__.api.state(),s=document.getElementById('searchbox');
     return st.mode==='system'&&st.star===424242&&!st.cardOpen&&s.value===''&&document.activeElement===window.__CF_SLICE__.app.canvas
-      ? {mode:st.mode,star:st.star,cardOpen:st.cardOpen,query:s.value,focus:true}:null; })()`);
+      ? {...st,query:s.value,focus:true}:null; })()`);
   if (!validStarSearch || validStarSearch.mode !== 'system') {
-    fails.push('SEARCH VALID STAR CF1: legacy in-reach star code did not remain supported: ' + JSON.stringify(validStarSearch));
+    fails.push('SEARCH VALID STAR CF1: strict in-reach star code was not accepted: ' + JSON.stringify(validStarSearch));
   }
+  requireRenderedSceneAdvance('SEARCH VALID STAR CF1', validStarBefore, validStarSearch);
 
   /* The accepted planet route is the other half of the contract. Real Enter
      ends on the newly rendered, connected Land button—never a stale input,
      canvas, or implicit planetfall—and clears the consumed CF1 query. */
+  const validPlanetBefore = validStarSearch;
   await evalIn(`(()=>{ const s=document.getElementById('searchbox'); s.value=${JSON.stringify(String(namedShareCode))}; s.focus(); return true; })()`);
   await keyIn('Enter', 'Enter');
   const validPlanetSearchCheck = `(()=>{ const st=window.__CF_SLICE__.api.state(),s=document.getElementById('searchbox');
     const action=document.querySelector('#survey [data-act="landcta"]');
     return {ok:st.mode==='system'&&st.star===424242&&st.galSize===78&&st.cardTitle==='Blue Earth'&&!!action?.isConnected
         &&action.tagName==='BUTTON'&&document.activeElement===action&&s.value==='',mode:st.mode,star:st.star,galSize:st.galSize,title:st.cardTitle,
+      navGalaxyKey:st.navGalaxyKey,navStarKey:st.navStarKey,navWorldKey:st.navWorldKey,renderedScene:st.renderedScene,
       action:action?.getAttribute('data-act')||null,tag:action?.tagName||null,focus:document.activeElement===action,query:s.value}; })()`;
   const validPlanetSearch = await waitDesktopValue('valid CF1 keyboard focus handoff', `(()=>{ const result=${validPlanetSearchCheck};
     return result.mode==='system'&&result.title==='Blue Earth'?result:null; })()`);
   if (!validPlanetSearch.ok) {
     fails.push('SEARCH VALID CF1: Enter did not end on the live explicit Land action: ' + JSON.stringify(validPlanetSearch));
   }
+  requireRenderedSceneAdvance('SEARCH VALID PLANET CF1', validPlanetBefore, validPlanetSearch);
   const validPlanetFocusCtl = await evalIn(`(()=>{ const action=document.querySelector('#survey [data-act="landcta"]'),s=document.getElementById('searchbox');
     s.focus(); const result=${validPlanetSearchCheck}; action?.focus(); return result; })()`);
   if (validPlanetFocusCtl.ok) {
@@ -1909,6 +2346,135 @@ try {
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.z=30; return 1; })()`);
   const stS2 = await waitDesktopValue('galaxy-to-Sol zoom', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'&&s.star===424242?s:null; })()`);
   if (stS2.mode !== 'system' || stS2.star !== 424242) fails.push('zoom-in over the Sun did not dive into Sol: ' + JSON.stringify([stS2.mode, stS2.star]));
+
+  /* 4b0. AUTHORIZATION IS PART OF STORED-ROUTE ACCEPTANCE. This complete
+     supported expedition names a real, source-proven outer galaxy but owns
+     zero Prime Signatures. Boot must repair only the unauthorized location
+     to Cosmos; its identity/progress/history remain the same. The same raw
+     outer route in Atlas stays proven/enabled, yet its real pointer action
+     must run the common authorization boundary without closing or moving. */
+  await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
+    q.onerror=()=>reject(q.error);q.onsuccess=()=>{const db=q.result,tx=db.transaction('meta','readwrite');
+      tx.objectStore('meta').put(${JSON.stringify(OUTER_AUTH_SAVED_ROUTE_RAW)},'save');
+      tx.oncomplete=()=>{db.close();resolve(true)};tx.onerror=()=>reject(tx.error);};})`);
+  await navigateToSlice(sess, URL0, 'source-valid saved route beyond saved reach');
+  await sleep(2200);
+  const outerAuthBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const outerAuthBootOutcome = (state) => state.mode === 'universe'
+    && state.gal === null && state.star === null && state.planet === null
+    && state.save.savedView === null && state.save.viewType === null
+    && state.save.name === importedExplorerName(SAVED_AUTH_EXPLORER_NAME) && state.save.essence === 4321
+    && JSON.stringify(state.save.landed) === JSON.stringify([133, 134])
+    && state.save.customNames.some(([key, name]) => key === 'p133' && name === 'Homeworld')
+    && state.save.ascCh === 2 && Object.keys(state.save.primeFill).length === 0
+    && state.codexCount === 3 && state.atlasCount === 4 && state.atlasTravelable === 2;
+  if (!outerAuthBootOutcome(outerAuthBoot)) {
+    fails.push('SAVED ROUTE AUTHORIZATION: source-valid outer location did not fall back home with unrelated ledger intact: '
+      + JSON.stringify(outerAuthBoot));
+  }
+  requireRenderedSceneMatch('SAVED ROUTE AUTHORIZATION FALLBACK', outerAuthBoot);
+  if (outerAuthBootOutcome({ ...outerAuthBoot, mode: 'galaxy', gal: OUTER_REACH_GALAXY.seed })
+    || outerAuthBootOutcome({
+      ...outerAuthBoot, save: { ...outerAuthBoot.save, essence: 0 },
+    })) {
+    fails.push('SAVED ROUTE AUTHORIZATION CONTROL FAILED — injected unauthorized navigation/progress loss stayed green');
+  }
+  await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  const outerAuthRepairedRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  if (outerAuthRepairedRaw.view !== null
+    || outerAuthRepairedRaw.me !== importedExplorerName(SAVED_AUTH_EXPLORER_NAME)
+    || outerAuthRepairedRaw.essence !== 4321 || Number(outerAuthRepairedRaw.asc) !== 2
+    || Object.keys(outerAuthRepairedRaw.prime || {}).length !== 0
+    || !Array.isArray(outerAuthRepairedRaw.log)
+    || !outerAuthRepairedRaw.log.some((row) => row?.id === 'outer-galaxy')
+    || ![133, 134].every((seed) => outerAuthRepairedRaw.land?.includes(seed))) {
+    fails.push('SAVED ROUTE AUTHORIZATION: persisted repair changed more than the view/normal export projection: '
+      + JSON.stringify(outerAuthRepairedRaw));
+  }
+  const outerAtlasSetup = await evalIn(`(()=>{ document.getElementById('railatlas').click();
+    const row=document.querySelector('#atlaspanel [data-aid="outer-galaxy"]'),r=row?.getBoundingClientRect(),s=window.__CF_SLICE__.api.state();
+    return {row:{exists:!!row,tag:row?.tagName||null,disabled:!!row?.disabled,aria:row?.getAttribute('aria-disabled')||null,
+      x:r?(r.left+r.right)/2:null,y:r?(r.top+r.bottom)/2:null,h:r?.height||0},before:s};})()`);
+  const outerAtlasRawBefore = await evalIn(READ_PRIMARY_EXPRESSION);
+  if (!outerAtlasSetup.row.exists || outerAtlasSetup.row.tag !== 'BUTTON' || outerAtlasSetup.row.disabled
+    || outerAtlasSetup.row.aria === 'true' || !(outerAtlasSetup.row.h >= 44)
+    || outerAtlasSetup.before.panelOpen !== 'atlas') {
+    fails.push('ATLAS AUTHORIZATION SETUP: source-proven outer route was not an enabled real row: '
+      + JSON.stringify(outerAtlasSetup));
+  } else {
+    await clickDesktopPoint({ x: outerAtlasSetup.row.x, y: outerAtlasSetup.row.y });
+  }
+  await sleep(120);
+  const outerAtlasAfter = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const outerAtlasRawAfter = await evalIn(READ_PRIMARY_EXPRESSION);
+  const atlasAuthStableProjection = (state) => JSON.stringify({
+    mode: state.mode, gal: state.gal, galX: state.galX, galY: state.galY,
+    star: state.star, starX: state.starX, starY: state.starY,
+    planet: state.planet, planetOrdinal: state.planetOrdinal,
+    panelOpen: state.panelOpen, cardOpen: state.cardOpen, cardTitle: state.cardTitle,
+    renderedScene: state.renderedScene, atlasCount: state.atlasCount, save: state.save,
+  });
+  const outerAtlasBoundary = outerAtlasAfter.toastSerial > outerAtlasSetup.before.toastSerial
+    && /Beyond Your Saved Reach/.test(outerAtlasAfter.toastText)
+    && !/Beyond Your Charter/.test(outerAtlasAfter.toastText);
+  if (atlasAuthStableProjection(outerAtlasAfter) !== atlasAuthStableProjection(outerAtlasSetup.before)
+    || outerAtlasRawAfter !== outerAtlasRawBefore || !outerAtlasBoundary) {
+    fails.push('ATLAS AUTHORIZATION: enabled outer route bypassed/closed navigation, changed ledger/storage, or missed its exact boundary: '
+      + JSON.stringify({ before: outerAtlasSetup.before, after: outerAtlasAfter,
+        rawStable: outerAtlasRawAfter === outerAtlasRawBefore, outerAtlasBoundary }));
+  }
+  const atlasAuthBypassCtl = {
+    ...outerAtlasAfter,
+    mode: 'galaxy', gal: OUTER_REACH_GALAXY.seed,
+    galX: OUTER_REACH_GALAXY.x, galY: OUTER_REACH_GALAXY.y,
+    panelOpen: null,
+  };
+  if (atlasAuthStableProjection(atlasAuthBypassCtl) === atlasAuthStableProjection(outerAtlasSetup.before)) {
+    fails.push('ATLAS AUTHORIZATION CONTROL FAILED — injected direct outer-galaxy bypass stayed green');
+  }
+  if (outerAtlasAfter.panelOpen === 'atlas') await closeDesktopPanel();
+
+  /* 4b1. STORED-ROUTE FIELD REPAIR. A complete supported expedition with a
+     stale same-seed galaxy coordinate must boot safely at Cosmos, repair only
+     `view`, and preserve identity, progress, Atlas history, Charter, rewards,
+     and names. This drives the raw IndexedDB ingress rather than an in-memory
+     resolver probe. */
+  await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
+    q.onerror=()=>reject(q.error);q.onsuccess=()=>{const db=q.result,tx=db.transaction('meta','readwrite');
+      tx.objectStore('meta').put(${JSON.stringify(STALE_SAVED_ROUTE_RAW)},'save');
+      tx.oncomplete=()=>{db.close();resolve(true)};tx.onerror=()=>reject(tx.error);};})`);
+  await navigateToSlice(sess, URL0, 'stale saved-route field-local fallback');
+  await sleep(2200);
+  const staleSavedBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const staleSavedBootOutcome = (state) => state.mode === 'universe'
+    && state.gal === null && state.star === null && state.planet === null
+    && state.save.savedView === null && state.save.name === 'Field-local Route Repair'
+    && state.save.essence === 4321 && JSON.stringify(state.save.landed) === JSON.stringify([133, 134])
+    && state.save.customNames.some(([key, name]) => key === 'p133' && name === 'Homeworld')
+    && state.save.ascCh === 2 && state.codexCount === 3 && state.atlasCount === 3;
+  if (!staleSavedBootOutcome(staleSavedBoot)) {
+    fails.push('SAVED ROUTE FIELD REPAIR: stale location did not fall back to Cosmos with unrelated progress intact: '
+      + JSON.stringify(staleSavedBoot));
+  }
+  requireRenderedSceneMatch('SAVED ROUTE FIELD REPAIR', staleSavedBoot);
+  if (staleSavedBootOutcome({ ...staleSavedBoot, mode: 'surface' })
+    || staleSavedBootOutcome({
+      ...staleSavedBoot, save: { ...staleSavedBoot.save, essence: 0 },
+    })) {
+    fails.push('SAVED ROUTE FIELD-REPAIR CONTROL FAILED — injected stale navigation/progress loss stayed green');
+  }
+  await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  const repairedSavedRaw = await evalIn(READ_PRIMARY_EXPRESSION);
+  let repairedSaved = null;
+  try { repairedSaved = JSON.parse(repairedSavedRaw); } catch { /* finding below includes the raw failure */ }
+  if (!repairedSaved || repairedSaved.view !== null || repairedSaved.me !== 'Field-local Route Repair'
+    || repairedSaved.essence !== 4321 || !Array.isArray(repairedSaved.land)
+    || ![133, 134].every((seed) => repairedSaved.land.includes(seed))
+    || !Array.isArray(repairedSaved.names)
+    || !repairedSaved.names.some(([key, name]) => key === 'p133' && name === 'Homeworld')) {
+    fails.push('SAVED ROUTE FIELD REPAIR: exact stored replacement did not isolate repair to `view`: '
+      + JSON.stringify(repairedSaved));
+  }
 
   /* 4c. GATE C's FRONT DOOR, rehearsed with the veteran fixture: the import
      sheet's own path (api.importBlob = the button's handler) must validate,
@@ -2006,13 +2572,357 @@ try {
   try { postRacePrimary = JSON.parse(postRacePrimaryRaw); } catch { /* finding below carries the raw parse failure */ }
   if (vet.save.name !== 'Dakk') fails.push('veteran import did not boot as Dakk: ' + JSON.stringify(vet.save.name));
   if (vet.save.essence !== 5000) fails.push('veteran essence wrong: ' + JSON.stringify(vet.save.essence));
-  if (vet.mode !== 'surface') fails.push('veteran savedView (surface) not restored: ' + vet.mode);
+  if (vet.mode !== 'surface' || vet.gal !== 999 || vet.galX !== 90 || vet.galY !== -60
+    || vet.galSize !== 78 || vet.star !== 424242 || vet.starX !== 560 || vet.starY !== 170
+    || vet.planet !== 133 || vet.planetOrdinal !== 2
+    || vet.save.savedView?.gal?.size !== 78) {
+    fails.push('veteran savedView was not source-regenerated with exact hierarchy/ordinal/metadata: '
+      + JSON.stringify(vet));
+  }
+  requireRenderedSceneMatch('VETERAN SAVED ROUTE', vet);
   if (vet.codexCount !== 3) fails.push('veteran Compendium count wrong (want 3): ' + JSON.stringify(vet.codexCount));
   if (!postRacePrimary || postRacePrimary.me !== 'Dakk' || postRacePrimary.essence !== 5000
     || postRacePrimary.me === 'Stale Autosave Must Lose') {
     fails.push('IMPORT/AUTOSAVE/DUPLICATE RACE: imported primary did not remain authoritative after reload/settle: '
       + JSON.stringify({ state: vet.save, storedName: postRacePrimary?.me, storedEssence: postRacePrimary?.essence }));
   }
+
+  /* A current one-key Training snapshot can be perfectly source-proven and
+     still unauthorized by the saved expedition. Real Skip must apply the
+     same Prime/Charter seam as Search/Atlas: home fallback, snapshot clear,
+     and no unrelated ledger loss. */
+  const authTrainingSource = JSON.parse(OUTER_AUTH_TRAINING_RAW);
+  if (JSON.stringify(Object.keys(authTrainingSource.tsnap || {})) !== JSON.stringify(['view'])) {
+    fails.push('TRAINING AUTHORIZATION FIXTURE CONTROL FAILED — tsnap is not exact `{view}`');
+  }
+  const authTrainingToken = await sliceToken(sess);
+  try { await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(OUTER_AUTH_TRAINING_RAW)})`); }
+  catch { /* successful replacement reloads */ }
+  await waitForSlice(sess, 'source-valid Training snapshot beyond saved reach', { previousToken: authTrainingToken });
+  await sleep(1800);
+  const authTrainingBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (authTrainingBoot.mode !== 'system' || authTrainingBoot.gal !== 999 || authTrainingBoot.star !== 424242
+    || !authTrainingBoot.tutActive || authTrainingBoot.tutStep !== 'welcome'
+    || Object.keys(authTrainingBoot.tutSnapshotPending || {}).join('|') !== 'view'
+    || authTrainingBoot.save.name !== importedExplorerName(TRAINING_AUTH_EXPLORER_NAME)
+    || authTrainingBoot.save.essence !== 3456 || Object.keys(authTrainingBoot.save.primeFill).length !== 0) {
+    fails.push('TRAINING AUTHORIZATION: exact one-key outer snapshot did not boot pending over the authorized Sol drill: '
+      + JSON.stringify(authTrainingBoot));
+  }
+  requireRenderedSceneMatch('TRAINING AUTHORIZATION BOOT', authTrainingBoot);
+  const authTrainingLedger = (state) => JSON.stringify({
+    ...state.save,
+    viewType: null,
+    savedView: null,
+  });
+  const authTrainingSkip = await evalIn(`(()=>{ const button=document.querySelector('[data-sel="tutskip"]');
+    button?.click();return {pressed:!!button};})()`);
+  const authTrainingRestored = await waitDesktopValue('unauthorized Training restore home fallback', `(()=>{ const s=window.__CF_SLICE__.api.state();
+    return !s.tutActive&&s.tutDone&&s.mode==='universe'&&s.tutSnapshotPending===null?s:null;})()`);
+  const authTrainingOutcome = (state) => state.mode === 'universe'
+    && state.gal === null && state.star === null && state.planet === null
+    && state.tutSnapshotPending === null && state.save.savedView === null
+    && authTrainingLedger(state) === authTrainingLedger(authTrainingBoot)
+    && renderedSceneAdvanced(authTrainingBoot, state);
+  if (!authTrainingSkip.pressed || !authTrainingOutcome(authTrainingRestored)) {
+    fails.push('TRAINING AUTHORIZATION: real Skip did not home-fallback/clear while preserving unrelated ledger: '
+      + JSON.stringify({ pressed: authTrainingSkip.pressed, before: authTrainingBoot, after: authTrainingRestored }));
+  }
+  requireRenderedSceneAdvance('TRAINING AUTHORIZATION FALLBACK', authTrainingBoot, authTrainingRestored);
+  const authTrainingCtl = {
+    ...authTrainingRestored,
+    mode: 'galaxy', gal: OUTER_REACH_GALAXY.seed,
+    tutSnapshotPending: { view: outerReachGalaxyView() },
+  };
+  if (authTrainingOutcome(authTrainingCtl)) {
+    fails.push('TRAINING AUTHORIZATION CONTROL FAILED — injected outer restore/uncleared snapshot stayed green');
+  }
+  await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  const authTrainingRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  if (Object.prototype.hasOwnProperty.call(authTrainingRaw, 'tsnap') || authTrainingRaw.view !== null
+    || authTrainingRaw.me !== importedExplorerName(TRAINING_AUTH_EXPLORER_NAME)
+    || authTrainingRaw.essence !== 3456
+    || Object.keys(authTrainingRaw.prime || {}).length !== 0) {
+    fails.push('TRAINING AUTHORIZATION: home fallback/snapshot clear did not persist without ledger drift: '
+      + JSON.stringify(authTrainingRaw));
+  }
+
+  /* Current Field Training snapshots have exactly one own key, `view`. Drive
+     that persisted shape through import → replacement boot → the real Skip
+     action. Completion must source-prove and restore Earth in one action,
+     clear the pending snapshot, and leave every expedition ledger unchanged. */
+  const trainingRestoreSource = JSON.parse(CURRENT_TRAINING_RESTORE_RAW);
+  if (JSON.stringify(Object.keys(trainingRestoreSource.tsnap || {})) !== JSON.stringify(['view'])) {
+    fails.push('TRAINING ONE-KEY FIXTURE CONTROL FAILED — current tsnap is not exact `{view}`');
+  }
+  const trainingRestoreToken = await sliceToken(sess);
+  try { await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(CURRENT_TRAINING_RESTORE_RAW)})`); }
+  catch { /* successful replacement reloads */ }
+  await waitForSlice(sess, 'current one-key Training snapshot boot', { previousToken: trainingRestoreToken });
+  await sleep(1800);
+  const trainingRestoreBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (trainingRestoreBoot.mode !== 'system' || trainingRestoreBoot.gal !== 999
+    || trainingRestoreBoot.star !== 424242 || !trainingRestoreBoot.tutActive
+    || trainingRestoreBoot.tutStep !== 'welcome'
+    || Object.keys(trainingRestoreBoot.tutSnapshotPending || {}).join('|') !== 'view') {
+    fails.push('TRAINING ONE-KEY RESTORE: current pending snapshot did not boot in Sol/welcome intact: '
+      + JSON.stringify(trainingRestoreBoot));
+  }
+  requireRenderedSceneMatch('TRAINING SOURCE-ERROR SETUP BOOT', trainingRestoreBoot);
+  /* A transient generator failure at restore is not stale-route evidence.
+     Recreate the actual defect first: move the in-progress lesson from Sol
+     onto Earth with the exact diagnostic selector. Earth is already landed,
+     so this setup may change only the route/receipt, never expedition ledger.
+     Then drive the real Skip with a one-shot source-error latch: the lesson
+     may close, but the run stays incomplete, its exact one-key snapshot
+     survives, and the app returns to proven Sol before persistence. Reload
+     must reopen Welcome in that same safe system for a normal retry. */
+  const trainingRouteNeutralLedger = (state) => JSON.stringify({
+    ...state.save,
+    viewType: null,
+    savedView: null,
+  });
+  const trainingSurfaceLandAccepted = await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)})`);
+  await sleep(180);
+  const trainingSourceErrorSurface = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (!trainingSurfaceLandAccepted || trainingSourceErrorSurface.mode !== 'surface'
+    || trainingSourceErrorSurface.planet !== 133 || trainingSourceErrorSurface.planetOrdinal !== 2
+    || trainingRouteNeutralLedger(trainingSourceErrorSurface) !== trainingRouteNeutralLedger(trainingRestoreBoot)) {
+    fails.push('TRAINING SOURCE-ERROR SETUP: exact already-landed Earth route changed unrelated ledger or missed surface: '
+      + JSON.stringify({ accepted: trainingSurfaceLandAccepted, before: trainingRestoreBoot,
+        after: trainingSourceErrorSurface }));
+  }
+  requireRenderedSceneAdvance('TRAINING SOURCE-ERROR EARTH SURFACE SETUP', trainingRestoreBoot, trainingSourceErrorSurface);
+  await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  const trainingSourceErrorArmed = await evalIn(`window.__CF_SLICE__.api.__smokeRejectNextTrainingRouteResolution()`);
+  const trainingSourceErrorSkip = await evalIn(`(()=>{ const button=document.querySelector('[data-sel="tutskip"]');
+    button?.click();return {pressed:!!button};})()`);
+  const trainingSourceErrorState = await waitDesktopValue('Training source-error safe Sol outcome', `(()=>{ const s=window.__CF_SLICE__.api.state();
+    return !s.tutActive&&!s.tutDone&&s.mode==='system'&&s.star===424242?s:null;})()`);
+  const trainingSourceErrorOutcome = (state) => state.mode === 'system'
+    && state.gal === 999 && state.galX === 90 && state.galY === -60 && state.galSize === 78
+    && state.star === 424242 && state.starX === 560 && state.starY === 170
+    && state.planet === null && state.planetOrdinal === null
+    && !state.tutActive && !state.tutDone
+    && Object.keys(state.tutSnapshotPending || {}).join('|') === 'view'
+    && state.save.viewType === 'star' && state.save.savedView?.star?.seed === 424242
+    && trainingRouteNeutralLedger(state) === trainingRouteNeutralLedger(trainingSourceErrorSurface)
+    && renderedSceneAdvanced(trainingSourceErrorSurface, state);
+  if (!trainingSourceErrorArmed || !trainingSourceErrorSkip.pressed
+    || !trainingSourceErrorOutcome(trainingSourceErrorState)) {
+    fails.push('TRAINING SOURCE ERROR: real Skip did not retain snapshot/incomplete status and return to canonical Sol: '
+      + JSON.stringify({ armed: trainingSourceErrorArmed, pressed: trainingSourceErrorSkip.pressed,
+        before: trainingSourceErrorSurface, after: trainingSourceErrorState }));
+  }
+  requireRenderedSceneAdvance('TRAINING SOURCE-ERROR SAFE SOL', trainingSourceErrorSurface, trainingSourceErrorState);
+  const trainingSourceErrorControls = [
+    { ...trainingSourceErrorState, tutSnapshotPending: null },
+    { ...trainingSourceErrorState, mode: 'surface', planet: 133, planetOrdinal: 2 },
+    { ...trainingSourceErrorState, renderedScene: trainingSourceErrorSurface.renderedScene },
+    { ...trainingSourceErrorState, navGalaxyKey: null, navStarKey: null, navWorldKey: null,
+      renderedScene: { ...trainingSourceErrorState.renderedScene, galaxyKey: null, starKey: null, worldKey: null } },
+  ];
+  if (trainingSourceErrorControls.some(trainingSourceErrorOutcome)) {
+    fails.push('TRAINING SOURCE-ERROR CONTROL FAILED — cleared snapshot, non-Sol nav, stale receipt, or null-key literal Sol stayed green');
+  }
+  await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  const trainingSourceErrorRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  if (trainingSourceErrorRaw.tut !== 0
+    || JSON.stringify(Object.keys(trainingSourceErrorRaw.tsnap || {})) !== JSON.stringify(['view'])
+    || trainingSourceErrorRaw.tsnap?.view?.type !== 'planet' || trainingSourceErrorRaw.tsnap?.view?.pseed !== 133
+    || trainingSourceErrorRaw.view?.type !== 'star'
+    || trainingSourceErrorRaw.view?.gal?.seed !== 999 || trainingSourceErrorRaw.view?.gal?.x !== 90
+    || trainingSourceErrorRaw.view?.gal?.y !== -60 || trainingSourceErrorRaw.view?.gal?.size !== 78
+    || trainingSourceErrorRaw.view?.star?.seed !== 424242 || trainingSourceErrorRaw.view?.star?.x !== 560
+    || trainingSourceErrorRaw.view?.star?.y !== 170) {
+    fails.push('TRAINING SOURCE ERROR: retained one-key snapshot/canonical Sol did not reach raw IndexedDB: '
+      + JSON.stringify({ tut: trainingSourceErrorRaw.tut, tsnap: trainingSourceErrorRaw.tsnap,
+        view: trainingSourceErrorRaw.view }));
+  }
+  await navigateToSlice(sess, URL0, 'Training source-error retry reload');
+  await sleep(1800);
+  const trainingRetryBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const trainingRetryBootOutcome = (state) => state.mode === 'system'
+    && state.gal === 999 && state.galX === 90 && state.galY === -60 && state.galSize === 78
+    && state.star === 424242 && state.starX === 560 && state.starY === 170
+    && state.planet === null && !state.tutDone && state.tutActive && state.tutStep === 'welcome'
+    && Object.keys(state.tutSnapshotPending || {}).join('|') === 'view'
+    && state.save.viewType === 'star' && state.save.savedView?.star?.seed === 424242
+    && renderedSceneMatchesNav(state);
+  if (!trainingRetryBootOutcome(trainingRetryBoot)) {
+    fails.push('TRAINING SOURCE ERROR: reload did not reopen Welcome in canonical Sol with the one-key snapshot: '
+      + JSON.stringify(trainingRetryBoot));
+  }
+  const trainingRetryControls = [
+    { ...trainingRetryBoot, tutSnapshotPending: null },
+    { ...trainingRetryBoot, star: null, starX: null, starY: null },
+    { ...trainingRetryBoot, renderedScene: { ...trainingRetryBoot.renderedScene, serial: 0 } },
+  ];
+  if (trainingRetryControls.some(trainingRetryBootOutcome)) {
+    fails.push('TRAINING SOURCE-ERROR RELOAD CONTROL FAILED — cleared snapshot, non-Sol nav, or serial 0 stayed green');
+  }
+  const trainingRetryRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  if (trainingRetryRaw.tut !== 0
+    || JSON.stringify(Object.keys(trainingRetryRaw.tsnap || {})) !== JSON.stringify(['view'])
+    || trainingRetryRaw.view?.type !== 'star' || trainingRetryRaw.view?.star?.seed !== 424242) {
+    fails.push('TRAINING SOURCE ERROR: reload did not retain raw incomplete/snapshot/Sol evidence: '
+      + JSON.stringify({ tut: trainingRetryRaw.tut, tsnap: trainingRetryRaw.tsnap, view: trainingRetryRaw.view }));
+  }
+  /* exportSaveV2's honest first pass unions conquered/mined census into
+     `land`: this fixture is 2 in memory before its first write and 6 after
+     the source-error persist/reload. Compare the retry against that current
+     normalized baseline, not the earlier pre-export veteran snapshot. */
+  if (trainingRestoreBoot.save.landed.length !== 2 || trainingRetryBoot.save.landed.length !== 6
+    || JSON.stringify(trainingRetryBoot.save.landed) !== JSON.stringify(trainingRetryRaw.land)) {
+    fails.push('TRAINING FIRST-PASS LAND NORMALIZATION: expected 2 imported → 6 persisted/reloaded worlds: '
+      + JSON.stringify({ imported: trainingRestoreBoot.save.landed,
+        raw: trainingRetryRaw.land, reloaded: trainingRetryBoot.save.landed }));
+  }
+  const trainingLedgerExpected = trainingRouteNeutralLedger(trainingRetryBoot);
+  const trainingSkip = await evalIn(`(()=>{ const button=document.querySelector('[data-sel="tutskip"]');
+    button?.click();return {pressed:!!button};})()`);
+  const trainingRestored = await waitDesktopValue('current one-key Training route restore', `(()=>{ const s=window.__CF_SLICE__.api.state();
+    return !s.tutActive&&s.tutDone&&s.mode==='surface'&&s.planet===133?s:null;})()`);
+  if (!trainingSkip.pressed || trainingRestored.planetOrdinal !== 2
+    || trainingRestored.tutSnapshotPending !== null
+    || trainingRouteNeutralLedger(trainingRestored) !== trainingLedgerExpected
+    || trainingRestored.atlasCount !== vet.atlasCount) {
+    fails.push('TRAINING ONE-KEY RESTORE: one real Skip did not restore the exact source-proven route/ledger: '
+      + JSON.stringify({ pressed: trainingSkip.pressed, before: trainingRetryBoot, after: trainingRestored }));
+  }
+  requireRenderedSceneAdvance('TRAINING ONE-KEY RESTORE', trainingRetryBoot, trainingRestored);
+  const currentTrainingRestoreOutcome = (state) => state.mode === 'surface'
+    && state.planet === 133 && state.planetOrdinal === 2 && state.tutSnapshotPending === null
+    && renderedSceneMatchesNav(state);
+  const trainingRestoreCtl = {
+    ...trainingRestored,
+    tutSnapshotPending: { view: trainingRestored.save.savedView },
+  };
+  if (currentTrainingRestoreOutcome(trainingRestoreCtl)) {
+    fails.push('TRAINING ONE-KEY RESTORE CONTROL FAILED — injected uncleared snapshot stayed green');
+  }
+  await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  const trainingRestoredRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  if (Object.prototype.hasOwnProperty.call(trainingRestoredRaw, 'tsnap')
+    || trainingRestoredRaw.view?.type !== 'planet' || trainingRestoredRaw.view?.pseed !== 133) {
+    fails.push('TRAINING ONE-KEY RESTORE: cleared snapshot/exact restored route did not reach raw IndexedDB: '
+      + JSON.stringify({ tsnap: trainingRestoredRaw.tsnap, view: trainingRestoredRaw.view }));
+  }
+  const normalizedRecordsLandedCount = trainingRestored.save.landed.length;
+
+  /* A transient saved-route source failure leaves Cosmos rendered while the
+     exact raw non-home route is held outside ordinary view writes. Stage that
+     otherwise nondeterministic post-boot state from this proven Earth route,
+     then press the REAL Settings Restart button. First reject persistence and
+     require exact route/hold/snapshot rollback plus byte identity; then retry
+     successfully and require the held Earth route—not navToView(Cosmos)—to
+     become the one-key snapshot while canonical, proven Sol is persisted. */
+  const heldRouteExpected = trainingRestored.save.savedView;
+  const heldRouteExpectedJSON = JSON.stringify(heldRouteExpected);
+  const heldStageBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const heldStageRawBefore = await evalIn(READ_PRIMARY_EXPRESSION);
+  const heldStaged = await evalIn(`window.__CF_SLICE__.api.__smokeStageHeldRouteAtHome()`);
+  const heldStage = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const heldStageRawAfter = await evalIn(READ_PRIMARY_EXPRESSION);
+  if (!heldStaged || heldStageBefore.mode !== 'surface' || heldStageBefore.planet !== 133
+    || heldStage.mode !== 'universe' || heldStage.gal !== null || heldStage.star !== null || heldStage.planet !== null
+    || !heldStage.savedRouteWriteHeld || heldStage.tutSnapshotPending !== null
+    || JSON.stringify(heldStage.save.savedView) !== heldRouteExpectedJSON
+    || heldStageRawAfter !== heldStageRawBefore || !renderedSceneMatchesNav(heldStage)) {
+    fails.push('TRAINING HELD-ROUTE STAGE: diagnostics did not reproduce exact Cosmos/held-route boot state without writing storage: '
+      + JSON.stringify({ staged: heldStaged, before: heldStageBefore, after: heldStage,
+        rawStable: heldStageRawAfter === heldStageRawBefore }));
+  }
+
+  const heldRollbackTokenBefore = await sliceToken(sess);
+  const heldRollbackRawBefore = await evalIn(READ_PRIMARY_EXPRESSION);
+  const heldRollbackPress = await evalIn(`(()=>{ const api=window.__CF_SLICE__.api;
+    document.getElementById('docksets')?.click();const button=document.getElementById('setrestart'),armed=api.__smokeRejectNextPersist();
+    button?.click();return {armed,button:!!button};})()`);
+  await sleep(500);
+  const heldRollback = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('setrestart'),toast=document.getElementById('toast'),
+    style=toast?getComputedStyle(toast):null,r=toast?.getBoundingClientRect(),title=(toast?.querySelector('[data-sel=toast-title]')?.textContent||'').trim();
+    return {state:s,button:!!button,disabled:button?.disabled??null,title,text:toast?.textContent||'',
+      visible:!!toast&&toast.style.opacity==='1'&&Number(style?.opacity)>0&&style?.visibility!=='hidden'&&!!r&&r.width>0&&r.height>0};})()`);
+  const heldRollbackTokenAfter = await sliceToken(sess);
+  const heldRollbackRawAfter = await evalIn(READ_PRIMARY_EXPRESSION);
+  const heldRollbackRouteOutcome = (state) => state.mode === heldStage.mode
+    && state.gal === heldStage.gal && state.star === heldStage.star && state.planet === heldStage.planet
+    && state.navGalaxyKey === heldStage.navGalaxyKey && state.navStarKey === heldStage.navStarKey
+    && state.navWorldKey === heldStage.navWorldKey
+    && JSON.stringify(state.renderedScene) === JSON.stringify(heldStage.renderedScene)
+    && state.tutDone === heldStage.tutDone && state.tutActive === heldStage.tutActive
+    && JSON.stringify(state.tutSnapshotPending) === JSON.stringify(heldStage.tutSnapshotPending)
+    && state.savedRouteWriteHeld === true
+    && JSON.stringify(state.save.savedView) === heldRouteExpectedJSON
+    && renderedSceneMatchesNav(state);
+  if (!heldRollbackPress.armed || !heldRollbackPress.button || !heldRollbackRouteOutcome(heldRollback.state)
+    || heldRollback.disabled !== false || !heldRollback.visible || heldRollback.title !== 'Save unavailable'
+    || !/was not restarted/i.test(heldRollback.text)
+    || heldRollbackTokenAfter !== heldRollbackTokenBefore || heldRollbackRawAfter !== heldRollbackRawBefore) {
+    fails.push('TRAINING HELD-ROUTE RESTART ROLLBACK: real rejected Restart lost nav/view/hold/snapshot or changed exact primary bytes: '
+      + JSON.stringify({ press: heldRollbackPress, outcome: heldRollback,
+        noReload: heldRollbackTokenAfter === heldRollbackTokenBefore,
+        primaryPreserved: heldRollbackRawAfter === heldRollbackRawBefore }));
+  }
+  const heldRollbackControls = [
+    { ...heldRollback.state, savedRouteWriteHeld: false },
+    { ...heldRollback.state, save: { ...heldRollback.state.save, savedView: null } },
+    { ...heldRollback.state, tutSnapshotPending: { view: null } },
+    { ...heldRollback.state, mode: 'system', star: 424242 },
+  ];
+  if (heldRollbackControls.some(heldRollbackRouteOutcome)) {
+    fails.push('TRAINING HELD-ROUTE ROLLBACK CONTROL FAILED — lost hold/view/snapshot/nav rollback stayed green');
+  }
+
+  const heldSuccessToken = await sliceToken(sess);
+  const heldSuccessPressed = await evalIn(`(()=>{ const button=document.getElementById('setrestart');button?.click();return !!button;})()`);
+  await waitForSlice(sess, 'held-route Training Restart success', { previousToken: heldSuccessToken });
+  await sleep(1800);
+  const heldSuccessState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const heldSuccessRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  const heldSuccessOutcome = (state, raw) => state.mode === 'system'
+    && state.gal === 999 && state.galX === 90 && state.galY === -60 && state.galSize === 78
+    && state.star === 424242 && state.starX === 560 && state.starY === 170
+    && state.planet === null && state.planetOrdinal === null
+    && !state.tutDone && state.tutActive && state.tutStep === 'welcome' && !state.savedRouteWriteHeld
+    && JSON.stringify(Object.keys(state.tutSnapshotPending || {})) === JSON.stringify(['view'])
+    && JSON.stringify(state.tutSnapshotPending?.view) === heldRouteExpectedJSON
+    && state.save.viewType === 'star' && state.save.savedView?.gal?.seed === 999
+    && state.save.savedView?.star?.seed === 424242
+    && raw?.tut === 0 && JSON.stringify(Object.keys(raw?.tsnap || {})) === JSON.stringify(['view'])
+    && JSON.stringify(raw?.tsnap?.view) === heldRouteExpectedJSON
+    && raw?.view?.type === 'star' && raw?.view?.gal?.seed === 999 && raw?.view?.star?.seed === 424242
+    && renderedSceneMatchesNav(state);
+  if (!heldSuccessPressed || !heldSuccessOutcome(heldSuccessState, heldSuccessRaw)) {
+    fails.push('TRAINING HELD-ROUTE RESTART SUCCESS: real Restart did not transfer exact held route to one-key snapshot and persist proven Sol: '
+      + JSON.stringify({ pressed: heldSuccessPressed, expectedHeld: heldRouteExpected,
+        state: heldSuccessState, raw: heldSuccessRaw }));
+  }
+  const heldSuccessControls = [
+    [{ ...heldSuccessState, tutSnapshotPending: { view: null } },
+      { ...heldSuccessRaw, tsnap: { view: null } }],
+    [{ ...heldSuccessState, navGalaxyKey: null, navStarKey: null, navWorldKey: null,
+      renderedScene: { ...heldSuccessState.renderedScene, galaxyKey: null, starKey: null, worldKey: null } }, heldSuccessRaw],
+    [{ ...heldSuccessState, savedRouteWriteHeld: true }, heldSuccessRaw],
+  ];
+  if (heldSuccessControls.some(([state, raw]) => heldSuccessOutcome(state, raw))) {
+    fails.push('TRAINING HELD-ROUTE SUCCESS CONTROL FAILED — home snapshot, null-key literal Sol, or uncleared hold stayed green');
+  }
+
+  /* Return through the real Skip before the pre-existing ordinary Restart
+     rejection/interlock outcome. That original control keeps its proven
+     non-held baseline and therefore remains an independent opposite case. */
+  const heldSuccessSkip = await evalIn(`(()=>{ const button=document.querySelector('[data-sel="tutskip"]');button?.click();return !!button;})()`);
+  const heldSuccessRestored = await waitDesktopValue('held-route Training snapshot restore', `(()=>{ const s=window.__CF_SLICE__.api.state();
+    return !s.tutActive&&s.tutDone&&s.mode==='surface'&&s.planet===133&&s.planetOrdinal===2?s:null;})()`);
+  if (!heldSuccessSkip || heldSuccessRestored.tutSnapshotPending !== null
+    || heldSuccessRestored.savedRouteWriteHeld || JSON.stringify(heldSuccessRestored.save.savedView) !== heldRouteExpectedJSON) {
+    fails.push('TRAINING HELD-ROUTE CLEANUP: real Skip did not restore exact held Earth route before the ordinary Restart control: '
+      + JSON.stringify({ pressed: heldSuccessSkip, state: heldSuccessRestored }));
+  }
+  requireRenderedSceneAdvance('TRAINING HELD-ROUTE SNAPSHOT RESTORE', heldSuccessState, heldSuccessRestored);
+  await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
 
   /* Training Restart is transactional UI too. Inject one deterministic
      persist rejection, press the REAL Settings button, and require exact
@@ -2181,15 +3091,27 @@ try {
   if (!atlasRow.ok || !atlasRow.focus || atlasRow.id !== 'p133') {
     fails.push('ATLAS KEYBOARD: veteran Earth row is not a focused native 44px action: ' + JSON.stringify(atlasRow));
   }
-  const legacyAtlas = await evalIn(`(()=>{ const row=document.querySelector('#atlaspanel [data-aid="legacy-star"]');
-    const before=window.__CF_SLICE__.api.state(); row?.click(); const after=window.__CF_SLICE__.api.state();
-    const result={exists:!!row,tag:row?.tagName||null,disabled:!!row?.disabled,aria:row?.getAttribute('aria-disabled')||null,
-      honest:/route unavailable/i.test(row?.textContent||''),stable:before.mode===after.mode&&before.panelOpen===after.panelOpen};
-    if(row){row.disabled=false;row.removeAttribute('aria-disabled');result.controlRejected=!(row.disabled||row.getAttribute('aria-disabled')==='true');row.disabled=true;row.setAttribute('aria-disabled','true');}
-    return result; })()`);
-  if (!legacyAtlas.exists || legacyAtlas.tag !== 'BUTTON' || !legacyAtlas.disabled || legacyAtlas.aria !== 'true'
-    || !legacyAtlas.honest || !legacyAtlas.stable || !legacyAtlas.controlRejected) {
-    fails.push('ATLAS LEGACY ROUTE: incomplete imported route was not honestly disabled/non-travelable: ' + JSON.stringify(legacyAtlas));
+  const unavailableAtlasRawBefore = await evalIn(READ_PRIMARY_EXPRESSION);
+  const unavailableAtlas = await evalIn(`(()=>{ const ids=['legacy-star','forged-earth'],S=window.__CF_SLICE__;
+    const shape=()=>{const s=S.api.state();return JSON.stringify({mode:s.mode,gal:s.gal,star:s.star,planet:s.planet,
+      panel:s.panelOpen,card:s.cardOpen,atlas:s.atlasCount,save:s.save,rendered:s.renderedScene});};
+    const before=shape();const rows=ids.map((id)=>{const row=document.querySelector('#atlaspanel [data-aid="'+id+'"]');
+      const result={id,exists:!!row,tag:row?.tagName||null,disabled:!!row?.disabled,
+        aria:row?.getAttribute('aria-disabled')||null,honest:/route unavailable/i.test(row?.textContent||'')};
+      row?.click();return result;});const after=shape();
+    const controlRow=document.querySelector('#atlaspanel [data-aid="forged-earth"]');
+    let controlRejected=false;if(controlRow){controlRow.disabled=false;controlRow.removeAttribute('aria-disabled');
+      controlRejected=!(controlRow.disabled||controlRow.getAttribute('aria-disabled')==='true');
+      controlRow.disabled=true;controlRow.setAttribute('aria-disabled','true');}
+    return {rows,stable:before===after,controlRejected};})()`);
+  const unavailableAtlasRawAfter = await evalIn(READ_PRIMARY_EXPRESSION);
+  if (unavailableAtlas.rows.length !== 2
+    || unavailableAtlas.rows.some((row) => !row.exists || row.tag !== 'BUTTON' || !row.disabled
+      || row.aria !== 'true' || !row.honest)
+    || !unavailableAtlas.stable || !unavailableAtlas.controlRejected
+    || unavailableAtlasRawAfter !== unavailableAtlasRawBefore) {
+    fails.push('ATLAS UNAVAILABLE ROUTES: incomplete/forged imports were not visible, disabled, honest, and byte-stable: '
+      + JSON.stringify({ unavailableAtlas, rawStable: unavailableAtlasRawAfter === unavailableAtlasRawBefore }));
   }
   const atlasPointerSetup = await evalIn(`(()=>{ const row=document.querySelector('#atlaspanel [data-aid]'); if(!row)return false;
     const old=document.createElement('span'); old.id='cf-pointer-atlas-row'; old.tabIndex=0; old.dataset.aid=row.dataset.aid;
@@ -2213,14 +3135,23 @@ try {
   if (!atlasSizeCtl || atlasSizeCtl.ok) {
     fails.push('ATLAS CONTROL FAILED — injected undersized row stayed 44px: ' + JSON.stringify(atlasSizeCtl));
   }
+  const atlasTravelLedger = (state) => JSON.stringify({
+    ...state.save,
+    viewType: null,
+    savedView: null,
+  });
+  const atlasBeforeTravel = await evalIn(`window.__CF_SLICE__.api.state()`);
   await keyIn(' ', 'Space');
   const atlasSpace = await waitDesktopValue('Atlas Space travel', `(()=>{ const s=window.__CF_SLICE__.api.state();
     return s.panelOpen===null&&s.mode==='system'&&s.cardOpen?{...s,focus:document.activeElement===document.querySelector('canvas')}:null; })()`);
   /* The veteran fixture names p133 “Homeworld”. Atlas travel must reopen the
      live customized survey, not regress it to the Atlas row's stale label. */
-  if (atlasSpace.star !== 424242 || atlasSpace.cardTitle !== 'Homeworld' || !atlasSpace.focus) {
+  if (atlasSpace.star !== 424242 || atlasSpace.starX !== 560 || atlasSpace.starY !== 170
+    || atlasSpace.galSize !== 78 || atlasSpace.cardTitle !== 'Homeworld' || !atlasSpace.focus
+    || atlasTravelLedger(atlasSpace) !== atlasTravelLedger(atlasBeforeTravel)) {
     fails.push('ATLAS KEYBOARD: Space did not travel to the live Earth survey and return canvas focus: ' + JSON.stringify(atlasSpace));
   }
+  requireRenderedSceneAdvance('ATLAS PROVEN SPACE ROUTE', atlasBeforeTravel, atlasSpace);
   const atlasEnterSetup = await evalIn(`(()=>{ const opener=document.getElementById('railatlas'); opener.focus(); opener.click();
     const row=document.querySelector('#atlaspanel [data-aid="p133"]'); row?.focus(); return ${atlasRowCheck}; })()`);
   if (!atlasEnterSetup.ok || !atlasEnterSetup.focus) {
@@ -2229,9 +3160,12 @@ try {
   await keyIn('Enter', 'Enter');
   const atlasEnter = await waitDesktopValue('Atlas Enter travel', `(()=>{ const s=window.__CF_SLICE__.api.state();
     return s.panelOpen===null&&s.mode==='system'&&s.cardOpen?{...s,focus:document.activeElement===document.querySelector('canvas')}:null; })()`);
-  if (atlasEnter.star !== 424242 || atlasEnter.cardTitle !== 'Homeworld' || !atlasEnter.focus) {
+  if (atlasEnter.star !== 424242 || atlasEnter.starX !== 560 || atlasEnter.starY !== 170
+    || atlasEnter.galSize !== 78 || atlasEnter.cardTitle !== 'Homeworld' || !atlasEnter.focus
+    || atlasTravelLedger(atlasEnter) !== atlasTravelLedger(atlasBeforeTravel)) {
     fails.push('ATLAS KEYBOARD: Enter did not travel to the live Earth survey and return canvas focus: ' + JSON.stringify(atlasEnter));
   }
+  requireRenderedSceneAdvance('ATLAS PROVEN ENTER ROUTE', atlasSpace, atlasEnter);
   /* 4c-records. Records over the real save: counts + the journal empty state */
   const rec = await evalIn(`(()=>{ document.getElementById('dockrecords').click();
     const landed=[...document.querySelectorAll('#recpanel .row')].map(r=>r.textContent).find(t=>/worlds landed/.test(t))||'';
@@ -2239,7 +3173,11 @@ try {
     const jn=document.querySelectorAll('#recpanel [data-sel=journal-entry]').length;
     document.querySelector('#recpanel [data-pnx]').click();
     return { landed, jempty, jn }; })()`);
-  if (!/worlds landed2$/.test(rec.landed.trim())) fails.push('Records did not count the veteran’s 2 landed worlds (fixture land=[133,134]): ' + JSON.stringify(rec.landed));
+  const recordsLandedPattern = new RegExp('worlds landed\\s*' + normalizedRecordsLandedCount + '$');
+  if (!recordsLandedPattern.test(rec.landed.trim())) {
+    fails.push('Records did not count the stage-normalized ' + normalizedRecordsLandedCount
+      + ' landed worlds after first-pass export/reload: ' + JSON.stringify(rec.landed));
+  }
   if (!rec.jempty && rec.jn === 0) fails.push('Records journal rendered nothing at all');
   /* CHARTERS: the current-slice projection keeps one live landfall row and
      never renders a legacy mining/fabrication/Shipyard directive. */
@@ -2805,9 +3743,9 @@ try {
      way down: survey Earth, touch the real 44px Land action, then touch the
      surface card's real 44px Leave-world action back to system. A desktop
      Escape assertion cannot prove either control exists or can be reached. */
-  await evalNavPh(`(()=>{ window.__CF_SLICE__.api.descendSystem({seed:424242,x:560,y:170}); return true; })()`);
+  await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.descendSystem(${JSON.stringify(SOL_STAR)}); })()`);
   await waitNavPhValue('phone Sol setup', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'&&s.star===424242?s:null; })()`);
-  await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(2); })()`);
+  await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(${JSON.stringify(EARTH)}); })()`);
   /* Help requested from an open body card must be readable above that card.
      Global panel z cannot change because Training relies on Atlas below the
      survey; prove the Guide-specific z24 layer and recreate z22 as control. */
@@ -2874,7 +3812,7 @@ try {
   /* The HUD/Guide also promise Escape as a lift-off path. Re-land without a
      second reward, then prove ONE Escape consumes the open surface card and
      ascends in the same action rather than merely hiding the card. */
-  await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(2); })()`);
+  await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(${JSON.stringify(EARTH)}); })()`);
   const phoneReland = await evalNavPh(phoneCardActionCheck('landcta'));
   if (!phoneReland.ok) fails.push('PHONE ESCAPE LIFT: repeat Earth card lost its Land action: ' + JSON.stringify(phoneReland));
   else await touchNav(phoneReland.x, phoneReland.y);
@@ -2972,10 +3910,15 @@ try {
   }
   await sleep(1800);
   const fineDive = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+  const canonicalFineTarget = fineTarget ? {
+    ...fineTarget,
+    x: Math.round(fineTarget.x * 100) / 100,
+    y: Math.round(fineTarget.y * 100) / 100,
+  } : null;
   if (!fineTarget || fineDive.mode !== 'system' || fineDive.star !== fineTarget.seed
-    || fineDive.starX !== fineTarget.x || fineDive.starY !== fineTarget.y) {
+    || fineDive.starX !== canonicalFineTarget.x || fineDive.starY !== canonicalFineTarget.y) {
     fails.push('FINE STAR ACTION did not enter the exact touched target: '
-      + JSON.stringify({ fineDive, fineTarget }));
+      + JSON.stringify({ fineDive, fineTarget, canonicalFineTarget }));
   }
   /* A saved stage-3 explorer may still meet its imported Prime Signature
      radius boundary. That is not a Charter-system gate: the block must name
@@ -2995,7 +3938,7 @@ try {
     await sleep(350);
   }
   const stage3Charted = await evalNavPh(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
-    const setup=before.mode==='system'&&S.api.surveyOn(0),add=document.querySelector('#survey [data-act=add]');
+    const setup=before.mode==='system'&&S.api.surveyOn(${JSON.stringify(MERCURY)}),add=document.querySelector('#survey [data-act=add]');
     add?.click(); const after=S.api.state();
     return {setup:!!setup,add:!!add,mode:after.mode,toast:after.toastText,toastSerial:after.toastSerial}; })()`);
   if (!stage3Charted.setup || !stage3Charted.add || !/Charted/i.test(stage3Charted.toast)) {
@@ -3146,7 +4089,7 @@ try {
         + JSON.stringify(imported));
     }
 
-    const surveyed = await evalNavPh(`window.__CF_SLICE__.api.surveyOn(0)`);
+    const surveyed = await evalNavPh(`window.__CF_SLICE__.api.surveyOn(${JSON.stringify(MERCURY)})`);
     const landAction = await evalNavPh(phoneCardActionCheck('landcta'));
     if (!surveyed || !landAction.ok || !/Land/.test(landAction.label)) {
       fails.push(`${label}: real already-landed Mercury card did not expose a reachable Land action: `
@@ -3310,7 +4253,7 @@ try {
     type: 'mouseReleased', x: railAction.x, y: railAction.y, button: 'left', clickCount: 1,
   }, panelSession);
   await waitPanelValue('CHARTER PANEL REFRESH rail open', `window.__CF_SLICE__.api.state().panelOpen==='ch'`);
-  await evalPanel(`window.__CF_SLICE__.api.surveyOn(0)`);
+  await evalPanel(`window.__CF_SLICE__.api.surveyOn(${JSON.stringify(MERCURY)})`);
   const charterPanelCheck = `(()=>{ const state=window.__CF_SLICE__.api.state(),panel=document.getElementById('chpanel'),
     text=panel?.textContent||'',record=panel?.querySelector('[data-sel="charter-ch"]');
     return {ok:state.panelOpen==='ch'&&state.save.ascCh===3&&record?.getAttribute('data-chstate')==='complete'
@@ -3472,8 +4415,62 @@ try {
 
   /* Exact historical compatibility: the first IndexedDB slice wrote only
      {nav,view}. It must boot at the same place and immediately migrate to a
-     complete v4 save; nearby sparse `{}` remains protected above. */
+     complete v4 save; nearby sparse `{}` remains protected above. A near
+     miss whose two route copies disagree is not that historical envelope. */
   const legacyGal = { seed: 999, x: 90, y: -60, size: 72, sp: 4, tilt: 0.5, rot: 0, home: true, quasar: false, dwarf: false };
+  const legacyMismatchRaw = JSON.stringify({
+    nav: { mode: 'galaxy', gal: { ...legacyGal, x: 90.01 }, star: null, planet: null },
+    view: { type: 'galaxy', gal: legacyGal },
+  });
+  const legacyMismatchBoot = await protectedBoot(legacyMismatchRaw, 'Save protected');
+  if (legacyMismatchBoot.title !== 'Save protected' || !legacyMismatchBoot.open
+    || legacyMismatchBoot.raw !== legacyMismatchRaw || !legacyMismatchBoot.scheduled
+    || legacyMismatchBoot.directPersist !== false) {
+    fails.push('LEGACY SLICE CONTROL: mismatched {nav,view} near-miss was accepted or rewritten: '
+      + JSON.stringify(legacyMismatchBoot));
+  }
+  /* Agreement proves the historical two-field envelope shape, not source
+     identity. This near-miss agrees byte-for-byte on a forged same-seed
+     galaxy coordinate, so it must classify through the compatibility bridge
+     and then repair only its route to Cosmos in a full v4 envelope. */
+  const legacyForgedGal = { ...legacyGal, x: 90.01 };
+  const legacyAgreeingForgedRaw = JSON.stringify({
+    nav: { mode: 'galaxy', gal: legacyForgedGal, star: null, planet: null },
+    view: { type: 'galaxy', gal: legacyForgedGal },
+  });
+  await setProtectedPrimary(legacyAgreeingForgedRaw);
+  await navigateToSlice(ph, URL0, 'agreeing source-forged legacy slice migration');
+  await sleep(900);
+  await evalPh(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  const legacyAgreeingForged = await evalPh(`new Promise((resolve,reject)=>{ const state=window.__CF_SLICE__.api.state();
+    const q=indexedDB.open('cf-v2-slice'); q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result;
+      const tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
+      g.onsuccess=()=>{ const raw=String(g.result||''),saved=JSON.parse(raw||'null'); db.close();
+        resolve({...state,raw,v:saved&&saved.v,storedView:saved&&saved.view,
+          codex:Array.isArray(saved&&saved.codex),land:Array.isArray(saved&&saved.land)}); };
+      g.onerror=()=>reject(g.error); }; })`);
+  if (legacyAgreeingForged.mode !== 'universe' || legacyAgreeingForged.gal !== null
+    || legacyAgreeingForged.star !== null || legacyAgreeingForged.planet !== null
+    || legacyAgreeingForged.save.savedView !== null || legacyAgreeingForged.savedRouteWriteHeld
+    || legacyAgreeingForged.v !== 4 || legacyAgreeingForged.storedView !== null
+    || legacyAgreeingForged.raw === legacyAgreeingForgedRaw
+    || !legacyAgreeingForged.codex || !legacyAgreeingForged.land
+    || /Save protected|Update required/.test(legacyAgreeingForged.toastText)
+    || !renderedSceneMatchesNav(legacyAgreeingForged)) {
+    fails.push('LEGACY SLICE SOURCE REPAIR: agreeing forged {nav,view} did not structurally migrate to clean Cosmos/v4: '
+      + JSON.stringify(legacyAgreeingForged));
+  }
+  const legacyForeignReceiptCtl = {
+    ...legacyAgreeingForged,
+    renderedScene: {
+      ...legacyAgreeingForged.renderedScene,
+      mode: 'galaxy',
+      galaxyKey: 'injected-forged-legacy-galaxy',
+    },
+  };
+  if (renderedSceneMatchesNav(legacyForeignReceiptCtl)) {
+    fails.push('LEGACY SLICE SOURCE-REPAIR CONTROL FAILED — foreign galaxy receipt stayed green at Cosmos');
+  }
   const legacySliceRaw = JSON.stringify({
     nav: { mode: 'galaxy', gal: legacyGal, star: null, planet: null },
     view: { type: 'galaxy', gal: legacyGal },
@@ -3485,10 +4482,15 @@ try {
     const q=indexedDB.open('cf-v2-slice'); q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result;
       const tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
       g.onsuccess=()=>{ const saved=JSON.parse(String(g.result||'null')); db.close();
-        resolve({mode:state.mode,gal:state.gal,v:saved&&saved.v,epoch:saved&&saved.epoch,
+        resolve({mode:state.mode,gal:state.gal,galX:state.galX,galY:state.galY,galSize:state.galSize,
+          navGalaxyKey:state.navGalaxyKey,navStarKey:state.navStarKey,navWorldKey:state.navWorldKey,
+          renderedScene:state.renderedScene,v:saved&&saved.v,epoch:saved&&saved.epoch,view:saved&&saved.view,
           codex:Array.isArray(saved&&saved.codex),land:Array.isArray(saved&&saved.land)}); }; g.onerror=()=>reject(g.error); }; })`);
-  if (legacyUpgrade.mode !== 'galaxy' || legacyUpgrade.gal !== 999 || legacyUpgrade.v !== 4
-    || !Number.isFinite(legacyUpgrade.epoch) || !legacyUpgrade.codex || !legacyUpgrade.land) {
+  if (legacyUpgrade.mode !== 'galaxy' || legacyUpgrade.gal !== 999
+    || legacyUpgrade.galX !== 90 || legacyUpgrade.galY !== -60 || legacyUpgrade.galSize !== 78
+    || legacyUpgrade.view?.type !== 'galaxy' || legacyUpgrade.view?.gal?.size !== 78
+    || legacyUpgrade.v !== 4 || !Number.isFinite(legacyUpgrade.epoch)
+    || !legacyUpgrade.codex || !legacyUpgrade.land || !renderedSceneMatchesNav(legacyUpgrade)) {
     fails.push('LEGACY SLICE {nav,view} did not preserve its route and upgrade to the full v4 envelope: '
       + JSON.stringify(legacyUpgrade));
   }
@@ -3687,7 +4689,7 @@ try {
   /* Escape during an active lesson is owned by Training, not global
      navigation. Drive the real key: welcome must remain in Sol on the same
      lesson and return focus to Begin rather than ascending. */
-  await evalT(`(()=>{ const S=window.__CF_SLICE__;S.api.descendGalaxy(999);S.api.descendSystem({seed:424242,x:560,y:170});
+  await evalT(`(()=>{ const S=window.__CF_SLICE__;S.api.descendGalaxy(${JSON.stringify(HOME_GALAXY)});S.api.descendSystem(${JSON.stringify(SOL_STAR)});
     document.querySelector('[data-sel=tutbtn]')?.focus();return S.api.state();})()`);
   await sleep(120);
   await keyT('Escape', 'Escape');
@@ -3708,7 +4710,8 @@ try {
   }
   const welcomeEscapeBypassCtl = await evalT(`(()=>{ const S=window.__CF_SLICE__;
     window.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',code:'Escape',bubbles:true,cancelable:true}));
-    const escaped=S.api.state().mode!=='system';S.api.descendGalaxy(999);S.api.descendSystem({seed:424242,x:560,y:170});
+    const escaped=S.api.state().mode!=='system';if(S.api.state().mode==='universe')S.api.descendGalaxy(${JSON.stringify(HOME_GALAXY)});
+    if(S.api.state().mode==='galaxy')S.api.descendSystem(${JSON.stringify(SOL_STAR)});
     document.querySelector('[data-sel=tutbtn]')?.focus();return {escaped,restored:S.api.state().mode};})()`);
   if (!welcomeEscapeBypassCtl.escaped || welcomeEscapeBypassCtl.restored !== 'system') {
     fails.push('DRILL ESCAPE CONTROL FAILED — bypassing the document Training guard did not expose global ascent: '
@@ -3773,11 +4776,10 @@ try {
     || !canvasTab.allowed || !canvasReverse.allowed) {
     fails.push('DRILL KEYBOARD: canvas/card Tab scope escaped: ' + JSON.stringify({ canvasTab, canvasReverse }));
   }
-  await evalT(`(()=>{ window.__CF_SLICE__.api.descendGalaxy(999); return 1; })()`);
-  await sleep(2200);
-  await evalT(`(()=>{ const S=window.__CF_SLICE__; S.api.descendSystem({ seed: 424242, x: 0, y: 0 }); return 1; })()`);
+  await evalT(`(()=>{ const S=window.__CF_SLICE__;if(S.api.state().mode==='universe')S.api.descendGalaxy(${JSON.stringify(HOME_GALAXY)});
+    if(S.api.state().mode==='galaxy')S.api.descendSystem(${JSON.stringify(SOL_STAR)});return S.api.state();})()`);
   await sleep(1500);
-  await evalT(`(()=>{ window.__CF_SLICE__.api.surveyOn(2); return 1; })()`);   /* tap Earth = survey */
+  await evalT(`(()=>{ return window.__CF_SLICE__.api.surveyOn(${JSON.stringify(EARTH)}); })()`);   /* tap Earth = survey */
   await sleep(80);
   if (await step() !== 'survey-tour') fails.push('DRILL: surveying Earth did not advance find-earth: ' + await step());
   const surveyTourFocus = await evalT(trainingFocus);

@@ -56,9 +56,14 @@ describe('import → export → import: the fixed point', () => {
       'cargo', 'cgx', 'items', 'equip', 'equipAff', 'customNames', 'journal', 'techOwned',
       'claimedSets', 'ascCh', 'ascProg', 'primeFill', 'chDone', 'chacc', 'chWeek', 'chProg',
       'tutDone', 'frontierUnlocked', 'frontierEnding', 'homeId', 'sfxVol', 'glassTint',
-      'cardExpand', 'motionMode', 'fsMode', 'toneMode', 'fontMode'] as const) {
+      'cardExpand', 'motionMode', 'fsMode', 'toneMode', 'fontMode', 'savedView'] as const) {
       expect(canon(s2[f as keyof SaveStateV2]), f).toBe(canon(s1[f as keyof SaveStateV2]));
     }
+    /* Atlas thumbnails are the authorized first-pass transform; route bytes
+       are not. Keep that distinction direct so deleting every destination
+       cannot hide behind a stable second round. */
+    expect(canon(s2.logMap.map(([id, entry]) => [id, entry.where])))
+      .toBe(canon(s1.logMap.map(([id, entry]) => [id, entry.where])));
     /* the codex GENOMES are the crown jewels — byte-identical incl. the
        drifted size:9 (a lossy genome codec is the v1.8.6 corruption again) */
     expect(canon(s2.codex.map(([, e]) => e.g))).toBe(canon(s1.codex.map(([, e]) => e.g)));
@@ -83,6 +88,67 @@ describe('import → export → import: the fixed point', () => {
     /* seen filters to codex-held ids (the fixture's f1234 is not a codex id) */
     expect(s1.seenSp).toContain('f1234');
     expect(s2.seenSp).not.toContain('f1234');
+  });
+  it('current and rich Training snapshots survive the first pass without schema drift', () => {
+    const view = {
+      type: 'planet',
+      gal: { x: 90, y: -60, size: 14.5, sp: 4, tilt: 0.62, rot: 1.13, seed: 999, home: true },
+      star: { x: 560, y: 170, seed: 424242 },
+      pseed: 133,
+    };
+    for (const snapshot of [
+      { view },
+      { view, codex: [], essence: 10, marker: 'pre-training-expedition' },
+    ]) {
+      const s1 = importOk(JSON.stringify({ epoch: 0, tut: 0, tsnap: snapshot }));
+      const raw2 = exportSaveV2(s1, NOW);
+      const s2 = importOk(raw2);
+      expect(canon(s2.tutSnapPending), JSON.stringify(snapshot)).toBe(canon(s1.tutSnapPending));
+      expect(canon((JSON.parse(raw2) as { tsnap: unknown }).tsnap)).toBe(canon(snapshot));
+    }
+  });
+  it('raw ingress evidence stays outside SaveStateV2 and exported v4 JSON', () => {
+    const rawView = {
+      type: 'planet',
+      gal: { x: 90, y: -60, seed: 999, parentCell: { x: 0, y: 0 } },
+      star: { x: 560, y: 170, seed: 424242, layer: 'coarse' },
+      pseed: 133,
+      key: 'raw-saved-view-key',
+      ordinal: 2,
+      proven: true,
+    };
+    const rawWhere = { ...rawView, key: 'raw-atlas-key' };
+    const result = importSaveV2(JSON.stringify({
+      epoch: 0, view: rawView, codex: [], land: [],
+      log: [{ id: 'p133', title: 'Earth', where: rawWhere, t: 1 }],
+    }), REGISTRY, NOW);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const entry = result.state.logMap[0]![1];
+    const routeEvidence = {
+      type: 'planet',
+      gal: { x: 90, y: -60, seed: 999 },
+      star: { x: 560, y: 170, seed: 424242 },
+      pseed: 133,
+    };
+    expect(result.ingress.savedView).toEqual(routeEvidence);
+    expect(result.ingress.atlasWhere.get(entry)).toEqual(routeEvidence);
+    expect(Object.isFrozen(result.ingress.savedView)).toBe(true);
+    expect(Object.isFrozen(result.ingress.atlasWhere.get(entry))).toBe(true);
+    expect(result.state).not.toHaveProperty('ingress');
+    const exported = JSON.parse(exportSaveV2(result.state, NOW)) as {
+      ingress?: unknown;
+      view: Record<string, unknown>;
+      log: Array<{ where: Record<string, unknown> }>;
+    };
+    expect(exported).not.toHaveProperty('ingress');
+    for (const route of [exported.view, exported.log[0]!.where]) {
+      expect(route).not.toHaveProperty('key');
+      expect(route).not.toHaveProperty('ordinal');
+      expect(route).not.toHaveProperty('proven');
+      expect(route.gal).not.toHaveProperty('parentCell');
+      expect(route.star).not.toHaveProperty('layer');
+    }
   });
   it('Atlas capacity keeps a newly charted timestamped row and evicts the oldest', () => {
     const state = importOk(JSON.stringify(FX.inputs.veteran_rich));
