@@ -1,8 +1,85 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## Current port status — 2026-08-15
+## Current port status — 2026-08-16
 
-> **F2 canonical-ingress working-tree overlay (2026-08-15; implementation and
+> **D-TRAIN-1 working-tree source overlay (2026-08-16; local browser evidence
+> recorded below; exact-head CI, integration, real-save Gate C, and human
+> authority remain open):** the importer recognizes the exact v1.8.9
+> eleven-field checkpoint `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}` as a
+> bounded, detached, recursively frozen `legacy-v1` record. It is not a whole
+> save. The four ingress outcomes are none, current `{view}`, genuine
+> `legacy-v1`, and bounded `legacy-or-unknown`; the synthetic
+> `{codex,essence,marker}` test object remains unknown/refusal-only. A genuine
+> checkpoint paired with legacy `tut:1` is rescued to incomplete. Completed
+> saves cannot export pending evidence, and oversized unsafe evidence is never
+> normalized into a writable checkpoint.
+>
+> `training-restore.ts` starts from the surrounding imported v4 expedition and
+> replaces only the eleven checkpoint-owned surfaces. `e.where` is ignored as
+> route authority and canonical Earth is source-proven. The legacy checkpoint
+> has no `view`: Skip from Welcome stays/persists in Sol, full completion after
+> Land stays/persists at Earth, and only current-v2 `{view}` restoration returns
+> to the pre-Training route. Historical Earth data
+> is sanitized, not promised byte-exact. The restore invents no landing,
+> conquest, achievement, or route; down-clamps but never heals HP; reserves
+> Earth inside the 120-row Atlas cap; and derives surveys/arrivals from
+> `surveyedSet`/`sysSeen`. The optional compatible outer-v4 carrier
+> `ever:{v:1,hybrids,best,maxGen,scanhits[,arrivals]}` retains cumulative
+> checkpoint records. Outer `v` remains 4, but this is an additive v4 envelope
+> extension with an independently versioned nested carrier—not “no schema
+> change,” v5, or a game/release bump. Absent carrier preserves historical
+> derivation; floors cannot lower derived facts; `sysSeen` remains arrival
+> authority; numeric `ever.v > 1` protects the whole save as `future-version`.
+>
+> Finish/Skip is an async atomic replacement: set `aria-busy`, disable actions,
+> keep the lesson/focus lock, claim exclusive ownership before the first await,
+> stop the ticker, cancel/drain ordinary persistence, build and source-prove a
+> detached candidate, then make exactly one direct primary write. Publish live
+> state and release the renderer only after durability. Pre-durable failure
+> releases the claim and leaves the checkpoint/lesson retryable; post-durable
+> publication failure never writes again and reloads from the committed primary.
+> Source-error retains the exact checkpoint and incomplete state; it writes a
+> safe-retry Sol candidate only when Sol is freshly proven and authorized. If
+> Sol also cannot be proven, no fallback/write/clear/completion is forged and the
+> checkpoint plus lesson remain retryable.
+>
+> Loaded pending checkpoints are write-held. Loaded `tut:0` without a checkpoint
+> is also held and seated at proven Sol in runtime only; fresh empty onboarding
+> remains ordinary. Unknown checkpoint or unavailable recovery route persistently
+> locks `#importsheet` as an inert-background, focus-trapped, nonclosable modal;
+> Escape cannot close it, release copy is suppressed, trusted complete import and
+> reload remain available, and every boot reopens it while the protected source
+> remains. The five replacement reasons are `training-restart`,
+> `training-complete`, `training-recovery`, `save-import`, and `storage-retry`.
+> This does not add the remaining fifteen D-TRAIN-2 lessons, close real-save Gate
+> C, add a Guide capability, alter the five-category/44-bullet draft, set a current
+> release, or authorize a version/release.
+>
+> Ignored local evidence is now terminal PASS on Edge `151.0.4129.86` at
+> commit `b091f010011fa16bec457599b41274b7f92bb5e6`, branch `openai/mac`.
+> Slice Smoke run `20260816195736683-4852-27b5c876410a` took 154,788 ms with
+> 0 findings, 0 automatic retries, 10 screenshots, and no detected source
+> change; its raw outcome names genuine Training Skip + full Finish,
+> rescue/quarantine/retry/races, and canonical Earth. Full-certifying Glass
+> took 57,476 ms across 12/12 viewports and 12/12 reload-evidence rows, ran
+> all 57/57 planned negative controls with none blocked/omitted, and recorded
+> 0 findings, 0 instrument failures, and 0 retries. Slice Smoke binds dirty
+> working-tree SHA-256
+> `465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`;
+> Glass binds `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5`.
+> Both bind Git-status digest
+> `c195873a910c3bce42db222560c9bc70b8763df330d0454036388e4e398faa6d`.
+> Slice report SHA-256 is
+> `33953319124590ced0cebc16888cfb2b8cbe2879cbcb3c225e061d0d7a817027`;
+> its 4,163-byte raw-log SHA-256 is
+> `b060af3aaa8454a5d9813b2e5f8e6eba0ec2b7f5d3090e991154c1664a132670`.
+> Glass report SHA-256 is
+> `fe32fe802460a61ec4337c373276de8601196ead530ae8184c36970247545254`.
+> These reports cover their exact dirty diagnostic inputs, not this later
+> documentation tree, exact-head CI, integration, Gate C, human play, mapped
+> publication, or release authority.
+
+> **F2 canonical-ingress working-tree overlay (2026-08-15; historical pre-D-TRAIN-1 implementation and
 > complete local browser outcome present, exact-head integration pending):** `@cf/scene` now treats every
 > current galaxy, star and planet navigation route as a candidate rather than
 > authority. The strict CF1 parser supports all three tiers; production resolvers regenerate
@@ -59,11 +136,11 @@
 > 790-module app build are green. This is local dirty-working-tree evidence,
 > not exact-head CI, integration or Gate-completion authority.
 >
-> F2 changes no save schema or generated share-code bytes, reach balance,
+> F2 itself changed no save schema or generated share-code bytes, reach balance,
 > ownership or local ledger migration, reward/receipt writer, Guide capability
 > availability, Training lesson inventory, development/production version or
-> release, F3 CAS/revisions, or F4 clock/SessionRNG policy. D-TRAIN-1's richer legacy full-expedition
-> snapshot transaction remains open. The dated 2026-08-13 review below is
+> release, F3 CAS/revisions, or F4 clock/SessionRNG policy. At that boundary D-TRAIN-1's richer legacy
+> checkpoint transaction remained open. The dated 2026-08-13 review below is
 > retained as the earlier, narrower Search-to-planet boundary it recorded.
 
 > **Next-arc architecture review (2026-08-13):**
@@ -205,6 +282,11 @@ Field Training is equally explicit about its boundary: the slice runs the six
 welcome/find-Earth/survey/chart/Atlas/land lessons and then an honest
 "Finish for now" step. Cache, feeding, breeding, duel, hazard, healing, forge,
 and the rest of the legacy 21-step curriculum remain open with their systems.
+Genuine v1.8.9 checkpoints restore only their eleven owned pre-drill surfaces;
+surrounding expedition state stays with the surrounding save. Unknown checkpoint
+or unavailable-route recovery reuses the import sheet in a stricter persistent
+mode: background inert, focus trapped, no Close/Escape dismissal, release bulletin
+suppressed, and only reload/retry or trusted complete import available.
 Outside Training, ordinary panels use z24 above an open z23 survey card. During
 Training, the intentional lesson choreography remains authoritative and keyboard
 focus is locked to the live lesson. The phone gate injects the former lower panel
@@ -660,12 +742,10 @@ device/browser lens, starting save, findings, and retest using
 Automated personas are evidence, not a human playtest. Resolve current Git, PR, and
 check state live; this reference intentionally carries no “latest tip is green” claim.
 
-Highest-priority active v2 work is to publish the bounded F2
-galaxy→star→planet ingress candidate, require exact-head PR CI, merge it only
-when authorized and green, then monitor the resulting `develop` battery and
-mapped development publication without widening it into ownership or receipt
-authority. After that, restore imported legacy
-full-state tutorial snapshots; decide and preserve hybrid parent identity in CFB codes;
+Highest-priority active v2 work is to carry D-TRAIN-1's completed local browser
+and Glass evidence through exact-head PR CI, integration, and mapped-development evidence
+without widening its eleven-field compatibility boundary into ownership or
+receipt authority. After that, decide and preserve hybrid parent identity in CFB codes;
 finish the remaining legacy Field Training arc and keep the canonical Guide's
 current-safe topic bodies synchronized as systems land; add tooltip deep-links and
 the Advanced Briefing surface;
@@ -953,6 +1033,7 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 
 | Tool | Role |
 |---|---|
+| Root `npm run trainingcheckpoint` / `npm run trainingcheckpoint:capture` | Replays the action-derived v1.8.9 Restart Training path and exact-compares the sealed fixture plus its provenance hashes. Capture prints a candidate and never writes the sealed fixture. The separate `packages/persistence/test/training-checkpoint.test.ts` owns the exact eleven-key classifier, rescued `tut:1`, round-trip, refusal, bounds, and synthetic-unknown controls. This is jsdom/action legacy provenance plus focused static semantics, not browser or real-save Gate-C evidence. |
 | `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, package tampering, version/build drift, and both historical corner badges; then creates, verifies, and real-browser-boots a clean-commit package from an isolated exact-HEAD snapshot. The guarded loader, `robots.txt`, `preview.json` tree/lock/input/byte hashes, shared v2.0 version and site `version.json` must agree. The 320×568 boot opens the Guide and requires v2.0 plus the full source commit with no floating badge. The shared workspace lock prevents overlap with source-mutating controls, and CI pins one exact `CF_BROWSER` at job scope. This final preview caller and the root layout gate (`tools/uilayout.js`, the battery's first real browser launch — the same diagnosed Linux cold-start phase, run `31758515194`) each own a fixed bounded 30-second CDP-start allowance; the generic launcher remains at 15 seconds, and command/shutdown limits are unchanged. Every platform captures the exact caller options and runs a real browser outcome. On POSIX the selftest starts Chrome immediately but withholds its ready CDP endpoint for 16 seconds: the generic path must reject while the exact preview caller retains its full 30-second start window, reaches `Browser.getVersion`, and closes. Default output is remote-blocked; only an approved candidate is eligible for the mapped post-green `develop` publisher, which separately owns deployment authority. |
 | `npm run smoke:ci` | Runs the authoritative real-browser `slicesmoke.mjs` exactly once, retains complete stdout/stderr in `slice-smoke.log`, and writes commit/branch/working-tree/browser/screenshot-bound `slice-smoke-report.json`. It uses browser-mouse input to hit-test both desktop rail gaps, their independent ownership-removal controls, non-Element delegated events, deliberately outside Search, and the bidirectional owned/unowned canvas close outcome. It also advances the app-owned monotonic source by one exact epoch, drives the real `current()` → `persistView()` → raw IndexedDB → fresh reload chain, and rejects stored-base/stale-reload substitutions without claiming automatic edge persistence. `smokereport` owns one full-lifetime workspace lock and passes a validated one-child inherited lease to `slicesmoke`, retaining the lock through screenshot hashing and report finalization. A failure prints the first scoped diagnosis plus a related count; it never retries a red run. |
 | `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion, aggregate twin-canvas DPR and boot order without retrying. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`. Import/reload owns `import-phase-sequence`, `replacement-ticker-quiescence`, `replacement-document-loader-token-phase`, `reload-resource-release`, and `replacement-boot-phase-sequence`: the exact import stream requires ticker-running invocation, a stopped claim/write/release, and one absolute 20-second clock before the bounded arm. A capture-scoped ordinal requires the exact release-started N → release N+1 → release-complete N+2 tail; only the valid release-first intermediate waits under that unchanged clock. Sticky receipts then require a changed-loader commit within 5 seconds, the exact 12-stage `cf-v2-boot-phase/v1` sequence, and one `cf-v2-slice-ready/v1` tail from the new session/context/generation/origin/loader/token within 20 seconds. The ticker stays false through wiring and true thereafter; browser-native `performanceNow` is strictly below the bound. Two strict at-most-2-second post-ready cycles each pair an exact-context target probe with an independent browser-process heartbeat, with cycle two awaiting a later post-render ticker turn; the import arm plus both pairs form the exact five-row command ledger. The same-backing ultra control applies that target/heartbeat discriminator to both downshift and restore, requires a later advancing ticker turn, and rejects stopped/stale ticker states. Bounded sticky failure evidence diagnoses red and separates a target-only product answerability failure from transport/instrument failure. No retry, timeout increase, or IndexedDB timeout race is used. The command owns the shared workspace lock while building/browsing. |

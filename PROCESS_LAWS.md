@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-15. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-16. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -516,8 +516,8 @@ earlier gate, then the desktop-8k import leg spent its former 20-second "replace
 old top-frame loader after that document's slice token and import-phase global had disappeared. That
 state is ambiguous: it proves neither a ready replacement nor an import rejection. It also does not,
 by itself, prove the plausible high-resolution GPU/backing-store overlap was the root cause.
-> **The remedy is two-sided and phase-owned.** The app's three intentional reloads—Training restart,
-> accepted expedition import, and storage-health retry—use one explicit code-owned release path:
+> **The remedy is two-sided and phase-owned.** The app's five intentional reloads—Training restart,
+> Training completion, Training recovery, accepted expedition import, and storage-health retry—use one explicit code-owned release path:
 > synchronously claim one mutually exclusive replacement transaction before any await, stop ordinary
 > persistence, remove resize listeners, destroy Pixi with its global/child resources,
 > detach the view, shrink the application and backdrop canvases to at most 1×1, emit an optional
@@ -888,3 +888,60 @@ not a second progression authority; an audio profile is not a biological recordi
 before adding content volume, then grep every reader/writer/importer/exporter before migration or
 deletion. “Unused by the current slice” is not proof that compatibility, fixture or planned lazy
 freight is defunct.
+
+## A checkpoint restores only what it owned (2026-08-16)
+
+The mature v1.8.9 Field Training `tsnap` was never a whole-save or whole-expedition snapshot. It
+owned exactly eleven outer fields: `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}`. A compatible
+restorer may replace only those surfaces—selected statistics, player statistics, achievements,
+Stardust, Compendium, cargo, exceptional cargo counts, items, equipment, equipment affixes, and
+the captured Earth Atlas/home row. Every other field belongs to the surrounding outer save and
+must pass through the established v4 import/sanitize/export contract. The checkpoint's `e.where`
+is historical display data, never route authority; regenerate and prove canonical Earth instead.
+`view` is not one of the eleven fields. Do not promise legacy pre-Training location restore:
+legacy Skip from Welcome persists the Training Sol route, while full completion after Land
+persists Earth. Only the current-v2 exact one-key `{view}` checkpoint restores the pre-Training
+location.
+Do not invent a landing, conquest, achievement, or route, do not heal HP while clamping it to a
+restored ceiling, reserve the current Atlas-cap slot Earth owns, and derive identity-backed counts
+such as surveys and arrivals from their retained ledgers.
+
+Fixture provenance is part of that contract. `training-restart-fixture.json` is action-derived from
+the real v1.8.9 Settings → Restart Training control path. The older synthetic
+`save-fixtures.json:tut_midtraining.tsnap` object is deliberately an unknown/refusal negative
+control; never relabel it a legacy checkpoint, teach the classifier to accept it, or delete the
+evidence. A recognized exact checkpoint on `tut:1` rescues the historical completion-order bug by
+remaining pending. Any other bounded shape remains protected and refusal-only; oversized or
+otherwise unsafe evidence is never normalized into something writable.
+
+Restored cumulative records that cannot be re-derived after their record holder was consumed use
+the optional compatible outer-v4 carrier
+`ever:{v:1,hybrids,best,maxGen,scanhits[,arrivals]}`. This is an additive extension of the v4
+envelope, not “no schema change,” but it is not a global v5 migration or a game/release version
+bump. Absent `ever` preserves historical derivation. Its record fields can only raise derived
+floors; `arrivals`, when present, opts into the carrier shape but `sysSeen` remains the count
+authority. A numeric nested `ever.v` greater than 1 protects the whole save as `future-version`;
+do not silently ignore an unknown future carrier and then overwrite it. Malformed v1 carrier
+members are contained field by field.
+
+Training completion is a replacement transaction, not an autosave followed by cleanup. Finish or
+Skip must synchronously claim exclusive replacement ownership before its first await, mark the
+lesson busy and keep its focus lock/live card in place, stop the ticker, cancel queued persistence,
+drain any active write, build and source-prove a detached candidate, and perform exactly one direct
+primary write. Publish live state and tear down only after durability. Before that durable point, a
+candidate/proof/write refusal releases the claim, resumes only the work that claim stopped, rearms
+ordinary persistence, and leaves the checkpoint plus retryable lesson intact. After durability,
+never write a second time merely because live-state publication failed; reload must converge from
+the committed primary. A source-proof failure may commit only the still-incomplete save with the
+exact checkpoint retained and a freshly proven, authorized Sol route, then reload to retry. If
+Sol proof is also unavailable, forge no fallback, write, clear, or completion; keep the lesson
+and checkpoint retryable.
+
+Loaded unfinished Training has a separate write boundary. Any recognized pending checkpoint is
+write-held. A loaded `tut:0` save without a checkpoint is also held and may be seated at proven Sol
+in runtime only until the one atomic completion write; this does not fabricate an eleven-field
+snapshot. Fresh empty onboarding may use ordinary saves. An unknown checkpoint or unavailable
+recovery route enters a persistent modal lock: the import sheet remains modal, background-inert,
+focus-trapped, nonclosable by Close or Escape, and reopens synchronously on every boot while the
+protected source remains. Only retry/reload or a trusted complete import may replace it; session
+practice must not appear to make progress over protected bytes.

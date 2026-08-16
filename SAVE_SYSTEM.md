@@ -1,7 +1,112 @@
 # Celestial Frontier — Save System
 
-> **2026-08-15 F2 canonical-ingress overlay (current code; no schema
-> change):** A route read from public CF1 text, `view`, an Atlas row, or the
+> **2026-08-16 D-TRAIN-1 source-truth overlay (current source; local browser
+> evidence recorded below; exact-head CI, integration, real-save Gate C, and
+> human authority remain open):** v1.8.9 Field Training wrote an exact eleven-field checkpoint,
+> `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}`. It was not a whole save.
+> Those fields own selected statistics, player statistics, achievements,
+> Stardust, Compendium, cargo, exceptional cargo counts, items, equipment,
+> equipment affixes, and the captured Earth Atlas/home row. Restoration starts
+> from the surrounding imported v4 save, replaces only those checkpoint-owned
+> surfaces through the established sanitizers, and retains every other
+> expedition field from that surrounding save. `view` is not in the legacy
+> checkpoint: Skip from Welcome therefore persists/runtime-seats Sol, while a
+> full completion after Land persists/runtime-seats Earth. Only the exact
+> current-v2 one-key `{view}` checkpoint restores the pre-Training route. The historical `e.where` is
+> ignored as route authority; canonical Earth is regenerated and source-proven.
+> Earth history is sanitized rather than promised byte-identical, no landing,
+> conquest, achievement, or route is invented, HP is only down-clamped, the
+> current 120-row Atlas cap reserves Earth's slot, `surveys` derives from
+> `surveyedSet`, and `arrivals` derives from `sysSeen`.
+>
+> `port/baseline-v1.8.9/training-restart-fixture.json` is the sealed,
+> action-derived evidence: boot legacy fixture `veteran_rich`, open Settings,
+> press Restart Training twice, and read `localStorage.cfcc_save_v2.tsnap`.
+> Its snapshot is 2,074 bytes with SHA-256
+> `2e2f7c566a27e79398ea18650de9ac6acf236e92235fc293e4815b8bfefa22e3`;
+> the capture driver hash is
+> `c3f710d90782f7ba812a2082288ce860e5f41ce16cec2c28b3eaba1fb9ec454a`
+> and the source `veteran_rich` fixture-JSON hash is
+> `26da9dc04940132a2dd4627391ef4a1be57d6a758bf3b6efb4dc6b217c273a16`.
+> The fixture is jsdom/action-derived legacy evidence, not Nick's real-save
+> Gate-C proof. The old synthetic `tut_midtraining.tsnap`
+> `{codex, essence, marker}` remains an unknown/refusal negative control.
+>
+> Ingress distinguishes `none`, current `{view}`, exact `legacy-v1`, and
+> bounded `legacy-or-unknown`. A genuine checkpoint found with `tut:1` rescues
+> the legacy completion-order bug by normalizing Training back to incomplete.
+> Unknown bounded evidence stays pending and byte-stable on export; unsafe or
+> oversized evidence is never promoted. A completed save cannot export a
+> pending checkpoint. Cumulative records that cannot always be re-derived ride
+> in the optional compatible outer-v4 extension
+> `ever:{v:1,hybrids,best,maxGen,scanhits[,arrivals]}`. The outer `v` remains
+> 4: this is an additive v4 envelope extension with its own nested version,
+> not “no schema change,” not v5, and not a game/release version bump. With no
+> carrier, historical derivation remains unchanged. `hybrids`, `best`, and
+> `maxGen` can only raise derived floors; `scanhits` is carried because no
+> identity ledger exists; optional `arrivals` opts into the carrier shape but
+> never overrides the `sysSeen`-derived count. Numeric `ever.v > 1` protects
+> the whole expedition as `future-version`; malformed v1 members are contained.
+>
+> Finish and Skip are async atomic replacement transactions. The lesson first
+> becomes `aria-busy`, disables its controls, keeps the live card and focus lock,
+> synchronously claims exclusive replacement ownership, stops the ticker,
+> cancels queued persistence, and drains any active write. It then builds and
+> source-proves a detached candidate and performs exactly one direct primary
+> write. Live state is published and the old renderer released only after that
+> durability point. A pre-durable proof/write failure releases ownership,
+> resumes/rearms ordinary persistence, and leaves the retryable lesson plus
+> checkpoint intact. A post-durable publication failure must not issue a second
+> write; reload converges from the committed primary. A source-error candidate
+> remains incomplete, retains the exact checkpoint, and may use Sol only when
+> that route is freshly proven and authorized before the one durable write and
+> safe-retry reload. If Sol also cannot be proven, no fallback, write, clear, or
+> completion is forged; the checkpoint and lesson remain retryable.
+>
+> Loaded unfinished state is write-held before ordinary persistence can touch
+> it. This includes any recognized pending checkpoint and a loaded `tut:0`
+> expedition with no checkpoint; the latter may be seated at proven Sol only
+> in runtime and does not gain a fabricated eleven-field snapshot. Fresh empty
+> onboarding is separate and may save normally. Unknown checkpoint or
+> unavailable-route recovery uses persistent `#importsheet` modal lock:
+> background content is inert/`aria-hidden`, focus and Tab stay trapped, Close
+> is unavailable, Escape is consumed without closing, the release bulletin is
+> suppressed, and the lock reopens synchronously on every boot while protected
+> source state remains. Reload/retry and trusted complete import remain
+> available; session-only practice cannot appear to advance protected bytes.
+> The shared replacement reasons are now `training-restart`,
+> `training-complete`, `training-recovery`, `save-import`, and `storage-retry`.
+> This source work does not add the remaining fifteen legacy lessons, close
+> Gate C, expand Guide capabilities, or authorize a version/release.
+>
+> The ignored `slice-smoke-report.json` is terminal PASS for run
+> `20260816195736683-4852-27b5c876410a`: Edge `151.0.4129.86`, 154,788 ms,
+> 0 findings, 0 automatic retries, 10 report-bound screenshots, and no source
+> change detected. Its raw log names the genuine Training restart transaction's
+> Skip + full-Finish, rescue/quarantine/retry/race, and canonical-Earth outcomes.
+> It binds commit `b091f010011fa16bec457599b41274b7f92bb5e6`, branch
+> `openai/mac`, state `dirty-diagnostic`, and working-tree SHA-256
+> `465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`.
+> The ignored full-certifying `glassmatrix-report.json` is separately terminal
+> PASS on the same Edge/commit/branch in 57,476 ms: 12/12 viewports and 12/12
+> reload-evidence rows, 57/57 planned negative controls run with none blocked or
+> omitted, 0 findings, 0 instrument failures, and 0 automatic retries. It binds
+> a distinct dirty working-tree SHA-256
+> `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5`.
+> Both bind Git-status digest
+> `c195873a910c3bce42db222560c9bc70b8763df330d0454036388e4e398faa6d`.
+> Slice report SHA-256 is
+> `33953319124590ced0cebc16888cfb2b8cbe2879cbcb3c225e061d0d7a817027`;
+> its 4,163-byte raw-log SHA-256 is
+> `b060af3aaa8454a5d9813b2e5f8e6eba0ec2b7f5d3090e991154c1664a132670`.
+> Glass report SHA-256 is
+> `fe32fe802460a61ec4337c373276de8601196ead530ae8184c36970247545254`.
+> These are local dirty-working-tree outcomes for their exact recorded inputs,
+> not certification of this later documentation state, exact-head CI,
+> integration, real-save Gate C, human play, or release authority.
+
+> **2026-08-15 F2 canonical-ingress overlay (historical F2 boundary;
+> superseded above for D-TRAIN-1):** A route read from public CF1 text, `view`, an Atlas row, or the
 > current v2 Field Training snapshot is evidence to check, never navigation
 > authority. The app regenerates the claimed galaxy, then star, then planet
 > from the production seeded sources and constructs a frozen, runtime-proven
@@ -41,8 +146,8 @@
 > both reports bind Edge `151.0.4129.86` and working-tree digest
 > `7dfa649eb7de017424b7ba1ba0b11ba1fd00dc02a5b99b6848e0f3c347acba9e`.
 > This is not exact-head CI, integration, human or rubric-Gate certification.
-> Richer legacy/full-expedition `tsnap` objects remain
-> `legacy-or-unknown`; **D-TRAIN-1 is still open**. F2 adds no save-schema
+> At the F2 boundary, richer legacy `tsnap` objects remained
+> `legacy-or-unknown` and **D-TRAIN-1 was still open**. F2 itself added no save-schema
 > migration or revisions/CAS, creates no ownership or reward receipt, migrates
 > no local ownership/progression ledger, and bumps no schema/version/release.
 
@@ -116,7 +221,7 @@
 > exact value; this does not claim automatic edge persistence, foreground-only
 > accrual, cross-tab safety, or the future `activePlayMs` lease.
 
-> **2026-08-14 v2 port overlay (matches `port/v2` code):** The browser slice now
+> **2026-08-14 v2 port overlay (historical pre-D-TRAIN-1 boundary):** The browser slice then
 > distinguishes a fresh store, a supported coherent save, an unsupported future
 > version, a corrupt/sparse payload, and a transient storage failure. Only a
 > supported coherent payload may replace the last-known-good backup. Corrupt
@@ -172,9 +277,8 @@
 > values remain byte-compatible until the player moves the slider; the UI
 > never renders below 0.82, while an explicit new choice persists through the
 > same exporter. Clipboard success/failure is session UI state only and writes
-> nothing. Current-v2 Field Training restart uses a reversible `{view}`
-> snapshot; restoring the older v1 full-expedition `tsnap` schema is still a
-> Gate-C blocker. The repository still stores one exported blob rather than the
+> nothing. At that boundary, current-v2 Field Training restart used a reversible `{view}`
+> snapshot and genuine v1.8.9 checkpoint restoration remained open. The repository still stores one exported blob rather than the
 > planned split/CAS records, so multi-tab last-writer-wins is also open.
 >
 > One historical compatibility bridge remains exact and narrow: the first
@@ -198,8 +302,9 @@
 > the authoritative byte-for-byte backup, including when browser storage refuses
 > the extra keepsake.
 >
-> The three intentional v2 replacement-page transitions—current Training
-> restart after its view snapshot commits, supported expedition import after the
+> The five intentional v2 replacement-page transitions—current Training
+> restart after its view snapshot commits, atomic Training completion after its
+> replacement commits, persistent Training recovery, supported expedition import after the
 > replacement envelope commits, and storage-health retry after real bytes are
 > rediscovered—share one code-owned reload path. It blocks new ordinary writes,
 > and each flow synchronously claims the one replacement transaction before its
@@ -770,6 +875,14 @@ generation.
 - Tooling: `tools/smoke.js` drives save/load, veteran-save and skip paths;
   `tools/uilayout.js` asserts a positive `"tut":true` in `cfcc_save_v2` after training
   (proves the debounced flush landed).
+- Port compatibility provenance: root `npm run trainingcheckpoint` replays the
+  legacy Settings → Restart Training action and exact-compares the sealed
+  eleven-field `tsnap` plus source/driver/snapshot hashes;
+  `trainingcheckpoint:capture` prints but never writes. The separate v2
+  `packages/persistence/test/training-checkpoint.test.ts` suite owns classifier,
+  rescue, round-trip, refusal, bounds, and synthetic-unknown controls. This is
+  jsdom/action provenance plus focused static semantics, not real-browser or
+  real-save Gate-C proof.
 
 ## 7. Open questions / pending
 - Schema is `v:4` but `loadSave` is version-tolerant by field presence rather than a

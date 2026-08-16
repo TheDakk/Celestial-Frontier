@@ -88,14 +88,41 @@ export interface SaveStateV2 {
 
 const HARVEST_CD = 3600e3;   /* key anchor (CLAUDE.md) — the harvest stamp floor window */
 
-/** The importer must retain pre-sanitizer route evidence without making it
+/** A genuine v1.8.9 Field Training checkpoint written immediately before
+ * its sandbox starts. It owns only the eleven fields below; the surrounding
+ * full save owns every other expedition field. The classifier returns a
+ * bounded recursive clone, so these are evidence rather than parsed aliases. */
+export interface LegacyTrainingCheckpointV1 {
+  readonly st: Readonly<Record<string, unknown>>;
+  readonly ps: Readonly<Record<string, unknown>>;
+  readonly ac: readonly unknown[];
+  readonly es: number;
+  readonly c: readonly unknown[];
+  readonly ca: readonly unknown[];
+  readonly cx: readonly unknown[];
+  readonly it: readonly unknown[];
+  readonly eq: Readonly<Record<string, unknown>>;
+  readonly ea: Readonly<Record<string, unknown>>;
+  readonly e: Readonly<Record<string, unknown>> | null;
+}
+
+/** The importer must retain pre-sanitizer Training evidence without making it
  * part of the save schema. `current-view` is deliberately the exact one-key
- * snapshot written by the v2 Training restart; every richer object remains
- * legacy/unknown until D-TRAIN-1 owns its full-expedition transaction. */
+ * snapshot written by the v2 Training restart. A genuine legacy checkpoint
+ * is separately recognizable; every other richer shape remains refusal-only. */
 export type ImportTrainingSnapshotIngressV2 =
   | { readonly kind: 'none' }
   | { readonly kind: 'current-view'; readonly view: unknown }
-  | { readonly kind: 'legacy-or-unknown'; readonly snapshot: unknown };
+  | {
+      readonly kind: 'legacy-v1';
+      readonly snapshot: LegacyTrainingCheckpointV1;
+      readonly rescuedCompleted: boolean;
+    }
+  | {
+      readonly kind: 'legacy-or-unknown';
+      readonly snapshot?: unknown;
+      readonly retention?: 'save-only';
+    };
 
 /** Frozen lookup over pre-repair Atlas route evidence. The backing WeakMap is
  * private, so callers cannot mutate, enumerate or accidentally serialize it. */
@@ -200,6 +227,140 @@ function projectRawRoute(value: unknown): unknown {
   return Object.freeze(route);
 }
 
+const LEGACY_TRAINING_CHECKPOINT_V1_KEYS = Object.freeze([
+  'st', 'ps', 'ac', 'es', 'c', 'ca', 'cx', 'it', 'eq', 'ea', 'e',
+] as const);
+
+const LEGACY_TRAINING_ARRAY_CAPS = Object.freeze({
+  ac: 500,
+  c: 1500,
+  ca: 200,
+  cx: 200,
+  it: 300,
+} as const);
+
+const BOUNDED_TRAINING_EVIDENCE = Object.freeze({
+  maxDepth: 12,
+  maxArrayLength: 1500,
+  maxObjectKeys: 64,
+  maxKeyLength: 128,
+  maxStringLength: 4096,
+  maxNodes: 100_000,
+  maxCharacters: 2_000_000,
+});
+
+const TRAINING_EVIDENCE_REJECTED = Symbol('training-evidence-rejected');
+
+interface TrainingEvidenceBudget {
+  nodes: number;
+  characters: number;
+  readonly active: WeakSet<object>;
+}
+
+function isPlainRecord(value: unknown): value is Record<string, unknown> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  const prototype = Object.getPrototypeOf(value);
+  return prototype === Object.prototype || prototype === null;
+}
+
+/** Clone and freeze JSON-shaped Training evidence under hard structural and
+ * aggregate limits. Accessors, sparse/custom arrays, symbols, cycles and
+ * non-JSON values are rejected rather than observed or normalized. */
+function cloneBoundedTrainingEvidence(
+  value: unknown,
+  budget: TrainingEvidenceBudget = { nodes: 0, characters: 0, active: new WeakSet<object>() },
+  depth = 0,
+): unknown | typeof TRAINING_EVIDENCE_REJECTED {
+  if (++budget.nodes > BOUNDED_TRAINING_EVIDENCE.maxNodes
+    || depth > BOUNDED_TRAINING_EVIDENCE.maxDepth) return TRAINING_EVIDENCE_REJECTED;
+  if (value === null || typeof value === 'boolean') return value;
+  if (typeof value === 'number') return Number.isFinite(value) ? value : TRAINING_EVIDENCE_REJECTED;
+  if (typeof value === 'string') {
+    budget.characters += value.length;
+    return value.length <= BOUNDED_TRAINING_EVIDENCE.maxStringLength
+      && budget.characters <= BOUNDED_TRAINING_EVIDENCE.maxCharacters
+      ? value
+      : TRAINING_EVIDENCE_REJECTED;
+  }
+  if (!value || typeof value !== 'object' || budget.active.has(value)) return TRAINING_EVIDENCE_REJECTED;
+  budget.active.add(value);
+  try {
+    if (Array.isArray(value)) {
+      if (value.length > BOUNDED_TRAINING_EVIDENCE.maxArrayLength
+        || Object.getOwnPropertySymbols(value).length !== 0) return TRAINING_EVIDENCE_REJECTED;
+      const keys = Object.keys(value);
+      const names = Object.getOwnPropertyNames(value);
+      if (keys.length !== value.length || names.length !== value.length + 1) return TRAINING_EVIDENCE_REJECTED;
+      const clone: unknown[] = [];
+      for (let index = 0; index < value.length; index++) {
+        const key = String(index);
+        if (keys[index] !== key) return TRAINING_EVIDENCE_REJECTED;
+        const descriptor = Object.getOwnPropertyDescriptor(value, key);
+        if (!descriptor || !descriptor.enumerable || !('value' in descriptor)) return TRAINING_EVIDENCE_REJECTED;
+        const item = cloneBoundedTrainingEvidence(descriptor.value, budget, depth + 1);
+        if (item === TRAINING_EVIDENCE_REJECTED) return TRAINING_EVIDENCE_REJECTED;
+        clone.push(item);
+      }
+      return Object.freeze(clone);
+    }
+    if (!isPlainRecord(value) || Object.getOwnPropertySymbols(value).length !== 0) {
+      return TRAINING_EVIDENCE_REJECTED;
+    }
+    const keys = Object.keys(value);
+    if (keys.length > BOUNDED_TRAINING_EVIDENCE.maxObjectKeys
+      || Object.getOwnPropertyNames(value).length !== keys.length) return TRAINING_EVIDENCE_REJECTED;
+    const clone: Record<string, unknown> = {};
+    for (const key of keys) {
+      budget.characters += key.length;
+      if (key.length > BOUNDED_TRAINING_EVIDENCE.maxKeyLength
+        || budget.characters > BOUNDED_TRAINING_EVIDENCE.maxCharacters) return TRAINING_EVIDENCE_REJECTED;
+      const descriptor = Object.getOwnPropertyDescriptor(value, key);
+      if (!descriptor || !descriptor.enumerable || !('value' in descriptor)) return TRAINING_EVIDENCE_REJECTED;
+      const item = cloneBoundedTrainingEvidence(descriptor.value, budget, depth + 1);
+      if (item === TRAINING_EVIDENCE_REJECTED) return TRAINING_EVIDENCE_REJECTED;
+      Object.defineProperty(clone, key, {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: item,
+      });
+    }
+    return Object.freeze(clone);
+  } finally {
+    budget.active.delete(value);
+  }
+}
+
+/** Recognize only the genuine v1.8.9 checkpoint envelope. Key order is not
+ * semantic, but the set and outer container kinds are exact. `e.where` is
+ * carried as inert checkpoint data; it is never projected as route authority. */
+export function classifyLegacyTrainingCheckpointV1(value: unknown): LegacyTrainingCheckpointV1 | null {
+  try {
+    if (!isPlainRecord(value)
+      || Object.getOwnPropertySymbols(value).length !== 0
+      || Object.getOwnPropertyNames(value).length !== LEGACY_TRAINING_CHECKPOINT_V1_KEYS.length) return null;
+    const keys = Object.keys(value);
+    if (keys.length !== LEGACY_TRAINING_CHECKPOINT_V1_KEYS.length
+      || !LEGACY_TRAINING_CHECKPOINT_V1_KEYS.every((key) => Object.prototype.hasOwnProperty.call(value, key))) return null;
+    const clone = cloneBoundedTrainingEvidence(value);
+    if (clone === TRAINING_EVIDENCE_REJECTED || !isPlainRecord(clone)) return null;
+    if (!isPlainRecord(clone.st) || !isPlainRecord(clone.ps)
+      || typeof clone.es !== 'number' || !Number.isFinite(clone.es)
+      || !isPlainRecord(clone.eq) || !isPlainRecord(clone.ea)
+      || !(clone.e === null || isPlainRecord(clone.e))) return null;
+    for (const [key, cap] of Object.entries(LEGACY_TRAINING_ARRAY_CAPS) as Array<[
+      keyof typeof LEGACY_TRAINING_ARRAY_CAPS,
+      number,
+    ]>) {
+      const container = clone[key];
+      if (!Array.isArray(container) || container.length > cap) return null;
+    }
+    return clone as unknown as LegacyTrainingCheckpointV1;
+  } catch {
+    return null;
+  }
+}
+
 function frozenAtlasWhereLookup(
   rows: Iterable<readonly [Record<string, unknown>, unknown]>,
 ): ImportAtlasWhereLookupV2 {
@@ -256,6 +417,15 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       if (Number.isSafeInteger(version) && version > 4) return { ok: false, reason: 'future-version' };
       if (!Number.isSafeInteger(version) || version < 0) return { ok: false, reason: 'invalid' };
     }
+    if (data.ever && typeof data.ever === 'object' && !Array.isArray(data.ever)) {
+      const version = (data.ever as Record<string, unknown>).v;
+      /* `ever` has its own reader contract inside compatible v4 envelopes.
+         A valid later writer is protected, not silently downgraded to v1 by
+         the next ordinary save. Malformed v1 data remains a contained field. */
+      if (typeof version === 'number' && Number.isSafeInteger(version) && version > 1) {
+        return { ok: false, reason: 'future-version' };
+      }
+    }
 
     const num = (v: unknown, d?: number): number => {
       const x = +(v as number);
@@ -276,15 +446,44 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const itemBy = registry.items;
     const TIER_MAX = registry.tierMax;
 
+    /* v4 compatible extension, independently versioned: these values are
+       cumulative records, not a projection of the creatures that remain
+       in the Compendium. Older saves have no carrier and keep the historical
+       derive-from-current-codex behavior. Once present, the carrier can only
+       raise the derived floor; it can never hide a surviving record holder. */
+    const cumulativeRecord = (() => {
+      const value = data.ever;
+      if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+      const raw = value as Record<string, unknown>;
+      if (raw.v !== 1) return null;
+      const counter = (field: string, hi: number): number => {
+        const candidate = raw[field];
+        return typeof candidate === 'number' && Number.isSafeInteger(candidate) && candidate >= 0
+          ? Math.min(candidate, hi) : 0;
+      };
+      return Object.freeze({
+        hybrids: counter('hybrids', 1_000_000_000),
+        best: counter('best', TIER_MAX),
+        maxGen: counter('maxGen', 1_000_000_000),
+        scanhits: counter('scanhits', 1_000_000_000),
+        arrivals: Object.prototype.hasOwnProperty.call(raw, 'arrivals')
+          && typeof raw.arrivals === 'number'
+          && Number.isSafeInteger(raw.arrivals)
+          && raw.arrivals >= 0
+          ? Math.min(raw.arrivals, 1_000_000_000)
+          : null,
+      });
+    })();
+
     const EPOCH_BASE = sanitizeEpoch(data.epoch);
     const customNames = new Map<string, string>();
     for (const kv of _capA(data.names, 5000) as Array<[unknown, unknown]>) {
       if (kv && typeof kv[0] === 'string') { const nm = cleanName(kv[1]); if (nm) customNames.set(kv[0], nm); }
     }
     const stats: Record<string, number> = {
-      /* hybrids/best/maxGen: DECLARATION-initialized in the game, never
-         load-restored (they rebuild from play) — present so the observable
-         shape matches the real post-load stats object */
+      /* hybrids/best/maxGen first rebuild from surviving Compendium rows;
+         scanhits has no identity ledger. The optional cumulative record is
+         applied after the Compendium source pass. */
       hybrids: 0, best: 0, maxGen: 0,
       shares: num(data.shares), jumps: num(data.jumps), anomalies: num(data.anomalies),
       events: num(data.events), duels: num(data.duels), duelwins: num(data.duelwins),
@@ -411,6 +610,13 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const surfSeen = new Set<unknown>(); for (const s of _capA(data.surf, 60000)) surfSeen.add(s);
     const xpFirsts = new Set<string>(); for (const s of _capA(data.xpf, 4000)) if (typeof s === 'string') xpFirsts.add(s.slice(0, 64));
     const sysSeen = new Set<number>(); for (const s of _capA(data.sysv, 60000)) { const n = +(s as number); if (Number.isFinite(n)) sysSeen.add(n); }
+    /* A legacy save may contain sysSeen without ever having serialized the
+       corresponding dynamic Records counter. Preserve that v1 shape unless
+       the nested carrier explicitly opts in; when it does, the identity
+       ledger—not the free numeric claim—remains authority. */
+    if (cumulativeRecord?.arrivals !== null && cumulativeRecord?.arrivals !== undefined) {
+      stats.arrivals = sysSeen.size;
+    }
     const starKindsSeen = new Set<string>(); for (const s of _capA(data.starK, 200)) starKindsSeen.add(s as string);
     const ptypesSeen = new Set<string>(); for (const s of _capA(data.ptypes, 200)) ptypesSeen.add(s as string);
     const eventKeysSeen = new Set<string>(); for (const s of _capA(data.evts, 400)) eventKeysSeen.add(s as string);
@@ -465,24 +671,61 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
         continue;
       }
     }
+    if (cumulativeRecord) {
+      stats.hybrids = Math.max(stats.hybrids || 0, cumulativeRecord.hybrids);
+      stats.best = Math.max(stats.best || 0, cumulativeRecord.best);
+      stats.maxGen = Math.max(stats.maxGen || 0, cumulativeRecord.maxGen);
+      if (cumulativeRecord.scanhits > 0) {
+        stats.scanhits = Math.max(stats.scanhits || 0, cumulativeRecord.scanhits);
+      }
+    }
     /* pre-v1.7 veteran: `seen` ABSENT (not empty) ⇒ everything already
        catalogued counts as viewed — the new-dot flood guard */
     if (!Array.isArray(data.seen)) for (const id of codex.keys()) seenSp.add(id);
 
     const voiceOn = data.vce != null ? !!data.vce : true;
     const combatSfxOn = data.cbx != null ? !!data.cbx : true;
-    const tutSnapPending = (data.tsnap && typeof data.tsnap === 'object' && !data.tut) ? data.tsnap : null;
+    let tutSnapPending: unknown = null;
+    let rescuedLegacyTrainingCompleted = false;
     const trainingSnapshot: ImportTrainingSnapshotIngressV2 = (() => {
-      if (tutSnapPending == null) return Object.freeze({ kind: 'none' as const });
-      if (!Array.isArray(tutSnapPending)
-        && Object.keys(tutSnapPending as Record<string, unknown>).length === 1
-        && Object.prototype.hasOwnProperty.call(tutSnapPending, 'view')) {
+      const rawSnapshot = data.tsnap;
+      if (!rawSnapshot || typeof rawSnapshot !== 'object') {
+        return Object.freeze({ kind: 'none' as const });
+      }
+      const currentViewShape = !Array.isArray(rawSnapshot)
+        && Object.keys(rawSnapshot as Record<string, unknown>).length === 1
+        && Object.prototype.hasOwnProperty.call(rawSnapshot, 'view');
+      if (currentViewShape && data.tut) return Object.freeze({ kind: 'none' as const });
+      if (currentViewShape) {
+        const view = projectRawRoute((rawSnapshot as { view: unknown }).view);
+        const boundedCurrentSnapshot = cloneBoundedTrainingEvidence(rawSnapshot);
+        /* Preserve every bounded byte of the current one-key checkpoint for
+           export parity. If its view hides hostile bulk, retain only the
+           already-bounded route projection rather than a second raw copy. */
+        tutSnapPending = boundedCurrentSnapshot === TRAINING_EVIDENCE_REJECTED
+          ? Object.freeze({ view })
+          : boundedCurrentSnapshot;
         return Object.freeze({
           kind: 'current-view' as const,
-          view: projectRawRoute((tutSnapPending as { view: unknown }).view),
+          view,
         });
       }
-      return Object.freeze({ kind: 'legacy-or-unknown' as const, snapshot: tutSnapPending });
+      const legacyCheckpoint = classifyLegacyTrainingCheckpointV1(rawSnapshot);
+      if (legacyCheckpoint && (data.tut === 0 || data.tut === 1)) {
+        rescuedLegacyTrainingCompleted = data.tut === 1;
+        tutSnapPending = legacyCheckpoint;
+        return Object.freeze({
+          kind: 'legacy-v1' as const,
+          snapshot: legacyCheckpoint,
+          rescuedCompleted: rescuedLegacyTrainingCompleted,
+        });
+      }
+      const boundedSnapshot = cloneBoundedTrainingEvidence(rawSnapshot);
+      if (boundedSnapshot === TRAINING_EVIDENCE_REJECTED) {
+        return Object.freeze({ kind: 'legacy-or-unknown' as const, retention: 'save-only' as const });
+      }
+      tutSnapPending = boundedSnapshot;
+      return Object.freeze({ kind: 'legacy-or-unknown' as const, snapshot: boundedSnapshot });
     })();
     const scoutId = (typeof data.scout === 'string' && codex.has(data.scout)) ? data.scout : null;
     const chDone: string[] = [];
@@ -539,6 +782,10 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
             /^data:image\/(png|jpe?g|webp);base64,[A-Za-z0-9+/=]+$/.test(it.thumb)) ? it.thumb : null,
           sq: !!it.sq, badge: _cs(it.badge, 18), where: _cw(it.where), fav: !!it.fav, t: clamp(num(it.t), 0, 4102444800000),
         };
+        /* Field Training's v1 checkpoint carries the Atlas star-class
+           display/history label separately from `where.star` identity. Keep
+           absent legacy fields absent, but preserve an explicitly empty one. */
+        if (Object.prototype.hasOwnProperty.call(it, 'star')) entry.star = _cs(it.star, 24);
         logMap.set(_id, entry);
         rawAtlasWhereById.set(_id, projectRawRoute(it.where));
       }
@@ -586,7 +833,12 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const frontierUnlocked = !!data.frontier;
     const frontierEnding = (data.ending as string) || null;
     const seenGuide = !!data.guide;
-    const tutDone = data.tut === undefined ? true : !!data.tut;   /* absent ⇒ done — never force training on a held run */
+    /* The shipped legacy restart bug could persist `tut:1` beside its exact
+       pre-Training checkpoint. Normalize that proven pair back to pending so
+       an ordinary export cannot cement completed+pending or erase the rescue. */
+    const tutDone = rescuedLegacyTrainingCompleted
+      ? false
+      : data.tut === undefined ? true : !!data.tut;   /* absent ⇒ done — never force training on a held run */
     const rnSeen = typeof data.rn === 'string' ? data.rn.slice(0, 12) : '0';
 
     return {

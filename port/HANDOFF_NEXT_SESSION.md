@@ -1,4 +1,29 @@
-# ★ LIVE — Arc 0 stabilization repair in working copy; exact-head CI and DEV publication pending (2026-08-13)
+# SUPERSEDED HISTORICAL HANDOFF — use `ROADMAP.md` for live state
+
+> This file records the 2026-08-13 Arc 0 handoff and is no longer live authority.
+> Resolve repository/PR/check state live and use `ROADMAP.md` for the current queue.
+> **2026-08-16 correction:** D-TRAIN-1 source now recognizes/restores the exact
+> eleven-field v1.8.9 checkpoint; it was never a full-expedition snapshot. Later
+> ignored local reports are terminal PASS: Slice Smoke run
+> `20260816195736683-4852-27b5c876410a` / 154,788 ms / 0 findings /
+> 0 automatic retries / 10 screenshots and full-certifying Glass 57,476 ms / 12 viewports /
+> 57 negative controls / 0 findings or instrument failures / 0 automatic retries, both on Edge
+> `151.0.4129.86` at dirty commit `b091f010011fa16bec457599b41274b7f92bb5e6`.
+> They bind different dirty-tree hashes
+> (`465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`
+> smoke; `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5` Glass);
+> both bind Git-status digest
+> `c195873a910c3bce42db222560c9bc70b8763df330d0454036388e4e398faa6d`.
+> Slice report/log SHA-256 values are
+> `33953319124590ced0cebc16888cfb2b8cbe2879cbcb3c225e061d0d7a817027` /
+> `b060af3aaa8454a5d9813b2e5f8e6eba0ec2b7f5d3090e991154c1664a132670`
+> (4,163-byte log); Glass report SHA-256 is
+> `fe32fe802460a61ec4337c373276de8601196ead530ae8184c36970247545254`.
+> exact-head/integration and real-save Gate-C/human evidence remain pending.
+> That legacy checkpoint has no `view`: Welcome Skip keeps Sol and post-Land
+> completion keeps Earth; only the current-v2 `{view}` shape restores the prior route.
+> Any “restore legacy full-expedition `tsnap`” wording retained below is superseded
+> history, not current scope.
 
 ## Live Git and publication state
 

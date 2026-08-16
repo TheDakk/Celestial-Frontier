@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-15 · F2 CANONICAL INGRESS AND DISCRIMINATED NAVIGATION ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-16 · D-TRAIN-1 LEGACY CHECKPOINT TRANSACTION ◀◀◀
 
 ### Cold start
 
@@ -25,158 +25,178 @@ the archive verbatim and refresh this handoff in place.
   `/celestial-frontier-openai-mac` on `openai/mac`; Claude macOS uses `anthropic/mac`; Windows
   uses the matching rows in `PARALLEL_GIT_PROTOCOL.md`.
 - Read in order: this handoff · `PROCESS_LAWS.md` · `PARALLEL_GIT_PROTOCOL.md` · `AGENTS.md` or
-  `CLAUDE.md` · `celestial-frontier-codebase-reference.md` ·
+  `CLAUDE.md` · `SAVE_SYSTEM.md` · `QUESTS_AND_CHAPTERS.md` ·
+  `celestial-frontier-codebase-reference.md` ·
   [`port/V2_PROGRAM_ROADMAP.md`](port/V2_PROGRAM_ROADMAP.md) ·
   `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` · `port/RUBRICS.md` · `port/DECISIONS.md` ·
   `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `port/DEVELOPMENT_PREVIEW.md`.
-- Resolve Git, PR, checks and publication live. Historical run IDs below are evidence, not an
-  assertion about a newer tip. Never copy files manually between agent worktrees.
+- Resolve Git, PR, checks and publication live. Historical run IDs and ignored reports below bind
+  only their named inputs; never reuse them as authority for a newer tip. Never copy files manually
+  between agent worktrees.
 
-### Integrated through F1b
+### Synchronized foundation through F2
 
-- Epoch-contract PR [#29](https://github.com/TheDakk/Celestial-Frontier/pull/29) reached exact final
-  head `f6d89b01600effd04599326d0e024c7ad2ee3a4d`. Every required job and final join passed in
-  test-battery run
-  [`31908610283`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31908610283).
-- PR #29 merged normally into `develop` at
-  `5171abcdc538938fdf5ac82688d1ab868da6ff48`. Every job and final join passed in exact-`develop`
-  test-battery run
-  [`31919155384`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31919155384).
-  Mapped publication run
-  [`31919904024`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31919904024) passed
-  development and skipped production; the public DEV manifest serves build
-  `develop-5171abcdc538` from the full merge SHA.
-- Remote automation fast-forwarded `openai/mac`. Before this docs-only transition, the worktree,
-  `HEAD`, `origin/openai/mac`, and `origin/develop` were clean and synchronized at that exact merge.
-  Automation never replaces the required live ownership/fetch/clean check.
+- PR [#30](https://github.com/TheDakk/Celestial-Frontier/pull/30) finished at head
+  `24bcc3cbf4e76f7bb65a00e810e0eeeeb8d7c837` and merged normally into `develop` at
+  `b091f010011fa16bec457599b41274b7f92bb5e6`. At the start of this batch `HEAD`,
+  `origin/openai/mac`, `origin/develop`, and the other synchronized agent refs all resolved to that
+  merge. The superseded F2 candidate handoff is archived byte-verbatim; its historical dirty-tree
+  reports remain evidence for the inputs they named, not for D-TRAIN-1.
+- F2's bounded canonical-ingress seam is integrated. This does not close Arc 0, Gate D, any human
+  gate, a release, or the planned F3/F4 transaction/time work.
 
-### Active F2 boundary — locally proven working candidate, not yet certified
+### Active D-TRAIN-1 boundary — local working-tree candidate [PARTIAL]
 
-- F2 closes the current canonical-identity gap before any world-bound ownership, reward, or receipt
-  writer begins. The current worktree now contains the pure tiered resolver, runtime provenance,
-  discriminated navigation, strict CF1 parser, raw import sidecars, app ingress migration, canonical
-  render receipt, source-order planet ordinal, and truthful existing Guide/release-copy candidate.
-- The focused ingress controls are green. The complete static suite is green at **27 files / 340
-  passed / 1 skipped**; both TypeScript programs, `artunused`, and the production build are green.
-- The first complete local `npm run smoke` stayed red and remains part of the evidence. It found one
-  real product incompatibility: the lifted `galaxyStats` presentation helper memoizes by assigning
-  `_stats` to its argument, but F2 correctly makes `ProvenGalaxy` immutable. The repair gives that
-  helper a disposable mutable copy and stores the result in a runtime sidecar keyed by the proven
-  galaxy; canonical provenance remains frozen and never leaks into save bytes.
-- That same red run also exposed harness expectation/setup drift rather than further product defects:
-  the Charter control had selected real Sol instead of a generated non-Sol star, imported explorer
-  names were expected before their established 24-character `cleanName` normalization, and saved-
-  route, Training, and Records checks ignored the exporter's established first-write union of landed,
-  conquered, and mined census worlds. The repaired harness cycles real keyboard input to an actual
-  generated non-Sol star before pressing its live action and compares persistence/Records against the
-  normalized save stage without weakening the route, ledger, receipt, or raw-IDB controls.
-- Final audit then added held-route Training Restart transfer/rollback and non-null per-mode
-  provenance-key controls. The first CI-format rendered-copy run correctly stayed red on its own
-  title identity: both required-copy lists were empty and both contradiction guards were false, but
-  the predicate compared `Settings` to the rendered icon-prefixed `⚙ Settings`. Matching the stable
-  topic title by contained identity preserves the cross-topic failure direction without rejecting
-  the real heading; the diagnosed next one-attempt run passed.
-- Final local `npm run smoke:ci` report `apps/game/smoke/slice-smoke-report.json` is terminal-green:
-  zero findings, zero automatic retries, 138,305 ms, ten fresh run-id-bound screenshots, Edge
-  `151.0.4129.86`, and working-tree digest
-  `7dfa649eb7de017424b7ba1ba0b11ba1fd00dc02a5b99b6848e0f3c347acba9e`.
-  `npm run glassmatrix:selftest` and the complete 12-viewport `npm run glassmatrix` are also green;
-  the Glass report binds the same digest and browser provenance, with zero findings, zero instrument
-  failures, zero retries, and 55,065 ms. Browser-path/CDP/report selftests are green. This remains
-  local dirty-tree evidence, not a claim that Gate D or F2 is closed: exact-head pull-request CI,
-  merge integration, and mapped publication remain open. F2 therefore remains **[PARTIAL]**.
-- Factor the existing source-derived address proof into exact galaxy, star, and planet tiers. Mint
-  immutable runtime-proven hierarchy objects only from deterministic generators; bind star to its
-  canonical galaxy and planet plus ordinal to its canonical star. A type assertion, object spread,
-  sanitized view, caller coordinate, or test-source override is not provenance.
-- Replace nullable, alias-prone navigation with an immutable discriminated `NavState` and validating
-  smart transitions. Legal adjacency remains universe → galaxy → system → surface and back; every
-  transition must reject unproven or cross-parent context without mutating current state.
-- Route every current ingress through the same proof boundary: generated galaxy/star/planet
-  descents; external planet, star-only and galaxy-only CF1 Search; saved-view boot; Atlas rows;
-  tutorial snapshot restore; legacy-slice validation; and any route later proposed for ownership or
-  receipt targeting.
-- Only resolver output may reach rendering, reach and Charter gates, survey/custom names, Land,
-  sharing, saved navigation, or future world registries. Invalid or stale saved navigation degrades
-  to neutral universe home; other invalid ingress fails closed without partial-parent fallback.
+- The genuine v1.8.9 Field Training `tsnap` is an exact eleven-key checkpoint
+  `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}`, not a whole save or whole expedition. The new
+  action-derived fixture captures that real Settings → Restart Training outcome; the old synthetic
+  `{codex, essence, marker}` object remains an unknown/refusal-only control.
+- Persistence classifies `none`, current one-key `{view}`, exact `legacy-v1`, and bounded
+  `legacy-or-unknown` evidence. It rescues a genuine checkpoint paired with legacy `tut:1` back to
+  incomplete, refuses unsafe/oversized evidence, forbids completed-plus-pending export, and keeps
+  numeric future `ever.v > 1` under whole-save future-version protection.
+- Legacy restoration starts from the surrounding imported v4 expedition and replaces only the
+  eleven checkpoint-owned surfaces through established sanitizers. It source-proves Earth instead
+  of trusting `e.where`, invents no landing/conquest/achievement/reward, never heals HP, reserves
+  Earth inside the Atlas cap, and retains surrounding fields. The optional additive v4-envelope
+  carrier `ever:{v:1,hybrids,best,maxGen,scanhits[,arrivals]}` preserves facts that cannot always
+  be re-derived; outer `v` remains 4, but this is an additive schema extension, not “no schema
+  change,” v5, or a release bump.
+- The legacy checkpoint owns no `view`. Real Skip from Welcome persists/runtime-seats proven Sol;
+  real full Finish after Land persists/runtime-seats proven Earth. Only the current-v2 exact
+  one-key `{view}` checkpoint restores the pre-Training route.
+- Finish/Skip is an async atomic replacement: claim exclusive ownership before the first await,
+  keep the lesson busy and focus-locked, stop the ticker, cancel/drain ordinary persistence, build
+  and source-prove a detached candidate, perform exactly one direct primary write, then publish
+  live state and release the renderer. Pre-durable failure leaves the checkpoint and lesson
+  retryable; post-durable publication failure never writes twice and reloads from the committed
+  primary. Source failure durably defers at proven Sol with the exact checkpoint.
+- Loaded pending checkpoints and loaded `tut:0` saves without a checkpoint are write-held; the
+  latter receives only a runtime Sol seat. Fresh empty onboarding remains ordinary. Unknown
+  checkpoint or unavailable route opens a persistent nonclosable recovery modal: the background is
+  inert/hidden and re-locked after mutation, focus stays trapped, Escape is consumed, release copy
+  is suppressed, and only trusted complete import or reload/retry remains available.
+- Existing Settings/Saving Guide paragraphs and the existing Field Training development bullet now
+  state those bounded legacy/current outcomes. This adds no Guide capability or lesson, keeps the
+  development inventory at five categories / 44 bullets, and does not set a current release.
+
+### Exact local evidence and red → repair chronology
+
+- Static evidence was refreshed after implementation: the three focused D-TRAIN files pass
+  **26/26**; the complete v2 suite passes **30 files / 366 passed / 1 skipped**; both TypeScript
+  programs and `artunused` pass. Root `npm run trainingcheckpoint` passes and binds the
+  2,074-byte action-derived checkpoint SHA-256
+  `2e2f7c566a27e79398ea18650de9ac6acf236e92235fc293e4815b8bfefa22e3`. The browser reports
+  below each rebuilt the production bundle they exercised.
+- The first broad D-TRAIN diagnostic smoke was honestly red. Most initial failures were instrument
+  expectation/setup drift: fresh unfinished Training now source-seats Sol rather than Cosmos;
+  keyboard and phone journeys therefore needed a real target release and real ascent; normalized
+  land census expands the fixture's two rows to the established six-row union; and the oracle had
+  to distinguish direct atomic-write Atlas false defaults from a later ordinary re-export. Those
+  repairs preserved real input, draw-tail receipts, native IndexedDB write counts, exact route
+  identity, outer-save sentinels, and deliberate negative controls.
+- That red also found one real product defect: while recovery was open, a later DOM mutation could
+  clear `inert`/`aria-hidden` from a background root. The repair snapshots exact top-level roots,
+  enforces the lock idempotently, and observes body mutations; the browser control deliberately
+  removes both attributes, waits an observer turn, and requires re-lock while the modal itself
+  remains exposed.
+- Further harness reds were classified and repaired without weakening outcomes: canvas focus was
+  reset with blur/focus so the real focus event owns keyboard targeting; offscreen Sol was reached
+  by bounded real Arrow/Minus camera input; phone ascent used two complete real pinch gestures;
+  full-Finish expected Earth route/ordinal 2; queued release publication explained the later
+  `rn=2.0.0-test` sample; and the raw oracle records why direct Training writes retain explicit
+  Atlas `quasar:false,dwarf:false` while the later exporter omits those false defaults.
+- The first full Glass Matrix after Slice went red only in its instrument: it still required
+  “preference fixture did not return to the universe after Training Skip,” then could not enter the
+  home galaxy or prepare the Charter toast. D-TRAIN correctly ended Skip at proven Sol. Glass now
+  drives the real canvas focus law—first Escape releases the selected target, the next two Escapes
+  ascend Sol → Milky Way → Cosmos with advancing canonical render receipts—before the unchanged
+  universe and Charter checks.
+- The first post-copy Slice run was also honestly instrument-red: the legacy Skip contradiction
+  regexp allowed a comma inside its clause, crossed the valid “Skip … Sol, while … Earth” sentence,
+  and misread Finish's Earth as Skip's destination. The repair makes comma/semicolon a hard clause
+  boundary; it does not weaken the contradictory Earth/pre-Training-view control.
+- The matching post-copy Glass run was instrument-red because an injected `Completing … Sol`
+  contradiction used an initial capital while the forbidden literal was lower-case. Glass now
+  compares forbidden rendered copy case-insensitively while keeping required player copy exact.
+  Both instrument reds remained visible and were followed by fresh one-attempt runs; no retry
+  concealed either result.
+- Final ignored Slice report `cf-v2-slice-smoke-ci/v1` is terminal PASS for run
+  `20260816195736683-4852-27b5c876410a`: Edge `151.0.4129.86`, 154,788 ms, zero
+  findings/retries, ten run-bound screenshots, commit
+  `b091f010011fa16bec457599b41274b7f92bb5e6`, and dirty-tree SHA-256
+  `465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`. Report-file SHA-256:
+  `33953319124590ced0cebc16888cfb2b8cbe2879cbcb3c225e061d0d7a817027`; its 4,163-byte raw-log
+  SHA-256 is `b060af3aaa8454a5d9813b2e5f8e6eba0ec2b7f5d3090e991154c1664a132670`, its Git-status digest
+  is `c195873a910c3bce42db222560c9bc70b8763df330d0454036388e4e398faa6d`, and source-change
+  detection remained false.
+- Final ignored full-certifying Glass report `cf-v2-glassmatrix/v1` is terminal PASS on the same
+  Edge/base commit: 57,476 ms, 12/12 viewports and reload-evidence rows, 57/57 planned negative
+  controls with none blocked/omitted, zero findings/instrument failures/retries, and dirty-tree
+  SHA-256 `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5`.
+  Report-file SHA-256:
+  `fe32fe802460a61ec4337c373276de8601196ead530ae8184c36970247545254`; it binds the same
+  `c195873a910c3bce42db222560c9bc70b8763df330d0454036388e4e398faa6d` Git-status digest.
+- The report snapshots are intentionally different: Glass includes harness repairs made after
+  Slice. This handoff/docs refresh postdates both. Neither report claims the exact current working
+  diff; a committed exact-head battery and integration evidence remain mandatory. D-TRAIN-1 stays
+  **[PARTIAL]**.
 
 ### Hard exclusions
 
-- F2 does not add ownership, inventory, rewards, receipts, mining, fabrication, breeding, combat,
-  missions, companions, or any other Arc 2+ mechanic. F3 still owns CAS/revisions, journal receipts,
-  split stores and the tab lease; F4 still owns active-play time, visibility policy and SessionRNG.
-- Do not change deterministic generation, share-code bytes, world positions, reach/Charter balance,
-  save schema/version, presentation art/audio, Guide capability availability, Training lessons,
-  draft-release inventory, development or production version, `main`, production deployment, or
-  the live-site repositories. Existing Guide topics and existing draft bullets may become more
-  truthful only after their matching live outcomes are proven; F2 adds no new player capability.
-
-### Required evidence plan
-
-- Pure controls must prove all three valid tiers, exact uint32/finite-coordinate rejection,
-  normalized `-0`, galaxy-A/star-B and star-A/planet-B rejection, coarse/fine duplication,
-  ambiguous/missing/throwing sources, immutable deep copies, rejected structural clones, and valid
-  independently resolved copies of the same canonical parent.
-- Navigation controls must prove every legal descent/ascent, every wrong-origin rejection, parent
-  binding, stale saved-view → home, no lower-tier downgrade, and exact slim save/share serialization
-  without provenance metadata leakage. Deliberate old seed-only, nullable-state and coercing-view
-  substitutions must turn the focused tests red.
-- Real-browser outcome evidence must drive every live ingress and prove invalid routes cannot render
-  foreign content, pass reach/Charter, focus or rename a planet, Land, bank progress, persist, share,
-  or award. Valid generated, Search, Atlas, boot/reload and tutorial-restore paths must still work.
-- Run focused scene/address/navigation tests, the complete v2 suite, both TypeScript programs,
-  `artunused`, diff hygiene, and one complete no-retry browser smoke. Any new browser instrument needs
-  its own bidirectional controls. Refresh current references and player copy only for outcomes that
-  actually become live.
+- D-TRAIN-1 does not add the other fifteen legacy lessons, claim the complete 21-step curriculum,
+  make `tsnap` a whole-save rollback, restore a legacy pre-Training route it never stored, or close
+  real-save Gate C/human play.
+- It does not add ownership, rewards, inventory, missions, combat, companions, or any Arc 2+
+  writer. F3 still owns general CAS/revisions, split stores, receipts/journal, and tab lease; F4
+  still owns visibility/active-play time and SessionRNG.
+- It does not change deterministic generation/share bytes, reach/Charter balance, outer save
+  version 4, development/production version identity, `main`, production release/deploy, or either
+  live-site repository.
 
 ### Next actions
 
-1. Treat only PR #30's live final successor—not the initial implementation-head run—as exact-head
-   authority. Require terminal-green branch-flow and battery checks with no further source or scope
-   change; preserve the first red smoke diagnosis alongside the restored local green evidence.
-2. Require clean review or an exact-head waiver before normal integration, then monitor the exact
-   `develop` push battery and mapped development publication.
-3. Do not begin F3, F4, or any world-bound product writer while F2 remains incomplete.
+1. Finish read-only source, harness, documentation, and scope audits on the complete working diff.
+2. Commit and push the bounded D-TRAIN-1 candidate, open a draft PR from `openai/mac` into
+   `develop`, and require fresh exact-head branch-flow plus the full required battery.
+3. Merge only a reviewed-or-explicitly-waived terminal-green exact head, then monitor the resulting
+   `develop` battery and mapped development publication. Keep Gate C/human save open.
+4. Do not begin F3, F4, or a product Arc inside this batch.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS, owned folder `/celestial-frontier-openai-mac`, branch
-`openai/mac`, based on synchronized `develop` commit
-`5171abcdc538938fdf5ac82688d1ab868da6ff48`. Exact implementation commit
-`3cc61f9d71b1073cacece8dfeb44c2dd2fd93b3d` is pushed and opened as draft PR #30; this
-publication-state correction is its final docs-only successor, whose live pushed SHA/check state
-must be resolved rather than inferred from the initial run. Focused and full static checks,
-type/art/build checks, final CI-format smoke, and 12-viewport Glass Matrix are green after the
-recorded product and harness reds. The smoke and Glass reports bind the same pre-evidence-refresh
-working-tree digest; exact-head CI and integration remain pending.
+**Current side:** OpenAI/Codex on macOS, owned folder
+`/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, based on synchronized
+`develop` merge `b091f010011fa16bec457599b41274b7f92bb5e6`. The shared worktree contains the
+uncommitted bounded D-TRAIN-1 implementation, tests, harness, references, and this later docs-only
+handoff. Static checks and two separately bound local browser reports are green as recorded above;
+they do not bind this exact post-report documentation state. Exact-head CI/integration is pending.
 
-**GitHub step:** None for Nick now; draft PR
-[#30](https://github.com/TheDakk/Celestial-Frontier/pull/30) targets `develop` from `openai/mac`.
-OpenAI/Codex owns the final docs-only successor, fresh exact-head CI, review/waiver boundary and
-normal integration monitoring. Do not reuse PR #29 or touch `main`.
+**GitHub step:** None for Nick now. OpenAI/Codex owns final audit, intentional commit/push, draft PR
+creation from `openai/mac` into `develop`, fresh exact-head CI, review/waiver boundary, and normal
+integration monitoring under the standing proceed authority. Do not touch `main`.
 
-**PR details:** base `develop`; source `openai/mac`; title **F2 — Canonical ingress and immutable
-navigation provenance**. Copy-ready description:
+**PR details:** base `develop`; source `openai/mac`; copy-ready title
+**D-TRAIN-1 — Restore genuine legacy Training checkpoints atomically**. Copy-ready description:
 
-> Makes every current galaxy, star and planet navigation ingress source-prove one canonical
-> hierarchy before authorization or mutation. Adds runtime-proven immutable hierarchy objects,
-> discriminated navigation, strict all-tier CF1 parsing, source-order planet ordinal, bounded
-> nonserialized import/Atlas evidence, authorize-before-commit routing, canonical render receipts,
-> safe saved/Training route repair and conditional retry, plus truthful Guide/release copy. Closes
-> the nested WorldGen `bridge` alias and keeps mutable presentation caches off frozen authority.
-> No save schema, generated universe/share bytes, reach balance, ownership/reward/receipt writer,
-> capability inventory, Training lesson count, version, release or deployment changes.
+> Restores the exact eleven-key v1.8.9 Field Training checkpoint without treating it as a whole
+> save. Adds genuine action-derived fixture/provenance, bounded checkpoint classification and
+> additive cumulative-record carrier, current-versus-legacy route semantics, source-proven Earth,
+> and one-write async replacement with write-hold, rollback, post-durable reload, race controls,
+> and persistent modal recovery for unknown/unavailable state. Updates existing Guide/release copy
+> without adding a capability or lesson.
 >
-> Local evidence: 27 test files / 340 passed / 1 skipped; both TypeScript programs; `artunused`;
-> art audit/override/coverage/spec controls; browser-path/CDP/report selftests; one final
-> zero-finding/zero-retry `smoke:ci`; and a zero-finding/zero-instrument-failure 12-viewport Glass
-> Matrix. Exact-head PR CI and review remain integration authority.
+> Local evidence: 3 focused files / 26 passed; 30 files / 366 passed / 1 skipped; both TypeScript
+> programs; `artunused`; action-derived fixture check; one zero-finding/zero-retry Slice report; and
+> one full-certifying 12-viewport Glass report with 57/57 negative controls and zero findings,
+> instrument failures, or retries. The two ignored reports bind their separately named dirty-tree
+> hashes; exact-head PR CI, integration, Gate C, human play, release, and deployment remain open.
 
-**Other side:** Anthropic/Claude Code need not be opened now. Once this plan is committed and pushed,
-it may review it later from a clean synchronized `anthropic/mac`, but must not edit or copy files
-from the OpenAI worktree. At its next coding batch it must fetch and verify its own branch against
-current `origin/develop`.
+**Other side:** Anthropic/Claude Code need not be opened now. It may review the pushed draft later
+from a clean synchronized `anthropic/mac`, but must not edit or copy files from this OpenAI
+worktree. At its next coding batch it must fetch and verify its own branch against current
+`origin/develop`.
 
-**Release status:** PR #29 is integrated in `develop` and mapped DEV build
-`develop-5171abcdc538` is published. No `develop` → `main` merge, production release, version bump,
+**Release status:** F2 is integrated at `b091f010011fa16bec457599b41274b7f92bb5e6`. D-TRAIN-1 is
+only a local working-tree candidate. No `develop` → `main` merge, production release, version bump,
 manual deployment, or production-site write was performed or authorized.

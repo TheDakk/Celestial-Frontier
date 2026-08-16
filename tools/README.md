@@ -172,6 +172,50 @@ hardeners differ on purpose, and both behaviours are recorded.
 > vanished) and was latent in `goldenseeds`; re-capturing there produced 25 of 25
 > identical rollups, confirming it never bit that corpus. `seen` is now per-call in both.
 
+## training-restart-fixture.js — genuine v1.8.9 Training checkpoint provenance
+
+```sh
+npm run trainingcheckpoint          # re-run the action-derived capture and verify the seal
+npm run trainingcheckpoint:capture  # print a candidate only; never writes the baseline
+```
+
+This gate boots the real legacy `veteran_rich` save through `_probeboot.js`, clicks
+`#setbtn`, clicks `#retrainopt` twice (the real Restart Training confirmation path),
+and reads `JSON.parse(localStorage.cfcc_save_v2).tsnap`. The tracked result is
+`port/baseline-v1.8.9/training-restart-fixture.json`, capture schema
+`cf-v1.8.9-training-restart-capture/v1`.
+
+The genuine checkpoint is exactly eleven outer fields:
+`{st, ps, ac, es, c, ca, cx, it, eq, ea, e}`. It owns selected statistics,
+player statistics, achievements, Stardust, Compendium, cargo, exceptional cargo
+counts, items, equipment, equipment affixes, and Earth Atlas/home history. It is
+not a whole save or whole expedition. The sealed snapshot is 2,074 JSON bytes,
+SHA-256 `2e2f7c566a27e79398ea18650de9ac6acf236e92235fc293e4815b8bfefa22e3`.
+The driver SHA-256 is
+`c3f710d90782f7ba812a2082288ce860e5f41ce16cec2c28b3eaba1fb9ec454a`;
+the source `veteran_rich` fixture-JSON SHA-256 is
+`26da9dc04940132a2dd4627391ef4a1be57d6a758bf3b6efb4dc6b217c273a16`.
+`view` is absent by construction: this evidence cannot justify a legacy
+pre-Training route restore. Legacy Skip from Welcome retains Sol and full
+completion after Land retains Earth; current-v2 `{view}` is the separate route
+checkpoint.
+
+The separate v2 Vitest
+`port/v2/packages/persistence/test/training-checkpoint.test.ts` exercises the
+classifier contract: exact key set in any order, detached recursive freeze,
+`tut:0` pending round-trip, historical `tut:1` rescue,
+missing/extra/wrong-container/over-cap refusal, and completed-save rejection of a
+pending checkpoint. In that test the older synthetic
+`save-fixtures.json:tut_midtraining.tsnap` value
+`{codex:[], essence:10, marker:'pre-training-expedition'}` stays an
+unknown/refusal negative control; it is not a legacy checkpoint and must not be
+deleted or taught to pass.
+
+This is deterministic jsdom/action-derived legacy evidence. It is not a real
+browser capture, Nick's real veteran save, or Gate-C completion. The capture
+command is deliberately non-writing so a candidate cannot silently re-baseline
+the tracked evidence.
+
 ## audioprofiles.js — voice fixtures, and the vocabulary measurement
 
 ```
@@ -215,6 +259,7 @@ at the 6 kHz ceiling.
 node tools/build.js            # main.js -> html
 node tools/validate.js         # builds, then ALL checks below + the fingerprint
 node tools/smoke.js            # jsdom interaction suite (incl. full tutorial)
+npm run trainingcheckpoint     # sealed action-derived legacy restart checkpoint
 npm run layout:selftest        # fail-closed launcher/report/freshness negative control
 node tools/uilayout.js         # REAL headless browser: computed boxes + hit-tests
                                #   across 10 viewports (add --shots for screenshots,

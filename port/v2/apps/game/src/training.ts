@@ -20,11 +20,18 @@ export interface TutStep {
   allow?: string[];
   when?: (t: string, d: Record<string, unknown>) => boolean;
 }
+export type TrainingEndIntent = 'finish' | 'skip';
+export type TrainingEndResult =
+  | { kind: 'completed' }
+  | { kind: 'deferred'; reason: 'source-error' }
+  | {
+      kind: 'refused';
+      reason: 'unknown-snapshot' | 'write-failed' | 'busy' | 'protected-storage';
+    };
 export interface TrainingDeps {
   explorerName: () => string;
   isDone: () => boolean;
-  setDone: (v: boolean) => void;
-  persist: () => void;
+  complete: (intent: TrainingEndIntent) => Promise<TrainingEndResult>;
   closePanels: () => void;
 }
 
@@ -79,6 +86,7 @@ let announceTimer = 0;
 let focusBeforeTraining: HTMLElement | null = null;
 let allowedRoots: HTMLElement[] = [];
 let redirectingFocus = false;
+let finishing = false;
 
 const CHROME = [
   '#dock', '#raillft', '#railrgt', '#searchbox', '#setpanel', '#guidepanel',
@@ -128,6 +136,7 @@ export function initTraining(deps: TrainingDeps): void {
   document.addEventListener('keydown', guardTrainingKeydown, true);
   document.addEventListener('focusin', guardTrainingFocus, true);
   document.addEventListener('pointerdown', guardTrainingPointer, true);
+  finishing = false;
   stepIdx = 0;
   renderStep();
   spotTimer = window.setInterval(placeSpot, 300);   /* the spotlight follows layout changes */
@@ -138,7 +147,7 @@ export function trainingStepId(): string | null { return trainingActive() ? step
 
 function renderStep(): void {
   if (!cardEl || !deps0) return;
-  if (stepIdx >= steps.length) { finish(false); return; }
+  if (stepIdx >= steps.length) return;
   const st = steps[stepIdx]!;
   cardEl.innerHTML =
     `<div id="tutstephead" style="color:var(--faint,#8fa3c4);font-size:.85em;letter-spacing:0.06em;margin-bottom:4px">FIELD TRAINING · ${stepIdx + 1} / ${steps.length}</div>` +
@@ -146,12 +155,13 @@ function renderStep(): void {
     '<div style="display:flex;gap:10px;align-items:center;margin-top:10px">' +
     (st.btn ? `<button data-sel="tutbtn" style="background:#1d3a5e;color:var(--ink,#eaf2ff);border:1px solid #caa24f;border-radius:9px;padding:9px 16px;cursor:pointer;min-height:44px;font:inherit">${esc(st.btn)}</button>` : '') +
     '<button data-sel="tutskip" style="background:none;border:0;color:var(--dim,#7f96ba);cursor:pointer;font:inherit;font-size:.9em;text-decoration:underline;min-height:44px">Skip training — you lose nothing, and Settings can restart it</button>' +
-    '</div>';
+    '</div>' +
+    '<div data-sel="tutstatus" role="status" aria-live="polite" hidden style="color:var(--dim,#7f96ba);font-size:.9em;margin-top:8px"></div>';
   cardEl.scrollTop = 0;
   cardEl.setAttribute('aria-labelledby', 'tutstephead');
   cardEl.setAttribute('aria-describedby', 'tutsteptext');
   cardEl.querySelector('[data-sel=tutbtn]')?.addEventListener('click', () => advance());
-  cardEl.querySelector('[data-sel=tutskip]')!.addEventListener('click', () => finish(true));
+  cardEl.querySelector('[data-sel=tutskip]')!.addEventListener('click', () => { void finish('skip'); });
   applyAllow(st);
   if (st.id === 'land') {
     /* `atlas-open` advances from inside the panel's onOpen callback. Close on
@@ -379,12 +389,57 @@ function restoreFocusAfterTraining(): void {
   focusWithoutScroll(document.querySelector('canvas') as HTMLElement | null);
 }
 function advance(): void {
+  if (finishing || !trainingActive()) return;
+  if (stepIdx === steps.length - 1) {
+    void finish('finish');
+    return;
+  }
   stepIdx++;
-  if (stepIdx >= steps.length) { finish(false); return; }
   renderStep();
 }
-function finish(skipped: boolean): void {
+function completionStatus(): HTMLElement | null {
+  return cardEl?.querySelector<HTMLElement>('[data-sel="tutstatus"]') || null;
+}
+function setCompletionBusy(busy: boolean): void {
+  if (!cardEl) return;
+  if (busy) cardEl.setAttribute('aria-busy', 'true');
+  else cardEl.removeAttribute('aria-busy');
+  for (const button of cardEl.querySelectorAll<HTMLButtonElement>('button')) button.disabled = busy;
+  const status = completionStatus();
+  if (!status || !busy) return;
+  status.hidden = false;
+  status.textContent = 'Securing your expedition before Field Training closes…';
+}
+function refusalMessage(reason: Extract<TrainingEndResult, { kind: 'refused' }>['reason']): string {
+  if (reason === 'unknown-snapshot') {
+    return 'This saved Training checkpoint is not recognized. Nothing changed; keep this lesson open and retry after updating.';
+  }
+  if (reason === 'busy') {
+    return 'Another save replacement is still underway. Nothing changed; wait for it to finish, then retry.';
+  }
+  if (reason === 'protected-storage') {
+    return 'This expedition’s storage is protected. Nothing changed; recover the save, then retry.';
+  }
+  return 'The expedition could not be saved. Nothing changed; retry when storage is available.';
+}
+function restoreAfterRefusal(
+  st: TutStep,
+  focusTarget: HTMLElement | null,
+  reason: Extract<TrainingEndResult, { kind: 'refused' }>['reason'],
+): void {
+  finishing = false;
+  setCompletionBusy(false);
+  const status = completionStatus();
+  if (status) {
+    status.hidden = false;
+    status.textContent = refusalMessage(reason);
+  }
+  applyAllow(st);
+  if (!focusWithoutScroll(focusTarget)) focusWithoutScroll(preferredLessonFocus(st));
+}
+function teardownTraining(): void {
   stepIdx = steps.length;
+  finishing = false;
   clearTimeout(focusTimer);
   clearTimeout(announceTimer);
   document.removeEventListener('keydown', guardTrainingKeydown, true);
@@ -398,15 +453,46 @@ function finish(skipped: boolean): void {
   document.body.classList.remove('training');
   document.documentElement.style.removeProperty('--tut-bot');
   deps0?.closePanels();
-  deps0?.setDone(true);
-  deps0?.persist();
   window.setTimeout(restoreFocusAfterTraining, 0);
-  void skipped;
+}
+async function finish(intent: TrainingEndIntent): Promise<void> {
+  if (finishing || !trainingActive() || !deps0) return;
+  finishing = true;
+  const completingDeps = deps0;
+  const completingStep = steps[stepIdx]!;
+  const focusTarget = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  clearTimeout(focusTimer);
+  setCompletionBusy(true);
+  /* A live lesson may deliberately allow the canvas or one piece of chrome.
+     Persistence owns the whole expedition while completion is pending, so
+     even that lesson affordance must become inert until commit or refusal. */
+  applyAllow({ id: 'completion-pending', text: () => '' });
+
+  let result: TrainingEndResult;
+  try {
+    result = await completingDeps.complete(intent);
+  } catch {
+    result = { kind: 'refused', reason: 'write-failed' };
+  }
+
+  /* Completion is owned by the exact live Training instance and step that
+     requested it. A future restart must never receive this promise's late
+     UI outcome. */
+  if (deps0 !== completingDeps || !trainingActive() || steps[stepIdx] !== completingStep) return;
+  if (result.kind === 'completed' || (result.kind === 'deferred' && result.reason === 'source-error')) {
+    teardownTraining();
+    return;
+  }
+  if (result.kind === 'refused') {
+    restoreAfterRefusal(completingStep, focusTarget, result.reason);
+    return;
+  }
+  restoreAfterRefusal(completingStep, focusTarget, 'write-failed');
 }
 
 /** the live-play event bus — training listens to the SAME events the game emits */
 export function gameEvent(type: string, detail: Record<string, unknown>): void {
-  if (!trainingActive()) return;
+  if (!trainingActive() || finishing) return;
   const st = steps[stepIdx]!;
   if (st.when && st.when(type, detail)) advance();
 }

@@ -67,12 +67,26 @@ const TRAINING_RESTORE_CONTRADICTIONS = Object.freeze([
   /verification pauses[^.!?]{0,160}reload safely restarts Field Training from proven Sol/i,
 ]);
 
+const TRAINING_LEGACY_RECOVERY_CONTRADICTIONS = Object.freeze([
+  /(?:older|legacy)[^.!?]{0,96}(?:checkpoint|Training)[^.!?]{0,96}(?:whole|entire) (?:save|expedition)/i,
+  /(?:older|legacy)[^.!?]{0,96}checkpoint[^.!?]{0,96}restor(?:e|es|ed)[^.!?]{0,48}pre-Training view/i,
+  /(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:close|dismiss|continue|keep playing|keep exploring)/i,
+  /(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:discard|clear|overwrite|silently ignore)/i,
+]);
+
 function trainingRestoreCopyIsTruthful(body: string): boolean {
   return /normal Finish or Skip source-verifies and immediately restores the exact pre-Training view/i.test(body)
     && /If verification pauses, that exact view stays saved/i.test(body)
     && /when Sol can still be verified, Training returns there/i.test(body)
     && /reload can restart safely and retry/i.test(body)
-    && TRAINING_RESTORE_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+    && /Older v1\.8\.9 Training checkpoints restore only the eleven pre-drill record groups they captured/i.test(body)
+    && /every other expedition field is retained from the surrounding save/i.test(body)
+    && /That older checkpoint contains no saved view: Skip from Welcome stays in Sol, while completing the drill after Land stays at Earth/i.test(body)
+    && /An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen/i.test(body)
+    && /leaves the stored expedition unchanged/i.test(body)
+    && /reload after updating, or import a trusted complete expedition/i.test(body)
+    && TRAINING_RESTORE_CONTRADICTIONS.every((pattern) => !pattern.test(body))
+    && TRAINING_LEGACY_RECOVERY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
 }
 
 const guideLiteral = extractLiteral('const GUIDE=', '\n/* v1.5:');
@@ -340,7 +354,7 @@ describe('v2 Guide capability filter', () => {
     )).toBe(false);
   });
 
-  it('qualifies immediate Field Training restore and the source-verification retry boundary', () => {
+  it('qualifies current and legacy Field Training restore plus persistent recovery', () => {
     const settings = getGuideTopic('settings')!.body;
     const saving = getGuideTopic('saving')!.body;
     const trainingBullet = V2_DRAFT_RELEASE.sections
@@ -369,6 +383,21 @@ describe('v2 Guide capability filter', () => {
     )).toBe(false);
     expect(trainingRestoreCopyIsTruthful(
       trainingBullet! + ' The retry restarts from Earth surface.',
+    )).toBe(false);
+    expect(trainingRestoreCopyIsTruthful(
+      settings + ' Older Training checkpoints restore the entire expedition.',
+    )).toBe(false);
+    expect(trainingRestoreCopyIsTruthful(
+      saving + ' An unrecognized checkpoint can close recovery and continue exploring.',
+    )).toBe(false);
+    expect(trainingRestoreCopyIsTruthful(
+      settings + ' An older checkpoint restores the pre-Training view.',
+    )).toBe(false);
+    expect(trainingRestoreCopyIsTruthful(
+      trainingBullet!.replace(
+        'every other expedition field is retained from the surrounding save',
+        'surrounding expedition ownership omitted',
+      ),
     )).toBe(false);
   });
 
@@ -465,6 +494,11 @@ describe('legacy and v2 release channels', () => {
       /Six real lessons/,
       /A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view/,
       /if verification pauses, that exact view stays saved, and when Sol can still be verified, Training returns there so a reload can restart safely and retry/,
+      /Older v1\.8\.9 Training checkpoints restore only the eleven pre-drill record groups they captured/,
+      /every other expedition field is retained from the surrounding save/,
+      /That older checkpoint contains no saved view: Skip from Welcome stays in Sol, while completing the drill after Land stays at Earth/,
+      /An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen and leaves the stored expedition unchanged/,
+      /reload after updating, or import a trusted complete expedition/,
       /Only a world’s first landing banks the live landfall objective/,
       /no longer show a player-facing Spectral class row/,
       /primary chip and Charter board show only real landfall objectives/,
@@ -484,6 +518,7 @@ describe('legacy and v2 release channels', () => {
       /(?:stored|caller-supplied|code) (?:coordinates|bytes|parents?)[^.!?]{0,48}(?:authoritative|trusted)/i,
       /(?:whole|entire) (?:save|expedition)[^.!?]{0,80}(?:corrupt|rolls? back|rollback|is lost)/i,
       ...TRAINING_RESTORE_CONTRADICTIONS,
+      ...TRAINING_LEGACY_RECOVERY_CONTRADICTIONS,
     ];
     const bulletinOutcome = (sections: readonly {
       readonly category: string;
@@ -573,6 +608,23 @@ describe('legacy and v2 release channels', () => {
         : bullet),
     }));
     expect(bulletinOutcome(contradictoryTrainingRestore)).toMatchObject({ required: true, honest: false });
+    const staleLegacyOwnership = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.includes('FIELD TRAINING LIVES IN THE NEW SHELL')
+        ? bullet.replace(
+          'every other expedition field is retained from the surrounding save',
+          'surrounding expedition ownership omitted',
+        )
+        : bullet),
+    }));
+    expect(bulletinOutcome(staleLegacyOwnership).required).toBe(false);
+    const contradictoryLegacyRecovery = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.includes('FIELD TRAINING LIVES IN THE NEW SHELL')
+        ? bullet + ' An unrecognized checkpoint can close recovery and continue exploring.'
+        : bullet),
+    }));
+    expect(bulletinOutcome(contradictoryLegacyRecovery)).toMatchObject({ required: true, honest: false });
     const contradictoryWorldCode = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,
       bullets: section.bullets.map((bullet) => bullet.includes('WORLD CODES KEEP THE WHOLE DESTINATION')

@@ -4,8 +4,92 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 overlay matches code and live handoff as of 2026-08-15.**
-> **2026-08-15 F2 canonical-ingress overlay (current working tree; complete
+> **Current port/v2 source overlay matches code as of 2026-08-16.**
+> **2026-08-16 D-TRAIN-1 source overlay (current working tree; local browser
+> evidence recorded below; exact-head CI, integration, real-save Gate C, and
+> human authority remain open):** `@cf/persistence` now classifies the real
+> v1.8.9 Field Training checkpoint by its exact eleven outer keys
+> `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}` and returns a detached,
+> recursively frozen bounded clone. Those keys own selected statistics, player
+> statistics, achievements, Stardust, Compendium, cargo, exceptional cargo
+> counts, items, equipment, equipment affixes, and the captured Earth
+> Atlas/home row—never the whole save. Ingress kinds are `none`, current-view,
+> `legacy-v1`, and bounded `legacy-or-unknown`. An exact legacy checkpoint with
+> `tut:1` rescues the mature completion-before-restore bug by normalizing
+> Training incomplete; the synthetic `{codex,essence,marker}` fixture remains
+> unknown/refusal-only. Completed-plus-pending cannot export, and oversized
+> unsafe evidence is not promoted.
+>
+> `apps/game/src/training-restore.ts` starts with the surrounding imported v4
+> state, restores only those owned surfaces through the normal sanitizers, and
+> keeps every other outer-save field. The checkpoint's `e.where` is ignored as
+> route authority; canonical Earth is regenerated and source-proven. The
+> legacy checkpoint contains no `view`: Skip from Welcome keeps/persists Sol,
+> while full completion after Land keeps/persists Earth. Only the current-v2
+> exact one-key `{view}` snapshot restores the pre-Training route. Earth
+> history is preserved only after sanitization, no land/conquest/achievement is
+> invented, HP is down-clamped but never healed, Earth reserves one slot inside
+> the 120-row Atlas cap, `surveys` derives from `surveyedSet`, and `arrivals`
+> derives from `sysSeen`. Cumulative checkpoint records use the optional
+> compatible outer-v4 extension
+> `ever:{v:1,hybrids,best,maxGen,scanhits[,arrivals]}`. Outer `v` remains 4:
+> this is an additive envelope extension with an independent nested version,
+> not “no schema change,” v5, or a game/release bump. Absent carrier preserves
+> historical derivation; carrier floors cannot lower derived facts; `sysSeen`
+> remains arrival authority; numeric `ever.v > 1` rejects the whole save as
+> `future-version`; malformed v1 members are contained.
+>
+> Training completion is an async atomic replacement transaction. The UI first
+> sets `aria-busy`, disables Finish/Skip, retains the lesson/focus lock, claims
+> exclusive ownership, stops the ticker, cancels pending persistence, and drains
+> an active write. It builds/proves a detached candidate and performs exactly
+> one direct primary write before publishing live state or releasing the old
+> renderer. Pre-durable refusal rolls back the claim and leaves the checkpoint
+> and lesson retryable; post-durable publication failure never writes again and
+> reloads from the committed primary. Source-error may write an incomplete
+> candidate with the exact checkpoint only when Sol is freshly proven and
+> authorized, then reload safely. If Sol also cannot be proven, it forges no
+> fallback/write/clear/completion and leaves the checkpoint plus lesson retryable.
+>
+> Loaded pending checkpoints are write-held. Loaded `tut:0` without a checkpoint
+> is also held and seated at proven Sol in runtime only until the one atomic
+> completion write; fresh empty onboarding remains ordinary. Unknown checkpoint
+> or unavailable-route recovery turns `#importsheet` into a persistent
+> nonclosable `aria-modal`: background inert/hidden, focus trapped, Escape
+> consumed, release bulletin suppressed, trusted complete import plus reload
+> still reachable, and synchronous reopen on every boot while the protected
+> source remains. Replacement reasons are now `training-restart`,
+> `training-complete`, `training-recovery`, `save-import`, and `storage-retry`.
+> Guide capability inventory and release structure remain unchanged (five
+> categories /44 bullets, draft only, current release null); the remaining
+> fifteen D-TRAIN-2 lessons, real-save Gate C, and any version/release remain open.
+>
+> The ignored Slice Smoke report is terminal PASS for run
+> `20260816195736683-4852-27b5c876410a` on Edge `151.0.4129.86`: 154,788 ms,
+> 0 findings, 0 automatic retries, 10 screenshots, and no detected source
+> change. Its raw log names genuine Training Skip + full Finish,
+> rescue/quarantine/retry/races, and canonical Earth. The ignored Glass report
+> is independently `full-certifying` / terminal PASS on the same Edge in 57,476
+> ms, with 12/12 viewport rows, 12/12 reload-evidence rows, all 57/57 planned
+> negative controls run, none blocked/omitted, 0 findings, 0 instrument failures,
+> and 0 retries. Both name commit
+> `b091f010011fa16bec457599b41274b7f92bb5e6`, branch `openai/mac`, and
+> dirty-diagnostic source state, but they bind distinct working-tree hashes:
+> Slice Smoke `465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`;
+> Glass `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5`.
+> Their common Git-status digest is
+> `c195873a910c3bce42db222560c9bc70b8763df330d0454036388e4e398faa6d`.
+> Slice report SHA-256 is
+> `33953319124590ced0cebc16888cfb2b8cbe2879cbcb3c225e061d0d7a817027`;
+> its 4,163-byte raw-log SHA-256 is
+> `b060af3aaa8454a5d9813b2e5f8e6eba0ec2b7f5d3090e991154c1664a132670`.
+> Glass report SHA-256 is
+> `fe32fe802460a61ec4337c373276de8601196ead530ae8184c36970247545254`.
+> This is local outcome evidence for those exact report inputs—not the later
+> documentation tree, exact-head CI, integration, Gate C, human play, rubric
+> closure, or release authority.
+>
+> **2026-08-15 F2 canonical-ingress overlay (historical F2 working tree; complete
 > local browser outcome green, exact-head integration pending):**
 > `port/v2/packages/scene/src/address.ts` now owns
 > production galaxy/star/planet candidates, resolvers, deeply frozen proven
@@ -64,11 +148,11 @@
 > app build are green. This remains dirty-working-tree evidence, not exact-head
 > CI, integration or rubric-Gate completion.
 >
-> This overlay supersedes the scope limits in the dated 2026-08-13 CF1 and
+> This historical overlay superseded the scope limits in the dated 2026-08-13 CF1 and
 > 2026-08-11 integration notes below, but not their history. F2 changes no
 > generator output, share-code/save schema, reach balance, Guide capability,
 > Training lessons, local ownership ledgers, ownership/reward/receipt writer,
-> version or release. D-TRAIN-1 remains open for richer legacy snapshots; F3
+> version or release. At that boundary D-TRAIN-1 remained open for richer legacy snapshots; F3
 > still owns revisions/CAS/split stores/receipt journal, and F4 owns clock,
 > visibility, active-play and SessionRNG policy.
 > **2026-08-15 F1b WorldGen contract overlay:** The byte-verbatim WorldGen body,
@@ -220,9 +304,9 @@
 > coordinates; contains malformed Compendium rows; prevents repeat landfall,
 > stale-card and direct-code landing outcomes; round-trips accepted custom planet
 > names; repairs lazy species-art subscription; and gives phone lower chrome a
-> measured 4×2 non-overlap contract. The slice still stores one exported save
-> blob, `NavState` is not yet a discriminated union, complete CF1 hierarchy and
-> legacy full-state `tsnap` restoration remain open, and CFB still loses hybrid
+> measured 4×2 non-overlap contract. At that 2026-08-11 boundary the slice still stored one exported save
+> blob, `NavState` was not yet a discriminated union, complete CF1 hierarchy and
+> legacy checkpoint restoration remained open, and CFB still lost hybrid
 > parents. Runtime priorities are Compendium virtualization, scene texture
 > ownership/memory proof, live HD planet replacement, clock/visibility policy,
 > then living organism rigs and biome scenes. Platinum-approved static portraits
@@ -343,8 +427,8 @@
 > Guide and Settings render above an open survey card; other panel stacking
 > remains unchanged for Training. Field Training is six live
 > chart/travel/landing lessons plus an honest graduation. Tooltip deep-links,
-> Advanced Briefings, the full 21-step curriculum and full legacy `tsnap`
-> restoration remain OPEN. Lazy species art uses one shared load Promise
+> Advanced Briefings and the full 21-step curriculum remain OPEN. The newer
+> D-TRAIN-1 overlay above records exact legacy-checkpoint restoration. Lazy species art uses one shared load Promise
 > and one latest subscriber per view, so prefetch cannot strand Compendium or
 > Planetside and a 1,500-row list cannot retain 1,500 rerender callbacks.
 > Survey presentation filters the legacy `Spectral class` descriptor row. Planet
@@ -449,9 +533,10 @@
 > phase-complete-first, premature, nonadjacent, missing, late, duplicate, malformed,
 > wrong-provenance, early boot/ready, and overlong phase evidence fail closed.
 >
-> `scheduleReplacementReload()` is the product half of that contract. All three
+> `scheduleReplacementReload()` is the product half of that contract. All five
 > intentional replacement transitions—Training restart after `persistView()`,
-> accepted `importBlob()` after `repo.write()`, and the storage retry after real
+> atomic Training completion, persistent Training recovery, accepted
+> `importBlob()` after `repo.write()`, and the storage retry after real
 > bytes reappear—first claim one mutually exclusive replacement transaction, then
 > stop a running outgoing Pixi ticker synchronously before any persistence await,
 > stop ordinary persistence and call the boot-installed
@@ -1433,7 +1518,11 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   only. `getCurrentV2Release()` returns nothing while
   `V2_CURRENT_RELEASE_VERSION === null`; `showUnseenV2Release()` therefore
   cannot mutate `rnSeen` or open an update until an authorized shipped v2 entry
-  exists. This ports the data model, browsing and cumulative-history door; v2
+  exists. The existing Settings and Saving topics and existing Field Training
+  bullet describe the exact current-view success path, partial ownership of genuine
+  legacy checkpoints (including their lack of a saved route: Welcome Skip stays
+  in Sol and post-Land completion stays at Earth), and the persistent unknown-checkpoint recovery lock without
+  adding a topic, capability, category, bullet, release, or version. This ports the data model, browsing and cumulative-history door; v2
   tooltip deep-link triggers and Advanced Briefings are still open.
 - **Update watch** (same section): `tools/deploy.js` stamps `BUILD_ID` with the
   git sha and publishes `version.json` beside the game. Live sessions poll it
@@ -1476,9 +1565,15 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   hazard nip → heal → tray → search → character sheet → horizons → finale.
   **The whole thing is a sandbox**: key rolls are rigged for smoothness
   (`_tutRig`: guaranteed breed/heal success, safe feed), and the finale
-  restores a snapshot (stats counters, pstats, achievements, essence), removes
-  every species catalogued during training, refills HP, and guarantees Earth
-  charted + home (`_tutEnsureEarth`). Skippable with confirm; `tutAbort()` on
+  restores the exact eleven-field snapshot
+  `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}` (selected statistics, player
+  statistics, achievements, Stardust, Compendium, cargo, exceptional cargo,
+  items, equipment, equipment affixes, and Earth Atlas/home history). It then
+  sanitizes that owned state, including the legacy behavior that removes every
+  species catalogued only during training, refills HP in the mature game, and
+  guarantees Earth charted + home (`_tutEnsureEarth`). The v2 compatibility
+  restore is deliberately narrower about HP: it never heals current lower HP.
+  Skippable with confirm; `tutAbort()` on
   game reset. **Training is toast-quiet** (v1.1 post-launch): while
   `body.training` is set, `toast()` logs to the bell tray only (the tray step's
   payoff), the rank-up fanfare is suppressed (its sandbox promotion is revoked
@@ -1535,6 +1630,20 @@ presentation, the determinism ban covers domain modules only.
 ---
 
 ## 10. Save format (`localStorage['cfcc_save_v2']`)
+
+**Current v2 Training compatibility fields (2026-08-16):** the outer envelope
+remains `v:4`. While Training is incomplete, optional `tsnap` carries either the
+exact current one-key `{view}` snapshot, the exact genuine legacy eleven-field
+checkpoint, or bounded unknown evidence held for refusal/recovery. A completed
+export omits it. Optional
+`ever:{v:1,hybrids,best,maxGen,scanhits[,arrivals]}` preserves cumulative
+checkpoint records that cannot always be reconstructed from surviving identities.
+It is an additive compatible v4 extension with independent nested versioning;
+numeric future `ever.v` values protect the entire save as `future-version`.
+Absence retains historical derivation, malformed v1 members are contained,
+floor fields only raise derived facts, and `sysSeen` remains arrival-count
+authority. Neither field is a v5 migration, whole-save checkpoint, reward
+receipt, game-version bump, or production release.
 
 **Current v2 epoch carrier (2026-08-15):** the IndexedDB slice still exports one
 v4 JSON blob whose `epoch` field comes from `SaveStateV2.EPOCH_BASE`. That name is
@@ -1632,6 +1741,17 @@ share codes) that must match the v1.0 baseline byte for byte.
 
 **The primary battery is now NINE suites, not one** (four gate every batch and
 `deploy.js` enforces them; the last five are run on demand):
+
+The root parity battery also includes `npm run trainingcheckpoint`. It replays
+the action-derived v1.8.9 restart capture and exact-compares the sealed fixture
+plus its source/driver/snapshot provenance; the paired
+`trainingcheckpoint:capture` command prints a candidate and never overwrites the
+sealed baseline. The separate v2
+`packages/persistence/test/training-checkpoint.test.ts` suite owns the exact
+eleven-key classifier, `tut:0` and rescued-`tut:1` round trips,
+missing/extra/oversized refusal, and synthetic-unknown negative control. This is
+deterministic jsdom/action provenance plus focused static semantics, not a
+browser outcome or real veteran-save Gate-C evidence.
 
 | Suite | What it can see | Gate? |
 |---|---|---|

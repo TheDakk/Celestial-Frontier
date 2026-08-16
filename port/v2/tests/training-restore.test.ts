@@ -1,0 +1,485 @@
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { beforeAll, describe, expect, it } from 'vitest';
+import {
+  classifyLegacyTrainingCheckpointV1,
+  exportSaveV2,
+  importSaveV2,
+  type ContentRegistry,
+  type LegacyTrainingCheckpointV1,
+  type SaveStateV2,
+} from '@cf/persistence';
+import { navToView, resolveViewToNav } from '@cf/scene';
+import { installCaptureHooks } from '@cf/domain-descriptors';
+import { buildLegacyTrainingRestoreCandidate } from '../apps/game/src/training-restore.js';
+
+interface TrainingFixture {
+  snapshot: Record<string, unknown>;
+}
+interface SaveFixtures {
+  inputs: Record<string, Record<string, unknown>>;
+}
+
+const baselineUrl = new URL('../../baseline-v1.8.9/', import.meta.url);
+const fixture = JSON.parse(fs.readFileSync(
+  fileURLToPath(new URL('training-restart-fixture.json', baselineUrl)),
+  'utf8',
+)) as TrainingFixture;
+const saves = JSON.parse(fs.readFileSync(
+  fileURLToPath(new URL('save-fixtures.json', baselineUrl)),
+  'utf8',
+)) as SaveFixtures;
+const registry = JSON.parse(fs.readFileSync(
+  fileURLToPath(new URL('content-registry.json', baselineUrl)),
+  'utf8',
+)) as ContentRegistry;
+const veteranRaw = saves.inputs.veteran_rich!;
+const NOW = 1_753_900_060_000;
+const COMMIT_EPOCH = 8_765;
+
+beforeAll(() => installCaptureHooks());
+
+function importVeteran(): SaveStateV2 {
+  const imported = importSaveV2(JSON.stringify(veteranRaw), registry, NOW);
+  if (!imported.ok) throw new Error(`veteran fixture did not import: ${imported.reason}`);
+  return imported.state;
+}
+
+function checkpointFrom(value: unknown = fixture.snapshot): LegacyTrainingCheckpointV1 {
+  const checkpoint = classifyLegacyTrainingCheckpointV1(value);
+  if (!checkpoint) throw new Error('fixture did not classify as a legacy Training checkpoint');
+  return checkpoint;
+}
+
+function canonicalView(value: unknown): Record<string, unknown> {
+  const resolved = resolveViewToNav(value);
+  if (!resolved.ok) throw new Error(`fixture view did not source-prove: ${resolved.reason}`);
+  const view = navToView(resolved.state);
+  if (!view) throw new Error('fixture route unexpectedly resolved to Cosmos');
+  return view;
+}
+
+function canonicalViews(): {
+  earth: Record<string, unknown>;
+  completion: Record<string, unknown>;
+} {
+  const earth = canonicalView(veteranRaw.view);
+  const completionRaw = structuredClone(veteranRaw.view) as Record<string, unknown>;
+  completionRaw.type = 'star';
+  delete completionRaw.pseed;
+  return { earth, completion: canonicalView(completionRaw) };
+}
+
+interface TrainingCurrent {
+  current: SaveStateV2;
+  nonEarthRow: [string, Record<string, unknown>];
+  nonEarthEntry: Record<string, unknown>;
+  trainingEarth: Record<string, unknown>;
+}
+
+function trainingCurrent(checkpoint: LegacyTrainingCheckpointV1): TrainingCurrent {
+  const base = importVeteran();
+  const nonEarthEntry: Record<string, unknown> = {
+    id: 'p900', title: 'Outer sentinel', sub: 'Must keep identity', badge: 'Held',
+    star: 'Elsewhere', thumb: null, sq: false, fav: false, t: NOW - 20,
+    where: { type: 'planet', gal: { x: 1, y: 2, seed: 3 }, star: { x: 4, y: 5, seed: 6 }, pseed: 900 },
+  };
+  const nonEarthRow: [string, Record<string, unknown>] = ['p900', nonEarthEntry];
+  const trainingEarth: Record<string, unknown> = {
+    id: 'p133', title: 'Earth', sub: 'Training stub', badge: 'Surveyed',
+    star: 'Current Sol', thumb: 'training-thumb', sq: true, fav: false, t: NOW,
+    where: { type: 'planet', gal: { x: 99, y: 99, seed: 999 }, star: { x: 0, y: 0, seed: 424242 }, pseed: 133 },
+  };
+  const current: SaveStateV2 = {
+    ...base,
+    EPOCH_BASE: 77,
+    stats: {
+      ...base.stats,
+      shares: 999, jumps: 999, hybrids: 99, best: 99, maxGen: 99, surveys: 99,
+    },
+    pstats: { vit: 330, fer: 330, res: 330, agi: 330, ins: 330 },
+    HP_MAX: 660,
+    hp: 55,
+    essence: 1,
+    unlocked: ['training-only'],
+    codex: [],
+    cargo: [['Au', 1]],
+    cgx: [['Au', 1]],
+    items: [['visor', 1]],
+    equip: { helmet: 'visor' },
+    equipAff: {},
+    conquered: [[902, { t: NOW - 10, tier: 2 }]],
+    landed: [901],
+    mined: [[903, NOW - 30]],
+    surveyedSet: ['outer:a', 'outer:b', 'outer:c', 'outer:d'],
+    journal: [{ s: 7, n: 'Outer journal', w: 'Sentinel', t: NOW - 50 }],
+    notifications: [{ id: 71, tt: 'Outer', ms: 'Sentinel', t: NOW - 60, read: false }],
+    primeFill: {
+      stone: { title: 'Outer Prime', sub: 'Sentinel', tier: 1, hex: '#abcdef', where: null },
+    },
+    logMap: [nonEarthRow, ['p133', trainingEarth]],
+    homeId: null,
+    savedView: null,
+    tutDone: false,
+    tutSnapPending: checkpoint,
+  };
+  return { current, nonEarthRow, nonEarthEntry, trainingEarth };
+}
+
+function restore(
+  current: SaveStateV2,
+  checkpoint: LegacyTrainingCheckpointV1,
+) {
+  const views = canonicalViews();
+  const viewsBefore = JSON.stringify(views);
+  const result = buildLegacyTrainingRestoreCandidate({
+    current,
+    checkpoint,
+    registry,
+    now: NOW,
+    epoch: COMMIT_EPOCH,
+    canonicalEarthView: views.earth,
+    completionView: views.completion,
+  });
+  if (!result.ok) throw new Error('legacy Training restore candidate was refused');
+  return { ...result, views, viewsBefore };
+}
+
+function allObjectKeys(value: unknown, keys = new Set<string>()): Set<string> {
+  if (!value || typeof value !== 'object') return keys;
+  if (Array.isArray(value)) {
+    for (const item of value) allObjectKeys(item, keys);
+    return keys;
+  }
+  for (const [key, child] of Object.entries(value)) {
+    keys.add(key);
+    allObjectKeys(child, keys);
+  }
+  return keys;
+}
+
+describe('legacy Field Training checkpoint restoration candidate', () => {
+  it('restores exactly checkpoint-owned state while retaining outer expedition identity', () => {
+    const checkpoint = checkpointFrom();
+    const { current, nonEarthRow, nonEarthEntry, trainingEarth } = trainingCurrent(checkpoint);
+    const currentBefore = JSON.stringify(current);
+    const checkpointBefore = JSON.stringify(checkpoint);
+    const { state, earthEntry, views, viewsBefore } = restore(current, checkpoint);
+
+    expect(state).not.toBe(current);
+    expect(state.EPOCH_BASE).toBe(COMMIT_EPOCH);
+    expect(state.savedView).toBe(views.completion);
+    expect(state.tutDone).toBe(true);
+    expect(state.tutSnapPending).toBeNull();
+    expect(state.homeId).toBe('p133');
+
+    const directStats = [
+      'shares', 'jumps', 'anomalies', 'events', 'duels', 'duelwins',
+      'breeds', 'breedwins', 'feeds', 'feedfails', 'harvests',
+      'essenceEarned', 'guardians', 'paragons', 'mines', 'crafts',
+      'minedout', 'skims', 'cosmics', 'landings', 'charters', 'bestRank',
+    ] as const;
+    for (const key of directStats) expect(state.stats[key], key).toBe(checkpoint.st[key]);
+    expect(state.stats.surveys).toBe(current.surveyedSet.length);
+    expect(state.stats.hybrids).toBe(checkpoint.st.hybrids);
+    expect(state.stats.maxGen).toBe(checkpoint.st.maxGen);
+    expect(state.stats.best).toBe(checkpoint.st.best);
+    expect(state.stats).toMatchObject({
+      surveys: 4,
+      hybrids: 1,
+      best: 4,
+      maxGen: 3,
+      arrivals: current.sysSeen.length,
+    });
+
+    expect(state.pstats).toEqual({ vit: 80, fer: 60, res: 70, agi: 50, ins: 40 });
+    expect(state.HP_MAX).toBe(160);
+    expect(state.hp).toBe(55);
+    expect(state.unlocked).toEqual(['first', 'field10', 'fake']);
+    expect(state.essence).toBe(5_000);
+    expect(state.codex.map(([id]) => id)).toEqual(['s1234', 's777', 's4242']);
+    const longBloodline = state.codex.find(([id]) => id === 's4242')?.[1].g;
+    expect(longBloodline).toMatchObject({ seed: 4242, size: 9, gen: 3, parents: [1, 2] });
+    expect(state.cargo).toEqual([['Fe', 40], ['Si', 12]]);
+    expect(state.cgx).toEqual([['Fe', 5], ['Si', 12]]);
+    expect(state.items).toEqual([['plate', 3], ['lens', 1], ['cell', 2], ['headlamp', 1]]);
+    expect(state.equip).toEqual({ helmet: 'headlamp' });
+    expect(state.equipAff).toEqual({ helmet: { k: 'strike', v: 0.05, forId: 'headlamp' } });
+
+    expect(earthEntry).not.toBe(trainingEarth);
+    expect(earthEntry).toMatchObject({
+      id: 'p133', title: 'Earth', sub: 'The cradle', badge: 'Home',
+      star: 'Current Sol', fav: true, t: 1_753_899_100_000,
+    });
+    expect(earthEntry.where).toBe(views.earth);
+    expect((earthEntry.where as { star: { x: number; y: number } }).star).toEqual(
+      expect.objectContaining({ x: 560, y: 170 }),
+    );
+    expect((checkpoint.e?.where as { star: { x: number; y: number } }).star).toEqual(
+      expect.objectContaining({ x: 0, y: 0 }),
+    );
+
+    expect(state.logMap).not.toBe(current.logMap);
+    expect(state.logMap[0]).toBe(nonEarthRow);
+    expect(state.logMap[0]![1]).toBe(nonEarthEntry);
+    const unrelatedIdentityFields = [
+      'customNames', 'conquered', 'landed', 'mined', 'surveyedSet',
+      'journal', 'notifications', 'primeFill', 'seenSp', 'techOwned',
+    ] as const;
+    for (const key of unrelatedIdentityFields) expect(state[key], key).toBe(current[key]);
+    expect(state.conquered.some(([id]) => id === 133)).toBe(false);
+    expect(state.landed.includes(133)).toBe(false);
+    expect(state.unlocked).not.toContain('training-only');
+
+    expect(JSON.stringify(current)).toBe(currentBefore);
+    expect(JSON.stringify(checkpoint)).toBe(checkpointBefore);
+    expect(JSON.stringify(views)).toBe(viewsBefore);
+
+    const raw = exportSaveV2(state, NOW);
+    const exported = JSON.parse(raw) as Record<string, unknown>;
+    expect(exported.tut).toBe(1);
+    expect(Object.prototype.hasOwnProperty.call(exported, 'tsnap')).toBe(false);
+    expect(exported.ach).toEqual(['first', 'field10', 'fake']);
+    expect(exported.conq).toEqual(current.conquered);
+    expect(exported.land).not.toContain(133);
+    const exportedEarth = (exported.log as Array<Record<string, unknown>>)
+      .find((entry) => entry.id === 'p133');
+    expect(exportedEarth?.where).toEqual(views.earth);
+    const keys = allObjectKeys(exported);
+    for (const privateKey of ['parentCell', 'ordinal', 'layer', 'format']) {
+      expect(keys.has(privateKey), privateKey).toBe(false);
+    }
+  });
+
+  it('durably retains cumulative records after their record holders are gone', () => {
+    const rawCheckpoint = structuredClone(fixture.snapshot);
+    const rawStats = rawCheckpoint.st as Record<string, unknown>;
+    rawStats.hybrids = 17;
+    rawStats.best = 8;
+    rawStats.maxGen = 12;
+    rawStats.scanhits = 23;
+    const checkpoint = checkpointFrom(rawCheckpoint);
+    const { current } = trainingCurrent(checkpoint);
+    const { state } = restore(current, checkpoint);
+
+    const derived = {
+      hybrids: state.codex.filter(([, entry]) => entry.hybrid).length,
+      best: Math.max(...state.codex.map(([, entry]) => entry.tier ?? 0)),
+      maxGen: Math.max(...state.codex.map(([, entry]) => Number(entry.g.gen) || 0)),
+    };
+    expect(derived).toEqual({ hybrids: 1, best: 4, maxGen: 3 });
+    expect(state.stats).toMatchObject({ hybrids: 17, best: 8, maxGen: 12, scanhits: 23 });
+
+    const committed = exportSaveV2(state, NOW);
+    expect((JSON.parse(committed) as Record<string, unknown>).ever).toEqual({
+      v: 1,
+      hybrids: 17,
+      best: 8,
+      maxGen: 12,
+      scanhits: 23,
+      arrivals: current.sysSeen.length,
+    });
+    const reloaded = importSaveV2(committed, registry, NOW);
+    expect(reloaded.ok).toBe(true);
+    if (!reloaded.ok) return;
+    expect(reloaded.state.stats).toMatchObject({
+      hybrids: 17,
+      best: 8,
+      maxGen: 12,
+      scanhits: 23,
+      arrivals: current.sysSeen.length,
+    });
+
+    const withoutCarrier = JSON.parse(committed) as Record<string, unknown>;
+    delete withoutCarrier.ever;
+    const demoted = importSaveV2(JSON.stringify(withoutCarrier), registry, NOW);
+    expect(demoted.ok).toBe(true);
+    if (!demoted.ok) return;
+    expect(demoted.state.stats).toMatchObject(derived);
+    expect(Object.prototype.hasOwnProperty.call(demoted.state.stats, 'scanhits')).toBe(false);
+    expect(Object.prototype.hasOwnProperty.call(demoted.state.stats, 'arrivals')).toBe(false);
+
+    const underReported = JSON.parse(committed) as Record<string, unknown>;
+    underReported.ever = {
+      v: 1,
+      hybrids: 0,
+      best: 0,
+      maxGen: 0,
+      scanhits: 11,
+      arrivals: 999_999,
+    };
+    const sourceFloor = importSaveV2(JSON.stringify(underReported), registry, NOW);
+    expect(sourceFloor.ok).toBe(true);
+    if (!sourceFloor.ok) return;
+    expect(sourceFloor.state.stats).toMatchObject({
+      ...derived,
+      scanhits: 11,
+      arrivals: current.sysSeen.length,
+    });
+
+    const wrongVersion = JSON.parse(committed) as Record<string, unknown>;
+    wrongVersion.ever = { v: 2, hybrids: 17, best: 8, maxGen: 12 };
+    const versionRejected = importSaveV2(JSON.stringify(wrongVersion), registry, NOW);
+    expect(versionRejected).toEqual({ ok: false, reason: 'future-version' });
+
+    const malformed = JSON.parse(committed) as Record<string, unknown>;
+    malformed.ever = {
+      v: 1,
+      hybrids: 17,
+      best: '8',
+      maxGen: 12,
+      scanhits: -1,
+      arrivals: 2,
+    };
+    const malformedRejected = importSaveV2(JSON.stringify(malformed), registry, NOW);
+    expect(malformedRejected.ok).toBe(true);
+    if (!malformedRejected.ok) return;
+    expect(malformedRejected.state.stats).toMatchObject({
+      hybrids: 17,
+      best: derived.best,
+      maxGen: 12,
+      arrivals: current.sysSeen.length,
+    });
+    expect(Object.prototype.hasOwnProperty.call(malformedRejected.state.stats, 'scanhits')).toBe(false);
+
+    const overCap = JSON.parse(committed) as Record<string, unknown>;
+    overCap.ever = {
+      v: 1,
+      hybrids: 1_000_000_001,
+      best: registry.tierMax + 1,
+      maxGen: 1_000_000_001,
+      scanhits: 1_000_000_001,
+      arrivals: 1_000_000_001,
+    };
+    const capped = importSaveV2(JSON.stringify(overCap), registry, NOW);
+    expect(capped.ok).toBe(true);
+    if (!capped.ok) return;
+    expect(capped.state.stats).toMatchObject({
+      hybrids: 1_000_000_000,
+      best: registry.tierMax,
+      maxGen: 1_000_000_000,
+      scanhits: 1_000_000_000,
+      arrivals: current.sysSeen.length,
+    });
+  });
+
+  it('sanitizes malformed checkpoint-owned values without mutating their evidence', () => {
+    const malformed = structuredClone(fixture.snapshot);
+    const stats = malformed.st as Record<string, unknown>;
+    stats.shares = '12';
+    stats.jumps = 'not-a-number';
+    stats.bestRank = 99_999;
+    malformed.ps = { vit: 9_999, fer: -10, res: 2.7, agi: 'bad', ins: null };
+    malformed.es = -25;
+    malformed.ca = [['Fe', 2_000_000], ['not-a-material', 7]];
+    malformed.cx = [['Fe', 9_000_000], ['not-a-material', 7]];
+    malformed.it = [['headlamp', 5_000], ['not-an-item', 2]];
+    malformed.eq = { helmet: 'headlamp', tool: 'not-an-item' };
+    malformed.ea = {
+      helmet: { k: 'strike', v: 99, forId: 'headlamp' },
+      tool: { k: 'yield', v: 99, forId: 'not-an-item' },
+    };
+    (malformed.c as unknown[]).push(null);
+    malformed.e = {
+      ...(malformed.e as Record<string, unknown>),
+      sub: 'S'.repeat(180), badge: 'B'.repeat(30), star: 'A'.repeat(40), t: '123',
+    };
+    const checkpoint = checkpointFrom(malformed);
+    const evidenceBefore = JSON.stringify(checkpoint);
+    const { current } = trainingCurrent(checkpoint);
+    const { state, earthEntry } = restore(current, checkpoint);
+
+    expect(state.stats.shares).toBe(12);
+    expect(state.stats.jumps).toBe(0);
+    expect(state.stats.bestRank).toBe(registry.rankHuesLen - 1);
+    expect(state.pstats).toEqual({ vit: 330, fer: 1, res: 3, agi: 50, ins: 50 });
+    expect(state.HP_MAX).toBe(660);
+    expect(state.hp).toBe(55);
+    expect(state.essence).toBe(0);
+    expect(state.codex).toHaveLength(3);
+    expect(state.codex.find(([id]) => id === 's4242')?.[1].g).toMatchObject({
+      size: 9, parents: [1, 2],
+    });
+    expect(state.cargo).toEqual([['Fe', 1_000_000]]);
+    expect(state.cgx).toEqual([['Fe', 1_000_000]]);
+    expect(state.items).toEqual([['headlamp', 999]]);
+    expect(state.equip).toEqual({ helmet: 'headlamp' });
+    expect(state.equipAff).toEqual({ helmet: { k: 'strike', v: 0.06, forId: 'headlamp' } });
+    expect(earthEntry).toMatchObject({
+      sub: 'S'.repeat(120), badge: 'B'.repeat(18), star: 'A'.repeat(24), t: 123,
+    });
+    expect(JSON.stringify(checkpoint)).toBe(evidenceBefore);
+  });
+
+  it('clamps HP down to the restored Vitality ceiling but never heals a lower value', () => {
+    const checkpoint = checkpointFrom();
+    const low = trainingCurrent(checkpoint).current;
+    expect(restore(low, checkpoint).state.hp).toBe(55);
+
+    const high: SaveStateV2 = { ...trainingCurrent(checkpoint).current, hp: 600 };
+    const restored = restore(high, checkpoint).state;
+    expect(restored.HP_MAX).toBe(160);
+    expect(restored.hp).toBe(160);
+    expect(high.hp).toBe(600);
+  });
+
+  it('handles a legacy null Earth row with and without retained live history', () => {
+    const rawCheckpoint = structuredClone(fixture.snapshot);
+    rawCheckpoint.e = null;
+    const checkpoint = checkpointFrom(rawCheckpoint);
+
+    const withLiveEarth = trainingCurrent(checkpoint).current;
+    const retained = restore(withLiveEarth, checkpoint).earthEntry;
+    expect(retained).toMatchObject({
+      id: 'p133',
+      title: 'Earth',
+      sub: 'Training stub',
+      badge: 'Surveyed',
+      star: 'Current Sol',
+      fav: false,
+      t: NOW,
+    });
+    expect(retained.where).toEqual(canonicalViews().earth);
+
+    const withoutLiveEarth = trainingCurrent(checkpoint).current;
+    withoutLiveEarth.logMap = withoutLiveEarth.logMap.filter(([id]) => id !== 'p133');
+    withoutLiveEarth.homeId = null;
+    const created = restore(withoutLiveEarth, checkpoint);
+    expect(created.earthEntry).toMatchObject({
+      id: 'p133',
+      title: 'Earth',
+      sub: 'Terran World',
+      badge: 'Home',
+      star: '',
+      fav: false,
+      t: NOW,
+    });
+    expect(created.earthEntry.where).toEqual(canonicalViews().earth);
+    expect(created.state.homeId).toBe('p133');
+    expect(created.state.logMap.filter(([id]) => id === 'p133')).toHaveLength(1);
+  });
+
+  it('reserves one capped Atlas slot for checkpoint-owned Earth history', () => {
+    const checkpoint = checkpointFrom();
+    const current = trainingCurrent(checkpoint).current;
+    const earth = current.logMap.find(([id]) => id === 'p133')!;
+    current.logMap = Array.from({ length: 130 }, (_, index) => [
+      `p${10_000 + index}`,
+      {
+        id: `p${10_000 + index}`, title: `Newer ${index}`, sub: '', badge: '',
+        thumb: null, sq: false, fav: false, t: NOW + index + 1, where: null,
+      },
+    ] as [string, Record<string, unknown>]).concat([earth]);
+
+    const restored = restore(current, checkpoint).state;
+    expect(restored.logMap).toHaveLength(120);
+    expect(restored.logMap.filter(([id]) => id === 'p133')).toHaveLength(1);
+    expect(restored.logMap.some(([id]) => id === 'p10000')).toBe(false);
+    expect(restored.logMap.some(([id]) => id === 'p10129')).toBe(true);
+    const exported = JSON.parse(exportSaveV2(restored, NOW)) as {
+      log: Array<Record<string, unknown>>;
+    };
+    expect(exported.log).toHaveLength(120);
+    expect(exported.log.some((entry) => entry.id === 'p133')).toBe(true);
+  });
+});
