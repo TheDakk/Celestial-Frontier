@@ -52,6 +52,8 @@ jobs:
         run: node tools/validate.js
       - name: smoke (jsdom gameplay flows)
         run: node tools/smoke.js
+      - name: legacy Field Training checkpoint capture
+        run: npm run trainingcheckpoint
       - name: layout (10 viewports)
         env:
           CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}

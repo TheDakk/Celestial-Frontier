@@ -1,7 +1,7 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-15.
+> 2026-08-16.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -12,10 +12,11 @@
 > merge `a50e593e2135f55ae8c37e6ece1f10c52701346b`; audio pre-initialization hardening is integrated at
 > merge `44925f62abdfcdf9c17e512dd49a57a183e217ec`; the epoch persistence contract is integrated at
 > merge `5171abcdc538938fdf5ac82688d1ab868da6ff48`. F2 canonical ingress and discriminated navigation
-> is the active implementation batch: its pure provenance/navigation/import seams, app migration,
-> canonical render receipt, final local browser core-loop proof, and 12-viewport Glass Matrix are in
-> the working candidate. Exact-head CI, merge integration, and mapped publication evidence remain
-> open. No F2 or Gate completion is claimed yet. Later product batches remain planned.
+> finished at PR #30 head `24bcc3cbf4e76f7bb65a00e810e0eeeeb8d7c837` and is integrated at
+> `b091f010011fa16bec457599b41274b7f92bb5e6`. D-TRAIN-1 is the active local-working-tree
+> **[PARTIAL]** batch: exact legacy checkpoint compatibility, the one-write replacement transaction,
+> and local static/Slice/Glass evidence are present, while committed exact-head CI, integration,
+> real-save Gate C, and human evidence remain open. Later product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -456,9 +457,10 @@ call-site → semantic-domain inventory.
 
 ### 4.3 F2 — canonical ingress and discriminated navigation
 
-**Status (2026-08-15): [PARTIAL] locally proven working candidate; implementation, static,
-all-ingress browser and Glass Matrix evidence is green, while exact-head PR CI, merge integration,
-the resulting `develop` battery and mapped publication evidence remain open.**
+**Status (2026-08-16): [LIVE] the bounded F2 canonical-ingress implementation finished at PR #30
+head `24bcc3cbf4e76f7bb65a00e810e0eeeeb8d7c837` and is integrated in `develop` at merge
+`b091f010011fa16bec457599b41274b7f92bb5e6`. This closes the F2 identity seam, not Arc 0,
+Gate D, a human gate, or any release.**
 
 **Goal:** close the forged star/galaxy CF1 bypass and establish one provenance boundary for every
 current and future world-bound action.
@@ -512,15 +514,12 @@ Browser-path, CDP, smoke-report, and Glass-report selftests passed. The complete
 Matrix binds that same digest/browser, passed in 55,065 ms, and recorded zero findings, zero
 instrument failures, and zero retries.
 
-This is mutable-working-tree evidence only. Exact-head PR CI, merge integration, and the resulting
-`develop` battery/publication remain mandatory; this record does not close F2, Gate D, any other
-Gate, a release, versioning, or deployment authority.
-
-Draft PR [#30](https://github.com/TheDakk/Celestial-Frontier/pull/30) opened from exact implementation
-commit `3cc61f9d71b1073cacece8dfeb44c2dd2fd93b3d` into `develop`. The final publication-state handoff
-is a docs-only successor on that same PR; only its fresh live exact-head checks and review/waiver
-boundary may authorize integration. The initial implementation-head run is not reused as evidence
-for the successor.
+That was mutable-working-tree candidate evidence at the time it was recorded. PR
+[#30](https://github.com/TheDakk/Celestial-Frontier/pull/30) subsequently finished at exact head
+`24bcc3cbf4e76f7bb65a00e810e0eeeeb8d7c837` and merged normally into `develop` at
+`b091f010011fa16bec457599b41274b7f92bb5e6`. The repository and synchronized agent refs were at
+that merge before D-TRAIN-1 began. This integration closes only the bounded F2 identity seam; it
+does not close Gate D, any other Gate, a release, versioning, or deployment authority.
 
 ### 4.4 Arc 0 completion — current truth, imports, and continuity
 
@@ -532,7 +531,7 @@ placement rule determines what it blocks: later-bound decisions such as `D-CFB-1
 
 | Item | Required outcome | Placement rule |
 | --- | --- | --- |
-| `D-TRAIN-1` | Imported full-expedition `tsnap` restores before clear; completion, skip, and write-failure preserve the real expedition. | Before Training can claim full migration. |
+| `D-TRAIN-1` | Imported exact eleven-key `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}` checkpoint restores only its owned surfaces before clear; current one-key `{view}` and legacy no-view route semantics stay distinct; completion, skip, and failure preserve every surrounding expedition field. | Before Training can claim full migration. |
 | `D-CFB-1` | Explicit compatibility decision and normalized parent-tuple round trip with reverse-parent/matchup controls. | Before companions, combat, or audio identity rely on it. |
 | `D-IMPORT-1` | Map/Set semantics reconstruct; malformed rows are contained; valid genome/size values do not drift. | Before import becomes a broad player promise. |
 | Charter/opportunity truth | Every surfaced opportunity maps to a live action; stale chapters cannot claim unbuilt systems. | Before new ownership/reward writers. |
@@ -541,6 +540,63 @@ placement rule determines what it blocks: later-bound decisions such as `D-CFB-1
 | `PER-5` imported strings | Decide and record validation for `lastAnomKey`/`frontierEnding`; do not silently change verbatim parity. | Before either value is rendered or trusted as authority. |
 | `DOM-5` package cycle | Assign and remove the `combatcore` ⇄ `strays` dependency cycle at an owned package seam. | Before stricter bundling or dependency enforcement relies on an acyclic graph. |
 | `MAIN-3` roster boundary | Separate the full canonical world roster from the eight-row Planetside preview/paging cap. | Before Arc 4 capture consumes roster identity. |
+
+**D-TRAIN-1 implementation/evidence record (2026-08-16): [PARTIAL], local working tree only.**
+The mature checkpoint is classified by its exact eleven keys, detached/frozen, bounded, and kept
+distinct from current `{view}` and unknown evidence. A genuine action-derived v1.8.9 fixture
+replaces the old synthetic object as positive evidence; genuine `tut:1` is rescued to incomplete,
+while unsafe/unknown/future evidence stays fail-closed. Restoration starts from the surrounding
+imported v4 state, replaces only those eleven owned surfaces, regenerates and source-proves Earth,
+and uses the optional independently versioned
+`ever:{v:1,hybrids,best,maxGen,scanhits[,arrivals]}` carrier for cumulative facts. Outer save
+version remains 4, but the carrier is an additive v4-envelope extension rather than “no schema
+change.”
+
+Finish/Skip claims replacement ownership before its first await, holds focus/busy state, stops the
+ticker, cancels/drains ordinary persistence, constructs a detached proven candidate, writes the
+primary exactly once, and publishes only after durability. Pre-durable refusal is retryable with
+byte-stable source; post-durable failure reloads committed state without a second write. Legacy
+Skip ends at proven Sol and full Finish after Land ends at proven Earth; only current `{view}`
+returns to the exact pre-Training route. Pending/no-snapshot loaded drills are write-held. Unknown
+or route-unavailable evidence opens a persistent inert-background, focus-trapped, nonclosable
+recovery modal with trusted complete import and reload/retry.
+
+The browser chronology remains diagnostic evidence, not a scrubbed success story. The first broad
+Slice run mixed expected harness drift (new Sol start, normalized six-row census, real
+keyboard/phone ascent, direct-write versus re-export Atlas defaults) with one real product defect:
+a DOM mutation could strip `inert`/`aria-hidden` while recovery stayed open. The repaired product
+re-enforces the exact top-level background lock through a body observer, and the repaired control
+removes those attributes and requires their restoration. Later keyboard, pinch, route/ordinal,
+release-queue, and Atlas-default reds were instrument assumptions repaired while retaining real
+input, native IndexedDB counts, canonical render receipts, outer-field comparison, and negative
+controls. The first full Glass run then failed only because its instrument still expected Skip to
+return to Cosmos; it now releases the real selected keyboard target and ascends Sol → galaxy →
+universe through real Escape input before the unchanged universe/Charter checks.
+
+Two later player-copy checks also stayed honestly instrument-red until repaired. Slice Smoke's
+legacy Skip contradiction regexp crossed the valid comma in “Skip … Sol, while … Earth” and
+misattributed Finish's Earth to Skip; comma/semicolon is now a hard clause boundary. Glass injected
+capitalized `Completing … Sol` against a lower-case forbidden literal; forbidden rendered-copy
+comparison is now case-insensitive while required copy remains exact. Both reds were instrument-only
+and remained visible; each repair was followed by a fresh one-attempt run, never an automatic retry.
+
+Current local static evidence is 3 focused files / 26 passed and 30 files / 366 passed / 1 skipped;
+both TypeScript programs, `artunused`, and the action-derived fixture check pass. Ignored Slice run
+`20260816195736683-4852-27b5c876410a` is terminal PASS on Edge `151.0.4129.86` in
+154,788 ms with zero findings/retries and ten run-bound screenshots. Its report-file SHA-256 is
+`33953319124590ced0cebc16888cfb2b8cbe2879cbcb3c225e061d0d7a817027` and it binds dirty-tree
+SHA-256 `465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`; its 4,163-byte raw-log
+SHA-256 is `b060af3aaa8454a5d9813b2e5f8e6eba0ec2b7f5d3090e991154c1664a132670`, source-change detection
+is false, and the Git-status digest is
+`c195873a910c3bce42db222560c9bc70b8763df330d0454036388e4e398faa6d`. The separately
+captured full-certifying Glass report passes 12/12 viewports/reload rows and 57/57 planned negative
+controls in 57,476 ms with zero findings/instrument failures/retries. Its report-file SHA-256 is
+`fe32fe802460a61ec4337c373276de8601196ead530ae8184c36970247545254` and it binds the later
+dirty-tree SHA-256 `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5` plus the same Git-status
+digest.
+This documentation update postdates both distinct snapshots; neither report certifies the exact
+current diff. Committed exact-head CI/integration, D-TRAIN-2's other fifteen lessons, real-save
+Gate C, human play, production versioning, release, and deployment all remain open.
 
 **Arc 0 exit:** fresh saves receive no impossible live goal; surfaced opportunities map to real
 actions; continuity required by every capability reached so far is preserved; Guide truth is

@@ -1,5 +1,53 @@
 # Celestial Frontier — Quests & Chapters
 
+> **2026-08-16 D-TRAIN-1 source-truth overlay (current source; local browser
+> evidence recorded below; exact-head CI, integration, real-save Gate C, and
+> human authority remain open):** v1.8.9 Training's reversible checkpoint is the exact eleven-field
+> `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}` record, not a whole expedition.
+> Completion restores only the progress surfaces that record owned—selected
+> stats, player stats, achievements, Stardust, Compendium, cargo, exceptional
+> counts, items, equipment, affixes, and Earth Atlas/home history—while the
+> surrounding v4 save retains every other field. The old synthetic
+> `{codex,essence,marker}` fixture remains an unknown/refusal control. A genuine
+> checkpoint paired with the historical erroneous `tut:1` is rescued as
+> incomplete; unknown checkpoints never become practice progress.
+> The legacy checkpoint has no `view`: Skip from Welcome remains in Sol and a
+> full completion after Land remains at Earth. Exact pre-Training route restore
+> belongs only to the current-v2 one-key `{view}` checkpoint.
+>
+> Loaded unfinished Training is write-held before ordinary persistence. A
+> recognized checkpoint restores atomically before it is cleared. A loaded
+> `tut:0` save with no checkpoint is also held and may use proven Sol only as a
+> runtime seat until the one completion write; it does not gain a fabricated
+> checkpoint. Fresh empty onboarding remains ordinary. Unknown checkpoint or
+> unavailable route enters the persistent nonclosable recovery modal, with
+> trusted complete import and reload/retry as the only exits. Finish/Skip stays
+> visibly busy and focus-locked while its one primary replacement write is in
+> flight; a pre-durable failure keeps the lesson and checkpoint retryable, and
+> a post-durable publication failure reloads from that one committed write.
+> Neither path banks a chapter, Charter goal, landing, conquest, achievement,
+> reward, reach tier, or any other state the checkpoint did not own.
+>
+> This restores compatibility for the implemented six-lesson v2 drill only.
+> **D-TRAIN-2 remains open** for the other fifteen lessons and the complete
+> legacy 21-step curriculum. The compatible optional outer-v4 `ever.v:1`
+> record carrier is persistence bookkeeping, not a new progression writer or
+> Guide capability; outer `v` stays 4 and no game/release version changes.
+>
+> Local ignored reports are terminal PASS on Edge `151.0.4129.86` at commit
+> `b091f010011fa16bec457599b41274b7f92bb5e6`, branch `openai/mac`.
+> Slice Smoke run `20260816195736683-4852-27b5c876410a` took 154,788 ms with
+> 0 findings, 0 automatic retries and 10 screenshots; its raw outcome explicitly covers
+> genuine Training Skip + full Finish, rescue/quarantine/retry/races, and
+> canonical Earth. Full-certifying Glass took 57,476 ms across 12/12 viewports
+> with 57/57 negative controls, 0 blocked/omitted, 0 findings, 0 instrument
+> failures, and 0 automatic retries. The reports bind different dirty diagnostic tree
+> hashes—Slice Smoke
+> `465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`,
+> Glass `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5`—so
+> they are local outcome evidence for those recorded inputs, not this later
+> documentation state, exact-head CI, integration, Gate C, human, or release authority.
+
 > **2026-08-14 v2 current-truth overlay — CURRENT versus PLANNED:** The current
 > v2 Charter facade preserves the canonical legacy `ASC_CHAPTERS_DATA` and imported
 > `ascCh` / `ascProg` bytes for parity and reach, but never renders that raw chapter
@@ -37,15 +85,15 @@
 > recall and exact-once claim are all reachable through their real controls and
 > verified outcomes.
 
-**STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
-below matches `port/v2` as of 2026-08-15. Carries v1.8.6 and v1.8.7
+**STATUS:** legacy sections match `main.js` as of 2026-07-31; the newest v2 overlay
+above matches `port/v2` source as of 2026-08-16. Carries v1.8.6 and v1.8.7
 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and Field Training. The **21-step** curriculum described below is the legacy game; the current v2 boundary is explicit here.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 sections, and `port/v2/apps/game/src/training.ts` plus its `main.ts` wiring
 implement the dated port overlay.
 
-> **2026-08-11 v2 Field Training overlay:** The playable slice currently owns
+> **2026-08-11 v2 Field Training overlay (historical pre-D-TRAIN-1 boundary):** The playable slice owns
 > six real lesson cards—welcome, find Earth, read the survey, chart Earth, open
 > the Atlas, and Land—followed by an honest **Finish for now** graduation. It
 > advances only from the real survey/Atlas/landfall events and must not be
@@ -68,9 +116,9 @@ implement the dated port overlay.
 > tree digest
 > `7dfa649eb7de017424b7ba1ba0b11ba1fd00dc02a5b99b6848e0f3c347acba9e`.
 > This remains working-tree outcome evidence, not exact-head CI, integration or
-> Gate authority. Imported legacy mid-training saves carry a
-> much larger full-expedition `tsnap`; typed restore-before-clear behavior and
-> injected write-failure proof for that shape remain OPEN. Repeating the Earth
+> Gate authority. At that boundary, imported legacy mid-training saves carried
+> an unimplemented richer `tsnap`; typed restore-before-clear behavior and
+> injected write-failure proof remained OPEN. Repeating the Earth
 > Land action during an explicit training replay may emit the lesson event, but
 > it does not mint a second landfall/progression reward.
 > While a lesson is active, Field Training owns Escape before the global
@@ -83,9 +131,9 @@ implement the dated port overlay.
 > Training as only partly available, with capability-aware copy that names the
 > six-lesson boundary above. Guide search and cross-links therefore cannot make
 > an unported feeding, breeding, duel, healing, forge, horizon or Charter lesson
-> look playable. Completing the real 21-step v2 curriculum and restoring the
-> legacy full-state `tsnap` are still separate OPEN outcomes; the unversioned v2
-> release draft does not claim either one complete.
+> look playable. Completing the real 21-step v2 curriculum remains OPEN; the
+> unversioned v2 release draft does not claim it complete. D-TRAIN-1 compatibility
+> is described by the newer source-truth overlay above.
 
 > **2026-08-14 v2 Charter current-truth overlay:** `@cf/scene/charter.ts` keeps
 > `ASC_CHAPTERS_DATA`, `chapterGoalsDone` and forward `bankLandfall` semantics intact
@@ -319,6 +367,11 @@ Weekly draw: `mulberry32(hashInt(0xC4A7, chWeek, 7))` splices 3 from the pool (d
 - `charters` — lifetime honored count (`stats.charters`).
 - **Chapters:** `asc` = `ascCh` chapter index (clamped 0..`ASC_CHAPTERS.length`); `ascp` = `ascProg` goal map.
 - **Tutorial:** `tut` = `tutDone` (save ~L10095/10270). **Absent ⇒ treated as done** ("never force training on a held/edited save"). Fresh start sets `tutDone=false`, `ascCh=0`, clears charters.
+- **Current v2 Training compatibility:** optional `tsnap` while incomplete is
+  either exact current `{view}`, exact legacy
+  `{st,ps,ac,es,c,ca,cx,it,eq,ea,e}`, or protected bounded unknown evidence.
+  Optional nested-version `ever.v:1` carries checkpoint-owned cumulative
+  records without changing outer `v:4`; neither field grants a quest outcome.
 
 ## 5. Determinism
 Quests are mostly app-layer, but the parts that must be identical cross-device are:

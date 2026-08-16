@@ -1,6 +1,46 @@
 # Celestial Frontier — Player Progression
 
-> **2026-08-15 F2 progression-boundary overlay (current code):** Source proof
+> **2026-08-16 D-TRAIN-1 progression overlay (current source; local browser
+> evidence recorded below; exact-head CI, integration, real-save Gate C, and
+> human authority remain open):** Field Training compatibility restores only the exact eleven
+> checkpoint-owned surfaces `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}`.
+> It does not roll back the whole save and cannot manufacture unrelated
+> progression. All surrounding v4 fields remain owned by the surrounding
+> imported expedition; canonical Earth is regenerated instead of trusting
+> `e.where`, historical Earth values are sanitized, HP is never healed, and
+> survey/arrival totals are reconciled from their identity ledgers. The
+> optional compatible outer-v4 `ever.v:1` carrier retains only cumulative
+> records that the old checkpoint could own; its floors never lower derived
+> progress, `sysSeen` remains arrival authority, and future nested versions
+> protect the whole expedition.
+> The legacy checkpoint does not contain `view`: Skip from Welcome keeps Sol,
+> while full completion after Land keeps Earth. Only current-v2 `{view}`
+> restoration returns to the exact pre-Training route.
+>
+> Loaded unfinished saves are held against ordinary writes until the one
+> atomic Finish/Skip replacement commits. A loaded `tut:0` expedition without
+> a checkpoint receives only a runtime Sol seat, not invented checkpoint or
+> progress. Unknown evidence enters a persistent recovery lock rather than
+> allowing session practice to appear saved. A pre-durable failure retains the
+> lesson and checkpoint; a durable primary write is never repeated because
+> later in-memory publication failed. This adds no chapter, Charter, landing,
+> reward, reach, ownership, or Guide capability, leaves outer `v:4`, and does
+> not finish the remaining fifteen D-TRAIN-2 lessons or authorize a release.
+>
+> Local ignored evidence is terminal PASS on Edge `151.0.4129.86` at dirty
+> commit `b091f010011fa16bec457599b41274b7f92bb5e6` / branch `openai/mac`.
+> Slice Smoke took 154,788 ms with 0 findings, 0 automatic retries and 10 screenshots;
+> its raw outcome names genuine Training Skip + full Finish,
+> rescue/quarantine/retry/races and canonical Earth. Full-certifying Glass took
+> 57,476 ms across 12/12 viewports with 57/57 negative controls, none
+> blocked/omitted, with 0 findings, 0 instrument failures and 0 automatic retries. Their distinct
+> dirty-tree hashes are respectively
+> `465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`
+> and `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5`.
+> This is input-bound local outcome evidence, not this later documentation
+> state, exact-head CI, integration, Gate C, human, or release authority.
+
+> **2026-08-15 F2 progression-boundary overlay (historical pre-D-TRAIN-1 boundary):** Source proof
 > now precedes every navigation authority decision. Search, generated descent,
 > saved boot/import and Atlas candidates must first resolve to a canonical
 > galaxy/star/planet hierarchy; only that proven target is then evaluated by
@@ -19,8 +59,8 @@
 > writes no lesson completion or other progression, and attempts to return to a
 > freshly proven Sol system for the next-load retry. That Sol move is conditional:
 > if Sol proof is also unavailable, the app neither forges it nor discards the
-> retained retry evidence. D-TRAIN-1's legacy full-expedition restore remains
-> open. No schema/version/release, exact-head certification or Gate status changes
+> retained retry evidence. At that boundary D-TRAIN-1 remained
+> open. F2 itself made no schema/version/release, exact-head certification or Gate status changes
 > here.
 
 > **2026-08-15 v2 overlay — CURRENT versus PLANNED:**

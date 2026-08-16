@@ -992,6 +992,15 @@ duplicates).
   prior evidence for D-SAVE-2; the later prior D-SAVE-3 evidence is `46fb627` below. The exact
   clean executable outcome closes this implementation item; human play and release authority remain
   separate.
+
+  **2026-08-16 source extension:** the shared replacement-reason union now has five
+  members: `training-restart`, `training-complete`, `training-recovery`, `save-import`,
+  and `storage-retry`. Atomic Training completion and persistent Training recovery use
+  the same exclusive pre-await claim/release boundary. The earlier exact clean evidence
+  above remains valid for its original three paths and is not retroactive evidence for
+  the two additions. D-TRAIN-1's later ignored local Slice Smoke and full Glass reports
+  now cover the extended Training outcomes on dirty diagnostic inputs; exact-head and
+  integration evidence remain pending.
 - ✔ **D-SAVE-3 — simultaneous full-viewport resources share one budget and boot wiring owns
   ticker start (first closed in exact clean executable evidence `46fb627`, 2026-08-12).** Test-battery #204
   (`31612817092` / `94168172635`) completed once without retry at exact pushed
@@ -1320,15 +1329,65 @@ duplicates).
   remains ◐ because that is dirty-working-tree evidence, not exact-head CI, integration or Gate
   authority.
 
-  This is navigation identity only. D-TRAIN-1's richer legacy full-expedition transaction, F3
+  This was navigation identity only. At the F2 boundary D-TRAIN-1's richer legacy checkpoint transaction, F3
   revisions/CAS/split stores/receipt journal, F4 clock/visibility/SessionRNG, local ownership-ledger
   migration, every ownership/reward/receipt writer, save schema/version and production release all
   remain open. D-CF1-2 above remains dated history of the narrower boundary F2 supersedes.
-- ☐ **D-TRAIN-1 — restore legacy full-expedition tutorial snapshots.** Current-v2 restart owns a
-  reversible `{view}` snapshot and commits before reload. Imported v1 mid-training `tsnap` is a much
-  larger expedition record; finishing/skipping without a typed restore-before-clear transaction can
-  strand that real progress in an ignored field. The frozen `tut_midtraining` fixture must prove both
-  completion paths and injected write failure before this is closed.
+- ◐ **D-TRAIN-1 — exact legacy Training checkpoint restore is implemented and local
+  browser/Glass outcomes are terminal green; exact-head/integration and real-save Gate-C
+  proof remain pending (2026-08-16).** The
+  mature v1.8.9 `tsnap` is not a full save: it has exactly eleven outer fields
+  `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}` owning selected statistics, player
+  statistics, achievements, Stardust, Compendium, cargo, exceptional counts, items,
+  equipment, affixes, and Earth Atlas/home history. The sealed fixture is action-derived
+  from `veteran_rich` through the real legacy Settings → Restart Training controls; its
+  2,074-byte snapshot SHA-256 is
+  `2e2f7c566a27e79398ea18650de9ac6acf236e92235fc293e4815b8bfefa22e3`.
+  The old synthetic `{codex,essence,marker}` fixture remains unknown/refusal-only.
+
+  The importer recognizes the exact key set as a bounded frozen `legacy-v1` checkpoint,
+  rescues genuine `tut:1` to incomplete, preserves bounded unknown evidence, and rejects
+  completed-plus-pending export. Restore replaces only those eleven surfaces inside the
+  surrounding v4 save. It ignores `e.where` as route authority, proves canonical Earth,
+  sanitizes historical Earth fields, invents no land/conquest/achievement, never heals HP,
+  reserves Earth under the 120-row Atlas cap, and derives survey/arrival counts from identity
+  ledgers. The legacy checkpoint contains no `view`: Skip from Welcome retains/persists
+  Sol, full completion after Land retains/persists Earth, and only the current-v2
+  one-key `{view}` checkpoint restores the exact pre-Training route. Optional compatible
+  `ever:{v:1,hybrids,best,maxGen,scanhits[,arrivals]}` carries cumulative facts that cannot
+  always be re-derived. Outer `v` stays 4, but this is an additive v4-envelope extension
+  with an independent nested version—not “no schema change,” v5, or a release bump. A
+  numeric future `ever.v` protects the whole save.
+
+  Finish/Skip claims exclusive replacement ownership before awaiting, marks the lesson
+  busy, retains its focus lock, stops/cancels/drains ordinary persistence, builds a detached
+  source-proven candidate, and makes exactly one direct primary write before live publish
+  and teardown. Pre-durable failure leaves the lesson/checkpoint retryable; post-durable
+  publish failure never writes twice. Loaded pending checkpoints and loaded `tut:0` without
+  one are write-held; the no-checkpoint case gets only a runtime Sol seat. Unknown checkpoint
+  or route-unavailable state persists as an inert-background, focus-trapped, nonclosable
+  recovery modal with reload/retry and trusted complete import.
+
+  Ignored Slice Smoke run `20260816195736683-4852-27b5c876410a` is terminal PASS
+  on Edge `151.0.4129.86` in 154,788 ms with 0 findings, 0 automatic retries,
+  10 screenshots and no detected source change; its raw outcome names genuine Training
+  Skip + full Finish, rescue/quarantine/retry/races and canonical Earth. The separate
+  full-certifying Glass report is terminal PASS in 57,476 ms across 12/12 viewports
+  and 12/12 reload-evidence rows, with all 57/57 planned negative controls run, none
+  blocked/omitted, with 0 findings, 0 instrument failures and 0 automatic retries. Both report commit
+  `b091f010011fa16bec457599b41274b7f92bb5e6`, branch `openai/mac`, dirty-diagnostic
+  state; Slice Smoke binds working-tree hash
+  `465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`, while
+  Glass binds `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5`.
+  The final-copy rerun chronology remains explicit: Slice first went instrument-red because its
+  legacy Skip contradiction regexp crossed the valid comma into Finish's Earth clause; the repair
+  makes comma/semicolon a hard clause boundary. Glass then went instrument-red because injected
+  capitalized `Completing … Sol` did not match a lower-case forbidden literal; forbidden rendered
+  copy is now compared case-insensitively while required copy remains exact. Neither instrument-only
+  red was retried away; each was diagnosed and followed by a fresh one-attempt run.
+  Those local input-bound reports do not certify this later documentation tree,
+  exact-head CI, integration, Gate C, human play, or release. No new Guide capability,
+  lesson, outer version, current release, or production release is claimed.
 - ☐ **D-CFB-1 — preserve the deterministic parent tuple or ratify its loss.** The retained creature
   codec drops `parents`, while combat class/ability reads them. Honest hybrids can therefore change
   combat identity after a CFB round trip. A normalized two-uint32 tuple is the bounded candidate, but
@@ -1584,8 +1643,8 @@ duplicates).
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
   the real survey/Atlas/landfall events; an explicit replay landing on Earth may satisfy the lesson
   without paying duplicate landfall progress. Cache, feed, breed, duel, hazard, healing, forge and
-  the rest of the legacy 21-step curriculum remain OPEN. D-TRAIN-1 separately guards the imported
-  full-expedition `tsnap` restoration boundary.
+  the rest of the legacy 21-step curriculum remain OPEN. D-TRAIN-1 separately guards exact legacy
+  checkpoint compatibility and is implemented in source with its terminal evidence boundary still pending.
 - ★ **D-ART-LOAD — lazy art readiness is shared but invalidation is bounded per view (2026-08-11).**
   One in-flight import Promise now accepts the latest callback for each of Compendium, Planetside
   and prefetch. An idle prefetch can no longer swallow a later view subscription, while a 1,500-row

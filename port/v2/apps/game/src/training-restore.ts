@@ -1,0 +1,187 @@
+/* Legacy Field Training checkpoint restoration.
+ *
+ * v1.8.9 did not store a whole save in `tsnap`. It stored exactly eleven
+ * checkpoint-owned surfaces (stats, player stats, achievements, essence,
+ * Compendium, cargo, exceptional counts, items, equipment, affixes and the
+ * Earth Atlas row). Everything else belongs to the surrounding v4 save and
+ * must survive unchanged. This helper builds a replacement candidate only;
+ * its caller owns source proof, the single repository write and publication.
+ */
+import {
+  importSaveV2,
+  type ContentRegistry,
+  type LegacyTrainingCheckpointV1,
+  type SaveStateV2,
+} from '@cf/persistence';
+
+const DIRECT_STAT_KEYS = [
+  'shares', 'jumps', 'anomalies', 'events', 'duels', 'duelwins',
+  'breeds', 'breedwins', 'feeds', 'feedfails', 'harvests',
+  'essenceEarned', 'guardians', 'paragons', 'mines', 'crafts',
+  'minedout', 'skims', 'cosmics', 'landings', 'charters',
+] as const;
+
+export interface LegacyTrainingRestoreInput {
+  /** A detached, already-sanitized copy of the current surrounding save. */
+  readonly current: SaveStateV2;
+  readonly checkpoint: LegacyTrainingCheckpointV1;
+  readonly registry: ContentRegistry;
+  readonly now: number;
+  readonly epoch: number;
+  /** Source-proven public compatibility view for Earth; never checkpoint data. */
+  readonly canonicalEarthView: Record<string, unknown>;
+  /** Source-proven view to publish after Training completes. */
+  readonly completionView: Record<string, unknown> | null;
+}
+
+export type LegacyTrainingRestoreResult =
+  | {
+      readonly ok: true;
+      readonly state: SaveStateV2;
+      readonly earthEntry: Record<string, unknown>;
+    }
+  | { readonly ok: false };
+
+function checkpointRaw(
+  current: SaveStateV2,
+  checkpoint: LegacyTrainingCheckpointV1,
+  now: number,
+): Record<string, unknown> {
+  const raw: Record<string, unknown> = {
+    v: 4,
+    epoch: current.EPOCH_BASE,
+    at: now,
+    me: current.explorerName,
+    names: current.customNames,
+    pstats: checkpoint.ps,
+    hp: current.hp,
+    essence: checkpoint.es,
+    ach: checkpoint.ac,
+    codex: checkpoint.c,
+    cargo: checkpoint.ca,
+    cgx: checkpoint.cx,
+    items: checkpoint.it,
+    eq: checkpoint.eq,
+    ea: checkpoint.ea,
+    /* These are cumulative "ever" records. The corresponding record holder
+       can have been consumed before Training, so the surviving checkpoint
+       Compendium is not sufficient to reconstruct them. */
+    ever: {
+      v: 1,
+      hybrids: checkpoint.st.hybrids,
+      best: checkpoint.st.best,
+      maxGen: checkpoint.st.maxGen,
+      scanhits: checkpoint.st.scanhits,
+    },
+    surveyed: current.surveyedSet,
+    log: checkpoint.e === null ? [] : [checkpoint.e],
+    home: checkpoint.e === null ? null : 'p133',
+  };
+  for (const key of DIRECT_STAT_KEYS) raw[key] = checkpoint.st[key];
+  raw.br = checkpoint.st.bestRank;
+  return raw;
+}
+
+function checkpointEarthHistory(
+  checkpoint: LegacyTrainingCheckpointV1,
+  sanitized: Record<string, unknown> | undefined,
+): Readonly<Record<string, unknown>> {
+  if (!checkpoint.e) return Object.freeze({});
+  return Object.freeze({
+    /* Consume the current importer's one sanitized row instead of growing a
+       second near-copy of Atlas coercion here. In particular legacy numeric
+       strings for `t` follow the same bounded `num` contract as normal load. */
+    fav: !!sanitized?.fav,
+    t: typeof sanitized?.t === 'number' && Number.isFinite(sanitized.t)
+      ? sanitized.t : 0,
+    badge: typeof sanitized?.badge === 'string' ? sanitized.badge : '',
+    sub: typeof sanitized?.sub === 'string' ? sanitized.sub : '',
+    star: typeof sanitized?.star === 'string' ? sanitized.star : '',
+    title: sanitized?.title,
+  });
+}
+
+/**
+ * Restore only the fields that v1.8.9 actually placed in its Training
+ * checkpoint. The checkpoint's stale `e.where` is intentionally ignored:
+ * the caller must pass an independently source-proven Earth view.
+ */
+export function buildLegacyTrainingRestoreCandidate(
+  input: LegacyTrainingRestoreInput,
+): LegacyTrainingRestoreResult {
+  const imported = importSaveV2(
+    JSON.stringify(checkpointRaw(input.current, input.checkpoint, input.now)),
+    input.registry,
+    input.now,
+  );
+  if (!imported.ok) return { ok: false };
+
+  const sanitizedEarth = imported.state.logMap.find(([id]) => id === 'p133')?.[1];
+  const history = checkpointEarthHistory(input.checkpoint, sanitizedEarth);
+  const oldEarthIndex = input.current.logMap.findIndex(([id]) => id === 'p133');
+  const liveEarth = oldEarthIndex >= 0 ? input.current.logMap[oldEarthIndex]![1] : undefined;
+  const earthEntry: Record<string, unknown> = {
+    ...(liveEarth || sanitizedEarth || {
+      id: 'p133', title: 'Earth', sub: 'Terran World', thumb: null,
+      sq: false, badge: 'Home', fav: false, t: input.now,
+    }),
+    id: 'p133',
+    title: (liveEarth?.title || sanitizedEarth?.title || history.title || 'Earth'),
+    sub: history.sub || liveEarth?.sub || sanitizedEarth?.sub || 'Terran World',
+    badge: history.badge || liveEarth?.badge || sanitizedEarth?.badge || 'Home',
+    star: history.star || liveEarth?.star || '',
+    fav: input.checkpoint.e === null ? !!liveEarth?.fav : history.fav,
+    t: input.checkpoint.e === null
+      ? (typeof liveEarth?.t === 'number' ? liveEarth.t : input.now)
+      : history.t,
+    where: input.canonicalEarthView,
+  };
+  const logMap = input.current.logMap.slice();
+  if (oldEarthIndex >= 0) logMap[oldEarthIndex] = ['p133', earthEntry];
+  else logMap.push(['p133', earthEntry]);
+  if (logMap.length > 120) {
+    /* The ordinary exporter keeps the 120 newest rows. A veteran's genuine
+       Earth history can be older than 120 later discoveries, yet D-TRAIN's
+       checkpoint explicitly owns that home row. Reserve one slot for p133
+       without changing its historical timestamp, then keep the newest 119. */
+    const newestOtherRows = logMap
+      .filter(([id]) => id !== 'p133')
+      .sort(([, left], [, right]) => Number(right.t || 0) - Number(left.t || 0))
+      .slice(0, 119);
+    logMap.length = 0;
+    logMap.push(...newestOtherRows, ['p133', earthEntry]);
+  }
+
+  const state: SaveStateV2 = {
+    ...input.current,
+    EPOCH_BASE: input.epoch,
+    stats: {
+      ...imported.state.stats,
+      /* The checkpoint stores a count but not the identities. The retained
+         surrounding survey ledger remains authority for this derived count. */
+      surveys: input.current.surveyedSet.length,
+      /* First-arrival identity lives in the surrounding system ledger, which
+         Training never snapshots and must not replace with a free counter. */
+      arrivals: input.current.sysSeen.length,
+    },
+    pstats: imported.state.pstats,
+    HP_MAX: imported.state.HP_MAX,
+    /* A restore is not a heal. Clamp the surrounding live HP to the restored
+       Vitality-derived ceiling instead of copying the importer's full-health default. */
+    hp: Math.max(1, Math.min(input.current.hp, imported.state.HP_MAX)),
+    unlocked: imported.state.unlocked,
+    essence: imported.state.essence,
+    codex: imported.state.codex,
+    cargo: imported.state.cargo,
+    cgx: imported.state.cgx,
+    items: imported.state.items,
+    equip: imported.state.equip,
+    equipAff: imported.state.equipAff,
+    logMap,
+    homeId: 'p133',
+    savedView: input.completionView,
+    tutDone: true,
+    tutSnapPending: null,
+  };
+  return { ok: true, state, earthEntry };
+}

@@ -23,6 +23,14 @@
 import type { SaveStateV2 } from './import-v2.js';
 
 export function exportSaveV2(s: SaveStateV2, now: number): string {
+  /* A completed drill may not retain hidden pre-Training authority. The
+     legacy synchronous completion path could write `tut:1` while leaving
+     `tsnap` present; the next import then ignored the only surviving copy of
+     the veteran checkpoint. Recovery normalizes that known historical shape
+     back to incomplete before it reaches this boundary. */
+  if (s.tutDone && s.tutSnapPending != null) {
+    throw new Error('completed Field Training cannot retain a pending snapshot');
+  }
   /* CF-CR-005: strip every thumb atlasThumb can rebuild */
   const _thumbRegens = (e: Record<string, unknown>): boolean => {
     const k = e.id ? String(e.id)[0] : '';
@@ -40,6 +48,23 @@ export function exportSaveV2(s: SaveStateV2, now: number): string {
     return [..._l].slice(-4000);
   })();
   const codexIds = new Set(s.codex.map(([id]) => id));
+  const cumulative = (value: unknown): number => (
+    typeof value === 'number' && Number.isFinite(value) && value >= 0
+      ? Math.min(Math.trunc(value), 1_000_000_000) : 0
+  );
+  const cumulativeRecords: Record<string, number> = {
+    v: 1,
+    hybrids: cumulative(s.stats.hybrids),
+    best: cumulative(s.stats.best),
+    maxGen: cumulative(s.stats.maxGen),
+    scanhits: cumulative(s.stats.scanhits),
+  };
+  /* First-arrival identity lives in sysSeen. Only states which already own
+     the runtime counter opt into carrying it; a legacy import with a
+     populated ledger but no counter must remain byte/shape compatible. */
+  if (Object.prototype.hasOwnProperty.call(s.stats, 'arrivals')) {
+    cumulativeRecords.arrivals = cumulative(s.sysSeen.length);
+  }
   const data: Record<string, unknown> = {
     v: 4, epoch: s.EPOCH_BASE,   /* ordinary app caller refreshes this from current() */
     view: s.savedView,
@@ -77,6 +102,12 @@ export function exportSaveV2(s: SaveStateV2, now: number): string {
     shares: s.stats.shares, jumps: s.stats.jumps,
     anomalies: s.stats.anomalies, anomKey: s.lastAnomKey,
     events: s.stats.events, duels: s.stats.duels, duelwins: s.stats.duelwins,
+    /* Cumulative record holders may have been consumed, and bioscan close
+       calls have no identity ledger. This independently versioned v4
+       extension prevents an ordinary reload from demoting veteran counters
+       that a legacy Training checkpoint restores. Absent on older saves
+       remains a safe derive-from-current-Compendium/zero migration. */
+    ever: cumulativeRecords,
     surveyed: s.surveyedSet,
     gals: s.galSeen, surf: s.surfSeen, sysv: s.sysSeen,
     starK: s.starKindsSeen, ptypes: s.ptypesSeen,
