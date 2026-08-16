@@ -10,23 +10,37 @@ export interface GalaxyNode {
   home: boolean; quasar: boolean; dwarf: boolean;
   /* special populations, passed through for the renderer's bespoke draws */
   radio: boolean; blazar: boolean;
-  bridge: { x2: number; y2: number } | null;
+  bridge: Readonly<{ x2: number; y2: number }> | null;
 }
+
+/** Focused composition seam. Production callers use the lifted source. */
+export type UniverseCellSource = (cellX: number, cellY: number) => readonly Record<string, unknown>[];
 
 /** Galaxy nodes for the (2r+1)² cells centered on world position (cx,cy).
     ⚠ requires the capture hooks (GAL_SPRITES) until GalaxyArt ports —
     callers run installCaptureHooks() first, same as the descriptor tests. */
-export function universeGalaxies(cx: number, cy: number, r: number): GalaxyNode[] {
+export function universeGalaxies(
+  cx: number,
+  cy: number,
+  r: number,
+  source: UniverseCellSource = galaxiesInCell as unknown as UniverseCellSource,
+): GalaxyNode[] {
   const ccx = Math.floor(cx / UCELL), ccy = Math.floor(cy / UCELL);
   const out: GalaxyNode[] = [];
   for (let gx = ccx - r; gx <= ccx + r; gx++) for (let gy = ccy - r; gy <= ccy + r; gy++) {
-    for (const g of (galaxiesInCell(gx, gy) || []) as Array<Record<string, unknown>>) {
+    for (const g of source(gx, gy) || []) {
+      const sourceBridge = g.bridge && typeof g.bridge === 'object'
+        ? g.bridge as { x2: number; y2: number }
+        : null;
       out.push({
         seed: g.seed as number, x: g.x as number, y: g.y as number, size: g.size as number,
         sp: g.sp as number, tilt: g.tilt as number, rot: g.rot as number,
         home: !!g.home, quasar: !!g.quasar, dwarf: !!g.dwarf,
         radio: !!g.radio, blazar: !!g.blazar,
-        bridge: (g.bridge && typeof g.bridge === 'object') ? (g.bridge as { x2: number; y2: number }) : null,
+        /* `galaxiesInCell` memoizes its nested collision record. Keep scene
+           candidates detached so presentation mutation cannot poison the
+           generator cache or later canonical compositions. */
+        bridge: sourceBridge ? Object.freeze({ x2: sourceBridge.x2, y2: sourceBridge.y2 }) : null,
       });
     }
   }

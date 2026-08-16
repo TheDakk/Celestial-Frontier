@@ -59,6 +59,22 @@ function evaluateLiteral<T>(literal: string): T {
   return JSON.parse(JSON.stringify(evaluated)) as T;
 }
 
+const TRAINING_RESTORE_CONTRADICTIONS = Object.freeze([
+  /\balways\b[^.!?]{0,80}\brestor(?:e|es|ed)\b[^.!?]{0,40}\bimmediately\b/i,
+  /verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i,
+  /verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i,
+  /(?:reload|retry|restarts?|resumes?)[^.!?]{0,72}(?:Earth|surface|finish(?:ed)? (?:world|location)|last location)/i,
+  /verification pauses[^.!?]{0,160}reload safely restarts Field Training from proven Sol/i,
+]);
+
+function trainingRestoreCopyIsTruthful(body: string): boolean {
+  return /normal Finish or Skip source-verifies and immediately restores the exact pre-Training view/i.test(body)
+    && /If verification pauses, that exact view stays saved/i.test(body)
+    && /when Sol can still be verified, Training returns there/i.test(body)
+    && /reload can restart safely and retry/i.test(body)
+    && TRAINING_RESTORE_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+}
+
 const guideLiteral = extractLiteral('const GUIDE=', '\n/* v1.5:');
 const releaseLiteral = extractLiteral('const RELEASES=', '\n];\nlet _rnSeen') + '\n]';
 
@@ -139,10 +155,13 @@ describe('v2 Guide capability filter', () => {
     expect(getGuideTopic('settings')?.body).toContain('Star charts');
     expect(getGuideTopic('atlas')?.body).toContain('saved galaxies, stars, and worlds');
     expect(getGuideTopic('atlas')?.body).toContain('A world entry reopens its system survey');
-    expect(getGuideTopic('atlas')?.body).toContain('route coordinates are incomplete');
+    expect(getGuideTopic('atlas')?.body).toContain('source-verified destination');
+    expect(getGuideTopic('atlas')?.body).toContain('stale, forged, or incomplete');
+    expect(getGuideTopic('atlas')?.body).toContain('visible but disabled');
     expect(getGuideTopic('atlas')?.body).toContain('out-of-reach entry leaves you in place');
     expect(getGuideTopic('landing')?.body).toContain('out-of-reach route leaves you in place');
     expect(getGuideTopic('search')?.body).toContain('out-of-reach address leaves the current view unchanged');
+    expect(getGuideTopic('search')?.body).toContain('keeps the exact query in Search');
     expect(getGuideTopic('codes')?.body).toContain('explorer stays put');
     const zoom = getGuideTopic('zoom');
     expect(zoom?.body).toContain('focus the starfield canvas');
@@ -154,8 +173,11 @@ describe('v2 Guide capability filter', () => {
     expect(zoom?.body).toContain('Escape again');
     const determinism = getGuideTopic('determinism');
     expect(determinism?.availability).toBe('partial');
+    expect(determinism?.body).toContain('accepts only a source-verified match');
     expect(determinism?.body).toContain('Shared timed events and creature duels');
     expect(determinism?.body).not.toContain('duels fair, and events shared');
+    expect(getGuideTopic('saving')?.body).toContain('returns safely to <b>Cosmos</b>');
+    expect(getGuideTopic('saving')?.body).toContain('without losing the rest of your expedition progress');
     expect(getGuideTopic('ascent')?.availability).toBe('partial');
     expect(getGuideTopic('ascent')?.body).toContain('first landing is the only new Charter goal progress');
     expect(getGuideTopic('ascent')?.body).toContain('Any successful Land action');
@@ -215,6 +237,139 @@ describe('v2 Guide capability filter', () => {
       .find((bullet) => bullet.includes('WORLD CODES KEEP THE WHOLE DESTINATION'));
     expect(worldCodeBullet).toBeDefined();
     expect(hasHonestRouteBoundaries(worldCodeBullet!)).toBe(true);
+  });
+
+  it('makes source verification, correction, Atlas disablement, and field-local save recovery explicit', () => {
+    const trustsUnprovenRoute = (body: string): boolean =>
+      /(?:trusts?|accepts?)[^.!?]{0,72}(?:stored|caller-supplied|code) (?:coordinates|bytes|parents?)/i.test(body)
+      || /(?:stored|caller-supplied|code) (?:coordinates|bytes|parents?)[^.!?]{0,40}(?:authoritative|trusted)/i.test(body);
+    const contradictsCorrection = (body: string): boolean =>
+      /(?:lands? immediately|automatically lands?|replaces? the current view|clears? the (?:exact )?query)/i.test(body);
+    const enablesUnprovenAtlasRow = (body: string): boolean =>
+      /(?:disabled|stale|forged|incomplete) (?:rows?|entries?)[^.!?]{0,48}(?:can|may|will|still) travel/i.test(body)
+      || /(?:enabled|travels?) anyway/i.test(body);
+    const rollsBackWholeSave = (body: string): boolean =>
+      /(?:whole|entire) (?:save|expedition)[^.!?]{0,72}(?:corrupt|rolls? back|rollback|is lost)/i.test(body)
+      || /rolls? back[^.!?]{0,72}(?:the )?expedition progress/i.test(body);
+    const sourceVerifiesEveryLevel = (body: string): boolean =>
+      /galaxy, star, or planet/i.test(body)
+      && /regenerat(?:e|es|ed)/i.test(body)
+      && /source-verified/i.test(body)
+      && !trustsUnprovenRoute(body);
+    const rejectedCodePreservesCorrection = (body: string): boolean =>
+      /stale or forged code/i.test(body)
+      && /current view unchanged/i.test(body)
+      && /exact query[^.!?]*(?:Search|unchanged)/i.test(body)
+      && !contradictsCorrection(body);
+    const atlasNeedsProof = (body: string): boolean =>
+      /proven(?: planet)? entry/i.test(body)
+      && /stale, forged, or incomplete/i.test(body)
+      && /visible but disabled/i.test(body)
+      && /Land remains (?:separate|explicit)/i.test(body)
+      && !enablesUnprovenAtlasRow(body)
+      && !contradictsCorrection(body);
+    const staleSavedLocationIsFieldLocal = (body: string): boolean =>
+      /saved galaxy, star, or planet location/i.test(body)
+      && /stale, forged, or incomplete/i.test(body)
+      && /returns safely to <b>Cosmos<\/b>/i.test(body)
+      && /without losing[^.!?]*expedition progress/i.test(body)
+      && !rollsBackWholeSave(body);
+
+    for (const id of ['landing', 'search', 'codes', 'atlas', 'determinism', 'saving'] as const) {
+      const topic = getGuideTopic(id);
+      expect(topic, `${id} current Guide topic missing`).toBeDefined();
+      expect(sourceVerifiesEveryLevel(topic!.body), `${id} trusts route bytes or omits a hierarchy level`)
+        .toBe(true);
+    }
+    expect(rejectedCodePreservesCorrection(getGuideTopic('search')!.body)).toBe(true);
+    expect(rejectedCodePreservesCorrection(getGuideTopic('codes')!.body)).toBe(true);
+    expect(atlasNeedsProof(getGuideTopic('atlas')!.body)).toBe(true);
+    expect(staleSavedLocationIsFieldLocal(getGuideTopic('saving')!.body)).toBe(true);
+    expect(getGuideTopic('landing')!.body).toContain('it never lands for you');
+    expect(getGuideTopic('landing')!.body).toContain('Press <b>Land</b>');
+    expect(getGuideTopic('search')!.body).toContain('<b>Land</b> remains a separate choice');
+    expect(getGuideTopic('codes')!.body).toContain('never bypasses the Land action');
+    expect(getGuideTopic('atlas')!.body).toContain('Land remains separate');
+
+    const worldCodeBullet = V2_DRAFT_RELEASE.sections
+      .flatMap((section) => section.bullets)
+      .find((bullet) => bullet.includes('WORLD CODES KEEP THE WHOLE DESTINATION'))!;
+    const atlasBullet = V2_DRAFT_RELEASE.sections
+      .flatMap((section) => section.bullets)
+      .find((bullet) => bullet.includes('THE ATLAS LEADS BACK'))!;
+    expect(sourceVerifiesEveryLevel(worldCodeBullet)).toBe(true);
+    expect(rejectedCodePreservesCorrection(worldCodeBullet)).toBe(true);
+    expect(worldCodeBullet).toContain('without bypassing Land');
+    expect(atlasNeedsProof(atlasBullet)).toBe(true);
+
+    /* Semantic negative controls: the former structural-only copy, a direct-
+       landing overclaim, the old coordinate-completeness Atlas rule, and a
+       whole-save rollback claim must each fail the same player-copy laws. */
+    const staleOldSearchCopy = 'A valid world address inside reach reopens its system survey. An out-of-reach address leaves the current view unchanged.';
+    expect(sourceVerifiesEveryLevel(staleOldSearchCopy)).toBe(false);
+    expect(rejectedCodePreservesCorrection(staleOldSearchCopy)).toBe(false);
+    expect(rejectedCodePreservesCorrection(
+      'Every galaxy, star, or planet code is regenerated and source-verified. A stale or forged code lands immediately and replaces the current view.',
+    )).toBe(false);
+    expect(atlasNeedsProof(
+      'A complete Atlas entry travels. An incomplete imported route stays listed with an unavailable label.',
+    )).toBe(false);
+    expect(staleSavedLocationIsFieldLocal(
+      'A saved galaxy, star, or planet location is regenerated and source-verified. A stale, forged, or incomplete route makes the whole save corrupt and rolls back expedition progress.',
+    )).toBe(false);
+    const validSearch = getGuideTopic('search')!.body;
+    const validAtlas = getGuideTopic('atlas')!.body;
+    const validSaving = getGuideTopic('saving')!.body;
+    expect(sourceVerifiesEveryLevel(
+      validSearch + ' Caller-supplied coordinates remain authoritative.',
+    )).toBe(false);
+    expect(rejectedCodePreservesCorrection(
+      validSearch + ' A stale code then lands immediately and replaces the current view.',
+    )).toBe(false);
+    expect(atlasNeedsProof(
+      validAtlas + ' Disabled rows can still travel.',
+    )).toBe(false);
+    expect(staleSavedLocationIsFieldLocal(
+      validSaving + ' The whole expedition then rolls back.',
+    )).toBe(false);
+    expect(rejectedCodePreservesCorrection(
+      worldCodeBullet + ' A stale code then lands immediately.',
+    )).toBe(false);
+    expect(atlasNeedsProof(
+      atlasBullet + ' Disabled rows can still travel.',
+    )).toBe(false);
+  });
+
+  it('qualifies immediate Field Training restore and the source-verification retry boundary', () => {
+    const settings = getGuideTopic('settings')!.body;
+    const saving = getGuideTopic('saving')!.body;
+    const trainingBullet = V2_DRAFT_RELEASE.sections
+      .flatMap((section) => section.bullets)
+      .find((bullet) => bullet.includes('FIELD TRAINING LIVES IN THE NEW SHELL'));
+
+    expect(trainingBullet).toBeDefined();
+    expect(trainingRestoreCopyIsTruthful(settings)).toBe(true);
+    expect(trainingRestoreCopyIsTruthful(saving)).toBe(true);
+    expect(trainingRestoreCopyIsTruthful(trainingBullet!)).toBe(true);
+
+    /* Bidirectional semantic controls: the former unconditional sentence,
+       plus contradictions appended to otherwise-valid copy, must turn the
+       same predicate red without relying on a missing anchor alone. */
+    expect(trainingRestoreCopyIsTruthful(
+      'Restart begins the current drill in Sol and restores the pre-training view when it finishes or is skipped.',
+    )).toBe(false);
+    expect(trainingRestoreCopyIsTruthful(
+      settings + ' Finish or Skip always restores immediately, even when verification pauses.',
+    )).toBe(false);
+    expect(trainingRestoreCopyIsTruthful(
+      saving + ' If verification pauses, the exact pre-Training view is discarded.',
+    )).toBe(false);
+    expect(trainingRestoreCopyIsTruthful(
+      settings + ' If verification pauses, a reload safely restarts Field Training from proven Sol.',
+    )).toBe(false);
+    expect(trainingRestoreCopyIsTruthful(
+      trainingBullet! + ' The retry restarts from Earth surface.',
+    )).toBe(false);
   });
 
   it('keeps the player Guide scope honest about deliberately hidden dormant topics', () => {
@@ -305,7 +460,11 @@ describe('legacy and v2 release channels', () => {
       /a genuine empty-sky press still dismisses it/,
       /bottom-right dock edge/,
       /CF1 addresses preserve galaxy, star, planet, coordinates/,
+      /Every accepted galaxy, star, or planet route is regenerated from the seeded universe and source-verified/,
+      /Stale, forged, or incomplete rows remain visible but disabled/,
       /Six real lessons/,
+      /A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view/,
+      /if verification pauses, that exact view stays saved, and when Sol can still be verified, Training returns there so a reload can restart safely and retry/,
       /Only a world’s first landing banks the live landfall objective/,
       /no longer show a player-facing Spectral class row/,
       /primary chip and Charter board show only real landfall objectives/,
@@ -320,6 +479,11 @@ describe('legacy and v2 release channels', () => {
       /\b(?:mining|crafting|combat|capture|breeding)\b[^.!?]{0,80}\b(?:is|are)\s+(?:now\s+)?(?:playable|available|live)\b/i,
       /\bv2(?:\.0)?\s+(?:port|game|build)\s+(?:is\s+)?(?:complete|finished|production[- ]ready|fully ported)\b/i,
       /\b(?:all|every)\s+legacy\s+(?:system|mechanic|feature)s?\b[^.!?]{0,80}\b(?:ported|playable|available|live)\b/i,
+      /(?:stale|forged) code[^.!?]{0,80}(?:lands? immediately|automatically lands?|replaces? the current view|clears? the (?:exact )?query)/i,
+      /(?:disabled|stale|forged|incomplete) (?:rows?|entries?)[^.!?]{0,48}(?:can|may|will|still) travel/i,
+      /(?:stored|caller-supplied|code) (?:coordinates|bytes|parents?)[^.!?]{0,48}(?:authoritative|trusted)/i,
+      /(?:whole|entire) (?:save|expedition)[^.!?]{0,80}(?:corrupt|rolls? back|rollback|is lost)/i,
+      ...TRAINING_RESTORE_CONTRADICTIONS,
     ];
     const bulletinOutcome = (sections: readonly {
       readonly category: string;
@@ -384,6 +548,45 @@ describe('legacy and v2 release channels', () => {
       )),
     }));
     expect(bulletinOutcome(missingEmptySky).required).toBe(false);
+    const staleRouteProof = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'Every accepted galaxy, star, or planet route is regenerated from the seeded universe and source-verified',
+        'Every complete route is accepted from its stored coordinates',
+      )),
+    }));
+    expect(bulletinOutcome(staleRouteProof).required).toBe(false);
+    const staleTrainingRestore = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.includes('FIELD TRAINING LIVES IN THE NEW SHELL')
+        ? bullet.replace(
+          'A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view',
+          'Finish or Skip restores the pre-training view',
+        )
+        : bullet),
+    }));
+    expect(bulletinOutcome(staleTrainingRestore).required).toBe(false);
+    const contradictoryTrainingRestore = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.includes('FIELD TRAINING LIVES IN THE NEW SHELL')
+        ? bullet + ' If verification pauses, a reload safely restarts Field Training from proven Sol.'
+        : bullet),
+    }));
+    expect(bulletinOutcome(contradictoryTrainingRestore)).toMatchObject({ required: true, honest: false });
+    const contradictoryWorldCode = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.includes('WORLD CODES KEEP THE WHOLE DESTINATION')
+        ? bullet + ' A stale code then lands immediately and replaces the current view.'
+        : bullet),
+    }));
+    expect(bulletinOutcome(contradictoryWorldCode)).toMatchObject({ required: true, honest: false });
+    const contradictoryAtlas = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.includes('THE ATLAS LEADS BACK')
+        ? bullet + ' Disabled rows can still travel.'
+        : bullet),
+    }));
+    expect(bulletinOutcome(contradictoryAtlas)).toMatchObject({ required: true, honest: false });
     const injectedOverclaim = V2_DRAFT_RELEASE.sections.map((section, sectionIndex) => ({
       category: section.category,
       bullets: section.bullets.map((bullet, bulletIndex) => (

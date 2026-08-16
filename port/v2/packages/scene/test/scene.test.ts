@@ -1,74 +1,237 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, homeUniverse, systemScene, HOME_GAL_SEED, SOL_SEED, type NavState } from '@cf/scene';
+import {
+  NAV_HOME,
+  ascend,
+  enterGalaxy,
+  enterSystem,
+  galaxyFineCell,
+  galaxyScene,
+  homeUniverse,
+  universeGalaxies,
+  land,
+  navFromCanonicalCF1Address,
+  navToView,
+  provenGalaxyCell,
+  resolveCF1GalaxyAddress,
+  resolveCF1Star,
+  resolveCF1StarAddress,
+  resolveCF1WorldAddress,
+  resolveViewToNav,
+  systemScene,
+  HOME_GAL_SEED,
+  SOL_SEED,
+  type CanonicalCF1WorldAddress,
+  type NavResult,
+  type NavState,
+  type ProvenGalaxy,
+  type ProvenPlanet,
+  type ProvenStar,
+} from '@cf/scene';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 
 beforeAll(() => installCaptureHooks());
 
+const HOME_WORLD_CANDIDATE = {
+  galaxy: { seed: 999, x: 90, y: -60 },
+  star: { seed: 424242, x: 560, y: 170 },
+  planet: { seed: 133 },
+};
+
+function homeWorldAddress(): CanonicalCF1WorldAddress {
+  const result = resolveCF1WorldAddress(HOME_WORLD_CANDIDATE);
+  expect(result.ok).toBe(true);
+  if (!result.ok) throw new Error('home world proof failed: ' + result.reason);
+  return result.address;
+}
+
+function stateOf<T extends NavState>(result: NavResult<T>): T {
+  expect(result.ok).toBe(true);
+  if (!result.ok) throw new Error('navigation failed: ' + result.reason);
+  return result.state;
+}
+
 describe('@cf/scene — zoom-mode state machine (Gate D navigation core)', () => {
   it('the full descent and return: universe → galaxy → system → surface → back up', () => {
-    const gal = { seed: 999, x: 90, y: -60 };
-    const star = { seed: 424242, x: 560, y: 170 };
-    const planet = { seed: 133 };
+    const address = homeWorldAddress();
     let s: NavState = NAV_HOME;
-    const g1 = enterGalaxy(s, gal); expect(g1.ok).toBe(true); s = (g1 as { ok: true; state: NavState }).state;
-    const s1 = enterSystem(s, star); expect(s1.ok).toBe(true); s = (s1 as { ok: true; state: NavState }).state;
-    const l1 = land(s, planet); expect(l1.ok).toBe(true); s = (l1 as { ok: true; state: NavState }).state;
+    expect(Object.isFrozen(NAV_HOME)).toBe(true);
+    s = stateOf(enterGalaxy(s, address.galaxy));
+    expect(Object.isFrozen(s)).toBe(true);
+    s = stateOf(enterSystem(s, address.star));
+    expect(Object.isFrozen(s)).toBe(true);
+    s = stateOf(land(s, address.planet));
+    expect(Object.isFrozen(s)).toBe(true);
     expect(s.mode).toBe('surface');
-    /* the return ladder clears context as it goes — a stale star/planet can
-       never leak into the next descent (the st.star-null crash class) */
-    s = (ascend(s) as { ok: true; state: NavState }).state;
+    s = stateOf(ascend(s));
     expect(s.mode).toBe('system'); expect(s.planet).toBeNull();
-    s = (ascend(s) as { ok: true; state: NavState }).state;
+    s = stateOf(ascend(s));
     expect(s.mode).toBe('galaxy'); expect(s.star).toBeNull();
-    s = (ascend(s) as { ok: true; state: NavState }).state;
+    s = stateOf(ascend(s));
     expect(s.mode).toBe('universe'); expect(s.gal).toBeNull();
-    expect(ascend(s).ok).toBe(false);
+    expect(ascend(s)).toEqual({ ok: false, reason: 'already-at-universe' });
   });
-  it('illegal jumps are rejected, not absorbed', () => {
-    expect(enterSystem(NAV_HOME, { seed: 1, x: 0, y: 0 }).ok).toBe(false);
-    expect(land(NAV_HOME, { seed: 1 }).ok).toBe(false);
-    expect(enterGalaxy(NAV_HOME, { seed: NaN, x: 0, y: 0 }).ok).toBe(false);
+
+  it('rejects wrong origins, raw lookalikes, structural clones, and unregistered NavState copies', () => {
+    const address = homeWorldAddress();
+    expect(enterSystem(NAV_HOME, address.star)).toEqual({
+      ok: false, reason: 'enter-system-from-non-galaxy',
+    });
+    expect(land(NAV_HOME, address.planet)).toEqual({
+      ok: false, reason: 'land-from-non-system',
+    });
+
+    const rawGalaxy = {
+      seed: 999, x: 90, y: -60, size: 78, sp: 0, tilt: 0.62, rot: 0.5,
+      home: true, quasar: false, dwarf: false, parentCell: { x: 0, y: -1 },
+    };
+    /* Compile control: public fields alone cannot satisfy the private brand. */
+    // @ts-expect-error raw generated-looking data is not ProvenGalaxy
+    const rawResult = enterGalaxy(NAV_HOME, rawGalaxy);
+    expect(rawResult).toEqual({ ok: false, reason: 'unproven-galaxy' });
+
+    const clonedGalaxy = { ...address.galaxy };
+    expect(enterGalaxy(NAV_HOME, clonedGalaxy as ProvenGalaxy)).toEqual({
+      ok: false, reason: 'unproven-galaxy',
+    });
+
+    const galaxyState = stateOf(enterGalaxy(NAV_HOME, address.galaxy));
+    const clonedStar = { ...address.star };
+    expect(enterSystem(galaxyState, clonedStar as ProvenStar)).toEqual({
+      ok: false, reason: 'unproven-star',
+    });
+    const systemState = stateOf(enterSystem(galaxyState, address.star));
+    const clonedPlanet = { ...address.planet };
+    expect(land(systemState, clonedPlanet as ProvenPlanet)).toEqual({
+      ok: false, reason: 'unproven-planet',
+    });
+    // @ts-expect-error externally constructed state lacks the private NavState brand
+    const rawState: NavState = { mode: 'galaxy', gal: address.galaxy, star: null, planet: null };
+    expect(ascend(rawState)).toEqual({ ok: false, reason: 'unproven-nav-state' });
+    expect(() => navToView({ ...galaxyState } as NavState)).toThrow(
+      'navToView requires a proven NavState',
+    );
   });
-  it('navToView emits the save-view shape (the _sanitizeView contract)', () => {
-    const gal = { seed: 999, x: 90, y: -60, size: 14.5, sp: 4, tilt: 0.62, rot: 1.13, home: true };
-    let s = (enterGalaxy(NAV_HOME, gal) as { ok: true; state: NavState }).state;
-    s = (enterSystem(s, { seed: 424242, x: 560, y: 170 }) as { ok: true; state: NavState }).state;
-    s = (land(s, { seed: 133 }) as { ok: true; state: NavState }).state;
-    const v = navToView(s)!;
-    expect(v.type).toBe('planet');
-    expect((v.gal as { seed: number }).seed).toBe(999);
-    expect((v.star as { seed: number }).seed).toBe(424242);
-    expect(v.pseed).toBe(133);
+
+  it('accepts independently re-proven equivalent parents but rejects cross-hierarchy children', () => {
+    const world = homeWorldAddress();
+    const galaxyAgain = resolveCF1GalaxyAddress({ galaxy: HOME_WORLD_CANDIDATE.galaxy });
+    expect(galaxyAgain.ok).toBe(true);
+    if (!galaxyAgain.ok) throw new Error(galaxyAgain.reason);
+    const equivalentGalaxyState = stateOf(enterGalaxy(NAV_HOME, galaxyAgain.address.galaxy));
+    expect(enterSystem(equivalentGalaxyState, world.star).ok).toBe(true);
+
+    const starAgain = resolveCF1StarAddress({
+      galaxy: HOME_WORLD_CANDIDATE.galaxy,
+      star: HOME_WORLD_CANDIDATE.star,
+    });
+    expect(starAgain.ok).toBe(true);
+    if (!starAgain.ok) throw new Error(starAgain.reason);
+    const equivalentStarState = stateOf(enterSystem(
+      stateOf(enterGalaxy(NAV_HOME, world.galaxy)),
+      starAgain.address.star,
+    ));
+    expect(land(equivalentStarState, world.planet).ok).toBe(true);
+
+    const otherGalaxyNode = homeUniverse(2).find((galaxy) => galaxy.seed !== HOME_GAL_SEED);
+    expect(otherGalaxyNode).toBeDefined();
+    const otherGalaxy = resolveCF1GalaxyAddress({ galaxy: otherGalaxyNode });
+    expect(otherGalaxy.ok).toBe(true);
+    if (!otherGalaxy.ok) throw new Error(otherGalaxy.reason);
+    const foreignGalaxyState = stateOf(enterGalaxy(NAV_HOME, otherGalaxy.address.galaxy));
+    expect(enterSystem(foreignGalaxyState, world.star)).toEqual({
+      ok: false, reason: 'star-parent-mismatch',
+    });
+
+    const otherStarNode = galaxyScene(HOME_GAL_SEED).stars.find((star) => star.seed !== SOL_SEED);
+    expect(otherStarNode).toBeDefined();
+    const otherStar = resolveCF1Star(world.galaxy, otherStarNode);
+    expect(otherStar.ok).toBe(true);
+    if (!otherStar.ok) throw new Error(otherStar.reason);
+    const foreignStarState = stateOf(enterSystem(
+      stateOf(enterGalaxy(NAV_HOME, world.galaxy)),
+      otherStar.star,
+    ));
+    expect(land(foreignStarState, world.planet)).toEqual({
+      ok: false, reason: 'planet-parent-mismatch',
+    });
   });
-  it('★ viewToNav round-trips through the REAL _sanitizeView (the save pipeline contract)', async () => {
-    const { viewToNav } = await import('@cf/scene');
-    const { _sanitizeView } = await import('@cf/domain-strays');
-    const gal = { seed: 999, x: 90, y: -60, size: 14.5, sp: 4, tilt: 0.62, rot: 1.13, home: true };
-    let s = (enterGalaxy(NAV_HOME, gal) as { ok: true; state: NavState }).state;
-    s = (enterSystem(s, { seed: 424242, x: 560, y: 170 }) as { ok: true; state: NavState }).state;
-    s = (land(s, { seed: 133 }) as { ok: true; state: NavState }).state;
-    /* surface → view → sanitize → nav: mode and every seed survive */
-    const back = viewToNav(_sanitizeView(navToView(s)));
-    expect(back.mode).toBe('surface');
-    expect(back.gal!.seed).toBe(999);
-    expect(back.star!.seed).toBe(424242);
-    expect(back.planet!.seed).toBe(133);
-    /* system (no planet) and galaxy tiers round-trip too */
-    const sys = (ascend(s) as { ok: true; state: NavState }).state;
-    expect(viewToNav(_sanitizeView(navToView(sys))).mode).toBe('system');
-    const galOnly = (ascend(sys) as { ok: true; state: NavState }).state;
-    expect(viewToNav(_sanitizeView(navToView(galOnly))).mode).toBe('galaxy');
+
+  it('builds navigation only from registered canonical address wrappers', () => {
+    const galaxy = resolveCF1GalaxyAddress({ galaxy: HOME_WORLD_CANDIDATE.galaxy });
+    const star = resolveCF1StarAddress({
+      galaxy: HOME_WORLD_CANDIDATE.galaxy,
+      star: HOME_WORLD_CANDIDATE.star,
+    });
+    const world = resolveCF1WorldAddress(HOME_WORLD_CANDIDATE);
+    expect(galaxy.ok && navFromCanonicalCF1Address(galaxy.address).ok).toBe(true);
+    expect(star.ok && navFromCanonicalCF1Address(star.address).ok).toBe(true);
+    expect(world.ok && navFromCanonicalCF1Address(world.address).ok).toBe(true);
+    if (!world.ok) throw new Error(world.reason);
+    expect(navFromCanonicalCF1Address({ ...world.address })).toEqual({
+      ok: false, reason: 'unproven-address',
+    });
   });
-  it('viewToNav DEGRADES toward home instead of inventing context', async () => {
-    const { viewToNav, NAV_HOME: HOME } = await import('@cf/scene');
-    expect(viewToNav(null)).toBe(HOME);
-    expect(viewToNav({})).toBe(HOME);
-    /* a planet view with no star cannot be a surface — it is a galaxy view */
-    expect(viewToNav({ type: 'planet', gal: { seed: 7, x: 0, y: 0 }, pseed: 3 }).mode).toBe('galaxy');
-    /* a star view with a garbage star seed is a galaxy view */
-    expect(viewToNav({ type: 'star', gal: { seed: 7, x: 0, y: 0 }, star: { seed: NaN, x: 0, y: 0 } }).mode).toBe('galaxy');
-    /* no gal at all — universe, whatever the type claims */
-    expect(viewToNav({ type: 'planet', star: { seed: 1, x: 0, y: 0 }, pseed: 3 }).mode).toBe('universe');
+
+  it('emits only the exact legacy slim keys and source-reproves every round-trip tier', () => {
+    const world = homeWorldAddress();
+    const surface = stateOf(navFromCanonicalCF1Address(world));
+    expect(surface.mode).toBe('surface');
+    const view = navToView(surface)!;
+    expect(Object.keys(view)).toEqual(['type', 'gal', 'star', 'pseed']);
+    expect(Object.keys(view.gal as Record<string, unknown>)).toEqual([
+      'x', 'y', 'size', 'sp', 'tilt', 'rot', 'seed', 'home', 'quasar', 'dwarf',
+    ]);
+    expect(Object.keys(view.star as Record<string, unknown>)).toEqual(['x', 'y', 'seed']);
+    expect(JSON.stringify(view)).not.toMatch(/parentCell|ordinal|layer|CF1\|/);
+
+    const surfaceBack = resolveViewToNav(view);
+    expect(surfaceBack.ok).toBe(true);
+    if (!surfaceBack.ok) throw new Error(surfaceBack.reason);
+    expect(surfaceBack.state.mode).toBe('surface');
+    expect(surfaceBack.state.planet?.seed).toBe(133);
+    expect(surfaceBack.state.planet && 'ordinal' in surfaceBack.state.planet
+      ? surfaceBack.state.planet.ordinal : null).toBe(2);
+
+    const system = stateOf(ascend(surface));
+    const systemBack = resolveViewToNav(navToView(system));
+    expect(systemBack.ok && systemBack.state.mode).toBe('system');
+    const galaxy = stateOf(ascend(system));
+    const galaxyBack = resolveViewToNav(navToView(galaxy));
+    expect(galaxyBack.ok && galaxyBack.state.mode).toBe('galaxy');
+  });
+
+  it('maps null to the one home state and rejects malformed tiers without coercion or downgrade', () => {
+    const home = resolveViewToNav(null);
+    expect(home.ok).toBe(true);
+    if (!home.ok) throw new Error(home.reason);
+    expect(home.state).toBe(NAV_HOME);
+    expect(resolveViewToNav(undefined)).toEqual({ ok: false, reason: 'malformed-view' });
+    expect(resolveViewToNav({})).toEqual({ ok: false, reason: 'malformed-view' });
+
+    const validView = navToView(stateOf(navFromCanonicalCF1Address(homeWorldAddress())))!;
+    const gal = validView.gal;
+    const star = validView.star;
+    expect(resolveViewToNav({ type: 'planet', gal, pseed: 133 })).toEqual({
+      ok: false, reason: 'malformed-view',
+    });
+    expect(resolveViewToNav({ type: 'star', gal, star: {} })).toEqual({
+      ok: false, reason: 'malformed-address',
+    });
+    expect(resolveViewToNav({ type: 'galaxy', gal: { ...(gal as object), seed: '999' } })).toEqual({
+      ok: false, reason: 'malformed-address',
+    });
+    expect(resolveViewToNav({ type: 'planet', gal, star, pseed: '133' })).toEqual({
+      ok: false, reason: 'malformed-address',
+    });
+    expect(resolveViewToNav({ type: 'galaxy', gal, star })).toEqual({
+      ok: false, reason: 'malformed-view',
+    });
+    expect(resolveViewToNav({ type: 'star', gal, star, pseed: 133 })).toEqual({
+      ok: false, reason: 'malformed-view',
+    });
+    expect(resolveViewToNav({ type: 'planet', gal, star })).toEqual({
+      ok: false, reason: 'malformed-view',
+    });
   });
 });
 
@@ -83,9 +246,44 @@ describe('@cf/scene — universe composition from the ported domain', () => {
   it('composition is deterministic (two calls, identical nodes)', () => {
     expect(JSON.stringify(homeUniverse(1))).toBe(JSON.stringify(homeUniverse(1)));
   });
+  it('copies and freezes nested collision bridges instead of aliasing the generator cache', () => {
+    const sourceBridge = { x2: 12, y2: -7 };
+    const sourceGalaxy = {
+      seed: 7, x: 1, y: 2, size: 30, sp: 0, tilt: 0.4, rot: 0.2,
+      bridge: sourceBridge,
+    };
+    const source = (): readonly Record<string, unknown>[] => [sourceGalaxy];
+    const first = universeGalaxies(0, 0, 0, source)[0]!;
+    expect(first.bridge).toEqual(sourceBridge);
+    expect(first.bridge).not.toBe(sourceBridge);
+    expect(Object.isFrozen(first.bridge)).toBe(true);
+    expect(() => { (first.bridge as { x2: number }).x2 = 99; }).toThrow();
+    expect(sourceBridge).toEqual({ x2: 12, y2: -7 });
+    expect(universeGalaxies(0, 0, 0, source)[0]!.bridge).toEqual({ x2: 12, y2: -7 });
+  });
 });
 
 describe('@cf/scene — galaxy composition (the Renderer cell convention, verified)', () => {
+  it('keeps coarse and fine app streaming behind a proven galaxy parent', async () => {
+    const home = resolveCF1GalaxyAddress({ galaxy: HOME_WORLD_CANDIDATE.galaxy });
+    expect(home.ok).toBe(true);
+    if (!home.ok) throw new Error(home.reason);
+    const { galaxyProfile, FCELL } = await import('@cf/domain-worldgen');
+    const prof = galaxyProfile(home.address.galaxy.seed) as Record<string, unknown>;
+    const coarse = provenGalaxyCell(home.address.galaxy, prof, 13, 4);
+    expect(coarse.stars.some((star) => star.seed === SOL_SEED)).toBe(true);
+    const fine = galaxyFineCell(
+      home.address.galaxy,
+      prof,
+      Math.floor(-27.46 / FCELL),
+      Math.floor(-26.2 / FCELL),
+    );
+    expect(fine.some((star) => star.seed === 581174295)).toBe(true);
+    expect(() => provenGalaxyCell({ ...home.address.galaxy } as ProvenGalaxy, prof, 13, 4))
+      .toThrow(/ProvenGalaxy/);
+    expect(() => galaxyFineCell({ ...home.address.galaxy } as ProvenGalaxy, prof, 0, 0))
+      .toThrow(/ProvenGalaxy/);
+  });
   it('★ the home galaxy has a real star field, and the black hole KEEPS its void', async () => {
     const { galaxyScene, GR } = await import('@cf/scene');
     const g = galaxyScene(999);
@@ -361,6 +559,7 @@ describe('@cf/scene — system composition (the Gate D descent target)', () => {
     expect(s.planets.map((p) => p.name)).toEqual(['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']);
     const earth = s.planets[2]!;
     expect(earth.seed).toBe(133);
+    expect(earth.ordinal).toBe(2);
     expect(earth.type).toBe('terran');
     expect(s.planets[5]!.ring, 'Saturn wears its ring').toBe(true);
     /* orbit order is the render ladder — strictly increasing */
@@ -368,8 +567,24 @@ describe('@cf/scene — system composition (the Gate D descent target)', () => {
   });
   it('a procedural system is deterministic and orbit-sorted', () => {
     const a = systemScene(31337), b = systemScene(31337);
-    expect(JSON.stringify(a.planets.map((p) => [p.seed, p.orb]))).toBe(JSON.stringify(b.planets.map((p) => [p.seed, p.orb])));
+    expect(JSON.stringify(a.planets.map((p) => [p.seed, p.orb, p.ordinal]))).toBe(JSON.stringify(b.planets.map((p) => [p.seed, p.orb, p.ordinal])));
     for (let i = 1; i < a.planets.length; i++) expect(a.planets[i]!.orb).toBeGreaterThanOrEqual(a.planets[i - 1]!.orb);
+  });
+  it('★ preserves source ordinals when presentation orbit order differs', () => {
+    const s = systemScene(77, () => ({
+      planets: [
+        { name: 'Outer', orb: 220, P: { seed: 9001, type: 'rocky' } },
+        { name: 'Inner', orb: 60, P: { seed: 9002, type: 'rocky' } },
+        { name: 'Middle', orb: 140, P: { seed: 9003, type: 'rocky' } },
+      ],
+    }));
+    expect(s.planets.map((planet) => [planet.seed, planet.ordinal])).toEqual([
+      [9002, 1], [9003, 2], [9001, 0],
+    ]);
+    /* Negative control: display position is deliberately not identity. */
+    expect(s.planets.map((planet, renderIndex) => planet.ordinal === renderIndex)).toEqual([
+      false, false, false,
+    ]);
   });
   it('the P objects are the MEMOIZED originals — composition must not clone or mutate them (the systemSol lesson)', () => {
     const s1 = systemScene(1);

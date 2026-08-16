@@ -4114,16 +4114,23 @@ async function main() {
           await evalIn(`document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true})); document.getElementById('searchbox')?.blur()`);
         }
 
-        /* A real Charter rejection populates the toast; it must not be an
-           empty fixture that collapses away from the geometry under test. */
+        /* A real source-proven Charter rejection populates the toast; it
+           must not be a forged star that F2 rejects before reach policy or
+           an empty fixture that collapses away from the geometry under test.
+           This deterministic fine-layer star is outside stage 0/1 reach. */
         /* toast() intentionally ignores the first 1.8 seconds of a document;
            wait past that product rule instead of calling a helper directly. */
         await sleep(1900);
-        const blocked = await evalIn(`(()=>{ const S=window.__CF_SLICE__; const entered=S.api.descendGalaxy(999); S.api.descendSystem({seed:31337,x:300,y:300}); return {entered,state:S.api.state()}; })()`);
-        if (!blocked.entered || blocked.state.mode !== 'galaxy' || blocked.state.gal !== 999) {
+        const blocked = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
+          const entered=S.api.descendGalaxy({seed:999,x:90,y:-60});
+          const accepted=S.api.descendSystem({seed:1664319693,x:-164.45360307302326,y:-117.94395204260945});
+          return {entered,accepted,beforeSerial:before.toastSerial,state:S.api.state()}; })()`);
+        if (!blocked.entered || blocked.accepted || blocked.state.mode !== 'galaxy' || blocked.state.gal !== 999
+          || blocked.state.stage >= 2 || blocked.state.toastSerial <= blocked.beforeSerial
+          || !blocked.state.toastText.includes('Beyond Your Charter')) {
           instrumentFailures.push(`${vp.label}: could not enter the home galaxy to populate the toast (${JSON.stringify(blocked)})`);
         }
-        try { await waitFor('charter toast', `window.__CF_SLICE__.api.state().toastOn && Number(getComputedStyle(document.getElementById('toast')).opacity)>0.1 && document.getElementById('toast')?.textContent?.trim().length>20`); }
+        try { await waitFor('charter toast', `window.__CF_SLICE__.api.state().toastOn && window.__CF_SLICE__.api.state().toastText.includes('Beyond Your Charter') && Number(getComputedStyle(document.getElementById('toast')).opacity)>0.1 && document.getElementById('toast')?.textContent?.trim().length>20`); }
         catch (error) { instrumentFailures.push(error.message); }
         add(vp.label, 'toast', await audit({
           ...common, surface: 'toast', root: '#toast', textMin: 20, fitSelectors: ['#toast'],
@@ -4151,11 +4158,11 @@ async function main() {
 
         /* Populate the real Earth survey and Planetside strip through the
            same public browser-audit API used by the standing smoke journey. */
-        const surveyReady = await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.api.descendSystem({seed:424242,x:560,y:170}); return S.api.surveyOn(2); })()`);
+        const surveyReady = await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.api.descendSystem({seed:424242,x:560,y:170}); return S.api.surveyOn({seed:133,ordinal:2}); })()`);
         if (!surveyReady) instrumentFailures.push(`${vp.label}: could not populate the Earth survey`);
         /* The rich veteran fixture intentionally preserves custom names, so
-           Earth may be labelled Homeworld. surveyOn(2) already selects the
-           deterministic Sol body; bind readiness to its real Land action
+           Earth may be labelled Homeworld. The composite selector already
+           selects the deterministic Sol body; bind readiness to its real Land action
            and exact system rather than erasing or rejecting player naming. */
         await waitFor('Earth survey', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'&&s.star===424242&&s.cardOpen&&!!document.querySelector('#survey [data-act="landcta"]'); })()`);
         const chromeYieldCheck = `(()=>{ const ids=['trail','objchip'],rows=ids.map(id=>{const el=document.getElementById(id);
@@ -4608,6 +4615,48 @@ async function main() {
         addOutcome(vp.label, 'guide-cross-link', 'GUIDE_NAVIGATION_FOCUS_OUTCOME', '#guidepanel [data-guide-category]',
           await evalIn(`window.__CF_GLASS_AUDIT__.navigationOutcome('#guidepanel','[data-guide-category]','.guide-topic',160)`),
           'Guide cross-link renders its destination and places focus on the destination Back control');
+        if (!releaseDetailControlRun) {
+          /* Copy is not viewport-dependent, so drive every revised F2 Guide
+             topic once through the rendered search/topic UI. Each row also
+             installs the prior stale paragraph and proves this predicate
+             rejects it. This extends guide-render-focus without changing the
+             sealed outcome or negative-control inventories. */
+          const renderedGuideIngress = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),input=document.getElementById('guidesearch'),rows=[];
+            const specs=[
+              {id:'landing',required:['Any galaxy, star, or planet route arriving from Search, the Star Atlas, or a saved location is regenerated from the seeded universe before it is accepted','navigation uses only the source-verified destination','A stale or forged route cannot act'],forbidden:['A planet address from Search or the Star Atlas returns to its live system survey when it is inside the expedition’s saved reach'],stale:'A planet address from Search or the Star Atlas returns to its live system survey when it is inside the expedition’s saved reach; it never lands for you.'},
+              {id:'search',required:['Every galaxy, star, or planet code is treated as an address to verify, not as authority','accepts only the source-verified destination','A stale or forged code leaves the current view unchanged and keeps the exact query in Search for correction'],forbidden:['A valid world address inside the expedition’s saved reach reopens the destination’s system survey'],stale:'The top-bar search accepts discovered species names and deterministic CF1 world addresses. A valid world address inside the expedition’s saved reach reopens the destination’s system survey.'},
+              {id:'codes',required:['Before any shared galaxy, star, or planet route is accepted','uses only the source-verified destination','A stale or forged code leaves the current view unchanged and keeps the exact query in Search'],forbidden:['Opening it returns another explorer to the live system survey'],stale:'Share on a planet card prepares a deterministic CF1 address. Opening it returns another explorer to the live system survey when the destination is inside that expedition’s saved reach.'},
+              {id:'atlas',required:['Each saved galaxy, star, or planet route is regenerated from the seeded universe','must produce a source-verified destination before its row can travel','A stale, forged, or incomplete imported route remains visible but disabled'],forbidden:['choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level'],stale:'Use Star Atlas on a planet card to chart it. The Atlas lists saved galaxies, stars, and worlds; choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level.'},
+              {id:'determinism',required:['A CF1 address is a pointer into that shared math, not authority of its own','accepts only a source-verified match','a stale or forged address cannot replace the current view'],forbidden:['which is why deterministic CF1 addresses work without an account or game server'],stale:'The same supported coordinates resolve to the same galaxy, star, world, and current-slice survey, which is why deterministic CF1 addresses work without an account or game server.'},
+              {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry'],forbidden:['reload safely restarts Field Training from proven Sol'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.'},
+              {id:'saving',paragraph:1,required:['On reload, a saved galaxy, star, or planet location is regenerated from the seeded universe','accepted only when it is source-verified','If that saved location is stale, forged, or incomplete, the view returns safely to Cosmos','normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry'],forbidden:['reload safely restarts Field Training from proven Sol'],stale:'A newer-build, incomplete, or corrupt stored expedition remains protected, and there is no cloud account yet.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.'},
+            ];
+            const check=(article,spec)=>{const text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),missing=spec.required.filter((part)=>!text.includes(part)),stale=spec.forbidden.filter((part)=>text.includes(part));return {ok:!!article&&missing.length===0&&stale.length===0,missing,stale,text};};
+            let error=null;
+            try {
+              if(!panel||!(input instanceof HTMLInputElement))throw new Error('Guide panel/search missing');
+              for(const spec of specs){
+                input.value=spec.id;input.dispatchEvent(new Event('input',{bubbles:true}));
+                const row=panel.querySelector('[data-guide-topic="'+spec.id+'"]');
+                if(!(row instanceof HTMLElement))throw new Error('Guide search omitted '+spec.id);
+                row.click();const article=panel.querySelector('.guide-topic'),paragraphs=article?[...article.querySelectorAll('p')]:[],target=paragraphs[spec.paragraph??0];
+                if(!(article instanceof HTMLElement)||!(target instanceof HTMLElement))throw new Error('Guide topic did not render '+spec.id);
+                const current=check(article,spec),prior=target.innerHTML,priorText=(article.textContent||'');
+                target.textContent=spec.stale;const injected=check(article,spec);target.innerHTML=prior;
+                let contradictory=null;
+                if(spec.contradiction){const marker=document.createElement('p');marker.textContent=spec.contradiction;article.appendChild(marker);
+                  contradictory=check(article,spec);marker.remove();}
+                const restored=(article.textContent||'')===priorText&&check(article,spec).ok;
+                rows.push({id:spec.id,current,injected,contradictory,controlRejected:injected.ok===false,
+                  contradictionRejected:!spec.contradiction||contradictory?.ok===false,restored});
+              }
+            } catch(cause) { error=String(cause?.message||cause); }
+            finally { if(input instanceof HTMLInputElement){input.value='';input.dispatchEvent(new Event('input',{bubbles:true}));} }
+            return {ok:!error&&rows.length===specs.length&&rows.every((row)=>row.current.ok&&row.controlRejected&&row.contradictionRejected&&row.restored),rows,error};})()`);
+          if (!renderedGuideIngress.ok) {
+            instrumentFailures.push(`${vp.label}: rendered F2 Guide/stale-copy controls failed (${JSON.stringify(renderedGuideIngress)})`);
+          }
+        }
         const guideReleaseBaseline = await evalIn(`(()=>{ const state=window.__CF_SLICE__.api.state();
           return {rnSeen:state.rnSeen,releasePending:state.releasePending};})()`);
         await evalIn(`document.querySelector('#guidepanel .guide-tools [data-guide-releases]')?.click()`);
@@ -4643,16 +4692,39 @@ async function main() {
           const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'];
           const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
+            worldCode=bulletNodes.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
+            atlasRoute=bulletNodes.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
+            training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
             headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
-            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),
-            charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes';
+            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),trainingHeading=headingFor(training),
+            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',
+            charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
+            ingressPlacement=!!worldCode&&!!atlasRoute&&worldCode!==atlasRoute&&worldCodeHeading==='Gameplay'&&atlasRouteHeading==='Gameplay',
+            worldCodeContract=worldCodeText.includes('Every accepted galaxy, star, or planet route is regenerated from the seeded universe and source-verified instead of trusting the code.')
+              &&worldCodeText.includes('A stale or forged code leaves the current view unchanged and keeps the exact query unchanged.')
+              &&worldCodeText.includes('An in-reach planet address returns to Survey without bypassing Land')
+              &&!worldCodeText.includes('An in-reach address returns to Survey without bypassing Land'),
+            atlasRouteContract=atlasRouteText.includes('only after the saved route is regenerated from the seeded universe and source-verified')
+              &&atlasRouteText.includes('Stale, forged, or incomplete rows remain visible but disabled')
+              &&atlasRouteText.includes('a proven planet entry returns to Survey and Land remains explicit')
+              &&!atlasRouteText.includes('through list-based deterministic travel'),
+            trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
+              ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
+              ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
+              ||/verification pauses[^.!?]{0,160}reload safely restarts Field Training from proven Sol/i.test(trainingText),
+            trainingContract=trainingHeading==='Gameplay'
+              &&trainingText.includes('A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view')
+              &&trainingText.includes('if verification pauses, that exact view stays saved')
+              &&trainingText.includes('when Sol can still be verified, Training returns there')
+              &&trainingText.includes('reload can restart safely and retry')&&!trainingContradiction;
           const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
             ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
-          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
+          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!trainingContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
             &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===44&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
+            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&trainingContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
             &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
@@ -4663,11 +4735,12 @@ async function main() {
             &&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text)&&state.rnSeen===${JSON.stringify(guideReleaseBaseline.rnSeen)}
             &&honest&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
             identity,honest,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
-            charterPlacement,firstHeading,recoveryHeading,rnSeen:state.rnSeen,
+            charterPlacement,firstHeading,recoveryHeading,ingressPlacement,worldCodeHeading,atlasRouteHeading,
+            worldCodeContract,atlasRouteContract,trainingHeading,trainingContract,trainingContradiction,rnSeen:state.rnSeen,
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 44-outcome development inventory without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 44-outcome development inventory, including source-verified code/Atlas routes, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -4677,10 +4750,14 @@ async function main() {
               panelBoundary=items.find((item)=>/ONE SURFACE, ONE CLOSE/.test(item.textContent||'')),panelBoundaryText=panelBoundary?.textContent||'',
               first=items.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
               recovery=items.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
-              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling;
-            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,authority=null,error=null;
+              worldCode=items.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
+              atlasRoute=items.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
+              training=items.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
+              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',
+              recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling;
+            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingContradictory=null,authority=null,error=null;
             try {
-              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!recoveryParent)throw new Error('development-detail control fixture missing');
+              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!training||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
@@ -4695,23 +4772,38 @@ async function main() {
               first.textContent='First-landfall contract removed';firstContract=${developmentDetailCheck};first.textContent=firstText;
               recovery.textContent='Imported recovery contract removed';recoveryContract=${developmentDetailCheck};recovery.textContent=recoveryText;
               first.parentNode.appendChild(recovery);placementContract=${developmentDetailCheck};recoveryParent.insertBefore(recovery,recoveryNext);
+              worldCode.textContent='🔗 WORLD CODES KEEP THE WHOLE DESTINATION: CF1 addresses preserve galaxy, star, planet, coordinates, and accepted custom names. An in-reach address returns to Survey without bypassing Land; an out-of-reach address leaves the explorer in place.';
+              worldCodeStale=${developmentDetailCheck};worldCode.textContent=worldCodeText;
+              atlasRoute.textContent='🧭 THE ATLAS LEADS BACK: Charted galaxies, stars, and worlds can reopen their own navigation level through list-based deterministic travel, while incomplete imported routes remain visible with an honest unavailable label.';
+              atlasRouteStale=${developmentDetailCheck};atlasRoute.textContent=atlasRouteText;
+              training.textContent=trainingText.replace('if verification pauses, that exact view stays saved, and when Sol can still be verified, Training returns there so a reload can restart safely and retry',
+                'if verification pauses, that exact view stays saved and a reload safely restarts Field Training from proven Sol');
+              trainingStale=${developmentDetailCheck};training.textContent=trainingText;
+              training.textContent=trainingText+' Finish or Skip always restores immediately, even when verification pauses.';
+              trainingContradictory=${developmentDetailCheck};training.textContent=trainingText;
               S.api.state=()=>({...priorState(),rnSeen:'v2-control'});authority=${developmentDetailCheck};
             } catch(cause) { error=String(cause?.message||cause); }
             finally {
               if(headings[0])headings[0].textContent=a;if(headings[1])headings[1].textContent=b;
               if(middle&&parent&&!middle.isConnected)parent.insertBefore(middle,next);if(title)title.textContent=titleText;if(claim)claim.textContent=claimText;
               if(panelBoundary)panelBoundary.textContent=panelBoundaryText;
-              if(first)first.textContent=firstText;if(recovery){recovery.textContent=recoveryText;if(recoveryParent&&recovery.parentNode!==recoveryParent)recoveryParent.insertBefore(recovery,recoveryNext);}S.api.state=priorState;
+              if(first)first.textContent=firstText;if(recovery){recovery.textContent=recoveryText;if(recoveryParent&&recovery.parentNode!==recoveryParent)recoveryParent.insertBefore(recovery,recoveryNext);}
+              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(training)training.textContent=trainingText;S.api.state=priorState;
             }
             const restored=headings[0]?.textContent===a&&headings[1]?.textContent===b&&middle?.isConnected===true
               &&title?.textContent===titleText&&claim?.textContent===claimText&&first?.textContent===firstText
-              &&panelBoundary?.textContent===panelBoundaryText&&recovery?.textContent===recoveryText&&S.api.state===priorState;
+              &&panelBoundary?.textContent===panelBoundaryText&&recovery?.textContent===recoveryText
+              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&training?.textContent===trainingText&&S.api.state===priorState;
             return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===43
               &&identity?.ok===false&&identity?.identity===false&&overclaim?.ok===false&&overclaim?.honest===false
               &&closeContract?.ok===false&&panelBoundaryContract?.ok===false&&emptySkyContract?.ok===false
               &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
+              &&worldCodeStale?.ok===false&&worldCodeStale?.worldCodeContract===false
+              &&atlasRouteStale?.ok===false&&atlasRouteStale?.atlasRouteContract===false
+              &&trainingStale?.ok===false&&trainingStale?.trainingContract===false
+              &&trainingContradictory?.ok===false&&trainingContradictory?.honest===false&&trainingContradictory?.trainingContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
-              order,inventory,identity,overclaim,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,authority,restored,error};})()`);
+              order,inventory,identity,overclaim,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingContradictory,authority,restored,error};})()`);
           if (!detailControls.ok) {
             instrumentFailures.push(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
           }
@@ -4999,7 +5091,7 @@ async function main() {
           /* A live DPR transition catches the once-only DPR constant. A
              responsive canvas must update backing density as well as CSS,
              without discarding the player's selected body/action. */
-          await evalIn(`window.__CF_SLICE__.api.surveyOn(2)`);
+          await evalIn(`window.__CF_SLICE__.api.surveyOn({seed:133,ordinal:2})`);
           const densityCardBefore = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),card=document.getElementById('survey'),action=card?.querySelector('[data-act="landcta"]'),r=action?.getBoundingClientRect();
             const hit=r?document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2):null;
             return {ok:s.mode==='system'&&s.cardOpen&&!!s.cardTitle&&!!action&&r.width>=44&&r.height>=44&&(hit===action||action?.contains(hit)),

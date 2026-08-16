@@ -160,6 +160,22 @@ such as Search remain outside until their coexistence policy changes. Delegated 
 must also reject non-`Element` targets before calling `closest`; a type assertion is not a runtime
 guard. True modals remain a separate lifecycle and are not claimed by this boundary law.
 
+⚠⚠ **IMMUTABLE AUTHORITY MUST NOT DOUBLE AS A MUTABLE PRESENTATION CACHE.** F2's first
+real-browser ingress attempt reached an accepted galaxy, then failed because the deeply frozen
+`ProvenGalaxy` was handed to lifted `galaxyStats()`, whose legacy memoizer assigns `_stats` to its
+input. Keep the proof frozen and registry-owned: give an input-mutating presentation helper a
+disposable value copy, and retain only frozen derived fields in a private sidecar keyed by the
+proof. The inverse alias boundary matters too. Copying an outer scene node does not detach a nested
+object such as `bridge` from the memoized `galaxiesInCell` cache; clone and freeze that nested value
+before presentation can mutate it and poison later composition. Audit every nested generator alias,
+not only the outer object. An explicitly documented identity such as `systemScene.P` may remain
+shared only as read-only presentation data and must never become action authority. Negative-control
+both directions: the real accepted route must render while the proof stays frozen, and mutating a
+returned presentation value must leave the source cache and the next composition unchanged. The
+repaired complete one-attempt local `smoke:ci` and the complete 12-viewport Glass Matrix are green
+on the same dirty working-tree digest; that is local outcome evidence, not exact-head CI,
+integration or Gate certification.
+
 ---
 
 ## Added 2026-07-31 (round 9)
