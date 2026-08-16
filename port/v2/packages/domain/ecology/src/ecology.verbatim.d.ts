@@ -1,11 +1,11 @@
 /* Hand-written types for the auto-lifted Ecology body (verbatim v1.8.9).
    The .js must not be edited; THIS file is where the typing lives.
 
-   ⚠ COSMIC_EPOCH: the body reads the game's global play-time epoch through a
-   typeof guard. In this ESM lift no global exists, so the epoch is always 0 —
-   which is exactly the fixture-capture condition (probes run pre-play). The
-   app layer will own wiring a real epoch source in Phase 2+; the domain body
-   stays verbatim.
+   ⚠ COSMIC_EPOCH: the body reads the capped ecology/world-presentation epoch
+   through a typeof guard. Isolated fixture probes intentionally see 0, which
+   is their captured baseline. The browser app now publishes the value from its
+   injected monotonic elapsed-session clock; hidden-time and exact edge policy
+   remain F4. The domain body stays verbatim.
 
    ⚠ planetSpecies is MEMOIZED (48-entry FIFO keyed seed_band_level_epoch) —
    the port lesson: memoized generators make call order observable. Callers

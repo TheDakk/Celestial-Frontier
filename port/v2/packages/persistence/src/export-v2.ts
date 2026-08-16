@@ -2,6 +2,11 @@
    as a pure function over SaveStateV2. Phase 2 deliverable: "save
    sanitization and backup behavior" — the write half.
 
+   CLOCK LAYERING: this pure exporter serializes the EPOCH_BASE compatibility
+   field as `epoch`; it cannot know whether a caller refreshed that carrier.
+   The ordinary app save path must assign EpochClock.current() immediately
+   before export. EpochClock.base() is only the immutable construction origin.
+
    THE INVARIANT THAT PINS IT (test): import → export → import is a FIXED
    POINT from the second round on. Round one legitimately moves data the
    way doSave does on a live game:
@@ -36,7 +41,7 @@ export function exportSaveV2(s: SaveStateV2, now: number): string {
   })();
   const codexIds = new Set(s.codex.map(([id]) => id));
   const data: Record<string, unknown> = {
-    v: 4, epoch: s.EPOCH_BASE,
+    v: 4, epoch: s.EPOCH_BASE,   /* ordinary app caller refreshes this from current() */
     view: s.savedView,
     hp: s.hp, pstats: s.pstats, fs: s.fsMode, tone: s.toneMode, font: s.fontMode,
     snd: s.sndOn ? 1 : 0, fx: s.fxOn ? 1 : 0, chart: s.chartsOn ? 1 : 0, shake: s.shakeOn ? 1 : 0,

@@ -1,6 +1,6 @@
 # Celestial Frontier — Player Progression
 
-> **2026-08-14 v2 overlay — CURRENT versus PLANNED:**
+> **2026-08-15 v2 overlay — CURRENT versus PLANNED:**
 > The current v2 slice preserves imported Cargo/items/equipment/technology/Ascent data and
 > uses built drive items plus compatible `ascCh` state for reach, but it has no Cargo,
 > Shipyard, crafting, research, upgrade actions or ship portrait. The Charter board and
@@ -53,19 +53,25 @@
 > history store, a score substitute or a reward faucet. Rename, migration, reload and
 > catalogue deduplication must preserve the referent of every displayed memory.
 >
-> **2026-08-11 v2 port overlay:** `COSMIC_EPOCH` is accepted only as a
-> nonnegative safe integer and is capped at 10,000 (>138 continuous active days
-> at 20 minutes per epoch). The live injected play-time clock uses the same cap.
-> This deliberately closes an imported `epoch=1e12` availability exploit in the
-> retained O(epoch) ecology evolution and removes fractional extra iterations;
-> honest frozen epochs are unchanged. Remaining clock work is to persist and
-> invalidate epoch-derived scenes exactly once at an integer edge, and to decide
-> whether hidden-tab time counts as play before wiring visibility suspension.
-> Repeat planet landings no longer bank an extra landfall; a veteran training
+> **2026-08-15 v2 epoch-contract overlay:** `COSMIC_EPOCH` accepts only a
+> nonnegative safe integer and is capped at 10,000 to bound retained O(epoch)
+> ecology work. `EpochClock.base()` is the immutable sanitized construction
+> origin; it is not the current save value. The browser app constructs once from
+> the imported epoch and a fresh app-owned monotonic elapsed page-residence
+> segment, snapshots `current()` on every ordinary save, and constructs a new
+> clock from that serialized snapshot plus another fresh segment after reload.
+> The real browser gate advances one exact 1,200-second epoch, reads the raw
+> IndexedDB primary, reloads, and requires the advancing snapshot to survive.
+> Current elapsed time is not yet a proved foreground-only active-play policy.
+> F3 owns the CAS/revision and cross-tab lease substrate. F4 owns hidden-tab
+> semantics, automatic integer-edge persistence/invalidation, live global-read
+> timing, SessionRNG, and the separate persisted `activePlayMs` clock/accrual
+> policy for future readiness systems.
+> Repeat planet landings do not bank an extra landfall; a veteran Training
 > replay may still receive its lesson event without receiving progression credit.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-30; the dated v2 overlays
-match `port/v2` and the approved next-arc boundary as of 2026-08-14. See the 2026-07-30 addendum at the end —
+match `port/v2` and the approved next-arc boundary as of 2026-08-15. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy

@@ -2409,6 +2409,58 @@ try {
   if (!keyboardFocusCtl.failed || !keyboardFocusCtl.restored) {
     fails.push('KEYBOARD JOURNEY CONTROL FAILED — moving focus off canvas stayed green: ' + JSON.stringify(keyboardFocusCtl));
   }
+
+  /* DOM-1: exercise the real epoch snapshot path, not merely the clock helper.
+     The page-local override advances the same performance.now() source the app
+     already owns; navigation destroys it before the reload assertion. */
+  await evalK(`new Promise((resolve)=>setTimeout(resolve,500))`);
+  const epochAdvance = await evalK(`(()=>{
+    const before=window.__CF_SLICE__.api.state().epoch;
+    const realNow=performance.now.bind(performance);
+    const hadOwnNow=Object.prototype.hasOwnProperty.call(performance,'now');
+    const installed=Reflect.defineProperty(performance,'now',{
+      configurable:true,value:()=>realNow()+1200000
+    });
+    const after=window.__CF_SLICE__.api.state().epoch;
+    return {before,after,installed,hadOwnNow,own:Object.prototype.hasOwnProperty.call(performance,'now')};
+  })()`);
+  if (!epochAdvance.installed || !epochAdvance.own
+    || epochAdvance.after !== epochAdvance.before + 1) {
+    fails.push('EPOCH SNAPSHOT: the page-local 1200-second stimulus did not advance exactly one epoch: '
+      + JSON.stringify(epochAdvance));
+  }
+  const epochPersisted = await evalK(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  if (epochPersisted !== true) {
+    fails.push('EPOCH SNAPSHOT: the real persistView path rejected the advancing epoch snapshot');
+  }
+  const epochRaw = await evalK(READ_PRIMARY_EXPRESSION);
+  let epochStored = null;
+  try { epochStored = JSON.parse(epochRaw).epoch; }
+  catch (error) {
+    fails.push('EPOCH SNAPSHOT: persisted primary was not valid JSON: ' + String(error?.message || error));
+  }
+  await navigateToSlice(ks, URL4, 'advancing epoch snapshot reload');
+  const epochReload = await evalK(`(()=>({
+    epoch:window.__CF_SLICE__.api.state().epoch,
+    own:Object.prototype.hasOwnProperty.call(performance,'now')
+  }))()`);
+  const epochReloaded = epochReload.epoch;
+  const epochSnapshotOutcome = (before, live, stored, reloaded) =>
+    live === before + 1 && stored === live && reloaded === live;
+  if (!epochSnapshotOutcome(epochAdvance.before, epochAdvance.after, epochStored, epochReloaded)) {
+    fails.push('EPOCH SNAPSHOT: live advance did not survive real IndexedDB persistence and reload: '
+      + JSON.stringify({ ...epochAdvance, stored: epochStored, reloaded: epochReloaded }));
+  }
+  if (epochReload.own !== epochAdvance.hadOwnNow) {
+    fails.push('EPOCH SNAPSHOT: the page-local performance.now shadow crossed the fresh-document boundary: '
+      + JSON.stringify({ write: epochAdvance, reload: epochReload }));
+  }
+  if (epochSnapshotOutcome(epochAdvance.before, epochAdvance.after, epochAdvance.before, epochReloaded)) {
+    fails.push('EPOCH SNAPSHOT CONTROL FAILED — substituting the immutable base for stored current() stayed green');
+  }
+  if (epochSnapshotOutcome(epochAdvance.before, epochAdvance.after, epochStored, epochAdvance.before)) {
+    fails.push('EPOCH SNAPSHOT CONTROL FAILED — substituting the pre-advance epoch after reload stayed green');
+  }
   await send('Target.closeTarget', { targetId: tk.targetId });
 
   /* 4c-lazy-focus. Hold the actual Vite species-art chunk at the HTTP
@@ -3976,6 +4028,6 @@ try {
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-guide · slice-settings · slice-training · slice-earth · slice-solmark · slice-phone');
 process.exit(0);

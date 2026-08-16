@@ -11,7 +11,7 @@
    deck · THE REAL SAVE LOOP (importSaveV2 ⇄ exportSaveV2 over IndexedDB,
    with CF-RR-002 recovery wired) · panels (one-panel law/focus restoration)
    · Settings/Compendium/Records · search (code-paste travel) · the shipped
-   audio stings · COSMIC_EPOCH on play time.
+   audio stings · capped COSMIC_EPOCH on an app-owned monotonic session segment.
 
    Still ahead (recorded in ROADMAP's NEXT): the remaining 15 lessons of the complete 21-step training port,
    full Atlas chart/favorites presentation, rarity stings, ring↔planet mutual shadows, PROTO star disk,
@@ -376,13 +376,14 @@ const repo = createSaveRepository(createIndexedDBBackend('cf-v2-slice'));
    held only {nav,view} JSON migrates for free: importSaveV2 reads its `view`
    and defaults everything else. */
 let save: SaveStateV2;
-/* COSMIC_EPOCH, for real: base from the save, advanced by PLAY seconds only
-   (the harvestclock invariant by construction — no wall clock anywhere).
-   Ecology reads the global (typeof-guarded in the verbatim), so biospheres
-   age in the browser exactly as they do in the game. */
+/* COSMIC_EPOCH, for real: construct once from the saved snapshot, then advance
+   from an app-owned monotonic elapsed page-residence segment. This is not the
+   future foreground-only activePlayMs policy: hidden-time treatment remains F4.
+   Ecology reads the global (typeof-guarded in the verbatim), so biospheres age
+   in the browser without consulting the device wall clock. */
 let epochClock: EpochClock = createEpochClock(0, () => 0);
-let playT0 = 0;
-const playSeconds = (): number => (performance.now() - playT0) / 1000;
+let epochElapsedT0 = 0;
+const epochElapsedSeconds = (): number => (performance.now() - epochElapsedT0) / 1000;
 const TOUCH_DPR = navigator.maxTouchPoints > 0
   || (typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches);
 /* The app and its full-viewport 2D backdrop coexist. Treat one 4096² store
@@ -3021,7 +3022,9 @@ async function persistView(replacementOwner: ReplacementTransaction | null = nul
     || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
   const write = async (): Promise<boolean> => { try {
     save.savedView = navToView(nav);
-    save.EPOCH_BASE = epochClock.current();   /* play time accumulates across sessions (doSave writes COSMIC_EPOCH) */
+    /* Snapshot the advancing value. base() is only this session's immutable
+       construction origin and would freeze elapsed epoch progress on reload. */
+    save.EPOCH_BASE = epochClock.current();
     if (smokeRejectNextPersist) {
       /* Browser evidence needs a deterministic storage-rejection outcome;
          this diagnostics-only latch enters the same rollback branch as an
@@ -3162,8 +3165,8 @@ async function loadSave(): Promise<void> {
      the game's new-run init (the absent-⇒-done default protects HELD saves,
      not fresh ones) */
   if (bootRead.kind === 'fresh') save.tutDone = false;
-  playT0 = performance.now();
-  epochClock = createEpochClock(save.EPOCH_BASE, playSeconds);
+  epochElapsedT0 = performance.now();
+  epochClock = createEpochClock(save.EPOCH_BASE, epochElapsedSeconds);
   (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
   initAudio({ sndOn: () => save.sndOn, sfxVol: () => save.sfxVol });   /* the save's own audio settings */
   /* dock + chrome mirror the save from the first frame */
@@ -3578,7 +3581,7 @@ async function loadSave(): Promise<void> {
     world.scale.set(cam.z);
     if (world.alpha < 1) world.alpha = animate ? Math.min(1, world.alpha + tk.deltaMS / 400) : 1;
     const t = animate ? performance.now() * 0.001 : 0;
-    /* the biological clock ticks on PLAY time (ecology reads the global) */
+    /* Publish the capped ecology/world-presentation epoch each ticker turn. */
     (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
     /* galaxies turn on cosmic time — barely perceptible (main.js ~3742) */
     for (const gs of galaxySpins) gs.spr.rotation = gs.base + t * 0.0012;
