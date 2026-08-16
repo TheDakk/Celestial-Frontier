@@ -4,8 +4,44 @@
 overlay below matches `port/v2` as of 2026-08-15.
 **Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
-runtime and `port/v2/packages/domain/{planetgen,worldgen,surveyphrases}` own the
-dated port contracts. Art rules live in ART_DIRECTION.md. The biome CONTENT catalog is `BIOME_ATLAS.md` at the repo root (audited and promoted there from `tools/` on 2026-07-31; it had existed since 2026-07-21, and an earlier same-day note in these docs wrongly declared it missing — see ART_DIRECTION §6.1).
+runtime, `port/v2/packages/domain/{planetgen,worldgen,surveyphrases}` own the
+generated content contracts, and `port/v2/packages/scene/{address,cf1-code,system,universe,zoommode}`
+own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION.md. The biome CONTENT catalog is `BIOME_ATLAS.md` at the repo root (audited and promoted there from `tools/` on 2026-07-31; it had existed since 2026-07-21, and an earlier same-day note in these docs wrongly declared it missing — see ART_DIRECTION §6.1).
+
+> **2026-08-15 F2 canonical-ingress overlay (current code):** Public and
+> persisted galaxy/star/planet coordinates are candidates, not generated-world
+> identity. The scene resolver searches the production galaxy cells, then both
+> coarse and fine star layers beneath the proven galaxy, then the exact
+> `systemFor(star).planets` source list. Every tier must have one unambiguous
+> source match before it becomes a deeply frozen `ProvenGalaxy`, `ProvenStar`
+> or `ProvenPlanet`; structural copies are not trusted. Coordinates are bounded
+> to ±10,000,000 at both strict-CF1 parsing and the public resolver boundary.
+>
+> Planet identity includes its zero-based ordinal in the unsorted source list.
+> `systemScene` captures that ordinal **before** sorting planets by orbit, so a
+> presentation reorder cannot retarget Survey, Land, Atlas, Share, diagnostics
+> or a canonical world key. The compatibility CF1/save payload still carries a
+> planet seed only; resolution therefore rejects a missing or duplicate-seed
+> leaf rather than guessing an ordinal. These rules change no generator output,
+> RNG draw order or generator cache key.
+>
+> Scene composition is also a copy boundary over those generator caches.
+> `universeGalaxies()` copies each galaxy's scalar fields and clones its nested
+> collision `bridge` into a fresh frozen `{x2,y2}` value; presentation mutation
+> therefore cannot rewrite the memoized `galaxiesInCell()` record or a later
+> composition. The focused mutation control proves distinct identity, rejected
+> mutation, unchanged source and unchanged subsequent output. This closes the
+> bounded SCN-7 alias without changing or freezing the lifted generator cache.
+> By contrast, `systemScene.P` deliberately preserves the generator's exact
+> memoized planet-parameter identity as read-only presentation data. Planet
+> actions never promote that alias: they copy `{seed,ordinal}` and re-prove the
+> canonical parent hierarchy before authority or mutation.
+>
+> This is a runtime navigation-provenance seam, not a persisted ownership
+> theorem. It does not authorize a mission, loot, Guardian, project or discovery
+> writer, migrate a local ledger, implement the World Opportunity Manifest, or
+> close a rubric Gate. Future receipts still need their own versioned canonical
+> target/identity and exact-once persistence contract.
 
 > **2026-08-11 v2 executable-contract correction:** This batch changes no
 > generated values. It makes the hand-written declarations tell the truth:
@@ -60,9 +96,12 @@ template.
 The projection has four non-negotiable boundaries:
 
 1. **Canonical identity:** a receipt, project, mission target or discovery uses
-   the full galaxy coordinates/seed, star coordinates/seed and planet seed—not a
-   display name, raw biome key or partial seed. Until the CF1 hierarchy theorem is
-   complete, no new ownership writer may pretend this identity is resolved.
+   the full galaxy coordinates/seed, star coordinates/seed and source-resolved
+   planet identity—not a display name, raw biome key or partial seed. F2 now
+   proves that hierarchy for runtime navigation, including the planet's source
+   ordinal, but it does not persist receipt authority. No new ownership writer
+   may treat a compatibility route or runtime navigation object as its migration,
+   transaction or exact-once receipt contract.
 2. **Independent determinism:** any future roll forks from a new named salt and
    manifest version; it cannot consume an existing planet/system/biome stream,
    change selection order, or reroll because a card is reopened, a cache evicts or

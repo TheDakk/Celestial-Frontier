@@ -206,7 +206,7 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
       star: { x: 560, y: 170, seed: 424242 },
       pseed: 0,
     };
-    const raw = { epoch: 0, codex: [], land: [], log: [
+    const raw = { epoch: 0, view: route, codex: [], land: [], log: [
       { id: 'good', title: 'good', where: route },
       { id: 'bad-gal', title: 'bad', where: { type: 'galaxy', gal: {} } },
       { id: 'bad-star', title: 'bad', where: { type: 'star', gal: route.gal, star: { seed: 1 } } },
@@ -214,11 +214,157 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
     ] };
     const result = importSaveV2(JSON.stringify(raw), REGISTRY, NOW);
     expect(result.ok).toBe(true);
-    const rows = new Map((result as { ok: true; state: SaveStateV2 }).state.logMap);
+    if (!result.ok) return;
+    const rows = new Map(result.state.logMap);
     expect(rows.get('good')?.where).toEqual(route);
     expect(rows.get('bad-gal')?.where).toBeNull();
     expect(rows.get('bad-star')?.where).toBeNull();
     expect(rows.get('bad-planet')?.where).toBeNull();
+    const routeEvidence = {
+      type: 'planet',
+      gal: { x: 90, y: -60, seed: 999 },
+      star: { x: 560, y: 170, seed: 424242 },
+      pseed: 0,
+    };
+    expect(result.ingress.savedView).toEqual(routeEvidence);
+    for (const [, entry] of result.state.logMap) {
+      expect(result.ingress.atlasWhere.has(entry)).toBe(true);
+    }
+    expect(result.ingress.atlasWhere.get(rows.get('good')!)).toEqual(routeEvidence);
+  });
+  it('retains malformed pre-sanitizer evidence instead of mistaking fabricated defaults for identity', () => {
+    const rawView = {
+      type: 'star',
+      gal: { x: '90', y: -60, seed: 999 },
+      star: {},
+      proven: 'raw-only',
+    };
+    const result = importSaveV2(JSON.stringify({
+      epoch: 0, view: rawView, codex: [], land: [],
+      log: [{ id: 'stub', where: rawView }],
+    }), REGISTRY, NOW);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const projected = {
+      type: 'star',
+      gal: {
+        x: { kind: 'invalid-route-value', valueType: 'string' },
+        y: -60,
+        seed: 999,
+      },
+      star: {},
+    };
+    expect(result.ingress.savedView).toEqual(projected);
+    expect(result.state.savedView?.star).toEqual({ x: 0, y: 0, seed: 1 });
+    expect(result.state.savedView).not.toHaveProperty('proven');
+    const entry = result.state.logMap[0]![1];
+    expect(entry.where).toBeNull();
+    expect(result.ingress.atlasWhere.get(entry)).toEqual(projected);
+    expect(result.ingress.savedView).not.toHaveProperty('proven');
+  });
+  it('bounds raw route retention to deeply frozen proof fields and a frozen lookup', () => {
+    const hostile = 'x'.repeat(500_000);
+    const rawRoute = {
+      type: 'planet',
+      gal: { x: 90, y: -60, seed: 999, unrelated: { hostile } },
+      star: { x: hostile, y: 170, seed: 424242, unrelated: [hostile] },
+      pseed: 133,
+      unrelated: { nested: { hostile } },
+    };
+    const result = importSaveV2(JSON.stringify({
+      epoch: 0, view: rawRoute, codex: [], land: [],
+      log: [{ id: 'hostile', where: rawRoute }],
+    }), REGISTRY, NOW);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const projected = result.ingress.savedView as {
+      gal: Record<string, unknown>;
+      star: Record<string, unknown>;
+    };
+    expect(projected).toEqual({
+      type: 'planet',
+      gal: { x: 90, y: -60, seed: 999 },
+      star: {
+        x: { kind: 'invalid-route-value', valueType: 'string' },
+        y: 170,
+        seed: 424242,
+      },
+      pseed: 133,
+    });
+    expect(JSON.stringify(projected).length).toBeLessThan(220);
+    expect(Object.isFrozen(result.ingress)).toBe(true);
+    expect(Object.isFrozen(projected)).toBe(true);
+    expect(Object.isFrozen(projected.gal)).toBe(true);
+    expect(Object.isFrozen(projected.star)).toBe(true);
+    expect(Object.isFrozen(projected.star.x)).toBe(true);
+    expect(() => { (projected.gal as { x: number }).x = 1; }).toThrow(TypeError);
+    expect(result.ingress.atlasWhere).not.toHaveProperty('set');
+    expect(result.ingress.atlasWhere).not.toHaveProperty('delete');
+    expect(Object.isFrozen(result.ingress.atlasWhere)).toBe(true);
+    const entry = result.state.logMap[0]![1];
+    expect(result.ingress.atlasWhere.get(entry)).toEqual(projected);
+    expect(result.ingress.atlasWhere.has({ ...entry })).toBe(false);
+  });
+  it('binds bounded raw Atlas evidence to final cleaned-id, last-write entry objects', () => {
+    const firstWhere = { type: 'galaxy', gal: { x: 1, y: 1, seed: 1 }, marker: 'first' };
+    const finalWhere = { type: 'galaxy', gal: { x: 2, y: 2, seed: 2 }, marker: 'final' };
+    const log = [
+      { id: 'd<u>p', title: 'first', where: firstWhere },
+      { id: 'dup', title: 'final', where: finalWhere },
+      ...Array.from({ length: 149 }, (_, i) => ({
+        id: 'row-' + i,
+        title: 'row ' + i,
+        where: { type: 'galaxy', gal: { x: i, y: -i, seed: i }, marker: 'row-' + i },
+      })),
+    ];
+    const result = importSaveV2(JSON.stringify({ epoch: 0, codex: [], land: [], log }), REGISTRY, NOW);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    /* Only the first 150 raw rows enter the importer. The cleaned duplicate
+       collapses last-write-wins, leaving 149 final entry objects. */
+    expect(result.state.logMap).toHaveLength(149);
+    expect(result.ingress.atlasWhere.size).toBe(149);
+    const finalEntries = result.state.logMap.map(([, entry]) => entry);
+    expect(finalEntries.every((entry) => result.ingress.atlasWhere.has(entry))).toBe(true);
+    const duplicate = result.state.logMap.find(([id]) => id === 'dup')![1];
+    expect(duplicate.title).toBe('final');
+    expect(result.ingress.atlasWhere.get(duplicate)).toEqual({
+      type: 'galaxy', gal: { x: 2, y: 2, seed: 2 },
+    });
+    for (const i of [0, 73, 147]) {
+      const entry = result.state.logMap.find(([id]) => id === 'row-' + i)![1];
+      expect(result.ingress.atlasWhere.get(entry), `raw route association for row-${i}`).toEqual({
+        type: 'galaxy', gal: { x: i, y: i === 0 ? 0 : -i, seed: i },
+      });
+    }
+    expect(result.state.logMap.some(([id]) => id === 'row-148')).toBe(false);
+    expect(result.ingress.atlasWhere.has({ ...duplicate })).toBe(false);
+    expect(Object.isFrozen(result.ingress.atlasWhere)).toBe(true);
+  });
+  it('classifies only the exact current Training {view} snapshot and preserves richer snapshots', () => {
+    const view = { type: 'galaxy', gal: { x: 90, y: -60, seed: 999 } };
+    const current = importSaveV2(JSON.stringify({ epoch: 0, tut: 0, tsnap: { view } }), REGISTRY, NOW);
+    expect(current.ok).toBe(true);
+    if (current.ok) {
+      expect(current.ingress.trainingSnapshot).toEqual({ kind: 'current-view', view });
+      expect(current.state.tutSnapPending).toEqual({ view });
+    }
+    const richSnapshot = { view, codex: [], essence: 10, marker: 'pre-training-expedition' };
+    const rich = importSaveV2(JSON.stringify({ epoch: 0, tut: 0, tsnap: richSnapshot }), REGISTRY, NOW);
+    expect(rich.ok).toBe(true);
+    if (rich.ok) {
+      expect(rich.ingress.trainingSnapshot).toEqual({
+        kind: 'legacy-or-unknown',
+        snapshot: richSnapshot,
+      });
+      expect(rich.state.tutSnapPending).toEqual(richSnapshot);
+    }
+    const completed = importSaveV2(JSON.stringify({ epoch: 0, tut: 1, tsnap: { view } }), REGISTRY, NOW);
+    expect(completed.ok).toBe(true);
+    if (completed.ok) {
+      expect(completed.ingress.trainingSnapshot).toEqual({ kind: 'none' });
+      expect(completed.state.tutSnapPending).toBeNull();
+    }
   });
   it('destructive-import envelope rejects sparse lookalikes but accepts real current and veteran saves', () => {
     for (const bad of [null, [], 1, 'x', true, {}, { view: null }, { codex: {} }, { epoch: 0 }, { epoch: 0, codex: [], land: {} }]) {

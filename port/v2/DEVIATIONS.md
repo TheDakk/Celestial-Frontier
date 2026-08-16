@@ -1276,6 +1276,54 @@ duplicates).
   change navigation, landing, Atlas, custom names, query or focus. This does **not** close saved-view
   boot, Atlas-row, galaxy/star-only CF1, generated-descent or future ownership/receipt ingress. Wire and
   outcome-test those callers before marking the wider identity/receipt boundary complete.
+- ◐ **D-CF1-3 — F2 wires canonical proof to every current navigation ingress;
+  local all-ingress browser outcome is green and exact-head integration remains pending
+  (2026-08-15).** `address.ts` now exposes exact
+  galaxy/star/planet resolvers whose successful production values are deeply frozen and
+  registered as runtime-proven. Branded canonical keys and parent-key guards accept an
+  independently re-resolved equivalent parent but reject a structural clone or a real child
+  from another hierarchy. `zoommode.ts` owns an immutable discriminated `NavState`, registered
+  canonical-address composition, fail-closed transitions and strict persisted-view resolution.
+  Planet identity is `{seed,ordinal}`, where ordinal is captured from the unsorted
+  `systemFor(star).planets` source before `systemScene` sorts by orbit.
+
+  The app now re-proves generated descent/actions, all three CF1 Search tiers, saved boot/import,
+  Atlas rows and the exact current one-key Training `{view}` snapshot. Source proof and saved
+  Prime/Charter authorization precede destination navigation, an accepted custom name, a
+  route-focused planet card, Land, progression and save commit. Importer route projections and
+  Atlas row association remain bounded runtime sidecars, not save fields; only a proven Atlas
+  `NavState` in the app's private `WeakMap` enables travel.
+  A deterministic saved-route or authorization failure repairs only `view` to Cosmos. A
+  `source-error` holds that field. If current one-key Training restoration encounters that failure,
+  the drill stays incomplete and preserves its exact snapshot; when Sol can be newly proven and
+  authorized, it returns there before persistence so reload can reopen Welcome for retry rather
+  than clearing the route as stale. Provenance keys, source cells,
+  star layer and planet ordinal never enter the compatibility save/share projection.
+
+  The first real-browser F2 attempt correctly went red on an integration defect the pure seam
+  could not expose: galaxy rendering handed frozen `ProvenGalaxy` to lifted `galaxyStats`, whose
+  legacy memoizer writes `_stats` onto its argument. The repair is caller-local: pass a disposable
+  mutable spread to that presentation helper and retain frozen `{stars,planets}` in a
+  `WeakMap<ProvenGalaxy,...>` sidecar. It does not unfreeze provenance or change the lifted helper.
+  `universeGalaxies()` also copies/freezes each nested collision `bridge`; the focused mutation
+  control proves one composed node cannot poison memoized WorldGen or later composition.
+  Final audit added held-route Training Restart transfer/rollback and non-null per-mode provenance-
+  key controls. A CI-format rendered-copy run then failed closed because its bare expected title did
+  not include the real icon-prefixed Guide heading, despite complete required copy and no
+  contradiction; the contained-title repair retains the cross-topic rejection. The diagnosed next
+  `npm run smoke:ci` passed with zero findings/retries in 138,305 ms, and the 12-viewport Glass
+  Matrix passed in 55,065 ms with zero findings/instrument failures. Both reports bind Edge
+  `151.0.4129.86` and dirty-tree digest
+  `7dfa649eb7de017424b7ba1ba0b11ba1fd00dc02a5b99b6848e0f3c347acba9e`.
+  The static suite is 27 files / 340 passed / 1 skipped, with both TypeScript programs,
+  `artunused`, art routing/coverage/spec controls, diff hygiene and the app build green. This entry
+  remains ◐ because that is dirty-working-tree evidence, not exact-head CI, integration or Gate
+  authority.
+
+  This is navigation identity only. D-TRAIN-1's richer legacy full-expedition transaction, F3
+  revisions/CAS/split stores/receipt journal, F4 clock/visibility/SessionRNG, local ownership-ledger
+  migration, every ownership/reward/receipt writer, save schema/version and production release all
+  remain open. D-CF1-2 above remains dated history of the narrower boundary F2 supersedes.
 - ☐ **D-TRAIN-1 — restore legacy full-expedition tutorial snapshots.** Current-v2 restart owns a
   reversible `{view}` snapshot and commits before reload. Imported v1 mid-training `tsnap` is a much
   larger expedition record; finishing/skipping without a typed restore-before-clear transaction can

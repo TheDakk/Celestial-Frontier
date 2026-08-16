@@ -38,7 +38,7 @@
 > verified outcomes.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the v2 overlay
-below matches `port/v2` as of 2026-08-14. Carries v1.8.6 and v1.8.7
+below matches `port/v2` as of 2026-08-15. Carries v1.8.6 and v1.8.7
 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and Field Training. The **21-step** curriculum described below is the legacy game; the current v2 boundary is explicit here.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
@@ -56,8 +56,19 @@ implement the dated port overlay.
 >
 > Veteran restart in **Settings** stores a bounded `{view}` snapshot, moves the
 > drill to Sol, and commits before reload; a failed write cancels the restart and
-> restores the current expedition in memory. Finish and skip restore that
-> current-v2 view before persisting. Imported legacy mid-training saves carry a
+> restores the current expedition in memory. A normal Finish or Skip freshly
+> source-proves and restores that current-v2 view before persisting. If source
+> verification pauses, the drill stays incomplete and retains the exact
+> one-key snapshot. When Sol itself can still be proven and authorized, the app
+> returns there before persistence so reload can reopen Welcome and retry; it
+> neither forges Sol nor discards the snapshot if that fallback also cannot be
+> proven. The complete restored local `smoke:ci` journey and its one-shot failure
+> control are terminal-green, and the complete 12-viewport Glass Matrix is
+> separately terminal-green; both reports bind Edge `151.0.4129.86` and working-
+> tree digest
+> `7dfa649eb7de017424b7ba1ba0b11ba1fd00dc02a5b99b6848e0f3c347acba9e`.
+> This remains working-tree outcome evidence, not exact-head CI, integration or
+> Gate authority. Imported legacy mid-training saves carry a
 > much larger full-expedition `tsnap`; typed restore-before-clear behavior and
 > injected write-failure proof for that shape remain OPEN. Repeating the Earth
 > Land action during an explicit training replay may emit the lesson event, but

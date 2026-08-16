@@ -88,7 +88,133 @@ export interface SaveStateV2 {
 
 const HARVEST_CD = 3600e3;   /* key anchor (CLAUDE.md) — the harvest stamp floor window */
 
-export type ImportSaveResult = { ok: false; reason: 'invalid' | 'future-version' } | { ok: true; state: SaveStateV2 };
+/** The importer must retain pre-sanitizer route evidence without making it
+ * part of the save schema. `current-view` is deliberately the exact one-key
+ * snapshot written by the v2 Training restart; every richer object remains
+ * legacy/unknown until D-TRAIN-1 owns its full-expedition transaction. */
+export type ImportTrainingSnapshotIngressV2 =
+  | { readonly kind: 'none' }
+  | { readonly kind: 'current-view'; readonly view: unknown }
+  | { readonly kind: 'legacy-or-unknown'; readonly snapshot: unknown };
+
+/** Frozen lookup over pre-repair Atlas route evidence. The backing WeakMap is
+ * private, so callers cannot mutate, enumerate or accidentally serialize it. */
+export interface ImportAtlasWhereLookupV2 {
+  readonly size: number;
+  has(entry: Record<string, unknown>): boolean;
+  get(entry: Record<string, unknown>): unknown;
+}
+
+/** Bounded, runtime-only evidence captured before tolerant legacy repair.
+ *
+ * `savedView` is a deeply frozen route-only projection of the parsed raw
+ * `view` (`undefined` means absent). It retains own-field presence and exact
+ * valid route numbers/type strings, but never coerces/defaults them and never
+ * retains unrelated nested payloads. Wrong-typed route values become small
+ * frozen type sentinels, so later proof still rejects them without pinning an
+ * attacker-sized string/object in memory.
+ *
+ * `atlasWhere` contains at most the final 150 imported Atlas rows and is
+ * keyed by the exact entry objects in `SaveStateV2.logMap`. It therefore
+ * follows the importer's cap, cleaned-id and last-write-wins semantics without
+ * putting raw/provenance fields on an enumerable row that exportSaveV2 could
+ * accidentally serialize. */
+export interface ImportRouteIngressV2 {
+  readonly savedView: unknown;
+  readonly atlasWhere: ImportAtlasWhereLookupV2;
+  readonly trainingSnapshot: ImportTrainingSnapshotIngressV2;
+}
+
+export type ImportSaveResult =
+  | { ok: false; reason: 'invalid' | 'future-version' }
+  | { ok: true; state: SaveStateV2; ingress: ImportRouteIngressV2 };
+
+type InvalidRouteValueType =
+  | 'undefined'
+  | 'null'
+  | 'boolean'
+  | 'number'
+  | 'string'
+  | 'array'
+  | 'object'
+  | 'other';
+
+interface InvalidRouteValueEvidence {
+  readonly kind: 'invalid-route-value';
+  readonly valueType: InvalidRouteValueType;
+}
+
+const INVALID_ROUTE_VALUES: Readonly<Record<InvalidRouteValueType, InvalidRouteValueEvidence>> =
+  Object.freeze(Object.fromEntries(
+    (['undefined', 'null', 'boolean', 'number', 'string', 'array', 'object', 'other'] as const)
+      .map((valueType) => [valueType, Object.freeze({ kind: 'invalid-route-value' as const, valueType })]),
+  ) as Record<InvalidRouteValueType, InvalidRouteValueEvidence>);
+
+function invalidRouteValue(value: unknown): InvalidRouteValueEvidence {
+  let valueType: InvalidRouteValueType;
+  if (value === null) valueType = 'null';
+  else if (Array.isArray(value)) valueType = 'array';
+  else {
+    switch (typeof value) {
+      case 'undefined': valueType = 'undefined'; break;
+      case 'boolean': valueType = 'boolean'; break;
+      case 'number': valueType = 'number'; break;
+      case 'string': valueType = 'string'; break;
+      case 'object': valueType = 'object'; break;
+      default: valueType = 'other';
+    }
+  }
+  return INVALID_ROUTE_VALUES[valueType];
+}
+
+function projectRouteNumber(value: unknown): unknown {
+  return typeof value === 'number' ? value : invalidRouteValue(value);
+}
+
+function projectRouteType(value: unknown): unknown {
+  return typeof value === 'string' && ['galaxy', 'star', 'planet'].includes(value)
+    ? value
+    : invalidRouteValue(value);
+}
+
+function projectRoutePoint(value: unknown): unknown {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return invalidRouteValue(value);
+  const source = value as Record<string, unknown>;
+  const point: Record<string, unknown> = {};
+  for (const key of ['x', 'y', 'seed'] as const) {
+    if (Object.prototype.hasOwnProperty.call(source, key)) point[key] = projectRouteNumber(source[key]);
+  }
+  return Object.freeze(point);
+}
+
+/** Project one legacy Where-shaped value without compatibility repair. */
+function projectRawRoute(value: unknown): unknown {
+  if (value === undefined || value === null) return value;
+  if (typeof value !== 'object' || Array.isArray(value)) return invalidRouteValue(value);
+  const source = value as Record<string, unknown>;
+  const route: Record<string, unknown> = {};
+  if (Object.prototype.hasOwnProperty.call(source, 'type')) route.type = projectRouteType(source.type);
+  if (Object.prototype.hasOwnProperty.call(source, 'gal')) route.gal = projectRoutePoint(source.gal);
+  if (Object.prototype.hasOwnProperty.call(source, 'star')) route.star = projectRoutePoint(source.star);
+  if (Object.prototype.hasOwnProperty.call(source, 'pseed')) route.pseed = projectRouteNumber(source.pseed);
+  return Object.freeze(route);
+}
+
+function frozenAtlasWhereLookup(
+  rows: Iterable<readonly [Record<string, unknown>, unknown]>,
+): ImportAtlasWhereLookupV2 {
+  const backing = new WeakMap<Record<string, unknown>, unknown>();
+  let size = 0;
+  for (const [entry, rawWhere] of rows) {
+    backing.set(entry, rawWhere);
+    size++;
+  }
+  return Object.freeze({
+    size,
+    has: (entry: Record<string, unknown>): boolean => backing.has(entry),
+    get: (entry: Record<string, unknown>): unknown => backing.get(entry),
+  });
+}
 
 /** Import-sheet guard. Boot loading deliberately accepts sparse legacy data
  * and hardens it into defaults; an explicit destructive import must prove it
@@ -346,6 +472,18 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const voiceOn = data.vce != null ? !!data.vce : true;
     const combatSfxOn = data.cbx != null ? !!data.cbx : true;
     const tutSnapPending = (data.tsnap && typeof data.tsnap === 'object' && !data.tut) ? data.tsnap : null;
+    const trainingSnapshot: ImportTrainingSnapshotIngressV2 = (() => {
+      if (tutSnapPending == null) return Object.freeze({ kind: 'none' as const });
+      if (!Array.isArray(tutSnapPending)
+        && Object.keys(tutSnapPending as Record<string, unknown>).length === 1
+        && Object.prototype.hasOwnProperty.call(tutSnapPending, 'view')) {
+        return Object.freeze({
+          kind: 'current-view' as const,
+          view: projectRawRoute((tutSnapPending as { view: unknown }).view),
+        });
+      }
+      return Object.freeze({ kind: 'legacy-or-unknown' as const, snapshot: tutSnapPending });
+    })();
     const scoutId = (typeof data.scout === 'string' && codex.has(data.scout)) ? data.scout : null;
     const chDone: string[] = [];
     for (const s of _capA(data.chs, 500)) if (registry.charterStarters.includes(s as string)) chDone.push(s as string);
@@ -389,19 +527,25 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       return o;
     };
     const logMap = new Map<string, Record<string, unknown>>();
+    const rawAtlasWhereById = new Map<string, unknown>();
     for (const it of _capA(data.log, 150) as Array<Record<string, unknown>>) {
       if (it && it.id != null) {
         const _id = _cs(it.id, 24);
         if (!_id) continue;   /* an all-stripped id must not mint an empty key */
-        logMap.set(_id, {
+        const entry: Record<string, unknown> = {
           id: _id, title: _cs(it.title, 60) || 'Charted place', sub: _cs(it.sub, 120),
           /* CF-RR-001: STRICT base64 charset — no quotes, no attribute breakout */
           thumb: (typeof it.thumb === 'string' && it.thumb.length < 300000 &&
             /^data:image\/(png|jpe?g|webp);base64,[A-Za-z0-9+/=]+$/.test(it.thumb)) ? it.thumb : null,
           sq: !!it.sq, badge: _cs(it.badge, 18), where: _cw(it.where), fav: !!it.fav, t: clamp(num(it.t), 0, 4102444800000),
-        });
+        };
+        logMap.set(_id, entry);
+        rawAtlasWhereById.set(_id, projectRawRoute(it.where));
       }
     }
+    const atlasWhere = frozenAtlasWhereLookup(
+      [...logMap].map(([id, entry]) => [entry, rawAtlasWhereById.get(id)] as const),
+    );
     const homeId = (() => { const _h = _cs(data.home, 24); return (_h && logMap.has(_h)) ? _h : null; })();
     const landed = new Set<number>(); for (const s of _capA(data.land, 60000)) { const n = +(s as number); if (Number.isFinite(n)) landed.add(n); }
     const contacted = new Set<number>(); for (const s of _capA(data.cont, 4000)) { const n = +(s as number); if (Number.isFinite(n)) contacted.add(n); }
@@ -468,6 +612,11 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
         voiceOn, combatSfxOn, logMap: [...logMap.entries()],
         codex: [...codex.entries()],
       },
+      ingress: Object.freeze({
+        savedView: projectRawRoute(data.view),
+        atlasWhere,
+        trainingSnapshot,
+      }),
     };
   } catch {
     return { ok: false, reason: 'invalid' };

@@ -1,5 +1,28 @@
 # Celestial Frontier — Player Progression
 
+> **2026-08-15 F2 progression-boundary overlay (current code):** Source proof
+> now precedes every navigation authority decision. Search, generated descent,
+> saved boot/import and Atlas candidates must first resolve to a canonical
+> galaxy/star/planet hierarchy; only that proven target is then evaluated by
+> saved Prime reach and the current Charter stage. A provenance rejection is
+> therefore not reported or counted as a Charter/Prime rejection, and it cannot
+> bank landfall, reconcile a chapter, apply a custom name or mutate navigation.
+> A planet route stops at its system survey; only the separately guarded Land
+> action can write first-landfall progression.
+>
+> Planet action identity includes its source ordinal before orbit sorting, but
+> that runtime fact is not a new progression key or migrated ledger. F2 creates
+> no drive, chapter, reward, XP, ownership, receipt or reach writer and does not
+> change existing landfall/Charter balancing. Field Training restores only the
+> exact current `{view}` route snapshot after successful re-proof. A transient
+> `source-error` instead keeps Training incomplete and the exact snapshot pending,
+> writes no lesson completion or other progression, and attempts to return to a
+> freshly proven Sol system for the next-load retry. That Sol move is conditional:
+> if Sol proof is also unavailable, the app neither forges it nor discards the
+> retained retry evidence. D-TRAIN-1's legacy full-expedition restore remains
+> open. No schema/version/release, exact-head certification or Gate status changes
+> here.
+
 > **2026-08-15 v2 overlay — CURRENT versus PLANNED:**
 > The current v2 slice preserves imported Cargo/items/equipment/technology/Ascent data and
 > uses built drive items plus compatible `ascCh` state for reach, but it has no Cargo,

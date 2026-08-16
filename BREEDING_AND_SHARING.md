@@ -1,5 +1,25 @@
 # Celestial Frontier — Breeding & Sharing
 
+> **2026-08-15 F2 sharing overlay (current code; supersedes the open CF1
+> hierarchy note in the 2026-08-11 overlay):** Strict CF1 galaxy, star and
+> planet routes are now regenerated through the production hierarchy before
+> navigation. The payload remains a pointer, never authority: forged, stale,
+> malformed, ambiguous or wrong-parent candidates do not replace the current
+> view. Galaxy and star codes open their own proven navigation tiers; a proven
+> planet code still opens that planet's live system survey and leaves Land as a
+> separate guarded action. A custom planet name is accepted only after that
+> proven, reach-authorized route succeeds.
+>
+> Runtime world identity now carries the planet's ordinal from the unsorted
+> `systemFor(star).planets` source list, before orbit presentation sorting.
+> CF1 stays byte-compatible and carries only `pseed`; a unique source match
+> mints the ordinal, while duplicate-seed ambiguity fails closed. Live Survey,
+> Land, Atlas and Share actions retain proven parent context and compare the
+> canonical galaxy/star/world keys, so a structural clone, different parent or
+> stale card cannot act. This does not change CFB, genetics, breeding, creature
+> ownership, local ledgers, the save schema or any future receipt design; CFB
+> hybrid-parent preservation remains open.
+
 > **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** Breeding,
 > feeding, creature ownership mutations and companion dispatch are not live in
 > the current v2 slice; their Guide topics correctly remain **Unavailable**.
@@ -41,8 +61,8 @@
 > class/ability reads them, parent-tuple preservation needs an explicit parity
 > deviation and new compatibility tests.
 
-**STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 art
-integration note below matches the reset source as of 2026-08-11. Carries v1.8.6
+**STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the dated v2
+overlays match `port/v2` as of 2026-08-15. Carries v1.8.6
 and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **See also:** `LINEAGE_AND_BREEDING.md` — the v1.6 Earth-lineage layer on top of `breedPair`:
 a child of an Earth parent keeps that parent's Earth RIG + wears the child's alien palette
@@ -51,7 +71,9 @@ a child of an Earth parent keeps that parent's Earth RIG + wears the child's ali
 **Lineage** ancestry panel (parents + per-trait attribution, from the keyed inheritance coin +
 `_pa`/`_pb`). All render-only / Earth-gated → determinism-safe.
 **Purpose:** The husbandry loop (breeding, feeding, healing) that grows creatures and the player, and the cross-device code system (world codes, creature codes, champion codes, discovery records) that lets anyone regenerate the exact same life on any device.
-**Source of truth:** this doc is the DESIGN spec; main.js implements it.
+**Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
+system, while the dated F2 CF1 overlay is implemented by `port/v2` scene and app
+ingress code.
 
 > **2026-08-11 v2 reset/Platinum correction:** genetics already wrote `_earthBlend` and
 > `_anchorVal`, but a name alone could not identify one of the four duplicate
