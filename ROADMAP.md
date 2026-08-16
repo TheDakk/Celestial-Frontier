@@ -131,26 +131,29 @@ the archive verbatim and refresh this handoff in place.
 
 ### Next actions
 
-1. Finish this evidence refresh and one final bounded diff/hygiene audit; do not turn the local
-   digest-bound smoke/Glass passes into an exact-head or integration claim.
-2. Commit and push `openai/mac`, then open a new draft PR into
-   `develop`. Preserve the first red smoke diagnosis alongside the restored green evidence.
-3. Require terminal-green exact-head PR CI and clean review before normal integration, then monitor
-   the exact `develop` push battery and mapped development publication. Do not begin F3, F4, or any
-   world-bound product writer while F2 remains incomplete.
+1. Treat only PR #30's live final successor—not the initial implementation-head run—as exact-head
+   authority. Require terminal-green branch-flow and battery checks with no further source or scope
+   change; preserve the first red smoke diagnosis alongside the restored local green evidence.
+2. Require clean review or an exact-head waiver before normal integration, then monitor the exact
+   `develop` push battery and mapped development publication.
+3. Do not begin F3, F4, or any world-bound product writer while F2 remains incomplete.
 
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS, owned folder `/celestial-frontier-openai-mac`, branch
-`openai/mac`, synchronized with `origin/openai/mac` and `origin/develop` at
-`5171abcdc538938fdf5ac82688d1ab868da6ff48`. The worktree was clean at this batch's start and now
-contains the uncommitted F2 implementation and synchronized documentation described above. Focused
-and full static checks, type/art/build checks, final CI-format smoke, and 12-viewport Glass Matrix are
-green after the recorded product and harness reds. The smoke and Glass reports bind the same
-pre-evidence-refresh working-tree digest; exact-head CI and integration remain pending.
+`openai/mac`, based on synchronized `develop` commit
+`5171abcdc538938fdf5ac82688d1ab868da6ff48`. Exact implementation commit
+`3cc61f9d71b1073cacece8dfeb44c2dd2fd93b3d` is pushed and opened as draft PR #30; this
+publication-state correction is its final docs-only successor, whose live pushed SHA/check state
+must be resolved rather than inferred from the initial run. Focused and full static checks,
+type/art/build checks, final CI-format smoke, and 12-viewport Glass Matrix are green after the
+recorded product and harness reds. The smoke and Glass reports bind the same pre-evidence-refresh
+working-tree digest; exact-head CI and integration remain pending.
 
-**GitHub step:** None for Nick now; OpenAI/Codex will finish the final diff audit, commit and push
-`openai/mac`, then open a new draft PR into `develop`. Do not reuse PR #29 or touch `main`.
+**GitHub step:** None for Nick now; draft PR
+[#30](https://github.com/TheDakk/Celestial-Frontier/pull/30) targets `develop` from `openai/mac`.
+OpenAI/Codex owns the final docs-only successor, fresh exact-head CI, review/waiver boundary and
+normal integration monitoring. Do not reuse PR #29 or touch `main`.
 
 **PR details:** base `develop`; source `openai/mac`; title **F2 — Canonical ingress and immutable
 navigation provenance**. Copy-ready description:
