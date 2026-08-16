@@ -37,13 +37,18 @@ import {
   type ReleaseNoteView, type V2ShippedRelease,
 } from './release-content.js';
 import {
-  NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, viewToNav, resolveCF1WorldAddress,
-  universeGalaxies, galaxyCell, galaxyCellWindow, systemScene,
+  NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, resolveViewToNav,
+  navFromCanonicalCF1Address, parseStrictCF1Code,
+  resolveCF1Galaxy, resolveCF1Star, resolveCF1World,
+  resolveCF1GalaxyAddress, resolveCF1StarAddress, resolveCF1WorldAddress,
+  isProvenPlanetFor, getProvenGalaxyKey, getProvenStarKey, getProvenPlanetKey,
+  universeGalaxies, provenGalaxyCell, galaxyFineCell, galaxyCellWindow, systemScene,
   ascStageOf, ascAllowsStar, reachRadiusOf, withinReachOf, currentRegionOf, ascHintFor, primeReachHint,
   bankLandfall, reconcileV2Chapters, currentV2Objective, projectV2Charter,
   GR, GCELL, type NavState, type GalaxyNode, type PlanetNode,
+  type CanonicalCF1Address, type ProvenGalaxy, type ProvenStar, type ProvenPlanet,
 } from '@cf/scene';
-import { galaxyProfile, galaxyHaze, systemFor, fineStarsInCell, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
+import { galaxyProfile, galaxyHaze, systemFor, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
 import { planetSpecies } from '@cf/domain-ecology';
 import { climateBand } from '@cf/domain-surveyphrases';
 import { SYS_R, UCELL, OBS_R, HOME_GAL_SEED, HOME_POS, SOL_SEED, SOL_POS } from '@cf/domain-worldconfig';
@@ -51,13 +56,14 @@ import { galaxyName, starName, properName } from '@cf/domain-naming';
 import { createEpochClock, type EpochClock } from '@cf/domain-progression';
 import { mulberry32, hashInt, TAU } from '@cf/domain-rand';
 import { installCaptureHooks, planetDescriptor, describePick, SOL_MOONS, galaxyStats, fmtBig, type Descriptor } from '@cf/domain-descriptors';
-import { cleanName, encodeWhere, decodeWhere, _sanitizeView } from '@cf/domain-strays';
+import { cleanName, encodeWhere } from '@cf/domain-strays';
 import { describeSpecies } from '@cf/domain-genome';
 import { battleStats, STAT_NAMES, STAT_HUES } from '@cf/domain-combatcore';
 import {
   createSaveRepository, createIndexedDBBackend,
   importSaveV2, isPlausibleSaveEnvelope, exportSaveV2, readSaveWithRecovery,
   type SaveStateV2, type ContentRegistry, type StoredPayloadStatus,
+  type ImportRouteIngressV2,
 } from '@cf/persistence';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
@@ -376,6 +382,14 @@ const repo = createSaveRepository(createIndexedDBBackend('cf-v2-slice'));
    held only {nav,view} JSON migrates for free: importSaveV2 reads its `view`
    and defaults everything else. */
 let save: SaveStateV2;
+/* Import keeps raw route evidence outside the v4 save. Proven navigation is
+   likewise runtime-only: exporter spreads no brands, keys, ordinals, or
+   source cells into player bytes. */
+const atlasRouteStates = new WeakMap<Record<string, unknown>, NavState>();
+let importedRouteIngress: ImportRouteIngressV2 | null = null;
+let trainingSnapshotView: unknown = undefined;
+let savedRouteWriteHeld = false;
+let smokeRejectNextTrainingRouteResolution = false;
 /* COSMIC_EPOCH, for real: construct once from the saved snapshot, then advance
    from an app-owned monotonic elapsed page-residence segment. This is not the
    future foreground-only activePlayMs policy: hidden-time treatment remains F4.
@@ -452,6 +466,44 @@ let DPR = densityPlan.dpr;
 const minWH = (): number => Math.max(80, Math.min(innerWidth, innerHeight));   /* floor: a zero-sized window must not mint z=0 → NaN cameras (audit #8) */
 
 let nav: NavState = NAV_HOME;
+type ProvenGalaxyStats = Readonly<{ stars: number; planets: number }>;
+const provenGalaxyStats = new WeakMap<ProvenGalaxy, ProvenGalaxyStats>();
+function statsForProvenGalaxy(galaxy: ProvenGalaxy): ProvenGalaxyStats {
+  const cached = provenGalaxyStats.get(galaxy);
+  if (cached) return cached;
+  /* The lifted helper memoizes by assigning `_stats` to its argument. Proven
+     hierarchy objects are deliberately frozen, so give that presentation
+     helper a disposable mutable copy and keep its result in an app sidecar. */
+  const raw = galaxyStats({ ...galaxy } as never) as ProvenGalaxyStats;
+  const computed = Object.freeze({ stars: raw.stars, planets: raw.planets });
+  provenGalaxyStats.set(galaxy, computed);
+  return computed;
+}
+type RenderedSceneReceipt = Readonly<{
+  serial: number;
+  mode: NavState['mode'];
+  galaxyKey: string | null;
+  starKey: string | null;
+  worldKey: string | null;
+}>;
+let renderedSceneReceipt: RenderedSceneReceipt = Object.freeze({
+  serial: 0, mode: 'universe', galaxyKey: null, starKey: null, worldKey: null,
+});
+let smokeAbortNextRenderBeforeReceipt = false;
+function abortRenderBeforeReceiptForSmoke(): boolean {
+  if (!smokeAbortNextRenderBeforeReceipt) return false;
+  smokeAbortNextRenderBeforeReceipt = false;
+  return true;
+}
+function recordRenderedScene(state: NavState): void {
+  renderedSceneReceipt = Object.freeze({
+    serial: renderedSceneReceipt.serial + 1,
+    mode: state.mode,
+    galaxyKey: state.mode === 'universe' ? null : getProvenGalaxyKey(state.gal),
+    starKey: state.mode === 'system' || state.mode === 'surface' ? getProvenStarKey(state.star) : null,
+    worldKey: state.mode === 'surface' ? getProvenPlanetKey(state.planet) : null,
+  });
+}
 const cam = { x: 0, y: 0, z: 1 };
 const camT = { x: 0, y: 0, z: 1 };   /* eased target — the goTo feel */
 const world = new Container();
@@ -477,8 +529,9 @@ let surveyFocusReturn: HTMLElement | null = null;
 let lastCard: Descriptor | null = null;
 let cardCtx: {
   p: PlanetNode;
-  gal: NonNullable<NavState['gal']>;
-  star: NonNullable<NavState['star']>;
+  gal: ProvenGalaxy;
+  star: ProvenStar;
+  planet: ProvenPlanet;
 } | null = null;
 interface CardTravelAction { label: 'Enter galaxy' | 'Enter system'; run: () => void; }
 let cardTravelAction: CardTravelAction | null = null;
@@ -705,6 +758,11 @@ function fillSettings(): void {
     /* Veteran restart is a reversible drill: begin in Sol where the lesson
        is winnable, then restore the exact pre-drill view on skip/finish. */
     const button = event.currentTarget as HTMLButtonElement;
+    const homeNav = trainingSolSystemNav();
+    if (!homeNav) {
+      toast('Route unavailable', 'Field Training could not verify the route to Sol. Your expedition is unchanged.');
+      return;
+    }
     const replacement = claimReplacementTransaction('training-restart');
     if (!replacement) {
       toast('Save replacement underway', 'Finish the current expedition replacement before restarting Field Training.');
@@ -712,23 +770,30 @@ function fillSettings(): void {
     }
     const prior = save.tutDone;
     const priorSnapshot = save.tutSnapPending;
+    const priorSnapshotView = trainingSnapshotView;
     const priorNav = nav;
+    const priorSavedView = save.savedView;
+    const priorSavedRouteWriteHeld = savedRouteWriteHeld;
     button.disabled = true;
-    save.tutSnapPending = { view: navToView(nav) };
+    /* A transient source failure deliberately leaves the imported route
+       field held while the runtime stays at Cosmos. Restarting Training is
+       an explicit replacement write, so transfer that held pre-drill route
+       into the one-key snapshot instead of snapshotting the neutral fallback. */
+    const snapshotView = savedRouteWriteHeld ? save.savedView : navToView(nav);
+    save.tutSnapPending = { view: snapshotView };
+    trainingSnapshotView = snapshotView;
     save.tutDone = false;
-    nav = {
-      mode: 'system',
-      gal: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y, size: 78, sp: 0, tilt: 0.62, rot: 0.5, home: true },
-      star: { seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y },
-      planet: null,
-    };
+    nav = homeNav;
+    savedRouteWriteHeld = false;
     if (await persistView(replacement)) scheduleReplacementReload(replacement);
     else {
       releaseReplacementTransaction(replacement);
       save.tutDone = prior;
       save.tutSnapPending = priorSnapshot;
+      trainingSnapshotView = priorSnapshotView;
       nav = priorNav;
-      save.savedView = navToView(priorNav);
+      save.savedView = priorSavedView;
+      savedRouteWriteHeld = priorSavedRouteWriteHeld;
       button.disabled = false;
       toast('Save unavailable', 'Field Training was not restarted; your current expedition is unchanged.');
     }
@@ -1022,7 +1087,7 @@ function fillAtlas(): void {
     (rows.length === 0
       ? '<div class="empty" data-sel="atlas-empty">Nothing charted yet — tap “+ Add to Star Atlas” on any survey card.</div>'
       : rows.map(([id, e]) => {
-        const travelable = !!e.where;
+        const travelable = atlasRouteStates.has(e as Record<string, unknown>);
         const unavailable = travelable ? '' : ' · route unavailable in this build';
         return `<button type="button" class="centry" data-sel="atlas-entry" data-aid="${esc(id)}"${travelable ? '' : ' disabled aria-disabled="true"'}><b>${esc(String(e.title || id))}</b>${e.badge ? ` <span class="sub">· ${esc(String(e.badge))}</span>` : ''}<span class="sub" style="display:block">${esc(String(e.sub || ''))}${unavailable}</span></button>`;
       }).join('')));
@@ -1031,11 +1096,15 @@ document.getElementById('atlaspanel')!.addEventListener('click', (e) => {
   const row = (e.target as HTMLElement).closest('[data-aid]');
   if (!row || !save) return;
   const hit = save.logMap.find(([id]) => id === (row as HTMLElement).dataset.aid);
-  if (hit && hit[1].where) {
+  if (hit) {
+    const route = atlasRouteStates.get(hit[1] as Record<string, unknown>);
+    if (!route) return;
     const keyboard = document.activeElement === row;
-    closePanels();
-    const moved = jumpToView(hit[1].where as Record<string, unknown>);
-    if (keyboard && moved) app.canvas.focus();
+    const moved = jumpToProvenNav(route);
+    if (moved) {
+      closePanels();
+      if (keyboard) app.canvas.focus();
+    }
   }
 });
 /* CHARTERS — current-slice projection over canonical saved chapter data.
@@ -1092,154 +1161,102 @@ document.getElementById('codexpanel')!.addEventListener('click', (e) => {
   if (row) fillCodexDetail(+(row as HTMLElement).dataset.ci!);
 });
 
-/* ---- THE SEARCH BAR (the goldens' top-right slot): paste a CF1 where-code
-   and TRAVEL there (decodeWhere → the sanitized view → the same charter
-   gates as every other descent), or type a name to filter the Compendium. */
+/* ---- THE SEARCH BAR (the goldens' top-right slot): a marked CF1 string is
+   exact route input, never tolerant display data. All three route tiers are
+   regenerated and proven before the common authorization/commit seam. */
 const searchEl = document.getElementById('searchbox') as HTMLInputElement;
-const CF1_PUBLIC_SEED_MAX = 0xffff_ffff;
-const CF1_SEARCH_MAX_LENGTH = 8192;
-type StrictCF1PlanetCandidate = {
-  galaxy: { seed: number; x: number; y: number };
-  star: { seed: number; x: number; y: number };
-  planet: { seed: number };
-};
-type StrictCF1PlanetPayload =
-  | { kind: 'not-planet' }
-  | { kind: 'invalid' }
-  | { kind: 'valid'; candidate: StrictCF1PlanetCandidate };
-
-/* `decodeWhere` deliberately repairs old/general CF1 routes so a bad number
-   cannot crash the camera. That tolerance is not identity proof: a public
-   planet share must provide its own exact raw hierarchy before the repair
-   layer can coerce 999.9/"999" into Earth. Galaxy/star routes intentionally
-   retain their legacy decoder semantics until their own ingress work. */
-function strictCF1PlanetCandidateFromSearchCode(code: string): StrictCF1PlanetPayload {
-  const marker = code.indexOf('CF1-');
-  if (marker < 0) return { kind: 'not-planet' };
-  /* Match decodeWhere's bound before any base64 or JSON allocation. Unlike
-     its generic decoder, Search must keep an oversized CF1 as a correction
-     outcome rather than falling through to a Compendium text filter. */
-  if (code.length > CF1_SEARCH_MAX_LENGTH) return { kind: 'invalid' };
-  let raw: unknown;
-  try {
-    let b64 = code.slice(marker + 4).trim().replace(/-/g, '+').replace(/_/g, '/');
-    while (b64.length % 4) b64 += '=';
-    const bytes = Uint8Array.from(atob(b64), (char) => char.charCodeAt(0));
-    raw = JSON.parse(new TextDecoder().decode(bytes));
-  } catch {
-    return { kind: 'not-planet' };
-  }
-  if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) return { kind: 'not-planet' };
-  const payload = raw as Record<string, unknown>;
-  if (payload.t !== 'p') return { kind: 'not-planet' };
-  const galaxy = payload.g, star = payload.s;
-  if (!Array.isArray(galaxy) || galaxy.length < 8 || !Array.isArray(star) || star.length < 3) return { kind: 'invalid' };
-  const exactSeed = (value: unknown): value is number => typeof value === 'number'
-    && Number.isInteger(value) && value >= 0 && value <= CF1_PUBLIC_SEED_MAX;
-  const exactCoordinate = (value: unknown): value is number => typeof value === 'number'
-    && Number.isFinite(value) && Math.abs(value) <= 1e7 && Math.round(value * 100) / 100 === value;
-  if (!exactCoordinate(galaxy[0]) || !exactCoordinate(galaxy[1]) || !exactSeed(galaxy[6])
-    || !exactCoordinate(star[0]) || !exactCoordinate(star[1]) || !exactSeed(star[2])
-    || !exactSeed(payload.p)) return { kind: 'invalid' };
-  return {
-    kind: 'valid',
-    candidate: {
-      galaxy: { x: galaxy[0], y: galaxy[1], seed: galaxy[6] },
-      star: { x: star[0], y: star[1], seed: star[2] },
-      planet: { seed: payload.p },
-    },
-  };
-}
 function encodeHere(): string | null {
   const v = navToView(nav);
   if (!v) return null;
   const name = v.type === 'planet' && v.pseed != null ? customNames.get('p' + v.pseed) : null;
   return encodeWhere(v as never, name || undefined) as string;
 }
-function jumpToView(
-  view: Record<string, unknown>,
-  incomingName: string | null = null,
-  externalPlanetCandidate: StrictCF1PlanetCandidate | null = null,
-): boolean {
-  if (!save) return false;   /* pre-boot paste (audit #3) */
-  const v = _sanitizeView(view);
-  if (!v) return false;
-  let n2 = viewToNav(v);
-  /* External planet destinations focus the real world in system view; only
-     the explicit Land command may enter surface mode and bank outcomes. A
-     public CF1 payload may claim any parent coordinates, so prove its full
-     galaxy → star → planet hierarchy before the reach gate, card, custom
-     name, save, or navigation state sees it. Search passes exact raw public
-     identity here before the tolerant legacy sanitizer; the resolver returns
-     the only route fields we retain, including source display metadata. */
-  if (n2.mode === 'surface' && n2.gal && n2.star && n2.planet) {
-    const canonical = resolveCF1WorldAddress(externalPlanetCandidate ?? {
-      galaxy: { seed: n2.gal.seed, x: n2.gal.x, y: n2.gal.y },
-      star: { seed: n2.star.seed, x: n2.star.x, y: n2.star.y },
-      planet: { seed: n2.planet.seed },
-    });
-    if (!canonical.ok) return false;
-    n2 = {
-      mode: 'surface',
-      gal: {
-        seed: canonical.address.galaxy.seed,
-        x: canonical.address.galaxy.x,
-        y: canonical.address.galaxy.y,
-        size: canonical.address.galaxy.size,
-        sp: canonical.address.galaxy.sp,
-        tilt: canonical.address.galaxy.tilt,
-        rot: canonical.address.galaxy.rot,
-        home: canonical.address.galaxy.home,
-        quasar: canonical.address.galaxy.quasar,
-        dwarf: canonical.address.galaxy.dwarf,
-      },
-      star: {
-        seed: canonical.address.star.seed,
-        x: canonical.address.star.x,
-        y: canonical.address.star.y,
-      },
-      planet: { seed: canonical.address.planet.seed },
-    };
+function resolveStrictAddress(
+  parsed: Exclude<ReturnType<typeof parseStrictCF1Code>, { kind: 'not-code' | 'invalid' }>,
+): CanonicalCF1Address | null {
+  const resolved = parsed.tier === 'galaxy'
+    ? resolveCF1GalaxyAddress(parsed.candidate)
+    : parsed.tier === 'star'
+      ? resolveCF1StarAddress(parsed.candidate)
+      : resolveCF1WorldAddress(parsed.candidate);
+  return resolved.ok ? resolved.address : null;
+}
+type NavigationAuthorityFailure = 'prime-reach' | 'charter-reach';
+function navigationAuthorityFailure(target: NavState): NavigationAuthorityFailure | null {
+  if (target.mode === 'universe') return null;
+  if (!withinReachOf(primeCount(), target.gal.x, target.gal.y)) return 'prime-reach';
+  if ((target.mode === 'system' || target.mode === 'surface')
+    && !ascAllowsStar(ascStage(), target.gal.seed, target.star)) return 'charter-reach';
+  return null;
+}
+function trainingSolSystemNav(): Extract<NavState, { mode: 'system' }> | null {
+  const isSol = (state: NavState): state is Extract<NavState, { mode: 'system' }> =>
+    state.mode === 'system'
+    && state.gal.seed === HOME_GAL_SEED
+    && state.gal.x === HOME_POS.x
+    && state.gal.y === HOME_POS.y
+    && state.star.seed === SOL_SEED
+    && state.star.x === SOL_POS.x
+    && state.star.y === SOL_POS.y
+    && navigationAuthorityFailure(state) === null;
+  if (isSol(nav)) return nav;
+  if (nav.mode === 'surface') {
+    const lifted = ascend(nav);
+    if (lifted.ok && isSol(lifted.state)) return lifted.state;
   }
-  /* A malformed planet surface view degrades in the verbatim sanitizer; do
-     not let that fallback masquerade as an accepted planet share route. */
-  if (v.type === 'planet' && n2.mode !== 'surface') return false;
-  /* Also reject a pseed that is not a member of the canonical system. */
-  const focusPlanet = n2.mode === 'surface' && n2.star && n2.planet
-    ? systemScene(n2.star.seed).planets.find((planet) => planet.seed === n2.planet!.seed) || null
-    : null;
-  if (n2.mode === 'surface' && !focusPlanet) return false;
-  if (n2.mode !== 'universe' && n2.gal) {
-    if (!withinReachOf(primeCount(), n2.gal.x, n2.gal.y)) {
+  const address = resolveCF1StarAddress({
+    galaxy: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y },
+    star: { seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y },
+  });
+  if (!address.ok) return null;
+  const resolved = navFromCanonicalCF1Address(address.address);
+  return resolved.ok && isSol(resolved.state) ? resolved.state : null;
+}
+function jumpToProvenNav(target: NavState, incomingName: string | null = null): boolean {
+  if (!save || target.mode === 'universe') return false;
+  const authorityFailure = navigationAuthorityFailure(target);
+  if (authorityFailure === 'prime-reach') {
       toastPrimeReachBoundary();
       return false;
-    }
-    if (n2.star && !ascAllowsStar(ascStage(), n2.gal.seed, n2.star)) {
-      toastCharterBoundary(ascHintFor(ascStage()));
-      return false;
-    }
   }
-  let acceptedName = false;
+  if (authorityFailure === 'charter-reach') {
+    toastCharterBoundary(ascHintFor(ascStage()));
+    return false;
+  }
+  const focusPlanet = target.mode === 'surface'
+    ? planetNodeForProof(target.star, target.planet)
+    : null;
+  if (target.mode === 'surface'
+    && (!focusPlanet || focusPlanet.seed !== target.planet.seed
+      || focusPlanet.ordinal !== target.planet.ordinal)) return false;
+
+  let committedNav: NavState = target;
+  if (target.mode === 'surface') {
+    const lifted = ascend(target);
+    if (!lifted.ok || lifted.state.mode !== 'system') return false;
+    committedNav = lifted.state;
+  }
   if (focusPlanet && incomingName) {
     const name = cleanName(incomingName);
     if (name) {
       customNames.set('p' + focusPlanet.seed, name);
       save.customNames = [...customNames.entries()];
-      acceptedName = true;
     }
   }
-  nav = focusPlanet
-    ? { mode: 'system', gal: n2.gal, star: n2.star, planet: null }
-    : n2;
+  nav = committedNav;
+  savedRouteWriteHeld = false;
   if (nav.mode === 'galaxy') { gz0 = 0.42 * minWH() / GR; camT.z = gz0 * 1.05; }
   else if (nav.mode === 'system') { sz0 = 0.40 * minWH() / SYS_R; camT.z = sz0 * 1.05; }
   else camT.z = 1;
   cam.z = camT.z * 0.7; cam.x = camT.x = 0; cam.y = camT.y = 0;
   playWhoosh();
   rerender();
-  if (focusPlanet && nav.star) surveyPlanet(focusPlanet, nav.star.seed);
-  if (acceptedName) void persistView();
+  if (focusPlanet && target.mode === 'surface') surveyPlanet(focusPlanet, target.star, target.planet);
   return true;
+}
+function jumpToCanonicalAddress(address: CanonicalCF1Address, incomingName: string | null = null): boolean {
+  const resolved = navFromCanonicalCF1Address(address);
+  return resolved.ok ? jumpToProvenNav(resolved.state, incomingName) : false;
 }
 searchEl.addEventListener('keydown', (e) => {
   if (e.key !== 'Enter') return;
@@ -1250,16 +1267,16 @@ searchEl.addEventListener('keydown', (e) => {
   e.stopPropagation();
   const q = searchEl.value.trim();
   if (!q) return;
-  const strictPlanet = strictCF1PlanetCandidateFromSearchCode(q);
-  if (strictPlanet.kind === 'invalid') {
-    /* A malformed planet code is a correction outcome, not a Compendium
+  const strict = parseStrictCF1Code(q);
+  if (strict.kind === 'invalid') {
+    /* A malformed marked code is a correction outcome, not a Compendium
        query. Keep its exact text/focus so the explorer can repair it. */
     searchEl.focus();
     return;
   }
-  const dec = decodeWhere(q) as { where: Record<string, unknown>; name: string | null } | null;
-  if (dec && dec.where) {
-    if (jumpToView(dec.where, dec.name, strictPlanet.kind === 'valid' ? strictPlanet.candidate : null)) {
+  if (strict.kind === 'valid') {
+    const address = resolveStrictAddress(strict);
+    if (address && jumpToCanonicalAddress(address, strict.name)) {
       searchEl.value = '';
       /* Route rendering replaces scene/card DOM synchronously. Continue the
          keyboard journey at the live action when a planet card opened, or
@@ -1270,10 +1287,6 @@ searchEl.addEventListener('keydown', (e) => {
         (action || app.canvas).focus();
       });
     } else searchEl.focus();
-    return;
-  }
-  if (strictPlanet.kind === 'valid') {
-    searchEl.focus();
     return;
   }
   /* not a code — a Compendium name filter */
@@ -1460,7 +1473,7 @@ function hudText(): void {
   } else if (nav.mode === 'galaxy' && nav.gal) {
     setTrail(['Cosmos', galaxyName(nav.gal.seed)]);
     setHint('tap a star to survey · Enter on its card · zoom out to rise');
-    const gs2 = galaxyStats(nav.gal as never) as { stars: number; planets: number };
+    const gs2 = statsForProvenGalaxy(nav.gal);
     setCtx('every dot is one of ~' + fmtBig(gs2.stars) + ' stars sharing ~' + fmtBig(gs2.planets) + ' worlds — zoom deeper and more keep resolving');
   } else if (nav.mode === 'system' && nav.gal && nav.star) {
     setTrail([galaxyName(nav.gal.seed), starName(nav.star.seed)]);
@@ -1473,7 +1486,7 @@ function hudText(): void {
       ? sys.planets.length + ' worlds orbit ' + desc + extra
       : 'no planets here — zoom out and try another star');
   } else if (nav.mode === 'surface' && nav.gal && nav.star && nav.planet) {
-    const p = systemScene(nav.star.seed).planets.find((q) => q.seed === nav.planet!.seed);
+    const p = planetNodeForProof(nav.star, nav.planet);
     setTrail([galaxyName(nav.gal.seed), starName(nav.star.seed), p ? p.name : 'Surface']);
     setHint('press Leave world, right-click, or Escape to lift off');
     setCtx('planetfall — the survey card carries the world’s roster');
@@ -1856,6 +1869,8 @@ function drawUniverse(): void {
   obs.eventMode = 'none';
   world.addChild(obs);
   applyUniverseGates();   /* gates live from the first frame, not the first zoom */
+  if (abortRenderBeforeReceiptForSmoke()) return;
+  recordRenderedScene(NAV_HOME);
 }
 function applyUniverseGates(): void {
   const zc = zCut();
@@ -1864,7 +1879,8 @@ function applyUniverseGates(): void {
   for (const L of uniLabels) L.t.visible = L.gate === 0 ? (cam.z > zc && cam.z < 0.5) : (L.size * cam.z > L.gate);
 }
 
-function drawGalaxy(galSeed: number): void {
+function drawGalaxy(state: Extract<NavState, { mode: 'galaxy' }>): void {
+  const galSeed = state.gal.seed;
   const _b0 = performance.now();
   clearWorld();
   const prof = galaxyProfile(galSeed) as Record<string, unknown>;
@@ -1888,7 +1904,7 @@ function drawGalaxy(galSeed: number): void {
     if (d) showSurvey(d as unknown as Descriptor);
   };
   for (let cx = w.cx0; cx <= w.cx1; cx++) for (let cy = w.cy0; cy <= w.cy1; cy++) {
-    for (const dc of galaxyCell(galSeed, prof, cx, cy).deco) {
+    for (const dc of provenGalaxyCell(state.gal, prof, cx, cy).deco) {
       if (dc.k === 'h2' || dc.k === 'neb' || dc.k === 'mol' || dc.k === 'plan' || dc.k === 'rem') {
         const f = dc.k === 'rem' ? 1.3 : dc.k === 'plan' ? 1.2 : 1.15;
         const spr = new Sprite(Texture.from(decoSprite(dc)));
@@ -1936,7 +1952,7 @@ function drawGalaxy(galSeed: number): void {
   /* THE STARS — starSprite painters, additive, Renderer sizing D=s·baseR·8,
      spiked halo for the giants (s≥1.5), twinkle list for the bright (s>1.3) */
   for (let cx = w.cx0; cx <= w.cx1; cx++) for (let cy = w.cy0; cy <= w.cy1; cy++) {
-    for (const s of galaxyCell(galSeed, prof, cx, cy).stars) {
+    for (const s of provenGalaxyCell(state.gal, prof, cx, cy).stars) {
       const spr = new Sprite(Texture.from(starSprite(s.c, s.s >= 1.5)));
       spr.anchor.set(0.5);
       spr.blendMode = 'add';
@@ -2028,6 +2044,8 @@ function drawGalaxy(galSeed: number): void {
   lastZBucket = zBucket();
   updateFineLayer(true);
   lastGalaxyBuildMs = performance.now() - _b0;   /* the rebuild budget, logged by the smoke */
+  if (abortRenderBeforeReceiptForSmoke()) return;
+  recordRenderedScene(state);
 }
 
 function buildSolMark(x: number, y: number): void {
@@ -2071,7 +2089,7 @@ function updateFineLayer(force: boolean): void {
   const prof = galaxyProfile(nav.gal.seed) as Record<string, unknown>;
   const bR = baseR();
   for (let fx = win.fx0; fx <= win.fx1; fx++) for (let fy = win.fy0; fy <= win.fy1; fy++) {
-    for (const s of fineStarsInCell(nav.gal.seed, prof, fx, fy) as Array<{ x: number; y: number; c: string; s: number; seed: number }>) {
+    for (const s of galaxyFineCell(nav.gal, prof, fx, fy)) {
       const spr = new Sprite(Texture.from(starSprite(s.c, false)));
       spr.anchor.set(0.5);
       spr.blendMode = 'add';
@@ -2129,7 +2147,8 @@ function updateStarSurf(): void {
   }
 }
 
-function drawSystem(starSeed: number): void {
+function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
+  const starSeed = state.star.seed;
   clearWorld();
   const sys = systemScene(starSeed);
   const raw = systemFor(starSeed) as Record<string, unknown> & {
@@ -2239,7 +2258,7 @@ function drawSystem(starSeed: number): void {
     }
     holder.eventMode = 'static';
     holder.cursor = 'pointer';
-    holder.on('pointertap', () => surveyPlanet(p, starSeed));   /* survey; LAND is the card's own act */
+    holder.on('pointertap', () => surveyPlanet(p, state.star));   /* survey; LAND is the card's own act */
     world.addChild(holder);
     const ent: Orbiter = { c: holder, kind: 'planet', orb: p.orb, face: [spr, term] };
     /* the drifting upper cloud deck (main.js 5256): terran/ocean close-ups
@@ -2335,6 +2354,8 @@ function drawSystem(starSeed: number): void {
     visitorFx = { wrap, body, label, v };
   }
   lastZBucket = zBucket();
+  if (abortRenderBeforeReceiptForSmoke()) return;
+  recordRenderedScene(state);
 }
 const planetAng = (orb: number, time: number): number => orb * 0.13 + time * 0.05 / (orb * 0.012);
 interface RingGeo { tilt: number; hue: string; }
@@ -2390,7 +2411,7 @@ function rebuildSystemHD(): void {
 }
 
 /* ---- navigation (every transition through the tested state machine) ---- */
-function rerender(options: { preserveSurvey?: boolean } = {}): void {
+function rerender(options: { preserveSurvey?: boolean; skipPersist?: boolean } = {}): void {
   /* A density-only rebuild replaces Pixi textures, not the player's selected
      object. Navigation transitions invalidate the card as before; monitor/
      DPR changes preserve its exact DOM, full-identity context, and action. */
@@ -2405,11 +2426,11 @@ function rerender(options: { preserveSurvey?: boolean } = {}): void {
   }
   stSeam.gal = nav.gal; stSeam.star = nav.star;   /* the describePick seam stays true */
   if (nav.mode === 'universe') drawUniverse();
-  else if (nav.mode === 'galaxy' && nav.gal) drawGalaxy(nav.gal.seed);
-  else if (nav.mode === 'system' && nav.star) drawSystem(nav.star.seed);
+  else if (nav.mode === 'galaxy') drawGalaxy(nav);
+  else if (nav.mode === 'system') drawSystem(nav);
   else if (nav.mode === 'surface' && nav.star && nav.planet) {
-    const p = systemScene(nav.star.seed).planets.find((q) => q.seed === nav.planet!.seed);
-    if (p) drawSurface(p); else {
+    const exact = planetNodeForProof(nav.star, nav.planet);
+    if (exact) drawSurface(exact, nav); else {
       nav = NAV_HOME;
       document.body.classList.remove('surface-mode');
       sideEl.style.display = 'none';
@@ -2419,47 +2440,61 @@ function rerender(options: { preserveSurvey?: boolean } = {}): void {
   }
   world.alpha = 0.25;   /* the mode fade (st.fade), eased back in the ticker */
   hudText();
-  void persistView();
+  if (!options.skipPersist) void persistView();
 }
 /* descents EASE in: cam jumps wide, camT is the destination (the goTo feel) */
-function descendGalaxy(g: GalaxyNode): void {
+function descendGalaxy(g: { seed: number; x: number; y: number }): boolean {
+  const proven = resolveCF1Galaxy(g);
+  if (!proven.ok) return false;
+  const galaxy = proven.galaxy;
+  const r = enterGalaxy(nav, galaxy);
+  if (!r.ok) return false;
   /* The saved Prime Signature radius gates intergalactic reach. It is not a
      drive/Charter gate, so preserve that distinction in the visible boundary. */
-  if (!withinReachOf(primeCount(), g.x, g.y)) {
-    camT.z = Math.min(camT.z, (0.55 * minWH() / Math.max(g.size, 8)) * 0.97);
+  if (navigationAuthorityFailure(r.state) === 'prime-reach') {
+    camT.z = Math.min(camT.z, (0.55 * minWH() / Math.max(galaxy.size, 8)) * 0.97);
     toastPrimeReachBoundary();
-    return;
+    return false;
   }
-  const r = enterGalaxy(nav, g);
-  if (r.ok) {
-    nav = r.state;
-    gz0 = 0.42 * minWH() / GR;
-    cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0;
-    camT.z = gz0 * 1.05; cam.z = gz0 * 0.35;
-    playWhoosh();   /* travel & planetfall breathe (main.js: the shipped sting) */
-    rerender();
-  }
+  nav = r.state;
+  savedRouteWriteHeld = false;
+  gz0 = 0.42 * minWH() / GR;
+  cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0;
+  camT.z = gz0 * 1.05; cam.z = gz0 * 0.35;
+  playWhoosh();   /* travel & planetfall breathe (main.js: the shipped sting) */
+  rerender();
+  return true;
 }
-function descendSystem(star: { seed: number; x: number; y: number }): void {
+function descendSystem(starCandidate: { seed: number; x: number; y: number }): boolean {
+  if (nav.mode !== 'galaxy') return false;
+  const proven = resolveCF1Star(nav.gal, starCandidate);
+  if (!proven.ok) return false;
+  const star = proven.star;
+  const r = enterSystem(nav, star);
+  if (!r.ok) return false;
   /* the Ascent gates star dives (main.js 3450): stage 0 = Sol only,
      1 = the Neighborhood ring, 2 = the whole home galaxy, 3 = everywhere.
      LOOKING stays free — only the dive is charted. */
-  if (nav.gal && !ascAllowsStar(ascStage(), nav.gal.seed, star)) {
+  const authorityFailure = navigationAuthorityFailure(r.state);
+  if (authorityFailure === 'prime-reach') {
+    toastPrimeReachBoundary();
+    return false;
+  }
+  if (authorityFailure === 'charter-reach') {
     const starZ = minWH() / 34;
     camT.z = Math.min(camT.z, starZ * 0.97);   /* park BELOW the dive trigger (the game's *0.97 precedent) */
     cam.z = Math.min(cam.z, starZ * 0.97);
     toastCharterBoundary(ascHintFor(ascStage()));
-    return;
+    return false;
   }
-  const r = enterSystem(nav, star);
-  if (r.ok) {
-    nav = r.state;
-    sz0 = 0.40 * minWH() / SYS_R;
-    cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0;
-    camT.z = sz0 * 1.05; cam.z = sz0 * 0.35;
-    playWhoosh();
-    rerender();
-  }
+  nav = r.state;
+  savedRouteWriteHeld = false;
+  sz0 = 0.40 * minWH() / SYS_R;
+  cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0;
+  camT.z = sz0 * 1.05; cam.z = sz0 * 0.35;
+  playWhoosh();
+  rerender();
+  return true;
 }
 /* the biosphere REPLICA (the game's own endorsed pattern, main.js 4338:
    "same rng stream (seed^0x1234567), same draw order — the values are
@@ -2508,9 +2543,20 @@ function worldRoster(p: PlanetNode, starSeed: number): Array<Record<string, unkn
 /* THE GAME'S TRUE TWO-STEP (find-earth/land training steps depend on it):
    a tap SURVEYS — the card opens with its ACTION ROW (Land · + Add to Star
    Atlas · ⧉ share code); pressing LAND is its own act. */
-function surveyPlanet(p: PlanetNode, starSeed: number): void {
-  if (!nav.gal || !nav.star || nav.star.seed !== starSeed) return;
-  const sys = systemFor(starSeed);
+function planetNodeForProof(star: ProvenStar, planet: ProvenPlanet): PlanetNode | null {
+  if (!isProvenPlanetFor(planet, star)) return null;
+  return systemScene(star.seed).planets.find((node) =>
+    node.seed === planet.seed && node.ordinal === planet.ordinal) ?? null;
+}
+function surveyPlanet(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet): boolean {
+  if ((nav.mode !== 'system' && nav.mode !== 'surface')
+    || getProvenStarKey(nav.star) !== getProvenStarKey(star)) return false;
+  const resolved = supplied
+    ? (isProvenPlanetFor(supplied, star) ? { ok: true as const, planet: supplied } : { ok: false as const })
+    : resolveCF1World(star, { seed: p.seed });
+  if (!resolved.ok || resolved.planet.seed !== p.seed || resolved.planet.ordinal !== p.ordinal
+    || !planetNodeForProof(star, resolved.planet)) return false;
+  const sys = systemFor(star.seed);
   const d = planetDescriptor(p.P, sys, { name: p.name, orb: p.orb } as never) as Descriptor;
   const customName = customNames.get('p' + p.seed);
   if (customName) {
@@ -2519,16 +2565,20 @@ function surveyPlanet(p: PlanetNode, starSeed: number): void {
   }
   cardCtx = {
     p,
-    gal: { ...nav.gal },
-    star: { ...nav.star },
+    gal: nav.gal,
+    star: nav.star,
+    planet: resolved.planet,
   };
   showSurvey(d, buildCardActions(p));
   playSurveyPing();   /* the ACT of surveying answers back (main.js) */
   gameEvent('survey', { planetSeed: p.seed });
+  return true;
 }
 function buildCardActions(p: PlanetNode): string {
   const charted = save && save.logMap.some(([id]) => id === 'p' + p.seed);
-  const onThisSurface = nav.mode === 'surface' && nav.planet?.seed === p.seed && nav.star?.seed === cardCtx?.star.seed;
+  const onThisSurface = nav.mode === 'surface' && !!cardCtx
+    && getProvenPlanetKey(nav.planet) === getProvenPlanetKey(cardCtx.planet)
+    && nav.planet.seed === p.seed && nav.planet.ordinal === p.ordinal;
   /* A veteran replay already has Earth charted. Keep the real Add action in
      the drill so the atlas-add step cannot spotlight a missing control;
      addToAtlas is idempotent and still emits the training event. */
@@ -2544,22 +2594,25 @@ function buildCardActions(p: PlanetNode): string {
     '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
     '</div>';
 }
-function surveyAndLand(p: PlanetNode, starSeed: number): void {
+function surveyAndLand(p: PlanetNode, star: ProvenStar): boolean {
   /* the api's one-call path (smoke compatibility): survey, then land */
-  surveyPlanet(p, starSeed);
-  doLand();
+  return surveyPlanet(p, star) && doLand();
+}
+function activeCardPlanetState(): Extract<NavState, { mode: 'surface' }> | null {
+  if (!cardCtx || (nav.mode !== 'system' && nav.mode !== 'surface')
+    || getProvenGalaxyKey(nav.gal) !== getProvenGalaxyKey(cardCtx.gal)
+    || getProvenStarKey(nav.star) !== getProvenStarKey(cardCtx.star)
+    || !isProvenPlanetFor(cardCtx.planet, nav.star)
+    || !planetNodeForProof(nav.star, cardCtx.planet)) return null;
+  if (nav.mode === 'surface') {
+    return getProvenPlanetKey(nav.planet) === getProvenPlanetKey(cardCtx.planet) ? nav : null;
+  }
+  const landed = land(nav, cardCtx.planet);
+  return landed.ok ? landed.state : null;
 }
 function activeCardPlanetWhere(): Record<string, unknown> | null {
-  if (!cardCtx || !nav.gal || !nav.star
-    || nav.gal.seed !== cardCtx.gal.seed || nav.gal.x !== cardCtx.gal.x || nav.gal.y !== cardCtx.gal.y
-    || nav.star.seed !== cardCtx.star.seed || nav.star.x !== cardCtx.star.x || nav.star.y !== cardCtx.star.y) return null;
-  const live = systemScene(nav.star.seed).planets.some((planet) => planet.seed === cardCtx!.p.seed);
-  if (!live) return null;
-  return {
-    type: 'planet', gal: { ...cardCtx.gal },
-    star: { ...cardCtx.star },
-    pseed: cardCtx.p.seed,
-  };
+  const state = activeCardPlanetState();
+  return state ? navToView(state) : null;
 }
 function cardShareCode(): string | null {
   const where = activeCardPlanetWhere();
@@ -2584,12 +2637,13 @@ async function copyShareCode(code: string): Promise<boolean> {
     return false;
   }
 }
-function doLand(): void {
-  if (!cardCtx || !activeCardPlanetWhere()) return;
+function doLand(): boolean {
+  if (!cardCtx || nav.mode !== 'system') return false;
+  const surface = activeCardPlanetState();
+  if (!surface) return false;
   const p = cardCtx.p;
-  const r = land(nav, { seed: p.seed });
-  if (r.ok) {
-    nav = r.state;
+  nav = surface;
+  savedRouteWriteHeld = false;
     const firstLand = !save.landed.includes(p.seed);
     if (firstLand) {
       save.landed.push(p.seed);   /* the game's `land` set */
@@ -2618,7 +2672,7 @@ function doLand(): void {
     if (openPanelId() === 'ch') fillCharters();
     stSeam.gal = nav.gal; stSeam.star = nav.star;
     playWhoosh();   /* planetfall */
-    drawSurface(p); hudText(); void persistView();
+    drawSurface(p, nav); hudText(); void persistView();
     if (lastCard) showSurvey(lastCard, buildCardActions(p));
     /* A repeated landing is not new progression. The one exception is the
        explicit veteran training replay: its lesson waits for the action,
@@ -2626,7 +2680,7 @@ function doLand(): void {
     if (firstLand || (p.seed === 133 && trainingActive() && trainingStepId() === 'land')) {
       gameEvent('landfall', { planetSeed: p.seed });
     }
-  }
+    return true;
 }
 function addToAtlas(): void {
   const where = activeCardPlanetWhere();
@@ -2636,7 +2690,10 @@ function addToAtlas(): void {
   if (!save.logMap.some(([k]) => k === id)) {
     const d = card.querySelector('[data-sel=title]')?.textContent || p.name;
     const sub = card.querySelector('[data-sel=sub]')?.textContent || '';
-    save.logMap.push([id, { id, title: d, sub, where, t: Date.now() }]);
+    const entry = { id, title: d, sub, where, t: Date.now() };
+    save.logMap.push([id, entry]);
+    const route = activeCardPlanetState();
+    if (route) atlasRouteStates.set(entry, route);
     void persistView();
     toast('★ Charted', d + ' joined your Star Atlas.');
   }
@@ -2664,7 +2721,9 @@ card.addEventListener('click', (e) => {
     if (keyboard) card.querySelector<HTMLElement>('[data-act="leaveworld"]')?.focus();
   }
   else if (a === 'leaveworld') {
-    if (nav.mode !== 'surface' || nav.planet?.seed !== cardCtx?.p.seed || !activeCardPlanetWhere()) return;
+    if (nav.mode !== 'surface' || !cardCtx
+      || getProvenPlanetKey(nav.planet) !== getProvenPlanetKey(cardCtx.planet)
+      || !activeCardPlanetWhere()) return;
     hideSurvey();
     goUp();
     if (keyboard) app.canvas.focus();
@@ -2710,7 +2769,8 @@ function fillPlanetside(p: PlanetNode, starSeed: number): void {
   if (!SA && nav.star) {
     const p0 = p, s0 = starSeed;
     ensureSA('planetside', () => {
-      if (nav.mode === 'surface' && nav.planet?.seed === p0.seed && nav.star?.seed === s0) fillPlanetside(p0, s0);
+      if (nav.mode === 'surface' && nav.planet.seed === p0.seed
+        && nav.planet.ordinal === p0.ordinal && nav.star.seed === s0) fillPlanetside(p0, s0);
     });
   }
   sideEl.innerHTML = '<div style="font-size:10.5px;letter-spacing:0.06em;color:var(--dim);margin:0 0 6px">PLANETSIDE — the ground survey</div>' +
@@ -2726,7 +2786,8 @@ function fillPlanetside(p: PlanetNode, starSeed: number): void {
   sideEl.style.display = 'block';
   syncPlanetsideLayout();
 }
-function drawSurface(p: PlanetNode): void {
+function drawSurface(p: PlanetNode, state: Extract<NavState, { mode: 'surface' }>): void {
+  if (p.seed !== state.planet.seed || p.ordinal !== state.planet.ordinal) return;
   /* surface mode, slice edition: the world fills the view as its painterly
      surface (full biome scenes are Phase 6); the survey card carries the
      roster — every species row is real Ecology output.
@@ -2764,6 +2825,8 @@ function drawSurface(p: PlanetNode): void {
   }
   cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0; camT.z = fitZ; cam.z = fitZ * 0.8;
   if (nav.star) fillPlanetside(p, nav.star.seed);
+  if (abortRenderBeforeReceiptForSmoke()) return;
+  recordRenderedScene(state);
 }
 function goUp(): void {
   const wasGal = nav.gal, wasStar = nav.star;
@@ -2829,14 +2892,14 @@ function checkTransitions(): void {
       const ccx = Math.floor(camT.x / GCELL), ccy = Math.floor(camT.y / GCELL);
       let best: { seed: number; x: number; y: number } | null = null, bd = 1e9;
       for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
-        for (const s of galaxyCell(nav.gal.seed, prof, ccx + dx, ccy + dy).stars) {
+        for (const s of provenGalaxyCell(nav.gal, prof, ccx + dx, ccy + dy).stars) {
           const d = Math.hypot(s.x - camT.x, s.y - camT.y);
           if (d < bd) { bd = d; best = s; }
         }
       }
       const fcx = Math.floor(camT.x / FCELL), fcy = Math.floor(camT.y / FCELL);
       for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
-        for (const s2 of fineStarsInCell(nav.gal.seed, prof, fcx + dx, fcy + dy) as Array<{ seed: number; x: number; y: number }>) {
+        for (const s2 of galaxyFineCell(nav.gal, prof, fcx + dx, fcy + dy)) {
           const d2 = Math.hypot(s2.x - camT.x, s2.y - camT.y);
           if (d2 < bd) { bd = d2; best = s2; }
         }
@@ -2909,12 +2972,12 @@ function currentKeyboardTargets(): KeyboardWorldTarget[] {
     }
   } else if (nav.mode === 'system' && nav.star) {
     for (const target of planetTargets) targets.push({
-      key: `planet:${nav.star.seed}:${target.planet.seed}`,
+      key: `planet:${nav.star.seed}:${target.planet.seed}:${target.planet.ordinal}`,
       label: target.planet.name,
       priority: target.planet.seed === 133 ? 0 : 1,
       world: { x: target.holder.position.x, y: target.holder.position.y },
       screen: () => target.holder.getGlobalPosition(),
-      activate: () => surveyPlanet(target.planet, nav.star!.seed),
+      activate: () => nav.mode === 'system' && surveyPlanet(target.planet, nav.star),
     });
   }
   const visible = targets.filter((target) => {
@@ -3021,7 +3084,10 @@ async function persistView(replacementOwner: ReplacementTransaction | null = nul
   if (persistHold || importWriteInFlight || replacementReloadPending
     || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
   const write = async (): Promise<boolean> => { try {
-    save.savedView = navToView(nav);
+    /* A transient generator failure is not proof that a valid imported route
+       is stale. Hold that one field until a later successful resolution or
+       player navigation; unrelated save progress may still persist. */
+    if (!savedRouteWriteHeld) save.savedView = navToView(nav);
     /* Snapshot the advancing value. base() is only this session's immutable
        construction origin and would freeze elapsed epoch progress on reload. */
     save.EPOCH_BASE = epochClock.current();
@@ -3097,22 +3163,27 @@ function isLegacySliceEnvelope(value: unknown): boolean {
   if (mode === 'universe') {
     return data.view === null && rawNav.gal === null && rawNav.star === null && rawNav.planet === null;
   }
-  const cleanView = _sanitizeView(data.view);
-  if (!cleanView) return false;
-  const fromView = viewToNav(cleanView);
-  if (fromView.mode !== mode) return false;
-  const sameRef = (raw: unknown, clean: { seed: number; x?: number; y?: number } | null, xy: boolean): boolean => {
-    if (!raw || typeof raw !== 'object' || Array.isArray(raw) || !clean) return false;
-    const ref = raw as Record<string, unknown>;
-    if (!Number.isFinite(ref.seed) || Number(ref.seed) !== clean.seed) return false;
-    return !xy || (Number.isFinite(ref.x) && Number.isFinite(ref.y)
-      && Number(ref.x) === clean.x && Number(ref.y) === clean.y);
+  if (!data.view || typeof data.view !== 'object' || Array.isArray(data.view)) return false;
+  const rawView = data.view as Record<string, unknown>;
+  const expectedType = mode === 'galaxy' ? 'galaxy' : mode === 'system' ? 'star' : 'planet';
+  if (rawView.type !== expectedType) return false;
+  const samePoint = (a: unknown, b: unknown): boolean => {
+    if (!a || typeof a !== 'object' || Array.isArray(a)
+      || !b || typeof b !== 'object' || Array.isArray(b)) return false;
+    const left = a as Record<string, unknown>, right = b as Record<string, unknown>;
+    return typeof left.seed === 'number' && Number.isFinite(left.seed)
+      && typeof left.x === 'number' && Number.isFinite(left.x)
+      && typeof left.y === 'number' && Number.isFinite(left.y)
+      && left.seed === right.seed && left.x === right.x && left.y === right.y;
   };
-  if (!sameRef(rawNav.gal, fromView.gal, true)) return false;
+  if (!samePoint(rawNav.gal, rawView.gal)) return false;
   if (mode === 'galaxy') return rawNav.star === null && rawNav.planet === null;
-  if (!sameRef(rawNav.star, fromView.star, true)) return false;
+  if (!samePoint(rawNav.star, rawView.star)) return false;
   if (mode === 'system') return rawNav.planet === null;
-  return sameRef(rawNav.planet, fromView.planet, false);
+  if (!rawNav.planet || typeof rawNav.planet !== 'object' || Array.isArray(rawNav.planet)) return false;
+  const rawPlanet = rawNav.planet as Record<string, unknown>;
+  return typeof rawPlanet.seed === 'number' && Number.isFinite(rawPlanet.seed)
+    && rawPlanet.seed === rawView.pseed;
 }
 function importStoredPayload(payload: string | null): ReturnType<typeof importSaveV2> {
   const result = importSaveV2(payload, REGISTRY, Date.now());
@@ -3152,13 +3223,47 @@ async function loadSave(): Promise<void> {
   persistHold = bootRead.kind === 'transient-read' ? 'transient-read'
     : bootRead.kind === 'protected' ? 'protected-payload' : false;
   const protectedReason = bootRead.kind === 'protected' ? bootRead.reason : null;
-  save = imp.ok ? imp.state
-    : (importSaveV2('{}', REGISTRY, Date.now()) as { ok: true; state: SaveStateV2 }).state;   /* fresh expedition */
+  const fresh = importSaveV2('{}', REGISTRY, Date.now());
+  if (!fresh.ok) throw new Error('fresh v2 save construction failed');
+  save = imp.ok ? imp.state : fresh.state;   /* fresh expedition */
+  importedRouteIngress = imp.ok ? imp.ingress : fresh.ingress;
   customNames.clear();
   for (const [key, name] of save.customNames) customNames.set(key, name);
-  /* the sanitized view → nav; viewToNav degrades toward home, so a
-     hand-edited/corrupt view can never render an empty stage */
-  nav = viewToNav(save.savedView);
+  /* A supported save is never rejected as a whole because its location is
+     stale. Re-prove that one raw route from source; deterministic failure
+     repairs only `view`, while a transient source failure holds its bytes. */
+  const savedRoute = resolveViewToNav(
+    importedRouteIngress.savedView === undefined ? null : importedRouteIngress.savedView,
+  );
+  if (savedRoute.ok && navigationAuthorityFailure(savedRoute.state) === null) {
+    nav = savedRoute.state;
+    save.savedView = navToView(nav);
+    savedRouteWriteHeld = false;
+  } else {
+    nav = NAV_HOME;
+    savedRouteWriteHeld = !savedRoute.ok && savedRoute.reason === 'source-error';
+    if (!savedRouteWriteHeld) save.savedView = null;
+  }
+  /* Atlas rows remain historical records even when a route cannot be proven.
+     Only a non-home proven target becomes actionable; source-derived fields
+     replace tolerant display aliases without changing ids or local ledgers. */
+  for (const [, entry] of save.logMap) {
+    const rawWhere = importedRouteIngress.atlasWhere.get(entry);
+    if (rawWhere === null || rawWhere === undefined) {
+      entry.where = null;
+      continue;
+    }
+    const route = resolveViewToNav(rawWhere);
+    if (route.ok && route.state.mode !== 'universe') {
+      atlasRouteStates.set(entry, route.state);
+      entry.where = navToView(route.state);
+    } else if (route.ok || route.reason !== 'source-error') {
+      entry.where = null;
+    }
+  }
+  trainingSnapshotView = importedRouteIngress.trainingSnapshot.kind === 'current-view'
+    ? importedRouteIngress.trainingSnapshot.view
+    : undefined;
   if (nav.mode === 'galaxy') { camT.z = gz0 * 1.05; cam.z = camT.z; }
   else if (nav.mode === 'system') { camT.z = sz0 * 1.05; cam.z = camT.z; }
   /* a truly EMPTY store is a NEW EXPEDITION — training runs, exactly like
@@ -3195,12 +3300,33 @@ async function loadSave(): Promise<void> {
     isDone: () => save.tutDone,
     setDone: (v) => {
       save.tutDone = v;
-      if (v && save.tutSnapPending && typeof save.tutSnapPending === 'object'
-        && 'view' in save.tutSnapPending) {
-        const restored = _sanitizeView((save.tutSnapPending as { view: unknown }).view);
-        nav = viewToNav(restored);
-        save.savedView = restored;
+      if (v && trainingSnapshotView !== undefined) {
+        const restored = smokeRejectNextTrainingRouteResolution
+          ? (smokeRejectNextTrainingRouteResolution = false, { ok: false as const, reason: 'source-error' as const })
+          : resolveViewToNav(trainingSnapshotView);
+        if (!restored.ok && restored.reason === 'source-error') {
+          /* A transient generator failure is not evidence that the veteran's
+             pre-drill location is stale. Keep the exact one-key snapshot and
+             incomplete-training marker so the next load can retry it. The
+             lesson UI is already closed, so restore the proven Sol system
+             starting state before the Training module's persist callback. */
+          save.tutDone = false;
+          const retryNav = trainingSolSystemNav();
+          if (retryNav) {
+            nav = retryNav;
+            savedRouteWriteHeld = false;
+            save.savedView = navToView(nav);
+            rerender();
+          }
+          toast('Route verification paused', 'Your pre-training location is still saved. Reload to retry Field Training safely.', true);
+          return;
+        }
+        const authorized = restored.ok && navigationAuthorityFailure(restored.state) === null;
+        nav = authorized ? restored.state : NAV_HOME;
+        save.savedView = authorized ? navToView(nav) : null;
+        savedRouteWriteHeld = false;
         save.tutSnapPending = null;
+        trainingSnapshotView = undefined;
         rerender();
       }
       /* Training schedules its own post-finish focus restoration at 0ms.
@@ -3424,7 +3550,11 @@ async function loadSave(): Promise<void> {
     api: {
       state: () => ({
         mode: nav.mode, gal: nav.gal?.seed ?? null, star: nav.star?.seed ?? null,
-        planet: nav.planet?.seed ?? null,
+        planet: nav.planet?.seed ?? null, planetOrdinal: nav.planet?.ordinal ?? null,
+        navGalaxyKey: nav.mode === 'universe' ? null : getProvenGalaxyKey(nav.gal),
+        navStarKey: nav.mode === 'system' || nav.mode === 'surface' ? getProvenStarKey(nav.star) : null,
+        navWorldKey: nav.mode === 'surface' ? getProvenPlanetKey(nav.planet) : null,
+        renderedScene: renderedSceneReceipt,
         galX: nav.gal?.x ?? null, galY: nav.gal?.y ?? null, galSize: nav.gal?.size ?? null,
         starX: nav.star?.x ?? null, starY: nav.star?.y ?? null,
         fine: !!fineLayer, solVisible: !!(solMark && solMark.visible),
@@ -3442,6 +3572,8 @@ async function loadSave(): Promise<void> {
         tutActive: trainingActive(), tutStep: trainingStepId(), tutDone: save.tutDone,
         tutSnapshotPending: save.tutSnapPending,
         atlasCount: save.logMap.length,
+        atlasTravelable: save.logMap.filter(([, entry]) => atlasRouteStates.has(entry)).length,
+        savedRouteWriteHeld,
         sfxVol: save.sfxVol, motionMode: save.motionMode,
         fsMode: save.fsMode, toneMode: save.toneMode, fontMode: save.fontMode,
         glassA: getComputedStyle(document.documentElement).getPropertyValue('--glass-a').trim(),
@@ -3489,6 +3621,37 @@ async function loadSave(): Promise<void> {
       },
       __smokePersistAfterDebounce: () => { persistSoon(); return true; },
       __smokePersistNow: persistView,
+      __smokeAbortNextRenderBeforeReceipt: () => {
+        if (smokeAbortNextRenderBeforeReceipt) return false;
+        smokeAbortNextRenderBeforeReceipt = true;
+        return true;
+      },
+      __smokeRejectNextTrainingRouteResolution: () => {
+        if (smokeRejectNextTrainingRouteResolution) return false;
+        smokeRejectNextTrainingRouteResolution = true;
+        return true;
+      },
+      __smokeStageHeldRouteAtHome: () => {
+        /* A boot-time source error is deliberately nondeterministic and
+           therefore cannot be a browser fixture. Stage its exact post-boot
+           state from the current proven non-home route: runtime at Cosmos,
+           raw route retained, and only that route field write-held. */
+        if (nav.mode === 'universe' || savedRouteWriteHeld || trainingActive()
+          || replacementTransaction || replacementReloadPending || importWriteInFlight || activePersist) return false;
+        const heldView = navToView(nav);
+        if (heldView === null) return false;
+        save.savedView = heldView;
+        nav = NAV_HOME;
+        savedRouteWriteHeld = true;
+        closePanels();
+        hideSurvey();
+        lastCard = null;
+        cardCtx = null;
+        cardTravelAction = null;
+        surveyFocusReturn = null;
+        rerender({ skipPersist: true });
+        return true;
+      },
       encodeHere,   /* the share-code round trip, drivable by the smoke */
       cardShareCode,
       showReleaseFixture: (version = '2.0.0-test') => {
@@ -3509,6 +3672,24 @@ async function loadSave(): Promise<void> {
         }
         return null;
       },
+      planetScreenTarget: (selector: unknown) => {
+        if (nav.mode !== 'system' || !selector || typeof selector !== 'object' || Array.isArray(selector)) return null;
+        const value = selector as Record<string, unknown>;
+        if (!Number.isInteger(value.seed) || !Number.isInteger(value.ordinal)) return null;
+        const target = planetTargets.find(({ planet }) =>
+          planet.seed === value.seed && planet.ordinal === value.ordinal);
+        if (!target) return null;
+        const point = target.holder.getGlobalPosition();
+        const bounds = target.holder.getBounds();
+        return {
+          seed: target.planet.seed,
+          ordinal: target.planet.ordinal,
+          screenX: point.x,
+          screenY: point.y,
+          width: bounds.width,
+          height: bounds.height,
+        };
+      },
       fineStarProbe: () => {
         let visible = 0;
         let canvasHits = 0;
@@ -3526,27 +3707,26 @@ async function loadSave(): Promise<void> {
         }
         return { total: fineStarTargets.length, visible, canvasHits, samples };
       },
-      descendGalaxy: (seed: number) => {
-        const g = uniNodes.find((n) => n.seed === seed);
-        if (!g) return false;
-        descendGalaxy(g);
-        return true;
-      },
+      descendGalaxy,
       descendSystem,
-      surveyOn: (i: number) => {
-        if (nav.mode !== 'system' || !nav.star) return false;
-        const p = systemScene(nav.star.seed).planets[i];
+      surveyOn: (selector: unknown) => {
+        if (nav.mode !== 'system' || !selector || typeof selector !== 'object' || Array.isArray(selector)) return false;
+        const value = selector as Record<string, unknown>;
+        if (!Number.isInteger(value.seed) || !Number.isInteger(value.ordinal)) return false;
+        const p = systemScene(nav.star.seed).planets.find((candidate) =>
+          candidate.seed === value.seed && candidate.ordinal === value.ordinal);
         if (!p) return false;
-        surveyPlanet(p, nav.star.seed);
-        return true;
+        return surveyPlanet(p, nav.star);
       },
-      landHere: () => { doLand(); return true; },
-      landOn: (i: number) => {
-        if (nav.mode !== 'system' || !nav.star) return false;
-        const p = systemScene(nav.star.seed).planets[i];
+      landHere: doLand,
+      landOn: (selector: unknown) => {
+        if (nav.mode !== 'system' || !selector || typeof selector !== 'object' || Array.isArray(selector)) return false;
+        const value = selector as Record<string, unknown>;
+        if (!Number.isInteger(value.seed) || !Number.isInteger(value.ordinal)) return false;
+        const p = systemScene(nav.star.seed).planets.find((candidate) =>
+          candidate.seed === value.seed && candidate.ordinal === value.ordinal);
         if (!p) return false;
-        surveyAndLand(p, nav.star.seed);
-        return true;
+        return surveyAndLand(p, nav.star);
       },
     },
   };

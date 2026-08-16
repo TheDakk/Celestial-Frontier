@@ -1,7 +1,26 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import {
+  getCanonicalCF1AddressKey,
+  getProvenGalaxyKey,
+  getProvenPlanetKey,
+  getProvenStarKey,
+  isCanonicalCF1Address,
+  isProvenGalaxy,
+  isProvenPlanet,
+  isProvenPlanetFor,
+  isProvenStar,
+  isProvenStarFor,
   normalizeCF1Coordinate,
+  resolveCF1Galaxy,
+  resolveCF1GalaxyAddress,
+  resolveCF1Star,
+  resolveCF1StarAddress,
+  resolveCF1World,
   resolveCF1WorldAddress,
+  resolveCF1WorldAddressForDiagnostics,
+  type CF1GalaxyKey,
+  type CF1StarKey,
+  type CF1WorldKey,
   type CF1WorldAddressSourceOverrides,
 } from '@cf/scene';
 import { installCaptureHooks } from '@cf/domain-descriptors';
@@ -17,10 +36,36 @@ const HOME_CANDIDATE = {
   planet: { seed: 133 },
 };
 
+const FOREIGN_GALAXY = {
+  seed: 394332036,
+  x: -300.95,
+  y: 175.47,
+};
+const FOREIGN_STAR = { seed: 676840317, x: 27.3, y: -24.6 };
+const FOREIGN_WORLD = { seed: 127909732 };
+
 function success(result: ReturnType<typeof resolveCF1WorldAddress>) {
   expect(result.ok).toBe(true);
   if (!result.ok) throw new Error('expected a canonical address, received ' + result.reason);
   return result.address;
+}
+
+function galaxySuccess(result: ReturnType<typeof resolveCF1Galaxy>) {
+  expect(result.ok).toBe(true);
+  if (!result.ok) throw new Error('expected a proven galaxy, received ' + result.reason);
+  return result.galaxy;
+}
+
+function starSuccess(result: ReturnType<typeof resolveCF1Star>) {
+  expect(result.ok).toBe(true);
+  if (!result.ok) throw new Error('expected a proven star, received ' + result.reason);
+  return result.star;
+}
+
+function worldSuccess(result: ReturnType<typeof resolveCF1World>) {
+  expect(result.ok).toBe(true);
+  if (!result.ok) throw new Error('expected a proven planet, received ' + result.reason);
+  return result.planet;
 }
 
 function firstFineWorld(): { star: { seed: number; x: number; y: number }; planetSeed: number; cellX: number; cellY: number } {
@@ -71,10 +116,120 @@ describe('@cf/scene — canonical CF1 world-address proof', () => {
     });
     expect(address.planet).toEqual({ seed: 133, ordinal: 2 });
     expect(address.key).toBe('CF1|g:999@90,-60|s:424242@560,170|p:133#2');
+    expect(isProvenGalaxy(address.galaxy)).toBe(true);
+    expect(isProvenStarFor(address.star, address.galaxy)).toBe(true);
+    expect(isProvenPlanetFor(address.planet, address.star)).toBe(true);
+    expect(isCanonicalCF1Address(address)).toBe(true);
+    const galaxyKey: CF1GalaxyKey = getProvenGalaxyKey(address.galaxy)!;
+    const starKey: CF1StarKey = getProvenStarKey(address.star)!;
+    const worldKey: CF1WorldKey = getProvenPlanetKey(address.planet)!;
+    expect(galaxyKey).toBe('CF1|g:999@90,-60');
+    expect(starKey).toBe('CF1|g:999@90,-60|s:424242@560,170');
+    expect(worldKey).toBe(address.key);
+    expect(getCanonicalCF1AddressKey(address)).toBe(worldKey);
+  });
+
+  it('publishes canonical galaxy, star, and world address tiers without weakening the world shape', () => {
+    const galaxy = resolveCF1GalaxyAddress({ galaxy: HOME_CANDIDATE.galaxy });
+    expect(galaxy.ok).toBe(true);
+    if (!galaxy.ok) throw new Error(galaxy.reason);
+    expect(galaxy.address.key).toBe('CF1|g:999@90,-60');
+    expect(isCanonicalCF1Address(galaxy.address)).toBe(true);
+    expect('star' in galaxy.address).toBe(false);
+
+    const star = resolveCF1StarAddress({
+      galaxy: HOME_CANDIDATE.galaxy,
+      star: HOME_CANDIDATE.star,
+    });
+    expect(star.ok).toBe(true);
+    if (!star.ok) throw new Error(star.reason);
+    expect(star.address.key).toBe('CF1|g:999@90,-60|s:424242@560,170');
+    expect(isProvenStarFor(star.address.star, star.address.galaxy)).toBe(true);
+    expect(isCanonicalCF1Address(star.address)).toBe(true);
+    expect('planet' in star.address).toBe(false);
+
+    const world = success(resolveCF1WorldAddress(HOME_CANDIDATE));
+    expect(Object.keys(world).sort()).toEqual(['format', 'galaxy', 'key', 'planet', 'star']);
+  });
+
+  it('accepts an independently re-proven equivalent parent but rejects structural clones', () => {
+    const galaxyA = galaxySuccess(resolveCF1Galaxy(HOME_CANDIDATE.galaxy));
+    const galaxyB = galaxySuccess(resolveCF1Galaxy({ ...HOME_CANDIDATE.galaxy }));
+    expect(galaxyA).not.toBe(galaxyB);
+    expect(getProvenGalaxyKey(galaxyA)).toBe(getProvenGalaxyKey(galaxyB));
+
+    const starA = starSuccess(resolveCF1Star(galaxyA, HOME_CANDIDATE.star));
+    const starB = starSuccess(resolveCF1Star(galaxyB, { ...HOME_CANDIDATE.star }));
+    expect(isProvenStarFor(starA, galaxyB)).toBe(true);
+    expect(isProvenStarFor(starB, galaxyA)).toBe(true);
+    expect(getProvenStarKey(starA)).toBe(getProvenStarKey(starB));
+
+    const planet = worldSuccess(resolveCF1World(starA, HOME_CANDIDATE.planet));
+    expect(isProvenPlanetFor(planet, starB)).toBe(true);
+
+    const galaxyClone = { ...galaxyA, parentCell: { ...galaxyA.parentCell } };
+    expect(isProvenGalaxy(galaxyClone)).toBe(false);
+    expect(getProvenGalaxyKey(galaxyClone)).toBeNull();
+    expect(resolveCF1Star(galaxyClone, HOME_CANDIDATE.star)).toEqual({
+      ok: false,
+      reason: 'unproven-parent',
+    });
+
+    const starClone = { ...starA, parentCell: { ...starA.parentCell } };
+    expect(isProvenStar(starClone)).toBe(false);
+    expect(getProvenStarKey(starClone)).toBeNull();
+    expect(resolveCF1World(starClone, HOME_CANDIDATE.planet)).toEqual({
+      ok: false,
+      reason: 'unproven-parent',
+    });
+  });
+
+  it('deep-freezes trusted nodes and addresses, and rejects an address clone', () => {
+    const address = success(resolveCF1WorldAddress(HOME_CANDIDATE));
+    for (const value of [
+      address,
+      address.galaxy,
+      address.galaxy.parentCell,
+      address.star,
+      address.star.parentCell,
+      address.planet,
+    ]) expect(Object.isFrozen(value)).toBe(true);
+
+    expect(() => {
+      (address.galaxy as unknown as { x: number }).x = 9999;
+    }).toThrow(TypeError);
+    expect(address.galaxy.x).toBe(HOME_POS.x);
+
+    const addressClone = { ...address };
+    expect(isCanonicalCF1Address(addressClone)).toBe(false);
+    expect(getCanonicalCF1AddressKey(addressClone)).toBeNull();
+  });
+
+  it('proves a foreign hierarchy and rejects real children under the wrong proven parent', () => {
+    const home = galaxySuccess(resolveCF1Galaxy(HOME_CANDIDATE.galaxy));
+    const homeStar = starSuccess(resolveCF1Star(home, HOME_CANDIDATE.star));
+    const foreign = galaxySuccess(resolveCF1Galaxy(FOREIGN_GALAXY));
+    const foreignStar = starSuccess(resolveCF1Star(foreign, FOREIGN_STAR));
+    const foreignPlanet = worldSuccess(resolveCF1World(foreignStar, FOREIGN_WORLD));
+    expect(getProvenPlanetKey(foreignPlanet)).toBe(
+      'CF1|g:394332036@-300.95,175.47|s:676840317@27.3,-24.6|p:127909732#0',
+    );
+    expect(isProvenStarFor(foreignStar, home)).toBe(false);
+    expect(isProvenPlanetFor(foreignPlanet, homeStar)).toBe(false);
+    expect(resolveCF1Star(home, FOREIGN_STAR)).toEqual({ ok: false, reason: 'star-not-found' });
+    expect(resolveCF1Star(foreign, HOME_CANDIDATE.star)).toEqual({ ok: false, reason: 'star-not-found' });
+    expect(resolveCF1World(homeStar, FOREIGN_WORLD)).toEqual({ ok: false, reason: 'planet-not-found' });
+    expect(resolveCF1World(foreignStar, HOME_CANDIDATE.planet)).toEqual({ ok: false, reason: 'planet-not-found' });
   });
 
   it('resolves a planet-bearing fine-layer star through its own generated parent cell', () => {
     const fine = firstFineWorld();
+    expect(fine).toMatchObject({
+      star: { seed: 1664319693, x: -164.45360307302326, y: -117.94395204260945 },
+      planetSeed: 227704593,
+      cellX: -12,
+      cellY: -9,
+    });
     const address = success(resolveCF1WorldAddress({
       galaxy: HOME_CANDIDATE.galaxy,
       star: fine.star,
@@ -86,7 +241,10 @@ describe('@cf/scene — canonical CF1 world-address proof', () => {
       parentCell: { x: fine.cellX, y: fine.cellY },
     });
     expect(address.planet.seed).toBe(fine.planetSeed);
-    expect(address.planet.ordinal).toBeGreaterThanOrEqual(0);
+    expect(address.planet.ordinal).toBe(0);
+    expect(address.key).toBe('CF1|g:999@90,-60|s:1664319693@-164.45,-117.94|p:227704593#0');
+    expect(isProvenStarFor(address.star, address.galaxy)).toBe(true);
+    expect(isProvenPlanetFor(address.planet, address.star)).toBe(true);
   });
 
   it('normalizes the public two-decimal CF1 coordinates from source data, not caller precision', () => {
@@ -109,11 +267,14 @@ describe('@cf/scene — canonical CF1 world-address proof', () => {
       fineStarsInCell: () => [],
       systemFor: () => ({ planets: [{ P: { seed: 9 } }] }),
     };
-    const address = success(resolveCF1WorldAddress({
+    const diagnostic = resolveCF1WorldAddressForDiagnostics({
       galaxy: { seed: rawGalaxy.seed, x: 400, y: 0 },
       star: { seed: rawStar.seed, x: 42, y: 0 },
       planet: { seed: 9 },
-    }, sources));
+    }, sources);
+    expect(diagnostic.ok).toBe(true);
+    if (!diagnostic.ok) throw new Error('expected diagnostic address, received ' + diagnostic.reason);
+    const address = diagnostic.address;
     expect(address.galaxy).toMatchObject({
       x: 400,
       y: 0,
@@ -134,6 +295,11 @@ describe('@cf/scene — canonical CF1 world-address proof', () => {
     });
     expect(address.key).toBe('CF1|g:7@400,0|s:8@42,0|p:9#0');
     expect(normalizeCF1Coordinate(-0.001)).toBe(0);
+    expect(isProvenGalaxy(address.galaxy)).toBe(false);
+    expect(isProvenStar(address.star)).toBe(false);
+    expect(isProvenPlanet(address.planet)).toBe(false);
+    expect(isCanonicalCF1Address(address)).toBe(false);
+    expect(getProvenGalaxyKey(address.galaxy)).toBeNull();
   });
 
   it('rejects a forged parent, a wrong child, and malformed public bytes before any receipt could exist', () => {
@@ -164,6 +330,70 @@ describe('@cf/scene — canonical CF1 world-address proof', () => {
     ]) {
       expect(resolveCF1WorldAddress(malformed)).toEqual({ ok: false, reason: 'malformed-address' });
     }
+
+    expect(resolveCF1Galaxy({ seed: -1, x: 0, y: 0 })).toEqual({
+      ok: false,
+      reason: 'malformed-address',
+    });
+    const galaxy = galaxySuccess(resolveCF1Galaxy(HOME_CANDIDATE.galaxy));
+    expect(resolveCF1Star(galaxy, { seed: SOL_SEED, x: NaN, y: SOL_POS.y })).toEqual({
+      ok: false,
+      reason: 'malformed-address',
+    });
+    const star = starSuccess(resolveCF1Star(galaxy, HOME_CANDIDATE.star));
+    expect(resolveCF1World(star, { seed: '133' })).toEqual({
+      ok: false,
+      reason: 'malformed-address',
+    });
+  });
+
+  it('bounds public and legacy raw coordinates before generator resolution', () => {
+    expect(normalizeCF1Coordinate(10_000_000)).toBe(10_000_000);
+    expect(normalizeCF1Coordinate(-10_000_000)).toBe(-10_000_000);
+    /* These first two would round back onto the accepted boundary if the cap
+       were applied only after legacy two-decimal normalization. */
+    for (const outside of [
+      10_000_000.001,
+      -10_000_000.001,
+      Number.MAX_SAFE_INTEGER,
+      -1e100,
+    ]) expect(normalizeCF1Coordinate(outside)).toBeNull();
+
+    const hugePersistedGalaxy = {
+      ...HOME_CANDIDATE,
+      galaxy: { ...HOME_CANDIDATE.galaxy, x: Number.MAX_SAFE_INTEGER },
+    };
+    const hugePersistedStar = {
+      ...HOME_CANDIDATE,
+      star: { ...HOME_CANDIDATE.star, y: -1e100 },
+    };
+    expect(resolveCF1WorldAddress(hugePersistedGalaxy)).toEqual({
+      ok: false,
+      reason: 'malformed-address',
+    });
+    expect(resolveCF1WorldAddress(hugePersistedStar)).toEqual({
+      ok: false,
+      reason: 'malformed-address',
+    });
+    expect(resolveCF1Galaxy(hugePersistedGalaxy.galaxy)).toEqual({
+      ok: false,
+      reason: 'malformed-address',
+    });
+
+    const home = galaxySuccess(resolveCF1Galaxy(HOME_CANDIDATE.galaxy));
+    expect(resolveCF1Star(home, hugePersistedStar.star)).toEqual({
+      ok: false,
+      reason: 'malformed-address',
+    });
+
+    let sourceCalls = 0;
+    expect(resolveCF1WorldAddressForDiagnostics(hugePersistedGalaxy, {
+      galaxiesInCell: () => {
+        sourceCalls++;
+        return [];
+      },
+    })).toEqual({ ok: false, reason: 'malformed-address' });
+    expect(sourceCalls).toBe(0);
   });
 
   it('★ fails closed rather than choosing the first duplicate source match (injectable resolver control)', () => {
@@ -178,10 +408,114 @@ describe('@cf/scene — canonical CF1 world-address proof', () => {
         return [...generated, { ...home }];
       },
     };
-    expect(resolveCF1WorldAddress(HOME_CANDIDATE, sources)).toEqual({
+    expect(resolveCF1WorldAddressForDiagnostics(HOME_CANDIDATE, sources)).toEqual({
       ok: false,
       reason: 'galaxy-ambiguous',
     });
+  });
+
+  it('rejects a star duplicated across the coarse and fine source layers', () => {
+    const fineCellX = Math.floor(SOL_POS.x / FCELL);
+    const fineCellY = Math.floor(SOL_POS.y / FCELL);
+    const sources: CF1WorldAddressSourceOverrides = {
+      fineStarsInCell: (_seed, _profile, cellX, cellY) => (
+        cellX === fineCellX && cellY === fineCellY
+          ? [{ seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y }]
+          : []
+      ),
+    };
+    expect(resolveCF1WorldAddressForDiagnostics(HOME_CANDIDATE, sources)).toEqual({
+      ok: false,
+      reason: 'star-ambiguous',
+    });
+  });
+
+  it('rejects duplicate planet seeds instead of choosing the first source ordinal', () => {
+    const sources: CF1WorldAddressSourceOverrides = {
+      systemFor: () => ({
+        planets: [
+          { name: 'First', orb: 60, P: { seed: 133 } },
+          { name: 'Second', orb: 220, P: { seed: 133 } },
+        ],
+      }),
+    };
+    expect(resolveCF1WorldAddressForDiagnostics(HOME_CANDIDATE, sources)).toEqual({
+      ok: false,
+      reason: 'planet-ambiguous',
+    });
+  });
+
+  it('fails closed when any hierarchy source throws', () => {
+    const throwingSources: CF1WorldAddressSourceOverrides[] = [
+      { galaxiesInCell: () => { throw new Error('galaxy source'); } },
+      { galaxyProfile: () => { throw new Error('profile source'); } },
+      { starsInCell: () => { throw new Error('coarse source'); } },
+      { fineStarsInCell: () => { throw new Error('fine source'); } },
+      { systemFor: () => { throw new Error('system source'); } },
+    ];
+    for (const sources of throwingSources) {
+      expect(resolveCF1WorldAddressForDiagnostics(HOME_CANDIDATE, sources)).toEqual({
+        ok: false,
+        reason: 'source-error',
+      });
+    }
+  });
+
+  it('fails closed when any inspected hierarchy source entry is malformed', () => {
+    const malformedSources: CF1WorldAddressSourceOverrides[] = [
+      { galaxiesInCell: () => [null] },
+      { starsInCell: () => ({ stars: [null] }) },
+      { fineStarsInCell: () => [null] },
+      { systemFor: () => ({ planets: [{ name: 'Earth', orb: 100, P: { seed: 133 } }, null] }) },
+    ];
+    for (const sources of malformedSources) {
+      expect(resolveCF1WorldAddressForDiagnostics(HOME_CANDIDATE, sources)).toEqual({
+        ok: false,
+        reason: 'source-error',
+      });
+    }
+  });
+
+  it('captures source ordinal before any presentation sort', () => {
+    const rawGalaxy = { seed: 7, x: 10, y: 10, size: 31, sp: 5, tilt: 0.4, rot: 0.3 };
+    const rawStar = { seed: 8, x: 20, y: 20 };
+    const planets = [
+      { name: 'Outer', orb: 220, P: { seed: 9001 } },
+      { name: 'Inner', orb: 60, P: { seed: 9002 } },
+      { name: 'Middle', orb: 140, P: { seed: 9003 } },
+    ];
+    const sources: CF1WorldAddressSourceOverrides = {
+      galaxiesInCell: (cellX, cellY) => cellX === 0 && cellY === 0 ? [rawGalaxy] : [],
+      galaxyProfile: () => ({}),
+      starsInCell: (_seed, _profile, cellX, cellY) => ({
+        stars: cellX === 0 && cellY === 0 ? [rawStar] : [],
+      }),
+      fineStarsInCell: () => [],
+      systemFor: () => ({ planets }),
+    };
+    const candidate = {
+      galaxy: { seed: 7, x: 10, y: 10 },
+      star: { seed: 8, x: 20, y: 20 },
+      planet: { seed: 9001 },
+    };
+    const outer = resolveCF1WorldAddressForDiagnostics(candidate, sources);
+    expect(outer.ok).toBe(true);
+    if (!outer.ok) throw new Error(outer.reason);
+    expect(outer.address.planet).toEqual({ seed: 9001, ordinal: 0 });
+    expect(outer.address.key).toBe('CF1|g:7@10,10|s:8@20,20|p:9001#0');
+
+    const inner = resolveCF1WorldAddressForDiagnostics({
+      ...candidate,
+      planet: { seed: 9002 },
+    }, sources);
+    expect(inner.ok).toBe(true);
+    if (!inner.ok) throw new Error(inner.reason);
+    expect(inner.address.planet).toEqual({ seed: 9002, ordinal: 1 });
+    expect([...planets].sort((a, b) => a.orb - b.orb).map((planet) => planet.P.seed)).toEqual([
+      9002,
+      9003,
+      9001,
+    ]);
   });
 
   it('★ derives Earth’s presentation from source, never an attacker-controlled share tuple', () => {
@@ -215,7 +549,7 @@ describe('@cf/scene — canonical CF1 world-address proof', () => {
           : galaxy);
       },
     };
-    expect(resolveCF1WorldAddress(HOME_CANDIDATE, sources)).toEqual({
+    expect(resolveCF1WorldAddressForDiagnostics(HOME_CANDIDATE, sources)).toEqual({
       ok: false,
       reason: 'source-error',
     });

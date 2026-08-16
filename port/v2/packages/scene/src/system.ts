@@ -9,6 +9,8 @@ export interface PlanetNode {
   name: string;
   orb: number;                          /* orbit radius — render order derives from it */
   seed: number;
+  /** Stable source identity: index in systemFor(...).planets before orbit sorting. */
+  ordinal: number;
   type: string;
   ring: boolean;
   moons: number;
@@ -28,13 +30,20 @@ export interface SystemScene {
   hz: unknown;
 }
 
-export function systemScene(starSeed: number): SystemScene {
-  const sys = systemFor(starSeed) as Record<string, unknown>;
+/** Focused composition seam. Production callers omit it and use systemFor. */
+export type SystemSceneSource = (starSeed: number) => Record<string, unknown>;
+
+export function systemScene(
+  starSeed: number,
+  source: SystemSceneSource = systemFor as unknown as SystemSceneSource,
+): SystemScene {
+  const sys = source(starSeed);
   const planets = ((sys.planets || []) as Array<{ name?: string; orb?: number; P: Record<string, unknown> }>)
-    .map((pl) => ({
+    .map((pl, ordinal) => ({
       name: pl.name || 'Planet',
       orb: pl.orb ?? 0,
       seed: pl.P.seed as number,
+      ordinal,
       type: (pl.P.type as string) || 'rocky',
       ring: !!pl.P.ring,
       moons: (pl.P.moons as number) || 0,

@@ -1,5 +1,28 @@
 # Celestial Frontier — Determinism Discipline
 
+> **2026-08-15 F2 canonical-ingress overlay (current code):** Deterministic
+> coordinates are not self-authenticating. Every public or persisted galaxy,
+> star and planet candidate admitted to navigation is regenerated from the
+> production WorldGen source, with each child beneath its already proven parent.
+> Exactly one match mints a deeply frozen
+> proven node whose registry/key ownership is module-private; structural/JSON
+> clones lose trust, while an independently re-resolved equivalent parent compares by
+> the same canonical parent key. Test-only source injection returns frozen
+> diagnostic data that cannot enter the production provenance registries.
+>
+> Planet canonical identity includes its source ordinal, captured from
+> `systemFor(star).planets` before `systemScene` sorts by orbit. Thus rendering
+> order cannot change the identity used by navigation or actions. Strict CF1
+> input is length-bounded before marker scanning, decoded with fatal UTF-8,
+> limited to exact uint32 seeds and two-decimal coordinates within ±10,000,000,
+> and rejected when a hierarchy tier is missing or ambiguous. `navToView()`
+> deliberately strips the runtime brands, keys, source cells, layer and ordinal;
+> a reload must re-prove the compatibility route from source.
+>
+> F2 adds no action/outcome RNG domain, changes no generator stream/output, and
+> does not wire SessionRNG, outcome receipts, ownership ledgers or a persisted
+> action ordinal. It also does not establish browser/CI or human Gate completion.
+
 > **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** The hardened
 > `@cf/domain-sessionrng` service is currently a tested primitive only; no live v2
 > combat, loot, breeding or expedition action consumes/persists it. A browser
@@ -45,7 +68,7 @@
 > Static generation remains independent of browser timing.
 
 **STATUS:** legacy sections match `main.js` + `tools/` as of 2026-08-12; the
-v2 overlay matches `port/v2` as of 2026-08-11. The 2026-07-30 pass added §6's
+dated v2 overlays match `port/v2` as of 2026-08-15. The 2026-07-30 pass added §6's
 "WHEN art is drawn is not fingerprint input", corrected the layout gate to 10
 viewports, and registered `bootperf.js` + `simrun dom` in the battery.
 **Purpose:** the single law that governs the whole game — every world, genome, descriptor, portrait, duel and share code is a pure function of seeds, so the same address regenerates byte-for-byte on every device, forever, with no server.

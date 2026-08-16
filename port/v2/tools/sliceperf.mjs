@@ -104,7 +104,7 @@ for (let i = 0; i < 80; i++) {
   await sleep(250);
 }
 const galMs = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
-  S.api.descendGalaxy ? (S.api.descendGalaxy(999) || true) : false;
+  if(!S.api.descendGalaxy||!S.api.descendGalaxy({seed:999,x:90,y:-60})) return -1;
   return new Promise(r=>setTimeout(()=>r(S.api.state().galaxyBuildMs), 800)); })()`).catch(() => -1);
 
 console.log(`SLICE PERF @ ${THROTTLE}× CPU (phone 390×844@3x):`);

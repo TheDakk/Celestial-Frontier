@@ -1,5 +1,51 @@
 # Celestial Frontier — Save System
 
+> **2026-08-15 F2 canonical-ingress overlay (current code; no schema
+> change):** A route read from public CF1 text, `view`, an Atlas row, or the
+> current v2 Field Training snapshot is evidence to check, never navigation
+> authority. The app regenerates the claimed galaxy, then star, then planet
+> from the production seeded sources and constructs a frozen, runtime-proven
+> `NavState` only after every claimed tier matches. Proven nodes, branded
+> canonical keys, source cells, star layer and planet ordinal are runtime-only
+> facts backed by private registries. `navToView()` projects them back to the exact compatibility
+> route shape; none of those proof fields is written to the v4 envelope.
+>
+> The importer retains a bounded, deeply frozen projection of the raw saved
+> route plus pre-repair Atlas `where` evidence in out-of-schema runtime
+> sidecars. Atlas evidence is keyed by the exact imported row object; after
+> source resolution, the app keeps the actionable proven `NavState` in a
+> private `WeakMap`. Neither sidecar belongs to `SaveStateV2` or is passed to
+> `exportSaveV2`. A deterministically stale, forged, incomplete, ambiguous or
+> no-longer-authorized saved location repairs **only** `view` to Cosmos; the
+> rest of the supported expedition remains loaded. A transient generator/source
+> error is not stale proof, so that one route field is held rather than
+> overwritten while unrelated progress may still save. Atlas history likewise remains visible,
+> but any row without runtime proof is disabled instead of acting through its
+> tolerant saved fields.
+>
+> Field Training recognizes only the exact current one-key `{view}` pending
+> snapshot as restorable route evidence and re-proves it before a normal Finish
+> or Skip restores it. A `source-error` is not stale-snapshot authority: the app
+> returns `tutDone` to false, retains that exact pending snapshot, and attempts
+> to re-prove the canonical Sol system before Training's persistence callback.
+> When Sol proof succeeds, the current saved route becomes Sol and reload opens
+> Welcome there for a safe retry while the original snapshot remains intact. If
+> Sol proof itself is unavailable, the app does not forge a fallback or clear
+> the retry evidence; this is a conditional recovery, not a promise that an
+> arbitrary global generator outage can mint a Sol route.
+>
+> The repaired complete one-attempt local `smoke:ci` is terminal-green on the
+> tested dirty-tree candidate and proves the injected one-shot source-error,
+> proven-Sol persistence, reload retry, and unrelated-ledger preservation
+> outcome. The complete 12-viewport Glass Matrix is separately terminal-green;
+> both reports bind Edge `151.0.4129.86` and working-tree digest
+> `7dfa649eb7de017424b7ba1ba0b11ba1fd00dc02a5b99b6848e0f3c347acba9e`.
+> This is not exact-head CI, integration, human or rubric-Gate certification.
+> Richer legacy/full-expedition `tsnap` objects remain
+> `legacy-or-unknown`; **D-TRAIN-1 is still open**. F2 adds no save-schema
+> migration or revisions/CAS, creates no ownership or reward receipt, migrates
+> no local ownership/progression ledger, and bumps no schema/version/release.
+
 > **2026-08-13 v2 next-arc overlay — PLANNED, not current code:** The current
 > v2 repository still persists one exported save blob and has no revision/CAS
 > authority; multiple tabs are last-writer-wins. `@cf/domain-sessionrng` exists as

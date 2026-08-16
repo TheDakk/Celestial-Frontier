@@ -5,6 +5,72 @@
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 overlay matches code and live handoff as of 2026-08-15.**
+> **2026-08-15 F2 canonical-ingress overlay (current working tree; complete
+> local browser outcome green, exact-head integration pending):**
+> `port/v2/packages/scene/src/address.ts` now owns
+> production galaxy/star/planet candidates, resolvers, deeply frozen proven
+> nodes, runtime-private registries and branded canonical keys. Star and planet
+> parent guards compare those private canonical parent keys, so an independent
+> proof of the same parent is valid while structural clones and cross-hierarchy
+> children fail. `cf1-code.ts` parses strict bounded all-tier public input;
+> diagnostic source overrides deliberately return untrusted frozen data.
+> `zoommode.ts` replaces nullable alias-prone navigation with a frozen,
+> registered discriminated `NavState`, validated transitions, canonical-address
+> conversion and strict `resolveViewToNav()`. `system.ts` records planet source
+> ordinal before its orbit sort; runtime action identity and the world key use
+> `{seed,ordinal}`.
+>
+> `apps/game/src/main.ts` routes generated galaxy/star/planet actions, all CF1
+> Search tiers, saved boot/import, Atlas and the exact current one-key Field
+> Training `{view}` snapshot through that seam. The app authorizes a proven
+> destination against saved Prime/Charter reach before committing destination
+> navigation, an accepted name, a route-focused planet card, Land, progression
+> or persistence. Planet routes focus the proven
+> system survey and never land. `@cf/persistence` keeps bounded raw saved-route,
+> Atlas-row and current-snapshot evidence in `ImportRouteIngressV2`, outside
+> `SaveStateV2`; the app holds proven Atlas navigation in a private `WeakMap`.
+> Deterministically invalid or unauthorized saved navigation repairs only
+> `view` to Cosmos. A generator `source-error` holds that route field, and the
+> current Training restore keeps its pending snapshot and incomplete state;
+> when Sol can be newly proven and authorized, it commits that safe system
+> before persistence so reload can reopen Welcome for retry. Atlas rows
+> without runtime proof remain visible and disabled. `navToView()` preserves
+> the compatibility route shape while excluding brands, keys, parent cells,
+> star layer and planet ordinal.
+>
+> The first F2 real-browser attempt was red after real accepted galaxy
+> navigation: `hudText()` passed frozen `ProvenGalaxy` to lifted
+> `galaxyStats()`, whose legacy memoizer assigns `_stats` to its input. The
+> caller-side repair neither unfreezes provenance nor edits the lifted helper;
+> `statsForProvenGalaxy()` passes a disposable mutable spread and caches only
+> frozen `{stars,planets}` in an app `WeakMap`. `scene/universe.ts` separately
+> copies and freezes nested collision `bridge` data while composing scene
+> nodes, with a focused mutation control that proves later composition cannot
+> inherit a poisoned memoized value; the intentionally identity-preserving
+> `systemScene.P` remains presentation-only and never mints route authority.
+> `slicesmoke.mjs` contains all-ingress outcome controls plus a draw-tail
+> receipt that joins rendered scene mode/keys to canonical navigation. Final
+> audit added held-route Training Restart transfer/rollback and non-null
+> per-mode provenance-key controls. A CI-format rendered-copy run then failed
+> closed because its bare expected title did not include the real icon-prefixed
+> Guide heading, despite complete required copy and no contradiction. After the
+> contained-title identity correction, `smoke:ci` passed with zero findings or
+> retries in 138,305 ms; the 12-viewport Glass Matrix passed in 55,065 ms with
+> zero findings/instrument failures. Both reports bind Edge `151.0.4129.86` and
+> dirty-tree digest
+> `7dfa649eb7de017424b7ba1ba0b11ba1fd00dc02a5b99b6848e0f3c347acba9e`.
+> The static suite is 27 files / 340 passed / 1 skipped; both TypeScript programs,
+> `artunused`, art routing/coverage/spec controls, diff hygiene and the 790-module
+> app build are green. This remains dirty-working-tree evidence, not exact-head
+> CI, integration or rubric-Gate completion.
+>
+> This overlay supersedes the scope limits in the dated 2026-08-13 CF1 and
+> 2026-08-11 integration notes below, but not their history. F2 changes no
+> generator output, share-code/save schema, reach balance, Guide capability,
+> Training lessons, local ownership ledgers, ownership/reward/receipt writer,
+> version or release. D-TRAIN-1 remains open for richer legacy snapshots; F3
+> still owns revisions/CAS/split stores/receipt journal, and F4 owns clock,
+> visibility, active-play and SessionRNG policy.
 > **2026-08-15 F1b WorldGen contract overlay:** The byte-verbatim WorldGen body,
 > generated values, cache keys and call order are unchanged. Its typed surface
 > now exposes required own `GalaxyCellGalaxies.web` metadata and the exact

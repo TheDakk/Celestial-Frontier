@@ -10,8 +10,12 @@
 > UI-P1 registered panel-chrome dismissal is integrated at merge
 > `b5e5d0a3b4bb4057fa6d251816454b370e8b2624`; the truthful WorldGen contract is integrated at
 > merge `a50e593e2135f55ae8c37e6ece1f10c52701346b`; audio pre-initialization hardening is integrated at
-> merge `44925f62abdfcdf9c17e512dd49a57a183e217ec`. The epoch persistence contract is the active
-> bounded F1b batch; later product batches remain planned.
+> merge `44925f62abdfcdf9c17e512dd49a57a183e217ec`; the epoch persistence contract is integrated at
+> merge `5171abcdc538938fdf5ac82688d1ab868da6ff48`. F2 canonical ingress and discriminated navigation
+> is the active implementation batch: its pure provenance/navigation/import seams, app migration,
+> canonical render receipt, final local browser core-loop proof, and 12-viewport Glass Matrix are in
+> the working candidate. Exact-head CI, merge integration, and mapped publication evidence remain
+> open. No F2 or Gate completion is claimed yet. Later product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -432,14 +436,29 @@ programs and `artunused` pass, and the final complete browser run is green with 
 epoch `1`. Deliberately restoring the old production `base()` write turns that same run red with
 `before:0, after:1, stored:0, reloaded:0`; restoring `current()` returns it to green without retry or
 timeout change. Three independent read-only source, harness/control and documentation/handoff audits
-are clean after their findings were resolved. Committed exact-head CI, review/waiver and integration
-evidence remain pending.
+are clean after their findings were resolved. The exact final-head and integration evidence follows.
+
+**PR #29 final integration record (2026-08-15):** exact final head
+`f6d89b01600effd04599326d0e024c7ad2ee3a4d` passed every required job and final join in test-battery
+run [`31908610283`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31908610283).
+PR #29 merged normally into `develop` at
+`5171abcdc538938fdf5ac82688d1ab868da6ff48`; that exact merge passed every job and final join in
+`develop` test-battery run
+[`31919155384`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31919155384). Mapped
+publication run [`31919904024`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/31919904024)
+passed development, skipped production, and serves public DEV build `develop-5171abcdc538` from the
+full merge SHA. This integrates only the bounded DOM-1 epoch persistence contract; it does not close
+F2, F3, F4, any product Arc, a Gate, production versioning, release, or deployment authority.
 
 **Amendment:** do not implement the sweep’s DOM-10 wording literally. Eleven legacy outcome call
 sites do not prove there should be eleven semantic RNG domain keys. F4 first owns a complete
 call-site → semantic-domain inventory.
 
 ### 4.3 F2 — canonical ingress and discriminated navigation
+
+**Status (2026-08-15): [PARTIAL] locally proven working candidate; implementation, static,
+all-ingress browser and Glass Matrix evidence is green, while exact-head PR CI, merge integration,
+the resulting `develop` battery and mapped publication evidence remain open.**
 
 **Goal:** close the forged star/galaxy CF1 bypass and establish one provenance boundary for every
 current and future world-bound action.
@@ -462,6 +481,46 @@ ambiguous source, source exception, stale boot state, and every ingress class mu
 render foreign content, land, bank Charter credit, persist, or award.
 
 **Hard no-go:** no world-bound ownership, reward, or receipt writer before F2 closes.
+
+**Current implementation/evidence record (2026-08-15):** the working candidate carries tiered
+runtime provenance; immutable discriminated `NavState`; strict galaxy/star/planet CF1 parsing;
+raw, non-serializing saved-view/Atlas/Training ingress evidence; source-order planet ordinal;
+resolver → authorization → commit ordering across generated, Search, boot, Atlas, current one-key
+Training, legacy-slice, and diagnostic ingress; and a canonical render receipt recorded only after
+the scene draw tail. The complete static suite is green at **27 files / 340 passed / 1 skipped**;
+focused ingress controls, both TypeScript programs, `artunused`, and the production build are green.
+
+The first complete local `npm run smoke` remained red and is preserved as evidence. It exposed a
+real integration defect: lifted `galaxyStats` memoizes by mutating its argument, while a
+`ProvenGalaxy` is deliberately frozen. The repair passes a disposable mutable presentation copy to
+that helper and retains only frozen `{stars, planets}` in an app-owned WeakMap keyed by the proven
+galaxy. The same run also exposed harness drift: its stage-0 Charter setup selected Sol, its fixture
+names ignored the established 24-character import normalization, and its saved-route, Training, and
+Records expectations ignored the established first-export union of landed, conquered, and mined
+census worlds. The repaired controls use real Arrow/Enter input to select a generated non-Sol star,
+apply the fixed name contract, and compare the later persistence/Records stages to the normalized
+save without relaxing navigation, progress, raw-IDB, or render-receipt outcomes.
+
+Final audit added exact held-route Training Restart success/rollback and non-null provenance-key
+controls. The first CI-format rendered-copy run then failed closed on its own title predicate:
+required phrases were all present and contradiction guards were false, but icon-prefixed Guide
+headings were compared to bare titles. The contained-title identity fix preserves the cross-topic
+failure direction. The next diagnosed one-attempt `npm run smoke:ci` passed with zero findings,
+zero automatic retries, Edge `151.0.4129.86`, 138,305 ms, ten run-id-bound screenshots, and dirty
+working-tree digest `7dfa649eb7de017424b7ba1ba0b11ba1fd00dc02a5b99b6848e0f3c347acba9e`.
+Browser-path, CDP, smoke-report, and Glass-report selftests passed. The complete 12-viewport Glass
+Matrix binds that same digest/browser, passed in 55,065 ms, and recorded zero findings, zero
+instrument failures, and zero retries.
+
+This is mutable-working-tree evidence only. Exact-head PR CI, merge integration, and the resulting
+`develop` battery/publication remain mandatory; this record does not close F2, Gate D, any other
+Gate, a release, versioning, or deployment authority.
+
+Draft PR [#30](https://github.com/TheDakk/Celestial-Frontier/pull/30) opened from exact implementation
+commit `3cc61f9d71b1073cacece8dfeb44c2dd2fd93b3d` into `develop`. The final publication-state handoff
+is a docs-only successor on that same PR; only its fresh live exact-head checks and review/waiver
+boundary may authorize integration. The initial implementation-head run is not reused as evidence
+for the successor.
 
 ### 4.4 Arc 0 completion — current truth, imports, and continuity
 
