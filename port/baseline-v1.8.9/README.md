@@ -10,6 +10,34 @@ things git does *not* hold: the gate outputs, and the environment they were prod
 | `environment.json` | Toolchain, browser revision, and every gate figure, machine-readable |
 | `fingerprint-current.json` | The 50-probe determinism output, captured 2026-07-31 08:35:56 |
 | `uilayout-report.json` | The 787-check / 10-viewport layout report |
+| `training-restart-fixture.json` | Action-derived v1.8.9 Settings → Restart Training checkpoint, with source/driver/snapshot provenance |
+
+---
+
+## 1a. Field Training restart checkpoint
+
+`training-restart-fixture.json` is produced by the real legacy control path, not
+by hand: `tools/training-restart-fixture.js` boots `veteran_rich` through
+`_probeboot.js`, clicks `#setbtn`, clicks `#retrainopt` twice, and reads the
+saved `tsnap`. Run `npm run trainingcheckpoint` to verify it. The paired
+`trainingcheckpoint:capture` command prints a candidate and never writes this
+file.
+
+The snapshot has exactly eleven outer fields
+`{st, ps, ac, es, c, ca, cx, it, eq, ea, e}` and is 2,074 JSON bytes. SHA-256:
+`2e2f7c566a27e79398ea18650de9ac6acf236e92235fc293e4815b8bfefa22e3`.
+Driver SHA-256:
+`c3f710d90782f7ba812a2082288ce860e5f41ce16cec2c28b3eaba1fb9ec454a`.
+Source `veteran_rich` fixture-JSON SHA-256:
+`26da9dc04940132a2dd4627391ef4a1be57d6a758bf3b6efb4dc6b217c273a16`.
+There is no `view` field in the snapshot. It therefore cannot prove or request
+legacy pre-Training route restore: Skip from Welcome retains Sol and full
+completion after Land retains Earth. Current-v2 `{view}` is a separate shape.
+
+This is jsdom/action-derived legacy provenance, not real-browser evidence or
+Nick's real veteran-save Gate-C proof. The synthetic
+`save-fixtures.json:tut_midtraining.tsnap` object remains a separate
+unknown/refusal negative control and is not represented as a genuine checkpoint.
 
 ---
 

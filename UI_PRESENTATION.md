@@ -1,6 +1,53 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-15 F2 canonical-ingress overlay (current code):** Search treats a
+> **2026-08-16 D-TRAIN-1 UI overlay (current source; local browser evidence
+> recorded below; exact-head CI, integration, real-save Gate C, and human
+> authority remain open):**
+> Finish and Skip are asynchronous replacement controls. Once invoked, the
+> lesson card sets `aria-busy="true"`, disables its actions, and retains the
+> live lesson/focus lockdown while exclusive ownership, active-write drain,
+> detached restore/proof, and the single direct primary write complete. A
+> pre-durable failure removes busy state and leaves the same lesson/checkpoint
+> retryable. After durability, live publication or teardown failure cannot
+> cause a second write; the committed primary is reload authority.
+>
+> Loaded unfinished expeditions are not ordinary onboarding. A recognized
+> pending checkpoint and a loaded `tut:0` save without one both hold ordinary
+> persistence; the no-checkpoint case may be seated at proven Sol in runtime
+> only until atomic completion. Fresh empty onboarding remains saveable. An
+> unknown checkpoint or unavailable recovery route converts `#importsheet`
+> into a persistent `aria-modal` recovery lock. The rest of the page is inert
+> and `aria-hidden`; focus enters the sheet, Tab/Shift+Tab wrap inside it,
+> Close is hidden/disabled, and Escape is consumed without dismissal. Trusted
+> complete import and Reload to retry remain reachable, the release bulletin
+> is suppressed, and the lock reopens synchronously on every boot while the
+> protected source condition remains. No click, key, or session-only lesson
+> progress may make those protected bytes appear changed.
+>
+> Player copy in the existing Settings and Saving Guide topics and the single
+> existing Field Training release bullet now names legacy partial ownership
+> and fail-closed recovery. It also distinguishes route behavior: only a
+> current-v2 `{view}` checkpoint returns to the pre-Training view; a legacy
+> checkpoint has no `view`, so Skip from Welcome stays in Sol and full
+> completion after Land stays at Earth. Topic/capability inventory is unchanged, the draft
+> remains five categories /44 bullets, `V2_CURRENT_RELEASE_VERSION` remains
+> null, and no version/release is authorized. The remaining fifteen legacy
+> lessons stay D-TRAIN-2 work.
+>
+> The local ignored Slice Smoke report is terminal PASS on Edge
+> `151.0.4129.86`: 154,788 ms, 0 findings, 0 automatic retries, 10 screenshots, with the
+> genuine Training Skip/full-Finish, rescue/quarantine/retry/race and canonical-
+> Earth outcomes named in its raw log. The separately terminal-PASS,
+> full-certifying Glass report took 57,476 ms over 12/12 viewports, ran all
+> 57/57 planned negative controls with none blocked/omitted, and recorded 0
+> findings, 0 instrument failures and 0 automatic retries. Both report commit
+> `b091f010011fa16bec457599b41274b7f92bb5e6` / `openai/mac`; Slice Smoke binds
+> dirty-tree `465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`
+> and Glass binds `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5`.
+> These local results certify neither this later documentation state nor an
+> exact head, integration, real-save Gate C, human play, or release.
+
+> **2026-08-15 F2 canonical-ingress overlay (historical pre-D-TRAIN-1 boundary):** Search treats a
 > marked CF1 string as strict route input and supports galaxy, star and planet
 > tiers. Each candidate is source-proven before the existing Prime/Charter
 > authority check. A successful galaxy or star route opens its own level; a
@@ -29,8 +76,8 @@
 > `source-error`, the exact snapshot remains pending and Training remains
 > incomplete; the app attempts to re-prove and persist the Sol system before the
 > next-load retry. If Sol itself cannot be proven, it does not forge that fallback
-> or discard the retained snapshot. Richer legacy/full-expedition snapshots are
-> not interpreted or restored here; D-TRAIN-1 remains open.
+> or discard the retained snapshot. At that boundary richer legacy snapshots were
+> not interpreted or restored and D-TRAIN-1 remained open.
 >
 > Guide and development-draft copy describe source verification and field-local
 > route repair. The repaired complete one-attempt local `smoke:ci` is terminal-
@@ -166,8 +213,11 @@
 > owns six real chart/travel/landing lessons plus an honest graduation, not the
 > full legacy 21-step curriculum.
 > **Settings → Bring expedition** opens above every dock/panel as a true
-> `aria-modal` dialog, keeps Tab focus inside, and lets Escape close only the
-> dialog before restoring Settings focus. The phone gate injects its old z=11
+> `aria-modal` dialog, keeps Tab focus inside, and in ordinary import mode lets
+> Escape close only the dialog before restoring Settings focus. In Training
+> recovery mode the same sheet is intentionally nonclosable: Close is absent,
+> Escape is consumed, background content remains inert/hidden, and retry/import
+> stays until protected state is replaced. The phone gate injects its old z=11
 > layer and must observe the dock become exposed.
 > On a 390×844 phone, browser smoke also opens the real Guide panel and requires
 > at least 8px clearance above the measured dock. Its negative control injects
