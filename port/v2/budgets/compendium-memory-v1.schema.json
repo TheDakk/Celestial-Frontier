@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://celestialfrontier.invalid/schemas/compendium-memory-v1.schema.json",
+  "title": "Celestial Frontier v2 Compendium memory budget",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "status", "fixture", "requirements", "calibration", "pairedBrokenBaseline", "ceilings"],
+  "properties": {
+    "schema": { "const": "cf-v2-compendium-memory-budget/v1" },
+    "status": { "enum": ["calibration-required", "active"] },
+    "fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "generator", "count", "rowsSha256"],
+      "properties": {
+        "schema": { "const": "cf-v2-compendium-fixture/v1" },
+        "generator": { "const": "compendium-realistic-genomes/v1" },
+        "count": { "const": 1500 },
+        "rowsSha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fixtureCount", "listNaturalDimensionMax", "commandTimeoutMs", "warmCycles"],
+      "properties": {
+        "fixtureCount": { "const": 1500 },
+        "listNaturalDimensionMax": { "const": 132 },
+        "commandTimeoutMs": { "const": 2000 },
+        "warmCycles": { "const": 4 }
+      }
+    },
+    "calibration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requiredIndependentRunsPerProfile", "selectionRule", "headroomRationaleRequired", "samples"],
+      "properties": {
+        "requiredIndependentRunsPerProfile": { "const": 3 },
+        "selectionRule": { "type": "string", "minLength": 1 },
+        "headroomRationaleRequired": { "const": true },
+        "samples": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["phone", "desktop"],
+          "properties": {
+            "phone": { "type": "array", "items": { "$ref": "#/$defs/sample" } },
+            "desktop": { "type": "array", "items": { "$ref": "#/$defs/sample" } }
+          }
+        }
+      }
+    },
+    "pairedBrokenBaseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "commit", "collectorCommit", "projectionRowsSha256", "expectedFaults", "samples"],
+      "properties": {
+        "status": { "enum": ["measurement-required", "measured"] },
+        "commit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "collectorCommit": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string", "pattern": "^[a-f0-9]{40}$" }
+          ]
+        },
+        "projectionRowsSha256": { "$ref": "#/$defs/sha256" },
+        "expectedFaults": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "samples": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["phone", "desktop"],
+          "properties": {
+            "phone": { "type": "array", "items": { "$ref": "#/$defs/baselineSample" } },
+            "desktop": { "type": "array", "items": { "$ref": "#/$defs/baselineSample" } }
+          }
+        }
+      }
+    },
+    "ceilings": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["phone", "desktop"],
+          "properties": {
+            "phone": { "$ref": "#/$defs/ceiling" },
+            "desktop": { "$ref": "#/$defs/ceiling" }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "calibration-required" } } },
+      "then": { "properties": { "ceilings": { "type": "null" } } }
+    },
+    {
+      "if": { "properties": { "status": { "const": "active" } } },
+      "then": {
+        "properties": {
+          "ceilings": { "type": "object" },
+          "pairedBrokenBaseline": {
+            "properties": {
+              "status": { "const": "measured" },
+              "collectorCommit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+              "samples": {
+                "properties": {
+                  "phone": { "minItems": 1 },
+                  "desktop": { "minItems": 1 }
+                }
+              }
+            }
+          },
+          "calibration": {
+            "properties": {
+              "samples": {
+                "properties": {
+                  "phone": { "minItems": 3 },
+                  "desktop": { "minItems": 3 }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runId", "commit", "workingTreeDigest", "inputDigest", "sourceState", "sourceChanged", "fixtureRowsSha256", "measuredAt", "browser", "metrics"],
+      "properties": {
+        "runId": { "type": "string", "minLength": 1 },
+        "commit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "workingTreeDigest": { "$ref": "#/$defs/sha256" },
+        "inputDigest": { "$ref": "#/$defs/sha256" },
+        "sourceState": { "const": "committed" },
+        "sourceChanged": { "const": false },
+        "fixtureRowsSha256": { "$ref": "#/$defs/sha256" },
+        "measuredAt": { "type": "string", "format": "date-time" },
+        "browser": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["executable", "product", "revision", "userAgent", "jsVersion", "protocolVersion"],
+          "properties": {
+            "executable": { "type": "string", "minLength": 1 },
+            "product": { "type": "string", "minLength": 1 },
+            "revision": { "type": "string", "minLength": 1 },
+            "userAgent": { "type": "string", "minLength": 1 },
+            "jsVersion": { "type": "string", "minLength": 1 },
+            "protocolVersion": { "type": "string", "minLength": 1 }
+          }
+        },
+        "metrics": { "$ref": "#/$defs/metrics" }
+        ,"observedFaults": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "baselineSample": {
+      "allOf": [
+        { "$ref": "#/$defs/sample" },
+        { "required": ["observedFaults"] }
+      ]
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mountedRows", "heapUsedBytes", "documents", "nodes", "jsEventListeners",
+        "liveCacheEntries", "liveDecodedPixels", "liveDecodedBytes", "liveEncodedBytes",
+        "queuedJobsPeak", "activeJobsPeak", "liveLeases", "liveSubscribers",
+        "livePortraitCacheEntries", "livePortraitEncodedBytes",
+        "warmHeapRangeBytes", "warmDecodedBytesRange", "warmEncodedBytesRange"
+      ],
+      "properties": {
+        "mountedRows": { "$ref": "#/$defs/nonnegative" },
+        "heapUsedBytes": { "$ref": "#/$defs/nonnegative" },
+        "documents": { "$ref": "#/$defs/nonnegative" },
+        "nodes": { "$ref": "#/$defs/nonnegative" },
+        "jsEventListeners": { "$ref": "#/$defs/nonnegative" },
+        "liveCacheEntries": { "$ref": "#/$defs/nonnegative" },
+        "liveDecodedPixels": { "$ref": "#/$defs/nonnegative" },
+        "liveDecodedBytes": { "$ref": "#/$defs/nonnegative" },
+        "liveEncodedBytes": { "$ref": "#/$defs/nonnegative" },
+        "queuedJobsPeak": { "$ref": "#/$defs/nonnegative" },
+        "activeJobsPeak": { "$ref": "#/$defs/nonnegative" },
+        "liveLeases": { "$ref": "#/$defs/nonnegative" },
+        "liveSubscribers": { "$ref": "#/$defs/nonnegative" },
+        "livePortraitCacheEntries": { "$ref": "#/$defs/nonnegative" },
+        "livePortraitEncodedBytes": { "$ref": "#/$defs/nonnegative" },
+        "warmHeapRangeBytes": { "$ref": "#/$defs/nonnegative" },
+        "warmDecodedBytesRange": { "$ref": "#/$defs/nonnegative" },
+        "warmEncodedBytesRange": { "$ref": "#/$defs/nonnegative" }
+      }
+    },
+    "ceiling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rationale", "mountedRowsMax", "heapUsedBytesMax", "documentsMax", "nodesMax",
+        "jsEventListenersMax", "liveCacheEntriesMax", "liveDecodedPixelsMax",
+        "liveDecodedBytesMax", "liveEncodedBytesMax", "warmHeapRangeBytesMax",
+        "queuedJobsPeakMax", "activeJobsPeakMax", "liveLeasesMax", "liveSubscribersMax",
+        "livePortraitCacheEntriesMax", "livePortraitEncodedBytesMax",
+        "warmDecodedBytesRangeMax", "warmEncodedBytesRangeMax"
+      ],
+      "properties": {
+        "rationale": { "type": "string", "minLength": 1 },
+        "mountedRowsMax": { "$ref": "#/$defs/nonnegative" },
+        "heapUsedBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "documentsMax": { "$ref": "#/$defs/nonnegative" },
+        "nodesMax": { "$ref": "#/$defs/nonnegative" },
+        "jsEventListenersMax": { "$ref": "#/$defs/nonnegative" },
+        "liveCacheEntriesMax": { "$ref": "#/$defs/nonnegative" },
+        "liveDecodedPixelsMax": { "$ref": "#/$defs/nonnegative" },
+        "liveDecodedBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "liveEncodedBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "queuedJobsPeakMax": { "$ref": "#/$defs/nonnegative" },
+        "activeJobsPeakMax": { "$ref": "#/$defs/nonnegative" },
+        "liveLeasesMax": { "$ref": "#/$defs/nonnegative" },
+        "liveSubscribersMax": { "$ref": "#/$defs/nonnegative" },
+        "livePortraitCacheEntriesMax": { "$ref": "#/$defs/nonnegative" },
+        "livePortraitEncodedBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "warmHeapRangeBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "warmDecodedBytesRangeMax": { "$ref": "#/$defs/nonnegative" },
+        "warmEncodedBytesRangeMax": { "$ref": "#/$defs/nonnegative" }
+      }
+    },
+    "nonnegative": { "type": "number", "minimum": 0 }
+  }
+}

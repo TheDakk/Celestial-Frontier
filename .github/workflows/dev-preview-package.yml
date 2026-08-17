@@ -28,6 +28,7 @@ jobs:
     environment: development-preview-package
     env:
       CF_BROWSER: /usr/bin/google-chrome
+      CF_COMPENDIUMMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-manual-compendiummem
     steps:
       - name: validate manual authorization and source branch
         shell: bash
@@ -80,8 +81,26 @@ jobs:
           node tools/browsercdp.mjs --selftest
           npm run smoke:report:selftest
           npm run glassmatrix:selftest
+          npm run compendiummem:selftest
           npm run persona:selftest
           npm run preview:selftest
+      - name: one-attempt Compendium memory certification
+        working-directory: port/v2
+        run: npm run compendiummem
+      - name: verify current Compendium memory evidence
+        if: always()
+        working-directory: port/v2
+        run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
+      - name: upload Compendium memory evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: manual-preview-compendium-memory-evidence
+          path: |
+            port/v2/apps/game/smoke/compendiummem-report.json
+            port/v2/apps/game/smoke/compendiummem-${{ env.CF_COMPENDIUMMEM_RUN_ID }}-*.png
+          if-no-files-found: error
+          retention-days: 14
       - name: real-browser, responsive, and automated-persona evidence
         working-directory: port/v2
         run: |

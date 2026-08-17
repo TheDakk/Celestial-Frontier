@@ -421,7 +421,7 @@ function auditRouteTableReferences(program, label, source) {
         && node.computed && root !== 'FLORA_DUPES'
         && (root === 'CANON' ? isCanonIndex(node.property) : isNameIndex(node.property))
         && label === 'speciesoverrides.ts'
-        && (functionScope === 'hasNamedRoute' || functionScope === 'resolveOverride');
+        && (functionScope === 'hasNamedRoute' || functionScope === 'resolveOverrideCanvas');
       if (root && !legalIncludes && !legalIndex) {
         const member = node.computed ? 'computed member' : `member ${namedProperty}`;
         parserError(label, node, `${root} route table uses unsupported ${member}`);
@@ -473,10 +473,92 @@ const ART_SOURCE_ROOT = path.join(root, 'packages/art/src');
 const KNOWN_VERBATIM_JS_HASHES = new Map([
   ['artextras.verbatim.js', 'dadfd860bc21b4472efb80f91399ddb89b704bc2b0396fe848aa8628b21cc2c7'],
   ['galaxyart.verbatim.js', '2cba375ab1f806ed2eaf394fa599e05dc1fd0e79097b25120cc0a662dca22f45'],
-  ['hdart.verbatim.js', 'f57f2e37a8920b487966b1facfa717fb40ffb143b8c33cafa2c70af8f6aa8223'],
+  ['hdart.verbatim.js', '8ab222a3c63a0db04c28a7e5d51a5af4e34e7dbdfe1573eaaaa2c50bed086e49'],
   ['thumbart.verbatim.js', '8fcaf662bcedd2d2eebf75a8ad00c5bc243190d1cc5c8071a763113f76c77c48'],
 ]);
 const KNOWN_VERBATIM_JS = new Set(KNOWN_VERBATIM_JS_HASHES.keys());
+const HD_PORTRAIT_KINDS = Object.freeze(['Fauna', 'Flora', 'Fungi', 'Microbe']);
+
+/* The lifted portrait source now owns two deliberately different seams: its
+   generated painter bodies return live canvases, while the legacy exports are
+   exact zero-argument URL wrappers. A whole-file hash still binds every byte,
+   but it cannot diagnose a generator migration in either direction. Seal the
+   executable relationship first so a control that moves serialization back
+   into the Canvas body (or removes it from the wrapper) gets its own finding. */
+function auditGeneratedHdArt(source, label) {
+  let program;
+  try { program = parseAst(source, { lang: 'js' }, label); }
+  catch (error) { parserError(label, null, `generated canvas/URL wrapper contract changed: ${String(error?.message || error)}`); }
+  const functions = new Map();
+  const exports = [];
+  for (const top of program.body) {
+    const statement = top.type === 'ExportNamedDeclaration' && top.declaration ? top.declaration : top;
+    if (statement.type === 'FunctionDeclaration' && statement.id?.type === 'Identifier') {
+      const name = statement.id.name;
+      if (HD_PORTRAIT_KINDS.some((kind) => name === `hdPortrait${kind}`
+          || name === `hdPortrait${kind}Canvas`)) {
+        if (functions.has(name)) parserError(label, statement,
+          `generated canvas/URL wrapper contract changed: duplicate ${name}`);
+        functions.set(name, statement);
+      }
+    }
+    if (top.type === 'ExportNamedDeclaration') {
+      if (top.declaration || top.source || top.specifiers.some((specifier) =>
+        specifier.type !== 'ExportSpecifier'
+        || specifier.local?.type !== 'Identifier' || specifier.exported?.type !== 'Identifier'
+        || specifier.local.name !== specifier.exported.name)) {
+        parserError(label, top, 'generated canvas/URL wrapper contract changed: named export shape changed');
+      }
+      exports.push(...top.specifiers.map((specifier) => specifier.local.name));
+    }
+  }
+  const expectedExports = HD_PORTRAIT_KINDS.flatMap((kind) =>
+    [`hdPortrait${kind}`, `hdPortrait${kind}Canvas`]);
+  if (exports.length !== expectedExports.length
+      || new Set(exports).size !== exports.length
+      || expectedExports.some((name) => !exports.includes(name))) {
+    parserError(label, program, 'generated canvas/URL wrapper contract changed: exact eight-name export set changed');
+  }
+  const containsSerialization = (node) => {
+    if (!node || typeof node !== 'object') return false;
+    if (node.type === 'CallExpression' && node.callee?.type === 'MemberExpression'
+      && !node.callee.computed && propertyName(node.callee) === 'toDataURL') return true;
+    return Object.values(node).some((value) => Array.isArray(value)
+      ? value.some((child) => child && typeof child === 'object'
+        && child.type && containsSerialization(child))
+      : value && typeof value === 'object' && value.type && containsSerialization(value));
+  };
+  for (const kind of HD_PORTRAIT_KINDS) {
+    const canvasName = `hdPortrait${kind}Canvas`;
+    const wrapperName = `hdPortrait${kind}`;
+    const canvas = functions.get(canvasName);
+    const wrapper = functions.get(wrapperName);
+    const terminal = canvas?.body?.body?.at(-1);
+    if (!(canvas && !canvas.async && !canvas.generator && canvas.params.length === 1
+        && canvas.params[0]?.type === 'Identifier' && canvas.params[0].name === 'g'
+        && terminal?.type === 'ReturnStatement'
+        && terminal.argument?.type === 'Identifier' && terminal.argument.name === 'cv'
+        && !containsSerialization(canvas.body))) {
+      parserError(label, canvas, `generated canvas/URL wrapper contract changed: ${canvasName} must return cv without serialization`);
+    }
+    const only = wrapper?.body?.body;
+    const returned = only?.length === 1 && only[0]?.type === 'ReturnStatement'
+      ? only[0].argument : null;
+    const serialization = returned?.type === 'CallExpression' ? returned : null;
+    const painted = serialization?.callee?.type === 'MemberExpression'
+      && !serialization.callee.computed && propertyName(serialization.callee) === 'toDataURL'
+      ? serialization.callee.object : null;
+    if (!(wrapper && !wrapper.async && !wrapper.generator && wrapper.params.length === 1
+        && wrapper.params[0]?.type === 'Identifier' && wrapper.params[0].name === 'g'
+        && serialization?.arguments.length === 0 && painted?.type === 'CallExpression'
+        && painted.callee?.type === 'Identifier' && painted.callee.name === canvasName
+        && painted.arguments.length === 1 && painted.arguments[0]?.type === 'Identifier'
+        && painted.arguments[0].name === 'g'
+        && source.slice(returned.start, returned.end) === `${canvasName}(g).toDataURL()`)) {
+      parserError(label, wrapper, `generated canvas/URL wrapper contract changed: ${wrapperName} must exactly serialize ${canvasName}(g)`);
+    }
+  }
+}
 const isTypeScriptSource = (name) => /\.(?:ts|mts|cts|tsx)$/.test(name)
   && !/\.d\.(?:ts|mts|cts|tsx)$/.test(name);
 function discoverArtSources(directory = ART_SOURCE_ROOT, relative = '') {
@@ -498,6 +580,13 @@ function discoverArtSources(directory = ART_SOURCE_ROOT, relative = '') {
 }
 const FILES = discoverArtSources().sort();
 const FILE_SET = new Set(FILES);
+try {
+  auditGeneratedHdArt(src('packages/art/src/hdart.verbatim.js'), 'hdart.verbatim.js');
+} catch (error) {
+  if (!(error instanceof ParserError)) throw error;
+  console.error(`overridecheck: ${error.message} — the PARSER is broken`);
+  process.exit(2);
+}
 for (const [label, expected] of KNOWN_VERBATIM_JS_HASHES) {
   const actual = createHash('sha256').update(fs.readFileSync(path.join(ART_SOURCE_ROOT, label))).digest('hex');
   if (actual !== expected) {
@@ -732,7 +821,7 @@ function validRouteValue(node, label, table) {
     : definitelyCallableRouteValue(node, label);
 }
 if (FILES.length < 6) { console.error('overridecheck: found only ' + FILES.length + ' art sources — the PARSER is broken'); process.exit(2); }
-/* Which kingdom branch of resolveOverride each table serves. Shadowing is
+/* Which kingdom branch of resolveOverrideCanvas each table serves. Shadowing is
    only possible WITHIN a branch: 'Green Algae' is in both the flora and the
    microbe catalogs and is correctly keyed in a table for each — the check's
    first cut called that a shadow, which it is not. (The instrument's own
@@ -746,7 +835,7 @@ const TABLE_KINGDOM = {
 const FLORA_SELECTOR_ORDER = ['FLORA_ICONIC', 'FLORA2_SPEC'];
 const FAUNA_SELECTOR_ORDER = ['FAUNA_NAME', 'FAUNA2_NAME', 'FAUNA3_NAME', 'BIRD_NAME', 'INVERT_NAME'];
 const QUAD_SELECTOR_ORDER = ['QUAD_SPEC', 'QUAD2_SPEC'];
-/* Lower numbers win exactly as resolveOverride's audited selector chains do.
+/* Lower numbers win exactly as resolveOverrideCanvas's audited selector chains do.
    File-system traversal order is not routing precedence: the earlier version
    could truthfully find a collision but name the losing table as the shadow. */
 const TABLE_PRIORITY = {
@@ -811,11 +900,17 @@ function routerWiring(source, label, functionName) {
   const program = parseTypeScript(source, label);
   const matches = [];
   const namedRouteMatches = [];
+  const compatibilityWrappers = new Map([
+    ['resolveOverride', []], ['resolveProcedural', []],
+  ]);
   const imports = new Map();
   const find = (node) => {
     if (!node || typeof node !== 'object') return;
     if (node.type === 'FunctionDeclaration' && node.id?.name === functionName) matches.push(node);
     if (node.type === 'FunctionDeclaration' && node.id?.name === 'hasNamedRoute') namedRouteMatches.push(node);
+    if (node.type === 'FunctionDeclaration' && compatibilityWrappers.has(node.id?.name)) {
+      compatibilityWrappers.get(node.id.name).push(node);
+    }
     if (node.type === 'ImportDeclaration' && typeof node.source?.value === 'string') {
       if (!node.source.value.startsWith('.')) {
         const routeImport = (node.specifiers || []).some((specifier) => isRouteTable(specifier.local?.name));
@@ -888,13 +983,38 @@ function routerWiring(source, label, functionName) {
   const callStatement = (statement) => statement?.type === 'ExpressionStatement'
     && statement.expression?.type === 'CallExpression' ? statement.expression : null;
   const returnNull = (statement) => statement?.type === 'ReturnStatement' && literal(statement.argument, null);
-  const returnDataUrl = (statement) => statement?.type === 'ReturnStatement'
-    && statement.argument?.type === 'CallExpression'
-    && statement.argument.callee?.type === 'MemberExpression'
-    && identifier(statement.argument.callee.object, 'cv')
-    && !statement.argument.callee.computed && propertyName(statement.argument.callee) === 'toDataURL'
-    && statement.argument.arguments.length === 0
-    && source.slice(statement.argument.start, statement.argument.end) === 'cv.toDataURL()';
+  const returnCanvas = (statement) => statement?.type === 'ReturnStatement'
+    && identifier(statement.argument, 'cv');
+  const auditCompatibilityWrapper = (wrapperName, canvasName) => {
+    const found = compatibilityWrappers.get(wrapperName);
+    const wrapper = found?.length === 1 ? found[0] : null;
+    const body = wrapper?.body?.body;
+    const declaration = body?.length === 2 && body[0]?.type === 'VariableDeclaration'
+      && body[0].kind === 'const' && body[0].declarations.length === 1
+      ? body[0].declarations[0] : null;
+    const init = declaration?.id?.type === 'Identifier' && declaration.id.name === 'canvas'
+      ? declaration.init : null;
+    const returned = body?.[1]?.type === 'ReturnStatement' ? body[1].argument : null;
+    const encoded = returned?.type === 'ConditionalExpression'
+      && identifier(returned.test, 'canvas') && literal(returned.alternate, null)
+      && returned.consequent?.type === 'CallExpression'
+      && returned.consequent.callee?.type === 'MemberExpression'
+      && !returned.consequent.callee.computed
+      && identifier(returned.consequent.callee.object, 'canvas')
+      && propertyName(returned.consequent.callee) === 'toDataURL'
+      && returned.consequent.arguments.length === 0;
+    if (!(wrapper && !wrapper.async && !wrapper.generator
+        && wrapper.params.length === 1 && identifier(wrapper.params[0], 'g')
+        && init?.type === 'CallExpression' && identifier(init.callee, canvasName)
+        && init.arguments.length === 1 && identifier(init.arguments[0], 'g')
+        && source.slice(init.start, init.end) === `${canvasName}(g)`
+        && encoded && source.slice(returned.start, returned.end) === 'canvas ? canvas.toDataURL() : null')) {
+      contractError(wrapper ?? found?.[0] ?? matches[0],
+        `${wrapperName} must remain the exact zero-argument URL wrapper around ${canvasName}`);
+    }
+  };
+  auditCompatibilityWrapper('resolveOverride', 'resolveOverrideCanvas');
+  auditCompatibilityWrapper('resolveProcedural', 'resolveProceduralCanvas');
   const exactMember = (node, object, property) => node?.type === 'MemberExpression'
     && !node.computed && identifier(node.object, object) && propertyName(node) === property;
   const canvasDeclaration = (statement) => {
@@ -942,7 +1062,7 @@ function routerWiring(source, label, functionName) {
 
   const body = matches[0].body.body;
   if (!(matches[0].params.length === 1 && identifier(matches[0].params[0], 'g'))) {
-    contractError(matches[0], 'resolveOverride must have only its audited g parameter');
+    contractError(matches[0], 'resolveOverrideCanvas must have only its audited g parameter');
   }
   for (const globalName of ['Object', 'String', 'Boolean', 'Set', 'Number', 'Math']) {
     if (writtenNames(label).has(globalName) || moduleBindings(label).has(globalName)) {
@@ -955,7 +1075,7 @@ function routerWiring(source, label, functionName) {
     ['lineageRenderKingdom', ['speciesoverrides.ts', 'lineageRenderKingdom']],
     ['isReviewedFaunaLineage', ['speciesoverrides.ts', 'isReviewedFaunaLineage']],
     ['applyReviewedFaunaLineageDrift', ['speciesoverrides.ts', 'applyReviewedFaunaLineageDrift']],
-    ['resolveProcedural', ['speciesoverrides.ts', 'resolveProcedural']],
+    ['resolveProceduralCanvas', ['speciesoverrides.ts', 'resolveProceduralCanvas']],
     ['newCanvas', ['speciesoverrides.ts', 'newCanvas']],
     ['newInk', ['speciesoverrides.ts', 'newInk']],
     ['fitInk', ['speciesoverrides.ts', 'fitInk']],
@@ -1012,7 +1132,7 @@ function routerWiring(source, label, functionName) {
     'IfStatement', 'IfStatement', 'VariableDeclaration', 'IfStatement', 'VariableDeclaration',
     'ExpressionStatement', 'ExpressionStatement', 'VariableDeclaration', 'ExpressionStatement',
     'ExpressionStatement', 'ReturnStatement',
-  ], 'resolveOverride');
+  ], 'resolveOverrideCanvas');
   const prelude = [
     ['earthName', `String((g as { _earthName?: string })._earthName || '').replace(/[’‘]/g, "'")`],
     ['blend', `String((g as { _earthBlend?: string })._earthBlend || '').replace(/[’‘]/g, "'")`],
@@ -1035,7 +1155,7 @@ function routerWiring(source, label, functionName) {
   }
   if (!(notIdentifier(body[7].test, 'name') && body[7].consequent?.type === 'ReturnStatement'
       && body[7].consequent.argument?.type === 'CallExpression'
-      && identifier(body[7].consequent.argument.callee, 'resolveProcedural')
+      && identifier(body[7].consequent.argument.callee, 'resolveProceduralCanvas')
       && body[7].consequent.argument.arguments.length === 1
       && identifier(body[7].consequent.argument.arguments[0], 'g') && !body[7].alternate)) {
     contractError(body[7], 'procedural fallthrough guard changed');
@@ -1193,7 +1313,7 @@ function routerWiring(source, label, functionName) {
     if (!node || typeof node !== 'object') return;
     if (node.type === 'MemberExpression' && routeRoot(node)
       && !validatedResolverAccesses.has(node)) {
-      contractError(node, 'resolveOverride contains a route-table member outside the audited selector initializers');
+      contractError(node, 'resolveOverrideCanvas contains a route-table member outside the audited selector initializers');
     }
     for (const value of Object.values(node)) {
       if (Array.isArray(value)) {
@@ -1219,7 +1339,7 @@ function routerWiring(source, label, functionName) {
       && source.slice(canonCall.start, canonCall.end) === 'canon(ink.c, g, palette(g) as Pal)'
       && exactCall(canonIf.consequent.body[5], 'applyReviewedFaunaLineageDrift(ink.c, g, name)')
       && exactFit(canonIf.consequent.body[6], "kingdom + ':' + name")
-      && returnDataUrl(canonIf.consequent.body[7]))) {
+      && returnCanvas(canonIf.consequent.body[7]))) {
     contractError(canonIf, 'canon lookup is not the guarded painter that feeds the returned canvas');
   }
 
@@ -1238,7 +1358,7 @@ function routerWiring(source, label, functionName) {
       && exactCall(floraBody[5], 'floorFade(c)') && inkDeclaration(floraBody[6]) && paintsInk(floraCall)
       && source.slice(floraCall.start, floraCall.end) === '(iconic || floraLadder)(ink.c, g, palette(g) as Pal, name)'
       && exactFit(floraBody[8], "'flora:' + name")
-      && returnDataUrl(floraBody[9]))) {
+      && returnCanvas(floraBody[9]))) {
     contractError(floraIf, 'flora selectors do not guard and feed the returned painter');
   }
 
@@ -1267,7 +1387,7 @@ function routerWiring(source, label, functionName) {
       && exactCall(faunaBody[5], 'floorFade(c)') && inkDeclaration(faunaBody[6])
       && exactCall(faunaBody[8], 'applyReviewedFaunaLineageDrift(ink.c, g, name)')
       && exactFit(faunaBody[9], "'fauna:' + name")
-      && returnDataUrl(faunaBody[10]))) {
+      && returnCanvas(faunaBody[10]))) {
     contractError(faunaIf, 'fauna selectors do not guard and feed the painter/fallback that returns the canvas');
   }
 
@@ -1285,7 +1405,7 @@ function routerWiring(source, label, functionName) {
       && identifier(painterCall?.callee, 'painter') && paintsInk(painterCall)
       && source.slice(painterCall.start, painterCall.end) === 'painter(ink.c, g, palette(g))'
       && exactFit(tail[7], "kingdom + ':' + name")
-      && returnDataUrl(tail[8]))) {
+      && returnCanvas(tail[8]))) {
     contractError(tail[1], 'fungi/microbe selector does not guard and feed the returned painter');
   }
 
@@ -1381,7 +1501,7 @@ for (const f of FILES) {
       if (seen.has(kk)) dupes.push(`${n}  [${f}:${table}]`);
       seen.add(kk);
       /* THE THIRD KIND OF DEAD ROUTE: the same species keyed in two tables
-         OF THE SAME KINGDOM. resolveOverride consults them in a fixed order,
+         OF THE SAME KINGDOM. resolveOverrideCanvas consults them in a fixed order,
          so the later table's painter never runs — and both keys resolve to a
          real species, which is why the dead-route check alone cannot see it.
          Wave 9 wrote a swan-necked Swan that wave 3's plain Swan shadowed. */
@@ -1410,7 +1530,7 @@ for (const f of FILES) {
 }
 /* IS THE TABLE ACTUALLY WIRED? A fourth blindness class, and the costliest
    yet: wave 11's FLORA2_SPEC was imported into speciesoverrides.ts and never
-   consulted by resolveOverride. Every key resolved to a real catalog
+   consulted by resolveOverrideCanvas. Every key resolved to a real catalog
    species, so this tool reported 927/927 with 0 dead — while all 280 of its
    routes were unreachable. "The key names a real species" and "the router
    ever looks at this table" are DIFFERENT CLAIMS, and only the second one
@@ -1421,7 +1541,7 @@ for (const f of FILES) {
   const router = src('packages/art/src/speciesoverrides.ts');
   let wiring;
   try {
-    wiring = routerWiring(router, 'speciesoverrides.ts', 'resolveOverride');
+    wiring = routerWiring(router, 'speciesoverrides.ts', 'resolveOverrideCanvas');
   } catch (error) {
     if (!(error instanceof ParserError)) throw error;
     console.error(`overridecheck: ${error.message} — the PARSER is broken`);
@@ -1429,7 +1549,7 @@ for (const f of FILES) {
   }
   for (const table of new Set([...wiring.tableReads, ...wiring.imports.keys()])) {
     if (!tableOwners.has(table)) {
-      console.error(`overridecheck: ${table} is imported/read by resolveOverride but has no declaration owner in scanned art sources — the PARSER is broken`);
+      console.error(`overridecheck: ${table} is imported/read by resolveOverrideCanvas but has no declaration owner in scanned art sources — the PARSER is broken`);
       process.exit(2);
     }
   }
@@ -1437,7 +1557,7 @@ for (const f of FILES) {
     if (!wiring.tableReads.has(table) || owner === 'speciesoverrides.ts') continue;
     const importedOwner = wiring.imports.get(table);
     if (!importedOwner || importedOwner !== owner) {
-      console.error(`overridecheck: ${table} is read by resolveOverride from ${importedOwner || 'no import'}, but its only declaration owner is ${owner} — the PARSER is broken`);
+      console.error(`overridecheck: ${table} is read by resolveOverrideCanvas from ${importedOwner || 'no import'}, but its only declaration owner is ${owner} — the PARSER is broken`);
       process.exit(2);
     }
     const exported = exportedBindingFor(owner, table);
@@ -1449,7 +1569,7 @@ for (const f of FILES) {
   }
   const unwired = [...tableOwners.keys()].filter((table) => !wiring.tableReads.has(table));
   if (unwired.length) {
-    console.error('  ★ UNWIRED TABLES — every key resolves, but resolveOverride never consults them:');
+    console.error('  ★ UNWIRED TABLES — every key resolves, but resolveOverrideCanvas never consults them:');
     for (const u of unwired) console.error('    ' + u + '   (imported but never read — all its routes are dead)');
     process.exitCode = 1;
   }
@@ -1481,7 +1601,7 @@ if (dupes.length) {
 }
 /* a key is dead if its species is absent from the catalog ENTIRELY, or
    present but not in the kingdom whose table claims it (a flora painter for
-   a microbe is never reached — resolveOverride branches on kingdom first) */
+   a microbe is never reached — resolveOverrideCanvas branches on kingdom first) */
 const dead = [...keys.keys()].filter((kk) => { const [k, n] = routeParts(kk); return !(kingdomsOf.get(n) || new Set()).has(k); })
   .map((kk) => { const [k, n] = routeParts(kk); return n + '  (' + k + ')'; }).sort();
 const live = keys.size - dead.length;

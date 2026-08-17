@@ -1,0 +1,42 @@
+{
+  "schema": "cf-v2-compendium-memory-budget/v1",
+  "status": "calibration-required",
+  "fixture": {
+    "schema": "cf-v2-compendium-fixture/v1",
+    "generator": "compendium-realistic-genomes/v1",
+    "count": 1500,
+    "rowsSha256": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706"
+  },
+  "requirements": {
+    "fixtureCount": 1500,
+    "listNaturalDimensionMax": 132,
+    "commandTimeoutMs": 2000,
+    "warmCycles": 4
+  },
+  "calibration": {
+    "requiredIndependentRunsPerProfile": 3,
+    "selectionRule": "For each phone and desktop field, record three independent one-attempt runs from the pinned browser and identical commit/input digest; choose an explicit ceiling above the observed maximum only after documenting why that headroom distinguishes expected variance from the paired broken baseline.",
+    "headroomRationaleRequired": true,
+    "samples": {
+      "phone": [],
+      "desktop": []
+    }
+  },
+  "pairedBrokenBaseline": {
+    "status": "measurement-required",
+    "commit": "38447019517147319bd08c598202d097ee866874",
+    "collectorCommit": null,
+    "projectionRowsSha256": "f7bee0cf6fb7b3308c49c03d9c0e84c55281d3966a444e66108bdfd95c2886a2",
+    "expectedFaults": [
+      "unwindowed-1500-rows",
+      "list-source-440",
+      "full-portrait-cache-exposure",
+      "eager-art-import"
+    ],
+    "samples": {
+      "phone": [],
+      "desktop": []
+    }
+  },
+  "ceilings": null
+}

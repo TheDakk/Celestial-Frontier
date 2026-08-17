@@ -6,8 +6,8 @@
 # minutes wall, with the two real-browser evidence commands owning 78% of it
 # (glassmatrix ~17 min + smoke:ci ~9 min on the 2-core software-rendering
 # runner; the same commands take ~1 min and ~2 min on a workstation). Every
-# other gate is independent of them, so the battery now runs as five jobs:
-# root-gates, v2-static, v2-smoke and v2-glass in parallel, then
+# other gate is independent of them, so the battery now runs as six jobs:
+# root-gates, v2-static, v2-smoke, v2-glass and v2-compendium-memory in parallel, then
 # v2-persona-preview joining their evidence. NOTHING was weakened: every
 # command from the serial battery still runs exactly once with the same
 # one-attempt/no-retry semantics; the persona join and the development
@@ -19,7 +19,8 @@
 # workflow memory). Evidence artifacts: root reports moved from the old
 # combined battery-reports into root-reports; v2 smoke/glass evidence is
 # uploaded per-job (retained even when that job is red) and re-joined into
-# battery-reports by the final job.
+# battery-reports by the final job. Compendium memory evidence stays in its
+# own exact-run artifact and is also retained when its independent job is red.
 name: test-battery
 on:
   push:
@@ -192,8 +193,48 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
+  v2-compendium-memory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      CF_BROWSER: /usr/bin/google-chrome
+      CF_COMPENDIUMMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-compendiummem
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          cache: npm
+          cache-dependency-path: port/v2/package-lock.json
+      - name: install v2 workspace
+        working-directory: port/v2
+        run: npm ci
+      - name: browser provenance and Compendium memory instrument selftests
+        working-directory: port/v2
+        run: |
+          node tools/browserpath.mjs --selftest
+          node tools/browsercdp.mjs --selftest
+          npm run compendiummem:selftest
+      - name: one-attempt Compendium memory certification
+        working-directory: port/v2
+        run: npm run compendiummem
+      - name: verify current Compendium memory evidence
+        if: always()
+        working-directory: port/v2
+        run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
+      - name: archive Compendium memory evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: v2-compendium-memory-evidence
+          path: |
+            port/v2/apps/game/smoke/compendiummem-report.json
+            port/v2/apps/game/smoke/compendiummem-${{ env.CF_COMPENDIUMMEM_RUN_ID }}-*.png
+          if-no-files-found: error
+          retention-days: 14
+
   v2-persona-preview:
-    needs: [root-gates, v2-static, v2-smoke, v2-glass]
+    needs: [root-gates, v2-static, v2-smoke, v2-glass, v2-compendium-memory]
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
@@ -266,7 +307,7 @@ jobs:
     # coupling repository settings to job names. It succeeds only when every
     # battery job succeeded and FAILS otherwise; `if: always()` means it can
     # never satisfy the ruleset by being skipped when an upstream job is red.
-    needs: [root-gates, v2-static, v2-smoke, v2-glass, v2-persona-preview]
+    needs: [root-gates, v2-static, v2-smoke, v2-glass, v2-compendium-memory, v2-persona-preview]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 5
