@@ -10,13 +10,17 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  ART_DIAGNOSTICS_SCHEMA, BASELINE_OBSERVATION_TIMEOUT_MS, BUDGET_SCHEMA,
-  CANDIDATE_TRANSPORT_TIMEOUT_MS, COMMAND_TIMEOUT_MS, DIAGNOSTICS_SCHEMA,
+  ART_DIAGNOSTICS_SCHEMA, BASELINE_OBSERVATION_TIMEOUT_MS,
+  BROKEN_BASELINE_EXPECTED_FAULTS, BROKEN_BASELINE_PORTRAIT_CACHE_CAPS,
+  BROKEN_BASELINE_THUMB_CACHE_CAP, BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
+  BUDGET_SCHEMA, CANDIDATE_TRANSPORT_TIMEOUT_MS, COMMAND_TIMEOUT_MS, DIAGNOSTICS_SCHEMA,
   EXPECTED_OUTCOMES, OUTCOME_IDS, REPORT_INPUT_KEYS, REPORT_SCHEMA,
+  brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
   calibrationMetrics, compendiumCdpOptions, compendiumProfileEmulationOptions,
-  evaluateProfile, phaseObservationAccepted, remainingCommandTimeoutMs, sha256,
-  validProfileEmulationOptions, validTransportTimeoutPolicy, validateBudgetRecord,
-  verifyTerminalReport,
+  evaluateProfile, installBrokenBaselineThumbObserver, phaseObservationAccepted,
+  remainingCommandTimeoutMs, sha256,
+  validBrokenBaselineThumbObservation, validProfileEmulationOptions,
+  validTransportTimeoutPolicy, validateBudgetRecord, verifyTerminalReport,
 } from './compendiummem-contract.mjs';
 import {
   buildBrokenBaselineProjection, buildCompendiumFixture,
@@ -78,12 +82,12 @@ function activeBudget(fixture) {
       status: 'measured', commit: '38447019517147319bd08c598202d097ee866874',
       collectorCommit: 'a'.repeat(40),
       projectionRowsSha256: buildBrokenBaselineProjection(fixture).rowsSha256,
-      expectedFaults: ['unwindowed-1500-rows', 'list-source-440', 'full-portrait-cache-exposure', 'eager-art-import'],
+      expectedFaults: [...BROKEN_BASELINE_EXPECTED_FAULTS],
       samples: {
         phone: [sample('broken-phone', 1, '38447019517147319bd08c598202d097ee866874',
-          ['unwindowed-1500-rows', 'list-source-440', 'full-portrait-cache-exposure', 'eager-art-import'])],
+          [...BROKEN_BASELINE_EXPECTED_FAULTS])],
         desktop: [sample('broken-desktop', 1, '38447019517147319bd08c598202d097ee866874',
-          ['unwindowed-1500-rows', 'list-source-440', 'full-portrait-cache-exposure', 'eager-art-import'])],
+          [...BROKEN_BASELINE_EXPECTED_FAULTS])],
       },
     },
     ceilings: { phone: { ...ceiling }, desktop: { ...ceiling } },
@@ -479,6 +483,202 @@ export function runCompendiumMemSelftest() {
       ...phoneEmulation, touch: { enabled: true, maxTouchPoints },
     }), `phone maxTouchPoints=${maxTouchPoints} passed the exact five-point contract`);
   }
+  let observerNow = 100;
+  class FakeCanvas {
+    constructor(width = 132, height = 132) {
+      this.width = width; this.height = height; this.calls = []; this.serial = 0;
+    }
+  }
+  Object.defineProperty(FakeCanvas.prototype, 'toDataURL', {
+    configurable: true, enumerable: false, writable: true,
+    value: function (...args) {
+      if (!(this instanceof FakeCanvas)) throw new TypeError('illegal fake canvas receiver');
+      this.calls.push(args); this.serial += 1;
+      return `data:image/png;base64,selftest-${this.serial}-${args.join('-')}-payload`;
+    },
+  });
+  class FakeTextEncoder {
+    encode(value) { return new Uint8Array(String(value).length); }
+  }
+  const originalCanvasDescriptor = Object.getOwnPropertyDescriptor(
+    FakeCanvas.prototype, 'toDataURL',
+  );
+  const fakeObserverGlobal = {};
+  const fakeObserver = installBrokenBaselineThumbObserver(
+    fakeObserverGlobal, FakeCanvas, FakeTextEncoder, { now: () => observerNow },
+    BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA, BROKEN_BASELINE_THUMB_CACHE_CAP,
+  );
+  const installedCanvasDescriptor = Object.getOwnPropertyDescriptor(
+    FakeCanvas.prototype, 'toDataURL',
+  );
+  const fakeCanvas = new FakeCanvas();
+  const forwarded = fakeCanvas.toDataURL('image/png', 0.8);
+  assert(forwarded === 'data:image/png;base64,selftest-1-image/png-0.8-payload'
+    && JSON.stringify(fakeCanvas.calls) === JSON.stringify([['image/png', 0.8]])
+    && installedCanvasDescriptor.configurable === originalCanvasDescriptor.configurable
+    && installedCanvasDescriptor.enumerable === originalCanvasDescriptor.enumerable
+    && installedCanvasDescriptor.writable === originalCanvasDescriptor.writable
+    && fakeObserver.descriptorPreserved === true
+    && fakeObserver.totalExact132Completions === 1,
+  'the exact pre-document thumb observer changed receiver/args/return/descriptor semantics');
+  fakeObserver.preOwnerExact132Completions = fakeObserver.totalExact132Completions;
+  fakeObserver.phase = 'initial-list';
+  for (let index = 0; index < 601; index++) {
+    observerNow += 1;
+    fakeCanvas.toDataURL('image/png', index);
+  }
+  const beforeWrongSize = fakeObserver.totalExact132Completions;
+  new FakeCanvas(131, 132).toDataURL('image/png');
+  let wrongReceiverThrew = false;
+  try { Reflect.apply(installedCanvasDescriptor.value, {}, ['image/png']); }
+  catch { wrongReceiverThrew = true; }
+  assert(fakeObserver.initialListCompletions === 601
+    && fakeObserver.initialListCacheEncodedByteLengths.length === 600
+    && fakeObserver.totalExact132Completions === beforeWrongSize
+    && fakeObserver.observerErrors === 0 && wrongReceiverThrew,
+  'thumb observer did not isolate exact-132 successes or retain the final cache-cap completions');
+  const stableThumbObservation = {
+    preOwnerExact132Completions: 8,
+    initialListCompletions: 1500,
+    cacheEntries: BROKEN_BASELINE_THUMB_CACHE_CAP,
+    cacheEncodedBytes: 6_000_000,
+    totalExact132Completions: 1508,
+    observerErrors: 0,
+    descriptorPreserved: true,
+    quietMs: 1000,
+  };
+  assert(validBrokenBaselineThumbObservation(stableThumbObservation),
+    'an exact stable thumb completion observation was rejected');
+  for (const mutation of [
+    { initialListCompletions: 1501 },
+    { cacheEntries: BROKEN_BASELINE_THUMB_CACHE_CAP - 1 },
+    { cacheEncodedBytes: 0 },
+    { totalExact132Completions: 1509 },
+    { observerErrors: 1 },
+    { descriptorPreserved: false },
+    { quietMs: 999 },
+  ]) {
+    assert(!validBrokenBaselineThumbObservation({ ...stableThumbObservation, ...mutation }),
+      'an extra/missing/unstable thumb completion observation passed the sealed contract');
+  }
+  const baselineFaultRaw = {
+    mountedRows: 1500, imageCount: 1500,
+    naturalWidths: Array(1500).fill(440), naturalHeights: Array(1500).fill(440),
+    sourceInstanceCount: 1500, dataImageCount: 1500,
+    distinctSources: BROKEN_BASELINE_PORTRAIT_CACHE_CAPS.desktop + 1,
+    sourceInstanceEncodedBytes: 1_500_000,
+    referencedPixels: 1500 * 440 * 440,
+  };
+  const baselineFaultObservation = (profile, raw = baselineFaultRaw) => ({
+    profile, list: raw,
+    eagerResource: 'http://127.0.0.1/assets/speciesart-broken.js',
+    speciesChunk: 'speciesart-broken.js',
+  });
+  for (const profile of ['phone', 'desktop']) {
+    const greenRaw = {
+      ...baselineFaultRaw,
+      /* Many distinct genome keys may legitimately paint identical PNGs.
+         One more distinct full portrait than the exact LRU cap still proves
+         the DOM exposure without pretending all 1,500 URLs are unique. */
+      distinctSources: BROKEN_BASELINE_PORTRAIT_CACHE_CAPS[profile] + 1,
+    };
+    const observed = brokenBaselineFaults(baselineFaultObservation(profile, greenRaw));
+    assert(JSON.stringify([...observed].sort())
+      === JSON.stringify([...BROKEN_BASELINE_EXPECTED_FAULTS].sort()),
+    `${profile} truthful broken-baseline observation missed a sealed fault`);
+    const exactCap = brokenBaselineFaults(baselineFaultObservation(profile, {
+      ...greenRaw, distinctSources: BROKEN_BASELINE_PORTRAIT_CACHE_CAPS[profile],
+    }));
+    assert(!exactCap.includes('full-portrait-dom-exposure'),
+      `${profile} exact-cap distinct resources falsely proved full DOM exposure`);
+  }
+  const missingSource = brokenBaselineFaults(baselineFaultObservation('phone', {
+    ...baselineFaultRaw, distinctSources: BROKEN_BASELINE_PORTRAIT_CACHE_CAPS.phone + 1,
+    sourceInstanceCount: 1499, dataImageCount: 1499,
+  }));
+  assert(!missingSource.includes('full-portrait-dom-exposure'),
+    'one empty/non-data image source still proved 1,500 full portrait DOM references');
+  const shortBaseline = brokenBaselineFaults(baselineFaultObservation('phone', {
+    ...baselineFaultRaw, mountedRows: 1499, imageCount: 1499,
+  }));
+  assert(!shortBaseline.includes('unwindowed-1500-rows')
+    && !shortBaseline.includes('list-source-440'),
+  'a 1,499-row broken baseline proved exact 1,500-row faults');
+  const thumbSizedBaseline = brokenBaselineFaults(baselineFaultObservation('phone', {
+    ...baselineFaultRaw, naturalWidths: [132, ...Array(1499).fill(440)],
+  }));
+  assert(!thumbSizedBaseline.includes('list-source-440')
+    && !thumbSizedBaseline.includes('full-portrait-dom-exposure'),
+    'a 132px list source passed the broken 440px source control');
+  for (const raw of [
+    { ...baselineFaultRaw, sourceInstanceEncodedBytes: 0 },
+    { ...baselineFaultRaw, referencedPixels: 1500 * 440 * 440 - 1 },
+  ]) {
+    assert(!brokenBaselineFaults(baselineFaultObservation('desktop', raw))
+      .includes('full-portrait-dom-exposure'),
+    'missing instance bytes/pixel area still proved full portrait DOM exposure');
+  }
+  for (const profile of ['phone', 'desktop']) {
+    const portraitCacheCap = BROKEN_BASELINE_PORTRAIT_CACHE_CAPS[profile];
+    const cacheRaw = {
+      ...baselineFaultRaw,
+      thumbRenderCompletions: 1500,
+      modeledThumbCacheEntries: BROKEN_BASELINE_THUMB_CACHE_CAP,
+      thumbCacheEncodedBytes: 6_000_000,
+      thumbObserverPreOwnerExact132Completions: 8,
+      thumbObserverTotalExact132Completions: 1508,
+      thumbObserverErrors: 0,
+      thumbObserverDescriptorPreserved: true,
+      thumbObserverStableQuietMs: 1000,
+      modeledPortraitCacheEntries: portraitCacheCap,
+      modeledPortraitCacheEncodedBytes: 3_000_000,
+    };
+    const warmCacheRaw = [0, 1, 2, 3].map((index) => ({
+      renderStartThumbCacheEntries: BROKEN_BASELINE_THUMB_CACHE_CAP,
+      renderStartThumbCacheEncodedBytes: 6_000_000 + index * 100,
+    }));
+    const cacheMetrics = brokenBaselineCacheMetrics(profile, cacheRaw, warmCacheRaw);
+    assert(cacheMetrics?.liveCacheEntries === 600
+      && cacheMetrics.liveCacheEntries !== cacheMetrics.livePortraitCacheEntries
+      && cacheMetrics.livePortraitCacheEntries === portraitCacheCap
+      && cacheMetrics.liveDecodedPixels === 600 * 132 * 132
+      && cacheMetrics.liveDecodedBytes === 600 * 132 * 132 * 4
+      && cacheMetrics.liveEncodedBytes === 6_000_300
+      && cacheMetrics.warmDecodedBytesRange === 0
+      && cacheMetrics.warmEncodedBytesRange === 200
+      && cacheMetrics.queuedJobsPeak === 0 && cacheMetrics.activeJobsPeak === 0
+      && cacheMetrics.liveLeases === 0 && cacheMetrics.liveSubscribers === 0,
+    `${profile} broken-baseline thumb/portrait cache carriers were conflated`);
+    for (const mutation of [
+      { thumbRenderCompletions: 1499 },
+      { modeledThumbCacheEntries: portraitCacheCap },
+      { thumbCacheEncodedBytes: 0 },
+      { modeledPortraitCacheEntries: BROKEN_BASELINE_THUMB_CACHE_CAP },
+      { modeledPortraitCacheEncodedBytes: 0 },
+    ]) {
+      assert(brokenBaselineCacheMetrics(
+        profile, { ...cacheRaw, ...mutation }, warmCacheRaw,
+      ) === null,
+        `${profile} incomplete or cross-wired private-cache evidence produced budget metrics`);
+    }
+    for (const mutation of [
+      { renderStartThumbCacheEntries: BROKEN_BASELINE_THUMB_CACHE_CAP - 1 },
+      { renderStartThumbCacheEncodedBytes: 0 },
+    ]) {
+      const brokenWarm = warmCacheRaw.map((point, index) =>
+        index === 2 ? { ...point, ...mutation } : point);
+      assert(brokenBaselineCacheMetrics(profile, cacheRaw, brokenWarm) === null,
+        `${profile} invalid render-start warm cache evidence produced budget metrics`);
+    }
+  }
+  const partialBaseline = brokenBaselineFailureEvidence([
+    { profile: 'phone', evidence: { sourceInstanceCount: 1500 } },
+    { profile: 'desktop', evidence: { sourceInstanceCount: 1500 } },
+  ]);
+  assert(partialBaseline.evidenceStatus === 'partial-diagnostic-not-budget-samples'
+    && Object.keys(partialBaseline.profiles).sort().join(',') === 'desktop,phone'
+    && partialBaseline.profiles.phone.evidence.sourceInstanceCount === 1500,
+  'completed raw baseline profiles were discarded or mislabeled on instrument failure');
   const fixture = buildCompendiumFixture();
   const baselineProjection = buildBrokenBaselineProjection(fixture);
   assert(baselineProjection.count === 1500 && baselineProjection.uniqueSeeds === 1500,

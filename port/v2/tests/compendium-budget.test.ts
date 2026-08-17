@@ -3,8 +3,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  BUDGET_SCHEMA, CEILING_FIELDS, EXPECTED_OUTCOMES, OUTCOME_IDS, PROFILES,
-  SAMPLE_METRIC_FIELDS, validateBudgetRecord,
+  BROKEN_BASELINE_EXPECTED_FAULTS, BUDGET_SCHEMA, CEILING_FIELDS,
+  EXPECTED_OUTCOMES, OUTCOME_IDS, PROFILES, SAMPLE_METRIC_FIELDS,
+  validateBudgetRecord,
 } from '../tools/compendiummem-contract.mjs';
 import {
   buildBrokenBaselineProjection, buildCompendiumFixture,
@@ -43,6 +44,10 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(definitions.ceiling.additionalProperties).toBe(false);
     expect([...definitions.ceiling.required].sort()).toEqual(['rationale', ...CEILING_FIELDS].sort());
     expect(Object.keys(definitions.ceiling.properties).sort()).toEqual(['rationale', ...CEILING_FIELDS].sort());
+    expect([...(schema.$defs as { brokenFault: { enum: string[] } }).brokenFault.enum].sort())
+      .toEqual([...BROKEN_BASELINE_EXPECTED_FAULTS].sort());
+    expect([...(budget.pairedBrokenBaseline as { expectedFaults: string[] }).expectedFaults].sort())
+      .toEqual([...BROKEN_BASELINE_EXPECTED_FAULTS].sort());
   });
 
   it('fails closed until measured phone and desktop ceilings are recorded', () => {

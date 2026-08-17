@@ -11,6 +11,13 @@ export const OUTCOME_IDS: readonly string[];
 export const EXPECTED_OUTCOMES: readonly string[];
 export const REPORT_INPUT_KEYS: readonly string[];
 export const REVIEW_PACKET_STATES: readonly string[];
+export const BROKEN_BASELINE_EXPECTED_FAULTS: readonly string[];
+export const BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA:
+  'cf-v2-compendium-broken-thumb-observer/v1';
+export const BROKEN_BASELINE_THUMB_CACHE_CAP: 600;
+export const BROKEN_BASELINE_PORTRAIT_CACHE_CAPS: Readonly<{
+  phone: 96; desktop: 256;
+}>;
 export const CEILING_FIELDS: readonly string[];
 export const SAMPLE_METRIC_FIELDS: readonly string[];
 export function sha256(value: string | NodeJS.ArrayBufferView): string;
@@ -39,6 +46,37 @@ export function remainingCommandTimeoutMs(deadlineMs: number, nowMs: number,
   transportTimeoutMs: number): number | null;
 export function phaseObservationAccepted(deadlineMs: number, completedAtMs: number,
   value: unknown): boolean;
+export function installBrokenBaselineThumbObserver(
+  globalObject: Record<string, unknown>,
+  CanvasConstructor: { prototype: Record<string, unknown> },
+  TextEncoderConstructor: typeof TextEncoder,
+  clock: { now(): number },
+  schema: string,
+  cacheCap: number,
+): Record<string, unknown>;
+export function validBrokenBaselineThumbObservation(observation: unknown): boolean;
+export function brokenBaselineFaults(observation: {
+  profile: 'phone' | 'desktop'; list: unknown; eagerResource: unknown; speciesChunk: unknown;
+}): string[];
+export function brokenBaselineCacheMetrics(profile: 'phone' | 'desktop', list: unknown,
+  warm: readonly unknown[]): Readonly<{
+  liveCacheEntries: number;
+  liveDecodedPixels: number;
+  liveDecodedBytes: number;
+  liveEncodedBytes: number;
+  queuedJobsPeak: 0;
+  activeJobsPeak: 0;
+  liveLeases: 0;
+  liveSubscribers: 0;
+  livePortraitCacheEntries: number;
+  livePortraitEncodedBytes: number;
+  warmDecodedBytesRange: number;
+  warmEncodedBytesRange: number;
+}> | null;
+export function brokenBaselineFailureEvidence(measurements: unknown): Readonly<{
+  evidenceStatus: 'partial-diagnostic-not-budget-samples';
+  profiles: Readonly<Record<string, unknown>>;
+}>;
 export function validateBudgetRecord(record: unknown, fixtureRowsSha256?: string | null,
   brokenBaselineProjectionRowsSha256?: string | null): {
   ok: boolean; errors: string[];

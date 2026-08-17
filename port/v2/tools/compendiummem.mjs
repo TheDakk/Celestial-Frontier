@@ -23,11 +23,15 @@ import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
 import {
-  BASELINE_OBSERVATION_TIMEOUT_MS, COMMAND_TIMEOUT_MS, EXPECTED_OUTCOMES,
+  BASELINE_OBSERVATION_TIMEOUT_MS, BROKEN_BASELINE_PORTRAIT_CACHE_CAPS,
+  BROKEN_BASELINE_THUMB_CACHE_CAP, BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
+  COMMAND_TIMEOUT_MS, EXPECTED_OUTCOMES,
   REPORT_INPUT_KEYS, REPORT_SCHEMA, REQUIRED_WARM_CYCLES,
+  brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
   calibrationMetrics, compendiumCdpOptions, compendiumProfileEmulationOptions,
-  evaluateProfile, sha256, sameSourceIdentity,
+  evaluateProfile, installBrokenBaselineThumbObserver, sha256, sameSourceIdentity,
   phaseObservationAccepted, remainingCommandTimeoutMs, validateBudgetRecord, verifyTerminalReport,
+  validBrokenBaselineThumbObservation,
 } from './compendiummem-contract.mjs';
 import {
   COMPENDIUM_FIXTURE_SPEC_PATH, buildBrokenBaselineProjection,
@@ -952,6 +956,9 @@ function brokenBaselineInputs(baselineRoot, baselineDist, fixture, projection,
     baselineIndexSha256: hashFile(path.join(baselineRoot, 'port', 'v2', 'apps', 'game', 'index.html')),
     speciesChunk,
     speciesChunkSha256: hashFile(path.join(baselineDist, 'assets', speciesChunk)),
+    thumbObserverSchema: BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
+    thumbCacheCap: BROKEN_BASELINE_THUMB_CACHE_CAP,
+    portraitCacheCaps: BROKEN_BASELINE_PORTRAIT_CACHE_CAPS,
   };
 }
 
@@ -1009,11 +1016,35 @@ async function collectBrokenBaselineProfile({
     } catch { /* Runtime heap remains mandatory */ }
     await evaluate(`new Promise(resolve=>requestAnimationFrame(()=>resolve(true)))`, `${label} animation task`);
     const raw = await evaluate(`(()=>{const rows=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"]')];
-      const imgs=rows.map(row=>row.querySelector('img')).filter(Boolean);const sources=[...new Set(imgs.map(img=>img.getAttribute('src')||'').filter(Boolean))];
+      const imgs=rows.map(row=>row.querySelector('img')).filter(Boolean);
+      const sourceInstances=imgs.map(img=>img.getAttribute('src')||'');
+      const sources=[...new Set(sourceInstances.filter(Boolean))];
+      const portraitCacheCap=${BROKEN_BASELINE_PORTRAIT_CACHE_CAPS[profile]};
+      const thumbCacheDomSources=sourceInstances.filter((src,index)=>src
+        &&imgs[index]?.naturalWidth===132&&imgs[index]?.naturalHeight===132);
+      const portraitCacheSources=sourceInstances.filter((src,index)=>src
+        &&imgs[index]?.naturalWidth===440&&imgs[index]?.naturalHeight===440).slice(-portraitCacheCap);
+      const thumb=window.__CF_COMPENDIUM_BASELINE_THUMBS__;
       return {mountedRows:rows.length,imageCount:imgs.length,naturalWidths:imgs.map(img=>img.naturalWidth),
         naturalHeights:imgs.map(img=>img.naturalHeight),distinctSources:sources.length,
-        encodedBytes:sources.reduce((n,src)=>n+new TextEncoder().encode(src).byteLength,0),
-        decodedPixels:imgs.reduce((n,img)=>n+img.naturalWidth*img.naturalHeight,0)}})()`, `${label} raw DOM`);
+        sourceInstanceCount:sourceInstances.filter(Boolean).length,
+        dataImageCount:sourceInstances.filter(src=>src.startsWith('data:image/')).length,
+        distinctSourceEncodedBytes:sources.reduce((n,src)=>n+new TextEncoder().encode(src).byteLength,0),
+        sourceInstanceEncodedBytes:sourceInstances.reduce((n,src)=>n+new TextEncoder().encode(src).byteLength,0),
+        referencedPixels:imgs.reduce((n,img)=>n+img.naturalWidth*img.naturalHeight,0),
+        thumbRenderCompletions:thumb?.initialListCompletions||0,
+        modeledThumbCacheEntries:thumb?.initialListCacheEncodedByteLengths?.length||0,
+        thumbCacheEncodedBytes:(thumb?.initialListCacheEncodedByteLengths||[]).reduce((n,value)=>n+value,0),
+        thumbObserverTotalExact132Completions:thumb?.totalExact132Completions||0,
+        thumbObserverPreOwnerExact132Completions:thumb?.preOwnerExact132Completions,
+        thumbObserverErrors:thumb?.observerErrors,
+        thumbObserverDescriptorPreserved:thumb?.descriptorPreserved===true,
+        thumbObserverStableQuietMs:thumb?.initialListStableQuietMs,
+        renderStartThumbCacheEntries:thumbCacheDomSources.length,
+        renderStartThumbCacheEncodedBytes:thumbCacheDomSources.reduce(
+          (n,src)=>n+new TextEncoder().encode(src).byteLength,0),
+        modeledPortraitCacheEntries:portraitCacheSources.length,
+        modeledPortraitCacheEncodedBytes:portraitCacheSources.reduce((n,src)=>n+new TextEncoder().encode(src).byteLength,0)}})()`, `${label} raw DOM`);
     const heap = await send('Runtime.getHeapUsage', {}, sessionId,
       { timeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS });
     const dom = await send('Memory.getDOMCounters', {}, sessionId,
@@ -1042,6 +1073,14 @@ async function collectBrokenBaselineProfile({
         tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('seed IDB aborted'))});
       db.close();return new TextEncoder().encode(raw).byteLength})()`, 'seed 1,500-row save');
     assert(seeded === Buffer.byteLength(veteranRaw), `${profile}: broken-baseline save byte count drifted`);
+    const observerSource = `(${installBrokenBaselineThumbObserver.toString()})(
+      window,HTMLCanvasElement,TextEncoder,performance,
+      ${JSON.stringify(BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA)},${BROKEN_BASELINE_THUMB_CACHE_CAP});`;
+    const observerInstall = await send('Page.addScriptToEvaluateOnNewDocument', {
+      source: observerSource,
+    }, sessionId, { timeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS });
+    assert(typeof observerInstall?.identifier === 'string' && observerInstall.identifier,
+      `${profile}: pre-document broken-baseline thumb observer was not registered`);
     await send('Page.navigate', { url: `${origin}/` }, sessionId);
     await waitValue('app readiness', `(()=>{const s=window.__CF_SLICE__?.api?.state?.();return s?.codexCount===1500?s:null})()`, 30000);
 
@@ -1050,9 +1089,50 @@ async function collectBrokenBaselineProfile({
        opening Compendium; do not infer this fault from source prose. */
     const eagerResource = await waitValue('idle eager species import', `(()=>performance.getEntriesByType('resource')
       .map(entry=>entry.name).find(name=>name.endsWith('/${speciesChunk}'))||null)()`, 15000);
+    const preOwnerThumbObservation = await waitValue('stable pre-owner thumb observation',
+      `(()=>{const state=window.__CF_COMPENDIUM_BASELINE_THUMBS__;
+        return state?.schema===${JSON.stringify(BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA)}
+          &&state.descriptorPreserved===true&&state.observerErrors===0
+          &&performance.now()-state.lastCompletionAt>=1000
+          ?{total:state.totalExact132Completions,quietMs:performance.now()-state.lastCompletionAt}:null})()`,
+    30000);
+    const thumbPhase = await evaluate(`(()=>{const state=window.__CF_COMPENDIUM_BASELINE_THUMBS__;
+      if(!state||state.phase!=='pre-owner')return null;
+      state.preOwnerExact132Completions=state.totalExact132Completions;
+      state.initialListCompletions=0;state.initialListCacheEncodedByteLengths.length=0;
+      state.phase='initial-list';state.lastCompletionAt=performance.now();
+      return {phase:state.phase,preOwnerExact132Completions:state.preOwnerExact132Completions}})()`,
+    'begin initial-list thumb observation');
+    assert(thumbPhase?.phase === 'initial-list'
+      && thumbPhase.preOwnerExact132Completions === preOwnerThumbObservation.total,
+    `${profile}: initial-list thumb observer phase did not preserve the raw pre-owner count`);
     await click('#dockcodex,#railcodex', 'open Compendium');
     await waitValue('1,500 full list portraits', `(()=>{const rows=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"]')],imgs=rows.map(r=>r.querySelector('img')).filter(Boolean);
       return rows.length===1500&&imgs.length===1500&&imgs.every(img=>img.complete&&img.naturalWidth>0)?true:null})()`);
+    await waitValue('stable initial-list thumb completions',
+      `(()=>{const state=window.__CF_COMPENDIUM_BASELINE_THUMBS__;
+        return state?.initialListCompletions>=1500
+          &&performance.now()-state.lastCompletionAt>=1000
+          ?{initialListCompletions:state.initialListCompletions,
+            cacheEntries:state.initialListCacheEncodedByteLengths?.length,
+            cacheEncodedBytes:(state.initialListCacheEncodedByteLengths||[]).reduce((n,value)=>n+value,0),
+            totalExact132Completions:state.totalExact132Completions,
+            observerErrors:state.observerErrors,descriptorPreserved:state.descriptorPreserved,
+            quietMs:performance.now()-state.lastCompletionAt}:null})()`);
+    const sealedThumbObservation = await evaluate(`(()=>{const state=window.__CF_COMPENDIUM_BASELINE_THUMBS__;
+      if(state.phase!=='initial-list')return null;
+      state.initialListStableQuietMs=performance.now()-state.lastCompletionAt;
+      state.phase='post-initial-list';
+      return {preOwnerExact132Completions:state.preOwnerExact132Completions,
+        initialListCompletions:state.initialListCompletions,
+        cacheEntries:state.initialListCacheEncodedByteLengths.length,
+        cacheEncodedBytes:state.initialListCacheEncodedByteLengths.reduce((n,value)=>n+value,0),
+        totalExact132Completions:state.totalExact132Completions,
+        observerErrors:state.observerErrors,descriptorPreserved:state.descriptorPreserved,
+        quietMs:state.initialListStableQuietMs}})()`,
+    'seal initial-list thumb observation');
+    assert(validBrokenBaselineThumbObservation(sealedThumbObservation),
+      `${profile}: stable initial-list thumb completion/cache observation was not exact`);
     const list = await snapshot('full list');
     await click('#codexpanel [data-sel="codex-entry"]', 'open detail');
     await waitValue('detail 440 portrait', `(()=>{const img=document.querySelector('#codexpanel [data-sel="detail-portrait"]');
@@ -1067,16 +1147,14 @@ async function collectBrokenBaselineProfile({
       warm.push(await snapshot(`warm ${cycle + 1}`));
       await click('#codexpanel [data-pnx="codex"]', `warm close ${cycle + 1}`);
     }
-    const faults = [];
-    if (list.raw.mountedRows === 1500) faults.push('unwindowed-1500-rows');
-    if (list.raw.imageCount === 1500
-      && list.raw.naturalWidths.every((value) => value === 440)
-      && list.raw.naturalHeights.every((value) => value === 440)) faults.push('list-source-440');
-    if (list.raw.distinctSources === 1500 && list.raw.decodedPixels === 1500 * 440 * 440
-      && list.raw.encodedBytes > 0) faults.push('full-portrait-cache-exposure');
-    if (typeof eagerResource === 'string' && eagerResource.endsWith(`/${speciesChunk}`)) {
-      faults.push('eager-art-import');
-    }
+    const faults = brokenBaselineFaults({
+      profile, list: list.raw, eagerResource, speciesChunk,
+    });
+    const cacheMetrics = brokenBaselineCacheMetrics(
+      profile, list.raw, warm.map((point) => point.raw),
+    );
+    assert(cacheMetrics,
+      `${profile}: exact broken-baseline thumb/portrait cache observation was incomplete`);
     const points = [list, detail, ...warm];
     const tail = warm.slice(-3);
     const maximum = (read) => Math.max(...points.map(read));
@@ -1087,25 +1165,68 @@ async function collectBrokenBaselineProfile({
       documents: maximum((point) => point.dom.documents),
       nodes: maximum((point) => point.dom.nodes),
       jsEventListeners: maximum((point) => point.dom.jsEventListeners),
-      liveCacheEntries: maximum((point) => point.raw.distinctSources),
-      liveDecodedPixels: maximum((point) => point.raw.decodedPixels),
-      liveDecodedBytes: maximum((point) => point.raw.decodedPixels * 4),
-      liveEncodedBytes: maximum((point) => point.raw.encodedBytes),
+      liveCacheEntries: cacheMetrics.liveCacheEntries,
+      /* Cache fields bind the exact source caps and the initial list's actual
+         completion order. The 1,500 full-size DOM source instances, distinct
+         resource bytes, and per-element referenced pixels stay in raw evidence
+         and are deliberately not mislabeled as private cache residency. */
+      liveDecodedPixels: cacheMetrics.liveDecodedPixels,
+      liveDecodedBytes: cacheMetrics.liveDecodedBytes,
+      liveEncodedBytes: cacheMetrics.liveEncodedBytes,
       /* The pinned build predates the lease/job scheduler entirely. Its eager
          synchronous 440px importer therefore has no queued/active job peaks. */
-      queuedJobsPeak: 0,
-      activeJobsPeak: 0,
-      liveLeases: maximum((point) => point.raw.imageCount),
-      liveSubscribers: 0,
-      livePortraitCacheEntries: maximum((point) => point.raw.distinctSources),
-      livePortraitEncodedBytes: maximum((point) => point.raw.encodedBytes),
+      queuedJobsPeak: cacheMetrics.queuedJobsPeak,
+      activeJobsPeak: cacheMetrics.activeJobsPeak,
+      liveLeases: cacheMetrics.liveLeases,
+      liveSubscribers: cacheMetrics.liveSubscribers,
+      livePortraitCacheEntries: cacheMetrics.livePortraitCacheEntries,
+      livePortraitEncodedBytes: cacheMetrics.livePortraitEncodedBytes,
       warmHeapRangeBytes: metricRange((point) => point.heap.usedSize),
-      warmDecodedBytesRange: metricRange((point) => point.raw.decodedPixels * 4),
-      warmEncodedBytesRange: metricRange((point) => point.raw.encodedBytes),
+      warmDecodedBytesRange: cacheMetrics.warmDecodedBytesRange,
+      warmEncodedBytesRange: cacheMetrics.warmEncodedBytesRange,
     };
     return {
       profile, viewport, metrics, observedFaults: faults,
-      evidence: { eagerResource, speciesChunk, list: list.raw, detail: detail.raw },
+      evidence: {
+        eagerResource, speciesChunk, list: list.raw, detail: detail.raw,
+        metricCarriers: {
+          liveCacheEntries: 'max-initial-observed-and-warm-render-start-speciesThumbCache-entries',
+          liveDecodedPixels: 'max-cache-entries-times-132x132-thumb-assets',
+          liveDecodedBytes: 'modeled-thumb-decoded-pixels-times-four',
+          liveEncodedBytes: 'max-initial-final-600-observed-and-warm-render-start-thumb-data-url-utf8-bytes',
+          liveLeases: 'zero-no-lease-api-exists-at-3844701',
+          liveSubscribers: 'zero-no-lease-subscriber-api-exists-at-3844701',
+          warmDecodedBytesRange: 'last-three-render-start-132-cache-hit-count-times-132x132x4',
+          warmEncodedBytesRange: 'last-three-render-start-132-cache-hit-data-url-utf8-byte-range',
+          domReferencedPixels: 'per-element-natural-width-times-height-not-resident-memory',
+          domDistinctSourceEncodedBytes: 'unique-full-portrait-dom-data-url-utf8-bytes',
+        },
+        thumbCacheModel: {
+          source: 'exact-3844701-speciesThumbCache-successful-onload-insertion-order',
+          point: 'initial-list-after-1500-observed-132x132-toDataURL-completions',
+          observerInstalledBeforeAppModule: true,
+          observerSchema: BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
+          preOwnerExact132Completions: preOwnerThumbObservation.total,
+          totalExact132CompletionsAtInitialSeal: sealedThumbObservation.totalExact132Completions,
+          stableQuietMs: sealedThumbObservation.quietMs,
+          cap: BROKEN_BASELINE_THUMB_CACHE_CAP,
+          entries: list.raw.modeledThumbCacheEntries,
+          encodedBytes: list.raw.thumbCacheEncodedBytes,
+          encodedByteBasis: 'utf8-data-url',
+          warmRenderStart: warm.map((point) => ({
+            entries: point.raw.renderStartThumbCacheEntries,
+            encodedBytes: point.raw.renderStartThumbCacheEncodedBytes,
+          })),
+        },
+        portraitCacheModel: {
+          source: 'exact-3844701-private-lru-and-sequential-list-call-order',
+          point: 'initial-list-after-sequential-1500-calls',
+          cap: BROKEN_BASELINE_PORTRAIT_CACHE_CAPS[profile],
+          initialListEntries: list.raw.modeledPortraitCacheEntries,
+          initialListEncodedBytes: list.raw.modeledPortraitCacheEncodedBytes,
+          encodedByteBasis: 'utf8-data-url',
+        },
+      },
     };
   } finally {
     if (sessionId) {
@@ -1138,6 +1259,9 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
   let collectorBegin = placeholderSource;
   let baselineBegin = placeholderSource;
   let baselineRoot = null;
+  let inputs = null;
+  let inputDigest = null;
+  const measurements = [];
   try {
     collectorBegin = sourceIdentity();
     assert(collectorBegin.state === 'committed',
@@ -1165,10 +1289,10 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
     assert(fs.existsSync(vite),
       `baseline dependencies are missing; run npm ci in ${baselineV2} before collection`);
     execFileSync(vite, ['build'], { cwd: baselineApp, stdio: 'inherit' });
-    const inputs = brokenBaselineInputs(
+    inputs = brokenBaselineInputs(
       baselineRoot, baselineDist, fixture, projection, collectorBegin, baselineBegin,
     );
-    const inputDigest = sha256(stableJson(inputs));
+    inputDigest = sha256(stableJson(inputs));
     server = await serveDist(baselineDist);
     browser = await openChromiumCdp(compendiumCdpOptions('baseline', {
       label: 'Compendium exact-3844701 broken-baseline gate',
@@ -1178,7 +1302,6 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
     const rawSave = structuredClone(saveFixtures.inputs.veteran_rich);
     rawSave.codex = projection.codex;
     const veteranRaw = JSON.stringify(rawSave);
-    const measurements = [];
     for (const [profile, viewport] of Object.entries(PROFILES)) {
       measurements.push(await collectBrokenBaselineProfile({
         profile, viewport, fixture, browser, origin: server.origin, veteranRaw,
@@ -1244,6 +1367,7 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
     return 0;
   } catch (error) {
     const endedAt = new Date();
+    const partialEvidence = brokenBaselineFailureEvidence(measurements);
     const report = {
       schema: 'cf-v2-compendium-broken-baseline-report/v1', status: 'instrument-fail', runId,
       startedAt: startedAt.toISOString(), endedAt: endedAt.toISOString(),
@@ -1254,7 +1378,10 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
       },
       collectorSource: { begin: collectorBegin, end: collectorBegin },
       baselineSource: { begin: baselineBegin, end: baselineBegin },
-      findings: [`instrument: ${error.message}`], profiles: {},
+      inputs, inputDigest, browser: browser?.browser || null,
+      evidenceStatus: partialEvidence.evidenceStatus,
+      findings: [`instrument: ${error.message}`],
+      profiles: partialEvidence.profiles,
     };
     atomicWriteJson(baselineReportPath, report);
     console.error(`COMPENDIUM BROKEN BASELINE: INSTRUMENT-FAIL — ${runId}`);
