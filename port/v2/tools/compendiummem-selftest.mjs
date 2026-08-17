@@ -10,9 +10,12 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  ART_DIAGNOSTICS_SCHEMA, BUDGET_SCHEMA, DIAGNOSTICS_SCHEMA,
+  ART_DIAGNOSTICS_SCHEMA, BASELINE_OBSERVATION_TIMEOUT_MS, BUDGET_SCHEMA,
+  CANDIDATE_TRANSPORT_TIMEOUT_MS, COMMAND_TIMEOUT_MS, DIAGNOSTICS_SCHEMA,
   EXPECTED_OUTCOMES, OUTCOME_IDS, REPORT_INPUT_KEYS, REPORT_SCHEMA,
-  calibrationMetrics, evaluateProfile, sha256, validateBudgetRecord, verifyTerminalReport,
+  calibrationMetrics, compendiumCdpOptions, evaluateProfile, phaseObservationAccepted,
+  remainingCommandTimeoutMs, sha256, validTransportTimeoutPolicy,
+  validateBudgetRecord, verifyTerminalReport,
 } from './compendiummem-contract.mjs';
 import {
   buildBrokenBaselineProjection, buildCompendiumFixture,
@@ -403,6 +406,55 @@ function atomicWriteJson(file, value) {
 }
 
 export function runCompendiumMemSelftest() {
+  const timeoutPolicy = {
+    candidateTransportTimeoutMs: CANDIDATE_TRANSPORT_TIMEOUT_MS,
+    candidateTargetTimeoutMs: COMMAND_TIMEOUT_MS,
+    baselineTransportTimeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS,
+    baselineObservationTimeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS,
+  };
+  assert(validTransportTimeoutPolicy(timeoutPolicy),
+    'configured baseline heavy command is not admitted by its CDP transport ceiling');
+  assert(!validTransportTimeoutPolicy({ ...timeoutPolicy, baselineTransportTimeoutMs: 5000 }),
+    'the rejected 5s baseline transport configuration passed the pure timeout policy');
+  assert(!validTransportTimeoutPolicy({
+    ...timeoutPolicy, baselineTransportTimeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS + 1,
+  }), 'a widened baseline transport hang ceiling passed the exact timeout policy');
+  assert(!validTransportTimeoutPolicy({ ...timeoutPolicy, candidateTargetTimeoutMs: 2001 }),
+    'candidate target/heartbeat deadline drifted above the exact 2s law');
+  assert(!validTransportTimeoutPolicy({
+    ...timeoutPolicy, candidateTransportTimeoutMs: CANDIDATE_TRANSPORT_TIMEOUT_MS + 1,
+  }), 'a widened candidate transport hang ceiling passed the exact timeout policy');
+  const baselineOpenOptions = compendiumCdpOptions('baseline', {
+    label: 'selftest-baseline', userDataPrefix: 'selftest-baseline', startupTimeoutMs: 15_000,
+  });
+  const candidateOpenOptions = compendiumCdpOptions('candidate', {
+    label: 'selftest-candidate', userDataPrefix: 'selftest-candidate', startupTimeoutMs: 15_000,
+  });
+  assert(Object.isFrozen(baselineOpenOptions)
+    && baselineOpenOptions.commandTimeoutMs === BASELINE_OBSERVATION_TIMEOUT_MS,
+  'the actual baseline launcher options factory did not admit the heavy observation timeout');
+  assert(Object.isFrozen(candidateOpenOptions)
+    && candidateOpenOptions.commandTimeoutMs === CANDIDATE_TRANSPORT_TIMEOUT_MS
+    && COMMAND_TIMEOUT_MS === 2000,
+  'the actual candidate launcher options factory weakened the exact 2s target law');
+  let timeoutOverrideRejected = false;
+  try {
+    compendiumCdpOptions('baseline', { commandTimeoutMs: 5000 });
+  } catch { timeoutOverrideRejected = true; }
+  assert(timeoutOverrideRejected,
+    'the launcher options factory accepted an independent call-site timeout override');
+  const phaseDeadline = 16_000;
+  const fakeEvaluate = (completedAt) => ({
+    commandTimeoutMs: remainingCommandTimeoutMs(
+      phaseDeadline, 1_000, BASELINE_OBSERVATION_TIMEOUT_MS,
+    ),
+    accepted: phaseObservationAccepted(phaseDeadline, completedAt, { ready: true }),
+  });
+  assert(fakeEvaluate(phaseDeadline - 1).commandTimeoutMs === 15_000
+    && fakeEvaluate(phaseDeadline - 1).accepted,
+  'an on-time baseline phase observation or its clipped remaining timeout was rejected');
+  assert(!fakeEvaluate(phaseDeadline).accepted && !fakeEvaluate(phaseDeadline + 1).accepted,
+    'an exact-deadline or late truthy baseline phase observation was accepted');
   const fixture = buildCompendiumFixture();
   const baselineProjection = buildBrokenBaselineProjection(fixture);
   assert(baselineProjection.count === 1500 && baselineProjection.uniqueSeeds === 1500,
