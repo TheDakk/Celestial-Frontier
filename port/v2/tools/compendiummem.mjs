@@ -29,9 +29,10 @@ import {
   REPORT_INPUT_KEYS, REPORT_SCHEMA, REQUIRED_WARM_CYCLES,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
   calibrationMetrics, compendiumCdpOptions, compendiumProfileEmulationOptions,
+  compendiumRawSnapshotExpression,
   evaluateProfile, installBrokenBaselineThumbObserver, sha256, sameSourceIdentity,
   phaseObservationAccepted, remainingCommandTimeoutMs, validateBudgetRecord, verifyTerminalReport,
-  validBrokenBaselineThumbObservation,
+  validBrokenBaselineThumbObservation, validCompendiumRawSnapshotExpression,
 } from './compendiummem-contract.mjs';
 import {
   COMPENDIUM_FIXTURE_SPEC_PATH, buildBrokenBaselineProjection,
@@ -335,34 +336,9 @@ async function collectProfile({
     const seeded = await evaluate(sessionId, expression, 'seed save');
     assert(seeded?.bytes === Buffer.byteLength(veteranRaw), `${profile}: seeded save byte count drifted`);
   };
-  const rawSnapshotExpression = `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
-    const rows=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"][data-cid]')];
-    const imgs=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"] img')].map(img=>({
-      logicalId:img.closest('[data-cid]')?.dataset.cid||'',naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,
-      visualKey:img.dataset.visualKey||null,thumbState:img.dataset.thumbState||'unbound'}));
-    const ps=[...document.querySelectorAll('#planetside [data-sel="planetside-sp"] img')].map(img=>({
-      logicalId:img.closest('[data-cid]')?.dataset.cid||'',naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,
-      visualKey:img.dataset.visualKey||null,thumbState:img.dataset.thumbState||'unbound'}));
-    const detailImage=document.querySelector('#codexpanel [data-sel="detail-portrait"]');
-    const scroller=document.querySelector('[data-sel="codex-scroll"]');
-    const active=document.activeElement instanceof HTMLElement?document.activeElement:null;
-    const activeRow=active?.closest('[data-cid]');const ci=Number(activeRow?.dataset.ci);
-    const activeRect=activeRow?.getBoundingClientRect(),scrollRect=scroller?.getBoundingClientRect(),activeStyle=activeRow?getComputedStyle(activeRow):null;
-    const outlineWidth=activeStyle?(parseFloat(activeStyle.outlineWidth)||0):0;
-    const outlineOffset=activeStyle?(parseFloat(activeStyle.outlineOffset)||0):0;
-    const outlineExtension=Math.max(0,outlineWidth+outlineOffset);
-    return {diagnostics:d,raw:{mountedRowCount:rows.length,mountedLogicalIds:rows.map(r=>r.dataset.cid),
-      rowRects:rows.map(r=>{const x=r.getBoundingClientRect();return {logicalId:r.dataset.cid||'',top:x.top,bottom:x.bottom,height:x.height}}),
-      listImages:imgs,planetsideImages:ps,detailNaturalWidth:d.surfaces.detail.naturalWidth,
-      detailNaturalHeight:d.surfaces.detail.naturalHeight,detailImageCount:detailImage?1:0,
-      detailSrcPresent:!!detailImage?.getAttribute('src'),activeLogicalId:activeRow?.dataset.cid||null,
-      activeElementId:active?.id||null,focusedOutsideNormalWindow:Number.isFinite(ci)&&(ci<d.window.start||ci>=d.window.end),
-      viewportHeight:window.innerHeight,scrollerHeight:scroller?.clientHeight||0,scrollTop:scroller?.scrollTop||0,
-      focusRing:activeRect&&scrollRect&&activeStyle?{outlineWidth,outlineOffset,outlineExtension,outlineStyle:activeStyle.outlineStyle,
-        rowLeft:activeRect.left,rowRight:activeRect.right,scrollerLeft:scrollRect.left,scrollerRight:scrollRect.right,
-        ringLeft:activeRect.left-outlineExtension,ringRight:activeRect.right+outlineExtension,
-        horizontallyContained:activeRect.left-outlineExtension>=scrollRect.left-0.5
-          &&activeRect.right+outlineExtension<=scrollRect.right+0.5}:null}})()`;
+  const rawSnapshotExpression = compendiumRawSnapshotExpression();
+  assert(validCompendiumRawSnapshotExpression(rawSnapshotExpression),
+    `${profile}: Compendium raw snapshot expression is syntactically or structurally invalid`);
   const snapshot = async (sessionId, label) => {
     try { await send('HeapProfiler.collectGarbage', {}, sessionId); } catch { /* Runtime heap remains mandatory */ }
     await evaluate(sessionId, `new Promise(resolve=>requestAnimationFrame(()=>resolve(true)))`, `${label} animation task`);

@@ -71,6 +71,14 @@ export const BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA =
   'cf-v2-compendium-broken-thumb-observer/v1';
 export const BROKEN_BASELINE_THUMB_CACHE_CAP = 600;
 export const BROKEN_BASELINE_PORTRAIT_CACHE_CAPS = Object.freeze({ phone: 96, desktop: 256 });
+export const COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS = Object.freeze([
+  'return {diagnostics:d,raw:{',
+  'mountedRowCount:', 'mountedLogicalIds:', 'rowRects:',
+  'listImages:', 'planetsideImages:',
+  'detailNaturalWidth:', 'detailNaturalHeight:', 'detailImageCount:', 'detailSrcPresent:',
+  'activeLogicalId:', 'activeElementId:', 'focusedOutsideNormalWindow:',
+  'viewportHeight:', 'scrollerHeight:', 'scrollTop:', 'focusRing:',
+]);
 
 function isObject(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -91,6 +99,47 @@ function exactKeys(value, expected, where, errors) {
 }
 export function sha256(value) {
   return crypto.createHash('sha256').update(value).digest('hex');
+}
+
+export function compendiumRawSnapshotExpression() {
+  return `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
+    const rows=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"][data-cid]')];
+    const imgs=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"] img')].map(img=>({
+      logicalId:img.closest('[data-cid]')?.dataset.cid||'',naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,
+      visualKey:img.dataset.visualKey||null,thumbState:img.dataset.thumbState||'unbound'}));
+    const ps=[...document.querySelectorAll('#planetside [data-sel="planetside-sp"] img')].map(img=>({
+      logicalId:img.closest('[data-cid]')?.dataset.cid||'',naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,
+      visualKey:img.dataset.visualKey||null,thumbState:img.dataset.thumbState||'unbound'}));
+    const detailImage=document.querySelector('#codexpanel [data-sel="detail-portrait"]');
+    const scroller=document.querySelector('[data-sel="codex-scroll"]');
+    const active=document.activeElement instanceof HTMLElement?document.activeElement:null;
+    const activeRow=active?.closest('[data-cid]');const ci=Number(activeRow?.dataset.ci);
+    const activeRect=activeRow?.getBoundingClientRect(),scrollRect=scroller?.getBoundingClientRect(),activeStyle=activeRow?getComputedStyle(activeRow):null;
+    const outlineWidth=activeStyle?(parseFloat(activeStyle.outlineWidth)||0):0;
+    const outlineOffset=activeStyle?(parseFloat(activeStyle.outlineOffset)||0):0;
+    const outlineExtension=Math.max(0,outlineWidth+outlineOffset);
+    return {diagnostics:d,raw:{mountedRowCount:rows.length,mountedLogicalIds:rows.map(r=>r.dataset.cid),
+      rowRects:rows.map(r=>{const x=r.getBoundingClientRect();return {logicalId:r.dataset.cid||'',top:x.top,bottom:x.bottom,height:x.height}}),
+      listImages:imgs,planetsideImages:ps,detailNaturalWidth:d.surfaces.detail.naturalWidth,
+      detailNaturalHeight:d.surfaces.detail.naturalHeight,detailImageCount:detailImage?1:0,
+      detailSrcPresent:!!detailImage?.getAttribute('src'),activeLogicalId:activeRow?.dataset.cid||null,
+      activeElementId:active?.id||null,focusedOutsideNormalWindow:Number.isFinite(ci)&&(ci<d.window.start||ci>=d.window.end),
+      viewportHeight:window.innerHeight,scrollerHeight:scroller?.clientHeight||0,scrollTop:scroller?.scrollTop||0,
+      focusRing:activeRect&&scrollRect&&activeStyle?{outlineWidth,outlineOffset,outlineExtension,outlineStyle:activeStyle.outlineStyle,
+        rowLeft:activeRect.left,rowRight:activeRect.right,scrollerLeft:scrollRect.left,scrollerRight:scrollRect.right,
+        ringLeft:activeRect.left-outlineExtension,ringRight:activeRect.right+outlineExtension,
+        horizontallyContained:activeRect.left-outlineExtension>=scrollRect.left-0.5
+          &&activeRect.right+outlineExtension<=scrollRect.right+0.5}:null}}})()`;
+}
+
+export function validCompendiumRawSnapshotExpression(source) {
+  if (typeof source !== 'string'
+    || COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS.some((token) => !source.includes(token))) {
+    return false;
+  }
+  try { new Function(`"use strict"; return (${source});`); }
+  catch { return false; }
+  return true;
 }
 
 export function validTransportTimeoutPolicy({
