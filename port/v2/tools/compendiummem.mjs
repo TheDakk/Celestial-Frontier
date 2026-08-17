@@ -23,9 +23,10 @@ import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
 import {
-  COMMAND_TIMEOUT_MS, EXPECTED_OUTCOMES, REPORT_INPUT_KEYS, REPORT_SCHEMA, REQUIRED_WARM_CYCLES,
-  calibrationMetrics, evaluateProfile, sha256, sameSourceIdentity,
-  validateBudgetRecord, verifyTerminalReport,
+  BASELINE_OBSERVATION_TIMEOUT_MS, COMMAND_TIMEOUT_MS, EXPECTED_OUTCOMES,
+  REPORT_INPUT_KEYS, REPORT_SCHEMA, REQUIRED_WARM_CYCLES,
+  calibrationMetrics, compendiumCdpOptions, evaluateProfile, sha256, sameSourceIdentity,
+  phaseObservationAccepted, remainingCommandTimeoutMs, validateBudgetRecord, verifyTerminalReport,
 } from './compendiummem-contract.mjs';
 import {
   COMPENDIUM_FIXTURE_SPEC_PATH, buildBrokenBaselineProjection,
@@ -52,7 +53,6 @@ const fixtureToolPath = fileURLToPath(new URL('./compendiummem-fixture.mjs', imp
 const collectorPath = fileURLToPath(import.meta.url);
 const SELFTEST_FLAG = '--selftest';
 const BROKEN_BASELINE_COMMIT = '38447019517147319bd08c598202d097ee866874';
-const BASELINE_OBSERVATION_TIMEOUT_MS = 180000;
 const STORES = Object.freeze([
   'meta', 'player', 'creatures', 'catalog', 'inventory', 'settings', 'journal', 'assetcache',
 ]);
@@ -964,10 +964,12 @@ async function collectBrokenBaselineProfile({
   const send = browser.send;
   let browserContextId = null;
   let sessionId = null;
-  const evaluate = async (expression, label) => {
+  const evaluate = async (expression, label, {
+    timeoutMs = BASELINE_OBSERVATION_TIMEOUT_MS,
+  } = {}) => {
     const result = await send('Runtime.evaluate', {
       expression, returnByValue: true, awaitPromise: true,
-    }, sessionId, { timeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS });
+    }, sessionId, { timeoutMs });
     if (result.exceptionDetails) {
       const detail = result.exceptionDetails.exception?.description
         || result.exceptionDetails.text || 'unknown exception';
@@ -979,9 +981,16 @@ async function collectBrokenBaselineProfile({
     const deadline = performance.now() + timeoutMs;
     let last = null;
     while (performance.now() < deadline) {
-      last = await evaluate(expression, label);
-      if (last) return last;
-      await sleep(50);
+      const commandTimeoutMs = remainingCommandTimeoutMs(
+        deadline, performance.now(), BASELINE_OBSERVATION_TIMEOUT_MS,
+      );
+      if (commandTimeoutMs === null) break;
+      last = await evaluate(expression, label, { timeoutMs: commandTimeoutMs });
+      const completedAt = performance.now();
+      if (phaseObservationAccepted(deadline, completedAt, last)) return last;
+      const sleepMs = remainingCommandTimeoutMs(deadline, completedAt, 50);
+      if (sleepMs === null) break;
+      await sleep(sleepMs);
     }
     throw new Error(`${profile} broken baseline ${label}: timed out (${JSON.stringify(last)})`);
   };
@@ -1168,10 +1177,10 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
     );
     const inputDigest = sha256(stableJson(inputs));
     server = await serveDist(baselineDist);
-    browser = await openChromiumCdp({
+    browser = await openChromiumCdp(compendiumCdpOptions('baseline', {
       label: 'Compendium exact-3844701 broken-baseline gate',
-      userDataPrefix: 'cf-compendiummem-baseline', commandTimeoutMs: 5000, startupTimeoutMs: 15000,
-    });
+      userDataPrefix: 'cf-compendiummem-baseline', startupTimeoutMs: 15000,
+    }));
     const saveFixtures = readJson(baselineSavePath);
     const rawSave = structuredClone(saveFixtures.inputs.veteran_rich);
     rawSave.codex = projection.codex;
@@ -1305,10 +1314,10 @@ async function runGate({ calibrate }) {
     execFileSync(npm, ['exec', 'vite', 'build'], { cwd: appDir, stdio: 'inherit' });
     const candidateSpeciesChunk = findCandidateSpeciesChunk(distDir);
     server = await serveDist();
-    browser = await openChromiumCdp({
+    browser = await openChromiumCdp(compendiumCdpOptions('candidate', {
       label: 'Compendium memory/resource gate', userDataPrefix: 'cf-compendiummem',
-      commandTimeoutMs: 5000, startupTimeoutMs: 15000,
-    });
+      startupTimeoutMs: 15000,
+    }));
     const saveFixtures = readJson(baselineSavePath);
     const veteranRaw = JSON.stringify(saveFixtures.inputs.veteran_rich);
     const measurements = [];

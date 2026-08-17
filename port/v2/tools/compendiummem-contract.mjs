@@ -12,6 +12,8 @@ export const DIAGNOSTICS_SCHEMA = 'cf-v2-compendium-diagnostics/v1';
 export const ART_DIAGNOSTICS_SCHEMA = 'cf-v2-species-art-diagnostics/v1';
 export const PROFILES = Object.freeze(['phone', 'desktop']);
 export const COMMAND_TIMEOUT_MS = 2000;
+export const CANDIDATE_TRANSPORT_TIMEOUT_MS = 5000;
+export const BASELINE_OBSERVATION_TIMEOUT_MS = 180000;
 export const REQUIRED_WARM_CYCLES = 4;
 export const OUTCOME_IDS = Object.freeze([
   'input-fixture-1500-distinct',
@@ -81,6 +83,44 @@ function exactKeys(value, expected, where, errors) {
 }
 export function sha256(value) {
   return crypto.createHash('sha256').update(value).digest('hex');
+}
+
+export function validTransportTimeoutPolicy({
+  candidateTransportTimeoutMs,
+  candidateTargetTimeoutMs,
+  baselineTransportTimeoutMs,
+  baselineObservationTimeoutMs,
+}) {
+  return integer(candidateTransportTimeoutMs)
+    && candidateTransportTimeoutMs === CANDIDATE_TRANSPORT_TIMEOUT_MS
+    && candidateTargetTimeoutMs === COMMAND_TIMEOUT_MS
+    && integer(baselineTransportTimeoutMs)
+    && baselineTransportTimeoutMs === BASELINE_OBSERVATION_TIMEOUT_MS
+    && integer(baselineObservationTimeoutMs)
+    && baselineObservationTimeoutMs === BASELINE_OBSERVATION_TIMEOUT_MS;
+}
+
+export function compendiumCdpOptions(kind, options) {
+  if (!['candidate', 'baseline'].includes(kind) || !isObject(options)
+    || Object.hasOwn(options, 'commandTimeoutMs')) {
+    throw new Error('Compendium CDP options require one sealed transport kind and no timeout override');
+  }
+  return Object.freeze({
+    ...options,
+    commandTimeoutMs: kind === 'baseline'
+      ? BASELINE_OBSERVATION_TIMEOUT_MS : CANDIDATE_TRANSPORT_TIMEOUT_MS,
+  });
+}
+
+export function remainingCommandTimeoutMs(deadlineMs, nowMs, transportTimeoutMs) {
+  if (!finite(deadlineMs) || !finite(nowMs) || !integer(transportTimeoutMs)
+    || transportTimeoutMs <= 0 || deadlineMs - nowMs < 1) return null;
+  return Math.min(transportTimeoutMs, Math.max(1, Math.floor(deadlineMs - nowMs)));
+}
+
+export function phaseObservationAccepted(deadlineMs, completedAtMs, value) {
+  return finite(deadlineMs) && finite(completedAtMs)
+    && completedAtMs < deadlineMs && Boolean(value);
 }
 
 export const CEILING_FIELDS = Object.freeze([
