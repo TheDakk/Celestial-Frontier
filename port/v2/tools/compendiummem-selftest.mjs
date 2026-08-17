@@ -13,21 +13,28 @@ import {
   ART_DIAGNOSTICS_SCHEMA, BASELINE_OBSERVATION_TIMEOUT_MS,
   BROKEN_BASELINE_EXPECTED_FAULTS, BROKEN_BASELINE_PORTRAIT_CACHE_CAPS,
   BROKEN_BASELINE_THUMB_CACHE_CAP, BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
-  BUDGET_SCHEMA, CANDIDATE_TRANSPORT_TIMEOUT_MS, COMMAND_TIMEOUT_MS,
+  BUDGET_SCHEMA, CANDIDATE_BROWSER_LABEL, CANDIDATE_TRANSPORT_TIMEOUT_MS,
+  COMMAND_TIMEOUT_MS,
   COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS, DIAGNOSTICS_SCHEMA,
-  EXPECTED_OUTCOMES, OUTCOME_IDS, REPORT_INPUT_KEYS, REPORT_SCHEMA,
+  EXPECTED_OUTCOMES, OUTCOME_IDS, PARTIAL_FAILURE_SCHEMA, PARTIAL_PROFILE_SCHEMA,
+  PLAIN_EVALUATE_COMMAND_SCHEMA, RAW_CDP_COMMAND_SCHEMA,
+  REPORT_INPUT_KEYS, REPORT_SCHEMA,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
   calibrationMetrics, compendiumCdpOptions, compendiumProfileEmulationOptions,
-  compendiumRawSnapshotExpression, evaluateProfile, installBrokenBaselineThumbObserver,
+  compendiumRawSnapshotExpression, evaluateProfile,
+  installBrokenBaselineThumbObserver,
   phaseObservationAccepted,
   remainingCommandTimeoutMs, sha256,
   validBrokenBaselineThumbObservation, validProfileEmulationOptions,
   validCompendiumRawSnapshotExpression, validTransportTimeoutPolicy,
-  validateBudgetRecord, verifyTerminalReport,
+  validateBudgetRecord, validCandidateCommandEvidence, verifyTerminalReport,
 } from './compendiummem-contract.mjs';
 import {
   buildBrokenBaselineProjection, buildCompendiumFixture,
 } from './compendiummem-fixture.mjs';
+import {
+  collectCandidateSnapshot, createCandidateCollectorObservations,
+} from './compendiummem.mjs';
 
 function assert(condition, message) { if (!condition) throw new Error(`COMPENDIUMMEM SELFTEST: ${message}`); }
 function clone(value) { return structuredClone(value); }
@@ -387,7 +394,10 @@ function terminalReport(runId, outcomes, budget, profiles) {
     schema: REPORT_SCHEMA, status: 'pass', runId,
     startedAt: '2026-08-16T00:00:00.000Z', endedAt: '2026-08-16T00:00:01.000Z',
     durationMs: 1000,
-    policy: { attemptCount: 1, automaticRetries: 0, commandTimeoutMs: 2000 },
+    policy: {
+      attemptCount: 1, automaticRetries: 0, commandTimeoutMs: 2000,
+      targetTimeoutMs: 2000, heartbeatTimeoutMs: 2000, transportTimeoutMs: 5000,
+    },
     source: { begin: source, end: { ...source } },
     inputs: Object.fromEntries(REPORT_INPUT_KEYS.map((key) => [key, sha256(`selftest-${key}`)])),
     browser: {
@@ -395,7 +405,7 @@ function terminalReport(runId, outcomes, budget, profiles) {
       user_agent: 'selftest', js_version: 'selftest', protocol_version: '1.3',
     },
     budget: { status: budget.status }, expectedOutcomes: [...EXPECTED_OUTCOMES],
-    outcomes, findings: [], profiles,
+    outcomes, findings: [], profiles, partialFailure: null, blockedOutcomes: [],
     reviewPacket: ['phone', 'desktop'].flatMap((profile) =>
       /* Match the real collector chronology; verification seals the exact
          unique profile/state set rather than an incidental array order. */
@@ -413,7 +423,7 @@ function atomicWriteJson(file, value) {
   fs.renameSync(temporary, file);
 }
 
-export function runCompendiumMemSelftest() {
+export async function runCompendiumMemSelftest() {
   const rawSnapshotExpression = compendiumRawSnapshotExpression();
   const parsesRawSnapshotExpression = (source) => {
     try { new Function(`"use strict"; return (${source});`); return true; }
@@ -522,6 +532,287 @@ export function runCompendiumMemSelftest() {
       ...phoneEmulation, touch: { enabled: true, maxTouchPoints },
     }), `phone maxTouchPoints=${maxTouchPoints} passed the exact five-point contract`);
   }
+
+  const runCandidateWaitScenario = async (plans, {
+    phaseWindowMs = 3000, label = 'list thumb settlement', answerabilityExpected = null,
+  } = {}) => {
+    let phaseClock = 1000;
+    let issuedAt = phaseClock;
+    let attempt = -1;
+    const calls = [];
+    const ledger = [];
+    const sleeps = [];
+    const stagesStarted = [];
+    const stagesCompleted = [];
+    const now = (role) => {
+      if (role === 'issued') {
+        attempt += 1;
+        issuedAt = phaseClock;
+        return issuedAt;
+      }
+      if (role === 'Runtime.evaluate' || role === 'Browser.getVersion') {
+        const plan = plans[attempt];
+        const side = role === 'Runtime.evaluate' ? plan.target : plan.heartbeat;
+        const completedAt = issuedAt + side.deltaMs;
+        phaseClock = Math.max(phaseClock, completedAt);
+        return completedAt;
+      }
+      return phaseClock;
+    };
+    const send = async (method, params, sessionId, options) => {
+      calls.push({ method, params, sessionId, options, attempt });
+      const plan = plans[attempt];
+      const side = method === 'Runtime.evaluate' ? plan.target : plan.heartbeat;
+      if (side.reject) throw new Error(side.error);
+      if (method === 'Runtime.evaluate') {
+        return side.exception
+          ? { exceptionDetails: { text: side.exception } }
+          : { result: { value: side.value } };
+      }
+      return { product: side.product ?? 'Chrome/Selftest' };
+    };
+    let value = null;
+    let failure = null;
+    const observations = createCandidateCollectorObservations({
+      send, profile: 'phone', now,
+      pause: async (ms) => { sleeps.push(ms); phaseClock += ms; },
+      onStageStarted: (stage) => stagesStarted.push(stage),
+      onStageCompleted: (stage) => stagesCompleted.push(stage),
+      onCommand: (command) => ledger.push(command),
+    });
+    try {
+      value = answerabilityExpected === null
+        ? await observations.waitValue(
+          'selftest-session', label, 'selftest-expression', { timeoutMs: phaseWindowMs },
+        )
+        : await observations.answerability('selftest-session', answerabilityExpected);
+    } catch (error) { failure = error; }
+    return { value, failure, calls, ledger, sleeps, stagesStarted, stagesCompleted };
+  };
+  const readyPlan = {
+    target: { deltaMs: 10, value: { ready: true } },
+    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+  };
+  const candidateReady = await runCandidateWaitScenario([readyPlan]);
+  assert(candidateReady.failure === null && candidateReady.value.ready === true
+    && candidateReady.calls.length === 2 && candidateReady.ledger.length === 1
+    && JSON.stringify(candidateReady.stagesStarted) === JSON.stringify(['list thumb settlement'])
+    && JSON.stringify(candidateReady.stagesCompleted) === JSON.stringify(['list thumb settlement'])
+    && validCandidateCommandEvidence(candidateReady.ledger[0])
+    && candidateReady.calls.every((call) => call.options.timeoutMs === COMMAND_TIMEOUT_MS)
+    && candidateReady.calls.find((call) => call.method === 'Runtime.evaluate')?.sessionId
+      === 'selftest-session'
+    && candidateReady.calls.find((call) => call.method === 'Browser.getVersion')?.sessionId
+      === undefined,
+  'the call-site-used candidate wait did not arm one 2s target/root-heartbeat observation');
+  const candidateAnswerabilityReady = await runCandidateWaitScenario([{
+    target: { deltaMs: 10, value: 'phone-first' },
+    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+  }], { phaseWindowMs: COMMAND_TIMEOUT_MS, answerabilityExpected: 'phone-first' });
+  assert(candidateAnswerabilityReady.failure === null
+    && candidateAnswerabilityReady.value.target.ok === true
+    && candidateAnswerabilityReady.value.target.value === 'phone-first'
+    && candidateAnswerabilityReady.value.heartbeat.ok === true
+    && JSON.stringify(candidateAnswerabilityReady.stagesCompleted)
+      === JSON.stringify(['answerability phone-first']),
+  'the production answerability owner did not retain its paired target/root-heartbeat evidence');
+  const oneMillisecondDrift = clone(candidateReady.ledger[0]);
+  oneMillisecondDrift.timeoutMs = 1;
+  oneMillisecondDrift.commandDeadlineMs = oneMillisecondDrift.issuedAtMs + 1;
+  for (const settlement of [oneMillisecondDrift.target, oneMillisecondDrift.heartbeat]) {
+    settlement.completedAtMs = oneMillisecondDrift.issuedAtMs + 0.5;
+    settlement.durationMs = 0.5;
+    settlement.timely = true;
+  }
+  assert(!validCandidateCommandEvidence(oneMillisecondDrift),
+    'candidate command evidence accepted a fabricated 1ms timeout with ample phase time');
+  const candidateFalsyThenReady = await runCandidateWaitScenario([
+    { ...readyPlan, target: { deltaMs: 10, value: null } }, readyPlan,
+  ]);
+  assert(candidateFalsyThenReady.failure === null
+    && candidateFalsyThenReady.calls.filter((call) => call.method === 'Runtime.evaluate').length === 2
+    && candidateFalsyThenReady.calls.filter((call) => call.method === 'Browser.getVersion').length === 2
+    && candidateFalsyThenReady.ledger.length === 2 && candidateFalsyThenReady.sleeps.length === 1,
+  'the candidate wait did not repoll only after one completed on-time falsy observation');
+  const candidateTargetTimeout = await runCandidateWaitScenario([{
+    target: {
+      deltaMs: COMMAND_TIMEOUT_MS, reject: true,
+      error: `${CANDIDATE_BROWSER_LABEL}: timed out waiting for Runtime.evaluate`,
+    },
+    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+  }]);
+  assert(candidateTargetTimeout.failure?.classification === 'product-unanswerable'
+    && candidateTargetTimeout.failure.message.includes('phone list thumb settlement')
+    && candidateTargetTimeout.calls.length === 2 && candidateTargetTimeout.ledger.length === 1
+    && candidateTargetTimeout.sleeps.length === 0
+    && validCandidateCommandEvidence(candidateTargetTimeout.failure.command, {
+      requireProductTimeout: true,
+    }),
+  'a target-only timeout with timely root heartbeat was retried, lost its label, or labeled instrument');
+  const candidateAnswerabilityTimeout = await runCandidateWaitScenario([{
+    target: {
+      deltaMs: COMMAND_TIMEOUT_MS, reject: true,
+      error: `${CANDIDATE_BROWSER_LABEL}: timed out waiting for Runtime.evaluate`,
+    },
+    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+  }], { phaseWindowMs: COMMAND_TIMEOUT_MS, answerabilityExpected: 'phone-first' });
+  assert(candidateAnswerabilityTimeout.failure?.classification === 'product-unanswerable'
+    && candidateAnswerabilityTimeout.failure.message.includes('answerability phone-first')
+    && candidateAnswerabilityTimeout.calls.length === 2
+    && candidateAnswerabilityTimeout.sleeps.length === 0
+    && candidateAnswerabilityTimeout.stagesCompleted.length === 0,
+  'answerability target starvation was caught-and-continued into a later instrument stage');
+  const candidateUnprefixedTimeout = await runCandidateWaitScenario([{
+    target: {
+      deltaMs: COMMAND_TIMEOUT_MS, reject: true,
+      error: 'timed out waiting for Runtime.evaluate',
+    },
+    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+  }]);
+  assert(candidateUnprefixedTimeout.failure?.classification === 'instrument',
+    'an unbranded/unprefixed timeout string fabricated product starvation');
+  const candidateBothTimeout = await runCandidateWaitScenario([{
+    target: {
+      deltaMs: COMMAND_TIMEOUT_MS, reject: true,
+      error: `${CANDIDATE_BROWSER_LABEL}: timed out waiting for Runtime.evaluate`,
+    },
+    heartbeat: {
+      deltaMs: COMMAND_TIMEOUT_MS, reject: true,
+      error: `${CANDIDATE_BROWSER_LABEL}: timed out waiting for Browser.getVersion`,
+    },
+  }]);
+  assert(candidateBothTimeout.failure?.classification === 'instrument'
+    && candidateBothTimeout.calls.length === 2 && candidateBothTimeout.ledger.length === 1
+    && candidateBothTimeout.sleeps.length === 0,
+  'a failed/late root heartbeat was not retained as terminal instrument evidence');
+  const candidateExactBoundary = await runCandidateWaitScenario([{
+    target: { deltaMs: COMMAND_TIMEOUT_MS, value: { ready: true } },
+    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+  }]);
+  assert(candidateExactBoundary.failure?.classification === 'product-unanswerable'
+    && candidateExactBoundary.calls.length === 2 && candidateExactBoundary.sleeps.length === 0,
+  'an exact-deadline truthy target observation was accepted or retried');
+  const candidateClipped = await runCandidateWaitScenario([{
+    target: { deltaMs: 1199, value: { ready: true } },
+    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+  }], { phaseWindowMs: 1200 });
+  assert(candidateClipped.failure === null
+    && candidateClipped.calls.every((call) => call.options.timeoutMs === 1200),
+  'candidate target/heartbeat commands were not clipped to the positive remaining phase time');
+  const candidateEarlyFakeTimeout = await runCandidateWaitScenario([{
+    target: { deltaMs: 10, reject: true, error: 'timed out waiting for Runtime.evaluate' },
+    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+  }]);
+  assert(candidateEarlyFakeTimeout.failure?.classification === 'instrument',
+    'an early protocol rejection merely spelling “timeout” fabricated product starvation');
+  const candidatePageException = await runCandidateWaitScenario([{
+    target: { deltaMs: 10, exception: 'selftest candidate page exception' },
+    heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
+  }]);
+  assert(candidatePageException.failure?.classification === 'instrument'
+    && candidatePageException.failure.command?.target?.resultState === 'page-exception'
+    && candidatePageException.ledger.length === 1,
+  'candidate page exception was not retained as a terminal failure command');
+  let plainCalls = 0;
+  let plainFailure = null;
+  const plainLedger = [];
+  const plainStagesStarted = [];
+  const plainStagesCompleted = [];
+  const plainObservations = createCandidateCollectorObservations({
+    send: async () => {
+      plainCalls += 1;
+      throw new Error(`${CANDIDATE_BROWSER_LABEL}: timed out waiting for Runtime.evaluate`);
+    },
+    profile: 'phone', now: (role) => role === 'issued' ? 10 : 20,
+    pause: async () => {}, onStageStarted: (stage) => plainStagesStarted.push(stage),
+    onStageCompleted: (stage) => plainStagesCompleted.push(stage),
+    onCommand: (command) => plainLedger.push(command),
+  });
+  try {
+    await plainObservations.evaluate(
+      'selftest-session', 'selftest-expression', 'main initial product/DOM snapshot',
+    );
+  } catch (error) { plainFailure = error; }
+  assert(plainCalls === 1
+    && JSON.stringify(plainStagesStarted) === JSON.stringify(['main initial product/DOM snapshot'])
+    && plainStagesCompleted.length === 0 && plainLedger.length === 1
+    && plainFailure?.message.includes('phone main initial product/DOM snapshot')
+    && plainFailure.message.includes('5000ms transport cap')
+    && plainFailure.compendiumCommand?.schema === PLAIN_EVALUATE_COMMAND_SCHEMA,
+  'the real plain-evaluate wrapper retried or lost profile/label/transport context');
+  let pageException = null;
+  const pageExceptionLedger = [];
+  const pageExceptionObservations = createCandidateCollectorObservations({
+    send: async () => ({ exceptionDetails: { text: 'selftest page exception' } }),
+    profile: 'phone', now: (role) => role === 'issued' ? 10 : 11,
+    pause: async () => {}, onStageStarted: () => {}, onStageCompleted: () => {},
+    onCommand: (command) => pageExceptionLedger.push(command),
+  });
+  try {
+    await pageExceptionObservations.evaluate(
+      'selftest-session', 'selftest-expression', 'page exception stage',
+    );
+  } catch (error) { pageException = error; }
+  assert(pageException?.message === 'phone page exception stage: page evaluation threw (selftest page exception)'
+    && pageException.compendiumCommand?.status === 'page-exception'
+    && pageExceptionLedger.length === 1,
+  'page exception diagnosis was conflated with a target/transport timeout');
+  const rawStagesStarted = [];
+  const rawStagesCompleted = [];
+  const rawCommands = [];
+  const rawStageObservations = createCandidateCollectorObservations({
+    send: async (method) => {
+      if (method === 'Runtime.evaluate') return { result: { value: { snapshot: true } } };
+      throw new Error(`${CANDIDATE_BROWSER_LABEL}: timed out waiting for ${method}`);
+    },
+    profile: 'phone', now: (role) => role === 'issued' ? 10 : 11,
+    pause: async () => {},
+    onStageStarted: (stage) => rawStagesStarted.push(stage),
+    onStageCompleted: (stage) => rawStagesCompleted.push(stage),
+    onCommand: (command) => rawCommands.push(command),
+  });
+  await rawStageObservations.evaluate(
+    'selftest-session', 'selftest-expression', 'main initial product/DOM snapshot',
+  );
+  let rawHeapFailure = null;
+  try {
+    await rawStageObservations.sendStage(
+      'main initial heap usage', 'Runtime.getHeapUsage', {}, 'selftest-session',
+    );
+  } catch (error) { rawHeapFailure = error; }
+  assert(rawHeapFailure?.message.includes(
+    'phone main initial heap usage: Runtime.getHeapUsage failed under the 5000ms transport cap',
+  )
+    && JSON.stringify(rawStagesStarted) === JSON.stringify([
+      'main initial product/DOM snapshot', 'main initial heap usage',
+    ])
+    && JSON.stringify(rawStagesCompleted) === JSON.stringify([
+      'main initial product/DOM snapshot',
+    ])
+    && rawHeapFailure.compendiumCommand?.schema === RAW_CDP_COMMAND_SCHEMA
+    && rawHeapFailure.compendiumCommand?.method === 'Runtime.getHeapUsage'
+    && rawCommands.length === 1,
+  'post-snapshot raw heap timeout lost its exact method/failing stage or completed too early');
+  let garbageCollectionContinued = false;
+  const garbageCollectionCalls = [];
+  let garbageCollectionFailure = null;
+  try {
+    await collectCandidateSnapshot({
+      sessionId: 'selftest-session', label: 'main initial',
+      rawSnapshotExpression: 'selftest-expression',
+      evaluate: async () => { garbageCollectionContinued = true; },
+      sendStage: async (label, method) => {
+        garbageCollectionCalls.push({ label, method });
+        throw rawHeapFailure;
+      },
+    });
+  } catch (error) { garbageCollectionFailure = error; }
+  assert(garbageCollectionFailure === rawHeapFailure && garbageCollectionContinued === false
+    && JSON.stringify(garbageCollectionCalls) === JSON.stringify([{
+      label: 'main initial garbage collection', method: 'HeapProfiler.collectGarbage',
+    }]),
+  'failed mandatory garbage collection was swallowed or snapshot collection continued');
+
   let observerNow = 100;
   class FakeCanvas {
     constructor(width = 132, height = 132) {
@@ -913,6 +1204,321 @@ export function runCompendiumMemSelftest() {
   const validReportCheck = verifyTerminalReport(report, 'selftest-current');
   assert(validReportCheck.ok,
     `valid terminal report was rejected: ${validReportCheck.errors.join('; ')}`);
+  const partialReview = report.reviewPacket.filter((item) => item.profile === 'phone'
+    && ['list', 'focus-pinned'].includes(item.state));
+  const preBrowserPartial = {
+    ...clone(report), status: 'instrument-fail', browser: null, outcomes: [],
+    findings: ['instrument: pre-browser selftest failure'], profiles: {}, reviewPacket: [],
+    partialFailure: {
+      schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
+      lastCompletedStage: null, failingStage: 'preflight', command: null,
+    },
+    blockedOutcomes: [...EXPECTED_OUTCOMES],
+  };
+  assert(verifyTerminalReport(preBrowserPartial, 'selftest-current').ok,
+    'true pre-browser/profile-null instrument evidence was forced to invent browser provenance');
+  const malformedPreBrowser = clone(preBrowserPartial);
+  malformedPreBrowser.browser = { ...clone(report.browser), executable: '' };
+  assert(!verifyTerminalReport(malformedPreBrowser, 'selftest-current').ok,
+    'pre-browser instrument evidence accepted malformed non-null browser provenance');
+  const productPartial = {
+    ...clone(report),
+    status: 'product-unanswerable',
+    outcomes: [],
+    findings: [`product: ${candidateTargetTimeout.failure.message}`],
+    profiles: {
+      phone: {
+        schema: PARTIAL_PROFILE_SCHEMA,
+        profile: 'phone',
+        viewport: { ...phoneViewport },
+        evidenceStatus: 'partial-non-certifying',
+        lastCompletedStage: 'Compendium open',
+        failingStage: 'list thumb settlement',
+        completedStages: ['review list', 'review focus-pinned', 'Compendium open'],
+        commandLedger: [clone(candidateTargetTimeout.failure.command)],
+        reviewPacket: clone(partialReview),
+      },
+    },
+    reviewPacket: clone(partialReview),
+    partialFailure: {
+      schema: PARTIAL_FAILURE_SCHEMA,
+      classification: 'product-unanswerable',
+      profile: 'phone',
+      lastCompletedStage: 'Compendium open',
+      failingStage: 'list thumb settlement',
+      command: clone(candidateTargetTimeout.failure.command),
+    },
+    blockedOutcomes: [...EXPECTED_OUTCOMES],
+  };
+  const partialArtifact = () => true;
+  const productPartialCheck = verifyTerminalReport(productPartial, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  });
+  assert(productPartialCheck.ok,
+    `healthy-heartbeat product-unanswerable partial report was rejected: ${productPartialCheck.errors.join('; ')}`);
+  const rawHeapPartial = clone(productPartial);
+  rawHeapPartial.status = 'instrument-fail';
+  rawHeapPartial.findings = [`instrument: ${rawHeapFailure.message}`];
+  rawHeapPartial.partialFailure.classification = 'instrument';
+  rawHeapPartial.partialFailure.lastCompletedStage = 'main initial product/DOM snapshot';
+  rawHeapPartial.partialFailure.failingStage = 'main initial heap usage';
+  rawHeapPartial.partialFailure.command = clone(rawHeapFailure.compendiumCommand);
+  rawHeapPartial.profiles.phone.lastCompletedStage = 'main initial product/DOM snapshot';
+  rawHeapPartial.profiles.phone.failingStage = 'main initial heap usage';
+  rawHeapPartial.profiles.phone.completedStages = ['main initial product/DOM snapshot'];
+  rawHeapPartial.profiles.phone.commandLedger = [clone(rawHeapFailure.compendiumCommand)];
+  rawHeapPartial.profiles.phone.reviewPacket = [];
+  rawHeapPartial.reviewPacket = [];
+  assert(verifyTerminalReport(rawHeapPartial, 'selftest-current').ok,
+    'post-snapshot raw heap failure did not retain exact completed/failing/method evidence');
+  const rawHeapWrongMethod = clone(rawHeapPartial);
+  rawHeapWrongMethod.partialFailure.command.method = 'Memory.getDOMCounters';
+  rawHeapWrongMethod.profiles.phone.commandLedger[0].method = 'Memory.getDOMCounters';
+  assert(!verifyTerminalReport(rawHeapWrongMethod, 'selftest-current').ok,
+    'raw-CDP failure method drifted independently from its diagnosis');
+  const rawHeapWrongStage = clone(rawHeapPartial);
+  rawHeapWrongStage.partialFailure.failingStage = 'main initial product/DOM snapshot';
+  rawHeapWrongStage.partialFailure.command.label = 'main initial product/DOM snapshot';
+  rawHeapWrongStage.profiles.phone.failingStage = 'main initial product/DOM snapshot';
+  rawHeapWrongStage.profiles.phone.commandLedger[0].label
+    = 'main initial product/DOM snapshot';
+  assert(!verifyTerminalReport(rawHeapWrongStage, 'selftest-current').ok,
+    'raw-CDP failure stage drifted independently from its diagnosis');
+  const desktopPartialReport = clone(productPartial);
+  const desktopPartialMeasurement = desktopPartialReport.profiles.phone;
+  desktopPartialMeasurement.profile = 'desktop';
+  desktopPartialMeasurement.viewport = { ...desktopViewport };
+  desktopPartialMeasurement.completedStages = ['Compendium open'];
+  desktopPartialMeasurement.reviewPacket = [];
+  desktopPartialMeasurement.commandLedger[0].profile = 'desktop';
+  desktopPartialReport.partialFailure.profile = 'desktop';
+  desktopPartialReport.partialFailure.command.profile = 'desktop';
+  desktopPartialReport.profiles = {
+    phone: clone(report.profiles.phone), desktop: desktopPartialMeasurement,
+  };
+  desktopPartialReport.reviewPacket = [];
+  assert(verifyTerminalReport(desktopPartialReport, 'selftest-current').ok,
+    'phone-complete plus desktop-partial collection prefix was rejected');
+  const wrongProfileOrder = clone(desktopPartialReport);
+  wrongProfileOrder.profiles = {
+    desktop: wrongProfileOrder.profiles.desktop,
+    phone: wrongProfileOrder.profiles.phone,
+  };
+  assert(!verifyTerminalReport(wrongProfileOrder, 'selftest-current').ok,
+    'desktop evidence was accepted before the fixed phone collection prefix');
+  const postCollectionPartial = {
+    ...clone(report), status: 'instrument-fail', outcomes: [], findings: [
+      'instrument: post-profile selftest failure',
+    ], reviewPacket: [], partialFailure: {
+      schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
+      lastCompletedStage: null, failingStage: 'sealed outcome evaluation', command: null,
+    }, blockedOutcomes: [...EXPECTED_OUTCOMES],
+  };
+  assert(verifyTerminalReport(postCollectionPartial, 'selftest-current').ok,
+    'both-complete profile:null post-collection evidence was rejected');
+  const incompletePostCollection = clone(postCollectionPartial);
+  delete incompletePostCollection.profiles.desktop;
+  assert(!verifyTerminalReport(incompletePostCollection, 'selftest-current').ok,
+    'phone-only profile:null post-collection evidence omitted the desktop current prefix');
+  const shiftCandidateCommand = (command, deltaMs) => {
+    const shifted = clone(command);
+    shifted.issuedAtMs += deltaMs;
+    shifted.phaseDeadlineMs += deltaMs;
+    shifted.commandDeadlineMs += deltaMs;
+    for (const settlement of [shifted.target, shifted.heartbeat]) {
+      settlement.completedAtMs += deltaMs;
+    }
+    return shifted;
+  };
+  const twoCommandPartial = clone(productPartial);
+  const shiftedTerminal = shiftCandidateCommand(candidateTargetTimeout.failure.command, 3000);
+  twoCommandPartial.partialFailure.command = clone(shiftedTerminal);
+  twoCommandPartial.profiles.phone.commandLedger = [
+    clone(candidateReady.ledger[0]), clone(shiftedTerminal),
+  ];
+  assert(verifyTerminalReport(twoCommandPartial, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'serial same-profile/same-browser partial command ledger was rejected');
+  const retriedCandidateFailure = clone(twoCommandPartial);
+  retriedCandidateFailure.profiles.phone.commandLedger[0]
+    = clone(candidateTargetTimeout.failure.command);
+  assert(!verifyTerminalReport(retriedCandidateFailure, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a failed candidate command was followed by another command/retry');
+  const healthyClaimedAsFailure = clone(productPartial);
+  healthyClaimedAsFailure.status = 'instrument-fail';
+  healthyClaimedAsFailure.findings = ['instrument: healthy command claimed as failure'];
+  healthyClaimedAsFailure.partialFailure.classification = 'instrument';
+  healthyClaimedAsFailure.partialFailure.command = clone(candidateReady.ledger[0]);
+  healthyClaimedAsFailure.profiles.phone.commandLedger = [
+    clone(candidateReady.ledger[0]),
+  ];
+  assert(!verifyTerminalReport(healthyClaimedAsFailure, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a healthy candidate observation was accepted as the reported failure command');
+  const earlierWrongProfile = clone(twoCommandPartial);
+  earlierWrongProfile.profiles.phone.commandLedger[0].profile = 'desktop';
+  assert(!verifyTerminalReport(earlierWrongProfile, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'an earlier partial-ledger command escaped its enclosing profile');
+  const earlierWrongProduct = clone(twoCommandPartial);
+  earlierWrongProduct.profiles.phone.commandLedger[0].heartbeat.product = 'Chrome/Other';
+  assert(!verifyTerminalReport(earlierWrongProduct, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'an earlier fulfilled heartbeat escaped terminal browser provenance');
+  const earlierUnownedStage = clone(twoCommandPartial);
+  earlierUnownedStage.profiles.phone.commandLedger[0].label = 'unowned earlier stage';
+  assert(!verifyTerminalReport(earlierUnownedStage, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'an earlier command escaped completed/failing stage ownership');
+  const nonserialLedger = clone(twoCommandPartial);
+  const overlappingTerminal = shiftCandidateCommand(candidateTargetTimeout.failure.command, 14);
+  nonserialLedger.partialFailure.command = clone(overlappingTerminal);
+  nonserialLedger.profiles.phone.commandLedger[1] = clone(overlappingTerminal);
+  assert(!verifyTerminalReport(nonserialLedger, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'partial command ledger accepted a command issued before the prior pair settled');
+  const nulledProductTimeout = clone(productPartial);
+  nulledProductTimeout.status = 'instrument-fail';
+  nulledProductTimeout.findings = ['instrument: laundered product timeout'];
+  nulledProductTimeout.partialFailure.classification = 'instrument';
+  nulledProductTimeout.partialFailure.command = null;
+  assert(!verifyTerminalReport(nulledProductTimeout, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'instrument-style null command laundered a terminal product timeout');
+  const pageExceptionPartial = clone(productPartial);
+  pageExceptionPartial.status = 'instrument-fail';
+  pageExceptionPartial.findings = ['instrument: candidate page exception'];
+  pageExceptionPartial.partialFailure.classification = 'instrument';
+  pageExceptionPartial.partialFailure.command = clone(candidatePageException.failure.command);
+  pageExceptionPartial.profiles.phone.commandLedger = [
+    clone(candidatePageException.failure.command),
+  ];
+  assert(verifyTerminalReport(pageExceptionPartial, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'candidate page-exception command was rejected as partial instrument evidence');
+  const nulledPageException = clone(pageExceptionPartial);
+  nulledPageException.partialFailure.command = null;
+  assert(!verifyTerminalReport(nulledPageException, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'null command laundered a terminal candidate page exception');
+  const partialClaimedOutcome = clone(productPartial);
+  partialClaimedOutcome.outcomes.push(clone(report.outcomes[0]));
+  assert(!verifyTerminalReport(partialClaimedOutcome, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'product-unanswerable partial report fabricated a completed outcome');
+  const partialMissingBlocked = clone(productPartial);
+  partialMissingBlocked.blockedOutcomes.pop();
+  assert(!verifyTerminalReport(partialMissingBlocked, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'product-unanswerable report omitted one blocked sealed outcome');
+  const partialInstrumentLabel = clone(productPartial);
+  partialInstrumentLabel.status = 'instrument-fail';
+  partialInstrumentLabel.findings = ['instrument: mislabeled healthy-heartbeat target timeout'];
+  partialInstrumentLabel.partialFailure.classification = 'instrument';
+  assert(!verifyTerminalReport(partialInstrumentLabel, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'healthy-heartbeat target timeout was accepted as instrument ambiguity');
+  const partialLateHeartbeat = clone(productPartial);
+  const lateHeartbeat = partialLateHeartbeat.partialFailure.command.heartbeat;
+  lateHeartbeat.completedAtMs = partialLateHeartbeat.partialFailure.command.commandDeadlineMs;
+  lateHeartbeat.durationMs = lateHeartbeat.completedAtMs
+    - partialLateHeartbeat.partialFailure.command.issuedAtMs;
+  lateHeartbeat.timely = false;
+  partialLateHeartbeat.profiles.phone.commandLedger[0]
+    = clone(partialLateHeartbeat.partialFailure.command);
+  assert(!verifyTerminalReport(partialLateHeartbeat, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'late heartbeat was accepted as product-unanswerable evidence');
+  const partialWrongCommandProfile = clone(productPartial);
+  partialWrongCommandProfile.partialFailure.command.profile = 'desktop';
+  partialWrongCommandProfile.profiles.phone.commandLedger.at(-1).profile = 'desktop';
+  assert(!verifyTerminalReport(partialWrongCommandProfile, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'partial timeout command was not bound to its reported profile');
+  const partialWrongCommandLabel = clone(productPartial);
+  partialWrongCommandLabel.partialFailure.command.label = 'different candidate stage';
+  partialWrongCommandLabel.profiles.phone.commandLedger.at(-1).label = 'different candidate stage';
+  assert(!verifyTerminalReport(partialWrongCommandLabel, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'partial timeout command was not bound to its reported failing stage');
+  const partialNonterminalCommand = clone(productPartial);
+  partialNonterminalCommand.profiles.phone.commandLedger.push(clone(candidateReady.ledger[0]));
+  assert(!verifyTerminalReport(partialNonterminalCommand, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'partial failure command was accepted before a later ledger command');
+  const partialWrongHeartbeatProduct = clone(productPartial);
+  partialWrongHeartbeatProduct.partialFailure.command.heartbeat.product = 'Chrome/Other';
+  partialWrongHeartbeatProduct.profiles.phone.commandLedger.at(-1).heartbeat.product = 'Chrome/Other';
+  assert(!verifyTerminalReport(partialWrongHeartbeatProduct, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'partial timeout heartbeat was not bound to terminal browser provenance');
+  const partialDroppedReview = clone(productPartial);
+  partialDroppedReview.reviewPacket.pop();
+  partialDroppedReview.profiles.phone.reviewPacket.pop();
+  assert(!verifyTerminalReport(partialDroppedReview, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'partial terminal report discarded an already completed review stage/artifact');
+  const plainInstrumentPartial = {
+    ...clone(report),
+    status: 'instrument-fail', outcomes: [],
+    findings: [`instrument: ${plainFailure.message}`],
+    profiles: {
+      phone: {
+        schema: PARTIAL_PROFILE_SCHEMA, profile: 'phone', viewport: { ...phoneViewport },
+        evidenceStatus: 'partial-non-certifying', lastCompletedStage: null,
+        failingStage: 'main initial product/DOM snapshot', completedStages: [],
+        commandLedger: [clone(plainFailure.compendiumCommand)], reviewPacket: [],
+      },
+    },
+    reviewPacket: [],
+    partialFailure: {
+      schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: 'phone',
+      lastCompletedStage: null, failingStage: 'main initial product/DOM snapshot',
+      command: clone(plainFailure.compendiumCommand),
+    },
+    blockedOutcomes: [...EXPECTED_OUTCOMES],
+  };
+  assert(verifyTerminalReport(plainInstrumentPartial, 'selftest-current').ok,
+    'labeled plain-evaluate failure did not retain valid partial stage/command evidence');
+  for (const field of ['executable', 'revision']) {
+    const missingInstrumentBrowser = clone(plainInstrumentPartial);
+    missingInstrumentBrowser.browser[field] = '';
+    assert(!verifyTerminalReport(missingInstrumentBrowser, 'selftest-current').ok,
+      `profile-owned instrument partial accepted blank browser ${field}`);
+  }
+  const candidateFailureThenPlain = clone(plainInstrumentPartial);
+  const earlierCandidateFailure = clone(candidateTargetTimeout.failure.command);
+  earlierCandidateFailure.label = 'main initial product/DOM snapshot';
+  const terminalPlainFailure = clone(plainFailure.compendiumCommand);
+  terminalPlainFailure.issuedAtMs += 4000;
+  terminalPlainFailure.completedAtMs += 4000;
+  candidateFailureThenPlain.partialFailure.command = clone(terminalPlainFailure);
+  candidateFailureThenPlain.profiles.phone.commandLedger = [
+    earlierCandidateFailure, clone(terminalPlainFailure),
+  ];
+  assert(!verifyTerminalReport(candidateFailureThenPlain, 'selftest-current').ok,
+    'a terminal plain failure laundered an earlier healthy-heartbeat target timeout/retry');
+  const nonterminalPlainFailure = clone(plainInstrumentPartial);
+  const laterCandidateCommand = shiftCandidateCommand(candidateReady.ledger[0], 100);
+  laterCandidateCommand.label = 'main initial product/DOM snapshot';
+  nonterminalPlainFailure.profiles.phone.commandLedger.push(laterCandidateCommand);
+  assert(!verifyTerminalReport(nonterminalPlainFailure, 'selftest-current').ok,
+    'a plain-evaluate failure was accepted before a later ledger command');
+  for (const field of ['targetTimeoutMs', 'heartbeatTimeoutMs', 'transportTimeoutMs']) {
+    const driftedPolicy = clone(report);
+    driftedPolicy.policy[field] += 1;
+    assert(!verifyTerminalReport(driftedPolicy, 'selftest-current').ok,
+      `report accepted drifted ${field}`);
+  }
+  const blockedPass = clone(report);
+  blockedPass.blockedOutcomes = [EXPECTED_OUTCOMES[0]];
+  assert(!verifyTerminalReport(blockedPass, 'selftest-current').ok,
+    'complete PASS retained a blocked outcome');
+  const partialPass = clone(report);
+  partialPass.partialFailure = clone(productPartial.partialFailure);
+  assert(!verifyTerminalReport(partialPass, 'selftest-current').ok,
+    'complete PASS retained partial-failure evidence');
   const missingProfile = clone(report);
   delete missingProfile.profiles.phone;
   assert(!verifyTerminalReport(missingProfile, 'selftest-current').ok,
@@ -996,7 +1602,12 @@ export function runCompendiumMemSelftest() {
       'current running record did not replace stale PASS before work');
     const instrumentFail = {
       ...running, status: 'instrument-fail', endedAt: '2026-08-16T00:00:00.100Z',
-      outcomes: [], findings: ['selftest: injected pre-browser failure'], browser: null,
+      outcomes: [], findings: ['instrument: injected pre-browser failure'], browser: null,
+      profiles: {}, reviewPacket: [], blockedOutcomes: [...EXPECTED_OUTCOMES],
+      partialFailure: {
+        schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
+        lastCompletedStage: null, failingStage: 'preflight', command: null,
+      },
     };
     atomicWriteJson(file, instrumentFail);
     const current = JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -1023,7 +1634,7 @@ export function runCompendiumMemSelftest() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  if (process.argv.length === 2) runCompendiumMemSelftest();
+  if (process.argv.length === 2) await runCompendiumMemSelftest();
   else {
     console.error('usage: node tools/compendiummem-selftest.mjs');
     process.exitCode = 2;

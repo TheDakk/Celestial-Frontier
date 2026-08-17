@@ -25,12 +25,17 @@ import { openChromiumCdp } from './browsercdp.mjs';
 import {
   BASELINE_OBSERVATION_TIMEOUT_MS, BROKEN_BASELINE_PORTRAIT_CACHE_CAPS,
   BROKEN_BASELINE_THUMB_CACHE_CAP, BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
+  CANDIDATE_BROWSER_LABEL, CANDIDATE_TRANSPORT_TIMEOUT_MS,
   COMMAND_TIMEOUT_MS, EXPECTED_OUTCOMES,
+  PARTIAL_FAILURE_SCHEMA, PARTIAL_PROFILE_SCHEMA,
+  RAW_CDP_COMMAND_SCHEMA,
   REPORT_INPUT_KEYS, REPORT_SCHEMA, REQUIRED_WARM_CYCLES,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
   calibrationMetrics, compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression,
-  evaluateProfile, installBrokenBaselineThumbObserver, sha256, sameSourceIdentity,
+  evaluateCandidateExpression, evaluateProfile, installBrokenBaselineThumbObserver,
+  sha256, sameSourceIdentity,
+  isCandidateObservationError, waitForCandidateValue,
   phaseObservationAccepted, remainingCommandTimeoutMs, validateBudgetRecord, verifyTerminalReport,
   validBrokenBaselineThumbObservation, validCompendiumRawSnapshotExpression,
 } from './compendiummem-contract.mjs';
@@ -187,12 +192,16 @@ function makeRunningReport({ runId, startedAt, source, inputs, budget }) {
   return {
     schema: REPORT_SCHEMA, status: 'running', runId,
     startedAt: startedAt.toISOString(), endedAt: null, durationMs: null,
-    policy: { attemptCount: 1, automaticRetries: 0, commandTimeoutMs: COMMAND_TIMEOUT_MS },
+    policy: {
+      attemptCount: 1, automaticRetries: 0, commandTimeoutMs: COMMAND_TIMEOUT_MS,
+      targetTimeoutMs: COMMAND_TIMEOUT_MS, heartbeatTimeoutMs: COMMAND_TIMEOUT_MS,
+      transportTimeoutMs: CANDIDATE_TRANSPORT_TIMEOUT_MS,
+    },
     source: { begin: source, end: source }, inputs,
     browser: null,
     budget: { status: budget.status, path: 'budgets/compendium-memory-v1.json', sha256: inputs.budget },
     expectedOutcomes: [...EXPECTED_OUTCOMES], outcomes: [], findings: [], profiles: {},
-    reviewPacket: [],
+    reviewPacket: [], partialFailure: null, blockedOutcomes: [],
   };
 }
 function calibrationCeilings() {
@@ -265,6 +274,122 @@ function serveDist(servedDist = distDir) {
   });
 }
 
+/* Single owner of candidate Runtime.evaluate observation policy. The real
+   collector and the browser-free controls both consume these exact wrappers. */
+export function createCandidateCollectorObservations({
+  send, profile, now, pause, onStageStarted, onStageCompleted, onCommand,
+}) {
+  assert(typeof send === 'function' && typeof now === 'function'
+    && typeof pause === 'function' && typeof onStageStarted === 'function'
+    && typeof onStageCompleted === 'function' && typeof onCommand === 'function',
+  'candidate collector observation dependencies are invalid');
+  const evaluate = async (
+    sessionId, expression, label, { awaitPromise = true, timeoutMs } = {},
+  ) => {
+    onStageStarted(label);
+    const effectiveTimeoutMs = timeoutMs ?? CANDIDATE_TRANSPORT_TIMEOUT_MS;
+    try {
+      const value = await evaluateCandidateExpression({
+        send, sessionId, expression, profile, label, awaitPromise,
+        timeoutMs: effectiveTimeoutMs, now,
+      });
+      onStageCompleted(label);
+      return value;
+    } catch (error) {
+      if (error?.compendiumCommand) onCommand(error.compendiumCommand);
+      throw error;
+    }
+  };
+  const runWait = async (
+    sessionId, label, expression, { timeoutMs = 20000 } = {},
+  ) => {
+    const phaseDeadlineMs = now() + timeoutMs;
+    onStageStarted(label);
+    let terminalCommand = null;
+    const value = await waitForCandidateValue({
+      send, sessionId, expression, profile, label, phaseDeadlineMs,
+      now, sleep: pause,
+      onCommand: (command) => { terminalCommand = command; onCommand(command); },
+    });
+    onStageCompleted(label);
+    return Object.freeze({ value, command: terminalCommand });
+  };
+  const waitValue = async (...args) => (await runWait(...args)).value;
+  const answerability = async (sessionId, expected) => {
+    assert(typeof expected === 'string' && expected,
+      'candidate answerability token is invalid');
+    const label = `answerability ${expected}`;
+    const expression = `new Promise(resolve=>requestAnimationFrame(()=>setTimeout(()=>resolve(${JSON.stringify(expected)}),0)))`;
+    const { value, command } = await runWait(
+      sessionId, label, expression, { timeoutMs: COMMAND_TIMEOUT_MS },
+    );
+    assert(command, `${profile} ${label}: answerability command evidence is missing`);
+    return Object.freeze({
+      target: Object.freeze({
+        ok: value === expected, ms: command.target.durationMs, value, expected,
+      }),
+      heartbeat: Object.freeze({
+        ok: command.heartbeat.status === 'fulfilled' && command.heartbeat.timely === true
+          && typeof command.heartbeat.product === 'string' && !!command.heartbeat.product,
+        ms: command.heartbeat.durationMs,
+        product: command.heartbeat.product ?? null,
+      }),
+    });
+  };
+  const sendStage = async (
+    label, method, params = {}, sessionId, options = {},
+  ) => {
+    assert(typeof label === 'string' && label && typeof method === 'string' && method,
+      'candidate raw-CDP stage identity is invalid');
+    onStageStarted(label);
+    const timeoutMs = options.timeoutMs ?? CANDIDATE_TRANSPORT_TIMEOUT_MS;
+    const issuedAtMs = now('issued');
+    try {
+      const result = await send(method, params, sessionId, options);
+      onStageCompleted(label);
+      return result;
+    } catch (cause) {
+      const detail = cause instanceof Error ? cause.message : String(cause);
+      const completedAtMs = now(method);
+      const command = Object.freeze({
+        schema: RAW_CDP_COMMAND_SCHEMA, profile, label, method, timeoutMs,
+        issuedAtMs, completedAtMs, durationMs: completedAtMs - issuedAtMs,
+        status: 'rejected', error: detail,
+      });
+      onCommand(command);
+      const error = new Error(
+        `${profile} ${label}: ${method} failed under the ${timeoutMs}ms transport cap (${detail})`,
+        { cause },
+      );
+      error.compendiumCommand = command;
+      throw error;
+    }
+  };
+  return Object.freeze({ evaluate, waitValue, answerability, sendStage });
+}
+
+/* Heap collection is part of the measurement contract, not a best-effort
+   prelude. Keep this sequence shared with the browser-free control so a
+   failed GC cannot be swallowed and followed by incomparable heap evidence. */
+export async function collectCandidateSnapshot({
+  sessionId, label, rawSnapshotExpression, evaluate, sendStage,
+}) {
+  assert(typeof sessionId === 'string' && sessionId && typeof label === 'string' && label
+    && typeof rawSnapshotExpression === 'string' && rawSnapshotExpression
+    && typeof evaluate === 'function' && typeof sendStage === 'function',
+  'candidate snapshot dependencies are invalid');
+  await sendStage(`${label} garbage collection`, 'HeapProfiler.collectGarbage', {}, sessionId);
+  await evaluate(sessionId,
+    `new Promise(resolve=>requestAnimationFrame(()=>resolve(true)))`,
+    `${label} animation task`);
+  const observed = await evaluate(
+    sessionId, rawSnapshotExpression, `${label} product/DOM snapshot`,
+  );
+  const heap = await sendStage(`${label} heap usage`, 'Runtime.getHeapUsage', {}, sessionId);
+  const dom = await sendStage(`${label} DOM counters`, 'Memory.getDOMCounters', {}, sessionId);
+  return { diagnostics: observed.diagnostics, heap, dom, raw: observed.raw };
+}
+
 async function collectProfile({
   profile, viewport, fixture, browser, origin, veteranRaw, runId, candidateSpeciesChunk,
 }) {
@@ -272,6 +397,15 @@ async function collectProfile({
   const contexts = new Set();
   const sessions = new Set();
   const reviewPacket = [];
+  const commandLedger = [];
+  const completedStages = [];
+  let currentStage = 'profile initialization';
+  let lastCompletedStage = null;
+  const completeStage = (label) => {
+    lastCompletedStage = label;
+    currentStage = label;
+    completedStages.push(label);
+  };
   const disposeAll = async () => {
     for (const sessionId of sessions) {
       try { await send('Target.detachFromTarget', { sessionId }); } catch { /* browser cleanup owns the rest */ }
@@ -280,51 +414,45 @@ async function collectProfile({
       try { await send('Target.disposeBrowserContext', { browserContextId }); } catch { /* close() remains authoritative */ }
     }
   };
-  const evaluate = async (sessionId, expression, label, { awaitPromise = true, timeoutMs } = {}) => {
-    const result = await send('Runtime.evaluate', {
-      expression, returnByValue: true, awaitPromise,
-    }, sessionId, timeoutMs ? { timeoutMs } : {});
-    if (result.exceptionDetails) {
-      const detail = result.exceptionDetails.exception?.description || result.exceptionDetails.text || 'unknown exception';
-      throw new Error(`${profile} ${label}: page evaluation threw (${detail})`);
-    }
-    return result.result.value;
-  };
-  const waitValue = async (sessionId, label, expression, { timeoutMs = 20000 } = {}) => {
-    const deadline = performance.now() + timeoutMs;
-    let last = null;
-    while (performance.now() < deadline) {
-      last = await evaluate(sessionId, expression, label);
-      if (last) return last;
-      await sleep(50);
-    }
-    throw new Error(`${profile} ${label}: timed out (${JSON.stringify(last)})`);
-  };
+  const { evaluate, waitValue, answerability, sendStage } = createCandidateCollectorObservations({
+    send, profile, now: () => performance.now(), pause: sleep,
+    onStageStarted: (label) => { currentStage = label; },
+    onStageCompleted: completeStage,
+    onCommand: (command) => commandLedger.push(command),
+  });
   const createTarget = async () => {
-    const context = await send('Target.createBrowserContext');
+    const context = await sendStage(
+      'create browser context', 'Target.createBrowserContext',
+    );
     contexts.add(context.browserContextId);
-    const target = await send('Target.createTarget', {
+    const target = await sendStage('create page target', 'Target.createTarget', {
       url: 'about:blank', browserContextId: context.browserContextId,
     });
-    const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
+    const attached = await sendStage('attach page target', 'Target.attachToTarget', {
+      targetId: target.targetId, flatten: true,
+    });
     sessions.add(attached.sessionId);
-    await send('Runtime.enable', {}, attached.sessionId);
-    await send('Page.enable', {}, attached.sessionId);
-    await send('HeapProfiler.enable', {}, attached.sessionId);
+    await sendStage('enable Runtime domain', 'Runtime.enable', {}, attached.sessionId);
+    await sendStage('enable Page domain', 'Page.enable', {}, attached.sessionId);
+    await sendStage('enable HeapProfiler domain', 'HeapProfiler.enable', {}, attached.sessionId);
     const emulation = compendiumProfileEmulationOptions(profile, viewport);
-    await send('Emulation.setDeviceMetricsOverride', emulation.deviceMetrics, attached.sessionId);
-    await send('Emulation.setTouchEmulationEnabled', emulation.touch, attached.sessionId);
+    await sendStage('set initial device metrics', 'Emulation.setDeviceMetricsOverride',
+      emulation.deviceMetrics, attached.sessionId);
+    await sendStage('set initial touch emulation', 'Emulation.setTouchEmulationEnabled',
+      emulation.touch, attached.sessionId);
     return { browserContextId: context.browserContextId, targetId: target.targetId, sessionId: attached.sessionId };
   };
   const navigate = async (sessionId, url, label) => {
-    await send('Page.navigate', { url }, sessionId);
+    await sendStage(`${label} navigation`, 'Page.navigate', { url }, sessionId);
     return await waitValue(sessionId, `${label} readiness`, `(()=>{
       const S=window.__CF_SLICE__; return S&&S.api&&typeof S.api.compendiumDiagnostics==='function'
         &&S.api.__compendiumEvidence&&typeof S.documentToken==='string'?S.documentToken:null;
     })()`, { timeoutMs: 20000 });
   };
   const seedSave = async (sessionId) => {
-    await send('Page.navigate', { url: `${origin}/__compendiummem_seed__.html` }, sessionId);
+    await sendStage('seed document navigation', 'Page.navigate', {
+      url: `${origin}/__compendiummem_seed__.html`,
+    }, sessionId);
     await waitValue(sessionId, 'seed document', `document.readyState==='complete'?'ready':null`);
     const expression = `(async()=>{const stores=${JSON.stringify(STORES)},raw=${JSON.stringify(veteranRaw)};
       const db=await new Promise((resolve,reject)=>{const q=indexedDB.open('cf-v2-slice',1);
@@ -339,18 +467,14 @@ async function collectProfile({
   const rawSnapshotExpression = compendiumRawSnapshotExpression();
   assert(validCompendiumRawSnapshotExpression(rawSnapshotExpression),
     `${profile}: Compendium raw snapshot expression is syntactically or structurally invalid`);
-  const snapshot = async (sessionId, label) => {
-    try { await send('HeapProfiler.collectGarbage', {}, sessionId); } catch { /* Runtime heap remains mandatory */ }
-    await evaluate(sessionId, `new Promise(resolve=>requestAnimationFrame(()=>resolve(true)))`, `${label} animation task`);
-    const observed = await evaluate(sessionId, rawSnapshotExpression, `${label} product/DOM snapshot`);
-    const heap = await send('Runtime.getHeapUsage', {}, sessionId);
-    const dom = await send('Memory.getDOMCounters', {}, sessionId);
-    return { diagnostics: observed.diagnostics, heap, dom, raw: observed.raw };
-  };
+  const snapshot = async (sessionId, label) => await collectCandidateSnapshot({
+    sessionId, label, rawSnapshotExpression, evaluate, sendStage,
+  });
   const captureReview = async (sessionId, state) => {
-    const captured = await send('Page.captureScreenshot', {
+    const captured = await sendStage(`screenshot ${state}`, 'Page.captureScreenshot', {
       format: 'png', fromSurface: true, captureBeyondViewport: false,
     }, sessionId);
+    currentStage = `review ${state}`;
     assert(typeof captured?.data === 'string' && captured.data.length > 0,
       `${profile} ${state}: browser returned an empty review screenshot`);
     const bytes = Buffer.from(captured.data, 'base64');
@@ -363,6 +487,7 @@ async function collectProfile({
       profile, state, file: path.relative(v2Root, file).split(path.sep).join('/'), bytes: bytes.length,
       sha256: sha256(bytes),
     });
+    completeStage(`review ${state}`);
   };
   const waitListReady = (sessionId, expectedCount = null) => waitValue(sessionId, 'list thumb settlement', `(()=>{
     const d=window.__CF_SLICE__.api.compendiumDiagnostics(),s=d.surfaces.list.thumbStates;
@@ -379,8 +504,12 @@ async function collectProfile({
     if(!e)return null;const r=e.getBoundingClientRect();return {x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};})()`);
   const click = async (sessionId, selector, label) => {
     const point = await elementPoint(sessionId, selector, label);
-    await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1 }, sessionId);
-    await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1 }, sessionId);
+    await sendStage(`${label} mouse press`, 'Input.dispatchMouseEvent', {
+      type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1,
+    }, sessionId);
+    await sendStage(`${label} mouse release`, 'Input.dispatchMouseEvent', {
+      type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
+    }, sessionId);
   };
   const rowPoint = async (sessionId, logicalId) => await waitValue(sessionId, `row ${logicalId}`, `(()=>{
     const e=[...document.querySelectorAll('#codexpanel [data-cid]')].find(x=>x.dataset.cid===${JSON.stringify(logicalId)});
@@ -391,17 +520,21 @@ async function collectProfile({
     return right>left&&bottom>top?{x:(left+right)/2,y:(top+bottom)/2}:null})()`);
   const clickRow = async (sessionId, logicalId) => {
     const point = await rowPoint(sessionId, logicalId);
-    await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1 }, sessionId);
-    await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1 }, sessionId);
+    await sendStage(`row ${logicalId} mouse press`, 'Input.dispatchMouseEvent', {
+      type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1,
+    }, sessionId);
+    await sendStage(`row ${logicalId} mouse release`, 'Input.dispatchMouseEvent', {
+      type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
+    }, sessionId);
   };
   const key = async (sessionId, keyName, code, modifiers = 0) => {
     const keyCode = keyName === 'Enter' ? 13 : keyName === 'Tab' ? 9
       : keyName === 'Backspace' ? 8 : keyName.toUpperCase().charCodeAt(0);
-    await send('Input.dispatchKeyEvent', {
+    await sendStage(`key ${keyName} down`, 'Input.dispatchKeyEvent', {
       type: 'rawKeyDown', key: keyName, code, windowsVirtualKeyCode: keyCode,
       nativeVirtualKeyCode: keyCode, modifiers,
     }, sessionId);
-    await send('Input.dispatchKeyEvent', {
+    await sendStage(`key ${keyName} up`, 'Input.dispatchKeyEvent', {
       type: 'keyUp', key: keyName, code, windowsVirtualKeyCode: keyCode,
       nativeVirtualKeyCode: keyCode, modifiers,
     }, sessionId);
@@ -410,7 +543,9 @@ async function collectProfile({
     await click(sessionId, '#searchbox', `search ${query}`);
     const modifier = process.platform === 'darwin' ? 4 : 2;
     await key(sessionId, 'a', 'KeyA', modifier);
-    if (query) await send('Input.insertText', { text: query }, sessionId);
+    if (query) await sendStage(`insert filter ${query}`, 'Input.insertText', {
+      text: query,
+    }, sessionId);
     else await key(sessionId, 'Backspace', 'Backspace');
     await key(sessionId, 'Enter', 'Enter');
     await waitValue(sessionId, `filter ${query}`, `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
@@ -448,7 +583,7 @@ async function collectProfile({
         ? (wanted < windowState.start ? -1 : 1) : Math.sign(distance);
       const direction = visibility.direction || indexDirection;
       const deltaY = direction * Math.max(120, Math.min(6000, Math.max(1, Math.abs(distance)) * 58));
-      await send('Input.dispatchMouseEvent', {
+      await sendStage(`scroll toward row ${wanted}`, 'Input.dispatchMouseEvent', {
         type: 'mouseWheel', x: point.x, y: point.y, deltaX: 0, deltaY,
       }, sessionId);
       await sleep(30);
@@ -483,24 +618,6 @@ async function collectProfile({
     if (mode !== 'closed') await click(sessionId, '#codexpanel [data-pnx="codex"]', 'close Compendium');
     await waitValue(sessionId, 'Compendium closed', `window.__CF_SLICE__.api.compendiumDiagnostics().panel.mode==='closed'?'closed':null`);
   };
-  const answerability = async (sessionId, expected) => {
-    const targetStarted = performance.now();
-    const targetPromise = send('Runtime.evaluate', {
-      expression: `new Promise(resolve=>requestAnimationFrame(()=>setTimeout(()=>resolve(${JSON.stringify(expected)}),0)))`,
-      returnByValue: true, awaitPromise: true,
-    }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS }).then((result) => ({
-      ok: !result.exceptionDetails && result.result.value === expected,
-      ms: performance.now() - targetStarted, value: result.result.value, expected,
-    })).catch((error) => ({ ok: false, ms: performance.now() - targetStarted, value: null, expected, error: error.message }));
-    const heartbeatStarted = performance.now();
-    const heartbeatPromise = send('Browser.getVersion', {}, undefined, { timeoutMs: COMMAND_TIMEOUT_MS })
-      .then((result) => ({ ok: typeof result.product === 'string' && !!result.product,
-        ms: performance.now() - heartbeatStarted, product: result.product || null }))
-      .catch((error) => ({ ok: false, ms: performance.now() - heartbeatStarted, product: null, error: error.message }));
-    const [target, heartbeat] = await Promise.all([targetPromise, heartbeatPromise]);
-    return { target, heartbeat };
-  };
-
   try {
     /* Independent fresh document: no saved surface may legitimately request
        species art before the lazy-import sentinel is sampled. */
@@ -534,7 +651,7 @@ async function collectProfile({
     await captureReview(sessionId, 'list');
     const resizeBase = first;
     const resizeTo = async (height, label, predicate) => {
-      await send('Emulation.setDeviceMetricsOverride', {
+      await sendStage(`${label} device metrics`, 'Emulation.setDeviceMetricsOverride', {
         width: viewport.width, height, deviceScaleFactor: viewport.dpr, mobile: viewport.mobile,
       }, sessionId);
       await evaluate(sessionId, `new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))`,
@@ -625,7 +742,7 @@ async function collectProfile({
       `window.__CF_SLICE__.api.compendiumDiagnostics().art.totals.jobCancels`, 'pre-churn cancel total');
     const churnPoint = await scrollerPoint(sessionId);
     for (let index = 0; index < 8; index++) {
-      await send('Input.dispatchMouseEvent', {
+      await sendStage(`churn wheel ${index + 1}`, 'Input.dispatchMouseEvent', {
         type: 'mouseWheel', x: churnPoint.x, y: churnPoint.y,
         deltaX: 0, deltaY: 5500,
       }, sessionId);
@@ -857,6 +974,36 @@ async function collectProfile({
         focusPinned, closed, planetside, warm, error, capShrink },
       answerability: [firstProbe, lastProbe],
     };
+  } catch (caught) {
+    const error = caught instanceof Error ? caught : new Error(String(caught));
+    const command = isCandidateObservationError(error)
+      ? error.command : error.compendiumCommand || null;
+    const classification = isCandidateObservationError(error)
+      ? error.classification : 'instrument';
+    const partialProfile = {
+      schema: PARTIAL_PROFILE_SCHEMA,
+      profile,
+      viewport,
+      evidenceStatus: 'partial-non-certifying',
+      lastCompletedStage,
+      failingStage: currentStage,
+      completedStages: [...completedStages],
+      commandLedger: [...commandLedger],
+      reviewPacket: [...reviewPacket],
+    };
+    error.compendiumPartialEvidence = {
+      partialFailure: {
+        schema: PARTIAL_FAILURE_SCHEMA,
+        classification,
+        profile,
+        lastCompletedStage,
+        failingStage: currentStage,
+        command,
+      },
+      profile: partialProfile,
+      reviewPacket: [...reviewPacket],
+    };
+    throw error;
   } finally {
     await disposeAll();
   }
@@ -1384,7 +1531,10 @@ async function runGate({ calibrate }) {
   atomicWriteJson(reportPath, running);
   let browser = null;
   let server = null;
+  const measurements = [];
+  let gateStage = 'preflight';
   try {
+    gateStage = 'fixture and input provenance';
     fixture = buildCompendiumFixture();
     const projection = buildBrokenBaselineProjection(fixture);
     inputs = exactInputs(fixture);
@@ -1406,23 +1556,26 @@ async function runGate({ calibrate }) {
     if (!calibrate && budget.status !== 'active') {
       throw new Error('numeric Compendium budget is calibration-required; certification refuses to launch a browser');
     }
+    gateStage = 'candidate build';
     const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
     execFileSync(npm, ['exec', 'vite', 'build'], { cwd: appDir, stdio: 'inherit' });
     const candidateSpeciesChunk = findCandidateSpeciesChunk(distDir);
+    gateStage = 'candidate server and browser launch';
     server = await serveDist();
     browser = await openChromiumCdp(compendiumCdpOptions('candidate', {
-      label: 'Compendium memory/resource gate', userDataPrefix: 'cf-compendiummem',
+      label: CANDIDATE_BROWSER_LABEL, userDataPrefix: 'cf-compendiummem',
       startupTimeoutMs: 15000,
     }));
     const saveFixtures = readJson(baselineSavePath);
     const veteranRaw = JSON.stringify(saveFixtures.inputs.veteran_rich);
-    const measurements = [];
     for (const [profile, viewport] of Object.entries(PROFILES)) {
+      gateStage = `${profile} profile collection`;
       measurements.push(await collectProfile({
         profile, viewport, fixture, browser, origin: server.origin, veteranRaw, runId,
         candidateSpeciesChunk,
       }));
     }
+    gateStage = 'sealed outcome evaluation';
     const evaluatorBudget = calibrate ? calibrationCeilings() : budget;
     const outcomes = measurements.flatMap((measurement) =>
       evaluateProfile(measurement, evaluatorBudget, fixture));
@@ -1440,6 +1593,7 @@ async function runGate({ calibrate }) {
       outcomes, findings: failed.map((outcome) => outcome.diagnosis),
       profiles: Object.fromEntries(measurements.map((measurement) => [measurement.profile, measurement])),
       reviewPacket: measurements.flatMap((measurement) => measurement.reviewPacket),
+      partialFailure: null, blockedOutcomes: [],
     };
     atomicWriteJson(reportPath, report);
     const verification = verifyTerminalReport(report, runId, {
@@ -1475,7 +1629,8 @@ async function runGate({ calibrate }) {
       console.log('  no PASS was emitted; three independent runs/profile plus the paired 3844701 baseline are required');
     }
     return status === 'pass' || status === 'calibration' ? 0 : 1;
-  } catch (error) {
+  } catch (caught) {
+    const error = caught instanceof Error ? caught : new Error(String(caught));
     const endedAt = new Date();
     let sourceEnd = sourceBegin;
     if (sourceRead) {
@@ -1484,16 +1639,37 @@ async function runGate({ calibrate }) {
         sourceEnd = unavailableSourceIdentity(sourceError.message);
       }
     }
+    const partial = error.compendiumPartialEvidence || null;
+    const classification = partial?.partialFailure?.classification === 'product-unanswerable'
+      ? 'product-unanswerable' : 'instrument';
+    const status = classification === 'product-unanswerable'
+      ? 'product-unanswerable' : 'instrument-fail';
+    const partialFailure = partial?.partialFailure || {
+      schema: PARTIAL_FAILURE_SCHEMA,
+      classification: 'instrument',
+      profile: null,
+      lastCompletedStage: null,
+      failingStage: gateStage,
+      command: null,
+    };
+    const profiles = Object.fromEntries(measurements.map((measurement) =>
+      [measurement.profile, measurement]));
+    if (partial?.profile) profiles[partial.profile.profile] = partial.profile;
+    const reviewPacket = [
+      ...measurements.flatMap((measurement) => measurement.reviewPacket),
+      ...(partial?.reviewPacket || []),
+    ];
     const report = {
-      ...running, status: 'instrument-fail', endedAt: endedAt.toISOString(),
+      ...running, status, endedAt: endedAt.toISOString(),
       durationMs: endedAt.getTime() - startedAt.getTime(),
       source: { begin: sourceBegin, end: sourceEnd }, browser: browser?.browser || null,
-      outcomes: [], findings: [`instrument: ${error.message}`], profiles: {},
+      outcomes: [], findings: [`${classification === 'product-unanswerable' ? 'product' : 'instrument'}: ${error.message}`],
+      profiles, reviewPacket, partialFailure, blockedOutcomes: [...EXPECTED_OUTCOMES],
     };
     atomicWriteJson(reportPath, report);
-    console.error(`COMPENDIUM MEMORY: INSTRUMENT-FAIL — ${runId}`);
+    console.error(`COMPENDIUM MEMORY: ${status.toUpperCase()} — ${runId}`);
     console.error(`  ${error.message}`);
-    return 2;
+    return status === 'product-unanswerable' ? 1 : 2;
   } finally {
     try { if (browser) await browser.close(); } finally {
       try { if (server) await server.close(); } finally { releaseLock(); }
@@ -1504,7 +1680,7 @@ async function runGate({ calibrate }) {
 async function main() {
   if (process.argv.length === 3 && process.argv[2] === SELFTEST_FLAG) {
     const { runCompendiumMemSelftest } = await import('./compendiummem-selftest.mjs');
-    runCompendiumMemSelftest();
+    await runCompendiumMemSelftest();
     return 0;
   }
   const verifyArg = process.argv.slice(2).find((arg) => arg.startsWith('--verify-run='));
@@ -1538,6 +1714,8 @@ async function main() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  try { process.exitCode = await main(); }
-  catch (error) { console.error(`COMPENDIUM MEMORY: ${error.message}`); process.exitCode = 2; }
+  void main().then(
+    (exitCode) => { process.exitCode = exitCode; },
+    (error) => { console.error(`COMPENDIUM MEMORY: ${error.message}`); process.exitCode = 2; },
+  );
 }

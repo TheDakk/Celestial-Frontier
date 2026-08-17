@@ -6,6 +6,13 @@ export const PROFILES: readonly string[];
 export const COMMAND_TIMEOUT_MS: number;
 export const CANDIDATE_TRANSPORT_TIMEOUT_MS: number;
 export const BASELINE_OBSERVATION_TIMEOUT_MS: number;
+export const CANDIDATE_BROWSER_LABEL: string;
+export const CANDIDATE_CDP_TIMEOUT_SCHEMA: string;
+export const CANDIDATE_COMMAND_SCHEMA: string;
+export const PLAIN_EVALUATE_COMMAND_SCHEMA: string;
+export const RAW_CDP_COMMAND_SCHEMA: string;
+export const PARTIAL_FAILURE_SCHEMA: string;
+export const PARTIAL_PROFILE_SCHEMA: string;
 export const REQUIRED_WARM_CYCLES: number;
 export const OUTCOME_IDS: readonly string[];
 export const EXPECTED_OUTCOMES: readonly string[];
@@ -49,6 +56,48 @@ export function remainingCommandTimeoutMs(deadlineMs: number, nowMs: number,
   transportTimeoutMs: number): number | null;
 export function phaseObservationAccepted(deadlineMs: number, completedAtMs: number,
   value: unknown): boolean;
+export class CandidateObservationError extends Error {
+  classification: 'product-unanswerable' | 'instrument';
+  command: unknown;
+  constructor(classification: 'product-unanswerable' | 'instrument', message: string,
+    command?: unknown, options?: ErrorOptions);
+}
+export function isCandidateObservationError(error: unknown): error is CandidateObservationError;
+export function evaluateCandidateExpression(options: {
+  send(method: string, params?: Record<string, unknown>, sessionId?: string,
+    options?: { timeoutMs?: number }): Promise<unknown>;
+  sessionId: string;
+  expression: string;
+  profile: 'phone' | 'desktop';
+  label: string;
+  awaitPromise?: boolean;
+  timeoutMs?: number;
+  now(role?: string): number;
+}): Promise<unknown>;
+export function observeCandidateValue(options: {
+  send(method: string, params?: Record<string, unknown>, sessionId?: string,
+    options?: { timeoutMs?: number }): Promise<unknown>;
+  sessionId: string;
+  expression: string;
+  profile: 'phone' | 'desktop';
+  label: string;
+  phaseDeadlineMs: number;
+  now(role?: string): number;
+}): Promise<Readonly<{ value: unknown; command: unknown }>>;
+export function waitForCandidateValue(options: {
+  send(method: string, params?: Record<string, unknown>, sessionId?: string,
+    options?: { timeoutMs?: number }): Promise<unknown>;
+  sessionId: string;
+  expression: string;
+  profile: 'phone' | 'desktop';
+  label: string;
+  phaseDeadlineMs: number;
+  now(role?: string): number;
+  sleep(ms: number): Promise<void>;
+  onCommand(command: unknown): void;
+}): Promise<unknown>;
+export function validCandidateCommandEvidence(command: unknown,
+  options?: { requireProductTimeout?: boolean }): boolean;
 export function installBrokenBaselineThumbObserver(
   globalObject: Record<string, unknown>,
   CanvasConstructor: { prototype: Record<string, unknown> },
