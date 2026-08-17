@@ -37,10 +37,11 @@ import {
   buildBrokenBaselineProjection, buildCompendiumFixture,
 } from './compendiummem-fixture.mjs';
 import {
+  armCandidateProducerError, candidateArmProducerErrorExpression,
   candidateFilterInputExpression, candidateFilterTelemetryExpression,
   collectCandidateSnapshot, createCandidateCollectorObservations,
   driveCandidateFilterTransition, validCandidateFilterInputExpression,
-  validCandidateFilterTelemetryExpression,
+  validCandidateFilterTelemetryExpression, validCandidateArmProducerErrorExpression,
 } from './compendiummem.mjs';
 
 function assert(condition, message) { if (!condition) throw new Error(`COMPENDIUMMEM SELFTEST: ${message}`); }
@@ -1366,6 +1367,132 @@ export async function runCompendiumMemSelftest() {
     && pageException.compendiumCommand?.status === 'page-exception'
     && pageExceptionLedger.length === 1,
   'page exception diagnosis was conflated with a target/transport timeout');
+
+  const producerErrorMessage = 'compendiummem injected producer error';
+  const producerErrorSentinel = 'cf-v2-compendium-producer-error-armed/v1';
+  const producerErrorExpression = candidateArmProducerErrorExpression();
+  let producerErrorExpressionParsed = false;
+  try {
+    new Function(`"use strict"; return (${producerErrorExpression});`);
+    producerErrorExpressionParsed = true;
+  } catch { /* asserted below */ }
+  assert(producerErrorExpressionParsed
+    && validCandidateArmProducerErrorExpression(producerErrorExpression),
+  'the exact collector-owned producer-error arm expression did not parse or validate');
+  const producerErrorSentinelClause = `return ${JSON.stringify(producerErrorSentinel)}`;
+  assert((producerErrorExpression.match(/evidence\.failNextThumb\(/g) || []).length === 1
+    && producerErrorExpression.includes(`failNextThumb(${JSON.stringify(producerErrorMessage)})`)
+    && producerErrorExpression.includes(producerErrorSentinelClause),
+  'the producer-error arm expression lost its exact hook/message/sentinel contract');
+  const historicalBareVoidExpression = producerErrorExpression.replace(
+    `\n    ${producerErrorSentinelClause}`, '',
+  );
+  const wrongProducerErrorMessage = producerErrorExpression.replace(
+    producerErrorMessage, 'wrong producer error message',
+  );
+  const wrongProducerErrorSentinel = producerErrorExpression.replace(
+    producerErrorSentinel, 'cf-v2-compendium-producer-error-wrong/v1',
+  );
+  assert(!validCandidateArmProducerErrorExpression(historicalBareVoidExpression)
+    && !validCandidateArmProducerErrorExpression(wrongProducerErrorMessage)
+    && !validCandidateArmProducerErrorExpression(wrongProducerErrorSentinel),
+  'a no-return, wrong-message, or wrong-sentinel producer-error arm expression validated');
+
+  const runProducerErrorArmScenario = async ({
+    expression = null, hookError = null, returnedValue = null,
+  } = {}) => {
+    const calls = [];
+    const hookMessages = [];
+    const ledger = [];
+    const stagesStarted = [];
+    const stagesCompleted = [];
+    let clock = 10;
+    const window = {
+      __CF_SLICE__: { api: { __compendiumEvidence: {
+        failNextThumb: (message) => {
+          hookMessages.push(message);
+          if (hookError !== null) throw new Error(hookError);
+        },
+      } } },
+    };
+    const observations = createCandidateCollectorObservations({
+      send: async (method, params, sessionId, options) => {
+        calls.push({ method, params, sessionId, options });
+        try {
+          let value = new Function(
+            'window', `"use strict"; return (${params.expression});`,
+          )(window);
+          if (returnedValue !== null) value = returnedValue;
+          return value === undefined
+            ? { result: { type: 'undefined' } }
+            : { result: { type: typeof value, value } };
+        } catch (error) {
+          return { exceptionDetails: { text: error instanceof Error ? error.message : String(error) } };
+        }
+      },
+      profile: 'phone', now: () => clock++, pause: async () => {},
+      onStageStarted: (stage) => stagesStarted.push(stage),
+      onStageCompleted: (stage) => stagesCompleted.push(stage),
+      onCommand: (command) => ledger.push(command),
+    });
+    let value = null;
+    let failure = null;
+    try {
+      value = expression === null
+        ? await armCandidateProducerError({
+          sessionId: 'selftest-session', evaluate: observations.evaluate,
+        })
+        : await observations.evaluate(
+          'selftest-session', expression, 'arm producer error',
+        );
+    } catch (error) { failure = error; }
+    return {
+      calls, hookMessages, ledger, stagesStarted, stagesCompleted, value, failure,
+    };
+  };
+  const producerErrorArmed = await runProducerErrorArmScenario();
+  assert(producerErrorArmed.failure === null
+    && producerErrorArmed.value === producerErrorSentinel
+    && JSON.stringify(producerErrorArmed.hookMessages) === JSON.stringify([producerErrorMessage])
+    && producerErrorArmed.calls.length === 1
+    && producerErrorArmed.calls[0].method === 'Runtime.evaluate'
+    && producerErrorArmed.calls[0].params.expression === producerErrorExpression
+    && producerErrorArmed.calls[0].options.timeoutMs === CANDIDATE_TRANSPORT_TIMEOUT_MS
+    && JSON.stringify(producerErrorArmed.stagesStarted) === JSON.stringify(['arm producer error'])
+    && JSON.stringify(producerErrorArmed.stagesCompleted) === JSON.stringify(['arm producer error'])
+    && producerErrorArmed.ledger.length === 0,
+  'the real producer-error arm helper did not call the exact hook once and return its sentinel once');
+  const producerErrorWrongSentinel = await runProducerErrorArmScenario({
+    returnedValue: 'cf-v2-compendium-producer-error-wrong/v1',
+  });
+  assert(producerErrorWrongSentinel.calls.length === 1
+    && producerErrorWrongSentinel.hookMessages.length === 1
+    && producerErrorWrongSentinel.failure?.message
+      === 'candidate producer-error arm sentinel mismatch: cf-v2-compendium-producer-error-wrong/v1',
+  'the producer-error arm helper accepted a wrong by-value sentinel or retried it');
+  const producerErrorBareVoid = await runProducerErrorArmScenario({
+    expression: historicalBareVoidExpression,
+  });
+  assert(producerErrorBareVoid.calls.length === 1
+    && JSON.stringify(producerErrorBareVoid.hookMessages) === JSON.stringify([producerErrorMessage])
+    && producerErrorBareVoid.failure?.message
+      === 'phone arm producer error: Runtime.evaluate returned no by-value result'
+    && producerErrorBareVoid.failure.compendiumCommand?.status === 'page-exception'
+    && producerErrorBareVoid.ledger.length === 1
+    && producerErrorBareVoid.stagesCompleted.length === 0,
+  'the historical bare-void producer-error arm did not fail closed as one no-value command');
+  const producerErrorHookThrows = await runProducerErrorArmScenario({
+    hookError: 'selftest producer hook threw',
+  });
+  assert(producerErrorHookThrows.calls.length === 1
+    && JSON.stringify(producerErrorHookThrows.hookMessages) === JSON.stringify([producerErrorMessage])
+    && producerErrorHookThrows.failure?.message
+      === 'phone arm producer error: page evaluation threw (selftest producer hook threw)'
+    && producerErrorHookThrows.failure.compendiumCommand?.status === 'page-exception'
+    && producerErrorHookThrows.ledger.length === 1
+    && producerErrorHookThrows.stagesCompleted.length === 0,
+  'a thrown producer-error hook was retried or ceased to be a page exception');
+
   const rawStagesStarted = [];
   const rawStagesCompleted = [];
   const rawCommands = [];
