@@ -21,13 +21,15 @@ import {
   PLAIN_EVALUATE_COMMAND_SCHEMA, RAW_CDP_COMMAND_SCHEMA,
   REPORT_INPUT_KEYS, REPORT_SCHEMA,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
-  calibrationMetrics, compendiumCdpOptions, compendiumProfileEmulationOptions,
+  calibrationMetrics, candidateNativeKeyDispatches,
+  compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression, evaluateProfile,
   installBrokenBaselineThumbObserver,
   phaseObservationAccepted,
   remainingCommandTimeoutMs, sha256,
   validBrokenBaselineThumbObservation, validProfileEmulationOptions,
   validCompendiumRawSnapshotExpression, validTransportTimeoutPolicy,
+  validFilterInputObservation, validFilterTargetObservation, validFilterTelemetrySnapshot,
   validFilterTransitionObservation, validFilterTransitionWitness,
   validateBudgetRecord, validCandidateCommandEvidence, verifyTerminalReport,
 } from './compendiummem-contract.mjs';
@@ -35,8 +37,10 @@ import {
   buildBrokenBaselineProjection, buildCompendiumFixture,
 } from './compendiummem-fixture.mjs';
 import {
+  candidateFilterInputExpression, candidateFilterTelemetryExpression,
   collectCandidateSnapshot, createCandidateCollectorObservations,
-  driveCandidateFilterTransition,
+  driveCandidateFilterTransition, validCandidateFilterInputExpression,
+  validCandidateFilterTelemetryExpression,
 } from './compendiummem.mjs';
 
 function assert(condition, message) { if (!condition) throw new Error(`COMPENDIUMMEM SELFTEST: ${message}`); }
@@ -222,6 +226,30 @@ function syntheticFilterObservation({
   };
 }
 
+function syntheticFilterTelemetry(profile, generation) {
+  const art = artSnapshot({ generation });
+  art.deviceClass = profile;
+  return {
+    generation,
+    art: { live: clone(art.live), totals: clone(art.totals) },
+  };
+}
+
+function syntheticFilterInputObservation({
+  ready, value, panelMode, focused = true,
+  selectionStart = value.length, selectionEnd = value.length,
+}) {
+  return { ready, focused, value, selectionStart, selectionEnd, panelMode };
+}
+
+function syntheticFilterTargetGroup() {
+  return {
+    observationCount: 2,
+    falsyObservations: [{ ready: false, x: null, y: null }],
+    accepted: { ready: true, x: 120, y: 40 },
+  };
+}
+
 function syntheticFilterTransition({
   profile, entryMode, query, filteredCount, baselineGeneration,
   priorQuery, priorFilteredCount,
@@ -234,16 +262,60 @@ function syntheticFilterTransition({
     profile, ready: true, query, filteredCount,
     generation: baselineGeneration + 1,
   });
+  const panelMode = entryMode === 'visible' ? 'list' : 'closed';
+  const focusFalsy = syntheticFilterInputObservation({
+    ready: false, focused: false, value: priorQuery, panelMode,
+  });
+  const focusAccepted = syntheticFilterInputObservation({
+    ready: true, value: priorQuery, panelMode,
+  });
+  const selectionFalsy = syntheticFilterInputObservation({
+    ready: false, focused: false, value: priorQuery, panelMode,
+    selectionStart: 0, selectionEnd: 0,
+  });
+  const selectionAccepted = syntheticFilterInputObservation({
+    ready: true, value: priorQuery, panelMode,
+    selectionStart: 0, selectionEnd: priorQuery.length,
+  });
+  const clearFalsy = syntheticFilterInputObservation({
+    ready: false, focused: false, value: priorQuery, panelMode,
+    selectionStart: 0, selectionEnd: priorQuery.length,
+  });
+  const clearAccepted = syntheticFilterInputObservation({
+    ready: true, value: '', panelMode, selectionStart: 0, selectionEnd: 0,
+  });
+  const exactInputFalsy = syntheticFilterInputObservation({
+    ready: false, focused: false, value: query, panelMode,
+  });
+  const exactInputAccepted = syntheticFilterInputObservation({
+    ready: true, value: query, panelMode,
+  });
   return {
     schema: FILTER_TRANSITION_SCHEMA,
     entryMode,
     expectedQuery: query,
     expectedFilteredCount: filteredCount,
-    input: {
-      focused: true, cleared: true, value: query,
-      panelMode: entryMode === 'visible' ? 'list' : 'closed',
+    entryTarget: entryMode === 'visible' ? null : syntheticFilterTargetGroup(),
+    reopenTarget: entryMode === 'reopen' ? syntheticFilterTargetGroup() : null,
+    focus: {
+      observationCount: 2, falsyObservations: [focusFalsy], accepted: focusAccepted,
     },
+    beforeShortcut: syntheticFilterTelemetry(profile, baselineGeneration),
+    selection: {
+      observationCount: 2, falsyObservations: [selectionFalsy],
+      accepted: selectionAccepted,
+    },
+    cleared: {
+      observationCount: 2, falsyObservations: [clearFalsy], accepted: clearAccepted,
+    },
+    afterClear: syntheticFilterTelemetry(profile, baselineGeneration),
+    exactInput: {
+      observationCount: 2, falsyObservations: [exactInputFalsy],
+      accepted: exactInputAccepted,
+    },
+    inputTelemetry: syntheticFilterTelemetry(profile, baselineGeneration),
     baselineGeneration,
+    observationCount: 2,
     falsyObservations: [falsy],
     settled,
     generationDelta: 1,
@@ -720,28 +792,126 @@ export async function runCompendiumMemSelftest() {
   const runFilterDriverScenario = async (entryMode, query, expectedCount, {
     wrongFocus = false, wrongExactValue = false, generationDelta = 1,
     invalidPending = false, missingReopen = false,
+    selectionFault = null, clearFault = null, telemetryFault = null,
+    focusFalsyCount = 2, selectionFalsyCount = 3, clearFalsyCount = 4,
+    exactInputFalsyCount = 2, priorValueOverride = null,
   } = {}) => {
     const actions = [];
     const transitions = [];
+    const cheapExpressions = [];
+    const telemetryExpressions = [];
+    const keyCalls = [];
+    const targetCalls = [];
     const baselineGeneration = 40;
     const name = query || '<clear>';
     const panelMode = entryMode === 'visible' ? 'list' : 'closed';
+    const expectedPriorValue = entryMode === 'visible' ? ''
+      : entryMode === 'hidden' ? 'Same Seed Sentinel' : 'Compendium Filter Beacon';
+    const priorValue = priorValueOverride ?? expectedPriorValue;
+    const observe = (observation, options) => {
+      options.onObservation?.(observation, { selftest: 'filter-input' });
+      return options.acceptValue ? options.acceptValue(observation) : Boolean(observation);
+    };
     const waitValue = async (_sessionId, label, expression, options = {}) => {
       actions.push(`wait:${label}`);
       if (label === `filter ${name} input focus`) {
-        return { focused: !wrongFocus, value: 'prior query', panelMode };
+        cheapExpressions.push(expression);
+        for (let index = 0; index < focusFalsyCount; index += 1) {
+          const pending = syntheticFilterInputObservation({
+            ready: false, focused: false, value: priorValue, panelMode,
+          });
+          assert(observe(pending, options) === false,
+            'an unfocused Search observation was accepted');
+        }
+        const accepted = syntheticFilterInputObservation({
+          ready: true, focused: !wrongFocus, value: priorValue, panelMode,
+        });
+        if (!observe(accepted, options)) {
+          throw new Error(`filter ${name}: search input focus was not proven before replacement`);
+        }
+        return accepted;
+      }
+      if (label === `filter ${name} before shortcut telemetry`
+        || label === `filter ${name} cleared telemetry`
+        || label === `filter ${name} exact input telemetry`) {
+        telemetryExpressions.push(expression);
+        const telemetry = syntheticFilterTelemetry('phone', baselineGeneration);
+        if (telemetryFault?.label === label) {
+          if (telemetryFault.kind === 'missing') delete telemetry.art.totals;
+          if (telemetryFault.kind === 'non-scalar') telemetry.art.live.activeJobs = 'busy';
+        }
+        assert(options.acceptValue(telemetry) === true,
+          'one-shot filter telemetry was not accepted exactly once');
+        return telemetry;
+      }
+      if (label === `filter ${name} full selection`) {
+        cheapExpressions.push(expression);
+        for (let index = 0; index < selectionFalsyCount; index += 1) {
+          const pending = syntheticFilterInputObservation({
+            ready: false, focused: false, value: priorValue, panelMode,
+            selectionStart: 0, selectionEnd: 0,
+          });
+          assert(observe(pending, options) === false,
+            'a partial select-all observation was accepted');
+        }
+        const accepted = syntheticFilterInputObservation({
+          ready: true, value: priorValue, panelMode,
+          selectionStart: 0, selectionEnd: priorValue.length,
+        });
+        if (selectionFault === 'missing') {
+          accepted.selectionStart = null; accepted.selectionEnd = null;
+        }
+        if (selectionFault === 'partial') accepted.selectionEnd = Math.max(0, priorValue.length - 1);
+        if (selectionFault === 'focus-loss') accepted.focused = false;
+        if (selectionFault === 'mode-drift') accepted.panelMode = 'detail';
+        if (!observe(accepted, options)) {
+          throw new Error(`filter ${name}: native select-all did not produce an exact full selection`);
+        }
+        return accepted;
       }
       if (label === `filter ${name} input cleared`) {
-        return { focused: true, cleared: true, value: '', panelMode };
+        cheapExpressions.push(expression);
+        for (let index = 0; index < clearFalsyCount; index += 1) {
+          const pending = syntheticFilterInputObservation({
+            ready: false, focused: false, value: priorValue, panelMode,
+            selectionStart: 0, selectionEnd: priorValue.length,
+          });
+          assert(observe(pending, options) === false,
+            'a residual-value clear observation was accepted');
+        }
+        const accepted = syntheticFilterInputObservation({
+          ready: true, value: '', panelMode, selectionStart: 0, selectionEnd: 0,
+        });
+        if (clearFault === 'residual') {
+          accepted.value = priorValue; accepted.selectionEnd = priorValue.length;
+        }
+        if (clearFault === 'focus-loss') accepted.focused = false;
+        if (clearFault === 'mode-drift') accepted.panelMode = 'detail';
+        if (!observe(accepted, options)) {
+          throw new Error(`filter ${name}: selected prior text was not explicitly deleted`);
+        }
+        return accepted;
       }
       if (label === `filter ${name} exact input`) {
+        cheapExpressions.push(expression);
         assert(expression.includes(JSON.stringify(query)),
           'filter exact-input proof did not bind the requested query');
-        return {
-          focused: true, cleared: true,
+        for (let index = 0; index < exactInputFalsyCount; index += 1) {
+          const pending = syntheticFilterInputObservation({
+            ready: false, focused: false, value: query, panelMode,
+          });
+          assert(observe(pending, options) === false,
+            'an unfocused exact-input observation was accepted');
+        }
+        const accepted = syntheticFilterInputObservation({
+          ready: true,
           value: wrongExactValue ? `prior query${query}` : query,
-          panelMode, generation: baselineGeneration,
-        };
+          panelMode,
+        });
+        if (!observe(accepted, options)) {
+          throw new Error(`filter ${name}: exact input value/generation was not proven before Enter`);
+        }
+        return accepted;
       }
       if (label === `filter ${name}`) {
         assert(typeof options.acceptValue === 'function'
@@ -771,20 +941,37 @@ export async function runCompendiumMemSelftest() {
     try {
       result = await driveCandidateFilterTransition({
         sessionId: 'selftest-session', entryMode, query, expectedCount, platform: 'darwin',
-        click: async (_sessionId, selector, label) => {
+        click: async (_sessionId, selector, label, { targetWitness = null } = {}) => {
           actions.push(`click:${selector}:${label}`);
           if (missingReopen && label === 'ordinary Compendium reopen') {
             throw new Error('selftest ordinary Compendium opener unavailable');
           }
+          targetCalls.push({ selector, label, witnessed: targetWitness !== null });
+          assert(targetWitness !== null,
+            `filter ${name}: product driver did not attach its ${label} target witness`);
+          const falsyTarget = { ready: false, x: null, y: null };
+          const acceptedTarget = { ready: true, x: 120, y: 40 };
+          assert(validFilterTargetObservation(falsyTarget)
+            && validFilterTargetObservation(acceptedTarget),
+          `filter ${name}: synthetic target observation shape drifted`);
+          targetWitness.observationCount += 2;
+          targetWitness.falsyObservations.push(falsyTarget);
+          targetWitness.accepted = acceptedTarget;
         },
-        key: async (_sessionId, keyName, _code, modifier = 0, labelPrefix = '') => {
-          actions.push(`key:${labelPrefix}:${keyName}:${modifier}`);
+        key: async (
+          _sessionId, keyName, code, modifier = 0, labelPrefix = '', commands = [],
+        ) => {
+          const dispatches = candidateNativeKeyDispatches(keyName, code, modifier, commands);
+          keyCalls.push({ keyName, code, modifier, labelPrefix, commands: [...commands], dispatches });
+          actions.push(`key:${labelPrefix}:${keyName}:${modifier}:${commands.join(',')}`);
         },
         sendStage: async (label, method, params) => {
           actions.push(`send:${label}:${method}:${params.text}`);
         },
-        evaluate: async (_sessionId, _expression, label) => {
+        evaluate: async (_sessionId, expression, label) => {
           actions.push(`evaluate:${label}`);
+          assert(!expression.includes('compendiumDiagnostics'),
+            'visible filter focus setup invoked the full diagnostic API');
           return { focused: true, panelMode: 'list' };
         },
         waitValue,
@@ -794,7 +981,10 @@ export async function runCompendiumMemSelftest() {
         },
       });
     } catch (error) { failure = error; }
-    return { actions, failure, result, transitions };
+    return {
+      actions, failure, result, transitions, cheapExpressions, telemetryExpressions, keyCalls,
+      targetCalls,
+    };
   };
   const nonemptyFilterDriver = await runFilterDriverScenario(
     'hidden', 'Compendium Filter Beacon', 1,
@@ -802,19 +992,167 @@ export async function runCompendiumMemSelftest() {
   assert(nonemptyFilterDriver.failure === null
     && validFilterTransitionWitness(nonemptyFilterDriver.result)
     && nonemptyFilterDriver.result.falsyObservations.length === 1
+    && nonemptyFilterDriver.result.observationCount === 2
     && validFilterTransitionObservation(nonemptyFilterDriver.result.falsyObservations[0])
-    && JSON.stringify(nonemptyFilterDriver.actions) === JSON.stringify([
-      'click:#searchbox:search Compendium Filter Beacon',
-      'wait:filter Compendium Filter Beacon input focus',
-      'key:filter Compendium Filter Beacon select-all:a:4',
-      'key:filter Compendium Filter Beacon delete:Backspace:0',
-      'wait:filter Compendium Filter Beacon input cleared',
+    && nonemptyFilterDriver.actions[0] === 'transition:start'
+    && nonemptyFilterDriver.result.selection.observationCount === 4
+    && nonemptyFilterDriver.result.selection.falsyObservations.length === 3
+    && nonemptyFilterDriver.result.cleared.observationCount === 5
+    && nonemptyFilterDriver.result.cleared.falsyObservations.length === 4
+    && nonemptyFilterDriver.result.focus.observationCount === 3
+    && nonemptyFilterDriver.result.focus.falsyObservations.length === 2
+    && nonemptyFilterDriver.result.exactInput.observationCount === 3
+    && nonemptyFilterDriver.result.exactInput.falsyObservations.length === 2
+    && nonemptyFilterDriver.result.entryTarget.observationCount === 2
+    && nonemptyFilterDriver.result.entryTarget.falsyObservations.length === 1
+    && nonemptyFilterDriver.result.entryTarget.accepted.ready === true
+    && nonemptyFilterDriver.result.reopenTarget === null
+    && nonemptyFilterDriver.targetCalls.length === 1
+    && nonemptyFilterDriver.targetCalls[0].witnessed === true
+    && nonemptyFilterDriver.cheapExpressions.length === 4
+    && nonemptyFilterDriver.cheapExpressions.every((expression) =>
+      !expression.includes('compendiumDiagnostics'))
+    && nonemptyFilterDriver.telemetryExpressions.length === 3
+    && nonemptyFilterDriver.telemetryExpressions.every((expression) =>
+      expression.includes('compendiumDiagnostics'))
+    && JSON.stringify(nonemptyFilterDriver.keyCalls[0].commands) === '["selectAll"]'
+    && JSON.stringify(nonemptyFilterDriver.keyCalls[0].dispatches[0].commands) === '["selectAll"]'
+    && !Object.hasOwn(nonemptyFilterDriver.keyCalls[0].dispatches[1], 'commands')
+    && nonemptyFilterDriver.actions.includes(
       'send:insert filter Compendium Filter Beacon:Input.insertText:Compendium Filter Beacon',
-      'wait:filter Compendium Filter Beacon exact input',
-      'transition:start', 'key:filter Compendium Filter Beacon submit:Enter:0',
-      'wait:filter Compendium Filter Beacon',
-    ]),
+    )
+    && nonemptyFilterDriver.actions.at(-1) === 'wait:filter Compendium Filter Beacon',
   'the real native-filter driver skipped focus/delete/exact-value proof or lost its falsy witness');
+  const oldShortcutOnly = candidateNativeKeyDispatches('a', 'KeyA', 4);
+  assert(!Object.hasOwn(oldShortcutOnly[0], 'commands')
+    && JSON.stringify(oldShortcutOnly) !== JSON.stringify(nonemptyFilterDriver.keyCalls[0].dispatches),
+  'the old platform-shortcut-only path was indistinguishable from CDP selectAll');
+  assert(validFilterInputObservation(nonemptyFilterDriver.result.selection.accepted)
+    && validFilterTelemetrySnapshot(nonemptyFilterDriver.result.beforeShortcut),
+  'the real filter-driver witness did not use the sealed cheap/telemetry validators');
+  const filterExpressionCases = [
+    { phase: 'focus', expectedValue: null },
+    { phase: 'selection', expectedValue: 'Same Seed Sentinel' },
+    { phase: 'cleared', expectedValue: '' },
+    { phase: 'exact-input', expectedValue: 'Compendium Filter Beacon' },
+  ].map((options, index) => ({
+    options: { ...options, expectedPanelMode: 'closed' },
+    source: nonemptyFilterDriver.cheapExpressions[index],
+  }));
+  assert(filterExpressionCases.every(({ options, source }) =>
+    source === candidateFilterInputExpression(options)
+      && validCandidateFilterInputExpression(source, options)),
+  'the real driver did not consume the parsed, phase-bound cheap expression factory');
+  const [focusExpression, selectionExpression, clearExpression, exactExpression]
+    = filterExpressionCases;
+  const executeCheapExpression = (source, {
+    value, selectionStart, selectionEnd, focused = true, panelMode = 'closed',
+  }) => {
+    const input = { value, selectionStart, selectionEnd };
+    const panel = {
+      style: { display: panelMode === 'closed' ? 'none' : 'block' },
+      getAttribute: (name) => name === 'aria-hidden'
+        ? (panelMode === 'closed' ? 'true' : 'false') : null,
+      querySelector: (selector) => selector === '[data-sel="codex-scroll"]'
+        && panelMode === 'list' ? {} : selector === '[data-sel="detail-portrait"]'
+          && panelMode === 'detail' ? {} : null,
+    };
+    const document = {
+      activeElement: focused ? input : null,
+      querySelector: (selector) => selector === '#searchbox' ? input
+        : selector === '#codexpanel' ? panel : null,
+    };
+    return new Function('document', `"use strict"; return (${source});`)(document);
+  };
+  const priorBeacon = 'Same Seed Sentinel';
+  assert(executeCheapExpression(focusExpression.source, {
+    value: priorBeacon, selectionStart: priorBeacon.length,
+    selectionEnd: priorBeacon.length,
+  }).ready === true
+    && executeCheapExpression(focusExpression.source, {
+      value: priorBeacon, selectionStart: priorBeacon.length,
+      selectionEnd: priorBeacon.length, focused: false,
+    }).ready === false
+    && executeCheapExpression(selectionExpression.source, {
+      value: priorBeacon, selectionStart: 0, selectionEnd: priorBeacon.length,
+    }).ready === true
+    && executeCheapExpression(selectionExpression.source, {
+      value: priorBeacon, selectionStart: 0, selectionEnd: priorBeacon.length - 1,
+    }).ready === false
+    && executeCheapExpression(clearExpression.source, {
+      value: '', selectionStart: 0, selectionEnd: 0,
+    }).ready === true
+    && executeCheapExpression(clearExpression.source, {
+      value: 'x', selectionStart: 0, selectionEnd: 1,
+    }).ready === false
+    && executeCheapExpression(exactExpression.source, {
+      value: 'Compendium Filter Beacon', selectionStart: 24, selectionEnd: 24,
+    }).ready === true
+    && executeCheapExpression(exactExpression.source, {
+      value: 'Compendium Filter Beaconx', selectionStart: 25, selectionEnd: 25,
+    }).ready === false
+    && executeCheapExpression(exactExpression.source, {
+      value: 'Compendium Filter Beacon', selectionStart: 24, selectionEnd: 24,
+      panelMode: 'list',
+    }).ready === false,
+  'the exact embedded cheap expression did not enforce focus/value/selection/panel semantics');
+  const cheapExpressionMutations = [
+    focusExpression.source.slice(0, -1),
+    focusExpression.source.replace(
+      'const e=', 'window.__CF_SLICE__?.api?.compendiumDiagnostics?.();const e=',
+    ),
+    focusExpression.source.replace('document.activeElement===e', 'true'),
+    focusExpression.source.replace('panelMode==="closed"', 'true'),
+    selectionExpression.source.replace(
+      'selectionStart===0&&selectionEnd===value.length', 'true',
+    ),
+    clearExpression.source.replace('selectionStart===0&&selectionEnd===0', 'true'),
+    exactExpression.source.replace('value==="Compendium Filter Beacon"', 'true'),
+  ];
+  const cheapMutationOptions = [
+    focusExpression.options, focusExpression.options, focusExpression.options,
+    focusExpression.options, selectionExpression.options, clearExpression.options,
+    exactExpression.options,
+  ];
+  assert(cheapExpressionMutations.every((source, index) =>
+    !validCandidateFilterInputExpression(source, cheapMutationOptions[index])),
+  'a broken/full-diagnostic/under-specified cheap input expression passed the production parser');
+  const telemetryExpression = candidateFilterTelemetryExpression();
+  assert(nonemptyFilterDriver.telemetryExpressions.every((source) =>
+    source === telemetryExpression && validCandidateFilterTelemetryExpression(source)),
+  'the driver did not consume the exact parsed scalar telemetry projection');
+  for (const mutation of [
+    telemetryExpression.slice(0, -1),
+    telemetryExpression.replace('generation:d.generation', 'generation:0'),
+    telemetryExpression.replace('live:a.live', 'live:{}'),
+    telemetryExpression.replace('totals:a.totals', 'totals:{}'),
+  ]) {
+    assert(!validCandidateFilterTelemetryExpression(mutation),
+      'a broken or under-specified telemetry expression passed its production parser');
+  }
+  const telemetryFixture = syntheticFilterTelemetry('phone', 40);
+  let telemetryReads = 0;
+  const telemetryExecution = new Function(
+    'window', `"use strict"; return (${telemetryExpression});`,
+  )({ __CF_SLICE__: { api: { compendiumDiagnostics: () => {
+    telemetryReads++;
+    return { generation: telemetryFixture.generation, art: telemetryFixture.art };
+  } } } });
+  assert(telemetryReads === 1
+    && JSON.stringify(telemetryExecution) === JSON.stringify(telemetryFixture),
+  'the exact embedded telemetry expression did not project one scalar diagnostic sample');
+  const filterStress = await runFilterDriverScenario(
+    'hidden', 'Compendium Filter Beacon', 1,
+    { selectionFalsyCount: 25, clearFalsyCount: 31 },
+  );
+  assert(filterStress.failure === null
+    && filterStress.result.selection.falsyObservations.length === 25
+    && filterStress.result.cleared.falsyObservations.length === 31
+    && filterStress.result.focus.falsyObservations.length === 2
+    && filterStress.result.exactInput.falsyObservations.length === 2
+    && filterStress.cheapExpressions.length === 4
+    && filterStress.telemetryExpressions.length === 3,
+  'many falsy input observations grew full-diagnostic work or lost cheap rows');
   const emptyFilterTelemetry = clone(nonemptyFilterDriver.result.falsyObservations[0]);
   emptyFilterTelemetry.art = { live: {}, totals: {} };
   assert(!validFilterTransitionObservation(emptyFilterTelemetry),
@@ -825,20 +1163,28 @@ export async function runCompendiumMemSelftest() {
   assert(visibleFilterDriver.failure === null
     && validFilterTransitionWitness(visibleFilterDriver.result)
     && visibleFilterDriver.result.entryMode === 'visible'
-    && visibleFilterDriver.result.input.panelMode === 'list'
-    && visibleFilterDriver.actions[0] === 'evaluate:focus visible filter Same Seed Sentinel'
+    && visibleFilterDriver.result.exactInput.accepted.panelMode === 'list'
+    && visibleFilterDriver.actions[0] === 'transition:start'
+    && visibleFilterDriver.actions[1] === 'evaluate:focus visible filter Same Seed Sentinel'
+    && visibleFilterDriver.result.entryTarget === null
+    && visibleFilterDriver.result.reopenTarget === null
+    && visibleFilterDriver.targetCalls.length === 0
     && !visibleFilterDriver.actions.some((action) => action.startsWith('click:#searchbox'))
-    && visibleFilterDriver.actions.includes('key:filter Same Seed Sentinel submit:Enter:0'),
+    && visibleFilterDriver.actions.includes('key:filter Same Seed Sentinel submit:Enter:0:'),
   'the real filter driver did not exercise the already-visible main branch with native keys');
   const clearFilterDriver = await runFilterDriverScenario('reopen', '', 1500);
   assert(clearFilterDriver.failure === null
     && validFilterTransitionWitness(clearFilterDriver.result)
-    && clearFilterDriver.actions.includes('key:filter <clear> delete:Backspace:0')
+    && clearFilterDriver.actions.includes('key:filter <clear> delete:Backspace:0:')
     && !clearFilterDriver.actions.some((action) => action.startsWith('send:insert filter'))
     && !clearFilterDriver.actions.some((action) => action.includes(':Enter:'))
     && clearFilterDriver.actions.includes(
       'click:#dockcodex, #railcodex:ordinary Compendium reopen',
-    ),
+    )
+    && clearFilterDriver.targetCalls.length === 2
+    && clearFilterDriver.targetCalls.every((call) => call.witnessed === true)
+    && clearFilterDriver.result.entryTarget.observationCount === 2
+    && clearFilterDriver.result.reopenTarget.observationCount === 2,
   'the real clear-filter driver did not use the post-close ordinary Compendium reopen');
   const inertEmptyEnterDriver = await runFilterDriverScenario('hidden', '', 1500);
   assert(inertEmptyEnterDriver.failure?.message.includes('dependencies are invalid')
@@ -870,6 +1216,33 @@ export async function runCompendiumMemSelftest() {
   assert(invalidFilterObservation.failure?.message.includes('observation shape was invalid')
     && invalidFilterObservation.transitions[0]?.falsyObservations.length === 0,
   'a filter transition recorded a falsy observation without art live/totals');
+  for (const [label, options, expected] of [
+    ['missing native selection', { selectionFault: 'missing' }, 'exact full selection'],
+    ['partial native selection', { selectionFault: 'partial' }, 'exact full selection'],
+    ['selection focus loss', { selectionFault: 'focus-loss' }, 'exact full selection'],
+    ['selection panel-mode drift', { selectionFault: 'mode-drift' }, 'exact full selection'],
+    ['residual value after Backspace', { clearFault: 'residual' }, 'explicitly deleted'],
+    ['clear focus loss', { clearFault: 'focus-loss' }, 'explicitly deleted'],
+    ['clear panel-mode drift', { clearFault: 'mode-drift' }, 'explicitly deleted'],
+    ['missing scalar telemetry', {
+      telemetryFault: {
+        label: 'filter Compendium Filter Beacon before shortcut telemetry', kind: 'missing',
+      },
+    }, 'shape was invalid'],
+    ['non-scalar telemetry', {
+      telemetryFault: {
+        label: 'filter Compendium Filter Beacon cleared telemetry', kind: 'non-scalar',
+      },
+    }, 'shape was invalid'],
+  ]) {
+    const scenario = await runFilterDriverScenario(
+      'hidden', 'Compendium Filter Beacon', 1, options,
+    );
+    assert(scenario.failure?.message.includes(expected)
+      && (!options.telemetryFault
+        || validFilterTransitionWitness(scenario.transitions[0], { allowPending: true })),
+      `${label} reached the native filter action`);
+  }
   const candidateTargetTimeout = await runCandidateWaitScenario([{
     target: {
       deltaMs: COMMAND_TIMEOUT_MS, reject: true,
@@ -1369,8 +1742,102 @@ export async function runCompendiumMemSelftest() {
       transition.settled.generation = transition.baselineGeneration + 2;
       transition.generationDelta = 2;
     }, 'generation-guard'],
+    ['filter dropped Search-target falsy state', (m) => {
+      m.phases.filterTransitions[1].entryTarget.falsyObservations.pop();
+    }, 'generation-guard'],
+    ['filter Search-target count drift', (m) => {
+      m.phases.filterTransitions[1].entryTarget.observationCount++;
+    }, 'generation-guard'],
+    ['filter success target labeled falsy', (m) => {
+      const target = m.phases.filterTransitions[1].entryTarget;
+      target.falsyObservations[0] = { ...clone(target.accepted), ready: false };
+    }, 'generation-guard'],
+    ['filter missing ordinary reopen target', (m) => {
+      m.phases.filterTransitions[2].reopenTarget.accepted = null;
+      m.phases.filterTransitions[2].reopenTarget.observationCount--;
+    }, 'generation-guard'],
     ['filter input proof drift', (m) => {
-      m.phases.filterTransitions[1].input.value = 'Same Seed SentinelCompendium Filter Beacon';
+      m.phases.filterTransitions[1].exactInput.accepted.value
+        = 'Same Seed SentinelCompendium Filter Beacon';
+    }, 'generation-guard'],
+    ['filter pointer-close erased prior value', (m) => {
+      const transition = m.phases.filterTransitions[1];
+      transition.focus.accepted.value = '';
+      transition.selection.accepted.value = '';
+      transition.selection.accepted.selectionEnd = 0;
+      transition.selection.falsyObservations[0].value = '';
+    }, 'generation-guard'],
+    ['filter reopen retained stale prior value', (m) => {
+      const transition = m.phases.filterTransitions[2];
+      transition.focus.accepted.value = 'Same Seed Sentinel';
+      transition.selection.accepted.value = 'Same Seed Sentinel';
+      transition.selection.accepted.selectionEnd = 'Same Seed Sentinel'.length;
+      transition.selection.falsyObservations[0].value = 'Same Seed Sentinel';
+    }, 'generation-guard'],
+    ['filter missing full selection', (m) => {
+      const selected = m.phases.filterTransitions[1].selection.accepted;
+      selected.selectionStart = null; selected.selectionEnd = null;
+    }, 'generation-guard'],
+    ['filter partial selection', (m) => {
+      m.phases.filterTransitions[1].selection.accepted.selectionEnd -= 1;
+    }, 'generation-guard'],
+    ['filter success-semantic selection labeled falsy', (m) => {
+      const transition = m.phases.filterTransitions[1];
+      transition.selection.falsyObservations[0] = {
+        ...clone(transition.selection.accepted), ready: false,
+      };
+    }, 'generation-guard'],
+    ['filter success-semantic focus labeled falsy', (m) => {
+      const transition = m.phases.filterTransitions[1];
+      transition.focus.falsyObservations[0] = {
+        ...clone(transition.focus.accepted), ready: false,
+      };
+    }, 'generation-guard'],
+    ['filter selection focus loss', (m) => {
+      m.phases.filterTransitions[1].selection.accepted.focused = false;
+    }, 'generation-guard'],
+    ['filter cleared residual value', (m) => {
+      const cleared = m.phases.filterTransitions[1].cleared.accepted;
+      cleared.value = 'l'; cleared.selectionEnd = 1;
+    }, 'generation-guard'],
+    ['filter cleared mode drift', (m) => {
+      m.phases.filterTransitions[1].cleared.accepted.panelMode = 'detail';
+    }, 'generation-guard'],
+    ['filter success-semantic clear labeled falsy', (m) => {
+      const transition = m.phases.filterTransitions[1];
+      transition.cleared.falsyObservations[0] = {
+        ...clone(transition.cleared.accepted), ready: false,
+      };
+    }, 'generation-guard'],
+    ['filter success-semantic exact input labeled falsy', (m) => {
+      const transition = m.phases.filterTransitions[1];
+      transition.exactInput.falsyObservations[0] = {
+        ...clone(transition.exactInput.accepted), ready: false,
+      };
+    }, 'generation-guard'],
+    ['filter missing one-shot telemetry', (m) => {
+      delete m.phases.filterTransitions[1].afterClear.art.live;
+    }, 'generation-guard'],
+    ['filter non-scalar telemetry', (m) => {
+      m.phases.filterTransitions[1].inputTelemetry.art.totals.jobStarts = 'many';
+    }, 'generation-guard'],
+    ['filter dropped cleared falsy state', (m) => {
+      m.phases.filterTransitions[1].cleared.falsyObservations.pop();
+    }, 'generation-guard'],
+    ['filter dropped focus falsy state', (m) => {
+      m.phases.filterTransitions[1].focus.falsyObservations.pop();
+    }, 'generation-guard'],
+    ['filter dropped exact-input falsy state', (m) => {
+      m.phases.filterTransitions[1].exactInput.falsyObservations.pop();
+    }, 'generation-guard'],
+    ['filter dropped terminal falsy state', (m) => {
+      m.phases.filterTransitions[1].falsyObservations.pop();
+    }, 'generation-guard'],
+    ['filter success-semantic terminal state labeled falsy', (m) => {
+      const transition = m.phases.filterTransitions[1];
+      transition.falsyObservations[0] = {
+        ...clone(transition.settled), ready: false,
+      };
     }, 'generation-guard'],
     ['filter falsy diagnostics missing art totals', (m) => {
       delete m.phases.filterTransitions[1].falsyObservations[0].art.totals;
@@ -1451,6 +1918,66 @@ export async function runCompendiumMemSelftest() {
   const validReportCheck = verifyTerminalReport(report, 'selftest-current');
   assert(validReportCheck.ok,
     `valid terminal report was rejected: ${validReportCheck.errors.join('; ')}`);
+  const completeProductFailureReport = (brokenPhone) => {
+    const brokenOutcomes = [
+      ...evaluateProfile(brokenPhone, budget, fixture),
+      ...evaluateProfile(desktop, budget, fixture),
+    ];
+    const failedReport = terminalReport(
+      'selftest-current', brokenOutcomes, budget, { phone: brokenPhone, desktop },
+    );
+    failedReport.status = 'fail';
+    failedReport.findings = brokenOutcomes
+      .filter((outcome) => outcome.status === 'fail')
+      .map((outcome) => outcome.diagnosis);
+    return failedReport;
+  };
+  const doubleFillPhone = clone(phone);
+  const doubleFillTransition = doubleFillPhone.phases.filterTransitions[1];
+  doubleFillTransition.settled.generation = doubleFillTransition.baselineGeneration + 2;
+  doubleFillTransition.generationDelta = 2;
+  const staleDoubleFillPass = clone(report);
+  const staleDoubleFillPassTransition = staleDoubleFillPass.profiles.phone
+    .phases.filterTransitions[1];
+  staleDoubleFillPassTransition.settled.generation
+    = staleDoubleFillPassTransition.baselineGeneration + 2;
+  staleDoubleFillPassTransition.generationDelta = 2;
+  assert(!verifyTerminalReport(staleDoubleFillPass, 'selftest-current').ok,
+    'a stale PASS outcome inventory ignored raw +2 native filter generation evidence');
+  const doubleFillReport = completeProductFailureReport(doubleFillPhone);
+  assert(doubleFillReport.outcomes.some((outcome) =>
+    outcome.id === 'phone/generation-guard' && outcome.status === 'fail')
+    && verifyTerminalReport(doubleFillReport, 'selftest-current').ok,
+  'a complete +2 native filter generation was misclassified as malformed/instrument evidence');
+  const pointerClosePriorDriftPhone = clone(phone);
+  const pointerCloseTransition = pointerClosePriorDriftPhone.phases.filterTransitions[1];
+  pointerCloseTransition.focus.accepted.value = '';
+  pointerCloseTransition.focus.accepted.selectionStart = 0;
+  pointerCloseTransition.focus.accepted.selectionEnd = 0;
+  pointerCloseTransition.selection.accepted.value = '';
+  pointerCloseTransition.selection.accepted.selectionStart = 0;
+  pointerCloseTransition.selection.accepted.selectionEnd = 0;
+  const stalePointerClosePass = clone(report);
+  const stalePointerCloseTransition = stalePointerClosePass.profiles.phone
+    .phases.filterTransitions[1];
+  stalePointerCloseTransition.focus.accepted.value = '';
+  stalePointerCloseTransition.focus.accepted.selectionStart = 0;
+  stalePointerCloseTransition.focus.accepted.selectionEnd = 0;
+  stalePointerCloseTransition.selection.accepted.value = '';
+  stalePointerCloseTransition.selection.accepted.selectionStart = 0;
+  stalePointerCloseTransition.selection.accepted.selectionEnd = 0;
+  assert(!verifyTerminalReport(stalePointerClosePass, 'selftest-current').ok,
+    'a stale PASS outcome inventory ignored raw pointer-close prior-value drift');
+  const pointerClosePriorDriftReport = completeProductFailureReport(pointerClosePriorDriftPhone);
+  assert(pointerClosePriorDriftReport.outcomes.some((outcome) =>
+    outcome.id === 'phone/generation-guard' && outcome.status === 'fail')
+    && verifyTerminalReport(pointerClosePriorDriftReport, 'selftest-current').ok,
+  'a complete pointer-close prior-value regression was rejected instead of verifying as FAIL');
+  const malformedCompleteFilterEvidence = clone(doubleFillReport);
+  delete malformedCompleteFilterEvidence.profiles.phone
+    .phases.filterTransitions[1].selection;
+  assert(!verifyTerminalReport(malformedCompleteFilterEvidence, 'selftest-current').ok,
+    'a product-red complete report accepted a structurally missing filter-selection witness');
   const partialReview = report.reviewPacket.filter((item) => item.profile === 'phone'
     && ['list', 'focus-pinned'].includes(item.state));
   const preBrowserPartial = {
@@ -1504,12 +2031,111 @@ export async function runCompendiumMemSelftest() {
   });
   assert(productPartialCheck.ok,
     `healthy-heartbeat product-unanswerable partial report was rejected: ${productPartialCheck.errors.join('; ')}`);
+  let filterCommandSerial = 0;
+  const retimeFilterCandidateCommand = (template, label) => {
+    const command = clone(template);
+    const issuedAtMs = 10_000 + filterCommandSerial++ * 100;
+    const delta = issuedAtMs - command.issuedAtMs;
+    command.label = label;
+    command.issuedAtMs += delta;
+    command.phaseDeadlineMs += delta;
+    command.commandDeadlineMs += delta;
+    command.target.completedAtMs += delta;
+    command.heartbeat.completedAtMs += delta;
+    return command;
+  };
+  const shiftFilterCandidateCommand = (template, deltaMs) => {
+    const command = clone(template);
+    command.issuedAtMs += deltaMs;
+    command.phaseDeadlineMs += deltaMs;
+    command.commandDeadlineMs += deltaMs;
+    command.target.completedAtMs += deltaMs;
+    command.heartbeat.completedAtMs += deltaMs;
+    return command;
+  };
+  const retimeFilterRawCommand = (template, label, method, error) => {
+    const command = clone(template);
+    const issuedAtMs = 10_000 + filterCommandSerial++ * 100;
+    command.label = label; command.method = method; command.error = error;
+    command.issuedAtMs = issuedAtMs;
+    command.completedAtMs = issuedAtMs + command.durationMs;
+    return command;
+  };
+  const transitionStageNames = (transition, { terminal = true, throughSelection = false } = {}) => {
+    const name = transition.expectedQuery || '<clear>';
+    const stages = [
+      ...(transition.entryMode === 'visible'
+        ? [`focus visible filter ${name}`]
+        : [`search ${name} target`, `search ${name} mouse press`, `search ${name} mouse release`]),
+      `filter ${name} input focus`, `filter ${name} before shortcut telemetry`,
+      `filter ${name} select-all key a down`, `filter ${name} select-all key a up`,
+      `filter ${name} full selection`,
+    ];
+    if (throughSelection) return stages;
+    stages.push(
+      `filter ${name} delete key Backspace down`, `filter ${name} delete key Backspace up`,
+      `filter ${name} input cleared`, `filter ${name} cleared telemetry`,
+      ...(transition.expectedQuery ? [`insert filter ${name}`] : []),
+      `filter ${name} exact input`, `filter ${name} exact input telemetry`,
+      ...(transition.entryMode === 'reopen'
+        ? ['ordinary Compendium reopen target', 'ordinary Compendium reopen mouse press',
+          'ordinary Compendium reopen mouse release']
+        : [`filter ${name} submit key Enter down`, `filter ${name} submit key Enter up`]),
+      ...(terminal ? [`filter ${name}`] : []),
+    );
+    return stages;
+  };
+  const transitionObservationCommands = (transition) => {
+    const name = transition.expectedQuery || '<clear>';
+    const commands = [];
+    const addCandidate = (label, count = 1) => {
+      for (let index = 0; index < count; index += 1) {
+        commands.push(retimeFilterCandidateCommand(candidateReady.ledger[0], label));
+      }
+    };
+    if (transition.entryTarget !== null && transition.entryTarget.observationCount > 0) {
+      addCandidate(`search ${name} target`, transition.entryTarget.observationCount);
+    }
+    for (const [group, label, precedingTelemetry] of [
+      [transition.focus, `filter ${name} input focus`, null],
+      [transition.selection, `filter ${name} full selection`, transition.beforeShortcut],
+      [transition.cleared, `filter ${name} input cleared`, null],
+      [transition.exactInput, `filter ${name} exact input`, transition.afterClear],
+    ]) {
+      if (precedingTelemetry !== null) {
+        addCandidate(label === `filter ${name} full selection`
+          ? `filter ${name} before shortcut telemetry`
+          : `filter ${name} cleared telemetry`);
+      }
+      for (let index = 0; index < group.observationCount; index += 1) {
+        addCandidate(label);
+      }
+    }
+    if (transition.inputTelemetry !== null) {
+      addCandidate(`filter ${name} exact input telemetry`);
+    }
+    if (transition.reopenTarget !== null && transition.reopenTarget.observationCount > 0) {
+      addCandidate(
+        'ordinary Compendium reopen target', transition.reopenTarget.observationCount,
+      );
+    }
+    addCandidate(`filter ${name}`, transition.observationCount);
+    return commands;
+  };
+  const baseCompletedStages = ['review list', 'review focus-pinned', 'Compendium open'];
+  const firstTransition = clone(phone.phases.filterTransitions[0]);
+  const firstTransitionStages = transitionStageNames(firstTransition);
+  const firstTransitionLedger = transitionObservationCommands(firstTransition);
   const filterTimeoutPartial = clone(productPartial);
-  const filterTimeoutCommand = clone(candidateBothTimeout.failure.command);
-  filterTimeoutCommand.label = 'filter Compendium Filter Beacon';
   const pendingBeacon = clone(phone.phases.filterTransitions[1]);
+  pendingBeacon.observationCount = pendingBeacon.falsyObservations.length;
   pendingBeacon.settled = null;
   pendingBeacon.generationDelta = null;
+  const pendingBeaconStages = transitionStageNames(pendingBeacon, { terminal: false });
+  const pendingBeaconLedger = transitionObservationCommands(pendingBeacon);
+  const filterTimeoutCommand = retimeFilterCandidateCommand(
+    candidateBothTimeout.failure.command, 'filter Compendium Filter Beacon',
+  );
   filterTimeoutPartial.status = 'instrument-fail';
   filterTimeoutPartial.findings = [
     'instrument: phone filter Compendium Filter Beacon: root heartbeat failed',
@@ -1522,54 +2148,291 @@ export async function runCompendiumMemSelftest() {
   filterTimeoutPartial.profiles.phone.lastCompletedStage
     = 'filter Compendium Filter Beacon submit key Enter up';
   filterTimeoutPartial.profiles.phone.failingStage = filterTimeoutCommand.label;
-  filterTimeoutPartial.profiles.phone.completedStages.push(
-    'filter Same Seed Sentinel', 'filter Compendium Filter Beacon exact input',
-    'filter Compendium Filter Beacon submit key Enter down',
-    'filter Compendium Filter Beacon submit key Enter up',
-  );
-  filterTimeoutPartial.profiles.phone.commandLedger = [clone(filterTimeoutCommand)];
+  filterTimeoutPartial.profiles.phone.completedStages = [
+    ...baseCompletedStages, ...firstTransitionStages, ...pendingBeaconStages,
+  ];
+  filterTimeoutPartial.profiles.phone.commandLedger = [
+    ...clone(firstTransitionLedger), ...clone(pendingBeaconLedger), clone(filterTimeoutCommand),
+  ];
   filterTimeoutPartial.profiles.phone.filterTransitions = [
-    clone(phone.phases.filterTransitions[0]), pendingBeacon,
+    firstTransition, pendingBeacon,
   ];
   assert(verifyTerminalReport(filterTimeoutPartial, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'filter-timeout partial report lost its completed/pending transition witness');
+  const lostAcceptedSearchTarget = clone(filterTimeoutPartial);
+  const lostSearchTargetGroup = lostAcceptedSearchTarget.profiles.phone
+    .filterTransitions[1].entryTarget;
+  lostSearchTargetGroup.accepted = null;
+  lostSearchTargetGroup.falsyObservations.push({ ready: false, x: null, y: null });
+  assert(!verifyTerminalReport(lostAcceptedSearchTarget, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a completed Search target was rewritten as an all-falsy pending target witness');
+  const beaconSearchTargetFailure = clone(filterTimeoutPartial);
+  const pendingBeaconAtSearchTarget = clone(phone.phases.filterTransitions[1]);
+  pendingBeaconAtSearchTarget.entryTarget = {
+    observationCount: 1,
+    falsyObservations: [{ ready: false, x: null, y: null }],
+    accepted: null,
+  };
+  pendingBeaconAtSearchTarget.focus = {
+    observationCount: 0, falsyObservations: [], accepted: null,
+  };
+  pendingBeaconAtSearchTarget.beforeShortcut = null;
+  pendingBeaconAtSearchTarget.selection = {
+    observationCount: 0, falsyObservations: [], accepted: null,
+  };
+  pendingBeaconAtSearchTarget.cleared = {
+    observationCount: 0, falsyObservations: [], accepted: null,
+  };
+  pendingBeaconAtSearchTarget.afterClear = null;
+  pendingBeaconAtSearchTarget.exactInput = {
+    observationCount: 0, falsyObservations: [], accepted: null,
+  };
+  pendingBeaconAtSearchTarget.inputTelemetry = null;
+  pendingBeaconAtSearchTarget.baselineGeneration = null;
+  pendingBeaconAtSearchTarget.observationCount = 0;
+  pendingBeaconAtSearchTarget.falsyObservations = [];
+  pendingBeaconAtSearchTarget.settled = null;
+  pendingBeaconAtSearchTarget.generationDelta = null;
+  const pendingBeaconAtSearchTargetLedger = transitionObservationCommands(
+    pendingBeaconAtSearchTarget,
+  );
+  const searchTargetFailureCommand = retimeFilterCandidateCommand(
+    candidateBothTimeout.failure.command, 'search Compendium Filter Beacon target',
+  );
+  beaconSearchTargetFailure.findings = [
+    'instrument: phone search Compendium Filter Beacon target: root heartbeat failed',
+  ];
+  beaconSearchTargetFailure.partialFailure.lastCompletedStage = 'filter Same Seed Sentinel';
+  beaconSearchTargetFailure.partialFailure.failingStage = searchTargetFailureCommand.label;
+  beaconSearchTargetFailure.partialFailure.command = clone(searchTargetFailureCommand);
+  beaconSearchTargetFailure.profiles.phone.lastCompletedStage = 'filter Same Seed Sentinel';
+  beaconSearchTargetFailure.profiles.phone.failingStage = searchTargetFailureCommand.label;
+  beaconSearchTargetFailure.profiles.phone.completedStages = [
+    ...baseCompletedStages, ...firstTransitionStages,
+  ];
+  beaconSearchTargetFailure.profiles.phone.commandLedger = [
+    ...clone(firstTransitionLedger),
+    ...pendingBeaconAtSearchTargetLedger,
+    clone(searchTargetFailureCommand),
+  ];
+  beaconSearchTargetFailure.profiles.phone.filterTransitions = [
+    clone(firstTransition), pendingBeaconAtSearchTarget,
+  ];
+  const beaconSearchTargetFailureCheck = verifyTerminalReport(
+    beaconSearchTargetFailure, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+    },
+  );
+  assert(beaconSearchTargetFailureCheck.ok,
+    `a Search target failure lost its healthy falsy poll plus exact failed attempt: ${beaconSearchTargetFailureCheck.errors.join('; ')}`);
+  const crossStageLedgerSwap = clone(filterTimeoutPartial);
+  const beaconFocusCommandIndex = crossStageLedgerSwap.profiles.phone.commandLedger
+    .findIndex((command) => command.label === 'filter Compendium Filter Beacon input focus');
+  const beaconSelectionCommandIndex = crossStageLedgerSwap.profiles.phone.commandLedger
+    .findIndex((command) => command.label === 'filter Compendium Filter Beacon full selection');
+  assert(beaconFocusCommandIndex >= 0 && beaconSelectionCommandIndex > beaconFocusCommandIndex,
+    'selftest filter command ledger did not contain ordered focus and selection observations');
+  [crossStageLedgerSwap.profiles.phone.commandLedger[beaconFocusCommandIndex].label,
+    crossStageLedgerSwap.profiles.phone.commandLedger[beaconSelectionCommandIndex].label]
+    = [crossStageLedgerSwap.profiles.phone.commandLedger[beaconSelectionCommandIndex].label,
+      crossStageLedgerSwap.profiles.phone.commandLedger[beaconFocusCommandIndex].label];
+  assert(!verifyTerminalReport(crossStageLedgerSwap, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a partial filter ledger reordered selection ahead of focus while preserving counts');
+  const duplicatedSearchTargetCommand = clone(filterTimeoutPartial);
+  const duplicateTargetLedger = duplicatedSearchTargetCommand.profiles.phone.commandLedger;
+  const firstSearchTargetIndex = duplicateTargetLedger.findIndex((command) =>
+    command.label === 'search Compendium Filter Beacon target');
+  const nextSearchTargetCommand = duplicateTargetLedger[firstSearchTargetIndex + 1];
+  const firstSearchTargetCommand = duplicateTargetLedger[firstSearchTargetIndex];
+  const targetIssueGap = nextSearchTargetCommand.issuedAtMs
+    - firstSearchTargetCommand.issuedAtMs;
+  const duplicateTargetShift = Math.floor(targetIssueGap / 2);
+  const extraSearchTargetCommand = shiftFilterCandidateCommand(
+    firstSearchTargetCommand, duplicateTargetShift,
+  );
+  assert(firstSearchTargetIndex >= 0
+    && nextSearchTargetCommand.label === 'search Compendium Filter Beacon target'
+    && Math.max(
+      firstSearchTargetCommand.target.completedAtMs,
+      firstSearchTargetCommand.heartbeat.completedAtMs,
+    ) <= extraSearchTargetCommand.issuedAtMs
+    && Math.max(
+      extraSearchTargetCommand.target.completedAtMs,
+      extraSearchTargetCommand.heartbeat.completedAtMs,
+    ) <= nextSearchTargetCommand.issuedAtMs,
+  'selftest could not insert one serial duplicate Search target observation');
+  duplicateTargetLedger.splice(firstSearchTargetIndex + 1, 0, extraSearchTargetCommand);
+  assert(!verifyTerminalReport(duplicatedSearchTargetCommand, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a serial duplicate Search target command escaped its retained observation count');
+  const droppedSearchTargetCommand = clone(filterTimeoutPartial);
+  const droppedSearchTargetIndex = droppedSearchTargetCommand.profiles.phone.commandLedger
+    .findIndex((command) => command.label === 'search Compendium Filter Beacon target');
+  droppedSearchTargetCommand.profiles.phone.commandLedger.splice(droppedSearchTargetIndex, 1);
+  assert(droppedSearchTargetIndex >= 0
+    && !verifyTerminalReport(droppedSearchTargetCommand, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'a Search target command was dropped without changing its retained observation count');
+  const driftedSearchTargetCount = clone(filterTimeoutPartial);
+  driftedSearchTargetCount.profiles.phone.filterTransitions[1]
+    .entryTarget.falsyObservations.push({ ready: false, x: null, y: null });
+  driftedSearchTargetCount.profiles.phone.filterTransitions[1]
+    .entryTarget.observationCount++;
+  assert(!verifyTerminalReport(driftedSearchTargetCount, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a Search target witness count grew without its paired candidate command');
+  const reorderedSearchTargetCommand = clone(filterTimeoutPartial);
+  const reorderedTargetLedger = reorderedSearchTargetCommand.profiles.phone.commandLedger;
+  const laterSearchTargetIndex = reorderedTargetLedger.findLastIndex((command) =>
+    command.label === 'search Compendium Filter Beacon target');
+  const beforeShortcutCommandIndex = reorderedTargetLedger.findIndex((command) =>
+    command.label === 'filter Compendium Filter Beacon before shortcut telemetry');
+  [reorderedTargetLedger[laterSearchTargetIndex].label,
+    reorderedTargetLedger[beforeShortcutCommandIndex].label]
+    = [reorderedTargetLedger[beforeShortcutCommandIndex].label,
+      reorderedTargetLedger[laterSearchTargetIndex].label];
+  assert(laterSearchTargetIndex >= 0 && beforeShortcutCommandIndex > laterSearchTargetIndex
+    && !verifyTerminalReport(reorderedSearchTargetCommand, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'a Search target command moved after input focus while preserving label counts');
+  const droppedOneShotTelemetryCommand = clone(filterTimeoutPartial);
+  const afterClearTelemetryCommandIndex = droppedOneShotTelemetryCommand.profiles.phone.commandLedger
+    .findIndex((command) => command.label
+      === 'filter Compendium Filter Beacon cleared telemetry');
+  droppedOneShotTelemetryCommand.profiles.phone.commandLedger.splice(
+    afterClearTelemetryCommandIndex, 1,
+  );
+  assert(afterClearTelemetryCommandIndex >= 0
+    && !verifyTerminalReport(droppedOneShotTelemetryCommand, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'a partial filter ledger dropped its successful one-shot cleared telemetry command');
+  const lateFailureRelabeledEarly = clone(filterTimeoutPartial);
+  const earlyLabel = 'filter Compendium Filter Beacon input focus';
+  lateFailureRelabeledEarly.partialFailure.failingStage = earlyLabel;
+  lateFailureRelabeledEarly.partialFailure.command.label = earlyLabel;
+  lateFailureRelabeledEarly.profiles.phone.failingStage = earlyLabel;
+  lateFailureRelabeledEarly.profiles.phone.commandLedger.at(-1).label = earlyLabel;
+  assert(!verifyTerminalReport(lateFailureRelabeledEarly, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a late filter failure was laundered into an already-completed early focus stage');
+  const droppedTerminalFalsy = clone(filterTimeoutPartial);
+  droppedTerminalFalsy.profiles.phone.filterTransitions[1].falsyObservations.pop();
+  assert(!verifyTerminalReport(droppedTerminalFalsy, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a pending terminal filter poll dropped a retained falsy product state');
+  const pendingSuccessLabeledFalsy = clone(filterTimeoutPartial);
+  const pendingTransition = pendingSuccessLabeledFalsy.profiles.phone.filterTransitions[1];
+  pendingTransition.falsyObservations[0] = {
+    ...clone(phone.phases.filterTransitions[1].settled), ready: false,
+  };
+  assert(!verifyTerminalReport(pendingSuccessLabeledFalsy, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a pending terminal filter poll labeled a success-semantic state falsy');
+  const droppedTerminalCommand = clone(filterTimeoutPartial);
+  const terminalCommandIndex = droppedTerminalCommand.profiles.phone.commandLedger
+    .findIndex((command) => command.label === 'filter Compendium Filter Beacon'
+      && command.target.status === 'fulfilled');
+  droppedTerminalCommand.profiles.phone.commandLedger.splice(terminalCommandIndex, 1);
+  assert(terminalCommandIndex >= 0
+    && !verifyTerminalReport(droppedTerminalCommand, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'a pending terminal filter poll dropped its healthy paired command');
+  const droppedCompletedTerminalCommand = clone(filterTimeoutPartial);
+  const completedTerminalCommandIndex = droppedCompletedTerminalCommand.profiles.phone.commandLedger
+    .findIndex((command) => command.label === 'filter Same Seed Sentinel');
+  droppedCompletedTerminalCommand.profiles.phone.commandLedger.splice(
+    completedTerminalCommandIndex, 1,
+  );
+  assert(completedTerminalCommandIndex >= 0
+    && !verifyTerminalReport(droppedCompletedTerminalCommand, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'a completed filter dropped one falsy/accepted terminal paired command');
+  const droppedFocusFalsy = clone(filterTimeoutPartial);
+  droppedFocusFalsy.profiles.phone.filterTransitions[1].focus.falsyObservations.pop();
+  assert(!verifyTerminalReport(droppedFocusFalsy, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a pending filter witness dropped a focus observation');
+  const droppedExactInputCommand = clone(filterTimeoutPartial);
+  const exactInputCommandIndex = droppedExactInputCommand.profiles.phone.commandLedger
+    .findIndex((command) => command.label === 'filter Compendium Filter Beacon exact input');
+  droppedExactInputCommand.profiles.phone.commandLedger.splice(exactInputCommandIndex, 1);
+  assert(exactInputCommandIndex >= 0
+    && !verifyTerminalReport(droppedExactInputCommand, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'a pending filter witness dropped an exact-input paired command');
   const beaconBackspacePartial = clone(filterTimeoutPartial);
-  const beaconBackspaceCommand = clone(rawHeapFailure.compendiumCommand);
-  beaconBackspaceCommand.label = 'filter Compendium Filter Beacon delete key Backspace down';
-  beaconBackspaceCommand.method = 'Input.dispatchKeyEvent';
-  beaconBackspaceCommand.error = 'selftest Backspace transport failure';
+  const pendingBeaconAtBackspace = clone(phone.phases.filterTransitions[1]);
+  pendingBeaconAtBackspace.cleared = {
+    observationCount: 0, falsyObservations: [], accepted: null,
+  };
+  pendingBeaconAtBackspace.afterClear = null;
+  pendingBeaconAtBackspace.exactInput = {
+    observationCount: 0, falsyObservations: [], accepted: null,
+  };
+  pendingBeaconAtBackspace.inputTelemetry = null;
+  pendingBeaconAtBackspace.baselineGeneration = null;
+  pendingBeaconAtBackspace.observationCount = 0;
+  pendingBeaconAtBackspace.falsyObservations = [];
+  pendingBeaconAtBackspace.settled = null;
+  pendingBeaconAtBackspace.generationDelta = null;
+  const pendingBeaconSelectionLedger = transitionObservationCommands(pendingBeaconAtBackspace);
+  const beaconBackspaceCommand = retimeFilterRawCommand(
+    rawHeapFailure.compendiumCommand,
+    'filter Compendium Filter Beacon delete key Backspace down',
+    'Input.dispatchKeyEvent', 'selftest Backspace transport failure',
+  );
   beaconBackspacePartial.findings = [
     `instrument: phone ${beaconBackspaceCommand.label}: Input.dispatchKeyEvent failed under the `
       + `${beaconBackspaceCommand.timeoutMs}ms transport cap (${beaconBackspaceCommand.error})`,
   ];
   beaconBackspacePartial.partialFailure.lastCompletedStage
-    = 'filter Compendium Filter Beacon select-all key a up';
+    = 'filter Compendium Filter Beacon full selection';
   beaconBackspacePartial.partialFailure.failingStage = beaconBackspaceCommand.label;
   beaconBackspacePartial.partialFailure.command = clone(beaconBackspaceCommand);
   beaconBackspacePartial.profiles.phone.lastCompletedStage
-    = 'filter Compendium Filter Beacon select-all key a up';
+    = 'filter Compendium Filter Beacon full selection';
   beaconBackspacePartial.profiles.phone.failingStage = beaconBackspaceCommand.label;
-  beaconBackspacePartial.profiles.phone.completedStages
-    = beaconBackspacePartial.profiles.phone.completedStages
-      .slice(0, beaconBackspacePartial.profiles.phone.completedStages
-        .indexOf('filter Same Seed Sentinel') + 1)
-      .concat([
-        'filter Compendium Filter Beacon select-all key a down',
-        'filter Compendium Filter Beacon select-all key a up',
-      ]);
-  beaconBackspacePartial.profiles.phone.commandLedger = [clone(beaconBackspaceCommand)];
+  beaconBackspacePartial.profiles.phone.completedStages = [
+    ...baseCompletedStages, ...firstTransitionStages,
+    ...transitionStageNames(pendingBeaconAtBackspace, { throughSelection: true }),
+  ];
+  beaconBackspacePartial.profiles.phone.commandLedger = [
+    ...clone(firstTransitionLedger), ...clone(pendingBeaconSelectionLedger),
+    clone(beaconBackspaceCommand),
+  ];
   beaconBackspacePartial.profiles.phone.filterTransitions = [
-    clone(phone.phases.filterTransitions[0]),
+    clone(firstTransition), pendingBeaconAtBackspace,
   ];
   assert(verifyTerminalReport(beaconBackspacePartial, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'Beacon Backspace failure with its exact prior transition prefix was rejected');
+  const droppedSelectAllPredecessor = clone(beaconBackspacePartial);
+  droppedSelectAllPredecessor.profiles.phone.completedStages
+    = droppedSelectAllPredecessor.profiles.phone.completedStages.filter((stage) =>
+      stage !== 'filter Compendium Filter Beacon select-all key a down');
+  assert(!verifyTerminalReport(droppedSelectAllPredecessor, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a Backspace failure omitted its native select-all predecessor stage');
+  const reorderedSelectAllPredecessor = clone(beaconBackspacePartial);
+  const selectDownIndex = reorderedSelectAllPredecessor.profiles.phone.completedStages
+    .indexOf('filter Compendium Filter Beacon select-all key a down');
+  const selectUpIndex = reorderedSelectAllPredecessor.profiles.phone.completedStages
+    .indexOf('filter Compendium Filter Beacon select-all key a up');
+  [reorderedSelectAllPredecessor.profiles.phone.completedStages[selectDownIndex],
+    reorderedSelectAllPredecessor.profiles.phone.completedStages[selectUpIndex]]
+    = [reorderedSelectAllPredecessor.profiles.phone.completedStages[selectUpIndex],
+      reorderedSelectAllPredecessor.profiles.phone.completedStages[selectDownIndex]];
+  assert(!verifyTerminalReport(reorderedSelectAllPredecessor, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a Backspace failure reordered native select-all down/up chronology');
   const beaconBackspaceDroppedPrefix = clone(beaconBackspacePartial);
   beaconBackspaceDroppedPrefix.profiles.phone.completedStages
     = beaconBackspaceDroppedPrefix.profiles.phone.completedStages
       .filter((stage) => stage !== 'filter Same Seed Sentinel');
-  beaconBackspaceDroppedPrefix.profiles.phone.filterTransitions = [];
+  beaconBackspaceDroppedPrefix.profiles.phone.filterTransitions.shift();
   assert(!verifyTerminalReport(beaconBackspaceDroppedPrefix, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'a Beacon Backspace failure dropped the prior Same Seed stage/witness/ledger prefix');
@@ -1598,6 +2461,12 @@ export async function runCompendiumMemSelftest() {
   assert(!verifyTerminalReport(droppedPendingInputProof, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'a pending filter witness lost its exact-input baseline stage');
+  const droppedClearFalsyState = clone(filterTimeoutPartial);
+  droppedClearFalsyState.profiles.phone.filterTransitions[1]
+    .cleared.falsyObservations.pop();
+  assert(!verifyTerminalReport(droppedClearFalsyState, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a partial filter witness dropped a falsy cleared-state row');
   const injectedEarlyFilterWitness = clone(productPartial);
   const injectedPending = clone(phone.phases.filterTransitions[0]);
   injectedPending.settled = null;
@@ -1614,16 +2483,118 @@ export async function runCompendiumMemSelftest() {
   completedThenLaterFailure.profiles.phone.lastCompletedStage = 'filter Same Seed Sentinel';
   completedThenLaterFailure.profiles.phone.failingStage = 'post-filter selftest failure';
   completedThenLaterFailure.profiles.phone.completedStages
-    = completedThenLaterFailure.profiles.phone.completedStages
-      .slice(0, completedThenLaterFailure.profiles.phone.completedStages
-        .indexOf('filter Same Seed Sentinel') + 1);
-  completedThenLaterFailure.profiles.phone.commandLedger = [];
+    = [...baseCompletedStages, ...firstTransitionStages];
+  completedThenLaterFailure.profiles.phone.commandLedger = clone(firstTransitionLedger);
   completedThenLaterFailure.profiles.phone.filterTransitions = [
-    clone(phone.phases.filterTransitions[0]),
+    clone(firstTransition),
   ];
   assert(verifyTerminalReport(completedThenLaterFailure, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'a completed filter witness plus later instrument failure was rejected');
+  const allFiltersThenLaterFailure = clone(completedThenLaterFailure);
+  const allCompletedTransitions = clone(phone.phases.filterTransitions);
+  allFiltersThenLaterFailure.partialFailure.lastCompletedStage = 'filter <clear>';
+  allFiltersThenLaterFailure.profiles.phone.lastCompletedStage = 'filter <clear>';
+  allFiltersThenLaterFailure.profiles.phone.completedStages = [
+    ...baseCompletedStages,
+    ...allCompletedTransitions.flatMap((transition) => transitionStageNames(transition)),
+  ];
+  allFiltersThenLaterFailure.profiles.phone.commandLedger
+    = allCompletedTransitions.flatMap((transition) => transitionObservationCommands(transition));
+  allFiltersThenLaterFailure.profiles.phone.filterTransitions = allCompletedTransitions;
+  assert(verifyTerminalReport(allFiltersThenLaterFailure, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'three completed filter transitions plus a later instrument failure were rejected');
+  const reopenTerminalFailure = clone(filterTimeoutPartial);
+  const pendingClearTransition = clone(phone.phases.filterTransitions[2]);
+  pendingClearTransition.observationCount = pendingClearTransition.falsyObservations.length;
+  pendingClearTransition.settled = null;
+  pendingClearTransition.generationDelta = null;
+  const completedBeforeClear = clone(phone.phases.filterTransitions.slice(0, 2));
+  const reopenTerminalLedger = [
+    ...completedBeforeClear.flatMap((transition) => transitionObservationCommands(transition)),
+    ...transitionObservationCommands(pendingClearTransition),
+  ];
+  const reopenTerminalCommand = retimeFilterCandidateCommand(
+    candidateBothTimeout.failure.command, 'filter <clear>',
+  );
+  reopenTerminalFailure.findings = [
+    'instrument: phone filter <clear>: root heartbeat failed',
+  ];
+  reopenTerminalFailure.partialFailure.lastCompletedStage
+    = 'ordinary Compendium reopen mouse release';
+  reopenTerminalFailure.partialFailure.failingStage = reopenTerminalCommand.label;
+  reopenTerminalFailure.partialFailure.command = clone(reopenTerminalCommand);
+  reopenTerminalFailure.profiles.phone.lastCompletedStage
+    = 'ordinary Compendium reopen mouse release';
+  reopenTerminalFailure.profiles.phone.failingStage = reopenTerminalCommand.label;
+  reopenTerminalFailure.profiles.phone.completedStages = [
+    ...baseCompletedStages,
+    ...completedBeforeClear.flatMap((transition) => transitionStageNames(transition)),
+    ...transitionStageNames(pendingClearTransition, { terminal: false }),
+  ];
+  reopenTerminalFailure.profiles.phone.commandLedger = [
+    ...reopenTerminalLedger, clone(reopenTerminalCommand),
+  ];
+  reopenTerminalFailure.profiles.phone.filterTransitions = [
+    ...completedBeforeClear, pendingClearTransition,
+  ];
+  const reopenTerminalFailureCheck = verifyTerminalReport(
+    reopenTerminalFailure, 'selftest-current', { verifyArtifact: partialArtifact },
+  );
+  assert(reopenTerminalFailureCheck.ok,
+    `a post-reopen terminal filter failure was rejected: ${reopenTerminalFailureCheck.errors.join('; ')}`);
+  const lostAcceptedReopenTarget = clone(reopenTerminalFailure);
+  const lostReopenTargetGroup = lostAcceptedReopenTarget.profiles.phone
+    .filterTransitions[2].reopenTarget;
+  lostReopenTargetGroup.accepted = null;
+  lostReopenTargetGroup.falsyObservations.push({ ready: false, x: null, y: null });
+  assert(!verifyTerminalReport(lostAcceptedReopenTarget, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a completed ordinary reopen target was rewritten as all-falsy before terminal failure');
+  const duplicatedReopenTargetCommand = clone(allFiltersThenLaterFailure);
+  const duplicateReopenLedger = duplicatedReopenTargetCommand.profiles.phone.commandLedger;
+  const firstReopenTargetIndex = duplicateReopenLedger.findIndex((command) =>
+    command.label === 'ordinary Compendium reopen target');
+  const nextReopenTargetCommand = duplicateReopenLedger[firstReopenTargetIndex + 1];
+  const firstReopenTargetCommand = duplicateReopenLedger[firstReopenTargetIndex];
+  const reopenTargetShift = Math.floor(
+    (nextReopenTargetCommand.issuedAtMs - firstReopenTargetCommand.issuedAtMs) / 2,
+  );
+  const extraReopenTargetCommand = shiftFilterCandidateCommand(
+    firstReopenTargetCommand, reopenTargetShift,
+  );
+  assert(firstReopenTargetIndex >= 0
+    && nextReopenTargetCommand.label === 'ordinary Compendium reopen target'
+    && Math.max(
+      firstReopenTargetCommand.target.completedAtMs,
+      firstReopenTargetCommand.heartbeat.completedAtMs,
+    ) <= extraReopenTargetCommand.issuedAtMs
+    && Math.max(
+      extraReopenTargetCommand.target.completedAtMs,
+      extraReopenTargetCommand.heartbeat.completedAtMs,
+    ) <= nextReopenTargetCommand.issuedAtMs,
+  'selftest could not insert one serial duplicate ordinary reopen target observation');
+  duplicateReopenLedger.splice(firstReopenTargetIndex + 1, 0, extraReopenTargetCommand);
+  assert(!verifyTerminalReport(duplicatedReopenTargetCommand, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a serial duplicate ordinary reopen target escaped its retained observation count');
+  const droppedReopenTargetCommand = clone(allFiltersThenLaterFailure);
+  const droppedReopenIndex = droppedReopenTargetCommand.profiles.phone.commandLedger
+    .findIndex((command) => command.label === 'ordinary Compendium reopen target');
+  droppedReopenTargetCommand.profiles.phone.commandLedger.splice(droppedReopenIndex, 1);
+  assert(droppedReopenIndex >= 0
+    && !verifyTerminalReport(droppedReopenTargetCommand, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'an ordinary reopen target command was dropped without its witness count');
+  const driftedReopenTargetCount = clone(allFiltersThenLaterFailure);
+  driftedReopenTargetCount.profiles.phone.filterTransitions[2]
+    .reopenTarget.falsyObservations.push({ ready: false, x: null, y: null });
+  driftedReopenTargetCount.profiles.phone.filterTransitions[2]
+    .reopenTarget.observationCount++;
+  assert(!verifyTerminalReport(driftedReopenTargetCount, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'ordinary reopen target witness count grew without a candidate command');
   const downgradedCompletedFilter = clone(completedThenLaterFailure);
   downgradedCompletedFilter.profiles.phone.filterTransitions[0].settled = null;
   downgradedCompletedFilter.profiles.phone.filterTransitions[0].generationDelta = null;

@@ -99,6 +99,22 @@ export function waitForCandidateValue(options: {
   acceptValue?(value: unknown): boolean;
   onObservation?(value: unknown, command: unknown): void;
 }): Promise<unknown>;
+export function candidateNativeKeyDispatches(
+  keyName: string, code: string, modifiers?: number, commands?: readonly string[],
+): readonly [
+  Readonly<{
+    type: 'rawKeyDown'; key: string; code: string;
+    windowsVirtualKeyCode: number; nativeVirtualKeyCode: number; modifiers: number;
+    commands?: readonly string[];
+  }>,
+  Readonly<{
+    type: 'keyUp'; key: string; code: string;
+    windowsVirtualKeyCode: number; nativeVirtualKeyCode: number; modifiers: number;
+  }>,
+];
+export function validFilterInputObservation(observation: unknown): boolean;
+export function validFilterTargetObservation(observation: unknown): boolean;
+export function validFilterTelemetrySnapshot(snapshot: unknown): boolean;
 export function validFilterTransitionObservation(observation: unknown): boolean;
 export function validFilterTransitionWitness(witness: unknown,
   options?: { allowPending?: boolean }): boolean;
