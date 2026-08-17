@@ -66,8 +66,9 @@
         "expectedFaults": {
           "type": "array",
           "minItems": 4,
+          "maxItems": 4,
           "uniqueItems": true,
-          "items": { "type": "string", "minLength": 1 }
+          "items": { "$ref": "#/$defs/brokenFault" }
         },
         "samples": {
           "type": "object",
@@ -133,6 +134,12 @@
   ],
   "$defs": {
     "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "brokenFault": {
+      "enum": [
+        "unwindowed-1500-rows", "list-source-440",
+        "full-portrait-dom-exposure", "eager-art-import"
+      ]
+    },
     "sample": {
       "type": "object",
       "additionalProperties": false,
@@ -163,8 +170,9 @@
         ,"observedFaults": {
           "type": "array",
           "minItems": 4,
+          "maxItems": 4,
           "uniqueItems": true,
-          "items": { "type": "string", "minLength": 1 }
+          "items": { "$ref": "#/$defs/brokenFault" }
         }
       }
     },

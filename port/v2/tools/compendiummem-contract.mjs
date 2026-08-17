@@ -63,6 +63,14 @@ export const REPORT_INPUT_KEYS = Object.freeze([
   'baselineSaveFixtures', 'outcomeInventory',
 ]);
 export const REVIEW_PACKET_STATES = Object.freeze(['list', 'detail', 'focus-pinned']);
+export const BROKEN_BASELINE_EXPECTED_FAULTS = Object.freeze([
+  'unwindowed-1500-rows', 'list-source-440',
+  'full-portrait-dom-exposure', 'eager-art-import',
+]);
+export const BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA =
+  'cf-v2-compendium-broken-thumb-observer/v1';
+export const BROKEN_BASELINE_THUMB_CACHE_CAP = 600;
+export const BROKEN_BASELINE_PORTRAIT_CACHE_CAPS = Object.freeze({ phone: 96, desktop: 256 });
 
 function isObject(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -159,6 +167,175 @@ export function remainingCommandTimeoutMs(deadlineMs, nowMs, transportTimeoutMs)
 export function phaseObservationAccepted(deadlineMs, completedAtMs, value) {
   return finite(deadlineMs) && finite(completedAtMs)
     && completedAtMs < deadlineMs && Boolean(value);
+}
+
+/* Serialized into Page.addScriptToEvaluateOnNewDocument by the collector.
+   Keep this function closure-free: the browser document receives only the
+   explicit arguments below. The wrapper calls the original first with the
+   exact receiver/arguments, observes only a successful exact-132 return, and
+   preserves the original property flags. Observation errors never replace a
+   product return value or exception. */
+export function installBrokenBaselineThumbObserver(
+  globalObject, CanvasConstructor, TextEncoderConstructor, clock,
+  schema, cacheCap,
+) {
+  const key = '__CF_COMPENDIUM_BASELINE_THUMBS__';
+  if (!globalObject || !CanvasConstructor?.prototype || globalObject[key]) {
+    throw new Error('broken-baseline thumb observer target is invalid or already installed');
+  }
+  const descriptor = Object.getOwnPropertyDescriptor(CanvasConstructor.prototype, 'toDataURL');
+  if (!descriptor || typeof descriptor.value !== 'function'
+    || !Number.isSafeInteger(cacheCap) || cacheCap <= 0
+    || typeof TextEncoderConstructor !== 'function' || typeof clock?.now !== 'function') {
+    throw new Error('broken-baseline thumb observer dependencies are invalid');
+  }
+  const original = descriptor.value;
+  const state = {
+    schema,
+    phase: 'pre-owner',
+    totalExact132Completions: 0,
+    preOwnerExact132Completions: null,
+    initialListCompletions: 0,
+    initialListCacheEncodedByteLengths: [],
+    initialListStableQuietMs: null,
+    observerErrors: 0,
+    lastCompletionAt: clock.now(),
+    originalDescriptor: {
+      configurable: descriptor.configurable,
+      enumerable: descriptor.enumerable,
+      writable: descriptor.writable,
+    },
+    descriptorPreserved: false,
+  };
+  const wrapped = function (...args) {
+    const value = Reflect.apply(original, this, args);
+    try {
+      if (this?.width === 132 && this?.height === 132
+        && typeof value === 'string' && value.length > 30) {
+        const encodedBytes = new TextEncoderConstructor().encode(value).byteLength;
+        state.totalExact132Completions += 1;
+        state.lastCompletionAt = clock.now();
+        if (state.phase === 'initial-list') {
+          state.initialListCompletions += 1;
+          state.initialListCacheEncodedByteLengths.push(encodedBytes);
+          if (state.initialListCacheEncodedByteLengths.length > cacheCap) {
+            state.initialListCacheEncodedByteLengths.shift();
+          }
+        }
+      }
+    } catch { state.observerErrors += 1; }
+    return value;
+  };
+  Object.defineProperty(CanvasConstructor.prototype, 'toDataURL', {
+    ...descriptor,
+    value: wrapped,
+  });
+  const installed = Object.getOwnPropertyDescriptor(CanvasConstructor.prototype, 'toDataURL');
+  state.descriptorPreserved = Boolean(installed)
+    && installed.configurable === descriptor.configurable
+    && installed.enumerable === descriptor.enumerable
+    && installed.writable === descriptor.writable;
+  Object.defineProperty(globalObject, key, {
+    configurable: false, enumerable: false, writable: false, value: state,
+  });
+  return state;
+}
+
+export function validBrokenBaselineThumbObservation(observation) {
+  return integer(observation?.preOwnerExact132Completions)
+    && observation.preOwnerExact132Completions >= 0
+    && observation?.initialListCompletions === 1500
+    && observation?.cacheEntries === BROKEN_BASELINE_THUMB_CACHE_CAP
+    && integer(observation?.cacheEncodedBytes) && observation.cacheEncodedBytes > 0
+    && observation?.totalExact132Completions
+      === observation.preOwnerExact132Completions + observation.initialListCompletions
+    && observation?.observerErrors === 0
+    && observation?.descriptorPreserved === true
+    && finite(observation?.quietMs) && observation.quietMs >= 1000;
+}
+
+export function brokenBaselineFaults({ profile, list, eagerResource, speciesChunk }) {
+  const faults = [];
+  if (list?.mountedRows === 1500) faults.push('unwindowed-1500-rows');
+  const fullSizeList = list?.imageCount === 1500
+    && Array.isArray(list?.naturalWidths) && list.naturalWidths.length === 1500
+    && Array.isArray(list?.naturalHeights) && list.naturalHeights.length === 1500
+    && list.naturalWidths.every((value) => value === 440)
+    && list.naturalHeights.every((value) => value === 440);
+  if (fullSizeList) faults.push('list-source-440');
+  const portraitCacheCap = BROKEN_BASELINE_PORTRAIT_CACHE_CAPS[profile];
+  if (fullSizeList && list?.sourceInstanceCount === 1500
+    && list?.dataImageCount === 1500
+    && list?.referencedPixels === 1500 * 440 * 440
+    && integer(list?.distinctSources) && list.distinctSources > portraitCacheCap
+    && finite(list?.sourceInstanceEncodedBytes) && list.sourceInstanceEncodedBytes > 0) {
+    faults.push('full-portrait-dom-exposure');
+  }
+  if (typeof eagerResource === 'string' && typeof speciesChunk === 'string'
+    && speciesChunk && eagerResource.endsWith(`/${speciesChunk}`)) faults.push('eager-art-import');
+  return faults;
+}
+
+export function brokenBaselineCacheMetrics(profile, list, warm) {
+  const portraitCacheCap = BROKEN_BASELINE_PORTRAIT_CACHE_CAPS[profile];
+  if (!integer(portraitCacheCap)
+    || !validBrokenBaselineThumbObservation({
+      preOwnerExact132Completions: list?.thumbObserverPreOwnerExact132Completions,
+      initialListCompletions: list?.thumbRenderCompletions,
+      cacheEntries: list?.modeledThumbCacheEntries,
+      cacheEncodedBytes: list?.thumbCacheEncodedBytes,
+      totalExact132Completions: list?.thumbObserverTotalExact132Completions,
+      observerErrors: list?.thumbObserverErrors,
+      descriptorPreserved: list?.thumbObserverDescriptorPreserved,
+      quietMs: list?.thumbObserverStableQuietMs,
+    })
+    || list?.sourceInstanceCount !== 1500
+    || list?.modeledPortraitCacheEntries !== portraitCacheCap
+    || !integer(list?.modeledPortraitCacheEncodedBytes)
+    || list.modeledPortraitCacheEncodedBytes <= 0
+    || !Array.isArray(warm) || warm.length !== REQUIRED_WARM_CYCLES
+    || warm.some((point) => point?.renderStartThumbCacheEntries !== BROKEN_BASELINE_THUMB_CACHE_CAP
+      || !integer(point?.renderStartThumbCacheEncodedBytes)
+      || point.renderStartThumbCacheEncodedBytes <= 0)) return null;
+  const cacheStates = [
+    { entries: list.modeledThumbCacheEntries, encodedBytes: list.thumbCacheEncodedBytes },
+    ...warm.map((point) => ({
+      entries: point.renderStartThumbCacheEntries,
+      encodedBytes: point.renderStartThumbCacheEncodedBytes,
+    })),
+  ];
+  const liveCacheEntries = Math.max(...cacheStates.map((state) => state.entries));
+  const liveDecodedPixels = liveCacheEntries * 132 * 132;
+  const liveEncodedBytes = Math.max(...cacheStates.map((state) => state.encodedBytes));
+  const warmTail = warm.slice(-3);
+  const warmDecodedBytes = warmTail.map(
+    (point) => point.renderStartThumbCacheEntries * 132 * 132 * 4,
+  );
+  const warmEncodedBytes = warmTail.map((point) => point.renderStartThumbCacheEncodedBytes);
+  return Object.freeze({
+    liveCacheEntries,
+    liveDecodedPixels,
+    liveDecodedBytes: liveDecodedPixels * 4,
+    liveEncodedBytes,
+    queuedJobsPeak: 0,
+    activeJobsPeak: 0,
+    liveLeases: 0,
+    liveSubscribers: 0,
+    livePortraitCacheEntries: portraitCacheCap,
+    livePortraitEncodedBytes: list.modeledPortraitCacheEncodedBytes,
+    warmDecodedBytesRange: Math.max(...warmDecodedBytes) - Math.min(...warmDecodedBytes),
+    warmEncodedBytesRange: Math.max(...warmEncodedBytes) - Math.min(...warmEncodedBytes),
+  });
+}
+
+export function brokenBaselineFailureEvidence(measurements) {
+  const completed = Array.isArray(measurements) ? measurements : [];
+  return Object.freeze({
+    evidenceStatus: 'partial-diagnostic-not-budget-samples',
+    profiles: Object.freeze(Object.fromEntries(completed
+      .filter((measurement) => PROFILES.includes(measurement?.profile))
+      .map((measurement) => [measurement.profile, measurement]))),
+  });
 }
 
 export const CEILING_FIELDS = Object.freeze([
@@ -325,10 +502,8 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
       || /^[a-f0-9]{40}$/.test(String(record.pairedBrokenBaseline.collectorCommit || '')))
     || !/^[a-f0-9]{64}$/.test(String(record.pairedBrokenBaseline.projectionRowsSha256 || ''))
     || !Array.isArray(record.pairedBrokenBaseline.expectedFaults)
-    || !sameJson([...record.pairedBrokenBaseline.expectedFaults].sort(), [
-      'eager-art-import', 'full-portrait-cache-exposure',
-      'list-source-440', 'unwindowed-1500-rows',
-    ])
+    || !sameJson([...record.pairedBrokenBaseline.expectedFaults].sort(),
+      [...BROKEN_BASELINE_EXPECTED_FAULTS].sort())
     || !isObject(record.pairedBrokenBaseline.samples)) {
     errors.push('paired pre-Arc1A broken-baseline provenance is incomplete');
   } else {

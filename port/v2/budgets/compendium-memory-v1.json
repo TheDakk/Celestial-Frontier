@@ -30,7 +30,7 @@
     "expectedFaults": [
       "unwindowed-1500-rows",
       "list-source-440",
-      "full-portrait-cache-exposure",
+      "full-portrait-dom-exposure",
       "eager-art-import"
     ],
     "samples": {
