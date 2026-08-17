@@ -13,9 +13,10 @@ import {
   ART_DIAGNOSTICS_SCHEMA, BASELINE_OBSERVATION_TIMEOUT_MS, BUDGET_SCHEMA,
   CANDIDATE_TRANSPORT_TIMEOUT_MS, COMMAND_TIMEOUT_MS, DIAGNOSTICS_SCHEMA,
   EXPECTED_OUTCOMES, OUTCOME_IDS, REPORT_INPUT_KEYS, REPORT_SCHEMA,
-  calibrationMetrics, compendiumCdpOptions, evaluateProfile, phaseObservationAccepted,
-  remainingCommandTimeoutMs, sha256, validTransportTimeoutPolicy,
-  validateBudgetRecord, verifyTerminalReport,
+  calibrationMetrics, compendiumCdpOptions, compendiumProfileEmulationOptions,
+  evaluateProfile, phaseObservationAccepted, remainingCommandTimeoutMs, sha256,
+  validProfileEmulationOptions, validTransportTimeoutPolicy, validateBudgetRecord,
+  verifyTerminalReport,
 } from './compendiummem-contract.mjs';
 import {
   buildBrokenBaselineProjection, buildCompendiumFixture,
@@ -455,6 +456,29 @@ export function runCompendiumMemSelftest() {
   'an on-time baseline phase observation or its clipped remaining timeout was rejected');
   assert(!fakeEvaluate(phaseDeadline).accepted && !fakeEvaluate(phaseDeadline + 1).accepted,
     'an exact-deadline or late truthy baseline phase observation was accepted');
+  const phoneViewport = { width: 390, height: 844, dpr: 3, mobile: true };
+  const desktopViewport = { width: 1280, height: 800, dpr: 1, mobile: false };
+  const phoneEmulation = compendiumProfileEmulationOptions('phone', phoneViewport);
+  const desktopEmulation = compendiumProfileEmulationOptions('desktop', desktopViewport);
+  assert(validProfileEmulationOptions('phone', phoneViewport, phoneEmulation)
+    && Object.isFrozen(phoneEmulation) && Object.isFrozen(phoneEmulation.touch)
+    && phoneEmulation.touch.enabled === true && phoneEmulation.touch.maxTouchPoints === 5,
+  'the shared phone CDP emulation payload is not sealed at five touch points');
+  assert(validProfileEmulationOptions('desktop', desktopViewport, desktopEmulation)
+    && Object.isFrozen(desktopEmulation) && Object.isFrozen(desktopEmulation.touch)
+    && JSON.stringify(desktopEmulation.touch) === JSON.stringify({ enabled: false }),
+  'the shared desktop CDP emulation payload did not omit maxTouchPoints');
+  assert(!validProfileEmulationOptions('desktop', desktopViewport, {
+    ...desktopEmulation, touch: { enabled: false, maxTouchPoints: 0 },
+  }), 'the rejected desktop maxTouchPoints=0 payload passed the shared contract');
+  assert(!validProfileEmulationOptions('phone', phoneViewport, {
+    ...phoneEmulation, touch: { enabled: false },
+  }), 'a disabled phone touch payload passed the shared contract');
+  for (const maxTouchPoints of [0, 17]) {
+    assert(!validProfileEmulationOptions('phone', phoneViewport, {
+      ...phoneEmulation, touch: { enabled: true, maxTouchPoints },
+    }), `phone maxTouchPoints=${maxTouchPoints} passed the exact five-point contract`);
+  }
   const fixture = buildCompendiumFixture();
   const baselineProjection = buildBrokenBaselineProjection(fixture);
   assert(baselineProjection.count === 1500 && baselineProjection.uniqueSeeds === 1500,

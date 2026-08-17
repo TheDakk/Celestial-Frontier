@@ -112,6 +112,44 @@ export function compendiumCdpOptions(kind, options) {
   });
 }
 
+export function validProfileEmulationOptions(profile, viewport, options) {
+  if (!['phone', 'desktop'].includes(profile) || !isObject(viewport) || !isObject(options)
+    || !sameJson(Object.keys(options).sort(), ['deviceMetrics', 'touch'])
+    || !isObject(options.deviceMetrics) || !isObject(options.touch)
+    || !integer(viewport.width) || viewport.width <= 0
+    || !integer(viewport.height) || viewport.height <= 0
+    || !finite(viewport.dpr) || viewport.dpr <= 0
+    || typeof viewport.mobile !== 'boolean') return false;
+  const deviceKeys = Object.keys(options.deviceMetrics).sort();
+  const expectedDeviceKeys = ['deviceScaleFactor', 'height', 'mobile', 'width'];
+  if (!sameJson(deviceKeys, expectedDeviceKeys)
+    || options.deviceMetrics.width !== viewport.width
+    || options.deviceMetrics.height !== viewport.height
+    || options.deviceMetrics.deviceScaleFactor !== viewport.dpr
+    || options.deviceMetrics.mobile !== viewport.mobile
+    || viewport.mobile !== (profile === 'phone')) return false;
+  const touchKeys = Object.keys(options.touch).sort();
+  return profile === 'phone'
+    ? sameJson(touchKeys, ['enabled', 'maxTouchPoints'])
+      && options.touch.enabled === true && options.touch.maxTouchPoints === 5
+    : sameJson(touchKeys, ['enabled']) && options.touch.enabled === false;
+}
+
+export function compendiumProfileEmulationOptions(profile, viewport) {
+  const options = Object.freeze({
+    deviceMetrics: Object.freeze({
+      width: viewport?.width, height: viewport?.height,
+      deviceScaleFactor: viewport?.dpr, mobile: viewport?.mobile,
+    }),
+    touch: Object.freeze(profile === 'phone'
+      ? { enabled: true, maxTouchPoints: 5 } : { enabled: false }),
+  });
+  if (!validProfileEmulationOptions(profile, viewport, options)) {
+    throw new Error('Compendium profile emulation options are invalid');
+  }
+  return options;
+}
+
 export function remainingCommandTimeoutMs(deadlineMs, nowMs, transportTimeoutMs) {
   if (!finite(deadlineMs) || !finite(nowMs) || !integer(transportTimeoutMs)
     || transportTimeoutMs <= 0 || deadlineMs - nowMs < 1) return null;
