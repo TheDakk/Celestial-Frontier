@@ -332,16 +332,35 @@ unchanged rerun occurred. The bounded follow-up aligns both Smoke and Glass to 4
 publish/retain plus downsample semantics, with independent changed/red/restored controls for each
 new clause.
 
+That follow-up is committed as `6105c6f2b5a6413e45e5c6ed4e73594ae39e98f0`. On its exact clean
+head, the single Smoke run passed with zero findings (report SHA-256
+`70e52e62d8ab8891462f87f6743b249e35174266ae7ac4323aac34b36628aa3a`). The first full Glass run
+then retained one instrument failure and withheld one apparent product finding (report SHA-256
+`f5d83a6000919a9c3275ddf16585899745443d8f1b6143fdfab325171eec154a`):
+
+- the real Compendium control proved `243 → 48 → 243px`, but compared raw `style` serialization as
+  `null` versus `""`; both carry zero declarations and no product geometry leaked;
+- contrast sampled the transparent `#dock` layout wrapper using aggregate descendant text and an
+  inherited white color against the worst-case white canvas. The visible glyphs are painted by dark
+  child buttons; every button-level sample was clean, so that color/background pair never renders.
+
+No unchanged full-matrix rerun occurred. The bounded instrument repair admits only absent↔empty
+inline style while rejecting any nonempty leak, samples `#dock button`, and injects/restores all eight
+named buttons as white-on-white to prove the full contrast selection still fires. The changed phone-landscape diagnostic
+passes with zero findings/instrument failures (SHA-256
+`ea97a86f7321f16b6430e8f9158f9e825038edb9bcbc0c1d217dc556bb36e6da`).
+
 Current follow-up state:
 
 - branch: `openai/mac`;
-- committed repair HEAD: `39d326fa69512508884cb92f85dbabe765989032`;
-- only the Smoke/Glass duplicate-bulletin predicate follow-up and this evidence refresh remain
-  uncommitted;
+- committed repair HEAD: `6105c6f2b5a6413e45e5c6ed4e73594ae39e98f0`;
+- only the bounded Glass style-serialization/painted-button instrument repair and this evidence
+  refresh remain uncommitted;
 - the current production Vite build transforms 798 modules and passes the exact
   `index owner → dedicated worker → worker-local painter` graph audit;
 - the repair commit has not been pushed;
-- Glass and Compendium browser gates have not yet run on the follow-up head;
+- exact-head Smoke passed; the first full Glass retained the instrument red above; changed targeted
+  phone-landscape Glass passed; full clean-head Glass and Compendium remain outstanding;
 - PR #32 remains draft/not approvable.
 
 ## 7. Remaining work

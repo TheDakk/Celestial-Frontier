@@ -47,9 +47,14 @@ the archive verbatim and refresh this handoff in place.
   review are green. Browser path/CDP controls passed on that clean head; the one no-retry Smoke run
   then found a later stale Guide bulletin predicate shared with Glass (44/43 bullets and obsolete
   “only detail renders 440px” wording versus the canonical 47/46 and truthful publish/retain plus
-  440→132 downsample contract). The cold Planetside path itself passed. The bounded instrument-only
-  follow-up is now static/selftest green; a new commit, remaining clean-head browser evidence, push,
-  and exact-head PR CI remain outstanding.
+  440→132 downsample contract). The cold Planetside path itself passed. Commit
+  `6105c6f2b5a6413e45e5c6ed4e73594ae39e98f0` fixes both rendered predicates and independently
+  controls all new text/category carriers. Its exact-head Smoke run passes. The first full Glass run
+  then correctly withheld product judgment on two instrument-only faults: absent versus empty inline
+  style after exact 243px restoration, and inherited text sampled on the transparent dock wrapper
+  instead of its painted buttons. A bounded Glass-only repair is static/selftest green and its changed
+  phone-landscape diagnostic passes with zero findings; a new commit, full clean-head Glass,
+  Compendium certification, push, and exact-head PR CI remain outstanding.
 - Nothing in this batch changes main, the production v1.8.9 page, a shipped version, a save schema,
   deterministic generation/share bytes, or either live-site repository.
 
@@ -172,13 +177,14 @@ the archive verbatim and refresh this handoff in place.
 
 **Current side:** OpenAI/Codex on macOS in
 /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. Committed repair HEAD is
-`39d326fa69512508884cb92f85dbabe765989032`; only the Smoke/Glass duplicate-bulletin predicate
-follow-up and this handoff refresh remain uncommitted. Browser path/CDP controls passed and the
-preserved first Smoke red proved that stale instrument mismatch after cold Planetside passed; it was
-not rerun unchanged. The complete browser-free suite and independent review are green. The prior
-cert report is exact only for `65b1bac`; the follow-up head still needs its own remaining clean-head
-browser battery and exact pushed CI. Resolve origin state live after the required fetch rather than
-trusting this prose. The six-image HUMAN judgment remains separate.
+`6105c6f2b5a6413e45e5c6ed4e73594ae39e98f0`; only the bounded Glass style-serialization/painted-button
+instrument repair and this handoff refresh remain uncommitted. Browser path/CDP controls and the
+exact-head Smoke gate passed. The preserved full Glass instrument red was not retried unchanged;
+after the repair, one changed dirty diagnostic passes the exact phone-landscape target with zero
+findings. The complete browser-free suite and independent review are green. The prior Compendium
+cert report is exact only for `65b1bac`; the new head still needs full clean-head Glass, Compendium,
+and exact pushed CI. Resolve origin state live after the required fetch rather than trusting this
+prose. The six-image HUMAN judgment remains separate.
 
 **GitHub step:** OpenAI/Codex owns the intentional repair commit, clean-head one-attempt browser
 evidence, push to the existing draft PR #32, exact-head checks, and normal integration monitoring.
