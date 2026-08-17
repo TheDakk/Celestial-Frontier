@@ -31,13 +31,15 @@ import {
   RAW_CDP_COMMAND_SCHEMA,
   REPORT_INPUT_KEYS, REPORT_SCHEMA, REQUIRED_WARM_CYCLES,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
-  calibrationMetrics, compendiumCdpOptions, compendiumProfileEmulationOptions,
+  calibrationMetrics, candidateNativeKeyDispatches,
+  compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression,
   evaluateCandidateExpression, evaluateProfile, installBrokenBaselineThumbObserver,
   sha256, sameSourceIdentity,
   isCandidateObservationError, waitForCandidateValue,
   phaseObservationAccepted, remainingCommandTimeoutMs, validateBudgetRecord, verifyTerminalReport,
   validBrokenBaselineThumbObservation, validCompendiumRawSnapshotExpression,
+  validFilterInputObservation, validFilterTargetObservation, validFilterTelemetrySnapshot,
   validFilterTransitionObservation,
 } from './compendiummem-contract.mjs';
 import {
@@ -372,14 +374,80 @@ export function createCandidateCollectorObservations({
   return Object.freeze({ evaluate, waitValue, answerability, sendStage });
 }
 
+export function candidateFilterInputExpression({ expectedPanelMode, expectedValue, phase }) {
+  assert(['focus', 'selection', 'cleared', 'exact-input'].includes(phase),
+    'candidate filter input phase is invalid');
+  const valueClause = phase === 'focus' ? 'true'
+    : `value===${JSON.stringify(expectedValue)}`;
+  const selectionClause = phase === 'selection'
+    ? 'selectionStart===0&&selectionEnd===value.length'
+    : phase === 'cleared'
+      ? 'selectionStart===0&&selectionEnd===0'
+      : phase === 'exact-input'
+        ? 'selectionStart===value.length&&selectionEnd===value.length'
+        : 'true';
+  return `(()=>{const e=document.querySelector('#searchbox'),p=document.querySelector('#codexpanel');
+    const hidden=!p||p.getAttribute('aria-hidden')==='true'||p.style.display==='none';
+    const panelMode=!p?'missing':hidden?'closed':p.querySelector('[data-sel="codex-scroll"]')?'list':
+      p.querySelector('[data-sel="detail-portrait"]')?'detail':'open-unknown';
+    const value=typeof e?.value==='string'?e.value:'';
+    const selectionStart=Number.isSafeInteger(e?.selectionStart)?e.selectionStart:null;
+    const selectionEnd=Number.isSafeInteger(e?.selectionEnd)?e.selectionEnd:null;
+    const focused=!!e&&document.activeElement===e;
+    return {ready:focused&&panelMode===${JSON.stringify(expectedPanelMode)}&&${valueClause}&&${selectionClause},
+      focused,value,selectionStart,selectionEnd,panelMode}})()`;
+}
+
+export function validCandidateFilterInputExpression(
+  source, { expectedPanelMode, expectedValue, phase },
+) {
+  if (typeof source !== 'string' || !['focus', 'selection', 'cleared', 'exact-input'].includes(phase)
+    || !['list', 'closed'].includes(expectedPanelMode)
+    || (phase !== 'focus' && typeof expectedValue !== 'string')
+    || source.includes('compendiumDiagnostics')) return false;
+  const common = [
+    '#searchbox', '#codexpanel', 'aria-hidden', '[data-sel="codex-scroll"]',
+    '[data-sel="detail-portrait"]', 'document.activeElement===e',
+    'selectionStart', 'selectionEnd', 'panelMode', 'ready:',
+    `panelMode===${JSON.stringify(expectedPanelMode)}`,
+  ];
+  const phaseTokens = phase === 'focus' ? ['focused&&panelMode===']
+    : phase === 'selection'
+      ? [`value===${JSON.stringify(expectedValue)}`,
+        'selectionStart===0&&selectionEnd===value.length']
+      : phase === 'cleared'
+        ? [`value===${JSON.stringify(expectedValue)}`,
+          'selectionStart===0&&selectionEnd===0']
+        : [`value===${JSON.stringify(expectedValue)}`,
+          'selectionStart===value.length&&selectionEnd===value.length'];
+  if (common.concat(phaseTokens).some((token) => !source.includes(token))) return false;
+  try { new Function(`"use strict"; return (${source});`); }
+  catch { return false; }
+  return true;
+}
+
+export function candidateFilterTelemetryExpression() {
+  return `(()=>{const d=window.__CF_SLICE__?.api?.compendiumDiagnostics?.(),a=d?.art;
+    return d&&a?{generation:d.generation,art:{live:a.live,totals:a.totals}}:null})()`;
+}
+
+export function validCandidateFilterTelemetryExpression(source) {
+  if (typeof source !== 'string' || [
+    'window.__CF_SLICE__?.api?.compendiumDiagnostics?.()',
+    'generation:d.generation', 'live:a.live', 'totals:a.totals', 'return d&&a?',
+  ].some((token) => !source.includes(token))) return false;
+  try { new Function(`"use strict"; return (${source});`); }
+  catch { return false; }
+  return true;
+}
+
 /* Native search replacement is evidence, not setup convenience. The hidden
    branch uses Search's real outside-boundary pointer close; the visible branch
    uses a bounded focus-only setup followed by native keys; empty clear uses
    the ordinary dock/rail reopen because closed empty Enter is intentionally
-   inert. Every branch proves focus, explicit deletion, exact replacement and
-   its post-setup generation immediately before the native transition. The
-   transition expression is deliberately always truthy so the explicit accept
-   predicate records every on-time non-ready product state instead of null. */
+   inert. High-frequency input polling reads only Search and a small panel DOM
+   carrier; exact generation/art snapshots are paired, one-shot observations.
+   Every focus/select/clear/exact-input row and accepted outcome remains in the witness. */
 export async function driveCandidateFilterTransition({
   sessionId, entryMode, query, expectedCount, platform,
   click, key, sendStage, evaluate, waitValue, onTransitionStarted,
@@ -398,61 +466,125 @@ export async function driveCandidateFilterTransition({
   'candidate native filter transition dependencies are invalid');
   const name = query || '<clear>';
   const expectedPanelMode = entryMode === 'visible' ? 'list' : 'closed';
-  if (entryMode === 'visible') {
-    const setup = await evaluate(sessionId, `(()=>{
-      const e=document.querySelector('#searchbox'),d=window.__CF_SLICE__?.api?.compendiumDiagnostics?.();
-      if(!e||d?.panel?.mode!=='list')return null;e.focus();
-      return {focused:document.activeElement===e,panelMode:d.panel.mode}})()`,
-    `focus visible filter ${name}`);
-    assert(setup?.focused === true && setup?.panelMode === 'list',
-      `filter ${name}: visible Compendium focus setup was not proven`);
-  } else {
-    await click(sessionId, '#searchbox', `search ${name}`);
-  }
-  const focused = await waitValue(sessionId, `filter ${name} input focus`, `(()=>{
-    const e=document.querySelector('#searchbox'),d=window.__CF_SLICE__?.api?.compendiumDiagnostics?.();
-    return e&&d&&document.activeElement===e&&d.panel.mode===${JSON.stringify(expectedPanelMode)}
-      ?{focused:true,value:e.value,panelMode:d.panel.mode}:null})()`);
-  assert(focused?.focused === true && focused?.panelMode === expectedPanelMode,
-    `filter ${name}: search input focus was not proven before replacement`);
-  const modifier = platform === 'darwin' ? 4 : 2;
-  await key(sessionId, 'a', 'KeyA', modifier, `filter ${name} select-all`);
-  await key(sessionId, 'Backspace', 'Backspace', 0, `filter ${name} delete`);
-  const cleared = await waitValue(sessionId, `filter ${name} input cleared`, `(()=>{
-    const e=document.querySelector('#searchbox'),d=window.__CF_SLICE__?.api?.compendiumDiagnostics?.();
-    return e&&d&&document.activeElement===e&&e.value===''&&d.panel.mode===${JSON.stringify(expectedPanelMode)}
-      ?{focused:true,cleared:true,value:e.value,panelMode:d.panel.mode}:null})()`);
-  assert(cleared?.focused === true && cleared?.cleared === true && cleared?.value === ''
-    && cleared?.panelMode === expectedPanelMode,
-    `filter ${name}: selected prior text was not explicitly deleted`);
-  if (query) {
-    await sendStage(`insert filter ${name}`, 'Input.insertText', { text: query }, sessionId);
-  }
-  const input = await waitValue(sessionId, `filter ${name} exact input`, `(()=>{
-    const e=document.querySelector('#searchbox'),d=window.__CF_SLICE__?.api?.compendiumDiagnostics?.();
-    return e&&d&&document.activeElement===e&&e.value===${JSON.stringify(query)}
-      &&d.panel.mode===${JSON.stringify(expectedPanelMode)}&&Number.isSafeInteger(d.generation)
-      ?{focused:true,cleared:true,value:e.value,panelMode:d.panel.mode,generation:d.generation}:null})()`);
-  assert(input?.focused === true && input?.cleared === true && input?.value === query
-    && input?.panelMode === expectedPanelMode
-    && Number.isSafeInteger(input?.generation) && input.generation >= 0,
-  `filter ${name}: exact input value/generation was not proven before Enter`);
   const transition = {
     schema: FILTER_TRANSITION_SCHEMA,
     entryMode,
     expectedQuery: query,
     expectedFilteredCount: expectedCount,
-    input: {
-      focused: true, cleared: true, value: input.value, panelMode: input.panelMode,
-    },
-    baselineGeneration: input.generation,
+    entryTarget: entryMode === 'visible'
+      ? null : { observationCount: 0, falsyObservations: [], accepted: null },
+    reopenTarget: entryMode === 'reopen'
+      ? { observationCount: 0, falsyObservations: [], accepted: null } : null,
+    focus: { observationCount: 0, falsyObservations: [], accepted: null },
+    beforeShortcut: null,
+    selection: { observationCount: 0, falsyObservations: [], accepted: null },
+    cleared: { observationCount: 0, falsyObservations: [], accepted: null },
+    afterClear: null,
+    exactInput: { observationCount: 0, falsyObservations: [], accepted: null },
+    inputTelemetry: null,
+    baselineGeneration: null,
+    observationCount: 0,
     falsyObservations: [],
     settled: null,
     generationDelta: null,
   };
   onTransitionStarted(transition);
+  const observeInput = async (label, expectedValue, phase, group) => {
+    const expressionOptions = { expectedPanelMode, expectedValue, phase };
+    const expression = candidateFilterInputExpression(expressionOptions);
+    assert(validCandidateFilterInputExpression(expression, expressionOptions),
+      `filter ${name}: ${phase} expression was invalid`);
+    const accepted = (observation) => {
+      if (observation?.ready !== true || observation.focused !== true
+        || observation.panelMode !== expectedPanelMode) return false;
+      if (phase === 'focus') return true;
+      if (observation.value !== expectedValue) return false;
+      if (phase === 'selection') {
+        return observation.selectionStart === 0
+          && observation.selectionEnd === observation.value.length;
+      }
+      if (phase === 'cleared') {
+        return observation.selectionStart === 0 && observation.selectionEnd === 0;
+      }
+      return observation.selectionStart === observation.value.length
+        && observation.selectionEnd === observation.value.length;
+    };
+    return await waitValue(sessionId, label, expression, {
+      acceptValue: accepted,
+      onObservation: (observation) => {
+        assert(validFilterInputObservation(observation),
+          `filter ${name}: ${phase} observation shape was invalid`);
+        group.observationCount++;
+        if (!accepted(observation)) group.falsyObservations.push(observation);
+      },
+    });
+  };
+  const observeTelemetry = async (label, expectedGeneration = null) => await waitValue(
+    sessionId, label, (() => {
+      const expression = candidateFilterTelemetryExpression();
+      assert(validCandidateFilterTelemetryExpression(expression),
+        `filter ${name}: telemetry expression was invalid`);
+      return expression;
+    })(), {
+      acceptValue: (observation) => {
+        assert(validFilterTelemetrySnapshot(observation),
+          `filter ${name}: ${label} shape was invalid`);
+        assert(expectedGeneration === null || observation.generation === expectedGeneration,
+          `filter ${name}: generation advanced during native input replacement`);
+        return true;
+      },
+    },
+  );
+  if (entryMode === 'visible') {
+    await evaluate(sessionId, `(()=>{
+      const e=document.querySelector('#searchbox'),p=document.querySelector('#codexpanel');
+      const hidden=!p||p.getAttribute('aria-hidden')==='true'||p.style.display==='none';
+      const panelMode=!hidden&&p.querySelector('[data-sel="codex-scroll"]')?'list':
+        hidden?'closed':'not-list';
+      if(!e||panelMode!=='list')throw new Error('visible Compendium list/search unavailable');
+      e.focus();if(document.activeElement!==e)throw new Error('visible Search focus failed');
+      return {focused:true,panelMode}})()`,
+    `focus visible filter ${name}`);
+  } else {
+    await click(sessionId, '#searchbox', `search ${name}`, {
+      targetWitness: transition.entryTarget,
+    });
+  }
+  const focused = await observeInput(
+    `filter ${name} input focus`, null, 'focus', transition.focus,
+  );
+  transition.focus.accepted = focused;
+  transition.beforeShortcut = await observeTelemetry(`filter ${name} before shortcut telemetry`);
+  const modifier = platform === 'darwin' ? 4 : 2;
+  await key(sessionId, 'a', 'KeyA', modifier, `filter ${name} select-all`, ['selectAll']);
+  const selection = await observeInput(
+    `filter ${name} full selection`, focused.value, 'selection', transition.selection,
+  );
+  transition.selection.accepted = selection;
+  await key(sessionId, 'Backspace', 'Backspace', 0, `filter ${name} delete`);
+  const cleared = await observeInput(
+    `filter ${name} input cleared`, '', 'cleared', transition.cleared,
+  );
+  transition.cleared.accepted = cleared;
+  transition.afterClear = await observeTelemetry(
+    `filter ${name} cleared telemetry`, transition.beforeShortcut.generation,
+  );
+  if (query) {
+    await sendStage(`insert filter ${name}`, 'Input.insertText', { text: query }, sessionId);
+  }
+  const exactInput = await observeInput(
+    `filter ${name} exact input`, query, 'exact-input', transition.exactInput,
+  );
+  transition.exactInput.accepted = exactInput;
+  const inputTelemetry = await observeTelemetry(
+    `filter ${name} exact input telemetry`, transition.afterClear.generation,
+  );
+  transition.inputTelemetry = inputTelemetry;
+  transition.baselineGeneration = inputTelemetry.generation;
   if (entryMode === 'reopen') {
-    await click(sessionId, '#dockcodex, #railcodex', 'ordinary Compendium reopen');
+    await click(sessionId, '#dockcodex, #railcodex', 'ordinary Compendium reopen', {
+      targetWitness: transition.reopenTarget,
+    });
   } else {
     await key(sessionId, 'Enter', 'Enter', 0, `filter ${name} submit`);
   }
@@ -466,11 +598,10 @@ export async function driveCandidateFilterTransition({
     onObservation: (observation) => {
       assert(validFilterTransitionObservation(observation),
         `filter ${name}: product transition observation shape was invalid`);
+      transition.observationCount++;
       if (observation.ready === false) transition.falsyObservations.push(observation);
     },
   });
-  assert(validFilterTransitionObservation(settled) && settled.ready === true,
-    `filter ${name}: settled transition evidence was invalid`);
   transition.settled = settled;
   transition.generationDelta = settled.generation - transition.baselineGeneration;
   return transition;
@@ -608,11 +739,28 @@ async function collectProfile({
     return d.surfaces.planetside.visible&&s.length>0&&s.every(x=>x==='ready')
       &&d.art&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0?d:null;
   })()`, { timeoutMs: 30000 });
-  const elementPoint = async (sessionId, selector, label) => await waitValue(sessionId, `${label} target`, `(()=>{
+  const elementPoint = async (
+    sessionId, selector, label, { targetWitness = null } = {},
+  ) => await waitValue(sessionId, `${label} target`, `(()=>{
     const e=[...document.querySelectorAll(${JSON.stringify(selector)})].find(x=>{const r=x.getBoundingClientRect(),s=getComputedStyle(x);return r.width>0&&r.height>0&&s.display!=='none'&&s.visibility!=='hidden'});
-    if(!e)return null;const r=e.getBoundingClientRect();return {x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};})()`);
-  const click = async (sessionId, selector, label) => {
-    const point = await elementPoint(sessionId, selector, label);
+    if(!e)return {ready:false,x:null,y:null};const r=e.getBoundingClientRect();
+    return {ready:true,x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};})()`, {
+    acceptValue: (observation) => observation?.ready === true,
+    onObservation: (observation) => {
+      assert(validFilterTargetObservation(observation),
+        `${profile} ${label}: click-target observation shape was invalid`);
+      if (targetWitness !== null) {
+        targetWitness.observationCount++;
+        if (observation.ready === false) targetWitness.falsyObservations.push(observation);
+      }
+    },
+  });
+  const click = async (sessionId, selector, label, { targetWitness = null } = {}) => {
+    assert(targetWitness === null || (Number.isSafeInteger(targetWitness.observationCount)
+      && Array.isArray(targetWitness.falsyObservations) && targetWitness.accepted === null),
+    `${profile} ${label}: click-target witness carrier was invalid`);
+    const point = await elementPoint(sessionId, selector, label, { targetWitness });
+    if (targetWitness !== null) targetWitness.accepted = point;
     await sendStage(`${label} mouse press`, 'Input.dispatchMouseEvent', {
       type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sessionId);
@@ -636,18 +784,13 @@ async function collectProfile({
       type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sessionId);
   };
-  const key = async (sessionId, keyName, code, modifiers = 0, labelPrefix = '') => {
-    const keyCode = keyName === 'Enter' ? 13 : keyName === 'Tab' ? 9
-      : keyName === 'Backspace' ? 8 : keyName.toUpperCase().charCodeAt(0);
+  const key = async (
+    sessionId, keyName, code, modifiers = 0, labelPrefix = '', commands = [],
+  ) => {
     const label = labelPrefix ? `${labelPrefix} key ${keyName}` : `key ${keyName}`;
-    await sendStage(`${label} down`, 'Input.dispatchKeyEvent', {
-      type: 'rawKeyDown', key: keyName, code, windowsVirtualKeyCode: keyCode,
-      nativeVirtualKeyCode: keyCode, modifiers,
-    }, sessionId);
-    await sendStage(`${label} up`, 'Input.dispatchKeyEvent', {
-      type: 'keyUp', key: keyName, code, windowsVirtualKeyCode: keyCode,
-      nativeVirtualKeyCode: keyCode, modifiers,
-    }, sessionId);
+    const [down, up] = candidateNativeKeyDispatches(keyName, code, modifiers, commands);
+    await sendStage(`${label} down`, 'Input.dispatchKeyEvent', down, sessionId);
+    await sendStage(`${label} up`, 'Input.dispatchKeyEvent', up, sessionId);
   };
   const search = async (sessionId, entryMode, query, expectedCount) =>
     await driveCandidateFilterTransition({

@@ -20,8 +20,8 @@ export const CANDIDATE_COMMAND_SCHEMA = 'cf-v2-compendium-candidate-command/v1';
 export const PLAIN_EVALUATE_COMMAND_SCHEMA = 'cf-v2-compendium-plain-evaluate-command/v1';
 export const RAW_CDP_COMMAND_SCHEMA = 'cf-v2-compendium-raw-cdp-command/v1';
 export const PARTIAL_FAILURE_SCHEMA = 'cf-v2-compendium-partial-failure/v1';
-export const PARTIAL_PROFILE_SCHEMA = 'cf-v2-compendium-partial-profile/v2';
-export const FILTER_TRANSITION_SCHEMA = 'cf-v2-compendium-filter-transition/v1';
+export const PARTIAL_PROFILE_SCHEMA = 'cf-v2-compendium-partial-profile/v4';
+export const FILTER_TRANSITION_SCHEMA = 'cf-v2-compendium-filter-transition/v3';
 export const REQUIRED_WARM_CYCLES = 4;
 export const OUTCOME_IDS = Object.freeze([
   'input-fixture-1500-distinct',
@@ -106,20 +106,57 @@ function exactKeys(value, expected, where, errors) {
   return true;
 }
 
+const FILTER_ART_LIVE_FIELDS = Object.freeze([
+  'cacheEntries', 'decodedPixels', 'decodedBytes', 'encodedBytes',
+  'queuedJobs', 'activeJobs', 'leases', 'subscribers',
+  'portraitCacheEntries', 'portraitEncodedBytes',
+]);
+const FILTER_ART_TOTAL_FIELDS = Object.freeze([
+  'leaseAcquires', 'releases', 'jobStarts', 'jobCompletes', 'jobCancels',
+  'jobErrors', 'dedupeHits', 'disposals', 'thumbCanvasRenders',
+  'fullPortraitRendersForThumb', 'fullPortraitDecodesForThumb',
+  'maxQueuedJobs', 'maxActiveJobs',
+]);
+
+function validFilterArtTelemetry(art) {
+  return isObject(art)
+    && sameJson(Object.keys(art).sort(), ['live', 'totals'])
+    && isObject(art.live) && isObject(art.totals)
+    && sameJson(Object.keys(art.live).sort(), [...FILTER_ART_LIVE_FIELDS].sort())
+    && sameJson(Object.keys(art.totals).sort(), [...FILTER_ART_TOTAL_FIELDS].sort())
+    && FILTER_ART_LIVE_FIELDS.every((field) => nonnegative(art.live[field]))
+    && FILTER_ART_TOTAL_FIELDS.every((field) => nonnegative(art.totals[field]));
+}
+
+export function validFilterTelemetrySnapshot(snapshot) {
+  return isObject(snapshot)
+    && sameJson(Object.keys(snapshot).sort(), ['art', 'generation'])
+    && integer(snapshot.generation) && snapshot.generation >= 0
+    && validFilterArtTelemetry(snapshot.art);
+}
+
+/* Poll rows stay deliberately cheap: the collector reads only Search and the
+   Compendium panel's DOM carrier. Full generation/art diagnostics are sampled
+   once around the native edit and stored separately in the witness. */
+export function validFilterInputObservation(observation) {
+  const keys = [
+    'ready', 'focused', 'value', 'selectionStart', 'selectionEnd', 'panelMode',
+  ];
+  if (!isObject(observation) || !sameJson(Object.keys(observation).sort(), keys.sort())
+    || typeof observation.ready !== 'boolean'
+    || typeof observation.focused !== 'boolean'
+    || typeof observation.value !== 'string'
+    || typeof observation.panelMode !== 'string') return false;
+  const start = observation.selectionStart;
+  const end = observation.selectionEnd;
+  if (start === null || end === null) return start === null && end === null;
+  return integer(start) && integer(end) && start >= 0 && end >= start
+    && end <= observation.value.length;
+}
+
 export function validFilterTransitionObservation(observation) {
   const keys = [
     'ready', 'mode', 'query', 'filteredCount', 'sourceCount', 'generation', 'art',
-  ];
-  const liveFields = [
-    'cacheEntries', 'decodedPixels', 'decodedBytes', 'encodedBytes',
-    'queuedJobs', 'activeJobs', 'leases', 'subscribers',
-    'portraitCacheEntries', 'portraitEncodedBytes',
-  ];
-  const totalFields = [
-    'leaseAcquires', 'releases', 'jobStarts', 'jobCompletes', 'jobCancels',
-    'jobErrors', 'dedupeHits', 'disposals', 'thumbCanvasRenders',
-    'fullPortraitRendersForThumb', 'fullPortraitDecodesForThumb',
-    'maxQueuedJobs', 'maxActiveJobs',
   ];
   return isObject(observation)
     && sameJson(Object.keys(observation).sort(), keys.sort())
@@ -129,91 +166,371 @@ export function validFilterTransitionObservation(observation) {
     && integer(observation.filteredCount) && observation.filteredCount >= 0
     && integer(observation.sourceCount) && observation.sourceCount >= 0
     && integer(observation.generation) && observation.generation >= 0
-    && isObject(observation.art)
-    && isObject(observation.art.live) && isObject(observation.art.totals)
-    && liveFields.every((field) => nonnegative(observation.art.live[field]))
-    && totalFields.every((field) => nonnegative(observation.art.totals[field]));
+    && validFilterArtTelemetry(observation.art);
+}
+
+export function validFilterTargetObservation(observation) {
+  const keys = ['ready', 'x', 'y'];
+  return isObject(observation) && sameJson(Object.keys(observation).sort(), keys.sort())
+    && typeof observation.ready === 'boolean'
+    && (observation.ready
+      ? finite(observation.x) && finite(observation.y)
+      : observation.x === null && observation.y === null);
+}
+
+function validFilterTargetObservationGroup(group) {
+  const keys = ['accepted', 'falsyObservations', 'observationCount'];
+  if (!isObject(group) || !sameJson(Object.keys(group).sort(), keys.sort())
+    || !integer(group.observationCount) || group.observationCount < 0
+    || !Array.isArray(group.falsyObservations)
+    || !group.falsyObservations.every((observation) =>
+      validFilterTargetObservation(observation) && observation.ready === false)
+    || (group.accepted !== null
+      && (!validFilterTargetObservation(group.accepted) || group.accepted.ready !== true))) return false;
+  return group.observationCount === group.falsyObservations.length
+    + (group.accepted === null ? 0 : 1);
+}
+
+function validFilterInputObservationGroup(group) {
+  const keys = ['accepted', 'falsyObservations', 'observationCount'];
+  if (!isObject(group) || !sameJson(Object.keys(group).sort(), keys.sort())
+    || !integer(group.observationCount) || group.observationCount < 0
+    || !Array.isArray(group.falsyObservations)
+    || !group.falsyObservations.every((observation) =>
+      validFilterInputObservation(observation) && observation.ready === false)
+    || (group.accepted !== null
+      && (!validFilterInputObservation(group.accepted) || group.accepted.ready !== true))) return false;
+  return group.observationCount === group.falsyObservations.length
+    + (group.accepted === null ? 0 : 1);
+}
+
+function validAcceptedSelection(observation, priorValue, panelMode) {
+  return observation?.ready === true && observation.focused === true
+    && observation.value === priorValue && observation.selectionStart === 0
+    && observation.selectionEnd === priorValue.length
+    && observation.panelMode === panelMode;
+}
+
+function validAcceptedFocus(observation, panelMode) {
+  return observation?.ready === true && observation.focused === true
+    && observation.panelMode === panelMode;
+}
+
+function validAcceptedClear(observation, panelMode) {
+  return observation?.ready === true && observation.focused === true
+    && observation.value === '' && observation.selectionStart === 0
+    && observation.selectionEnd === 0 && observation.panelMode === panelMode;
+}
+
+function validAcceptedExactInput(observation, expectedValue, panelMode) {
+  return observation?.ready === true && observation.focused === true
+    && observation.value === expectedValue
+    && observation.selectionStart === expectedValue.length
+    && observation.selectionEnd === expectedValue.length
+    && observation.panelMode === panelMode;
 }
 
 export function validFilterTransitionWitness(witness, { allowPending = false } = {}) {
   const keys = [
-    'schema', 'entryMode', 'expectedQuery', 'expectedFilteredCount', 'input',
-    'baselineGeneration', 'falsyObservations', 'settled', 'generationDelta',
+    'schema', 'entryMode', 'expectedQuery', 'expectedFilteredCount',
+    'entryTarget', 'reopenTarget', 'focus',
+    'beforeShortcut', 'selection', 'cleared', 'afterClear', 'exactInput', 'inputTelemetry',
+    'baselineGeneration', 'observationCount', 'falsyObservations',
+    'settled', 'generationDelta',
   ];
-  const inputKeys = ['focused', 'cleared', 'value', 'panelMode'];
+  const expectedPanelMode = witness?.entryMode === 'visible' ? 'list' : 'closed';
   if (!isObject(witness) || !sameJson(Object.keys(witness).sort(), keys.sort())
     || witness.schema !== FILTER_TRANSITION_SCHEMA
     || !['visible', 'hidden', 'reopen'].includes(witness.entryMode)
     || typeof witness.expectedQuery !== 'string'
     || !integer(witness.expectedFilteredCount) || witness.expectedFilteredCount < 0
-    || !isObject(witness.input)
-    || !sameJson(Object.keys(witness.input).sort(), inputKeys.sort())
-    || witness.input.focused !== true || witness.input.cleared !== true
-    || witness.input.value !== witness.expectedQuery
-    || witness.input.panelMode !== (witness.entryMode === 'visible' ? 'list' : 'closed')
-    || !integer(witness.baselineGeneration) || witness.baselineGeneration < 0
+    || (witness.entryMode === 'visible'
+      ? witness.entryTarget !== null
+      : !validFilterTargetObservationGroup(witness.entryTarget))
+    || (witness.entryMode === 'reopen'
+      ? !validFilterTargetObservationGroup(witness.reopenTarget)
+      : witness.reopenTarget !== null)
+    || !validFilterInputObservationGroup(witness.focus)
+    || (witness.beforeShortcut !== null
+      && !validFilterTelemetrySnapshot(witness.beforeShortcut))
+    || !validFilterInputObservationGroup(witness.selection)
+    || !validFilterInputObservationGroup(witness.cleared)
+    || (witness.afterClear !== null && !validFilterTelemetrySnapshot(witness.afterClear))
+    || !validFilterInputObservationGroup(witness.exactInput)
+    || (witness.inputTelemetry !== null
+      && !validFilterTelemetrySnapshot(witness.inputTelemetry))
+    || (witness.baselineGeneration !== null
+      && (!integer(witness.baselineGeneration) || witness.baselineGeneration < 0))
+    || !integer(witness.observationCount) || witness.observationCount < 0
     || !Array.isArray(witness.falsyObservations)
     || !witness.falsyObservations.every((observation) =>
-      validFilterTransitionObservation(observation) && observation.ready === false)) return false;
+      validFilterTransitionObservation(observation) && observation.ready === false
+        && !(observation.mode === 'list'
+          && observation.query === witness.expectedQuery
+          && observation.filteredCount === witness.expectedFilteredCount))) return false;
+  const focusAccepted = witness.focus.accepted;
+  const selectionAccepted = witness.selection.accepted;
+  const clearAccepted = witness.cleared.accepted;
+  const exactInputAccepted = witness.exactInput.accepted;
+  const falsyMatches = (group, predicate) => group.falsyObservations.some((observation) =>
+    predicate({ ...observation, ready: true }));
+  if ((focusAccepted !== null && !validAcceptedFocus(focusAccepted, expectedPanelMode))
+    || falsyMatches(witness.focus, (observation) =>
+      validAcceptedFocus(observation, expectedPanelMode))
+    || (witness.beforeShortcut !== null && focusAccepted === null)
+    || (witness.selection.observationCount > 0
+      && (focusAccepted === null || witness.beforeShortcut === null))
+    || (selectionAccepted !== null && (focusAccepted === null
+      || witness.beforeShortcut === null
+      || !validAcceptedSelection(selectionAccepted, focusAccepted.value, expectedPanelMode)))
+    || (focusAccepted !== null && falsyMatches(witness.selection, (observation) =>
+      validAcceptedSelection(observation, focusAccepted.value, expectedPanelMode)))
+    || (witness.cleared.observationCount > 0 && selectionAccepted === null)
+    || (clearAccepted !== null && (selectionAccepted === null
+      || !validAcceptedClear(clearAccepted, expectedPanelMode)))
+    || falsyMatches(witness.cleared, (observation) =>
+      validAcceptedClear(observation, expectedPanelMode))
+    || (witness.afterClear !== null && clearAccepted === null)
+    || (witness.exactInput.observationCount > 0 && witness.afterClear === null)
+    || (exactInputAccepted !== null && (witness.afterClear === null
+      || !validAcceptedExactInput(
+        exactInputAccepted, witness.expectedQuery, expectedPanelMode,
+      )))
+    || falsyMatches(witness.exactInput, (observation) =>
+      validAcceptedExactInput(observation, witness.expectedQuery, expectedPanelMode))
+    || (witness.inputTelemetry !== null && exactInputAccepted === null)
+    || ((witness.baselineGeneration === null) !== (witness.inputTelemetry === null))) return false;
+  if (witness.beforeShortcut !== null && witness.afterClear !== null
+    && witness.beforeShortcut.generation !== witness.afterClear.generation) return false;
+  if (witness.inputTelemetry !== null
+    && (witness.inputTelemetry.generation !== witness.baselineGeneration
+      || witness.afterClear.generation !== witness.baselineGeneration)) return false;
   if (witness.settled === null || witness.generationDelta === null) {
-    return allowPending && witness.settled === null && witness.generationDelta === null;
+    return allowPending && witness.settled === null && witness.generationDelta === null
+      && witness.observationCount === witness.falsyObservations.length;
   }
-  return validFilterTransitionObservation(witness.settled)
+  return (witness.entryMode === 'visible' || witness.entryTarget.accepted !== null)
+    && (witness.entryMode !== 'reopen' || witness.reopenTarget.accepted !== null)
+    && focusAccepted !== null && witness.beforeShortcut !== null
+    && selectionAccepted !== null && clearAccepted !== null
+    && witness.afterClear !== null && exactInputAccepted !== null
+    && witness.inputTelemetry !== null && witness.baselineGeneration !== null
+    && validFilterTransitionObservation(witness.settled)
     && witness.settled.ready === true
     && witness.settled.mode === 'list'
     && witness.settled.query === witness.expectedQuery
     && witness.settled.filteredCount === witness.expectedFilteredCount
+    && witness.observationCount === witness.falsyObservations.length + 1
     && integer(witness.generationDelta)
     && witness.generationDelta === witness.settled.generation - witness.baselineGeneration;
 }
 
+export function candidateNativeKeyDispatches(keyName, code, modifiers = 0, commands = []) {
+  if (typeof keyName !== 'string' || !keyName || typeof code !== 'string' || !code
+    || !integer(modifiers) || modifiers < 0
+    || !Array.isArray(commands) || !commands.every((command) =>
+      typeof command === 'string' && command)) {
+    throw new TypeError('candidate native key dispatch is invalid');
+  }
+  const keyCode = keyName === 'Enter' ? 13 : keyName === 'Tab' ? 9
+    : keyName === 'Backspace' ? 8 : keyName.toUpperCase().charCodeAt(0);
+  const shared = { key: keyName, code, windowsVirtualKeyCode: keyCode,
+    nativeVirtualKeyCode: keyCode, modifiers };
+  return Object.freeze([
+    Object.freeze({ type: 'rawKeyDown', ...shared,
+      ...(commands.length ? { commands: Object.freeze([...commands]) } : {}) }),
+    Object.freeze({ type: 'keyUp', ...shared }),
+  ]);
+}
+
 const FILTER_TRANSITION_EXPECTATIONS = Object.freeze([
-  Object.freeze({ entryMode: 'visible', query: 'Same Seed Sentinel', filteredCount: 2 }),
-  Object.freeze({ entryMode: 'hidden', query: 'Compendium Filter Beacon', filteredCount: 1 }),
-  Object.freeze({ entryMode: 'reopen', query: '', filteredCount: 1500 }),
+  Object.freeze({
+    entryMode: 'visible', priorValue: '', query: 'Same Seed Sentinel', filteredCount: 2,
+  }),
+  Object.freeze({
+    entryMode: 'hidden', priorValue: 'Same Seed Sentinel',
+    query: 'Compendium Filter Beacon', filteredCount: 1,
+  }),
+  Object.freeze({
+    entryMode: 'reopen', priorValue: 'Compendium Filter Beacon', query: '', filteredCount: 1500,
+  }),
 ]);
 
 function filterTransitionTerminalStage(expectation) {
   return `filter ${expectation.query || '<clear>'}`;
 }
 
+function filterTransitionStages(expectation) {
+  const name = expectation.query || '<clear>';
+  return Object.freeze({
+    focus: `filter ${name} input focus`,
+    beforeShortcut: `filter ${name} before shortcut telemetry`,
+    selection: `filter ${name} full selection`,
+    cleared: `filter ${name} input cleared`,
+    afterClear: `filter ${name} cleared telemetry`,
+    exactInput: `filter ${name} exact input`,
+    inputTelemetry: `filter ${name} exact input telemetry`,
+    terminal: filterTransitionTerminalStage(expectation),
+  });
+}
+
+function filterTransitionOrderedStages(expectation) {
+  const name = expectation.query || '<clear>';
+  return Object.freeze([
+    ...(expectation.entryMode === 'visible'
+      ? [`focus visible filter ${name}`]
+      : [`search ${name} target`, `search ${name} mouse press`, `search ${name} mouse release`]),
+    `filter ${name} input focus`, `filter ${name} before shortcut telemetry`,
+    `filter ${name} select-all key a down`, `filter ${name} select-all key a up`,
+    `filter ${name} full selection`,
+    `filter ${name} delete key Backspace down`, `filter ${name} delete key Backspace up`,
+    `filter ${name} input cleared`, `filter ${name} cleared telemetry`,
+    ...(expectation.query ? [`insert filter ${name}`] : []),
+    `filter ${name} exact input`, `filter ${name} exact input telemetry`,
+    ...(expectation.entryMode === 'reopen'
+      ? ['ordinary Compendium reopen target', 'ordinary Compendium reopen mouse press',
+        'ordinary Compendium reopen mouse release']
+      : [`filter ${name} submit key Enter down`, `filter ${name} submit key Enter up`]),
+    filterTransitionTerminalStage(expectation),
+  ]);
+}
+
+function filterTransitionCandidateStages(expectation) {
+  const stages = filterTransitionStages(expectation);
+  const name = expectation.query || '<clear>';
+  return Object.freeze([
+    ...(expectation.entryMode === 'visible'
+      ? [] : [Object.freeze({ label: `search ${name} target`, kind: 'entryTarget' })]),
+    Object.freeze({ label: stages.focus, kind: 'focus' }),
+    Object.freeze({ label: stages.beforeShortcut, kind: 'telemetry' }),
+    Object.freeze({ label: stages.selection, kind: 'selection' }),
+    Object.freeze({ label: stages.cleared, kind: 'cleared' }),
+    Object.freeze({ label: stages.afterClear, kind: 'telemetry' }),
+    Object.freeze({ label: stages.exactInput, kind: 'exactInput' }),
+    Object.freeze({ label: stages.inputTelemetry, kind: 'telemetry' }),
+    ...(expectation.entryMode === 'reopen'
+      ? [Object.freeze({
+        label: 'ordinary Compendium reopen target', kind: 'reopenTarget',
+      })] : []),
+    Object.freeze({ label: stages.terminal, kind: 'terminal' }),
+  ]);
+}
+
 function filterTransitionFailureOwner(stage) {
   for (let index = 0; index < FILTER_TRANSITION_EXPECTATIONS.length; index += 1) {
     const expectation = FILTER_TRANSITION_EXPECTATIONS[index];
-    const name = expectation.query || '<clear>';
-    const preBaselineStages = [
-      `filter ${name} input focus`, `filter ${name} input cleared`,
-      `filter ${name} exact input`,
-      `filter ${name} select-all key a down`, `filter ${name} select-all key a up`,
-      `filter ${name} delete key Backspace down`,
-      `filter ${name} delete key Backspace up`,
-      ...(expectation.entryMode === 'visible'
-        ? [`focus visible filter ${name}`]
-        : [
-          `search ${name} target`, `search ${name} mouse press`,
-          `search ${name} mouse release`,
-        ]),
-      ...(expectation.query ? [`insert filter ${name}`] : []),
-    ];
-    if (preBaselineStages.includes(stage)) return { index, postBaseline: false };
-    const postBaselineStages = expectation.entryMode === 'reopen'
-      ? [
-        'ordinary Compendium reopen target',
-        'ordinary Compendium reopen mouse press',
-        'ordinary Compendium reopen mouse release',
-        filterTransitionTerminalStage(expectation),
-      ]
-      : [
-        `filter ${name} submit key Enter down`,
-        `filter ${name} submit key Enter up`,
-        filterTransitionTerminalStage(expectation),
-      ];
-    if (postBaselineStages.includes(stage)) return { index, postBaseline: true };
+    const stageIndex = filterTransitionOrderedStages(expectation).indexOf(stage);
+    if (stageIndex >= 0) return { index, stageIndex };
   }
   return null;
 }
 
-function validPartialFilterTransitionPrefix(measurement) {
+function countStage(completedStages, stage) {
+  return completedStages.filter((candidate) => candidate === stage).length;
+}
+
+function validPendingFilterTransitionProgress(measurement, transition, expectation, failure) {
+  const stages = filterTransitionStages(expectation);
+  const name = expectation.query || '<clear>';
+  const targetMilestones = [
+    ...(expectation.entryMode === 'visible' ? [] : [[
+      transition.entryTarget, `search ${name} target`,
+    ]]),
+    ...(expectation.entryMode === 'reopen' ? [[
+      transition.reopenTarget, 'ordinary Compendium reopen target',
+    ]] : []),
+  ];
+  const completed = (stage) => countStage(measurement.completedStages, stage) === 1;
+  const noDuplicate = (stage) => countStage(measurement.completedStages, stage) <= 1;
+  if (![stages.focus, stages.beforeShortcut, stages.selection, stages.cleared,
+    stages.afterClear, stages.exactInput, stages.inputTelemetry,
+    ...targetMilestones.map(([, stage]) => stage)].every(noDuplicate)) return false;
+  if (targetMilestones.some(([group, stage]) =>
+    (group.accepted !== null) !== completed(stage)
+      || (group.falsyObservations.length > 0
+        && !completed(stage) && measurement.failingStage !== stage))) return false;
+  const milestones = [
+    [transition.focus.accepted !== null, stages.focus],
+    [transition.beforeShortcut !== null, stages.beforeShortcut],
+    [transition.selection.accepted !== null, stages.selection],
+    [transition.cleared.accepted !== null, stages.cleared],
+    [transition.afterClear !== null, stages.afterClear],
+    [transition.exactInput.accepted !== null, stages.exactInput],
+    [transition.inputTelemetry !== null, stages.inputTelemetry],
+  ];
+  if (milestones.some(([present, stage]) => present !== completed(stage))) return false;
+  for (const [group, stage] of [
+    [transition.focus, stages.focus], [transition.selection, stages.selection],
+    [transition.cleared, stages.cleared], [transition.exactInput, stages.exactInput],
+  ]) {
+    if (group.falsyObservations.length > 0
+      && !completed(stage) && measurement.failingStage !== stage) return false;
+    const ledgerCount = measurement.commandLedger.filter((command) =>
+      command?.schema === CANDIDATE_COMMAND_SCHEMA && command.label === stage).length;
+    const expectedExtra = failure.command?.schema === CANDIDATE_COMMAND_SCHEMA
+      && failure.command.label === stage ? 1 : 0;
+    if (ledgerCount !== group.observationCount + expectedExtra) return false;
+  }
+  const terminalLedgerCount = measurement.commandLedger.filter((command) =>
+    command?.schema === CANDIDATE_COMMAND_SCHEMA && command.label === stages.terminal).length;
+  if (measurement.failingStage === stages.terminal) {
+    const expectedExtra = failure.command?.schema === CANDIDATE_COMMAND_SCHEMA
+      && failure.command.label === stages.terminal ? 1 : 0;
+    if (terminalLedgerCount !== transition.observationCount + expectedExtra) return false;
+  } else if (transition.observationCount !== 0 || terminalLedgerCount !== 0) return false;
+  return transition.settled === null && transition.generationDelta === null;
+}
+
+function validCompletedFilterTransitionLedger(measurement, transition, expectation) {
+  const stages = filterTransitionStages(expectation);
+  return [[transition.focus, stages.focus], [transition.selection, stages.selection],
+    [transition.cleared, stages.cleared], [transition.exactInput, stages.exactInput]]
+    .every(([group, stage]) => measurement.commandLedger.filter((command) =>
+      command?.schema === CANDIDATE_COMMAND_SCHEMA && command.label === stage).length
+      === group.observationCount)
+    && measurement.commandLedger.filter((command) =>
+      command?.schema === CANDIDATE_COMMAND_SCHEMA && command.label === stages.terminal).length
+      === transition.observationCount;
+}
+
+function validFilterCandidateLedgerOrder(measurement, transitions, failure) {
+  const allLabels = new Set(FILTER_TRANSITION_EXPECTATIONS.flatMap((expectation) =>
+    filterTransitionCandidateStages(expectation).map((stage) => stage.label)));
+  const actualLabels = measurement.commandLedger.filter((command) =>
+    command?.schema === CANDIDATE_COMMAND_SCHEMA && allLabels.has(command.label))
+    .map((command) => command.label);
+  const expectedLabels = [];
+  for (let index = 0; index < transitions.length; index += 1) {
+    const transition = transitions[index];
+    const expectation = FILTER_TRANSITION_EXPECTATIONS[index];
+    for (const stage of filterTransitionCandidateStages(expectation)) {
+      const count = measurement.commandLedger.filter((command) =>
+        command?.schema === CANDIDATE_COMMAND_SCHEMA && command.label === stage.label).length;
+      const reached = measurement.completedStages.includes(stage.label)
+        || measurement.failingStage === stage.label;
+      if (!reached) {
+        if (count !== 0) return false;
+        continue;
+      }
+      const failedAttempt = failure.command?.schema === CANDIDATE_COMMAND_SCHEMA
+        && failure.command.label === stage.label ? 1 : 0;
+      const group = stage.kind === 'focus' ? transition.focus
+        : stage.kind === 'selection' ? transition.selection
+          : stage.kind === 'cleared' ? transition.cleared
+            : stage.kind === 'exactInput' ? transition.exactInput
+              : stage.kind === 'entryTarget' ? transition.entryTarget
+                : stage.kind === 'reopenTarget' ? transition.reopenTarget : null;
+      const expectedCount = stage.kind === 'telemetry' ? 1
+          : stage.kind === 'terminal' ? transition.observationCount + failedAttempt
+            : group.observationCount + failedAttempt;
+      if (count !== expectedCount) return false;
+      expectedLabels.push(...Array.from({ length: expectedCount }, () => stage.label));
+    }
+  }
+  return sameJson(actualLabels, expectedLabels);
+}
+
+function validPartialFilterTransitionPrefix(measurement, failure) {
   const transitions = measurement.filterTransitions;
   const terminalStages = FILTER_TRANSITION_EXPECTATIONS.map(filterTransitionTerminalStage);
   const terminalIndices = terminalStages.map((stage) => measurement.completedStages.indexOf(stage));
@@ -225,23 +542,38 @@ function validPartialFilterTransitionPrefix(measurement) {
       (position > 0 && index <= indices[position - 1])
         || measurement.completedStages.filter((stage) => stage === terminalStages[position]).length !== 1)
     || transitions.length < completedCount || transitions.length > completedCount + 1
-    || !transitions.slice(0, completedCount).every((transition) =>
-      transition.settled !== null && transition.generationDelta !== null)) return false;
+    || !transitions.slice(0, completedCount).every((transition, index) =>
+      transition.settled !== null && transition.generationDelta !== null
+        && validCompletedFilterTransitionLedger(
+          measurement, transition, FILTER_TRANSITION_EXPECTATIONS[index],
+        ))) return false;
   const failureOwner = filterTransitionFailureOwner(measurement.failingStage);
   if (failureOwner?.index !== null && failureOwner?.index !== undefined
     && failureOwner.index !== completedCount) return false;
-  const failureRequiresPending = failureOwner?.postBaseline === true;
+  const failureRequiresPending = failureOwner !== null;
+  const allFilterStages = new Set(FILTER_TRANSITION_EXPECTATIONS.flatMap(
+    filterTransitionOrderedStages,
+  ));
+  const observedFilterStages = measurement.completedStages.filter((stage) =>
+    allFilterStages.has(stage));
+  const completedPrefix = FILTER_TRANSITION_EXPECTATIONS.slice(0, completedCount)
+    .flatMap(filterTransitionOrderedStages);
+  const expectedFilterStages = failureOwner
+    ? completedPrefix.concat(filterTransitionOrderedStages(
+      FILTER_TRANSITION_EXPECTATIONS[completedCount],
+    ).slice(0, failureOwner.stageIndex))
+    : completedPrefix;
+  if (!sameJson(observedFilterStages, expectedFilterStages)
+    || !validFilterCandidateLedgerOrder(measurement, transitions, failure)) return false;
   if (transitions.length === completedCount) return !failureRequiresPending;
   const pending = transitions[completedCount];
   const pendingExpectation = FILTER_TRANSITION_EXPECTATIONS[completedCount];
-  const pendingName = pendingExpectation?.query || '<clear>';
   return failureRequiresPending
-    && measurement.completedStages.includes(`filter ${pendingName} exact input`)
-    && pending?.settled === null && pending?.generationDelta === null;
+    && validPendingFilterTransitionProgress(measurement, pending, pendingExpectation, failure);
 }
 
 function validFilterTransitionSequence(transitions, {
-  allowPending = false, requireCompleteSet = false,
+  allowPending = false, requireCompleteSet = false, requireProductSuccess = true,
 } = {}) {
   if (!Array.isArray(transitions)
     || transitions.length > FILTER_TRANSITION_EXPECTATIONS.length
@@ -254,7 +586,9 @@ function validFilterTransitionSequence(transitions, {
       && transition.expectedQuery === expectation.query
       && transition.expectedFilteredCount === expectation.filteredCount
       && (!pending || (allowPending && index === transitions.length - 1))
-      && (pending || (transition.settled.sourceCount === 1500
+      && (!requireProductSuccess || (transition.focus.accepted === null
+        ? pending : transition.focus.accepted.value === expectation.priorValue))
+      && (!requireProductSuccess || pending || (transition.settled.sourceCount === 1500
         && transition.generationDelta === 1));
   });
 }
@@ -1660,14 +1994,14 @@ function validCompleteProfileMeasurement(measurement, profile) {
     && isObject(measurement.documentTokens) && isObject(measurement.points)
     && isObject(measurement.phases)
     && validFilterTransitionSequence(measurement.phases.filterTransitions, {
-      requireCompleteSet: true,
+      requireCompleteSet: true, requireProductSuccess: false,
     })
     && isObject(measurement.lazySpeciesResource)
     && Array.isArray(measurement.answerability)
     && Array.isArray(measurement.reviewPacket);
 }
 
-function validPartialProfileMeasurement(measurement, profile, runId, verifyArtifact) {
+function validPartialProfileMeasurement(measurement, profile, runId, verifyArtifact, failure) {
   const keys = [
     'schema', 'profile', 'viewport', 'evidenceStatus', 'lastCompletedStage',
     'failingStage', 'completedStages', 'commandLedger', 'filterTransitions', 'reviewPacket',
@@ -1686,7 +2020,7 @@ function validPartialProfileMeasurement(measurement, profile, runId, verifyArtif
       validCandidateCommandEvidence(command) || validPlainEvaluateCommand(command)
         || validRawCdpCommand(command))
     || !validFilterTransitionSequence(measurement.filterTransitions, { allowPending: true })
-    || !validPartialFilterTransitionPrefix(measurement)
+    || !validPartialFilterTransitionPrefix(measurement, failure)
     || !validPartialReviewPacket(measurement.reviewPacket, runId, verifyArtifact)
     || !measurement.reviewPacket.every((item) => item.profile === profile)) return false;
   if (measurement.lastCompletedStage !== (measurement.completedStages.at(-1) ?? null)) return false;
@@ -1785,7 +2119,9 @@ function validPartialFailure(report, expectedRunId, verifyArtifact) {
   for (const [profile, measurement] of Object.entries(report.profiles)) {
     if (measurement?.schema === PARTIAL_PROFILE_SCHEMA) {
       partialCount += 1;
-      if (!validPartialProfileMeasurement(measurement, profile, expectedRunId, verifyArtifact)
+      if (!validPartialProfileMeasurement(
+        measurement, profile, expectedRunId, verifyArtifact, failure,
+      )
         || profile !== failure.profile
         || measurement.lastCompletedStage !== failure.lastCompletedStage
         || measurement.failingStage !== failure.failingStage
@@ -1824,6 +2160,18 @@ function validProfileMeasurements(profiles) {
   if (!isObject(profiles)
     || !sameJson(Object.keys(profiles).sort(), [...PROFILES].sort())) return false;
   return PROFILES.every((profile) => validCompleteProfileMeasurement(profiles[profile], profile));
+}
+
+function completeFilterProductEvidenceBound(profiles, outcomes) {
+  if (!isObject(profiles) || !Array.isArray(outcomes)) return false;
+  return PROFILES.every((profile) => {
+    const productSemanticsOk = validFilterTransitionSequence(
+      profiles[profile]?.phases?.filterTransitions, { requireCompleteSet: true },
+    );
+    const generationOutcome = outcomes.find((outcome) =>
+      outcome?.id === `${profile}/generation-guard`);
+    return productSemanticsOk || generationOutcome?.status === 'fail';
+  });
 }
 
 function validBrowserProvenance(browser) {
@@ -1937,6 +2285,9 @@ export function verifyTerminalReport(report, expectedRunId, {
     ? report.outcomes.filter((outcome) => outcome?.status === 'fail') : [];
   if (!validProfileMeasurements(report.profiles)) {
     errors.push('raw phone/desktop profile measurements are incomplete');
+  }
+  if (!completeFilterProductEvidenceBound(report.profiles, report.outcomes)) {
+    errors.push('raw native-filter product evidence is not bound to generation-guard FAIL');
   }
   if (!validReviewPacket(report.reviewPacket, expectedRunId, verifyArtifact)) {
     errors.push('run-bound phone/desktop visual review packet is incomplete');
