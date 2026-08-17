@@ -11,6 +11,10 @@ export interface PanelDef {
   /* a surface can have several homes (dock on phone, rail on desktop) */
   btns?: Array<HTMLElement | null>;
   onOpen?: () => void;
+  /* Fires exactly once when this panel makes a visible -> hidden
+     transition. Resource-owning surfaces use it to release leases; merely
+     normalizing an already-hidden panel is not a close lifecycle. */
+  onClose?: () => void;
 }
 
 const PANELS: PanelDef[] = [];
@@ -100,12 +104,14 @@ export function openPanel(id: string, opener?: HTMLElement | null): void {
 export function closePanels(except?: string): void {
   for (const p of PANELS) {
     if (p.id === except) continue;
+    const wasVisible = p.el.style.display !== 'none';
     p.el.style.display = 'none';
     p.el.setAttribute('aria-hidden', 'true');
     for (const b of p.btns || []) {
       b?.classList.remove('on');
       b?.setAttribute('aria-expanded', 'false');
     }
+    if (wasVisible) p.onClose?.();
   }
   document.body.classList.toggle('panel-open', PANELS.some((p) => p.el.style.display !== 'none'));
   if (!except && _opener) { restorePanelFocus(); _opener = null; }

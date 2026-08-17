@@ -392,7 +392,7 @@ const send = browser.send;
    Guide/Compendium/Atlas buttons never synthesized click. Mirror a real
    keyboard press here; Space carries printable text and activates on keyup. */
 const VIRTUAL_KEY = Object.freeze({
-  Enter: 13, Space: 32, Escape: 27, Tab: 9,
+  Backspace: 8, Enter: 13, Space: 32, Escape: 27, Tab: 9,
   ArrowLeft: 37, ArrowUp: 38, ArrowRight: 39, ArrowDown: 40,
   Minus: 189,
 });
@@ -1548,6 +1548,68 @@ try {
     || !/imported\/current HP/i.test(hpGuide.text) || /Not yet available in v2/.test(hpGuide.text)) {
     fails.push('GUIDE HP boundary did not render the live read-only meter honestly: ' + JSON.stringify(hpGuide));
   }
+  const compendiumGuideSpecs = [
+    { id: 'kingdoms', title: 'The four kingdoms', required: [
+      'read-only Compendium presents up to 1,500 logical entries', 'Search filters those saved records',
+      'count reports the logical matches', 'choosing a row opens its detail',
+      'mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)',
+      'plus at most the focused pinned row',
+      'neutral placeholder', 'exact 132px thumbnail',
+      'complete genome—not only the displayed name or seed—owns visual identity',
+      'Planetside shares the same bounded thumbnail lease path',
+      'thumbnails are released when their visible owner leaves',
+      'Discovery, capture, husbandry, renaming, and other collection-writing actions remain unavailable',
+    ] },
+    { id: 'specimen', title: 'Reading a specimen card', required: [
+      'exact 440px portrait', 'same complete-genome identity as its exact 132px list thumbnail',
+      '440px image is reserved for this detail rather than the list or Planetside',
+      'Back returns to the saved list position and restores focus to the same logical row',
+      'Close returns focus to the exact Compendium opener', 'profile remains read-only',
+      'Capture, feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry or collection-writing outcomes are deliberately absent',
+    ] },
+  ];
+  const renderedCompendiumGuideCheck = (spec) => `(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
+    text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
+    status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
+    required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),
+    contradictory=/(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\\b(?:all|every)\\b[^.!?]{0,40}\\b1,?500\\b/i.test(text)
+      ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(text)
+      ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(text)
+      ||/(?:lease|thumbnail)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,40}(?:after|when)[^.!?]{0,40}(?:Close|leave|unmount|filter)/i.test(text)
+      ||/(?:capture|feeding|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i.test(text);
+    return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
+      title,status,missing,contradictory,text};})()`;
+  const renderCompendiumGuideTopic = async (spec) => evalIn(`(()=>{ const input=document.getElementById('guidesearch');
+    input.value=${JSON.stringify(spec.id)};input.dispatchEvent(new Event('input',{bubbles:true}));
+    document.querySelector('[data-guide-topic=${JSON.stringify(spec.id)}]')?.click();return ${renderedCompendiumGuideCheck(spec)};})()`);
+  const kingdomsGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[0]);
+  const kingdomsGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),paragraph=article?.querySelector('p'),
+    prior=paragraph?.innerHTML||'',marker=document.createElement('p');let stale=null,contradiction=null;
+    if(paragraph){paragraph.textContent='The Compendium reads the expedition’s discovered life. Choose a row to inspect the deterministic portrait.';
+      stale=${renderedCompendiumGuideCheck(compendiumGuideSpecs[0])};paragraph.innerHTML=prior;}
+    marker.textContent='The Compendium mounts all 1,500 portraits at once.';article?.appendChild(marker);
+    contradiction=${renderedCompendiumGuideCheck(compendiumGuideSpecs[0])};marker.remove();
+    const restored=!!paragraph&&paragraph.innerHTML===prior&&${renderedCompendiumGuideCheck(compendiumGuideSpecs[0])}.ok;
+    return {ok:stale?.ok===false&&stale?.missing?.length>0&&contradiction?.ok===false&&contradiction?.contradictory===true&&restored,
+      stale,contradiction,restored};})()`);
+  const specimenGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[1]);
+  const specimenGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),paragraph=article?.querySelector('p'),
+    prior=paragraph?.innerHTML||'',marker=document.createElement('p');let stale=null,contradiction=null;
+    if(paragraph){paragraph.textContent='Select a Compendium row to open its current specimen detail and deterministic portrait.';
+      stale=${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])};paragraph.innerHTML=prior;}
+    marker.textContent='Planetside renders a 440px portrait for every row, and thumbnail leases remain pinned after Close.';article?.appendChild(marker);
+    contradiction=${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])};marker.remove();
+    const restored=!!paragraph&&paragraph.innerHTML===prior&&${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])}.ok;
+    return {ok:stale?.ok===false&&stale?.missing?.length>0&&contradiction?.ok===false&&contradiction?.contradictory===true&&restored,
+      stale,contradiction,restored};})()`);
+  if (!kingdomsGuide.ok || !specimenGuide.ok) {
+    fails.push('GUIDE Compendium virtualization/art/focus contract did not render in Kingdoms and Specimen: '
+      + JSON.stringify({ kingdomsGuide, specimenGuide }));
+  }
+  if (!kingdomsGuideCtl.ok || !specimenGuideCtl.ok) {
+    fails.push('GUIDE COMPENDIUM COPY CONTROL FAILED — pre-Arc-1A or contradictory art ownership stayed current: '
+      + JSON.stringify({ kingdomsGuideCtl, specimenGuideCtl }));
+  }
   /* Charter recovery changes player-facing Guide truth, so prove both affected
      topics render the action contract. Pure content lookup cannot establish
      that fillGuide actually placed the revised body in the live panel. */
@@ -1660,10 +1722,11 @@ try {
     const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
       recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
       training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
+      art=bulletNodes.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
       headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
-      firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),
+      firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),artHeading=headingFor(art),
       charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
-      trainingText=training?.textContent||'',
+      trainingText=training?.textContent||'',artText=art?.textContent||'',
       trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
@@ -1685,7 +1748,19 @@ try {
         &&trainingText.includes('completing the drill after Land stays at Earth')
         &&trainingText.includes('An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen')
         &&trainingText.includes('leaves the stored expedition unchanged')
-        &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction;
+        &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction,
+      artContradiction=/(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\\b(?:all|every)\\b[^.!?]{0,40}\\b1,?500\\b/i.test(artText)
+        ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(artText)
+        ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(artText)
+        ||/(?:lease|thumbnail)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,40}(?:after|when)[^.!?]{0,40}(?:Close|leave|unmount|filter)/i.test(artText),
+      artContract=artHeading==='Under the Hood'&&artText.includes('Species art loads on demand')
+        &&artText.includes('up to 1,500 logical entries while mounting the visible viewport plus half a viewport of overscan on each side (about two viewports total), plus at most the focused pinned row')
+        &&artText.includes('neutral placeholder to an exact 132px thumbnail keyed by the complete genome')
+        &&artText.includes('Search filters the logical count')
+        &&artText.includes('Back restores the saved row and focus')&&artText.includes('Close returns focus to the exact opener')
+        &&artText.includes('Planetside shares the same bounded thumbnail lease path')
+        &&artText.includes('leases release with their visible owners')
+        &&artText.includes('only specimen detail renders the exact 440px portrait')&&!artContradiction;
     const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
@@ -1693,15 +1768,15 @@ try {
       status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,headings,bulletCount:bullets.length,
       populated:bullets.length===44&&bullets.every((bullet)=>bullet.length>0),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
-      complete:charterPlacement&&trainingContract&&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
+      complete:charterPlacement&&trainingContract&&artContract&&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
         &&/a genuine empty-sky press still dismisses it/.test(text)
         &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
         &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
         &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text),
-      charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,
-      honest:!overclaim&&!trainingContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
+      charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
+      honest:!overclaim&&!trainingContradiction&&!artContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
       authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
   const releaseDraft = await evalIn(releaseDraftCheck);
@@ -1790,6 +1865,21 @@ try {
     || !releaseTrainingCopyCtl.restored) {
     fails.push('GUIDE RELEASE TRAINING CONTROL FAILED — stale/contradictory restore claims stayed current: '
       + JSON.stringify(releaseTrainingCopyCtl));
+  }
+  const releaseArtCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+    .find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||''));
+    if(!row)return {stale:{complete:true},contradiction:{honest:true},error:'missing species-art release row'};const prior=row.textContent;
+    row.textContent='📦 ART ARRIVES WHEN IT IS NEEDED: The large species-art payload loads lazily for Compendium or Planetside, shares one in-flight request, and retains only the latest subscriber per surface.';
+    const stale=${releaseDraftCheck};row.textContent=prior;
+    row.textContent=prior+' Thumbnail leases remain pinned after Close, and Planetside renders a 440px portrait for every row.';
+    const contradiction=${releaseDraftCheck};row.textContent=prior;
+    return {stale,contradiction,restored:row.textContent===prior};})()`);
+  if (releaseArtCopyCtl.stale.complete || releaseArtCopyCtl.stale.artContract
+    || releaseArtCopyCtl.contradiction.complete || releaseArtCopyCtl.contradiction.honest
+    || releaseArtCopyCtl.contradiction.artContract || !releaseArtCopyCtl.contradiction.artContradiction
+    || !releaseArtCopyCtl.restored) {
+    fails.push('GUIDE RELEASE ART CONTROL FAILED — pre-Arc-1A or contradictory thumbnail ownership stayed current: '
+      + JSON.stringify(releaseArtCopyCtl));
   }
   const releaseVersionCtl = await evalIn(`(()=>{ const heading=document.querySelector('#guidepanel .guide-topic [data-guide-heading]');
     if(!heading)return {identity:true,error:'missing release heading'};const prior=heading.textContent;heading.textContent=prior.replace('v2.0','v2x0');
@@ -4158,6 +4248,25 @@ try {
     || !/Toruneeus/.test(codexQueryBack.heading) || !codexQueryBack.focus) {
     fails.push('COMPENDIUM QUERY: Detail → Back lost the query or exact row focus: ' + JSON.stringify(codexQueryBack));
   }
+  await evalIn(`(()=>{ const input=document.getElementById('searchbox'); input.focus(); input.select(); return true; })()`);
+  await keyIn('Backspace', 'Backspace');
+  await keyIn('Enter', 'Enter');
+  const codexClearCheck = `(()=>{ const rows=[...document.querySelectorAll('#codexpanel [data-ci]')],heading=document.querySelector('#codexpanel h3'),
+    input=document.getElementById('searchbox'),text=heading?.textContent||''; return {panel:window.__CF_SLICE__.api.state().panelOpen,
+      count:rows.length,queryAbsent:!/Toruneeus|[“”]/.test(text),input:input?.value??null,
+      focus:document.activeElement===rows[0],heading:text}; })()`;
+  const codexCleared = await evalIn(codexClearCheck);
+  if (codexCleared.panel !== 'codex' || codexCleared.count !== 3 || !codexCleared.queryAbsent
+    || codexCleared.input !== '' || !codexCleared.focus) {
+    fails.push('COMPENDIUM QUERY CLEAR: empty Search Enter did not clear the open filtered list: '
+      + JSON.stringify(codexCleared));
+  }
+  const codexClearCtl = await evalIn(`(()=>{ const heading=document.querySelector('#codexpanel h3'),marker=document.createElement('span');
+    marker.textContent=' “Toruneeus”'; heading?.appendChild(marker); const result=${codexClearCheck}; marker.remove(); return result; })()`);
+  if (codexClearCtl.queryAbsent) {
+    fails.push('COMPENDIUM QUERY CLEAR CONTROL FAILED — injected retained filter stayed green: '
+      + JSON.stringify(codexClearCtl));
+  }
   await evalIn(`(()=>{ document.querySelector('#codexpanel [data-pnx]')?.click(); const opener=document.getElementById('railcodex');
     opener.focus(); opener.click(); return true; })()`);
   const codexFullCheck = `(()=>{ const rows=[...document.querySelectorAll('#codexpanel [data-ci]')],heading=document.querySelector('#codexpanel h3');
@@ -4616,9 +4725,10 @@ try {
 
   /* 4c-lazy-focus. Hold the actual Vite species-art chunk at the HTTP
      response boundary, so this cannot become a lucky sleep around the idle
-     prefetch. Keyboard-open Compendium while text rows are live, then release
-     the exact module request and require the replacement close control to
-     retain logical focus after portraits appear. */
+     prefetch. One document proves neutral placeholders become exact 132px
+     images in place without replacing Close/rows or focus. A second document
+     closes the owning Compendium before the same chunk is released and proves
+     that the stale completion cannot refill or commit into the closed panel. */
   const tLazy = await send('Target.createTarget', { url: URL5 + 'seed.html' });
   const aLazy = await send('Target.attachToTarget', { targetId: tLazy.targetId, flatten: true });
   const lazy = aLazy.sessionId;
@@ -4663,25 +4773,89 @@ try {
   };
   await evalLazy(`(()=>{ const opener=document.getElementById('railcodex'); opener.focus(); return true; })()`);
   await dispatchKeyPress(lazy, 'Enter', 'Enter');
-  const lazyBefore = await waitLazy('slow Compendium keyboard open', `(()=>{ const s=window.__CF_SLICE__.api.state(),close=document.querySelector('#codexpanel [data-pnx]');
-    const rows=[...document.querySelectorAll('#codexpanel [data-ci]')]; if(s.panelOpen!=='codex'||rows.length!==3)return null;
-    window.__cfLazyOriginalClose=close; return {rows:rows.length,images:document.querySelectorAll('#codexpanel [data-ci] img').length,
-      focus:document.activeElement===close}; })()`);
+  const lazyBefore = await waitLazy('slow Compendium keyboard open', `(()=>{ const S=window.__CF_SLICE__,d=S.api.compendiumDiagnostics(),
+    close=document.querySelector('#codexpanel [data-pnx]'),scroller=document.querySelector('#codexpanel [data-sel="codex-scroll"]'),
+    rows=[...document.querySelectorAll('#codexpanel [data-ci]')],images=rows.map(row=>row.querySelector('img'));
+    if(d.panel.mode!=='list'||d.lazyArt.state!=='loading'||rows.length!==3||images.some(image=>!image))return null;
+    const descriptions=rows.map(row=>{const id=row.getAttribute('aria-describedby');return {id,text:id?document.getElementById(id)?.textContent||'':''}});
+    window.__cfLazyOriginalClose=close;window.__cfLazyOriginalRows=rows;
+    return {rows:rows.length,images:images.length,generation:d.generation,renderCommits:d.panel.renderCommits,
+      placeholders:images.every(image=>image.dataset.thumbState==='placeholder'&&!image.hasAttribute('src')
+        &&image.naturalWidth===0&&image.naturalHeight===0&&image.getAttribute('width')==='132'&&image.getAttribute('height')==='132'
+        &&getComputedStyle(image).backgroundColor!=='rgba(0, 0, 0, 0)'),
+      focus:document.activeElement===close,closeLabel:close?.getAttribute('aria-label')||null,
+      group:scroller?.getAttribute('role')==='group'&&scroller?.getAttribute('aria-label')==='Compendium species',
+      nativePositions:rows.every((row,index)=>row.tagName==='BUTTON'&&row.type==='button'
+        &&!row.hasAttribute('aria-setsize')&&!row.hasAttribute('aria-posinset')
+        &&descriptions[index].text==='Item '+(Number(row.dataset.ci)+1)+' of 3')
+        &&new Set(descriptions.map(item=>item.id)).size===rows.length}; })()`);
+
+  const tLazyClosed = await send('Target.createTarget', { url: 'about:blank' });
+  const aLazyClosed = await send('Target.attachToTarget', { targetId: tLazyClosed.targetId, flatten: true });
+  const lazyClosed = aLazyClosed.sessionId;
+  await send('Runtime.enable', {}, lazyClosed);
+  await send('Page.enable', {}, lazyClosed);
+  await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false }, lazyClosed);
+  await navigateToSlice(lazyClosed, URL5, 'slow species-art closed-owner boot');
+  const evalLazyClosed = async (expr) => {
+    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, lazyClosed);
+    if (r.exceptionDetails) throw new Error('lazy-art closed-owner eval threw: '
+      + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
+    return r.result.value;
+  };
+  const waitLazyClosed = async (label, expr, timeoutMs = 8000) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = null;
+    while (Date.now() < deadline) {
+      last = await evalLazyClosed(expr);
+      if (last) return last;
+      await sleep(50);
+    }
+    throw new Error(`${label} did not reach its lazy-art outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  await evalLazyClosed(`(()=>{const opener=document.getElementById('railcodex');opener.focus();return true})()`);
+  await dispatchKeyPress(lazyClosed, 'Enter', 'Enter');
+  const lazyClosedBefore = await waitLazyClosed('slow Compendium closed-owner open', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics(),
+    close=document.querySelector('#codexpanel [data-pnx]'),images=[...document.querySelectorAll('#codexpanel [data-ci] img')];
+    return d.panel.mode==='list'&&d.lazyArt.state==='loading'&&images.length===3
+      &&images.every(image=>image.dataset.thumbState==='placeholder'&&!image.hasAttribute('src'))
+      ?{closedCompletionCommits:d.panel.closedCompletionCommits,renderCommits:d.panel.renderCommits,
+        focus:document.activeElement===close}:null})()`);
+  await dispatchKeyPress(lazyClosed, 'Enter', 'Enter');
+  const lazyClosedArmed = await evalLazyClosed(`(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();return {
+    mode:d.panel.mode,listImages:d.surfaces.list.imageCount,focus:document.activeElement?.id||null,
+    closedCompletionCommits:d.panel.closedCompletionCommits,renderCommits:d.panel.renderCommits}})()`);
   let slowRequestObserved = false;
   for (let i = 0; i < 100 && !slowRequestObserved; i++) {
     slowRequestObserved = slowSpeciesRequests.length > 0;
     if (!slowRequestObserved) await sleep(25);
   }
-  if (!slowRequestObserved || lazyBefore.images !== 0 || !lazyBefore.focus) {
-    fails.push('COMPENDIUM LAZY FOCUS: chunk was not deterministically held before the focused text-only list: '
-      + JSON.stringify({ slowRequestObserved, lazyBefore, held: slowSpeciesRequests.length }));
+  if (!slowRequestObserved || !lazyBefore.placeholders || !lazyBefore.focus || !lazyBefore.group
+    || !lazyBefore.nativePositions || lazyBefore.closeLabel !== 'Close Compendium'
+    || !lazyClosedBefore.focus || lazyClosedArmed.mode !== 'closed' || lazyClosedArmed.listImages !== 0
+    || lazyClosedArmed.focus !== 'railcodex'
+    || lazyClosedArmed.closedCompletionCommits !== lazyClosedBefore.closedCompletionCommits
+    || lazyClosedArmed.renderCommits !== lazyClosedBefore.renderCommits) {
+    fails.push('COMPENDIUM LAZY PLACEHOLDER/CLOSED OWNER: held chunk did not establish both exact owner states: '
+      + JSON.stringify({ slowRequestObserved, lazyBefore, lazyClosedBefore, lazyClosedArmed,
+        held: slowSpeciesRequests.length }));
   }
   releaseSlowSpecies();
-  const lazyAfter = await waitLazy('slow Compendium art refill', `(()=>{ const close=document.querySelector('#codexpanel [data-pnx]'),
-    images=document.querySelectorAll('#codexpanel [data-ci] img').length,replaced=close!==window.__cfLazyOriginalClose;
-    return images>=3&&replaced?{images,replaced,focus:document.activeElement===close}:null; })()`);
-  if (!lazyAfter.focus) {
-    fails.push('COMPENDIUM LAZY FOCUS: portrait refill replaced and lost the logical close focus: ' + JSON.stringify(lazyAfter));
+  const lazyAfter = await waitLazy('slow Compendium art refill', `(()=>{ const d=window.__CF_SLICE__.api.compendiumDiagnostics(),
+    close=document.querySelector('#codexpanel [data-pnx]'),rows=[...document.querySelectorAll('#codexpanel [data-ci]')],
+    images=rows.map(row=>row.querySelector('img'));if(images.some(image=>!image)||images.length!==3
+      ||!images.every(image=>image.dataset.thumbState==='ready'&&image.naturalWidth===132&&image.naturalHeight===132)
+      ||!d.art||d.art.live.queuedJobs!==0||d.art.live.activeJobs!==0)return null;
+    return {images:images.length,sameClose:close===window.__cfLazyOriginalClose,
+      sameRows:rows.length===window.__cfLazyOriginalRows.length&&rows.every((row,index)=>row===window.__cfLazyOriginalRows[index]),
+      generation:d.generation,renderCommits:d.panel.renderCommits,focus:document.activeElement===close,
+      exact132:images.every(image=>image.getAttribute('src')?.startsWith('data:image/')
+        &&image.naturalWidth===132&&image.naturalHeight===132)}; })()`, 30000);
+  if (!lazyAfter.sameClose || !lazyAfter.sameRows || !lazyAfter.focus || !lazyAfter.exact132
+    || lazyAfter.generation !== lazyBefore.generation
+    || lazyAfter.renderCommits !== lazyBefore.renderCommits + 3) {
+    fails.push('COMPENDIUM LAZY IN-PLACE READY: placeholder publication replaced identity/focus or missed exact 132px commits: '
+      + JSON.stringify({ before: lazyBefore, after: lazyAfter }));
   }
   const lazyFocusCtl = await evalLazy(`(()=>{ const close=document.querySelector('#codexpanel [data-pnx]'),other=document.getElementById('railcodex');
     other.focus(); const failed=document.activeElement!==close; close?.focus(); return {failed,restored:document.activeElement===close}; })()`);
@@ -4689,7 +4863,55 @@ try {
     fails.push('COMPENDIUM LAZY FOCUS CONTROL FAILED — moving focus off the refilled close stayed green: '
       + JSON.stringify(lazyFocusCtl));
   }
+  await dispatchKeyPress(lazy, 'Tab', 'Tab');
+  const lazyFocusRingCheck = `(()=>{const row=document.activeElement?.closest?.('#codexpanel [data-ci]'),
+    scroller=document.querySelector('#codexpanel [data-sel="codex-scroll"]');if(!row||!scroller)return {ok:false,reason:'missing focused row/scroller'};
+    const r=row.getBoundingClientRect(),s=scroller.getBoundingClientRect(),cs=getComputedStyle(row),
+      width=parseFloat(cs.outlineWidth)||0,offset=parseFloat(cs.outlineOffset)||0,extension=Math.max(0,width+offset),
+      ringLeft=r.left-extension,ringRight=r.right+extension;
+    return {ok:row.matches(':focus-visible')&&cs.outlineStyle!=='none'&&width>=3&&offset<=-width
+        &&/inset/.test(cs.boxShadow)&&ringLeft>=s.left-0.5&&ringRight<=s.right+0.5,
+      focusVisible:row.matches(':focus-visible'),width,offset,boxShadow:cs.boxShadow,
+      rowLeft:r.left,rowRight:r.right,scrollerLeft:s.left,scrollerRight:s.right,ringLeft,ringRight};})()`;
+  const lazyFocusRing = await evalLazy(lazyFocusRingCheck);
+  if (!lazyFocusRing.ok) {
+    fails.push('COMPENDIUM FOCUS RING: native Tab focus paint escapes the horizontal clipping owner: '
+      + JSON.stringify(lazyFocusRing));
+  }
+  const lazyFocusRingCtl = await evalLazy(`(()=>{const row=document.activeElement?.closest?.('#codexpanel [data-ci]');if(!row)return null;
+    const value=row.style.getPropertyValue('outline-offset'),priority=row.style.getPropertyPriority('outline-offset');
+    row.style.setProperty('outline-offset','3px','important');const result=${lazyFocusRingCheck};
+    if(value)row.style.setProperty('outline-offset',value,priority);else row.style.removeProperty('outline-offset');return result})()`);
+  if (!lazyFocusRingCtl || lazyFocusRingCtl.ok || !(lazyFocusRingCtl.offset > 0)) {
+    fails.push('COMPENDIUM FOCUS RING CONTROL FAILED — injected outer ring stayed inside the clipped scroller: '
+      + JSON.stringify(lazyFocusRingCtl));
+  }
+
+  const lazyClosedOwnerPredicate = `(d)=>d.panel.mode==='closed'&&!d.panel.open
+    &&d.panel.closedCompletionCommits===${lazyClosedBefore.closedCompletionCommits}
+    &&d.panel.renderCommits===${lazyClosedBefore.renderCommits}
+    &&d.surfaces.list.imageCount===0&&d.lazyArt.state==='ready'
+    &&d.art&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0
+    &&document.activeElement?.id==='railcodex'`;
+  const lazyClosedAfter = await waitLazyClosed('released chunk closed-owner settlement', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
+    return d.lazyArt.state==='ready'&&d.art&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0
+      ?{ok:(${lazyClosedOwnerPredicate})(d),mode:d.panel.mode,listImages:d.surfaces.list.imageCount,
+        focus:document.activeElement?.id||null,closedCompletionCommits:d.panel.closedCompletionCommits,
+        renderCommits:d.panel.renderCommits}:null})()`, 30000);
+  if (!lazyClosedAfter.ok) {
+    fails.push('COMPENDIUM CLOSED OWNER: released lazy chunk committed/refilled after Close or lost opener focus: '
+      + JSON.stringify({ before: lazyClosedBefore, armed: lazyClosedArmed, after: lazyClosedAfter }));
+  }
+  const lazyClosedOwnerCtl = await evalLazyClosed(`(()=>{const api=window.__CF_SLICE__.api,prior=api.compendiumDiagnostics;let accepted=false;
+    try{api.compendiumDiagnostics=()=>{const d=prior();return {...d,panel:{...d.panel,
+      closedCompletionCommits:d.panel.closedCompletionCommits+1}}};accepted=(${lazyClosedOwnerPredicate})(api.compendiumDiagnostics());}
+    finally{api.compendiumDiagnostics=prior}return {rejected:!accepted,restored:api.compendiumDiagnostics===prior}})()`);
+  if (!lazyClosedOwnerCtl.rejected || !lazyClosedOwnerCtl.restored) {
+    fails.push('COMPENDIUM CLOSED OWNER CONTROL FAILED — injected post-Close completion stayed green: '
+      + JSON.stringify(lazyClosedOwnerCtl));
+  }
   await send('Target.closeTarget', { targetId: tLazy.targetId });
+  await send('Target.closeTarget', { targetId: tLazyClosed.targetId });
 
   /* 4d. THE PHONE LEG (emulated): 390×844 @ DPR 3, touch. The physical
      hand-feel stays Nick's; this catches layout, touch wiring and pinch. */

@@ -1661,7 +1661,7 @@ function applyReviewedFaunaLineageDrift(c: Ctx, g: G, name: string): void {
   c.restore();
 }
 
-export function resolveOverride(g: G): string | null {
+export function resolveOverrideCanvas(g: G): HTMLCanvasElement | null {
   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it
      (Lion's Mane), which is exactly the mojibake Nick's audit caught */
   const earthName = String((g as { _earthName?: string })._earthName || '').replace(/[’‘]/g, "'");
@@ -1682,7 +1682,7 @@ export function resolveOverride(g: G): string | null {
      kingdom-qualified lookup prevents duplicate names crossing ownership. */
   const name = earthName || (kingdom === 'flora' || kingdom === 'fungi' || kingdom === 'microbe' || reviewedFaunaBlend ? blend : '');
   if (!name && blend) return null;
-  if (!name) return resolveProcedural(g);
+  if (!name) return resolveProceduralCanvas(g);
   /* ★ WAVE 18 — CANONICAL + CROSS-KINGDOM audit blockers. Four organisms live
      in TWO kingdoms each (the 1,014-vs-1,010 count delta), and a few iconic
      species need a bespoke painter regardless of which family the kingdom
@@ -1697,7 +1697,7 @@ export function resolveOverride(g: G): string | null {
     canon(ink.c, g, palette(g) as Pal);
     applyReviewedFaunaLineageDrift(ink.c, g, name);
     fitInk(ink.cv, c, kingdom + ':' + name);
-    return cv.toDataURL();
+    return cv;
   }
   /* FLORA (wave 2): iconic bespoke bodies first, then the name-seeded ladder
      for every member of the 16 byte-duplicate groups */
@@ -1713,7 +1713,7 @@ export function resolveOverride(g: G): string | null {
     const ink = newInk();
     (iconic || floraLadder)(ink.c, g, palette(g) as Pal, name);
     fitInk(ink.cv, c, 'flora:' + name);
-    return cv.toDataURL();
+    return cv;
   }
   /* FAUNA (wave 3): species whose defining anatomy was categorically wrong */
   if (kingdom === 'fauna') {
@@ -1728,7 +1728,7 @@ export function resolveOverride(g: G): string | null {
     else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);
     applyReviewedFaunaLineageDrift(ink.c, g, name);
     fitInk(ink.cv, c, 'fauna:' + name);
-    return cv.toDataURL();
+    return cv;
   }
   const painter = kingdom === 'fungi' ? FUNGI_NAME[name] : kingdom === 'microbe' ? MICROBE_NAME[name] : undefined;
   if (!painter) return null;
@@ -1738,7 +1738,13 @@ export function resolveOverride(g: G): string | null {
   const ink = newInk();
   painter(ink.c, g, palette(g));
   fitInk(ink.cv, c, kingdom + ':' + name);
-  return cv.toDataURL();
+  return cv;
+}
+
+/** Compatibility URL seam; new thumbnail work consumes the painted canvas. */
+export function resolveOverride(g: G): string | null {
+  const canvas = resolveOverrideCanvas(g);
+  return canvas ? canvas.toDataURL() : null;
 }
 
 /** How many species wave 1 corrects (for the record + the audit sentinel). */
@@ -1785,7 +1791,7 @@ const R2_MICROBE_COLONY_SEEDS: ReadonlySet<number> = new Set([
   1077367562, 4135221025, 753721544, 3287574574, 1224906226, 2757882450, 1718796946,
 ]);
 
-export function resolveProcedural(g: G): string | null {
+export function resolveProceduralCanvas(g: G): HTMLCanvasElement | null {
   /* ★ WAVE 17 — THE LAST MONO-TEMPLATE (Nick's audit §12/§13, for the
      PROCEDURAL spread). Wave 1 gave the NAMED fungi and microbes structural
      families, but every procedural genome in those two kingdoms still fell
@@ -1861,7 +1867,7 @@ export function resolveProcedural(g: G): string | null {
       gg.addColorStop(1, 'rgba(0,0,0,0)');
       c.fillStyle = gg; c.fillRect(0, 0, S, S);
     }
-    return cv.toDataURL();
+    return cv;
   }
   const plan = planFor(g as Record<string, unknown>);
   if (!plan) return null;
@@ -1895,5 +1901,11 @@ export function resolveProcedural(g: G): string | null {
     case 'radial': proceduralRadialFauna(ink.c, g, pal); break;
   }
   fitInk(ink.cv, c, who);
-  return cv.toDataURL();
+  return cv;
+}
+
+/** Compatibility URL seam for audit tools that consume the original API. */
+export function resolveProcedural(g: G): string | null {
+  const canvas = resolveProceduralCanvas(g);
+  return canvas ? canvas.toDataURL() : null;
 }

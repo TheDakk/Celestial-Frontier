@@ -1,7 +1,7 @@
 # Development Preview — Separate-Origin Human Playtesting
 
 **Status:** process reference, matches preview packaging and branch-site publication as of
-2026-08-15. This is not a release record.
+2026-08-16. This is not a release record.
 
 ## Separate-origin requirement; approved branch site
 
@@ -419,6 +419,12 @@ The ordinary battery (parallel-job structure since 2026-08-14) emits these artif
 - `v2-smoke-evidence` / `v2-glass-evidence`: `slice-smoke-report.json` + log and
   `glassmatrix-report.json` (now including per-viewport `viewportTimings`), uploaded by
   their own jobs so red runs retain evidence;
+- `v2-compendium-memory-evidence`: the exact-run `compendiummem-report.json` and every
+  same-run phone/desktop list, detail, and focus-pinned review artifact produced. A terminal
+  product PASS/FAIL must bind the complete six-image packet; an earlier instrument failure may
+  diagnose why none exists. The independent job runs the browser-free instrument selftest before
+  one ordinary active-budget certification, then always verifies the named run id and uploads
+  current evidence even when the gate is red;
 - `battery-reports`: the joined smoke/glass/persona bundle assembled by the final
   `v2-persona-preview` job;
 - `v2-browser-evidence`: the real-browser screenshots;
@@ -451,9 +457,12 @@ When available on the default branch, the manual workflow:
    should be configured before the first candidate run (the environment name alone does
    not create reviewer protection);
 4. reruns deterministic, type, art, browser, and preview-producer controls;
-5. passes the explicit `--approved-publication-candidate` producer flag and uploads
+5. runs the Compendium memory selftest followed by one ordinary active-budget certification,
+   always verifies its exact run id, and retains its current report plus every same-run review
+   artifact even on failure;
+6. passes the explicit `--approved-publication-candidate` producer flag and uploads
    evidence plus that candidate for 14 days;
-6. has only `contents: read` permission—no Pages token, deployment token, repository write,
+7. has only `contents: read` permission—no Pages token, deployment token, repository write,
    or production capability.
 
 The automated-persona synthesis joins only passing slice-smoke and 12-viewport glass reports

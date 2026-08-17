@@ -4675,6 +4675,8 @@ async function main() {
               {id:'codes',required:['Before any shared galaxy, star, or planet route is accepted','uses only the source-verified destination','A stale or forged code leaves the current view unchanged and keeps the exact query in Search'],forbidden:['Opening it returns another explorer to the live system survey'],stale:'Share on a planet card prepares a deterministic CF1 address. Opening it returns another explorer to the live system survey when the destination is inside that expedition’s saved reach.'},
               {id:'atlas',required:['Each saved galaxy, star, or planet route is regenerated from the seeded universe','must produce a source-verified destination before its row can travel','A stale, forged, or incomplete imported route remains visible but disabled'],forbidden:['choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level'],stale:'Use Star Atlas on a planet card to chart it. The Atlas lists saved galaxies, stars, and worlds; choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level.'},
               {id:'determinism',required:['A CF1 address is a pointer into that shared math, not authority of its own','accepts only a source-verified match','a stale or forged address cannot replace the current view'],forbidden:['which is why deterministic CF1 addresses work without an account or game server'],stale:'The same supported coordinates resolve to the same galaxy, star, world, and current-slice survey, which is why deterministic CF1 addresses work without an account or game server.'},
+              {id:'kingdoms',required:['read-only Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','Discovery, capture, husbandry, renaming, and other collection-writing actions remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Capture is now live'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Capture is now live.']},
+              {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','profile remains read-only','Capture, feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry or collection-writing outcomes are deliberately absent'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Capture is now live'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Capture is now live.']},
               {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
               {id:'saving',paragraph:1,required:['On reload, a saved galaxy, star, or planet location is regenerated from the seeded universe','accepted only when it is source-verified','If that saved location is stale, forged, or incomplete, the view returns safely to Cosmos','normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'A newer-build, incomplete, or corrupt stored expedition remains protected, and there is no cloud account yet.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
             ];
@@ -4751,9 +4753,10 @@ async function main() {
             worldCode=bulletNodes.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
             atlasRoute=bulletNodes.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
             training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
+            art=bulletNodes.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
             headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
-            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),trainingHeading=headingFor(training),
-            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',
+            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),trainingHeading=headingFor(training),artHeading=headingFor(art),
+            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',
             charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
             ingressPlacement=!!worldCode&&!!atlasRoute&&worldCode!==atlasRoute&&worldCodeHeading==='Gameplay'&&atlasRouteHeading==='Gameplay',
             worldCodeContract=worldCodeText.includes('Every accepted galaxy, star, or planet route is regenerated from the seeded universe and source-verified instead of trusting the code.')
@@ -4786,15 +4789,27 @@ async function main() {
               &&trainingText.includes('completing the drill after Land stays at Earth')
               &&trainingText.includes('An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen')
               &&trainingText.includes('leaves the stored expedition unchanged')
-              &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction;
+              &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction,
+            artContradiction=/(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\\b(?:all|every)\\b[^.!?]{0,40}\\b1,?500\\b/i.test(artText)
+              ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(artText)
+              ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(artText)
+              ||/(?:lease|thumbnail)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,40}(?:after|when)[^.!?]{0,40}(?:Close|leave|unmount|filter)/i.test(artText),
+            artContract=artHeading==='Under the Hood'&&artText.includes('Species art loads on demand')
+              &&artText.includes('up to 1,500 logical entries while mounting the visible viewport plus half a viewport of overscan on each side (about two viewports total), plus at most the focused pinned row')
+              &&artText.includes('neutral placeholder to an exact 132px thumbnail keyed by the complete genome')
+              &&artText.includes('Search filters the logical count')
+              &&artText.includes('Back restores the saved row and focus')&&artText.includes('Close returns focus to the exact opener')
+              &&artText.includes('Planetside shares the same bounded thumbnail lease path')
+              &&artText.includes('leases release with their visible owners')
+              &&artText.includes('only specimen detail renders the exact 440px portrait')&&!artContradiction;
           const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
             ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
-          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!trainingContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
+          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!trainingContradiction&&!artContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
             &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===44&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
-            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&trainingContract
+            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&trainingContract&&artContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
             &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
@@ -4806,7 +4821,7 @@ async function main() {
             &&honest&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
             identity,honest,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
             charterPlacement,firstHeading,recoveryHeading,ingressPlacement,worldCodeHeading,atlasRouteHeading,
-            worldCodeContract,atlasRouteContract,trainingHeading,trainingContract,trainingContradiction,rnSeen:state.rnSeen,
+            worldCodeContract,atlasRouteContract,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,rnSeen:state.rnSeen,
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
@@ -4823,11 +4838,12 @@ async function main() {
               worldCode=items.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
               atlasRoute=items.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
               training=items.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
-              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',
+              art=items.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
+              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',
               recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling;
-            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,authority=null,error=null;
+            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artContradictory=null,authority=null,error=null;
             try {
-              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!training||!recoveryParent)throw new Error('development-detail control fixture missing');
+              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!training||!art||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
@@ -4859,6 +4875,10 @@ async function main() {
               trainingLegacyContradictory=${developmentDetailCheck};training.textContent=trainingText;
               training.textContent=trainingText+' An unrecognized checkpoint can close recovery, clear the stored expedition, and continue exploring.';
               trainingRecoveryContradictory=${developmentDetailCheck};training.textContent=trainingText;
+              art.textContent='📦 ART ARRIVES WHEN IT IS NEEDED: The large species-art payload loads lazily for Compendium or Planetside, shares one in-flight request, and retains only the latest subscriber per surface.';
+              artStale=${developmentDetailCheck};art.textContent=artText;
+              art.textContent=artText+' Thumbnail leases remain pinned after Close, and Planetside renders a 440px portrait for every row.';
+              artContradictory=${developmentDetailCheck};art.textContent=artText;
               S.api.state=()=>({...priorState(),rnSeen:'v2-control'});authority=${developmentDetailCheck};
             } catch(cause) { error=String(cause?.message||cause); }
             finally {
@@ -4866,12 +4886,12 @@ async function main() {
               if(middle&&parent&&!middle.isConnected)parent.insertBefore(middle,next);if(title)title.textContent=titleText;if(claim)claim.textContent=claimText;
               if(panelBoundary)panelBoundary.textContent=panelBoundaryText;
               if(first)first.textContent=firstText;if(recovery){recovery.textContent=recoveryText;if(recoveryParent&&recovery.parentNode!==recoveryParent)recoveryParent.insertBefore(recovery,recoveryNext);}
-              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(training)training.textContent=trainingText;S.api.state=priorState;
+              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(training)training.textContent=trainingText;if(art)art.textContent=artText;S.api.state=priorState;
             }
             const restored=headings[0]?.textContent===a&&headings[1]?.textContent===b&&middle?.isConnected===true
               &&title?.textContent===titleText&&claim?.textContent===claimText&&first?.textContent===firstText
               &&panelBoundary?.textContent===panelBoundaryText&&recovery?.textContent===recoveryText
-              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&training?.textContent===trainingText&&S.api.state===priorState;
+              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&training?.textContent===trainingText&&art?.textContent===artText&&S.api.state===priorState;
             return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===43
               &&identity?.ok===false&&identity?.identity===false&&overclaim?.ok===false&&overclaim?.honest===false
               &&closeContract?.ok===false&&panelBoundaryContract?.ok===false&&emptySkyContract?.ok===false
@@ -4884,8 +4904,10 @@ async function main() {
               &&trainingRecoveryStale?.ok===false&&trainingRecoveryStale?.trainingContract===false
               &&trainingLegacyContradictory?.ok===false&&trainingLegacyContradictory?.honest===false&&trainingLegacyContradictory?.trainingContradiction===true
               &&trainingRecoveryContradictory?.ok===false&&trainingRecoveryContradictory?.honest===false&&trainingRecoveryContradictory?.trainingContradiction===true
+              &&artStale?.ok===false&&artStale?.artContract===false
+              &&artContradictory?.ok===false&&artContradictory?.honest===false&&artContradictory?.artContract===false&&artContradictory?.artContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
-              order,inventory,identity,overclaim,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,authority,restored,error};})()`);
+              order,inventory,identity,overclaim,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,artStale,artContradictory,authority,restored,error};})()`);
           if (!detailControls.ok) {
             instrumentFailures.push(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
           }

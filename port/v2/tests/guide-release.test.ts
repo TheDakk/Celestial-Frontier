@@ -74,6 +74,55 @@ const TRAINING_LEGACY_RECOVERY_CONTRADICTIONS = Object.freeze([
   /(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:discard|clear|overwrite|silently ignore)/i,
 ]);
 
+const COMPENDIUM_COPY_CONTRADICTIONS = Object.freeze([
+  /(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\b(?:all|every)\b[^.!?]{0,40}\b1,?500\b/i,
+  /(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i,
+  /(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i,
+  /(?:lease|thumbnail)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,40}(?:after|when)[^.!?]{0,40}(?:Close|leave|unmount|filter)/i,
+  /(?:capture|feeding|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i,
+]);
+
+function compendiumCatalogueCopyIsTruthful(body: string): boolean {
+  return /read-only <b>Compendium<\/b> presents up to 1,500 logical entries/i.test(body)
+    && /Search filters those saved records/i.test(body)
+    && /count reports the logical matches/i.test(body)
+    && /choosing a row opens its detail/i.test(body)
+    && /mounts the visible viewport plus half a viewport of overscan on each side \(about two viewports total\)/i.test(body)
+    && /plus at most the focused pinned row/i.test(body)
+    && /neutral placeholder/i.test(body)
+    && /exact <b>132px<\/b> thumbnail/i.test(body)
+    && /complete genome[^.!?]{0,80}not only the displayed name or seed[^.!?]{0,80}owns visual identity/i.test(body)
+    && /Planetside shares the same bounded thumbnail lease path/i.test(body)
+    && /thumbnails are released when their visible owner leaves/i.test(body)
+    && /Discovery, capture, husbandry, renaming, and other collection-writing actions remain unavailable/i.test(body)
+    && COMPENDIUM_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+}
+
+function specimenDetailCopyIsTruthful(body: string): boolean {
+  return /exact <b>440px<\/b> portrait/i.test(body)
+    && /same complete-genome identity as its exact 132px list thumbnail/i.test(body)
+    && /440px image is reserved for this detail rather than the list or Planetside/i.test(body)
+    && /<b>Back<\/b> returns to the saved list position and restores focus to the same logical row/i.test(body)
+    && /<b>Close<\/b> returns focus to the exact Compendium opener/i.test(body)
+    && /profile remains read-only/i.test(body)
+    && /Capture, feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry or collection-writing outcomes are deliberately absent/i.test(body)
+    && COMPENDIUM_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+}
+
+function compendiumArtReleaseCopyIsTruthful(body: string): boolean {
+  return /ART ARRIVES WHEN IT IS NEEDED/i.test(body)
+    && /Species art loads on demand/i.test(body)
+    && /up to 1,500 logical entries while mounting the visible viewport plus half a viewport of overscan on each side \(about two viewports total\), plus at most the focused pinned row/i.test(body)
+    && /neutral placeholder to an exact 132px thumbnail keyed by the complete genome/i.test(body)
+    && /Search filters the logical count/i.test(body)
+    && /Back restores the saved row and focus/i.test(body)
+    && /Close returns focus to the exact opener/i.test(body)
+    && /Planetside shares the same bounded thumbnail lease path/i.test(body)
+    && /leases release with their visible owners/i.test(body)
+    && /only specimen detail renders the exact 440px portrait/i.test(body)
+    && COMPENDIUM_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+}
+
 function trainingRestoreCopyIsTruthful(body: string): boolean {
   return /normal Finish or Skip source-verifies and immediately restores the exact pre-Training view/i.test(body)
     && /If verification pauses, that exact view stays saved/i.test(body)
@@ -401,6 +450,47 @@ describe('v2 Guide capability filter', () => {
     )).toBe(false);
   });
 
+  it('documents the bounded Compendium art, virtualization, and focus contract without collection-writer overclaims', () => {
+    const kingdoms = getGuideTopic('kingdoms')!.body;
+    const specimen = getGuideTopic('specimen')!.body;
+    const artBullet = V2_DRAFT_RELEASE.sections
+      .flatMap((section) => section.bullets)
+      .find((bullet) => bullet.includes('ART ARRIVES WHEN IT IS NEEDED'));
+
+    expect(artBullet).toBeDefined();
+    expect(compendiumCatalogueCopyIsTruthful(kingdoms)).toBe(true);
+    expect(specimenDetailCopyIsTruthful(specimen)).toBe(true);
+    expect(compendiumArtReleaseCopyIsTruthful(artBullet!)).toBe(true);
+
+    /* Bidirectional controls: pre-Arc-1A copy and required-contract removal
+       must fail, and an appended contradictory behavior must also turn the
+       same semantic predicate red. */
+    expect(compendiumCatalogueCopyIsTruthful(
+      'The Compendium reads the expedition\'s discovered life. Choose a row to inspect its deterministic portrait.',
+    )).toBe(false);
+    expect(compendiumCatalogueCopyIsTruthful(
+      kingdoms.replace('mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total), plus at most the focused pinned row', 'shows a long scrolling list'),
+    )).toBe(false);
+    expect(compendiumCatalogueCopyIsTruthful(
+      kingdoms + ' The Compendium mounts all 1,500 portraits at once.',
+    )).toBe(false);
+    expect(specimenDetailCopyIsTruthful(
+      specimen.replace('Close</b> returns focus to the exact Compendium opener', 'Close</b> dismisses the panel'),
+    )).toBe(false);
+    expect(specimenDetailCopyIsTruthful(
+      specimen + ' Planetside renders a 440px portrait for every row.',
+    )).toBe(false);
+    expect(compendiumArtReleaseCopyIsTruthful(
+      'ART ARRIVES WHEN IT IS NEEDED: The large species-art payload loads lazily for Compendium or Planetside and retains only the latest subscriber per surface.',
+    )).toBe(false);
+    expect(compendiumArtReleaseCopyIsTruthful(
+      artBullet!.replace('keyed by the complete genome', 'keyed by the displayed name'),
+    )).toBe(false);
+    expect(compendiumArtReleaseCopyIsTruthful(
+      artBullet! + ' Thumbnail leases remain pinned after Close.',
+    )).toBe(false);
+  });
+
   it('keeps the player Guide scope honest about deliberately hidden dormant topics', () => {
     const visible = getGuideCatalogue().flatMap((category) => category.topics);
     expect(visible.some((topic) => topic.id === 'beacon' || topic.id === 'events')).toBe(false);
@@ -506,6 +596,10 @@ describe('legacy and v2 release channels', () => {
       /All 56 v1 releases and 398 legacy bullets/,
       /successful develop push battery/,
       /mechanics that are not yet playable are labelled instead of promised/,
+      /up to 1,500 logical entries while mounting the visible viewport plus half a viewport of overscan on each side \(about two viewports total\), plus at most the focused pinned row/,
+      /neutral placeholder to an exact 132px thumbnail keyed by the complete genome/,
+      /Planetside shares the same bounded thumbnail lease path/,
+      /only specimen detail renders the exact 440px portrait/,
       /Automated lenses still do not replace human play/,
       /production remains the v1\.8\.9 main-branch site/,
     ];
@@ -519,6 +613,7 @@ describe('legacy and v2 release channels', () => {
       /(?:whole|entire) (?:save|expedition)[^.!?]{0,80}(?:corrupt|rolls? back|rollback|is lost)/i,
       ...TRAINING_RESTORE_CONTRADICTIONS,
       ...TRAINING_LEGACY_RECOVERY_CONTRADICTIONS,
+      ...COMPENDIUM_COPY_CONTRADICTIONS,
     ];
     const bulletinOutcome = (sections: readonly {
       readonly category: string;

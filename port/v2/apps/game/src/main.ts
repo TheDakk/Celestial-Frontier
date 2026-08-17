@@ -28,6 +28,19 @@ import {
 import { initAudio, playWhoosh, playSurveyPing, applySfxGain } from '@cf/audio';
 import { registerPanel, fillPanel, togglePanel, openPanel, closePanels, openPanelId } from './panels.js';
 import {
+  CompendiumVirtualList,
+  type CompendiumVirtualRow,
+  type CompendiumReturnState,
+  type CompendiumWindowSnapshot,
+} from './compendium.js';
+import {
+  bindSpeciesThumb,
+  speciesArtLoader,
+  SpeciesThumbLeaseGroup,
+  type SpeciesArtModule,
+  type SpeciesThumbBinding,
+} from './species-art-loader.js';
+import {
   initTraining, gameEvent, trainingActive, trainingStepId,
   type TrainingEndIntent, type TrainingEndResult,
 } from './training.js';
@@ -75,33 +88,7 @@ document.title = `Celestial Frontier v${V2_DEVELOPMENT_VERSION} — Development`
 installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt fully replaces the hooks */
 /* THE PORTRAIT ENGINE IS A LAZY CHUNK: ~352KB gzip of species art stays off the boot
    path; the first Compendium/planetside view kicks the load and refills
-   itself when the painters arrive (idle-prefetched after boot). */
-type SArt = { speciesPortrait: (g: Record<string, unknown>) => string; speciesThumb: (g: Record<string, unknown>) => string };
-let SA: SArt | null = null;
-let saPromise: Promise<SArt> | null = null;
-const saSubscribers = new Map<string, () => void>();
-function ensureSA(key: 'codex' | 'planetside' | 'prefetch', onReady: () => void): boolean {
-  if (SA) return true;
-  /* One latest invalidation per view. A raw Promise `.then` per call can
-     retain 1,500 Compendium-row callbacks and replay the whole list 1,500
-     times when the chunk resolves. Distinct views still all hear readiness. */
-  saSubscribers.set(key, onReady);
-  /* Every interested view subscribes to the same import. The old boolean
-     retained only the callback that STARTED the load; if the 3s prefetch
-     won the race, a Compendium/Planetside callback arriving in-flight was
-     discarded and the view stayed empty until reopened. */
-  saPromise ??= import('@cf/art/species')
-    .then((mod) => {
-      SA = mod as unknown as SArt;
-      const callbacks = [...saSubscribers.values()];
-      saSubscribers.clear();
-      for (const callback of callbacks) try { callback(); } catch { /* another subscribed view still refills */ }
-      return SA;
-    })
-    .catch((error) => { saPromise = null; throw error; });
-  void saPromise.catch(() => { /* a later request retries; latest subscribers stay queued */ });
-  return false;
-}
+   itself when the painters arrive. No boot timer imports its DOM-mutating chunk. */
 /* app-state seams the VERBATIM descriptor code reads as globals (D-ST in
    DEVIATIONS — describePick reads `st`/`customNames` inside a [domain]
    module; the port passes state explicitly when Phase 4 rebuilds the card
@@ -1079,43 +1066,163 @@ document.getElementById('guidepanel')!.addEventListener('click', (event) => {
 });
 
 /* ---- COMPENDIUM (read-only over the save's codex — the real catalog).
-   Large catalogs get virtualization later (plan bullet); the list caps at
-   the save's own 1500-entry bound today. ---- */
+   The logical catalogue may contain 1,500 records; only approximately two
+   viewports plus a pinned focused row own DOM and thumbnail leases. ---- */
+type CodexRecord = SaveStateV2['codex'][number][1];
+type CodexVirtualRow = CompendiumVirtualRow<CodexRecord>;
+type CodexReturnState = CompendiumReturnState;
+type CodexMode = 'closed' | 'list' | 'detail';
+const EMPTY_CODEX_WINDOW: CompendiumWindowSnapshot = Object.freeze({
+  start: 0, end: 0, overscan: 0, beforePx: 0, afterPx: 0,
+  mountedRowCount: 0, mountedLogicalIds: Object.freeze([]),
+  focusedLogicalId: null, pinnedLogicalIds: Object.freeze([]),
+});
 let codexFilter = '';
-function fillCodex(filter?: string, focusIndex?: number): void {
-  if (!save) return;
-  codexFilter = filter ?? codexFilter;
+let codexMode: CodexMode = 'closed';
+let codexGeneration = 0;
+let codexList: CompendiumVirtualList<CodexRecord> | null = null;
+let codexRows: readonly CodexVirtualRow[] = Object.freeze([]);
+let codexWindow: CompendiumWindowSnapshot = EMPTY_CODEX_WINDOW;
+let codexReturnState: CodexReturnState | null = null;
+let codexDetailLogicalId: string | null = null;
+let codexDetailArtCancel: (() => void) | null = null;
+let codexRenderCommits = 0;
+let codexStaleCompletionDrops = 0;
+let codexClosedCompletionCommits = 0;
+let compendiumFixtureRows: Array<[string, CodexRecord]> | null = null;
+
+function disposeCodexList(): void {
+  codexList?.dispose();
+  codexList = null;
+  codexWindow = EMPTY_CODEX_WINDOW;
+}
+function cancelCodexDetailArt(): void {
+  codexDetailArtCancel?.();
+  codexDetailArtCancel = null;
+}
+function closeCodexSurface(): void {
+  const wasOpen = codexMode !== 'closed';
+  disposeCodexList();
+  cancelCodexDetailArt();
+  /* Detail uses the approved 440px portrait path rather than a thumbnail
+     lease. Closing still relinquishes its retained DOM decode immediately;
+     the art cache remains under the package's own byte budget. */
+  for (const image of document.querySelectorAll<HTMLImageElement>('#codexpanel img')) {
+    image.removeAttribute('src');
+  }
+  codexRows = Object.freeze([]);
+  codexMode = 'closed';
+  codexDetailLogicalId = null;
+  document.getElementById('codexpanel')!.classList.remove('codex-list-mode');
+  if (wasOpen) codexGeneration++;
+}
+function activeCodexSource(): Array<[string, CodexRecord]> {
+  return compendiumFixtureRows ?? save.codex;
+}
+function filteredCodexRows(): readonly CodexVirtualRow[] {
   const f = codexFilter.toLowerCase();
-  /* Subscribe the VIEW once, not once per creature. With the shared import
-     Promise, putting this inside `rows.map` retained up to 1,500 callbacks;
-     resolving the chunk then launched 1,500 eager full-list rerenders. */
-  if (!SA) ensureSA('codex', () => {
-    if (openPanelId() !== 'codex') return;
-    /* The lazy art chunk may resolve after keyboard focus has entered the
-       list. Repainting thumbnails replaces the panel subtree, so carry the
-       logical close/row target across that async refill instead of dropping
-       focus to body on slower devices. */
-    const active = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    const rowIndex = active?.closest<HTMLElement>('[data-ci]')?.dataset.ci;
-    const closeFocused = !!active?.closest('#codexpanel [data-pnx]');
-    fillCodex(codexFilter, rowIndex === undefined ? undefined : +rowIndex);
-    if (closeFocused) document.querySelector<HTMLElement>('#codexpanel [data-pnx]')?.focus();
+  return Object.freeze(activeCodexSource()
+    .map(([logicalId, value], sourceIndex) => ({ logicalId: String(logicalId), sourceIndex, value }))
+    .filter(({ value }) => !f
+      || (value.name + ' ' + value.kind + ' ' + value.realm).toLowerCase().includes(f)));
+}
+function filteredCodexCount(): number {
+  const f = codexFilter.toLowerCase();
+  if (!f) return activeCodexSource().length;
+  let count = 0;
+  for (const [, value] of activeCodexSource()) {
+    if ((value.name + ' ' + value.kind + ' ' + value.realm).toLowerCase().includes(f)) count++;
+  }
+  return count;
+}
+function mountCodexRow(row: CodexVirtualRow, generation: number): {
+  readonly element: HTMLButtonElement;
+  dispose(): void;
+} {
+  const e = row.value;
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'centry compendium-row';
+  button.dataset.sel = 'codex-entry';
+  button.dataset.ci = String(row.sourceIndex);   /* compatibility for existing smoke selectors */
+  const image = document.createElement('img');
+  image.className = 'compendium-thumb';
+  image.alt = '';
+  image.width = 132;
+  image.height = 132;
+  const copy = document.createElement('span');
+  copy.className = 'compendium-row-copy';
+  copy.innerHTML = `<b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span>` +
+    `<span class="sub compendium-row-origin">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</span>`;
+  button.append(image, copy);
+  let binding: SpeciesThumbBinding | null = null;
+  let disposed = false;
+  /* CompendiumVirtualList connects and assigns the logical id after this
+     factory returns. Acquire on the next microtask so a warm synchronous hit
+     is still subject to the same connection/key guards as an async miss. */
+  queueMicrotask(() => {
+    if (disposed || !button.isConnected || button.dataset.cid !== row.logicalId) return;
+    binding = bindSpeciesThumb(speciesArtLoader, {
+      owner: `codex:${generation}:${row.logicalId}`,
+      image,
+      genome: e.g as Record<string, unknown>,
+      isCurrent: () => codexGeneration === generation
+        && codexMode === 'list'
+        && openPanelId() === 'codex'
+        && button.dataset.cid === row.logicalId,
+      onCommit: () => {
+        if (openPanelId() === 'codex' && codexMode === 'list') codexRenderCommits++;
+        else codexClosedCompletionCommits++;
+      },
+      onStale: () => { codexStaleCompletionDrops++; },
+    });
   });
-  const rows = save.codex
-    .map(([, e], i) => ({ e, i }))
-    .filter(({ e }) => !f || (e.name + ' ' + e.kind + ' ' + e.realm).toLowerCase().includes(f));
+  return {
+    element: button,
+    dispose: () => { disposed = true; binding?.release(); binding = null; },
+  };
+}
+function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
+  if (!save) return;
+  /* Keep the prior window's leases alive through the new window's mount
+     microtasks. A retained row then acquires the same real in-flight job
+     before old ownership releases, exercising ordinary deduplication without
+     retaining any thumbnail into detail or adding an evidence-only lease. */
+  const previousList = codexList;
+  codexList = null;
+  codexWindow = EMPTY_CODEX_WINDOW;
+  cancelCodexDetailArt();
+  codexFilter = filter ?? codexFilter;
+  codexMode = 'list';
+  codexDetailLogicalId = null;
+  const generation = ++codexGeneration;
+  codexRows = filteredCodexRows();
+  const f = codexFilter.toLowerCase();
+  const panel = document.getElementById('codexpanel')!;
+  panel.classList.add('codex-list-mode');
   fillPanel('codex',
-    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${rows.length}</span>${f ? ` <span class="sub" style="color:var(--dim);font-size:12px">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
-    (rows.length === 0
+    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${codexRows.length}</span>${f ? ` <span class="sub codex-query">· “${esc(codexFilter)}”</span>` : ''}</h3>` +
+    (codexRows.length === 0
       ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — imported discoveries appear here. Live catalogue writing arrives with the discovery path.'}</div>`
-      : rows.map(({ e, i }) => {
-        let th = '';
-        if (SA) { try { th = SA.speciesThumb(e.g as never); } catch { /* text row still reads */ } }
-        return `<button type="button" class="centry" data-sel="codex-entry" data-ci="${i}" style="display:flex;gap:10px;align-items:center">` +
-          (th ? `<img src="${th}" alt="" style="width:44px;height:44px;border-radius:8px;border:1px solid #22304a;background:#0b1220;flex:0 0 44px">` : '') +
-          `<span style="min-width:0"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><span class="sub" style="display:block">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</span></span></button>`;
-      }).join('')));
-  if (focusIndex !== undefined) document.querySelector<HTMLElement>(`#codexpanel [data-ci="${focusIndex}"]`)?.focus();
+      : '<div class="compendium-scroll" data-sel="codex-scroll" role="group" aria-label="Compendium species"></div>'));
+  if (!codexRows.length) {
+    previousList?.dispose();
+    codexReturnState = null;
+    return;
+  }
+  const scroller = panel.querySelector<HTMLElement>('[data-sel="codex-scroll"]')!;
+  const nextList = new CompendiumVirtualList({
+    scroller,
+    rows: codexRows,
+    mountRow: (row) => mountCodexRow(row, generation),
+  });
+  codexList = nextList;
+  if (restore) nextList.restoreState(restore);
+  queueMicrotask(() => {
+    if (codexList === nextList && codexGeneration === generation) nextList.refreshWindow();
+  });
+  if (previousList) queueMicrotask(() => previousList.dispose());
+  codexReturnState = null;
 }
 /* the Compendium DETAIL CARD: the whole domain stack speaking for one
    creature — describeSpecies (fixture-pinned sentences + fauna enrichments),
@@ -1124,8 +1231,27 @@ function fillCodex(filter?: string, focusIndex?: number): void {
    a separate Phase 5 pipeline. */
 function fillCodexDetail(idx: number): void {
   if (!save) return;
-  const row = save.codex[idx];
+  const row = activeCodexSource()[idx];
   if (!row) { fillCodex(); return; }
+  if (codexList) {
+    const state = codexList.captureState();
+    /* Back returns to the activated logical row even on touch browsers that
+       do not focus a button during pointer activation. */
+    codexReturnState = Object.freeze({
+      scrollTop: state.scrollTop,
+      focusedLogicalId: String(row[0]),
+      anchorLogicalId: state.anchorLogicalId,
+      anchorOffsetPx: state.anchorOffsetPx,
+      anchorHeightPx: state.anchorHeightPx,
+    });
+  }
+  disposeCodexList();
+  codexRows = Object.freeze([]);
+  cancelCodexDetailArt();
+  const generation = ++codexGeneration;
+  codexMode = 'detail';
+  codexDetailLogicalId = String(row[0]);
+  document.getElementById('codexpanel')!.classList.remove('codex-list-mode');
   const e = row[1];
   let body = '';
   try {
@@ -1135,12 +1261,22 @@ function fillCodexDetail(idx: number): void {
     const mx = Math.max(1, ...KEYS.map((k) => st[k] || 0));
     const names = STAT_NAMES as readonly string[], hues = STAT_HUES as readonly string[];
     let portrait = '';
-    const idx0 = idx;
-    if (ensureSA('codex', () => { if (openPanelId() === 'codex') fillCodexDetail(idx0); })) {
-      try { portrait = SA!.speciesPortrait(e.g as never); } catch { /* a genome the painter cannot dress — the card still reads */ }
+    const ready = speciesArtLoader.request('codex-detail', (art) => {
+      if (!art || codexGeneration !== generation || codexMode !== 'detail'
+        || codexDetailLogicalId !== String(row[0]) || openPanelId() !== 'codex') {
+        codexStaleCompletionDrops++;
+        return;
+      }
+      fillCodexDetail(idx);
+    });
+    codexDetailArtCancel = ready.cancel;
+    const art: SpeciesArtModule | null = ready.art;
+    if (art) {
+      codexDetailArtCancel = null;
+      try { portrait = art.speciesPortrait(e.g as never); } catch { /* a genome the painter cannot dress — the card still reads */ }
     }
     body =
-      (portrait ? `<img data-sel="detail-portrait" src="${portrait}" alt="" style="width:100%;border-radius:10px;border:1px solid #22304a;margin:2px 0 8px;background:#0b1220">` : '') +
+      (portrait ? `<img data-sel="detail-portrait" src="${portrait}" alt="" width="440" height="440" style="width:100%;height:auto;border-radius:10px;border:1px solid #22304a;margin:2px 0 8px;background:#0b1220">` : '') +
       `<div style="margin:4px 0 8px"><b style="font-size:16px;color:#f4f8ff">${esc(e.name)}</b>` +
       (d.grade ? ` <span data-sel="detail-grade" style="border:1px solid ${esc(d.grade.hex || '#888')};color:${esc(d.grade.hex || '#ccc')};border-radius:999px;padding:1px 9px;font-size:11px">${esc(d.grade.label || '')}</span>` : '') +
       `<div class="sub">${esc(e.kind)} · ${esc(e.realm)}${e.hybrid ? ' · hybrid' : ''}${e.from ? ' · ' + esc(e.from) : ''}</div></div>` +
@@ -1159,7 +1295,7 @@ function fillCodexDetail(idx: number): void {
   }
   fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}</div>`);
   const back = document.getElementById('codexback')!;
-  back.addEventListener('click', () => fillCodex(codexFilter, idx));
+  back.addEventListener('click', () => fillCodex(codexFilter, codexReturnState));
   back.focus();
 }
 function fillRecords(): void {
@@ -1251,7 +1387,7 @@ registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [
      reopening from the dock silently retained a hidden filter. */
   codexFilter = '';
   fillCodex('');
-} });
+}, onClose: closeCodexSurface });
 registerPanel({ id: 'rec', el: document.getElementById('recpanel')!, btns: [document.getElementById('dockrecords'), document.getElementById('railrecords')], onOpen: fillRecords });
 document.getElementById('docksets')!.addEventListener('click', () => togglePanel('set'));
 document.getElementById('dockguide')!.addEventListener('click', () => togglePanel('guide'));
@@ -1403,7 +1539,18 @@ searchEl.addEventListener('keydown', (e) => {
   e.preventDefault();
   e.stopPropagation();
   const q = searchEl.value.trim();
-  if (!q) return;
+  if (!q) {
+    /* Empty Enter is normally inert. While an already-open Compendium list
+       owns a filter, however, it is the keyboard clear action: rebuild the
+       full logical catalogue and move focus to its first continuation. */
+    if (openPanelId() === 'codex' && codexMode === 'list' && codexFilter) {
+      searchEl.value = '';
+      fillCodex('');
+      (document.querySelector<HTMLElement>('#codexpanel [data-ci]')
+        || document.querySelector<HTMLElement>('#codexpanel [data-pnx]'))?.focus();
+    }
+    return;
+  }
   const strict = parseStrictCF1Code(q);
   if (strict.kind === 'invalid') {
     /* A malformed marked code is a correction outcome, not a Compendium
@@ -2562,7 +2709,7 @@ function rerender(options: { preserveSurvey?: boolean; skipPersist?: boolean } =
   }
   document.body.classList.toggle('surface-mode', nav.mode === 'surface');
   if (nav.mode !== 'surface') {
-    sideEl.style.display = 'none';
+    clearPlanetside();
     document.documentElement.style.removeProperty('--planetside-top');
   }
   stSeam.gal = nav.gal; stSeam.star = nav.star;   /* the describePick seam stays true */
@@ -2574,7 +2721,7 @@ function rerender(options: { preserveSurvey?: boolean; skipPersist?: boolean } =
     if (exact) drawSurface(exact, nav); else {
       nav = NAV_HOME;
       document.body.classList.remove('surface-mode');
-      sideEl.style.display = 'none';
+      clearPlanetside();
       document.documentElement.style.removeProperty('--planetside-top');
       drawUniverse();
     }   /* a stale seed never bricks boot */
@@ -2885,6 +3032,21 @@ sideEl.style.cssText = 'position:fixed;left:calc(var(--safe-left,0px) + 12px);bo
   'max-width:min(560px,calc(100vw - var(--safe-left,0px) - var(--safe-right,0px) - 24px));box-sizing:border-box;display:none;z-index:21;border-radius:12px;padding:8px 10px;' +
   'overflow-x:auto;white-space:nowrap;scrollbar-width:thin';
 document.body.appendChild(sideEl);
+let planetsideGeneration = 0;
+let planetsideWorldKey: string | null = null;
+const planetsideBindings = new SpeciesThumbLeaseGroup(8);
+let planetsideStaleCompletionDrops = 0;
+function releasePlanetsideThumbs(): void {
+  planetsideBindings.clear();
+}
+function clearPlanetside(): void {
+  planetsideGeneration++;
+  releasePlanetsideThumbs();
+  planetsideWorldKey = null;
+  sideEl.replaceChildren();
+  sideEl.style.display = 'none';
+  document.documentElement.style.removeProperty('--planetside-top');
+}
 function syncPlanetsideLayout(): void {
   if (getComputedStyle(sideEl).display === 'none' || nav.mode !== 'surface') {
     document.documentElement.style.removeProperty('--planetside-top');
@@ -2897,35 +3059,188 @@ function syncPlanetsideLayout(): void {
 }
 new ResizeObserver(syncPlanetsideLayout).observe(sideEl);
 addEventListener('resize', syncPlanetsideLayout, { passive: true });
+/* CSS can hide Planetside while Training owns the same screen. A hidden
+   surface owns no thumbnail resources; when that class clears, rebuild the
+   still-current proven world rather than leaving released placeholders. */
+new MutationObserver(() => {
+  if (getComputedStyle(sideEl).display === 'none') {
+    if (planetsideBindings.size) releasePlanetsideThumbs();
+    return;
+  }
+  if (nav.mode === 'surface' && nav.star && nav.planet && !planetsideBindings.size) {
+    const exact = planetNodeForProof(nav.star, nav.planet);
+    if (exact) fillPlanetside(exact, nav.star.seed);
+  }
+}).observe(document.body, { attributes: true, attributeFilter: ['class'] });
 function fillPlanetside(p: PlanetNode, starSeed: number): void {
   /* THE LIVING PLANETSIDE: the world's REAL roster (planetSpecies through
      the biosphere replica), each wearing its hdart portrait — the strip is
      Phase 4 chrome; the full walkable vista is Phase 6's. */
-  const roster = worldRoster(p, starSeed);
+  const roster = worldRoster(p, starSeed).slice(0, 8);
   if (!roster.length) {
-    sideEl.style.display = 'none';
+    clearPlanetside();
     syncPlanetsideLayout();
     return;
   }
-  if (!SA && nav.star) {
-    const p0 = p, s0 = starSeed;
-    ensureSA('planetside', () => {
-      if (nav.mode === 'surface' && nav.planet.seed === p0.seed
-        && nav.planet.ordinal === p0.ordinal && nav.star.seed === s0) fillPlanetside(p0, s0);
-    });
-  }
-  sideEl.innerHTML = '<div style="font-size:10.5px;letter-spacing:0.06em;color:var(--dim);margin:0 0 6px">PLANETSIDE — the ground survey</div>' +
-    roster.map((g) => {
-      let th = '';
-      if (SA) { try { th = SA.speciesThumb(g as never); } catch { /* text chip still reads */ } }
-      let nm = String((g as { _earthName?: string })._earthName || '');
-      if (!nm) { try { nm = String((describeSpecies(g as never) as { name?: string }).name || ''); } catch { nm = 'specimen'; } }
-      return '<span data-sel="planetside-sp" style="display:inline-block;text-align:center;margin-right:8px;vertical-align:top">' +
-        (th ? '<img src="' + th + '" alt="" style="width:64px;height:64px;border-radius:10px;border:1px solid #22304a;background:#0b1220">' : '') +
-        '<div style="font-size:10px;color:#b7c8e4;max-width:72px;overflow:hidden;text-overflow:ellipsis">' + esc(nm) + '</div></span>';
-    }).join('');
+  planetsideGeneration++;
+  const generation = planetsideGeneration;
+  releasePlanetsideThumbs();
+  const worldKey = `${starSeed}:${p.seed}:${p.ordinal}`;
+  planetsideWorldKey = worldKey;
+  const heading = document.createElement('div');
+  heading.className = 'planetside-heading';
+  heading.textContent = 'PLANETSIDE — the ground survey';
+  const fragment = document.createDocumentFragment();
+  fragment.append(heading);
+  const pending: Array<{
+    readonly genome: Record<string, unknown>;
+    readonly index: number;
+    readonly chip: HTMLSpanElement;
+    readonly image: HTMLImageElement;
+  }> = [];
+  roster.forEach((g, index) => {
+    let nm = String((g as { _earthName?: string })._earthName || '');
+    if (!nm) { try { nm = String((describeSpecies(g as never) as { name?: string }).name || ''); } catch { nm = 'specimen'; } }
+    const chip = document.createElement('span');
+    chip.dataset.sel = 'planetside-sp';
+    chip.dataset.cid = `${worldKey}:${index}`;
+    chip.className = 'planetside-species';
+    const image = document.createElement('img');
+    image.className = 'planetside-thumb';
+    image.alt = '';
+    image.width = 132;
+    image.height = 132;
+    const label = document.createElement('div');
+    label.textContent = nm;
+    chip.append(image, label);
+    fragment.append(chip);
+    pending.push({ genome: g as Record<string, unknown>, index, chip, image });
+  });
+  sideEl.replaceChildren(fragment);
   sideEl.style.display = 'block';
+  /* Training's stylesheet can still win over the inline display. Do not own
+     decoded images for a strip the player cannot see. */
+  if (getComputedStyle(sideEl).display !== 'none') for (const item of pending) {
+    planetsideBindings.add(bindSpeciesThumb(speciesArtLoader, {
+      owner: `planetside:${generation}:${worldKey}:${item.index}`,
+      image: item.image,
+      genome: item.genome,
+      isCurrent: () => planetsideGeneration === generation
+        && planetsideWorldKey === worldKey
+        && nav.mode === 'surface'
+        && nav.planet.seed === p.seed && nav.planet.ordinal === p.ordinal
+        && nav.star.seed === starSeed
+        && item.chip.dataset.cid === `${worldKey}:${item.index}`,
+      onStale: () => { planetsideStaleCompletionDrops++; },
+    }));
+  }
   syncPlanetsideLayout();
+}
+
+type CompendiumFixtureResult = { readonly installed: number; readonly generation: number };
+function normalizeCompendiumFixture(rows: unknown): Array<[string, CodexRecord]> {
+  if (!Array.isArray(rows) || rows.length > 1500) {
+    throw new Error('Compendium fixture must be an array of at most 1,500 rows');
+  }
+  const ids = new Set<string>();
+  return rows.map((candidate, index) => {
+    if (!Array.isArray(candidate) || candidate.length !== 2 || typeof candidate[0] !== 'string'
+      || !candidate[0] || !candidate[1] || typeof candidate[1] !== 'object'
+      || Array.isArray(candidate[1])) {
+      throw new Error(`invalid Compendium fixture row ${index}`);
+    }
+    const logicalId = candidate[0];
+    if (ids.has(logicalId)) throw new Error(`duplicate Compendium fixture id: ${logicalId}`);
+    ids.add(logicalId);
+    const entry = candidate[1] as Record<string, unknown>;
+    if (typeof entry.name !== 'string' || typeof entry.kind !== 'string'
+      || typeof entry.realm !== 'string' || !entry.g || typeof entry.g !== 'object'
+      || Array.isArray(entry.g)) {
+      throw new Error(`invalid Compendium fixture record ${logicalId}`);
+    }
+    return [logicalId, entry as unknown as CodexRecord];
+  });
+}
+async function installCompendiumFixture(rows: unknown): Promise<CompendiumFixtureResult> {
+  compendiumFixtureRows = normalizeCompendiumFixture(rows);
+  codexFilter = '';
+  codexReturnState = null;
+  if (openPanelId() === 'codex') fillCodex('');
+  else {
+    codexGeneration++;
+    codexRows = Object.freeze([]);
+  }
+  return Object.freeze({ installed: compendiumFixtureRows.length, generation: codexGeneration });
+}
+async function resetCompendiumFixture(): Promise<CompendiumFixtureResult> {
+  compendiumFixtureRows = null;
+  codexFilter = '';
+  codexReturnState = null;
+  if (openPanelId() === 'codex') fillCodex('');
+  else {
+    codexGeneration++;
+    codexRows = Object.freeze([]);
+  }
+  return Object.freeze({ installed: save.codex.length, generation: codexGeneration });
+}
+function imageSurfaceMetrics(scope: ParentNode, selector: string): {
+  readonly imageCount: number;
+  readonly naturalWidths: readonly number[];
+  readonly naturalHeights: readonly number[];
+  readonly thumbStates: readonly string[];
+} {
+  const images = [...scope.querySelectorAll<HTMLImageElement>(selector)];
+  return Object.freeze({
+    imageCount: images.length,
+    naturalWidths: Object.freeze(images.map((image) => image.naturalWidth)),
+    naturalHeights: Object.freeze(images.map((image) => image.naturalHeight)),
+    thumbStates: Object.freeze(images.map((image) => image.dataset.thumbState ?? 'unbound')),
+  });
+}
+function compendiumDiagnostics(): unknown {
+  const panel = document.getElementById('codexpanel')!;
+  const listRows = [...panel.querySelectorAll<HTMLElement>('[data-sel="codex-entry"][data-cid]')];
+  const listImages = imageSurfaceMetrics(panel, '[data-sel="codex-entry"] img');
+  const detailImage = panel.querySelector<HTMLImageElement>('[data-sel="detail-portrait"]');
+  const planetsideRows = [...sideEl.querySelectorAll<HTMLElement>('[data-sel="planetside-sp"]')];
+  const planetsideImages = imageSurfaceMetrics(sideEl, '[data-sel="planetside-sp"] img');
+  const sourceCount = activeCodexSource().length;
+  const filteredCount = filteredCodexCount();
+  const windowSnapshot = codexList?.snapshot() ?? codexWindow;
+  return Object.freeze({
+    schema: 'cf-v2-compendium-diagnostics/v1',
+    documentToken: DOCUMENT_TOKEN,
+    generation: codexGeneration,
+    panel: Object.freeze({
+      open: openPanelId() === 'codex', mode: codexMode,
+      sourceCount, filteredCount, query: codexFilter,
+      renderCommits: codexRenderCommits,
+      staleCompletionDrops: codexStaleCompletionDrops,
+      closedCompletionCommits: codexClosedCompletionCommits,
+    }),
+    window: windowSnapshot,
+    surfaces: Object.freeze({
+      list: Object.freeze({
+        ...listImages,
+        logicalIds: Object.freeze(listRows.map((row) => row.dataset.cid!)),
+      }),
+      detail: Object.freeze({
+        open: codexMode === 'detail', logicalId: codexDetailLogicalId,
+        naturalWidth: detailImage?.naturalWidth ?? 0,
+        naturalHeight: detailImage?.naturalHeight ?? 0,
+      }),
+      planetside: Object.freeze({
+        visible: getComputedStyle(sideEl).display !== 'none',
+        imageCount: planetsideImages.imageCount,
+        logicalIds: Object.freeze(planetsideRows.map((row) => row.dataset.cid!)),
+        naturalWidths: planetsideImages.naturalWidths,
+        naturalHeights: planetsideImages.naturalHeights,
+        thumbStates: planetsideImages.thumbStates,
+      }),
+    }),
+    lazyArt: speciesArtLoader.diagnostics(),
+    art: speciesArtLoader.artDiagnostics(),
+  });
 }
 function drawSurface(p: PlanetNode, state: Extract<NavState, { mode: 'surface' }>): void {
   if (p.seed !== state.planet.seed || p.ordinal !== state.planet.ordinal) return;
@@ -3740,11 +4055,6 @@ async function loadSave(): Promise<void> {
   syncTopbarH();
   syncDockH();
   syncCtxH();
-  const warmSpeciesArt = (): void => {
-    if (!document.hidden) ensureSA('prefetch', () => { /* warm before first use */ });
-  };
-  if ('requestIdleCallback' in window) window.requestIdleCallback(warmSpeciesArt, { timeout: 5000 });
-  else setTimeout(warmSpeciesArt, 3000);
   if (persistHold === 'protected-payload') {
     setTimeout(() => toast(
       protectedReason === 'future-version' ? 'Update required' : 'Save protected',
@@ -3921,6 +4231,8 @@ async function loadSave(): Promise<void> {
     let error: string | null = null;
     removeEventListener('resize', syncRendererDensity);
     visualViewport?.removeEventListener('resize', syncRendererDensity);
+    closeCodexSurface();
+    clearPlanetside();
     try {
       app.destroy(
         { removeView: true, releaseGlobalResources: true },
@@ -4046,6 +4358,13 @@ async function loadSave(): Promise<void> {
           viewType: (save.savedView as { type?: string } | null)?.type ?? null,
           savedView: save.savedView,
         },
+      }),
+      compendiumDiagnostics,
+      __compendiumEvidence: Object.freeze({
+        installFixture: installCompendiumFixture,
+        resetFixture: resetCompendiumFixture,
+        trimArtNow: (deviceClass: 'phone' | 'desktop') => speciesArtLoader.trimArtNow(deviceClass),
+        failNextThumb: (message?: string) => speciesArtLoader.failNextThumb(message),
       }),
       importBlob,   /* Gate C's front door, drivable by the smoke */
       __smokeArmImportRace: smokeArmImportRace,

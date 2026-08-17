@@ -1,7 +1,9 @@
-/* AUTO-LIFTED VERBATIM @section hdart [app] from main.js (v1.8.9,
+/* AUTO-LIFTED @section hdart [app] from main.js (v1.8.9,
    lines 5427-10647). body sha256/16 aa87887406daf918. ⚠ DO NOT EDIT.
    Regenerate: node tools/lift-hdart.mjs
-   EXPORTED SURFACE: the four portrait painters only. The vista half is
+   GENERATED SEAM: the four portrait bodies return their painted canvas;
+   same-name URL wrappers call toDataURL(), preserving the v1 API. No painter
+   logic is hand-maintained here. The vista half is
    DORMANT verbatim freight until Phase 6 (unresolved app free identifiers
    inside never-called paths — recorded, the GAL_SPRITES rule). hdGenesFor
    is a deliberate duplicate of strays' fixture-pinned copy (same bytes).
@@ -3013,7 +3015,7 @@ function _fitPlant(c2,pcv,S2){   /* v1.6 box-fit for flora: measured bbox -> tal
   c2.fillStyle='rgba(0,0,0,0.5)';c2.beginPath();c2.ellipse(cx,botLine-S2*0.004,Math.min(S2*0.28,bb.w*scale*0.55),S2*0.035,0,0,7);c2.fill();
   c2.drawImage(pcv, dx, dy, pcv.width*scale, pcv.height*scale);
 }
-function hdPortraitFauna(g){
+function hdPortraitFaunaCanvas(g){
   const G=hdGenesFor(g);
   const S2=440,cv=document.createElement('canvas');cv.width=cv.height=S2;
   const c2=cv.getContext('2d');
@@ -3028,7 +3030,7 @@ function hdPortraitFauna(g){
   const fg=c2.createLinearGradient(0,S2*0.7,0,S2);
   fg.addColorStop(0,'rgba(6,8,14,0)');fg.addColorStop(1,'rgba(6,8,14,0.55)');
   c2.fillStyle=fg;c2.fillRect(0,S2*0.7,S2,S2*0.3);
-  return cv.toDataURL();
+  return cv;
 }
 /* world camouflage (v1.3.5 coherence pass, Nick's call): the world
    dictates a share of every creature's field color — a wash of the
@@ -3167,7 +3169,7 @@ function _floraSpx(g){
   return spx;
 }
 function hdFloraBare(g, seed){ return _hdPlantBare(seed==null?((g.seed^0x717)>>>0):seed, _floraSpx(g)); }
-function hdPortraitFlora(g){
+function hdPortraitFloraCanvas(g){
   const S2=440,cv=document.createElement('canvas');cv.width=cv.height=S2;
   const c2=cv.getContext('2d');
   const bg=c2.createRadialGradient(S2*0.5,S2*0.40,20,S2*0.5,S2*0.5,S2*0.62);
@@ -3179,9 +3181,9 @@ function hdPortraitFlora(g){
   const fg=c2.createLinearGradient(0,S2*0.72,0,S2);
   fg.addColorStop(0,'rgba(6,8,14,0)');fg.addColorStop(1,'rgba(6,8,14,0.5)');
   c2.fillStyle=fg;c2.fillRect(0,S2*0.72,S2,S2*0.28);
-  return cv.toDataURL();
+  return cv;
 }
-function hdPortraitFungi(g){
+function hdPortraitFungiCanvas(g){
   /* painterly mushroom stand: gradient caps, gill shadows, spore motes;
      luminous colonies light their own grove */
   const S2=440,cv=document.createElement('canvas');cv.width=cv.height=S2;
@@ -3231,9 +3233,9 @@ function hdPortraitFungi(g){
   const fg=c2.createLinearGradient(0,S2*0.72,0,S2);
   fg.addColorStop(0,'rgba(6,8,14,0)');fg.addColorStop(1,'rgba(6,8,14,0.5)');
   c2.fillStyle=fg;c2.fillRect(0,S2*0.72,S2,S2*0.28);
-  return cv.toDataURL();
+  return cv;
 }
-function hdPortraitMicrobe(g){
+function hdPortraitMicrobeCanvas(g){
   /* a living colony under the lens: translucent cells, nuclei, membrane
      rims, additive bloom — the smallest life gets the painterly pass too */
   const S2=440,cv=document.createElement('canvas');cv.width=cv.height=S2;
@@ -3267,7 +3269,7 @@ function hdPortraitMicrobe(g){
   const fg=c2.createLinearGradient(0,S2*0.72,0,S2);
   fg.addColorStop(0,'rgba(6,8,14,0)');fg.addColorStop(1,'rgba(6,8,14,0.5)');
   c2.fillStyle=fg;c2.fillRect(0,S2*0.72,S2,S2*0.28);
-  return cv.toDataURL();
+  return cv;
 }
 /* the volcano that rules an ember world's mid-ground — cone, crater glow,
    a lava trickle down the flank, smoke drifting leeward */
@@ -5233,4 +5235,8 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
   { const my=++_vistaShowSeq;
     requestAnimationFrame(()=>{ if(my===_vistaShowSeq) vistaBox.classList.add('on'); }); }
 }
-export { hdPortraitFauna, hdPortraitFlora, hdPortraitFungi, hdPortraitMicrobe };
+function hdPortraitFauna(g){ return hdPortraitFaunaCanvas(g).toDataURL(); }
+function hdPortraitFlora(g){ return hdPortraitFloraCanvas(g).toDataURL(); }
+function hdPortraitFungi(g){ return hdPortraitFungiCanvas(g).toDataURL(); }
+function hdPortraitMicrobe(g){ return hdPortraitMicrobeCanvas(g).toDataURL(); }
+export { hdPortraitFauna, hdPortraitFaunaCanvas, hdPortraitFlora, hdPortraitFloraCanvas, hdPortraitFungi, hdPortraitFungiCanvas, hdPortraitMicrobe, hdPortraitMicrobeCanvas };
