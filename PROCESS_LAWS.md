@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-16. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-17. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -75,6 +75,12 @@ roughly by how often they have bitten.
 ⚠ NEGATIVE-CONTROL EVERY NEW CHECK — break the build on purpose and confirm the check fails.
   Two controls changed what shipped this round: the .tutpri specificity miss, and a stall-detector
   test that passed against a reverted build because it never constructed the no-objective state.
+⚠⚠ A MEASURED RULER OWNS ITS EXACT AUTHORITY AND MUST REPLAY RAW EVIDENCE (2026-08-17).
+  Bind the runtime/browser build, budget bytes, deterministic inputs, source identity, attempt
+  policy, and artifacts that produced a ceiling. At terminal verification, recompute outcomes from
+  the raw observations against those exact authorities. Never trust a copied PASS boolean, hash,
+  metric summary, or outcome row as a substitute for the bytes or observations it summarizes;
+  require every repeated carrier to agree and negative-control each one independently.
 ⚠ jsdom has NO LAYOUT. A CSS rule can be present, correct and completely inert. tools/uilayout.js
   (real headless browser, elementFromPoint hit-tests, 10 viewports) is the only gate that sees
   this. It takes --url=FILE, so replay a new gate against an OLD build to prove it catches the bug.

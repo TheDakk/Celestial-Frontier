@@ -1,6 +1,6 @@
 {
   "schema": "cf-v2-compendium-memory-budget/v1",
-  "status": "calibration-required",
+  "status": "active",
   "fixture": {
     "schema": "cf-v2-compendium-fixture/v1",
     "generator": "compendium-realistic-genomes/v1",
@@ -15,17 +15,247 @@
   },
   "calibration": {
     "requiredIndependentRunsPerProfile": 3,
-    "selectionRule": "For each phone and desktop field, record three independent one-attempt runs from the pinned browser and identical commit/input digest; choose an explicit ceiling above the observed maximum only after documenting why that headroom distinguishes expected variance from the paired broken baseline.",
+    "selectionRule": "For each phone and desktop field, record three independent one-attempt runs from one exact Arc-local Edge build authority (product, revision, JavaScript version, and protocol version) and an identical candidate commit/input digest; the candidate and paired broken-baseline samples must share that four-field authority. This does not re-pin the Gate-A/global browser. Choose an explicit ceiling strictly above the observed maximum only after documenting why that headroom distinguishes expected variance from the paired broken baseline.",
     "headroomRationaleRequired": true,
     "samples": {
-      "phone": [],
-      "desktop": []
+      "phone": [
+        {
+          "runId": "20260817075022672-56100-97d57bcb27",
+          "commit": "e4e8d1d1dc63470857d6ff6ecfd9522259a55a16",
+          "workingTreeDigest": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a",
+          "inputDigest": "33ca48fcabe106d90c9ddbd95033a50d9817ceb5ca44eec160a445b3c6fca1cc",
+          "sourceState": "committed",
+          "sourceChanged": false,
+          "fixtureRowsSha256": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+          "measuredAt": "2026-08-17T07:50:58.000Z",
+          "browser": {
+            "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+            "product": "Edg/151.0.4129.86",
+            "revision": "@083e754915c9ab93da1d8f7b9c860e4520273900",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0",
+            "jsVersion": "15.1.23.7",
+            "protocolVersion": "1.3"
+          },
+          "metrics": {
+            "mountedRows": 14,
+            "heapUsedBytes": 10388912,
+            "documents": 2,
+            "nodes": 569,
+            "jsEventListeners": 75,
+            "liveCacheEntries": 96,
+            "liveDecodedPixels": 1672704,
+            "liveDecodedBytes": 6690816,
+            "liveEncodedBytes": 2446316,
+            "queuedJobsPeak": 20,
+            "activeJobsPeak": 1,
+            "liveLeases": 22,
+            "liveSubscribers": 0,
+            "livePortraitCacheEntries": 1,
+            "livePortraitEncodedBytes": 182238,
+            "warmHeapRangeBytes": 42044,
+            "warmDecodedBytesRange": 0,
+            "warmEncodedBytesRange": 6152
+          }
+        },
+        {
+          "runId": "20260817075709048-56928-b0435507d2",
+          "commit": "e4e8d1d1dc63470857d6ff6ecfd9522259a55a16",
+          "workingTreeDigest": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a",
+          "inputDigest": "33ca48fcabe106d90c9ddbd95033a50d9817ceb5ca44eec160a445b3c6fca1cc",
+          "sourceState": "committed",
+          "sourceChanged": false,
+          "fixtureRowsSha256": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+          "measuredAt": "2026-08-17T07:57:44.104Z",
+          "browser": {
+            "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+            "product": "Edg/151.0.4129.86",
+            "revision": "@083e754915c9ab93da1d8f7b9c860e4520273900",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0",
+            "jsVersion": "15.1.23.7",
+            "protocolVersion": "1.3"
+          },
+          "metrics": {
+            "mountedRows": 14,
+            "heapUsedBytes": 10378544,
+            "documents": 2,
+            "nodes": 569,
+            "jsEventListeners": 75,
+            "liveCacheEntries": 96,
+            "liveDecodedPixels": 1672704,
+            "liveDecodedBytes": 6690816,
+            "liveEncodedBytes": 2462356,
+            "queuedJobsPeak": 20,
+            "activeJobsPeak": 1,
+            "liveLeases": 22,
+            "liveSubscribers": 0,
+            "livePortraitCacheEntries": 1,
+            "livePortraitEncodedBytes": 182238,
+            "warmHeapRangeBytes": 41980,
+            "warmDecodedBytesRange": 0,
+            "warmEncodedBytesRange": 10804
+          }
+        },
+        {
+          "runId": "20260817080124302-57611-3422d7d6b9",
+          "commit": "e4e8d1d1dc63470857d6ff6ecfd9522259a55a16",
+          "workingTreeDigest": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a",
+          "inputDigest": "33ca48fcabe106d90c9ddbd95033a50d9817ceb5ca44eec160a445b3c6fca1cc",
+          "sourceState": "committed",
+          "sourceChanged": false,
+          "fixtureRowsSha256": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+          "measuredAt": "2026-08-17T08:01:59.566Z",
+          "browser": {
+            "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+            "product": "Edg/151.0.4129.86",
+            "revision": "@083e754915c9ab93da1d8f7b9c860e4520273900",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0",
+            "jsVersion": "15.1.23.7",
+            "protocolVersion": "1.3"
+          },
+          "metrics": {
+            "mountedRows": 14,
+            "heapUsedBytes": 10407744,
+            "documents": 2,
+            "nodes": 569,
+            "jsEventListeners": 75,
+            "liveCacheEntries": 96,
+            "liveDecodedPixels": 1672704,
+            "liveDecodedBytes": 6690816,
+            "liveEncodedBytes": 2465464,
+            "queuedJobsPeak": 20,
+            "activeJobsPeak": 1,
+            "liveLeases": 22,
+            "liveSubscribers": 0,
+            "livePortraitCacheEntries": 1,
+            "livePortraitEncodedBytes": 182238,
+            "warmHeapRangeBytes": 43388,
+            "warmDecodedBytesRange": 0,
+            "warmEncodedBytesRange": 9284
+          }
+        }
+      ],
+      "desktop": [
+        {
+          "runId": "20260817075022672-56100-97d57bcb27",
+          "commit": "e4e8d1d1dc63470857d6ff6ecfd9522259a55a16",
+          "workingTreeDigest": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a",
+          "inputDigest": "33ca48fcabe106d90c9ddbd95033a50d9817ceb5ca44eec160a445b3c6fca1cc",
+          "sourceState": "committed",
+          "sourceChanged": false,
+          "fixtureRowsSha256": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+          "measuredAt": "2026-08-17T07:50:58.000Z",
+          "browser": {
+            "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+            "product": "Edg/151.0.4129.86",
+            "revision": "@083e754915c9ab93da1d8f7b9c860e4520273900",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0",
+            "jsVersion": "15.1.23.7",
+            "protocolVersion": "1.3"
+          },
+          "metrics": {
+            "mountedRows": 14,
+            "heapUsedBytes": 10067308,
+            "documents": 2,
+            "nodes": 568,
+            "jsEventListeners": 74,
+            "liveCacheEntries": 256,
+            "liveDecodedPixels": 4460544,
+            "liveDecodedBytes": 17842176,
+            "liveEncodedBytes": 6526056,
+            "queuedJobsPeak": 20,
+            "activeJobsPeak": 1,
+            "liveLeases": 22,
+            "liveSubscribers": 0,
+            "livePortraitCacheEntries": 1,
+            "livePortraitEncodedBytes": 182238,
+            "warmHeapRangeBytes": 8536,
+            "warmDecodedBytesRange": 0,
+            "warmEncodedBytesRange": 0
+          }
+        },
+        {
+          "runId": "20260817075709048-56928-b0435507d2",
+          "commit": "e4e8d1d1dc63470857d6ff6ecfd9522259a55a16",
+          "workingTreeDigest": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a",
+          "inputDigest": "33ca48fcabe106d90c9ddbd95033a50d9817ceb5ca44eec160a445b3c6fca1cc",
+          "sourceState": "committed",
+          "sourceChanged": false,
+          "fixtureRowsSha256": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+          "measuredAt": "2026-08-17T07:57:44.104Z",
+          "browser": {
+            "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+            "product": "Edg/151.0.4129.86",
+            "revision": "@083e754915c9ab93da1d8f7b9c860e4520273900",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0",
+            "jsVersion": "15.1.23.7",
+            "protocolVersion": "1.3"
+          },
+          "metrics": {
+            "mountedRows": 14,
+            "heapUsedBytes": 10102204,
+            "documents": 2,
+            "nodes": 568,
+            "jsEventListeners": 74,
+            "liveCacheEntries": 256,
+            "liveDecodedPixels": 4460544,
+            "liveDecodedBytes": 17842176,
+            "liveEncodedBytes": 6530448,
+            "queuedJobsPeak": 20,
+            "activeJobsPeak": 1,
+            "liveLeases": 22,
+            "liveSubscribers": 0,
+            "livePortraitCacheEntries": 1,
+            "livePortraitEncodedBytes": 182238,
+            "warmHeapRangeBytes": 6304,
+            "warmDecodedBytesRange": 0,
+            "warmEncodedBytesRange": 0
+          }
+        },
+        {
+          "runId": "20260817080124302-57611-3422d7d6b9",
+          "commit": "e4e8d1d1dc63470857d6ff6ecfd9522259a55a16",
+          "workingTreeDigest": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a",
+          "inputDigest": "33ca48fcabe106d90c9ddbd95033a50d9817ceb5ca44eec160a445b3c6fca1cc",
+          "sourceState": "committed",
+          "sourceChanged": false,
+          "fixtureRowsSha256": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+          "measuredAt": "2026-08-17T08:01:59.566Z",
+          "browser": {
+            "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+            "product": "Edg/151.0.4129.86",
+            "revision": "@083e754915c9ab93da1d8f7b9c860e4520273900",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0",
+            "jsVersion": "15.1.23.7",
+            "protocolVersion": "1.3"
+          },
+          "metrics": {
+            "mountedRows": 14,
+            "heapUsedBytes": 10111532,
+            "documents": 2,
+            "nodes": 568,
+            "jsEventListeners": 74,
+            "liveCacheEntries": 256,
+            "liveDecodedPixels": 4460544,
+            "liveDecodedBytes": 17842176,
+            "liveEncodedBytes": 6556532,
+            "queuedJobsPeak": 20,
+            "activeJobsPeak": 1,
+            "liveLeases": 22,
+            "liveSubscribers": 0,
+            "livePortraitCacheEntries": 1,
+            "livePortraitEncodedBytes": 182238,
+            "warmHeapRangeBytes": 5192,
+            "warmDecodedBytesRange": 0,
+            "warmEncodedBytesRange": 0
+          }
+        }
+      ]
     }
   },
   "pairedBrokenBaseline": {
-    "status": "measurement-required",
+    "status": "measured",
     "commit": "38447019517147319bd08c598202d097ee866874",
-    "collectorCommit": null,
+    "collectorCommit": "e4e8d1d1dc63470857d6ff6ecfd9522259a55a16",
     "projectionRowsSha256": "f7bee0cf6fb7b3308c49c03d9c0e84c55281d3966a444e66108bdfd95c2886a2",
     "expectedFaults": [
       "unwindowed-1500-rows",
@@ -34,9 +264,142 @@
       "eager-art-import"
     ],
     "samples": {
-      "phone": [],
-      "desktop": []
+      "phone": [
+        {
+          "runId": "20260817074210620-55255-c8f0e10c47",
+          "commit": "38447019517147319bd08c598202d097ee866874",
+          "workingTreeDigest": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a",
+          "inputDigest": "5b88344434a616507fc91e0c885bea1fd7ea68f5eaf1c5e970e129de55b1c67b",
+          "sourceState": "committed",
+          "sourceChanged": false,
+          "fixtureRowsSha256": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+          "measuredAt": "2026-08-17T07:43:55.829Z",
+          "browser": {
+            "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+            "product": "Edg/151.0.4129.86",
+            "revision": "@083e754915c9ab93da1d8f7b9c860e4520273900",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0",
+            "jsVersion": "15.1.23.7",
+            "protocolVersion": "1.3"
+          },
+          "metrics": {
+            "mountedRows": 1500,
+            "heapUsedBytes": 12310396,
+            "documents": 2,
+            "nodes": 15295,
+            "jsEventListeners": 71,
+            "liveCacheEntries": 600,
+            "liveDecodedPixels": 10454400,
+            "liveDecodedBytes": 41817600,
+            "liveEncodedBytes": 11916368,
+            "queuedJobsPeak": 0,
+            "activeJobsPeak": 0,
+            "liveLeases": 0,
+            "liveSubscribers": 0,
+            "livePortraitCacheEntries": 96,
+            "livePortraitEncodedBytes": 20693680,
+            "warmHeapRangeBytes": 247680,
+            "warmDecodedBytesRange": 0,
+            "warmEncodedBytesRange": 59988
+          },
+          "observedFaults": [
+            "unwindowed-1500-rows",
+            "list-source-440",
+            "full-portrait-dom-exposure",
+            "eager-art-import"
+          ]
+        }
+      ],
+      "desktop": [
+        {
+          "runId": "20260817074210620-55255-c8f0e10c47",
+          "commit": "38447019517147319bd08c598202d097ee866874",
+          "workingTreeDigest": "f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a",
+          "inputDigest": "5b88344434a616507fc91e0c885bea1fd7ea68f5eaf1c5e970e129de55b1c67b",
+          "sourceState": "committed",
+          "sourceChanged": false,
+          "fixtureRowsSha256": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+          "measuredAt": "2026-08-17T07:43:55.829Z",
+          "browser": {
+            "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+            "product": "Edg/151.0.4129.86",
+            "revision": "@083e754915c9ab93da1d8f7b9c860e4520273900",
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0",
+            "jsVersion": "15.1.23.7",
+            "protocolVersion": "1.3"
+          },
+          "metrics": {
+            "mountedRows": 1500,
+            "heapUsedBytes": 12251968,
+            "documents": 2,
+            "nodes": 15294,
+            "jsEventListeners": 70,
+            "liveCacheEntries": 600,
+            "liveDecodedPixels": 10454400,
+            "liveDecodedBytes": 41817600,
+            "liveEncodedBytes": 11916368,
+            "queuedJobsPeak": 0,
+            "activeJobsPeak": 0,
+            "liveLeases": 0,
+            "liveSubscribers": 0,
+            "livePortraitCacheEntries": 256,
+            "livePortraitEncodedBytes": 55868080,
+            "warmHeapRangeBytes": 220264,
+            "warmDecodedBytesRange": 0,
+            "warmEncodedBytesRange": 59988
+          },
+          "observedFaults": [
+            "unwindowed-1500-rows",
+            "list-source-440",
+            "full-portrait-dom-exposure",
+            "eager-art-import"
+          ]
+        }
+      ]
     }
   },
-  "ceilings": null
+  "ceilings": {
+    "phone": {
+      "rationale": "Three independent one-attempt clean e4e8d1d runs under the exact Arc-local Edge 151 build held structural/resource counts constant; heap spread was 29,200 B (0.28%), encoded-byte spread 19,148 B (0.78%), warm-heap spread 1,408 B, and warm encoded range peaked at 10,804 B. Heap headroom is 11,010,048 - 10,407,744 = 602,304 B (5.79%, 20.6 observed spreads); encoded headroom is 2,621,440 - 2,465,464 = 155,976 B (6.33%, 8.1 spreads); warm headroom is 65,536 - 43,388 = 22,148 B for heap and 16,384 - 10,804 = 5,580 B for encoded bytes. The paired 3844701 baseline still exceeds eleven fields. Fractional count and +1 byte/pixel sentinels are strictly above the sample maxima but below the next reachable integer or 132px-resource quantum, preserving the product-owned exact 96-entry, one-active-job, zero-subscriber, one-portrait, and zero decoded-churn outcomes.",
+      "mountedRowsMax": 16,
+      "heapUsedBytesMax": 11010048,
+      "documentsMax": 3,
+      "nodesMax": 640,
+      "jsEventListenersMax": 80,
+      "queuedJobsPeakMax": 24,
+      "activeJobsPeakMax": 1.5,
+      "liveLeasesMax": 24,
+      "liveSubscribersMax": 0.5,
+      "livePortraitCacheEntriesMax": 1.5,
+      "livePortraitEncodedBytesMax": 196608,
+      "warmDecodedBytesRangeMax": 1,
+      "warmEncodedBytesRangeMax": 16384,
+      "liveCacheEntriesMax": 96.5,
+      "liveDecodedPixelsMax": 1672705,
+      "liveDecodedBytesMax": 6690817,
+      "liveEncodedBytesMax": 2621440,
+      "warmHeapRangeBytesMax": 65536
+    },
+    "desktop": {
+      "rationale": "Three independent one-attempt clean e4e8d1d runs under the exact Arc-local Edge 151 build held structural/resource counts constant; heap spread was 44,224 B (0.44%), encoded-byte spread 30,476 B (0.46%), warm-heap range peaked at 8,536 B, and decoded/encoded warm ranges were zero. Heap headroom is 11,010,048 - 10,111,532 = 898,516 B (8.89%, 20.3 observed spreads); encoded headroom is 6,815,744 - 6,556,532 = 259,212 B (3.95%, 8.5 spreads); warm-heap headroom is 16,384 - 8,536 = 7,848 B and the 16,384 B encoded allowance remains below the broken 59,988 B range. The paired 3844701 baseline still exceeds eleven fields. Fractional count and +1 byte/pixel sentinels are strictly above the sample maxima but below the next reachable integer or 132px-resource quantum, preserving the product-owned exact 256-entry, one-active-job, zero-subscriber, one-portrait, and zero decoded-churn outcomes.",
+      "mountedRowsMax": 16,
+      "heapUsedBytesMax": 11010048,
+      "documentsMax": 3,
+      "nodesMax": 640,
+      "jsEventListenersMax": 80,
+      "queuedJobsPeakMax": 24,
+      "activeJobsPeakMax": 1.5,
+      "liveLeasesMax": 24,
+      "liveSubscribersMax": 0.5,
+      "livePortraitCacheEntriesMax": 1.5,
+      "livePortraitEncodedBytesMax": 196608,
+      "warmDecodedBytesRangeMax": 1,
+      "warmEncodedBytesRangeMax": 16384,
+      "liveCacheEntriesMax": 256.5,
+      "liveDecodedPixelsMax": 4460545,
+      "liveDecodedBytesMax": 17842177,
+      "liveEncodedBytesMax": 6815744,
+      "warmHeapRangeBytesMax": 16384
+    }
+  }
 }

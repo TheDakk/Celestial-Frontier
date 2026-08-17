@@ -342,12 +342,24 @@ describe.sequential('SpeciesArt canvas seam and thumbnail ownership', () => {
     }
   });
 
-  it('trims a warm desktop cache immediately when the phone candidate cap applies', async () => {
+  it('trims a warm desktop cache immediately when the active phone cap applies', async () => {
     vi.useFakeTimers();
     try {
       speciesArt.__setSpeciesArtDeviceClassForTest('desktop');
       const leases = Array.from({ length: 97 }, (_, index) => speciesArt.leaseThumb(genome(5000 + index)));
       const queued = speciesArt.speciesArtDiagnostics();
+      expect(queued.limits).toMatchObject({
+        budgetStatus: 'active-measured',
+        cacheEntries: 256,
+        decodedPixels: 256 * 132 * 132,
+        decodedBytes: 256 * 132 * 132 * 4,
+        encodedBytes: 256 * 132 * 132 * 4,
+        queuedJobs: 256,
+        activeJobs: 1,
+        leases: 256,
+        portraitEntries: 256,
+        portraitEncodedBytes: 192 * 1024 * 1024,
+      });
       expect(queued.live.queuedJobs).toBe(97);
       expect(queued.totals.maxQueuedJobs).toBe(97);
       await vi.runAllTimersAsync();
@@ -363,7 +375,18 @@ describe.sequential('SpeciesArt canvas seam and thumbnail ownership', () => {
       const disposals = speciesArt.speciesArtDiagnostics().totals.disposals;
       speciesArt.__setSpeciesArtDeviceClassForTest('phone');
       const phone = speciesArt.speciesArtDiagnostics();
-      expect(phone.limits.budgetStatus).toBe('provisional-candidate');
+      expect(phone.limits).toMatchObject({
+        budgetStatus: 'active-measured',
+        cacheEntries: 96,
+        decodedPixels: 96 * 132 * 132,
+        decodedBytes: 96 * 132 * 132 * 4,
+        encodedBytes: 96 * 132 * 132 * 4,
+        queuedJobs: 96,
+        activeJobs: 1,
+        leases: 96,
+        portraitEntries: 96,
+        portraitEncodedBytes: 64 * 1024 * 1024,
+      });
       expect(phone.live.cacheEntries).toBe(phone.limits.cacheEntries);
       expect(phone.live.decodedPixels).toBeLessThanOrEqual(phone.limits.decodedPixels);
       expect(phone.live.decodedBytes).toBeLessThanOrEqual(phone.limits.decodedBytes);

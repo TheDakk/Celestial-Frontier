@@ -9,6 +9,34 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
+## Current-state decision — Arc 1A maximum Compendium (2026-08-17)
+
+**Status: ★ `[EXEC]` implementation present; six-image `[HUMAN]` review open.** This block records
+the current disposition of the historical `D-COMPENDIUM-MEM` proposal below without rewriting that
+dated discovery record.
+
+- The maximum 1,500-row Compendium now uses spacer-preserved virtual rows, pinned keyboard focus,
+  native filter/clear, detail/Back and Close cleanup. Real 132px leases own one bounded producer,
+  queued cancellation, dedupe, disposal, cold-error publication/recovery, and Planetside
+  hide/release/reacquire; list work does not route through 440px full portraits.
+- `budgets/compendium-memory-v1.json` is active measured authority. The exact
+  `38447019517147319bd08c598202d097ee866874` baseline run
+  `20260817074210620-55255-c8f0e10c47` is paired with candidate runs
+  `20260817075022672-56100-97d57bcb27`, `20260817075709048-56928-b0435507d2`, and
+  `20260817080124302-57611-3422d7d6b9`. Their shared Compendium-only authority is Edge
+  `151.0.4129.86`, revision `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript
+  `15.1.23.7`, and protocol `1.3`; it does not change the Gate-A/global Edge `150.0.4078.83` pin.
+- Each phone/desktop ceiling is strictly above its measured three-run maximum and carries explicit
+  variance/headroom rationale. The paired broken build exceeds exactly eleven sealed fields:
+  mounted rows, heap, DOM nodes, live cache entries, decoded pixels/bytes, encoded bytes,
+  portrait-cache entries/encoded bytes, warm-heap range, and warm-encoded range. Browser-free
+  controls reject equality, stale raw-heap or provisional-status PASS claims, mixed authority or
+  input/source/budget carriers, and accept a truthfully recomputed FAIL.
+- This is an implementation/current-data decision, not a terminal certification for mutable bytes,
+  a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
+  images still require human review. Arc 1B remains open for scene/Pixi textures, render targets,
+  GPU proxies, and the combined travel → Compendium → Shipyard resource plateau.
+
 ## Species art — THE MORPHOLOGY PASS (approved by Nick 2026-08-01)
 
 The species-art surface is the one place the verbatim-parity boundary is OPEN, under Nick's

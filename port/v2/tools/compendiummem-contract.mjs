@@ -15,6 +15,9 @@ export const COMMAND_TIMEOUT_MS = 2000;
 export const CANDIDATE_TRANSPORT_TIMEOUT_MS = 5000;
 export const BASELINE_OBSERVATION_TIMEOUT_MS = 180000;
 export const CANDIDATE_BROWSER_LABEL = 'Compendium memory/resource gate';
+export const COMPENDIUM_BROWSER_AUTHORITY_SCHEMA =
+  'cf-v2-compendium-browser-authority/v1';
+export const COMPENDIUM_BROWSER_AUTHORITY_SCOPE = 'arc1a-compendium-memory-only';
 export const CANDIDATE_CDP_TIMEOUT_SCHEMA = 'cf-v2-compendium-cdp-timeout/v1';
 export const CANDIDATE_COMMAND_SCHEMA = 'cf-v2-compendium-candidate-command/v1';
 export const PLAIN_EVALUATE_COMMAND_SCHEMA = 'cf-v2-compendium-plain-evaluate-command/v1';
@@ -108,6 +111,49 @@ function exactKeys(value, expected, where, errors) {
     return false;
   }
   return true;
+}
+
+const COMPENDIUM_BROWSER_AUTHORITY_FIELDS = Object.freeze([
+  'product', 'revision', 'jsVersion', 'protocolVersion',
+]);
+
+/** Cross-host Arc 1A browser-build authority. Executable and user agent stay
+ * recorded provenance, but cannot be authority fields because the same exact
+ * Edge build has different paths and OS tokens on macOS and Linux. */
+export function compendiumBrowserAuthority(browser) {
+  if (!isObject(browser)) return null;
+  const authority = {
+    schema: COMPENDIUM_BROWSER_AUTHORITY_SCHEMA,
+    scope: COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
+    product: browser.product,
+    revision: browser.revision,
+    jsVersion: browser.jsVersion ?? browser.js_version,
+    protocolVersion: browser.protocolVersion ?? browser.protocol_version,
+  };
+  return COMPENDIUM_BROWSER_AUTHORITY_FIELDS.every((field) =>
+    typeof authority[field] === 'string' && authority[field].length > 0)
+    ? Object.freeze(authority) : null;
+}
+
+export function validCompendiumBrowserAuthority(authority) {
+  return isObject(authority)
+    && sameJson(Object.keys(authority).sort(), [
+      'schema', 'scope', ...COMPENDIUM_BROWSER_AUTHORITY_FIELDS,
+    ].sort())
+    && authority.schema === COMPENDIUM_BROWSER_AUTHORITY_SCHEMA
+    && authority.scope === COMPENDIUM_BROWSER_AUTHORITY_SCOPE
+    && COMPENDIUM_BROWSER_AUTHORITY_FIELDS.every((field) =>
+      typeof authority[field] === 'string' && authority[field].length > 0);
+}
+
+export function compendiumBrowserAuthorityMatches(browser, authority) {
+  const observed = compendiumBrowserAuthority(browser);
+  return observed !== null && validCompendiumBrowserAuthority(authority)
+    && sameJson(observed, authority);
+}
+
+export function compendiumBudgetBrowserAuthority(record) {
+  return compendiumBrowserAuthority(record?.calibration?.samples?.phone?.[0]?.browser);
 }
 
 const FILTER_ART_LIVE_FIELDS = Object.freeze([
@@ -1847,6 +1893,11 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
         ? record.pairedBrokenBaseline.samples[profile] : []);
     enforceSharedSampleIdentity(allBaselineSamples, 'paired broken-baseline', errors,
       record.pairedBrokenBaseline.commit, record.fixture?.rowsSha256 || null);
+    const candidateAuthority = compendiumBudgetBrowserAuthority(record);
+    if (candidateAuthority && allBaselineSamples.some((sample) =>
+      !compendiumBrowserAuthorityMatches(sample?.browser, candidateAuthority))) {
+      errors.push('paired broken-baseline browser does not match the Arc 1A calibration authority');
+    }
     if (brokenBaselineProjectionRowsSha256
       && record.pairedBrokenBaseline.projectionRowsSha256
         !== brokenBaselineProjectionRowsSha256) {
@@ -1886,11 +1937,14 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
           const ceilingField = CEILING_FIELDS[i];
           const sampleField = SAMPLE_METRIC_FIELDS[i];
           const measuredMax = Math.max(...samples.map((sample) => sample.metrics?.[sampleField] ?? Infinity));
-          if (finite(ceiling[ceilingField]) && ceiling[ceilingField] < measuredMax) {
-            errors.push(`active ${profile}.${ceilingField} is below measured ${sampleField} max`);
+          if (finite(ceiling[ceilingField]) && ceiling[ceilingField] <= measuredMax) {
+            errors.push(`active ${profile}.${ceilingField} must be strictly above measured ${sampleField} max`);
           }
         }
       }
+    }
+    if (!validCompendiumBrowserAuthority(compendiumBudgetBrowserAuthority(record))) {
+      errors.push('active budget lacks one exact Arc 1A calibration browser authority');
     }
     const candidateCommit = record.calibration?.samples?.phone?.[0]?.commit;
     if (!/^[a-f0-9]{40}$/.test(String(record.pairedBrokenBaseline?.collectorCommit || ''))
@@ -1924,7 +1978,7 @@ function liveWithinLimits(snapshot, profile) {
   if (!isObject(a) || a.schema !== ART_DIAGNOSTICS_SCHEMA
     || !isObject(a.live) || !isObject(a.limits)
     || a.deviceClass !== profile
-    || a.limits.budgetStatus !== 'provisional-candidate'
+    || a.limits.budgetStatus !== 'active-measured'
     || a.limits.encodedByteBasis !== 'utf8-data-url') return false;
   const pairs = [
     ['cacheEntries', 'cacheEntries'], ['decodedPixels', 'decodedPixels'],
@@ -2729,8 +2783,51 @@ function validBrowserProvenance(browser) {
     typeof browser[field] === 'string' && browser[field].length > 0);
 }
 
+function validateReportBudgetAuthority(report, errors) {
+  const budget = report.budget;
+  const keys = [
+    'status', 'path', 'sha256', 'browserAuthority', 'browserAuthorityMatch',
+  ];
+  if (!isObject(budget) || !sameJson(Object.keys(budget).sort(), keys.sort())
+    || !['unavailable', 'calibration-required', 'active'].includes(budget.status)
+    || budget.path !== 'budgets/compendium-memory-v1.json'
+    || !/^[a-f0-9]{64}$/.test(String(budget.sha256 || ''))
+    || !(budget.browserAuthority === null
+      || validCompendiumBrowserAuthority(budget.browserAuthority))
+    || !(budget.browserAuthorityMatch === null
+      || typeof budget.browserAuthorityMatch === 'boolean')) {
+    errors.push('report budget/browser authority evidence is incomplete');
+    return;
+  }
+  const hasBrowser = validBrowserProvenance(report.browser);
+  const expectedMatch = hasBrowser && budget.browserAuthority !== null
+    ? compendiumBrowserAuthorityMatches(report.browser, budget.browserAuthority) : null;
+  if (budget.browserAuthorityMatch !== expectedMatch) {
+    errors.push('report browserAuthorityMatch does not match recorded browser provenance');
+  }
+  const activeOutcome = budget.status === 'active'
+    && ['pass', 'fail', 'product-unanswerable'].includes(report.status);
+  if (activeOutcome && budget.browserAuthorityMatch !== true) {
+    errors.push('active Compendium outcome lacks the exact Arc 1A browser authority');
+  }
+  if (report.status === 'instrument-fail' && budget.browserAuthorityMatch === false) {
+    const exactAuthorityMismatch = report.partialFailure?.classification === 'instrument'
+      && report.partialFailure?.profile === null
+      && report.partialFailure?.lastCompletedStage === null
+      && report.partialFailure?.failingStage === 'Arc 1A browser authority'
+      && report.partialFailure?.command === null
+      && isObject(report.profiles) && Object.keys(report.profiles).length === 0
+      && Array.isArray(report.reviewPacket) && report.reviewPacket.length === 0;
+    if (!exactAuthorityMismatch) {
+      errors.push('browser-authority mismatch was not terminal before product measurement');
+    }
+  }
+}
+
 export function verifyTerminalReport(report, expectedRunId, {
   allowCalibration = false, verifyArtifact = null,
+  budgetRecord = null, expectedBudgetSha256 = null,
+  fixture = null, expectedInputs = null, expectedSourceIdentity = null,
 } = {}) {
   const errors = [];
   if (!isObject(report)) return { ok: false, errors: ['report must be an object'] };
@@ -2768,6 +2865,31 @@ export function verifyTerminalReport(report, expectedRunId, {
   }
   if (!sameJson(report.expectedOutcomes, EXPECTED_OUTCOMES)) {
     errors.push('sealed expected-outcome inventory drifted');
+  }
+  validateReportBudgetAuthority(report, errors);
+  if (budgetRecord !== null) {
+    const expectedAuthority = compendiumBudgetBrowserAuthority(budgetRecord);
+    if (report.budget?.status !== budgetRecord?.status) {
+      errors.push('report budget status does not match the exact budget record');
+    }
+    if (!sameJson(report.budget?.browserAuthority ?? null, expectedAuthority)) {
+      errors.push('report Arc 1A browser authority does not match the exact budget record');
+    }
+    if (!/^[a-f0-9]{64}$/.test(String(expectedBudgetSha256 || ''))
+      || report.budget?.sha256 !== expectedBudgetSha256
+      || report.inputs?.budget !== expectedBudgetSha256) {
+      errors.push('report budget hash does not match the exact verified budget bytes');
+    }
+    if (!isObject(expectedInputs)
+      || !sameJson(Object.keys(expectedInputs), REPORT_INPUT_KEYS)
+      || !sameJson(report.inputs, expectedInputs)) {
+      errors.push('report inputs do not match the exact current input bytes');
+    }
+    if (!isObject(expectedSourceIdentity)
+      || !sameSourceIdentity(report.source?.begin, expectedSourceIdentity)
+      || !sameSourceIdentity(report.source?.end, expectedSourceIdentity)) {
+      errors.push('report source does not match the exact current source identity');
+    }
   }
   if (['instrument-fail', 'product-unanswerable'].includes(report.status)) {
     if (!Array.isArray(report.outcomes) || report.outcomes.length !== 0) {
@@ -2832,6 +2954,25 @@ export function verifyTerminalReport(report, expectedRunId, {
     ? report.outcomes.filter((outcome) => outcome?.status === 'fail') : [];
   if (!validProfileMeasurements(report.profiles, report.browser?.product)) {
     errors.push('raw phone/desktop profile measurements are incomplete');
+  }
+  if (budgetRecord?.status === 'active' && ['pass', 'fail'].includes(report.status)) {
+    const fixtureBound = isObject(fixture)
+      && Array.isArray(fixture.rows) && fixture.rows.length === 1500
+      && fixture.rowsSha256 === budgetRecord.fixture?.rowsSha256
+      && report.inputs?.fixtureRows === fixture.rowsSha256;
+    if (!fixtureBound) {
+      errors.push('active outcome replay lacks the exact bound 1,500-row fixture');
+    } else {
+      try {
+        const replayedOutcomes = PROFILES.flatMap((profile) =>
+          evaluateProfile(report.profiles?.[profile], budgetRecord, fixture));
+        if (!sameJson(replayedOutcomes, report.outcomes)) {
+          errors.push('reported outcomes do not exactly match replay from raw profiles and active budget');
+        }
+      } catch (error) {
+        errors.push(`active outcome replay failed: ${error instanceof Error ? error.message : String(error)}`);
+      }
+    }
   }
   if (!completeFilterProductEvidenceBound(report.profiles, report.outcomes)) {
     errors.push('raw native-filter product evidence is not bound to generation-guard FAIL');

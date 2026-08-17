@@ -1,6 +1,6 @@
 # Celestial Frontier — Master Art Direction
 
-**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The active `port/v2` implementation has advanced beyond that status; its current executed art state is recorded in that addendum below. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
+**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` Arc 1A art/resource overlay matches code as of 2026-08-17 and appears immediately below; the GP7 addendum preserves the earlier executed reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the
@@ -8,24 +8,34 @@ decisions we actually made). Content catalogs (`BIOME_ATLAS.md` at the repo root
 fauna/flora data-pack CSVs) remain the *content* source of truth; this is the *direction* source
 of truth.
 
-## 2026-08-13 v2 next-arc overlay — approved direction, not current implementation
+## 2026-08-17 v2 Arc 1A overlay — current implementation and remaining direction
 
-**Current implementation:** `port/v2` already paints deterministic static species art and uses it
-for the read-only Compendium and Planetside roster. The Compendium list is still eager: a save may
-carry 1,500 entries, and a cold row currently receives the full 440px portrait while a 132px
-thumbnail is derived later. Cache entry counts do not bound the full portraits retained by mounted
-rows, so this is an open CPU/decode/memory risk, not a completed delivery system. V2 has no Cargo,
-Shipyard, ship portrait, crafting, research, or ship-upgrade presentation yet. Legacy v1.8.9 does
-have deterministic additive ship art in `shipImage()`—the scout gains visible drive, array,
-extractor and scoop details—but that one base silhouette is a reference, not proof that the v2
-distinct-hull target is built.
+**Current implementation:** `port/v2` keeps the deterministic 1,500-species Compendium read-only,
+but its list is now virtualized: only the visible variable-height window, bounded overscan, and any
+focus-pinned row are mounted. Compendium rows and the Planetside roster acquire identity-safe
+`leaseThumb` ownership of true asynchronous 132px resources. A complete deterministic genome
+snapshot keys each resource; concurrent consumers deduplicate, and stale queued work cancels on
+release, filter replacement, row rebind, panel close, or final document teardown. The lease job
+paints through Canvas2D and encodes the 132px asset without first retaining or decoding a 440px data
+URL. Device-class cache, decoded-pixel, byte, queue, active-job, lease, and portrait caps are
+explicit. Only the selected specimen detail uses the synchronous 440px portrait, and Back/Close
+remove its retained DOM source. A producer error remains a stable owned error tile, releases
+cleanly, and the exact key recovers through a fresh lease.
 
-**Approved next-arc direction:** dense creature collections use a virtualized list and asynchronous
-132px delivery, with only the visible window and a small overscan mounted. The 440px master belongs
-to the selected detail card. Placeholder-to-thumbnail replacement must preserve identity, focus and
-scroll; stale jobs cancel; decoded-pixel/byte budgets and explicit close/disposal ownership replace
-entry-count optimism. A real-browser maximum-catalogue cycle must plateau after warm-up, and a
-deliberate no-virtualization/no-disposal control must fail before the gate is trusted.
+The phone and desktop resource ceilings are now active measured authority, derived from three
+independent one-attempt candidate runs plus the paired exact `3844701` broken baseline. That ruler
+is Arc-local to Compendium memory/resources and binds the exact Edge 151 product, revision,
+JavaScript version, and protocol version; it does **not** repin the global Gate-A Edge 150 browser.
+`compendiummem` binds exact-current budget/input/source identity and replays raw outcomes at terminal
+verification. The tracked reference does not claim terminal certification: that authority belongs
+only to a verified exact-current ignored report. Its six phone/desktop list, focus-pinned, and detail
+PNGs still require HUMAN review. Arc 1B scene-resource ownership/disposal and live HD
+planet replacement remain open.
+
+**What remains planned:** V2 has no Cargo, Shipyard, ship portrait, crafting, research, or
+ship-upgrade presentation yet. Legacy v1.8.9 does have deterministic additive ship art in
+`shipImage()`—the scout gains visible drive, array, extractor and scoop details—but that one base
+silhouette is a reference, not proof that the v2 distinct-hull target is built.
 
 Ship art is driven by one pure `ShipVisualState` projection shared with the reach ladder—art never
 writes progression. Four chassis stages must pass the same two-second silhouette test as organisms:
