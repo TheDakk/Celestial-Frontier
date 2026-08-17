@@ -315,6 +315,34 @@
     .compendium-scroll { position: relative; width: 100%;
       height: min(560px, max(44px, calc(100dvh - var(--topbar-h) - var(--dock-h) - var(--safe-bottom) - 126px)));
       overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; scrollbar-gutter: stable; }
+    /* An A++ Compendium row is taller than the 48px left between the measured
+       top bar and two-row phone dock in a short landscape viewport. Panels
+       are non-modal: Search and the dock remain rendered, named, focusable,
+       and hit-testable in the right safe column. Only noninteractive status
+       chrome yields while the left panel uses the full safe-height workspace. */
+    @media (max-width: 900px) and (orientation: landscape) {
+      body.panel-open :is(#topbar,#ctxbar,#hintpill) {
+        visibility: hidden;
+        pointer-events: none;
+      }
+      body.panel-open .panel {
+        top: calc(var(--safe-top) + 6px);
+        max-height: calc(100dvh - var(--safe-top) - var(--safe-bottom) - 30px);
+        width: calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2);
+      }
+      body.panel-open #codexpanel .compendium-scroll {
+        height: min(560px, max(44px, calc(100dvh - var(--safe-top) - var(--safe-bottom) - 126px)));
+      }
+      body.panel-open #dock {
+        left: auto;
+        right: calc(var(--safe-right) + 12px);
+        transform: none;
+      }
+      body.panel-open #survey {
+        top: calc(var(--safe-top) + 64px);
+        max-height: max(44px, calc(100dvh - var(--safe-top) - var(--safe-bottom) - var(--dock-h) - 88px));
+      }
+    }
     .compendium-virtual-extent { position: relative; width: 100%; min-height: 1px; }
     .compendium-spacer { position: absolute; left: 0; right: 0; pointer-events: none; }
     .panel button.centry.compendium-row { display: flex; gap: 10px; align-items: center;

@@ -19,7 +19,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, execSync } from 'node:child_process';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
@@ -52,7 +52,13 @@ import {
   COMPENDIUM_FIXTURE_SPEC_PATH, buildBrokenBaselineProjection,
   buildCompendiumFixture, stableJson,
 } from './compendiummem-fixture.mjs';
+import {
+  candidateSpeciesPainterChunkSource,
+  findCandidateSpeciesArtBuildGraph,
+} from './speciesart-build.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+
+export { candidateSpeciesPainterChunkSource } from './speciesart-build.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
@@ -518,7 +524,7 @@ export function candidateProducerErrorWorkExpression() {
       &&logicalIds.length===rows.length
       &&visualKeys.length===rows.length&&new Set(logicalIds).size===rows.length
       &&new Set(visualKeys).size===rows.length&&rows.every((row,index)=>row.index===index
-        &&(row.thumbState!=='ready'||row.complete));
+        &&(row.thumbState!=='ready'||(row.complete&&row.naturalWidth===132&&row.naturalHeight===132)));
     return observation})()`;
 }
 
@@ -526,6 +532,38 @@ export function validCandidateProducerErrorExpression(source, kind) {
   const expected = kind === 'pre-arm' ? candidateProducerErrorPreArmExpression()
     : kind === 'work' ? candidateProducerErrorWorkExpression() : null;
   if (expected === null || source !== expected) return false;
+  try { new Function(`"use strict"; return (${source});`); }
+  catch { return false; }
+  return true;
+}
+
+export function candidateThumbSettlementExpression(surface, expectedCount = null) {
+  assert(surface === 'list' || surface === 'planetside',
+    'candidate thumbnail settlement surface is invalid');
+  assert(expectedCount === null
+    || (Number.isSafeInteger(expectedCount) && expectedCount >= 0),
+  'candidate thumbnail settlement count is invalid');
+  const selector = surface === 'list'
+    ? '#codexpanel [data-sel="codex-entry"] img'
+    : '#planetside [data-sel="planetside-sp"] img';
+  const surfacePath = surface === 'list' ? 'list' : 'planetside';
+  const ownership = surface === 'list'
+    ? `d.panel.mode==='list'${expectedCount === null ? '' : `&&d.panel.filteredCount===${expectedCount}`}`
+    : `d.surfaces.planetside.visible`;
+  return `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics(),s=d.surfaces.${surfacePath}.thumbStates;
+    const imgs=[...document.querySelectorAll(${JSON.stringify(selector)})];
+    return ${ownership}&&s.length>0&&imgs.length===s.length&&s.every(x=>x==='ready')
+      &&imgs.every(img=>!!img.getAttribute('src')&&img.complete===true
+        &&img.naturalWidth===132&&img.naturalHeight===132)
+      &&d.art&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0?d:null;
+  })()`;
+}
+
+export function validCandidateThumbSettlementExpression(source, surface, expectedCount = null) {
+  let expected;
+  try { expected = candidateThumbSettlementExpression(surface, expectedCount); }
+  catch { return false; }
+  if (source !== expected) return false;
   try { new Function(`"use strict"; return (${source});`); }
   catch { return false; }
   return true;
@@ -787,7 +825,7 @@ export async function collectCandidateSnapshot({
 }
 
 async function collectProfile({
-  profile, viewport, fixture, browser, origin, veteranRaw, runId, candidateSpeciesChunk,
+  profile, viewport, fixture, browser, origin, veteranRaw, runId, candidateSpeciesArt,
 }) {
   const send = browser.send;
   const contexts = new Set();
@@ -897,16 +935,14 @@ async function collectProfile({
     });
     completeStage(`review ${state}`);
   };
-  const waitListReady = (sessionId, expectedCount = null) => waitValue(sessionId, 'list thumb settlement', `(()=>{
-    const d=window.__CF_SLICE__.api.compendiumDiagnostics(),s=d.surfaces.list.thumbStates;
-    return d.panel.mode==='list'${expectedCount === null ? '' : `&&d.panel.filteredCount===${expectedCount}`}
-      &&s.length>0&&s.every(x=>x==='ready')&&d.art&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0?d:null;
-  })()`, { timeoutMs: 30000 });
-  const waitPlanetsideReady = (sessionId) => waitValue(sessionId, 'Planetside thumb settlement', `(()=>{
-    const d=window.__CF_SLICE__.api.compendiumDiagnostics(),s=d.surfaces.planetside.thumbStates;
-    return d.surfaces.planetside.visible&&s.length>0&&s.every(x=>x==='ready')
-      &&d.art&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0?d:null;
-  })()`, { timeoutMs: 30000 });
+  const waitListReady = (sessionId, expectedCount = null) => waitValue(
+    sessionId, 'list thumb settlement',
+    candidateThumbSettlementExpression('list', expectedCount), { timeoutMs: 30000 },
+  );
+  const waitPlanetsideReady = (sessionId) => waitValue(
+    sessionId, 'Planetside thumb settlement',
+    candidateThumbSettlementExpression('planetside'), { timeoutMs: 30000 },
+  );
   const elementPoint = async (
     sessionId, selector, label, { targetWitness = null } = {},
   ) => await waitValue(sessionId, `${label} target`, `(()=>{
@@ -1058,7 +1094,7 @@ async function collectProfile({
     const lazyTarget = await createTarget();
     await navigate(lazyTarget.sessionId, `${origin}/`, 'fresh lazy-control boot');
     const lazyBoot = await snapshot(lazyTarget.sessionId, 'fresh lazy-control');
-    const lazySpeciesResources = await evaluate(lazyTarget.sessionId, `(()=>{const suffix=${JSON.stringify(`/${candidateSpeciesChunk.relativePath}`)};
+    const lazySpeciesResources = await evaluate(lazyTarget.sessionId, `(()=>{const suffix=${JSON.stringify(`/${candidateSpeciesArt.painter.relativePath}`)};
       return performance.getEntriesByType('resource').map(entry=>entry.name)
         .filter(name=>{try{return new URL(name,location.href).pathname.endsWith(suffix)}catch{return false}})})()`,
     'fresh species-art resource absence');
@@ -1388,15 +1424,20 @@ async function collectProfile({
     }
     const lastProbe = await answerability(sessionId, `${profile}-last`);
     const lazyEnd = await snapshot(lazyTarget.sessionId, 'final lazy-control');
-    const lazySpeciesResourcesEnd = await evaluate(lazyTarget.sessionId, `(()=>{const suffix=${JSON.stringify(`/${candidateSpeciesChunk.relativePath}`)};
+    const lazySpeciesResourcesEnd = await evaluate(lazyTarget.sessionId, `(()=>{const suffix=${JSON.stringify(`/${candidateSpeciesArt.painter.relativePath}`)};
       return performance.getEntriesByType('resource').map(entry=>entry.name)
         .filter(name=>{try{return new URL(name,location.href).pathname.endsWith(suffix)}catch{return false}})})()`,
     'final species-art resource absence');
     return {
       profile, viewport, reviewPacket,
       lazySpeciesResource: {
-        path: candidateSpeciesChunk.relativePath,
-        sha256: candidateSpeciesChunk.sha256,
+        ownerPath: candidateSpeciesArt.owner.relativePath,
+        ownerSha256: candidateSpeciesArt.owner.sha256,
+        path: candidateSpeciesArt.painter.relativePath,
+        sha256: candidateSpeciesArt.painter.sha256,
+        workerPath: candidateSpeciesArt.worker.relativePath,
+        workerSha256: candidateSpeciesArt.worker.sha256,
+        ownership: 'dedicated-worker-dynamic-import',
         matches: lazySpeciesResources,
         endMatches: lazySpeciesResourcesEnd,
       },
@@ -1471,33 +1512,6 @@ async function collectProfile({
   } finally {
     await disposeAll();
   }
-}
-
-function findCandidateSpeciesChunk(candidateDist) {
-  const files = [];
-  const visit = (directory) => {
-    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
-      const file = path.join(directory, entry.name);
-      if (entry.isSymbolicLink()) {
-        throw new Error(`candidate build contains an unsupported symlink: ${file}`);
-      }
-      if (entry.isDirectory()) visit(file);
-      else if (entry.isFile() && entry.name.endsWith('.js')) files.push(file);
-    }
-  };
-  visit(candidateDist);
-  const semantic = files.filter((file) => {
-    const source = fs.readFileSync(file, 'utf8');
-    return source.includes('cf-v2-species-art-diagnostics/v1')
-      && source.includes('active-measured')
-      && source.includes('leaseThumb') && source.includes('speciesArtDiagnostics');
-  });
-  assert(semantic.length === 1,
-    `candidate build must expose one semantically identifiable species-art executable; found ${semantic.length}`);
-  const relativePath = path.relative(candidateDist, semantic[0]).split(path.sep).join('/');
-  assert(relativePath && !relativePath.startsWith('../') && !path.posix.isAbsolute(relativePath),
-    `candidate species-art path escaped the build: ${relativePath}`);
-  return Object.freeze({ relativePath, sha256: hashFile(semantic[0]) });
 }
 
 function findBrokenBaselineSpeciesChunk(baselineDist) {
@@ -2028,9 +2042,8 @@ async function runGate({ calibrate }) {
       throw new Error('numeric Compendium budget is calibration-required; certification refuses to launch a browser');
     }
     gateStage = 'candidate build';
-    const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-    execFileSync(npm, ['exec', 'vite', 'build'], { cwd: appDir, stdio: 'inherit' });
-    const candidateSpeciesChunk = findCandidateSpeciesChunk(distDir);
+    execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
+    const candidateSpeciesArt = findCandidateSpeciesArtBuildGraph(distDir);
     gateStage = 'candidate server and browser launch';
     server = await serveDist();
     browser = await openChromiumCdp(compendiumCdpOptions('candidate', {
@@ -2055,7 +2068,7 @@ async function runGate({ calibrate }) {
       gateStage = `${profile} profile collection`;
       measurements.push(await collectProfile({
         profile, viewport, fixture, browser, origin: server.origin, veteranRaw, runId,
-        candidateSpeciesChunk,
+        candidateSpeciesArt,
       }));
     }
     gateStage = 'sealed outcome evaluation';

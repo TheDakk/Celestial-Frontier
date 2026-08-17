@@ -755,6 +755,29 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > tip/upstream/checks; whichever final pushed tip is selected requires matching CI. No human,
 > host, Ready, merge, release, deployment, or version authority follows.
 
+**Correction earned by PR #32's first Linux battery:** moving expensive work to another realm is
+not itself a resource or responsiveness proof. Saved-Earth Planetside asked the renderer for its
+first settlement observation; the target missed the unchanged two-second command bound while the
+browser-process heartbeat answered in six milliseconds. The heavy painter import, 440px paint,
+132px downsample and PNG encoding still ran synchronously on the renderer, and `setTimeout(0)` only
+yielded between indivisible jobs. Keep the response deadline and move the indivisible producer to
+one lazy dedicated worker with no synchronous fallback. Bind the reachable Window owner, exact
+module Worker edge, worker instance/epoch/job identities, worker-local dynamic painter import,
+ordered phases/results/errors, and final worker disposal; reject orphan/duplicate/preloaded/static
+worker or painter paths and any renderer-reachable legacy synchronous facade. A page-heap gate may
+not go green merely because live memory moved into an unmeasured retained worker: terminate the
+worker at queue drain or measure the worker realm explicitly.
+
+Failure ownership crosses the realm too. Run capability preflight once before worker readiness or
+painter import. Capability, import, protocol and worker-fatal errors terminate one instance and
+settle its active plus already-queued owners exactly once, without retrying the same broken import
+for every tile; content-specific paint/encode failures may remain per-job. Negative-control both
+directions with more than one owner. Smoke waits for the semantic image outcome (`src`, complete,
+exact decoded dimensions, state, queue and active work) under one monotonic phase deadline whose
+blocking CDP commands are clipped to the same remaining time. A fixed sleep, long data URL, copied
+zero counter, later post-settlement observation, wider deadline, or green renderer-only heap number
+cannot substitute for those outcomes.
+
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
 GitHub Actions step lost that step-local `CF_BROWSER`, selected an installed Linux Edge through

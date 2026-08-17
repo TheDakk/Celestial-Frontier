@@ -38,9 +38,9 @@ import {
 } from './compendium.js';
 import {
   bindSpeciesThumb,
-  speciesArtLoader,
+  SpeciesArtLoader,
   SpeciesThumbLeaseGroup,
-  type SpeciesArtModule,
+  type Portrait440,
   type SpeciesThumbBinding,
 } from './species-art-loader.js';
 import {
@@ -89,9 +89,10 @@ import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
 document.title = `Celestial Frontier v${V2_DEVELOPMENT_VERSION} — Development`;
 installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt fully replaces the hooks */
-/* THE PORTRAIT ENGINE IS A LAZY CHUNK: ~352KB gzip of species art stays off the boot
-   path; the first Compendium/planetside view kicks the load and refills
-   itself when the painters arrive. No boot timer imports its DOM-mutating chunk. */
+/* THE PORTRAIT ENGINE IS A WORKER-LOCAL LAZY CHUNK: heavy species painters stay
+   off the renderer boot path. The first serviced art owner enables a broker that
+   owns at most one producer at a time and terminates it when the queue drains;
+   thumbnails/portraits return as validated PNG assets without a sync fallback. */
 /* app-state seams the VERBATIM descriptor code reads as globals (D-ST in
    DEVIATIONS — describePick reads `st`/`customNames` inside a [domain]
    module; the port passes state explicitly when Phase 4 rebuilds the card
@@ -107,6 +108,14 @@ extensions.add(CullerPlugin);   /* offscreen sprites skip render — thousands o
 
 const app = new Application();
 const DOCUMENT_TOKEN = crypto.randomUUID();
+const speciesArtLoader = new SpeciesArtLoader(DOCUMENT_TOKEN);
+addEventListener('pagehide', (event) => {
+  if (event.persisted) speciesArtLoader.suspendForBfcache();
+  else speciesArtLoader.dispose('document pagehide');
+});
+addEventListener('pageshow', (event) => {
+  if (event.persisted) speciesArtLoader.resumeFromBfcache();
+});
 type ReloadCanvasRelease = {
   beforeWidth: number;
   beforeHeight: number;
@@ -1263,23 +1272,9 @@ function fillCodexDetail(idx: number): void {
     const KEYS = ['vit', 'fer', 'res', 'agi', 'ins'];   /* STAT_KEYS order — names/hues are position-indexed */
     const mx = Math.max(1, ...KEYS.map((k) => st[k] || 0));
     const names = STAT_NAMES as readonly string[], hues = STAT_HUES as readonly string[];
-    let portrait = '';
-    const ready = speciesArtLoader.request('codex-detail', (art) => {
-      if (!art || codexGeneration !== generation || codexMode !== 'detail'
-        || codexDetailLogicalId !== String(row[0]) || openPanelId() !== 'codex') {
-        codexStaleCompletionDrops++;
-        return;
-      }
-      fillCodexDetail(idx);
-    });
-    codexDetailArtCancel = ready.cancel;
-    const art: SpeciesArtModule | null = ready.art;
-    if (art) {
-      codexDetailArtCancel = null;
-      try { portrait = art.speciesPortrait(e.g as never); } catch { /* a genome the painter cannot dress — the card still reads */ }
-    }
     body =
-      (portrait ? `<img data-sel="detail-portrait" src="${portrait}" alt="" width="440" height="440" style="width:100%;height:auto;border-radius:10px;border:1px solid #22304a;margin:2px 0 8px;background:#0b1220">` : '') +
+      '<img data-sel="detail-portrait" data-art-state="placeholder" alt="" width="440" height="440" ' +
+      'style="width:100%;height:auto;border-radius:10px;border:1px solid #22304a;margin:2px 0 8px;background:#0b1220">' +
       `<div style="margin:4px 0 8px"><b style="font-size:16px;color:#f4f8ff">${esc(e.name)}</b>` +
       (d.grade ? ` <span data-sel="detail-grade" style="border:1px solid ${esc(d.grade.hex || '#888')};color:${esc(d.grade.hex || '#ccc')};border-radius:999px;padding:1px 9px;font-size:11px">${esc(d.grade.label || '')}</span>` : '') +
       `<div class="sub">${esc(e.kind)} · ${esc(e.realm)}${e.hybrid ? ' · hybrid' : ''}${e.from ? ' · ' + esc(e.from) : ''}</div></div>` +
@@ -1297,6 +1292,31 @@ function fillCodexDetail(idx: number): void {
     body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
   }
   fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}</div>`);
+  const portrait = document.querySelector<HTMLImageElement>('#codexpanel [data-sel="detail-portrait"]');
+  if (portrait) {
+    const publishPortrait = (asset: Portrait440 | null, error?: unknown): void => {
+      const current = codexGeneration === generation && codexMode === 'detail'
+        && codexDetailLogicalId === String(row[0]) && openPanelId() === 'codex'
+        && portrait.isConnected;
+      if (!current) { codexStaleCompletionDrops++; return; }
+      if (error !== undefined || !asset || asset.width !== 440 || asset.height !== 440) {
+        portrait.removeAttribute('src');
+        portrait.dataset.artState = 'error';
+        return;
+      }
+      portrait.src = asset.url;
+      portrait.dataset.artState = 'ready';
+    };
+    try {
+      const request = speciesArtLoader.requestPortrait(
+        'codex-detail', e.g as Record<string, unknown>, publishPortrait,
+      );
+      codexDetailArtCancel = request.cancel;
+      if (request.current) publishPortrait(request.current);
+    } catch {
+      portrait.dataset.artState = 'error';
+    }
+  }
   const back = document.getElementById('codexback')!;
   back.addEventListener('click', () => fillCodex(codexFilter, codexReturnState));
   back.focus();
@@ -4239,6 +4259,7 @@ async function loadSave(): Promise<void> {
     visualViewport?.removeEventListener('resize', syncRendererDensity);
     closeCodexSurface();
     clearPlanetside();
+    speciesArtLoader.dispose(`intentional replacement: ${reason}`);
     try {
       app.destroy(
         { removeView: true, releaseGlobalResources: true },
@@ -4773,6 +4794,10 @@ async function loadSave(): Promise<void> {
       if (tickerTicks < 1) { emitBootReady(); return; }
       emitBootPhase('ready-scheduled');
       setTimeout(() => {
+        /* Real owners may queue during the initial surface render, but the
+           heavy painter Worker cannot start until complete app wiring, one
+           animation frame, and this serviced task boundary. */
+        speciesArtLoader.activate();
         try {
           const binding = (window as unknown as Record<string, unknown>).__cfSliceReadyWitness;
           if (typeof binding !== 'function') return;

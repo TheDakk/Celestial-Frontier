@@ -12,9 +12,10 @@
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { speciesHue } from './surface.js';
 import { rootedSpine } from './surface.js';
+import type { ArtContext2D } from './speciescanvas.js';
 
 type G = Record<string, unknown>;
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 export type Painter2 = (c: Ctx, g: G, p: Pal, name: string) => void;
 

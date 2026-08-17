@@ -11,9 +11,9 @@ import { _EARTH_NAMES } from '@cf/domain-descriptors';
 import { crossGenome } from '@cf/domain-genetics';
 import { makeGenome } from '@cf/domain-genome';
 import { hashInt } from '@cf/domain-rand';
-/* Audit-only route observation: call the exact resolver used by
-   speciesPortrait without widening @cf/art's production exports. */
-import { resolveOverride } from '../../../packages/art/src/speciesoverrides.js';
+/* Audit-only route observation: call the exact Window compatibility resolver
+   without pulling its data-URL wrappers into the worker painter graph. */
+import { resolveOverride } from '@cf/art/species-compat';
 
 type Genome = Record<string, unknown>;
 type EarthKingdom = 'fauna' | 'flora' | 'fungi' | 'microbe';

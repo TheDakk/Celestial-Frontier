@@ -1,7 +1,8 @@
-/* SpeciesArt — browser-only deterministic portrait ownership.
-   Compatibility callers retain the exact synchronous 440px URL APIs. Arc 1A
-   list surfaces use the refcounted 132px lease path below: a cache miss paints
-   canvas -> canvas in a later task and never enters the full-portrait cache. */
+/* SpeciesArt — browser-only deterministic compatibility ownership.
+   Audit and legacy callers retain the exact synchronous 440px URL APIs and
+   historical lease diagnostics in this module. The live v2 app imports the
+   worker-safe identity/painter/broker subpaths instead; it never imports this
+   DOM allocator or its synchronous painter graph. */
 import {
   hdPortraitFauna, hdPortraitFaunaCanvas,
   hdPortraitFlora, hdPortraitFloraCanvas,
@@ -9,9 +10,17 @@ import {
   hdPortraitMicrobe, hdPortraitMicrobeCanvas,
 } from './hdart.verbatim.js';
 import {
-  lineageRenderKingdom, resolveOverride, resolveOverrideCanvas,
+  lineageRenderKingdom, resolveOverrideCanvas,
 } from './speciesoverrides.js';
+import { resolveOverride } from './speciescompat.js';
+import {
+  speciesVisualKey,
+  snapshotSpeciesGenome,
+  type SpeciesVisualKey,
+} from './speciesidentity.js';
 export { CLIPPED } from './speciesoverrides.js';
+export { speciesVisualKey, type SpeciesVisualKey } from './speciesidentity.js';
+export { resolveOverride, resolveProcedural } from './speciescompat.js';
 
 const PORTRAIT_SIZE = 440;
 const THUMB_SIZE = 132 as const;
@@ -19,8 +28,6 @@ const THUMB_PIXELS = THUMB_SIZE * THUMB_SIZE;
 const THUMB_DECODED_BYTES = THUMB_PIXELS * 4;
 const PHONE_QUERY = '(max-width: 700px)';
 
-declare const speciesVisualKeyBrand: unique symbol;
-export type SpeciesVisualKey = string & { readonly [speciesVisualKeyBrand]: true };
 export type SpeciesArtDeviceClass = 'phone' | 'desktop';
 
 export interface Thumb132 {
@@ -189,75 +196,6 @@ function currentDeviceClass(): SpeciesArtDeviceClass {
 }
 function currentLimits(): DeviceLimits { return DEVICE_LIMITS[currentDeviceClass()]; }
 
-/* Seed is not a complete bred-genome identity. Reversed parents may share a
-   seed while retaining different inherited traits, and lineage adds visual
-   inputs outside that stream. The tagged canonical form also distinguishes
-   undefined/null, -0, non-finite numbers, arrays and object key order. */
-function stableGenomeNode(value: unknown, ancestors: Set<object>): unknown {
-  if (value === null) return ['null'];
-  if (value === undefined) return ['undefined'];
-  if (Array.isArray(value)) {
-    if (ancestors.has(value)) throw new TypeError('cyclic genome cache value');
-    ancestors.add(value);
-    const result = ['array', value.map((item) => stableGenomeNode(item, ancestors))];
-    ancestors.delete(value);
-    return result;
-  }
-  if (typeof value === 'object') {
-    if (ancestors.has(value)) throw new TypeError('cyclic genome cache value');
-    ancestors.add(value);
-    const object = value as Record<string, unknown>;
-    const result = ['object', Object.keys(object).sort()
-      .map((key) => [key, stableGenomeNode(object[key], ancestors)])];
-    ancestors.delete(value);
-    return result;
-  }
-  if (typeof value === 'number') {
-    const exact = Number.isNaN(value) ? 'NaN'
-      : value === Infinity ? 'Infinity'
-        : value === -Infinity ? '-Infinity'
-          : Object.is(value, -0) ? '-0' : String(value);
-    return ['number', exact];
-  }
-  if (typeof value === 'string') return ['string', value];
-  if (typeof value === 'boolean') return ['boolean', value];
-  if (typeof value === 'bigint') return ['bigint', String(value)];
-  throw new TypeError(`unsupported genome cache value: ${typeof value}`);
-}
-
-export function speciesVisualKey(g: Record<string, unknown>): SpeciesVisualKey {
-  return JSON.stringify(stableGenomeNode(g, new Set())) as SpeciesVisualKey;
-}
-
-/* Queue work owns a detached snapshot. Mutating an app object after acquiring
-   a lease cannot make the rendered pixels disagree with the lease key. */
-function snapshotGenomeNode(value: unknown, ancestors: Set<object>): unknown {
-  if (value === null || value === undefined) return value;
-  if (Array.isArray(value)) {
-    if (ancestors.has(value)) throw new TypeError('cyclic genome cache value');
-    ancestors.add(value);
-    const result = value.map((item) => snapshotGenomeNode(item, ancestors));
-    ancestors.delete(value);
-    return result;
-  }
-  if (typeof value === 'object') {
-    if (ancestors.has(value)) throw new TypeError('cyclic genome cache value');
-    ancestors.add(value);
-    const source = value as Record<string, unknown>;
-    const result: Record<string, unknown> = {};
-    for (const key of Object.keys(source).sort()) result[key] = snapshotGenomeNode(source[key], ancestors);
-    ancestors.delete(value);
-    return result;
-  }
-  if (typeof value === 'function' || typeof value === 'symbol') {
-    throw new TypeError(`unsupported genome cache value: ${typeof value}`);
-  }
-  return value;
-}
-function snapshotGenome(g: Record<string, unknown>): Record<string, unknown> {
-  return snapshotGenomeNode(g, new Set()) as Record<string, unknown>;
-}
-
 function encodedUrlBytes(url: string): number {
   return new TextEncoder().encode(url).byteLength;
 }
@@ -281,7 +219,7 @@ export function renderSpeciesPortraitCanvas(g: Record<string, unknown>): HTMLCan
   if (canvas.width !== PORTRAIT_SIZE || canvas.height !== PORTRAIT_SIZE) {
     throw new Error(`species portrait canvas must be ${PORTRAIT_SIZE}x${PORTRAIT_SIZE}`);
   }
-  return canvas;
+  return canvas as unknown as HTMLCanvasElement;
 }
 
 /* Browser audit hook for the outcome-level lineage regression check. */
@@ -536,7 +474,7 @@ function releaseLease(state: LeaseState): void {
 
 /** Acquire one consumer reference to an exact 132px visual resource. */
 export function leaseThumb(g: Record<string, unknown>): ThumbLease {
-  const genome = snapshotGenome(g);
+  const genome = snapshotSpeciesGenome(g);
   const key = speciesVisualKey(genome);
   totals.leaseAcquires++;
   const state: LeaseState = {

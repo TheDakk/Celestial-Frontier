@@ -618,7 +618,15 @@ Compendium through a spacer-preserved virtual window, focus pinning and native k
 filter/clear, detail/Back, Close cleanup, and Planetside hide/release/reacquire. The product path
 owns real 132px thumb leases with one bounded producer, queued-work cancellation, dedupe, disposal,
 and cold-error publication plus recovery; list traffic neither mounts nor cache-pollutes through the
-440px full-portrait path.
+440px full-portrait compatibility path. Heavy painter import, 440px scratch paint, 132px downsample,
+and PNG encoding run in at most one serial dedicated module worker at a time after app wiring and a
+serviced render turn. The renderer has no synchronous fallback. The worker terminates after active
+work settles and its queue is empty; each later genuinely new producer burst owns a fresh
+instance/import. Protocol messages carry document/producer/instance/job/phase identity into
+fail-closed evidence. Capability,
+import, protocol, and worker failures terminate once and settle active plus queued owners without an
+automatic retry loop; paint and content-specific encode failures remain per-job. Selected detail
+uses the same owner asynchronously at 440px.
 
 The checked-in `v2/budgets/compendium-memory-v1.json` authority is active and measured. It pairs the
 exact `38447019517147319bd08c598202d097ee866874` broken-baseline run
@@ -651,18 +659,22 @@ texture, render-target, GPU-proxy, and combined travel → Compendium → Shipya
   a closed panel.
 - Keep complete-genome/set-qualified visual identity; a bare seed is insufficient for bred or
   lineage-sensitive portraits.
-- Create an internal canvas → canvas thumbnail seam that avoids the full-portrait encode/decode
-  detour and full-cache pollution. Retain the already-fixed shared lazy-art subscription behavior.
-- Keep the DOM-mutating species-art chunk under app-shell lifecycle ownership: sequence its lazy
-  import only after the owning document/shell exists, and do not let non-DOM consumers import the
-  side-effectful module directly.
+- Keep identity, canvas allocation, portable painting, and lease/cache ownership separate. Run the
+  painter's import, 440px scratch work, 132px downsample, and encoding only in the dedicated worker;
+  reject a renderer-reachable legacy synchronous species-art facade in the production build graph.
+- Activate the worker only after the owning document/shell is fully wired and one render turn is
+  serviced. Terminate it after active work settles and its queue is empty, on persisted suspension,
+  fatal protocol/capability/import failure, or final disposal; never synchronously fall back or
+  automatically retry the failed work from a broken instance.
 - Budget decoded pixels/bytes, cache entries, jobs, and leases; trim correctly as phone caps shrink.
 - Move Planetside chips to the lease path without changing their structural semantics.
 
 **Exit evidence:** a standalone workspace-locked `compendiummem` gate uses a deterministic
-1,500-row catalogue and proves mounted-row bound, `naturalWidth ≤ 132`, decoded resources,
-jobs/leases, populated surface, warm plateau, focus/detail/filter reachability, and close cleanup
-on phone/desktop. Independent negative controls reintroduce unwindowed rows, 440px mounting,
+1,500-row catalogue and proves mounted-row bound; every accepted image is ready with nonempty `src`,
+`complete === true`, and exact 132×132 natural dimensions; queue/active work drains; released worker
+identity, phase, error, and disposal equations reconcile; and decoded resources, jobs/leases,
+populated surface, warm plateau, focus/detail/filter reachability, and close cleanup hold on
+phone/desktop. Independent negative controls reintroduce unwindowed rows, 440px mounting,
 missing lease release, and missing disposal. [HUMAN] review validates 132px list art and 440px
 Compendium detail art, text hierarchy, and focus behavior; the separate 300px surface remains
 art-review-packet evidence, not a Compendium delivery tier.

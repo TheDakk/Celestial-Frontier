@@ -20,7 +20,9 @@
    Everything here is pure canvas and takes explicit geometry, so it can be
    used by the Earth painters and by the procedural body plans alike. */
 
-type Ctx = CanvasRenderingContext2D;
+import type { ArtContext2D } from './speciescanvas.js';
+
+type Ctx = ArtContext2D;
 const TAU = Math.PI * 2;
 
 /** the engine's light: upper-left, matching every bodyGrad in the codebase */

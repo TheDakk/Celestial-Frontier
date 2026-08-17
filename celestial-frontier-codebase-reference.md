@@ -11,19 +11,39 @@
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
 > bounded overscan, and any focus-pinned row; measured logical anchor-plus-offset
 > and the selected row survive filter, detail/Back reconstruction, and height-map
-> replacement. `apps/game/src/species-art-loader.ts` is the sole lazy package
-> import and binds both Compendium and Planetside images to `leaseThumb` ownership.
-> Filter, rebind, close, ascent, and final document teardown release their exact
-> owners; a persisted bfcache `pagehide` retains the live document's leases.
+> replacement. `apps/game/src/species-art-loader.ts` is the sole DOM adapter around
+> `SpeciesArtBroker` and binds both Compendium and Planetside images to `leaseThumb`
+> ownership. Filter, rebind, close, ascent, and final document teardown release their
+> exact owners; a persisted bfcache `pagehide` retains the live document's leases
+> while suspending worker execution.
 >
-> `packages/art/src/speciesart.ts` snapshots and keys the complete deterministic
-> genome, deduplicates shared misses, cancels unowned queued work, runs one active
-> Canvas2D job at a time, and encodes a true 132px resource without retaining or
-> decoding a 440px data URL first. Phone/desktop cache, decoded-pixel, byte, queue,
-> lease, and portrait limits report `active-measured`. Only specimen detail uses
-> synchronous `speciesPortrait` compatibility at 440px; its Back/Close path clears
-> the retained DOM source. Producer failure remains a stable owned error tile and
-> the same key recovers under a fresh lease.
+> `packages/art/src/speciesidentity.ts`, `speciescanvas.ts`, `speciespainter.ts`, and
+> `speciesbroker.ts` separate deterministic identity, portable canvas allocation,
+> painting, and main-thread ownership. After full app wiring and a serviced render
+> turn, at most one serial dedicated module worker at a time dynamically imports the painter, paints a
+> 440px scratch canvas, downsamples and encodes a true 132px thumbnail, and returns
+> only validated identity-bound results. The renderer never synchronously falls back
+> to that heavy path; the worker runs one job at a time and terminates after active work settles and
+> its queue is empty, keeping the measured page heap honest. A later new producer burst owns a fresh
+> instance/import. Once-per-worker capability,
+> import, protocol, and worker failures terminate the instance and settle active plus
+> queued owners exactly once, while content-specific paint/encode errors remain
+> per-job. Phone/desktop cache, decoded-pixel, byte, queue, lease, portrait, worker
+> lifecycle, and phase evidence report `active-measured`. Specimen detail requests an
+> asynchronous 440px result through the same owner; Back/Close cancels that request
+> and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
+> synchronous audit compatibility and are rejected from the live entry-to-worker
+> build graph. Producer failure remains a stable owned error tile and the same key
+> recovers under a fresh lease.
+>
+> `apps/game/src/species-art-protocol.ts`, `species-art-worker-core.ts`, and
+> `species-art.worker.ts` own the validated realm protocol, worker state machine, and direct Vite
+> module-worker entry. `apps/game/tsconfig.worker.json` compiles that graph with WebWorker globals
+> without widening the Window program. `tools/speciesart-build.mjs` proves one exact index owner →
+> module worker → worker-local dynamic painter graph and rejects orphan/duplicate/static/preloaded
+> worker or painter edges plus any renderer-reachable legacy synchronous facade. The loader owns a
+> live `(max-width: 700px)` subscription that immediately trims to phone caps and removes the
+> listener on final disposal.
 >
 > `tools/compendiummem.mjs`, its pure contract, and
 > `budgets/compendium-memory-v1.json` own the active measured phone/desktop ceiling:
@@ -462,9 +482,10 @@
 > remains unchanged for Training. Field Training is six live
 > chart/travel/landing lessons plus an honest graduation. Tooltip deep-links,
 > Advanced Briefings and the full 21-step curriculum remain OPEN. The newer
-> D-TRAIN-1 overlay above records exact legacy-checkpoint restoration. Lazy species art uses one shared load Promise;
-> Compendium and Planetside now bind exact 132px leases, release stale owners, and
-> virtualize the 1,500-row list instead of retaining list-scale callbacks or portraits.
+> D-TRAIN-1 overlay above records exact legacy-checkpoint restoration. Lazy species art uses
+> exact broker leases plus a serial close-at-idle dedicated worker, not a shared renderer import
+> callback; Compendium and Planetside bind exact 132px owners, release stale work, and virtualize
+> the 1,500-row list without retaining list-scale callbacks, portraits, or main-thread painter work.
 > Survey presentation filters the legacy `Spectral class` descriptor row. Planet
 > rarity is absent before landing and shown afterward as the plain display-grade
 > name. Internal `.designation`/`spectral()` data remains deterministic for art and
@@ -479,6 +500,13 @@
 > to recreate dismissal, and proves the opposite direction on a hit-tested canvas point. Both
 > delegated document handlers reject non-`Element` targets before `closest`, restoring the legacy
 > event-boundary guard without changing modal, Training, Search or Escape policy.
+> Short-landscape panel-open uses a nonmodal split safe workspace: Compendium occupies the left
+> safe-height column with a scroller recomputed from the safe viewport; Search, dock, and Survey
+> when open remain visible, named, focusable, hit-testable, and operable at right. Panel-open
+> status already yields trail/objective, while the short-landscape rule additionally yields only
+> noninteractive top/context/hint chrome. Glass drives real hostile A++ first/middle/last and
+> focus-pinned rows plus clipped-ancestor controls. This is a bounded geometry repair, not a broad
+> presentation-polish claim.
 >
 > V2 now applies imported Text size / tone / font preferences, a contrast-safe
 > 0.82..0.98 glass floor, safe-area and measured dock/context/hint offsets,
@@ -880,9 +908,10 @@
 > sheets `tools/sheets/biome-coverage.js` (MODE=earth|proc, EMPTY=1), `proc-skins.js`, `proc-aqua.js`,
 > `b15-butterfly.js`.
 
-> **2026-08-10 port/v2 full-catalogue reset overlay:** PixiJS owns the live
+> **2026-08-10 port/v2 full-catalogue reset overlay (historical; superseded for live delivery by
+> the 2026-08-17 broker/worker overlay above):** PixiJS owns the live
 > galaxy/world scene in `port/v2/apps/game/src/main.ts`; deterministic organism
-> anatomy is still generated by Canvas2D painters through
+> anatomy was generated by Canvas2D painters through
 > `packages/art/src/speciesart.ts` and displayed as DOM `<img>` portraits in the
 > Compendium/planetside UI. The genetics facade records the selected Earth
 > lineage's exact `_earthBlendKingdom`; `speciesoverrides.ts` sends fauna to the
@@ -1297,14 +1326,17 @@ Trait arrays drive description & art: `FA_HABITAT`, `FA_LOCO`, `FA_BODY`, `FA_SK
 ### Art
 `speciesPortrait(g)` renders per-kingdom painterly **Canvas** art (microbe = cell cluster,
 flora = stalk+fronds+bloom, fungi = mushrooms, fauna = assembled anatomy). In current
-`port/v2`, that synchronous 440px URL is compatibility/detail-only and its portrait LRU is
-device-capped at **96 on phones / 256 otherwise**. `leaseThumb(g)` is the Compendium and
-Planetside path: it snapshots the complete genome, deduplicates/cancels keyed asynchronous jobs,
-and owns a separate true-132px LRU capped at **96 / 256** with decoded-pixel, byte, queue,
-active-job, and lease limits. The compatibility `speciesThumb(g)` may still return a 440px URL
-on a miss, but Arc 1A list/Planetside callers do not use it. A persisted bfcache `pagehide`
-retains the same document's leases; final non-persisted teardown releases jobs, leases, and both
-caches. Reveal cards show a
+`port/v2`, `speciesart.ts` and `speciescompat.ts` expose that synchronous Window-only URL path for
+audit compatibility; the production entry graph rejects it as a renderer-reachable dependency.
+`leaseThumb(g)` is the Compendium and Planetside path: `SpeciesArtBroker` snapshots the complete
+genome, deduplicates/cancels keyed asynchronous jobs, and owns a true-132px LRU capped at **96 / 256**
+with decoded-pixel, byte, queue, active-job, lease, and worker-lifecycle limits. At most one serial
+lazy module worker at a time imports the portable painter, creates a 440px scratch canvas,
+downsamples to 132px, and encodes the result off the renderer. It terminates after active work
+settles and its queue is empty; a later genuinely new producer burst owns a fresh instance/import.
+Detail uses an asynchronous broker-owned 440px result rather than the compatibility URL. A persisted bfcache
+`pagehide` retains the same document's leases while suspending worker execution; final
+non-persisted teardown releases jobs, leases, caches, and the worker. Reveal cards show a
 **biome-colored glow** behind the portrait (ability-theme color for fauna, nourished-stat color
 for flora).
 

@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-17 · ARC 1A BOUNDED COMPENDIUM ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-17 · PR #32 BATTERY REPAIR ◀◀◀
 
 ### Cold start
 
@@ -37,9 +37,14 @@ the archive verbatim and refresh this handoff in place.
 - D-TRAIN-1 merged normally through PR #31 into develop at exact merge
   38447019517147319bd08c598202d097ee866874. That merge is the Arc 1A broken-baseline authority
   and the current origin/develop base for this branch.
-- openai/mac contains ten intentional Arc 1A implementation/instrument commits from d1c5fc6 through
-  clean committed e4e8d1d. The remaining active-budget, exact-browser CI, verifier, tests, and
-  reference refresh are one uncommitted OpenAI-owned integration batch.
+- PR #32 contains the committed Arc 1A implementation and an exact clean-head Arc-local Compendium
+  report through `65b1bace57cfbbfc57acbffe55537764a382c581`; that report was not full PR-battery
+  certification. The first Linux battery correctly exposed a
+  renderer-answerability defect during cold Planetside species art, plus stale Smoke settlement,
+  Glass instrument/short-landscape geometry, and static-art audit defects.
+- The current OpenAI-owned uncommitted repair moves heavy species art into a dedicated worker and
+  repairs those three gate surfaces. The full browser-free battery and independent source review
+  are green; clean-head browser evidence, push, and exact-head PR CI remain outstanding.
 - Nothing in this batch changes main, the production v1.8.9 page, a shipped version, a save schema,
   deterministic generation/share bytes, or either live-site repository.
 
@@ -49,18 +54,25 @@ the archive verbatim and refresh this handoff in place.
   filtering, visible and hidden Search entry, clear/reopen, deep Back, Close, selected-row focus,
   pinned focus rings, resize contraction/expansion, and one-generation publication remain bound to
   real DOM outcomes.
-- List and Planetside portraits use one complete-genome-keyed lease producer. A cold row receives a
-  neutral placeholder, cancellable/deduplicated work, a direct 132 by 132 canvas thumbnail, and a
+- List and Planetside portraits use one complete-genome-keyed `SpeciesArtBroker`. A cold row
+  receives a neutral placeholder, cancellable/deduplicated work, a true 132 by 132 thumbnail, and a
   bounded cache; unmounted/closed owners release, queued orphan work cancels, settled subscribers
-  clear, and phone cap selection trims immediately. The selected detail alone owns a 440px portrait.
+  clear, and desktop-to-phone cap changes trim immediately. Selected detail owns an asynchronous
+  440px request through the same broker.
 - Producer failure evidence is fail-closed: one proven-cold invariant row receives the exact
   one-shot error while it remains mounted, the error key stays uncached, and a natural close/reopen
   proves the same logical id/key recovers as a cached decoded 132px row. Ownership, lifetime
   counters, cache arithmetic, answerability, command order, and partial-report milestones are
   retained and verifier-bound.
-- The species-art executable remains a separate lazy chunk. App-shell/document lifecycle owns its
-  import; list traffic neither renders nor decodes full portraits and does not pollute the portrait
-  cache. Arc 1B still owns ordinary Pixi/canvas scene texture and long-session resource plateaus.
+- After full app wiring and a serviced render turn, at most one serial dedicated module worker at a
+  time dynamically
+  imports the portable painter, performs 440px scratch paint, 132px downsample and PNG encoding,
+  validates document/producer/instance/job identity, and terminates after active work settles and
+  its queue is empty. Each later genuinely new producer burst owns a fresh instance/import. The
+  renderer has no synchronous painter fallback. Capability/import/protocol/worker failures
+  terminate once and settle active plus queued owners without retrying every tile; paint/content
+  encode failures stay per-job. Arc 1B still owns ordinary Pixi/canvas scene texture and
+  long-session resource plateaus.
 
 ### Measured resource authority
 
@@ -98,14 +110,33 @@ the archive verbatim and refresh this handoff in place.
   are replayed from those raw profiles against the exact budget and must match byte-for-byte.
   Stale raw resource evidence, duplicated summary carriers, forged authority booleans, old source,
   wrong inputs, retry ledgers, and truthful product FAILs are independently controlled.
-- Browser-free activation evidence is green: 33 test files, 395 passed and 1 skipped; both
-  TypeScript programs; no-unused checks; 117 Compendium instrument controls; 20 focused
-  budget/species tests; production Vite build with a separate speciesart chunk; YAML parsing; and
-  syntax/diff checks. Independent frozen-byte audits found no remaining activation blocker.
-- A fresh certifying browser run is deliberately not hard-coded into tracked source. The sole local
-  executable authority is the ignored current compendiummem-report.json whose exact run id must
-  verify against the current committed HEAD and active budget. PR CI repeats one attempt and always
-  uploads/verifies that exact current report even when red.
+- Browser-free repair evidence is green: 36 test files, 423 passed and 1 skipped; root, app, and
+  worker TypeScript programs; no-unused checks; 184 Compendium instrument controls; 28 focused
+  broker/portable-painter/worker tests; every art/specification instrument; production Vite build
+  with an exact `main → dedicated worker → worker-local painter` graph; and syntax/diff checks.
+  Independent current-source review found no remaining browser-free blocker.
+- The earlier exact clean-head report `20260817-arc1a-active-cert-65b1bac` remains truthful only for
+  committed `65b1bac`; it cannot certify the repair working tree. A new report must be captured once
+  on the clean committed repair head and independently verified against its exact source, inputs,
+  active budget, Edge authority, raw profiles, outcomes, and six artifacts.
+
+### PR #32 battery repair boundary
+
+- Smoke now waits semantically for 3–8 decoded 132px Planetside images and drained jobs under one
+  immutable monotonic 30-second phase. Every blocking target evaluation is clipped to the same
+  remaining deadline; target-only timeout with a healthy browser heartbeat remains actionable
+  product evidence, with no renewed clock or retry.
+- Glass now negative-controls its Guide carrier predicate and audits real first/middle/last plus
+  focus-pinned A++ rows with clipping-ancestor diagnosis. In short landscape the nonmodal
+  Compendium uses the left safe-height workspace and recomputes its scroller from the safe viewport;
+  Search, dock, and Survey when open remain visible, focusable, hit-testable, and operable at right.
+  Panel-open status already yields trail/objective; the short-landscape rule additionally yields
+  only noninteractive top/context/hint chrome. This is a bounded geometry fix, not a broad restyle
+  or a v1.0-polish claim.
+- Static evidence proves exactly one production owner-module → dedicated-worker → lazy-painter
+  graph and rejects renderer-reachable legacy synchronous species art. The Compendium report binds
+  worker identity, phase/result/error equations and semantic image decode; it cannot go green merely
+  by moving heavy resources into an unmeasured retained worker.
 
 ### Human and scope boundary
 
@@ -120,50 +151,59 @@ the archive verbatim and refresh this handoff in place.
 
 ### Next actions
 
-1. Commit the complete activation/reference batch on openai/mac only after final diff review.
-2. Run exactly one fresh Compendium certification on that clean committed HEAD with the Arc-local
-   Edge authority; preserve the first terminal result and run exact-current verification.
-3. Present the six same-run PNGs to Nick for the remaining HUMAN Arc 1A judgment. Do not translate
-   automated/model visual inspection into human approval.
-4. Push openai/mac, open/update a draft PR into develop, require exact-head CI, and merge only the
-   reviewed or explicitly waived terminal-green head under the standing proceed authority.
-5. Monitor the develop push battery and mapped development publication. Keep main, production
+1. Finish the reference/handoff refresh, fetch/reconcile current remote state, and commit the exact
+   repair on `openai/mac` after frozen-diff review.
+2. On that clean head, run browser path/CDP controls and one no-retry Chrome Smoke, full Chrome
+   Glass matrix, and Arc-local Edge Compendium run plus independent exact-run verification.
+3. Preserve the first browser red if any. If green, push the exact head to draft PR #32 and require
+   the complete GitHub battery on that same SHA.
+4. Leave the separate six-image HUMAN judgment and Claude presentation-polish review open. Do not
+   translate hostile Glass evidence screenshots into ordinary Dev appearance or human approval.
+5. Merge only a reviewed, terminal-green exact head through the normal `develop` path; then monitor
+   the develop push battery and automatic development publication. Keep `main`, production
    versioning, and production deployment untouched.
 
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS in
-/Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. HEAD is clean committed e4e8d1d
-plus the current uncommitted activation/reference batch; origin/develop and origin/openai/mac are
-3844701, so the branch is ten commits ahead before the activation commit. Static and calibration
-evidence is recorded above. Terminal automated authority belongs only to the verified ignored
-report for the clean committed activation head; the six-image HUMAN judgment remains separate.
+/Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. Committed HEAD is
+`65b1bace57cfbbfc57acbffe55537764a382c581`; the current uncommitted worker/gate/reference repair
+responds to PR #32's first Linux battery. The complete browser-free suite and independent review are
+green. The prior cert report is exact only for `65b1bac`; the repair still needs its own clean-head
+browser battery and exact pushed CI. Resolve origin state live after the required fetch rather than
+trusting this prose. The six-image HUMAN judgment remains separate.
 
-**GitHub step:** None for Nick yet. OpenAI/Codex owns the intentional commit, the one-attempt
-exact-head report and verification, push, draft PR, checks, and normal integration monitoring.
-Do not touch main.
+**GitHub step:** OpenAI/Codex owns the intentional repair commit, clean-head one-attempt browser
+evidence, push to the existing draft PR #32, exact-head checks, and normal integration monitoring.
+Nick does not need to manipulate Git or open another app during that work. Do not touch `main`.
 
 **PR details:** base develop; source openai/mac; copy-ready title
 **Arc 1A — Bound Compendium portraits and measured resources**. Copy-ready description:
 
 > Virtualizes the maximum 1,500-row Compendium, preserves native filter/focus/detail/close
-> outcomes, and moves list plus Planetside art to complete-genome-keyed cancellable 132px leases
-> while reserving 440px portraits for detail. Adds cold error/recovery, ownership, answerability,
-> partial-evidence, and exact raw-outcome controls. Activates a measured phone/desktop resource
+> outcomes, and moves list plus Planetside art to complete-genome-keyed cancellable 132px leases.
+> Heavy import, paint, downsample, and encoding run in at most one serial lazy dedicated worker at a
+> time; each producer burst owns a fresh instance/import, and detail is
+> asynchronous at 440px, renderer fallback is forbidden, and fatal worker/import/protocol paths
+> settle owners exactly once without retry. Adds cold error/recovery, ownership, answerability,
+> worker-phase, partial-evidence, and exact raw-outcome controls. Activates a measured phone/desktop resource
 > ruler from one exact 3844701 paired baseline and three independent candidate runs. Binds
 > certification to an Arc-local exact Edge 151 build without changing the Gate-A Edge 150 pin,
-> and provisions that exact build only for Compendium CI.
+> and provisions that exact build only for Compendium CI. Repairs Smoke's semantic Planetside
+> settlement, Glass's Guide/clipping instrument, the short-landscape nonmodal workspace, and the
+> static owner-to-worker-to-painter build proof exposed by the first PR battery.
 >
-> Browser-free local evidence: 33 files / 395 passed / 1 skipped; both TypeScript programs;
-> no-unused checks; 117 Compendium controls; 20 focused budget/art tests; Vite, YAML, syntax and
-> diff checks; independent immutable-byte audits clean. Exact-head Compendium certification exists
-> only in the named verified ignored report; six-image HUMAN review, PR CI, integration,
+> Browser-free repair evidence: 36 files / 423 passed / 1 skipped; root/app/worker TypeScript;
+> no-unused and all art/specification gates; 184 Compendium controls; 28 focused worker/art tests;
+> exact Vite owner/worker/painter graph; syntax and diff checks; independent source audit clean.
+> Exact-head repair browser evidence and PR CI remain required; six-image HUMAN review, integration,
 > development publication, Arc 1B, release and production deployment remain separate authorities.
 
-**Other side:** Anthropic/Claude Code does not need to be opened now. It may review the pushed
-draft later from a clean synchronized anthropic/mac, but must not edit or copy this worktree. At its
-next coding batch it must fetch and verify its own branch against current origin/develop.
+**Other side:** Anthropic/Claude Code does not need to be opened while Codex completes the repair
+battery and push. After the exact PR head is green, open Claude for the requested presentation
+review/polish from a separately fetched, clean `anthropic/*` worktree; it must not edit or copy this
+OpenAI worktree.
 
-**Release status:** D-TRAIN-1 is integrated at 3844701. Arc 1A is an OpenAI branch candidate only.
-No develop to main merge, production release, version bump, manual deployment, or production-site
-write was performed or authorized.
+**Release status:** D-TRAIN-1 is integrated at `3844701`. Arc 1A/PR #32 remains an OpenAI branch
+candidate under repair. No `develop`→`main` merge, production release, version bump, manual
+deployment, or production-site write was performed or authorized.

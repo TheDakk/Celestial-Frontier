@@ -18,7 +18,14 @@ dated discovery record.
 - The maximum 1,500-row Compendium now uses spacer-preserved virtual rows, pinned keyboard focus,
   native filter/clear, detail/Back and Close cleanup. Real 132px leases own one bounded producer,
   queued cancellation, dedupe, disposal, cold-error publication/recovery, and Planetside
-  hide/release/reacquire; list work does not route through 440px full portraits.
+  hide/release/reacquire; list work does not route through the renderer's 440px compatibility
+  facade. At most one serial dedicated module worker at a time owns painter import, 440px scratch
+  paint, 132px downsample, and PNG encoding after complete app wiring. It has no synchronous
+  renderer fallback and terminates after active work settles and its queue is empty; a later
+  genuinely new producer burst owns a fresh instance/import. Exact document/producer/instance/job/
+  phase evidence is retained. Capability/import/protocol/worker fatal paths settle active plus
+  queued owners once without automatic retry; paint and content-specific encode failures remain
+  per-job. Detail owns an asynchronous 440px request through the same broker.
 - `budgets/compendium-memory-v1.json` is active measured authority. The exact
   `38447019517147319bd08c598202d097ee866874` baseline run
   `20260817074210620-55255-c8f0e10c47` is paired with candidate runs
@@ -36,6 +43,12 @@ dated discovery record.
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
   images still require human review. Arc 1B remains open for scene/Pixi textures, render targets,
   GPU proxies, and the combined travel → Compendium → Shipyard resource plateau.
+- PR #32 also repairs only the short-landscape nonmodal panel workspace: Compendium uses the left
+  safe-height workspace and recomputes its scroller from the safe viewport, while Search, dock, and
+  Survey when open remain operable at right. Panel-open status already yields trail/objective; the
+  short-landscape rule additionally yields only noninteractive top/context/hint chrome. Its hostile
+  A++/focus/clipping Glass fixtures are instrument evidence, not a broad visual-polish or
+  v1.0-parity claim.
 
 ## Species art — THE MORPHOLOGY PASS (approved by Nick 2026-08-01)
 
@@ -1541,6 +1554,12 @@ duplicates).
   the canvas rather than stranding focus on the hidden panel control. Motion Auto follows the OS
   live; Reduced freezes Pixi ambient time, snaps camera/fade state, gates organism animation and
   removes CSS animation/transitions.
+  PR #32 extends that outcome contract to the real 844×390/A++ short-landscape failure: a nonmodal
+  Compendium takes the left safe-height workspace with its scroller recomputed from the safe
+  viewport, while Search, dock, and Survey when open remain usable at right. Panel-open status
+  already yields trail/objective; only noninteractive top/context/hint chrome additionally yields
+  in short landscape. Glass exercises first/middle/last and focus-pinned hostile rows, exact
+  clipping ancestors, Guide exact-one-carrier mutation, restoration, hit ownership, and focus.
   The canvas is a named focusable region whose arrows cycle the actual rendered body inventory,
   Enter/Space calls its survey path, +/- zooms at the selected target and Escape releases it; a
   visible focus ring and polite live region expose the state. Clipboard refusal selects the exact CF1
@@ -1679,6 +1698,14 @@ duplicates).
   Compendium registers once outside its row map instead of retaining 1,500 callbacks and launching
   1,500 full-list rerenders when the chunk resolves. Import failure clears the Promise for a later
   retry; Compendium virtualization and texture-memory proof remain OPEN.
+  **Superseded current disposition (2026-08-17):** Arc 1A no longer uses this Window import-Promise
+  path for live art. Exact broker leases own Compendium/Planetside/detail requests; at most one
+  serial dedicated worker exists at a time, each producer burst owns a fresh instance and lazy
+  painter import, and the instance terminates after active work settles and its queue is empty.
+  Capability/import/protocol/worker fatal paths
+  settle the failed active and queued jobs once with no automatic retry; a later genuinely new
+  request may create a fresh producer. Virtualization and the measured resource contract are now
+  `[EXEC]` as recorded in the current-state block above; the HUMAN review remains open.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds

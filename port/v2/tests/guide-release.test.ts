@@ -119,7 +119,8 @@ function compendiumArtReleaseCopyIsTruthful(body: string): boolean {
     && /Close returns focus to the exact opener/i.test(body)
     && /Planetside shares the same bounded thumbnail lease path/i.test(body)
     && /leases release with their visible owners/i.test(body)
-    && /only specimen detail renders the exact 440px portrait/i.test(body)
+    && /only specimen detail publishes and retains an exact 440px portrait/i.test(body)
+    && /thumbnail scratch art is downsampled to 132px before it crosses the worker boundary/i.test(body)
     && COMPENDIUM_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
 }
 
@@ -487,6 +488,18 @@ describe('v2 Guide capability filter', () => {
       artBullet!.replace('keyed by the complete genome', 'keyed by the displayed name'),
     )).toBe(false);
     expect(compendiumArtReleaseCopyIsTruthful(
+      artBullet!.replace(
+        'only specimen detail publishes and retains an exact 440px portrait',
+        'specimen detail can show a 440px portrait',
+      ),
+    )).toBe(false);
+    expect(compendiumArtReleaseCopyIsTruthful(
+      artBullet!.replace(
+        'thumbnail scratch art is downsampled to 132px before it crosses the worker boundary',
+        'thumbnail scratch art crosses the worker boundary',
+      ),
+    )).toBe(false);
+    expect(compendiumArtReleaseCopyIsTruthful(
       artBullet! + ' Thumbnail leases remain pinned after Close.',
     )).toBe(false);
   });
@@ -599,7 +612,12 @@ describe('legacy and v2 release channels', () => {
       /up to 1,500 logical entries while mounting the visible viewport plus half a viewport of overscan on each side \(about two viewports total\), plus at most the focused pinned row/,
       /neutral placeholder to an exact 132px thumbnail keyed by the complete genome/,
       /Planetside shares the same bounded thumbnail lease path/,
-      /only specimen detail renders the exact 440px portrait/,
+      /only specimen detail publishes and retains an exact 440px portrait/,
+      /thumbnail scratch art is downsampled to 132px before it crosses the worker boundary/,
+      /Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column/,
+      /Loading and painting the first specimen thumbnails now happens away from the renderer thread/,
+      /A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn/,
+      /terminates an idle or replaced producer without a synchronous renderer fallback/,
       /Automated lenses still do not replace human play/,
       /production remains the v1\.8\.9 main-branch site/,
     ];
@@ -625,7 +643,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 44,
+        inventory: bullets.length === 47,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,
@@ -678,6 +696,22 @@ describe('legacy and v2 release channels', () => {
       )),
     }));
     expect(bulletinOutcome(missingEmptySky).required).toBe(false);
+    const missingLandscapeWorkspace = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'while Search, Survey, and the dock remain visible and usable in a separate right column',
+        'with a compact phone-landscape arrangement',
+      )),
+    }));
+    expect(bulletinOutcome(missingLandscapeWorkspace).required).toBe(false);
+    const missingWorkerBoundary = V2_DRAFT_RELEASE.sections.map((section) => ({
+      category: section.category,
+      bullets: section.bullets.map((bullet) => bullet.replace(
+        'terminates an idle or replaced producer without a synchronous renderer fallback',
+        'keeps a background painter available',
+      )),
+    }));
+    expect(bulletinOutcome(missingWorkerBoundary).required).toBe(false);
     const staleRouteProof = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,
       bullets: section.bullets.map((bullet) => bullet.replace(

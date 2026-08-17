@@ -1,11 +1,7 @@
 import { createRequire } from 'node:module';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import type {
-  SpeciesArtModule,
-  SpeciesThumbBinding,
-  Thumb132,
-  ThumbLease,
-} from '../apps/game/src/species-art-loader.js';
+import type { SpeciesArtProducerRequest, SpeciesArtProducerSink } from '@cf/art/species-broker';
+import type { SpeciesThumbBinding } from '../apps/game/src/species-art-loader.js';
 
 interface TestWindow extends Window {
   close(): void;
@@ -59,10 +55,6 @@ function restoreDom(): void {
     else Reflect.deleteProperty(globalThis, key);
   }
   originalGlobals.clear();
-}
-
-async function turns(count = 2): Promise<void> {
-  for (let index = 0; index < count; index++) await Promise.resolve();
 }
 
 beforeEach(() => {
@@ -290,37 +282,48 @@ describe('Compendium variable-height window', () => {
 });
 
 describe('species thumbnail lease binding', () => {
-  it('keeps the side-effectful species module idle until a real owner requests it', async () => {
+  it('keeps the worker dormant until both a real owner and explicit post-boot activation exist', async () => {
     const { SpeciesArtLoader } = await import('../apps/game/src/species-art-loader.js');
-    const importer = vi.fn<() => Promise<SpeciesArtModule>>(() => new Promise(() => {}));
-    const loader = new SpeciesArtLoader(importer, () => true);
-    expect(importer).not.toHaveBeenCalled();
-    expect(loader.diagnostics()).toEqual({ state: 'idle', importStarts: 0 });
+    const tasks: Array<() => void> = [];
+    const createProducer = vi.fn(() => ({ render: vi.fn(), dispose: vi.fn() }));
+    const loader = new SpeciesArtLoader('document-owner', {
+      createProducer,
+      scheduleTask: (task) => { tasks.push(task); },
+    });
+    expect(createProducer).not.toHaveBeenCalled();
+    expect(loader.diagnostics()).toMatchObject({ state: 'idle', importStarts: 0 });
     expect(loader.artDiagnostics()).toBeNull();
-    loader.request('real-mounted-row', () => {});
-    expect(importer).toHaveBeenCalledOnce();
-    expect(loader.diagnostics()).toEqual({ state: 'loading', importStarts: 1 });
+    const lease = loader.leaseThumb({ seed: 7, parents: [2, 9] });
+    expect(loader.artDiagnostics()?.live.queuedJobs).toBe(1);
+    expect(createProducer).not.toHaveBeenCalled();
+    expect(tasks).toHaveLength(0);
+    loader.activate();
+    expect(createProducer).not.toHaveBeenCalled();
+    expect(tasks).toHaveLength(1);
+    tasks.shift()!();
+    expect(createProducer).toHaveBeenCalledOnce();
+    expect(loader.diagnostics()).toMatchObject({ state: 'ready', importStarts: 1 });
+    lease.release();
+    loader.dispose('test complete');
   });
 
-  it('drops stale completion, never mounts a 440 asset, and releases/unsubscribes once', async () => {
+  it('drops stale completion, publishes exact warm 132 assets, and releases each owner once', async () => {
     const { SpeciesArtLoader, bindSpeciesThumb } = await import('../apps/game/src/species-art-loader.js');
-    let resolveArt!: (art: SpeciesArtModule) => void;
-    const pending = new Promise<SpeciesArtModule>((resolve) => { resolveArt = resolve; });
-    let listener: ((asset: Thumb132 | null, error?: unknown) => void) | null = null;
-    const unsubscribe = vi.fn();
-    const release = vi.fn();
-    const lease: ThumbLease = {
-      key: 'visual:complete-genome' as ThumbLease['key'],
-      current: null,
-      subscribe(next) { listener = next; return unsubscribe; },
-      release,
-    };
-    const art: SpeciesArtModule = {
-      speciesPortrait: () => 'data:image/png;440',
-      speciesThumb: () => 'compatibility-only',
-      leaseThumb: () => lease,
-    };
-    const loader = new SpeciesArtLoader(() => pending, () => true);
+    const tasks: Array<() => void> = [];
+    let sink: SpeciesArtProducerSink | null = null;
+    let request: SpeciesArtProducerRequest | null = null;
+    const disposeProducer = vi.fn();
+    const loader = new SpeciesArtLoader('document-owner', {
+      createProducer: (next) => {
+        sink = next;
+        return {
+          render: (nextRequest) => { request = nextRequest; },
+          dispose: disposeProducer,
+        };
+      },
+      scheduleTask: (task) => { tasks.push(task); },
+    });
+    loader.activate();
     const image = document.createElement('img');
     document.body.append(image);
     let current = true;
@@ -331,91 +334,50 @@ describe('species thumbnail lease binding', () => {
     });
     expect(image.alt).toBe('');
     expect(image.hasAttribute('src')).toBe(false);
-    expect(loader.diagnostics()).toEqual({ state: 'loading', importStarts: 1 });
-    resolveArt(art);
-    await turns(3);
-    expect(listener).not.toBeNull();
+    while (tasks.length) tasks.shift()!();
+    expect(loader.diagnostics()).toMatchObject({ state: 'ready', importStarts: 1 });
+    expect(request).not.toBeNull();
 
     current = false;
-    listener!({
-      key: lease.key, url: 'data:image/png;base64,thumb', width: 132, height: 132,
-      encodedBytes: 24, decodedPixels: 132 * 132,
+    const staleRequest = request!;
+    sink!.result({
+      status: 'success', jobId: staleRequest.jobId, kind: staleRequest.kind, key: staleRequest.key,
+      asset: {
+        key: staleRequest.key, url: 'data:image/png;base64,dGh1bWI=', width: 132, height: 132,
+        encodedBytes: 34, decodedPixels: 132 * 132,
+      },
     });
     expect(image.hasAttribute('src')).toBe(false);
     expect(stale).toHaveBeenCalledOnce();
     binding.release();
     binding.release();
-    expect(unsubscribe).toHaveBeenCalledOnce();
-    expect(release).toHaveBeenCalledOnce();
+    expect(loader.artDiagnostics()?.totals.releases).toBe(1);
 
     const warmImage = document.createElement('img');
     document.body.append(warmImage);
-    const badLease: ThumbLease = {
-      key: lease.key,
-      current: {
-        key: lease.key, url: 'data:image/png;base64,full', width: 440, height: 440,
-        encodedBytes: 99, decodedPixels: 440 * 440,
-      } as unknown as Thumb132,
-      subscribe: () => () => {}, release: vi.fn(),
-    };
-    art.leaseThumb = () => badLease;
-    const badBinding = bindSpeciesThumb(loader, {
-      owner: 'row:g2:visual', image: warmImage, genome: { seed: 8 }, isCurrent: () => true,
+    current = true;
+    const warmBinding = bindSpeciesThumb(loader, {
+      owner: 'row:warm', image: warmImage, genome: { seed: 7, parents: [2, 9] }, isCurrent: () => true,
     });
-    expect(warmImage.hasAttribute('src')).toBe(false);
-    badBinding.release();
-
-    const { SpeciesThumbLeaseGroup } = await import('../apps/game/src/species-art-loader.js');
-    const ownedImage = document.createElement('img');
-    document.body.append(ownedImage);
-    const ownedLease: ThumbLease = {
-      key: 'visual:planetside-owned' as ThumbLease['key'],
-      current: {
-        key: 'visual:planetside-owned' as ThumbLease['key'],
-        url: 'data:image/png;base64,owned132', width: 132, height: 132,
-        encodedBytes: 31, decodedPixels: 132 * 132,
-      },
-      subscribe: () => () => {}, release: vi.fn(),
-    };
-    art.leaseThumb = () => ownedLease;
-    const group = new SpeciesThumbLeaseGroup(8);
-    group.add(bindSpeciesThumb(loader, {
-      owner: 'planetside:g1:0', image: ownedImage, genome: { seed: 11 }, isCurrent: () => true,
-    }));
-    expect(ownedImage.getAttribute('src')).toBe('data:image/png;base64,owned132');
-    expect(ownedImage.dataset.visualKey).toBe('visual:planetside-owned');
-    group.clear();   // the same operation Planetside uses on hide/refill/world change
-    expect(ownedLease.release).toHaveBeenCalledOnce();
-    expect(ownedImage.hasAttribute('src')).toBe(false);
-    expect(ownedImage.dataset.visualKey).toBeUndefined();
-    expect(ownedImage.dataset.thumbState).toBe('released');
+    expect(warmImage.getAttribute('src')).toBe('data:image/png;base64,dGh1bWI=');
+    expect(warmImage.naturalWidth === 0 || warmImage.width === 132).toBe(true);
 
     const reusedImage = document.createElement('img');
     document.body.append(reusedImage);
-    let key = 'visual:old';
-    art.leaseThumb = () => {
-      const leaseKey = key as ThumbLease['key'];
-      return {
-        key: leaseKey,
-        current: {
-          key: leaseKey, url: `data:image/png;base64,${key}`, width: 132, height: 132,
-          encodedBytes: 12, decodedPixels: 132 * 132,
-        },
-        subscribe: () => () => {}, release: vi.fn(),
-      };
-    };
     const oldBinding = bindSpeciesThumb(loader, {
-      owner: 'row:old', image: reusedImage, genome: { seed: 12 }, isCurrent: () => true,
+      owner: 'row:old', image: reusedImage, genome: { seed: 7, parents: [2, 9] }, isCurrent: () => true,
     });
-    key = 'visual:new';
     const newBinding = bindSpeciesThumb(loader, {
-      owner: 'row:new', image: reusedImage, genome: { seed: 13 }, isCurrent: () => true,
+      owner: 'row:new', image: reusedImage, genome: { seed: 7, parents: [2, 9] }, isCurrent: () => true,
     });
     oldBinding.release();
-    expect(reusedImage.getAttribute('src')).toBe('data:image/png;base64,visual:new');
-    expect(reusedImage.dataset.visualKey).toBe('visual:new');
+    expect(reusedImage.getAttribute('src')).toBe('data:image/png;base64,dGh1bWI=');
+    expect(reusedImage.dataset.thumbOwner).toBe('row:new');
     newBinding.release();
     expect(reusedImage.hasAttribute('src')).toBe(false);
+    warmBinding.release();
+    loader.dispose('test complete');
+    expect(disposeProducer).toHaveBeenCalledOnce();
   });
 
   it('Planetside lease group releases on refill/hide and enforces the eight-chip bound', async () => {

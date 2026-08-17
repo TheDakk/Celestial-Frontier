@@ -43,19 +43,183 @@ import {
   buildBrokenBaselineProjection, buildCompendiumFixture,
 } from './compendiummem-fixture.mjs';
 import {
+  candidateLegacyWindowSpeciesArtSource, findCandidateSpeciesArtBuildGraph,
+} from './speciesart-build.mjs';
+import {
   armCandidateProducerError, candidateArmProducerErrorExpression,
+  candidateSpeciesPainterChunkSource,
   compendiumBudgetModeAllowed,
+  candidateThumbSettlementExpression,
   candidateProducerErrorPreArmExpression, candidateProducerErrorWorkExpression,
   candidateFilterInputExpression, candidateFilterTelemetryExpression,
   collectCandidateSnapshot, createCandidateCollectorObservations,
   createCandidateCommandRecorder,
   driveCandidateFilterTransition, validCandidateFilterInputExpression,
+  validCandidateThumbSettlementExpression,
   validCandidateFilterTelemetryExpression, validCandidateArmProducerErrorExpression,
   validCandidateProducerErrorExpression, verifyCompendiumTerminalReport,
 } from './compendiummem.mjs';
 
 function assert(condition, message) { if (!condition) throw new Error(`COMPENDIUMMEM SELFTEST: ${message}`); }
+function assertThrows(callback, message) {
+  let threw = false;
+  try { callback(); } catch { threw = true; }
+  assert(threw, message);
+}
 function clone(value) { return structuredClone(value); }
+
+assert(candidateSpeciesPainterChunkSource(
+  'SPECIES_PORTRAIT_SIZE renderSpeciesPortraitCanvas renderSpeciesThumbCanvas',
+), 'worker-local species painter semantic markers were not recognized');
+assert(!candidateSpeciesPainterChunkSource(
+  'cf-v2-species-art-diagnostics/v1 active-measured leaseThumb speciesArtDiagnostics',
+), 'historical renderer-side diagnostics chunk still impersonated the lazy painter');
+assert(!candidateSpeciesPainterChunkSource(
+  'renderSpeciesPortraitCanvas renderSpeciesThumbCanvas',
+), 'worker entry without the painter constant impersonated the lazy painter');
+assert(!candidateSpeciesPainterChunkSource(
+  'SPECIES_PORTRAIT_SIZE renderSpeciesPortraitCanvas',
+), 'partial worker painter markers were accepted');
+assert(candidateLegacyWindowSpeciesArtSource(
+  'fullPortraitRendersForThumb canvas.toDataURL()',
+), 'legacy synchronous Window species-art markers were not recognized');
+assert(!candidateLegacyWindowSpeciesArtSource(
+  'fullPortraitRendersForThumb worker phase evidence',
+), 'renderer diagnostics alone impersonated the legacy synchronous species-art facade');
+assert(!candidateLegacyWindowSpeciesArtSource(
+  'canvas.toDataURL()',
+), 'an unrelated canvas encoder impersonated the legacy synchronous species-art facade');
+
+{
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-species-art-graph-'));
+  const assets = path.join(root, 'assets');
+  fs.mkdirSync(assets);
+  const painterPath = path.join(assets, 'speciespainter-selftest.js');
+  const workerPath = path.join(assets, 'species-art.worker-selftest.js');
+  const mainPath = path.join(assets, 'main-selftest.js');
+  const legacyPath = path.join(assets, 'legacy-species-selftest.js');
+  const indexPath = path.join(root, 'index.html');
+  const painter = 'export const SPECIES_PORTRAIT_SIZE=440;export function renderSpeciesPortraitCanvas(){};export function renderSpeciesThumbCanvas(){};';
+  const worker = 'const a="cf-v2-species-art-worker-request/v1",b="cf-v2-species-art-worker-response/v1";OffscreenCanvas;FileReaderSync;postMessage;addEventListener;import("./speciespainter-selftest.js");';
+  const main = 'new Worker(new URL("/assets/species-art.worker-selftest.js",import.meta.url),{type:"module",name:"cf-species-art"});';
+  try {
+    fs.writeFileSync(painterPath, painter);
+    fs.writeFileSync(workerPath, worker);
+    fs.writeFileSync(mainPath, main);
+    fs.writeFileSync(legacyPath,
+      'export const counter="fullPortraitRendersForThumb";document.createElement("canvas").toDataURL();');
+    fs.writeFileSync(indexPath, '<script type="module" src="/assets/main-selftest.js"></script>');
+    const graph = findCandidateSpeciesArtBuildGraph(root);
+    assert(graph.painter.relativePath === 'assets/speciespainter-selftest.js'
+      && graph.worker.relativePath === 'assets/species-art.worker-selftest.js'
+      && graph.owner.relativePath === 'assets/main-selftest.js',
+    'exact index->worker->painter build graph was not identified');
+
+    fs.writeFileSync(mainPath, 'console.log("orphan worker")');
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'an orphan worker/painter pair was accepted without an index-owned Worker edge');
+    fs.writeFileSync(mainPath, main);
+
+    fs.writeFileSync(mainPath,
+      'new Worker(new URL("/assets/species-art.worker-selftest.js",import.meta.url),{type:"classic",name:"cf-species-art"});');
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a non-module species-art Worker edge was accepted');
+    fs.writeFileSync(mainPath, `${main}${main}`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'duplicate species-art Worker edges were accepted');
+    fs.writeFileSync(mainPath, main);
+
+    fs.writeFileSync(mainPath, `import "./species-art.worker-selftest.js";${main}`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a Window static import of the species-art worker was accepted');
+    fs.writeFileSync(mainPath, `import("./species-art.worker-selftest.js");${main}`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a Window dynamic import of the species-art worker was accepted');
+    fs.writeFileSync(mainPath, main);
+
+    fs.writeFileSync(mainPath, `import "./legacy-species-selftest.js";${main}`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a renderer-reachable legacy synchronous species-art facade was accepted');
+    fs.writeFileSync(mainPath, main);
+
+    fs.writeFileSync(mainPath, `${main}console.log("speciespainter-selftest.js")`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'renderer reference to the worker-local painter was accepted');
+    fs.writeFileSync(mainPath, main);
+
+    fs.writeFileSync(indexPath,
+      '<link rel="modulepreload" href="/assets/speciespainter-selftest.js"><script type="module" src="/assets/main-selftest.js"></script>');
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'index modulepreload of the worker-local painter was accepted');
+    fs.writeFileSync(indexPath, '<script type="module" src="/assets/main-selftest.js"></script>');
+
+    fs.writeFileSync(indexPath,
+      '<link rel="modulepreload" href="/assets/species-art.worker-selftest.js"><script type="module" src="/assets/main-selftest.js"></script>');
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'index modulepreload of the dedicated species-art worker was accepted');
+    fs.writeFileSync(indexPath, '<script type="module" src="/assets/main-selftest.js"></script>');
+
+    fs.writeFileSync(workerPath,
+      'import "./speciespainter-selftest.js";const a="cf-v2-species-art-worker-request/v1",b="cf-v2-species-art-worker-response/v1";OffscreenCanvas;FileReaderSync;postMessage;addEventListener;');
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'static-only worker painter import was accepted');
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+}
+
+{
+  const listSource = candidateThumbSettlementExpression('list', 1);
+  const planetsideSource = candidateThumbSettlementExpression('planetside');
+  assert(validCandidateThumbSettlementExpression(listSource, 'list', 1),
+    'exact list thumbnail settlement expression was rejected');
+  assert(validCandidateThumbSettlementExpression(planetsideSource, 'planetside'),
+    'exact Planetside thumbnail settlement expression was rejected');
+  assert(!validCandidateThumbSettlementExpression(
+    listSource.replace('img.complete===true', 'true'), 'list', 1,
+  ), 'a list settlement expression that omitted decode completion was accepted');
+  const run = (source, {
+    src = true, complete = true, width = 132, height = 132,
+    state = 'ready', queuedJobs = 0, activeJobs = 0,
+    mode = 'list', filteredCount = 1, visible = true, imageCount = 1,
+  } = {}) => {
+    const images = Array.from({ length: imageCount }, () => ({
+      getAttribute: () => src ? 'data:image/png;base64,cG5n' : '',
+      complete, naturalWidth: width, naturalHeight: height,
+    }));
+    const diagnostics = {
+      panel: { mode, filteredCount },
+      surfaces: {
+        list: { thumbStates: [state] },
+        planetside: { visible, thumbStates: [state] },
+      },
+      art: { live: { queuedJobs, activeJobs } },
+    };
+    return new Function('window', 'document', `return ${source}`)(
+      { __CF_SLICE__: { api: { compendiumDiagnostics: () => diagnostics } } },
+      { querySelectorAll: () => images },
+    );
+  };
+  assert(run(listSource) !== null && run(planetsideSource) !== null,
+    'decoded 132px settlement was not accepted for both real surfaces');
+  for (const [label, mutation] of [
+    ['missing source', { src: false }],
+    ['incomplete decode', { complete: false }],
+    ['zero width', { width: 0 }],
+    ['wrong height', { height: 131 }],
+    ['placeholder state', { state: 'placeholder' }],
+    ['queued work', { queuedJobs: 1 }],
+    ['active work', { activeJobs: 1 }],
+    ['image/state count mismatch', { imageCount: 2 }],
+  ]) {
+    assert(run(listSource, mutation) === null,
+      `list thumbnail settlement accepted ${label}`);
+  }
+  assert(run(listSource, { filteredCount: 2 }) === null,
+    'list thumbnail settlement accepted the wrong filtered count');
+  assert(run(planetsideSource, { visible: false }) === null,
+    'Planetside thumbnail settlement accepted a hidden surface');
+}
 
 function activeBudget(fixture) {
   const metrics = {
@@ -155,6 +319,59 @@ function artSnapshot({ portrait = false, closed = false, generation = 1 } = {}) 
   };
 }
 
+function workerArtDiagnostics({ lazy = false } = {}) {
+  return lazy ? {
+    schema: 'cf-v2-species-art-worker-diagnostics/v1',
+    state: 'idle', importStarts: 0,
+    identity: {
+      documentToken: 'selftest-lazy-document',
+      lastProducerEpoch: 0, lastWorkerInstanceId: 0,
+    },
+    lastEvent: null,
+    worker: {
+      live: false, starts: 0, ready: 0, disposals: 0, fatals: 0, protocolErrors: 0,
+    },
+    phases: {
+      importStarts: 0, importCompletes: 0,
+      thumbJobStarts: 0, thumbRenderCompletes: 0,
+      thumbEncodeStarts: 0, thumbEncodeCompletes: 0,
+      portraitJobStarts: 0, portraitRenderCompletes: 0,
+      portraitEncodeStarts: 0, portraitEncodeCompletes: 0,
+    },
+    results: {
+      count: 0, maxImportDurationMs: 0,
+      maxRenderDurationMs: 0, maxEncodeDurationMs: 0,
+    },
+    errors: { capability: 0, protocol: 0, import: 0, paint: 0, encode: 0 },
+  } : {
+    schema: 'cf-v2-species-art-worker-diagnostics/v1',
+    state: 'ready', importStarts: 8,
+    identity: {
+      documentToken: 'selftest-main-document',
+      lastProducerEpoch: 8, lastWorkerInstanceId: 8,
+    },
+    lastEvent: {
+      producerEpoch: 8, workerInstanceId: 8, jobId: 87,
+      kind: 'thumb132', event: 'result',
+    },
+    worker: {
+      live: false, starts: 8, ready: 8, disposals: 8, fatals: 0, protocolErrors: 0,
+    },
+    phases: {
+      importStarts: 8, importCompletes: 8,
+      thumbJobStarts: 86, thumbRenderCompletes: 85,
+      thumbEncodeStarts: 85, thumbEncodeCompletes: 85,
+      portraitJobStarts: 1, portraitRenderCompletes: 1,
+      portraitEncodeStarts: 1, portraitEncodeCompletes: 1,
+    },
+    results: {
+      count: 86, maxImportDurationMs: 8,
+      maxRenderDurationMs: 12, maxEncodeDurationMs: 4,
+    },
+    errors: { capability: 0, protocol: 0, import: 0, paint: 1, encode: 0 },
+  };
+}
+
 function diagnostic({ generation, mode = 'list', count = 1500, ids = [], portrait = false,
   closed = false, planetside = true, lazy = false, pinned = null } = {}) {
   const widths = ids.map(() => 132);
@@ -191,7 +408,7 @@ function diagnostic({ generation, mode = 'list', count = 1500, ids = [], portrai
         thumbStates: planetside ? ['ready', 'ready', 'ready', 'ready'] : [],
       },
     },
-    lazyArt: lazy ? { state: 'idle', importStarts: 0 } : { state: 'ready', importStarts: 1 },
+    lazyArt: workerArtDiagnostics({ lazy }),
     art: lazy ? null : artSnapshot({ portrait, closed, generation }),
   };
 }
@@ -543,7 +760,10 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
       sameSeedShared: true, sameSeedCompleteDistinct: true,
     },
     lazySpeciesResource: {
-      path: 'assets/speciesart-selftest.js', sha256: 'e'.repeat(64), matches: [], endMatches: [],
+      ownerPath: 'assets/main-selftest.js', ownerSha256: 'd'.repeat(64),
+      path: 'assets/speciespainter-selftest.js', sha256: 'e'.repeat(64),
+      workerPath: 'assets/species-art.worker-selftest.js', workerSha256: 'f'.repeat(64),
+      ownership: 'dedicated-worker-dynamic-import', matches: [], endMatches: [],
     },
     documentTokens: {
       lazy: 'selftest-lazy-document', lazyEnd: 'selftest-lazy-document',
@@ -1587,7 +1807,10 @@ export async function runCompendiumMemSelftest() {
     producerPreArmExpression.replace('planetsideImageCount>0', 'planetsideImageCount>=0'),
     'pre-arm',
   ) && !validCandidateProducerErrorExpression(
-    producerWorkExpression.replace("(row.thumbState!=='ready'||row.complete)", 'true'),
+    producerWorkExpression.replace(
+      "(row.thumbState!=='ready'||(row.complete&&row.naturalWidth===132&&row.naturalHeight===132))",
+      'true',
+    ),
     'work',
   ) && !validCandidateProducerErrorExpression(producerWorkExpression.slice(0, -1), 'work'),
   'weakened cold-owner/terminal-work or syntactically truncated producer evidence validated');
@@ -2083,8 +2306,11 @@ export async function runCompendiumMemSelftest() {
     'a jobs-zero stable mounted placeholder was misclassified as incomplete evidence');
   const decodePendingRecovery = clone(phone.phases.producerErrorWitness.recovery.accepted);
   decodePendingRecovery.rows[0].complete = false;
-  assert(!validProducerErrorWorkObservation(decodePendingRecovery),
-    'recovery accepted a ready cached row before its image decode completed');
+  const wrongDimensionRecovery = clone(phone.phases.producerErrorWitness.recovery.accepted);
+  wrongDimensionRecovery.rows[0].naturalWidth = 131;
+  assert(!validProducerErrorWorkObservation(decodePendingRecovery)
+    && !validProducerErrorWorkObservation(wrongDimensionRecovery),
+  'recovery accepted a ready cached row before its exact 132px image decode completed');
   const multiJobRecovery = clone(phone.phases.producerErrorWitness);
   multiJobRecovery.recovery.accepted.art.totals.jobStarts += 2;
   multiJobRecovery.recovery.accepted.art.totals.jobCompletes += 2;
@@ -2143,6 +2369,15 @@ export async function runCompendiumMemSelftest() {
     }, 'lazy-art-not-eager'],
     ['late static species chunk resource', (m) => {
       m.lazySpeciesResource.endMatches = ['http://127.0.0.1/assets/speciesart-selftest.js'];
+    }, 'lazy-art-not-eager'],
+    ['species painter worker ownership missing', (m) => {
+      m.lazySpeciesResource.ownership = 'renderer-import';
+    }, 'lazy-art-not-eager'],
+    ['species painter Window owner missing', (m) => {
+      m.lazySpeciesResource.ownerPath = m.lazySpeciesResource.workerPath;
+    }, 'lazy-art-not-eager'],
+    ['species painter and worker chunk merged', (m) => {
+      m.lazySpeciesResource.workerPath = m.lazySpeciesResource.path;
     }, 'lazy-art-not-eager'],
     ['unwindowed rows', (m) => { m.points.first.raw.mountedRowCount = 1500; m.points.first.diagnostics.window.mountedRowCount = 1500; }, 'mounted-window-bounded'],
     ['stale resize window', (m) => {
@@ -2449,9 +2684,19 @@ export async function runCompendiumMemSelftest() {
     }, 'error-recoverable'],
     ['canvas bypass', (m) => { m.points.warm.at(-1).diagnostics.art.totals.thumbCanvasRenders = 0; }, 'canvas-thumb-path'],
     ['full portrait thumb path', (m) => { m.points.warm.at(-1).diagnostics.art.totals.fullPortraitRendersForThumb = 1; }, 'no-full-portrait-thumb-path'],
+    ['full portrait thumb decode path', (m) => { m.points.warm.at(-1).diagnostics.art.totals.fullPortraitDecodesForThumb = 1; }, 'no-full-portrait-thumb-path'],
     ['portrait cache thumb pollution', (m) => { m.points.first.diagnostics.art.live.portraitCacheEntries = 1; m.points.first.diagnostics.art.live.portraitEncodedBytes = 100; }, 'no-full-portrait-thumb-path'],
     ['eager import', (m) => { m.points.lazyBoot.diagnostics.lazyArt = { state: 'ready', importStarts: 1 }; m.points.lazyBoot.diagnostics.art = artSnapshot(); }, 'lazy-art-not-eager'],
     ['late eager import', (m) => { m.points.lazyEnd.diagnostics.lazyArt = { state: 'ready', importStarts: 1 }; m.points.lazyEnd.diagnostics.art = artSnapshot(); }, 'lazy-art-not-eager'],
+    ['lazy worker constructed', (m) => {
+      const lazyWorker = workerArtDiagnostics();
+      lazyWorker.phases.portraitJobStarts = 0;
+      lazyWorker.phases.portraitRenderCompletes = 0;
+      lazyWorker.phases.portraitEncodeStarts = 0;
+      lazyWorker.phases.portraitEncodeCompletes = 0;
+      lazyWorker.results.count--;
+      m.points.lazyBoot.diagnostics.lazyArt = lazyWorker;
+    }, 'lazy-art-not-eager'],
     ['missing product limit', (m) => { delete m.points.first.diagnostics.art.limits.encodedBytes; }, 'resource-live-limits'],
     ['product budget status missing', (m) => { delete m.points.first.diagnostics.art.limits.budgetStatus; }, 'resource-live-limits'],
     ['product diagnostic schema drift', (m) => { m.points.first.diagnostics.schema = 'wrong'; }, 'resource-live-limits'],
@@ -2465,6 +2710,133 @@ export async function runCompendiumMemSelftest() {
     ['missing middle', (m) => { m.points.middle.raw.mountedLogicalIds = []; }, 'middle-row-reached'],
     ['missing last', (m) => { m.points.last.raw.mountedLogicalIds = []; }, 'last-row-reached'],
     ['warm jobs', (m) => { m.points.warm[2].diagnostics.art.live.activeJobs = 1; }, 'settled-jobs'],
+    ['settled worker retained', (m) => {
+      const lazyArt = m.points.warm.at(-1).diagnostics.lazyArt;
+      lazyArt.worker.live = true;
+    }, 'settled-jobs'],
+    ['worker disposal omitted', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.worker.disposals--;
+    }, 'settled-jobs'],
+    ['worker document identity drift', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.identity.documentToken = 'foreign-document';
+    }, 'settled-jobs'],
+    ['worker producer epoch drift', (m) => {
+      const lazyArt = m.points.warm.at(-1).diagnostics.lazyArt;
+      lazyArt.identity.lastProducerEpoch--;
+      lazyArt.lastEvent.producerEpoch--;
+    }, 'settled-jobs'],
+    ['worker instance identity drift', (m) => {
+      const lazyArt = m.points.warm.at(-1).diagnostics.lazyArt;
+      lazyArt.identity.lastWorkerInstanceId--;
+      lazyArt.lastEvent.workerInstanceId--;
+    }, 'settled-jobs'],
+    ['worker last producer epoch drift', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.lastEvent.producerEpoch--;
+    }, 'settled-jobs'],
+    ['worker last instance drift', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.lastEvent.workerInstanceId--;
+    }, 'settled-jobs'],
+    ['worker last job identity drift', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.lastEvent.jobId--;
+    }, 'settled-jobs'],
+    ['worker last event omitted', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.lastEvent = null;
+    }, 'settled-jobs'],
+    ['worker last event is not a result', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.lastEvent.event = 'phase:encode-complete';
+    }, 'settled-jobs'],
+    ['worker last result kind drift', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.lastEvent.kind = 'portrait440';
+    }, 'settled-jobs'],
+    ['worker terminal state copied stale', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.state = 'loading';
+    }, 'settled-jobs'],
+    ['worker readiness omitted', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.worker.ready--;
+    }, 'settled-jobs'],
+    ['worker adapter protocol error hidden', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.worker.protocolErrors = 1;
+    }, 'settled-jobs'],
+    ['worker top-level import start omitted', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.importStarts--;
+    }, 'settled-jobs'],
+    ['worker phase import start omitted', (m) => {
+      const phases = m.points.warm.at(-1).diagnostics.lazyArt.phases;
+      phases.importStarts--;
+      phases.importCompletes--;
+    }, 'settled-jobs'],
+    ['worker import completion omitted', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.phases.importCompletes--;
+    }, 'settled-jobs'],
+    ['worker thumb job/render edge drift', (m) => {
+      const lazyArt = m.points.warm.at(-1).diagnostics.lazyArt;
+      lazyArt.phases.thumbJobStarts++;
+      lazyArt.lastEvent.jobId++;
+    }, 'settled-jobs'],
+    ['worker thumb render/encode edge drift', (m) => {
+      const lazyArt = m.points.warm.at(-1).diagnostics.lazyArt;
+      lazyArt.phases.thumbJobStarts++;
+      lazyArt.phases.thumbRenderCompletes++;
+      lazyArt.lastEvent.jobId++;
+    }, 'settled-jobs'],
+    ['worker thumb encode completion edge drift', (m) => {
+      const lazyArt = m.points.warm.at(-1).diagnostics.lazyArt;
+      lazyArt.phases.thumbJobStarts++;
+      lazyArt.phases.thumbRenderCompletes++;
+      lazyArt.phases.thumbEncodeStarts++;
+      lazyArt.lastEvent.jobId++;
+    }, 'settled-jobs'],
+    ['worker portrait job/render edge drift', (m) => {
+      const lazyArt = m.points.warm.at(-1).diagnostics.lazyArt;
+      lazyArt.phases.portraitJobStarts++;
+      lazyArt.lastEvent.jobId++;
+    }, 'settled-jobs'],
+    ['worker portrait render/encode edge drift', (m) => {
+      const lazyArt = m.points.warm.at(-1).diagnostics.lazyArt;
+      lazyArt.phases.portraitJobStarts++;
+      lazyArt.phases.portraitRenderCompletes++;
+      lazyArt.lastEvent.jobId++;
+    }, 'settled-jobs'],
+    ['worker portrait encode completion edge drift', (m) => {
+      const lazyArt = m.points.warm.at(-1).diagnostics.lazyArt;
+      lazyArt.phases.portraitJobStarts++;
+      lazyArt.phases.portraitRenderCompletes++;
+      lazyArt.phases.portraitEncodeStarts++;
+      lazyArt.lastEvent.jobId++;
+    }, 'settled-jobs'],
+    ['worker portrait path omitted', (m) => {
+      const lazyArt = m.points.warm.at(-1).diagnostics.lazyArt;
+      lazyArt.phases.portraitJobStarts = 0;
+      lazyArt.phases.portraitRenderCompletes = 0;
+      lazyArt.phases.portraitEncodeStarts = 0;
+      lazyArt.phases.portraitEncodeCompletes = 0;
+      lazyArt.results.count--;
+      lazyArt.lastEvent.jobId--;
+    }, 'settled-jobs'],
+    ['worker result total copied stale', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.results.count--;
+    }, 'settled-jobs'],
+    ['worker capability error hidden', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.errors.capability = 1;
+    }, 'settled-jobs'],
+    ['worker core protocol error hidden', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.errors.protocol = 1;
+    }, 'settled-jobs'],
+    ['worker import error hidden', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.errors.import = 1;
+    }, 'settled-jobs'],
+    ['worker encode error hidden', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.errors.encode = 1;
+    }, 'settled-jobs'],
+    ['worker failure bypassed', (m) => {
+      const lazyArt = m.points.warm.at(-1).diagnostics.lazyArt;
+      lazyArt.errors.paint = 0;
+      lazyArt.phases.thumbJobStarts--;
+      lazyArt.lastEvent.jobId--;
+    }, 'settled-jobs'],
+    ['worker fatal hidden', (m) => {
+      m.points.warm.at(-1).diagnostics.lazyArt.worker.fatals = 1;
+    }, 'settled-jobs'],
     ['warm plateau', (m) => { m.points.warm[2].heap.usedSize += 5000; }, 'warm-plateau'],
     ['target timeout', (m) => { m.answerability[0].target.ms = 2001; }, 'target-answerable-first'],
     ['heartbeat timeout', (m) => { m.answerability.at(-1).heartbeat.ms = 2001; }, 'heartbeat-last'],
@@ -2472,6 +2844,52 @@ export async function runCompendiumMemSelftest() {
     ['duplicate first answerability probe', (m) => { m.answerability[1] = clone(m.answerability[0]); }, 'target-answerable-last'],
     ['swapped answerability probes', (m) => { m.answerability.reverse(); }, 'target-answerable-first'],
   ];
+  const dormantScalarControls = [
+    ['state', (value) => { value.state = 'loading'; }],
+    ['top-level import start', (value) => { value.importStarts = 1; }],
+    ['document identity', (value) => { value.identity.documentToken = 'foreign-document'; }],
+    ['producer epoch', (value) => { value.identity.lastProducerEpoch = 1; }],
+    ['worker instance', (value) => { value.identity.lastWorkerInstanceId = 1; }],
+    ['last event', (value) => { value.lastEvent = {
+      producerEpoch: 1, workerInstanceId: 1, jobId: 1, kind: 'thumb132', event: 'result',
+    }; }],
+    ['live worker', (value) => { value.worker.live = true; }],
+  ];
+  for (const field of ['starts', 'ready', 'disposals', 'fatals', 'protocolErrors']) {
+    dormantScalarControls.push([
+      `worker ${field}`, (value) => { value.worker[field] = 1; },
+    ]);
+  }
+  for (const field of [
+    'importStarts', 'importCompletes',
+    'thumbJobStarts', 'thumbRenderCompletes', 'thumbEncodeStarts', 'thumbEncodeCompletes',
+    'portraitJobStarts', 'portraitRenderCompletes', 'portraitEncodeStarts',
+    'portraitEncodeCompletes',
+  ]) {
+    dormantScalarControls.push([
+      `phase ${field}`, (value) => { value.phases[field] = 1; },
+    ]);
+  }
+  for (const field of [
+    'count', 'maxImportDurationMs', 'maxRenderDurationMs', 'maxEncodeDurationMs',
+  ]) {
+    dormantScalarControls.push([
+      `result ${field}`, (value) => { value.results[field] = 1; },
+    ]);
+  }
+  for (const field of ['capability', 'protocol', 'import', 'paint', 'encode']) {
+    dormantScalarControls.push([
+      `error ${field}`, (value) => { value.errors[field] = 1; },
+    ]);
+  }
+  for (const [field, mutateDormant] of dormantScalarControls) {
+    controls.push([
+      `lazy worker dormant ${field}`,
+      (measurement) => mutateDormant(measurement.points.lazyBoot.diagnostics.lazyArt),
+      'lazy-art-not-eager',
+    ]);
+  }
+
   for (const [label, mutate, expected] of controls) {
     control(label, phone, budget, fixture, mutate, expected);
   }

@@ -15,12 +15,20 @@ but its list is now virtualized: only the visible variable-height window, bounde
 focus-pinned row are mounted. Compendium rows and the Planetside roster acquire identity-safe
 `leaseThumb` ownership of true asynchronous 132px resources. A complete deterministic genome
 snapshot keys each resource; concurrent consumers deduplicate, and stale queued work cancels on
-release, filter replacement, row rebind, panel close, or final document teardown. The lease job
-paints through Canvas2D and encodes the 132px asset without first retaining or decoding a 440px data
-URL. Device-class cache, decoded-pixel, byte, queue, active-job, lease, and portrait caps are
-explicit. Only the selected specimen detail uses the synchronous 440px portrait, and Back/Close
-remove its retained DOM source. A producer error remains a stable owned error tile, releases
-cleanly, and the exact key recovers through a fresh lease.
+release, filter replacement, row rebind, panel close, or final document teardown. At most one
+serial dedicated module worker at a time owns the heavy deterministic painter import, 440px scratch paint, 132px
+downsample, and PNG encoding; the renderer owns the broker, protocol/lifecycle validation, leases,
+queues, cache publication, and DOM identity checks, with no synchronous fallback. The worker runs
+one job at a time and terminates after active work settles and its queue is empty; a later genuinely
+new producer burst owns a fresh instance/import. Device-class cache, decoded-pixel, byte,
+queue, active-job, lease, bounded portrait-cache, and worker-lifecycle caps/evidence are explicit.
+The owned `(max-width: 700px)` media-query subscription immediately applies smaller phone limits,
+trims both caches, and is removed on final loader disposal.
+Only the selected specimen detail publishes an asynchronous 440px DOM source; Back/Close cancel its
+owner and remove that source, while the bounded broker cache remains governed separately. A
+producer error remains a stable owned error tile, releases cleanly, and the exact key recovers
+through a fresh worker lease. Capability/import/protocol/worker failure terminates once and settles
+the active plus queued owners exactly once instead of retrying a broken worker for every tile.
 
 The phone and desktop resource ceilings are now active measured authority, derived from three
 independent one-attempt candidate runs plus the paired exact `3844701` broken baseline. That ruler

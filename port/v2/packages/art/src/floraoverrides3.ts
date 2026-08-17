@@ -9,8 +9,9 @@
    real-world identity (a carrot's orange root, a watermelon's rind) it is
    blended toward the true hue — the audit compares to real counterparts. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import type { ArtContext2D } from './speciescanvas.js';
 
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 type G = Record<string, unknown>;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 const S = 440;

@@ -40,7 +40,9 @@
    body: what made 127 animals identical was clamping their numbers, not
    giving them the same anatomy. */
 
-type Ctx = CanvasRenderingContext2D;
+import type { ArtContext2D } from './speciescanvas.js';
+
+type Ctx = ArtContext2D;
 const TAU = Math.PI * 2;
 
 /** the engine's light, matching every bodyGrad in the codebase: upper-left,

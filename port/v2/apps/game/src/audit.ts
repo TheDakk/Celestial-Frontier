@@ -7,7 +7,7 @@ import { _EARTH_NAMES } from '@cf/domain-descriptors';
 import { makeGenome } from '@cf/domain-genome';
 import { crossGenome } from '@cf/domain-genetics';
 import { hashInt } from '@cf/domain-rand';
-import { resolveOverride } from '../../../packages/art/src/speciesoverrides.js';
+import { resolveOverride } from '@cf/art/species-compat';
 
 const log = document.getElementById('log')!;
 const say = (t: string): void => { log.textContent = t; };

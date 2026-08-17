@@ -3,10 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Painterly canvas art, AUTO-LIFTED verbatim (GalaxyArt first). ⚠ BROWSER-ONLY: sprites bake at module load via document.createElement('canvas') — never import from node/vitest.",
+  "description": "Painterly canvas art with explicit portable species-painter and browser compatibility boundaries.",
   "exports": {
     ".": "./src/index.ts",
-    "./species": "./src/speciesart.ts"
+    "./species": "./src/speciesart.ts",
+    "./species-identity": "./src/speciesidentity.ts",
+    "./species-canvas": "./src/speciescanvas.ts",
+    "./species-painter": "./src/speciespainter.ts",
+    "./species-broker": "./src/speciesbroker.ts",
+    "./species-compat": "./src/speciescompat.ts"
   },
   "dependencies": {
     "@cf/domain-rand": "*",

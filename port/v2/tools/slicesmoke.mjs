@@ -15,8 +15,15 @@ import path from 'node:path';
 import http from 'node:http';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import {
+  classifyPlanetsideSettlement,
+  planetsidePhaseRemainingMs,
+  planetsideRuntimeTimeoutDecision,
+} from './slicesmoke-contract.mjs';
+import { findCandidateSpeciesArtBuildGraph } from './speciesart-build.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 /* Direct runs own the checkout lock. The structured-report wrapper owns one
@@ -325,6 +332,8 @@ const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexed
    exists—the species-audit failure class. Build unconditionally, then drive
    exactly those bytes. */
 execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
+const candidateSpeciesPainter = findCandidateSpeciesArtBuildGraph(dist).painter;
+const candidateSpeciesPainterPath = `/${candidateSpeciesPainter.relativePath}`;
 if (!fs.existsSync(OUT)) fs.mkdirSync(OUT, { recursive: true });
 
 /* ---- tiny static server over dist (vite preview without the dep surface) ---- */
@@ -357,7 +366,7 @@ const server5 = http.createServer((req, res) => {
     res.end('<!doctype html><meta charset="utf-8"><title>seed</title>');
     return;
   }
-  if (!slowSpeciesOpen && /\/assets\/speciesart-[^/]+\.js(?:\?|$)/.test(req.url || '')) {
+  if (!slowSpeciesOpen && (req.url || '').split('?')[0] === candidateSpeciesPainterPath) {
     slowSpeciesRequests.push({ req, res });
     return;
   }
@@ -662,12 +671,19 @@ try {
   if (!staleReadyControlRejected) fails.push('SLICE READINESS CONTROL FAILED — the prior document token was accepted as a new boot');
   await sleep(3000);
 
-  const evalIn = async (expr) => {
+  const evalIn = async (expr, { timeoutMs } = {}) => {
     let r;
-    try { r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, sess); }
+    try {
+      r = await send(
+        'Runtime.evaluate',
+        { expression: expr, returnByValue: true, awaitPromise: true },
+        sess,
+        timeoutMs === undefined ? undefined : { timeoutMs },
+      );
+    }
     catch (error) {
       const near = String(expr).replace(/\s+/g, ' ').slice(0, 120);
-      throw new Error(`desktop eval failed near ${JSON.stringify(near)}: ${error.message}`);
+      throw new Error(`desktop eval failed near ${JSON.stringify(near)}: ${error.message}`, { cause: error });
     }
     if (r.exceptionDetails) {
       const near = String(expr).replace(/\s+/g, ' ').slice(0, 120);
@@ -2257,7 +2273,6 @@ try {
   }
   const exactOrdinalLand = await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)})`);
   if (!exactOrdinalLand) fails.push('PLANET ORDINAL ACCEPTANCE: exact Earth {seed,ordinal} did not survey and Land');
-  await sleep(300);
   const landedSurvey = await evalIn(`(()=>{ const S=window.__CF_SLICE__,card=document.getElementById('survey'),
     rarity=[...card.querySelectorAll('[data-row="Rarity"]')],spectral=card.querySelectorAll('[data-row="Spectral class"]');
     return {mode:S.api.state().mode,landed:S.api.state().save.landed.includes(133),rarityCount:rarity.length,
@@ -2268,15 +2283,62 @@ try {
     fails.push('LANDED PLANET SURVEY: Earth did not disclose exactly one plain Rarity row after landfall: '
       + JSON.stringify(landedSurvey));
   }
-  /* THE LIVING PLANETSIDE: Earth's ground survey shows its real roster,
-     each specimen wearing an hdart portrait */
-  const side = await evalIn(`(()=>{ const el=document.getElementById('planetside');
-    if(!el || el.style.display==='none') return { on:false };
-    const sp=[...el.querySelectorAll('[data-sel=planetside-sp]')];
-    const imgs=sp.filter(x=>x.querySelector('img') && String(x.querySelector('img').src||'').length>2000).length;
-    return { on:true, n:sp.length, imgs }; })()`);
-  if (!side.on || !(side.n >= 3)) fails.push('the planetside strip did not show Earth’s roster: ' + JSON.stringify(side));
-  else if (!(side.imgs >= 3)) fails.push('planetside portraits did not paint: ' + JSON.stringify(side));
+  /* THE LIVING PLANETSIDE: wait for the exact lease/decode/work outcome.
+     The former fixed 300ms sleep plus src-length count was neither a product
+     deadline nor evidence that the 132px image decoded. */
+  const planetsideTimeoutMs = 30000;
+  const planetsideDeadline = performance.now() + planetsideTimeoutMs;
+  let side = null;
+  let sideDecision = { status: 'pending', reasons: ['not observed'] };
+  while (performance.now() < planetsideDeadline) {
+    const remainingMs = planetsidePhaseRemainingMs(planetsideDeadline, performance.now());
+    if (remainingMs <= 0) {
+      sideDecision = {
+        status: 'pending',
+        reasons: [`phase deadline exhausted before target observation (${planetsideTimeoutMs}ms)`],
+      };
+      break;
+    }
+    try {
+      side = await evalIn(`(()=>{ const el=document.getElementById('planetside');
+        if(!el || el.style.display==='none') return {on:false,n:0,images:[],art:null};
+        const sp=[...el.querySelectorAll('[data-sel=planetside-sp]')];
+        const images=sp.map(row=>{const image=row.querySelector('img');return {
+          state:image?.dataset.thumbState||null,hasSrc:!!image?.getAttribute('src'),
+          complete:image?.complete===true,naturalWidth:image?.naturalWidth||0,naturalHeight:image?.naturalHeight||0};});
+        const diagnostics=window.__CF_SLICE__.api.compendiumDiagnostics?.();
+        return {on:true,n:sp.length,images,art:diagnostics?.art||null}; })()`, { timeoutMs: remainingMs });
+    } catch (error) {
+      const timeoutDecision = planetsideRuntimeTimeoutDecision(error?.cause, planetsideTimeoutMs);
+      if (timeoutDecision) {
+        sideDecision = timeoutDecision;
+        break;
+      }
+      throw error;
+    }
+    if (performance.now() >= planetsideDeadline) {
+      sideDecision = {
+        status: 'pending',
+        reasons: [`phase deadline expired before target observation completed (${planetsideTimeoutMs}ms)`],
+      };
+      break;
+    }
+    sideDecision = classifyPlanetsideSettlement(side);
+    if (sideDecision.status !== 'pending') break;
+    const sleepMs = Math.min(50, planetsidePhaseRemainingMs(planetsideDeadline, performance.now()));
+    if (sleepMs > 0) await sleep(sleepMs);
+  }
+  if (sideDecision.status === 'pending' && performance.now() >= planetsideDeadline
+    && !sideDecision.reasons.some((reason) => reason.startsWith('phase deadline expired'))) {
+    sideDecision = {
+      ...sideDecision,
+      reasons: [...sideDecision.reasons, `phase deadline expired (${planetsideTimeoutMs}ms)`],
+    };
+  }
+  if (sideDecision.status !== 'ready') {
+    fails.push(`planetside thumbnail settlement ${sideDecision.status}: `
+      + JSON.stringify({ reasons: sideDecision.reasons, observation: side }));
+  }
   const stSurf = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (stSurf.mode !== 'surface') fails.push('landing did not reach surface mode: ' + stSurf.mode);
   if (!/Earth/.test(stSurf.trail)) fails.push('surface trail missing Earth: ' + JSON.stringify(stSurf.trail));

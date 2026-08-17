@@ -14,8 +14,9 @@
         the seed before it chooses (the same murmur3 finish the degenerate-salt
         bug taught us to use), so the spread is actually flat. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import type { ArtContext2D } from './speciescanvas.js';
 
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 type G = Record<string, unknown>;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 const S = 440;
