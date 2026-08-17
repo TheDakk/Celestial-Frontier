@@ -25,7 +25,8 @@ import { openChromiumCdp } from './browsercdp.mjs';
 import {
   BASELINE_OBSERVATION_TIMEOUT_MS, COMMAND_TIMEOUT_MS, EXPECTED_OUTCOMES,
   REPORT_INPUT_KEYS, REPORT_SCHEMA, REQUIRED_WARM_CYCLES,
-  calibrationMetrics, compendiumCdpOptions, evaluateProfile, sha256, sameSourceIdentity,
+  calibrationMetrics, compendiumCdpOptions, compendiumProfileEmulationOptions,
+  evaluateProfile, sha256, sameSourceIdentity,
   phaseObservationAccepted, remainingCommandTimeoutMs, validateBudgetRecord, verifyTerminalReport,
 } from './compendiummem-contract.mjs';
 import {
@@ -305,13 +306,9 @@ async function collectProfile({
     await send('Runtime.enable', {}, attached.sessionId);
     await send('Page.enable', {}, attached.sessionId);
     await send('HeapProfiler.enable', {}, attached.sessionId);
-    await send('Emulation.setDeviceMetricsOverride', {
-      width: viewport.width, height: viewport.height,
-      deviceScaleFactor: viewport.dpr, mobile: viewport.mobile,
-    }, attached.sessionId);
-    await send('Emulation.setTouchEmulationEnabled', {
-      enabled: viewport.mobile, maxTouchPoints: viewport.mobile ? 5 : 0,
-    }, attached.sessionId);
+    const emulation = compendiumProfileEmulationOptions(profile, viewport);
+    await send('Emulation.setDeviceMetricsOverride', emulation.deviceMetrics, attached.sessionId);
+    await send('Emulation.setTouchEmulationEnabled', emulation.touch, attached.sessionId);
     return { browserContextId: context.browserContextId, targetId: target.targetId, sessionId: attached.sessionId };
   };
   const navigate = async (sessionId, url, label) => {
@@ -1032,13 +1029,9 @@ async function collectBrokenBaselineProfile({
     await send('Runtime.enable', {}, sessionId);
     await send('Page.enable', {}, sessionId);
     await send('HeapProfiler.enable', {}, sessionId);
-    await send('Emulation.setDeviceMetricsOverride', {
-      width: viewport.width, height: viewport.height,
-      deviceScaleFactor: viewport.dpr, mobile: viewport.mobile,
-    }, sessionId);
-    await send('Emulation.setTouchEmulationEnabled', {
-      enabled: viewport.mobile, maxTouchPoints: viewport.mobile ? 5 : 0,
-    }, sessionId);
+    const emulation = compendiumProfileEmulationOptions(profile, viewport);
+    await send('Emulation.setDeviceMetricsOverride', emulation.deviceMetrics, sessionId);
+    await send('Emulation.setTouchEmulationEnabled', emulation.touch, sessionId);
     await send('Page.navigate', { url: `${origin}/__compendiummem_seed__.html` }, sessionId);
     await waitValue('seed document', `document.readyState==='complete'?'ready':null`, 20000);
     const seeded = await evaluate(`(async()=>{const stores=${JSON.stringify(STORES)},raw=${JSON.stringify(veteranRaw)};

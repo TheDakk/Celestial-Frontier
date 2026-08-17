@@ -24,6 +24,17 @@ export function compendiumCdpOptions(kind: 'candidate' | 'baseline',
   options: Readonly<Record<string, unknown>>): Readonly<Record<string, unknown> & {
     commandTimeoutMs: number;
   }>;
+export function validProfileEmulationOptions(profile: 'phone' | 'desktop', viewport: {
+  width: number; height: number; dpr: number; mobile: boolean;
+}, options: unknown): boolean;
+export function compendiumProfileEmulationOptions(profile: 'phone' | 'desktop', viewport: {
+  width: number; height: number; dpr: number; mobile: boolean;
+}): Readonly<{
+  deviceMetrics: Readonly<{
+    width: number; height: number; deviceScaleFactor: number; mobile: boolean;
+  }>;
+  touch: Readonly<{ enabled: false } | { enabled: true; maxTouchPoints: 5 }>;
+}>;
 export function remainingCommandTimeoutMs(deadlineMs: number, nowMs: number,
   transportTimeoutMs: number): number | null;
 export function phaseObservationAccepted(deadlineMs: number, completedAtMs: number,
