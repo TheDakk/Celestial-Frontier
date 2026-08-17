@@ -20,8 +20,12 @@ export const CANDIDATE_COMMAND_SCHEMA = 'cf-v2-compendium-candidate-command/v1';
 export const PLAIN_EVALUATE_COMMAND_SCHEMA = 'cf-v2-compendium-plain-evaluate-command/v1';
 export const RAW_CDP_COMMAND_SCHEMA = 'cf-v2-compendium-raw-cdp-command/v1';
 export const PARTIAL_FAILURE_SCHEMA = 'cf-v2-compendium-partial-failure/v1';
-export const PARTIAL_PROFILE_SCHEMA = 'cf-v2-compendium-partial-profile/v4';
+export const PARTIAL_PROFILE_SCHEMA = 'cf-v2-compendium-partial-profile/v5';
 export const FILTER_TRANSITION_SCHEMA = 'cf-v2-compendium-filter-transition/v3';
+export const PRODUCER_ERROR_WITNESS_SCHEMA =
+  'cf-v2-compendium-producer-error-witness/v1';
+export const PRODUCER_ERROR_ARM_MESSAGE = 'compendiummem injected producer error';
+export const PRODUCER_ERROR_ARM_SENTINEL = 'cf-v2-compendium-producer-error-armed/v1';
 export const REQUIRED_WARM_CYCLES = 4;
 export const OUTCOME_IDS = Object.freeze([
   'input-fixture-1500-distinct',
@@ -189,6 +193,334 @@ function validFilterTargetObservationGroup(group) {
       && (!validFilterTargetObservation(group.accepted) || group.accepted.ready !== true))) return false;
   return group.observationCount === group.falsyObservations.length
     + (group.accepted === null ? 0 : 1);
+}
+
+const PRODUCER_ERROR_ART_LIVE_FIELDS = Object.freeze([
+  'cacheEntries', 'queuedJobs', 'activeJobs', 'leases', 'subscribers',
+]);
+const PRODUCER_ERROR_ART_TOTAL_FIELDS = Object.freeze([
+  'leaseAcquires', 'releases', 'jobStarts', 'jobCompletes',
+  'jobCancels', 'jobErrors', 'disposals',
+]);
+
+function validProducerErrorArtTelemetry(art) {
+  return isObject(art)
+    && sameJson(Object.keys(art).sort(), ['cacheLimit', 'cachedKeyCount', 'live', 'totals'])
+    && integer(art.cacheLimit) && art.cacheLimit > 0
+    && integer(art.cachedKeyCount) && art.cachedKeyCount >= 0
+    && isObject(art.live) && isObject(art.totals)
+    && sameJson(Object.keys(art.live).sort(), [...PRODUCER_ERROR_ART_LIVE_FIELDS].sort())
+    && sameJson(Object.keys(art.totals).sort(), [...PRODUCER_ERROR_ART_TOTAL_FIELDS].sort())
+    && PRODUCER_ERROR_ART_LIVE_FIELDS.every((field) =>
+      integer(art.live[field]) && art.live[field] >= 0)
+    && PRODUCER_ERROR_ART_TOTAL_FIELDS.every((field) =>
+      integer(art.totals[field]) && art.totals[field] >= 0)
+    && art.cachedKeyCount === art.live.cacheEntries
+    && art.cachedKeyCount <= art.cacheLimit;
+}
+
+export function validProducerErrorPreArmObservation(observation) {
+  const keys = [
+    'ready', 'panelMode', 'sourceCount', 'listImageCount', 'planetsideVisible',
+    'planetsideImageCount', 'planetsideReadyCount',
+    'planetsideDistinctVisualKeys', 'cachedKeys', 'art',
+  ];
+  if (!isObject(observation) || !sameJson(Object.keys(observation).sort(), keys.sort())
+    || typeof observation.ready !== 'boolean'
+    || typeof observation.panelMode !== 'string'
+    || typeof observation.planetsideVisible !== 'boolean'
+    || !Array.isArray(observation.cachedKeys)
+    || !observation.cachedKeys.every((key) => typeof key === 'string' && key.length > 0)
+    || new Set(observation.cachedKeys).size !== observation.cachedKeys.length
+    || !sameJson(observation.cachedKeys, [...observation.cachedKeys].sort())
+    || !['sourceCount', 'listImageCount', 'planetsideImageCount',
+      'planetsideReadyCount', 'planetsideDistinctVisualKeys'].every((field) =>
+      integer(observation[field]) && observation[field] >= 0)
+    || !validProducerErrorArtTelemetry(observation.art)
+    || observation.cachedKeys.length !== observation.art.cachedKeyCount) return false;
+  const expectedReady = observation.panelMode === 'closed' && observation.sourceCount === 1500
+    && observation.listImageCount === 0 && observation.planetsideVisible
+    && observation.planetsideImageCount > 0 && observation.planetsideImageCount <= 8
+    && observation.planetsideReadyCount === observation.planetsideImageCount
+    && observation.planetsideDistinctVisualKeys === observation.planetsideImageCount
+    && observation.art.live.queuedJobs === 0 && observation.art.live.activeJobs === 0
+    && observation.art.live.leases === observation.planetsideImageCount
+    && observation.art.live.subscribers === 0;
+  return observation.ready === expectedReady;
+}
+
+function validProducerErrorRow(row) {
+  const keys = [
+    'logicalId', 'index', 'visualKey', 'thumbState',
+    'naturalWidth', 'naturalHeight', 'complete', 'cached',
+  ];
+  return isObject(row) && sameJson(Object.keys(row).sort(), keys.sort())
+    && typeof row.logicalId === 'string'
+    && integer(row.index) && row.index >= 0
+    && (row.visualKey === null || typeof row.visualKey === 'string')
+    && typeof row.thumbState === 'string'
+    && integer(row.naturalWidth) && row.naturalWidth >= 0
+    && integer(row.naturalHeight) && row.naturalHeight >= 0
+    && typeof row.complete === 'boolean'
+    && typeof row.cached === 'boolean';
+}
+
+export function validProducerErrorWorkObservation(observation) {
+  const keys = [
+    'ready', 'panelMode', 'sourceCount', 'generation', 'mountedRowCount',
+    'mountedDistinctLogicalIds', 'mountedDistinctVisualKeys',
+    'stateCounts', 'rows', 'art',
+  ];
+  const stateKeys = ['placeholder', 'ready', 'error', 'released', 'other'];
+  if (!isObject(observation) || !sameJson(Object.keys(observation).sort(), keys.sort())
+    || typeof observation.ready !== 'boolean' || typeof observation.panelMode !== 'string'
+    || !['sourceCount', 'generation', 'mountedRowCount', 'mountedDistinctLogicalIds',
+      'mountedDistinctVisualKeys'].every((field) =>
+      integer(observation[field]) && observation[field] >= 0)
+    || !isObject(observation.stateCounts)
+    || !sameJson(Object.keys(observation.stateCounts).sort(), stateKeys.sort())
+    || !stateKeys.every((field) =>
+      integer(observation.stateCounts[field]) && observation.stateCounts[field] >= 0)
+    || !Array.isArray(observation.rows) || !observation.rows.every(validProducerErrorRow)
+    || observation.rows.length !== observation.mountedRowCount
+    || !validProducerErrorArtTelemetry(observation.art)) return false;
+  const actualStateCounts = { placeholder: 0, ready: 0, error: 0, released: 0, other: 0 };
+  for (const row of observation.rows) {
+    const field = Object.hasOwn(actualStateCounts, row.thumbState) ? row.thumbState : 'other';
+    actualStateCounts[field]++;
+  }
+  const logicalIds = observation.rows.map((row) => row.logicalId).filter(Boolean);
+  const visualKeys = observation.rows.map((row) => row.visualKey).filter(Boolean);
+  const expectedReady = observation.panelMode === 'list' && observation.sourceCount === 1500
+    && observation.rows.length > 0
+    && observation.art.live.queuedJobs === 0 && observation.art.live.activeJobs === 0
+    && logicalIds.length === observation.rows.length
+    && visualKeys.length === observation.rows.length
+    && new Set(logicalIds).size === observation.rows.length
+    && new Set(visualKeys).size === observation.rows.length
+    && observation.rows.every((row, index) => row.index === index
+      && (row.thumbState !== 'ready' || row.complete));
+  return stateKeys.every((field) => observation.stateCounts[field] === actualStateCounts[field])
+    && observation.mountedDistinctLogicalIds === new Set(logicalIds).size
+    && observation.mountedDistinctVisualKeys === new Set(visualKeys).size
+    && observation.ready === expectedReady;
+}
+
+function validProducerErrorObservationGroup(group, validator) {
+  const keys = ['accepted', 'falsyObservations', 'observationCount'];
+  if (!isObject(group) || !sameJson(Object.keys(group).sort(), keys.sort())
+    || !integer(group.observationCount) || group.observationCount < 0
+    || !Array.isArray(group.falsyObservations)
+    || !group.falsyObservations.every((observation) =>
+      validator(observation) && observation.ready === false)
+    || (group.accepted !== null
+      && (!validator(group.accepted) || group.accepted.ready !== true))) return false;
+  return group.observationCount === group.falsyObservations.length
+    + (group.accepted === null ? 0 : 1);
+}
+
+function validProducerErrorAnswerability(receipt, profile) {
+  const keys = ['target', 'heartbeat'];
+  const targetKeys = ['ok', 'ms', 'value', 'expected'];
+  const heartbeatKeys = ['ok', 'ms', 'product'];
+  return isObject(receipt) && sameJson(Object.keys(receipt).sort(), keys.sort())
+    && isObject(receipt.target)
+    && sameJson(Object.keys(receipt.target).sort(), targetKeys.sort())
+    && typeof receipt.target.ok === 'boolean' && nonnegative(receipt.target.ms)
+    && receipt.target.expected === `${profile}-error`
+    && receipt.target.ok === (receipt.target.value === receipt.target.expected
+      && receipt.target.ms <= COMMAND_TIMEOUT_MS)
+    && isObject(receipt.heartbeat)
+    && sameJson(Object.keys(receipt.heartbeat).sort(), heartbeatKeys.sort())
+    && typeof receipt.heartbeat.ok === 'boolean' && nonnegative(receipt.heartbeat.ms)
+    && (receipt.heartbeat.product === null
+      || typeof receipt.heartbeat.product === 'string')
+    && receipt.heartbeat.ok === (typeof receipt.heartbeat.product === 'string'
+      && receipt.heartbeat.product.length > 0
+      && receipt.heartbeat.ms <= COMMAND_TIMEOUT_MS);
+}
+
+function producerErrorWitnessShape(witness, profile) {
+  const keys = [
+    'schema', 'preArm', 'armSentinel', 'openTarget', 'publication',
+    'answerability', 'closeTarget', 'recoveryOpenTarget', 'recovery', 'commands',
+  ];
+  const candidateLabels = producerErrorCandidateLabels(profile);
+  return isObject(witness) && sameJson(Object.keys(witness).sort(), keys.sort())
+    && witness.schema === PRODUCER_ERROR_WITNESS_SCHEMA
+    && validProducerErrorObservationGroup(
+      witness.preArm, validProducerErrorPreArmObservation,
+    )
+    && (witness.armSentinel === null
+      || witness.armSentinel === PRODUCER_ERROR_ARM_SENTINEL)
+    && validFilterTargetObservationGroup(witness.openTarget)
+    && validProducerErrorObservationGroup(
+      witness.publication, validProducerErrorWorkObservation,
+    )
+    && (witness.answerability === null
+      || validProducerErrorAnswerability(witness.answerability, profile))
+    && validFilterTargetObservationGroup(witness.closeTarget)
+    && validFilterTargetObservationGroup(witness.recoveryOpenTarget)
+    && validProducerErrorObservationGroup(
+      witness.recovery, validProducerErrorWorkObservation,
+    )
+    && Array.isArray(witness.commands)
+    && witness.commands.every((command) =>
+      validCandidateCommandEvidence(command)
+      && command.profile === profile && candidateLabels.includes(command.label));
+}
+
+export function validProducerErrorWitness(witness, profile, { allowPending = false } = {}) {
+  if (!PROFILES.includes(profile) || !producerErrorWitnessShape(witness, profile)) return false;
+  if (allowPending) return true;
+  return witness.preArm.accepted !== null
+    && witness.armSentinel === PRODUCER_ERROR_ARM_SENTINEL
+    && witness.openTarget.accepted !== null
+    && witness.publication.accepted !== null
+    && witness.answerability !== null
+    && witness.closeTarget.accepted !== null
+    && witness.recoveryOpenTarget.accepted !== null
+    && witness.recovery.accepted !== null;
+}
+
+function producerErrorRowsDistinct(observation) {
+  const rows = observation?.rows;
+  return Array.isArray(rows) && rows.length > 0
+    && new Set(rows.map((row) => row.logicalId)).size === rows.length
+    && new Set(rows.map((row) => row.visualKey)).size === rows.length
+    && rows.every((row, index) => row.logicalId && row.visualKey && row.index === index);
+}
+
+export function producerErrorColdProof(witness, profile) {
+  return PROFILES.includes(profile) && producerErrorWitnessShape(witness, profile)
+    && producerErrorColdProofObservations(witness);
+}
+
+function producerErrorRow(witness) {
+  return witness?.publication?.accepted?.rows?.find((row) => row.thumbState === 'error') ?? null;
+}
+
+function producerErrorTotalsMonotone(before, after) {
+  return PRODUCER_ERROR_ART_TOTAL_FIELDS.every((field) =>
+    after?.art?.totals?.[field] >= before?.art?.totals?.[field]);
+}
+
+function producerErrorLifetimeBalanced(observation) {
+  const art = observation?.art;
+  return validProducerErrorArtTelemetry(art)
+    && art.totals.leaseAcquires >= art.totals.releases
+    && art.totals.leaseAcquires - art.totals.releases === art.live.leases
+    && art.totals.jobStarts === art.totals.jobCompletes + art.totals.jobErrors
+    && art.live.cacheEntries === art.totals.jobCompletes - art.totals.disposals;
+}
+
+function producerErrorPublicationWorkBound(witness) {
+  const pre = witness?.preArm?.accepted;
+  const publication = witness?.publication?.accepted;
+  if (!pre || !publication || !producerErrorTotalsMonotone(pre, publication)
+    || !producerErrorLifetimeBalanced(pre)
+    || !producerErrorLifetimeBalanced(publication)) return false;
+  const leaseAcquireDelta = publication.art.totals.leaseAcquires
+    - pre.art.totals.leaseAcquires;
+  const releaseDelta = publication.art.totals.releases - pre.art.totals.releases;
+  const jobStartDelta = publication.art.totals.jobStarts - pre.art.totals.jobStarts;
+  const jobCompleteDelta = publication.art.totals.jobCompletes
+    - pre.art.totals.jobCompletes;
+  const jobErrorDelta = publication.art.totals.jobErrors - pre.art.totals.jobErrors;
+  const disposalDelta = publication.art.totals.disposals - pre.art.totals.disposals;
+  const minimumColdStarts = publication.mountedDistinctVisualKeys
+    - pre.art.cachedKeyCount;
+  const cachedMountedKeys = new Set(publication.rows
+    .filter((row) => row.cached).map((row) => row.visualKey)).size;
+  return publication.art.cacheLimit === pre.art.cacheLimit
+    && publication.art.live.leases === pre.art.live.leases + publication.mountedRowCount
+    && publication.art.live.subscribers === 0
+    && leaseAcquireDelta - releaseDelta === publication.mountedRowCount
+    && jobStartDelta <= leaseAcquireDelta
+    && jobStartDelta >= minimumColdStarts
+    && jobStartDelta === jobCompleteDelta + jobErrorDelta
+    && jobErrorDelta === 1
+    && publication.art.live.cacheEntries
+      === pre.art.live.cacheEntries + jobCompleteDelta - disposalDelta
+    && publication.art.live.cacheEntries >= cachedMountedKeys
+    && publication.art.live.cacheEntries <= publication.art.cacheLimit;
+}
+
+function producerErrorRecoveryWorkBound(witness) {
+  const pre = witness?.preArm?.accepted;
+  const publication = witness?.publication?.accepted;
+  const recovery = witness?.recovery?.accepted;
+  if (!pre || !publication || !recovery
+    || !producerErrorTotalsMonotone(publication, recovery)
+    || !producerErrorLifetimeBalanced(recovery)) return false;
+  const leaseAcquireDelta = recovery.art.totals.leaseAcquires
+    - publication.art.totals.leaseAcquires;
+  const releaseDelta = recovery.art.totals.releases - publication.art.totals.releases;
+  const jobStartDelta = recovery.art.totals.jobStarts - publication.art.totals.jobStarts;
+  const jobCompleteDelta = recovery.art.totals.jobCompletes
+    - publication.art.totals.jobCompletes;
+  const jobErrorDelta = recovery.art.totals.jobErrors - publication.art.totals.jobErrors;
+  const disposalDelta = recovery.art.totals.disposals - publication.art.totals.disposals;
+  const cachedMountedKeys = new Set(recovery.rows
+    .filter((row) => row.cached).map((row) => row.visualKey)).size;
+  return recovery.art.cacheLimit === publication.art.cacheLimit
+    && recovery.art.live.leases === pre.art.live.leases + recovery.mountedRowCount
+    && recovery.art.live.subscribers === 0
+    && leaseAcquireDelta - releaseDelta === 0
+    && leaseAcquireDelta >= recovery.mountedRowCount + (jobStartDelta - 1)
+    && releaseDelta >= recovery.mountedRowCount + (jobStartDelta - 1)
+    && jobCompleteDelta >= 1 && jobErrorDelta === 0
+    && jobStartDelta === jobCompleteDelta + jobErrorDelta
+    && recovery.art.live.cacheEntries
+      === publication.art.live.cacheEntries + jobCompleteDelta - disposalDelta
+    && recovery.art.live.cacheEntries >= cachedMountedKeys
+    && recovery.art.live.cacheEntries <= recovery.art.cacheLimit;
+}
+
+export function producerErrorContained(witness, profile) {
+  if (!producerErrorColdProof(witness, profile)
+    || !producerErrorPublicationWorkBound(witness)) return false;
+  const publication = witness.publication.accepted;
+  const errorRows = publication.rows.filter((row) => row.thumbState === 'error');
+  const row = errorRows[0];
+  return errorRows.length === 1 && publication.stateCounts.error === 1
+    && row === publication.rows[0] && row.index === 0
+    && publication.stateCounts.ready === publication.mountedRowCount - 1
+    && publication.stateCounts.placeholder === 0
+    && publication.stateCounts.released === 0 && publication.stateCounts.other === 0
+    && publication.rows.every((item) => item === row
+      ? item.cached === false && item.naturalWidth === 0 && item.naturalHeight === 0
+      : item.thumbState === 'ready' && item.cached === true
+        && item.naturalWidth === 132 && item.naturalHeight === 132)
+    && row.logicalId.length > 0
+    && row.visualKey !== null && row.visualKey.length > 0
+    && witness.answerability?.target?.ok === true
+    && witness.answerability?.heartbeat?.ok === true;
+}
+
+export function producerErrorRecoverable(witness, profile) {
+  if (!producerErrorContained(witness, profile)
+    || !producerErrorRecoveryWorkBound(witness)) return false;
+  const errored = producerErrorRow(witness);
+  const publication = witness.publication.accepted;
+  const recovery = witness.recovery.accepted;
+  const recovered = recovery.rows.find((row) => row.logicalId === errored.logicalId);
+  return recovery.ready === true && recovery.panelMode === 'list'
+    && recovery.sourceCount === 1500
+    && sameJson(
+      recovery.rows.map((row) => [row.logicalId, row.index, row.visualKey]),
+      publication.rows.map((row) => [row.logicalId, row.index, row.visualKey]),
+    )
+    && recovered?.index === errored.index
+    && recovered.visualKey === errored.visualKey
+    && recovered.thumbState === 'ready'
+    && recovered.naturalWidth === 132 && recovered.naturalHeight === 132
+    && recovered.cached === true
+    && recovery.stateCounts.ready === recovery.mountedRowCount
+    && recovery.stateCounts.placeholder === 0 && recovery.stateCounts.error === 0
+    && recovery.stateCounts.released === 0 && recovery.stateCounts.other === 0
+    && recovery.rows.every((row) => row.thumbState === 'ready'
+      && row.naturalWidth === 132 && row.naturalHeight === 132 && row.cached === true);
 }
 
 function validFilterInputObservationGroup(group) {
@@ -591,6 +923,191 @@ function validFilterTransitionSequence(transitions, {
       && (!requireProductSuccess || pending || (transition.settled.sourceCount === 1500
         && transition.generationDelta === 1));
   });
+}
+
+export function producerErrorStages(profile) {
+  if (!PROFILES.includes(profile)) throw new TypeError('producer-error profile is invalid');
+  const stages = {
+    preArm: 'producer error pre-arm baseline',
+    arm: 'arm producer error',
+    openTarget: 'producer error open target',
+    openPress: 'producer error open mouse press',
+    openRelease: 'producer error open mouse release',
+    publication: 'producer error publication',
+    coldProof: 'producer error cold-key proof',
+    answerability: `answerability ${profile}-error`,
+    closeTarget: 'producer error close target',
+    closePress: 'producer error close mouse press',
+    closeRelease: 'producer error close mouse release',
+    recoveryOpenTarget: 'producer error recovery open target',
+    recoveryOpenPress: 'producer error recovery open mouse press',
+    recoveryOpenRelease: 'producer error recovery open mouse release',
+    recovery: 'producer error recovery',
+  };
+  return Object.freeze({
+    ...stages,
+    sequence: Object.freeze([
+      stages.preArm, stages.arm,
+      stages.openTarget, stages.openPress, stages.openRelease,
+      stages.publication, stages.coldProof, stages.answerability,
+      stages.closeTarget, stages.closePress, stages.closeRelease,
+      stages.recoveryOpenTarget, stages.recoveryOpenPress,
+      stages.recoveryOpenRelease, stages.recovery,
+    ]),
+  });
+}
+
+function producerErrorCandidateLabels(profile) {
+  const stages = producerErrorStages(profile);
+  return [
+    stages.preArm, stages.openTarget, stages.publication, stages.answerability,
+    stages.closeTarget, stages.recoveryOpenTarget, stages.recovery,
+  ];
+}
+
+function producerErrorColdProofObservations(witness) {
+  const pre = witness?.preArm?.accepted;
+  const publication = witness?.publication?.accepted;
+  return validProducerErrorPreArmObservation(pre)
+    && validProducerErrorWorkObservation(publication)
+    && pre.ready === true && pre.panelMode === 'closed' && pre.sourceCount === 1500
+    && pre.listImageCount === 0 && pre.planetsideVisible === true
+    && pre.planetsideImageCount > 0 && pre.planetsideImageCount <= 8
+    && pre.planetsideReadyCount === pre.planetsideImageCount
+    && pre.planetsideDistinctVisualKeys === pre.planetsideImageCount
+    && pre.art.live.queuedJobs === 0 && pre.art.live.activeJobs === 0
+    && pre.art.live.leases === pre.planetsideImageCount
+    && pre.art.live.subscribers === 0
+    && publication.ready === true && publication.panelMode === 'list'
+    && publication.sourceCount === 1500 && producerErrorRowsDistinct(publication)
+    && publication.mountedDistinctLogicalIds === publication.mountedRowCount
+    && publication.mountedDistinctVisualKeys === publication.mountedRowCount
+    && publication.mountedDistinctVisualKeys > pre.art.cachedKeyCount
+    && publication.rows[0]?.index === 0
+    && !pre.cachedKeys.includes(publication.rows[0]?.visualKey);
+}
+
+function groupProgressValid(group, stage, completed, failingStage) {
+  const stageCompleted = completed.has(stage);
+  const stageFailing = failingStage === stage;
+  if (stageCompleted) return group.accepted !== null;
+  if (stageFailing) return group.accepted === null;
+  return group.observationCount === 0 && group.accepted === null;
+}
+
+function validPartialProducerErrorPrefix(measurement, failure) {
+  const witness = measurement.producerErrorWitness;
+  const stages = producerErrorStages(measurement.profile);
+  const ownedCompleted = measurement.completedStages.filter((stage) =>
+    stages.sequence.includes(stage));
+  const failingIndex = stages.sequence.indexOf(measurement.failingStage);
+  if (witness === null) {
+    const installed = measurement.completedStages.includes('install exact fixture');
+    return ownedCompleted.length === 0 && failingIndex < 0
+      && (!installed || measurement.failingStage === 'validate exact fixture');
+  }
+  if (!validProducerErrorWitness(witness, measurement.profile, { allowPending: true })) {
+    return false;
+  }
+  const expectedCompleted = failingIndex >= 0
+    ? stages.sequence.slice(0, failingIndex) : stages.sequence;
+  if (!sameJson(ownedCompleted, expectedCompleted)) return false;
+  const phaseStart = measurement.completedStages.indexOf(stages.preArm);
+  if (expectedCompleted.length > 0
+    && (phaseStart < 0
+      || !sameJson(
+        measurement.completedStages.slice(phaseStart, phaseStart + expectedCompleted.length),
+        expectedCompleted,
+      )
+      || (failingIndex >= 0
+        && phaseStart + expectedCompleted.length !== measurement.completedStages.length))) {
+    return false;
+  }
+  const completed = new Set(ownedCompleted);
+  if (!groupProgressValid(witness.preArm, stages.preArm, completed, measurement.failingStage)
+    || (completed.has(stages.arm)
+      ? witness.armSentinel !== PRODUCER_ERROR_ARM_SENTINEL
+      : witness.armSentinel !== null)
+    || !groupProgressValid(
+      witness.openTarget, stages.openTarget, completed, measurement.failingStage,
+    )
+    || !groupProgressValid(
+      witness.publication, stages.publication, completed, measurement.failingStage,
+    )
+    || (completed.has(stages.answerability)
+      ? witness.answerability === null : witness.answerability !== null)
+    || !groupProgressValid(
+      witness.closeTarget, stages.closeTarget, completed, measurement.failingStage,
+    )
+    || !groupProgressValid(
+      witness.recoveryOpenTarget, stages.recoveryOpenTarget,
+      completed, measurement.failingStage,
+    )
+    || !groupProgressValid(
+      witness.recovery, stages.recovery, completed, measurement.failingStage,
+    )) return false;
+  if (completed.has(stages.coldProof) && !producerErrorColdProofObservations(witness)) return false;
+  if (failingIndex < 0) return validProducerErrorWitness(witness, measurement.profile)
+    && producerErrorColdProofObservations(witness);
+  return true;
+}
+
+function validProducerErrorCandidateLedger(measurement, failure, browserProduct) {
+  const witness = measurement.producerErrorWitness;
+  if (witness === null) return true;
+  const stages = producerErrorStages(measurement.profile);
+  const carrierByLabel = new Map([
+    [stages.preArm, witness.preArm],
+    [stages.openTarget, witness.openTarget],
+    [stages.publication, witness.publication],
+    [stages.closeTarget, witness.closeTarget],
+    [stages.recoveryOpenTarget, witness.recoveryOpenTarget],
+    [stages.recovery, witness.recovery],
+  ]);
+  const labels = producerErrorCandidateLabels(measurement.profile);
+  const mirrored = measurement.commandLedger
+    .filter((command) => command.schema === CANDIDATE_COMMAND_SCHEMA
+      && labels.includes(command.label));
+  if (!sameJson(witness.commands, mirrored)) return false;
+  const producerFailure = failure.command?.schema === CANDIDATE_COMMAND_SCHEMA
+    && labels.includes(failure.command.label) ? failure.command : null;
+  let priorCompletedAtMs = -Infinity;
+  for (let index = 0; index < witness.commands.length; index += 1) {
+    const command = witness.commands[index];
+    const isReportedFailure = producerFailure !== null
+      && sameJson(command, producerFailure);
+    if (command.issuedAtMs < priorCompletedAtMs
+      || (typeof browserProduct === 'string' && browserProduct
+        && candidateCommandFailed(command, browserProduct) !== isReportedFailure)
+      || (isReportedFailure && index !== witness.commands.length - 1)) return false;
+    priorCompletedAtMs = commandCompletedAt(command);
+  }
+  if (producerFailure !== null
+    && !sameJson(witness.commands.at(-1) ?? null, producerFailure)) return false;
+  const actual = witness.commands.map((command) => command.label);
+  const expected = [];
+  for (const label of labels) {
+    const failedAttempt = producerFailure?.label === label ? 1 : 0;
+    const count = label === stages.answerability
+      ? (witness.answerability === null ? 0 : 1) + failedAttempt
+      : carrierByLabel.get(label).observationCount + failedAttempt;
+    expected.push(...Array.from({ length: count }, () => label));
+  }
+  if (!sameJson(actual, expected)) return false;
+  if (witness.answerability !== null) {
+    const command = witness.commands.find((item) => item.label === stages.answerability);
+    if (!command
+      || witness.answerability.target.ms !== command.target.durationMs
+      || witness.answerability.heartbeat.ms !== command.heartbeat.durationMs
+      || witness.answerability.heartbeat.product !== command.heartbeat.product
+      || witness.answerability.target.ok !== (command.target.status === 'fulfilled'
+        && command.target.timely === true && command.target.resultState === 'value')
+      || witness.answerability.heartbeat.ok !== (command.heartbeat.status === 'fulfilled'
+        && command.heartbeat.timely === true
+        && typeof command.heartbeat.product === 'string'
+        && command.heartbeat.product.length > 0)) return false;
+  }
+  return true;
 }
 export function sha256(value) {
   return crypto.createHash('sha256').update(value).digest('hex');
@@ -1699,12 +2216,13 @@ export function evaluateProfile(measurement, budget, fixture) {
     panel: final?.diagnostics?.panel, churn: measurement.phases?.churn,
     filterTransitions,
   });
-  add('error-contained', points.error?.jobErrorsDelta === 1
-    && points.error?.uiResponsive === true && points.error?.poisonedCacheEntry === false,
-  'one-shot producer failure did not remain contained and answerable', points.error);
-  add('error-recoverable', points.error?.recoveryJobCompletesDelta >= 1
-    && typeof points.error?.recoveredKey === 'string' && points.error.recoveredKey,
-  'the failed key did not recover through a later real request', points.error);
+  const producerErrorWitness = measurement.phases?.producerErrorWitness;
+  add('error-contained', producerErrorContained(producerErrorWitness, profile),
+    'one-shot producer failure was not cold-key proven, uniquely published, uncached, and answerable',
+    producerErrorWitness);
+  add('error-recoverable', producerErrorRecoverable(producerErrorWitness, profile),
+    'the exact failed logical identity/key did not complete and become a cached ready 132px row on stable reopen',
+    producerErrorWitness);
   add('cap-shrink', points.capShrink?.beforeEntries > points.capShrink?.afterEntries
     && points.capShrink?.afterEntries <= points.capShrink?.phoneLimit
     && points.capShrink?.afterDecodedBytes <= points.capShrink?.phoneDecodedBytesLimit
@@ -1988,11 +2506,18 @@ function validRawCdpCommand(command) {
     && typeof command.error === 'string' && command.error.length > 0;
 }
 
-function validCompleteProfileMeasurement(measurement, profile) {
+function validCompleteProfileMeasurement(measurement, profile, browserProduct) {
   return isObject(measurement) && measurement.profile === profile
     && isObject(measurement.viewport) && isObject(measurement.fixture)
     && isObject(measurement.documentTokens) && isObject(measurement.points)
     && isObject(measurement.phases)
+    && validProducerErrorWitness(measurement.phases.producerErrorWitness, profile)
+    && producerErrorColdProofObservations(measurement.phases.producerErrorWitness)
+    && validProducerErrorCandidateLedger({
+      profile,
+      producerErrorWitness: measurement.phases.producerErrorWitness,
+      commandLedger: measurement.phases.producerErrorWitness.commands,
+    }, { command: null }, browserProduct)
     && validFilterTransitionSequence(measurement.phases.filterTransitions, {
       requireCompleteSet: true, requireProductSuccess: false,
     })
@@ -2001,10 +2526,13 @@ function validCompleteProfileMeasurement(measurement, profile) {
     && Array.isArray(measurement.reviewPacket);
 }
 
-function validPartialProfileMeasurement(measurement, profile, runId, verifyArtifact, failure) {
+function validPartialProfileMeasurement(
+  measurement, profile, runId, verifyArtifact, failure, browserProduct,
+) {
   const keys = [
     'schema', 'profile', 'viewport', 'evidenceStatus', 'lastCompletedStage',
-    'failingStage', 'completedStages', 'commandLedger', 'filterTransitions', 'reviewPacket',
+    'failingStage', 'completedStages', 'commandLedger', 'producerErrorWitness',
+    'filterTransitions', 'reviewPacket',
   ];
   if (!isObject(measurement) || !sameJson(Object.keys(measurement).sort(), keys.sort())
     || measurement.schema !== PARTIAL_PROFILE_SCHEMA || measurement.profile !== profile
@@ -2019,6 +2547,8 @@ function validPartialProfileMeasurement(measurement, profile, runId, verifyArtif
     || !measurement.commandLedger.every((command) =>
       validCandidateCommandEvidence(command) || validPlainEvaluateCommand(command)
         || validRawCdpCommand(command))
+    || !validPartialProducerErrorPrefix(measurement, failure)
+    || !validProducerErrorCandidateLedger(measurement, failure, browserProduct)
     || !validFilterTransitionSequence(measurement.filterTransitions, { allowPending: true })
     || !validPartialFilterTransitionPrefix(measurement, failure)
     || !validPartialReviewPacket(measurement.reviewPacket, runId, verifyArtifact)
@@ -2121,6 +2651,7 @@ function validPartialFailure(report, expectedRunId, verifyArtifact) {
       partialCount += 1;
       if (!validPartialProfileMeasurement(
         measurement, profile, expectedRunId, verifyArtifact, failure,
+        report.browser?.product,
       )
         || profile !== failure.profile
         || measurement.lastCompletedStage !== failure.lastCompletedStage
@@ -2128,7 +2659,9 @@ function validPartialFailure(report, expectedRunId, verifyArtifact) {
         || !validPartialCommandLedger(
           measurement, failure, report.browser?.product,
         )) return false;
-    } else if (!validCompleteProfileMeasurement(measurement, profile)) return false;
+    } else if (!validCompleteProfileMeasurement(
+      measurement, profile, report.browser?.product,
+    )) return false;
   }
   if (failure.profile === null) {
     if (partialCount !== 0 || failure.command !== null) return false;
@@ -2156,10 +2689,11 @@ function validPartialFailure(report, expectedRunId, verifyArtifact) {
     || validRawCdpCommand(failure.command);
 }
 
-function validProfileMeasurements(profiles) {
+function validProfileMeasurements(profiles, browserProduct) {
   if (!isObject(profiles)
     || !sameJson(Object.keys(profiles).sort(), [...PROFILES].sort())) return false;
-  return PROFILES.every((profile) => validCompleteProfileMeasurement(profiles[profile], profile));
+  return PROFILES.every((profile) =>
+    validCompleteProfileMeasurement(profiles[profile], profile, browserProduct));
 }
 
 function completeFilterProductEvidenceBound(profiles, outcomes) {
@@ -2171,6 +2705,19 @@ function completeFilterProductEvidenceBound(profiles, outcomes) {
     const generationOutcome = outcomes.find((outcome) =>
       outcome?.id === `${profile}/generation-guard`);
     return productSemanticsOk || generationOutcome?.status === 'fail';
+  });
+}
+
+function completeProducerErrorEvidenceBound(profiles, outcomes) {
+  if (!isObject(profiles) || !Array.isArray(outcomes)) return false;
+  return PROFILES.every((profile) => {
+    const witness = profiles[profile]?.phases?.producerErrorWitness;
+    const contained = outcomes.find((outcome) =>
+      outcome?.id === `${profile}/error-contained`);
+    const recoverable = outcomes.find((outcome) =>
+      outcome?.id === `${profile}/error-recoverable`);
+    return (producerErrorContained(witness, profile) || contained?.status === 'fail')
+      && (producerErrorRecoverable(witness, profile) || recoverable?.status === 'fail');
   });
 }
 
@@ -2283,11 +2830,14 @@ export function verifyTerminalReport(report, expectedRunId, {
   }
   const failed = Array.isArray(report.outcomes)
     ? report.outcomes.filter((outcome) => outcome?.status === 'fail') : [];
-  if (!validProfileMeasurements(report.profiles)) {
+  if (!validProfileMeasurements(report.profiles, report.browser?.product)) {
     errors.push('raw phone/desktop profile measurements are incomplete');
   }
   if (!completeFilterProductEvidenceBound(report.profiles, report.outcomes)) {
     errors.push('raw native-filter product evidence is not bound to generation-guard FAIL');
+  }
+  if (!completeProducerErrorEvidenceBound(report.profiles, report.outcomes)) {
+    errors.push('raw producer-error evidence is not bound to contained/recoverable FAIL');
   }
   if (!validReviewPacket(report.reviewPacket, expectedRunId, verifyArtifact)) {
     errors.push('run-bound phone/desktop visual review packet is incomplete');
