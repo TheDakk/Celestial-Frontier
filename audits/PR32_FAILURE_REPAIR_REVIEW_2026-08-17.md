@@ -315,17 +315,33 @@ Completed in this repair batch:
 
 ## 6. Current working-tree state at this checkpoint
 
-Current pre-commit state:
+The first repair commit is `39d326fa69512508884cb92f85dbabe765989032`. On that exact clean head,
+`browserpath --selftest` and the live `browsercdp --selftest` passed under the Arc-local Edge 151
+executable. The single no-retry Smoke run preserved a later instrument red after the repaired cold
+Planetside path had passed:
+
+- the canonical development bulletin now contains 47 bullets, while Smoke and Glass still expected
+  44 (and their removal controls expected 43 rather than 46);
+- the truthful worker copy says only detail **publishes and retains** the 440px result because a
+  thumbnail job paints 440px scratch art before downsampling, while both instruments still required
+  the obsolete and false “only detail renders 440px” sentence;
+- both instruments omitted the required 440→132 worker-boundary clause.
+
+The preserved Smoke report is therefore an instrument finding, not a product-copy regression. No
+unchanged rerun occurred. The bounded follow-up aligns both Smoke and Glass to 47/46 and the exact
+publish/retain plus downsample semantics, with independent changed/red/restored controls for each
+new clause.
+
+Current follow-up state:
 
 - branch: `openai/mac`;
-- committed HEAD: `65b1bace57cfbbfc57acbffe55537764a382c581`;
-- committed HEAD remains the exact PR #32 base above;
-- the worker, loader, art package, Compendium/Smoke/Glass instruments, tests, release draft, and
-  affected references form one intentional uncommitted repair batch;
+- committed repair HEAD: `39d326fa69512508884cb92f85dbabe765989032`;
+- only the Smoke/Glass duplicate-bulletin predicate follow-up and this evidence refresh remain
+  uncommitted;
 - the current production Vite build transforms 798 modules and passes the exact
   `index owner → dedicated worker → worker-local painter` graph audit;
-- no commit or push has been made for the repair;
-- no browser has been launched for the repair;
+- the repair commit has not been pushed;
+- Glass and Compendium browser gates have not yet run on the follow-up head;
 - PR #32 remains draft/not approvable.
 
 ## 7. Remaining work

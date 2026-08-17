@@ -5193,6 +5193,9 @@ async function main() {
             atlasRoute=bulletNodes.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
             training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
             art=bulletNodes.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
+            workspace=bulletNodes.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
+            coldArt=bulletNodes.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
+            worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
             headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
             firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),trainingHeading=headingFor(training),artHeading=headingFor(art),
             worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',
@@ -5240,15 +5243,25 @@ async function main() {
               &&artText.includes('Back restores the saved row and focus')&&artText.includes('Close returns focus to the exact opener')
               &&artText.includes('Planetside shares the same bounded thumbnail lease path')
               &&artText.includes('leases release with their visible owners')
-              &&artText.includes('only specimen detail renders the exact 440px portrait')&&!artContradiction;
+              &&artText.includes('only specimen detail publishes and retains an exact 440px portrait')
+              &&artText.includes('thumbnail scratch art is downsampled to 132px before it crosses the worker boundary')
+              &&!artContradiction,
+            workspaceContract=headingFor(workspace)==='UI Enhancements'
+              &&(workspace?.textContent||'').includes('Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column'),
+            coldArtContract=headingFor(coldArt)==='Bug Fixes'
+              &&(coldArt?.textContent||'').includes('Loading and painting the first specimen thumbnails now happens away from the renderer thread'),
+            workerContract=headingFor(worker)==='Under the Hood'
+              &&(worker?.textContent||'').includes('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn')
+              &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback');
           const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
             ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
           const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!trainingContradiction&&!artContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
-            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===44&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
+            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===47&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
             &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&trainingContract&&artContract
+            &&workspaceContract&&coldArtContract&&workerContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
             &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
@@ -5260,11 +5273,12 @@ async function main() {
             &&honest&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
             identity,honest,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
             charterPlacement,firstHeading,recoveryHeading,ingressPlacement,worldCodeHeading,atlasRouteHeading,
-            worldCodeContract,atlasRouteContract,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,rnSeen:state.rnSeen,
+            worldCodeContract,atlasRouteContract,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
+            workspaceContract,coldArtContract,workerContract,rnSeen:state.rnSeen,
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 44-outcome development inventory, including source-verified code/Atlas routes, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 47-outcome development inventory, including source-verified code/Atlas routes, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -5278,11 +5292,16 @@ async function main() {
               atlasRoute=items.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
               training=items.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
               art=items.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
-              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',
-              recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling;
-            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artContradictory=null,authority=null,error=null;
+              workspace=items.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
+              coldArt=items.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
+              worker=items.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
+              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
+              recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling,
+              artParent=art?.parentNode,artNext=art?.nextSibling,workspaceParent=workspace?.parentNode,workspaceNext=workspace?.nextSibling,
+              coldArtParent=coldArt?.parentNode,coldArtNext=coldArt?.nextSibling,workerParent=worker?.parentNode,workerNext=worker?.nextSibling;
+            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false;
             try {
-              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!training||!art||!recoveryParent)throw new Error('development-detail control fixture missing');
+              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!training||!art||!workspace||!coldArt||!worker||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
@@ -5316,6 +5335,22 @@ async function main() {
               trainingRecoveryContradictory=${developmentDetailCheck};training.textContent=trainingText;
               art.textContent='📦 ART ARRIVES WHEN IT IS NEEDED: The large species-art payload loads lazily for Compendium or Planetside, shares one in-flight request, and retains only the latest subscriber per surface.';
               artStale=${developmentDetailCheck};art.textContent=artText;
+              art.textContent=artText.replace('only specimen detail publishes and retains an exact 440px portrait','specimen detail can show a 440px portrait');
+              artPublishChanged=art.textContent!==artText;artPublishStale=${developmentDetailCheck};art.textContent=artText;
+              art.textContent=artText.replace('thumbnail scratch art is downsampled to 132px before it crosses the worker boundary','thumbnail scratch art crosses the worker boundary');
+              artDownsampleChanged=art.textContent!==artText;artDownsampleStale=${developmentDetailCheck};art.textContent=artText;
+              workspaceParent.appendChild(art);artPlacementMoved=art.parentNode===workspaceParent;artPlacementStale=${developmentDetailCheck};artParent.insertBefore(art,artNext);
+              workspace.textContent=workspaceText.replace('Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column','short-landscape workspace outcome removed');
+              workspaceChanged=workspace.textContent!==workspaceText;workspaceStale=${developmentDetailCheck};workspace.textContent=workspaceText;
+              workerParent.appendChild(workspace);workspacePlacementMoved=workspace.parentNode===workerParent;workspacePlacementStale=${developmentDetailCheck};workspaceParent.insertBefore(workspace,workspaceNext);
+              coldArt.textContent=coldArtText.replace('Loading and painting the first specimen thumbnails now happens away from the renderer thread','cold renderer-answerability outcome removed');
+              coldArtChanged=coldArt.textContent!==coldArtText;coldArtStale=${developmentDetailCheck};coldArt.textContent=coldArtText;
+              workspaceParent.appendChild(coldArt);coldArtPlacementMoved=coldArt.parentNode===workspaceParent;coldArtPlacementStale=${developmentDetailCheck};coldArtParent.insertBefore(coldArt,coldArtNext);
+              worker.textContent=workerText.replace('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn','worker ownership outcome removed');
+              workerChanged=worker.textContent!==workerText;workerStale=${developmentDetailCheck};worker.textContent=workerText;
+              worker.textContent=workerText.replace('terminates an idle or replaced producer without a synchronous renderer fallback','worker release/fallback outcome removed');
+              workerReleaseChanged=worker.textContent!==workerText;workerReleaseStale=${developmentDetailCheck};worker.textContent=workerText;
+              coldArtParent.appendChild(worker);workerPlacementMoved=worker.parentNode===coldArtParent;workerPlacementStale=${developmentDetailCheck};workerParent.insertBefore(worker,workerNext);
               art.textContent=artText+' Thumbnail leases remain pinned after Close, and Planetside renders a 440px portrait for every row.';
               artContradictory=${developmentDetailCheck};art.textContent=artText;
               S.api.state=()=>({...priorState(),rnSeen:'v2-control'});authority=${developmentDetailCheck};
@@ -5325,13 +5360,21 @@ async function main() {
               if(middle&&parent&&!middle.isConnected)parent.insertBefore(middle,next);if(title)title.textContent=titleText;if(claim)claim.textContent=claimText;
               if(panelBoundary)panelBoundary.textContent=panelBoundaryText;
               if(first)first.textContent=firstText;if(recovery){recovery.textContent=recoveryText;if(recoveryParent&&recovery.parentNode!==recoveryParent)recoveryParent.insertBefore(recovery,recoveryNext);}
-              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(training)training.textContent=trainingText;if(art)art.textContent=artText;S.api.state=priorState;
+              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(training)training.textContent=trainingText;
+              if(art){art.textContent=artText;if(artParent&&art.parentNode!==artParent)artParent.insertBefore(art,artNext);}
+              if(workspace){workspace.textContent=workspaceText;if(workspaceParent&&workspace.parentNode!==workspaceParent)workspaceParent.insertBefore(workspace,workspaceNext);}
+              if(coldArt){coldArt.textContent=coldArtText;if(coldArtParent&&coldArt.parentNode!==coldArtParent)coldArtParent.insertBefore(coldArt,coldArtNext);}
+              if(worker){worker.textContent=workerText;if(workerParent&&worker.parentNode!==workerParent)workerParent.insertBefore(worker,workerNext);}S.api.state=priorState;
             }
             const restored=headings[0]?.textContent===a&&headings[1]?.textContent===b&&middle?.isConnected===true
               &&title?.textContent===titleText&&claim?.textContent===claimText&&first?.textContent===firstText
               &&panelBoundary?.textContent===panelBoundaryText&&recovery?.textContent===recoveryText
-              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&training?.textContent===trainingText&&art?.textContent===artText&&S.api.state===priorState;
-            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===43
+              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&training?.textContent===trainingText&&art?.textContent===artText
+              &&art?.parentNode===artParent&&art?.nextSibling===artNext
+              &&workspace?.textContent===workspaceText&&workspace?.parentNode===workspaceParent&&workspace?.nextSibling===workspaceNext
+              &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
+              &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext&&S.api.state===priorState;
+            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===46
               &&identity?.ok===false&&identity?.identity===false&&overclaim?.ok===false&&overclaim?.honest===false
               &&closeContract?.ok===false&&panelBoundaryContract?.ok===false&&emptySkyContract?.ok===false
               &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
@@ -5344,9 +5387,22 @@ async function main() {
               &&trainingLegacyContradictory?.ok===false&&trainingLegacyContradictory?.honest===false&&trainingLegacyContradictory?.trainingContradiction===true
               &&trainingRecoveryContradictory?.ok===false&&trainingRecoveryContradictory?.honest===false&&trainingRecoveryContradictory?.trainingContradiction===true
               &&artStale?.ok===false&&artStale?.artContract===false
+              &&artPublishChanged&&artPublishStale?.ok===false&&artPublishStale?.artContract===false
+              &&artDownsampleChanged&&artDownsampleStale?.ok===false&&artDownsampleStale?.artContract===false
+              &&artPlacementMoved&&artPlacementStale?.ok===false&&artPlacementStale?.artContract===false
+              &&workspaceChanged&&workspaceStale?.ok===false&&workspaceStale?.workspaceContract===false
+              &&workspacePlacementMoved&&workspacePlacementStale?.ok===false&&workspacePlacementStale?.workspaceContract===false
+              &&coldArtChanged&&coldArtStale?.ok===false&&coldArtStale?.coldArtContract===false
+              &&coldArtPlacementMoved&&coldArtPlacementStale?.ok===false&&coldArtPlacementStale?.coldArtContract===false
+              &&workerChanged&&workerStale?.ok===false&&workerStale?.workerContract===false
+              &&workerReleaseChanged&&workerReleaseStale?.ok===false&&workerReleaseStale?.workerContract===false
+              &&workerPlacementMoved&&workerPlacementStale?.ok===false&&workerPlacementStale?.workerContract===false
               &&artContradictory?.ok===false&&artContradictory?.honest===false&&artContradictory?.artContract===false&&artContradictory?.artContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
-              order,inventory,identity,overclaim,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,artStale,artContradictory,authority,restored,error};})()`);
+              order,inventory,identity,overclaim,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
+              artStale,artPublishChanged,artPublishStale,artDownsampleChanged,artDownsampleStale,artPlacementMoved,artPlacementStale,
+              workspaceChanged,workspaceStale,workspacePlacementMoved,workspacePlacementStale,coldArtChanged,coldArtStale,coldArtPlacementMoved,coldArtPlacementStale,
+              workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,workerPlacementMoved,workerPlacementStale,artContradictory,authority,restored,error};})()`);
           if (!detailControls.ok) {
             instrumentFailures.push(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
           }

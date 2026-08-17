@@ -42,9 +42,14 @@ the archive verbatim and refresh this handoff in place.
   certification. The first Linux battery correctly exposed a
   renderer-answerability defect during cold Planetside species art, plus stale Smoke settlement,
   Glass instrument/short-landscape geometry, and static-art audit defects.
-- The current OpenAI-owned uncommitted repair moves heavy species art into a dedicated worker and
-  repairs those three gate surfaces. The full browser-free battery and independent source review
-  are green; clean-head browser evidence, push, and exact-head PR CI remain outstanding.
+- Commit `39d326fa69512508884cb92f85dbabe765989032` moves heavy species art into the dedicated-worker
+  broker and repairs those three gate surfaces. Its full browser-free battery and independent source
+  review are green. Browser path/CDP controls passed on that clean head; the one no-retry Smoke run
+  then found a later stale Guide bulletin predicate shared with Glass (44/43 bullets and obsolete
+  “only detail renders 440px” wording versus the canonical 47/46 and truthful publish/retain plus
+  440→132 downsample contract). The cold Planetside path itself passed. The bounded instrument-only
+  follow-up is now static/selftest green; a new commit, remaining clean-head browser evidence, push,
+  and exact-head PR CI remain outstanding.
 - Nothing in this batch changes main, the production v1.8.9 page, a shipped version, a save schema,
   deterministic generation/share bytes, or either live-site repository.
 
@@ -166,10 +171,12 @@ the archive verbatim and refresh this handoff in place.
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS in
-/Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. Committed HEAD is
-`65b1bace57cfbbfc57acbffe55537764a382c581`; the current uncommitted worker/gate/reference repair
-responds to PR #32's first Linux battery. The complete browser-free suite and independent review are
-green. The prior cert report is exact only for `65b1bac`; the repair still needs its own clean-head
+/Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. Committed repair HEAD is
+`39d326fa69512508884cb92f85dbabe765989032`; only the Smoke/Glass duplicate-bulletin predicate
+follow-up and this handoff refresh remain uncommitted. Browser path/CDP controls passed and the
+preserved first Smoke red proved that stale instrument mismatch after cold Planetside passed; it was
+not rerun unchanged. The complete browser-free suite and independent review are green. The prior
+cert report is exact only for `65b1bac`; the follow-up head still needs its own remaining clean-head
 browser battery and exact pushed CI. Resolve origin state live after the required fetch rather than
 trusting this prose. The six-image HUMAN judgment remains separate.
 

@@ -1739,6 +1739,9 @@ try {
       recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
       training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
       art=bulletNodes.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
+      workspace=bulletNodes.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
+      coldArt=bulletNodes.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
+      worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
       headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
       firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),artHeading=headingFor(art),
       charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
@@ -1776,15 +1779,25 @@ try {
         &&artText.includes('Back restores the saved row and focus')&&artText.includes('Close returns focus to the exact opener')
         &&artText.includes('Planetside shares the same bounded thumbnail lease path')
         &&artText.includes('leases release with their visible owners')
-        &&artText.includes('only specimen detail renders the exact 440px portrait')&&!artContradiction;
+        &&artText.includes('only specimen detail publishes and retains an exact 440px portrait')
+        &&artText.includes('thumbnail scratch art is downsampled to 132px before it crosses the worker boundary')
+        &&!artContradiction,
+      workspaceContract=headingFor(workspace)==='UI Enhancements'
+        &&(workspace?.textContent||'').includes('Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column'),
+      coldArtContract=headingFor(coldArt)==='Bug Fixes'
+        &&(coldArt?.textContent||'').includes('Loading and painting the first specimen thumbnails now happens away from the renderer thread'),
+      workerContract=headingFor(worker)==='Under the Hood'
+        &&(worker?.textContent||'').includes('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn')
+        &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback');
     const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
     return {title,identity:title.includes('v2.0 · A New Foundation'),
       status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,headings,bulletCount:bullets.length,
-      populated:bullets.length===44&&bullets.every((bullet)=>bullet.length>0),
+      populated:bullets.length===47&&bullets.every((bullet)=>bullet.length>0),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
-      complete:charterPlacement&&trainingContract&&artContract&&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
+      complete:charterPlacement&&trainingContract&&artContract&&workspaceContract&&coldArtContract&&workerContract
+        &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
         &&/a genuine empty-sky press still dismisses it/.test(text)
@@ -1792,12 +1805,13 @@ try {
         &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
         &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text),
       charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
+      workspaceContract,coldArtContract,workerContract,
       honest:!overclaim&&!trainingContradiction&&!artContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
       authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
   const releaseDraft = await evalIn(releaseDraftCheck);
   if (!releaseDraft.identity || releaseDraft.status !== 'draft'
-    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 44 || !releaseDraft.complete
+    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 47 || !releaseDraft.complete
     || !releaseDraft.honest || !releaseDraft.authority || releaseDraft.releasePending !== releaseBaseline.releasePending
     || releaseDraft.rnSeen !== releaseBaseline.rnSeen) {
     fails.push('GUIDE v2.0 development bulletin is incomplete or changed shipped-release state: '
@@ -1812,8 +1826,9 @@ try {
   const releaseInventoryCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][12];
     if(!row)return {populated:true,error:'missing control row'};const parent=row.parentNode,next=row.nextSibling;row.remove();const result=${releaseDraftCheck};
     parent.insertBefore(row,next);return result; })()`);
-  if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 43) {
-    fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet stayed complete: ' + JSON.stringify(releaseInventoryCtl));
+  if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 46) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet did not produce the exact 46-row incomplete inventory: '
+      + JSON.stringify(releaseInventoryCtl));
   }
   const releaseCloseCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
     .find((item)=>/ONE SURFACE, ONE CLOSE/.test(item.textContent||''));if(!row)return {complete:true,error:'missing sentinel row'};
@@ -1882,20 +1897,73 @@ try {
     fails.push('GUIDE RELEASE TRAINING CONTROL FAILED — stale/contradictory restore claims stayed current: '
       + JSON.stringify(releaseTrainingCopyCtl));
   }
-  const releaseArtCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
-    .find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||''));
-    if(!row)return {stale:{complete:true},contradiction:{honest:true},error:'missing species-art release row'};const prior=row.textContent;
+  const releaseArtCopyCtl = await evalIn(`(()=>{ const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
+    row=rows.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
+    workspace=rows.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||''));
+    if(!row||!workspace)return {stale:{complete:true},contradiction:{honest:true},error:'missing species-art placement fixture'};
+    const prior=row.textContent,rowParent=row.parentNode,rowNext=row.nextSibling,wrongParent=workspace.parentNode;
     row.textContent='📦 ART ARRIVES WHEN IT IS NEEDED: The large species-art payload loads lazily for Compendium or Planetside, shares one in-flight request, and retains only the latest subscriber per surface.';
     const stale=${releaseDraftCheck};row.textContent=prior;
+    row.textContent=prior.replace('only specimen detail publishes and retains an exact 440px portrait','specimen detail can show a 440px portrait');
+    const publishChanged=row.textContent!==prior,publishStale=${releaseDraftCheck};row.textContent=prior;
+    row.textContent=prior.replace('thumbnail scratch art is downsampled to 132px before it crosses the worker boundary','thumbnail scratch art crosses the worker boundary');
+    const downsampleChanged=row.textContent!==prior,downsampleStale=${releaseDraftCheck};row.textContent=prior;
+    wrongParent.appendChild(row);const placementMoved=row.parentNode===wrongParent,placementStale=${releaseDraftCheck};rowParent.insertBefore(row,rowNext);
     row.textContent=prior+' Thumbnail leases remain pinned after Close, and Planetside renders a 440px portrait for every row.';
     const contradiction=${releaseDraftCheck};row.textContent=prior;
-    return {stale,contradiction,restored:row.textContent===prior};})()`);
+    return {stale,publishChanged,publishStale,downsampleChanged,downsampleStale,placementMoved,placementStale,contradiction,
+      restored:row.textContent===prior&&row.parentNode===rowParent&&row.nextSibling===rowNext};})()`);
   if (releaseArtCopyCtl.stale.complete || releaseArtCopyCtl.stale.artContract
+    || !releaseArtCopyCtl.publishChanged || releaseArtCopyCtl.publishStale.complete || releaseArtCopyCtl.publishStale.artContract
+    || !releaseArtCopyCtl.downsampleChanged || releaseArtCopyCtl.downsampleStale.complete || releaseArtCopyCtl.downsampleStale.artContract
+    || !releaseArtCopyCtl.placementMoved || releaseArtCopyCtl.placementStale.complete || releaseArtCopyCtl.placementStale.artContract
     || releaseArtCopyCtl.contradiction.complete || releaseArtCopyCtl.contradiction.honest
     || releaseArtCopyCtl.contradiction.artContract || !releaseArtCopyCtl.contradiction.artContradiction
     || !releaseArtCopyCtl.restored) {
     fails.push('GUIDE RELEASE ART CONTROL FAILED — pre-Arc-1A or contradictory thumbnail ownership stayed current: '
       + JSON.stringify(releaseArtCopyCtl));
+  }
+  const releaseWorkerCopyCtl = await evalIn(`(()=>{ const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
+    workspace=rows.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
+    coldArt=rows.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
+    worker=rows.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||''));
+    if(!workspace||!coldArt||!worker)return {error:'missing PR32 release rows'};
+    const workspaceText=workspace.textContent,coldArtText=coldArt.textContent,workerText=worker.textContent,
+      workspaceParent=workspace.parentNode,workspaceNext=workspace.nextSibling,coldArtParent=coldArt.parentNode,coldArtNext=coldArt.nextSibling,
+      workerParent=worker.parentNode,workerNext=worker.nextSibling;
+    workspace.textContent=workspaceText.replace('Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column','short-landscape workspace outcome removed');
+    const workspaceChanged=workspace.textContent!==workspaceText,workspaceStale=${releaseDraftCheck};workspace.textContent=workspaceText;
+    coldArt.textContent=coldArtText.replace('Loading and painting the first specimen thumbnails now happens away from the renderer thread','cold renderer-answerability outcome removed');
+    const coldArtChanged=coldArt.textContent!==coldArtText,coldArtStale=${releaseDraftCheck};coldArt.textContent=coldArtText;
+    worker.textContent=workerText.replace('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn','worker ownership outcome removed');
+    const workerChanged=worker.textContent!==workerText,workerStale=${releaseDraftCheck};worker.textContent=workerText;
+    worker.textContent=workerText.replace('terminates an idle or replaced producer without a synchronous renderer fallback','worker release/fallback outcome removed');
+    const workerReleaseChanged=worker.textContent!==workerText,workerReleaseStale=${releaseDraftCheck};worker.textContent=workerText;
+    workerParent.appendChild(workspace);const workspaceMoved=workspace.parentNode===workerParent,workspaceMisplaced=${releaseDraftCheck};workspaceParent.insertBefore(workspace,workspaceNext);
+    workspaceParent.appendChild(coldArt);const coldArtMoved=coldArt.parentNode===workspaceParent,coldArtMisplaced=${releaseDraftCheck};coldArtParent.insertBefore(coldArt,coldArtNext);
+    coldArtParent.appendChild(worker);const workerMoved=worker.parentNode===coldArtParent,workerMisplaced=${releaseDraftCheck};workerParent.insertBefore(worker,workerNext);
+    const restored=workspace.textContent===workspaceText&&coldArt.textContent===coldArtText&&worker.textContent===workerText
+      &&workspace.parentNode===workspaceParent&&workspace.nextSibling===workspaceNext
+      &&coldArt.parentNode===coldArtParent&&coldArt.nextSibling===coldArtNext
+      &&worker.parentNode===workerParent&&worker.nextSibling===workerNext;
+    return {workspaceChanged,workspaceStale,coldArtChanged,coldArtStale,workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,
+      workspaceMoved,workspaceMisplaced,coldArtMoved,coldArtMisplaced,workerMoved,workerMisplaced,restored};})()`);
+  if (!releaseWorkerCopyCtl.workspaceChanged || releaseWorkerCopyCtl.workspaceStale?.complete
+    || releaseWorkerCopyCtl.workspaceStale?.workspaceContract !== false
+    || !releaseWorkerCopyCtl.coldArtChanged || releaseWorkerCopyCtl.coldArtStale?.complete
+    || releaseWorkerCopyCtl.coldArtStale?.coldArtContract !== false
+    || !releaseWorkerCopyCtl.workerChanged || releaseWorkerCopyCtl.workerStale?.complete
+    || releaseWorkerCopyCtl.workerStale?.workerContract !== false
+    || !releaseWorkerCopyCtl.workerReleaseChanged || releaseWorkerCopyCtl.workerReleaseStale?.complete
+    || releaseWorkerCopyCtl.workerReleaseStale?.workerContract !== false
+    || !releaseWorkerCopyCtl.workspaceMoved || releaseWorkerCopyCtl.workspaceMisplaced?.complete
+    || releaseWorkerCopyCtl.workspaceMisplaced?.workspaceContract !== false
+    || !releaseWorkerCopyCtl.coldArtMoved || releaseWorkerCopyCtl.coldArtMisplaced?.complete
+    || releaseWorkerCopyCtl.coldArtMisplaced?.coldArtContract !== false
+    || !releaseWorkerCopyCtl.workerMoved || releaseWorkerCopyCtl.workerMisplaced?.complete
+    || releaseWorkerCopyCtl.workerMisplaced?.workerContract !== false || !releaseWorkerCopyCtl.restored) {
+    fails.push('GUIDE RELEASE PR32 CONTROL FAILED — a short-landscape/cold-art/worker claim was not independently required: '
+      + JSON.stringify(releaseWorkerCopyCtl));
   }
   const releaseVersionCtl = await evalIn(`(()=>{ const heading=document.querySelector('#guidepanel .guide-topic [data-guide-heading]');
     if(!heading)return {identity:true,error:'missing release heading'};const prior=heading.textContent;heading.textContent=prior.replace('v2.0','v2x0');
