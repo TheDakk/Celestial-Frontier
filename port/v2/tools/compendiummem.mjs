@@ -25,9 +25,11 @@ import { openChromiumCdp } from './browsercdp.mjs';
 import {
   BASELINE_OBSERVATION_TIMEOUT_MS, BROKEN_BASELINE_PORTRAIT_CACHE_CAPS,
   BROKEN_BASELINE_THUMB_CACHE_CAP, BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
-  CANDIDATE_BROWSER_LABEL, CANDIDATE_TRANSPORT_TIMEOUT_MS,
+  CANDIDATE_BROWSER_LABEL, CANDIDATE_COMMAND_SCHEMA, CANDIDATE_TRANSPORT_TIMEOUT_MS,
   COMMAND_TIMEOUT_MS, EXPECTED_OUTCOMES,
   FILTER_TRANSITION_SCHEMA, PARTIAL_FAILURE_SCHEMA, PARTIAL_PROFILE_SCHEMA,
+  PRODUCER_ERROR_ARM_MESSAGE, PRODUCER_ERROR_ARM_SENTINEL,
+  PRODUCER_ERROR_WITNESS_SCHEMA,
   RAW_CDP_COMMAND_SCHEMA,
   REPORT_INPUT_KEYS, REPORT_SCHEMA, REQUIRED_WARM_CYCLES,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
@@ -35,12 +37,14 @@ import {
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression,
   evaluateCandidateExpression, evaluateProfile, installBrokenBaselineThumbObserver,
+  producerErrorColdProof, producerErrorStages,
   sha256, sameSourceIdentity,
   isCandidateObservationError, waitForCandidateValue,
   phaseObservationAccepted, remainingCommandTimeoutMs, validateBudgetRecord, verifyTerminalReport,
   validBrokenBaselineThumbObservation, validCompendiumRawSnapshotExpression,
   validFilterInputObservation, validFilterTargetObservation, validFilterTelemetrySnapshot,
   validFilterTransitionObservation,
+  validProducerErrorPreArmObservation, validProducerErrorWorkObservation,
 } from './compendiummem-contract.mjs';
 import {
   COMPENDIUM_FIXTURE_SPEC_PATH, buildBrokenBaselineProjection,
@@ -374,8 +378,28 @@ export function createCandidateCollectorObservations({
   return Object.freeze({ evaluate, waitValue, answerability, sendStage });
 }
 
-const PRODUCER_ERROR_ARM_MESSAGE = 'compendiummem injected producer error';
-const PRODUCER_ERROR_ARM_SENTINEL = 'cf-v2-compendium-producer-error-armed/v1';
+/* One callback owns both the full partial-failure ledger and the sealed
+   producer-phase subset. The browser-free controls exercise this exact
+   factory, and collectProfile passes its return value straight to the shared
+   candidate-observation owner. */
+export function createCandidateCommandRecorder({
+  commandLedger, producerErrorCandidateLabels, getProducerErrorWitness,
+}) {
+  assert(Array.isArray(commandLedger)
+    && producerErrorCandidateLabels instanceof Set
+    && typeof getProducerErrorWitness === 'function',
+  'candidate command recorder dependencies are invalid');
+  return (command) => {
+    commandLedger.push(command);
+    const witness = getProducerErrorWitness();
+    if (witness !== null && command?.schema === CANDIDATE_COMMAND_SCHEMA
+      && producerErrorCandidateLabels.has(command.label)) {
+      assert(Array.isArray(witness.commands),
+        'producer-error command carrier is missing');
+      witness.commands.push(command);
+    }
+  };
+}
 
 /* The production evidence hook intentionally returns void. Keep that product
    API honest and make the collector expression itself return a by-value
@@ -406,6 +430,77 @@ export async function armCandidateProducerError({ sessionId, evaluate }) {
   assert(result === PRODUCER_ERROR_ARM_SENTINEL,
     `candidate producer-error arm sentinel mismatch: ${String(result)}`);
   return result;
+}
+
+function candidateProducerErrorArtProjection() {
+  return `art:{cacheLimit:a.limits.cacheEntries,cachedKeyCount:a.keys.cached.length,live:{cacheEntries:a.live.cacheEntries,
+      queuedJobs:a.live.queuedJobs,activeJobs:a.live.activeJobs,leases:a.live.leases,
+      subscribers:a.live.subscribers},totals:{leaseAcquires:a.totals.leaseAcquires,
+      releases:a.totals.releases,jobStarts:a.totals.jobStarts,
+      jobCompletes:a.totals.jobCompletes,jobCancels:a.totals.jobCancels,
+      jobErrors:a.totals.jobErrors,disposals:a.totals.disposals}}`;
+}
+
+export function candidateProducerErrorPreArmExpression() {
+  return `(()=>{const d=window.__CF_SLICE__?.api?.compendiumDiagnostics?.(),a=d?.art;
+    if(!d||!a)throw new Error('producer-error pre-arm diagnostics unavailable');
+    const list=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"] img')];
+    const ps=[...document.querySelectorAll('#planetside [data-sel="planetside-sp"] img')];
+    const keys=ps.map(img=>img.dataset.visualKey||'').filter(Boolean);
+    const cachedKeys=[...a.keys.cached].sort();
+    const readyCount=ps.filter(img=>img.dataset.thumbState==='ready'&&img.naturalWidth===132&&img.naturalHeight===132).length;
+    const observation={ready:false,panelMode:d.panel.mode,sourceCount:d.panel.sourceCount,
+      listImageCount:list.length,planetsideVisible:d.surfaces.planetside.visible,
+      planetsideImageCount:ps.length,planetsideReadyCount:readyCount,
+      planetsideDistinctVisualKeys:new Set(keys).size,cachedKeys,
+      ${candidateProducerErrorArtProjection()}};
+    observation.ready=observation.panelMode==='closed'&&observation.sourceCount===1500
+      &&observation.listImageCount===0&&observation.planetsideVisible
+      &&observation.planetsideImageCount>0&&observation.planetsideImageCount<=8
+      &&observation.planetsideReadyCount===observation.planetsideImageCount
+      &&observation.planetsideDistinctVisualKeys===observation.planetsideImageCount
+      &&observation.art.live.queuedJobs===0&&observation.art.live.activeJobs===0
+      &&observation.art.live.leases===observation.planetsideImageCount
+      &&observation.art.live.subscribers===0;
+    return observation})()`;
+}
+
+export function candidateProducerErrorWorkExpression() {
+  return `(()=>{const d=window.__CF_SLICE__?.api?.compendiumDiagnostics?.(),a=d?.art;
+    if(!d||!a)throw new Error('producer-error work diagnostics unavailable');
+    const cached=new Set(a.keys.cached);
+    const rows=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"][data-cid]')]
+      .map(row=>{const img=row.querySelector('img'),state=img?.dataset.thumbState||'placeholder';
+        return {logicalId:row.dataset.cid||'',index:Number(row.dataset.ci),
+          visualKey:img?.dataset.visualKey||null,thumbState:state,
+          naturalWidth:img?.naturalWidth||0,naturalHeight:img?.naturalHeight||0,
+          complete:img?.complete===true,
+          cached:!!img?.dataset.visualKey&&cached.has(img.dataset.visualKey)}});
+    const states={placeholder:0,ready:0,error:0,released:0,other:0};
+    for(const row of rows){if(Object.hasOwn(states,row.thumbState))states[row.thumbState]++;else states.other++}
+    const logicalIds=rows.map(row=>row.logicalId).filter(Boolean);
+    const visualKeys=rows.map(row=>row.visualKey).filter(Boolean);
+    const observation={ready:false,panelMode:d.panel.mode,sourceCount:d.panel.sourceCount,
+      generation:d.generation,mountedRowCount:rows.length,
+      mountedDistinctLogicalIds:new Set(logicalIds).size,
+      mountedDistinctVisualKeys:new Set(visualKeys).size,stateCounts:states,rows,
+      ${candidateProducerErrorArtProjection()}};
+    observation.ready=observation.panelMode==='list'&&observation.sourceCount===1500
+      &&rows.length>0&&observation.art.live.queuedJobs===0&&observation.art.live.activeJobs===0
+      &&logicalIds.length===rows.length
+      &&visualKeys.length===rows.length&&new Set(logicalIds).size===rows.length
+      &&new Set(visualKeys).size===rows.length&&rows.every((row,index)=>row.index===index
+        &&(row.thumbState!=='ready'||row.complete));
+    return observation})()`;
+}
+
+export function validCandidateProducerErrorExpression(source, kind) {
+  const expected = kind === 'pre-arm' ? candidateProducerErrorPreArmExpression()
+    : kind === 'work' ? candidateProducerErrorWorkExpression() : null;
+  if (expected === null || source !== expected) return false;
+  try { new Function(`"use strict"; return (${source});`); }
+  catch { return false; }
+  return true;
 }
 
 export function candidateFilterInputExpression({ expectedPanelMode, expectedValue, phase }) {
@@ -672,6 +767,17 @@ async function collectProfile({
   const reviewPacket = [];
   const commandLedger = [];
   const filterTransitions = [];
+  let producerErrorWitness = null;
+  const errorStages = producerErrorStages(profile);
+  const producerErrorCandidateLabels = new Set([
+    errorStages.preArm, errorStages.openTarget, errorStages.publication,
+    errorStages.answerability, errorStages.closeTarget,
+    errorStages.recoveryOpenTarget, errorStages.recovery,
+  ]);
+  const recordCommand = createCandidateCommandRecorder({
+    commandLedger, producerErrorCandidateLabels,
+    getProducerErrorWitness: () => producerErrorWitness,
+  });
   const completedStages = [];
   let currentStage = 'profile initialization';
   let lastCompletedStage = null;
@@ -692,7 +798,7 @@ async function collectProfile({
     send, profile, now: () => performance.now(), pause: sleep,
     onStageStarted: (label) => { currentStage = label; },
     onStageCompleted: completeStage,
-    onCommand: (command) => commandLedger.push(command),
+    onCommand: recordCommand,
   });
   const createTarget = async () => {
     const context = await sendStage(
@@ -899,6 +1005,25 @@ async function collectProfile({
     if (mode !== 'closed') await click(sessionId, '#codexpanel [data-pnx="codex"]', 'close Compendium');
     await waitValue(sessionId, 'Compendium closed', `window.__CF_SLICE__.api.compendiumDiagnostics().panel.mode==='closed'?'closed':null`);
   };
+  const emptyObservationGroup = () => ({
+    observationCount: 0, falsyObservations: [], accepted: null,
+  });
+  const observeProducerErrorGroup = async (
+    sessionId, label, expression, group, validator,
+  ) => {
+    const accepted = await waitValue(sessionId, label, expression, {
+      timeoutMs: 30000,
+      acceptValue: (observation) => observation?.ready === true,
+      onObservation: (observation) => {
+        assert(validator(observation),
+          `${profile} ${label}: producer-error observation shape was invalid`);
+        group.observationCount++;
+        if (observation.ready === false) group.falsyObservations.push(observation);
+      },
+    });
+    group.accepted = accepted;
+    return accepted;
+  };
   try {
     /* Independent fresh document: no saved surface may legitimately request
        species art before the lazy-import sentinel is sampled. */
@@ -920,14 +1045,65 @@ async function collectProfile({
     const installed = await evaluate(sessionId,
       `window.__CF_SLICE__.api.__compendiumEvidence.installFixture(${JSON.stringify(fixture.rows)})`,
       'install exact fixture');
+    currentStage = 'validate exact fixture';
     assert(installed?.installed === 1500, `${profile}: fixture hook installed ${String(installed?.installed)} rows`);
+    completeStage('validate exact fixture');
 
     const targets = {
       first: fixture.rows[0][0], middle: fixture.rows[750][0], last: fixture.rows[1499][0],
       filter: fixture.filterBeacon, detail: fixture.rows[777][0], pinned: fixture.rows[0][0],
     };
-    await openCompendium(sessionId);
-    await waitListReady(sessionId, 1500);
+
+    /* The one-shot producer failure is exercised before any Compendium owner
+       exists. Planetside is the only art owner, so a stable first open whose
+       distinct mounted keys exceed the pre-arm cache cardinality must queue a
+       cold job. Holding that window fixed keeps the exact failed identity in
+       the DOM; close/reopen then retries that same identity without scrolling. */
+    producerErrorWitness = {
+      schema: PRODUCER_ERROR_WITNESS_SCHEMA,
+      preArm: emptyObservationGroup(),
+      armSentinel: null,
+      openTarget: emptyObservationGroup(),
+      publication: emptyObservationGroup(),
+      answerability: null,
+      closeTarget: emptyObservationGroup(),
+      recoveryOpenTarget: emptyObservationGroup(),
+      recovery: emptyObservationGroup(),
+      commands: [],
+    };
+    const preArmExpression = candidateProducerErrorPreArmExpression();
+    assert(validCandidateProducerErrorExpression(preArmExpression, 'pre-arm'),
+      `${profile}: producer-error pre-arm expression is invalid`);
+    await observeProducerErrorGroup(
+      sessionId, errorStages.preArm, preArmExpression,
+      producerErrorWitness.preArm, validProducerErrorPreArmObservation,
+    );
+    producerErrorWitness.armSentinel = await armCandidateProducerError({ sessionId, evaluate });
+    await click(sessionId, '#dockcodex,#railcodex', 'producer error open', {
+      targetWitness: producerErrorWitness.openTarget,
+    });
+    const workExpression = candidateProducerErrorWorkExpression();
+    assert(validCandidateProducerErrorExpression(workExpression, 'work'),
+      `${profile}: producer-error work expression is invalid`);
+    await observeProducerErrorGroup(
+      sessionId, errorStages.publication, workExpression,
+      producerErrorWitness.publication, validProducerErrorWorkObservation,
+    );
+    currentStage = errorStages.coldProof;
+    assert(producerErrorColdProof(producerErrorWitness, profile),
+      `${profile}: stable first open did not prove a mounted cold fixture key`);
+    completeStage(errorStages.coldProof);
+    producerErrorWitness.answerability = await answerability(sessionId, `${profile}-error`);
+    await click(sessionId, '#codexpanel [data-pnx="codex"]', 'producer error close', {
+      targetWitness: producerErrorWitness.closeTarget,
+    });
+    await click(sessionId, '#dockcodex,#railcodex', 'producer error recovery open', {
+      targetWitness: producerErrorWitness.recoveryOpenTarget,
+    });
+    await observeProducerErrorGroup(
+      sessionId, errorStages.recovery, workExpression,
+      producerErrorWitness.recovery, validProducerErrorWorkObservation,
+    );
     const first = await snapshot(sessionId, 'first rows');
     await captureReview(sessionId, 'list');
     const resizeBase = first;
@@ -1094,29 +1270,6 @@ async function collectProfile({
     await scrollToIndex(sessionId, 750);
     const focusPinned = await snapshot(sessionId, 'focused off-window row');
 
-    const errorBefore = await evaluate(sessionId,
-      `window.__CF_SLICE__.api.compendiumDiagnostics().art.totals`, 'pre-error totals');
-    await armCandidateProducerError({ sessionId, evaluate });
-    await scrollToIndex(sessionId, 1000, { settle: false });
-    const errored = await waitValue(sessionId, 'injected error publication', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
-      const image=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"] img')].find(i=>i.dataset.thumbState==='error');
-      return image&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0?{key:image.dataset.visualKey||null,diagnostics:d}:null})()`, { timeoutMs: 30000 });
-    const errorProbe = await answerability(sessionId, `${profile}-error`);
-    const errorKey = errored.key;
-    const poisonedCacheEntry = errored.diagnostics.art.keys.cached.includes(errorKey);
-    await scrollToIndex(sessionId, 750);
-    await scrollToIndex(sessionId, 1000);
-    const recovered = await waitValue(sessionId, 'error recovery', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
-      const image=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"] img')].find(i=>i.dataset.visualKey===${JSON.stringify(errorKey)});
-      return image?.dataset.thumbState==='ready'&&d.art.keys.cached.includes(${JSON.stringify(errorKey)})?d:null})()`, { timeoutMs: 30000 });
-    const error = {
-      jobErrorsDelta: recovered.art.totals.jobErrors - errorBefore.jobErrors,
-      uiResponsive: errorProbe.target.ok && errorProbe.heartbeat.ok,
-      poisonedCacheEntry,
-      recoveryJobCompletesDelta: recovered.art.totals.jobCompletes - errored.diagnostics.art.totals.jobCompletes,
-      recoveredKey: errorKey,
-    };
-
     /* Capture deterministic lifetime high-water marks before the intentional
        cross-device cap-shrink control changes the product limit class. */
     const profilePeakArt = await evaluate(sessionId,
@@ -1243,6 +1396,7 @@ async function collectProfile({
         },
         keyboardTraversal,
         jobPeaks,
+        producerErrorWitness,
         filterTransitions,
         close: {
           beforeLeases: closeBefore.leases, afterLeases: closeAfter.leases,
@@ -1251,7 +1405,7 @@ async function collectProfile({
         planetsideLifecycle: { hidden: hiddenPlanetside, revealed: revealedPlanetside },
       },
       points: { lazyBoot, lazyEnd, initial, first, middle, last, filtered, detail, detailClosed, back,
-        focusPinned, closed, planetside, warm, error, capShrink },
+        focusPinned, closed, planetside, warm, capShrink },
       answerability: [firstProbe, lastProbe],
     };
   } catch (caught) {
@@ -1269,6 +1423,7 @@ async function collectProfile({
       failingStage: currentStage,
       completedStages: [...completedStages],
       commandLedger: [...commandLedger],
+      producerErrorWitness,
       filterTransitions,
       reviewPacket: [...reviewPacket],
     };

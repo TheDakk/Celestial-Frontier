@@ -14,6 +14,10 @@ export const RAW_CDP_COMMAND_SCHEMA: string;
 export const PARTIAL_FAILURE_SCHEMA: string;
 export const PARTIAL_PROFILE_SCHEMA: string;
 export const FILTER_TRANSITION_SCHEMA: string;
+export const PRODUCER_ERROR_WITNESS_SCHEMA:
+  'cf-v2-compendium-producer-error-witness/v1';
+export const PRODUCER_ERROR_ARM_MESSAGE: 'compendiummem injected producer error';
+export const PRODUCER_ERROR_ARM_SENTINEL: 'cf-v2-compendium-producer-error-armed/v1';
 export const REQUIRED_WARM_CYCLES: number;
 export const OUTCOME_IDS: readonly string[];
 export const EXPECTED_OUTCOMES: readonly string[];
@@ -112,6 +116,31 @@ export function candidateNativeKeyDispatches(
     windowsVirtualKeyCode: number; nativeVirtualKeyCode: number; modifiers: number;
   }>,
 ];
+export function validProducerErrorPreArmObservation(observation: unknown): boolean;
+export function validProducerErrorWorkObservation(observation: unknown): boolean;
+export function validProducerErrorWitness(witness: unknown, profile: 'phone' | 'desktop',
+  options?: { allowPending?: boolean }): boolean;
+export function producerErrorColdProof(witness: unknown, profile: 'phone' | 'desktop'): boolean;
+export function producerErrorContained(witness: unknown, profile: 'phone' | 'desktop'): boolean;
+export function producerErrorRecoverable(witness: unknown, profile: 'phone' | 'desktop'): boolean;
+export function producerErrorStages(profile: 'phone' | 'desktop'): Readonly<{
+  preArm: 'producer error pre-arm baseline';
+  arm: 'arm producer error';
+  openTarget: 'producer error open target';
+  openPress: 'producer error open mouse press';
+  openRelease: 'producer error open mouse release';
+  publication: 'producer error publication';
+  coldProof: 'producer error cold-key proof';
+  answerability: `answerability ${'phone' | 'desktop'}-error`;
+  closeTarget: 'producer error close target';
+  closePress: 'producer error close mouse press';
+  closeRelease: 'producer error close mouse release';
+  recoveryOpenTarget: 'producer error recovery open target';
+  recoveryOpenPress: 'producer error recovery open mouse press';
+  recoveryOpenRelease: 'producer error recovery open mouse release';
+  recovery: 'producer error recovery';
+  sequence: readonly string[];
+}>;
 export function validFilterInputObservation(observation: unknown): boolean;
 export function validFilterTargetObservation(observation: unknown): boolean;
 export function validFilterTelemetrySnapshot(snapshot: unknown): boolean;

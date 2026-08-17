@@ -18,6 +18,7 @@ import {
   COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS, DIAGNOSTICS_SCHEMA,
   EXPECTED_OUTCOMES, FILTER_TRANSITION_SCHEMA, OUTCOME_IDS,
   PARTIAL_FAILURE_SCHEMA, PARTIAL_PROFILE_SCHEMA,
+  PRODUCER_ERROR_ARM_SENTINEL, PRODUCER_ERROR_WITNESS_SCHEMA,
   PLAIN_EVALUATE_COMMAND_SCHEMA, RAW_CDP_COMMAND_SCHEMA,
   REPORT_INPUT_KEYS, REPORT_SCHEMA,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
@@ -31,6 +32,9 @@ import {
   validCompendiumRawSnapshotExpression, validTransportTimeoutPolicy,
   validFilterInputObservation, validFilterTargetObservation, validFilterTelemetrySnapshot,
   validFilterTransitionObservation, validFilterTransitionWitness,
+  producerErrorColdProof, producerErrorContained, producerErrorRecoverable,
+  producerErrorStages, validProducerErrorPreArmObservation,
+  validProducerErrorWorkObservation, validProducerErrorWitness,
   validateBudgetRecord, validCandidateCommandEvidence, verifyTerminalReport,
 } from './compendiummem-contract.mjs';
 import {
@@ -38,10 +42,13 @@ import {
 } from './compendiummem-fixture.mjs';
 import {
   armCandidateProducerError, candidateArmProducerErrorExpression,
+  candidateProducerErrorPreArmExpression, candidateProducerErrorWorkExpression,
   candidateFilterInputExpression, candidateFilterTelemetryExpression,
   collectCandidateSnapshot, createCandidateCollectorObservations,
+  createCandidateCommandRecorder,
   driveCandidateFilterTransition, validCandidateFilterInputExpression,
   validCandidateFilterTelemetryExpression, validCandidateArmProducerErrorExpression,
+  validCandidateProducerErrorExpression,
 } from './compendiummem.mjs';
 
 function assert(condition, message) { if (!condition) throw new Error(`COMPENDIUMMEM SELFTEST: ${message}`); }
@@ -323,7 +330,145 @@ function syntheticFilterTransition({
   };
 }
 
-function syntheticMeasurement(profile, fixture) {
+function syntheticProducerErrorArt({
+  cacheEntries, cacheLimit = 96, queuedJobs = 0, activeJobs = 0,
+  leases = 24, subscribers = 0,
+  leaseAcquires = 24, releases = 0, jobStarts = 20, jobCompletes = 19,
+  jobCancels = 0, jobErrors = 1, disposals = 0,
+}) {
+  return {
+    cacheLimit, cachedKeyCount: cacheEntries,
+    live: { cacheEntries, queuedJobs, activeJobs, leases, subscribers },
+    totals: {
+      leaseAcquires, releases, jobStarts, jobCompletes, jobCancels, jobErrors, disposals,
+    },
+  };
+}
+
+function syntheticProducerRows(fixture, { error = false, pending = false } = {}) {
+  return fixture.rows.slice(0, 20).map(([logicalId], index) => ({
+    logicalId, index, visualKey: `producer-key-${index}`,
+    thumbState: index === 0 ? (error ? 'error' : pending ? 'placeholder' : 'ready') : 'ready',
+    naturalWidth: index === 0 && (error || pending) ? 0 : 132,
+    naturalHeight: index === 0 && (error || pending) ? 0 : 132,
+    complete: true,
+    cached: index !== 0 || (!error && !pending),
+  }));
+}
+
+function syntheticProducerWorkObservation(profile, fixture, {
+  ready, error = false, pending = false, recovery = false,
+} = {}) {
+  const rows = syntheticProducerRows(fixture, { error, pending });
+  const stateCounts = { placeholder: 0, ready: 0, error: 0, released: 0, other: 0 };
+  for (const row of rows) stateCounts[row.thumbState]++;
+  const cacheLimit = profile === 'phone' ? 96 : 256;
+  const art = recovery
+    ? syntheticProducerErrorArt({
+      cacheEntries: pending ? 23 : 24, cacheLimit, queuedJobs: pending ? 1 : 0,
+      subscribers: pending ? 1 : 0, leaseAcquires: 44, releases: 20,
+      jobStarts: pending ? 24 : 25, jobCompletes: pending ? 23 : 24, jobErrors: 1,
+    })
+    : error
+      ? syntheticProducerErrorArt({
+        cacheEntries: 23, cacheLimit, leaseAcquires: 24,
+        jobStarts: 24, jobCompletes: 23, jobErrors: 1,
+      })
+      : syntheticProducerErrorArt({
+        cacheEntries: 4, cacheLimit, queuedJobs: pending ? 20 : 0,
+        subscribers: pending ? 20 : 0, leaseAcquires: 24,
+        jobStarts: 4, jobCompletes: 4, jobErrors: 0,
+      });
+  return {
+    ready, panelMode: 'list', sourceCount: 1500, generation: recovery ? 3 : 2,
+    mountedRowCount: rows.length,
+    mountedDistinctLogicalIds: rows.length,
+    mountedDistinctVisualKeys: rows.length,
+    stateCounts, rows,
+    art,
+  };
+}
+
+function syntheticProducerErrorWitness(profile, fixture) {
+  const preArm = {
+    ready: true, panelMode: 'closed', sourceCount: 1500, listImageCount: 0,
+    planetsideVisible: true, planetsideImageCount: 4,
+    planetsideReadyCount: 4, planetsideDistinctVisualKeys: 4,
+    cachedKeys: Array.from({ length: 4 }, (_, index) => `planetside-key-${index}`),
+    art: syntheticProducerErrorArt({
+      cacheEntries: 4, cacheLimit: profile === 'phone' ? 96 : 256,
+      leases: 4, subscribers: 0, leaseAcquires: 4,
+      jobStarts: 4, jobCompletes: 4, jobErrors: 0,
+    }),
+  };
+  const publicationFalsy = syntheticProducerWorkObservation(profile, fixture, {
+    ready: false, pending: true,
+  });
+  const publication = syntheticProducerWorkObservation(profile, fixture, {
+    ready: true, error: true,
+  });
+  const recoveryFalsy = syntheticProducerWorkObservation(profile, fixture, {
+    ready: false, pending: true, recovery: true,
+  });
+  const recovery = syntheticProducerWorkObservation(profile, fixture, {
+    ready: true, recovery: true,
+  });
+  return {
+    schema: PRODUCER_ERROR_WITNESS_SCHEMA,
+    preArm: { observationCount: 1, falsyObservations: [], accepted: preArm },
+    armSentinel: PRODUCER_ERROR_ARM_SENTINEL,
+    openTarget: syntheticFilterTargetGroup(),
+    publication: {
+      observationCount: 2, falsyObservations: [publicationFalsy], accepted: publication,
+    },
+    answerability: {
+      target: { ok: true, ms: 10, value: `${profile}-error`, expected: `${profile}-error` },
+      heartbeat: { ok: true, ms: 15, product: 'Chrome/Selftest' },
+    },
+    closeTarget: syntheticFilterTargetGroup(),
+    recoveryOpenTarget: syntheticFilterTargetGroup(),
+    recovery: {
+      observationCount: 2, falsyObservations: [recoveryFalsy], accepted: recovery,
+    },
+    commands: [],
+  };
+}
+
+function retimeCandidateEvidence(template, profile, label, issuedAtMs) {
+  const command = clone(template);
+  const delta = issuedAtMs - command.issuedAtMs;
+  command.profile = profile;
+  command.label = label;
+  command.issuedAtMs += delta;
+  command.phaseDeadlineMs += delta;
+  command.commandDeadlineMs += delta;
+  command.target.completedAtMs += delta;
+  command.heartbeat.completedAtMs += delta;
+  return command;
+}
+
+function syntheticProducerErrorCommands(template, witness, profile, startMs = 1000) {
+  const stages = producerErrorStages(profile);
+  const labels = [
+    [stages.preArm, witness.preArm.observationCount],
+    [stages.openTarget, witness.openTarget.observationCount],
+    [stages.publication, witness.publication.observationCount],
+    [stages.answerability, witness.answerability === null ? 0 : 1],
+    [stages.closeTarget, witness.closeTarget.observationCount],
+    [stages.recoveryOpenTarget, witness.recoveryOpenTarget.observationCount],
+    [stages.recovery, witness.recovery.observationCount],
+  ];
+  let serial = 0;
+  return labels.flatMap(([label, count]) => Array.from({ length: count }, () => {
+    const command = retimeCandidateEvidence(
+      template, profile, label, startMs + serial * 100,
+    );
+    serial += 1;
+    return command;
+  }));
+}
+
+function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
   const baseViewportHeight = profile === 'phone' ? 844 : 800;
   const first = fixture.rows[0][0];
   const middle = fixture.rows[750][0];
@@ -379,6 +524,10 @@ function syntheticMeasurement(profile, fixture) {
     planetside, ...warm]) {
     point.diagnostics.art.deviceClass = profile;
   }
+  const producerErrorWitness = syntheticProducerErrorWitness(profile, fixture);
+  producerErrorWitness.commands = syntheticProducerErrorCommands(
+    candidateCommandTemplate, producerErrorWitness, profile,
+  );
   return {
     profile,
     reviewPacket: [],
@@ -461,6 +610,7 @@ function syntheticMeasurement(profile, fixture) {
         deviceClass: profile, queuedJobsPeak: 20, activeJobsPeak: 1,
         queuedJobsLimit: 256, activeJobsLimit: 1,
       },
+      producerErrorWitness,
       filterTransitions: [
         syntheticFilterTransition({
           profile, entryMode: 'visible', query: 'Same Seed Sentinel', filteredCount: 2,
@@ -478,10 +628,6 @@ function syntheticMeasurement(profile, fixture) {
     },
     points: { lazyBoot, lazyEnd, initial, first: firstPoint, middle: middlePoint, last: lastPoint,
       filtered, detail, detailClosed, back, focusPinned, closed, planetside, warm,
-      error: {
-        jobErrorsDelta: 1, uiResponsive: true, poisonedCacheEntry: false,
-        recoveryJobCompletesDelta: 1, recoveredKey: 'recovered-key',
-      },
       capShrink: {
         beforeEntries: 140, afterEntries: 80, phoneLimit: 96,
         afterDecodedBytes: 5_500_000, phoneDecodedBytesLimit: 8_000_000,
@@ -744,6 +890,27 @@ export async function runCompendiumMemSelftest() {
     && candidateReady.calls.find((call) => call.method === 'Browser.getVersion')?.sessionId
       === undefined,
   'the call-site-used candidate wait did not arm one 2s target/root-heartbeat observation');
+  const recorderLedger = [];
+  let recorderWitness = null;
+  const recorderStage = producerErrorStages('phone').preArm;
+  const recordCandidateCommand = createCandidateCommandRecorder({
+    commandLedger: recorderLedger,
+    producerErrorCandidateLabels: new Set([recorderStage]),
+    getProducerErrorWitness: () => recorderWitness,
+  });
+  const beforeWitnessCommand = clone(candidateReady.ledger[0]);
+  beforeWitnessCommand.label = recorderStage;
+  recordCandidateCommand(beforeWitnessCommand);
+  recorderWitness = { commands: [] };
+  const retainedProducerCommand = clone(candidateReady.ledger[0]);
+  retainedProducerCommand.label = recorderStage;
+  recordCandidateCommand(retainedProducerCommand);
+  const unrelatedCommand = clone(candidateReady.ledger[0]);
+  unrelatedCommand.label = 'unrelated candidate stage';
+  recordCandidateCommand(unrelatedCommand);
+  assert(recorderLedger.length === 3 && recorderWitness.commands.length === 1
+    && recorderWitness.commands[0] === retainedProducerCommand,
+  'the real collector command callback did not retain the exact producer subset only while owned');
   const candidateAnswerabilityReady = await runCandidateWaitScenario([{
     target: { deltaMs: 10, value: 'phone-first' },
     heartbeat: { deltaMs: 15, product: 'Chrome/Selftest' },
@@ -1397,6 +1564,24 @@ export async function runCompendiumMemSelftest() {
     && !validCandidateArmProducerErrorExpression(wrongProducerErrorMessage)
     && !validCandidateArmProducerErrorExpression(wrongProducerErrorSentinel),
   'a no-return, wrong-message, or wrong-sentinel producer-error arm expression validated');
+  const producerPreArmExpression = candidateProducerErrorPreArmExpression();
+  const producerWorkExpression = candidateProducerErrorWorkExpression();
+  assert(validCandidateProducerErrorExpression(producerPreArmExpression, 'pre-arm')
+    && validCandidateProducerErrorExpression(producerWorkExpression, 'work'),
+  'the exact collector-owned producer-error observation expressions did not parse/validate');
+  assert(!validCandidateProducerErrorExpression(
+    producerPreArmExpression.replace('planetsideImageCount>0', 'planetsideImageCount>=0'),
+    'pre-arm',
+  ) && !validCandidateProducerErrorExpression(
+    producerWorkExpression.replace("(row.thumbState!=='ready'||row.complete)", 'true'),
+    'work',
+  ) && !validCandidateProducerErrorExpression(producerWorkExpression.slice(0, -1), 'work'),
+  'weakened cold-owner/terminal-work or syntactically truncated producer evidence validated');
+  const producerStagesInventory = producerErrorStages('phone').sequence;
+  assert(producerStagesInventory.every((stage) => !stage.toLowerCase().includes('scroll'))
+    && producerStagesInventory.indexOf('producer error publication')
+      < producerStagesInventory.indexOf('producer error recovery'),
+  'the sealed producer-error control reintroduced scrolling or reversed publication/recovery');
 
   const runProducerErrorArmScenario = async ({
     expression = null, hookError = null, returnedValue = null,
@@ -1810,8 +1995,75 @@ export async function runCompendiumMemSelftest() {
   assert(validateBudget(missingBaselineFault).errors.some((error) =>
     /observedFaults must prove every sealed/.test(error)),
   'baseline sample missing one observed fault was accepted');
-  const phone = syntheticMeasurement('phone', fixture);
-  const desktop = syntheticMeasurement('desktop', fixture);
+  const phone = syntheticMeasurement('phone', fixture, candidateReady.ledger[0]);
+  const desktop = syntheticMeasurement('desktop', fixture, candidateReady.ledger[0]);
+  for (const measurement of [phone, desktop]) {
+    const witness = measurement.phases.producerErrorWitness;
+    assert(validProducerErrorWitness(witness, measurement.profile)
+      && validProducerErrorPreArmObservation(witness.preArm.accepted)
+      && validProducerErrorWorkObservation(witness.publication.accepted)
+      && validProducerErrorWorkObservation(witness.recovery.accepted)
+      && producerErrorColdProof(witness, measurement.profile)
+      && producerErrorContained(witness, measurement.profile)
+      && producerErrorRecoverable(witness, measurement.profile),
+    `${measurement.profile} synthetic stable-open producer witness was not fully green`);
+  }
+  const nonzeroSettledPreArmSubscriber = clone(
+    phone.phases.producerErrorWitness.preArm.accepted,
+  );
+  nonzeroSettledPreArmSubscriber.art.live.subscribers = 1;
+  const nonzeroSettledPublicationSubscriber = clone(
+    phone.phases.producerErrorWitness.publication.accepted,
+  );
+  nonzeroSettledPublicationSubscriber.art.live.subscribers = 1;
+  const nonzeroSettledRecoverySubscriber = clone(
+    phone.phases.producerErrorWitness.recovery.accepted,
+  );
+  nonzeroSettledRecoverySubscriber.art.live.subscribers = 1;
+  assert(!validProducerErrorPreArmObservation(nonzeroSettledPreArmSubscriber)
+    && validProducerErrorWorkObservation(nonzeroSettledPublicationSubscriber)
+    && validProducerErrorWorkObservation(nonzeroSettledRecoverySubscriber),
+  'subscriber leaks were not separated into precondition versus product evidence');
+  const structurallySettledPlaceholder = clone(
+    phone.phases.producerErrorWitness.publication.accepted,
+  );
+  structurallySettledPlaceholder.rows[0].thumbState = 'placeholder';
+  structurallySettledPlaceholder.stateCounts.error = 0;
+  structurallySettledPlaceholder.stateCounts.placeholder = 1;
+  assert(validProducerErrorWorkObservation(structurallySettledPlaceholder),
+    'a jobs-zero stable mounted placeholder was misclassified as incomplete evidence');
+  const decodePendingRecovery = clone(phone.phases.producerErrorWitness.recovery.accepted);
+  decodePendingRecovery.rows[0].complete = false;
+  assert(!validProducerErrorWorkObservation(decodePendingRecovery),
+    'recovery accepted a ready cached row before its image decode completed');
+  const multiJobRecovery = clone(phone.phases.producerErrorWitness);
+  multiJobRecovery.recovery.accepted.art.totals.jobStarts += 2;
+  multiJobRecovery.recovery.accepted.art.totals.jobCompletes += 2;
+  multiJobRecovery.recovery.accepted.art.totals.leaseAcquires += 2;
+  multiJobRecovery.recovery.accepted.art.totals.releases += 2;
+  multiJobRecovery.recovery.accepted.art.cachedKeyCount += 2;
+  multiJobRecovery.recovery.accepted.art.live.cacheEntries += 2;
+  assert(producerErrorRecoverable(multiJobRecovery, 'phone'),
+    'a clean recovery with additional source-valid RO tail completions was rejected');
+  const multiJobMissingAcquire = clone(multiJobRecovery);
+  multiJobMissingAcquire.recovery.accepted.art.totals.leaseAcquires--;
+  const multiJobMissingRelease = clone(multiJobRecovery);
+  multiJobMissingRelease.recovery.accepted.art.totals.releases--;
+  const multiJobBalancedLeaseDeficit = clone(multiJobRecovery);
+  multiJobBalancedLeaseDeficit.recovery.accepted.art.totals.leaseAcquires--;
+  multiJobBalancedLeaseDeficit.recovery.accepted.art.totals.releases--;
+  assert(!producerErrorRecoverable(multiJobMissingAcquire, 'phone')
+    && !producerErrorRecoverable(multiJobMissingRelease, 'phone'),
+  'extra recovery jobs passed without matching transient acquire/release ownership');
+  assert(!producerErrorRecoverable(multiJobBalancedLeaseDeficit, 'phone'),
+    'balanced transient ownership deficit bypassed the recovery job/lease lower bound');
+  const flatCacheWithoutDisposal = clone(phone.phases.producerErrorWitness);
+  flatCacheWithoutDisposal.recovery.accepted.art.cachedKeyCount
+    = flatCacheWithoutDisposal.publication.accepted.art.cachedKeyCount;
+  flatCacheWithoutDisposal.recovery.accepted.art.live.cacheEntries
+    = flatCacheWithoutDisposal.publication.accepted.art.live.cacheEntries;
+  assert(!producerErrorRecoverable(flatCacheWithoutDisposal, 'phone'),
+    'a flat recovery cache passed without the matching disposal counter');
   const generatedMetricBudget = clone(budget);
   const generatedPhoneMetrics = calibrationMetrics(phone);
   const generatedDesktopMetrics = calibrationMetrics(desktop);
@@ -2005,9 +2257,147 @@ export async function runCompendiumMemSelftest() {
     ['wrong selected device class', (m) => { m.points.first.diagnostics.art.deviceClass = m.profile === 'phone' ? 'desktop' : 'phone'; }, 'resource-live-limits'],
     ['wrong pre-override device class', (m) => { m.points.initial.diagnostics.art.deviceClass = m.profile === 'phone' ? 'desktop' : 'phone'; }, 'resource-live-limits'],
     ['wrong cap-shrink device class', (m) => { m.points.capShrink.afterDeviceClass = 'desktop'; }, 'cap-shrink'],
-    ['producer error swallowed', (m) => { m.points.error.jobErrorsDelta = 0; }, 'error-contained'],
-    ['producer error poisoned', (m) => { m.points.error.poisonedCacheEntry = true; }, 'error-contained'],
-    ['producer error no recovery', (m) => { m.points.error.recoveryJobCompletesDelta = 0; }, 'error-recoverable'],
+    ['producer error swallowed', (m) => {
+      m.phases.producerErrorWitness.publication.accepted.art.totals.jobErrors = 0;
+    }, 'error-contained'],
+    ['producer error publication placeholder after settled jobs', (m) => {
+      const publication = m.phases.producerErrorWitness.publication.accepted;
+      publication.rows[0].thumbState = 'placeholder';
+      publication.stateCounts.error = 0;
+      publication.stateCounts.placeholder = 1;
+    }, 'error-contained'],
+    ['producer error publication has zero mounted ownership', (m) => {
+      const w = m.phases.producerErrorWitness;
+      w.publication.accepted.art.live.leases = w.preArm.accepted.art.live.leases;
+    }, 'error-contained'],
+    ['producer error publication leaked a settled subscriber', (m) => {
+      m.phases.producerErrorWitness.publication.accepted.art.live.subscribers = 1;
+    }, 'error-contained'],
+    ['producer error publication net acquisition drift', (m) => {
+      m.phases.producerErrorWitness.publication.accepted.art.totals.leaseAcquires--;
+    }, 'error-contained'],
+    ['producer error publication total decreases', (m) => {
+      const w = m.phases.producerErrorWitness;
+      w.publication.accepted.art.totals.jobStarts
+        = w.preArm.accepted.art.totals.jobStarts - 1;
+    }, 'error-contained'],
+    ['producer error publication start settlement delta drift', (m) => {
+      m.phases.producerErrorWitness.publication.accepted.art.totals.jobStarts++;
+    }, 'error-contained'],
+    ['producer error publication starts without an owning acquisition', (m) => {
+      const art = m.phases.producerErrorWitness.publication.accepted.art;
+      art.totals.jobStarts++;
+      art.totals.jobCompletes++;
+      art.cachedKeyCount++;
+      art.live.cacheEntries++;
+    }, 'error-contained'],
+    ['producer error publication cache arithmetic drift', (m) => {
+      const art = m.phases.producerErrorWitness.publication.accepted.art;
+      art.cachedKeyCount++; art.live.cacheEntries++;
+    }, 'error-contained'],
+    ['producer error lifetime lease counter offset', (m) => {
+      const w = m.phases.producerErrorWitness;
+      for (const observation of [w.preArm.accepted, w.publication.accepted, w.recovery.accepted]) {
+        observation.art.totals.leaseAcquires += 5;
+      }
+    }, 'error-contained'],
+    ['producer error lifetime job counter offset', (m) => {
+      const w = m.phases.producerErrorWitness;
+      for (const observation of [w.preArm.accepted, w.publication.accepted, w.recovery.accepted]) {
+        observation.art.totals.jobStarts += 5;
+      }
+    }, 'error-contained'],
+    ['producer error lifetime cache counter offset', (m) => {
+      const w = m.phases.producerErrorWitness;
+      for (const observation of [w.preArm.accepted, w.publication.accepted, w.recovery.accepted]) {
+        observation.art.cachedKeyCount += 5;
+        observation.art.live.cacheEntries += 5;
+      }
+      w.preArm.accepted.cachedKeys.push(...Array.from(
+        { length: 5 }, (_, index) => `stale-cache-key-${index}`,
+      ));
+      w.preArm.accepted.cachedKeys.sort();
+    }, 'error-contained'],
+    ['producer error cold-key proof missing', (m) => {
+      const w = m.phases.producerErrorWitness;
+      w.publication.accepted.rows.forEach((row, index) => {
+        row.visualKey = `prearm-key-${index % w.preArm.accepted.art.cachedKeyCount}`;
+      });
+      w.publication.accepted.mountedDistinctVisualKeys = w.preArm.accepted.art.cachedKeyCount;
+    }, 'error-contained'],
+    ['producer error invariant row zero was already warm', (m) => {
+      const pre = m.phases.producerErrorWitness.preArm.accepted;
+      pre.cachedKeys.push('producer-key-0');
+      pre.cachedKeys.sort();
+      pre.art.cachedKeyCount++;
+      pre.art.live.cacheEntries++;
+    }, 'error-contained'],
+    ['producer error landed on a churnable nonzero row', (m) => {
+      const publication = m.phases.producerErrorWitness.publication.accepted;
+      publication.rows[0].thumbState = 'ready';
+      publication.rows[0].naturalWidth = 132;
+      publication.rows[0].naturalHeight = 132;
+      publication.rows[0].cached = true;
+      publication.rows[1].thumbState = 'error';
+      publication.rows[1].naturalWidth = 0;
+      publication.rows[1].naturalHeight = 0;
+      publication.rows[1].cached = false;
+    }, 'error-contained'],
+    ['producer error poisoned', (m) => {
+      m.phases.producerErrorWitness.publication.accepted.rows[0].cached = true;
+    }, 'error-contained'],
+    ['producer error DOM publication missing after delta', (m) => {
+      const publication = m.phases.producerErrorWitness.publication.accepted;
+      publication.rows[0].thumbState = 'ready';
+      publication.rows[0].naturalWidth = 132;
+      publication.rows[0].naturalHeight = 132;
+      publication.stateCounts.error = 0;
+      publication.stateCounts.ready++;
+    }, 'error-contained'],
+    ['producer error recovery logical row drift', (m) => {
+      m.phases.producerErrorWitness.recovery.accepted.rows[0].logicalId = 'wrong-row';
+    }, 'error-recoverable'],
+    ['producer error recovery placeholder after settled jobs', (m) => {
+      const recovery = m.phases.producerErrorWitness.recovery.accepted;
+      recovery.rows[0].thumbState = 'placeholder';
+      recovery.rows[0].naturalWidth = 0;
+      recovery.rows[0].naturalHeight = 0;
+      recovery.rows[0].cached = false;
+      recovery.stateCounts.ready--;
+      recovery.stateCounts.placeholder = 1;
+    }, 'error-recoverable'],
+    ['producer error recovery has zero mounted ownership', (m) => {
+      m.phases.producerErrorWitness.recovery.accepted.art.live.leases = 0;
+    }, 'error-recoverable'],
+    ['producer error recovery leaked a settled subscriber', (m) => {
+      m.phases.producerErrorWitness.recovery.accepted.art.live.subscribers = 1;
+    }, 'error-recoverable'],
+    ['producer error recovery net acquisition drift', (m) => {
+      m.phases.producerErrorWitness.recovery.accepted.art.totals.leaseAcquires--;
+    }, 'error-recoverable'],
+    ['producer error recovery total decreases', (m) => {
+      const w = m.phases.producerErrorWitness;
+      w.recovery.accepted.art.totals.jobStarts
+        = w.publication.accepted.art.totals.jobStarts - 1;
+    }, 'error-recoverable'],
+    ['producer error recovery start delta missing', (m) => {
+      const w = m.phases.producerErrorWitness;
+      w.recovery.accepted.art.totals.jobStarts = w.publication.accepted.art.totals.jobStarts;
+    }, 'error-recoverable'],
+    ['producer error recovery repeats an error', (m) => {
+      m.phases.producerErrorWitness.recovery.accepted.art.totals.jobErrors++;
+    }, 'error-recoverable'],
+    ['producer error recovery disposal/cache drift', (m) => {
+      m.phases.producerErrorWitness.recovery.accepted.art.totals.disposals++;
+    }, 'error-recoverable'],
+    ['producer error recovery key drift', (m) => {
+      m.phases.producerErrorWitness.recovery.accepted.rows[0].visualKey = 'wrong-key';
+    }, 'error-recoverable'],
+    ['producer error no recovery', (m) => {
+      const w = m.phases.producerErrorWitness;
+      w.recovery.accepted.art.totals.jobCompletes
+        = w.publication.accepted.art.totals.jobCompletes;
+    }, 'error-recoverable'],
     ['canvas bypass', (m) => { m.points.warm.at(-1).diagnostics.art.totals.thumbCanvasRenders = 0; }, 'canvas-thumb-path'],
     ['full portrait thumb path', (m) => { m.points.warm.at(-1).diagnostics.art.totals.fullPortraitRendersForThumb = 1; }, 'no-full-portrait-thumb-path'],
     ['portrait cache thumb pollution', (m) => { m.points.first.diagnostics.art.live.portraitCacheEntries = 1; m.points.first.diagnostics.art.live.portraitEncodedBytes = 100; }, 'no-full-portrait-thumb-path'],
@@ -2045,6 +2435,37 @@ export async function runCompendiumMemSelftest() {
   const validReportCheck = verifyTerminalReport(report, 'selftest-current');
   assert(validReportCheck.ok,
     `valid terminal report was rejected: ${validReportCheck.errors.join('; ')}`);
+  const staleBalancedLeaseDeficitPass = clone(report);
+  staleBalancedLeaseDeficitPass.profiles.phone.phases.producerErrorWitness
+    = clone(multiJobBalancedLeaseDeficit);
+  assert(!verifyTerminalReport(staleBalancedLeaseDeficitPass, 'selftest-current').ok,
+    'a stale PASS laundered a balanced transient ownership deficit');
+  const staleLifetimeLeasePass = clone(report);
+  const staleLifetimeJobPass = clone(report);
+  const staleLifetimeCachePass = clone(report);
+  for (const stale of [staleLifetimeLeasePass, staleLifetimeJobPass, staleLifetimeCachePass]) {
+    const witness = stale.profiles.phone.phases.producerErrorWitness;
+    for (const observation of [
+      witness.preArm.accepted, witness.publication.accepted, witness.recovery.accepted,
+    ]) {
+      if (stale === staleLifetimeLeasePass) observation.art.totals.leaseAcquires += 5;
+      if (stale === staleLifetimeJobPass) observation.art.totals.jobStarts += 5;
+      if (stale === staleLifetimeCachePass) {
+        observation.art.cachedKeyCount += 5;
+        observation.art.live.cacheEntries += 5;
+      }
+    }
+    if (stale === staleLifetimeCachePass) {
+      witness.preArm.accepted.cachedKeys.push(...Array.from(
+        { length: 5 }, (_, index) => `stale-cache-key-${index}`,
+      ));
+      witness.preArm.accepted.cachedKeys.sort();
+    }
+  }
+  assert(!verifyTerminalReport(staleLifetimeLeasePass, 'selftest-current').ok
+    && !verifyTerminalReport(staleLifetimeJobPass, 'selftest-current').ok
+    && !verifyTerminalReport(staleLifetimeCachePass, 'selftest-current').ok,
+  'constant-offset producer lifetime counters laundered stale PASS outcomes');
   const completeProductFailureReport = (brokenPhone) => {
     const brokenOutcomes = [
       ...evaluateProfile(brokenPhone, budget, fixture),
@@ -2105,6 +2526,210 @@ export async function runCompendiumMemSelftest() {
     .phases.filterTransitions[1].selection;
   assert(!verifyTerminalReport(malformedCompleteFilterEvidence, 'selftest-current').ok,
     'a product-red complete report accepted a structurally missing filter-selection witness');
+  const missingErrorDomPhone = clone(phone);
+  const missingErrorPublication = missingErrorDomPhone.phases
+    .producerErrorWitness.publication.accepted;
+  missingErrorPublication.rows[0].thumbState = 'ready';
+  missingErrorPublication.rows[0].naturalWidth = 132;
+  missingErrorPublication.rows[0].naturalHeight = 132;
+  missingErrorPublication.stateCounts.error = 0;
+  missingErrorPublication.stateCounts.ready++;
+  const missingErrorDomReport = completeProductFailureReport(missingErrorDomPhone);
+  assert(missingErrorDomReport.outcomes.some((outcome) =>
+    outcome.id === 'phone/error-contained' && outcome.status === 'fail')
+    && verifyTerminalReport(missingErrorDomReport, 'selftest-current').ok,
+  'a settled job-error delta without retained error DOM was misclassified as malformed/instrument');
+  const staleMissingErrorDomPass = clone(report);
+  const staleMissingPublication = staleMissingErrorDomPass.profiles.phone.phases
+    .producerErrorWitness.publication.accepted;
+  staleMissingPublication.rows[0].thumbState = 'ready';
+  staleMissingPublication.rows[0].naturalWidth = 132;
+  staleMissingPublication.rows[0].naturalHeight = 132;
+  staleMissingPublication.stateCounts.error = 0;
+  staleMissingPublication.stateCounts.ready++;
+  assert(!verifyTerminalReport(staleMissingErrorDomPass, 'selftest-current').ok,
+    'a stale PASS ignored a settled producer error whose DOM publication vanished');
+  const placeholderPublicationPhone = clone(phone);
+  const placeholderPublication = placeholderPublicationPhone.phases
+    .producerErrorWitness.publication.accepted;
+  placeholderPublication.rows[0].thumbState = 'placeholder';
+  placeholderPublication.stateCounts.error = 0;
+  placeholderPublication.stateCounts.placeholder = 1;
+  const placeholderPublicationReport = completeProductFailureReport(
+    placeholderPublicationPhone,
+  );
+  assert(placeholderPublicationReport.outcomes.some((outcome) =>
+    outcome.id === 'phone/error-contained' && outcome.status === 'fail')
+    && verifyTerminalReport(placeholderPublicationReport, 'selftest-current').ok,
+  'a jobs-zero publication placeholder was not preserved as complete product FAIL');
+  const stalePlaceholderPublicationPass = clone(report);
+  const stalePlaceholderPublication = stalePlaceholderPublicationPass.profiles.phone.phases
+    .producerErrorWitness.publication.accepted;
+  stalePlaceholderPublication.rows[0].thumbState = 'placeholder';
+  stalePlaceholderPublication.stateCounts.error = 0;
+  stalePlaceholderPublication.stateCounts.placeholder = 1;
+  assert(!verifyTerminalReport(stalePlaceholderPublicationPass, 'selftest-current').ok,
+    'a stale PASS ignored a jobs-zero publication placeholder');
+  const publicationSubscriberLeakPhone = clone(phone);
+  publicationSubscriberLeakPhone.phases.producerErrorWitness.publication
+    .accepted.art.live.subscribers = 1;
+  const publicationSubscriberLeakReport = completeProductFailureReport(
+    publicationSubscriberLeakPhone,
+  );
+  assert(publicationSubscriberLeakReport.outcomes.some((outcome) =>
+    outcome.id === 'phone/error-contained' && outcome.status === 'fail')
+    && verifyTerminalReport(publicationSubscriberLeakReport, 'selftest-current').ok,
+  'a settled publication subscriber leak was not preserved as complete product FAIL');
+  const stalePublicationSubscriberPass = clone(report);
+  stalePublicationSubscriberPass.profiles.phone.phases.producerErrorWitness
+    .publication.accepted.art.live.subscribers = 1;
+  assert(!verifyTerminalReport(stalePublicationSubscriberPass, 'selftest-current').ok,
+    'a stale PASS ignored a settled publication subscriber leak');
+  const placeholderRecoveryPhone = clone(phone);
+  const placeholderRecovery = placeholderRecoveryPhone.phases
+    .producerErrorWitness.recovery.accepted;
+  placeholderRecovery.rows[0].thumbState = 'placeholder';
+  placeholderRecovery.rows[0].naturalWidth = 0;
+  placeholderRecovery.rows[0].naturalHeight = 0;
+  placeholderRecovery.rows[0].cached = false;
+  placeholderRecovery.stateCounts.ready--;
+  placeholderRecovery.stateCounts.placeholder = 1;
+  const placeholderRecoveryReport = completeProductFailureReport(placeholderRecoveryPhone);
+  assert(placeholderRecoveryReport.outcomes.some((outcome) =>
+    outcome.id === 'phone/error-recoverable' && outcome.status === 'fail')
+    && verifyTerminalReport(placeholderRecoveryReport, 'selftest-current').ok,
+  'a jobs-zero recovery placeholder was not preserved as complete product FAIL');
+  const stalePlaceholderRecoveryPass = clone(report);
+  const stalePlaceholderRecovery = stalePlaceholderRecoveryPass.profiles.phone.phases
+    .producerErrorWitness.recovery.accepted;
+  stalePlaceholderRecovery.rows[0].thumbState = 'placeholder';
+  stalePlaceholderRecovery.rows[0].naturalWidth = 0;
+  stalePlaceholderRecovery.rows[0].naturalHeight = 0;
+  stalePlaceholderRecovery.rows[0].cached = false;
+  stalePlaceholderRecovery.stateCounts.ready--;
+  stalePlaceholderRecovery.stateCounts.placeholder = 1;
+  assert(!verifyTerminalReport(stalePlaceholderRecoveryPass, 'selftest-current').ok,
+    'a stale PASS ignored a jobs-zero recovery placeholder');
+  const recoverySubscriberLeakPhone = clone(phone);
+  recoverySubscriberLeakPhone.phases.producerErrorWitness.recovery
+    .accepted.art.live.subscribers = 1;
+  const recoverySubscriberLeakReport = completeProductFailureReport(recoverySubscriberLeakPhone);
+  assert(recoverySubscriberLeakReport.outcomes.some((outcome) =>
+    outcome.id === 'phone/error-recoverable' && outcome.status === 'fail')
+    && verifyTerminalReport(recoverySubscriberLeakReport, 'selftest-current').ok,
+  'a settled recovery subscriber leak was not preserved as complete product FAIL');
+  const staleRecoverySubscriberPass = clone(report);
+  staleRecoverySubscriberPass.profiles.phone.phases.producerErrorWitness
+    .recovery.accepted.art.live.subscribers = 1;
+  assert(!verifyTerminalReport(staleRecoverySubscriberPass, 'selftest-current').ok,
+    'a stale PASS ignored a settled recovery subscriber leak');
+  const staleRecoveryPhone = clone(phone);
+  const staleRecoveryWitness = staleRecoveryPhone.phases.producerErrorWitness;
+  staleRecoveryWitness.recovery.accepted.art.totals.jobCompletes
+    = staleRecoveryWitness.publication.accepted.art.totals.jobCompletes;
+  staleRecoveryWitness.recovery.accepted.rows[0].visualKey = 'stale-wrong-key';
+  const staleRecoveryReport = completeProductFailureReport(staleRecoveryPhone);
+  assert(staleRecoveryReport.outcomes.some((outcome) =>
+    outcome.id === 'phone/error-recoverable' && outcome.status === 'fail')
+    && verifyTerminalReport(staleRecoveryReport, 'selftest-current').ok,
+  'a stale/wrong recovery without a new completion was not preserved as product FAIL');
+  const staleRecoveryPass = clone(report);
+  staleRecoveryPass.profiles.phone.phases.producerErrorWitness.recovery.accepted
+    .art.totals.jobCompletes = staleRecoveryPass.profiles.phone.phases
+      .producerErrorWitness.publication.accepted.art.totals.jobCompletes;
+  assert(!verifyTerminalReport(staleRecoveryPass, 'selftest-current').ok,
+    'a stale PASS ignored recovery without a new producer completion');
+  const noColdProofReport = completeProductFailureReport(clone(phone));
+  const noColdPublication = noColdProofReport.profiles.phone.phases
+    .producerErrorWitness.publication.accepted;
+  noColdPublication.rows.forEach((row, index) => { row.visualKey = `prearm-key-${index % 4}`; });
+  noColdPublication.mountedDistinctVisualKeys = 4;
+  noColdProofReport.outcomes = [
+    ...evaluateProfile(noColdProofReport.profiles.phone, budget, fixture),
+    ...evaluateProfile(desktop, budget, fixture),
+  ];
+  noColdProofReport.findings = noColdProofReport.outcomes
+    .filter((outcome) => outcome.status === 'fail').map((outcome) => outcome.diagnosis);
+  assert(!verifyTerminalReport(noColdProofReport, 'selftest-current').ok,
+    'a complete report certified product semantics without a stable mounted cold-key proof');
+  const warmInvariantRowPass = clone(report);
+  const warmInvariantPre = warmInvariantRowPass.profiles.phone.phases
+    .producerErrorWitness.preArm.accepted;
+  warmInvariantPre.cachedKeys.push('producer-key-0');
+  warmInvariantPre.cachedKeys.sort();
+  warmInvariantPre.art.cachedKeyCount++;
+  warmInvariantPre.art.live.cacheEntries++;
+  assert(!verifyTerminalReport(warmInvariantRowPass, 'selftest-current').ok,
+    'a stale PASS armed the one-shot producer failure with invariant row zero already warm');
+  const wrongErrorRowPhone = clone(phone);
+  const wrongErrorRows = wrongErrorRowPhone.phases.producerErrorWitness
+    .publication.accepted.rows;
+  wrongErrorRows[0].thumbState = 'ready';
+  wrongErrorRows[0].naturalWidth = 132;
+  wrongErrorRows[0].naturalHeight = 132;
+  wrongErrorRows[0].cached = true;
+  wrongErrorRows[1].thumbState = 'error';
+  wrongErrorRows[1].naturalWidth = 0;
+  wrongErrorRows[1].naturalHeight = 0;
+  wrongErrorRows[1].cached = false;
+  const wrongErrorRowReport = completeProductFailureReport(wrongErrorRowPhone);
+  assert(wrongErrorRowReport.outcomes.some((outcome) =>
+    outcome.id === 'phone/error-contained' && outcome.status === 'fail')
+    && verifyTerminalReport(wrongErrorRowReport, 'selftest-current').ok,
+  'an injected error on a churnable nonzero row was not preserved as product FAIL');
+  const staleWrongErrorRowPass = clone(report);
+  const staleWrongErrorRows = staleWrongErrorRowPass.profiles.phone.phases
+    .producerErrorWitness.publication.accepted.rows;
+  staleWrongErrorRows[0].thumbState = 'ready';
+  staleWrongErrorRows[0].naturalWidth = 132;
+  staleWrongErrorRows[0].naturalHeight = 132;
+  staleWrongErrorRows[0].cached = true;
+  staleWrongErrorRows[1].thumbState = 'error';
+  staleWrongErrorRows[1].naturalWidth = 0;
+  staleWrongErrorRows[1].naturalHeight = 0;
+  staleWrongErrorRows[1].cached = false;
+  assert(!verifyTerminalReport(staleWrongErrorRowPass, 'selftest-current').ok,
+    'a stale PASS ignored the injected error landing outside invariant row zero');
+  const malformedProducerWitness = clone(report);
+  malformedProducerWitness.profiles.phone.phases.producerErrorWitness.publication
+    .observationCount++;
+  assert(!verifyTerminalReport(malformedProducerWitness, 'selftest-current').ok,
+    'a producer publication observation count drifted from its progressive witness');
+  const missingProducerWitnessField = clone(report);
+  delete missingProducerWitnessField.profiles.phone.phases
+    .producerErrorWitness.recoveryOpenTarget;
+  assert(!verifyTerminalReport(missingProducerWitnessField, 'selftest-current').ok,
+    'a complete producer witness omitted one sealed lifecycle carrier');
+  const droppedCompleteProducerCommand = clone(report);
+  droppedCompleteProducerCommand.profiles.phone.phases
+    .producerErrorWitness.commands.pop();
+  assert(!verifyTerminalReport(droppedCompleteProducerCommand, 'selftest-current').ok,
+    'a complete producer witness dropped a paired command while retaining its observation');
+  const duplicateCompleteProducerCommand = clone(report);
+  duplicateCompleteProducerCommand.profiles.phone.phases.producerErrorWitness.commands.push(
+    retimeCandidateEvidence(
+      candidateReady.ledger[0], 'phone', producerErrorStages('phone').recovery, 2200,
+    ),
+  );
+  assert(!verifyTerminalReport(duplicateCompleteProducerCommand, 'selftest-current').ok,
+    'a complete producer witness added a serial paired command without an observation');
+  const wrongCompleteProducerHeartbeat = clone(report);
+  wrongCompleteProducerHeartbeat.profiles.phone.phases.producerErrorWitness
+    .commands[0].heartbeat.product = 'Chrome/Foreign';
+  assert(!verifyTerminalReport(wrongCompleteProducerHeartbeat, 'selftest-current').ok,
+    'complete producer commands were not bound to browser provenance');
+  const driftedProducerAnswerReceipt = clone(report);
+  driftedProducerAnswerReceipt.profiles.phone.phases.producerErrorWitness
+    .answerability.target.ms += 1;
+  assert(!verifyTerminalReport(driftedProducerAnswerReceipt, 'selftest-current').ok,
+    'producer answerability receipt timing drifted from its retained paired command');
+  const successSemanticProducerFalsy = clone(report);
+  const successSemanticGroup = successSemanticProducerFalsy.profiles.phone.phases
+    .producerErrorWitness.publication;
+  successSemanticGroup.falsyObservations[0] = clone(successSemanticGroup.accepted);
+  successSemanticGroup.falsyObservations[0].ready = false;
+  assert(!verifyTerminalReport(successSemanticProducerFalsy, 'selftest-current').ok,
+    'a success-semantic producer observation was accepted as a retained falsy poll');
   const partialReview = report.reviewPacket.filter((item) => item.profile === 'phone'
     && ['list', 'focus-pinned'].includes(item.state));
   const preBrowserPartial = {
@@ -2122,6 +2747,17 @@ export async function runCompendiumMemSelftest() {
   malformedPreBrowser.browser = { ...clone(report.browser), executable: '' };
   assert(!verifyTerminalReport(malformedPreBrowser, 'selftest-current').ok,
     'pre-browser instrument evidence accepted malformed non-null browser provenance');
+  let producerCommandSerial = 0;
+  const retimeProducerCandidateCommand = (template, label) => {
+    const issuedAtMs = 3000 + producerCommandSerial++ * 100;
+    return retimeCandidateEvidence(template, 'phone', label, issuedAtMs);
+  };
+  const fullPhoneProducerWitness = clone(phone.phases.producerErrorWitness);
+  const producerStagesComplete = [...producerErrorStages('phone').sequence];
+  const producerLedgerComplete = clone(fullPhoneProducerWitness.commands);
+  const productTerminalCommand = retimeProducerCandidateCommand(
+    candidateTargetTimeout.failure.command, 'list thumb settlement',
+  );
   const productPartial = {
     ...clone(report),
     status: 'product-unanswerable',
@@ -2135,8 +2771,11 @@ export async function runCompendiumMemSelftest() {
         evidenceStatus: 'partial-non-certifying',
         lastCompletedStage: 'Compendium open',
         failingStage: 'list thumb settlement',
-        completedStages: ['review list', 'review focus-pinned', 'Compendium open'],
-        commandLedger: [clone(candidateTargetTimeout.failure.command)],
+        completedStages: [
+          ...producerStagesComplete, 'review list', 'review focus-pinned', 'Compendium open',
+        ],
+        commandLedger: [...clone(producerLedgerComplete), clone(productTerminalCommand)],
+        producerErrorWitness: clone(fullPhoneProducerWitness),
         filterTransitions: [],
         reviewPacket: clone(partialReview),
       },
@@ -2148,7 +2787,7 @@ export async function runCompendiumMemSelftest() {
       profile: 'phone',
       lastCompletedStage: 'Compendium open',
       failingStage: 'list thumb settlement',
-      command: clone(candidateTargetTimeout.failure.command),
+      command: clone(productTerminalCommand),
     },
     blockedOutcomes: [...EXPECTED_OUTCOMES],
   };
@@ -2158,6 +2797,117 @@ export async function runCompendiumMemSelftest() {
   });
   assert(productPartialCheck.ok,
     `healthy-heartbeat product-unanswerable partial report was rejected: ${productPartialCheck.errors.join('; ')}`);
+  const publicationPartial = clone(productPartial);
+  const pendingProducerWitness = clone(fullPhoneProducerWitness);
+  pendingProducerWitness.publication.accepted = null;
+  pendingProducerWitness.publication.observationCount
+    = pendingProducerWitness.publication.falsyObservations.length;
+  pendingProducerWitness.answerability = null;
+  pendingProducerWitness.closeTarget = {
+    observationCount: 0, falsyObservations: [], accepted: null,
+  };
+  pendingProducerWitness.recoveryOpenTarget = {
+    observationCount: 0, falsyObservations: [], accepted: null,
+  };
+  pendingProducerWitness.recovery = {
+    observationCount: 0, falsyObservations: [], accepted: null,
+  };
+  const producerPartialStages = producerErrorStages('phone');
+  pendingProducerWitness.commands = [
+    ...fullPhoneProducerWitness.commands.filter((command) =>
+      command.label === producerPartialStages.preArm),
+    ...fullPhoneProducerWitness.commands.filter((command) =>
+      command.label === producerPartialStages.openTarget),
+    ...fullPhoneProducerWitness.commands.filter((command) =>
+      command.label === producerPartialStages.publication)
+      .slice(0, pendingProducerWitness.publication.observationCount),
+  ].map(clone);
+  const publicationCompletedStages = producerPartialStages.sequence.slice(
+    0, producerPartialStages.sequence.indexOf(producerPartialStages.publication),
+  );
+  const partialProducerCommands = clone(pendingProducerWitness.commands);
+  const publicationFailureCommand = retimeProducerCandidateCommand(
+    candidateBothTimeout.failure.command, producerPartialStages.publication,
+  );
+  pendingProducerWitness.commands.push(clone(publicationFailureCommand));
+  publicationPartial.status = 'instrument-fail';
+  publicationPartial.findings = [
+    'instrument: phone producer error publication: root heartbeat failed',
+  ];
+  publicationPartial.reviewPacket = [];
+  publicationPartial.partialFailure = {
+    schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: 'phone',
+    lastCompletedStage: publicationCompletedStages.at(-1),
+    failingStage: producerPartialStages.publication,
+    command: clone(publicationFailureCommand),
+  };
+  publicationPartial.profiles.phone = {
+    schema: PARTIAL_PROFILE_SCHEMA, profile: 'phone', viewport: { ...phoneViewport },
+    evidenceStatus: 'partial-non-certifying',
+    lastCompletedStage: publicationCompletedStages.at(-1),
+    failingStage: producerPartialStages.publication,
+    completedStages: publicationCompletedStages,
+    commandLedger: [
+      ...partialProducerCommands, clone(publicationFailureCommand),
+    ],
+    producerErrorWitness: pendingProducerWitness,
+    filterTransitions: [], reviewPacket: [],
+  };
+  assert(verifyTerminalReport(publicationPartial, 'selftest-current').ok,
+    'a stable-open pending publication lost its progressive falsies/stage/command evidence');
+  const oldMultiScrollAmbiguity = clone(publicationPartial);
+  oldMultiScrollAmbiguity.profiles.phone.completedStages.push('scroll toward row 1000');
+  oldMultiScrollAmbiguity.profiles.phone.lastCompletedStage = 'scroll toward row 1000';
+  oldMultiScrollAmbiguity.partialFailure.lastCompletedStage = 'scroll toward row 1000';
+  assert(!verifyTerminalReport(oldMultiScrollAmbiguity, 'selftest-current').ok,
+    'the old arm-then-multi-scroll lifecycle was accepted as a stable publication phase');
+  const droppedProducerFalsy = clone(publicationPartial);
+  droppedProducerFalsy.profiles.phone.producerErrorWitness.publication
+    .falsyObservations.pop();
+  assert(!verifyTerminalReport(droppedProducerFalsy, 'selftest-current').ok,
+    'a pending producer publication dropped a retained falsy observation');
+  const droppedProducerCommand = clone(publicationPartial);
+  const publicationCommandIndex = droppedProducerCommand.profiles.phone.commandLedger
+    .findIndex((command) => command.label === producerPartialStages.publication);
+  droppedProducerCommand.profiles.phone.commandLedger.splice(publicationCommandIndex, 1);
+  assert(publicationCommandIndex >= 0
+    && !verifyTerminalReport(droppedProducerCommand, 'selftest-current').ok,
+  'a pending producer publication dropped a paired target/heartbeat command');
+  const droppedProducerWitnessCommand = clone(publicationPartial);
+  droppedProducerWitnessCommand.profiles.phone.producerErrorWitness.commands.pop();
+  assert(!verifyTerminalReport(droppedProducerWitnessCommand, 'selftest-current').ok,
+    'a pending producer witness dropped a command while the outer ledger retained it');
+  const shiftProducerCommand = (command, deltaMs) => {
+    const shifted = clone(command);
+    shifted.issuedAtMs += deltaMs;
+    shifted.phaseDeadlineMs += deltaMs;
+    shifted.commandDeadlineMs += deltaMs;
+    shifted.target.completedAtMs += deltaMs;
+    shifted.heartbeat.completedAtMs += deltaMs;
+    return shifted;
+  };
+  const duplicatedProducerCommand = clone(publicationPartial);
+  const duplicatedLedger = duplicatedProducerCommand.profiles.phone.commandLedger;
+  const originalPublicationIndex = duplicatedLedger.findIndex((command) =>
+    command.label === producerPartialStages.publication);
+  const duplicatePublicationCommand = shiftProducerCommand(
+    duplicatedLedger[originalPublicationIndex], 40,
+  );
+  const shiftedPublicationFailure = shiftProducerCommand(
+    duplicatedLedger[originalPublicationIndex + 1], 80,
+  );
+  duplicatedLedger.splice(
+    originalPublicationIndex + 1, 1,
+    duplicatePublicationCommand, shiftedPublicationFailure,
+  );
+  duplicatedProducerCommand.partialFailure.command = clone(shiftedPublicationFailure);
+  assert(!verifyTerminalReport(duplicatedProducerCommand, 'selftest-current').ok,
+    'an extra serial producer publication command escaped its retained observation count');
+  const futureProducerRecovery = clone(publicationPartial);
+  futureProducerRecovery.profiles.phone.producerErrorWitness.recovery
+    = clone(fullPhoneProducerWitness.recovery);
+  assert(!verifyTerminalReport(futureProducerRecovery, 'selftest-current').ok,
+    'a publication-stage partial injected future recovery evidence');
   let filterCommandSerial = 0;
   const retimeFilterCandidateCommand = (template, label) => {
     const command = clone(template);
@@ -2249,7 +2999,10 @@ export async function runCompendiumMemSelftest() {
     addCandidate(`filter ${name}`, transition.observationCount);
     return commands;
   };
-  const baseCompletedStages = ['review list', 'review focus-pinned', 'Compendium open'];
+  const baseCompletedStages = [
+    ...producerStagesComplete, 'review list', 'review focus-pinned', 'Compendium open',
+  ];
+  const baseProducerLedger = clone(producerLedgerComplete);
   const firstTransition = clone(phone.phases.filterTransitions[0]);
   const firstTransitionStages = transitionStageNames(firstTransition);
   const firstTransitionLedger = transitionObservationCommands(firstTransition);
@@ -2279,7 +3032,8 @@ export async function runCompendiumMemSelftest() {
     ...baseCompletedStages, ...firstTransitionStages, ...pendingBeaconStages,
   ];
   filterTimeoutPartial.profiles.phone.commandLedger = [
-    ...clone(firstTransitionLedger), ...clone(pendingBeaconLedger), clone(filterTimeoutCommand),
+    ...clone(baseProducerLedger), ...clone(firstTransitionLedger),
+    ...clone(pendingBeaconLedger), clone(filterTimeoutCommand),
   ];
   filterTimeoutPartial.profiles.phone.filterTransitions = [
     firstTransition, pendingBeacon,
@@ -2340,7 +3094,7 @@ export async function runCompendiumMemSelftest() {
     ...baseCompletedStages, ...firstTransitionStages,
   ];
   beaconSearchTargetFailure.profiles.phone.commandLedger = [
-    ...clone(firstTransitionLedger),
+    ...clone(baseProducerLedger), ...clone(firstTransitionLedger),
     ...pendingBeaconAtSearchTargetLedger,
     clone(searchTargetFailureCommand),
   ];
@@ -2527,7 +3281,8 @@ export async function runCompendiumMemSelftest() {
     ...transitionStageNames(pendingBeaconAtBackspace, { throughSelection: true }),
   ];
   beaconBackspacePartial.profiles.phone.commandLedger = [
-    ...clone(firstTransitionLedger), ...clone(pendingBeaconSelectionLedger),
+    ...clone(baseProducerLedger), ...clone(firstTransitionLedger),
+    ...clone(pendingBeaconSelectionLedger),
     clone(beaconBackspaceCommand),
   ];
   beaconBackspacePartial.profiles.phone.filterTransitions = [
@@ -2611,7 +3366,9 @@ export async function runCompendiumMemSelftest() {
   completedThenLaterFailure.profiles.phone.failingStage = 'post-filter selftest failure';
   completedThenLaterFailure.profiles.phone.completedStages
     = [...baseCompletedStages, ...firstTransitionStages];
-  completedThenLaterFailure.profiles.phone.commandLedger = clone(firstTransitionLedger);
+  completedThenLaterFailure.profiles.phone.commandLedger = [
+    ...clone(baseProducerLedger), ...clone(firstTransitionLedger),
+  ];
   completedThenLaterFailure.profiles.phone.filterTransitions = [
     clone(firstTransition),
   ];
@@ -2627,7 +3384,8 @@ export async function runCompendiumMemSelftest() {
     ...allCompletedTransitions.flatMap((transition) => transitionStageNames(transition)),
   ];
   allFiltersThenLaterFailure.profiles.phone.commandLedger
-    = allCompletedTransitions.flatMap((transition) => transitionObservationCommands(transition));
+    = [...clone(baseProducerLedger),
+      ...allCompletedTransitions.flatMap((transition) => transitionObservationCommands(transition))];
   allFiltersThenLaterFailure.profiles.phone.filterTransitions = allCompletedTransitions;
   assert(verifyTerminalReport(allFiltersThenLaterFailure, 'selftest-current', {
     verifyArtifact: partialArtifact,
@@ -2661,7 +3419,7 @@ export async function runCompendiumMemSelftest() {
     ...transitionStageNames(pendingClearTransition, { terminal: false }),
   ];
   reopenTerminalFailure.profiles.phone.commandLedger = [
-    ...reopenTerminalLedger, clone(reopenTerminalCommand),
+    ...clone(baseProducerLedger), ...reopenTerminalLedger, clone(reopenTerminalCommand),
   ];
   reopenTerminalFailure.profiles.phone.filterTransitions = [
     ...completedBeforeClear, pendingClearTransition,
@@ -2753,6 +3511,7 @@ export async function runCompendiumMemSelftest() {
   rawHeapPartial.profiles.phone.failingStage = 'main initial heap usage';
   rawHeapPartial.profiles.phone.completedStages = ['main initial product/DOM snapshot'];
   rawHeapPartial.profiles.phone.commandLedger = [clone(rawHeapFailure.compendiumCommand)];
+  rawHeapPartial.profiles.phone.producerErrorWitness = null;
   rawHeapPartial.profiles.phone.reviewPacket = [];
   rawHeapPartial.reviewPacket = [];
   assert(verifyTerminalReport(rawHeapPartial, 'selftest-current').ok,
@@ -2770,21 +3529,27 @@ export async function runCompendiumMemSelftest() {
     = 'main initial product/DOM snapshot';
   assert(!verifyTerminalReport(rawHeapWrongStage, 'selftest-current').ok,
     'raw-CDP failure stage drifted independently from its diagnosis');
-  const desktopPartialReport = clone(productPartial);
+  const desktopPartialReport = clone(rawHeapPartial);
   const desktopPartialMeasurement = desktopPartialReport.profiles.phone;
   desktopPartialMeasurement.profile = 'desktop';
   desktopPartialMeasurement.viewport = { ...desktopViewport };
-  desktopPartialMeasurement.completedStages = ['Compendium open'];
   desktopPartialMeasurement.reviewPacket = [];
   desktopPartialMeasurement.commandLedger[0].profile = 'desktop';
   desktopPartialReport.partialFailure.profile = 'desktop';
   desktopPartialReport.partialFailure.command.profile = 'desktop';
+  desktopPartialReport.findings = [
+    `instrument: desktop ${desktopPartialReport.partialFailure.command.label}: `
+      + `${desktopPartialReport.partialFailure.command.method} failed under the `
+      + `${desktopPartialReport.partialFailure.command.timeoutMs}ms transport cap `
+      + `(${desktopPartialReport.partialFailure.command.error})`,
+  ];
   desktopPartialReport.profiles = {
     phone: clone(report.profiles.phone), desktop: desktopPartialMeasurement,
   };
   desktopPartialReport.reviewPacket = [];
-  assert(verifyTerminalReport(desktopPartialReport, 'selftest-current').ok,
-    'phone-complete plus desktop-partial collection prefix was rejected');
+  const desktopPartialCheck = verifyTerminalReport(desktopPartialReport, 'selftest-current');
+  assert(desktopPartialCheck.ok,
+    `phone-complete plus desktop-partial collection prefix was rejected: ${desktopPartialCheck.errors.join('; ')}`);
   const wrongProfileOrder = clone(desktopPartialReport);
   wrongProfileOrder.profiles = {
     desktop: wrongProfileOrder.profiles.desktop,
@@ -2817,17 +3582,20 @@ export async function runCompendiumMemSelftest() {
     return shifted;
   };
   const twoCommandPartial = clone(productPartial);
+  const earlierHealthy = shiftCandidateCommand(candidateReady.ledger[0], 2500);
+  earlierHealthy.label = 'list thumb settlement';
   const shiftedTerminal = shiftCandidateCommand(candidateTargetTimeout.failure.command, 3000);
   twoCommandPartial.partialFailure.command = clone(shiftedTerminal);
   twoCommandPartial.profiles.phone.commandLedger = [
-    clone(candidateReady.ledger[0]), clone(shiftedTerminal),
+    ...clone(baseProducerLedger), clone(earlierHealthy), clone(shiftedTerminal),
   ];
   assert(verifyTerminalReport(twoCommandPartial, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'serial same-profile/same-browser partial command ledger was rejected');
   const retriedCandidateFailure = clone(twoCommandPartial);
-  retriedCandidateFailure.profiles.phone.commandLedger[0]
-    = clone(candidateTargetTimeout.failure.command);
+  retriedCandidateFailure.profiles.phone.commandLedger[
+    retriedCandidateFailure.profiles.phone.commandLedger.length - 2
+  ] = clone(candidateTargetTimeout.failure.command);
   assert(!verifyTerminalReport(retriedCandidateFailure, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'a failed candidate command was followed by another command/retry');
@@ -2835,32 +3603,33 @@ export async function runCompendiumMemSelftest() {
   healthyClaimedAsFailure.status = 'instrument-fail';
   healthyClaimedAsFailure.findings = ['instrument: healthy command claimed as failure'];
   healthyClaimedAsFailure.partialFailure.classification = 'instrument';
-  healthyClaimedAsFailure.partialFailure.command = clone(candidateReady.ledger[0]);
+  healthyClaimedAsFailure.partialFailure.command = clone(earlierHealthy);
   healthyClaimedAsFailure.profiles.phone.commandLedger = [
-    clone(candidateReady.ledger[0]),
+    ...clone(baseProducerLedger), clone(earlierHealthy),
   ];
   assert(!verifyTerminalReport(healthyClaimedAsFailure, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'a healthy candidate observation was accepted as the reported failure command');
   const earlierWrongProfile = clone(twoCommandPartial);
-  earlierWrongProfile.profiles.phone.commandLedger[0].profile = 'desktop';
+  earlierWrongProfile.profiles.phone.commandLedger.at(-2).profile = 'desktop';
   assert(!verifyTerminalReport(earlierWrongProfile, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'an earlier partial-ledger command escaped its enclosing profile');
   const earlierWrongProduct = clone(twoCommandPartial);
-  earlierWrongProduct.profiles.phone.commandLedger[0].heartbeat.product = 'Chrome/Other';
+  earlierWrongProduct.profiles.phone.commandLedger.at(-2).heartbeat.product = 'Chrome/Other';
   assert(!verifyTerminalReport(earlierWrongProduct, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'an earlier fulfilled heartbeat escaped terminal browser provenance');
   const earlierUnownedStage = clone(twoCommandPartial);
-  earlierUnownedStage.profiles.phone.commandLedger[0].label = 'unowned earlier stage';
+  earlierUnownedStage.profiles.phone.commandLedger.at(-2).label = 'unowned earlier stage';
   assert(!verifyTerminalReport(earlierUnownedStage, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'an earlier command escaped completed/failing stage ownership');
   const nonserialLedger = clone(twoCommandPartial);
   const overlappingTerminal = shiftCandidateCommand(candidateTargetTimeout.failure.command, 14);
   nonserialLedger.partialFailure.command = clone(overlappingTerminal);
-  nonserialLedger.profiles.phone.commandLedger[1] = clone(overlappingTerminal);
+  nonserialLedger.profiles.phone.commandLedger[nonserialLedger.profiles.phone.commandLedger.length - 1]
+    = clone(overlappingTerminal);
   assert(!verifyTerminalReport(nonserialLedger, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'partial command ledger accepted a command issued before the prior pair settled');
@@ -2876,9 +3645,10 @@ export async function runCompendiumMemSelftest() {
   pageExceptionPartial.status = 'instrument-fail';
   pageExceptionPartial.findings = ['instrument: candidate page exception'];
   pageExceptionPartial.partialFailure.classification = 'instrument';
-  pageExceptionPartial.partialFailure.command = clone(candidatePageException.failure.command);
+  const shiftedPageException = shiftCandidateCommand(candidatePageException.failure.command, 3000);
+  pageExceptionPartial.partialFailure.command = clone(shiftedPageException);
   pageExceptionPartial.profiles.phone.commandLedger = [
-    clone(candidatePageException.failure.command),
+    ...clone(baseProducerLedger), clone(shiftedPageException),
   ];
   assert(verifyTerminalReport(pageExceptionPartial, 'selftest-current', {
     verifyArtifact: partialArtifact,
@@ -2954,7 +3724,8 @@ export async function runCompendiumMemSelftest() {
         schema: PARTIAL_PROFILE_SCHEMA, profile: 'phone', viewport: { ...phoneViewport },
         evidenceStatus: 'partial-non-certifying', lastCompletedStage: null,
         failingStage: 'main initial product/DOM snapshot', completedStages: [],
-        commandLedger: [clone(plainFailure.compendiumCommand)], filterTransitions: [],
+        commandLedger: [clone(plainFailure.compendiumCommand)],
+        producerErrorWitness: null, filterTransitions: [],
         reviewPacket: [],
       },
     },
