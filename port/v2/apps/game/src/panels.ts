@@ -10,6 +10,9 @@ export interface PanelDef {
   el: HTMLElement;
   /* a surface can have several homes (dock on phone, rail on desktop) */
   btns?: Array<HTMLElement | null>;
+  /* Fires exactly once when this panel makes a hidden -> visible
+     transition. Re-presenting an already-visible panel may refresh its
+     content, but it is not another open lifecycle. */
   onOpen?: () => void;
   /* Fires exactly once when this panel makes a visible -> hidden
      transition. Resource-owning surfaces use it to release leases; merely
@@ -80,15 +83,16 @@ function restorePanelFocus(): void {
   if (focusIfRendered(document.getElementById('docksurvey'))) return;
   focusIfRendered(document.querySelector('canvas'));
 }
-export function openPanel(id: string, opener?: HTMLElement | null): void {
+export function openPanel(id: string, opener?: HTMLElement | null): boolean {
   const active = document.activeElement instanceof HTMLElement && document.activeElement !== document.body
     ? document.activeElement : null;
   _opener = opener === undefined ? (_pendingOpener || active) : opener;
   _pendingOpener = null;
   closePanels(id);   /* the one-panel law */
   const def = PANELS.find((p) => p.id === id);
-  if (!def) return;
-  def.onOpen?.();
+  if (!def) return false;
+  const wasVisible = def.el.style.display !== 'none';
+  if (!wasVisible) def.onOpen?.();
   def.el.style.display = 'block';
   document.body.classList.add('panel-open');
   def.el.setAttribute('aria-hidden', 'false');
@@ -100,6 +104,43 @@ export function openPanel(id: string, opener?: HTMLElement | null): void {
      entry point. Focus the sticky close control; closing restores the exact
      opener captured above. */
   def.el.querySelector<HTMLElement>('[data-pnx]')?.focus();
+  return !wasVisible;
+}
+
+/**
+ * A content-bearing panel sometimes has two entry paths: an ordinary open
+ * that uses its default `onOpen` population, and an explicit request (for
+ * example, a name-filtered Compendium). Stage the request through the real
+ * hidden -> visible lifecycle; if the panel is already visible, refresh it
+ * directly. Either route invokes `populate` exactly once.
+ */
+export function createPanelOpenController<Request>(options: {
+  readonly id: string;
+  readonly defaultRequest: () => Request;
+  readonly populate: (request: Request) => void;
+}): {
+  readonly onOpen: () => void;
+  readonly present: (request: Request, opener?: HTMLElement | null) => void;
+} {
+  let staged: { readonly request: Request } | null = null;
+  const onOpen = (): void => {
+    const request = staged ? staged.request : options.defaultRequest();
+    /* Consume before population so a nested action cannot accidentally reuse
+       the outer request. */
+    staged = null;
+    options.populate(request);
+  };
+  const present = (request: Request, opener?: HTMLElement | null): void => {
+    staged = { request };
+    let transitioned = false;
+    try {
+      transitioned = openPanel(options.id, opener);
+    } finally {
+      staged = null;
+    }
+    if (!transitioned && openPanelId() === options.id) options.populate(request);
+  };
+  return Object.freeze({ onOpen, present });
 }
 export function closePanels(except?: string): void {
   for (const p of PANELS) {

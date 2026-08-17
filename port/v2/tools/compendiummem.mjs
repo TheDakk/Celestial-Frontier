@@ -27,7 +27,7 @@ import {
   BROKEN_BASELINE_THUMB_CACHE_CAP, BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
   CANDIDATE_BROWSER_LABEL, CANDIDATE_TRANSPORT_TIMEOUT_MS,
   COMMAND_TIMEOUT_MS, EXPECTED_OUTCOMES,
-  PARTIAL_FAILURE_SCHEMA, PARTIAL_PROFILE_SCHEMA,
+  FILTER_TRANSITION_SCHEMA, PARTIAL_FAILURE_SCHEMA, PARTIAL_PROFILE_SCHEMA,
   RAW_CDP_COMMAND_SCHEMA,
   REPORT_INPUT_KEYS, REPORT_SCHEMA, REQUIRED_WARM_CYCLES,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
@@ -38,6 +38,7 @@ import {
   isCandidateObservationError, waitForCandidateValue,
   phaseObservationAccepted, remainingCommandTimeoutMs, validateBudgetRecord, verifyTerminalReport,
   validBrokenBaselineThumbObservation, validCompendiumRawSnapshotExpression,
+  validFilterTransitionObservation,
 } from './compendiummem-contract.mjs';
 import {
   COMPENDIUM_FIXTURE_SPEC_PATH, buildBrokenBaselineProjection,
@@ -301,7 +302,9 @@ export function createCandidateCollectorObservations({
     }
   };
   const runWait = async (
-    sessionId, label, expression, { timeoutMs = 20000 } = {},
+    sessionId, label, expression, {
+      timeoutMs = 20000, acceptValue = Boolean, onObservation = () => {},
+    } = {},
   ) => {
     const phaseDeadlineMs = now() + timeoutMs;
     onStageStarted(label);
@@ -310,6 +313,7 @@ export function createCandidateCollectorObservations({
       send, sessionId, expression, profile, label, phaseDeadlineMs,
       now, sleep: pause,
       onCommand: (command) => { terminalCommand = command; onCommand(command); },
+      acceptValue, onObservation,
     });
     onStageCompleted(label);
     return Object.freeze({ value, command: terminalCommand });
@@ -368,6 +372,110 @@ export function createCandidateCollectorObservations({
   return Object.freeze({ evaluate, waitValue, answerability, sendStage });
 }
 
+/* Native search replacement is evidence, not setup convenience. The hidden
+   branch uses Search's real outside-boundary pointer close; the visible branch
+   uses a bounded focus-only setup followed by native keys; empty clear uses
+   the ordinary dock/rail reopen because closed empty Enter is intentionally
+   inert. Every branch proves focus, explicit deletion, exact replacement and
+   its post-setup generation immediately before the native transition. The
+   transition expression is deliberately always truthy so the explicit accept
+   predicate records every on-time non-ready product state instead of null. */
+export async function driveCandidateFilterTransition({
+  sessionId, entryMode, query, expectedCount, platform,
+  click, key, sendStage, evaluate, waitValue, onTransitionStarted,
+}) {
+  assert(typeof sessionId === 'string' && sessionId
+    && ['visible', 'hidden', 'reopen'].includes(entryMode)
+    && typeof query === 'string'
+    && Number.isSafeInteger(expectedCount) && expectedCount >= 0
+    && (entryMode !== 'hidden' || query.length > 0)
+    && (entryMode !== 'reopen' || (query === '' && expectedCount === 1500))
+    && typeof platform === 'string' && platform
+    && typeof click === 'function' && typeof key === 'function'
+    && typeof sendStage === 'function' && typeof evaluate === 'function'
+    && typeof waitValue === 'function'
+    && typeof onTransitionStarted === 'function',
+  'candidate native filter transition dependencies are invalid');
+  const name = query || '<clear>';
+  const expectedPanelMode = entryMode === 'visible' ? 'list' : 'closed';
+  if (entryMode === 'visible') {
+    const setup = await evaluate(sessionId, `(()=>{
+      const e=document.querySelector('#searchbox'),d=window.__CF_SLICE__?.api?.compendiumDiagnostics?.();
+      if(!e||d?.panel?.mode!=='list')return null;e.focus();
+      return {focused:document.activeElement===e,panelMode:d.panel.mode}})()`,
+    `focus visible filter ${name}`);
+    assert(setup?.focused === true && setup?.panelMode === 'list',
+      `filter ${name}: visible Compendium focus setup was not proven`);
+  } else {
+    await click(sessionId, '#searchbox', `search ${name}`);
+  }
+  const focused = await waitValue(sessionId, `filter ${name} input focus`, `(()=>{
+    const e=document.querySelector('#searchbox'),d=window.__CF_SLICE__?.api?.compendiumDiagnostics?.();
+    return e&&d&&document.activeElement===e&&d.panel.mode===${JSON.stringify(expectedPanelMode)}
+      ?{focused:true,value:e.value,panelMode:d.panel.mode}:null})()`);
+  assert(focused?.focused === true && focused?.panelMode === expectedPanelMode,
+    `filter ${name}: search input focus was not proven before replacement`);
+  const modifier = platform === 'darwin' ? 4 : 2;
+  await key(sessionId, 'a', 'KeyA', modifier, `filter ${name} select-all`);
+  await key(sessionId, 'Backspace', 'Backspace', 0, `filter ${name} delete`);
+  const cleared = await waitValue(sessionId, `filter ${name} input cleared`, `(()=>{
+    const e=document.querySelector('#searchbox'),d=window.__CF_SLICE__?.api?.compendiumDiagnostics?.();
+    return e&&d&&document.activeElement===e&&e.value===''&&d.panel.mode===${JSON.stringify(expectedPanelMode)}
+      ?{focused:true,cleared:true,value:e.value,panelMode:d.panel.mode}:null})()`);
+  assert(cleared?.focused === true && cleared?.cleared === true && cleared?.value === ''
+    && cleared?.panelMode === expectedPanelMode,
+    `filter ${name}: selected prior text was not explicitly deleted`);
+  if (query) {
+    await sendStage(`insert filter ${name}`, 'Input.insertText', { text: query }, sessionId);
+  }
+  const input = await waitValue(sessionId, `filter ${name} exact input`, `(()=>{
+    const e=document.querySelector('#searchbox'),d=window.__CF_SLICE__?.api?.compendiumDiagnostics?.();
+    return e&&d&&document.activeElement===e&&e.value===${JSON.stringify(query)}
+      &&d.panel.mode===${JSON.stringify(expectedPanelMode)}&&Number.isSafeInteger(d.generation)
+      ?{focused:true,cleared:true,value:e.value,panelMode:d.panel.mode,generation:d.generation}:null})()`);
+  assert(input?.focused === true && input?.cleared === true && input?.value === query
+    && input?.panelMode === expectedPanelMode
+    && Number.isSafeInteger(input?.generation) && input.generation >= 0,
+  `filter ${name}: exact input value/generation was not proven before Enter`);
+  const transition = {
+    schema: FILTER_TRANSITION_SCHEMA,
+    entryMode,
+    expectedQuery: query,
+    expectedFilteredCount: expectedCount,
+    input: {
+      focused: true, cleared: true, value: input.value, panelMode: input.panelMode,
+    },
+    baselineGeneration: input.generation,
+    falsyObservations: [],
+    settled: null,
+    generationDelta: null,
+  };
+  onTransitionStarted(transition);
+  if (entryMode === 'reopen') {
+    await click(sessionId, '#dockcodex, #railcodex', 'ordinary Compendium reopen');
+  } else {
+    await key(sessionId, 'Enter', 'Enter', 0, `filter ${name} submit`);
+  }
+  const settled = await waitValue(sessionId, `filter ${name}`, `(()=>{
+    const d=window.__CF_SLICE__.api.compendiumDiagnostics(),a=d.art;
+    return {ready:d.panel.mode==='list'&&d.panel.query===${JSON.stringify(query)}
+        &&d.panel.filteredCount===${expectedCount},mode:d.panel.mode,query:d.panel.query,
+      filteredCount:d.panel.filteredCount,sourceCount:d.panel.sourceCount,
+      generation:d.generation,art:a?{live:a.live,totals:a.totals}:null}})()`, {
+    acceptValue: (observation) => observation?.ready === true,
+    onObservation: (observation) => {
+      assert(validFilterTransitionObservation(observation),
+        `filter ${name}: product transition observation shape was invalid`);
+      if (observation.ready === false) transition.falsyObservations.push(observation);
+    },
+  });
+  assert(validFilterTransitionObservation(settled) && settled.ready === true,
+    `filter ${name}: settled transition evidence was invalid`);
+  transition.settled = settled;
+  transition.generationDelta = settled.generation - transition.baselineGeneration;
+  return transition;
+}
+
 /* Heap collection is part of the measurement contract, not a best-effort
    prelude. Keep this sequence shared with the browser-free control so a
    failed GC cannot be swallowed and followed by incomparable heap evidence. */
@@ -398,6 +506,7 @@ async function collectProfile({
   const sessions = new Set();
   const reviewPacket = [];
   const commandLedger = [];
+  const filterTransitions = [];
   const completedStages = [];
   let currentStage = 'profile initialization';
   let lastCompletedStage = null;
@@ -527,30 +636,25 @@ async function collectProfile({
       type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sessionId);
   };
-  const key = async (sessionId, keyName, code, modifiers = 0) => {
+  const key = async (sessionId, keyName, code, modifiers = 0, labelPrefix = '') => {
     const keyCode = keyName === 'Enter' ? 13 : keyName === 'Tab' ? 9
       : keyName === 'Backspace' ? 8 : keyName.toUpperCase().charCodeAt(0);
-    await sendStage(`key ${keyName} down`, 'Input.dispatchKeyEvent', {
+    const label = labelPrefix ? `${labelPrefix} key ${keyName}` : `key ${keyName}`;
+    await sendStage(`${label} down`, 'Input.dispatchKeyEvent', {
       type: 'rawKeyDown', key: keyName, code, windowsVirtualKeyCode: keyCode,
       nativeVirtualKeyCode: keyCode, modifiers,
     }, sessionId);
-    await sendStage(`key ${keyName} up`, 'Input.dispatchKeyEvent', {
+    await sendStage(`${label} up`, 'Input.dispatchKeyEvent', {
       type: 'keyUp', key: keyName, code, windowsVirtualKeyCode: keyCode,
       nativeVirtualKeyCode: keyCode, modifiers,
     }, sessionId);
   };
-  const search = async (sessionId, query, expectedCount) => {
-    await click(sessionId, '#searchbox', `search ${query}`);
-    const modifier = process.platform === 'darwin' ? 4 : 2;
-    await key(sessionId, 'a', 'KeyA', modifier);
-    if (query) await sendStage(`insert filter ${query}`, 'Input.insertText', {
-      text: query,
-    }, sessionId);
-    else await key(sessionId, 'Backspace', 'Backspace');
-    await key(sessionId, 'Enter', 'Enter');
-    await waitValue(sessionId, `filter ${query}`, `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
-      return d.panel.mode==='list'&&d.panel.query===${JSON.stringify(query)}&&d.panel.filteredCount===${expectedCount}?d:null})()`);
-  };
+  const search = async (sessionId, entryMode, query, expectedCount) =>
+    await driveCandidateFilterTransition({
+      sessionId, entryMode, query, expectedCount, platform: process.platform,
+      click, key, sendStage, evaluate, waitValue,
+      onTransitionStarted: (transition) => filterTransitions.push(transition),
+    });
   const scrollerPoint = (sessionId) => waitValue(sessionId, 'Compendium scroller', `(()=>{const e=document.querySelector('[data-sel="codex-scroll"]');
     if(!e)return null;const r=e.getBoundingClientRect();return r.width>0&&r.height>0?{x:(r.left+r.right)/2,y:(r.top+r.bottom)/2}:null})()`);
   const scrollToIndex = async (sessionId, wanted, { settle = true } = {}) => {
@@ -728,7 +832,7 @@ async function collectProfile({
        enough for the new generation to acquire before the old releases. */
     const dedupeBefore = await evaluate(sessionId,
       `window.__CF_SLICE__.api.compendiumDiagnostics().art.totals.dedupeHits`, 'pre-dedupe total');
-    await search(sessionId, 'Same Seed Sentinel', 2);
+    await search(sessionId, 'visible', 'Same Seed Sentinel', 2);
     await waitListReady(sessionId, 2);
     const dedupeAfter = await evaluate(sessionId,
       `window.__CF_SLICE__.api.compendiumDiagnostics().art.totals.dedupeHits`, 'post-dedupe total');
@@ -759,10 +863,10 @@ async function collectProfile({
     await scrollToIndex(sessionId, 1499);
     const last = await snapshot(sessionId, 'last rows');
 
-    await search(sessionId, 'Compendium Filter Beacon', 1);
+    await search(sessionId, 'hidden', 'Compendium Filter Beacon', 1);
     await waitListReady(sessionId, 1);
     const filtered = await snapshot(sessionId, 'filtered row');
-    await search(sessionId, '', 1500);
+    await search(sessionId, 'reopen', '', 1500);
     await waitListReady(sessionId, 1500);
     await scrollToIndex(sessionId, 777);
     await clickRow(sessionId, targets.detail);
@@ -964,6 +1068,7 @@ async function collectProfile({
         },
         keyboardTraversal,
         jobPeaks,
+        filterTransitions,
         close: {
           beforeLeases: closeBefore.leases, afterLeases: closeAfter.leases,
           releasesDelta: closeAfter.releases - closeBefore.releases,
@@ -989,6 +1094,7 @@ async function collectProfile({
       failingStage: currentStage,
       completedStages: [...completedStages],
       commandLedger: [...commandLedger],
+      filterTransitions,
       reviewPacket: [...reviewPacket],
     };
     error.compendiumPartialEvidence = {
