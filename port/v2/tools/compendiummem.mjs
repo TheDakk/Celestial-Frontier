@@ -374,6 +374,40 @@ export function createCandidateCollectorObservations({
   return Object.freeze({ evaluate, waitValue, answerability, sendStage });
 }
 
+const PRODUCER_ERROR_ARM_MESSAGE = 'compendiummem injected producer error';
+const PRODUCER_ERROR_ARM_SENTINEL = 'cf-v2-compendium-producer-error-armed/v1';
+
+/* The production evidence hook intentionally returns void. Keep that product
+   API honest and make the collector expression itself return a by-value
+   sentinel so Runtime.evaluate can distinguish a completed arm from a missing
+   result. The factory is the single source consumed by both the real call site
+   and the browser-free controls. */
+export function candidateArmProducerErrorExpression() {
+  return `(()=>{const evidence=window.__CF_SLICE__?.api?.__compendiumEvidence;
+    if(!evidence||typeof evidence.failNextThumb!=='function')throw new Error('Compendium evidence failNextThumb hook unavailable');
+    evidence.failNextThumb(${JSON.stringify(PRODUCER_ERROR_ARM_MESSAGE)});
+    return ${JSON.stringify(PRODUCER_ERROR_ARM_SENTINEL)}})()`;
+}
+
+export function validCandidateArmProducerErrorExpression(source) {
+  if (typeof source !== 'string' || source !== candidateArmProducerErrorExpression()) return false;
+  try { new Function(`"use strict"; return (${source});`); }
+  catch { return false; }
+  return true;
+}
+
+export async function armCandidateProducerError({ sessionId, evaluate }) {
+  assert(typeof sessionId === 'string' && sessionId && typeof evaluate === 'function',
+    'candidate producer-error arm dependencies are invalid');
+  const expression = candidateArmProducerErrorExpression();
+  assert(validCandidateArmProducerErrorExpression(expression),
+    'candidate producer-error arm expression is invalid');
+  const result = await evaluate(sessionId, expression, 'arm producer error');
+  assert(result === PRODUCER_ERROR_ARM_SENTINEL,
+    `candidate producer-error arm sentinel mismatch: ${String(result)}`);
+  return result;
+}
+
 export function candidateFilterInputExpression({ expectedPanelMode, expectedValue, phase }) {
   assert(['focus', 'selection', 'cleared', 'exact-input'].includes(phase),
     'candidate filter input phase is invalid');
@@ -1062,9 +1096,7 @@ async function collectProfile({
 
     const errorBefore = await evaluate(sessionId,
       `window.__CF_SLICE__.api.compendiumDiagnostics().art.totals`, 'pre-error totals');
-    await evaluate(sessionId,
-      `window.__CF_SLICE__.api.__compendiumEvidence.failNextThumb('compendiummem injected producer error')`,
-      'arm producer error');
+    await armCandidateProducerError({ sessionId, evaluate });
     await scrollToIndex(sessionId, 1000, { settle: false });
     const errored = await waitValue(sessionId, 'injected error publication', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
       const image=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"] img')].find(i=>i.dataset.thumbState==='error');
