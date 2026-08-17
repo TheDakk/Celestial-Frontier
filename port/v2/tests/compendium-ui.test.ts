@@ -442,30 +442,82 @@ describe('species thumbnail lease binding', () => {
 });
 
 describe('panel visible-to-hidden lifecycle', () => {
-  it('calls onClose only once per real transition, including one-panel switching', async () => {
+  it('calls open/close hooks only once per real transition, including one-panel switching', async () => {
     document.body.innerHTML = `
       <button id="a-open">A</button><button id="b-open">B</button>
       <aside id="a" aria-label="A"></aside><aside id="b" aria-label="B"></aside>
       <div id="importsheet"></div><button id="docksurvey">Survey</button><canvas></canvas>`;
     const panels = await import('../apps/game/src/panels.js');
-    const closeA = vi.fn(), closeB = vi.fn();
+    const openA = vi.fn(), openB = vi.fn(), closeA = vi.fn(), closeB = vi.fn();
     panels.registerPanel({
       id: 'a', el: document.getElementById('a')!,
-      btns: [document.getElementById('a-open')], onClose: closeA,
+      btns: [document.getElementById('a-open')], onOpen: openA, onClose: closeA,
     });
     panels.registerPanel({
       id: 'b', el: document.getElementById('b')!,
-      btns: [document.getElementById('b-open')], onClose: closeB,
+      btns: [document.getElementById('b-open')], onOpen: openB, onClose: closeB,
     });
     panels.closePanels();
+    expect(openA).not.toHaveBeenCalled();
     expect(closeA).not.toHaveBeenCalled();
     panels.openPanel('a', document.getElementById('a-open'));
+    panels.openPanel('a', document.getElementById('a-open'));
+    expect(openA).toHaveBeenCalledOnce();
     panels.openPanel('b', document.getElementById('b-open'));
+    expect(openB).toHaveBeenCalledOnce();
     expect(closeA).toHaveBeenCalledOnce();
     expect(closeB).not.toHaveBeenCalled();
     panels.closePanels();
     panels.closePanels();
     expect(closeA).toHaveBeenCalledOnce();
     expect(closeB).toHaveBeenCalledOnce();
+    panels.openPanel('b', document.getElementById('b-open'));
+    expect(openB).toHaveBeenCalledTimes(2);
+  });
+
+  it('populates a requested filter exactly once whether hidden or already visible', async () => {
+    document.body.innerHTML = `
+      <input id="search"><button id="codex-open">Compendium</button>
+      <aside id="codex" aria-label="Compendium"></aside>
+      <div id="importsheet"></div><button id="docksurvey">Survey</button><canvas></canvas>`;
+    const panels = await import('../apps/game/src/panels.js');
+    const populations: string[] = [];
+    let generation = 0;
+    const populate = (filter: string): void => { generation++; populations.push(filter); };
+    const controller = panels.createPanelOpenController({
+      id: 'codex',
+      defaultRequest: () => '',
+      populate,
+    });
+    panels.registerPanel({
+      id: 'codex', el: document.getElementById('codex')!,
+      btns: [document.getElementById('codex-open')], onOpen: controller.onOpen,
+    });
+    const search = document.getElementById('search')!;
+
+    const beforeHiddenFilter = generation;
+    controller.present('Beacon', search);
+    expect(generation - beforeHiddenFilter).toBe(1);
+    expect(populations).toEqual(['Beacon']);
+    const beforeVisibleFilter = generation;
+    controller.present('Tern', search);
+    expect(generation - beforeVisibleFilter).toBe(1);
+    expect(populations).toEqual(['Beacon', 'Tern']);
+    expect((document.activeElement as HTMLElement).dataset.pnx).toBe('codex');
+
+    panels.closePanels();
+    expect(document.activeElement).toBe(search);
+    panels.openPanel('codex', document.getElementById('codex-open'));
+    expect(populations).toEqual(['Beacon', 'Tern', '']);
+
+    /* Negative control: the superseded hidden-search sequence populated the
+       default catalogue in onOpen and then applied the query itself. It must
+       fail the exact-one-generation outcome the controller preserves. */
+    panels.closePanels();
+    const beforeOldGeneration = generation;
+    panels.openPanel('codex', search);
+    populate('Old double-fill');
+    expect(generation - beforeOldGeneration).toBe(2);
+    expect(generation - beforeOldGeneration).not.toBe(1);
   });
 });

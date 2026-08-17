@@ -20,7 +20,8 @@ export const CANDIDATE_COMMAND_SCHEMA = 'cf-v2-compendium-candidate-command/v1';
 export const PLAIN_EVALUATE_COMMAND_SCHEMA = 'cf-v2-compendium-plain-evaluate-command/v1';
 export const RAW_CDP_COMMAND_SCHEMA = 'cf-v2-compendium-raw-cdp-command/v1';
 export const PARTIAL_FAILURE_SCHEMA = 'cf-v2-compendium-partial-failure/v1';
-export const PARTIAL_PROFILE_SCHEMA = 'cf-v2-compendium-partial-profile/v1';
+export const PARTIAL_PROFILE_SCHEMA = 'cf-v2-compendium-partial-profile/v2';
+export const FILTER_TRANSITION_SCHEMA = 'cf-v2-compendium-filter-transition/v1';
 export const REQUIRED_WARM_CYCLES = 4;
 export const OUTCOME_IDS = Object.freeze([
   'input-fixture-1500-distinct',
@@ -103,6 +104,159 @@ function exactKeys(value, expected, where, errors) {
     return false;
   }
   return true;
+}
+
+export function validFilterTransitionObservation(observation) {
+  const keys = [
+    'ready', 'mode', 'query', 'filteredCount', 'sourceCount', 'generation', 'art',
+  ];
+  const liveFields = [
+    'cacheEntries', 'decodedPixels', 'decodedBytes', 'encodedBytes',
+    'queuedJobs', 'activeJobs', 'leases', 'subscribers',
+    'portraitCacheEntries', 'portraitEncodedBytes',
+  ];
+  const totalFields = [
+    'leaseAcquires', 'releases', 'jobStarts', 'jobCompletes', 'jobCancels',
+    'jobErrors', 'dedupeHits', 'disposals', 'thumbCanvasRenders',
+    'fullPortraitRendersForThumb', 'fullPortraitDecodesForThumb',
+    'maxQueuedJobs', 'maxActiveJobs',
+  ];
+  return isObject(observation)
+    && sameJson(Object.keys(observation).sort(), keys.sort())
+    && typeof observation.ready === 'boolean'
+    && typeof observation.mode === 'string'
+    && typeof observation.query === 'string'
+    && integer(observation.filteredCount) && observation.filteredCount >= 0
+    && integer(observation.sourceCount) && observation.sourceCount >= 0
+    && integer(observation.generation) && observation.generation >= 0
+    && isObject(observation.art)
+    && isObject(observation.art.live) && isObject(observation.art.totals)
+    && liveFields.every((field) => nonnegative(observation.art.live[field]))
+    && totalFields.every((field) => nonnegative(observation.art.totals[field]));
+}
+
+export function validFilterTransitionWitness(witness, { allowPending = false } = {}) {
+  const keys = [
+    'schema', 'entryMode', 'expectedQuery', 'expectedFilteredCount', 'input',
+    'baselineGeneration', 'falsyObservations', 'settled', 'generationDelta',
+  ];
+  const inputKeys = ['focused', 'cleared', 'value', 'panelMode'];
+  if (!isObject(witness) || !sameJson(Object.keys(witness).sort(), keys.sort())
+    || witness.schema !== FILTER_TRANSITION_SCHEMA
+    || !['visible', 'hidden', 'reopen'].includes(witness.entryMode)
+    || typeof witness.expectedQuery !== 'string'
+    || !integer(witness.expectedFilteredCount) || witness.expectedFilteredCount < 0
+    || !isObject(witness.input)
+    || !sameJson(Object.keys(witness.input).sort(), inputKeys.sort())
+    || witness.input.focused !== true || witness.input.cleared !== true
+    || witness.input.value !== witness.expectedQuery
+    || witness.input.panelMode !== (witness.entryMode === 'visible' ? 'list' : 'closed')
+    || !integer(witness.baselineGeneration) || witness.baselineGeneration < 0
+    || !Array.isArray(witness.falsyObservations)
+    || !witness.falsyObservations.every((observation) =>
+      validFilterTransitionObservation(observation) && observation.ready === false)) return false;
+  if (witness.settled === null || witness.generationDelta === null) {
+    return allowPending && witness.settled === null && witness.generationDelta === null;
+  }
+  return validFilterTransitionObservation(witness.settled)
+    && witness.settled.ready === true
+    && witness.settled.mode === 'list'
+    && witness.settled.query === witness.expectedQuery
+    && witness.settled.filteredCount === witness.expectedFilteredCount
+    && integer(witness.generationDelta)
+    && witness.generationDelta === witness.settled.generation - witness.baselineGeneration;
+}
+
+const FILTER_TRANSITION_EXPECTATIONS = Object.freeze([
+  Object.freeze({ entryMode: 'visible', query: 'Same Seed Sentinel', filteredCount: 2 }),
+  Object.freeze({ entryMode: 'hidden', query: 'Compendium Filter Beacon', filteredCount: 1 }),
+  Object.freeze({ entryMode: 'reopen', query: '', filteredCount: 1500 }),
+]);
+
+function filterTransitionTerminalStage(expectation) {
+  return `filter ${expectation.query || '<clear>'}`;
+}
+
+function filterTransitionFailureOwner(stage) {
+  for (let index = 0; index < FILTER_TRANSITION_EXPECTATIONS.length; index += 1) {
+    const expectation = FILTER_TRANSITION_EXPECTATIONS[index];
+    const name = expectation.query || '<clear>';
+    const preBaselineStages = [
+      `filter ${name} input focus`, `filter ${name} input cleared`,
+      `filter ${name} exact input`,
+      `filter ${name} select-all key a down`, `filter ${name} select-all key a up`,
+      `filter ${name} delete key Backspace down`,
+      `filter ${name} delete key Backspace up`,
+      ...(expectation.entryMode === 'visible'
+        ? [`focus visible filter ${name}`]
+        : [
+          `search ${name} target`, `search ${name} mouse press`,
+          `search ${name} mouse release`,
+        ]),
+      ...(expectation.query ? [`insert filter ${name}`] : []),
+    ];
+    if (preBaselineStages.includes(stage)) return { index, postBaseline: false };
+    const postBaselineStages = expectation.entryMode === 'reopen'
+      ? [
+        'ordinary Compendium reopen target',
+        'ordinary Compendium reopen mouse press',
+        'ordinary Compendium reopen mouse release',
+        filterTransitionTerminalStage(expectation),
+      ]
+      : [
+        `filter ${name} submit key Enter down`,
+        `filter ${name} submit key Enter up`,
+        filterTransitionTerminalStage(expectation),
+      ];
+    if (postBaselineStages.includes(stage)) return { index, postBaseline: true };
+  }
+  return null;
+}
+
+function validPartialFilterTransitionPrefix(measurement) {
+  const transitions = measurement.filterTransitions;
+  const terminalStages = FILTER_TRANSITION_EXPECTATIONS.map(filterTransitionTerminalStage);
+  const terminalIndices = terminalStages.map((stage) => measurement.completedStages.indexOf(stage));
+  const completionFlags = terminalIndices.map((index) => index >= 0);
+  const firstIncomplete = completionFlags.indexOf(false);
+  const completedCount = firstIncomplete < 0 ? completionFlags.length : firstIncomplete;
+  if (completionFlags.slice(completedCount).some(Boolean)
+    || terminalIndices.slice(0, completedCount).some((index, position, indices) =>
+      (position > 0 && index <= indices[position - 1])
+        || measurement.completedStages.filter((stage) => stage === terminalStages[position]).length !== 1)
+    || transitions.length < completedCount || transitions.length > completedCount + 1
+    || !transitions.slice(0, completedCount).every((transition) =>
+      transition.settled !== null && transition.generationDelta !== null)) return false;
+  const failureOwner = filterTransitionFailureOwner(measurement.failingStage);
+  if (failureOwner?.index !== null && failureOwner?.index !== undefined
+    && failureOwner.index !== completedCount) return false;
+  const failureRequiresPending = failureOwner?.postBaseline === true;
+  if (transitions.length === completedCount) return !failureRequiresPending;
+  const pending = transitions[completedCount];
+  const pendingExpectation = FILTER_TRANSITION_EXPECTATIONS[completedCount];
+  const pendingName = pendingExpectation?.query || '<clear>';
+  return failureRequiresPending
+    && measurement.completedStages.includes(`filter ${pendingName} exact input`)
+    && pending?.settled === null && pending?.generationDelta === null;
+}
+
+function validFilterTransitionSequence(transitions, {
+  allowPending = false, requireCompleteSet = false,
+} = {}) {
+  if (!Array.isArray(transitions)
+    || transitions.length > FILTER_TRANSITION_EXPECTATIONS.length
+    || (requireCompleteSet && transitions.length !== FILTER_TRANSITION_EXPECTATIONS.length)) return false;
+  return transitions.every((transition, index) => {
+    const expectation = FILTER_TRANSITION_EXPECTATIONS[index];
+    const pending = transition?.settled === null && transition?.generationDelta === null;
+    return validFilterTransitionWitness(transition, { allowPending })
+      && transition.entryMode === expectation.entryMode
+      && transition.expectedQuery === expectation.query
+      && transition.expectedFilteredCount === expectation.filteredCount
+      && (!pending || (allowPending && index === transitions.length - 1))
+      && (pending || (transition.settled.sourceCount === 1500
+        && transition.generationDelta === 1));
+  });
 }
 export function sha256(value) {
   return crypto.createHash('sha256').update(value).digest('hex');
@@ -451,8 +605,10 @@ export async function observeCandidateValue({
 
 export async function waitForCandidateValue({
   send, sessionId, expression, profile, label, phaseDeadlineMs, now, sleep, onCommand,
+  acceptValue = Boolean, onObservation = () => {},
 }) {
-  if (typeof sleep !== 'function' || typeof onCommand !== 'function') {
+  if (typeof sleep !== 'function' || typeof onCommand !== 'function'
+    || typeof acceptValue !== 'function' || typeof onObservation !== 'function') {
     throw new CandidateObservationError(
       'instrument', `${String(profile)} ${String(label)}: candidate wait dependencies are invalid`,
     );
@@ -470,7 +626,8 @@ export async function waitForCandidateValue({
     }
     onCommand(observation.command);
     last = observation.value;
-    if (last) return last;
+    onObservation(last, observation.command);
+    if (acceptValue(last)) return last;
     const remainingMs = phaseDeadlineMs - now('phase-after-observation');
     if (remainingMs < 1) break;
     await sleep(Math.min(50, Math.max(1, Math.floor(remainingMs))));
@@ -1192,15 +1349,21 @@ export function evaluateProfile(measurement, budget, fixture) {
     && typeof measurement.identity?.betaKey === 'string'
     && measurement.identity.alphaKey !== measurement.identity.betaKey,
   'same-seed/different-complete-genome rows collapsed to one art key', measurement.identity);
+  const filterTransitions = measurement.phases?.filterTransitions;
+  const filterTransitionsExact = validFilterTransitionSequence(filterTransitions, {
+    requireCompleteSet: true,
+  }) && filterTransitions.every((transition) => transition.generationDelta === 1);
   add('generation-guard', integer(points.initial?.diagnostics?.generation)
     && integer(final?.diagnostics?.generation)
     && final.diagnostics.generation > points.initial.diagnostics.generation
     && nonnegative(final.diagnostics.panel.staleCompletionDrops)
     && final.diagnostics.panel.closedCompletionCommits === 0
-    && measurement.phases?.churn?.jobCancelsDelta > 0,
-  'generation did not advance, invalidated work was not cancelled, or closed DOM was mutated', {
+    && measurement.phases?.churn?.jobCancelsDelta > 0
+    && filterTransitionsExact,
+  'generation did not advance exactly once per native filter/clear transition, invalidated work was not cancelled, or closed DOM was mutated', {
     initial: points.initial?.diagnostics?.generation, final: final?.diagnostics?.generation,
     panel: final?.diagnostics?.panel, churn: measurement.phases?.churn,
+    filterTransitions,
   });
   add('error-contained', points.error?.jobErrorsDelta === 1
     && points.error?.uiResponsive === true && points.error?.poisonedCacheEntry === false,
@@ -1495,7 +1658,11 @@ function validCompleteProfileMeasurement(measurement, profile) {
   return isObject(measurement) && measurement.profile === profile
     && isObject(measurement.viewport) && isObject(measurement.fixture)
     && isObject(measurement.documentTokens) && isObject(measurement.points)
-    && isObject(measurement.phases) && isObject(measurement.lazySpeciesResource)
+    && isObject(measurement.phases)
+    && validFilterTransitionSequence(measurement.phases.filterTransitions, {
+      requireCompleteSet: true,
+    })
+    && isObject(measurement.lazySpeciesResource)
     && Array.isArray(measurement.answerability)
     && Array.isArray(measurement.reviewPacket);
 }
@@ -1503,7 +1670,7 @@ function validCompleteProfileMeasurement(measurement, profile) {
 function validPartialProfileMeasurement(measurement, profile, runId, verifyArtifact) {
   const keys = [
     'schema', 'profile', 'viewport', 'evidenceStatus', 'lastCompletedStage',
-    'failingStage', 'completedStages', 'commandLedger', 'reviewPacket',
+    'failingStage', 'completedStages', 'commandLedger', 'filterTransitions', 'reviewPacket',
   ];
   if (!isObject(measurement) || !sameJson(Object.keys(measurement).sort(), keys.sort())
     || measurement.schema !== PARTIAL_PROFILE_SCHEMA || measurement.profile !== profile
@@ -1518,6 +1685,8 @@ function validPartialProfileMeasurement(measurement, profile, runId, verifyArtif
     || !measurement.commandLedger.every((command) =>
       validCandidateCommandEvidence(command) || validPlainEvaluateCommand(command)
         || validRawCdpCommand(command))
+    || !validFilterTransitionSequence(measurement.filterTransitions, { allowPending: true })
+    || !validPartialFilterTransitionPrefix(measurement)
     || !validPartialReviewPacket(measurement.reviewPacket, runId, verifyArtifact)
     || !measurement.reviewPacket.every((item) => item.profile === profile)) return false;
   if (measurement.lastCompletedStage !== (measurement.completedStages.at(-1) ?? null)) return false;

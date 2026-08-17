@@ -26,7 +26,10 @@ import {
   _quasarSpr, _visitorSpr, _comaSpr, _vtrailSpr,
 } from '@cf/art';
 import { initAudio, playWhoosh, playSurveyPing, applySfxGain } from '@cf/audio';
-import { registerPanel, fillPanel, togglePanel, openPanel, closePanels, openPanelId } from './panels.js';
+import {
+  registerPanel, fillPanel, togglePanel, openPanel, closePanels, openPanelId,
+  createPanelOpenController,
+} from './panels.js';
 import {
   CompendiumVirtualList,
   type CompendiumVirtualRow,
@@ -1380,13 +1383,17 @@ document.getElementById('dockatlas')!.addEventListener('click', () => togglePane
 document.getElementById('railatlas')!.addEventListener('click', () => togglePanel('atlas'));
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
 registerPanel({ id: 'guide', el: document.getElementById('guidepanel')!, btns: [document.getElementById('dockguide')], onOpen: fillGuide });
+const codexOpenController = createPanelOpenController({
+  id: 'codex',
+  defaultRequest: () => '',
+  populate: (filter: string) => fillCodex(filter),
+});
 registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: () => {
   /* An ordinary Compendium open is a fresh catalogue view. Search may apply
-     a query immediately after opening, while detail → Back deliberately
-     keeps the active query. Without this reset, closing a search result and
-     reopening from the dock silently retained a hidden filter. */
-  codexFilter = '';
-  fillCodex('');
+     one requested query as its opening population, while detail → Back
+     deliberately keeps the active query. Closing a search result and
+     reopening from the dock still starts with the unfiltered catalogue. */
+  codexOpenController.onOpen();
 }, onClose: closeCodexSurface });
 registerPanel({ id: 'rec', el: document.getElementById('recpanel')!, btns: [document.getElementById('dockrecords'), document.getElementById('railrecords')], onOpen: fillRecords });
 document.getElementById('docksets')!.addEventListener('click', () => togglePanel('set'));
@@ -1574,8 +1581,7 @@ searchEl.addEventListener('keydown', (e) => {
     return;
   }
   /* not a code — a Compendium name filter */
-  openPanel('codex', searchEl);
-  fillCodex(q);
+  codexOpenController.present(q, searchEl);
   (document.querySelector<HTMLElement>('#codexpanel [data-ci]')
     || document.querySelector<HTMLElement>('#codexpanel [data-pnx]'))?.focus();
 });

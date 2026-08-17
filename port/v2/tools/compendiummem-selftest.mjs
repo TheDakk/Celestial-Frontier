@@ -16,7 +16,8 @@ import {
   BUDGET_SCHEMA, CANDIDATE_BROWSER_LABEL, CANDIDATE_TRANSPORT_TIMEOUT_MS,
   COMMAND_TIMEOUT_MS,
   COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS, DIAGNOSTICS_SCHEMA,
-  EXPECTED_OUTCOMES, OUTCOME_IDS, PARTIAL_FAILURE_SCHEMA, PARTIAL_PROFILE_SCHEMA,
+  EXPECTED_OUTCOMES, FILTER_TRANSITION_SCHEMA, OUTCOME_IDS,
+  PARTIAL_FAILURE_SCHEMA, PARTIAL_PROFILE_SCHEMA,
   PLAIN_EVALUATE_COMMAND_SCHEMA, RAW_CDP_COMMAND_SCHEMA,
   REPORT_INPUT_KEYS, REPORT_SCHEMA,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
@@ -27,6 +28,7 @@ import {
   remainingCommandTimeoutMs, sha256,
   validBrokenBaselineThumbObservation, validProfileEmulationOptions,
   validCompendiumRawSnapshotExpression, validTransportTimeoutPolicy,
+  validFilterTransitionObservation, validFilterTransitionWitness,
   validateBudgetRecord, validCandidateCommandEvidence, verifyTerminalReport,
 } from './compendiummem-contract.mjs';
 import {
@@ -34,6 +36,7 @@ import {
 } from './compendiummem-fixture.mjs';
 import {
   collectCandidateSnapshot, createCandidateCollectorObservations,
+  driveCandidateFilterTransition,
 } from './compendiummem.mjs';
 
 function assert(condition, message) { if (!condition) throw new Error(`COMPENDIUMMEM SELFTEST: ${message}`); }
@@ -208,6 +211,45 @@ function snapshot({ generation, ids = [], mode = 'list', count = 1500,
   };
 }
 
+function syntheticFilterObservation({
+  profile, ready, query, filteredCount, generation, sourceCount = 1500,
+}) {
+  const art = artSnapshot({ generation });
+  art.deviceClass = profile;
+  return {
+    ready, mode: 'list', query, filteredCount, sourceCount, generation,
+    art: { live: clone(art.live), totals: clone(art.totals) },
+  };
+}
+
+function syntheticFilterTransition({
+  profile, entryMode, query, filteredCount, baselineGeneration,
+  priorQuery, priorFilteredCount,
+}) {
+  const falsy = syntheticFilterObservation({
+    profile, ready: false, query: priorQuery,
+    filteredCount: priorFilteredCount, generation: baselineGeneration,
+  });
+  const settled = syntheticFilterObservation({
+    profile, ready: true, query, filteredCount,
+    generation: baselineGeneration + 1,
+  });
+  return {
+    schema: FILTER_TRANSITION_SCHEMA,
+    entryMode,
+    expectedQuery: query,
+    expectedFilteredCount: filteredCount,
+    input: {
+      focused: true, cleared: true, value: query,
+      panelMode: entryMode === 'visible' ? 'list' : 'closed',
+    },
+    baselineGeneration,
+    falsyObservations: [falsy],
+    settled,
+    generationDelta: 1,
+  };
+}
+
 function syntheticMeasurement(profile, fixture) {
   const baseViewportHeight = profile === 'phone' ? 844 : 800;
   const first = fixture.rows[0][0];
@@ -346,6 +388,20 @@ function syntheticMeasurement(profile, fixture) {
         deviceClass: profile, queuedJobsPeak: 20, activeJobsPeak: 1,
         queuedJobsLimit: 256, activeJobsLimit: 1,
       },
+      filterTransitions: [
+        syntheticFilterTransition({
+          profile, entryMode: 'visible', query: 'Same Seed Sentinel', filteredCount: 2,
+          baselineGeneration: 5, priorQuery: '', priorFilteredCount: 1500,
+        }),
+        syntheticFilterTransition({
+          profile, entryMode: 'hidden', query: 'Compendium Filter Beacon', filteredCount: 1,
+          baselineGeneration: 9, priorQuery: 'Same Seed Sentinel', priorFilteredCount: 2,
+        }),
+        syntheticFilterTransition({
+          profile, entryMode: 'reopen', query: '', filteredCount: 1500,
+          baselineGeneration: 10, priorQuery: 'Compendium Filter Beacon', priorFilteredCount: 1,
+        }),
+      ],
     },
     points: { lazyBoot, lazyEnd, initial, first: firstPoint, middle: middlePoint, last: lastPoint,
       filtered, detail, detailClosed, back, focusPinned, closed, planetside, warm,
@@ -535,6 +591,7 @@ export async function runCompendiumMemSelftest() {
 
   const runCandidateWaitScenario = async (plans, {
     phaseWindowMs = 3000, label = 'list thumb settlement', answerabilityExpected = null,
+    acceptValue = null,
   } = {}) => {
     let phaseClock = 1000;
     let issuedAt = phaseClock;
@@ -544,6 +601,7 @@ export async function runCompendiumMemSelftest() {
     const sleeps = [];
     const stagesStarted = [];
     const stagesCompleted = [];
+    const observedValues = [];
     const now = (role) => {
       if (role === 'issued') {
         attempt += 1;
@@ -583,11 +641,19 @@ export async function runCompendiumMemSelftest() {
     try {
       value = answerabilityExpected === null
         ? await observations.waitValue(
-          'selftest-session', label, 'selftest-expression', { timeoutMs: phaseWindowMs },
+          'selftest-session', label, 'selftest-expression', {
+            timeoutMs: phaseWindowMs,
+            ...(acceptValue ? {
+              acceptValue,
+              onObservation: (observation) => observedValues.push(clone(observation)),
+            } : {}),
+          },
         )
         : await observations.answerability('selftest-session', answerabilityExpected);
     } catch (error) { failure = error; }
-    return { value, failure, calls, ledger, sleeps, stagesStarted, stagesCompleted };
+    return {
+      value, failure, calls, ledger, sleeps, stagesStarted, stagesCompleted, observedValues,
+    };
   };
   const readyPlan = {
     target: { deltaMs: 10, value: { ready: true } },
@@ -634,6 +700,176 @@ export async function runCompendiumMemSelftest() {
     && candidateFalsyThenReady.calls.filter((call) => call.method === 'Browser.getVersion').length === 2
     && candidateFalsyThenReady.ledger.length === 2 && candidateFalsyThenReady.sleeps.length === 1,
   'the candidate wait did not repoll only after one completed on-time falsy observation');
+  const structuredPending = {
+    ready: false, query: 'old', filteredCount: 2, sourceCount: 1500, generation: 7,
+  };
+  const structuredReady = {
+    ready: true, query: 'new', filteredCount: 1, sourceCount: 1500, generation: 8,
+  };
+  const candidateStructuredThenReady = await runCandidateWaitScenario([
+    { ...readyPlan, target: { deltaMs: 10, value: structuredPending } },
+    { ...readyPlan, target: { deltaMs: 10, value: structuredReady } },
+  ], { acceptValue: (observation) => observation?.ready === true });
+  assert(candidateStructuredThenReady.failure === null
+    && candidateStructuredThenReady.value.ready === true
+    && JSON.stringify(candidateStructuredThenReady.observedValues)
+      === JSON.stringify([structuredPending, structuredReady])
+    && candidateStructuredThenReady.ledger.length === 2
+    && candidateStructuredThenReady.sleeps.length === 1,
+  'the production candidate wait lost a structured falsy transition observation');
+  const runFilterDriverScenario = async (entryMode, query, expectedCount, {
+    wrongFocus = false, wrongExactValue = false, generationDelta = 1,
+    invalidPending = false, missingReopen = false,
+  } = {}) => {
+    const actions = [];
+    const transitions = [];
+    const baselineGeneration = 40;
+    const name = query || '<clear>';
+    const panelMode = entryMode === 'visible' ? 'list' : 'closed';
+    const waitValue = async (_sessionId, label, expression, options = {}) => {
+      actions.push(`wait:${label}`);
+      if (label === `filter ${name} input focus`) {
+        return { focused: !wrongFocus, value: 'prior query', panelMode };
+      }
+      if (label === `filter ${name} input cleared`) {
+        return { focused: true, cleared: true, value: '', panelMode };
+      }
+      if (label === `filter ${name} exact input`) {
+        assert(expression.includes(JSON.stringify(query)),
+          'filter exact-input proof did not bind the requested query');
+        return {
+          focused: true, cleared: true,
+          value: wrongExactValue ? `prior query${query}` : query,
+          panelMode, generation: baselineGeneration,
+        };
+      }
+      if (label === `filter ${name}`) {
+        assert(typeof options.acceptValue === 'function'
+          && typeof options.onObservation === 'function',
+        'filter transition did not use the structured candidate wait hooks');
+        const pending = syntheticFilterObservation({
+          profile: 'phone', ready: false, query: 'prior query',
+          filteredCount: 2, generation: baselineGeneration,
+        });
+        if (invalidPending) delete pending.art.totals;
+        options.onObservation(pending, { selftest: 'pending' });
+        assert(options.acceptValue(pending) === false,
+          'non-ready filter observation was accepted');
+        const settled = syntheticFilterObservation({
+          profile: 'phone', ready: true, query, filteredCount: expectedCount,
+          generation: baselineGeneration + generationDelta,
+        });
+        options.onObservation(settled, { selftest: 'settled' });
+        assert(options.acceptValue(settled) === true,
+          'ready filter observation was rejected');
+        return settled;
+      }
+      throw new Error(`unexpected filter-driver wait label ${label}`);
+    };
+    let failure = null;
+    let result = null;
+    try {
+      result = await driveCandidateFilterTransition({
+        sessionId: 'selftest-session', entryMode, query, expectedCount, platform: 'darwin',
+        click: async (_sessionId, selector, label) => {
+          actions.push(`click:${selector}:${label}`);
+          if (missingReopen && label === 'ordinary Compendium reopen') {
+            throw new Error('selftest ordinary Compendium opener unavailable');
+          }
+        },
+        key: async (_sessionId, keyName, _code, modifier = 0, labelPrefix = '') => {
+          actions.push(`key:${labelPrefix}:${keyName}:${modifier}`);
+        },
+        sendStage: async (label, method, params) => {
+          actions.push(`send:${label}:${method}:${params.text}`);
+        },
+        evaluate: async (_sessionId, _expression, label) => {
+          actions.push(`evaluate:${label}`);
+          return { focused: true, panelMode: 'list' };
+        },
+        waitValue,
+        onTransitionStarted: (transition) => {
+          actions.push('transition:start');
+          transitions.push(transition);
+        },
+      });
+    } catch (error) { failure = error; }
+    return { actions, failure, result, transitions };
+  };
+  const nonemptyFilterDriver = await runFilterDriverScenario(
+    'hidden', 'Compendium Filter Beacon', 1,
+  );
+  assert(nonemptyFilterDriver.failure === null
+    && validFilterTransitionWitness(nonemptyFilterDriver.result)
+    && nonemptyFilterDriver.result.falsyObservations.length === 1
+    && validFilterTransitionObservation(nonemptyFilterDriver.result.falsyObservations[0])
+    && JSON.stringify(nonemptyFilterDriver.actions) === JSON.stringify([
+      'click:#searchbox:search Compendium Filter Beacon',
+      'wait:filter Compendium Filter Beacon input focus',
+      'key:filter Compendium Filter Beacon select-all:a:4',
+      'key:filter Compendium Filter Beacon delete:Backspace:0',
+      'wait:filter Compendium Filter Beacon input cleared',
+      'send:insert filter Compendium Filter Beacon:Input.insertText:Compendium Filter Beacon',
+      'wait:filter Compendium Filter Beacon exact input',
+      'transition:start', 'key:filter Compendium Filter Beacon submit:Enter:0',
+      'wait:filter Compendium Filter Beacon',
+    ]),
+  'the real native-filter driver skipped focus/delete/exact-value proof or lost its falsy witness');
+  const emptyFilterTelemetry = clone(nonemptyFilterDriver.result.falsyObservations[0]);
+  emptyFilterTelemetry.art = { live: {}, totals: {} };
+  assert(!validFilterTransitionObservation(emptyFilterTelemetry),
+    'empty art live/totals objects passed as diagnostic filter telemetry');
+  const visibleFilterDriver = await runFilterDriverScenario(
+    'visible', 'Same Seed Sentinel', 2,
+  );
+  assert(visibleFilterDriver.failure === null
+    && validFilterTransitionWitness(visibleFilterDriver.result)
+    && visibleFilterDriver.result.entryMode === 'visible'
+    && visibleFilterDriver.result.input.panelMode === 'list'
+    && visibleFilterDriver.actions[0] === 'evaluate:focus visible filter Same Seed Sentinel'
+    && !visibleFilterDriver.actions.some((action) => action.startsWith('click:#searchbox'))
+    && visibleFilterDriver.actions.includes('key:filter Same Seed Sentinel submit:Enter:0'),
+  'the real filter driver did not exercise the already-visible main branch with native keys');
+  const clearFilterDriver = await runFilterDriverScenario('reopen', '', 1500);
+  assert(clearFilterDriver.failure === null
+    && validFilterTransitionWitness(clearFilterDriver.result)
+    && clearFilterDriver.actions.includes('key:filter <clear> delete:Backspace:0')
+    && !clearFilterDriver.actions.some((action) => action.startsWith('send:insert filter'))
+    && !clearFilterDriver.actions.some((action) => action.includes(':Enter:'))
+    && clearFilterDriver.actions.includes(
+      'click:#dockcodex, #railcodex:ordinary Compendium reopen',
+    ),
+  'the real clear-filter driver did not use the post-close ordinary Compendium reopen');
+  const inertEmptyEnterDriver = await runFilterDriverScenario('hidden', '', 1500);
+  assert(inertEmptyEnterDriver.failure?.message.includes('dependencies are invalid')
+    && inertEmptyEnterDriver.actions.length === 0,
+  'the driver accepted the correct-product inert hidden empty-Enter path as a clear transition');
+  const missingClearOpener = await runFilterDriverScenario(
+    'reopen', '', 1500, { missingReopen: true },
+  );
+  assert(missingClearOpener.failure?.message.includes('opener unavailable')
+    && missingClearOpener.transitions.length === 1
+    && missingClearOpener.transitions[0].settled === null
+    && !missingClearOpener.actions.includes('wait:filter <clear>'),
+  'a missing ordinary Compendium opener was hidden by empty Enter or a filter retry');
+  const unfocusedFilterDriver = await runFilterDriverScenario(
+    'hidden', 'Compendium Filter Beacon', 1, { wrongFocus: true },
+  );
+  assert(unfocusedFilterDriver.failure?.message.includes('focus was not proven')
+    && !unfocusedFilterDriver.actions.some((action) => action.startsWith('key:')),
+  'the native-filter driver continued after a false focus proof');
+  const concatenatedFilterDriver = await runFilterDriverScenario(
+    'hidden', 'Compendium Filter Beacon', 1, { wrongExactValue: true },
+  );
+  assert(concatenatedFilterDriver.failure?.message.includes('exact input value/generation')
+    && !concatenatedFilterDriver.actions.some((action) => action.includes(':Enter:')),
+  'a concatenated nonempty→nonempty search reached Enter without an exact-value proof');
+  const invalidFilterObservation = await runFilterDriverScenario(
+    'hidden', 'Compendium Filter Beacon', 1, { invalidPending: true },
+  );
+  assert(invalidFilterObservation.failure?.message.includes('observation shape was invalid')
+    && invalidFilterObservation.transitions[0]?.falsyObservations.length === 0,
+  'a filter transition recorded a falsy observation without art live/totals');
   const candidateTargetTimeout = await runCandidateWaitScenario([{
     target: {
       deltaMs: COMMAND_TIMEOUT_MS, reject: true,
@@ -1128,6 +1364,17 @@ export async function runCompendiumMemSelftest() {
     ['dedupe', (m) => { m.phases.dedupe.dedupeHitsDelta = 0; }, 'art-dedupe'],
     ['bare seed', (m) => { m.identity.betaKey = m.identity.alphaKey; }, 'full-identity-key'],
     ['generation cancellation', (m) => { m.phases.churn.jobCancelsDelta = 0; }, 'generation-guard'],
+    ['double filter generation', (m) => {
+      const transition = m.phases.filterTransitions[1];
+      transition.settled.generation = transition.baselineGeneration + 2;
+      transition.generationDelta = 2;
+    }, 'generation-guard'],
+    ['filter input proof drift', (m) => {
+      m.phases.filterTransitions[1].input.value = 'Same Seed SentinelCompendium Filter Beacon';
+    }, 'generation-guard'],
+    ['filter falsy diagnostics missing art totals', (m) => {
+      delete m.phases.filterTransitions[1].falsyObservations[0].art.totals;
+    }, 'generation-guard'],
     ['stale publication', (m) => { m.points.warm.at(-1).diagnostics.panel.closedCompletionCommits = 1; }, 'generation-guard'],
     ['focus recycling', (m) => { m.points.focusPinned.diagnostics.window.pinnedLogicalIds = []; }, 'focus-row-pinned'],
     ['clipped outside focus ring', (m) => {
@@ -1236,6 +1483,7 @@ export async function runCompendiumMemSelftest() {
         failingStage: 'list thumb settlement',
         completedStages: ['review list', 'review focus-pinned', 'Compendium open'],
         commandLedger: [clone(candidateTargetTimeout.failure.command)],
+        filterTransitions: [],
         reviewPacket: clone(partialReview),
       },
     },
@@ -1256,6 +1504,146 @@ export async function runCompendiumMemSelftest() {
   });
   assert(productPartialCheck.ok,
     `healthy-heartbeat product-unanswerable partial report was rejected: ${productPartialCheck.errors.join('; ')}`);
+  const filterTimeoutPartial = clone(productPartial);
+  const filterTimeoutCommand = clone(candidateBothTimeout.failure.command);
+  filterTimeoutCommand.label = 'filter Compendium Filter Beacon';
+  const pendingBeacon = clone(phone.phases.filterTransitions[1]);
+  pendingBeacon.settled = null;
+  pendingBeacon.generationDelta = null;
+  filterTimeoutPartial.status = 'instrument-fail';
+  filterTimeoutPartial.findings = [
+    'instrument: phone filter Compendium Filter Beacon: root heartbeat failed',
+  ];
+  filterTimeoutPartial.partialFailure.classification = 'instrument';
+  filterTimeoutPartial.partialFailure.lastCompletedStage
+    = 'filter Compendium Filter Beacon submit key Enter up';
+  filterTimeoutPartial.partialFailure.failingStage = filterTimeoutCommand.label;
+  filterTimeoutPartial.partialFailure.command = clone(filterTimeoutCommand);
+  filterTimeoutPartial.profiles.phone.lastCompletedStage
+    = 'filter Compendium Filter Beacon submit key Enter up';
+  filterTimeoutPartial.profiles.phone.failingStage = filterTimeoutCommand.label;
+  filterTimeoutPartial.profiles.phone.completedStages.push(
+    'filter Same Seed Sentinel', 'filter Compendium Filter Beacon exact input',
+    'filter Compendium Filter Beacon submit key Enter down',
+    'filter Compendium Filter Beacon submit key Enter up',
+  );
+  filterTimeoutPartial.profiles.phone.commandLedger = [clone(filterTimeoutCommand)];
+  filterTimeoutPartial.profiles.phone.filterTransitions = [
+    clone(phone.phases.filterTransitions[0]), pendingBeacon,
+  ];
+  assert(verifyTerminalReport(filterTimeoutPartial, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'filter-timeout partial report lost its completed/pending transition witness');
+  const beaconBackspacePartial = clone(filterTimeoutPartial);
+  const beaconBackspaceCommand = clone(rawHeapFailure.compendiumCommand);
+  beaconBackspaceCommand.label = 'filter Compendium Filter Beacon delete key Backspace down';
+  beaconBackspaceCommand.method = 'Input.dispatchKeyEvent';
+  beaconBackspaceCommand.error = 'selftest Backspace transport failure';
+  beaconBackspacePartial.findings = [
+    `instrument: phone ${beaconBackspaceCommand.label}: Input.dispatchKeyEvent failed under the `
+      + `${beaconBackspaceCommand.timeoutMs}ms transport cap (${beaconBackspaceCommand.error})`,
+  ];
+  beaconBackspacePartial.partialFailure.lastCompletedStage
+    = 'filter Compendium Filter Beacon select-all key a up';
+  beaconBackspacePartial.partialFailure.failingStage = beaconBackspaceCommand.label;
+  beaconBackspacePartial.partialFailure.command = clone(beaconBackspaceCommand);
+  beaconBackspacePartial.profiles.phone.lastCompletedStage
+    = 'filter Compendium Filter Beacon select-all key a up';
+  beaconBackspacePartial.profiles.phone.failingStage = beaconBackspaceCommand.label;
+  beaconBackspacePartial.profiles.phone.completedStages
+    = beaconBackspacePartial.profiles.phone.completedStages
+      .slice(0, beaconBackspacePartial.profiles.phone.completedStages
+        .indexOf('filter Same Seed Sentinel') + 1)
+      .concat([
+        'filter Compendium Filter Beacon select-all key a down',
+        'filter Compendium Filter Beacon select-all key a up',
+      ]);
+  beaconBackspacePartial.profiles.phone.commandLedger = [clone(beaconBackspaceCommand)];
+  beaconBackspacePartial.profiles.phone.filterTransitions = [
+    clone(phone.phases.filterTransitions[0]),
+  ];
+  assert(verifyTerminalReport(beaconBackspacePartial, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'Beacon Backspace failure with its exact prior transition prefix was rejected');
+  const beaconBackspaceDroppedPrefix = clone(beaconBackspacePartial);
+  beaconBackspaceDroppedPrefix.profiles.phone.completedStages
+    = beaconBackspaceDroppedPrefix.profiles.phone.completedStages
+      .filter((stage) => stage !== 'filter Same Seed Sentinel');
+  beaconBackspaceDroppedPrefix.profiles.phone.filterTransitions = [];
+  assert(!verifyTerminalReport(beaconBackspaceDroppedPrefix, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a Beacon Backspace failure dropped the prior Same Seed stage/witness/ledger prefix');
+  const droppedLateFilterWitness = clone(filterTimeoutPartial);
+  droppedLateFilterWitness.profiles.phone.filterTransitions = [];
+  assert(!verifyTerminalReport(droppedLateFilterWitness, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a late filter timeout dropped its completed and pending transition prefix');
+  const droppedPriorFilterStageAndWitness = clone(filterTimeoutPartial);
+  droppedPriorFilterStageAndWitness.profiles.phone.completedStages
+    = droppedPriorFilterStageAndWitness.profiles.phone.completedStages
+      .filter((stage) => stage !== 'filter Same Seed Sentinel');
+  droppedPriorFilterStageAndWitness.profiles.phone.filterTransitions = [];
+  assert(!verifyTerminalReport(droppedPriorFilterStageAndWitness, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a Beacon timeout dropped the prior terminal stage together with all filter witnesses');
+  const droppedPendingFilterWitness = clone(filterTimeoutPartial);
+  droppedPendingFilterWitness.profiles.phone.filterTransitions.pop();
+  assert(!verifyTerminalReport(droppedPendingFilterWitness, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a post-baseline filter timeout dropped only its pending transition witness');
+  const droppedPendingInputProof = clone(filterTimeoutPartial);
+  droppedPendingInputProof.profiles.phone.completedStages
+    = droppedPendingInputProof.profiles.phone.completedStages
+      .filter((stage) => stage !== 'filter Compendium Filter Beacon exact input');
+  assert(!verifyTerminalReport(droppedPendingInputProof, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a pending filter witness lost its exact-input baseline stage');
+  const injectedEarlyFilterWitness = clone(productPartial);
+  const injectedPending = clone(phone.phases.filterTransitions[0]);
+  injectedPending.settled = null;
+  injectedPending.generationDelta = null;
+  injectedEarlyFilterWitness.profiles.phone.filterTransitions = [injectedPending];
+  assert(!verifyTerminalReport(injectedEarlyFilterWitness, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'an early pre-filter failure injected a future pending transition witness');
+  const completedThenLaterFailure = clone(filterTimeoutPartial);
+  completedThenLaterFailure.findings = ['instrument: post-filter selftest failure'];
+  completedThenLaterFailure.partialFailure.lastCompletedStage = 'filter Same Seed Sentinel';
+  completedThenLaterFailure.partialFailure.failingStage = 'post-filter selftest failure';
+  completedThenLaterFailure.partialFailure.command = null;
+  completedThenLaterFailure.profiles.phone.lastCompletedStage = 'filter Same Seed Sentinel';
+  completedThenLaterFailure.profiles.phone.failingStage = 'post-filter selftest failure';
+  completedThenLaterFailure.profiles.phone.completedStages
+    = completedThenLaterFailure.profiles.phone.completedStages
+      .slice(0, completedThenLaterFailure.profiles.phone.completedStages
+        .indexOf('filter Same Seed Sentinel') + 1);
+  completedThenLaterFailure.profiles.phone.commandLedger = [];
+  completedThenLaterFailure.profiles.phone.filterTransitions = [
+    clone(phone.phases.filterTransitions[0]),
+  ];
+  assert(verifyTerminalReport(completedThenLaterFailure, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a completed filter witness plus later instrument failure was rejected');
+  const downgradedCompletedFilter = clone(completedThenLaterFailure);
+  downgradedCompletedFilter.profiles.phone.filterTransitions[0].settled = null;
+  downgradedCompletedFilter.profiles.phone.filterTransitions[0].generationDelta = null;
+  assert(!verifyTerminalReport(downgradedCompletedFilter, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a completed terminal filter stage was downgraded to a pending/null witness');
+  const partialFilterMissingTotals = clone(filterTimeoutPartial);
+  delete partialFilterMissingTotals.profiles.phone
+    .filterTransitions[1].falsyObservations[0].art.totals;
+  assert(!verifyTerminalReport(partialFilterMissingTotals, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'partial filter witness accepted a falsy observation missing art totals');
+  const partialCompletedDoubleFill = clone(filterTimeoutPartial);
+  const partialCompletedTransition = partialCompletedDoubleFill.profiles.phone.filterTransitions[0];
+  partialCompletedTransition.settled.generation
+    = partialCompletedTransition.baselineGeneration + 2;
+  partialCompletedTransition.generationDelta = 2;
+  assert(!verifyTerminalReport(partialCompletedDoubleFill, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a completed +2 filter generation was laundered by a later instrument partial');
   const rawHeapPartial = clone(productPartial);
   rawHeapPartial.status = 'instrument-fail';
   rawHeapPartial.findings = [`instrument: ${rawHeapFailure.message}`];
@@ -1468,7 +1856,8 @@ export async function runCompendiumMemSelftest() {
         schema: PARTIAL_PROFILE_SCHEMA, profile: 'phone', viewport: { ...phoneViewport },
         evidenceStatus: 'partial-non-certifying', lastCompletedStage: null,
         failingStage: 'main initial product/DOM snapshot', completedStages: [],
-        commandLedger: [clone(plainFailure.compendiumCommand)], reviewPacket: [],
+        commandLedger: [clone(plainFailure.compendiumCommand)], filterTransitions: [],
+        reviewPacket: [],
       },
     },
     reviewPacket: [],

@@ -13,6 +13,7 @@ export const PLAIN_EVALUATE_COMMAND_SCHEMA: string;
 export const RAW_CDP_COMMAND_SCHEMA: string;
 export const PARTIAL_FAILURE_SCHEMA: string;
 export const PARTIAL_PROFILE_SCHEMA: string;
+export const FILTER_TRANSITION_SCHEMA: string;
 export const REQUIRED_WARM_CYCLES: number;
 export const OUTCOME_IDS: readonly string[];
 export const EXPECTED_OUTCOMES: readonly string[];
@@ -95,7 +96,12 @@ export function waitForCandidateValue(options: {
   now(role?: string): number;
   sleep(ms: number): Promise<void>;
   onCommand(command: unknown): void;
+  acceptValue?(value: unknown): boolean;
+  onObservation?(value: unknown, command: unknown): void;
 }): Promise<unknown>;
+export function validFilterTransitionObservation(observation: unknown): boolean;
+export function validFilterTransitionWitness(witness: unknown,
+  options?: { allowPending?: boolean }): boolean;
 export function validCandidateCommandEvidence(command: unknown,
   options?: { requireProductTimeout?: boolean }): boolean;
 export function installBrokenBaselineThumbObserver(
