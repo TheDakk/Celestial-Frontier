@@ -14,6 +14,13 @@ export const PROFILES = Object.freeze(['phone', 'desktop']);
 export const COMMAND_TIMEOUT_MS = 2000;
 export const CANDIDATE_TRANSPORT_TIMEOUT_MS = 5000;
 export const BASELINE_OBSERVATION_TIMEOUT_MS = 180000;
+export const CANDIDATE_BROWSER_LABEL = 'Compendium memory/resource gate';
+export const CANDIDATE_CDP_TIMEOUT_SCHEMA = 'cf-v2-compendium-cdp-timeout/v1';
+export const CANDIDATE_COMMAND_SCHEMA = 'cf-v2-compendium-candidate-command/v1';
+export const PLAIN_EVALUATE_COMMAND_SCHEMA = 'cf-v2-compendium-plain-evaluate-command/v1';
+export const RAW_CDP_COMMAND_SCHEMA = 'cf-v2-compendium-raw-cdp-command/v1';
+export const PARTIAL_FAILURE_SCHEMA = 'cf-v2-compendium-partial-failure/v1';
+export const PARTIAL_PROFILE_SCHEMA = 'cf-v2-compendium-partial-profile/v1';
 export const REQUIRED_WARM_CYCLES = 4;
 export const OUTCOME_IDS = Object.freeze([
   'input-fixture-1500-distinct',
@@ -216,6 +223,261 @@ export function remainingCommandTimeoutMs(deadlineMs, nowMs, transportTimeoutMs)
 export function phaseObservationAccepted(deadlineMs, completedAtMs, value) {
   return finite(deadlineMs) && finite(completedAtMs)
     && completedAtMs < deadlineMs && Boolean(value);
+}
+
+function errorMessage(error) {
+  return error instanceof Error ? error.message : String(error);
+}
+
+function candidateTimeoutIdentity(error, method, timeoutMs) {
+  return error instanceof Error
+    && error.message === `${CANDIDATE_BROWSER_LABEL}: timed out waiting for ${method}`
+    ? Object.freeze({ schema: CANDIDATE_CDP_TIMEOUT_SCHEMA, method, timeoutMs }) : null;
+}
+
+function commandSettlement(settlement, issuedAtMs, commandDeadlineMs, phaseDeadlineMs) {
+  const completedAtMs = settlement.completedAtMs;
+  return Object.freeze({
+    method: settlement.method,
+    status: settlement.status,
+    completedAtMs,
+    durationMs: completedAtMs - issuedAtMs,
+    timely: completedAtMs < commandDeadlineMs && completedAtMs < phaseDeadlineMs,
+    ...(settlement.status === 'rejected' ? {
+      error: errorMessage(settlement.error),
+      timeout: settlement.timeout,
+    } : {}),
+    ...(settlement.method === 'Browser.getVersion' && settlement.status === 'fulfilled'
+      ? { product: typeof settlement.value?.product === 'string' ? settlement.value.product : null }
+      : {}),
+    ...(settlement.method === 'Runtime.evaluate' && settlement.status === 'fulfilled'
+      ? { resultState: settlement.value?.exceptionDetails ? 'page-exception'
+        : isObject(settlement.value?.result) && Object.hasOwn(settlement.value.result, 'value')
+          ? 'value' : 'missing-value' }
+      : {}),
+  });
+}
+
+function candidateCommandEvidence({
+  profile, label, issuedAtMs, phaseDeadlineMs, timeoutMs, target, heartbeat,
+}) {
+  const commandDeadlineMs = Math.min(phaseDeadlineMs, issuedAtMs + timeoutMs);
+  return Object.freeze({
+    schema: CANDIDATE_COMMAND_SCHEMA,
+    profile,
+    label,
+    issuedAtMs,
+    phaseDeadlineMs,
+    commandDeadlineMs,
+    timeoutMs,
+    target: commandSettlement(target, issuedAtMs, commandDeadlineMs, phaseDeadlineMs),
+    heartbeat: commandSettlement(heartbeat, issuedAtMs, commandDeadlineMs, phaseDeadlineMs),
+  });
+}
+
+export class CandidateObservationError extends Error {
+  constructor(classification, message, command = null, options = {}) {
+    super(message, options);
+    this.name = 'CandidateObservationError';
+    this.classification = classification;
+    this.command = command;
+  }
+}
+
+export function isCandidateObservationError(error) {
+  return error instanceof CandidateObservationError
+    && ['product-unanswerable', 'instrument'].includes(error.classification);
+}
+
+function plainEvaluateCommand({
+  profile, label, timeoutMs, issuedAtMs, completedAtMs, status, error,
+}) {
+  return Object.freeze({
+    schema: PLAIN_EVALUATE_COMMAND_SCHEMA,
+    profile,
+    label,
+    method: 'Runtime.evaluate',
+    timeoutMs,
+    issuedAtMs,
+    completedAtMs,
+    durationMs: completedAtMs - issuedAtMs,
+    status,
+    error,
+  });
+}
+
+export async function evaluateCandidateExpression({
+  send, sessionId, expression, profile, label, awaitPromise = true,
+  timeoutMs = CANDIDATE_TRANSPORT_TIMEOUT_MS, now,
+}) {
+  if (typeof send !== 'function' || typeof now !== 'function'
+    || typeof sessionId !== 'string' || !sessionId
+    || typeof expression !== 'string' || !expression
+    || !PROFILES.includes(profile) || typeof label !== 'string' || !label
+    || !integer(timeoutMs) || timeoutMs < 1 || timeoutMs > CANDIDATE_TRANSPORT_TIMEOUT_MS
+    || typeof awaitPromise !== 'boolean') {
+    throw new Error(`${String(profile)} ${String(label)}: plain candidate evaluation inputs are invalid`);
+  }
+  const issuedAtMs = now('issued');
+  let result;
+  try {
+    result = await send('Runtime.evaluate', {
+      expression, returnByValue: true, awaitPromise,
+    }, sessionId, { timeoutMs });
+  } catch (cause) {
+    const command = plainEvaluateCommand({
+      profile, label, timeoutMs, issuedAtMs, completedAtMs: now('Runtime.evaluate'),
+      status: 'rejected', error: errorMessage(cause),
+    });
+    const error = new Error(
+      `${profile} ${label}: Runtime.evaluate failed under the ${timeoutMs}ms transport cap (${command.error})`,
+      { cause },
+    );
+    error.compendiumCommand = command;
+    throw error;
+  }
+  if (result?.exceptionDetails) {
+    const detail = result.exceptionDetails.exception?.description
+      || result.exceptionDetails.text || 'unknown exception';
+    const command = plainEvaluateCommand({
+      profile, label, timeoutMs, issuedAtMs, completedAtMs: now('Runtime.evaluate'),
+      status: 'page-exception', error: detail,
+    });
+    const error = new Error(`${profile} ${label}: page evaluation threw (${detail})`);
+    error.compendiumCommand = command;
+    throw error;
+  }
+  if (!isObject(result?.result) || !Object.hasOwn(result.result, 'value')) {
+    const command = plainEvaluateCommand({
+      profile, label, timeoutMs, issuedAtMs, completedAtMs: now('Runtime.evaluate'),
+      status: 'page-exception', error: 'Runtime.evaluate returned no by-value result',
+    });
+    const error = new Error(`${profile} ${label}: Runtime.evaluate returned no by-value result`);
+    error.compendiumCommand = command;
+    throw error;
+  }
+  return result.result.value;
+}
+
+/* One phase-owned candidate observation. The target and root-session heartbeat
+   are armed together under the same strict deadline. Callers may issue another
+   observation only after this one completed on time with a falsy product value;
+   a command failure is terminal and is never retried. */
+export async function observeCandidateValue({
+  send, sessionId, expression, profile, label, phaseDeadlineMs, now,
+}) {
+  if (typeof send !== 'function' || typeof now !== 'function'
+    || typeof sessionId !== 'string' || !sessionId
+    || typeof expression !== 'string' || !expression
+    || !PROFILES.includes(profile) || typeof label !== 'string' || !label
+    || !finite(phaseDeadlineMs)) {
+    throw new CandidateObservationError(
+      'instrument', `${String(profile)} ${String(label)}: candidate observation inputs are invalid`,
+    );
+  }
+  const issuedAtMs = now('issued');
+  const timeoutMs = remainingCommandTimeoutMs(
+    phaseDeadlineMs, issuedAtMs, COMMAND_TIMEOUT_MS,
+  );
+  if (timeoutMs === null) {
+    throw new CandidateObservationError(
+      'instrument', `${profile} ${label}: phase deadline expired before candidate observation`,
+    );
+  }
+  const settle = (method, promise) => promise.then(
+    (value) => ({ method, status: 'fulfilled', value, completedAtMs: now(method) }),
+    (error) => ({
+      method, status: 'rejected', error, completedAtMs: now(method),
+      timeout: candidateTimeoutIdentity(error, method, timeoutMs),
+    }),
+  );
+  /* Promise continuations ensure a synchronous target throw cannot prevent the
+     independent root heartbeat from being armed in the same observation. */
+  const targetPending = settle('Runtime.evaluate', Promise.resolve().then(() => send(
+    'Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true },
+    sessionId, { timeoutMs },
+  )));
+  const heartbeatPending = settle('Browser.getVersion', Promise.resolve().then(() => send(
+    'Browser.getVersion', {}, undefined, { timeoutMs },
+  )));
+  const [target, heartbeat] = await Promise.all([targetPending, heartbeatPending]);
+  const command = candidateCommandEvidence({
+    profile, label, issuedAtMs, phaseDeadlineMs, timeoutMs, target, heartbeat,
+  });
+  const healthyHeartbeat = command.heartbeat.status === 'fulfilled'
+    && command.heartbeat.timely === true
+    && typeof command.heartbeat.product === 'string'
+    && command.heartbeat.product.length > 0;
+  if (!healthyHeartbeat) {
+    const detail = command.heartbeat.status === 'rejected'
+      ? command.heartbeat.error
+      : command.heartbeat.timely ? 'invalid Browser.getVersion product' : 'late heartbeat';
+    throw new CandidateObservationError(
+      'instrument', `${profile} ${label}: root Browser.getVersion heartbeat failed (${detail})`, command,
+    );
+  }
+  if (command.target.status === 'rejected') {
+    const missedTargetDeadline = command.target.timeout !== null
+      && command.target.timely === false && command.target.durationMs >= timeoutMs;
+    const classification = missedTargetDeadline ? 'product-unanswerable' : 'instrument';
+    const diagnosis = missedTargetDeadline
+      ? `target Runtime.evaluate missed the ${timeoutMs}ms deadline while the root heartbeat remained timely`
+      : `Runtime.evaluate failed (${command.target.error})`;
+    throw new CandidateObservationError(
+      classification, `${profile} ${label}: ${diagnosis}`, command,
+    );
+  }
+  if (!command.target.timely) {
+    throw new CandidateObservationError(
+      'product-unanswerable',
+      `${profile} ${label}: target Runtime.evaluate completed after its ${timeoutMs}ms deadline while the root heartbeat remained timely`,
+      command,
+    );
+  }
+  if (target.value?.exceptionDetails) {
+    const detail = target.value.exceptionDetails.exception?.description
+      || target.value.exceptionDetails.text || 'unknown exception';
+    throw new CandidateObservationError(
+      'instrument', `${profile} ${label}: page evaluation threw (${detail})`, command,
+    );
+  }
+  if (!isObject(target.value?.result) || !Object.hasOwn(target.value.result, 'value')) {
+    throw new CandidateObservationError(
+      'instrument', `${profile} ${label}: Runtime.evaluate returned no by-value result`, command,
+    );
+  }
+  return Object.freeze({ value: target.value.result.value, command });
+}
+
+export async function waitForCandidateValue({
+  send, sessionId, expression, profile, label, phaseDeadlineMs, now, sleep, onCommand,
+}) {
+  if (typeof sleep !== 'function' || typeof onCommand !== 'function') {
+    throw new CandidateObservationError(
+      'instrument', `${String(profile)} ${String(label)}: candidate wait dependencies are invalid`,
+    );
+  }
+  let last = null;
+  while (now('phase-check') < phaseDeadlineMs) {
+    let observation;
+    try {
+      observation = await observeCandidateValue({
+        send, sessionId, expression, profile, label, phaseDeadlineMs, now,
+      });
+    } catch (error) {
+      if (isCandidateObservationError(error) && error.command) onCommand(error.command);
+      throw error;
+    }
+    onCommand(observation.command);
+    last = observation.value;
+    if (last) return last;
+    const remainingMs = phaseDeadlineMs - now('phase-after-observation');
+    if (remainingMs < 1) break;
+    await sleep(Math.min(50, Math.max(1, Math.floor(remainingMs))));
+  }
+  throw new CandidateObservationError(
+    'instrument', `${profile} ${label}: phase timed out after on-time falsy observations (${JSON.stringify(last)})`,
+  );
 }
 
 /* Serialized into Page.addScriptToEvaluateOnNewDocument by the collector.
@@ -1101,36 +1363,306 @@ function validCommittedSourceIdentity(source) {
     && /^[a-f0-9]{64}$/.test(String(source.workingTreeSha256 || ''));
 }
 
-function validReviewPacket(packet, runId, verifyArtifact) {
+function validReviewItem(item, runId, verifyArtifact) {
+  return isObject(item) && PROFILES.includes(item.profile)
+    && REVIEW_PACKET_STATES.includes(item.state)
+    && typeof item.file === 'string'
+    && item.file === `apps/game/smoke/compendiummem-${runId}-${item.profile}-${item.state}.png`
+    && Number.isSafeInteger(item.bytes) && item.bytes > 0
+    && /^[a-f0-9]{64}$/.test(String(item.sha256 || ''))
+    && (typeof verifyArtifact !== 'function' || verifyArtifact(item) === true);
+}
+
+function validPartialReviewPacket(packet, runId, verifyArtifact) {
   if (!Array.isArray(packet)) return false;
+  const identities = packet.map((item) => `${item?.profile}/${item?.state}`);
+  const files = packet.map((item) => item?.file);
+  return new Set(identities).size === identities.length
+    && new Set(files).size === files.length
+    && packet.every((item) => validReviewItem(item, runId, verifyArtifact));
+}
+
+function validReviewPacket(packet, runId, verifyArtifact) {
+  if (!validPartialReviewPacket(packet, runId, verifyArtifact)) return false;
   const expected = PROFILES.flatMap((profile) =>
     REVIEW_PACKET_STATES.map((state) => `${profile}/${state}`));
   const actual = packet.map((item) => `${item?.profile}/${item?.state}`);
-  const files = packet.map((item) => item?.file);
   return actual.length === expected.length
     && sameJson([...actual].sort(), [...expected].sort())
-    && new Set(actual).size === actual.length
-    && new Set(files).size === files.length
-    && packet.every((item) =>
-    typeof item?.file === 'string'
-      && item.file === `apps/game/smoke/compendiummem-${runId}-${item.profile}-${item.state}.png`
-      && Number.isSafeInteger(item.bytes) && item.bytes > 0
-      && /^[a-f0-9]{64}$/.test(String(item.sha256 || ''))
-      && (typeof verifyArtifact !== 'function' || verifyArtifact(item) === true));
+    && new Set(actual).size === actual.length;
+}
+
+function validCommandSettlement(settlement, command, method) {
+  if (!isObject(settlement) || settlement.method !== method
+    || !['fulfilled', 'rejected'].includes(settlement.status)
+    || !finite(settlement.completedAtMs) || !nonnegative(settlement.durationMs)
+    || settlement.durationMs !== settlement.completedAtMs - command.issuedAtMs) return false;
+  const expectedTimely = settlement.completedAtMs < command.commandDeadlineMs
+    && settlement.completedAtMs < command.phaseDeadlineMs;
+  if (settlement.timely !== expectedTimely) return false;
+  const base = ['method', 'status', 'completedAtMs', 'durationMs', 'timely'];
+  const expectedKeys = settlement.status === 'rejected'
+    ? [...base, 'error', 'timeout']
+    : method === 'Browser.getVersion' ? [...base, 'product'] : [...base, 'resultState'];
+  if (!sameJson(Object.keys(settlement).sort(), expectedKeys.sort())) return false;
+  if (settlement.status === 'rejected') {
+    const expectedMessage = `${CANDIDATE_BROWSER_LABEL}: timed out waiting for ${method}`;
+    const timeoutKeys = ['schema', 'method', 'timeoutMs'];
+    const validTimeout = settlement.timeout === null
+      ? settlement.error !== expectedMessage
+      : isObject(settlement.timeout)
+        && sameJson(Object.keys(settlement.timeout).sort(), timeoutKeys.sort())
+        && settlement.timeout.schema === CANDIDATE_CDP_TIMEOUT_SCHEMA
+        && settlement.timeout.method === method
+        && settlement.timeout.timeoutMs === command.timeoutMs
+        && settlement.error === expectedMessage;
+    return typeof settlement.error === 'string' && settlement.error.length > 0 && validTimeout;
+  }
+  return method === 'Browser.getVersion'
+    ? settlement.product === null
+      || (typeof settlement.product === 'string' && settlement.product.length > 0)
+    : ['value', 'page-exception', 'missing-value'].includes(settlement.resultState);
+}
+
+export function validCandidateCommandEvidence(command, { requireProductTimeout = false } = {}) {
+  const keys = [
+    'schema', 'profile', 'label', 'issuedAtMs', 'phaseDeadlineMs',
+    'commandDeadlineMs', 'timeoutMs', 'target', 'heartbeat',
+  ];
+  if (!isObject(command) || !sameJson(Object.keys(command).sort(), keys.sort())
+    || command.schema !== CANDIDATE_COMMAND_SCHEMA || !PROFILES.includes(command.profile)
+    || typeof command.label !== 'string' || !command.label
+    || !finite(command.issuedAtMs) || !finite(command.phaseDeadlineMs)
+    || command.phaseDeadlineMs <= command.issuedAtMs
+    || !integer(command.timeoutMs) || command.timeoutMs < 1
+    || command.timeoutMs !== remainingCommandTimeoutMs(
+      command.phaseDeadlineMs, command.issuedAtMs, COMMAND_TIMEOUT_MS,
+    )
+    || command.commandDeadlineMs !== Math.min(
+      command.phaseDeadlineMs, command.issuedAtMs + command.timeoutMs,
+    )
+    || !validCommandSettlement(command.target, command, 'Runtime.evaluate')
+    || !validCommandSettlement(command.heartbeat, command, 'Browser.getVersion')) return false;
+  if (!requireProductTimeout) return true;
+  const heartbeatHealthy = command.heartbeat.status === 'fulfilled'
+    && command.heartbeat.timely === true
+    && typeof command.heartbeat.product === 'string'
+    && command.heartbeat.product.length > 0;
+  const targetMissed = command.target.timely === false
+    && (command.target.status === 'fulfilled'
+      || (command.target.status === 'rejected' && command.target.timeout !== null
+        && command.target.durationMs >= command.timeoutMs));
+  return heartbeatHealthy && targetMissed;
+}
+
+function validPlainEvaluateCommand(command) {
+  const keys = [
+    'schema', 'profile', 'label', 'method', 'timeoutMs', 'issuedAtMs',
+    'completedAtMs', 'durationMs', 'status', 'error',
+  ];
+  return isObject(command) && sameJson(Object.keys(command).sort(), keys.sort())
+    && command.schema === PLAIN_EVALUATE_COMMAND_SCHEMA
+    && PROFILES.includes(command.profile) && typeof command.label === 'string' && command.label
+    && command.method === 'Runtime.evaluate'
+    && integer(command.timeoutMs) && command.timeoutMs > 0
+    && command.timeoutMs <= CANDIDATE_TRANSPORT_TIMEOUT_MS
+    && finite(command.issuedAtMs) && finite(command.completedAtMs)
+    && nonnegative(command.durationMs)
+    && command.durationMs === command.completedAtMs - command.issuedAtMs
+    && ['rejected', 'page-exception'].includes(command.status)
+    && typeof command.error === 'string' && command.error.length > 0;
+}
+
+function validRawCdpCommand(command) {
+  const keys = [
+    'schema', 'profile', 'label', 'method', 'timeoutMs', 'issuedAtMs',
+    'completedAtMs', 'durationMs', 'status', 'error',
+  ];
+  return isObject(command) && sameJson(Object.keys(command).sort(), keys.sort())
+    && command.schema === RAW_CDP_COMMAND_SCHEMA
+    && PROFILES.includes(command.profile) && typeof command.label === 'string' && command.label
+    && typeof command.method === 'string' && command.method.length > 0
+    && integer(command.timeoutMs) && command.timeoutMs > 0
+    && command.timeoutMs <= CANDIDATE_TRANSPORT_TIMEOUT_MS
+    && finite(command.issuedAtMs) && finite(command.completedAtMs)
+    && nonnegative(command.durationMs)
+    && command.durationMs === command.completedAtMs - command.issuedAtMs
+    && command.status === 'rejected'
+    && typeof command.error === 'string' && command.error.length > 0;
+}
+
+function validCompleteProfileMeasurement(measurement, profile) {
+  return isObject(measurement) && measurement.profile === profile
+    && isObject(measurement.viewport) && isObject(measurement.fixture)
+    && isObject(measurement.documentTokens) && isObject(measurement.points)
+    && isObject(measurement.phases) && isObject(measurement.lazySpeciesResource)
+    && Array.isArray(measurement.answerability)
+    && Array.isArray(measurement.reviewPacket);
+}
+
+function validPartialProfileMeasurement(measurement, profile, runId, verifyArtifact) {
+  const keys = [
+    'schema', 'profile', 'viewport', 'evidenceStatus', 'lastCompletedStage',
+    'failingStage', 'completedStages', 'commandLedger', 'reviewPacket',
+  ];
+  if (!isObject(measurement) || !sameJson(Object.keys(measurement).sort(), keys.sort())
+    || measurement.schema !== PARTIAL_PROFILE_SCHEMA || measurement.profile !== profile
+    || !isObject(measurement.viewport)
+    || measurement.evidenceStatus !== 'partial-non-certifying'
+    || (measurement.lastCompletedStage !== null
+      && (typeof measurement.lastCompletedStage !== 'string' || !measurement.lastCompletedStage))
+    || typeof measurement.failingStage !== 'string' || !measurement.failingStage
+    || !Array.isArray(measurement.completedStages)
+    || !measurement.completedStages.every((stage) => typeof stage === 'string' && stage)
+    || !Array.isArray(measurement.commandLedger)
+    || !measurement.commandLedger.every((command) =>
+      validCandidateCommandEvidence(command) || validPlainEvaluateCommand(command)
+        || validRawCdpCommand(command))
+    || !validPartialReviewPacket(measurement.reviewPacket, runId, verifyArtifact)
+    || !measurement.reviewPacket.every((item) => item.profile === profile)) return false;
+  if (measurement.lastCompletedStage !== (measurement.completedStages.at(-1) ?? null)) return false;
+  const completedReviewStates = measurement.completedStages
+    .filter((stage) => stage.startsWith('review ')).map((stage) => stage.slice('review '.length));
+  const packetStates = measurement.reviewPacket.map((item) => item.state);
+  return sameJson([...completedReviewStates].sort(), [...packetStates].sort())
+    && new Set(completedReviewStates).size === completedReviewStates.length;
+}
+
+function profileReviewPacket(profiles) {
+  return Object.values(profiles).flatMap((measurement) =>
+    Array.isArray(measurement?.reviewPacket) ? measurement.reviewPacket : []);
+}
+
+function sameReviewPacket(left, right) {
+  if (!Array.isArray(left) || !Array.isArray(right)) return false;
+  const normalize = (packet) => packet.map((item) => JSON.stringify(item)).sort();
+  return sameJson(normalize(left), normalize(right));
+}
+
+function commandCompletedAt(command) {
+  return command?.schema === CANDIDATE_COMMAND_SCHEMA
+    ? Math.max(command.target.completedAtMs, command.heartbeat.completedAtMs)
+    : command?.completedAtMs;
+}
+
+function candidateCommandFailed(command, browserProduct) {
+  return command?.schema === CANDIDATE_COMMAND_SCHEMA
+    && (command.target.status === 'rejected' || command.target.timely !== true
+      || command.target.resultState !== 'value'
+      || command.heartbeat.status === 'rejected' || command.heartbeat.timely !== true
+      || command.heartbeat.product !== browserProduct);
+}
+
+function validPartialCommandLedger(measurement, failure, browserProduct) {
+  const ledger = measurement.commandLedger;
+  let priorCompletedAtMs = -Infinity;
+  for (let index = 0; index < ledger.length; index += 1) {
+    const command = ledger[index];
+    const stageOwned = command.label === measurement.failingStage
+      || measurement.completedStages.includes(command.label);
+    if (command.profile !== measurement.profile || !stageOwned
+      || command.issuedAtMs < priorCompletedAtMs) return false;
+    if (command.schema === CANDIDATE_COMMAND_SCHEMA) {
+      if (command.heartbeat.status === 'fulfilled'
+        && command.heartbeat.product !== browserProduct) return false;
+      const isReportedFailure = failure.command !== null
+        && sameJson(command, failure.command);
+      if (candidateCommandFailed(command, browserProduct) !== isReportedFailure) return false;
+    } else if ([PLAIN_EVALUATE_COMMAND_SCHEMA, RAW_CDP_COMMAND_SCHEMA]
+      .includes(command.schema)) {
+      if (index !== ledger.length - 1 || !sameJson(command, failure.command)) return false;
+    } else return false;
+    priorCompletedAtMs = commandCompletedAt(command);
+  }
+  const terminal = ledger.at(-1) ?? null;
+  if (failure.command !== null && !sameJson(terminal, failure.command)) return false;
+  return !(failure.command === null && candidateCommandFailed(terminal, browserProduct));
+}
+
+function validPartialFailure(report, expectedRunId, verifyArtifact) {
+  const failure = report.partialFailure;
+  const keys = [
+    'schema', 'classification', 'profile', 'lastCompletedStage',
+    'failingStage', 'command',
+  ];
+  if (!isObject(failure) || !sameJson(Object.keys(failure).sort(), keys.sort())
+    || failure.schema !== PARTIAL_FAILURE_SCHEMA
+    || !['product-unanswerable', 'instrument'].includes(failure.classification)
+    || (failure.profile !== null && !PROFILES.includes(failure.profile))
+    || (failure.lastCompletedStage !== null
+      && (typeof failure.lastCompletedStage !== 'string' || !failure.lastCompletedStage))
+    || typeof failure.failingStage !== 'string' || !failure.failingStage
+    || !isObject(report.profiles)
+    || Object.keys(report.profiles).some((profile) => !PROFILES.includes(profile))
+    || !validPartialReviewPacket(report.reviewPacket, expectedRunId, verifyArtifact)
+    || !sameReviewPacket(report.reviewPacket, profileReviewPacket(report.profiles))) return false;
+  const mayOmitBrowser = failure.profile === null && Object.keys(report.profiles).length === 0;
+  if (!validBrowserProvenance(report.browser)
+    && !(mayOmitBrowser && report.browser === null)) return false;
+  if (failure.command !== null
+    && (failure.profile === null || failure.command?.profile !== failure.profile
+      || failure.command?.label !== failure.failingStage)) return false;
+  const heartbeatProduct = failure.command?.schema === CANDIDATE_COMMAND_SCHEMA
+    && failure.command?.heartbeat?.status === 'fulfilled'
+    ? failure.command.heartbeat.product : null;
+  if (heartbeatProduct !== null && heartbeatProduct !== report.browser?.product) return false;
+  if (failure.command?.schema === RAW_CDP_COMMAND_SCHEMA) {
+    const rawFinding = `instrument: ${failure.command.profile} ${failure.command.label}: `
+      + `${failure.command.method} failed under the ${failure.command.timeoutMs}ms transport cap `
+      + `(${failure.command.error})`;
+    if (!Array.isArray(report.findings) || !report.findings.includes(rawFinding)) return false;
+  }
+  let partialCount = 0;
+  for (const [profile, measurement] of Object.entries(report.profiles)) {
+    if (measurement?.schema === PARTIAL_PROFILE_SCHEMA) {
+      partialCount += 1;
+      if (!validPartialProfileMeasurement(measurement, profile, expectedRunId, verifyArtifact)
+        || profile !== failure.profile
+        || measurement.lastCompletedStage !== failure.lastCompletedStage
+        || measurement.failingStage !== failure.failingStage
+        || !validPartialCommandLedger(
+          measurement, failure, report.browser?.product,
+        )) return false;
+    } else if (!validCompleteProfileMeasurement(measurement, profile)) return false;
+  }
+  if (failure.profile === null) {
+    if (partialCount !== 0 || failure.command !== null) return false;
+  } else if (partialCount !== 1) return false;
+  const profileKeys = Object.keys(report.profiles);
+  const phonePartial = report.profiles.phone?.schema === PARTIAL_PROFILE_SCHEMA;
+  const desktopPartial = report.profiles.desktop?.schema === PARTIAL_PROFILE_SCHEMA;
+  const phoneComplete = report.profiles.phone !== undefined && !phonePartial;
+  const desktopComplete = report.profiles.desktop !== undefined && !desktopPartial;
+  const validPrefixShape = profileKeys.length === 0 && failure.profile === null
+    || sameJson(profileKeys, ['phone']) && failure.profile === 'phone' && phonePartial
+    || sameJson(profileKeys, ['phone', 'desktop']) && failure.profile === 'desktop'
+      && phoneComplete && desktopPartial
+    || sameJson(profileKeys, ['phone', 'desktop']) && failure.profile === null
+      && phoneComplete && desktopComplete;
+  if (!validPrefixShape) return false;
+  if (failure.classification === 'product-unanswerable') {
+    return failure.profile !== null
+      && validCandidateCommandEvidence(failure.command, { requireProductTimeout: true });
+  }
+  if (validCandidateCommandEvidence(failure.command, { requireProductTimeout: true })) return false;
+  return failure.command === null
+    || validCandidateCommandEvidence(failure.command)
+    || validPlainEvaluateCommand(failure.command)
+    || validRawCdpCommand(failure.command);
 }
 
 function validProfileMeasurements(profiles) {
   if (!isObject(profiles)
     || !sameJson(Object.keys(profiles).sort(), [...PROFILES].sort())) return false;
-  return PROFILES.every((profile) => {
-    const measurement = profiles[profile];
-    return isObject(measurement) && measurement.profile === profile
-      && isObject(measurement.viewport) && isObject(measurement.fixture)
-      && isObject(measurement.documentTokens) && isObject(measurement.points)
-      && isObject(measurement.phases) && isObject(measurement.lazySpeciesResource)
-      && Array.isArray(measurement.answerability)
-      && Array.isArray(measurement.reviewPacket);
-  });
+  return PROFILES.every((profile) => validCompleteProfileMeasurement(profiles[profile], profile));
+}
+
+function validBrowserProvenance(browser) {
+  const fields = [
+    'executable', 'product', 'revision', 'user_agent', 'js_version', 'protocol_version',
+  ];
+  return isObject(browser) && fields.every((field) =>
+    typeof browser[field] === 'string' && browser[field].length > 0);
 }
 
 export function verifyTerminalReport(report, expectedRunId, {
@@ -1140,12 +1672,22 @@ export function verifyTerminalReport(report, expectedRunId, {
   if (!isObject(report)) return { ok: false, errors: ['report must be an object'] };
   if (report.schema !== REPORT_SCHEMA) errors.push(`report schema must be ${REPORT_SCHEMA}`);
   if (report.runId !== expectedRunId) errors.push('report runId is not the requested current run');
-  const terminal = allowCalibration ? ['pass', 'fail', 'instrument-fail', 'calibration']
-    : ['pass', 'fail', 'instrument-fail'];
+  const terminal = allowCalibration
+    ? ['pass', 'fail', 'instrument-fail', 'product-unanswerable', 'calibration']
+    : ['pass', 'fail', 'instrument-fail', 'product-unanswerable'];
   if (!terminal.includes(report.status)) errors.push('report is not terminal');
-  if (!isObject(report.policy) || report.policy.attemptCount !== 1
-    || report.policy.automaticRetries !== 0 || report.policy.commandTimeoutMs !== COMMAND_TIMEOUT_MS) {
-    errors.push('one-attempt/no-retry/2s command policy is invalid');
+  const policyKeys = [
+    'attemptCount', 'automaticRetries', 'commandTimeoutMs', 'targetTimeoutMs',
+    'heartbeatTimeoutMs', 'transportTimeoutMs',
+  ];
+  if (!isObject(report.policy)
+    || !sameJson(Object.keys(report.policy).sort(), policyKeys.sort())
+    || report.policy.attemptCount !== 1 || report.policy.automaticRetries !== 0
+    || report.policy.commandTimeoutMs !== COMMAND_TIMEOUT_MS
+    || report.policy.targetTimeoutMs !== COMMAND_TIMEOUT_MS
+    || report.policy.heartbeatTimeoutMs !== COMMAND_TIMEOUT_MS
+    || report.policy.transportTimeoutMs !== CANDIDATE_TRANSPORT_TIMEOUT_MS) {
+    errors.push('one-attempt/no-retry/2s target+heartbeat/5s transport policy is invalid');
   }
   if (typeof report.startedAt !== 'string' || !Number.isFinite(Date.parse(report.startedAt))
     || typeof report.endedAt !== 'string' || !Number.isFinite(Date.parse(report.endedAt))
@@ -1163,25 +1705,52 @@ export function verifyTerminalReport(report, expectedRunId, {
   if (!sameJson(report.expectedOutcomes, EXPECTED_OUTCOMES)) {
     errors.push('sealed expected-outcome inventory drifted');
   }
-  if (report.status === 'instrument-fail') {
+  if (['instrument-fail', 'product-unanswerable'].includes(report.status)) {
     if (!Array.isArray(report.outcomes) || report.outcomes.length !== 0) {
-      errors.push('instrument-fail report must not claim product outcomes');
+      errors.push('partial terminal report must not claim completed product outcomes');
     }
     if (!Array.isArray(report.findings) || report.findings.length < 1) {
-      errors.push('instrument-fail report lacks a diagnosis');
+      errors.push('partial terminal report lacks a diagnosis');
+    }
+    if (!sameJson(report.blockedOutcomes, EXPECTED_OUTCOMES)) {
+      errors.push('partial terminal report must block the complete sealed outcome inventory');
+    }
+    if (!validPartialFailure(report, expectedRunId, verifyArtifact)) {
+      errors.push('partial terminal profile/stage/command/review evidence is invalid');
+    }
+    if (report.status === 'instrument-fail') {
+      if (report.partialFailure?.classification !== 'instrument'
+        || report.findings.some((finding) => typeof finding !== 'string'
+          || !finding.startsWith('instrument: '))) {
+        errors.push('instrument-fail report classification or diagnosis is invalid');
+      }
+    } else {
+      if (report.partialFailure?.classification !== 'product-unanswerable'
+        || report.findings.some((finding) => typeof finding !== 'string'
+          || !finding.startsWith('product: '))) {
+        errors.push('product-unanswerable report classification or diagnosis is invalid');
+      }
+      if (!validCommittedSourceIdentity(report.source?.begin)
+        || !validCommittedSourceIdentity(report.source?.end)) {
+        errors.push('product-unanswerable evidence requires one clean committed source identity');
+      }
+      if (!validBrowserProvenance(report.browser)) {
+        errors.push('product-unanswerable browser provenance is incomplete');
+      }
     }
     return { ok: errors.length === 0, errors };
+  }
+  if (report.partialFailure !== null) {
+    errors.push('complete terminal report retained partial-failure evidence');
+  }
+  if (!Array.isArray(report.blockedOutcomes) || report.blockedOutcomes.length !== 0) {
+    errors.push('complete terminal report retained blocked outcomes');
   }
   if (!validCommittedSourceIdentity(report.source?.begin)
     || !validCommittedSourceIdentity(report.source?.end)) {
     errors.push('certifying/calibration evidence requires one clean committed 40-hex source identity');
   }
-  const reportBrowserFields = [
-    'executable', 'product', 'revision', 'user_agent', 'js_version', 'protocol_version',
-  ];
-  if (!isObject(report.browser)
-    || reportBrowserFields.some((field) => typeof report.browser[field] !== 'string'
-      || report.browser[field].length === 0)) {
+  if (!validBrowserProvenance(report.browser)) {
     errors.push('browser provenance is incomplete');
   }
   if (!Array.isArray(report.outcomes)) errors.push('outcomes are missing');
