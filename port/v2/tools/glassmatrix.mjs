@@ -228,6 +228,7 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'reload-resource-release',
   'ready-confirmation-heartbeat',
   'ready-confirmation-ticker-progress',
+  'nonmodal-dock-button-contrast',
   'ultra-viewport-render-budget',
   'ultra-same-backing-resize',
 ]);
@@ -1945,6 +1946,25 @@ async function reportSelftest() {
   if (reloadFailures.length) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: replacement-document controls failed (${reloadFailures.join('; ')})`);
   }
+  const inlineStyleRestoration = {
+    absent: sameInlineStyleAttribute(null, null),
+    empty: sameInlineStyleAttribute('', ''),
+    absentToEmpty: sameInlineStyleAttribute(null, ''),
+    emptyToAbsent: sameInlineStyleAttribute('', null),
+    exactNonempty: sameInlineStyleAttribute('height: 243px;', 'height: 243px;'),
+    leakedFromAbsent: sameInlineStyleAttribute(null, 'height: 48px !important;'),
+    leakedFromEmpty: sameInlineStyleAttribute('', 'height: 48px !important;'),
+    changedNonempty: sameInlineStyleAttribute('height: 243px;', 'height: 48px !important;'),
+    malformedBefore: sameInlineStyleAttribute({}, ''),
+    malformedAfter: sameInlineStyleAttribute('', 0),
+  };
+  if (!inlineStyleRestoration.absent || !inlineStyleRestoration.empty
+    || !inlineStyleRestoration.absentToEmpty || !inlineStyleRestoration.emptyToAbsent
+    || !inlineStyleRestoration.exactNonempty || inlineStyleRestoration.leakedFromAbsent
+    || inlineStyleRestoration.leakedFromEmpty || inlineStyleRestoration.changedNonempty
+    || inlineStyleRestoration.malformedBefore || inlineStyleRestoration.malformedAfter) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: inline-style restoration controls failed (${JSON.stringify(inlineStyleRestoration)})`);
+  }
   const guideNeedle = 'up to 1,500 logical entries';
   const guideCarrier = `read-only Compendium presents ${guideNeedle}`;
   const guideBefore = `The ${guideCarrier} while Search filters those saved records.`;
@@ -2085,11 +2105,25 @@ async function reportSelftest() {
   const ultraBlocked = productBlockedSuffixForViewport(
     'desktop-8k', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', [],
   );
+  const landscapeContrastExecuted = productBlockedSuffixForViewport(
+    'phone-landscape', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', ['nonmodal-dock-button-contrast'],
+  );
+  const landscapeSurfaceExecuted = productBlockedSuffixForViewport(
+    'phone-landscape', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', ['mobile-landscape-surface-chrome-yield'],
+  );
+  const landscapeBothExecuted = productBlockedSuffixForViewport(
+    'phone-landscape', 'REPLACEMENT_UNANSWERABLE_AFTER_READY',
+    ['nonmodal-dock-button-contrast', 'mobile-landscape-surface-chrome-yield'],
+  );
   const primaryAlreadyExecuted = productBlockedSuffixForViewport(
     'primary-phone', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', ['forced-colors-system-mapping'],
   );
   if (primaryBlocked.length !== 1 || primaryBlocked[0].name !== 'forced-colors-system-mapping'
-    || landscapeBlocked.length !== 1 || landscapeBlocked[0].name !== 'mobile-landscape-surface-chrome-yield'
+    || landscapeBlocked.length !== 2 || landscapeBlocked[0].name !== 'nonmodal-dock-button-contrast'
+    || landscapeBlocked[1].name !== 'mobile-landscape-surface-chrome-yield'
+    || landscapeContrastExecuted.length !== 1 || landscapeContrastExecuted[0].name !== 'mobile-landscape-surface-chrome-yield'
+    || landscapeSurfaceExecuted.length !== 1 || landscapeSurfaceExecuted[0].name !== 'nonmodal-dock-button-contrast'
+    || landscapeBothExecuted.length !== 0
     || ultraBlocked.length !== 1 || ultraBlocked[0].name !== 'ultra-same-backing-resize'
     || primaryAlreadyExecuted.length !== 0
     || productBlockedSuffixForViewport('small-phone', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', []).length) {
@@ -3154,7 +3188,7 @@ function targetedProductRemainderBlocked(selectedViewport, productFailure) {
 function productBlockedSuffixForViewport(viewport, findingCode, executedControls = []) {
   const uniqueReachableSuffix = {
     'primary-phone': ['forced-colors-system-mapping'],
-    'phone-landscape': ['mobile-landscape-surface-chrome-yield'],
+    'phone-landscape': ['nonmodal-dock-button-contrast', 'mobile-landscape-surface-chrome-yield'],
     'desktop-8k': ['ultra-same-backing-resize'],
   }[viewport] || [];
   const executed = new Set(executedControls);
@@ -3181,6 +3215,16 @@ function controlCoverageOutcome(executedControls = [], blockedControls = []) {
     blocked: blockedRows.slice().sort((a, b) => a.name.localeCompare(b.name)),
     omitted: NEGATIVE_CONTROLS.filter((name) => !executed.includes(name) && !blockedNames.includes(name)),
   };
+}
+
+/* HTML serialization may expose an inline-style attribute with no
+   declarations as either absent or the empty string. Those states are
+   presentation-identical; every nonempty byte remains exact so a leaked
+   control declaration cannot be normalized away. */
+function sameInlineStyleAttribute(before, after) {
+  if (!(before === null || typeof before === 'string')
+    || !(after === null || typeof after === 'string')) return false;
+  return before === after || (before === null && after === '') || (before === '' && after === null);
 }
 
 async function main() {
@@ -4586,15 +4630,37 @@ async function main() {
               await waitFor('non-modal Compendium reopen', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();return d.panel.mode==='list'
                 &&d.panel.sourceCount===${hostileCompendiumRows.length}&&d.panel.filteredCount===${hostileCompendiumRows.length}
                 &&document.querySelector('#codexpanel [data-ci="0"]');})()`);
-              add(vp.label, 'compendium-nonmodal-chrome', await audit({
+              const nonModalAuditOptions = {
                 surface: 'compendium-nonmodal-chrome', root: 'body', textMin: 20, targetFloor,
                 safe: vp.safe || {}, safeExpected: vp.safe || undefined,
                 viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr },
                 fitSelectors: ['#searchbox', '#dock', '#survey'], interactiveRoots: ['#searchbox', '#dock'],
-                focusSelectors: ['#searchbox', '#dockcodex'], contrastSelectors: ['#searchbox', '#dock'], maxControlReports: 10,
+                focusSelectors: ['#searchbox', '#dockcodex'], contrastSelectors: ['#searchbox', '#dock button'],
+                maxControlReports: 10, maxContrastReports: 10,
                 overlapPairs: [['#codexpanel', '#searchbox'], ['#codexpanel', '#dock'], ['#survey', '#searchbox'], ['#survey', '#dock'],
                   ['#searchbox', '#dock']],
-              }));
+              };
+              const nonModalAuditRows = await audit(nonModalAuditOptions);
+              add(vp.label, 'compendium-nonmodal-chrome', nonModalAuditRows);
+              const dockContrastControl = await evalIn(`(()=>{const buttons=[...document.querySelectorAll('#dock button')];
+                if(buttons.length!==8||buttons.some(button=>!(button instanceof HTMLButtonElement)||!button.id))
+                  return {ok:false,why:'exact eight named dock buttons missing',count:buttons.length};
+                const expected=buttons.map(button=>'#'+CSS.escape(button.id)).sort(),prior=buttons.map(button=>button.getAttribute('style')),
+                  baseline=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)});let injected=[];
+                try{for(const button of buttons){button.style.setProperty('color','#fff','important');button.style.setProperty('background','#fff','important');}
+                  injected=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)});
+                }finally{buttons.forEach((button,index)=>{if(prior[index]===null)button.removeAttribute('style');else button.setAttribute('style',prior[index]);});}
+                const restored=buttons.map(button=>button.getAttribute('style')),clean=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)}),
+                  contrastIds=(rows)=>rows.filter(row=>row.code==='TEXT_CONTRAST_LOW'&&expected.includes(row.element)).map(row=>row.element).sort(),
+                  baselineIds=contrastIds(baseline),injectedIds=contrastIds(injected),cleanIds=contrastIds(clean),
+                  bare=[...baseline,...injected,...clean].some(row=>row.code==='TEXT_CONTRAST_LOW'&&row.element==='#dock'),
+                  restoredExact=restored.every((value,index)=>(${sameInlineStyleAttribute.toString()})(prior[index],value));
+                return {ok:JSON.stringify(injectedIds)===JSON.stringify(expected)&&JSON.stringify(cleanIds)===JSON.stringify(baselineIds)
+                    &&!bare&&restoredExact,expected,baselineIds,injectedIds,cleanIds,bare,restoredExact,prior,restored};})()`);
+              if (!dockContrastControl?.ok || nonModalAuditRows.some(row=>row.code==='TEXT_CONTRAST_LOW'&&row.element==='#dock')) {
+                instrumentFailures.push(`${vp.label}: non-modal dock contrast control did not isolate the painted buttons from the transparent layout wrapper (${JSON.stringify(dockContrastControl)})`);
+              }
+              recordControls('nonmodal-dock-button-contrast');
               await evalIn(`document.querySelector('#codexpanel [data-pnx]')?.focus()`);
 
               const revealHostileRow = async (target) => {
@@ -4660,7 +4726,7 @@ async function main() {
                     rows=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(controlOptions)});
                   }finally{if(prior===null)scroller.removeAttribute('style');else scroller.setAttribute('style',prior);}
                   const restored=scroller.getAttribute('style'),restoredClientHeight=scroller.clientHeight;
-                  return {rows,restoration:{ok:restored===prior&&beforeClientHeight>=243&&appliedClientHeight===48
+                  return {rows,restoration:{ok:(${sameInlineStyleAttribute.toString()})(prior,restored)&&beforeClientHeight>=243&&appliedClientHeight===48
                     &&restoredClientHeight===beforeClientHeight,prior,restored,beforeClientHeight,appliedClientHeight,restoredClientHeight}};})()`);
                 const rows = control?.rows || [];
                 if (!control?.restoration?.ok) instrumentFailures.push(`${vp.label}: real ${target.state} 48px Compendium injection did not restore the exact scroller style and >=243px geometry (${JSON.stringify(control?.restoration)})`);
@@ -4694,7 +4760,7 @@ async function main() {
                 }finally{if(prior===null)panel.removeAttribute('style');else panel.setAttribute('style',prior);}
                 const restored=panel.getAttribute('style'),restoredClientHeight=panel.clientHeight,restoredScrollerHeight=scroller.clientHeight,
                   restoredOverflowY=getComputedStyle(panel).overflowY;
-                return {rows,restoration:{ok:restored===prior&&beforeScrollerHeight>=243&&applied?.overflowY==='hidden'
+                return {rows,restoration:{ok:(${sameInlineStyleAttribute.toString()})(prior,restored)&&beforeScrollerHeight>=243&&applied?.overflowY==='hidden'
                     &&applied.clientHeight<beforeClientHeight&&restoredClientHeight===beforeClientHeight
                     &&restoredScrollerHeight===beforeScrollerHeight&&restoredOverflowY===beforeOverflowY,
                   prior,restored,beforeClientHeight,beforeScrollerHeight,beforeOverflowY,applied,restoredClientHeight,restoredScrollerHeight,restoredOverflowY}};})()`);
