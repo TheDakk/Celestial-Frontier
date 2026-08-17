@@ -1,7 +1,7 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-16.
+> 2026-08-17.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -611,6 +611,33 @@ both parent voices.
 
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
+
+**Current state (2026-08-17): `[EXEC]` maximum-catalogue criterion implemented; `[HUMAN]`
+review open.** The runnable, fail-closed `compendiummem` gate drives a deterministic 1,500-row
+Compendium through a spacer-preserved virtual window, focus pinning and native keyboard traversal,
+filter/clear, detail/Back, Close cleanup, and Planetside hide/release/reacquire. The product path
+owns real 132px thumb leases with one bounded producer, queued-work cancellation, dedupe, disposal,
+and cold-error publication plus recovery; list traffic neither mounts nor cache-pollutes through the
+440px full-portrait path.
+
+The checked-in `v2/budgets/compendium-memory-v1.json` authority is active and measured. It pairs the
+exact `38447019517147319bd08c598202d097ee866874` broken-baseline run
+`20260817074210620-55255-c8f0e10c47` with three independent candidate runs
+`20260817075022672-56100-97d57bcb27`, `20260817075709048-56928-b0435507d2`, and
+`20260817080124302-57611-3422d7d6b9`. All four runs share one Arc-local Edge build authority:
+product `Edg/151.0.4129.86`, revision `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript
+`15.1.23.7`, and protocol `1.3`. That authority is Compendium-only and does **not** re-pin the
+Gate-A/global Edge `150.0.4078.83` baseline. Every phone/desktop ceiling is strictly above its
+three-run measured maximum with written variance/headroom rationale, while the paired broken build
+exceeds exactly eleven fields: mounted rows, heap, DOM nodes, live cache entries, decoded pixels,
+decoded bytes, encoded bytes, portrait-cache entries, portrait encoded bytes, warm-heap range, and
+warm-encoded range.
+
+`[EXEC]` here records the implemented executable contract, active calibration data, replay verifier,
+and negative controls; it is not a terminal certification claim for mutable working-tree bytes and
+does not close the Arc's irreducible review. Human judgment of the six phone/desktop list, detail,
+and focus-pinned images remains outstanding. Arc 1B also remains open for ordinary scene/Pixi
+texture, render-target, GPU-proxy, and combined travel → Compendium → Shipyard plateau ownership.
 
 **Scope:**
 

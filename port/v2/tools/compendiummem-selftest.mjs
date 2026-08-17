@@ -23,6 +23,8 @@ import {
   REPORT_INPUT_KEYS, REPORT_SCHEMA,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
   calibrationMetrics, candidateNativeKeyDispatches,
+  compendiumBrowserAuthority, compendiumBrowserAuthorityMatches,
+  compendiumBudgetBrowserAuthority, validCompendiumBrowserAuthority,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression, evaluateProfile,
   installBrokenBaselineThumbObserver,
@@ -42,13 +44,14 @@ import {
 } from './compendiummem-fixture.mjs';
 import {
   armCandidateProducerError, candidateArmProducerErrorExpression,
+  compendiumBudgetModeAllowed,
   candidateProducerErrorPreArmExpression, candidateProducerErrorWorkExpression,
   candidateFilterInputExpression, candidateFilterTelemetryExpression,
   collectCandidateSnapshot, createCandidateCollectorObservations,
   createCandidateCommandRecorder,
   driveCandidateFilterTransition, validCandidateFilterInputExpression,
   validCandidateFilterTelemetryExpression, validCandidateArmProducerErrorExpression,
-  validCandidateProducerErrorExpression,
+  validCandidateProducerErrorExpression, verifyCompendiumTerminalReport,
 } from './compendiummem.mjs';
 
 function assert(condition, message) { if (!condition) throw new Error(`COMPENDIUMMEM SELFTEST: ${message}`); }
@@ -81,7 +84,7 @@ function activeBudget(fixture) {
     mountedRowsMax: 40, heapUsedBytesMax: 20_000_000, documentsMax: 4, nodesMax: 1000,
     jsEventListenersMax: 200, liveCacheEntriesMax: 100, liveDecodedPixelsMax: 2_000_000,
     liveDecodedBytesMax: 8_000_000, liveEncodedBytesMax: 1_000_000,
-    queuedJobsPeakMax: 20, activeJobsPeakMax: 4, liveLeasesMax: 100,
+    queuedJobsPeakMax: 20.5, activeJobsPeakMax: 4, liveLeasesMax: 100,
     liveSubscribersMax: 100, livePortraitCacheEntriesMax: 4,
     livePortraitEncodedBytesMax: 1_000_000,
     warmHeapRangeBytesMax: 1000, warmDecodedBytesRangeMax: 1000,
@@ -126,7 +129,7 @@ function artSnapshot({ portrait = false, closed = false, generation = 1 } = {}) 
     schema: ART_DIAGNOSTICS_SCHEMA,
     deviceClass: 'desktop',
     limits: {
-      budgetStatus: 'provisional-candidate', cacheEntries: 256, decodedPixels: 8_000_000,
+      budgetStatus: 'active-measured', cacheEntries: 256, decodedPixels: 8_000_000,
       decodedBytes: 32_000_000, encodedBytes: 5_000_000,
       encodedByteBasis: 'utf8-data-url', queuedJobs: 256, activeJobs: 4,
       leases: 400, portraitEntries: 8, portraitEncodedBytes: 20_000_000,
@@ -665,6 +668,15 @@ function terminalReport(runId, outcomes, budget, profiles) {
     commit: 'a'.repeat(40), branch: 'openai/selftest', state: 'committed',
     statusSha256: 'b'.repeat(64), workingTreeSha256: 'c'.repeat(64),
   };
+  const inputs = Object.fromEntries(
+    REPORT_INPUT_KEYS.map((key) => [key, sha256(`selftest-${key}`)]),
+  );
+  inputs.fixtureRows = budget.fixture.rowsSha256;
+  const browser = {
+    executable: '/selftest/chrome', product: 'Chrome/Selftest', revision: 'selftest',
+    user_agent: 'selftest', js_version: 'selftest', protocol_version: '1.3',
+  };
+  const browserAuthority = compendiumBudgetBrowserAuthority(budget);
   return {
     schema: REPORT_SCHEMA, status: 'pass', runId,
     startedAt: '2026-08-16T00:00:00.000Z', endedAt: '2026-08-16T00:00:01.000Z',
@@ -674,12 +686,14 @@ function terminalReport(runId, outcomes, budget, profiles) {
       targetTimeoutMs: 2000, heartbeatTimeoutMs: 2000, transportTimeoutMs: 5000,
     },
     source: { begin: source, end: { ...source } },
-    inputs: Object.fromEntries(REPORT_INPUT_KEYS.map((key) => [key, sha256(`selftest-${key}`)])),
-    browser: {
-      executable: '/selftest/chrome', product: 'Chrome/Selftest', revision: 'selftest',
-      user_agent: 'selftest', js_version: 'selftest', protocol_version: '1.3',
+    inputs, browser,
+    budget: {
+      status: budget.status, path: 'budgets/compendium-memory-v1.json', sha256: inputs.budget,
+      browserAuthority,
+      browserAuthorityMatch: browserAuthority === null
+        ? null : compendiumBrowserAuthorityMatches(browser, browserAuthority),
     },
-    budget: { status: budget.status }, expectedOutcomes: [...EXPECTED_OUTCOMES],
+    expectedOutcomes: [...EXPECTED_OUTCOMES],
     outcomes, findings: [], profiles, partialFailure: null, blockedOutcomes: [],
     reviewPacket: ['phone', 'desktop'].flatMap((profile) =>
       /* Match the real collector chronology; verification seals the exact
@@ -1944,6 +1958,41 @@ export async function runCompendiumMemSelftest() {
   );
   const budgetCheck = validateBudget(budget);
   assert(budgetCheck.ok, `synthetic active budget rejected: ${budgetCheck.errors.join('; ')}`);
+  assert(compendiumBudgetModeAllowed({ calibrate: false, budgetStatus: 'active' })
+    && compendiumBudgetModeAllowed({ calibrate: true, budgetStatus: 'calibration-required' })
+    && !compendiumBudgetModeAllowed({ calibrate: true, budgetStatus: 'active' })
+    && !compendiumBudgetModeAllowed({ calibrate: false, budgetStatus: 'calibration-required' })
+    && !compendiumBudgetModeAllowed({ calibrate: 'false', budgetStatus: 'active' }),
+  'calibration/certification mode was not fail-closed against the exact budget state');
+  const browserAuthority = compendiumBudgetBrowserAuthority(budget);
+  assert(validCompendiumBrowserAuthority(browserAuthority)
+    && JSON.stringify(compendiumBrowserAuthority(
+      budget.calibration.samples.phone[0].browser,
+    )) === JSON.stringify(browserAuthority)
+    && compendiumBrowserAuthorityMatches({
+      executable: '/usr/bin/microsoft-edge-stable', product: 'Chrome/Selftest',
+      revision: 'selftest', user_agent: 'Linux selftest', js_version: 'selftest',
+      protocol_version: '1.3',
+    }, browserAuthority),
+  'Arc browser authority did not accept the same exact build across host path/UA provenance');
+  assert(!compendiumBrowserAuthorityMatches({
+    product: 'Chrome/Other', revision: 'selftest', js_version: 'selftest',
+    protocol_version: '1.3',
+  }, browserAuthority), 'a different browser product matched the Arc authority');
+  for (const field of ['product', 'revision', 'jsVersion', 'protocolVersion']) {
+    const mismatchedBaselineBrowser = clone(budget);
+    const sampleBrowser = mismatchedBaselineBrowser.pairedBrokenBaseline.samples.phone[0].browser;
+    sampleBrowser[field] = `${sampleBrowser[field]}-other`;
+    assert(validateBudget(mismatchedBaselineBrowser).errors.some((error) =>
+      /does not match the Arc 1A calibration authority/.test(error)),
+    `paired baseline ${field} drift escaped the candidate browser authority`);
+  }
+  const equalMeasuredCeiling = clone(budget);
+  equalMeasuredCeiling.ceilings.phone.queuedJobsPeakMax
+    = equalMeasuredCeiling.calibration.samples.phone[0].metrics.queuedJobsPeak;
+  assert(validateBudget(equalMeasuredCeiling).errors.some((error) =>
+    /must be strictly above measured queuedJobsPeak max/.test(error)),
+  'a ceiling equal to the observed maximum bypassed the headroom law');
   const duplicateBudget = clone(budget);
   duplicateBudget.calibration.samples.phone[1] = clone(duplicateBudget.calibration.samples.phone[0]);
   assert(validateBudget(duplicateBudget).errors.some((error) =>
@@ -2435,6 +2484,74 @@ export async function runCompendiumMemSelftest() {
   const validReportCheck = verifyTerminalReport(report, 'selftest-current');
   assert(validReportCheck.ok,
     `valid terminal report was rejected: ${validReportCheck.errors.join('; ')}`);
+  const productionVerify = (candidate, overrides = {}) => verifyCompendiumTerminalReport(
+    candidate, 'selftest-current', {
+      budgetRecord: budget, expectedBudgetSha256: report.budget.sha256,
+      fixture, expectedInputs: report.inputs, expectedSourceIdentity: report.source.begin,
+      ...overrides,
+    },
+  );
+  const boundReportCheck = productionVerify(report);
+  assert(boundReportCheck.ok,
+    `production budget-bound terminal report was rejected: ${boundReportCheck.errors.join('; ')}`);
+  const locallyConsistentWrongAuthority = clone(report);
+  locallyConsistentWrongAuthority.browser.revision = 'other-revision';
+  locallyConsistentWrongAuthority.budget.browserAuthority.revision = 'other-revision';
+  locallyConsistentWrongAuthority.budget.browserAuthorityMatch = true;
+  assert(verifyTerminalReport(locallyConsistentWrongAuthority, 'selftest-current').ok
+    && !productionVerify(locallyConsistentWrongAuthority).ok,
+  'a locally self-consistent report laundered a browser authority different from the exact budget');
+  assert(!productionVerify(report, { expectedBudgetSha256: 'f'.repeat(64) }).ok,
+  'production terminal verification accepted a report against the wrong budget byte hash');
+  assert(!verifyCompendiumTerminalReport(report, 'selftest-current').ok,
+    'production terminal verification accepted an unbound budget/report pair');
+  const wrongInputBudget = clone(report);
+  wrongInputBudget.inputs.budget = 'f'.repeat(64);
+  const wrongMetadataBudget = clone(report);
+  wrongMetadataBudget.budget.sha256 = 'f'.repeat(64);
+  assert(verifyTerminalReport(wrongInputBudget, 'selftest-current').ok
+    && verifyTerminalReport(wrongMetadataBudget, 'selftest-current').ok
+    && !productionVerify(wrongInputBudget).ok && !productionVerify(wrongMetadataBudget).ok,
+  'one of the two report budget-byte carriers escaped exact production binding');
+  const wrongCollectorInput = clone(report);
+  wrongCollectorInput.inputs.collector = 'f'.repeat(64);
+  assert(verifyTerminalReport(wrongCollectorInput, 'selftest-current').ok
+    && !productionVerify(wrongCollectorInput).ok,
+  'a stale/tampered collector input digest escaped exact current-input binding');
+  const wrongSource = clone(report);
+  wrongSource.source.begin.commit = 'f'.repeat(40);
+  wrongSource.source.end.commit = 'f'.repeat(40);
+  assert(verifyTerminalReport(wrongSource, 'selftest-current').ok
+    && !productionVerify(wrongSource).ok,
+  'a stale/tampered clean-looking source identity escaped exact-current-source binding');
+  const staleRawHeapPass = clone(report);
+  staleRawHeapPass.profiles.phone.points.first.heap.usedSize
+    = budget.ceilings.phone.heapUsedBytesMax + 1;
+  assert(verifyTerminalReport(staleRawHeapPass, 'selftest-current').ok
+    && !productionVerify(staleRawHeapPass).ok,
+  'a stale PASS ignored raw heap evidence above the exact active ceiling');
+  const staleRawProductStatusPass = clone(report);
+  staleRawProductStatusPass.profiles.phone.points.first.diagnostics.art.limits.budgetStatus
+    = 'provisional-candidate';
+  assert(verifyTerminalReport(staleRawProductStatusPass, 'selftest-current').ok
+    && !productionVerify(staleRawProductStatusPass).ok,
+  'a stale PASS ignored raw product diagnostics from the provisional budget state');
+  const truthfulHeapFail = clone(staleRawHeapPass);
+  truthfulHeapFail.outcomes = [
+    ...evaluateProfile(truthfulHeapFail.profiles.phone, budget, fixture),
+    ...evaluateProfile(truthfulHeapFail.profiles.desktop, budget, fixture),
+  ];
+  const truthfulHeapFindings = truthfulHeapFail.outcomes
+    .filter((outcome) => outcome.status === 'fail').map((outcome) => outcome.diagnosis);
+  truthfulHeapFail.status = 'fail';
+  truthfulHeapFail.findings = truthfulHeapFindings;
+  assert(productionVerify(truthfulHeapFail).ok,
+    'a truthful raw-over-ceiling FAIL was rejected by exact outcome replay');
+  const wrongActiveStatusFail = clone(truthfulHeapFail);
+  wrongActiveStatusFail.budget.status = 'calibration-required';
+  assert(verifyTerminalReport(wrongActiveStatusFail, 'selftest-current').ok
+    && !productionVerify(wrongActiveStatusFail).ok,
+  'a complete FAIL misstated the exact active budget status');
   const staleBalancedLeaseDeficitPass = clone(report);
   staleBalancedLeaseDeficitPass.profiles.phone.phases.producerErrorWitness
     = clone(multiJobBalancedLeaseDeficit);
@@ -2734,6 +2851,7 @@ export async function runCompendiumMemSelftest() {
     && ['list', 'focus-pinned'].includes(item.state));
   const preBrowserPartial = {
     ...clone(report), status: 'instrument-fail', browser: null, outcomes: [],
+    budget: { ...clone(report.budget), browserAuthorityMatch: null },
     findings: ['instrument: pre-browser selftest failure'], profiles: {}, reviewPacket: [],
     partialFailure: {
       schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
@@ -3811,6 +3929,46 @@ export async function runCompendiumMemSelftest() {
   emptyBrowser.browser.protocol_version = '';
   assert(!verifyTerminalReport(emptyBrowser, 'selftest-current').ok,
     'PASS with empty browser provenance was accepted');
+  const crossHostBrowser = clone(report);
+  crossHostBrowser.browser.executable = '/usr/bin/microsoft-edge-stable';
+  crossHostBrowser.browser.user_agent = 'Linux selftest';
+  assert(verifyTerminalReport(crossHostBrowser, 'selftest-current').ok,
+    'same exact Arc browser build was rejected solely for a cross-host path/UA');
+  const missingPassAuthority = clone(report);
+  missingPassAuthority.budget.browserAuthority = null;
+  missingPassAuthority.budget.browserAuthorityMatch = null;
+  assert(!verifyTerminalReport(missingPassAuthority, 'selftest-current').ok,
+    'active PASS without an Arc browser authority was accepted');
+  const falsePassAuthority = clone(report);
+  falsePassAuthority.budget.browserAuthorityMatch = false;
+  assert(!verifyTerminalReport(falsePassAuthority, 'selftest-current').ok,
+    'active PASS with a false browser-authority match was accepted');
+  const forgedPassAuthority = clone(report);
+  forgedPassAuthority.browser.product = 'Chrome/Other';
+  forgedPassAuthority.budget.browserAuthorityMatch = true;
+  assert(!verifyTerminalReport(forgedPassAuthority, 'selftest-current').ok,
+    'forged browserAuthorityMatch true over a different product was accepted');
+  const authorityMismatch = clone(report);
+  authorityMismatch.status = 'instrument-fail';
+  authorityMismatch.browser.product = 'Chrome/Other';
+  authorityMismatch.budget.browserAuthorityMatch = false;
+  authorityMismatch.outcomes = [];
+  authorityMismatch.findings = [
+    'instrument: browser does not match the exact Arc 1A calibration authority',
+  ];
+  authorityMismatch.profiles = {};
+  authorityMismatch.reviewPacket = [];
+  authorityMismatch.partialFailure = {
+    schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
+    lastCompletedStage: null, failingStage: 'Arc 1A browser authority', command: null,
+  };
+  authorityMismatch.blockedOutcomes = [...EXPECTED_OUTCOMES];
+  assert(verifyTerminalReport(authorityMismatch, 'selftest-current').ok,
+    'exact pre-measurement browser-authority mismatch report was rejected');
+  const lateAuthorityMismatch = clone(authorityMismatch);
+  lateAuthorityMismatch.profiles.phone = clone(phone);
+  assert(!verifyTerminalReport(lateAuthorityMismatch, 'selftest-current').ok,
+    'browser-authority mismatch retained product measurements');
   const missingReview = clone(report);
   missingReview.reviewPacket.pop();
   assert(!verifyTerminalReport(missingReview, 'selftest-current').ok,
@@ -3861,6 +4019,7 @@ export async function runCompendiumMemSelftest() {
     const instrumentFail = {
       ...running, status: 'instrument-fail', endedAt: '2026-08-16T00:00:00.100Z',
       outcomes: [], findings: ['instrument: injected pre-browser failure'], browser: null,
+      budget: { ...running.budget, browserAuthorityMatch: null },
       profiles: {}, reviewPacket: [], blockedOutcomes: [...EXPECTED_OUTCOMES],
       partialFailure: {
         schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
@@ -3881,6 +4040,8 @@ export async function runCompendiumMemSelftest() {
   const calibration = clone(report);
   calibration.status = 'calibration';
   calibration.budget.status = 'calibration-required';
+  calibration.budget.browserAuthority = null;
+  calibration.budget.browserAuthorityMatch = null;
   assert(verifyTerminalReport(calibration, 'selftest-current', { allowCalibration: true }).ok,
     'explicit non-certifying calibration report was rejected');
   assert(!verifyTerminalReport(calibration, 'selftest-current').ok,

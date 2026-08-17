@@ -179,10 +179,28 @@ startup variance, not a retry or a workflow/job timeout increase.
 
 Browser provenance is owned by each process. A `CF_BROWSER` value attached to one GitHub
 Actions step does not carry into the next step merely because both belong to the same job.
-All preview-producing jobs therefore pin the exact CI browser at job scope and resolve it
-fail-closed before the long battery; every later smoke, matrix, and preview process inherits
-the same selection. Do not depend on fallback ordering when a runner has several Chromium-
-family browsers installed.
+The ordinary smoke, Glass, persona, preview, and root browser gates therefore pin and resolve
+`/usr/bin/google-chrome` fail-closed; the manual workflow also restores that exact Chrome path
+for its later smoke, matrix, persona, package, and preview-smoke steps. Do not depend on fallback
+ordering when a runner has several Chromium-family browsers installed.
+
+Arc 1A is the deliberate narrow exception. The current 1,500-row Compendium is virtualized;
+list art uses leased, cancellable, deduplicated 132px thumbnails, detail uses a separately
+owned 440px image, and Planetside uses the same lease path. Its active measured budget and
+standalone `compendiummem` gate are calibrated to the Arc-local four-field authority
+`arc1a-compendium-memory-only`: product `Edg/151.0.4129.86`, revision
+`@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript version `15.1.23.7`, and
+CDP protocol version `1.3`. Executable path and user agent remain recorded provenance, not
+cross-host match fields.
+
+Ubuntu provisions `/usr/bin/microsoft-edge-stable` only for the ordinary Compendium job and
+the manual Compendium selftest/run/verify steps. The package is the exact Microsoft
+`microsoft-edge-stable_151.0.4129.86-1_amd64.deb` from
+`https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.86-1_amd64.deb`,
+with SHA-256 `26b02cb1c6465756df94b9ef34191b614f3df627ba21b7b00b641f44cc1d8343`;
+the workflow checks those bytes, the installed package version, and the executable before use.
+This does not re-pin Gate A or the global browser authority: `../tools/deps.pinned.json` remains
+Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates.
 
 `preview:verify` proves package integrity and the safety metadata. It does not assert that a
 commit is still the newest development commit. The full 40-character commit and
@@ -199,7 +217,8 @@ The production and development channels intentionally publish different products
 
 - a successful `main` push battery lets the production job package the root v1.8.9 HTML;
 - a successful `develop` push battery lets the development job install the exact v2
-  workspace, resolve its pinned browser, run preview selftests, build an approved candidate
+  workspace, resolve each phase-owned browser selection (Arc-local Edge only for Compendium;
+  Chrome for the other browser gates), run preview selftests, build an approved candidate
   from that exact commit, browser-smoke those bytes, and give only that package to the
   development publisher;
 - the publisher verifies source branch/SHA/clean state, preview schema v3, full-commit
@@ -424,7 +443,10 @@ The ordinary battery (parallel-job structure since 2026-08-14) emits these artif
   product PASS/FAIL must bind the complete six-image packet; an earlier instrument failure may
   diagnose why none exists. The independent job runs the browser-free instrument selftest before
   one ordinary active-budget certification, then always verifies the named run id and uploads
-  current evidence even when the gate is red;
+  current evidence even when the gate is red. The local report/PNGs are Git-ignored,
+  overwritten current-run evidence—not a committed PASS; certification exists only when the
+  exact-current report verifies. They do not supply the still-open [HUMAN] six-image visual
+  judgment. Arc 1B is not claimed;
 - `battery-reports`: the joined smoke/glass/persona bundle assembled by the final
   `v2-persona-preview` job;
 - `v2-browser-evidence`: the real-browser screenshots;
@@ -457,9 +479,9 @@ When available on the default branch, the manual workflow:
    should be configured before the first candidate run (the environment name alone does
    not create reviewer protection);
 4. reruns deterministic, type, art, browser, and preview-producer controls;
-5. runs the Compendium memory selftest followed by one ordinary active-budget certification,
-   always verifies its exact run id, and retains its current report plus every same-run review
-   artifact even on failure;
+5. provisions exact Edge 151 only for the Compendium memory selftest, one-attempt/no-retry
+   active-budget run, and exact-run verification; retains the current report plus every same-run
+   review artifact even on failure; then keeps Chrome for the later browser gates;
 6. passes the explicit `--approved-publication-candidate` producer flag and uploads
    evidence plus that candidate for 14 days;
 7. has only `contents: read` permission—no Pages token, deployment token, repository write,

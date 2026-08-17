@@ -46,7 +46,7 @@ export interface SpeciesArtDiagnosticsV1 {
   readonly schema: 'cf-v2-species-art-diagnostics/v1';
   readonly deviceClass: SpeciesArtDeviceClass;
   readonly limits: Readonly<{
-    budgetStatus: 'provisional-candidate';
+    budgetStatus: 'active-measured';
     cacheEntries: number;
     decodedPixels: number;
     decodedBytes: number;
@@ -105,10 +105,11 @@ interface DeviceLimits {
   readonly portraitEncodedBytes: number;
 }
 
-/* PROVISIONAL candidates pending Arc 1A candidate/broken-baseline measurement.
-   A 132px RGBA resource is 69,696 decoded bytes. Entry and byte limits are
-   intentionally both enforced: neither a lucky compression ratio nor a fixed
-   row count gets to stand in for the resource budget. */
+/* ACTIVE Arc 1A limits, paired against the sealed broken baseline and the
+   checked-in three-run phone/desktop calibration authority. A 132px RGBA
+   resource is 69,696 decoded bytes. Entry and byte limits are intentionally
+   both enforced: neither a lucky compression ratio nor a fixed row count gets
+   to stand in for the resource budget. */
 const DEVICE_LIMITS: Readonly<Record<SpeciesArtDeviceClass, DeviceLimits>> = Object.freeze({
   phone: Object.freeze({
     cacheEntries: 96,
@@ -658,7 +659,7 @@ export function speciesArtDiagnostics(): SpeciesArtDiagnosticsV1 {
     schema: 'cf-v2-species-art-diagnostics/v1' as const,
     deviceClass: currentDeviceClass(),
     limits: Object.freeze({
-      budgetStatus: 'provisional-candidate' as const,
+      budgetStatus: 'active-measured' as const,
       cacheEntries: limits.cacheEntries,
       decodedPixels: limits.decodedPixels,
       decodedBytes: limits.decodedBytes,

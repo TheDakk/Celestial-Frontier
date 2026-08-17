@@ -90,18 +90,25 @@
 > certification, and it changes no schema, production version, shipped release
 > or update-popup state.
 
-> **2026-08-13 v2 next-arc overlay — approved design, NOT LIVE:** The current v2
-> Compendium is a read-only eager list and V2 has no Cargo, Shipyard, ship portrait,
-> crafting, research, or upgrade controls. A maximum imported catalogue can contain
-> 1,500 rows; cold rows currently receive the full 440px portrait before the asynchronous
-> 132px derivative is cached, so mounted DOM references can outrun the existing cache caps.
-> The next portrait surface virtualizes to the visible window plus bounded overscan,
-> delivers 132px thumbnails asynchronously with an identity-safe placeholder, and reserves
-> the 440px master for the selected detail. Scroll position, native keyboard focus and the
-> one-Close-owner law survive thumbnail arrival; stale work cancels on filter, close or
-> generation change. Decoded pixels/bytes, mounted rows and outstanding jobs are budgeted,
-> and repeated open/scroll/detail/close cycles must plateau in a real browser with a
-> deliberate unbounded-list/no-disposal control.
+> **2026-08-17 v2 Arc 1A UI/resource overlay — current implementation:** The read-only
+> Compendium now virtualizes all 1,500 deterministic rows to a visible variable-height
+> window, bounded overscan, and any focus-pinned row. Native keyboard focus and logical
+> anchor-plus-offset survive measurement, filtering, detail/Back reconstruction, and row
+> height changes. Compendium and Planetside use identity-safe asynchronous 132px leases;
+> image bindings retain their owner across arrival or a contained producer error, while stale
+> queued work deduplicates or cancels on rebind, filter, close, and teardown. Only the selected
+> detail retains a 440px portrait, and Back/Close removes that DOM source. The exact failed key
+> recovers through a fresh lease without leaking the former owner.
+>
+> Phone and desktop ceilings are active measured from three independent one-attempt candidate
+> runs plus the paired exact `3844701` broken baseline. The ruler owns an Arc-local four-field
+> Edge 151 authority (product, revision, JavaScript version, protocol version), exact-current
+> budget/input/source identity, and terminal replay of raw outcomes; it does not repin the
+> global Gate-A Edge 150 browser. Terminal automation authority belongs only to a verified
+> exact-current ignored report, not this tracked reference. Six run-bound list, focus-pinned,
+> and detail PNGs still await HUMAN review. Arc 1B scene-resource disposal and live HD
+> planet replacement remain open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
+> research, or upgrade controls.
 >
 > The approved Shipyard is a new responsive panel, not a repurposed character sheet. Its
 > static presentation reads one pure `ShipVisualState` shared with the travel-reach
@@ -381,10 +388,12 @@
 > reordered, wrong-operation/context, just-late, and still-rendering evidence.
 > IndexedDB itself is not wrapped in a timeout race, and no retry or timeout
 > increase turns a red import green.
-> The current profile is not yet a release
-> budget gate: cold repetitions, long-task/memory budgets, Compendium
-> virtualization, scene-texture disposal, live HD planet replacement and fuller
-> hidden-tab behavior remain open. The v2 static preview packaging/hosting
+> The Arc 1A Compendium memory/resource gate now has active measured phone and desktop
+> ceilings under its exact Arc-local Edge 151 authority; this does not repin the global
+> Gate-A Edge 150 browser. Terminal automation authority belongs only to a verified exact-current
+> ignored report, not this tracked reference. Its six PNGs still await HUMAN
+> review. Arc 1B scene-texture disposal, live HD planet replacement, broader long-task
+> coverage, and fuller hidden-tab behavior remain open. The v2 static preview packaging/hosting
 > contract is documented separately in `port/DEVELOPMENT_PREVIEW.md`; a preview
 > is development evidence, never a release or production deployment.
 >
@@ -694,7 +703,7 @@
 > merge/release/deploy/version authority follows.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
-v2 overlay matches `port/v2` as of 2026-08-15. The addenda at the end preserve
+v2 overlay matches `port/v2` as of 2026-08-17. The addenda at the end preserve
 **THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
 its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
 full-screen surface, and any surface raised over training must clear the lesson

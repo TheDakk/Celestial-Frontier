@@ -4,8 +4,9 @@
    owns a deterministic 1,500-row fixture, drives native DOM/keyboard/scroll
    outcomes over raw CDP, samples product diagnostics plus browser heap/DOM
    counters, and replaces any prior report with a current RUNNING record
-   before the build/browser attempt. Numeric certification remains disabled
-   until the v2-owned budget contains measured phone/desktop ceilings.
+   before the build/browser attempt. Numeric certification is allowed only
+   when the v2-owned budget contains active measured phone/desktop ceilings
+   and the launched browser matches that budget's Arc-local build authority.
 
    Usage:
      node tools/compendiummem.mjs
@@ -34,6 +35,7 @@ import {
   REPORT_INPUT_KEYS, REPORT_SCHEMA, REQUIRED_WARM_CYCLES,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
   calibrationMetrics, candidateNativeKeyDispatches,
+  compendiumBrowserAuthorityMatches, compendiumBudgetBrowserAuthority,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression,
   evaluateCandidateExpression, evaluateProfile, installBrokenBaselineThumbObserver,
@@ -196,6 +198,7 @@ function reportRunId() {
   return `${new Date().toISOString().replace(/[^0-9]/g, '').slice(0, 17)}-${process.pid}-${crypto.randomBytes(5).toString('hex')}`;
 }
 function makeRunningReport({ runId, startedAt, source, inputs, budget }) {
+  const browserAuthority = compendiumBudgetBrowserAuthority(budget);
   return {
     schema: REPORT_SCHEMA, status: 'running', runId,
     startedAt: startedAt.toISOString(), endedAt: null, durationMs: null,
@@ -206,10 +209,35 @@ function makeRunningReport({ runId, startedAt, source, inputs, budget }) {
     },
     source: { begin: source, end: source }, inputs,
     browser: null,
-    budget: { status: budget.status, path: 'budgets/compendium-memory-v1.json', sha256: inputs.budget },
+    budget: {
+      status: budget.status, path: 'budgets/compendium-memory-v1.json', sha256: inputs.budget,
+      browserAuthority, browserAuthorityMatch: null,
+    },
     expectedOutcomes: [...EXPECTED_OUTCOMES], outcomes: [], findings: [], profiles: {},
     reviewPacket: [], partialFailure: null, blockedOutcomes: [],
   };
+}
+export function verifyCompendiumTerminalReport(report, expectedRunId, {
+  allowCalibration = false, verifyArtifact = null,
+  budgetRecord = null, expectedBudgetSha256 = null,
+  fixture = null, expectedInputs = null, expectedSourceIdentity = null,
+} = {}) {
+  if (budgetRecord === null || fixture === null || expectedInputs === null
+    || expectedSourceIdentity === null
+    || !/^[a-f0-9]{64}$/.test(String(expectedBudgetSha256 || ''))) {
+    return {
+      ok: false,
+      errors: ['production terminal verification requires exact budget, fixture, input, source, and byte-hash authority'],
+    };
+  }
+  return verifyTerminalReport(report, expectedRunId, {
+    allowCalibration, verifyArtifact, budgetRecord, expectedBudgetSha256,
+    fixture, expectedInputs, expectedSourceIdentity,
+  });
+}
+export function compendiumBudgetModeAllowed({ calibrate, budgetStatus }) {
+  return typeof calibrate === 'boolean'
+    && (calibrate ? budgetStatus === 'calibration-required' : budgetStatus === 'active');
 }
 function calibrationCeilings() {
   const ceiling = {
@@ -1461,7 +1489,7 @@ function findCandidateSpeciesChunk(candidateDist) {
   const semantic = files.filter((file) => {
     const source = fs.readFileSync(file, 'utf8');
     return source.includes('cf-v2-species-art-diagnostics/v1')
-      && source.includes('provisional-candidate')
+      && source.includes('active-measured')
       && source.includes('leaseThumb') && source.includes('speciesArtDiagnostics');
   });
   assert(semantic.length === 1,
@@ -1857,6 +1885,10 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
       label: 'Compendium exact-3844701 broken-baseline gate',
       userDataPrefix: 'cf-compendiummem-baseline', startupTimeoutMs: 15000,
     }));
+    const baselineBrowserAuthority = compendiumBudgetBrowserAuthority(budget);
+    assert(baselineBrowserAuthority === null
+      || compendiumBrowserAuthorityMatches(browser.browser, baselineBrowserAuthority),
+    'paired broken-baseline browser does not match the exact Arc 1A calibration authority');
     const saveFixtures = readJson(baselineSavePath);
     const rawSave = structuredClone(saveFixtures.inputs.veteran_rich);
     rawSave.codex = projection.codex;
@@ -1989,7 +2021,10 @@ async function runGate({ calibrate }) {
     if (!budgetValidation.ok) {
       throw new Error(`budget record invalid: ${budgetValidation.errors.join('; ')}`);
     }
-    if (!calibrate && budget.status !== 'active') {
+    if (calibrate && !compendiumBudgetModeAllowed({ calibrate, budgetStatus: budget.status })) {
+      throw new Error('candidate calibration is closed because the measured Compendium budget is active');
+    }
+    if (!calibrate && !compendiumBudgetModeAllowed({ calibrate, budgetStatus: budget.status })) {
       throw new Error('numeric Compendium budget is calibration-required; certification refuses to launch a browser');
     }
     gateStage = 'candidate build';
@@ -2002,6 +2037,18 @@ async function runGate({ calibrate }) {
       label: CANDIDATE_BROWSER_LABEL, userDataPrefix: 'cf-compendiummem',
       startupTimeoutMs: 15000,
     }));
+    gateStage = 'Arc 1A browser authority';
+    const browserAuthorityMatch = running.budget.browserAuthority === null
+      ? null : compendiumBrowserAuthorityMatches(browser.browser, running.budget.browserAuthority);
+    running = {
+      ...running,
+      browser: browser.browser,
+      budget: { ...running.budget, browserAuthorityMatch },
+    };
+    atomicWriteJson(reportPath, running);
+    if (!calibrate && browserAuthorityMatch !== true) {
+      throw new Error('browser does not match the exact Arc 1A calibration authority');
+    }
     const saveFixtures = readJson(baselineSavePath);
     const veteranRaw = JSON.stringify(saveFixtures.inputs.veteran_rich);
     for (const [profile, viewport] of Object.entries(PROFILES)) {
@@ -2032,8 +2079,10 @@ async function runGate({ calibrate }) {
       partialFailure: null, blockedOutcomes: [],
     };
     atomicWriteJson(reportPath, report);
-    const verification = verifyTerminalReport(report, runId, {
+    const verification = verifyCompendiumTerminalReport(report, runId, {
       allowCalibration: calibrate, verifyArtifact: verifyReviewArtifact,
+      budgetRecord: budget, expectedBudgetSha256: inputs.budget,
+      fixture, expectedInputs: inputs, expectedSourceIdentity: sourceEnd,
     });
     if (!verification.ok) throw new Error(`terminal report verification failed: ${verification.errors.join('; ')}`);
     if (calibrate && !failed.length) {
@@ -2123,9 +2172,25 @@ async function main() {
   if (verifyArg && process.argv.length === 3) {
     const expectedRunId = verifyArg.slice('--verify-run='.length);
     assert(/^[a-z0-9][a-z0-9-]{0,95}$/i.test(expectedRunId), 'verify run ID is invalid');
+    const fixture = buildCompendiumFixture();
+    const projection = buildBrokenBaselineProjection(fixture);
+    const budget = readJson(budgetPath);
+    const budgetValidation = validateBudgetRecord(
+      budget, fixture.rowsSha256, projection.rowsSha256,
+    );
+    if (!budgetValidation.ok) {
+      for (const error of budgetValidation.errors) {
+        console.error(`COMPENDIUM MEMORY VERIFY: budget record invalid: ${error}`);
+      }
+      return 2;
+    }
+    const expectedInputs = exactInputs(fixture);
+    const expectedSourceIdentity = sourceIdentity();
     const report = readJson(reportPath);
-    const verification = verifyTerminalReport(report, expectedRunId, {
+    const verification = verifyCompendiumTerminalReport(report, expectedRunId, {
       allowCalibration: false, verifyArtifact: verifyReviewArtifact,
+      budgetRecord: budget, expectedBudgetSha256: hashFile(budgetPath),
+      fixture, expectedInputs, expectedSourceIdentity,
     });
     if (!verification.ok) {
       for (const error of verification.errors) console.error(`COMPENDIUM MEMORY VERIFY: ${error}`);

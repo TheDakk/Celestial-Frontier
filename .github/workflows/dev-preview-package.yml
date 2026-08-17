@@ -81,15 +81,39 @@ jobs:
           node tools/browsercdp.mjs --selftest
           npm run smoke:report:selftest
           npm run glassmatrix:selftest
-          npm run compendiummem:selftest
           npm run persona:selftest
           npm run preview:selftest
+      # Compendium resource certification has an Arc-local Edge authority;
+      # the job-level Chrome selection remains in force for the later smoke,
+      # Glass, persona, and preview browser gates.
+      - name: install exact Arc 1A Edge calibration browser
+        shell: bash
+        env:
+          EDGE_PACKAGE_URL: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.86-1_amd64.deb
+          EDGE_PACKAGE_SHA256: 26b02cb1c6465756df94b9ef34191b614f3df627ba21b7b00b641f44cc1d8343
+        run: |
+          set -euo pipefail
+          edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.86-1_amd64.deb"
+          curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"
+          printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$edge_package" | sha256sum --check --strict
+          sudo apt-get install --yes "$edge_package"
+          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.86-1"
+          test -x /usr/bin/microsoft-edge-stable
+      - name: Compendium memory instrument selftest
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/microsoft-edge-stable
+        run: npm run compendiummem:selftest
       - name: one-attempt Compendium memory certification
         working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/microsoft-edge-stable
         run: npm run compendiummem
       - name: verify current Compendium memory evidence
         if: always()
         working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/microsoft-edge-stable
         run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
       - name: upload Compendium memory evidence
         if: always()

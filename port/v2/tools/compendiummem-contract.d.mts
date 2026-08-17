@@ -7,6 +7,9 @@ export const COMMAND_TIMEOUT_MS: number;
 export const CANDIDATE_TRANSPORT_TIMEOUT_MS: number;
 export const BASELINE_OBSERVATION_TIMEOUT_MS: number;
 export const CANDIDATE_BROWSER_LABEL: string;
+export const COMPENDIUM_BROWSER_AUTHORITY_SCHEMA:
+  'cf-v2-compendium-browser-authority/v1';
+export const COMPENDIUM_BROWSER_AUTHORITY_SCOPE: 'arc1a-compendium-memory-only';
 export const CANDIDATE_CDP_TIMEOUT_SCHEMA: string;
 export const CANDIDATE_COMMAND_SCHEMA: string;
 export const PLAIN_EVALUATE_COMMAND_SCHEMA: string;
@@ -33,7 +36,22 @@ export const BROKEN_BASELINE_PORTRAIT_CACHE_CAPS: Readonly<{
 export const COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS: readonly string[];
 export const CEILING_FIELDS: readonly string[];
 export const SAMPLE_METRIC_FIELDS: readonly string[];
+export type CompendiumBrowserAuthority = Readonly<{
+  schema: 'cf-v2-compendium-browser-authority/v1';
+  scope: 'arc1a-compendium-memory-only';
+  product: string;
+  revision: string;
+  jsVersion: string;
+  protocolVersion: string;
+}>;
 export function sha256(value: string | NodeJS.ArrayBufferView): string;
+export function compendiumBrowserAuthority(browser: unknown): CompendiumBrowserAuthority | null;
+export function validCompendiumBrowserAuthority(authority: unknown):
+  authority is CompendiumBrowserAuthority;
+export function compendiumBrowserAuthorityMatches(browser: unknown,
+  authority: unknown): boolean;
+export function compendiumBudgetBrowserAuthority(record: unknown):
+  CompendiumBrowserAuthority | null;
 export function compendiumRawSnapshotExpression(): string;
 export function validCompendiumRawSnapshotExpression(source: unknown): boolean;
 export function validTransportTimeoutPolicy(policy: {
@@ -193,5 +211,10 @@ export function verifyTerminalReport(report: unknown, expectedRunId: string,
   options?: {
     allowCalibration?: boolean;
     verifyArtifact?: ((item: unknown) => boolean) | null;
+    budgetRecord?: unknown;
+    expectedBudgetSha256?: string | null;
+    fixture?: unknown;
+    expectedInputs?: unknown;
+    expectedSourceIdentity?: unknown;
   }): { ok: boolean; errors: string[] };
 export function calibrationMetrics(measurement: unknown): Record<string, number>;

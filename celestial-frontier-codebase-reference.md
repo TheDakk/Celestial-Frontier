@@ -4,7 +4,39 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 source overlay matches code as of 2026-08-16.**
+> **Current port/v2 source overlay matches code as of 2026-08-17.**
+> **2026-08-17 Arc 1A Compendium/art/resource overlay (current working tree;
+> tracked source makes no terminal-certification claim; final HUMAN review remains open):**
+> `apps/game/src/compendium.ts` owns a variable-height virtual list over the
+> deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
+> bounded overscan, and any focus-pinned row; measured logical anchor-plus-offset
+> and the selected row survive filter, detail/Back reconstruction, and height-map
+> replacement. `apps/game/src/species-art-loader.ts` is the sole lazy package
+> import and binds both Compendium and Planetside images to `leaseThumb` ownership.
+> Filter, rebind, close, ascent, and final document teardown release their exact
+> owners; a persisted bfcache `pagehide` retains the live document's leases.
+>
+> `packages/art/src/speciesart.ts` snapshots and keys the complete deterministic
+> genome, deduplicates shared misses, cancels unowned queued work, runs one active
+> Canvas2D job at a time, and encodes a true 132px resource without retaining or
+> decoding a 440px data URL first. Phone/desktop cache, decoded-pixel, byte, queue,
+> lease, and portrait limits report `active-measured`. Only specimen detail uses
+> synchronous `speciesPortrait` compatibility at 440px; its Back/Close path clears
+> the retained DOM source. Producer failure remains a stable owned error tile and
+> the same key recovers under a fresh lease.
+>
+> `tools/compendiummem.mjs`, its pure contract, and
+> `budgets/compendium-memory-v1.json` own the active measured phone/desktop ceiling:
+> three independent one-attempt candidate runs paired to exact broken-baseline
+> commit `38447019517147319bd08c598202d097ee866874`. The authority is Arc-local and
+> matches Edge 151 by product, revision, JavaScript version, and protocol version;
+> it does not change the global Gate-A Edge 150 pin. Exact-current budget bytes,
+> deterministic inputs, source identity, browser authority, raw measurements, and
+> reported outcomes are cross-bound and replayed by the terminal verifier. Terminal
+> certification belongs only to a verified exact-current ignored report, never to this
+> tracked reference. The six phone/desktop list, focus-pinned, and detail PNGs still
+> await HUMAN review. Arc 1B scene-resource ownership/disposal and live HD
+> planet replacement remain open.
 > **2026-08-16 D-TRAIN-1 source overlay (current working tree; local browser
 > evidence recorded below; exact-head CI, integration, real-save Gate C, and
 > human authority remain open):** `@cf/persistence` now classifies the real
@@ -189,10 +221,11 @@
 > hidden-time policy, live global-read timing, and SessionRNG remain F4. F3 owns
 > the CAS/revision/tab-lease substrate; F4 owns the persisted `activePlayMs`
 > clock/accrual policy. This is not a current-player data-loss finding.
-> **2026-08-13 exploration/ship/loot/companion/audio review:** The executable v2
-> boundary remains the Phase-4 travel/survey slice. `apps/game/src/main.ts` renders the
-> read-only Compendium through `@cf/art/species`, consumes `@cf/domain-combatcore`
-> battle stats for specimen detail, and uses only the lifted whoosh/survey stings from
+> **2026-08-13 exploration/ship/loot/companion/audio review (historical review
+> boundary; Arc 1A resource status is refreshed above):** The executable v2
+> boundary remained the Phase-4 travel/survey slice. `apps/game/src/main.ts` rendered the
+> read-only Compendium through `@cf/art/species`, consumed `@cf/domain-combatcore`
+> battle stats for specimen detail, and used only the lifted whoosh/survey stings from
 > `@cf/audio`. `@cf/persistence` round-trips legacy cargo/items/equipment/affix/tech/
 > creature fields, but Inventory, Shipyard, mining/crafting, item-instance loot,
 > breeding/care, live combat/Guardians and companion missions have no v2 command owner.
@@ -205,9 +238,10 @@
 > travel; companion mission loot is an immutable dispatch-time receipt claimed once
 > through revisioned persistence; audio resolves a versioned profile/cue plan without
 > consuming simulation RNG. These are planned module boundaries, not current exports.
-> Before adding content scale, virtualize the 1,500-entry Compendium, swap mounted rows
-> to true 132px thumbnails, bound decoded pixels/jobs/resources, and prove ordinary
-> Canvas/Pixi transitions plateau. The present one-blob, last-writer-wins repository is
+> That review required the 1,500-entry Compendium to be virtualized, mounted rows
+> moved to true 132px thumbnails, and decoded pixels/jobs/resources bounded before
+> adding content scale; Arc 1A now implements and measures that bounded DOM/Canvas path.
+> Pixi scene ownership remains Arc 1B. The present one-blob, last-writer-wins repository is
 > insufficient for two-tab exact-once claims and must gain compare-and-swap or one
 > authoritative serialized coordinator.
 >
@@ -307,8 +341,8 @@
 > measured 4×2 non-overlap contract. At that 2026-08-11 boundary the slice still stored one exported save
 > blob, `NavState` was not yet a discriminated union, complete CF1 hierarchy and
 > legacy checkpoint restoration remained open, and CFB still lost hybrid
-> parents. Runtime priorities are Compendium virtualization, scene texture
-> ownership/memory proof, live HD planet replacement, clock/visibility policy,
+> parents. Runtime priorities at that boundary were Compendium virtualization,
+> scene texture ownership/memory proof, live HD planet replacement, clock/visibility policy,
 > then living organism rigs and biome scenes. Platinum-approved static portraits
 > remain frozen; optional polish is not a mandate to repaint them.
 >
@@ -428,9 +462,9 @@
 > remains unchanged for Training. Field Training is six live
 > chart/travel/landing lessons plus an honest graduation. Tooltip deep-links,
 > Advanced Briefings and the full 21-step curriculum remain OPEN. The newer
-> D-TRAIN-1 overlay above records exact legacy-checkpoint restoration. Lazy species art uses one shared load Promise
-> and one latest subscriber per view, so prefetch cannot strand Compendium or
-> Planetside and a 1,500-row list cannot retain 1,500 rerender callbacks.
+> D-TRAIN-1 overlay above records exact legacy-checkpoint restoration. Lazy species art uses one shared load Promise;
+> Compendium and Planetside now bind exact 132px leases, release stale owners, and
+> virtualize the 1,500-row list instead of retaining list-scale callbacks or portraits.
 > Survey presentation filters the legacy `Spectral class` descriptor row. Planet
 > rarity is absent before landing and shown afterward as the plain display-grade
 > name. Internal `.designation`/`spectral()` data remains deterministic for art and
@@ -1262,11 +1296,15 @@ Trait arrays drive description & art: `FA_HABITAT`, `FA_LOCO`, `FA_BODY`, `FA_SK
 
 ### Art
 `speciesPortrait(g)` renders per-kingdom painterly **Canvas** art (microbe = cell cluster,
-flora = stalk+fronds+bloom, fungi = mushrooms, fauna = assembled anatomy). The full portrait
-LRU is device-capped at **96 on phones / 256 otherwise** and the separate 132px thumbnail LRU
-is capped at **600**; `pagehide` clears only the full portrait LRU today. The first cold thumbnail call still returns the
-440px source while its asynchronous downscale is produced, which is why current v2 planning
-requires virtualization and a completed-thumbnail replacement path. Reveal cards show a
+flora = stalk+fronds+bloom, fungi = mushrooms, fauna = assembled anatomy). In current
+`port/v2`, that synchronous 440px URL is compatibility/detail-only and its portrait LRU is
+device-capped at **96 on phones / 256 otherwise**. `leaseThumb(g)` is the Compendium and
+Planetside path: it snapshots the complete genome, deduplicates/cancels keyed asynchronous jobs,
+and owns a separate true-132px LRU capped at **96 / 256** with decoded-pixel, byte, queue,
+active-job, and lease limits. The compatibility `speciesThumb(g)` may still return a 440px URL
+on a miss, but Arc 1A list/Planetside callers do not use it. A persisted bfcache `pagehide`
+retains the same document's leases; final non-persisted teardown releases jobs, leases, and both
+caches. Reveal cards show a
 **biome-colored glow** behind the portrait (ability-theme color for fauna, nourished-stat color
 for flora).
 
@@ -1348,6 +1386,12 @@ The `codex` Map stores discovered species. `discoverSpecies`, `autoScanWorld`,
 `_storeSpecies`, `renderCodex`, `removeFromCodex`. **Renamed to "Compendium"** in UI
 (button, headers, prose). NOTE: "Prime Codex" (win track) and "Cosmic Codex" (app title)
 are intentionally **kept** as "Codex."
+
+The current v2 read-only Compendium projects as many as 1,500 deterministic species through
+`CompendiumVirtualList`, mounting only its measured window, bounded overscan, and any
+focus-pinned row. Rows acquire 132px art leases; detail alone retains a 440px portrait. Logical
+anchor-plus-offset, selected-row focus, and exact release/recovery ownership survive filter,
+detail/Back, resize, and close.
 
 ### Star Atlas (bookmarks)
 The `logMap` Map. `addToLog`, `renderLog`. Every survey card (galaxy/star/planet/moon/etc.)
