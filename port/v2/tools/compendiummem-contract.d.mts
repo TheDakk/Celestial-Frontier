@@ -18,9 +18,12 @@ export const BROKEN_BASELINE_THUMB_CACHE_CAP: 600;
 export const BROKEN_BASELINE_PORTRAIT_CACHE_CAPS: Readonly<{
   phone: 96; desktop: 256;
 }>;
+export const COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS: readonly string[];
 export const CEILING_FIELDS: readonly string[];
 export const SAMPLE_METRIC_FIELDS: readonly string[];
 export function sha256(value: string | NodeJS.ArrayBufferView): string;
+export function compendiumRawSnapshotExpression(): string;
+export function validCompendiumRawSnapshotExpression(source: unknown): boolean;
 export function validTransportTimeoutPolicy(policy: {
   candidateTransportTimeoutMs: number;
   candidateTargetTimeoutMs: number;

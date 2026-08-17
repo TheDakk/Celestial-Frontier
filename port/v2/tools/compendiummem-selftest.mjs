@@ -13,14 +13,17 @@ import {
   ART_DIAGNOSTICS_SCHEMA, BASELINE_OBSERVATION_TIMEOUT_MS,
   BROKEN_BASELINE_EXPECTED_FAULTS, BROKEN_BASELINE_PORTRAIT_CACHE_CAPS,
   BROKEN_BASELINE_THUMB_CACHE_CAP, BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
-  BUDGET_SCHEMA, CANDIDATE_TRANSPORT_TIMEOUT_MS, COMMAND_TIMEOUT_MS, DIAGNOSTICS_SCHEMA,
+  BUDGET_SCHEMA, CANDIDATE_TRANSPORT_TIMEOUT_MS, COMMAND_TIMEOUT_MS,
+  COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS, DIAGNOSTICS_SCHEMA,
   EXPECTED_OUTCOMES, OUTCOME_IDS, REPORT_INPUT_KEYS, REPORT_SCHEMA,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
   calibrationMetrics, compendiumCdpOptions, compendiumProfileEmulationOptions,
-  evaluateProfile, installBrokenBaselineThumbObserver, phaseObservationAccepted,
+  compendiumRawSnapshotExpression, evaluateProfile, installBrokenBaselineThumbObserver,
+  phaseObservationAccepted,
   remainingCommandTimeoutMs, sha256,
   validBrokenBaselineThumbObservation, validProfileEmulationOptions,
-  validTransportTimeoutPolicy, validateBudgetRecord, verifyTerminalReport,
+  validCompendiumRawSnapshotExpression, validTransportTimeoutPolicy,
+  validateBudgetRecord, verifyTerminalReport,
 } from './compendiummem-contract.mjs';
 import {
   buildBrokenBaselineProjection, buildCompendiumFixture,
@@ -411,6 +414,42 @@ function atomicWriteJson(file, value) {
 }
 
 export function runCompendiumMemSelftest() {
+  const rawSnapshotExpression = compendiumRawSnapshotExpression();
+  const parsesRawSnapshotExpression = (source) => {
+    try { new Function(`"use strict"; return (${source});`); return true; }
+    catch { return false; }
+  };
+  assert(parsesRawSnapshotExpression(rawSnapshotExpression)
+    && validCompendiumRawSnapshotExpression(rawSnapshotExpression),
+  'the exact collector-owned raw snapshot expression does not parse or lacks its outcome shape');
+  const finalClosure = '}}})()';
+  const finalClosureAt = rawSnapshotExpression.length - finalClosure.length;
+  assert(rawSnapshotExpression.slice(finalClosureAt) === finalClosure,
+    'the raw snapshot expression no longer owns the sealed IIFE/object closure');
+  const historicalShortTail = `${rawSnapshotExpression.slice(0, finalClosureAt)}}})()`;
+  assert(!parsesRawSnapshotExpression(historicalShortTail)
+    && !validCompendiumRawSnapshotExpression(historicalShortTail),
+  'the historical one-IIFE-body-brace-short snapshot expression parsed');
+  for (let offset = 0; offset < 3; offset++) {
+    const braceAt = finalClosureAt + offset;
+    const missingBrace = rawSnapshotExpression.slice(0, braceAt)
+      + rawSnapshotExpression.slice(braceAt + 1);
+    assert(!parsesRawSnapshotExpression(missingBrace)
+      && !validCompendiumRawSnapshotExpression(missingBrace),
+    `raw snapshot expression accepted missing final brace ${offset + 1}`);
+  }
+  const extraClose = `${rawSnapshotExpression})`;
+  assert(!parsesRawSnapshotExpression(extraClose)
+    && !validCompendiumRawSnapshotExpression(extraClose),
+  'raw snapshot expression accepted an extra final parenthesis');
+  for (const token of COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS) {
+    const replacement = token.startsWith('return ')
+      ? token.replace('diagnostics', 'diagnosticz') : `${token.slice(0, -1)}Missing:`;
+    const missingShape = rawSnapshotExpression.replace(token, replacement);
+    assert(parsesRawSnapshotExpression(missingShape)
+      && !validCompendiumRawSnapshotExpression(missingShape),
+    `raw snapshot expression accepted missing outcome-shape token ${token}`);
+  }
   const timeoutPolicy = {
     candidateTransportTimeoutMs: CANDIDATE_TRANSPORT_TIMEOUT_MS,
     candidateTargetTimeoutMs: COMMAND_TIMEOUT_MS,
