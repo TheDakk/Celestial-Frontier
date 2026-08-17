@@ -474,6 +474,7 @@ const KNOWN_VERBATIM_JS_HASHES = new Map([
   ['artextras.verbatim.js', 'dadfd860bc21b4472efb80f91399ddb89b704bc2b0396fe848aa8628b21cc2c7'],
   ['galaxyart.verbatim.js', '2cba375ab1f806ed2eaf394fa599e05dc1fd0e79097b25120cc0a662dca22f45'],
   ['hdart.verbatim.js', '8ab222a3c63a0db04c28a7e5d51a5af4e34e7dbdfe1573eaaaa2c50bed086e49'],
+  ['hdportrait.worker.verbatim.js', 'e0d4fe5173246e3fb22ac887e24eb34fda35d454d7f4741a01ecd51cdae3f009'],
   ['thumbart.verbatim.js', '8fcaf662bcedd2d2eebf75a8ad00c5bc243190d1cc5c8071a763113f76c77c48'],
 ]);
 const KNOWN_VERBATIM_JS = new Set(KNOWN_VERBATIM_JS_HASHES.keys());
@@ -896,12 +897,12 @@ function routeTables(source, label) {
   return tables;
 }
 
-function routerWiring(source, label, functionName) {
+function routerWiring(source, label, functionName, compatibilitySource = source) {
   const program = parseTypeScript(source, label);
   const matches = [];
   const namedRouteMatches = [];
   const compatibilityWrappers = new Map([
-    ['resolveOverride', []], ['resolveProcedural', []],
+    ['encodePortableCanvas', []], ['resolveOverride', []], ['resolveProcedural', []],
   ]);
   const imports = new Map();
   const find = (node) => {
@@ -938,6 +939,23 @@ function routerWiring(source, label, functionName) {
     }
   };
   find(program);
+  if (compatibilitySource !== source) {
+    const compatibilityProgram = parseTypeScript(compatibilitySource, 'speciescompat.ts');
+    const collectCompatibility = (node) => {
+      if (!node || typeof node !== 'object') return;
+      if (node.type === 'FunctionDeclaration' && compatibilityWrappers.has(node.id?.name)) {
+        compatibilityWrappers.get(node.id.name).push(node);
+      }
+      for (const value of Object.values(node)) {
+        if (Array.isArray(value)) {
+          for (const child of value) if (child && typeof child === 'object' && child.type) collectCompatibility(child);
+        } else if (value && typeof value === 'object' && value.type) {
+          collectCompatibility(value);
+        }
+      }
+    };
+    collectCompatibility(compatibilityProgram);
+  }
   if (matches.length !== 1 || !matches[0].body) {
     parserError(label, matches[0], `expected exactly one ${functionName} function body, found ${matches.length}`);
   }
@@ -985,6 +1003,18 @@ function routerWiring(source, label, functionName) {
   const returnNull = (statement) => statement?.type === 'ReturnStatement' && literal(statement.argument, null);
   const returnCanvas = (statement) => statement?.type === 'ReturnStatement'
     && identifier(statement.argument, 'cv');
+  const encoders = compatibilityWrappers.get('encodePortableCanvas');
+  const encoder = encoders?.length === 1 ? encoders[0] : null;
+  const encoderBody = encoder?.body?.body;
+  const encoderReturn = encoderBody?.length === 1 && encoderBody[0]?.type === 'ReturnStatement'
+    ? encoderBody[0].argument : null;
+  if (!(encoder && !encoder.async && !encoder.generator
+      && encoder.params.length === 1 && identifier(encoder.params[0], 'canvas')
+      && compatibilitySource.slice(encoderReturn?.start, encoderReturn?.end)
+        === '(canvas as unknown as HTMLCanvasElement).toDataURL()')) {
+    contractError(encoder ?? encoders?.[0] ?? matches[0],
+      'encodePortableCanvas must remain the exact Window-only zero-argument toDataURL boundary');
+  }
   const auditCompatibilityWrapper = (wrapperName, canvasName) => {
     const found = compatibilityWrappers.get(wrapperName);
     const wrapper = found?.length === 1 ? found[0] : null;
@@ -998,19 +1028,18 @@ function routerWiring(source, label, functionName) {
     const encoded = returned?.type === 'ConditionalExpression'
       && identifier(returned.test, 'canvas') && literal(returned.alternate, null)
       && returned.consequent?.type === 'CallExpression'
-      && returned.consequent.callee?.type === 'MemberExpression'
-      && !returned.consequent.callee.computed
-      && identifier(returned.consequent.callee.object, 'canvas')
-      && propertyName(returned.consequent.callee) === 'toDataURL'
-      && returned.consequent.arguments.length === 0;
+      && identifier(returned.consequent.callee, 'encodePortableCanvas')
+      && returned.consequent.arguments.length === 1
+      && identifier(returned.consequent.arguments[0], 'canvas');
     if (!(wrapper && !wrapper.async && !wrapper.generator
-        && wrapper.params.length === 1 && identifier(wrapper.params[0], 'g')
+        && wrapper.params.length === 1 && identifier(wrapper.params[0], 'genome')
         && init?.type === 'CallExpression' && identifier(init.callee, canvasName)
-        && init.arguments.length === 1 && identifier(init.arguments[0], 'g')
-        && source.slice(init.start, init.end) === `${canvasName}(g)`
-        && encoded && source.slice(returned.start, returned.end) === 'canvas ? canvas.toDataURL() : null')) {
+        && init.arguments.length === 1 && identifier(init.arguments[0], 'genome')
+        && compatibilitySource.slice(init.start, init.end) === `${canvasName}(genome)`
+        && encoded && compatibilitySource.slice(returned.start, returned.end)
+          === 'canvas ? encodePortableCanvas(canvas) : null')) {
       contractError(wrapper ?? found?.[0] ?? matches[0],
-        `${wrapperName} must remain the exact zero-argument URL wrapper around ${canvasName}`);
+        `${wrapperName} must remain the exact Window-only URL wrapper around ${canvasName}`);
     }
   };
   auditCompatibilityWrapper('resolveOverride', 'resolveOverrideCanvas');
@@ -1086,9 +1115,9 @@ function routerWiring(source, label, functionName) {
     ['faunaQuadruped', ['quadrupedoverrides.ts', 'faunaQuadruped']],
   ]);
   const exactHelperImplementations = new Map([
-    ['newCanvas', '4cc8d2bbcf61aa856a91cc41de06f0c0a3439bc3aae844279a703b031d091767'],
-    ['newInk', '6d4f4e49abf74f243aadaf196c3ec273dc7ab104a3de90f8e3ec136bc6309a3a'],
-    ['fitInk', '2146842c7bccbd9994870c2034be794cf5fd8057a2c0899ace2a7b40785a46b7'],
+    ['newCanvas', 'a195d1f082fb8c24f8012bc48431c75427120f776161b8f35a98b0da08112ee8'],
+    ['newInk', '83693e4187095ae9826d32fc18d72f0516cf2faeb4f44b4460d93a561e1eea85'],
+    ['fitInk', '5fd7fc8bbea71d5cc392d681608d8835ce0e9a95683f9caa5b52e0c0f777ed02'],
     ['isReviewedFaunaLineage', '8bf404cff6320fc56c0f5621773250fc36352a4a903f4be868bf586264093df3'],
     ['applyReviewedFaunaLineageDrift', '860df1e0c650e36ab009ac9b58551ed5082a8ef45d4f59e0e58ff5010a3bf7a1'],
   ]);
@@ -1539,9 +1568,10 @@ for (const f of FILES) {
    regressed 15 pairs. */
 {
   const router = src('packages/art/src/speciesoverrides.ts');
+  const compatibility = src('packages/art/src/speciescompat.ts');
   let wiring;
   try {
-    wiring = routerWiring(router, 'speciesoverrides.ts', 'resolveOverrideCanvas');
+    wiring = routerWiring(router, 'speciesoverrides.ts', 'resolveOverrideCanvas', compatibility);
   } catch (error) {
     if (!(error instanceof ParserError)) throw error;
     console.error(`overridecheck: ${error.message} — the PARSER is broken`);

@@ -14,6 +14,11 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { findChromiumBrowser } from './browserpath.mjs';
 import { acquireWorkspaceLock, workspaceLockChildEnvironment } from './workspacelock.mjs';
+import {
+  classifyPlanetsideSettlement,
+  planetsidePhaseRemainingMs,
+  planetsideRuntimeTimeoutDecision,
+} from './slicesmoke-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
@@ -167,6 +172,54 @@ function runSelftest() {
     || sameSource(source, { ...source, workingTreeSha256: 'd'.repeat(64) })) {
     throw new Error('SELFTEST source-identity change control drifted');
   }
+  const readyImage = Object.freeze({
+    state: 'ready', hasSrc: true, complete: true, naturalWidth: 132, naturalHeight: 132,
+  });
+  const settled = {
+    on: true, n: 3, images: [readyImage, readyImage, readyImage],
+    art: { live: { queuedJobs: 0, activeJobs: 0 } },
+  };
+  const settlementControls = [
+    ['settled', settled, 'ready', null],
+    ['missing-src', { ...settled, images: settled.images.map((image) => ({ ...image, hasSrc: false })) }, 'error', 'ready without src'],
+    ['decode-pending', { ...settled, images: settled.images.map((image) => ({ ...image, complete: false })) }, 'pending', 'decode pending'],
+    ['wrong-size', { ...settled, images: settled.images.map((image) => ({ ...image, naturalWidth: 440, naturalHeight: 440 })) }, 'error', 'dimensions 440x440'],
+    ['placeholder', { ...settled, images: settled.images.map((image) => ({ ...image, state: 'placeholder' })) }, 'pending', 'placeholder'],
+    ['producer-error', { ...settled, images: settled.images.map((image) => ({ ...image, state: 'error' })) }, 'error', 'producer error'],
+    ['queued-work', { ...settled, art: { live: { queuedJobs: 1, activeJobs: 0 } } }, 'pending', 'queuedJobs 1'],
+    ['active-work', { ...settled, art: { live: { queuedJobs: 0, activeJobs: 1 } } }, 'pending', 'activeJobs 1'],
+    ['missing-art-diagnostics', { ...settled, art: null }, 'pending', 'art diagnostics absent'],
+    ['short-roster', { ...settled, n: 2, images: settled.images.slice(0, 2) }, 'pending', 'roster count 2'],
+    ['image-count-mismatch', { ...settled, images: settled.images.slice(0, 2) }, 'pending', 'image count 2'],
+  ];
+  const settlementDrift = settlementControls.flatMap(([name, observation, expected, diagnosis]) => {
+    const actual = classifyPlanetsideSettlement(observation);
+    const diagnosed = diagnosis === null
+      ? actual.reasons.length === 0
+      : actual.reasons.some((reason) => reason.includes(diagnosis));
+    return actual.status === expected && diagnosed ? [] : [{ name, expected, diagnosis, actual }];
+  });
+  if (settlementDrift.length) {
+    throw new Error(`SELFTEST Planetside semantic settlement controls drifted: ${JSON.stringify(settlementDrift)}`);
+  }
+  const phaseDeadline = 1000.75;
+  const labelledTimeoutDecision = planetsideRuntimeTimeoutDecision(
+    new Error('slice smoke: timed out waiting for Runtime.evaluate'),
+    30000,
+  );
+  if (planetsidePhaseRemainingMs(phaseDeadline, 250.25) !== 750
+    || planetsidePhaseRemainingMs(phaseDeadline, 1000.75) !== 0
+    || planetsidePhaseRemainingMs(phaseDeadline, 1001) !== 0
+    || labelledTimeoutDecision?.status !== 'pending'
+    || labelledTimeoutDecision.reasons[0] !== 'phase deadline expired during target observation (30000ms)'
+    || planetsideRuntimeTimeoutDecision(
+      new Error('slice smoke: timed out waiting for Page.navigate'), 30000,
+    ) !== null
+    || planetsideRuntimeTimeoutDecision(
+      new Error('slice smoke: timed out waiting for Runtime.evaluate after retry'), 30000,
+    ) !== null) {
+    throw new Error('SELFTEST Planetside monotonic deadline/labelled-timeout controls drifted');
+  }
   const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-smoke-report-selftest-'));
   try {
     fs.writeFileSync(path.join(tempRoot, 'slice-stale-unrelated.png'), 'stale');
@@ -186,6 +239,8 @@ function runSelftest() {
   console.log('  source-identity change: mixed-source evidence rejected');
   console.log('  screenshot provenance: injected stale PNG excluded from the exact run manifest');
   console.log('  infrastructure fatal: retained ahead of generic bundler advice');
+  console.log('  Planetside settlement: ready+132px+drained accepted; roster/image/decode/art/live-work controls rejected');
+  console.log('  Planetside phase: monotonic remainder clipped; labelled Runtime.evaluate timeout converted exactly');
   console.log('  retry policy remains zero by construction (one child invocation in the wrapper)');
 }
 

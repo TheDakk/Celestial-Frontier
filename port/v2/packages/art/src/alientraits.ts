@@ -18,8 +18,9 @@
    of them reads Math.random or Date: same genome, same creature, on every
    device (hard rule 1). */
 import { formMark, type Form } from './surface.js';
+import type { ArtContext2D } from './speciescanvas.js';
 
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 const TAU = Math.PI * 2;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 

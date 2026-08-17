@@ -97,8 +97,23 @@
 > height changes. Compendium and Planetside use identity-safe asynchronous 132px leases;
 > image bindings retain their owner across arrival or a contained producer error, while stale
 > queued work deduplicates or cancels on rebind, filter, close, and teardown. Only the selected
-> detail retains a 440px portrait, and Back/Close removes that DOM source. The exact failed key
-> recovers through a fresh lease without leaking the former owner.
+> detail displays an asynchronous 440px DOM source; Back/Close cancels that owner and removes the
+> source, while the bounded portrait cache may retain prior results. Heavy import, 440px scratch
+> paint, 132px downsample, and PNG encoding run in at most one serial lazy dedicated worker at a
+> time after complete app wiring; the renderer has no synchronous painter
+> fallback; at most one worker exists at a time, and it terminates after active work settles and its
+> queue is empty. A later new producer burst may create a fresh instance. The exact failed key recovers
+> through a fresh lease without leaking the former owner.
+>
+> Short-landscape Compendium is a nonmodal safe-workspace layout, not a global restyle. The panel
+> uses the left safe-height workspace and recomputes its variable-row scroller from the safe
+> viewport; Search, the dock, and Survey when open remain visible, named, focusable, hit-testable,
+> and usable in the right column. Panel-open status
+> already yields the trail and objective; short landscape additionally hides only the noninteractive
+> top/context/hint chrome while retaining its measured boxes for restoration. Glass exercises real
+> first/middle/last and focus-pinned A++/monospace
+> rows plus clipped-ancestor controls. Those hostile evidence states are intentionally unlike the
+> ordinary Dev presentation and do not claim v1.0-equivalent visual polish.
 >
 > Phone and desktop ceilings are active measured from three independent one-attempt candidate
 > runs plus the paired exact `3844701` broken baseline. The ruler owns an Arc-local four-field
@@ -301,10 +316,12 @@
 > still runs on the transition—this repair lowers the resource ceiling and does not
 > introduce a separate art-quality tier or scene-rerender optimization.
 >
-> Species art remains a lazy chunk, but readiness is now one shared Promise with
-> one latest subscriber per interested view. An idle prefetch can no longer
-> swallow a later Compendium/Planetside refill, and a 1,500-row Compendium cannot
-> retain 1,500 callbacks and replay the whole list 1,500 times when art arrives.
+> Species art remains lazy, but live presentation now binds exact broker leases rather than a
+> shared import-Promise callback. Saved-Earth Planetside requests may queue while dormant; at most
+> one worker at a time activates only after app wiring and a serviced render turn, publishes
+> identity-checked results to current owners, and closes after active work settles and its queue is
+> empty. A later genuinely new producer burst owns a fresh instance/import. A 1,500-row Compendium therefore
+> retains neither list-scale import callbacks nor renderer-side painter work.
 >
 > V2 browser smoke and root `uilayout.js` use the owned portable CDP lifecycle.
 > Legacy `bootperf.js` shares their executable resolver and pinned `ws` transport

@@ -8,8 +8,9 @@
    Palette is read from the genome like every other painter; species whose
    COLOUR is their identity (Fly Agaric red, Lion's Mane white) force it. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import type { ArtContext2D } from './speciescanvas.js';
 
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 type G = Record<string, unknown>;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 const S = 440;

@@ -10,6 +10,7 @@ export const REPORT_SCHEMA = 'cf-v2-compendium-memory-report/v1';
 export const BUDGET_SCHEMA = 'cf-v2-compendium-memory-budget/v1';
 export const DIAGNOSTICS_SCHEMA = 'cf-v2-compendium-diagnostics/v1';
 export const ART_DIAGNOSTICS_SCHEMA = 'cf-v2-species-art-diagnostics/v1';
+const WORKER_ART_DIAGNOSTICS_SCHEMA = 'cf-v2-species-art-worker-diagnostics/v1';
 export const PROFILES = Object.freeze(['phone', 'desktop']);
 export const COMMAND_TIMEOUT_MS = 2000;
 export const CANDIDATE_TRANSPORT_TIMEOUT_MS = 5000;
@@ -345,7 +346,8 @@ export function validProducerErrorWorkObservation(observation) {
     && new Set(logicalIds).size === observation.rows.length
     && new Set(visualKeys).size === observation.rows.length
     && observation.rows.every((row, index) => row.index === index
-      && (row.thumbState !== 'ready' || row.complete));
+      && (row.thumbState !== 'ready' || (row.complete
+        && row.naturalWidth === 132 && row.naturalHeight === 132)));
   return stateKeys.every((field) => observation.stateCounts[field] === actualStateCounts[field])
     && observation.mountedDistinctLogicalIds === new Set(logicalIds).size
     && observation.mountedDistinctVisualKeys === new Set(visualKeys).size
@@ -2000,6 +2002,124 @@ function settled(snapshot) {
   const a = art(snapshot);
   return !!a && a.live.queuedJobs === 0 && a.live.activeJobs === 0;
 }
+const WORKER_STATE_FIELDS = Object.freeze([
+  'live', 'starts', 'ready', 'disposals', 'fatals', 'protocolErrors',
+]);
+const WORKER_PHASE_FIELDS = Object.freeze([
+  'importStarts', 'importCompletes',
+  'thumbJobStarts', 'thumbRenderCompletes', 'thumbEncodeStarts', 'thumbEncodeCompletes',
+  'portraitJobStarts', 'portraitRenderCompletes', 'portraitEncodeStarts', 'portraitEncodeCompletes',
+]);
+const WORKER_RESULT_FIELDS = Object.freeze([
+  'count', 'maxImportDurationMs', 'maxRenderDurationMs', 'maxEncodeDurationMs',
+]);
+const WORKER_ERROR_FIELDS = Object.freeze([
+  'capability', 'protocol', 'import', 'paint', 'encode',
+]);
+function validWorkerArtDiagnostics(value) {
+  return isObject(value)
+    && sameJson(Object.keys(value).sort(), [
+      'schema', 'state', 'importStarts', 'identity', 'lastEvent',
+      'worker', 'phases', 'results', 'errors',
+    ].sort())
+    && value.schema === WORKER_ART_DIAGNOSTICS_SCHEMA
+    && ['idle', 'loading', 'ready', 'error'].includes(value.state)
+    && integer(value.importStarts) && value.importStarts >= 0
+    && isObject(value.identity)
+    && sameJson(Object.keys(value.identity).sort(), [
+      'documentToken', 'lastProducerEpoch', 'lastWorkerInstanceId',
+    ].sort())
+    && typeof value.identity.documentToken === 'string'
+    && value.identity.documentToken.length >= 1 && value.identity.documentToken.length <= 160
+    && integer(value.identity.lastProducerEpoch) && value.identity.lastProducerEpoch >= 0
+    && integer(value.identity.lastWorkerInstanceId) && value.identity.lastWorkerInstanceId >= 0
+    && (value.lastEvent === null || (isObject(value.lastEvent)
+      && sameJson(Object.keys(value.lastEvent).sort(), [
+        'producerEpoch', 'workerInstanceId', 'jobId', 'kind', 'event',
+      ].sort())
+      && integer(value.lastEvent.producerEpoch) && value.lastEvent.producerEpoch >= 1
+      && integer(value.lastEvent.workerInstanceId) && value.lastEvent.workerInstanceId >= 1
+      && integer(value.lastEvent.jobId) && value.lastEvent.jobId >= 1
+      && ['thumb132', 'portrait440'].includes(value.lastEvent.kind)
+      && typeof value.lastEvent.event === 'string'
+      && /^(?:phase:(?:import-start|import-complete|job-start|render-complete|encode-start|encode-complete)|result|error:(?:capability|protocol|import|paint|encode))$/.test(value.lastEvent.event)))
+    && isObject(value.worker)
+    && sameJson(Object.keys(value.worker).sort(), [...WORKER_STATE_FIELDS].sort())
+    && typeof value.worker.live === 'boolean'
+    && WORKER_STATE_FIELDS.filter((field) => field !== 'live')
+      .every((field) => integer(value.worker[field]) && value.worker[field] >= 0)
+    && isObject(value.phases)
+    && sameJson(Object.keys(value.phases).sort(), [...WORKER_PHASE_FIELDS].sort())
+    && WORKER_PHASE_FIELDS.every((field) => integer(value.phases[field]) && value.phases[field] >= 0)
+    && isObject(value.results)
+    && sameJson(Object.keys(value.results).sort(), [...WORKER_RESULT_FIELDS].sort())
+    && integer(value.results.count) && value.results.count >= 0
+    && WORKER_RESULT_FIELDS.filter((field) => field !== 'count')
+      .every((field) => nonnegative(value.results[field]))
+    && isObject(value.errors)
+    && sameJson(Object.keys(value.errors).sort(), [...WORKER_ERROR_FIELDS].sort())
+    && WORKER_ERROR_FIELDS.every((field) => integer(value.errors[field]) && value.errors[field] >= 0);
+}
+function workerArtDormant(snapshot) {
+  const value = snapshot?.diagnostics?.lazyArt;
+  return validWorkerArtDiagnostics(value)
+    && value.state === 'idle' && value.importStarts === 0
+    && value.identity.documentToken === snapshot?.diagnostics?.documentToken
+    && value.identity.lastProducerEpoch === 0
+    && value.identity.lastWorkerInstanceId === 0
+    && value.lastEvent === null
+    && value.worker.live === false
+    && WORKER_STATE_FIELDS.filter((field) => field !== 'live')
+      .every((field) => value.worker[field] === 0)
+    && WORKER_PHASE_FIELDS.every((field) => value.phases[field] === 0)
+    && WORKER_RESULT_FIELDS.every((field) => value.results[field] === 0)
+    && WORKER_ERROR_FIELDS.every((field) => value.errors[field] === 0);
+}
+function workerArtReleased(snapshot) {
+  const value = snapshot?.diagnostics?.lazyArt;
+  return validWorkerArtDiagnostics(value)
+    && value.identity.documentToken === snapshot?.diagnostics?.documentToken
+    && value.worker.live === false
+    && value.identity.lastProducerEpoch === value.worker.starts
+    && value.identity.lastWorkerInstanceId === value.worker.starts
+    && value.lastEvent !== null
+    && value.lastEvent.producerEpoch === value.identity.lastProducerEpoch
+    && value.lastEvent.workerInstanceId === value.identity.lastWorkerInstanceId
+    && value.lastEvent.jobId
+      === value.phases.thumbJobStarts + value.phases.portraitJobStarts
+    && value.lastEvent.event === 'result'
+    && value.worker.ready === value.worker.starts
+    && value.worker.disposals === value.worker.starts
+    && value.worker.fatals === 0
+    && value.worker.protocolErrors === 0;
+}
+function workerArtFinalEvidence(snapshot) {
+  const value = snapshot?.diagnostics?.lazyArt;
+  const a = art(snapshot);
+  if (!workerArtReleased(snapshot) || !a) return false;
+  const phases = value.phases;
+  const errors = value.errors;
+  const successfulThumbs = phases.thumbEncodeCompletes;
+  const successfulPortraits = phases.portraitEncodeCompletes;
+  return value.state === 'ready'
+    && value.lastEvent.kind === 'thumb132'
+    && value.importStarts === value.worker.starts
+    && phases.importStarts === value.worker.starts
+    && phases.importCompletes === phases.importStarts
+    && phases.thumbJobStarts === phases.thumbRenderCompletes + errors.paint
+    && phases.thumbRenderCompletes === phases.thumbEncodeStarts
+    && phases.thumbEncodeStarts === successfulThumbs
+    && phases.portraitJobStarts > 0
+    && phases.portraitJobStarts === phases.portraitRenderCompletes
+    && phases.portraitRenderCompletes === phases.portraitEncodeStarts
+    && phases.portraitEncodeStarts === successfulPortraits
+    && value.results.count === successfulThumbs + successfulPortraits
+    && errors.capability === 0 && errors.protocol === 0 && errors.import === 0
+    && errors.paint === 1 && errors.encode === 0
+    && a.totals.thumbCanvasRenders === successfulThumbs
+    && a.totals.fullPortraitRendersForThumb === 0
+    && a.totals.fullPortraitDecodesForThumb === 0;
+}
 function range(numbers) {
   return numbers.length ? Math.max(...numbers) - Math.min(...numbers) : Infinity;
 }
@@ -2042,13 +2162,19 @@ export function evaluateProfile(measurement, budget, fixture) {
   const initial = points.lazyBoot;
   const lazyEnd = points.lazyEnd;
   const lazyResource = measurement.lazySpeciesResource;
-  add('lazy-art-not-eager', initial?.diagnostics?.lazyArt?.state === 'idle'
-    && initial?.diagnostics?.lazyArt?.importStarts === 0 && initial?.diagnostics?.art === null
+  add('lazy-art-not-eager', workerArtDormant(initial) && initial?.diagnostics?.art === null
     && lazyEnd?.diagnostics?.documentToken === initial?.diagnostics?.documentToken
-    && lazyEnd?.diagnostics?.lazyArt?.state === 'idle'
-    && lazyEnd?.diagnostics?.lazyArt?.importStarts === 0 && lazyEnd?.diagnostics?.art === null
+    && workerArtDormant(lazyEnd) && lazyEnd?.diagnostics?.art === null
+    && typeof lazyResource?.ownerPath === 'string' && lazyResource.ownerPath.endsWith('.js')
+    && lazyResource.ownerPath !== lazyResource.path
+    && lazyResource.ownerPath !== lazyResource.workerPath
+    && /^[a-f0-9]{64}$/.test(String(lazyResource?.ownerSha256 || ''))
     && typeof lazyResource?.path === 'string' && lazyResource.path.endsWith('.js')
     && /^[a-f0-9]{64}$/.test(String(lazyResource?.sha256 || ''))
+    && typeof lazyResource?.workerPath === 'string' && lazyResource.workerPath.endsWith('.js')
+    && lazyResource.workerPath !== lazyResource.path
+    && /^[a-f0-9]{64}$/.test(String(lazyResource?.workerSha256 || ''))
+    && lazyResource?.ownership === 'dedicated-worker-dynamic-import'
     && Array.isArray(lazyResource?.matches) && lazyResource.matches.length === 0
     && Array.isArray(lazyResource?.endMatches) && lazyResource.endMatches.length === 0,
   'the semantically identified species-art executable loaded before a Compendium/Planetside owner requested it',
@@ -2307,8 +2433,13 @@ export function evaluateProfile(measurement, budget, fixture) {
       bytes: art(snapshot)?.live?.portraitEncodedBytes,
     })),
   });
-  add('settled-jobs', warm.length >= REQUIRED_WARM_CYCLES && warm.every(settled),
-    'warm-cycle evidence was short or retained queued/active jobs', warm.map((snapshot) => art(snapshot)?.live));
+  add('settled-jobs', warm.length >= REQUIRED_WARM_CYCLES
+    && selected.every((snapshot) => settled(snapshot) && workerArtReleased(snapshot))
+    && workerArtFinalEvidence(final),
+  'warm-cycle evidence was short, retained queued/active/worker work, or lacked exact worker phase/error/release proof', {
+    warm: warm.map((snapshot) => art(snapshot)?.live),
+    worker: final?.diagnostics?.lazyArt,
+  });
   const mainToken = points.initial?.diagnostics?.documentToken;
   const jobPeaks = measurement.phases?.jobPeaks;
   add('resource-live-limits', typeof mainToken === 'string' && mainToken
