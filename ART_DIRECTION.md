@@ -176,20 +176,25 @@ were unchanged.
 
 Clean lifecycle-repair source `c49e525…` then ran candidate20 once. Its 78/78 product outcomes,
 zero findings, six PNGs, and complete cleanup were internally clean, but the reused `.86`-named app
-had self-updated to Edge `.93` / revision `@4a822b1b…`; null calibration browser authority let the
-wrong browser collect profiles. Candidate20 report/sample/log `175fac5e…` / `916dd12a…` /
-`7462144b…` are quarantined instrument evidence—not calibration, certification, art/product
-failure, or permission to reuse its images. Baseline9 did not run.
+had self-updated to Edge `.93` / revision `@4a822b1b…`; quarantine report/sample/log `175fac5e…` /
+`916dd12a…` / `7462144b…` as wrong-browser instrument evidence, not reusable art/product evidence.
 
-The current ruler requires explicit top-level Edge `.86` / revision `@083e7549…` / JS `15.1.23.7`
-/ protocol `1.3` authority in every state and enforces it before candidate or paired-baseline
-profile collection. Frozen budget/schema/contract/collector/selftest/test `71ffa46f…` /
-`695d2529…` / `2620ebf6…` / `07131f5e…` / `240bbe17…` / `6991f6ce…` establish measurement
-`825fb386…`; producer `d3223177…` and browser CDP `6da9e2ef…` stay unchanged. Samples remain empty,
-ceilings null, and baseline measurement-required. Materialize exact `.86` afresh per launch, then
-collect baseline9 plus candidate21/22/23 once each without retry. No portrait/product, timing,
-launch, producer, or retry policy changed. After terminal-green PR #32, work returns immediately to
-Arc 1B/gameplay.
+Candidate21/22/23 plus paired baseline9 subsequently completed once each without retry under exact
+Edge `.86` and complete lifecycle. Every candidate replayed 78/78 with zero findings and baseline9
+retained all four faults. They remain individually clean diagnostic history because the old shared-
+sample identity incorrectly compared each fresh materialization's host-local executable path and
+user agent. Those raw strings remain required per-run provenance; only product/revision/JavaScript/
+protocol are shared browser authority.
+
+Corrected budget/schema/contract/collector/selftest/test `ac2c084a…` / `695d2529…` /
+`e7dfea1d…` / `07131f5e…` / `f86db74a…` / `5d00e59f…` establish measurement `2318f57b…`;
+producer `d3223177…` and browser CDP `6da9e2ef…` stay unchanged. The ruler is fail-closed with
+empty candidate samples, null ceilings, and a measurement-required baseline with a null collector
+commit and empty profiles. Materialize exact
+`.86` afresh for baseline10 and candidate24/25/26, run each once with zero retries, and do not
+reuse candidate21/22/23+baseline9 across the corrected contract. No portrait/product, timing,
+launch, workflow, producer, or retry-policy change occurred. After terminal-green PR #32, work
+returns immediately to Arc 1B/gameplay.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
 browser. Calibration review PNGs do not satisfy the selected-head HUMAN row; a fresh phone/desktop
 list, focus-pinned, and detail set still requires HUMAN review. This repair owns the

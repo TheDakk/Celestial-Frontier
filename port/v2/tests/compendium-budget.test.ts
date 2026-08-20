@@ -24,7 +24,7 @@ const budgetPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.json')
 const schemaPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.schema.json');
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  '825fb386127f2c8b43a05b0adcb883e9fcab635345831bdfbd0cd5dc051d71a5';
+  '2318f57bcadd83b2f540e3a2d1b8bea54ca6c88d1df8715318a341d4e2ae7cf2';
 const EXPECTED_PRODUCER_AUTHORITY =
   'd32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900';
 type BrowserAuthority = {
@@ -44,11 +44,18 @@ const EXPECTED_BROWSER_AUTHORITY: BrowserAuthority = {
   protocolVersion: '1.3',
 };
 const EXPECTED_CANDIDATE_RUNS = [
+  '20260820-arc1a-browser-identity-candidate24',
+  '20260820-arc1a-browser-identity-candidate25',
+  '20260820-arc1a-browser-identity-candidate26',
+] as const;
+const EXPECTED_BASELINE_RUN = '20260820-arc1a-browser-identity-baseline10';
+const QUARANTINED_DIAGNOSTIC_CANDIDATE_RUNS = [
   '20260820-arc1a-browser-authority-candidate21',
   '20260820-arc1a-browser-authority-candidate22',
   '20260820-arc1a-browser-authority-candidate23',
 ] as const;
-const EXPECTED_BASELINE_RUN = '20260820-arc1a-browser-authority-baseline9';
+const QUARANTINED_DIAGNOSTIC_BASELINE_RUN =
+  '20260820-arc1a-browser-authority-baseline9';
 
 type ProfileName = typeof PROFILE_NAMES[number];
 type CalibrationSample = {
@@ -303,6 +310,16 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.93');
       expect(activeBudget.calibration.selectionRule)
         .toContain('20260820-arc1a-terminal-lifecycle-candidate20');
+      for (const runId of QUARANTINED_DIAGNOSTIC_CANDIDATE_RUNS) {
+        expect(activeBudget.calibration.selectionRule).toContain(runId);
+      }
+      expect(activeBudget.calibration.selectionRule)
+        .toContain(QUARANTINED_DIAGNOSTIC_BASELINE_RUN);
+      expect(activeBudget.calibration.selectionRule)
+        .toContain('individually clean diagnostic history only');
+      expect(activeBudget.calibration.selectionRule).toContain('path/UA contract');
+      expect(activeBudget.calibration.selectionRule)
+        .toContain('cannot cross the corrected contract authority boundary');
       expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_BASELINE_RUN);
       for (const runId of EXPECTED_CANDIDATE_RUNS) {
         expect(activeBudget.calibration.selectionRule).toContain(runId);
@@ -580,6 +597,66 @@ describe('Arc 1A Compendium budget authority', () => {
         ).errors.join('\n'), `${collection} ${field} mismatch`).toMatch(mismatchPattern);
       }
     }
+  });
+
+  it('accepts fresh per-run browser paths and host UAs without weakening build identity', () => {
+    type IdentitySample = {
+      runId: string;
+      commit: string;
+      workingTreeDigest: string;
+      inputDigest: string;
+      fixtureRowsSha256: string;
+      measuredAt: string;
+      browser?: Record<string, string>;
+    };
+    type MutableRecord = {
+      calibration: { samples: Record<ProfileName, IdentitySample[]> };
+    };
+    const sample = (run: number): IdentitySample => ({
+      runId: `fresh-path-${run}`,
+      commit: 'a'.repeat(40),
+      workingTreeDigest: 'b'.repeat(64),
+      inputDigest: 'c'.repeat(64),
+      fixtureRowsSha256: fixture.rowsSha256,
+      measuredAt: `2026-08-20T16:00:0${run}.000Z`,
+      browser: {
+        ...rawBrowserForAuthority(EXPECTED_BROWSER_AUTHORITY),
+        executable: `/private/tmp/cf-edge-fresh-${run}/Microsoft Edge`,
+        userAgent: `host provenance ${run}`,
+      },
+    });
+    const freshPaths = structuredClone(activeBudget) as unknown as MutableRecord;
+    freshPaths.calibration.samples.phone = [sample(1), sample(2), sample(3)];
+    const sharedIdentityPattern = /do not share one exact .*browser-authority identity/;
+    const freshErrors = validateBudgetRecord(
+      freshPaths, fixture.rowsSha256, baselineProjection.rowsSha256,
+    ).errors.join('\n');
+    expect(freshErrors).not.toMatch(sharedIdentityPattern);
+    expect(new Set(freshPaths.calibration.samples.phone
+      .map((entry) => entry.browser?.executable))).toHaveLength(3);
+    expect(new Set(freshPaths.calibration.samples.phone
+      .map((entry) => entry.browser?.userAgent))).toHaveLength(3);
+
+    for (const field of ['product', 'revision', 'jsVersion', 'protocolVersion'] as const) {
+      const drifted = structuredClone(freshPaths);
+      drifted.calibration.samples.phone[1]!.browser![field]
+        = `${drifted.calibration.samples.phone[1]!.browser![field]}-other`;
+      const driftErrors = validateBudgetRecord(
+        drifted, fixture.rowsSha256, baselineProjection.rowsSha256,
+      ).errors.join('\n');
+      expect(driftErrors, `${field} shared identity drift`).toMatch(sharedIdentityPattern);
+      expect(driftErrors, `${field} explicit authority drift`)
+        .toMatch(/candidate calibration browser does not match/);
+    }
+
+    const missingBrowser = structuredClone(freshPaths);
+    delete missingBrowser.calibration.samples.phone[1]!.browser;
+    const missingErrors = validateBudgetRecord(
+      missingBrowser, fixture.rowsSha256, baselineProjection.rowsSha256,
+    ).errors.join('\n');
+    expect(missingErrors).toMatch(/browser provenance is incomplete/);
+    expect(missingErrors).toMatch(sharedIdentityPattern);
+    expect(missingErrors).toMatch(/candidate calibration browser does not match/);
   });
 
   it('pins a complete, unique profile/outcome inventory', () => {

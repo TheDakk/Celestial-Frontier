@@ -221,18 +221,24 @@ no-retry post-measurement instrument red, not certification or calibration.
 
 Clean lifecycle-repair source `c49e525…` then ran candidate20 once. It completed 78/78 product
 outcomes, zero findings, six PNGs, and complete lifecycle, but the reused `.86`-named app reported
-Edge `.93` / revision `@4a822b1b…`; null calibration browser authority let it collect profiles.
-Quarantine report/sample/log `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser instrument
-evidence—not calibration, certification, product failure, preview authority, or HUMAN review.
-Baseline9 did not run.
+Edge `.93` / revision `@4a822b1b…`. Quarantine report/sample/log `175fac5e…` / `916dd12a…` /
+`7462144b…` as wrong-browser instrument evidence—not calibration, certification, product failure,
+preview authority, or HUMAN review.
 
-Explicit top-level `.86` authority and pre-profile candidate/baseline rejection establish
-measurement `825fb386…`; frozen budget/schema/contract/collector/selftest/test are `71ffa46f…` /
-`695d2529…` / `2620ebf6…` / `07131f5e…` / `240bbe17…` / `6991f6ce…`, while producer
-`d3223177…` and browser CDP `6da9e2ef…` remain unchanged. The ruler remains empty/null/measurement-
-required. Materialize exact `.86` afresh per launch, then collect baseline9 plus candidate21/22/23
-once each without retry. No launch argument, timeout, product byte, producer, or retry policy
-changed; terminal-green PR #32 returns immediately to Arc 1B.
+Candidate21/22/23 and paired baseline9 then completed once each without retry under exact `.86` and
+complete lifecycle. Every candidate replayed 78/78 with zero findings; baseline9 retained all four
+faults. They are individually clean diagnostic history only because the old shared-sample identity
+incorrectly compared fresh executable paths and host user agents. Raw path/UA remain mandatory
+per-run provenance; shared browser authority is exact product/revision/JavaScript/protocol.
+
+Corrected budget/schema/contract/collector/selftest/test `ac2c084a…` / `695d2529…` /
+`e7dfea1d…` / `07131f5e…` / `f86db74a…` / `5d00e59f…` establish measurement `2318f57b…`, while
+producer `d3223177…` and browser CDP `6da9e2ef…` remain unchanged. The ruler is fail-closed with
+empty candidate samples and null ceilings; its measurement-required baseline has a null collector
+commit and empty profiles. Materialize exact
+`.86` afresh for baseline10 and candidate24/25/26, once each with zero retries. No launch argument,
+timeout, workflow, product byte, producer, or retry policy changed; terminal-green PR #32 returns
+immediately to Arc 1B.
 This does not re-pin Gate A or the global browser authority: `../tools/deps.pinned.json` remains
 Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates, any
 timing, product bytes, or the one-attempt/zero-retry policy.

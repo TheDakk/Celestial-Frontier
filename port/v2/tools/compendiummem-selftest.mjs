@@ -2485,6 +2485,22 @@ export async function runCompendiumMemSelftest() {
     product: 'Chrome/Other', revision: 'selftest', js_version: 'selftest',
     protocol_version: '1.3',
   }, browserAuthority), 'a different browser product matched the Arc authority');
+  const freshHostProvenanceBudget = clone(budget);
+  for (const profile of ['phone', 'desktop']) {
+    for (const sample of freshHostProvenanceBudget.calibration.samples[profile]) {
+      sample.browser.executable = `/private/tmp/${sample.runId}/Microsoft Edge`;
+      sample.browser.userAgent = `host provenance for ${sample.runId}`;
+    }
+    for (const sample of freshHostProvenanceBudget.pairedBrokenBaseline.samples[profile]) {
+      sample.browser.executable = `/private/tmp/${sample.runId}/Microsoft Edge`;
+      sample.browser.userAgent = `baseline host provenance for ${sample.runId}`;
+    }
+  }
+  const freshHostProvenanceCheck = validateBudget(freshHostProvenanceBudget);
+  assert(freshHostProvenanceCheck.ok
+    && new Set(freshHostProvenanceBudget.calibration.samples.phone
+      .map((sample) => sample.browser.executable)).size === 3,
+  `distinct fresh browser paths/host UAs did not embed under one exact build authority: ${freshHostProvenanceCheck.errors.join('; ')}`);
   const exactObservedBrowser = {
     executable: '/selftest/edge', product: 'Chrome/Selftest', revision: 'selftest',
     user_agent: 'selftest', js_version: 'selftest', protocol_version: '1.3',

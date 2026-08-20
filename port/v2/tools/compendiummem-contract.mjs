@@ -2284,13 +2284,16 @@ function validateCalibrationSample(
 function enforceSharedSampleIdentity(samples, label, errors, expectedCommit = null,
   expectedFixture = null) {
   if (!samples.length) return;
-  const identity = (sample) => [sample.commit, sample.workingTreeDigest,
-    sample.inputDigest, sample.fixtureRowsSha256,
-    sample.browser?.executable, sample.browser?.product, sample.browser?.revision,
-    sample.browser?.userAgent, sample.browser?.jsVersion, sample.browser?.protocolVersion].join('\0');
+  const identity = (sample) => {
+    const authority = compendiumBrowserAuthority(sample.browser);
+    return [sample.commit, sample.workingTreeDigest,
+      sample.inputDigest, sample.fixtureRowsSha256,
+      authority?.product, authority?.revision,
+      authority?.jsVersion, authority?.protocolVersion].join('\0');
+  };
   const first = identity(samples[0]);
   if (samples.some((sample) => identity(sample) !== first)) {
-    errors.push(`${label} samples do not share one exact commit/working-tree/input/fixture identity`);
+    errors.push(`${label} samples do not share one exact commit/working-tree/input/fixture/browser-authority identity`);
   }
   if (expectedCommit && samples.some((sample) => sample.commit !== expectedCommit)) {
     errors.push(`${label} samples do not match the recorded baseline commit`);
