@@ -1,5 +1,42 @@
 # Celestial Frontier — Roadmap ARCHIVE
 
+## ARCHIVED 2026-08-20 — PR #32 serviced-turn first-red and activation chronology
+
+> Moved byte-verbatim from ROADMAP.md when the live handoff crossed 400 lines.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR32 SERVICED-TURN FIRST-RED AND ACTIVATION -->
+- PR battery run `32334254714`, attempt 1, then correctly stayed red without retry. Its Compendium
+  report `gha-32334254714-1-compendiummem` bound clean detached PR test-merge
+  `88b9c7b0aa90b860a5474bd099cfab48b125a3f5`, exact Edge 151.0.4129.86, the active budget bytes,
+  and matching producer `291b794e…`. Phone completed 29 stages through veteran-Earth boot readiness;
+  `Planetside thumb settlement` then missed the unchanged 2,000 ms target bound at 2,001.723 ms while
+  the independent browser heartbeat answered in 0.872 ms. That is terminal
+  `product-unanswerable`, not an instrument, browser, or transport result; desktop never ran.
+- The partial report did not retain producer phase, so it cannot attribute the exact timeout.
+  Source inspection showed that worker completion could publish several messages, after which the
+  broker's zero-delay successor pumps could repeatedly win over rendering, input, and inspector
+  work on constrained Linux. The frozen repair makes every default broker pump cross one
+  rendering opportunity and then one later task (`requestAnimationFrame` → `setTimeout(0)`). Broker
+  pump-generation invalidation makes a callback armed before bfcache suspension or disposal stale;
+  resume schedules a fresh serviced turn. This changes the built owner and therefore producer
+  authority to `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`
+  (`assets/main-BAg-DH_f.js`; worker and painter unchanged).
+- Commit `f47cd381699fb1934f30bfca82fc9bf971714e6d` freezes the serviced-turn scheduler and its
+  fail-closed calibration seam. Fresh paired broken-baseline run
+  `20260820-arc1a-serviced-turn-baseline4` used collector `f47cd381…` against legacy product
+  `3844701…` and carries no candidate producer field. Independent candidate runs
+  `20260820-arc1a-serviced-turn-candidate5`, `candidate6`, and `candidate7` used clean
+  `f47cd381…` as collector/product source and bound producer `1c8200d7…`. All four shared
+  measurement authority `bb03a3af…` and exact Edge 151.0.4129.86. Every run was one attempt with
+  zero retries; each candidate produced all 78 outcomes. The tracked ruler is active again with
+  strict ceilings above the replayed three-run
+  maxima. The paired baseline retains all four sealed faults and breaches 14 phone / 13 desktop
+  ceilings. Commit `78813cd25c67f4255282f418ea6f635a45e0fc29` activates that ruler. Its one-attempt
+  Arc-local Edge run `20260820-arc1a-serviced-turn-active-cert-78813cd` passed all 78 outcomes with
+  zero findings/retries and independently verified at report SHA-256 `0d4a7f80…`; the same head's
+  root Chrome layout gate passed 787/787 across 10/10 viewports.
+<!-- END VERBATIM ROADMAP BLOCK: PR32 SERVICED-TURN FIRST-RED AND ACTIVATION -->
+
 ## ARCHIVED 2026-08-20 — PR #32 pre-serviced-turn chronology compacted from live handoff
 
 > Moved byte-verbatim from ROADMAP.md when the live handoff approached 400 lines. The active

@@ -134,13 +134,25 @@
 > 8px gap. It does not change stacking order, ownership, hit-test predicates, or Glass thresholds. The
 > existing Planetside development-release bullet now names this player-facing outcome. Product and
 > copy bytes change producer to `e59685b1…` (index `ca76da4c…`, owner
-> `assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged); measurement stays `f9710bdf…`.
+> `assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged); measurement was `f9710bdf…`
+> before the later cold-start launcher transition.
 > Clean committed source `2a105d51…` collected paired baseline6 against legacy `3844701…` plus
 > independent candidate11/12/13 under exact Edge .86. All were one-attempt/no-retry; candidates replay
-> 78/78. Active budget/test `ebe5b5c3…` / `ec956b8a…` place every one of 40 ceilings above its
+> 78/78. Historical budget/test `ebe5b5c3…` / `ec956b8a…` place every one of 40 ceilings above its
 > three-run maximum; the four-fault baseline breaches 14 phone / 13 desktop fields. The targeted
-> compact-phone Glass diagnostic passed at SHA-256 `13efb5fa…`, but is non-certifying; a complete
-> exact-head battery and corresponding PR test-merge CI remain open.
+> compact-phone Glass diagnostic passed at SHA-256 `13efb5fa…`, but is non-certifying. Exact pushed
+> head `f9ae372…` later passed the complete local battery once, including Compendium 78/78, Smoke,
+> Glass 12/12 and 58/58, personas, root layout 787/787, and preview packaging/smoke. Corresponding
+> GitHub run `32367902426` / Compendium job `96421452463` stopped before `Browser.getVersion` or
+> product measurement: its endpoint consumed `23657.701415` ms and left `6342.262417` ms of the
+> 30-second startup window for a 15-second socket phase. No Compendium report/outcome or retry exists.
+> The one-launch repair gives only that cold selftest caller 45 seconds, retaining 15-second socket,
+> 1.5-second command, 2-second shutdown, 15-second generic/candidate startup, and 2-second product
+> observation. Portable controls pass at 38,657 ms and fail at exact/late 38,658/38,659 ms; there is
+> no warmup, relaunch, retry, fallback, workflow change, or UI/game timing optimization. Launcher
+> `6892dea6…` changes measurement to `6ba58522…`; producer remains `e59685b1…`, and budget/test
+> `41482f1c…` / `85420929…` fail closed pending baseline7/candidate14/15/16. One authority refresh
+> and one battery/CI attempt remain before returning to gameplay work.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
 > list, focus-pinned, and detail PNGs still await HUMAN review. Arc 1B scene-resource disposal and live
 > HD planet replacement remain open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
@@ -435,8 +447,11 @@
 > `bb03a3af…` replayed-raw ruler under exact Edge .86. The frozen shared-timer repair moves measurement
 > authority to `f9710bdf…`; baseline5 plus candidate8/9/10 historically activated exact budget
 > `8ffd0d8e…` for that producer. The compact portrait stack repair changes producer to `e59685b1…`;
-> paired baseline6 plus candidate11/12/13 now activate budget `ebe5b5c3…` under that exact producer and
-> unchanged measurement authority. Every selected head must still own exact-source local resource
+> paired baseline6 plus candidate11/12/13 historically activated budget `ebe5b5c3…` under that exact
+> producer and measurement authority. Exact f9's full local battery remains truthful, but its
+> corresponding run `32367902426` stopped on the first real Edge selftest cold launch before product.
+> Launcher `6892dea6…` changes measurement to `6ba58522…`; budget `41482f1c…` is fail-closed pending
+> baseline7/candidate14/15/16. Every selected head must still own exact-source local resource
 > certification and corresponding terminal-green PR test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150
 > browser. Fresh six-image evidence still awaits HUMAN review. Arc 1B

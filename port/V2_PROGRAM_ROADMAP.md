@@ -612,9 +612,10 @@ both parent voices.
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
 
-**Current state (2026-08-20): product implementation, serviced-turn scheduler, bounded compact-phone
-Planetside stack repair, and active `f9710bdf…` / `e59685b1…` measured ruler present. Exact-source
-automation and fresh `[HUMAN]` review remain open.**
+**Current state (2026-08-20): product implementation, serviced-turn scheduler, and the bounded
+compact-phone Planetside stack repair are present. Producer `e59685b1…` is unchanged, while the
+new `6ba58522…` measurement authority is fail-closed pending baseline7/candidate14/15/16.
+Exact-source automation and fresh `[HUMAN]` review remain open.**
 This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
 corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
 `compendiummem` gate drives a deterministic 1,500-row
@@ -687,18 +688,32 @@ push, and CI did not run.
 The bounded product repair retains a 44px Survey floor, 72px scrollable Planetside floor, and their
 existing 8px gap by deriving the lower cap from the shared bottom anchor. Its revised development-
 release bullet changes producer authority to `e59685b1…` (index `ca76da4c…`, owner
-`assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged), while measurement remains
-`f9710bdf…`. Clean committed source `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired
+`assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged); measurement was `f9710bdf…`
+before the later cold-start transition. Clean committed source
+`2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired
 baseline6 against legacy `3844701…` and independent candidate11/12/13 under exact Edge .86. All four
-were one-attempt/no-retry; candidates replay 78/78. Active budget/test `ebe5b5c3…` / `ec956b8a…`
+were one-attempt/no-retry; candidates replay 78/78. Historical budget/test `ebe5b5c3…` / `ec956b8a…`
 place all 40 ceilings above the three-run maxima; the four-fault baseline breaches 14 phone / 13
 desktop fields. Browser-free focused 11/11, selftest 222/222, and semantic validation pass. The
-targeted compact-phone Glass diagnostic at `13efb5fa…` is non-certifying; the exact-head battery and
-corresponding PR test-merge remain open. The Arc-local Edge authority still does **not** repin
+targeted compact-phone Glass diagnostic at `13efb5fa…` is non-certifying. Exact pushed head
+`f9ae372…` then passed the complete local battery once: Compendium 78/78, Smoke, Glass 12/12 and
+58/58, personas, root layout 787/787, and preview packaging/smoke. Corresponding GitHub run
+`32367902426` / job `96421452463` stopped before `Browser.getVersion` or product measurement on its
+single Edge cold launch: endpoint discovery consumed `23657.701415` ms, leaving `6342.262417` ms of
+the 30-second window for a 15-second socket phase. No Compendium report/outcome or retry exists.
+
+Only that real cold selftest caller now owns 45 seconds startup; socket/command/shutdown remain
+15/1.5/2 seconds, generic and candidate startup remain 15 seconds, and product observation remains
+2 seconds. Portable controls pass at 38,657 ms and reject exact/late 38,658/38,659 ms with one child
+and cleanup. There is no warmup, relaunch, retry, fallback, workflow change, or game optimization.
+Launcher `6892dea6…` changes measurement to `6ba58522…`; producer stays `e59685b1…`, and budget/test
+`41482f1c…` / `85420929…` fail closed pending baseline7/candidate14/15/16. After this one authority
+refresh and one battery/CI attempt, execution returns to gameplay arcs. The Arc-local Edge authority
+still does **not** repin
 Gate-A/global Edge `150.0.4078.83`.
 
-The current state records an implemented product/scheduler/stack repair and an active strict ruler,
-not terminal resource certification. Human judgment of a fresh certifying run's six phone/desktop
+The current state records an implemented product/scheduler/stack repair and a fail-closed ruler
+transition, not terminal resource certification. Human judgment of a fresh certifying run's six phone/desktop
 list, detail, and focus-pinned images remains outstanding. Arc 1B remains open for ordinary scene/Pixi
 texture, render-target, GPU-proxy, and combined travel → Compendium → Shipyard plateau ownership.
 

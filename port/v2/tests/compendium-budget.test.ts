@@ -20,7 +20,7 @@ const budgetPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.json')
 const schemaPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.schema.json');
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  'f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409';
+  '6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a';
 const EXPECTED_PRODUCER_AUTHORITY =
   'e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb';
 const EXPECTED_CANDIDATE_RUNS = [
