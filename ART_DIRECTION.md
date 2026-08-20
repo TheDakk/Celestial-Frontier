@@ -135,16 +135,17 @@ zero outcomes, blocked all 78, and retained no review PNG.
 The displayed-demand/zoom-owner product and development-copy repair changes built producer authority
 to `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`: index `dee9af3a…`, owner
 `assets/main-Da536xWA.js` / `28382873…`, worker/painter unchanged. Measurement remains `6ba58522…`.
-The ruler is deliberately `calibration-required` under budget/test `9f53ebe69e…` / `c2b68b3ec…`;
-samples are empty, paired baseline is measurement-required, and ceilings are null. Baseline7 and
-candidate14/15/16 remain truthful only for old producer `e59685b1…`.
+Clean committed source `75a996af…` produced one no-retry baseline8 against legacy `3844701…` and
+independent no-retry candidate17/18/19 under exact Edge .86. Every candidate replayed 78/78;
+baseline8 retained all four faults and 14 phone / 13 desktop breaches. Active budget/test
+`74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) reuse all 40 prior strict ceilings above the
+three-candidate maxima. The report/sample pairs are baseline8 `0a8b831e…` / `a52bccec…`, c17
+`6b86ca9d…` / `0818c86e…`, c18 `a9b28d79…` / `c368ba86…`, and c19 `440cb788…` / `abddfa84…`.
 
-The bounded next step is one no-retry baseline8 against legacy `3844701…` plus independent
-candidate17/18/19 on one identical clean committed producer head, followed—only if candidates replay
-78/78, the baseline retains four faults/discriminating breaches, authorities match, and strict
-reasoned ceilings are activated—by one exact-activation-head battery and one corresponding CI
-attempt. The first red stops without timing expansion; after PR #32 closes, work returns to Arc
-1B/gameplay. Every selected head must own exact-source local certification, and its corresponding PR
+This activation is browser-free and non-certifying. Commit one exact activation head, then run one
+complete same-head battery and one corresponding CI attempt. The first red stops without timing
+expansion; after PR #32 closes, work returns to Arc 1B/gameplay. Every selected head must own
+exact-source local certification, and its corresponding PR
 test-merge CI must be terminal green; this reference deliberately caches neither mutable live
 outcome.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150

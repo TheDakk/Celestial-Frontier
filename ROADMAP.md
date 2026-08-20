@@ -71,7 +71,7 @@ the archive verbatim and refresh this handoff in place.
   deadline, retry policy, collector, measurement input, save format, deterministic generation,
   release identity, or deployment. Worker and painter bytes remain unchanged.
 
-### Fail-closed authority and bounded calibration
+### Active authority and bounded certification
 
 - The product/copy change makes built producer authority
   `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`: index
@@ -80,23 +80,23 @@ the archive verbatim and refresh this handoff in place.
   `283828737eefe7774fc27c96319335cb4f1a9433862fe295af56436c5d59031a`, with worker and painter
   unchanged. Measurement authority remains
   `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`.
-- The tracked ruler correctly fails closed at `calibration-required`: phone/desktop candidate
-  samples are empty, the paired baseline is `measurement-required`, and ceilings are null. Current
-  budget/test SHA-256 values are
-  `9f53ebe69e007f33eb0b38331f8750ecbe70a0a884edfe261800c0e9f01bb011` /
-  `c2b68b3ec1f7fea1b1013fb024676be1f3aad45a3726eb613febf07c79ee6210`.
-  Baseline7/candidate14/15/16, their strict ceilings, exact-139 local battery, and run `32383320206`
-  remain truthful history for producer `e59685b1…`; none crosses into or certifies
-  `d3223177…`.
-- Freeze one clean committed repair/collector head. Under unchanged exact Edge .86 and measurement
-  `6ba58522…`, collect one one-attempt/no-retry paired baseline8 against legacy product
-  `38447019517147319bd08c598202d097ee866874`, then independent one-attempt/no-retry
-  candidate17, candidate18, and candidate19 against the identical committed candidate head and
-  producer.
-- Activate a successor ruler only if every candidate replays 78/78, baseline8 retains all four
-  sealed faults and discriminating breaches, all raw capsules and authorities match, and every
-  ceiling is strictly above the three-run maximum with written rationale. Then run one complete
-  exact-activation-head local battery and one corresponding PR test-merge CI attempt.
+- Clean committed collector/candidate source
+  `75a996af2fe7c1f22c04324d25df1e93b5b8d551` produced one-attempt/no-retry baseline8 against
+  legacy product `38447019517147319bd08c598202d097ee866874` plus independent candidate17,
+  candidate18, and candidate19 under exact Edge .86. Every candidate replayed 78/78; baseline8
+  retained all four sealed faults and breached 14 phone / 13 desktop ceilings. Report/sample
+  SHA-256 pairs are baseline8 `0a8b831e…` / `a52bccec…`, candidate17 `6b86ca9d…` / `0818c86e…`,
+  candidate18 `a9b28d79…` / `c368ba86…`, and candidate19 `440cb788…` / `abddfa84…`.
+- The active budget/test pair is
+  `74e88c2bbba4cec1a1a3b58ecbe9de3a6f098ae66fad05e7f6dcd4673a945a64` (79,614 bytes) /
+  `485be9da8877c32966972d1f12edcadb3c940ebe777da0e02c5270df41a55fc2` (20,782 bytes). It reuses
+  the prior strict ceilings; all 40 remain above the three-candidate maxima. Phone maxima for page
+  heap / embedder / backing store / aggregate / encoded bytes / warm delta are
+  `7,759,036 / 3,155,752 / 3,079,214 / 12,443,380 / 2,478,772 / 7,008`; desktop maxima are
+  `10,672,452 / 2,990,736 / 4,804,492 / 16,010,775 / 6,608,020 / 312,416`.
+- Ruler activation is browser-free and non-certifying. Commit the unchanged active pair and current
+  documentation to form one exact activation head, then run one complete battery and one
+  corresponding PR test-merge CI attempt from that exact head.
 - First red, ambiguity, source mismatch, or unverifiable carrier stops the transition and is
   preserved. Do not widen a timing bound, alter CDP/measurement tools, retry an unchanged red, or
   start another infrastructure loop. After PR #32 closes in order, return to Arc 1B/gameplay.
@@ -112,18 +112,19 @@ the archive verbatim and refresh this handoff in place.
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS owns PR #32's bounded product resolution-demand repair and
-fail-closed producer transition. Product, budget, test, and documentation bytes must be committed
-together before baseline8/candidate17/18/19. No current browser run may certify the
-`d3223177…` producer yet.
+active ruler. Product/collector source `75a996af…` now has one no-retry baseline8 plus three
+independent no-retry candidates; active budget/test are `74e88c2b…` / `485be9da…`. Commit the
+activation and documentation together before any exact-head browser certification.
 
-**GitHub step:** None until the clean pre-calibration commit, fresh calibration/activation, one
-exact-activation-head battery, and one corresponding PR test-merge attempt complete under the stop
-rule. PR #32 already exists; do not create another PR, mark a red head Ready, or touch `main`.
+**GitHub step:** None until the activation commit and its one exact-head local battery complete
+under the first-red stop rule. Then push that exact unchanged head to existing PR #32 and require
+one corresponding PR test-merge attempt. Do not create another PR, mark a red head Ready, or touch
+`main`.
 
 **PR details:** base `develop`; source `openai/mac`; existing title
 **Arc 1A — Bound Compendium portraits and measured resources**. Update its description after the
 activation head exists to name run `32383320206`, the displayed-demand/zoom repair, producer
-`d3223177…`, fresh baseline8/candidate17/18/19 authority, and exact final verification. No release
+`d3223177…`, active baseline8/candidate17/18/19 authority, and exact final verification. No release
 or deployment is included.
 
 **Other side:** Anthropic/Claude Code does not have this PR #32 repair and need not be opened now.

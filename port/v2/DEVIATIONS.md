@@ -14,9 +14,9 @@ as any change that touches an entry.
 **Status: ★ product implementation, serviced-turn scheduler, compact-phone Planetside stack, and
 displayed-demand/zoom-owner repair present. Exact-139 passed locally; corresponding run
 `32383320206` preserved a valid product red. Measurement remains `6ba58522…`, producer is
-`d3223177…`, and budget/test `9f53ebe69e…` / `c2b68b3ec…` fail closed at
-`calibration-required`. Fresh calibration, exact-source automation, and six-image `[HUMAN]` review
-are open.**
+`d3223177…`. Clean source `75a996af…` supplied baseline8 plus independent candidate17/18/19;
+active budget/test `74e88c2b…` / `485be9da…` preserve four-fault baseline discrimination and all
+strict ceilings. Exact-source automation and six-image `[HUMAN]` review are open.**
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -143,13 +143,13 @@ This block records the current disposition of the historical
 - The displayed-demand/zoom-owner product and development-copy repair changes built producer to
   `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900` (index `dee9af3a…`, owner
   `assets/main-Da536xWA.js` / `28382873…`; worker/painter unchanged). Measurement remains
-  `6ba58522…`. Current budget/test `9f53ebe69e…` / `c2b68b3ec…` deliberately fail closed at
-  `calibration-required`, with empty candidate samples, a measurement-required paired baseline, and
-  null ceilings. Baseline7/candidate14/15/16 remain historical for `e59685b1…`.
-- The bounded successor is one no-retry baseline8 against legacy `3844701…` plus independent
-  candidate17/18/19 from one clean committed head, activation only after matching raw authority,
-  78/78 candidate replay, four retained baseline faults/discriminating breaches, and strict reasoned
-  ceilings, then one exact-activation-head battery and one corresponding CI attempt. First red stops;
+  `6ba58522…`. Clean committed source `75a996af…` produced one no-retry baseline8 against legacy
+  `3844701…` plus independent no-retry candidate17/18/19 under exact Edge .86. Every candidate
+  replayed 78/78; baseline8 retained all four faults and breached 14 phone / 13 desktop ceilings.
+  Active budget/test `74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) reuse all 40 strict ceilings
+  above the three-run maxima.
+- Activation is browser-free and non-certifying. Commit one exact activation head, then run one
+  complete same-head battery and one corresponding CI attempt. First red stops;
   no broader timing work is in scope before Arc 1B/gameplay resumes after PR #32 closes.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,

@@ -1089,14 +1089,14 @@ CDP deadline, or retrying the red.
 
 That product/copy change makes producer authority `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`
 (index `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`; worker/painter unchanged) while
-measurement `6ba58522…` remains frozen. The budget must therefore fail closed at
-`calibration-required`: current budget/test SHA-256 are `9f53ebe69e…` / `c2b68b3ec…`, samples are
-empty, paired baseline is measurement-required, and ceilings are null. Baseline7/candidate14/15/16
-remain historical for producer `e59685b1…`. Freeze one clean collector/product head, measure
-baseline8 against legacy `3844701…` and independent candidate17/18/19 once each without retry,
-activate only from matching raw authority with 78/78 candidates, four retained baseline faults and
-strict reasoned ceilings, then run one exact-activation-head battery and one corresponding CI
-attempt. First red stops; no more timing expansion precedes the return to Arc 1B/gameplay.
+measurement `6ba58522…` remains frozen. Clean committed collector/candidate source `75a996af…`
+produced one no-retry baseline8 against legacy `3844701…` plus independent no-retry
+candidate17/18/19 under exact Edge .86. Every candidate replayed 78/78; baseline8 retained all four
+faults and breached 14 phone / 13 desktop ceilings. Active budget/test SHA-256 are `74e88c2b…` /
+`485be9da…` (79,614 / 20,782 bytes); all 40 reused ceilings strictly exceed the three-candidate
+maxima. Activation is browser-free and non-certifying: commit one exact activation head, then run
+one complete same-head battery and one corresponding PR CI attempt. First red stops; no more timing
+expansion precedes the return to Arc 1B/gameplay.
 
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread

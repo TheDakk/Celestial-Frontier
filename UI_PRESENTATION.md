@@ -183,12 +183,13 @@
 >
 > The product and development-copy bytes change producer authority to `d3223177…` (index
 > `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`; worker/painter unchanged) while
-> measurement `6ba58522…` remains frozen. Budget/test `9f53ebe69e…` / `c2b68b3ec…` now fail closed
-> at `calibration-required`, with empty samples, measurement-required baseline, and null ceilings.
-> Baseline7/candidate14/15/16 are historical for `e59685b1…`. Collect one no-retry baseline8 plus
-> independent candidate17/18/19 on one clean committed head, activate only from matching raw
-> authority and strict discriminating ceilings, then run one exact-head battery and one corresponding
-> CI attempt. The first red stops; gameplay resumes after PR #32 closes without broader timing work.
+> measurement `6ba58522…` remains frozen. Clean committed source `75a996af…` produced one no-retry
+> baseline8 plus independent no-retry candidate17/18/19 under exact Edge .86; all candidates replayed
+> 78/78, and baseline8 retained four faults with 14 phone / 13 desktop breaches. Active budget/test
+> `74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) reuse all 40 strict ceilings above the three-run
+> maxima. Activation is browser-free and non-certifying; one exact-activation-head battery and one
+> corresponding CI attempt remain. The first red stops; gameplay resumes after PR #32 closes without
+> broader timing work.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
 > list, focus-pinned, and detail PNGs still await HUMAN review. This repair owns the current surface
 > globe's fitted start and live tier swap only; the broader Arc 1B/1C scene-resource disposal and HD
@@ -497,9 +498,10 @@
 > response preserved a valid Planetside `product-unanswerable` red. The bounded product repair starts
 > the globe from displayed backing demand, preserves zoom/DPR sharpness through an identity-safe
 > 512/768/1024 upgrade owner, and changes producer to `d3223177…` while measurement remains
-> `6ba58522…`. The current `9f53ebe69e…` / `c2b68b3ec…` ruler seam is fail-closed
-> `calibration-required` pending baseline8 plus candidate17/18/19. Every selected activation head
-> must still own exact-source local resource certification and corresponding terminal-green PR
+> `6ba58522…`. Clean source `75a996af…` supplied baseline8 plus independent candidate17/18/19;
+> active ruler/test `74e88c2b…` / `485be9da…` retain four-fault baseline discrimination and strict
+> ceilings above all three candidate maxima. This browser-free activation is not certification.
+> Every selected activation head must still own exact-source local resource certification and corresponding terminal-green PR
 > test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150
 > browser. Fresh six-image evidence still awaits HUMAN review. The broader Arc 1B/1C
