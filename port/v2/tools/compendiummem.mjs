@@ -39,6 +39,7 @@ import {
   compendiumCalibrationEvaluatorBudget,
   compendiumMeasurementAuthority, compendiumProducerAuthority,
   compendiumBrowserAuthorityMatches, compendiumBudgetBrowserAuthority,
+  validCompendiumBrowserAuthority,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression,
   evaluateCandidateExpression, evaluateProfile, installBrokenBaselineThumbObserver,
@@ -453,6 +454,29 @@ export function verifyCompendiumTerminalReport(report, expectedRunId, {
 export function compendiumBudgetModeAllowed({ calibrate, budgetStatus }) {
   return typeof calibrate === 'boolean'
     && (calibrate ? budgetStatus === 'calibration-required' : budgetStatus === 'active');
+}
+
+/* This is the one pre-measurement browser-authority seam for candidate and
+   paired-baseline calibration. It records the collector-computed comparison
+   before deciding whether collection may begin; neither the budget nor the
+   recorder can supply a trusted match boolean. The injected collector keeps
+   the control executable without starting a browser. */
+export async function collectWithCompendiumBrowserAuthority({
+  budget, browser, recordEvidence, collect, mismatchMessage,
+}) {
+  assert(typeof recordEvidence === 'function',
+    'Compendium browser-authority evidence recorder is invalid');
+  assert(typeof collect === 'function',
+    'Compendium browser-authority protected collector is invalid');
+  assert(typeof mismatchMessage === 'string' && mismatchMessage.length > 0,
+    'Compendium browser-authority mismatch diagnosis is invalid');
+  const browserAuthority = compendiumBudgetBrowserAuthority(budget);
+  const browserAuthorityMatch = validCompendiumBrowserAuthority(browserAuthority)
+    && compendiumBrowserAuthorityMatches(browser, browserAuthority);
+  const evidence = Object.freeze({ browserAuthority, browserAuthorityMatch });
+  await recordEvidence(evidence);
+  if (!browserAuthorityMatch) throw new Error(mismatchMessage);
+  return await collect();
 }
 function sampleBrowser(browser) {
   return {
@@ -2151,6 +2175,7 @@ export function baselineLifecycleFailureReport(provisionalReport, failures) {
     inputs: provisionalReport.inputs ?? null,
     inputDigest: provisionalReport.inputDigest ?? null,
     browser: provisionalReport.browser ?? null,
+    budget: provisionalReport.budget,
     evidenceStatus: partialEvidence.evidenceStatus,
     findings: [
       ...(provisionalReport.status === 'instrument-fail' ? provisionalReport.findings : []),
@@ -2184,7 +2209,12 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
   const startedAt = new Date();
   const runId = reportRunId();
   const placeholderSource = unavailableSourceIdentity('baseline preflight not started');
-  atomicWriteJson(baselineReportPath, {
+  let baselineBudgetEvidence = {
+    status: 'unavailable', path: 'budgets/compendium-memory-v1.json',
+    sha256: sha256('baseline budget not read yet'),
+    browserAuthority: null, browserAuthorityMatch: null,
+  };
+  let runningReport = {
     schema: 'cf-v2-compendium-broken-baseline-report/v1', status: 'running', runId,
     lifecycle: { schema: REPORT_LIFECYCLE_SCHEMA, status: 'pending' },
     startedAt: startedAt.toISOString(), endedAt: null,
@@ -2194,8 +2224,9 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
     },
     collectorSource: { begin: placeholderSource, end: placeholderSource },
     baselineSource: { begin: placeholderSource, end: placeholderSource },
-    findings: [], profiles: {},
-  });
+    browser: null, budget: baselineBudgetEvidence, findings: [], profiles: {},
+  };
+  atomicWriteJson(baselineReportPath, runningReport);
   let collectorBegin = placeholderSource;
   let baselineBegin = placeholderSource;
   let baselineRoot = null;
@@ -2219,6 +2250,19 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
     const fixture = buildCompendiumFixture();
     const projection = buildBrokenBaselineProjection(fixture);
     const budget = readJson(budgetPath);
+    baselineBudgetEvidence = {
+      status: budget.status, path: 'budgets/compendium-memory-v1.json',
+      sha256: hashFile(budgetPath),
+      browserAuthority: compendiumBudgetBrowserAuthority(budget),
+      browserAuthorityMatch: null,
+    };
+    runningReport = {
+      ...runningReport,
+      collectorSource: { begin: collectorBegin, end: collectorBegin },
+      baselineSource: { begin: baselineBegin, end: baselineBegin },
+      budget: baselineBudgetEvidence,
+    };
+    atomicWriteJson(baselineReportPath, runningReport);
     const measurementAuthority = compendiumMeasurementAuthority(exactInputs(fixture));
     assert(measurementAuthority, 'current Compendium measurement authority is unavailable');
     const budgetValidation = validateBudgetRecord(
@@ -2238,25 +2282,37 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
       baselineRoot, baselineDist, fixture, projection, collectorBegin, baselineBegin,
     );
     inputDigest = sha256(stableJson(inputs));
+    runningReport = { ...runningReport, inputs, inputDigest };
+    atomicWriteJson(baselineReportPath, runningReport);
     server = await serveDist(baselineDist);
     browser = await openChromiumCdp(compendiumCdpOptions('baseline', {
       label: 'Compendium exact-3844701 broken-baseline gate',
       userDataPrefix: 'cf-compendiummem-baseline', startupTimeoutMs: 15000,
     }));
-    const baselineBrowserAuthority = compendiumBudgetBrowserAuthority(budget);
-    assert(baselineBrowserAuthority === null
-      || compendiumBrowserAuthorityMatches(browser.browser, baselineBrowserAuthority),
-    'paired broken-baseline browser does not match the exact Arc 1A calibration authority');
-    const saveFixtures = readJson(baselineSavePath);
-    const rawSave = structuredClone(saveFixtures.inputs.veteran_rich);
-    rawSave.codex = projection.codex;
-    const veteranRaw = JSON.stringify(rawSave);
-    for (const [profile, viewport] of Object.entries(PROFILES)) {
-      measurements.push(await collectBrokenBaselineProfile({
-        profile, viewport, fixture, browser, origin: server.origin, veteranRaw,
-        speciesChunk: inputs.speciesChunk, runId,
-      }));
-    }
+    await collectWithCompendiumBrowserAuthority({
+      budget, browser: browser.browser,
+      recordEvidence: (evidence) => {
+        baselineBudgetEvidence = { ...baselineBudgetEvidence, ...evidence };
+        runningReport = {
+          ...runningReport, browser: browser.browser, budget: baselineBudgetEvidence,
+        };
+        atomicWriteJson(baselineReportPath, runningReport);
+      },
+      collect: async () => {
+        const saveFixtures = readJson(baselineSavePath);
+        const rawSave = structuredClone(saveFixtures.inputs.veteran_rich);
+        rawSave.codex = projection.codex;
+        const veteranRaw = JSON.stringify(rawSave);
+        for (const [profile, viewport] of Object.entries(PROFILES)) {
+          measurements.push(await collectBrokenBaselineProfile({
+            profile, viewport, fixture, browser, origin: server.origin, veteranRaw,
+            speciesChunk: inputs.speciesChunk, runId,
+          }));
+        }
+      },
+      mismatchMessage:
+        'paired broken-baseline browser does not match the exact Arc 1A calibration authority',
+    });
     const expectedFaults = [...budget.pairedBrokenBaseline.expectedFaults].sort();
     for (const measurement of measurements) {
       assert(stableJson([...measurement.observedFaults].sort()) === stableJson(expectedFaults),
@@ -2290,7 +2346,7 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
       },
       collectorSource: { begin: collectorBegin, end: collectorEnd },
       baselineSource: { begin: baselineBegin, end: baselineEnd },
-      inputs, inputDigest, browser: browser.browser,
+      inputs, inputDigest, browser: browser.browser, budget: baselineBudgetEvidence,
       findings: [], profiles: Object.fromEntries(measurements.map((m) => [m.profile, m])),
       samplePath: path.relative(repoRoot, samplePath),
     };
@@ -2301,6 +2357,7 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
         collectorCommit: collectorBegin.commit,
         measurementAuthoritySha256: measurementAuthority.sha256,
         projectionRowsSha256: projection.rowsSha256,
+        browserAuthority: baselineBudgetEvidence.browserAuthority,
       },
       collectorSource: report.collectorSource, baselineSource: report.baselineSource,
       inputs, inputDigest, browser: browser.browser,
@@ -2328,7 +2385,7 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
       },
       collectorSource: { begin: collectorBegin, end: collectorBegin },
       baselineSource: { begin: baselineBegin, end: baselineBegin },
-      inputs, inputDigest, browser: browser?.browser || null,
+      inputs, inputDigest, browser: browser?.browser || null, budget: baselineBudgetEvidence,
       evidenceStatus: partialEvidence.evidenceStatus,
       findings: [`instrument: ${error.message}`],
       profiles: partialEvidence.profiles,
@@ -2454,26 +2511,29 @@ async function runGate({ calibrate }) {
       startupTimeoutMs: 15000,
     }));
     gateStage = 'Arc 1A browser authority';
-    const browserAuthorityMatch = running.budget.browserAuthority === null
-      ? null : compendiumBrowserAuthorityMatches(browser.browser, running.budget.browserAuthority);
-    running = {
-      ...running,
-      browser: browser.browser,
-      budget: { ...running.budget, browserAuthorityMatch },
-    };
-    atomicWriteJson(reportPath, running);
-    if (!calibrate && browserAuthorityMatch !== true) {
-      throw new Error('browser does not match the exact Arc 1A calibration authority');
-    }
-    const saveFixtures = readJson(baselineSavePath);
-    const veteranRaw = JSON.stringify(saveFixtures.inputs.veteran_rich);
-    for (const [profile, viewport] of Object.entries(PROFILES)) {
-      gateStage = `${profile} profile collection`;
-      measurements.push(await collectProfile({
-        profile, viewport, fixture, browser, origin: server.origin, veteranRaw, runId,
-        candidateSpeciesArt,
-      }));
-    }
+    await collectWithCompendiumBrowserAuthority({
+      budget, browser: browser.browser,
+      recordEvidence: (evidence) => {
+        running = {
+          ...running,
+          browser: browser.browser,
+          budget: { ...running.budget, ...evidence },
+        };
+        atomicWriteJson(reportPath, running);
+      },
+      collect: async () => {
+        const saveFixtures = readJson(baselineSavePath);
+        const veteranRaw = JSON.stringify(saveFixtures.inputs.veteran_rich);
+        for (const [profile, viewport] of Object.entries(PROFILES)) {
+          gateStage = `${profile} profile collection`;
+          measurements.push(await collectProfile({
+            profile, viewport, fixture, browser, origin: server.origin, veteranRaw, runId,
+            candidateSpeciesArt,
+          }));
+        }
+      },
+      mismatchMessage: 'browser does not match the exact Arc 1A calibration authority',
+    });
     gateStage = 'sealed outcome evaluation';
     const evaluatorBudget = calibrate
       ? compendiumCalibrationEvaluatorBudget(producerAuthority) : budget;

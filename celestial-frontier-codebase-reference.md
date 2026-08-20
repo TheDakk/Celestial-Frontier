@@ -306,18 +306,23 @@
 > false-green. Preserve this one-attempt/no-retry result as post-measurement instrument red, not
 > certification, calibration, or product failure.
 >
-> Frozen browser CDP `6da9e2ef…` now separates direct child exit from stdio-backed close. Frozen
-> collector `f4ad842c…` plus selftest `2713ed10…` keep the report lifecycle-pending until browser/
-> server cleanup and workspace-lock release, publish samples and terminal success only afterward,
-> and make named verification require completed lifecycle authority. Measurement is now
-> `a3b3bb9f…`; producer remains `d3223177…`. Fail-closed budget/test `ae4ab918…` / `60fa5e9f…`
-> deliberately require calibration with empty samples, null ceilings, and a `measurement-required`
-> paired baseline. Baseline8/candidate17/18/19 and the old `6ba58522…` ruler remain history only.
-> Baseline9 plus independent candidate20/21/22 must come from one clean committed source, once each
-> without retry, before activation, one exact-head battery, one PR #32 push, and one corresponding
-> CI attempt. No timeout, browser/package, launch argument, product byte, producer, or retry policy
-> changed. First red stops; HUMAN review remains open, and work returns to Arc 1B/gameplay after
-> PR #32 closes without broader timing work.
+> Clean lifecycle-repair source `c49e525…` then ran candidate20 once. It completed 78/78 product
+> outcomes, zero findings, six PNGs, and complete lifecycle, but the reused `.86`-named app had
+> self-updated to `Edg/151.0.4129.93`, revision `@4a822b1b…`. Its calibration report carried null
+> browser authority, so the mismatched browser collected profiles. Quarantine report/sample/log
+> `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser instrument evidence—not calibration,
+> certification, product failure, or HUMAN review. Baseline9 did not run.
+>
+> The budget now owns explicit top-level `cf-v2-compendium-browser-authority/v1` in both states:
+> `Edg/151.0.4129.86`, revision `@083e7549…`, JavaScript `15.1.23.7`, protocol `1.3`. Candidate and
+> paired-baseline collection reject mismatch before profile collection; every raw capsule and
+> complete report replays the same authority. Frozen budget/schema/contract/collector/selftest/test
+> `71ffa46f…` / `695d2529…` / `2620ebf6…` / `07131f5e…` / `240bbe17…` / `6991f6ce…` establish
+> measurement `825fb386…`; producer `d3223177…` and browser CDP `6da9e2ef…` remain unchanged.
+> Samples are empty, ceilings null, and paired baseline measurement-required. Materialize exact
+> `.86` afresh per launch, then collect baseline9 and candidate21/22/23 from one clean committed
+> source, once each without retry. No timeout, launch argument, product byte, producer, or retry
+> policy changed. First red stops; terminal-green PR #32 returns immediately to Arc 1B/gameplay.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.

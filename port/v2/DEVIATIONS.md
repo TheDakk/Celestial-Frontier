@@ -12,14 +12,14 @@ as any change that touches an entry.
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
 **Status: ★ product implementation, serviced-turn scheduler, compact-phone Planetside stack, and
-displayed-demand/zoom-owner repair present. Exact local `89bfa05…` completed 78/78 with zero
-findings and six PNGs, then owned browser shutdown exited 2 after report/verifier had already
-published PASS. Preserve terminal log `b0bb8abc…` over false-green `66ba1366…` / `98664dca…` as a
-post-measurement instrument red. Browser CDP `6da9e2ef…` and collector/selftest
-`f4ad842c…` / `2713ed10…` repair exit-vs-close and cleanup-before-success lifecycle. Measurement
-is now `a3b3bb9f…`; producer remains `d3223177…`. Fail-closed budget/test
-`ae4ab918…` / `60fa5e9f…` await baseline9 plus candidate20/21/22 from one clean committed source,
-once each without retry. Six-image `[HUMAN]` review is open.**
+displayed-demand/zoom-owner repair present. Exact-89 remains a shutdown instrument red. Clean
+`c49e525…` candidate20 reached 78/78 and complete lifecycle, but its reused `.86`-named app reported
+Edge `.93`; quarantine report/sample/log `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser
+instrument evidence. Baseline9 did not run. Explicit top-level `.86` authority and pre-profile
+candidate/baseline rejection establish measurement `825fb386…`; producer `d3223177…` and browser
+CDP `6da9e2ef…` remain unchanged. Fail-closed budget `71ffa46f…` awaits fresh-per-launch exact-.86
+baseline9 plus candidate21/22/23 from one clean committed source, once each without retry. Six-image
+`[HUMAN]` review is open.**
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -175,11 +175,14 @@ This block records the current disposition of the historical
   zero findings and six PNGs before owned shutdown exited 2. Its pre-cleanup PASS/report
   verification is false-green. Frozen `6da9e2ef…` distinguishes direct process exit from stdio
   close; `f4ad842c…` / `2713ed10…` require browser/server cleanup and lock release before sample or
-  terminal success and enforce lifecycle at verification. New measurement `a3b3bb9f…` leaves
-  fail-closed `ae4ab918…` / `60fa5e9f…` calibration-required. Baseline9 plus candidate20/21/22
-  must come from one clean committed source, once each without retry, before activation and one
-  exact-head battery/PR CI. No broader timing work is in scope before Arc 1B/gameplay resumes after
-  PR #32 closes.
+  terminal success and enforce lifecycle at verification.
+- Clean `c49e525…` candidate20 then completed 78/78 with clean lifecycle, but its reused
+  `.86`-named app reported Edge `.93`; quarantine `175fac5e…` / `916dd12a…` / `7462144b…`, and note
+  baseline9 did not run. Explicit top-level `.86` authority changes measurement to `825fb386…`;
+  producer and browser CDP remain unchanged. Fail-closed budget `71ffa46f…` awaits exact `.86`
+  materialized afresh per baseline9/candidate21/22/23 launch, one attempt each without retry, before
+  activation and one exact-head battery/PR CI. No broader timing work is in scope; terminal-green
+  PR #32 returns immediately to Arc 1B/gameplay.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
@@ -1705,8 +1708,9 @@ duplicates).
   bounded normalization hypothesis. Its green fail-closed workflow-structure control changes no
   timing, product, CDP tool, browser authority, measurement, producer, budget, retry policy,
   publication authority, or Gate status. Exact-89 later reached product but preserved the separate
-  owned-shutdown false-green; current lifecycle measurement is `a3b3bb9f…`, with calibration and
-  one changed-head CI still required.
+  owned-shutdown false-green. Candidate20 is now quarantined for self-updated Edge `.93`; explicit
+  runtime `.86` authority establishes measurement `825fb386…`, with fresh-per-launch baseline9 plus
+  candidate21/22/23, calibration activation, and one changed-head CI still required.
 - ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
   (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
   heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces

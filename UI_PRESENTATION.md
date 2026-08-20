@@ -210,14 +210,22 @@
 > `98664dca…` are false-green. This is post-measurement instrument red, not UI/product
 > certification or calibration.
 >
-> Frozen browser CDP `6da9e2ef…` separates direct exit from stdio close. Collector `f4ad842c…`
-> plus selftest `2713ed10…` keep report state lifecycle-pending through browser/server cleanup and
-> lock release, publish a sample and terminal success only afterward, and require lifecycle at
-> verification. Measurement is `a3b3bb9f…`; producer remains `d3223177…`. Fail-closed budget/test
-> `ae4ab918…` / `60fa5e9f…` require clean committed baseline9 plus candidate20/21/22, once each
-> without retry. No UI/product bytes, browser/package, launch argument, timeout, retry, or producer
-> changed. After ruler activation, one exact-head battery, one PR #32 push, and one corresponding CI
-> remain; first red stops, and gameplay resumes after PR #32 closes without broader timing work.
+> Clean lifecycle-repair source `c49e525…` next ran candidate20 once. Its 78/78 product outcomes,
+> zero findings, six PNGs, and complete lifecycle were internally clean, but the reused `.86`-named
+> app had self-updated to Edge `.93` / revision `@4a822b1b…`; null calibration browser authority
+> let the wrong browser collect profiles. Quarantine report/sample/log `175fac5e…` / `916dd12a…` /
+> `7462144b…` as instrument evidence—not calibration, certification, UI/product failure, or HUMAN
+> review. Baseline9 did not run.
+>
+> The current ruler requires explicit top-level Edge `.86` / revision `@083e7549…` / JavaScript
+> `15.1.23.7` / protocol `1.3` authority in every state and enforces it before candidate or paired-
+> baseline profile collection. Frozen budget/schema/contract/collector/selftest/test
+> `71ffa46f…` / `695d2529…` / `2620ebf6…` / `07131f5e…` / `240bbe17…` / `6991f6ce…` establish
+> measurement `825fb386…`; producer `d3223177…` and browser CDP `6da9e2ef…` remain unchanged.
+> Samples stay empty, ceilings null, and baseline measurement-required. Exact `.86` must be
+> materialized afresh per launch before baseline9 and candidate21/22/23 run once each without
+> retry. No UI/product, timing, launch, producer, or retry-policy change occurred. Terminal-green
+> PR #32 returns immediately to Arc 1B/gameplay.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
 > list, focus-pinned, and detail PNGs still await HUMAN review. This repair owns the current surface
 > globe's fitted start and live tier swap only; the broader Arc 1B/1C scene-resource disposal and HD
@@ -538,7 +546,9 @@
 > hypothesis pending one matching changed-head CI, not a proven fix. Its green selftest-only static
 > workflow control changed no live tool behavior, timing, retry, fallback, product, browser,
 > measurement, producer, budget, or authority. Exact-89's later post-measurement owned-shutdown red
-> and the `a3b3bb9f…` lifecycle authority supersede that ruler for current calibration. Every selected
+> remains history; candidate20 is quarantined after its reused `.86`-named app reported Edge `.93`.
+> Explicit runtime authority now establishes measurement `825fb386…`, and fresh-per-launch exact
+> `.86` baseline9 plus candidate21/22/23 remain required. Every selected
 > activation head must still own exact-source local resource certification and corresponding
 > terminal-green PR test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150
