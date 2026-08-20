@@ -98,19 +98,19 @@ const EXPECTED_SAMPLE_OBJECT_SHA256: Record<ProfileName, {
 }> = {
   phone: {
     candidate: [
-      'ea9c4bb1ea417a13b532c95947771c0f0bd0c307954c9612583fe7f7c929392e',
-      'fa16efdb48aab60276f0ea7e1546462146860db02155394997da4745374edb30',
-      'eac7be9d96cbf1d765c7b4e7aa6f8172d011aba79773183e401f3d2687ed66af',
+      '2832d3af1ede16207cd885a6e681a1056959732971eba8be373a383ae3867ad7',
+      'ef880af657e5bc69d3b8fb5f461bad434384a25b7e50171ee64299d7f2c1b8f3',
+      '6905ee94796982736a7438182676e32b5f33064d27e2a41ef9809d611260d8d5',
     ],
-    baseline: '4f6f8d9834bd7090df696238bd0c5dd1d2788872306cb48b6782af8aa9f93418',
+    baseline: '065f760b78a049a1de8b839c5df8fa148a1a7784003fd33491b92e3fd7e1a48e',
   },
   desktop: {
     candidate: [
-      'fea960dd3fc137c65054113199f07fcd31fbcd0cc78beda740d90f1e27e21a33',
-      '7ce24012ec0d05efa665a53007491fc6c81c1deb4f39e04065868e46d22067c7',
-      '82a20e918da1b0f96060fbcb716662f64ce4aac74b32e7f66d2efbf7ed025ad6',
+      '16baf6aa899dff7c76faf4dd448d7e0cd55e5f38ff1adeb8b697ac7e0faf53db',
+      '1585bc0df789cfc2665b8108a46a46ae2157c70dba927b9ed64244c4d4638ccc',
+      'b4e30c1c02e042663e4a6fb68db7b8f3f7bbcce4523bbe5614f035f4515bb1f3',
     ],
-    baseline: '01446d933c63276fe1a577698d61f90c4c286a7d008d870936bf206f3ccfb0e1',
+    baseline: 'f3d0740f9c5d30e3325283db5082805ef0aab3b01e09a1ba413536c06ac8249c',
   },
 };
 
@@ -627,6 +627,7 @@ describe('Arc 1A Compendium budget authority', () => {
     });
     const freshPaths = structuredClone(activeBudget) as unknown as MutableRecord;
     freshPaths.calibration.samples.phone = [sample(1), sample(2), sample(3)];
+    freshPaths.calibration.samples.desktop = [sample(1), sample(2), sample(3)];
     const sharedIdentityPattern = /do not share one exact .*browser-authority identity/;
     const freshErrors = validateBudgetRecord(
       freshPaths, fixture.rowsSha256, baselineProjection.rowsSha256,

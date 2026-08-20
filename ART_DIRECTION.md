@@ -186,15 +186,15 @@ sample identity incorrectly compared each fresh materialization's host-local exe
 user agent. Those raw strings remain required per-run provenance; only product/revision/JavaScript/
 protocol are shared browser authority.
 
-Corrected budget/schema/contract/collector/selftest/test `ac2c084a…` / `695d2529…` /
-`e7dfea1d…` / `07131f5e…` / `f86db74a…` / `5d00e59f…` establish measurement `2318f57b…`;
-producer `d3223177…` and browser CDP `6da9e2ef…` stay unchanged. The ruler is fail-closed with
-empty candidate samples, null ceilings, and a measurement-required baseline with a null collector
-commit and empty profiles. Materialize exact
-`.86` afresh for baseline10 and candidate24/25/26, run each once with zero retries, and do not
-reuse candidate21/22/23+baseline9 across the corrected contract. No portrait/product, timing,
-launch, workflow, producer, or retry-policy change occurred. After terminal-green PR #32, work
-returns immediately to Arc 1B/gameplay.
+Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10, each once
+with zero retries and a distinct fresh `.86` path. All candidates completed 78/78 with zero findings,
+complete lifecycle, and six PNGs; baseline10 retained four faults. Active budget/schema/contract/
+collector/selftest/test `70145575…` / `695d2529…` / `e7dfea1d…` / `07131f5e…` / `f86db74a…` /
+`0fa2e89d…` bind measurement `2318f57b…`, unchanged producer `d3223177…`, 3/3 samples per profile,
+measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop baseline breaches. A synthetic
+desktop-identity line corrected the focused check from 12/13 to 13/13; browser evidence did not
+change or rerun. No portrait/product, timing, launch, workflow, producer, browser-CDP, or retry-
+policy change occurred. After terminal-green PR #32, work returns immediately to Arc 1B/gameplay.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
 browser. Calibration review PNGs do not satisfy the selected-head HUMAN row; a fresh phone/desktop
 list, focus-pinned, and detail set still requires HUMAN review. This repair owns the

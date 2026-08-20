@@ -1194,10 +1194,19 @@ selftest/test/budget to `e7dfea1d…` / `f86db74a…` / `5d00e59f…` / `ac2c084
 collector `07131f5e…`, producer `d3223177…`, and browser CDP `6da9e2ef…` are unchanged. The ruler
 again fails closed with empty candidate samples, null ceilings, and a `measurement-required`
 baseline with a null collector commit and empty profiles.
-Candidate21/22/23+baseline9 cannot cross the corrected contract authority; collect fresh-per-launch
-baseline10 and candidate24/25/26 once each without retry. No timing, launch, workflow, product,
-producer, fallback, or retry-policy change belongs to this repair. Terminal-green PR #32 returns
-immediately to Arc 1B rather than opening another optimization loop.
+Candidate21/22/23+baseline9 cannot cross the corrected contract authority.
+
+Clean exact source `fb321f28979c38d48f321d3cddeb48170b7e5ebc` then collected fresh-per-launch
+candidate24/25/26 plus paired baseline10, once each with zero retries. All candidates completed
+78/78 outcomes with zero findings, complete lifecycle, and six PNGs; baseline10 retained all four
+faults. Active budget/test `70145575…` / `0fa2e89d…` embed 3/3 samples per profile, measured 1/1
+baseline evidence, and ceilings strictly above the candidate maxima while preserving 14 phone / 13
+desktop baseline breaches. The focused activation suite first reported 12/13 because its positive
+active-ruler control populated synthetic phone identities only; adding the matching desktop
+identities made that same control 13/13 without changing or rerunning browser evidence. No timing,
+launch, workflow, product, producer, fallback, browser-CDP, or retry-policy change belongs to this
+activation. Terminal-green PR #32 returns immediately to Arc 1B rather than opening another
+optimization loop.
 
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread
