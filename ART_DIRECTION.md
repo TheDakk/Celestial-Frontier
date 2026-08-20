@@ -34,9 +34,9 @@ producer error remains a stable owned error tile, releases cleanly, and the exac
 through a fresh worker lease. Capability/import/protocol/worker failure terminates once and settles
 the active plus queued owners exactly once instead of retrying a broken worker for every tile.
 
-The phone and desktop resource path and current measured ruler are implemented. Every selected
-head must own exact-source local certification, and its corresponding PR test-merge CI must be
-terminal green; this reference deliberately caches neither live outcome. Exact committed repair
+The phone and desktop resource path is implemented; the last measured ruler is historical. Every
+selected head must own exact-source local certification, and its corresponding PR test-merge CI
+must be terminal green; this reference deliberately caches neither live outcome. Exact committed repair
 `dea03913014bc58134ebb06ca5b36892210a7571` passes the full Glass
 matrix; its following exact Compendium run `20260817150005919-93781-b6643ba7a6` is preserved as a
 truthful 75/76 result solely red at `desktop/warm-plateau`. It proves neither a product leak nor a
@@ -58,11 +58,14 @@ the partial CI report did not retain a worker phase. The serviced-turn/bfcache r
 authority to `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Clean seam commit
 `f47cd381…` supplied paired baseline4 plus independent one-attempt candidate5/6/7 under unchanged
 measurement authority `bb03a3af…` and exact Edge .86. All three candidates completed 78/78 outcomes
-with zero retries. The active ruler places strict ceilings above their replayed maxima; the baseline
-retains four faults and breaches 14 phone / 13 desktop fields. Baseline3/candidate2/3/4 remain
-truthful history for old producer `291b794e…`. Every selected head must own exact-source local
-certification, and its corresponding PR test-merge CI must be terminal green; this reference
-deliberately caches neither live outcome.
+with zero retries. That historical `bb03a3af…` ruler placed strict ceilings above their replayed
+maxima; the baseline retained four faults and breached 14 phone / 13 desktop fields. The frozen
+shared-timer repair moves measurement authority to `f9710bdf…`; the current budget is fail-closed
+`calibration-required` pending a fresh paired broken baseline plus three independent candidates
+before successor activation/certification. Baseline3/candidate2/3/4 remain truthful history for old
+producer `291b794e…`. Every selected head must own exact-source local certification, and its
+corresponding PR test-merge CI must be terminal green; this reference deliberately caches neither
+live outcome.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
 browser. Da0's six PNGs are stale for the repaired producer; a fresh phone/desktop list,
 focus-pinned, and detail set still requires HUMAN review. Arc 1B

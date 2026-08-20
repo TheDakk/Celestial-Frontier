@@ -11,8 +11,10 @@ as any change that touches an entry.
 
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
-**Status: ★ product implementation, serviced-turn scheduler repair, and active ruler present;
-exact-source automation governed by live artifacts/CI; fresh six-image `[HUMAN]` review open.**
+**Status: ★ product implementation and serviced-turn scheduler repair present; measurement
+authority `f9710bdf…` is fail-closed `calibration-required` pending a fresh paired broken baseline
+plus three independent candidates; exact-source automation is governed by live artifacts/CI; fresh
+six-image `[HUMAN]` review is open.**
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -60,12 +62,15 @@ This block records the current disposition of the historical
 - The serviced-turn repair changes built producer authority to
   `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Clean seam commit
   `f47cd381…` supplied paired baseline4 and independent one-attempt candidate5/6/7 under measurement
-  `bb03a3af…` and exact Edge .86. All candidates completed 78/78 outcomes with zero retries. The
-  active ruler replays those raw capsules, keeps all 40 ceilings strictly above the three-run
-  maxima, and retains four baseline faults with 14 phone / 13 desktop breaches. Baseline3 and
-  candidate2/3/4 remain truthful historical evidence for producer `291b794e…`, not current
-  authority. This criterion returns to `[EXEC]` only when the selected head's ignored exact-source
-  artifacts and its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
+  `bb03a3af…` and exact Edge .86. All candidates completed 78/78 outcomes with zero retries. That
+  historical `bb03a3af…` ruler replayed those raw capsules, kept all 40 ceilings strictly above the
+  three-run maxima, and retained four baseline faults with 14 phone / 13 desktop breaches. The
+  frozen shared-timer repair moves measurement authority to `f9710bdf…`; the current budget is
+  fail-closed `calibration-required` pending a fresh paired broken baseline plus three independent
+  candidates before successor activation/certification. Baseline3 and candidate2/3/4 remain
+  truthful historical evidence for producer `291b794e…`, not current authority. This criterion
+  returns to `[EXEC]` only when the selected head's ignored exact-source artifacts and its
+  corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned

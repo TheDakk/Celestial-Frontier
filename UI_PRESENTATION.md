@@ -117,9 +117,9 @@
 > rows plus clipped-ancestor controls. Those hostile evidence states are intentionally unlike the
 > ordinary Dev presentation and do not claim v1.0-equivalent visual polish.
 >
-> Phone and desktop resource ownership and the current measured ruler are implemented. Every
-> selected head must own exact-source local certification, and its corresponding PR test-merge CI
-> must be terminal green; this reference deliberately caches neither live outcome. Exact committed repair dea039 passes all 12 Glass rows; its
+> Phone and desktop resource ownership is implemented; the last measured ruler is historical.
+> Every selected head must own exact-source local certification, and its corresponding PR test-merge
+> CI must be terminal green; this reference deliberately caches neither live outcome. Exact committed repair dea039 passes all 12 Glass rows; its
 > following exact Compendium run `20260817150005919-93781-b6643ba7a6` truthfully reports 75/76,
 > solely red at `desktop/warm-plateau`. That run cannot adjudicate a product leak because its old
 > sequence trimmed the desktop cache before warming and measured refill, while its heap ruler
@@ -134,11 +134,14 @@
 > `product-unanswerable` red: the target missed 2,000 ms while the browser heartbeat remained timely.
 > The serviced-turn repair changes producer authority to `1c8200d7…`. Clean seam commit
 > `f47cd381…` supplied exact-.86 baseline4 and three independent one-attempt candidate5/6/7 runs;
-> every candidate produced 78/78 outcomes with zero retries. The active ruler replays those raw
-> capsules, keeps every ceiling strictly above the three-run maximum, and retains four baseline
-> faults with 14 phone / 13 desktop breaches. Every selected head must own exact-source local
-> certification, and its corresponding PR test-merge CI must be terminal green; this reference
-> deliberately caches neither live outcome. The ruler's
+> every candidate produced 78/78 outcomes with zero retries. That historical `bb03a3af…` ruler
+> replayed those raw capsules, kept every ceiling strictly above the three-run maximum, and retained
+> four baseline faults with 14 phone / 13 desktop breaches. The frozen shared-timer repair moves
+> measurement authority to `f9710bdf…`; the current budget is fail-closed `calibration-required`
+> pending a fresh paired broken baseline plus three independent candidates before successor
+> activation/certification. Every selected head must own exact-source local certification, and its
+> corresponding PR test-merge CI must be terminal green; this reference deliberately caches neither
+> live outcome. The ruler's
 > Arc-local Edge 151 authority still does not repin the global Gate-A Edge 150 browser. Six
 > fresh run-bound list, focus-pinned, and detail PNGs still await HUMAN review. Arc 1B scene-resource disposal and live HD
 > planet replacement remain open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
@@ -429,8 +432,10 @@
 > The Arc 1A Compendium product, fail-closed memory/resource instrument, and serviced-turn scheduler
 > repair are implemented. Da0's baseline3/candidate2/3/4 ruler and local certification remain truthful
 > history, but its no-retry PR battery produced a valid phone product-answerability red. The scheduler
-> changes producer authority to `1c8200d7…`; baseline4 and candidate5/6/7 now populate its active
-> replayed-raw ruler under exact Edge .86. Every selected head must own exact-source local resource
+> changed producer authority to `1c8200d7…`; baseline4 and candidate5/6/7 historically populated its
+> `bb03a3af…` replayed-raw ruler under exact Edge .86. The frozen shared-timer repair moves measurement
+> authority to `f9710bdf…`; the current budget is fail-closed `calibration-required` pending a fresh paired
+> baseline and three independent candidates. Every selected head must own exact-source local resource
 > certification, and its corresponding PR test-merge CI must be terminal green; this reference
 > deliberately caches neither live
 > outcome. The existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150

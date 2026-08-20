@@ -21,6 +21,44 @@ class ActiveEndpointContentError extends Error {
   constructor(message) { super(message); this.name = 'ActiveEndpointContentError'; }
 }
 function sleep(ms) { return new Promise((resolve) => setTimeout(resolve, ms)); }
+function remainingDeadlineDelayMs(deadlineMs, observedAtMs) {
+  assert(Number.isFinite(deadlineMs) && Number.isFinite(observedAtMs),
+    'absolute deadline observation is invalid');
+  const remainingMs = deadlineMs - observedAtMs;
+  return remainingMs <= 0 ? 0 : Math.max(1, Math.ceil(remainingMs));
+}
+function armAbsoluteDeadline(deadlineMs, onDeadline, {
+  nowMs = () => performance.now(),
+  setTimer = setTimeout,
+  clearTimer = clearTimeout,
+} = {}) {
+  assert(Number.isFinite(deadlineMs), 'absolute deadline is invalid');
+  assert(typeof onDeadline === 'function' && typeof nowMs === 'function'
+    && typeof setTimer === 'function' && typeof clearTimer === 'function',
+  'absolute deadline dependencies are invalid');
+  let active = true;
+  let timer = null;
+  const observe = () => {
+    if (!active) return;
+    const delayMs = remainingDeadlineDelayMs(deadlineMs, nowMs());
+    if (delayMs > 0) {
+      timer = setTimer(observe, delayMs);
+      return;
+    }
+    active = false;
+    timer = null;
+    onDeadline();
+  };
+  const initialDelayMs = remainingDeadlineDelayMs(deadlineMs, nowMs());
+  if (initialDelayMs === 0) observe();
+  else timer = setTimer(observe, initialDelayMs);
+  return () => {
+    if (!active) return;
+    active = false;
+    if (timer !== null) clearTimer(timer);
+    timer = null;
+  };
+}
 async function waitForResolution(promise, timeoutMs) {
   return await new Promise((resolve) => {
     let settled = false;
@@ -271,13 +309,16 @@ async function openChromiumCdpWithLauncher({
     });
 
     ws.onmessage = (event) => {
+      const receivedAtMs = nowMs();
       let message;
       try { message = JSON.parse(event.data); }
       catch { rejectPending(terminalError('CDP emitted invalid JSON')); return; }
       if (message.id && pending.has(message.id)) {
         const waiter = pending.get(message.id);
         pending.delete(message.id);
-        message.error ? waiter.reject(terminalError(message.error.message)) : waiter.resolve(message.result);
+        message.error
+          ? waiter.rejectReceipt(terminalError(message.error.message), receivedAtMs)
+          : waiter.resolveReceipt(message.result, receivedAtMs);
       } else if (message.method) {
         try { onEvent(message); }
         catch (error) {
@@ -303,18 +344,34 @@ async function openChromiumCdpWithLauncher({
       }
       return new Promise((resolve, reject) => {
         const id = ++messageId;
-        const timer = setTimeout(() => {
+        const commandDeadlineMs = nowMs() + timeoutMs;
+        let cancelTimer = () => {};
+        const settleReceipt = (receivedAtMs, finish) => {
+          cancelTimer();
+          if (!Number.isFinite(receivedAtMs) || receivedAtMs >= commandDeadlineMs) {
+            reject(terminalError(`timed out waiting for ${method}`));
+            return;
+          }
+          finish();
+        };
+        pending.set(id, {
+          resolveReceipt(value, receivedAtMs) {
+            settleReceipt(receivedAtMs, () => resolve(value));
+          },
+          rejectReceipt(error, receivedAtMs) {
+            settleReceipt(receivedAtMs, () => reject(error));
+          },
+          reject(error) { cancelTimer(); reject(error); },
+        });
+        cancelTimer = armAbsoluteDeadline(commandDeadlineMs, () => {
           pending.delete(id);
           reject(terminalError(`timed out waiting for ${method}`));
-        }, timeoutMs);
-        pending.set(id, {
-          resolve(value) { clearTimeout(timer); resolve(value); },
-          reject(error) { clearTimeout(timer); reject(error); },
-        });
+        }, { nowMs });
+        if (!pending.has(id)) return;
         try {
           ws.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params }));
         } catch (error) {
-          pending.delete(id); clearTimeout(timer); reject(terminalError(`${method} send failed (${error.message})`));
+          pending.delete(id); cancelTimer(); reject(terminalError(`${method} send failed (${error.message})`));
         }
       });
     };
@@ -367,6 +424,55 @@ async function runSelftest() {
   const base = `cf-browsercdp-selftest-${nonce}`;
   const endpointFixture = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), `${base}-endpoint-`));
   try {
+    const fakeDeadlineTimer = () => {
+      let observedAtMs = 0;
+      const timers = [];
+      const deadlineHits = [];
+      const setTimer = (callback, delayMs) => {
+        const timer = { callback, delayMs, cleared: false };
+        timers.push(timer);
+        return timer;
+      };
+      const clearTimer = (timer) => { timer.cleared = true; };
+      const arm = (onDeadline) => armAbsoluteDeadline(2000, onDeadline, {
+        nowMs: () => observedAtMs, setTimer, clearTimer,
+      });
+
+      const cancel = arm(() => deadlineHits.push(observedAtMs));
+      assert(timers.length === 1 && timers[0].delayMs === 2000,
+        'SELFTEST absolute deadline did not arm the original command bound');
+      observedAtMs = 1999.758726;
+      timers[0].callback();
+      assert(deadlineHits.length === 0,
+        'SELFTEST just-early command timeout was accepted');
+      assert(timers.length === 2 && timers[1].delayMs === 1,
+        'SELFTEST just-early command timeout did not re-arm for the remaining deadline');
+      cancel();
+      assert(timers[1].cleared,
+        'SELFTEST cancellation did not clear the re-armed command timeout');
+      observedAtMs = 2000;
+      timers[1].callback();
+      assert(deadlineHits.length === 0,
+        'SELFTEST cancelled command timeout fired at the exact deadline');
+
+      observedAtMs = 0;
+      const exactTimersBefore = timers.length;
+      arm(() => deadlineHits.push(observedAtMs));
+      observedAtMs = 2000;
+      timers[exactTimersBefore].callback();
+      assert(JSON.stringify(deadlineHits) === JSON.stringify([2000]),
+        `SELFTEST exact command deadline did not fire once (${deadlineHits.join(', ')})`);
+
+      observedAtMs = 0;
+      const lateTimersBefore = timers.length;
+      arm(() => deadlineHits.push(observedAtMs));
+      observedAtMs = 2000.241274;
+      timers[lateTimersBefore].callback();
+      assert(JSON.stringify(deadlineHits) === JSON.stringify([2000, 2000.241274]),
+        `SELFTEST late command deadline did not fire once (${deadlineHits.join(', ')})`);
+    };
+    fakeDeadlineTimer();
+
     fs.writeFileSync(path.join(endpointFixture, 'DevToolsActivePort'),
       'not-a-port\n/devtools/browser/selftest\n');
     await expectRejectedAsync('malformed DevToolsActivePort', async () => activeEndpoint(endpointFixture),
@@ -595,6 +701,130 @@ async function runSelftest() {
         `SELFTEST ${scenario.key} endpoint did not close its injected socket`);
       assertNoOwnedProfiles(prefix, `${scenario.key} endpoint publication cleanup`);
     }
+
+    let receiptDeadlineLaunches = 0;
+    let receiptDeadlineSocketClosed = false;
+    let receiptClock = 0;
+    let expireDuringInitialArm = false;
+    let initialArmClockReads = 0;
+    let expiredInitialArmSendObserved = false;
+    const receiptScenarios = new Map([
+      ['Browser.CfBeforeDeadline', { offsetMs: 99.999, result: { timely: true } }],
+      ['Browser.CfExactDeadline', { offsetMs: 100, result: { exact: true } }],
+      ['Browser.CfJustLate', { offsetMs: 100.241274, result: { late: true } }],
+      ['Browser.CfEarlyProtocolError', {
+        offsetMs: 99, error: { message: 'injected early protocol error' },
+      }],
+      ['Browser.CfExactProtocolError', {
+        offsetMs: 100, error: { message: 'injected exact protocol error' },
+      }],
+      ['Browser.CfLateProtocolError', {
+        offsetMs: 100.241274, error: { message: 'injected late protocol error' },
+      }],
+    ]);
+    const observedReceiptMethods = [];
+    const launchReceiptDeadlineFixture = ({ userData }) => {
+      receiptDeadlineLaunches++;
+      assert(receiptDeadlineLaunches === 1,
+        'SELFTEST command-receipt deadline fixture launched more than once');
+      fs.mkdirSync(userData, { recursive: true });
+      fs.writeFileSync(path.join(userData, 'DevToolsActivePort'),
+        '9\n/devtools/browser/selftest-command-receipt\n');
+      return spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
+        stdio: ['ignore', 'ignore', 'pipe'],
+      });
+    };
+    class ReceiptDeadlineWebSocket {
+      static OPEN = 1;
+      constructor() {
+        this.readyState = 0;
+        this.openTimer = setTimeout(() => {
+          this.readyState = ReceiptDeadlineWebSocket.OPEN;
+          this.onopen?.();
+        }, 0);
+      }
+      send(payload) {
+        const message = JSON.parse(payload);
+        if (message.method === 'Browser.getVersion') {
+          receiptClock += 1;
+          this.onmessage?.({ data: JSON.stringify({
+            id: message.id,
+            result: {
+              product: 'Chrome/CDP-receipt-selftest', revision: 'receipt-revision',
+              userAgent: 'cf-browsercdp-receipt-selftest', jsVersion: 'receipt-js',
+              protocolVersion: '1.3',
+            },
+          }) });
+          return;
+        }
+        if (message.method === 'Browser.CfExpiredDuringInitialArm') {
+          expiredInitialArmSendObserved = true;
+          return;
+        }
+        const scenario = receiptScenarios.get(message.method);
+        assert(scenario, `SELFTEST unexpected command-receipt method ${message.method}`);
+        observedReceiptMethods.push(message.method);
+        receiptClock += scenario.offsetMs;
+        this.onmessage?.({ data: JSON.stringify({
+          id: message.id, ...(scenario.error ? { error: scenario.error } : { result: scenario.result }),
+        }) });
+      }
+      close() {
+        clearTimeout(this.openTimer);
+        receiptDeadlineSocketClosed = true;
+        this.readyState = 3;
+      }
+    }
+    const receiptDeadlinePrefix = `${base}-command-receipt-deadline`;
+    const receiptNowMs = () => {
+      if (expireDuringInitialArm) {
+        initialArmClockReads++;
+        if (initialArmClockReads === 2) {
+          receiptClock += 100;
+          expireDuringInitialArm = false;
+        }
+      }
+      return receiptClock;
+    };
+    const receiptConnection = await openChromiumCdpWithLauncher({
+      label: 'CDP selftest command receipt deadline', userDataPrefix: receiptDeadlinePrefix,
+      commandTimeoutMs: 100, startupTimeoutMs: 1000, shutdownTimeoutMs: 2000,
+      WebSocketImpl: ReceiptDeadlineWebSocket,
+    }, launchReceiptDeadlineFixture, receiptNowMs);
+    try {
+      expireDuringInitialArm = true;
+      initialArmClockReads = 0;
+      await expectRejectedAsync('command expired during initial deadline arm',
+        () => receiptConnection.send('Browser.CfExpiredDuringInitialArm'),
+        /timed out waiting for Browser\.CfExpiredDuringInitialArm/);
+      assert(initialArmClockReads === 2 && !expiredInitialArmSendObserved,
+        'SELFTEST command expired during initial arm was transmitted after its timeout');
+      const beforeDeadline = await receiptConnection.send('Browser.CfBeforeDeadline');
+      assert(beforeDeadline.timely === true,
+        'SELFTEST just-before command response was rejected');
+      await expectRejectedAsync('exact command response receipt',
+        () => receiptConnection.send('Browser.CfExactDeadline'),
+        /timed out waiting for Browser\.CfExactDeadline/);
+      await expectRejectedAsync('just-late command response receipt',
+        () => receiptConnection.send('Browser.CfJustLate'),
+        /timed out waiting for Browser\.CfJustLate/);
+      await expectRejectedAsync('early command protocol error receipt',
+        () => receiptConnection.send('Browser.CfEarlyProtocolError'),
+        /injected early protocol error/);
+      await expectRejectedAsync('exact command protocol-error receipt',
+        () => receiptConnection.send('Browser.CfExactProtocolError'),
+        /timed out waiting for Browser\.CfExactProtocolError/);
+      await expectRejectedAsync('late command protocol-error receipt',
+        () => receiptConnection.send('Browser.CfLateProtocolError'),
+        /timed out waiting for Browser\.CfLateProtocolError/);
+    } finally {
+      await receiptConnection.close();
+    }
+    assert(JSON.stringify(observedReceiptMethods) === JSON.stringify([...receiptScenarios.keys()]),
+      `SELFTEST command-receipt controls were incomplete (${observedReceiptMethods.join(', ')})`);
+    assert(receiptDeadlineLaunches === 1 && receiptDeadlineSocketClosed,
+      'SELFTEST command-receipt deadline did not close its one injected socket');
+    assertNoOwnedProfiles(receiptDeadlinePrefix, 'command-receipt deadline cleanup');
 
     let malformedEndpointLaunches = 0;
     let malformedEndpointChildClosed = false;
@@ -1059,6 +1289,8 @@ async function runSelftest() {
   console.log('  WebSocket constructor consuming its phase deadline: rejected and cleaned up');
   console.log('  default delayed WebSocket open is independent from the command ceiling: PASS');
   console.log('  invalid integer and fractional WebSocket open timeouts: rejected before launch');
+  console.log('  just-early command timeout re-arms; cancellation and exact/late deadlines fail closed');
+  console.log('  just-before command receipt passes; exact/late result and protocol-error receipts reject');
   console.log('  CDP command error, global timeout, and shorter phase-owned timeout: rejected');
   console.log('  CDP events forwarded; event-handler failure rejected and cleaned up');
   console.log('  pending command rejected during bounded close: PASS');

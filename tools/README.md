@@ -32,7 +32,13 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > `uilayout` consume one monotonic, absolute spawn → endpoint → socket-open startup deadline;
 > WebSocket opening also has a validated phase cap that defaults to the startup budget
 > and is clipped to the startup time still remaining; only post-open CDP work consumes
-> the command ceiling. Portable controls prove delayed-open success, explicit-cap and
+> the command ceiling. Each post-open command owns one absolute monotonic deadline, not one
+> best-effort timer: if its timeout callback wakes before the boundary, it re-arms only for the
+> remaining interval under the same deadline; only the clock at or beyond that boundary may reject,
+> while a response received at/after it remains late. Expiry during initial timer arming rejects
+> without transmitting the command. No fresh clock, cap extension, or retry is
+> allowed. Portable controls prove just-before command result/protocol receipt, reject exact/late
+> result and protocol-error receipts, and separately prove delayed-open success, explicit-cap and
 > remaining-startup rejection, fail-closed pre-construction expiry, constructor-overrun
 > rejection with guarded CONNECTING cleanup, just-late-open rejection, invalid-cap pre-launch
 > rejection, and failure cleanup. Endpoint discovery also requires two consecutive identical,
@@ -54,6 +60,18 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > a misleading Edge crash report before CDP or a page exists. The two historical
 > `port/spike` screenshot launchers also resolve through this guard; current macOS-
 > capable repository browser tools therefore fail before spawn inside Seatbelt.
+>
+> **PR #32 shared-timer evidence (2026-08-20):** GitHub Actions run `32350971816`, job
+> `96369841133`, attempt 1, tested synthetic merge
+> `25200b616bbd509f50eaa18f0a8b27ad20dc83e0` for pushed head `1187de0…`. Its final
+> `Runtime.evaluate` timeout fired at `1999.758726` ms against 2,000 ms, even though the target was
+> still timely and its recorded completion preceded the deadline by `0.241274` ms; the independent
+> root heartbeat fulfilled in `7.410808` ms. The valid terminal report therefore classified
+> `instrument-fail`, blocked all 78 outcomes, and made no product verdict. Frozen launcher SHA-256
+> `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0` moves the Compendium
+> measurement authority from historical `bb03a3af…` to
+> `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`; its frozen budget is
+> `calibration-required` until fresh paired broken-baseline plus three-candidate calibration.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,

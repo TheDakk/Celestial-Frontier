@@ -20,12 +20,14 @@ certification passed. Its first following Chrome Smoke preserved a one-attempt f
 instrument red. Commit `ef6c2c2cd31363cf47899a89c16c0d9f5f90d7a7` freezes the bounded attach-
 derived target/document/service repair; exact-ef6 Compendium certification and its named verifier
 pass. The following no-retry Chrome Smoke retained only a D-TRAIN fixture-ownership setup race, not
-a product busy-refusal verdict. Its bounded follow-up is present in source. This tracked review
-deliberately asserts no PASS or FAIL for any later exact-head browser execution. Push eligibility
-comes only from the complete battery's durable ignored carriers, contemporaneously captured
-terminal-only checks, verifiers, and pre/post repository-identity proof all agreeing on one unchanged
-clean head. Approval and merge remain conditional on terminal-green PR test-merge CI corresponding
-to that unchanged pushed head. This review alone is not approval authority.
+a product busy-refusal verdict. Its bounded follow-up reached pushed head
+`1187de0d052761e4463524cde8438ea8810d7149`. GitHub Actions run `32350971816`, job
+`96369841133`, attempt 1, tested corresponding synthetic merge `25200b616bbd509f50eaa18f0a8b27ad20dc83e0`
+and preserved a valid shared-command-timer `instrument-fail` with no product verdict. The absolute
+re-arm repair is frozen at browser-CDP SHA-256 `36a832bc…`; measurement authority is now
+`f9710bdf…` and the budget is fail-closed `calibration-required`. Fresh paired-baseline plus three-
+candidate calibration, activation, exact-head evidence, and corresponding test-merge CI remain
+required. This review alone is not approval authority.
 
 ## 1. Executive state
 
@@ -36,18 +38,19 @@ approval blockers:
 | CI area | Classification | Current disposition |
 | --- | --- | --- |
 | `v2-static` | Instrument false positive | Fixed; current audit reports 28 sources / 0 findings |
-| `v2-compendium-memory` | Valid product-unanswerable findings, followed by a ruler defect and a scheduler defect | Heavy import/paint/PNG work moved to a serial close-at-idle dedicated-worker producer. Exact dea039 exposed the old invalid plateau; baseline3 plus candidate2/3/4 activated da0's strict aggregate-heap/fixed-window ruler and its local cert passed. PR run `32334254714` then proved phone Planetside target unanswerability while the browser heartbeat remained timely; source inspection identified zero-delay successor-pump starvation as the bounded repair hypothesis, not a retrospectively observed worker phase. Every repaired default pump now crosses a rendering opportunity plus later task; bfcache invalidates stale pump generations. Baseline4 plus candidate5/6/7 activate the changed producer's ruler; exact-788 and exact-ef6 certification plus named verification passed. Every later head must own its exact-source battery; the live ignored outcome is not cached here |
+| `v2-compendium-memory` | Historical product-unanswerable findings, a ruler defect and scheduler defect, then a shared-timer instrument defect | Heavy import/paint/PNG work moved to a serial close-at-idle dedicated-worker producer. Exact dea039 exposed the old invalid plateau; baseline3 plus candidate2/3/4 activated da0's strict aggregate-heap/fixed-window ruler and its local cert passed. PR run `32334254714` then proved phone Planetside target unanswerability while the browser heartbeat remained timely; the serviced-turn repair made every default pump cross a rendering opportunity plus later task and invalidated stale bfcache pump generations. Baseline4 plus candidate5/6/7 activated that producer's ruler; exact-788 and exact-ef6 certification passed. Later run `32350971816` timed out `0.241274` ms before its own deadline and correctly classified instrument-only. The frozen absolute re-arm changes measurement authority to `f9710bdf…`; the budget is `calibration-required` pending a fresh paired baseline plus three independent candidates |
 | `v2-smoke` | Obsolete fixed-wait check, then multi-target foreground ownership, then D-TRAIN fixture-setup instrument defects | Cold Planetside uses one monotonic semantic settlement phase with exact decode/work outcomes. Ef6 binds attach-derived target/document identity, proves visible/focused rAF→later-task service before one release, retains rich diagnostics, and passed that phase in its next exact-source Smoke. That run stopped only because direct D-TRAIN seeding did not join a prior Atlas/Land persistence owner; the follow-up drains/reproduces/proves exact runnable setup and semantically awaits busy refusal. The final-head ignored Smoke artifact is the sole authority for that outcome; tracked prose does not cache it |
 | `v2-glass` | One instrument defect plus two product finding records from one short-landscape geometry defect | Guide predicate, clipping diagnostics, hostile fixture, and nonmodal landscape workspace repaired |
 
 The first-red evidence is preserved. No timeout was raised, no failed command was retried, and no
 red was reclassified as green. The later 75/76 Compendium red is preserved too: it is evidence that
 the ruler cannot adjudicate the product, not proof of either a leak or a clean plateau. The repaired
-calibration seam and da0 ruler remain preserved chronology. The serviced-turn producer, fresh
-active ruler, exact-788 certification, and later Smoke instrument red are the current chronology;
-exact-ef6 certification, its D-TRAIN setup red, and the bounded follow-up are the current chronology.
-The repaired instrument's final clean-head browser battery is the local authority boundary; its
-live outcome is intentionally not cached in tracked prose.
+calibration seam and da0 ruler remain preserved chronology. The serviced-turn producer, historical
+baseline4/candidate5/6/7 ruler, exact-788 certification, and later Smoke instrument red are the current chronology;
+exact-ef6 certification, its D-TRAIN setup red, and the bounded follow-up remain preserved. The
+current first red is run `32350971816`'s shared-timer instrument failure. It stops the transition at
+fresh calibration under frozen authority `f9710bdf…`; no product profile or successor certification
+may be inferred from it.
 
 ## 2. What was completed before the PR battery
 
@@ -654,30 +657,88 @@ or product-oracle weakening is added. The setup control owns a new bounded 2-sec
 receipt and the real refusal owns one immutable 6-second claim/click/witness/binding deadline; a
 receipt at or after either bound is not accepted. Every later repair head must own an exact-source
 Compendium certification/verifier and one no-retry Chrome Smoke before the remaining battery may
-proceed. This tracked review deliberately does not state whether a later exact-head execution has
-occurred.
+proceed. At that checkpoint no later exact-head execution was claimed; §6.9 appends the later
+preserved PR test-merge outcome without rewriting this chronology.
+
+### 6.9 Exact-1187 PR test-merge shared-timer instrument red
+
+GitHub Actions run `32350971816`, job `96369841133` (`v2-compendium-memory`), workflow attempt 1,
+tested clean detached synthetic merge `25200b616bbd509f50eaa18f0a8b27ad20dc83e0`. Its parents are
+exact base `38447019517147319bd08c598202d097ee866874` and pushed PR head
+`1187de0d052761e4463524cde8438ea8810d7149`. Source begin/end both bind that committed merge with
+empty status SHA-256 `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`;
+the report used run id `gha-32350971816-1-compendiummem`, one attempt, and zero automatic retries.
+
+The report is a schema-valid `cf-v2-compendium-memory-report/v1` terminal `instrument-fail`. It
+matches exact `/opt/microsoft/msedge/microsoft-edge`, `Edg/151.0.4129.86`, revision
+`@083e754915c9ab93da1d8f7b9c860e4520273900`, V8 `15.1.23.7`, protocol `1.3`; active-budget SHA-256
+`2b51dd23728fb6431c5c71dd464592e75471c9c1919f1d65ceb2e0c6be96e2d5`; historical measurement
+authority `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c`; and producer authority
+`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Producer and browser
+authority matches are true. The command/target/heartbeat caps remain 2,000 ms and the transport cap
+5,000 ms. Browser-path/CDP controls and 222 Compendium product controls passed before the run.
+
+Phone `390×844` at DPR 3 completed 29 stages through `veteran Earth boot readiness`; the first red
+is `Planetside thumb settlement`. The partial non-certifying ledger has 13 candidate commands: the
+first 12 targets fulfilled, all 13 root heartbeats fulfilled and were timely, and only the final
+target `Runtime.evaluate` rejected with timeout identity. Its measured duration is
+`1999.7587259999982` ms (`1999.758726` ms), below the 2,000 ms cap; the row is `timely:true`.
+Recorded deadline `17026.566419000002` minus completion `17026.325145` is `0.241274` ms, so the
+timeout fired early. The paired root heartbeat fulfilled in `7.410807999998724` ms (`7.410808` ms).
+Product-unanswerable requires timeout identity, `timely:false`, and duration at/above the cap; the
+contract therefore correctly emitted one `instrument:` finding, zero outcomes, all 78 outcomes
+blocked (39 phone / 39 desktop), and no screenshots. This carrier contains no product verdict.
+
+The preserved `v2-compendium-memory-evidence` artifact (ID `9399861960`) contains only
+`compendiummem-report.json`; no PNG was expected from partial instrument evidence. Artifact ZIP,
+report, and job-log SHA-256 values are respectively
+`4932fb229c1de1d3820d2322e8273ce9ed609716c8f9f4d9e82b2fa2a3e408c7`,
+`1718faa4403f4f569899d9d328f08c3b7decafae23829d5fabe37660c36da43b`, and
+`7eda5facdac45d192c5b6071ac91394678d2fdb69b7992b218e0d3b0cb9c4ca9`. The named verifier printed
+`COMPENDIUM MEMORY VERIFY: INSTRUMENT-FAIL` without validation errors and exited nonzero solely
+because the valid terminal status was not PASS. There is no report/schema gap and no additional
+evidence is needed before repairing the shared timer.
+
+The bounded repair gives each post-open command one absolute monotonic deadline. A timeout callback
+that wakes before that boundary reads the same clock and re-arms only the remaining interval under
+the immutable deadline; it rejects only once the clock proves the boundary reached or passed. The
+response path still rejects receipt at/after that same deadline. A command whose deadline expires
+during initial timer arming is rejected without being transmitted. This adds no new clock, cap,
+automatic retry, product fallback, or weaker classification.
+
+The shared launcher is a hashed Compendium measurement input. Frozen `browsercdp.mjs` SHA-256
+`36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0` therefore moves measurement
+authority to `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Frozen budget SHA-256
+`a41ff08b8a58e776c789f09e7294c1cb2c0f44da8406f81c55f0754076337c30` is correctly
+`calibration-required`. Historical baseline4/candidate5/6/7 capsules and exact-788/ef6 results remain
+truthful for `bb03a3af…` but cannot certify `f9710bdf…`. The next authority boundary is a fresh paired
+broken baseline plus three independent candidates, activation under frozen bytes, then one exact-head
+certification and corresponding PR test-merge battery.
 
 ## 7. Exact-head transition rule
 
-1. Resolve the exact head, target bytes, worktree, and upstream before the run. From that one clean
+1. Preserve frozen measurement authority `f9710bdf…` in fail-closed `calibration-required`; capture
+   one fresh paired broken baseline and three independent candidates, then activate the successor
+   ruler. No old capsule or certification crosses that authority boundary.
+2. Resolve the exact head, target bytes, worktree, and upstream before the run. From that one clean
    committed head, run browser path/CDP controls, Arc-local Edge Compendium certification and named
    verifier, one no-retry Chrome Smoke, full Chrome Glass, persona join, root layout plus exact-run
    verification, and a verified nonpublishable preview package plus browser smoke.
-2. Immediately preserve Smoke's overwrite-prone generic report/log as exact run-ID-named copies.
+3. Immediately preserve Smoke's overwrite-prone generic report/log as exact run-ID-named copies.
    Preserve the other ignored report/package carriers before another producer may overwrite them.
-3. Browser path/CDP controls and preview browser smoke are terminal-only checks, not tool-written
+4. Browser path/CDP controls and preview browser smoke are terminal-only checks, not tool-written
    reports; capture their contemporaneous output. Root layout has an exact run/browser/outcome
    carrier but no embedded Git source, so require a commit-tagged run ID, unchanged target bytes,
    and matching clean HEAD/status before and after its run and verifier.
-4. Any red, ambiguous, blocked, mixed-source, unverifiable carrier, or terminal-only failure stops
+5. Any red, ambiguous, blocked, mixed-source, unverifiable carrier, or terminal-only failure stops
    the transition and is preserved without an unchanged retry.
-5. If and only if every durable carrier, verifier, terminal-only check, and repository-identity
+6. If and only if every durable carrier, verifier, terminal-only check, and repository-identity
    proof above is green and agrees on the same unchanged head, push that exact head to draft PR #32
    without another tracked edit.
-6. Require CI to evaluate the PR test-merge corresponding to that exact pushed head, and verify the
+7. Require CI to evaluate the PR test-merge corresponding to that exact pushed head, and verify the
    head association. Only terminal-green corresponding test-merge CI and the remaining required
    review permit Ready/merge and subsequent `develop` monitoring.
-7. Fresh six-image HUMAN judgment and Claude presentation-polish remain separate; neither is
+8. Fresh six-image HUMAN judgment and Claude presentation-polish remain separate; neither is
    supplied by the automated evidence.
 
 ## 8. Required verification before saying “ready”
@@ -692,7 +753,7 @@ occurred.
   restoration, coveragegap (1,010/1,010), and speccheck (454/0/0): PASS;
 - Smoke, 12-viewport Glass, and persona selftests: PASS;
 - Compendium selftest: 222 independent controls PASS;
-- focused Compendium budget tests: historical seam 10; current active-ruler replay 11/11;
+- focused Compendium budget tests: historical seam 10; current calibration-seam validation 11/11;
 - production Vite build: 798 modules; exact owner/worker/painter graph PASS;
 - syntax and full diff checks: PASS;
 - independent current-source worker/product review: CLEAN.
@@ -719,12 +780,13 @@ The following Smoke foreground repair passes syntax, its report selftest, 25 foc
 three TypeScript programs, artunused, and diff hygiene. Commit ef6 then passed its exact-source
 Compendium certification plus named verifier; its Smoke passed the foreground phase and stopped
 only at the D-TRAIN setup race in §6.8. The current follow-up adds fail-closed precondition controls;
-its disposition is resolved solely from the ignored exact-head artifacts and matching source
-identities, not from this tracked review.
+the later pushed head reached the exact PR test-merge in §6.9. That report is valid instrument-only
+evidence and stops certification at the fresh `f9710bdf…` calibration boundary.
 
 ### Browser-owning, one attempt and no retry
 
-From the final committed instrument head and with the correct process-owned browser selection:
+After fresh calibration/activation on the frozen timer authority, and with the correct process-owned
+browser selection:
 
 1. shared browser path/CDP selftests;
 2. on the committed exact ruler head, run Arc-local Edge Compendium certification plus independent
@@ -739,7 +801,8 @@ to raise deadlines, retry, regenerate a budget, or weaken a control merely to ob
 
 ### GitHub handoff
 
-Apply §7. Only after local terminal evidence is clean:
+Run `32350971816` / job `96369841133` is a preserved stopping red and must not be retried unchanged.
+Apply §7 only after fresh calibration and same-head terminal evidence are clean:
 
 - push the unchanged exact head to PR #32 without another tracked edit;
 - verify CI is evaluating the PR test-merge corresponding to that exact pushed head;
@@ -765,8 +828,9 @@ exposed a valid product-answerability defect; the serviced-turn repair changes p
 and fresh baseline4/candidate5/6/7 activate that producer's measured ruler. Commit `78813cd…`
 passed its local exact-head certification. Ef6 then froze the foreground repair and passed its own
 exact-source Compendium cert/verifier, but the following Smoke exposed the D-TRAIN fixture-setup
-race above. Push is permitted only when the complete same-head battery's durable carriers,
-verifiers, captured terminal-only checks, and repository-identity proof are terminal green on one
-unchanged head. Approval and merge then require terminal-green PR test-merge CI
-corresponding to that unchanged pushed head. HUMAN judgment and Claude presentation-polish remain
-separate.
+race above. Pushed head 1187 then reached exact synthetic-merge CI; run `32350971816` preserved the
+early shared-timer `instrument-fail` in §6.9 with no product verdict. The absolute re-arm repair is
+frozen, measurement authority is now `f9710bdf…`, and its budget is `calibration-required`.
+Approval remains blocked until fresh paired-baseline/three-candidate activation, one complete
+same-head battery, and corresponding terminal-green PR test-merge CI. HUMAN judgment and Claude
+presentation-polish remain separate.
