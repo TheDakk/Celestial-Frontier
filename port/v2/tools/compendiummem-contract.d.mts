@@ -10,6 +10,16 @@ export const CANDIDATE_BROWSER_LABEL: string;
 export const COMPENDIUM_BROWSER_AUTHORITY_SCHEMA:
   'cf-v2-compendium-browser-authority/v1';
 export const COMPENDIUM_BROWSER_AUTHORITY_SCOPE: 'arc1a-compendium-memory-only';
+export const COMPENDIUM_MEASUREMENT_AUTHORITY_SCHEMA:
+  'cf-v2-compendium-measurement-authority/v1';
+export const COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS: readonly string[];
+export const COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA:
+  'cf-v2-compendium-producer-authority/v1';
+export const COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS: readonly string[];
+export const CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA:
+  'cf-v2-compendium-candidate-calibration-evidence/v1';
+export const BASELINE_CALIBRATION_EVIDENCE_SCHEMA:
+  'cf-v2-compendium-broken-baseline-calibration-evidence/v1';
 export const CANDIDATE_CDP_TIMEOUT_SCHEMA: string;
 export const CANDIDATE_COMMAND_SCHEMA: string;
 export const PLAIN_EVALUATE_COMMAND_SCHEMA: string;
@@ -44,7 +54,41 @@ export type CompendiumBrowserAuthority = Readonly<{
   jsVersion: string;
   protocolVersion: string;
 }>;
+export type CompendiumMeasurementAuthority = Readonly<{
+  schema: 'cf-v2-compendium-measurement-authority/v1';
+  sha256: string;
+  inputs: Readonly<Record<string, string>>;
+}>;
+export type CompendiumProducerAuthority = Readonly<{
+  schema: 'cf-v2-compendium-producer-authority/v1';
+  sha256: string;
+  inputs: Readonly<Record<'index' | 'owner' | 'worker' | 'painter', Readonly<{
+    relativePath: string; sha256: string;
+  }>>>;
+}>;
 export function sha256(value: string | NodeJS.ArrayBufferView): string;
+export function compendiumMeasurementAuthority(inputs: unknown):
+  CompendiumMeasurementAuthority | null;
+export function compendiumProducerAuthority(inputs: unknown):
+  CompendiumProducerAuthority | null;
+export function compendiumCalibrationEvaluatorBudget(
+  producerAuthority: CompendiumProducerAuthority,
+): Readonly<Record<string, unknown>> | null;
+export function candidateCalibrationEvidence(measurement: unknown,
+  options?: { runId?: string }): Readonly<Record<string, unknown>> | null;
+export function brokenBaselineCalibrationEvidence(options?: {
+  runId?: string;
+  profile?: 'phone' | 'desktop';
+  list?: unknown;
+  detail?: unknown;
+  warm?: readonly unknown[];
+  eagerResource?: unknown;
+  speciesChunk?: unknown;
+}): Readonly<Record<string, unknown>> | null;
+export function reduceCalibrationEvidence(evidence: unknown): {
+  metrics: Record<string, number>;
+  observedFaults: string[] | null;
+} | null;
 export function compendiumBrowserAuthority(browser: unknown): CompendiumBrowserAuthority | null;
 export function validCompendiumBrowserAuthority(authority: unknown):
   authority is CompendiumBrowserAuthority;
@@ -199,7 +243,9 @@ export function brokenBaselineFailureEvidence(measurements: unknown): Readonly<{
   profiles: Readonly<Record<string, unknown>>;
 }>;
 export function validateBudgetRecord(record: unknown, fixtureRowsSha256?: string | null,
-  brokenBaselineProjectionRowsSha256?: string | null): {
+  brokenBaselineProjectionRowsSha256?: string | null,
+  expectedMeasurementAuthority?: CompendiumMeasurementAuthority | null,
+  expectedProducerAuthority?: CompendiumProducerAuthority | null): {
   ok: boolean; errors: string[];
 };
 export function evaluateProfile(measurement: unknown, budget: unknown, fixture: unknown): Array<{

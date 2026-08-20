@@ -612,8 +612,8 @@ both parent voices.
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
 
-**Current state (2026-08-17): `[EXEC]` maximum-catalogue criterion implemented; `[HUMAN]`
-review open.** The runnable, fail-closed `compendiummem` gate drives a deterministic 1,500-row
+**Current state (2026-08-17): product implementation present; resource calibration
+`[EXEC-TODO]`; `[HUMAN]` review open.** The runnable, fail-closed `compendiummem` gate drives a deterministic 1,500-row
 Compendium through a spacer-preserved virtual window, focus pinning and native keyboard traversal,
 filter/clear, detail/Back, Close cleanup, and Planetside hide/release/reacquire. The product path
 owns real 132px thumb leases with one bounded producer, queued-work cancellation, dedupe, disposal,
@@ -628,23 +628,29 @@ import, protocol, and worker failures terminate once and settle active plus queu
 automatic retry loop; paint and content-specific encode failures remain per-job. Selected detail
 uses the same owner asynchronously at 440px.
 
-The checked-in `v2/budgets/compendium-memory-v1.json` authority is active and measured. It pairs the
-exact `38447019517147319bd08c598202d097ee866874` broken-baseline run
-`20260817074210620-55255-c8f0e10c47` with three independent candidate runs
-`20260817075022672-56100-97d57bcb27`, `20260817075709048-56928-b0435507d2`, and
-`20260817080124302-57611-3422d7d6b9`. All four runs share one Arc-local Edge build authority:
-product `Edg/151.0.4129.86`, revision `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript
-`15.1.23.7`, and protocol `1.3`. That authority is Compendium-only and does **not** re-pin the
-Gate-A/global Edge `150.0.4078.83` baseline. Every phone/desktop ceiling is strictly above its
-three-run measured maximum with written variance/headroom rationale, while the paired broken build
-exceeds exactly eleven fields: mounted rows, heap, DOM nodes, live cache entries, decoded pixels,
-decoded bytes, encoded bytes, portrait-cache entries, portrait encoded bytes, warm-heap range, and
-warm-encoded range.
+The earlier exact-3844701/e4e8d1d calibration remains historical evidence only. Exact committed
+repair `dea03913014bc58134ebb06ca5b36892210a7571` passes the full 12-row Glass matrix; its following
+exact Compendium run `20260817150005919-93781-b6643ba7a6` truthfully reports 75/76, solely red at
+`desktop/warm-plateau`. That result proves neither a product leak nor a clean plateau because the old
+sequence destructively trimmed the desktop cache before the warm observation and measured refill,
+while the old page-heap ruler excluded embedder/backing ownership.
 
-`[EXEC]` here records the implemented executable contract, active calibration data, replay verifier,
-and negative controls; it is not a terminal certification claim for mutable working-tree bytes and
-does not close the Arc's irreducible review. Human judgment of the six phone/desktop list, detail,
-and focus-pinned images remains outstanding. Arc 1B also remains open for ordinary scene/Pixi
+The checked-in `v2/budgets/compendium-memory-v1.json` authority is therefore intentionally
+`calibration-required`: candidate samples are empty, candidate ceilings are null, and the paired
+baseline is `measurement-required`. The repaired seam observes the complete native cache before
+destructive cap control; records used, embedder, backing-store, and aggregate heap; proves stable
+warm keys/reuse and a post-cap restored snapshot; embeds compact replayable raw baseline/candidate
+capsules; and binds the complete measurement-input set plus exact built owner-to-worker-to-painter
+graph. The Arc-local Edge authority remains product `Edg/151.0.4129.86`, revision
+`@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript `15.1.23.7`, and protocol `1.3`; it still
+does **not** repin the Gate-A/global Edge `150.0.4078.83` baseline. Returning this criterion to
+`[EXEC]` requires one fresh paired run from exact broken source
+`38447019517147319bd08c598202d097ee866874`, three independent one-attempt current-candidate runs
+per profile, newly derived ceilings with written rationale/headroom, and exact-head certification.
+
+The current state records an implemented product and repaired fail-closed instrument, not active
+resource acceptance or terminal certification. Human judgment of the six phone/desktop list,
+detail, and focus-pinned images remains outstanding. Arc 1B also remains open for ordinary scene/Pixi
 texture, render-target, GPU-proxy, and combined travel → Compendium → Shipyard plateau ownership.
 
 **Scope:**

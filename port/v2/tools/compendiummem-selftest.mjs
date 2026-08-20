@@ -14,6 +14,7 @@ import {
   BROKEN_BASELINE_EXPECTED_FAULTS, BROKEN_BASELINE_PORTRAIT_CACHE_CAPS,
   BROKEN_BASELINE_THUMB_CACHE_CAP, BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
   BUDGET_SCHEMA, CANDIDATE_BROWSER_LABEL, CANDIDATE_TRANSPORT_TIMEOUT_MS,
+  BASELINE_CALIBRATION_EVIDENCE_SCHEMA, CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA,
   COMMAND_TIMEOUT_MS,
   COMPENDIUM_RAW_SNAPSHOT_REQUIRED_TOKENS, DIAGNOSTICS_SCHEMA,
   EXPECTED_OUTCOMES, FILTER_TRANSITION_SCHEMA, OUTCOME_IDS,
@@ -22,7 +23,11 @@ import {
   PLAIN_EVALUATE_COMMAND_SCHEMA, RAW_CDP_COMMAND_SCHEMA,
   REPORT_INPUT_KEYS, REPORT_SCHEMA,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
+  brokenBaselineCalibrationEvidence,
   calibrationMetrics, candidateNativeKeyDispatches,
+  candidateCalibrationEvidence,
+  compendiumCalibrationEvaluatorBudget,
+  compendiumMeasurementAuthority, compendiumProducerAuthority,
   compendiumBrowserAuthority, compendiumBrowserAuthorityMatches,
   compendiumBudgetBrowserAuthority, validCompendiumBrowserAuthority,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
@@ -30,6 +35,7 @@ import {
   installBrokenBaselineThumbObserver,
   phaseObservationAccepted,
   remainingCommandTimeoutMs, sha256,
+  reduceCalibrationEvidence,
   validBrokenBaselineThumbObservation, validProfileEmulationOptions,
   validCompendiumRawSnapshotExpression, validTransportTimeoutPolicy,
   validFilterInputObservation, validFilterTargetObservation, validFilterTelemetrySnapshot,
@@ -222,17 +228,88 @@ assert(!candidateLegacyWindowSpeciesArtSource(
 }
 
 function activeBudget(fixture) {
+  const measurementInputs = Object.fromEntries(
+    REPORT_INPUT_KEYS.map((key) => [key, sha256(`selftest-${key}`)]),
+  );
   const metrics = {
     mountedRows: 20, heapUsedBytes: 10_100_000, documents: 2, nodes: 400,
+    embedderHeapUsedBytes: 1_100_000, backingStorageBytes: 600_000,
+    heapAggregateBytes: 11_800_000,
     jsEventListeners: 80, liveCacheEntries: 30, liveDecodedPixels: 600_000,
     liveDecodedBytes: 2_400_000, liveEncodedBytes: 150_000,
     queuedJobsPeak: 20, activeJobsPeak: 1, liveLeases: 20, liveSubscribers: 0,
     livePortraitCacheEntries: 1, livePortraitEncodedBytes: 400_000,
-    warmHeapRangeBytes: 200, warmDecodedBytesRange: 0, warmEncodedBytesRange: 0,
+    warmHeapAggregateRangeBytes: 200, warmEncodedBytesRange: 0,
   };
-  const sample = (profile, index, commit = 'a'.repeat(40), observedFaults = null) => ({
-    runId: `selftest-${index}`, commit,
-    workingTreeDigest: 'b'.repeat(64), inputDigest: 'c'.repeat(64), sourceChanged: false,
+  const measurementAuthority = compendiumMeasurementAuthority(measurementInputs);
+  const producerAuthority = compendiumProducerAuthority({
+    index: { relativePath: 'index.html', sha256: '1'.repeat(64) },
+    owner: { relativePath: 'assets/main-selftest.js', sha256: 'd'.repeat(64) },
+    worker: { relativePath: 'assets/species-art.worker-selftest.js', sha256: 'f'.repeat(64) },
+    painter: { relativePath: 'assets/speciespainter-selftest.js', sha256: 'e'.repeat(64) },
+  });
+  assert(producerAuthority, 'synthetic producer authority did not canonicalize');
+  const candidateEvidence = (profile, runId) => {
+    const tuple = [
+      20, 10_100_000, 1_100_000, 600_000, 2, 400, 80,
+      30, 600_000, 2_400_000, 150_000, 20, 0, 1, 400_000,
+    ];
+    const points = Object.fromEntries([
+      'first', 'middle', 'last', 'filtered', 'detail', 'detailClosed', 'back',
+      'focusPinned', 'closed', 'planetside', 'warmCachePrecondition', 'postCapRestored',
+      'resizeBase', 'resizeContracted', 'resizeExpanded', 'resizeRestored',
+    ].map((key) => [key, [...tuple]]));
+    const warm = [9_900, 9_800, 9_900, 10_000].map((usedOffset) => {
+      const value = [...tuple]; value[1] = 10_090_000 + usedOffset; return value;
+    });
+    return {
+      schema: CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA, runId, profile,
+      points, warm, jobPeaks: { queuedJobsPeak: 20, activeJobsPeak: 1 },
+    };
+  };
+  const baselineEvidence = (profile, runId) => {
+    const point = [1500, 10_100_000, 1_100_000, 600_000, 2, 400, 80];
+    const encoded = 500_000;
+    return {
+      schema: BASELINE_CALIBRATION_EVIDENCE_SCHEMA, runId, profile,
+      list: [...point], detail: [...point],
+      warm: Array.from({ length: 4 }, () => ({
+        point: [...point], renderStartThumbCacheEntries: 600,
+        renderStartThumbCacheEncodedBytes: encoded,
+      })),
+      listWitness: {
+        naturalDimensionHistogram: [[440, 440, 1500]],
+        distinctSources: 1500, sourceInstanceCount: 1500, dataImageCount: 1500,
+        sourceInstanceEncodedBytes: 1_000_000,
+        thumbObserver: {
+          preOwnerExact132Completions: 0, initialListCompletions: 1500,
+          cacheEntries: 600, cacheEncodedBytes: encoded,
+          totalExact132Completions: 1500, errors: 0,
+          descriptorPreserved: true, stableQuietMs: 1000,
+        },
+        portraitCache: {
+          entries: profile === 'phone' ? 96 : 256, encodedBytes: 400_000,
+        },
+      },
+      eagerImport: {
+        observedResource: 'https://selftest.invalid/assets/species-selftest.js',
+        speciesChunk: 'assets/species-selftest.js',
+      },
+    };
+  };
+  const sample = (
+    profile, index, commit = 'a'.repeat(40), observedFaults = null,
+    runId = `selftest-${index}`,
+  ) => {
+    const evidence = observedFaults
+      ? baselineEvidence(profile, runId) : candidateEvidence(profile, runId);
+    const reduced = reduceCalibrationEvidence(evidence);
+    assert(reduced, `synthetic ${profile} calibration evidence did not reduce`);
+    return {
+    runId, commit,
+    workingTreeDigest: 'b'.repeat(64), inputDigest: 'c'.repeat(64),
+    measurementAuthoritySha256: measurementAuthority.sha256, sourceChanged: false,
+    ...(!observedFaults ? { producerAuthoritySha256: producerAuthority.sha256 } : {}),
     sourceState: 'committed',
     fixtureRowsSha256: fixture.rowsSha256,
     measuredAt: `2026-08-16T00:00:0${index}.000Z`,
@@ -240,19 +317,20 @@ function activeBudget(fixture) {
       executable: '/selftest/chrome', product: 'Chrome/Selftest', revision: 'selftest',
       userAgent: 'selftest', jsVersion: 'selftest', protocolVersion: '1.3',
     },
-    metrics: { ...metrics },
+    metrics: { ...reduced.metrics }, evidence,
     ...(observedFaults ? { observedFaults: [...observedFaults] } : {}),
-  });
+  }; };
   const ceiling = {
     rationale: 'Synthetic selftest ceiling above every synthetic measured maximum.',
     mountedRowsMax: 40, heapUsedBytesMax: 20_000_000, documentsMax: 4, nodesMax: 1000,
-    jsEventListenersMax: 200, liveCacheEntriesMax: 100, liveDecodedPixelsMax: 2_000_000,
-    liveDecodedBytesMax: 8_000_000, liveEncodedBytesMax: 1_000_000,
+    embedderHeapUsedBytesMax: 5_000_000, backingStorageBytesMax: 5_000_000,
+    heapAggregateBytesMax: 25_000_000,
+    jsEventListenersMax: 200, liveCacheEntriesMax: 300, liveDecodedPixelsMax: 5_000_000,
+    liveDecodedBytesMax: 20_000_000, liveEncodedBytesMax: 1_000_000,
     queuedJobsPeakMax: 20.5, activeJobsPeakMax: 4, liveLeasesMax: 100,
     liveSubscribersMax: 100, livePortraitCacheEntriesMax: 4,
     livePortraitEncodedBytesMax: 1_000_000,
-    warmHeapRangeBytesMax: 1000, warmDecodedBytesRangeMax: 1000,
-    warmEncodedBytesRangeMax: 1000,
+    warmHeapAggregateRangeBytesMax: 1000, warmEncodedBytesRangeMax: 1000,
   };
   return {
     schema: BUDGET_SCHEMA, status: 'active',
@@ -261,6 +339,7 @@ function activeBudget(fixture) {
       count: fixture.count, rowsSha256: fixture.rowsSha256,
     },
     requirements: { fixtureCount: 1500, listNaturalDimensionMax: 132, commandTimeoutMs: 2000, warmCycles: 4 },
+    measurementAuthority, producerAuthority,
     calibration: {
       requiredIndependentRunsPerProfile: 3,
       selectionRule: 'Selftest only: all exact synthetic observations are explicit.',
@@ -276,10 +355,10 @@ function activeBudget(fixture) {
       projectionRowsSha256: buildBrokenBaselineProjection(fixture).rowsSha256,
       expectedFaults: [...BROKEN_BASELINE_EXPECTED_FAULTS],
       samples: {
-        phone: [sample('broken-phone', 1, '38447019517147319bd08c598202d097ee866874',
-          [...BROKEN_BASELINE_EXPECTED_FAULTS])],
-        desktop: [sample('broken-desktop', 1, '38447019517147319bd08c598202d097ee866874',
-          [...BROKEN_BASELINE_EXPECTED_FAULTS])],
+        phone: [sample('phone', 1, '38447019517147319bd08c598202d097ee866874',
+          [...BROKEN_BASELINE_EXPECTED_FAULTS], 'selftest-baseline-1')],
+        desktop: [sample('desktop', 1, '38447019517147319bd08c598202d097ee866874',
+          [...BROKEN_BASELINE_EXPECTED_FAULTS], 'selftest-baseline-1')],
       },
     },
     ceilings: { phone: { ...ceiling }, desktop: { ...ceiling } },
@@ -744,6 +823,21 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
     planetside, ...warm]) {
     point.diagnostics.art.deviceClass = profile;
   }
+  const nativeCacheEntries = profile === 'phone' ? 96 : 256;
+  const nativeDecodedPixels = nativeCacheEntries * 132 * 132;
+  for (const point of warm) {
+    point.diagnostics.art.limits.cacheEntries = nativeCacheEntries;
+    point.diagnostics.art.limits.decodedPixels = nativeDecodedPixels;
+    point.diagnostics.art.limits.decodedBytes = nativeDecodedPixels * 4;
+    point.diagnostics.art.live.cacheEntries = nativeCacheEntries;
+    point.diagnostics.art.live.decodedPixels = nativeDecodedPixels;
+    point.diagnostics.art.live.decodedBytes = nativeDecodedPixels * 4;
+    point.diagnostics.art.keys.cached = Array.from(
+      { length: nativeCacheEntries }, (_, index) => `warm-key-${index}`,
+    ).sort();
+  }
+  const warmCachePrecondition = clone(warm[0]);
+  const postCapRestored = clone(warm.at(-1));
   const producerErrorWitness = syntheticProducerErrorWitness(profile, fixture);
   producerErrorWitness.commands = syntheticProducerErrorCommands(
     candidateCommandTemplate, producerErrorWitness, profile,
@@ -760,6 +854,7 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
       sameSeedShared: true, sameSeedCompleteDistinct: true,
     },
     lazySpeciesResource: {
+      indexPath: 'index.html', indexSha256: '1'.repeat(64),
       ownerPath: 'assets/main-selftest.js', ownerSha256: 'd'.repeat(64),
       path: 'assets/speciespainter-selftest.js', sha256: 'e'.repeat(64),
       workerPath: 'assets/species-art.worker-selftest.js', workerSha256: 'f'.repeat(64),
@@ -833,6 +928,11 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
         deviceClass: profile, queuedJobsPeak: 20, activeJobsPeak: 1,
         queuedJobsLimit: 256, activeJobsLimit: 1,
       },
+      warmCachePrecondition,
+      resourceOrder: [
+        'warm-precondition', 'warm-1', 'warm-2', 'warm-3', 'warm-4',
+        'cap-before', 'cap-after', 'profile-restored', 'post-cap-restored',
+      ],
       producerErrorWitness,
       filterTransitions: [
         syntheticFilterTransition({
@@ -855,8 +955,11 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
         beforeEntries: 140, afterEntries: 80, phoneLimit: 96,
         afterDecodedBytes: 5_500_000, phoneDecodedBytesLimit: 8_000_000,
         beforeDeviceClass: 'desktop', afterDeviceClass: 'phone', restoredDeviceClass: profile,
-        disposalsDelta: 60,
+        disposalsDelta: 60, warmCyclesSealed: 4,
+        warmTerminalJobStarts: 90, beforeJobStarts: 90,
+        warmTerminalDisposals: 40, beforeDisposals: 40,
       },
+      postCapRestored,
     },
     answerability: [
       { target: { ok: true, ms: 20, value: `${profile}-first`, expected: `${profile}-first` },
@@ -912,6 +1015,9 @@ function terminalReport(runId, outcomes, budget, profiles) {
       browserAuthority,
       browserAuthorityMatch: browserAuthority === null
         ? null : compendiumBrowserAuthorityMatches(browser, browserAuthority),
+      producerAuthority: clone(budget.producerAuthority),
+      observedProducerAuthority: clone(budget.producerAuthority),
+      producerAuthorityMatch: true,
     },
     expectedOutcomes: [...EXPECTED_OUTCOMES],
     outcomes, findings: [], profiles, partialFailure: null, blockedOutcomes: [],
@@ -1920,7 +2026,8 @@ export async function runCompendiumMemSelftest() {
   const rawCommands = [];
   const rawStageObservations = createCandidateCollectorObservations({
     send: async (method) => {
-      if (method === 'Runtime.evaluate') return { result: { value: { snapshot: true } } };
+      if (method === 'Runtime.evaluate') return { result: { value: true } };
+      if (method === 'HeapProfiler.collectGarbage') return {};
       throw new Error(`${CANDIDATE_BROWSER_LABEL}: timed out waiting for ${method}`);
     },
     profile: 'phone', now: (role) => role === 'issued' ? 10 : 11,
@@ -1929,47 +2036,85 @@ export async function runCompendiumMemSelftest() {
     onStageCompleted: (stage) => rawStagesCompleted.push(stage),
     onCommand: (command) => rawCommands.push(command),
   });
-  await rawStageObservations.evaluate(
-    'selftest-session', 'selftest-expression', 'main initial product/DOM snapshot',
-  );
   let rawHeapFailure = null;
   try {
-    await rawStageObservations.sendStage(
-      'main initial heap usage', 'Runtime.getHeapUsage', {}, 'selftest-session',
-    );
+    await collectCandidateSnapshot({
+      sessionId: 'selftest-session', label: 'main initial',
+      rawSnapshotExpression: 'selftest-expression',
+      evaluate: rawStageObservations.evaluate,
+      sendStage: rawStageObservations.sendStage,
+    });
   } catch (error) { rawHeapFailure = error; }
   assert(rawHeapFailure?.message.includes(
     'phone main initial heap usage: Runtime.getHeapUsage failed under the 5000ms transport cap',
   )
     && JSON.stringify(rawStagesStarted) === JSON.stringify([
-      'main initial product/DOM snapshot', 'main initial heap usage',
+      'main initial animation task', 'main initial garbage collection',
+      'main initial heap usage',
     ])
     && JSON.stringify(rawStagesCompleted) === JSON.stringify([
-      'main initial product/DOM snapshot',
+      'main initial animation task', 'main initial garbage collection',
     ])
     && rawHeapFailure.compendiumCommand?.schema === RAW_CDP_COMMAND_SCHEMA
     && rawHeapFailure.compendiumCommand?.method === 'Runtime.getHeapUsage'
     && rawCommands.length === 1,
-  'post-snapshot raw heap timeout lost its exact method/failing stage or completed too early');
-  let garbageCollectionContinued = false;
+  'post-GC raw heap timeout lost its exact method/failing stage or completed too early');
+  const garbageCollectionSequence = [];
   const garbageCollectionCalls = [];
   let garbageCollectionFailure = null;
   try {
     await collectCandidateSnapshot({
       sessionId: 'selftest-session', label: 'main initial',
       rawSnapshotExpression: 'selftest-expression',
-      evaluate: async () => { garbageCollectionContinued = true; },
+      evaluate: async (_sessionId, _expression, label) => {
+        garbageCollectionSequence.push(`evaluate:${label}`);
+        return true;
+      },
       sendStage: async (label, method) => {
+        garbageCollectionSequence.push(`send:${label}`);
         garbageCollectionCalls.push({ label, method });
         throw rawHeapFailure;
       },
     });
   } catch (error) { garbageCollectionFailure = error; }
-  assert(garbageCollectionFailure === rawHeapFailure && garbageCollectionContinued === false
+  assert(garbageCollectionFailure === rawHeapFailure
+    && JSON.stringify(garbageCollectionSequence) === JSON.stringify([
+      'evaluate:main initial animation task', 'send:main initial garbage collection',
+    ])
     && JSON.stringify(garbageCollectionCalls) === JSON.stringify([{
       label: 'main initial garbage collection', method: 'HeapProfiler.collectGarbage',
     }]),
-  'failed mandatory garbage collection was swallowed or snapshot collection continued');
+  'snapshot did not service one renderer turn before mandatory GC or continued after GC failed');
+  const successfulSnapshotSequence = [];
+  const successfulSnapshot = await collectCandidateSnapshot({
+    sessionId: 'selftest-session', label: 'ordered snapshot',
+    rawSnapshotExpression: 'selftest-expression',
+    evaluate: async (_sessionId, _expression, label) => {
+      successfulSnapshotSequence.push(`evaluate:${label}`);
+      return label.endsWith('product/DOM snapshot')
+        ? { diagnostics: { exact: true }, raw: { exact: true } } : true;
+    },
+    sendStage: async (label, method) => {
+      successfulSnapshotSequence.push(`send:${label}:${method}`);
+      if (method === 'Runtime.getHeapUsage') return {
+        usedSize: 1, totalSize: 2, embedderHeapUsedSize: 3, backingStorageSize: 4,
+      };
+      if (method === 'Memory.getDOMCounters') return {
+        documents: 1, nodes: 2, jsEventListeners: 3,
+      };
+      return {};
+    },
+  });
+  assert(JSON.stringify(successfulSnapshotSequence) === JSON.stringify([
+    'evaluate:ordered snapshot animation task',
+    'send:ordered snapshot garbage collection:HeapProfiler.collectGarbage',
+    'send:ordered snapshot heap usage:Runtime.getHeapUsage',
+    'evaluate:ordered snapshot product/DOM snapshot',
+    'send:ordered snapshot DOM counters:Memory.getDOMCounters',
+  ]) && successfulSnapshot.heap.backingStorageSize === 4
+    && successfulSnapshot.diagnostics.exact === true
+    && successfulSnapshot.raw.exact === true,
+  'candidate snapshot reordered cleanup, heap, diagnostics, or DOM evidence');
 
   let observerNow = 100;
   class FakeCanvas {
@@ -2178,6 +2323,7 @@ export async function runCompendiumMemSelftest() {
   const budget = activeBudget(fixture);
   const validateBudget = (record) => validateBudgetRecord(
     record, fixture.rowsSha256, baselineProjection.rowsSha256,
+    budget.measurementAuthority, budget.producerAuthority,
   );
   const budgetCheck = validateBudget(budget);
   assert(budgetCheck.ok, `synthetic active budget rejected: ${budgetCheck.errors.join('; ')}`);
@@ -2226,6 +2372,75 @@ export async function runCompendiumMemSelftest() {
   assert(validateBudget(mixedBudget).errors.some((error) =>
     /do not share one exact/.test(error)),
   'mixed candidate input digest was accepted');
+  const staleCandidateSampleAuthority = clone(budget);
+  staleCandidateSampleAuthority.calibration.samples.phone[0]
+    .measurementAuthoritySha256 = 'f'.repeat(64);
+  assert(validateBudget(staleCandidateSampleAuthority).errors.some((error) =>
+    /candidate calibration samples do not match the budget measurement authority/.test(error)),
+  'a candidate sample from a stale measurement authority entered the active ruler');
+  const staleBaselineSampleAuthority = clone(budget);
+  staleBaselineSampleAuthority.pairedBrokenBaseline.samples.desktop[0]
+    .measurementAuthoritySha256 = 'f'.repeat(64);
+  assert(validateBudget(staleBaselineSampleAuthority).errors.some((error) =>
+    /paired broken-baseline samples do not match the budget measurement authority/.test(error)),
+  'a broken-baseline sample from a stale measurement authority entered the active ruler');
+  const forgedMeasurementAuthorityInput = clone(budget);
+  forgedMeasurementAuthorityInput.measurementAuthority.inputs.collector = 'f'.repeat(64);
+  assert(validateBudget(forgedMeasurementAuthorityInput).errors.some((error) =>
+    /measurement authority is invalid/.test(error)),
+  'a forged measurement-authority input retained a stale aggregate digest');
+  const forgedMeasurementAuthorityDigest = clone(budget);
+  forgedMeasurementAuthorityDigest.measurementAuthority.sha256 = 'f'.repeat(64);
+  assert(validateBudget(forgedMeasurementAuthorityDigest).errors.some((error) =>
+    /measurement authority is invalid/.test(error)),
+  'a forged measurement-authority digest was accepted');
+  const staleMeasurementAuthority = clone(budget);
+  staleMeasurementAuthority.measurementAuthority.inputs.collector = 'f'.repeat(64);
+  staleMeasurementAuthority.measurementAuthority.sha256 = sha256(
+    JSON.stringify(staleMeasurementAuthority.measurementAuthority.inputs),
+  );
+  assert(validateBudget(staleMeasurementAuthority).errors.some((error) =>
+    /does not match the current collector\/evaluator inputs/.test(error)),
+  'a self-consistent stale measurement authority matched the current instrument');
+  for (const key of Object.keys(budget.measurementAuthority.inputs)) {
+    const driftedInputAuthority = clone(budget);
+    driftedInputAuthority.measurementAuthority.inputs[key] = 'e'.repeat(64);
+    driftedInputAuthority.measurementAuthority.sha256 = sha256(
+      JSON.stringify(driftedInputAuthority.measurementAuthority.inputs),
+    );
+    assert(validateBudget(driftedInputAuthority).errors.some((error) =>
+      /does not match the current collector\/evaluator inputs/.test(error)),
+    `self-consistent stale measurement input ${key} matched the current authority`);
+  }
+  const staleCandidateProducerAuthority = clone(budget);
+  staleCandidateProducerAuthority.calibration.samples.phone[0]
+    .producerAuthoritySha256 = 'f'.repeat(64);
+  assert(validateBudget(staleCandidateProducerAuthority).errors.some((error) =>
+    /candidate calibration samples do not match the budget producer authority/.test(error)),
+  'a candidate sample from a stale built producer entered the active ruler');
+  const forgedProducerAuthorityInput = clone(budget);
+  forgedProducerAuthorityInput.producerAuthority.inputs.worker.sha256 = '0'.repeat(64);
+  assert(validateBudget(forgedProducerAuthorityInput).errors.some((error) =>
+    /producer authority is invalid/.test(error)),
+  'a forged producer-authority input retained a stale aggregate digest');
+  const forgedProducerAuthorityDigest = clone(budget);
+  forgedProducerAuthorityDigest.producerAuthority.sha256 = 'f'.repeat(64);
+  assert(validateBudget(forgedProducerAuthorityDigest).errors.some((error) =>
+    /producer authority is invalid/.test(error)),
+  'a forged producer-authority digest was accepted');
+  const staleProducerAuthority = clone(budget);
+  staleProducerAuthority.producerAuthority.inputs.worker.sha256 = '0'.repeat(64);
+  staleProducerAuthority.producerAuthority.sha256 = sha256(
+    JSON.stringify(staleProducerAuthority.producerAuthority.inputs),
+  );
+  for (const profile of ['phone', 'desktop']) {
+    for (const sample of staleProducerAuthority.calibration.samples[profile]) {
+      sample.producerAuthoritySha256 = staleProducerAuthority.producerAuthority.sha256;
+    }
+  }
+  assert(validateBudget(staleProducerAuthority).errors.some((error) =>
+    /does not match the current built index\/owner\/worker\/painter/.test(error)),
+  'a self-consistent stale producer authority matched the current built graph');
   const dirtyBudget = clone(budget);
   dirtyBudget.calibration.samples.phone[0].sourceState = 'dirty-diagnostic';
   assert(validateBudget(dirtyBudget).errors.some((error) =>
@@ -2267,6 +2482,78 @@ export async function runCompendiumMemSelftest() {
   assert(validateBudget(missingBaselineFault).errors.some((error) =>
     /observedFaults must prove every sealed/.test(error)),
   'baseline sample missing one observed fault was accepted');
+  const candidateEvidenceChanged = clone(budget);
+  candidateEvidenceChanged.calibration.samples.phone[0].evidence.points.first[1] += 1;
+  assert(validateBudget(candidateEvidenceChanged).errors.some((error) =>
+    /metrics do not recompute from raw calibration evidence/.test(error)),
+  'candidate raw evidence changed while its copied metrics stayed green');
+  const candidateMetricsChanged = clone(budget);
+  candidateMetricsChanged.calibration.samples.phone[0].metrics.heapUsedBytes += 1;
+  assert(validateBudget(candidateMetricsChanged).errors.some((error) =>
+    /metrics do not recompute from raw calibration evidence/.test(error)),
+  'candidate copied metrics changed without matching raw evidence');
+  const candidateEvidenceRunDrift = clone(budget);
+  candidateEvidenceRunDrift.calibration.samples.phone[0].evidence.runId = 'other-run';
+  assert(validateBudget(candidateEvidenceRunDrift).errors.some((error) =>
+    /evidence is invalid or not bound to its run\/profile/.test(error)),
+  'candidate evidence escaped its enclosing run identity');
+  const candidateEvidenceProfileDrift = clone(budget);
+  candidateEvidenceProfileDrift.calibration.samples.phone[0].evidence.profile = 'desktop';
+  assert(validateBudget(candidateEvidenceProfileDrift).errors.some((error) =>
+    /evidence is invalid or not bound to its run\/profile/.test(error)),
+  'candidate evidence escaped its enclosing profile identity');
+  const candidateEvidenceWrongSchema = clone(budget);
+  candidateEvidenceWrongSchema.calibration.samples.phone[0].evidence.schema = 'wrong';
+  assert(validateBudget(candidateEvidenceWrongSchema).errors.some((error) =>
+    /evidence is invalid or not bound to its run\/profile/.test(error)),
+  'candidate evidence with the wrong schema was accepted');
+  const candidateEvidenceMissingPoint = clone(budget);
+  delete candidateEvidenceMissingPoint.calibration.samples.phone[0].evidence.points.first;
+  assert(validateBudget(candidateEvidenceMissingPoint).errors.some((error) =>
+    /evidence is invalid or not bound to its run\/profile/.test(error)),
+  'candidate evidence missing one fixed measured point was accepted');
+  const candidateEvidenceReordered = clone(budget);
+  candidateEvidenceReordered.calibration.samples.phone[0].evidence.points = Object.fromEntries(
+    Object.entries(candidateEvidenceReordered.calibration.samples.phone[0].evidence.points).reverse(),
+  );
+  assert(validateBudget(candidateEvidenceReordered).errors.some((error) =>
+    /evidence is invalid or not bound to its run\/profile/.test(error)),
+  'candidate evidence with reordered canonical point carriers was accepted');
+  const candidateEvidenceShortWarm = clone(budget);
+  candidateEvidenceShortWarm.calibration.samples.phone[0].evidence.warm.pop();
+  assert(validateBudget(candidateEvidenceShortWarm).errors.some((error) =>
+    /evidence is invalid or not bound to its run\/profile/.test(error)),
+  'candidate evidence with a shortened warm series was accepted');
+  const candidateEvidenceJobPeak = clone(budget);
+  candidateEvidenceJobPeak.calibration.samples.phone[0].evidence.jobPeaks.queuedJobsPeak += 1;
+  assert(validateBudget(candidateEvidenceJobPeak).errors.some((error) =>
+    /metrics do not recompute from raw calibration evidence/.test(error)),
+  'candidate raw job-peak evidence changed while its copied metrics stayed green');
+  const baselineEvidenceChanged = clone(budget);
+  baselineEvidenceChanged.pairedBrokenBaseline.samples.phone[0].evidence.list[1] += 1;
+  assert(validateBudget(baselineEvidenceChanged).errors.some((error) =>
+    /metrics do not recompute from raw calibration evidence/.test(error)),
+  'baseline raw numeric evidence changed while its copied metrics stayed green');
+  const baselineFaultEvidenceChanged = clone(budget);
+  baselineFaultEvidenceChanged.pairedBrokenBaseline.samples.phone[0]
+    .evidence.listWitness.naturalDimensionHistogram[0][0] = 439;
+  assert(validateBudget(baselineFaultEvidenceChanged).errors.some((error) =>
+    /observedFaults do not recompute from raw calibration evidence/.test(error)),
+  'baseline raw fault evidence changed while copied fault IDs stayed green');
+  const baselineEvidenceRunDrift = clone(budget);
+  baselineEvidenceRunDrift.pairedBrokenBaseline.samples.phone[0].evidence.runId = 'other-run';
+  assert(validateBudget(baselineEvidenceRunDrift).errors.some((error) =>
+    /evidence is invalid or not bound to its run\/profile/.test(error)),
+  'baseline evidence escaped its enclosing run identity');
+  const crossSchemaCandidate = clone(budget);
+  crossSchemaCandidate.calibration.samples.phone[0].evidence = clone(
+    crossSchemaCandidate.pairedBrokenBaseline.samples.phone[0].evidence,
+  );
+  crossSchemaCandidate.calibration.samples.phone[0].evidence.runId
+    = crossSchemaCandidate.calibration.samples.phone[0].runId;
+  assert(validateBudget(crossSchemaCandidate).errors.some((error) =>
+    /candidate evidence used the broken-baseline evidence schema|metrics do not recompute/.test(error)),
+  'broken-baseline evidence was accepted as a candidate calibration carrier');
   const phone = syntheticMeasurement('phone', fixture, candidateReady.ledger[0]);
   const desktop = syntheticMeasurement('desktop', fixture, candidateReady.ledger[0]);
   for (const measurement of [phone, desktop]) {
@@ -2345,14 +2632,115 @@ export async function runCompendiumMemSelftest() {
   assert(generatedPhoneMetrics.mountedRows === 28
     && generatedDesktopMetrics.mountedRows === 28,
   'calibration metrics did not retain the expanded-viewport mounted-row maximum');
+  for (const [measurement, baseMetrics] of [
+    [phone, generatedPhoneMetrics], [desktop, generatedDesktopMetrics],
+  ]) {
+    const parityMeasurement = clone(measurement);
+    parityMeasurement.phases.warmCachePrecondition.heap.embedderHeapUsedSize
+      = baseMetrics.embedderHeapUsedBytes + 1;
+    parityMeasurement.points.postCapRestored.heap.backingStorageSize
+      = baseMetrics.backingStorageBytes + 1;
+    const expectedMetrics = calibrationMetrics(parityMeasurement);
+    assert(expectedMetrics.embedderHeapUsedBytes === baseMetrics.embedderHeapUsedBytes + 1
+      && expectedMetrics.backingStorageBytes === baseMetrics.backingStorageBytes + 1,
+    `${measurement.profile} calibration metrics omitted distinct warm-precondition or post-cap carriers`);
+    const projected = candidateCalibrationEvidence(parityMeasurement, {
+      runId: `candidate-projector-${measurement.profile}`,
+    });
+    const reduced = reduceCalibrationEvidence(projected);
+    assert(reduced && JSON.stringify(reduced.metrics) === JSON.stringify(expectedMetrics),
+      `${measurement.profile} candidate capsule projector did not reproduce independently computed calibration metrics`);
+  }
+  {
+    const snapshot = ({ mountedRows, usedSize, embedderHeapUsedSize,
+      backingStorageSize, documents, nodes, jsEventListeners, cacheEncodedBytes = null }) => ({
+      raw: {
+        mountedRows,
+        ...(cacheEncodedBytes === null ? {} : {
+          renderStartThumbCacheEntries: BROKEN_BASELINE_THUMB_CACHE_CAP,
+          renderStartThumbCacheEncodedBytes: cacheEncodedBytes,
+        }),
+      },
+      heap: { usedSize, embedderHeapUsedSize, backingStorageSize },
+      dom: { documents, nodes, jsEventListeners },
+    });
+    const list = snapshot({
+      mountedRows: 1500, usedSize: 101, embedderHeapUsedSize: 11,
+      backingStorageSize: 1, documents: 2, nodes: 301, jsEventListeners: 41,
+    });
+    Object.assign(list.raw, {
+      naturalWidths: Array(1500).fill(440), naturalHeights: Array(1500).fill(440),
+      distinctSources: 1500, sourceInstanceCount: 1500, dataImageCount: 1500,
+      sourceInstanceEncodedBytes: 1_500_000,
+      thumbObserverPreOwnerExact132Completions: 7, thumbRenderCompletions: 1500,
+      modeledThumbCacheEntries: BROKEN_BASELINE_THUMB_CACHE_CAP,
+      thumbCacheEncodedBytes: 600_000,
+      thumbObserverTotalExact132Completions: 1507, thumbObserverErrors: 0,
+      thumbObserverDescriptorPreserved: true, thumbObserverStableQuietMs: 1200,
+      modeledPortraitCacheEntries: BROKEN_BASELINE_PORTRAIT_CACHE_CAPS.phone,
+      modeledPortraitCacheEncodedBytes: 960_000,
+    });
+    const detail = snapshot({
+      mountedRows: 1499, usedSize: 202, embedderHeapUsedSize: 22,
+      backingStorageSize: 2, documents: 3, nodes: 402, jsEventListeners: 52,
+    });
+    const warm = [
+      [1496, 303, 33, 3, 2, 503, 63, 610_000],
+      [1497, 404, 44, 4, 2, 504, 74, 620_000],
+      [1498, 505, 55, 5, 2, 505, 85, 630_000],
+      [1499, 606, 66, 6, 2, 506, 96, 640_000],
+    ].map(([mountedRows, usedSize, embedderHeapUsedSize, backingStorageSize,
+      documents, nodes, jsEventListeners, cacheEncodedBytes]) => snapshot({
+      mountedRows, usedSize, embedderHeapUsedSize, backingStorageSize,
+      documents, nodes, jsEventListeners, cacheEncodedBytes,
+    }));
+    const eagerResource = 'https://selftest.invalid/assets/species-selftest.js';
+    const speciesChunk = 'assets/species-selftest.js';
+    const projected = brokenBaselineCalibrationEvidence({
+      runId: 'baseline-projector-phone', profile: 'phone', list, detail, warm,
+      eagerResource, speciesChunk,
+    });
+    assert(projected
+      && JSON.stringify(projected.list) === JSON.stringify([1500, 101, 11, 1, 2, 301, 41])
+      && JSON.stringify(projected.detail) === JSON.stringify([1499, 202, 22, 2, 3, 402, 52])
+      && JSON.stringify(projected.warm[0].point)
+        === JSON.stringify([1496, 303, 33, 3, 2, 503, 63])
+      && JSON.stringify(projected.listWitness.naturalDimensionHistogram)
+        === JSON.stringify([[440, 440, 1500]])
+      && projected.listWitness.thumbObserver.preOwnerExact132Completions === 7
+      && projected.listWitness.thumbObserver.initialListCompletions === 1500
+      && projected.listWitness.thumbObserver.totalExact132Completions === 1507
+      && projected.listWitness.portraitCache.entries === 96
+      && projected.eagerImport.observedResource === eagerResource
+      && projected.eagerImport.speciesChunk === speciesChunk,
+    'broken-baseline collector snapshot projector did not preserve its fixed capsule field order');
+    const reduced = reduceCalibrationEvidence(projected);
+    const expected = {
+      mountedRows: 1500, heapUsedBytes: 606, documents: 3, nodes: 506,
+      embedderHeapUsedBytes: 66, backingStorageBytes: 6, heapAggregateBytes: 678,
+      jsEventListeners: 96, liveCacheEntries: 600,
+      liveDecodedPixels: 600 * 132 * 132,
+      liveDecodedBytes: 600 * 132 * 132 * 4, liveEncodedBytes: 640_000,
+      queuedJobsPeak: 0, activeJobsPeak: 0, liveLeases: 0, liveSubscribers: 0,
+      livePortraitCacheEntries: 96, livePortraitEncodedBytes: 960_000,
+      warmHeapAggregateRangeBytes: 226, warmEncodedBytesRange: 20_000,
+    };
+    assert(reduced
+      && Object.entries(expected).every(([key, value]) => reduced.metrics[key] === value)
+      && JSON.stringify(reduced.observedFaults) === JSON.stringify(BROKEN_BASELINE_EXPECTED_FAULTS),
+    'broken-baseline capsule reduction did not reproduce independent maxima, ranges, cache metrics, and faults');
+  }
   for (const sample of generatedMetricBudget.calibration.samples.phone) {
-    sample.metrics = clone(generatedPhoneMetrics);
+    sample.evidence = candidateCalibrationEvidence(phone, { runId: sample.runId });
+    sample.metrics = clone(reduceCalibrationEvidence(sample.evidence).metrics);
   }
   for (const sample of generatedMetricBudget.calibration.samples.desktop) {
-    sample.metrics = clone(generatedDesktopMetrics);
+    sample.evidence = candidateCalibrationEvidence(desktop, { runId: sample.runId });
+    sample.metrics = clone(reduceCalibrationEvidence(sample.evidence).metrics);
   }
-  assert(validateBudget(generatedMetricBudget).ok,
-    'collector-generated candidate metric shape cannot activate the strict budget contract');
+  const generatedMetricBudgetCheck = validateBudget(generatedMetricBudget);
+  assert(generatedMetricBudgetCheck.ok,
+    `collector-generated candidate metric shape cannot activate the strict budget contract: ${generatedMetricBudgetCheck.errors.join('; ')}`);
   for (const measurement of [phone, desktop]) {
     const outcomes = evaluateProfile(measurement, budget, fixture);
     assert(outcomes.length === OUTCOME_IDS.length,
@@ -2538,6 +2926,23 @@ export async function runCompendiumMemSelftest() {
     ['measured portrait-entry ceiling', (m) => { m.points.detail.diagnostics.art.live.portraitCacheEntries = 5; }, 'byte-ceiling'],
     ['measured portrait-byte ceiling', (m) => { m.points.detail.diagnostics.art.live.portraitEncodedBytes = 1_000_001; }, 'byte-ceiling'],
     ['cap shrink', (m) => { m.points.capShrink.afterEntries = m.points.capShrink.beforeEntries; }, 'cap-shrink'],
+    ['cap shrink phase order drift', (m) => {
+      [m.phases.resourceOrder[5], m.phases.resourceOrder[6]]
+        = [m.phases.resourceOrder[6], m.phases.resourceOrder[5]];
+    }, 'cap-shrink'],
+    ['warm resource order drift', (m) => {
+      [m.phases.resourceOrder[1], m.phases.resourceOrder[2]]
+        = [m.phases.resourceOrder[2], m.phases.resourceOrder[1]];
+    }, 'warm-precondition'],
+    ['cap shrink warm count copied short', (m) => {
+      m.points.capShrink.warmCyclesSealed = 3;
+    }, 'cap-shrink'],
+    ['cap shrink job chronology forged', (m) => {
+      m.points.capShrink.beforeJobStarts = m.points.capShrink.warmTerminalJobStarts - 1;
+    }, 'cap-shrink'],
+    ['cap shrink disposal chronology forged', (m) => {
+      m.points.capShrink.beforeDisposals = m.points.capShrink.warmTerminalDisposals - 1;
+    }, 'cap-shrink'],
     ['wrong selected device class', (m) => { m.points.first.diagnostics.art.deviceClass = m.profile === 'phone' ? 'desktop' : 'phone'; }, 'resource-live-limits'],
     ['wrong pre-override device class', (m) => { m.points.initial.diagnostics.art.deviceClass = m.profile === 'phone' ? 'desktop' : 'phone'; }, 'resource-live-limits'],
     ['wrong cap-shrink device class', (m) => { m.points.capShrink.afterDeviceClass = 'desktop'; }, 'cap-shrink'],
@@ -2710,6 +3115,66 @@ export async function runCompendiumMemSelftest() {
     ['missing middle', (m) => { m.points.middle.raw.mountedLogicalIds = []; }, 'middle-row-reached'],
     ['missing last', (m) => { m.points.last.raw.mountedLogicalIds = []; }, 'last-row-reached'],
     ['warm jobs', (m) => { m.points.warm[2].diagnostics.art.live.activeJobs = 1; }, 'settled-jobs'],
+    ['warm series short', (m) => { m.points.warm.pop(); }, 'warm-precondition'],
+    ['warm precondition cache short', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.live.cacheEntries--;
+    }, 'warm-precondition'],
+    ['warm precondition decoded pixels short', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.live.decodedPixels -= 132 * 132;
+    }, 'warm-precondition'],
+    ['warm precondition decoded bytes short', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.live.decodedBytes -= 132 * 132 * 4;
+    }, 'warm-precondition'],
+    ['warm precondition encoded bytes exceed product limit', (m) => {
+      const a = m.phases.warmCachePrecondition.diagnostics.art;
+      a.live.encodedBytes = a.limits.encodedBytes + 1;
+    }, 'warm-precondition'],
+    ['warm precondition device class drift', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.deviceClass
+        = m.profile === 'phone' ? 'desktop' : 'phone';
+    }, 'warm-precondition'],
+    ['warm cycle cache short', (m) => {
+      m.points.warm[1].diagnostics.art.live.cacheEntries--;
+    }, 'warm-precondition'],
+    ['warm precondition queued work', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.live.queuedJobs = 1;
+    }, 'warm-precondition'],
+    ['warm precondition active work', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.live.activeJobs = 1;
+    }, 'warm-precondition'],
+    ['warm precondition leaked subscriber', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.art.live.subscribers = 1;
+    }, 'warm-precondition'],
+    ['warm cache key omitted behind copied count', (m) => {
+      m.points.warm[1].diagnostics.art.keys.cached.pop();
+    }, 'warm-precondition'],
+    ['warm cache key duplicated behind copied count', (m) => {
+      const keys = m.points.warm[1].diagnostics.art.keys.cached;
+      keys[1] = keys[0];
+    }, 'warm-precondition'],
+    ['warm cache identity churn behind stable counts', (m) => {
+      const keys = m.points.warm[2].diagnostics.art.keys.cached;
+      keys[keys.length - 1] = 'zzzz-warm-substituted-key';
+    }, 'warm-precondition'],
+    ['warm cache repainted the same identities', (m) => {
+      m.points.warm[2].diagnostics.art.totals.jobStarts++;
+    }, 'warm-precondition'],
+    ['warm cache disposed behind stable identities', (m) => {
+      m.points.warm[2].diagnostics.art.totals.disposals++;
+    }, 'warm-precondition'],
+    ['warm cache recreated a released worker', (m) => {
+      const lazyArt = m.points.warm[2].diagnostics.lazyArt;
+      lazyArt.worker.starts++;
+      lazyArt.worker.ready++;
+      lazyArt.worker.disposals++;
+      lazyArt.identity.lastProducerEpoch++;
+      lazyArt.identity.lastWorkerInstanceId++;
+      lazyArt.lastEvent.producerEpoch++;
+      lazyArt.lastEvent.workerInstanceId++;
+    }, 'warm-precondition'],
+    ['warm precondition worker retained', (m) => {
+      m.phases.warmCachePrecondition.diagnostics.lazyArt.worker.live = true;
+    }, 'warm-precondition'],
     ['settled worker retained', (m) => {
       const lazyArt = m.points.warm.at(-1).diagnostics.lazyArt;
       lazyArt.worker.live = true;
@@ -2837,7 +3302,62 @@ export async function runCompendiumMemSelftest() {
     ['worker fatal hidden', (m) => {
       m.points.warm.at(-1).diagnostics.lazyArt.worker.fatals = 1;
     }, 'settled-jobs'],
-    ['warm plateau', (m) => { m.points.warm[2].heap.usedSize += 5000; }, 'warm-plateau'],
+    ['warm aggregate plateau', (m) => {
+      m.points.warm[2].heap.backingStorageSize += 5000;
+    }, 'warm-plateau'],
+    ['warm encoded plateau', (m) => {
+      m.points.warm[2].diagnostics.art.live.encodedBytes += 5000;
+    }, 'warm-plateau'],
+    ['post-cap restored snapshot missing', (m) => {
+      delete m.points.postCapRestored;
+    }, 'cap-shrink'],
+    ['post-cap device class drift', (m) => {
+      m.points.postCapRestored.diagnostics.art.deviceClass
+        = m.profile === 'phone' ? 'desktop' : 'phone';
+    }, 'cap-shrink'],
+    ['post-cap queued work retained', (m) => {
+      m.points.postCapRestored.diagnostics.art.live.queuedJobs = 1;
+    }, 'cap-shrink'],
+    ['post-cap active work retained', (m) => {
+      m.points.postCapRestored.diagnostics.art.live.activeJobs = 1;
+    }, 'cap-shrink'],
+    ['post-cap subscriber retained', (m) => {
+      m.points.postCapRestored.diagnostics.art.live.subscribers = 1;
+    }, 'cap-shrink'],
+    ['post-cap worker retained', (m) => {
+      m.points.postCapRestored.diagnostics.lazyArt.worker.live = true;
+    }, 'cap-shrink'],
+    ['post-cap worker disposal omitted', (m) => {
+      m.points.postCapRestored.diagnostics.lazyArt.worker.disposals--;
+    }, 'cap-shrink'],
+    ['post-cap worker error hidden', (m) => {
+      m.points.postCapRestored.diagnostics.lazyArt.errors.encode = 1;
+    }, 'cap-shrink'],
+    ['post-cap measured heap exceeds ceiling', (m) => {
+      m.points.postCapRestored.heap.usedSize = 20_000_001;
+    }, 'heap-ceiling'],
+    ['post-cap resource-order evidence omitted', (m) => {
+      m.phases.resourceOrder.pop();
+    }, 'cap-shrink'],
+    ['post-cap resource-order suffix permuted', (m) => {
+      const last = m.phases.resourceOrder.length - 1;
+      [m.phases.resourceOrder[last - 1], m.phases.resourceOrder[last]]
+        = [m.phases.resourceOrder[last], m.phases.resourceOrder[last - 1]];
+    }, 'cap-shrink'],
+    ['used heap ceiling', (m) => {
+      m.points.first.heap.usedSize = 20_000_001;
+    }, 'heap-ceiling'],
+    ['embedder heap ceiling', (m) => {
+      m.points.first.heap.embedderHeapUsedSize = 5_000_001;
+    }, 'heap-ceiling'],
+    ['backing storage ceiling', (m) => {
+      m.points.first.heap.backingStorageSize = 5_000_001;
+    }, 'heap-ceiling'],
+    ['aggregate heap ceiling', (m) => {
+      m.points.first.heap.usedSize = 19_000_001;
+      m.points.first.heap.embedderHeapUsedSize = 4_000_000;
+      m.points.first.heap.backingStorageSize = 3_000_000;
+    }, 'heap-ceiling'],
     ['target timeout', (m) => { m.answerability[0].target.ms = 2001; }, 'target-answerable-first'],
     ['heartbeat timeout', (m) => { m.answerability.at(-1).heartbeat.ms = 2001; }, 'heartbeat-last'],
     ['missing final answerability probe', (m) => { m.answerability.pop(); }, 'target-answerable-last'],
@@ -2919,6 +3439,30 @@ export async function runCompendiumMemSelftest() {
   assert(verifyTerminalReport(locallyConsistentWrongAuthority, 'selftest-current').ok
     && !productionVerify(locallyConsistentWrongAuthority).ok,
   'a locally self-consistent report laundered a browser authority different from the exact budget');
+  const locallyConsistentWrongProducer = clone(report);
+  const wrongProducer = compendiumProducerAuthority({
+    ...clone(report.budget.producerAuthority.inputs),
+    worker: {
+      ...clone(report.budget.producerAuthority.inputs.worker), sha256: 'a'.repeat(64),
+    },
+  });
+  assert(wrongProducer, 'synthetic wrong producer authority did not canonicalize');
+  locallyConsistentWrongProducer.budget.producerAuthority = clone(wrongProducer);
+  locallyConsistentWrongProducer.budget.observedProducerAuthority = clone(wrongProducer);
+  locallyConsistentWrongProducer.budget.producerAuthorityMatch = true;
+  assert(verifyTerminalReport(locallyConsistentWrongProducer, 'selftest-current').ok
+    && !productionVerify(locallyConsistentWrongProducer).ok,
+  'a locally self-consistent report laundered a producer authority different from the exact budget');
+  const missingObservedProducer = clone(report);
+  missingObservedProducer.budget.observedProducerAuthority = null;
+  missingObservedProducer.budget.producerAuthorityMatch = null;
+  assert(!verifyTerminalReport(missingObservedProducer, 'selftest-current').ok,
+    'complete PASS omitted its observed built producer authority');
+  const forgedProducerMatch = clone(report);
+  forgedProducerMatch.budget.observedProducerAuthority = clone(wrongProducer);
+  forgedProducerMatch.budget.producerAuthorityMatch = true;
+  assert(!verifyTerminalReport(forgedProducerMatch, 'selftest-current').ok,
+    'forged producerAuthorityMatch true over a different built graph was accepted');
   assert(!productionVerify(report, { expectedBudgetSha256: 'f'.repeat(64) }).ok,
   'production terminal verification accepted a report against the wrong budget byte hash');
   assert(!verifyCompendiumTerminalReport(report, 'selftest-current').ok,
@@ -3269,7 +3813,10 @@ export async function runCompendiumMemSelftest() {
     && ['list', 'focus-pinned'].includes(item.state));
   const preBrowserPartial = {
     ...clone(report), status: 'instrument-fail', browser: null, outcomes: [],
-    budget: { ...clone(report.budget), browserAuthorityMatch: null },
+    budget: {
+      ...clone(report.budget), browserAuthorityMatch: null,
+      observedProducerAuthority: null, producerAuthorityMatch: null,
+    },
     findings: ['instrument: pre-browser selftest failure'], profiles: {}, reviewPacket: [],
     partialFailure: {
       schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
@@ -3290,6 +3837,26 @@ export async function runCompendiumMemSelftest() {
   };
   const fullPhoneProducerWitness = clone(phone.phases.producerErrorWitness);
   const producerStagesComplete = [...producerErrorStages('phone').sequence];
+  const snapshotStageGroup = (base) => [
+    `${base} animation task`, `${base} garbage collection`, `${base} heap usage`,
+    `${base} product/DOM snapshot`, `${base} DOM counters`,
+  ];
+  const bootSnapshotStages = [
+    ...snapshotStageGroup('fresh lazy-control'),
+    ...snapshotStageGroup('main initial'),
+  ];
+  const fixtureSetupStages = [
+    'set device class', 'install exact fixture', 'validate exact fixture',
+  ];
+  const listReviewStages = [
+    ...snapshotStageGroup('first rows'), 'screenshot list', 'review list',
+  ];
+  const focusReviewStages = [
+    ...snapshotStageGroup('contracted viewport'),
+    ...snapshotStageGroup('expanded viewport'),
+    ...snapshotStageGroup('restored viewport'),
+    'screenshot focus-pinned', 'review focus-pinned',
+  ];
   const producerLedgerComplete = clone(fullPhoneProducerWitness.commands);
   const productTerminalCommand = retimeProducerCandidateCommand(
     candidateTargetTimeout.failure.command, 'list thumb settlement',
@@ -3308,7 +3875,8 @@ export async function runCompendiumMemSelftest() {
         lastCompletedStage: 'Compendium open',
         failingStage: 'list thumb settlement',
         completedStages: [
-          ...producerStagesComplete, 'review list', 'review focus-pinned', 'Compendium open',
+          ...bootSnapshotStages, ...fixtureSetupStages, ...producerStagesComplete,
+          ...listReviewStages, ...focusReviewStages, 'Compendium open',
         ],
         commandLedger: [...clone(producerLedgerComplete), clone(productTerminalCommand)],
         producerErrorWitness: clone(fullPhoneProducerWitness),
@@ -3333,6 +3901,145 @@ export async function runCompendiumMemSelftest() {
   });
   assert(productPartialCheck.ok,
     `healthy-heartbeat product-unanswerable partial report was rejected: ${productPartialCheck.errors.join('; ')}`);
+  const omittedFirstRowsTransaction = clone(productPartial);
+  omittedFirstRowsTransaction.profiles.phone.completedStages
+    = omittedFirstRowsTransaction.profiles.phone.completedStages.filter((stage) =>
+      !snapshotStageGroup('first rows').includes(stage));
+  assert(!verifyTerminalReport(omittedFirstRowsTransaction, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a later list/focus review retained after deleting the whole first-rows snapshot transaction');
+  for (const base of [
+    'fresh lazy-control', 'main initial', 'contracted viewport',
+    'expanded viewport', 'restored viewport',
+  ]) {
+    const omittedPrerequisite = clone(productPartial);
+    omittedPrerequisite.profiles.phone.completedStages
+      = omittedPrerequisite.profiles.phone.completedStages.filter((stage) =>
+        !snapshotStageGroup(base).includes(stage));
+    assert(!verifyTerminalReport(omittedPrerequisite, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, `a focus review retained after deleting the whole ${base} snapshot transaction`);
+  }
+  for (const stage of fixtureSetupStages) {
+    const omittedSetup = clone(productPartial);
+    omittedSetup.profiles.phone.completedStages
+      = omittedSetup.profiles.phone.completedStages.filter((value) => value !== stage);
+    assert(!verifyTerminalReport(omittedSetup, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, `a first-rows review retained after deleting the required ${stage} setup stage`);
+  }
+  const omittedProducerBlock = clone(productPartial);
+  omittedProducerBlock.profiles.phone.completedStages
+    = omittedProducerBlock.profiles.phone.completedStages.filter((stage) =>
+      !producerStagesComplete.includes(stage));
+  assert(!verifyTerminalReport(omittedProducerBlock, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a first-rows review retained after deleting the whole producer proof block');
+  const producerBeforeFixture = clone(productPartial);
+  const producerBeforeFixtureStages = producerBeforeFixture.profiles.phone.completedStages;
+  const producerStartIndex = producerBeforeFixtureStages.indexOf(producerStagesComplete[0]);
+  const movedProducerBlock = producerBeforeFixtureStages.splice(
+    producerStartIndex, producerStagesComplete.length,
+  );
+  const setDeviceIndex = producerBeforeFixtureStages.indexOf('set device class');
+  producerBeforeFixtureStages.splice(setDeviceIndex, 0, ...movedProducerBlock);
+  assert(producerStartIndex >= 0 && setDeviceIndex >= 0
+    && !verifyTerminalReport(producerBeforeFixture, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'the producer proof block was accepted before fixture setup/validation');
+  const swappedResizeTransactions = clone(productPartial);
+  const swappedResizeStages = swappedResizeTransactions.profiles.phone.completedStages;
+  const contractedIndex = swappedResizeStages.indexOf('contracted viewport animation task');
+  const expandedIndex = swappedResizeStages.indexOf('expanded viewport animation task');
+  const contractedGroup = swappedResizeStages.splice(contractedIndex, 5);
+  const shiftedExpandedIndex = swappedResizeStages.indexOf('expanded viewport animation task');
+  swappedResizeStages.splice(shiftedExpandedIndex + 5, 0, ...contractedGroup);
+  assert(contractedIndex >= 0 && expandedIndex > contractedIndex
+    && !verifyTerminalReport(swappedResizeTransactions, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'focus review accepted expanded and contracted snapshot transactions out of source order');
+  const firstRowsAfterScreenshot = clone(productPartial);
+  const firstRowsStages = firstRowsAfterScreenshot.profiles.phone.completedStages;
+  const firstRowsStart = firstRowsStages.indexOf('first rows animation task');
+  const firstRowsGroup = firstRowsStages.splice(firstRowsStart, 5);
+  const listScreenshotIndex = firstRowsStages.indexOf('screenshot list');
+  firstRowsStages.splice(listScreenshotIndex + 1, 0, ...firstRowsGroup);
+  assert(firstRowsStart >= 0 && listScreenshotIndex >= 0
+    && !verifyTerminalReport(firstRowsAfterScreenshot, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'list screenshot was accepted before its measured first-rows snapshot transaction');
+  const reviewBeforeScreenshot = clone(productPartial);
+  const reviewOrderStages = reviewBeforeScreenshot.profiles.phone.completedStages;
+  const screenshotListIndex = reviewOrderStages.indexOf('screenshot list');
+  const reviewListIndex = reviewOrderStages.indexOf('review list');
+  [reviewOrderStages[screenshotListIndex], reviewOrderStages[reviewListIndex]]
+    = [reviewOrderStages[reviewListIndex], reviewOrderStages[screenshotListIndex]];
+  assert(screenshotListIndex >= 0 && reviewListIndex > screenshotListIndex
+    && !verifyTerminalReport(reviewBeforeScreenshot, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'list review was accepted before its screenshot stage');
+  const duplicateSnapshotTransaction = clone(productPartial);
+  const duplicateInsert = duplicateSnapshotTransaction.profiles.phone.completedStages
+    .indexOf('first rows animation task');
+  duplicateSnapshotTransaction.profiles.phone.completedStages.splice(
+    duplicateInsert, 0, ...snapshotStageGroup('first rows'),
+  );
+  assert(duplicateInsert >= 0
+    && !verifyTerminalReport(duplicateSnapshotTransaction, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'a duplicated whole first-rows snapshot transaction was accepted');
+  const duplicateScreenshotStage = clone(productPartial);
+  const duplicateScreenshotIndex = duplicateScreenshotStage.profiles.phone.completedStages
+    .indexOf('screenshot list');
+  duplicateScreenshotStage.profiles.phone.completedStages.splice(
+    duplicateScreenshotIndex, 0, 'screenshot list',
+  );
+  assert(duplicateScreenshotIndex >= 0
+    && !verifyTerminalReport(duplicateScreenshotStage, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'a duplicated list screenshot stage was accepted');
+  const omittedReviewScreenshot = clone(productPartial);
+  omittedReviewScreenshot.profiles.phone.completedStages
+    = omittedReviewScreenshot.profiles.phone.completedStages.filter((stage) =>
+      stage !== 'screenshot focus-pinned');
+  assert(!verifyTerminalReport(omittedReviewScreenshot, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a completed focus review omitted its required screenshot stage');
+  const postStageValidationPartial = clone(productPartial);
+  postStageValidationPartial.status = 'instrument-fail';
+  postStageValidationPartial.findings = [
+    'instrument: local validation failed after Compendium open',
+  ];
+  postStageValidationPartial.partialFailure.classification = 'instrument';
+  postStageValidationPartial.partialFailure.failingStage = 'after Compendium open';
+  postStageValidationPartial.partialFailure.command = null;
+  postStageValidationPartial.profiles.phone.failingStage = 'after Compendium open';
+  postStageValidationPartial.profiles.phone.commandLedger.pop();
+  assert(verifyTerminalReport(postStageValidationPartial, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a distinct local post-stage validation failure was rejected');
+  const completedStageClaimedAsFailure = clone(postStageValidationPartial);
+  completedStageClaimedAsFailure.partialFailure.failingStage = 'Compendium open';
+  completedStageClaimedAsFailure.profiles.phone.failingStage = 'Compendium open';
+  assert(!verifyTerminalReport(completedStageClaimedAsFailure, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a completed stage was accepted as the partial report failingStage');
+  const detailWithoutFilterHistory = clone(productPartial);
+  const detailReviewItem = report.reviewPacket.find((item) =>
+    item.profile === 'phone' && item.state === 'detail');
+  assert(detailReviewItem, 'synthetic report omitted its phone detail review item');
+  detailWithoutFilterHistory.reviewPacket.push(clone(detailReviewItem));
+  detailWithoutFilterHistory.profiles.phone.reviewPacket.push(clone(detailReviewItem));
+  const openIndex = detailWithoutFilterHistory.profiles.phone.completedStages
+    .lastIndexOf('Compendium open');
+  detailWithoutFilterHistory.profiles.phone.completedStages.splice(openIndex, 0,
+    ...snapshotStageGroup('middle rows'),
+    ...snapshotStageGroup('last rows'),
+    ...snapshotStageGroup('filtered row'),
+    ...snapshotStageGroup('detail'), 'screenshot detail', 'review detail');
+  assert(!verifyTerminalReport(detailWithoutFilterHistory, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a detail review fabricated middle/filter/detail snapshots without native filter witnesses');
   const publicationPartial = clone(productPartial);
   const pendingProducerWitness = clone(fullPhoneProducerWitness);
   pendingProducerWitness.publication.accepted = null;
@@ -3358,9 +4065,12 @@ export async function runCompendiumMemSelftest() {
       command.label === producerPartialStages.publication)
       .slice(0, pendingProducerWitness.publication.observationCount),
   ].map(clone);
-  const publicationCompletedStages = producerPartialStages.sequence.slice(
-    0, producerPartialStages.sequence.indexOf(producerPartialStages.publication),
-  );
+  const publicationCompletedStages = [
+    ...bootSnapshotStages, ...fixtureSetupStages,
+    ...producerPartialStages.sequence.slice(
+      0, producerPartialStages.sequence.indexOf(producerPartialStages.publication),
+    ),
+  ];
   const partialProducerCommands = clone(pendingProducerWitness.commands);
   const publicationFailureCommand = retimeProducerCandidateCommand(
     candidateBothTimeout.failure.command, producerPartialStages.publication,
@@ -3536,7 +4246,8 @@ export async function runCompendiumMemSelftest() {
     return commands;
   };
   const baseCompletedStages = [
-    ...producerStagesComplete, 'review list', 'review focus-pinned', 'Compendium open',
+    ...bootSnapshotStages, ...fixtureSetupStages, ...producerStagesComplete,
+    ...listReviewStages, ...focusReviewStages, 'Compendium open',
   ];
   const baseProducerLedger = clone(producerLedgerComplete);
   const firstTransition = clone(phone.phases.filterTransitions[0]);
@@ -3565,7 +4276,9 @@ export async function runCompendiumMemSelftest() {
     = 'filter Compendium Filter Beacon submit key Enter up';
   filterTimeoutPartial.profiles.phone.failingStage = filterTimeoutCommand.label;
   filterTimeoutPartial.profiles.phone.completedStages = [
-    ...baseCompletedStages, ...firstTransitionStages, ...pendingBeaconStages,
+    ...baseCompletedStages, ...firstTransitionStages,
+    ...snapshotStageGroup('middle rows'), ...snapshotStageGroup('last rows'),
+    ...pendingBeaconStages,
   ];
   filterTimeoutPartial.profiles.phone.commandLedger = [
     ...clone(baseProducerLedger), ...clone(firstTransitionLedger),
@@ -3621,13 +4334,14 @@ export async function runCompendiumMemSelftest() {
   beaconSearchTargetFailure.findings = [
     'instrument: phone search Compendium Filter Beacon target: root heartbeat failed',
   ];
-  beaconSearchTargetFailure.partialFailure.lastCompletedStage = 'filter Same Seed Sentinel';
+  beaconSearchTargetFailure.partialFailure.lastCompletedStage = 'last rows DOM counters';
   beaconSearchTargetFailure.partialFailure.failingStage = searchTargetFailureCommand.label;
   beaconSearchTargetFailure.partialFailure.command = clone(searchTargetFailureCommand);
-  beaconSearchTargetFailure.profiles.phone.lastCompletedStage = 'filter Same Seed Sentinel';
+  beaconSearchTargetFailure.profiles.phone.lastCompletedStage = 'last rows DOM counters';
   beaconSearchTargetFailure.profiles.phone.failingStage = searchTargetFailureCommand.label;
   beaconSearchTargetFailure.profiles.phone.completedStages = [
     ...baseCompletedStages, ...firstTransitionStages,
+    ...snapshotStageGroup('middle rows'), ...snapshotStageGroup('last rows'),
   ];
   beaconSearchTargetFailure.profiles.phone.commandLedger = [
     ...clone(baseProducerLedger), ...clone(firstTransitionLedger),
@@ -3644,6 +4358,15 @@ export async function runCompendiumMemSelftest() {
   );
   assert(beaconSearchTargetFailureCheck.ok,
     `a Search target failure lost its healthy falsy poll plus exact failed attempt: ${beaconSearchTargetFailureCheck.errors.join('; ')}`);
+  const searchTargetMissingLastRows = clone(beaconSearchTargetFailure);
+  searchTargetMissingLastRows.profiles.phone.completedStages
+    = searchTargetMissingLastRows.profiles.phone.completedStages.filter((stage) =>
+      !snapshotStageGroup('last rows').includes(stage));
+  searchTargetMissingLastRows.partialFailure.lastCompletedStage = 'middle rows DOM counters';
+  searchTargetMissingLastRows.profiles.phone.lastCompletedStage = 'middle rows DOM counters';
+  assert(!verifyTerminalReport(searchTargetMissingLastRows, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a second filter Search failure omitted its source-prior last-row snapshot');
   const crossStageLedgerSwap = clone(filterTimeoutPartial);
   const beaconFocusCommandIndex = crossStageLedgerSwap.profiles.phone.commandLedger
     .findIndex((command) => command.label === 'filter Compendium Filter Beacon input focus');
@@ -3814,6 +4537,7 @@ export async function runCompendiumMemSelftest() {
   beaconBackspacePartial.profiles.phone.failingStage = beaconBackspaceCommand.label;
   beaconBackspacePartial.profiles.phone.completedStages = [
     ...baseCompletedStages, ...firstTransitionStages,
+    ...snapshotStageGroup('middle rows'), ...snapshotStageGroup('last rows'),
     ...transitionStageNames(pendingBeaconAtBackspace, { throughSelection: true }),
   ];
   beaconBackspacePartial.profiles.phone.commandLedger = [
@@ -3827,6 +4551,25 @@ export async function runCompendiumMemSelftest() {
   assert(verifyTerminalReport(beaconBackspacePartial, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'Beacon Backspace failure with its exact prior transition prefix was rejected');
+  const secondFilterBeforeLastRows = clone(beaconBackspacePartial);
+  const secondFilterStages = transitionStageNames(
+    pendingBeaconAtBackspace, { throughSelection: true },
+  );
+  const secondFilterStageSet = new Set(secondFilterStages);
+  secondFilterBeforeLastRows.profiles.phone.completedStages
+    = secondFilterBeforeLastRows.profiles.phone.completedStages.filter((stage) =>
+      !secondFilterStageSet.has(stage));
+  const secondFilterLastRowsStart = secondFilterBeforeLastRows.profiles.phone.completedStages
+    .indexOf('last rows animation task');
+  secondFilterBeforeLastRows.profiles.phone.completedStages.splice(
+    secondFilterLastRowsStart, 0, ...secondFilterStages,
+  );
+  secondFilterBeforeLastRows.partialFailure.lastCompletedStage = 'last rows DOM counters';
+  secondFilterBeforeLastRows.profiles.phone.lastCompletedStage = 'last rows DOM counters';
+  assert(secondFilterLastRowsStart >= 0
+    && !verifyTerminalReport(secondFilterBeforeLastRows, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'the second filter proof block was accepted before its last-row source anchor');
   const droppedSelectAllPredecessor = clone(beaconBackspacePartial);
   droppedSelectAllPredecessor.profiles.phone.completedStages
     = droppedSelectAllPredecessor.profiles.phone.completedStages.filter((stage) =>
@@ -3917,7 +4660,11 @@ export async function runCompendiumMemSelftest() {
   allFiltersThenLaterFailure.profiles.phone.lastCompletedStage = 'filter <clear>';
   allFiltersThenLaterFailure.profiles.phone.completedStages = [
     ...baseCompletedStages,
-    ...allCompletedTransitions.flatMap((transition) => transitionStageNames(transition)),
+    ...transitionStageNames(allCompletedTransitions[0]),
+    ...snapshotStageGroup('middle rows'), ...snapshotStageGroup('last rows'),
+    ...transitionStageNames(allCompletedTransitions[1]),
+    ...snapshotStageGroup('filtered row'),
+    ...transitionStageNames(allCompletedTransitions[2]),
   ];
   allFiltersThenLaterFailure.profiles.phone.commandLedger
     = [...clone(baseProducerLedger),
@@ -3926,6 +4673,61 @@ export async function runCompendiumMemSelftest() {
   assert(verifyTerminalReport(allFiltersThenLaterFailure, 'selftest-current', {
     verifyArtifact: partialArtifact,
   }).ok, 'three completed filter transitions plus a later instrument failure were rejected');
+  const detailReviewPartial = clone(allFiltersThenLaterFailure);
+  detailReviewPartial.findings = ['instrument: post-detail selftest failure'];
+  detailReviewPartial.partialFailure.lastCompletedStage = 'review detail';
+  detailReviewPartial.partialFailure.failingStage = 'post-detail selftest failure';
+  detailReviewPartial.profiles.phone.lastCompletedStage = 'review detail';
+  detailReviewPartial.profiles.phone.failingStage = 'post-detail selftest failure';
+  detailReviewPartial.reviewPacket.push(clone(detailReviewItem));
+  detailReviewPartial.profiles.phone.reviewPacket.push(clone(detailReviewItem));
+  const [visibleTransition, hiddenTransition, reopenTransition] = allCompletedTransitions;
+  const visibleStages = transitionStageNames(visibleTransition);
+  const hiddenStages = transitionStageNames(hiddenTransition);
+  const reopenStages = transitionStageNames(reopenTransition);
+  detailReviewPartial.profiles.phone.completedStages = [
+    ...baseCompletedStages,
+    ...visibleStages,
+    ...snapshotStageGroup('middle rows'),
+    ...snapshotStageGroup('last rows'),
+    ...hiddenStages,
+    ...snapshotStageGroup('filtered row'),
+    ...reopenStages,
+    ...snapshotStageGroup('detail'), 'screenshot detail', 'review detail',
+  ];
+  assert(verifyTerminalReport(detailReviewPartial, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a source-ordered producer/filter/snapshot/detail partial prefix was rejected');
+  for (const base of ['middle rows', 'last rows', 'filtered row', 'detail']) {
+    const omittedDetailPrerequisite = clone(detailReviewPartial);
+    omittedDetailPrerequisite.profiles.phone.completedStages
+      = omittedDetailPrerequisite.profiles.phone.completedStages.filter((stage) =>
+        !snapshotStageGroup(base).includes(stage));
+    assert(!verifyTerminalReport(omittedDetailPrerequisite, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, `a detail review retained after deleting the whole ${base} snapshot transaction`);
+  }
+  for (const [label, stages] of [
+    ['visible', visibleStages], ['hidden', hiddenStages], ['reopen', reopenStages],
+  ]) {
+    const omittedFilterBlock = clone(detailReviewPartial);
+    omittedFilterBlock.profiles.phone.completedStages
+      = omittedFilterBlock.profiles.phone.completedStages.filter((stage) =>
+        !stages.includes(stage));
+    assert(!verifyTerminalReport(omittedFilterBlock, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, `a detail review retained after deleting the whole ${label} filter stage block`);
+  }
+  const visibleFilterAfterMiddle = clone(detailReviewPartial);
+  const visibleFilterStages = visibleFilterAfterMiddle.profiles.phone.completedStages;
+  const visibleStart = visibleFilterStages.indexOf(visibleStages[0]);
+  const movedVisible = visibleFilterStages.splice(visibleStart, visibleStages.length);
+  const middleEnd = visibleFilterStages.indexOf('middle rows DOM counters');
+  visibleFilterStages.splice(middleEnd + 1, 0, ...movedVisible);
+  assert(visibleStart >= 0 && middleEnd >= 0
+    && !verifyTerminalReport(visibleFilterAfterMiddle, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'the visible filter proof block was accepted after its dependent middle snapshot');
   const reopenTerminalFailure = clone(filterTimeoutPartial);
   const pendingClearTransition = clone(phone.phases.filterTransitions[2]);
   pendingClearTransition.observationCount = pendingClearTransition.falsyObservations.length;
@@ -3951,7 +4753,10 @@ export async function runCompendiumMemSelftest() {
   reopenTerminalFailure.profiles.phone.failingStage = reopenTerminalCommand.label;
   reopenTerminalFailure.profiles.phone.completedStages = [
     ...baseCompletedStages,
-    ...completedBeforeClear.flatMap((transition) => transitionStageNames(transition)),
+    ...transitionStageNames(completedBeforeClear[0]),
+    ...snapshotStageGroup('middle rows'), ...snapshotStageGroup('last rows'),
+    ...transitionStageNames(completedBeforeClear[1]),
+    ...snapshotStageGroup('filtered row'),
     ...transitionStageNames(pendingClearTransition, { terminal: false }),
   ];
   reopenTerminalFailure.profiles.phone.commandLedger = [
@@ -3965,6 +4770,32 @@ export async function runCompendiumMemSelftest() {
   );
   assert(reopenTerminalFailureCheck.ok,
     `a post-reopen terminal filter failure was rejected: ${reopenTerminalFailureCheck.errors.join('; ')}`);
+  const reopenMissingFilteredRows = clone(reopenTerminalFailure);
+  reopenMissingFilteredRows.profiles.phone.completedStages
+    = reopenMissingFilteredRows.profiles.phone.completedStages.filter((stage) =>
+      !snapshotStageGroup('filtered row').includes(stage));
+  assert(!verifyTerminalReport(reopenMissingFilteredRows, 'selftest-current', {
+    verifyArtifact: partialArtifact,
+  }).ok, 'a reopen filter failure omitted its source-prior filtered-row snapshot');
+  const reopenBeforeFilteredRows = clone(reopenTerminalFailure);
+  const pendingReopenStages = transitionStageNames(
+    pendingClearTransition, { terminal: false },
+  );
+  const pendingReopenStageSet = new Set(pendingReopenStages);
+  reopenBeforeFilteredRows.profiles.phone.completedStages
+    = reopenBeforeFilteredRows.profiles.phone.completedStages.filter((stage) =>
+      !pendingReopenStageSet.has(stage));
+  const filteredRowsStart = reopenBeforeFilteredRows.profiles.phone.completedStages
+    .indexOf('filtered row animation task');
+  reopenBeforeFilteredRows.profiles.phone.completedStages.splice(
+    filteredRowsStart, 0, ...pendingReopenStages,
+  );
+  reopenBeforeFilteredRows.partialFailure.lastCompletedStage = 'filtered row DOM counters';
+  reopenBeforeFilteredRows.profiles.phone.lastCompletedStage = 'filtered row DOM counters';
+  assert(filteredRowsStart >= 0
+    && !verifyTerminalReport(reopenBeforeFilteredRows, 'selftest-current', {
+      verifyArtifact: partialArtifact,
+    }).ok, 'the reopen filter proof block was accepted before its filtered-row source anchor');
   const lostAcceptedReopenTarget = clone(reopenTerminalFailure);
   const lostReopenTargetGroup = lostAcceptedReopenTarget.profiles.phone
     .filterTransitions[2].reopenTarget;
@@ -4040,18 +4871,21 @@ export async function runCompendiumMemSelftest() {
   rawHeapPartial.status = 'instrument-fail';
   rawHeapPartial.findings = [`instrument: ${rawHeapFailure.message}`];
   rawHeapPartial.partialFailure.classification = 'instrument';
-  rawHeapPartial.partialFailure.lastCompletedStage = 'main initial product/DOM snapshot';
+  rawHeapPartial.partialFailure.lastCompletedStage = 'main initial garbage collection';
   rawHeapPartial.partialFailure.failingStage = 'main initial heap usage';
   rawHeapPartial.partialFailure.command = clone(rawHeapFailure.compendiumCommand);
-  rawHeapPartial.profiles.phone.lastCompletedStage = 'main initial product/DOM snapshot';
+  rawHeapPartial.profiles.phone.lastCompletedStage = 'main initial garbage collection';
   rawHeapPartial.profiles.phone.failingStage = 'main initial heap usage';
-  rawHeapPartial.profiles.phone.completedStages = ['main initial product/DOM snapshot'];
+  rawHeapPartial.profiles.phone.completedStages = [
+    ...snapshotStageGroup('fresh lazy-control'),
+    'main initial animation task', 'main initial garbage collection',
+  ];
   rawHeapPartial.profiles.phone.commandLedger = [clone(rawHeapFailure.compendiumCommand)];
   rawHeapPartial.profiles.phone.producerErrorWitness = null;
   rawHeapPartial.profiles.phone.reviewPacket = [];
   rawHeapPartial.reviewPacket = [];
   assert(verifyTerminalReport(rawHeapPartial, 'selftest-current').ok,
-    'post-snapshot raw heap failure did not retain exact completed/failing/method evidence');
+    'post-GC raw heap failure did not retain exact completed/failing/method evidence');
   const rawHeapWrongMethod = clone(rawHeapPartial);
   rawHeapWrongMethod.partialFailure.command.method = 'Memory.getDOMCounters';
   rawHeapWrongMethod.profiles.phone.commandLedger[0].method = 'Memory.getDOMCounters';
@@ -4258,8 +5092,13 @@ export async function runCompendiumMemSelftest() {
     profiles: {
       phone: {
         schema: PARTIAL_PROFILE_SCHEMA, profile: 'phone', viewport: { ...phoneViewport },
-        evidenceStatus: 'partial-non-certifying', lastCompletedStage: null,
-        failingStage: 'main initial product/DOM snapshot', completedStages: [],
+        evidenceStatus: 'partial-non-certifying',
+        lastCompletedStage: 'main initial heap usage',
+        failingStage: 'main initial product/DOM snapshot', completedStages: [
+          ...snapshotStageGroup('fresh lazy-control'),
+          'main initial animation task', 'main initial garbage collection',
+          'main initial heap usage',
+        ],
         commandLedger: [clone(plainFailure.compendiumCommand)],
         producerErrorWitness: null, filterTransitions: [],
         reviewPacket: [],
@@ -4268,13 +5107,34 @@ export async function runCompendiumMemSelftest() {
     reviewPacket: [],
     partialFailure: {
       schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: 'phone',
-      lastCompletedStage: null, failingStage: 'main initial product/DOM snapshot',
+      lastCompletedStage: 'main initial heap usage',
+      failingStage: 'main initial product/DOM snapshot',
       command: clone(plainFailure.compendiumCommand),
     },
     blockedOutcomes: [...EXPECTED_OUTCOMES],
   };
   assert(verifyTerminalReport(plainInstrumentPartial, 'selftest-current').ok,
     'labeled plain-evaluate failure did not retain valid partial stage/command evidence');
+  const missingSnapshotHeapPrefix = clone(plainInstrumentPartial);
+  missingSnapshotHeapPrefix.profiles.phone.completedStages.splice(
+    missingSnapshotHeapPrefix.profiles.phone.completedStages
+      .indexOf('main initial garbage collection'), 1,
+  );
+  missingSnapshotHeapPrefix.profiles.phone.lastCompletedStage = 'main initial heap usage';
+  assert(!verifyTerminalReport(missingSnapshotHeapPrefix, 'selftest-current').ok,
+    'snapshot product failure accepted a missing GC substage');
+  const reorderedSnapshotPrefix = clone(plainInstrumentPartial);
+  const mainAnimationIndex = reorderedSnapshotPrefix.profiles.phone.completedStages
+    .indexOf('main initial animation task');
+  const mainGarbageIndex = reorderedSnapshotPrefix.profiles.phone.completedStages
+    .indexOf('main initial garbage collection');
+  [reorderedSnapshotPrefix.profiles.phone.completedStages[mainAnimationIndex],
+    reorderedSnapshotPrefix.profiles.phone.completedStages[mainGarbageIndex]] = [
+    reorderedSnapshotPrefix.profiles.phone.completedStages[mainGarbageIndex],
+    reorderedSnapshotPrefix.profiles.phone.completedStages[mainAnimationIndex],
+  ];
+  assert(!verifyTerminalReport(reorderedSnapshotPrefix, 'selftest-current').ok,
+    'snapshot product failure accepted a reordered rAF/GC prefix');
   for (const field of ['executable', 'revision']) {
     const missingInstrumentBrowser = clone(plainInstrumentPartial);
     missingInstrumentBrowser.browser[field] = '';
@@ -4387,6 +5247,31 @@ export async function runCompendiumMemSelftest() {
   lateAuthorityMismatch.profiles.phone = clone(phone);
   assert(!verifyTerminalReport(lateAuthorityMismatch, 'selftest-current').ok,
     'browser-authority mismatch retained product measurements');
+  const producerAuthorityMismatch = clone(report);
+  producerAuthorityMismatch.status = 'instrument-fail';
+  producerAuthorityMismatch.browser = null;
+  producerAuthorityMismatch.budget.browserAuthorityMatch = null;
+  producerAuthorityMismatch.budget.observedProducerAuthority = clone(wrongProducer);
+  producerAuthorityMismatch.budget.producerAuthorityMatch = false;
+  producerAuthorityMismatch.outcomes = [];
+  producerAuthorityMismatch.findings = [
+    'instrument: built producer does not match the exact Arc 1A calibration authority',
+  ];
+  producerAuthorityMismatch.profiles = {};
+  producerAuthorityMismatch.reviewPacket = [];
+  producerAuthorityMismatch.partialFailure = {
+    schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
+    lastCompletedStage: null, failingStage: 'Arc 1A producer authority', command: null,
+  };
+  producerAuthorityMismatch.blockedOutcomes = [...EXPECTED_OUTCOMES];
+  assert(verifyTerminalReport(producerAuthorityMismatch, 'selftest-current').ok,
+    'exact pre-browser producer-authority mismatch report was rejected');
+  const lateProducerAuthorityMismatch = clone(producerAuthorityMismatch);
+  lateProducerAuthorityMismatch.browser = clone(report.browser);
+  lateProducerAuthorityMismatch.budget.browserAuthorityMatch = true;
+  lateProducerAuthorityMismatch.profiles.phone = clone(phone);
+  assert(!verifyTerminalReport(lateProducerAuthorityMismatch, 'selftest-current').ok,
+    'producer-authority mismatch retained browser/product measurements');
   const missingReview = clone(report);
   missingReview.reviewPacket.pop();
   assert(!verifyTerminalReport(missingReview, 'selftest-current').ok,
@@ -4437,7 +5322,10 @@ export async function runCompendiumMemSelftest() {
     const instrumentFail = {
       ...running, status: 'instrument-fail', endedAt: '2026-08-16T00:00:00.100Z',
       outcomes: [], findings: ['instrument: injected pre-browser failure'], browser: null,
-      budget: { ...running.budget, browserAuthorityMatch: null },
+      budget: {
+        ...running.budget, browserAuthorityMatch: null,
+        observedProducerAuthority: null, producerAuthorityMatch: null,
+      },
       profiles: {}, reviewPacket: [], blockedOutcomes: [...EXPECTED_OUTCOMES],
       partialFailure: {
         schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
@@ -4460,10 +5348,125 @@ export async function runCompendiumMemSelftest() {
   calibration.budget.status = 'calibration-required';
   calibration.budget.browserAuthority = null;
   calibration.budget.browserAuthorityMatch = null;
+  const calibrationEvaluator = compendiumCalibrationEvaluatorBudget(budget.producerAuthority);
+  assert(calibrationEvaluator, 'synthetic calibration evaluator was unavailable');
+  calibration.outcomes = [
+    ...evaluateProfile(calibration.profiles.phone, calibrationEvaluator, fixture),
+    ...evaluateProfile(calibration.profiles.desktop, calibrationEvaluator, fixture),
+  ];
+  calibration.findings = calibration.outcomes
+    .filter((outcome) => outcome.status === 'fail').map((outcome) => outcome.diagnosis);
   assert(verifyTerminalReport(calibration, 'selftest-current', { allowCalibration: true }).ok,
     'explicit non-certifying calibration report was rejected');
   assert(!verifyTerminalReport(calibration, 'selftest-current').ok,
     'calibration report was accepted as certifying evidence');
+  const calibrationBudget = clone(budget);
+  calibrationBudget.status = 'calibration-required';
+  calibrationBudget.ceilings = null;
+  calibrationBudget.calibration.samples = { phone: [], desktop: [] };
+  calibrationBudget.pairedBrokenBaseline.status = 'measurement-required';
+  calibrationBudget.pairedBrokenBaseline.collectorCommit = null;
+  calibrationBudget.pairedBrokenBaseline.samples = { phone: [], desktop: [] };
+  const productionCalibration = verifyCompendiumTerminalReport(
+    calibration, 'selftest-current', {
+      allowCalibration: true, budgetRecord: calibrationBudget,
+      expectedBudgetSha256: calibration.budget.sha256,
+      fixture, expectedInputs: calibration.inputs,
+      expectedSourceIdentity: calibration.source.begin,
+    },
+  );
+  assert(productionCalibration.ok,
+    `production-bound calibration report was rejected: ${productionCalibration.errors.join('; ')}`);
+  const calibrationFailure = clone(calibration);
+  calibrationFailure.status = 'fail';
+  calibrationFailure.profiles.phone.points.first.raw.mountedRowCount = 1500;
+  calibrationFailure.profiles.phone.points.first.diagnostics.window.mountedRowCount = 1500;
+  calibrationFailure.outcomes = [
+    ...evaluateProfile(calibrationFailure.profiles.phone, calibrationEvaluator, fixture),
+    ...evaluateProfile(calibrationFailure.profiles.desktop, calibrationEvaluator, fixture),
+  ];
+  calibrationFailure.findings = calibrationFailure.outcomes
+    .filter((outcome) => outcome.status === 'fail').map((outcome) => outcome.diagnosis);
+  assert(calibrationFailure.findings.length > 0 && verifyCompendiumTerminalReport(
+    calibrationFailure, 'selftest-current', {
+      allowCalibration: true, budgetRecord: calibrationBudget,
+      expectedBudgetSha256: calibration.budget.sha256,
+      fixture, expectedInputs: calibration.inputs,
+      expectedSourceIdentity: calibration.source.begin,
+    },
+  ).ok, 'truthful product FAIL during calibration was rejected');
+  const missingCalibrationFailureFindings = clone(calibrationFailure);
+  missingCalibrationFailureFindings.findings = [];
+  assert(!verifyCompendiumTerminalReport(
+    missingCalibrationFailureFindings, 'selftest-current', {
+      allowCalibration: true, budgetRecord: calibrationBudget,
+      expectedBudgetSha256: calibration.budget.sha256,
+      fixture, expectedInputs: calibration.inputs,
+      expectedSourceIdentity: calibration.source.begin,
+    },
+  ).ok, 'calibration-mode FAIL omitted its replayed failed-outcome findings');
+  const staleCalibrationFailureFindings = clone(calibrationFailure);
+  staleCalibrationFailureFindings.findings[0] = 'stale copied calibration failure';
+  assert(!verifyCompendiumTerminalReport(
+    staleCalibrationFailureFindings, 'selftest-current', {
+      allowCalibration: true, budgetRecord: calibrationBudget,
+      expectedBudgetSha256: calibration.budget.sha256,
+      fixture, expectedInputs: calibration.inputs,
+      expectedSourceIdentity: calibration.source.begin,
+    },
+  ).ok, 'calibration-mode FAIL replaced a replayed diagnosis with stale summary text');
+  const reorderedCalibrationFailureFindings = clone(calibrationFailure);
+  reorderedCalibrationFailureFindings.profiles.phone.points.first
+    .raw.listImages[0].naturalWidth = 440;
+  reorderedCalibrationFailureFindings.profiles.phone.points.first
+    .raw.listImages[0].naturalHeight = 440;
+  reorderedCalibrationFailureFindings.outcomes = [
+    ...evaluateProfile(
+      reorderedCalibrationFailureFindings.profiles.phone, calibrationEvaluator, fixture,
+    ),
+    ...evaluateProfile(
+      reorderedCalibrationFailureFindings.profiles.desktop, calibrationEvaluator, fixture,
+    ),
+  ];
+  reorderedCalibrationFailureFindings.findings
+    = reorderedCalibrationFailureFindings.outcomes
+      .filter((outcome) => outcome.status === 'fail').map((outcome) => outcome.diagnosis);
+  assert(reorderedCalibrationFailureFindings.findings.length > 1,
+    'selftest could not construct multiple truthful calibration FAIL findings');
+  reorderedCalibrationFailureFindings.findings.reverse();
+  assert(!verifyCompendiumTerminalReport(
+    reorderedCalibrationFailureFindings, 'selftest-current', {
+      allowCalibration: true, budgetRecord: calibrationBudget,
+      expectedBudgetSha256: calibration.budget.sha256,
+      fixture, expectedInputs: calibration.inputs,
+      expectedSourceIdentity: calibration.source.begin,
+    },
+  ).ok, 'calibration-mode FAIL reordered replayed failed-outcome findings');
+  const staleCalibrationFailure = clone(calibrationFailure);
+  staleCalibrationFailure.profiles.phone.points.first.raw.listImages[0].naturalWidth = 440;
+  staleCalibrationFailure.profiles.phone.points.first.raw.listImages[0].naturalHeight = 440;
+  assert(!verifyCompendiumTerminalReport(
+    staleCalibrationFailure, 'selftest-current', {
+      allowCalibration: true, budgetRecord: calibrationBudget,
+      expectedBudgetSha256: calibration.budget.sha256,
+      fixture, expectedInputs: calibration.inputs,
+      expectedSourceIdentity: calibration.source.begin,
+    },
+  ).ok, 'calibration-mode FAIL copied stale outcomes over changed raw product evidence');
+  const staleCalibrationOutcomes = clone(calibration);
+  staleCalibrationOutcomes.profiles.phone.points.warm[2]
+    .diagnostics.art.keys.cached[
+      staleCalibrationOutcomes.profiles.phone.points.warm[2]
+        .diagnostics.art.keys.cached.length - 1
+    ] = 'zzzz-stale-calibration-key';
+  assert(!verifyCompendiumTerminalReport(
+    staleCalibrationOutcomes, 'selftest-current', {
+      allowCalibration: true, budgetRecord: calibrationBudget,
+      expectedBudgetSha256: calibration.budget.sha256,
+      fixture, expectedInputs: calibration.inputs,
+      expectedSourceIdentity: calibration.source.begin,
+    },
+  ).ok, 'calibration artifact copied PASS outcomes over changed raw warm evidence');
   console.log(`COMPENDIUMMEM SELFTEST: PASS — ${controls.length} independent product controls`);
   console.log('  empty + short fixtures; unwindowed rows; exact 132/440 dimensions');
   console.log('  release/disposal/dedupe/full identity/generation/focus/error/cap/canvas/eager import');

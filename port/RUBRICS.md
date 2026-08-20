@@ -70,7 +70,7 @@ ever substitute for a person, and it is deliberately expensive.
 |---|---|---|
 | `[HUMAN]` | Universe → system → Earth → landing → return works on phone and desktop | Played, not asserted |
 | `[EXEC-TODO]` | First interaction within budget | `budgets.json`: **answerable ≤ 1000 ms at 4× CPU**. Today's build is 1944 ms — the port must *improve* it |
-| `[EXEC-TODO]` | No leaks across repeated travel, Compendium and future Shipyard cycles | Arc 1A now independently bounds the maximum Compendium under an active measured phone/desktop budget. Ordinary scene Canvas/Pixi ownership and the combined travel → Compendium → Shipyard warm GPU/resource plateau remain open under Arc 1B |
+| `[EXEC-TODO]` | No leaks across repeated travel, Compendium and future Shipyard cycles | Arc 1A implements maximum-Compendium virtualization, lease/cache/worker ownership, and a fail-closed resource instrument, but its phone/desktop ruler is currently `calibration-required`. Fresh paired exact-3844701 baseline evidence, three current-candidate runs per profile, and activated ceilings remain open; ordinary scene Canvas/Pixi ownership and the combined travel → Compendium → Shipyard warm GPU/resource plateau remain Arc 1B work |
 | `[HUMAN]` | Rings and planet composition read correctly | Art judgment |
 
 ## Gate E — creature quality
@@ -123,7 +123,7 @@ ever substitute for a person, and it is deliberately expensive.
 
 | | Criterion | Evidence |
 |---|---|---|
-| `[EXEC]` | Maximum-size Compendium mounts/paints only a bounded visible window and plateaus after warmup | Runnable fail-closed `compendiummem` gate: 1,500-row raw-CDP fixture; virtual rows with focus/filter/detail/Close outcomes; 132px lease cancellation/dedupe/error recovery; Planetside lifecycle; raw heap/DOM/job/lease/decoded/encoded counters. The active phone/desktop budget pairs exact `3844701` with three candidate runs under one Arc-local Edge 151 four-field authority (not a Gate-A repin); every ceiling is strictly above the measured maximum with written headroom, and the broken baseline exceeds the exact sealed 11-field set. `compendiummem:selftest` owns stale-PASS, unbounded, missing-release/disposal, carrier-binding, and truthful replay controls; each certifying result still binds its exact committed run |
+| `[EXEC-TODO]` | Maximum-size Compendium mounts/paints only a bounded visible window and plateaus after warmup | Product virtualization, focus/filter/detail/Close outcomes, 132px lease cancellation/dedupe/error recovery, Planetside lifecycle, worker disposal, and the exact built owner→worker→painter graph are implemented. The ruler is intentionally `calibration-required`: candidate samples are empty, ceilings are null, and the baseline is `measurement-required`. Exact dea039 run `20260817150005919-93781-b6643ba7a6` is preserved as truthful 75/76 evidence solely red at `desktop/warm-plateau`; its pre-warm destructive cap trim and used-heap-only ruler cannot prove a product leak. The repaired gate observes full native-cache warm state, used/embedder/backing/aggregate heap, stable-key reuse, and post-cap restoration, then replays raw capsules under complete input/producer authority. One fresh paired exact-3844701 baseline, three one-attempt current-candidate runs per profile, activated ceilings/rationale, and exact-head certification remain required. The Arc-local Edge 151 authority still does not repin Gate A |
 | `[HUMAN]` | The maximum Compendium's 132px list art, 440px detail art, hierarchy and focus treatment read correctly on phone and desktop | **OUTSTANDING — not run.** Review the six run-bound list/detail/focus-pinned images. Automated geometry, reachability and resource evidence cannot certify visual quality or focus feel |
 | `[EXEC-TODO]` | Ship art, installed-system captions and travel reach derive from one normalized state | all four chassis stages, hardpoint permutations, imported veteran fallback, save/reload, deliberately mismatched selector control |
 | `[HUMAN]` | Inventory portrait and every ship stage read clearly at phone row, inspector and native scales | fixed proof sheet + real phone/desktop review; automation cannot judge appeal or silhouette strength |
@@ -161,7 +161,7 @@ or engagement pressure.
 |---|---|---|
 | **`[HUMAN]`** | Physical iOS / iPadOS / Android / desktop matrix | ⛔ Outstanding for **four rounds**. No harness has ever seen this game on real iOS |
 | `[EXEC-TODO]` | Accessibility audit | Partially covered by `uilayout` (44px touch floors, focus order) |
-| `[EXEC-TODO]` | Performance and heat budgets | `budgets.json` sets bundle + answerability, and Arc 1A now owns an active measured maximum-Compendium memory/resource budget. Arc 1B scene/Pixi/GPU plateaus plus physical-device heat and battery evidence remain open |
+| `[EXEC-TODO]` | Performance and heat budgets | `budgets.json` sets bundle + answerability. Arc 1A's maximum-Compendium resource ruler is fail-closed pending fresh paired baseline/candidate calibration and activated ceilings; Arc 1B scene/Pixi/GPU plateaus plus physical-device heat and battery evidence remain open |
 | `[EXEC-TODO]` | PWA offline / update rollback | Nothing exists today |
 | `[HUMAN]` | Save export and recovery path works for a real player | Same blocker as Gate C |
 

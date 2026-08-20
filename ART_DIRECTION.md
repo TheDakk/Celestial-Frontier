@@ -30,15 +30,21 @@ producer error remains a stable owned error tile, releases cleanly, and the exac
 through a fresh worker lease. Capability/import/protocol/worker failure terminates once and settles
 the active plus queued owners exactly once instead of retrying a broken worker for every tile.
 
-The phone and desktop resource ceilings are now active measured authority, derived from three
-independent one-attempt candidate runs plus the paired exact `3844701` broken baseline. That ruler
-is Arc-local to Compendium memory/resources and binds the exact Edge 151 product, revision,
-JavaScript version, and protocol version; it does **not** repin the global Gate-A Edge 150 browser.
-`compendiummem` binds exact-current budget/input/source identity and replays raw outcomes at terminal
-verification. The tracked reference does not claim terminal certification: that authority belongs
-only to a verified exact-current ignored report. Its six phone/desktop list, focus-pinned, and detail
-PNGs still require HUMAN review. Arc 1B scene-resource ownership/disposal and live HD
-planet replacement remain open.
+The phone and desktop resource ruler is intentionally `calibration-required`, not active measured
+authority. Exact committed repair `dea03913014bc58134ebb06ca5b36892210a7571` passes the full Glass
+matrix; its following exact Compendium run `20260817150005919-93781-b6643ba7a6` is preserved as a
+truthful 75/76 result solely red at `desktop/warm-plateau`. It proves neither a product leak nor a
+clean plateau because the old sequence destructively trimmed the desktop cache before the warm
+observation and measured refill, while its heap ruler omitted embedder/backing ownership. The
+repaired seam observes full native warm-cache state before cap control; records used, embedder,
+backing-store, and aggregate heap; proves stable keys/reuse and post-cap restoration; replays raw
+baseline/candidate capsules; and binds complete measurement inputs plus the exact built
+owner-to-worker-to-painter graph. The budget now has empty candidate samples, null ceilings, and a
+`measurement-required` baseline. One fresh paired exact-3844701 baseline, three independent
+one-attempt current-candidate runs per profile, new ceiling rationale, and exact-head certification
+remain open. The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
+browser. Six phone/desktop list, focus-pinned, and detail PNGs still require HUMAN review. Arc 1B
+scene-resource ownership/disposal and live HD planet replacement remain open.
 
 **What remains planned:** V2 has no Cargo, Shipyard, ship portrait, crafting, research, or
 ship-upgrade presentation yet. Legacy v1.8.9 does have deterministic additive ship art in

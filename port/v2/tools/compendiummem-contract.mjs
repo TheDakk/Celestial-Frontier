@@ -19,6 +19,20 @@ export const CANDIDATE_BROWSER_LABEL = 'Compendium memory/resource gate';
 export const COMPENDIUM_BROWSER_AUTHORITY_SCHEMA =
   'cf-v2-compendium-browser-authority/v1';
 export const COMPENDIUM_BROWSER_AUTHORITY_SCOPE = 'arc1a-compendium-memory-only';
+export const COMPENDIUM_MEASUREMENT_AUTHORITY_SCHEMA =
+  'cf-v2-compendium-measurement-authority/v1';
+export const COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS = Object.freeze([
+  'fixtureSpec', 'fixtureRows', 'fixtureGenerator',
+  'budgetSchema', 'outcomeContract', 'collector',
+  'browserCdp', 'browserPath', 'workspaceLock',
+  'package', 'packageLock', 'appPackage', 'baselineSaveFixtures',
+  'speciesArtBuildGraph', 'outcomeInventory',
+]);
+export const COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA =
+  'cf-v2-compendium-producer-authority/v1';
+export const COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS = Object.freeze([
+  'index', 'owner', 'worker', 'painter',
+]);
 export const CANDIDATE_CDP_TIMEOUT_SCHEMA = 'cf-v2-compendium-cdp-timeout/v1';
 export const CANDIDATE_COMMAND_SCHEMA = 'cf-v2-compendium-candidate-command/v1';
 export const PLAIN_EVALUATE_COMMAND_SCHEMA = 'cf-v2-compendium-plain-evaluate-command/v1';
@@ -62,6 +76,7 @@ export const OUTCOME_IDS = Object.freeze([
   'no-full-portrait-thumb-path',
   'settled-jobs',
   'resource-live-limits',
+  'warm-precondition',
   'warm-plateau',
   'heap-ceiling',
   'dom-ceiling',
@@ -75,8 +90,9 @@ export const EXPECTED_OUTCOMES = Object.freeze(PROFILES.flatMap((profile) =>
   OUTCOME_IDS.map((id) => `${profile}/${id}`)));
 export const REPORT_INPUT_KEYS = Object.freeze([
   'fixtureSpec', 'fixtureRows', 'fixtureGenerator', 'budget', 'budgetSchema',
-  'outcomeContract', 'collector', 'package', 'packageLock', 'appPackage',
-  'baselineSaveFixtures', 'outcomeInventory',
+  'outcomeContract', 'collector', 'browserCdp', 'browserPath', 'workspaceLock',
+  'package', 'packageLock', 'appPackage', 'baselineSaveFixtures',
+  'speciesArtBuildGraph', 'outcomeInventory',
 ]);
 export const REVIEW_PACKET_STATES = Object.freeze(['list', 'detail', 'focus-pinned']);
 export const BROKEN_BASELINE_EXPECTED_FAULTS = Object.freeze([
@@ -112,6 +128,65 @@ function exactKeys(value, expected, where, errors) {
     return false;
   }
   return true;
+}
+
+export function compendiumMeasurementAuthority(inputs) {
+  if (!isObject(inputs) || COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS.some((key) =>
+    !/^[a-f0-9]{64}$/.test(String(inputs[key] || '')))) return null;
+  const hashes = Object.freeze(Object.fromEntries(
+    COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS.map((key) => [key, inputs[key]]),
+  ));
+  return Object.freeze({
+    schema: COMPENDIUM_MEASUREMENT_AUTHORITY_SCHEMA,
+    sha256: sha256(JSON.stringify(hashes)),
+    inputs: hashes,
+  });
+}
+function validMeasurementAuthority(value) {
+  if (!isObject(value)
+    || !exactKeys(value, ['schema', 'sha256', 'inputs'], 'measurementAuthority', [])
+    || value.schema !== COMPENDIUM_MEASUREMENT_AUTHORITY_SCHEMA
+    || !/^[a-f0-9]{64}$/.test(String(value.sha256 || ''))
+    || !isObject(value.inputs)
+    || !sameJson(Object.keys(value.inputs), [...COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS])
+    || COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS.some((key) =>
+      !/^[a-f0-9]{64}$/.test(String(value.inputs[key] || '')))) return false;
+  return value.sha256 === sha256(JSON.stringify(value.inputs));
+}
+
+function validProducerAuthorityPart(value, key) {
+  return isObject(value)
+    && sameJson(Object.keys(value).sort(), ['relativePath', 'sha256'])
+    && typeof value.relativePath === 'string' && value.relativePath.length > 0
+    && !value.relativePath.startsWith('/') && !value.relativePath.includes('..')
+    && (key === 'index' ? value.relativePath === 'index.html' : value.relativePath.endsWith('.js'))
+    && /^[a-f0-9]{64}$/.test(String(value.sha256 || ''));
+}
+export function compendiumProducerAuthority(buildGraph) {
+  if (!isObject(buildGraph) || COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS.some((key) =>
+    !validProducerAuthorityPart(buildGraph[key], key))) return null;
+  const inputs = Object.freeze(Object.fromEntries(
+    COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS.map((key) => [key, Object.freeze({
+      relativePath: buildGraph[key].relativePath,
+      sha256: buildGraph[key].sha256,
+    })]),
+  ));
+  return Object.freeze({
+    schema: COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA,
+    sha256: sha256(JSON.stringify(inputs)),
+    inputs,
+  });
+}
+function validProducerAuthority(value) {
+  if (!isObject(value)
+    || !exactKeys(value, ['schema', 'sha256', 'inputs'], 'producerAuthority', [])
+    || value.schema !== COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA
+    || !/^[a-f0-9]{64}$/.test(String(value.sha256 || ''))
+    || !isObject(value.inputs)
+    || !sameJson(Object.keys(value.inputs), [...COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS])
+    || COMPENDIUM_PRODUCER_AUTHORITY_INPUT_KEYS.some((key) =>
+      !validProducerAuthorityPart(value.inputs[key], key))) return false;
+  return value.sha256 === sha256(JSON.stringify(value.inputs));
 }
 
 const COMPENDIUM_BROWSER_AUTHORITY_FIELDS = Object.freeze([
@@ -1707,26 +1782,347 @@ export function brokenBaselineFailureEvidence(measurements) {
 
 export const CEILING_FIELDS = Object.freeze([
   'mountedRowsMax', 'heapUsedBytesMax', 'documentsMax', 'nodesMax',
+  'embedderHeapUsedBytesMax', 'backingStorageBytesMax', 'heapAggregateBytesMax',
   'jsEventListenersMax', 'liveCacheEntriesMax', 'liveDecodedPixelsMax',
   'liveDecodedBytesMax', 'liveEncodedBytesMax', 'queuedJobsPeakMax',
   'activeJobsPeakMax', 'liveLeasesMax', 'liveSubscribersMax',
-  'livePortraitCacheEntriesMax', 'livePortraitEncodedBytesMax', 'warmHeapRangeBytesMax',
-  'warmDecodedBytesRangeMax', 'warmEncodedBytesRangeMax',
+  'livePortraitCacheEntriesMax', 'livePortraitEncodedBytesMax',
+  'warmHeapAggregateRangeBytesMax',
+  'warmEncodedBytesRangeMax',
 ]);
 export const SAMPLE_METRIC_FIELDS = Object.freeze([
-  'mountedRows', 'heapUsedBytes', 'documents', 'nodes', 'jsEventListeners',
+  'mountedRows', 'heapUsedBytes', 'documents', 'nodes',
+  'embedderHeapUsedBytes', 'backingStorageBytes', 'heapAggregateBytes',
+  'jsEventListeners',
   'liveCacheEntries', 'liveDecodedPixels', 'liveDecodedBytes', 'liveEncodedBytes',
   'queuedJobsPeak', 'activeJobsPeak', 'liveLeases', 'liveSubscribers',
   'livePortraitCacheEntries', 'livePortraitEncodedBytes',
-  'warmHeapRangeBytes', 'warmDecodedBytesRange', 'warmEncodedBytesRange',
+  'warmHeapAggregateRangeBytes', 'warmEncodedBytesRange',
+]);
+export const CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA =
+  'cf-v2-compendium-candidate-calibration-evidence/v1';
+export const BASELINE_CALIBRATION_EVIDENCE_SCHEMA =
+  'cf-v2-compendium-broken-baseline-calibration-evidence/v1';
+const CANDIDATE_CALIBRATION_POINT_KEYS = Object.freeze([
+  'first', 'middle', 'last', 'filtered', 'detail', 'detailClosed', 'back',
+  'focusPinned', 'closed', 'planetside', 'warmCachePrecondition', 'postCapRestored',
+  'resizeBase', 'resizeContracted', 'resizeExpanded', 'resizeRestored',
 ]);
 
-function validateCalibrationSample(sample, profile, index, errors, expectedFaults = null) {
-  const where = `calibration.samples.${profile}[${index}]`;
+function candidateCalibrationTuple(snapshot) {
+  const a = art(snapshot);
+  return [
+    snapshot?.raw?.mountedRowCount,
+    snapshot?.heap?.usedSize,
+    snapshot?.heap?.embedderHeapUsedSize,
+    snapshot?.heap?.backingStorageSize,
+    snapshot?.dom?.documents,
+    snapshot?.dom?.nodes,
+    snapshot?.dom?.jsEventListeners,
+    a?.live?.cacheEntries,
+    a?.live?.decodedPixels,
+    a?.live?.decodedBytes,
+    a?.live?.encodedBytes,
+    a?.live?.leases,
+    a?.live?.subscribers,
+    a?.live?.portraitCacheEntries,
+    a?.live?.portraitEncodedBytes,
+  ];
+}
+
+function baselineCalibrationTuple(snapshot) {
+  return [
+    snapshot?.raw?.mountedRows,
+    snapshot?.heap?.usedSize,
+    snapshot?.heap?.embedderHeapUsedSize,
+    snapshot?.heap?.backingStorageSize,
+    snapshot?.dom?.documents,
+    snapshot?.dom?.nodes,
+    snapshot?.dom?.jsEventListeners,
+  ];
+}
+
+export function candidateCalibrationEvidence(measurement, { runId } = {}) {
+  if (!isObject(measurement) || !PROFILES.includes(measurement.profile)
+    || typeof runId !== 'string' || !runId) return null;
+  const resize = measurement.phases?.viewportResize;
+  const sources = {
+    first: measurement.points?.first,
+    middle: measurement.points?.middle,
+    last: measurement.points?.last,
+    filtered: measurement.points?.filtered,
+    detail: measurement.points?.detail,
+    detailClosed: measurement.points?.detailClosed,
+    back: measurement.points?.back,
+    focusPinned: measurement.points?.focusPinned,
+    closed: measurement.points?.closed,
+    planetside: measurement.points?.planetside,
+    warmCachePrecondition: measurement.phases?.warmCachePrecondition,
+    postCapRestored: measurement.points?.postCapRestored,
+    resizeBase: resize?.base,
+    resizeContracted: resize?.contracted,
+    resizeExpanded: resize?.expanded,
+    resizeRestored: resize?.restored,
+  };
+  const warm = Array.isArray(measurement.points?.warm) ? measurement.points.warm : [];
+  return Object.freeze({
+    schema: CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA,
+    runId,
+    profile: measurement.profile,
+    points: Object.freeze(Object.fromEntries(CANDIDATE_CALIBRATION_POINT_KEYS
+      .map((key) => [key, Object.freeze(candidateCalibrationTuple(sources[key]))]))),
+    warm: Object.freeze(warm.map((snapshot) => Object.freeze(candidateCalibrationTuple(snapshot)))),
+    jobPeaks: Object.freeze({
+      queuedJobsPeak: measurement.phases?.jobPeaks?.queuedJobsPeak,
+      activeJobsPeak: measurement.phases?.jobPeaks?.activeJobsPeak,
+    }),
+  });
+}
+
+function naturalDimensionHistogram(raw) {
+  if (!Array.isArray(raw?.naturalWidths) || !Array.isArray(raw?.naturalHeights)
+    || raw.naturalWidths.length !== raw.naturalHeights.length) return null;
+  const counts = new Map();
+  for (let index = 0; index < raw.naturalWidths.length; index += 1) {
+    const width = raw.naturalWidths[index];
+    const height = raw.naturalHeights[index];
+    if (!integer(width) || width < 0 || !integer(height) || height < 0) return null;
+    const key = `${width}\0${height}`;
+    counts.set(key, (counts.get(key) || 0) + 1);
+  }
+  return [...counts].map(([key, count]) => {
+    const [width, height] = key.split('\0').map(Number);
+    return [width, height, count];
+  }).sort((left, right) => left[0] - right[0] || left[1] - right[1]);
+}
+
+export function brokenBaselineCalibrationEvidence({
+  runId, profile, list, detail, warm, eagerResource, speciesChunk,
+} = {}) {
+  if (typeof runId !== 'string' || !runId || !PROFILES.includes(profile)
+    || !isObject(list) || !isObject(detail) || !Array.isArray(warm)) return null;
+  const histogram = naturalDimensionHistogram(list.raw);
+  if (histogram === null) return null;
+  return Object.freeze({
+    schema: BASELINE_CALIBRATION_EVIDENCE_SCHEMA,
+    runId,
+    profile,
+    list: Object.freeze(baselineCalibrationTuple(list)),
+    detail: Object.freeze(baselineCalibrationTuple(detail)),
+    warm: Object.freeze(warm.map((point) => Object.freeze({
+      point: Object.freeze(baselineCalibrationTuple(point)),
+      renderStartThumbCacheEntries: point?.raw?.renderStartThumbCacheEntries,
+      renderStartThumbCacheEncodedBytes: point?.raw?.renderStartThumbCacheEncodedBytes,
+    }))),
+    listWitness: Object.freeze({
+      naturalDimensionHistogram: Object.freeze(histogram.map((entry) => Object.freeze(entry))),
+      distinctSources: list.raw?.distinctSources,
+      sourceInstanceCount: list.raw?.sourceInstanceCount,
+      dataImageCount: list.raw?.dataImageCount,
+      sourceInstanceEncodedBytes: list.raw?.sourceInstanceEncodedBytes,
+      thumbObserver: Object.freeze({
+        preOwnerExact132Completions: list.raw?.thumbObserverPreOwnerExact132Completions,
+        initialListCompletions: list.raw?.thumbRenderCompletions,
+        cacheEntries: list.raw?.modeledThumbCacheEntries,
+        cacheEncodedBytes: list.raw?.thumbCacheEncodedBytes,
+        totalExact132Completions: list.raw?.thumbObserverTotalExact132Completions,
+        errors: list.raw?.thumbObserverErrors,
+        descriptorPreserved: list.raw?.thumbObserverDescriptorPreserved,
+        stableQuietMs: list.raw?.thumbObserverStableQuietMs,
+      }),
+      portraitCache: Object.freeze({
+        entries: list.raw?.modeledPortraitCacheEntries,
+        encodedBytes: list.raw?.modeledPortraitCacheEncodedBytes,
+      }),
+    }),
+    eagerImport: Object.freeze({ observedResource: eagerResource, speciesChunk }),
+  });
+}
+
+function validNumericTuple(value, length) {
+  return Array.isArray(value) && value.length === length
+    && value.every((entry) => integer(entry) && entry >= 0);
+}
+
+export function reduceCalibrationEvidence(evidence) {
+  if (!isObject(evidence) || typeof evidence.runId !== 'string' || !evidence.runId
+    || !PROFILES.includes(evidence.profile)) return null;
+  if (evidence.schema === CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA) {
+    if (!exactKeys(evidence, ['schema', 'runId', 'profile', 'points', 'warm', 'jobPeaks'],
+      'candidate calibration evidence', [])
+      || !isObject(evidence.points)
+      || !sameJson(Object.keys(evidence.points), [...CANDIDATE_CALIBRATION_POINT_KEYS])
+      || CANDIDATE_CALIBRATION_POINT_KEYS.some((key) =>
+        !validNumericTuple(evidence.points[key], 15))
+      || !Array.isArray(evidence.warm) || evidence.warm.length !== REQUIRED_WARM_CYCLES
+      || evidence.warm.some((tuple) => !validNumericTuple(tuple, 15))
+      || !isObject(evidence.jobPeaks)
+      || !sameJson(Object.keys(evidence.jobPeaks).sort(), ['activeJobsPeak', 'queuedJobsPeak'])
+      || !integer(evidence.jobPeaks.queuedJobsPeak) || evidence.jobPeaks.queuedJobsPeak < 0
+      || !integer(evidence.jobPeaks.activeJobsPeak) || evidence.jobPeaks.activeJobsPeak < 0) {
+      return null;
+    }
+    const selected = [...CANDIDATE_CALIBRATION_POINT_KEYS.map((key) => evidence.points[key]),
+      ...evidence.warm];
+    const tail = evidence.warm.slice(-3);
+    const maxima = (index) => Math.max(...selected.map((tuple) => tuple[index]));
+    const aggregate = (tuple) => tuple[1] + tuple[2] + tuple[3];
+    const metrics = {
+      mountedRows: maxima(0), heapUsedBytes: maxima(1),
+      documents: maxima(4), nodes: maxima(5),
+      embedderHeapUsedBytes: maxima(2), backingStorageBytes: maxima(3),
+      heapAggregateBytes: Math.max(...selected.map(aggregate)),
+      jsEventListeners: maxima(6), liveCacheEntries: maxima(7),
+      liveDecodedPixels: maxima(8), liveDecodedBytes: maxima(9),
+      liveEncodedBytes: maxima(10),
+      queuedJobsPeak: evidence.jobPeaks.queuedJobsPeak,
+      activeJobsPeak: evidence.jobPeaks.activeJobsPeak,
+      liveLeases: maxima(11), liveSubscribers: maxima(12),
+      livePortraitCacheEntries: maxima(13), livePortraitEncodedBytes: maxima(14),
+      warmHeapAggregateRangeBytes: range(tail.map(aggregate)),
+      warmEncodedBytesRange: range(tail.map((tuple) => tuple[10])),
+    };
+    return { metrics, observedFaults: null };
+  }
+  if (evidence.schema !== BASELINE_CALIBRATION_EVIDENCE_SCHEMA
+    || !exactKeys(evidence,
+      ['schema', 'runId', 'profile', 'list', 'detail', 'warm', 'listWitness', 'eagerImport'],
+      'baseline calibration evidence', [])
+    || !validNumericTuple(evidence.list, 7) || !validNumericTuple(evidence.detail, 7)
+    || !Array.isArray(evidence.warm) || evidence.warm.length !== REQUIRED_WARM_CYCLES
+    || evidence.warm.some((entry) => !isObject(entry)
+      || !sameJson(Object.keys(entry).sort(), [
+        'point', 'renderStartThumbCacheEncodedBytes', 'renderStartThumbCacheEntries',
+      ])
+      || !validNumericTuple(entry.point, 7)
+      || !integer(entry.renderStartThumbCacheEntries)
+      || entry.renderStartThumbCacheEntries < 0
+      || !integer(entry.renderStartThumbCacheEncodedBytes)
+      || entry.renderStartThumbCacheEncodedBytes < 0)
+    || !isObject(evidence.listWitness)
+    || !sameJson(Object.keys(evidence.listWitness).sort(), [
+      'dataImageCount', 'distinctSources', 'naturalDimensionHistogram',
+      'portraitCache', 'sourceInstanceCount', 'sourceInstanceEncodedBytes', 'thumbObserver',
+    ])
+    || !Array.isArray(evidence.listWitness.naturalDimensionHistogram)
+    || ['distinctSources', 'sourceInstanceCount', 'dataImageCount',
+      'sourceInstanceEncodedBytes'].some((field) =>
+      !integer(evidence.listWitness[field]) || evidence.listWitness[field] < 0)
+    || !isObject(evidence.listWitness.thumbObserver)
+    || !isObject(evidence.listWitness.portraitCache)
+    || !isObject(evidence.eagerImport)
+    || !sameJson(Object.keys(evidence.eagerImport).sort(), ['observedResource', 'speciesChunk'])) {
+    return null;
+  }
+  const histogram = evidence.listWitness.naturalDimensionHistogram;
+  if (histogram.some((entry) => !Array.isArray(entry) || entry.length !== 3
+    || !integer(entry[0]) || entry[0] < 0 || !integer(entry[1]) || entry[1] < 0
+    || !integer(entry[2]) || entry[2] <= 0)
+    || !sameJson(histogram, [...histogram].sort((left, right) =>
+      left[0] - right[0] || left[1] - right[1]))
+    || new Set(histogram.map((entry) => `${entry[0]}\0${entry[1]}`)).size !== histogram.length) {
+    return null;
+  }
+  const imageCount = histogram.reduce((sum, entry) => sum + entry[2], 0);
+  const referencedPixels = histogram.reduce(
+    (sum, [width, height, count]) => sum + width * height * count, 0,
+  );
+  const observer = evidence.listWitness.thumbObserver;
+  const portrait = evidence.listWitness.portraitCache;
+  if (!sameJson(Object.keys(observer).sort(), [
+    'cacheEncodedBytes', 'cacheEntries', 'descriptorPreserved', 'errors',
+    'initialListCompletions', 'preOwnerExact132Completions', 'stableQuietMs',
+    'totalExact132Completions',
+  ]) || !sameJson(Object.keys(portrait).sort(), ['encodedBytes', 'entries'])) return null;
+  const list = {
+    mountedRows: evidence.list[0], imageCount,
+    sourceInstanceCount: evidence.listWitness.sourceInstanceCount,
+    dataImageCount: evidence.listWitness.dataImageCount,
+    referencedPixels,
+    distinctSources: evidence.listWitness.distinctSources,
+    sourceInstanceEncodedBytes: evidence.listWitness.sourceInstanceEncodedBytes,
+    thumbObserverPreOwnerExact132Completions: observer.preOwnerExact132Completions,
+    thumbRenderCompletions: observer.initialListCompletions,
+    modeledThumbCacheEntries: observer.cacheEntries,
+    thumbCacheEncodedBytes: observer.cacheEncodedBytes,
+    thumbObserverTotalExact132Completions: observer.totalExact132Completions,
+    thumbObserverErrors: observer.errors,
+    thumbObserverDescriptorPreserved: observer.descriptorPreserved,
+    thumbObserverStableQuietMs: observer.stableQuietMs,
+    modeledPortraitCacheEntries: portrait.entries,
+    modeledPortraitCacheEncodedBytes: portrait.encodedBytes,
+  };
+  const warmRaw = evidence.warm.map((entry) => ({
+    renderStartThumbCacheEntries: entry.renderStartThumbCacheEntries,
+    renderStartThumbCacheEncodedBytes: entry.renderStartThumbCacheEncodedBytes,
+  }));
+  const cacheMetrics = brokenBaselineCacheMetrics(evidence.profile, list, warmRaw);
+  if (!cacheMetrics) return null;
+  const points = [evidence.list, evidence.detail, ...evidence.warm.map((entry) => entry.point)];
+  const tail = evidence.warm.slice(-3).map((entry) => entry.point);
+  const maxima = (index) => Math.max(...points.map((tuple) => tuple[index]));
+  const aggregate = (tuple) => tuple[1] + tuple[2] + tuple[3];
+  const fullSizeList = sameJson(histogram, [[440, 440, 1500]]);
+  const faults = [];
+  if (evidence.list[0] === 1500) faults.push('unwindowed-1500-rows');
+  if (fullSizeList) faults.push('list-source-440');
+  if (fullSizeList && list.sourceInstanceCount === 1500 && list.dataImageCount === 1500
+    && referencedPixels === 1500 * 440 * 440
+    && integer(list.distinctSources)
+    && list.distinctSources > BROKEN_BASELINE_PORTRAIT_CACHE_CAPS[evidence.profile]
+    && finite(list.sourceInstanceEncodedBytes) && list.sourceInstanceEncodedBytes > 0) {
+    faults.push('full-portrait-dom-exposure');
+  }
+  if (typeof evidence.eagerImport.observedResource === 'string'
+    && typeof evidence.eagerImport.speciesChunk === 'string'
+    && evidence.eagerImport.speciesChunk
+    && evidence.eagerImport.observedResource.endsWith(`/${evidence.eagerImport.speciesChunk}`)) {
+    faults.push('eager-art-import');
+  }
+  return {
+    metrics: {
+      mountedRows: maxima(0), heapUsedBytes: maxima(1),
+      documents: maxima(4), nodes: maxima(5),
+      embedderHeapUsedBytes: maxima(2), backingStorageBytes: maxima(3),
+      heapAggregateBytes: Math.max(...points.map(aggregate)),
+      jsEventListeners: maxima(6), liveCacheEntries: cacheMetrics.liveCacheEntries,
+      liveDecodedPixels: cacheMetrics.liveDecodedPixels,
+      liveDecodedBytes: cacheMetrics.liveDecodedBytes,
+      liveEncodedBytes: cacheMetrics.liveEncodedBytes,
+      queuedJobsPeak: cacheMetrics.queuedJobsPeak, activeJobsPeak: cacheMetrics.activeJobsPeak,
+      liveLeases: cacheMetrics.liveLeases, liveSubscribers: cacheMetrics.liveSubscribers,
+      livePortraitCacheEntries: cacheMetrics.livePortraitCacheEntries,
+      livePortraitEncodedBytes: cacheMetrics.livePortraitEncodedBytes,
+      warmHeapAggregateRangeBytes: range(tail.map(aggregate)),
+      warmEncodedBytesRange: cacheMetrics.warmEncodedBytesRange,
+    },
+    observedFaults: faults,
+  };
+}
+
+export function compendiumCalibrationEvaluatorBudget(producerAuthority) {
+  if (!validProducerAuthority(producerAuthority)) return null;
+  const ceiling = Object.freeze(Object.fromEntries([
+    ['rationale', 'Calibration-only unbounded evaluator; never a certifying budget.'],
+    ...CEILING_FIELDS.map((field) => [field, Number.MAX_SAFE_INTEGER]),
+  ]));
+  return Object.freeze({
+    status: 'active', producerAuthority,
+    ceilings: Object.freeze({ phone: ceiling, desktop: ceiling }),
+  });
+}
+
+function validateCalibrationSample(
+  sample, profile, index, errors, expectedFaults = null,
+  wherePrefix = 'calibration.samples',
+) {
+  const where = `${wherePrefix}.${profile}[${index}]`;
   if (!isObject(sample)) { errors.push(`${where} must be an object`); return; }
   exactKeys(sample, [
-    'runId', 'commit', 'workingTreeDigest', 'inputDigest', 'sourceState',
-    'sourceChanged', 'fixtureRowsSha256', 'measuredAt', 'browser', 'metrics',
+    'runId', 'commit', 'workingTreeDigest', 'inputDigest',
+    'measurementAuthoritySha256', 'sourceState',
+    'sourceChanged', 'fixtureRowsSha256', 'measuredAt', 'browser', 'metrics', 'evidence',
+    ...(!expectedFaults ? ['producerAuthoritySha256'] : []),
     ...(expectedFaults ? ['observedFaults'] : []),
   ], where, errors);
   if (typeof sample.runId !== 'string' || !sample.runId) errors.push(`${where}.runId is missing`);
@@ -1736,6 +2132,13 @@ function validateCalibrationSample(sample, profile, index, errors, expectedFault
   }
   if (!/^[a-f0-9]{64}$/.test(String(sample.inputDigest || ''))) {
     errors.push(`${where}.inputDigest is invalid`);
+  }
+  if (!/^[a-f0-9]{64}$/.test(String(sample.measurementAuthoritySha256 || ''))) {
+    errors.push(`${where}.measurementAuthoritySha256 is invalid`);
+  }
+  if (!expectedFaults
+    && !/^[a-f0-9]{64}$/.test(String(sample.producerAuthoritySha256 || ''))) {
+    errors.push(`${where}.producerAuthoritySha256 is invalid`);
   }
   if (sample.sourceState !== 'committed') errors.push(`${where}.sourceState must be committed`);
   if (sample.sourceChanged !== false) errors.push(`${where}.sourceChanged must be false`);
@@ -1760,12 +2163,24 @@ function validateCalibrationSample(sample, profile, index, errors, expectedFault
   for (const field of SAMPLE_METRIC_FIELDS) {
     if (!nonnegative(sample.metrics[field])) errors.push(`${where}.metrics.${field} is invalid`);
   }
+  const reduced = reduceCalibrationEvidence(sample.evidence);
+  if (!reduced || sample.evidence?.runId !== sample.runId
+    || sample.evidence?.profile !== profile) {
+    errors.push(`${where}.evidence is invalid or not bound to its run/profile`);
+  } else if (!sameJson(reduced.metrics, sample.metrics)) {
+    errors.push(`${where}.metrics do not recompute from raw calibration evidence`);
+  }
   if (expectedFaults) {
     if (!Array.isArray(sample.observedFaults)
       || new Set(sample.observedFaults).size !== sample.observedFaults.length
       || !sameJson([...sample.observedFaults].sort(), [...expectedFaults].sort())) {
       errors.push(`${where}.observedFaults must prove every sealed broken-baseline fault`);
     }
+    if (reduced && !sameJson(reduced.observedFaults, sample.observedFaults)) {
+      errors.push(`${where}.observedFaults do not recompute from raw calibration evidence`);
+    }
+  } else if (reduced?.observedFaults !== null) {
+    errors.push(`${where}.candidate evidence used the broken-baseline evidence schema`);
   }
 }
 
@@ -1797,16 +2212,31 @@ function enforceIndependentRuns(samples, label, errors) {
 
 /** Strict semantic validation supplements the checked-in JSON Schema. */
 export function validateBudgetRecord(record, fixtureRowsSha256 = null,
-  brokenBaselineProjectionRowsSha256 = null) {
+  brokenBaselineProjectionRowsSha256 = null, expectedMeasurementAuthority = null,
+  expectedProducerAuthority = null) {
   const errors = [];
   if (!isObject(record)) return { ok: false, errors: ['budget must be an object'] };
   exactKeys(record, [
     'schema', 'status', 'fixture', 'requirements', 'calibration',
-    'pairedBrokenBaseline', 'ceilings',
+    'measurementAuthority', 'producerAuthority', 'pairedBrokenBaseline', 'ceilings',
   ], 'budget', errors);
   if (record.schema !== BUDGET_SCHEMA) errors.push(`budget schema must be ${BUDGET_SCHEMA}`);
   if (!['calibration-required', 'active'].includes(record.status)) {
     errors.push('budget status must be calibration-required or active');
+  }
+  if (!validMeasurementAuthority(record.measurementAuthority)) {
+    errors.push('budget measurement authority is invalid');
+  } else if (expectedMeasurementAuthority !== null
+    && (!validMeasurementAuthority(expectedMeasurementAuthority)
+      || !sameJson(record.measurementAuthority, expectedMeasurementAuthority))) {
+    errors.push('budget measurement authority does not match the current collector/evaluator inputs');
+  }
+  if (!validProducerAuthority(record.producerAuthority)) {
+    errors.push('budget producer authority is invalid');
+  } else if (expectedProducerAuthority !== null
+    && (!validProducerAuthority(expectedProducerAuthority)
+      || !sameJson(record.producerAuthority, expectedProducerAuthority))) {
+    errors.push('budget producer authority does not match the current built index/owner/worker/painter');
   }
   if (!isObject(record.requirements)) errors.push('budget requirements are missing');
   else {
@@ -1861,6 +2291,14 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
       Array.isArray(record.calibration.samples[profile]) ? record.calibration.samples[profile] : []);
     enforceSharedSampleIdentity(allCandidateSamples, 'candidate calibration', errors,
       null, record.fixture?.rowsSha256 || null);
+    if (allCandidateSamples.some((sample) => sample.measurementAuthoritySha256
+      !== record.measurementAuthority?.sha256)) {
+      errors.push('candidate calibration samples do not match the budget measurement authority');
+    }
+    if (allCandidateSamples.some((sample) => sample.producerAuthoritySha256
+      !== record.producerAuthority?.sha256)) {
+      errors.push('candidate calibration samples do not match the budget producer authority');
+    }
   }
   if (!isObject(record.pairedBrokenBaseline)
     || !['measurement-required', 'measured'].includes(record.pairedBrokenBaseline.status)
@@ -1884,8 +2322,8 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
       if (!Array.isArray(samples)) errors.push(`pairedBrokenBaseline.samples.${profile} must be an array`);
       else {
         samples.forEach((sample, index) => validateCalibrationSample(
-          sample, `pairedBrokenBaseline.${profile}`, index, errors,
-          record.pairedBrokenBaseline.expectedFaults,
+          sample, profile, index, errors,
+          record.pairedBrokenBaseline.expectedFaults, 'pairedBrokenBaseline.samples',
         ));
         enforceIndependentRuns(samples, `paired broken-baseline ${profile}`, errors);
       }
@@ -1895,6 +2333,10 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
         ? record.pairedBrokenBaseline.samples[profile] : []);
     enforceSharedSampleIdentity(allBaselineSamples, 'paired broken-baseline', errors,
       record.pairedBrokenBaseline.commit, record.fixture?.rowsSha256 || null);
+    if (allBaselineSamples.some((sample) => sample.measurementAuthoritySha256
+      !== record.measurementAuthority?.sha256)) {
+      errors.push('paired broken-baseline samples do not match the budget measurement authority');
+    }
     const candidateAuthority = compendiumBudgetBrowserAuthority(record);
     if (candidateAuthority && allBaselineSamples.some((sample) =>
       !compendiumBrowserAuthorityMatches(sample?.browser, candidateAuthority))) {
@@ -1912,6 +2354,15 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
   }
   if (record.status === 'calibration-required') {
     if (record.ceilings !== null) errors.push('calibration-required budget must keep ceilings null');
+    if (PROFILES.some((profile) => record.calibration?.samples?.[profile]?.length !== 0)) {
+      errors.push('calibration-required budget must not retain stale candidate samples');
+    }
+    if (record.pairedBrokenBaseline?.status !== 'measurement-required'
+      || record.pairedBrokenBaseline?.collectorCommit !== null
+      || PROFILES.some((profile) =>
+        record.pairedBrokenBaseline?.samples?.[profile]?.length !== 0)) {
+      errors.push('calibration-required budget must require a fresh paired broken baseline');
+    }
   } else {
     if (isObject(record.ceilings)) exactKeys(record.ceilings, PROFILES, 'ceilings', errors);
     if (!isObject(record.ceilings)) errors.push('active budget ceilings are missing');
@@ -1938,7 +2389,8 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
         for (let i = 0; i < CEILING_FIELDS.length; i++) {
           const ceilingField = CEILING_FIELDS[i];
           const sampleField = SAMPLE_METRIC_FIELDS[i];
-          const measuredMax = Math.max(...samples.map((sample) => sample.metrics?.[sampleField] ?? Infinity));
+          const measuredMax = Math.max(...samples.map((sample) =>
+            reduceCalibrationEvidence(sample.evidence)?.metrics?.[sampleField] ?? Infinity));
           if (finite(ceiling[ceilingField]) && ceiling[ceilingField] <= measuredMax) {
             errors.push(`active ${profile}.${ceilingField} must be strictly above measured ${sampleField} max`);
           }
@@ -2120,6 +2572,58 @@ function workerArtFinalEvidence(snapshot) {
     && a.totals.fullPortraitRendersForThumb === 0
     && a.totals.fullPortraitDecodesForThumb === 0;
 }
+function heapAggregateBytes(snapshot) {
+  const heap = snapshot?.heap;
+  if (!isObject(heap)
+    || !nonnegative(heap.usedSize)
+    || !nonnegative(heap.embedderHeapUsedSize)
+    || !nonnegative(heap.backingStorageSize)) return Infinity;
+  const aggregate = heap.usedSize + heap.embedderHeapUsedSize + heap.backingStorageSize;
+  return Number.isSafeInteger(aggregate) ? aggregate : Infinity;
+}
+function warmResourceStateReady(snapshot, profile) {
+  const a = art(snapshot);
+  const cachedKeys = a?.keys?.cached;
+  return isObject(a)
+    && a.deviceClass === profile
+    && a.live?.cacheEntries === a.limits?.cacheEntries
+    && a.live?.decodedPixels === a.limits?.decodedPixels
+    && a.live?.decodedBytes === a.limits?.decodedBytes
+    && nonnegative(a.live?.encodedBytes)
+    && nonnegative(a.limits?.encodedBytes)
+    && a.live.encodedBytes <= a.limits.encodedBytes
+    && a.live?.queuedJobs === 0
+    && a.live?.activeJobs === 0
+    && a.live?.subscribers === 0
+    && Array.isArray(cachedKeys)
+    && cachedKeys.length === a.live.cacheEntries
+    && cachedKeys.every((key) => typeof key === 'string' && key.length > 0)
+    && new Set(cachedKeys).size === cachedKeys.length
+    && sameJson(cachedKeys, [...cachedKeys].sort())
+    && workerArtReleased(snapshot);
+}
+function normalizedCachedKeys(snapshot) {
+  const cached = art(snapshot)?.keys?.cached;
+  return Array.isArray(cached) ? [...cached].sort() : null;
+}
+function stableWarmCacheIdentity(warm) {
+  const tail = warm.slice(-3).map(normalizedCachedKeys);
+  return tail.length === 3 && tail.every((keys) => Array.isArray(keys))
+    && tail.every((keys) => sameJson(keys, tail[0]));
+}
+function stableWarmReuse(warm) {
+  const tail = warm.slice(-3);
+  if (tail.length !== 3) return false;
+  const counters = (snapshot) => ({
+    jobStarts: art(snapshot)?.totals?.jobStarts,
+    disposals: art(snapshot)?.totals?.disposals,
+    workerStarts: snapshot?.diagnostics?.lazyArt?.worker?.starts,
+    workerDisposals: snapshot?.diagnostics?.lazyArt?.worker?.disposals,
+  });
+  const first = counters(tail[0]);
+  return Object.values(first).every(nonnegative)
+    && tail.every((snapshot) => sameJson(counters(snapshot), first));
+}
 function range(numbers) {
   return numbers.length ? Math.max(...numbers) - Math.min(...numbers) : Infinity;
 }
@@ -2137,12 +2641,15 @@ export function evaluateProfile(measurement, budget, fixture) {
   }
   const points = measurement.points || {};
   const warm = Array.isArray(points.warm) ? points.warm : [];
+  const warmCachePrecondition = measurement.phases?.warmCachePrecondition;
+  const postCapRestored = points.postCapRestored;
   const resize = measurement.phases?.viewportResize;
   const resizePoints = [resize?.base, resize?.expanded, resize?.contracted, resize?.restored]
     .filter(Boolean);
   const selected = [points.first, points.middle, points.last, points.filtered,
     points.detail, points.detailClosed, points.back, points.focusPinned, points.closed,
-    points.planetside, ...resizePoints, ...warm].filter(Boolean);
+    points.planetside, ...resizePoints, warmCachePrecondition, ...warm,
+    postCapRestored].filter(Boolean);
   const final = warm[warm.length - 1] || points.planetside || points.closed;
   const finalArt = art(final);
   const outcomes = [];
@@ -2162,6 +2669,24 @@ export function evaluateProfile(measurement, budget, fixture) {
   const initial = points.lazyBoot;
   const lazyEnd = points.lazyEnd;
   const lazyResource = measurement.lazySpeciesResource;
+  const measuredProducerAuthority = compendiumProducerAuthority({
+    index: {
+      relativePath: lazyResource?.indexPath,
+      sha256: lazyResource?.indexSha256,
+    },
+    owner: {
+      relativePath: lazyResource?.ownerPath,
+      sha256: lazyResource?.ownerSha256,
+    },
+    worker: {
+      relativePath: lazyResource?.workerPath,
+      sha256: lazyResource?.workerSha256,
+    },
+    painter: {
+      relativePath: lazyResource?.path,
+      sha256: lazyResource?.sha256,
+    },
+  });
   add('lazy-art-not-eager', workerArtDormant(initial) && initial?.diagnostics?.art === null
     && lazyEnd?.diagnostics?.documentToken === initial?.diagnostics?.documentToken
     && workerArtDormant(lazyEnd) && lazyEnd?.diagnostics?.art === null
@@ -2174,11 +2699,17 @@ export function evaluateProfile(measurement, budget, fixture) {
     && typeof lazyResource?.workerPath === 'string' && lazyResource.workerPath.endsWith('.js')
     && lazyResource.workerPath !== lazyResource.path
     && /^[a-f0-9]{64}$/.test(String(lazyResource?.workerSha256 || ''))
+    && measuredProducerAuthority !== null
+    && validProducerAuthority(budget?.producerAuthority)
+    && sameJson(measuredProducerAuthority, budget.producerAuthority)
     && lazyResource?.ownership === 'dedicated-worker-dynamic-import'
     && Array.isArray(lazyResource?.matches) && lazyResource.matches.length === 0
     && Array.isArray(lazyResource?.endMatches) && lazyResource.endMatches.length === 0,
   'the semantically identified species-art executable loaded before a Compendium/Planetside owner requested it',
-  { loader: initial?.diagnostics?.lazyArt, resource: lazyResource });
+  {
+    loader: initial?.diagnostics?.lazyArt, resource: lazyResource,
+    measuredProducerAuthority, expectedProducerAuthority: budget?.producerAuthority,
+  });
   const firstDiag = points.first?.diagnostics;
   add('list-populated', firstDiag?.panel?.open === true && firstDiag?.panel?.mode === 'list'
     && firstDiag?.schema === DIAGNOSTICS_SCHEMA
@@ -2409,14 +2940,29 @@ export function evaluateProfile(measurement, budget, fixture) {
     && points.capShrink?.beforeDeviceClass === 'desktop'
     && points.capShrink?.afterDeviceClass === 'phone'
     && points.capShrink?.restoredDeviceClass === profile
-    && points.capShrink?.disposalsDelta > 0,
+    && postCapRestored?.diagnostics?.art?.deviceClass === profile
+    && settled(postCapRestored) && workerArtReleased(postCapRestored)
+    && workerArtFinalEvidence(postCapRestored)
+    && postCapRestored?.diagnostics?.art?.live?.subscribers === 0
+    && points.capShrink?.disposalsDelta > 0
+    && points.capShrink?.warmCyclesSealed === REQUIRED_WARM_CYCLES
+    && integer(points.capShrink?.warmTerminalJobStarts)
+    && integer(points.capShrink?.beforeJobStarts)
+    && points.capShrink.beforeJobStarts >= points.capShrink.warmTerminalJobStarts
+    && integer(points.capShrink?.warmTerminalDisposals)
+    && integer(points.capShrink?.beforeDisposals)
+    && points.capShrink.beforeDisposals >= points.capShrink.warmTerminalDisposals
+    && sameJson(measurement.phases?.resourceOrder, [
+      'warm-precondition', 'warm-1', 'warm-2', 'warm-3', 'warm-4',
+      'cap-before', 'cap-after', 'profile-restored', 'post-cap-restored',
+    ]),
   'immediate phone-class trim did not shrink entries/decoded bytes and dispose assets', points.capShrink);
   add('canvas-thumb-path', finalArt?.totals?.thumbCanvasRenders > 0
     && finalArt.totals.thumbCanvasRenders >= finalArt.totals.jobCompletes,
   'thumb jobs bypassed the owned 132×132 canvas render path', finalArt?.totals);
   const beforeDetail = [points.first, points.middle, points.last, points.filtered].filter(Boolean);
   const afterDetail = [points.detailClosed, points.back, points.focusPinned,
-    points.planetside, ...warm].filter(Boolean);
+    points.planetside, ...warm, postCapRestored].filter(Boolean);
   const detailPortraitEntries = art(points.detail)?.live?.portraitCacheEntries;
   const detailPortraitBytes = art(points.detail)?.live?.portraitEncodedBytes;
   add('no-full-portrait-thumb-path', finalArt?.totals?.fullPortraitRendersForThumb === 0
@@ -2454,26 +3000,59 @@ export function evaluateProfile(measurement, budget, fixture) {
     && selected.every((snapshot) => snapshot.diagnostics?.schema === DIAGNOSTICS_SCHEMA
       && snapshot.diagnostics?.documentToken === mainToken && liveWithinLimits(snapshot, profile)),
     'a live resource dimension exceeded or lacked its product-owned limit');
+  add('warm-precondition', warm.length === REQUIRED_WARM_CYCLES
+    && warmResourceStateReady(warmCachePrecondition, profile)
+    && warm.every((snapshot) => warmResourceStateReady(snapshot, profile))
+    && stableWarmCacheIdentity(warm)
+    && stableWarmReuse(warm)
+    && sameJson(measurement.phases?.resourceOrder, [
+      'warm-precondition', 'warm-1', 'warm-2', 'warm-3', 'warm-4',
+      'cap-before', 'cap-after', 'profile-restored', 'post-cap-restored',
+    ]),
+  'warm measurements were not taken from the full native cache limit with drained work and a released worker', {
+    precondition: warmCachePrecondition,
+    warm: warm.map((snapshot) => ({
+      art: art(snapshot)?.live,
+      limits: art(snapshot)?.limits,
+      cachedKeys: normalizedCachedKeys(snapshot),
+      totals: {
+        jobStarts: art(snapshot)?.totals?.jobStarts,
+        disposals: art(snapshot)?.totals?.disposals,
+      },
+      worker: snapshot?.diagnostics?.lazyArt?.worker,
+    })),
+  });
   const plateauTail = warm.slice(-3);
-  const warmHeapRange = range(plateauTail.map((snapshot) => snapshot.heap?.usedSize));
+  const warmHeapAggregateRange = range(plateauTail.map(heapAggregateBytes));
   const warmDecodedRange = range(plateauTail.map((snapshot) => art(snapshot)?.live?.decodedBytes));
   const warmEncodedRange = range(plateauTail.map((snapshot) => art(snapshot)?.live?.encodedBytes));
   add('warm-plateau', warm.length >= REQUIRED_WARM_CYCLES
-    && warmHeapRange <= ceiling.warmHeapRangeBytesMax
-    && warmDecodedRange <= ceiling.warmDecodedBytesRangeMax
+    && warmHeapAggregateRange <= ceiling.warmHeapAggregateRangeBytesMax
     && warmEncodedRange <= ceiling.warmEncodedBytesRangeMax,
   'settled warm cycles did not plateau within measured ranges', {
-    warmHeapRange, warmDecodedRange, warmEncodedRange,
+    warmHeapAggregateRange, warmDecodedRange, warmEncodedRange,
     ceilings: {
-      heap: ceiling.warmHeapRangeBytesMax,
-      decoded: ceiling.warmDecodedBytesRangeMax,
+      heapAggregate: ceiling.warmHeapAggregateRangeBytesMax,
       encoded: ceiling.warmEncodedBytesRangeMax,
     },
   });
   const heapMax = maxAt(selected, (snapshot) => snapshot.heap?.usedSize);
-  add('heap-ceiling', heapMax <= ceiling.heapUsedBytesMax,
-    'Runtime.getHeapUsage usedSize exceeded the measured ceiling', {
-      observedMax: heapMax, ceiling: ceiling.heapUsedBytesMax,
+  const embedderHeapMax = maxAt(selected, (snapshot) => snapshot.heap?.embedderHeapUsedSize);
+  const backingStorageMax = maxAt(selected, (snapshot) => snapshot.heap?.backingStorageSize);
+  const heapAggregateMax = maxAt(selected, heapAggregateBytes);
+  add('heap-ceiling', heapMax <= ceiling.heapUsedBytesMax
+    && embedderHeapMax <= ceiling.embedderHeapUsedBytesMax
+    && backingStorageMax <= ceiling.backingStorageBytesMax
+    && heapAggregateMax <= ceiling.heapAggregateBytesMax,
+  'a Runtime.getHeapUsage used/embedder/backing/aggregate dimension exceeded the measured ceiling', {
+    observed: {
+      used: heapMax, embedder: embedderHeapMax,
+      backing: backingStorageMax, aggregate: heapAggregateMax,
+    },
+    ceilings: {
+      used: ceiling.heapUsedBytesMax, embedder: ceiling.embedderHeapUsedBytesMax,
+      backing: ceiling.backingStorageBytesMax, aggregate: ceiling.heapAggregateBytesMax,
+    },
   });
   const documentsMax = maxAt(selected, (snapshot) => snapshot.dom?.documents);
   const nodesMax = maxAt(selected, (snapshot) => snapshot.dom?.nodes);
@@ -2728,6 +3307,7 @@ function validPartialProfileMeasurement(
     || typeof measurement.failingStage !== 'string' || !measurement.failingStage
     || !Array.isArray(measurement.completedStages)
     || !measurement.completedStages.every((stage) => typeof stage === 'string' && stage)
+    || measurement.completedStages.includes(measurement.failingStage)
     || !Array.isArray(measurement.commandLedger)
     || !measurement.commandLedger.every((command) =>
       validCandidateCommandEvidence(command) || validPlainEvaluateCommand(command)
@@ -2739,11 +3319,159 @@ function validPartialProfileMeasurement(
     || !validPartialReviewPacket(measurement.reviewPacket, runId, verifyArtifact)
     || !measurement.reviewPacket.every((item) => item.profile === profile)) return false;
   if (measurement.lastCompletedStage !== (measurement.completedStages.at(-1) ?? null)) return false;
+  if (!validSnapshotSubstagePrefix(measurement)) return false;
+  if (!validPartialReviewStageDependencies(measurement)) return false;
   const completedReviewStates = measurement.completedStages
     .filter((stage) => stage.startsWith('review ')).map((stage) => stage.slice('review '.length));
   const packetStates = measurement.reviewPacket.map((item) => item.state);
   return sameJson([...completedReviewStates].sort(), [...packetStates].sort())
     && new Set(completedReviewStates).size === completedReviewStates.length;
+}
+
+const PARTIAL_SNAPSHOT_STAGE_SUFFIXES = Object.freeze([
+  ' animation task', ' garbage collection', ' heap usage',
+  ' product/DOM snapshot', ' DOM counters',
+]);
+const partialSnapshotStageGroup = (base) =>
+  PARTIAL_SNAPSHOT_STAGE_SUFFIXES.map((suffix) => `${base}${suffix}`);
+const PARTIAL_MILESTONE_SEQUENCE = Object.freeze([
+  ...partialSnapshotStageGroup('fresh lazy-control'),
+  ...partialSnapshotStageGroup('main initial'),
+  'set device class', 'install exact fixture', 'validate exact fixture',
+  ...partialSnapshotStageGroup('first rows'),
+  'screenshot list', 'review list',
+  ...partialSnapshotStageGroup('contracted viewport'),
+  ...partialSnapshotStageGroup('expanded viewport'),
+  ...partialSnapshotStageGroup('restored viewport'),
+  'screenshot focus-pinned', 'review focus-pinned',
+  ...partialSnapshotStageGroup('middle rows'),
+  ...partialSnapshotStageGroup('last rows'),
+  ...partialSnapshotStageGroup('filtered row'),
+  ...partialSnapshotStageGroup('detail'),
+  'screenshot detail', 'review detail',
+  ...partialSnapshotStageGroup('detail Close'),
+  ...partialSnapshotStageGroup('Back'),
+  ...partialSnapshotStageGroup('focused off-window row'),
+  ...partialSnapshotStageGroup('closed cleanup'),
+  ...partialSnapshotStageGroup('Planetside'),
+  ...partialSnapshotStageGroup('warm cache precondition'),
+  ...partialSnapshotStageGroup('warm cycle 1'),
+  ...partialSnapshotStageGroup('warm cycle 2'),
+  ...partialSnapshotStageGroup('warm cycle 3'),
+  ...partialSnapshotStageGroup('warm cycle 4'),
+  ...partialSnapshotStageGroup('post-cap restored'),
+  ...partialSnapshotStageGroup('final lazy-control'),
+]);
+const PARTIAL_MILESTONE_SET = new Set(PARTIAL_MILESTONE_SEQUENCE);
+
+/* Project every retained snapshot/review milestone onto the exact source
+   order. This makes the partial carrier a prefix rather than an unordered
+   bag: whole snapshot groups, screenshot-before-review order, duplicates,
+   and deleted boot/resize/detail/warm prerequisites all fail closed. */
+function validPartialReviewStageDependencies(measurement) {
+  const observed = measurement.completedStages.filter((stage) =>
+    PARTIAL_MILESTONE_SET.has(stage));
+  if (!sameJson(observed, PARTIAL_MILESTONE_SEQUENCE.slice(0, observed.length))) {
+    return false;
+  }
+  const failingMilestoneIndex = PARTIAL_MILESTONE_SEQUENCE.indexOf(measurement.failingStage);
+  if (failingMilestoneIndex >= 0 && failingMilestoneIndex !== observed.length) return false;
+  const completedThrough = (stage) => {
+    const index = PARTIAL_MILESTONE_SEQUENCE.indexOf(stage);
+    return index >= 0 && observed.length > index;
+  };
+  const reachedMilestone = (stage) => {
+    const index = PARTIAL_MILESTONE_SEQUENCE.indexOf(stage);
+    return index >= 0 && (observed.length > index || failingMilestoneIndex >= index);
+  };
+  const stageBefore = (left, right) => countStage(measurement.completedStages, left) === 1
+    && countStage(measurement.completedStages, right) === 1
+    && measurement.completedStages.indexOf(left) < measurement.completedStages.indexOf(right);
+  if (measurement.producerErrorWitness !== null) {
+    if (!completedThrough('validate exact fixture')) return false;
+    const producerStages = producerErrorStages(measurement.profile);
+    const preArmIndex = measurement.completedStages.indexOf(producerStages.preArm);
+    const validateIndex = measurement.completedStages.indexOf('validate exact fixture');
+    if ((preArmIndex >= 0 && validateIndex >= preArmIndex)
+      || (measurement.failingStage === producerStages.preArm
+        && measurement.lastCompletedStage !== 'validate exact fixture')) return false;
+  }
+  if (measurement.filterTransitions.length > 0
+    && !completedThrough('review focus-pinned')) return false;
+  if (reachedMilestone('first rows animation task')) {
+    const producerStages = producerErrorStages(measurement.profile);
+    if (measurement.producerErrorWitness === null
+      || !stageBefore('validate exact fixture', producerStages.preArm)
+      || !stageBefore(producerStages.recovery, 'first rows animation task')) return false;
+  }
+  const filterBounds = [
+    {
+      nextMilestone: 'middle rows animation task', previous: 'review focus-pinned', index: 0,
+    },
+    {
+      nextMilestone: 'filtered row animation task', previous: 'last rows DOM counters', index: 1,
+    },
+    {
+      nextMilestone: 'detail animation task', previous: 'filtered row DOM counters', index: 2,
+    },
+  ];
+  for (const bound of filterBounds) {
+    const expectation = FILTER_TRANSITION_EXPECTATIONS[bound.index];
+    const ordered = filterTransitionOrderedStages(expectation);
+    const terminal = filterTransitionTerminalStage(expectation);
+    const failureOwner = filterTransitionFailureOwner(measurement.failingStage);
+    const transitionPresent = measurement.filterTransitions.length > bound.index
+      || failureOwner?.index === bound.index;
+    if (transitionPresent) {
+      if (countStage(measurement.completedStages, bound.previous) !== 1
+        || (measurement.failingStage !== ordered[0]
+          && !stageBefore(bound.previous, ordered[0]))) return false;
+    }
+    if (reachedMilestone(bound.nextMilestone)
+      && (measurement.filterTransitions.length <= bound.index
+        || !stageBefore(terminal, bound.nextMilestone))) return false;
+  }
+  return true;
+}
+
+/* A snapshot is one indivisible evidence transaction at the report layer, but
+   the collector deliberately records its rAF -> GC -> heap -> product -> DOM
+   CDP substages. A failure at a later substage cannot truthfully omit or
+   reorder the exact earlier prefix. */
+function validSnapshotSubstagePrefix(measurement) {
+  const suffixes = PARTIAL_SNAPSHOT_STAGE_SUFFIXES;
+  const stagePart = (stage) => {
+    const position = suffixes.findIndex((suffix) => stage.endsWith(suffix));
+    return position < 0 ? null : {
+      position, base: stage.slice(0, -suffixes[position].length),
+    };
+  };
+  for (let index = 0; index < measurement.completedStages.length; index += 1) {
+    const part = stagePart(measurement.completedStages[index]);
+    if (!part || !part.base) continue;
+    if (countStage(measurement.completedStages, measurement.completedStages[index]) !== 1) {
+      return false;
+    }
+    for (let position = 0; position <= part.position; position += 1) {
+      if (measurement.completedStages[index - part.position + position]
+        !== `${part.base}${suffixes[position]}`) return false;
+    }
+    if (part.position < suffixes.length - 1) {
+      const next = `${part.base}${suffixes[part.position + 1]}`;
+      if (measurement.completedStages[index + 1] !== next
+        && !(index === measurement.completedStages.length - 1
+          && measurement.failingStage === next)) return false;
+    }
+  }
+  const failingPart = stagePart(measurement.failingStage);
+  if (!failingPart) return true;
+  const { position, base } = failingPart;
+  if (!base) return false;
+  const expected = suffixes.slice(0, position).map((suffix) => `${base}${suffix}`);
+  return countStage(measurement.completedStages, measurement.failingStage) === 0
+    && (expected.length === 0
+      || sameJson(measurement.completedStages.slice(-expected.length), expected))
+    && expected.every((stage) => countStage(measurement.completedStages, stage) === 1);
 }
 
 function profileReviewPacket(profiles) {
@@ -2918,6 +3646,7 @@ function validateReportBudgetAuthority(report, errors) {
   const budget = report.budget;
   const keys = [
     'status', 'path', 'sha256', 'browserAuthority', 'browserAuthorityMatch',
+    'producerAuthority', 'observedProducerAuthority', 'producerAuthorityMatch',
   ];
   if (!isObject(budget) || !sameJson(Object.keys(budget).sort(), keys.sort())
     || !['unavailable', 'calibration-required', 'active'].includes(budget.status)
@@ -2926,8 +3655,13 @@ function validateReportBudgetAuthority(report, errors) {
     || !(budget.browserAuthority === null
       || validCompendiumBrowserAuthority(budget.browserAuthority))
     || !(budget.browserAuthorityMatch === null
-      || typeof budget.browserAuthorityMatch === 'boolean')) {
-    errors.push('report budget/browser authority evidence is incomplete');
+      || typeof budget.browserAuthorityMatch === 'boolean')
+    || !(budget.producerAuthority === null || validProducerAuthority(budget.producerAuthority))
+    || !(budget.observedProducerAuthority === null
+      || validProducerAuthority(budget.observedProducerAuthority))
+    || !(budget.producerAuthorityMatch === null
+      || typeof budget.producerAuthorityMatch === 'boolean')) {
+    errors.push('report budget/browser/producer authority evidence is incomplete');
     return;
   }
   const hasBrowser = validBrowserProvenance(report.browser);
@@ -2935,6 +3669,12 @@ function validateReportBudgetAuthority(report, errors) {
     ? compendiumBrowserAuthorityMatches(report.browser, budget.browserAuthority) : null;
   if (budget.browserAuthorityMatch !== expectedMatch) {
     errors.push('report browserAuthorityMatch does not match recorded browser provenance');
+  }
+  const expectedProducerMatch = budget.producerAuthority !== null
+    && budget.observedProducerAuthority !== null
+    ? sameJson(budget.producerAuthority, budget.observedProducerAuthority) : null;
+  if (budget.producerAuthorityMatch !== expectedProducerMatch) {
+    errors.push('report producerAuthorityMatch does not match the recorded built graph');
   }
   const activeOutcome = budget.status === 'active'
     && ['pass', 'fail', 'product-unanswerable'].includes(report.status);
@@ -2951,6 +3691,24 @@ function validateReportBudgetAuthority(report, errors) {
       && Array.isArray(report.reviewPacket) && report.reviewPacket.length === 0;
     if (!exactAuthorityMismatch) {
       errors.push('browser-authority mismatch was not terminal before product measurement');
+    }
+  }
+  const completeProducerOutcome = ['pass', 'fail', 'calibration', 'product-unanswerable']
+    .includes(report.status);
+  if (completeProducerOutcome && budget.producerAuthorityMatch !== true) {
+    errors.push('complete Compendium outcome lacks the exact built producer authority');
+  }
+  if (report.status === 'instrument-fail' && budget.producerAuthorityMatch === false) {
+    const exactProducerMismatch = report.partialFailure?.classification === 'instrument'
+      && report.partialFailure?.profile === null
+      && report.partialFailure?.lastCompletedStage === null
+      && report.partialFailure?.failingStage === 'Arc 1A producer authority'
+      && report.partialFailure?.command === null
+      && report.browser === null
+      && isObject(report.profiles) && Object.keys(report.profiles).length === 0
+      && Array.isArray(report.reviewPacket) && report.reviewPacket.length === 0;
+    if (!exactProducerMismatch) {
+      errors.push('producer-authority mismatch was not terminal before browser/product measurement');
     }
   }
 }
@@ -3005,6 +3763,10 @@ export function verifyTerminalReport(report, expectedRunId, {
     }
     if (!sameJson(report.budget?.browserAuthority ?? null, expectedAuthority)) {
       errors.push('report Arc 1A browser authority does not match the exact budget record');
+    }
+    if (!sameJson(report.budget?.producerAuthority ?? null,
+      budgetRecord?.producerAuthority ?? null)) {
+      errors.push('report producer authority does not match the exact budget record');
     }
     if (!/^[a-f0-9]{64}$/.test(String(expectedBudgetSha256 || ''))
       || report.budget?.sha256 !== expectedBudgetSha256
@@ -3086,22 +3848,28 @@ export function verifyTerminalReport(report, expectedRunId, {
   if (!validProfileMeasurements(report.profiles, report.browser?.product)) {
     errors.push('raw phone/desktop profile measurements are incomplete');
   }
-  if (budgetRecord?.status === 'active' && ['pass', 'fail'].includes(report.status)) {
+  const replayBudget = budgetRecord?.status === 'active' && ['pass', 'fail'].includes(report.status)
+    ? budgetRecord
+    : budgetRecord?.status === 'calibration-required'
+      && ['calibration', 'fail'].includes(report.status)
+      && allowCalibration
+      ? compendiumCalibrationEvaluatorBudget(budgetRecord.producerAuthority) : null;
+  if (replayBudget !== null) {
     const fixtureBound = isObject(fixture)
       && Array.isArray(fixture.rows) && fixture.rows.length === 1500
       && fixture.rowsSha256 === budgetRecord.fixture?.rowsSha256
       && report.inputs?.fixtureRows === fixture.rowsSha256;
     if (!fixtureBound) {
-      errors.push('active outcome replay lacks the exact bound 1,500-row fixture');
+      errors.push('outcome replay lacks the exact bound 1,500-row fixture');
     } else {
       try {
         const replayedOutcomes = PROFILES.flatMap((profile) =>
-          evaluateProfile(report.profiles?.[profile], budgetRecord, fixture));
+          evaluateProfile(report.profiles?.[profile], replayBudget, fixture));
         if (!sameJson(replayedOutcomes, report.outcomes)) {
-          errors.push('reported outcomes do not exactly match replay from raw profiles and active budget');
+          errors.push('reported outcomes do not exactly match replay from raw profiles and bound budget mode');
         }
       } catch (error) {
-        errors.push(`active outcome replay failed: ${error instanceof Error ? error.message : String(error)}`);
+        errors.push(`outcome replay failed: ${error instanceof Error ? error.message : String(error)}`);
       }
     }
   }
@@ -3121,7 +3889,13 @@ export function verifyTerminalReport(report, expectedRunId, {
   if (report.status === 'pass' && (!Array.isArray(report.findings) || report.findings.length !== 0)) {
     errors.push('PASS report contains findings');
   }
-  if (report.status === 'fail' && !failed.length) errors.push('FAIL report contains no failed outcome');
+  if (report.status === 'fail') {
+    if (!failed.length) errors.push('FAIL report contains no failed outcome');
+    const expectedFindings = failed.map((outcome) => outcome.diagnosis);
+    if (!sameJson(report.findings, expectedFindings)) {
+      errors.push('FAIL findings do not exactly match ordered failed-outcome diagnoses');
+    }
+  }
   if (report.status === 'calibration') {
     if (!allowCalibration) errors.push('calibration report is not certifying evidence');
     if (failed.length) errors.push('calibration report contains failed behavioral outcomes');
@@ -3141,7 +3915,8 @@ export function calibrationMetrics(measurement) {
     measurement.points?.last, measurement.points?.filtered, measurement.points?.detail,
     measurement.points?.detailClosed, measurement.points?.back,
     measurement.points?.focusPinned, measurement.points?.closed,
-    measurement.points?.planetside,
+    measurement.points?.planetside, measurement.phases?.warmCachePrecondition,
+    measurement.points?.postCapRestored,
     resize?.base, resize?.contracted, resize?.expanded, resize?.restored,
     ...(measurement.points?.warm || [])].filter(Boolean);
   const tail = (measurement.points?.warm || []).slice(-3);
@@ -3150,6 +3925,11 @@ export function calibrationMetrics(measurement) {
     heapUsedBytes: maxAt(selected, (snapshot) => snapshot.heap?.usedSize),
     documents: maxAt(selected, (snapshot) => snapshot.dom?.documents),
     nodes: maxAt(selected, (snapshot) => snapshot.dom?.nodes),
+    embedderHeapUsedBytes: maxAt(selected,
+      (snapshot) => snapshot.heap?.embedderHeapUsedSize),
+    backingStorageBytes: maxAt(selected,
+      (snapshot) => snapshot.heap?.backingStorageSize),
+    heapAggregateBytes: maxAt(selected, heapAggregateBytes),
     jsEventListeners: maxAt(selected, (snapshot) => snapshot.dom?.jsEventListeners),
     liveCacheEntries: maxAt(selected, (snapshot) => art(snapshot)?.live?.cacheEntries),
     liveDecodedPixels: maxAt(selected, (snapshot) => art(snapshot)?.live?.decodedPixels),
@@ -3163,8 +3943,7 @@ export function calibrationMetrics(measurement) {
       (snapshot) => art(snapshot)?.live?.portraitCacheEntries),
     livePortraitEncodedBytes: maxAt(selected,
       (snapshot) => art(snapshot)?.live?.portraitEncodedBytes),
-    warmHeapRangeBytes: range(tail.map((snapshot) => snapshot.heap?.usedSize)),
-    warmDecodedBytesRange: range(tail.map((snapshot) => art(snapshot)?.live?.decodedBytes)),
+    warmHeapAggregateRangeBytes: range(tail.map(heapAggregateBytes)),
     warmEncodedBytesRange: range(tail.map((snapshot) => art(snapshot)?.live?.encodedBytes)),
   };
 }
