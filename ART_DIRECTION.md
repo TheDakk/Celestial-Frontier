@@ -168,12 +168,28 @@ not art/product certification or calibration.
 
 Browser CDP `6da9e2ef…` now separates direct process exit from stdio close. Collector
 `f4ad842c…` and selftest `2713ed10…` hold success and sample publication until browser/server
-cleanup and workspace-lock release, with verifier lifecycle enforcement. Measurement therefore
-changes to `a3b3bb9f…`; producer stays `d3223177…`. Fail-closed budget/test `ae4ab918…` /
-`60fa5e9f…` require baseline9 plus candidate20/21/22 from one clean committed source, each once
-without retry. No portrait pixels, product bytes, browser/package, launch argument, timeout, retry,
-or producer changed. After activation, one exact-head battery, one PR #32 push, and one matching CI
-remain; first red stops. After PR #32 closes, work returns to Arc 1B/gameplay.
+cleanup and workspace-lock release, with verifier lifecycle enforcement. That lifecycle-only
+checkpoint established historical measurement `a3b3bb9f…` and fail-closed budget/test
+`ae4ab918…` / `60fa5e9f…`; candidate20 below superseded its planned calibration sequence.
+Producer `d3223177…`, portrait pixels, product bytes, launch arguments, timeouts, and retry policy
+were unchanged.
+
+Clean lifecycle-repair source `c49e525…` then ran candidate20 once. Its 78/78 product outcomes,
+zero findings, six PNGs, and complete cleanup were internally clean, but the reused `.86`-named app
+had self-updated to Edge `.93` / revision `@4a822b1b…`; null calibration browser authority let the
+wrong browser collect profiles. Candidate20 report/sample/log `175fac5e…` / `916dd12a…` /
+`7462144b…` are quarantined instrument evidence—not calibration, certification, art/product
+failure, or permission to reuse its images. Baseline9 did not run.
+
+The current ruler requires explicit top-level Edge `.86` / revision `@083e7549…` / JS `15.1.23.7`
+/ protocol `1.3` authority in every state and enforces it before candidate or paired-baseline
+profile collection. Frozen budget/schema/contract/collector/selftest/test `71ffa46f…` /
+`695d2529…` / `2620ebf6…` / `07131f5e…` / `240bbe17…` / `6991f6ce…` establish measurement
+`825fb386…`; producer `d3223177…` and browser CDP `6da9e2ef…` stay unchanged. Samples remain empty,
+ceilings null, and baseline measurement-required. Materialize exact `.86` afresh per launch, then
+collect baseline9 plus candidate21/22/23 once each without retry. No portrait/product, timing,
+launch, producer, or retry policy changed. After terminal-green PR #32, work returns immediately to
+Arc 1B/gameplay.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
 browser. Calibration review PNGs do not satisfy the selected-head HUMAN row; a fresh phone/desktop
 list, focus-pinned, and detail set still requires HUMAN review. This repair owns the

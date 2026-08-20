@@ -92,6 +92,19 @@ roughly by how often they have bitten.
   require close. Negative-control premature PASS/sample publication, double cleanup, release
   failure, terminal-write failure, exit-with-inherited-stderr, TERM resistance, KILL resistance,
   and exit-without-close independently.
+⚠⚠ A PATH LABEL IS NOT BROWSER AUTHORITY, AND CALIBRATION DOES NOT SUSPEND THE PIN
+  (2026-08-20). Candidate20 completed 78/78 outcomes and clean lifecycle while a reused
+  `.86`-named app had self-updated to Edge `.93`. The calibration-required ruler derived expected
+  browser identity from its intentionally empty samples, yielding null, and the collector exempted
+  calibration from mismatch rejection. Required identity must live in an explicit top-level
+  authority present in every budget state; compare candidate and paired-baseline browsers before
+  collecting a profile, replay every raw capsule against it, and require a true match from every
+  complete product or calibration report. A mismatch is early instrument evidence, never a sample
+  or product verdict. Treat mutable browser materializations as disposable: extract exact bytes
+  afresh per launch and still trust the runtime product/revision/JS/protocol check over the path.
+  A shell post-check whose failure can be masked by a later successful command is not gate
+  authority; the repository instrument itself must fail closed, with shell wrappers using explicit
+  error propagation only as an additional check.
 ⚠ jsdom has NO LAYOUT. A CSS rule can be present, correct and completely inert. tools/uilayout.js
   (real headless browser, elementFromPoint hit-tests, 10 viewports) is the only gate that sees
   this. It takes --url=FILE, so replay a new gate against an OLD build to prove it catches the bug.
@@ -1146,10 +1159,24 @@ That next exact local run was `20260820-pr32-89bfa05-compendiummem` at `89bfa05�
 `b0bb8abc…` overrides pre-cleanup false-green report/verifier `66ba1366…` / `98664dca…`.
 Browser CDP `6da9e2ef…` now separates direct exit from stdio close; collector/selftest
 `f4ad842c…` / `2713ed10…` defer sample and terminal success through browser/server cleanup and lock
-release and require lifecycle at verification. Measurement is therefore `a3b3bb9f…`; producer is
-still `d3223177…`. Fail-closed `ae4ab918…` / `60fa5e9f…` requires one clean committed baseline9
-plus candidate20/21/22, once each without retry. No timing, browser/package, launch argument,
-product, producer, or retry-policy change belongs to this correction.
+release and require lifecycle at verification. That lifecycle-only checkpoint established historical
+measurement `a3b3bb9f…` and fail-closed `ae4ab918…` / `60fa5e9f…`, with producer `d3223177…`
+unchanged. Candidate20 below superseded its planned calibration sequence. No timing, launch
+argument, product, producer, or retry-policy change belonged to that correction.
+
+Clean lifecycle-repair source `c49e525…` then ran
+`20260820-arc1a-terminal-lifecycle-candidate20` once. Product and lifecycle were internally clean
+at 78/78 with six PNGs, but the reused `.86`-named app reported `Edg/151.0.4129.93` and revision
+`@4a822b1bb7a8566144cff23f6c09a2ab162665f9`; null calibration browser authority let it collect.
+Quarantine report/sample/log `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser instrument
+evidence. It is not calibration, certification, or product failure, and baseline9 did not run.
+Explicit top-level Edge `.86` authority plus pre-profile candidate/baseline enforcement changes
+budget/schema/contract/collector/selftest/test to `71ffa46f…` / `695d2529…` / `2620ebf6…` /
+`07131f5e…` / `240bbe17…` / `6991f6ce…` and measurement to `825fb386…`; producer `d3223177…` and
+browser CDP `6da9e2ef…` remain unchanged. The ruler stays empty/null/measurement-required until
+fresh-per-launch exact-.86 baseline9 and candidate21/22/23 run once each without retry. No timing,
+launch, product, producer, or retry policy changed; terminal-green PR #32 returns immediately to
+Arc 1B rather than opening another optimization loop.
 
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread

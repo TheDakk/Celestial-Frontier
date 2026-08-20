@@ -57,6 +57,7 @@ import {
   baselineLifecycleFailureReport, candidateLifecycleFailureReport,
   candidateSpeciesPainterChunkSource,
   compendiumBudgetModeAllowed,
+  collectWithCompendiumBrowserAuthority,
   candidateThumbSettlementExpression,
   candidateProducerErrorPreArmExpression, candidateProducerErrorWorkExpression,
   candidateFilterInputExpression, candidateFilterTelemetryExpression,
@@ -337,8 +338,14 @@ function activeBudget(fixture) {
     livePortraitEncodedBytesMax: 1_000_000,
     warmHeapAggregateRangeBytesMax: 1000, warmEncodedBytesRangeMax: 1000,
   };
+  const browserAuthority = compendiumBrowserAuthority({
+    product: 'Chrome/Selftest', revision: 'selftest',
+    jsVersion: 'selftest', protocolVersion: '1.3',
+  });
+  assert(browserAuthority, 'synthetic browser authority did not canonicalize');
   return {
     schema: BUDGET_SCHEMA, status: 'active',
+    browserAuthority,
     fixture: {
       schema: fixture.schema, generator: fixture.generator,
       count: fixture.count, rowsSha256: fixture.rowsSha256,
@@ -2478,6 +2485,76 @@ export async function runCompendiumMemSelftest() {
     product: 'Chrome/Other', revision: 'selftest', js_version: 'selftest',
     protocol_version: '1.3',
   }, browserAuthority), 'a different browser product matched the Arc authority');
+  const exactObservedBrowser = {
+    executable: '/selftest/edge', product: 'Chrome/Selftest', revision: 'selftest',
+    user_agent: 'selftest', js_version: 'selftest', protocol_version: '1.3',
+  };
+  const runInjectedBrowserAuthority = async ({
+    label, budgetRecord = budget, observedBrowser = exactObservedBrowser,
+  }) => {
+    const evidence = [];
+    let collectionCalls = 0;
+    let thrown = null;
+    let value = null;
+    try {
+      value = await collectWithCompendiumBrowserAuthority({
+        budget: budgetRecord, browser: observedBrowser,
+        recordEvidence: (record) => { evidence.push(record); },
+        collect: async () => { collectionCalls += 1; return `${label}-collected`; },
+        mismatchMessage: `${label} browser authority mismatch`,
+      });
+    } catch (error) { thrown = error; }
+    return { evidence, collectionCalls, thrown, value };
+  };
+  const exactAuthorityCollection = await runInjectedBrowserAuthority({
+    label: 'candidate-exact',
+  });
+  assert(exactAuthorityCollection.thrown === null
+    && exactAuthorityCollection.value === 'candidate-exact-collected'
+    && exactAuthorityCollection.collectionCalls === 1
+    && exactAuthorityCollection.evidence.length === 1
+    && exactAuthorityCollection.evidence[0].browserAuthorityMatch === true
+    && JSON.stringify(exactAuthorityCollection.evidence[0].browserAuthority)
+      === JSON.stringify(browserAuthority),
+  'exact browser authority did not record true once before one protected collection');
+  for (const kind of ['candidate', 'baseline']) {
+    for (const [authorityField, observedField] of [
+      ['product', 'product'], ['revision', 'revision'],
+      ['jsVersion', 'js_version'], ['protocolVersion', 'protocol_version'],
+    ]) {
+      const observedBrowser = clone(exactObservedBrowser);
+      observedBrowser[observedField] = `${observedBrowser[observedField]}-drift`;
+      const drift = await runInjectedBrowserAuthority({
+        label: `${kind}-${authorityField}-drift`, observedBrowser,
+      });
+      assert(drift.thrown?.message === `${kind}-${authorityField}-drift browser authority mismatch`
+        && drift.collectionCalls === 0 && drift.evidence.length === 1
+        && JSON.stringify(drift.evidence[0].browserAuthority) === JSON.stringify(browserAuthority)
+        && drift.evidence[0].browserAuthorityMatch === false,
+      `${kind} ${authorityField} drift collected product/profile evidence or retried`);
+    }
+    const nullAuthorityBudget = clone(budget);
+    nullAuthorityBudget.browserAuthority = null;
+    const nullAuthority = await runInjectedBrowserAuthority({
+      label: `${kind}-null`, budgetRecord: nullAuthorityBudget,
+    });
+    assert(nullAuthority.thrown?.message === `${kind}-null browser authority mismatch`
+      && nullAuthority.collectionCalls === 0 && nullAuthority.evidence.length === 1
+      && nullAuthority.evidence[0].browserAuthority === null
+      && nullAuthority.evidence[0].browserAuthorityMatch === false,
+    `${kind} null browser authority collected product/profile evidence or retried`);
+    const forgedAuthorityBudget = clone(budget);
+    forgedAuthorityBudget.browserAuthority = {
+      ...clone(browserAuthority), product: 'Chrome/Forged', browserAuthorityMatch: true,
+    };
+    const forgedAuthority = await runInjectedBrowserAuthority({
+      label: `${kind}-forged`, budgetRecord: forgedAuthorityBudget,
+    });
+    assert(forgedAuthority.thrown?.message === `${kind}-forged browser authority mismatch`
+      && forgedAuthority.collectionCalls === 0 && forgedAuthority.evidence.length === 1
+      && forgedAuthority.evidence[0].browserAuthorityMatch === false,
+    `${kind} forged browser authority/match boolean collected product evidence or retried`);
+  }
   for (const field of ['product', 'revision', 'jsVersion', 'protocolVersion']) {
     const mismatchedBaselineBrowser = clone(budget);
     const sampleBrowser = mismatchedBaselineBrowser.pairedBrokenBaseline.samples.phone[0].browser;
@@ -5534,6 +5611,66 @@ export async function runCompendiumMemSelftest() {
     const first = source.indexOf(needle);
     return first >= 0 && source.indexOf(needle, first + needle.length) < 0;
   };
+  const browserAuthoritySeamBlock = ownedLifecycleBlock(
+    'export async function collectWithCompendiumBrowserAuthority(',
+    'function sampleBrowser(',
+  );
+  const validBrowserAuthoritySeam = (block) => {
+    const authorityAt = block.indexOf(
+      'const browserAuthority = compendiumBudgetBrowserAuthority(budget);',
+    );
+    const validityAt = block.indexOf(
+      'const browserAuthorityMatch = validCompendiumBrowserAuthority(browserAuthority)',
+    );
+    const comparisonAt = block.indexOf(
+      '&& compendiumBrowserAuthorityMatches(browser, browserAuthority);',
+    );
+    const recordAt = block.indexOf('await recordEvidence(evidence);');
+    const rejectionAt = block.indexOf(
+      'if (!browserAuthorityMatch) throw new Error(mismatchMessage);',
+    );
+    const collectionAt = block.indexOf('return await collect();');
+    return containsExactlyOnce(block,
+      'const browserAuthority = compendiumBudgetBrowserAuthority(budget);')
+      && containsExactlyOnce(block,
+        'const browserAuthorityMatch = validCompendiumBrowserAuthority(browserAuthority)')
+      && containsExactlyOnce(block,
+        '&& compendiumBrowserAuthorityMatches(browser, browserAuthority);')
+      && containsExactlyOnce(block, 'await recordEvidence(evidence);')
+      && containsExactlyOnce(block,
+        'if (!browserAuthorityMatch) throw new Error(mismatchMessage);')
+      && containsExactlyOnce(block, 'return await collect();')
+      && authorityAt < validityAt && validityAt < comparisonAt
+      && comparisonAt < recordAt && recordAt < rejectionAt && rejectionAt < collectionAt;
+  };
+  assert(validBrowserAuthoritySeam(browserAuthoritySeamBlock),
+    'shared browser-authority seam was not record-first/fail-closed before collection');
+  for (const [label, before, after] of [
+    [
+      'null authority validity',
+      'const browserAuthorityMatch = validCompendiumBrowserAuthority(browserAuthority)',
+      'const browserAuthorityMatch = true',
+    ],
+    [
+      'field comparison',
+      '&& compendiumBrowserAuthorityMatches(browser, browserAuthority);',
+      '&& true;',
+    ],
+    [
+      'recorded outcome',
+      'await recordEvidence(evidence);',
+      'await Promise.resolve();',
+    ],
+    [
+      'terminal rejection',
+      'if (!browserAuthorityMatch) throw new Error(mismatchMessage);',
+      'if (false) throw new Error(mismatchMessage);',
+    ],
+  ]) {
+    const mutation = browserAuthoritySeamBlock.replace(before, after);
+    assert(mutation !== browserAuthoritySeamBlock && !validBrowserAuthoritySeam(mutation),
+      `${label} browser-authority seam mutation stayed green`);
+  }
   const validOwnedLifecycleBlock = (block, reportOwner) => {
     const call = 'const finalized = await finalizeCompendiumLifecycle({';
     const callAt = block.indexOf(call);
@@ -5558,6 +5695,85 @@ export async function runCompendiumMemSelftest() {
   const candidateLifecycleBlock = ownedLifecycleBlock(
     'async function runGate(', 'async function main(',
   );
+  const validCalibrationAuthorityRunner = (
+    block, collectorName, reportOwner, evidenceCarrier,
+  ) => {
+    const seamCall = 'await collectWithCompendiumBrowserAuthority({';
+    const callAt = block.indexOf(seamCall);
+    const recordAt = block.indexOf('recordEvidence: (evidence) => {', callAt);
+    const carrierAt = block.indexOf(evidenceCarrier, recordAt);
+    const reportAt = block.indexOf(`atomicWriteJson(${reportOwner}, running`, recordAt);
+    const collectAt = block.indexOf('collect: async () => {', callAt);
+    const productAt = block.indexOf(`await ${collectorName}({`, collectAt);
+    const mismatchAt = block.indexOf('mismatchMessage:', collectAt);
+    return containsExactlyOnce(block, seamCall)
+      && callAt >= 0 && recordAt > callAt && carrierAt > recordAt && reportAt > carrierAt
+      && collectAt > reportAt && productAt > collectAt && mismatchAt > productAt;
+  };
+  assert(validCalibrationAuthorityRunner(
+    baselineLifecycleBlock, 'collectBrokenBaselineProfile', 'baselineReportPath',
+    'baselineBudgetEvidence = { ...baselineBudgetEvidence, ...evidence };',
+  ) && validCalibrationAuthorityRunner(
+    candidateLifecycleBlock, 'collectProfile', 'reportPath',
+    'budget: { ...running.budget, ...evidence },',
+  ), 'candidate/baseline calibration did not bind collection behind recorded browser authority');
+  for (const [kind, block, collectorName, reportOwner, evidenceCarrier] of [
+    [
+      'baseline', baselineLifecycleBlock, 'collectBrokenBaselineProfile',
+      'baselineReportPath',
+      'baselineBudgetEvidence = { ...baselineBudgetEvidence, ...evidence };',
+    ],
+    [
+      'candidate', candidateLifecycleBlock, 'collectProfile', 'reportPath',
+      'budget: { ...running.budget, ...evidence },',
+    ],
+  ]) {
+    for (const [label, before, after] of [
+      [
+        'shared seam', 'await collectWithCompendiumBrowserAuthority({',
+        'await Promise.resolve({',
+      ],
+      ['record callback', 'recordEvidence: (evidence) => {', 'ignoredEvidence: (evidence) => {'],
+      ['recorded authority carrier', evidenceCarrier, 'void evidence;'],
+      ['protected collection', 'collect: async () => {', 'unprotected: async () => {'],
+    ]) {
+      const mutation = block.replace(before, after);
+      assert(mutation !== block
+        && !validCalibrationAuthorityRunner(
+          mutation, collectorName, reportOwner, evidenceCarrier,
+        ),
+      `${kind} ${label} browser-authority mutation stayed green`);
+    }
+  }
+  const baselineLifecycleFailureBlock = ownedLifecycleBlock(
+    'export function baselineLifecycleFailureReport(',
+    'async function runBrokenBaselineCalibration(',
+  );
+  const baselineAuthorityCarrierTokens = [
+    'browser: null, budget: baselineBudgetEvidence, findings: [], profiles: {},',
+    'inputs, inputDigest, browser: browser.browser, budget: baselineBudgetEvidence,',
+    'browserAuthority: baselineBudgetEvidence.browserAuthority,',
+    'inputs, inputDigest, browser: browser?.browser || null, budget: baselineBudgetEvidence,',
+  ];
+  const validBaselineAuthorityCarriers = (runnerBlock, failureBlock) =>
+    baselineAuthorityCarrierTokens.every((token) => containsExactlyOnce(runnerBlock, token))
+      && containsExactlyOnce(failureBlock, 'budget: provisionalReport.budget,');
+  assert(validBaselineAuthorityCarriers(
+    baselineLifecycleBlock, baselineLifecycleFailureBlock,
+  ), 'baseline running/success/failure/sample did not preserve browser-authority evidence');
+  for (const token of baselineAuthorityCarrierTokens) {
+    const mutation = baselineLifecycleBlock.replace(token, '/* removed authority carrier */');
+    assert(mutation !== baselineLifecycleBlock
+      && !validBaselineAuthorityCarriers(mutation, baselineLifecycleFailureBlock),
+    `baseline ${token} removal mutation stayed green`);
+  }
+  const baselineFailureCarrierMutation = baselineLifecycleFailureBlock.replace(
+    'budget: provisionalReport.budget,', 'budget: null,',
+  );
+  assert(baselineFailureCarrierMutation !== baselineLifecycleFailureBlock
+    && !validBaselineAuthorityCarriers(
+      baselineLifecycleBlock, baselineFailureCarrierMutation,
+    ), 'baseline lifecycle-failure browser-authority carrier mutation stayed green');
   const cliVerifyBlock = ownedLifecycleBlock(
     "  const verifyArg = process.argv.slice(2).find((arg) => arg.startsWith('--verify-run='));",
     '  const baselineArg = process.argv.slice(2)',
@@ -5678,7 +5894,11 @@ export async function runCompendiumMemSelftest() {
         },
         collectorSource: clone(report.source), baselineSource: clone(report.source),
         inputs: clone(report.inputs), inputDigest: 'd'.repeat(64),
-        browser: clone(report.browser), findings: [],
+        browser: clone(report.browser), budget: {
+          status: 'calibration-required', path: 'budgets/compendium-memory-v1.json',
+          sha256: report.inputs.budget,
+          browserAuthority: clone(browserAuthority), browserAuthorityMatch: true,
+        }, findings: [],
         profiles: {
           phone: { profile: 'phone', diagnostic: 'complete' },
           desktop: { profile: 'desktop', diagnostic: 'complete' },
@@ -5800,6 +6020,9 @@ export async function runCompendiumMemSelftest() {
       && baselineCleanupRed.persisted.status === 'instrument-fail'
       && baselineCleanupRed.persisted.evidenceStatus
         === 'partial-diagnostic-not-budget-samples'
+      && baselineCleanupRed.persisted.budget.browserAuthorityMatch === true
+      && JSON.stringify(baselineCleanupRed.persisted.budget.browserAuthority)
+        === JSON.stringify(browserAuthority)
       && baselineCleanupRed.persisted.findings.some((finding) =>
         finding === 'instrument: static server shutdown: injected server shutdown failure')
       && !baselineCleanupRed.trace.includes('sample:publish')
@@ -5941,8 +6164,8 @@ export async function runCompendiumMemSelftest() {
   const calibration = clone(report);
   calibration.status = 'calibration';
   calibration.budget.status = 'calibration-required';
-  calibration.budget.browserAuthority = null;
-  calibration.budget.browserAuthorityMatch = null;
+  calibration.budget.browserAuthority = clone(browserAuthority);
+  calibration.budget.browserAuthorityMatch = true;
   const calibrationEvaluator = compendiumCalibrationEvaluatorBudget(budget.producerAuthority);
   assert(calibrationEvaluator, 'synthetic calibration evaluator was unavailable');
   calibration.outcomes = [

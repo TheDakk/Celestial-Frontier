@@ -155,16 +155,29 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > are false-green. This is a one-attempt/no-retry post-measurement instrument red, not product
 > certification or calibration.
 >
-> Frozen `browsercdp.mjs` `6da9e2ef…` now judges TERM→KILL on direct child exit, separately releases
-> owned stderr after exit, and still requires close. Frozen collector `f4ad842c…` plus selftest
-> `2713ed10…` keep report state lifecycle-pending until browser/server cleanup and lock release,
-> publish samples and terminal success only afterward, and make the verifier require completed
-> lifecycle authority. Measurement is therefore `a3b3bb9f…`; producer remains `d3223177…`.
-> Fail-closed budget/test `ae4ab918…` / `60fa5e9f…` contain no candidate samples or ceilings and
-> require paired baseline measurement. Historical baseline8/candidate17/18/19 and
-> `6ba58522…` / `74e88c2b…` / `485be9da…` cannot cross that boundary. Next authority is one clean
-> committed baseline9 plus independent candidate20/21/22, each once without retry. No deadline,
-> browser/package, launch argument, product byte, producer, or retry policy changed.
+> Clean lifecycle-repair source `c49e525…` then ran
+> `20260820-arc1a-terminal-lifecycle-candidate20` once. It completed 78/78 product outcomes, zero
+> findings, six PNGs, and complete lifecycle, but the reused `.86`-named app had self-updated to
+> Edge `.93` / revision `@4a822b1b…`; its calibration report's null browser authority let the wrong
+> browser collect. Quarantine report/sample/log `175fac5e…` / `916dd12a…` / `7462144b…` as
+> instrument evidence—not calibration, certification, product failure, or a reusable ruler.
+> Baseline9 did not run.
+>
+> The budget now requires explicit top-level `Edg/151.0.4129.86`, revision `@083e7549…`, JavaScript
+> `15.1.23.7`, protocol `1.3` authority in calibration-required and active states. Candidate and
+> paired-baseline paths compare it before profile collection; mismatch writes early instrument-fail
+> evidence and collects no profile, while every raw capsule and complete report must replay a true
+> match. Frozen budget/schema/contract/collector/selftest/test `71ffa46f…` / `695d2529…` /
+> `2620ebf6…` / `07131f5e…` / `240bbe17…` / `6991f6ce…` establish measurement `825fb386…`;
+> producer `d3223177…` and browser CDP `6da9e2ef…` remain unchanged. Samples stay empty, ceilings
+> null, and baseline measurement-required.
+>
+> For every baseline9/candidate21/22/23 launch, extract exact `.86` into a new never-launched
+> directory from package `b70216e0…`; immediately verify Info.plist `d2c13c8e…`, executable
+> `69349ca6…`, framework `be28b9b6…`, only one `.86` version, and `Versions/Current → .86`. Never
+> reuse a launched extraction; runtime product/revision/JS/protocol remains the final authority.
+> Run each named attempt exactly once without retry. No deadline, launch argument, product byte,
+> producer, or retry policy changed.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,

@@ -219,13 +219,20 @@ six PNGs, then exited 2 during owned browser shutdown. Terminal log `b0bb8abc…
 pre-cleanup PASS report/verifier `66ba1366…` / `98664dca…` are false-green. This is a one-attempt/
 no-retry post-measurement instrument red, not certification or calibration.
 
-Frozen browser CDP `6da9e2ef…` distinguishes direct child exit from stdio-backed close. Collector
-`f4ad842c…` plus selftest `2713ed10…` keep report state lifecycle-pending through browser/server
-cleanup and lock release, publish a sample and terminal success only afterward, and require that
-lifecycle at verification. Measurement is now `a3b3bb9f…`; producer remains `d3223177…`.
-Fail-closed budget/test `ae4ab918…` / `60fa5e9f…` await baseline9 plus candidate20/21/22 from one
-clean committed source, once each without retry. No browser/package, launch argument, timeout,
-product byte, producer, or retry policy changed.
+Clean lifecycle-repair source `c49e525…` then ran candidate20 once. It completed 78/78 product
+outcomes, zero findings, six PNGs, and complete lifecycle, but the reused `.86`-named app reported
+Edge `.93` / revision `@4a822b1b…`; null calibration browser authority let it collect profiles.
+Quarantine report/sample/log `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser instrument
+evidence—not calibration, certification, product failure, preview authority, or HUMAN review.
+Baseline9 did not run.
+
+Explicit top-level `.86` authority and pre-profile candidate/baseline rejection establish
+measurement `825fb386…`; frozen budget/schema/contract/collector/selftest/test are `71ffa46f…` /
+`695d2529…` / `2620ebf6…` / `07131f5e…` / `240bbe17…` / `6991f6ce…`, while producer
+`d3223177…` and browser CDP `6da9e2ef…` remain unchanged. The ruler remains empty/null/measurement-
+required. Materialize exact `.86` afresh per launch, then collect baseline9 plus candidate21/22/23
+once each without retry. No launch argument, timeout, product byte, producer, or retry policy
+changed; terminal-green PR #32 returns immediately to Arc 1B.
 This does not re-pin Gate A or the global browser authority: `../tools/deps.pinned.json` remains
 Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates, any
 timing, product bytes, or the one-attempt/zero-retry policy.

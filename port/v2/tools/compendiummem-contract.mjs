@@ -229,7 +229,8 @@ export function compendiumBrowserAuthorityMatches(browser, authority) {
 }
 
 export function compendiumBudgetBrowserAuthority(record) {
-  return compendiumBrowserAuthority(record?.calibration?.samples?.phone?.[0]?.browser);
+  return validCompendiumBrowserAuthority(record?.browserAuthority)
+    ? record.browserAuthority : null;
 }
 
 const FILTER_ART_LIVE_FIELDS = Object.freeze([
@@ -2314,11 +2315,16 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
   if (!isObject(record)) return { ok: false, errors: ['budget must be an object'] };
   exactKeys(record, [
     'schema', 'status', 'fixture', 'requirements', 'calibration',
-    'measurementAuthority', 'producerAuthority', 'pairedBrokenBaseline', 'ceilings',
+    'browserAuthority', 'measurementAuthority', 'producerAuthority',
+    'pairedBrokenBaseline', 'ceilings',
   ], 'budget', errors);
   if (record.schema !== BUDGET_SCHEMA) errors.push(`budget schema must be ${BUDGET_SCHEMA}`);
   if (!['calibration-required', 'active'].includes(record.status)) {
     errors.push('budget status must be calibration-required or active');
+  }
+  const browserAuthority = compendiumBudgetBrowserAuthority(record);
+  if (!validCompendiumBrowserAuthority(browserAuthority)) {
+    errors.push('budget browser authority is invalid');
   }
   if (!validMeasurementAuthority(record.measurementAuthority)) {
     errors.push('budget measurement authority is invalid');
@@ -2395,6 +2401,10 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
       !== record.producerAuthority?.sha256)) {
       errors.push('candidate calibration samples do not match the budget producer authority');
     }
+    if (allCandidateSamples.some((sample) =>
+      !compendiumBrowserAuthorityMatches(sample?.browser, browserAuthority))) {
+      errors.push('candidate calibration browser does not match the Arc 1A calibration authority');
+    }
   }
   if (!isObject(record.pairedBrokenBaseline)
     || !['measurement-required', 'measured'].includes(record.pairedBrokenBaseline.status)
@@ -2433,9 +2443,8 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
       !== record.measurementAuthority?.sha256)) {
       errors.push('paired broken-baseline samples do not match the budget measurement authority');
     }
-    const candidateAuthority = compendiumBudgetBrowserAuthority(record);
-    if (candidateAuthority && allBaselineSamples.some((sample) =>
-      !compendiumBrowserAuthorityMatches(sample?.browser, candidateAuthority))) {
+    if (allBaselineSamples.some((sample) =>
+      !compendiumBrowserAuthorityMatches(sample?.browser, browserAuthority))) {
       errors.push('paired broken-baseline browser does not match the Arc 1A calibration authority');
     }
     if (brokenBaselineProjectionRowsSha256
@@ -2492,9 +2501,6 @@ export function validateBudgetRecord(record, fixtureRowsSha256 = null,
           }
         }
       }
-    }
-    if (!validCompendiumBrowserAuthority(compendiumBudgetBrowserAuthority(record))) {
-      errors.push('active budget lacks one exact Arc 1A calibration browser authority');
     }
     const candidateCommit = record.calibration?.samples?.phone?.[0]?.commit;
     if (!/^[a-f0-9]{40}$/.test(String(record.pairedBrokenBaseline?.collectorCommit || ''))
@@ -3771,10 +3777,10 @@ function validateReportBudgetAuthority(report, errors) {
   if (budget.producerAuthorityMatch !== expectedProducerMatch) {
     errors.push('report producerAuthorityMatch does not match the recorded built graph');
   }
-  const activeOutcome = budget.status === 'active'
-    && ['pass', 'fail', 'product-unanswerable'].includes(report.status);
-  if (activeOutcome && budget.browserAuthorityMatch !== true) {
-    errors.push('active Compendium outcome lacks the exact Arc 1A browser authority');
+  const browserMeasuredOutcome = hasBrowser
+    && ['pass', 'fail', 'calibration', 'product-unanswerable'].includes(report.status);
+  if (browserMeasuredOutcome && budget.browserAuthorityMatch !== true) {
+    errors.push('complete Compendium outcome lacks the exact Arc 1A browser authority');
   }
   if (report.status === 'instrument-fail' && budget.browserAuthorityMatch === false) {
     const exactAuthorityMismatch = report.partialFailure?.classification === 'instrument'

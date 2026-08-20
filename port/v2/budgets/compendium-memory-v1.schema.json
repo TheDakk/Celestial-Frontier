@@ -4,7 +4,7 @@
   "title": "Celestial Frontier v2 Compendium memory budget",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema", "status", "fixture", "requirements", "measurementAuthority", "producerAuthority", "calibration", "pairedBrokenBaseline", "ceilings"],
+  "required": ["schema", "status", "fixture", "requirements", "browserAuthority", "measurementAuthority", "producerAuthority", "calibration", "pairedBrokenBaseline", "ceilings"],
   "properties": {
     "schema": { "const": "cf-v2-compendium-memory-budget/v1" },
     "status": { "enum": ["calibration-required", "active"] },
@@ -30,6 +30,7 @@
         "warmCycles": { "const": 4 }
       }
     },
+    "browserAuthority": { "$ref": "#/$defs/browserAuthority" },
     "measurementAuthority": {
       "type": "object",
       "additionalProperties": false,
@@ -226,6 +227,19 @@
         "unwindowed-1500-rows", "list-source-440",
         "full-portrait-dom-exposure", "eager-art-import"
       ]
+    },
+    "browserAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "scope", "product", "revision", "jsVersion", "protocolVersion"],
+      "properties": {
+        "schema": { "const": "cf-v2-compendium-browser-authority/v1" },
+        "scope": { "const": "arc1a-compendium-memory-only" },
+        "product": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "minLength": 1 },
+        "jsVersion": { "type": "string", "minLength": 1 },
+        "protocolVersion": { "type": "string", "minLength": 1 }
+      }
     },
     "sampleBrowser": {
       "type": "object",
