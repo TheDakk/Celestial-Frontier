@@ -24,11 +24,11 @@ const EXPECTED_MEASUREMENT_AUTHORITY =
 const EXPECTED_PRODUCER_AUTHORITY =
   'e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb';
 const EXPECTED_CANDIDATE_RUNS = [
-  '20260820-arc1a-compact-clearance-candidate11',
-  '20260820-arc1a-compact-clearance-candidate12',
-  '20260820-arc1a-compact-clearance-candidate13',
+  '20260820-arc1a-cold-envelope-candidate14',
+  '20260820-arc1a-cold-envelope-candidate15',
+  '20260820-arc1a-cold-envelope-candidate16',
 ] as const;
-const EXPECTED_BASELINE_RUN = '20260820-arc1a-compact-clearance-baseline6';
+const EXPECTED_BASELINE_RUN = '20260820-arc1a-cold-envelope-baseline7';
 
 type ProfileName = typeof PROFILE_NAMES[number];
 type CalibrationSample = {
@@ -70,19 +70,19 @@ const EXPECTED_SAMPLE_OBJECT_SHA256: Record<ProfileName, {
 }> = {
   phone: {
     candidate: [
-      'bed31def09a2299065d6e8f1636a9bac6b7687301f363c83b7272ac6cd02734d',
-      'b373549e210316e31a1c812c0a8eab139556fa27c6fc409fee8e94beaf062054',
-      'cd4c175da5e1a394cf366b705ee7ebac9227b8387a3bc9eedca76185cf95fb94',
+      '0203d8d197daf04478ef14e5f2b9d78e2e8aa670e816cf37a71dc67aec9acf38',
+      'c9b1f1c45856a20e9a61e42484d0fcbb6bbe75df6800e3437648210259caa2e2',
+      '9b1c2e91bec133faf15985ac60fbbe1ae01a80749c766f419469ec6aac23e2c3',
     ],
-    baseline: 'cf7b6a316339611992d8e54281a7288df704e9beb80a4f388b2dc18b6d75c3eb',
+    baseline: 'a781f668b13aa3e2b53a99d14124bde48f111aa095ee7c1647d1da6b9807973b',
   },
   desktop: {
     candidate: [
-      '824db5ed98a381c4419907c811e25580925142f2f29a46d9e6a3ed8f41dee741',
-      '148d384b6827917689ce99df14be291eaaaa405ef0ad3b2d6956384c523b09a5',
-      '6fe9be3e129ce06efebca4bd65a011172767f610b030f95a3dd8d42734f6fcc5',
+      'e6553472b5e858ed450766b7482e2830fda752db9c3fc5eccb27759ef4b6ca07',
+      'cb204498933892afbc88270bb929906c59923ad921aaa3effd459aa2886b47d4',
+      'dde9dbe39f40accabf25bcc47dcbfdc83b41379b9f11afb3e89751577f6b271f',
     ],
-    baseline: '6eaa227e8bcf0e1042739d313beba19bf9e38b44da18579e96cbd35c56e88a9c',
+    baseline: '776fcadbdffd8c7891e9de739fb2788d3993c8e2c5c781af1d8169338ee217b9',
   },
 };
 

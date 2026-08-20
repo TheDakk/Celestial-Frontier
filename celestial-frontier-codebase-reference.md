@@ -224,10 +224,12 @@
 > and the product observation remains 2,000 ms. Browser-CDP SHA-256
 > `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9` establishes measurement
 > authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer `e59685b1…`
-> remains unchanged. Budget/test `41482f1c…` / `85420929…` now fail closed
-> `calibration-required` with no samples or ceilings, pending paired baseline7 and independent
-> candidate14/15/16. The accepted 45-second CI cold-start allowance is process environment, not a
-> game optimization target. One authority refresh plus one battery/CI attempt completes this cycle;
+> remains unchanged. Clean source `374049536e…` collected paired baseline7 plus independent
+> candidate14/15/16 once without retry; every candidate replayed 78/78. Active browser-free
+> budget/test `bb4da2bf0b…` / `d242705ad9…` retain all four baseline faults, 14 phone / 13 desktop
+> breaches, and all 40 ceilings strictly above the three-run maxima. This activation is not
+> certification. The accepted 45-second CI cold-start allowance is process environment, not a
+> game optimization target. One exact-head battery plus one corresponding CI attempt completes this cycle;
 > exact-head certification, corresponding PR test-merge CI, and HUMAN review remain open.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,

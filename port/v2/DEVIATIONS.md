@@ -12,7 +12,7 @@ as any change that touches an entry.
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
 **Status: ★ product implementation, serviced-turn scheduler, compact-phone Planetside stack repair,
-and fail-closed `6ba58522…` / `e59685b1…` measurement transition present. Exact-source automation and fresh
+and active browser-free `6ba58522…` / `e59685b1…` ruler present. Exact-source automation and fresh
 six-image `[HUMAN]` review are open.**
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
@@ -100,9 +100,11 @@ This block records the current disposition of the historical
   and product observation remains 2 seconds. Portable controls pass at 38,657 ms and reject
   exact/late 38,658/38,659 ms with one child and cleanup. No warmup, relaunch, retry, fallback,
   workflow change, or game optimization is introduced. Launcher `6892dea6…` changes measurement to
-  `6ba58522…`; producer stays `e59685b1…`, and budget/test `41482f1c…` / `85420929…` fail closed
-  pending baseline7/candidate14/15/16. One authority refresh and one battery/CI attempt finish this
-  infrastructure cycle before gameplay work resumes.
+  `6ba58522…`; producer stays `e59685b1…`. Clean source `374049536e…` collected baseline7 plus
+  independent candidate14/15/16 once without retry; every candidate replayed 78/78. Active
+  browser-free budget/test `bb4da2bf0b…` / `d242705ad9…` retain all four baseline faults and 14 phone /
+  13 desktop breaches, with all 40 ceilings strict. This is non-certifying. One exact-head battery
+  and one corresponding CI attempt finish this infrastructure cycle before gameplay work resumes.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
