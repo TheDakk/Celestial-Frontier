@@ -102,14 +102,31 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > There is no warmup, relaunch, retry, fallback, or workflow change; generic and candidate startup
 > remain 15 seconds and product observation remains 2 seconds. Launcher SHA-256
 > `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9` establishes measurement
-> authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer `e59685b1…`
-> is unchanged. Clean source `374049536e…` collected baseline7 plus independent candidate14/15/16
-> once without retry; each candidate replayed 78/78. Active browser-free budget/test
+> authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer then remained
+> `e59685b1…`. Clean source `374049536e…` collected baseline7 plus independent candidate14/15/16
+> once without retry; each candidate replayed 78/78. The then-active browser-free budget/test
 > `bb4da2bf0b…` (79,599 bytes) / `d242705ad9…` (20,766 bytes) retain all four baseline faults,
 > 14 phone / 13 desktop breaches, and all 40 strict ceilings above the three-run maxima. This is
 > activation, not certification. The 45-second CI cold-start allowance is accepted environment,
-> not a game optimization target; one exact-head battery and one corresponding CI attempt finish
-> this infrastructure cycle before work returns to gameplay.
+> not a game optimization target. Exact pushed head `139ce2f…` subsequently passed one complete
+> local battery. Corresponding run `32383320206`, attempt 1, matched exact Edge .86 and every
+> then-active authority before preserving a valid no-retry Planetside `product-unanswerable` red:
+> target `Runtime.evaluate` took `2001.132592` ms against the unchanged 2,000 ms deadline while root
+> `Browser.getVersion` answered in `10.401960` ms. The report contains zero outcomes, 78 blocked,
+> and no review PNG; it is product evidence, not an instrument/transport or timing-policy result.
+>
+> The bounded product repair computes fitted globe demand from CSS diameter, scene scale, and DPR.
+> Standard phone/desktop boot is 609/420px and selects 512. An exact generation/world owner re-reads
+> the asynchronous bake, rejects stale completion and duplicate-tier work, and upgrades through 768
+> to 1024 only when real zoom/DPR requires it; maximum tested demand is 1,248/1,280px. Producer is
+> now `d3223177…` (index `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`;
+> worker/painter unchanged), while measurement remains `6ba58522…`. Current budget/test
+> `9f53ebe69e…` / `c2b68b3ec…` are deliberately `calibration-required`, with empty samples,
+> measurement-required baseline, and null ceilings. Therefore `npm run compendiummem` must fail
+> closed and cannot certify until one no-retry baseline8 plus independent candidate17/18/19 activate
+> matching raw authority and strict discriminating ceilings. Only then run one exact-activation-head
+> battery and one corresponding CI attempt. First red stops; no more timing expansion precedes the
+> return to gameplay after PR #32 closes.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,

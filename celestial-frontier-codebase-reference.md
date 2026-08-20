@@ -6,8 +6,8 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-20.**
 > **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
-> compact Planetside repair and fail-closed cold-start authority refresh; exact-head certification and
-> final HUMAN review remain open):**
+> displayed-demand/zoom-owner product repair and fail-closed producer transition; fresh calibration,
+> exact-head certification, and final HUMAN review remain open):**
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
 > bounded overscan, and any focus-pinned row; measured logical anchor-plus-offset
@@ -49,6 +49,14 @@
 > scrollable floor, and Planetside's maximum derives from the same bottom anchor so the existing 8px
 > inter-surface gap survives compact-phone height. This is the bounded product repair for c095's
 > retained 12.5px rectangle overlap; it does not alter Glass ownership predicates or z-index.
+> `apps/game/src/planet-texture-demand.ts` owns the pure fitted backing-pixel demand, exact legacy
+> 512/768/1024 tier projection, higher-tier suppression, and surface generation/world identity.
+> `drawSurface()` computes `ceil(420 × fitZ × DPR)` with a 64px floor: standard phone/desktop boot is
+> 609/420px and selects 512. The app owner retains the live Sprite, generation, planet seed/ordinal,
+> requested tier, and one refresh timer; it re-reads ThumbArt's cache after the asynchronous bake,
+> swaps only a current owner's settled texture, destroys the displaced Pixi texture, rejects stale
+> completion, and requests only a genuinely higher tier on zoom/DPR bucket changes. Maximum tested
+> phone/desktop zoom demand is 1,248/1,280px and selects 1024, preserving supported sharpness.
 >
 > `apps/game/src/species-art-protocol.ts`, `species-art-worker-core.ts`, and
 > `species-art.worker.ts` own the validated realm protocol, worker state machine, and direct Vite
@@ -227,7 +235,7 @@
 > `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9` establishes measurement
 > authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer `e59685b1…`
 > remains unchanged. Clean source `374049536e…` collected paired baseline7 plus independent
-> candidate14/15/16 once without retry; every candidate replayed 78/78. Active browser-free
+> candidate14/15/16 once without retry; every candidate replayed 78/78. The then-active browser-free
 > budget/test `bb4da2bf0b…` / `d242705ad9…` retain all four baseline faults, 14 phone / 13 desktop
 > breaches, and all 40 ceilings strictly above the three-run maxima. This activation is not
 > certification. The accepted 45-second CI cold-start allowance is process environment, not a
@@ -256,12 +264,33 @@
 > the opened surface to retain that document/owner at generation + 1, and requires connected
 > current `ready`, nontrivial source, completed decode, and exact 440×440 natural dimensions under one
 > immutable 30-second deadline, with pending/error/stale/contradictory/exact-late controls and rich
-> final diagnostics. One repair-head battery plus one corresponding CI attempt completes this cycle;
-> HUMAN review remains open, and work then returns to Arc 1B/gameplay without broader timing work.
+> final diagnostics. Exact pushed head `139ce2f…` then passed the complete local battery.
+> Corresponding run `32383320206`, attempt 1, tested synthetic merge `174a9140…` under exact Edge
+> .86 and matching measurement `6ba58522…`, producer `e59685b1…`, and then-active budget
+> `bb4da2bf0b…`. Phone completed 29 stages through veteran-Earth boot readiness; Planetside thumb
+> settlement's target `Runtime.evaluate` took `2001.132592` ms against the unchanged 2,000 ms
+> deadline while root `Browser.getVersion` answered in `10.401960` ms. This is terminal
+> `product-unanswerable` evidence—zero outcomes, 78 blocked, no review PNG, and no retry—not an
+> instrument/transport or timing-policy red.
+>
+> The displayed-demand/zoom-owner product and development-copy change produces
+> `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`: index `dee9af3a…`, owner
+> `assets/main-Da536xWA.js` / `28382873…`, worker and painter unchanged. Measurement authority
+> remains `6ba58522…`. `budgets/compendium-memory-v1.json` is now deliberately
+> `calibration-required`: budget/test SHA-256 `9f53ebe69e…` / `c2b68b3ec…`, empty phone/desktop
+> samples, measurement-required paired baseline, and null ceilings. Baseline7/candidate14/15/16 and
+> exact-139 evidence remain historical for producer `e59685b1…`; they cannot certify `d3223177…`.
+> The bounded successor is one no-retry baseline8 against legacy `3844701…` plus independent
+> candidate17/18/19 on one clean committed producer head, then—only after matching raw authority,
+> 78/78 candidates, four retained baseline faults/discriminating breaches, and strict reasoned
+> ceilings—one exact-activation-head battery and one corresponding CI attempt. First red stops;
+> HUMAN review remains open, and work returns to Arc 1B/gameplay after PR #32 closes without broader
+> timing work.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.
-> Arc 1B scene-resource ownership/disposal and live HD planet replacement remain open.
+> This repair owns the current surface globe's fitted start and live tier swap only;
+> the broader Arc 1B/1C scene-resource ownership, disposal, and HD texture package remains open.
 > **2026-08-16 D-TRAIN-1 source overlay (current working tree; local browser
 > evidence recorded below; exact-head CI, integration, real-save Gate C, and
 > human authority remain open):** `@cf/persistence` now classifies the real

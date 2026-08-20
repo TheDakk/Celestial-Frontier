@@ -34,6 +34,14 @@ producer error remains a stable owned error tile, releases cleanly, and the exac
 through a fresh worker lease. Capability/import/protocol/worker failure terminates once and settles
 the active plus queued owners exactly once instead of retrying a broken worker for every tile.
 
+Cold Planetside globe art now begins from displayed backing-pixel demand rather than a speculative
+largest tier. The fitted 420px globe computes `ceil(diameter × fit scale × DPR)` with a 64px floor;
+the standard phone/desktop profiles request 609/420px and select the existing deterministic 512 tier.
+Sharpness is not traded away: one exact surface-generation/world owner re-reads and swaps the
+settled cache entry, rejects stale completion, suppresses duplicate-tier work, and requests a higher
+512/768/1024 tier only when real zoom or DPR demand crosses its boundary. Maximum tested phone and
+desktop zoom demand is 1,248/1,280px, which still selects 1024.
+
 The phone and desktop resource path is implemented; its current producer awaits a refreshed measured ruler. Every
 selected head must own exact-source local certification, and its corresponding PR test-merge CI
 must be terminal green; this reference deliberately caches neither live outcome. Exact committed repair
@@ -99,7 +107,7 @@ observation remains 2,000 ms. Portable controls pass at 38,657 ms and reject exa
 relaunch, retry, fallback, workflow change, or art/game timing optimization. Launcher `6892dea6…` changes measurement authority
 to `6ba58522…`; producer `e59685b1…` remains unchanged. Clean source `374049536e…` collected
 baseline7 plus independent candidate14/15/16 once without retry; every candidate replayed 78/78.
-Active browser-free budget/test `bb4da2bf0b…` / `d242705ad9…` own all 40 strict ceilings while
+The then-active browser-free budget/test `bb4da2bf0b…` / `d242705ad9…` owned all 40 strict ceilings while
 retaining four baseline faults and 14 phone / 13 desktop breaches; this is not certification. The
 45-second CI allowance is accepted process environment, not a game optimization target.
 
@@ -116,14 +124,34 @@ The bounded repair keeps all producer and measurement bytes unchanged: root layo
 that document/owner at generation + 1, and keeps the exact detail owner mounted until connected
 current `ready`, nontrivial source, decoded 440×440 publication under one 30-second deadline. Placeholder,
 decode-pending, error, stale/disconnected, contradictory, wrong-size, and exact/late states are
-controlled. None of this changes portrait pixels, art direction, game timing, or HUMAN judgment.
-After one repair-head battery and one corresponding CI attempt, work returns to Arc 1B/gameplay.
-Every selected head must own exact-source local certification, and its corresponding PR test-merge
-CI must be terminal green; this reference deliberately caches neither live outcome.
+controlled. Those instrument repairs changed no portrait pixels, art direction, or game timing.
+Exact pushed head `139ce2f…` subsequently passed one complete local battery. Corresponding run
+`32383320206` matched exact Edge .86, measurement `6ba58522…`, producer `e59685b1…`, and then-active
+budget `bb4da2bf0b…`, completed 29 phone stages, and preserved a no-retry
+`product-unanswerable` Planetside red: target `Runtime.evaluate` took `2001.132592` ms against the
+unchanged 2,000 ms deadline while root `Browser.getVersion` answered in `10.401960` ms. It emitted
+zero outcomes, blocked all 78, and retained no review PNG.
+
+The displayed-demand/zoom-owner product and development-copy repair changes built producer authority
+to `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`: index `dee9af3a…`, owner
+`assets/main-Da536xWA.js` / `28382873…`, worker/painter unchanged. Measurement remains `6ba58522…`.
+The ruler is deliberately `calibration-required` under budget/test `9f53ebe69e…` / `c2b68b3ec…`;
+samples are empty, paired baseline is measurement-required, and ceilings are null. Baseline7 and
+candidate14/15/16 remain truthful only for old producer `e59685b1…`.
+
+The bounded next step is one no-retry baseline8 against legacy `3844701…` plus independent
+candidate17/18/19 on one identical clean committed producer head, followed—only if candidates replay
+78/78, the baseline retains four faults/discriminating breaches, authorities match, and strict
+reasoned ceilings are activated—by one exact-activation-head battery and one corresponding CI
+attempt. The first red stops without timing expansion; after PR #32 closes, work returns to Arc
+1B/gameplay. Every selected head must own exact-source local certification, and its corresponding PR
+test-merge CI must be terminal green; this reference deliberately caches neither mutable live
+outcome.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
 browser. Calibration review PNGs do not satisfy the selected-head HUMAN row; a fresh phone/desktop
-list, focus-pinned, and detail set still requires HUMAN review. Arc 1B
-scene-resource ownership/disposal and live HD planet replacement remain open.
+list, focus-pinned, and detail set still requires HUMAN review. This repair owns the
+current surface globe's fitted start and live tier swap only; the broader Arc 1B/1C
+scene-resource ownership, disposal, and HD texture package remains open.
 
 **What remains planned:** V2 has no Cargo, Shipyard, ship portrait, crafting, research, or
 ship-upgrade presentation yet. Legacy v1.8.9 does have deterministic additive ship art in

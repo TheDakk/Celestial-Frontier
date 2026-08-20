@@ -11,9 +11,12 @@ as any change that touches an entry.
 
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
-**Status: ★ product implementation, serviced-turn scheduler, compact-phone Planetside stack repair,
-and active browser-free `6ba58522…` / `e59685b1…` ruler present. Exact-source automation and fresh
-six-image `[HUMAN]` review are open.**
+**Status: ★ product implementation, serviced-turn scheduler, compact-phone Planetside stack, and
+displayed-demand/zoom-owner repair present. Exact-139 passed locally; corresponding run
+`32383320206` preserved a valid product red. Measurement remains `6ba58522…`, producer is
+`d3223177…`, and budget/test `9f53ebe69e…` / `c2b68b3ec…` fail closed at
+`calibration-required`. Fresh calibration, exact-source automation, and six-image `[HUMAN]` review
+are open.**
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -33,6 +36,13 @@ This block records the current disposition of the historical
   per-job. Detail owns an asynchronous 440px request through the same broker. A generation token
   invalidates an armed pump across bfcache suspension or final disposal; resume owns a fresh serviced
   turn.
+- The Planetside globe no longer front-loads the largest supported texture tier. It computes backing
+  demand from fitted diameter, scene scale, and DPR: standard phone/desktop boot is 609/420px and
+  selects 512. An exact surface-generation plus planet seed/ordinal owner re-reads the asynchronous
+  bake, swaps only current settled content, rejects stale completion, and suppresses duplicate-tier
+  work. Genuine zoom/DPR demand still upgrades through 768 to 1024; maximum tested phone/desktop
+  demand is 1,248/1,280px. This is an approved structural improvement over the fixed entry request,
+  not a loss of supported art fidelity.
 - The prior exact-3844701/e4e8d1d observations remain historical calibration evidence, not active
   current authority. Exact committed repair `dea03913014bc58134ebb06ca5b36892210a7571`
   passed all 12 Glass rows; its following exact Compendium run
@@ -101,9 +111,9 @@ This block records the current disposition of the historical
   and product observation remains 2 seconds. Portable controls pass at 38,657 ms and reject
   exact/late 38,658/38,659 ms with one child and cleanup. That caller change itself introduced no
   warmup, relaunch, retry, fallback, workflow change, or game optimization. Launcher `6892dea6…` changes measurement to
-  `6ba58522…`; producer stays `e59685b1…`. Clean source `374049536e…` collected baseline7 plus
+  `6ba58522…`; producer then stayed `e59685b1…`. Clean source `374049536e…` collected baseline7 plus
   independent candidate14/15/16 once without retry; every candidate replayed 78/78. Active
-  browser-free budget/test `bb4da2bf0b…` / `d242705ad9…` retain all four baseline faults and 14 phone /
+  then-active browser-free budget/test `bb4da2bf0b…` / `d242705ad9…` retain all four baseline faults and 14 phone /
   13 desktop breaches, with all 40 ceilings strict. This is non-certifying. One exact-head battery
   and one corresponding CI attempt were then consumed by exact c49 and the run recorded next.
 - Exact pushed head `c49af5a72a41eebd79ce3975852f3d7c22ab3ac6` completed that full local battery:
@@ -116,7 +126,7 @@ This block records the current disposition of the historical
   screenshots and only an immediate `src length 0` detail sample; it retained no image state or
   worker phase, then Back released the asynchronous owner, so it cannot adjudicate final portrait
   settlement.
-- The final bounded working-tree repair gives root layout one captured 45/15/30/5-second caller.
+- The final bounded CI-instrument repair gives root layout one captured 45/15/30/5-second caller.
   Exact-Edge workflows use `tools/compendiummem-browser-preflight.mjs` for one exact-authority fresh-
   target Runtime/Page/HeapProfiler plus evaluate/event proof under 45/15/sealed-5/2-second bounds;
   it is outside the hashed measurement graph, so `6892dea6…`, `6ba58522…`, `e59685b1…`,
@@ -124,8 +134,23 @@ This block records the current disposition of the historical
   logical owner, requires the opened detail to retain that document/owner at generation + 1, keeps
   it mounted, and polls connected current ready/src/decode/440×440 settlement under one immutable
   30-second deadline, with pending/error/stale/disconnected/contradictory/wrong-size/exact-late
-  controls and rich diagnosis. One repair-head local battery and one corresponding CI attempt finish
-  this infrastructure cycle before Arc 1B/gameplay resumes; no broader timing work is in scope.
+  controls and rich diagnosis. Exact pushed head `139ce2f…` then passed one complete local battery.
+  Corresponding run `32383320206`, attempt 1, matched exact Edge .86, measurement `6ba58522…`,
+  producer `e59685b1…`, and then-active budget `bb4da2bf0b…`; after 29 phone stages its Planetside
+  target `Runtime.evaluate` took `2001.132592` ms against the unchanged 2,000 ms deadline while root
+  `Browser.getVersion` answered in `10.401960` ms. The valid no-retry terminal result is
+  `product-unanswerable`: zero outcomes, 78 blocked, and no review PNG.
+- The displayed-demand/zoom-owner product and development-copy repair changes built producer to
+  `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900` (index `dee9af3a…`, owner
+  `assets/main-Da536xWA.js` / `28382873…`; worker/painter unchanged). Measurement remains
+  `6ba58522…`. Current budget/test `9f53ebe69e…` / `c2b68b3ec…` deliberately fail closed at
+  `calibration-required`, with empty candidate samples, a measurement-required paired baseline, and
+  null ceilings. Baseline7/candidate14/15/16 remain historical for `e59685b1…`.
+- The bounded successor is one no-retry baseline8 against legacy `3844701…` plus independent
+  candidate17/18/19 from one clean committed head, activation only after matching raw authority,
+  78/78 candidate replay, four retained baseline faults/discriminating breaches, and strict reasoned
+  ceilings, then one exact-activation-head battery and one corresponding CI attempt. First red stops;
+  no broader timing work is in scope before Arc 1B/gameplay resumes after PR #32 closes.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned

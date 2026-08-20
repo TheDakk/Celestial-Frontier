@@ -49,6 +49,14 @@ import {
 } from './training.js';
 import { buildLegacyTrainingRestoreCandidate } from './training-restore.js';
 import {
+  displayedPlanetTextureDemandPx,
+  nextPlanetTextureTierPx,
+  planetTextureTierForDemandPx,
+  sameSurfacePlanetTextureIdentity,
+  type PlanetTextureTierPx,
+  type SurfacePlanetTextureIdentity,
+} from './planet-texture-demand.js';
+import {
   getGuideCatalogue, getGuideTopic, searchGuide,
   type GuideCategoryId, type GuideTopicId, type GuideTopicView,
 } from './guide-content.js';
@@ -2000,13 +2008,32 @@ let sysStar: { seed: number; col: string; kind: string; starR: number } | null =
 let chartLayer: Container | null = null;   /* Star charts (chartsOn, OFF by default — v1.3.6, Nick's call) */
 let starSurfSpr: Sprite | null = null;
 let surfClouds: { a: Sprite; b: Sprite; w: number } | null = null;
+type SurfacePlanetTextureOwner = SurfacePlanetTextureIdentity & {
+  planet: PlanetNode;
+  sprite: Sprite;
+  diameterCssPx: number;
+  requestedTierPx: PlanetTextureTierPx | 0;
+  refreshTimer: ReturnType<typeof setTimeout> | null;
+};
+let surfacePlanetTextureGeneration = 0;
+let surfacePlanetTextureOwner: SurfacePlanetTextureOwner | null = null;
+const SURFACE_PLANET_TEXTURE_REFRESH_MS = 31;
 const baseR = (): number => Math.max(0.7 / cam.z, 0.55);   /* Renderer star sizing (main.js 4126) */
+
+function releaseSurfacePlanetTextureOwner(): void {
+  surfacePlanetTextureGeneration++;
+  if (surfacePlanetTextureOwner?.refreshTimer != null) {
+    clearTimeout(surfacePlanetTextureOwner.refreshTimer);
+  }
+  surfacePlanetTextureOwner = null;
+}
 
 function clearWorld(): void {
   /* DESTROY, don't just detach (audit #4): Texts own their canvas textures
      and the universe rebuilds on every pan cell-crossing — undisposed
      children climb GPU memory. Shared sprite textures survive (destroy()
      leaves textures alone by default). */
+  releaseSurfacePlanetTextureOwner();
   for (const c of world.removeChildren()) c.destroy({ children: true });
   galaxySpins.length = 0;
   galStars = []; galTwinkle = []; screenScaled = [];
@@ -2430,6 +2457,7 @@ function updateFineLayer(force: boolean): void {
 }
 
 function updateZoomDependent(): void {
+  updateSurfacePlanetTextureDemand();
   /* runs on zoom-bucket change: star sizes track baseR (screen-constant
      until deep zoom, exactly the Renderer's curve), Sol/label gates, BH gate */
   const zb = zBucket();
@@ -2444,6 +2472,63 @@ function updateZoomDependent(): void {
     if (bhDisc) bhDisc.visible = cam.z > minWH() / 700;
   }
   if (nav.mode === 'system') { rebuildSystemHD(); updateStarSurf(); }
+}
+
+function currentSurfacePlanetTextureIdentity(): SurfacePlanetTextureIdentity | null {
+  if (nav.mode !== 'surface') return null;
+  return {
+    generation: surfacePlanetTextureGeneration,
+    planetSeed: nav.planet.seed,
+    planetOrdinal: nav.planet.ordinal,
+  };
+}
+
+function publishSurfacePlanetTexture(
+  owner: SurfacePlanetTextureOwner,
+  canvas: HTMLCanvasElement,
+): void {
+  if (surfacePlanetTextureOwner !== owner
+    || !sameSurfacePlanetTextureIdentity(owner, currentSurfacePlanetTextureIdentity())) return;
+  const next = Texture.from(canvas);
+  const previous = owner.sprite.texture;
+  if (next === previous) return;
+  owner.sprite.texture = next;
+  owner.sprite.width = owner.diameterCssPx;
+  owner.sprite.height = owner.diameterCssPx;
+  previous.destroy();
+}
+
+function scheduleSurfacePlanetTextureRefresh(
+  owner: SurfacePlanetTextureOwner,
+  demandPx: number,
+): void {
+  if (owner.refreshTimer !== null) clearTimeout(owner.refreshTimer);
+  owner.refreshTimer = setTimeout(() => {
+    owner.refreshTimer = null;
+    if (surfacePlanetTextureOwner !== owner
+      || !sameSurfacePlanetTextureIdentity(owner, currentSurfacePlanetTextureIdentity())) return;
+    publishSurfacePlanetTexture(owner, getPlanetSprite(owner.planet.P, demandPx));
+  }, SURFACE_PLANET_TEXTURE_REFRESH_MS);
+}
+
+function requestSurfacePlanetTextureDemand(demandPx: number): void {
+  const owner = surfacePlanetTextureOwner;
+  if (!owner || !sameSurfacePlanetTextureIdentity(owner, currentSurfacePlanetTextureIdentity())) return;
+  const nextTierPx = nextPlanetTextureTierPx(owner.requestedTierPx, demandPx);
+  if (nextTierPx === null) return;
+  owner.requestedTierPx = nextTierPx;
+  getPlanetSprite(owner.planet.P, demandPx);
+  scheduleSurfacePlanetTextureRefresh(owner, demandPx);
+}
+
+function updateSurfacePlanetTextureDemand(): void {
+  const owner = surfacePlanetTextureOwner;
+  if (!owner || nav.mode !== 'surface') return;
+  requestSurfacePlanetTextureDemand(displayedPlanetTextureDemandPx(
+    owner.diameterCssPx,
+    camT.z,
+    DPR,
+  ));
 }
 function updateStarSurf(): void {
   /* universe-crispness (main.js 5127): a CLOSE star shows its boiling
@@ -3279,10 +3364,22 @@ function drawSurface(p: PlanetNode, state: Extract<NavState, { mode: 'surface' }
   clearWorld();
   const R = 210;
   const fitZ = Math.min(1, (minWH() * 0.78) / (R * 2));
-  const spr = new Sprite(Texture.from(getPlanetSprite(p.P, 1024)));
+  const initialTextureDemandPx = displayedPlanetTextureDemandPx(R * 2, fitZ, DPR);
+  const spr = new Sprite(Texture.from(getPlanetSprite(p.P, initialTextureDemandPx)));
   spr.anchor.set(0.5);
   spr.width = R * 2; spr.height = R * 2;
   world.addChild(spr);
+  surfacePlanetTextureOwner = {
+    generation: surfacePlanetTextureGeneration,
+    planetSeed: state.planet.seed,
+    planetOrdinal: state.planet.ordinal,
+    planet: p,
+    sprite: spr,
+    diameterCssPx: R * 2,
+    requestedTierPx: planetTextureTierForDemandPx(initialTextureDemandPx),
+    refreshTimer: null,
+  };
+  scheduleSurfacePlanetTextureRefresh(surfacePlanetTextureOwner, initialTextureDemandPx);
   if ((p.P.type === 'terran' || p.P.type === 'ocean') && motionOK()) {
     /* the drifting upper cloud deck (main.js 5256) — twin sprites wrap so
        the sliding edge never shows; drift rate scaled to the slice's fixed

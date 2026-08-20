@@ -1021,7 +1021,7 @@ authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; pr
 `374049536e959597f8fc40e87a68bc6cbfd0b455` collected paired baseline7 plus independent
 candidate14/15/16 once without retry; every candidate replayed 78/78. Active budget/test
 `bb4da2bf0bc6dd4327884ff07735241b2fa8d9e5e6d32f09295ed86ae7bdbcfe` /
-`d242705ad987d21c773d23b33eb94bbbbeb1a94ec6d527ff594c198861b7be48` retain all four baseline
+`d242705ad987d21c773d23b33eb94bbbbeb1a94ec6d527ff594c198861b7be48` then retained all four baseline
 faults, 14 phone / 13 desktop breaches, and 40 strict ceilings above the three-run maxima. This is
 browser-free ruler activation, not certification. Nick accepts 45 seconds as the CI cold-start
 allowance, not an optimization target. That activation transition was limited to one exact-head
@@ -1063,6 +1063,40 @@ decode, and exact natural dimensions, and preserve the last image/worker/broker 
 remain pending; producer error, stale/disconnected owner, contradictory ready state, wrong dimensions,
 and receipts at or after the deadline are terminal. Negative-control every state and never replace
 this with a fixed delay, an unbounded wait, or an automatic retry.
+
+**Correction earned by PR #32's exact-139 product red:** a fitted surface must not begin at its
+largest supported texture merely because later zoom can legitimately need that tier. GitHub Actions
+run `32383320206`, attempt 1, tested clean synthetic merge
+`174a914053a6457a33b1401cce3709c235a28409` for pushed head `139ce2f…` under exact Edge .86,
+matching measurement `6ba58522…`, producer `e59685b1…`, and then-active budget `bb4da2bf0b…`.
+Phone completed 29 stages through veteran-Earth boot readiness; Planetside thumb settlement's target
+`Runtime.evaluate` missed the unchanged 2,000 ms deadline at `2001.132592` ms while independent root
+`Browser.getVersion` answered in `10.401960` ms. The terminal result is `product-unanswerable`, not
+instrument/transport or a timing-policy red: zero outcomes, 78 blocked, no review PNG, one attempt,
+and zero retries. Preserve report/log SHA-256 `e75d6ca3…` / `ca5e14e2…` without an unchanged retry.
+
+**RENDER-TARGET DEMAND MUST DERIVE FROM DISPLAYED BACKING PIXELS, WHILE LATER SHARPNESS OWNS AN
+IDENTITY-SAFE UPGRADE.** Compute cold demand from rendered CSS diameter, scene scale, and DPR under a
+finite positive floor, then select the existing deterministic tier map. Here standard phone/desktop
+boot demand is 609/420px and selects 512 rather than starting at 1024. Preserve supported zoom by
+binding the exact surface generation, planet seed, and ordinal; re-read the cache after the
+asynchronous bake; publish only to that current owner; and request only a genuinely higher
+512/768/1024 tier when zoom/DPR demand crosses a boundary. Suppress duplicate-tier work, retain the
+old texture until the successor settles, and reject stale completions. Maximum tested phone/desktop
+zoom demand is 1,248/1,280px and therefore still selects 1024. Do not answer this class by lowering
+supported sharpness, publishing a stale world's texture, polling without owner identity, changing a
+CDP deadline, or retrying the red.
+
+That product/copy change makes producer authority `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`
+(index `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`; worker/painter unchanged) while
+measurement `6ba58522…` remains frozen. The budget must therefore fail closed at
+`calibration-required`: current budget/test SHA-256 are `9f53ebe69e…` / `c2b68b3ec…`, samples are
+empty, paired baseline is measurement-required, and ceilings are null. Baseline7/candidate14/15/16
+remain historical for producer `e59685b1…`. Freeze one clean collector/product head, measure
+baseline8 against legacy `3844701…` and independent candidate17/18/19 once each without retry,
+activate only from matching raw authority with 78/78 candidates, four retained baseline faults and
+strict reasoned ceilings, then run one exact-activation-head battery and one corresponding CI
+attempt. First red stops; no more timing expansion precedes the return to Arc 1B/gameplay.
 
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread
