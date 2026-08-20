@@ -12,9 +12,8 @@ as any change that touches an entry.
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
 **Status: ★ product implementation and serviced-turn scheduler repair present; measurement
-authority `f9710bdf…` is fail-closed `calibration-required` pending a fresh paired broken baseline
-plus three independent candidates; exact-source automation is governed by live artifacts/CI; fresh
-six-image `[HUMAN]` review is open.**
+authority `f9710bdf…` is active under exact-.86 baseline5 plus independent candidate8/9/10;
+exact-source automation is governed by live artifacts/CI; fresh six-image `[HUMAN]` review is open.**
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -42,9 +41,10 @@ This block records the current disposition of the historical
   sequence destructively trimmed the desktop cache before warming and then measured refill, while
   its heap ruler omitted embedder/backing ownership.
 - The da0 ruler embedded exact paired run
-  `20260820-arc1a-baseline3-21af3fa` plus independent one-attempt candidate2/3/4 runs from clean
-  committed collector/product `21af3fa2…`, all under measurement authority `bb03a3af…`, producer
-  authority `291b794e…`, and isolated Edge 151.0.4129.86. The repaired seam moves cap control after
+  `20260820-arc1a-baseline3-21af3fa`, collected by `21af3fa2…` against legacy product `3844701…`,
+  plus independent one-attempt candidate2/3/4 runs from clean committed `21af3fa2…`
+  collector/product source that bind producer `291b794e…`. All share measurement authority
+  `bb03a3af…` and isolated Edge 151.0.4129.86. The repaired seam moves cap control after
   full native warm-cache observation; records used, embedder, backing-store, and aggregate heap;
   proves stable unique keys plus unchanged job/disposal/worker counters across the last three cycles
   of one retained window; embeds replayable raw capsules; and binds the complete measurement inputs
@@ -61,16 +61,32 @@ This block records the current disposition of the historical
   bounded repair hypothesis.
 - The serviced-turn repair changes built producer authority to
   `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Clean seam commit
-  `f47cd381…` supplied paired baseline4 and independent one-attempt candidate5/6/7 under measurement
-  `bb03a3af…` and exact Edge .86. All candidates completed 78/78 outcomes with zero retries. That
+  `f47cd381…` collected paired baseline4 against legacy product `3844701…`; independent one-attempt
+  candidate5/6/7 use `f47cd381…` product/collector source and bind producer `1c8200d7…`. All four
+  share measurement `bb03a3af…` and exact Edge .86. All candidates completed 78/78 outcomes with zero retries. That
   historical `bb03a3af…` ruler replayed those raw capsules, kept all 40 ceilings strictly above the
   three-run maxima, and retained four baseline faults with 14 phone / 13 desktop breaches. The
-  frozen shared-timer repair moves measurement authority to `f9710bdf…`; the current budget is
-  fail-closed `calibration-required` pending a fresh paired broken baseline plus three independent
-  candidates before successor activation/certification. Baseline3 and candidate2/3/4 remain
-  truthful historical evidence for producer `291b794e…`, not current authority. This criterion
-  returns to `[EXEC]` only when the selected head's ignored exact-source artifacts and its
-  corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
+  frozen shared-timer repair moves measurement authority to `f9710bdf…`. Paired baseline5 used
+  clean collector `cbe786816cafd196a4b1649b0d1b72966036b7cc` against detached broken source
+  `3844701…`; independent candidate8/9/10 used that exact clean source, producer `1c8200d7…`, and
+  `Edg/151.0.4129.86` (`@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript `15.1.23.7`,
+  protocol `1.3`). All four runs were one attempt/no retry; each candidate capsule replayed 78/78.
+  Active budget/test SHA-256 values are
+  `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` /
+  `121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a`; focused tests passed
+  11/11, selftest passed 222/222, and all 15 current inputs recomputed without mismatch. All 40
+  ceilings exceed the candidate maxima. Variable phone maxima → ceilings are page heap
+  7,771,656 → 8,388,608, embedder 3,151,408 → 4,194,304, backing 3,099,159 → 4,194,304,
+  aggregate 12,406,038 → 14,680,064, encoded bytes 2,477,068 → 2,621,440, and warm aggregate
+  6,196 → 65,536; desktop values are 10,550,176 → 12,582,912, 3,216,400 → 4,194,304,
+  4,914,765 → 6,291,456, 16,017,176 → 18,874,368, 6,592,468 → 6,815,744, and
+  306,704 → 524,288. Baseline5 preserves four faults and breaches 14 phone / 13 desktop fields;
+  desktop page heap deliberately does not breach. This browser-free activation is not
+  certification. Baseline3 and candidate2/3/4 remain truthful inputs to the historical
+  `bb03a3af…` ruler; only the candidate runs carry producer `291b794e…`. They are not current
+  authority. This criterion returns to `[EXEC]` only when the selected
+  head's ignored exact-source artifacts and its corresponding PR test-merge CI are terminal green;
+  the live outcome is not cached here.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned

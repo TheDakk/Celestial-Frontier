@@ -6,7 +6,7 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-20.**
 > **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
-> shared-timer recalibration required; final HUMAN review remains open):**
+> active timer-authority ruler; exact-head certification and final HUMAN review remain open):**
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
 > bounded overscan, and any focus-pinned row; measured logical anchor-plus-offset
@@ -33,8 +33,9 @@
 > per-job. Phone/desktop cache, decoded-pixel, byte, queue, lease, portrait, worker
 > lifecycle, and phase evidence are explicit. The last pre-timer resource ruler was active under
 > measurement authority `bb03a3af…`; exact-788 and exact-ef6 certification remain truthful for that
-> authority. The frozen shared-timer repair moves measurement authority to `f9710bdf…`, whose
-> budget is `calibration-required` pending fresh calibration.
+> authority. The frozen shared-timer repair moves measurement authority to `f9710bdf…`; exact
+> baseline5 plus independent candidate8/9/10 now activate its successor ruler. Activation is not a
+> browser certification or current-head PASS.
 > Specimen detail requests an
 > asynchronous 440px result through the same owner; Back/Close cancels that request
 > and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
@@ -66,9 +67,10 @@
 > binds the complete fixture/generator/schema/contract/collector/browser/lock/package/
 > baseline-save/art-build/outcome input set plus the exact built index-owner → module-worker
 > → worker-local-painter graph. Da0's historical budget embeds paired run
-> `20260820-arc1a-baseline3-21af3fa` plus independent one-attempt candidate2/3/4 runs from
-> clean committed `21af3fa2…`, under measurement authority `bb03a3af…`, historical producer authority
-> `291b794e…`, and exact Edge 151.0.4129.86. Strict ceilings exceeded all three-run maxima;
+> `20260820-arc1a-baseline3-21af3fa`, collected by `21af3fa2…` against legacy product `3844701…`,
+> plus independent one-attempt candidate2/3/4 runs from clean committed `21af3fa2…`
+> collector/product source that bind historical producer `291b794e…`. All share measurement
+> authority `bb03a3af…` and exact Edge 151.0.4129.86. Strict ceilings exceeded all three-run maxima;
 > the baseline retained all four sealed faults and breached 14 phone / 13 desktop fields. Commit
 > `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` locally certified that exact ruler; its no-retry Chrome
 > Smoke, full Glass, persona, root-layout, and nonpublishable-preview gates also passed.
@@ -89,14 +91,16 @@
 > `assets/main-BAg-DH_f.js` at
 > `b12503d154d83a44c4606c31306bf756d6a35e1459877a30e6a89d423c49261f`, with worker and painter
 > unchanged.
-> Commit `f47cd381699fb1934f30bfca82fc9bf971714e6d` is the clean collector/product source for exact
-> Edge-.86 paired baseline4 and independent one-attempt candidate5/6/7. All candidate runs completed
-> 78/78 outcomes with zero retries under measurement authority `bb03a3af…` and producer
-> `1c8200d7…`. The active budget replays those raw capsules and puts all 40 profile ceilings strictly
+> Commit `f47cd381699fb1934f30bfca82fc9bf971714e6d` collected exact-Edge-.86 baseline4 against legacy
+> product `3844701…`; that baseline carries no candidate producer field. Independent one-attempt
+> candidate5/6/7 use `f47cd381…` as clean collector/product source and bind producer `1c8200d7…`.
+> All four share measurement authority `bb03a3af…`; every candidate run completed 78/78 outcomes
+> with zero retries. That historical pre-timer budget replays those raw capsules and puts all 40 profile ceilings strictly
 > above their three-run maxima; baseline4 retains all four sealed faults and breaches 14 phone / 13
 > desktop fields. The desktop warm aggregate maximum is 436,412 bytes under a 524,288-byte ceiling.
-> Baseline3/candidate2/3/4 remain truthful history for old producer `291b794e…`, not current
-> certification. Commit `78813cd25c67f4255282f418ea6f635a45e0fc29` passed exact-head
+> Baseline3 and candidate2/3/4 remain truthful inputs to the old `bb03a3af…` ruler; only the
+> candidate runs carry old producer `291b794e…`. They are not current certification. Commit
+> `78813cd25c67f4255282f418ea6f635a45e0fc29` passed exact-head
 > Arc-local Edge run `20260820-arc1a-serviced-turn-active-cert-78813cd`: 78/78 outcomes, zero
 > findings/retries, independent named-run verification, report SHA-256 `0d4a7f80…`.
 >
@@ -153,10 +157,24 @@
 > during initial timer arming rejects without transmitting the command. Frozen browser-CDP SHA-256
 > `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0`
 > changes measurement authority from historical `bb03a3af…` to
-> `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Frozen budget SHA-256
-> `a41ff08b8a58e776c789f09e7294c1cb2c0f44da8406f81c55f0754076337c30` is
-> `calibration-required`; no old capsule or PASS certifies the successor authority. A fresh paired
-> broken baseline plus three independent candidates must precede activation/certification.
+> `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Frozen budget
+> `a41ff08b8a58e776c789f09e7294c1cb2c0f44da8406f81c55f0754076337c30` first enforced the
+> `calibration-required` boundary; active budget/test SHA-256 values are now
+> `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` /
+> `121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a`.
+> Paired `20260820-arc1a-absolute-deadline-baseline5` used clean collector
+> `cbe786816cafd196a4b1649b0d1b72966036b7cc` against detached broken source `3844701…`;
+> candidate8/9/10 used that clean source, exact Edge .86, producer `1c8200d7…`, one attempt, and no
+> retries. Each candidate replays 78/78. All 40 ceilings exceed the three-run maxima: phone
+> page/embedder/backing/aggregate/encoded/warm maxima → ceilings are
+> `7,771,656/3,151,408/3,099,159/12,406,038/2,477,068/6,196` →
+> `8,388,608/4,194,304/4,194,304/14,680,064/2,621,440/65,536` bytes; desktop values are
+> `10,550,176/3,216,400/4,914,765/16,017,176/6,592,468/306,704` →
+> `12,582,912/4,194,304/6,291,456/18,874,368/6,815,744/524,288`. Baseline5 preserves all four
+> faults, observes warm ranges 1,037,780 / 1,222,370 bytes, and breaches 14 phone / 13 desktop
+> fields. Focused replay is 11/11 and the independent instrument controls are 222/222. These are
+> browser-free activation facts; no old capsule or PASS, and no calibration run itself, certifies
+> the later activation head.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.

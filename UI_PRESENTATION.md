@@ -117,7 +117,7 @@
 > rows plus clipped-ancestor controls. Those hostile evidence states are intentionally unlike the
 > ordinary Dev presentation and do not claim v1.0-equivalent visual polish.
 >
-> Phone and desktop resource ownership is implemented; the last measured ruler is historical.
+> Phone and desktop resource ownership is implemented; the timer-authority measured ruler is active.
 > Every selected head must own exact-source local certification, and its corresponding PR test-merge
 > CI must be terminal green; this reference deliberately caches neither live outcome. Exact committed repair dea039 passes all 12 Glass rows; its
 > following exact Compendium run `20260817150005919-93781-b6643ba7a6` truthfully reports 75/76,
@@ -126,8 +126,9 @@
 > omitted embedder/backing ownership. The repaired seam observes the full native warm cache before
 > cap control, measures used/embedder/backing/aggregate heap, retains post-cap restoration, and
 > proves stable unique keys plus unchanged job/disposal/worker counters across the last three cycles
-> of one retained window. Da0's historical ruler embeds exact baseline3 and candidate2/3/4 from clean
-> `21af3fa2…`, under authority `bb03a3af…`, producer `291b794e…`, and exact Edge 151.0.4129.86;
+> of one retained window. Da0's historical ruler embeds baseline3 collected by `21af3fa2…` against
+> legacy product `3844701…`, plus candidate2/3/4 from clean `21af3fa2…` product/collector source
+> under producer `291b794e…`; all share authority `bb03a3af…` and exact Edge 151.0.4129.86.
 > strict ceilings exceed every three-run maximum, while the baseline retains four faults and
 > breaches 14 phone / 13 desktop fields. Da0's exact local Compendium certification and Chrome gates
 > passed, but PR run `32334254714`, attempt 1, retained a no-retry phone Planetside
@@ -137,9 +138,15 @@
 > every candidate produced 78/78 outcomes with zero retries. That historical `bb03a3af…` ruler
 > replayed those raw capsules, kept every ceiling strictly above the three-run maximum, and retained
 > four baseline faults with 14 phone / 13 desktop breaches. The frozen shared-timer repair moves
-> measurement authority to `f9710bdf…`; the current budget is fail-closed `calibration-required`
-> pending a fresh paired broken baseline plus three independent candidates before successor
-> activation/certification. Every selected head must own exact-source local certification, and its
+> measurement authority to `f9710bdf…`; exact baseline5 uses collector `cbe7868…` against legacy
+> product `3844701…`, while independent one-attempt/no-retry candidate8/9/10 use clean candidate
+> source `cbe786816cafd196a4b1649b0d1b72966036b7cc` and candidate producer `1c8200d7…`. They now activate budget/test
+> `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` /
+> `121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a` under exact Edge .86. Each
+> candidate run replays 78/78; all 40 ceilings exceed their maxima.
+> Warm maxima/ceilings are phone 6,196/65,536 and desktop 306,704/524,288 bytes; the four-fault
+> baseline observes 1,037,780/1,222,370 and breaches 14/13 fields. This is browser-free activation,
+> not selected-head certification or a PASS. Every selected head must own exact-source local certification, and its
 > corresponding PR test-merge CI must be terminal green; this reference deliberately caches neither
 > live outcome. The ruler's
 > Arc-local Edge 151 authority still does not repin the global Gate-A Edge 150 browser. Six
@@ -434,8 +441,9 @@
 > history, but its no-retry PR battery produced a valid phone product-answerability red. The scheduler
 > changed producer authority to `1c8200d7…`; baseline4 and candidate5/6/7 historically populated its
 > `bb03a3af…` replayed-raw ruler under exact Edge .86. The frozen shared-timer repair moves measurement
-> authority to `f9710bdf…`; the current budget is fail-closed `calibration-required` pending a fresh paired
-> baseline and three independent candidates. Every selected head must own exact-source local resource
+> authority to `f9710bdf…`; baseline5 plus candidate8/9/10 now activate exact budget `8ffd0d8e…`
+> from clean `cbe7868…`, with all 40 ceilings above maxima and four baseline faults producing 14/13
+> breaches. This is not current-head browser certification. Every selected head must own exact-source local resource
 > certification, and its corresponding PR test-merge CI must be terminal green; this reference
 > deliberately caches neither live
 > outcome. The existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150

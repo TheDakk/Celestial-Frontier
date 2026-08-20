@@ -613,9 +613,9 @@ both parent voices.
 accessibility, or approved static art.
 
 **Current state (2026-08-20): product implementation and serviced-turn scheduler repair present;
-measurement authority `f9710bdf…` is fail-closed `calibration-required` pending a fresh paired broken
-baseline plus three independent candidates; exact-source automation is governed by live artifacts/CI;
-fresh `[HUMAN]` review is open.**
+measurement authority `f9710bdf…` is active under exact-.86 baseline5 plus independent
+candidate8/9/10; exact-source automation is governed by live artifacts/CI; fresh `[HUMAN]` review
+is open.**
 This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
 corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
 `compendiummem` gate drives a deterministic 1,500-row
@@ -645,12 +645,14 @@ while the old page-heap ruler excluded embedder/backing ownership.
 Da0's historical `v2/budgets/compendium-memory-v1.json` authority embedded paired
 broken-baseline run `20260820-arc1a-baseline3-21af3fa` and independent candidate runs
 `20260820-arc1a-candidate2-21af3fa`, `20260820-arc1a-candidate3-21af3fa`, and
-`20260820-arc1a-candidate4-21af3fa` from clean committed collector/product `21af3fa2…`. The repaired
+`20260820-arc1a-candidate4-21af3fa`. Baseline3 was collected by `21af3fa2…` against legacy product
+`3844701…`; candidate2/3/4 use clean committed `21af3fa2…` collector/product source and bind producer
+`291b794e…`. The repaired
 seam observes the complete native cache before destructive cap control; records used, embedder,
 backing-store, and aggregate heap; proves stable unique keys and unchanged job/disposal/worker
 counters over the last three cycles of one retained window; retains a post-cap restored snapshot;
-embeds compact replayable raw capsules; and binds measurement authority `bb03a3af…`, producer
-authority `291b794e…`, the complete input set, and the exact built owner-to-worker-to-painter graph.
+embeds compact replayable raw capsules; and binds measurement authority `bb03a3af…`, the complete
+input set, and the exact built owner-to-worker-to-painter graph for producer `291b794e…`.
 Strict ceilings exceeded every three-run maximum. The paired baseline retained all four sealed faults
 and breached 14 phone and 13 desktop ceiling fields. Commit
 `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` locally certified that ruler under Edge .86 and passed
@@ -663,27 +665,41 @@ budget, and old producer; Planetside thumb settlement missed the unchanged 2,000
 rendering opportunity plus later task between jobs, changing built producer authority to
 `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`.
 
-Clean seam commit `f47cd381…` is the collector/product source for paired baseline4 and three
-independent one-attempt candidate5/6/7 runs. They bind measurement `bb03a3af…`, producer
-`1c8200d7…`, and exact Edge .86; every candidate completed all 78 outcomes with zero retries. The
+Clean seam commit `f47cd381…` collected paired baseline4 against legacy product `3844701…`; that
+baseline carries no candidate producer field. The three independent one-attempt candidate5/6/7
+runs use `f47cd381…` as clean collector/product source and bind producer `1c8200d7…`. All four
+share measurement `bb03a3af…` and exact Edge .86; every candidate completed all 78 outcomes with
+zero retries. The
 historical `bb03a3af…` budget replayed their raw capsules and set every profile ceiling strictly above
 the three-run maximum. Baseline4 retained all four faults and breached 14 phone / 13 desktop fields.
-The frozen shared-timer repair moves measurement authority to `f9710bdf…`; the current budget is
-fail-closed `calibration-required` pending a fresh paired broken baseline plus three independent
-candidates before successor activation/certification. Baseline3/candidate2/3/4 and old producer
-`291b794e…` remain truthful history, not current resource authority. Every selected head must own
-exact-source local certification, and its corresponding PR test-merge CI must be terminal green;
-this reference deliberately caches neither live outcome. The Arc-local Edge authority remains product
-`Edg/151.0.4129.86`, revision
+The frozen shared-timer repair moves measurement authority to `f9710bdf…`. Paired broken-baseline
+run `20260820-arc1a-absolute-deadline-baseline5` used clean collector
+`cbe786816cafd196a4b1649b0d1b72966036b7cc` against detached broken source `3844701…`;
+independent candidate8/9/10 used that exact clean source and producer `1c8200d7…`. All four runs
+were one attempt with no retry, and each candidate's raw capsule replayed 78/78. Active budget/test
+SHA-256 values are `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` /
+`121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a`; focused tests passed
+11/11, selftest passed 222/222, and all 15 current inputs recomputed without mismatch. Every one of
+40 ceilings is strictly above its three-candidate maximum. The variable phone maxima → ceilings are
+page heap 7,771,656 → 8,388,608, embedder 3,151,408 → 4,194,304, backing 3,099,159 → 4,194,304,
+aggregate 12,406,038 → 14,680,064, encoded bytes 2,477,068 → 2,621,440, and warm aggregate
+6,196 → 65,536; desktop values are 10,550,176 → 12,582,912, 3,216,400 → 4,194,304,
+4,914,765 → 6,291,456, 16,017,176 → 18,874,368, 6,592,468 → 6,815,744, and
+306,704 → 524,288. Baseline5 preserves all four sealed faults and breaches 14 phone / 13 desktop
+fields; desktop page heap deliberately does not breach. This browser-free activation is not
+certification. Baseline3 and candidate2/3/4 remain truthful inputs to the old ruler; only the
+candidate runs carry old producer `291b794e…`. They are not current resource authority. Every
+selected head must own exact-source local certification, and its
+corresponding PR test-merge CI must be terminal green; this reference deliberately caches neither
+live outcome. The Arc-local Edge authority remains product `Edg/151.0.4129.86`, revision
 `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript `15.1.23.7`, and protocol `1.3`; it still
 does **not** repin the Gate-A/global Edge `150.0.4078.83` baseline. Returning this criterion to
 `[EXEC]` requires terminal-green exact-source artifacts and corresponding PR test-merge CI for the
 selected pushed head.
 
-The current state records an implemented product and scheduler repair with a fail-closed
-`calibration-required` boundary, not an active ruler or terminal resource authority. Human judgment
-of a fresh certifying run's six phone/desktop list, detail, and focus-pinned images remains
-outstanding. Arc 1B also remains open for ordinary scene/Pixi
+The current state records an implemented product and scheduler repair with an active successor
+ruler, not terminal resource certification. Human judgment of a fresh certifying run's six
+phone/desktop list, detail, and focus-pinned images remains outstanding. Arc 1B also remains open for ordinary scene/Pixi
 texture, render-target, GPU-proxy, and combined travel → Compendium → Shipyard plateau ownership.
 
 **Scope:**

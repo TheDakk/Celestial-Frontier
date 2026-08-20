@@ -70,8 +70,15 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > `instrument-fail`, blocked all 78 outcomes, and made no product verdict. Frozen launcher SHA-256
 > `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0` moves the Compendium
 > measurement authority from historical `bb03a3af…` to
-> `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`; its frozen budget is
-> `calibration-required` until fresh paired broken-baseline plus three-candidate calibration.
+> `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Historical budget
+> `a41ff08b…` correctly failed closed; paired baseline5 and independent candidate8/9/10 from clean
+> collector/candidate source `cbe786816cafd196a4b1649b0d1b72966036b7cc` now activate budget
+> `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47`, with focused-test hash
+> `121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a`. Focused replay is 11/11
+> and the independent Compendium selftest is 222/222. Each candidate run replays 78/78 under
+> exact Edge .86; all 40 ceilings exceed their maxima, and the four-fault baseline breaches 14
+> phone / 13 desktop fields. This active browser-free ruler is not an exact-head certification or
+> product PASS; the complete unchanged-head browser battery and corresponding PR test-merge remain.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,
