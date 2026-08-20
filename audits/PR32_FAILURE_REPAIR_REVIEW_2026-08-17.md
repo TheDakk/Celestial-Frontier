@@ -1478,3 +1478,29 @@ one complete exact-head battery, push PR #32 once, and require one corresponding
 test-merge CI. This is not authority to change timing, workflow, product, launch arguments,
 producer, or retry policy. First red stops. Remaining HUMAN judgment stays separate; terminal-green
 PR #32 returns immediately to Arc 1B/gameplay.
+
+## 11. Current status superseding §6.19/§10 (2026-08-20)
+
+Sections 6.19 and 10 remain truthful checkpoint history, but their activation/run recommendation is
+not current. Exact local implementation commit `aecf3865095176a509a4cb892e5842b584780870`
+replaces the Compendium static server's unbounded close wait with one immutable monotonic 2,000 ms
+boundary: just-before-deadline settlement succeeds; exact-deadline, late, or absent close callbacks
+call `closeAllConnections()` exactly once and reject. Settle-before-force, reentrant close,
+stale-timer, and stale-callback controls are covered, and cleanup red suppresses both PASS and sample.
+The focused test is `2f3f8dcee6ffdd7e201cf2a51265b26c30ec23834f51418f5ae6b1539794143c`.
+
+Because this repair changes the measured harness path, candidate24/25/26+baseline10 and their active
+ruler remain history only. Current state is fail-closed calibration-required: samples are empty,
+baseline status is measurement-required with a null value, and ceilings are null. Frozen hashes are
+collector `0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b`, selftest
+`0bbb35417182ddfd5465206c2dd5f9f75537c67fec3053e8d8e79935db32b15b`, measurement
+`23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92`, budget
+`c711c8a56072e5a18e60eb2219e7933196a603f8873b9659bef2d4ed186171e0`, and unchanged producer
+`d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`.
+
+Run `324203` remains historical timeout/no-verdict evidence, not a passing sample. The next authorized
+local-only sequence is candidate27, baseline11, candidate28, candidate29: one attempt, zero retry,
+fresh exact Edge 150.0.4078.86, from one later clean committed source. GitHub Actions remains FROZEN;
+the repository is public and standard GitHub-hosted runners are currently free, but this is still an
+intent/efficiency gate and the standing 3,000-minute private-repository cap applies if visibility
+changes. No push, hosted run, rerun, merge, publication, or deployment is authorized.
