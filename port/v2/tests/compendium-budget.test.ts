@@ -24,6 +24,10 @@ const budgetPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.json')
 const schemaPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.schema.json');
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const EXPECTED_MEASUREMENT_AUTHORITY =
+  '23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92';
+const EXPECTED_COLLECTOR_AUTHORITY =
+  '0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b';
+const HISTORICAL_MEASUREMENT_AUTHORITY =
   '2318f57bcadd83b2f540e3a2d1b8bea54ca6c88d1df8715318a341d4e2ae7cf2';
 const EXPECTED_PRODUCER_AUTHORITY =
   'd32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900';
@@ -44,18 +48,15 @@ const EXPECTED_BROWSER_AUTHORITY: BrowserAuthority = {
   protocolVersion: '1.3',
 };
 const EXPECTED_CANDIDATE_RUNS = [
-  '20260820-arc1a-browser-identity-candidate24',
-  '20260820-arc1a-browser-identity-candidate25',
-  '20260820-arc1a-browser-identity-candidate26',
+  '20260820-arc1a-server-shutdown-candidate27',
+  '20260820-arc1a-server-shutdown-candidate28',
+  '20260820-arc1a-server-shutdown-candidate29',
 ] as const;
-const EXPECTED_BASELINE_RUN = '20260820-arc1a-browser-identity-baseline10';
-const QUARANTINED_DIAGNOSTIC_CANDIDATE_RUNS = [
-  '20260820-arc1a-browser-authority-candidate21',
-  '20260820-arc1a-browser-authority-candidate22',
-  '20260820-arc1a-browser-authority-candidate23',
+const EXPECTED_BASELINE_RUN = '20260820-arc1a-server-shutdown-baseline11';
+const HISTORICAL_CANDIDATE_RUNS = [
+  'Candidate24/25/26',
 ] as const;
-const QUARANTINED_DIAGNOSTIC_BASELINE_RUN =
-  '20260820-arc1a-browser-authority-baseline9';
+const HISTORICAL_BASELINE_RUN = 'baseline10';
 
 type ProfileName = typeof PROFILE_NAMES[number];
 type CalibrationSample = {
@@ -81,6 +82,7 @@ type ActiveBudgetRecord = {
   measurementAuthority: { sha256: string };
   producerAuthority: { sha256: string };
   calibration: {
+    requiredIndependentRunsPerProfile: number;
     selectionRule: string;
     samples: Record<ProfileName, CalibrationSample[]>;
   };
@@ -300,31 +302,38 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(activeBudget.measurementAuthority.sha256).toBe(EXPECTED_MEASUREMENT_AUTHORITY);
       expect(activeBudget.producerAuthority.sha256).toBe(EXPECTED_PRODUCER_AUTHORITY);
       expect(activeBudget.ceilings).toBeNull();
+      expect(activeBudget.calibration.requiredIndependentRunsPerProfile).toBe(3);
       for (const profile of PROFILE_NAMES) {
         expect(activeBudget.calibration.samples[profile]).toEqual([]);
         expect(activeBudget.pairedBrokenBaseline.samples[profile]).toEqual([]);
       }
       expect(activeBudget.pairedBrokenBaseline.status).toBe('measurement-required');
+      expect(activeBudget.pairedBrokenBaseline.commit)
+        .toBe('38447019517147319bd08c598202d097ee866874');
       expect(activeBudget.pairedBrokenBaseline.collectorCommit).toBeNull();
       expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.86');
-      expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.93');
-      expect(activeBudget.calibration.selectionRule)
-        .toContain('20260820-arc1a-terminal-lifecycle-candidate20');
-      for (const runId of QUARANTINED_DIAGNOSTIC_CANDIDATE_RUNS) {
+      expect(activeBudget.calibration.selectionRule).toContain('fresh exact');
+      expect(activeBudget.calibration.selectionRule).toContain(HISTORICAL_MEASUREMENT_AUTHORITY);
+      expect(activeBudget.calibration.selectionRule).toContain('historical evidence only');
+      for (const runId of HISTORICAL_CANDIDATE_RUNS) {
         expect(activeBudget.calibration.selectionRule).toContain(runId);
       }
+      expect(activeBudget.calibration.selectionRule).toContain(HISTORICAL_BASELINE_RUN);
       expect(activeBudget.calibration.selectionRule)
-        .toContain(QUARANTINED_DIAGNOSTIC_BASELINE_RUN);
+        .toContain('32420327368');
+      expect(activeBudget.calibration.selectionRule).toContain('40-minute job ceiling');
+      expect(activeBudget.calibration.selectionRule).toContain('lifecycle RUNNING');
       expect(activeBudget.calibration.selectionRule)
-        .toContain('individually clean diagnostic history only');
-      expect(activeBudget.calibration.selectionRule).toContain('path/UA contract');
-      expect(activeBudget.calibration.selectionRule)
-        .toContain('cannot cross the corrected contract authority boundary');
+        .toContain('no product verdict');
+      expect(activeBudget.calibration.selectionRule).toContain('bounded 2-second');
+      expect(activeBudget.calibration.selectionRule).toContain('forced connection cleanup');
+      expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_COLLECTOR_AUTHORITY);
+      expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_MEASUREMENT_AUTHORITY);
       expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_BASELINE_RUN);
       for (const runId of EXPECTED_CANDIDATE_RUNS) {
         expect(activeBudget.calibration.selectionRule).toContain(runId);
       }
-      expect(activeBudget.calibration.selectionRule).toContain('exactly once');
+      expect(activeBudget.calibration.selectionRule).toContain('one attempt');
       expect(activeBudget.calibration.selectionRule).toContain('zero retries');
       expect(activeBudget.calibration.selectionRule).toContain('raw-capsule');
       expect(activeBudget.calibration.selectionRule).toContain('strictly above');
@@ -332,6 +341,9 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_PRODUCER_AUTHORITY);
       expect(activeBudget.calibration.selectionRule)
         .toContain('does not re-pin the Gate-A/global browser');
+      expect((budget.measurementAuthority as {
+        inputs: { collector: string };
+      }).inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
       return;
     }
     expect(activeBudget.status).toBe('active');

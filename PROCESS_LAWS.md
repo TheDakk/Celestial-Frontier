@@ -11,6 +11,13 @@ roughly by how often they have bitten.
 
 ---
 
+⚠⚠ **AN ARC IS NOT DONE UNTIL ITS CURRENT DOCS AND HANDOFF AGREE** (2026-08-20).
+Every Arc update refreshes all affected current Markdown/reference docs in the same batch and ends
+with a self-contained fresh-session `ROADMAP.md` handoff: exact state, evidence, blockers, owner,
+and next action. Either OpenAI/Codex or Anthropic/Claude must be able to resume from repository
+state alone, without chat or app-private context. Logs archive verbatim; references refresh in
+place. A stale current reference or agent-specific-only handoff leaves the Arc incomplete.
+
 ⚠⚠ **HOSTED CI IS A FINITE RELEASE RESOURCE, NOT THE DEVELOPMENT LOOP** (2026-08-20).
 Nick's GitHub account has a hard monthly Actions allowance of 3,000 and reported it exhausted.
 `GITHUB_ACTIONS_BUDGET.md` and `PARALLEL_GIT_PROTOCOL.md` therefore fail closed: ordinary pushes,

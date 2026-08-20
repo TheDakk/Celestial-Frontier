@@ -40,6 +40,10 @@ description); instead carry a `matches code as of <date>` marker and update them
 BATCH as the code (per rule at top of ROADMAP.md). When a doc grows unreadable, first ask which
 kind it is — the answer picks the fix.
 
+Every Arc update is incomplete until all affected current Markdown/reference docs agree and
+`ROADMAP.md` ends with a self-contained fresh-session handoff. That handoff must let either
+OpenAI/Codex or Anthropic/Claude resume without relying on chat or app-private context.
+
 ## The v2.0 port — ★ PLAYABLE PHASE-4 SLICE
 **`port/`** holds the committed port plan — `PORT_MASTER_PLAN_v4.0.md` (§20 execution phases, §22 Gates A–I, §23 open items, §16 data architecture), the reviewer delta `v1.9-port-update.md`, addenda A–D, **`DECISIONS.md`** (Nick's resolutions to §23 — decided ≠ implemented; they land in the port), **`RUBRICS.md`** (gates A–I as [EXEC]/[EXEC-TODO]/[HUMAN] criteria), and **`baseline-v1.8.9/`** (Gate A evidence: golden seeds, code fixtures, audio profiles, budgets, 28 golden screens).
 **Phase 0 is COMPLETE on the automatable side; all 14 planned deterministic domain facades are present, and current development is a playable Phase-4 Pixi/browser slice in `port/v2/`.** That is the current implementation boundary, not a claim that Gates B–D are literally closed. The verbatim port rule, lifter (`port/v2/tools/lift.mjs`) and both fixture sources remain the conversion foundation. Gates from `port/v2/`: `npm test` + `npm run typecheck` (**root and app TypeScript configs**) + `npm run smoke`; responsive/a11y proof is `node tools/glassmatrix.mjs`. A human-test package follows `port/DEVELOPMENT_PREVIEW.md` and must use a separate origin. See `port/v2/README.md` for the full current battery and open semantic/runtime work. Root-level fixture gates: `npm run preflight` / `goldenseeds` / `codefixtures` / `audioprofiles`.
