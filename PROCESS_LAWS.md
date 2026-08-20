@@ -1024,8 +1024,45 @@ candidate14/15/16 once without retry; every candidate replayed 78/78. Active bud
 `d242705ad987d21c773d23b33eb94bbbbeb1a94ec6d527ff594c198861b7be48` retain all four baseline
 faults, 14 phone / 13 desktop breaches, and 40 strict ceilings above the three-run maxima. This is
 browser-free ruler activation, not certification. Nick accepts 45 seconds as the CI cold-start
-allowance, not an optimization target. The activated head gets one exact-head battery and one
-corresponding CI attempt, then work returns to the gameplay roadmap rather than expanding timing policy.
+allowance, not an optimization target. That activation transition was limited to one exact-head
+battery and one corresponding CI attempt; its preserved result is recorded below.
+
+PR #32's corresponding exact-c49 test-merge run `32375329693`, attempt 1, exposed both remaining
+cold-caller boundaries without producing a game verdict. Root job `96445227534` was the battery's
+first Chrome launch and stopped before `DevToolsActivePort` at its caller-local 30-second envelope;
+its current `instrument-fail` report contains zero viewport outcomes. Compendium job `96445227816`
+installed and resolved exact Edge .86, and the generic CDP selftest opened its live browser under the
+45-second envelope, but then its deliberately tight 1,500 ms post-open `Runtime.enable` command
+expired. The collector never started, so verifier and upload ENOENTs are cascades rather than
+product evidence.
+
+**A WORKFLOW-SPECIFIC BROWSER AUTHORITY MAY OWN ITS OWN PREFLIGHT WITHOUT REWRITING A SEALED
+MEASUREMENT INPUT.** When the generic launcher's broad selftest is not itself a candidate authority,
+do not change its hashed bytes merely to make one pinned-browser job tolerate a different cold
+post-open profile. Build one job-local, one-launch preflight outside the sealed authority graph. It
+must bind the exact expected browser and executable, use one fresh attached target, enable every
+domain the candidate needs, and prove both an evaluate return and same-session event sentinel under
+one immutable phase deadline with both receipts strictly before it, close exactly once,
+and reject provenance, command, sentinel, event, or cleanup drift without retry or fallback. Its
+command cap must come from the existing candidate contract, not a new convenience value. Run the
+same preflight in every workflow that claims that candidate gate. Here the Edge-only preflight owns
+45-second startup / 15-second socket / sealed 5-second candidate command / 2-second shutdown bounds;
+`browsercdp.mjs` remains SHA-256 `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9`,
+so measurement `6ba58522…` and its active ruler remain unchanged. Root layout separately owns one
+45/15/30/5-second caller contract. Neither allowance is a game optimization target.
+
+**AN ASYNCHRONOUS OWNER IS NOT ADJUDICATED BY THE FIRST SNAPSHOT AFTER ITS OPEN ACTION.** Exact-c49
+Smoke run `20260820133818702-2548-507ff6b30f6d` pressed Enter on a Compendium row, immediately read
+the separately asynchronous 440px detail image, retained only `src length 0`, and then navigated Back.
+That one-shot evidence could have sampled an expected placeholder/pending state and canceled the
+owner before publication; it cannot decide whether the visible portrait would settle. Keep the owner
+mounted and poll its semantic publication under one immutable monotonic deadline. Bind the exact
+pre-open document, generation and logical owner, require the opened surface to retain that document/
+owner at exactly generation + 1, then require connected current `ready`, nontrivial source, completed
+decode, and exact natural dimensions, and preserve the last image/worker/broker diagnosis. Placeholder and decode-pending
+remain pending; producer error, stale/disconnected owner, contradictory ready state, wrong dimensions,
+and receipts at or after the deadline are terminal. Negative-control every state and never replace
+this with a fixed delay, an unbounded wait, or an automatic retry.
 
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread

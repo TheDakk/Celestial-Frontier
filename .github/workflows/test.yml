@@ -229,7 +229,8 @@ jobs:
         working-directory: port/v2
         run: |
           node tools/browserpath.mjs --selftest
-          node tools/browsercdp.mjs --selftest
+          node tools/compendiummem-browser-preflight.mjs --selftest
+          node tools/compendiummem-browser-preflight.mjs
           npm run compendiummem:selftest
       - name: one-attempt Compendium memory certification
         working-directory: port/v2

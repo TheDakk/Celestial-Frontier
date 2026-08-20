@@ -216,10 +216,12 @@
 > declared 15,000 ms socket phase; the absolute deadline expired before `Browser.getVersion`.
 > It emitted no Compendium run, report, product outcome, or retry.
 >
-> `browsercdp.mjs` now gives only the selftest's one real cold launch a caller-owned 45,000 ms
+> At the `32367902426` transition, `browsercdp.mjs` gave only its selftest's one real cold launch a
+> caller-owned 45,000 ms
 > startup envelope while retaining 15,000/1,500/2,000 ms socket/command/shutdown caps. Portable
 > controls pass at 38,657 ms and reject exact/late 38,658/38,659 ms with one child and complete
-> socket/child/profile cleanup. No warmup, relaunch, retry, fallback, or workflow change was added;
+> socket/child/profile cleanup. That caller change itself added no warmup, relaunch, retry, fallback,
+> or workflow change;
 > generic and Compendium candidate startup remain 15,000 ms, later warm startup remains 10,000 ms,
 > and the product observation remains 2,000 ms. Browser-CDP SHA-256
 > `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9` establishes measurement
@@ -229,8 +231,33 @@
 > budget/test `bb4da2bf0b…` / `d242705ad9…` retain all four baseline faults, 14 phone / 13 desktop
 > breaches, and all 40 ceilings strictly above the three-run maxima. This activation is not
 > certification. The accepted 45-second CI cold-start allowance is process environment, not a
-> game optimization target. One exact-head battery plus one corresponding CI attempt completes this cycle;
-> exact-head certification, corresponding PR test-merge CI, and HUMAN review remain open.
+> game optimization target.
+>
+> Exact pushed head `c49af5a72a41eebd79ce3975852f3d7c22ab3ac6` completed one full local battery:
+> Compendium 78/78 plus named verifier (`6bfa15af…`), zero-finding Smoke (`4351d1bf…`), Glass
+> 12/12 and 58/58 (`4215986c…`), nine joined personas, root layout 787/787, and verified preview
+> packaging/browser smoke. Corresponding run `32375329693`, attempt 1, tested synthetic merge
+> `8e09cffe20640e82c7b934df29a40fe22c5326e7` (base `3844701…`, head `c49af5a…`) without retry.
+> Static and Glass passed. Root job `96445227534` emitted zero viewport outcomes after its first
+> Chrome launch found no endpoint inside 30 seconds. Compendium job `96445227816` opened exact Edge
+> .86 inside 45 seconds, then the generic selftest's 1.5-second `Runtime.enable` command expired
+> before the collector. Smoke job `96445227991` retained ten screenshots and only `src length 0`
+> from an immediate read of the separately asynchronous detail owner; because the carrier has no
+> image state or worker phase and Back then released the owner, it cannot adjudicate 440px settlement.
+>
+> The bounded repair leaves `browsercdp.mjs` and all measurement-authority inputs unchanged. Root
+> layout now owns one captured 45-second startup / 15-second socket / 30-second command / 5-second
+> shutdown call. New `port/v2/tools/compendiummem-browser-preflight.mjs` owns the Edge-only workflow
+> live proof: one 45/15/sealed-5/2-second launch, exact browser/executable authority, fresh target,
+> Runtime/Page/HeapProfiler enable, and one immutable 5-second evaluate plus same-session event phase
+> whose receipts must be strictly before deadline, one close, and profile cleanup. Both
+> PR certification and development-preview packaging invoke the same preflight before the unchanged
+> Compendium selftest/candidate. Smoke binds pre-open document/generation/logical owner, requires
+> the opened surface to retain that document/owner at generation + 1, and requires connected
+> current `ready`, nontrivial source, completed decode, and exact 440×440 natural dimensions under one
+> immutable 30-second deadline, with pending/error/stale/contradictory/exact-late controls and rich
+> final diagnostics. One repair-head battery plus one corresponding CI attempt completes this cycle;
+> HUMAN review remains open, and work then returns to Arc 1B/gameplay without broader timing work.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.
@@ -563,11 +590,12 @@
 > launches the selected executable through `browsercdp`; its selftest rejects
 > executable non-browsers and excluded Node lines. `bootperf` shares the executable
 > resolver and `ws` transport but retains its legacy CDP lifecycle. Two evidence
-> callers continue to deviate from the 15-second CDP-start default with a fixed
-> bounded 30-second allowance: the final development-preview package check (after
-> exact packaging) and the root layout gate `tools/uilayout.js` — the battery job's first
-> real browser launch, where the identical diagnosed Linux cold-start phase
-> recurred at its prior 24-second bound (run `31758515194` attempt 1). The
+> callers continue to deviate from the 15-second CDP-start default. The final
+> development-preview package check keeps its fixed 30-second allowance. Root layout
+> `tools/uilayout.js` is the battery job's first real browser launch; after the same diagnosed
+> pre-endpoint phase recurred at 24 seconds in run `31758515194` and at 30 seconds in run
+> `32375329693`, it now owns one explicit 45-second startup / 15-second socket / existing
+> 30-second command / 5-second shutdown call, captured by a one-open selftest. The
 > browsercdp selftest's first real provenance launch alone now owns a fixed 45-second
 > absolute spawn → endpoint → socket-open allowance. The selftest isolates its
 > earlier injected WebSocket timeout behind a private launcher seam: the seam writes
@@ -591,8 +619,14 @@
 > early re-arms only the remaining interval and cannot reject before the boundary; the response path
 > independently rejects at/after that same boundary. This is the bounded repair for run
 > `32350971816`'s `1999.758726`-millisecond early timeout. The later caller-local 45-second cold
-> envelope addresses only run `32367902426`'s pre-provenance Linux first launch; it is not a product
-> cap increase or retry. The live legs
+> envelope addresses only run `32367902426`'s pre-provenance Linux first launch. Run
+> `32375329693` then opened exact Edge under that envelope but expired during the generic selftest's
+> 1.5-second `Runtime.enable` before the collector. The Edge-only workflows therefore use
+> `port/v2/tools/compendiummem-browser-preflight.mjs` for one exact-authority fresh-target proof at
+> 45-second startup / 15-second socket / the sealed 5-second candidate command / 2-second shutdown.
+> This file is outside the hashed measurement graph, while `browsercdp.mjs` remains byte-identical at
+> `6892dea6…`; the active `6ba58522…` ruler is not recalibrated. It is not a product cap increase or
+> retry. The live legs
 > assert profile cleanup in `finally` on either rejection or success, and never retry. Every platform captures the exact options
 > passed by the preview caller and completes a real browser outcome. On POSIX the
 > preview selftest starts Chrome immediately but withholds its

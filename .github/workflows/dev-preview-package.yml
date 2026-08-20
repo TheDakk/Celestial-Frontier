@@ -103,7 +103,10 @@ jobs:
         working-directory: port/v2
         env:
           CF_BROWSER: /usr/bin/microsoft-edge-stable
-        run: npm run compendiummem:selftest
+        run: |
+          node tools/compendiummem-browser-preflight.mjs --selftest
+          node tools/compendiummem-browser-preflight.mjs
+          npm run compendiummem:selftest
       - name: one-attempt Compendium memory certification
         working-directory: port/v2
         env:

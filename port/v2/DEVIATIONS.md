@@ -95,16 +95,37 @@ This block records the current disposition of the historical
   synthetic merge `e449e849…` once and stopped before `Browser.getVersion` or product measurement.
   Edge endpoint discovery used `23657.701415` ms, leaving `6342.262417` ms of the 30-second window
   for a declared 15-second socket phase. No Compendium run/report/outcome or retry exists.
-- The bounded repair gives only the selftest's one real cold launch a 45-second startup envelope;
+- At the `32367902426` transition, the bounded repair gave only the selftest's one real cold launch
+  a 45-second startup envelope;
   socket/command/shutdown remain 15/1.5/2 seconds, generic and candidate startup remain 15 seconds,
   and product observation remains 2 seconds. Portable controls pass at 38,657 ms and reject
-  exact/late 38,658/38,659 ms with one child and cleanup. No warmup, relaunch, retry, fallback,
-  workflow change, or game optimization is introduced. Launcher `6892dea6…` changes measurement to
+  exact/late 38,658/38,659 ms with one child and cleanup. That caller change itself introduced no
+  warmup, relaunch, retry, fallback, workflow change, or game optimization. Launcher `6892dea6…` changes measurement to
   `6ba58522…`; producer stays `e59685b1…`. Clean source `374049536e…` collected baseline7 plus
   independent candidate14/15/16 once without retry; every candidate replayed 78/78. Active
   browser-free budget/test `bb4da2bf0b…` / `d242705ad9…` retain all four baseline faults and 14 phone /
   13 desktop breaches, with all 40 ceilings strict. This is non-certifying. One exact-head battery
-  and one corresponding CI attempt finish this infrastructure cycle before gameplay work resumes.
+  and one corresponding CI attempt were then consumed by exact c49 and the run recorded next.
+- Exact pushed head `c49af5a72a41eebd79ce3975852f3d7c22ab3ac6` completed that full local battery:
+  Compendium 78/78 plus verifier, Smoke with no findings, Glass 12/12 and 58/58, personas, root
+  layout 787/787, and preview packaging/browser smoke. Corresponding run `32375329693` tested
+  synthetic merge `8e09cffe…` once without retry. Static and Glass passed. Root job `96445227534`
+  produced zero viewport outcomes after no Chrome endpoint inside 30 seconds. Compendium job
+  `96445227816` opened exact Edge .86 inside 45 seconds, then generic selftest `Runtime.enable`
+  exceeded its 1.5-second command bound before the collector. Smoke job `96445227991` retained ten
+  screenshots and only an immediate `src length 0` detail sample; it retained no image state or
+  worker phase, then Back released the asynchronous owner, so it cannot adjudicate final portrait
+  settlement.
+- The final bounded working-tree repair gives root layout one captured 45/15/30/5-second caller.
+  Exact-Edge workflows use `tools/compendiummem-browser-preflight.mjs` for one exact-authority fresh-
+  target Runtime/Page/HeapProfiler plus evaluate/event proof under 45/15/sealed-5/2-second bounds;
+  it is outside the hashed measurement graph, so `6892dea6…`, `6ba58522…`, `e59685b1…`,
+  `bb4da2bf0b…`, and `d242705ad9…` remain unchanged. Smoke binds pre-open document/generation/
+  logical owner, requires the opened detail to retain that document/owner at generation + 1, keeps
+  it mounted, and polls connected current ready/src/decode/440×440 settlement under one immutable
+  30-second deadline, with pending/error/stale/disconnected/contradictory/wrong-size/exact-late
+  controls and rich diagnosis. One repair-head local battery and one corresponding CI attempt finish
+  this infrastructure cycle before Arc 1B/gameplay resumes; no broader timing work is in scope.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
@@ -1593,9 +1614,10 @@ duplicates).
   safety boundary. `main` continues the root v1.8.9 production package, while a green `develop`
   push publishes the already-smoked exact v2 package. The final preview browser check and the
   root layout gate (`tools/uilayout.js` — the battery's first real browser launch; the same
-  diagnosed Linux cold-start phase recurred there at its prior 24-second bound in run
-  `31758515194` attempt 1) each own a fixed bounded 30-second CDP-start allowance; generic
-  evidence tools retain their 15-second default.
+  diagnosed Linux cold-start phase recurred there at 24 seconds in run `31758515194` and at
+  30 seconds in run `32375329693`) have distinct caller bounds: preview keeps 30 seconds; root
+  layout owns one captured 45-second startup / 15-second socket / existing 30-second command /
+  5-second shutdown call. Generic evidence tools retain their 15-second default.
   Every platform captures the exact caller options and runs a real browser outcome. On POSIX the
   preview selftest starts Chrome immediately but withholds its ready CDP endpoint for 16 seconds,
   so the old generic path must reject while the exact preview caller keeps its full startup window
@@ -1612,9 +1634,14 @@ duplicates).
   startup allowance above.
   **2026-08-20 clarification:** PR #32 run `32367902426` reached one stable Edge endpoint at
   23,657.701415 ms but exhausted the former 30-second selftest startup envelope before
-  `Browser.getVersion`; Compendium never ran. Only that first-live selftest caller now owns
+  `Browser.getVersion`; Compendium never ran. At that transition, only that first-live selftest caller owned
   45 seconds, with its 15-second socket and all generic/candidate/product bounds unchanged. This
   accepted CI environment allowance is not a game optimization target and adds no warmup or retry.
+  Run `32375329693` then opened exact Edge under that allowance but expired during the generic
+  selftest's 1.5-second `Runtime.enable`, still before Compendium. Exact-Edge workflows now use
+  `tools/compendiummem-browser-preflight.mjs` for one 45/15/sealed-5/2-second exact-authority fresh-
+  target proof outside the hashed ruler inputs; it adds no retry, fallback, rebaseline, product bound,
+  release claim, or preview/publication authority.
 - ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
   (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
   heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces

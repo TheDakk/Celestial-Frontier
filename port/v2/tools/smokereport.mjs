@@ -16,6 +16,8 @@ import { findChromiumBrowser } from './browserpath.mjs';
 import { acquireWorkspaceLock, workspaceLockChildEnvironment } from './workspacelock.mjs';
 import {
   assessTrainingBusyRefusalPrecondition,
+  classifyCompendiumDetailReceipt,
+  classifyCompendiumDetailSettlement,
   classifyForegroundServiceTurnReceipt,
   classifyPlanetsideSettlement,
   planetsidePhaseRemainingMs,
@@ -364,6 +366,67 @@ function runSelftest() {
   if (settlementDrift.length) {
     throw new Error(`SELFTEST Planetside semantic settlement controls drifted: ${JSON.stringify(settlementDrift)}`);
   }
+  const detailExpected = Object.freeze({
+    documentToken: 'document-current', preEnterGeneration: 41, logicalId: 'detail-current',
+  });
+  const detailReady = Object.freeze({
+    documentToken: detailExpected.documentToken, generation: detailExpected.preEnterGeneration + 1,
+    panelMode: 'detail', detailPresent: true, logicalId: detailExpected.logicalId,
+    image: Object.freeze({
+      present: true, connected: true, state: 'ready', hasSrc: true, srcLength: 5001,
+      complete: true, naturalWidth: 440, naturalHeight: 440,
+    }),
+  });
+  const detailControls = [
+    ['ready', detailReady, 'ready', []],
+    ['placeholder', { ...detailReady, image: { ...detailReady.image,
+      state: 'placeholder' } }, 'pending', ['detail portrait placeholder']],
+    ['ready-no-src', { ...detailReady, image: { ...detailReady.image,
+      hasSrc: false } }, 'error', ['detail portrait ready without src']],
+    ['ready-short-src', { ...detailReady, image: { ...detailReady.image,
+      srcLength: 5000 } }, 'error', ['detail portrait src length 5000']],
+    ['decode-pending', { ...detailReady, image: { ...detailReady.image,
+      complete: false } }, 'pending', ['detail portrait decode pending']],
+    ['wrong-dimensions', { ...detailReady, image: { ...detailReady.image,
+      naturalWidth: 132 } }, 'error', ['detail portrait dimensions 132x440']],
+    ['producer-error', { ...detailReady, image: { ...detailReady.image,
+      state: 'error' } }, 'error', ['detail portrait producer error']],
+    ['closed-detail', { ...detailReady, panelMode: 'closed', detailPresent: false },
+      'error', ['detail surface "closed"/false']],
+    ['wrong-document', { ...detailReady, documentToken: 'document-stale' },
+      'error', ['document identity "document-stale"']],
+    ['stale-generation', { ...detailReady, generation: detailExpected.preEnterGeneration },
+      'error', ['Compendium generation 41']],
+    ['stale-owner', { ...detailReady, logicalId: 'detail-stale' },
+      'error', ['logical owner "detail-stale"']],
+    ['disconnected-owner', { ...detailReady, image: { ...detailReady.image,
+      connected: false } }, 'error', ['detail image disconnected']],
+  ];
+  const detailDrift = detailControls.flatMap(([name, observation, expectedStatus, expectedReasons]) => {
+    const actual = classifyCompendiumDetailSettlement(observation, detailExpected);
+    return actual.status === expectedStatus
+      && JSON.stringify(actual.reasons) === JSON.stringify(expectedReasons)
+      ? [] : [{ name, expectedStatus, expectedReasons, actual }];
+  });
+  const detailBeforeDeadline = classifyCompendiumDetailReceipt(detailReady, detailExpected, 1000, 999.999);
+  const detailAtDeadline = classifyCompendiumDetailReceipt(detailReady, detailExpected, 1000, 1000);
+  const detailJustLate = classifyCompendiumDetailReceipt(detailReady, detailExpected, 1000, 1000.001);
+  if (detailBeforeDeadline.status !== 'ready' || detailBeforeDeadline.reasons.length !== 0
+    || detailAtDeadline.status !== 'error'
+    || JSON.stringify(detailAtDeadline.reasons) !== JSON.stringify([
+      'detail observation received at/after deadline (1000 >= 1000)',
+    ])
+    || detailJustLate.status !== 'error'
+    || JSON.stringify(detailJustLate.reasons) !== JSON.stringify([
+      'detail observation received at/after deadline (1000.001 >= 1000)',
+    ])) {
+    detailDrift.push({
+      name: 'strict-deadline-receipt', detailBeforeDeadline, detailAtDeadline, detailJustLate,
+    });
+  }
+  if (detailDrift.length) {
+    throw new Error(`SELFTEST Compendium detail settlement controls drifted: ${JSON.stringify(detailDrift)}`);
+  }
   const phaseDeadline = 1000.75;
   const labelledTimeoutDecision = planetsideRuntimeTimeoutDecision(
     new Error('slice smoke: timed out waiting for Runtime.evaluate'),
@@ -404,6 +467,7 @@ function runSelftest() {
   console.log('  foreground service: exact target/document/token, continuous visible focused rAF→later-task authority, exact/late receipt rejection');
   console.log('  D-TRAIN busy refusal: exact fixture/document/card action required; setup/parent drift and exact/late binding receipts rejected');
   console.log('  Planetside settlement: ready+132px+drained accepted; roster/image/decode/art/live-work controls rejected');
+  console.log('  Compendium detail: exact document/generation/logical owner plus connected ready+src+decoded 440px accepted; isolated pending/terminal mutations and exact/late deadlines classified');
   console.log('  Planetside phase: monotonic remainder clipped; labelled Runtime.evaluate timeout converted exactly');
   console.log('  retry policy remains zero by construction (one child invocation in the wrapper)');
 }

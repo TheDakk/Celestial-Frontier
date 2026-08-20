@@ -20,6 +20,7 @@ import { openChromiumCdp } from './browsercdp.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 import {
   assessTrainingBusyRefusalPrecondition,
+  classifyCompendiumDetailReceipt,
   classifyForegroundServiceTurn,
   classifyForegroundServiceTurnReceipt,
   classifyPlanetsideSettlement,
@@ -4553,9 +4554,10 @@ try {
   const codexRow = await evalIn(`(()=>{ document.getElementById('dockcodex').click();
     const row=document.querySelector('#codexpanel [data-ci]'),r=row?.getBoundingClientRect();
     row?.focus(); return {ok:row?.tagName==='BUTTON'&&row?.type==='button'&&!!r&&r.height>=44,
-      index:row?.getAttribute('data-ci')||null,tag:row?.tagName||null,type:row?.type||null,
+      index:row?.getAttribute('data-ci')||null,logicalId:row?.getAttribute('data-cid')||null,
+      tag:row?.tagName||null,type:row?.type||null,
       height:r?.height||0,focus:document.activeElement===row}; })()`);
-  if (!codexRow.ok || !codexRow.focus || codexRow.index === null) {
+  if (!codexRow.ok || !codexRow.focus || codexRow.index === null || !codexRow.logicalId) {
     fails.push('COMPENDIUM KEYBOARD: first row is not a focused native 44px action: ' + JSON.stringify(codexRow));
   }
   const codexPointerSetup = await evalIn(`(()=>{ const row=document.querySelector('#codexpanel [data-ci]');
@@ -4572,16 +4574,95 @@ try {
     fails.push('COMPENDIUM CONTROL FAILED — injected pointer-only row responded to real Enter: '
       + JSON.stringify({ codexPointerSetup, codexPointerCtl }));
   }
+  const codexDetailAuthority = await evalIn(`(()=>{ const S=window.__CF_SLICE__,
+    diag=S?.api?.compendiumDiagnostics?.(),row=document.querySelector('#codexpanel [data-ci="${codexRow.index}"]');
+    return {documentToken:S?.documentToken||null,generation:diag?.generation??null,
+      logicalId:row?.getAttribute('data-cid')||null,focus:document.activeElement===row}; })()`);
+  const detailExpected = typeof codexDetailAuthority.documentToken === 'string'
+    && codexDetailAuthority.documentToken.length > 0
+    && Number.isSafeInteger(codexDetailAuthority.generation)
+    && codexDetailAuthority.generation >= 0
+    && codexDetailAuthority.generation < Number.MAX_SAFE_INTEGER
+    && codexDetailAuthority.logicalId === codexRow.logicalId
+    && codexDetailAuthority.focus
+    ? Object.freeze({
+      documentToken: codexDetailAuthority.documentToken,
+      preEnterGeneration: codexDetailAuthority.generation,
+      logicalId: codexDetailAuthority.logicalId,
+    }) : null;
+  if (!detailExpected) {
+    fails.push('COMPENDIUM DETAIL AUTHORITY: pre-Enter document/generation/logical owner was not exact: '
+      + JSON.stringify({ codexRow, codexDetailAuthority }));
+  }
   await keyIn('Enter', 'Enter');
-  const detail = await evalIn(`(()=>{ const det=document.querySelector('#codexpanel [data-sel=codex-detail]');
-    const stats=document.querySelectorAll('#codexpanel [data-sel=detail-stat]').length;
-    const desc=(document.querySelector('#codexpanel [data-sel=detail-desc]')||{}).textContent||'';
-    const port=document.querySelector('#codexpanel [data-sel=detail-portrait]'),back=document.getElementById('codexback');
-    const br=back?.getBoundingClientRect(); return {ok:!!det,stats,descLen:desc.trim().length,
-      portLen:port?String(port.getAttribute('src')||'').length:0,backNative:back?.tagName==='BUTTON',
-      backHeight:br?.height||0,backFocus:document.activeElement===back}; })()`);
-  if (!detail.ok || !detail.backNative || detail.backHeight < 44 || !detail.backFocus) {
+  /* Detail art is a separate asynchronous 440px request. The former single
+     src-length read passed only when an earlier open/Back race happened to
+     warm that cache. Own one monotonic phase and require the published image
+     plus decode outcome before capturing or releasing the detail owner. */
+  const detailTimeoutMs = 30000;
+  const detailDeadline = performance.now() + detailTimeoutMs;
+  let detail = {
+    phase: 'not-observed', documentToken: null, generation: null,
+    panelMode: null, detailPresent: false, logicalId: null,
+    image: { present: false, connected: false, state: null, hasSrc: false, srcLength: 0,
+      complete: false, naturalWidth: 0, naturalHeight: 0 },
+    stats: 0, descLen: 0, backNative: false, backHeight: 0, backFocus: false,
+    diagnostics: null,
+  };
+  let detailDecision = detailExpected
+    ? { status: 'pending', reasons: ['not observed'] }
+    : { status: 'error', reasons: ['pre-Enter detail authority absent'] };
+  while (detailExpected && performance.now() < detailDeadline) {
+    const remainingMs = Math.floor(detailDeadline - performance.now());
+    if (remainingMs <= 0) break;
+    try {
+      detail = await evalIn(`(()=>{ const S=window.__CF_SLICE__,diag=S?.api?.compendiumDiagnostics?.();
+        const det=document.querySelector('#codexpanel [data-sel=codex-detail]');
+        const stats=document.querySelectorAll('#codexpanel [data-sel=detail-stat]').length;
+        const desc=(document.querySelector('#codexpanel [data-sel=detail-desc]')||{}).textContent||'';
+        const port=document.querySelector('#codexpanel [data-sel=detail-portrait]'),back=document.getElementById('codexback');
+        const src=String(port?.getAttribute('src')||''),br=back?.getBoundingClientRect();
+        return {phase:'observed',documentToken:S?.documentToken||null,generation:diag?.generation??null,
+          panelMode:diag?.panel?.mode||null,
+          detailPresent:!!det,logicalId:diag?.surfaces?.detail?.logicalId||null,
+          image:{present:!!port,connected:port?.isConnected===true,state:port?.dataset?.artState||null,
+            hasSrc:src.length>0,srcLength:src.length,complete:port?.complete===true,
+            naturalWidth:port?.naturalWidth||0,naturalHeight:port?.naturalHeight||0},
+          stats,descLen:desc.trim().length,backNative:back?.tagName==='BUTTON',backHeight:br?.height||0,
+          backFocus:document.activeElement===back,
+          diagnostics:diag?{generation:diag.generation,panel:diag.panel,detail:diag.surfaces?.detail||null,
+            lazyArt:diag.lazyArt||null,art:diag.art||null}:null}; })()`, { timeoutMs: remainingMs });
+    } catch (error) {
+      const message = String(error?.cause?.message || '');
+      if (/(?:^|: )timed out waiting for Runtime\.evaluate$/.test(message)) {
+        detailDecision = {
+          status: 'error',
+          reasons: [`detail phase deadline expired during target observation (${detailTimeoutMs}ms)`],
+        };
+        break;
+      }
+      throw error;
+    }
+    detailDecision = classifyCompendiumDetailReceipt(
+      detail, detailExpected, detailDeadline, performance.now(),
+    );
+    if (detailDecision.status !== 'pending') break;
+    const sleepMs = Math.min(50, Math.max(0, Math.floor(detailDeadline - performance.now())));
+    if (sleepMs > 0) await sleep(sleepMs);
+  }
+  if (detailDecision.status === 'pending') {
+    detailDecision = {
+      status: 'error',
+      reasons: [...detailDecision.reasons, `detail phase deadline expired (${detailTimeoutMs}ms)`],
+    };
+  }
+  if (!detail.detailPresent || !detail.backNative || detail.backHeight < 44 || !detail.backFocus) {
     fails.push('COMPENDIUM KEYBOARD: Enter did not open detail on a focused 44px Back action: ' + JSON.stringify(detail));
+  }
+  if (detailDecision.status !== 'ready') {
+    fails.push('COMPENDIUM DETAIL PORTRAIT SETTLEMENT: '
+      + JSON.stringify({ status: detailDecision.status, reasons: detailDecision.reasons,
+        expected: detailExpected, observation: detail }));
   }
   const shotDet = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(screenshotPath('codex'), Buffer.from(shotDet.data, 'base64'));
@@ -4598,9 +4679,7 @@ try {
   const detailBack = await evalIn(`(()=>{ const row=document.querySelector('#codexpanel [data-ci="${codexRow.index}"]');
     return {backRows:document.querySelectorAll('#codexpanel [data-ci]').length,
       exact:row?.getAttribute('data-ci')||null,focus:document.activeElement===row}; })()`);
-  if (detail.ok && !(detail.portLen > 5000)) {
-    fails.push('THE LIVING PORTRAIT did not paint (hdart real-render proof): src length ' + detail.portLen);
-  } else if (detail.ok) {
+  if (detail.detailPresent) {
     if (detail.stats !== 5) fails.push('detail card missing the five stat bars: ' + detail.stats);
     if (!(detail.descLen > 20)) fails.push('detail card description empty (describeSpecies silent): ' + detail.descLen);
   }

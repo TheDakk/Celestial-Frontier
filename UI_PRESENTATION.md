@@ -146,15 +146,29 @@
 > GitHub run `32367902426` / Compendium job `96421452463` stopped before `Browser.getVersion` or
 > product measurement: its endpoint consumed `23657.701415` ms and left `6342.262417` ms of the
 > 30-second startup window for a 15-second socket phase. No Compendium report/outcome or retry exists.
-> The one-launch repair gives only that cold selftest caller 45 seconds, retaining 15-second socket,
+> At the `32367902426` transition, the one-launch repair gave only that cold selftest caller 45
+> seconds, retaining 15-second socket,
 > 1.5-second command, 2-second shutdown, 15-second generic/candidate startup, and 2-second product
-> observation. Portable controls pass at 38,657 ms and fail at exact/late 38,658/38,659 ms; there is
-> no warmup, relaunch, retry, fallback, workflow change, or UI/game timing optimization. Launcher
+> observation. Portable controls pass at 38,657 ms and fail at exact/late 38,658/38,659 ms; that
+> caller change itself added no warmup, relaunch, retry, fallback, workflow change, or UI/game timing optimization. Launcher
 > `6892dea6…` changes measurement to `6ba58522…`; producer remains `e59685b1…`, and budget/test
 > `bb4da2bf0b…` / `d242705ad9…` are active from clean one-attempt/no-retry baseline7 plus
 > candidate14/15/16; every candidate replayed 78/78, all 40 ceilings are strict, and the retained
 > baseline breaches 14 phone / 13 desktop fields. This is browser-free activation, not
-> certification. One exact-head battery and one corresponding CI attempt remain before gameplay work.
+> certification. Exact-c49 then passed one complete local battery, but corresponding run
+> `32375329693` retained three no-retry instrument reds: root layout's first Chrome launch had no
+> endpoint at 30 seconds; exact Edge opened under 45 seconds but generic selftest `Runtime.enable`
+> exceeded 1.5 seconds before the collector; and Smoke's immediate detail read retained only
+> `src length 0`, no image state or worker phase, before Back released the asynchronous owner.
+> The bounded repair gives root layout one explicit 45/15/30/5-second caller contract, moves the
+> Edge-only authority proof to `port/v2/tools/compendiummem-browser-preflight.mjs` at
+> 45/15/sealed-5/2 seconds without changing hashed ruler inputs. Smoke binds the exact Compendium
+> pre-open document/generation/logical owner, requires the opened document/owner at generation + 1,
+> and keeps that detail mounted until semantic
+> connected/ready/src/decoded-440×440 publication under one
+> 30-second deadline. Pending, error, stale/disconnected, contradictory, wrong-size, and exact/late
+> states retain distinct diagnoses. One repair-head battery and corresponding CI attempt remain;
+> then gameplay work resumes without broader timing work.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
 > list, focus-pinned, and detail PNGs still await HUMAN review. Arc 1B scene-resource disposal and live
 > HD planet replacement remain open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
@@ -453,7 +467,11 @@
 > producer and measurement authority. Exact f9's full local battery remains truthful, but its
 > corresponding run `32367902426` stopped on the first real Edge selftest cold launch before product.
 > Launcher `6892dea6…` changes measurement to `6ba58522…`; browser-free budget `bb4da2bf0b…` is
-> active for unchanged producer `e59685b1…` from clean source `374049536e…`. Every selected head
+> active for unchanged producer `e59685b1…` from clean source `374049536e…`. Exact c49's complete
+> local battery is also preserved; corresponding run `32375329693` reached no product verdict in its
+> root/Compendium instrument legs and retained only an unadjudicated immediate asynchronous-detail
+> Smoke sample. Its bounded root caller, Edge-only preflight, and semantic detail-settlement repairs
+> leave product and measurement bytes unchanged. Every selected head
 > must still own exact-source local resource
 > certification and corresponding terminal-green PR test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150

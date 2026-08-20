@@ -91,17 +91,33 @@ measurement: Edge's endpoint consumed `23657.701415` ms, leaving `6342.262417` m
 startup window for its 15-second socket phase. No Compendium run/report/product outcome or retry
 exists.
 
-Only the single real cold selftest launch now owns a 45,000 ms startup envelope; socket/command/
+At the `32367902426` transition, only the single real cold selftest launch changed to a 45,000 ms
+startup envelope; socket/command/
 shutdown remain 15,000/1,500/2,000 ms, generic and candidate startup remain 15,000 ms, and product
 observation remains 2,000 ms. Portable controls pass at 38,657 ms and reject exact/late
-38,658/38,659 ms with one child and complete cleanup. No warmup, relaunch, retry, fallback, workflow
-change, or art/game timing optimization was added. Launcher `6892dea6…` changes measurement authority
+38,658/38,659 ms with one child and complete cleanup. That caller change itself added no warmup,
+relaunch, retry, fallback, workflow change, or art/game timing optimization. Launcher `6892dea6…` changes measurement authority
 to `6ba58522…`; producer `e59685b1…` remains unchanged. Clean source `374049536e…` collected
 baseline7 plus independent candidate14/15/16 once without retry; every candidate replayed 78/78.
 Active browser-free budget/test `bb4da2bf0b…` / `d242705ad9…` own all 40 strict ceilings while
 retaining four baseline faults and 14 phone / 13 desktop breaches; this is not certification. The
-45-second CI allowance is accepted process environment, not a game optimization target; after one
-exact-head battery and one corresponding CI attempt, work returns to gameplay arcs.
+45-second CI allowance is accepted process environment, not a game optimization target.
+
+Exact-c49 then passed the complete local battery, including 78/78 resource outcomes and its fresh
+six-image artifact set. Corresponding run `32375329693` did not reach an art/resource verdict:
+root Chrome stopped before endpoint at 30 seconds, exact Edge opened under 45 seconds but the
+generic selftest's 1.5-second `Runtime.enable` expired before the collector, and Smoke immediately
+sampled the asynchronous 440px detail owner as `src length 0` before Back released it. The Smoke
+carrier retained no image state or worker phase, so it cannot classify final portrait settlement.
+The bounded repair keeps all producer and measurement bytes unchanged: root layout gets an explicit
+45/15/30/5-second caller contract; Edge-only jobs use
+`port/v2/tools/compendiummem-browser-preflight.mjs` for one exact-authority fresh-target proof at
+45/15/sealed-5/2 seconds; and Smoke binds the pre-open document/generation/logical owner, requires
+that document/owner at generation + 1, and keeps the exact detail owner mounted until connected
+current `ready`, nontrivial source, decoded 440×440 publication under one 30-second deadline. Placeholder,
+decode-pending, error, stale/disconnected, contradictory, wrong-size, and exact/late states are
+controlled. None of this changes portrait pixels, art direction, game timing, or HUMAN judgment.
+After one repair-head battery and one corresponding CI attempt, work returns to Arc 1B/gameplay.
 Every selected head must own exact-source local certification, and its corresponding PR test-merge
 CI must be terminal green; this reference deliberately caches neither live outcome.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
