@@ -17,95 +17,79 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 GITHUB ACTIONS CONSERVATION FREEZE ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 STATIC-SERVER SHUTDOWN RECALIBRATION ◀◀◀
 
-### Cold start and non-negotiable budget state
+### Fresh-session start
 
-- Read `GITHUB_ACTIONS_BUDGET.md` before any GitHub operation, then this handoff,
-  `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and the owning agent instructions.
-- **Current Actions mode is `FROZEN`.** Nick confirmed the repository is public as of 2026-08-20,
-  so standard GitHub-hosted runners are free while it remains public. The reported 3,000 allowance
-  remains a fail-closed cap if the repository becomes private or billing is ambiguous. The freeze
-  remains an efficiency/intent gate until Nick explicitly lifts it: do not push, label, dispatch,
-  rerun, merge, sync, or publish. Continue development and evidence locally.
-- OpenAI/Codex macOS owns
-  `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`. At the freeze boundary,
-  local and `origin/openai/mac` were exact `731b2e2ab974252b410ba97dbdbe3ec6d3ee9c20`
-  with a clean worktree. Recheck local state; avoid repeated GitHub polling.
+- Read `GITHUB_ACTIONS_BUDGET.md`, this handoff, `PROCESS_LAWS.md`,
+  `PARALLEL_GIT_PROTOCOL.md`, and the owning agent instructions. Either OpenAI/Codex or
+  Anthropic/Claude can resume from repository state; use only that agent's owned worktree.
+- Implementation commit `aecf3865095176a509a4cb892e5842b584780870` is on `openai/mac`;
+  `origin/openai/mac` remains `731b2e2ab974252b410ba97dbdbe3ec6d3ee9c20`, so the branch was
+  ahead 2 before this documentation batch. Recheck local status; do not poll GitHub.
+- Actions remain **`FROZEN`**. The repository is public and standard hosted runners are free while
+  it remains public, but Nick's efficiency/intent gate still forbids push, label, dispatch, rerun,
+  merge, sync, or publication. The 3,000 cap applies fail-closed if visibility/billing changes.
 
-### PR #32 evidence boundary
+### Preserved hosted evidence
 
 - PR #32 remains open from `openai/mac` into `develop`
-  `38447019517147319bd08c598202d097ee866874`. Do not merge it.
-- Exact head `731b2e2…` completed one full local battery in the required order. Its 111-entry
-  checksum manifest is `65e75e516d5e8173c16d6c887780d331f89bf982edf371cee399b7a50778620d`.
-  That local evidence remains truthful but is not hosted CI or merge authority.
-- GitHub Actions run `32420327368`, attempt 1, tested the current PR head/merge. Root gates,
-  v2 static, Chrome Smoke, and Chrome Glass were green. Compendium job `96590728191` was canceled
-  at its 40-minute job ceiling while the report remained `running` and lifecycle-pending; the
-  exact Edge authority matched, six review PNGs existed, but zero terminal profiles/outcomes or
-  product verdict were published. Full-job log/report/artifact ZIP SHA-256 values are
-  `b05cd9dd…` / `896f3217…` / `3c7317e0…`. The verifier correctly rejected absent cleanup/
-  release authority. Persona was skipped. The summary `battery` job separately could not start
-  because GitHub reported the account billing/spending limit. Preserve that exact historical
-  annotation; it does not mean standard hosted runners are currently billed while the repository
-  remains public.
-- Preserve that as one no-retry hosted timeout/incomplete-evidence red. Do not increase a timeout,
-  rerun the unchanged head, or call its six diagnostic PNGs certification. The Compendium timeout
-  diagnosis remains local follow-up after this emergency budget batch.
+  `38447019517147319bd08c598202d097ee866874`; do not update or merge it while frozen.
+- Run `32420327368`, attempt 1, remains one no-retry incomplete-evidence red. Root/static/Chrome
+  Smoke/Chrome Glass passed. Compendium job `96590728191` hit its 40-minute ceiling with its report
+  RUNNING/lifecycle-pending, six diagnostic PNGs, and zero terminal profiles/outcomes or product
+  verdict. Its spending annotation is historical and does not override current public billing.
 
-### Local budget-protocol transition
+### Bounded shutdown and fail-closed ruler
 
-- The completed local, unpushed batch makes ordinary pushes, PR synchronization, merges, sync,
-  and publication start zero hosted runners by default after rollout. `test.yml` uses one tiny
-  authorization job followed by one serial fail-fast job. Only a successful owner-label plus
-  branch/fork authorization emits the required `battery` name; other events are
-  `budget-not-authorized`. The dependency preserves the Arc-local Edge owner's sealed no-`if`
-  workflow contract; cheap/static checks run before browsers.
-- Branch-flow, agent-sync, and manual-preview workflows are manual-only with a required,
-  false-default budget token. Branch direction is also the first battery step. Automatic branch
-  publication is hard parked pending a separately reviewed exact-SHA promotion contract.
-- `tools/actions-budget-policy.js --selftest` inventories every workflow and mutation-tests
-  automatic triggers, default-run inputs, job guards, decoys, duplicate concurrency, the single
-  battery runner, the parked publisher, and unknown workflows. Root validation runs the real gate.
-- These protections are local until pushed. The remote still contains the old automatic triggers.
-  While mode is frozen, do not push this transition. Because the repository is public, disabling
-  Actions is not needed merely to protect private minutes; a later rollout still requires one
-  explicit Git handoff authorization and must leave the battery label absent.
+- Commit `aecf386…` gives the Compendium HTTP server one immutable monotonic 2,000 ms close
+  deadline. Just-before succeeds. Exact, late, missing, or error callbacks force
+  `closeAllConnections()` exactly once and reject; settle-before-force plus stale/reentrant guards
+  prevent later timer/callback delivery from changing the result.
+- Static-server cleanup remains terminal lifecycle ownership. A cleanup red suppresses PASS,
+  discards candidate/baseline samples, publishes truthful instrument evidence, and releases the
+  workspace lock; it is never product or numeric evidence.
+- Frozen SHA-256 authorities: collector `0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b`;
+  selftest `0bbb35417182ddfd5465206c2dd5f9f75537c67fec3053e8d8e79935db32b15b`;
+  measurement `23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92`;
+  budget `c711c8a56072e5a18e60eb2219e7933196a603f8873b9659bef2d4ed186171e0`;
+  focused test `2f3f8dcee6ffdd7e201cf2a51265b26c30ec23834f51418f5ae6b1539794143c`.
+  Producer `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`
+  and exact Arc-local Edge `.86` authority are unchanged.
+- Candidate24/25/26 plus baseline10 are truthful history for the prior collector/measurement only.
+  Current state is `calibration-required`: samples empty, ceilings null, paired baseline
+  `measurement-required` with null collector commit and empty samples. Certification refuses
+  before browser launch.
 
 ### Next bounded sequence
 
-1. Keep the completed browser-free policy/workflow/docs batch local and unpushed while `FROZEN`.
-   Its 63 negative controls, YAML parse, Compendium workflow control, root validate, paired-agent
-   instruction identity, and diff checks passed without a hosted run.
-2. Diagnose PR #32's preserved Compendium timeout locally; do not rerun the unchanged head.
-3. Only after Nick explicitly authorizes the rollout may the guarded workflow commit reach GitHub.
-   Public standard-runner billing does not lift `FROZEN`. Record exact head/base, configured maximum
-   runner minutes, one run, no retry, and label removal. PR #32's Compendium timeout must be
-   diagnosed/fixed locally before any new battery authorization.
-4. Fresh phone/desktop list, focus-pinned, and detail images still require separate HUMAN judgment.
-   Arc 1B follows PR #32 closure; no release, version bump, deployment, or `main` work is in scope.
+1. Finish/review this synchronized documentation batch locally; no browser or hosted run.
+2. From one later clean committed source and one fresh exact Edge `.86` materialization per launch,
+   run serial local IDs `c27`, `baseline11`, `c28`, `c29`, each once with zero retries. First red,
+   authority mismatch, cleanup failure, or ambiguity stops.
+3. Only after all four capsules audit cleanly may a separate activation embed them, restore strict
+   ceilings above candidate maxima, preserve all baseline faults, and run focused controls.
+4. After activation, one exact-head local battery and one explicitly authorized hosted attempt
+   remain. Fresh phone/desktop list/detail/focus images still need HUMAN review. Arc 1B follows
+   terminal-green PR #32; no release, deployment, version bump, or `main` work is authorized.
 
 ## Parallel Git handoff — exact budget-aware fields
 
-**Current side:** OpenAI/Codex on macOS owns the completed local GitHub Actions conservation batch
-on `openai/mac`. Exact pushed head `731b2e2…` and PR #32 remain blocked. The unpushed local commit
-must not reach GitHub while frozen.
+**Current side:** OpenAI/Codex macOS owns this local batch on `openai/mac`. Implementation
+`aecf386…` is committed locally; synchronized docs remain working-copy changes. Nothing is pushed.
 
-**GitHub step:** None. Do not open Actions, apply `actions-budget-approved`, dispatch, rerun,
-push, merge, or publish. Repository-wide Actions disablement was not performed because it is a
-broad persistent settings change and needs Nick's explicit approval of that exact consequence.
+**GitHub step:** None. Do not push, apply `actions-budget-approved`, dispatch, rerun, merge, or
+publish while `FROZEN`.
 
 **PR details:** existing PR #32; base `develop`; source `openai/mac`; title
-**Arc 1A — Bound Compendium portraits and measured resources**. Do not update or merge it during
-the freeze. No new PR is needed for the local guard batch yet.
+**Arc 1A — Bound Compendium portraits and measured resources**. Remote PR #32 contains neither
+local commit; no description update is authorized yet.
 
-**Other side:** Anthropic/Claude Code need not be opened now. It does not have this local budget
-transition and must not push/sync on the assumption that it does. It may continue unrelated local
-work in its own clean worktree under the same `FROZEN` law.
+**Other side:** Anthropic/Claude Code need not be opened now. It may resume only in its own
+worktree after an authorized handoff; until then it does not have the local commits.
 
 **Release status:** `develop`, `main`, and both sites are unchanged. No release, version bump,
-deployment, site write, or publication is authorized.
+deployment, or publication was performed or authorized.
 
-**Actions budget:** `FROZEN`; repository public, so standard hosted runners are free while that
-visibility holds; 3,000 remains the fail-closed private-repository cap. Authorized hosted runs: zero.
+**Actions budget:** `FROZEN`; public/standard runners free while visibility holds; 3,000 remains
+the fail-closed private-repository cap. Authorized hosted runs: zero.

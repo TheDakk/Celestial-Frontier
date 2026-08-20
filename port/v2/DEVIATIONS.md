@@ -18,7 +18,7 @@ each without retry under exact `.86` and complete lifecycle; candidates replayed
 findings and baseline9 retained all four faults. They are individually clean diagnostic history only
 because the old shared identity incorrectly compared fresh path/UA provenance. Clean exact
 `fb321f2…` candidate24/25/26 plus paired baseline10 ran once each with zero retries and distinct
-fresh `.86` paths. Active budget/test `70145575…` / `0fa2e89d…` embed 3/3 samples per profile,
+fresh `.86` paths. The formerly active budget/test `70145575…` / `0fa2e89d…` embed 3/3 samples per profile,
 measured 1/1 baseline, strict ceilings, and 14 phone / 13 desktop breaches under measurement
 `2318f57b…`, producer `d3223177…`, and browser CDP `6da9e2ef…`. Focused activation is 13/13 after
 matching synthetic desktop identities fixed its initial phone-only control without changing browser
@@ -26,6 +26,14 @@ evidence. Exact head `731b2e2…` passed locally; hosted run `32420327368` stopp
 RUNNING/lifecycle-pending at the 40-minute job ceiling and no product verdict, then exposed the
 account spending limit. `GITHUB_ACTIONS_BUDGET.md` is now `FROZEN`: no push, label, dispatch, merge,
 sync, or publication is authorized. Six-image `[HUMAN]` review is open.**
+**Current static-server follow-up:** implementation `aecf386…` owns one immutable monotonic
+2,000 ms HTTP close deadline. Just-before succeeds; exact/late/missing/error callbacks force one
+`closeAllConnections()` and reject, with settle-before-force/reentrant/stale controls. Cleanup red
+suppresses PASS/sample. Collector/selftest/measurement/budget/focused-test are `0c7ec3ba…` /
+`0bbb3541…` / `23aacc2c…` / `c711c8a5…` / `2f3f8dce…`; producer stays `d3223177…`.
+Candidate24/25/26+baseline10 are historical only. Current state is calibration-required with empty
+samples/null ceilings and a measurement-required/null paired baseline; planned serial recollection
+is c27, baseline11, c28, c29 from one later clean exact-.86 source, once each without retry.
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -1721,7 +1729,7 @@ duplicates).
   timing, product, CDP tool, browser authority, measurement, producer, budget, retry policy,
   publication authority, or Gate status. Exact-89 later reached product but preserved the separate
   owned-shutdown false-green. Candidate20 is quarantined for self-updated Edge `.93`.
-  **2026-08-20 shared-identity follow-up (current):** candidate21/22/23 plus paired baseline9 are
+  **2026-08-20 shared-identity follow-up (historical after the static-server repair):** candidate21/22/23 plus paired baseline9 are
   individually clean exact-.86 diagnostic history, but their fresh path/UA provenance exposed an
   overstrict shared-identity check. Clean exact `fb321f2…` candidate24/25/26 plus paired baseline10
   activated budget/test `70145575…` / `0fa2e89d…` with 3/3 samples per profile, measured 1/1
@@ -1729,6 +1737,9 @@ duplicates).
   Exact `731b2e2…` passed the local battery; hosted run `32420327368` was consumed at its 40-minute
   lifecycle-pending ceiling and left PR #32 blocked without a product verdict. Product, timing,
   producer, browser CDP, and zero-retry policy remain unchanged.
+  **2026-08-20 static-server shutdown follow-up (current):** exact `aecf386…` adds the bounded
+  close and invalidates the prior collector measurement. Current budget is calibration-required;
+  c27/baseline11/c28/c29 must be recollected before activation or certification.
 - ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
   (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
   heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces

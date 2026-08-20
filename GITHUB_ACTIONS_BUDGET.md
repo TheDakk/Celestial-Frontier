@@ -77,10 +77,10 @@ tools/validate.js` also runs the real policy check before the normal validation 
 
 ## One-run authorization after the freeze
 
-When capacity exists, Nick may authorize exactly one hosted attempt. Before any GitHub write, the
+When Nick explicitly lifts `FROZEN`, he may authorize exactly one hosted attempt. Before any GitHub write, the
 handoff must record:
 
-1. current budget mode and Nick's reported remaining allowance;
+1. current budget mode, repository visibility/billing assumption, and standing private cap;
 2. workflow name, PR number/ref, full head SHA, base SHA, and the exact approval label or manual token;
 3. configured worst-case runner ceiling and why hosted evidence is still needed after local gates;
 4. proof that no run for that exact authorization is queued or in progress;
@@ -99,8 +99,9 @@ These protections do not affect GitHub until their commit reaches the repository
 still contains the old automatic triggers, so do not push this transition without Nick's explicit Git
 handoff authorization. Because the repository is now public, standard hosted-runner minutes are free;
 repository-wide Actions disablement is no longer needed merely to protect the private 3,000-minute
-allowance. After local review, land the guard in one intentional push, verify the remote workflow
-bytes without dispatching them, and leave the approval label absent. If the repository becomes
+allowance. Only after Nick explicitly lifts `FROZEN` and authorizes that exact Git write, land the
+guard in one intentional push, verify the remote workflow bytes without dispatching them, and
+leave the approval label absent. If the repository becomes
 private again before rollout, stop and re-evaluate the remaining private allowance first. Disabling
 Actions remains a broad persistent setting change and still requires explicit approval of that exact
 consequence.

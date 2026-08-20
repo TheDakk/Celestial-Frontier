@@ -19,17 +19,27 @@ state alone, without chat or app-private context. Logs archive verbatim; referen
 place. A stale current reference or agent-specific-only handoff leaves the Arc incomplete.
 
 ⚠⚠ **HOSTED CI IS A FINITE RELEASE RESOURCE, NOT THE DEVELOPMENT LOOP** (2026-08-20).
-Nick's GitHub account has a hard monthly Actions allowance of 3,000 and reported it exhausted.
+The repository is public as of 2026-08-20, so standard hosted runners are free while it remains
+public; 3,000 is the fail-closed cap if it becomes private or billing is ambiguous.
 `GITHUB_ACTIONS_BUDGET.md` and `PARALLEL_GIT_PROTOCOL.md` therefore fail closed: ordinary pushes,
 PR synchronization, merges, branch synchronization, and publication may not start hosted runners.
 Develop and prove locally, batch work into one frozen exact head, and spend at most one explicitly
-owner-authorized hosted attempt at a terminal milestone after capacity exists. Record workflow,
+owner-authorized hosted attempt at a terminal milestone after Nick lifts `FROZEN`. Record workflow,
 PR/ref, full head/base SHA, configured runner ceiling, and one-attempt stopping rule before the
 label/manual token is used. Never rerun an unchanged red, cancel-and-restart to erase evidence,
 make empty CI-kick commits, infer a monthly reset, or bypass a missing required check. Standing
 merge authority is not standing Actions-spend authority. Negative-control the workflow policy:
 automatic triggers, a run-by-default input, a missing job guard, a decoy guard, a second battery
 runner, an unparked publisher, or an unknown workflow must all fail locally before any push.
+
+⚠⚠ **A SERVER CLOSE CALLBACK IS NOT A BOUNDED CLEANUP OUTCOME** (2026-08-20).
+Compendium's owned static server now has one immutable monotonic 2,000 ms shutdown deadline.
+Just-before succeeds; exact-boundary, late, missing, or error callbacks force
+`closeAllConnections()` exactly once and reject. Settle before forcing so reentrant/stale timer or
+callback delivery cannot change the result. Cleanup failure suppresses PASS and sample publication.
+Because collector bytes are measurement authority, this repair invalidates the former active ruler:
+fail closed with empty candidates, null ceilings, and a measurement-required paired baseline, then
+recalibrate from one clean source without reusing historical capsules.
 
 ⚠⚠ WHEN A NEW INSTRUMENT FIRES — OR PASSES — SUSPECT THE INSTRUMENT FIRST (2026-07-30, learned
   THREE times across two ships). Every gate built in this arc found a bug in ITSELF before it
@@ -552,9 +562,9 @@ if its repository and visible path were different. Human previews require a genu
 HTTPS origin, a Guide-visible v2.0 + full-commit binding, a content-hashed manifest, noindex
 policy, and a runtime refusal on the production origin. A corner badge is not the boundary and
 must not cover play; the Guide identity, runtime binding and manifest must agree. Packaging and
-publication remain distinct authority: ordinary CI artifacts are remote-blocked, while the mapped
-post-green-`develop` publisher accepts only the verified publication candidate for that exact
-commit. Neither path may imply a production version, release, `main` update, or live-site deploy.
+publication remain distinct authority: ordinary CI artifacts are remote-blocked and automatic
+post-green publication is parked. Any future publisher needs separate exact-SHA authorization.
+Neither path may imply a production version, release, `main` update, or live-site deploy.
 
 ⚠ **A RETRY IS NOT A DIAGNOSIS.** The v2 browser gate had several intermediate red builds while
 the harness learned document readiness and outcome timing. CI runs it once, retains the complete

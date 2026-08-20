@@ -29,7 +29,7 @@
 > Raw path/UA remain required per-run provenance; product/revision/JavaScript/protocol are shared
 > authority. Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10,
 > each once with zero retries and a distinct fresh `.86` path. Candidates completed 78/78 with zero
-> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. Active budget/schema/
+> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. The formerly active budget/schema/
 > contract/collector/selftest/test `70145575…` / `695d2529…` / `e7dfea1d…` / `07131f5e…` /
 > `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged producer `d3223177…`, 3/3
 > samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
@@ -37,11 +37,19 @@
 > browser evidence. Exact head `731b2e2…` passed its complete local battery; GitHub run
 > `32420327368` then preserved a no-retry hosted timeout/incomplete-evidence red when Compendium
 > remained RUNNING/lifecycle-pending at the 40-minute job ceiling, and GitHub separately reported
-> the account spending limit. Nick froze the exhausted hard monthly Actions allowance of 3,000.
-> `GITHUB_ACTIONS_BUDGET.md` now blocks push/label/dispatch/merge/publication; the guarded local
+> the account spending limit. The repository is now public, so standard runners are free while it
+> remains public; `FROZEN` remains Nick's intent gate and 3,000 the private/ambiguous cap.
+> `GITHUB_ACTIONS_BUDGET.md` blocks push/label/dispatch/merge/publication; the guarded local
 > workflow design removes automatic spend and must not be pushed through the still-automatic remote
 > configuration. No product/ruler verdict follows from the hosted timeout. Arc 1B/gameplay resumes
 > only after PR #32 eventually closes terminal-green under a separately authorized attempt.
+> Exact local `aecf3865095176a509a4cb892e5842b584780870` now bounds the Compendium HTTP
+> server close at 2,000 ms and fails exact/late/missing/error cleanup closed with one forced
+> connection close. Cleanup red suppresses PASS/sample. Collector/selftest/measurement/budget/
+> focused-test are `0c7ec3ba…` / `0bbb3541…` / `23aacc2c…` / `c711c8a5…` / `2f3f8dce…`;
+> producer remains `d3223177…`. Candidate24/25/26+baseline10 are historical only. Current state is
+> calibration-required; recollect c27, baseline11, c28, c29 serially from one later clean exact-.86
+> source, once each without retry, before activation or certification.
 > Later product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
@@ -639,7 +647,8 @@ both parent voices.
 accessibility, or approved static art.
 
 **Current state (2026-08-20): product implementation, serviced-turn scheduler, compact-phone stack,
-and displayed-demand/zoom-owner repair are present. Exact-89's shutdown false-green and candidate20's
+displayed-demand/zoom-owner repair, bounded static-server shutdown, and fail-closed recalibration are
+present. Exact-89's shutdown false-green and candidate20's
 wrong-browser `175fac5e…` / `916dd12a…` / `7462144b…` carriers remain preserved instrument history.
 Candidate21/22/23 plus paired baseline9 each completed once without retry under exact `.86` and
 complete lifecycle; candidates replayed 78/78 with zero findings and baseline9 retained four faults.
@@ -647,10 +656,13 @@ They are individually clean diagnostic history only because the old shared ident
 compared fresh path/UA provenance. Clean exact source `fb321f2…` then collected candidate24/25/26
 plus paired baseline10, each once with zero retries and distinct fresh `.86` paths. Candidates
 completed 78/78 with zero findings, complete lifecycle, and six PNGs; baseline10 retained four
-faults. Active budget `70145575…` embeds 3/3 samples per profile, measured 1/1 baseline, and strict
+faults. The formerly active budget `70145575…` embeds 3/3 samples per profile, measured 1/1 baseline, and strict
 ceilings with 14 phone / 13 desktop breaches under measurement `2318f57b…` and unchanged producer
 `d3223177…`. Focused activation is 13/13 after the synthetic active-state control received matching
-desktop identities; browser evidence did not change or rerun. Fresh `[HUMAN]` review is open.**
+desktop identities; browser evidence did not change or rerun. That ruler is now historical because
+collector `0c7ec3ba…` changes measurement to `23aacc2c…`; current budget `c711c8a5…` is
+calibration-required with empty samples/null ceilings and a measurement-required/null paired
+baseline. Fresh `[HUMAN]` review is open.**
 This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
 corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
 `compendiummem` gate drives a deterministic 1,500-row
@@ -803,7 +815,7 @@ all four faults. Their fresh path/UA provenance differed, exposing an overstrict
 check; they are individually clean diagnostic history but cannot cross corrected contract
 `e7dfea1d…`. Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10,
 each once with zero retries and distinct fresh `.86` paths. Active budget/test `70145575…` /
-`0fa2e89d…` embed 3/3 samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone /
+`0fa2e89d…` historically embedded 3/3 samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone /
 13 desktop breaches under measurement `2318f57b…`, producer `d3223177…`, and browser CDP
 `6da9e2ef…`. Focused activation is 13/13 after matching synthetic desktop identities corrected the
 initial phone-only 12/13 control; browser evidence did not change. No package, launch argument,

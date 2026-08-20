@@ -6,9 +6,20 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-20.**
 > **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
-> displayed-demand/zoom-owner product repair and active resource ruler; exact-731 local battery
+> displayed-demand/zoom-owner product repair and fail-closed resource recalibration; exact-731 local battery
 > complete, hosted run `32420327368` consumed at its 40-minute incomplete-evidence ceiling,
 > PR #32 blocked, and final HUMAN review open):**
+> Exact local implementation `aecf3865095176a509a4cb892e5842b584780870` bounds the
+> Compendium HTTP server's close at one immutable monotonic 2,000 ms. Just-before succeeds;
+> exact/late/missing/error callbacks force `closeAllConnections()` once and reject, with
+> settle-before-force and stale/reentrant controls. Cleanup failure suppresses PASS/sample.
+> Collector/selftest/measurement/budget/focused-test SHA-256 are `0c7ec3ba…` / `0bbb3541…` /
+> `23aacc2c…` / `c711c8a5…` / `2f3f8dce…`; producer `d3223177…` is unchanged. The former
+> candidate24/25/26+baseline10 ruler is truthful history only. Current budget is
+> `calibration-required`, with empty candidates, null ceilings, and a measurement-required/null
+> paired baseline; certification refuses before browser launch. Planned serial local recollection
+> is c27 → baseline11 → c28 → c29, one attempt/zero retry/fresh exact Edge `.86`, from one later
+> clean committed source.
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
 > bounded overscan, and any focus-pinned row; measured logical anchor-plus-offset
@@ -321,14 +332,14 @@
 >
 > Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10, each once
 > with zero retries and a distinct fresh `.86` path. All candidates completed 78/78 with zero
-> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. The active budget
-> still owns explicit top-level `cf-v2-compendium-browser-authority/v1` and rejects mismatch before
+> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. That historical budget
+> owned explicit top-level `cf-v2-compendium-browser-authority/v1` and rejected mismatch before
 > profile collection. Budget/schema/contract/collector/selftest/test `70145575…` / `695d2529…` /
 > `e7dfea1d…` / `07131f5e…` / `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged
 > producer `d3223177…`, 3/3 samples per profile, measured 1/1 baseline, and strict ceilings with
 > 14 phone / 13 desktop baseline breaches. A synthetic desktop-identity line corrected the focused
-> check from 12/13 to 13/13 without changing or rerunning browser evidence. No timeout, launch,
-> workflow, product, producer, browser-CDP, or retry-policy change occurred. First red stops;
+> check from 12/13 to 13/13 without changing or rerunning browser evidence. Those facts do not cross
+> the later `aecf386…` collector change or authorize certification. First red stops;
 > terminal-green PR #32 returns immediately to Arc 1B/gameplay.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
@@ -591,10 +602,12 @@
 > galaxy/star-only CF1 routes, generated descents and all future ownership/receipt writers
 > still need their own canonical boundary integration.
 >
-> **2026-08-20 GitHub Actions budget overlay:** Nick's hard monthly allowance is 3,000 and current
-> mode is `FROZEN` in `GITHUB_ACTIONS_BUDGET.md`. The former every-PR/every-push parallel battery,
+> **2026-08-20 GitHub Actions budget overlay:** the repository is public, so standard hosted runners
+> are free while visibility remains public; 3,000 is the fail-closed private/ambiguous cap and mode
+> remains `FROZEN` in `GITHUB_ACTIONS_BUDGET.md`. The former every-PR/every-push parallel battery,
 > automatic agent-branch sync, and post-green `workflow_run` publisher are retired as default
-> execution paths. `.github/workflows/test.yml` now exposes one tiny authorization job followed by
+> execution paths in local commit `5a2c605…`, which is not pushed; the remote still has the old
+> triggers. Local `.github/workflows/test.yml` exposes one tiny authorization job followed by
 > one fail-fast serial runner whose display name remains the required `battery` context and whose job id remains
 > `v2-compendium-memory` for the sealed exact-Edge workflow control. It is eligible only on a PR
 > `labeled` event where the repository owner applied exact label `actions-budget-approved`. The

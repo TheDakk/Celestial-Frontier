@@ -20,7 +20,7 @@ authority.
 
 **Standing execution authority (Nick, 2026-08-13), budget-limited 2026-08-20:** the normal green-PR
 merge authority is not Actions-spend or publication authority. While the budget mode is `FROZEN`,
-Codex and Claude Code do not push, merge, dispatch, or publish. After Nick restores capacity, each
+Codex and Claude Code do not push, merge, dispatch, or publish. After Nick explicitly lifts `FROZEN`, each
 hosted attempt and exact-SHA promotion still needs the authorization recorded by the budget protocol.
 No authority includes manual site writes, a new host/key, `develop` → `main`, a release, or a
 production deployment.
@@ -231,7 +231,7 @@ incorrectly compared fresh executable paths and host user agents. Raw path/UA re
 per-run provenance; shared browser authority is exact product/revision/JavaScript/protocol.
 
 Clean exact `fb321f2…` candidate24/25/26 plus paired baseline10 ran once each with zero retries and
-distinct fresh `.86` paths. Active budget/schema/contract/collector/selftest/test `70145575…` /
+distinct fresh `.86` paths. Their historical budget/schema/contract/collector/selftest/test `70145575…` /
 `695d2529…` / `e7dfea1d…` / `07131f5e…` / `f86db74a…` / `0fa2e89d…` bind measurement
 `2318f57b…`, unchanged producer `d3223177…`, 3/3 samples per profile, measured 1/1 baseline, and
 strict ceilings with 14 phone / 13 desktop breaches. Focused activation is 13/13 after matching
@@ -240,6 +240,13 @@ Exact head `731b2e2…` passed the full local battery. Hosted run `32420327368` 
 the 40-minute Compendium job ceiling with lifecycle-pending evidence and no product verdict; it is
 not rerun authority. PR #32 remains blocked under the frozen efficiency gate. No launch argument,
 product byte, producer, browser-CDP, or retry policy changed.
+Exact `aecf386…` later bounds static-server close at one immutable monotonic 2,000 ms; exact/late/
+missing/error callbacks force one connection close and reject, while cleanup red suppresses PASS/
+sample. Collector/selftest/measurement/budget/focused-test are `0c7ec3ba…` / `0bbb3541…` /
+`23aacc2c…` / `c711c8a5…` / `2f3f8dce…`; producer remains `d3223177…`. Current budget is
+calibration-required with empty samples/null ceilings and a measurement-required/null paired
+baseline. The manual preview workflow cannot certify it; c27/baseline11/c28/c29 must be recollected
+serially from one later clean exact-.86 source first.
 This does not re-pin Gate A or the global browser authority: `../tools/deps.pinned.json` remains
 Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates, any
 timing, product bytes, or the one-attempt/zero-retry policy.
@@ -269,7 +276,7 @@ current branch tip, checks and hosted commit live; this reference does not freez
 
 The following section records why the isolated package, browser pin and publication boundary
 exist. Its one-time bootstrap state is preserved as history and does not override the current
-automatic flow above.
+guarded flow above.
 
 ### PR #11 evidence state at that time
 

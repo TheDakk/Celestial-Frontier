@@ -10,8 +10,9 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 
 ## GitHub Actions budget gate
 
-GitHub-hosted CI is manual, finite release evidence—not the development loop. Nick's hard monthly
-allowance is 3,000 and current mode is tracked in `GITHUB_ACTIONS_BUDGET.md`. Before any GitHub
+GitHub-hosted CI is manual, finite release evidence—not the development loop. The repository is
+public and standard runners are free while it remains public; 3,000 is the fail-closed private/
+ambiguous cap and current mode is tracked in `GITHUB_ACTIONS_BUDGET.md`. Before any GitHub
 write, run the browser-free workflow-policy controls locally:
 
 ```bash
@@ -187,13 +188,22 @@ is `FROZEN`, do not push, label, dispatch, rerun, merge, sync, or publish; build
 >
 > Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10, each once
 > with zero retries and a distinct fresh `.86` path. All candidates completed 78/78 with zero
-> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. Active budget/schema/
+> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. The formerly active budget/schema/
 > contract/collector/selftest/test `70145575…` / `695d2529…` / `e7dfea1d…` / `07131f5e…` /
 > `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged producer `d3223177…`, 3/3
 > samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
 > baseline breaches. The focused control's initial 12/13 was its phone-only synthetic active state;
 > adding matching desktop identities made it 13/13 without changing or rerunning browser evidence.
 > No deadline, launch argument, workflow, product byte, producer, browser-CDP, or retry policy changed.
+>
+> Exact implementation `aecf386…` then bounded the owned static server at one immutable monotonic
+> 2,000 ms close deadline. Just-before succeeds; exact/late/missing/error callbacks force-close all
+> connections exactly once and reject, with reentrant/stale settlement controls. Cleanup red still
+> suppresses PASS/sample. Collector/selftest/measurement/budget/focused-test are `0c7ec3ba…` /
+> `0bbb3541…` / `23aacc2c…` / `c711c8a5…` / `2f3f8dce…`; producer stays `d3223177…`.
+> Candidate24/25/26+baseline10 are historical only. The current ruler is calibration-required with
+> empty samples/null ceilings and a measurement-required paired baseline; certification refuses
+> before browser launch. Recollect c27, baseline11, c28, c29 serially from one later clean source.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,
