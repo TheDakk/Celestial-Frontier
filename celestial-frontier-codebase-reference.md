@@ -6,8 +6,8 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-20.**
 > **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
-> displayed-demand/zoom-owner product repair and fail-closed producer transition; fresh calibration,
-> exact-head certification, and final HUMAN review remain open):**
+> displayed-demand/zoom-owner product repair and active resource ruler; exact-head certification
+> and final HUMAN review remain open):**
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
 > bounded overscan, and any focus-pinned row; measured logical anchor-plus-offset
@@ -276,14 +276,15 @@
 > The displayed-demand/zoom-owner product and development-copy change produces
 > `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`: index `dee9af3a…`, owner
 > `assets/main-Da536xWA.js` / `28382873…`, worker and painter unchanged. Measurement authority
-> remains `6ba58522…`. `budgets/compendium-memory-v1.json` is now deliberately
-> `calibration-required`: budget/test SHA-256 `9f53ebe69e…` / `c2b68b3ec…`, empty phone/desktop
-> samples, measurement-required paired baseline, and null ceilings. Baseline7/candidate14/15/16 and
-> exact-139 evidence remain historical for producer `e59685b1…`; they cannot certify `d3223177…`.
-> The bounded successor is one no-retry baseline8 against legacy `3844701…` plus independent
-> candidate17/18/19 on one clean committed producer head, then—only after matching raw authority,
-> 78/78 candidates, four retained baseline faults/discriminating breaches, and strict reasoned
-> ceilings—one exact-activation-head battery and one corresponding CI attempt. First red stops;
+> remains `6ba58522…`. Clean committed collector/candidate source `75a996af…` produced one no-retry
+> baseline8 against legacy `3844701…` plus independent no-retry candidate17/18/19 under exact Edge
+> .86. Every candidate replayed 78/78; baseline8 retained all four faults and breached 14 phone / 13
+> desktop ceilings. Active budget/test SHA-256 are `74e88c2b…` / `485be9da…` (79,614 / 20,782
+> bytes), with all 40 reused ceilings strictly above the three-candidate maxima. Report/sample pairs
+> are baseline8 `0a8b831e…` / `a52bccec…`, c17 `6b86ca9d…` / `0818c86e…`, c18 `a9b28d79…` /
+> `c368ba86…`, and c19 `440cb788…` / `abddfa84…`. This activation is browser-free and
+> non-certifying; one exact-activation-head battery and one corresponding CI attempt remain. First
+> red stops;
 > HUMAN review remains open, and work returns to Arc 1B/gameplay after PR #32 closes without broader
 > timing work.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150

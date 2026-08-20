@@ -121,12 +121,14 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > to 1024 only when real zoom/DPR requires it; maximum tested demand is 1,248/1,280px. Producer is
 > now `d3223177…` (index `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`;
 > worker/painter unchanged), while measurement remains `6ba58522…`. Current budget/test
-> `9f53ebe69e…` / `c2b68b3ec…` are deliberately `calibration-required`, with empty samples,
-> measurement-required baseline, and null ceilings. Therefore `npm run compendiummem` must fail
-> closed and cannot certify until one no-retry baseline8 plus independent candidate17/18/19 activate
-> matching raw authority and strict discriminating ceilings. Only then run one exact-activation-head
-> battery and one corresponding CI attempt. First red stops; no more timing expansion precedes the
-> return to gameplay after PR #32 closes.
+> `74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) are active from clean source `75a996af…`'s
+> one-attempt/no-retry baseline8 plus independent candidate17/18/19 under exact Edge .86. Every
+> candidate replayed 78/78; baseline8 retained all four faults and 14 phone / 13 desktop breaches;
+> all 40 reused ceilings remain strictly above the three-run maxima. Report/sample pairs are
+> baseline8 `0a8b831e…` / `a52bccec…`, c17 `6b86ca9d…` / `0818c86e…`, c18 `a9b28d79…` /
+> `c368ba86…`, and c19 `440cb788…` / `abddfa84…`. This activation is browser-free and
+> non-certifying. Run one exact-activation-head battery and one corresponding CI attempt. First red
+> stops; no more timing expansion precedes the return to gameplay after PR #32 closes.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,

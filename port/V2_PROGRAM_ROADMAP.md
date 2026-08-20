@@ -17,10 +17,12 @@
 > `38447019517147319bd08c598202d097ee866874`. Arc 1A/PR #32 is the active bounded review branch.
 > Exact-139 passed its complete local battery, but corresponding run `32383320206` preserved a valid
 > no-retry Planetside `product-unanswerable` red. The displayed-demand/zoom-owner repair is present;
-> measurement remains `6ba58522…`, producer becomes `d3223177…`, and the ruler is fail-closed
-> `calibration-required` under budget/test `9f53ebe69e…` / `c2b68b3ec…`. Baseline8 plus independent
-> candidate17/18/19, then one exact-activation-head battery and one corresponding CI attempt, are the
-> bounded remaining sequence before Arc 1B/gameplay resumes. Later product batches remain planned.
+> measurement remains `6ba58522…`, producer becomes `d3223177…`, and clean source `75a996af…` has
+> supplied one no-retry baseline8 plus independent candidate17/18/19. Active budget/test
+> `74e88c2b…` / `485be9da…` preserve four-fault baseline discrimination and strict ceilings. This
+> browser-free activation is not certification; one exact-activation-head battery and one
+> corresponding CI attempt are the bounded remaining sequence before Arc 1B/gameplay resumes.
+> Later product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -619,9 +621,10 @@ accessibility, or approved static art.
 **Current state (2026-08-20): product implementation, serviced-turn scheduler, compact-phone stack,
 and displayed-demand/zoom-owner repair are present. Exact-139 passed its complete local battery, but
 run `32383320206` preserved a valid no-retry Planetside `product-unanswerable` red. Measurement
-remains `6ba58522…`; producer is now `d3223177…`, and budget/test `9f53ebe69e…` / `c2b68b3ec…`
-fail closed at `calibration-required`. Fresh baseline8 plus independent candidate17/18/19,
-exact-source automation, and fresh `[HUMAN]` review remain open.**
+remains `6ba58522…`; producer is now `d3223177…`. Clean source `75a996af…` produced baseline8 plus
+independent candidate17/18/19, and active budget/test `74e88c2b…` / `485be9da…` retain the four
+baseline faults and strict ceilings above all candidate maxima. Exact-source automation and fresh
+`[HUMAN]` review remain open.**
 This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
 corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
 `compendiummem` gate drives a deterministic 1,500-row
@@ -741,13 +744,13 @@ no review PNG, and no retry.
 
 The displayed-demand/zoom-owner product and development-copy repair changes built producer to
 `d3223177…` (index `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`; worker/painter
-unchanged). Measurement remains `6ba58522…`. The tracked ruler is now `calibration-required` under
-budget/test `9f53ebe69e…` / `c2b68b3ec…`, with empty samples, a measurement-required baseline, and
-null ceilings. Baseline7/candidate14/15/16 remain historical for `e59685b1…`. Collect one no-retry
-baseline8 plus independent candidate17/18/19 from one clean committed head; activate only with
-matching raw authority, 78/78 candidates, four retained baseline faults/discriminating breaches,
-and strict reasoned ceilings. Then run one exact-activation-head battery and one corresponding CI
-attempt. First red stops; after PR #32 closes, execution returns to Arc 1B/gameplay. The
+unchanged). Measurement remains `6ba58522…`. Clean committed collector/candidate source
+`75a996af…` produced one no-retry baseline8 against legacy `3844701…` and independent no-retry
+candidate17/18/19 under exact Edge .86; all candidates replayed 78/78, while baseline8 retained all
+four faults and breached 14 phone / 13 desktop ceilings. Active budget/test `74e88c2b…` /
+`485be9da…` (79,614 / 20,782 bytes) reuse all 40 strict ceilings above the three-run maxima. This
+activation is browser-free and non-certifying. Run one exact-activation-head battery and one
+corresponding CI attempt. First red stops; after PR #32 closes, execution returns to Arc 1B/gameplay. The
 Arc-local Edge authority
 still does **not** repin
 Gate-A/global Edge `150.0.4078.83`.

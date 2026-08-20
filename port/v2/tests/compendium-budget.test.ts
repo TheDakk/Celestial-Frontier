@@ -24,11 +24,11 @@ const EXPECTED_MEASUREMENT_AUTHORITY =
 const EXPECTED_PRODUCER_AUTHORITY =
   'd32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900';
 const EXPECTED_CANDIDATE_RUNS = [
-  '20260820-arc1a-cold-envelope-candidate14',
-  '20260820-arc1a-cold-envelope-candidate15',
-  '20260820-arc1a-cold-envelope-candidate16',
+  '20260820-arc1a-resolution-demand-candidate17',
+  '20260820-arc1a-resolution-demand-candidate18',
+  '20260820-arc1a-resolution-demand-candidate19',
 ] as const;
-const EXPECTED_BASELINE_RUN = '20260820-arc1a-cold-envelope-baseline7';
+const EXPECTED_BASELINE_RUN = '20260820-arc1a-resolution-demand-baseline8';
 
 type ProfileName = typeof PROFILE_NAMES[number];
 type CalibrationSample = {
@@ -70,19 +70,19 @@ const EXPECTED_SAMPLE_OBJECT_SHA256: Record<ProfileName, {
 }> = {
   phone: {
     candidate: [
-      '0203d8d197daf04478ef14e5f2b9d78e2e8aa670e816cf37a71dc67aec9acf38',
-      'c9b1f1c45856a20e9a61e42484d0fcbb6bbe75df6800e3437648210259caa2e2',
-      '9b1c2e91bec133faf15985ac60fbbe1ae01a80749c766f419469ec6aac23e2c3',
+      'ea9c4bb1ea417a13b532c95947771c0f0bd0c307954c9612583fe7f7c929392e',
+      'fa16efdb48aab60276f0ea7e1546462146860db02155394997da4745374edb30',
+      'eac7be9d96cbf1d765c7b4e7aa6f8172d011aba79773183e401f3d2687ed66af',
     ],
-    baseline: 'a781f668b13aa3e2b53a99d14124bde48f111aa095ee7c1647d1da6b9807973b',
+    baseline: '4f6f8d9834bd7090df696238bd0c5dd1d2788872306cb48b6782af8aa9f93418',
   },
   desktop: {
     candidate: [
-      'e6553472b5e858ed450766b7482e2830fda752db9c3fc5eccb27759ef4b6ca07',
-      'cb204498933892afbc88270bb929906c59923ad921aaa3effd459aa2886b47d4',
-      'dde9dbe39f40accabf25bcc47dcbfdc83b41379b9f11afb3e89751577f6b271f',
+      'fea960dd3fc137c65054113199f07fcd31fbcd0cc78beda740d90f1e27e21a33',
+      '7ce24012ec0d05efa665a53007491fc6c81c1deb4f39e04065868e46d22067c7',
+      '82a20e918da1b0f96060fbcb716662f64ce4aac74b32e7f66d2efbf7ed025ad6',
     ],
-    baseline: '776fcadbdffd8c7891e9de739fb2788d3993c8e2c5c781af1d8169338ee217b9',
+    baseline: '01446d933c63276fe1a577698d61f90c4c286a7d008d870936bf206f3ccfb0e1',
   },
 };
 
