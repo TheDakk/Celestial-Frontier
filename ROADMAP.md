@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 CDP DEADLINE REPAIR + RECALIBRATION ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 ACTIVE TIMER-AUTHORITY RULER + EXACT-HEAD GATES ◀◀◀
 
 ### Cold start
 
@@ -60,11 +60,13 @@ the archive verbatim and refresh this handoff in place.
   (`assets/main-BAg-DH_f.js`; worker and painter unchanged).
 - Commit `f47cd381699fb1934f30bfca82fc9bf971714e6d` freezes the serviced-turn scheduler and its
   fail-closed calibration seam. Fresh paired broken-baseline run
-  `20260820-arc1a-serviced-turn-baseline4` and independent candidate runs
-  `20260820-arc1a-serviced-turn-candidate5`, `candidate6`, and `candidate7` all used that clean
-  collector/product source, measurement authority `bb03a3af…`, producer `1c8200d7…`, and exact
-  Edge 151.0.4129.86. Every run was one attempt with zero retries; each candidate produced all
-  78 outcomes. The tracked ruler is active again with strict ceilings above the replayed three-run
+  `20260820-arc1a-serviced-turn-baseline4` used collector `f47cd381…` against legacy product
+  `3844701…` and carries no candidate producer field. Independent candidate runs
+  `20260820-arc1a-serviced-turn-candidate5`, `candidate6`, and `candidate7` used clean
+  `f47cd381…` as collector/product source and bound producer `1c8200d7…`. All four shared
+  measurement authority `bb03a3af…` and exact Edge 151.0.4129.86. Every run was one attempt with
+  zero retries; each candidate produced all 78 outcomes. The tracked ruler is active again with
+  strict ceilings above the replayed three-run
   maxima. The paired baseline retains all four sealed faults and breaches 14 phone / 13 desktop
   ceilings. Commit `78813cd25c67f4255282f418ea6f635a45e0fc29` activates that ruler. Its one-attempt
   Arc-local Edge run `20260820-arc1a-serviced-turn-active-cert-78813cd` passed all 78 outcomes with
@@ -168,7 +170,7 @@ the archive verbatim and refresh this handoff in place.
   unchanged job starts, disposals, and worker starts/disposals. The broken baseline retains all four
   sealed faults and crosses 14 phone and 13 desktop ceiling fields. Those facts are not current
   ceilings for the repaired producer.
-- The tracked budget was active for pre-timer measurement authority
+- The tracked budget was active for historical pre-timer measurement authority
   `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c` and binds built producer
   `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Its paired baseline4 report /
   sample SHA-256 values are `1b10dba0…` / `0c407845…`; candidate5, candidate6, and candidate7 report /
@@ -178,13 +180,12 @@ the archive verbatim and refresh this handoff in place.
   written headroom. The desktop warm aggregate range maximum was 436,412 bytes, so its 524,288-byte
   ceiling retains 87,876 bytes of headroom while remaining below the paired baseline's 795,378-byte
   observation. The earlier producer `291b794e…` and ruler remain preserved chronology, not current
-  authority. Exact committed ef6 certification and its named-run verification passed. Run
-  `32350971816` matched those pre-repair measurement, budget, browser, and producer carriers; its
-  early timer is instrument evidence. Because `browsercdp.mjs` is itself a measurement-authority
-  input, the frozen repair changes authority to `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`.
-  Budget SHA-256 `a41ff08b8a58e776c789f09e7294c1cb2c0f44da8406f81c55f0754076337c30` is now fail-closed
-  `calibration-required`. Capture a fresh paired broken baseline plus three independent candidates,
-  then activate/certify once; old capsules cannot certify this successor authority.
+  authority. Exact committed ef6 certification and its named-run verification passed. Run `32350971816` matched those pre-repair measurement, budget, browser, and producer carriers; its early timer is instrument evidence. Because `browsercdp.mjs` is a measurement-authority input, the frozen repair changed authority to
+  `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409` and first made budget `a41ff08b8a58e776c789f09e7294c1cb2c0f44da8406f81c55f0754076337c30` fail-closed `calibration-required`. That boundary is now satisfied without borrowing old capsules. Paired run `20260820-arc1a-absolute-deadline-baseline5` used clean collector `cbe786816cafd196a4b1649b0d1b72966036b7cc` against detached broken source `3844701…`; independent candidate8/9/10 used the same clean `cbe7868…`, authority, producer, fixture, and exact Edge .86. Every run was one attempt with zero retries; all three candidates replay 78/78 outcomes.
+- Active budget/focused-test SHA-256 values are `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` / `121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a`. Baseline5 report/sample hashes are
+  `275085d307372847a7f7d0192ca565cc41d185b1f034ee4a8ade5d51a044b967` / `776123a354262393fdf4aeea4dbcc1a0c402d57e2600e51851a858e4d2b9715a`; candidate8/9/10 pairs are `f80c2935229d21b7d3d19efaa7661781d2a003eda011319181fb857ef859e448` / `1f4718be1e2546dab5288da30c001aab6fd74442a2adc11c27c370596ffdb6ec`, `c1bbe0c6c3b5bf81c3314eb7751c745f7540190e621f368d6362d0e5fd38812a` / `d4e90b56bc1ef5508302728465143fa86dfa16b2088801e8bb04546bf5109bb4`, and `c0fd8d2d474734b6dc5d013a42b6b61dd5946037a1b771913cd5ade288545830` / `ad4990821b518ead188e4c8da0769e6cce131b49334d5f1883924f71fdaa5f73`.
+- All 40 phone/desktop fields have ceilings strictly above the three-run maxima. Phone page/embedder/backing/aggregate/encoded/warm maxima → ceilings are `7,771,656/3,151,408/3,099,159/12,406,038/2,477,068/6,196` → `8,388,608/4,194,304/4,194,304/14,680,064/2,621,440/65,536` bytes; desktop values are
+  `10,550,176/3,216,400/4,914,765/16,017,176/6,592,468/306,704` → `12,582,912/4,194,304/6,291,456/18,874,368/6,815,744/524,288` bytes. Fractional/+1 sentinels retain exact product caps. Baseline5 retains all four sealed faults, its warm ranges are 1,037,780 / 1,222,370 bytes, and it breaches 14 phone / 13 desktop ceilings. This is active browser-free ruler authority, not a successor certification or PASS for the later activation head.
 - Arc 1A owns a local cross-host browser-build authority:
   Edg/151.0.4129.86, revision @083e754915c9ab93da1d8f7b9c860e4520273900,
   JavaScript 15.1.23.7, protocol 1.3. Executable path and user agent remain recorded provenance.
@@ -215,10 +216,12 @@ the archive verbatim and refresh this handoff in place.
   trusting copied metric summaries. It binds the complete fixture/generator/schema/contract/
   collector/browser/lock/package/baseline-save/art-build/outcome input set, the exact built
   owner-module to worker to worker-local painter graph, budget bytes/status, browser authority,
-  artifacts, attempt policy, and raw phone/desktop profiles. Baseline4 and candidate5/6/7 populate
-  the last pre-timer carriers under exact authority `bb03a3af…` and producer `1c8200d7…`; their strict
-  ceilings were independently derived from replayed raw reductions. Baseline3 and candidate2/3/4
-  remain historical carriers for old producer `291b794e…`.
+  artifacts, attempt policy, and raw phone/desktop profiles. Baseline5 uses collector `cbe7868…`
+  against legacy product `3844701…`; candidate8/9/10 bind candidate producer `1c8200d7…` and clean
+  candidate source `cbe7868…`. Together they populate the active timer-authority ruler under exact
+  `f9710bdf…` and Edge .86. Baseline4/candidate5/6/7 and
+  baseline3/candidate2/3/4 remain historical inputs to their older measurement rulers. Their
+  candidate sets bind the older producer authorities; the paired baseline carriers do not.
 - Browser-free evidence for the historical fail-closed seam is green: 36 Vitest files / 423 passed /
   1 skipped; root, app, and worker TypeScript programs; artunused, artaudit, and the exact production
   owner→worker→painter build graph; 222 Compendium selftest controls; 10 focused budget tests; and
@@ -232,20 +235,14 @@ the archive verbatim and refresh this handoff in place.
   fields is strictly above its measured maximum. This is still browser-free activation authority,
   and its exact local Edge certification passed. That local result remains truthful only for da0;
   the preserved Linux CI product-unanswerable red prevents PR authority.
-- The last frozen serviced-turn active-ruler pair is bound to baseline4 and candidate5/6/7.
-  Focused budget replay passes 11/11 and all 222 Compendium instrument selftest controls pass.
-  The exact tracked budget/test SHA-256 pair is
-  `2b51dd23728fb6431c5c71dd464592e75471c9c1919f1d65ceb2e0c6be96e2d5` /
-  `71048f473e9575a1cce804c08a2e9ddc975caee2fc6f5d780fe189f3d3926cae`.
-  Commit `78813cd25c67f4255282f418ea6f635a45e0fc29` subsequently passed one exact-head
-  Compendium certification and independent named-run verification. Committed instrument head ef6
-  also passed its own exact-source 78/78 certification and named verifier; neither result is PR CI.
+- The frozen active timer-authority pair binds baseline5 and candidate8/9/10 to budget/test `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` / `121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a`. Its exact raw reductions restore a strict measured ruler, not an exact-head browser result. Historical commit `78813cd25c67f4255282f418ea6f635a45e0fc29` and ef6 each passed their own older-authority certification/verifier, but neither result is successor certification or PR CI for the activated bytes.
 - The exact clean-head reports `20260817-arc1a-active-cert-65b1bac` and
   `20260820-arc1a-active-cert-da0de20` remain truthful only for their named commits and producers;
   neither certifies the serviced-turn repair. The exact-788 and exact-ef6 reports each certify only
   their named sources. The later exact PR test-merge carrier is the instrument red recorded above;
   its valid terminal report does not certify a product profile. Source identity is not borrowed
-  across commits, and the repaired timer requires a newly calibrated measurement authority.
+  across commits. The repaired timer now has a newly calibrated active ruler, while the activation
+  head still requires its own complete exact-head browser battery and corresponding PR test-merge.
 
 ### PR #32 battery repair boundary
 
@@ -284,9 +281,10 @@ the archive verbatim and refresh this handoff in place.
 ### Human and scope boundary
 
 - Arc 1A's product, serviced-turn repair, historical ruler, and exact-788/ef6 local certifications
-  remain preserved. Run `32350971816` stops current push eligibility at fail-closed recalibration;
-  approval still requires one complete same-head battery and corresponding terminal-green PR
-  test-merge. This handoff records that instrument red without promoting it to product evidence.
+  remain preserved. Run `32350971816` remains the preserved first red; the fresh ruler is active,
+  but push eligibility still requires one complete same-head local battery; merge/approval
+  eligibility additionally requires the corresponding terminal-green PR test-merge. This handoff
+  records that instrument red without promoting it to product evidence.
   Separately, the rubric remains open until a person reviews six fresh same-run phone/desktop list,
   focus-pinned, and detail
   PNGs for 132px list quality, 440px detail quality, hierarchy, clipping, and visible focus.
@@ -298,9 +296,9 @@ the archive verbatim and refresh this handoff in place.
 
 ### Exact-head transition rule
 
-1. Preserve frozen launcher/budget authority `f9710bdf…` in fail-closed `calibration-required`, then
-   capture a fresh paired broken baseline and three independent candidates before activating a
-   successor ruler. No prior capsule or PASS may cross that boundary.
+1. Preserve active budget `8ffd0d8e…`, test `121ab8cd…`, measurement `f9710bdf…`, candidate producer
+   `1c8200d7…`, baseline5, and candidate8/9/10 as one frozen ruler authority. No earlier-authority
+   capsule or PASS may cross that boundary, and activation itself is not certification.
 2. Resolve the exact head, target bytes, worktree, and upstream before the run. From that one clean
    committed head, run browser path/CDP controls, Arc-local Edge Compendium certification and named
    verifier, one no-retry Chrome Smoke, full Chrome Glass, persona join, root layout plus exact-run
@@ -325,12 +323,12 @@ the archive verbatim and refresh this handoff in place.
 ## Parallel Git handoff — exact five fields
 
 **Current side:** OpenAI/Codex on macOS owns PR #32's shared-command-timer instrument repair and
-measurement recalibration boundary. Pushed head `1187de0…` is stopped by run `32350971816` / job
-`96369841133`'s preserved instrument red; it has no product verdict. Recalibrate under frozen
-authority `f9710bdf…`, then repeat the exact-head transition without retrying the failed test-merge.
-Fresh six-image HUMAN judgment and Claude presentation-polish remain separate.
+active successor ruler. Pushed head `1187de0…` remains stopped by run `32350971816` / job
+`96369841133`'s preserved instrument red; it has no product verdict. Baseline5 plus candidate8/9/10
+now activate frozen `f9710bdf…` budget `8ffd0d8e…`; repeat the exact-head transition without
+retrying the failed test-merge. Fresh six-image HUMAN judgment and Claude presentation-polish remain separate.
 
-**GitHub step:** Apply the exact-head transition rule above after the frozen timer-authority recalibration.
+**GitHub step:** Apply the exact-head transition rule above from the frozen active timer-authority ruler.
 Once every same-head durable carrier,
 verifier, terminal-only check, and repository-identity proof is green, push that unchanged head to
 draft PR #32. Then require PR test-merge CI corresponding to that pushed head and verify the head
@@ -375,10 +373,8 @@ touch `main`.
 > `1187de0…` then reached PR test-merge run `32350971816` / job `96369841133`; its 2,000 ms command
 > timer fired `0.241274` ms early while the root heartbeat answered in `7.410808` ms, so the valid
 > report classified `instrument-fail`, blocked all 78 outcomes, and made no product verdict. The
-> bounded absolute-deadline re-arm changes measurement authority to frozen `f9710bdf…`; the budget
-> is fail-closed `calibration-required`, so collect a fresh paired baseline plus three independent
-> candidates before any successor certification. Fresh six-image
-> HUMAN review, integration,
+> bounded absolute-deadline re-arm changes measurement authority to frozen `f9710bdf…`. Exact baseline5 plus independent candidate8/9/10 now activate budget `8ffd0d8e…`; all candidates replay 78/78 and the four-fault baseline breaches 14 phone / 13 desktop ceilings. This browser-free
+> activation is not successor certification; run the complete unchanged-head battery next. Fresh six-image HUMAN review, integration,
 > development publication, Arc 1B, release and production deployment remain separate authorities.
 
 **Other side:** Anthropic/Claude Code does not have PR #32 yet and need not be opened during Codex's

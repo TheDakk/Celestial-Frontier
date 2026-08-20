@@ -34,7 +34,7 @@ producer error remains a stable owned error tile, releases cleanly, and the exac
 through a fresh worker lease. Capability/import/protocol/worker failure terminates once and settles
 the active plus queued owners exactly once instead of retrying a broken worker for every tile.
 
-The phone and desktop resource path is implemented; the last measured ruler is historical. Every
+The phone and desktop resource path is implemented; the timer-authority measured ruler is active. Every
 selected head must own exact-source local certification, and its corresponding PR test-merge CI
 must be terminal green; this reference deliberately caches neither live outcome. Exact committed repair
 `dea03913014bc58134ebb06ca5b36892210a7571` passes the full Glass
@@ -46,8 +46,9 @@ repaired seam observes full native warm-cache state before cap control; records 
 backing-store, and aggregate heap; proves stable unique keys plus unchanged job/disposal/worker
 counters over the last three cycles of one retained window; replays raw capsules; and binds complete
 measurement inputs plus the exact built owner-to-worker-to-painter graph. Da0's historical budget embeds
-paired `20260820-arc1a-baseline3-21af3fa` and candidate2/3/4 from clean `21af3fa2…`, under
-measurement authority `bb03a3af…`, producer authority `291b794e…`, and exact Edge 151.0.4129.86.
+paired `20260820-arc1a-baseline3-21af3fa`, collected by `21af3fa2…` against legacy product
+`3844701…`, and candidate2/3/4 from clean `21af3fa2…` product/collector source under producer
+`291b794e…`; all share measurement authority `bb03a3af…` and exact Edge 151.0.4129.86.
 Strict ceilings exceeded the three-run maxima; the baseline preserved four faults and breached 14
 phone / 13 desktop fields. Commit `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` locally certified
 that exact ruler and passed its Chrome Smoke, full Glass, persona, root-layout, and preview gates.
@@ -56,19 +57,28 @@ PR run `32334254714`, attempt 1, nevertheless retained a no-retry phone Planetsi
 Source inspection identified zero-delay successor-pump starvation as the bounded repair hypothesis;
 the partial CI report did not retain a worker phase. The serviced-turn/bfcache repair changes producer
 authority to `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Clean seam commit
-`f47cd381…` supplied paired baseline4 plus independent one-attempt candidate5/6/7 under unchanged
-measurement authority `bb03a3af…` and exact Edge .86. All three candidates completed 78/78 outcomes
+`f47cd381…` collected paired baseline4 against legacy product `3844701…`; independent one-attempt
+candidate5/6/7 used `f47cd381…` product/collector source and bound producer `1c8200d7…`. All four
+shared measurement authority `bb03a3af…` and exact Edge .86. All three candidates completed 78/78 outcomes
 with zero retries. That historical `bb03a3af…` ruler placed strict ceilings above their replayed
 maxima; the baseline retained four faults and breached 14 phone / 13 desktop fields. The frozen
-shared-timer repair moves measurement authority to `f9710bdf…`; the current budget is fail-closed
-`calibration-required` pending a fresh paired broken baseline plus three independent candidates
-before successor activation/certification. Baseline3/candidate2/3/4 remain truthful history for old
-producer `291b794e…`. Every selected head must own exact-source local certification, and its
+shared-timer repair moves measurement authority to `f9710bdf…`. Exact paired baseline5 uses collector
+`cbe786816cafd196a4b1649b0d1b72966036b7cc` against legacy product `3844701…`; independent
+candidate8/9/10 use that clean candidate source and candidate producer `1c8200d7…`. Together they
+now activate budget/test `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` /
+`121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a` under exact Edge .86. Each
+candidate is one-attempt/no-retry and replays 78/78; all 40
+ceilings exceed their maxima. Phone/desktop warm maxima 6,196 / 306,704 bytes sit below 65,536 /
+524,288-byte ceilings; the four-fault baseline observes 1,037,780 / 1,222,370 bytes and breaches
+14 / 13 fields. This is browser-free activation, not selected-head certification or a PASS.
+Baseline3 and candidate2/3/4 remain truthful inputs to the old `bb03a3af…` ruler; the candidate
+runs bind old producer `291b794e…`, while the paired baseline does not carry a candidate producer
+field. Every selected head must own exact-source local certification, and its
 corresponding PR test-merge CI must be terminal green; this reference deliberately caches neither
 live outcome.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
-browser. Da0's six PNGs are stale for the repaired producer; a fresh phone/desktop list,
-focus-pinned, and detail set still requires HUMAN review. Arc 1B
+browser. Calibration review PNGs do not satisfy the selected-head HUMAN row; a fresh phone/desktop
+list, focus-pinned, and detail set still requires HUMAN review. Arc 1B
 scene-resource ownership/disposal and live HD planet replacement remain open.
 
 **What remains planned:** V2 has no Cargo, Shipyard, ship portrait, crafting, research, or

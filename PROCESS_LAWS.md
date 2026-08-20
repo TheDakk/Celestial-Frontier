@@ -803,9 +803,10 @@ The scheduler is also producer authority. Changing the main-thread owner bundle 
 capsule, ceiling, or six-image package bound to the old producer stale for current certification even
 when its historical result remains truthful. Fail the budget closed, bind the new exact producer,
 recalibrate from fresh paired baseline plus independent candidates, and certify the eventual
-activation head once. For this repair, producer
-`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2` was recalibrated under exact
-Edge 151.0.4129.86 from one-attempt baseline4 plus independent candidate5/6/7. The active ruler
+activation head once. For this repair, the ruler for producer
+`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2` was activated under exact
+Edge 151.0.4129.86 from one-attempt baseline4 collected against legacy product `3844701…` plus
+independent candidate5/6/7 that bind the repaired producer. The active ruler
 replays their raw capsules, retains all four baseline faults and 14 phone / 13 desktop breaches,
 and exact-788 local certification passed. Every instrument-only head and PR test-merge must own its
 exact-source browser evidence; whether the selected head has such ignored evidence is resolved from
@@ -895,11 +896,22 @@ Measurement code is measurement authority. Because `browsercdp.mjs` participates
 authority hash, freezing this timer repair at browser-CDP SHA-256
 `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0` changes measurement authority
 from historical `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c` to
-`f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. The frozen budget must now
-be fail-closed `calibration-required`; historical capsules and results remain truthful only for
-their named old authority. Capture a fresh paired broken baseline plus three independent candidates,
-activate the new ruler, and certify once. The producer carrier currently records `1c8200d7…`, but
-do not infer any final calibrated authority from it until fresh capsules and activation freeze.
+`f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. The budget first had to become
+fail-closed `calibration-required`; historical capsules and results remain truthful only for their
+named old authority. That boundary is now satisfied by paired broken-baseline run
+`20260820-arc1a-absolute-deadline-baseline5` and independent candidate8/9/10, all one attempt with
+zero retries under exact Edge 151.0.4129.86. The broken run uses detached `3844701…` with clean
+collector `cbe786816cafd196a4b1649b0d1b72966036b7cc`; the candidates use that clean `cbe7868…` source,
+measurement `f9710bdf…`, and producer
+`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Each candidate run replays
+78/78 outcomes; the baseline retains all four sealed faults and breaches 14 phone / 13
+desktop ceilings. Active budget/test SHA-256 values are
+`8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` /
+`121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a`. All 40 ceilings are strictly
+above their candidate maxima; phone/desktop warm maxima 6,196 / 306,704 bytes sit below 65,536 /
+524,288-byte ceilings, while the baseline warm observations are 1,037,780 / 1,222,370 bytes.
+This is active browser-free ruler authority, not an exact-head certification, product PASS, PR-CI
+result, HUMAN review, or permission to reuse an older PASS for the activation head.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
