@@ -42,6 +42,8 @@ import {
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression,
   evaluateCandidateExpression, evaluateProfile, installBrokenBaselineThumbObserver,
+  installBrokenBaselineInitialListArm,
+  sealBrokenBaselineInitialListObservation,
   producerErrorColdProof, producerErrorStages,
   sha256, sameSourceIdentity,
   isCandidateObservationError, waitForCandidateValue,
@@ -1696,6 +1698,8 @@ async function collectBrokenBaselineProfile({
         modeledThumbCacheEntries:thumb?.initialListCacheEncodedByteLengths?.length||0,
         thumbCacheEncodedBytes:(thumb?.initialListCacheEncodedByteLengths||[]).reduce((n,value)=>n+value,0),
         thumbObserverTotalExact132Completions:thumb?.totalExact132Completions||0,
+        thumbObserverExpectedPreOwnerExact132Completions:
+          thumb?.expectedPreOwnerExact132Completions,
         thumbObserverPreOwnerExact132Completions:thumb?.preOwnerExact132Completions,
         thumbObserverErrors:thumb?.observerErrors,
         thumbObserverDescriptorPreserved:thumb?.descriptorPreserved===true,
@@ -1747,49 +1751,43 @@ async function collectBrokenBaselineProfile({
        opening Compendium; do not infer this fault from source prose. */
     const eagerResource = await waitValue('idle eager species import', `(()=>performance.getEntriesByType('resource')
       .map(entry=>entry.name).find(name=>name.endsWith('/${speciesChunk}'))||null)()`, 15000);
-    const preOwnerThumbObservation = await waitValue('stable pre-owner thumb observation',
-      `(()=>{const state=window.__CF_COMPENDIUM_BASELINE_THUMBS__;
-        return state?.schema===${JSON.stringify(BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA)}
-          &&state.descriptorPreserved===true&&state.observerErrors===0
-          &&performance.now()-state.lastCompletionAt>=1000
-          ?{total:state.totalExact132Completions,quietMs:performance.now()-state.lastCompletionAt}:null})()`,
-    30000);
-    const thumbPhase = await evaluate(`(()=>{const state=window.__CF_COMPENDIUM_BASELINE_THUMBS__;
-      if(!state||state.phase!=='pre-owner')return null;
-      state.preOwnerExact132Completions=state.totalExact132Completions;
-      state.initialListCompletions=0;state.initialListCacheEncodedByteLengths.length=0;
-      state.phase='initial-list';state.lastCompletionAt=performance.now();
-      return {phase:state.phase,preOwnerExact132Completions:state.preOwnerExact132Completions}})()`,
-    'begin initial-list thumb observation');
-    assert(thumbPhase?.phase === 'initial-list'
-      && thumbPhase.preOwnerExact132Completions === preOwnerThumbObservation.total,
-    `${profile}: initial-list thumb observer phase did not preserve the raw pre-owner count`);
+    const initialListArm = await waitValue('drained Planetside thumb observation and opener arm',
+      `(()=>{const side=document.getElementById('planetside');
+        const imgs=[...document.querySelectorAll('#planetside [data-sel="planetside-sp"] img')];
+        if(!side||getComputedStyle(side).display==='none'||imgs.length<1||imgs.length>8
+          ||!imgs.every(img=>img.complete&&img.naturalWidth===440&&img.naturalHeight===440))return null;
+        return (${installBrokenBaselineInitialListArm.toString()})(
+          window,Element,performance,
+          ${JSON.stringify(BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA)},
+          '#dockcodex,#railcodex',imgs.length)})()`, 30000);
+    assert(initialListArm?.phase === 'awaiting-initial-list-click'
+      && Number.isSafeInteger(initialListArm.stableTotal)
+      && initialListArm.stableTotal === initialListArm.expectedPreOwnerExact132Completions
+      && initialListArm.expectedPreOwnerExact132Completions > 0
+      && initialListArm.expectedPreOwnerExact132Completions <= 8
+      && initialListArm.quietMs >= 1000,
+    `${profile}: initial-list thumb observer did not arm on a drained Planetside owner count`);
     await click('#dockcodex,#railcodex', 'open Compendium');
+    const thumbPhase = await evaluate(`(()=>{const state=window.__CF_COMPENDIUM_BASELINE_THUMBS__;
+      return state?{phase:state.phase,
+        expectedPreOwnerExact132Completions:state.expectedPreOwnerExact132Completions,
+        preOwnerExact132Completions:state.preOwnerExact132Completions}:null})()`,
+    'confirm initial-list thumb observation');
+    assert(thumbPhase?.phase === 'initial-list'
+      && Number.isSafeInteger(thumbPhase.preOwnerExact132Completions)
+      && thumbPhase.expectedPreOwnerExact132Completions
+        === initialListArm.expectedPreOwnerExact132Completions
+      && thumbPhase.preOwnerExact132Completions
+        === initialListArm.expectedPreOwnerExact132Completions,
+    `${profile}: Compendium opener click did not atomically seal the pre-owner count`);
     await waitValue('1,500 full list portraits', `(()=>{const rows=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"]')],imgs=rows.map(r=>r.querySelector('img')).filter(Boolean);
       return rows.length===1500&&imgs.length===1500&&imgs.every(img=>img.complete&&img.naturalWidth>0)?true:null})()`);
-    await waitValue('stable initial-list thumb completions',
-      `(()=>{const state=window.__CF_COMPENDIUM_BASELINE_THUMBS__;
-        return state?.initialListCompletions>=1500
-          &&performance.now()-state.lastCompletionAt>=1000
-          ?{initialListCompletions:state.initialListCompletions,
-            cacheEntries:state.initialListCacheEncodedByteLengths?.length,
-            cacheEncodedBytes:(state.initialListCacheEncodedByteLengths||[]).reduce((n,value)=>n+value,0),
-            totalExact132Completions:state.totalExact132Completions,
-            observerErrors:state.observerErrors,descriptorPreserved:state.descriptorPreserved,
-            quietMs:performance.now()-state.lastCompletionAt}:null})()`);
-    const sealedThumbObservation = await evaluate(`(()=>{const state=window.__CF_COMPENDIUM_BASELINE_THUMBS__;
-      if(state.phase!=='initial-list')return null;
-      state.initialListStableQuietMs=performance.now()-state.lastCompletionAt;
-      state.phase='post-initial-list';
-      return {preOwnerExact132Completions:state.preOwnerExact132Completions,
-        initialListCompletions:state.initialListCompletions,
-        cacheEntries:state.initialListCacheEncodedByteLengths.length,
-        cacheEncodedBytes:state.initialListCacheEncodedByteLengths.reduce((n,value)=>n+value,0),
-        totalExact132Completions:state.totalExact132Completions,
-        observerErrors:state.observerErrors,descriptorPreserved:state.descriptorPreserved,
-        quietMs:state.initialListStableQuietMs}})()`,
-    'seal initial-list thumb observation');
-    assert(validBrokenBaselineThumbObservation(sealedThumbObservation),
+    const sealedThumbObservation = await waitValue('stable initial-list thumb completions and seal',
+      `(${sealBrokenBaselineInitialListObservation.toString()})(
+        window,performance,${JSON.stringify(BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA)},
+        ${BROKEN_BASELINE_THUMB_CACHE_CAP},1500)`);
+    assert(sealedThumbObservation?.cacheCap === BROKEN_BASELINE_THUMB_CACHE_CAP
+      && validBrokenBaselineThumbObservation(sealedThumbObservation),
       `${profile}: stable initial-list thumb completion/cache observation was not exact`);
     const list = await snapshot('full list');
     await click('#codexpanel [data-sel="codex-entry"]', 'open detail');
@@ -1884,7 +1882,7 @@ async function collectBrokenBaselineProfile({
           point: 'initial-list-after-1500-observed-132x132-toDataURL-completions',
           observerInstalledBeforeAppModule: true,
           observerSchema: BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
-          preOwnerExact132Completions: preOwnerThumbObservation.total,
+          preOwnerExact132Completions: sealedThumbObservation.preOwnerExact132Completions,
           totalExact132CompletionsAtInitialSeal: sealedThumbObservation.totalExact132Completions,
           stableQuietMs: sealedThumbObservation.quietMs,
           cap: BROKEN_BASELINE_THUMB_CACHE_CAP,

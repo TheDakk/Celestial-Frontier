@@ -34,7 +34,7 @@
 > solely red at `desktop/warm-plateau`. That run does not prove a product leak or
 > a clean plateau: the old sequence destructively trimmed the desktop cache before
 > warming and then measured refill, while its heap ruler omitted embedder/backing
-> ownership. The current seven-file calibration seam moves cap control after a full
+> ownership. The committed calibration seam moves cap control after a full
 > native warm-cache observation; records used, embedder, backing-store, and aggregate
 > heap; proves stable warm keys/reuse and a post-cap restored snapshot; replays compact
 > raw calibration capsules; and binds the complete measurement-input plus built

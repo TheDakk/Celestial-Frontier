@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-17 · PR #32 BATTERY REPAIR ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-19 · PR #32 BATTERY REPAIR ◀◀◀
 
 ### Cold start
 
@@ -59,8 +59,18 @@ the archive verbatim and refresh this handoff in place.
   `desktop/warm-plateau` red. That red exposed a ruler/sequence defect rather than proving either a
   product leak or a clean plateau: the destructive desktop cap trim ran before the warm observation,
   so the gate measured cache refill, and the old heap ruler excluded embedder/backing ownership.
-  The current committed seven-file Compendium calibration seam repairs that authority and leaves
-  the budget fail-closed; fresh calibration, certification, push, and exact-head PR CI remain open.
+  Commit `4374d95be6c8b6ec2106ecd8518ac9bb39e32065` contains the fail-closed Compendium
+  calibration seam, repairs that authority, and leaves the budget non-certifying; fresh
+  calibration, certification, push, and exact-head PR CI remain open.
+- The first fresh paired-baseline attempt is preserved as instrument evidence and produced no
+  sample. It exposed a host/CDP observer race: one 132px pre-owner completion could land between a
+  stable-count read and a separate phase-switch command. The bounded follow-up now drains the exact
+  positive Planetside 440px roster, requires one internal 132px completion per visible owner, seals
+  that expected count in the real opener's capture phase, and atomically seals the final 1,500 list
+  completions with their quiet observation. A late owner completion turns evidence red rather than
+  becoming catalogue work. The attempt also confirmed that the installed macOS Edge had
+  auto-updated to 151.0.4129.93; it is not calibration authority and will not be used or silently
+  re-baselined.
 - Nothing in this batch changes main, the production v1.8.9 page, a shipped version, a save schema,
   deterministic generation/share bytes, or either live-site repository.
 
@@ -100,7 +110,7 @@ the archive verbatim and refresh this handoff in place.
 - The checked-in Compendium budget is therefore intentionally `calibration-required`: candidate
   samples are empty, every candidate ceiling is null, and the paired baseline is
   `measurement-required`. This fail-closed state cannot emit a certification PASS. The current
-  seven-file calibration seam moves cap control after a full native warm-cache observation; records
+  committed calibration seam moves cap control after a full native warm-cache observation; records
   used, embedder, backing-store, and aggregate heap; proves stable warm keys and reuse; retains a
   post-cap restored snapshot; embeds raw replayable calibration capsules; and binds the complete
   measurement-input and built owner-to-worker-to-painter authority.
@@ -113,6 +123,10 @@ the archive verbatim and refresh this handoff in place.
   Edg/151.0.4129.86, revision @083e754915c9ab93da1d8f7b9c860e4520273900,
   JavaScript 15.1.23.7, protocol 1.3. Executable path and user agent remain recorded provenance.
   This does not change the Gate-A/root layout/legacy boot Edge 150 pin.
+- The exact notarized universal macOS 151.0.4129.86 package is isolated under `/private/tmp` rather
+  than installed over `/Applications`; its one verified executable path must be reused for the
+  paired baseline, all three candidate runs, and final Compendium certification. The auto-updated
+  151.0.4129.93 application is explicitly outside this authority.
 - Ordinary and manual Compendium CI install the exact SHA-verified Edge package only for this gate.
   Other smoke, Glass, persona, and preview browser work keeps its established Chrome selection.
   Browser mismatch terminates before profiles as instrument evidence; it can never emit product
@@ -176,9 +190,10 @@ the archive verbatim and refresh this handoff in place.
 
 ### Next actions
 
-1. From the current committed fail-closed seam, capture one fresh paired exact-3844701 baseline and three independent
-   one-attempt current-candidate runs per profile. Derive and document new ceilings from their raw
-   capsules, activate the budget, review the diff, and commit the exact ruler.
+1. Commit the observer-boundary follow-up with its refreshed exact measurement authority. Under the
+   one isolated Edge 151.0.4129.86 executable, capture one new paired exact-3844701 baseline and
+   three independent one-attempt current-candidate runs per profile. Derive and document new
+   ceilings from their raw capsules, activate the budget, review the diff, and commit the ruler.
 2. On that final clean head, run browser path/CDP controls, one no-retry Chrome Smoke, full Chrome
    Glass matrix, and Arc-local Edge Compendium certification plus independent exact-run verification.
    Preserve the first browser red if any; if terminal green, push the exact head to draft PR #32 and
@@ -197,9 +212,12 @@ product/Glass repair through `dea03913014bc58134ebb06ca5b36892210a7571` plus the
 fail-closed ruler-calibration batch. Exact dea039 Glass passes all 12 rows. The
 following exact Compendium run `20260817150005919-93781-b6643ba7a6` is preserved as a truthful
 75/76 FAIL solely at `desktop/warm-plateau`; it exposed the pre-warm destructive cap sequence and
-incomplete heap ruler, not a proven product leak. The seven-file Compendium calibration seam leaves
-the budget `calibration-required` and its full browser-free battery plus frozen review are green.
-Fresh exact-3844701 baseline evidence, three current-candidate runs per
+incomplete heap ruler, not a proven product leak. Commit `4374d95be6c8b6ec2106ecd8518ac9bb39e32065`
+contains the Compendium calibration seam and leaves
+the budget `calibration-required`; its full browser-free battery and frozen review are green.
+The first new baseline attempt produced no sample and is preserved as an observer-boundary
+instrument failure; the capture-phase/count-bound follow-up is current. Fresh exact-3844701
+baseline evidence, three current-candidate runs per
 profile, an activated ruler, exact-head certification, push, and CI are still required. Resolve
 origin state live after the required fetch rather than trusting this prose. The six-image HUMAN
 judgment and Claude presentation-polish review remain separate.

@@ -98,6 +98,26 @@ export function compendiumBudgetBrowserAuthority(record: unknown):
   CompendiumBrowserAuthority | null;
 export function compendiumRawSnapshotExpression(): string;
 export function validCompendiumRawSnapshotExpression(source: unknown): boolean;
+export function installBrokenBaselineInitialListArm(
+  globalObject: unknown,
+  ElementConstructor: unknown,
+  clock: { now(): number },
+  schema: string,
+  selector: string,
+  expectedPreOwnerExact132Completions: number,
+): Readonly<{
+  phase: string;
+  stableTotal: number;
+  expectedPreOwnerExact132Completions: number;
+  quietMs: number;
+}> | null;
+export function sealBrokenBaselineInitialListObservation(
+  globalObject: unknown,
+  clock: { now(): number },
+  schema: string,
+  cacheCap: number,
+  requiredCompletions: number,
+): Readonly<Record<string, number | boolean | null>> | null;
 export function validTransportTimeoutPolicy(policy: {
   candidateTransportTimeoutMs: number;
   candidateTargetTimeoutMs: number;

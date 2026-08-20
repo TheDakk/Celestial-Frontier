@@ -375,8 +375,9 @@
             "sourceInstanceEncodedBytes": { "$ref": "#/$defs/nonnegativeInteger" },
             "thumbObserver": {
               "type": "object", "additionalProperties": false,
-              "required": ["preOwnerExact132Completions", "initialListCompletions", "cacheEntries", "cacheEncodedBytes", "totalExact132Completions", "errors", "descriptorPreserved", "stableQuietMs"],
+              "required": ["expectedPreOwnerExact132Completions", "preOwnerExact132Completions", "initialListCompletions", "cacheEntries", "cacheEncodedBytes", "totalExact132Completions", "errors", "descriptorPreserved", "stableQuietMs"],
               "properties": {
+                "expectedPreOwnerExact132Completions": { "$ref": "#/$defs/nonnegativeInteger" },
                 "preOwnerExact132Completions": { "$ref": "#/$defs/nonnegativeInteger" },
                 "initialListCompletions": { "$ref": "#/$defs/nonnegativeInteger" },
                 "cacheEntries": { "$ref": "#/$defs/nonnegativeInteger" },
