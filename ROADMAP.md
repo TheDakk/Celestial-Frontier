@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 ACTIVE FRESH RULER + EXACT-HEAD GATES ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 COLD-START AUTHORITY REFRESH ◀◀◀
 
 ### Cold start
 
@@ -39,40 +39,10 @@ the archive verbatim and refresh this handoff in place.
   authority. The completed pre-serviced-turn PR #32 chronology now lives byte-verbatim at the top of
   `ROADMAP_ARCHIVE.md`; it remains evidence for its named source and was not deleted or rewritten.
 - PR #32's live boundary is the repaired dedicated-worker product, serviced-turn scheduler, bounded
-  Planetside portrait-stack repair, active fresh ruler, committed multi-target Smoke
+  Planetside portrait-stack repair, fail-closed cold-start authority refresh, committed multi-target Smoke
   ownership repair, and D-TRAIN fixture-ownership instrument follow-up. Historical product, Glass,
   ruler, and first-red detail remains in
   the archive and `audits/PR32_FAILURE_REPAIR_REVIEW_2026-08-17.md`.
-- PR battery run `32334254714`, attempt 1, then correctly stayed red without retry. Its Compendium
-  report `gha-32334254714-1-compendiummem` bound clean detached PR test-merge
-  `88b9c7b0aa90b860a5474bd099cfab48b125a3f5`, exact Edge 151.0.4129.86, the active budget bytes,
-  and matching producer `291b794e…`. Phone completed 29 stages through veteran-Earth boot readiness;
-  `Planetside thumb settlement` then missed the unchanged 2,000 ms target bound at 2,001.723 ms while
-  the independent browser heartbeat answered in 0.872 ms. That is terminal
-  `product-unanswerable`, not an instrument, browser, or transport result; desktop never ran.
-- The partial report did not retain producer phase, so it cannot attribute the exact timeout.
-  Source inspection showed that worker completion could publish several messages, after which the
-  broker's zero-delay successor pumps could repeatedly win over rendering, input, and inspector
-  work on constrained Linux. The frozen repair makes every default broker pump cross one
-  rendering opportunity and then one later task (`requestAnimationFrame` → `setTimeout(0)`). Broker
-  pump-generation invalidation makes a callback armed before bfcache suspension or disposal stale;
-  resume schedules a fresh serviced turn. This changes the built owner and therefore producer
-  authority to `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`
-  (`assets/main-BAg-DH_f.js`; worker and painter unchanged).
-- Commit `f47cd381699fb1934f30bfca82fc9bf971714e6d` freezes the serviced-turn scheduler and its
-  fail-closed calibration seam. Fresh paired broken-baseline run
-  `20260820-arc1a-serviced-turn-baseline4` used collector `f47cd381…` against legacy product
-  `3844701…` and carries no candidate producer field. Independent candidate runs
-  `20260820-arc1a-serviced-turn-candidate5`, `candidate6`, and `candidate7` used clean
-  `f47cd381…` as collector/product source and bound producer `1c8200d7…`. All four shared
-  measurement authority `bb03a3af…` and exact Edge 151.0.4129.86. Every run was one attempt with
-  zero retries; each candidate produced all 78 outcomes. The tracked ruler is active again with
-  strict ceilings above the replayed three-run
-  maxima. The paired baseline retains all four sealed faults and breaches 14 phone / 13 desktop
-  ceilings. Commit `78813cd25c67f4255282f418ea6f635a45e0fc29` activates that ruler. Its one-attempt
-  Arc-local Edge run `20260820-arc1a-serviced-turn-active-cert-78813cd` passed all 78 outcomes with
-  zero findings/retries and independently verified at report SHA-256 `0d4a7f80…`; the same head's
-  root Chrome layout gate passed 787/787 across 10/10 viewports.
 - The first following exact-head Chrome Smoke run
   `20260820063539761-70885-f80e1a2198fc` is preserved at report/log SHA-256
   `d2919f0e…` / `4b5de237…`, with one attempt and zero retries. Its only finding was the 30-second
@@ -122,7 +92,27 @@ the archive verbatim and refresh this handoff in place.
 - The bounded launcher repair keeps one absolute monotonic command deadline; an early callback
   re-arms only the remaining time and rejects only at/after the boundary. No cap, retry, or product
   oracle changes. A command that expires synchronously while arming is never transmitted. Frozen
-  `browsercdp.mjs` SHA-256 is `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0`.
+  historical `browsercdp.mjs` SHA-256 is
+  `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0`.
+- Exact pushed head `f9ae372f13d9a420e302f05e277b4445efb790c0` completed its full local battery once:
+  Arc-local Edge Compendium 78/78, Chrome Smoke with zero findings, full Glass 12/12 and 58/58,
+  nine joined automated personas, root layout 787/787 across 10 viewports, and verified
+  nonpublishable preview packaging/smoke. These exact-source carriers remain truthful local
+  evidence; the separate six-image HUMAN judgment remains open.
+- Corresponding GitHub Actions run `32367902426`, Compendium job `96421452463`, attempt 1, tested
+  synthetic merge `e449e84984400d0b0f4474496264d474424c81d7` (base `3844701…`, head `f9ae372…`)
+  and stopped before product measurement. Edge published its endpoint at `23657.701415` ms, leaving
+  `6342.262417` ms of the 30,000 ms absolute startup window for a socket whose declared cap was
+  15,000 ms; the absolute window expired before `Browser.getVersion`. No Compendium run, report,
+  product outcome, or retry exists. This is cold-start instrument evidence only.
+- The bounded repair gives only the selftest's one real cold launch a caller-owned 45,000 ms
+  startup envelope, with socket/command/shutdown caps unchanged at 15,000/1,500/2,000 ms. Portable
+  controls pass at 38,657 ms and fail at the exact/late 38,658/38,659 ms boundaries with one child
+  and complete socket/child/profile cleanup. There is no warmup, relaunch, retry, fallback, or
+  workflow change; the generic launcher and Compendium candidate runtime remain at 15,000 ms, and
+  the product observation remains 2,000 ms. The 45-second CI allowance is accepted process
+  environment, not a game optimization target. Frozen `browsercdp.mjs` SHA-256 is
+  `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9`.
 - Nothing in this batch changes main, the production v1.8.9 page, a shipped version, a save schema,
   deterministic generation/share bytes, or either live-site repository.
 
@@ -183,7 +173,7 @@ the archive verbatim and refresh this handoff in place.
   collector/candidate source `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired baseline6
   against legacy `3844701…` plus independent candidate11/12/13 under exact Edge .86, measurement
   `f9710bdf…`, and producer `e59685b1…`. All four were one-attempt/no-retry; candidates replay 78/78.
-- Active budget/test SHA-256 values are `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
+- Historical budget/test SHA-256 values are `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
   `ec956b8a7d3bad96736deab42e0ac79e59e6cf9010559723d2dac2249e463a83`. Baseline6 report/sample are
   `4cea5b1192dd90de3a951a8a4ad1a9b5b9e4006503bd85b29c580629ead4376d` /
   `0d4caa89664cae0b831d5ba92a4f2387d0f4df048fcb5c294cb4df6d553d257f`; candidate11/12/13 pairs are
@@ -194,6 +184,12 @@ the archive verbatim and refresh this handoff in place.
   `8,388,608/4,194,304/4,194,304/14,680,064/2,621,440/65,536` and
   `12,582,912/4,194,304/6,291,456/18,874,368/6,815,744/524,288`. The four-fault baseline breaches
   14 phone / 13 desktop fields; desktop page heap 11,858,524 deliberately stays below 12 MiB.
+- The new launcher input changes measurement authority to
+  `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer authority remains
+  `e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`. The tracked ruler is now
+  fail-closed `calibration-required`, with no candidate samples or ceilings, pending one fresh
+  paired baseline7 plus independent candidate14/15/16. Baseline6/candidate11/12/13 remain truthful
+  history only and cannot certify the changed measurement input.
 - Arc 1A owns a local cross-host browser-build authority:
   Edg/151.0.4129.86, revision @083e754915c9ab93da1d8f7b9c860e4520273900,
   JavaScript 15.1.23.7, protocol 1.3. Executable path and user agent remain recorded provenance.
@@ -230,9 +226,9 @@ the archive verbatim and refresh this handoff in place.
   Smoke, Glass, and persona selftests. Frozen read-only review is clean. These results validated the
   historical calibration seam. The serviced-turn scheduler, bfcache generation, and fail-closed
   calibration seam then passed their separate browser-free review before commit `f47cd381…`.
-- Browser-free activation checks are green: focused replay 11/11, Compendium selftest 222/222, and
-  semantic validation. All 40 ceiling/maxima comparisons and the 14/13 broken-baseline breaches
-  replay from raw capsules. This proves active ruler authority, not exact-head browser certification.
+- Browser-free transition checks are green: focused replay 11/11, Compendium selftest 222/222, and
+  semantic validation. They prove the new fail-closed authority transition, not an active ruler or
+  exact-head browser certification.
 - The exact clean-head reports `20260817-arc1a-active-cert-65b1bac` and
   `20260820-arc1a-active-cert-da0de20` remain truthful only for their named commits and producers;
   neither certifies the serviced-turn repair. The exact-788 and exact-ef6 reports each certify only
@@ -240,8 +236,8 @@ the archive verbatim and refresh this handoff in place.
   its valid terminal report does not certify a product profile. Source identity is not borrowed
   across commits. Commit `c0955003d558d7b3deb0afe9e527f24969d512dc` received exact-source
   Compendium and Smoke PASS carriers, then stopped on its first full Glass product red recorded
-  below. Fresh calibration now activates that product producer; a new exact-head browser battery and
-  corresponding PR test-merge remain open.
+  below. Fresh baseline7/candidate14/15/16 calibration, activation, one new exact-head browser
+  battery, and one corresponding PR test-merge attempt remain open.
 
 ### PR #32 battery repair boundary
 
@@ -275,10 +271,11 @@ the archive verbatim and refresh this handoff in place.
 
 ### Human and scope boundary
 
-- Arc 1A's product, serviced-turn repair, historical rulers, and exact-788/ef6/c095 local carriers
-  remain preserved. Run `32350971816` remains the timer-instrument red and c095's full Glass carrier
-  the newer product red. Baseline6/candidate11/12/13 now activate the fresh ruler; one complete
-  activation-head local battery and corresponding terminal-green PR test-merge remain required.
+- Arc 1A's product, serviced-turn repair, historical rulers, and exact-788/ef6/c095/f9 local carriers
+  remain preserved. Runs `32350971816` and `32367902426` remain distinct timer and cold-start
+  instrument reds; c095's full Glass carrier remains the preserved product red. The changed
+  measurement authority requires baseline7/candidate14/15/16, activation, one exact-head local
+  battery, and one corresponding PR test-merge attempt.
   Separately, the rubric remains open until a person reviews six fresh same-run phone/desktop list,
   focus-pinned, and detail
   PNGs for 132px list quality, 440px detail quality, hierarchy, clipping, and visible focus.
@@ -290,10 +287,12 @@ the archive verbatim and refresh this handoff in place.
 
 ### Exact-head transition rule
 
-1. Preserve c095's exact Compendium/Smoke PASS carriers and first full Glass red without retry. Keep
-   baseline5/candidate8/9/10 frozen to producer `1c8200d7…`; baseline6/candidate11/12/13 now own the
-   active `f9710bdf…` / `e59685b1…` ruler and do not certify a later tracked head.
-2. Resolve the activation head, target bytes, worktree, and upstream before the run. From that one clean
+1. Preserve c095's exact Compendium/Smoke PASS plus first full Glass red and f9's full local-green
+   battery without retry. Keep baseline5/candidate8/9/10 and baseline6/candidate11/12/13 frozen as
+   historical authorities; neither certifies measurement `6ba58522…`.
+2. From one clean committed repair head, collect paired baseline7 plus independent
+   candidate14/15/16 once, activate only replayed valid raw evidence, then resolve the activation
+   head, target bytes, worktree, and upstream. From that one clean
    committed head, run browser path/CDP controls, Arc-local Edge Compendium certification and named
    verifier, one no-retry Chrome Smoke, full Chrome Glass, persona join, root layout plus exact-run
    verification, and a verified nonpublishable preview package plus browser smoke.
@@ -306,26 +305,31 @@ the archive verbatim and refresh this handoff in place.
 5. Any red, ambiguous, blocked, mixed-source, unverifiable carrier, or terminal-only failure stops
    the transition and is preserved without an unchanged retry.
 6. If and only if every durable carrier, verifier, terminal-only check, and repository-identity
-   proof above is green and agrees on the same unchanged head, push that exact head to draft PR #32
-   without another tracked edit.
+   proof above is green and agrees on the same unchanged head, push that exact head to existing
+   PR #32 without another tracked edit. The PR is already open; do not create or re-draft it.
 7. Require CI to evaluate the PR test-merge corresponding to that exact pushed head, and verify the
    head association. Only terminal-green corresponding test-merge CI and the remaining required
    review permit Ready/merge and subsequent `develop` monitoring.
 8. Fresh six-image HUMAN judgment and Claude presentation-polish remain separate; neither is
    supplied by the automated evidence.
+9. This is the final bounded infrastructure cycle for PR #32: one authority refresh, one exact-head
+   battery, and one corresponding CI attempt. Do not add timing optimization or broader harness work
+   here; after closure, return to the gameplay program roadmap. A new red is preserved and brought
+   back as its exact blocker rather than starting another open-ended repair loop.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS owns PR #32's compact-phone Planetside stack repair and
-active fresh producer ruler. Preserve c095's exact Compendium/Smoke PASS and first full Glass
-product red. Baseline6/candidate11/12/13 activate `f9710bdf…` / `e59685b1…`; exact-head battery,
-push, and corresponding PR test-merge CI remain open. Fresh six-image HUMAN
+**Current side:** OpenAI/Codex on macOS owns PR #32's bounded cold-start authority refresh. Preserve
+f9's full local-green battery and run `32367902426`'s no-product cold-start instrument red.
+Measurement `6ba58522…` is fail-closed pending baseline7/candidate14/15/16, then one exact-head
+battery and one corresponding PR test-merge attempt. Fresh six-image HUMAN
 judgment and Claude presentation-polish remain separate.
 
-**GitHub step:** Apply the exact-head transition rule above from the active `e59685b1…` ruler.
+**GitHub step:** Apply the exact-head transition rule above from producer `e59685b1…` after the
+`6ba58522…` ruler is freshly calibrated and activated.
 Once every same-head durable carrier,
 verifier, terminal-only check, and repository-identity proof is green, push that unchanged head to
-draft PR #32. Then require PR test-merge CI corresponding to that pushed head and verify the head
+existing PR #32. Then require PR test-merge CI corresponding to that pushed head and verify the head
 association. Nick does not need to manipulate Git or open another app during that work. Do not
 touch `main`.
 
@@ -367,7 +371,7 @@ touch `main`.
 > `1187de0…` then reached PR test-merge run `32350971816` / job `96369841133`; its 2,000 ms command
 > timer fired `0.241274` ms early while the root heartbeat answered in `7.410808` ms, so the valid
 > report classified `instrument-fail`, blocked all 78 outcomes, and made no product verdict. The
-> bounded absolute-deadline re-arm changes measurement authority to frozen `f9710bdf…`. Exact baseline5 plus independent candidate8/9/10 activated historical producer `1c8200d7…`. Exact c095 Compendium and Smoke then passed, but the first full Glass run preserved one 12.5px compact-phone Survey/Planetside overlap with all 12 rows and 58/58 controls otherwise executed. The bounded CSS repair restores an 8px stack while retaining 44px Survey and 72px scrollable Planetside floors; baseline6/candidate11/12/13 now activate strict budget `ebe5b5c3…` for producer `e59685b1…`. A new activation-head battery remains open. Fresh six-image HUMAN review, integration,
+> bounded absolute-deadline re-arm changes measurement authority to frozen `f9710bdf…`. Exact baseline5 plus independent candidate8/9/10 activated historical producer `1c8200d7…`. Exact c095 Compendium and Smoke then passed, but the first full Glass run preserved one 12.5px compact-phone Survey/Planetside overlap with all 12 rows and 58/58 controls otherwise executed. The bounded CSS repair restores an 8px stack while retaining 44px Survey and 72px scrollable Planetside floors; baseline6/candidate11/12/13 historically activated strict budget `ebe5b5c3…` for producer `e59685b1…`. Exact f9 then passed the full local battery, while corresponding CI run `32367902426` stopped before browser provenance or product measurement on its first real Edge cold launch. The selftest-only 45-second startup envelope retains every game candidate/product bound; launcher `6892dea6…` changes measurement to `6ba58522…`, so budget `41482f1c…` fails closed pending baseline7/candidate14/15/16, one battery, and one CI attempt. Fresh six-image HUMAN review, integration,
 > development publication, Arc 1B, release and production deployment remain separate authorities.
 
 **Other side:** Anthropic/Claude Code does not have PR #32 yet and need not be opened during Codex's

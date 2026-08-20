@@ -904,16 +904,16 @@ preserved one real compact-phone `PLANETSIDE_SURFACE_OCCLUDED` finding: a 12.5px
 rectangle overlap with all 12 rows and 58/58 controls executed, zero instrument failures, and no
 retry. The bounded CSS repair restores the existing 8px stack while retaining Survey's 44px floor
 and a 72px scrollable Planetside floor. Its product and development-copy bytes change built producer
-authority to `e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`, while measurement
-authority remains `f9710bdf…`.
+authority to `e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`; measurement was
+`f9710bdf…` before the later cold-start transition.
 
 Clean committed collector/candidate source `2a105d51397eef97542d856ed3b1bb23edf2b028` then measured paired
 baseline6 against legacy product `3844701…` plus independent candidate11/12/13 under exact Edge .86.
-All four were one-attempt/no-retry; every candidate replayed 78/78. Active budget/test SHA-256 values
-are `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
+All four were one-attempt/no-retry; every candidate replayed 78/78. The then-active budget/test
+SHA-256 values are `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
 `ec956b8a7d3bad96736deab42e0ac79e59e6cf9010559723d2dac2249e463a83`. Every one of 40 ceilings is
 strictly above its three-run maximum; the four-fault baseline breaches 14 phone / 13 desktop fields.
-Focused replay 11/11, selftest 222/222, and semantic validation are green. This activates a
+Focused replay 11/11, selftest 222/222, and semantic validation were green. This activated a
 browser-free ruler only, not current-head certification, a complete browser battery, PR-CI, or HUMAN
 review.
 
@@ -949,9 +949,9 @@ jobs were green. A WebSocket-phase control must instead use a deterministic port
 a private launch seam, write one valid regular endpoint in the owned profile, and prove the short socket timeout,
 exactly one fixture launch, socket close, bounded child shutdown, and profile removal. The control
 must reject if the endpoint is absent or the injected socket is accepted. The selftest's following
-live provenance check is then its first real browser launch and may own the fixed 30-second
-cold-start allowance; the shared launcher default remains 15 seconds, its later warm launch remains
-10 seconds, command/shutdown bounds stay unchanged, and no retry or fallback is added.
+live provenance check is then its first real browser launch and historically owned a 30-second
+cold-start allowance; the shared launcher default remained 15 seconds, its later warm launch
+remained 10 seconds, command/shutdown bounds stayed unchanged, and no retry or fallback was added.
 
 PR #26 exposed the remaining boundary between endpoint discovery and an open connection. In
 test-battery run `31870103561`, v2-smoke job `94977303036`, the first live-provenance leg found a
@@ -960,9 +960,9 @@ the deliberately tight 1,500-millisecond **command** ceiling for WebSocket openi
 `Browser.getVersion` or gameplay. Treat spawn → endpoint → socket-open as one absolute startup
 deadline measured by a monotonic clock, while also giving socket-open its own validated phase cap
 clipped to the remaining startup time; post-open commands and shutdown keep their independent
-ceilings. The socket cap defaults to the startup budget, never to the post-open command budget, and
-the selftest's real cold/warm legs
-declare bounded 15/10-second socket caps inside their unchanged 30/10-second startup budgets. Prove
+ceilings. The socket cap defaults to the startup budget, never to the post-open command budget. At
+that checkpoint, the selftest's real cold/warm legs declared bounded 15/10-second socket caps inside
+their then-30/10-second startup budgets. Prove
 all boundaries with portable fixtures: a delayed socket must open after a shorter command ceiling
 and still answer `Browser.getVersion`; a socket delayed beyond its explicit short cap must reject;
 a longer socket cap must be clipped to the shorter absolute startup remainder; an exhausted
@@ -991,6 +991,36 @@ content, unsafe file types, exactly
 one child, final-endpoint socket identity, socket/child closure, and profile removal. Do not turn
 this into a browser relaunch, retry, per-viewport sleep, browser reuse, fallback change, or wider
 startup/socket/command/shutdown budget.
+
+PR #32's later Linux Compendium job exposed a different boundary in GitHub Actions run
+`32367902426`, job `96421452463`, attempt 1. Synthetic merge
+`e449e84984400d0b0f4474496264d474424c81d7` bound base `3844701…` and head `f9ae372…`.
+The first real Edge selftest launch published its endpoint at `23657.701415` ms, leaving only
+`6342.262417` ms of the 30,000 ms absolute startup deadline for a socket with a declared 15,000 ms
+phase cap. The absolute deadline expired before `Browser.getVersion`; the Compendium collector never
+started and emitted no run, report, or product outcome. Preserve that one-attempt red as cold-start
+instrument evidence and do not manufacture a product verdict from the verifier/upload cascades.
+
+**A COLD-START CALLER ENVELOPE IS AN EXPLICIT PROCESS-ENVIRONMENT BOUND, NOT A HIDDEN RETRY OR A
+GAME PERFORMANCE TARGET.** One real cold launch may own a wider caller-local startup envelope when
+first-run evidence proves the old combined endpoint/socket allowance cannot cover its already-declared
+phases. Keep one child and one absolute spawn → stable endpoint → open socket deadline; do not add a
+warmup, relaunch, fallback, retry, or workflow sleep. Bind the exact options and prove portable
+just-before/exact/late boundaries plus socket/child/profile cleanup. Changing a hashed measurement
+input invalidates the ruler and requires fresh paired-baseline/candidate calibration before any
+product verdict.
+
+For this selftest only, `startupTimeoutMs=45_000` contains the observed cold endpoint allowance plus
+the unchanged `webSocketOpenTimeoutMs=15_000`; command and shutdown remain 1,500/2,000 ms, the later
+warm launch remains 10,000 ms, the shared launcher and Compendium candidate startup remain 15,000 ms,
+and the game observation remains 2,000 ms. Portable controls succeed at 38,657 ms and reject the exact
+and late 38,658/38,659 ms boundaries. Browser-CDP SHA-256
+`6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9` establishes measurement
+authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer `e59685b1…`
+is unchanged and the ruler stays `calibration-required` pending baseline7/candidate14/15/16. Nick
+accepts 45 seconds as the CI cold-start allowance, not an optimization target. This batch gets one
+authority refresh and one battery/CI attempt, then returns to gameplay roadmap work rather than
+expanding timing policy.
 
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread

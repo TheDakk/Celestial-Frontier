@@ -395,6 +395,28 @@ export async function openChromiumCdp(options) {
   return await openChromiumCdpWithLauncher(options, launchChromiumProcess);
 }
 
+const SELFTEST_COLD_COMMAND_TIMEOUT_MS = 1_500;
+const SELFTEST_COLD_SOCKET_TIMEOUT_MS = 15_000;
+const SELFTEST_COLD_STARTUP_TIMEOUT_MS = 45_000;
+const SELFTEST_COLD_SHUTDOWN_TIMEOUT_MS = 2_000;
+
+/* Keep the cold live-provenance allowance caller-owned. The injected opener
+   lets the portable selftest bind these exact options without launching a
+   second real browser or weakening the shared launcher's defaults. */
+function openColdSelftestCdp({ label, userDataPrefix, onEvent = () => {} },
+  openCdp = openChromiumCdp) {
+  assert(typeof openCdp === 'function', 'cold selftest CDP opener is invalid');
+  return openCdp({
+    label,
+    userDataPrefix,
+    commandTimeoutMs: SELFTEST_COLD_COMMAND_TIMEOUT_MS,
+    webSocketOpenTimeoutMs: SELFTEST_COLD_SOCKET_TIMEOUT_MS,
+    startupTimeoutMs: SELFTEST_COLD_STARTUP_TIMEOUT_MS,
+    shutdownTimeoutMs: SELFTEST_COLD_SHUTDOWN_TIMEOUT_MS,
+    onEvent,
+  });
+}
+
 async function expectRejectedAsync(label, work, pattern) {
   let caught = null;
   try { await work(); } catch (error) { caught = error; }
@@ -1184,14 +1206,127 @@ async function runSelftest() {
     assertNoOwnedProfiles(fractionalOpenTimeoutPrefix,
       'fractional WebSocket timeout pre-launch rejection');
 
+    const capturedColdEvent = () => {};
+    const capturedColdResult = Object.freeze({ kind: 'captured-cold-selftest-opener' });
+    let capturedColdOptions = null;
+    const returnedColdResult = await openColdSelftestCdp({
+      label: 'CDP selftest captured cold caller',
+      userDataPrefix: `${base}-cold-caller-capture`,
+      onEvent: capturedColdEvent,
+    }, (options) => {
+      capturedColdOptions = options;
+      return capturedColdResult;
+    });
+    assert(returnedColdResult === capturedColdResult,
+      'SELFTEST cold caller did not return its injected opener result');
+    assert(capturedColdOptions?.label === 'CDP selftest captured cold caller'
+      && capturedColdOptions.userDataPrefix === `${base}-cold-caller-capture`
+      && capturedColdOptions.commandTimeoutMs === 1_500
+      && capturedColdOptions.webSocketOpenTimeoutMs === 15_000
+      && capturedColdOptions.startupTimeoutMs === 45_000
+      && capturedColdOptions.shutdownTimeoutMs === 2_000
+      && capturedColdOptions.onEvent === capturedColdEvent,
+    `SELFTEST cold caller options drifted (${JSON.stringify(capturedColdOptions)})`);
+    assert(JSON.stringify(Object.keys(capturedColdOptions).sort()) === JSON.stringify([
+      'commandTimeoutMs', 'label', 'onEvent', 'shutdownTimeoutMs',
+      'startupTimeoutMs', 'userDataPrefix', 'webSocketOpenTimeoutMs',
+    ]), 'SELFTEST cold caller exposed unowned options');
+
+    /* CI observed a stable Edge endpoint at 23,658ms. Exercise that exact
+       late-publication shape without a real browser or wall-clock wait: the
+       45-second caller envelope must retain the full 15-second socket cap,
+       admit 38,657ms, and reject the exact/just-late 38,658/38,659ms edges. */
+    const coldEnvelopeScenarios = [
+      { key: 'just-before', openAtMs: 38_657, accepted: true },
+      { key: 'exact', openAtMs: 38_658, accepted: false },
+      { key: 'just-late', openAtMs: 38_659, accepted: false },
+    ];
+    for (const scenario of coldEnvelopeScenarios) {
+      let launches = 0;
+      let childClosed = false;
+      let socketClosed = false;
+      let clockReads = 0;
+      let clock = 0;
+      const prefix = `${base}-cold-envelope-${scenario.key}`;
+      const launchColdEnvelopeFixture = ({ userData }) => {
+        launches++;
+        assert(launches === 1,
+          `SELFTEST cold envelope ${scenario.key} fixture launched more than once`);
+        fs.mkdirSync(userData, { recursive: true });
+        fs.writeFileSync(path.join(userData, 'DevToolsActivePort'),
+          `9\n/devtools/browser/selftest-cold-envelope-${scenario.key}\n`);
+        const child = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
+          stdio: ['ignore', 'ignore', 'pipe'],
+        });
+        child.once('close', () => { childClosed = true; });
+        return child;
+      };
+      const coldEnvelopeClock = () => {
+        clockReads++;
+        if (clockReads === 1) return 0;
+        if (clock < 23_658) clock = 23_658;
+        return clock;
+      };
+      class ColdEnvelopeWebSocket {
+        static OPEN = 1;
+        constructor() { this.readyState = 0; this.openHandler = null; }
+        set onopen(handler) {
+          this.openHandler = handler;
+          clock = scenario.openAtMs;
+          this.readyState = ColdEnvelopeWebSocket.OPEN;
+          handler();
+        }
+        get onopen() { return this.openHandler; }
+        send(payload) {
+          const message = JSON.parse(payload);
+          queueMicrotask(() => this.onmessage?.({ data: JSON.stringify({
+            id: message.id,
+            result: {
+              product: 'Chrome/CDP-cold-envelope-selftest',
+              revision: 'cold-envelope-revision',
+              userAgent: 'cf-browsercdp-cold-envelope-selftest',
+              jsVersion: 'cold-envelope-js', protocolVersion: '1.3',
+            },
+          }) }));
+        }
+        close() { socketClosed = true; this.readyState = 3; }
+      }
+      const openColdEnvelope = () => openColdSelftestCdp({
+        label: `CDP selftest cold envelope ${scenario.key}`,
+        userDataPrefix: prefix,
+      }, (options) => openChromiumCdpWithLauncher({
+        ...options,
+        WebSocketImpl: ColdEnvelopeWebSocket,
+      }, launchColdEnvelopeFixture, coldEnvelopeClock));
+      if (scenario.accepted) {
+        let coldEnvelopeConnection = null;
+        try {
+          coldEnvelopeConnection = await openColdEnvelope();
+          assert(coldEnvelopeConnection.browser.product === 'Chrome/CDP-cold-envelope-selftest',
+            'SELFTEST cold envelope just-before control did not reach Browser.getVersion');
+        } finally {
+          await coldEnvelopeConnection?.close();
+        }
+      } else {
+        await expectRejectedAsync(`cold envelope ${scenario.key} socket boundary`,
+          openColdEnvelope,
+          /CDP WebSocket opened after its deadline .*socket-timeout=15000ms; configured=15000ms; endpoint-ready=23658ms; startup-timeout=45000ms/);
+      }
+      assert(launches === 1,
+        `SELFTEST cold envelope ${scenario.key}: expected one fixture launch, got ${launches}`);
+      assert(socketClosed,
+        `SELFTEST cold envelope ${scenario.key} did not close its injected socket`);
+      assert(childClosed,
+        `SELFTEST cold envelope ${scenario.key} did not close its fixture child`);
+      assertNoOwnedProfiles(prefix, `cold envelope ${scenario.key} cleanup`);
+    }
+
     const livePrefix = `${base}-live`;
     const liveEvents = [];
     let connection = null;
     try {
-      connection = await openChromiumCdp({
+      connection = await openColdSelftestCdp({
         label: 'CDP selftest live browser', userDataPrefix: livePrefix,
-        commandTimeoutMs: 1500, webSocketOpenTimeoutMs: 15000,
-        startupTimeoutMs: 30000, shutdownTimeoutMs: 2000,
         onEvent: (event) => liveEvents.push(event),
       });
       assert(connection.browser.executable === portable(actualBrowser),
@@ -1289,6 +1424,7 @@ async function runSelftest() {
   console.log('  WebSocket constructor consuming its phase deadline: rejected and cleaned up');
   console.log('  default delayed WebSocket open is independent from the command ceiling: PASS');
   console.log('  invalid integer and fractional WebSocket open timeouts: rejected before launch');
+  console.log('  cold live caller: exact 45-second startup / 15-second socket envelope; 23,658ms endpoint just-before/exact/late controls PASS');
   console.log('  just-early command timeout re-arms; cancellation and exact/late deadlines fail closed');
   console.log('  just-before command receipt passes; exact/late result and protocol-error receipts reject');
   console.log('  CDP command error, global timeout, and shorter phase-owned timeout: rejected');

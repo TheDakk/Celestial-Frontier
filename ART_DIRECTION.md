@@ -34,7 +34,7 @@ producer error remains a stable owned error tile, releases cleanly, and the exac
 through a fresh worker lease. Capability/import/protocol/worker failure terminates once and settles
 the active plus queued owners exactly once instead of retrying a broken worker for every tile.
 
-The phone and desktop resource path is implemented; its current producer owns an active measured ruler. Every
+The phone and desktop resource path is implemented; its current producer awaits a refreshed measured ruler. Every
 selected head must own exact-source local certification, and its corresponding PR test-merge CI
 must be terminal green; this reference deliberately caches neither live outcome. Exact committed repair
 `dea03913014bc58134ebb06ca5b36892210a7571` passes the full Glass
@@ -78,14 +78,30 @@ Built producer authority is `e59685b1…` (index `ca76da4c…`, owner
 `assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged). Clean committed source
 `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired baseline6 against legacy `3844701…`
 and independent candidate11/12/13 under exact Edge .86, measurement `f9710bdf…`, and that producer.
-All were one-attempt/no-retry; candidates replay 78/78. Active budget/test `ebe5b5c3…` / `ec956b8a…`
+All were one-attempt/no-retry; candidates replay 78/78. Historical budget/test `ebe5b5c3…` / `ec956b8a…`
 set 40 strict ceilings above the three-run maxima, while the four-fault baseline breaches 14 phone /
 13 desktop fields. This is browser-free ruler authority, not selected-head certification or a PASS.
 Baseline3 and candidate2/3/4 remain truthful inputs to the old `bb03a3af…` ruler; the candidate
 runs bind old producer `291b794e…`, while the paired baseline does not carry a candidate producer
-field. Every selected head must own exact-source local certification, and its
-corresponding PR test-merge CI must be terminal green; this reference deliberately caches neither
-live outcome.
+field. Exact pushed head `f9ae372f13d9a420e302f05e277b4445efb790c0` then passed the full local
+battery, including Compendium 78/78, Smoke, Glass 12/12 and 58/58, personas, root layout 787/787,
+and preview packaging/smoke. Corresponding GitHub run `32367902426` / Compendium job `96421452463`
+tested synthetic merge `e449e849…` once and stopped before `Browser.getVersion` or art/resource
+measurement: Edge's endpoint consumed `23657.701415` ms, leaving `6342.262417` ms of the 30-second
+startup window for its 15-second socket phase. No Compendium run/report/product outcome or retry
+exists.
+
+Only the single real cold selftest launch now owns a 45,000 ms startup envelope; socket/command/
+shutdown remain 15,000/1,500/2,000 ms, generic and candidate startup remain 15,000 ms, and product
+observation remains 2,000 ms. Portable controls pass at 38,657 ms and reject exact/late
+38,658/38,659 ms with one child and complete cleanup. No warmup, relaunch, retry, fallback, workflow
+change, or art/game timing optimization was added. Launcher `6892dea6…` changes measurement authority
+to `6ba58522…`; producer `e59685b1…` remains unchanged. Current budget/test `41482f1c…` /
+`85420929…` fail closed pending paired baseline7 and candidate14/15/16. The 45-second CI allowance
+is accepted process environment, not a game optimization target; after one authority refresh and
+one battery/CI attempt, work returns to gameplay arcs.
+Every selected head must own exact-source local certification, and its corresponding PR test-merge
+CI must be terminal green; this reference deliberately caches neither live outcome.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
 browser. Calibration review PNGs do not satisfy the selected-head HUMAN row; a fresh phone/desktop
 list, focus-pinned, and detail set still requires HUMAN review. Arc 1B

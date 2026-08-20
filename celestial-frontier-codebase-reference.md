@@ -6,7 +6,7 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-20.**
 > **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
-> compact Planetside repair and active fresh ruler; exact-head certification and
+> compact Planetside repair and fail-closed cold-start authority refresh; exact-head certification and
 > final HUMAN review remain open):**
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
@@ -36,8 +36,9 @@
 > measurement authority `bb03a3af…`; exact-788 and exact-ef6 certification remain truthful for that
 > authority. The frozen shared-timer repair moves measurement authority to `f9710bdf…`; exact
 > baseline5 plus independent candidate8/9/10 historically activated its successor ruler for producer
-> `1c8200d7…`. Paired baseline6 plus independent candidate11/12/13 activate that measurement authority
-> for current producer `e59685b1…` under budget `ebe5b5c3…`.
+> `1c8200d7…`. Paired baseline6 plus independent candidate11/12/13 historically activated that
+> measurement authority for producer `e59685b1…` under budget `ebe5b5c3…`; the later launcher input
+> change prevents carrying those capsules into current certification.
 > Specimen detail requests an
 > asynchronous 440px result through the same owner; Back/Close cancels that request
 > and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
@@ -190,10 +191,10 @@
 > to `e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`: index
 > `ca76da4cfd094a7426cfd60b56428ca6abfc9851f472a1e459ad2938ae1e008e`, owner
 > `assets/main-Ccq4RHJt.js` / `9260e359c3bebe6bf722ecad5234babbeff0a3e7bb6cb6f0a33242b99668e6c2`, worker and painter
-> unchanged. Measurement remains `f9710bdf…`. Clean committed collector/candidate source
+> unchanged. Measurement was `f9710bdf…` before the later cold-start launcher transition. Clean committed collector/candidate source
 > `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired baseline6 against legacy product
 > `3844701…` and independent candidate11/12/13 under exact Edge .86. Every run was one-attempt with no
-> retry and each candidate replays 78/78. Active budget/test SHA-256 values are
+> retry and each candidate replays 78/78. Historical budget/test SHA-256 values are
 > `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
 > `ec956b8a7d3bad96736deab42e0ac79e59e6cf9010559723d2dac2249e463a83`.
 > All 40 ceilings strictly exceed their maxima. Phone page/embedder/backing/aggregate/encoded/warm
@@ -203,8 +204,31 @@
 > `12,582,912/4,194,304/6,291,456/18,874,368/6,815,744/524,288`. The four-fault baseline breaches
 > 14 phone / 13 desktop fields; its 11,858,524-byte desktop page heap deliberately remains below the
 > 12 MiB variance ceiling. Focused 11/11, selftest 222/222, and semantic validation pass. This is an
-> active browser-free ruler; exact-head browser certification, the complete battery, push,
-> corresponding PR test-merge CI, and HUMAN review remain open.
+> historical browser-free ruler.
+>
+> Exact pushed head `f9ae372f13d9a420e302f05e277b4445efb790c0` passed its complete local battery
+> once: Compendium 78/78, Smoke with zero findings, Glass 12/12 and 58/58, nine joined automated
+> personas, root layout 787/787 across 10 viewports, and verified nonpublishable preview packaging/
+> smoke. Corresponding GitHub Actions run `32367902426`, Compendium job `96421452463`, attempt 1,
+> tested synthetic merge `e449e84984400d0b0f4474496264d474424c81d7` (base `3844701…`, head
+> `f9ae372…`) and stopped before product measurement. Edge published the stable endpoint at
+> `23657.701415` ms, leaving only `6342.262417` ms of the 30,000 ms absolute startup window for a
+> declared 15,000 ms socket phase; the absolute deadline expired before `Browser.getVersion`.
+> It emitted no Compendium run, report, product outcome, or retry.
+>
+> `browsercdp.mjs` now gives only the selftest's one real cold launch a caller-owned 45,000 ms
+> startup envelope while retaining 15,000/1,500/2,000 ms socket/command/shutdown caps. Portable
+> controls pass at 38,657 ms and reject exact/late 38,658/38,659 ms with one child and complete
+> socket/child/profile cleanup. No warmup, relaunch, retry, fallback, or workflow change was added;
+> generic and Compendium candidate startup remain 15,000 ms, later warm startup remains 10,000 ms,
+> and the product observation remains 2,000 ms. Browser-CDP SHA-256
+> `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9` establishes measurement
+> authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer `e59685b1…`
+> remains unchanged. Budget/test `41482f1c…` / `85420929…` now fail closed
+> `calibration-required` with no samples or ceilings, pending paired baseline7 and independent
+> candidate14/15/16. The accepted 45-second CI cold-start allowance is process environment, not a
+> game optimization target. One authority refresh plus one battery/CI attempt completes this cycle;
+> exact-head certification, corresponding PR test-merge CI, and HUMAN review remain open.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.
@@ -542,7 +566,7 @@
 > exact packaging) and the root layout gate `tools/uilayout.js` — the battery job's first
 > real browser launch, where the identical diagnosed Linux cold-start phase
 > recurred at its prior 24-second bound (run `31758515194` attempt 1). The
-> browsercdp selftest's first real provenance launch also owns a fixed 30-second
+> browsercdp selftest's first real provenance launch alone now owns a fixed 45-second
 > absolute spawn → endpoint → socket-open allowance. The selftest isolates its
 > earlier injected WebSocket timeout behind a private launcher seam: the seam writes
 > one valid owned endpoint and starts one portable Node child to prove the 200-millisecond socket
@@ -559,12 +583,14 @@
 > phase budget while requiring a provisional error handler before CONNECTING-socket cleanup, and
 > reject a just-late open before its overdue
 > timer runs; nonpositive/fractional caps reject before launch.
-> The cold live leg declares a 15-second socket cap inside its 30-second startup budget; its later
+> The cold live leg declares a 15-second socket cap inside its 45-second startup budget; its later
 > warm leg keeps 10 seconds for both. Both retain 1,500-millisecond command and 2-second shutdown
 > bounds. Post-open `send()` uses one absolute monotonic deadline per command: a callback that wakes
 > early re-arms only the remaining interval and cannot reject before the boundary; the response path
 > independently rejects at/after that same boundary. This is the bounded repair for run
-> `32350971816`'s `1999.758726`-millisecond early timeout, not a cap increase or retry. The live legs
+> `32350971816`'s `1999.758726`-millisecond early timeout. The later caller-local 45-second cold
+> envelope addresses only run `32367902426`'s pre-provenance Linux first launch; it is not a product
+> cap increase or retry. The live legs
 > assert profile cleanup in `finally` on either rejection or success, and never retry. Every platform captures the exact options
 > passed by the preview caller and completes a real browser outcome. On POSIX the
 > preview selftest starts Chrome immediately but withholds its

@@ -77,15 +77,36 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > Exact `c095500…` then passed Compendium and one-attempt Smoke before its first full Glass run
 > preserved one no-retry product finding: Chrome 152, 12/12 rows, 58/58 controls, zero instrument
 > failures, and a 12.5px compact-phone Survey/Planetside overlap. The bounded 44px Survey / 8px gap /
-> 72px scrollable Planetside repair changes producer authority to `e59685b1…` while measurement stays
-> `f9710bdf…`. Clean committed source `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired
+> 72px scrollable Planetside repair changes producer authority to `e59685b1…`; measurement was
+> `f9710bdf…` before the later cold-start transition. Clean committed source
+> `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired
 > baseline6 against legacy `3844701…` plus independent candidate11/12/13 under exact Edge .86. All
-> four were one-attempt/no-retry; candidates replay 78/78. Active budget/test SHA-256 values are
+> four were one-attempt/no-retry; candidates replay 78/78. Their historical budget/test SHA-256 values are
 > `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
 > `ec956b8a7d3bad96736deab42e0ac79e59e6cf9010559723d2dac2249e463a83`; all 40 ceilings exceed their
 > maxima and the four-fault baseline breaches 14 phone / 13 desktop fields. Focused 11/11,
-> Compendium selftest 222/222, and semantic validation prove this active ruler only. Targeted compact-
-> phone Glass report `13efb5fa…` is diagnostic, not a complete exact-head browser PASS or PR CI.
+> Compendium selftest 222/222, and semantic validation proved that ruler only. Exact pushed head
+> `f9ae372f13d9a420e302f05e277b4445efb790c0` subsequently passed the complete local battery once,
+> including Compendium 78/78, Smoke with zero findings, Glass 12/12 and 58/58, nine automated
+> personas, root layout 787/787, and verified nonpublishable preview packaging/smoke.
+>
+> GitHub Actions run `32367902426`, Compendium job `96421452463`, attempt 1, then tested synthetic
+> merge `e449e84984400d0b0f4474496264d474424c81d7` (base `3844701…`, head `f9ae372…`) and stopped
+> before `Browser.getVersion` or product measurement. Edge published its endpoint at
+> `23657.701415` ms, leaving `6342.262417` ms of the 30-second absolute startup deadline for the
+> declared 15-second socket phase. No Compendium run/report/outcome or retry exists.
+>
+> The bounded repair gives only the selftest's one real cold launch 45,000 ms startup, retaining
+> 15,000 ms socket, 1,500 ms command, and 2,000 ms shutdown caps. Portable controls pass at
+> 38,657 ms and fail at the exact/late 38,658/38,659 ms boundaries with one child and full cleanup.
+> There is no warmup, relaunch, retry, fallback, or workflow change; generic and candidate startup
+> remain 15 seconds and product observation remains 2 seconds. Launcher SHA-256
+> `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9` establishes measurement
+> authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer `e59685b1…`
+> is unchanged. Budget/test `41482f1c…` / `85420929…` fail closed pending baseline7 plus
+> candidate14/15/16. The 45-second CI cold-start allowance is accepted environment, not a game
+> optimization target; one authority refresh and one battery/CI attempt finish this infrastructure
+> cycle before work returns to gameplay.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,
