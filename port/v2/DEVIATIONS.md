@@ -22,7 +22,10 @@ fresh `.86` paths. Active budget/test `70145575…` / `0fa2e89d…` embed 3/3 sa
 measured 1/1 baseline, strict ceilings, and 14 phone / 13 desktop breaches under measurement
 `2318f57b…`, producer `d3223177…`, and browser CDP `6da9e2ef…`. Focused activation is 13/13 after
 matching synthetic desktop identities fixed its initial phone-only control without changing browser
-evidence. Six-image `[HUMAN]` review is open.**
+evidence. Exact head `731b2e2…` passed locally; hosted run `32420327368` stopped with Compendium
+RUNNING/lifecycle-pending at the 40-minute job ceiling and no product verdict, then exposed the
+account spending limit. `GITHUB_ACTIONS_BUDGET.md` is now `FROZEN`: no push, label, dispatch, merge,
+sync, or publication is authorized. Six-image `[HUMAN]` review is open.**
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -169,7 +172,8 @@ This block records the current disposition of the historical
   selftest statically requires the unique owned step's exact ordered URL/SHA/download/hash/
   reinstall/version/executable chain followed by preflight, and rejects per-workflow removal and
   outside-step decoys. That green browser-free control proves workflow bytes, not the live hosted-
-  runner hypothesis. One changed-head CI remains; first red stops. Exact package/browser authority,
+  runner hypothesis. That later hosted evidence was consumed; it did not turn this static control
+  into proof of the runner mechanism. Exact package/browser authority,
   product, launcher/preflight/collector, 45/15/5/2 preflight, 15-second candidate startup, 2-second
   observation, one attempt/zero retries, historical measurement `6ba58522…`, producer
   `d3223177…`, and then-active budget/test `74e88c2b…` / `485be9da…` were unchanged by that
@@ -188,8 +192,9 @@ This block records the current disposition of the historical
   each with zero retries and distinct fresh `.86` paths. Active budget/test `70145575…` /
   `0fa2e89d…` embed 3/3 samples per profile, measured 1/1 baseline, strict ceilings, and 14 phone /
   13 desktop breaches under measurement `2318f57b…`, producer `d3223177…`, and browser CDP
-  `6da9e2ef…`. One exact-head battery/PR CI remains. No broader timing work is in scope; terminal-
-  green PR #32 returns immediately to Arc 1B/gameplay.
+  `6da9e2ef…`. Exact `731b2e2…` passed locally; hosted run `32420327368` was consumed at the
+  40-minute lifecycle-pending ceiling with no product verdict. PR #32 remains blocked; no rerun is
+  authorized. No broader timing work is in scope.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
@@ -1721,8 +1726,9 @@ duplicates).
   overstrict shared-identity check. Clean exact `fb321f2…` candidate24/25/26 plus paired baseline10
   activated budget/test `70145575…` / `0fa2e89d…` with 3/3 samples per profile, measured 1/1
   baseline, strict ceilings, and 14 phone / 13 desktop breaches under measurement `2318f57b…`.
-  One exact-head battery and changed-head CI remain. Product, timing, workflow, producer, browser
-  CDP, and zero-retry policy remain unchanged.
+  Exact `731b2e2…` passed the local battery; hosted run `32420327368` was consumed at its 40-minute
+  lifecycle-pending ceiling and left PR #32 blocked without a product verdict. Product, timing,
+  producer, browser CDP, and zero-retry policy remain unchanged.
 - ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
   (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
   heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces

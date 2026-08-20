@@ -1,20 +1,36 @@
 name: publish branch sites
 
+# Automatic post-battery publication is parked while the 3,000-unit monthly
+# Actions allowance is exhausted. The jobs remain as reviewed implementation
+# history but are intentionally unrunnable until a later, separately reviewed
+# exact-SHA manual-promotion contract replaces the hard `false` guards.
 on:
-  workflow_run:
-    workflows: [test-battery]
-    types: [completed]
+  workflow_dispatch:
+    inputs:
+      actions_budget_authorization:
+        description: Publication is parked; this token alone does not enable either job
+        required: true
+        default: DO_NOT_RUN
+        type: choice
+        options:
+          - DO_NOT_RUN
+          - RUN_ONE_AUTHORIZED_WORKFLOW
 
 permissions:
   contents: read
 
+concurrency:
+  group: actions-budget-${{ github.workflow }}-${{ github.ref }}-${{ inputs.actions_budget_authorization }}-${{ github.actor }}
+  cancel-in-progress: true
+
 jobs:
   production:
     if: >-
-      github.event.workflow_run.conclusion == 'success' &&
-      github.event.workflow_run.event == 'push' &&
-      github.event.workflow_run.head_branch == 'main'
+      inputs.actions_budget_authorization == 'RUN_ONE_AUTHORIZED_WORKFLOW' &&
+      github.actor == github.repository_owner &&
+      false
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     concurrency:
       group: cf-production-pages
       cancel-in-progress: false
@@ -46,9 +62,9 @@ jobs:
 
   development:
     if: >-
-      github.event.workflow_run.conclusion == 'success' &&
-      github.event.workflow_run.event == 'push' &&
-      github.event.workflow_run.head_branch == 'develop'
+      inputs.actions_budget_authorization == 'RUN_ONE_AUTHORIZED_WORKFLOW' &&
+      github.actor == github.repository_owner &&
+      false
     runs-on: ubuntu-latest
     timeout-minutes: 30
     concurrency:
