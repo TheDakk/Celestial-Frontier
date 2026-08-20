@@ -13,10 +13,12 @@
 > merge `44925f62abdfcdf9c17e512dd49a57a183e217ec`; the epoch persistence contract is integrated at
 > merge `5171abcdc538938fdf5ac82688d1ab868da6ff48`. F2 canonical ingress and discriminated navigation
 > finished at PR #30 head `24bcc3cbf4e76f7bb65a00e810e0eeeeb8d7c837` and is integrated at
-> `b091f010011fa16bec457599b41274b7f92bb5e6`. D-TRAIN-1 is the active local-working-tree
-> **[PARTIAL]** batch: exact legacy checkpoint compatibility, the one-write replacement transaction,
-> and local static/Slice/Glass evidence are present, while committed exact-head CI, integration,
-> real-save Gate C, and human evidence remain open. Later product batches remain planned.
+> `b091f010011fa16bec457599b41274b7f92bb5e6`. D-TRAIN-1 is integrated through PR #31 at
+> `38447019517147319bd08c598202d097ee866874`. Arc 1A/PR #32 is the active bounded review branch:
+> its product, active `6ba58522…` / `e59685b1…` resource ruler, and exact-c49 complete local battery
+> are present; corresponding CI run `32375329693` preserved three instrument reds now under bounded
+> repair. One repair-head local battery and one corresponding CI attempt remain before Arc 1B/gameplay
+> resumes. Later product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -704,13 +706,26 @@ targeted compact-phone Glass diagnostic at `13efb5fa…` is non-certifying. Exac
 single Edge cold launch: endpoint discovery consumed `23657.701415` ms, leaving `6342.262417` ms of
 the 30-second window for a 15-second socket phase. No Compendium report/outcome or retry exists.
 
-Only that real cold selftest caller now owns 45 seconds startup; socket/command/shutdown remain
-15/1.5/2 seconds, generic and candidate startup remain 15 seconds, and product observation remains
+At the `32367902426` transition, only that real cold selftest caller changed to 45 seconds startup;
+socket/command/shutdown remained 15/1.5/2 seconds, generic and candidate startup remain 15 seconds,
+and product observation remains
 2 seconds. Portable controls pass at 38,657 ms and reject exact/late 38,658/38,659 ms with one child
-and cleanup. There is no warmup, relaunch, retry, fallback, workflow change, or game optimization.
+and cleanup. That caller change itself added no warmup, relaunch, retry, fallback, workflow change,
+or game optimization.
 Launcher `6892dea6…` changes measurement to `6ba58522…`; producer stays `e59685b1…`, and budget/test
-`bb4da2bf0b…` / `d242705ad9…` are active browser-free from clean source `374049536e…`. After one
-exact-head battery and one corresponding CI attempt, execution returns to gameplay arcs. The Arc-local Edge authority
+`bb4da2bf0b…` / `d242705ad9…` are active browser-free from clean source `374049536e…`.
+Exact-c49 then passed one complete local battery; corresponding run `32375329693` preserved three
+no-retry instrument reds. Root layout's first Chrome launch stopped before endpoint at 30 seconds.
+Exact Edge opened under 45 seconds but the generic selftest's 1.5-second `Runtime.enable` expired
+before Compendium. Smoke's immediate detail read retained only `src length 0`, without image state
+or worker phase, then Back released the asynchronous owner; that does not adjudicate final 440px
+settlement. The bounded repair gives root layout one captured 45/15/30/5-second caller contract,
+uses `tools/compendiummem-browser-preflight.mjs` for one exact-Edge fresh-target 45/15/sealed-5/2-
+second proof outside the hashed measurement graph, and binds pre-open document/generation/logical
+owner plus the opened generation + 1 before requiring semantic decoded 440×440 detail
+publication under one 30-second Smoke deadline. Product and authority bytes remain unchanged. After
+one repair-head battery and one corresponding CI attempt, execution returns to Arc 1B/gameplay. The
+Arc-local Edge authority
 still does **not** repin
 Gate-A/global Edge `150.0.4078.83`.
 

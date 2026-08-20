@@ -1,5 +1,84 @@
 # Celestial Frontier — Roadmap ARCHIVE
 
+## ARCHIVED 2026-08-20 — PR #32 foreground, fixture, timer and first cold-start repair chronology
+
+> Moved byte-verbatim from ROADMAP.md when the live handoff approached 400 lines.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR32 FOREGROUND FIXTURE TIMER AND COLD-START CHRONOLOGY -->
+- The first following exact-head Chrome Smoke run
+  `20260820063539761-70885-f80e1a2198fc` is preserved at report/log SHA-256
+  `d2919f0e…` / `4b5de237…`, with one attempt and zero retries. Its only finding was the 30-second
+  held-painter Compendium refill wait returning `last null`. Source/order audit found that the
+  harness created a second target but never re-established or proved foreground authority for the
+  live owner before releasing the painter and waiting for successor pumps that intentionally require
+  `requestAnimationFrame` → later-task service. The report retained neither foreground authority nor
+  the terminal image/worker phase, so it is instrument evidence rather than a visible-page product
+  finding and cannot identify the exact stalled substate. This batch repairs that ownership boundary:
+  it binds attach-derived target plus document identity, explicitly activates/focuses/brings forward
+  each owner, proves a continuously visible/focused rAF→later-task turn before observation, keeps one
+  immutable 30-second refill deadline/no retry, and retains rich image/worker/broker diagnostics.
+  Commit `ef6c2c2cd31363cf47899a89c16c0d9f5f90d7a7` freezes that instrument repair.
+- Exact ef6 Arc-local Edge run `20260820-arc1a-serviced-turn-active-cert-ef6c2c2` then passed all
+  78 Compendium outcomes with zero findings, blocked outcomes, partial failure, or retries. Its
+  report SHA-256 is `406edea11fec5f5a3cf11e6f9fc6dfea00cbdd2ce54fefed780bd1c9dafc9282`,
+  and named-run verification passed. This certifies ef6's unchanged producer/ruler bytes, not any
+  later Smoke-instrument head or PR CI.
+- The immediately following one-attempt Chrome Smoke run
+  `20260820071826194-75001-c2a22330fd09` is preserved at report/log SHA-256
+  `65ca06c8f6d26ef3a9a3da19bb4bc09bb005d754f2291f55f389ac1ecf14aa46` /
+  `87b1c8b6308d3a1969fb45ea4c2ccb70d1f46c2a8311751984b3c1ab0acdd7d9`. It bound clean committed
+  ef6, Chrome for Testing 152.0.7977.54, 150,963 ms, ten screenshots, zero retries, and no source
+  change. Its only two findings were the missing D-TRAIN import-owner busy-refusal witness and the
+  same phase's absent Skip action (`button:false`, `witness:null`). The foreground Compendium phase
+  and every other reported Smoke outcome stayed clean.
+- That red is a harness setup race, not evidence that the product's busy-refusal branch failed. The
+  fixture helper directly wrote IndexedDB after the preceding Atlas/Land journey without first
+  joining its ordinary persistence owner, then proved only a changed document token; an older write
+  could replace the fixture before the new page loaded. The report did not retain the winning bytes,
+  so it cannot identify their exact value. The bounded follow-up drains the prior writer, deliberately
+  reproduces the stale-write race as a negative control, requires exact fixture bytes plus current
+  document/Training route/card/runnable Skip/idle status/ticker before judging the product, and waits
+  semantically for the busy refusal. Exact pushed head `1187de0d052761e4463524cde8438ea8810d7149`
+  contains that bounded follow-up; its local carriers
+  remain authority only for their named exact-source runs.
+- GitHub Actions run `32350971816`, job `96369841133`, workflow attempt 1, tested synthetic PR merge
+  `25200b616bbd509f50eaa18f0a8b27ad20dc83e0` (base `38447019517147319bd08c598202d097ee866874`, head
+  `1187de0d052761e4463524cde8438ea8810d7149`) and stayed red without retry. Valid report
+  `gha-32350971816-1-compendiummem` is `instrument-fail`, not product evidence: after 29 phone stages,
+  final `Runtime.evaluate` timed out at `1999.758726` ms against 2,000 ms while still timely and
+  `0.241274` ms before its deadline; root heartbeat fulfilled in `7.410808` ms. The contract emitted
+  one instrument finding, zero outcomes, and 78 blocked. Artifact/report/job-log SHA-256 values are
+  `4932fb229c1de1d3820d2322e8273ce9ed609716c8f9f4d9e82b2fa2a3e408c7`,
+  `1718faa4403f4f569899d9d328f08c3b7decafae23829d5fabe37660c36da43b`, and
+  `7eda5facdac45d192c5b6071ac91394678d2fdb69b7992b218e0d3b0cb9c4ca9`.
+- The bounded launcher repair keeps one absolute monotonic command deadline; an early callback
+  re-arms only the remaining time and rejects only at/after the boundary. No cap, retry, or product
+  oracle changes. A command that expires synchronously while arming is never transmitted. Frozen
+  historical `browsercdp.mjs` SHA-256 is
+  `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0`.
+- Exact pushed head `f9ae372f13d9a420e302f05e277b4445efb790c0` completed its full local battery once:
+  Arc-local Edge Compendium 78/78, Chrome Smoke with zero findings, full Glass 12/12 and 58/58,
+  nine joined automated personas, root layout 787/787 across 10 viewports, and verified
+  nonpublishable preview packaging/smoke. These exact-source carriers remain truthful local
+  evidence; the separate six-image HUMAN judgment remains open.
+- Corresponding GitHub Actions run `32367902426`, Compendium job `96421452463`, attempt 1, tested
+  synthetic merge `e449e84984400d0b0f4474496264d474424c81d7` (base `3844701…`, head `f9ae372…`)
+  and stopped before product measurement. Edge published its endpoint at `23657.701415` ms, leaving
+  `6342.262417` ms of the 30,000 ms absolute startup window for a socket whose declared cap was
+  15,000 ms; the absolute window expired before `Browser.getVersion`. No Compendium run, report,
+  product outcome, or retry exists. This is cold-start instrument evidence only.
+- The bounded repair gives only the selftest's one real cold launch a caller-owned 45,000 ms
+  startup envelope, with socket/command/shutdown caps unchanged at 15,000/1,500/2,000 ms. Portable
+  controls pass at 38,657 ms and fail at the exact/late 38,658/38,659 ms boundaries with one child
+  and complete socket/child/profile cleanup. There is no warmup, relaunch, retry, fallback, or
+  workflow change; the generic launcher and Compendium candidate runtime remain at 15,000 ms, and
+  the product observation remains 2,000 ms. The 45-second CI allowance is accepted process
+  environment, not a game optimization target. Frozen `browsercdp.mjs` SHA-256 is
+  `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9`.
+- Nothing in this batch changes main, the production v1.8.9 page, a shipped version, a save schema,
+  deterministic generation/share bytes, or either live-site repository.
+<!-- END VERBATIM ROADMAP BLOCK: PR32 FOREGROUND FIXTURE TIMER AND COLD-START CHRONOLOGY -->
+
 ## ARCHIVED 2026-08-20 — PR #32 serviced-turn first-red and activation chronology
 
 > Moved byte-verbatim from ROADMAP.md when the live handoff crossed 400 lines.

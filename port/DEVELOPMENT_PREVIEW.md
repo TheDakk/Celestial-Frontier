@@ -124,10 +124,16 @@ Guide to show v2.0 plus the full manifest commit.
 Every CI/publication workflow that packages a preview runs this outcome check before
 upload or publication.
 
-Three phase-owned real-browser launch sites own a fixed 30-second CDP startup allowance: the
-package browser check; the root layout gate (`tools/uilayout.js`), after the identical Linux
-cold-start phase recurred there (run `31758515194` attempt 1, first browser launch of the battery
-job); and `browsercdp --selftest`'s first real `Browser.getVersion` provenance launch. The shared
+Phase-owned first launches declare their caller envelopes explicitly. The package browser check
+keeps its fixed 30-second CDP startup allowance. Root layout (`tools/uilayout.js`) is the battery's
+first browser launch; after the same pre-endpoint Linux phase recurred at 24 seconds in run
+`31758515194` and at 30 seconds in run `32375329693`, it owns one captured 45-second startup /
+15-second socket / existing 30-second command / 5-second shutdown call. `browsercdp --selftest`'s
+first real provenance launch also owns 45 seconds, but exact-Edge Compendium workflows no longer
+use that generic live leg as their authority proof: `port/v2/tools/compendiummem-browser-preflight.mjs`
+owns one 45/15/sealed-5/2-second exact-browser, fresh-target, required-domain, evaluate/event and
+cleanup proof without changing the hashed launcher/ruler. Its evaluate return and same-session event
+share one immutable 5-second phase and must both arrive strictly before its deadline. The shared
 launcher keeps its 15-second default for other evidence tools, and the browsercdp selftest's later
 warm event-failure launch keeps its 10-second bound. The browsercdp selftest's earlier injected
 WebSocket-timeout phase launches no real browser: a private seam starts a portable Node child after
@@ -145,7 +151,7 @@ monotonic, absolute spawn → endpoint → socket-open deadline and accepts a se
 that can only consume the startup time still remaining. The socket cap defaults to the startup
 budget rather than the post-open command budget;
 the selftest's cold and warm real-browser legs explicitly own 15- and 10-second socket caps inside
-their unchanged 30- and 10-second startup budgets, while commands remain 1,500 milliseconds and
+their declared 45- and 10-second startup budgets, while commands remain 1,500 milliseconds and
 shutdown remains 2 seconds. A delayed portable socket opens after a shorter command ceiling and
 answers fake provenance. Separate portable controls prove the explicit short socket cap, clipping
 to a shorter remaining startup budget, fail-closed exhaustion before socket construction,
@@ -479,9 +485,12 @@ When available on the default branch, the manual workflow:
    should be configured before the first candidate run (the environment name alone does
    not create reviewer protection);
 4. reruns deterministic, type, art, browser, and preview-producer controls;
-5. provisions exact Edge 151 only for the Compendium memory selftest, one-attempt/no-retry
-   active-budget run, and exact-run verification; retains the current report plus every same-run
-   review artifact even on failure; then keeps Chrome for the later browser gates;
+5. provisions exact Edge 151 only for the Compendium browser preflight, memory selftest,
+   one-attempt/no-retry active-budget run, and exact-run verification; the preflight binds exact
+   product/revision/JS/protocol/executable and a fresh target's Runtime/Page/HeapProfiler plus
+   evaluate/event outcome under 45/15/5/2-second bounds, with no retry or authority-input change;
+   retains the current report plus every same-run review artifact even on failure; then keeps
+   Chrome for the later browser gates;
 6. passes the explicit `--approved-publication-candidate` producer flag and uploads
    evidence plus that candidate for 14 days;
 7. has only `contents: read` permission—no Pages token, deployment token, repository write,

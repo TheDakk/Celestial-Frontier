@@ -1,7 +1,7 @@
 /* Browser-free semantic decisions shared by the real slice smoke and its
-   report selftest. The driver polls only while this function says the owned
-   Planetside work can still settle; it never treats a fixed delay or a long
-   src string as publication evidence. */
+   report selftest. The driver polls only while these functions say the owned
+   image work can still settle; it never treats a fixed delay or a long src
+   string alone as publication evidence. */
 
 const safeInt = (value) => Number.isSafeInteger(value) && value >= 0;
 const nonEmptyString = (value) => typeof value === 'string' && value.length > 0;
@@ -166,6 +166,75 @@ export function planetsideRuntimeTimeoutDecision(error, phaseTimeoutMs) {
   return {
     status: 'pending',
     reasons: [`phase deadline expired during target observation (${phaseTimeoutMs}ms)`],
+  };
+}
+
+/* Compendium detail is an explicitly asynchronous 440px owner. A connected
+   placeholder is expected while the worker crosses its serviced turn, but a
+   stale owner, producer error or contradictory ready state is terminal. */
+export function classifyCompendiumDetailSettlement(observation, expected) {
+  if (!expected || typeof expected !== 'object'
+    || !nonEmptyString(expected.documentToken)
+    || !safeInt(expected.preEnterGeneration)
+    || expected.preEnterGeneration >= Number.MAX_SAFE_INTEGER
+    || !nonEmptyString(expected.logicalId)) {
+    throw new TypeError('Compendium detail settlement requires exact document, generation and logical owner');
+  }
+  if (!observation || typeof observation !== 'object') {
+    return { status: 'pending', reasons: ['observation absent'] };
+  }
+  const terminal = [];
+  const pending = [];
+  if (observation.panelMode !== 'detail' || observation.detailPresent !== true) {
+    terminal.push(`detail surface ${JSON.stringify(observation.panelMode)}/${JSON.stringify(observation.detailPresent)}`);
+  }
+  if (observation.documentToken !== expected.documentToken) {
+    terminal.push(`document identity ${JSON.stringify(observation.documentToken)}`);
+  }
+  if (observation.generation !== expected.preEnterGeneration + 1) {
+    terminal.push(`Compendium generation ${JSON.stringify(observation.generation)}`);
+  }
+  if (observation.logicalId !== expected.logicalId) {
+    terminal.push(`logical owner ${JSON.stringify(observation.logicalId)}`);
+  }
+  const image = observation.image;
+  if (!image || typeof image !== 'object' || image.present !== true) {
+    terminal.push('detail image absent');
+  } else {
+    if (image.connected !== true) terminal.push('detail image disconnected');
+    if (image.state === 'error') terminal.push('detail portrait producer error');
+    else if (image.state === 'placeholder') pending.push('detail portrait placeholder');
+    else if (image.state !== 'ready') terminal.push(`detail portrait state ${JSON.stringify(image.state)}`);
+    if (image.state === 'ready') {
+      if (image.hasSrc !== true) terminal.push('detail portrait ready without src');
+      else if (!safeInt(image.srcLength) || image.srcLength <= 5000) {
+        terminal.push(`detail portrait src length ${JSON.stringify(image.srcLength)}`);
+      }
+      if (image.complete !== true) pending.push('detail portrait decode pending');
+      if (image.complete === true && (image.naturalWidth !== 440 || image.naturalHeight !== 440)) {
+        terminal.push(`detail portrait dimensions ${image.naturalWidth}x${image.naturalHeight}`);
+      }
+    }
+  }
+  if (terminal.length) return { status: 'error', reasons: [...pending, ...terminal] };
+  if (pending.length) return { status: 'pending', reasons: pending };
+  return { status: 'ready', reasons: [] };
+}
+
+export function classifyCompendiumDetailReceipt(
+  observation, expected, deadlineMs, receivedAtMs,
+) {
+  if (!Number.isFinite(deadlineMs) || !Number.isFinite(receivedAtMs)) {
+    throw new TypeError('Compendium detail receipt requires finite monotonic times');
+  }
+  const decision = classifyCompendiumDetailSettlement(observation, expected);
+  if (receivedAtMs < deadlineMs) return decision;
+  return {
+    status: 'error',
+    reasons: [
+      `detail observation received at/after deadline (${receivedAtMs} >= ${deadlineMs})`,
+      ...decision.reasons,
+    ],
   };
 }
 
