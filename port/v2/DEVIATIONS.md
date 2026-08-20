@@ -11,21 +11,25 @@ as any change that touches an entry.
 
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
-**Status: ★ product implementation and active measured ruler present; exact-head certification `[EXEC-TODO]`; six-image
-`[HUMAN]` review open.** This block records the current disposition of the historical
+**Status: ★ product implementation and serviced-turn scheduler repair present; ruler calibration
+`[EXEC-TODO]`; exact-head certification `[EXEC-TODO]`; fresh six-image `[HUMAN]` review open.**
+This block records the current disposition of the historical
 `D-COMPENDIUM-MEM` proposal below without rewriting that dated discovery record.
 
 - The maximum 1,500-row Compendium now uses spacer-preserved virtual rows, pinned keyboard focus,
   native filter/clear, detail/Back and Close cleanup. Real 132px leases own one bounded producer,
   queued cancellation, dedupe, disposal, cold-error publication/recovery, and Planetside
   hide/release/reacquire; list work does not route through the renderer's 440px compatibility
-  facade. At most one serial dedicated module worker at a time owns painter import, 440px scratch
-  paint, 132px downsample, and PNG encoding after complete app wiring. It has no synchronous
+  facade. After complete app wiring, every default broker pump waits for a rendering opportunity
+  and then a later task before dispatch. At most one serial dedicated module worker at a time owns
+  painter import, 440px scratch paint, 132px downsample, and PNG encoding. It has no synchronous
   renderer fallback and terminates after active work settles and its queue is empty; a later
   genuinely new producer burst owns a fresh instance/import. Exact document/producer/instance/job/
   phase evidence is retained. Capability/import/protocol/worker fatal paths settle active plus
   queued owners once without automatic retry; paint and content-specific encode failures remain
-  per-job. Detail owns an asynchronous 440px request through the same broker.
+  per-job. Detail owns an asynchronous 440px request through the same broker. A generation token
+  invalidates an armed pump across bfcache suspension or final disposal; resume owns a fresh serviced
+  turn.
 - The prior exact-3844701/e4e8d1d observations remain historical calibration evidence, not active
   current authority. Exact committed repair `dea03913014bc58134ebb06ca5b36892210a7571`
   passed all 12 Glass rows; its following exact Compendium run
@@ -33,7 +37,7 @@ as any change that touches an entry.
   `desktop/warm-plateau`. That red proves neither a leak nor a clean product plateau: the old
   sequence destructively trimmed the desktop cache before warming and then measured refill, while
   its heap ruler omitted embedder/backing ownership.
-- `budgets/compendium-memory-v1.json` is now `active`. It embeds exact paired run
+- The da0 ruler embedded exact paired run
   `20260820-arc1a-baseline3-21af3fa` plus independent one-attempt candidate2/3/4 runs from clean
   committed collector/product `21af3fa2…`, all under measurement authority `bb03a3af…`, producer
   authority `291b794e…`, and isolated Edge 151.0.4129.86. The repaired seam moves cap control after
@@ -42,12 +46,25 @@ as any change that touches an entry.
   of one retained window; embeds replayable raw capsules; and binds the complete measurement inputs
   plus exact built owner-to-worker-to-painter graph. Strict ceilings exceed all three candidate
   maxima; the paired baseline preserves four sealed faults and breaches 14 phone / 13 desktop
-  fields. Exact-head certification on the eventual activation commit remains required before this
-  criterion returns to `[EXEC]`.
+  fields. Commit `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` locally certified that exact ruler
+  once under Edge .86 and also passed its no-retry Chrome Smoke, 12-viewport Glass, persona, root
+  layout, and nonpublishable preview gates.
+- PR run `32334254714`, attempt 1, preserved a terminal product red without retry. Its clean detached
+  test-merge `88b9c7b0aa90b860a5474bd099cfab48b125a3f5` matched Edge .86, budget bytes, and producer
+  `291b794e…`; phone Planetside thumb settlement missed the unchanged 2,000 ms target bound at
+  2,001.723 ms while the root heartbeat answered in 0.872 ms. Zero-delay successor pumps could starve
+  renderer/inspector turns even though painting ran in the worker.
+- The serviced-turn repair changes built producer authority to
+  `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. The tracked budget is now
+  fail-closed `calibration-required` with empty phone/desktop candidate arrays. Baseline3 and
+  candidate2/3/4 remain truthful historical evidence for producer `291b794e…`, not current
+  authority. Fresh paired baseline plus three candidates, derived ceilings, activation, exact-head
+  certification, and PR CI are required before this criterion returns to `[EXEC]`.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
-  images still require human review. Arc 1B remains open for scene/Pixi textures, render targets,
+  images from da0 are stale for the repaired producer; a fresh certifying set still requires human
+  review. Arc 1B remains open for scene/Pixi textures, render targets,
   GPU proxies, and the combined travel → Compendium → Shipyard resource plateau.
 - PR #32 also repairs only the short-landscape nonmodal panel workspace: Compendium uses the left
   safe-height workspace and recomputes its scroller from the safe viewport, while Search, dock, and

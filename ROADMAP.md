@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 BATTERY REPAIR ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 ANSWERABILITY REPAIR + RECALIBRATION ◀◀◀
 
 ### Cold start
 
@@ -83,19 +83,42 @@ the archive verbatim and refresh this handoff in place.
   across the sealed last-three-cycle plateau.
   Because that changes collector/contract authority, the green baseline2 evidence remains preserved
   chronology but must be recaptured before activation. No unchanged candidate rerun occurred.
-- The replacement authority is now measured and activated in the working tree. Paired broken-
+- The replacement authority was measured and activated for the pre-scheduler product. Paired broken-
   baseline run `20260820-arc1a-baseline3-21af3fa` and independent one-attempt candidate runs
   `20260820-arc1a-candidate2-21af3fa`, `20260820-arc1a-candidate3-21af3fa`, and
   `20260820-arc1a-candidate4-21af3fa` all bind clean committed collector/product source
   `21af3fa2c096f0590b067c0af578d7ea29000378`, measurement authority
   `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c`, producer authority
   `291b794e0dcd93ee21d7ff88cbca383e865a62e8dd162573d475131aca3b911e`, and the one isolated
-  Edge 151.0.4129.86 build. The active budget embeds and replays those raw capsules, applies strict
+  Edge 151.0.4129.86 build. The then-active budget embeds and replays those raw capsules, applies strict
   ceilings above all three candidate maxima, and adds aggregate page + embedder + backing-store
   heap. Its fixed-window last-three-cycle plateau keeps identity and job/disposal/worker counters
   stable. The paired baseline preserves all four sealed faults and breaches 14 phone ceilings and
-  13 desktop ceilings. This activates the ruler only; the eventual activation commit still requires
-  exact-head certification, push, and PR CI.
+  13 desktop ceilings. Commit `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` activated that ruler.
+  Its local one-attempt Arc-local Edge certification
+  `20260820-arc1a-active-cert-da0de20` passed and independently verified. The same clean head also
+  passed one no-retry Chrome Smoke, the full 12-viewport Chrome Glass matrix, the matching nine-
+  persona join, root layout 787/787 across 10/10, and a verified nonpublishable exact-source preview.
+- PR battery run `32334254714`, attempt 1, then correctly stayed red without retry. Its Compendium
+  report `gha-32334254714-1-compendiummem` bound clean detached PR test-merge
+  `88b9c7b0aa90b860a5474bd099cfab48b125a3f5`, exact Edge 151.0.4129.86, the active budget bytes,
+  and matching producer `291b794e…`. Phone completed 29 stages through veteran-Earth boot readiness;
+  `Planetside thumb settlement` then missed the unchanged 2,000 ms target bound at 2,001.723 ms while
+  the independent browser heartbeat answered in 0.872 ms. That is terminal
+  `product-unanswerable`, not an instrument, browser, or transport result; desktop never ran.
+- The partial report did not retain producer phase, so it cannot attribute the exact timeout.
+  Source inspection showed that worker completion could publish several messages, after which the
+  broker's zero-delay successor pumps could repeatedly win over rendering, input, and inspector
+  work on constrained Linux. The frozen repair makes every default broker pump cross one
+  rendering opportunity and then one later task (`requestAnimationFrame` → `setTimeout(0)`). Broker
+  pump-generation invalidation makes a callback armed before bfcache suspension or disposal stale;
+  resume schedules a fresh serviced turn. This changes the built owner and therefore producer
+  authority to `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`
+  (`assets/main-BAg-DH_f.js`; worker and painter unchanged).
+- The tracked ruler is now fail-closed `calibration-required`. Baseline3/candidate2/3/4 and their
+  strict ceilings remain truthful historical evidence for producer `291b794e…`, but cannot certify
+  the serviced-turn producer. Fresh paired broken-baseline evidence, three independent candidate
+  runs, derived strict ceilings, activation, exact-head certification, push, and PR CI are pending.
 - Nothing in this batch changes main, the production v1.8.9 page, a shipped version, a save schema,
   deterministic generation/share bytes, or either live-site repository.
 
@@ -115,7 +138,8 @@ the archive verbatim and refresh this handoff in place.
   proves the same logical id/key recovers as a cached decoded 132px row. Ownership, lifetime
   counters, cache arithmetic, answerability, command order, and partial-report milestones are
   retained and verifier-bound.
-- After full app wiring and a serviced render turn, at most one serial dedicated module worker at a
+- After full app wiring, every default broker pump waits for one rendering opportunity and then one
+  later task before dispatch. At most one serial dedicated module worker at a
   time dynamically
   imports the portable painter, performs 440px scratch paint, 132px downsample and PNG encoding,
   validates document/producer/instance/job identity, and terminates after active work settles and
@@ -123,7 +147,8 @@ the archive verbatim and refresh this handoff in place.
   renderer has no synchronous painter fallback. Capability/import/protocol/worker failures
   terminate once and settle active plus queued owners without retrying every tile; paint/content
   encode failures stay per-job. Arc 1B still owns ordinary Pixi/canvas scene texture and
-  long-session resource plateaus.
+  long-session resource plateaus. Bfcache suspension invalidates an already-armed pump generation;
+  resume schedules a fresh serviced turn rather than accepting the stale callback.
 
 ### Measured resource authority
 
@@ -132,7 +157,7 @@ the archive verbatim and refresh this handoff in place.
   observation sequence destructively trimmed the desktop cache before the warm plateau, and the heap
   summary counted used page heap without the embedder/backing ownership that can move when work moves
   out of the renderer.
-- The tracked Compendium budget is now `active` in the working tree. It embeds paired run
+- The historical da0 ruler embedded paired run
   `20260820-arc1a-baseline3-21af3fa` from exact broken source
   `38447019517147319bd08c598202d097ee866874` plus candidate2/3/4 from clean committed source
   `21af3fa2c096f0590b067c0af578d7ea29000378`. Every ceiling is strictly above its corresponding
@@ -140,19 +165,25 @@ the archive verbatim and refresh this handoff in place.
   or +1 sentinels for product-owned exact caps. Aggregate heap covers page, embedder, and backing
   ownership. The fixed retained-window last-three-cycle plateau requires stable unique keys and
   unchanged job starts, disposals, and worker starts/disposals. The broken baseline retains all four
-  sealed faults and crosses 14 phone and 13 desktop ceiling fields.
-- Measurement authority is
-  `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c`; built producer authority is
-  `291b794e0dcd93ee21d7ff88cbca383e865a62e8dd162573d475131aca3b911e`. Activation is calibration
-  authority, not final exact-head certification: the eventual activation commit still needs its one
-  no-retry certification run and independent replay before PR push/CI.
+  sealed faults and crosses 14 phone and 13 desktop ceiling fields. Those facts are not current
+  ceilings for the repaired producer.
+- The tracked budget is now `calibration-required`, retains measurement authority
+  `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c`, and binds the current built
+  producer authority
+  `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Its phone/desktop candidate
+  sample arrays are empty and it cannot certify. The earlier producer
+  `291b794e0dcd93ee21d7ff88cbca383e865a62e8dd162573d475131aca3b911e` and ruler remain preserved
+  chronology. Fresh paired baseline plus three candidate runs must precede any new ceilings or
+  activation; the resulting committed activation head then needs one no-retry certification and
+  independent replay before PR push/CI.
 - Arc 1A owns a local cross-host browser-build authority:
   Edg/151.0.4129.86, revision @083e754915c9ab93da1d8f7b9c860e4520273900,
   JavaScript 15.1.23.7, protocol 1.3. Executable path and user agent remain recorded provenance.
   This does not change the Gate-A/root layout/legacy boot Edge 150 pin.
 - The exact notarized universal macOS 151.0.4129.86 package is isolated under `/private/tmp` rather
   than installed over `/Applications`; its one verified executable path must be reused for the
-  baseline3, all three candidate runs, and final Compendium certification. The auto-updated
+  fresh paired broken baseline, all three fresh candidate runs, and final Compendium certification.
+  The auto-updated
   151.0.4129.93 application is explicitly outside this authority.
 - Ordinary and manual Compendium CI install the exact SHA-verified Edge package only for this gate.
   Other smoke, Glass, persona, and preview browser work keeps its established Chrome selection.
@@ -174,24 +205,26 @@ the archive verbatim and refresh this handoff in place.
   trusting copied metric summaries. It binds the complete fixture/generator/schema/contract/
   collector/browser/lock/package/baseline-save/art-build/outcome input set, the exact built
   owner-module to worker to worker-local painter graph, budget bytes/status, browser authority,
-  artifacts, attempt policy, and raw phone/desktop profiles. Baseline3 and candidate2/3/4 now
-  populate those carriers under exact authority `bb03a3af…`; the active ceilings were independently
-  derived from their replayed raw reductions.
-- Browser-free evidence for the current fail-closed seam is green: 36 Vitest files / 423 passed /
+  artifacts, attempt policy, and raw phone/desktop profiles. Baseline3 and candidate2/3/4 populate
+  those historical carriers under exact authority `bb03a3af…`; their old ceilings were independently
+  derived from replayed raw reductions but are stale for current producer `1c8200d7…`.
+- Browser-free evidence for the historical fail-closed seam is green: 36 Vitest files / 423 passed /
   1 skipped; root, app, and worker TypeScript programs; artunused, artaudit, and the exact production
   owner→worker→painter build graph; 222 Compendium selftest controls; 10 focused budget tests; and
   Smoke, Glass, and persona selftests. Frozen read-only review is clean. These results validated the
-  calibration seam; the successor ruler-activation diff still needs its scoped browser-free review
-  before the eventual activation commit can become exact-head certification authority.
-- The successor active-ruler diff is now independently clean: 36 Vitest files / 424 passed / 1
+  historical calibration seam; the current serviced-turn scheduler, bfcache generation, and
+  fail-closed budget repair owns its separate review, recalibration, and exact-head certification.
+- The successor da0 active-ruler diff was independently clean: 36 Vitest files / 424 passed / 1
   skipped; all three TypeScript programs; 222 Compendium controls; 11 focused budget tests; exact
   sample-object, raw-reducer, authority, ceiling, and broken-baseline replay; art/spec/build gates;
   root validate and smoke; and Smoke, Glass, and persona selftests. Every one of 40 profile ceiling
   fields is strictly above its measured maximum. This is still browser-free activation authority,
-  not the required certification from the eventual committed activation head.
-- The earlier exact clean-head report `20260817-arc1a-active-cert-65b1bac` remains truthful only for
-  committed `65b1bac`; it cannot certify the current calibration seam. A new report must be captured
-  once on the final clean committed activation head and independently
+  and its exact local Edge certification passed. That local result remains truthful only for da0;
+  the preserved Linux CI product-unanswerable red prevents PR authority.
+- The exact clean-head reports `20260817-arc1a-active-cert-65b1bac` and
+  `20260820-arc1a-active-cert-da0de20` remain truthful only for their named commits and producers;
+  neither can certify the serviced-turn repair. A new report must be captured once on the final clean
+  committed activation head and independently
   verified against its exact source, inputs, budget, Edge authority, raw profiles, outcomes, and six
   artifacts.
 
@@ -215,9 +248,10 @@ the archive verbatim and refresh this handoff in place.
 
 ### Human and scope boundary
 
-- Arc 1A's product implementation and active measured ruler exist, but automatable resource evidence
-  is not ready until that ruler is committed and certified on its exact activation head. Separately, the rubric
-  remains open until a person reviews the six same-run phone/desktop list, focus-pinned, and detail
+- Arc 1A's product implementation and serviced-turn repair exist, but its prior measured ruler is
+  stale and the tracked budget is `calibration-required`. Automatable resource evidence is not ready
+  until fresh calibration is activated, committed, and certified on its exact head. Separately, the rubric
+  remains open until a person reviews six fresh same-run phone/desktop list, focus-pinned, and detail
   PNGs for 132px list quality, 440px detail quality, hierarchy, clipping, and visible focus.
   Automated hashing, dimensions, and model inspection do not satisfy this HUMAN row.
 - Arc 1A does not add Cargo, Shipyard, ownership inventory, creature instances, rewards, combat,
@@ -227,16 +261,19 @@ the archive verbatim and refresh this handoff in place.
 
 ### Next actions
 
-1. Finish review and browser-free verification of the active ruler, then commit its exact budget,
-   focused tests, and refreshed current-state documentation without changing the measured
-   collector/product authority at `21af3fa2…`.
-2. On that final clean activation head, run browser path/CDP controls, one no-retry Chrome Smoke, full Chrome
-   Glass matrix, and Arc-local Edge Compendium certification plus independent exact-run verification.
-   Preserve the first browser red if any; if terminal green, push the exact head to draft PR #32 and
-   require the complete GitHub battery on that same SHA.
-3. Leave the separate six-image HUMAN judgment and Claude presentation-polish review open. Do not
+1. Finish scoped review and browser-free verification of the serviced-turn scheduler, bfcache pump-
+   generation invalidation, fail-closed budget, focused tests, and refreshed documentation; commit
+   that exact repaired producer without claiming resource certification.
+2. Under the unchanged Arc-local Edge/measurement contract, capture one fresh paired broken baseline
+   and three independent one-attempt candidate runs for the same clean repaired producer. Derive new
+   strict ceilings only from their replayed raw capsules, activate the ruler, and commit those bytes.
+3. On that final clean activation head, run browser path/CDP controls, one no-retry Chrome Smoke, full
+   Chrome Glass matrix, and Arc-local Edge Compendium certification plus independent exact-run
+   verification. Preserve the first browser red if any; if terminal green, push the exact head to
+   draft PR #32 and require the complete GitHub battery on that same SHA.
+4. Leave the separate fresh six-image HUMAN judgment and Claude presentation-polish review open. Do not
    translate hostile Glass evidence screenshots into ordinary Dev appearance or human approval.
-4. Merge only a reviewed, terminal-green exact head through the normal `develop` path; then monitor
+5. Merge only a reviewed, terminal-green exact head through the normal `develop` path; then monitor
    the develop push battery and automatic development publication. Keep `main`, production
    versioning, and production deployment untouched.
 
@@ -244,8 +281,8 @@ the archive verbatim and refresh this handoff in place.
 
 **Current side:** OpenAI/Codex on macOS in
 /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. The committed branch contains the
-product/Glass repair through `dea03913014bc58134ebb06ca5b36892210a7571` plus the current
-ruler-activation batch. Exact dea039 Glass passes all 12 rows. The
+product/Glass repair through `dea03913014bc58134ebb06ca5b36892210a7571` plus da0's historical
+ruler activation and the current serviced-turn repair. Exact dea039 Glass passes all 12 rows. The
 following exact Compendium run `20260817150005919-93781-b6643ba7a6` is preserved as a truthful
 75/76 FAIL solely at `desktop/warm-plateau`; it exposed the pre-warm destructive cap sequence and
 incomplete heap ruler, not a proven product leak. Commit `4374d95be6c8b6ec2106ecd8518ac9bb39e32065`
@@ -254,14 +291,16 @@ frozen review are green.
 The first new baseline attempt produced no sample and is preserved as an observer-boundary
 instrument failure. Baseline2 then measured cleanly under exact .86, but candidate1 exposed the
 sorted-LRU/multi-window warm-instrument defect; its fixed-window repair changes authority. Baseline3
-and candidate2/3/4 now populate an active ruler under exact clean `21af3fa2…`, authority
-`bb03a3af…`, producer `291b794e…`, and isolated Edge .86. Exact-head certification on the eventual
-activation commit, push, and CI are still required. Resolve
-origin state live after the required fetch rather than trusting this prose. The six-image HUMAN
+and candidate2/3/4 populated da0's now-stale ruler under exact clean `21af3fa2…`, authority
+`bb03a3af…`, producer `291b794e…`, and isolated Edge .86. Da0's local certification and Chrome gates
+passed, but PR run `32334254714` retained a one-attempt phone Planetside product-unanswerable red.
+The repaired producer is `1c8200d7…`; the budget is `calibration-required`, with fresh baseline plus
+  three candidates, activation, certification, push, and CI still required. Resolve
+  origin state live after the required fetch rather than trusting this prose. The fresh six-image HUMAN
 judgment and Claude presentation-polish review remain separate.
 
-**GitHub step:** OpenAI/Codex owns the final activation commit, clean-head one-attempt certification
-evidence, push to the existing draft PR #32, exact-head checks,
+**GitHub step:** OpenAI/Codex owns the scheduler-repair and recalibration commits, clean-head one-
+attempt certification evidence, push to the existing draft PR #32, exact-head checks,
 and normal integration monitoring.
 Nick does not need to manipulate Git or open another app during that work. Do not touch `main`.
 
@@ -271,14 +310,18 @@ Nick does not need to manipulate Git or open another app during that work. Do no
 > Virtualizes the maximum 1,500-row Compendium, preserves native filter/focus/detail/close
 > outcomes, and moves list plus Planetside art to complete-genome-keyed cancellable 132px leases.
 > Heavy import, paint, downsample, and encoding run in at most one serial lazy dedicated worker at a
-> time; each producer burst owns a fresh instance/import, and detail is
+> time; each default broker pump crosses one rendering opportunity and one later task, bfcache
+> suspension invalidates stale armed pumps, each producer burst owns a fresh instance/import, and detail is
 > asynchronous at 440px, renderer fallback is forbidden, and fatal worker/import/protocol paths
 > settle owners exactly once without retry. Adds cold error/recovery, ownership, answerability,
 > worker-phase, partial-evidence, and exact raw-outcome controls. Rebuilds the phone/desktop resource
 > ruler around full native-cache warm observation, aggregate page/embedder/backing ownership,
 > stable-key reuse, post-cap restoration, replayable raw calibration capsules, and complete input
-> plus built-producer authority. The active budget embeds exact baseline3 plus three independent
-> current-candidate runs and applies strict ceilings above their observed maxima. Binds
+> plus built-producer authority. Da0's historical budget embeds exact baseline3 plus three independent
+> candidate runs and applies strict ceilings above their observed maxima; its local certification and
+> Chrome gates passed. PR CI then retained a no-retry phone Planetside product-unanswerable red. The
+> serviced-turn repair changes producer authority to `1c8200d7…`; the tracked budget is now fail-
+> closed `calibration-required` pending a fresh baseline and three candidates. Binds
 > certification to an Arc-local exact Edge 151 build without changing the Gate-A Edge 150 pin,
 > and provisions that exact build only for Compendium CI. Repairs Smoke's semantic Planetside
 > settlement, Glass's Guide/clipping instrument, the short-landscape nonmodal workspace, and the
@@ -286,10 +329,10 @@ Nick does not need to manipulate Git or open another app during that work. Do no
 >
 > Committed product/Glass evidence includes an exact 12/12 Glass matrix. The first following exact
 > Compendium run is preserved as a truthful 75/76 ruler failure, not product-leak proof. The repaired
-> calibration seam and active ruler are browser-free green (36 files / 424 passed / 1 skipped;
+> calibration seam and historical da0 ruler are browser-free green (36 files / 424 passed / 1 skipped;
 > three TypeScript programs; art/build gates; 222 Compendium controls; 11 budget tests;
-> Smoke/Glass/persona selftests); the successor raw capsules activate the ruler while exact-head browser certification
-> on the eventual activation commit and PR CI remain open. Six-image
+> Smoke/Glass/persona selftests). Fresh repaired-producer calibration, exact-head browser certification,
+> and PR CI remain open. Fresh six-image
 > HUMAN review, integration,
 > development publication, Arc 1B, release and production deployment remain separate authorities.
 

@@ -252,6 +252,7 @@ export class SpeciesArtBroker {
   private activeJob: BrokerJob | null = null;
   private nextJobId = 1;
   private pumpScheduled = false;
+  private pumpScheduleGeneration = 0;
   private activated = false;
   private suspended = false;
   private disposed = false;
@@ -450,6 +451,8 @@ export class SpeciesArtBroker {
   suspendForBfcache(): void {
     if (this.disposed || this.suspended) return;
     this.suspended = true;
+    this.pumpScheduled = false;
+    this.pumpScheduleGeneration++;
     const interrupted = this.activeJob;
     this.activeJob = null;
     this.closeProducer('bfcache suspension');
@@ -478,6 +481,7 @@ export class SpeciesArtBroker {
     this.suspended = false;
     this.activated = false;
     this.pumpScheduled = false;
+    this.pumpScheduleGeneration++;
     this.closeProducer(reason);
     for (const lease of [...this.thumbLeases]) this.releaseThumb(lease);
     for (const request of [...this.portraitOwners.values()]) this.cancelPortrait(request);
@@ -721,7 +725,9 @@ export class SpeciesArtBroker {
     if (this.pumpScheduled || this.disposed || this.suspended || !this.activated
       || this.activeJob || this.queuedCount() === 0) return;
     this.pumpScheduled = true;
+    const generation = ++this.pumpScheduleGeneration;
     this.scheduleTask(() => {
+      if (generation !== this.pumpScheduleGeneration) return;
       this.pumpScheduled = false;
       this.pump();
     });

@@ -100,10 +100,12 @@
 > detail displays an asynchronous 440px DOM source; Back/Close cancels that owner and removes the
 > source, while the bounded portrait cache may retain prior results. Heavy import, 440px scratch
 > paint, 132px downsample, and PNG encoding run in at most one serial lazy dedicated worker at a
-> time after complete app wiring; the renderer has no synchronous painter
+> time. After complete app wiring, every default broker pump waits for a rendering opportunity and
+> then one later task before dispatch; the renderer has no synchronous painter
 > fallback; at most one worker exists at a time, and it terminates after active work settles and its
 > queue is empty. A later new producer burst may create a fresh instance. The exact failed key recovers
-> through a fresh lease without leaking the former owner.
+> through a fresh lease without leaking the former owner. A generation token invalidates an armed
+> pump across bfcache suspension or disposal; resume schedules a fresh serviced turn.
 >
 > Short-landscape Compendium is a nonmodal safe-workspace layout, not a global restyle. The panel
 > uses the left safe-height workspace and recomputes its variable-row scroller from the safe
@@ -115,20 +117,25 @@
 > rows plus clipped-ancestor controls. Those hostile evidence states are intentionally unlike the
 > ordinary Dev presentation and do not claim v1.0-equivalent visual polish.
 >
-> Phone and desktop ceilings are now active measured authority. Exact committed repair dea039 passes all 12 Glass rows; its
+> Phone and desktop resource ownership is implemented, but the current ruler is fail-closed pending
+> recalibration. Exact committed repair dea039 passes all 12 Glass rows; its
 > following exact Compendium run `20260817150005919-93781-b6643ba7a6` truthfully reports 75/76,
 > solely red at `desktop/warm-plateau`. That run cannot adjudicate a product leak because its old
 > sequence trimmed the desktop cache before warming and measured refill, while its heap ruler
 > omitted embedder/backing ownership. The repaired seam observes the full native warm cache before
 > cap control, measures used/embedder/backing/aggregate heap, retains post-cap restoration, and
 > proves stable unique keys plus unchanged job/disposal/worker counters across the last three cycles
-> of one retained window. The active ruler embeds exact baseline3 and candidate2/3/4 from clean
+> of one retained window. Da0's historical ruler embeds exact baseline3 and candidate2/3/4 from clean
 > `21af3fa2…`, under authority `bb03a3af…`, producer `291b794e…`, and exact Edge 151.0.4129.86;
 > strict ceilings exceed every three-run maximum, while the baseline retains four faults and
-> breaches 14 phone / 13 desktop fields. Exact-head certification on the eventual activation commit,
-> push, and CI remain open. The ruler's
+> breaches 14 phone / 13 desktop fields. Da0's exact local Compendium certification and Chrome gates
+> passed, but PR run `32334254714`, attempt 1, retained a no-retry phone Planetside
+> `product-unanswerable` red: the target missed 2,000 ms while the browser heartbeat remained timely.
+> The serviced-turn repair changes producer authority to `1c8200d7…`; the budget is now
+> `calibration-required` pending a fresh paired baseline, three candidates, strict ceilings,
+> activation, exact-head certification, push, and CI. The ruler's
 > Arc-local Edge 151 authority still does not repin the global Gate-A Edge 150 browser. Six
-> run-bound list, focus-pinned, and detail PNGs still await HUMAN review. Arc 1B scene-resource disposal and live HD
+> fresh run-bound list, focus-pinned, and detail PNGs still await HUMAN review. Arc 1B scene-resource disposal and live HD
 > planet replacement remain open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
 > research, or upgrade controls.
 >
@@ -325,9 +332,11 @@
 >
 > Species art remains lazy, but live presentation now binds exact broker leases rather than a
 > shared import-Promise callback. Saved-Earth Planetside requests may queue while dormant; at most
-> one worker at a time activates only after app wiring and a serviced render turn, publishes
-> identity-checked results to current owners, and closes after active work settles and its queue is
-> empty. A later genuinely new producer burst owns a fresh instance/import. A 1,500-row Compendium therefore
+> one worker at a time activates after app wiring. Every default pump crosses a rendering opportunity
+> plus a later task before dispatch; the worker publishes identity-checked results to current owners
+> and closes after active work settles and its queue is
+> empty. Pending pump generations are invalidated across bfcache suspension/disposal and resume owns
+> a fresh serviced turn. A later genuinely new producer burst owns a fresh instance/import. A 1,500-row Compendium therefore
 > retains neither list-scale import callbacks nor renderer-side painter work.
 >
 > V2 browser smoke and root `uilayout.js` use the owned portable CDP lifecycle.
@@ -412,10 +421,13 @@
 > reordered, wrong-operation/context, just-late, and still-rendering evidence.
 > IndexedDB itself is not wrapped in a timeout race, and no retry or timeout
 > increase turns a red import green.
-> The Arc 1A Compendium product and fail-closed memory/resource instrument are implemented, and its
-> phone/desktop ruler is active from exact baseline3/candidate2/3/4 raw evidence. Exact-head resource
-> certification on the eventual activation commit remains open under the existing Arc-local Edge 151 authority, which
-> does not repin the global Gate-A Edge 150 browser. Its six PNGs still await HUMAN review. Arc 1B
+> The Arc 1A Compendium product, fail-closed memory/resource instrument, and serviced-turn scheduler
+> repair are implemented. Da0's baseline3/candidate2/3/4 ruler and local certification remain truthful
+> history, but its no-retry PR battery produced a valid phone product-answerability red. The scheduler
+> changes producer authority to `1c8200d7…`; the tracked ruler is `calibration-required`. Fresh paired
+> baseline plus three candidates, activation, exact-head resource certification, and CI remain open
+> under the existing Arc-local Edge 151 authority, which does not repin the global Gate-A Edge 150
+> browser. Fresh six-image evidence still awaits HUMAN review. Arc 1B
 > scene-texture disposal, live HD planet replacement, broader long-task
 > coverage, and fuller hidden-tab behavior remain open. The v2 static preview packaging/hosting
 > contract is documented separately in `port/DEVELOPMENT_PREVIEW.md`; a preview

@@ -1,7 +1,7 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-17.
+> 2026-08-20.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -612,18 +612,20 @@ both parent voices.
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
 
-**Current state (2026-08-20): product implementation and active measured ruler present; exact-head
-certification `[EXEC-TODO]`; `[HUMAN]` review open.** The runnable, fail-closed `compendiummem` gate drives a deterministic 1,500-row
+**Current state (2026-08-20): product implementation and serviced-turn scheduler repair present;
+ruler calibration and exact-head certification `[EXEC-TODO]`; fresh `[HUMAN]` review open.** The runnable, fail-closed `compendiummem` gate drives a deterministic 1,500-row
 Compendium through a spacer-preserved virtual window, focus pinning and native keyboard traversal,
 filter/clear, detail/Back, Close cleanup, and Planetside hide/release/reacquire. The product path
 owns real 132px thumb leases with one bounded producer, queued-work cancellation, dedupe, disposal,
 and cold-error publication plus recovery; list traffic neither mounts nor cache-pollutes through the
 440px full-portrait compatibility path. Heavy painter import, 440px scratch paint, 132px downsample,
-and PNG encoding run in at most one serial dedicated module worker at a time after app wiring and a
-serviced render turn. The renderer has no synchronous fallback. The worker terminates after active
-work settles and its queue is empty; each later genuinely new producer burst owns a fresh
+and PNG encoding run in at most one serial dedicated module worker at a time. After app wiring,
+every default broker pump crosses one rendering opportunity and then one later task before dispatch.
+The renderer has no synchronous fallback. The worker terminates after active work settles and its
+queue is empty; each later genuinely new producer burst owns a fresh
 instance/import. Protocol messages carry document/producer/instance/job/phase identity into
-fail-closed evidence. Capability,
+fail-closed evidence. A pump-generation token invalidates callbacks armed before bfcache suspension
+or disposal; resume schedules a fresh serviced turn. Capability,
 import, protocol, and worker failures terminate once and settle active plus queued owners without an
 automatic retry loop; paint and content-specific encode failures remain per-job. Selected detail
 uses the same owner asynchronously at 440px.
@@ -635,7 +637,7 @@ exact Compendium run `20260817150005919-93781-b6643ba7a6` truthfully reports 75/
 sequence destructively trimmed the desktop cache before the warm observation and measured refill,
 while the old page-heap ruler excluded embedder/backing ownership.
 
-The tracked `v2/budgets/compendium-memory-v1.json` authority is now `active` in the working tree. It embeds paired
+Da0's historical `v2/budgets/compendium-memory-v1.json` authority embedded paired
 broken-baseline run `20260820-arc1a-baseline3-21af3fa` and independent candidate runs
 `20260820-arc1a-candidate2-21af3fa`, `20260820-arc1a-candidate3-21af3fa`, and
 `20260820-arc1a-candidate4-21af3fa` from clean committed collector/product `21af3fa2…`. The repaired
@@ -644,14 +646,28 @@ backing-store, and aggregate heap; proves stable unique keys and unchanged job/d
 counters over the last three cycles of one retained window; retains a post-cap restored snapshot;
 embeds compact replayable raw capsules; and binds measurement authority `bb03a3af…`, producer
 authority `291b794e…`, the complete input set, and the exact built owner-to-worker-to-painter graph.
-Strict ceilings exceed every three-run maximum. The paired baseline retains all four sealed faults
-and breaches 14 phone and 13 desktop ceiling fields. The Arc-local Edge authority remains product `Edg/151.0.4129.86`, revision
+Strict ceilings exceeded every three-run maximum. The paired baseline retained all four sealed faults
+and breached 14 phone and 13 desktop ceiling fields. Commit
+`da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` locally certified that ruler under Edge .86 and passed
+its no-retry Chrome Smoke, full Glass, persona, root-layout, and nonpublishable-preview gates.
+
+PR run `32334254714`, attempt 1, then retained a terminal phone `product-unanswerable` report with
+zero retries. Clean detached test-merge `88b9c7b0aa90b860a5474bd099cfab48b125a3f5` matched the Edge,
+budget, and old producer; Planetside thumb settlement missed the unchanged 2,000 ms target bound at
+2,001.723 ms while the root heartbeat answered in 0.872 ms. The repaired default pump now services a
+rendering opportunity plus later task between jobs, changing built producer authority to
+`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`.
+
+The tracked budget is therefore `calibration-required`, with empty phone/desktop candidate arrays.
+Baseline3/candidate2/3/4 and old producer `291b794e…` remain truthful history, not current resource
+authority. Fresh paired baseline plus three independent candidates, derived strict ceilings,
+activation, exact-head certification, and PR CI are pending. The Arc-local Edge authority remains product `Edg/151.0.4129.86`, revision
 `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript `15.1.23.7`, and protocol `1.3`; it still
 does **not** repin the Gate-A/global Edge `150.0.4078.83` baseline. Returning this criterion to
-`[EXEC]` now requires exact-head certification on the eventual ruler-activation commit.
+`[EXEC]` requires fresh calibration and exact-head certification on the eventual ruler-activation commit.
 
-The current state records an implemented product and active measured ruler, not terminal exact-head
-certification. Human judgment of the six phone/desktop list,
+The current state records an implemented product and scheduler repair with a fail-closed uncalibrated
+ruler, not terminal resource authority. Human judgment of a fresh certifying run's six phone/desktop list,
 detail, and focus-pinned images remains outstanding. Arc 1B also remains open for ordinary scene/Pixi
 texture, render-target, GPU-proxy, and combined travel → Compendium → Shipyard plateau ownership.
 
@@ -670,8 +686,9 @@ texture, render-target, GPU-proxy, and combined travel → Compendium → Shipya
 - Keep identity, canvas allocation, portable painting, and lease/cache ownership separate. Run the
   painter's import, 440px scratch work, 132px downsample, and encoding only in the dedicated worker;
   reject a renderer-reachable legacy synchronous species-art facade in the production build graph.
-- Activate the worker only after the owning document/shell is fully wired and one render turn is
-  serviced. Terminate it after active work settles and its queue is empty, on persisted suspension,
+- Activate the worker only after the owning document/shell is fully wired. Before every default
+  broker pump, service one rendering opportunity and one later task; invalidate a pending pump across
+  persisted suspension/disposal and schedule a fresh turn on resume. Terminate the worker after active work settles and its queue is empty, on persisted suspension,
   fatal protocol/capability/import failure, or final disposal; never synchronously fall back or
   automatically retry the failed work from a broken instance.
 - Budget decoded pixels/bytes, cache entries, jobs, and leases; trim correctly as phone caps shrink.
