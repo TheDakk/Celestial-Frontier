@@ -15,8 +15,10 @@ and clean under frozen read-only review. Exact baseline3 and candidate2/3/4 evid
 replacement ruler; da0's local certification and Chrome gates passed. PR run `32334254714` then
 retained a valid no-retry phone Planetside `product-unanswerable` red. The serviced-turn/bfcache
 scheduler repair changes producer authority to `1c8200d7…`; the budget is now
-active from exact-.86 baseline4 plus independent one-attempt candidate5/6/7. Exact-head
-certification, push, and CI remain open. PR #32 is **not yet ready for approval**.
+active from exact-.86 baseline4 plus independent one-attempt candidate5/6/7. Exact-788 local
+certification passed. Its first following Chrome Smoke preserved a one-attempt foreground-ownership
+instrument red; the bounded attach-derived target/document/service repair is browser-free green,
+but its final-head browser battery, push, and CI remain open. PR #32 is **not yet ready for approval**.
 
 ## 1. Executive state
 
@@ -27,15 +29,16 @@ approval blockers:
 | CI area | Classification | Current disposition |
 | --- | --- | --- |
 | `v2-static` | Instrument false positive | Fixed; current audit reports 28 sources / 0 findings |
-| `v2-compendium-memory` | Valid product-unanswerable findings, followed by a ruler defect and a scheduler defect | Heavy import/paint/PNG work moved to a serial close-at-idle dedicated-worker producer. Exact dea039 exposed the old invalid plateau; baseline3 plus candidate2/3/4 activated da0's strict aggregate-heap/fixed-window ruler and its local cert passed. PR run `32334254714` then proved phone Planetside target unanswerability while the browser heartbeat remained timely; source inspection identified zero-delay successor-pump starvation as the bounded repair hypothesis, not a retrospectively observed worker phase. Every repaired default pump now crosses a rendering opportunity plus later task; bfcache invalidates stale pump generations. Baseline4 plus candidate5/6/7 now activate the changed producer's ruler; exact-head certification remains open |
-| `v2-smoke` | Obsolete fixed-wait instrument check over the same cold-art path | Replaced by one monotonic semantic settlement phase with exact decode/work outcomes |
+| `v2-compendium-memory` | Valid product-unanswerable findings, followed by a ruler defect and a scheduler defect | Heavy import/paint/PNG work moved to a serial close-at-idle dedicated-worker producer. Exact dea039 exposed the old invalid plateau; baseline3 plus candidate2/3/4 activated da0's strict aggregate-heap/fixed-window ruler and its local cert passed. PR run `32334254714` then proved phone Planetside target unanswerability while the browser heartbeat remained timely; source inspection identified zero-delay successor-pump starvation as the bounded repair hypothesis, not a retrospectively observed worker phase. Every repaired default pump now crosses a rendering opportunity plus later task; bfcache invalidates stale pump generations. Baseline4 plus candidate5/6/7 activate the changed producer's ruler, and exact-788 certification passed; the later instrument head still needs its exact-source battery |
+| `v2-smoke` | Obsolete fixed-wait check, followed later by a multi-target foreground-ownership instrument defect | Cold Planetside uses one monotonic semantic settlement phase with exact decode/work outcomes. The held-painter control now binds attach-derived target/document identity, proves visible/focused rAF→later-task service before one release, retains rich diagnostics, and independently controls wrong/stale/hidden/unfocused/late evidence; one fresh final-head run remains open |
 | `v2-glass` | One instrument defect plus two product finding records from one short-landscape geometry defect | Guide predicate, clipping diagnostics, hostile fixture, and nonmodal landscape workspace repaired |
 
 The first-red evidence is preserved. No timeout was raised, no failed command was retried, and no
 red was reclassified as green. The later 75/76 Compendium red is preserved too: it is evidence that
 the ruler cannot adjudicate the product, not proof of either a leak or a clean plateau. The repaired
 calibration seam and da0 ruler remain preserved chronology. The serviced-turn producer, fresh
-active ruler, and its eventual exact certification head are the next authority boundary.
+active ruler, exact-788 certification, and later Smoke instrument red are the current chronology;
+the repaired instrument's final clean-head browser battery is the next authority boundary.
 
 ## 2. What was completed before the PR battery
 
@@ -393,8 +396,8 @@ Historical follow-up checkpoint before dea039:
 
 ### 6.1 Superseded checkpoint after exact dea039 browser evidence
 
-This subsection is preserved as the then-current fail-closed checkpoint; sections 6.4 through 6.6
-continue the chronology, and section 6.6 is current.
+This subsection is preserved as the then-current fail-closed checkpoint; sections 6.4 through 6.7
+continue the chronology, and section 6.7 is current.
 
 - branch: `openai/mac`;
 - committed repair HEAD: `dea03913014bc58134ebb06ca5b36892210a7571`;
@@ -554,11 +557,55 @@ all four sealed faults and breaches 14 phone / 13 desktop ceilings. Focused budg
 authority, not exact-head browser certification. That certification, the remaining browser gates,
 push, CI, fresh six-image HUMAN review, and Claude presentation-polish pass remain open.
 
+### 6.7 Exact-788 certification and first Smoke foreground-ownership red
+
+Commit `78813cd25c67f4255282f418ea6f635a45e0fc29` activates the serviced-turn ruler. Arc-local Edge
+run `20260820-arc1a-serviced-turn-active-cert-78813cd` used one attempt/zero retries and passed all
+78 outcomes with no findings, blocked outcomes, or partial result. Independent named-run
+verification accepted its exact clean source, 16 inputs, active budget, measurement/producer/browser
+authorities, raw phone/desktop replay, and six PNGs; report SHA-256 is
+`0d4a7f8026fb61c93db370b2b97e4ccde58348a80c3bfdc4a20795be107c702d`. The same head's Chrome root
+layout run passed 787/787 across 10/10 viewports.
+
+The first following Chrome Smoke run `20260820063539761-70885-f80e1a2198fc` remains preserved at
+report/log SHA-256 `d2919f0e1cdcdeb2a5f2b3d2736e37745e0b404daee24219f3fb60b75f05b366` /
+`4b5de237f5c1ea0ee91b29f5b9e3f88daaf23421e8149f87a461492a4aab7fa1`. It used one child attempt
+and zero retries. Its sole finding was the held-painter Compendium refill failing to settle inside
+30 seconds with `last null`. The control created a live owner, then a second closed-owner target;
+it released the held painter and polled the first target without re-establishing or proving that
+owner's foreground authority. Repaired production successor pumps deliberately require
+a rendering opportunity followed by a later task. A background page can continue answering
+`Runtime.evaluate` while its rAF queue is paused, so the harness had not established the
+precondition needed to judge visible-page publication.
+
+The preserved report contains neither foreground/active-target authority nor terminal image,
+queue, or worker phase, so it cannot identify whether zero, one, or more thumbnails had published
+or attribute an exact producer subphase. This is a harness diagnosis from source and command order,
+not a retroactive product-phase observation. The bounded instrument repair:
+
+- binds each session to its attach-derived target and exact document token;
+- activates the exact target, enables focus emulation, brings it forward, and requires a fresh
+  service token to remain visible/not-hidden/focused at arm, rAF, and later task with no transition;
+- releases the held response exactly once and retains one monotonic 30-second refill deadline;
+- records non-null image/decode, queue/active, lazy worker identity/phase/result/error/last-event,
+  broker, generation/render-commit/focus, and foreground state on every observation;
+- separately re-owns and services the closed document before its post-release assertion; and
+- negative-controls wrong target/document/service, hidden/unfocused phases, missing/reversed
+  rAF/later-task service, intervening visibility/focus changes, and exact/just-late receipts after
+  awaited CDP responses.
+
+No product fallback, hidden-tab timer, deadline increase, automatic retry, budget change, or
+producer-authority change follows. One fresh run on the committed instrument head is warranted
+because the harness precondition and captured diagnostic payload changed; the original red remains historical
+and is not rerun unchanged or relabelled green.
+
 ## 7. Remaining work
 
-- finish scoped review of the active budget/test/docs pair and commit those exact activation bytes;
-- run the required final-clean-head browser path/CDP controls and exactly one no-retry Smoke, Glass,
-  and Arc-local Edge Compendium certification battery;
+- finish scoped review of the three-file Smoke foreground-ownership repair, update the affected
+  live references, and commit those exact instrument/documentation bytes;
+- run the required final-clean-head browser path/CDP controls, Arc-local Edge Compendium
+  certification plus independent verification, and exactly one fresh no-retry Smoke; if green,
+  continue through full Glass, persona, root-layout, and verified nonpublishable preview evidence;
 - preserve and diagnose the first browser red if any rather than rerunning unchanged;
 - push the exact repair head to PR #32 and require CI on that exact SHA;
 - keep the separate fresh six-image HUMAN visual judgment and Claude's later visual-polish review open.
@@ -597,11 +644,14 @@ the required one-attempt exact-head browser certification. Da0 subsequently rece
 Chrome gates, but run `32334254714` retained the product red described above. The current scheduler
 repair has focused tests for initial/successor servicing and bfcache generation invalidation; its
 fresh baseline4/candidate5/6/7 activation passes 11/11 focused replay and all 222 Compendium
-selftest controls. Its complete exact-head browser battery remains pending.
+selftest controls. Commit `78813cd…` passed exact-head Compendium certification and root layout.
+The following Smoke foreground repair passes syntax, its report selftest, 25 focused tests, all
+three TypeScript programs, artunused, and diff hygiene; its fresh committed-head browser battery
+remains pending.
 
 ### Browser-owning, one attempt and no retry
 
-From the eventual committed activation head and with the correct process-owned browser selection:
+From the final committed instrument head and with the correct process-owned browser selection:
 
 1. shared browser path/CDP selftests;
 2. on the committed exact ruler head, run Arc-local Edge Compendium certification plus independent
@@ -641,6 +691,8 @@ Even a repaired green PR does not close:
 **Do not approve or merge PR #32 yet.** The product and Glass repairs are committed, and da0's
 replacement ruler/local certification remain truthful history. Its PR battery exposed a valid
 product-answerability defect; the serviced-turn repair changes producer authority, and fresh
-baseline4/candidate5/6/7 now activate that producer's measured ruler. An activation commit, one
-exact-head certification, push, and exact-head CI are required. A green result can make the automated repair ready for review; it still does
+baseline4/candidate5/6/7 now activate that producer's measured ruler. Commit `78813cd…` passed its
+local exact-head certification, but the first following Smoke exposed the foreground-ownership
+instrument defect above. Commit that bounded repair, certify its exact head through the complete
+browser battery, push it, and require exact-head CI. A green result can make the automated repair ready for review; it still does
 not substitute for the fresh six-image HUMAN judgment or Claude's later presentation-polish pass.

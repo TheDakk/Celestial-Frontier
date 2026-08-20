@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 ANSWERABILITY REPAIR + RECALIBRATION ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 ANSWERABILITY + SMOKE FOREGROUND REPAIR ◀◀◀
 
 ### Cold start
 
@@ -123,7 +123,23 @@ the archive verbatim and refresh this handoff in place.
   Edge 151.0.4129.86. Every run was one attempt with zero retries; each candidate produced all
   78 outcomes. The tracked ruler is active again with strict ceilings above the replayed three-run
   maxima. The paired baseline retains all four sealed faults and breaches 14 phone / 13 desktop
-  ceilings. Exact-head certification/browser gates, push, and PR CI remain pending.
+  ceilings. Commit `78813cd25c67f4255282f418ea6f635a45e0fc29` activates that ruler. Its one-attempt
+  Arc-local Edge run `20260820-arc1a-serviced-turn-active-cert-78813cd` passed all 78 outcomes with
+  zero findings/retries and independently verified at report SHA-256 `0d4a7f80…`; the same head's
+  root Chrome layout gate passed 787/787 across 10/10 viewports.
+- The first following exact-head Chrome Smoke run
+  `20260820063539761-70885-f80e1a2198fc` is preserved at report/log SHA-256
+  `d2919f0e…` / `4b5de237…`, with one attempt and zero retries. Its only finding was the 30-second
+  held-painter Compendium refill wait returning `last null`. Source/order audit found that the
+  harness created a second target but never re-established or proved foreground authority for the
+  live owner before releasing the painter and waiting for successor pumps that intentionally require
+  `requestAnimationFrame` → later-task service. The report retained neither foreground authority nor
+  the terminal image/worker phase, so it is instrument evidence rather than a visible-page product
+  finding and cannot identify the exact stalled substate. This batch repairs that ownership boundary:
+  it binds attach-derived target plus document identity, explicitly activates/focuses/brings forward
+  each owner, proves a continuously visible/focused rAF→later-task turn before observation, keeps one
+  immutable 30-second refill deadline/no retry, and retains rich image/worker/broker diagnostics.
+  One fresh committed-head Smoke run is required; the old red is not rerun or reclassified.
 - Nothing in this batch changes main, the production v1.8.9 page, a shipped version, a save schema,
   deterministic generation/share bytes, or either live-site repository.
 
@@ -236,13 +252,14 @@ the archive verbatim and refresh this handoff in place.
   The exact tracked budget/test SHA-256 pair is
   `2b51dd23728fb6431c5c71dd464592e75471c9c1919f1d65ceb2e0c6be96e2d5` /
   `71048f473e9575a1cce804c08a2e9ddc975caee2fc6f5d780fe189f3d3926cae`.
-  These are browser-free activation checks, not final exact-head Compendium certification or PR CI.
+  Commit `78813cd25c67f4255282f418ea6f635a45e0fc29` subsequently passed one exact-head
+  Compendium certification and independent named-run verification. A later instrument-only commit
+  still requires its own exact-source certification carrier before push; neither result is PR CI.
 - The exact clean-head reports `20260817-arc1a-active-cert-65b1bac` and
   `20260820-arc1a-active-cert-da0de20` remain truthful only for their named commits and producers;
-  neither can certify the serviced-turn repair. A new report must be captured once on the final clean
-  committed activation head and independently
-  verified against its exact source, inputs, budget, Edge authority, raw profiles, outcomes, and six
-  artifacts.
+  neither certifies the serviced-turn repair. The later exact-788 report does certify that repaired
+  producer and active ruler. The final instrument-only commit must still capture and independently
+  verify its own exact-source carrier before push; source identity is not borrowed across commits.
 
 ### PR #32 battery repair boundary
 
@@ -250,6 +267,15 @@ the archive verbatim and refresh this handoff in place.
   immutable monotonic 30-second phase. Every blocking target evaluation is clipped to the same
   remaining deadline; target-only timeout with a healthy browser heartbeat remains actionable
   product evidence, with no renewed clock or retry.
+- A multi-target Smoke phase that observes rendering-opportunity-scheduled work must own the page it
+  judges. Creating another target may background the first while `Runtime.evaluate` remains
+  answerable. The held-painter lazy-art control therefore binds the attach-derived target and exact
+  document, activates/focuses/brings that target forward, proves visibility/focus continuously across
+  an rAF→later-task witness, and only then performs its one release. The closed owner is separately
+  re-owned before its settlement assertion. Wrong target/document/token, hidden/unfocused service,
+  phase reversal, and visibility/focus transitions are browser-free negative controls; timeout
+  evidence retains the actual images, queue, worker phases/results/errors, and broker state. Exact-
+  boundary and just-late receipts are rejected after the awaited CDP response, not trusted to timer order.
 - Glass now negative-controls its Guide carrier predicate and audits real first/middle/last plus
   focus-pinned A++ rows with clipping-ancestor diagnosis. In short landscape the nonmodal
   Compendium uses the left safe-height workspace and recomputes its scroller from the safe viewport;
@@ -264,9 +290,10 @@ the archive verbatim and refresh this handoff in place.
 
 ### Human and scope boundary
 
-- Arc 1A's product implementation, serviced-turn repair, and fresh active ruler exist. Automatable
-  resource evidence is not terminal until the activation bytes are committed and certified on their
-  exact head, then the same SHA passes PR CI. Separately, the rubric remains open until a person
+- Arc 1A's product implementation, serviced-turn repair, fresh active ruler, and 78813cd local
+  Compendium certification exist. Automatable evidence is not terminal until the Smoke foreground
+  repair is committed, the complete browser battery certifies that exact head, and the same SHA
+  passes PR CI. Separately, the rubric remains open until a person
   reviews six fresh same-run phone/desktop list, focus-pinned, and detail
   PNGs for 132px list quality, 440px detail quality, hierarchy, clipping, and visible focus.
   Automated hashing, dimensions, and model inspection do not satisfy this HUMAN row.
@@ -277,12 +304,13 @@ the archive verbatim and refresh this handoff in place.
 
 ### Next actions
 
-1. Finish scoped review of the active budget/test/docs pair and commit those exact activation bytes
-   without claiming browser certification.
-2. On that final clean activation head, run browser path/CDP controls, one no-retry Chrome Smoke, full
-   Chrome Glass matrix, and Arc-local Edge Compendium certification plus independent exact-run
-   verification. Preserve the first browser red if any; if terminal green, push the exact head to
-   draft PR #32 and require the complete GitHub battery on that same SHA.
+1. Finish scoped review of the three-file Smoke foreground-ownership repair, update this handoff plus
+   the affected test references, and commit only those exact instrument/documentation bytes.
+2. On that final clean head, run browser path/CDP controls, Arc-local Edge Compendium certification
+   plus independent exact-run verification, one fresh no-retry Chrome Smoke, full Chrome Glass,
+   persona join, root layout, and the verified nonpublishable preview package. Preserve the first
+   browser red if any; if terminal green, push the exact head to draft PR #32 and require the complete
+   GitHub battery on that same SHA.
 3. Leave the separate fresh six-image HUMAN judgment and Claude presentation-polish review open. Do not
    translate hostile Glass evidence screenshots into ordinary Dev appearance or human approval.
 4. Merge only a reviewed, terminal-green exact head through the normal `develop` path; then monitor
@@ -307,8 +335,9 @@ and candidate2/3/4 populated da0's now-stale ruler under exact clean `21af3fa2�
 `bb03a3af…`, producer `291b794e…`, and isolated Edge .86. Da0's local certification and Chrome gates
 passed, but PR run `32334254714` retained a one-attempt phone Planetside product-unanswerable red.
 The repaired producer is `1c8200d7…`. Baseline4 and candidate5/6/7 now populate its active ruler;
-focused replay and the 222-control selftest pass. Exact-head certification, browser gates, push, and
-CI are still required. Resolve
+focused replay and the 222-control selftest pass. Exact-788 Compendium certification and root layout
+pass, while its first Chrome Smoke retained the foreground-ownership instrument red described above.
+The repaired instrument head still needs its fresh complete browser battery, push, and CI. Resolve
   origin state live after the required fetch rather than trusting this prose. The fresh six-image HUMAN
 judgment and Claude presentation-polish review remain separate.
 
@@ -346,7 +375,10 @@ Nick does not need to manipulate Git or open another app during that work. Do no
 > calibration seam and historical da0 ruler are browser-free green (36 files / 424 passed / 1 skipped;
 > three TypeScript programs; art/build gates; 222 Compendium controls; 11 budget tests;
 > Smoke/Glass/persona selftests). The serviced-turn activation pair passes focused 11/11 budget replay
-> and all 222 instrument controls. Exact-head browser certification and PR CI remain open. Fresh six-image
+> and all 222 instrument controls; exact-788 Compendium certification passed, and its first Chrome
+> Smoke preserved a no-retry foreground-ownership instrument red. The bounded harness repair binds
+> the exact foreground document and keeps rich timeout diagnostics. Its final-head browser battery
+> and PR CI remain open. Fresh six-image
 > HUMAN review, integration,
 > development publication, Arc 1B, release and production deployment remain separate authorities.
 
