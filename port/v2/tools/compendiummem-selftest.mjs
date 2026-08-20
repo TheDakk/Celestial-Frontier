@@ -835,8 +835,8 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
     point.diagnostics.art.live.decodedPixels = nativeDecodedPixels;
     point.diagnostics.art.live.decodedBytes = nativeDecodedPixels * 4;
     point.diagnostics.art.keys.cached = Array.from(
-      { length: nativeCacheEntries }, (_, index) => `warm-key-${index}`,
-    ).sort();
+      { length: nativeCacheEntries }, (_, index) => `warm-key-${nativeCacheEntries - index}`,
+    );
   }
   const warmCachePrecondition = clone(warm[0]);
   const postCapRestored = clone(warm.at(-1));
@@ -2873,6 +2873,17 @@ export async function runCompendiumMemSelftest() {
       `${measurement.profile} did not emit the sealed outcome count`);
     assert(outcomes.every((outcome) => outcome.status === 'pass'),
       `${measurement.profile} green fixture was red: ${JSON.stringify(outcomes.filter((o) => o.status === 'fail'))}`);
+
+    const reorderedLru = clone(measurement);
+    [reorderedLru.phases.warmCachePrecondition, ...reorderedLru.points.warm]
+      .forEach((point, index) => {
+        const keys = point.diagnostics.art.keys.cached;
+        const offset = (index + 1) % keys.length;
+        point.diagnostics.art.keys.cached = [...keys.slice(offset), ...keys.slice(0, offset)];
+      });
+    const reorderedOutcomes = evaluateProfile(reorderedLru, budget, fixture);
+    assert(reorderedOutcomes.every((outcome) => outcome.status === 'pass'),
+      `${measurement.profile} stable cache membership was coupled to raw LRU insertion order`);
   }
 
   const controls = [

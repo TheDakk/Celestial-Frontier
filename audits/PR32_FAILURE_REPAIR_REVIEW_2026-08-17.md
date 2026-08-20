@@ -436,10 +436,38 @@ accepted. The exact notarized universal 151.0.4129.86 package is instead extract
 the next baseline, all three candidates, and final certification. The global Gate-A Edge 150 pin
 remains unchanged.
 
+### 6.3 Exact-.86 baseline2 and first candidate warm-instrument red
+
+Paired run `20260819-arc1a-baseline2-d0508ec` measured successfully from clean committed collector
+`d0508ecc9a8f5351e893615bf2d1ec87ac011e66` and exact detached baseline `384470195…`, using the
+isolated Edge 151.0.4129.86 executable. Two independent read-only audits reproduced every input,
+raw metric, observer equation, cache/portrait carrier, and exactly four sealed faults per profile.
+Report SHA-256 is `02cd03b5c1ed57dd67ddd0bbd3d98b93675623040fa7bd5078ee17ce73f51211`;
+sample SHA-256 is `9c93692379993177f24fe16739fd06a22648d5ac8e9909d3bc2552b981233715`.
+
+The first candidate attempt, `20260819-arc1a-candidate1-d0508ec`, was not retried unchanged. It
+failed only `phone/warm-precondition` and `desktop/warm-precondition` and wrote no sample. Raw
+evidence showed both native caches full, decoded pixels/bytes exactly at their product limits,
+encoded bytes below limits, queues/active jobs/subscribers zero, and every worker released. The red
+instead exposed two measurement assumptions:
+
+- `keys.cached` is a truthful LRU insertion-order carrier, not a lexically sorted list;
+- each warm cycle visited several disjoint catalogue windows whose combined identity set exceeds
+  the phone cache cap, so repaint, disposal, and worker-instance churn were required behavior.
+
+The bounded repair removes only the lexical-order assumption while retaining nonempty, exact-count,
+unique-key and cross-cycle identity checks. After filling the full native cache, it ends on one
+deterministic retained window and repeats only that window; any repaint, disposal, worker restart,
+key substitution, or resource growth in the sealed last-three-cycle plateau still turns the gate
+red. The first cycle remains the documented convergence point. This collector/contract change
+creates a new measurement authority, so the clean baseline2 sample is preserved chronology rather
+than reused. A new baseline and three candidate attempts are required; no ceiling was widened and
+no product-leak/clean conclusion was taken from candidate1.
+
 ## 7. Remaining work
 
-- commit the observer-boundary follow-up with refreshed measurement authority; then capture one
-  fresh paired exact-3844701 baseline and three independent one-attempt current-candidate runs per
+- commit the fixed-window warm-measurement follow-up with refreshed authority; then recapture one
+  paired exact-3844701 baseline and three independent one-attempt current-candidate runs per
   profile under the one isolated Edge 151.0.4129.86 executable, derive and document new ceilings
   from their raw capsules, activate the budget, and commit that exact ruler;
 - run the required final-clean-head browser path/CDP controls and exactly one no-retry Smoke, Glass,

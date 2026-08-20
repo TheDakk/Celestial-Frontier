@@ -1408,6 +1408,12 @@ async function collectProfile({
     for (const index of cacheFillIndices) {
       await scrollToIndex(sessionId, index);
     }
+    /* End the fill on one deterministic retained window. Reopening that same
+       window measures cache reuse; traversing several disjoint windows larger
+       than the phone cap would measure intentional LRU replacement instead of
+       a warm plateau. */
+    const warmAnchorIndex = 0;
+    await scrollToIndex(sessionId, warmAnchorIndex);
     await closeCompendium(sessionId);
     await waitPlanetsideReady(sessionId);
     const warmCachePrecondition = await snapshot(sessionId, 'warm cache precondition');
@@ -1417,8 +1423,7 @@ async function collectProfile({
     for (let cycle = 0; cycle < REQUIRED_WARM_CYCLES; cycle++) {
       await openCompendium(sessionId);
       await waitListReady(sessionId, 1500);
-      await scrollToIndex(sessionId, 750);
-      await scrollToIndex(sessionId, 1499);
+      await scrollToIndex(sessionId, warmAnchorIndex);
       await closeCompendium(sessionId);
       await waitPlanetsideReady(sessionId);
       warm.push(await snapshot(sessionId, `warm cycle ${cycle + 1}`));

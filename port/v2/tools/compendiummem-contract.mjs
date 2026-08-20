@@ -2695,7 +2695,6 @@ function warmResourceStateReady(snapshot, profile) {
     && cachedKeys.length === a.live.cacheEntries
     && cachedKeys.every((key) => typeof key === 'string' && key.length > 0)
     && new Set(cachedKeys).size === cachedKeys.length
-    && sameJson(cachedKeys, [...cachedKeys].sort())
     && workerArtReleased(snapshot);
 }
 function normalizedCachedKeys(snapshot) {
