@@ -117,41 +117,29 @@
 > rows plus clipped-ancestor controls. Those hostile evidence states are intentionally unlike the
 > ordinary Dev presentation and do not claim v1.0-equivalent visual polish.
 >
-> Phone and desktop resource ownership is implemented; the timer-authority measured ruler is active.
-> Every selected head must own exact-source local certification, and its corresponding PR test-merge
-> CI must be terminal green; this reference deliberately caches neither live outcome. Exact committed repair dea039 passes all 12 Glass rows; its
-> following exact Compendium run `20260817150005919-93781-b6643ba7a6` truthfully reports 75/76,
-> solely red at `desktop/warm-plateau`. That run cannot adjudicate a product leak because its old
-> sequence trimmed the desktop cache before warming and measured refill, while its heap ruler
-> omitted embedder/backing ownership. The repaired seam observes the full native warm cache before
-> cap control, measures used/embedder/backing/aggregate heap, retains post-cap restoration, and
-> proves stable unique keys plus unchanged job/disposal/worker counters across the last three cycles
-> of one retained window. Da0's historical ruler embeds baseline3 collected by `21af3fa2…` against
-> legacy product `3844701…`, plus candidate2/3/4 from clean `21af3fa2…` product/collector source
-> under producer `291b794e…`; all share authority `bb03a3af…` and exact Edge 151.0.4129.86.
-> strict ceilings exceed every three-run maximum, while the baseline retains four faults and
-> breaches 14 phone / 13 desktop fields. Da0's exact local Compendium certification and Chrome gates
-> passed, but PR run `32334254714`, attempt 1, retained a no-retry phone Planetside
-> `product-unanswerable` red: the target missed 2,000 ms while the browser heartbeat remained timely.
-> The serviced-turn repair changes producer authority to `1c8200d7…`. Clean seam commit
-> `f47cd381…` supplied exact-.86 baseline4 and three independent one-attempt candidate5/6/7 runs;
-> every candidate produced 78/78 outcomes with zero retries. That historical `bb03a3af…` ruler
-> replayed those raw capsules, kept every ceiling strictly above the three-run maximum, and retained
-> four baseline faults with 14 phone / 13 desktop breaches. The frozen shared-timer repair moves
-> measurement authority to `f9710bdf…`; exact baseline5 uses collector `cbe7868…` against legacy
-> product `3844701…`, while independent one-attempt/no-retry candidate8/9/10 use clean candidate
-> source `cbe786816cafd196a4b1649b0d1b72966036b7cc` and candidate producer `1c8200d7…`. They now activate budget/test
-> `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` /
-> `121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a` under exact Edge .86. Each
-> candidate run replays 78/78; all 40 ceilings exceed their maxima.
-> Warm maxima/ceilings are phone 6,196/65,536 and desktop 306,704/524,288 bytes; the four-fault
-> baseline observes 1,037,780/1,222,370 and breaches 14/13 fields. This is browser-free activation,
-> not selected-head certification or a PASS. Every selected head must own exact-source local certification, and its
-> corresponding PR test-merge CI must be terminal green; this reference deliberately caches neither
-> live outcome. The ruler's
-> Arc-local Edge 151 authority still does not repin the global Gate-A Edge 150 browser. Six
-> fresh run-bound list, focus-pinned, and detail PNGs still await HUMAN review. Arc 1B scene-resource disposal and live HD
-> planet replacement remain open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
+> Phone and desktop resource ownership is implemented. Historical baseline5/candidate8/9/10
+> activated measurement `f9710bdf…`, producer `1c8200d7…`, and budget/test `8ffd0d8e…` /
+> `121ab8cd…`; those raw capsules and strict ceilings remain truthful only for their exact bytes.
+>
+> Exact clean `c095500…` passed Compendium run
+> `20260820-arc1a-absolute-deadline-active-cert-c095500` (report `55dba448…`) and one-attempt Smoke
+> run `20260820104231234-94067-7f954ca9942e` (report `6d4f00f8…`). Its first full Glass run stopped
+> without retry and is preserved at SHA-256 `8e89d855abf33ba45d43d8284e05732ebad93891ff9e024004869811778917f0`:
+> Chrome 152, all 12 rows, 58/58 controls, zero instrument failures/retries, and only
+> `PLANETSIDE_SURFACE_OCCLUDED` from a 12.5px compact-phone Survey/Planetside rectangle overlap.
+> Persona, layout, preview, push, and CI did not run.
+>
+> The bounded portrait repair keeps the Survey card's 44px minimum and Planetside's 72px scrollable
+> minimum while deriving Planetside's maximum from the shared bottom anchor to preserve the existing
+> 8px gap. It does not change stacking order, ownership, hit-test predicates, or Glass thresholds. The
+> existing Planetside development-release bullet now names this player-facing outcome. Product and
+> copy bytes change producer to `e59685b1…` (index `ca76da4c…`, owner
+> `assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged); measurement stays `f9710bdf…`.
+> Budget/test `70c40013…` / `7e8f03d5…` are fail-closed pending paired baseline6, independent
+> candidate11/12/13, activation, a complete exact-head battery, and corresponding PR test-merge CI.
+> The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
+> list, focus-pinned, and detail PNGs still await HUMAN review. Arc 1B scene-resource disposal and live
+> HD planet replacement remain open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
 > research, or upgrade controls.
 >
 > The approved Shipyard is a new responsive panel, not a repurposed character sheet. Its
@@ -441,12 +429,11 @@
 > history, but its no-retry PR battery produced a valid phone product-answerability red. The scheduler
 > changed producer authority to `1c8200d7…`; baseline4 and candidate5/6/7 historically populated its
 > `bb03a3af…` replayed-raw ruler under exact Edge .86. The frozen shared-timer repair moves measurement
-> authority to `f9710bdf…`; baseline5 plus candidate8/9/10 now activate exact budget `8ffd0d8e…`
-> from clean `cbe7868…`, with all 40 ceilings above maxima and four baseline faults producing 14/13
-> breaches. This is not current-head browser certification. Every selected head must own exact-source local resource
-> certification, and its corresponding PR test-merge CI must be terminal green; this reference
-> deliberately caches neither live
-> outcome. The existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150
+> authority to `f9710bdf…`; baseline5 plus candidate8/9/10 historically activated exact budget
+> `8ffd0d8e…` for that producer. The compact portrait stack repair changes producer to `e59685b1…`, so
+> budget `70c40013…` fails closed pending baseline6/candidate11/12/13. Every selected head must own
+> exact-source local resource certification and corresponding terminal-green PR test-merge CI. The
+> existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150
 > browser. Fresh six-image evidence still awaits HUMAN review. Arc 1B
 > scene-texture disposal, live HD planet replacement, broader long-task
 > coverage, and fuller hidden-tab behavior remain open. The v2 static preview packaging/hosting

@@ -22,7 +22,7 @@ const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const EXPECTED_MEASUREMENT_AUTHORITY =
   'f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409';
 const EXPECTED_PRODUCER_AUTHORITY =
-  '1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2';
+  'e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb';
 const EXPECTED_CANDIDATE_RUNS = [
   '20260820-arc1a-absolute-deadline-candidate8',
   '20260820-arc1a-absolute-deadline-candidate9',

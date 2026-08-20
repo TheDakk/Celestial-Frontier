@@ -11,9 +11,9 @@ as any change that touches an entry.
 
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
-**Status: ★ product implementation and serviced-turn scheduler repair present; measurement
-authority `f9710bdf…` is active under exact-.86 baseline5 plus independent candidate8/9/10;
-exact-source automation is governed by live artifacts/CI; fresh six-image `[HUMAN]` review is open.**
+**Status: ★ product implementation, serviced-turn scheduler, and compact-phone Planetside stack
+repair present; measurement stays `f9710bdf…`, while producer `e59685b1…` is fail-closed pending
+baseline6/candidate11/12/13. Exact-source automation and fresh six-image `[HUMAN]` review are open.**
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -66,34 +66,34 @@ This block records the current disposition of the historical
   share measurement `bb03a3af…` and exact Edge .86. All candidates completed 78/78 outcomes with zero retries. That
   historical `bb03a3af…` ruler replayed those raw capsules, kept all 40 ceilings strictly above the
   three-run maxima, and retained four baseline faults with 14 phone / 13 desktop breaches. The
-  frozen shared-timer repair moves measurement authority to `f9710bdf…`. Paired baseline5 used
-  clean collector `cbe786816cafd196a4b1649b0d1b72966036b7cc` against detached broken source
-  `3844701…`; independent candidate8/9/10 used that exact clean source, producer `1c8200d7…`, and
-  `Edg/151.0.4129.86` (`@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript `15.1.23.7`,
-  protocol `1.3`). All four runs were one attempt/no retry; each candidate capsule replayed 78/78.
-  Active budget/test SHA-256 values are
-  `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` /
-  `121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a`; focused tests passed
-  11/11, selftest passed 222/222, and all 15 current inputs recomputed without mismatch. All 40
-  ceilings exceed the candidate maxima. Variable phone maxima → ceilings are page heap
-  7,771,656 → 8,388,608, embedder 3,151,408 → 4,194,304, backing 3,099,159 → 4,194,304,
-  aggregate 12,406,038 → 14,680,064, encoded bytes 2,477,068 → 2,621,440, and warm aggregate
-  6,196 → 65,536; desktop values are 10,550,176 → 12,582,912, 3,216,400 → 4,194,304,
-  4,914,765 → 6,291,456, 16,017,176 → 18,874,368, 6,592,468 → 6,815,744, and
-  306,704 → 524,288. Baseline5 preserves four faults and breaches 14 phone / 13 desktop fields;
-  desktop page heap deliberately does not breach. This browser-free activation is not
-  certification. Baseline3 and candidate2/3/4 remain truthful inputs to the historical
-  `bb03a3af…` ruler; only the candidate runs carry producer `291b794e…`. They are not current
-  authority. This criterion returns to `[EXEC]` only when the selected
-  head's ignored exact-source artifacts and its corresponding PR test-merge CI are terminal green;
-  the live outcome is not cached here.
+  frozen shared-timer repair moves measurement authority to `f9710bdf…`. Paired baseline5 plus
+  independent candidate8/9/10 historically activated budget/test `8ffd0d8e…` / `121ab8cd…` for
+  producer `1c8200d7…`; all were one-attempt/no-retry, each candidate replayed 78/78, all 40 ceilings
+  exceeded their maxima, and the four-fault baseline breached 14 phone / 13 desktop fields. Those
+  raw capsules remain truthful only for that exact producer.
+- Exact clean `c095500…` passed Compendium run
+  `20260820-arc1a-absolute-deadline-active-cert-c095500` (report `55dba448…`) and one-attempt Smoke
+  `20260820104231234-94067-7f954ca9942e` (report `6d4f00f8…`). Its first full Glass run then stopped
+  without retry: Chrome 152, 12/12 rows, 58/58 controls, zero instrument failures, and one product
+  `PLANETSIDE_SURFACE_OCCLUDED` finding from a 12.5px compact-phone Survey/Planetside overlap.
+  Persona, layout, preview, push, and CI did not run.
+- The bounded product repair derives the portrait Planetside cap from its shared bottom anchor,
+  preserving a 44px Survey floor, 72px scrollable Planetside floor, and existing 8px gap. It does not
+  change Glass predicates, stacking order, or ownership. The existing development-release bullet
+  names the outcome. Built producer becomes `e59685b1…` (index `ca76da4c…`, owner
+  `assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged), while measurement remains
+  `f9710bdf…`. Budget/test `70c40013…` / `7e8f03d5…` fail closed with zero candidates,
+  measurement-required paired baseline, and null ceilings. Focused 11/11, selftest 222/222,
+  typechecks, semantic validation, and root validate pass; baseline6/candidate11/12/13, activation,
+  exact-head battery, and corresponding PR test-merge remain required for `[EXEC]`.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
   images from da0 are stale for the repaired producer; a fresh certifying set still requires human
   review. Arc 1B remains open for scene/Pixi textures, render targets,
   GPU proxies, and the combined travel → Compendium → Shipyard resource plateau.
-- PR #32 also repairs only the short-landscape nonmodal panel workspace: Compendium uses the left
+- PR #32's layout deviations remain bounded. In portrait, shared bottom-anchor math preserves the
+  44px Survey / 8px gap / 72px scrollable Planetside stack. In short landscape, Compendium uses the left
   safe-height workspace and recomputes its scroller from the safe viewport, while Search, dock, and
   Survey when open remain operable at right. Panel-open status already yields trail/objective; the
   short-landscape rule additionally yields only noninteractive top/context/hint chrome. Its hostile

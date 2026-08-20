@@ -163,10 +163,19 @@
       }
       /* A short portrait keeps the trail. Cap the populated strip to the live
          band between the lowest VISIBLE top-chrome edge and the already-
-         measured lower chrome; only the strip scrolls when A++ cannot fit. */
+         measured lower chrome; only the strip scrolls when A++ cannot fit.
+         While Survey stays open after Land, its 44px minimum plus the
+         existing 8px stack gap also caps this bottom-anchored strip. The
+         shared bottom-anchor terms cancel, so unusual dock/context heights
+         cannot recreate the compact-phone overlap. */
       body.surface-mode #planetside {
-        max-height: max(72px, calc(100dvh - var(--safe-bottom) - var(--dock-h) - var(--ctx-h) - 92px - var(--surface-chrome-bottom)));
+        max-height: max(72px, min(
+          calc(100dvh - var(--safe-bottom) - var(--dock-h) - var(--ctx-h) - 92px - var(--surface-chrome-bottom)),
+          var(--planetside-card-max, 100dvh)));
         overflow-y: auto !important;
+      }
+      body.surface-mode.card-open #planetside {
+        --planetside-card-max: calc(100dvh - var(--safe-bottom) - var(--dock-h) - var(--ctx-h) - var(--topbar-h) - 144px);
       }
       /* If a genuinely short portrait cannot retain a useful 72px roster
          viewport plus 6px clearance, the noninteractive trail yields. */
