@@ -612,8 +612,8 @@ both parent voices.
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
 
-**Current state (2026-08-17): product implementation present; resource calibration
-`[EXEC-TODO]`; `[HUMAN]` review open.** The runnable, fail-closed `compendiummem` gate drives a deterministic 1,500-row
+**Current state (2026-08-20): product implementation and active measured ruler present; exact-head
+certification `[EXEC-TODO]`; `[HUMAN]` review open.** The runnable, fail-closed `compendiummem` gate drives a deterministic 1,500-row
 Compendium through a spacer-preserved virtual window, focus pinning and native keyboard traversal,
 filter/clear, detail/Back, Close cleanup, and Planetside hide/release/reacquire. The product path
 owns real 132px thumb leases with one bounded producer, queued-work cancellation, dedupe, disposal,
@@ -635,21 +635,23 @@ exact Compendium run `20260817150005919-93781-b6643ba7a6` truthfully reports 75/
 sequence destructively trimmed the desktop cache before the warm observation and measured refill,
 while the old page-heap ruler excluded embedder/backing ownership.
 
-The checked-in `v2/budgets/compendium-memory-v1.json` authority is therefore intentionally
-`calibration-required`: candidate samples are empty, candidate ceilings are null, and the paired
-baseline is `measurement-required`. The repaired seam observes the complete native cache before
-destructive cap control; records used, embedder, backing-store, and aggregate heap; proves stable
-warm keys/reuse and a post-cap restored snapshot; embeds compact replayable raw baseline/candidate
-capsules; and binds the complete measurement-input set plus exact built owner-to-worker-to-painter
-graph. The Arc-local Edge authority remains product `Edg/151.0.4129.86`, revision
+The tracked `v2/budgets/compendium-memory-v1.json` authority is now `active` in the working tree. It embeds paired
+broken-baseline run `20260820-arc1a-baseline3-21af3fa` and independent candidate runs
+`20260820-arc1a-candidate2-21af3fa`, `20260820-arc1a-candidate3-21af3fa`, and
+`20260820-arc1a-candidate4-21af3fa` from clean committed collector/product `21af3fa2…`. The repaired
+seam observes the complete native cache before destructive cap control; records used, embedder,
+backing-store, and aggregate heap; proves stable unique keys and unchanged job/disposal/worker
+counters over the last three cycles of one retained window; retains a post-cap restored snapshot;
+embeds compact replayable raw capsules; and binds measurement authority `bb03a3af…`, producer
+authority `291b794e…`, the complete input set, and the exact built owner-to-worker-to-painter graph.
+Strict ceilings exceed every three-run maximum. The paired baseline retains all four sealed faults
+and breaches 14 phone and 13 desktop ceiling fields. The Arc-local Edge authority remains product `Edg/151.0.4129.86`, revision
 `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript `15.1.23.7`, and protocol `1.3`; it still
 does **not** repin the Gate-A/global Edge `150.0.4078.83` baseline. Returning this criterion to
-`[EXEC]` requires one fresh paired run from exact broken source
-`38447019517147319bd08c598202d097ee866874`, three independent one-attempt current-candidate runs
-per profile, newly derived ceilings with written rationale/headroom, and exact-head certification.
+`[EXEC]` now requires exact-head certification on the eventual ruler-activation commit.
 
-The current state records an implemented product and repaired fail-closed instrument, not active
-resource acceptance or terminal certification. Human judgment of the six phone/desktop list,
+The current state records an implemented product and active measured ruler, not terminal exact-head
+certification. Human judgment of the six phone/desktop list,
 detail, and focus-pinned images remains outstanding. Arc 1B also remains open for ordinary scene/Pixi
 texture, render-target, GPU-proxy, and combined travel → Compendium → Shipyard plateau ownership.
 

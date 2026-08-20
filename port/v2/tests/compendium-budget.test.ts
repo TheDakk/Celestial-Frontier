@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -18,6 +19,16 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const budgetPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.json');
 const schemaPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.schema.json');
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
+const EXPECTED_MEASUREMENT_AUTHORITY =
+  'bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c';
+const EXPECTED_PRODUCER_AUTHORITY =
+  '291b794e0dcd93ee21d7ff88cbca383e865a62e8dd162573d475131aca3b911e';
+const EXPECTED_CANDIDATE_RUNS = [
+  '20260820-arc1a-candidate2-21af3fa',
+  '20260820-arc1a-candidate3-21af3fa',
+  '20260820-arc1a-candidate4-21af3fa',
+] as const;
+const EXPECTED_BASELINE_RUN = '20260820-arc1a-baseline3-21af3fa';
 
 type ProfileName = typeof PROFILE_NAMES[number];
 type CalibrationSample = {
@@ -39,6 +50,7 @@ type CalibrationSample = {
 type ProfileCeiling = { rationale: string; [field: string]: string | number };
 type ActiveBudgetRecord = {
   status: string;
+  measurementAuthority: { sha256: string };
   producerAuthority: { sha256: string };
   calibration: {
     selectionRule: string;
@@ -52,6 +64,78 @@ type ActiveBudgetRecord = {
   };
   ceilings: Record<ProfileName, ProfileCeiling> | null;
 };
+
+const EXPECTED_SAMPLE_OBJECT_SHA256: Record<ProfileName, {
+  candidate: readonly string[]; baseline: string;
+}> = {
+  phone: {
+    candidate: [
+      'a416540dfdd657bb0c16d96218b3f7404c455bb782020bb987d52ea2add30b57',
+      '5b4c13354d1e967b3eff37e78cef36f0f9f346aa5d3d377069a51de5a312b0d8',
+      '9ebb7dd8943d0733a52f13200028d158d0c1e4e8e9dfdc1d6f931d280c502cb0',
+    ],
+    baseline: '80e4665145a5df65ea8b07125ef6bc74ac66458b62f6f3c0a88f18cbf8f0ab3b',
+  },
+  desktop: {
+    candidate: [
+      'c4d41b4bff66cd78b9c187e5ddc4f664818f144ab756919c0fc54a1e46cd765d',
+      'e016bb2a8110807f6a6ccba34cd7c41caf679042a38a5a1d1ca1696b4c381136',
+      '4d85052876af0b38fb811743c668c6ba0093afe976706f0bc0bda63938ec1fe8',
+    ],
+    baseline: '19e4726ed39b7254c3d56702de323e9280e70cd001c8a5ca3352fe78a19bf7c8',
+  },
+};
+
+const EXPECTED_CEILINGS: Record<ProfileName, Record<string, number>> = {
+  phone: {
+    mountedRowsMax: 16,
+    heapUsedBytesMax: 8_388_608,
+    documentsMax: 2.5,
+    nodesMax: 640,
+    embedderHeapUsedBytesMax: 4_194_304,
+    backingStorageBytesMax: 4_194_304,
+    heapAggregateBytesMax: 14_680_064,
+    jsEventListenersMax: 80,
+    liveCacheEntriesMax: 96.5,
+    liveDecodedPixelsMax: 1_672_705,
+    liveDecodedBytesMax: 6_690_817,
+    liveEncodedBytesMax: 2_621_440,
+    queuedJobsPeakMax: 24,
+    activeJobsPeakMax: 1.5,
+    liveLeasesMax: 24,
+    liveSubscribersMax: 0.5,
+    livePortraitCacheEntriesMax: 1.5,
+    livePortraitEncodedBytesMax: 196_608,
+    warmHeapAggregateRangeBytesMax: 65_536,
+    warmEncodedBytesRangeMax: 0.5,
+  },
+  desktop: {
+    mountedRowsMax: 16,
+    heapUsedBytesMax: 12_582_912,
+    documentsMax: 2.5,
+    nodesMax: 640,
+    embedderHeapUsedBytesMax: 4_194_304,
+    backingStorageBytesMax: 6_291_456,
+    heapAggregateBytesMax: 18_874_368,
+    jsEventListenersMax: 80,
+    liveCacheEntriesMax: 256.5,
+    liveDecodedPixelsMax: 4_460_545,
+    liveDecodedBytesMax: 17_842_177,
+    liveEncodedBytesMax: 6_815_744,
+    queuedJobsPeakMax: 24,
+    activeJobsPeakMax: 1.5,
+    liveLeasesMax: 24,
+    liveSubscribersMax: 0.5,
+    livePortraitCacheEntriesMax: 1.5,
+    livePortraitEncodedBytesMax: 196_608,
+    warmHeapAggregateRangeBytesMax: 131_072,
+    warmEncodedBytesRangeMax: 0.5,
+  },
+};
+
+function sampleObjectSha256(sample: CalibrationSample): string {
+  return createHash('sha256').update(JSON.stringify(sample)).digest('hex');
+}
 
 function authorityKey(sample: CalibrationSample): string {
   const { product, revision, jsVersion, protocolVersion } = sample.browser;
@@ -131,21 +215,12 @@ describe('Arc 1A Compendium budget authority', () => {
   });
 
   it('activates only the exact Arc-local Edge build authority and paired samples', () => {
-    if (activeBudget.status === 'calibration-required') {
-      expect(activeBudget.ceilings).toBeNull();
-      for (const profile of PROFILE_NAMES) {
-        expect(activeBudget.calibration.samples[profile]).toEqual([]);
-        expect(activeBudget.pairedBrokenBaseline.samples[profile]).toEqual([]);
-      }
-      expect(activeBudget.pairedBrokenBaseline.status).toBe('measurement-required');
-      expect(activeBudget.pairedBrokenBaseline.collectorCommit).toBeNull();
-      return;
-    }
     expect(activeBudget.status).toBe('active');
     expect(activeBudget.ceilings).not.toBeNull();
+    expect(activeBudget.measurementAuthority.sha256).toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+    expect(activeBudget.producerAuthority.sha256).toBe(EXPECTED_PRODUCER_AUTHORITY);
     const candidateRuns = activeBudget.calibration.samples.phone.map((sample) => sample.runId);
-    expect(candidateRuns).toHaveLength(3);
-    expect(new Set(candidateRuns).size).toBe(3);
+    expect(candidateRuns).toEqual(EXPECTED_CANDIDATE_RUNS);
     for (const profile of PROFILE_NAMES) {
       expect(activeBudget.calibration.samples[profile].map((sample) => sample.runId))
         .toEqual(candidateRuns);
@@ -177,6 +252,10 @@ describe('Arc 1A Compendium budget authority', () => {
       .toBe('38447019517147319bd08c598202d097ee866874');
     expect(activeBudget.pairedBrokenBaseline.collectorCommit)
       .toBe(activeBudget.calibration.samples.phone[0]?.commit);
+    expect(activeBudget.pairedBrokenBaseline.samples.phone[0]?.runId)
+      .toBe(EXPECTED_BASELINE_RUN);
+    expect(activeBudget.pairedBrokenBaseline.samples.desktop[0]?.runId)
+      .toBe(EXPECTED_BASELINE_RUN);
 
     const everySample = PROFILE_NAMES.flatMap((profile) => [
       ...activeBudget.calibration.samples[profile],
@@ -190,23 +269,45 @@ describe('Arc 1A Compendium budget authority', () => {
         '1.3',
       ].join('\0'),
     ]));
-    expect(activeBudget.calibration.selectionRule).toContain('four-field authority');
+    expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.86');
+    expect(activeBudget.calibration.selectionRule).toContain('raw capsule');
+    expect(activeBudget.calibration.selectionRule).toContain('strictly above');
+    expect(activeBudget.calibration.selectionRule).toContain('rational headroom');
+    expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_PRODUCER_AUTHORITY);
     expect(activeBudget.calibration.selectionRule)
       .toContain('does not re-pin the Gate-A/global browser');
   });
 
-  it('keeps every active ceiling strictly above its samples and below the broken shape', () => {
-    if (activeBudget.status === 'calibration-required') {
-      expect(activeBudget.ceilings).toBeNull();
-      return;
+  it('pins the exact sealed raw sample objects selected from all four local runs', () => {
+    for (const profile of PROFILE_NAMES) {
+      expect(activeBudget.calibration.samples[profile].map(sampleObjectSha256))
+        .toEqual(EXPECTED_SAMPLE_OBJECT_SHA256[profile].candidate);
+      expect(activeBudget.pairedBrokenBaseline.samples[profile].map(sampleObjectSha256))
+        .toEqual([EXPECTED_SAMPLE_OBJECT_SHA256[profile].baseline]);
+      expect(activeBudget.pairedBrokenBaseline.samples[profile][0]?.observedFaults)
+        .toEqual(BROKEN_BASELINE_EXPECTED_FAULTS);
     }
+  });
+
+  it('keeps every active ceiling strictly above its samples and below the broken shape', () => {
     expect(strictHeadroomFailures(activeBudget)).toEqual([]);
-    const baselineBreaches = [
-      'mountedRowsMax', 'heapUsedBytesMax', 'nodesMax', 'liveCacheEntriesMax',
-      'liveDecodedPixelsMax', 'liveDecodedBytesMax', 'liveEncodedBytesMax',
-      'livePortraitCacheEntriesMax', 'livePortraitEncodedBytesMax',
-      'warmHeapAggregateRangeBytesMax', 'warmEncodedBytesRangeMax',
-    ];
+    const baselineBreaches: Record<ProfileName, string[]> = {
+      phone: [
+        'mountedRowsMax', 'heapUsedBytesMax', 'nodesMax',
+        'embedderHeapUsedBytesMax', 'backingStorageBytesMax', 'heapAggregateBytesMax',
+        'liveCacheEntriesMax', 'liveDecodedPixelsMax', 'liveDecodedBytesMax',
+        'liveEncodedBytesMax', 'livePortraitCacheEntriesMax',
+        'livePortraitEncodedBytesMax', 'warmHeapAggregateRangeBytesMax',
+        'warmEncodedBytesRangeMax',
+      ],
+      desktop: [
+        'mountedRowsMax', 'nodesMax', 'embedderHeapUsedBytesMax',
+        'backingStorageBytesMax', 'heapAggregateBytesMax', 'liveCacheEntriesMax',
+        'liveDecodedPixelsMax', 'liveDecodedBytesMax', 'liveEncodedBytesMax',
+        'livePortraitCacheEntriesMax', 'livePortraitEncodedBytesMax',
+        'warmHeapAggregateRangeBytesMax', 'warmEncodedBytesRangeMax',
+      ],
+    };
     for (const profile of PROFILE_NAMES) {
       const baseline = activeBudget.pairedBrokenBaseline.samples[profile][0];
       const ceiling = activeBudget.ceilings?.[profile];
@@ -217,45 +318,51 @@ describe('Arc 1A Compendium budget authority', () => {
         if (!sampleField || !baseline || !ceiling) return false;
         return baseline.metrics[sampleField]! > Number(ceiling[ceilingField]);
       });
-      expect(breached).toEqual(baselineBreaches);
+      expect(breached).toEqual(baselineBreaches[profile]);
+      expect(Object.fromEntries(CEILING_FIELDS.map((field) => [field, ceiling?.[field]])))
+        .toEqual(EXPECTED_CEILINGS[profile]);
     }
 
-    const equality = structuredClone(activeBudget);
-    const phoneHeapMax = Math.max(...equality.calibration.samples.phone
-      .map((sample) => sample.metrics.heapUsedBytes!));
-    equality.ceilings!.phone.heapUsedBytesMax = phoneHeapMax;
-    expect(strictHeadroomFailures(equality)).toContain('phone.heapUsedBytesMax');
-    expect(validateBudgetRecord(
-      equality, fixture.rowsSha256, baselineProjection.rowsSha256,
-    ).errors.join('\n')).toMatch(/heapUsedBytesMax must be strictly above measured/);
+    for (const profile of PROFILE_NAMES) {
+      for (const [index, ceilingField] of CEILING_FIELDS.entries()) {
+        const sampleField = SAMPLE_METRIC_FIELDS[index]!;
+        const equality = structuredClone(activeBudget);
+        const measuredMax = Math.max(...equality.calibration.samples[profile]
+          .map((sample) => sample.metrics[sampleField]!));
+        equality.ceilings![profile][ceilingField] = measuredMax;
+        expect(strictHeadroomFailures(equality)).toContain(`${profile}.${ceilingField}`);
+        expect(validateBudgetRecord(
+          equality, fixture.rowsSha256, baselineProjection.rowsSha256,
+        ).errors.join('\n')).toContain(
+          `active ${profile}.${ceilingField} must be strictly above measured ${sampleField} max`,
+        );
+      }
+    }
   });
 
   it('uses strict sentinels below the next reachable capped resource state', () => {
-    if (activeBudget.status === 'calibration-required') {
-      expect(activeBudget.ceilings).toBeNull();
-      return;
-    }
     const phone = activeBudget.ceilings!.phone;
     const desktop = activeBudget.ceilings!.desktop;
-    expect(phone.liveCacheEntriesMax).toBeGreaterThan(96);
-    expect(phone.liveCacheEntriesMax).toBeLessThan(97);
-    expect(desktop.liveCacheEntriesMax).toBeGreaterThan(256);
-    expect(desktop.liveCacheEntriesMax).toBeLessThan(257);
-    for (const ceiling of [phone, desktop]) {
-      expect(ceiling.activeJobsPeakMax).toBeGreaterThan(1);
-      expect(ceiling.activeJobsPeakMax).toBeLessThan(2);
-      expect(ceiling.liveSubscribersMax).toBeGreaterThan(0);
-      expect(ceiling.liveSubscribersMax).toBeLessThan(1);
-      expect(ceiling.livePortraitCacheEntriesMax).toBeGreaterThan(1);
-      expect(ceiling.livePortraitCacheEntriesMax).toBeLessThan(2);
+    expect(phone.liveCacheEntriesMax).toBe(96.5);
+    expect(desktop.liveCacheEntriesMax).toBe(256.5);
+    for (const profile of PROFILE_NAMES) {
+      const ceiling = activeBudget.ceilings![profile];
+      const samples = activeBudget.calibration.samples[profile];
+      expect(ceiling.documentsMax).toBe(2.5);
+      expect(ceiling.activeJobsPeakMax).toBe(1.5);
+      expect(ceiling.liveSubscribersMax).toBe(0.5);
+      expect(ceiling.livePortraitCacheEntriesMax).toBe(1.5);
+      expect(ceiling.warmEncodedBytesRangeMax).toBe(0.5);
+      expect(ceiling.liveDecodedPixelsMax).toBe(
+        Math.max(...samples.map((sample) => sample.metrics.liveDecodedPixels!)) + 1,
+      );
+      expect(ceiling.liveDecodedBytesMax).toBe(
+        Math.max(...samples.map((sample) => sample.metrics.liveDecodedBytes!)) + 1,
+      );
     }
   });
 
   it('rejects a paired baseline from another Arc-local Edge build authority', () => {
-    if (activeBudget.status === 'calibration-required') {
-      expect(activeBudget.pairedBrokenBaseline.samples.phone).toEqual([]);
-      return;
-    }
     const wrong = structuredClone(activeBudget);
     wrong.pairedBrokenBaseline.samples.phone[0]!.browser.jsVersion = '15.1.23.8';
     expect(validateBudgetRecord(

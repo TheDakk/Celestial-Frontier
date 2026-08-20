@@ -7,14 +7,13 @@
 **Initial committed Arc 1A base:** `65b1bace57cfbbfc57acbffe55537764a382c581`
 **Named product/Glass repair checkpoint:** `dea03913014bc58134ebb06ca5b36892210a7571`
 **First failing Actions run:** [32015873242](https://github.com/TheDakk/Celestial-Frontier/actions/runs/32015873242)
-**Status:** Product and Glass repairs are committed; exact dea039 Glass is 12/12. Its following exact
+**Status (updated 2026-08-20):** Product and Glass repairs are committed; exact dea039 Glass is 12/12. Its following exact
 Compendium run `20260817150005919-93781-b6643ba7a6` truthfully failed 75/76 solely at
 `desktop/warm-plateau` and exposed a pre-warm destructive-cap/incomplete-heap ruler. The fail-closed
 calibration seam is committed at `4374d95be6c8b6ec2106ecd8518ac9bb39e32065`, browser-free green,
-and clean under frozen
-read-only review; fresh calibration,
-exact-head certification, push, and
-CI are still pending, so PR #32 is **not yet ready for approval**.
+and clean under frozen read-only review. Exact baseline3 and candidate2/3/4 evidence now activates
+the replacement ruler in the working tree; exact-head certification on the eventual activation
+commit, push, and CI are still pending, so PR #32 is **not yet ready for approval**.
 
 ## 1. Executive state
 
@@ -25,14 +24,15 @@ approval blockers:
 | CI area | Classification | Current disposition |
 | --- | --- | --- |
 | `v2-static` | Instrument false positive | Fixed; current audit reports 28 sources / 0 findings |
-| `v2-compendium-memory` | Valid product-unanswerable finding, followed later by a ruler defect | Heavy import/paint/PNG work moved to a serial close-at-idle dedicated-worker producer. Exact dea039 then exposed that the old plateau sequence trimmed before warm and ignored embedder/backing ownership; calibration is now fail-closed pending fresh measurements |
+| `v2-compendium-memory` | Valid product-unanswerable finding, followed later by a ruler defect | Heavy import/paint/PNG work moved to a serial close-at-idle dedicated-worker producer. Exact dea039 exposed the old invalid plateau; baseline3 plus candidate2/3/4 now activate a strict aggregate-heap/fixed-window ruler, with exact-head certification still pending |
 | `v2-smoke` | Obsolete fixed-wait instrument check over the same cold-art path | Replaced by one monotonic semantic settlement phase with exact decode/work outcomes |
 | `v2-glass` | One instrument defect plus two product finding records from one short-landscape geometry defect | Guide predicate, clipping diagnostics, hostile fixture, and nonmodal landscape workspace repaired |
 
 The first-red evidence is preserved. No timeout was raised, no failed command was retried, and no
 red was reclassified as green. The later 75/76 Compendium red is preserved too: it is evidence that
 the ruler cannot adjudicate the product, not proof of either a leak or a clean plateau. The repaired
-calibration seam and its frozen browser-free battery are the next authority boundary.
+calibration seam remains preserved chronology; the active replacement ruler and its eventual exact
+activation head are the next authority boundary.
 
 ## 2. What was completed before the PR battery
 
@@ -72,12 +72,13 @@ broken baseline breaches the sealed eleven fields on both profiles: mounted rows
 live cache entries, decoded pixels, decoded bytes, encoded bytes, portrait cache entries, portrait
 encoded bytes, warm heap range, and warm encoded-byte range.
 
-**Current correction:** this paragraph records how the earlier ruler was derived; it is no longer
+**Historical correction:** this paragraph records how the earlier ruler was derived; it is no longer
 active authority. Exact dea039 run `20260817150005919-93781-b6643ba7a6` showed that the destructive
 desktop cap trim occurred before warm observation, so the reported plateau included refill, and the
 old heap field excluded embedder/backing ownership. Those older samples and ceilings are historical
-calibration only. The checked-in budget is now intentionally `calibration-required`, with empty
-candidate samples, null ceilings, and a `measurement-required` baseline.
+calibration only. The budget was then deliberately moved to `calibration-required`; section 6.4
+records the later exact evidence that supersedes that temporary fail-closed state and activates the
+replacement ruler.
 
 ### 2.3 Evidence hardening completed before CI
 
@@ -387,7 +388,9 @@ Historical follow-up checkpoint before dea039:
   phone-landscape Glass passed; full clean-head Glass and Compendium remain outstanding;
 - PR #32 remains draft/not approvable.
 
-### 6.1 Current checkpoint after exact dea039 browser evidence
+### 6.1 Superseded checkpoint after exact dea039 browser evidence
+
+This subsection is preserved as the then-current fail-closed checkpoint; section 6.4 is current.
 
 - branch: `openai/mac`;
 - committed repair HEAD: `dea03913014bc58134ebb06ca5b36892210a7571`;
@@ -464,12 +467,37 @@ creates a new measurement authority, so the clean baseline2 sample is preserved 
 than reused. A new baseline and three candidate attempts are required; no ceiling was widened and
 no product-leak/clean conclusion was taken from candidate1.
 
+### 6.4 Exact-.86 baseline3, candidate2/3/4, and active replacement ruler
+
+The replacement authority was captured without an unchanged retry. Paired run
+`20260820-arc1a-baseline3-21af3fa` uses exact detached broken source
+`38447019517147319bd08c598202d097ee866874`; independent one-attempt runs
+`20260820-arc1a-candidate2-21af3fa`, `20260820-arc1a-candidate3-21af3fa`, and
+`20260820-arc1a-candidate4-21af3fa` use clean committed collector/product source
+`21af3fa2c096f0590b067c0af578d7ea29000378`. Every capsule binds measurement authority
+`bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c`, producer authority
+`291b794e0dcd93ee21d7ff88cbca383e865a62e8dd162573d475131aca3b911e`, and the isolated
+Edg/151.0.4129.86 build. This remains Arc-local authority and does not repin Gate A's global Edge
+150 browser.
+
+The active budget embeds and replays all eight raw profile capsules. Every phone and desktop
+ceiling is strictly above the corresponding three-candidate maximum, with written headroom for
+variable page/embedder/backing/aggregate heap, DOM, encoded bytes, and warm range, plus fractional
+or +1 sentinels for product-owned exact caps. Aggregate heap is the sum of page, embedder, and
+backing-store ownership. After the native cache is filled, the fixed itinerary repeats one retained
+window; the sealed last three cycles require stable unique keys and unchanged job starts,
+disposals, worker starts/disposals, decoded ownership, and encoded-byte range. The paired baseline
+retains all four expected faults and breaches 14 phone ceiling fields and 13 desktop fields.
+
+This completes calibration and activates the ruler. It is not final certification: the budget,
+focused tests, and documentation still need their eventual activation commit, followed by one
+exact-head no-retry Compendium run and independent replay, push, and PR CI. The six-image HUMAN
+review and Claude presentation-polish pass remain separate and open.
+
 ## 7. Remaining work
 
-- commit the fixed-window warm-measurement follow-up with refreshed authority; then recapture one
-  paired exact-3844701 baseline and three independent one-attempt current-candidate runs per
-  profile under the one isolated Edge 151.0.4129.86 executable, derive and document new ceilings
-  from their raw capsules, activate the budget, and commit that exact ruler;
+- finish scoped review and browser-free verification, then commit the active ruler without changing
+  its exact `21af3fa2…` measurement inputs or embedded baseline3/candidate2/3/4 capsules;
 - run the required final-clean-head browser path/CDP controls and exactly one no-retry Smoke, Glass,
   and Arc-local Edge Compendium certification battery;
 - preserve and diagnose the first browser red if any rather than rerunning unchanged;
@@ -478,7 +506,7 @@ no product-leak/clean conclusion was taken from candidate1.
 
 ## 8. Required verification before saying “ready”
 
-### Browser-free — current fail-closed calibration seam
+### Browser-free — historical seam plus current activation diff
 
 - full Vitest: 36 files, 423 passed, 1 skipped;
 - focused broker/portable/worker tests: 28 passed;
@@ -496,24 +524,31 @@ no product-leak/clean conclusion was taken from candidate1.
 The frozen seam extends that repair evidence and is green under 36 Vitest files / 423 passed /
 1 skipped; root, app, and worker TypeScript programs; artunused, artaudit, and the exact production
 owner/worker/painter build graph; 222 Compendium selftest controls; 10 focused budget tests; and
-Smoke, Glass, and persona selftests. This is browser-free authority for a deliberately
-non-certifying budget, not measured ceiling or exact-head certification authority.
+Smoke, Glass, and persona selftests. This is historical browser-free authority for the fail-closed
+seam. The active-budget/focused-test/documentation diff must receive its own scoped green review
+before the eventual activation commit; neither state is exact-head browser certification.
+
+That successor active-budget/documentation diff is now browser-free green under 36 Vitest files /
+424 passed / 1 skipped; all three TypeScript programs; 222 Compendium controls; 11 focused budget
+tests; exact sample-object and raw-capsule replay; all 40 strict-headroom checks; current
+measurement/producer authority; art/spec/build gates; root validate and smoke; and Smoke, Glass,
+and persona selftests. Two independent read-only audits found no ceiling, schema, source-identity,
+or baseline-discrimination blocker. This remains pre-commit activation evidence, not the required
+one-attempt exact-head browser certification.
 
 ### Browser-owning, one attempt and no retry
 
-From the current committed fail-closed seam and with the correct process-owned browser selection:
+From the eventual committed activation head and with the correct process-owned browser selection:
 
 1. shared browser path/CDP selftests;
-2. one paired calibration capture from exact baseline
-   `38447019517147319bd08c598202d097ee866874` and three independent one-attempt current-candidate
-   captures per profile, each independently replayed from its raw capsules;
-3. derive, review, document, and activate new phone/desktop ceilings without widening around a red;
-4. on the committed exact ruler head, run Arc-local Edge Compendium certification plus independent
+2. replay the embedded exact baseline3/candidate2/3/4 raw capsules and active ceilings against the
+   final budget bytes;
+3. on the committed exact ruler head, run Arc-local Edge Compendium certification plus independent
    `--verify-run`;
-5. Chrome `smoke:ci`;
-6. full Chrome 12-viewport Glass matrix;
-7. any additional boot/art-scheduler gate required by the final diff;
-8. six run-bound Compendium review PNG integrity checks.
+4. Chrome `smoke:ci`;
+5. full Chrome 12-viewport Glass matrix;
+6. any additional boot/art-scheduler gate required by the final diff;
+7. six run-bound Compendium review PNG integrity checks.
 
 If a browser gate fails, its first red is preserved and diagnosed. The batch does not gain authority
 to raise deadlines, retry, regenerate a budget, or weaken a control merely to obtain green.
@@ -542,10 +577,8 @@ Even a repaired green PR does not close:
 
 ## 10. Approval recommendation at this checkpoint
 
-**Do not approve or merge PR #32 yet.** The product and Glass repairs are committed, but the old
-resource ruler has been deliberately withdrawn after its exact 75/76 run exposed invalid warm
-chronology and incomplete heap ownership. The fail-closed seam is committed and browser-free green.
-The remaining automated boundary is empirical: capture the fresh exact baseline plus three candidate attempts per
-profile; activate reviewed ceilings; certify the final exact head once; push that exact head; and
-require exact-head CI. A green result can make the automated repair ready for review; it still does
+**Do not approve or merge PR #32 yet.** The product and Glass repairs are committed, and the
+replacement ruler is active from exact baseline3 plus candidate2/3/4 evidence. The remaining
+automated boundary is the eventual activation commit itself: certify that exact head once, push that
+exact head, and require exact-head CI. A green result can make the automated repair ready for review; it still does
 not substitute for the six-image HUMAN judgment or Claude's later presentation-polish pass.

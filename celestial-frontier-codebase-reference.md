@@ -4,8 +4,8 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 source overlay matches code as of 2026-08-17.**
-> **2026-08-17 Arc 1A Compendium/art/resource overlay (current working tree;
+> **Current port/v2 source overlay matches code as of 2026-08-20.**
+> **2026-08-20 Arc 1A Compendium/art/resource overlay (current working tree;
 > tracked source makes no terminal-certification claim; final HUMAN review remains open):**
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
@@ -30,7 +30,7 @@
 > queued owners exactly once, while content-specific paint/encode errors remain
 > per-job. Phone/desktop cache, decoded-pixel, byte, queue, lease, portrait, worker
 > lifecycle, and phase evidence are explicit; current resource-budget status is
-> `calibration-required`, not `active-measured`. Specimen detail requests an
+> `active`. Specimen detail requests an
 > asynchronous 440px result through the same owner; Back/Close cancels that request
 > and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
 > synchronous audit compatibility and are rejected from the live entry-to-worker
@@ -55,15 +55,17 @@
 > the old sequence destructively trimmed the desktop cache before the warm observation
 > and measured refill, while its heap summary omitted embedder/backing ownership. The
 > repaired collector observes the full native warm cache before cap control; records
-> used, embedder, backing-store, and aggregate heap; proves stable warm keys/reuse and a
-> post-cap restored snapshot; embeds compact replayable baseline/candidate capsules; and
+> used, embedder, backing-store, and aggregate heap; proves stable unique keys plus
+> unchanged job/disposal/worker counters over the last three cycles of one retained window;
+> retains a post-cap restored snapshot; embeds compact replayable baseline/candidate capsules; and
 > binds the complete fixture/generator/schema/contract/collector/browser/lock/package/
 > baseline-save/art-build/outcome input set plus the exact built index-owner → module-worker
-> → worker-local-painter graph. The budget has empty candidate samples, null ceilings,
-> and a `measurement-required` baseline, so it cannot certify. Returning it to active
-> status requires one fresh paired run from exact broken source
-> `38447019517147319bd08c598202d097ee866874`, three independent one-attempt current-
-> candidate runs per profile, newly reasoned ceilings, and later exact-head certification.
+> → worker-local-painter graph. The active budget embeds paired run
+> `20260820-arc1a-baseline3-21af3fa` plus independent one-attempt candidate2/3/4 runs from
+> clean committed `21af3fa2…`, under measurement authority `bb03a3af…`, producer authority
+> `291b794e…`, and exact Edge 151.0.4129.86. Strict ceilings exceed all three-run maxima;
+> the baseline retains all four sealed faults and breaches 14 phone / 13 desktop fields.
+> Exact-head certification on the eventual activation commit remains open.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. The six phone/desktop list, focus-pinned, and detail PNGs still await HUMAN review.
 > Arc 1B scene-resource ownership/disposal and live HD planet replacement remain open.

@@ -9,9 +9,9 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state decision — Arc 1A maximum Compendium (2026-08-17)
+## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
-**Status: ★ product implementation present; resource calibration `[EXEC-TODO]`; six-image
+**Status: ★ product implementation and active measured ruler present; exact-head certification `[EXEC-TODO]`; six-image
 `[HUMAN]` review open.** This block records the current disposition of the historical
 `D-COMPENDIUM-MEM` proposal below without rewriting that dated discovery record.
 
@@ -33,14 +33,18 @@ as any change that touches an entry.
   `desktop/warm-plateau`. That red proves neither a leak nor a clean product plateau: the old
   sequence destructively trimmed the desktop cache before warming and then measured refill, while
   its heap ruler omitted embedder/backing ownership.
-- `budgets/compendium-memory-v1.json` is intentionally `calibration-required`, with empty candidate
-  samples, null candidate ceilings, and a `measurement-required` baseline. The repaired seam moves
-  cap control after full native warm-cache observation; records used, embedder, backing-store, and
-  aggregate heap; proves stable warm keys/reuse and a post-cap restored state; embeds replayable raw
-  baseline/candidate capsules; and binds the complete measurement inputs plus exact built
-  owner-to-worker-to-painter graph. One fresh paired exact-3844701 baseline, three independent
-  one-attempt current-candidate runs per profile, new ceiling rationale, and exact-head
-  certification remain required before this criterion returns to `[EXEC]`.
+- `budgets/compendium-memory-v1.json` is now `active`. It embeds exact paired run
+  `20260820-arc1a-baseline3-21af3fa` plus independent one-attempt candidate2/3/4 runs from clean
+  committed collector/product `21af3fa2…`, all under measurement authority `bb03a3af…`, producer
+  authority `291b794e…`, and isolated Edge 151.0.4129.86. The repaired seam moves cap control after
+  full native warm-cache observation; records used, embedder, backing-store, and aggregate heap;
+  proves stable unique keys plus unchanged job/disposal/worker counters across the last three cycles
+  of one retained window; embeds replayable raw capsules; and binds the complete measurement inputs
+  plus exact built owner-to-worker-to-painter graph. Strict ceilings exceed all three candidate
+  maxima; the paired baseline preserves four sealed faults and breaches 14 phone / 13 desktop
+  fields. Exact-head certification on the eventual activation commit remains required before this
+  criterion returns to `[EXEC]`.
+- This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
   images still require human review. Arc 1B remains open for scene/Pixi textures, render targets,

@@ -90,7 +90,7 @@
 > certification, and it changes no schema, production version, shipped release
 > or update-popup state.
 
-> **2026-08-17 v2 Arc 1A UI/resource overlay — current implementation:** The read-only
+> **2026-08-20 v2 Arc 1A UI/resource overlay — current implementation:** The read-only
 > Compendium now virtualizes all 1,500 deterministic rows to a visible variable-height
 > window, bounded overscan, and any focus-pinned row. Native keyboard focus and logical
 > anchor-plus-offset survive measurement, filtering, detail/Back reconstruction, and row
@@ -115,17 +115,18 @@
 > rows plus clipped-ancestor controls. Those hostile evidence states are intentionally unlike the
 > ordinary Dev presentation and do not claim v1.0-equivalent visual polish.
 >
-> Phone and desktop ceilings are not currently active: the budget is deliberately
-> `calibration-required`, with empty candidate samples, null ceilings, and a
-> `measurement-required` baseline. Exact committed repair dea039 passes all 12 Glass rows; its
+> Phone and desktop ceilings are now active measured authority. Exact committed repair dea039 passes all 12 Glass rows; its
 > following exact Compendium run `20260817150005919-93781-b6643ba7a6` truthfully reports 75/76,
 > solely red at `desktop/warm-plateau`. That run cannot adjudicate a product leak because its old
 > sequence trimmed the desktop cache before warming and measured refill, while its heap ruler
 > omitted embedder/backing ownership. The repaired seam observes the full native warm cache before
-> cap control, measures used/embedder/backing/aggregate heap and stable-key reuse, retains post-cap
-> restoration, replays raw calibration capsules, and binds complete input plus built-producer
-> authority. A fresh paired exact-3844701 baseline, three independent one-attempt current-candidate
-> runs per profile, newly reasoned ceilings, and exact-head certification remain open. The ruler's
+> cap control, measures used/embedder/backing/aggregate heap, retains post-cap restoration, and
+> proves stable unique keys plus unchanged job/disposal/worker counters across the last three cycles
+> of one retained window. The active ruler embeds exact baseline3 and candidate2/3/4 from clean
+> `21af3fa2…`, under authority `bb03a3af…`, producer `291b794e…`, and exact Edge 151.0.4129.86;
+> strict ceilings exceed every three-run maximum, while the baseline retains four faults and
+> breaches 14 phone / 13 desktop fields. Exact-head certification on the eventual activation commit,
+> push, and CI remain open. The ruler's
 > Arc-local Edge 151 authority still does not repin the global Gate-A Edge 150 browser. Six
 > run-bound list, focus-pinned, and detail PNGs still await HUMAN review. Arc 1B scene-resource disposal and live HD
 > planet replacement remain open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
@@ -411,10 +412,9 @@
 > reordered, wrong-operation/context, just-late, and still-rendering evidence.
 > IndexedDB itself is not wrapped in a timeout race, and no retry or timeout
 > increase turns a red import green.
-> The Arc 1A Compendium product and fail-closed memory/resource instrument are implemented, but
-> its phone/desktop budget is `calibration-required`; no active ceilings or exact-head resource
-> certification are claimed. Fresh exact-3844701 baseline and three-run current-candidate
-> calibration must activate a new ruler under the existing Arc-local Edge 151 authority, which
+> The Arc 1A Compendium product and fail-closed memory/resource instrument are implemented, and its
+> phone/desktop ruler is active from exact baseline3/candidate2/3/4 raw evidence. Exact-head resource
+> certification on the eventual activation commit remains open under the existing Arc-local Edge 151 authority, which
 > does not repin the global Gate-A Edge 150 browser. Its six PNGs still await HUMAN review. Arc 1B
 > scene-texture disposal, live HD planet replacement, broader long-task
 > coverage, and fuller hidden-tab behavior remain open. The v2 static preview packaging/hosting
