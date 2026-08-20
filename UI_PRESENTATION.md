@@ -151,8 +151,8 @@
 > 1.5-second command, 2-second shutdown, 15-second generic/candidate startup, and 2-second product
 > observation. Portable controls pass at 38,657 ms and fail at exact/late 38,658/38,659 ms; that
 > caller change itself added no warmup, relaunch, retry, fallback, workflow change, or UI/game timing optimization. Launcher
-> `6892dea6…` changes measurement to `6ba58522…`; producer remains `e59685b1…`, and budget/test
-> `bb4da2bf0b…` / `d242705ad9…` are active from clean one-attempt/no-retry baseline7 plus
+> `6892dea6…` changes measurement to `6ba58522…`; producer remained `e59685b1…`, and budget/test
+> `bb4da2bf0b…` / `d242705ad9…` were then active from clean one-attempt/no-retry baseline7 plus
 > candidate14/15/16; every candidate replayed 78/78, all 40 ceilings are strict, and the retained
 > baseline breaches 14 phone / 13 desktop fields. This is browser-free activation, not
 > certification. Exact-c49 then passed one complete local battery, but corresponding run
@@ -167,11 +167,32 @@
 > and keeps that detail mounted until semantic
 > connected/ready/src/decoded-440×440 publication under one
 > 30-second deadline. Pending, error, stale/disconnected, contradictory, wrong-size, and exact/late
-> states retain distinct diagnoses. One repair-head battery and corresponding CI attempt remain;
-> then gameplay work resumes without broader timing work.
+> states retain distinct diagnoses. Exact pushed head `139ce2f…` then passed one complete local
+> battery. Corresponding run `32383320206` matched exact Edge .86 and all then-active authorities,
+> completed 29 phone stages, and preserved a no-retry `product-unanswerable` Planetside red: target
+> `Runtime.evaluate` took `2001.132592` ms against the unchanged 2,000 ms deadline while the root
+> heartbeat answered in `10.401960` ms. It emitted zero outcomes, blocked all 78, and retained no
+> review PNG.
+>
+> Planetside now requests the fitted globe's displayed backing-pixel demand. Standard phone/desktop
+> boot computes 609/420px and selects the existing 512 tier. One exact surface-generation, planet-
+> seed, and ordinal owner re-reads the post-bake cache, swaps only the current world's settled
+> texture, rejects stale completion, and suppresses duplicate-tier requests. Real zoom/DPR demand
+> still upgrades through 768 to 1024; maximum tested phone/desktop zoom demand is 1,248/1,280px.
+> This preserves supported sharpness instead of front-loading the largest tier.
+>
+> The product and development-copy bytes change producer authority to `d3223177…` (index
+> `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`; worker/painter unchanged) while
+> measurement `6ba58522…` remains frozen. Budget/test `9f53ebe69e…` / `c2b68b3ec…` now fail closed
+> at `calibration-required`, with empty samples, measurement-required baseline, and null ceilings.
+> Baseline7/candidate14/15/16 are historical for `e59685b1…`. Collect one no-retry baseline8 plus
+> independent candidate17/18/19 on one clean committed head, activate only from matching raw
+> authority and strict discriminating ceilings, then run one exact-head battery and one corresponding
+> CI attempt. The first red stops; gameplay resumes after PR #32 closes without broader timing work.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
-> list, focus-pinned, and detail PNGs still await HUMAN review. Arc 1B scene-resource disposal and live
-> HD planet replacement remain open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
+> list, focus-pinned, and detail PNGs still await HUMAN review. This repair owns the current surface
+> globe's fitted start and live tier swap only; the broader Arc 1B/1C scene-resource disposal and HD
+> texture package remains open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
 > research, or upgrade controls.
 >
 > The approved Shipyard is a new responsive panel, not a repurposed character sheet. Its
@@ -466,17 +487,23 @@
 > paired baseline6 plus candidate11/12/13 historically activated budget `ebe5b5c3…` under that exact
 > producer and measurement authority. Exact f9's full local battery remains truthful, but its
 > corresponding run `32367902426` stopped on the first real Edge selftest cold launch before product.
-> Launcher `6892dea6…` changes measurement to `6ba58522…`; browser-free budget `bb4da2bf0b…` is
-> active for unchanged producer `e59685b1…` from clean source `374049536e…`. Exact c49's complete
+> Launcher `6892dea6…` changes measurement to `6ba58522…`; browser-free budget `bb4da2bf0b…` was
+> then active for producer `e59685b1…` from clean source `374049536e…`. Exact c49's complete
 > local battery is also preserved; corresponding run `32375329693` reached no product verdict in its
 > root/Compendium instrument legs and retained only an unadjudicated immediate asynchronous-detail
 > Smoke sample. Its bounded root caller, Edge-only preflight, and semantic detail-settlement repairs
-> leave product and measurement bytes unchanged. Every selected head
-> must still own exact-source local resource
-> certification and corresponding terminal-green PR test-merge CI. The
+> left product and measurement bytes unchanged. Exact-139's later complete local battery reached
+> corresponding run `32383320206`, whose healthy root heartbeat plus just-over-two-second target
+> response preserved a valid Planetside `product-unanswerable` red. The bounded product repair starts
+> the globe from displayed backing demand, preserves zoom/DPR sharpness through an identity-safe
+> 512/768/1024 upgrade owner, and changes producer to `d3223177…` while measurement remains
+> `6ba58522…`. The current `9f53ebe69e…` / `c2b68b3ec…` ruler seam is fail-closed
+> `calibration-required` pending baseline8 plus candidate17/18/19. Every selected activation head
+> must still own exact-source local resource certification and corresponding terminal-green PR
+> test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150
-> browser. Fresh six-image evidence still awaits HUMAN review. Arc 1B
-> scene-texture disposal, live HD planet replacement, broader long-task
+> browser. Fresh six-image evidence still awaits HUMAN review. The broader Arc 1B/1C
+> scene-texture ownership/disposal and HD texture package, broader long-task
 > coverage, and fuller hidden-tab behavior remain open. The v2 static preview packaging/hosting
 > contract is documented separately in `port/DEVELOPMENT_PREVIEW.md`; a preview
 > is development evidence, never a release or production deployment.

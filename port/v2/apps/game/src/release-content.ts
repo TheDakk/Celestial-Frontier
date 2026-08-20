@@ -897,7 +897,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
         '🌈 RARITY IS NOT A SPECTRAL CLASS: Survey cards no longer show a player-facing Spectral class row. Galaxies and stars show plain Rarity immediately; planets reveal plain Rarity only after landing. Seeded spectral color remains internal art data, and real stellar G/K/M/remnant classification remains astronomical identity.',
         '🖥 RELOADS RELEASE THE OLD SKY: Training restart, expedition import, and storage recovery stop and release the outgoing renderer and full-size canvases before the replacement page starts, preventing overlapping scenes and very-large-display starvation.',
         '↔ RESIZING KEEPS YOUR PLACE: Density and viewport changes refresh canvas, pointer, Survey, and backdrop geometry while preserving the current location and open card, including same-backing 8K-to-5K transitions.',
-        '🦋 COLD PLANETSIDE ART NO LONGER FREEZES THE DECK: Loading and painting the first specimen thumbnails now happens away from the renderer thread, so Search, navigation, and browser controls stay answerable while neutral tiles fill in.',
+        '🦋 COLD PLANETSIDE ART NO LONGER FREEZES THE DECK: Loading and painting the first specimen thumbnails now happens away from the renderer thread, so Search, navigation, and browser controls stay answerable while neutral tiles fill in; the globe starts at the resolution its fitted size needs and upgrades only when real zoom or display density asks for a sharper tier.',
       ]),
     }),
     Object.freeze({
