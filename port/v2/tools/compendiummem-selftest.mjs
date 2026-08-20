@@ -63,6 +63,7 @@ import {
   candidateFilterInputExpression, candidateFilterTelemetryExpression,
   collectCandidateSnapshot, createCandidateCollectorObservations,
   createCandidateCommandRecorder,
+  COMPENDIUM_SERVER_SHUTDOWN_TIMEOUT_MS,
   closeCompendiumServer,
   driveCandidateFilterTransition, validCandidateFilterInputExpression,
   finalizeCompendiumLifecycle,
@@ -5865,28 +5866,180 @@ export async function runCompendiumMemSelftest() {
   const serverCloseBlock = ownedLifecycleBlock(
     'export function closeCompendiumServer(', 'function git(',
   );
-  const validServerCloseBlock = (block) => block.includes('server.close((error) => {')
-    && block.includes('if (error) reject(error);') && block.includes('else resolve();');
+  const validServerCloseBlock = (block) => block.includes('const startedAt = now();')
+    && block.includes('const deadline = startedAt + timeoutMs;')
+    && block.includes('if (settled) return;')
+    && block.includes('receivedAt >= deadline')
+    && block.includes('timer = setTimer(enforceDeadline, timeoutMs);')
+    && block.includes('settled = true;\n      if (timer !== null) clearTimer(timer);\n      let finalFailure = failure;')
+    && block.includes('server.closeAllConnections();')
+    && block.includes('server.close((error) => finish(error || null, now()));');
   assert(validServerCloseBlock(serverCloseBlock)
     && collectorSource.includes('close: () => closeCompendiumServer(server)'),
-  'static-server owner did not preserve callback errors through the lifecycle seam');
+  'static-server owner did not preserve the bounded forced-close lifecycle seam');
   assert(!validServerCloseBlock(serverCloseBlock.replace(
-    'if (error) reject(error);', 'if (error) resolve();',
-  )), 'server-close callback-error masking mutation stayed green');
-  let serverCloseCalls = 0;
-  await closeCompendiumServer({ close(callback) { serverCloseCalls += 1; callback(); } });
-  let serverCloseError = null;
-  try {
-    await closeCompendiumServer({
-      close(callback) {
-        serverCloseCalls += 1;
-        callback(new Error('injected http.Server.close callback failure'));
+    'receivedAt >= deadline', 'receivedAt > deadline',
+  )), 'server-close exact-deadline acceptance mutation stayed green');
+  assert(!validServerCloseBlock(serverCloseBlock.replace(
+    'server.closeAllConnections();', '/* forced cleanup removed */',
+  )), 'server-close forced-cleanup removal mutation stayed green');
+  assert(!validServerCloseBlock(serverCloseBlock.replace(
+    'timer = setTimer(enforceDeadline, timeoutMs);', 'timer = null;',
+  )), 'server-close deadline-timer removal mutation stayed green');
+  assert(!validServerCloseBlock(serverCloseBlock.replace(
+    'if (settled) return;', '/* settlement guard removed */',
+  )), 'server-close settlement-guard removal mutation stayed green');
+  assert(!validServerCloseBlock(serverCloseBlock.replace(
+    'settled = true;\n      if (timer !== null) clearTimer(timer);\n      let finalFailure = failure;',
+    'if (timer !== null) clearTimer(timer);\n      let finalFailure = failure;',
+  )), 'server-close pre-force settlement removal mutation stayed green');
+  assert(COMPENDIUM_SERVER_SHUTDOWN_TIMEOUT_MS === 2_000,
+    'static-server shutdown bound drifted from 2000ms');
+
+  const runServerCloseControl = async ({
+    callbackAt = null, callbackError = null, deadlineAt = null,
+  }) => {
+    let current = 0;
+    let closeCalls = 0;
+    let forceCalls = 0;
+    let clearCalls = 0;
+    let callback = null;
+    let timers = [];
+    const promise = closeCompendiumServer({
+      close(next) { closeCalls += 1; callback = next; },
+      closeAllConnections() { forceCalls += 1; },
+    }, {
+      timeoutMs: COMPENDIUM_SERVER_SHUTDOWN_TIMEOUT_MS,
+      now: () => current,
+      setTimer(next, delay) {
+        const token = { next, delay };
+        timers.push(token);
+        return token;
       },
+      clearTimer() { clearCalls += 1; },
     });
-  } catch (error) { serverCloseError = error; }
-  assert(serverCloseCalls === 2
-    && serverCloseError?.message === 'injected http.Server.close callback failure',
+    if (callbackAt !== null) {
+      current = callbackAt;
+      callback(callbackError);
+    } else {
+      current = deadlineAt;
+      timers.at(-1).next();
+    }
+    let error = null;
+    try { await promise; } catch (caught) { error = caught; }
+    return { closeCalls, forceCalls, clearCalls, error, timers };
+  };
+  const justBeforeServerClose = await runServerCloseControl({ callbackAt: 1_999 });
+  const exactServerClose = await runServerCloseControl({ callbackAt: 2_000 });
+  const lateServerClose = await runServerCloseControl({ callbackAt: 2_001 });
+  const missingServerClose = await runServerCloseControl({ deadlineAt: 2_000 });
+  const failedServerClose = await runServerCloseControl({
+    callbackAt: 100,
+    callbackError: new Error('injected http.Server.close callback failure'),
+  });
+  assert(justBeforeServerClose.closeCalls === 1 && justBeforeServerClose.forceCalls === 0
+    && justBeforeServerClose.clearCalls === 1 && justBeforeServerClose.error === null,
+  'just-before-deadline static-server shutdown did not succeed exactly once');
+  for (const [label, control] of [
+    ['exact-deadline', exactServerClose],
+    ['late', lateServerClose],
+    ['missing-callback', missingServerClose],
+  ]) {
+    assert(control.closeCalls === 1 && control.forceCalls === 1
+      && control.clearCalls === 1
+      && control.error?.message
+        === 'Compendium static server did not close before the 2000ms shutdown deadline',
+    `${label} static-server shutdown did not fail closed and force cleanup exactly once`);
+  }
+  assert(failedServerClose.closeCalls === 1 && failedServerClose.forceCalls === 1
+    && failedServerClose.clearCalls === 1
+    && failedServerClose.error?.message === 'injected http.Server.close callback failure',
   'production static-server close wrapper swallowed its callback error');
+
+  let earlyCurrent = 0;
+  let earlyCallback = null;
+  let earlyForceCalls = 0;
+  const earlyTimers = [];
+  const earlyPromise = closeCompendiumServer({
+    close(callback) { earlyCallback = callback; },
+    closeAllConnections() { earlyForceCalls += 1; },
+  }, {
+    timeoutMs: COMPENDIUM_SERVER_SHUTDOWN_TIMEOUT_MS,
+    now: () => earlyCurrent,
+    setTimer(callback, delay) {
+      const token = { callback, delay };
+      earlyTimers.push(token);
+      return token;
+    },
+    clearTimer() {},
+  });
+  earlyCurrent = 1_999;
+  earlyTimers[0].callback();
+  assert(earlyTimers.length === 2 && earlyTimers[1].delay === 1,
+    'early shutdown timer did not retain the immutable deadline');
+  earlyCurrent = 2_000;
+  earlyTimers[1].callback();
+  let earlyTimerError = null;
+  try { await earlyPromise; } catch (error) { earlyTimerError = error; }
+  assert(earlyCallback !== null && earlyForceCalls === 1
+    && earlyTimerError?.message
+      === 'Compendium static server did not close before the 2000ms shutdown deadline',
+  'rescheduled shutdown deadline did not fail closed at the exact boundary');
+
+  let reentrantCurrent = 0;
+  let reentrantCallback = null;
+  let reentrantForceCalls = 0;
+  let reentrantTimer = null;
+  const reentrantPromise = closeCompendiumServer({
+    close(callback) { reentrantCallback = callback; },
+    closeAllConnections() {
+      reentrantForceCalls += 1;
+      reentrantCallback();
+    },
+  }, {
+    timeoutMs: COMPENDIUM_SERVER_SHUTDOWN_TIMEOUT_MS,
+    now: () => reentrantCurrent,
+    setTimer(callback, delay) {
+      reentrantTimer = { callback, delay };
+      return reentrantTimer;
+    },
+    clearTimer() {},
+  });
+  reentrantCurrent = 2_000;
+  reentrantTimer.callback();
+  reentrantCallback();
+  let reentrantError = null;
+  try { await reentrantPromise; } catch (error) { reentrantError = error; }
+  assert(reentrantForceCalls === 1
+    && reentrantError?.message
+      === 'Compendium static server did not close before the 2000ms shutdown deadline',
+  'forced connection cleanup reentrancy did not settle exactly once');
+
+  let staleCurrent = 0;
+  let staleCallback = null;
+  let staleForceCalls = 0;
+  let staleClearCalls = 0;
+  let staleTimer = null;
+  const stalePromise = closeCompendiumServer({
+    close(callback) { staleCallback = callback; },
+    closeAllConnections() { staleForceCalls += 1; },
+  }, {
+    timeoutMs: COMPENDIUM_SERVER_SHUTDOWN_TIMEOUT_MS,
+    now: () => staleCurrent,
+    setTimer(callback, delay) {
+      staleTimer = { callback, delay };
+      return staleTimer;
+    },
+    clearTimer() { staleClearCalls += 1; },
+  });
+  staleCurrent = 100;
+  staleCallback();
+  await stalePromise;
+  staleCurrent = 2_000;
+  staleTimer.callback();
+  staleCallback();
+  assert(staleForceCalls === 0 && staleClearCalls === 1,
+    'cleared timer or duplicate callback changed a successful shutdown result');
 
   const lifecycleTemp = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-compendiummem-lifecycle-'));
   try {

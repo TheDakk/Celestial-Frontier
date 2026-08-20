@@ -208,6 +208,10 @@ pull request update.
 
 ## Resumable batch and human-preview record
 
+Every Arc update is incomplete until all affected current Markdown/reference docs are synchronized
+and the lean `ROADMAP.md` contains a self-contained fresh-session handoff usable interchangeably by
+OpenAI/Codex or Anthropic/Claude without chat or app-private context.
+
 Every coding batch must leave enough committed context for either OpenAI/Codex
 or Anthropic/Claude Code to resume without reconstructing decisions from chat.
 Before the Git handoff, the current agent must record:

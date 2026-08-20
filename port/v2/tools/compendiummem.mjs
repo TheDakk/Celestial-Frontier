@@ -90,6 +90,7 @@ const collectorPath = fileURLToPath(import.meta.url);
 const SELFTEST_FLAG = '--selftest';
 const BROKEN_BASELINE_COMMIT = '38447019517147319bd08c598202d097ee866874';
 const REPORT_LIFECYCLE_SCHEMA = 'cf-v2-compendium-report-lifecycle/v1';
+export const COMPENDIUM_SERVER_SHUTDOWN_TIMEOUT_MS = 2_000;
 const STORES = Object.freeze([
   'meta', 'player', 'creatures', 'catalog', 'inventory', 'settings', 'journal', 'assetcache',
 ]);
@@ -267,14 +268,63 @@ export async function finalizeCompendiumLifecycle({
   }
 }
 
-export function closeCompendiumServer(server) {
+export function closeCompendiumServer(server, {
+  timeoutMs = COMPENDIUM_SERVER_SHUTDOWN_TIMEOUT_MS,
+  now = () => performance.now(),
+  setTimer = setTimeout,
+  clearTimer = clearTimeout,
+} = {}) {
   assert(server && typeof server.close === 'function',
     'Compendium static server cleanup target is invalid');
+  assert(typeof server.closeAllConnections === 'function',
+    'Compendium static server does not support forced connection cleanup');
+  assert(Number.isFinite(timeoutMs) && timeoutMs > 0 && typeof now === 'function'
+    && typeof setTimer === 'function' && typeof clearTimer === 'function',
+  'Compendium static server shutdown policy is invalid');
+  const startedAt = now();
+  assert(Number.isFinite(startedAt),
+    'Compendium static server shutdown clock is invalid');
+  const deadline = startedAt + timeoutMs;
   return new Promise((resolve, reject) => {
-    server.close((error) => {
-      if (error) reject(error);
-      else resolve();
-    });
+    let settled = false;
+    let timer = null;
+    const timeoutError = () => new Error(
+      `Compendium static server did not close before the ${timeoutMs}ms shutdown deadline`,
+    );
+    const finish = (error, receivedAt) => {
+      if (settled) return;
+      const failure = error || (receivedAt >= deadline ? timeoutError() : null);
+      if (!failure) {
+        settled = true;
+        if (timer !== null) clearTimer(timer);
+        resolve();
+        return;
+      }
+      settled = true;
+      if (timer !== null) clearTimer(timer);
+      let finalFailure = failure;
+      try { server.closeAllConnections(); }
+      catch (forceError) {
+        finalFailure = new Error(
+          `${failure.message}; forced connection cleanup failed: ${lifecycleErrorMessage(forceError)}`,
+        );
+      }
+      reject(finalFailure);
+    };
+    const enforceDeadline = () => {
+      const receivedAt = now();
+      if (receivedAt < deadline) {
+        timer = setTimer(enforceDeadline, deadline - receivedAt);
+        return;
+      }
+      finish(timeoutError(), receivedAt);
+    };
+    timer = setTimer(enforceDeadline, timeoutMs);
+    try {
+      server.close((error) => finish(error || null, now()));
+    } catch (error) {
+      finish(error, now());
+    }
   });
 }
 function git(cwd, args, { raw = false } = {}) {
