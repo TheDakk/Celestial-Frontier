@@ -71,6 +71,18 @@ the archive verbatim and refresh this handoff in place.
   becoming catalogue work. The attempt also confirmed that the installed macOS Edge had
   auto-updated to 151.0.4129.93; it is not calibration authority and will not be used or silently
   re-baselined.
+- After that boundary repair, paired run `20260819-arc1a-baseline2-d0508ec` measured cleanly under
+  exact Edge 151.0.4129.86 and independently reproduced all four sealed baseline faults on both
+  profiles. Candidate run `20260819-arc1a-candidate1-d0508ec` then stopped the sequence with only
+  `phone/warm-precondition` and `desktop/warm-precondition` red and produced no candidate sample.
+  The caches were full, decoded bytes exact, work drained, subscribers zero, and workers released;
+  the instrument instead required an insertion-ordered LRU key list to be lexically sorted and made
+  every warm cycle traverse more identities than the phone cache can retain, guaranteeing repaint
+  and worker churn. The current bounded follow-up measures one fixed retained window after filling
+  the native cache and proves exact unique key identity plus unchanged job/disposal/worker counters
+  across the sealed last-three-cycle plateau.
+  Because that changes collector/contract authority, the green baseline2 evidence remains preserved
+  chronology but must be recaptured before activation. No unchanged candidate rerun occurred.
 - Nothing in this batch changes main, the production v1.8.9 page, a shipped version, a save schema,
   deterministic generation/share bytes, or either live-site repository.
 
@@ -139,6 +151,10 @@ the archive verbatim and refresh this handoff in place.
   dea039 run `20260817150005919-93781-b6643ba7a6` is preserved as truthful 75/76 evidence; its sole
   desktop warm red must not be retried away or promoted into a product-leak diagnosis the instrument
   did not collect.
+- The later exact-.86 `baseline2-d0508ec` sample is independently clean and its raw capsules remain
+  truthful for authority `829655e2…`, but the fixed-window warm repair changes that authority and
+  therefore prevents reuse. Candidate1 is preserved as a two-outcome warm-instrument FAIL with no
+  sample; it is not a product-retention diagnosis.
 - The repaired terminal contract replays compact raw candidate and baseline capsules instead of
   trusting copied metric summaries. It binds the complete fixture/generator/schema/contract/
   collector/browser/lock/package/baseline-save/art-build/outcome input set, the exact built
@@ -190,8 +206,8 @@ the archive verbatim and refresh this handoff in place.
 
 ### Next actions
 
-1. Commit the observer-boundary follow-up with its refreshed exact measurement authority. Under the
-   one isolated Edge 151.0.4129.86 executable, capture one new paired exact-3844701 baseline and
+1. Commit the fixed-window warm-measurement follow-up with its refreshed exact authority. Under the
+   one isolated Edge 151.0.4129.86 executable, recapture one paired exact-3844701 baseline and
    three independent one-attempt current-candidate runs per profile. Derive and document new
    ceilings from their raw capsules, activate the budget, review the diff, and commit the ruler.
 2. On that final clean head, run browser path/CDP controls, one no-retry Chrome Smoke, full Chrome
@@ -216,7 +232,8 @@ incomplete heap ruler, not a proven product leak. Commit `4374d95be6c8b6ec2106ec
 contains the Compendium calibration seam and leaves
 the budget `calibration-required`; its full browser-free battery and frozen review are green.
 The first new baseline attempt produced no sample and is preserved as an observer-boundary
-instrument failure; the capture-phase/count-bound follow-up is current. Fresh exact-3844701
+instrument failure. Baseline2 then measured cleanly under exact .86, but candidate1 exposed the
+sorted-LRU/multi-window warm-instrument defect; its fixed-window repair changes authority. Fresh exact-3844701
 baseline evidence, three current-candidate runs per
 profile, an activated ruler, exact-head certification, push, and CI are still required. Resolve
 origin state live after the required fetch rather than trusting this prose. The six-image HUMAN
