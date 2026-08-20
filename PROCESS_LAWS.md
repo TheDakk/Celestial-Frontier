@@ -803,9 +803,11 @@ The scheduler is also producer authority. Changing the main-thread owner bundle 
 capsule, ceiling, or six-image package bound to the old producer stale for current certification even
 when its historical result remains truthful. Fail the budget closed, bind the new exact producer,
 recalibrate from fresh paired baseline plus independent candidates, and certify the eventual
-activation head once. For this repair, that bound producer is
-`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`; its tracked budget is
-`calibration-required` until that new evidence is activated.
+activation head once. For this repair, producer
+`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2` was recalibrated under exact
+Edge 151.0.4129.86 from one-attempt baseline4 plus independent candidate5/6/7. The active ruler
+replays their raw capsules, retains all four baseline faults and 14 phone / 13 desktop breaches,
+and still requires exact-head browser certification and CI; activation alone is not certification.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next

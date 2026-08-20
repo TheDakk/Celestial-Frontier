@@ -34,8 +34,8 @@ producer error remains a stable owned error tile, releases cleanly, and the exac
 through a fresh worker lease. Capability/import/protocol/worker failure terminates once and settles
 the active plus queued owners exactly once instead of retrying a broken worker for every tile.
 
-The phone and desktop resource path is implemented, but the current ruler is fail-closed pending
-recalibration. Exact committed repair
+The phone and desktop resource path and current measured ruler are implemented, while exact-head
+certification remains open. Exact committed repair
 `dea03913014bc58134ebb06ca5b36892210a7571` passes the full Glass
 matrix; its following exact Compendium run `20260817150005919-93781-b6643ba7a6` is preserved as a
 truthful 75/76 result solely red at `desktop/warm-plateau`. It proves neither a product leak nor a
@@ -52,12 +52,14 @@ phone / 13 desktop fields. Commit `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` loc
 that exact ruler and passed its Chrome Smoke, full Glass, persona, root-layout, and preview gates.
 PR run `32334254714`, attempt 1, nevertheless retained a no-retry phone Planetside
 `product-unanswerable` red: the target missed 2,000 ms while the root heartbeat remained timely.
-Zero-delay successor pumps could starve renderer and inspector turns even though painting ran in the
-worker. The serviced-turn/bfcache repair changes producer authority to
-`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`; the tracked budget is now
-`calibration-required` with empty candidate samples. Baseline3/candidate2/3/4 remain truthful history
-for old producer `291b794e…`. Fresh paired baseline plus three candidates, activation, exact-head
-certification, and CI remain open.
+Source inspection identified zero-delay successor-pump starvation as the bounded repair hypothesis;
+the partial CI report did not retain a worker phase. The serviced-turn/bfcache repair changes producer
+authority to `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Clean seam commit
+`f47cd381…` supplied paired baseline4 plus independent one-attempt candidate5/6/7 under unchanged
+measurement authority `bb03a3af…` and exact Edge .86. All three candidates completed 78/78 outcomes
+with zero retries. The active ruler places strict ceilings above their replayed maxima; the baseline
+retains four faults and breaches 14 phone / 13 desktop fields. Baseline3/candidate2/3/4 remain
+truthful history for old producer `291b794e…`. Exact-head certification and CI remain open.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
 browser. Da0's six PNGs are stale for the repaired producer; a fresh phone/desktop list,
 focus-pinned, and detail set still requires HUMAN review. Arc 1B

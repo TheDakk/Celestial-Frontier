@@ -11,8 +11,8 @@ as any change that touches an entry.
 
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
-**Status: ★ product implementation and serviced-turn scheduler repair present; ruler calibration
-`[EXEC-TODO]`; exact-head certification `[EXEC-TODO]`; fresh six-image `[HUMAN]` review open.**
+**Status: ★ product implementation, serviced-turn scheduler repair, and active ruler present;
+exact-head certification `[EXEC-TODO]`; fresh six-image `[HUMAN]` review open.**
 This block records the current disposition of the historical
 `D-COMPENDIUM-MEM` proposal below without rewriting that dated discovery record.
 
@@ -52,14 +52,17 @@ This block records the current disposition of the historical
 - PR run `32334254714`, attempt 1, preserved a terminal product red without retry. Its clean detached
   test-merge `88b9c7b0aa90b860a5474bd099cfab48b125a3f5` matched Edge .86, budget bytes, and producer
   `291b794e…`; phone Planetside thumb settlement missed the unchanged 2,000 ms target bound at
-  2,001.723 ms while the root heartbeat answered in 0.872 ms. Zero-delay successor pumps could starve
-  renderer/inspector turns even though painting ran in the worker.
+  2,001.723 ms while the root heartbeat answered in 0.872 ms. The partial report did not retain an
+  exact producer phase; source inspection identified zero-delay successor-pump starvation as the
+  bounded repair hypothesis.
 - The serviced-turn repair changes built producer authority to
-  `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. The tracked budget is now
-  fail-closed `calibration-required` with empty phone/desktop candidate arrays. Baseline3 and
+  `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Clean seam commit
+  `f47cd381…` supplied paired baseline4 and independent one-attempt candidate5/6/7 under measurement
+  `bb03a3af…` and exact Edge .86. All candidates completed 78/78 outcomes with zero retries. The
+  active ruler replays those raw capsules, keeps all 40 ceilings strictly above the three-run
+  maxima, and retains four baseline faults with 14 phone / 13 desktop breaches. Baseline3 and
   candidate2/3/4 remain truthful historical evidence for producer `291b794e…`, not current
-  authority. Fresh paired baseline plus three candidates, derived ceilings, activation, exact-head
-  certification, and PR CI are required before this criterion returns to `[EXEC]`.
+  authority. Exact-head certification and PR CI are required before this criterion returns to `[EXEC]`.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
@@ -1729,7 +1732,7 @@ duplicates).
   settle the failed active and queued jobs once with no automatic retry; a later genuinely new
   request may create a fresh producer. Virtualization and worker ownership are implemented as
   recorded in the current-state block above; measured resource acceptance is `[EXEC-TODO]` until
-  the fresh ruler is activated, and the HUMAN review remains open.
+  the active ruler passes exact-head certification and CI, and the HUMAN review remains open.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds

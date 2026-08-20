@@ -31,8 +31,8 @@
 > import, protocol, and worker failures terminate the instance and settle active plus
 > queued owners exactly once, while content-specific paint/encode errors remain
 > per-job. Phone/desktop cache, decoded-pixel, byte, queue, lease, portrait, worker
-> lifecycle, and phase evidence are explicit; current resource-budget status is
-> `calibration-required`. Specimen detail requests an
+> lifecycle, and phase evidence are explicit; current resource-budget status is active, with
+> exact-head certification still open. Specimen detail requests an
 > asynchronous 440px result through the same owner; Back/Close cancels that request
 > and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
 > synchronous audit compatibility and are rejected from the live entry-to-worker
@@ -49,7 +49,7 @@
 > listener on final disposal.
 >
 > `tools/compendiummem.mjs`, its pure contract, and
-> `budgets/compendium-memory-v1.json` own a fail-closed calibration seam. Exact committed
+> `budgets/compendium-memory-v1.json` own a fail-closed calibration and active-ruler seam. Exact committed
 > repair `dea03913014bc58134ebb06ca5b36892210a7571` passes the complete 12-row Glass
 > matrix. Its following exact Compendium run
 > `20260817150005919-93781-b6643ba7a6` truthfully reports 75/76, solely red at
@@ -86,10 +86,14 @@
 > `assets/main-BAg-DH_f.js` at
 > `b12503d154d83a44c4606c31306bf756d6a35e1459877a30e6a89d423c49261f`, with worker and painter
 > unchanged.
-> The tracked budget is now fail-closed `calibration-required` with empty candidate arrays.
+> Commit `f47cd381699fb1934f30bfca82fc9bf971714e6d` is the clean collector/product source for exact
+> Edge-.86 paired baseline4 and independent one-attempt candidate5/6/7. All candidate runs completed
+> 78/78 outcomes with zero retries under measurement authority `bb03a3af…` and producer
+> `1c8200d7…`. The active budget replays those raw capsules and puts all 40 profile ceilings strictly
+> above their three-run maxima; baseline4 retains all four sealed faults and breaches 14 phone / 13
+> desktop fields. The desktop warm aggregate maximum is 436,412 bytes under a 524,288-byte ceiling.
 > Baseline3/candidate2/3/4 remain truthful history for old producer `291b794e…`, not current
-> certification. Fresh paired baseline plus three candidates, strict ceilings, activation, exact-head
-> certification, and CI remain open.
+> certification. Exact-head certification and CI remain open.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.

@@ -60,8 +60,8 @@ the archive verbatim and refresh this handoff in place.
   product leak or a clean plateau: the destructive desktop cap trim ran before the warm observation,
   so the gate measured cache refill, and the old heap ruler excluded embedder/backing ownership.
   Commit `4374d95be6c8b6ec2106ecd8518ac9bb39e32065` contains the fail-closed Compendium
-  calibration seam, repairs that authority, and leaves the budget non-certifying; fresh
-  calibration, certification, push, and exact-head PR CI remain open.
+  calibration seam, repairs that authority, and leaves the budget non-certifying. At that
+  checkpoint, fresh calibration, certification, push, and exact-head PR CI remained open.
 - The first fresh paired-baseline attempt is preserved as instrument evidence and produced no
   sample. It exposed a host/CDP observer race: one 132px pre-owner completion could land between a
   stable-count read and a separate phase-switch command. The bounded follow-up now drains the exact
@@ -115,10 +115,15 @@ the archive verbatim and refresh this handoff in place.
   resume schedules a fresh serviced turn. This changes the built owner and therefore producer
   authority to `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`
   (`assets/main-BAg-DH_f.js`; worker and painter unchanged).
-- The tracked ruler is now fail-closed `calibration-required`. Baseline3/candidate2/3/4 and their
-  strict ceilings remain truthful historical evidence for producer `291b794e…`, but cannot certify
-  the serviced-turn producer. Fresh paired broken-baseline evidence, three independent candidate
-  runs, derived strict ceilings, activation, exact-head certification, push, and PR CI are pending.
+- Commit `f47cd381699fb1934f30bfca82fc9bf971714e6d` freezes the serviced-turn scheduler and its
+  fail-closed calibration seam. Fresh paired broken-baseline run
+  `20260820-arc1a-serviced-turn-baseline4` and independent candidate runs
+  `20260820-arc1a-serviced-turn-candidate5`, `candidate6`, and `candidate7` all used that clean
+  collector/product source, measurement authority `bb03a3af…`, producer `1c8200d7…`, and exact
+  Edge 151.0.4129.86. Every run was one attempt with zero retries; each candidate produced all
+  78 outcomes. The tracked ruler is active again with strict ceilings above the replayed three-run
+  maxima. The paired baseline retains all four sealed faults and breaches 14 phone / 13 desktop
+  ceilings. Exact-head certification/browser gates, push, and PR CI remain pending.
 - Nothing in this batch changes main, the production v1.8.9 page, a shipped version, a save schema,
   deterministic generation/share bytes, or either live-site repository.
 
@@ -167,22 +172,26 @@ the archive verbatim and refresh this handoff in place.
   unchanged job starts, disposals, and worker starts/disposals. The broken baseline retains all four
   sealed faults and crosses 14 phone and 13 desktop ceiling fields. Those facts are not current
   ceilings for the repaired producer.
-- The tracked budget is now `calibration-required`, retains measurement authority
-  `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c`, and binds the current built
-  producer authority
-  `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Its phone/desktop candidate
-  sample arrays are empty and it cannot certify. The earlier producer
-  `291b794e0dcd93ee21d7ff88cbca383e865a62e8dd162573d475131aca3b911e` and ruler remain preserved
-  chronology. Fresh paired baseline plus three candidate runs must precede any new ceilings or
-  activation; the resulting committed activation head then needs one no-retry certification and
+- The active tracked budget retains measurement authority
+  `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c` and binds built producer
+  `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Its paired baseline4 report /
+  sample SHA-256 values are `1b10dba0…` / `0c407845…`; candidate5, candidate6, and candidate7 report /
+  sample pairs are `fdfb47c5…` / `c529d2a0…`, `4a3197e1…` / `a4077246…`, and `479623b1…` /
+  `05b7e346…`. Every one of 40 profile ceiling fields is strictly above its corresponding three-run
+  maximum. Product-owned caps use fractional/+1 sentinels; variable heap/DOM/encoded fields use
+  written headroom. The desktop warm aggregate range maximum was 436,412 bytes, so its 524,288-byte
+  ceiling retains 87,876 bytes of headroom while remaining below the paired baseline's 795,378-byte
+  observation. The earlier producer `291b794e…` and ruler remain preserved chronology, not current
+  authority. The eventual committed activation head still needs one no-retry certification and
   independent replay before PR push/CI.
 - Arc 1A owns a local cross-host browser-build authority:
   Edg/151.0.4129.86, revision @083e754915c9ab93da1d8f7b9c860e4520273900,
   JavaScript 15.1.23.7, protocol 1.3. Executable path and user agent remain recorded provenance.
   This does not change the Gate-A/root layout/legacy boot Edge 150 pin.
 - The exact notarized universal macOS 151.0.4129.86 package is isolated under `/private/tmp` rather
-  than installed over `/Applications`; its one verified executable path must be reused for the
-  fresh paired broken baseline, all three fresh candidate runs, and final Compendium certification.
+  than installed over `/Applications`; its one verified executable path was reused for the fresh
+  paired broken baseline and all three fresh candidate runs and must be reused for final Compendium
+  certification.
   The auto-updated
   151.0.4129.93 application is explicitly outside this authority.
 - Ordinary and manual Compendium CI install the exact SHA-verified Edge package only for this gate.
@@ -205,15 +214,16 @@ the archive verbatim and refresh this handoff in place.
   trusting copied metric summaries. It binds the complete fixture/generator/schema/contract/
   collector/browser/lock/package/baseline-save/art-build/outcome input set, the exact built
   owner-module to worker to worker-local painter graph, budget bytes/status, browser authority,
-  artifacts, attempt policy, and raw phone/desktop profiles. Baseline3 and candidate2/3/4 populate
-  those historical carriers under exact authority `bb03a3af…`; their old ceilings were independently
-  derived from replayed raw reductions but are stale for current producer `1c8200d7…`.
+  artifacts, attempt policy, and raw phone/desktop profiles. Baseline4 and candidate5/6/7 populate
+  the current carriers under exact authority `bb03a3af…` and producer `1c8200d7…`; their strict
+  ceilings were independently derived from replayed raw reductions. Baseline3 and candidate2/3/4
+  remain historical carriers for old producer `291b794e…`.
 - Browser-free evidence for the historical fail-closed seam is green: 36 Vitest files / 423 passed /
   1 skipped; root, app, and worker TypeScript programs; artunused, artaudit, and the exact production
   owner→worker→painter build graph; 222 Compendium selftest controls; 10 focused budget tests; and
   Smoke, Glass, and persona selftests. Frozen read-only review is clean. These results validated the
-  historical calibration seam; the current serviced-turn scheduler, bfcache generation, and
-  fail-closed budget repair owns its separate review, recalibration, and exact-head certification.
+  historical calibration seam. The serviced-turn scheduler, bfcache generation, and fail-closed
+  calibration seam then passed their separate browser-free review before commit `f47cd381…`.
 - The successor da0 active-ruler diff was independently clean: 36 Vitest files / 424 passed / 1
   skipped; all three TypeScript programs; 222 Compendium controls; 11 focused budget tests; exact
   sample-object, raw-reducer, authority, ceiling, and broken-baseline replay; art/spec/build gates;
@@ -221,6 +231,12 @@ the archive verbatim and refresh this handoff in place.
   fields is strictly above its measured maximum. This is still browser-free activation authority,
   and its exact local Edge certification passed. That local result remains truthful only for da0;
   the preserved Linux CI product-unanswerable red prevents PR authority.
+- The current serviced-turn active-ruler pair is frozen against baseline4 and candidate5/6/7.
+  Focused budget replay passes 11/11 and all 222 Compendium instrument selftest controls pass.
+  The exact tracked budget/test SHA-256 pair is
+  `2b51dd23728fb6431c5c71dd464592e75471c9c1919f1d65ceb2e0c6be96e2d5` /
+  `71048f473e9575a1cce804c08a2e9ddc975caee2fc6f5d780fe189f3d3926cae`.
+  These are browser-free activation checks, not final exact-head Compendium certification or PR CI.
 - The exact clean-head reports `20260817-arc1a-active-cert-65b1bac` and
   `20260820-arc1a-active-cert-da0de20` remain truthful only for their named commits and producers;
   neither can certify the serviced-turn repair. A new report must be captured once on the final clean
@@ -248,10 +264,10 @@ the archive verbatim and refresh this handoff in place.
 
 ### Human and scope boundary
 
-- Arc 1A's product implementation and serviced-turn repair exist, but its prior measured ruler is
-  stale and the tracked budget is `calibration-required`. Automatable resource evidence is not ready
-  until fresh calibration is activated, committed, and certified on its exact head. Separately, the rubric
-  remains open until a person reviews six fresh same-run phone/desktop list, focus-pinned, and detail
+- Arc 1A's product implementation, serviced-turn repair, and fresh active ruler exist. Automatable
+  resource evidence is not terminal until the activation bytes are committed and certified on their
+  exact head, then the same SHA passes PR CI. Separately, the rubric remains open until a person
+  reviews six fresh same-run phone/desktop list, focus-pinned, and detail
   PNGs for 132px list quality, 440px detail quality, hierarchy, clipping, and visible focus.
   Automated hashing, dimensions, and model inspection do not satisfy this HUMAN row.
 - Arc 1A does not add Cargo, Shipyard, ownership inventory, creature instances, rewards, combat,
@@ -261,19 +277,15 @@ the archive verbatim and refresh this handoff in place.
 
 ### Next actions
 
-1. Finish scoped review and browser-free verification of the serviced-turn scheduler, bfcache pump-
-   generation invalidation, fail-closed budget, focused tests, and refreshed documentation; commit
-   that exact repaired producer without claiming resource certification.
-2. Under the unchanged Arc-local Edge/measurement contract, capture one fresh paired broken baseline
-   and three independent one-attempt candidate runs for the same clean repaired producer. Derive new
-   strict ceilings only from their replayed raw capsules, activate the ruler, and commit those bytes.
-3. On that final clean activation head, run browser path/CDP controls, one no-retry Chrome Smoke, full
+1. Finish scoped review of the active budget/test/docs pair and commit those exact activation bytes
+   without claiming browser certification.
+2. On that final clean activation head, run browser path/CDP controls, one no-retry Chrome Smoke, full
    Chrome Glass matrix, and Arc-local Edge Compendium certification plus independent exact-run
    verification. Preserve the first browser red if any; if terminal green, push the exact head to
    draft PR #32 and require the complete GitHub battery on that same SHA.
-4. Leave the separate fresh six-image HUMAN judgment and Claude presentation-polish review open. Do not
+3. Leave the separate fresh six-image HUMAN judgment and Claude presentation-polish review open. Do not
    translate hostile Glass evidence screenshots into ordinary Dev appearance or human approval.
-5. Merge only a reviewed, terminal-green exact head through the normal `develop` path; then monitor
+4. Merge only a reviewed, terminal-green exact head through the normal `develop` path; then monitor
    the develop push battery and automatic development publication. Keep `main`, production
    versioning, and production deployment untouched.
 
@@ -294,8 +306,9 @@ sorted-LRU/multi-window warm-instrument defect; its fixed-window repair changes 
 and candidate2/3/4 populated da0's now-stale ruler under exact clean `21af3fa2…`, authority
 `bb03a3af…`, producer `291b794e…`, and isolated Edge .86. Da0's local certification and Chrome gates
 passed, but PR run `32334254714` retained a one-attempt phone Planetside product-unanswerable red.
-The repaired producer is `1c8200d7…`; the budget is `calibration-required`, with fresh baseline plus
-  three candidates, activation, certification, push, and CI still required. Resolve
+The repaired producer is `1c8200d7…`. Baseline4 and candidate5/6/7 now populate its active ruler;
+focused replay and the 222-control selftest pass. Exact-head certification, browser gates, push, and
+CI are still required. Resolve
   origin state live after the required fetch rather than trusting this prose. The fresh six-image HUMAN
 judgment and Claude presentation-polish review remain separate.
 
@@ -320,8 +333,9 @@ Nick does not need to manipulate Git or open another app during that work. Do no
 > plus built-producer authority. Da0's historical budget embeds exact baseline3 plus three independent
 > candidate runs and applies strict ceilings above their observed maxima; its local certification and
 > Chrome gates passed. PR CI then retained a no-retry phone Planetside product-unanswerable red. The
-> serviced-turn repair changes producer authority to `1c8200d7…`; the tracked budget is now fail-
-> closed `calibration-required` pending a fresh baseline and three candidates. Binds
+> serviced-turn repair changes producer authority to `1c8200d7…`; fresh one-attempt baseline4 and
+> candidate5/6/7 now activate its strict replayed-raw ruler, with four retained baseline faults and
+> 14 phone / 13 desktop ceiling breaches. Binds
 > certification to an Arc-local exact Edge 151 build without changing the Gate-A Edge 150 pin,
 > and provisions that exact build only for Compendium CI. Repairs Smoke's semantic Planetside
 > settlement, Glass's Guide/clipping instrument, the short-landscape nonmodal workspace, and the
@@ -331,8 +345,8 @@ Nick does not need to manipulate Git or open another app during that work. Do no
 > Compendium run is preserved as a truthful 75/76 ruler failure, not product-leak proof. The repaired
 > calibration seam and historical da0 ruler are browser-free green (36 files / 424 passed / 1 skipped;
 > three TypeScript programs; art/build gates; 222 Compendium controls; 11 budget tests;
-> Smoke/Glass/persona selftests). Fresh repaired-producer calibration, exact-head browser certification,
-> and PR CI remain open. Fresh six-image
+> Smoke/Glass/persona selftests). The serviced-turn activation pair passes focused 11/11 budget replay
+> and all 222 instrument controls. Exact-head browser certification and PR CI remain open. Fresh six-image
 > HUMAN review, integration,
 > development publication, Arc 1B, release and production deployment remain separate authorities.
 

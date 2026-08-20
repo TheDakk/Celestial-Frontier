@@ -15,8 +15,8 @@ and clean under frozen read-only review. Exact baseline3 and candidate2/3/4 evid
 replacement ruler; da0's local certification and Chrome gates passed. PR run `32334254714` then
 retained a valid no-retry phone Planetside `product-unanswerable` red. The serviced-turn/bfcache
 scheduler repair changes producer authority to `1c8200d7…`; the budget is now
-`calibration-required` pending fresh baseline plus three-candidate calibration, activation,
-certification, push, and CI. PR #32 is **not yet ready for approval**.
+active from exact-.86 baseline4 plus independent one-attempt candidate5/6/7. Exact-head
+certification, push, and CI remain open. PR #32 is **not yet ready for approval**.
 
 ## 1. Executive state
 
@@ -27,7 +27,7 @@ approval blockers:
 | CI area | Classification | Current disposition |
 | --- | --- | --- |
 | `v2-static` | Instrument false positive | Fixed; current audit reports 28 sources / 0 findings |
-| `v2-compendium-memory` | Valid product-unanswerable findings, followed by a ruler defect and a scheduler defect | Heavy import/paint/PNG work moved to a serial close-at-idle dedicated-worker producer. Exact dea039 exposed the old invalid plateau; baseline3 plus candidate2/3/4 activated da0's strict aggregate-heap/fixed-window ruler and its local cert passed. PR run `32334254714` then proved phone Planetside target unanswerability while the browser heartbeat remained timely; source inspection identified zero-delay successor-pump starvation as the bounded repair hypothesis, not a retrospectively observed worker phase. Every repaired default pump now crosses a rendering opportunity plus later task; bfcache invalidates stale pump generations. The changed producer requires fresh calibration and certification |
+| `v2-compendium-memory` | Valid product-unanswerable findings, followed by a ruler defect and a scheduler defect | Heavy import/paint/PNG work moved to a serial close-at-idle dedicated-worker producer. Exact dea039 exposed the old invalid plateau; baseline3 plus candidate2/3/4 activated da0's strict aggregate-heap/fixed-window ruler and its local cert passed. PR run `32334254714` then proved phone Planetside target unanswerability while the browser heartbeat remained timely; source inspection identified zero-delay successor-pump starvation as the bounded repair hypothesis, not a retrospectively observed worker phase. Every repaired default pump now crosses a rendering opportunity plus later task; bfcache invalidates stale pump generations. Baseline4 plus candidate5/6/7 now activate the changed producer's ruler; exact-head certification remains open |
 | `v2-smoke` | Obsolete fixed-wait instrument check over the same cold-art path | Replaced by one monotonic semantic settlement phase with exact decode/work outcomes |
 | `v2-glass` | One instrument defect plus two product finding records from one short-landscape geometry defect | Guide predicate, clipping diagnostics, hostile fixture, and nonmodal landscape workspace repaired |
 
@@ -35,7 +35,7 @@ The first-red evidence is preserved. No timeout was raised, no failed command wa
 red was reclassified as green. The later 75/76 Compendium red is preserved too: it is evidence that
 the ruler cannot adjudicate the product, not proof of either a leak or a clean plateau. The repaired
 calibration seam and da0 ruler remain preserved chronology. The serviced-turn producer, fresh
-calibration, and its eventual exact activation head are the next authority boundary.
+active ruler, and its eventual exact certification head are the next authority boundary.
 
 ## 2. What was completed before the PR battery
 
@@ -79,9 +79,9 @@ encoded bytes, warm heap range, and warm encoded-byte range.
 active authority. Exact dea039 run `20260817150005919-93781-b6643ba7a6` showed that the destructive
 desktop cap trim occurred before warm observation, so the reported plateau included refill, and the
 old heap field excluded embedder/backing ownership. Those older samples and ceilings are historical
-calibration only. The budget was then deliberately moved to `calibration-required`; section 6.4
-records the later exact evidence that supersedes that temporary fail-closed state and activates the
-replacement ruler.
+calibration only. The budget was then deliberately moved to `calibration-required`; sections 6.4
+through 6.6 record the da0 ruler, scheduler-caused producer change, and fresh evidence that
+supersedes the second temporary fail-closed state.
 
 ### 2.3 Evidence hardening completed before CI
 
@@ -393,8 +393,8 @@ Historical follow-up checkpoint before dea039:
 
 ### 6.1 Superseded checkpoint after exact dea039 browser evidence
 
-This subsection is preserved as the then-current fail-closed checkpoint; sections 6.4 and 6.5
-continue the chronology, and section 6.5 is current.
+This subsection is preserved as the then-current fail-closed checkpoint; sections 6.4 through 6.6
+continue the chronology, and section 6.6 is current.
 
 - branch: `openai/mac`;
 - committed repair HEAD: `dea03913014bc58134ebb06ca5b36892210a7571`;
@@ -512,9 +512,11 @@ readiness. At `Planetside thumb settlement`, target `Runtime.evaluate` exceeded 
 answered in 0.872 ms. The report correctly terminates `product-unanswerable`, with partial non-
 certifying phone evidence and no desktop profile. It is not a browser, transport, or instrument red.
 
-Moving paint into a worker removed the indivisible main-thread painter, but each worker completion
-could publish multiple messages and let the broker's zero-delay successor pump repeatedly win over
-rendering, input, and inspector work on constrained Linux. The fix keeps the deadline, serial worker,
+Moving paint into a worker removed the indivisible main-thread painter. The partial report did not
+retain the exact producer phase at timeout, so it cannot establish whether worker import, paint,
+encode, result publication, or absence owned that instant. Source inspection showed completion
+bursts plus zero-delay successor pumps could repeatedly win over rendering, input, and inspector
+work on constrained Linux. The bounded fix keeps the deadline, serial worker,
 close-at-idle lifecycle, and no-retry policy. The app's default scheduler crosses one rendering
 opportunity and then one later task (`requestAnimationFrame` → `setTimeout(0)`) before every broker
 pump. A monotonically invalidated pump generation rejects callbacks armed before bfcache suspension
@@ -526,21 +528,35 @@ That owner change produces exact built authority
 `f528797d1b3339291dedd5db4b768add9485e8006b1158690323ff2f5ff2769e`, owner
 `assets/main-BAg-DH_f.js` at
 `b12503d154d83a44c4606c31306bf756d6a35e1459877a30e6a89d423c49261f`, and unchanged
-worker/painter bytes. The tracked budget is
-now fail-closed `calibration-required`, with empty phone and desktop candidate arrays. Historical
-baseline3/candidate2/3/4, four baseline faults, 14 phone / 13 desktop breaches, and old strict
-ceilings remain valid for producer `291b794e…`; they cannot certify this repaired producer. Fresh
-paired broken-baseline evidence, three independent one-attempt candidate runs, replay-derived strict
-ceilings, activation, exact-head certification, push, CI, and a fresh six-image HUMAN review are
-pending.
+worker/painter bytes. Commit `f47cd381699fb1934f30bfca82fc9bf971714e6d` freezes that repaired
+producer and its fail-closed calibration seam. Historical baseline3/candidate2/3/4, four baseline
+faults, 14 phone / 13 desktop breaches, and old strict ceilings remain valid for producer
+`291b794e…`; they cannot certify this repaired producer.
+
+### 6.6 Exact-.86 baseline4, candidate5/6/7, and serviced-turn activation
+
+Paired run `20260820-arc1a-serviced-turn-baseline4` and independent one-attempt runs
+`20260820-arc1a-serviced-turn-candidate5`, `candidate6`, and `candidate7` all bind clean committed
+collector/product source `f47cd381699fb1934f30bfca82fc9bf971714e6d`, measurement authority
+`bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c`, producer authority
+`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`, and exact isolated
+Edg/151.0.4129.86. Every run used one attempt and zero retries; every candidate retained all 78
+expected outcomes. Baseline4 report/sample SHA-256 values are `1b10dba0…` / `0c407845…`; candidate
+report/sample pairs are `fdfb47c5…` / `c529d2a0…`, `4a3197e1…` / `a4077246…`, and `479623b1…` /
+`05b7e346…`.
+
+The active ruler embeds and replays all raw phone/desktop capsules. All 40 ceiling fields are
+strictly above their corresponding candidate maxima, with exact-cap sentinels and written
+headroom. The desktop warm aggregate range maximum was 436,412 bytes; its 524,288-byte ceiling adds
+87,876 bytes while staying below the paired baseline's 795,378-byte observation. Baseline4 retains
+all four sealed faults and breaches 14 phone / 13 desktop ceilings. Focused budget replay passes
+11/11 and the Compendium selftest passes all 222 controls. This is active browser-free ruler
+authority, not exact-head browser certification. That certification, the remaining browser gates,
+push, CI, fresh six-image HUMAN review, and Claude presentation-polish pass remain open.
 
 ## 7. Remaining work
 
-- finish scoped review and browser-free verification, then commit the serviced-turn scheduler,
-  bfcache pump-generation repair, exact producer authority, and fail-closed budget;
-- capture one fresh paired broken baseline and three independent one-attempt candidates under the
-  same exact repaired producer/measurement/browser inputs; replay raw capsules, derive strict
-  ceilings, activate the ruler, and commit those exact bytes;
+- finish scoped review of the active budget/test/docs pair and commit those exact activation bytes;
 - run the required final-clean-head browser path/CDP controls and exactly one no-retry Smoke, Glass,
   and Arc-local Edge Compendium certification battery;
 - preserve and diagnose the first browser red if any rather than rerunning unchanged;
@@ -559,7 +575,7 @@ pending.
   restoration, coveragegap (1,010/1,010), and speccheck (454/0/0): PASS;
 - Smoke, 12-viewport Glass, and persona selftests: PASS;
 - Compendium selftest: 222 independent controls PASS;
-- focused Compendium budget tests: 10 passed;
+- focused Compendium budget tests: historical seam 10; current active-ruler replay 11/11;
 - production Vite build: 798 modules; exact owner/worker/painter graph PASS;
 - syntax and full diff checks: PASS;
 - independent current-source worker/product review: CLEAN.
@@ -580,21 +596,20 @@ or baseline-discrimination blocker. At that checkpoint this was pre-commit activ
 the required one-attempt exact-head browser certification. Da0 subsequently received its local certification and
 Chrome gates, but run `32334254714` retained the product red described above. The current scheduler
 repair has focused tests for initial/successor servicing and bfcache generation invalidation; its
-fresh calibration and complete exact-head browser battery remain pending.
+fresh baseline4/candidate5/6/7 activation passes 11/11 focused replay and all 222 Compendium
+selftest controls. Its complete exact-head browser battery remains pending.
 
 ### Browser-owning, one attempt and no retry
 
 From the eventual committed activation head and with the correct process-owned browser selection:
 
 1. shared browser path/CDP selftests;
-2. capture and replay one fresh paired baseline plus three independent candidate raw-capsule sets;
-3. derive strict ceilings, activate them, and bind the exact serviced-turn producer/budget bytes;
-4. on the committed exact ruler head, run Arc-local Edge Compendium certification plus independent
+2. on the committed exact ruler head, run Arc-local Edge Compendium certification plus independent
    `--verify-run`;
-5. Chrome `smoke:ci`;
-6. full Chrome 12-viewport Glass matrix;
-7. the serviced-turn and bfcache scheduler controls required by the final diff;
-8. six fresh run-bound Compendium review PNG integrity checks.
+3. Chrome `smoke:ci`;
+4. full Chrome 12-viewport Glass matrix;
+5. the serviced-turn and bfcache scheduler controls required by the final diff;
+6. six fresh run-bound Compendium review PNG integrity checks.
 
 If a browser gate fails, its first red is preserved and diagnosed. The batch does not gain authority
 to raise deadlines, retry, regenerate a budget, or weaken a control merely to obtain green.
@@ -625,7 +640,7 @@ Even a repaired green PR does not close:
 
 **Do not approve or merge PR #32 yet.** The product and Glass repairs are committed, and da0's
 replacement ruler/local certification remain truthful history. Its PR battery exposed a valid
-product-answerability defect; the serviced-turn repair changes producer authority and returns the
-budget to `calibration-required`. Fresh calibration, an activation commit, one exact-head
-certification, push, and exact-head CI are required. A green result can make the automated repair ready for review; it still does
+product-answerability defect; the serviced-turn repair changes producer authority, and fresh
+baseline4/candidate5/6/7 now activate that producer's measured ruler. An activation commit, one
+exact-head certification, push, and exact-head CI are required. A green result can make the automated repair ready for review; it still does
 not substitute for the fresh six-image HUMAN judgment or Claude's later presentation-polish pass.
