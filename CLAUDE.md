@@ -1,5 +1,19 @@
 # CLAUDE.md — Celestial Frontier
 
+**GitHub Actions budget gate:** read `GITHUB_ACTIONS_BUDGET.md` before any
+GitHub write. Its `FROZEN` mode overrides generic push/merge/dispatch/publish
+instructions in this file: work and commit locally, but do not push, label,
+dispatch, rerun, merge, or publish until Nick explicitly authorizes one exact
+hosted attempt. The repository is public as of 2026-08-20, so standard hosted
+runners are free while it stays public; `FROZEN` remains an efficiency/intent
+gate, and the 3,000 cap applies fail-closed if visibility changes. Never infer a
+monthly reset or visibility change.
+
+**Agent token conservation:** OpenAI/Codex and Anthropic/Claude Code both use
+concise updates, relevant-only reads, batched checks, and only bounded delegation.
+Do not repeat unchanged status/audits or continue after acceptance is met. Ask
+Nick before starting a materially larger exploratory or rework loop.
+
 Single-file HTML/Canvas game. **Read `ROADMAP.md` first** (current state,
 what's awaiting feedback, what's next — and update it at the end of every
 work batch), then **`PROCESS_LAWS.md`** before touching UI or tests — it holds the laws this
@@ -38,7 +52,7 @@ kind it is — the answer picks the fix.
 - `celestial-frontier-codebase-reference.md` — full technical reference, keep it in sync with the source.
 - `tools/` — verification toolkit (`npm install` once, then see `tools/README.md`). Root and `port/v2` installs both declare/lock the raw-CDP `ws` transport and support Node `^20.19.0 || ^22.13.0 || >=24.0.0`. ⚠ **`npm install` is NOT enough** — `uilayout.js` and `bootperf.js` drive a **real system browser** over CDP (no Playwright/Puppeteer anywhere in `tools/`), so a clean clone silently gets only seven of the nine suites. Root `uilayout.js` uses the shared v2-owned resolver/launcher and writes ignored exact-run/browser evidence; run its fail-closed selftest before the gate. `bootperf` shares the resolver and `ws` but retains its legacy CDP lifecycle. **On macOS, request approved out-of-sandbox execution on the first attempt for every browser-owning command**; Chromium aborts during LaunchServices registration inside Codex Seatbelt, and the shared launch guard now refuses before spawn so it cannot create another Edge crash report. **Run `npm run preflight:selftest` and `npm run preflight` on any new machine**; preflight launches the selected executable through the owned CDP probe, its selftest rejects executable non-browsers and excluded Node lines, and it verifies the pinned browser revision (Edge 150.0.4078.83 — auto-updates, and per Addendum D a bump is a **re-baseline decision**, not a regression, so drift warns by default and fails only under `--assert-pin`).
 - **Live site:** https://celestialfrontier.github.io/ — deployed from the sibling repo clone at `..\celestialfrontier.github.io` via `node tools/deploy.js` (run only after validate + smoke pass, and only at user-approved milestones). This repo is the source of truth; never edit the site repo directly.
-- **DEPLOY CHECKLIST — push the SOURCE repo too.** `tools/deploy.js` only pushes the **site** repo, NOT this source repo (`TheDakk/Celestial-Frontier`, the private GitHub). So every release is TWO pushes: (1) commit the source release here, (2) `node tools/deploy.js` (pushes the live site), (3) **`git push origin main`** to sync the private source repo. Skipping step 3 silently leaves the source remote behind (it once drifted 97 commits). Always push source after a deploy.
+- **DEPLOY CHECKLIST — push the SOURCE repo too, only inside one explicitly budget/protocol-authorized release.** `tools/deploy.js` pushes the **site** repo, not this source repo. The authorized release sequence is: (1) commit the source release here, (2) `node tools/deploy.js` (pushes the live site), (3) **`git push origin main`** to sync the source repo. Skipping step 3 once a deployment is authorized silently leaves the source remote behind (it once drifted 97 commits). While `FROZEN`, perform neither push nor deployment.
 - `original/celestial-frontier-v1.0.html` — pristine pre-refactor build (the determinism baseline was captured from it).
 
 ## Hard rules
@@ -77,10 +91,10 @@ Home galaxy seed `999` @ `{x:90,y:-60}` · Sol seed `424242` · Earth seed `133`
 - Anthropic/Claude Code works only from branches under `anthropic/*`.
 - OpenAI/Codex works only from branches under `openai/*`.
 - Neither agent may commit directly to `develop` or `main`.
-- **Standing proceed authority (Nick, 2026-08-13):** once an agent-owned PR into `develop` is scoped, clean, mergeable, and terminal-green on its required battery, Codex or Claude Code may merge that exact head normally and monitor the resulting `develop` push battery and mapped development-site publication without asking Nick for another generic “proceed.” This does not authorize bypassing a red/ambiguous check, force operations, marking a draft Ready, merging into `main`, or a production release/deploy/version bump.
+- **Standing proceed authority (Nick, 2026-08-13):** once an agent-owned PR into `develop` is scoped, clean, mergeable, and terminal-green on its required battery, Codex or Claude Code may merge that exact head normally without asking Nick for another generic “proceed” only when `GITHUB_ACTIONS_BUDGET.md` is not frozen and Nick authorized that exact hosted attempt. Standing merge authority is not Actions-spend authority. This does not authorize bypassing a red/ambiguous check, force operations, marking a draft Ready, merging into `main`, or a production release/deploy/version bump.
 - Before editing, verify the repository with `git rev-parse --show-toplevel` and the branch with `git branch --show-current`.
 - Do not edit another agent’s worktree.
 - Do not directly edit the sibling `celestialfrontier.github.io` repository.
 - Deployments run only through `node tools/deploy.js --release X.Y.Z`, at a user-approved release.
 - Never use `git reset --hard`, `git clean -fd`, force-push, force-delete a branch, or force-delete a worktree without explicit approval.
-- Commit and push completed work before handing it to another machine or agent.
+- Commit completed work before handing it to another machine or agent. Push only when the Actions budget protocol authorizes that exact GitHub write; while frozen, report the local commit/ahead state and do not push.

@@ -6,8 +6,9 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-20.**
 > **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
-> displayed-demand/zoom-owner product repair and active resource ruler; exact-964 local battery
-> complete, one changed-head workflow CI and final HUMAN review remain open):**
+> displayed-demand/zoom-owner product repair and active resource ruler; exact-731 local battery
+> complete, hosted run `32420327368` consumed at its 40-minute incomplete-evidence ceiling,
+> PR #32 blocked, and final HUMAN review open):**
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
 > bounded overscan, and any focus-pinned row; measured logical anchor-plus-offset
@@ -590,42 +591,24 @@
 > galaxy/star-only CF1 routes, generated descents and all future ownership/receipt writers
 > still need their own canonical boundary integration.
 >
-> **2026-08-13 branch publication overlay (battery structure updated 2026-08-14):**
-> `.github/workflows/test.yml` runs the exact battery for push events on both `main` and
-> `develop`, and since 2026-08-14 as **five parallel jobs plus one summary gate**:
-> `root-gates`, `v2-static`, `v2-smoke` and `v2-glass` in parallel, then
-> `v2-persona-preview` joining their evidence, then a summary job named **`battery`**
-> that needs all five and fails unless every one succeeded. The summary job exists
-> because the develop/main branch rulesets require one status context named `battery`
-> (the old serial job); it keeps repository settings decoupled from internal job names
-> and can never satisfy the ruleset by being skipped (`if: always()` + explicit result
-> check). The split
-> exists because the two real-browser evidence commands owned 78% of the old 33-minute
-> serial wall (glassmatrix ~17 min, smoke:ci ~9 min on the 2-core software-rendering
-> runner). Every serial-battery command still runs exactly once with unchanged
-> one-attempt/no-retry semantics; the persona join and the `v2-development-preview`
-> artifact still require ALL other jobs green; each browser-owning job pins `CF_BROWSER`
-> at job scope and re-proves provenance with its own selftests. Artifacts: root evidence
-> moved from the old combined bundle into `root-reports` + `root-layout-evidence`;
-> `v2-smoke-evidence`/`v2-glass-evidence` upload per-job (retained on red) and are
-> re-joined into `battery-reports` by the final job. The glass report now carries
-> per-viewport `viewportTimings` (validated: a certifying PASS must time all 12 rows;
-> partial timings stay legal on red), so future runner/shard decisions are measured, not
-> guessed. Only a successful **workflow** conclusion — all five jobs — can
-> trigger `.github/workflows/publish-branch-sites.yml`, which checks out that event's full SHA
-> and invokes `tools/publish-branch-site.js`. A separate
-> `.github/workflows/sync-agent-branches.yml` runs on every `develop` push and
-> fast-forwards each agent branch that is strictly behind `develop`; diverged branches
-> (unmerged agent work) are skipped with a report line and follow the manual protocol
-> merge. It never force-pushes and never touches `main`. `main` targets only
-> `CelestialFrontier/celestialfrontier.github.io`; `develop` targets only
-> `Dev-CelestialFrontier/dev-celestialfrontier.github.io`. Separate write-only deploy keys and
-> repository secrets prevent cross-target access; PR/manual/failed runs have none. Development
-> publication accepts the already-tested exact `port/v2` package, while production preserves
-> the root v1.8.9 HTML. The development package is v2.0, noindexed and `robots.txt`-blocked;
-> runtime and manifest bind the full source commit, exact archive inputs, expected origin,
-> shared version and generated site `version.json`. Visible identity is inside the Guide only,
-> never a corner badge. The public development site is not human-play or release authority.
+> **2026-08-20 GitHub Actions budget overlay:** Nick's hard monthly allowance is 3,000 and current
+> mode is `FROZEN` in `GITHUB_ACTIONS_BUDGET.md`. The former every-PR/every-push parallel battery,
+> automatic agent-branch sync, and post-green `workflow_run` publisher are retired as default
+> execution paths. `.github/workflows/test.yml` now exposes one tiny authorization job followed by
+> one fail-fast serial runner whose display name remains the required `battery` context and whose job id remains
+> `v2-compendium-memory` for the sealed exact-Edge workflow control. It is eligible only on a PR
+> `labeled` event where the repository owner applied exact label `actions-budget-approved`. The
+> dependency preserves the sealed Compendium owner's no-`if` contract. Branch direction runs in the
+> authorization job; cheap/static gates run before Edge/Chrome work; each dependency tree installs
+> once; the first red skips later gates. No push, PR synchronization, merge, or ordinary label starts
+> a runner. Branch-flow, agent-sync, and manual-preview workflows are manual-only, false-default,
+> and job-guarded. Branch publication is manual-only and hard parked until a later reviewed exact-SHA
+> promotion contract. `tools/actions-budget-policy.js` validates direct YAML ownership and
+> negative-controls every trigger/input/job/publisher/concurrency direction plus unknown workflows;
+> root `validate.js` runs its real policy first. The old parallel structure and automatic publishers
+> remain truthful history only. Development/production target isolation, manifests, origin refusal,
+> noindex/robots, target-specific credentials, and the rule that previews are not human/release
+> authority remain unchanged; no publication is currently authorized.
 >
 > **2026-08-11 v2 integration/hardening overlay:** PR #10 merged the Platinum
 > repair into `develop` at `61cc058`. The current bounded port candidate makes the app

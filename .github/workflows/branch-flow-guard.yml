@@ -1,27 +1,59 @@
 name: branch-flow-guard
 
+# Parked as an explicitly authorized manual diagnostic. The identical branch
+# policy is the first step of the owner-labeled full battery, so ordinary PR
+# activity spends no separate runner minute.
 on:
-  pull_request_target:
-    branches:
-      - develop
-      - main
+  workflow_dispatch:
+    inputs:
+      actions_budget_authorization:
+        description: Select the run token only after Nick authorizes this one hosted workflow
+        required: true
+        default: DO_NOT_RUN
+        type: choice
+        options:
+          - DO_NOT_RUN
+          - RUN_ONE_AUTHORIZED_WORKFLOW
+      base_branch:
+        description: Destination branch to validate
+        required: true
+        default: develop
+        type: choice
+        options:
+          - develop
+          - main
+      head_branch:
+        description: Source branch to validate
+        required: true
+        type: string
+      head_repository:
+        description: Source repository owner/name
+        required: true
+        default: TheDakk/Celestial-Frontier
+        type: string
 
 permissions:
   contents: read
 
+concurrency:
+  group: actions-budget-${{ github.workflow }}-${{ github.ref }}-${{ inputs.actions_budget_authorization }}-${{ github.actor }}
+  cancel-in-progress: true
+
 jobs:
   branch-flow:
     name: Approved branch flow
+    if: ${{ inputs.actions_budget_authorization == 'RUN_ONE_AUTHORIZED_WORKFLOW' && github.actor == github.repository_owner }}
     runs-on: ubuntu-latest
+    timeout-minutes: 2
 
     steps:
       - name: Validate source and destination branches
         shell: bash
         env:
-          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
-          HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+          BASE_BRANCH: ${{ inputs.base_branch }}
+          HEAD_BRANCH: ${{ inputs.head_branch }}
           BASE_REPOSITORY: ${{ github.repository }}
-          HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_REPOSITORY: ${{ inputs.head_repository }}
         run: |
           set -euo pipefail
 

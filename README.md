@@ -83,12 +83,11 @@ node tools/uilayout.js     # a REAL headless browser: computed boxes + 44px touc
                            #   --vp runs remain scoped diagnostics.
 node tools/balance-sim.js  # archetype win-rate band + ability-theme art band
 node tools/publish-branch-site.js --selftest
-                           # publisher negative controls: branch/build identity,
+                           # parked-publisher negative controls: branch/build identity,
                            #   exact v2 package, and development origin/noindex/
                            #   manifest isolation. Development identity is Guide-only.
-                           # Successful push batteries publish automatically:
-                           #   main -> immutable root v1.8.9 production HTML
-                           #   develop -> tested v2.0 development package
+                           # Automatic publication is disabled. Any future promotion
+                           #   requires separate exact-SHA owner authorization.
 ```
 
 Run on demand rather than every batch — each closes a blind spot the four gates above
@@ -126,11 +125,12 @@ thing they guarded was broken.
 **Play it live:** https://celestialfrontier.github.io/ — this repo is the source of
 truth; the user-site repo is just the deploy target.
 
-**Development HTML:** successful push batteries publish `develop` to
-https://dev-celestialfrontier.github.io/ after all gates pass. It is a separate
-origin and must never be recreated as a path under the production origin. The
-development publisher mirrors the already-tested, browser-smoked `port/v2` package;
-production `main` continues to publish the immutable root v1.8.9 HTML. The development
+**Development HTML:** automatic branch publication is parked by
+[`GITHUB_ACTIONS_BUDGET.md`](GITHUB_ACTIONS_BUDGET.md). A future separately authorized
+exact-SHA promotion may publish the tested `develop` package to
+https://dev-celestialfrontier.github.io/. It is a separate origin and must never be
+recreated as a path under production. Production `main` continues to preserve the
+immutable root v1.8.9 HTML. The development
 page identifies itself as **Celestial Frontier v2.0 development** plus the full source
 commit inside the Guide only—there is no floating corner badge. Runtime origin refusal,
 `noindex`/`robots.txt`, the byte-hashed manifest, exact-commit archive build, shared

@@ -2,8 +2,9 @@
 
 This protocol governs coordinated work by OpenAI/Codex and Anthropic/Claude
 Code on Celestial Frontier. It is deliberately conservative: agents can
-prepare and publish their own work, with the standing green-PR authorization
-defined below; no release authority is implied.
+prepare their own work and publish it only through the budget-authorized path,
+with the standing green-PR authorization defined below; no release authority is
+implied.
 
 ## Ownership
 
@@ -17,28 +18,75 @@ defined below; no release authority is implied.
 `develop` is the integration branch. `main` is the production branch.
 Neither agent may commit directly to either one.
 
+## GitHub Actions budget gate
+
+`GITHUB_ACTIONS_BUDGET.md` is part of this protocol and overrides every generic
+push, merge, dispatch, publication, and standing-proceed instruction below when
+its mode is `FROZEN`. Nick confirmed on 2026-08-20 that the repository is public,
+so standard GitHub-hosted runners are free while that visibility remains public.
+The reported private-repository allowance of 3,000 remains a fail-closed cap if
+visibility changes or billing state is ambiguous. `FROZEN` remains an efficiency
+and explicit-intent gate until Nick lifts it; agents never infer a reset or
+visibility change.
+
+While frozen:
+
+1. Work, review, test, create exact-head evidence, and commit locally. Do not
+   push an open-PR branch, apply the battery label, dispatch/rerun a workflow,
+   merge, publish, or create an empty CI-kick commit.
+2. Batch completed local commits into one reviewed head. Hosted Actions is a
+   terminal milestone, not the default development loop.
+3. Missing hosted checks block integration. Budget exhaustion never authorizes
+   bypassing branch protection, reusing stale evidence, or calling local proof CI.
+4. Agent branches synchronize locally from a clean worktree; the hosted sync
+   workflow is manual-only. Branch-site publication is parked.
+5. Every preflight and handoff states the budget mode, Nick's last reported
+   remaining allowance, the exact workflows/jobs the next GitHub write could
+   trigger, and whether one-run authorization exists.
+
+After Nick lifts the freeze, each hosted attempt still needs exact one-run
+authorization: workflow, PR/ref, full head/base SHA, configured maximum runner
+minutes, and one-attempt/no-retry stopping rule. Only Nick applies the exact
+`actions-budget-approved` PR label or authorizes the manual workflow token. Never
+rerun an unchanged red or canceled head. The standing green-PR merge authority is
+not standing authority to spend Actions capacity.
+
+## Agent token conservation
+
+This rule applies equally to OpenAI/Codex and Anthropic/Claude Code:
+
+1. Keep updates concise while preserving decisions, evidence, blockers, and the
+   exact next action.
+2. Read only the live handoff and references relevant to the bounded task. Do
+   not replay archives or repeat unchanged status and audits.
+3. Batch independent reads and checks. Delegate only concrete bounded work, and
+   skip delegation when its coordination cost exceeds the task.
+4. Stop when the stated acceptance checks pass. Do not start another diagnostic,
+   rewrite, or polish loop without a new finding.
+5. Obtain Nick's explicit approval before a broad exploratory or rework loop
+   whose token cost is materially larger than the scoped implementation.
+
 ## Required startup procedure
 
 Before every new coding batch:
 
 1. Verify the repository root and current branch. Stop if they do not match
    the agent's ownership row above.
-2. Read `ROADMAP.md`, including its live session handoff, then
+2. Read `GITHUB_ACTIONS_BUDGET.md`, record its current mode, then read
+   `ROADMAP.md`, including its live session handoff, then
    `PROCESS_LAWS.md` and the agent's normal instructions (`AGENTS.md` for
    Codex; `CLAUDE.md` for Claude Code). Follow the roadmap's pointers to the
    system/reference Markdown relevant to the assigned task. Do not load every
    historical Markdown file indiscriminately.
-3. Run `git fetch origin` and inspect `git status --short --branch`.
+3. Run `git fetch origin` only when a current remote comparison is needed and
+   inspect `git status --short --branch`. Fetch/read-only metadata does not use
+   runner minutes, but do not poll GitHub repeatedly while frozen.
 4. Only if the worktree is clean, safely bring the current branch up to date
    with its remote and merge the latest `origin/develop` into the current
-   agent branch when needed. Note: `.github/workflows/sync-agent-branches.yml`
-   automatically fast-forwards any agent branch that is strictly behind
-   `develop` (an ancestor with no commits of its own) on every `develop`
-   push, so the ordinary case is a trivial `git pull` at session start. A
-   branch carrying unmerged agent work is deliberately never touched by that
-   automation — it is synchronized only by this manual merge step. The
-   automation never force-pushes, never resolves conflicts, and never
-   touches `main`.
+   agent branch when needed. `.github/workflows/sync-agent-branches.yml` is
+   manual-only under the budget gate; do not expect GitHub to move an agent
+   branch. A branch carrying unmerged agent work is synchronized only by this
+   explicit local merge step.
 5. Never use `git reset --hard`, `git clean -fd`, rebase, force-push, or any
    operation that discards work. If Git reports a conflict, stop and report
    it unless the user explicitly asks for conflict resolution.
@@ -55,6 +103,9 @@ states:
 4. The current roadmap/handoff objective it intends to work on.
 5. The integration path: current agent branch → draft pull request →
    `develop`; later `develop` → `main` only with user approval.
+6. The Actions budget mode, repository visibility/billing assumption, standing
+   private cap, whether the next GitHub write can trigger a workflow, and whether
+   exact one-run authority exists.
 
 The agent must wait until this preflight is complete before editing. It does
 not need a second confirmation unless it finds a mismatch, uncommitted work,
@@ -68,10 +119,14 @@ When a coding batch is complete:
 2. Update required Markdown documentation in the same batch.
 3. Review the diff and commit only the completed task's files with a clear
    commit message.
-4. Push the current agent branch to its matching `origin/<branch>` remote.
-5. Verify that `git status --short --branch` has no changed-file lines and
-   that the local branch is synchronized with its upstream.
-6. Report the commit hash, files changed, checks run, and push result.
+4. If and only if the budget gate permits this exact GitHub write, enumerate
+   the workflows it can trigger and push the current agent branch to its
+   matching `origin/<branch>`. While frozen, stop at the local commit.
+5. Verify that `git status --short --branch` has no changed-file lines. If a
+   push was authorized, also verify synchronization with upstream; otherwise
+   report the exact local-ahead state without treating it as a defect.
+6. Report the commit hash, files changed, checks run, budget mode, estimated
+   hosted cost, authorization state, and push result or explicit no-push result.
 7. Remind the user that the next integration step is a reviewed pull request
    from the current agent branch into `develop`, never directly into `main`.
 8. End with the paired OpenAI/Anthropic handoff reminder defined below. Do
@@ -81,7 +136,9 @@ The agent may create or update a **draft** pull request from its own branch
 to `develop` when instructed. Under Nick's standing authorization (2026-08-13),
 once that scoped PR is clean, mergeable, and has a completed successful required
 battery, an agent may complete its normal merge to `develop` without asking again,
-then monitor the resulting push battery and configured branch-site publication.
+provided the Actions budget gate is not frozen and Nick authorized that exact
+hosted attempt. There is no automatic post-merge battery or branch publication
+under the conservation policy.
 That standing approval is the proceed instruction: do not request repeated generic
 confirmation after the same exact preconditions are met.
 This permission is limited to the reviewed PR's exact head and its normal
@@ -105,6 +162,9 @@ copy-ready description; or "not needed">.
 Other side: <the exact safe synchronization step and when to do it>.
 Release status: <develop/main/live-site status; normally "no release or
 deployment performed">.
+Actions budget: <mode, repository visibility/billing assumption, standing private
+cap, exact authorized run count and attempts, or "FROZEN — no GitHub
+write/workflow authorized">.
 ```
 
 The reminder must apply these rules:
@@ -136,7 +196,7 @@ The reminder must apply these rules:
 ## How changes move between agents
 
 ```text
-agent branch → push to GitHub → pull request → develop
+agent branch → budget-authorized push → pull request → develop
                                               ↓
                          other clean agent branch merges origin/develop
 ```
@@ -172,11 +232,12 @@ Before the Git handoff, the current agent must record:
 
 The development preview is evidence and a play surface, not a Git transport or
 source of truth. Never copy code back from a hosted preview. Build it from a
-clean pushed commit using `port/v2/tools/devpreview.mjs`; the clean path builds
+clean exact commit using `port/v2/tools/devpreview.mjs`; the clean path builds
 from an isolated `git archive` snapshot of exact HEAD rather than mutable
-working-tree bytes. The configured branch-site publisher may update only the
-mapped origin after its matching push battery passes; candidate publication
-still follows `port/DEVELOPMENT_PREVIEW.md`, and the production
+working-tree bytes. Automatic branch-site publication is parked. A future
+publisher may update only one mapped origin after separate authorization for an
+exact tested SHA; candidate publication still follows `port/DEVELOPMENT_PREVIEW.md`,
+and the production
 `celestialfrontier.github.io` origin remains isolated. A preview URL,
 artifact name, or mutable “latest” label never replaces the full commit and
 content hash. Development identity is **v2.0 development** plus the full source
@@ -199,14 +260,14 @@ sides cannot detect a temporary edit that was built and then restored.
 ## Releases
 
 `develop` reaches `main` only at a user-approved release. Agents never write either
-Pages repository directly. After a successful push-triggered `test-battery`, the
-repository-owned publisher may update exactly one isolated static target:
-`main` → `CelestialFrontier/celestialfrontier.github.io` and `develop` →
-`Dev-CelestialFrontier/dev-celestialfrontier.github.io`. PR and manual agent runs have
-no publication authority. The development site is a public, noindex play surface—not
-human-play, Ready, merge, release, or production-deployment authority. Nick's standing
-2026-08-13 approval includes monitoring these automatic post-green-push publications;
-it does not permit manual Pages writes or expand the release boundary. `main` continues
+Pages repository directly. Automatic branch publication is parked under the Actions
+budget gate. A future promotion workflow must be separately reviewed, explicitly
+authorized for one exact tested SHA and one isolated target:
+`main` → `CelestialFrontier/celestialfrontier.github.io` or `develop` →
+`Dev-CelestialFrontier/dev-celestialfrontier.github.io`. The development site is a
+public, noindex play surface—not human-play, Ready, merge, release, or production-
+deployment authority. The 2026-08-13 standing approval does not spend Actions budget,
+permit manual Pages writes, or expand the release boundary. `main` continues
 to publish the immutable root v1.8.9 HTML. `develop` publishes the browser-smoked exact
 `port/v2` package with a v2.0 development identity; v2.0 is not a shipped version,
 `V2_CURRENT_RELEASE_VERSION` remains `null`, and no update popup may result.

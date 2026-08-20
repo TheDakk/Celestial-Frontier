@@ -11,6 +11,19 @@ roughly by how often they have bitten.
 
 ---
 
+⚠⚠ **HOSTED CI IS A FINITE RELEASE RESOURCE, NOT THE DEVELOPMENT LOOP** (2026-08-20).
+Nick's GitHub account has a hard monthly Actions allowance of 3,000 and reported it exhausted.
+`GITHUB_ACTIONS_BUDGET.md` and `PARALLEL_GIT_PROTOCOL.md` therefore fail closed: ordinary pushes,
+PR synchronization, merges, branch synchronization, and publication may not start hosted runners.
+Develop and prove locally, batch work into one frozen exact head, and spend at most one explicitly
+owner-authorized hosted attempt at a terminal milestone after capacity exists. Record workflow,
+PR/ref, full head/base SHA, configured runner ceiling, and one-attempt stopping rule before the
+label/manual token is used. Never rerun an unchanged red, cancel-and-restart to erase evidence,
+make empty CI-kick commits, infer a monthly reset, or bypass a missing required check. Standing
+merge authority is not standing Actions-spend authority. Negative-control the workflow policy:
+automatic triggers, a run-by-default input, a missing job guard, a decoy guard, a second battery
+runner, an unparked publisher, or an unknown workflow must all fail locally before any push.
+
 ⚠⚠ WHEN A NEW INSTRUMENT FIRES — OR PASSES — SUSPECT THE INSTRUMENT FIRST (2026-07-30, learned
   THREE times across two ships). Every gate built in this arc found a bug in ITSELF before it
   found one in the build: bootperf's window closed at the moment it was measuring; the dom tier
@@ -115,19 +128,22 @@ roughly by how often they have bitten.
   a comment warning about that exact trap.
 ⚠ RE-PIN PROCESS unchanged: field-diff proof → surgical single-probe re-pin → authorization
   recorded in baseline.json repins[]. Never regenerate the baseline to make a failure pass.
-⚠ **BRANCH PUBLICATION FOLLOWS A PASSED PUSH BATTERY.** Agents never write a Pages
-repository. The repository-owned publisher receives one target-specific deploy key only after
-the exact `test-battery` push succeeds: `main` preserves the immutable root v1.8.9 production
-HTML, while `develop` publishes the already-tested exact `port/v2` v2.0 development package to
-the separate noindex DEV origin. Development packaging must keep its full-commit manifest,
-origin refusal, noindex/robots guards and generated version identity; the visible identity lives
-inside the Guide, never in a floating corner badge. Pull-request, manual, and failed-battery runs
-have no publication authority; the development site is never merge/release/production authority.
+⚠ **BRANCH PUBLICATION REQUIRES A SEPARATELY AUTHORIZED EXACT-SHA PROMOTION.** Agents never write
+a Pages repository directly. Automatic post-battery publication is parked under the Actions
+budget gate; a green battery does not silently spend another hosted job. Any future publisher must
+verify one exact tested SHA, receive only its target-specific deploy key, and require separate
+owner authorization: `main` preserves the immutable root v1.8.9 production HTML, while `develop`
+may publish the tested exact `port/v2` v2.0 development package to the separate noindex DEV origin.
+Development packaging must keep its full-commit manifest, origin refusal, noindex/robots guards
+and generated version identity; the visible identity lives inside the Guide, never in a floating
+corner badge. A failed/missing battery has no publication authority; the development site is never
+merge/release/production authority.
 ⚠ **A GREEN, REVIEWED AGENT PR MAY FOLLOW ITS NORMAL INTEGRATION PATH WITHOUT A SECOND
 MERGE PROMPT.** Nick's standing authorization (2026-08-13) lets Codex or Claude Code merge a
 scoped agent-branch PR into `develop` only after the required battery is terminal-success and
-the PR is clean/mergeable, then monitor the exact resulting push battery and automatic mapped
-branch-site publication. This never includes `develop` → `main`, conflict shortcuts, red or
+the PR is clean/mergeable, and the Actions budget gate is not frozen. This never includes budget
+spend without exact owner authorization, an automatic post-merge battery/publication, `develop` →
+`main`, conflict shortcuts, red or
 unfinished checks, force pushes, manual Pages writes, new external destinations/secrets,
 versioning, release approval, or production deployment.
 Once those exact preconditions are satisfied, this standing authorization is the prompt: do not
@@ -1142,7 +1158,8 @@ product outcomes. Those failures span multiple west-region pools, so the evidenc
 image revision from host-pool placement. It does justify one bounded normalization hypothesis: in
 every workflow that claims this Arc-local authority, force `apt-get install --reinstall` from the
 same SHA-verified `.86` package, then retain the exact version and executable checks. Do not call
-that a fix until one matching changed-head CI run reaches the live preflight.
+that a fix before live hosted evidence; later run outcomes remain separately recorded and do not
+retroactively turn the browser-free structure control into causal proof.
 
 This normalization changes no package URL/hash/version, browser product/revision/JS/protocol,
 45/15/5/2-second preflight, 15-second candidate startup, 2-second product observation, attempt/retry

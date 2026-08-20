@@ -1,7 +1,7 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-**Status:** process reference, matches preview packaging and branch-site publication as of
-2026-08-16. This is not a release record.
+**Status:** process reference, matches preview packaging and the Actions-budget publication freeze
+as of 2026-08-20. This is not a release record.
 
 ## Separate-origin requirement; approved branch site
 
@@ -9,21 +9,21 @@ Celestial Frontier should have a continuously usable **development preview**, bu
 not be published as a path under `https://celestialfrontier.github.io/`.
 
 The approved development owner is `Dev-CelestialFrontier`, with organization-site repository
-`dev-celestialfrontier.github.io` at `https://dev-celestialfrontier.github.io/`. A successful
-push-triggered `test-battery` on `develop` alone may publish the exact tested v2 package there; the publisher
-checks the exact event SHA and branch, uses a target-specific deploy key, packages and browser-
-smokes the exact `port/v2` v2.0 candidate, writes noindex/robots guards, and cannot target
-production. Visible identity—**Celestial Frontier v2.0 development** plus the full commit—lives
-inside the Guide only; there is no corner badge. Pull
-requests, manual agent runs, and failed batteries cannot publish. This public DEV surface is a
-playtest convenience, not human-play, Ready, merge, release, or production authority.
+`dev-celestialfrontier.github.io` at `https://dev-celestialfrontier.github.io/`. Automatic
+post-battery publication is currently parked by `GITHUB_ACTIONS_BUDGET.md`; no push or green check
+publishes anything. A future reviewed promotion must bind one exact tested SHA and branch, use the
+target-specific deploy key, browser-smoke the exact `port/v2` v2.0 candidate, write noindex/robots
+guards, and remain unable to target production. Visible identity—**Celestial Frontier v2.0
+development** plus the full commit—lives inside the Guide only; there is no corner badge. This
+public DEV surface is a playtest convenience, not human-play, Ready, merge, release, or production
+authority.
 
-**Standing execution authority (Nick, 2026-08-13):** after a scoped agent PR into `develop`
-is clean, mergeable, and terminal-green on its required battery, Codex or Claude Code may perform
-that normal merge and monitor the resulting automatic DEV publication without a new prompt.
-Do not ask again for a generic proceed after those same preconditions are met.
-The authorization is limited to this existing mapped publisher; it does not authorize manual
-site writes, a new host/key, `develop` → `main`, a release, or a production deployment.
+**Standing execution authority (Nick, 2026-08-13), budget-limited 2026-08-20:** the normal green-PR
+merge authority is not Actions-spend or publication authority. While the budget mode is `FROZEN`,
+Codex and Claude Code do not push, merge, dispatch, or publish. After Nick restores capacity, each
+hosted attempt and exact-SHA promotion still needs the authorization recorded by the budget protocol.
+No authority includes manual site writes, a new host/key, `develop` → `main`, a release, or a
+production deployment.
 
 GitHub Pages provides at most one user/organization site per account. Its default URL is
 `https://<owner>.github.io/`; additional project sites use
@@ -88,10 +88,9 @@ not by silently changing save keys in a test build. `tools/devpreview.mjs` there
 - reads the shared `port/v2/version.json`, binds v2.0 plus
   `develop-<short-commit>` to the full commit, and writes the same identity to
   `preview.json`, the guarded runtime global, and packaged `version.json`;
-- emits `publishable:false` by default, and its runtime refuses every remote origin. The
-  reviewed candidate workflow and the mapped post-green `develop` publisher pass
-  `--approved-publication-candidate`. The flag binds `publishable:true`; only the mapped
-  branch publisher has destination write authority;
+- emits `publishable:false` by default, and its runtime refuses every remote origin. The current
+  publisher is manual-only and hard parked. A future separately reviewed exact-SHA promotion may
+  pass `--approved-publication-candidate`; the flag alone grants no destination write authority;
 - writes only to the ignored `port/v2/apps/game/smoke/dev-preview-*` evidence root and
   never touches the production site repository.
 
@@ -237,9 +236,10 @@ distinct fresh `.86` paths. Active budget/schema/contract/collector/selftest/tes
 `2318f57b…`, unchanged producer `d3223177…`, 3/3 samples per profile, measured 1/1 baseline, and
 strict ceilings with 14 phone / 13 desktop breaches. Focused activation is 13/13 after matching
 synthetic desktop identities fixed its initial phone-only control without changing browser evidence.
-One exact-head battery and corresponding CI remain. No launch argument, timeout, workflow, product
-byte, producer, browser-CDP, or retry policy changed; terminal-green PR #32 returns immediately to
-Arc 1B.
+Exact head `731b2e2…` passed the full local battery. Hosted run `32420327368` was then consumed at
+the 40-minute Compendium job ceiling with lifecycle-pending evidence and no product verdict; it is
+not rerun authority. PR #32 remains blocked under the frozen efficiency gate. No launch argument,
+product byte, producer, browser-CDP, or retry policy changed.
 This does not re-pin Gate A or the global browser authority: `../tools/deps.pinned.json` remains
 Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates, any
 timing, product bytes, or the one-attempt/zero-retry policy.
@@ -253,29 +253,15 @@ they are not a cryptographic signature against a malicious party that rewrites t
 manifest, and hashes together. Download publication candidates from the named trusted Actions
 run and retain that run URL with the playtest report.
 
-## Current CI and publication flow
+## Current guarded package and publication flow
 
-The production and development channels intentionally publish different products:
+Ordinary pushes, PR updates, and batteries do not publish. The development-preview workflow is
+owner-only, manual, false-default, and artifact-only. `publish-branch-sites.yml` is manual-only and
+both jobs are hard parked. A future separately reviewed promotion must bind one exact tested SHA,
+re-prove source/package/origin/manifest integrity, and use only the isolated target credential;
+standing proceed authority is not publication or Actions-spend authority.
 
-- a successful `main` push battery lets the production job package the root v1.8.9 HTML;
-- a successful `develop` push battery lets the development job install the exact v2
-  workspace, resolve each phase-owned browser selection (Arc-local Edge only for Compendium;
-  Chrome for the other browser gates), run preview selftests, build an approved candidate
-  from that exact commit, browser-smoke those bytes, and give only that package to the
-  development publisher;
-- the publisher verifies source branch/SHA/clean state, preview schema v3, full-commit
-  archive inputs, v2.0/build identity, origin refusal, `publishable:true`, byte inventory,
-  noindex/robots, and packaged `version.json`, then mirrors the package so stale legacy files
-  cannot survive;
-- the development deploy key can write only
-  `Dev-CelestialFrontier/dev-celestialfrontier.github.io`; the production key can write only
-  `CelestialFrontier/celestialfrontier.github.io`.
-
-Pull requests, manual agent runs, and red/unfinished push batteries cannot publish. The mapped
-post-green job is automatic under Nick's standing proceed authorization; agents monitor it
-without asking repeatedly, but stop for any failed check, branch/SHA mismatch, conflict, new
-destination/key, `develop` → `main`, release decision, or production action. A published v2.0
-site is still only a play surface. Human findings must bind the URL, full commit,
+A published v2.0 site is still only a play surface. Human findings must bind the URL, full commit,
 `preview.json` content hash, device/browser lens, starting save, outcome and retest. Resolve the
 current branch tip, checks and hosted commit live; this reference does not freeze a “latest” run.
 
@@ -517,8 +503,10 @@ candidates should use the reviewed manual workflow instead of recreating that lo
 
 When available on the default branch, the manual workflow:
 
-1. accepts only `develop` or the four approved agent branches;
-2. requires the operator's public-artifact acknowledgement;
+1. defaults to `DO_NOT_RUN`; a tiny authorization/source job requires Nick's exact one-workflow
+   budget token, and the sealed package job depends on it without adding a forbidden job-level `if`;
+2. accepts only `develop` or the four approved agent branches and requires the operator's
+   public-artifact acknowledgement;
 3. uses the `development-preview-package` GitHub Environment, where required reviewers
    should be configured before the first candidate run (the environment name alone does
    not create reviewer protection);
@@ -531,7 +519,8 @@ When available on the default branch, the manual workflow:
    its selftest owns the fail-closed ordered workflow-package control; retains the current report
    plus every same-run review artifact even on failure; then keeps Chrome for the later browser
    gates. The reinstall is preserved runner-image history; current authority instead requires the
-   lifecycle-calibrated exact head and its one corresponding CI;
+   lifecycle-calibrated exact head; exact `731b2e2…` passed locally, while hosted run
+   `32420327368` was consumed at the 40-minute lifecycle-pending ceiling and cannot be retried;
 6. passes the explicit `--approved-publication-candidate` producer flag and uploads
    evidence plus that candidate for 14 days;
 7. has only `contents: read` permission—no Pages token, deployment token, repository write,
@@ -549,8 +538,9 @@ player/device lenses, every finding is resolved or explicitly dispositioned, aff
 are rerun, and the retest is recorded. A green automated persona report cannot satisfy this
 condition.
 
-Artifact creation is not publication. After the separate preview owner/hostname exists,
-publication should be a distinct, manually approved workflow in that host repository:
+Artifact creation is not publication. While the Actions mode is `FROZEN`, stop after local package
+verification and do not dispatch or publish. After capacity returns, publication remains a distinct,
+exact-SHA, manually approved workflow in that host repository:
 
 1. choose a **pushed commit** whose PR checks are green;
 2. either dispatch `development-preview-package` on that exact ref and approve its environment,

@@ -3,8 +3,8 @@
 ## Current port status — 2026-08-20
 
 > **Arc 1A Compendium resource implementation (2026-08-20; product and serviced-turn
-> scheduler repair and active shared-browser-identity ruler present; exact-head battery pending;
-> [HUMAN] review open):** the 1,500-row Compendium is virtualized. List portraits use
+> scheduler repair and active shared-browser-identity ruler present; exact-731 local battery green,
+> hosted run `32420327368` consumed/incomplete, PR #32 blocked; [HUMAN] review open):** the 1,500-row Compendium is virtualized. List portraits use
 > leased, cancellable, deduplicated 132px thumbnails; the visible detail owns an
 > asynchronous 440px image; and Planetside acquires/releases through the same lease
 > path instead of bypassing resource ownership. After app wiring, every default broker pump waits
@@ -71,9 +71,25 @@
 > `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged producer `d3223177…`, 3/3
 > samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
 > baseline breaches. Focused activation is 13/13 after matching synthetic desktop identities fixed
-> its initial phone-only 12/13 control; browser evidence did not change or rerun. Commit activation,
-> run one exact-head battery, push PR #32 once, and require one corresponding CI. No timeout, launch
-> argument, workflow, product byte, producer, browser-CDP, or retry policy changed.
+> its initial phone-only 12/13 control; browser evidence did not change or rerun. Exact head
+> `731b2e2…` passed its complete local battery, then GitHub run `32420327368` preserved one hosted
+> incomplete-evidence red: root/static/Smoke/Glass passed, but Compendium was canceled at the
+> 40-minute job ceiling while its report was still RUNNING/lifecycle-pending with zero terminal
+> profiles/outcomes; the account-spending limit separately prevented the summary job from starting.
+> No product/ruler verdict or retry exists. Nick then froze the exhausted 3,000-unit monthly Actions
+> allowance. `GITHUB_ACTIONS_BUDGET.md` forbids push/label/dispatch/merge/publication until explicitly
+> lifted; workflow conservation is local pending review and must not be pushed under the old remote
+> automatic triggers.
+>
+> **Actions-budget workflow boundary (2026-08-20):** ordinary push, PR synchronization, merge,
+> agent-sync, and post-green publication no longer own hosted runner work in the guarded local
+> design. The full battery is one tiny authorization job plus one serial fail-fast job, eligible only
+> when the repository owner adds exact PR label `actions-budget-approved`; the dependency preserves
+> the sealed Compendium job's no-`if` contract and static checks precede Edge/Chrome. Other workflows are
+> manual and false-default, while publication is hard parked. Run
+> `node ../../tools/actions-budget-policy.js --selftest` from this directory (or
+> `npm run actionsbudget:selftest` at repository root) before any authorized rollout. No timeout,
+> launch argument, product byte, producer, browser-CDP, or retry policy changed in the ruler itself.
 >
 > Exact committed Glass repair `dea03913014bc58134ebb06ca5b36892210a7571`
 > passes the full 12-row Glass matrix. Its following exact Compendium run
@@ -457,9 +473,8 @@ This playtest line is **Celestial Frontier v2.0 development**. The identity is
 centralized in `version.json` and appears with the full source commit inside the
 Guide only—never as a corner badge. It does not authorize a production release:
 `V2_CURRENT_RELEASE_VERSION` remains `null`, the legacy v1.8.9 history remains
-immutable, and no one-time update bulletin can fire. A successful `develop` push
-battery publishes the tested exact v2 package to the separate development origin;
-`main` continues to publish the root v1.8.9 production HTML.
+immutable, and no one-time update bulletin can fire. Automatic branch publication is parked;
+any future exact-SHA promotion requires separate owner authorization and target isolation.
 
 The 14 planned deterministic domain facades are present and the port has a
 playable Pixi/browser slice, but the old milestone record below is not a claim
@@ -1000,8 +1015,8 @@ evidence; both it and clean `6554b2b` remain prior evidence, while clean `307b8a
 is the current local #208 executable evidence. No
 host/human/Ready/merge/release/deploy/version authority follows.
 
-Human development playtests use the exact commit-bound package published at
-`https://dev-celestialfrontier.github.io/` after a successful `develop` push battery.
+Human development playtests use an exact commit-bound package at the separately isolated
+`https://dev-celestialfrontier.github.io/` origin only after a distinct authorized promotion.
 `npm run preview:package -- --origin=https://dev-celestialfrontier.github.io`
 builds from an isolated `git archive` snapshot of exact HEAD and binds the shared
 v2.0 identity, `develop-<short-commit>` build, full commit, source tree, dependency
@@ -1011,10 +1026,10 @@ inventory in `preview.json` plus `version.json`. Runtime origin refusal,
 appears inside the Guide as v2.0 development plus the full source commit; preview
 verification and browser smoke reject either historical corner-badge id/style.
 
-The default artifact remains `publishable:false` and loopback-only. The mapped
-post-green publisher creates and browser-smokes an approved exact-commit candidate,
-then mirrors only that verified package to the separate development repository; it
-never rebuilds or wraps the legacy root HTML. Production paths and same-origin project
+The default artifact remains `publishable:false` and loopback-only. Automatic post-green
+publication is parked by the Actions budget gate. Any future publisher must verify and
+browser-smoke one approved exact-commit candidate, then mirror only that package to the separate
+development repository; it never rebuilds or wraps the legacy root HTML. Production paths and same-origin project
 paths are rejected because they would share browser storage. Package verification and
 publication do not replace human play: record URL, full commit, manifest content hash,
 device/browser lens, starting save, findings, and retest using
@@ -1023,8 +1038,9 @@ device/browser lens, starting save, findings, and retest using
 Automated personas are evidence, not a human playtest. Resolve current Git, PR, and
 check state live; this reference intentionally carries no “latest tip is green” claim.
 
-Highest-priority active v2 work is to finish PR #32's shared browser identity without widening
-D-TRAIN-1's eleven-field compatibility boundary. Exact-89 remains a shutdown instrument red.
+Highest-priority active v2 work is the GitHub Actions budget freeze and local diagnosis of PR #32's
+hosted Compendium timeout without widening D-TRAIN-1's eleven-field compatibility boundary.
+Exact-89 remains a shutdown instrument red.
 Candidate20 reached 78/78 and clean lifecycle on `c49e525…`, but its reused `.86`-named app reported
 Edge `.93`; quarantine `175fac5e…` / `916dd12a…` / `7462144b…`. Candidate21/22/23 plus paired
 baseline9 are individually clean exact-.86 diagnostic history but cannot cross the corrected
@@ -1033,10 +1049,12 @@ establishes measurement `2318f57b…`; producer `d3223177…` and browser CDP `6
 unchanged. Clean exact `fb321f2…` candidate24/25/26 plus paired baseline10 activated budget/test
 `70145575…` / `0fa2e89d…` with 3/3 samples per profile, measured 1/1 baseline, strict ceilings, and
 14 phone / 13 desktop breaches. Focused activation is 13/13 after matching synthetic desktop
-identities fixed its initial phone-only control without changing browser evidence. Commit the
-activation, run one exact-head battery, push PR #32, and require one corresponding CI. Do not
-expand timing policy or optimize accepted CI allowances; first red stops, and terminal-green PR #32
-returns immediately to Arc 1B/gameplay.
+identities fixed its initial phone-only control without changing browser evidence. Exact head
+`731b2e2…` passed locally; corresponding run `32420327368` stopped at the hosted 40-minute
+Compendium job ceiling with RUNNING/lifecycle-pending evidence and no product verdict, while GitHub
+also reported the account spending limit. Do not rerun, push, label, dispatch, merge, or publish
+while `GITHUB_ACTIONS_BUDGET.md` is `FROZEN`. Diagnose locally, preserve first red, and return to
+Arc 1B/gameplay only after one later explicitly budget-authorized exact head is terminal-green.
 After that, decide and preserve hybrid parent identity in CFB codes;
 finish the remaining legacy Field Training arc and keep the canonical Guide's
 current-safe topic bodies synchronized as systems land; add tooltip deep-links and
@@ -1380,14 +1398,15 @@ plus paired baseline10 ran once each with zero retries and distinct fresh `.86` 
 budget/test `70145575…` / `0fa2e89d…` embed 3/3 samples per profile, measured 1/1 baseline, strict
 ceilings, and 14 phone / 13 desktop breaches under measurement `2318f57b…`, producer `d3223177…`,
 and browser CDP `6da9e2ef…`. Focused activation is 13/13 after matching synthetic desktop identities
-fixed the initial 12/13 control without changing browser evidence. One exact-head battery and
-corresponding CI remain. No timing, retry, fallback, workflow, product, launch-argument, or producer
-drift occurred. First red stops; terminal-green PR #32 returns immediately to Arc 1B.
+fixed the initial 12/13 control without changing browser evidence. Exact `731b2e2…` passed locally;
+hosted run `32420327368` was consumed at its 40-minute lifecycle-pending ceiling with no product
+verdict. PR #32 remains blocked under the frozen efficiency gate. No timing, retry, fallback,
+product, launch-argument, or producer drift occurred.
 
 | Tool | Role |
 |---|---|
 | Root `npm run trainingcheckpoint` / `npm run trainingcheckpoint:capture` | Replays the action-derived v1.8.9 Restart Training path and exact-compares the sealed fixture plus its provenance hashes. Capture prints a candidate and never writes the sealed fixture. The separate `packages/persistence/test/training-checkpoint.test.ts` owns the exact eleven-key classifier, rescued `tut:1`, round-trip, refusal, bounds, and synthetic-unknown controls. This is jsdom/action legacy provenance plus focused static semantics, not browser or real-save Gate-C evidence. |
-| `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, package tampering, version/build drift, and both historical corner badges; then creates, verifies, and real-browser-boots a clean-commit package from an isolated exact-HEAD snapshot. The guarded loader, `robots.txt`, `preview.json` tree/lock/input/byte hashes, shared v2.0 version and site `version.json` must agree. The 320×568 boot opens the Guide and requires v2.0 plus the full source commit with no floating badge. The shared workspace lock prevents overlap with source-mutating controls, and CI pins one exact `CF_BROWSER` at job scope. The final preview caller keeps its fixed bounded 30-second CDP-start allowance. Root `tools/uilayout.js`, the battery's first real browser launch, separately owns one captured 45-second startup / 15-second socket / existing 30-second command / 5-second shutdown call after run `32375329693` stopped before endpoint at 30 seconds; its selftest proves exactly one open and no unowned option. The generic launcher remains at 15 seconds. Every platform captures the exact caller options and runs a real browser outcome. On POSIX the preview selftest starts Chrome immediately but withholds its ready CDP endpoint for 16 seconds: the generic path must reject while the exact preview caller retains its full 30-second start window, reaches `Browser.getVersion`, and closes. Default output is remote-blocked; only an approved candidate is eligible for the mapped post-green `develop` publisher, which separately owns deployment authority. |
+| `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, package tampering, version/build drift, and both historical corner badges; then creates, verifies, and real-browser-boots a clean-commit package from an isolated exact-HEAD snapshot. The guarded loader, `robots.txt`, `preview.json` tree/lock/input/byte hashes, shared v2.0 version and site `version.json` must agree. The 320×568 boot opens the Guide and requires v2.0 plus the full source commit with no floating badge. The shared workspace lock prevents overlap with source-mutating controls, and an explicitly authorized hosted job pins one exact `CF_BROWSER` at job scope. The final preview caller keeps its fixed bounded 30-second CDP-start allowance. Root `tools/uilayout.js`, the battery's first real browser launch, separately owns one captured 45-second startup / 15-second socket / existing 30-second command / 5-second shutdown call after run `32375329693` stopped before endpoint at 30 seconds; its selftest proves exactly one open and no unowned option. The generic launcher remains at 15 seconds. Every platform captures the exact caller options and runs a real browser outcome. On POSIX the preview selftest starts Chrome immediately but withholds its ready CDP endpoint for 16 seconds: the generic path must reject while the exact preview caller retains its full 30-second start window, reaches `Browser.getVersion`, and closes. Default output is remote-blocked; publication is currently hard parked and any future promotion requires separate exact-SHA authority. |
 | `npm run smoke:ci` | Runs the authoritative real-browser `slicesmoke.mjs` exactly once, retains complete stdout/stderr in `slice-smoke.log`, and writes commit/branch/working-tree/browser/screenshot-bound `slice-smoke-report.json`. It uses browser-mouse input to hit-test both desktop rail gaps, their independent ownership-removal controls, non-Element delegated events, deliberately outside Search, and the bidirectional owned/unowned canvas close outcome. Cold Planetside settlement requires the expected 3–8 ready images with nonempty `src`, `complete`, exact 132×132 natural dimensions, and queued/active jobs zero under one immutable monotonic 30-second phase; every blocking target evaluation is clipped to that same remaining deadline and a labelled target timeout becomes one structured no-retry diagnosis. Compendium detail is a separate asynchronous 440px owner: after real keyboard open, Smoke keeps the exact logical owner mounted and polls under one immutable 30-second deadline until the connected current image is `ready`, has a nontrivial source, completes decode, and reports exact 440×440 natural dimensions. Placeholder/decode are pending; producer error, stale/disconnected owner, contradictory ready state, wrong dimensions, and exact/late receipts are terminal browser-free controls, and the last panel/image/worker/broker state accompanies failure. Its held-painter multi-target control binds each attach-derived target/session and exact document, activates/focuses/brings the judged owner forward, and requires continuous visible/focused rAF→later-task service under a fresh token before the single release or post-close settlement. Wrong target/document/service, hidden/unfocused phases, phase reversal, visibility/focus transitions, and exact/just-late receipts are controlled; post-await receipt time, rather than timer callback order, owns the deadline. A timeout retains non-null image/decode, queue, worker phase/result/error, broker, and foreground diagnostics. D-TRAIN direct-fixture setup first joins prior persistence, reproduces the unjoined stale-write race, and then requires exact primary bytes, current document/route/render/card/runnable-action/status/ticker state before it may judge one semantically observed busy refusal; missing optional-chained UI is a harness failure, not product evidence. It also advances the app-owned monotonic source by one exact epoch, drives the real `current()` → `persistView()` → raw IndexedDB → fresh reload chain, and rejects stored-base/stale-reload substitutions without claiming automatic edge persistence. `smokereport` owns one full-lifetime workspace lock and passes a validated one-child inherited lease to `slicesmoke`, retaining the lock through screenshot hashing and report finalization. A failure prints the first scoped diagnosis plus a related count; it never retries a red run. |
 | `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion, aggregate twin-canvas DPR and boot order without retrying. The Guide carrier control requires an actual exact-one-carrier removal and rejects zero/multiple/no-op/wrong/still-rendered mutations. Short-landscape Compendium uses the left safe-height workspace while Search, dock, and Survey when open remain operable at right; hostile A++ first/middle/last/focus-pinned rows and exact clipping-ancestor diagnostics make a 48px row regression fail for its real cause. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`; the product derives its lower cap from the shared bottom anchor so a 44px Survey, 72px scrollable Planetside band, and 8px gap coexist at compact-phone height. Import/reload owns `import-phase-sequence`, `replacement-ticker-quiescence`, `replacement-document-loader-token-phase`, `reload-resource-release`, and `replacement-boot-phase-sequence`: the exact import stream requires ticker-running invocation, a stopped claim/write/release, and one absolute 20-second clock before the bounded arm. A capture-scoped ordinal requires the exact release-started N → release N+1 → release-complete N+2 tail; only the valid release-first intermediate waits under that unchanged clock. Sticky receipts then require a changed-loader commit within 5 seconds, the exact 12-stage `cf-v2-boot-phase/v1` sequence, and one `cf-v2-slice-ready/v1` tail from the new session/context/generation/origin/loader/token within 20 seconds. The ticker stays false through wiring and true thereafter; browser-native `performanceNow` is strictly below the bound. Two strict at-most-2-second post-ready cycles each pair an exact-context target probe with an independent browser-process heartbeat, with cycle two awaiting a later post-render ticker turn; the import arm plus both pairs form the exact five-row command ledger. The same-backing ultra control applies that target/heartbeat discriminator to both downshift and restore, requires a later advancing ticker turn, and rejects stopped/stale ticker states. Bounded sticky failure evidence diagnoses red and separates a target-only product answerability failure from transport/instrument failure. No retry, timeout increase, or IndexedDB timeout race is used. The command owns the shared workspace lock while building/browsing. |
 | `npm run compendiummem:selftest` / `npm run compendiummem` / `node tools/compendiummem.mjs --verify-run=<run-id>` | Negative-controls the browser-free Compendium instrument, performs one standalone browser run without automatic retry, and independently verifies the named report. Exact-89, candidate20, and individually clean but unusable candidate21/22/23+baseline9 remain history. Clean exact `fb321f2…` candidate24/25/26 plus paired baseline10 ran once each with zero retries and distinct fresh `.86` paths. Active budget/test `70145575…` / `0fa2e89d…` embed 3/3 samples per profile, measured 1/1 baseline, strict ceilings, and 14 phone / 13 desktop breaches under measurement `2318f57b…`, producer `d3223177…`, and browser CDP `6da9e2ef…`. The gate still drives the exact 1,500-row fixture across phone/desktop, binds raw observations and all measurement/product/browser inputs, verifies the owner→worker→painter graph, retains six same-run review PNGs, and distinguishes pre-measurement instrument failure from product evidence. Focused activation is 13/13 after matching synthetic desktop identities fixed its initial phone-only control without changing browser evidence. Automated terminal success remains exact-run evidence and never supplies the open [HUMAN] judgment. |

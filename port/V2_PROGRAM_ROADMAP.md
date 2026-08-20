@@ -34,10 +34,14 @@
 > `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged producer `d3223177…`, 3/3
 > samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
 > breaches. A synthetic desktop-identity line corrected focused 12/13 to 13/13 without changing
-> browser evidence. Commit activation, run one exact-head battery, push existing PR #32 once, and
-> require one corresponding CI. First red stops. No product, timing, launch, workflow, producer,
-> browser-CDP, or retry-policy drift occurred. Arc 1B/gameplay resumes immediately after terminal-
-> green PR #32 closes.
+> browser evidence. Exact head `731b2e2…` passed its complete local battery; GitHub run
+> `32420327368` then preserved a no-retry hosted timeout/incomplete-evidence red when Compendium
+> remained RUNNING/lifecycle-pending at the 40-minute job ceiling, and GitHub separately reported
+> the account spending limit. Nick froze the exhausted hard monthly Actions allowance of 3,000.
+> `GITHUB_ACTIONS_BUDGET.md` now blocks push/label/dispatch/merge/publication; the guarded local
+> workflow design removes automatic spend and must not be pushed through the still-automatic remote
+> configuration. No product/ruler verdict follows from the hosted timeout. Arc 1B/gameplay resumes
+> only after PR #32 eventually closes terminal-green under a separately authorized attempt.
 > Later product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
@@ -803,9 +807,10 @@ each once with zero retries and distinct fresh `.86` paths. Active budget/test `
 13 desktop breaches under measurement `2318f57b…`, producer `d3223177…`, and browser CDP
 `6da9e2ef…`. Focused activation is 13/13 after matching synthetic desktop identities corrected the
 initial phone-only 12/13 control; browser evidence did not change. No package, launch argument,
-workflow, product, timing, producer, or retry-policy change occurred. Commit activation, run one
-exact-head battery, push PR #32 once, and require one corresponding CI; first red stops. After
-terminal-green PR #32 closes, execution returns immediately to Arc 1B/gameplay. The Arc-local Edge authority
+workflow, product, timing, producer, or retry-policy change occurred. Exact `731b2e2…` passed the
+complete local battery; hosted run `32420327368` was consumed at its 40-minute incomplete-evidence
+ceiling and left PR #32 blocked. No rerun/push is authorized while the efficiency gate is frozen.
+After terminal-green PR #32 closure, execution returns immediately to Arc 1B/gameplay. The Arc-local Edge authority
 still does **not** repin
 Gate-A/global Edge `150.0.4078.83`.
 

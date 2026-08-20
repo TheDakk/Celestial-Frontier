@@ -1,46 +1,78 @@
-# CI (external review CF-RR): release-facing root checks plus the core v2
-# parity/type/art/browser-smoke PR gates. Deployment has its own milestone
-# battery and is deliberately not changed by this port batch.
-#
-# PARALLEL-JOB STRUCTURE (2026-08-14): the old single serial job spent 33
-# minutes wall, with the two real-browser evidence commands owning 78% of it
-# (glassmatrix ~17 min + smoke:ci ~9 min on the 2-core software-rendering
-# runner; the same commands take ~1 min and ~2 min on a workstation). Every
-# other gate is independent of them, so the battery now runs as six jobs:
-# root-gates, v2-static, v2-smoke, v2-glass and v2-compendium-memory in parallel, then
-# v2-persona-preview joining their evidence. NOTHING was weakened: every
-# command from the serial battery still runs exactly once with the same
-# one-attempt/no-retry semantics; the persona join and the development
-# preview artifact still require ALL other jobs green (needs:), preserving
-# the whole-battery-green boundary; and the branch-site publisher keys on
-# this WORKFLOW's conclusion, which is success only when every job succeeds.
-# Each browser-owning job pins CF_BROWSER at job scope and re-proves browser
-# provenance with its own selftests (provenance is per process, never
-# workflow memory). Evidence artifacts: root reports moved from the old
-# combined battery-reports into root-reports; v2 smoke/glass evidence is
-# uploaded per-job (retained even when that job is red) and re-joined into
-# battery-reports by the final job. Compendium memory evidence stays in its
-# own exact-run artifact and is also retained when its independent job is red.
+# GitHub Actions is a finite 3,000-unit monthly budget. This full battery is
+# deliberately NOT triggered by pushes, PR synchronization, or branch merges.
+# Only the repository owner adding the exact `actions-budget-approved` label
+# starts one fail-fast run for that PR merge ref. See GITHUB_ACTIONS_BUDGET.md.
 name: test-battery
+
 on:
-  push:
-    branches: [main, develop]
   pull_request:
+    types: [labeled]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: actions-budget-${{ github.workflow }}-pr-${{ github.event.pull_request.number }}-${{ github.event.label.name }}-${{ github.actor }}
+  cancel-in-progress: true
 
 jobs:
-  root-gates:
+  authorize:
+    name: authorize Actions budget
+    if: >-
+      github.event.label.name == 'actions-budget-approved' &&
+      github.actor == github.repository_owner
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 2
+    steps:
+      - name: validate approved branch flow
+        shell: bash
+        env:
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+          HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+          BASE_REPOSITORY: ${{ github.repository }}
+          HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
+        run: |
+          set -euo pipefail
+          test "$HEAD_REPOSITORY" = "$BASE_REPOSITORY"
+          if [[ "$BASE_BRANCH" == "develop" ]]; then
+            case "$HEAD_BRANCH" in
+              openai/windows|openai/mac|anthropic/windows|anthropic/mac) exit 0 ;;
+            esac
+          fi
+          if [[ "$BASE_BRANCH" == "main" && "$HEAD_BRANCH" == "develop" ]]; then
+            exit 0
+          fi
+          echo "::error::Disallowed flow: $HEAD_BRANCH -> $BASE_BRANCH"
+          exit 1
+
+  # Keep this job id and the exact Edge install/preflight/certification adjacency:
+  # the Arc 1A preflight selftest binds those workflow-owned controls. The
+  # display name emits the repository's required `battery` status context only
+  # for the exact owner-approved event. Unauthorized labels therefore cannot
+  # satisfy branch protection with a skipped `battery` check.
+  v2-compendium-memory:
+    name: ${{ needs.authorize.result == 'success' && 'battery' || 'budget-not-authorized' }}
+    needs: authorize
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
     env:
-      CF_BROWSER: /usr/bin/google-chrome
+      CF_BROWSER: /usr/bin/microsoft-edge-stable
+      CF_COMPENDIUMMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-compendiummem
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
-          node-version: 26   # parity with the local validation environment
+          node-version: 26
           cache: npm
-          cache-dependency-path: package-lock.json
+          cache-dependency-path: |
+            package-lock.json
+            port/v2/package-lock.json
+
+      # Cheap/static checks run first so a deterministic red stops before the
+      # expensive browsers. Each dependency tree is installed only once.
       - name: environment
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
         run: |
           node --version
           npm --version
@@ -57,6 +89,7 @@ jobs:
         run: npm run trainingcheckpoint
       - name: layout (10 viewports)
         env:
+          CF_BROWSER: /usr/bin/google-chrome
           CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           node tools/uilayout.js --selftest
@@ -64,154 +97,29 @@ jobs:
       - name: verify root layout evidence freshness
         if: always()
         env:
+          CF_BROWSER: /usr/bin/google-chrome
           CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
-        run: |
-          node tools/uilayout.js --verify-run="$CF_UILAYOUT_RUN_ID"
+        run: node tools/uilayout.js --verify-run="$CF_UILAYOUT_RUN_ID"
       - name: rarity sanity
         run: node tools/rarity-sanity.js
       - name: dead code scan
         run: node tools/deadcode.js
-      - name: archive root reports
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: root-reports
-          path: tools/current.json
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: archive root layout evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: root-layout-evidence
-          path: tools/uilayout-report.json
-          if-no-files-found: error
-          retention-days: 14
-
-  v2-static:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 26
-          cache: npm
-          cache-dependency-path: port/v2/package-lock.json
       - name: install v2 workspace
         working-directory: port/v2
         run: npm ci
-      - name: v2 parity and complete TypeScript surface
+      - name: v2 parity, type, art, and coverage gates
         working-directory: port/v2
         run: |
           npm test
           npm run typecheck
           npm run artunused
-      - name: v2 art routing and coverage sentinels
-        working-directory: port/v2
-        run: |
           npm run artaudit
           npm run overridecheck
           npm run overridecontrol
           npm run coveragegap
           node tools/speccheck.mjs
 
-  v2-smoke:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    env:
-      CF_BROWSER: /usr/bin/google-chrome
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 26
-          cache: npm
-          cache-dependency-path: port/v2/package-lock.json
-      - name: install v2 workspace
-        working-directory: port/v2
-        run: npm ci
-      - name: browser provenance and instrument selftests
-        working-directory: port/v2
-        run: |
-          node tools/browserpath.mjs --selftest
-          node tools/browsercdp.mjs --selftest
-          npm run smoke:report:selftest
-      - name: one-attempt real-browser slice smoke
-        working-directory: port/v2
-        run: npm run smoke:ci
-      - name: archive v2 smoke evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: v2-smoke-evidence
-          path: |
-            port/v2/apps/game/smoke/slice-smoke-report.json
-            port/v2/apps/game/smoke/slice-smoke.log
-          if-no-files-found: error
-          retention-days: 14
-      - name: archive v2 browser evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: v2-browser-evidence
-          path: port/v2/apps/game/smoke/slice-*.png
-          if-no-files-found: ignore
-          retention-days: 14
-
-  v2-glass:
-    runs-on: ubuntu-latest
-    timeout-minutes: 40
-    env:
-      CF_BROWSER: /usr/bin/google-chrome
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 26
-          cache: npm
-          cache-dependency-path: port/v2/package-lock.json
-      - name: install v2 workspace
-        working-directory: port/v2
-        run: npm ci
-      - name: browser provenance selftests
-        working-directory: port/v2
-        run: |
-          node tools/browserpath.mjs --selftest
-          node tools/browsercdp.mjs --selftest
-      - name: glass matrix selftest and 12-viewport certifying run
-        working-directory: port/v2
-        run: |
-          npm run glassmatrix:selftest
-          npm run glassmatrix
-      - name: archive v2 glass evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: v2-glass-evidence
-          path: port/v2/apps/game/smoke/glassmatrix-report.json
-          if-no-files-found: error
-          retention-days: 14
-
-  v2-compendium-memory:
-    runs-on: ubuntu-latest
-    timeout-minutes: 40
-    # Arc 1A's numeric resource ruler is calibrated against this exact Edge
-    # build. This job-local authority does not change the Gate-A/root-layout
-    # browser pin in tools/deps.pinned.json.
-    env:
-      CF_BROWSER: /usr/bin/microsoft-edge-stable
-      CF_COMPENDIUMMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-compendiummem
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 26
-          cache: npm
-          cache-dependency-path: port/v2/package-lock.json
-      - name: install v2 workspace
-        working-directory: port/v2
-        run: npm ci
+      # Compendium resource certification retains its exact Edge authority.
       - name: install exact Arc 1A Edge calibration browser
         shell: bash
         env:
@@ -233,12 +141,72 @@ jobs:
           node tools/compendiummem-browser-preflight.mjs
           npm run compendiummem:selftest
       - name: one-attempt Compendium memory certification
+        id: compendium
+        timeout-minutes: 40
         working-directory: port/v2
         run: npm run compendiummem
       - name: verify current Compendium memory evidence
-        if: always()
+        if: >-
+          always() &&
+          (steps.compendium.outcome == 'success' || steps.compendium.outcome == 'failure')
         working-directory: port/v2
         run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
+
+      # Chrome gates remain one attempt each and run only after every cheaper
+      # gate and the exact-Edge ruler are green.
+      - name: Chrome provenance and reporter selftests
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: |
+          node tools/browserpath.mjs --selftest
+          node tools/browsercdp.mjs --selftest
+          npm run smoke:report:selftest
+          npm run glassmatrix:selftest
+          npm run persona:selftest
+          npm run preview:selftest
+      - name: one-attempt real-browser slice smoke
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: npm run smoke:ci
+      - name: one-attempt 12-viewport Glass matrix
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: npm run glassmatrix
+      - name: automated persona synthesis
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: npm run persona:report
+      - name: package origin-isolated v2 development preview
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+          PREVIEW_OUTPUT: apps/game/smoke/dev-preview-ci-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          npm run preview:package -- --origin=https://dev-celestialfrontier.github.io --output="$PREVIEW_OUTPUT"
+          npm run preview:smoke -- --root="$PREVIEW_OUTPUT"
+
+      # Always preserve whatever the one authorized attempt produced. Missing
+      # terminal carriers remain red; artifacts never turn a red into a pass.
+      - name: archive root reports
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: root-reports
+          path: tools/current.json
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: archive root layout evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: root-layout-evidence
+          path: tools/uilayout-report.json
+          if-no-files-found: ignore
+          retention-days: 14
       - name: archive Compendium memory evidence
         if: always()
         uses: actions/upload-artifact@v6
@@ -247,53 +215,8 @@ jobs:
           path: |
             port/v2/apps/game/smoke/compendiummem-report.json
             port/v2/apps/game/smoke/compendiummem-${{ env.CF_COMPENDIUMMEM_RUN_ID }}-*.png
-          if-no-files-found: error
+          if-no-files-found: ignore
           retention-days: 14
-
-  v2-persona-preview:
-    needs: [root-gates, v2-static, v2-smoke, v2-glass, v2-compendium-memory]
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    env:
-      CF_BROWSER: /usr/bin/google-chrome
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 26
-          cache: npm
-          cache-dependency-path: port/v2/package-lock.json
-      - name: install v2 workspace
-        working-directory: port/v2
-        run: npm ci
-      - name: collect same-commit smoke evidence
-        uses: actions/download-artifact@v6
-        with:
-          name: v2-smoke-evidence
-          path: port/v2/apps/game/smoke
-      - name: collect same-commit glass evidence
-        uses: actions/download-artifact@v6
-        with:
-          name: v2-glass-evidence
-          path: port/v2/apps/game/smoke
-      - name: collect root reports
-        uses: actions/download-artifact@v6
-        with:
-          name: root-reports
-          path: tools
-      - name: automated persona synthesis (same-commit join)
-        working-directory: port/v2
-        run: |
-          npm run persona:selftest
-          npm run persona:report
-      - name: package origin-isolated v2 development preview
-        working-directory: port/v2
-        env:
-          PREVIEW_OUTPUT: apps/game/smoke/dev-preview-ci-${{ github.run_id }}-${{ github.run_attempt }}
-        run: |
-          npm run preview:selftest
-          npm run preview:package -- --origin=https://dev-celestialfrontier.github.io --output="$PREVIEW_OUTPUT"
-          npm run preview:smoke -- --root="$PREVIEW_OUTPUT"
       - name: archive battery reports
         if: always()
         uses: actions/upload-artifact@v6
@@ -308,6 +231,14 @@ jobs:
             port/v2/apps/game/smoke/automated-persona-report.md
           if-no-files-found: ignore
           retention-days: 14
+      - name: archive v2 browser evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: v2-browser-evidence
+          path: port/v2/apps/game/smoke/slice-*.png
+          if-no-files-found: ignore
+          retention-days: 14
       - name: archive playable v2 development preview
         if: success()
         uses: actions/upload-artifact@v6
@@ -316,29 +247,3 @@ jobs:
           path: port/v2/apps/game/smoke/dev-preview-ci-${{ github.run_id }}-${{ github.run_attempt }}
           if-no-files-found: error
           retention-days: 14
-
-  battery:
-    # The develop/main branch rulesets require ONE status context named
-    # "battery" (the old serial job's name). This summary gate keeps that
-    # required-check name stable across internal job restructures instead of
-    # coupling repository settings to job names. It succeeds only when every
-    # battery job succeeded and FAILS otherwise; `if: always()` means it can
-    # never satisfy the ruleset by being skipped when an upstream job is red.
-    needs: [root-gates, v2-static, v2-smoke, v2-glass, v2-compendium-memory, v2-persona-preview]
-    if: always()
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: require every battery job green
-        env:
-          NEEDS_JSON: ${{ toJSON(needs) }}
-        run: |
-          node -e '
-            const needs = JSON.parse(process.env.NEEDS_JSON);
-            const bad = Object.entries(needs).filter(([, job]) => job.result !== "success");
-            if (bad.length) {
-              console.error("battery: failing jobs -> " + bad.map(([name, job]) => name + "=" + job.result).join(", "));
-              process.exit(1);
-            }
-            console.log("battery: all " + Object.keys(needs).length + " jobs succeeded");
-          '

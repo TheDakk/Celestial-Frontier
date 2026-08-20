@@ -8,6 +8,22 @@ deterministic core.
 Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 (acorn + jsdom + ws).
 
+## GitHub Actions budget gate
+
+GitHub-hosted CI is manual, finite release evidence—not the development loop. Nick's hard monthly
+allowance is 3,000 and current mode is tracked in `GITHUB_ACTIONS_BUDGET.md`. Before any GitHub
+write, run the browser-free workflow-policy controls locally:
+
+```bash
+npm run actionsbudget:selftest
+```
+
+`npm run actionsbudget` inventories every workflow and rejects automatic spend, missing job guards,
+run-by-default inputs, duplicate-run concurrency, an unparked publisher, a second battery runner,
+and unknown workflow files. Its selftest mutates every owned direction and must reject each one.
+`node tools/validate.js` invokes the real policy check before any heavier validation. While the mode
+is `FROZEN`, do not push, label, dispatch, rerun, merge, sync, or publish; build and test locally.
+
 > ## ⚠ `npm install` IS NOT ENOUGH — two suites need a real browser
 >
 > **Run `npm run preflight` on any new machine before trusting the battery.**
@@ -145,9 +161,9 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > chain and rejects per-workflow removal plus outside-step decoys; that browser-free control is green
 > but cannot prove live launch. This workflow-only normalization changes no timing, retry, fallback,
 > live repository-tool behavior, product, browser package/version, measurement, producer, budget, or
-> authority. One matching changed-head CI attempt remains; its first red stops. No broader timing
-> work precedes the return to gameplay after PR #32 closes, while HUMAN review and Arc 1B remain
-> open.
+> authority. Exact `731b2e2…` passed locally; hosted run `32420327368` was consumed at its
+> 40-minute lifecycle-pending ceiling with no product verdict. PR #32 remains blocked, no rerun is
+> authorized, and HUMAN review plus Arc 1B remain open.
 >
 > Exact local head `89bfa05…`, run `20260820-pr32-89bfa05-compendiummem`, later completed 78/78
 > outcomes with zero findings and six PNGs, then exited 2 during owned browser shutdown. Terminal
@@ -402,11 +418,10 @@ node tools/duelxp-check.js     # REWARD OUTCOMES: plays a real duel, reads the l
 node tools/sizedrift-check.js  # guards the size clamp regression (see below)
 node tools/harvestclock-check.js # proves the harvest clock cannot be wound
 node tools/publish-branch-site.js --selftest
-                               # validates the post-battery branch publisher,
+                               # validates the parked branch publisher implementation,
                                # including its channel/package/identity reject paths.
-# GitHub Actions publishes only after a successful push battery:
-#   main    -> https://celestialfrontier.github.io/ (root v1.8.9 HTML)
-#   develop -> https://dev-celestialfrontier.github.io/ (exact tested port/v2 v2.0 package)
+# Automatic GitHub Actions publication is parked by GITHUB_ACTIONS_BUDGET.md.
+# Any future promotion needs one separately authorized exact tested SHA and target.
 ```
 
 Production and development deliberately use different package paths. Production replaces
