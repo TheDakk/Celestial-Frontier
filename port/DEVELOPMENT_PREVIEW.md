@@ -204,9 +204,19 @@ the manual Compendium selftest/run/verify steps. The package is the exact Micros
 `microsoft-edge-stable_151.0.4129.86-1_amd64.deb` from
 `https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.86-1_amd64.deb`,
 with SHA-256 `26b02cb1c6465756df94b9ef34191b614f3df627ba21b7b00b641f44cc1d8343`;
-the workflow checks those bytes, the installed package version, and the executable before use.
+both workflows check those bytes, request
+`sudo apt-get install --reinstall --yes "$edge_package"`, then verify the installed package version
+and executable before use. The preflight selftest statically requires that unique owned install
+step's exact ordered URL/SHA/download/hash/reinstall/version/executable chain followed by preflight,
+and negative-controls removal from either workflow plus outside-step decoys. This reinstall is a
+bounded hosted-runner normalization hypothesis, not a proven fix until one changed-head CI:
+activation head `96464d5…` passed its complete local battery, but run `32394244417`, attempt 1,
+stopped before product when image `ubuntu24/20260816.277`'s already-resident verified .86 made the
+prior plain apt install a no-op and the unchanged one-launch preflight published no CDP endpoint.
+There is no candidate report, outcome, review PNG, or product verdict from that job.
 This does not re-pin Gate A or the global browser authority: `../tools/deps.pinned.json` remains
-Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates.
+Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates, any
+timing, product or measurement bytes, or the one-attempt/zero-retry policy.
 
 `preview:verify` proves package integrity and the safety metadata. It does not assert that a
 commit is still the newest development commit. The full 40-character commit and
@@ -485,12 +495,14 @@ When available on the default branch, the manual workflow:
    should be configured before the first candidate run (the environment name alone does
    not create reviewer protection);
 4. reruns deterministic, type, art, browser, and preview-producer controls;
-5. provisions exact Edge 151 only for the Compendium browser preflight, memory selftest,
+5. provisions exact Edge 151 with same-package `--reinstall` only for the Compendium browser
+   preflight, memory selftest,
    one-attempt/no-retry active-budget run, and exact-run verification; the preflight binds exact
    product/revision/JS/protocol/executable and a fresh target's Runtime/Page/HeapProfiler plus
    evaluate/event outcome under 45/15/5/2-second bounds, with no retry or authority-input change;
-   retains the current report plus every same-run review artifact even on failure; then keeps
-   Chrome for the later browser gates;
+   its selftest owns the fail-closed ordered workflow-package control; retains the current report
+   plus every same-run review artifact even on failure; then keeps Chrome for the later browser
+   gates. The reinstall remains a runner-image normalization hypothesis pending one changed-head CI;
 6. passes the explicit `--approved-publication-candidate` producer flag and uploads
    evidence plus that candidate for 14 days;
 7. has only `contents: read` permission—no Pages token, deployment token, repository write,

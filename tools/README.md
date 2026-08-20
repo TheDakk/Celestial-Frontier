@@ -126,9 +126,28 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > candidate replayed 78/78; baseline8 retained all four faults and 14 phone / 13 desktop breaches;
 > all 40 reused ceilings remain strictly above the three-run maxima. Report/sample pairs are
 > baseline8 `0a8b831e…` / `a52bccec…`, c17 `6b86ca9d…` / `0818c86e…`, c18 `a9b28d79…` /
-> `c368ba86…`, and c19 `440cb788…` / `abddfa84…`. This activation is browser-free and
-> non-certifying. Run one exact-activation-head battery and one corresponding CI attempt. First red
-> stops; no more timing expansion precedes the return to gameplay after PR #32 closes.
+> `c368ba86…`, and c19 `440cb788…` / `abddfa84…`. The browser-free activation became exact head
+> `96464d5e4ca59074c0d8d59719a90a5dedc2dd2d`, which completed its full same-head local battery.
+> Corresponding GitHub Actions run `32394244417`, Compendium job `96507263338`, attempt 1, tested
+> synthetic merge `63665b6…` and preserved a pre-product environment/instrument red. Its
+> `ubuntu24/20260816.277` runner already had exact Edge 151.0.4129.86 newest, so plain apt install
+> was a no-op. Browser-path and portable preflight selftests passed, but the live one-launch
+> preflight saw no CDP endpoint inside the unchanged 45-second startup bound. The collector never
+> ran; no Compendium report, outcome, review PNG, or retry exists. The verifier and artifact-upload
+> reds are cascades from those absent outputs. Root/static and Chrome Smoke/Glass jobs passed.
+>
+> Across the retained PR #32 exact-Edge jobs, `ubuntu24/20260810.271` began with bundled .78,
+> upgraded to the exact .86 package, and launched 4/4 times. `ubuntu24/20260816.277` already carried
+> .86, made plain apt a no-op, and launched 0/3. This supports one bounded hypothesis only:
+> SHA-verify the exact `.deb` and install those same bytes once with `--reinstall` to normalize the
+> hosted runner. It does not prove the fix. The preflight selftest now statically requires both
+> workflows' exact ordered URL/SHA/download/hash/reinstall/version/executable/following-preflight
+> chain and rejects per-workflow removal plus outside-step decoys; that browser-free control is green
+> but cannot prove live launch. This workflow-only normalization changes no timing, retry, fallback,
+> live repository-tool behavior, product, browser package/version, measurement, producer, budget, or
+> authority. One matching changed-head CI attempt remains; its first red stops. No broader timing
+> work precedes the return to gameplay after PR #32 closes, while HUMAN review and Arc 1B remain
+> open.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,

@@ -6,8 +6,8 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-20.**
 > **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
-> displayed-demand/zoom-owner product repair and active resource ruler; exact-head certification
-> and final HUMAN review remain open):**
+> displayed-demand/zoom-owner product repair and active resource ruler; exact-964 local battery
+> complete, one changed-head workflow CI and final HUMAN review remain open):**
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
 > bounded overscan, and any focus-pinned row; measured logical anchor-plus-offset
@@ -282,9 +282,25 @@
 > desktop ceilings. Active budget/test SHA-256 are `74e88c2b…` / `485be9da…` (79,614 / 20,782
 > bytes), with all 40 reused ceilings strictly above the three-candidate maxima. Report/sample pairs
 > are baseline8 `0a8b831e…` / `a52bccec…`, c17 `6b86ca9d…` / `0818c86e…`, c18 `a9b28d79…` /
-> `c368ba86…`, and c19 `440cb788…` / `abddfa84…`. This activation is browser-free and
-> non-certifying; one exact-activation-head battery and one corresponding CI attempt remain. First
-> red stops;
+> `c368ba86…`, and c19 `440cb788…` / `abddfa84…`. The browser-free activation became exact head
+> `96464d5e4ca59074c0d8d59719a90a5dedc2dd2d`, which completed its full same-head local battery.
+> Corresponding GitHub Actions run `32394244417`, Compendium job `96507263338`, attempt 1, tested
+> synthetic merge `63665b6…` and retained a pre-product environment/instrument red. On runner image
+> `ubuntu24/20260816.277`, exact Edge 151.0.4129.86 was already newest and plain apt was a no-op.
+> Browser-path and portable preflight selftests passed; the one-launch live preflight then received
+> no CDP endpoint inside the unchanged 45-second bound. It ran no collector and emitted no report,
+> outcome, review PNG, or retry. Verifier/upload failures are cascades; root/static and Chrome
+> Smoke/Glass jobs passed.
+>
+> Retained exact-Edge history shows `ubuntu24/20260810.271` upgraded bundled .78 to exact .86 and
+> launched 4/4, whereas `ubuntu24/20260816.277` already carried .86, made apt a no-op, and launched
+> 0/3. This supports only a single SHA-verified same-package `--reinstall` workflow-normalization
+> hypothesis; it does not prove a fix. The preflight selftest now owns a green fail-closed static
+> control for both workflows' exact ordered URL/SHA/download/hash/reinstall/version/executable/
+> following-preflight chain and rejects removal plus outside-step decoys. That selftest-only control
+> changes no live repository-tool behavior; the normalization changes no timing, retry, fallback,
+> product, browser package/version, measurement, producer, budget, or authority.
+> One matching changed-head CI is required, and its first red stops;
 > HUMAN review remains open, and work returns to Arc 1B/gameplay after PR #32 closes without broader
 > timing work.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
