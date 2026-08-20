@@ -41,8 +41,8 @@ three-run maxima while retaining the four baseline faults and 14 phone / 13 desk
 Exact pushed head `139ce2f9b1bad7a9f81ffdaf07cf9452efb19ccf` then passed one complete local
 battery; corresponding run `32383320206` preserved a valid no-retry Planetside
 `product-unanswerable` red. The displayed-demand/zoom-owner repair changes producer to
-`d3223177…` while measurement remains `6ba58522…`. Clean source `75a996af…` supplied baseline8 plus
-independent candidate17/18/19; active budget/test `74e88c2b…` / `485be9da…` preserve four-fault
+`d3223177…` under historical measurement `6ba58522…`. Clean source `75a996af…` supplied baseline8 plus
+independent candidate17/18/19; then-active budget/test `74e88c2b…` / `485be9da…` preserved four-fault
 baseline discrimination and all 40 strict ceilings. Exact activation head
 `96464d5e4ca59074c0d8d59719a90a5dedc2dd2d` passed its complete local battery. Corresponding run
 `32394244417`, attempt 1, tested synthetic merge `63665b6…`; exact-Edge job `96507263338` on runner
@@ -53,9 +53,14 @@ outcome, review PNG, or product verdict; verifier/upload errors are cascades. Hi
 evidence is 4/4 live-launch/control PASS on image `20260810.271`, where apt unpacked .86 over
 resident .78, versus 0/3 ready on image `20260816.277`, where all installs were already-newest
 no-ops. Both workflows now request same-package `--reinstall`, and the preflight selftest owns a
-green fail-closed static ordered-workflow control. This is a runner-image normalization hypothesis,
-not a proven fix until one new changed-head CI. Timing, retry policy, product, live/runtime tool behavior, browser and
-measurement authority, producer, and budgets remain unchanged. HUMAN review remains.
+green fail-closed static ordered-workflow control. Exact local `89bfa05…`, run
+`20260820-pr32-89bfa05-compendiummem`, subsequently completed 78/78 with zero findings and six PNGs,
+then exited 2 during owned browser shutdown. Terminal log `b0bb8abc…` is authoritative;
+pre-cleanup PASS report/verifier `66ba1366…` / `98664dca…` are false-green. Frozen lifecycle repair
+`6da9e2ef…` / `f4ad842c…` / `2713ed10…` changes measurement to `a3b3bb9f…` while producer stays
+`d3223177…`. Fail-closed budget/test `ae4ab918…` / `60fa5e9f…` require baseline9 plus
+candidate20/21/22 from one clean committed source, once each without retry. No timing, retry-policy,
+product, browser/package, launch-argument, or producer drift occurred. HUMAN review remains.
 This review alone is not approval authority.
 
 ## 1. Executive state
@@ -67,9 +72,9 @@ approval blockers:
 | CI area | Classification | Current disposition |
 | --- | --- | --- |
 | `v2-static` | Instrument false positive | Fixed; current audit reports 28 sources / 0 findings |
-| `v2-compendium-memory` | Historical product-unanswerable findings, ruler/scheduler/shared-timer defects, producer transitions, exact-139 product red, then exact-964 hosted Edge/CDP environment red | Heavy import/paint/PNG work moved to a serviced serial worker; historical baseline5/candidate8/9/10, baseline6/candidate11/12/13, and baseline7/candidate14/15/16 remain exact-authority evidence only for their named producers. Exact-139 passed locally; run `32383320206` reached Planetside and preserved a no-retry `product-unanswerable` red. The displayed-demand/zoom-owner repair changes producer to `d3223177…` while measurement stays `6ba58522…`. Clean source `75a996af…` supplied baseline8 plus independent candidate17/18/19; active budget/test `74e88c2b…` / `485be9da…` preserve strict discrimination. Exact activation head `96464d5…` passed its complete local battery, but run `32394244417` stopped before product when `ubuntu24/20260816.277`'s already-resident verified .86 made apt a no-op and the unchanged one-launch preflight found no CDP endpoint. Both workflows now request same-package `--reinstall`; the green static workflow control proves its ordered bytes, not the live normalization hypothesis. One changed-head PR test-merge attempt remains; no timing, authority, product, measurement, producer, budget, or retry-policy drift is authorized |
-| `v2-smoke` | Obsolete fixed-wait check, then multi-target foreground ownership, then D-TRAIN fixture-setup instrument defects | Cold Planetside uses one monotonic semantic settlement phase with exact decode/work outcomes. Ef6 binds attach-derived target/document identity, proves visible/focused rAF→later-task service before one release, and the D-TRAIN follow-up drains/reproduces/proves exact runnable setup before judging busy refusal. Exact `96464d5…`'s one-attempt local Smoke passed, and run `32394244417`'s Chrome Smoke job passed. The new bounded workflow/static-control head must still own its one-attempt carrier; tracked prose does not substitute for the ignored report |
-| `v2-glass` | Historical instrument/short-landscape repairs, then one compact-phone product geometry finding | Guide predicate, clipping diagnostics, hostile fixture, nonmodal landscape workspace, and shared-anchor stack remain repaired. Exact `96464d5…` passed full local Glass 12/12 and 58/58; run `32394244417`'s Chrome Glass job also passed. The new bounded workflow/static-control head must still own its complete same-head local battery before push |
+| `v2-compendium-memory` | Historical product-unanswerable findings, ruler/scheduler/shared-timer defects, producer transitions, exact-139 product red, exact-964 hosted Edge/CDP environment red, then exact-89 post-measurement shutdown red | The displayed-demand/zoom-owner repair keeps producer `d3223177…`. Historical baseline8/candidate17/18/19 and ruler `74e88c2b…` remain truthful only for measurement `6ba58522…`. Exact-89 reached 78/78 and six PNGs, then owned shutdown exited 2 after report/verifier had already published PASS; preserve terminal `b0bb8abc…` over false-green `66ba1366…` / `98664dca…`. Lifecycle repair `6da9e2ef…` / `f4ad842c…` / `2713ed10…` moves measurement to `a3b3bb9f…`. Fail-closed budget/test `ae4ab918…` / `60fa5e9f…` await baseline9 plus candidate20/21/22 from one clean committed source, once each without retry, then one exact-head battery and one corresponding PR test-merge CI. No timing, browser/package, launch-argument, product, producer, or retry-policy drift is authorized |
+| `v2-smoke` | Obsolete fixed-wait check, then multi-target foreground ownership, then D-TRAIN fixture-setup instrument defects | Cold Planetside uses one monotonic semantic settlement phase with exact decode/work outcomes. Ef6 binds attach-derived target/document identity, proves visible/focused rAF→later-task service before one release, and the D-TRAIN follow-up drains/reproduces/proves exact runnable setup before judging busy refusal. Exact `96464d5…`'s local Smoke and run `32394244417`'s Chrome Smoke job are preserved green history. The future lifecycle-ruler activation head must own its own one-attempt carrier; tracked prose does not substitute for the ignored report |
+| `v2-glass` | Historical instrument/short-landscape repairs, then one compact-phone product geometry finding | Guide predicate, clipping diagnostics, hostile fixture, nonmodal landscape workspace, and shared-anchor stack remain repaired. Exact `96464d5…` passed full local Glass 12/12 and 58/58; run `32394244417`'s Chrome Glass job also passed. The future lifecycle-ruler activation head must still own its complete same-head local battery before push |
 
 The first-red evidence is preserved. No timeout was raised, no failed command was retried, and no
 red was reclassified as green. The later 75/76 Compendium red is preserved too: it is evidence that
@@ -84,10 +89,12 @@ remain historical authority for producer `1c8200d7…`, and no profile or PASS m
 producer's `f9710bdf…` ruler; they are not selected-head browser certification and cannot cross the
 new `6ba58522…` measurement boundary. Baseline7/candidate14/15/16 later activated that measurement
 for `e59685b1…`, but run `32383320206`'s product red and the displayed-demand repair now place current
-authority at active producer/ruler `d3223177…` / `74e88c2b…`. Exact `96464d5…` then passed its
+authority at then-active producer/ruler `d3223177…` / `74e88c2b…`. Exact `96464d5…` then passed its
 complete local battery; run `32394244417` stopped before product at the hosted exact-Edge launch.
-The current two-workflow same-package reinstall is an unproven environment-normalization hypothesis,
-not permission to move, relax, or recalibrate any product or measurement authority.
+The two-workflow same-package reinstall remains preserved environment-normalization history. Exact-
+89's later post-measurement shutdown red invalidates its early PASS and crosses to lifecycle
+measurement `a3b3bb9f…`; it is permission only for the bounded recalibration described below, not
+for timing, browser, product, producer, or retry-policy drift.
 
 ## 2. What was completed before the PR battery
 
@@ -446,7 +453,7 @@ Historical follow-up checkpoint before dea039:
 ### 6.1 Superseded checkpoint after exact dea039 browser evidence
 
 This subsection is preserved as the then-current fail-closed checkpoint; later subsections continue
-the chronology, and section 6.15 is current.
+the chronology, and section 6.16 is current.
 
 - branch: `openai/mac`;
 - committed repair HEAD: `dea03913014bc58134ebb06ca5b36892210a7571`;
@@ -1031,7 +1038,7 @@ Every run used exact Edge 151.0.4129.86, one attempt, and zero retries. All thre
 Report/sample SHA-256 pairs are baseline8 `0a8b831e…` / `a52bccec…`, candidate17 `6b86ca9d…` /
 `0818c86e…`, candidate18 `a9b28d79…` / `c368ba86…`, and candidate19 `440cb788…` / `abddfa84…`.
 
-The active budget/test SHA-256 pair is
+The then-active budget/test SHA-256 pair was
 `74e88c2bbba4cec1a1a3b58ecbe9de3a6f098ae66fad05e7f6dcd4673a945a64` (79,614 bytes) /
 `485be9da8877c32966972d1f12edcadb3c940ebe777da0e02c5270df41a55fc2` (20,782 bytes). The prior
 ceilings were reused. Phone candidate maxima for page heap / embedder heap / backing storage /
@@ -1102,49 +1109,88 @@ change, timing expansion, game optimization, recalibration, publication authorit
 authority. The unchanged preflight remains 45-second startup / 15-second socket / sealed 5-second
 candidate command / 2-second shutdown; candidate startup remains 15 seconds and product observation
 remains 2 seconds. One attempt and zero retries remain the policy. Measurement `6ba58522…`, producer
-`d3223177…`, budget `74e88c2b…`, and focused test `485be9da…` remain active. First red stops.
+`d3223177…`, budget `74e88c2b…`, and focused test `485be9da…` were then active. First red stops.
 
-## 7. Current package-normalization transition rule
+### 6.16 Exact-89 product-complete shutdown red and lifecycle-authority repair
 
-1. Preserve exact-139's complete local-green battery and run `32383320206`'s first
-   `product-unanswerable` carrier without retry. Preserve exact-964's complete local-green battery
-   and run `32394244417` / job `96507263338` as a pre-product environment/instrument red without
-   retry. Neither red may be erased, reclassified, or represented as a product PASS.
-2. Preserve the completed source-identical calibration: clean source `75a996af…`, producer
-   `d3223177…`, measurement `6ba58522…`, exact Edge .86, paired baseline8 against legacy
-   `3844701…`, and independent candidate17/18/19. Each ran once with zero retries; every candidate
-   replayed 78/78, baseline8 retained four faults with 14 phone / 13 desktop breaches, and active
-   budget/test `74e88c2b…` / `485be9da…` keep all 40 ceilings strictly above candidate maxima.
-3. Keep the repair exact: in both workflows change only the owned Edge package installation from
-   plain install to `apt-get install --reinstall --yes "$edge_package"`. Keep exact URL, SHA,
-   package/version/executable, Edge/browser authority, job browser separation, and step order.
-4. Keep live product and runtime instrument behavior unchanged. The selftest-only static workflow
-   control must require the exact ordered package/reinstall/preflight chain in each workflow and
-   reject removal, duplication, reordering, wrong package/version/SHA, and outside-step decoys. It
-   adds no live preflight command, measurement input, product path, timing, retry, fallback,
-   publication authority, or browser-authority change.
-5. Commit the bounded workflow/selftest/current-reference diff as one clean exact head. Run the
-   browser-free static/selftest/typecheck controls and the complete same-head local battery once:
-   browser path/CDP and exact-Edge preflight, Arc-local Compendium plus named verifier, Chrome Smoke,
-   full Glass, persona join, root layout plus exact-run verification, and verified nonpublishable
-   preview packaging/browser smoke. Preserve overwrite-prone carriers immediately.
-6. Any local red, ambiguity, mixed-source result, unverifiable carrier, or terminal-only failure
-   stops the transition without an unchanged retry. Do not raise a timeout, alter live CDP/
-   measurement behavior, regenerate a budget, optimize the game, or add a warmup/relaunch/fallback/
-   DBus wrapper to obtain green.
+Exact local head `89bfa0581f7eb33c90a79bb8b0ead554626197e7` ran
+`20260820-pr32-89bfa05-compendiummem` once without retry under exact Edge .86. Product observation
+completed 78/78 outcomes with zero findings and wrote all six phone/desktop review PNGs. Owned
+browser shutdown then failed and the process exited 2. Terminal log SHA-256
+`b0bb8abcc77c394ba887b73ce192a8e2cd9584a402d7b97f80768b8e7049458f` is the truthful carrier.
+The report had already published PASS at
+`66ba13665bf5dac4d08907ee3b0c2abb7fec54d06c94fe5d59948bb5c4749888`, and named verification had
+already agreed at `98664dca6b07c9937bfa1d0f13aacd0d9364cb793a5a9be67c98a9507ca3d8d4`.
+Those are false-green because their success boundary preceded owned cleanup. Classify this as a
+post-measurement instrument red—not certification, calibration, or product failure—and do not retry
+the unchanged source.
+
+The direct browser process had exited while a descendant retained inherited stderr. The old
+shutdown owner waited for ChildProcess `close`, which joins direct-process exit with stdio closure,
+then misdiagnosed the retained pipe as a browser ignoring TERM/KILL. Frozen browser CDP SHA-256
+`6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce` now records separate
+`exit` and `close` facts: TERM→KILL is judged on direct exit, owned stderr is released only after
+exit, and close remains mandatory. Controls independently cover inherited-stderr exit without a
+signal, TERM resistance followed by KILL success, no exit after KILL, and exit without close.
+
+Frozen collector SHA-256
+`f4ad842c8e326bb46a54afdbc0c2aba9b748b69df618d01203593126a959796e` and selftest SHA-256
+`2713ed106a1316fb3eb5efbc1eb2adcb53eaba18432040ce1e2a4e5a90b4df6f` keep the report RUNNING/
+lifecycle-pending through browser/server cleanup and workspace-lock release. Only after those
+owners settle may the sample and terminal success publish; cleanup, release, sample, and terminal-
+report publication failures suppress success. Named verification requires terminal lifecycle
+authority. Exactly-once owner clearing and mutations for candidate plus baseline prevent an outer
+safety path from cleaning the same browser, server, or lock twice.
+
+Because browser CDP and collector bytes are hashed measurement inputs, the repaired measurement is
+`a3b3bb9f1e32f13a13bcffd09525e29494d694cbae9886060068f693b0b25e6d`. Producer remains
+`d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`. Fail-closed budget/test
+SHA-256 values are `ae4ab918471d4e3adec679d4d0a840e227f0c90d513c841eb7711626ce75a833` /
+`60fa5e9f91f148cace3bc117f742b0a67bf3b771bdbbc1f4a6f3a3b8cbfd6a23`: candidate arrays are
+empty, ceilings are null, and the paired baseline is `measurement-required`. Baseline8 and
+candidate17/18/19, measurement `6ba58522…`, and ruler/test `74e88c2b…` / `485be9da…` remain
+truthful chronology only and cannot certify the repaired lifecycle.
+
+No timeout, browser/package/version, launch argument, product byte, producer, observation bound,
+retry, fallback, or automatic relaunch changed. The only current authority path is one clean
+committed source followed by paired baseline9 and independent candidate20/21/22, exactly once each
+with zero retries; audited activation; one complete exact-head battery; one push to existing PR
+#32; and one corresponding PR test-merge CI attempt. First red stops.
+
+## 7. Current shutdown-lifecycle calibration rule
+
+1. Preserve exact-89's one-attempt terminal log and its 78/78 observations/six images, but reject
+   the pre-cleanup PASS report and verifier as false-green. It is post-measurement instrument red;
+   it is neither a product PASS/FAIL nor calibration evidence and must not be retried unchanged.
+2. Freeze one clean committed repair source containing browser CDP `6da9e2ef…`, collector
+   `f4ad842c…`, selftest `2713ed10…`, measurement `a3b3bb9f…`, unchanged producer `d3223177…`, and
+   fail-closed calibration-required budget/test `ae4ab918…` / `60fa5e9f…`.
+3. From that identical committed source and exact Edge .86, collect paired baseline9 against legacy
+   product `3844701…` plus independent candidate20, candidate21, and candidate22. Each run owns one
+   attempt and zero retries. Preserve its terminal log, report, sample, and six PNGs immediately.
+4. Any product, instrument, cleanup, lock-release, sample-publication, terminal-publication,
+   verifier, source/authority, browser, or artifact mismatch stops the sequence. A partially
+   collected four-run set has no activation authority.
+5. Independently replay the four raw capsules. Every candidate must produce all 78 outcomes and
+   complete lifecycle authority; baseline9 must retain the four sealed faults and discriminatory
+   breaches. Set ceilings strictly above all three candidate maxima without weakening their intent,
+   then activate the exact budget/test bytes browser-free.
+6. Commit activation and current references as one exact head. Run one complete same-head local
+   battery: browser path/CDP and exact-Edge preflight, Arc-local Compendium plus named verifier,
+   Chrome Smoke, full Glass, persona join, root layout plus exact-run verification, and verified
+   nonpublishable preview packaging/browser smoke. Preserve overwrite-prone carriers immediately.
 7. If and only if every same-head local carrier is green, push that exact unchanged head to existing
    PR #32 and require one corresponding PR test-merge CI attempt with verified pushed-head/synthetic-
-   merge association. The reinstall hypothesis is proven only by that live run; any red remains the
-   exact blocker. Terminal-green CI plus remaining required review permits the normal PR-to-
-   `develop` path.
-8. Fresh six-image HUMAN judgment and Claude presentation-polish remain separate. After PR #32
-   closes in order, return to Arc 1B/gameplay. No `main` merge, version bump, release, or deployment
-   is authorized.
+   merge association. Any red remains the exact blocker; do not retry it unchanged.
+8. Do not alter a timeout, browser/package/version, launch argument, product byte, producer,
+   observation bound, retry/fallback policy, or add warmup/relaunch/DBus work to obtain green. Fresh
+   six-image HUMAN judgment remains separate. After PR #32 closes in order, return to Arc 1B/
+   gameplay. No `main` merge, version bump, release, or deployment is authorized.
 
 
 ## 8. Required verification before saying “ready”
 
-### Browser-free — preserved historical activations plus current normalization control
+### Browser-free — preserved historical activations plus current lifecycle controls
 
 - historical pre-normalization full Vitest: 36 files, 423 passed, 1 skipped;
 - focused broker/portable/worker tests: 28 passed;
@@ -1189,30 +1235,35 @@ budget `bb4da2bf0b…`. Its one-attempt/no-retry baseline7/candidate14/15/16 evi
 every candidate, all 40 ceilings strict, and retained four-fault baseline discrimination at 14
 phone / 13 desktop breaches. Section 6.14 records exact-139's local battery, run `32383320206`'s
 product red, displayed-demand/zoom-owner producer `d3223177…`, source-identical
-baseline8/candidate17/18/19, and active budget/test `74e88c2b…` / `485be9da…`. Their browser-free
+baseline8/candidate17/18/19, and then-active budget/test `74e88c2b…` / `485be9da…`. Their browser-free
 activation is complete but non-certifying.
 
-Section 6.15 is the current transition. The bounded same-package reinstall/static-control diff is
+Section 6.15 preserves the package-normalization transition. Its bounded reinstall/static-control diff is
 browser-free green under full v2 Vitest (442 passed / 1 skipped), all TypeScript programs, all 222
 Compendium selftest controls, the dedicated preflight selftest including its two-workflow ordered-
 contract negative controls, development-preview selftest, and elevated development-preview-check
 selftest. These results verify deterministic workflow structure and unchanged code contracts. They
 do not prove that a hosted `ubuntu24/20260816.277` Edge process will publish CDP after reinstall;
-that requires the single changed-head CI in section 7.
+that required live evidence. Section 6.16 is current: browser CDP `6da9e2ef…`, collector
+`f4ad842c…`, and selftest `2713ed10…` freeze exit-vs-close and cleanup-before-success authority;
+budget/test `ae4ab918…` / `60fa5e9f…` fail closed until new calibration. Their focused lifecycle,
+mutation, authority-recomputation, semantic-validation, type, syntax, and diff controls are
+browser-free proof only. They do not supply baseline9/candidate20/21/22 or certify a selected head.
 
 ### Browser-owning, one attempt and no retry
 
-After committing the bounded two-workflow reinstall, selftest-only static control, and current
-documentation as one exact changed head under correct process-owned browser selection:
+After committing the frozen lifecycle repair and calibration-required ruler as one clean source
+under correct process-owned browser selection:
 
 1. run shared browser path/CDP selftests and exact-Edge preflight controls;
-2. on the newly committed exact changed head, run Arc-local Edge Compendium certification plus independent
-   `--verify-run`;
-3. Chrome `smoke:ci`;
-4. full Chrome 12-viewport Glass matrix;
-5. the serviced-turn/bfcache, texture-demand/upgrade, and D-TRAIN setup/semantic-refusal controls
+2. collect baseline9 plus candidate20/21/22 once each without retry and audit/activate their ruler;
+3. on the newly committed exact activation head, run Arc-local Edge Compendium certification plus
+   independent `--verify-run`;
+4. Chrome `smoke:ci`;
+5. full Chrome 12-viewport Glass matrix;
+6. the serviced-turn/bfcache, texture-demand/upgrade, and D-TRAIN setup/semantic-refusal controls
    required by the final diff;
-6. six fresh run-bound Compendium review PNG integrity checks.
+7. six fresh run-bound Compendium review PNG integrity checks.
 
 If a browser gate fails, its first red is preserved and diagnosed. The batch does not gain authority
 to raise deadlines, retry, regenerate a budget, or weaken a control merely to obtain green.
@@ -1221,10 +1272,11 @@ to raise deadlines, retry, regenerate a budget, or weaken a control merely to ob
 
 Runs `32350971816` / `96369841133`, `32367902426` / `96421452463`, `32383320206`, and
 `32394244417` / `96507263338`, plus c095's full Glass report, are preserved stopping reds and must
-not be retried unchanged. Section 6.14's budget remains active from completed baseline8/
-candidate17/18/19 calibration. Exact `96464d5…`'s local battery is green, but section 6.15 records
-its corresponding pre-product CI red. Complete one new bounded changed-head battery, then push only
-after that same-head terminal evidence is clean:
+not be retried unchanged. Section 6.14's baseline8/candidate17/18/19 ruler remains truthful history
+only. Exact `96464d5…`'s local battery is green, while section 6.15 records its corresponding pre-
+product CI red. Exact-89's later terminal log and false-green PASS/verifier are preserved in §6.16.
+Complete baseline9/candidate20/21/22 activation and one new bounded changed-head battery, then push
+only after that same-head terminal evidence is clean:
 
 - push the unchanged exact head to PR #32 without another tracked edit;
 - verify CI is evaluating the PR test-merge corresponding to that exact pushed head;
@@ -1244,15 +1296,15 @@ Even a repaired green PR does not close:
 
 ## 10. Approval recommendation at this checkpoint
 
-**Do not approve or merge PR #32 from this tracked review alone.** Sections 6.1–6.14 preserve the
-earlier product, instrument, calibration, exact-source, and active-ruler chronology. Section 6.15 is
-current: exact `96464d5…` passed its complete local battery, while corresponding run `32394244417`,
-attempt 1, stopped before product when an already-resident verified .86 package on
-`ubuntu24/20260816.277` made plain apt installation a no-op and the unchanged live Edge preflight
-published no CDP endpoint. Both workflows now request same-package `--reinstall`, with a green
-fail-closed static ordered-workflow control. This is a runner-image normalization hypothesis pending
-one complete changed-head battery and one corresponding terminal-green PR test-merge CI, not a
-proven fix or authority to change timing, product, live CDP tooling, browser authority, measurement
-`6ba58522…`, producer `d3223177…`, budget `74e88c2b…`, test `485be9da…`, or one-attempt/zero-retry
-policy. The first red stops. Remaining HUMAN judgment and Claude presentation-polish stay separate;
-after PR #32 closes in order, work returns to Arc 1B/gameplay.
+**Do not approve or merge PR #32 from this tracked review alone.** Sections 6.1–6.15 preserve the
+earlier product, instrument, calibration, exact-source, ruler, package-normalization, and CI
+chronology. Section 6.16 is current: exact-89 measured 78/78 plus six PNGs but exited 2 during owned
+shutdown after its report and verifier had prematurely claimed PASS. Terminal log `b0bb8abc…`
+classifies it as post-measurement instrument red. Frozen lifecycle repair `6da9e2ef…` /
+`f4ad842c…` / `2713ed10…` establishes measurement `a3b3bb9f…`; producer stays `d3223177…`.
+Fail-closed `ae4ab918…` / `60fa5e9f…` requires one clean committed baseline9 plus independent
+candidate20/21/22, once each without retry, followed by audited activation, one complete exact-head
+battery, one PR #32 push, and one corresponding terminal-green test-merge CI. This is not authority
+to change timing, product, browser/package, launch arguments, producer, or retry policy. First red
+stops. Remaining HUMAN judgment stays separate; after PR #32 closes in order, work returns to Arc
+1B/gameplay.

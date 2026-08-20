@@ -276,10 +276,10 @@
 > The displayed-demand/zoom-owner product and development-copy change produces
 > `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`: index `dee9af3a…`, owner
 > `assets/main-Da536xWA.js` / `28382873…`, worker and painter unchanged. Measurement authority
-> remains `6ba58522…`. Clean committed collector/candidate source `75a996af…` produced one no-retry
+> was `6ba58522…`. Clean committed collector/candidate source `75a996af…` produced one no-retry
 > baseline8 against legacy `3844701…` plus independent no-retry candidate17/18/19 under exact Edge
 > .86. Every candidate replayed 78/78; baseline8 retained all four faults and breached 14 phone / 13
-> desktop ceilings. Active budget/test SHA-256 are `74e88c2b…` / `485be9da…` (79,614 / 20,782
+> desktop ceilings. Then-active budget/test SHA-256 were `74e88c2b…` / `485be9da…` (79,614 / 20,782
 > bytes), with all 40 reused ceilings strictly above the three-candidate maxima. Report/sample pairs
 > are baseline8 `0a8b831e…` / `a52bccec…`, c17 `6b86ca9d…` / `0818c86e…`, c18 `a9b28d79…` /
 > `c368ba86…`, and c19 `440cb788…` / `abddfa84…`. The browser-free activation became exact head
@@ -300,9 +300,24 @@
 > following-preflight chain and rejects removal plus outside-step decoys. That selftest-only control
 > changes no live repository-tool behavior; the normalization changes no timing, retry, fallback,
 > product, browser package/version, measurement, producer, budget, or authority.
-> One matching changed-head CI is required, and its first red stops;
-> HUMAN review remains open, and work returns to Arc 1B/gameplay after PR #32 closes without broader
-> timing work.
+> Exact local head `89bfa05…`, run `20260820-pr32-89bfa05-compendiummem`, then completed 78/78
+> outcomes with zero findings and six PNGs before owned browser shutdown exited 2. Terminal log
+> `b0bb8abc…` is authoritative; pre-cleanup PASS report `66ba1366…` and verifier `98664dca…` are
+> false-green. Preserve this one-attempt/no-retry result as post-measurement instrument red, not
+> certification, calibration, or product failure.
+>
+> Frozen browser CDP `6da9e2ef…` now separates direct child exit from stdio-backed close. Frozen
+> collector `f4ad842c…` plus selftest `2713ed10…` keep the report lifecycle-pending until browser/
+> server cleanup and workspace-lock release, publish samples and terminal success only afterward,
+> and make named verification require completed lifecycle authority. Measurement is now
+> `a3b3bb9f…`; producer remains `d3223177…`. Fail-closed budget/test `ae4ab918…` / `60fa5e9f…`
+> deliberately require calibration with empty samples, null ceilings, and a `measurement-required`
+> paired baseline. Baseline8/candidate17/18/19 and the old `6ba58522…` ruler remain history only.
+> Baseline9 plus independent candidate20/21/22 must come from one clean committed source, once each
+> without retry, before activation, one exact-head battery, one PR #32 push, and one corresponding
+> CI attempt. No timeout, browser/package, launch argument, product byte, producer, or retry policy
+> changed. First red stops; HUMAN review remains open, and work returns to Arc 1B/gameplay after
+> PR #32 closes without broader timing work.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.

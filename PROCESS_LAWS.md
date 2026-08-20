@@ -81,6 +81,17 @@ roughly by how often they have bitten.
   the raw observations against those exact authorities. Never trust a copied PASS boolean, hash,
   metric summary, or outcome row as a substitute for the bytes or observations it summarizes;
   require every repeated carrier to agree and negative-control each one independently.
+⚠⚠ TERMINAL SUCCESS BEGINS ONLY AFTER EVERY OWNED RESOURCE IS CLEAN (2026-08-20).
+  Exact PR #32 head `89bfa05…` measured 78/78 outcomes and six review images, wrote PASS, and let
+  its verifier agree before owned browser shutdown failed. That PASS was false. A collector must
+  remain RUNNING/lifecycle-pending until browser and server cleanup plus workspace-lock release
+  succeed; only then may it publish a sample or terminal success. Cleanup, release, sample, or
+  terminal-report publication failure suppresses success, and verification must require the same
+  complete lifecycle state. For a spawned browser, direct-process `exit` and stdio-backed `close`
+  are different facts: judge TERM→KILL on exit, release owned pipes only after exit, and still
+  require close. Negative-control premature PASS/sample publication, double cleanup, release
+  failure, terminal-write failure, exit-with-inherited-stderr, TERM resistance, KILL resistance,
+  and exit-without-close independently.
 ⚠ jsdom has NO LAYOUT. A CSS rule can be present, correct and completely inert. tools/uilayout.js
   (real headless browser, elementFromPoint hit-tests, 10 viewports) is the only gate that sees
   this. It takes --url=FILE, so replay a new gate against an OLD build to prove it catches the bug.
@@ -1019,7 +1030,7 @@ and late 38,658/38,659 ms boundaries. Browser-CDP SHA-256
 authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer
 `e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb` is unchanged. Clean source
 `374049536e959597f8fc40e87a68bc6cbfd0b455` collected paired baseline7 plus independent
-candidate14/15/16 once without retry; every candidate replayed 78/78. Active budget/test
+candidate14/15/16 once without retry; every candidate replayed 78/78. Then-active budget/test
 `bb4da2bf0bc6dd4327884ff07735241b2fa8d9e5e6d32f09295ed86ae7bdbcfe` /
 `d242705ad987d21c773d23b33eb94bbbbeb1a94ec6d527ff594c198861b7be48` then retained all four baseline
 faults, 14 phone / 13 desktop breaches, and 40 strict ceilings above the three-run maxima. This is
@@ -1048,7 +1059,7 @@ command cap must come from the existing candidate contract, not a new convenienc
 same preflight in every workflow that claims that candidate gate. Here the Edge-only preflight owns
 45-second startup / 15-second socket / sealed 5-second candidate command / 2-second shutdown bounds;
 `browsercdp.mjs` remains SHA-256 `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9`,
-so measurement `6ba58522…` and its active ruler remain unchanged. Root layout separately owns one
+so measurement `6ba58522…` and its then-active ruler remained unchanged. Root layout separately owns one
 45/15/30/5-second caller contract. Neither allowance is a game optimization target.
 
 **AN ASYNCHRONOUS OWNER IS NOT ADJUDICATED BY THE FIRST SNAPSHOT AFTER ITS OPEN ACTION.** Exact-c49
@@ -1089,10 +1100,10 @@ CDP deadline, or retrying the red.
 
 That product/copy change makes producer authority `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`
 (index `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`; worker/painter unchanged) while
-measurement `6ba58522…` remains frozen. Clean committed collector/candidate source `75a996af…`
+historical measurement `6ba58522…`. Clean committed collector/candidate source `75a996af…`
 produced one no-retry baseline8 against legacy `3844701…` plus independent no-retry
 candidate17/18/19 under exact Edge .86. Every candidate replayed 78/78; baseline8 retained all four
-faults and breached 14 phone / 13 desktop ceilings. Active budget/test SHA-256 are `74e88c2b…` /
+faults and breached 14 phone / 13 desktop ceilings. Then-active budget/test SHA-256 were `74e88c2b…` /
 `485be9da…` (79,614 / 20,782 bytes); all 40 reused ceilings strictly exceed the three-candidate
 maxima. Activation is browser-free and non-certifying. Exact activation head `96464d5…` completed
 its same-head local battery; its corresponding PR CI attempt stopped at the process-environment
@@ -1128,7 +1139,17 @@ or recalibration. Because the same shell contract exists in both PR certificatio
 workflows, the preflight selftest now statically requires each unique owned install step's exact
 ordered URL/SHA/download/hash → reinstall → version/executable verification → following preflight
 chain. Its controls reject removal from either workflow and outside-step decoys. The control is green
-and proves workflow configuration only; the next one-attempt browser run still owns the outcome.
+and proves workflow configuration only; the next one-attempt browser run still owned the outcome.
+
+That next exact local run was `20260820-pr32-89bfa05-compendiummem` at `89bfa05…`: it completed
+78/78 outcomes with zero findings and six PNGs, then owned shutdown exited 2. Its terminal log
+`b0bb8abc…` overrides pre-cleanup false-green report/verifier `66ba1366…` / `98664dca…`.
+Browser CDP `6da9e2ef…` now separates direct exit from stdio close; collector/selftest
+`f4ad842c…` / `2713ed10…` defer sample and terminal success through browser/server cleanup and lock
+release and require lifecycle at verification. Measurement is therefore `a3b3bb9f…`; producer is
+still `d3223177…`. Fail-closed `ae4ab918…` / `60fa5e9f…` requires one clean committed baseline9
+plus candidate20/21/22, once each without retry. No timing, browser/package, launch argument,
+product, producer, or retry-policy change belongs to this correction.
 
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread

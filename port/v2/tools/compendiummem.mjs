@@ -88,6 +88,7 @@ const workspaceLockPath = fileURLToPath(new URL('./workspacelock.mjs', import.me
 const collectorPath = fileURLToPath(import.meta.url);
 const SELFTEST_FLAG = '--selftest';
 const BROKEN_BASELINE_COMMIT = '38447019517147319bd08c598202d097ee866874';
+const REPORT_LIFECYCLE_SCHEMA = 'cf-v2-compendium-report-lifecycle/v1';
 const STORES = Object.freeze([
   'meta', 'player', 'creatures', 'catalog', 'inventory', 'settings', 'journal', 'assetcache',
 ]);
@@ -105,6 +106,175 @@ function atomicWriteJson(file, value) {
   const temporary = `${file}.${process.pid}.${crypto.randomBytes(5).toString('hex')}.tmp`;
   fs.writeFileSync(temporary, JSON.stringify(value, null, 2) + '\n');
   fs.renameSync(temporary, file);
+}
+function lifecycleErrorMessage(error) {
+  return error instanceof Error ? error.message : String(error);
+}
+function removeGeneratedEvidence(file) {
+  try { fs.unlinkSync(file); }
+  catch (error) { if (error?.code !== 'ENOENT') throw error; }
+}
+function withReportLifecycle(report, status) {
+  return {
+    ...report,
+    ...(status === 'pending' ? { status: 'running' } : {}),
+    lifecycle: { schema: REPORT_LIFECYCLE_SCHEMA, status },
+  };
+}
+
+/* Terminal evidence is not public until the owned browser and server have
+   both completed cleanup and the workspace-lock release has succeeded. This
+   browser-free seam is injected by the selftest so no cleanup rejection can
+   hide behind a previously written PASS/MEASURED report. It persists a
+   lifecycle-pending RUNNING record before releasing the lock, then promotes
+   that record only after release; every synchronous publication failure stays
+   red or nonterminal and suppresses any success sample. */
+export async function finalizeCompendiumLifecycle({
+  provisionalReport, provisionalExitCode,
+  closeBrowser = null, closeServer = null,
+  publishSuccessSample = null, discardSuccessSample = null,
+  publishReport, releaseLock, makeFailureReport,
+}) {
+  assert(provisionalReport && typeof provisionalReport === 'object',
+    'Compendium lifecycle requires one provisional report');
+  assert([0, 1, 2].includes(provisionalExitCode),
+    'Compendium lifecycle provisional exit code is invalid');
+  assert(closeBrowser === null || typeof closeBrowser === 'function',
+    'Compendium lifecycle browser cleanup is invalid');
+  assert(closeServer === null || typeof closeServer === 'function',
+    'Compendium lifecycle server cleanup is invalid');
+  assert(publishSuccessSample === null || typeof publishSuccessSample === 'function',
+    'Compendium lifecycle sample publisher is invalid');
+  assert(discardSuccessSample === null || typeof discardSuccessSample === 'function',
+    'Compendium lifecycle sample suppressor is invalid');
+  assert(typeof publishReport === 'function' && typeof releaseLock === 'function'
+    && typeof makeFailureReport === 'function',
+  'Compendium lifecycle finalization dependencies are invalid');
+
+  const failures = [];
+  let releaseAttempted = false;
+  let samplePublished = false;
+  let failureReportPublicationSucceeded = false;
+  let report = provisionalReport;
+  let exitCode = provisionalExitCode;
+  const attempt = async (stage, operation) => {
+    if (operation === null) return;
+    try { await operation(); }
+    catch (error) { failures.push({ stage, message: lifecycleErrorMessage(error) }); }
+  };
+  const suppressSample = async () => {
+    if (discardSuccessSample === null) return;
+    try {
+      await discardSuccessSample();
+      samplePublished = false;
+    } catch (error) {
+      failures.push({
+        stage: 'success sample suppression', message: lifecycleErrorMessage(error),
+      });
+    }
+  };
+  const failureReport = () => withReportLifecycle(
+    makeFailureReport([...failures]), 'failed',
+  );
+  const publishFailureReport = async () => {
+    report = failureReport();
+    exitCode = 2;
+    failureReportPublicationSucceeded = false;
+    try {
+      await publishReport(report);
+      failureReportPublicationSucceeded = true;
+    }
+    catch (error) {
+      failures.push({
+        stage: 'instrument-fail report publication', message: lifecycleErrorMessage(error),
+      });
+      report = failureReport();
+    }
+  };
+
+  try {
+    await attempt('browser shutdown', closeBrowser);
+    await attempt('static server shutdown', closeServer);
+    const resourcesClosedAt = new Date();
+    const completedReport = {
+      ...provisionalReport,
+      endedAt: resourcesClosedAt.toISOString(),
+      durationMs: resourcesClosedAt.getTime() - Date.parse(provisionalReport.startedAt),
+    };
+
+    if (!failures.length) {
+      report = withReportLifecycle(completedReport, 'pending');
+      await attempt('pending report publication', () => publishReport(report));
+    }
+    if (failures.length) {
+      await suppressSample();
+      await publishFailureReport();
+    }
+    const failuresBeforeRelease = failures.length;
+
+    releaseAttempted = true;
+    try { releaseLock(); }
+    catch (error) {
+      failures.push({
+        stage: 'workspace lock release', message: lifecycleErrorMessage(error),
+      });
+    }
+    if (failures.length) {
+      if (!failureReportPublicationSucceeded || failures.length !== failuresBeforeRelease) {
+        await suppressSample();
+        await publishFailureReport();
+      }
+      return Object.freeze({
+        report, exitCode: 2,
+        failures: Object.freeze(failures.map((failure) => Object.freeze(failure))),
+        successSamplePublished: false,
+      });
+    }
+
+    if (publishSuccessSample !== null) {
+      await attempt('success sample publication', publishSuccessSample);
+      samplePublished = failures.length === 0;
+    }
+    if (!failures.length) {
+      report = withReportLifecycle(completedReport, 'complete');
+      await attempt('terminal report publication', () => publishReport(report));
+    }
+    if (failures.length) {
+      await suppressSample();
+      await publishFailureReport();
+      return Object.freeze({
+        report, exitCode: 2,
+        failures: Object.freeze(failures.map((failure) => Object.freeze(failure))),
+        successSamplePublished: false,
+      });
+    }
+    return Object.freeze({
+      report, exitCode,
+      failures: Object.freeze([]), successSamplePublished: samplePublished,
+    });
+  } finally {
+    if (!releaseAttempted) {
+      releaseAttempted = true;
+      try {
+        releaseLock();
+      } catch (error) {
+        /* The official report is still RUNNING or lifecycle-pending here, so
+           verifier authority is already fail-closed even if finalization
+           itself could not construct another report. */
+      }
+    }
+  }
+}
+
+export function closeCompendiumServer(server) {
+  assert(server && typeof server.close === 'function',
+    'Compendium static server cleanup target is invalid');
+  return new Promise((resolve, reject) => {
+    server.close((error) => {
+      if (error) reject(error);
+      else resolve();
+    });
+  });
 }
 function git(cwd, args, { raw = false } = {}) {
   try {
@@ -231,6 +401,7 @@ function makeRunningReport({ runId, startedAt, source, inputs, budget }) {
   const browserAuthority = compendiumBudgetBrowserAuthority(budget);
   return {
     schema: REPORT_SCHEMA, status: 'running', runId,
+    lifecycle: { schema: REPORT_LIFECYCLE_SCHEMA, status: 'pending' },
     startedAt: startedAt.toISOString(), endedAt: null, durationMs: null,
     policy: {
       attemptCount: 1, automaticRetries: 0, commandTimeoutMs: COMMAND_TIMEOUT_MS,
@@ -254,6 +425,18 @@ export function verifyCompendiumTerminalReport(report, expectedRunId, {
   budgetRecord = null, expectedBudgetSha256 = null,
   fixture = null, expectedInputs = null, expectedSourceIdentity = null,
 } = {}) {
+  const lifecycle = report?.lifecycle;
+  const lifecycleComplete = lifecycle
+    && Object.keys(lifecycle).join('\0') === 'schema\0status'
+    && lifecycle.schema === REPORT_LIFECYCLE_SCHEMA
+    && (lifecycle.status === 'complete'
+      || (lifecycle.status === 'failed' && report?.status === 'instrument-fail'));
+  if (!lifecycleComplete) {
+    return {
+      ok: false,
+      errors: ['report lifecycle is not complete; cleanup/release authority is absent'],
+    };
+  }
   if (budgetRecord === null || fixture === null || expectedInputs === null
     || expectedSourceIdentity === null
     || !/^[a-f0-9]{64}$/.test(String(expectedBudgetSha256 || ''))) {
@@ -317,7 +500,7 @@ function serveDist(servedDist = distDir) {
       assert(address && typeof address === 'object', 'static server did not publish a TCP address');
       resolve({
         server, origin: `http://127.0.0.1:${address.port}`,
-        close: () => new Promise((done) => server.close(() => done())),
+        close: () => closeCompendiumServer(server),
       });
     });
   });
@@ -1919,13 +2102,91 @@ async function collectBrokenBaselineProfile({
   }
 }
 
+function lifecycleFindings(failures) {
+  return failures.map((failure) =>
+    `instrument: ${failure.stage}: ${failure.message}`);
+}
+
+export function candidateLifecycleFailureReport(provisionalReport, failures) {
+  const endedAt = new Date();
+  if (provisionalReport.status === 'instrument-fail') {
+    return {
+      ...provisionalReport, endedAt: endedAt.toISOString(),
+      durationMs: endedAt.getTime() - Date.parse(provisionalReport.startedAt),
+      findings: [...provisionalReport.findings, ...lifecycleFindings(failures)],
+    };
+  }
+  const preserveCompleteProfiles = provisionalReport.partialFailure === null
+    && Object.keys(provisionalReport.profiles || {}).join('\0') === 'phone\0desktop';
+  const profiles = preserveCompleteProfiles ? provisionalReport.profiles : {};
+  const reviewPacket = preserveCompleteProfiles
+    ? Object.values(profiles).flatMap((measurement) => measurement.reviewPacket || []) : [];
+  return {
+    ...provisionalReport,
+    status: 'instrument-fail', endedAt: endedAt.toISOString(),
+    durationMs: endedAt.getTime() - Date.parse(provisionalReport.startedAt),
+    outcomes: [], findings: lifecycleFindings(failures), profiles, reviewPacket,
+    partialFailure: {
+      schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
+      lastCompletedStage: preserveCompleteProfiles ? 'sealed outcome evaluation' : null,
+      failingStage: 'post-collection resource cleanup', command: null,
+    },
+    blockedOutcomes: [...EXPECTED_OUTCOMES],
+  };
+}
+
+export function baselineLifecycleFailureReport(provisionalReport, failures) {
+  const endedAt = new Date();
+  const partialEvidence = brokenBaselineFailureEvidence(
+    Object.values(provisionalReport.profiles || {}),
+  );
+  return {
+    schema: 'cf-v2-compendium-broken-baseline-report/v1',
+    status: 'instrument-fail', runId: provisionalReport.runId,
+    startedAt: provisionalReport.startedAt, endedAt: endedAt.toISOString(),
+    durationMs: endedAt.getTime() - Date.parse(provisionalReport.startedAt),
+    policy: provisionalReport.policy,
+    collectorSource: provisionalReport.collectorSource,
+    baselineSource: provisionalReport.baselineSource,
+    inputs: provisionalReport.inputs ?? null,
+    inputDigest: provisionalReport.inputDigest ?? null,
+    browser: provisionalReport.browser ?? null,
+    evidenceStatus: partialEvidence.evidenceStatus,
+    findings: [
+      ...(provisionalReport.status === 'instrument-fail' ? provisionalReport.findings : []),
+      ...lifecycleFindings(failures),
+    ],
+    profiles: partialEvidence.profiles,
+  };
+}
+
 async function runBrokenBaselineCalibration(baselineRootArgument) {
   const releaseLock = acquireWorkspaceLock('v2 Compendium paired broken-baseline evidence');
+  let lockOwned = true;
+  let browser = null;
+  let server = null;
+  const releaseLockOnce = () => {
+    if (!lockOwned) return;
+    lockOwned = false;
+    releaseLock();
+  };
+  const closeBrowserOnce = async () => {
+    const owned = browser;
+    browser = null;
+    if (owned) await owned.close();
+  };
+  const closeServerOnce = async () => {
+    const owned = server;
+    server = null;
+    if (owned) await owned.close();
+  };
+  try {
   const startedAt = new Date();
   const runId = reportRunId();
   const placeholderSource = unavailableSourceIdentity('baseline preflight not started');
   atomicWriteJson(baselineReportPath, {
     schema: 'cf-v2-compendium-broken-baseline-report/v1', status: 'running', runId,
+    lifecycle: { schema: REPORT_LIFECYCLE_SCHEMA, status: 'pending' },
     startedAt: startedAt.toISOString(), endedAt: null,
     policy: {
       attemptCount: 1, automaticRetries: 0,
@@ -1935,14 +2196,15 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
     baselineSource: { begin: placeholderSource, end: placeholderSource },
     findings: [], profiles: {},
   });
-  let browser = null;
-  let server = null;
   let collectorBegin = placeholderSource;
   let baselineBegin = placeholderSource;
   let baselineRoot = null;
   let inputs = null;
   let inputDigest = null;
   const measurements = [];
+  let provisionalReport = null;
+  let provisionalExitCode = 2;
+  let successSample = null;
   try {
     collectorBegin = sourceIdentity();
     assert(collectorBegin.state === 'committed',
@@ -2032,7 +2294,7 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
       findings: [], profiles: Object.fromEntries(measurements.map((m) => [m.profile, m])),
       samplePath: path.relative(repoRoot, samplePath),
     };
-    atomicWriteJson(samplePath, {
+    successSample = { path: samplePath, value: {
       schema: 'cf-v2-compendium-memory-baseline-sample/v1',
       status: 'paired-broken-baseline-observation-not-a-budget', runId,
       budgetAuthority: {
@@ -2050,11 +2312,9 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
         count: projection.count, uniqueSeeds: projection.uniqueSeeds,
         rowsSha256: projection.rowsSha256, rekeys: projection.rekeys,
       }, samples,
-    });
-    atomicWriteJson(baselineReportPath, report);
-    console.log(`COMPENDIUM BROKEN BASELINE: MEASURED — ${runId}`);
-    console.log(`  exact ${BROKEN_BASELINE_COMMIT} samples: ${samplePath}`);
-    return 0;
+    } };
+    provisionalReport = report;
+    provisionalExitCode = 0;
   } catch (error) {
     const endedAt = new Date();
     const partialEvidence = brokenBaselineFailureEvidence(measurements);
@@ -2073,19 +2333,58 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
       findings: [`instrument: ${error.message}`],
       profiles: partialEvidence.profiles,
     };
-    atomicWriteJson(baselineReportPath, report);
+    provisionalReport = report;
+    provisionalExitCode = 2;
+  }
+  const finalized = await finalizeCompendiumLifecycle({
+    provisionalReport, provisionalExitCode,
+    closeBrowser: closeBrowserOnce,
+    closeServer: closeServerOnce,
+    publishSuccessSample: successSample
+      ? () => atomicWriteJson(successSample.path, successSample.value) : null,
+    discardSuccessSample: successSample
+      ? () => removeGeneratedEvidence(successSample.path) : null,
+    publishReport: (report) => atomicWriteJson(baselineReportPath, report),
+    releaseLock: releaseLockOnce,
+    makeFailureReport: (failures) =>
+      baselineLifecycleFailureReport(provisionalReport, failures),
+  });
+  if (finalized.report.status === 'measured') {
+    console.log(`COMPENDIUM BROKEN BASELINE: MEASURED — ${runId}`);
+    console.log(`  exact ${BROKEN_BASELINE_COMMIT} samples: ${successSample.path}`);
+  } else {
     console.error(`COMPENDIUM BROKEN BASELINE: INSTRUMENT-FAIL — ${runId}`);
-    console.error(`  ${error.message}`);
-    return 2;
+    for (const finding of finalized.report.findings) console.error(`  ${finding}`);
+  }
+  return finalized.exitCode;
   } finally {
-    try { if (browser) await browser.close(); } finally {
-      try { if (server) await server.close(); } finally { releaseLock(); }
-    }
+    try { await closeBrowserOnce(); } catch { /* terminal lifecycle owns the diagnosis */ }
+    try { await closeServerOnce(); } catch { /* terminal lifecycle owns the diagnosis */ }
+    try { releaseLockOnce(); } catch { /* terminal lifecycle owns the diagnosis */ }
   }
 }
 
 async function runGate({ calibrate }) {
   const releaseLock = acquireWorkspaceLock('v2 Compendium memory/resource evidence');
+  let lockOwned = true;
+  let browser = null;
+  let server = null;
+  const releaseLockOnce = () => {
+    if (!lockOwned) return;
+    lockOwned = false;
+    releaseLock();
+  };
+  const closeBrowserOnce = async () => {
+    const owned = browser;
+    browser = null;
+    if (owned) await owned.close();
+  };
+  const closeServerOnce = async () => {
+    const owned = server;
+    server = null;
+    if (owned) await owned.close();
+  };
+  try {
   const startedAt = new Date();
   const runId = reportRunId();
   let sourceBegin = unavailableSourceIdentity('source identity not read yet');
@@ -2096,10 +2395,11 @@ async function runGate({ calibrate }) {
   let inputDigest = null;
   let running = makeRunningReport({ runId, startedAt, source: sourceBegin, inputs, budget });
   atomicWriteJson(reportPath, running);
-  let browser = null;
-  let server = null;
   const measurements = [];
   let gateStage = 'preflight';
+  let provisionalReport = null;
+  let provisionalExitCode = 2;
+  let successSample = null;
   try {
     gateStage = 'fixture and input provenance';
     fixture = buildCompendiumFixture();
@@ -2196,8 +2496,7 @@ async function runGate({ calibrate }) {
       reviewPacket: measurements.flatMap((measurement) => measurement.reviewPacket),
       partialFailure: null, blockedOutcomes: [],
     };
-    atomicWriteJson(reportPath, report);
-    const verification = verifyCompendiumTerminalReport(report, runId, {
+    const verification = verifyTerminalReport(report, runId, {
       allowCalibration: calibrate, verifyArtifact: verifyReviewArtifact,
       budgetRecord: budget, expectedBudgetSha256: inputs.budget,
       fixture, expectedInputs: inputs, expectedSourceIdentity: sourceEnd,
@@ -2222,7 +2521,7 @@ async function runGate({ calibrate }) {
         assert(reduced && stableJson(reduced.metrics) === stableJson(sample.metrics),
           `${sample.evidence?.profile}: candidate calibration evidence did not reproduce metrics`);
       }
-      atomicWriteJson(calibrationPath, {
+      successSample = { path: calibrationPath, value: {
         schema: 'cf-v2-compendium-memory-calibration-sample/v1',
         status: 'candidate-observation-not-a-budget', runId,
         source: { begin: sourceBegin, end: sourceEnd }, inputs, inputDigest,
@@ -2230,17 +2529,10 @@ async function runGate({ calibrate }) {
           schema: fixture.schema, generator: fixture.generator,
           count: fixture.count, rowsSha256: fixture.rowsSha256,
         }, samples,
-      });
-      console.log(`  candidate measurements: ${calibrationPath}`);
+      } };
     }
-    console.log(`COMPENDIUM MEMORY: ${status.toUpperCase()} — ${runId}`);
-    if (failed.length) {
-      for (const finding of failed.slice(0, 8)) console.error(`  - ${finding.diagnosis}`);
-      if (failed.length > 8) console.error(`  - ${failed.length - 8} more outcome(s); see ${reportPath}`);
-    } else if (calibrate) {
-      console.log('  no PASS was emitted; three independent runs/profile plus the paired 3844701 baseline are required');
-    }
-    return status === 'pass' || status === 'calibration' ? 0 : 1;
+    provisionalReport = report;
+    provisionalExitCode = status === 'pass' || status === 'calibration' ? 0 : 1;
   } catch (caught) {
     const error = caught instanceof Error ? caught : new Error(String(caught));
     const endedAt = new Date();
@@ -2278,14 +2570,46 @@ async function runGate({ calibrate }) {
       outcomes: [], findings: [`${classification === 'product-unanswerable' ? 'product' : 'instrument'}: ${error.message}`],
       profiles, reviewPacket, partialFailure, blockedOutcomes: [...EXPECTED_OUTCOMES],
     };
-    atomicWriteJson(reportPath, report);
-    console.error(`COMPENDIUM MEMORY: ${status.toUpperCase()} — ${runId}`);
-    console.error(`  ${error.message}`);
-    return status === 'product-unanswerable' ? 1 : 2;
-  } finally {
-    try { if (browser) await browser.close(); } finally {
-      try { if (server) await server.close(); } finally { releaseLock(); }
+    provisionalReport = report;
+    provisionalExitCode = status === 'product-unanswerable' ? 1 : 2;
+  }
+  const finalized = await finalizeCompendiumLifecycle({
+    provisionalReport, provisionalExitCode,
+    closeBrowser: closeBrowserOnce,
+    closeServer: closeServerOnce,
+    publishSuccessSample: successSample
+      ? () => atomicWriteJson(successSample.path, successSample.value) : null,
+    discardSuccessSample: successSample
+      ? () => removeGeneratedEvidence(successSample.path) : null,
+    publishReport: (report) => atomicWriteJson(reportPath, report),
+    releaseLock: releaseLockOnce,
+    makeFailureReport: (failures) =>
+      candidateLifecycleFailureReport(provisionalReport, failures),
+  });
+  const finalReport = finalized.report;
+  if (finalized.successSamplePublished) {
+    console.log(`  candidate measurements: ${successSample.path}`);
+  }
+  const terminal = `COMPENDIUM MEMORY: ${finalReport.status.toUpperCase()} — ${runId}`;
+  if (['instrument-fail', 'product-unanswerable'].includes(finalReport.status)) {
+    console.error(terminal);
+    for (const finding of finalReport.findings) console.error(`  ${finding}`);
+  } else {
+    console.log(terminal);
+    if (finalReport.status === 'fail') {
+      for (const finding of finalReport.findings.slice(0, 8)) console.error(`  - ${finding}`);
+      if (finalReport.findings.length > 8) {
+        console.error(`  - ${finalReport.findings.length - 8} more outcome(s); see ${reportPath}`);
+      }
+    } else if (finalReport.status === 'calibration') {
+      console.log('  no PASS was emitted; three independent runs/profile plus the paired 3844701 baseline are required');
     }
+  }
+  return finalized.exitCode;
+  } finally {
+    try { await closeBrowserOnce(); } catch { /* terminal lifecycle owns the diagnosis */ }
+    try { await closeServerOnce(); } catch { /* terminal lifecycle owns the diagnosis */ }
+    try { releaseLockOnce(); } catch { /* terminal lifecycle owns the diagnosis */ }
   }
 }
 

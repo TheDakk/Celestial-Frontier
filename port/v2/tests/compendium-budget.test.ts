@@ -9,18 +9,20 @@ import {
   CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA,
   COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS,
   EXPECTED_OUTCOMES, OUTCOME_IDS, PROFILES, SAMPLE_METRIC_FIELDS,
-  validateBudgetRecord,
+  compendiumMeasurementAuthority, validateBudgetRecord,
 } from '../tools/compendiummem-contract.mjs';
 import {
-  buildBrokenBaselineProjection, buildCompendiumFixture,
+  COMPENDIUM_FIXTURE_SPEC_PATH, buildBrokenBaselineProjection,
+  buildCompendiumFixture, stableJson,
 } from '../tools/compendiummem-fixture.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
+const v2Root = path.resolve(here, '..');
 const budgetPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.json');
 const schemaPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.schema.json');
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  '6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a';
+  'a3b3bb9f1e32f13a13bcffd09525e29494d694cbae9886060068f693b0b25e6d';
 const EXPECTED_PRODUCER_AUTHORITY =
   'd32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900';
 const EXPECTED_CANDIDATE_RUNS = [
@@ -137,6 +139,32 @@ function sampleObjectSha256(sample: CalibrationSample): string {
   return createHash('sha256').update(JSON.stringify(sample)).digest('hex');
 }
 
+function fileSha256(file: string): string {
+  return createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+}
+
+function currentMeasurementAuthority(fixtureRowsSha256: string) {
+  return compendiumMeasurementAuthority({
+    fixtureSpec: fileSha256(COMPENDIUM_FIXTURE_SPEC_PATH),
+    fixtureRows: fixtureRowsSha256,
+    fixtureGenerator: fileSha256(path.join(v2Root, 'tools', 'compendiummem-fixture.mjs')),
+    budgetSchema: fileSha256(schemaPath),
+    outcomeContract: fileSha256(path.join(v2Root, 'tools', 'compendiummem-contract.mjs')),
+    collector: fileSha256(path.join(v2Root, 'tools', 'compendiummem.mjs')),
+    browserCdp: fileSha256(path.join(v2Root, 'tools', 'browsercdp.mjs')),
+    browserPath: fileSha256(path.join(v2Root, 'tools', 'browserpath.mjs')),
+    workspaceLock: fileSha256(path.join(v2Root, 'tools', 'workspacelock.mjs')),
+    package: fileSha256(path.join(v2Root, 'package.json')),
+    packageLock: fileSha256(path.join(v2Root, 'package-lock.json')),
+    appPackage: fileSha256(path.join(v2Root, 'apps', 'game', 'package.json')),
+    baselineSaveFixtures: fileSha256(path.join(
+      v2Root, '..', 'baseline-v1.8.9', 'save-fixtures.json',
+    )),
+    speciesArtBuildGraph: fileSha256(path.join(v2Root, 'tools', 'speciesart-build.mjs')),
+    outcomeInventory: createHash('sha256').update(stableJson(EXPECTED_OUTCOMES)).digest('hex'),
+  });
+}
+
 function authorityKey(sample: CalibrationSample): string {
   const { product, revision, jsVersion, protocolVersion } = sample.browser;
   return [product, revision, jsVersion, protocolVersion].join('\0');
@@ -166,12 +194,17 @@ describe('Arc 1A Compendium budget authority', () => {
   const budget = JSON.parse(fs.readFileSync(budgetPath, 'utf8')) as Record<string, unknown>;
   const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8')) as Record<string, unknown>;
   const activeBudget = budget as unknown as ActiveBudgetRecord;
+  const liveMeasurementAuthority = currentMeasurementAuthority(fixture.rowsSha256);
 
   it('owns a strict v2 record and schema bound to the sealed 1,500-row input', () => {
     expect(schema.$schema).toBe('https://json-schema.org/draft/2020-12/schema');
     expect(schema.additionalProperties).toBe(false);
     expect(budget.schema).toBe(BUDGET_SCHEMA);
-    expect(validateBudgetRecord(budget, fixture.rowsSha256, baselineProjection.rowsSha256))
+    expect(liveMeasurementAuthority?.sha256).toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+    expect(budget.measurementAuthority).toEqual(liveMeasurementAuthority);
+    expect(validateBudgetRecord(
+      budget, fixture.rowsSha256, baselineProjection.rowsSha256, liveMeasurementAuthority,
+    ))
       .toEqual({ ok: true, errors: [] });
     expect((budget.pairedBrokenBaseline as { projectionRowsSha256: string }).projectionRowsSha256)
       .toBe(baselineProjection.rowsSha256);
@@ -225,6 +258,13 @@ describe('Arc 1A Compendium budget authority', () => {
       }
       expect(activeBudget.pairedBrokenBaseline.status).toBe('measurement-required');
       expect(activeBudget.pairedBrokenBaseline.collectorCommit).toBeNull();
+      expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.86');
+      expect(activeBudget.calibration.selectionRule).toContain('raw-capsule');
+      expect(activeBudget.calibration.selectionRule).toContain('strictly above');
+      expect(activeBudget.calibration.selectionRule).toContain('rational headroom');
+      expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_PRODUCER_AUTHORITY);
+      expect(activeBudget.calibration.selectionRule)
+        .toContain('does not re-pin the Gate-A/global browser');
       return;
     }
     expect(activeBudget.status).toBe('active');

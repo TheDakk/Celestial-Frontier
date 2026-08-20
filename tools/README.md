@@ -120,8 +120,8 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > the asynchronous bake, rejects stale completion and duplicate-tier work, and upgrades through 768
 > to 1024 only when real zoom/DPR requires it; maximum tested demand is 1,248/1,280px. Producer is
 > now `d3223177…` (index `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`;
-> worker/painter unchanged), while measurement remains `6ba58522…`. Current budget/test
-> `74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) are active from clean source `75a996af…`'s
+> worker/painter unchanged), under historical measurement `6ba58522…`. Then-active budget/test
+> `74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) came from clean source `75a996af…`'s
 > one-attempt/no-retry baseline8 plus independent candidate17/18/19 under exact Edge .86. Every
 > candidate replayed 78/78; baseline8 retained all four faults and 14 phone / 13 desktop breaches;
 > all 40 reused ceilings remain strictly above the three-run maxima. Report/sample pairs are
@@ -148,6 +148,23 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > authority. One matching changed-head CI attempt remains; its first red stops. No broader timing
 > work precedes the return to gameplay after PR #32 closes, while HUMAN review and Arc 1B remain
 > open.
+>
+> Exact local head `89bfa05…`, run `20260820-pr32-89bfa05-compendiummem`, later completed 78/78
+> outcomes with zero findings and six PNGs, then exited 2 during owned browser shutdown. Terminal
+> log `b0bb8abc…` is authoritative; pre-cleanup PASS report `66ba1366…` and verifier `98664dca…`
+> are false-green. This is a one-attempt/no-retry post-measurement instrument red, not product
+> certification or calibration.
+>
+> Frozen `browsercdp.mjs` `6da9e2ef…` now judges TERM→KILL on direct child exit, separately releases
+> owned stderr after exit, and still requires close. Frozen collector `f4ad842c…` plus selftest
+> `2713ed10…` keep report state lifecycle-pending until browser/server cleanup and lock release,
+> publish samples and terminal success only afterward, and make the verifier require completed
+> lifecycle authority. Measurement is therefore `a3b3bb9f…`; producer remains `d3223177…`.
+> Fail-closed budget/test `ae4ab918…` / `60fa5e9f…` contain no candidate samples or ceilings and
+> require paired baseline measurement. Historical baseline8/candidate17/18/19 and
+> `6ba58522…` / `74e88c2b…` / `485be9da…` cannot cross that boundary. Next authority is one clean
+> committed baseline9 plus independent candidate20/21/22, each once without retry. No deadline,
+> browser/package, launch argument, product byte, producer, or retry policy changed.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,

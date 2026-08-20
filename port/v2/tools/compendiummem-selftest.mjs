@@ -54,6 +54,7 @@ import {
 } from './speciesart-build.mjs';
 import {
   armCandidateProducerError, candidateArmProducerErrorExpression,
+  baselineLifecycleFailureReport, candidateLifecycleFailureReport,
   candidateSpeciesPainterChunkSource,
   compendiumBudgetModeAllowed,
   candidateThumbSettlementExpression,
@@ -61,7 +62,9 @@ import {
   candidateFilterInputExpression, candidateFilterTelemetryExpression,
   collectCandidateSnapshot, createCandidateCollectorObservations,
   createCandidateCommandRecorder,
+  closeCompendiumServer,
   driveCandidateFilterTransition, validCandidateFilterInputExpression,
+  finalizeCompendiumLifecycle,
   validCandidateThumbSettlementExpression,
   validCandidateFilterTelemetryExpression, validCandidateArmProducerErrorExpression,
   validCandidateProducerErrorExpression, verifyCompendiumTerminalReport,
@@ -1004,6 +1007,9 @@ function terminalReport(runId, outcomes, budget, profiles) {
   const browserAuthority = compendiumBudgetBrowserAuthority(budget);
   return {
     schema: REPORT_SCHEMA, status: 'pass', runId,
+    lifecycle: {
+      schema: 'cf-v2-compendium-report-lifecycle/v1', status: 'complete',
+    },
     startedAt: '2026-08-16T00:00:00.000Z', endedAt: '2026-08-16T00:00:01.000Z',
     durationMs: 1000,
     policy: {
@@ -3569,6 +3575,18 @@ export async function runCompendiumMemSelftest() {
   const boundReportCheck = productionVerify(report);
   assert(boundReportCheck.ok,
     `production budget-bound terminal report was rejected: ${boundReportCheck.errors.join('; ')}`);
+  const missingLifecycle = clone(report);
+  delete missingLifecycle.lifecycle;
+  assert(!productionVerify(missingLifecycle).ok,
+    'terminal report without cleanup/release lifecycle authority stayed verifier-green');
+  const pendingLifecycle = clone(report);
+  pendingLifecycle.lifecycle.status = 'pending';
+  assert(!productionVerify(pendingLifecycle).ok,
+    'lifecycle-pending PASS stayed verifier-green');
+  const failedPassLifecycle = clone(report);
+  failedPassLifecycle.lifecycle.status = 'failed';
+  assert(!productionVerify(failedPassLifecycle).ok,
+    'lifecycle-failed PASS stayed verifier-green');
   const locallyConsistentWrongAuthority = clone(report);
   locallyConsistentWrongAuthority.browser.revision = 'other-revision';
   locallyConsistentWrongAuthority.budget.browserAuthority.revision = 'other-revision';
@@ -5480,6 +5498,446 @@ export async function runCompendiumMemSelftest() {
     assert(temp.startsWith(prefix), `refusing unsafe temporary cleanup ${temp}`);
     fs.rmSync(temp, { recursive: true });
   }
+
+  const collectorSource = fs.readFileSync(
+    fileURLToPath(new URL('./compendiummem.mjs', import.meta.url)), 'utf8',
+  );
+  const ownedLifecycleBlock = (start, end) => {
+    const from = collectorSource.indexOf(start);
+    const to = collectorSource.indexOf(end, from + start.length);
+    return from >= 0 && to > from ? collectorSource.slice(from, to) : '';
+  };
+  const exactOwnershipWrappers = Object.freeze({
+    browser: [
+      '  const closeBrowserOnce = async () => {',
+      '    const owned = browser;',
+      '    browser = null;',
+      '    if (owned) await owned.close();',
+      '  };',
+    ].join('\n'),
+    server: [
+      '  const closeServerOnce = async () => {',
+      '    const owned = server;',
+      '    server = null;',
+      '    if (owned) await owned.close();',
+      '  };',
+    ].join('\n'),
+    lock: [
+      '  const releaseLockOnce = () => {',
+      '    if (!lockOwned) return;',
+      '    lockOwned = false;',
+      '    releaseLock();',
+      '  };',
+    ].join('\n'),
+  });
+  const containsExactlyOnce = (source, needle) => {
+    const first = source.indexOf(needle);
+    return first >= 0 && source.indexOf(needle, first + needle.length) < 0;
+  };
+  const validOwnedLifecycleBlock = (block, reportOwner) => {
+    const call = 'const finalized = await finalizeCompendiumLifecycle({';
+    const callAt = block.indexOf(call);
+    const directTerminal = ['report', 'provisionalReport']
+      .map((value) => `atomicWriteJson(${reportOwner}, ${value})`);
+    return callAt >= 0 && block.indexOf(call, callAt + call.length) < 0
+      && block.includes(`publishReport: (report) => atomicWriteJson(${reportOwner}, report)`)
+      && block.includes('closeBrowser: closeBrowserOnce')
+      && block.includes('closeServer: closeServerOnce')
+      && block.includes('releaseLock: releaseLockOnce')
+      && block.includes('try { await closeBrowserOnce(); }')
+      && block.includes('try { await closeServerOnce(); }')
+      && block.includes('try { releaseLockOnce(); }')
+      && Object.values(exactOwnershipWrappers).every((wrapper) =>
+        containsExactlyOnce(block, wrapper))
+      && directTerminal.every((publication) => !block.slice(0, callAt).includes(publication))
+      && !block.includes('await browser.close()') && !block.includes('await server.close()');
+  };
+  const baselineLifecycleBlock = ownedLifecycleBlock(
+    'async function runBrokenBaselineCalibration(', 'async function runGate(',
+  );
+  const candidateLifecycleBlock = ownedLifecycleBlock(
+    'async function runGate(', 'async function main(',
+  );
+  const cliVerifyBlock = ownedLifecycleBlock(
+    "  const verifyArg = process.argv.slice(2).find((arg) => arg.startsWith('--verify-run='));",
+    '  const baselineArg = process.argv.slice(2)',
+  );
+  const boundCliVerifierCall = [
+    '    const verification = verifyCompendiumTerminalReport(report, expectedRunId, {',
+    '      allowCalibration: false, verifyArtifact: verifyReviewArtifact,',
+    '      budgetRecord: budget, expectedBudgetSha256: hashFile(budgetPath),',
+    '      fixture, expectedInputs, expectedSourceIdentity,',
+    '    });',
+  ].join('\n');
+  const validBoundCliVerifier = (block) => containsExactlyOnce(block, boundCliVerifierCall)
+    && !block.includes('const verification = verifyTerminalReport(')
+    && block.includes('if (!verification.ok) {')
+    && block.includes("return report.status === 'pass' ? 0 : 1;");
+  assert(validBoundCliVerifier(cliVerifyBlock),
+    'CLI report verifier was not uniquely bound to production lifecycle/input authority');
+  const rawCliVerifierMutation = cliVerifyBlock.replace(
+    'const verification = verifyCompendiumTerminalReport(',
+    'const verification = verifyTerminalReport(',
+  );
+  assert(rawCliVerifierMutation !== cliVerifyBlock
+    && !validBoundCliVerifier(rawCliVerifierMutation),
+  'CLI raw-contract verifier substitution mutation stayed green');
+  assert(validOwnedLifecycleBlock(baselineLifecycleBlock, 'baselineReportPath')
+    && validOwnedLifecycleBlock(candidateLifecycleBlock, 'reportPath'),
+  'candidate/baseline runtime did not uniquely route terminal publication through lifecycle cleanup');
+  const lifecycleRunners = [
+    ['baseline', baselineLifecycleBlock, 'baselineReportPath'],
+    ['candidate', candidateLifecycleBlock, 'reportPath'],
+  ];
+  const ownershipConsumptionMutations = [
+    ['browser', '    browser = null;\n'],
+    ['server', '    server = null;\n'],
+    ['lock', '    lockOwned = false;\n'],
+  ];
+  let rejectedOwnershipConsumptionMutations = 0;
+  for (const [runner, block, reportOwner] of lifecycleRunners) {
+    for (const [owner, consumption] of ownershipConsumptionMutations) {
+      const mutated = block.replace(consumption, '');
+      assert(mutated !== block,
+        `${runner} ${owner} exactly-once negative control did not mutate its owner`);
+      assert(!validOwnedLifecycleBlock(mutated, reportOwner),
+        `${runner} ${owner} consumption removal stayed green and could double-clean in outer finally`);
+      rejectedOwnershipConsumptionMutations += 1;
+    }
+  }
+  assert(rejectedOwnershipConsumptionMutations === 6,
+    'candidate/baseline exactly-once ownership mutation inventory was incomplete');
+  assert(!validOwnedLifecycleBlock(
+    baselineLifecycleBlock.replace(
+      'publishReport: (report) => atomicWriteJson(baselineReportPath, report)',
+      'publishReport: null',
+    ),
+    'baselineReportPath',
+  ), 'baseline lifecycle-removal mutation stayed green');
+  assert(!validOwnedLifecycleBlock(
+    candidateLifecycleBlock.replace(
+      'publishReport: (report) => atomicWriteJson(reportPath, report)',
+      'publishReport: null',
+    ),
+    'reportPath',
+  ), 'candidate lifecycle-removal mutation stayed green');
+  assert(!validOwnedLifecycleBlock(
+    candidateLifecycleBlock.replace(
+      'const finalized = await finalizeCompendiumLifecycle({',
+      'atomicWriteJson(reportPath, report);\n'
+        + '  const finalized = await finalizeCompendiumLifecycle({',
+    ),
+    'reportPath',
+  ), 'pre-cleanup candidate terminal-publication mutation stayed green');
+
+  const serverCloseBlock = ownedLifecycleBlock(
+    'export function closeCompendiumServer(', 'function git(',
+  );
+  const validServerCloseBlock = (block) => block.includes('server.close((error) => {')
+    && block.includes('if (error) reject(error);') && block.includes('else resolve();');
+  assert(validServerCloseBlock(serverCloseBlock)
+    && collectorSource.includes('close: () => closeCompendiumServer(server)'),
+  'static-server owner did not preserve callback errors through the lifecycle seam');
+  assert(!validServerCloseBlock(serverCloseBlock.replace(
+    'if (error) reject(error);', 'if (error) resolve();',
+  )), 'server-close callback-error masking mutation stayed green');
+  let serverCloseCalls = 0;
+  await closeCompendiumServer({ close(callback) { serverCloseCalls += 1; callback(); } });
+  let serverCloseError = null;
+  try {
+    await closeCompendiumServer({
+      close(callback) {
+        serverCloseCalls += 1;
+        callback(new Error('injected http.Server.close callback failure'));
+      },
+    });
+  } catch (error) { serverCloseError = error; }
+  assert(serverCloseCalls === 2
+    && serverCloseError?.message === 'injected http.Server.close callback failure',
+  'production static-server close wrapper swallowed its callback error');
+
+  const lifecycleTemp = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-compendiummem-lifecycle-'));
+  try {
+    const runLifecycleControl = async ({
+      label, kind = 'candidate', browserFailure = null, serverFailure = null,
+      releaseFailure = null, seedSuccessSample = false,
+      samplePublicationFailure = null, sampleDiscardFailure = null,
+      reportPublicationFailures = [], failureBuilderFailure = null,
+    }) => {
+      const controlDir = path.join(lifecycleTemp, label);
+      fs.mkdirSync(controlDir);
+      const lifecycleReportPath = path.join(controlDir, 'report.json');
+      const samplePath = path.join(controlDir, 'success-sample.json');
+      const provisional = kind === 'candidate' ? clone(report) : {
+        schema: 'cf-v2-compendium-broken-baseline-report/v1', status: 'measured',
+        runId: `selftest-${label}`, startedAt: '2026-08-16T00:00:00.000Z',
+        endedAt: '2026-08-16T00:00:01.000Z', durationMs: 1000,
+        policy: {
+          attemptCount: 1, automaticRetries: 0,
+          observationTimeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS,
+        },
+        collectorSource: clone(report.source), baselineSource: clone(report.source),
+        inputs: clone(report.inputs), inputDigest: 'd'.repeat(64),
+        browser: clone(report.browser), findings: [],
+        profiles: {
+          phone: { profile: 'phone', diagnostic: 'complete' },
+          desktop: { profile: 'desktop', diagnostic: 'complete' },
+        },
+        samplePath: path.basename(samplePath),
+      };
+      if (kind === 'candidate') {
+        for (const profile of ['phone', 'desktop']) {
+          provisional.profiles[profile].reviewPacket = provisional.reviewPacket
+            .filter((item) => item.profile === profile);
+        }
+      }
+      const running = {
+        ...clone(provisional), status: 'running', endedAt: null, durationMs: null,
+        lifecycle: {
+          schema: 'cf-v2-compendium-report-lifecycle/v1', status: 'pending',
+        },
+        outcomes: [], findings: [], profiles: {}, reviewPacket: [],
+      };
+      atomicWriteJson(lifecycleReportPath, running);
+      if (seedSuccessSample) atomicWriteJson(samplePath, { status: 'stale-success' });
+      const trace = [];
+      const assertReportStillRunning = (owner) => {
+        const current = JSON.parse(fs.readFileSync(lifecycleReportPath, 'utf8'));
+        assert(current.status === 'running',
+          `${label} exposed ${current.status} before ${owner} cleanup completed`);
+      };
+      const rejectedPublicationStages = new Set(reportPublicationFailures);
+      let result = null;
+      let thrown = null;
+      try {
+        result = await finalizeCompendiumLifecycle({
+          provisionalReport: provisional, provisionalExitCode: 0,
+          closeBrowser: async () => {
+            trace.push('browser:close');
+            assertReportStillRunning('browser');
+            if (browserFailure) throw new Error(browserFailure);
+          },
+          closeServer: async () => {
+            trace.push('server:close');
+            assertReportStillRunning('server');
+            if (serverFailure) throw new Error(serverFailure);
+          },
+          publishSuccessSample: () => {
+            trace.push('sample:publish');
+            atomicWriteJson(samplePath, { status: 'current-success' });
+            if (samplePublicationFailure) throw new Error(samplePublicationFailure);
+          },
+          discardSuccessSample: () => {
+            trace.push('sample:discard');
+            if (sampleDiscardFailure) throw new Error(sampleDiscardFailure);
+            try { fs.unlinkSync(samplePath); }
+            catch (error) { if (error?.code !== 'ENOENT') throw error; }
+          },
+          publishReport: (value) => {
+            const publicationStage = value.lifecycle?.status || value.status;
+            trace.push(`report:${value.status}:${publicationStage}`);
+            if (rejectedPublicationStages.has(publicationStage)) {
+              throw new Error(`injected ${publicationStage} report publication failure`);
+            }
+            atomicWriteJson(lifecycleReportPath, value);
+          },
+          releaseLock: () => {
+            trace.push('lock:release');
+            if (releaseFailure) throw new Error(releaseFailure);
+          },
+          makeFailureReport: (failures) => {
+            if (failureBuilderFailure) throw new Error(failureBuilderFailure);
+            return kind === 'candidate'
+              ? candidateLifecycleFailureReport(provisional, failures)
+              : baselineLifecycleFailureReport(provisional, failures);
+          },
+        });
+      } catch (error) { thrown = error; }
+      const persisted = JSON.parse(fs.readFileSync(lifecycleReportPath, 'utf8'));
+      assert(trace.filter((entry) => entry === 'browser:close').length === 1
+        && trace.filter((entry) => entry === 'server:close').length === 1
+        && trace.filter((entry) => entry === 'lock:release').length === 1,
+      `${label} did not close/release every lifecycle owner exactly once`);
+      const persistedSample = fs.existsSync(samplePath)
+        ? JSON.parse(fs.readFileSync(samplePath, 'utf8')) : null;
+      return { result, thrown, persisted, trace, samplePath, persistedSample };
+    };
+
+    const lifecycleSuccess = await runLifecycleControl({ label: 'success' });
+    assert(lifecycleSuccess.thrown === null && lifecycleSuccess.result.exitCode === 0
+      && lifecycleSuccess.persisted.status === 'pass'
+      && lifecycleSuccess.persisted.lifecycle.status === 'complete'
+      && lifecycleSuccess.trace.join('|')
+        === 'browser:close|server:close|report:running:pending|lock:release|sample:publish|report:pass:complete'
+      && fs.existsSync(lifecycleSuccess.samplePath)
+      && productionVerify(lifecycleSuccess.persisted).ok,
+    'cleanup-complete lifecycle did not publish exactly one verifier-green PASS/sample');
+
+    const browserCleanupRed = await runLifecycleControl({
+      label: 'candidate-browser-red', browserFailure: 'injected browser shutdown failure',
+      seedSuccessSample: true,
+    });
+    assert(browserCleanupRed.result.exitCode === 2
+      && browserCleanupRed.persisted.status === 'instrument-fail'
+      && browserCleanupRed.persisted.lifecycle.status === 'failed'
+      && browserCleanupRed.persisted.outcomes.length === 0
+      && browserCleanupRed.persisted.blockedOutcomes.length === EXPECTED_OUTCOMES.length
+      && browserCleanupRed.persisted.reviewPacket.length === 6
+      && browserCleanupRed.persisted.findings.some((finding) =>
+        finding === 'instrument: browser shutdown: injected browser shutdown failure')
+      && browserCleanupRed.trace.indexOf('server:close')
+        > browserCleanupRed.trace.indexOf('browser:close')
+      && !browserCleanupRed.trace.includes('sample:publish')
+      && !fs.existsSync(browserCleanupRed.samplePath)
+      && productionVerify(browserCleanupRed.persisted).ok,
+    'browser cleanup rejection left candidate PASS/sample/verifier authority');
+
+    const baselineCleanupRed = await runLifecycleControl({
+      label: 'baseline-server-red', kind: 'baseline',
+      serverFailure: 'injected server shutdown failure', seedSuccessSample: true,
+    });
+    assert(baselineCleanupRed.result.exitCode === 2
+      && baselineCleanupRed.persisted.status === 'instrument-fail'
+      && baselineCleanupRed.persisted.evidenceStatus
+        === 'partial-diagnostic-not-budget-samples'
+      && baselineCleanupRed.persisted.findings.some((finding) =>
+        finding === 'instrument: static server shutdown: injected server shutdown failure')
+      && !baselineCleanupRed.trace.includes('sample:publish')
+      && !fs.existsSync(baselineCleanupRed.samplePath),
+    'server cleanup rejection left baseline MEASURED/sample authority');
+
+    const combinedCleanupRed = await runLifecycleControl({
+      label: 'combined-red', browserFailure: 'injected browser failure',
+      serverFailure: 'injected server failure', seedSuccessSample: true,
+    });
+    assert(combinedCleanupRed.persisted.status === 'instrument-fail'
+      && combinedCleanupRed.persisted.findings.length === 2
+      && combinedCleanupRed.persisted.findings[0]
+        === 'instrument: browser shutdown: injected browser failure'
+      && combinedCleanupRed.persisted.findings[1]
+        === 'instrument: static server shutdown: injected server failure'
+      && !fs.existsSync(combinedCleanupRed.samplePath)
+      && productionVerify(combinedCleanupRed.persisted).ok,
+    'combined cleanup rejection did not retain both ordered diagnoses and terminal red');
+
+    const releaseCleanupRed = await runLifecycleControl({
+      label: 'release-red', releaseFailure: 'injected lock release failure',
+    });
+    assert(releaseCleanupRed.result.exitCode === 2
+      && releaseCleanupRed.persisted.status === 'instrument-fail'
+      && releaseCleanupRed.trace.join('|')
+        === 'browser:close|server:close|report:running:pending|lock:release|sample:discard|report:instrument-fail:failed'
+      && !fs.existsSync(releaseCleanupRed.samplePath)
+      && releaseCleanupRed.persisted.findings.some((finding) =>
+        finding === 'instrument: workspace lock release: injected lock release failure')
+      && productionVerify(releaseCleanupRed.persisted).ok,
+    'workspace-lock release rejection left final PASS/sample/verifier authority');
+
+    const terminalPublicationRed = await runLifecycleControl({
+      label: 'terminal-publication-red', reportPublicationFailures: ['complete'],
+    });
+    assert(terminalPublicationRed.thrown === null
+      && terminalPublicationRed.result.exitCode === 2
+      && terminalPublicationRed.persisted.status === 'instrument-fail'
+      && terminalPublicationRed.persisted.lifecycle.status === 'failed'
+      && terminalPublicationRed.trace.join('|')
+        === 'browser:close|server:close|report:running:pending|lock:release|sample:publish|report:pass:complete|sample:discard|report:instrument-fail:failed'
+      && terminalPublicationRed.persisted.findings.some((finding) => finding
+        === 'instrument: terminal report publication: injected complete report publication failure')
+      && !fs.existsSync(terminalPublicationRed.samplePath)
+      && productionVerify(terminalPublicationRed.persisted).ok,
+    'terminal-report publication rejection left a success sample or verifier-green PASS');
+
+    const samplePublicationRed = await runLifecycleControl({
+      label: 'sample-publication-red',
+      samplePublicationFailure: 'injected success sample publication failure',
+    });
+    assert(samplePublicationRed.thrown === null
+      && samplePublicationRed.result.exitCode === 2
+      && samplePublicationRed.result.successSamplePublished === false
+      && samplePublicationRed.persisted.status === 'instrument-fail'
+      && samplePublicationRed.persisted.lifecycle.status === 'failed'
+      && samplePublicationRed.trace.join('|')
+        === 'browser:close|server:close|report:running:pending|lock:release|sample:publish|sample:discard|report:instrument-fail:failed'
+      && samplePublicationRed.trace.filter((entry) => entry === 'sample:publish').length === 1
+      && samplePublicationRed.trace.filter((entry) => entry === 'sample:discard').length === 1
+      && samplePublicationRed.persisted.findings.some((finding) => finding
+        === 'instrument: success sample publication: injected success sample publication failure')
+      && samplePublicationRed.persistedSample === null
+      && productionVerify(samplePublicationRed.persisted).ok,
+    'success-sample publication rejection left disk/sample/PASS authority inconsistent');
+
+    const sampleDiscardRed = await runLifecycleControl({
+      label: 'sample-discard-red',
+      reportPublicationFailures: ['complete'],
+      sampleDiscardFailure: 'injected success sample discard failure',
+    });
+    assert(sampleDiscardRed.thrown === null
+      && sampleDiscardRed.result.exitCode === 2
+      && sampleDiscardRed.result.successSamplePublished === false
+      && sampleDiscardRed.persisted.status === 'instrument-fail'
+      && sampleDiscardRed.persisted.lifecycle.status === 'failed'
+      && sampleDiscardRed.trace.join('|')
+        === 'browser:close|server:close|report:running:pending|lock:release|sample:publish|report:pass:complete|sample:discard|report:instrument-fail:failed'
+      && sampleDiscardRed.trace.filter((entry) => entry === 'sample:publish').length === 1
+      && sampleDiscardRed.trace.filter((entry) => entry === 'sample:discard').length === 1
+      && sampleDiscardRed.persisted.findings.length === 2
+      && sampleDiscardRed.persisted.findings[0]
+        === 'instrument: terminal report publication: injected complete report publication failure'
+      && sampleDiscardRed.persisted.findings[1]
+        === 'instrument: success sample suppression: injected success sample discard failure'
+      && sampleDiscardRed.persistedSample?.status === 'current-success'
+      && productionVerify(sampleDiscardRed.persisted).ok,
+    'success-sample discard rejection did not leave exact terminal-red/disk evidence');
+
+    const pendingPublicationRed = await runLifecycleControl({
+      label: 'pending-publication-red', reportPublicationFailures: ['pending'],
+    });
+    assert(pendingPublicationRed.thrown === null
+      && pendingPublicationRed.result.exitCode === 2
+      && pendingPublicationRed.persisted.status === 'instrument-fail'
+      && !pendingPublicationRed.trace.includes('sample:publish')
+      && !fs.existsSync(pendingPublicationRed.samplePath)
+      && productionVerify(pendingPublicationRed.persisted).ok,
+    'pending-report publication rejection exposed success authority');
+
+    const releaseAndRedPublication = await runLifecycleControl({
+      label: 'release-and-red-publication-red',
+      releaseFailure: 'injected lock release failure',
+      reportPublicationFailures: ['failed'], seedSuccessSample: true,
+    });
+    assert(releaseAndRedPublication.thrown === null
+      && releaseAndRedPublication.result.exitCode === 2
+      && releaseAndRedPublication.persisted.status === 'running'
+      && releaseAndRedPublication.persisted.lifecycle.status === 'pending'
+      && !fs.existsSync(releaseAndRedPublication.samplePath)
+      && !productionVerify(releaseAndRedPublication.persisted).ok
+      && releaseAndRedPublication.result.failures.some((failure) =>
+        failure.stage === 'instrument-fail report publication'),
+    'combined lock-release/red-publication rejection left verifier-green success authority');
+
+    const failureBuilderRejected = await runLifecycleControl({
+      label: 'failure-builder-rejected',
+      browserFailure: 'injected browser shutdown failure',
+      failureBuilderFailure: 'injected failure-report builder failure',
+      seedSuccessSample: true,
+    });
+    assert(failureBuilderRejected.result === null
+      && failureBuilderRejected.thrown?.message === 'injected failure-report builder failure'
+      && failureBuilderRejected.persisted.status === 'running'
+      && failureBuilderRejected.persisted.lifecycle.status === 'pending'
+      && failureBuilderRejected.trace.filter((entry) => entry === 'browser:close').length === 1
+      && failureBuilderRejected.trace.filter((entry) => entry === 'server:close').length === 1
+      && failureBuilderRejected.trace.filter((entry) => entry === 'lock:release').length === 1
+      && !fs.existsSync(failureBuilderRejected.samplePath)
+      && !productionVerify(failureBuilderRejected.persisted).ok,
+    'throwing failure-report construction leaked an owner or verifier-green success');
+  } finally {
+    const prefix = os.tmpdir().endsWith(path.sep) ? os.tmpdir() : os.tmpdir() + path.sep;
+    assert(lifecycleTemp.startsWith(prefix),
+      `refusing unsafe lifecycle temporary cleanup ${lifecycleTemp}`);
+    fs.rmSync(lifecycleTemp, { recursive: true });
+  }
   const calibration = clone(report);
   calibration.status = 'calibration';
   calibration.budget.status = 'calibration-required';
@@ -5608,6 +6066,7 @@ export async function runCompendiumMemSelftest() {
   console.log('  empty + short fixtures; unwindowed rows; exact 132/440 dimensions');
   console.log('  release/disposal/dedupe/full identity/generation/focus/error/cap/canvas/eager import');
   console.log('  count-only bytes, warm plateau, target+heartbeat, stale PASS, missing outcome, no retry');
+  console.log('  cleanup-before-publication: browser/server/lock rejection stays terminal red; success samples suppressed');
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

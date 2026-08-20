@@ -15,18 +15,18 @@
 > finished at PR #30 head `24bcc3cbf4e76f7bb65a00e810e0eeeeb8d7c837` and is integrated at
 > `b091f010011fa16bec457599b41274b7f92bb5e6`. D-TRAIN-1 is integrated through PR #31 at
 > `38447019517147319bd08c598202d097ee866874`. Arc 1A/PR #32 is the active bounded review branch.
-> Exact activation head `96464d5e4ca59074c0d8d59719a90a5dedc2dd2d` passed its complete local
-> battery. Corresponding run `32394244417`, attempt 1, stopped before product measurement in exact-
-> Edge job `96507263338`: runner image `ubuntu24/20260816.277` already carried Edge .86, so the
-> verified package install was an apt no-op and the one unchanged 45-second live preflight launch
-> published no CDP endpoint. There is no Compendium report, outcome, or review PNG. Historical
-> exact-Edge evidence is 4/4 live-launch/control PASS on image `20260810.271`, where apt actually
-> unpacked .86 over resident .78, versus 0/3 ready on image `20260816.277`, where all three installs
-> were already-newest no-ops. Both workflows now request a same-package `--reinstall`, and the
-> preflight selftest statically owns and negative-controls that exact ordered workflow contract.
-> Reinstall is a bounded runner-image normalization hypothesis, not a proven fix until one new
-> changed-head CI. Product, browser authority, measurement, producer, budgets, timing, and the one-
-> attempt/zero-retry policy are unchanged. Arc 1B/gameplay resumes after PR #32 closes.
+> Exact local `89bfa05…`, run `20260820-pr32-89bfa05-compendiummem`, completed 78/78 with zero
+> findings and six PNGs, then exited 2 during owned browser shutdown. Terminal log `b0bb8abc…` is
+> authoritative; pre-cleanup PASS report/verifier `66ba1366…` / `98664dca…` are false-green. This
+> is a one-attempt/no-retry post-measurement instrument red, not product certification or
+> calibration. Frozen browser CDP `6da9e2ef…` separates direct exit from stdio close; collector
+> `f4ad842c…` plus selftest `2713ed10…` defer sample and terminal success until browser/server
+> cleanup and workspace-lock release and require lifecycle at verification. Measurement is now
+> `a3b3bb9f…`; producer stays `d3223177…`. Fail-closed budget/test `ae4ab918…` / `60fa5e9f…`
+> require one clean committed baseline9 plus candidate20/21/22, each once without retry. No
+> product, browser/package, launch argument, timing, producer, or retry-policy drift occurred.
+> Activate that ruler, run one exact-head battery, push existing PR #32 once, and require one
+> corresponding CI; first red stops. Arc 1B/gameplay resumes after PR #32 closes.
 > Later product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
@@ -624,16 +624,13 @@ both parent voices.
 accessibility, or approved static art.
 
 **Current state (2026-08-20): product implementation, serviced-turn scheduler, compact-phone stack,
-and displayed-demand/zoom-owner repair are present. Exact activation head `96464d5…` passed its
-complete local battery. Corresponding run `32394244417`, attempt 1, stopped before product on runner
-image `ubuntu24/20260816.277`: the verified exact-.86 apt install was an already-newest no-op and
-the unchanged one-launch Edge preflight published no CDP endpoint within 45 seconds. No candidate,
-report, outcome, or review PNG exists. The two workflows now request same-package `--reinstall`;
-the preflight selftest owns a green static ordered-contract control, but one changed-head CI must
-still test this runner-image normalization hypothesis. Measurement remains `6ba58522…`; producer is
-`d3223177…`. Clean source `75a996af…` produced baseline8 plus independent candidate17/18/19, and
-active budget/test `74e88c2b…` / `485be9da…` retain the four baseline faults and strict ceilings
-above all candidate maxima. Fresh `[HUMAN]` review remains open.**
+and displayed-demand/zoom-owner repair are present. Exact-89 completed 78/78 and six PNGs, then
+owned shutdown failed after a premature PASS/report verification. The preserved result is a
+post-measurement instrument red. Lifecycle repair `6da9e2ef…` / `f4ad842c…` / `2713ed10…` moves
+measurement to `a3b3bb9f…`; producer remains `d3223177…`. Fail-closed ruler/test
+`ae4ab918…` / `60fa5e9f…` await baseline9 plus candidate20/21/22 from one clean committed source,
+once each without retry. Old baseline8/candidate17/18/19 and `74e88c2b…` / `485be9da…` are
+history only. Fresh `[HUMAN]` review remains open.**
 This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
 corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
 `compendiummem` gate drives a deterministic 1,500-row
@@ -753,11 +750,11 @@ no review PNG, and no retry.
 
 The displayed-demand/zoom-owner product and development-copy repair changes built producer to
 `d3223177…` (index `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`; worker/painter
-unchanged). Measurement remains `6ba58522…`. Clean committed collector/candidate source
+unchanged). Historical measurement was `6ba58522…`. Clean committed collector/candidate source
 `75a996af…` produced one no-retry baseline8 against legacy `3844701…` and independent no-retry
 candidate17/18/19 under exact Edge .86; all candidates replayed 78/78, while baseline8 retained all
-four faults and breached 14 phone / 13 desktop ceilings. Active budget/test `74e88c2b…` /
-`485be9da…` (79,614 / 20,782 bytes) reuse all 40 strict ceilings above the three-run maxima. This
+four faults and breached 14 phone / 13 desktop ceilings. Then-active budget/test `74e88c2b…` /
+`485be9da…` (79,614 / 20,782 bytes) reused all 40 strict ceilings above the three-run maxima. This
 activation was browser-free and non-certifying. Exact activation head `96464d5…` then passed the
 complete local battery. Corresponding run `32394244417`, attempt 1, tested synthetic merge
 `63665b6…`; root, static, Chrome Smoke, and Chrome Glass passed, while the exact-Edge job
@@ -772,11 +769,17 @@ was already resident and apt did no package work; region evidence does not isola
 pool. Both workflows now request `apt-get install --reinstall --yes "$edge_package"`. The preflight
 selftest statically requires the unique owned step's ordered URL/SHA/download/hash/reinstall/version/
 executable chain followed by preflight, and rejects per-workflow removal and outside-step decoys.
-That green browser-free control proves workflow bytes, not the live hypothesis. Run one new changed-
-head CI attempt; first red stops. The exact package, Edge authority, launcher/preflight/collector,
-45/15/5/2 preflight, 15-second candidate startup, 2-second product observation, one attempt/zero
-retries, measurement `6ba58522…`, producer `d3223177…`, budget `74e88c2b…`, and test `485be9da…`
-remain unchanged. After PR #32 closes, execution returns to Arc 1B/gameplay. The Arc-local Edge authority
+That green browser-free control proves workflow bytes, not the live hypothesis. Exact local
+`89bfa05…` later completed 78/78 plus six PNGs, then owned shutdown exited 2 after its report and
+verifier had already published PASS. Terminal log `b0bb8abc…` makes that a post-measurement
+instrument red; report/verifier `66ba1366…` / `98664dca…` are false-green. Browser CDP
+`6da9e2ef…` and collector/selftest `f4ad842c…` / `2713ed10…` separate process exit from stdio
+close, defer samples and terminal success until cleanup plus lock release, and enforce lifecycle at
+verification. Measurement is now `a3b3bb9f…`; producer remains `d3223177…`. Fail-closed
+budget/test `ae4ab918…` / `60fa5e9f…` await baseline9 plus candidate20/21/22, one clean committed
+source and one attempt each. No package, Edge authority, launch argument, product, timing, producer,
+or retry-policy change occurred. Activate, run one exact-head battery, push PR #32 once, and require
+one corresponding CI; first red stops. After PR #32 closes, execution returns to Arc 1B/gameplay. The Arc-local Edge authority
 still does **not** repin
 Gate-A/global Edge `150.0.4078.83`.
 
