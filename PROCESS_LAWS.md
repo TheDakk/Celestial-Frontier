@@ -1016,11 +1016,16 @@ warm launch remains 10,000 ms, the shared launcher and Compendium candidate star
 and the game observation remains 2,000 ms. Portable controls succeed at 38,657 ms and reject the exact
 and late 38,658/38,659 ms boundaries. Browser-CDP SHA-256
 `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9` establishes measurement
-authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer `e59685b1…`
-is unchanged and the ruler stays `calibration-required` pending baseline7/candidate14/15/16. Nick
-accepts 45 seconds as the CI cold-start allowance, not an optimization target. This batch gets one
-authority refresh and one battery/CI attempt, then returns to gameplay roadmap work rather than
-expanding timing policy.
+authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer
+`e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb` is unchanged. Clean source
+`374049536e959597f8fc40e87a68bc6cbfd0b455` collected paired baseline7 plus independent
+candidate14/15/16 once without retry; every candidate replayed 78/78. Active budget/test
+`bb4da2bf0bc6dd4327884ff07735241b2fa8d9e5e6d32f09295ed86ae7bdbcfe` /
+`d242705ad987d21c773d23b33eb94bbbbeb1a94ec6d527ff594c198861b7be48` retain all four baseline
+faults, 14 phone / 13 desktop breaches, and 40 strict ceilings above the three-run maxima. This is
+browser-free ruler activation, not certification. Nick accepts 45 seconds as the CI cold-start
+allowance, not an optimization target. The activated head gets one exact-head battery and one
+corresponding CI attempt, then work returns to the gameplay roadmap rather than expanding timing policy.
 
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread

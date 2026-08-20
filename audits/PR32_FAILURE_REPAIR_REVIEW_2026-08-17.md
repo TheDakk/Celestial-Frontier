@@ -34,8 +34,11 @@ baseline6/candidate11/12/13 then activated budget/test `ebe5b5c3…` / `ec956b8a
 `f9ae372…` passed its full local battery, but corresponding run `32367902426` / job `96421452463`
 stopped before product measurement on the first real Edge selftest cold launch. The bounded
 one-launch repair changes browser-CDP to `6892dea6…` and measurement authority to `6ba58522…`;
-producer `e59685b1…` is unchanged and current budget/test `41482f1c…` / `85420929…` fail closed
-pending baseline7/candidate14/15/16.
+producer `e59685b1…` is unchanged. Clean source `374049536e…` collected paired baseline7 plus
+independent candidate14/15/16 once without retry; every candidate replayed 78/78. Active
+browser-free budget/test `bb4da2bf0b…` / `d242705ad9…` set all 40 ceilings strictly above the
+three-run maxima while retaining the four baseline faults and 14 phone / 13 desktop breaches.
+Activation is non-certifying; one exact-head battery, one corresponding CI attempt, and HUMAN review remain.
 This review alone is not approval authority.
 
 ## 1. Executive state
@@ -47,7 +50,7 @@ approval blockers:
 | CI area | Classification | Current disposition |
 | --- | --- | --- |
 | `v2-static` | Instrument false positive | Fixed; current audit reports 28 sources / 0 findings |
-| `v2-compendium-memory` | Historical product-unanswerable findings, ruler/scheduler/shared-timer defects, producer boundary, then CI cold-start instrument red | Heavy import/paint/PNG work moved to a serviced serial worker; historical baseline5/candidate8/9/10 and baseline6/candidate11/12/13 remain exact-authority evidence. Exact f9 locally passed the full battery, but run `32367902426` stopped before `Browser.getVersion` or Compendium. The one-launch 45-second cold selftest envelope changes measurement to `6ba58522…`; current budget `41482f1c…` fails closed pending baseline7/candidate14/15/16, activation, one exact-head battery, and one corresponding PR test-merge attempt |
+| `v2-compendium-memory` | Historical product-unanswerable findings, ruler/scheduler/shared-timer defects, producer boundary, then CI cold-start instrument red | Heavy import/paint/PNG work moved to a serviced serial worker; historical baseline5/candidate8/9/10 and baseline6/candidate11/12/13 remain exact-authority evidence. Exact f9 locally passed the full battery, but run `32367902426` stopped before `Browser.getVersion` or Compendium. The one-launch 45-second cold selftest envelope changes measurement to `6ba58522…`; clean baseline7/candidate14/15/16 activate browser-free budget `bb4da2bf0b…` for unchanged producer `e59685b1…`. This does not certify a browser run. One exact-head battery and one corresponding PR test-merge attempt remain |
 | `v2-smoke` | Obsolete fixed-wait check, then multi-target foreground ownership, then D-TRAIN fixture-setup instrument defects | Cold Planetside uses one monotonic semantic settlement phase with exact decode/work outcomes. Ef6 binds attach-derived target/document identity, proves visible/focused rAF→later-task service before one release, retains rich diagnostics, and passed that phase in its next exact-source Smoke. That run stopped only because direct D-TRAIN seeding did not join a prior Atlas/Land persistence owner; the follow-up drains/reproduces/proves exact runnable setup and semantically awaits busy refusal. The final-head ignored Smoke artifact is the sole authority for that outcome; tracked prose does not cache it |
 | `v2-glass` | Historical instrument/short-landscape repairs, then one compact-phone product geometry finding | Guide predicate, clipping diagnostics, hostile fixture, and nonmodal landscape workspace remain repaired. Exact c095's first full run executed 12/12 rows and 58/58 controls with zero instrument failures/retries, then stopped on only a 12.5px Survey/Planetside overlap. The bounded shared-anchor stack repair is present; changed-head Glass remains open |
 
@@ -929,16 +932,32 @@ workflow sleep/change, or game timing optimization.
 Frozen `browsercdp.mjs` SHA-256 is
 `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9`, establishing measurement
 authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`. Producer authority remains
-`e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`. Fail-closed budget/test
-SHA-256 values are `41482f1ce3e458661f832bcbd87819003c45da886a0408b08bb1360e03ca1cd2` /
-`8542092988ac0e50b4166e4daeae22694d449855fbe0c2b40c891d6b734e7d82`: status
-`calibration-required`, no candidate samples or ceilings, and paired baseline
-`measurement-required` with null collector and no samples. Baseline6/candidate11/12/13 remain
-truthful history for `f9710bdf…`; they cannot certify the changed launcher input.
+`e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`. Clean collector/candidate
+source `374049536e959597f8fc40e87a68bc6cbfd0b455` collected baseline7 against legacy product
+`38447019517147319bd08c598202d097ee866874` and independent candidate14/15/16. Every run was one
+attempt with no retry, and every candidate replayed 78/78. The report/sample SHA-256 pairs are:
 
-Nick accepts 45 seconds as a CI cold-start allowance, not an optimization target. PR #32 gets one
-fresh paired baseline7 plus independent candidate14/15/16, one activation, one exact-head battery,
-and one corresponding CI attempt. No broader timing or harness work is added in this batch; after
+- baseline7: `f99e3485e9a1fd14247897e60942c445e4f370cfd6a3f4b0b441e1a90c30c153` /
+  `27ba7bc88092bdcb78d51a05a5da6b8f90c754ff1494c56ac81d5e49b3331eb5`;
+- candidate14: `282567b638e9bbd159e1deecce2ab931dab52675e50df7e617f0f7a51b75d40e` /
+  `74ec144fdc9224d1e61c6ba1fa3983dc830195bfe30c41c2be378ce95f5bb454`;
+- candidate15: `1d121a6dc11c2e2554be3267a241e66afb8ae6cfa02975becb28d3f1817784dd` /
+  `8c137c132dbd3020cae73e0b335a76c20eca33a1e4b7187df675575725b368d8`;
+- candidate16: `4975c2f860e41d6066e3bf5f7a8c478909db7fa31ea4155d20f873efc2e9cc5f` /
+  `c51c77da9ab5d44f6b55fdb482c306aee9cd72031a2fa09971555e871a76fd48`.
+
+Active budget SHA-256 is `bb4da2bf0bc6dd4327884ff07735241b2fa8d9e5e6d32f09295ed86ae7bdbcfe`
+(79,599 bytes); focused test SHA-256 is
+`d242705ad987d21c773d23b33eb94bbbbeb1a94ec6d527ff594c198861b7be48` (20,766 bytes). All 40
+ceilings strictly exceed the three-candidate maxima. Phone heap/embedder/backing/aggregate/encoded/
+warm maxima are `7777356/3194840/2964133/12478835/2472768/5548`; desktop maxima are
+`10811304/3132296/4852023/16046253/6599264/75992`. The paired baseline retains all four seeded
+faults and breaches 14 phone / 13 desktop ceilings. This activation is browser-free and
+non-certifying. Baseline6/candidate11/12/13 remain truthful history for `f9710bdf…`; they cannot
+certify the changed launcher input.
+
+Nick accepts 45 seconds as a CI cold-start allowance, not an optimization target. The activated PR
+#32 head gets one exact-head battery and one corresponding CI attempt. No broader timing or harness work is added in this batch; after
 that bounded closure cycle, work returns to the gameplay program roadmap. Any new red remains the
 exact blocker rather than starting another open-ended infrastructure loop.
 
@@ -947,10 +966,8 @@ exact blocker rather than starting another open-ended infrastructure loop.
 1. Preserve c095's exact Compendium/Smoke PASS and first full Glass red, f9's full local-green
    battery, and run `32367902426`'s pre-product cold-start red without retry. Historical
    baseline/candidate sets do not certify measurement `6ba58522…`.
-2. From one clean committed repair head, collect paired baseline7 plus independent
-   candidate14/15/16 once, activate only valid replayed raw evidence, then resolve the exact
-   activation head, target bytes, worktree, and upstream. From that one clean
-   committed head, run browser path/CDP controls, Arc-local Edge Compendium certification and named
+2. Resolve the exact committed activation head, target bytes, worktree, and upstream. From that one
+   clean committed head, run browser path/CDP controls, Arc-local Edge Compendium certification and named
    verifier, one no-retry Chrome Smoke, full Chrome Glass, persona join, root layout plus exact-run
    verification, and a verified nonpublishable preview package plus browser smoke.
 3. Immediately preserve Smoke's overwrite-prone generic report/log as exact run-ID-named copies.
@@ -969,12 +986,12 @@ exact blocker rather than starting another open-ended infrastructure loop.
    review permit Ready/merge and subsequent `develop` monitoring.
 8. Fresh six-image HUMAN judgment and Claude presentation-polish remain separate; neither is
    supplied by the automated evidence.
-9. Stop infrastructure expansion after this one authority refresh, one exact-head battery, and one
+9. Stop infrastructure expansion after the activated authority's one exact-head battery and one
    corresponding CI attempt; return to gameplay roadmap work after PR #32 closure.
 
 ## 8. Required verification before saying “ready”
 
-### Browser-free — preserved historical activations plus current fail-closed transition
+### Browser-free — preserved historical activations plus current active ruler
 
 - full Vitest: 36 files, 423 passed, 1 skipped;
 - focused broker/portable/worker tests: 28 passed;
@@ -1014,14 +1031,14 @@ only at the D-TRAIN setup race in §6.8. The current follow-up adds fail-closed 
 the later pushed head reached the exact PR test-merge in §6.9. That report is valid instrument-only
 evidence and stops certification for that head. Section 6.11 records the later c095 PASS/PASS/Glass
 product-red sequence and producer transition; §6.12 records the historical
-baseline6/candidate11/12/13 ruler; §6.13 records the later fail-closed `6ba58522…` transition.
-Focused 11/11, Compendium selftest 222/222, and semantic validation are green. These are
-browser-free ruler facts, not selected-head certification.
+baseline6/candidate11/12/13 ruler; §6.13 records active `6ba58522…` / `e59685b1…` browser-free
+budget `bb4da2bf0b…`. Its one-attempt/no-retry baseline7/candidate14/15/16 evidence has 78/78 for
+every candidate, all 40 ceilings strict, and retained four-fault baseline discrimination at 14
+phone / 13 desktop breaches. These are browser-free ruler facts, not selected-head certification.
 
 ### Browser-owning, one attempt and no retry
 
-After baseline7/candidate14/15/16 activate the current producer ruler, and with correct
-process-owned browser selection:
+With the active current-producer ruler and correct process-owned browser selection:
 
 1. shared browser path/CDP selftests;
 2. on the committed exact activation head, run Arc-local Edge Compendium certification plus independent
@@ -1037,9 +1054,9 @@ to raise deadlines, retry, regenerate a budget, or weaken a control merely to ob
 ### GitHub handoff
 
 Runs `32350971816` / `96369841133` and `32367902426` / `96421452463`, plus c095's full Glass report,
-are preserved stopping reds and must not be retried unchanged. The current ruler is fail-closed;
-complete §6.13's one calibration set and §7's activation-head battery, then push only after that
-same-head terminal evidence is clean:
+are preserved stopping reds and must not be retried unchanged. Section 6.13's browser-free ruler is
+active but non-certifying; complete §7's activation-head battery, then push only after that same-head
+terminal evidence is clean:
 
 - push the unchanged exact head to PR #32 without another tracked edit;
 - verify CI is evaluating the PR test-merge corresponding to that exact pushed head;
@@ -1072,8 +1089,7 @@ historical producer `1c8200d7…`. Section 6.11 records c095's exact Compendium/
 the no-retry compact-phone Glass product red and the bounded stack repair. That repair changes producer
 to `e59685b1…`; §6.12's baseline6/candidate11/12/13 historically activated budget `ebe5b5c3…`.
 Section 6.13 records exact-f9's full local PASS, its corresponding pre-product CI cold-start red,
-and the fail-closed `6ba58522…` authority transition. Approval remains blocked on baseline7 plus
-candidate14/15/16 activation, one complete activation-head battery, and corresponding terminal-green
-PR test-merge CI.
+and the active browser-free `6ba58522…` / `e59685b1…` ruler. Approval remains blocked on one
+complete activation-head battery and corresponding terminal-green PR test-merge CI.
 HUMAN judgment and Claude
 presentation-polish remain separate.

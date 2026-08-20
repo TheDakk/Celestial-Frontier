@@ -96,10 +96,12 @@ shutdown remain 15,000/1,500/2,000 ms, generic and candidate startup remain 15,0
 observation remains 2,000 ms. Portable controls pass at 38,657 ms and reject exact/late
 38,658/38,659 ms with one child and complete cleanup. No warmup, relaunch, retry, fallback, workflow
 change, or art/game timing optimization was added. Launcher `6892dea6…` changes measurement authority
-to `6ba58522…`; producer `e59685b1…` remains unchanged. Current budget/test `41482f1c…` /
-`85420929…` fail closed pending paired baseline7 and candidate14/15/16. The 45-second CI allowance
-is accepted process environment, not a game optimization target; after one authority refresh and
-one battery/CI attempt, work returns to gameplay arcs.
+to `6ba58522…`; producer `e59685b1…` remains unchanged. Clean source `374049536e…` collected
+baseline7 plus independent candidate14/15/16 once without retry; every candidate replayed 78/78.
+Active browser-free budget/test `bb4da2bf0b…` / `d242705ad9…` own all 40 strict ceilings while
+retaining four baseline faults and 14 phone / 13 desktop breaches; this is not certification. The
+45-second CI allowance is accepted process environment, not a game optimization target; after one
+exact-head battery and one corresponding CI attempt, work returns to gameplay arcs.
 Every selected head must own exact-source local certification, and its corresponding PR test-merge
 CI must be terminal green; this reference deliberately caches neither live outcome.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150

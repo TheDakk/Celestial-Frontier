@@ -151,8 +151,10 @@
 > observation. Portable controls pass at 38,657 ms and fail at exact/late 38,658/38,659 ms; there is
 > no warmup, relaunch, retry, fallback, workflow change, or UI/game timing optimization. Launcher
 > `6892dea6…` changes measurement to `6ba58522…`; producer remains `e59685b1…`, and budget/test
-> `41482f1c…` / `85420929…` fail closed pending baseline7/candidate14/15/16. One authority refresh
-> and one battery/CI attempt remain before returning to gameplay work.
+> `bb4da2bf0b…` / `d242705ad9…` are active from clean one-attempt/no-retry baseline7 plus
+> candidate14/15/16; every candidate replayed 78/78, all 40 ceilings are strict, and the retained
+> baseline breaches 14 phone / 13 desktop fields. This is browser-free activation, not
+> certification. One exact-head battery and one corresponding CI attempt remain before gameplay work.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
 > list, focus-pinned, and detail PNGs still await HUMAN review. Arc 1B scene-resource disposal and live
 > HD planet replacement remain open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
@@ -450,8 +452,9 @@
 > paired baseline6 plus candidate11/12/13 historically activated budget `ebe5b5c3…` under that exact
 > producer and measurement authority. Exact f9's full local battery remains truthful, but its
 > corresponding run `32367902426` stopped on the first real Edge selftest cold launch before product.
-> Launcher `6892dea6…` changes measurement to `6ba58522…`; budget `41482f1c…` is fail-closed pending
-> baseline7/candidate14/15/16. Every selected head must still own exact-source local resource
+> Launcher `6892dea6…` changes measurement to `6ba58522…`; browser-free budget `bb4da2bf0b…` is
+> active for unchanged producer `e59685b1…` from clean source `374049536e…`. Every selected head
+> must still own exact-source local resource
 > certification and corresponding terminal-green PR test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150
 > browser. Fresh six-image evidence still awaits HUMAN review. Arc 1B
