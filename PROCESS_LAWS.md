@@ -807,8 +807,10 @@ activation head once. For this repair, producer
 `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2` was recalibrated under exact
 Edge 151.0.4129.86 from one-attempt baseline4 plus independent candidate5/6/7. The active ruler
 replays their raw capsules, retains all four baseline faults and 14 phone / 13 desktop breaches,
-and exact-788 local certification passed. The later instrument-only head and PR CI still require
-their own exact-source browser evidence; activation or an earlier-head PASS is not certification.
+and exact-788 local certification passed. Every instrument-only head and PR test-merge must own its
+exact-source browser evidence; whether the selected head has such ignored evidence is resolved from
+its named artifacts, never cached in this reference. Activation or an earlier-head PASS is not
+certification.
 
 **Correction earned by PR #32's first serviced-turn Chrome Smoke:** a CDP session that answers
 `Runtime.evaluate` does not prove that its document owns a rendering opportunity. Exact-head run
@@ -833,6 +835,38 @@ page's witness. Negative-control wrong target, stale document/service identity, 
 arm and phases, phase reversal, and intervening visibility/focus changes. A timeout must retain the
 last non-null image/decode, queue/active, worker identity/phase/result/error, broker, and foreground
 state; a generic `null` cannot distinguish product from a missing test precondition.
+
+**Correction earned by PR #32's exact-ef6 D-TRAIN Smoke:** a direct fixture write does not own
+setup while an older product writer can still commit. Clean committed
+`ef6c2c2cd31363cf47899a89c16c0d9f5f90d7a7` first passed its one-attempt exact Edge Compendium
+certification and named verifier. Its immediately following one-attempt Chrome Smoke run
+`20260820071826194-75001-c2a22330fd09` then completed with only two findings: no D-TRAIN import-
+owner busy-refusal witness and the same phase's missing Skip action (`button:false`,
+`witness:null`). Report/log SHA-256 values are
+`65ca06c8f6d26ef3a9a3da19bb4bc09bb005d754f2291f55f389ac1ecf14aa46` /
+`87b1c8b6308d3a1969fb45ea4c2ccb70d1f46c2a8311751984b3c1ab0acdd7d9`; the run used Chrome for
+Testing 152.0.7977.54, zero retries, and detected no source change.
+
+The D-TRAIN fixture helper had written IndexedDB immediately after a real Atlas/Land journey
+without first joining that page's ordinary persistence owner. A later write could therefore replace
+the fixture before navigation, while the helper proved only a changed document token and returned
+whatever raw bytes happened to remain. Comparing the later primary to that returned value could be
+self-consistent even when the intended fixture never booted. The report did not retain which raw
+bytes won, so do not invent that terminal value or reinterpret the absent action/witness as a
+product busy-refusal failure. Source ordering plus a deliberate stale-write reproduction identifies
+this as a harness setup race.
+
+**A FIXTURE MUST JOIN PRIOR WRITERS AND PROVE ITS RUNNABLE PRECONDITION BEFORE A PRODUCT VERDICT.**
+Drain the actual preceding persistence path, deliberately reproduce the unjoined stale-write race as
+a negative control, then seed once and require the intended primary bytes after a changed exact
+document loads. Bind the page's document token, classified state, canonical route plus rendered
+receipt, live surface, connected/enabled/visible real action, idle status, and expected ticker state
+before arming the product transaction. Setup drift is one fail-closed harness finding before release,
+never a product finding assembled from optional-chained missing controls. After setup passes, drive
+one real action and wait semantically for its operation-local terminal witness; `Promise.resolve()`
+is not settlement authority. For the import-owner case, also require one captured Skip click,
+`claim-rejected/busy`, unchanged primary bytes, and zero native writes before releasing the import
+owner. Do not answer this class with a sleep, retry, fixture rewrite loop, or looser product oracle.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next

@@ -486,8 +486,12 @@ separate always-run artifact step where a missing file is an error.
 The first mutable-tree diagnostic through the new launcher preserved a sandboxed Edge
 SIGABRT as red startup evidence. A separately permitted diagnostic then completed all
 787 checks across 10 viewports. That second run proves reachability only; neither run
-is exact-head certification. The implementation still needs a clean commit, the full
-sequential exact-commit battery, push, and matching GitHub CI.
+is exact-head certification. Exact-head authority for any later source comes only from a named
+schema-v2 layout run plus exact-run verification inside the same local battery. Because that report
+does not embed Git source, the caller must also retain a commit-tagged run ID, unchanged target blob,
+and matching clean HEAD/status before and after the run and verifier. Terminal-green PR test-merge
+CI corresponding to that pushed head remains separate; this reference does not cache the current
+outcome.
 
 ## uilayout.js — the training-card reachability pass
 

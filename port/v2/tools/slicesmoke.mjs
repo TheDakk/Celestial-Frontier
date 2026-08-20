@@ -19,11 +19,13 @@ import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 import {
+  assessTrainingBusyRefusalPrecondition,
   classifyForegroundServiceTurn,
   classifyForegroundServiceTurnReceipt,
   classifyPlanetsideSettlement,
   planetsidePhaseRemainingMs,
   planetsideRuntimeTimeoutDecision,
+  trainingBindingReceiptBeforeDeadline,
 } from './slicesmoke-contract.mjs';
 import { findCandidateSpeciesArtBuildGraph } from './speciesart-build.mjs';
 
@@ -4206,33 +4208,164 @@ try {
   /* Opposite arbitration direction: Import claims first while waiting on an
      older persist. The real Skip must refuse busy in-place; only after release
      may Import replace/reload the expedition. */
+  const importOwnerPersistDrained = await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  if (!importOwnerPersistDrained) {
+    throw new Error('D-TRAIN import-owner setup could not drain the prior Atlas/Land persistence chain');
+  }
+  const importOwnerUnsafeSeedRaw = JSON.stringify({
+    ...JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION)),
+    me: 'D-TRAIN unjoined fixture control must win late',
+  });
+  if (importOwnerUnsafeSeedRaw === DTRAIN_LEGACY_RAW) {
+    throw new Error('D-TRAIN import-owner setup control did not create distinct delayed bytes');
+  }
+  const importOwnerUnsafeSeedArmed = await evalIn(
+    `window.__CF_SLICE__.api.__smokeArmImportRace(${JSON.stringify(importOwnerUnsafeSeedRaw)})`,
+  );
+  if (!importOwnerUnsafeSeedArmed) {
+    throw new Error('D-TRAIN import-owner setup control could not arm its delayed prior write');
+  }
+  await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
+    q.onerror=()=>reject(q.error);q.onsuccess=()=>{const db=q.result,tx=db.transaction('meta','readwrite');
+      tx.objectStore('meta').put(${JSON.stringify(DTRAIN_LEGACY_RAW)},'save');tx.oncomplete=()=>{db.close();resolve(true)};
+      tx.onerror=()=>reject(tx.error);};})`);
+  const importOwnerUnsafeSeeded = await evalIn(READ_PRIMARY_EXPRESSION);
+  const importOwnerUnsafeReleased = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseImportRace()`);
+  if (!importOwnerUnsafeReleased || importOwnerUnsafeSeeded !== DTRAIN_LEGACY_RAW) {
+    throw new Error('D-TRAIN import-owner setup control did not reproduce the unjoined fixture-write race: '
+      + JSON.stringify({ armed: importOwnerUnsafeSeedArmed, released: importOwnerUnsafeReleased,
+        seededExact: importOwnerUnsafeSeeded === DTRAIN_LEGACY_RAW }));
+  }
+  const importOwnerUnsafeDeadline = performance.now() + 2000;
+  let importOwnerUnsafeAfter = importOwnerUnsafeSeeded;
+  let importOwnerUnsafeObservedBeforeDeadline = false;
+  while (performance.now() < importOwnerUnsafeDeadline) {
+    const remainingMs = Math.max(1, Math.floor(importOwnerUnsafeDeadline - performance.now()));
+    importOwnerUnsafeAfter = await evalIn(READ_PRIMARY_EXPRESSION, { timeoutMs: remainingMs });
+    const receivedAtMs = performance.now();
+    if (receivedAtMs >= importOwnerUnsafeDeadline) break;
+    if (importOwnerUnsafeAfter === importOwnerUnsafeSeedRaw) {
+      importOwnerUnsafeObservedBeforeDeadline = true;
+      break;
+    }
+    await sleep(Math.min(20, Math.max(0, importOwnerUnsafeDeadline - performance.now())));
+  }
+  if (!importOwnerUnsafeObservedBeforeDeadline) {
+    throw new Error('D-TRAIN import-owner setup control did not observe its exact armed late write: '
+      + JSON.stringify({ expectedLength: importOwnerUnsafeSeedRaw.length,
+        actualLength: importOwnerUnsafeAfter.length,
+        expectedName: JSON.parse(importOwnerUnsafeSeedRaw).me,
+        actualName: (() => { try { return JSON.parse(importOwnerUnsafeAfter).me ?? null; } catch { return null; } })() }));
+  }
   const importOwnerBooted = await dtrainSeedPrimary(DTRAIN_LEGACY_RAW, 'D-TRAIN import-owner race');
+  const importOwnerPrecondition = await evalIn(`(async()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
+    card=document.getElementById('tutcard'),button=card?.querySelector('[data-sel="tutskip"]'),
+    status=card?.querySelector('[data-sel="tutstatus"]');
+    return {documentToken:S?.documentToken||null,primaryRaw:await (${READ_PRIMARY_EXPRESSION}),state,
+      card:!!card,trainingBody:document.body.classList.contains('training'),
+      button:{present:!!button,connected:button?.isConnected??false,disabled:button?.disabled??null,
+        visible:!!button&&button.getClientRects().length>0&&getComputedStyle(button).visibility!=='hidden'},
+      buttonOwnedByCard:!!card&&!!button&&card.contains(button),
+      status:{present:!!status,hidden:status?.hidden??null},statusOwnedByCard:!!card&&!!status&&card.contains(status),
+      tickerStarted:S?.app?.ticker?.started===true};})()`);
+  const importOwnerPreconditionAssessment = assessTrainingBusyRefusalPrecondition(
+    importOwnerPrecondition,
+    { documentToken: importOwnerBooted.token, primaryRaw: DTRAIN_LEGACY_RAW },
+  );
+  if (!importOwnerPreconditionAssessment.ok) {
+    throw new Error('D-TRAIN import-owner setup was not an exact runnable Training document: '
+      + JSON.stringify({ precondition: importOwnerPrecondition,
+        assessment: importOwnerPreconditionAssessment }));
+  }
   const importOwnerNativeLabel = 'import-owner-training-busy';
   const importOwnerNativeArmed = await evalIn(dtrainNativeWriteArmExpression(importOwnerNativeLabel));
+  if (!importOwnerNativeArmed) {
+    throw new Error('D-TRAIN import-owner setup could not arm exact native-write evidence');
+  }
   const importOwnerMark = events.length;
-  const importOwnerStart = await evalIn(`(async()=>{const api=window.__CF_SLICE__.api,
-    armed=api.__smokeArmImportRace(${JSON.stringify(DTRAIN_LEGACY_RAW)});
-    void api.importBlob(${JSON.stringify(VETERAN_RAW)});await Promise.resolve();
-    const button=document.querySelector('[data-sel="tutskip"]');button?.focus();button?.click();await Promise.resolve();
-    const status=document.querySelector('[data-sel="tutstatus"]');return {armed,button:!!button,
-      disabled:button?.disabled??null,focus:document.activeElement===button,text:status?.textContent||'',
-      hidden:status?.hidden??null,witness:api.state().trainingRestoreWitness};})()`);
+  const importOwnerRaceArmed = await evalIn(
+    `window.__CF_SLICE__.api.__smokeArmImportRace(${JSON.stringify(DTRAIN_LEGACY_RAW)})`,
+  );
+  if (!importOwnerRaceArmed) {
+    throw new Error('D-TRAIN import-owner setup could not arm the held prior persist');
+  }
+  const importOwnerRefusalDeadline = performance.now() + 6000;
+  const importOwnerStart = await evalIn(`(async()=>{const api=window.__CF_SLICE__.api;
+    void api.importBlob(${JSON.stringify(VETERAN_RAW)});
+    const duplicate=await api.importBlob(${JSON.stringify(VETERAN_RAW)}),
+      card=document.getElementById('tutcard'),button=card?.querySelector('[data-sel="tutskip"]');let clickReceipts=0;
+    button?.addEventListener('click',()=>{clickReceipts++},{capture:true,once:true});button?.focus();button?.click();
+    return {duplicate,button:!!button,clickReceipts};})()`, {
+    timeoutMs: Math.max(1, Math.floor(importOwnerRefusalDeadline - performance.now())),
+  });
+  const importOwnerStartReceivedBeforeDeadline = performance.now() < importOwnerRefusalDeadline;
+  let importOwnerRefusal = null;
+  let importOwnerRefusalReceivedBeforeDeadline = false;
+  while (performance.now() < importOwnerRefusalDeadline) {
+    const remainingMs = Math.max(1, Math.floor(importOwnerRefusalDeadline - performance.now()));
+    importOwnerRefusal = await evalIn(`(()=>{const S=window.__CF_SLICE__,api=S?.api,
+      state=api?.state?.(),card=document.getElementById('tutcard'),
+      button=card?.querySelector('[data-sel="tutskip"]'),status=card?.querySelector('[data-sel="tutstatus"]');
+      return {documentToken:S?.documentToken||null,tutActive:state?.tutActive??null,tutDone:state?.tutDone??null,
+        button:!!button,buttonConnected:button?.isConnected??false,disabled:button?.disabled??null,
+        focus:document.activeElement===button,text:status?.textContent||'',hidden:status?.hidden??null,
+        witness:state?.trainingRestoreWitness??null};})()`, { timeoutMs: remainingMs });
+    const receivedAtMs = performance.now();
+    if (receivedAtMs >= importOwnerRefusalDeadline) break;
+    if (importOwnerRefusal.documentToken === importOwnerBooted.token
+      && importOwnerRefusal.tutActive === true && importOwnerRefusal.tutDone === false
+      && importOwnerRefusal.button && importOwnerRefusal.buttonConnected
+      && importOwnerRefusal.disabled === false && importOwnerRefusal.focus
+      && importOwnerRefusal.hidden === false
+      && /another save replacement.*Nothing changed/i.test(importOwnerRefusal.text)
+      && importOwnerRefusal.witness?.stage === 'claim-rejected'
+      && importOwnerRefusal.witness?.error === 'busy') {
+      importOwnerRefusalReceivedBeforeDeadline = true;
+      break;
+    }
+    await sleep(Math.min(20, Math.max(0, importOwnerRefusalDeadline - performance.now())));
+  }
+  const bindingJoinDeadline = importOwnerRefusalDeadline;
+  let importOwnerEntries = trainingWitnessesSince(sess, importOwnerMark);
+  let importOwnerBindingsReceivedAt = performance.now();
+  let importOwnerBindingsReceivedBeforeDeadline = trainingBindingReceiptBeforeDeadline(
+    importOwnerEntries, 2, bindingJoinDeadline, importOwnerBindingsReceivedAt,
+  );
+  while (!importOwnerBindingsReceivedBeforeDeadline && importOwnerBindingsReceivedAt < bindingJoinDeadline) {
+    await sleep(Math.min(10, Math.max(0, bindingJoinDeadline - performance.now())));
+    importOwnerEntries = trainingWitnessesSince(sess, importOwnerMark);
+    importOwnerBindingsReceivedAt = performance.now();
+    importOwnerBindingsReceivedBeforeDeadline = trainingBindingReceiptBeforeDeadline(
+      importOwnerEntries, 2, bindingJoinDeadline, importOwnerBindingsReceivedAt,
+    );
+  }
   const importOwnerRawBeforeRelease = await evalIn(READ_PRIMARY_EXPRESSION);
   const importOwnerNativeBeforeRelease = dtrainNativeWritesSince(sess, importOwnerMark);
-  const importOwnerWitness = dtrainAssertWitness('D-TRAIN IMPORT-OWNER BUSY REFUSAL', importOwnerMark, {
+  const importOwnerWitness = assessTrainingWitnesses(importOwnerEntries, {
     intent: 'skip', checkpointKind: 'legacy-v1', stages: ['invoked', 'claim-rejected'],
     writes: 'none', documentToken: importOwnerBooted.token, tickerMode: 'busy',
     errorByStage: { 'claim-rejected': 'busy' },
   });
-  if (!importOwnerStart.armed || !importOwnerStart.button || importOwnerStart.disabled
-    || !importOwnerStart.focus || importOwnerStart.hidden
-    || !/another save replacement.*Nothing changed/i.test(importOwnerStart.text)
-    || importOwnerStart.witness?.stage !== 'claim-rejected'
+  if (!importOwnerStart.button || importOwnerStart.clickReceipts !== 1
+    || !importOwnerStartReceivedBeforeDeadline
+    || !/another expedition replacement is finishing/i.test(importOwnerStart.duplicate || '')
+    || !importOwnerRefusalReceivedBeforeDeadline
+    || !importOwnerBindingsReceivedBeforeDeadline
+    || importOwnerRefusal?.documentToken !== importOwnerBooted.token
+    || importOwnerRefusal?.tutActive !== true || importOwnerRefusal?.tutDone !== false
+    || !importOwnerRefusal?.button || !importOwnerRefusal?.buttonConnected
+    || importOwnerRefusal?.disabled || !importOwnerRefusal?.focus || importOwnerRefusal?.hidden
+    || !/another save replacement.*Nothing changed/i.test(importOwnerRefusal?.text || '')
+    || importOwnerRefusal?.witness?.stage !== 'claim-rejected'
     || importOwnerRawBeforeRelease !== importOwnerBooted.stored
     || importOwnerNativeBeforeRelease.length !== 0
-    || importOwnerWitness.entries.at(-1)?.error !== 'busy') {
+    || !importOwnerWitness.ok) {
     fails.push('D-TRAIN IMPORT-OWNER RACE: Training did not refuse busy in place before Import release: '
-      + JSON.stringify({ start: importOwnerStart,
+      + JSON.stringify({ precondition: importOwnerPrecondition, start: importOwnerStart,
+        startReceivedBeforeDeadline: importOwnerStartReceivedBeforeDeadline,
+        refusal: importOwnerRefusal, refusalReceivedBeforeDeadline: importOwnerRefusalReceivedBeforeDeadline,
+        bindingReceipt: { receivedAt: importOwnerBindingsReceivedAt,
+          deadline: bindingJoinDeadline, receivedBeforeDeadline: importOwnerBindingsReceivedBeforeDeadline },
         rawStable: importOwnerRawBeforeRelease === importOwnerBooted.stored,
         nativeBeforeRelease: importOwnerNativeBeforeRelease, witness: importOwnerWitness }));
   }
@@ -4243,7 +4376,7 @@ try {
   const importOwnerNativeWitness = assessDtrainNativeWrites(dtrainNativeWritesSince(sess, importOwnerMark), {
     label: importOwnerNativeLabel, documentToken: importOwnerBooted.token, count: 2,
   });
-  if (!importOwnerNativeArmed || !importOwnerReleased || importOwnerDone.save.name !== 'Dakk'
+  if (!importOwnerReleased || importOwnerDone.save.name !== 'Dakk'
     || importOwnerDone.tutActive || !importOwnerNativeWitness.ok
     || importOwnerNativeWitness.entries[0]?.length !== DTRAIN_LEGACY_RAW.length
     || importOwnerNativeWitness.entries[0]?.tut !== 0

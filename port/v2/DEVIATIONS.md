@@ -12,7 +12,9 @@ as any change that touches an entry.
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
 **Status: ★ product implementation, serviced-turn scheduler repair, and active ruler present;
-exact-head certification `[EXEC-TODO]`; fresh six-image `[HUMAN]` review open.**
+exact-source automation governed by live artifacts/CI; fresh six-image `[HUMAN]` review open.**
+This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
+its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
 `D-COMPENDIUM-MEM` proposal below without rewriting that dated discovery record.
 
@@ -62,7 +64,8 @@ This block records the current disposition of the historical
   active ruler replays those raw capsules, keeps all 40 ceilings strictly above the three-run
   maxima, and retains four baseline faults with 14 phone / 13 desktop breaches. Baseline3 and
   candidate2/3/4 remain truthful historical evidence for producer `291b794e…`, not current
-  authority. Exact-head certification and PR CI are required before this criterion returns to `[EXEC]`.
+  authority. This criterion returns to `[EXEC]` only when the selected head's ignored exact-source
+  artifacts and its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
@@ -1731,8 +1734,9 @@ duplicates).
   Capability/import/protocol/worker fatal paths
   settle the failed active and queued jobs once with no automatic retry; a later genuinely new
   request may create a fresh producer. Virtualization and worker ownership are implemented as
-  recorded in the current-state block above; measured resource acceptance is `[EXEC-TODO]` until
-  the active ruler passes exact-head certification and CI, and the HUMAN review remains open.
+  recorded in the current-state block above; measured resource acceptance remains `[EXEC-TODO]`
+  unless the selected head's ignored exact-source artifacts and its corresponding PR test-merge CI
+  are terminal green. This reference caches neither live outcome, and the HUMAN review remains open.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds
