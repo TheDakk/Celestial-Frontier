@@ -29,7 +29,8 @@
 > import, protocol, and worker failures terminate the instance and settle active plus
 > queued owners exactly once, while content-specific paint/encode errors remain
 > per-job. Phone/desktop cache, decoded-pixel, byte, queue, lease, portrait, worker
-> lifecycle, and phase evidence report `active-measured`. Specimen detail requests an
+> lifecycle, and phase evidence are explicit; current resource-budget status is
+> `calibration-required`, not `active-measured`. Specimen detail requests an
 > asynchronous 440px result through the same owner; Back/Close cancels that request
 > and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
 > synchronous audit compatibility and are rejected from the live entry-to-worker
@@ -46,17 +47,26 @@
 > listener on final disposal.
 >
 > `tools/compendiummem.mjs`, its pure contract, and
-> `budgets/compendium-memory-v1.json` own the active measured phone/desktop ceiling:
-> three independent one-attempt candidate runs paired to exact broken-baseline
-> commit `38447019517147319bd08c598202d097ee866874`. The authority is Arc-local and
-> matches Edge 151 by product, revision, JavaScript version, and protocol version;
-> it does not change the global Gate-A Edge 150 pin. Exact-current budget bytes,
-> deterministic inputs, source identity, browser authority, raw measurements, and
-> reported outcomes are cross-bound and replayed by the terminal verifier. Terminal
-> certification belongs only to a verified exact-current ignored report, never to this
-> tracked reference. The six phone/desktop list, focus-pinned, and detail PNGs still
-> await HUMAN review. Arc 1B scene-resource ownership/disposal and live HD
-> planet replacement remain open.
+> `budgets/compendium-memory-v1.json` own a fail-closed calibration seam. Exact committed
+> repair `dea03913014bc58134ebb06ca5b36892210a7571` passes the complete 12-row Glass
+> matrix. Its following exact Compendium run
+> `20260817150005919-93781-b6643ba7a6` truthfully reports 75/76, solely red at
+> `desktop/warm-plateau`; it proves neither a product leak nor a clean plateau because
+> the old sequence destructively trimmed the desktop cache before the warm observation
+> and measured refill, while its heap summary omitted embedder/backing ownership. The
+> repaired collector observes the full native warm cache before cap control; records
+> used, embedder, backing-store, and aggregate heap; proves stable warm keys/reuse and a
+> post-cap restored snapshot; embeds compact replayable baseline/candidate capsules; and
+> binds the complete fixture/generator/schema/contract/collector/browser/lock/package/
+> baseline-save/art-build/outcome input set plus the exact built index-owner → module-worker
+> → worker-local-painter graph. The budget has empty candidate samples, null ceilings,
+> and a `measurement-required` baseline, so it cannot certify. Returning it to active
+> status requires one fresh paired run from exact broken source
+> `38447019517147319bd08c598202d097ee866874`, three independent one-attempt current-
+> candidate runs per profile, newly reasoned ceilings, and later exact-head certification.
+> The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
+> pin. The six phone/desktop list, focus-pinned, and detail PNGs still await HUMAN review.
+> Arc 1B scene-resource ownership/disposal and live HD planet replacement remain open.
 > **2026-08-16 D-TRAIN-1 source overlay (current working tree; local browser
 > evidence recorded below; exact-head CI, integration, real-save Gate C, and
 > human authority remain open):** `@cf/persistence` now classifies the real

@@ -4,27 +4,34 @@
 **Repository:** `TheDakk/Celestial-Frontier`
 **Pull request:** [#32 — Arc 1A measured Compendium resource gate](https://github.com/TheDakk/Celestial-Frontier/pull/32)
 **Source / base:** `openai/mac` → `develop`
-**Committed repair base:** `65b1bace57cfbbfc57acbffe55537764a382c581`
+**Initial committed Arc 1A base:** `65b1bace57cfbbfc57acbffe55537764a382c581`
+**Named product/Glass repair checkpoint:** `dea03913014bc58134ebb06ca5b36892210a7571`
 **First failing Actions run:** [32015873242](https://github.com/TheDakk/Celestial-Frontier/actions/runs/32015873242)
-**Status:** Product/instrument repairs are implemented and browser-free green in the working tree;
-the clean committed browser battery, push, and exact-head CI are still pending, so PR #32 is **not
-yet ready for approval**.
+**Status:** Product and Glass repairs are committed; exact dea039 Glass is 12/12. Its following exact
+Compendium run `20260817150005919-93781-b6643ba7a6` truthfully failed 75/76 solely at
+`desktop/warm-plateau` and exposed a pre-warm destructive-cap/incomplete-heap ruler. The fail-closed
+seven-file calibration seam is current, committed, browser-free green, and clean under frozen
+read-only review; fresh calibration,
+exact-head certification, push, and
+CI are still pending, so PR #32 is **not yet ready for approval**.
 
 ## 1. Executive state
 
-PR #32 contains a substantial, independently audited Arc 1A implementation and an exact-current
-local certification PASS. Its first Linux PR battery nevertheless found four real approval blockers:
+PR #32 contains a substantial, independently audited Arc 1A implementation and a historical
+exact-65b1bac local certification PASS. Its first Linux PR battery nevertheless found four real
+approval blockers:
 
 | CI area | Classification | Current disposition |
 | --- | --- | --- |
 | `v2-static` | Instrument false positive | Fixed; current audit reports 28 sources / 0 findings |
-| `v2-compendium-memory` | Valid product-unanswerable finding | Heavy import/paint/PNG work moved to a serial close-at-idle dedicated-worker producer; evidence and controls implemented |
+| `v2-compendium-memory` | Valid product-unanswerable finding, followed later by a ruler defect | Heavy import/paint/PNG work moved to a serial close-at-idle dedicated-worker producer. Exact dea039 then exposed that the old plateau sequence trimmed before warm and ignored embedder/backing ownership; calibration is now fail-closed pending fresh measurements |
 | `v2-smoke` | Obsolete fixed-wait instrument check over the same cold-art path | Replaced by one monotonic semantic settlement phase with exact decode/work outcomes |
 | `v2-glass` | One instrument defect plus two product finding records from one short-landscape geometry defect | Guide predicate, clipping diagnostics, hostile fixture, and nonmodal landscape workspace repaired |
 
 The first-red evidence is preserved. No timeout was raised, no failed command was retried, and no
-red was reclassified as green. The implementation now passes the full browser-free battery and an
-independent source review; clean-head browser execution remains the next authority boundary.
+red was reclassified as green. The later 75/76 Compendium red is preserved too: it is evidence that
+the ruler cannot adjudicate the product, not proof of either a leak or a clean plateau. The repaired
+calibration seam and its frozen browser-free battery are the next authority boundary.
 
 ## 2. What was completed before the PR battery
 
@@ -47,7 +54,7 @@ The committed Arc 1A source at `65b1bac` implements:
 
 ### 2.2 Measured resource ruler
 
-The active budget was derived from:
+The then-active historical budget was derived from:
 
 - one paired broken baseline at exact detached source
   `38447019517147319bd08c598202d097ee866874`;
@@ -64,6 +71,13 @@ broken baseline breaches the sealed eleven fields on both profiles: mounted rows
 live cache entries, decoded pixels, decoded bytes, encoded bytes, portrait cache entries, portrait
 encoded bytes, warm heap range, and warm encoded-byte range.
 
+**Current correction:** this paragraph records how the earlier ruler was derived; it is no longer
+active authority. Exact dea039 run `20260817150005919-93781-b6643ba7a6` showed that the destructive
+desktop cap trim occurred before warm observation, so the reported plateau included refill, and the
+old heap field excluded embedder/backing ownership. Those older samples and ceilings are historical
+calibration only. The checked-in budget is now intentionally `calibration-required`, with empty
+candidate samples, null ceilings, and a `measurement-required` baseline.
+
 ### 2.3 Evidence hardening completed before CI
 
 The browser-free selftest reached 117 independent controls. The terminal verifier now:
@@ -73,7 +87,7 @@ The browser-free selftest reached 117 independent controls. The terminal verifie
 - binds source begin/end to the exact current committed source identity;
 - binds the exact fixture and broken projection;
 - recomputes browser-authority match instead of trusting a copied boolean;
-- re-evaluates both raw complete profiles against the exact active budget;
+- re-evaluated both raw complete profiles against the exact then-active budget;
 - rejects stale PASS outcomes after raw heap/status/filter/producer mutations;
 - accepts a truthful recomputed product FAIL;
 - binds partial stage prefixes, command ledgers, timeouts, and no-retry semantics;
@@ -93,7 +107,8 @@ The ignored local certification report
 - producer error containment/recovery and all three filter journeys valid on phone and desktop.
 
 That report remains valid evidence for its exact macOS run. It cannot override a later Linux CI red,
-and it is not the separate HUMAN six-image judgment.
+and it is not the separate HUMAN six-image judgment. It also cannot activate the repaired ruler,
+whose chronology and heap ownership differ from the collector that produced this historical PASS.
 
 ### 2.5 Documentation and CI provisioning completed before CI
 
@@ -312,8 +327,16 @@ Completed in this repair batch:
 13. expanded the Compendium selftest from 117 to 184 independent controls, including worker dormant,
     identity, phase, result, fatal, decode, and renderer-legacy-path axes;
 14. passed the complete browser-free battery listed in section 8.
+15. preserved exact dea039 Glass 12/12 and the following exact Compendium 75/76 red without an
+    unchanged retry;
+16. moved destructive cap control after a full native warm-cache observation and added stable-key,
+    reuse, and post-cap-restoration evidence;
+17. expanded heap ownership from used page heap to used/embedder/backing-store/aggregate fields and
+    reduced compact raw baseline/candidate capsules at verification;
+18. changed the tracked budget to fail-closed `calibration-required` and bound the complete
+    measurement inputs plus exact built owner-to-worker-to-painter authority.
 
-## 6. Current working-tree state at this checkpoint
+## 6. Repair chronology and current ruler-calibration batch
 
 The first repair commit is `39d326fa69512508884cb92f85dbabe765989032`. On that exact clean head,
 `browserpath --selftest` and the live `browsercdp --selftest` passed under the Arc-local Edge 151
@@ -350,7 +373,7 @@ named buttons as white-on-white to prove the full contrast selection still fires
 passes with zero findings/instrument failures (SHA-256
 `ea97a86f7321f16b6430e8f9158f9e825038edb9bcbc0c1d217dc556bb36e6da`).
 
-Current follow-up state:
+Historical follow-up checkpoint before dea039:
 
 - branch: `openai/mac`;
 - committed repair HEAD: `6105c6f2b5a6413e45e5c6ed4e73594ae39e98f0`;
@@ -363,21 +386,46 @@ Current follow-up state:
   phone-landscape Glass passed; full clean-head Glass and Compendium remain outstanding;
 - PR #32 remains draft/not approvable.
 
+### 6.1 Current checkpoint after exact dea039 browser evidence
+
+- branch: `openai/mac`;
+- committed repair HEAD: `dea03913014bc58134ebb06ca5b36892210a7571`;
+- exact full Glass passes all 12 rows;
+- exact Compendium run `20260817150005919-93781-b6643ba7a6` is preserved as truthful 75/76 FAIL,
+  solely `desktop/warm-plateau`;
+- that result is not a product-leak diagnosis: the old collector trimmed the desktop cache before
+  warm observation and measured refill, and its used-heap-only ruler excluded embedder/backing
+  ownership;
+- the current committed seven-file Compendium seam moves cap control after the full native warm cache; records
+  used, embedder, backing-store, and aggregate heap; proves stable warm keys/reuse and a post-cap
+  restored snapshot; replays compact raw baseline/candidate capsules; and binds complete
+  measurement-input plus built-producer authority;
+- `budgets/compendium-memory-v1.json` is intentionally `calibration-required`: candidate samples
+  are empty, candidate ceilings are null, and the paired baseline is `measurement-required`;
+- frozen read-only review and the full browser-free battery are green: 36 Vitest files / 423 passed /
+  1 skipped; root, app, and worker TypeScript; artunused, artaudit, and exact production build graph;
+  222 Compendium controls; 10 focused budget tests; Smoke, Glass, and persona selftests;
+- one fresh paired run from exact broken source
+  `38447019517147319bd08c598202d097ee866874`, three independent one-attempt current-candidate runs
+  per profile, newly derived ceilings/rationale, later exact-head certification, push, and CI remain
+  open;
+- PR #32 remains draft/not approvable. The six-image HUMAN review and Claude presentation-polish
+  pass remain separate and open.
+
 ## 7. Remaining work
 
-- finish the live handoff/reference refresh without claiming visual polish, a release, or browser
-  authority;
-- perform final frozen-diff review, fetch/reconcile current remote state, and commit intentionally on
-  `openai/mac`;
-- run the required clean-head browser path/CDP controls and exactly one no-retry Smoke, Glass, and
-  Arc-local Edge Compendium battery;
+- from the current committed fail-closed seam, capture one fresh paired exact-3844701 baseline and three independent
+  one-attempt current-candidate runs per profile; derive and document new ceilings from their raw
+  capsules, activate the budget, and commit that exact ruler;
+- run the required final-clean-head browser path/CDP controls and exactly one no-retry Smoke, Glass,
+  and Arc-local Edge Compendium certification battery;
 - preserve and diagnose the first browser red if any rather than rerunning unchanged;
 - push the exact repair head to PR #32 and require CI on that exact SHA;
 - keep the separate six-image HUMAN visual judgment and Claude's later visual-polish review open.
 
 ## 8. Required verification before saying “ready”
 
-### Browser-free — complete on the current working tree
+### Browser-free — current fail-closed calibration seam
 
 - full Vitest: 36 files, 423 passed, 1 skipped;
 - focused broker/portable/worker tests: 28 passed;
@@ -385,22 +433,34 @@ Current follow-up state:
 - root validate, smoke, Training checkpoint, rarity, and dead-code checks: PASS;
 - artunused, artaudit (28/0), overridecheck (1,014/1,014 routes), overridecontrol with byte-exact
   restoration, coveragegap (1,010/1,010), and speccheck (454/0/0): PASS;
-- Smoke report and 12-viewport Glass selftests: PASS;
-- Compendium selftest: 184 independent controls PASS;
+- Smoke, 12-viewport Glass, and persona selftests: PASS;
+- Compendium selftest: 222 independent controls PASS;
+- focused Compendium budget tests: 10 passed;
 - production Vite build: 798 modules; exact owner/worker/painter graph PASS;
 - syntax and full diff checks: PASS;
 - independent current-source worker/product review: CLEAN.
 
+The frozen seam extends that repair evidence and is green under 36 Vitest files / 423 passed /
+1 skipped; root, app, and worker TypeScript programs; artunused, artaudit, and the exact production
+owner/worker/painter build graph; 222 Compendium selftest controls; 10 focused budget tests; and
+Smoke, Glass, and persona selftests. This is browser-free authority for a deliberately
+non-certifying budget, not measured ceiling or exact-head certification authority.
+
 ### Browser-owning, one attempt and no retry
 
-After a clean commit and with the correct process-owned browser selection:
+From the current committed fail-closed seam and with the correct process-owned browser selection:
 
 1. shared browser path/CDP selftests;
-2. exact Arc-local Edge Compendium run plus independent `--verify-run`;
-3. Chrome `smoke:ci`;
-4. full Chrome 12-viewport Glass matrix;
-5. any additional boot/art-scheduler gate required by the final diff;
-6. six run-bound Compendium review PNG integrity checks.
+2. one paired calibration capture from exact baseline
+   `38447019517147319bd08c598202d097ee866874` and three independent one-attempt current-candidate
+   captures per profile, each independently replayed from its raw capsules;
+3. derive, review, document, and activate new phone/desktop ceilings without widening around a red;
+4. on the committed exact ruler head, run Arc-local Edge Compendium certification plus independent
+   `--verify-run`;
+5. Chrome `smoke:ci`;
+6. full Chrome 12-viewport Glass matrix;
+7. any additional boot/art-scheduler gate required by the final diff;
+8. six run-bound Compendium review PNG integrity checks.
 
 If a browser gate fails, its first red is preserved and diagnosed. The batch does not gain authority
 to raise deadlines, retry, regenerate a budget, or weaken a control merely to obtain green.
@@ -429,8 +489,10 @@ Even a repaired green PR does not close:
 
 ## 10. Approval recommendation at this checkpoint
 
-**Do not approve or merge PR #32 yet.** The Linux findings now have implemented, independently
-reviewed, browser-free-green repairs. The remaining approval boundary is empirical: commit these
-exact bytes, run the one-attempt/no-retry browser battery, push that exact head, and require exact-head
-CI. A green result can make the automated repair ready for review; it still does not substitute for
-the six-image HUMAN judgment or Claude's later presentation-polish pass.
+**Do not approve or merge PR #32 yet.** The product and Glass repairs are committed, but the old
+resource ruler has been deliberately withdrawn after its exact 75/76 run exposed invalid warm
+chronology and incomplete heap ownership. The fail-closed seam is committed and browser-free green.
+The remaining automated boundary is empirical: capture the fresh exact baseline plus three candidate attempts per
+profile; activate reviewed ceilings; certify the final exact head once; push that exact head; and
+require exact-head CI. A green result can make the automated repair ready for review; it still does
+not substitute for the six-image HUMAN judgment or Claude's later presentation-polish pass.

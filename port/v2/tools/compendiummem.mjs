@@ -34,7 +34,10 @@ import {
   RAW_CDP_COMMAND_SCHEMA,
   REPORT_INPUT_KEYS, REPORT_SCHEMA, REQUIRED_WARM_CYCLES,
   brokenBaselineCacheMetrics, brokenBaselineFailureEvidence, brokenBaselineFaults,
-  calibrationMetrics, candidateNativeKeyDispatches,
+  brokenBaselineCalibrationEvidence, candidateCalibrationEvidence,
+  calibrationMetrics, candidateNativeKeyDispatches, reduceCalibrationEvidence,
+  compendiumCalibrationEvaluatorBudget,
+  compendiumMeasurementAuthority, compendiumProducerAuthority,
   compendiumBrowserAuthorityMatches, compendiumBudgetBrowserAuthority,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression,
@@ -76,6 +79,10 @@ const lockPath = path.join(v2Root, 'package-lock.json');
 const appPackagePath = path.join(appDir, 'package.json');
 const contractPath = fileURLToPath(new URL('./compendiummem-contract.mjs', import.meta.url));
 const fixtureToolPath = fileURLToPath(new URL('./compendiummem-fixture.mjs', import.meta.url));
+const speciesArtBuildPath = fileURLToPath(new URL('./speciesart-build.mjs', import.meta.url));
+const browserCdpPath = fileURLToPath(new URL('./browsercdp.mjs', import.meta.url));
+const browserPathPath = fileURLToPath(new URL('./browserpath.mjs', import.meta.url));
+const workspaceLockPath = fileURLToPath(new URL('./workspacelock.mjs', import.meta.url));
 const collectorPath = fileURLToPath(import.meta.url);
 const SELFTEST_FLAG = '--selftest';
 const BROKEN_BASELINE_COMMIT = '38447019517147319bd08c598202d097ee866874';
@@ -187,13 +194,28 @@ function exactInputs(fixture) {
     budgetSchema: hashFile(budgetSchemaPath),
     outcomeContract: hashFile(contractPath),
     collector: hashFile(collectorPath),
+    browserCdp: hashFile(browserCdpPath),
+    browserPath: hashFile(browserPathPath),
+    workspaceLock: hashFile(workspaceLockPath),
     package: hashFile(packagePath),
     packageLock: hashFile(lockPath),
     appPackage: hashFile(appPackagePath),
     baselineSaveFixtures: hashFile(baselineSavePath),
+    speciesArtBuildGraph: hashFile(speciesArtBuildPath),
     outcomeInventory: sha256(stableJson(EXPECTED_OUTCOMES)),
   };
   return Object.freeze(inputs);
+}
+function candidateProducerAuthorityFromDist() {
+  const graph = Object.freeze({
+    index: Object.freeze({
+      relativePath: 'index.html', sha256: hashFile(path.join(distDir, 'index.html')),
+    }),
+    ...findCandidateSpeciesArtBuildGraph(distDir),
+  });
+  const authority = compendiumProducerAuthority(graph);
+  assert(authority, 'candidate producer authority is unavailable');
+  return Object.freeze({ graph, authority });
 }
 function reportRunId() {
   const explicit = process.env.CF_COMPENDIUMMEM_RUN_ID;
@@ -218,6 +240,8 @@ function makeRunningReport({ runId, startedAt, source, inputs, budget }) {
     budget: {
       status: budget.status, path: 'budgets/compendium-memory-v1.json', sha256: inputs.budget,
       browserAuthority, browserAuthorityMatch: null,
+      producerAuthority: budget.producerAuthority || null,
+      observedProducerAuthority: null, producerAuthorityMatch: null,
     },
     expectedOutcomes: [...EXPECTED_OUTCOMES], outcomes: [], findings: [], profiles: {},
     reviewPacket: [], partialFailure: null, blockedOutcomes: [],
@@ -244,24 +268,6 @@ export function verifyCompendiumTerminalReport(report, expectedRunId, {
 export function compendiumBudgetModeAllowed({ calibrate, budgetStatus }) {
   return typeof calibrate === 'boolean'
     && (calibrate ? budgetStatus === 'calibration-required' : budgetStatus === 'active');
-}
-function calibrationCeilings() {
-  const ceiling = {
-    rationale: 'Calibration-only unbounded evaluator; never a certifying budget.',
-    mountedRowsMax: Number.MAX_SAFE_INTEGER, heapUsedBytesMax: Number.MAX_SAFE_INTEGER,
-    documentsMax: Number.MAX_SAFE_INTEGER, nodesMax: Number.MAX_SAFE_INTEGER,
-    jsEventListenersMax: Number.MAX_SAFE_INTEGER, liveCacheEntriesMax: Number.MAX_SAFE_INTEGER,
-    liveDecodedPixelsMax: Number.MAX_SAFE_INTEGER, liveDecodedBytesMax: Number.MAX_SAFE_INTEGER,
-    liveEncodedBytesMax: Number.MAX_SAFE_INTEGER, queuedJobsPeakMax: Number.MAX_SAFE_INTEGER,
-    activeJobsPeakMax: Number.MAX_SAFE_INTEGER, liveLeasesMax: Number.MAX_SAFE_INTEGER,
-    liveSubscribersMax: Number.MAX_SAFE_INTEGER,
-    livePortraitCacheEntriesMax: Number.MAX_SAFE_INTEGER,
-    livePortraitEncodedBytesMax: Number.MAX_SAFE_INTEGER,
-    warmHeapRangeBytesMax: Number.MAX_SAFE_INTEGER,
-    warmDecodedBytesRangeMax: Number.MAX_SAFE_INTEGER,
-    warmEncodedBytesRangeMax: Number.MAX_SAFE_INTEGER,
-  };
-  return { status: 'active', ceilings: { phone: { ...ceiling }, desktop: { ...ceiling } } };
 }
 function sampleBrowser(browser) {
   return {
@@ -812,14 +818,18 @@ export async function collectCandidateSnapshot({
     && typeof rawSnapshotExpression === 'string' && rawSnapshotExpression
     && typeof evaluate === 'function' && typeof sendStage === 'function',
   'candidate snapshot dependencies are invalid');
-  await sendStage(`${label} garbage collection`, 'HeapProfiler.collectGarbage', {}, sessionId);
+  /* Service one renderer turn before collection so worker termination, image
+     decode publication, and virtual-row cleanup all precede the measured GC.
+     Heap usage is sampled immediately after that GC, before this instrument
+     allocates and serializes its diagnostic carrier. */
   await evaluate(sessionId,
     `new Promise(resolve=>requestAnimationFrame(()=>resolve(true)))`,
     `${label} animation task`);
+  await sendStage(`${label} garbage collection`, 'HeapProfiler.collectGarbage', {}, sessionId);
+  const heap = await sendStage(`${label} heap usage`, 'Runtime.getHeapUsage', {}, sessionId);
   const observed = await evaluate(
     sessionId, rawSnapshotExpression, `${label} product/DOM snapshot`,
   );
-  const heap = await sendStage(`${label} heap usage`, 'Runtime.getHeapUsage', {}, sessionId);
   const dom = await sendStage(`${label} DOM counters`, 'Memory.getDOMCounters', {}, sessionId);
   return { diagnostics: observed.diagnostics, heap, dom, raw: observed.raw };
 }
@@ -833,6 +843,7 @@ async function collectProfile({
   const reviewPacket = [];
   const commandLedger = [];
   const filterTransitions = [];
+  const resourceOrder = [];
   let producerErrorWitness = null;
   const errorStages = producerErrorStages(profile);
   const producerErrorCandidateLabels = new Set([
@@ -849,8 +860,12 @@ async function collectProfile({
   let lastCompletedStage = null;
   const completeStage = (label) => {
     lastCompletedStage = label;
-    currentStage = label;
     completedStages.push(label);
+    /* A local assertion or evidence-assembly failure after a successful CDP
+       command is not a second failure of that completed command. The next
+       started stage replaces this marker; otherwise the partial report keeps
+       the exact post-stage validation boundary. */
+    currentStage = `after ${label}`;
   };
   const disposeAll = async () => {
     for (const sessionId of sessions) {
@@ -1334,39 +1349,6 @@ async function collectProfile({
     await scrollToIndex(sessionId, 750);
     const focusPinned = await snapshot(sessionId, 'focused off-window row');
 
-    /* Capture deterministic lifetime high-water marks before the intentional
-       cross-device cap-shrink control changes the product limit class. */
-    const profilePeakArt = await evaluate(sessionId,
-      `window.__CF_SLICE__.api.compendiumDiagnostics().art`, 'profile job high-water diagnostics');
-    const jobPeaks = {
-      deviceClass: profilePeakArt.deviceClass,
-      queuedJobsPeak: profilePeakArt.totals.maxQueuedJobs,
-      activeJobsPeak: profilePeakArt.totals.maxActiveJobs,
-      queuedJobsLimit: profilePeakArt.limits.queuedJobs,
-      activeJobsLimit: profilePeakArt.limits.activeJobs,
-    };
-
-    await evaluate(sessionId,
-      `window.__CF_SLICE__.api.__compendiumEvidence.trimArtNow('desktop')`, 'raise to desktop cap');
-    for (const index of [0, 180, 360, 540, 720, 900, 1080, 1260, 1499]) {
-      await scrollToIndex(sessionId, index);
-    }
-    const capBefore = await evaluate(sessionId,
-      `window.__CF_SLICE__.api.compendiumDiagnostics().art`, 'pre-shrink diagnostics');
-    const capAfter = await evaluate(sessionId,
-      `window.__CF_SLICE__.api.__compendiumEvidence.trimArtNow('phone')`, 'phone cap shrink');
-    const capShrink = {
-      beforeEntries: capBefore.live.cacheEntries, afterEntries: capAfter.live.cacheEntries,
-      phoneLimit: capAfter.limits.cacheEntries, afterDecodedBytes: capAfter.live.decodedBytes,
-      phoneDecodedBytesLimit: capAfter.limits.decodedBytes,
-      beforeDeviceClass: capBefore.deviceClass, afterDeviceClass: capAfter.deviceClass,
-      disposalsDelta: capAfter.totals.disposals - capBefore.totals.disposals,
-    };
-    const capRestored = await evaluate(sessionId,
-      `window.__CF_SLICE__.api.__compendiumEvidence.trimArtNow(${JSON.stringify(profile)})`,
-      'restore profile device class');
-    capShrink.restoredDeviceClass = capRestored.deviceClass;
-
     /* Reopen from the dock so final Close focus provenance belongs to the
        dock/rail opener rather than the earlier global search control. */
     await closeCompendium(sessionId);
@@ -1412,6 +1394,23 @@ async function collectProfile({
     assert(stableJson(revealedPlanetside.logicalIds) === stableJson(lifecycleBefore.ids),
       `${profile}: Planetside lifecycle reveal changed the logical roster`);
 
+    /* Establish the native profile's full-cache steady state without
+       borrowing the destructive cross-device trim used by the later cap
+       control. Every measured warm cycle must begin and end at this exact
+       product-owned entry/decoded-byte limit. */
+    await openCompendium(sessionId);
+    await waitListReady(sessionId, 1500);
+    const cacheFillIndices = [
+      ...Array.from({ length: 20 }, (_, index) => index * 75), 1499,
+    ];
+    for (const index of cacheFillIndices) {
+      await scrollToIndex(sessionId, index);
+    }
+    await closeCompendium(sessionId);
+    await waitPlanetsideReady(sessionId);
+    const warmCachePrecondition = await snapshot(sessionId, 'warm cache precondition');
+    resourceOrder.push('warm-precondition');
+
     const warm = [];
     for (let cycle = 0; cycle < REQUIRED_WARM_CYCLES; cycle++) {
       await openCompendium(sessionId);
@@ -1421,8 +1420,64 @@ async function collectProfile({
       await closeCompendium(sessionId);
       await waitPlanetsideReady(sessionId);
       warm.push(await snapshot(sessionId, `warm cycle ${cycle + 1}`));
+      resourceOrder.push(`warm-${cycle + 1}`);
     }
     const lastProbe = await answerability(sessionId, `${profile}-last`);
+
+    /* Capture deterministic lifetime high-water marks before the intentional
+       cross-device cap-shrink control changes the product limit class. */
+    const profilePeakArt = await evaluate(sessionId,
+      `window.__CF_SLICE__.api.compendiumDiagnostics().art`, 'profile job high-water diagnostics');
+    const jobPeaks = {
+      deviceClass: profilePeakArt.deviceClass,
+      queuedJobsPeak: profilePeakArt.totals.maxQueuedJobs,
+      activeJobsPeak: profilePeakArt.totals.maxActiveJobs,
+      queuedJobsLimit: profilePeakArt.limits.queuedJobs,
+      activeJobsLimit: profilePeakArt.limits.activeJobs,
+    };
+
+    /* The trim is a destructive product control, not part of the measured
+       plateau. Run it only after warm[] is sealed, then close back to the
+       ordinary Planetside state before collecting terminal evidence. */
+    await openCompendium(sessionId);
+    await waitListReady(sessionId, 1500);
+    await evaluate(sessionId,
+      `window.__CF_SLICE__.api.__compendiumEvidence.trimArtNow('desktop')`, 'raise to desktop cap');
+    for (const index of cacheFillIndices) {
+      await scrollToIndex(sessionId, index);
+    }
+    const capBefore = await evaluate(sessionId,
+      `window.__CF_SLICE__.api.compendiumDiagnostics().art`, 'pre-shrink diagnostics');
+    resourceOrder.push('cap-before');
+    const capAfter = await evaluate(sessionId,
+      `window.__CF_SLICE__.api.__compendiumEvidence.trimArtNow('phone')`, 'phone cap shrink');
+    resourceOrder.push('cap-after');
+    const warmTerminalArt = warm.at(-1)?.diagnostics?.art;
+    const capShrink = {
+      beforeEntries: capBefore.live.cacheEntries, afterEntries: capAfter.live.cacheEntries,
+      phoneLimit: capAfter.limits.cacheEntries, afterDecodedBytes: capAfter.live.decodedBytes,
+      phoneDecodedBytesLimit: capAfter.limits.decodedBytes,
+      beforeDeviceClass: capBefore.deviceClass, afterDeviceClass: capAfter.deviceClass,
+      disposalsDelta: capAfter.totals.disposals - capBefore.totals.disposals,
+      warmCyclesSealed: warm.length,
+      warmTerminalJobStarts: warmTerminalArt?.totals?.jobStarts ?? null,
+      beforeJobStarts: capBefore.totals.jobStarts,
+      warmTerminalDisposals: warmTerminalArt?.totals?.disposals ?? null,
+      beforeDisposals: capBefore.totals.disposals,
+    };
+    const capRestored = await evaluate(sessionId,
+      `window.__CF_SLICE__.api.__compendiumEvidence.trimArtNow(${JSON.stringify(profile)})`,
+      'restore profile device class');
+    capShrink.restoredDeviceClass = capRestored.deviceClass;
+    resourceOrder.push('profile-restored');
+    await closeCompendium(sessionId);
+    await waitPlanetsideReady(sessionId);
+    const postCapRestored = await snapshot(sessionId, 'post-cap restored');
+    resourceOrder.push('post-cap-restored');
+
+    await sendStage('activate final lazy-control target', 'Target.activateTarget', {
+      targetId: lazyTarget.targetId,
+    });
     const lazyEnd = await snapshot(lazyTarget.sessionId, 'final lazy-control');
     const lazySpeciesResourcesEnd = await evaluate(lazyTarget.sessionId, `(()=>{const suffix=${JSON.stringify(`/${candidateSpeciesArt.painter.relativePath}`)};
       return performance.getEntriesByType('resource').map(entry=>entry.name)
@@ -1431,6 +1486,8 @@ async function collectProfile({
     return {
       profile, viewport, reviewPacket,
       lazySpeciesResource: {
+        indexPath: candidateSpeciesArt.index.relativePath,
+        indexSha256: candidateSpeciesArt.index.sha256,
         ownerPath: candidateSpeciesArt.owner.relativePath,
         ownerSha256: candidateSpeciesArt.owner.sha256,
         path: candidateSpeciesArt.painter.relativePath,
@@ -1465,6 +1522,8 @@ async function collectProfile({
         },
         keyboardTraversal,
         jobPeaks,
+        warmCachePrecondition,
+        resourceOrder,
         producerErrorWitness,
         filterTransitions,
         close: {
@@ -1474,7 +1533,7 @@ async function collectProfile({
         planetsideLifecycle: { hidden: hiddenPlanetside, revealed: revealedPlanetside },
       },
       points: { lazyBoot, lazyEnd, initial, first, middle, last, filtered, detail, detailClosed, back,
-        focusPinned, closed, planetside, warm, capShrink },
+        focusPinned, closed, planetside, warm, capShrink, postCapRestored },
       answerability: [firstProbe, lastProbe],
     };
   } catch (caught) {
@@ -1564,7 +1623,7 @@ function brokenBaselineInputs(baselineRoot, baselineDist, fixture, projection,
 }
 
 async function collectBrokenBaselineProfile({
-  profile, viewport, fixture, browser, origin, veteranRaw, speciesChunk,
+  profile, viewport, fixture, browser, origin, veteranRaw, speciesChunk, runId,
 }) {
   const send = browser.send;
   let browserContextId = null;
@@ -1611,11 +1670,11 @@ async function collectBrokenBaselineProfile({
     }, sessionId, { timeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS });
   };
   const snapshot = async (label) => {
-    try {
-      await send('HeapProfiler.collectGarbage', {}, sessionId,
-        { timeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS });
-    } catch { /* Runtime heap remains mandatory */ }
     await evaluate(`new Promise(resolve=>requestAnimationFrame(()=>resolve(true)))`, `${label} animation task`);
+    await send('HeapProfiler.collectGarbage', {}, sessionId,
+      { timeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS });
+    const heap = await send('Runtime.getHeapUsage', {}, sessionId,
+      { timeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS });
     const raw = await evaluate(`(()=>{const rows=[...document.querySelectorAll('#codexpanel [data-sel="codex-entry"]')];
       const imgs=rows.map(row=>row.querySelector('img')).filter(Boolean);
       const sourceInstances=imgs.map(img=>img.getAttribute('src')||'');
@@ -1646,8 +1705,6 @@ async function collectBrokenBaselineProfile({
           (n,src)=>n+new TextEncoder().encode(src).byteLength,0),
         modeledPortraitCacheEntries:portraitCacheSources.length,
         modeledPortraitCacheEncodedBytes:portraitCacheSources.reduce((n,src)=>n+new TextEncoder().encode(src).byteLength,0)}})()`, `${label} raw DOM`);
-    const heap = await send('Runtime.getHeapUsage', {}, sessionId,
-      { timeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS });
     const dom = await send('Memory.getDOMCounters', {}, sessionId,
       { timeoutMs: BASELINE_OBSERVATION_TIMEOUT_MS });
     return { raw, heap, dom };
@@ -1760,11 +1817,16 @@ async function collectBrokenBaselineProfile({
     const tail = warm.slice(-3);
     const maximum = (read) => Math.max(...points.map(read));
     const metricRange = (read) => Math.max(...tail.map(read)) - Math.min(...tail.map(read));
+    const heapAggregate = (point) => point.heap.usedSize
+      + point.heap.embedderHeapUsedSize + point.heap.backingStorageSize;
     const metrics = {
       mountedRows: maximum((point) => point.raw.mountedRows),
       heapUsedBytes: maximum((point) => point.heap.usedSize),
       documents: maximum((point) => point.dom.documents),
       nodes: maximum((point) => point.dom.nodes),
+      embedderHeapUsedBytes: maximum((point) => point.heap.embedderHeapUsedSize),
+      backingStorageBytes: maximum((point) => point.heap.backingStorageSize),
+      heapAggregateBytes: maximum(heapAggregate),
       jsEventListeners: maximum((point) => point.dom.jsEventListeners),
       liveCacheEntries: cacheMetrics.liveCacheEntries,
       /* Cache fields bind the exact source caps and the initial list's actual
@@ -1782,22 +1844,37 @@ async function collectBrokenBaselineProfile({
       liveSubscribers: cacheMetrics.liveSubscribers,
       livePortraitCacheEntries: cacheMetrics.livePortraitCacheEntries,
       livePortraitEncodedBytes: cacheMetrics.livePortraitEncodedBytes,
-      warmHeapRangeBytes: metricRange((point) => point.heap.usedSize),
-      warmDecodedBytesRange: cacheMetrics.warmDecodedBytesRange,
+      warmHeapAggregateRangeBytes: metricRange(heapAggregate),
       warmEncodedBytesRange: cacheMetrics.warmEncodedBytesRange,
     };
+    const calibrationEvidence = brokenBaselineCalibrationEvidence({
+      runId, profile, list, detail, warm, eagerResource, speciesChunk,
+    });
+    const reducedCalibration = reduceCalibrationEvidence(calibrationEvidence);
+    assert(reducedCalibration
+      && stableJson(reducedCalibration.metrics) === stableJson(metrics)
+      && stableJson(reducedCalibration.observedFaults) === stableJson(faults),
+    `${profile}: broken-baseline calibration evidence did not reproduce metrics/faults`);
     return {
-      profile, viewport, metrics, observedFaults: faults,
+      profile, viewport, metrics, observedFaults: faults, calibrationEvidence,
       evidence: {
         eagerResource, speciesChunk, list: list.raw, detail: detail.raw,
         metricCarriers: {
+          heapUsedBytes: 'post-render-turn-post-gc Runtime.getHeapUsage.usedSize maximum',
+          embedderHeapUsedBytes:
+            'post-render-turn-post-gc Runtime.getHeapUsage.embedderHeapUsedSize maximum',
+          backingStorageBytes:
+            'post-render-turn-post-gc Runtime.getHeapUsage.backingStorageSize maximum',
+          heapAggregateBytes:
+            'usedSize-plus-embedderHeapUsedSize-plus-backingStorageSize maximum',
+          warmHeapAggregateRangeBytes:
+            'last-three post-render-turn-post-gc aggregate heap range',
           liveCacheEntries: 'max-initial-observed-and-warm-render-start-speciesThumbCache-entries',
           liveDecodedPixels: 'max-cache-entries-times-132x132-thumb-assets',
           liveDecodedBytes: 'modeled-thumb-decoded-pixels-times-four',
           liveEncodedBytes: 'max-initial-final-600-observed-and-warm-render-start-thumb-data-url-utf8-bytes',
           liveLeases: 'zero-no-lease-api-exists-at-3844701',
           liveSubscribers: 'zero-no-lease-subscriber-api-exists-at-3844701',
-          warmDecodedBytesRange: 'last-three-render-start-132-cache-hit-count-times-132x132x4',
           warmEncodedBytesRange: 'last-three-render-start-132-cache-hit-data-url-utf8-byte-range',
           domReferencedPixels: 'per-element-natural-width-times-height-not-resident-memory',
           domDistinctSourceEncodedBytes: 'unique-full-portrait-dom-data-url-utf8-bytes',
@@ -1877,8 +1954,10 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
     const fixture = buildCompendiumFixture();
     const projection = buildBrokenBaselineProjection(fixture);
     const budget = readJson(budgetPath);
+    const measurementAuthority = compendiumMeasurementAuthority(exactInputs(fixture));
+    assert(measurementAuthority, 'current Compendium measurement authority is unavailable');
     const budgetValidation = validateBudgetRecord(
-      budget, fixture.rowsSha256, projection.rowsSha256,
+      budget, fixture.rowsSha256, projection.rowsSha256, measurementAuthority,
     );
     assert(budgetValidation.ok, `budget record invalid: ${budgetValidation.errors.join('; ')}`);
     assert(budget.pairedBrokenBaseline.commit === BROKEN_BASELINE_COMMIT,
@@ -1910,7 +1989,7 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
     for (const [profile, viewport] of Object.entries(PROFILES)) {
       measurements.push(await collectBrokenBaselineProfile({
         profile, viewport, fixture, browser, origin: server.origin, veteranRaw,
-        speciesChunk: inputs.speciesChunk,
+        speciesChunk: inputs.speciesChunk, runId,
       }));
     }
     const expectedFaults = [...budget.pairedBrokenBaseline.expectedFaults].sort();
@@ -1928,9 +2007,11 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
     const browserSample = sampleBrowser(browser.browser);
     const samples = Object.fromEntries(measurements.map((measurement) => [measurement.profile, {
       runId, commit: baselineBegin.commit, workingTreeDigest: baselineBegin.workingTreeSha256,
-      inputDigest, sourceState: baselineBegin.state, sourceChanged: false,
+      inputDigest, measurementAuthoritySha256: measurementAuthority.sha256,
+      sourceState: baselineBegin.state, sourceChanged: false,
       fixtureRowsSha256: fixture.rowsSha256, measuredAt: endedAt.toISOString(),
       browser: browserSample, metrics: measurement.metrics,
+      evidence: measurement.calibrationEvidence,
       observedFaults: measurement.observedFaults,
     }]));
     const samplePath = calibrationPathFor(runId, 'baseline');
@@ -1953,6 +2034,7 @@ async function runBrokenBaselineCalibration(baselineRootArgument) {
       status: 'paired-broken-baseline-observation-not-a-budget', runId,
       budgetAuthority: {
         collectorCommit: collectorBegin.commit,
+        measurementAuthoritySha256: measurementAuthority.sha256,
         projectionRowsSha256: projection.rowsSha256,
       },
       collectorSource: report.collectorSource, baselineSource: report.baselineSource,
@@ -2031,6 +2113,7 @@ async function runGate({ calibrate }) {
     }
     const budgetValidation = validateBudgetRecord(
       budget, fixture.rowsSha256, projection.rowsSha256,
+      compendiumMeasurementAuthority(inputs),
     );
     if (!budgetValidation.ok) {
       throw new Error(`budget record invalid: ${budgetValidation.errors.join('; ')}`);
@@ -2043,7 +2126,24 @@ async function runGate({ calibrate }) {
     }
     gateStage = 'candidate build';
     execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
-    const candidateSpeciesArt = findCandidateSpeciesArtBuildGraph(distDir);
+    const builtProducer = candidateProducerAuthorityFromDist();
+    const candidateSpeciesArt = builtProducer.graph;
+    const producerAuthority = builtProducer.authority;
+    const producerAuthorityMatch = stableJson(producerAuthority)
+      === stableJson(budget.producerAuthority);
+    running = {
+      ...running,
+      budget: {
+        ...running.budget,
+        observedProducerAuthority: producerAuthority,
+        producerAuthorityMatch,
+      },
+    };
+    atomicWriteJson(reportPath, running);
+    gateStage = 'Arc 1A producer authority';
+    if (!producerAuthorityMatch) {
+      throw new Error('built index/owner/worker/painter does not match the Compendium calibration authority');
+    }
     gateStage = 'candidate server and browser launch';
     server = await serveDist();
     browser = await openChromiumCdp(compendiumCdpOptions('candidate', {
@@ -2072,7 +2172,9 @@ async function runGate({ calibrate }) {
       }));
     }
     gateStage = 'sealed outcome evaluation';
-    const evaluatorBudget = calibrate ? calibrationCeilings() : budget;
+    const evaluatorBudget = calibrate
+      ? compendiumCalibrationEvaluatorBudget(producerAuthority) : budget;
+    assert(evaluatorBudget, 'calibration evaluator budget is unavailable');
     const outcomes = measurements.flatMap((measurement) =>
       evaluateProfile(measurement, evaluatorBudget, fixture));
     const failed = outcomes.filter((outcome) => outcome.status === 'fail');
@@ -2103,11 +2205,20 @@ async function runGate({ calibrate }) {
       const browserSample = sampleBrowser(browser.browser);
       const samples = Object.fromEntries(measurements.map((measurement) => [measurement.profile, {
         runId, commit: sourceBegin.commit, workingTreeDigest: sourceBegin.workingTreeSha256,
-        inputDigest, sourceState: sourceBegin.state, sourceChanged: false,
+        inputDigest,
+        measurementAuthoritySha256: budget.measurementAuthority.sha256,
+        producerAuthoritySha256: producerAuthority.sha256,
+        sourceState: sourceBegin.state, sourceChanged: false,
         fixtureRowsSha256: fixture.rowsSha256,
         measuredAt: endedAt.toISOString(), browser: browserSample,
         metrics: calibrationMetrics(measurement),
+        evidence: candidateCalibrationEvidence(measurement, { runId }),
       }]));
+      for (const sample of Object.values(samples)) {
+        const reduced = reduceCalibrationEvidence(sample.evidence);
+        assert(reduced && stableJson(reduced.metrics) === stableJson(sample.metrics),
+          `${sample.evidence?.profile}: candidate calibration evidence did not reproduce metrics`);
+      }
       atomicWriteJson(calibrationPath, {
         schema: 'cf-v2-compendium-memory-calibration-sample/v1',
         status: 'candidate-observation-not-a-budget', runId,
@@ -2188,8 +2299,12 @@ async function main() {
     const fixture = buildCompendiumFixture();
     const projection = buildBrokenBaselineProjection(fixture);
     const budget = readJson(budgetPath);
+    const expectedInputs = exactInputs(fixture);
+    const expectedProducerAuthority = candidateProducerAuthorityFromDist().authority;
     const budgetValidation = validateBudgetRecord(
       budget, fixture.rowsSha256, projection.rowsSha256,
+      compendiumMeasurementAuthority(expectedInputs),
+      expectedProducerAuthority,
     );
     if (!budgetValidation.ok) {
       for (const error of budgetValidation.errors) {
@@ -2197,7 +2312,6 @@ async function main() {
       }
       return 2;
     }
-    const expectedInputs = exactInputs(fixture);
     const expectedSourceIdentity = sourceIdentity();
     const report = readJson(reportPath);
     const verification = verifyCompendiumTerminalReport(report, expectedRunId, {

@@ -11,9 +11,9 @@ as any change that touches an entry.
 
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-17)
 
-**Status: ★ `[EXEC]` implementation present; six-image `[HUMAN]` review open.** This block records
-the current disposition of the historical `D-COMPENDIUM-MEM` proposal below without rewriting that
-dated discovery record.
+**Status: ★ product implementation present; resource calibration `[EXEC-TODO]`; six-image
+`[HUMAN]` review open.** This block records the current disposition of the historical
+`D-COMPENDIUM-MEM` proposal below without rewriting that dated discovery record.
 
 - The maximum 1,500-row Compendium now uses spacer-preserved virtual rows, pinned keyboard focus,
   native filter/clear, detail/Back and Close cleanup. Real 132px leases own one bounded producer,
@@ -26,20 +26,22 @@ dated discovery record.
   phase evidence is retained. Capability/import/protocol/worker fatal paths settle active plus
   queued owners once without automatic retry; paint and content-specific encode failures remain
   per-job. Detail owns an asynchronous 440px request through the same broker.
-- `budgets/compendium-memory-v1.json` is active measured authority. The exact
-  `38447019517147319bd08c598202d097ee866874` baseline run
-  `20260817074210620-55255-c8f0e10c47` is paired with candidate runs
-  `20260817075022672-56100-97d57bcb27`, `20260817075709048-56928-b0435507d2`, and
-  `20260817080124302-57611-3422d7d6b9`. Their shared Compendium-only authority is Edge
-  `151.0.4129.86`, revision `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript
-  `15.1.23.7`, and protocol `1.3`; it does not change the Gate-A/global Edge `150.0.4078.83` pin.
-- Each phone/desktop ceiling is strictly above its measured three-run maximum and carries explicit
-  variance/headroom rationale. The paired broken build exceeds exactly eleven sealed fields:
-  mounted rows, heap, DOM nodes, live cache entries, decoded pixels/bytes, encoded bytes,
-  portrait-cache entries/encoded bytes, warm-heap range, and warm-encoded range. Browser-free
-  controls reject equality, stale raw-heap or provisional-status PASS claims, mixed authority or
-  input/source/budget carriers, and accept a truthfully recomputed FAIL.
-- This is an implementation/current-data decision, not a terminal certification for mutable bytes,
+- The prior exact-3844701/e4e8d1d observations remain historical calibration evidence, not active
+  current authority. Exact committed repair `dea03913014bc58134ebb06ca5b36892210a7571`
+  passed all 12 Glass rows; its following exact Compendium run
+  `20260817150005919-93781-b6643ba7a6` truthfully reports 75/76, solely red at
+  `desktop/warm-plateau`. That red proves neither a leak nor a clean product plateau: the old
+  sequence destructively trimmed the desktop cache before warming and then measured refill, while
+  its heap ruler omitted embedder/backing ownership.
+- `budgets/compendium-memory-v1.json` is intentionally `calibration-required`, with empty candidate
+  samples, null candidate ceilings, and a `measurement-required` baseline. The repaired seam moves
+  cap control after full native warm-cache observation; records used, embedder, backing-store, and
+  aggregate heap; proves stable warm keys/reuse and a post-cap restored state; embeds replayable raw
+  baseline/candidate capsules; and binds the complete measurement inputs plus exact built
+  owner-to-worker-to-painter graph. One fresh paired exact-3844701 baseline, three independent
+  one-attempt current-candidate runs per profile, new ceiling rationale, and exact-head
+  certification remain required before this criterion returns to `[EXEC]`.
+- This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
   images still require human review. Arc 1B remains open for scene/Pixi textures, render targets,
   GPU proxies, and the combined travel → Compendium → Shipyard resource plateau.
@@ -1704,8 +1706,9 @@ duplicates).
   painter import, and the instance terminates after active work settles and its queue is empty.
   Capability/import/protocol/worker fatal paths
   settle the failed active and queued jobs once with no automatic retry; a later genuinely new
-  request may create a fresh producer. Virtualization and the measured resource contract are now
-  `[EXEC]` as recorded in the current-state block above; the HUMAN review remains open.
+  request may create a fresh producer. Virtualization and worker ownership are implemented as
+  recorded in the current-state block above; measured resource acceptance is `[EXEC-TODO]` until
+  the fresh ruler is activated, and the HUMAN review remains open.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds
