@@ -15,6 +15,7 @@ import { fileURLToPath } from 'node:url';
 import { findChromiumBrowser } from './browserpath.mjs';
 import { acquireWorkspaceLock, workspaceLockChildEnvironment } from './workspacelock.mjs';
 import {
+  classifyForegroundServiceTurnReceipt,
   classifyPlanetsideSettlement,
   planetsidePhaseRemainingMs,
   planetsideRuntimeTimeoutDecision,
@@ -172,6 +173,63 @@ function runSelftest() {
     || sameSource(source, { ...source, workingTreeSha256: 'd'.repeat(64) })) {
     throw new Error('SELFTEST source-identity change control drifted');
   }
+  const foregroundExpected = Object.freeze({
+    targetId: 'lazy-primary', documentToken: 'document-current', serviceToken: 'service-current',
+  });
+  const foregroundReady = Object.freeze({
+    targetId: foregroundExpected.targetId,
+    documentToken: foregroundExpected.documentToken,
+    visibilityState: 'visible', hidden: false, focused: true,
+    service: Object.freeze({
+      token: foregroundExpected.serviceToken, visibilityChanges: 0, focusLosses: 0,
+      armVisibilityState: 'visible', armHidden: false, armFocused: true,
+      raf: true, rafVisibilityState: 'visible', rafHidden: false, rafFocused: true,
+      laterTask: true, laterVisibilityState: 'visible', laterHidden: false, laterFocused: true,
+    }),
+  });
+  const foregroundControls = [
+    ['ready', foregroundReady, 'ready', null, 999],
+    ['wrong-target', { ...foregroundReady, targetId: 'lazy-foreign' }, 'error', 'target identity'],
+    ['stale-document', { ...foregroundReady, documentToken: 'document-stale' }, 'error', 'document identity'],
+    ['hidden-page', { ...foregroundReady, visibilityState: 'hidden', hidden: true }, 'error', 'page visibility'],
+    ['unfocused-page', { ...foregroundReady, focused: false }, 'error', 'page unfocused'],
+    ['stale-service', { ...foregroundReady, service: { ...foregroundReady.service, token: 'service-stale' } }, 'error', 'service identity'],
+    ['hidden-arm', { ...foregroundReady, service: { ...foregroundReady.service,
+      armVisibilityState: 'hidden', armHidden: true } }, 'error', 'arm visibility'],
+    ['unfocused-arm', { ...foregroundReady, service: { ...foregroundReady.service,
+      armFocused: false } }, 'error', 'arm unfocused'],
+    ['visibility-transition', { ...foregroundReady, service: { ...foregroundReady.service,
+      visibilityChanges: 1 } }, 'error', 'visibility changed'],
+    ['focus-transition', { ...foregroundReady, service: { ...foregroundReady.service,
+      focusLosses: 1 } }, 'error', 'focus lost'],
+    ['missing-rendering-opportunity', { ...foregroundReady, service: { ...foregroundReady.service,
+      raf: false, rafVisibilityState: null, rafHidden: null, rafFocused: null,
+      laterTask: false, laterVisibilityState: null, laterHidden: null, laterFocused: null } },
+    'pending', 'rendering opportunity pending'],
+    ['missing-later-task', { ...foregroundReady, service: { ...foregroundReady.service,
+      laterTask: false, laterVisibilityState: null, laterHidden: null, laterFocused: null } },
+    'pending', 'later task pending'],
+    ['reversed-service-order', { ...foregroundReady, service: { ...foregroundReady.service,
+      raf: false, rafVisibilityState: null, rafHidden: null, rafFocused: null } },
+    'error', 'service phase order'],
+    ['exact-deadline', foregroundReady, 'error', 'at/after deadline', 1000],
+    ['just-late', foregroundReady, 'error', 'at/after deadline', 1000.001],
+  ];
+  const foregroundDrift = foregroundControls.flatMap(([
+    name, observation, expectedStatus, diagnosis, receivedAtMs = 999,
+  ]) => {
+    const actual = classifyForegroundServiceTurnReceipt(
+      observation, foregroundExpected, 1000, receivedAtMs,
+    );
+    const diagnosed = diagnosis === null
+      ? actual.reasons.length === 0
+      : actual.reasons.some((reason) => reason.includes(diagnosis));
+    return actual.status === expectedStatus && diagnosed
+      ? [] : [{ name, expectedStatus, diagnosis, actual }];
+  });
+  if (foregroundDrift.length) {
+    throw new Error(`SELFTEST foreground service controls drifted: ${JSON.stringify(foregroundDrift)}`);
+  }
   const readyImage = Object.freeze({
     state: 'ready', hasSrc: true, complete: true, naturalWidth: 132, naturalHeight: 132,
   });
@@ -239,6 +297,7 @@ function runSelftest() {
   console.log('  source-identity change: mixed-source evidence rejected');
   console.log('  screenshot provenance: injected stale PNG excluded from the exact run manifest');
   console.log('  infrastructure fatal: retained ahead of generic bundler advice');
+  console.log('  foreground service: exact target/document/token, continuous visible focused rAF→later-task authority, exact/late receipt rejection');
   console.log('  Planetside settlement: ready+132px+drained accepted; roster/image/decode/art/live-work controls rejected');
   console.log('  Planetside phase: monotonic remainder clipped; labelled Runtime.evaluate timeout converted exactly');
   console.log('  retry policy remains zero by construction (one child invocation in the wrapper)');

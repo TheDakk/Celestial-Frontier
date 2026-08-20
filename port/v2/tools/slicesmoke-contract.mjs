@@ -4,6 +4,84 @@
    src string as publication evidence. */
 
 const safeInt = (value) => Number.isSafeInteger(value) && value >= 0;
+const nonEmptyString = (value) => typeof value === 'string' && value.length > 0;
+
+/* A rendering-opportunity-owned outcome is evidence only while the exact page
+   target and document are foregrounded and have crossed both halves of the
+   production scheduler (rAF, then a later task). Runtime.evaluate can still
+   answer for a background page whose rAF queue is intentionally paused, so
+   target command success alone is not foreground authority. */
+export function classifyForegroundServiceTurn(observation, expected) {
+  if (!expected || typeof expected !== 'object'
+    || !nonEmptyString(expected.targetId)
+    || !nonEmptyString(expected.documentToken)
+    || !nonEmptyString(expected.serviceToken)) {
+    throw new TypeError('foreground service authority requires exact target, document, and service tokens');
+  }
+  if (!observation || typeof observation !== 'object') {
+    return { status: 'error', reasons: ['foreground observation absent'] };
+  }
+  const errors = [];
+  const pending = [];
+  if (observation.targetId !== expected.targetId) {
+    errors.push(`target identity ${JSON.stringify(observation.targetId)}`);
+  }
+  if (observation.documentToken !== expected.documentToken) {
+    errors.push(`document identity ${JSON.stringify(observation.documentToken)}`);
+  }
+  if (observation.visibilityState !== 'visible' || observation.hidden !== false) {
+    errors.push(`page visibility ${JSON.stringify(observation.visibilityState)}/${JSON.stringify(observation.hidden)}`);
+  }
+  if (observation.focused !== true) errors.push('page unfocused');
+  const service = observation.service;
+  if (!service || typeof service !== 'object') errors.push('service witness absent');
+  else {
+    if (service.token !== expected.serviceToken) {
+      errors.push(`service identity ${JSON.stringify(service.token)}`);
+    }
+    if (!safeInt(service.visibilityChanges)) errors.push('visibility change count invalid');
+    else if (service.visibilityChanges !== 0) {
+      errors.push(`visibility changed ${service.visibilityChanges} time(s)`);
+    }
+    if (!safeInt(service.focusLosses)) errors.push('focus loss count invalid');
+    else if (service.focusLosses !== 0) errors.push(`focus lost ${service.focusLosses} time(s)`);
+    if (service.laterTask === true && service.raf !== true) errors.push('service phase order');
+    for (const [phase, serviced, visibilityState, hidden, focused] of [
+      ['arm', true, service.armVisibilityState, service.armHidden, service.armFocused],
+      ['rendering opportunity', service.raf, service.rafVisibilityState, service.rafHidden, service.rafFocused],
+      ['later task', service.laterTask, service.laterVisibilityState, service.laterHidden, service.laterFocused],
+    ]) {
+      if (serviced !== true) {
+        pending.push(`${phase} pending`);
+        continue;
+      }
+      if (visibilityState !== 'visible' || hidden !== false) {
+        errors.push(`${phase} visibility ${JSON.stringify(visibilityState)}/${JSON.stringify(hidden)}`);
+      }
+      if (focused !== true) errors.push(`${phase} unfocused`);
+    }
+  }
+  if (errors.length) return { status: 'error', reasons: [...errors, ...pending] };
+  if (pending.length) return { status: 'pending', reasons: pending };
+  return { status: 'ready', reasons: [] };
+}
+
+export function classifyForegroundServiceTurnReceipt(
+  observation, expected, deadlineMs, receivedAtMs,
+) {
+  if (!Number.isFinite(deadlineMs) || !Number.isFinite(receivedAtMs)) {
+    throw new TypeError('foreground service receipt requires finite monotonic times');
+  }
+  const decision = classifyForegroundServiceTurn(observation, expected);
+  if (receivedAtMs < deadlineMs) return decision;
+  return {
+    status: 'error',
+    reasons: [
+      `foreground observation received at/after deadline (${receivedAtMs} >= ${deadlineMs})`,
+      ...decision.reasons,
+    ],
+  };
+}
 
 export function planetsidePhaseRemainingMs(deadlineMs, nowMs) {
   if (!Number.isFinite(deadlineMs) || !Number.isFinite(nowMs)) {

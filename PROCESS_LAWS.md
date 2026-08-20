@@ -807,7 +807,32 @@ activation head once. For this repair, producer
 `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2` was recalibrated under exact
 Edge 151.0.4129.86 from one-attempt baseline4 plus independent candidate5/6/7. The active ruler
 replays their raw capsules, retains all four baseline faults and 14 phone / 13 desktop breaches,
-and still requires exact-head browser certification and CI; activation alone is not certification.
+and exact-788 local certification passed. The later instrument-only head and PR CI still require
+their own exact-source browser evidence; activation or an earlier-head PASS is not certification.
+
+**Correction earned by PR #32's first serviced-turn Chrome Smoke:** a CDP session that answers
+`Runtime.evaluate` does not prove that its document owns a rendering opportunity. Exact-head run
+`20260820063539761-70885-f80e1a2198fc` created a live held-painter owner, then created a second
+target and polled the first without reactivating it. The only finding was the 30-second lazy-art
+refill returning `last null`; the instrument retained neither foreground authority nor the terminal
+image/worker phase. Because each repaired successor pump deliberately waits for rAF and a later
+task, judging an owner whose foreground/rendering authority was never re-established made the test
+precondition unproved. Preserve that red as instrument evidence; do not infer the exact stalled
+producer phase, add a hidden-tab timer fallback, widen the
+deadline, or retry the unchanged run.
+
+**A MULTI-TARGET BROWSER TEST MUST OWN THE RENDERING TARGET IT JUDGES.** Bind the expected page to
+its attach-derived target/session and exact document token. Immediately before a held release or
+other rendering-opportunity-dependent observation, activate that exact target, enable focus
+emulation, bring the page forward, and require one fresh service token to remain visible, not
+hidden, and focused at arm, rAF, and the later task, with zero intervening visibility/focus loss.
+Only then may the test release once and start its one immutable phase deadline; a command response
+received at or after that boundary is late even if its timeout callback has not run. If ownership later
+moves to a different document, repeat the same proof for that owner rather than borrowing the first
+page's witness. Negative-control wrong target, stale document/service identity, hidden/unfocused
+arm and phases, phase reversal, and intervening visibility/focus changes. A timeout must retain the
+last non-null image/decode, queue/active, worker identity/phase/result/error, broker, and foreground
+state; a generic `null` cannot distinguish product from a missing test precondition.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next

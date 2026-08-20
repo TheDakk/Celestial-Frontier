@@ -19,6 +19,8 @@ import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 import {
+  classifyForegroundServiceTurn,
+  classifyForegroundServiceTurnReceipt,
   classifyPlanetsideSettlement,
   planetsidePhaseRemainingMs,
   planetsideRuntimeTimeoutDecision,
@@ -4884,9 +4886,10 @@ try {
   if (seedResult.exceptionDetails || seedResult.result.value !== true) {
     throw new Error('lazy-art veteran seed failed: ' + JSON.stringify(seedResult.exceptionDetails || seedResult.result));
   }
-  await navigateToSlice(lazy, URL5, 'slow species-art veteran boot');
-  const evalLazy = async (expr) => {
-    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, lazy);
+  const lazyDocumentToken = await navigateToSlice(lazy, URL5, 'slow species-art veteran boot');
+  const evalLazy = async (expr, { timeoutMs } = {}) => {
+    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, lazy,
+      timeoutMs === undefined ? undefined : { timeoutMs });
     if (r.exceptionDetails) throw new Error('lazy-art eval threw: '
       + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
     return r.result.value;
@@ -4926,9 +4929,10 @@ try {
   await send('Runtime.enable', {}, lazyClosed);
   await send('Page.enable', {}, lazyClosed);
   await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false }, lazyClosed);
-  await navigateToSlice(lazyClosed, URL5, 'slow species-art closed-owner boot');
-  const evalLazyClosed = async (expr) => {
-    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, lazyClosed);
+  const lazyClosedDocumentToken = await navigateToSlice(lazyClosed, URL5, 'slow species-art closed-owner boot');
+  const evalLazyClosed = async (expr, { timeoutMs } = {}) => {
+    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, lazyClosed,
+      timeoutMs === undefined ? undefined : { timeoutMs });
     if (r.exceptionDetails) throw new Error('lazy-art closed-owner eval threw: '
       + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
     return r.result.value;
@@ -4942,6 +4946,87 @@ try {
       await sleep(50);
     }
     throw new Error(`${label} did not reach its lazy-art outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  const lazyAttachments = new Map([
+    [lazy, Object.freeze({ sessionId: lazy, targetId: tLazy.targetId, documentToken: lazyDocumentToken })],
+    [lazyClosed, Object.freeze({
+      sessionId: lazyClosed, targetId: tLazyClosed.targetId, documentToken: lazyClosedDocumentToken,
+    })],
+  ]);
+  const lazyForegroundObservationExpression = `(()=>{const S=window.__CF_SLICE__,service=window.__cfLazyForegroundService;
+    return {documentToken:typeof S?.documentToken==='string'?S.documentToken:null,
+      visibilityState:document.visibilityState,hidden:document.hidden,focused:document.hasFocus(),
+      service:service?{token:service.token,visibilityChanges:service.visibilityChanges,focusLosses:service.focusLosses,
+        armVisibilityState:service.armVisibilityState,armHidden:service.armHidden,armFocused:service.armFocused,
+        raf:service.raf,rafVisibilityState:service.rafVisibilityState,rafHidden:service.rafHidden,
+        rafFocused:service.rafFocused,laterTask:service.laterTask,
+        laterVisibilityState:service.laterVisibilityState,laterHidden:service.laterHidden,
+        laterFocused:service.laterFocused}:null};})()`;
+  let lazyForegroundOwner = null;
+  let lazyServiceSequence = 0;
+  const ownLazyForeground = async (sessionId, activationTargetId, label) => {
+    const attachment = lazyAttachments.get(sessionId);
+    if (!attachment) throw new Error(`${label} has no attach-derived target binding`);
+    if (lazyForegroundOwner && lazyForegroundOwner.sessionId !== sessionId) {
+      await send('Emulation.setFocusEmulationEnabled', { enabled: false }, lazyForegroundOwner.sessionId);
+    }
+    /* `activationTargetId` is deliberately retained as the observed command
+       identity. The independently attach-derived binding is the expected
+       identity, so a caller that activates one target while evaluating the
+       other cannot manufacture foreground authority. */
+    await send('Target.activateTarget', { targetId: activationTargetId });
+    await send('Emulation.setFocusEmulationEnabled', { enabled: true }, sessionId);
+    await send('Page.bringToFront', {}, sessionId);
+    const serviceToken = `lazy-foreground-service-${++lazyServiceSequence}`;
+    const expected = Object.freeze({
+      targetId: attachment.targetId, documentToken: attachment.documentToken, serviceToken,
+    });
+    const timeoutMs = 5000;
+    const deadline = performance.now() + timeoutMs;
+    const armTimeoutMs = Math.floor(deadline - performance.now());
+    if (armTimeoutMs <= 0) throw new Error(`${label} foreground service deadline exhausted before arm`);
+    const armed = await send('Runtime.evaluate', { expression: `(()=>{
+      window.__cfLazyForegroundCleanup?.();
+      const sample=()=>({visibilityState:document.visibilityState,hidden:document.hidden,focused:document.hasFocus()});
+      const arm=sample(),service={token:${JSON.stringify(serviceToken)},visibilityChanges:0,focusLosses:0,
+        armVisibilityState:arm.visibilityState,armHidden:arm.hidden,armFocused:arm.focused,
+        raf:false,rafVisibilityState:null,rafHidden:null,rafFocused:null,
+        laterTask:false,laterVisibilityState:null,laterHidden:null,laterFocused:null};
+      const visibility=()=>{service.visibilityChanges++},blur=()=>{service.focusLosses++};
+      document.addEventListener('visibilitychange',visibility);window.addEventListener('blur',blur);
+      window.__cfLazyForegroundCleanup=()=>{document.removeEventListener('visibilitychange',visibility);
+        window.removeEventListener('blur',blur);delete window.__cfLazyForegroundCleanup};
+      window.__cfLazyForegroundService=service;
+      requestAnimationFrame(()=>{const frame=sample();service.raf=true;service.rafVisibilityState=frame.visibilityState;
+        service.rafHidden=frame.hidden;service.rafFocused=frame.focused;
+        setTimeout(()=>{const later=sample();service.laterTask=true;service.laterVisibilityState=later.visibilityState;
+          service.laterHidden=later.hidden;service.laterFocused=later.focused},0)});
+      return ${lazyForegroundObservationExpression};})()`, returnByValue: true }, sessionId,
+    { timeoutMs: armTimeoutMs });
+    const armedAtMs = performance.now();
+    if (armed.exceptionDetails) throw new Error(`${label} foreground arm threw: `
+      + JSON.stringify(armed.exceptionDetails.exception?.description || armed.exceptionDetails.text));
+    let last = { ...armed.result.value, targetId: activationTargetId };
+    let decision = classifyForegroundServiceTurnReceipt(last, expected, deadline, armedAtMs);
+    while (decision.status === 'pending' && performance.now() < deadline) {
+      const remainingMs = Math.floor(deadline - performance.now());
+      if (remainingMs <= 0) break;
+      const result = await send('Runtime.evaluate', {
+        expression: lazyForegroundObservationExpression, returnByValue: true,
+      }, sessionId, { timeoutMs: remainingMs });
+      if (result.exceptionDetails) throw new Error(`${label} foreground observation threw: `
+        + JSON.stringify(result.exceptionDetails.exception?.description || result.exceptionDetails.text));
+      const receivedAtMs = performance.now();
+      last = { ...result.result.value, targetId: activationTargetId };
+      decision = classifyForegroundServiceTurnReceipt(last, expected, deadline, receivedAtMs);
+      if (decision.status === 'pending') await sleep(Math.min(25, Math.max(0, deadline - performance.now())));
+    }
+    if (decision.status !== 'ready') {
+      throw new Error(`${label} foreground service ${decision.status}: `
+        + JSON.stringify({ reasons: decision.reasons, expected, observation: last }));
+    }
+    lazyForegroundOwner = attachment;
+    return Object.freeze({ expected, observation: last });
   };
   await evalLazyClosed(`(()=>{const opener=document.getElementById('railcodex');opener.focus();return true})()`);
   await dispatchKeyPress(lazyClosed, 'Enter', 'Enter');
@@ -4970,17 +5055,69 @@ try {
       + JSON.stringify({ slowRequestObserved, lazyBefore, lazyClosedBefore, lazyClosedArmed,
         held: slowSpeciesRequests.length }));
   }
+  /* The second target now exists, so this owner's foreground authority is no
+     longer implicit. Reclaim the exact first target and service one production-shaped
+     rAF→later-task turn before releasing the single held response. */
+  const lazyReleaseAuthority = await ownLazyForeground(lazy, tLazy.targetId,
+    'slow Compendium live owner');
+  const lazyRefillTimeoutMs = 30000;
+  const lazyRefillDeadline = performance.now() + lazyRefillTimeoutMs;
   releaseSlowSpecies();
-  const lazyAfter = await waitLazy('slow Compendium art refill', `(()=>{ const d=window.__CF_SLICE__.api.compendiumDiagnostics(),
+  const lazyRefillObservationExpression = `(()=>{ const S=window.__CF_SLICE__,d=S.api.compendiumDiagnostics(),
     close=document.querySelector('#codexpanel [data-pnx]'),rows=[...document.querySelectorAll('#codexpanel [data-ci]')],
-    images=rows.map(row=>row.querySelector('img'));if(images.some(image=>!image)||images.length!==3
-      ||!images.every(image=>image.dataset.thumbState==='ready'&&image.naturalWidth===132&&image.naturalHeight===132)
-      ||!d.art||d.art.live.queuedJobs!==0||d.art.live.activeJobs!==0)return null;
-    return {images:images.length,sameClose:close===window.__cfLazyOriginalClose,
+    imageNodes=rows.map(row=>row.querySelector('img')),images=imageNodes.map(image=>({exists:!!image,
+      state:image?.dataset.thumbState||null,hasSrc:!!image?.getAttribute('src'),
+      srcKind:image?.getAttribute('src')?.startsWith('data:image/')?'data-image':image?.getAttribute('src')?'other':null,
+      complete:image?.complete===true,naturalWidth:image?.naturalWidth||0,naturalHeight:image?.naturalHeight||0,
+      width:image?.getAttribute('width')||null,height:image?.getAttribute('height')||null})),
+    foreground=${lazyForegroundObservationExpression},art=d.art||null,live=art?.live||null,lazyArt=d.lazyArt||null;
+    const settled=images.length===3&&images.every(image=>image.exists&&image.state==='ready'
+      &&image.srcKind==='data-image'&&image.complete&&image.naturalWidth===132&&image.naturalHeight===132)
+      &&lazyArt?.state==='ready'&&live?.queuedJobs===0&&live?.activeJobs===0;
+    return {done:settled,panelMode:d.panel.mode,images,
+      queuedJobs:live?.queuedJobs??null,activeJobs:live?.activeJobs??null,foreground,
+      lazyArt:lazyArt?{schema:lazyArt.schema,state:lazyArt.state,importStarts:lazyArt.importStarts,
+        identity:lazyArt.identity,lastEvent:lazyArt.lastEvent,worker:lazyArt.worker,phases:lazyArt.phases,
+        results:lazyArt.results,errors:lazyArt.errors}:null,
+      art:art?{schema:art.schema,deviceClass:art.deviceClass,live:art.live,totals:art.totals,keys:art.keys}:null,
+      sameClose:close===window.__cfLazyOriginalClose,
       sameRows:rows.length===window.__cfLazyOriginalRows.length&&rows.every((row,index)=>row===window.__cfLazyOriginalRows[index]),
       generation:d.generation,renderCommits:d.panel.renderCommits,focus:document.activeElement===close,
-      exact132:images.every(image=>image.getAttribute('src')?.startsWith('data:image/')
-        &&image.naturalWidth===132&&image.naturalHeight===132)}; })()`, 30000);
+      exact132:images.length===3&&images.every(image=>image.srcKind==='data-image'
+        &&image.complete&&image.naturalWidth===132&&image.naturalHeight===132)}; })()`;
+  let lazyAfter = {
+    done: false, reason: 'not yet observed', foreground: lazyReleaseAuthority.observation,
+  };
+  let lazyRefillForegroundDecision = classifyForegroundServiceTurn(
+    lazyReleaseAuthority.observation, lazyReleaseAuthority.expected,
+  );
+  while (performance.now() < lazyRefillDeadline) {
+    const remainingMs = Math.max(0, Math.floor(lazyRefillDeadline - performance.now()));
+    if (remainingMs <= 0) break;
+    try {
+      lazyAfter = await evalLazy(lazyRefillObservationExpression, { timeoutMs: remainingMs });
+    } catch (error) {
+      throw new Error('slow Compendium art refill observation failed inside its immutable deadline: '
+        + JSON.stringify({ error: String(error?.message || error), last: lazyAfter }));
+    }
+    const receivedAtMs = performance.now();
+    const foreground = { ...lazyAfter.foreground, targetId: lazyReleaseAuthority.observation.targetId };
+    lazyAfter = { ...lazyAfter, foreground };
+    lazyRefillForegroundDecision = classifyForegroundServiceTurnReceipt(
+      foreground, lazyReleaseAuthority.expected, lazyRefillDeadline, receivedAtMs,
+    );
+    if (lazyRefillForegroundDecision.status === 'error') {
+      throw new Error('slow Compendium art refill lost foreground authority: '
+        + JSON.stringify({ decision: lazyRefillForegroundDecision, last: lazyAfter }));
+    }
+    if (lazyAfter.done && lazyRefillForegroundDecision.status === 'ready') break;
+    const sleepMs = Math.min(50, Math.max(0, lazyRefillDeadline - performance.now()));
+    if (sleepMs > 0) await sleep(sleepMs);
+  }
+  if (!lazyAfter.done || lazyRefillForegroundDecision.status !== 'ready') {
+    throw new Error(`slow Compendium art refill did not reach its lazy-art outcome within ${lazyRefillTimeoutMs}ms (last `
+      + JSON.stringify({ decision: lazyRefillForegroundDecision, observation: lazyAfter }) + ')');
+  }
   if (!lazyAfter.sameClose || !lazyAfter.sameRows || !lazyAfter.focus || !lazyAfter.exact132
     || lazyAfter.generation !== lazyBefore.generation
     || lazyAfter.renderCommits !== lazyBefore.renderCommits + 3) {
@@ -5017,20 +5154,67 @@ try {
       + JSON.stringify(lazyFocusRingCtl));
   }
 
+  /* Settlement belongs to the closed document, so switch foreground
+     ownership explicitly and require its own serviced turn before reading
+     the post-release state. */
+  const lazyClosedSettlementAuthority = await ownLazyForeground(
+    lazyClosed, tLazyClosed.targetId, 'slow Compendium closed owner',
+  );
   const lazyClosedOwnerPredicate = `(d)=>d.panel.mode==='closed'&&!d.panel.open
     &&d.panel.closedCompletionCommits===${lazyClosedBefore.closedCompletionCommits}
     &&d.panel.renderCommits===${lazyClosedBefore.renderCommits}
     &&d.surfaces.list.imageCount===0&&d.lazyArt.state==='ready'
     &&d.art&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0
     &&document.activeElement?.id==='railcodex'`;
-  const lazyClosedAfter = await waitLazyClosed('released chunk closed-owner settlement', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
-    return d.lazyArt.state==='ready'&&d.art&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0
-      ?{ok:(${lazyClosedOwnerPredicate})(d),mode:d.panel.mode,listImages:d.surfaces.list.imageCount,
-        focus:document.activeElement?.id||null,closedCompletionCommits:d.panel.closedCompletionCommits,
-        renderCommits:d.panel.renderCommits}:null})()`, 30000);
-  if (!lazyClosedAfter.ok) {
+  const lazyClosedSettlementTimeoutMs = 30000;
+  const lazyClosedSettlementDeadline = performance.now() + lazyClosedSettlementTimeoutMs;
+  const lazyClosedSettlementExpression = `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics(),
+    foreground=${lazyForegroundObservationExpression},settled=d.lazyArt.state==='ready'&&d.art
+      &&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0;
+    return {done:settled,ok:settled&&(${lazyClosedOwnerPredicate})(d),mode:d.panel.mode,
+      listImages:d.surfaces.list.imageCount,focus:document.activeElement?.id||null,
+      closedCompletionCommits:d.panel.closedCompletionCommits,renderCommits:d.panel.renderCommits,
+      lazyArt:d.lazyArt,art:d.art,foreground};})()`;
+  let lazyClosedAfter = {
+    done: false, reason: 'not yet observed', foreground: lazyClosedSettlementAuthority.observation,
+  };
+  let lazyClosedForegroundDecision = classifyForegroundServiceTurn(
+    lazyClosedSettlementAuthority.observation, lazyClosedSettlementAuthority.expected,
+  );
+  while (performance.now() < lazyClosedSettlementDeadline) {
+    const remainingMs = Math.floor(lazyClosedSettlementDeadline - performance.now());
+    if (remainingMs <= 0) break;
+    try {
+      lazyClosedAfter = await evalLazyClosed(lazyClosedSettlementExpression, { timeoutMs: remainingMs });
+    } catch (error) {
+      throw new Error('released chunk closed-owner settlement observation failed inside its immutable deadline: '
+        + JSON.stringify({ error: String(error?.message || error), last: lazyClosedAfter }));
+    }
+    const receivedAtMs = performance.now();
+    const foreground = {
+      ...lazyClosedAfter.foreground, targetId: lazyClosedSettlementAuthority.observation.targetId,
+    };
+    lazyClosedAfter = { ...lazyClosedAfter, foreground };
+    lazyClosedForegroundDecision = classifyForegroundServiceTurnReceipt(
+      foreground, lazyClosedSettlementAuthority.expected, lazyClosedSettlementDeadline, receivedAtMs,
+    );
+    if (lazyClosedForegroundDecision.status === 'error') {
+      throw new Error('released chunk closed-owner settlement lost foreground authority: '
+        + JSON.stringify({ decision: lazyClosedForegroundDecision, last: lazyClosedAfter }));
+    }
+    if (lazyClosedAfter.done && lazyClosedForegroundDecision.status === 'ready') break;
+    const sleepMs = Math.min(50, Math.max(0, lazyClosedSettlementDeadline - performance.now()));
+    if (sleepMs > 0) await sleep(sleepMs);
+  }
+  if (!lazyClosedAfter.done || lazyClosedForegroundDecision.status !== 'ready') {
+    throw new Error(`released chunk closed-owner settlement did not reach its outcome within `
+      + `${lazyClosedSettlementTimeoutMs}ms (last `
+      + JSON.stringify({ decision: lazyClosedForegroundDecision, observation: lazyClosedAfter }) + ')');
+  }
+  if (!lazyClosedAfter.ok || lazyClosedForegroundDecision.status !== 'ready') {
     fails.push('COMPENDIUM CLOSED OWNER: released lazy chunk committed/refilled after Close or lost opener focus: '
-      + JSON.stringify({ before: lazyClosedBefore, armed: lazyClosedArmed, after: lazyClosedAfter }));
+      + JSON.stringify({ before: lazyClosedBefore, armed: lazyClosedArmed, after: lazyClosedAfter,
+        foreground: lazyClosedForegroundDecision }));
   }
   const lazyClosedOwnerCtl = await evalLazyClosed(`(()=>{const api=window.__CF_SLICE__.api,prior=api.compendiumDiagnostics;let accepted=false;
     try{api.compendiumDiagnostics=()=>{const d=prior();return {...d,panel:{...d.panel,

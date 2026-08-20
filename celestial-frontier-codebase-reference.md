@@ -32,7 +32,8 @@
 > queued owners exactly once, while content-specific paint/encode errors remain
 > per-job. Phone/desktop cache, decoded-pixel, byte, queue, lease, portrait, worker
 > lifecycle, and phase evidence are explicit; current resource-budget status is active, with
-> exact-head certification still open. Specimen detail requests an
+> exact-788 certification complete and the final instrument-head browser battery still open.
+> Specimen detail requests an
 > asynchronous 440px result through the same owner; Back/Close cancels that request
 > and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
 > synchronous audit compatibility and are rejected from the live entry-to-worker
@@ -93,7 +94,25 @@
 > above their three-run maxima; baseline4 retains all four sealed faults and breaches 14 phone / 13
 > desktop fields. The desktop warm aggregate maximum is 436,412 bytes under a 524,288-byte ceiling.
 > Baseline3/candidate2/3/4 remain truthful history for old producer `291b794e…`, not current
-> certification. Exact-head certification and CI remain open.
+> certification. Commit `78813cd25c67f4255282f418ea6f635a45e0fc29` passed exact-head
+> Arc-local Edge run `20260820-arc1a-serviced-turn-active-cert-78813cd`: 78/78 outcomes, zero
+> findings/retries, independent named-run verification, report SHA-256 `0d4a7f80…`.
+>
+> The first following Chrome Smoke run `20260820063539761-70885-f80e1a2198fc` is preserved as a
+> one-attempt/zero-retry instrument red (report/log `d2919f0e…` / `4b5de237…`). Its held-painter
+> phase created a second target and then observed the first owner without re-establishing or proving
+> its foreground authority, while repaired successor pumps intentionally wait for rAF→later-task service. The generic
+> `last null` carrier retained neither foreground authority nor the exact terminal image/worker
+> phase, so it is not a visible-page product finding. `tools/slicesmoke.mjs` now binds each
+> attach-derived target/session plus exact document token, explicitly activates/focuses/brings that
+> owner forward, proves continuous visible/focused arm→rAF→later-task service under a fresh token,
+> releases once under one immutable 30-second deadline, and retains image/decode, queue, worker
+> phase/result/error, broker, and foreground diagnostics. The closed owner gets its own foreground
+> proof before settlement. `tools/slicesmoke-contract.mjs` and the report selftest reject wrong or
+> stale identity, hidden/unfocused phases, reversed service order, and intervening visibility/focus
+> changes; receipt at or after either absolute deadline is late even when the CDP timeout callback
+> has not run first. That instrument-only final head still requires one fresh Smoke and exact-source browser
+> battery before push/CI.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.
