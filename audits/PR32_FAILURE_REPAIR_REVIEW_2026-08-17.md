@@ -10,7 +10,8 @@
 **Status:** Product and Glass repairs are committed; exact dea039 Glass is 12/12. Its following exact
 Compendium run `20260817150005919-93781-b6643ba7a6` truthfully failed 75/76 solely at
 `desktop/warm-plateau` and exposed a pre-warm destructive-cap/incomplete-heap ruler. The fail-closed
-seven-file calibration seam is current, committed, browser-free green, and clean under frozen
+calibration seam is committed at `4374d95be6c8b6ec2106ecd8518ac9bb39e32065`, browser-free green,
+and clean under frozen
 read-only review; fresh calibration,
 exact-head certification, push, and
 CI are still pending, so PR #32 is **not yet ready for approval**.
@@ -396,7 +397,7 @@ Historical follow-up checkpoint before dea039:
 - that result is not a product-leak diagnosis: the old collector trimmed the desktop cache before
   warm observation and measured refill, and its used-heap-only ruler excluded embedder/backing
   ownership;
-- the current committed seven-file Compendium seam moves cap control after the full native warm cache; records
+- the current committed Compendium seam moves cap control after the full native warm cache; records
   used, embedder, backing-store, and aggregate heap; proves stable warm keys/reuse and a post-cap
   restored snapshot; replays compact raw baseline/candidate capsules; and binds complete
   measurement-input plus built-producer authority;
@@ -412,11 +413,35 @@ Historical follow-up checkpoint before dea039:
 - PR #32 remains draft/not approvable. The six-image HUMAN review and Claude presentation-polish
   pass remain separate and open.
 
+### 6.2 First fresh paired-baseline attempt and observer boundary
+
+The first post-seam paired-baseline attempt is preserved and was not retried unchanged. It produced
+no baseline sample: one exact 132px pre-owner completion landed between the host's stable-count
+`Runtime.evaluate` and the later document phase-switch command, so the collector correctly ended as
+instrument failure. This was an observer-boundary defect, not baseline product evidence.
+
+The bounded repair removes both split-command races. Before the list opener can be armed, the
+document must expose a positive, at-most-eight Planetside image roster whose sources are fully
+decoded at exact 440×440 and whose exact-132 scratch completion count equals that visible owner
+count for one quiet second. The real opener's capture-phase listener then seals the expected
+pre-owner count before the application click handler can enqueue list work. The final 1,500 list
+count and quiet interval are read and sealed atomically in one document turn. Independent controls
+reject N−1 owner readiness, early quiet, unrelated clicks, re-arm/re-seal, and a completion that
+lands after the arm and would otherwise be laundered into list evidence.
+
+That first attempt also ran before discovery that `/Applications/Microsoft Edge.app` had
+auto-updated from the Arc-local 151.0.4129.86 build to 151.0.4129.93. No .93 sample or authority was
+accepted. The exact notarized universal 151.0.4129.86 package is instead extracted into one isolated
+`/private/tmp` path, without modifying `/Applications`; that same executable path is required for
+the next baseline, all three candidates, and final certification. The global Gate-A Edge 150 pin
+remains unchanged.
+
 ## 7. Remaining work
 
-- from the current committed fail-closed seam, capture one fresh paired exact-3844701 baseline and three independent
-  one-attempt current-candidate runs per profile; derive and document new ceilings from their raw
-  capsules, activate the budget, and commit that exact ruler;
+- commit the observer-boundary follow-up with refreshed measurement authority; then capture one
+  fresh paired exact-3844701 baseline and three independent one-attempt current-candidate runs per
+  profile under the one isolated Edge 151.0.4129.86 executable, derive and document new ceilings
+  from their raw capsules, activate the budget, and commit that exact ruler;
 - run the required final-clean-head browser path/CDP controls and exactly one no-retry Smoke, Glass,
   and Arc-local Edge Compendium certification battery;
 - preserve and diagnose the first browser red if any rather than rerunning unchanged;

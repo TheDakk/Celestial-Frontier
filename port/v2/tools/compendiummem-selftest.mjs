@@ -32,7 +32,8 @@ import {
   compendiumBudgetBrowserAuthority, validCompendiumBrowserAuthority,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression, evaluateProfile,
-  installBrokenBaselineThumbObserver,
+  installBrokenBaselineThumbObserver, installBrokenBaselineInitialListArm,
+  sealBrokenBaselineInitialListObservation,
   phaseObservationAccepted,
   remainingCommandTimeoutMs, sha256,
   reduceCalibrationEvidence,
@@ -282,9 +283,10 @@ function activeBudget(fixture) {
         distinctSources: 1500, sourceInstanceCount: 1500, dataImageCount: 1500,
         sourceInstanceEncodedBytes: 1_000_000,
         thumbObserver: {
-          preOwnerExact132Completions: 0, initialListCompletions: 1500,
+          expectedPreOwnerExact132Completions: 8,
+          preOwnerExact132Completions: 8, initialListCompletions: 1500,
           cacheEntries: 600, cacheEncodedBytes: encoded,
-          totalExact132Completions: 1500, errors: 0,
+          totalExact132Completions: 1508, errors: 0,
           descriptorPreserved: true, stableQuietMs: 1000,
         },
         portraitCache: {
@@ -2133,10 +2135,31 @@ export async function runCompendiumMemSelftest() {
   class FakeTextEncoder {
     encode(value) { return new Uint8Array(String(value).length); }
   }
+  class FakeElement {
+    constructor(opener) { this.opener = opener; }
+    closest(selector) {
+      return this.opener && selector === '#dockcodex,#railcodex' ? this : null;
+    }
+  }
   const originalCanvasDescriptor = Object.getOwnPropertyDescriptor(
     FakeCanvas.prototype, 'toDataURL',
   );
-  const fakeObserverGlobal = {};
+  const fakeClickListeners = new Set();
+  const fakeObserverGlobal = {
+    addEventListener(type, listener, capture) {
+      assert(type === 'click' && capture === true,
+        'initial-list arm registered the wrong event phase');
+      fakeClickListeners.add(listener);
+    },
+    removeEventListener(type, listener, capture) {
+      assert(type === 'click' && capture === true,
+        'initial-list arm removed the wrong event phase');
+      fakeClickListeners.delete(listener);
+    },
+    dispatchClick(target) {
+      for (const listener of [...fakeClickListeners]) listener({ target });
+    },
+  };
   const fakeObserver = installBrokenBaselineThumbObserver(
     fakeObserverGlobal, FakeCanvas, FakeTextEncoder, { now: () => observerNow },
     BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA, BROKEN_BASELINE_THUMB_CACHE_CAP,
@@ -2154,8 +2177,53 @@ export async function runCompendiumMemSelftest() {
     && fakeObserver.descriptorPreserved === true
     && fakeObserver.totalExact132Completions === 1,
   'the exact pre-document thumb observer changed receiver/args/return/descriptor semantics');
-  fakeObserver.preOwnerExact132Completions = fakeObserver.totalExact132Completions;
-  fakeObserver.phase = 'initial-list';
+  observerNow = 1099;
+  assert(installBrokenBaselineInitialListArm(
+    fakeObserverGlobal, FakeElement, { now: () => observerNow },
+    BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA, '#dockcodex,#railcodex', 2,
+  ) === null && fakeObserver.phase === 'pre-owner' && fakeClickListeners.size === 0,
+  'initial-list observer armed with one pre-owner completion still missing');
+  observerNow = 1100;
+  assert(installBrokenBaselineInitialListArm(
+    fakeObserverGlobal, FakeElement, { now: () => observerNow },
+    BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA, '#dockcodex,#railcodex', 2,
+  ) === null && fakeObserver.phase === 'pre-owner' && fakeClickListeners.size === 0,
+  'initial-list observer treated a quiet N-1 completion count as drained');
+  observerNow += 1;
+  fakeCanvas.toDataURL('image/png', 'second-pre-owner');
+  observerNow += 999;
+  assert(installBrokenBaselineInitialListArm(
+    fakeObserverGlobal, FakeElement, { now: () => observerNow },
+    BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA, '#dockcodex,#railcodex', 2,
+  ) === null && fakeObserver.phase === 'pre-owner' && fakeClickListeners.size === 0,
+  'initial-list observer armed before the exact owner count stayed quiet');
+  observerNow += 1;
+  const fakeInitialListArm = installBrokenBaselineInitialListArm(
+    fakeObserverGlobal, FakeElement, { now: () => observerNow },
+    BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA, '#dockcodex,#railcodex', 2,
+  );
+  assert(fakeInitialListArm?.phase === 'awaiting-initial-list-click'
+    && fakeInitialListArm.stableTotal === 2
+    && fakeInitialListArm.expectedPreOwnerExact132Completions === 2
+    && fakeInitialListArm.quietMs === 1000
+    && fakeClickListeners.size === 1,
+  'initial-list observer did not retain the exact drained owner carrier');
+  fakeObserverGlobal.dispatchClick(new FakeElement(false));
+  assert(fakeObserver.phase === 'awaiting-initial-list-click'
+    && fakeObserver.totalExact132Completions === 2
+    && fakeObserver.initialListCompletions === 0,
+  'a late pre-owner completion or unrelated click crossed the initial-list boundary');
+  fakeObserverGlobal.dispatchClick(new FakeElement(true));
+  assert(fakeObserver.phase === 'initial-list'
+    && fakeObserver.preOwnerExact132Completions === 2
+    && fakeObserver.initialListCompletions === 0
+    && fakeObserver.initialListCacheEncodedByteLengths.length === 0
+    && fakeClickListeners.size === 0,
+  'the actual opener click did not atomically seal the late pre-owner completion');
+  assertThrows(() => installBrokenBaselineInitialListArm(
+    fakeObserverGlobal, FakeElement, { now: () => observerNow },
+    BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA, '#dockcodex,#railcodex', 2,
+  ), 'an already-started initial-list phase accepted a second arm');
   for (let index = 0; index < 601; index++) {
     observerNow += 1;
     fakeCanvas.toDataURL('image/png', index);
@@ -2170,7 +2238,32 @@ export async function runCompendiumMemSelftest() {
     && fakeObserver.totalExact132Completions === beforeWrongSize
     && fakeObserver.observerErrors === 0 && wrongReceiverThrew,
   'thumb observer did not isolate exact-132 successes or retain the final cache-cap completions');
+  observerNow += 999;
+  assert(sealBrokenBaselineInitialListObservation(
+    fakeObserverGlobal, { now: () => observerNow },
+    BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA, BROKEN_BASELINE_THUMB_CACHE_CAP, 601,
+  ) === null && fakeObserver.phase === 'initial-list',
+  'initial-list completion evidence sealed before one full quiet second');
+  observerNow += 1;
+  const atomicInitialListSeal = sealBrokenBaselineInitialListObservation(
+    fakeObserverGlobal, { now: () => observerNow },
+    BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA, BROKEN_BASELINE_THUMB_CACHE_CAP, 601,
+  );
+  assert(atomicInitialListSeal?.expectedPreOwnerExact132Completions === 2
+    && atomicInitialListSeal.preOwnerExact132Completions === 2
+    && atomicInitialListSeal.initialListCompletions === 601
+    && atomicInitialListSeal.cacheEntries === 600
+    && atomicInitialListSeal.totalExact132Completions === 603
+    && atomicInitialListSeal.quietMs === 1000
+    && atomicInitialListSeal.cacheCap === BROKEN_BASELINE_THUMB_CACHE_CAP
+    && fakeObserver.phase === 'post-initial-list',
+  'initial-list completion evidence was not atomically sealed with its quiet observation');
+  assertThrows(() => sealBrokenBaselineInitialListObservation(
+    fakeObserverGlobal, { now: () => observerNow },
+    BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA, BROKEN_BASELINE_THUMB_CACHE_CAP, 601,
+  ), 'a post-initial-list state accepted a second terminal seal');
   const stableThumbObservation = {
+    expectedPreOwnerExact132Completions: 8,
     preOwnerExact132Completions: 8,
     initialListCompletions: 1500,
     cacheEntries: BROKEN_BASELINE_THUMB_CACHE_CAP,
@@ -2182,7 +2275,37 @@ export async function runCompendiumMemSelftest() {
   };
   assert(validBrokenBaselineThumbObservation(stableThumbObservation),
     'an exact stable thumb completion observation was rejected');
+  const lateClickListeners = new Set();
+  const lateArmState = {
+    schema: BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
+    phase: 'pre-owner', descriptorPreserved: true, observerErrors: 0,
+    totalExact132Completions: 2, expectedPreOwnerExact132Completions: null,
+    preOwnerExact132Completions: null, initialListCompletions: 0,
+    initialListCacheEncodedByteLengths: [], lastCompletionAt: 0,
+  };
+  const lateArmGlobal = {
+    __CF_COMPENDIUM_BASELINE_THUMBS__: lateArmState,
+    addEventListener(_type, listener) { lateClickListeners.add(listener); },
+    removeEventListener(_type, listener) { lateClickListeners.delete(listener); },
+  };
+  assert(installBrokenBaselineInitialListArm(
+    lateArmGlobal, FakeElement, { now: () => 1000 },
+    BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA, '#dockcodex,#railcodex', 2,
+  )?.stableTotal === 2 && lateClickListeners.size === 1,
+  'the post-arm late-completion control did not establish its exact owner boundary');
+  lateArmState.totalExact132Completions += 1;
+  for (const listener of [...lateClickListeners]) listener({ target: new FakeElement(true) });
+  assert(lateArmState.phase === 'initial-list'
+    && lateArmState.preOwnerExact132Completions === 3
+    && !validBrokenBaselineThumbObservation({
+      ...stableThumbObservation,
+      expectedPreOwnerExact132Completions: 2,
+      preOwnerExact132Completions: 3,
+      totalExact132Completions: 1503,
+    }),
+  'a completion after the exact owner arm crossed the opener boundary without turning evidence red');
   for (const mutation of [
+    { expectedPreOwnerExact132Completions: 7 },
     { initialListCompletions: 1501 },
     { cacheEntries: BROKEN_BASELINE_THUMB_CACHE_CAP - 1 },
     { cacheEncodedBytes: 0 },
@@ -2258,6 +2381,7 @@ export async function runCompendiumMemSelftest() {
       thumbRenderCompletions: 1500,
       modeledThumbCacheEntries: BROKEN_BASELINE_THUMB_CACHE_CAP,
       thumbCacheEncodedBytes: 6_000_000,
+      thumbObserverExpectedPreOwnerExact132Completions: 8,
       thumbObserverPreOwnerExact132Completions: 8,
       thumbObserverTotalExact132Completions: 1508,
       thumbObserverErrors: 0,
@@ -2672,6 +2796,7 @@ export async function runCompendiumMemSelftest() {
       naturalWidths: Array(1500).fill(440), naturalHeights: Array(1500).fill(440),
       distinctSources: 1500, sourceInstanceCount: 1500, dataImageCount: 1500,
       sourceInstanceEncodedBytes: 1_500_000,
+      thumbObserverExpectedPreOwnerExact132Completions: 7,
       thumbObserverPreOwnerExact132Completions: 7, thumbRenderCompletions: 1500,
       modeledThumbCacheEntries: BROKEN_BASELINE_THUMB_CACHE_CAP,
       thumbCacheEncodedBytes: 600_000,
@@ -2707,6 +2832,7 @@ export async function runCompendiumMemSelftest() {
         === JSON.stringify([1496, 303, 33, 3, 2, 503, 63])
       && JSON.stringify(projected.listWitness.naturalDimensionHistogram)
         === JSON.stringify([[440, 440, 1500]])
+      && projected.listWitness.thumbObserver.expectedPreOwnerExact132Completions === 7
       && projected.listWitness.thumbObserver.preOwnerExact132Completions === 7
       && projected.listWitness.thumbObserver.initialListCompletions === 1500
       && projected.listWitness.thumbObserver.totalExact132Completions === 1507

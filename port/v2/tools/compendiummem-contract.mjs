@@ -1636,6 +1636,7 @@ export function installBrokenBaselineThumbObserver(
     schema,
     phase: 'pre-owner',
     totalExact132Completions: 0,
+    expectedPreOwnerExact132Completions: null,
     preOwnerExact132Completions: null,
     initialListCompletions: 0,
     initialListCacheEncodedByteLengths: [],
@@ -1683,9 +1684,97 @@ export function installBrokenBaselineThumbObserver(
   return state;
 }
 
+/* Serialized into the broken-baseline document only after every visible
+   Planetside owner has produced its exact 132px scratch completion and that
+   producer has been quiet for one second. The capture listener seals the
+   pre-owner count on the actual Compendium opener click, before the app's
+   click handler can enqueue any list work. The retained expected owner count
+   makes any completion after the arm turn the final evidence red. */
+export function installBrokenBaselineInitialListArm(
+  globalObject, ElementConstructor, clock, schema, selector,
+  expectedPreOwnerExact132Completions,
+) {
+  const key = '__CF_COMPENDIUM_BASELINE_THUMBS__';
+  const state = globalObject?.[key];
+  const now = clock?.now?.();
+  if (!state || state.schema !== schema || state.phase !== 'pre-owner'
+    || state.descriptorPreserved !== true || state.observerErrors !== 0
+    || !Number.isFinite(now) || !Number.isFinite(state.lastCompletionAt)
+    || !Number.isSafeInteger(expectedPreOwnerExact132Completions)
+    || expectedPreOwnerExact132Completions <= 0
+    || typeof ElementConstructor !== 'function'
+    || typeof selector !== 'string' || !selector
+    || typeof globalObject.addEventListener !== 'function'
+    || typeof globalObject.removeEventListener !== 'function') {
+    throw new Error('broken-baseline initial-list arm target is invalid');
+  }
+  if (state.totalExact132Completions < expectedPreOwnerExact132Completions) return null;
+  if (state.totalExact132Completions > expectedPreOwnerExact132Completions) {
+    throw new Error('broken-baseline pre-owner completion count exceeded its visible owner count');
+  }
+  const quietMs = now - state.lastCompletionAt;
+  if (quietMs < 1000) return null;
+  const stableTotal = state.totalExact132Completions;
+  const onClick = (event) => {
+    const target = event?.target;
+    if (!(target instanceof ElementConstructor) || target.closest(selector) === null) return;
+    state.preOwnerExact132Completions = state.totalExact132Completions;
+    state.initialListCompletions = 0;
+    state.initialListCacheEncodedByteLengths.length = 0;
+    state.phase = 'initial-list';
+    state.lastCompletionAt = clock.now();
+    globalObject.removeEventListener('click', onClick, true);
+  };
+  state.expectedPreOwnerExact132Completions = expectedPreOwnerExact132Completions;
+  state.phase = 'awaiting-initial-list-click';
+  globalObject.addEventListener('click', onClick, true);
+  return Object.freeze({
+    phase: state.phase, stableTotal,
+    expectedPreOwnerExact132Completions, quietMs,
+  });
+}
+
+/* The terminal list count is sealed in the same document turn that first
+   proves its quiet interval. Keeping the read and phase transition together
+   prevents one late completion from landing between two CDP commands. */
+export function sealBrokenBaselineInitialListObservation(
+  globalObject, clock, schema, cacheCap, requiredCompletions,
+) {
+  const state = globalObject?.__CF_COMPENDIUM_BASELINE_THUMBS__;
+  const now = clock?.now?.();
+  if (!state || state.schema !== schema || state.phase !== 'initial-list'
+    || !Number.isSafeInteger(cacheCap) || cacheCap <= 0
+    || !Number.isSafeInteger(requiredCompletions) || requiredCompletions <= 0
+    || !Number.isFinite(now) || !Number.isFinite(state.lastCompletionAt)) {
+    throw new Error('broken-baseline initial-list seal target is invalid');
+  }
+  const quietMs = now - state.lastCompletionAt;
+  if (state.initialListCompletions < requiredCompletions || quietMs < 1000) return null;
+  state.initialListStableQuietMs = quietMs;
+  state.phase = 'post-initial-list';
+  return Object.freeze({
+    expectedPreOwnerExact132Completions: state.expectedPreOwnerExact132Completions,
+    preOwnerExact132Completions: state.preOwnerExact132Completions,
+    initialListCompletions: state.initialListCompletions,
+    cacheEntries: state.initialListCacheEncodedByteLengths.length,
+    cacheEncodedBytes: state.initialListCacheEncodedByteLengths.reduce(
+      (sum, value) => sum + value, 0,
+    ),
+    totalExact132Completions: state.totalExact132Completions,
+    observerErrors: state.observerErrors,
+    descriptorPreserved: state.descriptorPreserved,
+    quietMs: state.initialListStableQuietMs,
+    cacheCap,
+  });
+}
+
 export function validBrokenBaselineThumbObservation(observation) {
-  return integer(observation?.preOwnerExact132Completions)
+  return integer(observation?.expectedPreOwnerExact132Completions)
+    && observation.expectedPreOwnerExact132Completions > 0
+    && integer(observation?.preOwnerExact132Completions)
     && observation.preOwnerExact132Completions >= 0
+    && observation.preOwnerExact132Completions
+      === observation.expectedPreOwnerExact132Completions
     && observation?.initialListCompletions === 1500
     && observation?.cacheEntries === BROKEN_BASELINE_THUMB_CACHE_CAP
     && integer(observation?.cacheEncodedBytes) && observation.cacheEncodedBytes > 0
@@ -1722,6 +1811,8 @@ export function brokenBaselineCacheMetrics(profile, list, warm) {
   const portraitCacheCap = BROKEN_BASELINE_PORTRAIT_CACHE_CAPS[profile];
   if (!integer(portraitCacheCap)
     || !validBrokenBaselineThumbObservation({
+      expectedPreOwnerExact132Completions:
+        list?.thumbObserverExpectedPreOwnerExact132Completions,
       preOwnerExact132Completions: list?.thumbObserverPreOwnerExact132Completions,
       initialListCompletions: list?.thumbRenderCompletions,
       cacheEntries: list?.modeledThumbCacheEntries,
@@ -1921,6 +2012,8 @@ export function brokenBaselineCalibrationEvidence({
       dataImageCount: list.raw?.dataImageCount,
       sourceInstanceEncodedBytes: list.raw?.sourceInstanceEncodedBytes,
       thumbObserver: Object.freeze({
+        expectedPreOwnerExact132Completions:
+          list.raw?.thumbObserverExpectedPreOwnerExact132Completions,
         preOwnerExact132Completions: list.raw?.thumbObserverPreOwnerExact132Completions,
         initialListCompletions: list.raw?.thumbRenderCompletions,
         cacheEntries: list.raw?.modeledThumbCacheEntries,
@@ -2031,7 +2124,8 @@ export function reduceCalibrationEvidence(evidence) {
   const portrait = evidence.listWitness.portraitCache;
   if (!sameJson(Object.keys(observer).sort(), [
     'cacheEncodedBytes', 'cacheEntries', 'descriptorPreserved', 'errors',
-    'initialListCompletions', 'preOwnerExact132Completions', 'stableQuietMs',
+    'expectedPreOwnerExact132Completions', 'initialListCompletions',
+    'preOwnerExact132Completions', 'stableQuietMs',
     'totalExact132Completions',
   ]) || !sameJson(Object.keys(portrait).sort(), ['encodedBytes', 'entries'])) return null;
   const list = {
@@ -2041,6 +2135,8 @@ export function reduceCalibrationEvidence(evidence) {
     referencedPixels,
     distinctSources: evidence.listWitness.distinctSources,
     sourceInstanceEncodedBytes: evidence.listWitness.sourceInstanceEncodedBytes,
+    thumbObserverExpectedPreOwnerExact132Completions:
+      observer.expectedPreOwnerExact132Completions,
     thumbObserverPreOwnerExact132Completions: observer.preOwnerExact132Completions,
     thumbRenderCompletions: observer.initialListCompletions,
     modeledThumbCacheEntries: observer.cacheEntries,

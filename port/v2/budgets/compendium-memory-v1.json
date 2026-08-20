@@ -15,14 +15,14 @@
   },
   "measurementAuthority": {
     "schema": "cf-v2-compendium-measurement-authority/v1",
-    "sha256": "961252f42851a93b6a932e9feadf452f491a7f9229b5cc0ef9bc368ed6703ad3",
+    "sha256": "829655e2ff03eaa657dc86487052b5afe531f467427be5f5c97fd7c50438dcba",
     "inputs": {
       "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
       "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
       "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
-      "budgetSchema": "d71c3897c38055c2a87e257c0c58f7294a1af07b65476de7e6cb3eb11761f204",
-      "outcomeContract": "6fc0713765fd06735f074487ac135be49886b3f61ee1e0e058ca52aa2712c0cb",
-      "collector": "2723f97e032a376a45c9cf601c347626646b3dc8ebf41a1e8a847b4745c266d7",
+      "budgetSchema": "a9a10f22722409c5d7fa83118552582985634babcda519cb7d43ddc87d1c1650",
+      "outcomeContract": "5f909ab9f65f93e24958f4b35a18b8ec0963586b0b2225435e375f9ec1f86637",
+      "collector": "e3be2fff6090c6be64373c8d36744ff20dcabc05fe24e35d2a1ade3c6e05bd54",
       "browserCdp": "e14abf6c08ac67924869ae69b294d0ac665924563fb49e288b6d850d842fbf8e",
       "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
       "workspaceLock": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606",
