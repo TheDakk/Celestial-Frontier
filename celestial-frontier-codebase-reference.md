@@ -6,7 +6,7 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-20.**
 > **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
-> tracked source makes no terminal-certification claim; final HUMAN review remains open):**
+> shared-timer recalibration required; final HUMAN review remains open):**
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
 > bounded overscan, and any focus-pinned row; measured logical anchor-plus-offset
@@ -31,10 +31,10 @@
 > import, protocol, and worker failures terminate the instance and settle active plus
 > queued owners exactly once, while content-specific paint/encode errors remain
 > per-job. Phone/desktop cache, decoded-pixel, byte, queue, lease, portrait, worker
-> lifecycle, and phase evidence are explicit; current resource-budget status is active. Exact-788
-> and exact-ef6 certification are complete. Exact-source local evidence and the corresponding PR
-> test-merge CI are live artifact/check state for every later head; this reference deliberately
-> caches neither outcome.
+> lifecycle, and phase evidence are explicit. The last pre-timer resource ruler was active under
+> measurement authority `bb03a3af…`; exact-788 and exact-ef6 certification remain truthful for that
+> authority. The frozen shared-timer repair moves measurement authority to `f9710bdf…`, whose
+> budget is `calibration-required` pending fresh calibration.
 > Specimen detail requests an
 > asynchronous 440px result through the same owner; Back/Close cancels that request
 > and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
@@ -132,10 +132,31 @@
 > are unobserved. The bounded instrument follow-up drains the prior writer, reproduces stale overwrite
 > as a negative control, requires exact primary/document/classified Training route/render/card/
 > runnable Skip/idle status/ticker preconditions, and then waits semantically for one
-> `claim-rejected/busy` witness with no pre-release write. Every later instrument head must own that
-> ignored exact-source Compendium carrier and no-retry Smoke before push; terminal-green PR
-> test-merge CI corresponding to that pushed head remains separate, and this reference caches
-> neither outcome.
+> `claim-rejected/busy` witness with no pre-release write.
+>
+> Pushed head `1187de0d052761e4463524cde8438ea8810d7149` then reached GitHub Actions run
+> `32350971816`, job `96369841133`, workflow attempt 1, on synthetic merge
+> `25200b616bbd509f50eaa18f0a8b27ad20dc83e0` (parents `38447019517147319bd08c598202d097ee866874`
+> and `1187de0d052761e4463524cde8438ea8810d7149`). Valid report
+> `gha-32350971816-1-compendiummem` retained 29 completed phone stages and one final target timeout
+> after `1999.758726` ms against its 2,000 ms command deadline. The target remained `timely:true`,
+> the ledger put completion `0.241274` ms before the deadline, and the independent root heartbeat
+> fulfilled in `7.410808` ms. The terminal contract correctly emitted one instrument finding, zero
+> outcomes, and 78 blocked outcomes: this is `instrument-fail`, not a product verdict. Artifact,
+> report, and job-log SHA-256 values are `4932fb229c1de1d3820d2322e8273ce9ed609716c8f9f4d9e82b2fa2a3e408c7`,
+> `1718faa4403f4f569899d9d328f08c3b7decafae23829d5fabe37660c36da43b`, and
+> `7eda5facdac45d192c5b6071ac91394678d2fdb69b7992b218e0d3b0cb9c4ca9`.
+>
+> `browsercdp.send()` now computes one absolute monotonic deadline. An early timer callback re-arms
+> only the remaining interval under that deadline; it rejects only when the clock proves the
+> boundary reached/passed, while response receipt at/after the same boundary remains late. Expiry
+> during initial timer arming rejects without transmitting the command. Frozen browser-CDP SHA-256
+> `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0`
+> changes measurement authority from historical `bb03a3af…` to
+> `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Frozen budget SHA-256
+> `a41ff08b8a58e776c789f09e7294c1cb2c0f44da8406f81c55f0754076337c30` is
+> `calibration-required`; no old capsule or PASS certifies the successor authority. A fresh paired
+> broken baseline plus three independent candidates must precede activation/certification.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.
@@ -492,7 +513,11 @@
 > timer runs; nonpositive/fractional caps reject before launch.
 > The cold live leg declares a 15-second socket cap inside its 30-second startup budget; its later
 > warm leg keeps 10 seconds for both. Both retain 1,500-millisecond command and 2-second shutdown
-> bounds, assert profile cleanup in `finally` on either rejection or success, and never retry. Every platform captures the exact options
+> bounds. Post-open `send()` uses one absolute monotonic deadline per command: a callback that wakes
+> early re-arms only the remaining interval and cannot reject before the boundary; the response path
+> independently rejects at/after that same boundary. This is the bounded repair for run
+> `32350971816`'s `1999.758726`-millisecond early timeout, not a cap increase or retry. The live legs
+> assert profile cleanup in `finally` on either rejection or success, and never retry. Every platform captures the exact options
 > passed by the preview caller and completes a real browser outcome. On POSIX the
 > preview selftest starts Chrome immediately but withholds its
 > ready CDP endpoint for 16 seconds: the generic path times out while the exact preview
@@ -648,7 +673,8 @@
 > malformed protocol outcome is instrument/transport failure. The live command
 > ledger contains exactly five bound rows: import arm, cycle-1 target/heartbeat,
 > and cycle-2 target/heartbeat. `browsercdp.send()` permits a shorter per-command
-> timeout but never one above its connection-wide ceiling. Its browser-native
+> timeout but never one above its connection-wide ceiling; one absolute deadline owns that timeout,
+> and any early timer wake re-arms only the remaining interval before it may reject. Its browser-native
 > `performanceNow` must also be strictly below 20 seconds; an exact-boundary
 > control fails, preventing Node observer descheduling from laundering a late
 > product boot. Ready is publication evidence; the two confirmations additionally

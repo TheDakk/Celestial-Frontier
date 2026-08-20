@@ -612,8 +612,10 @@ both parent voices.
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
 
-**Current state (2026-08-20): product implementation, serviced-turn scheduler repair, and active
-ruler present; exact-source automation governed by live artifacts/CI; fresh `[HUMAN]` review open.**
+**Current state (2026-08-20): product implementation and serviced-turn scheduler repair present;
+measurement authority `f9710bdf…` is fail-closed `calibration-required` pending a fresh paired broken
+baseline plus three independent candidates; exact-source automation is governed by live artifacts/CI;
+fresh `[HUMAN]` review is open.**
 This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
 corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
 `compendiummem` gate drives a deterministic 1,500-row
@@ -664,20 +666,24 @@ rendering opportunity plus later task between jobs, changing built producer auth
 Clean seam commit `f47cd381…` is the collector/product source for paired baseline4 and three
 independent one-attempt candidate5/6/7 runs. They bind measurement `bb03a3af…`, producer
 `1c8200d7…`, and exact Edge .86; every candidate completed all 78 outcomes with zero retries. The
-active budget replays their raw capsules and sets every profile ceiling strictly above the three-run
-maximum. Baseline4 retains all four faults and breaches 14 phone / 13 desktop fields. Baseline3/
-candidate2/3/4 and old producer `291b794e…` remain truthful history, not current resource authority.
-Every selected head must own exact-source local certification, and its corresponding PR test-merge
-CI must be terminal green; this reference deliberately caches neither live outcome. The Arc-local Edge authority remains product
+historical `bb03a3af…` budget replayed their raw capsules and set every profile ceiling strictly above
+the three-run maximum. Baseline4 retained all four faults and breached 14 phone / 13 desktop fields.
+The frozen shared-timer repair moves measurement authority to `f9710bdf…`; the current budget is
+fail-closed `calibration-required` pending a fresh paired broken baseline plus three independent
+candidates before successor activation/certification. Baseline3/candidate2/3/4 and old producer
+`291b794e…` remain truthful history, not current resource authority. Every selected head must own
+exact-source local certification, and its corresponding PR test-merge CI must be terminal green;
+this reference deliberately caches neither live outcome. The Arc-local Edge authority remains product
 `Edg/151.0.4129.86`, revision
 `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript `15.1.23.7`, and protocol `1.3`; it still
 does **not** repin the Gate-A/global Edge `150.0.4078.83` baseline. Returning this criterion to
 `[EXEC]` requires terminal-green exact-source artifacts and corresponding PR test-merge CI for the
 selected pushed head.
 
-The current state records an implemented product and scheduler repair with an active browser-free
-ruler, not terminal resource authority. Human judgment of a fresh certifying run's six phone/desktop list,
-detail, and focus-pinned images remains outstanding. Arc 1B also remains open for ordinary scene/Pixi
+The current state records an implemented product and scheduler repair with a fail-closed
+`calibration-required` boundary, not an active ruler or terminal resource authority. Human judgment
+of a fresh certifying run's six phone/desktop list, detail, and focus-pinned images remains
+outstanding. Arc 1B also remains open for ordinary scene/Pixi
 texture, render-target, GPU-proxy, and combined travel → Compendium → Shipyard plateau ownership.
 
 **Scope:**

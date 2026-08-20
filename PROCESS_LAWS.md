@@ -868,6 +868,39 @@ is not settlement authority. For the import-owner case, also require one capture
 `claim-rejected/busy`, unchanged primary bytes, and zero native writes before releasing the import
 owner. Do not answer this class with a sleep, retry, fixture rewrite loop, or looser product oracle.
 
+**Correction earned by PR #32's shared-command-timer CI red:** a timeout identity is not proof that
+its absolute deadline was reached. GitHub Actions run `32350971816`, job `96369841133`, workflow
+attempt 1, tested synthetic merge `25200b616bbd509f50eaa18f0a8b27ad20dc83e0` whose parents were
+base `38447019517147319bd08c598202d097ee866874` and pushed head
+`1187de0d052761e4463524cde8438ea8810d7149`. Its valid report
+`gha-32350971816-1-compendiummem` reached 29 completed phone stages, then the last
+`Runtime.evaluate` timer rejected after `1999.758726` ms against a 2,000 ms deadline. The command
+ledger still marked that target timely and placed completion `0.241274` ms before the recorded
+deadline; the independent root `Browser.getVersion` heartbeat fulfilled in `7.410808` ms. The
+terminal contract correctly classified one instrument finding, zero outcomes, and all 78 outcomes
+blocked. This is no product verdict. Preserve its report SHA-256
+`1718faa4403f4f569899d9d328f08c3b7decafae23829d5fabe37660c36da43b` and job-log SHA-256
+`7eda5facdac45d192c5b6071ac91394678d2fdb69b7992b218e0d3b0cb9c4ca9`; do not relabel or retry it.
+
+**A COMMAND TIMEOUT OWNS ONE ABSOLUTE MONOTONIC DEADLINE, NOT ONE BEST-EFFORT TIMER.** Compute the
+deadline once. When the timeout callback wakes, read the same monotonic clock: if it is still before
+the boundary, re-arm for only the remaining interval under that immutable deadline and do not settle;
+reject only once the clock proves the deadline reached or passed. If that deadline is already expired
+during initial timer arming, reject without transmitting the command. The response path must still
+reject a receipt at or after the same boundary, so a late callback cannot launder a late response. Never
+start a fresh clock, extend the cap, add a retry, or weaken target/heartbeat classification to repair
+an early wake.
+
+Measurement code is measurement authority. Because `browsercdp.mjs` participates in the Compendium
+authority hash, freezing this timer repair at browser-CDP SHA-256
+`36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0` changes measurement authority
+from historical `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c` to
+`f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. The frozen budget must now
+be fail-closed `calibration-required`; historical capsules and results remain truthful only for
+their named old authority. Capture a fresh paired broken baseline plus three independent candidates,
+activate the new ruler, and certify once. The producer carrier currently records `1c8200d7…`, but
+do not infer any final calibrated authority from it until fresh capsules and activation freeze.
+
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
 GitHub Actions step lost that step-local `CF_BROWSER`, selected an installed Linux Edge through
