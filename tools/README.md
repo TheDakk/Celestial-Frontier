@@ -78,10 +78,14 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > preserved one no-retry product finding: Chrome 152, 12/12 rows, 58/58 controls, zero instrument
 > failures, and a 12.5px compact-phone Survey/Planetside overlap. The bounded 44px Survey / 8px gap /
 > 72px scrollable Planetside repair changes producer authority to `e59685b1…` while measurement stays
-> `f9710bdf…`. Budget/test `70c40013…` / `7e8f03d5…` now fail closed with zero candidate samples,
-> measurement-required baseline, and null ceilings until paired baseline6 plus independent
-> candidate11/12/13 activate the new producer. Focused 11/11, Compendium selftest 222/222, typechecks,
-> semantic validation, and root validate prove this boundary only; they are not browser PASS or PR CI.
+> `f9710bdf…`. Clean committed source `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired
+> baseline6 against legacy `3844701…` plus independent candidate11/12/13 under exact Edge .86. All
+> four were one-attempt/no-retry; candidates replay 78/78. Active budget/test SHA-256 values are
+> `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
+> `ec956b8a7d3bad96736deab42e0ac79e59e6cf9010559723d2dac2249e463a83`; all 40 ceilings exceed their
+> maxima and the four-fault baseline breaches 14 phone / 13 desktop fields. Focused 11/11,
+> Compendium selftest 222/222, and semantic validation prove this active ruler only. Targeted compact-
+> phone Glass report `13efb5fa…` is diagnostic, not a complete exact-head browser PASS or PR CI.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,

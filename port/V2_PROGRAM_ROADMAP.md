@@ -612,10 +612,9 @@ both parent voices.
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
 
-**Current state (2026-08-20): product implementation, serviced-turn scheduler, and bounded compact-
-phone Planetside stack repair present; measurement remains `f9710bdf…`, while producer `e59685b1…`
-is fail-closed pending baseline6/candidate11/12/13 and activation. Exact-source automation and fresh
-`[HUMAN]` review remain open.**
+**Current state (2026-08-20): product implementation, serviced-turn scheduler, bounded compact-phone
+Planetside stack repair, and active `f9710bdf…` / `e59685b1…` measured ruler present. Exact-source
+automation and fresh `[HUMAN]` review remain open.**
 This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
 corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
 `compendiummem` gate drives a deterministic 1,500-row
@@ -689,13 +688,16 @@ The bounded product repair retains a 44px Survey floor, 72px scrollable Planetsi
 existing 8px gap by deriving the lower cap from the shared bottom anchor. Its revised development-
 release bullet changes producer authority to `e59685b1…` (index `ca76da4c…`, owner
 `assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged), while measurement remains
-`f9710bdf…`. Budget/test `70c40013…` / `7e8f03d5…` are fail-closed with zero candidates,
-measurement-required paired baseline, and null ceilings. Browser-free focused 11/11, selftest 222/222,
-typechecks, semantic validation, and root validate pass; fresh baseline6/candidate11/12/13, activation,
-exact-head battery, and corresponding PR test-merge remain open. The Arc-local Edge authority still
-does **not** repin Gate-A/global Edge `150.0.4078.83`.
+`f9710bdf…`. Clean committed source `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired
+baseline6 against legacy `3844701…` and independent candidate11/12/13 under exact Edge .86. All four
+were one-attempt/no-retry; candidates replay 78/78. Active budget/test `ebe5b5c3…` / `ec956b8a…`
+place all 40 ceilings above the three-run maxima; the four-fault baseline breaches 14 phone / 13
+desktop fields. Browser-free focused 11/11, selftest 222/222, and semantic validation pass. The
+targeted compact-phone Glass diagnostic at `13efb5fa…` is non-certifying; the exact-head battery and
+corresponding PR test-merge remain open. The Arc-local Edge authority still does **not** repin
+Gate-A/global Edge `150.0.4078.83`.
 
-The current state records an implemented product/scheduler/stack repair and a required fresh ruler,
+The current state records an implemented product/scheduler/stack repair and an active strict ruler,
 not terminal resource certification. Human judgment of a fresh certifying run's six phone/desktop
 list, detail, and focus-pinned images remains outstanding. Arc 1B remains open for ordinary scene/Pixi
 texture, render-target, GPU-proxy, and combined travel → Compendium → Shipyard plateau ownership.

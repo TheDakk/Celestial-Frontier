@@ -34,7 +34,7 @@ producer error remains a stable owned error tile, releases cleanly, and the exac
 through a fresh worker lease. Capability/import/protocol/worker failure terminates once and settles
 the active plus queued owners exactly once instead of retrying a broken worker for every tile.
 
-The phone and desktop resource path is implemented; the current producer is fail-closed pending a fresh ruler. Every
+The phone and desktop resource path is implemented; its current producer owns an active measured ruler. Every
 selected head must own exact-source local certification, and its corresponding PR test-merge CI
 must be terminal green; this reference deliberately caches neither live outcome. Exact committed repair
 `dea03913014bc58134ebb06ca5b36892210a7571` passes the full Glass
@@ -75,8 +75,12 @@ repair keeps Survey at a 44px floor, Planetside at a 72px scrollable floor, and 
 by deriving the lower maximum from the shared bottom anchor. It does not alter portrait art, ownership,
 or Glass predicates. The existing Planetside development-release bullet now names the result.
 Built producer authority is `e59685b1…` (index `ca76da4c…`, owner
-`assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged), so budget/test `70c40013…` /
-`7e8f03d5…` are `calibration-required` pending baseline6/candidate11/12/13 and activation.
+`assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged). Clean committed source
+`2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired baseline6 against legacy `3844701…`
+and independent candidate11/12/13 under exact Edge .86, measurement `f9710bdf…`, and that producer.
+All were one-attempt/no-retry; candidates replay 78/78. Active budget/test `ebe5b5c3…` / `ec956b8a…`
+set 40 strict ceilings above the three-run maxima, while the four-fault baseline breaches 14 phone /
+13 desktop fields. This is browser-free ruler authority, not selected-head certification or a PASS.
 Baseline3 and candidate2/3/4 remain truthful inputs to the old `bb03a3af…` ruler; the candidate
 runs bind old producer `291b794e…`, while the paired baseline does not carry a candidate producer
 field. Every selected head must own exact-source local certification, and its

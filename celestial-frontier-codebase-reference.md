@@ -6,7 +6,7 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-20.**
 > **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
-> compact Planetside repair and fail-closed fresh-ruler transition; exact-head certification and
+> compact Planetside repair and active fresh ruler; exact-head certification and
 > final HUMAN review remain open):**
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
@@ -36,8 +36,8 @@
 > measurement authority `bb03a3af…`; exact-788 and exact-ef6 certification remain truthful for that
 > authority. The frozen shared-timer repair moves measurement authority to `f9710bdf…`; exact
 > baseline5 plus independent candidate8/9/10 historically activated its successor ruler for producer
-> `1c8200d7…`. The current product bytes have a different producer and fail closed pending fresh
-> calibration.
+> `1c8200d7…`. Paired baseline6 plus independent candidate11/12/13 activate that measurement authority
+> for current producer `e59685b1…` under budget `ebe5b5c3…`.
 > Specimen detail requests an
 > asynchronous 440px result through the same owner; Back/Close cancels that request
 > and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
@@ -190,13 +190,21 @@
 > to `e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`: index
 > `ca76da4cfd094a7426cfd60b56428ca6abfc9851f472a1e459ad2938ae1e008e`, owner
 > `assets/main-Ccq4RHJt.js` / `9260e359c3bebe6bf722ecad5234babbeff0a3e7bb6cb6f0a33242b99668e6c2`, worker and painter
-> unchanged. Measurement remains `f9710bdf…`. Current budget/test SHA-256 values
-> `70c4001332898be1264f81a22db5a89e94f28e5f81d5752efe09ff680c562432` /
-> `7e8f03d5c7b9aa98d2bf1de002a4f56404a54930b11cdd97a3bf11d0583863cc` fail closed with zero
-> candidate samples, a measurement-required/null-collector paired baseline, and null ceilings.
-> Focused 11/11, selftest 222/222, typechecks, semantic validation, and root validate pass; fresh
-> baseline6/candidate11/12/13, activation, exact-head browser battery, and corresponding PR test-merge
-> CI remain open.
+> unchanged. Measurement remains `f9710bdf…`. Clean committed collector/candidate source
+> `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired baseline6 against legacy product
+> `3844701…` and independent candidate11/12/13 under exact Edge .86. Every run was one-attempt with no
+> retry and each candidate replays 78/78. Active budget/test SHA-256 values are
+> `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
+> `ec956b8a7d3bad96736deab42e0ac79e59e6cf9010559723d2dac2249e463a83`.
+> All 40 ceilings strictly exceed their maxima. Phone page/embedder/backing/aggregate/encoded/warm
+> maxima are `7,778,708/3,177,000/3,086,488/12,458,207/2,473,856/6,492`; desktop values are
+> `10,686,028/3,143,608/4,824,582/16,032,517/6,591,340/390,020`. The strict ceilings remain
+> `8,388,608/4,194,304/4,194,304/14,680,064/2,621,440/65,536` and
+> `12,582,912/4,194,304/6,291,456/18,874,368/6,815,744/524,288`. The four-fault baseline breaches
+> 14 phone / 13 desktop fields; its 11,858,524-byte desktop page heap deliberately remains below the
+> 12 MiB variance ceiling. Focused 11/11, selftest 222/222, and semantic validation pass. This is an
+> active browser-free ruler; exact-head browser certification, the complete battery, push,
+> corresponding PR test-merge CI, and HUMAN review remain open.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.
