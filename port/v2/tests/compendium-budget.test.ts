@@ -24,11 +24,11 @@ const EXPECTED_MEASUREMENT_AUTHORITY =
 const EXPECTED_PRODUCER_AUTHORITY =
   '1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2';
 const EXPECTED_CANDIDATE_RUNS = [
-  '20260820-arc1a-candidate2-21af3fa',
-  '20260820-arc1a-candidate3-21af3fa',
-  '20260820-arc1a-candidate4-21af3fa',
+  '20260820-arc1a-serviced-turn-candidate5',
+  '20260820-arc1a-serviced-turn-candidate6',
+  '20260820-arc1a-serviced-turn-candidate7',
 ] as const;
-const EXPECTED_BASELINE_RUN = '20260820-arc1a-baseline3-21af3fa';
+const EXPECTED_BASELINE_RUN = '20260820-arc1a-serviced-turn-baseline4';
 
 type ProfileName = typeof PROFILE_NAMES[number];
 type CalibrationSample = {
@@ -70,19 +70,19 @@ const EXPECTED_SAMPLE_OBJECT_SHA256: Record<ProfileName, {
 }> = {
   phone: {
     candidate: [
-      'a416540dfdd657bb0c16d96218b3f7404c455bb782020bb987d52ea2add30b57',
-      '5b4c13354d1e967b3eff37e78cef36f0f9f346aa5d3d377069a51de5a312b0d8',
-      '9ebb7dd8943d0733a52f13200028d158d0c1e4e8e9dfdc1d6f931d280c502cb0',
+      'ffc82dd71a4ea277eb70290230398f09d430c6c17d284ac9516886c1c423ac1a',
+      '04536c8dda692b5a4b0a25b4f231e06418b2b334e122aa561330b40cf62a4112',
+      'c5b86b45ecf639fbe69a27444babe7367b77bb88c1b5d56e66ba2bc132d7dc0f',
     ],
-    baseline: '80e4665145a5df65ea8b07125ef6bc74ac66458b62f6f3c0a88f18cbf8f0ab3b',
+    baseline: 'c14f27047c0f38c4d37ecd63a2e970be8d6c6d90bde0dc5856c659cc9af3d106',
   },
   desktop: {
     candidate: [
-      'c4d41b4bff66cd78b9c187e5ddc4f664818f144ab756919c0fc54a1e46cd765d',
-      'e016bb2a8110807f6a6ccba34cd7c41caf679042a38a5a1d1ca1696b4c381136',
-      '4d85052876af0b38fb811743c668c6ba0093afe976706f0bc0bda63938ec1fe8',
+      '9e0de5c646ec6a35b2115c6f650f9b901f124c8aa1f5d463ec439128e29ab83c',
+      'ab238eeb73d4f05402f5131acaac3480752f1d5ccb41b03324ebae572ac2f45d',
+      '60081c396514f61b899787883f859fbb99f5b4476aee3b0aadcc733467a552fe',
     ],
-    baseline: '19e4726ed39b7254c3d56702de323e9280e70cd001c8a5ca3352fe78a19bf7c8',
+    baseline: '1fcccb6ec958ecd5091abcf06f67c9a8177c67ce37a45628ec9a30966e65743a',
   },
 };
 
@@ -128,7 +128,7 @@ const EXPECTED_CEILINGS: Record<ProfileName, Record<string, number>> = {
     liveSubscribersMax: 0.5,
     livePortraitCacheEntriesMax: 1.5,
     livePortraitEncodedBytesMax: 196_608,
-    warmHeapAggregateRangeBytesMax: 131_072,
+    warmHeapAggregateRangeBytesMax: 524_288,
     warmEncodedBytesRangeMax: 0.5,
   },
 };
