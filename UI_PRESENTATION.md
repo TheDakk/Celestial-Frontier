@@ -187,9 +187,26 @@
 > baseline8 plus independent no-retry candidate17/18/19 under exact Edge .86; all candidates replayed
 > 78/78, and baseline8 retained four faults with 14 phone / 13 desktop breaches. Active budget/test
 > `74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) reuse all 40 strict ceilings above the three-run
-> maxima. Activation is browser-free and non-certifying; one exact-activation-head battery and one
-> corresponding CI attempt remain. The first red stops; gameplay resumes after PR #32 closes without
-> broader timing work.
+> maxima. The browser-free activation became exact head
+> `96464d5e4ca59074c0d8d59719a90a5dedc2dd2d` and completed its full same-head local battery.
+> Corresponding GitHub Actions run `32394244417`, Compendium job `96507263338`, attempt 1, tested
+> synthetic merge `63665b6…` and stopped on a pre-product environment/instrument red. Runner image
+> `ubuntu24/20260816.277` already had exact Edge 151.0.4129.86, making plain apt installation a
+> no-op. Browser-path and portable preflight selftests passed, but the one-launch live preflight
+> found no CDP endpoint inside the unchanged 45-second bound. There is no collector, report,
+> outcome, review PNG, or retry; verifier/upload reds are cascades. Root/static and Chrome
+> Smoke/Glass jobs were green.
+>
+> Retained PR #32 exact-Edge history separates the runner images: `ubuntu24/20260810.271` upgraded
+> bundled .78 to exact .86 and launched 4/4, while `ubuntu24/20260816.277` already had .86, left
+> plain apt as a no-op, and launched 0/3. This supports only a single SHA-verified same-package
+> `--reinstall` workflow-normalization hypothesis; no fix is proven. The preflight selftest's green
+> fail-closed static control requires the exact ordered reinstall/preflight contract in both
+> workflows and rejects removal plus outside-step decoys; it proves bytes, not live launch. The
+> normalization changes no timing, retry, fallback, live repository-tool behavior, product, browser
+> package/version, measurement, producer, budget, or authority. One matching changed-head CI attempt
+> remains; the first red stops, and gameplay
+> resumes after PR #32 closes without broader timing work.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
 > list, focus-pinned, and detail PNGs still await HUMAN review. This repair owns the current surface
 > globe's fitted start and live tier swap only; the broader Arc 1B/1C scene-resource disposal and HD
@@ -500,9 +517,18 @@
 > 512/768/1024 upgrade owner, and changes producer to `d3223177…` while measurement remains
 > `6ba58522…`. Clean source `75a996af…` supplied baseline8 plus independent candidate17/18/19;
 > active ruler/test `74e88c2b…` / `485be9da…` retain four-fault baseline discrimination and strict
-> ceilings above all three candidate maxima. This browser-free activation is not certification.
-> Every selected activation head must still own exact-source local resource certification and corresponding terminal-green PR
-> test-merge CI. The
+> ceilings above all three candidate maxima. Exact activation head `96464d5…` completed its full
+> local battery, while run `32394244417` / Compendium job `96507263338` tested synthetic merge
+> `63665b6…` and preserved the pre-product one-launch Edge/CDP environment red described above.
+> It produced no collector/report/outcomes/PNGs/retry; verifier/upload failures were cascades, while
+> root/static and Chrome Smoke/Glass were green. The old `20260810.271` runner image upgraded
+> Edge .78→.86 and launched 4/4; new `20260816.277` already had .86, made apt a no-op, and
+> launched 0/3. A SHA-verified same-package `--reinstall` is only a workflow-normalization
+> hypothesis pending one matching changed-head CI, not a proven fix. Its green selftest-only static
+> workflow control changes no live tool behavior, timing, retry, fallback, product, browser,
+> measurement, producer, budget, or authority. Every selected
+> activation head must still own exact-source local resource certification and corresponding
+> terminal-green PR test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150
 > browser. Fresh six-image evidence still awaits HUMAN review. The broader Arc 1B/1C
 > scene-texture ownership/disposal and HD texture package, broader long-task

@@ -1094,9 +1094,41 @@ produced one no-retry baseline8 against legacy `3844701…` plus independent no-
 candidate17/18/19 under exact Edge .86. Every candidate replayed 78/78; baseline8 retained all four
 faults and breached 14 phone / 13 desktop ceilings. Active budget/test SHA-256 are `74e88c2b…` /
 `485be9da…` (79,614 / 20,782 bytes); all 40 reused ceilings strictly exceed the three-candidate
-maxima. Activation is browser-free and non-certifying: commit one exact activation head, then run
-one complete same-head battery and one corresponding PR CI attempt. First red stops; no more timing
-expansion precedes the return to Arc 1B/gameplay.
+maxima. Activation is browser-free and non-certifying. Exact activation head `96464d5…` completed
+its same-head local battery; its corresponding PR CI attempt stopped at the process-environment
+boundary recorded next. That first red remains preserved, and no timing expansion precedes the
+return to Arc 1B/gameplay.
+
+**Correction earned by PR #32's exact-964 hosted-image red: an exact installed version does not
+prove an exact package was configured during the current job.** GitHub Actions run `32394244417`,
+attempt 1, tested synthetic merge `63665b6…` for pushed head `96464d5…`. Root, static, Chrome Smoke,
+and Chrome Glass passed. Compendium job `96507263338` downloaded and SHA-verified the pinned Edge
+`.86` package, verified the installed version and executable, and passed browser-path plus portable
+preflight controls. Its one live preflight launch then produced no CDP endpoint inside the unchanged
+45-second startup envelope; the collector never ran, so no Compendium report, product outcome, or
+review PNG exists. The always-run verifier and upload failures are cascades. Preserve this as
+one-attempt, zero-retry environment/instrument evidence, not a product verdict.
+
+The package-manager boundary is independently observable. Hosted image `ubuntu24/20260810.271`
+carried Edge `.78`; installing the pinned `.86` package performed unpack/setup, and all four observed
+exact-Edge live launch/control paths on that image passed. Image `ubuntu24/20260816.277` already
+carried `.86`; plain `apt-get install` reported “already the newest version,” performed no
+unpack/setup, and all three observed exact-Edge live launch/control paths on that image failed before
+product outcomes. Those failures span multiple west-region pools, so the evidence does not isolate
+image revision from host-pool placement. It does justify one bounded normalization hypothesis: in
+every workflow that claims this Arc-local authority, force `apt-get install --reinstall` from the
+same SHA-verified `.86` package, then retain the exact version and executable checks. Do not call
+that a fix until one matching changed-head CI run reaches the live preflight.
+
+This normalization changes no package URL/hash/version, browser product/revision/JS/protocol,
+45/15/5/2-second preflight, 15-second candidate startup, 2-second product observation, attempt/retry
+policy, launcher, preflight, collector, product, measurement `6ba58522…`, producer `d3223177…`,
+budget `74e88c2b…`, or test `485be9da…`. It adds no warmup, sleep, relaunch, fallback, DBus wrapper,
+or recalibration. Because the same shell contract exists in both PR certification and manual preview
+workflows, the preflight selftest now statically requires each unique owned install step's exact
+ordered URL/SHA/download/hash → reinstall → version/executable verification → following preflight
+chain. Its controls reject removal from either workflow and outside-step decoys. The control is green
+and proves workflow configuration only; the next one-attempt browser run still owns the outcome.
 
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread

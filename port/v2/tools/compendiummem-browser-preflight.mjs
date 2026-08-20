@@ -29,6 +29,47 @@ import {
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const budgetPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.json');
+const repoRoot = path.resolve(here, '..', '..', '..');
+const EDGE_INSTALL_STEP_NAME = 'install exact Arc 1A Edge calibration browser';
+const EDGE_PACKAGE_URL = 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.86-1_amd64.deb';
+const EDGE_PACKAGE_SHA256 = '26b02cb1c6465756df94b9ef34191b614f3df627ba21b7b00b641f44cc1d8343';
+const EDGE_PACKAGE_FILENAME = 'microsoft-edge-stable_151.0.4129.86-1_amd64.deb';
+const EDGE_PACKAGE_VERSION = '151.0.4129.86-1';
+const EDGE_BROWSER = '/usr/bin/microsoft-edge-stable';
+const CHROME_BROWSER = '/usr/bin/google-chrome';
+const EDGE_REINSTALL_COMMAND = 'sudo apt-get install --reinstall --yes "$edge_package"';
+const EDGE_CERTIFICATION_STEP_NAME = 'one-attempt Compendium memory certification';
+const EDGE_WORKFLOW_CONTRACTS = Object.freeze([
+  Object.freeze({
+    relative: '.github/workflows/test.yml',
+    jobName: 'v2-compendium-memory',
+    jobBrowser: EDGE_BROWSER,
+    preflightStepName: 'browser provenance and Compendium memory instrument selftests',
+    preflightBrowser: null,
+    preflightCommands: Object.freeze([
+      'node tools/browserpath.mjs --selftest',
+      'node tools/compendiummem-browser-preflight.mjs --selftest',
+      'node tools/compendiummem-browser-preflight.mjs',
+      'npm run compendiummem:selftest',
+    ]),
+    certificationBrowser: null,
+    executableCheck: 'test -x "$CF_BROWSER"',
+  }),
+  Object.freeze({
+    relative: '.github/workflows/dev-preview-package.yml',
+    jobName: 'package',
+    jobBrowser: CHROME_BROWSER,
+    preflightStepName: 'Compendium memory instrument selftest',
+    preflightBrowser: EDGE_BROWSER,
+    preflightCommands: Object.freeze([
+      'node tools/compendiummem-browser-preflight.mjs --selftest',
+      'node tools/compendiummem-browser-preflight.mjs',
+      'npm run compendiummem:selftest',
+    ]),
+    certificationBrowser: EDGE_BROWSER,
+    executableCheck: 'test -x /usr/bin/microsoft-edge-stable',
+  }),
+]);
 const PREFLIGHT_LABEL = 'Compendium Arc 1A Edge browser preflight';
 const PREFLIGHT_PROFILE_PREFIX = 'cf-compendiummem-edge-preflight';
 const PREFLIGHT_STARTUP_TIMEOUT_MS = 45_000;
@@ -45,6 +86,434 @@ function assert(condition, message) {
 }
 function portable(file) { return file.replaceAll('\\', '/'); }
 function readJson(file) { return JSON.parse(fs.readFileSync(file, 'utf8')); }
+
+function yamlIndent(line, where) {
+  const whitespace = (line.match(/^[ \t]*/) || [''])[0];
+  assert(!whitespace.includes('\t'), `${where}: tabs make workflow scope ambiguous`);
+  return whitespace.length;
+}
+
+function exactWorkflowLines(lines, token, start = 0, end = lines.length) {
+  const matches = [];
+  for (let index = start; index < end; index++) {
+    if (lines[index].trim() === token) matches.push(index);
+  }
+  return matches;
+}
+
+function exactIndentedWorkflowLines(lines, token, indent, start = 0, end = lines.length) {
+  return exactWorkflowLines(lines, token, start, end)
+    .filter((index) => yamlIndent(lines[index], `workflow line ${index + 1}`) === indent);
+}
+
+function workflowBlockEnd(lines, start, indent, limit, label) {
+  for (let index = start + 1; index < limit; index++) {
+    const trimmed = lines[index].trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const currentIndent = yamlIndent(lines[index], `${label} line ${index + 1}`);
+    if (currentIndent <= indent) return index;
+  }
+  return limit;
+}
+
+function assertExactBlockLines(lines, start, end, indent, expected, label) {
+  const actual = [];
+  for (let index = start; index < end; index++) {
+    if (!lines[index].trim()) continue;
+    assert(yamlIndent(lines[index], `${label} line ${index + 1}`) === indent,
+      `${label}: block-scalar or mapping content has the wrong indentation at line ${index + 1}`);
+    actual.push(lines[index].trim());
+  }
+  assert(JSON.stringify(actual) === JSON.stringify(expected),
+    `${label}: exact ordered block content changed (${JSON.stringify(actual)})`);
+}
+
+function exactDirectLine(lines, token, indent, start, end, label) {
+  const matches = exactIndentedWorkflowLines(lines, token, indent, start, end);
+  assert(matches.length === 1,
+    `${label}: expected one exact direct ${token}, found ${matches.length}`);
+  return matches[0];
+}
+
+function assertNoWorkflowExecutionControls(lines, start, end, indent, label) {
+  const forbidden = [];
+  for (let index = start + 1; index < end; index++) {
+    if (yamlIndent(lines[index], `${label} line ${index + 1}`) !== indent) continue;
+    if (/^(?:if|continue-on-error)\s*:/.test(lines[index].trim())) forbidden.push(index + 1);
+  }
+  assert(forbidden.length === 0,
+    `${label}: execution-control keys may not skip or soften the required chain (lines ${forbidden.join(', ')})`);
+}
+
+function workflowJobBounds(lines, contract, label) {
+  const jobsLines = exactIndentedWorkflowLines(lines, 'jobs:', 0);
+  assert(jobsLines.length === 1, `${label}: expected one exact root jobs mapping`);
+  const jobsStart = jobsLines[0];
+  const jobsEnd = workflowBlockEnd(lines, jobsStart, 0, lines.length, label);
+  const jobLines = exactIndentedWorkflowLines(
+    lines, `${contract.jobName}:`, 2, jobsStart + 1, jobsEnd,
+  );
+  assert(jobLines.length === 1,
+    `${label}: expected one exact owning job ${contract.jobName}, found ${jobLines.length}`);
+  const jobStart = jobLines[0];
+  const jobEnd = workflowBlockEnd(lines, jobStart, 2, jobsEnd, label);
+  return Object.freeze({ jobsStart, jobsEnd, jobStart, jobEnd });
+}
+
+function assertBrowserEnv(lines, envLine, end, expectedBrowser, label) {
+  const envIndent = yamlIndent(lines[envLine], `${label} env`);
+  const envEnd = workflowBlockEnd(lines, envLine, envIndent, end, label);
+  const browserPins = [];
+  for (let index = envLine + 1; index < envEnd; index++) {
+    if (/^CF_BROWSER\s*:/.test(lines[index].trim())) browserPins.push(index);
+  }
+  assert(browserPins.length === 1
+    && yamlIndent(lines[browserPins[0]], `${label} CF_BROWSER`) === envIndent + 2
+    && lines[browserPins[0]].trim() === `CF_BROWSER: ${expectedBrowser}`,
+  `${label}: expected one exact direct CF_BROWSER: ${expectedBrowser}`);
+  return Object.freeze({ envEnd, browserLine: browserPins[0] });
+}
+
+function assertStepBrowser(lines, start, end, stepIndent, expectedBrowser, label) {
+  const envLines = exactIndentedWorkflowLines(lines, 'env:', stepIndent + 2, start + 1, end);
+  const mentions = [];
+  for (let index = start + 1; index < end; index++) {
+    if (/\bCF_BROWSER\b/.test(lines[index].trim())) mentions.push(index);
+  }
+  if (expectedBrowser === null) {
+    assert(envLines.length === 0 && mentions.length === 0,
+      `${label}: inherited Edge CF_BROWSER must not be overridden in the step`);
+    return null;
+  }
+  assert(envLines.length === 1, `${label}: expected one direct step environment mapping`);
+  const browser = assertBrowserEnv(lines, envLines[0], end, expectedBrowser, label);
+  assert(mentions.length === 1 && mentions[0] === browser.browserLine,
+    `${label}: CF_BROWSER must be owned only by the direct step environment`);
+  return Object.freeze({ envLine: envLines[0], ...browser });
+}
+
+export function assertCompendiumEdgeWorkflowContract(source, contract) {
+  const label = contract?.relative || 'Compendium Edge workflow';
+  assert(typeof source === 'string' && source.trim(), `${label}: workflow source is empty`);
+  assert(contract && typeof contract.jobName === 'string'
+    && typeof contract.jobBrowser === 'string'
+    && typeof contract.preflightStepName === 'string'
+    && Array.isArray(contract.preflightCommands)
+    && typeof contract.executableCheck === 'string',
+  `${label}: workflow contract configuration is invalid`);
+  const lines = source.split(/\r?\n/);
+  for (let index = 0; index < lines.length; index++) {
+    yamlIndent(lines[index], `${label} line ${index + 1}`);
+  }
+
+  const { jobStart, jobEnd } = workflowJobBounds(lines, contract, label);
+  assertNoWorkflowExecutionControls(
+    lines, jobStart, jobEnd, 4, `${label} job ${contract.jobName}`,
+  );
+  const jobEnvLine = exactDirectLine(lines, 'env:', 4, jobStart + 1, jobEnd,
+    `${label} job ${contract.jobName}`);
+  assertBrowserEnv(lines, jobEnvLine, jobEnd, contract.jobBrowser,
+    `${label} job ${contract.jobName}`);
+  const stepsLine = exactDirectLine(lines, 'steps:', 4, jobStart + 1, jobEnd,
+    `${label} job ${contract.jobName}`);
+  assert(jobEnvLine < stepsLine,
+    `${label}: owning job environment must be declared before its steps sequence`);
+  const stepsEnd = workflowBlockEnd(lines, stepsLine, 4, jobEnd, label);
+  const stepIndent = 6;
+
+  const installHeader = `- name: ${EDGE_INSTALL_STEP_NAME}`;
+  const globalInstallHeaders = exactWorkflowLines(lines, installHeader);
+  const installHeaders = exactIndentedWorkflowLines(
+    lines, installHeader, stepIndent, stepsLine + 1, stepsEnd,
+  );
+  assert(globalInstallHeaders.length === 1 && installHeaders.length === 1
+    && globalInstallHeaders[0] === installHeaders[0],
+  `${label}: exact Edge install step must belong to job ${contract.jobName}`);
+  const installStart = installHeaders[0];
+  const installEnd = workflowBlockEnd(lines, installStart, stepIndent, stepsEnd, label);
+  assertNoWorkflowExecutionControls(
+    lines, installStart, installEnd, stepIndent + 2, `${label} Edge install`,
+  );
+  assert(installEnd < stepsEnd,
+    `${label}: exact Edge install step has no following preflight step`);
+
+  const preflightHeader = `- name: ${contract.preflightStepName}`;
+  const globalPreflightHeaders = exactWorkflowLines(lines, preflightHeader);
+  const preflightHeaders = exactIndentedWorkflowLines(
+    lines, preflightHeader, stepIndent, stepsLine + 1, stepsEnd,
+  );
+  assert(globalPreflightHeaders.length === 1 && preflightHeaders.length === 1
+    && globalPreflightHeaders[0] === preflightHeaders[0]
+    && preflightHeaders[0] === installEnd,
+  `${label}: Compendium preflight must be the step immediately after exact Edge installation`);
+  const preflightStart = preflightHeaders[0];
+  const preflightEnd = workflowBlockEnd(lines, preflightStart, stepIndent, stepsEnd, label);
+  assertNoWorkflowExecutionControls(
+    lines, preflightStart, preflightEnd, stepIndent + 2, `${label} preflight`,
+  );
+
+  const certificationHeader = `- name: ${EDGE_CERTIFICATION_STEP_NAME}`;
+  const globalCertificationHeaders = exactWorkflowLines(lines, certificationHeader);
+  const certificationHeaders = exactIndentedWorkflowLines(
+    lines, certificationHeader, stepIndent, stepsLine + 1, stepsEnd,
+  );
+  assert(globalCertificationHeaders.length === 1 && certificationHeaders.length === 1
+    && globalCertificationHeaders[0] === certificationHeaders[0]
+    && certificationHeaders[0] === preflightEnd,
+  `${label}: one-attempt certification must be the step immediately after Compendium preflight`);
+  const certificationStart = certificationHeaders[0];
+  const certificationEnd = workflowBlockEnd(
+    lines, certificationStart, stepIndent, stepsEnd, label,
+  );
+  assertNoWorkflowExecutionControls(
+    lines, certificationStart, certificationEnd, stepIndent + 2, `${label} certification`,
+  );
+
+  const installShellLine = exactDirectLine(
+    lines, 'shell: bash', stepIndent + 2, installStart + 1, installEnd, `${label} Edge install`,
+  );
+  const installEnvLine = exactDirectLine(
+    lines, 'env:', stepIndent + 2, installStart + 1, installEnd, `${label} Edge install`,
+  );
+  const installRunLine = exactDirectLine(
+    lines, 'run: |', stepIndent + 2, installStart + 1, installEnd, `${label} Edge install`,
+  );
+  assert(installShellLine < installEnvLine && installEnvLine < installRunLine,
+    `${label}: Edge install shell, environment, and run blocks are out of order`);
+  const installEnvEnd = workflowBlockEnd(
+    lines, installEnvLine, stepIndent + 2, installEnd, `${label} Edge install`,
+  );
+  assert(installEnvEnd === installRunLine,
+    `${label}: Edge package environment must be owned directly before the install run block`);
+  assertExactBlockLines(lines, installEnvLine + 1, installEnvEnd, stepIndent + 4, [
+    `EDGE_PACKAGE_URL: ${EDGE_PACKAGE_URL}`,
+    `EDGE_PACKAGE_SHA256: ${EDGE_PACKAGE_SHA256}`,
+  ], `${label} Edge install environment`);
+  const installRunEnd = workflowBlockEnd(
+    lines, installRunLine, stepIndent + 2, installEnd, `${label} Edge install`,
+  );
+  assert(installRunEnd === installEnd,
+    `${label}: install run block must own all remaining step commands`);
+
+  const installCommands = [];
+  for (let index = installRunLine + 1; index < installRunEnd; index++) {
+    if (yamlIndent(lines[index], `${label} install command`) === stepIndent + 4
+      && /^sudo\s+apt-get\s+install\b/.test(lines[index].trim())) installCommands.push(index);
+  }
+  assert(installCommands.length === 1
+    && lines[installCommands[0]].trim() === EDGE_REINSTALL_COMMAND,
+  `${label}: owned Edge step must contain one exact reinstall command`);
+  assert(exactWorkflowLines(lines, EDGE_REINSTALL_COMMAND).length === 1,
+    `${label}: exact Edge reinstall command must occur once in the workflow`);
+  assertExactBlockLines(lines, installRunLine + 1, installRunEnd, stepIndent + 4, [
+    'set -euo pipefail',
+    `edge_package="$RUNNER_TEMP/${EDGE_PACKAGE_FILENAME}"`,
+    'curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"',
+    'printf \'%s  %s\\n\' "$EDGE_PACKAGE_SHA256" "$edge_package" | sha256sum --check --strict',
+    EDGE_REINSTALL_COMMAND,
+    `test "$(dpkg-query -W -f='\${Version}' microsoft-edge-stable)" = "${EDGE_PACKAGE_VERSION}"`,
+    contract.executableCheck,
+  ], `${label} Edge install run block`);
+
+  const preflightWorkingLine = exactDirectLine(
+    lines, 'working-directory: port/v2', stepIndent + 2,
+    preflightStart + 1, preflightEnd, `${label} preflight`,
+  );
+  const preflightBrowser = assertStepBrowser(
+    lines, preflightStart, preflightEnd, stepIndent, contract.preflightBrowser,
+    `${label} preflight`,
+  );
+  const preflightRunLine = exactDirectLine(
+    lines, 'run: |', stepIndent + 2, preflightStart + 1, preflightEnd, `${label} preflight`,
+  );
+  assert(preflightWorkingLine < (preflightBrowser?.envLine ?? preflightRunLine)
+    && (preflightBrowser?.envLine ?? preflightWorkingLine) < preflightRunLine,
+  `${label}: preflight working directory, Edge environment, and run block are out of order`);
+  const preflightRunEnd = workflowBlockEnd(
+    lines, preflightRunLine, stepIndent + 2, preflightEnd, `${label} preflight`,
+  );
+  assert(preflightRunEnd === preflightEnd,
+    `${label}: preflight run block must own all remaining step commands`);
+  assertExactBlockLines(
+    lines, preflightRunLine + 1, preflightRunEnd, stepIndent + 4,
+    contract.preflightCommands, `${label} preflight run block`,
+  );
+
+  const certificationWorkingLine = exactDirectLine(
+    lines, 'working-directory: port/v2', stepIndent + 2,
+    certificationStart + 1, certificationEnd, `${label} certification`,
+  );
+  const certificationBrowser = assertStepBrowser(
+    lines, certificationStart, certificationEnd, stepIndent, contract.certificationBrowser,
+    `${label} certification`,
+  );
+  const certificationRunLine = exactDirectLine(
+    lines, 'run: npm run compendiummem', stepIndent + 2,
+    certificationStart + 1, certificationEnd, `${label} certification`,
+  );
+  assert(certificationWorkingLine < (certificationBrowser?.envLine ?? certificationRunLine)
+    && (certificationBrowser?.envLine ?? certificationWorkingLine) < certificationRunLine,
+  `${label}: certification working directory, Edge environment, and command are out of order`);
+  const directCertificationRuns = [];
+  for (let index = certificationStart + 1; index < certificationEnd; index++) {
+    if (yamlIndent(lines[index], `${label} certification line ${index + 1}`) === stepIndent + 2
+      && /^run\s*:/.test(lines[index].trim())) directCertificationRuns.push(index);
+  }
+  assert(directCertificationRuns.length === 1
+    && directCertificationRuns[0] === certificationRunLine,
+  `${label}: certification must own only the exact npm run compendiummem command`);
+  return Object.freeze({
+    jobLine: jobStart + 1,
+    installLine: installStart + 1,
+    preflightLine: preflightStart + 1,
+    certificationLine: certificationStart + 1,
+  });
+}
+
+function removeWorkflowReinstall(source, label) {
+  const lines = source.split(/\r?\n/);
+  const matches = exactWorkflowLines(lines, EDGE_REINSTALL_COMMAND);
+  assert(matches.length === 1,
+    `SELFTEST ${label}: expected one exact reinstall command to mutate, found ${matches.length}`);
+  lines[matches[0]] = lines[matches[0]].replace(' --reinstall', '');
+  return lines.join('\n');
+}
+
+function injectWorkflowReinstallDecoy(source, label) {
+  const lines = source.split(/\r?\n/);
+  const installHeader = `- name: ${EDGE_INSTALL_STEP_NAME}`;
+  const matches = exactWorkflowLines(lines, installHeader);
+  assert(matches.length === 1,
+    `SELFTEST ${label}: expected one exact install step for the decoy control`);
+  const index = matches[0];
+  const indent = (lines[index].match(/^[ ]*/) || [''])[0];
+  lines.splice(index, 0,
+    `${indent}- name: unrelated Edge reinstall decoy`,
+    `${indent}  shell: bash`,
+    `${indent}  run: |`,
+    `${indent}    ${EDGE_REINSTALL_COMMAND}`);
+  return lines.join('\n');
+}
+
+function moveWorkflowContractToWrongJob(source, contract, label) {
+  const lines = source.split(/\r?\n/);
+  const { jobStart } = workflowJobBounds(lines, contract, `SELFTEST ${label}`);
+  assert(yamlIndent(lines[jobStart], `SELFTEST ${label} job`) === 2,
+    `SELFTEST ${label}: owning job indentation changed`);
+  lines[jobStart] = `  wrong-${contract.jobName}:`;
+  lines.push(
+    `  ${contract.jobName}:`,
+    '    runs-on: ubuntu-latest',
+    '    env:',
+    `      CF_BROWSER: ${contract.jobBrowser}`,
+    '    steps:',
+    '      - name: unrelated expected-job step',
+    '        run: echo unrelated');
+  return lines.join('\n');
+}
+
+function injectWorkflowBlockScalarDecoy(source, label) {
+  const lines = source.split(/\r?\n/);
+  const installHeader = `- name: ${EDGE_INSTALL_STEP_NAME}`;
+  const installHeaders = exactWorkflowLines(lines, installHeader);
+  assert(installHeaders.length === 1,
+    `SELFTEST ${label}: expected one exact install step for the block-scalar control`);
+  const installStart = installHeaders[0];
+  const installIndent = yamlIndent(lines[installStart], `SELFTEST ${label} install step`);
+  const installEnd = workflowBlockEnd(
+    lines, installStart, installIndent, lines.length, `SELFTEST ${label}`,
+  );
+  const download = 'curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"';
+  const downloadLines = exactIndentedWorkflowLines(
+    lines, download, installIndent + 4, installStart + 1, installEnd,
+  );
+  assert(downloadLines.length === 1,
+    `SELFTEST ${label}: expected one package download for the block-scalar control`);
+  lines.splice(downloadLines[0], 0, `${' '.repeat(installIndent + 2)}decoy: |`);
+  return lines.join('\n');
+}
+
+function injectWorkflowInterveningStep(source, label) {
+  const lines = source.split(/\r?\n/);
+  const certificationHeader = `- name: ${EDGE_CERTIFICATION_STEP_NAME}`;
+  const certificationHeaders = exactWorkflowLines(lines, certificationHeader);
+  assert(certificationHeaders.length === 1,
+    `SELFTEST ${label}: expected one certification step for the adjacency control`);
+  const index = certificationHeaders[0];
+  const indent = (lines[index].match(/^[ ]*/) || [''])[0];
+  lines.splice(index, 0,
+    `${indent}- name: unrelated intervening step`,
+    `${indent}  run: echo unrelated`);
+  return lines.join('\n');
+}
+
+function mutateWorkflowJobBrowser(source, contract, label) {
+  const lines = source.split(/\r?\n/);
+  const { jobStart, jobEnd } = workflowJobBounds(lines, contract, `SELFTEST ${label}`);
+  const envLine = exactDirectLine(
+    lines, 'env:', 4, jobStart + 1, jobEnd, `SELFTEST ${label} job`,
+  );
+  const browser = assertBrowserEnv(
+    lines, envLine, jobEnd, contract.jobBrowser, `SELFTEST ${label} job`,
+  );
+  const replacement = contract.jobBrowser === EDGE_BROWSER ? CHROME_BROWSER : EDGE_BROWSER;
+  lines[browser.browserLine] = `      CF_BROWSER: ${replacement}`;
+  return lines.join('\n');
+}
+
+function mutateWorkflowStepBrowser(source, stepName, expectedBrowser, runToken, label) {
+  const lines = source.split(/\r?\n/);
+  const stepHeader = `- name: ${stepName}`;
+  const stepHeaders = exactWorkflowLines(lines, stepHeader);
+  assert(stepHeaders.length === 1,
+    `SELFTEST ${label}: expected one ${stepName} step for the browser control`);
+  const stepStart = stepHeaders[0];
+  const stepIndent = yamlIndent(lines[stepStart], `SELFTEST ${label} step`);
+  const stepEnd = workflowBlockEnd(
+    lines, stepStart, stepIndent, lines.length, `SELFTEST ${label}`,
+  );
+  if (expectedBrowser === null) {
+    const runLine = exactDirectLine(
+      lines, runToken, stepIndent + 2, stepStart + 1, stepEnd, `SELFTEST ${label}`,
+    );
+    lines.splice(runLine, 0,
+      `${' '.repeat(stepIndent + 2)}env:`,
+      `${' '.repeat(stepIndent + 4)}CF_BROWSER: ${CHROME_BROWSER}`);
+    return lines.join('\n');
+  }
+  const envLine = exactDirectLine(
+    lines, 'env:', stepIndent + 2, stepStart + 1, stepEnd, `SELFTEST ${label}`,
+  );
+  const browser = assertBrowserEnv(
+    lines, envLine, stepEnd, expectedBrowser, `SELFTEST ${label}`,
+  );
+  const replacement = expectedBrowser === EDGE_BROWSER ? CHROME_BROWSER : EDGE_BROWSER;
+  lines[browser.browserLine] = `${' '.repeat(stepIndent + 4)}CF_BROWSER: ${replacement}`;
+  return lines.join('\n');
+}
+
+function injectWorkflowExecutionControl(source, contract, target, control, label) {
+  const lines = source.split(/\r?\n/);
+  let start;
+  let indent;
+  if (target === 'job') {
+    ({ jobStart: start } = workflowJobBounds(lines, contract, `SELFTEST ${label}`));
+    indent = 4;
+  } else {
+    const stepName = target === 'install'
+      ? EDGE_INSTALL_STEP_NAME
+      : target === 'preflight'
+        ? contract.preflightStepName
+        : EDGE_CERTIFICATION_STEP_NAME;
+    const matches = exactWorkflowLines(lines, `- name: ${stepName}`);
+    assert(matches.length === 1,
+      `SELFTEST ${label}: expected one ${target} owner for execution-control mutation`);
+    start = matches[0];
+    indent = yamlIndent(lines[start], `SELFTEST ${label} ${target}`) + 2;
+  }
+  lines.splice(start + 1, 0, `${' '.repeat(indent)}${control}`);
+  return lines.join('\n');
+}
 
 function createDeadlineSignal(deadlineMs, { readNow, setTimer, clearTimer }) {
   assert(Number.isFinite(deadlineMs) && typeof readNow === 'function'
@@ -393,6 +862,71 @@ function selftestDeadlineTimers({
 }
 
 async function runSelftest() {
+  for (const contract of EDGE_WORKFLOW_CONTRACTS) {
+    const source = fs.readFileSync(path.join(repoRoot, contract.relative), 'utf8');
+    assertCompendiumEdgeWorkflowContract(source, contract);
+
+    const wrongJob = moveWorkflowContractToWrongJob(source, contract, contract.relative);
+    await expectRejected(`${contract.relative} wrong owning job`,
+      () => assertCompendiumEdgeWorkflowContract(wrongJob, contract),
+      /exact Edge install step must belong to job/);
+
+    const withoutReinstall = removeWorkflowReinstall(source, contract.relative);
+    await expectRejected(`${contract.relative} reinstall removal`,
+      () => assertCompendiumEdgeWorkflowContract(withoutReinstall, contract),
+      /exact reinstall command/);
+    const decoyOutsideStep = injectWorkflowReinstallDecoy(withoutReinstall, contract.relative);
+    await expectRejected(`${contract.relative} reinstall decoy outside owned step`,
+      () => assertCompendiumEdgeWorkflowContract(decoyOutsideStep, contract),
+      /exact reinstall command/);
+
+    const blockScalarDecoy = injectWorkflowBlockScalarDecoy(source, contract.relative);
+    await expectRejected(`${contract.relative} install block-scalar decoy`,
+      () => assertCompendiumEdgeWorkflowContract(blockScalarDecoy, contract),
+      /install run block must own all remaining step commands/);
+
+    const interveningStep = injectWorkflowInterveningStep(source, contract.relative);
+    await expectRejected(`${contract.relative} intervening certification step`,
+      () => assertCompendiumEdgeWorkflowContract(interveningStep, contract),
+      /certification must be the step immediately after Compendium preflight/);
+
+    const wrongJobBrowser = mutateWorkflowJobBrowser(source, contract, contract.relative);
+    await expectRejected(`${contract.relative} wrong job CF_BROWSER`,
+      () => assertCompendiumEdgeWorkflowContract(wrongJobBrowser, contract),
+      /expected one exact direct CF_BROWSER/);
+
+    const wrongPreflightBrowser = mutateWorkflowStepBrowser(
+      source, contract.preflightStepName, contract.preflightBrowser, 'run: |',
+      `${contract.relative} preflight`,
+    );
+    await expectRejected(`${contract.relative} wrong preflight CF_BROWSER`,
+      () => assertCompendiumEdgeWorkflowContract(wrongPreflightBrowser, contract),
+      contract.preflightBrowser === null
+        ? /preflight: inherited Edge CF_BROWSER must not be overridden/
+        : /preflight: expected one exact direct CF_BROWSER/);
+
+    const wrongCertificationBrowser = mutateWorkflowStepBrowser(
+      source, EDGE_CERTIFICATION_STEP_NAME, contract.certificationBrowser,
+      'run: npm run compendiummem', `${contract.relative} certification`,
+    );
+    await expectRejected(`${contract.relative} wrong certification CF_BROWSER`,
+      () => assertCompendiumEdgeWorkflowContract(wrongCertificationBrowser, contract),
+      contract.certificationBrowser === null
+        ? /certification: inherited Edge CF_BROWSER must not be overridden/
+        : /certification: expected one exact direct CF_BROWSER/);
+
+    for (const target of ['job', 'install', 'preflight', 'certification']) {
+      for (const control of ['if: false', 'continue-on-error: true']) {
+        const softened = injectWorkflowExecutionControl(
+          source, contract, target, control, `${contract.relative} ${target} ${control}`,
+        );
+        await expectRejected(`${contract.relative} ${target} ${control}`,
+          () => assertCompendiumEdgeWorkflowContract(softened, contract),
+          /execution-control keys may not skip or soften/);
+      }
+    }
+  }
+
   const authority = selftestAuthority();
   const executable = portable(path.join(fs.realpathSync(os.tmpdir()), 'selftest-edge'));
   const nonce = 'selftest-success';
@@ -725,6 +1259,10 @@ async function runSelftest() {
   assertNoOwnedProfiles(leakPrefix, 'SELFTEST leak-control cleanup');
 
   console.log('COMPENDIUM BROWSER PREFLIGHT SELFTEST PASS');
+  console.log('  exact job/step/block ownership, Edge environments, and install → preflight → certification ordering: PASS');
+  console.log('  per-workflow reinstall removal and outside-step decoys: rejected');
+  console.log('  wrong-job/block-scalar/intervening-step/CF_BROWSER controls: rejected');
+  console.log('  job/install/preflight/certification skip and soft-fail controls: rejected');
   console.log('  exact options 45s startup / 15s socket / 5s command / 2s shutdown: PASS');
   console.log('  one opener call, fresh target/domain order, evaluate result and event: PASS');
   console.log('  product/revision/JS/protocol and executable mismatches: rejected');

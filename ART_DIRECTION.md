@@ -42,9 +42,9 @@ settled cache entry, rejects stale completion, suppresses duplicate-tier work, a
 512/768/1024 tier only when real zoom or DPR demand crosses its boundary. Maximum tested phone and
 desktop zoom demand is 1,248/1,280px, which still selects 1024.
 
-The phone and desktop resource path is implemented; its current producer awaits a refreshed measured ruler. Every
+The phone and desktop resource path and its refreshed measured ruler are implemented. Every
 selected head must own exact-source local certification, and its corresponding PR test-merge CI
-must be terminal green; this reference deliberately caches neither live outcome. Exact committed repair
+must be terminal green; the current named outcome is recorded below. Exact committed repair
 `dea03913014bc58134ebb06ca5b36892210a7571` passes the full Glass
 matrix; its following exact Compendium run `20260817150005919-93781-b6643ba7a6` is preserved as a
 truthful 75/76 result solely red at `desktop/warm-plateau`. It proves neither a product leak nor a
@@ -142,12 +142,28 @@ baseline8 retained all four faults and 14 phone / 13 desktop breaches. Active bu
 three-candidate maxima. The report/sample pairs are baseline8 `0a8b831e…` / `a52bccec…`, c17
 `6b86ca9d…` / `0818c86e…`, c18 `a9b28d79…` / `c368ba86…`, and c19 `440cb788…` / `abddfa84…`.
 
-This activation is browser-free and non-certifying. Commit one exact activation head, then run one
-complete same-head battery and one corresponding CI attempt. The first red stops without timing
-expansion; after PR #32 closes, work returns to Arc 1B/gameplay. Every selected head must own
-exact-source local certification, and its corresponding PR
-test-merge CI must be terminal green; this reference deliberately caches neither mutable live
-outcome.
+The browser-free activation became exact head
+`96464d5e4ca59074c0d8d59719a90a5dedc2dd2d`, which completed its full same-head local battery.
+Corresponding GitHub Actions run `32394244417`, Compendium job `96507263338`, attempt 1, tested
+synthetic merge `63665b6…` and preserved a pre-product environment/instrument red. Runner image
+`ubuntu24/20260816.277` already carried exact Edge 151.0.4129.86, so plain apt installation was a
+no-op. Browser-path and portable preflight selftests passed, but the one-launch live preflight saw
+no CDP endpoint inside the unchanged 45-second startup bound. No collector, report, outcome, review
+PNG, or retry exists; the later verifier and artifact-upload failures are cascades from those absent
+outputs. Root/static and Chrome Smoke/Glass jobs were green.
+
+Across the retained exact-Edge PR #32 jobs, runner image `ubuntu24/20260810.271` upgraded bundled
+.78 to the exact .86 package and launched Edge 4/4 times; `ubuntu24/20260816.277` already had .86,
+made the plain apt operation a no-op, and launched 0/3 times. That split supports only one bounded
+hypothesis: SHA-verify the exact package and install those same bytes once with `--reinstall` to normalize the hosted
+runner before launch. It does not prove the fix. The preflight selftest now statically requires the
+exact ordered URL/SHA/download/hash/reinstall/version/executable/following-preflight contract in both
+workflows and rejects per-workflow removal plus outside-step decoys; that browser-free control is
+green but cannot prove live launch. The workflow normalization changes no timing, retry, fallback,
+live repository-tool behavior, product, browser package/version, measurement, producer, budget, or
+authority. One matching changed-head CI attempt is still required; the first red stops without
+further timing work. After PR #32 closes, work returns to Arc 1B/gameplay. Every selected head must
+own exact-source local certification and corresponding terminal-green PR test-merge CI.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
 browser. Calibration review PNGs do not satisfy the selected-head HUMAN row; a fresh phone/desktop
 list, focus-pinned, and detail set still requires HUMAN review. This repair owns the

@@ -222,7 +222,7 @@ jobs:
           edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.86-1_amd64.deb"
           curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"
           printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$edge_package" | sha256sum --check --strict
-          sudo apt-get install --yes "$edge_package"
+          sudo apt-get install --reinstall --yes "$edge_package"
           test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.86-1"
           test -x "$CF_BROWSER"
       - name: browser provenance and Compendium memory instrument selftests
