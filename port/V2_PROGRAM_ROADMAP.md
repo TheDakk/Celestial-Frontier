@@ -613,7 +613,10 @@ both parent voices.
 accessibility, or approved static art.
 
 **Current state (2026-08-20): product implementation, serviced-turn scheduler repair, and active
-ruler present; exact-head certification `[EXEC-TODO]`; fresh `[HUMAN]` review open.** The runnable, fail-closed `compendiummem` gate drives a deterministic 1,500-row
+ruler present; exact-source automation governed by live artifacts/CI; fresh `[HUMAN]` review open.**
+This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
+corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
+`compendiummem` gate drives a deterministic 1,500-row
 Compendium through a spacer-preserved virtual window, focus pinning and native keyboard traversal,
 filter/clear, detail/Back, Close cleanup, and Planetside hide/release/reacquire. The product path
 owns real 132px thumb leases with one bounded producer, queued-work cancellation, dedupe, disposal,
@@ -664,10 +667,13 @@ independent one-attempt candidate5/6/7 runs. They bind measurement `bb03a3af…`
 active budget replays their raw capsules and sets every profile ceiling strictly above the three-run
 maximum. Baseline4 retains all four faults and breaches 14 phone / 13 desktop fields. Baseline3/
 candidate2/3/4 and old producer `291b794e…` remain truthful history, not current resource authority.
-Exact-head certification and PR CI are pending. The Arc-local Edge authority remains product `Edg/151.0.4129.86`, revision
+Every selected head must own exact-source local certification, and its corresponding PR test-merge
+CI must be terminal green; this reference deliberately caches neither live outcome. The Arc-local Edge authority remains product
+`Edg/151.0.4129.86`, revision
 `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript `15.1.23.7`, and protocol `1.3`; it still
 does **not** repin the Gate-A/global Edge `150.0.4078.83` baseline. Returning this criterion to
-`[EXEC]` requires exact-head certification and CI on the eventual activation commit.
+`[EXEC]` requires terminal-green exact-source artifacts and corresponding PR test-merge CI for the
+selected pushed head.
 
 The current state records an implemented product and scheduler repair with an active browser-free
 ruler, not terminal resource authority. Human judgment of a fresh certifying run's six phone/desktop list,

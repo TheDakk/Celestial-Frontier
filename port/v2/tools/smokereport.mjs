@@ -15,10 +15,12 @@ import { fileURLToPath } from 'node:url';
 import { findChromiumBrowser } from './browserpath.mjs';
 import { acquireWorkspaceLock, workspaceLockChildEnvironment } from './workspacelock.mjs';
 import {
+  assessTrainingBusyRefusalPrecondition,
   classifyForegroundServiceTurnReceipt,
   classifyPlanetsideSettlement,
   planetsidePhaseRemainingMs,
   planetsideRuntimeTimeoutDecision,
+  trainingBindingReceiptBeforeDeadline,
 } from './slicesmoke-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -230,6 +232,108 @@ function runSelftest() {
   if (foregroundDrift.length) {
     throw new Error(`SELFTEST foreground service controls drifted: ${JSON.stringify(foregroundDrift)}`);
   }
+  const trainingExpected = Object.freeze({
+    documentToken: 'training-document-current', primaryRaw: '{"training":"exact"}',
+  });
+  const trainingReady = Object.freeze({
+    documentToken: trainingExpected.documentToken, primaryRaw: trainingExpected.primaryRaw,
+    state: Object.freeze({
+      tutActive: true, tutDone: false, tutStep: 'welcome', trainingCheckpointKind: 'legacy-v1',
+      trainingCheckpointWriteHeld: true, tutSnapshotPending: Object.freeze({ view: Object.freeze({}) }),
+      mode: 'system', gal: 999, star: 424242, planet: null,
+      navGalaxyKey: 'galaxy-current', navStarKey: 'star-current', navWorldKey: null,
+      renderedScene: Object.freeze({
+        mode: 'system', serial: 1, galaxyKey: 'galaxy-current', starKey: 'star-current', worldKey: null,
+      }),
+    }),
+    card: true, trainingBody: true,
+    button: Object.freeze({ present: true, connected: true, disabled: false, visible: true }),
+    buttonOwnedByCard: true,
+    status: Object.freeze({ present: true, hidden: true }), statusOwnedByCard: true, tickerStarted: true,
+  });
+  const trainingControls = [
+    ['ready', trainingReady, true, []],
+    ['absent-observation', null, false, ['precondition observation absent']],
+    ['state-absent', { ...trainingReady, state: null }, false, ['Training state absent']],
+    ['stale-document', { ...trainingReady, documentToken: 'training-document-stale' }, false, ['document identity']],
+    ['wrong-primary', { ...trainingReady, primaryRaw: '{"training":"stale"}' }, false, ['primary bytes']],
+    ['inactive-state', { ...trainingReady, state: { ...trainingReady.state, tutActive: false } }, false, ['Training is not runnable at welcome']],
+    ['completed-state', { ...trainingReady, state: { ...trainingReady.state, tutDone: true } }, false, ['Training is not runnable at welcome']],
+    ['wrong-step', { ...trainingReady, state: { ...trainingReady.state, tutStep: 'atlas-open' } }, false, ['Training is not runnable at welcome']],
+    ['wrong-checkpoint', { ...trainingReady, state: { ...trainingReady.state, trainingCheckpointKind: 'none' } }, false, ['legacy checkpoint ownership']],
+    ['checkpoint-not-held', { ...trainingReady, state: { ...trainingReady.state, trainingCheckpointWriteHeld: false } }, false, ['legacy checkpoint ownership']],
+    ['checkpoint-payload-absent', { ...trainingReady, state: { ...trainingReady.state, tutSnapshotPending: null } }, false, ['legacy checkpoint ownership']],
+    ['checkpoint-payload-array', { ...trainingReady, state: { ...trainingReady.state, tutSnapshotPending: [] } }, false, ['legacy checkpoint ownership']],
+    ['wrong-mode', { ...trainingReady, state: { ...trainingReady.state, mode: 'galaxy' } }, false, ['Training route']],
+    ['wrong-galaxy', { ...trainingReady, state: { ...trainingReady.state, gal: 998 } }, false, ['Training route']],
+    ['wrong-route', { ...trainingReady, state: { ...trainingReady.state, star: 7 } }, false, ['Training route']],
+    ['unexpected-planet', { ...trainingReady, state: { ...trainingReady.state, planet: 133 } }, false, ['Training route']],
+    ['missing-galaxy-key', { ...trainingReady, state: { ...trainingReady.state, navGalaxyKey: null,
+      renderedScene: { ...trainingReady.state.renderedScene, galaxyKey: null } } }, false, ['Training route']],
+    ['missing-star-key', { ...trainingReady, state: { ...trainingReady.state, navStarKey: null,
+      renderedScene: { ...trainingReady.state.renderedScene, starKey: null } } }, false, ['Training route']],
+    ['unexpected-world-key', { ...trainingReady, state: { ...trainingReady.state,
+      navWorldKey: 'world-foreign' } }, false, ['Training route']],
+    ['render-absent', { ...trainingReady, state: { ...trainingReady.state, renderedScene: null } }, false, ['rendered Training route']],
+    ['render-mode-drift', { ...trainingReady, state: { ...trainingReady.state,
+      renderedScene: { ...trainingReady.state.renderedScene, mode: 'galaxy' } } }, false, ['rendered Training route']],
+    ['render-drift', { ...trainingReady, state: { ...trainingReady.state,
+      renderedScene: { ...trainingReady.state.renderedScene, serial: 0 } } }, false, ['rendered Training route']],
+    ['render-galaxy-key-drift', { ...trainingReady, state: { ...trainingReady.state,
+      renderedScene: { ...trainingReady.state.renderedScene, galaxyKey: 'galaxy-foreign' } } }, false, ['rendered Training route']],
+    ['render-star-key-drift', { ...trainingReady, state: { ...trainingReady.state,
+      renderedScene: { ...trainingReady.state.renderedScene, starKey: 'star-foreign' } } }, false, ['rendered Training route']],
+    ['render-world-key-drift', { ...trainingReady, state: { ...trainingReady.state,
+      renderedScene: { ...trainingReady.state.renderedScene, worldKey: 'world-foreign' } } }, false, ['rendered Training route']],
+    ['missing-card', { ...trainingReady, card: false }, false, ['Training card']],
+    ['missing-training-body', { ...trainingReady, trainingBody: false }, false, ['Training card']],
+    ['missing-button', { ...trainingReady, button: { ...trainingReady.button, present: false } }, false, ['runnable Skip action']],
+    ['disconnected-button', { ...trainingReady, button: { ...trainingReady.button, connected: false } }, false, ['runnable Skip action']],
+    ['disabled-button', { ...trainingReady, button: { ...trainingReady.button, disabled: true } }, false, ['runnable Skip action']],
+    ['hidden-button', { ...trainingReady, button: { ...trainingReady.button, visible: false } }, false, ['runnable Skip action']],
+    ['button-parent-escape', { ...trainingReady, buttonOwnedByCard: false }, false, ['runnable Skip action']],
+    ['missing-status', { ...trainingReady, status: { ...trainingReady.status, present: false } }, false, ['idle Training status']],
+    ['non-idle-status', { ...trainingReady, status: { ...trainingReady.status, hidden: false } }, false, ['idle Training status']],
+    ['status-parent-escape', { ...trainingReady, statusOwnedByCard: false }, false, ['idle Training status']],
+    ['stopped-ticker', { ...trainingReady, tickerStarted: false }, false, ['outgoing ticker']],
+  ];
+  const trainingDrift = trainingControls.flatMap(([name, observation, expectedOk, expectedReasons]) => {
+    const actual = assessTrainingBusyRefusalPrecondition(observation, trainingExpected);
+    return actual.ok === expectedOk && JSON.stringify(actual.reasons) === JSON.stringify(expectedReasons)
+      ? [] : [{ name, expectedOk, expectedReasons, actual }];
+  });
+  for (const [name, expected] of [
+    ['missing-expected-authority', null],
+    ['missing-expected-document', { ...trainingExpected, documentToken: '' }],
+    ['missing-expected-primary', { ...trainingExpected, primaryRaw: '' }],
+  ]) {
+    let rejected = false;
+    try { assessTrainingBusyRefusalPrecondition(trainingReady, expected); }
+    catch (error) { rejected = error instanceof TypeError; }
+    if (!rejected) trainingDrift.push({ name, expected: 'TypeError' });
+  }
+  if (trainingDrift.length) {
+    throw new Error(`SELFTEST Training busy-refusal precondition controls drifted: ${JSON.stringify(trainingDrift)}`);
+  }
+  const trainingBindingControls = [
+    ['complete-before', [{}, {}], 999, true],
+    ['incomplete-before', [{}], 999, false],
+    ['complete-exact-boundary', [{}, {}], 1000, false],
+    ['complete-just-late', [{}, {}], 1000.001, false],
+  ];
+  const trainingBindingDrift = trainingBindingControls.flatMap(([name, entries, receivedAt, expected]) => {
+    const actual = trainingBindingReceiptBeforeDeadline(entries, 2, 1000, receivedAt);
+    return actual === expected ? [] : [{ name, expected, actual }];
+  });
+  let invalidTrainingBindingRejected = false;
+  try { trainingBindingReceiptBeforeDeadline([], 0, 1000, 999); }
+  catch (error) { invalidTrainingBindingRejected = error instanceof TypeError; }
+  if (!invalidTrainingBindingRejected) {
+    trainingBindingDrift.push({ name: 'invalid-count', expected: 'TypeError' });
+  }
+  if (trainingBindingDrift.length) {
+    throw new Error(`SELFTEST Training binding receipt controls drifted: ${JSON.stringify(trainingBindingDrift)}`);
+  }
   const readyImage = Object.freeze({
     state: 'ready', hasSrc: true, complete: true, naturalWidth: 132, naturalHeight: 132,
   });
@@ -298,6 +402,7 @@ function runSelftest() {
   console.log('  screenshot provenance: injected stale PNG excluded from the exact run manifest');
   console.log('  infrastructure fatal: retained ahead of generic bundler advice');
   console.log('  foreground service: exact target/document/token, continuous visible focused rAF→later-task authority, exact/late receipt rejection');
+  console.log('  D-TRAIN busy refusal: exact fixture/document/card action required; setup/parent drift and exact/late binding receipts rejected');
   console.log('  Planetside settlement: ready+132px+drained accepted; roster/image/decode/art/live-work controls rejected');
   console.log('  Planetside phase: monotonic remainder clipped; labelled Runtime.evaluate timeout converted exactly');
   console.log('  retry policy remains zero by construction (one child invocation in the wrapper)');

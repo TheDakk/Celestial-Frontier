@@ -17,8 +17,15 @@ retained a valid no-retry phone Planetside `product-unanswerable` red. The servi
 scheduler repair changes producer authority to `1c8200d7…`; the budget is now
 active from exact-.86 baseline4 plus independent one-attempt candidate5/6/7. Exact-788 local
 certification passed. Its first following Chrome Smoke preserved a one-attempt foreground-ownership
-instrument red; the bounded attach-derived target/document/service repair is browser-free green,
-but its final-head browser battery, push, and CI remain open. PR #32 is **not yet ready for approval**.
+instrument red. Commit `ef6c2c2cd31363cf47899a89c16c0d9f5f90d7a7` freezes the bounded attach-
+derived target/document/service repair; exact-ef6 Compendium certification and its named verifier
+pass. The following no-retry Chrome Smoke retained only a D-TRAIN fixture-ownership setup race, not
+a product busy-refusal verdict. Its bounded follow-up is present in source. This tracked review
+deliberately asserts no PASS or FAIL for any later exact-head browser execution. Push eligibility
+comes only from the complete battery's durable ignored carriers, contemporaneously captured
+terminal-only checks, verifiers, and pre/post repository-identity proof all agreeing on one unchanged
+clean head. Approval and merge remain conditional on terminal-green PR test-merge CI corresponding
+to that unchanged pushed head. This review alone is not approval authority.
 
 ## 1. Executive state
 
@@ -29,8 +36,8 @@ approval blockers:
 | CI area | Classification | Current disposition |
 | --- | --- | --- |
 | `v2-static` | Instrument false positive | Fixed; current audit reports 28 sources / 0 findings |
-| `v2-compendium-memory` | Valid product-unanswerable findings, followed by a ruler defect and a scheduler defect | Heavy import/paint/PNG work moved to a serial close-at-idle dedicated-worker producer. Exact dea039 exposed the old invalid plateau; baseline3 plus candidate2/3/4 activated da0's strict aggregate-heap/fixed-window ruler and its local cert passed. PR run `32334254714` then proved phone Planetside target unanswerability while the browser heartbeat remained timely; source inspection identified zero-delay successor-pump starvation as the bounded repair hypothesis, not a retrospectively observed worker phase. Every repaired default pump now crosses a rendering opportunity plus later task; bfcache invalidates stale pump generations. Baseline4 plus candidate5/6/7 activate the changed producer's ruler, and exact-788 certification passed; the later instrument head still needs its exact-source battery |
-| `v2-smoke` | Obsolete fixed-wait check, followed later by a multi-target foreground-ownership instrument defect | Cold Planetside uses one monotonic semantic settlement phase with exact decode/work outcomes. The held-painter control now binds attach-derived target/document identity, proves visible/focused rAF→later-task service before one release, retains rich diagnostics, and independently controls wrong/stale/hidden/unfocused/late evidence; one fresh final-head run remains open |
+| `v2-compendium-memory` | Valid product-unanswerable findings, followed by a ruler defect and a scheduler defect | Heavy import/paint/PNG work moved to a serial close-at-idle dedicated-worker producer. Exact dea039 exposed the old invalid plateau; baseline3 plus candidate2/3/4 activated da0's strict aggregate-heap/fixed-window ruler and its local cert passed. PR run `32334254714` then proved phone Planetside target unanswerability while the browser heartbeat remained timely; source inspection identified zero-delay successor-pump starvation as the bounded repair hypothesis, not a retrospectively observed worker phase. Every repaired default pump now crosses a rendering opportunity plus later task; bfcache invalidates stale pump generations. Baseline4 plus candidate5/6/7 activate the changed producer's ruler; exact-788 and exact-ef6 certification plus named verification passed. Every later head must own its exact-source battery; the live ignored outcome is not cached here |
+| `v2-smoke` | Obsolete fixed-wait check, then multi-target foreground ownership, then D-TRAIN fixture-setup instrument defects | Cold Planetside uses one monotonic semantic settlement phase with exact decode/work outcomes. Ef6 binds attach-derived target/document identity, proves visible/focused rAF→later-task service before one release, retains rich diagnostics, and passed that phase in its next exact-source Smoke. That run stopped only because direct D-TRAIN seeding did not join a prior Atlas/Land persistence owner; the follow-up drains/reproduces/proves exact runnable setup and semantically awaits busy refusal. The final-head ignored Smoke artifact is the sole authority for that outcome; tracked prose does not cache it |
 | `v2-glass` | One instrument defect plus two product finding records from one short-landscape geometry defect | Guide predicate, clipping diagnostics, hostile fixture, and nonmodal landscape workspace repaired |
 
 The first-red evidence is preserved. No timeout was raised, no failed command was retried, and no
@@ -38,7 +45,9 @@ red was reclassified as green. The later 75/76 Compendium red is preserved too: 
 the ruler cannot adjudicate the product, not proof of either a leak or a clean plateau. The repaired
 calibration seam and da0 ruler remain preserved chronology. The serviced-turn producer, fresh
 active ruler, exact-788 certification, and later Smoke instrument red are the current chronology;
-the repaired instrument's final clean-head browser battery is the next authority boundary.
+exact-ef6 certification, its D-TRAIN setup red, and the bounded follow-up are the current chronology.
+The repaired instrument's final clean-head browser battery is the local authority boundary; its
+live outcome is intentionally not cached in tracked prose.
 
 ## 2. What was completed before the PR battery
 
@@ -599,16 +608,77 @@ producer-authority change follows. One fresh run on the committed instrument hea
 because the harness precondition and captured diagnostic payload changed; the original red remains historical
 and is not rerun unchanged or relabelled green.
 
-## 7. Remaining work
+### 6.8 Exact-ef6 certification and D-TRAIN fixture-ownership red
 
-- finish scoped review of the three-file Smoke foreground-ownership repair, update the affected
-  live references, and commit those exact instrument/documentation bytes;
-- run the required final-clean-head browser path/CDP controls, Arc-local Edge Compendium
-  certification plus independent verification, and exactly one fresh no-retry Smoke; if green,
-  continue through full Glass, persona, root-layout, and verified nonpublishable preview evidence;
-- preserve and diagnose the first browser red if any rather than rerunning unchanged;
-- push the exact repair head to PR #32 and require CI on that exact SHA;
-- keep the separate fresh six-image HUMAN visual judgment and Claude's later visual-polish review open.
+Commit `ef6c2c2cd31363cf47899a89c16c0d9f5f90d7a7` freezes the foreground-ownership instrument
+repair. Arc-local Edge run `20260820-arc1a-serviced-turn-active-cert-ef6c2c2` then completed in
+39,843 ms with one attempt/zero retries and passed all 78 expected Compendium outcomes with zero
+findings, blocked outcomes, or partial failure. The exact report SHA-256 is
+`406edea11fec5f5a3cf11e6f9fc6dfea00cbdd2ce54fefed780bd1c9dafc9282`; the named-run verifier
+accepted it. This is exact-ef6 producer/ruler evidence, not evidence for later working-tree bytes or
+PR CI.
+
+The immediately following Chrome Smoke run `20260820071826194-75001-c2a22330fd09` also bound clean
+committed ef6 and detected no source change. It used Chrome for Testing 152.0.7977.54, one attempt,
+zero automatic retries, 150,963 ms, and ten run-bound screenshots. Report/log SHA-256 values are
+`65ca06c8f6d26ef3a9a3da19bb4bc09bb005d754f2291f55f389ac1ecf14aa46` /
+`87b1c8b6308d3a1969fb45ea4c2ccb70d1f46c2a8311751984b3c1ab0acdd7d9`. Its only findings were:
+
+- no D-TRAIN import-owner busy-refusal transaction witness (`operation count 0`, no stages); and
+- the same phase's absent real Skip action (`button:false`) and absent witness (`witness:null`).
+
+Those observations do not exercise or falsify the product's busy-refusal branch. The setup helper
+directly wrote the legacy D-TRAIN fixture after a real Atlas travel and Land sequence but did not
+first join that page's ordinary persistence owner. A prior write could therefore commit after the
+fixture put and before navigation. The helper proved only that the document token changed and then
+returned whatever primary bytes remained; its later stability check compared against that returned
+value rather than the intended fixture. The report did not retain which bytes won, so this review
+does not invent their value. Source order plus the repair's deliberate stale-write reproduction
+classifies the red as a harness setup race, not a product save/Training failure.
+
+The bounded three-file follow-up leaves product code unchanged and:
+
+- drains the actual prior Atlas/Land persistence path before direct fixture setup;
+- deliberately arms an older write, seeds the intended fixture, releases/drains the old writer, and
+  requires that stale write to win as the negative control;
+- makes this import-owner setup fail closed unless intended primary bytes survive under the changed
+  exact document;
+- binds current document, exact primary, classified legacy checkpoint, canonical Sol/render receipt,
+  live Training card/body, connected/enabled/visible Skip, hidden idle status, and running ticker
+  before product arbitration begins; and
+- captures one real Skip click and waits semantically for `claim-rejected/busy`, unchanged primary,
+  and zero pre-release writes instead of treating one microtask as settlement.
+
+No existing timeout is raised, and no retry, fixture rewrite loop, optional-chained missing action,
+or product-oracle weakening is added. The setup control owns a new bounded 2-second stale-write
+receipt and the real refusal owns one immutable 6-second claim/click/witness/binding deadline; a
+receipt at or after either bound is not accepted. Every later repair head must own an exact-source
+Compendium certification/verifier and one no-retry Chrome Smoke before the remaining battery may
+proceed. This tracked review deliberately does not state whether a later exact-head execution has
+occurred.
+
+## 7. Exact-head transition rule
+
+1. Resolve the exact head, target bytes, worktree, and upstream before the run. From that one clean
+   committed head, run browser path/CDP controls, Arc-local Edge Compendium certification and named
+   verifier, one no-retry Chrome Smoke, full Chrome Glass, persona join, root layout plus exact-run
+   verification, and a verified nonpublishable preview package plus browser smoke.
+2. Immediately preserve Smoke's overwrite-prone generic report/log as exact run-ID-named copies.
+   Preserve the other ignored report/package carriers before another producer may overwrite them.
+3. Browser path/CDP controls and preview browser smoke are terminal-only checks, not tool-written
+   reports; capture their contemporaneous output. Root layout has an exact run/browser/outcome
+   carrier but no embedded Git source, so require a commit-tagged run ID, unchanged target bytes,
+   and matching clean HEAD/status before and after its run and verifier.
+4. Any red, ambiguous, blocked, mixed-source, unverifiable carrier, or terminal-only failure stops
+   the transition and is preserved without an unchanged retry.
+5. If and only if every durable carrier, verifier, terminal-only check, and repository-identity
+   proof above is green and agrees on the same unchanged head, push that exact head to draft PR #32
+   without another tracked edit.
+6. Require CI to evaluate the PR test-merge corresponding to that exact pushed head, and verify the
+   head association. Only terminal-green corresponding test-merge CI and the remaining required
+   review permit Ready/merge and subsequent `develop` monitoring.
+7. Fresh six-image HUMAN judgment and Claude presentation-polish remain separate; neither is
+   supplied by the automated evidence.
 
 ## 8. Required verification before saying “ready”
 
@@ -646,8 +716,11 @@ repair has focused tests for initial/successor servicing and bfcache generation 
 fresh baseline4/candidate5/6/7 activation passes 11/11 focused replay and all 222 Compendium
 selftest controls. Commit `78813cd…` passed exact-head Compendium certification and root layout.
 The following Smoke foreground repair passes syntax, its report selftest, 25 focused tests, all
-three TypeScript programs, artunused, and diff hygiene; its fresh committed-head browser battery
-remains pending.
+three TypeScript programs, artunused, and diff hygiene. Commit ef6 then passed its exact-source
+Compendium certification plus named verifier; its Smoke passed the foreground phase and stopped
+only at the D-TRAIN setup race in §6.8. The current follow-up adds fail-closed precondition controls;
+its disposition is resolved solely from the ignored exact-head artifacts and matching source
+identities, not from this tracked review.
 
 ### Browser-owning, one attempt and no retry
 
@@ -658,7 +731,7 @@ From the final committed instrument head and with the correct process-owned brow
    `--verify-run`;
 3. Chrome `smoke:ci`;
 4. full Chrome 12-viewport Glass matrix;
-5. the serviced-turn and bfcache scheduler controls required by the final diff;
+5. the serviced-turn/bfcache and D-TRAIN setup/semantic-refusal controls required by the final diff;
 6. six fresh run-bound Compendium review PNG integrity checks.
 
 If a browser gate fails, its first red is preserved and diagnosed. The batch does not gain authority
@@ -666,13 +739,11 @@ to raise deadlines, retry, regenerate a budget, or weaken a control merely to ob
 
 ### GitHub handoff
 
-Only after local terminal evidence is clean:
+Apply §7. Only after local terminal evidence is clean:
 
-- update the live ROADMAP and affected references;
-- commit intentionally on `openai/mac`;
-- push the exact head to PR #32;
-- verify CI is evaluating that exact pushed commit;
-- monitor the full battery;
+- push the unchanged exact head to PR #32 without another tracked edit;
+- verify CI is evaluating the PR test-merge corresponding to that exact pushed head;
+- verify the pushed-head association and monitor the full battery;
 - retain draft status through any red/ambiguous check;
 - use the normal PR-to-`develop` path only after exact-head green and the remaining required review.
 
@@ -688,11 +759,14 @@ Even a repaired green PR does not close:
 
 ## 10. Approval recommendation at this checkpoint
 
-**Do not approve or merge PR #32 yet.** The product and Glass repairs are committed, and da0's
-replacement ruler/local certification remain truthful history. Its PR battery exposed a valid
-product-answerability defect; the serviced-turn repair changes producer authority, and fresh
-baseline4/candidate5/6/7 now activate that producer's measured ruler. Commit `78813cd…` passed its
-local exact-head certification, but the first following Smoke exposed the foreground-ownership
-instrument defect above. Commit that bounded repair, certify its exact head through the complete
-browser battery, push it, and require exact-head CI. A green result can make the automated repair ready for review; it still does
-not substitute for the fresh six-image HUMAN judgment or Claude's later presentation-polish pass.
+**Do not approve or merge PR #32 from this tracked review alone.** The product and Glass repairs are
+committed, and da0's replacement ruler/local certification remain truthful history. Its PR battery
+exposed a valid product-answerability defect; the serviced-turn repair changes producer authority,
+and fresh baseline4/candidate5/6/7 activate that producer's measured ruler. Commit `78813cd…`
+passed its local exact-head certification. Ef6 then froze the foreground repair and passed its own
+exact-source Compendium cert/verifier, but the following Smoke exposed the D-TRAIN fixture-setup
+race above. Push is permitted only when the complete same-head battery's durable carriers,
+verifiers, captured terminal-only checks, and repository-identity proof are terminal green on one
+unchanged head. Approval and merge then require terminal-green PR test-merge CI
+corresponding to that unchanged pushed head. HUMAN judgment and Claude presentation-polish remain
+separate.

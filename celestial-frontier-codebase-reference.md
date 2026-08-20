@@ -5,7 +5,7 @@
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-20.**
-> **2026-08-20 Arc 1A Compendium/art/resource overlay (current working tree;
+> **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
 > tracked source makes no terminal-certification claim; final HUMAN review remains open):**
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
@@ -31,8 +31,10 @@
 > import, protocol, and worker failures terminate the instance and settle active plus
 > queued owners exactly once, while content-specific paint/encode errors remain
 > per-job. Phone/desktop cache, decoded-pixel, byte, queue, lease, portrait, worker
-> lifecycle, and phase evidence are explicit; current resource-budget status is active, with
-> exact-788 certification complete and the final instrument-head browser battery still open.
+> lifecycle, and phase evidence are explicit; current resource-budget status is active. Exact-788
+> and exact-ef6 certification are complete. Exact-source local evidence and the corresponding PR
+> test-merge CI are live artifact/check state for every later head; this reference deliberately
+> caches neither outcome.
 > Specimen detail requests an
 > asynchronous 440px result through the same owner; Back/Close cancels that request
 > and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
@@ -111,8 +113,29 @@
 > proof before settlement. `tools/slicesmoke-contract.mjs` and the report selftest reject wrong or
 > stale identity, hidden/unfocused phases, reversed service order, and intervening visibility/focus
 > changes; receipt at or after either absolute deadline is late even when the CDP timeout callback
-> has not run first. That instrument-only final head still requires one fresh Smoke and exact-source browser
-> battery before push/CI.
+> has not run first. Commit `ef6c2c2cd31363cf47899a89c16c0d9f5f90d7a7` freezes that
+> foreground instrument. Exact Edge run `20260820-arc1a-serviced-turn-active-cert-ef6c2c2` and its
+> named verifier pass 78/78 with zero findings/blocked/partial/retries; report SHA-256 is
+> `406edea11fec5f5a3cf11e6f9fc6dfea00cbdd2ce54fefed780bd1c9dafc9282`.
+>
+> The immediately following clean-ef6 Chrome Smoke run
+> `20260820071826194-75001-c2a22330fd09` stopped the browser battery with only two D-TRAIN import-
+> owner findings: the busy-refusal witness was absent and the Skip action was missing
+> (`button:false`, `witness:null`). It used Chrome for Testing 152.0.7977.54, one attempt, zero
+> retries, 150,963 ms, ten screenshots, and no detected source change. Report/log SHA-256 values are
+> `65ca06c8f6d26ef3a9a3da19bb4bc09bb005d754f2291f55f389ac1ecf14aa46` /
+> `87b1c8b6308d3a1969fb45ea4c2ccb70d1f46c2a8311751984b3c1ab0acdd7d9`.
+> This is a Smoke setup-race finding, not a product transaction finding: the direct D-TRAIN fixture
+> put followed real Atlas/Land activity without joining its ordinary persistence owner, and the old
+> helper proved only changed document identity before accepting whatever primary remained. The
+> report did not retain the winning bytes, so their exact value and the product busy-refusal outcome
+> are unobserved. The bounded instrument follow-up drains the prior writer, reproduces stale overwrite
+> as a negative control, requires exact primary/document/classified Training route/render/card/
+> runnable Skip/idle status/ticker preconditions, and then waits semantically for one
+> `claim-rejected/busy` witness with no pre-release write. Every later instrument head must own that
+> ignored exact-source Compendium carrier and no-retry Smoke before push; terminal-green PR
+> test-merge CI corresponding to that pushed head remains separate, and this reference caches
+> neither outcome.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.

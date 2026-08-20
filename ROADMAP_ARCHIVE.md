@@ -1,5 +1,78 @@
 # Celestial Frontier — Roadmap ARCHIVE
 
+## ARCHIVED 2026-08-20 — PR #32 pre-serviced-turn chronology compacted from live handoff
+
+> Moved byte-verbatim from ROADMAP.md when the live handoff approached 400 lines. The active
+> serviced-turn ruler, exact-head certification, and Smoke repair boundary remain in ROADMAP.md.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR32 PRE-SERVICED-TURN CHRONOLOGY -->
+- D-TRAIN-1 merged normally through PR #31 into develop at exact merge
+  38447019517147319bd08c598202d097ee866874. That merge is the Arc 1A broken-baseline authority
+  and the current origin/develop base for this branch.
+- PR #32 contains the committed Arc 1A implementation and an exact clean-head Arc-local Compendium
+  report through `65b1bace57cfbbfc57acbffe55537764a382c581`; that report was not full PR-battery
+  certification. The first Linux battery correctly exposed a
+  renderer-answerability defect during cold Planetside species art, plus stale Smoke settlement,
+  Glass instrument/short-landscape geometry, and static-art audit defects.
+- Commit `39d326fa69512508884cb92f85dbabe765989032` moves heavy species art into the dedicated-worker
+  broker and repairs those three gate surfaces. Its full browser-free battery and independent source
+  review are green. Browser path/CDP controls passed on that clean head; the one no-retry Smoke run
+  then found a later stale Guide bulletin predicate shared with Glass (44/43 bullets and obsolete
+  “only detail renders 440px” wording versus the canonical 47/46 and truthful publish/retain plus
+  440→132 downsample contract). The cold Planetside path itself passed. Commit
+  `6105c6f2b5a6413e45e5c6ed4e73594ae39e98f0` fixes both rendered predicates and independently
+  controls all new text/category carriers. Its exact-head Smoke run passes. The first full Glass run
+  then correctly withheld product judgment on two instrument-only faults: absent versus empty inline
+  style after exact 243px restoration, and inherited text sampled on the transparent dock wrapper
+  instead of its painted buttons. Commit
+  `dea03913014bc58134ebb06ca5b36892210a7571` contains the bounded Glass-only repair, and its exact
+  clean-head full Glass matrix passes all 12 rows. Its following exact Compendium run
+  `20260817150005919-93781-b6643ba7a6` truthfully reports 75 of 76 outcomes, with only
+  `desktop/warm-plateau` red. That red exposed a ruler/sequence defect rather than proving either a
+  product leak or a clean plateau: the destructive desktop cap trim ran before the warm observation,
+  so the gate measured cache refill, and the old heap ruler excluded embedder/backing ownership.
+  Commit `4374d95be6c8b6ec2106ecd8518ac9bb39e32065` contains the fail-closed Compendium
+  calibration seam, repairs that authority, and leaves the budget non-certifying. At that
+  checkpoint, fresh calibration, certification, push, and exact-head PR CI remained open.
+- The first fresh paired-baseline attempt is preserved as instrument evidence and produced no
+  sample. It exposed a host/CDP observer race: one 132px pre-owner completion could land between a
+  stable-count read and a separate phase-switch command. The bounded follow-up now drains the exact
+  positive Planetside 440px roster, requires one internal 132px completion per visible owner, seals
+  that expected count in the real opener's capture phase, and atomically seals the final 1,500 list
+  completions with their quiet observation. A late owner completion turns evidence red rather than
+  becoming catalogue work. The attempt also confirmed that the installed macOS Edge had
+  auto-updated to 151.0.4129.93; it is not calibration authority and will not be used or silently
+  re-baselined.
+- After that boundary repair, paired run `20260819-arc1a-baseline2-d0508ec` measured cleanly under
+  exact Edge 151.0.4129.86 and independently reproduced all four sealed baseline faults on both
+  profiles. Candidate run `20260819-arc1a-candidate1-d0508ec` then stopped the sequence with only
+  `phone/warm-precondition` and `desktop/warm-precondition` red and produced no candidate sample.
+  The caches were full, decoded bytes exact, work drained, subscribers zero, and workers released;
+  the instrument instead required an insertion-ordered LRU key list to be lexically sorted and made
+  every warm cycle traverse more identities than the phone cache can retain, guaranteeing repaint
+  and worker churn. The current bounded follow-up measures one fixed retained window after filling
+  the native cache and proves exact unique key identity plus unchanged job/disposal/worker counters
+  across the sealed last-three-cycle plateau.
+  Because that changes collector/contract authority, the green baseline2 evidence remains preserved
+  chronology but must be recaptured before activation. No unchanged candidate rerun occurred.
+- The replacement authority was measured and activated for the pre-scheduler product. Paired broken-
+  baseline run `20260820-arc1a-baseline3-21af3fa` and independent one-attempt candidate runs
+  `20260820-arc1a-candidate2-21af3fa`, `20260820-arc1a-candidate3-21af3fa`, and
+  `20260820-arc1a-candidate4-21af3fa` all bind clean committed collector/product source
+  `21af3fa2c096f0590b067c0af578d7ea29000378`, measurement authority
+  `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c`, producer authority
+  `291b794e0dcd93ee21d7ff88cbca383e865a62e8dd162573d475131aca3b911e`, and the one isolated
+  Edge 151.0.4129.86 build. The then-active budget embeds and replays those raw capsules, applies strict
+  ceilings above all three candidate maxima, and adds aggregate page + embedder + backing-store
+  heap. Its fixed-window last-three-cycle plateau keeps identity and job/disposal/worker counters
+  stable. The paired baseline preserves all four sealed faults and breaches 14 phone ceilings and
+  13 desktop ceilings. Commit `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` activated that ruler.
+  Its local one-attempt Arc-local Edge certification
+  `20260820-arc1a-active-cert-da0de20` passed and independently verified. The same clean head also
+  passed one no-retry Chrome Smoke, the full 12-viewport Chrome Glass matrix, the matching nine-
+  persona join, root layout 787/787 across 10/10, and a verified nonpublishable exact-source preview.
+<!-- END VERBATIM ROADMAP BLOCK: PR32 PRE-SERVICED-TURN CHRONOLOGY -->
+
 ## ARCHIVED 2026-08-17 — D-TRAIN-1 handoff superseded by merged integration and Arc 1A
 
 > Moved byte-verbatim from ROADMAP.md after D-TRAIN-1 merged through PR #31 at

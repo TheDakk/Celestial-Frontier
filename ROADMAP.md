@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 ANSWERABILITY + SMOKE FOREGROUND REPAIR ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 ANSWERABILITY + SMOKE SETUP REPAIR ◀◀◀
 
 ### Cold start
 
@@ -34,71 +34,14 @@ the archive verbatim and refresh this handoff in place.
 
 ### Integrated foundation and owned branch
 
-- D-TRAIN-1 merged normally through PR #31 into develop at exact merge
-  38447019517147319bd08c598202d097ee866874. That merge is the Arc 1A broken-baseline authority
-  and the current origin/develop base for this branch.
-- PR #32 contains the committed Arc 1A implementation and an exact clean-head Arc-local Compendium
-  report through `65b1bace57cfbbfc57acbffe55537764a382c581`; that report was not full PR-battery
-  certification. The first Linux battery correctly exposed a
-  renderer-answerability defect during cold Planetside species art, plus stale Smoke settlement,
-  Glass instrument/short-landscape geometry, and static-art audit defects.
-- Commit `39d326fa69512508884cb92f85dbabe765989032` moves heavy species art into the dedicated-worker
-  broker and repairs those three gate surfaces. Its full browser-free battery and independent source
-  review are green. Browser path/CDP controls passed on that clean head; the one no-retry Smoke run
-  then found a later stale Guide bulletin predicate shared with Glass (44/43 bullets and obsolete
-  “only detail renders 440px” wording versus the canonical 47/46 and truthful publish/retain plus
-  440→132 downsample contract). The cold Planetside path itself passed. Commit
-  `6105c6f2b5a6413e45e5c6ed4e73594ae39e98f0` fixes both rendered predicates and independently
-  controls all new text/category carriers. Its exact-head Smoke run passes. The first full Glass run
-  then correctly withheld product judgment on two instrument-only faults: absent versus empty inline
-  style after exact 243px restoration, and inherited text sampled on the transparent dock wrapper
-  instead of its painted buttons. Commit
-  `dea03913014bc58134ebb06ca5b36892210a7571` contains the bounded Glass-only repair, and its exact
-  clean-head full Glass matrix passes all 12 rows. Its following exact Compendium run
-  `20260817150005919-93781-b6643ba7a6` truthfully reports 75 of 76 outcomes, with only
-  `desktop/warm-plateau` red. That red exposed a ruler/sequence defect rather than proving either a
-  product leak or a clean plateau: the destructive desktop cap trim ran before the warm observation,
-  so the gate measured cache refill, and the old heap ruler excluded embedder/backing ownership.
-  Commit `4374d95be6c8b6ec2106ecd8518ac9bb39e32065` contains the fail-closed Compendium
-  calibration seam, repairs that authority, and leaves the budget non-certifying. At that
-  checkpoint, fresh calibration, certification, push, and exact-head PR CI remained open.
-- The first fresh paired-baseline attempt is preserved as instrument evidence and produced no
-  sample. It exposed a host/CDP observer race: one 132px pre-owner completion could land between a
-  stable-count read and a separate phase-switch command. The bounded follow-up now drains the exact
-  positive Planetside 440px roster, requires one internal 132px completion per visible owner, seals
-  that expected count in the real opener's capture phase, and atomically seals the final 1,500 list
-  completions with their quiet observation. A late owner completion turns evidence red rather than
-  becoming catalogue work. The attempt also confirmed that the installed macOS Edge had
-  auto-updated to 151.0.4129.93; it is not calibration authority and will not be used or silently
-  re-baselined.
-- After that boundary repair, paired run `20260819-arc1a-baseline2-d0508ec` measured cleanly under
-  exact Edge 151.0.4129.86 and independently reproduced all four sealed baseline faults on both
-  profiles. Candidate run `20260819-arc1a-candidate1-d0508ec` then stopped the sequence with only
-  `phone/warm-precondition` and `desktop/warm-precondition` red and produced no candidate sample.
-  The caches were full, decoded bytes exact, work drained, subscribers zero, and workers released;
-  the instrument instead required an insertion-ordered LRU key list to be lexically sorted and made
-  every warm cycle traverse more identities than the phone cache can retain, guaranteeing repaint
-  and worker churn. The current bounded follow-up measures one fixed retained window after filling
-  the native cache and proves exact unique key identity plus unchanged job/disposal/worker counters
-  across the sealed last-three-cycle plateau.
-  Because that changes collector/contract authority, the green baseline2 evidence remains preserved
-  chronology but must be recaptured before activation. No unchanged candidate rerun occurred.
-- The replacement authority was measured and activated for the pre-scheduler product. Paired broken-
-  baseline run `20260820-arc1a-baseline3-21af3fa` and independent one-attempt candidate runs
-  `20260820-arc1a-candidate2-21af3fa`, `20260820-arc1a-candidate3-21af3fa`, and
-  `20260820-arc1a-candidate4-21af3fa` all bind clean committed collector/product source
-  `21af3fa2c096f0590b067c0af578d7ea29000378`, measurement authority
-  `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c`, producer authority
-  `291b794e0dcd93ee21d7ff88cbca383e865a62e8dd162573d475131aca3b911e`, and the one isolated
-  Edge 151.0.4129.86 build. The then-active budget embeds and replays those raw capsules, applies strict
-  ceilings above all three candidate maxima, and adds aggregate page + embedder + backing-store
-  heap. Its fixed-window last-three-cycle plateau keeps identity and job/disposal/worker counters
-  stable. The paired baseline preserves all four sealed faults and breaches 14 phone ceilings and
-  13 desktop ceilings. Commit `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` activated that ruler.
-  Its local one-attempt Arc-local Edge certification
-  `20260820-arc1a-active-cert-da0de20` passed and independently verified. The same clean head also
-  passed one no-retry Chrome Smoke, the full 12-viewport Chrome Glass matrix, the matching nine-
-  persona join, root layout 787/787 across 10/10, and a verified nonpublishable exact-source preview.
+- D-TRAIN-1 is integrated through PR #31 at exact develop merge
+  `38447019517147319bd08c598202d097ee866874`, the branch's current base and Arc 1A broken-baseline
+  authority. The completed pre-serviced-turn PR #32 chronology now lives byte-verbatim at the top of
+  `ROADMAP_ARCHIVE.md`; it remains evidence for its named source and was not deleted or rewritten.
+- PR #32's live boundary is the repaired dedicated-worker product, serviced-turn scheduler, active
+  measured ruler, committed multi-target Smoke ownership repair, and the current D-TRAIN fixture-
+  ownership instrument follow-up. Historical product, Glass, ruler, and first-red detail remains in
+  the archive and `audits/PR32_FAILURE_REPAIR_REVIEW_2026-08-17.md`.
 - PR battery run `32334254714`, attempt 1, then correctly stayed red without retry. Its Compendium
   report `gha-32334254714-1-compendiummem` bound clean detached PR test-merge
   `88b9c7b0aa90b860a5474bd099cfab48b125a3f5`, exact Edge 151.0.4129.86, the active budget bytes,
@@ -139,7 +82,30 @@ the archive verbatim and refresh this handoff in place.
   it binds attach-derived target plus document identity, explicitly activates/focuses/brings forward
   each owner, proves a continuously visible/focused rAF→later-task turn before observation, keeps one
   immutable 30-second refill deadline/no retry, and retains rich image/worker/broker diagnostics.
-  One fresh committed-head Smoke run is required; the old red is not rerun or reclassified.
+  Commit `ef6c2c2cd31363cf47899a89c16c0d9f5f90d7a7` freezes that instrument repair.
+- Exact ef6 Arc-local Edge run `20260820-arc1a-serviced-turn-active-cert-ef6c2c2` then passed all
+  78 Compendium outcomes with zero findings, blocked outcomes, partial failure, or retries. Its
+  report SHA-256 is `406edea11fec5f5a3cf11e6f9fc6dfea00cbdd2ce54fefed780bd1c9dafc9282`,
+  and named-run verification passed. This certifies ef6's unchanged producer/ruler bytes, not any
+  later Smoke-instrument head or PR CI.
+- The immediately following one-attempt Chrome Smoke run
+  `20260820071826194-75001-c2a22330fd09` is preserved at report/log SHA-256
+  `65ca06c8f6d26ef3a9a3da19bb4bc09bb005d754f2291f55f389ac1ecf14aa46` /
+  `87b1c8b6308d3a1969fb45ea4c2ccb70d1f46c2a8311751984b3c1ab0acdd7d9`. It bound clean committed
+  ef6, Chrome for Testing 152.0.7977.54, 150,963 ms, ten screenshots, zero retries, and no source
+  change. Its only two findings were the missing D-TRAIN import-owner busy-refusal witness and the
+  same phase's absent Skip action (`button:false`, `witness:null`). The foreground Compendium phase
+  and every other reported Smoke outcome stayed clean.
+- That red is a harness setup race, not evidence that the product's busy-refusal branch failed. The
+  fixture helper directly wrote IndexedDB after the preceding Atlas/Land journey without first
+  joining its ordinary persistence owner, then proved only a changed document token; an older write
+  could replace the fixture before the new page loaded. The report did not retain the winning bytes,
+  so it cannot identify their exact value. The bounded follow-up drains the prior writer, deliberately
+  reproduces the stale-write race as a negative control, requires exact fixture bytes plus current
+  document/Training route/card/runnable Skip/idle status/ticker before judging the product, and waits
+  semantically for the busy refusal. This handoff deliberately does not cache whether a later
+  exact-head browser run passed or failed; the ignored named report and its source-identity checks
+  are the only local authority for those repaired bytes.
 - Nothing in this batch changes main, the production v1.8.9 page, a shipped version, a save schema,
   deterministic generation/share bytes, or either live-site repository.
 
@@ -198,8 +164,9 @@ the archive verbatim and refresh this handoff in place.
   written headroom. The desktop warm aggregate range maximum was 436,412 bytes, so its 524,288-byte
   ceiling retains 87,876 bytes of headroom while remaining below the paired baseline's 795,378-byte
   observation. The earlier producer `291b794e…` and ruler remain preserved chronology, not current
-  authority. The eventual committed activation head still needs one no-retry certification and
-  independent replay before PR push/CI.
+  authority. Exact committed ef6 certification and its named-run verification passed. Every later
+  D-TRAIN instrument head is eligible for push only when its own ignored exact-source carrier and
+  named verifier bind that unchanged head; this handoff does not cache the artifact's live outcome.
 - Arc 1A owns a local cross-host browser-build authority:
   Edg/151.0.4129.86, revision @083e754915c9ab93da1d8f7b9c860e4520273900,
   JavaScript 15.1.23.7, protocol 1.3. Executable path and user agent remain recorded provenance.
@@ -253,13 +220,14 @@ the archive verbatim and refresh this handoff in place.
   `2b51dd23728fb6431c5c71dd464592e75471c9c1919f1d65ceb2e0c6be96e2d5` /
   `71048f473e9575a1cce804c08a2e9ddc975caee2fc6f5d780fe189f3d3926cae`.
   Commit `78813cd25c67f4255282f418ea6f635a45e0fc29` subsequently passed one exact-head
-  Compendium certification and independent named-run verification. A later instrument-only commit
-  still requires its own exact-source certification carrier before push; neither result is PR CI.
+  Compendium certification and independent named-run verification. Committed instrument head ef6
+  also passed its own exact-source 78/78 certification and named verifier; neither result is PR CI.
 - The exact clean-head reports `20260817-arc1a-active-cert-65b1bac` and
   `20260820-arc1a-active-cert-da0de20` remain truthful only for their named commits and producers;
-  neither certifies the serviced-turn repair. The later exact-788 report does certify that repaired
-  producer and active ruler. The final instrument-only commit must still capture and independently
-  verify its own exact-source carrier before push; source identity is not borrowed across commits.
+  neither certifies the serviced-turn repair. The exact-788 and exact-ef6 reports each certify only
+  their named sources. Any later D-TRAIN instrument head must own an ignored exact-source carrier
+  and verifier before push; this handoff deliberately makes no claim about that artifact's current
+  outcome. Source identity is not borrowed across commits.
 
 ### PR #32 battery repair boundary
 
@@ -276,6 +244,13 @@ the archive verbatim and refresh this handoff in place.
   phase reversal, and visibility/focus transitions are browser-free negative controls; timeout
   evidence retains the actual images, queue, worker phases/results/errors, and broker state. Exact-
   boundary and just-late receipts are rejected after the awaited CDP response, not trusted to timer order.
+- A direct test-fixture write is not setup authority while an earlier app persistence owner can
+  still commit. D-TRAIN setup now joins the prior Atlas/Land write, proves the stale-write race in a
+  deliberate control, then requires exact primary bytes, changed document identity, canonical
+  Training state/rendered route, live card, runnable Skip, idle status, and running ticker before
+  the import-owner transaction begins. Missing setup becomes one harness failure before release;
+  the product busy-refusal verdict requires a semantically observed `claim-rejected/busy` witness,
+  one real Skip click, unchanged primary bytes, and zero writes before owner release.
 - Glass now negative-controls its Guide carrier predicate and audits real first/middle/last plus
   focus-pinned A++ rows with clipping-ancestor diagnosis. In short landscape the nonmodal
   Compendium uses the left safe-height workspace and recomputes its scroller from the safe viewport;
@@ -290,10 +265,13 @@ the archive verbatim and refresh this handoff in place.
 
 ### Human and scope boundary
 
-- Arc 1A's product implementation, serviced-turn repair, fresh active ruler, and 78813cd local
-  Compendium certification exist. Automatable evidence is not terminal until the Smoke foreground
-  repair is committed, the complete browser battery certifies that exact head, and the same SHA
-  passes PR CI. Separately, the rubric remains open until a person
+- Arc 1A's product implementation, serviced-turn repair, active ruler, and exact 788 plus ef6 local
+  Compendium certifications exist. Local push eligibility is determined only by the complete
+  battery's durable ignored carriers, contemporaneously captured terminal-only checks, and
+  pre/post repository-identity proof all agreeing on one unchanged clean head. Approval and merge
+  remain conditional on terminal-green PR test-merge CI corresponding to that unchanged pushed
+  head. This tracked handoff
+  caches neither carrier nor check outcome. Separately, the rubric remains open until a person
   reviews six fresh same-run phone/desktop list, focus-pinned, and detail
   PNGs for 132px list quality, 440px detail quality, hierarchy, clipping, and visible focus.
   Automated hashing, dimensions, and model inspection do not satisfy this HUMAN row.
@@ -302,49 +280,42 @@ the archive verbatim and refresh this handoff in place.
   plateau. It does not close Gate C, Gate D, the full 21-step Training curriculum, human play,
   performance/heat on physical devices, a production release, or deployment.
 
-### Next actions
+### Exact-head transition rule
 
-1. Finish scoped review of the three-file Smoke foreground-ownership repair, update this handoff plus
-   the affected test references, and commit only those exact instrument/documentation bytes.
-2. On that final clean head, run browser path/CDP controls, Arc-local Edge Compendium certification
-   plus independent exact-run verification, one fresh no-retry Chrome Smoke, full Chrome Glass,
-   persona join, root layout, and the verified nonpublishable preview package. Preserve the first
-   browser red if any; if terminal green, push the exact head to draft PR #32 and require the complete
-   GitHub battery on that same SHA.
-3. Leave the separate fresh six-image HUMAN judgment and Claude presentation-polish review open. Do not
-   translate hostile Glass evidence screenshots into ordinary Dev appearance or human approval.
-4. Merge only a reviewed, terminal-green exact head through the normal `develop` path; then monitor
-   the develop push battery and automatic development publication. Keep `main`, production
-   versioning, and production deployment untouched.
+1. Resolve the exact head, target bytes, worktree, and upstream before the run. From that one clean
+   committed head, run browser path/CDP controls, Arc-local Edge Compendium certification and named
+   verifier, one no-retry Chrome Smoke, full Chrome Glass, persona join, root layout plus exact-run
+   verification, and a verified nonpublishable preview package plus browser smoke.
+2. Immediately preserve Smoke's overwrite-prone generic report/log as exact run-ID-named copies.
+   Preserve the other ignored report/package carriers before another producer may overwrite them.
+3. Browser path/CDP controls and preview browser smoke are terminal-only checks, not tool-written
+   reports; capture their contemporaneous output. Root layout has an exact run/browser/outcome
+   carrier but no embedded Git source, so require a commit-tagged run ID, unchanged target bytes,
+   and matching clean HEAD/status before and after its run and verifier.
+4. Any red, ambiguous, blocked, mixed-source, unverifiable carrier, or terminal-only failure stops
+   the transition and is preserved without an unchanged retry.
+5. If and only if every durable carrier, verifier, terminal-only check, and repository-identity
+   proof above is green and agrees on the same unchanged head, push that exact head to draft PR #32
+   without another tracked edit.
+6. Require CI to evaluate the PR test-merge corresponding to that exact pushed head, and verify the
+   head association. Only terminal-green corresponding test-merge CI and the remaining required
+   review permit Ready/merge and subsequent `develop` monitoring.
+7. Fresh six-image HUMAN judgment and Claude presentation-polish remain separate; neither is
+   supplied by the automated evidence.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS in
-/Users/nick/Projects/celestial-frontier-openai-mac on openai/mac. The committed branch contains the
-product/Glass repair through `dea03913014bc58134ebb06ca5b36892210a7571` plus da0's historical
-ruler activation and the current serviced-turn repair. Exact dea039 Glass passes all 12 rows. The
-following exact Compendium run `20260817150005919-93781-b6643ba7a6` is preserved as a truthful
-75/76 FAIL solely at `desktop/warm-plateau`; it exposed the pre-warm destructive cap sequence and
-incomplete heap ruler, not a proven product leak. Commit `4374d95be6c8b6ec2106ecd8518ac9bb39e32065`
-contains the original fail-closed Compendium calibration seam; its full browser-free battery and
-frozen review are green.
-The first new baseline attempt produced no sample and is preserved as an observer-boundary
-instrument failure. Baseline2 then measured cleanly under exact .86, but candidate1 exposed the
-sorted-LRU/multi-window warm-instrument defect; its fixed-window repair changes authority. Baseline3
-and candidate2/3/4 populated da0's now-stale ruler under exact clean `21af3fa2…`, authority
-`bb03a3af…`, producer `291b794e…`, and isolated Edge .86. Da0's local certification and Chrome gates
-passed, but PR run `32334254714` retained a one-attempt phone Planetside product-unanswerable red.
-The repaired producer is `1c8200d7…`. Baseline4 and candidate5/6/7 now populate its active ruler;
-focused replay and the 222-control selftest pass. Exact-788 Compendium certification and root layout
-pass, while its first Chrome Smoke retained the foreground-ownership instrument red described above.
-The repaired instrument head still needs its fresh complete browser battery, push, and CI. Resolve
-  origin state live after the required fetch rather than trusting this prose. The fresh six-image HUMAN
-judgment and Claude presentation-polish review remain separate.
+**Current side:** OpenAI/Codex on macOS owns the PR #32 branch and the bounded D-TRAIN
+fixture-ownership instrument repair described above. Resolve exact head, worktree, upstream,
+ignored artifacts, and checks live. This handoff deliberately makes no cached claim that the
+selected head is dirty, locally green, pushed, or CI-green. Fresh six-image HUMAN judgment and
+Claude presentation-polish review remain separate.
 
-**GitHub step:** OpenAI/Codex owns the scheduler-repair and recalibration commits, clean-head one-
-attempt certification evidence, push to the existing draft PR #32, exact-head checks,
-and normal integration monitoring.
-Nick does not need to manipulate Git or open another app during that work. Do not touch `main`.
+**GitHub step:** Apply the exact-head transition rule above. Once every same-head durable carrier,
+verifier, terminal-only check, and repository-identity proof is green, push that unchanged head to
+draft PR #32. Then require PR test-merge CI corresponding to that pushed head and verify the head
+association. Nick does not need to manipulate Git or open another app during that work. Do not
+touch `main`.
 
 **PR details:** base develop; source openai/mac; copy-ready title
 **Arc 1A — Bound Compendium portraits and measured resources**. Copy-ready description:
@@ -376,17 +347,24 @@ Nick does not need to manipulate Git or open another app during that work. Do no
 > three TypeScript programs; art/build gates; 222 Compendium controls; 11 budget tests;
 > Smoke/Glass/persona selftests). The serviced-turn activation pair passes focused 11/11 budget replay
 > and all 222 instrument controls; exact-788 Compendium certification passed, and its first Chrome
-> Smoke preserved a no-retry foreground-ownership instrument red. The bounded harness repair binds
-> the exact foreground document and keeps rich timeout diagnostics. Its final-head browser battery
-> and PR CI remain open. Fresh six-image
+> Smoke preserved a no-retry foreground-ownership instrument red. Commit ef6 binds the exact
+> foreground document and keeps rich timeout diagnostics; its exact Edge Compendium certification
+> and named verifier pass 78/78. The following no-retry Chrome Smoke preserved only a D-TRAIN
+> fixture-ownership setup race, not a product verdict. Its bounded follow-up joins prior persistence,
+> proves exact runnable Training setup, and waits semantically for busy refusal. The final repair
+> head cannot borrow earlier certifications: local push eligibility comes only from its same-head
+> durable carriers, terminal-only checks, verifiers, and repository-identity proof, while
+> Ready/merge requires terminal-green PR test-merge CI corresponding to that pushed head. This
+> description deliberately caches neither live outcome. Fresh six-image
 > HUMAN review, integration,
 > development publication, Arc 1B, release and production deployment remain separate authorities.
 
-**Other side:** Anthropic/Claude Code does not need to be opened while Codex completes the repair
-battery and push. After the exact PR head is green, open Claude for the requested presentation
-review/polish from a separately fetched, clean `anthropic/*` worktree; it must not edit or copy this
-OpenAI worktree.
+**Other side:** Anthropic/Claude Code does not have PR #32 yet and need not be opened during Codex's
+battery, push, CI, or integration work. Only after the exact reviewed head merges to `develop` may
+Claude receive it: from a separate clean `anthropic/*` worktree, fetch and merge the latest
+`origin/develop` under the startup protocol, then perform the requested presentation review/polish.
+Never edit or copy this OpenAI worktree.
 
 **Release status:** D-TRAIN-1 is integrated at `3844701`. Arc 1A/PR #32 remains an OpenAI branch
-candidate under repair. No `develop`→`main` merge, production release, version bump, manual
-deployment, or production-site write was performed or authorized.
+candidate governed by the exact-head transition rule above. No `develop`→`main` merge, production
+release, version bump, manual deployment, or production-site write was performed or authorized.

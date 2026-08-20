@@ -6,6 +6,73 @@
 const safeInt = (value) => Number.isSafeInteger(value) && value >= 0;
 const nonEmptyString = (value) => typeof value === 'string' && value.length > 0;
 
+/* A D-TRAIN transaction can only judge the product's busy-refusal branch
+   after the harness proves that its exact fixture owns the current document
+   and that the real Training action is runnable. Optional-chaining a missing
+   button turns setup drift into a false product verdict. */
+export function assessTrainingBusyRefusalPrecondition(observation, expected) {
+  if (!expected || typeof expected !== 'object'
+    || !nonEmptyString(expected.documentToken)
+    || !nonEmptyString(expected.primaryRaw)) {
+    throw new TypeError('Training busy-refusal precondition requires exact document and primary bytes');
+  }
+  if (!observation || typeof observation !== 'object') {
+    return { ok: false, reasons: ['precondition observation absent'] };
+  }
+  const reasons = [];
+  if (observation.documentToken !== expected.documentToken) reasons.push('document identity');
+  if (observation.primaryRaw !== expected.primaryRaw) reasons.push('primary bytes');
+  const state = observation.state;
+  if (!state || typeof state !== 'object') reasons.push('Training state absent');
+  else {
+    if (state.tutActive !== true || state.tutDone !== false || state.tutStep !== 'welcome') {
+      reasons.push('Training is not runnable at welcome');
+    }
+    if (state.trainingCheckpointKind !== 'legacy-v1'
+      || state.trainingCheckpointWriteHeld !== true
+      || !state.tutSnapshotPending || typeof state.tutSnapshotPending !== 'object'
+      || Array.isArray(state.tutSnapshotPending)) {
+      reasons.push('legacy checkpoint ownership');
+    }
+    if (state.mode !== 'system' || state.gal !== 999 || state.star !== 424242 || state.planet !== null
+      || !nonEmptyString(state.navGalaxyKey) || !nonEmptyString(state.navStarKey)
+      || state.navWorldKey !== null) {
+      reasons.push('Training route');
+    }
+    const rendered = state.renderedScene;
+    if (!rendered || typeof rendered !== 'object' || rendered.mode !== 'system'
+      || !safeInt(rendered.serial) || rendered.serial < 1
+      || rendered.galaxyKey !== state.navGalaxyKey || rendered.starKey !== state.navStarKey
+      || rendered.worldKey !== null) {
+      reasons.push('rendered Training route');
+    }
+  }
+  if (observation.card !== true || observation.trainingBody !== true) reasons.push('Training card');
+  const button = observation.button;
+  if (!button || typeof button !== 'object' || button.present !== true
+    || button.connected !== true || button.disabled !== false || button.visible !== true
+    || observation.buttonOwnedByCard !== true) {
+    reasons.push('runnable Skip action');
+  }
+  const status = observation.status;
+  if (!status || typeof status !== 'object' || status.present !== true || status.hidden !== true
+    || observation.statusOwnedByCard !== true) {
+    reasons.push('idle Training status');
+  }
+  if (observation.tickerStarted !== true) reasons.push('outgoing ticker');
+  return { ok: reasons.length === 0, reasons };
+}
+
+export function trainingBindingReceiptBeforeDeadline(
+  entries, expectedCount, deadlineMs, receivedAtMs,
+) {
+  if (!Array.isArray(entries) || !Number.isInteger(expectedCount) || expectedCount <= 0
+    || !Number.isFinite(deadlineMs) || !Number.isFinite(receivedAtMs)) {
+    throw new TypeError('Training binding receipt requires entries, positive count, and finite monotonic times');
+  }
+  return entries.length >= expectedCount && receivedAtMs < deadlineMs;
+}
+
 /* A rendering-opportunity-owned outcome is evidence only while the exact page
    target and document are foregrounded and have crossed both halves of the
    production scheduler (rAF, then a later task). Runtime.evaluate can still
