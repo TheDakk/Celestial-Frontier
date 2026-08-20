@@ -612,10 +612,10 @@ both parent voices.
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
 
-**Current state (2026-08-20): product implementation and serviced-turn scheduler repair present;
-measurement authority `f9710bdf…` is active under exact-.86 baseline5 plus independent
-candidate8/9/10; exact-source automation is governed by live artifacts/CI; fresh `[HUMAN]` review
-is open.**
+**Current state (2026-08-20): product implementation, serviced-turn scheduler, and bounded compact-
+phone Planetside stack repair present; measurement remains `f9710bdf…`, while producer `e59685b1…`
+is fail-closed pending baseline6/candidate11/12/13 and activation. Exact-source automation and fresh
+`[HUMAN]` review remain open.**
 This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
 corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
 `compendiummem` gate drives a deterministic 1,500-row
@@ -672,34 +672,32 @@ share measurement `bb03a3af…` and exact Edge .86; every candidate completed al
 zero retries. The
 historical `bb03a3af…` budget replayed their raw capsules and set every profile ceiling strictly above
 the three-run maximum. Baseline4 retained all four faults and breached 14 phone / 13 desktop fields.
-The frozen shared-timer repair moves measurement authority to `f9710bdf…`. Paired broken-baseline
-run `20260820-arc1a-absolute-deadline-baseline5` used clean collector
-`cbe786816cafd196a4b1649b0d1b72966036b7cc` against detached broken source `3844701…`;
-independent candidate8/9/10 used that exact clean source and producer `1c8200d7…`. All four runs
-were one attempt with no retry, and each candidate's raw capsule replayed 78/78. Active budget/test
-SHA-256 values are `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` /
-`121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a`; focused tests passed
-11/11, selftest passed 222/222, and all 15 current inputs recomputed without mismatch. Every one of
-40 ceilings is strictly above its three-candidate maximum. The variable phone maxima → ceilings are
-page heap 7,771,656 → 8,388,608, embedder 3,151,408 → 4,194,304, backing 3,099,159 → 4,194,304,
-aggregate 12,406,038 → 14,680,064, encoded bytes 2,477,068 → 2,621,440, and warm aggregate
-6,196 → 65,536; desktop values are 10,550,176 → 12,582,912, 3,216,400 → 4,194,304,
-4,914,765 → 6,291,456, 16,017,176 → 18,874,368, 6,592,468 → 6,815,744, and
-306,704 → 524,288. Baseline5 preserves all four sealed faults and breaches 14 phone / 13 desktop
-fields; desktop page heap deliberately does not breach. This browser-free activation is not
-certification. Baseline3 and candidate2/3/4 remain truthful inputs to the old ruler; only the
-candidate runs carry old producer `291b794e…`. They are not current resource authority. Every
-selected head must own exact-source local certification, and its
-corresponding PR test-merge CI must be terminal green; this reference deliberately caches neither
-live outcome. The Arc-local Edge authority remains product `Edg/151.0.4129.86`, revision
-`@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript `15.1.23.7`, and protocol `1.3`; it still
-does **not** repin the Gate-A/global Edge `150.0.4078.83` baseline. Returning this criterion to
-`[EXEC]` requires terminal-green exact-source artifacts and corresponding PR test-merge CI for the
-selected pushed head.
+The frozen shared-timer repair moves measurement authority to `f9710bdf…`. Paired baseline5 plus
+independent candidate8/9/10 historically activated budget/test `8ffd0d8e…` / `121ab8cd…` for
+producer `1c8200d7…`; all were one-attempt/no-retry, every candidate replayed 78/78, all 40 ceilings
+exceeded their maxima, and the four-fault baseline breached 14 phone / 13 desktop fields. Those raw
+capsules remain truthful only for that exact producer.
 
-The current state records an implemented product and scheduler repair with an active successor
-ruler, not terminal resource certification. Human judgment of a fresh certifying run's six
-phone/desktop list, detail, and focus-pinned images remains outstanding. Arc 1B also remains open for ordinary scene/Pixi
+Exact clean `c095500…` passed Compendium run
+`20260820-arc1a-absolute-deadline-active-cert-c095500` (report SHA-256 `55dba448…`) and one-attempt
+Chrome Smoke `20260820104231234-94067-7f954ca9942e` (report `6d4f00f8…`). The first full Glass run
+then stopped without retry at one product finding: Chrome 152, 12/12 rows, 58/58 controls, zero
+instrument failures, and a 12.5px compact-phone Survey/Planetside overlap. Persona, layout, preview,
+push, and CI did not run.
+
+The bounded product repair retains a 44px Survey floor, 72px scrollable Planetside floor, and their
+existing 8px gap by deriving the lower cap from the shared bottom anchor. Its revised development-
+release bullet changes producer authority to `e59685b1…` (index `ca76da4c…`, owner
+`assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged), while measurement remains
+`f9710bdf…`. Budget/test `70c40013…` / `7e8f03d5…` are fail-closed with zero candidates,
+measurement-required paired baseline, and null ceilings. Browser-free focused 11/11, selftest 222/222,
+typechecks, semantic validation, and root validate pass; fresh baseline6/candidate11/12/13, activation,
+exact-head battery, and corresponding PR test-merge remain open. The Arc-local Edge authority still
+does **not** repin Gate-A/global Edge `150.0.4078.83`.
+
+The current state records an implemented product/scheduler/stack repair and a required fresh ruler,
+not terminal resource certification. Human judgment of a fresh certifying run's six phone/desktop
+list, detail, and focus-pinned images remains outstanding. Arc 1B remains open for ordinary scene/Pixi
 texture, render-target, GPU-proxy, and combined travel → Compendium → Shipyard plateau ownership.
 
 **Scope:**

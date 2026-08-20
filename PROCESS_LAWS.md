@@ -892,26 +892,30 @@ reject a receipt at or after the same boundary, so a late callback cannot launde
 start a fresh clock, extend the cap, add a retry, or weaken target/heartbeat classification to repair
 an early wake.
 
-Measurement code is measurement authority. Because `browsercdp.mjs` participates in the Compendium
-authority hash, freezing this timer repair at browser-CDP SHA-256
-`36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0` changes measurement authority
-from historical `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c` to
-`f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. The budget first had to become
-fail-closed `calibration-required`; historical capsules and results remain truthful only for their
-named old authority. That boundary is now satisfied by paired broken-baseline run
-`20260820-arc1a-absolute-deadline-baseline5` and independent candidate8/9/10, all one attempt with
-zero retries under exact Edge 151.0.4129.86. The broken run uses detached `3844701…` with clean
-collector `cbe786816cafd196a4b1649b0d1b72966036b7cc`; the candidates use that clean `cbe7868…` source,
-measurement `f9710bdf…`, and producer
-`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Each candidate run replays
-78/78 outcomes; the baseline retains all four sealed faults and breaches 14 phone / 13
-desktop ceilings. Active budget/test SHA-256 values are
-`8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` /
-`121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a`. All 40 ceilings are strictly
-above their candidate maxima; phone/desktop warm maxima 6,196 / 306,704 bytes sit below 65,536 /
-524,288-byte ceilings, while the baseline warm observations are 1,037,780 / 1,222,370 bytes.
-This is active browser-free ruler authority, not an exact-head certification, product PASS, PR-CI
-result, HUMAN review, or permission to reuse an older PASS for the activation head.
+Measurement code and product bytes are separate authorities. Freezing the shared timer at browser-CDP
+SHA-256 `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0` established measurement
+authority `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Paired baseline5 and
+independent candidate8/9/10 then activated historical budget/test `8ffd0d8e…` / `121ab8cd…` for
+producer `1c8200d7…`; their one-attempt/no-retry raw capsules, 78/78 candidate replays, strict 40-field
+ceilings, and 14/13 broken-baseline breaches remain truthful only for that exact producer.
+
+Commit `c0955003…` subsequently passed exact Compendium and Smoke, then its first full Glass run
+preserved one real compact-phone `PLANETSIDE_SURFACE_OCCLUDED` finding: a 12.5px Survey/Planetside
+rectangle overlap with all 12 rows and 58/58 controls executed, zero instrument failures, and no
+retry. The bounded CSS repair restores the existing 8px stack while retaining Survey's 44px floor
+and a 72px scrollable Planetside floor. Its product and development-copy bytes change built producer
+authority to `e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`, while measurement
+authority remains `f9710bdf…`. Budget/test `70c40013…` / `7e8f03d5…` therefore fail closed with zero
+candidate samples, a measurement-required paired baseline, and null ceilings until fresh baseline6
+plus independent candidate11/12/13 activate that producer. Browser-free checks prove the boundary,
+not a ruler, current-head browser PASS, PR-CI result, or HUMAN review.
+
+**STACKED FLOATING SURFACES MUST SHARE ONE GEOMETRY EQUATION.** A minimum height on the upper card
+can defeat a separately derived maximum height on the lower card even when both rules are locally
+correct. Derive the lower cap from the same top/bottom anchor terms, reserve the explicit gap, and
+retain useful scroll floors for both surfaces. Test their rectangles and ownership at the smallest
+portrait height; do not repair overlap by weakening hit-test predicates, changing z-index, hiding
+content, or removing a touch floor.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next

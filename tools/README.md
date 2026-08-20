@@ -61,7 +61,7 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > `port/spike` screenshot launchers also resolve through this guard; current macOS-
 > capable repository browser tools therefore fail before spawn inside Seatbelt.
 >
-> **PR #32 shared-timer evidence (2026-08-20):** GitHub Actions run `32350971816`, job
+> **PR #32 timer/Planetside evidence (2026-08-20):** GitHub Actions run `32350971816`, job
 > `96369841133`, attempt 1, tested synthetic merge
 > `25200b616bbd509f50eaa18f0a8b27ad20dc83e0` for pushed head `1187de0…`. Its final
 > `Runtime.evaluate` timeout fired at `1999.758726` ms against 2,000 ms, even though the target was
@@ -70,15 +70,18 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > `instrument-fail`, blocked all 78 outcomes, and made no product verdict. Frozen launcher SHA-256
 > `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0` moves the Compendium
 > measurement authority from historical `bb03a3af…` to
-> `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Historical budget
-> `a41ff08b…` correctly failed closed; paired baseline5 and independent candidate8/9/10 from clean
-> collector/candidate source `cbe786816cafd196a4b1649b0d1b72966036b7cc` now activate budget
-> `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47`, with focused-test hash
-> `121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a`. Focused replay is 11/11
-> and the independent Compendium selftest is 222/222. Each candidate run replays 78/78 under
-> exact Edge .86; all 40 ceilings exceed their maxima, and the four-fault baseline breaches 14
-> phone / 13 desktop fields. This active browser-free ruler is not an exact-head certification or
-> product PASS; the complete unchanged-head browser battery and corresponding PR test-merge remain.
+> `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Paired baseline5 and
+> independent candidate8/9/10 historically activated budget/test `8ffd0d8e…` / `121ab8cd…` for
+> producer `1c8200d7…`; their raw evidence remains truthful only for those bytes.
+>
+> Exact `c095500…` then passed Compendium and one-attempt Smoke before its first full Glass run
+> preserved one no-retry product finding: Chrome 152, 12/12 rows, 58/58 controls, zero instrument
+> failures, and a 12.5px compact-phone Survey/Planetside overlap. The bounded 44px Survey / 8px gap /
+> 72px scrollable Planetside repair changes producer authority to `e59685b1…` while measurement stays
+> `f9710bdf…`. Budget/test `70c40013…` / `7e8f03d5…` now fail closed with zero candidate samples,
+> measurement-required baseline, and null ceilings until paired baseline6 plus independent
+> candidate11/12/13 activate the new producer. Focused 11/11, Compendium selftest 222/222, typechecks,
+> semantic validation, and root validate prove this boundary only; they are not browser PASS or PR CI.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,

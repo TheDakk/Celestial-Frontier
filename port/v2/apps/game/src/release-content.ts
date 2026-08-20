@@ -859,7 +859,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
       bullets: Object.freeze([
         '🫧 ONE GLASS LANGUAGE: The v2 command deck unifies the top bar, objective, breadcrumbs, Survey, panels, contextual hints, phone dock, and desktop rails in one responsive presentation.',
         '📱 PHONE FIRST, EVERYWHERE ELSE READY: Safe areas and measured top, context, and dock heights keep controls clear from 320-pixel phones through tablets, laptops, desktops, ultrawide displays, and short landscape screens.',
-        '🪐 PLANETSIDE KEEPS ITS ROOM: On constrained touch layouts the objective and noninteractive trail yield when necessary, preserving a useful vertically scrollable biosphere band instead of covering its specimens.',
+        '🪐 PLANETSIDE KEEPS ITS ROOM: On constrained touch layouts the objective and noninteractive trail yield when necessary, while an open Survey keeps an 8-pixel clear stack above a useful 72-pixel vertically scrollable biosphere band instead of covering its specimens.',
         '↔ SHORT LANDSCAPE KEEPS EVERY COMMAND: Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column.',
         '⌨ THE SKY ANSWERS EVERY INPUT: Pointer, touch, wheel, pinch, and keyboard explorers share the same survey outcomes; arrows cycle visible bodies, Enter or Space surveys, plus and minus zoom, and Escape releases focus or rises one level.',
         '♿ ACCESSIBILITY IS PART OF THE SHELL: Text size, text tone, font, panel tint, visible focus, forced-colors treatment, minimum 44-pixel actions, named controls, focus restoration, and true reduced-motion behavior are built into the live surfaces.',

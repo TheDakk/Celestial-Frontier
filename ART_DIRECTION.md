@@ -34,7 +34,7 @@ producer error remains a stable owned error tile, releases cleanly, and the exac
 through a fresh worker lease. Capability/import/protocol/worker failure terminates once and settles
 the active plus queued owners exactly once instead of retrying a broken worker for every tile.
 
-The phone and desktop resource path is implemented; the timer-authority measured ruler is active. Every
+The phone and desktop resource path is implemented; the current producer is fail-closed pending a fresh ruler. Every
 selected head must own exact-source local certification, and its corresponding PR test-merge CI
 must be terminal green; this reference deliberately caches neither live outcome. Exact committed repair
 `dea03913014bc58134ebb06ca5b36892210a7571` passes the full Glass
@@ -62,15 +62,21 @@ candidate5/6/7 used `f47cd381…` product/collector source and bound producer `1
 shared measurement authority `bb03a3af…` and exact Edge .86. All three candidates completed 78/78 outcomes
 with zero retries. That historical `bb03a3af…` ruler placed strict ceilings above their replayed
 maxima; the baseline retained four faults and breached 14 phone / 13 desktop fields. The frozen
-shared-timer repair moves measurement authority to `f9710bdf…`. Exact paired baseline5 uses collector
-`cbe786816cafd196a4b1649b0d1b72966036b7cc` against legacy product `3844701…`; independent
-candidate8/9/10 use that clean candidate source and candidate producer `1c8200d7…`. Together they
-now activate budget/test `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` /
-`121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a` under exact Edge .86. Each
-candidate is one-attempt/no-retry and replays 78/78; all 40
-ceilings exceed their maxima. Phone/desktop warm maxima 6,196 / 306,704 bytes sit below 65,536 /
-524,288-byte ceilings; the four-fault baseline observes 1,037,780 / 1,222,370 bytes and breaches
-14 / 13 fields. This is browser-free activation, not selected-head certification or a PASS.
+shared-timer repair moves measurement authority to `f9710bdf…`. Exact paired baseline5 plus
+candidate8/9/10 historically activated budget/test `8ffd0d8e…` / `121ab8cd…` for producer
+`1c8200d7…`; each candidate was one-attempt/no-retry and replayed 78/78, all 40 ceilings exceeded
+their maxima, and the four-fault baseline breached 14 / 13 fields. Those facts remain truthful only
+for that exact producer.
+
+Exact clean `c095500…` passed Compendium and one-attempt Smoke, then its first full Glass run preserved
+one genuine compact-phone product red: Chrome 152, all 12 rows and 58/58 controls executed, zero
+instrument failures/retries, and a 12.5px Survey/Planetside rectangle overlap. The bounded art-surface
+repair keeps Survey at a 44px floor, Planetside at a 72px scrollable floor, and their existing 8px gap
+by deriving the lower maximum from the shared bottom anchor. It does not alter portrait art, ownership,
+or Glass predicates. The existing Planetside development-release bullet now names the result.
+Built producer authority is `e59685b1…` (index `ca76da4c…`, owner
+`assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged), so budget/test `70c40013…` /
+`7e8f03d5…` are `calibration-required` pending baseline6/candidate11/12/13 and activation.
 Baseline3 and candidate2/3/4 remain truthful inputs to the old `bb03a3af…` ruler; the candidate
 runs bind old producer `291b794e…`, while the paired baseline does not carry a candidate producer
 field. Every selected head must own exact-source local certification, and its

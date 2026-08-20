@@ -6,7 +6,8 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-20.**
 > **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
-> active timer-authority ruler; exact-head certification and final HUMAN review remain open):**
+> compact Planetside repair and fail-closed fresh-ruler transition; exact-head certification and
+> final HUMAN review remain open):**
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
 > bounded overscan, and any focus-pinned row; measured logical anchor-plus-offset
@@ -34,14 +35,19 @@
 > lifecycle, and phase evidence are explicit. The last pre-timer resource ruler was active under
 > measurement authority `bb03a3af…`; exact-788 and exact-ef6 certification remain truthful for that
 > authority. The frozen shared-timer repair moves measurement authority to `f9710bdf…`; exact
-> baseline5 plus independent candidate8/9/10 now activate its successor ruler. Activation is not a
-> browser certification or current-head PASS.
+> baseline5 plus independent candidate8/9/10 historically activated its successor ruler for producer
+> `1c8200d7…`. The current product bytes have a different producer and fail closed pending fresh
+> calibration.
 > Specimen detail requests an
 > asynchronous 440px result through the same owner; Back/Close cancels that request
 > and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
 > synchronous audit compatibility and are rejected from the live entry-to-worker
 > build graph. Producer failure remains a stable owned error tile and the same key
 > recovers under a fresh lease.
+> In portrait `surface-mode.card-open`, Survey retains its 44px minimum, Planetside retains a 72px
+> scrollable floor, and Planetside's maximum derives from the same bottom anchor so the existing 8px
+> inter-surface gap survives compact-phone height. This is the bounded product repair for c095's
+> retained 12.5px rectangle overlap; it does not alter Glass ownership predicates or z-index.
 >
 > `apps/game/src/species-art-protocol.ts`, `species-art-worker-core.ts`, and
 > `species-art.worker.ts` own the validated realm protocol, worker state machine, and direct Vite
@@ -157,11 +163,9 @@
 > during initial timer arming rejects without transmitting the command. Frozen browser-CDP SHA-256
 > `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0`
 > changes measurement authority from historical `bb03a3af…` to
-> `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Frozen budget
-> `a41ff08b8a58e776c789f09e7294c1cb2c0f44da8406f81c55f0754076337c30` first enforced the
-> `calibration-required` boundary; active budget/test SHA-256 values are now
-> `8ffd0d8edb6a17df68da95a5a90089cbbed90a5b32effff8ce2ff23566733b47` /
-> `121ab8cd78e48f6c17d674a4ba9c08c2f21a32916cde02096b0557ed79fd1b5a`.
+> `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Historical budget/test
+> `8ffd0d8e…` / `121ab8cd…` bound the following baseline5/candidate8/9/10 evidence to producer
+> `1c8200d7…`.
 > Paired `20260820-arc1a-absolute-deadline-baseline5` used clean collector
 > `cbe786816cafd196a4b1649b0d1b72966036b7cc` against detached broken source `3844701…`;
 > candidate8/9/10 used that clean source, exact Edge .86, producer `1c8200d7…`, one attempt, and no
@@ -172,9 +176,27 @@
 > `10,550,176/3,216,400/4,914,765/16,017,176/6,592,468/306,704` →
 > `12,582,912/4,194,304/6,291,456/18,874,368/6,815,744/524,288`. Baseline5 preserves all four
 > faults, observes warm ranges 1,037,780 / 1,222,370 bytes, and breaches 14 phone / 13 desktop
-> fields. Focused replay is 11/11 and the independent instrument controls are 222/222. These are
-> browser-free activation facts; no old capsule or PASS, and no calibration run itself, certifies
-> the later activation head.
+> fields. Those are historical activation facts for their exact producer, not current authority.
+>
+> Exact clean commit `c0955003d558d7b3deb0afe9e527f24969d512dc` passed Compendium run
+> `20260820-arc1a-absolute-deadline-active-cert-c095500` (report `55dba448…`) and Smoke run
+> `20260820104231234-94067-7f954ca9942e` (report `6d4f00f8…`). Its first full Glass run is preserved
+> at report SHA-256 `8e89d855abf33ba45d43d8284e05732ebad93891ff9e024004869811778917f0`:
+> Chrome 152, all 12 viewport rows, 58/58 controls, zero instrument failures/retries, and one product
+> `PLANETSIDE_SURFACE_OCCLUDED` finding from a 12.5px compact-phone Survey/Planetside overlap.
+> Persona, layout, preview, push, and CI did not run after that stopping red.
+>
+> The bounded stack repair plus revised development-release bullet changes built producer authority
+> to `e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`: index
+> `ca76da4cfd094a7426cfd60b56428ca6abfc9851f472a1e459ad2938ae1e008e`, owner
+> `assets/main-Ccq4RHJt.js` / `9260e359c3bebe6bf722ecad5234babbeff0a3e7bb6cb6f0a33242b99668e6c2`, worker and painter
+> unchanged. Measurement remains `f9710bdf…`. Current budget/test SHA-256 values
+> `70c4001332898be1264f81a22db5a89e94f28e5f81d5752efe09ff680c562432` /
+> `7e8f03d5c7b9aa98d2bf1de002a4f56404a54930b11cdd97a3bf11d0583863cc` fail closed with zero
+> candidate samples, a measurement-required/null-collector paired baseline, and null ceilings.
+> Focused 11/11, selftest 222/222, typechecks, semantic validation, and root validate pass; fresh
+> baseline6/candidate11/12/13, activation, exact-head browser battery, and corresponding PR test-merge
+> CI remain open.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.
