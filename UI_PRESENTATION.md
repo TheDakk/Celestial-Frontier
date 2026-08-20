@@ -212,20 +212,25 @@
 >
 > Clean lifecycle-repair source `c49e525…` next ran candidate20 once. Its 78/78 product outcomes,
 > zero findings, six PNGs, and complete lifecycle were internally clean, but the reused `.86`-named
-> app had self-updated to Edge `.93` / revision `@4a822b1b…`; null calibration browser authority
-> let the wrong browser collect profiles. Quarantine report/sample/log `175fac5e…` / `916dd12a…` /
-> `7462144b…` as instrument evidence—not calibration, certification, UI/product failure, or HUMAN
-> review. Baseline9 did not run.
+> app had self-updated to Edge `.93` / revision `@4a822b1b…`. Quarantine report/sample/log
+> `175fac5e…` / `916dd12a…` / `7462144b…` as instrument evidence—not calibration,
+> certification, UI/product failure, or HUMAN review.
 >
-> The current ruler requires explicit top-level Edge `.86` / revision `@083e7549…` / JavaScript
-> `15.1.23.7` / protocol `1.3` authority in every state and enforces it before candidate or paired-
-> baseline profile collection. Frozen budget/schema/contract/collector/selftest/test
-> `71ffa46f…` / `695d2529…` / `2620ebf6…` / `07131f5e…` / `240bbe17…` / `6991f6ce…` establish
-> measurement `825fb386…`; producer `d3223177…` and browser CDP `6da9e2ef…` remain unchanged.
-> Samples stay empty, ceilings null, and baseline measurement-required. Exact `.86` must be
-> materialized afresh per launch before baseline9 and candidate21/22/23 run once each without
-> retry. No UI/product, timing, launch, producer, or retry-policy change occurred. Terminal-green
-> PR #32 returns immediately to Arc 1B/gameplay.
+> Candidate21/22/23 plus paired baseline9 then completed once each without retry under exact Edge
+> `.86` and complete lifecycle. Every candidate replayed 78/78 with zero findings; baseline9 retained
+> all four faults. They are clean diagnostic history only because the old shared-sample identity
+> incorrectly compared fresh host-local executable paths and user agents. Raw path/UA stay required
+> per-run provenance, while shared browser authority remains exact product/revision/JavaScript/
+> protocol.
+>
+> Corrected budget/schema/contract/collector/selftest/test `ac2c084a…` / `695d2529…` /
+> `e7dfea1d…` / `07131f5e…` / `f86db74a…` / `5d00e59f…` establish measurement `2318f57b…`;
+> producer `d3223177…` and browser CDP `6da9e2ef…` remain unchanged. Candidate samples stay empty,
+> ceilings are null, and the measurement-required baseline has a null collector commit and empty
+> profiles. Exact `.86` must be materialized
+> afresh for baseline10 and candidate24/25/26, one attempt each with zero retries. No UI/product,
+> timing, launch, workflow, producer, or retry-policy change occurred. Terminal-green PR #32
+> returns immediately to Arc 1B/gameplay.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
 > list, focus-pinned, and detail PNGs still await HUMAN review. This repair owns the current surface
 > globe's fitted start and live tier swap only; the broader Arc 1B/1C scene-resource disposal and HD
@@ -547,8 +552,9 @@
 > workflow control changed no live tool behavior, timing, retry, fallback, product, browser,
 > measurement, producer, budget, or authority. Exact-89's later post-measurement owned-shutdown red
 > remains history; candidate20 is quarantined after its reused `.86`-named app reported Edge `.93`.
-> Explicit runtime authority now establishes measurement `825fb386…`, and fresh-per-launch exact
-> `.86` baseline9 plus candidate21/22/23 remain required. Every selected
+> Candidate21/22/23 plus paired baseline9 are individually clean exact-.86 diagnostics but cannot
+> cross corrected shared-identity contract `e7dfea1d…`; measurement is `2318f57b…`, and fresh-per-
+> launch exact `.86` baseline10 plus candidate24/25/26 remain required. Every selected
 > activation head must still own exact-source local resource certification and corresponding
 > terminal-green PR test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150

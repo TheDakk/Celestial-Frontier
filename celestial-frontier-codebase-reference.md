@@ -308,21 +308,26 @@
 >
 > Clean lifecycle-repair source `c49e525…` then ran candidate20 once. It completed 78/78 product
 > outcomes, zero findings, six PNGs, and complete lifecycle, but the reused `.86`-named app had
-> self-updated to `Edg/151.0.4129.93`, revision `@4a822b1b…`. Its calibration report carried null
-> browser authority, so the mismatched browser collected profiles. Quarantine report/sample/log
+> self-updated to `Edg/151.0.4129.93`, revision `@4a822b1b…`. Quarantine report/sample/log
 > `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser instrument evidence—not calibration,
-> certification, product failure, or HUMAN review. Baseline9 did not run.
+> certification, product failure, or HUMAN review.
 >
-> The budget now owns explicit top-level `cf-v2-compendium-browser-authority/v1` in both states:
-> `Edg/151.0.4129.86`, revision `@083e7549…`, JavaScript `15.1.23.7`, protocol `1.3`. Candidate and
-> paired-baseline collection reject mismatch before profile collection; every raw capsule and
-> complete report replays the same authority. Frozen budget/schema/contract/collector/selftest/test
-> `71ffa46f…` / `695d2529…` / `2620ebf6…` / `07131f5e…` / `240bbe17…` / `6991f6ce…` establish
-> measurement `825fb386…`; producer `d3223177…` and browser CDP `6da9e2ef…` remain unchanged.
-> Samples are empty, ceilings null, and paired baseline measurement-required. Materialize exact
-> `.86` afresh per launch, then collect baseline9 and candidate21/22/23 from one clean committed
-> source, once each without retry. No timeout, launch argument, product byte, producer, or retry
-> policy changed. First red stops; terminal-green PR #32 returns immediately to Arc 1B/gameplay.
+> Candidate21/22/23 and paired baseline9 then completed once each without retry under exact Edge
+> `.86` and complete lifecycle. Every candidate replayed 78/78 with zero findings; baseline9 kept
+> all four faults. They cannot activate a ruler because the old shared-sample identity incorrectly
+> compared fresh executable paths and host user agents. Both strings remain mandatory raw per-run
+> provenance, while exact product/revision/JavaScript/protocol form shared browser authority.
+>
+> The corrected budget still owns explicit top-level `cf-v2-compendium-browser-authority/v1` in
+> both states and rejects mismatch before profile collection. Budget/schema/contract/collector/
+> selftest/test `ac2c084a…` / `695d2529…` / `e7dfea1d…` / `07131f5e…` / `f86db74a…` /
+> `5d00e59f…` establish measurement `2318f57b…`; producer `d3223177…` and browser CDP
+> `6da9e2ef…` remain unchanged. Candidate samples are empty, ceilings are null, and the paired
+> measurement-required baseline has a null collector commit and empty profiles. Materialize exact
+> `.86` afresh for baseline10 and
+> candidate24/25/26 from one clean committed source, once each without retry. No timeout, launch,
+> workflow, product, producer, or retry-policy change occurred. First red stops; terminal-green
+> PR #32 returns immediately to Arc 1B/gameplay.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.

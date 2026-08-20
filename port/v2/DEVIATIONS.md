@@ -12,14 +12,17 @@ as any change that touches an entry.
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
 **Status: ★ product implementation, serviced-turn scheduler, compact-phone Planetside stack, and
-displayed-demand/zoom-owner repair present. Exact-89 remains a shutdown instrument red. Clean
-`c49e525…` candidate20 reached 78/78 and complete lifecycle, but its reused `.86`-named app reported
-Edge `.93`; quarantine report/sample/log `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser
-instrument evidence. Baseline9 did not run. Explicit top-level `.86` authority and pre-profile
-candidate/baseline rejection establish measurement `825fb386…`; producer `d3223177…` and browser
-CDP `6da9e2ef…` remain unchanged. Fail-closed budget `71ffa46f…` awaits fresh-per-launch exact-.86
-baseline9 plus candidate21/22/23 from one clean committed source, once each without retry. Six-image
-`[HUMAN]` review is open.**
+displayed-demand/zoom-owner repair present. Exact-89's shutdown false-green and candidate20's wrong-
+browser carriers remain instrument history. Candidate21/22/23 plus paired baseline9 completed once
+each without retry under exact `.86` and complete lifecycle; candidates replayed 78/78 with zero
+findings and baseline9 retained all four faults. They are individually clean diagnostic history only
+because the old shared identity incorrectly compared fresh path/UA provenance. Corrected contract
+`e7dfea1d…` preserves raw path/UA while sharing exact product/revision/JavaScript/protocol; measurement
+is `2318f57b…`, producer `d3223177…`, and browser CDP `6da9e2ef…`. Fail-closed budget `ac2c084a…`
+has empty candidate samples and null ceilings; its measurement-required baseline has a null
+collector commit and empty profiles. It awaits fresh-
+per-launch exact-.86 baseline10 plus candidate24/25/26 from one clean committed source, once each
+with zero retries. Six-image `[HUMAN]` review is open.**
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -176,13 +179,16 @@ This block records the current disposition of the historical
   verification is false-green. Frozen `6da9e2ef…` distinguishes direct process exit from stdio
   close; `f4ad842c…` / `2713ed10…` require browser/server cleanup and lock release before sample or
   terminal success and enforce lifecycle at verification.
-- Clean `c49e525…` candidate20 then completed 78/78 with clean lifecycle, but its reused
-  `.86`-named app reported Edge `.93`; quarantine `175fac5e…` / `916dd12a…` / `7462144b…`, and note
-  baseline9 did not run. Explicit top-level `.86` authority changes measurement to `825fb386…`;
-  producer and browser CDP remain unchanged. Fail-closed budget `71ffa46f…` awaits exact `.86`
-  materialized afresh per baseline9/candidate21/22/23 launch, one attempt each without retry, before
-  activation and one exact-head battery/PR CI. No broader timing work is in scope; terminal-green
-  PR #32 returns immediately to Arc 1B/gameplay.
+- Clean `c49e525…` candidate20 then completed 78/78 with clean lifecycle on self-updated Edge `.93`;
+  quarantine `175fac5e…` / `916dd12a…` / `7462144b…`. Candidate21/22/23 plus paired baseline9 then
+  completed once each without retry under exact `.86` and complete lifecycle; candidates replayed
+  78/78 with zero findings and baseline9 retained all four faults. Fresh path/UA provenance exposed
+  the old shared-identity error, so these individually clean diagnostics cannot cross corrected
+  contract `e7dfea1d…`. Measurement `2318f57b…`, producer `d3223177…`, and browser CDP
+  `6da9e2ef…` bind fail-closed budget `ac2c084a…`, which awaits exact `.86` materialized afresh per
+  baseline10/candidate24/25/26 launch, one attempt each with zero retries, before activation and one
+  exact-head battery/PR CI. No broader timing work is in scope; terminal-green PR #32 returns
+  immediately to Arc 1B/gameplay.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
@@ -1708,9 +1714,13 @@ duplicates).
   bounded normalization hypothesis. Its green fail-closed workflow-structure control changes no
   timing, product, CDP tool, browser authority, measurement, producer, budget, retry policy,
   publication authority, or Gate status. Exact-89 later reached product but preserved the separate
-  owned-shutdown false-green. Candidate20 is now quarantined for self-updated Edge `.93`; explicit
-  runtime `.86` authority establishes measurement `825fb386…`, with fresh-per-launch baseline9 plus
-  candidate21/22/23, calibration activation, and one changed-head CI still required.
+  owned-shutdown false-green. Candidate20 is quarantined for self-updated Edge `.93`.
+  **2026-08-20 shared-identity follow-up (current):** candidate21/22/23 plus paired baseline9 are
+  individually clean exact-.86 diagnostic history, but their fresh path/UA provenance exposed an
+  overstrict shared-identity check. Corrected contract `e7dfea1d…` establishes measurement
+  `2318f57b…`; fail-closed budget `ac2c084a…` awaits fresh-per-launch baseline10 plus
+  candidate24/25/26, calibration activation, and one changed-head CI. Product, timing, workflow,
+  producer, browser CDP, and zero-retry policy remain unchanged.
 - ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
   (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
   heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces

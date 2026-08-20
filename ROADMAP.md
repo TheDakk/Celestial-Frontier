@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 EXPLICIT BROWSER AUTHORITY RECALIBRATION ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 SHARED BROWSER IDENTITY RECALIBRATION ◀◀◀
 
 ### Cold start
 
@@ -31,41 +31,39 @@ the archive verbatim and refresh this handoff in place.
 - Resolve GitHub and ignored artifacts live. Never reuse an earlier green report for a newer source,
   producer, budget, workflow, or commit; never retry an unchanged red.
 
-### Preserved exact reds and candidate20 quarantine
+### Preserved history and the bounded identity correction
 
 - D-TRAIN-1 remains integrated through PR #31 at exact `develop` merge
-  `38447019517147319bd08c598202d097ee866874`; PR #32 remains the active OpenAI branch. Exact-89's
-  78/78 product-complete owned-shutdown red and its lifecycle repair remain preserved history.
-- Clean exact source `c49e525535bbb5de70240b922729b5b0a0ec70e5` ran
-  `20260820-arc1a-terminal-lifecycle-candidate20` once without retry. It completed 78/78 outcomes
-  with zero findings, six PNGs, and complete owned lifecycle, but the reused `.86`-named app had
-  self-updated to `Edg/151.0.4129.93`, revision
-  `@4a822b1bb7a8566144cff23f6c09a2ab162665f9`. Its calibration report carried null budget/browser
-  authority, so this wrong browser was allowed to collect profiles.
-- Preserve candidate20 report/sample/terminal-log SHA-256
-  `175fac5e3ab71d2e35578235033af59320b7db519e59ec7383bd31c584ccdc5e` /
-  `916dd12a288f538148b3d2d4d1b9bd5763800cbd8c54c21f166234ebb0cf9624` /
-  `7462144b60a8397404b8000ca859b230ba0ad1ea40c7ca6bff9215864e1f7e91`.
-  Candidate20 is quarantined as wrong-browser instrument evidence—not calibration, certification,
-  or product failure. Baseline9 did not run.
+  `38447019517147319bd08c598202d097ee866874`; PR #32 remains the active OpenAI branch. Preserve
+  exact-89's owned-shutdown false-green and candidate20's 78/78 clean-lifecycle result on the wrong,
+  self-updated Edge `.93`. Candidate20 carriers `175fac5e…` / `916dd12a…` / `7462144b…` remain
+  quarantined instrument evidence, never calibration, certification, or product failure.
+- Candidate21/22/23 and paired baseline9 each completed once without retry under exact Edge `.86`,
+  complete lifecycle, and the `825fb386…` authority. Every candidate replayed 78/78 with zero
+  findings and baseline9 retained all four faults. Their individual reports are clean product/
+  baseline observations, not reds.
+- Those four samples cannot activate a ruler: the old shared-sample identity incorrectly required
+  freshly materialized runs to share one host-local executable path and user agent. Raw path and UA
+  remain mandatory per-run provenance, but the shared cross-run browser identity is the canonical
+  product, revision, JavaScript, and protocol tuple. This is an instrument-contract correction,
+  not a game or timing change.
 
-### Frozen explicit browser-authority boundary
+### Frozen corrected authority and fail-closed ruler
 
-- The budget now requires one explicit top-level browser authority in calibration-required and
-  active states: `Edg/151.0.4129.86`, revision
+- Explicit top-level authority remains `Edg/151.0.4129.86`, revision
   `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript `15.1.23.7`, protocol `1.3`. Candidate
-  and paired-baseline collection compare the live browser before profile collection; mismatch
-  publishes early instrument-fail evidence and collects no profile. Every embedded raw capsule and
-  complete product/calibration report must replay that authority with a true match.
-- Frozen budget/schema/contract/collector/selftest/test SHA-256 values are `71ffa46f…` /
-  `695d2529…` / `2620ebf6…` / `07131f5e…` / `240bbe17…` / `6991f6ce…`. Measurement authority is
-  `825fb386127f2c8b43a05b0adcb883e9fcab635345831bdfbd0cd5dc051d71a5`; producer remains
+  and paired-baseline collection still reject mismatch before profile collection, and every raw
+  capsule and complete report must replay that exact authority with a true match.
+- Corrected budget/schema/contract/collector/selftest/test SHA-256 values are `ac2c084a…` /
+  `695d2529…` / `e7dfea1d…` / `07131f5e…` / `f86db74a…` / `5d00e59f…`. Measurement authority is
+  `2318f57bcadd83b2f540e3a2d1b8bea54ca6c88d1df8715318a341d4e2ae7cf2`; producer remains
   `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`, and browser CDP remains
   `6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce`.
 - The ruler remains fail-closed: candidate samples are empty, ceilings are null, and the paired
-  baseline is `measurement-required`. Historical candidate20 and older rulers cannot cross this
-  authority. No timeout, launch argument, product byte, producer, retry, fallback, or observation
-  policy changed; this is provenance correctness, not timing optimization.
+  baseline is `measurement-required` with a null collector commit and empty profiles. Candidate20, the
+  individually clean candidate21/22/23+baseline9 set, and older rulers cannot cross the corrected
+  contract authority. No timeout, launch argument, product byte, producer, retry, fallback,
+  workflow, or observation policy changed.
 
 ### Next bounded sequence and open human scope
 
@@ -73,10 +71,11 @@ the archive verbatim and refresh this handoff in place.
   app afresh from package `b70216e0…` and verify Info.plist `d2c13c8e…`, executable `69349ca6…`,
   framework `be28b9b6…`, the single `.86` version directory, and `Versions/Current → .86`; never
   reuse a launched extraction. Runtime identity remains the final drift check.
-- Run `20260820-arc1a-browser-authority-candidate21`, paired
-  `20260820-arc1a-browser-authority-baseline9`, then independent candidate22 and candidate23 from
-  that identical committed source, exactly once each with zero retries. First red, ambiguity,
-  authority/source mismatch, cleanup failure, or publication failure stops.
+- Run `20260820-arc1a-browser-identity-candidate24`, paired
+  `20260820-arc1a-browser-identity-baseline10`, then independent candidate25 and candidate26 from
+  that identical committed source, exactly once each with zero retries. Each launch gets a fresh
+  `.86` materialization; first red, ambiguity, authority/source mismatch, cleanup failure, or
+  publication failure stops.
 - If and only if the four runs audit cleanly, activate their ruler, commit it, run one complete
   exact-head local battery, push that unchanged head to existing PR #32, and require one
   corresponding PR test-merge CI attempt. First red stops. Fresh selected-head phone/desktop list,
@@ -86,20 +85,21 @@ the archive verbatim and refresh this handoff in place.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS owns PR #32. Exact-89 and candidate20 are preserved reds.
-The scoped working copy contains the explicit browser-authority repair and fail-closed ruler; it is
-not yet the clean committed calibration source.
+**Current side:** OpenAI/Codex on macOS owns PR #32. Exact-89, candidate20, and the unusable but
+individually clean candidate21/22/23+baseline9 set are preserved history. The scoped working copy
+contains the shared-browser-identity correction and fail-closed ruler; it is not yet the clean
+committed calibration source.
 
-**GitHub step:** None until baseline9/candidate21/22/23 activate the new authority and the resulting
+**GitHub step:** None until baseline10/candidate24/25/26 activate the new authority and the resulting
 exact head passes its required local battery. Push only that unchanged head to existing PR #32 and
-require one corresponding test-merge attempt; do not reuse candidate20, create a new PR, or touch
-`main`.
+require one corresponding test-merge attempt; do not reuse earlier samples, create a new PR, or
+touch `main`.
 
 **PR details:** base `develop`; source `openai/mac`; existing PR #32 title
 **Arc 1A — Bound Compendium portraits and measured resources**. Its description must preserve runs
-`32383320206`, `32394244417`, exact-89's shutdown false-green, and candidate20's wrong-browser
-quarantine; name the explicit runtime pin, new measurement boundary, and unchanged producer. No
-release or deployment is included.
+`32383320206`, `32394244417`, exact-89's shutdown false-green, candidate20's wrong-browser
+quarantine, and the candidate21/22/23+baseline9 shared-identity finding; name the explicit runtime
+pin, corrected measurement boundary, and unchanged producer. No release or deployment is included.
 
 **Other side:** Anthropic/Claude Code does not have this PR #32 follow-up and need not be opened now.
 Only after the reviewed exact head merges to `develop` may Claude fetch and merge latest

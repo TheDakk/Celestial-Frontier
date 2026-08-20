@@ -1169,14 +1169,35 @@ Clean lifecycle-repair source `c49e525…` then ran
 at 78/78 with six PNGs, but the reused `.86`-named app reported `Edg/151.0.4129.93` and revision
 `@4a822b1bb7a8566144cff23f6c09a2ab162665f9`; null calibration browser authority let it collect.
 Quarantine report/sample/log `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser instrument
-evidence. It is not calibration, certification, or product failure, and baseline9 did not run.
+evidence. It is not calibration, certification, or product failure. At that checkpoint baseline9
+had not run.
 Explicit top-level Edge `.86` authority plus pre-profile candidate/baseline enforcement changes
 budget/schema/contract/collector/selftest/test to `71ffa46f…` / `695d2529…` / `2620ebf6…` /
 `07131f5e…` / `240bbe17…` / `6991f6ce…` and measurement to `825fb386…`; producer `d3223177…` and
-browser CDP `6da9e2ef…` remain unchanged. The ruler stays empty/null/measurement-required until
-fresh-per-launch exact-.86 baseline9 and candidate21/22/23 run once each without retry. No timing,
-launch, product, producer, or retry policy changed; terminal-green PR #32 returns immediately to
-Arc 1B rather than opening another optimization loop.
+browser CDP `6da9e2ef…` remain unchanged. That ruler stayed empty/null/measurement-required pending
+fresh-per-launch exact-.86 baseline9 and candidate21/22/23, once each without retry.
+
+**Correction earned by PR #32's first fresh-path calibration set: provenance fields are not all
+shared identity fields.** Candidate21/22/23 and paired baseline9 each completed under exact Edge
+`.86`, one attempt and zero retries, with complete lifecycle. Every candidate replayed 78/78 with
+zero findings; baseline9 retained all four faults. They are individually clean diagnostic history,
+not product reds. Their honest fresh executable paths and host user agents differed, however, and
+the then-current shared-sample check required those raw provenance strings to be identical. That
+made a legitimate fresh-materialization calibration set impossible to activate.
+
+Keep every sample's raw executable path and user agent mandatory and replayable, but define the
+shared cross-run browser identity by the canonical product, revision, JavaScript, and protocol
+tuple. Missing provenance still fails, and any drift in any of those four authority fields fails
+both shared identity and explicit browser-authority matching. This correction changes contract/
+selftest/test/budget to `e7dfea1d…` / `f86db74a…` / `5d00e59f…` / `ac2c084a…` and measurement to
+`2318f57bcadd83b2f540e3a2d1b8bea54ca6c88d1df8715318a341d4e2ae7cf2`; schema `695d2529…`,
+collector `07131f5e…`, producer `d3223177…`, and browser CDP `6da9e2ef…` are unchanged. The ruler
+again fails closed with empty candidate samples, null ceilings, and a `measurement-required`
+baseline with a null collector commit and empty profiles.
+Candidate21/22/23+baseline9 cannot cross the corrected contract authority; collect fresh-per-launch
+baseline10 and candidate24/25/26 once each without retry. No timing, launch, workflow, product,
+producer, fallback, or retry-policy change belongs to this repair. Terminal-green PR #32 returns
+immediately to Arc 1B rather than opening another optimization loop.
 
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread
