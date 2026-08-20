@@ -223,14 +223,16 @@
 > per-run provenance, while shared browser authority remains exact product/revision/JavaScript/
 > protocol.
 >
-> Corrected budget/schema/contract/collector/selftest/test `ac2c084a…` / `695d2529…` /
-> `e7dfea1d…` / `07131f5e…` / `f86db74a…` / `5d00e59f…` establish measurement `2318f57b…`;
-> producer `d3223177…` and browser CDP `6da9e2ef…` remain unchanged. Candidate samples stay empty,
-> ceilings are null, and the measurement-required baseline has a null collector commit and empty
-> profiles. Exact `.86` must be materialized
-> afresh for baseline10 and candidate24/25/26, one attempt each with zero retries. No UI/product,
-> timing, launch, workflow, producer, or retry-policy change occurred. Terminal-green PR #32
-> returns immediately to Arc 1B/gameplay.
+> Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10, each once
+> with zero retries and a distinct fresh `.86` path. All candidates completed 78/78 with zero
+> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. Active budget/schema/
+> contract/collector/selftest/test `70145575…` / `695d2529…` / `e7dfea1d…` / `07131f5e…` /
+> `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged producer `d3223177…`, 3/3
+> samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
+> baseline breaches. A synthetic desktop-identity line corrected the focused check from 12/13 to
+> 13/13 without changing or rerunning browser evidence. No UI/product, timing, launch, workflow,
+> producer, browser-CDP, or retry-policy change occurred. Terminal-green PR #32 returns immediately
+> to Arc 1B/gameplay.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
 > list, focus-pinned, and detail PNGs still await HUMAN review. This repair owns the current surface
 > globe's fitted start and live tier swap only; the broader Arc 1B/1C scene-resource disposal and HD
@@ -553,8 +555,8 @@
 > measurement, producer, budget, or authority. Exact-89's later post-measurement owned-shutdown red
 > remains history; candidate20 is quarantined after its reused `.86`-named app reported Edge `.93`.
 > Candidate21/22/23 plus paired baseline9 are individually clean exact-.86 diagnostics but cannot
-> cross corrected shared-identity contract `e7dfea1d…`; measurement is `2318f57b…`, and fresh-per-
-> launch exact `.86` baseline10 plus candidate24/25/26 remain required. Every selected
+> cross corrected shared-identity contract `e7dfea1d…`. Exact `fb321f2…` candidate24/25/26 plus
+> baseline10 activate budget `70145575…` under measurement `2318f57b…`. Every selected
 > activation head must still own exact-source local resource certification and corresponding
 > terminal-green PR test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150

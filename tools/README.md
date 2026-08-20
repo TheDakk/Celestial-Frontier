@@ -169,19 +169,15 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > remain mandatory raw per-run provenance; shared browser authority is exact product/revision/
 > JavaScript/protocol.
 >
-> Corrected budget/schema/contract/collector/selftest/test `ac2c084a…` / `695d2529…` /
-> `e7dfea1d…` / `07131f5e…` / `f86db74a…` / `5d00e59f…` establish measurement `2318f57b…`;
-> producer `d3223177…` and browser CDP `6da9e2ef…` remain unchanged. Candidate samples stay empty,
-> ceilings are null, and the measurement-required baseline has a null collector commit and empty
-> profiles. Candidate21/22/23+baseline9 cannot
-> cross this corrected contract.
->
-> For every baseline10/candidate24/25/26 launch, extract exact `.86` into a new never-launched
-> directory from package `b70216e0…`; immediately verify Info.plist `d2c13c8e…`, executable
-> `69349ca6…`, framework `be28b9b6…`, only one `.86` version, and `Versions/Current → .86`. Never
-> reuse a launched extraction; runtime product/revision/JS/protocol remains the final authority.
-> Run each named attempt exactly once without retry. No deadline, launch argument, workflow,
-> product byte, producer, or retry policy changed.
+> Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10, each once
+> with zero retries and a distinct fresh `.86` path. All candidates completed 78/78 with zero
+> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. Active budget/schema/
+> contract/collector/selftest/test `70145575…` / `695d2529…` / `e7dfea1d…` / `07131f5e…` /
+> `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged producer `d3223177…`, 3/3
+> samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
+> baseline breaches. The focused control's initial 12/13 was its phone-only synthetic active state;
+> adding matching desktop identities made it 13/13 without changing or rerunning browser evidence.
+> No deadline, launch argument, workflow, product byte, producer, browser-CDP, or retry policy changed.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,

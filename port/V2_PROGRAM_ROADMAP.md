@@ -27,15 +27,17 @@
 > baseline9 retained four faults. They are individually clean diagnostic history only because the
 > old shared-sample identity incorrectly compared fresh executable paths and host user agents.
 > Raw path/UA remain required per-run provenance; product/revision/JavaScript/protocol are shared
-> authority. Corrected budget/schema/contract/collector/selftest/test `ac2c084a…` / `695d2529…` /
-> `e7dfea1d…` / `07131f5e…` / `f86db74a…` / `5d00e59f…` establish measurement `2318f57b…`;
-> producer `d3223177…` and browser CDP `6da9e2ef…` stay unchanged. The ruler remains fail-closed:
-> empty candidate samples, null ceilings, and a measurement-required baseline with a null collector
-> commit and empty profiles. Materialize `.86`
-> afresh per baseline10/candidate24/25/26 launch and run once each without retry, then activate,
-> run one exact-head battery, push existing PR #32 once, and require one corresponding CI. First
-> red stops. No product, timing, launch, workflow, producer, or retry-policy drift occurred. Arc
-> 1B/gameplay resumes immediately after terminal-green PR #32 closes.
+> authority. Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10,
+> each once with zero retries and a distinct fresh `.86` path. Candidates completed 78/78 with zero
+> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. Active budget/schema/
+> contract/collector/selftest/test `70145575…` / `695d2529…` / `e7dfea1d…` / `07131f5e…` /
+> `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged producer `d3223177…`, 3/3
+> samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
+> breaches. A synthetic desktop-identity line corrected focused 12/13 to 13/13 without changing
+> browser evidence. Commit activation, run one exact-head battery, push existing PR #32 once, and
+> require one corresponding CI. First red stops. No product, timing, launch, workflow, producer,
+> browser-CDP, or retry-policy drift occurred. Arc 1B/gameplay resumes immediately after terminal-
+> green PR #32 closes.
 > Later product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
@@ -638,13 +640,13 @@ wrong-browser `175fac5e…` / `916dd12a…` / `7462144b…` carriers remain pres
 Candidate21/22/23 plus paired baseline9 each completed once without retry under exact `.86` and
 complete lifecycle; candidates replayed 78/78 with zero findings and baseline9 retained four faults.
 They are individually clean diagnostic history only because the old shared identity incorrectly
-compared fresh path/UA provenance. Corrected contract `e7dfea1d…` accepts distinct path/UA while
-requiring exact shared product/revision/JavaScript/protocol. Measurement is `2318f57b…`; producer
-remains `d3223177…`, browser CDP remains `6da9e2ef…`, and fail-closed budget `ac2c084a…` has empty
-candidate samples, null ceilings, and a measurement-required baseline with a null collector commit
-and empty profiles. Fresh-per-launch exact-.86
-baseline10 plus candidate24/25/26 remain, once each with zero retries. Fresh `[HUMAN]` review is
-open.**
+compared fresh path/UA provenance. Clean exact source `fb321f2…` then collected candidate24/25/26
+plus paired baseline10, each once with zero retries and distinct fresh `.86` paths. Candidates
+completed 78/78 with zero findings, complete lifecycle, and six PNGs; baseline10 retained four
+faults. Active budget `70145575…` embeds 3/3 samples per profile, measured 1/1 baseline, and strict
+ceilings with 14 phone / 13 desktop breaches under measurement `2318f57b…` and unchanged producer
+`d3223177…`. Focused activation is 13/13 after the synthetic active-state control received matching
+desktop identities; browser evidence did not change or rerun. Fresh `[HUMAN]` review is open.**
 This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
 corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
 `compendiummem` gate drives a deterministic 1,500-row
@@ -795,14 +797,15 @@ evidence. Candidate21/22/23 plus paired baseline9 then completed once each witho
 `.86` and complete lifecycle; candidates replayed 78/78 with zero findings and baseline9 retained
 all four faults. Their fresh path/UA provenance differed, exposing an overstrict shared-identity
 check; they are individually clean diagnostic history but cannot cross corrected contract
-`e7dfea1d…`. Corrected measurement `2318f57b…`, producer `d3223177…`, and browser CDP
-`6da9e2ef…` bind fail-closed budget `ac2c084a…`, whose candidate samples are empty and ceilings are
-null; its measurement-required baseline has a null collector commit and empty profiles. Fresh-per-
-launch exact-.86 baseline10 plus
-candidate24/25/26 remain, one clean committed source and one attempt each with zero retries. No
-package, launch argument, workflow, product, timing, producer, or retry-policy change occurred.
-Activate, run one exact-head battery, push PR #32 once, and require one corresponding CI; first red
-stops. After terminal-green PR #32 closes, execution returns immediately to Arc 1B/gameplay. The Arc-local Edge authority
+`e7dfea1d…`. Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10,
+each once with zero retries and distinct fresh `.86` paths. Active budget/test `70145575…` /
+`0fa2e89d…` embed 3/3 samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone /
+13 desktop breaches under measurement `2318f57b…`, producer `d3223177…`, and browser CDP
+`6da9e2ef…`. Focused activation is 13/13 after matching synthetic desktop identities corrected the
+initial phone-only 12/13 control; browser evidence did not change. No package, launch argument,
+workflow, product, timing, producer, or retry-policy change occurred. Commit activation, run one
+exact-head battery, push PR #32 once, and require one corresponding CI; first red stops. After
+terminal-green PR #32 closes, execution returns immediately to Arc 1B/gameplay. The Arc-local Edge authority
 still does **not** repin
 Gate-A/global Edge `150.0.4078.83`.
 

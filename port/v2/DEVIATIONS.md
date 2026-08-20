@@ -16,13 +16,13 @@ displayed-demand/zoom-owner repair present. Exact-89's shutdown false-green and 
 browser carriers remain instrument history. Candidate21/22/23 plus paired baseline9 completed once
 each without retry under exact `.86` and complete lifecycle; candidates replayed 78/78 with zero
 findings and baseline9 retained all four faults. They are individually clean diagnostic history only
-because the old shared identity incorrectly compared fresh path/UA provenance. Corrected contract
-`e7dfea1d…` preserves raw path/UA while sharing exact product/revision/JavaScript/protocol; measurement
-is `2318f57b…`, producer `d3223177…`, and browser CDP `6da9e2ef…`. Fail-closed budget `ac2c084a…`
-has empty candidate samples and null ceilings; its measurement-required baseline has a null
-collector commit and empty profiles. It awaits fresh-
-per-launch exact-.86 baseline10 plus candidate24/25/26 from one clean committed source, once each
-with zero retries. Six-image `[HUMAN]` review is open.**
+because the old shared identity incorrectly compared fresh path/UA provenance. Clean exact
+`fb321f2…` candidate24/25/26 plus paired baseline10 ran once each with zero retries and distinct
+fresh `.86` paths. Active budget/test `70145575…` / `0fa2e89d…` embed 3/3 samples per profile,
+measured 1/1 baseline, strict ceilings, and 14 phone / 13 desktop breaches under measurement
+`2318f57b…`, producer `d3223177…`, and browser CDP `6da9e2ef…`. Focused activation is 13/13 after
+matching synthetic desktop identities fixed its initial phone-only control without changing browser
+evidence. Six-image `[HUMAN]` review is open.**
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -184,11 +184,12 @@ This block records the current disposition of the historical
   completed once each without retry under exact `.86` and complete lifecycle; candidates replayed
   78/78 with zero findings and baseline9 retained all four faults. Fresh path/UA provenance exposed
   the old shared-identity error, so these individually clean diagnostics cannot cross corrected
-  contract `e7dfea1d…`. Measurement `2318f57b…`, producer `d3223177…`, and browser CDP
-  `6da9e2ef…` bind fail-closed budget `ac2c084a…`, which awaits exact `.86` materialized afresh per
-  baseline10/candidate24/25/26 launch, one attempt each with zero retries, before activation and one
-  exact-head battery/PR CI. No broader timing work is in scope; terminal-green PR #32 returns
-  immediately to Arc 1B/gameplay.
+  contract `e7dfea1d…`. Clean exact `fb321f2…` candidate24/25/26 plus paired baseline10 ran once
+  each with zero retries and distinct fresh `.86` paths. Active budget/test `70145575…` /
+  `0fa2e89d…` embed 3/3 samples per profile, measured 1/1 baseline, strict ceilings, and 14 phone /
+  13 desktop breaches under measurement `2318f57b…`, producer `d3223177…`, and browser CDP
+  `6da9e2ef…`. One exact-head battery/PR CI remains. No broader timing work is in scope; terminal-
+  green PR #32 returns immediately to Arc 1B/gameplay.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
@@ -1717,10 +1718,11 @@ duplicates).
   owned-shutdown false-green. Candidate20 is quarantined for self-updated Edge `.93`.
   **2026-08-20 shared-identity follow-up (current):** candidate21/22/23 plus paired baseline9 are
   individually clean exact-.86 diagnostic history, but their fresh path/UA provenance exposed an
-  overstrict shared-identity check. Corrected contract `e7dfea1d…` establishes measurement
-  `2318f57b…`; fail-closed budget `ac2c084a…` awaits fresh-per-launch baseline10 plus
-  candidate24/25/26, calibration activation, and one changed-head CI. Product, timing, workflow,
-  producer, browser CDP, and zero-retry policy remain unchanged.
+  overstrict shared-identity check. Clean exact `fb321f2…` candidate24/25/26 plus paired baseline10
+  activated budget/test `70145575…` / `0fa2e89d…` with 3/3 samples per profile, measured 1/1
+  baseline, strict ceilings, and 14 phone / 13 desktop breaches under measurement `2318f57b…`.
+  One exact-head battery and changed-head CI remain. Product, timing, workflow, producer, browser
+  CDP, and zero-retry policy remain unchanged.
 - ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
   (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
   heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces

@@ -231,14 +231,15 @@ faults. They are individually clean diagnostic history only because the old shar
 incorrectly compared fresh executable paths and host user agents. Raw path/UA remain mandatory
 per-run provenance; shared browser authority is exact product/revision/JavaScript/protocol.
 
-Corrected budget/schema/contract/collector/selftest/test `ac2c084a…` / `695d2529…` /
-`e7dfea1d…` / `07131f5e…` / `f86db74a…` / `5d00e59f…` establish measurement `2318f57b…`, while
-producer `d3223177…` and browser CDP `6da9e2ef…` remain unchanged. The ruler is fail-closed with
-empty candidate samples and null ceilings; its measurement-required baseline has a null collector
-commit and empty profiles. Materialize exact
-`.86` afresh for baseline10 and candidate24/25/26, once each with zero retries. No launch argument,
-timeout, workflow, product byte, producer, or retry policy changed; terminal-green PR #32 returns
-immediately to Arc 1B.
+Clean exact `fb321f2…` candidate24/25/26 plus paired baseline10 ran once each with zero retries and
+distinct fresh `.86` paths. Active budget/schema/contract/collector/selftest/test `70145575…` /
+`695d2529…` / `e7dfea1d…` / `07131f5e…` / `f86db74a…` / `0fa2e89d…` bind measurement
+`2318f57b…`, unchanged producer `d3223177…`, 3/3 samples per profile, measured 1/1 baseline, and
+strict ceilings with 14 phone / 13 desktop breaches. Focused activation is 13/13 after matching
+synthetic desktop identities fixed its initial phone-only control without changing browser evidence.
+One exact-head battery and corresponding CI remain. No launch argument, timeout, workflow, product
+byte, producer, browser-CDP, or retry policy changed; terminal-green PR #32 returns immediately to
+Arc 1B.
 This does not re-pin Gate A or the global browser authority: `../tools/deps.pinned.json` remains
 Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates, any
 timing, product bytes, or the one-attempt/zero-retry policy.

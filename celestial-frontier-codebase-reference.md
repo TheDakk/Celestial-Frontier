@@ -318,16 +318,17 @@
 > compared fresh executable paths and host user agents. Both strings remain mandatory raw per-run
 > provenance, while exact product/revision/JavaScript/protocol form shared browser authority.
 >
-> The corrected budget still owns explicit top-level `cf-v2-compendium-browser-authority/v1` in
-> both states and rejects mismatch before profile collection. Budget/schema/contract/collector/
-> selftest/test `ac2c084a…` / `695d2529…` / `e7dfea1d…` / `07131f5e…` / `f86db74a…` /
-> `5d00e59f…` establish measurement `2318f57b…`; producer `d3223177…` and browser CDP
-> `6da9e2ef…` remain unchanged. Candidate samples are empty, ceilings are null, and the paired
-> measurement-required baseline has a null collector commit and empty profiles. Materialize exact
-> `.86` afresh for baseline10 and
-> candidate24/25/26 from one clean committed source, once each without retry. No timeout, launch,
-> workflow, product, producer, or retry-policy change occurred. First red stops; terminal-green
-> PR #32 returns immediately to Arc 1B/gameplay.
+> Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10, each once
+> with zero retries and a distinct fresh `.86` path. All candidates completed 78/78 with zero
+> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. The active budget
+> still owns explicit top-level `cf-v2-compendium-browser-authority/v1` and rejects mismatch before
+> profile collection. Budget/schema/contract/collector/selftest/test `70145575…` / `695d2529…` /
+> `e7dfea1d…` / `07131f5e…` / `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged
+> producer `d3223177…`, 3/3 samples per profile, measured 1/1 baseline, and strict ceilings with
+> 14 phone / 13 desktop baseline breaches. A synthetic desktop-identity line corrected the focused
+> check from 12/13 to 13/13 without changing or rerunning browser evidence. No timeout, launch,
+> workflow, product, producer, browser-CDP, or retry-policy change occurred. First red stops;
+> terminal-green PR #32 returns immediately to Arc 1B/gameplay.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.
