@@ -135,8 +135,12 @@
 > existing Planetside development-release bullet now names this player-facing outcome. Product and
 > copy bytes change producer to `e59685b1…` (index `ca76da4c…`, owner
 > `assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged); measurement stays `f9710bdf…`.
-> Budget/test `70c40013…` / `7e8f03d5…` are fail-closed pending paired baseline6, independent
-> candidate11/12/13, activation, a complete exact-head battery, and corresponding PR test-merge CI.
+> Clean committed source `2a105d51…` collected paired baseline6 against legacy `3844701…` plus
+> independent candidate11/12/13 under exact Edge .86. All were one-attempt/no-retry; candidates replay
+> 78/78. Active budget/test `ebe5b5c3…` / `ec956b8a…` place every one of 40 ceilings above its
+> three-run maximum; the four-fault baseline breaches 14 phone / 13 desktop fields. The targeted
+> compact-phone Glass diagnostic passed at SHA-256 `13efb5fa…`, but is non-certifying; a complete
+> exact-head battery and corresponding PR test-merge CI remain open.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
 > list, focus-pinned, and detail PNGs still await HUMAN review. Arc 1B scene-resource disposal and live
 > HD planet replacement remain open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
@@ -430,9 +434,10 @@
 > changed producer authority to `1c8200d7…`; baseline4 and candidate5/6/7 historically populated its
 > `bb03a3af…` replayed-raw ruler under exact Edge .86. The frozen shared-timer repair moves measurement
 > authority to `f9710bdf…`; baseline5 plus candidate8/9/10 historically activated exact budget
-> `8ffd0d8e…` for that producer. The compact portrait stack repair changes producer to `e59685b1…`, so
-> budget `70c40013…` fails closed pending baseline6/candidate11/12/13. Every selected head must own
-> exact-source local resource certification and corresponding terminal-green PR test-merge CI. The
+> `8ffd0d8e…` for that producer. The compact portrait stack repair changes producer to `e59685b1…`;
+> paired baseline6 plus candidate11/12/13 now activate budget `ebe5b5c3…` under that exact producer and
+> unchanged measurement authority. Every selected head must still own exact-source local resource
+> certification and corresponding terminal-green PR test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150
 > browser. Fresh six-image evidence still awaits HUMAN review. Arc 1B
 > scene-texture disposal, live HD planet replacement, broader long-task

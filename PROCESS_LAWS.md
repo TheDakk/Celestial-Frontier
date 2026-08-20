@@ -905,10 +905,17 @@ rectangle overlap with all 12 rows and 58/58 controls executed, zero instrument 
 retry. The bounded CSS repair restores the existing 8px stack while retaining Survey's 44px floor
 and a 72px scrollable Planetside floor. Its product and development-copy bytes change built producer
 authority to `e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`, while measurement
-authority remains `f9710bdf…`. Budget/test `70c40013…` / `7e8f03d5…` therefore fail closed with zero
-candidate samples, a measurement-required paired baseline, and null ceilings until fresh baseline6
-plus independent candidate11/12/13 activate that producer. Browser-free checks prove the boundary,
-not a ruler, current-head browser PASS, PR-CI result, or HUMAN review.
+authority remains `f9710bdf…`.
+
+Clean committed collector/candidate source `2a105d51397eef97542d856ed3b1bb23edf2b028` then measured paired
+baseline6 against legacy product `3844701…` plus independent candidate11/12/13 under exact Edge .86.
+All four were one-attempt/no-retry; every candidate replayed 78/78. Active budget/test SHA-256 values
+are `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
+`ec956b8a7d3bad96736deab42e0ac79e59e6cf9010559723d2dac2249e463a83`. Every one of 40 ceilings is
+strictly above its three-run maximum; the four-fault baseline breaches 14 phone / 13 desktop fields.
+Focused replay 11/11, selftest 222/222, and semantic validation are green. This activates a
+browser-free ruler only, not current-head certification, a complete browser battery, PR-CI, or HUMAN
+review.
 
 **STACKED FLOATING SURFACES MUST SHARE ONE GEOMETRY EQUATION.** A minimum height on the upper card
 can defeat a separately derived maximum height on the lower card even when both rules are locally

@@ -11,9 +11,9 @@ as any change that touches an entry.
 
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
-**Status: ★ product implementation, serviced-turn scheduler, and compact-phone Planetside stack
-repair present; measurement stays `f9710bdf…`, while producer `e59685b1…` is fail-closed pending
-baseline6/candidate11/12/13. Exact-source automation and fresh six-image `[HUMAN]` review are open.**
+**Status: ★ product implementation, serviced-turn scheduler, compact-phone Planetside stack repair,
+and active `f9710bdf…` / `e59685b1…` measured ruler present. Exact-source automation and fresh
+six-image `[HUMAN]` review are open.**
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -82,10 +82,13 @@ This block records the current disposition of the historical
   change Glass predicates, stacking order, or ownership. The existing development-release bullet
   names the outcome. Built producer becomes `e59685b1…` (index `ca76da4c…`, owner
   `assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged), while measurement remains
-  `f9710bdf…`. Budget/test `70c40013…` / `7e8f03d5…` fail closed with zero candidates,
-  measurement-required paired baseline, and null ceilings. Focused 11/11, selftest 222/222,
-  typechecks, semantic validation, and root validate pass; baseline6/candidate11/12/13, activation,
-  exact-head battery, and corresponding PR test-merge remain required for `[EXEC]`.
+  `f9710bdf…`. Clean committed source `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired
+  baseline6 against legacy `3844701…` and independent candidate11/12/13 under exact Edge .86. All
+  four were one-attempt/no-retry and candidates replay 78/78. Active budget/test `ebe5b5c3…` /
+  `ec956b8a…` place all 40 ceilings strictly above the three-run maxima; the four-fault baseline
+  breaches 14 phone / 13 desktop fields. Focused 11/11, selftest 222/222, and semantic validation
+  pass. The targeted compact-phone Glass PASS (`13efb5fa…`) is diagnostic only; the complete exact-head
+  battery and corresponding PR test-merge remain required for `[EXEC]`.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
