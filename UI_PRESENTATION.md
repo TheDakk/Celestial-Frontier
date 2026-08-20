@@ -183,10 +183,10 @@
 >
 > The product and development-copy bytes change producer authority to `d3223177…` (index
 > `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`; worker/painter unchanged) while
-> measurement `6ba58522…` remains frozen. Clean committed source `75a996af…` produced one no-retry
+> historical measurement `6ba58522…`. Clean committed source `75a996af…` produced one no-retry
 > baseline8 plus independent no-retry candidate17/18/19 under exact Edge .86; all candidates replayed
-> 78/78, and baseline8 retained four faults with 14 phone / 13 desktop breaches. Active budget/test
-> `74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) reuse all 40 strict ceilings above the three-run
+> 78/78, and baseline8 retained four faults with 14 phone / 13 desktop breaches. Then-active budget/test
+> `74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) reused all 40 strict ceilings above the three-run
 > maxima. The browser-free activation became exact head
 > `96464d5e4ca59074c0d8d59719a90a5dedc2dd2d` and completed its full same-head local battery.
 > Corresponding GitHub Actions run `32394244417`, Compendium job `96507263338`, attempt 1, tested
@@ -204,9 +204,20 @@
 > fail-closed static control requires the exact ordered reinstall/preflight contract in both
 > workflows and rejects removal plus outside-step decoys; it proves bytes, not live launch. The
 > normalization changes no timing, retry, fallback, live repository-tool behavior, product, browser
-> package/version, measurement, producer, budget, or authority. One matching changed-head CI attempt
-> remains; the first red stops, and gameplay
-> resumes after PR #32 closes without broader timing work.
+> package/version, measurement, producer, budget, or authority. Exact local `89bfa05…` then
+> completed 78/78 with zero findings and six images before owned browser shutdown exited 2.
+> Terminal log `b0bb8abc…` is authoritative; pre-cleanup PASS report `66ba1366…` and verifier
+> `98664dca…` are false-green. This is post-measurement instrument red, not UI/product
+> certification or calibration.
+>
+> Frozen browser CDP `6da9e2ef…` separates direct exit from stdio close. Collector `f4ad842c…`
+> plus selftest `2713ed10…` keep report state lifecycle-pending through browser/server cleanup and
+> lock release, publish a sample and terminal success only afterward, and require lifecycle at
+> verification. Measurement is `a3b3bb9f…`; producer remains `d3223177…`. Fail-closed budget/test
+> `ae4ab918…` / `60fa5e9f…` require clean committed baseline9 plus candidate20/21/22, once each
+> without retry. No UI/product bytes, browser/package, launch argument, timeout, retry, or producer
+> changed. After ruler activation, one exact-head battery, one PR #32 push, and one corresponding CI
+> remain; first red stops, and gameplay resumes after PR #32 closes without broader timing work.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
 > list, focus-pinned, and detail PNGs still await HUMAN review. This repair owns the current surface
 > globe's fitted start and live tier swap only; the broader Arc 1B/1C scene-resource disposal and HD
@@ -515,8 +526,8 @@
 > response preserved a valid Planetside `product-unanswerable` red. The bounded product repair starts
 > the globe from displayed backing demand, preserves zoom/DPR sharpness through an identity-safe
 > 512/768/1024 upgrade owner, and changes producer to `d3223177…` while measurement remains
-> `6ba58522…`. Clean source `75a996af…` supplied baseline8 plus independent candidate17/18/19;
-> active ruler/test `74e88c2b…` / `485be9da…` retain four-fault baseline discrimination and strict
+> historical `6ba58522…`. Clean source `75a996af…` supplied baseline8 plus independent candidate17/18/19;
+> then-active ruler/test `74e88c2b…` / `485be9da…` retained four-fault baseline discrimination and strict
 > ceilings above all three candidate maxima. Exact activation head `96464d5…` completed its full
 > local battery, while run `32394244417` / Compendium job `96507263338` tested synthetic merge
 > `63665b6…` and preserved the pre-product one-launch Edge/CDP environment red described above.
@@ -525,8 +536,9 @@
 > Edge .78→.86 and launched 4/4; new `20260816.277` already had .86, made apt a no-op, and
 > launched 0/3. A SHA-verified same-package `--reinstall` is only a workflow-normalization
 > hypothesis pending one matching changed-head CI, not a proven fix. Its green selftest-only static
-> workflow control changes no live tool behavior, timing, retry, fallback, product, browser,
-> measurement, producer, budget, or authority. Every selected
+> workflow control changed no live tool behavior, timing, retry, fallback, product, browser,
+> measurement, producer, budget, or authority. Exact-89's later post-measurement owned-shutdown red
+> and the `a3b3bb9f…` lifecycle authority supersede that ruler for current calibration. Every selected
 > activation head must still own exact-source local resource certification and corresponding
 > terminal-green PR test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150

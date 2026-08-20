@@ -134,11 +134,11 @@ zero outcomes, blocked all 78, and retained no review PNG.
 
 The displayed-demand/zoom-owner product and development-copy repair changes built producer authority
 to `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`: index `dee9af3a…`, owner
-`assets/main-Da536xWA.js` / `28382873…`, worker/painter unchanged. Measurement remains `6ba58522…`.
+`assets/main-Da536xWA.js` / `28382873…`, worker/painter unchanged. Historical measurement was `6ba58522…`.
 Clean committed source `75a996af…` produced one no-retry baseline8 against legacy `3844701…` and
 independent no-retry candidate17/18/19 under exact Edge .86. Every candidate replayed 78/78;
-baseline8 retained all four faults and 14 phone / 13 desktop breaches. Active budget/test
-`74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) reuse all 40 prior strict ceilings above the
+baseline8 retained all four faults and 14 phone / 13 desktop breaches. Then-active budget/test
+`74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) reused all 40 prior strict ceilings above the
 three-candidate maxima. The report/sample pairs are baseline8 `0a8b831e…` / `a52bccec…`, c17
 `6b86ca9d…` / `0818c86e…`, c18 `a9b28d79…` / `c368ba86…`, and c19 `440cb788…` / `abddfa84…`.
 
@@ -161,9 +161,19 @@ exact ordered URL/SHA/download/hash/reinstall/version/executable/following-prefl
 workflows and rejects per-workflow removal plus outside-step decoys; that browser-free control is
 green but cannot prove live launch. The workflow normalization changes no timing, retry, fallback,
 live repository-tool behavior, product, browser package/version, measurement, producer, budget, or
-authority. One matching changed-head CI attempt is still required; the first red stops without
-further timing work. After PR #32 closes, work returns to Arc 1B/gameplay. Every selected head must
-own exact-source local certification and corresponding terminal-green PR test-merge CI.
+authority. Exact local `89bfa05…` subsequently measured 78/78 with zero findings and six images,
+then owned browser shutdown exited 2. Its terminal log `b0bb8abc…` supersedes false-green
+pre-cleanup report/verifier `66ba1366…` / `98664dca…`; this is a post-measurement instrument red,
+not art/product certification or calibration.
+
+Browser CDP `6da9e2ef…` now separates direct process exit from stdio close. Collector
+`f4ad842c…` and selftest `2713ed10…` hold success and sample publication until browser/server
+cleanup and workspace-lock release, with verifier lifecycle enforcement. Measurement therefore
+changes to `a3b3bb9f…`; producer stays `d3223177…`. Fail-closed budget/test `ae4ab918…` /
+`60fa5e9f…` require baseline9 plus candidate20/21/22 from one clean committed source, each once
+without retry. No portrait pixels, product bytes, browser/package, launch argument, timeout, retry,
+or producer changed. After activation, one exact-head battery, one PR #32 push, and one matching CI
+remain; first red stops. After PR #32 closes, work returns to Arc 1B/gameplay.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
 browser. Calibration review PNGs do not satisfy the selected-head HUMAN row; a fresh phone/desktop
 list, focus-pinned, and detail set still requires HUMAN review. This repair owns the

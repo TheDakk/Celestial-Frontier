@@ -12,16 +12,14 @@ as any change that touches an entry.
 ## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
 
 **Status: ★ product implementation, serviced-turn scheduler, compact-phone Planetside stack, and
-displayed-demand/zoom-owner repair present. Exact activation head `96464d5…` passed its complete
-local battery. Corresponding run `32394244417`, attempt 1, stopped before product in exact-Edge job
-`96507263338`: image `ubuntu24/20260816.277` already carried verified .86, apt did no unpack/setup,
-and the unchanged one-launch preflight published no CDP endpoint within 45 seconds. Both workflows
-now request same-package `--reinstall`; the preflight selftest has a green static ordered-contract
-control, but one changed-head CI must still test this runner-image normalization hypothesis.
-Measurement remains `6ba58522…`, producer is `d3223177…`. Clean source `75a996af…` supplied
-baseline8 plus independent candidate17/18/19; active budget/test `74e88c2b…` / `485be9da…`
-preserve four-fault baseline discrimination and all strict ceilings. Six-image `[HUMAN]` review is
-open.**
+displayed-demand/zoom-owner repair present. Exact local `89bfa05…` completed 78/78 with zero
+findings and six PNGs, then owned browser shutdown exited 2 after report/verifier had already
+published PASS. Preserve terminal log `b0bb8abc…` over false-green `66ba1366…` / `98664dca…` as a
+post-measurement instrument red. Browser CDP `6da9e2ef…` and collector/selftest
+`f4ad842c…` / `2713ed10…` repair exit-vs-close and cleanup-before-success lifecycle. Measurement
+is now `a3b3bb9f…`; producer remains `d3223177…`. Fail-closed budget/test
+`ae4ab918…` / `60fa5e9f…` await baseline9 plus candidate20/21/22 from one clean committed source,
+once each without retry. Six-image `[HUMAN]` review is open.**
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -148,10 +146,10 @@ This block records the current disposition of the historical
 - The displayed-demand/zoom-owner product and development-copy repair changes built producer to
   `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900` (index `dee9af3a…`, owner
   `assets/main-Da536xWA.js` / `28382873…`; worker/painter unchanged). Measurement remains
-  `6ba58522…`. Clean committed source `75a996af…` produced one no-retry baseline8 against legacy
+  historical `6ba58522…`. Clean committed source `75a996af…` produced one no-retry baseline8 against legacy
   `3844701…` plus independent no-retry candidate17/18/19 under exact Edge .86. Every candidate
   replayed 78/78; baseline8 retained all four faults and breached 14 phone / 13 desktop ceilings.
-  Active budget/test `74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) reuse all 40 strict ceilings
+  Then-active budget/test `74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) reused all 40 strict ceilings
   above the three-run maxima.
 - Activation was browser-free and non-certifying. Exact activation head `96464d5…` then passed its
   complete local battery. Corresponding run `32394244417`, attempt 1, tested synthetic merge
@@ -170,9 +168,18 @@ This block records the current disposition of the historical
   outside-step decoys. That green browser-free control proves workflow bytes, not the live hosted-
   runner hypothesis. One changed-head CI remains; first red stops. Exact package/browser authority,
   product, launcher/preflight/collector, 45/15/5/2 preflight, 15-second candidate startup, 2-second
-  observation, one attempt/zero retries, measurement `6ba58522…`, producer `d3223177…`, budget
-  `74e88c2b…`, and test `485be9da…` are unchanged. No broader timing work is in scope before Arc
-  1B/gameplay resumes after PR #32 closes.
+  observation, one attempt/zero retries, historical measurement `6ba58522…`, producer
+  `d3223177…`, and then-active budget/test `74e88c2b…` / `485be9da…` were unchanged by that
+  workflow normalization.
+- Exact local `89bfa05…`, run `20260820-pr32-89bfa05-compendiummem`, later completed 78/78 with
+  zero findings and six PNGs before owned shutdown exited 2. Its pre-cleanup PASS/report
+  verification is false-green. Frozen `6da9e2ef…` distinguishes direct process exit from stdio
+  close; `f4ad842c…` / `2713ed10…` require browser/server cleanup and lock release before sample or
+  terminal success and enforce lifecycle at verification. New measurement `a3b3bb9f…` leaves
+  fail-closed `ae4ab918…` / `60fa5e9f…` calibration-required. Baseline9 plus candidate20/21/22
+  must come from one clean committed source, once each without retry, before activation and one
+  exact-head battery/PR CI. No broader timing work is in scope before Arc 1B/gameplay resumes after
+  PR #32 closes.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
 - This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
   a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
@@ -1689,7 +1696,7 @@ duplicates).
   `tools/compendiummem-browser-preflight.mjs` for one 45/15/sealed-5/2-second exact-authority fresh-
   target proof outside the hashed ruler inputs; it adds no retry, fallback, rebaseline, product bound,
   release claim, or preview/publication authority.
-  **2026-08-20 runner-image follow-up:** exact activation head `96464d5…` passed locally, but run
+  **2026-08-20 runner-image follow-up (historical):** exact activation head `96464d5…` passed locally, but run
   `32394244417` / job `96507263338` on `ubuntu24/20260816.277` stopped before product because the
   already-resident verified .86 made apt a no-op and the one Edge launch published no endpoint
   inside the unchanged 45-second allowance. The older `20260810.271` exact-Edge sample is 4/4
@@ -1697,7 +1704,9 @@ duplicates).
   already-newest no-op installs. Same-package `--reinstall` in both workflows is therefore a
   bounded normalization hypothesis. Its green fail-closed workflow-structure control changes no
   timing, product, CDP tool, browser authority, measurement, producer, budget, retry policy,
-  publication authority, or Gate status; one changed-head CI must test the live hypothesis.
+  publication authority, or Gate status. Exact-89 later reached product but preserved the separate
+  owned-shutdown false-green; current lifecycle measurement is `a3b3bb9f…`, with calibration and
+  one changed-head CI still required.
 - ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
   (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
   heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces

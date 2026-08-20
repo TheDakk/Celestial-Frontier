@@ -72,20 +72,22 @@ async function waitForResolution(promise, timeoutMs) {
     promise.then(() => finish(true));
   });
 }
-async function terminateChildProcess(child, childClosed, label, timeoutMs) {
-  if (child.exitCode === null && child.signalCode === null && child.pid !== undefined) {
+async function terminateChildProcess(child, childExited, childClosed, label, timeoutMs) {
+  /* ChildProcess `close` also waits for inherited stdio. Judge signal
+     escalation by process exit, then release the one owned pipe. */
+  let exited = child.exitCode !== null || child.signalCode !== null;
+  if (!exited && child.pid !== undefined) {
     if (!child.killed) child.kill();
-    if (!await waitForResolution(childClosed, timeoutMs)) {
+    exited = await waitForResolution(childExited, timeoutMs);
+    if (!exited) {
       child.kill('SIGKILL');
-      assert(await waitForResolution(childClosed, timeoutMs), `${label}: browser ignored bounded shutdown`);
+      exited = await waitForResolution(childExited, timeoutMs);
+      assert(exited, `${label}: browser ignored bounded shutdown`);
     }
-    return;
   }
-  if (!await waitForResolution(childClosed, timeoutMs)) {
-    child.stderr?.destroy?.();
-    assert(await waitForResolution(childClosed, timeoutMs),
-      `${label}: browser exited but its stdio did not close within the shutdown bound`);
-  }
+  child.stderr?.destroy?.();
+  assert(await waitForResolution(childClosed, timeoutMs),
+    `${label}: browser exited but its stdio did not close within the shutdown bound`);
 }
 function portable(value) { return value.split(path.sep).join('/'); }
 function requiredString(value, where) {
@@ -176,9 +178,10 @@ async function openChromiumCdpWithLauncher({
   });
   child.on('error', (error) => { spawnError = error; });
   child.on('exit', (code, signal) => { exitDescription = `exit=${String(code)} signal=${String(signal)}`; });
+  const childExited = new Promise((resolve) => child.once('exit', resolve));
   const childClosed = new Promise((resolve) => child.once('close', resolve));
   const terminateOwnedBrowser = async () => {
-    try { await terminateChildProcess(child, childClosed, label, shutdownTimeoutMs); }
+    try { await terminateChildProcess(child, childExited, childClosed, label, shutdownTimeoutMs); }
     finally { removeOwnedUserData(userData, temporary, userDataPrefix); }
   };
 
@@ -513,31 +516,79 @@ async function runSelftest() {
         /not a real file/);
     }
 
-    let exitPipeDestroyed = false;
-    const exitWithoutClose = {
-      exitCode: 1, signalCode: null, pid: 1, killed: false,
-      stderr: { destroy() { exitPipeDestroyed = true; } },
+    let inheritedStderrClosed;
+    const inheritedStderrClose = new Promise((resolve) => { inheritedStderrClosed = resolve; });
+    const inheritedStderrSignals = [];
+    let inheritedStderrDestroyed = false;
+    const exitedWithInheritedStderr = {
+      exitCode: 0, signalCode: null, pid: 1, killed: false,
+      kill(signal = 'SIGTERM') { inheritedStderrSignals.push(signal); return true; },
+      stderr: { destroy() { inheritedStderrDestroyed = true; inheritedStderrClosed(); } },
     };
-    await expectRejectedAsync('exit without stdio close', () => terminateChildProcess(
-      exitWithoutClose, new Promise(() => {}), 'CDP selftest exit-without-close', 20,
-    ), /stdio did not close within the shutdown bound/);
-    assert(exitPipeDestroyed, 'SELFTEST exit-without-close did not release its owned stderr pipe');
+    await terminateChildProcess(
+      exitedWithInheritedStderr, Promise.resolve(), inheritedStderrClose,
+      'CDP selftest exited-with-inherited-stderr', 20,
+    );
+    assert(inheritedStderrDestroyed,
+      'SELFTEST exited-with-inherited-stderr did not release its owned stderr pipe');
+    assert(inheritedStderrSignals.length === 0,
+      `SELFTEST exited-with-inherited-stderr sent a signal (${inheritedStderrSignals.join(', ')})`);
 
+    let resistantExited;
+    const resistantExit = new Promise((resolve) => { resistantExited = resolve; });
     let resistantClosed;
     const resistantClose = new Promise((resolve) => { resistantClosed = resolve; });
     const resistantSignals = [];
+    let resistantPipeDestroyed = false;
     const resistantChild = {
       exitCode: null, signalCode: null, pid: 2, killed: false,
       kill(signal = 'SIGTERM') {
         resistantSignals.push(signal);
         this.killed = true;
-        if (signal === 'SIGKILL') { this.signalCode = signal; resistantClosed(); }
+        if (signal === 'SIGKILL') { this.signalCode = signal; resistantExited(); }
         return true;
       },
+      stderr: { destroy() { resistantPipeDestroyed = true; resistantClosed(); } },
     };
-    await terminateChildProcess(resistantChild, resistantClose, 'CDP selftest resistant child', 20);
+    await terminateChildProcess(
+      resistantChild, resistantExit, resistantClose, 'CDP selftest resistant child', 20,
+    );
     assert(JSON.stringify(resistantSignals) === JSON.stringify(['SIGTERM', 'SIGKILL']),
       `SELFTEST resistant child: expected TERM/KILL escalation, got ${resistantSignals.join(', ')}`);
+    assert(resistantPipeDestroyed,
+      'SELFTEST resistant child did not release its owned stderr pipe after exit');
+
+    const noExitSignals = [];
+    let noExitPipeDestroyed = false;
+    const noExitChild = {
+      exitCode: null, signalCode: null, pid: 3, killed: false,
+      kill(signal = 'SIGTERM') {
+        noExitSignals.push(signal);
+        this.killed = true;
+        return true;
+      },
+      stderr: { destroy() { noExitPipeDestroyed = true; } },
+    };
+    await expectRejectedAsync('no exit after SIGKILL', () => terminateChildProcess(
+      noExitChild, new Promise(() => {}), new Promise(() => {}),
+      'CDP selftest no-exit child', 20,
+    ), /^CDP selftest no-exit child: browser ignored bounded shutdown$/);
+    assert(JSON.stringify(noExitSignals) === JSON.stringify(['SIGTERM', 'SIGKILL']),
+      `SELFTEST no-exit child: expected TERM/KILL escalation, got ${noExitSignals.join(', ')}`);
+    assert(!noExitPipeDestroyed,
+      'SELFTEST no-exit child released stderr before proving process exit');
+
+    let nonclosingPipeDestroyed = false;
+    const exitedWithNonclosingPipe = {
+      exitCode: 1, signalCode: null, pid: 4, killed: false,
+      stderr: { destroy() { nonclosingPipeDestroyed = true; } },
+    };
+    await expectRejectedAsync('exit with nonclosing stdio', () => terminateChildProcess(
+      exitedWithNonclosingPipe, Promise.resolve(), new Promise(() => {}),
+      'CDP selftest nonclosing-stdio child', 20,
+    ), /^CDP selftest nonclosing-stdio child: browser exited but its stdio did not close within the shutdown bound$/);
+    assert(nonclosingPipeDestroyed,
+      'SELFTEST nonclosing-stdio child did not release its owned stderr pipe');
 
     if (process.platform === 'darwin') {
       const seatbeltBrowser = path.join(endpointFixture, 'seatbelt-marker-browser.mjs');
@@ -1409,8 +1460,10 @@ async function runSelftest() {
   }
   console.log('BROWSER CDP SELFTEST PASS');
   console.log(`  malformed/directory${process.platform === 'win32' ? '' : '/dangling-symlink'} DevToolsActivePort: rejected`);
-  console.log('  exit-without-close: rejected; owned pipe released');
-  console.log('  SIGTERM-resistant child: escalated to bounded SIGKILL');
+  console.log('  exited child + inherited stderr: owned pipe released; close observed without SIGKILL');
+  console.log('  SIGTERM-resistant child: exited after bounded SIGKILL; owned pipe released');
+  console.log('  no exit after SIGKILL: exact bounded-shutdown rejection');
+  console.log('  exit + nonclosing stdio after pipe release: exact stdio-close rejection');
   console.log(`  macOS Codex Seatbelt pre-spawn refusal: ${process.platform === 'darwin' ? 'PASS; executable untouched' : 'covered by portable resolver selftest'}`);
   console.log('  browser child exit and profile cleanup: PASS');
   console.log(`  early-exit code + bounded stderr diagnostics: ${process.platform === 'win32' ? 'covered by child-exit control' : 'PASS'}`);

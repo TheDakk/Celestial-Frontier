@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 EXACT-EDGE PACKAGE NORMALIZATION ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 SHUTDOWN LIFECYCLE RECALIBRATION ◀◀◀
 
 ### Cold start
 
@@ -31,71 +31,68 @@ the archive verbatim and refresh this handoff in place.
 - Resolve GitHub and ignored artifacts live. Never reuse an earlier green report for a newer source,
   producer, budget, workflow, or commit; never retry an unchanged red.
 
-### Exact activation head and preserved CI red
+### Preserved exact post-measurement instrument red
 
-- D-TRAIN-1 remains integrated through PR #31 at exact `develop` merge `38447019517147319bd08c598202d097ee866874`.
-  PR #32 remains the active OpenAI branch. Exact pushed activation head
-  `96464d5e4ca59074c0d8d59719a90a5dedc2dd2d` completed its full local battery with the active
-  baseline8/candidate17/18/19 ruler, Compendium 78/78 and named verification, one-attempt Smoke,
-  full Glass, nine joined personas, root layout 787/787, and verified nonpublishable preview work.
-- Corresponding GitHub Actions run `32394244417`, attempt 1, tested synthetic merge `63665b6…`.
-  Root, v2-static, Chrome Smoke, and Chrome Glass were green. Exact-Edge Compendium job
-  `96507263338` downloaded and SHA-verified the pinned `.86` package, verified its installed version
-  and executable, and passed browser-path plus portable preflight controls. The live one-launch
-  preflight then found no CDP endpoint inside the unchanged 45-second startup envelope. The
-  candidate never ran; no report, product outcome, or review PNG exists. Verifier/upload failures
-  are cascades. Preserve this as a one-attempt, zero-retry environment/instrument red, not a product
-  verdict.
+- D-TRAIN-1 remains integrated through PR #31 at exact `develop` merge
+  `38447019517147319bd08c598202d097ee866874`; PR #32 remains the active OpenAI branch. Exact local
+  head `89bfa0581f7eb33c90a79bb8b0ead554626197e7`, run
+  `20260820-pr32-89bfa05-compendiummem`, completed all 78/78 product outcomes with zero findings and
+  wrote six review PNGs. Its owned browser shutdown then exited 2.
+- The terminal log SHA-256 is `b0bb8abcc77c394ba887b73ce192a8e2cd9584a402d7b97f80768b8e7049458f`.
+  Report `66ba13665bf5dac4d08907ee3b0c2abb7fec54d06c94fe5d59948bb5c4749888` and verifier
+  `98664dca6b07c9937bfa1d0f13aacd0d9364cb793a5a9be67c98a9507ca3d8d4` are false-green because
+  success was published before cleanup. Preserve this as one-attempt/no-retry post-measurement
+  instrument red—not certification, calibration, or a product failure.
 
-### One bounded package-normalization hypothesis
+### Frozen lifecycle repair and authority boundary
 
-- The passing hosted image `ubuntu24/20260810.271` carried Edge `.78`; installing the pinned `.86`
-  package performed unpack/setup, and exact Edge became live-control ready in all four observed runs.
-  Image `ubuntu24/20260816.277` already carried `.86`; plain `apt-get install` reported “already the
-  newest version,” performed no unpack/setup, and exact Edge became live-control ready in none of
-  three observed runs. The current failure spans multiple west-region pools; the evidence does not
-  isolate image revision from host-pool placement.
-- The only scoped normalization is to force `apt-get install --reinstall` from the same
-  SHA-verified `.86` package in both `.github/workflows/test.yml` and
-  `.github/workflows/dev-preview-package.yml`, then retain the exact package-version and executable
-  checks. This is a strong environment hypothesis, not a proven fix until one matching changed-head
-  CI run reaches the live preflight.
-- Do not change the Edge package/version or Arc-local product/revision/JS/protocol authority; the
-  45/15/5/2-second preflight, 15-second candidate startup, 2-second product observation, one-attempt/
-  zero-retry policy, launcher, preflight, collector, product, measurement `6ba58522…`, producer
-  `d3223177…`, budget `74e88c2b…`, and test `485be9da…` remain unchanged. No warmup, sleep, relaunch,
-  fallback, DBus wrapper, recalibration, or broader infrastructure loop belongs in this batch.
+- `browsercdp.mjs` now distinguishes direct-child process exit from later stdio/`close`: TERM→KILL
+  is judged on exit, then owned stderr is released and close remains required. The collector keeps
+  reports RUNNING/lifecycle-pending until browser/server cleanup and workspace-lock release; only
+  then may it publish a sample or terminal success. Cleanup, release, sample, and report-publication
+  failures suppress success, and the verifier requires terminal lifecycle authority.
+- Frozen SHA-256 values are browser CDP `6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce`,
+  collector `f4ad842c8e326bb46a54afdbc0c2aba9b748b69df618d01203593126a959796e`, and selftest
+  `2713ed106a1316fb3eb5efbc1eb2adcb53eaba18432040ce1e2a4e5a90b4df6f`. Measurement authority is
+  therefore `a3b3bb9f1e32f13a13bcffd09525e29494d694cbae9886060068f693b0b25e6d`; producer remains
+  `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`.
+- Fail-closed budget/test `ae4ab918471d4e3adec679d4d0a840e227f0c90d513c841eb7711626ce75a833` /
+  `60fa5e9f91f148cace3bc117f742b0a67bf3b771bdbbc1f4a6f3a3b8cbfd6a23` deliberately require
+  calibration: candidate samples are empty, ceilings are null, and the paired baseline is
+  `measurement-required`. Baseline8/candidate17/18/19 and measurement/budget/test
+  `6ba58522…` / `74e88c2b…` / `485be9da…` remain truthful history only.
+- No timeout, browser/package/version, launch argument, product byte, producer, retry, fallback, or
+  observation policy changed. This is lifecycle correctness, not another timing-optimization loop.
 
 ### Next bounded sequence and open human scope
 
-- Keep the two workflows synchronized. The preflight selftest now statically requires each unique
-  owned install step's ordered exact URL/SHA/download/hash/reinstall/version/executable chain and
-  following preflight; per-workflow removal and outside-step decoys fail. That control is green but
-  proves only workflow structure. Review the diff, complete browser-free/static checks, then run the
-  required exact-head local battery and push one changed head to existing PR #32 for one corresponding
-  test-merge CI attempt. First red stops and is preserved.
-- A terminal-green exact-head PR battery remains required before merge. The fresh phone/desktop list,
-  focus-pinned, and detail six-image HUMAN judgment remains separately open. Arc 1B gameplay starts
-  only after PR #32 closes in order; no Cargo, Shipyard, combat, physical-device heat/battery,
-  production release, version bump, or deployment is included here.
+- Freeze one clean committed repair source, then collect paired baseline9 plus independent
+  candidate20/21/22 under exact Edge .86 exactly once each with zero retries. First red, ambiguity,
+  source mismatch, cleanup failure, or publication failure stops; do not reuse the false-green
+  exact-89 artifacts or an older ruler.
+- If and only if the four runs audit cleanly, activate their ruler, commit it, run one complete
+  exact-head local battery, push that unchanged head to existing PR #32, and require one
+  corresponding PR test-merge CI attempt. First red stops. Fresh selected-head phone/desktop list,
+  focus-pinned, and detail images still require separate HUMAN judgment. Arc 1B gameplay begins
+  after PR #32 closes; no broader timing work, production release, version bump, or deployment is
+  in scope.
 
 ## Parallel Git handoff — exact five fields
 
-**Current side:** OpenAI/Codex on macOS owns PR #32. Exact head `96464d5…` and run `32394244417`
-are preserved; the scoped working copy normalizes the pinned Edge package in both workflows and
-adds the fail-closed static workflow control while refreshing current documentation. It is not yet
-a committed, pushed, or CI-proven replacement head.
+**Current side:** OpenAI/Codex on macOS owns PR #32. Exact `89bfa05…` and its post-measurement
+shutdown red are preserved. The scoped working copy contains the frozen lifecycle repair and a
+fail-closed calibration-required ruler; it is not yet the clean committed calibration source.
 
-**GitHub step:** None until the exact new head passes its required local battery and is pushed to
-existing PR #32. The deterministic workflow control is implemented and browser-free green. Then require
-one corresponding PR test-merge attempt; do not rerun `96464d5…`, mark a red head Ready, create a
-new PR, or touch `main`.
+**GitHub step:** None until baseline9/candidate20/21/22 activate the new authority and the resulting
+exact head passes its required local battery. Push only that unchanged head to existing PR #32 and
+require one corresponding test-merge attempt; do not rerun exact-89, create a new PR, or touch
+`main`.
 
 **PR details:** base `develop`; source `openai/mac`; existing PR #32 title
 **Arc 1A — Bound Compendium portraits and measured resources**. Its description must preserve runs
-`32383320206` and `32394244417`, name the displayed-demand repair and unchanged authorities, and
-describe `--reinstall` as an unproved hosted-image normalization pending exact-head CI. No release or
-deployment is included.
+`32383320206`, `32394244417`, and exact-89's shutdown false-green; name the displayed-demand repair,
+the lifecycle repair, new measurement boundary, and unchanged producer. No release or deployment
+is included.
 
 **Other side:** Anthropic/Claude Code does not have this PR #32 follow-up and need not be opened now.
 Only after the reviewed exact head merges to `develop` may Claude fetch and merge latest

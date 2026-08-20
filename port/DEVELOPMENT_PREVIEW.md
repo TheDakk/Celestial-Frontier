@@ -192,8 +192,8 @@ ordering when a runner has several Chromium-family browsers installed.
 
 Arc 1A is the deliberate narrow exception. The current 1,500-row Compendium is virtualized;
 list art uses leased, cancellable, deduplicated 132px thumbnails, detail uses a separately
-owned 440px image, and Planetside uses the same lease path. Its active measured budget and
-standalone `compendiummem` gate are calibrated to the Arc-local four-field authority
+owned 440px image, and Planetside uses the same lease path. Its standalone `compendiummem` gate
+retains the Arc-local four-field browser authority
 `arc1a-compendium-memory-only`: product `Edg/151.0.4129.86`, revision
 `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript version `15.1.23.7`, and
 CDP protocol version `1.3`. Executable path and user agent remain recorded provenance, not
@@ -209,14 +209,26 @@ both workflows check those bytes, request
 and executable before use. The preflight selftest statically requires that unique owned install
 step's exact ordered URL/SHA/download/hash/reinstall/version/executable chain followed by preflight,
 and negative-controls removal from either workflow plus outside-step decoys. This reinstall is a
-bounded hosted-runner normalization hypothesis, not a proven fix until one changed-head CI:
-activation head `96464d5…` passed its complete local battery, but run `32394244417`, attempt 1,
+preserved hosted-runner normalization transition: activation head `96464d5…` passed its complete
+local battery, but run `32394244417`, attempt 1,
 stopped before product when image `ubuntu24/20260816.277`'s already-resident verified .86 made the
 prior plain apt install a no-op and the unchanged one-launch preflight published no CDP endpoint.
-There is no candidate report, outcome, review PNG, or product verdict from that job.
+There is no candidate report, outcome, review PNG, or product verdict from that job. Exact local
+`89bfa05…`, run `20260820-pr32-89bfa05-compendiummem`, later completed 78/78 with zero findings and
+six PNGs, then exited 2 during owned browser shutdown. Terminal log `b0bb8abc…` is authoritative;
+pre-cleanup PASS report/verifier `66ba1366…` / `98664dca…` are false-green. This is a one-attempt/
+no-retry post-measurement instrument red, not certification or calibration.
+
+Frozen browser CDP `6da9e2ef…` distinguishes direct child exit from stdio-backed close. Collector
+`f4ad842c…` plus selftest `2713ed10…` keep report state lifecycle-pending through browser/server
+cleanup and lock release, publish a sample and terminal success only afterward, and require that
+lifecycle at verification. Measurement is now `a3b3bb9f…`; producer remains `d3223177…`.
+Fail-closed budget/test `ae4ab918…` / `60fa5e9f…` await baseline9 plus candidate20/21/22 from one
+clean committed source, once each without retry. No browser/package, launch argument, timeout,
+product byte, producer, or retry policy changed.
 This does not re-pin Gate A or the global browser authority: `../tools/deps.pinned.json` remains
 Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates, any
-timing, product or measurement bytes, or the one-attempt/zero-retry policy.
+timing, product bytes, or the one-attempt/zero-retry policy.
 
 `preview:verify` proves package integrity and the safety metadata. It does not assert that a
 commit is still the newest development commit. The full 40-character commit and
@@ -457,8 +469,10 @@ The ordinary battery (parallel-job structure since 2026-08-14) emits these artif
 - `v2-compendium-memory-evidence`: the exact-run `compendiummem-report.json` and every
   same-run phone/desktop list, detail, and focus-pinned review artifact produced. A terminal
   product PASS/FAIL must bind the complete six-image packet; an earlier instrument failure may
-  diagnose why none exists. The independent job runs the browser-free instrument selftest before
-  one ordinary active-budget certification, then always verifies the named run id and uploads
+  diagnose why none exists. A success remains RUNNING/lifecycle-pending until owned browser/server
+  cleanup and workspace-lock release complete; only then may its sample and terminal report
+  publish, and named verification requires that lifecycle. The independent job runs the browser-
+  free instrument selftest before one ordinary active-budget certification, then always verifies the named run id and uploads
   current evidence even when the gate is red. The local report/PNGs are Git-ignored,
   overwritten current-run evidence—not a committed PASS; certification exists only when the
   exact-current report verifies. They do not supply the still-open [HUMAN] six-image visual
@@ -502,7 +516,8 @@ When available on the default branch, the manual workflow:
    evaluate/event outcome under 45/15/5/2-second bounds, with no retry or authority-input change;
    its selftest owns the fail-closed ordered workflow-package control; retains the current report
    plus every same-run review artifact even on failure; then keeps Chrome for the later browser
-   gates. The reinstall remains a runner-image normalization hypothesis pending one changed-head CI;
+   gates. The reinstall is preserved runner-image history; current authority instead requires the
+   lifecycle-calibrated exact head and its one corresponding CI;
 6. passes the explicit `--approved-publication-candidate` producer flag and uploads
    evidence plus that candidate for 14 days;
 7. has only `contents: read` permission—no Pages token, deployment token, repository write,
