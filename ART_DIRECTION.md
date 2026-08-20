@@ -1,6 +1,6 @@
 # Celestial Frontier — Master Art Direction
 
-**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` Arc 1A art/resource overlay matches code as of 2026-08-17 and appears immediately below; the GP7 addendum preserves the earlier executed reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
+**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` Arc 1A art/resource overlay matches code as of 2026-08-20 and appears immediately below; the GP7 addendum preserves the earlier executed reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the
@@ -16,12 +16,16 @@ focus-pinned row are mounted. Compendium rows and the Planetside roster acquire 
 `leaseThumb` ownership of true asynchronous 132px resources. A complete deterministic genome
 snapshot keys each resource; concurrent consumers deduplicate, and stale queued work cancels on
 release, filter replacement, row rebind, panel close, or final document teardown. At most one
-serial dedicated module worker at a time owns the heavy deterministic painter import, 440px scratch paint, 132px
-downsample, and PNG encoding; the renderer owns the broker, protocol/lifecycle validation, leases,
-queues, cache publication, and DOM identity checks, with no synchronous fallback. The worker runs
+serial dedicated module worker at a time owns the heavy deterministic painter import, 440px scratch
+paint, 132px downsample, and PNG encoding. After app wiring, every default broker pump waits for one
+rendering opportunity and then one later task before dispatch; the renderer still owns the broker,
+protocol/lifecycle validation, leases, queues, cache publication, and DOM identity checks, with no
+synchronous fallback. The worker runs
 one job at a time and terminates after active work settles and its queue is empty; a later genuinely
-new producer burst owns a fresh instance/import. Device-class cache, decoded-pixel, byte,
-queue, active-job, lease, bounded portrait-cache, and worker-lifecycle caps/evidence are explicit.
+new producer burst owns a fresh instance/import. A pump-generation token invalidates a callback
+armed before bfcache suspension or disposal; resume schedules a fresh serviced turn. Device-class
+cache, decoded-pixel, byte, queue, active-job, lease, bounded portrait-cache, and worker-lifecycle
+caps/evidence are explicit.
 The owned `(max-width: 700px)` media-query subscription immediately applies smaller phone limits,
 trims both caches, and is removed on final loader disposal.
 Only the selected specimen detail publishes an asynchronous 440px DOM source; Back/Close cancel its
@@ -30,7 +34,8 @@ producer error remains a stable owned error tile, releases cleanly, and the exac
 through a fresh worker lease. Capability/import/protocol/worker failure terminates once and settles
 the active plus queued owners exactly once instead of retrying a broken worker for every tile.
 
-The phone and desktop resource ruler is now active measured authority. Exact committed repair
+The phone and desktop resource path is implemented, but the current ruler is fail-closed pending
+recalibration. Exact committed repair
 `dea03913014bc58134ebb06ca5b36892210a7571` passes the full Glass
 matrix; its following exact Compendium run `20260817150005919-93781-b6643ba7a6` is preserved as a
 truthful 75/76 result solely red at `desktop/warm-plateau`. It proves neither a product leak nor a
@@ -39,13 +44,23 @@ observation and measured refill, while its heap ruler omitted embedder/backing o
 repaired seam observes full native warm-cache state before cap control; records used, embedder,
 backing-store, and aggregate heap; proves stable unique keys plus unchanged job/disposal/worker
 counters over the last three cycles of one retained window; replays raw capsules; and binds complete
-measurement inputs plus the exact built owner-to-worker-to-painter graph. The active budget embeds
+measurement inputs plus the exact built owner-to-worker-to-painter graph. Da0's historical budget embeds
 paired `20260820-arc1a-baseline3-21af3fa` and candidate2/3/4 from clean `21af3fa2…`, under
 measurement authority `bb03a3af…`, producer authority `291b794e…`, and exact Edge 151.0.4129.86.
-Strict ceilings exceed the three-run maxima; the baseline preserves four faults and breaches 14
-phone / 13 desktop fields. Exact-head certification on the eventual activation commit remains open.
+Strict ceilings exceeded the three-run maxima; the baseline preserved four faults and breached 14
+phone / 13 desktop fields. Commit `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` locally certified
+that exact ruler and passed its Chrome Smoke, full Glass, persona, root-layout, and preview gates.
+PR run `32334254714`, attempt 1, nevertheless retained a no-retry phone Planetside
+`product-unanswerable` red: the target missed 2,000 ms while the root heartbeat remained timely.
+Zero-delay successor pumps could starve renderer and inspector turns even though painting ran in the
+worker. The serviced-turn/bfcache repair changes producer authority to
+`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`; the tracked budget is now
+`calibration-required` with empty candidate samples. Baseline3/candidate2/3/4 remain truthful history
+for old producer `291b794e…`. Fresh paired baseline plus three candidates, activation, exact-head
+certification, and CI remain open.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
-browser. Six phone/desktop list, focus-pinned, and detail PNGs still require HUMAN review. Arc 1B
+browser. Da0's six PNGs are stale for the repaired producer; a fresh phone/desktop list,
+focus-pinned, and detail set still requires HUMAN review. Arc 1B
 scene-resource ownership/disposal and live HD planet replacement remain open.
 
 **What remains planned:** V2 has no Cargo, Shipyard, ship portrait, crafting, research, or

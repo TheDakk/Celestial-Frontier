@@ -173,6 +173,15 @@ const defaultSubscribeDeviceClassChange = (listener: () => void): (() => void) =
   } catch { return () => {}; }
 };
 
+/* A completed worker job can publish several phase/result messages at once.
+   Starting the next job from a zero-delay timer lets that message/timer chain
+   repeatedly win over renderer input and inspector work on a constrained
+   browser. Cross one rendering opportunity and then one later task before every pump;
+   subsequent pumps wait for the document's next rendering opportunity. */
+const defaultScheduleTask: SpeciesArtTaskScheduler = (task) => {
+  requestAnimationFrame(() => { setTimeout(task, 0); });
+};
+
 const defaultWorkerFactory: SpeciesArtWorkerFactory = () => new Worker(
   new URL('./species-art.worker.ts', import.meta.url),
   { type: 'module', name: 'cf-species-art' },
@@ -564,7 +573,7 @@ export class SpeciesArtLoader {
     this.broker = new SpeciesArtBroker({
       createProducer,
       getDeviceClass: options.getDeviceClass ?? defaultDeviceClass,
-      scheduleTask: options.scheduleTask,
+      scheduleTask: options.scheduleTask ?? defaultScheduleTask,
     });
     const subscribeDeviceClassChange = options.subscribeDeviceClassChange
       ?? (options.getDeviceClass ? null : defaultSubscribeDeviceClassChange);

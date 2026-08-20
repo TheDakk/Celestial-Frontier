@@ -2,32 +2,35 @@
 
 ## Current port status — 2026-08-20
 
-> **Arc 1A Compendium resource implementation (2026-08-20; automated product
-> implementation and an active measured ruler are present,
-> exact-head certification and [HUMAN] review remain open):** the 1,500-row Compendium is virtualized. List portraits use
+> **Arc 1A Compendium resource implementation (2026-08-20; product and serviced-turn
+> scheduler repair present; resource ruler `calibration-required`; exact-head certification
+> and [HUMAN] review open):** the 1,500-row Compendium is virtualized. List portraits use
 > leased, cancellable, deduplicated 132px thumbnails; the visible detail owns an
 > asynchronous 440px image; and Planetside acquires/releases through the same lease
-> path instead of bypassing resource ownership. At most one serial dedicated module worker at a time,
-> activated only after app wiring and a serviced render turn, owns the painter import,
+> path instead of bypassing resource ownership. After app wiring, every default broker pump waits
+> for one rendering opportunity and then one later task (`requestAnimationFrame` followed by
+> `setTimeout(0)`) before dispatch. At most one serial dedicated module worker at a time owns the painter import,
 > 440px scratch paint, 132px downsample, and PNG encoding. The renderer has no
 > synchronous painter fallback; the worker terminates after active work settles and its queue is
-> empty, and a later genuinely new producer burst owns a fresh instance/import.
+> empty, and a later genuinely new producer burst owns a fresh instance/import. Pump-generation
+> invalidation rejects a callback armed before bfcache suspension or disposal; resume schedules a
+> fresh serviced turn.
 > Capability/import/protocol/worker failures terminate once and settle active
 > plus queued owners without retrying every tile, while paint/content-encode errors are
 > per-job. Exact main-to-worker-to-painter ownership and document/epoch/instance/job/
 > phase evidence are build- and report-bound. The repository budget record at
-> `budgets/compendium-memory-v1.json` is now `active`. It embeds paired broken-baseline run
-> `20260820-arc1a-baseline3-21af3fa` and three independent one-attempt candidate runs
-> `20260820-arc1a-candidate2-21af3fa`, `20260820-arc1a-candidate3-21af3fa`, and
-> `20260820-arc1a-candidate4-21af3fa`, all candidate/collector bytes from clean committed
-> `21af3fa2c096f0590b067c0af578d7ea29000378`.
+> `budgets/compendium-memory-v1.json` is now fail-closed `calibration-required`, with empty
+> phone/desktop candidate samples. It retains measurement authority `bb03a3af…` and binds repaired
+> producer authority `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`
+> (`assets/main-BAg-DH_f.js`; worker and painter unchanged). It cannot certify until one fresh paired
+> broken baseline and three independent candidate runs are reduced into new strict ceilings.
 > `npm run compendiummem` is its standalone one-browser, one-attempt,
 > zero-automatic-retry gate, preceded by `npm run compendiummem:selftest` and
 > followed by exact-run verification. Its report and, for complete product
 > evidence, six phone/desktop list/detail/focus-pinned PNGs live under the
 > Git-ignored `apps/game/smoke/`
 > evidence root: they are overwritten current-run evidence, not a committed
-> PASS or a certification claim carried by tracked source. The six images
+> PASS or a certification claim carried by tracked source. A fresh certifying run's six images
 > still require explicit [HUMAN] visual review.
 >
 > Exact committed Glass repair `dea03913014bc58134ebb06ca5b36892210a7571`
@@ -41,13 +44,28 @@
 > heap; proves stable warm keys/reuse and a post-cap restored snapshot; replays compact
 > raw calibration capsules; measures repeated warm ownership at one fixed retained window rather
 > than traversing beyond the native LRU cap; and binds the complete measurement-input plus built
-> owner-to-worker-to-painter authority. Measurement authority is
-> `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c` and producer authority is
-> `291b794e0dcd93ee21d7ff88cbca383e865a62e8dd162573d475131aca3b911e`. Strict ceilings sit above
-> every three-run maximum and include aggregate page + embedder + backing-store heap; the sealed
-> last-three-cycle fixed-window plateau preserves keys and job/disposal/worker counters. Baseline3
-> retains all four expected faults and breaches 14 phone ceilings and 13 desktop ceilings. This
-> active ruler still needs exact-head certification on the eventual activation commit, push, and CI.
+> owner-to-worker-to-painter authority. Under measurement authority
+> `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c` and historical producer
+> `291b794e0dcd93ee21d7ff88cbca383e865a62e8dd162573d475131aca3b911e`, baseline3 and independent
+> candidate2/3/4 produced strict ceilings above every three-run maximum, aggregate page + embedder +
+> backing-store heap, and a sealed fixed-window last-three-cycle plateau. Baseline3 retained all four
+> expected faults and breached 14 phone ceilings and 13 desktop ceilings. Commit
+> `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` activated that ruler; local one-attempt Edge run
+> `20260820-arc1a-active-cert-da0de20` passed, as did its no-retry Chrome Smoke, full 12-viewport
+> Chrome Glass matrix, matching nine-persona join, root 787/787 layout, and verified nonpublishable
+> exact-source preview.
+>
+> GitHub run `32334254714`, attempt 1, correctly stayed red without retry. Report
+> `gha-32334254714-1-compendiummem` bound clean detached PR test-merge
+> `88b9c7b0aa90b860a5474bd099cfab48b125a3f5`, exact Edge .86, matching budget bytes, and historical
+> producer `291b794e…`. Phone completed 29 stages through veteran-Earth boot readiness; Planetside
+> thumb settlement then missed the unchanged 2,000 ms target bound at 2,001.723 ms while the root
+> browser heartbeat answered in 0.872 ms. The terminal classification is
+> `product-unanswerable`, not instrument/transport. The main-thread broker's zero-delay successor
+> pumps could repeatedly win over rendering and inspector work even though paint ran in a worker.
+> The serviced-turn repair changes the built producer, so the da0 ruler and its six images remain
+> truthful history but are stale for current certification. Fresh calibration, ruler activation,
+> exact-head certification, push, PR CI, and fresh six-image HUMAN review remain open.
 >
 > Numeric certification is scoped to the Arc-local browser authority
 > `arc1a-compendium-memory-only`: product `Edg/151.0.4129.86`, revision
@@ -821,12 +839,15 @@ without widening its eleven-field compatibility boundary into ownership or
 receipt authority. After that, decide and preserve hybrid parent identity in CFB codes;
 finish the remaining legacy Field Training arc and keep the canonical Guide's
 current-safe topic bodies synchronized as systems land; add tooltip deep-links and
-the Advanced Briefing surface; preserve Arc 1A's exact-current one-attempt report
-authority and complete its six-image [HUMAN] review without claiming Arc 1B; extend explicit
+the Advanced Briefing surface; preserve da0's exact historical local PASS and no-retry CI red,
+recalibrate the repaired Arc 1A producer, and complete a fresh six-image [HUMAN] review without
+claiming Arc 1B; extend explicit
 ownership/destruction to the remaining Pixi canvas textures and long-session
 texture/audio paths; attach completed HD planet textures to live sprites;
 persist/invalidate epoch edges and settle hidden-tab/reduced-motion policy;
-then close remaining literal Gate-B boundaries and split-store/CAS persistence.
+then close remaining literal Gate-B boundaries and split-store/CAS persistence. Arc 1A first needs
+fresh paired baseline plus three-candidate calibration for producer `1c8200d7…`, exact-head
+certification, and a green no-retry PR battery; da0's local PASS and CI red both remain preserved.
 Static Platinum-reviewed portraits are deliberately frozen. The next major art
 ceiling is Phase 5 living rigs/animation and Phase 6's 43 biome scenes, not a
 blanket repaint of the 1,250 portraits covered by the package-level PASS.
@@ -1111,7 +1132,7 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 | `npm run preview:selftest` / `npm run preview:package -- --origin=https://<separate-host>` / `npm run preview:verify -- --verify=<root>` / `npm run preview:smoke -- --root=<root>` | Negative-controls production/path/insecure origins, transient working-tree poison, package tampering, version/build drift, and both historical corner badges; then creates, verifies, and real-browser-boots a clean-commit package from an isolated exact-HEAD snapshot. The guarded loader, `robots.txt`, `preview.json` tree/lock/input/byte hashes, shared v2.0 version and site `version.json` must agree. The 320×568 boot opens the Guide and requires v2.0 plus the full source commit with no floating badge. The shared workspace lock prevents overlap with source-mutating controls, and CI pins one exact `CF_BROWSER` at job scope. This final preview caller and the root layout gate (`tools/uilayout.js`, the battery's first real browser launch — the same diagnosed Linux cold-start phase, run `31758515194`) each own a fixed bounded 30-second CDP-start allowance; the generic launcher remains at 15 seconds, and command/shutdown limits are unchanged. Every platform captures the exact caller options and runs a real browser outcome. On POSIX the selftest starts Chrome immediately but withholds its ready CDP endpoint for 16 seconds: the generic path must reject while the exact preview caller retains its full 30-second start window, reaches `Browser.getVersion`, and closes. Default output is remote-blocked; only an approved candidate is eligible for the mapped post-green `develop` publisher, which separately owns deployment authority. |
 | `npm run smoke:ci` | Runs the authoritative real-browser `slicesmoke.mjs` exactly once, retains complete stdout/stderr in `slice-smoke.log`, and writes commit/branch/working-tree/browser/screenshot-bound `slice-smoke-report.json`. It uses browser-mouse input to hit-test both desktop rail gaps, their independent ownership-removal controls, non-Element delegated events, deliberately outside Search, and the bidirectional owned/unowned canvas close outcome. Cold Planetside settlement requires the expected 3–8 ready images with nonempty `src`, `complete`, exact 132×132 natural dimensions, and queued/active jobs zero under one immutable monotonic 30-second phase; every blocking target evaluation is clipped to that same remaining deadline and a labelled target timeout becomes one structured no-retry diagnosis. It also advances the app-owned monotonic source by one exact epoch, drives the real `current()` → `persistView()` → raw IndexedDB → fresh reload chain, and rejects stored-base/stale-reload substitutions without claiming automatic edge persistence. `smokereport` owns one full-lifetime workspace lock and passes a validated one-child inherited lease to `slicesmoke`, retaining the lock through screenshot hashing and report finalization. A failure prints the first scoped diagnosis plus a related count; it never retries a red run. |
 | `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion, aggregate twin-canvas DPR and boot order without retrying. The Guide carrier control requires an actual exact-one-carrier removal and rejects zero/multiple/no-op/wrong/still-rendered mutations. Short-landscape Compendium uses the left safe-height workspace while Search, dock, and Survey when open remain operable at right; hostile A++ first/middle/last/focus-pinned rows and exact clipping-ancestor diagnostics make a 48px row regression fail for its real cause. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`. Import/reload owns `import-phase-sequence`, `replacement-ticker-quiescence`, `replacement-document-loader-token-phase`, `reload-resource-release`, and `replacement-boot-phase-sequence`: the exact import stream requires ticker-running invocation, a stopped claim/write/release, and one absolute 20-second clock before the bounded arm. A capture-scoped ordinal requires the exact release-started N → release N+1 → release-complete N+2 tail; only the valid release-first intermediate waits under that unchanged clock. Sticky receipts then require a changed-loader commit within 5 seconds, the exact 12-stage `cf-v2-boot-phase/v1` sequence, and one `cf-v2-slice-ready/v1` tail from the new session/context/generation/origin/loader/token within 20 seconds. The ticker stays false through wiring and true thereafter; browser-native `performanceNow` is strictly below the bound. Two strict at-most-2-second post-ready cycles each pair an exact-context target probe with an independent browser-process heartbeat, with cycle two awaiting a later post-render ticker turn; the import arm plus both pairs form the exact five-row command ledger. The same-backing ultra control applies that target/heartbeat discriminator to both downshift and restore, requires a later advancing ticker turn, and rejects stopped/stale ticker states. Bounded sticky failure evidence diagnoses red and separates a target-only product answerability failure from transport/instrument failure. No retry, timeout increase, or IndexedDB timeout race is used. The command owns the shared workspace lock while building/browsing. |
-| `npm run compendiummem:selftest` / `npm run compendiummem` / `node tools/compendiummem.mjs --verify-run=<run-id>` | Negative-controls the browser-free Compendium instrument, then performs one standalone, one-browser, one-attempt/no-retry current-budget run and independently verifies the named report. A `calibration-required` budget fails closed and cannot certify; the current active budget embeds exact baseline3 plus candidate2/3/4 raw capsules and strict ceilings above the replayed maxima. The gate drives the exact 1,500-row fixture across phone and desktop; observes the full native cache before destructive cap control; repeats one fixed retained window so intentional LRU replacement cannot masquerade as a plateau; records used/embedder/backing/aggregate heap, stable unique key identity/reuse across the sealed last-three-cycle warm plateau, and the post-cap restored state; reduces and replays compact raw baseline/candidate capsules against exact budget bytes; and binds the complete fixture/generator/schema/contract/collector/browser/lock/package/baseline-save/art-build/outcome inputs, Arc-local Edge authority, six same-run review PNGs, semantic 132px decode, and released worker document/producer/instance/job/phase/result/error/disposal equations. A build guard binds one exact index owner → module worker → worker-local lazy painter graph and rejects renderer-reachable legacy synchronous species art. Pre-measurement browser mismatch remains instrument failure rather than product evidence. `apps/game/smoke/compendiummem-*` is ignored current-run evidence. Automated PASS is terminal only for that exact current report on the committed activation head and does not supply the still-open [HUMAN] six-image judgment. |
+| `npm run compendiummem:selftest` / `npm run compendiummem` / `node tools/compendiummem.mjs --verify-run=<run-id>` | Negative-controls the browser-free Compendium instrument, then performs one standalone, one-browser, one-attempt/no-retry current-budget run and independently verifies the named report. A `calibration-required` budget fails closed and cannot certify; that is the current tracked state after the serviced-turn scheduler changed built producer authority to `1c8200d7…`. Fresh paired baseline plus three independent candidate capsules and derived strict ceilings are pending. Once active, the gate drives the exact 1,500-row fixture across phone and desktop; observes the full native cache before destructive cap control; repeats one fixed retained window so intentional LRU replacement cannot masquerade as a plateau; records used/embedder/backing/aggregate heap, stable unique key identity/reuse across the sealed last-three-cycle warm plateau, and the post-cap restored state; reduces and replays compact raw baseline/candidate capsules against exact budget bytes; and binds the complete fixture/generator/schema/contract/collector/browser/lock/package/baseline-save/art-build/outcome inputs, Arc-local Edge authority, six fresh same-run review PNGs, semantic 132px decode, and released worker document/producer/instance/job/phase/result/error/disposal equations. A build guard binds one exact index owner → module worker → worker-local lazy painter graph and rejects renderer-reachable legacy synchronous species art. Pre-measurement browser mismatch remains instrument failure rather than product evidence. `apps/game/smoke/compendiummem-*` is ignored current-run evidence. Automated PASS is terminal only for that exact current report on the committed activation head and does not supply the still-open [HUMAN] fresh six-image judgment. |
 | `npm run persona:selftest` / `npm run persona:report` | Joins only passing slice-smoke and glass-matrix evidence with matching commit/branch and dirty-tree digest into `automated-persona-report.{json,md}`. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |
 | `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools, including root `tools/uilayout.js`; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. Environment scope is process-local: a green browser in one workflow step does not pin the resolver in the next. CI therefore supplies the exact path at job scope and resolves it before long gates. On macOS the launch boundary rejects the Codex Seatbelt environment before spawn: that sandbox denies Chromium's LaunchServices registration and otherwise produces an Edge SIGABRT before CDP. Approved out-of-sandbox browser execution remains the evidence path. |
 | `node tools/browsercdp.mjs --selftest` | Uses the manifest/lock-declared `ws` transport and owns port-0 `DevToolsActivePort` startup, WebSocket opening, complete `Browser.getVersion` provenance, early-exit plus bounded stderr head/tail diagnosis, post-open command bounds, pending-command rejection, bounded TERM→KILL shutdown, and validated profile cleanup. Endpoint publication requires two consecutive identical, fully valid raw snapshots before socket construction: parser-invalid regular-file content is treated as potentially incomplete inside the same one-process startup deadline, unsafe file types/links fail immediately, and persistent malformed content fails at the unchanged deadline before any socket. Portable controls stage a valid-looking endpoint prefix, a port-only file with its endpoint line missing, and invalid endpoint syntax before their final values; they separately prove persistent malformed rejection, immediate unsafe-file cleanup, one launch, final-endpoint socket identity, child shutdown, and profile cleanup. Startup is one monotonic, absolute spawn → endpoint → socket-open deadline; a separately validated socket cap starts before construction, defaults to the startup budget, and is clipped to its remaining time. Its never-opening control is phase-owned: a private launcher seam writes a valid endpoint and starts one portable Node child, so a 200-millisecond socket failure proves socket close, child shutdown, and profile cleanup without depending on real-browser startup. Complementary portable controls prove delayed-open success beyond a shorter command ceiling, rejection beyond an explicit socket cap, clipping to a shorter startup remainder, fail-closed expiry before socket construction, guarded cleanup when the constructor itself consumes the remainder, rejection of a just-late `onopen` before its overdue timer runs, and pre-launch rejection of nonpositive/fractional caps. Cleanup arms an error handler before closing a still-CONNECTING transport. The following live provenance leg is the selftest process's first real browser launch and owns unchanged 30-second startup plus 15-second-within-startup socket caps; the later warm leg retains 10 seconds for both. Both retain 1,500-millisecond command and 2-second shutdown limits, and assert profile cleanup in `finally` on either rejection or success. A caller may choose a shorter positive per-command timeout for a phase-owned confirmation but cannot exceed the connection-wide ceiling; the selftest rejects both a deliberately stalled short command and attempted ceiling expansion. Root `tools/uilayout.js` consumes this launcher and adds stale-report, exact-run, and sealed-inventory controls. Root preflight launches this same probe; legacy `bootperf` shares the resolver/`ws` transport but not this lifecycle. |

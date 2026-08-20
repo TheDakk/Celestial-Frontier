@@ -1,4 +1,8 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+import type {
+  SpeciesArtProducerRequest,
+  SpeciesArtProducerSink,
+} from '@cf/art/species-broker';
 import { speciesVisualKey } from '@cf/art/species-identity';
 import {
   SPECIES_ART_WORKER_REQUEST_SCHEMA,
@@ -364,6 +368,111 @@ describe('species art worker protocol', () => {
     loader.dispose('test complete');
     expect(worker.terminated).toBe(1);
     expect(workers).toHaveLength(1);
+  });
+
+  it('services one animation frame and one later task before every default broker pump', () => {
+    vi.useFakeTimers();
+    const frames: FrameRequestCallback[] = [];
+    vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback): number => {
+      frames.push(callback);
+      return frames.length;
+    });
+    try {
+      let sink: SpeciesArtProducerSink | null = null;
+      const requests: SpeciesArtProducerRequest[] = [];
+      const loader = new SpeciesArtLoader('serviced-turn-document', {
+        createProducer: (next) => {
+          sink = next;
+          return {
+            render: (request) => { requests.push(request); },
+            dispose: () => {},
+          };
+        },
+        getDeviceClass: () => 'phone',
+      });
+      const first = loader.leaseThumb(GENOME);
+      const second = loader.leaseThumb({ ...GENOME, seed: 134 });
+      loader.activate();
+      expect(requests).toHaveLength(0);
+      expect(frames).toHaveLength(1);
+      expect(vi.getTimerCount()).toBe(0);
+
+      vi.runOnlyPendingTimers();
+      expect(requests).toHaveLength(0);
+      frames.shift()!(0);
+      expect(requests).toHaveLength(0);
+      expect(vi.getTimerCount()).toBe(1);
+      vi.runOnlyPendingTimers();
+      expect(requests).toHaveLength(1);
+
+      const completed = requests[0]!;
+      const url = 'data:image/png;base64,cG5n';
+      sink!.result({
+        status: 'success', jobId: completed.jobId, kind: completed.kind, key: completed.key,
+        asset: {
+          key: completed.key, width: 132, height: 132, url,
+          encodedBytes: new TextEncoder().encode(url).byteLength,
+          decodedPixels: 132 * 132,
+        },
+      });
+      expect(requests).toHaveLength(1);
+      expect(frames).toHaveLength(1);
+      expect(vi.getTimerCount()).toBe(0);
+
+      vi.runOnlyPendingTimers();
+      expect(requests).toHaveLength(1);
+      frames.shift()!(16);
+      expect(requests).toHaveLength(1);
+      expect(vi.getTimerCount()).toBe(1);
+      vi.runOnlyPendingTimers();
+      expect(requests).toHaveLength(2);
+      first.release();
+      second.release();
+      loader.dispose('serviced-turn test complete');
+    } finally {
+      vi.useRealTimers();
+      vi.unstubAllGlobals();
+    }
+  });
+
+  it('invalidates a pending default pump across bfcache suspension and resumes on a fresh turn', () => {
+    vi.useFakeTimers();
+    const frames: FrameRequestCallback[] = [];
+    vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback): number => {
+      frames.push(callback);
+      return frames.length;
+    });
+    try {
+      const requests: SpeciesArtProducerRequest[] = [];
+      const loader = new SpeciesArtLoader('suspended-turn-document', {
+        createProducer: () => ({
+          render: (request) => { requests.push(request); },
+          dispose: () => {},
+        }),
+        getDeviceClass: () => 'phone',
+      });
+      const lease = loader.leaseThumb(GENOME);
+      loader.activate();
+      expect(frames).toHaveLength(1);
+
+      loader.suspendForBfcache();
+      loader.resumeFromBfcache();
+      expect(frames).toHaveLength(2);
+
+      frames.shift()!(0);
+      vi.runOnlyPendingTimers();
+      expect(requests).toHaveLength(0);
+
+      frames.shift()!(16);
+      expect(requests).toHaveLength(0);
+      vi.runOnlyPendingTimers();
+      expect(requests).toHaveLength(1);
+      lease.release();
+      loader.dispose('suspended-turn test complete');
+    } finally {
+      vi.useRealTimers();
+      vi.unstubAllGlobals();
+    }
   });
 
   it('owns one real device-class subscription and trims a narrowed queue immediately', () => {

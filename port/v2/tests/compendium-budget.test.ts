@@ -22,7 +22,7 @@ const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const EXPECTED_MEASUREMENT_AUTHORITY =
   'bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c';
 const EXPECTED_PRODUCER_AUTHORITY =
-  '291b794e0dcd93ee21d7ff88cbca383e865a62e8dd162573d475131aca3b911e';
+  '1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2';
 const EXPECTED_CANDIDATE_RUNS = [
   '20260820-arc1a-candidate2-21af3fa',
   '20260820-arc1a-candidate3-21af3fa',
@@ -215,6 +215,18 @@ describe('Arc 1A Compendium budget authority', () => {
   });
 
   it('activates only the exact Arc-local Edge build authority and paired samples', () => {
+    if (activeBudget.status === 'calibration-required') {
+      expect(activeBudget.measurementAuthority.sha256).toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+      expect(activeBudget.producerAuthority.sha256).toBe(EXPECTED_PRODUCER_AUTHORITY);
+      expect(activeBudget.ceilings).toBeNull();
+      for (const profile of PROFILE_NAMES) {
+        expect(activeBudget.calibration.samples[profile]).toEqual([]);
+        expect(activeBudget.pairedBrokenBaseline.samples[profile]).toEqual([]);
+      }
+      expect(activeBudget.pairedBrokenBaseline.status).toBe('measurement-required');
+      expect(activeBudget.pairedBrokenBaseline.collectorCommit).toBeNull();
+      return;
+    }
     expect(activeBudget.status).toBe('active');
     expect(activeBudget.ceilings).not.toBeNull();
     expect(activeBudget.measurementAuthority.sha256).toBe(EXPECTED_MEASUREMENT_AUTHORITY);
@@ -279,6 +291,13 @@ describe('Arc 1A Compendium budget authority', () => {
   });
 
   it('pins the exact sealed raw sample objects selected from all four local runs', () => {
+    if (activeBudget.status === 'calibration-required') {
+      for (const profile of PROFILE_NAMES) {
+        expect(activeBudget.calibration.samples[profile]).toEqual([]);
+        expect(activeBudget.pairedBrokenBaseline.samples[profile]).toEqual([]);
+      }
+      return;
+    }
     for (const profile of PROFILE_NAMES) {
       expect(activeBudget.calibration.samples[profile].map(sampleObjectSha256))
         .toEqual(EXPECTED_SAMPLE_OBJECT_SHA256[profile].candidate);
@@ -290,6 +309,10 @@ describe('Arc 1A Compendium budget authority', () => {
   });
 
   it('keeps every active ceiling strictly above its samples and below the broken shape', () => {
+    if (activeBudget.status === 'calibration-required') {
+      expect(activeBudget.ceilings).toBeNull();
+      return;
+    }
     expect(strictHeadroomFailures(activeBudget)).toEqual([]);
     const baselineBreaches: Record<ProfileName, string[]> = {
       phone: [
@@ -341,6 +364,10 @@ describe('Arc 1A Compendium budget authority', () => {
   });
 
   it('uses strict sentinels below the next reachable capped resource state', () => {
+    if (activeBudget.status === 'calibration-required') {
+      expect(activeBudget.ceilings).toBeNull();
+      return;
+    }
     const phone = activeBudget.ceilings!.phone;
     const desktop = activeBudget.ceilings!.desktop;
     expect(phone.liveCacheEntriesMax).toBe(96.5);
@@ -363,6 +390,10 @@ describe('Arc 1A Compendium budget authority', () => {
   });
 
   it('rejects a paired baseline from another Arc-local Edge build authority', () => {
+    if (activeBudget.status === 'calibration-required') {
+      expect(activeBudget.pairedBrokenBaseline.samples.phone).toEqual([]);
+      return;
+    }
     const wrong = structuredClone(activeBudget);
     wrong.pairedBrokenBaseline.samples.phone[0]!.browser.jsVersion = '15.1.23.8';
     expect(validateBudgetRecord(

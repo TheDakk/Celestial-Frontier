@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-17. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-20. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -777,6 +777,35 @@ exact decoded dimensions, state, queue and active work) under one monotonic phas
 blocking CDP commands are clipped to the same remaining time. A fixed sleep, long data URL, copied
 zero counter, later post-settlement observation, wider deadline, or green renderer-only heap number
 cannot substitute for those outcomes.
+
+**Correction earned by PR #32's da0 battery:** off-thread work, one serial producer, and
+close-at-idle do not by themselves guarantee the main target gets a serviced turn. Local exact-da0
+Compendium certification and its Chrome gates passed, but GitHub run `32334254714`, attempt 1,
+preserved a terminal phone `product-unanswerable` result without retry. Its exact Edge, active-budget
+bytes, and producer authority all matched. After 29 completed stages, Planetside thumb settlement's
+target command missed the unchanged 2,000 ms deadline at 2,001.723 ms while independent root-session
+`Browser.getVersion` answered in 0.872 ms. The partial report did not retain producer-phase state,
+so it could not distinguish worker import, paint, encode, result publication, or absence at the
+exact timeout. Source inspection nevertheless
+showed that completion-message bursts followed by zero-delay successor pumps could repeatedly win
+over rendering, input, and inspector work.
+
+**Every default producer pump must cross the user-visible scheduler, not merely a timer queue.**
+For this broker, each initial and successor pump waits for one rendering opportunity and then one
+later task (`requestAnimationFrame` → `setTimeout(0)`) before dispatch. Negative-control both halves:
+flushing timers before the frame must dispatch nothing, and servicing the frame without the later
+task must dispatch nothing, for both the first and successor job. Persisted suspension or disposal
+invalidates the generation of an already-armed pump; resume schedules a fresh serviced turn and a
+stale callback must not clear or consume it. Do not answer this class with a longer target bound,
+worker concurrency, an early ready marker, or a retry.
+
+The scheduler is also producer authority. Changing the main-thread owner bundle makes any candidate
+capsule, ceiling, or six-image package bound to the old producer stale for current certification even
+when its historical result remains truthful. Fail the budget closed, bind the new exact producer,
+recalibrate from fresh paired baseline plus independent candidates, and certify the eventual
+activation head once. For this repair, that bound producer is
+`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`; its tracked budget is
+`calibration-required` until that new evidence is activated.
 
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next

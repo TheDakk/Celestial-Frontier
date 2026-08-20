@@ -19,18 +19,20 @@
 >
 > `packages/art/src/speciesidentity.ts`, `speciescanvas.ts`, `speciespainter.ts`, and
 > `speciesbroker.ts` separate deterministic identity, portable canvas allocation,
-> painting, and main-thread ownership. After full app wiring and a serviced render
-> turn, at most one serial dedicated module worker at a time dynamically imports the painter, paints a
+> painting, and main-thread ownership. After full app wiring, the app loader's default scheduler
+> crosses one rendering opportunity and then one later task (`requestAnimationFrame` →
+> `setTimeout(0)`) before every broker pump. At most one serial dedicated module worker at a time dynamically imports the painter, paints a
 > 440px scratch canvas, downsamples and encodes a true 132px thumbnail, and returns
 > only validated identity-bound results. The renderer never synchronously falls back
 > to that heavy path; the worker runs one job at a time and terminates after active work settles and
 > its queue is empty, keeping the measured page heap honest. A later new producer burst owns a fresh
-> instance/import. Once-per-worker capability,
+> instance/import. Broker pump-generation invalidation rejects a callback armed before bfcache
+> suspension or final disposal; resume schedules a fresh serviced turn. Once-per-worker capability,
 > import, protocol, and worker failures terminate the instance and settle active plus
 > queued owners exactly once, while content-specific paint/encode errors remain
 > per-job. Phone/desktop cache, decoded-pixel, byte, queue, lease, portrait, worker
 > lifecycle, and phase evidence are explicit; current resource-budget status is
-> `active`. Specimen detail requests an
+> `calibration-required`. Specimen detail requests an
 > asynchronous 440px result through the same owner; Back/Close cancels that request
 > and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
 > synchronous audit compatibility and are rejected from the live entry-to-worker
@@ -60,14 +62,37 @@
 > retains a post-cap restored snapshot; embeds compact replayable baseline/candidate capsules; and
 > binds the complete fixture/generator/schema/contract/collector/browser/lock/package/
 > baseline-save/art-build/outcome input set plus the exact built index-owner → module-worker
-> → worker-local-painter graph. The active budget embeds paired run
+> → worker-local-painter graph. Da0's historical budget embeds paired run
 > `20260820-arc1a-baseline3-21af3fa` plus independent one-attempt candidate2/3/4 runs from
-> clean committed `21af3fa2…`, under measurement authority `bb03a3af…`, producer authority
-> `291b794e…`, and exact Edge 151.0.4129.86. Strict ceilings exceed all three-run maxima;
-> the baseline retains all four sealed faults and breaches 14 phone / 13 desktop fields.
-> Exact-head certification on the eventual activation commit remains open.
+> clean committed `21af3fa2…`, under measurement authority `bb03a3af…`, historical producer authority
+> `291b794e…`, and exact Edge 151.0.4129.86. Strict ceilings exceeded all three-run maxima;
+> the baseline retained all four sealed faults and breached 14 phone / 13 desktop fields. Commit
+> `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` locally certified that exact ruler; its no-retry Chrome
+> Smoke, full Glass, persona, root-layout, and nonpublishable-preview gates also passed.
+>
+> PR run `32334254714`, attempt 1, preserved the later terminal product red. Its clean detached
+> test-merge `88b9c7b0aa90b860a5474bd099cfab48b125a3f5` matched exact Edge .86, the active budget bytes, and
+> producer `291b794e…`. Phone completed 29 stages through veteran-Earth boot readiness; Planetside
+> thumb settlement then missed the unchanged 2,000 ms target command bound at 2,001.723 ms while
+> root-session `Browser.getVersion` answered in 0.872 ms. The report is correctly
+> `product-unanswerable`, not instrument/transport, and desktop did not run. Its partial evidence did
+> not retain producer phase at the timeout, so it cannot distinguish worker import, paint, encode,
+> result publication, or absence there. Source inspection shows the heavy painter is off-thread and
+> that zero-delay main-thread successor pumps could repeatedly win over rendering and inspector work.
+>
+> The serviced-turn/bfcache repair changes exact built producer authority to
+> `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`: index
+> `f528797d1b3339291dedd5db4b768add9485e8006b1158690323ff2f5ff2769e`, owner
+> `assets/main-BAg-DH_f.js` at
+> `b12503d154d83a44c4606c31306bf756d6a35e1459877a30e6a89d423c49261f`, with worker and painter
+> unchanged.
+> The tracked budget is now fail-closed `calibration-required` with empty candidate arrays.
+> Baseline3/candidate2/3/4 remain truthful history for old producer `291b794e…`, not current
+> certification. Fresh paired baseline plus three candidates, strict ceilings, activation, exact-head
+> certification, and CI remain open.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
-> pin. The six phone/desktop list, focus-pinned, and detail PNGs still await HUMAN review.
+> pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
+> focus-pinned, and detail set still awaits HUMAN review.
 > Arc 1B scene-resource ownership/disposal and live HD planet replacement remain open.
 > **2026-08-16 D-TRAIN-1 source overlay (current working tree; local browser
 > evidence recorded below; exact-head CI, integration, real-save Gate C, and
@@ -1342,8 +1367,10 @@ flora = stalk+fronds+bloom, fungi = mushrooms, fauna = assembled anatomy). In cu
 audit compatibility; the production entry graph rejects it as a renderer-reachable dependency.
 `leaseThumb(g)` is the Compendium and Planetside path: `SpeciesArtBroker` snapshots the complete
 genome, deduplicates/cancels keyed asynchronous jobs, and owns a true-132px LRU capped at **96 / 256**
-with decoded-pixel, byte, queue, active-job, lease, and worker-lifecycle limits. At most one serial
-lazy module worker at a time imports the portable painter, creates a 440px scratch canvas,
+with decoded-pixel, byte, queue, active-job, lease, and worker-lifecycle limits. The app's default
+broker scheduler crosses one animation frame and one later task before every pump; bfcache
+suspension invalidates an already-armed pump generation and resume schedules a fresh one. At most
+one serial lazy module worker at a time imports the portable painter, creates a 440px scratch canvas,
 downsamples to 132px, and encodes the result off the renderer. It terminates after active work
 settles and its queue is empty; a later genuinely new producer burst owns a fresh instance/import.
 Detail uses an asynchronous broker-owned 440px result rather than the compatibility URL. A persisted bfcache
