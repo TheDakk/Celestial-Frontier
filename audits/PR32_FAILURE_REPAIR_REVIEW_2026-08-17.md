@@ -1504,3 +1504,28 @@ fresh exact Edge 150.0.4078.86, from one later clean committed source. GitHub Ac
 the repository is public and standard GitHub-hosted runners are currently free, but this is still an
 intent/efficiency gate and the standing 3,000-minute private-repository cap applies if visibility
 changes. No push, hosted run, rerun, merge, publication, or deployment is authorized.
+
+## 12. Active repaired ruler superseding §11 (2026-08-20)
+
+Section 11 remains truthful recalibration-transition history. Clean committed source
+`6736ef40f029d71053f1041869afdbf53a8bfb09` produced c27, baseline11, c28, and c29 serially,
+each one attempt with zero retries and a fresh exact Edge `.86` materialization. All candidates
+completed 78/78 with complete lifecycle and 18 total PNG bindings; baseline11 retained all four
+faults and breached 14 phone / 13 desktop ceilings. Report/sample/log SHA-256 carrier prefixes are
+c27 `0925cf68…` / `a67c6dc5…` / `5022ee90…`; baseline11 `868893d7…` / `3f80a4d6…` /
+`0aa3a507…`; c28 `c0599e97…` / `a83b4414…` / `c67a69be…`; and c29 `372f5da3…` /
+`b797958b…` / `8540f63d…`.
+
+Activation commit `b3957e1dd5a9dc0784e6854efbdb2905fd5b8915` makes budget/test SHA-256
+`546d3a817073e42910b496895734ae2a01bb4c633af2780ecde1b1ef6570b292` /
+`ef06252af072d59b85351c05671b762f5d3fa259656e20bc87b22e84ba510b55` active. Measurement
+`23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92`, collector
+`0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b`, selftest
+`0bbb35417182ddfd5465206c2dd5f9f75537c67fec3053e8d8e79935db32b15b`, and producer
+`d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900` are unchanged. All
+previous numeric ceilings remain strict above the new candidate maxima.
+
+Run `32420327368` remains historical timeout/no-verdict evidence. One exact-head local battery and
+six-image HUMAN judgment remain open. GitHub Actions is FROZEN despite current public/free standard
+runners; no push or hosted attempt exists unless Nick explicitly lifts the gate and authorizes that
+exact head. PR #32 must close terminal-green before Arc 1B/gameplay resumes.

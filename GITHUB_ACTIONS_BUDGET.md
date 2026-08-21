@@ -21,6 +21,8 @@ assumption, private-repository cap, or authorize one exact hosted run.
   protection, reuse stale evidence, merge a red/unfinished PR, or call local evidence “CI.”
 - A monthly reset is never inferred from the calendar. The mode remains `FROZEN` until Nick says
   otherwise in the current task.
+- A locally activated ruler or terminal-green exact-head local battery does not change `FROZEN` or
+  authorize a push, label, hosted run, merge, publication, or deployment.
 
 Git fetches and read-only GitHub metadata do not consume runner minutes, but agents should not poll
 GitHub repeatedly while frozen. No GitHub write is allowed merely because it is cheap.
