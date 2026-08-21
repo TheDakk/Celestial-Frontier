@@ -375,6 +375,11 @@ function serveDist() {
       response.end('<!doctype html><meta charset="utf-8"><title>Scene memory away</title><script>globalThis.__CF_SCENEMEM_AWAY__=true<\/script>');
       return;
     }
+    if (url.pathname === '/favicon.ico') {
+      response.writeHead(204, { 'cache-control': 'public, max-age=86400' });
+      response.end();
+      return;
+    }
     let pathname;
     try { pathname = decodeURIComponent(url.pathname); }
     catch { response.writeHead(400); response.end(); return; }
