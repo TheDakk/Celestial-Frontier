@@ -191,12 +191,16 @@ inline-command overrides reject. The serialized test job may own Edge while its 
 Chrome; the manual workflow may own Chrome at job scope and override only its Edge steps. Do not
 depend on fallback ordering when a runner has several Chromium-family browsers installed.
 
-At committed head `2721798a80b35dce957f8b79d850184fc63ad6c3`, the local battery was green
-through persona and then stopped without retry when the old `devpreview.mjs` checker incorrectly
-required job-level Chrome. The scoped working-copy checker repair implements the effective-owner
-contract above and its complete `preview:selftest` is green. This is instrument repair, not preview,
-product, ruler, timeout, workflow, or publication evidence; the repaired exact head still requires
-one complete local battery from the beginning.
+Exact committed `9d5247f0d6e7c36015d465cef0961a460d1a27d3` includes the effective-owner
+checker repair and passed the complete local battery: root/v2 static, layout 787/787, exact-Edge
+preflight plus active Compendium 78/78/six PNGs, Chrome controls including full preview selftest,
+Smoke, Glass 12/12 and 58/58, nine personas, and exact-commit nonpublishable preview package,
+verification, and smoke. Its 99-entry manifest is
+`apps/game/smoke/final-battery-sha256-9d5247f.txt`, SHA-256
+`adcc16cf83d526c2fcacbcf7675051c907e1957c1572cdf5caa2e4e8a5b4558c`. One invalid
+self-including manifest remains a generation-failed tooling diagnostic, not evidence. Descendant
+docs-only changes do not alter code/tool/workflow/product authority; hosted and HUMAN proof remain
+separate.
 
 Arc 1A is the deliberate narrow exception. The current 1,500-row Compendium is virtualized;
 list art uses leased, cancellable, deduplicated 132px thumbnails, detail uses a separately
