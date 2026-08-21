@@ -1,14 +1,15 @@
 # GitHub Actions Budget Protocol
 
-**Current mode: `FROZEN`**
+**Current mode: `UNFROZEN` — no hosted attempt authorized**
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
 initially set this mode after exhausting the private-repository monthly allowance of **3,000**.
 Treat 3,000 as the hard cap whenever the repository is private or billing status is ambiguous.
-While public, `FROZEN` remains an efficiency and explicit-intent gate: hosted work is still batched
-and owner-authorized rather than fired on every edit. Only Nick may change this mode, visibility
-assumption, private-repository cap, or authorize one exact hosted run.
+Nick lifted `FROZEN` on 2026-08-20 for the bounded PR #32 integration preparation. Hosted work is
+still batched and owner-authorized rather than fired on every edit; lifting the freeze does not by
+itself authorize a hosted attempt. Only Nick may change this mode, visibility assumption,
+private-repository cap, or authorize one exact hosted run.
 
 ## What `FROZEN` means
 
@@ -20,7 +21,7 @@ assumption, private-repository cap, or authorize one exact hosted run.
 - Missing hosted checks remain blockers. Exhausted budget is never permission to bypass branch
   protection, reuse stale evidence, merge a red/unfinished PR, or call local evidence “CI.”
 - A monthly reset is never inferred from the calendar. The mode remains `FROZEN` until Nick says
-  otherwise in the current task.
+  otherwise in the current task; Nick lifted it on 2026-08-20, without yet authorizing a run.
 - A locally activated ruler or terminal-green exact-head local battery does not change `FROZEN` or
   authorize a push, label, hosted run, merge, publication, or deployment.
 
@@ -78,6 +79,9 @@ execution, proves publication remains parked, and mutation-tests every job guard
 tools/validate.js` also runs the real policy check before the normal validation battery.
 
 ## One-run authorization after the freeze
+
+Nick lifted `FROZEN` on 2026-08-20. The exact one-run authorization record below remains required
+before any PR #32 push, approval label, hosted run, or merge.
 
 When Nick explicitly lifts `FROZEN`, he may authorize exactly one hosted attempt. Before any GitHub write, the
 handoff must record:

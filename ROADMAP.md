@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 EXACT-HEAD LOCAL BATTERY GREEN ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 FREEZE LIFTED · EXACT RUN PENDING ◀◀◀
 
 ### Fresh-session start
 
@@ -28,9 +28,10 @@ the archive verbatim and refresh this handoff in place.
   `origin/openai/mac` remains `731b2e2ab974252b410ba97dbdbe3ec6d3ee9c20`; the locally committed
   docs-only closure descends from certified `9d` and does not alter code, tool, workflow, product,
   browser, or resource-ruler authority. Recheck the current docs-only descendant HEAD and clean status.
-- Actions remain **`FROZEN`**. The repository is public and standard hosted runners are free while
-  it remains public, but Nick's efficiency/intent gate forbids push, label, dispatch, rerun, merge,
-  sync, or publication. The 3,000 cap applies fail-closed if visibility/billing changes.
+- Nick lifted **`FROZEN`** on 2026-08-20 for the bounded PR #32 integration preparation. The
+  repository is public and standard hosted runners are free while it remains public, but no exact
+  hosted attempt is authorized yet; do not push, label, dispatch, rerun, or merge until that record
+  names the final eligible head. The 3,000 cap applies fail-closed if visibility/billing changes.
 
 ### Preserved active ruler and hosted history
 
@@ -44,7 +45,8 @@ the archive verbatim and refresh this handoff in place.
   breaches; all previous numeric ceilings remain strict.
 - Existing open, non-draft PR #32 is `openai/mac` → `develop`
   `38447019517147319bd08c598202d097ee866874`. Run `32420327368` remains historical no-verdict
-  evidence and is not retry authority. Do not update or merge the PR while frozen.
+  evidence and is not retry authority. Do not update or merge the PR until the exact one-run
+  authorization is recorded.
 
 ### Exact-head local certification
 
@@ -64,7 +66,7 @@ the archive verbatim and refresh this handoff in place.
 1. The synchronized docs closure is committed locally. Do not rerun the certified battery merely
    because descendant Markdown changed; the docs do not alter its authority inputs.
 2. HUMAN review remains open for the six phone/desktop Compendium list/detail/focus images.
-3. A hosted attempt exists only if Nick explicitly lifts `FROZEN` and authorizes the exact eligible
+3. Nick lifted `FROZEN`; the remaining gate is his exact one-run authorization for the final eligible
    head. PR #32 must close terminal-green before Arc 1B/gameplay resumes.
 4. No release, deployment, version bump, publication, or `main` work is authorized.
 
@@ -73,12 +75,12 @@ the archive verbatim and refresh this handoff in place.
 **Current side:** OpenAI/Codex macOS owns `openai/mac`. Certified source is `9d5247f…`; its
 synchronized docs-only descendant is committed locally and the working tree is clean. Nothing is pushed.
 
-**GitHub step:** None. Do not push, apply `actions-budget-approved`, dispatch, rerun, merge, or
-publish while `FROZEN`.
+**GitHub step:** Record Nick's exact one-run authorization for the final local head. Until then, do
+not push, apply `actions-budget-approved`, dispatch, rerun, merge, or publish.
 
 **PR details:** existing open, non-draft PR #32; base `develop`; source `openai/mac`; title
-**Arc 1A — Bound Compendium portraits and measured resources**. Its remote head lacks all seven local
-commits; no PR write is authorized.
+**Arc 1A — Bound Compendium portraits and measured resources**. Its remote head lacks the locally
+committed closure; the freeze is lifted, but no exact PR write or hosted attempt is authorized yet.
 
 **Other side:** Anthropic/Claude Code need not be opened now. It does not have these changes and may
 synchronize only through `origin/develop` after an authorized PR merge, from its own clean branch.
@@ -86,5 +88,5 @@ synchronize only through `origin/develop` after an authorized PR merge, from its
 **Release status:** `develop`, `main`, and both sites are unchanged. No release, version bump,
 deployment, or publication was performed or authorized.
 
-**Actions budget:** `FROZEN`; public/standard runners free while visibility holds; 3,000 remains
-the fail-closed private-repository cap. Authorized hosted attempts: zero.
+**Actions budget:** `UNFROZEN`; public/standard runners free while visibility holds; 3,000 remains
+the fail-closed private-repository cap. Authorized hosted attempts: zero pending the final head SHA.
