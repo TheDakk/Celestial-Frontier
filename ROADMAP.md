@@ -17,17 +17,17 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 PREVIEW BROWSER-CONTRACT REPAIR ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 EXACT-HEAD LOCAL BATTERY GREEN ◀◀◀
 
 ### Fresh-session start
 
 - Read `GITHUB_ACTIONS_BUDGET.md`, this handoff, `PROCESS_LAWS.md`,
   `PARALLEL_GIT_PROTOCOL.md`, and the owning agent instructions. Either OpenAI/Codex or
   Anthropic/Claude can resume from repository state; use only that agent's owned worktree.
-- Committed source head is `2721798a80b35dce957f8b79d850184fc63ad6c3` on `openai/mac`.
-  `origin/openai/mac` remains `731b2e2ab974252b410ba97dbdbe3ec6d3ee9c20`; the branch is ahead 5.
-  The working copy intentionally contains the scoped `port/v2/tools/devpreview.mjs` repair plus this
-  documentation batch. Recheck status; do not discard or overwrite either.
+- Certified committed head is `9d5247f0d6e7c36015d465cef0961a460d1a27d3` on `openai/mac`.
+  `origin/openai/mac` remains `731b2e2ab974252b410ba97dbdbe3ec6d3ee9c20`; the locally committed
+  docs-only closure descends from certified `9d` and does not alter code, tool, workflow, product,
+  browser, or resource-ruler authority. Recheck the current docs-only descendant HEAD and clean status.
 - Actions remain **`FROZEN`**. The repository is public and standard hosted runners are free while
   it remains public, but Nick's efficiency/intent gate forbids push, label, dispatch, rerun, merge,
   sync, or publication. The 3,000 cap applies fail-closed if visibility/billing changes.
@@ -46,41 +46,39 @@ the archive verbatim and refresh this handoff in place.
   `38447019517147319bd08c598202d097ee866874`. Run `32420327368` remains historical no-verdict
   evidence and is not retry authority. Do not update or merge the PR while frozen.
 
-### Local battery stop and bounded repair
+### Exact-head local certification
 
-- The local battery at exact committed `2721798…` was green through persona, then stopped without
-  retry at `preview:selftest`. The checker required job-level Chrome even though the intentionally
-  serialized test job owns Edge and the preview-package/smoke step pins exact Chrome. This is a
-  browser-provenance contract-checker red, not a preview package, browser, product, or ruler finding.
-- The scoped working-copy repair makes the owning preview-smoke step's effective browser authoritative:
-  exact Chrome may come from that step (overriding a job pin) or from one exact job environment.
-  Missing, wrong, duplicate, previous-step-only, and command-line overrides reject. The complete
-  `preview:selftest` is green after the repair; no workflow, browser choice, timeout, retry policy,
-  product byte, resource ruler, publication authority, or hosted state changed.
-- Earlier greens belong to committed `2721798…`, not the repaired working copy. They remain useful
-  diagnostics but do not certify the next exact head.
+- Exact `9d5247f…` passed the complete local battery: root and v2 static gates; root layout 787/787;
+  exact-Edge preflight plus active Compendium 78/78 with six PNGs; repaired preview selftest and all
+  Chrome controls; Smoke; Glass 12/12 and 58/58; nine automated personas; and exact-commit
+  nonpublishable preview package, verification, and browser smoke.
+- `apps/game/smoke/final-battery-sha256-9d5247f.txt` contains 99 entries and has SHA-256
+  `adcc16cf83d526c2fcacbcf7675051c907e1957c1572cdf5caa2e4e8a5b4558c`.
+  One earlier invalid self-including manifest is preserved as a generation-failed tooling diagnostic;
+  it is not certification evidence and was not used to erase or rerun a product failure.
+- This local result is not hosted CI, HUMAN visual judgment, PR closure, Gate closure, release, or
+  deployment authority.
 
 ### Next bounded sequence
 
-1. Review and commit only the preview checker plus synchronized docs locally.
-2. From that clean exact commit, run the complete required local battery once from the beginning in
-   protocol order. First red, ambiguity, authority mismatch, or cleanup failure stops; no retry.
-3. HUMAN review remains open for six fresh phone/desktop Compendium list/detail/focus images.
-4. A hosted attempt exists only if Nick explicitly lifts `FROZEN` and authorizes that exact head.
-   PR #32 must close terminal-green before Arc 1B/gameplay resumes. No release, deployment, version
-   bump, or `main` work is authorized.
+1. The synchronized docs closure is committed locally. Do not rerun the certified battery merely
+   because descendant Markdown changed; the docs do not alter its authority inputs.
+2. HUMAN review remains open for the six phone/desktop Compendium list/detail/focus images.
+3. A hosted attempt exists only if Nick explicitly lifts `FROZEN` and authorizes the exact eligible
+   head. PR #32 must close terminal-green before Arc 1B/gameplay resumes.
+4. No release, deployment, version bump, publication, or `main` work is authorized.
 
 ## Parallel Git handoff — exact budget-aware fields
 
-**Current side:** OpenAI/Codex macOS owns `openai/mac`. Committed head is `2721798…`; the preview
-checker repair and synchronized docs are working-copy changes. Nothing is pushed.
+**Current side:** OpenAI/Codex macOS owns `openai/mac`. Certified source is `9d5247f…`; its
+synchronized docs-only descendant is committed locally and the working tree is clean. Nothing is pushed.
 
 **GitHub step:** None. Do not push, apply `actions-budget-approved`, dispatch, rerun, merge, or
 publish while `FROZEN`.
 
 **PR details:** existing open, non-draft PR #32; base `develop`; source `openai/mac`; title
-**Arc 1A — Bound Compendium portraits and measured resources**. Its remote head lacks all five local
-commits and the current working-copy repair; no PR write is authorized.
+**Arc 1A — Bound Compendium portraits and measured resources**. Its remote head lacks all seven local
+commits; no PR write is authorized.
 
 **Other side:** Anthropic/Claude Code need not be opened now. It does not have these changes and may
 synchronize only through `origin/develop` after an authorized PR merge, from its own clean branch.

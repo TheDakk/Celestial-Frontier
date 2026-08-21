@@ -102,12 +102,14 @@
 > retained four faults and 14 phone / 13 desktop breaches. Activation `b3957e1…` makes budget/test
 > `546d3a81…` / `ef06252a…` active and retains every previous numeric ceiling strictly.
 >
-> **Current preview contract transition:** committed `2721798…` was locally green through persona,
-> then stopped without retry at `preview:selftest` because its checker required job-level Chrome
-> while the serialized test job intentionally owns Edge and its preview step pins Chrome. The scoped
-> working-copy repair accepts only effective exact Chrome from that owning step overriding the job,
-> or from one exact job environment; missing/wrong/duplicate/previous-step/command overrides reject.
-> Full `preview:selftest` is green. One complete clean exact-head local battery remains.
+> **Current exact-head preview closure:** committed `9d5247f…` includes the effective-owner checker
+> repair and passed the complete local battery: root/v2 static, layout 787/787, exact-Edge preflight
+> plus active Compendium 78/78/six PNGs, Chrome controls including repaired preview selftest, Smoke,
+> Glass 12/12 and 58/58, nine personas, and exact-commit nonpublishable preview package/verify/smoke.
+> Its 99-entry manifest `apps/game/smoke/final-battery-sha256-9d5247f.txt` has SHA-256
+> `adcc16cf83d526c2fcacbcf7675051c907e1957c1572cdf5caa2e4e8a5b4558c`. The invalid
+> self-including precursor is a generation-failed tooling diagnostic only. Descendant docs-only
+> changes do not alter code/tool/workflow/product authority; hosted and HUMAN proof remain open.
 >
 > Exact committed Glass repair `dea03913014bc58134ebb06ca5b36892210a7571`
 > passes the full 12-row Glass matrix. Its following exact Compendium run
