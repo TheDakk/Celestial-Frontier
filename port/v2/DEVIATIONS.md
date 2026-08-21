@@ -9,6 +9,214 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
+## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
+
+**Status: ★ product implementation, serviced-turn scheduler, compact-phone Planetside stack, and
+displayed-demand/zoom-owner repair present. Exact-89's shutdown false-green and candidate20's wrong-
+browser carriers remain instrument history. Candidate21/22/23 plus paired baseline9 completed once
+each without retry under exact `.86` and complete lifecycle; candidates replayed 78/78 with zero
+findings and baseline9 retained all four faults. They are individually clean diagnostic history only
+because the old shared identity incorrectly compared fresh path/UA provenance. Clean exact
+`fb321f2…` candidate24/25/26 plus paired baseline10 ran once each with zero retries and distinct
+fresh `.86` paths. The formerly active budget/test `70145575…` / `0fa2e89d…` embed 3/3 samples per profile,
+measured 1/1 baseline, strict ceilings, and 14 phone / 13 desktop breaches under measurement
+`2318f57b…`, producer `d3223177…`, and browser CDP `6da9e2ef…`. Focused activation is 13/13 after
+matching synthetic desktop identities fixed its initial phone-only control without changing browser
+evidence. Exact head `731b2e2…` passed locally; hosted run `32420327368` stopped with Compendium
+RUNNING/lifecycle-pending at the 40-minute job ceiling and no product verdict, then exposed the
+account spending limit. `GITHUB_ACTIONS_BUDGET.md` is now `FROZEN`: no push, label, dispatch, merge,
+sync, or publication is authorized. Six-image `[HUMAN]` review is open.**
+**Current static-server/ruler follow-up:** implementation `aecf386…` owns one immutable monotonic
+2,000 ms HTTP close deadline. Just-before succeeds; exact/late/missing/error callbacks force one
+`closeAllConnections()` and reject, with settle-before-force/reentrant/stale controls. Cleanup red
+suppresses PASS/sample. Clean `6736ef4…` c27/baseline11/c28/c29 ran once each with zero retries and
+fresh exact `.86`; candidates completed 78/78 with complete lifecycle and 18 PNG bindings, while
+baseline11 retained four faults and 14 phone / 13 desktop breaches. Activation `b3957e1…` makes
+budget/test `546d3a81…` / `ef06252a…` active under unchanged collector/selftest/measurement
+`0c7ec3ba…` / `0bbb3541…` / `23aacc2c…` and producer `d3223177…`; prior ceilings remain strict.
+This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
+its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
+This block records the current disposition of the historical
+`D-COMPENDIUM-MEM` proposal below without rewriting that dated discovery record.
+
+- The maximum 1,500-row Compendium now uses spacer-preserved virtual rows, pinned keyboard focus,
+  native filter/clear, detail/Back and Close cleanup. Real 132px leases own one bounded producer,
+  queued cancellation, dedupe, disposal, cold-error publication/recovery, and Planetside
+  hide/release/reacquire; list work does not route through the renderer's 440px compatibility
+  facade. After complete app wiring, every default broker pump waits for a rendering opportunity
+  and then a later task before dispatch. At most one serial dedicated module worker at a time owns
+  painter import, 440px scratch paint, 132px downsample, and PNG encoding. It has no synchronous
+  renderer fallback and terminates after active work settles and its queue is empty; a later
+  genuinely new producer burst owns a fresh instance/import. Exact document/producer/instance/job/
+  phase evidence is retained. Capability/import/protocol/worker fatal paths settle active plus
+  queued owners once without automatic retry; paint and content-specific encode failures remain
+  per-job. Detail owns an asynchronous 440px request through the same broker. A generation token
+  invalidates an armed pump across bfcache suspension or final disposal; resume owns a fresh serviced
+  turn.
+- The Planetside globe no longer front-loads the largest supported texture tier. It computes backing
+  demand from fitted diameter, scene scale, and DPR: standard phone/desktop boot is 609/420px and
+  selects 512. An exact surface-generation plus planet seed/ordinal owner re-reads the asynchronous
+  bake, swaps only current settled content, rejects stale completion, and suppresses duplicate-tier
+  work. Genuine zoom/DPR demand still upgrades through 768 to 1024; maximum tested phone/desktop
+  demand is 1,248/1,280px. This is an approved structural improvement over the fixed entry request,
+  not a loss of supported art fidelity.
+- The prior exact-3844701/e4e8d1d observations remain historical calibration evidence, not active
+  current authority. Exact committed repair `dea03913014bc58134ebb06ca5b36892210a7571`
+  passed all 12 Glass rows; its following exact Compendium run
+  `20260817150005919-93781-b6643ba7a6` truthfully reports 75/76, solely red at
+  `desktop/warm-plateau`. That red proves neither a leak nor a clean product plateau: the old
+  sequence destructively trimmed the desktop cache before warming and then measured refill, while
+  its heap ruler omitted embedder/backing ownership.
+- The da0 ruler embedded exact paired run
+  `20260820-arc1a-baseline3-21af3fa`, collected by `21af3fa2…` against legacy product `3844701…`,
+  plus independent one-attempt candidate2/3/4 runs from clean committed `21af3fa2…`
+  collector/product source that bind producer `291b794e…`. All share measurement authority
+  `bb03a3af…` and isolated Edge 151.0.4129.86. The repaired seam moves cap control after
+  full native warm-cache observation; records used, embedder, backing-store, and aggregate heap;
+  proves stable unique keys plus unchanged job/disposal/worker counters across the last three cycles
+  of one retained window; embeds replayable raw capsules; and binds the complete measurement inputs
+  plus exact built owner-to-worker-to-painter graph. Strict ceilings exceed all three candidate
+  maxima; the paired baseline preserves four sealed faults and breaches 14 phone / 13 desktop
+  fields. Commit `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` locally certified that exact ruler
+  once under Edge .86 and also passed its no-retry Chrome Smoke, 12-viewport Glass, persona, root
+  layout, and nonpublishable preview gates.
+- PR run `32334254714`, attempt 1, preserved a terminal product red without retry. Its clean detached
+  test-merge `88b9c7b0aa90b860a5474bd099cfab48b125a3f5` matched Edge .86, budget bytes, and producer
+  `291b794e…`; phone Planetside thumb settlement missed the unchanged 2,000 ms target bound at
+  2,001.723 ms while the root heartbeat answered in 0.872 ms. The partial report did not retain an
+  exact producer phase; source inspection identified zero-delay successor-pump starvation as the
+  bounded repair hypothesis.
+- The serviced-turn repair changes built producer authority to
+  `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`. Clean seam commit
+  `f47cd381…` collected paired baseline4 against legacy product `3844701…`; independent one-attempt
+  candidate5/6/7 use `f47cd381…` product/collector source and bind producer `1c8200d7…`. All four
+  share measurement `bb03a3af…` and exact Edge .86. All candidates completed 78/78 outcomes with zero retries. That
+  historical `bb03a3af…` ruler replayed those raw capsules, kept all 40 ceilings strictly above the
+  three-run maxima, and retained four baseline faults with 14 phone / 13 desktop breaches. The
+  frozen shared-timer repair moves measurement authority to `f9710bdf…`. Paired baseline5 plus
+  independent candidate8/9/10 historically activated budget/test `8ffd0d8e…` / `121ab8cd…` for
+  producer `1c8200d7…`; all were one-attempt/no-retry, each candidate replayed 78/78, all 40 ceilings
+  exceeded their maxima, and the four-fault baseline breached 14 phone / 13 desktop fields. Those
+  raw capsules remain truthful only for that exact producer.
+- Exact clean `c095500…` passed Compendium run
+  `20260820-arc1a-absolute-deadline-active-cert-c095500` (report `55dba448…`) and one-attempt Smoke
+  `20260820104231234-94067-7f954ca9942e` (report `6d4f00f8…`). Its first full Glass run then stopped
+  without retry: Chrome 152, 12/12 rows, 58/58 controls, zero instrument failures, and one product
+  `PLANETSIDE_SURFACE_OCCLUDED` finding from a 12.5px compact-phone Survey/Planetside overlap.
+  Persona, layout, preview, push, and CI did not run.
+- The bounded product repair derives the portrait Planetside cap from its shared bottom anchor,
+  preserving a 44px Survey floor, 72px scrollable Planetside floor, and existing 8px gap. It does not
+  change Glass predicates, stacking order, or ownership. The existing development-release bullet
+  names the outcome. Built producer becomes `e59685b1…` (index `ca76da4c…`, owner
+  `assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged); measurement was `f9710bdf…`
+  before the later cold-start transition. Clean committed source
+  `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired
+  baseline6 against legacy `3844701…` and independent candidate11/12/13 under exact Edge .86. All
+  four were one-attempt/no-retry and candidates replay 78/78. Historical budget/test `ebe5b5c3…` /
+  `ec956b8a…` place all 40 ceilings strictly above the three-run maxima; the four-fault baseline
+  breaches 14 phone / 13 desktop fields. Focused 11/11, selftest 222/222, and semantic validation
+  pass. The targeted compact-phone Glass PASS (`13efb5fa…`) is diagnostic only.
+- Exact pushed head `f9ae372f13d9a420e302f05e277b4445efb790c0` then passed its complete local
+  battery once: Compendium 78/78, Smoke, Glass 12/12 and 58/58, personas, root layout 787/787, and
+  preview packaging/smoke. Corresponding run `32367902426` / Compendium job `96421452463` tested
+  synthetic merge `e449e849…` once and stopped before `Browser.getVersion` or product measurement.
+  Edge endpoint discovery used `23657.701415` ms, leaving `6342.262417` ms of the 30-second window
+  for a declared 15-second socket phase. No Compendium run/report/outcome or retry exists.
+- At the `32367902426` transition, the bounded repair gave only the selftest's one real cold launch
+  a 45-second startup envelope;
+  socket/command/shutdown remain 15/1.5/2 seconds, generic and candidate startup remain 15 seconds,
+  and product observation remains 2 seconds. Portable controls pass at 38,657 ms and reject
+  exact/late 38,658/38,659 ms with one child and cleanup. That caller change itself introduced no
+  warmup, relaunch, retry, fallback, workflow change, or game optimization. Launcher `6892dea6…` changes measurement to
+  `6ba58522…`; producer then stayed `e59685b1…`. Clean source `374049536e…` collected baseline7 plus
+  independent candidate14/15/16 once without retry; every candidate replayed 78/78. Active
+  then-active browser-free budget/test `bb4da2bf0b…` / `d242705ad9…` retain all four baseline faults and 14 phone /
+  13 desktop breaches, with all 40 ceilings strict. This is non-certifying. One exact-head battery
+  and one corresponding CI attempt were then consumed by exact c49 and the run recorded next.
+- Exact pushed head `c49af5a72a41eebd79ce3975852f3d7c22ab3ac6` completed that full local battery:
+  Compendium 78/78 plus verifier, Smoke with no findings, Glass 12/12 and 58/58, personas, root
+  layout 787/787, and preview packaging/browser smoke. Corresponding run `32375329693` tested
+  synthetic merge `8e09cffe…` once without retry. Static and Glass passed. Root job `96445227534`
+  produced zero viewport outcomes after no Chrome endpoint inside 30 seconds. Compendium job
+  `96445227816` opened exact Edge .86 inside 45 seconds, then generic selftest `Runtime.enable`
+  exceeded its 1.5-second command bound before the collector. Smoke job `96445227991` retained ten
+  screenshots and only an immediate `src length 0` detail sample; it retained no image state or
+  worker phase, then Back released the asynchronous owner, so it cannot adjudicate final portrait
+  settlement.
+- The final bounded CI-instrument repair gives root layout one captured 45/15/30/5-second caller.
+  Exact-Edge workflows use `tools/compendiummem-browser-preflight.mjs` for one exact-authority fresh-
+  target Runtime/Page/HeapProfiler plus evaluate/event proof under 45/15/sealed-5/2-second bounds;
+  it is outside the hashed measurement graph, so `6892dea6…`, `6ba58522…`, `e59685b1…`,
+  `bb4da2bf0b…`, and `d242705ad9…` remain unchanged. Smoke binds pre-open document/generation/
+  logical owner, requires the opened detail to retain that document/owner at generation + 1, keeps
+  it mounted, and polls connected current ready/src/decode/440×440 settlement under one immutable
+  30-second deadline, with pending/error/stale/disconnected/contradictory/wrong-size/exact-late
+  controls and rich diagnosis. Exact pushed head `139ce2f…` then passed one complete local battery.
+  Corresponding run `32383320206`, attempt 1, matched exact Edge .86, measurement `6ba58522…`,
+  producer `e59685b1…`, and then-active budget `bb4da2bf0b…`; after 29 phone stages its Planetside
+  target `Runtime.evaluate` took `2001.132592` ms against the unchanged 2,000 ms deadline while root
+  `Browser.getVersion` answered in `10.401960` ms. The valid no-retry terminal result is
+  `product-unanswerable`: zero outcomes, 78 blocked, and no review PNG.
+- The displayed-demand/zoom-owner product and development-copy repair changes built producer to
+  `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900` (index `dee9af3a…`, owner
+  `assets/main-Da536xWA.js` / `28382873…`; worker/painter unchanged). Measurement remains
+  historical `6ba58522…`. Clean committed source `75a996af…` produced one no-retry baseline8 against legacy
+  `3844701…` plus independent no-retry candidate17/18/19 under exact Edge .86. Every candidate
+  replayed 78/78; baseline8 retained all four faults and breached 14 phone / 13 desktop ceilings.
+  Then-active budget/test `74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) reused all 40 strict ceilings
+  above the three-run maxima.
+- Activation was browser-free and non-certifying. Exact activation head `96464d5…` then passed its
+  complete local battery. Corresponding run `32394244417`, attempt 1, tested synthetic merge
+  `63665b6…`; root, static, Chrome Smoke, and Chrome Glass passed, but exact-Edge job `96507263338`
+  stopped before product. Its `.86` package URL/SHA, installed version, and executable matched on
+  `ubuntu24/20260816.277`; apt reported already-newest / 0 upgraded, then the one unchanged live
+  preflight launch emitted repeated DBus-address stderr and published no CDP endpoint inside 45
+  seconds. No candidate ran, so there is no report, outcome, review PNG, or product verdict and the
+  later verifier/upload errors are cascades. Historical exact-Edge evidence is 4/4 ready on
+  `20260810.271`, when apt unpacked .86 over resident .78, versus 0/3 ready on `20260816.277`, when
+  .86 was already resident and apt did no package work; region evidence does not isolate image from
+  host pool.
+- Both workflows now request `apt-get install --reinstall --yes "$edge_package"`. The preflight
+  selftest statically requires the unique owned step's exact ordered URL/SHA/download/hash/
+  reinstall/version/executable chain followed by preflight, and rejects per-workflow removal and
+  outside-step decoys. That green browser-free control proves workflow bytes, not the live hosted-
+  runner hypothesis. That later hosted evidence was consumed; it did not turn this static control
+  into proof of the runner mechanism. Exact package/browser authority,
+  product, launcher/preflight/collector, 45/15/5/2 preflight, 15-second candidate startup, 2-second
+  observation, one attempt/zero retries, historical measurement `6ba58522…`, producer
+  `d3223177…`, and then-active budget/test `74e88c2b…` / `485be9da…` were unchanged by that
+  workflow normalization.
+- Exact local `89bfa05…`, run `20260820-pr32-89bfa05-compendiummem`, later completed 78/78 with
+  zero findings and six PNGs before owned shutdown exited 2. Its pre-cleanup PASS/report
+  verification is false-green. Frozen `6da9e2ef…` distinguishes direct process exit from stdio
+  close; `f4ad842c…` / `2713ed10…` require browser/server cleanup and lock release before sample or
+  terminal success and enforce lifecycle at verification.
+- Clean `c49e525…` candidate20 then completed 78/78 with clean lifecycle on self-updated Edge `.93`;
+  quarantine `175fac5e…` / `916dd12a…` / `7462144b…`. Candidate21/22/23 plus paired baseline9 then
+  completed once each without retry under exact `.86` and complete lifecycle; candidates replayed
+  78/78 with zero findings and baseline9 retained all four faults. Fresh path/UA provenance exposed
+  the old shared-identity error, so these individually clean diagnostics cannot cross corrected
+  contract `e7dfea1d…`. Clean exact `fb321f2…` candidate24/25/26 plus paired baseline10 ran once
+  each with zero retries and distinct fresh `.86` paths. Active budget/test `70145575…` /
+  `0fa2e89d…` embed 3/3 samples per profile, measured 1/1 baseline, strict ceilings, and 14 phone /
+  13 desktop breaches under measurement `2318f57b…`, producer `d3223177…`, and browser CDP
+  `6da9e2ef…`. Exact `731b2e2…` passed locally; hosted run `32420327368` was consumed at the
+  40-minute lifecycle-pending ceiling with no product verdict. PR #32 remains blocked; no rerun is
+  authorized. No broader timing work is in scope.
+- This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
+- This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
+  a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
+  images from da0 are stale for the repaired producer; a fresh certifying set still requires human
+  review. Arc 1B remains open for scene/Pixi textures, render targets,
+  GPU proxies, and the combined travel → Compendium → Shipyard resource plateau.
+- PR #32's layout deviations remain bounded. In portrait, shared bottom-anchor math preserves the
+  44px Survey / 8px gap / 72px scrollable Planetside stack. In short landscape, Compendium uses the left
+  safe-height workspace and recomputes its scroller from the safe viewport, while Search, dock, and
+  Survey when open remain operable at right. Panel-open status already yields trail/objective; the
+  short-landscape rule additionally yields only noninteractive top/context/hint chrome. Its hostile
+  A++/focus/clipping Glass fixtures are instrument evidence, not a broad visual-polish or
+  v1.0-parity claim.
+
 ## Species art — THE MORPHOLOGY PASS (approved by Nick 2026-08-01)
 
 The species-art surface is the one place the verbatim-parity boundary is OPEN, under Nick's
@@ -1483,9 +1691,10 @@ duplicates).
   safety boundary. `main` continues the root v1.8.9 production package, while a green `develop`
   push publishes the already-smoked exact v2 package. The final preview browser check and the
   root layout gate (`tools/uilayout.js` — the battery's first real browser launch; the same
-  diagnosed Linux cold-start phase recurred there at its prior 24-second bound in run
-  `31758515194` attempt 1) each own a fixed bounded 30-second CDP-start allowance; generic
-  evidence tools retain their 15-second default.
+  diagnosed Linux cold-start phase recurred there at 24 seconds in run `31758515194` and at
+  30 seconds in run `32375329693`) have distinct caller bounds: preview keeps 30 seconds; root
+  layout owns one captured 45-second startup / 15-second socket / existing 30-second command /
+  5-second shutdown call. Generic evidence tools retain their 15-second default.
   Every platform captures the exact caller options and runs a real browser outcome. On POSIX the
   preview selftest starts Chrome immediately but withholds its ready CDP endpoint for 16 seconds,
   so the old generic path must reject while the exact preview caller keeps its full startup window
@@ -1500,6 +1709,37 @@ duplicates).
   Actual browser evidence runs once through approved out-of-sandbox execution. This does not
   change the browser pin, profiles, product resource budgets, or the separate CI preview
   startup allowance above.
+  **2026-08-20 clarification:** PR #32 run `32367902426` reached one stable Edge endpoint at
+  23,657.701415 ms but exhausted the former 30-second selftest startup envelope before
+  `Browser.getVersion`; Compendium never ran. At that transition, only that first-live selftest caller owned
+  45 seconds, with its 15-second socket and all generic/candidate/product bounds unchanged. This
+  accepted CI environment allowance is not a game optimization target and adds no warmup or retry.
+  Run `32375329693` then opened exact Edge under that allowance but expired during the generic
+  selftest's 1.5-second `Runtime.enable`, still before Compendium. Exact-Edge workflows now use
+  `tools/compendiummem-browser-preflight.mjs` for one 45/15/sealed-5/2-second exact-authority fresh-
+  target proof outside the hashed ruler inputs; it adds no retry, fallback, rebaseline, product bound,
+  release claim, or preview/publication authority.
+  **2026-08-20 runner-image follow-up (historical):** exact activation head `96464d5…` passed locally, but run
+  `32394244417` / job `96507263338` on `ubuntu24/20260816.277` stopped before product because the
+  already-resident verified .86 made apt a no-op and the one Edge launch published no endpoint
+  inside the unchanged 45-second allowance. The older `20260810.271` exact-Edge sample is 4/4
+  ready with observed .78→.86 unpack/setup; the newer `20260816.277` sample is 0/3 ready with three
+  already-newest no-op installs. Same-package `--reinstall` in both workflows is therefore a
+  bounded normalization hypothesis. Its green fail-closed workflow-structure control changes no
+  timing, product, CDP tool, browser authority, measurement, producer, budget, retry policy,
+  publication authority, or Gate status. Exact-89 later reached product but preserved the separate
+  owned-shutdown false-green. Candidate20 is quarantined for self-updated Edge `.93`.
+  **2026-08-20 shared-identity follow-up (historical after the static-server repair):** candidate21/22/23 plus paired baseline9 are
+  individually clean exact-.86 diagnostic history, but their fresh path/UA provenance exposed an
+  overstrict shared-identity check. Clean exact `fb321f2…` candidate24/25/26 plus paired baseline10
+  activated budget/test `70145575…` / `0fa2e89d…` with 3/3 samples per profile, measured 1/1
+  baseline, strict ceilings, and 14 phone / 13 desktop breaches under measurement `2318f57b…`.
+  Exact `731b2e2…` passed the local battery; hosted run `32420327368` was consumed at its 40-minute
+  lifecycle-pending ceiling and left PR #32 blocked without a product verdict. Product, timing,
+  producer, browser CDP, and zero-retry policy remain unchanged.
+  **2026-08-20 static-server shutdown follow-up (current):** exact `aecf386…` adds the bounded
+  close. Clean `6736ef4…` c27/baseline11/c28/c29 evidence activates budget/test `546d3a81…` /
+  `ef06252a…` at `b3957e1…`; exact-head certification remains open.
 - ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
   (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
   heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces
@@ -1513,6 +1753,12 @@ duplicates).
   the canvas rather than stranding focus on the hidden panel control. Motion Auto follows the OS
   live; Reduced freezes Pixi ambient time, snaps camera/fade state, gates organism animation and
   removes CSS animation/transitions.
+  PR #32 extends that outcome contract to the real 844×390/A++ short-landscape failure: a nonmodal
+  Compendium takes the left safe-height workspace with its scroller recomputed from the safe
+  viewport, while Search, dock, and Survey when open remain usable at right. Panel-open status
+  already yields trail/objective; only noninteractive top/context/hint chrome additionally yields
+  in short landscape. Glass exercises first/middle/last and focus-pinned hostile rows, exact
+  clipping ancestors, Guide exact-one-carrier mutation, restoration, hit ownership, and focus.
   The canvas is a named focusable region whose arrows cycle the actual rendered body inventory,
   Enter/Space calls its survey path, +/- zooms at the selected target and Escape releases it; a
   visible focus ring and polite live region expose the state. Clipboard refusal selects the exact CF1
@@ -1651,6 +1897,16 @@ duplicates).
   Compendium registers once outside its row map instead of retaining 1,500 callbacks and launching
   1,500 full-list rerenders when the chunk resolves. Import failure clears the Promise for a later
   retry; Compendium virtualization and texture-memory proof remain OPEN.
+  **Superseded current disposition (2026-08-17):** Arc 1A no longer uses this Window import-Promise
+  path for live art. Exact broker leases own Compendium/Planetside/detail requests; at most one
+  serial dedicated worker exists at a time, each producer burst owns a fresh instance and lazy
+  painter import, and the instance terminates after active work settles and its queue is empty.
+  Capability/import/protocol/worker fatal paths
+  settle the failed active and queued jobs once with no automatic retry; a later genuinely new
+  request may create a fresh producer. Virtualization and worker ownership are implemented as
+  recorded in the current-state block above; measured resource acceptance remains `[EXEC-TODO]`
+  unless the selected head's ignored exact-source artifacts and its corresponding PR test-merge CI
+  are terminal green. This reference caches neither live outcome, and the HUMAN review remains open.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds

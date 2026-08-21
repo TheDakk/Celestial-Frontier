@@ -1,7 +1,7 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-16.
+> 2026-08-20.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -13,10 +13,45 @@
 > merge `44925f62abdfcdf9c17e512dd49a57a183e217ec`; the epoch persistence contract is integrated at
 > merge `5171abcdc538938fdf5ac82688d1ab868da6ff48`. F2 canonical ingress and discriminated navigation
 > finished at PR #30 head `24bcc3cbf4e76f7bb65a00e810e0eeeeb8d7c837` and is integrated at
-> `b091f010011fa16bec457599b41274b7f92bb5e6`. D-TRAIN-1 is the active local-working-tree
-> **[PARTIAL]** batch: exact legacy checkpoint compatibility, the one-write replacement transaction,
-> and local static/Slice/Glass evidence are present, while committed exact-head CI, integration,
-> real-save Gate C, and human evidence remain open. Later product batches remain planned.
+> `b091f010011fa16bec457599b41274b7f92bb5e6`. D-TRAIN-1 is integrated through PR #31 at
+> `38447019517147319bd08c598202d097ee866874`. Arc 1A/PR #32 is the active bounded review branch.
+> Exact local `89bfa05…`, run `20260820-pr32-89bfa05-compendiummem`, completed 78/78 with zero
+> findings and six PNGs, then exited 2 during owned browser shutdown. Terminal log `b0bb8abc…` is
+> authoritative; pre-cleanup PASS report/verifier `66ba1366…` / `98664dca…` are false-green. This
+> is a one-attempt/no-retry post-measurement instrument red, not product certification or
+> calibration. Clean lifecycle-repair source `c49e525…` then ran candidate20 once: 78/78, zero
+> findings, six PNGs, and complete lifecycle, but a reused `.86`-named app reported Edge `.93` /
+> revision `@4a822b1b…`; quarantine `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser
+> instrument evidence. Candidate21/22/23 plus paired baseline9 later completed once each without
+> retry under exact `.86` and complete lifecycle: candidates replayed 78/78 with zero findings and
+> baseline9 retained four faults. They are individually clean diagnostic history only because the
+> old shared-sample identity incorrectly compared fresh executable paths and host user agents.
+> Raw path/UA remain required per-run provenance; product/revision/JavaScript/protocol are shared
+> authority. Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10,
+> each once with zero retries and a distinct fresh `.86` path. Candidates completed 78/78 with zero
+> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. The formerly active budget/schema/
+> contract/collector/selftest/test `70145575…` / `695d2529…` / `e7dfea1d…` / `07131f5e…` /
+> `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged producer `d3223177…`, 3/3
+> samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
+> breaches. A synthetic desktop-identity line corrected focused 12/13 to 13/13 without changing
+> browser evidence. Exact head `731b2e2…` passed its complete local battery; GitHub run
+> `32420327368` then preserved a no-retry hosted timeout/incomplete-evidence red when Compendium
+> remained RUNNING/lifecycle-pending at the 40-minute job ceiling, and GitHub separately reported
+> the account spending limit. The repository is now public, so standard runners are free while it
+> remains public; `FROZEN` remains Nick's intent gate and 3,000 the private/ambiguous cap.
+> `GITHUB_ACTIONS_BUDGET.md` blocks push/label/dispatch/merge/publication; the guarded local
+> workflow design removes automatic spend and must not be pushed through the still-automatic remote
+> configuration. No product/ruler verdict follows from the hosted timeout. Arc 1B/gameplay resumes
+> only after PR #32 eventually closes terminal-green under a separately authorized attempt.
+> Exact local `aecf3865095176a509a4cb892e5842b584780870` bounds the Compendium HTTP
+> server close at 2,000 ms and fails exact/late/missing/error cleanup closed with one forced
+> connection close. Cleanup red suppresses PASS/sample. Clean source `6736ef4…` collected serial
+> c27/baseline11/c28/c29 once each with zero retries and fresh exact `.86`; candidates completed
+> 78/78 with complete lifecycle and 18 PNG bindings, while baseline11 retained four faults and
+> 14 phone / 13 desktop breaches. Activation `b3957e1…` makes budget/test `546d3a81…` /
+> `ef06252a…` active under unchanged collector/selftest/measurement `0c7ec3ba…` / `0bbb3541…` /
+> `23aacc2c…` and producer `d3223177…`; all prior numeric ceilings remain strict.
+> Later product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -612,6 +647,192 @@ both parent voices.
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
 
+**Current state (2026-08-20): product implementation, serviced-turn scheduler, compact-phone stack,
+displayed-demand/zoom-owner repair, bounded static-server shutdown, and the active repaired ruler are
+present. Exact-89's shutdown false-green and candidate20's
+wrong-browser `175fac5e…` / `916dd12a…` / `7462144b…` carriers remain preserved instrument history.
+Candidate21/22/23 plus paired baseline9 each completed once without retry under exact `.86` and
+complete lifecycle; candidates replayed 78/78 with zero findings and baseline9 retained four faults.
+They are individually clean diagnostic history only because the old shared identity incorrectly
+compared fresh path/UA provenance. Clean exact source `fb321f2…` then collected candidate24/25/26
+plus paired baseline10, each once with zero retries and distinct fresh `.86` paths. Candidates
+completed 78/78 with zero findings, complete lifecycle, and six PNGs; baseline10 retained four
+faults. The formerly active budget `70145575…` embeds 3/3 samples per profile, measured 1/1 baseline, and strict
+ceilings with 14 phone / 13 desktop breaches under measurement `2318f57b…` and unchanged producer
+`d3223177…`. Focused activation is 13/13 after the synthetic active-state control received matching
+desktop identities; browser evidence did not change or rerun. That ruler is historical. Clean
+`6736ef4…` c27/baseline11/c28/c29 evidence now activates budget/test `546d3a81…` / `ef06252a…`
+under measurement/collector/selftest `23aacc2c…` / `0c7ec3ba…` / `0bbb3541…`; candidates are 78/78
+with complete lifecycle, baseline11 retains four faults and 14 phone / 13 desktop breaches, and
+prior ceilings remain strict. Fresh `[HUMAN]` review is open.**
+This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
+corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
+`compendiummem` gate drives a deterministic 1,500-row
+Compendium through a spacer-preserved virtual window, focus pinning and native keyboard traversal,
+filter/clear, detail/Back, Close cleanup, and Planetside hide/release/reacquire. The product path
+owns real 132px thumb leases with one bounded producer, queued-work cancellation, dedupe, disposal,
+and cold-error publication plus recovery; list traffic neither mounts nor cache-pollutes through the
+440px full-portrait compatibility path. Heavy painter import, 440px scratch paint, 132px downsample,
+and PNG encoding run in at most one serial dedicated module worker at a time. After app wiring,
+every default broker pump crosses one rendering opportunity and then one later task before dispatch.
+The renderer has no synchronous fallback. The worker terminates after active work settles and its
+queue is empty; each later genuinely new producer burst owns a fresh
+instance/import. Protocol messages carry document/producer/instance/job/phase identity into
+fail-closed evidence. A pump-generation token invalidates callbacks armed before bfcache suspension
+or disposal; resume schedules a fresh serviced turn. Capability,
+import, protocol, and worker failures terminate once and settle active plus queued owners without an
+automatic retry loop; paint and content-specific encode failures remain per-job. Selected detail
+uses the same owner asynchronously at 440px.
+
+The Planetside globe separately derives cold backing demand from its fitted 420px diameter, scene
+scale, and DPR. Standard phone/desktop boot demand is 609/420px and selects the existing 512 tier.
+One exact surface-generation plus planet seed/ordinal owner re-reads the asynchronous bake, swaps
+only current settled content, rejects stale completion, and suppresses duplicate-tier work. Real
+zoom/DPR demand still upgrades through 768 to 1024; maximum tested phone/desktop demand is
+1,248/1,280px. This preserves supported sharpness without front-loading the largest tier.
+
+The earlier exact-3844701/e4e8d1d calibration remains historical evidence only. Exact committed
+repair `dea03913014bc58134ebb06ca5b36892210a7571` passes the full 12-row Glass matrix; its following
+exact Compendium run `20260817150005919-93781-b6643ba7a6` truthfully reports 75/76, solely red at
+`desktop/warm-plateau`. That result proves neither a product leak nor a clean plateau because the old
+sequence destructively trimmed the desktop cache before the warm observation and measured refill,
+while the old page-heap ruler excluded embedder/backing ownership.
+
+Da0's historical `v2/budgets/compendium-memory-v1.json` authority embedded paired
+broken-baseline run `20260820-arc1a-baseline3-21af3fa` and independent candidate runs
+`20260820-arc1a-candidate2-21af3fa`, `20260820-arc1a-candidate3-21af3fa`, and
+`20260820-arc1a-candidate4-21af3fa`. Baseline3 was collected by `21af3fa2…` against legacy product
+`3844701…`; candidate2/3/4 use clean committed `21af3fa2…` collector/product source and bind producer
+`291b794e…`. The repaired
+seam observes the complete native cache before destructive cap control; records used, embedder,
+backing-store, and aggregate heap; proves stable unique keys and unchanged job/disposal/worker
+counters over the last three cycles of one retained window; retains a post-cap restored snapshot;
+embeds compact replayable raw capsules; and binds measurement authority `bb03a3af…`, the complete
+input set, and the exact built owner-to-worker-to-painter graph for producer `291b794e…`.
+Strict ceilings exceeded every three-run maximum. The paired baseline retained all four sealed faults
+and breached 14 phone and 13 desktop ceiling fields. Commit
+`da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` locally certified that ruler under Edge .86 and passed
+its no-retry Chrome Smoke, full Glass, persona, root-layout, and nonpublishable-preview gates.
+
+PR run `32334254714`, attempt 1, then retained a terminal phone `product-unanswerable` report with
+zero retries. Clean detached test-merge `88b9c7b0aa90b860a5474bd099cfab48b125a3f5` matched the Edge,
+budget, and old producer; Planetside thumb settlement missed the unchanged 2,000 ms target bound at
+2,001.723 ms while the root heartbeat answered in 0.872 ms. The repaired default pump now services a
+rendering opportunity plus later task between jobs, changing built producer authority to
+`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`.
+
+Clean seam commit `f47cd381…` collected paired baseline4 against legacy product `3844701…`; that
+baseline carries no candidate producer field. The three independent one-attempt candidate5/6/7
+runs use `f47cd381…` as clean collector/product source and bind producer `1c8200d7…`. All four
+share measurement `bb03a3af…` and exact Edge .86; every candidate completed all 78 outcomes with
+zero retries. The
+historical `bb03a3af…` budget replayed their raw capsules and set every profile ceiling strictly above
+the three-run maximum. Baseline4 retained all four faults and breached 14 phone / 13 desktop fields.
+The frozen shared-timer repair moves measurement authority to `f9710bdf…`. Paired baseline5 plus
+independent candidate8/9/10 historically activated budget/test `8ffd0d8e…` / `121ab8cd…` for
+producer `1c8200d7…`; all were one-attempt/no-retry, every candidate replayed 78/78, all 40 ceilings
+exceeded their maxima, and the four-fault baseline breached 14 phone / 13 desktop fields. Those raw
+capsules remain truthful only for that exact producer.
+
+Exact clean `c095500…` passed Compendium run
+`20260820-arc1a-absolute-deadline-active-cert-c095500` (report SHA-256 `55dba448…`) and one-attempt
+Chrome Smoke `20260820104231234-94067-7f954ca9942e` (report `6d4f00f8…`). The first full Glass run
+then stopped without retry at one product finding: Chrome 152, 12/12 rows, 58/58 controls, zero
+instrument failures, and a 12.5px compact-phone Survey/Planetside overlap. Persona, layout, preview,
+push, and CI did not run.
+
+The bounded product repair retains a 44px Survey floor, 72px scrollable Planetside floor, and their
+existing 8px gap by deriving the lower cap from the shared bottom anchor. Its revised development-
+release bullet changes producer authority to `e59685b1…` (index `ca76da4c…`, owner
+`assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged); measurement was `f9710bdf…`
+before the later cold-start transition. Clean committed source
+`2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired
+baseline6 against legacy `3844701…` and independent candidate11/12/13 under exact Edge .86. All four
+were one-attempt/no-retry; candidates replay 78/78. Historical budget/test `ebe5b5c3…` / `ec956b8a…`
+place all 40 ceilings above the three-run maxima; the four-fault baseline breaches 14 phone / 13
+desktop fields. Browser-free focused 11/11, selftest 222/222, and semantic validation pass. The
+targeted compact-phone Glass diagnostic at `13efb5fa…` is non-certifying. Exact pushed head
+`f9ae372…` then passed the complete local battery once: Compendium 78/78, Smoke, Glass 12/12 and
+58/58, personas, root layout 787/787, and preview packaging/smoke. Corresponding GitHub run
+`32367902426` / job `96421452463` stopped before `Browser.getVersion` or product measurement on its
+single Edge cold launch: endpoint discovery consumed `23657.701415` ms, leaving `6342.262417` ms of
+the 30-second window for a 15-second socket phase. No Compendium report/outcome or retry exists.
+
+At the `32367902426` transition, only that real cold selftest caller changed to 45 seconds startup;
+socket/command/shutdown remained 15/1.5/2 seconds, generic and candidate startup remain 15 seconds,
+and product observation remains
+2 seconds. Portable controls pass at 38,657 ms and reject exact/late 38,658/38,659 ms with one child
+and cleanup. That caller change itself added no warmup, relaunch, retry, fallback, workflow change,
+or game optimization.
+Launcher `6892dea6…` changes measurement to `6ba58522…`; producer then stayed `e59685b1…`, and
+budget/test `bb4da2bf0b…` / `d242705ad9…` were activated browser-free from clean source `374049536e…`.
+Exact-c49 then passed one complete local battery; corresponding run `32375329693` preserved three
+no-retry instrument reds. Root layout's first Chrome launch stopped before endpoint at 30 seconds.
+Exact Edge opened under 45 seconds but the generic selftest's 1.5-second `Runtime.enable` expired
+before Compendium. Smoke's immediate detail read retained only `src length 0`, without image state
+or worker phase, then Back released the asynchronous owner; that does not adjudicate final 440px
+settlement. The bounded repair gives root layout one captured 45/15/30/5-second caller contract,
+uses `tools/compendiummem-browser-preflight.mjs` for one exact-Edge fresh-target 45/15/sealed-5/2-
+second proof outside the hashed measurement graph, and binds pre-open document/generation/logical
+owner plus the opened generation + 1 before requiring semantic decoded 440×440 detail
+publication under one 30-second Smoke deadline. Those repairs left product and authority bytes
+unchanged. Exact-139 then passed its complete local battery, while corresponding run `32383320206`
+matched exact Edge .86 and all then-active authorities before preserving a phone
+`product-unanswerable` red: 29 completed stages, target `Runtime.evaluate` at `2001.132592` ms under
+the unchanged 2,000 ms bound, timely root heartbeat at `10.401960` ms, zero outcomes, 78 blocked,
+no review PNG, and no retry.
+
+The displayed-demand/zoom-owner product and development-copy repair changes built producer to
+`d3223177…` (index `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`; worker/painter
+unchanged). Historical measurement was `6ba58522…`. Clean committed collector/candidate source
+`75a996af…` produced one no-retry baseline8 against legacy `3844701…` and independent no-retry
+candidate17/18/19 under exact Edge .86; all candidates replayed 78/78, while baseline8 retained all
+four faults and breached 14 phone / 13 desktop ceilings. Then-active budget/test `74e88c2b…` /
+`485be9da…` (79,614 / 20,782 bytes) reused all 40 strict ceilings above the three-run maxima. This
+activation was browser-free and non-certifying. Exact activation head `96464d5…` then passed the
+complete local battery. Corresponding run `32394244417`, attempt 1, tested synthetic merge
+`63665b6…`; root, static, Chrome Smoke, and Chrome Glass passed, while the exact-Edge job
+`96507263338` stopped before product. On runner image `ubuntu24/20260816.277`, the downloaded .86
+package and SHA, installed version, and executable all matched, but apt reported already-newest / 0
+upgraded and did not unpack or configure it. Browser-path and portable preflight controls passed;
+the one live Edge launch then published no CDP endpoint inside the unchanged 45-second allowance,
+with repeated DBus-address stderr. No candidate ran, so verifier/upload errors are cascades and
+there is no product verdict, report, outcome, or PNG. Historical exact-Edge jobs are 4/4 ready on
+`20260810.271` when apt replaced resident .78 with .86, versus 0/3 ready on `20260816.277` when .86
+was already resident and apt did no package work; region evidence does not isolate image from host
+pool. Both workflows now request `apt-get install --reinstall --yes "$edge_package"`. The preflight
+selftest statically requires the unique owned step's ordered URL/SHA/download/hash/reinstall/version/
+executable chain followed by preflight, and rejects per-workflow removal and outside-step decoys.
+That green browser-free control proves workflow bytes, not the live hypothesis. Exact local
+`89bfa05…` later completed 78/78 plus six PNGs, then owned shutdown exited 2 after its report and
+verifier had already published PASS. Terminal log `b0bb8abc…` makes that a post-measurement
+instrument red; report/verifier `66ba1366…` / `98664dca…` are false-green. Browser CDP
+`6da9e2ef…` and collector/selftest `f4ad842c…` / `2713ed10…` separate process exit from stdio
+close, defer samples and terminal success until cleanup plus lock release, and enforce lifecycle at
+verification. Clean `c49e525…` candidate20 later reached 78/78 and complete lifecycle on self-
+updated Edge `.93`; quarantine `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser instrument
+evidence. Candidate21/22/23 plus paired baseline9 then completed once each without retry under exact
+`.86` and complete lifecycle; candidates replayed 78/78 with zero findings and baseline9 retained
+all four faults. Their fresh path/UA provenance differed, exposing an overstrict shared-identity
+check; they are individually clean diagnostic history but cannot cross corrected contract
+`e7dfea1d…`. Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10,
+each once with zero retries and distinct fresh `.86` paths. Active budget/test `70145575…` /
+`0fa2e89d…` historically embedded 3/3 samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone /
+13 desktop breaches under measurement `2318f57b…`, producer `d3223177…`, and browser CDP
+`6da9e2ef…`. Focused activation is 13/13 after matching synthetic desktop identities corrected the
+initial phone-only 12/13 control; browser evidence did not change. No package, launch argument,
+workflow, product, timing, producer, or retry-policy change occurred. Exact `731b2e2…` passed the
+complete local battery; hosted run `32420327368` was consumed at its 40-minute incomplete-evidence
+ceiling and left PR #32 blocked. No rerun/push is authorized while the efficiency gate is frozen.
+After terminal-green PR #32 closure, execution returns immediately to Arc 1B/gameplay. The Arc-local Edge authority
+still does **not** repin
+Gate-A/global Edge `150.0.4078.83`.
+
+The current state records an implemented product/scheduler/stack repair and a fail-closed ruler
+transition, not terminal resource certification. Human judgment of a fresh certifying run's six phone/desktop
+list, detail, and focus-pinned images remains outstanding. Arc 1B remains open for ordinary scene/Pixi
+texture, render-target, GPU-proxy, and combined travel → Compendium → Shipyard plateau ownership.
+
 **Scope:**
 
 - Window approximately two viewports plus overscan with spacer-preserved scrollbar. Pin focused
@@ -624,18 +845,23 @@ accessibility, or approved static art.
   a closed panel.
 - Keep complete-genome/set-qualified visual identity; a bare seed is insufficient for bred or
   lineage-sensitive portraits.
-- Create an internal canvas → canvas thumbnail seam that avoids the full-portrait encode/decode
-  detour and full-cache pollution. Retain the already-fixed shared lazy-art subscription behavior.
-- Keep the DOM-mutating species-art chunk under app-shell lifecycle ownership: sequence its lazy
-  import only after the owning document/shell exists, and do not let non-DOM consumers import the
-  side-effectful module directly.
+- Keep identity, canvas allocation, portable painting, and lease/cache ownership separate. Run the
+  painter's import, 440px scratch work, 132px downsample, and encoding only in the dedicated worker;
+  reject a renderer-reachable legacy synchronous species-art facade in the production build graph.
+- Activate the worker only after the owning document/shell is fully wired. Before every default
+  broker pump, service one rendering opportunity and one later task; invalidate a pending pump across
+  persisted suspension/disposal and schedule a fresh turn on resume. Terminate the worker after active work settles and its queue is empty, on persisted suspension,
+  fatal protocol/capability/import failure, or final disposal; never synchronously fall back or
+  automatically retry the failed work from a broken instance.
 - Budget decoded pixels/bytes, cache entries, jobs, and leases; trim correctly as phone caps shrink.
 - Move Planetside chips to the lease path without changing their structural semantics.
 
 **Exit evidence:** a standalone workspace-locked `compendiummem` gate uses a deterministic
-1,500-row catalogue and proves mounted-row bound, `naturalWidth ≤ 132`, decoded resources,
-jobs/leases, populated surface, warm plateau, focus/detail/filter reachability, and close cleanup
-on phone/desktop. Independent negative controls reintroduce unwindowed rows, 440px mounting,
+1,500-row catalogue and proves mounted-row bound; every accepted image is ready with nonempty `src`,
+`complete === true`, and exact 132×132 natural dimensions; queue/active work drains; released worker
+identity, phase, error, and disposal equations reconcile; and decoded resources, jobs/leases,
+populated surface, warm plateau, focus/detail/filter reachability, and close cleanup hold on
+phone/desktop. Independent negative controls reintroduce unwindowed rows, 440px mounting,
 missing lease release, and missing disposal. [HUMAN] review validates 132px list art and 440px
 Compendium detail art, text hierarchy, and focus behavior; the separate 300px surface remains
 art-review-packet evidence, not a Compendium delivery tier.

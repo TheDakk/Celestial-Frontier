@@ -1,0 +1,498 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://celestialfrontier.invalid/schemas/compendium-memory-v1.schema.json",
+  "title": "Celestial Frontier v2 Compendium memory budget",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "status", "fixture", "requirements", "browserAuthority", "measurementAuthority", "producerAuthority", "calibration", "pairedBrokenBaseline", "ceilings"],
+  "properties": {
+    "schema": { "const": "cf-v2-compendium-memory-budget/v1" },
+    "status": { "enum": ["calibration-required", "active"] },
+    "fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "generator", "count", "rowsSha256"],
+      "properties": {
+        "schema": { "const": "cf-v2-compendium-fixture/v1" },
+        "generator": { "const": "compendium-realistic-genomes/v1" },
+        "count": { "const": 1500 },
+        "rowsSha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fixtureCount", "listNaturalDimensionMax", "commandTimeoutMs", "warmCycles"],
+      "properties": {
+        "fixtureCount": { "const": 1500 },
+        "listNaturalDimensionMax": { "const": 132 },
+        "commandTimeoutMs": { "const": 2000 },
+        "warmCycles": { "const": 4 }
+      }
+    },
+    "browserAuthority": { "$ref": "#/$defs/browserAuthority" },
+    "measurementAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "sha256", "inputs"],
+      "properties": {
+        "schema": { "const": "cf-v2-compendium-measurement-authority/v1" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "inputs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fixtureSpec", "fixtureRows", "fixtureGenerator", "budgetSchema", "outcomeContract", "collector", "browserCdp", "browserPath", "workspaceLock", "package", "packageLock", "appPackage", "baselineSaveFixtures", "speciesArtBuildGraph", "outcomeInventory"],
+          "properties": {
+            "fixtureSpec": { "$ref": "#/$defs/sha256" },
+            "fixtureRows": { "$ref": "#/$defs/sha256" },
+            "fixtureGenerator": { "$ref": "#/$defs/sha256" },
+            "budgetSchema": { "$ref": "#/$defs/sha256" },
+            "outcomeContract": { "$ref": "#/$defs/sha256" },
+            "collector": { "$ref": "#/$defs/sha256" },
+            "browserCdp": { "$ref": "#/$defs/sha256" },
+            "browserPath": { "$ref": "#/$defs/sha256" },
+            "workspaceLock": { "$ref": "#/$defs/sha256" },
+            "package": { "$ref": "#/$defs/sha256" },
+            "packageLock": { "$ref": "#/$defs/sha256" },
+            "appPackage": { "$ref": "#/$defs/sha256" },
+            "baselineSaveFixtures": { "$ref": "#/$defs/sha256" },
+            "speciesArtBuildGraph": { "$ref": "#/$defs/sha256" },
+            "outcomeInventory": { "$ref": "#/$defs/sha256" }
+          }
+        }
+      }
+    },
+    "producerAuthority": { "$ref": "#/$defs/producerAuthority" },
+    "calibration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requiredIndependentRunsPerProfile", "selectionRule", "headroomRationaleRequired", "samples"],
+      "properties": {
+        "requiredIndependentRunsPerProfile": { "const": 3 },
+        "selectionRule": { "type": "string", "minLength": 1 },
+        "headroomRationaleRequired": { "const": true },
+        "samples": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["phone", "desktop"],
+          "properties": {
+            "phone": { "type": "array", "items": { "$ref": "#/$defs/candidateSample" } },
+            "desktop": { "type": "array", "items": { "$ref": "#/$defs/candidateSample" } }
+          }
+        }
+      }
+    },
+    "pairedBrokenBaseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "commit", "collectorCommit", "projectionRowsSha256", "expectedFaults", "samples"],
+      "properties": {
+        "status": { "enum": ["measurement-required", "measured"] },
+        "commit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "collectorCommit": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string", "pattern": "^[a-f0-9]{40}$" }
+          ]
+        },
+        "projectionRowsSha256": { "$ref": "#/$defs/sha256" },
+        "expectedFaults": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/brokenFault" }
+        },
+        "samples": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["phone", "desktop"],
+          "properties": {
+            "phone": { "type": "array", "items": { "$ref": "#/$defs/baselineSample" } },
+            "desktop": { "type": "array", "items": { "$ref": "#/$defs/baselineSample" } }
+          }
+        }
+      }
+    },
+    "ceilings": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["phone", "desktop"],
+          "properties": {
+            "phone": { "$ref": "#/$defs/ceiling" },
+            "desktop": { "$ref": "#/$defs/ceiling" }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "calibration-required" } } },
+      "then": {
+        "properties": {
+          "ceilings": { "type": "null" },
+          "calibration": {
+            "properties": {
+              "samples": {
+                "properties": {
+                  "phone": { "maxItems": 0 },
+                  "desktop": { "maxItems": 0 }
+                }
+              }
+            }
+          },
+          "pairedBrokenBaseline": {
+            "properties": {
+              "status": { "const": "measurement-required" },
+              "collectorCommit": { "type": "null" },
+              "samples": {
+                "properties": {
+                  "phone": { "maxItems": 0 },
+                  "desktop": { "maxItems": 0 }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "active" } } },
+      "then": {
+        "properties": {
+          "ceilings": { "type": "object" },
+          "pairedBrokenBaseline": {
+            "properties": {
+              "status": { "const": "measured" },
+              "collectorCommit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+              "samples": {
+                "properties": {
+                  "phone": { "minItems": 1 },
+                  "desktop": { "minItems": 1 }
+                }
+              }
+            }
+          },
+          "calibration": {
+            "properties": {
+              "samples": {
+                "properties": {
+                  "phone": { "minItems": 3 },
+                  "desktop": { "minItems": 3 }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "producerPart": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relativePath", "sha256"],
+      "properties": {
+        "relativePath": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "producerAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "sha256", "inputs"],
+      "properties": {
+        "schema": { "const": "cf-v2-compendium-producer-authority/v1" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "inputs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["index", "owner", "worker", "painter"],
+          "properties": {
+            "index": { "$ref": "#/$defs/producerPart" },
+            "owner": { "$ref": "#/$defs/producerPart" },
+            "worker": { "$ref": "#/$defs/producerPart" },
+            "painter": { "$ref": "#/$defs/producerPart" }
+          }
+        }
+      }
+    },
+    "brokenFault": {
+      "enum": [
+        "unwindowed-1500-rows", "list-source-440",
+        "full-portrait-dom-exposure", "eager-art-import"
+      ]
+    },
+    "browserAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "scope", "product", "revision", "jsVersion", "protocolVersion"],
+      "properties": {
+        "schema": { "const": "cf-v2-compendium-browser-authority/v1" },
+        "scope": { "const": "arc1a-compendium-memory-only" },
+        "product": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "minLength": 1 },
+        "jsVersion": { "type": "string", "minLength": 1 },
+        "protocolVersion": { "type": "string", "minLength": 1 }
+      }
+    },
+    "sampleBrowser": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["executable", "product", "revision", "userAgent", "jsVersion", "protocolVersion"],
+      "properties": {
+        "executable": { "type": "string", "minLength": 1 },
+        "product": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "minLength": 1 },
+        "userAgent": { "type": "string", "minLength": 1 },
+        "jsVersion": { "type": "string", "minLength": 1 },
+        "protocolVersion": { "type": "string", "minLength": 1 }
+      }
+    },
+    "candidateSample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runId", "commit", "workingTreeDigest", "inputDigest", "measurementAuthoritySha256", "producerAuthoritySha256", "sourceState", "sourceChanged", "fixtureRowsSha256", "measuredAt", "browser", "metrics", "evidence"],
+      "properties": {
+        "runId": { "type": "string", "minLength": 1 },
+        "commit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "workingTreeDigest": { "$ref": "#/$defs/sha256" },
+        "inputDigest": { "$ref": "#/$defs/sha256" },
+        "measurementAuthoritySha256": { "$ref": "#/$defs/sha256" },
+        "producerAuthoritySha256": { "$ref": "#/$defs/sha256" },
+        "sourceState": { "const": "committed" },
+        "sourceChanged": { "const": false },
+        "fixtureRowsSha256": { "$ref": "#/$defs/sha256" },
+        "measuredAt": { "type": "string", "format": "date-time" },
+        "browser": { "$ref": "#/$defs/sampleBrowser" },
+        "metrics": { "$ref": "#/$defs/metrics" },
+        "evidence": { "$ref": "#/$defs/candidateEvidence" }
+      }
+    },
+    "baselineSample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runId", "commit", "workingTreeDigest", "inputDigest", "measurementAuthoritySha256", "sourceState", "sourceChanged", "fixtureRowsSha256", "measuredAt", "browser", "metrics", "evidence", "observedFaults"],
+      "properties": {
+        "runId": { "type": "string", "minLength": 1 },
+        "commit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "workingTreeDigest": { "$ref": "#/$defs/sha256" },
+        "inputDigest": { "$ref": "#/$defs/sha256" },
+        "measurementAuthoritySha256": { "$ref": "#/$defs/sha256" },
+        "sourceState": { "const": "committed" },
+        "sourceChanged": { "const": false },
+        "fixtureRowsSha256": { "$ref": "#/$defs/sha256" },
+        "measuredAt": { "type": "string", "format": "date-time" },
+        "browser": { "$ref": "#/$defs/sampleBrowser" },
+        "metrics": { "$ref": "#/$defs/metrics" },
+        "evidence": { "$ref": "#/$defs/baselineEvidence" },
+        "observedFaults": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/brokenFault" }
+        }
+      }
+    },
+    "candidateTuple": {
+      "type": "array", "minItems": 15, "maxItems": 15,
+      "items": { "$ref": "#/$defs/nonnegativeInteger" }
+    },
+    "baselineTuple": {
+      "type": "array", "minItems": 7, "maxItems": 7,
+      "items": { "$ref": "#/$defs/nonnegativeInteger" }
+    },
+    "candidateEvidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "runId", "profile", "points", "warm", "jobPeaks"],
+      "properties": {
+        "schema": { "const": "cf-v2-compendium-candidate-calibration-evidence/v1" },
+        "runId": { "type": "string", "minLength": 1 },
+        "profile": { "enum": ["phone", "desktop"] },
+        "points": {
+          "type": "object", "additionalProperties": false,
+          "required": ["first", "middle", "last", "filtered", "detail", "detailClosed", "back", "focusPinned", "closed", "planetside", "warmCachePrecondition", "postCapRestored", "resizeBase", "resizeContracted", "resizeExpanded", "resizeRestored"],
+          "properties": {
+            "first": { "$ref": "#/$defs/candidateTuple" },
+            "middle": { "$ref": "#/$defs/candidateTuple" },
+            "last": { "$ref": "#/$defs/candidateTuple" },
+            "filtered": { "$ref": "#/$defs/candidateTuple" },
+            "detail": { "$ref": "#/$defs/candidateTuple" },
+            "detailClosed": { "$ref": "#/$defs/candidateTuple" },
+            "back": { "$ref": "#/$defs/candidateTuple" },
+            "focusPinned": { "$ref": "#/$defs/candidateTuple" },
+            "closed": { "$ref": "#/$defs/candidateTuple" },
+            "planetside": { "$ref": "#/$defs/candidateTuple" },
+            "warmCachePrecondition": { "$ref": "#/$defs/candidateTuple" },
+            "postCapRestored": { "$ref": "#/$defs/candidateTuple" },
+            "resizeBase": { "$ref": "#/$defs/candidateTuple" },
+            "resizeContracted": { "$ref": "#/$defs/candidateTuple" },
+            "resizeExpanded": { "$ref": "#/$defs/candidateTuple" },
+            "resizeRestored": { "$ref": "#/$defs/candidateTuple" }
+          }
+        },
+        "warm": {
+          "type": "array", "minItems": 4, "maxItems": 4,
+          "items": { "$ref": "#/$defs/candidateTuple" }
+        },
+        "jobPeaks": {
+          "type": "object", "additionalProperties": false,
+          "required": ["queuedJobsPeak", "activeJobsPeak"],
+          "properties": {
+            "queuedJobsPeak": { "$ref": "#/$defs/nonnegativeInteger" },
+            "activeJobsPeak": { "$ref": "#/$defs/nonnegativeInteger" }
+          }
+        }
+      }
+    },
+    "baselineEvidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "runId", "profile", "list", "detail", "warm", "listWitness", "eagerImport"],
+      "properties": {
+        "schema": { "const": "cf-v2-compendium-broken-baseline-calibration-evidence/v1" },
+        "runId": { "type": "string", "minLength": 1 },
+        "profile": { "enum": ["phone", "desktop"] },
+        "list": { "$ref": "#/$defs/baselineTuple" },
+        "detail": { "$ref": "#/$defs/baselineTuple" },
+        "warm": {
+          "type": "array", "minItems": 4, "maxItems": 4,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["point", "renderStartThumbCacheEntries", "renderStartThumbCacheEncodedBytes"],
+            "properties": {
+              "point": { "$ref": "#/$defs/baselineTuple" },
+              "renderStartThumbCacheEntries": { "$ref": "#/$defs/nonnegativeInteger" },
+              "renderStartThumbCacheEncodedBytes": { "$ref": "#/$defs/nonnegativeInteger" }
+            }
+          }
+        },
+        "listWitness": {
+          "type": "object", "additionalProperties": false,
+          "required": ["naturalDimensionHistogram", "distinctSources", "sourceInstanceCount", "dataImageCount", "sourceInstanceEncodedBytes", "thumbObserver", "portraitCache"],
+          "properties": {
+            "naturalDimensionHistogram": {
+              "type": "array",
+              "items": {
+                "type": "array", "minItems": 3, "maxItems": 3,
+                "items": { "$ref": "#/$defs/nonnegativeInteger" }
+              }
+            },
+            "distinctSources": { "$ref": "#/$defs/nonnegativeInteger" },
+            "sourceInstanceCount": { "$ref": "#/$defs/nonnegativeInteger" },
+            "dataImageCount": { "$ref": "#/$defs/nonnegativeInteger" },
+            "sourceInstanceEncodedBytes": { "$ref": "#/$defs/nonnegativeInteger" },
+            "thumbObserver": {
+              "type": "object", "additionalProperties": false,
+              "required": ["expectedPreOwnerExact132Completions", "preOwnerExact132Completions", "initialListCompletions", "cacheEntries", "cacheEncodedBytes", "totalExact132Completions", "errors", "descriptorPreserved", "stableQuietMs"],
+              "properties": {
+                "expectedPreOwnerExact132Completions": { "$ref": "#/$defs/nonnegativeInteger" },
+                "preOwnerExact132Completions": { "$ref": "#/$defs/nonnegativeInteger" },
+                "initialListCompletions": { "$ref": "#/$defs/nonnegativeInteger" },
+                "cacheEntries": { "$ref": "#/$defs/nonnegativeInteger" },
+                "cacheEncodedBytes": { "$ref": "#/$defs/nonnegativeInteger" },
+                "totalExact132Completions": { "$ref": "#/$defs/nonnegativeInteger" },
+                "errors": { "$ref": "#/$defs/nonnegativeInteger" },
+                "descriptorPreserved": { "const": true },
+                "stableQuietMs": { "$ref": "#/$defs/nonnegative" }
+              }
+            },
+            "portraitCache": {
+              "type": "object", "additionalProperties": false,
+              "required": ["entries", "encodedBytes"],
+              "properties": {
+                "entries": { "$ref": "#/$defs/nonnegativeInteger" },
+                "encodedBytes": { "$ref": "#/$defs/nonnegativeInteger" }
+              }
+            }
+          }
+        },
+        "eagerImport": {
+          "type": "object", "additionalProperties": false,
+          "required": ["observedResource", "speciesChunk"],
+          "properties": {
+            "observedResource": { "type": "string", "minLength": 1 },
+            "speciesChunk": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mountedRows", "heapUsedBytes", "documents", "nodes",
+        "embedderHeapUsedBytes", "backingStorageBytes", "heapAggregateBytes", "jsEventListeners",
+        "liveCacheEntries", "liveDecodedPixels", "liveDecodedBytes", "liveEncodedBytes",
+        "queuedJobsPeak", "activeJobsPeak", "liveLeases", "liveSubscribers",
+        "livePortraitCacheEntries", "livePortraitEncodedBytes",
+        "warmHeapAggregateRangeBytes", "warmEncodedBytesRange"
+      ],
+      "properties": {
+        "mountedRows": { "$ref": "#/$defs/nonnegative" },
+        "heapUsedBytes": { "$ref": "#/$defs/nonnegative" },
+        "documents": { "$ref": "#/$defs/nonnegative" },
+        "nodes": { "$ref": "#/$defs/nonnegative" },
+        "embedderHeapUsedBytes": { "$ref": "#/$defs/nonnegative" },
+        "backingStorageBytes": { "$ref": "#/$defs/nonnegative" },
+        "heapAggregateBytes": { "$ref": "#/$defs/nonnegative" },
+        "jsEventListeners": { "$ref": "#/$defs/nonnegative" },
+        "liveCacheEntries": { "$ref": "#/$defs/nonnegative" },
+        "liveDecodedPixels": { "$ref": "#/$defs/nonnegative" },
+        "liveDecodedBytes": { "$ref": "#/$defs/nonnegative" },
+        "liveEncodedBytes": { "$ref": "#/$defs/nonnegative" },
+        "queuedJobsPeak": { "$ref": "#/$defs/nonnegative" },
+        "activeJobsPeak": { "$ref": "#/$defs/nonnegative" },
+        "liveLeases": { "$ref": "#/$defs/nonnegative" },
+        "liveSubscribers": { "$ref": "#/$defs/nonnegative" },
+        "livePortraitCacheEntries": { "$ref": "#/$defs/nonnegative" },
+        "livePortraitEncodedBytes": { "$ref": "#/$defs/nonnegative" },
+        "warmHeapAggregateRangeBytes": { "$ref": "#/$defs/nonnegative" },
+        "warmEncodedBytesRange": { "$ref": "#/$defs/nonnegative" }
+      }
+    },
+    "ceiling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rationale", "mountedRowsMax", "heapUsedBytesMax", "documentsMax", "nodesMax",
+        "embedderHeapUsedBytesMax", "backingStorageBytesMax", "heapAggregateBytesMax",
+        "jsEventListenersMax", "liveCacheEntriesMax", "liveDecodedPixelsMax",
+        "liveDecodedBytesMax", "liveEncodedBytesMax", "warmHeapAggregateRangeBytesMax",
+        "queuedJobsPeakMax", "activeJobsPeakMax", "liveLeasesMax", "liveSubscribersMax",
+        "livePortraitCacheEntriesMax", "livePortraitEncodedBytesMax",
+        "warmEncodedBytesRangeMax"
+      ],
+      "properties": {
+        "rationale": { "type": "string", "minLength": 1 },
+        "mountedRowsMax": { "$ref": "#/$defs/nonnegative" },
+        "heapUsedBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "documentsMax": { "$ref": "#/$defs/nonnegative" },
+        "nodesMax": { "$ref": "#/$defs/nonnegative" },
+        "embedderHeapUsedBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "backingStorageBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "heapAggregateBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "jsEventListenersMax": { "$ref": "#/$defs/nonnegative" },
+        "liveCacheEntriesMax": { "$ref": "#/$defs/nonnegative" },
+        "liveDecodedPixelsMax": { "$ref": "#/$defs/nonnegative" },
+        "liveDecodedBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "liveEncodedBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "queuedJobsPeakMax": { "$ref": "#/$defs/nonnegative" },
+        "activeJobsPeakMax": { "$ref": "#/$defs/nonnegative" },
+        "liveLeasesMax": { "$ref": "#/$defs/nonnegative" },
+        "liveSubscribersMax": { "$ref": "#/$defs/nonnegative" },
+        "livePortraitCacheEntriesMax": { "$ref": "#/$defs/nonnegative" },
+        "livePortraitEncodedBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "warmHeapAggregateRangeBytesMax": { "$ref": "#/$defs/nonnegative" },
+        "warmEncodedBytesRangeMax": { "$ref": "#/$defs/nonnegative" }
+      }
+    },
+    "nonnegative": { "type": "number", "minimum": 0 },
+    "nonnegativeInteger": { "type": "integer", "minimum": 0 }
+  }
+}

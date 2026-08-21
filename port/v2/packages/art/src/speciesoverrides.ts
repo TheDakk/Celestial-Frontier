@@ -34,18 +34,25 @@ import { insectBody, myriapod } from './invertoverrides.js';
 import { plantBody, floraFlytrap, floraPitcher, floraSundew, floraFloatingAlgae } from './floraoverrides2.js';
 import { reptSnake, reptTurtle } from './faunaoverrides2.js';
 import { faunaBird } from './faunaoverrides.js';
+import {
+  createSpeciesCanvas,
+  type ArtCanvas,
+  type ArtContext2D,
+} from './speciescanvas.js';
 
 type G = Record<string, unknown>;
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 const S = 440;
 
 /* ---- shared painterly furniture (matches the verbatim engine's feel) ---- */
-function newCanvas(): { cv: HTMLCanvasElement; c: Ctx } {
-  const cv = document.createElement('canvas'); cv.width = cv.height = S;
-  return { cv, c: cv.getContext('2d')! };
+function newCanvas(): { cv: ArtCanvas; c: Ctx } {
+  const cv = createSpeciesCanvas(S, S);
+  const c = cv.getContext('2d');
+  if (!c) throw new Error('2D canvas context unavailable for species override');
+  return { cv, c };
 }
 /** ★ THE FIT PASS (Nick 2026-08-01: "make sure the animals fit within the
-    window" — Hippo's muzzle and Giraffe's head were running off frame).
+    frame" — Hippo's muzzle and Giraffe's head were running off frame).
     The subject is painted to a TRANSPARENT layer, its ink measured, then
     scaled+centred into the frame with a margin. This is the verbatim
     engine's own convention for flora (_fitPlant) generalised to every
@@ -55,9 +62,10 @@ const FIT_MARGIN = 0.90;
 const INK = S * 2;            /* the oversized ink layer */
 const INK_OFF = S * 0.5;      /* painter origin, so overflow in EVERY direction survives */
 /** an ink layer a painter cannot overflow: 2S canvas, origin offset by S/2 */
-function newInk(): { cv: HTMLCanvasElement; c: Ctx } {
-  const cv = document.createElement('canvas'); cv.width = cv.height = INK;
-  const c = cv.getContext('2d')!;
+function newInk(): { cv: ArtCanvas; c: Ctx } {
+  const cv = createSpeciesCanvas(INK, INK);
+  const c = cv.getContext('2d');
+  if (!c) throw new Error('2D canvas context unavailable for species ink layer');
   c.translate(INK_OFF, INK_OFF);
   return { cv, c };
 }
@@ -65,8 +73,9 @@ function newInk(): { cv: HTMLCanvasElement; c: Ctx } {
     reaches the ink layer's own edge — i.e. it was cut at DRAW time and no
     amount of fitting can restore it. Should always stay empty. */
 export const CLIPPED: string[] = [];
-function fitInk(src: HTMLCanvasElement, dst: Ctx, who: string): void {
-  const sc = src.getContext('2d')!;
+function fitInk(src: ArtCanvas, dst: Ctx, who: string): void {
+  const sc = src.getContext('2d');
+  if (!sc) throw new Error('2D canvas context unavailable for species fit pass');
   const data = sc.getImageData(0, 0, INK, INK).data;
   let x0 = INK, y0 = INK, x1 = -1, y1 = -1;
   for (let y = 0; y < INK; y++) {
@@ -1661,7 +1670,7 @@ function applyReviewedFaunaLineageDrift(c: Ctx, g: G, name: string): void {
   c.restore();
 }
 
-export function resolveOverride(g: G): string | null {
+export function resolveOverrideCanvas(g: G): ArtCanvas | null {
   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it
      (Lion's Mane), which is exactly the mojibake Nick's audit caught */
   const earthName = String((g as { _earthName?: string })._earthName || '').replace(/[’‘]/g, "'");
@@ -1682,7 +1691,7 @@ export function resolveOverride(g: G): string | null {
      kingdom-qualified lookup prevents duplicate names crossing ownership. */
   const name = earthName || (kingdom === 'flora' || kingdom === 'fungi' || kingdom === 'microbe' || reviewedFaunaBlend ? blend : '');
   if (!name && blend) return null;
-  if (!name) return resolveProcedural(g);
+  if (!name) return resolveProceduralCanvas(g);
   /* ★ WAVE 18 — CANONICAL + CROSS-KINGDOM audit blockers. Four organisms live
      in TWO kingdoms each (the 1,014-vs-1,010 count delta), and a few iconic
      species need a bespoke painter regardless of which family the kingdom
@@ -1697,7 +1706,7 @@ export function resolveOverride(g: G): string | null {
     canon(ink.c, g, palette(g) as Pal);
     applyReviewedFaunaLineageDrift(ink.c, g, name);
     fitInk(ink.cv, c, kingdom + ':' + name);
-    return cv.toDataURL();
+    return cv;
   }
   /* FLORA (wave 2): iconic bespoke bodies first, then the name-seeded ladder
      for every member of the 16 byte-duplicate groups */
@@ -1713,7 +1722,7 @@ export function resolveOverride(g: G): string | null {
     const ink = newInk();
     (iconic || floraLadder)(ink.c, g, palette(g) as Pal, name);
     fitInk(ink.cv, c, 'flora:' + name);
-    return cv.toDataURL();
+    return cv;
   }
   /* FAUNA (wave 3): species whose defining anatomy was categorically wrong */
   if (kingdom === 'fauna') {
@@ -1728,7 +1737,7 @@ export function resolveOverride(g: G): string | null {
     else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!, name);
     applyReviewedFaunaLineageDrift(ink.c, g, name);
     fitInk(ink.cv, c, 'fauna:' + name);
-    return cv.toDataURL();
+    return cv;
   }
   const painter = kingdom === 'fungi' ? FUNGI_NAME[name] : kingdom === 'microbe' ? MICROBE_NAME[name] : undefined;
   if (!painter) return null;
@@ -1738,7 +1747,7 @@ export function resolveOverride(g: G): string | null {
   const ink = newInk();
   painter(ink.c, g, palette(g));
   fitInk(ink.cv, c, kingdom + ':' + name);
-  return cv.toDataURL();
+  return cv;
 }
 
 /** How many species wave 1 corrects (for the record + the audit sentinel). */
@@ -1785,7 +1794,7 @@ const R2_MICROBE_COLONY_SEEDS: ReadonlySet<number> = new Set([
   1077367562, 4135221025, 753721544, 3287574574, 1224906226, 2757882450, 1718796946,
 ]);
 
-export function resolveProcedural(g: G): string | null {
+export function resolveProceduralCanvas(g: G): ArtCanvas | null {
   /* ★ WAVE 17 — THE LAST MONO-TEMPLATE (Nick's audit §12/§13, for the
      PROCEDURAL spread). Wave 1 gave the NAMED fungi and microbes structural
      families, but every procedural genome in those two kingdoms still fell
@@ -1861,7 +1870,7 @@ export function resolveProcedural(g: G): string | null {
       gg.addColorStop(1, 'rgba(0,0,0,0)');
       c.fillStyle = gg; c.fillRect(0, 0, S, S);
     }
-    return cv.toDataURL();
+    return cv;
   }
   const plan = planFor(g as Record<string, unknown>);
   if (!plan) return null;
@@ -1895,5 +1904,5 @@ export function resolveProcedural(g: G): string | null {
     case 'radial': proceduralRadialFauna(ink.c, g, pal); break;
   }
   fitInk(ink.cv, c, who);
-  return cv.toDataURL();
+  return cv;
 }

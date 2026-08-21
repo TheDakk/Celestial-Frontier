@@ -70,7 +70,7 @@ ever substitute for a person, and it is deliberately expensive.
 |---|---|---|
 | `[HUMAN]` | Universe → system → Earth → landing → return works on phone and desktop | Played, not asserted |
 | `[EXEC-TODO]` | First interaction within budget | `budgets.json`: **answerable ≤ 1000 ms at 4× CPU**. Today's build is 1944 ms — the port must *improve* it |
-| `[EXEC-TODO]` | No leaks across repeated travel, Compendium and future Shipyard cycles | V2 now has Pixi and bounded replacement-reload teardown, but ordinary Canvas/Pixi ownership and a warm memory plateau budget remain open |
+| `[EXEC-TODO]` | No leaks across repeated travel, Compendium and future Shipyard cycles | Arc 1A implements maximum-Compendium virtualization and lease/cache/worker ownership. Exact `aecf386…` bounds static-server close and suppresses PASS/sample on cleanup red. Clean `6736ef4…` c27/baseline11/c28/c29 evidence activated the macOS ruler. Exact-head Linux run `32441023665` completed 75/78 and isolated native PNG/embedder variance to three ceilings while every absolute/resource/lifecycle field passed. Local budget/test `e3a71c8a…` / `0793772d…` widen only those fields to 256 KiB; the committed raw report replays 78/78, just-below controls reproduce the reds, and baseline11 keeps 14 phone / 13 desktop breaches. Fresh changed-head CI, Arc 1B's scene Canvas/Pixi, and the combined travel → Compendium → Shipyard plateau remain open. |
 | `[HUMAN]` | Rings and planet composition read correctly | Art judgment |
 
 ## Gate E — creature quality
@@ -123,7 +123,8 @@ ever substitute for a person, and it is deliberately expensive.
 
 | | Criterion | Evidence |
 |---|---|---|
-| `[EXEC-TODO]` | Maximum-size Compendium mounts/paints only a bounded visible window and plateaus after warmup | 1,500-row raw-CDP fixture; decoded-pixel/job/DOM/resource counters; deliberately unbounded and no-disposal controls |
+| `[EXEC-TODO]` | Maximum-size Compendium mounts/paints only a bounded visible window and plateaus after warmup | Product virtualization, art ownership, focus/filter/detail/Close outcomes, and the owner→worker→painter graph are implemented. Clean fresh-.86 `6736ef4…` c27/baseline11/c28/c29 evidence remains the three-run/paired baseline. Exact-head Linux run `32441023665` completed 75/78; only native portrait bytes and non-monotonic phone embedder variance crossed macOS headroom. Local cross-host budget/test `e3a71c8a…` / `0793772d…` replays the committed raw report 78/78 while preserving all 14/13 baseline breaches and negative controls. Fresh changed-head battery and PR merge remain open; Arc-local Edge 151 still does not repin Gate A. |
+| `[HUMAN]` | The maximum Compendium's 132px list art, 440px detail art, hierarchy and focus treatment read correctly on phone and desktop | **OUTSTANDING — not run.** Review six fresh run-bound list/detail/focus-pinned images. Automated geometry, reachability and resource evidence cannot certify visual quality or focus feel |
 | `[EXEC-TODO]` | Ship art, installed-system captions and travel reach derive from one normalized state | all four chassis stages, hardpoint permutations, imported veteran fallback, save/reload, deliberately mismatched selector control |
 | `[HUMAN]` | Inventory portrait and every ship stage read clearly at phone row, inspector and native scales | fixed proof sheet + real phone/desktop review; automation cannot judge appeal or silhouette strength |
 | `[EXEC-TODO]` | Gear instances migrate, equip, salvage and persist by exact instance identity | legacy fixtures, fixed-point migration, duplicate-base distinct rolls, corrupt/future rows, inventory-full behavior |
@@ -160,7 +161,7 @@ or engagement pressure.
 |---|---|---|
 | **`[HUMAN]`** | Physical iOS / iPadOS / Android / desktop matrix | ⛔ Outstanding for **four rounds**. No harness has ever seen this game on real iOS |
 | `[EXEC-TODO]` | Accessibility audit | Partially covered by `uilayout` (44px touch floors, focus order) |
-| `[EXEC-TODO]` | Performance and heat budgets | `budgets.json` sets bundle + answerability; memory/GPU pending Phase 3 |
+| `[EXEC-TODO]` | Performance and heat budgets | `budgets.json` sets bundle + answerability. Clean `6736ef4…` c27/baseline11/c28/c29 evidence owns Arc 1A's three candidates and paired baseline. Exact-head Linux run `32441023665` isolated three cross-host fields; local budget/test `e3a71c8a…` / `0793772d…` replays the committed report 78/78 with just-below negatives and unchanged 14/13 baseline breaches. Fresh changed-head certification, Arc 1B scene/Pixi/GPU plateaus, and physical-device heat/battery evidence remain open. |
 | `[EXEC-TODO]` | PWA offline / update rollback | Nothing exists today |
 | `[HUMAN]` | Save export and recovery path works for a real player | Same blocker as Gate C |
 

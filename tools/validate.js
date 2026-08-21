@@ -13,6 +13,7 @@ const t = (f) => path.join(__dirname, f);
 function run(args) {
   execFileSync(process.execPath, args, { stdio: 'inherit', cwd: root });
 }
+run([t('actions-budget-policy.js')]); // no automatic or unauthorised hosted runner spend
 if (fs.existsSync(path.join(root, 'main.js')))
   run([t('build.js'), '--template', path.join(root, 'celestial-frontier.html'),
     '--js', path.join(root, 'main.js'), '--out', path.join(root, 'celestial-frontier.html')]);

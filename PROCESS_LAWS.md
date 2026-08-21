@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-16. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-20. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -10,6 +10,75 @@ shipped, or with a check that went green while the thing it guarded was broken. 
 roughly by how often they have bitten.
 
 ---
+
+⚠⚠ **AN ARC IS NOT DONE UNTIL ITS CURRENT DOCS AND HANDOFF AGREE** (2026-08-20).
+Every Arc update refreshes all affected current Markdown/reference docs in the same batch and ends
+with a self-contained fresh-session `ROADMAP.md` handoff: exact state, evidence, blockers, owner,
+and next action. Either OpenAI/Codex or Anthropic/Claude must be able to resume from repository
+state alone, without chat or app-private context. Logs archive verbatim; references refresh in
+place. A stale current reference or agent-specific-only handoff leaves the Arc incomplete.
+
+⚠⚠ **HOSTED CI IS A FINITE RELEASE RESOURCE, NOT THE DEVELOPMENT LOOP** (2026-08-20).
+The repository is public as of 2026-08-20, so standard hosted runners are free while it remains
+public; 3,000 is the fail-closed cap if it becomes private or billing is ambiguous.
+`GITHUB_ACTIONS_BUDGET.md` and `PARALLEL_GIT_PROTOCOL.md` therefore fail closed: ordinary pushes,
+PR synchronization, merges, branch synchronization, and publication may not start hosted runners.
+Develop and prove locally, batch work into one frozen exact head, and spend at most one explicitly
+owner-authorized hosted attempt at a terminal milestone after Nick lifts `FROZEN`. Record workflow,
+PR/ref, full head/base SHA, configured runner ceiling, and one-attempt stopping rule before the
+label/manual token is used. Never rerun an unchanged red, cancel-and-restart to erase evidence,
+make empty CI-kick commits, infer a monthly reset, or bypass a missing required check. Standing
+merge authority is not standing Actions-spend authority. Negative-control the workflow policy:
+automatic triggers, a run-by-default input, a missing job guard, a decoy guard, a second battery
+runner, an unparked publisher, or an unknown workflow must all fail locally before any push.
+
+⚠⚠ **A MARKDOWN POLICY CARRIER IS EXECUTABLE INPUT, NOT A DOCS-ONLY DESCENDANT** (2026-08-20).
+PR #32 run `32440536261` spent its one authorized attempt and failed before browser work because
+`GITHUB_ACTIONS_BUDGET.md` changed its guarded mode declaration while the policy parser still
+accepted only `FROZEN`. Grep every reader before classifying Markdown as authority-neutral, and run
+the owning policy selftest after changing a parsed carrier. An owner-lifted state must remain an
+exact recognized token; prose belongs on a separate line. The policy now accepts exactly `FROZEN`
+or `UNFROZEN`, proves both valid, and negative-controls unknown and duplicate direct declarations;
+neither mode bypasses the exact owner-label/manual workflow guards. An `always()` verifier failing
+because its upstream producer never ran is fallout, not a second root cause. A red attempt remains
+consumed; repair locally and obtain fresh changed-head authorization rather than rerunning it.
+
+⚠⚠ **A CANONICAL BROWSER TUPLE DOES NOT MAKE NATIVE ENCODING OR EMBEDDER HEAP
+HOST-INVARIANT** (2026-08-20). PR #32 run `32441023665` replayed the exact Edge
+151.0.4129.86 product/revision/JS/protocol tuple, fixture, measurement authority, producer, and
+working-tree digest used by the macOS calibration, yet Linux encoded the one retained 440px PNG at
+220,530 B instead of 182,238 B and produced a non-monotonic 97,320 B phone warm aggregate range
+entirely inside embedder heap. The report was complete: 75/78 passed; encoded/decoded resources,
+jobs, ownership, worker lifecycle, DOM, responsiveness, and every absolute heap ceiling were stable
+or green. This is neither permission to ignore a red nor evidence of a product leak.
+
+Preserve raw path/user-agent as provenance while judging the deliberately shared browser authority
+by its canonical tuple. A bounded cross-host budget repair must name and hash the retained report,
+change only the observed host-sensitive fields, commit the compressed raw measurement with both
+compressed and decompressed hashes, replay it through the production evaluator, negative-control each
+changed boundary, and remain below the paired broken baseline with the same breach inventory. Here
+budget `e3a71c8a…` raises only phone warm range and phone/desktop one-portrait encoding to 262,144 B;
+committed gzip `a3b67e70…` expands to exact report `a486fe8e…` and replays 78/78, while just-below
+controls reproduce all three original
+failures, and baseline11 still breaches 14 phone / 13 desktop ceilings. Measurement, collector,
+producer, browser, samples, baseline, no-retry, and HUMAN authority remain unchanged. Never widen a
+ruler merely because it fired, and never call an earlier red terminal-green retroactively; a fresh
+changed-head hosted check still requires exact owner authorization.
+
+⚠⚠ **A SERVER CLOSE CALLBACK IS NOT A BOUNDED CLEANUP OUTCOME** (2026-08-20).
+Compendium's owned static server now has one immutable monotonic 2,000 ms shutdown deadline.
+Just-before succeeds; exact-boundary, late, missing, or error callbacks force
+`closeAllConnections()` exactly once and reject. Settle before forcing so reentrant/stale timer or
+callback delivery cannot change the result. Cleanup failure suppresses PASS and sample publication.
+Because collector bytes are measurement authority, this repair invalidates the former active ruler:
+fail closed with empty candidates, null ceilings, and a measurement-required paired baseline, then
+recalibrate from one clean source without reusing historical capsules. Clean source `6736ef4…`
+then produced c27/baseline11/c28/c29 once each under fresh exact Edge `.86`; activation `b3957e1…`
+originally bound budget/test `546d3a81…` / `ef06252a…` to unchanged measurement `23aacc2c…`, collector
+`0c7ec3ba…`, selftest `0bbb3541…`, and producer `d3223177…`. All candidates completed 78/78 with
+complete lifecycle; baseline11 retained four faults and 14 phone / 13 desktop breaches; every prior
+numeric ceiling was strict. Cross-host budget `e3a71c8a…` now supersedes only the three numeric
+fields documented above. Activation is not exact-head, hosted, HUMAN, or Gate authority.
 
 ⚠⚠ WHEN A NEW INSTRUMENT FIRES — OR PASSES — SUSPECT THE INSTRUMENT FIRST (2026-07-30, learned
   THREE times across two ships). Every gate built in this arc found a bug in ITSELF before it
@@ -75,6 +144,36 @@ roughly by how often they have bitten.
 ⚠ NEGATIVE-CONTROL EVERY NEW CHECK — break the build on purpose and confirm the check fails.
   Two controls changed what shipped this round: the .tutpri specificity miss, and a stall-detector
   test that passed against a reverted build because it never constructed the no-objective state.
+⚠⚠ A MEASURED RULER OWNS ITS EXACT AUTHORITY AND MUST REPLAY RAW EVIDENCE (2026-08-17).
+  Bind the runtime/browser build, budget bytes, deterministic inputs, source identity, attempt
+  policy, and artifacts that produced a ceiling. At terminal verification, recompute outcomes from
+  the raw observations against those exact authorities. Never trust a copied PASS boolean, hash,
+  metric summary, or outcome row as a substitute for the bytes or observations it summarizes;
+  require every repeated carrier to agree and negative-control each one independently.
+⚠⚠ TERMINAL SUCCESS BEGINS ONLY AFTER EVERY OWNED RESOURCE IS CLEAN (2026-08-20).
+  Exact PR #32 head `89bfa05…` measured 78/78 outcomes and six review images, wrote PASS, and let
+  its verifier agree before owned browser shutdown failed. That PASS was false. A collector must
+  remain RUNNING/lifecycle-pending until browser and server cleanup plus workspace-lock release
+  succeed; only then may it publish a sample or terminal success. Cleanup, release, sample, or
+  terminal-report publication failure suppresses success, and verification must require the same
+  complete lifecycle state. For a spawned browser, direct-process `exit` and stdio-backed `close`
+  are different facts: judge TERM→KILL on exit, release owned pipes only after exit, and still
+  require close. Negative-control premature PASS/sample publication, double cleanup, release
+  failure, terminal-write failure, exit-with-inherited-stderr, TERM resistance, KILL resistance,
+  and exit-without-close independently.
+⚠⚠ A PATH LABEL IS NOT BROWSER AUTHORITY, AND CALIBRATION DOES NOT SUSPEND THE PIN
+  (2026-08-20). Candidate20 completed 78/78 outcomes and clean lifecycle while a reused
+  `.86`-named app had self-updated to Edge `.93`. The calibration-required ruler derived expected
+  browser identity from its intentionally empty samples, yielding null, and the collector exempted
+  calibration from mismatch rejection. Required identity must live in an explicit top-level
+  authority present in every budget state; compare candidate and paired-baseline browsers before
+  collecting a profile, replay every raw capsule against it, and require a true match from every
+  complete product or calibration report. A mismatch is early instrument evidence, never a sample
+  or product verdict. Treat mutable browser materializations as disposable: extract exact bytes
+  afresh per launch and still trust the runtime product/revision/JS/protocol check over the path.
+  A shell post-check whose failure can be masked by a later successful command is not gate
+  authority; the repository instrument itself must fail closed, with shell wrappers using explicit
+  error propagation only as an additional check.
 ⚠ jsdom has NO LAYOUT. A CSS rule can be present, correct and completely inert. tools/uilayout.js
   (real headless browser, elementFromPoint hit-tests, 10 viewports) is the only gate that sees
   this. It takes --url=FILE, so replay a new gate against an OLD build to prove it catches the bug.
@@ -85,19 +184,22 @@ roughly by how often they have bitten.
   a comment warning about that exact trap.
 ⚠ RE-PIN PROCESS unchanged: field-diff proof → surgical single-probe re-pin → authorization
   recorded in baseline.json repins[]. Never regenerate the baseline to make a failure pass.
-⚠ **BRANCH PUBLICATION FOLLOWS A PASSED PUSH BATTERY.** Agents never write a Pages
-repository. The repository-owned publisher receives one target-specific deploy key only after
-the exact `test-battery` push succeeds: `main` preserves the immutable root v1.8.9 production
-HTML, while `develop` publishes the already-tested exact `port/v2` v2.0 development package to
-the separate noindex DEV origin. Development packaging must keep its full-commit manifest,
-origin refusal, noindex/robots guards and generated version identity; the visible identity lives
-inside the Guide, never in a floating corner badge. Pull-request, manual, and failed-battery runs
-have no publication authority; the development site is never merge/release/production authority.
+⚠ **BRANCH PUBLICATION REQUIRES A SEPARATELY AUTHORIZED EXACT-SHA PROMOTION.** Agents never write
+a Pages repository directly. Automatic post-battery publication is parked under the Actions
+budget gate; a green battery does not silently spend another hosted job. Any future publisher must
+verify one exact tested SHA, receive only its target-specific deploy key, and require separate
+owner authorization: `main` preserves the immutable root v1.8.9 production HTML, while `develop`
+may publish the tested exact `port/v2` v2.0 development package to the separate noindex DEV origin.
+Development packaging must keep its full-commit manifest, origin refusal, noindex/robots guards
+and generated version identity; the visible identity lives inside the Guide, never in a floating
+corner badge. A failed/missing battery has no publication authority; the development site is never
+merge/release/production authority.
 ⚠ **A GREEN, REVIEWED AGENT PR MAY FOLLOW ITS NORMAL INTEGRATION PATH WITHOUT A SECOND
 MERGE PROMPT.** Nick's standing authorization (2026-08-13) lets Codex or Claude Code merge a
 scoped agent-branch PR into `develop` only after the required battery is terminal-success and
-the PR is clean/mergeable, then monitor the exact resulting push battery and automatic mapped
-branch-site publication. This never includes `develop` → `main`, conflict shortcuts, red or
+the PR is clean/mergeable, and the Actions budget gate is not frozen. This never includes budget
+spend without exact owner authorization, an automatic post-merge battery/publication, `develop` →
+`main`, conflict shortcuts, red or
 unfinished checks, force pushes, manual Pages writes, new external destinations/secrets,
 versioning, release approval, or production deployment.
 Once those exact preconditions are satisfied, this standing authorization is the prompt: do not
@@ -499,9 +601,9 @@ if its repository and visible path were different. Human previews require a genu
 HTTPS origin, a Guide-visible v2.0 + full-commit binding, a content-hashed manifest, noindex
 policy, and a runtime refusal on the production origin. A corner badge is not the boundary and
 must not cover play; the Guide identity, runtime binding and manifest must agree. Packaging and
-publication remain distinct authority: ordinary CI artifacts are remote-blocked, while the mapped
-post-green-`develop` publisher accepts only the verified publication candidate for that exact
-commit. Neither path may imply a production version, release, `main` update, or live-site deploy.
+publication remain distinct authority: ordinary CI artifacts are remote-blocked and automatic
+post-green publication is parked. Any future publisher needs separate exact-SHA authorization.
+Neither path may imply a production version, release, `main` update, or live-site deploy.
 
 ⚠ **A RETRY IS NOT A DIAGNOSIS.** The v2 browser gate had several intermediate red builds while
 the harness learned document readiness and outcome timing. CI runs it once, retains the complete
@@ -749,12 +851,183 @@ by itself, prove the plausible high-resolution GPU/backing-store overlap was the
 > tip/upstream/checks; whichever final pushed tip is selected requires matching CI. No human,
 > host, Ready, merge, release, deployment, or version authority follows.
 
+**Correction earned by PR #32's first Linux battery:** moving expensive work to another realm is
+not itself a resource or responsiveness proof. Saved-Earth Planetside asked the renderer for its
+first settlement observation; the target missed the unchanged two-second command bound while the
+browser-process heartbeat answered in six milliseconds. The heavy painter import, 440px paint,
+132px downsample and PNG encoding still ran synchronously on the renderer, and `setTimeout(0)` only
+yielded between indivisible jobs. Keep the response deadline and move the indivisible producer to
+one lazy dedicated worker with no synchronous fallback. Bind the reachable Window owner, exact
+module Worker edge, worker instance/epoch/job identities, worker-local dynamic painter import,
+ordered phases/results/errors, and final worker disposal; reject orphan/duplicate/preloaded/static
+worker or painter paths and any renderer-reachable legacy synchronous facade. A page-heap gate may
+not go green merely because live memory moved into an unmeasured retained worker: terminate the
+worker at queue drain or measure the worker realm explicitly.
+
+Failure ownership crosses the realm too. Run capability preflight once before worker readiness or
+painter import. Capability, import, protocol and worker-fatal errors terminate one instance and
+settle its active plus already-queued owners exactly once, without retrying the same broken import
+for every tile; content-specific paint/encode failures may remain per-job. Negative-control both
+directions with more than one owner. Smoke waits for the semantic image outcome (`src`, complete,
+exact decoded dimensions, state, queue and active work) under one monotonic phase deadline whose
+blocking CDP commands are clipped to the same remaining time. A fixed sleep, long data URL, copied
+zero counter, later post-settlement observation, wider deadline, or green renderer-only heap number
+cannot substitute for those outcomes.
+
+**Correction earned by PR #32's da0 battery:** off-thread work, one serial producer, and
+close-at-idle do not by themselves guarantee the main target gets a serviced turn. Local exact-da0
+Compendium certification and its Chrome gates passed, but GitHub run `32334254714`, attempt 1,
+preserved a terminal phone `product-unanswerable` result without retry. Its exact Edge, active-budget
+bytes, and producer authority all matched. After 29 completed stages, Planetside thumb settlement's
+target command missed the unchanged 2,000 ms deadline at 2,001.723 ms while independent root-session
+`Browser.getVersion` answered in 0.872 ms. The partial report did not retain producer-phase state,
+so it could not distinguish worker import, paint, encode, result publication, or absence at the
+exact timeout. Source inspection nevertheless
+showed that completion-message bursts followed by zero-delay successor pumps could repeatedly win
+over rendering, input, and inspector work.
+
+**Every default producer pump must cross the user-visible scheduler, not merely a timer queue.**
+For this broker, each initial and successor pump waits for one rendering opportunity and then one
+later task (`requestAnimationFrame` → `setTimeout(0)`) before dispatch. Negative-control both halves:
+flushing timers before the frame must dispatch nothing, and servicing the frame without the later
+task must dispatch nothing, for both the first and successor job. Persisted suspension or disposal
+invalidates the generation of an already-armed pump; resume schedules a fresh serviced turn and a
+stale callback must not clear or consume it. Do not answer this class with a longer target bound,
+worker concurrency, an early ready marker, or a retry.
+
+The scheduler is also producer authority. Changing the main-thread owner bundle makes any candidate
+capsule, ceiling, or six-image package bound to the old producer stale for current certification even
+when its historical result remains truthful. Fail the budget closed, bind the new exact producer,
+recalibrate from fresh paired baseline plus independent candidates, and certify the eventual
+activation head once. For this repair, the ruler for producer
+`1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2` was activated under exact
+Edge 151.0.4129.86 from one-attempt baseline4 collected against legacy product `3844701…` plus
+independent candidate5/6/7 that bind the repaired producer. The active ruler
+replays their raw capsules, retains all four baseline faults and 14 phone / 13 desktop breaches,
+and exact-788 local certification passed. Every instrument-only head and PR test-merge must own its
+exact-source browser evidence; whether the selected head has such ignored evidence is resolved from
+its named artifacts, never cached in this reference. Activation or an earlier-head PASS is not
+certification.
+
+**Correction earned by PR #32's first serviced-turn Chrome Smoke:** a CDP session that answers
+`Runtime.evaluate` does not prove that its document owns a rendering opportunity. Exact-head run
+`20260820063539761-70885-f80e1a2198fc` created a live held-painter owner, then created a second
+target and polled the first without reactivating it. The only finding was the 30-second lazy-art
+refill returning `last null`; the instrument retained neither foreground authority nor the terminal
+image/worker phase. Because each repaired successor pump deliberately waits for rAF and a later
+task, judging an owner whose foreground/rendering authority was never re-established made the test
+precondition unproved. Preserve that red as instrument evidence; do not infer the exact stalled
+producer phase, add a hidden-tab timer fallback, widen the
+deadline, or retry the unchanged run.
+
+**A MULTI-TARGET BROWSER TEST MUST OWN THE RENDERING TARGET IT JUDGES.** Bind the expected page to
+its attach-derived target/session and exact document token. Immediately before a held release or
+other rendering-opportunity-dependent observation, activate that exact target, enable focus
+emulation, bring the page forward, and require one fresh service token to remain visible, not
+hidden, and focused at arm, rAF, and the later task, with zero intervening visibility/focus loss.
+Only then may the test release once and start its one immutable phase deadline; a command response
+received at or after that boundary is late even if its timeout callback has not run. If ownership later
+moves to a different document, repeat the same proof for that owner rather than borrowing the first
+page's witness. Negative-control wrong target, stale document/service identity, hidden/unfocused
+arm and phases, phase reversal, and intervening visibility/focus changes. A timeout must retain the
+last non-null image/decode, queue/active, worker identity/phase/result/error, broker, and foreground
+state; a generic `null` cannot distinguish product from a missing test precondition.
+
+**Correction earned by PR #32's exact-ef6 D-TRAIN Smoke:** a direct fixture write does not own
+setup while an older product writer can still commit. Clean committed
+`ef6c2c2cd31363cf47899a89c16c0d9f5f90d7a7` first passed its one-attempt exact Edge Compendium
+certification and named verifier. Its immediately following one-attempt Chrome Smoke run
+`20260820071826194-75001-c2a22330fd09` then completed with only two findings: no D-TRAIN import-
+owner busy-refusal witness and the same phase's missing Skip action (`button:false`,
+`witness:null`). Report/log SHA-256 values are
+`65ca06c8f6d26ef3a9a3da19bb4bc09bb005d754f2291f55f389ac1ecf14aa46` /
+`87b1c8b6308d3a1969fb45ea4c2ccb70d1f46c2a8311751984b3c1ab0acdd7d9`; the run used Chrome for
+Testing 152.0.7977.54, zero retries, and detected no source change.
+
+The D-TRAIN fixture helper had written IndexedDB immediately after a real Atlas/Land journey
+without first joining that page's ordinary persistence owner. A later write could therefore replace
+the fixture before navigation, while the helper proved only a changed document token and returned
+whatever raw bytes happened to remain. Comparing the later primary to that returned value could be
+self-consistent even when the intended fixture never booted. The report did not retain which raw
+bytes won, so do not invent that terminal value or reinterpret the absent action/witness as a
+product busy-refusal failure. Source ordering plus a deliberate stale-write reproduction identifies
+this as a harness setup race.
+
+**A FIXTURE MUST JOIN PRIOR WRITERS AND PROVE ITS RUNNABLE PRECONDITION BEFORE A PRODUCT VERDICT.**
+Drain the actual preceding persistence path, deliberately reproduce the unjoined stale-write race as
+a negative control, then seed once and require the intended primary bytes after a changed exact
+document loads. Bind the page's document token, classified state, canonical route plus rendered
+receipt, live surface, connected/enabled/visible real action, idle status, and expected ticker state
+before arming the product transaction. Setup drift is one fail-closed harness finding before release,
+never a product finding assembled from optional-chained missing controls. After setup passes, drive
+one real action and wait semantically for its operation-local terminal witness; `Promise.resolve()`
+is not settlement authority. For the import-owner case, also require one captured Skip click,
+`claim-rejected/busy`, unchanged primary bytes, and zero native writes before releasing the import
+owner. Do not answer this class with a sleep, retry, fixture rewrite loop, or looser product oracle.
+
+**Correction earned by PR #32's shared-command-timer CI red:** a timeout identity is not proof that
+its absolute deadline was reached. GitHub Actions run `32350971816`, job `96369841133`, workflow
+attempt 1, tested synthetic merge `25200b616bbd509f50eaa18f0a8b27ad20dc83e0` whose parents were
+base `38447019517147319bd08c598202d097ee866874` and pushed head
+`1187de0d052761e4463524cde8438ea8810d7149`. Its valid report
+`gha-32350971816-1-compendiummem` reached 29 completed phone stages, then the last
+`Runtime.evaluate` timer rejected after `1999.758726` ms against a 2,000 ms deadline. The command
+ledger still marked that target timely and placed completion `0.241274` ms before the recorded
+deadline; the independent root `Browser.getVersion` heartbeat fulfilled in `7.410808` ms. The
+terminal contract correctly classified one instrument finding, zero outcomes, and all 78 outcomes
+blocked. This is no product verdict. Preserve its report SHA-256
+`1718faa4403f4f569899d9d328f08c3b7decafae23829d5fabe37660c36da43b` and job-log SHA-256
+`7eda5facdac45d192c5b6071ac91394678d2fdb69b7992b218e0d3b0cb9c4ca9`; do not relabel or retry it.
+
+**A COMMAND TIMEOUT OWNS ONE ABSOLUTE MONOTONIC DEADLINE, NOT ONE BEST-EFFORT TIMER.** Compute the
+deadline once. When the timeout callback wakes, read the same monotonic clock: if it is still before
+the boundary, re-arm for only the remaining interval under that immutable deadline and do not settle;
+reject only once the clock proves the deadline reached or passed. If that deadline is already expired
+during initial timer arming, reject without transmitting the command. The response path must still
+reject a receipt at or after the same boundary, so a late callback cannot launder a late response. Never
+start a fresh clock, extend the cap, add a retry, or weaken target/heartbeat classification to repair
+an early wake.
+
+Measurement code and product bytes are separate authorities. Freezing the shared timer at browser-CDP
+SHA-256 `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0` established measurement
+authority `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Paired baseline5 and
+independent candidate8/9/10 then activated historical budget/test `8ffd0d8e…` / `121ab8cd…` for
+producer `1c8200d7…`; their one-attempt/no-retry raw capsules, 78/78 candidate replays, strict 40-field
+ceilings, and 14/13 broken-baseline breaches remain truthful only for that exact producer.
+
+Commit `c0955003…` subsequently passed exact Compendium and Smoke, then its first full Glass run
+preserved one real compact-phone `PLANETSIDE_SURFACE_OCCLUDED` finding: a 12.5px Survey/Planetside
+rectangle overlap with all 12 rows and 58/58 controls executed, zero instrument failures, and no
+retry. The bounded CSS repair restores the existing 8px stack while retaining Survey's 44px floor
+and a 72px scrollable Planetside floor. Its product and development-copy bytes change built producer
+authority to `e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`; measurement was
+`f9710bdf…` before the later cold-start transition.
+
+Clean committed collector/candidate source `2a105d51397eef97542d856ed3b1bb23edf2b028` then measured paired
+baseline6 against legacy product `3844701…` plus independent candidate11/12/13 under exact Edge .86.
+All four were one-attempt/no-retry; every candidate replayed 78/78. The then-active budget/test
+SHA-256 values are `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
+`ec956b8a7d3bad96736deab42e0ac79e59e6cf9010559723d2dac2249e463a83`. Every one of 40 ceilings is
+strictly above its three-run maximum; the four-fault baseline breaches 14 phone / 13 desktop fields.
+Focused replay 11/11, selftest 222/222, and semantic validation were green. This activated a
+browser-free ruler only, not current-head certification, a complete browser battery, PR-CI, or HUMAN
+review.
+
+**STACKED FLOATING SURFACES MUST SHARE ONE GEOMETRY EQUATION.** A minimum height on the upper card
+can defeat a separately derived maximum height on the lower card even when both rules are locally
+correct. Derive the lower cap from the same top/bottom anchor terms, reserve the explicit gap, and
+retain useful scroll floors for both surfaces. Test their rectangles and ownership at the smallest
+portrait height; do not repair overlap by weakening hit-test predicates, changing z-index, hiding
+content, or removing a touch floor.
+
 ⚠⚠ **A BROWSER PIN IS PROCESS ENVIRONMENT, NOT WORKFLOW MEMORY.** A v2 battery passed its root,
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
 GitHub Actions step lost that step-local `CF_BROWSER`, selected an installed Linux Edge through
 fallback order, and failed before CDP created a page. That red browser check never exercised the
-packaged page or product. Pin one exact browser at job scope for every browser-owning process and
-resolve it fail-closed before long gates. Every raw-CDP gate must consume the shared executable
+packaged page or product. Pin one effective exact browser in the environment that owns each
+browser process and resolve it fail-closed before long gates. An owning step may deliberately
+override one job pin; otherwise one exact job pin may supply it. Reject missing, wrong, duplicate,
+previous-step-only, or inline-command substitutes. Every raw-CDP gate must consume the shared executable
 resolver and pinned `ws` transport; any gate claiming the shared owned lifecycle must actually use
 it instead of carrying a guessed port, WebSocket loop or cleanup path. The owned launcher uses a
 unique profile, asks Chromium for port 0, reads its
@@ -774,9 +1047,9 @@ jobs were green. A WebSocket-phase control must instead use a deterministic port
 a private launch seam, write one valid regular endpoint in the owned profile, and prove the short socket timeout,
 exactly one fixture launch, socket close, bounded child shutdown, and profile removal. The control
 must reject if the endpoint is absent or the injected socket is accepted. The selftest's following
-live provenance check is then its first real browser launch and may own the fixed 30-second
-cold-start allowance; the shared launcher default remains 15 seconds, its later warm launch remains
-10 seconds, command/shutdown bounds stay unchanged, and no retry or fallback is added.
+live provenance check is then its first real browser launch and historically owned a 30-second
+cold-start allowance; the shared launcher default remained 15 seconds, its later warm launch
+remained 10 seconds, command/shutdown bounds stayed unchanged, and no retry or fallback was added.
 
 PR #26 exposed the remaining boundary between endpoint discovery and an open connection. In
 test-battery run `31870103561`, v2-smoke job `94977303036`, the first live-provenance leg found a
@@ -785,9 +1058,9 @@ the deliberately tight 1,500-millisecond **command** ceiling for WebSocket openi
 `Browser.getVersion` or gameplay. Treat spawn → endpoint → socket-open as one absolute startup
 deadline measured by a monotonic clock, while also giving socket-open its own validated phase cap
 clipped to the remaining startup time; post-open commands and shutdown keep their independent
-ceilings. The socket cap defaults to the startup budget, never to the post-open command budget, and
-the selftest's real cold/warm legs
-declare bounded 15/10-second socket caps inside their unchanged 30/10-second startup budgets. Prove
+ceilings. The socket cap defaults to the startup budget, never to the post-open command budget. At
+that checkpoint, the selftest's real cold/warm legs declared bounded 15/10-second socket caps inside
+their then-30/10-second startup budgets. Prove
 all boundaries with portable fixtures: a delayed socket must open after a shorter command ceiling
 and still answer `Browser.getVersion`; a socket delayed beyond its explicit short cap must reject;
 a longer socket cap must be clipped to the shorter absolute startup remainder; an exhausted
@@ -816,6 +1089,199 @@ content, unsafe file types, exactly
 one child, final-endpoint socket identity, socket/child closure, and profile removal. Do not turn
 this into a browser relaunch, retry, per-viewport sleep, browser reuse, fallback change, or wider
 startup/socket/command/shutdown budget.
+
+PR #32's later Linux Compendium job exposed a different boundary in GitHub Actions run
+`32367902426`, job `96421452463`, attempt 1. Synthetic merge
+`e449e84984400d0b0f4474496264d474424c81d7` bound base `3844701…` and head `f9ae372…`.
+The first real Edge selftest launch published its endpoint at `23657.701415` ms, leaving only
+`6342.262417` ms of the 30,000 ms absolute startup deadline for a socket with a declared 15,000 ms
+phase cap. The absolute deadline expired before `Browser.getVersion`; the Compendium collector never
+started and emitted no run, report, or product outcome. Preserve that one-attempt red as cold-start
+instrument evidence and do not manufacture a product verdict from the verifier/upload cascades.
+
+**A COLD-START CALLER ENVELOPE IS AN EXPLICIT PROCESS-ENVIRONMENT BOUND, NOT A HIDDEN RETRY OR A
+GAME PERFORMANCE TARGET.** One real cold launch may own a wider caller-local startup envelope when
+first-run evidence proves the old combined endpoint/socket allowance cannot cover its already-declared
+phases. Keep one child and one absolute spawn → stable endpoint → open socket deadline; do not add a
+warmup, relaunch, fallback, retry, or workflow sleep. Bind the exact options and prove portable
+just-before/exact/late boundaries plus socket/child/profile cleanup. Changing a hashed measurement
+input invalidates the ruler and requires fresh paired-baseline/candidate calibration before any
+product verdict.
+
+For this selftest only, `startupTimeoutMs=45_000` contains the observed cold endpoint allowance plus
+the unchanged `webSocketOpenTimeoutMs=15_000`; command and shutdown remain 1,500/2,000 ms, the later
+warm launch remains 10,000 ms, the shared launcher and Compendium candidate startup remain 15,000 ms,
+and the game observation remains 2,000 ms. Portable controls succeed at 38,657 ms and reject the exact
+and late 38,658/38,659 ms boundaries. Browser-CDP SHA-256
+`6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9` establishes measurement
+authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer
+`e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb` is unchanged. Clean source
+`374049536e959597f8fc40e87a68bc6cbfd0b455` collected paired baseline7 plus independent
+candidate14/15/16 once without retry; every candidate replayed 78/78. Then-active budget/test
+`bb4da2bf0bc6dd4327884ff07735241b2fa8d9e5e6d32f09295ed86ae7bdbcfe` /
+`d242705ad987d21c773d23b33eb94bbbbeb1a94ec6d527ff594c198861b7be48` then retained all four baseline
+faults, 14 phone / 13 desktop breaches, and 40 strict ceilings above the three-run maxima. This is
+browser-free ruler activation, not certification. Nick accepts 45 seconds as the CI cold-start
+allowance, not an optimization target. That activation transition was limited to one exact-head
+battery and one corresponding CI attempt; its preserved result is recorded below.
+
+PR #32's corresponding exact-c49 test-merge run `32375329693`, attempt 1, exposed both remaining
+cold-caller boundaries without producing a game verdict. Root job `96445227534` was the battery's
+first Chrome launch and stopped before `DevToolsActivePort` at its caller-local 30-second envelope;
+its current `instrument-fail` report contains zero viewport outcomes. Compendium job `96445227816`
+installed and resolved exact Edge .86, and the generic CDP selftest opened its live browser under the
+45-second envelope, but then its deliberately tight 1,500 ms post-open `Runtime.enable` command
+expired. The collector never started, so verifier and upload ENOENTs are cascades rather than
+product evidence.
+
+**A WORKFLOW-SPECIFIC BROWSER AUTHORITY MAY OWN ITS OWN PREFLIGHT WITHOUT REWRITING A SEALED
+MEASUREMENT INPUT.** When the generic launcher's broad selftest is not itself a candidate authority,
+do not change its hashed bytes merely to make one pinned-browser job tolerate a different cold
+post-open profile. Build one job-local, one-launch preflight outside the sealed authority graph. It
+must bind the exact expected browser and executable, use one fresh attached target, enable every
+domain the candidate needs, and prove both an evaluate return and same-session event sentinel under
+one immutable phase deadline with both receipts strictly before it, close exactly once,
+and reject provenance, command, sentinel, event, or cleanup drift without retry or fallback. Its
+command cap must come from the existing candidate contract, not a new convenience value. Run the
+same preflight in every workflow that claims that candidate gate. Here the Edge-only preflight owns
+45-second startup / 15-second socket / sealed 5-second candidate command / 2-second shutdown bounds;
+`browsercdp.mjs` remains SHA-256 `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9`,
+so measurement `6ba58522…` and its then-active ruler remained unchanged. Root layout separately owns one
+45/15/30/5-second caller contract. Neither allowance is a game optimization target.
+
+**AN ASYNCHRONOUS OWNER IS NOT ADJUDICATED BY THE FIRST SNAPSHOT AFTER ITS OPEN ACTION.** Exact-c49
+Smoke run `20260820133818702-2548-507ff6b30f6d` pressed Enter on a Compendium row, immediately read
+the separately asynchronous 440px detail image, retained only `src length 0`, and then navigated Back.
+That one-shot evidence could have sampled an expected placeholder/pending state and canceled the
+owner before publication; it cannot decide whether the visible portrait would settle. Keep the owner
+mounted and poll its semantic publication under one immutable monotonic deadline. Bind the exact
+pre-open document, generation and logical owner, require the opened surface to retain that document/
+owner at exactly generation + 1, then require connected current `ready`, nontrivial source, completed
+decode, and exact natural dimensions, and preserve the last image/worker/broker diagnosis. Placeholder and decode-pending
+remain pending; producer error, stale/disconnected owner, contradictory ready state, wrong dimensions,
+and receipts at or after the deadline are terminal. Negative-control every state and never replace
+this with a fixed delay, an unbounded wait, or an automatic retry.
+
+**Correction earned by PR #32's exact-139 product red:** a fitted surface must not begin at its
+largest supported texture merely because later zoom can legitimately need that tier. GitHub Actions
+run `32383320206`, attempt 1, tested clean synthetic merge
+`174a914053a6457a33b1401cce3709c235a28409` for pushed head `139ce2f…` under exact Edge .86,
+matching measurement `6ba58522…`, producer `e59685b1…`, and then-active budget `bb4da2bf0b…`.
+Phone completed 29 stages through veteran-Earth boot readiness; Planetside thumb settlement's target
+`Runtime.evaluate` missed the unchanged 2,000 ms deadline at `2001.132592` ms while independent root
+`Browser.getVersion` answered in `10.401960` ms. The terminal result is `product-unanswerable`, not
+instrument/transport or a timing-policy red: zero outcomes, 78 blocked, no review PNG, one attempt,
+and zero retries. Preserve report/log SHA-256 `e75d6ca3…` / `ca5e14e2…` without an unchanged retry.
+
+**RENDER-TARGET DEMAND MUST DERIVE FROM DISPLAYED BACKING PIXELS, WHILE LATER SHARPNESS OWNS AN
+IDENTITY-SAFE UPGRADE.** Compute cold demand from rendered CSS diameter, scene scale, and DPR under a
+finite positive floor, then select the existing deterministic tier map. Here standard phone/desktop
+boot demand is 609/420px and selects 512 rather than starting at 1024. Preserve supported zoom by
+binding the exact surface generation, planet seed, and ordinal; re-read the cache after the
+asynchronous bake; publish only to that current owner; and request only a genuinely higher
+512/768/1024 tier when zoom/DPR demand crosses a boundary. Suppress duplicate-tier work, retain the
+old texture until the successor settles, and reject stale completions. Maximum tested phone/desktop
+zoom demand is 1,248/1,280px and therefore still selects 1024. Do not answer this class by lowering
+supported sharpness, publishing a stale world's texture, polling without owner identity, changing a
+CDP deadline, or retrying the red.
+
+That product/copy change makes producer authority `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`
+(index `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`; worker/painter unchanged) while
+historical measurement `6ba58522…`. Clean committed collector/candidate source `75a996af…`
+produced one no-retry baseline8 against legacy `3844701…` plus independent no-retry
+candidate17/18/19 under exact Edge .86. Every candidate replayed 78/78; baseline8 retained all four
+faults and breached 14 phone / 13 desktop ceilings. Then-active budget/test SHA-256 were `74e88c2b…` /
+`485be9da…` (79,614 / 20,782 bytes); all 40 reused ceilings strictly exceed the three-candidate
+maxima. Activation is browser-free and non-certifying. Exact activation head `96464d5…` completed
+its same-head local battery; its corresponding PR CI attempt stopped at the process-environment
+boundary recorded next. That first red remains preserved, and no timing expansion precedes the
+return to Arc 1B/gameplay.
+
+**Correction earned by PR #32's exact-964 hosted-image red: an exact installed version does not
+prove an exact package was configured during the current job.** GitHub Actions run `32394244417`,
+attempt 1, tested synthetic merge `63665b6…` for pushed head `96464d5…`. Root, static, Chrome Smoke,
+and Chrome Glass passed. Compendium job `96507263338` downloaded and SHA-verified the pinned Edge
+`.86` package, verified the installed version and executable, and passed browser-path plus portable
+preflight controls. Its one live preflight launch then produced no CDP endpoint inside the unchanged
+45-second startup envelope; the collector never ran, so no Compendium report, product outcome, or
+review PNG exists. The always-run verifier and upload failures are cascades. Preserve this as
+one-attempt, zero-retry environment/instrument evidence, not a product verdict.
+
+The package-manager boundary is independently observable. Hosted image `ubuntu24/20260810.271`
+carried Edge `.78`; installing the pinned `.86` package performed unpack/setup, and all four observed
+exact-Edge live launch/control paths on that image passed. Image `ubuntu24/20260816.277` already
+carried `.86`; plain `apt-get install` reported “already the newest version,” performed no
+unpack/setup, and all three observed exact-Edge live launch/control paths on that image failed before
+product outcomes. Those failures span multiple west-region pools, so the evidence does not isolate
+image revision from host-pool placement. It does justify one bounded normalization hypothesis: in
+every workflow that claims this Arc-local authority, force `apt-get install --reinstall` from the
+same SHA-verified `.86` package, then retain the exact version and executable checks. Do not call
+that a fix before live hosted evidence; later run outcomes remain separately recorded and do not
+retroactively turn the browser-free structure control into causal proof.
+
+This normalization changes no package URL/hash/version, browser product/revision/JS/protocol,
+45/15/5/2-second preflight, 15-second candidate startup, 2-second product observation, attempt/retry
+policy, launcher, preflight, collector, product, measurement `6ba58522…`, producer `d3223177…`,
+budget `74e88c2b…`, or test `485be9da…`. It adds no warmup, sleep, relaunch, fallback, DBus wrapper,
+or recalibration. Because the same shell contract exists in both PR certification and manual preview
+workflows, the preflight selftest now statically requires each unique owned install step's exact
+ordered URL/SHA/download/hash → reinstall → version/executable verification → following preflight
+chain. Its controls reject removal from either workflow and outside-step decoys. The control is green
+and proves workflow configuration only; the next one-attempt browser run still owned the outcome.
+
+That next exact local run was `20260820-pr32-89bfa05-compendiummem` at `89bfa05…`: it completed
+78/78 outcomes with zero findings and six PNGs, then owned shutdown exited 2. Its terminal log
+`b0bb8abc…` overrides pre-cleanup false-green report/verifier `66ba1366…` / `98664dca…`.
+Browser CDP `6da9e2ef…` now separates direct exit from stdio close; collector/selftest
+`f4ad842c…` / `2713ed10…` defer sample and terminal success through browser/server cleanup and lock
+release and require lifecycle at verification. That lifecycle-only checkpoint established historical
+measurement `a3b3bb9f…` and fail-closed `ae4ab918…` / `60fa5e9f…`, with producer `d3223177…`
+unchanged. Candidate20 below superseded its planned calibration sequence. No timing, launch
+argument, product, producer, or retry-policy change belonged to that correction.
+
+Clean lifecycle-repair source `c49e525…` then ran
+`20260820-arc1a-terminal-lifecycle-candidate20` once. Product and lifecycle were internally clean
+at 78/78 with six PNGs, but the reused `.86`-named app reported `Edg/151.0.4129.93` and revision
+`@4a822b1bb7a8566144cff23f6c09a2ab162665f9`; null calibration browser authority let it collect.
+Quarantine report/sample/log `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser instrument
+evidence. It is not calibration, certification, or product failure. At that checkpoint baseline9
+had not run.
+Explicit top-level Edge `.86` authority plus pre-profile candidate/baseline enforcement changes
+budget/schema/contract/collector/selftest/test to `71ffa46f…` / `695d2529…` / `2620ebf6…` /
+`07131f5e…` / `240bbe17…` / `6991f6ce…` and measurement to `825fb386…`; producer `d3223177…` and
+browser CDP `6da9e2ef…` remain unchanged. That ruler stayed empty/null/measurement-required pending
+fresh-per-launch exact-.86 baseline9 and candidate21/22/23, once each without retry.
+
+**Correction earned by PR #32's first fresh-path calibration set: provenance fields are not all
+shared identity fields.** Candidate21/22/23 and paired baseline9 each completed under exact Edge
+`.86`, one attempt and zero retries, with complete lifecycle. Every candidate replayed 78/78 with
+zero findings; baseline9 retained all four faults. They are individually clean diagnostic history,
+not product reds. Their honest fresh executable paths and host user agents differed, however, and
+the then-current shared-sample check required those raw provenance strings to be identical. That
+made a legitimate fresh-materialization calibration set impossible to activate.
+
+Keep every sample's raw executable path and user agent mandatory and replayable, but define the
+shared cross-run browser identity by the canonical product, revision, JavaScript, and protocol
+tuple. Missing provenance still fails, and any drift in any of those four authority fields fails
+both shared identity and explicit browser-authority matching. This correction changes contract/
+selftest/test/budget to `e7dfea1d…` / `f86db74a…` / `5d00e59f…` / `ac2c084a…` and measurement to
+`2318f57bcadd83b2f540e3a2d1b8bea54ca6c88d1df8715318a341d4e2ae7cf2`; schema `695d2529…`,
+collector `07131f5e…`, producer `d3223177…`, and browser CDP `6da9e2ef…` are unchanged. The ruler
+again fails closed with empty candidate samples, null ceilings, and a `measurement-required`
+baseline with a null collector commit and empty profiles.
+Candidate21/22/23+baseline9 cannot cross the corrected contract authority.
+
+Clean exact source `fb321f28979c38d48f321d3cddeb48170b7e5ebc` then collected fresh-per-launch
+candidate24/25/26 plus paired baseline10, once each with zero retries. All candidates completed
+78/78 outcomes with zero findings, complete lifecycle, and six PNGs; baseline10 retained all four
+faults. Active budget/test `70145575…` / `0fa2e89d…` embed 3/3 samples per profile, measured 1/1
+baseline evidence, and ceilings strictly above the candidate maxima while preserving 14 phone / 13
+desktop baseline breaches. The focused activation suite first reported 12/13 because its positive
+active-ruler control populated synthetic phone identities only; adding the matching desktop
+identities made that same control 13/13 without changing or rerunning browser evidence. No timing,
+launch, workflow, product, producer, fallback, browser-CDP, or retry-policy change belongs to this
+activation. Terminal-green PR #32 returns immediately to Arc 1B rather than opening another
+optimization loop.
 
 On macOS, Chromium is also outside the Codex Seatbelt's permitted process surface. Three Edge
 crash reports supplied on 2026-08-13 shared the same Node-parented, main-thread

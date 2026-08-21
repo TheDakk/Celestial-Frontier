@@ -6,6 +6,14 @@ name: development-preview-package
 on:
   workflow_dispatch:
     inputs:
+      actions_budget_authorization:
+        description: Select the run token only after Nick authorizes this one hosted workflow
+        required: true
+        default: DO_NOT_RUN
+        type: choice
+        options:
+          - DO_NOT_RUN
+          - RUN_ONE_AUTHORIZED_WORKFLOW
       preview_origin:
         description: Separate HTTPS origin that will host the extracted artifact
         required: true
@@ -20,14 +28,16 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: actions-budget-${{ github.workflow }}-${{ github.ref }}-${{ inputs.actions_budget_authorization }}-${{ github.actor }}
+  cancel-in-progress: true
+
 jobs:
-  package:
-    name: Verify and package development preview
+  authorize:
+    name: authorize Actions budget and preview source
+    if: ${{ inputs.actions_budget_authorization == 'RUN_ONE_AUTHORIZED_WORKFLOW' && github.actor == github.repository_owner }}
     runs-on: ubuntu-latest
-    timeout-minutes: 45
-    environment: development-preview-package
-    env:
-      CF_BROWSER: /usr/bin/google-chrome
+    timeout-minutes: 2
     steps:
       - name: validate manual authorization and source branch
         shell: bash
@@ -53,6 +63,17 @@ jobs:
               exit 1
               ;;
           esac
+
+  package:
+    name: Verify and package development preview
+    needs: authorize
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: development-preview-package
+    env:
+      CF_BROWSER: /usr/bin/google-chrome
+      CF_COMPENDIUMMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-manual-compendiummem
+    steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
@@ -82,6 +103,51 @@ jobs:
           npm run glassmatrix:selftest
           npm run persona:selftest
           npm run preview:selftest
+      # Compendium resource certification has an Arc-local Edge authority;
+      # the job-level Chrome selection remains in force for the later smoke,
+      # Glass, persona, and preview browser gates.
+      - name: install exact Arc 1A Edge calibration browser
+        shell: bash
+        env:
+          EDGE_PACKAGE_URL: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.86-1_amd64.deb
+          EDGE_PACKAGE_SHA256: 26b02cb1c6465756df94b9ef34191b614f3df627ba21b7b00b641f44cc1d8343
+        run: |
+          set -euo pipefail
+          edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.86-1_amd64.deb"
+          curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"
+          printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$edge_package" | sha256sum --check --strict
+          sudo apt-get install --reinstall --yes "$edge_package"
+          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.86-1"
+          test -x /usr/bin/microsoft-edge-stable
+      - name: Compendium memory instrument selftest
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/microsoft-edge-stable
+        run: |
+          node tools/compendiummem-browser-preflight.mjs --selftest
+          node tools/compendiummem-browser-preflight.mjs
+          npm run compendiummem:selftest
+      - name: one-attempt Compendium memory certification
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/microsoft-edge-stable
+        run: npm run compendiummem
+      - name: verify current Compendium memory evidence
+        if: always()
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/microsoft-edge-stable
+        run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
+      - name: upload Compendium memory evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: manual-preview-compendium-memory-evidence
+          path: |
+            port/v2/apps/game/smoke/compendiummem-report.json
+            port/v2/apps/game/smoke/compendiummem-${{ env.CF_COMPENDIUMMEM_RUN_ID }}-*.png
+          if-no-files-found: error
+          retention-days: 14
       - name: real-browser, responsive, and automated-persona evidence
         working-directory: port/v2
         run: |

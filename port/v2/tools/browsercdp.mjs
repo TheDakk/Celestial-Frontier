@@ -21,6 +21,44 @@ class ActiveEndpointContentError extends Error {
   constructor(message) { super(message); this.name = 'ActiveEndpointContentError'; }
 }
 function sleep(ms) { return new Promise((resolve) => setTimeout(resolve, ms)); }
+function remainingDeadlineDelayMs(deadlineMs, observedAtMs) {
+  assert(Number.isFinite(deadlineMs) && Number.isFinite(observedAtMs),
+    'absolute deadline observation is invalid');
+  const remainingMs = deadlineMs - observedAtMs;
+  return remainingMs <= 0 ? 0 : Math.max(1, Math.ceil(remainingMs));
+}
+function armAbsoluteDeadline(deadlineMs, onDeadline, {
+  nowMs = () => performance.now(),
+  setTimer = setTimeout,
+  clearTimer = clearTimeout,
+} = {}) {
+  assert(Number.isFinite(deadlineMs), 'absolute deadline is invalid');
+  assert(typeof onDeadline === 'function' && typeof nowMs === 'function'
+    && typeof setTimer === 'function' && typeof clearTimer === 'function',
+  'absolute deadline dependencies are invalid');
+  let active = true;
+  let timer = null;
+  const observe = () => {
+    if (!active) return;
+    const delayMs = remainingDeadlineDelayMs(deadlineMs, nowMs());
+    if (delayMs > 0) {
+      timer = setTimer(observe, delayMs);
+      return;
+    }
+    active = false;
+    timer = null;
+    onDeadline();
+  };
+  const initialDelayMs = remainingDeadlineDelayMs(deadlineMs, nowMs());
+  if (initialDelayMs === 0) observe();
+  else timer = setTimer(observe, initialDelayMs);
+  return () => {
+    if (!active) return;
+    active = false;
+    if (timer !== null) clearTimer(timer);
+    timer = null;
+  };
+}
 async function waitForResolution(promise, timeoutMs) {
   return await new Promise((resolve) => {
     let settled = false;
@@ -34,20 +72,22 @@ async function waitForResolution(promise, timeoutMs) {
     promise.then(() => finish(true));
   });
 }
-async function terminateChildProcess(child, childClosed, label, timeoutMs) {
-  if (child.exitCode === null && child.signalCode === null && child.pid !== undefined) {
+async function terminateChildProcess(child, childExited, childClosed, label, timeoutMs) {
+  /* ChildProcess `close` also waits for inherited stdio. Judge signal
+     escalation by process exit, then release the one owned pipe. */
+  let exited = child.exitCode !== null || child.signalCode !== null;
+  if (!exited && child.pid !== undefined) {
     if (!child.killed) child.kill();
-    if (!await waitForResolution(childClosed, timeoutMs)) {
+    exited = await waitForResolution(childExited, timeoutMs);
+    if (!exited) {
       child.kill('SIGKILL');
-      assert(await waitForResolution(childClosed, timeoutMs), `${label}: browser ignored bounded shutdown`);
+      exited = await waitForResolution(childExited, timeoutMs);
+      assert(exited, `${label}: browser ignored bounded shutdown`);
     }
-    return;
   }
-  if (!await waitForResolution(childClosed, timeoutMs)) {
-    child.stderr?.destroy?.();
-    assert(await waitForResolution(childClosed, timeoutMs),
-      `${label}: browser exited but its stdio did not close within the shutdown bound`);
-  }
+  child.stderr?.destroy?.();
+  assert(await waitForResolution(childClosed, timeoutMs),
+    `${label}: browser exited but its stdio did not close within the shutdown bound`);
 }
 function portable(value) { return value.split(path.sep).join('/'); }
 function requiredString(value, where) {
@@ -138,9 +178,10 @@ async function openChromiumCdpWithLauncher({
   });
   child.on('error', (error) => { spawnError = error; });
   child.on('exit', (code, signal) => { exitDescription = `exit=${String(code)} signal=${String(signal)}`; });
+  const childExited = new Promise((resolve) => child.once('exit', resolve));
   const childClosed = new Promise((resolve) => child.once('close', resolve));
   const terminateOwnedBrowser = async () => {
-    try { await terminateChildProcess(child, childClosed, label, shutdownTimeoutMs); }
+    try { await terminateChildProcess(child, childExited, childClosed, label, shutdownTimeoutMs); }
     finally { removeOwnedUserData(userData, temporary, userDataPrefix); }
   };
 
@@ -271,13 +312,16 @@ async function openChromiumCdpWithLauncher({
     });
 
     ws.onmessage = (event) => {
+      const receivedAtMs = nowMs();
       let message;
       try { message = JSON.parse(event.data); }
       catch { rejectPending(terminalError('CDP emitted invalid JSON')); return; }
       if (message.id && pending.has(message.id)) {
         const waiter = pending.get(message.id);
         pending.delete(message.id);
-        message.error ? waiter.reject(terminalError(message.error.message)) : waiter.resolve(message.result);
+        message.error
+          ? waiter.rejectReceipt(terminalError(message.error.message), receivedAtMs)
+          : waiter.resolveReceipt(message.result, receivedAtMs);
       } else if (message.method) {
         try { onEvent(message); }
         catch (error) {
@@ -303,18 +347,34 @@ async function openChromiumCdpWithLauncher({
       }
       return new Promise((resolve, reject) => {
         const id = ++messageId;
-        const timer = setTimeout(() => {
+        const commandDeadlineMs = nowMs() + timeoutMs;
+        let cancelTimer = () => {};
+        const settleReceipt = (receivedAtMs, finish) => {
+          cancelTimer();
+          if (!Number.isFinite(receivedAtMs) || receivedAtMs >= commandDeadlineMs) {
+            reject(terminalError(`timed out waiting for ${method}`));
+            return;
+          }
+          finish();
+        };
+        pending.set(id, {
+          resolveReceipt(value, receivedAtMs) {
+            settleReceipt(receivedAtMs, () => resolve(value));
+          },
+          rejectReceipt(error, receivedAtMs) {
+            settleReceipt(receivedAtMs, () => reject(error));
+          },
+          reject(error) { cancelTimer(); reject(error); },
+        });
+        cancelTimer = armAbsoluteDeadline(commandDeadlineMs, () => {
           pending.delete(id);
           reject(terminalError(`timed out waiting for ${method}`));
-        }, timeoutMs);
-        pending.set(id, {
-          resolve(value) { clearTimeout(timer); resolve(value); },
-          reject(error) { clearTimeout(timer); reject(error); },
-        });
+        }, { nowMs });
+        if (!pending.has(id)) return;
         try {
           ws.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params }));
         } catch (error) {
-          pending.delete(id); clearTimeout(timer); reject(terminalError(`${method} send failed (${error.message})`));
+          pending.delete(id); cancelTimer(); reject(terminalError(`${method} send failed (${error.message})`));
         }
       });
     };
@@ -336,6 +396,28 @@ async function openChromiumCdpWithLauncher({
 
 export async function openChromiumCdp(options) {
   return await openChromiumCdpWithLauncher(options, launchChromiumProcess);
+}
+
+const SELFTEST_COLD_COMMAND_TIMEOUT_MS = 1_500;
+const SELFTEST_COLD_SOCKET_TIMEOUT_MS = 15_000;
+const SELFTEST_COLD_STARTUP_TIMEOUT_MS = 45_000;
+const SELFTEST_COLD_SHUTDOWN_TIMEOUT_MS = 2_000;
+
+/* Keep the cold live-provenance allowance caller-owned. The injected opener
+   lets the portable selftest bind these exact options without launching a
+   second real browser or weakening the shared launcher's defaults. */
+function openColdSelftestCdp({ label, userDataPrefix, onEvent = () => {} },
+  openCdp = openChromiumCdp) {
+  assert(typeof openCdp === 'function', 'cold selftest CDP opener is invalid');
+  return openCdp({
+    label,
+    userDataPrefix,
+    commandTimeoutMs: SELFTEST_COLD_COMMAND_TIMEOUT_MS,
+    webSocketOpenTimeoutMs: SELFTEST_COLD_SOCKET_TIMEOUT_MS,
+    startupTimeoutMs: SELFTEST_COLD_STARTUP_TIMEOUT_MS,
+    shutdownTimeoutMs: SELFTEST_COLD_SHUTDOWN_TIMEOUT_MS,
+    onEvent,
+  });
 }
 
 async function expectRejectedAsync(label, work, pattern) {
@@ -367,6 +449,55 @@ async function runSelftest() {
   const base = `cf-browsercdp-selftest-${nonce}`;
   const endpointFixture = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), `${base}-endpoint-`));
   try {
+    const fakeDeadlineTimer = () => {
+      let observedAtMs = 0;
+      const timers = [];
+      const deadlineHits = [];
+      const setTimer = (callback, delayMs) => {
+        const timer = { callback, delayMs, cleared: false };
+        timers.push(timer);
+        return timer;
+      };
+      const clearTimer = (timer) => { timer.cleared = true; };
+      const arm = (onDeadline) => armAbsoluteDeadline(2000, onDeadline, {
+        nowMs: () => observedAtMs, setTimer, clearTimer,
+      });
+
+      const cancel = arm(() => deadlineHits.push(observedAtMs));
+      assert(timers.length === 1 && timers[0].delayMs === 2000,
+        'SELFTEST absolute deadline did not arm the original command bound');
+      observedAtMs = 1999.758726;
+      timers[0].callback();
+      assert(deadlineHits.length === 0,
+        'SELFTEST just-early command timeout was accepted');
+      assert(timers.length === 2 && timers[1].delayMs === 1,
+        'SELFTEST just-early command timeout did not re-arm for the remaining deadline');
+      cancel();
+      assert(timers[1].cleared,
+        'SELFTEST cancellation did not clear the re-armed command timeout');
+      observedAtMs = 2000;
+      timers[1].callback();
+      assert(deadlineHits.length === 0,
+        'SELFTEST cancelled command timeout fired at the exact deadline');
+
+      observedAtMs = 0;
+      const exactTimersBefore = timers.length;
+      arm(() => deadlineHits.push(observedAtMs));
+      observedAtMs = 2000;
+      timers[exactTimersBefore].callback();
+      assert(JSON.stringify(deadlineHits) === JSON.stringify([2000]),
+        `SELFTEST exact command deadline did not fire once (${deadlineHits.join(', ')})`);
+
+      observedAtMs = 0;
+      const lateTimersBefore = timers.length;
+      arm(() => deadlineHits.push(observedAtMs));
+      observedAtMs = 2000.241274;
+      timers[lateTimersBefore].callback();
+      assert(JSON.stringify(deadlineHits) === JSON.stringify([2000, 2000.241274]),
+        `SELFTEST late command deadline did not fire once (${deadlineHits.join(', ')})`);
+    };
+    fakeDeadlineTimer();
+
     fs.writeFileSync(path.join(endpointFixture, 'DevToolsActivePort'),
       'not-a-port\n/devtools/browser/selftest\n');
     await expectRejectedAsync('malformed DevToolsActivePort', async () => activeEndpoint(endpointFixture),
@@ -385,31 +516,79 @@ async function runSelftest() {
         /not a real file/);
     }
 
-    let exitPipeDestroyed = false;
-    const exitWithoutClose = {
-      exitCode: 1, signalCode: null, pid: 1, killed: false,
-      stderr: { destroy() { exitPipeDestroyed = true; } },
+    let inheritedStderrClosed;
+    const inheritedStderrClose = new Promise((resolve) => { inheritedStderrClosed = resolve; });
+    const inheritedStderrSignals = [];
+    let inheritedStderrDestroyed = false;
+    const exitedWithInheritedStderr = {
+      exitCode: 0, signalCode: null, pid: 1, killed: false,
+      kill(signal = 'SIGTERM') { inheritedStderrSignals.push(signal); return true; },
+      stderr: { destroy() { inheritedStderrDestroyed = true; inheritedStderrClosed(); } },
     };
-    await expectRejectedAsync('exit without stdio close', () => terminateChildProcess(
-      exitWithoutClose, new Promise(() => {}), 'CDP selftest exit-without-close', 20,
-    ), /stdio did not close within the shutdown bound/);
-    assert(exitPipeDestroyed, 'SELFTEST exit-without-close did not release its owned stderr pipe');
+    await terminateChildProcess(
+      exitedWithInheritedStderr, Promise.resolve(), inheritedStderrClose,
+      'CDP selftest exited-with-inherited-stderr', 20,
+    );
+    assert(inheritedStderrDestroyed,
+      'SELFTEST exited-with-inherited-stderr did not release its owned stderr pipe');
+    assert(inheritedStderrSignals.length === 0,
+      `SELFTEST exited-with-inherited-stderr sent a signal (${inheritedStderrSignals.join(', ')})`);
 
+    let resistantExited;
+    const resistantExit = new Promise((resolve) => { resistantExited = resolve; });
     let resistantClosed;
     const resistantClose = new Promise((resolve) => { resistantClosed = resolve; });
     const resistantSignals = [];
+    let resistantPipeDestroyed = false;
     const resistantChild = {
       exitCode: null, signalCode: null, pid: 2, killed: false,
       kill(signal = 'SIGTERM') {
         resistantSignals.push(signal);
         this.killed = true;
-        if (signal === 'SIGKILL') { this.signalCode = signal; resistantClosed(); }
+        if (signal === 'SIGKILL') { this.signalCode = signal; resistantExited(); }
         return true;
       },
+      stderr: { destroy() { resistantPipeDestroyed = true; resistantClosed(); } },
     };
-    await terminateChildProcess(resistantChild, resistantClose, 'CDP selftest resistant child', 20);
+    await terminateChildProcess(
+      resistantChild, resistantExit, resistantClose, 'CDP selftest resistant child', 20,
+    );
     assert(JSON.stringify(resistantSignals) === JSON.stringify(['SIGTERM', 'SIGKILL']),
       `SELFTEST resistant child: expected TERM/KILL escalation, got ${resistantSignals.join(', ')}`);
+    assert(resistantPipeDestroyed,
+      'SELFTEST resistant child did not release its owned stderr pipe after exit');
+
+    const noExitSignals = [];
+    let noExitPipeDestroyed = false;
+    const noExitChild = {
+      exitCode: null, signalCode: null, pid: 3, killed: false,
+      kill(signal = 'SIGTERM') {
+        noExitSignals.push(signal);
+        this.killed = true;
+        return true;
+      },
+      stderr: { destroy() { noExitPipeDestroyed = true; } },
+    };
+    await expectRejectedAsync('no exit after SIGKILL', () => terminateChildProcess(
+      noExitChild, new Promise(() => {}), new Promise(() => {}),
+      'CDP selftest no-exit child', 20,
+    ), /^CDP selftest no-exit child: browser ignored bounded shutdown$/);
+    assert(JSON.stringify(noExitSignals) === JSON.stringify(['SIGTERM', 'SIGKILL']),
+      `SELFTEST no-exit child: expected TERM/KILL escalation, got ${noExitSignals.join(', ')}`);
+    assert(!noExitPipeDestroyed,
+      'SELFTEST no-exit child released stderr before proving process exit');
+
+    let nonclosingPipeDestroyed = false;
+    const exitedWithNonclosingPipe = {
+      exitCode: 1, signalCode: null, pid: 4, killed: false,
+      stderr: { destroy() { nonclosingPipeDestroyed = true; } },
+    };
+    await expectRejectedAsync('exit with nonclosing stdio', () => terminateChildProcess(
+      exitedWithNonclosingPipe, Promise.resolve(), new Promise(() => {}),
+      'CDP selftest nonclosing-stdio child', 20,
+    ), /^CDP selftest nonclosing-stdio child: browser exited but its stdio did not close within the shutdown bound$/);
+    assert(nonclosingPipeDestroyed,
+      'SELFTEST nonclosing-stdio child did not release its owned stderr pipe');
 
     if (process.platform === 'darwin') {
       const seatbeltBrowser = path.join(endpointFixture, 'seatbelt-marker-browser.mjs');
@@ -595,6 +774,130 @@ async function runSelftest() {
         `SELFTEST ${scenario.key} endpoint did not close its injected socket`);
       assertNoOwnedProfiles(prefix, `${scenario.key} endpoint publication cleanup`);
     }
+
+    let receiptDeadlineLaunches = 0;
+    let receiptDeadlineSocketClosed = false;
+    let receiptClock = 0;
+    let expireDuringInitialArm = false;
+    let initialArmClockReads = 0;
+    let expiredInitialArmSendObserved = false;
+    const receiptScenarios = new Map([
+      ['Browser.CfBeforeDeadline', { offsetMs: 99.999, result: { timely: true } }],
+      ['Browser.CfExactDeadline', { offsetMs: 100, result: { exact: true } }],
+      ['Browser.CfJustLate', { offsetMs: 100.241274, result: { late: true } }],
+      ['Browser.CfEarlyProtocolError', {
+        offsetMs: 99, error: { message: 'injected early protocol error' },
+      }],
+      ['Browser.CfExactProtocolError', {
+        offsetMs: 100, error: { message: 'injected exact protocol error' },
+      }],
+      ['Browser.CfLateProtocolError', {
+        offsetMs: 100.241274, error: { message: 'injected late protocol error' },
+      }],
+    ]);
+    const observedReceiptMethods = [];
+    const launchReceiptDeadlineFixture = ({ userData }) => {
+      receiptDeadlineLaunches++;
+      assert(receiptDeadlineLaunches === 1,
+        'SELFTEST command-receipt deadline fixture launched more than once');
+      fs.mkdirSync(userData, { recursive: true });
+      fs.writeFileSync(path.join(userData, 'DevToolsActivePort'),
+        '9\n/devtools/browser/selftest-command-receipt\n');
+      return spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
+        stdio: ['ignore', 'ignore', 'pipe'],
+      });
+    };
+    class ReceiptDeadlineWebSocket {
+      static OPEN = 1;
+      constructor() {
+        this.readyState = 0;
+        this.openTimer = setTimeout(() => {
+          this.readyState = ReceiptDeadlineWebSocket.OPEN;
+          this.onopen?.();
+        }, 0);
+      }
+      send(payload) {
+        const message = JSON.parse(payload);
+        if (message.method === 'Browser.getVersion') {
+          receiptClock += 1;
+          this.onmessage?.({ data: JSON.stringify({
+            id: message.id,
+            result: {
+              product: 'Chrome/CDP-receipt-selftest', revision: 'receipt-revision',
+              userAgent: 'cf-browsercdp-receipt-selftest', jsVersion: 'receipt-js',
+              protocolVersion: '1.3',
+            },
+          }) });
+          return;
+        }
+        if (message.method === 'Browser.CfExpiredDuringInitialArm') {
+          expiredInitialArmSendObserved = true;
+          return;
+        }
+        const scenario = receiptScenarios.get(message.method);
+        assert(scenario, `SELFTEST unexpected command-receipt method ${message.method}`);
+        observedReceiptMethods.push(message.method);
+        receiptClock += scenario.offsetMs;
+        this.onmessage?.({ data: JSON.stringify({
+          id: message.id, ...(scenario.error ? { error: scenario.error } : { result: scenario.result }),
+        }) });
+      }
+      close() {
+        clearTimeout(this.openTimer);
+        receiptDeadlineSocketClosed = true;
+        this.readyState = 3;
+      }
+    }
+    const receiptDeadlinePrefix = `${base}-command-receipt-deadline`;
+    const receiptNowMs = () => {
+      if (expireDuringInitialArm) {
+        initialArmClockReads++;
+        if (initialArmClockReads === 2) {
+          receiptClock += 100;
+          expireDuringInitialArm = false;
+        }
+      }
+      return receiptClock;
+    };
+    const receiptConnection = await openChromiumCdpWithLauncher({
+      label: 'CDP selftest command receipt deadline', userDataPrefix: receiptDeadlinePrefix,
+      commandTimeoutMs: 100, startupTimeoutMs: 1000, shutdownTimeoutMs: 2000,
+      WebSocketImpl: ReceiptDeadlineWebSocket,
+    }, launchReceiptDeadlineFixture, receiptNowMs);
+    try {
+      expireDuringInitialArm = true;
+      initialArmClockReads = 0;
+      await expectRejectedAsync('command expired during initial deadline arm',
+        () => receiptConnection.send('Browser.CfExpiredDuringInitialArm'),
+        /timed out waiting for Browser\.CfExpiredDuringInitialArm/);
+      assert(initialArmClockReads === 2 && !expiredInitialArmSendObserved,
+        'SELFTEST command expired during initial arm was transmitted after its timeout');
+      const beforeDeadline = await receiptConnection.send('Browser.CfBeforeDeadline');
+      assert(beforeDeadline.timely === true,
+        'SELFTEST just-before command response was rejected');
+      await expectRejectedAsync('exact command response receipt',
+        () => receiptConnection.send('Browser.CfExactDeadline'),
+        /timed out waiting for Browser\.CfExactDeadline/);
+      await expectRejectedAsync('just-late command response receipt',
+        () => receiptConnection.send('Browser.CfJustLate'),
+        /timed out waiting for Browser\.CfJustLate/);
+      await expectRejectedAsync('early command protocol error receipt',
+        () => receiptConnection.send('Browser.CfEarlyProtocolError'),
+        /injected early protocol error/);
+      await expectRejectedAsync('exact command protocol-error receipt',
+        () => receiptConnection.send('Browser.CfExactProtocolError'),
+        /timed out waiting for Browser\.CfExactProtocolError/);
+      await expectRejectedAsync('late command protocol-error receipt',
+        () => receiptConnection.send('Browser.CfLateProtocolError'),
+        /timed out waiting for Browser\.CfLateProtocolError/);
+    } finally {
+      await receiptConnection.close();
+    }
+    assert(JSON.stringify(observedReceiptMethods) === JSON.stringify([...receiptScenarios.keys()]),
+      `SELFTEST command-receipt controls were incomplete (${observedReceiptMethods.join(', ')})`);
+    assert(receiptDeadlineLaunches === 1 && receiptDeadlineSocketClosed,
+      'SELFTEST command-receipt deadline did not close its one injected socket');
+    assertNoOwnedProfiles(receiptDeadlinePrefix, 'command-receipt deadline cleanup');
 
     let malformedEndpointLaunches = 0;
     let malformedEndpointChildClosed = false;
@@ -954,14 +1257,127 @@ async function runSelftest() {
     assertNoOwnedProfiles(fractionalOpenTimeoutPrefix,
       'fractional WebSocket timeout pre-launch rejection');
 
+    const capturedColdEvent = () => {};
+    const capturedColdResult = Object.freeze({ kind: 'captured-cold-selftest-opener' });
+    let capturedColdOptions = null;
+    const returnedColdResult = await openColdSelftestCdp({
+      label: 'CDP selftest captured cold caller',
+      userDataPrefix: `${base}-cold-caller-capture`,
+      onEvent: capturedColdEvent,
+    }, (options) => {
+      capturedColdOptions = options;
+      return capturedColdResult;
+    });
+    assert(returnedColdResult === capturedColdResult,
+      'SELFTEST cold caller did not return its injected opener result');
+    assert(capturedColdOptions?.label === 'CDP selftest captured cold caller'
+      && capturedColdOptions.userDataPrefix === `${base}-cold-caller-capture`
+      && capturedColdOptions.commandTimeoutMs === 1_500
+      && capturedColdOptions.webSocketOpenTimeoutMs === 15_000
+      && capturedColdOptions.startupTimeoutMs === 45_000
+      && capturedColdOptions.shutdownTimeoutMs === 2_000
+      && capturedColdOptions.onEvent === capturedColdEvent,
+    `SELFTEST cold caller options drifted (${JSON.stringify(capturedColdOptions)})`);
+    assert(JSON.stringify(Object.keys(capturedColdOptions).sort()) === JSON.stringify([
+      'commandTimeoutMs', 'label', 'onEvent', 'shutdownTimeoutMs',
+      'startupTimeoutMs', 'userDataPrefix', 'webSocketOpenTimeoutMs',
+    ]), 'SELFTEST cold caller exposed unowned options');
+
+    /* CI observed a stable Edge endpoint at 23,658ms. Exercise that exact
+       late-publication shape without a real browser or wall-clock wait: the
+       45-second caller envelope must retain the full 15-second socket cap,
+       admit 38,657ms, and reject the exact/just-late 38,658/38,659ms edges. */
+    const coldEnvelopeScenarios = [
+      { key: 'just-before', openAtMs: 38_657, accepted: true },
+      { key: 'exact', openAtMs: 38_658, accepted: false },
+      { key: 'just-late', openAtMs: 38_659, accepted: false },
+    ];
+    for (const scenario of coldEnvelopeScenarios) {
+      let launches = 0;
+      let childClosed = false;
+      let socketClosed = false;
+      let clockReads = 0;
+      let clock = 0;
+      const prefix = `${base}-cold-envelope-${scenario.key}`;
+      const launchColdEnvelopeFixture = ({ userData }) => {
+        launches++;
+        assert(launches === 1,
+          `SELFTEST cold envelope ${scenario.key} fixture launched more than once`);
+        fs.mkdirSync(userData, { recursive: true });
+        fs.writeFileSync(path.join(userData, 'DevToolsActivePort'),
+          `9\n/devtools/browser/selftest-cold-envelope-${scenario.key}\n`);
+        const child = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
+          stdio: ['ignore', 'ignore', 'pipe'],
+        });
+        child.once('close', () => { childClosed = true; });
+        return child;
+      };
+      const coldEnvelopeClock = () => {
+        clockReads++;
+        if (clockReads === 1) return 0;
+        if (clock < 23_658) clock = 23_658;
+        return clock;
+      };
+      class ColdEnvelopeWebSocket {
+        static OPEN = 1;
+        constructor() { this.readyState = 0; this.openHandler = null; }
+        set onopen(handler) {
+          this.openHandler = handler;
+          clock = scenario.openAtMs;
+          this.readyState = ColdEnvelopeWebSocket.OPEN;
+          handler();
+        }
+        get onopen() { return this.openHandler; }
+        send(payload) {
+          const message = JSON.parse(payload);
+          queueMicrotask(() => this.onmessage?.({ data: JSON.stringify({
+            id: message.id,
+            result: {
+              product: 'Chrome/CDP-cold-envelope-selftest',
+              revision: 'cold-envelope-revision',
+              userAgent: 'cf-browsercdp-cold-envelope-selftest',
+              jsVersion: 'cold-envelope-js', protocolVersion: '1.3',
+            },
+          }) }));
+        }
+        close() { socketClosed = true; this.readyState = 3; }
+      }
+      const openColdEnvelope = () => openColdSelftestCdp({
+        label: `CDP selftest cold envelope ${scenario.key}`,
+        userDataPrefix: prefix,
+      }, (options) => openChromiumCdpWithLauncher({
+        ...options,
+        WebSocketImpl: ColdEnvelopeWebSocket,
+      }, launchColdEnvelopeFixture, coldEnvelopeClock));
+      if (scenario.accepted) {
+        let coldEnvelopeConnection = null;
+        try {
+          coldEnvelopeConnection = await openColdEnvelope();
+          assert(coldEnvelopeConnection.browser.product === 'Chrome/CDP-cold-envelope-selftest',
+            'SELFTEST cold envelope just-before control did not reach Browser.getVersion');
+        } finally {
+          await coldEnvelopeConnection?.close();
+        }
+      } else {
+        await expectRejectedAsync(`cold envelope ${scenario.key} socket boundary`,
+          openColdEnvelope,
+          /CDP WebSocket opened after its deadline .*socket-timeout=15000ms; configured=15000ms; endpoint-ready=23658ms; startup-timeout=45000ms/);
+      }
+      assert(launches === 1,
+        `SELFTEST cold envelope ${scenario.key}: expected one fixture launch, got ${launches}`);
+      assert(socketClosed,
+        `SELFTEST cold envelope ${scenario.key} did not close its injected socket`);
+      assert(childClosed,
+        `SELFTEST cold envelope ${scenario.key} did not close its fixture child`);
+      assertNoOwnedProfiles(prefix, `cold envelope ${scenario.key} cleanup`);
+    }
+
     const livePrefix = `${base}-live`;
     const liveEvents = [];
     let connection = null;
     try {
-      connection = await openChromiumCdp({
+      connection = await openColdSelftestCdp({
         label: 'CDP selftest live browser', userDataPrefix: livePrefix,
-        commandTimeoutMs: 1500, webSocketOpenTimeoutMs: 15000,
-        startupTimeoutMs: 30000, shutdownTimeoutMs: 2000,
         onEvent: (event) => liveEvents.push(event),
       });
       assert(connection.browser.executable === portable(actualBrowser),
@@ -1044,8 +1460,10 @@ async function runSelftest() {
   }
   console.log('BROWSER CDP SELFTEST PASS');
   console.log(`  malformed/directory${process.platform === 'win32' ? '' : '/dangling-symlink'} DevToolsActivePort: rejected`);
-  console.log('  exit-without-close: rejected; owned pipe released');
-  console.log('  SIGTERM-resistant child: escalated to bounded SIGKILL');
+  console.log('  exited child + inherited stderr: owned pipe released; close observed without SIGKILL');
+  console.log('  SIGTERM-resistant child: exited after bounded SIGKILL; owned pipe released');
+  console.log('  no exit after SIGKILL: exact bounded-shutdown rejection');
+  console.log('  exit + nonclosing stdio after pipe release: exact stdio-close rejection');
   console.log(`  macOS Codex Seatbelt pre-spawn refusal: ${process.platform === 'darwin' ? 'PASS; executable untouched' : 'covered by portable resolver selftest'}`);
   console.log('  browser child exit and profile cleanup: PASS');
   console.log(`  early-exit code + bounded stderr diagnostics: ${process.platform === 'win32' ? 'covered by child-exit control' : 'PASS'}`);
@@ -1059,6 +1477,9 @@ async function runSelftest() {
   console.log('  WebSocket constructor consuming its phase deadline: rejected and cleaned up');
   console.log('  default delayed WebSocket open is independent from the command ceiling: PASS');
   console.log('  invalid integer and fractional WebSocket open timeouts: rejected before launch');
+  console.log('  cold live caller: exact 45-second startup / 15-second socket envelope; 23,658ms endpoint just-before/exact/late controls PASS');
+  console.log('  just-early command timeout re-arms; cancellation and exact/late deadlines fail closed');
+  console.log('  just-before command receipt passes; exact/late result and protocol-error receipts reject');
   console.log('  CDP command error, global timeout, and shorter phase-owned timeout: rejected');
   console.log('  CDP events forwarded; event-handler failure rejected and cleaned up');
   console.log('  pending command rejected during bounded close: PASS');

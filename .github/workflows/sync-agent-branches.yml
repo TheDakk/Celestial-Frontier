@@ -1,5 +1,6 @@
-# Keeps the four agent branches from drifting behind develop. On every push
-# to develop (which only advances through merged, battery-green PRs), each
+# Optional manual repair for the four agent branches. Automatic branch writes
+# are disabled under the Actions budget protocol; normal synchronization is a
+# local fetch/merge from a clean worktree. When explicitly authorized, each
 # agent branch that is STRICTLY BEHIND develop — an ancestor, holding no
 # commits of its own — is fast-forwarded to develop's tip. A fast-forward of
 # a strictly-behind branch cannot lose work by construction. A branch that
@@ -11,18 +12,27 @@
 # branches so that pull is a trivial fast-forward.
 name: sync agent branches
 on:
-  push:
-    branches: [develop]
+  workflow_dispatch:
+    inputs:
+      actions_budget_authorization:
+        description: Select the run token only after Nick authorizes this one hosted workflow
+        required: true
+        default: DO_NOT_RUN
+        type: choice
+        options:
+          - DO_NOT_RUN
+          - RUN_ONE_AUTHORIZED_WORKFLOW
 
 permissions:
   contents: write
 
 concurrency:
-  group: sync-agent-branches
-  cancel-in-progress: false
+  group: actions-budget-${{ github.workflow }}-${{ github.ref }}-${{ inputs.actions_budget_authorization }}-${{ github.actor }}
+  cancel-in-progress: true
 
 jobs:
   fast-forward:
+    if: ${{ inputs.actions_budget_authorization == 'RUN_ONE_AUTHORIZED_WORKFLOW' && github.actor == github.repository_owner }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

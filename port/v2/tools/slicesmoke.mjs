@@ -15,8 +15,20 @@ import path from 'node:path';
 import http from 'node:http';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import {
+  assessTrainingBusyRefusalPrecondition,
+  classifyCompendiumDetailReceipt,
+  classifyForegroundServiceTurn,
+  classifyForegroundServiceTurnReceipt,
+  classifyPlanetsideSettlement,
+  planetsidePhaseRemainingMs,
+  planetsideRuntimeTimeoutDecision,
+  trainingBindingReceiptBeforeDeadline,
+} from './slicesmoke-contract.mjs';
+import { findCandidateSpeciesArtBuildGraph } from './speciesart-build.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 /* Direct runs own the checkout lock. The structured-report wrapper owns one
@@ -325,6 +337,8 @@ const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexed
    exists—the species-audit failure class. Build unconditionally, then drive
    exactly those bytes. */
 execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
+const candidateSpeciesPainter = findCandidateSpeciesArtBuildGraph(dist).painter;
+const candidateSpeciesPainterPath = `/${candidateSpeciesPainter.relativePath}`;
 if (!fs.existsSync(OUT)) fs.mkdirSync(OUT, { recursive: true });
 
 /* ---- tiny static server over dist (vite preview without the dep surface) ---- */
@@ -357,7 +371,7 @@ const server5 = http.createServer((req, res) => {
     res.end('<!doctype html><meta charset="utf-8"><title>seed</title>');
     return;
   }
-  if (!slowSpeciesOpen && /\/assets\/speciesart-[^/]+\.js(?:\?|$)/.test(req.url || '')) {
+  if (!slowSpeciesOpen && (req.url || '').split('?')[0] === candidateSpeciesPainterPath) {
     slowSpeciesRequests.push({ req, res });
     return;
   }
@@ -392,7 +406,7 @@ const send = browser.send;
    Guide/Compendium/Atlas buttons never synthesized click. Mirror a real
    keyboard press here; Space carries printable text and activates on keyup. */
 const VIRTUAL_KEY = Object.freeze({
-  Enter: 13, Space: 32, Escape: 27, Tab: 9,
+  Backspace: 8, Enter: 13, Space: 32, Escape: 27, Tab: 9,
   ArrowLeft: 37, ArrowUp: 38, ArrowRight: 39, ArrowDown: 40,
   Minus: 189,
 });
@@ -662,12 +676,19 @@ try {
   if (!staleReadyControlRejected) fails.push('SLICE READINESS CONTROL FAILED — the prior document token was accepted as a new boot');
   await sleep(3000);
 
-  const evalIn = async (expr) => {
+  const evalIn = async (expr, { timeoutMs } = {}) => {
     let r;
-    try { r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, sess); }
+    try {
+      r = await send(
+        'Runtime.evaluate',
+        { expression: expr, returnByValue: true, awaitPromise: true },
+        sess,
+        timeoutMs === undefined ? undefined : { timeoutMs },
+      );
+    }
     catch (error) {
       const near = String(expr).replace(/\s+/g, ' ').slice(0, 120);
-      throw new Error(`desktop eval failed near ${JSON.stringify(near)}: ${error.message}`);
+      throw new Error(`desktop eval failed near ${JSON.stringify(near)}: ${error.message}`, { cause: error });
     }
     if (r.exceptionDetails) {
       const near = String(expr).replace(/\s+/g, ' ').slice(0, 120);
@@ -1548,6 +1569,68 @@ try {
     || !/imported\/current HP/i.test(hpGuide.text) || /Not yet available in v2/.test(hpGuide.text)) {
     fails.push('GUIDE HP boundary did not render the live read-only meter honestly: ' + JSON.stringify(hpGuide));
   }
+  const compendiumGuideSpecs = [
+    { id: 'kingdoms', title: 'The four kingdoms', required: [
+      'read-only Compendium presents up to 1,500 logical entries', 'Search filters those saved records',
+      'count reports the logical matches', 'choosing a row opens its detail',
+      'mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)',
+      'plus at most the focused pinned row',
+      'neutral placeholder', 'exact 132px thumbnail',
+      'complete genome—not only the displayed name or seed—owns visual identity',
+      'Planetside shares the same bounded thumbnail lease path',
+      'thumbnails are released when their visible owner leaves',
+      'Discovery, capture, husbandry, renaming, and other collection-writing actions remain unavailable',
+    ] },
+    { id: 'specimen', title: 'Reading a specimen card', required: [
+      'exact 440px portrait', 'same complete-genome identity as its exact 132px list thumbnail',
+      '440px image is reserved for this detail rather than the list or Planetside',
+      'Back returns to the saved list position and restores focus to the same logical row',
+      'Close returns focus to the exact Compendium opener', 'profile remains read-only',
+      'Capture, feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry or collection-writing outcomes are deliberately absent',
+    ] },
+  ];
+  const renderedCompendiumGuideCheck = (spec) => `(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
+    text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
+    status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
+    required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),
+    contradictory=/(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\\b(?:all|every)\\b[^.!?]{0,40}\\b1,?500\\b/i.test(text)
+      ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(text)
+      ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(text)
+      ||/(?:lease|thumbnail)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,40}(?:after|when)[^.!?]{0,40}(?:Close|leave|unmount|filter)/i.test(text)
+      ||/(?:capture|feeding|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i.test(text);
+    return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!contradictory,
+      title,status,missing,contradictory,text};})()`;
+  const renderCompendiumGuideTopic = async (spec) => evalIn(`(()=>{ const input=document.getElementById('guidesearch');
+    input.value=${JSON.stringify(spec.id)};input.dispatchEvent(new Event('input',{bubbles:true}));
+    document.querySelector('[data-guide-topic=${JSON.stringify(spec.id)}]')?.click();return ${renderedCompendiumGuideCheck(spec)};})()`);
+  const kingdomsGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[0]);
+  const kingdomsGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),paragraph=article?.querySelector('p'),
+    prior=paragraph?.innerHTML||'',marker=document.createElement('p');let stale=null,contradiction=null;
+    if(paragraph){paragraph.textContent='The Compendium reads the expedition’s discovered life. Choose a row to inspect the deterministic portrait.';
+      stale=${renderedCompendiumGuideCheck(compendiumGuideSpecs[0])};paragraph.innerHTML=prior;}
+    marker.textContent='The Compendium mounts all 1,500 portraits at once.';article?.appendChild(marker);
+    contradiction=${renderedCompendiumGuideCheck(compendiumGuideSpecs[0])};marker.remove();
+    const restored=!!paragraph&&paragraph.innerHTML===prior&&${renderedCompendiumGuideCheck(compendiumGuideSpecs[0])}.ok;
+    return {ok:stale?.ok===false&&stale?.missing?.length>0&&contradiction?.ok===false&&contradiction?.contradictory===true&&restored,
+      stale,contradiction,restored};})()`);
+  const specimenGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[1]);
+  const specimenGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),paragraph=article?.querySelector('p'),
+    prior=paragraph?.innerHTML||'',marker=document.createElement('p');let stale=null,contradiction=null;
+    if(paragraph){paragraph.textContent='Select a Compendium row to open its current specimen detail and deterministic portrait.';
+      stale=${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])};paragraph.innerHTML=prior;}
+    marker.textContent='Planetside renders a 440px portrait for every row, and thumbnail leases remain pinned after Close.';article?.appendChild(marker);
+    contradiction=${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])};marker.remove();
+    const restored=!!paragraph&&paragraph.innerHTML===prior&&${renderedCompendiumGuideCheck(compendiumGuideSpecs[1])}.ok;
+    return {ok:stale?.ok===false&&stale?.missing?.length>0&&contradiction?.ok===false&&contradiction?.contradictory===true&&restored,
+      stale,contradiction,restored};})()`);
+  if (!kingdomsGuide.ok || !specimenGuide.ok) {
+    fails.push('GUIDE Compendium virtualization/art/focus contract did not render in Kingdoms and Specimen: '
+      + JSON.stringify({ kingdomsGuide, specimenGuide }));
+  }
+  if (!kingdomsGuideCtl.ok || !specimenGuideCtl.ok) {
+    fails.push('GUIDE COMPENDIUM COPY CONTROL FAILED — pre-Arc-1A or contradictory art ownership stayed current: '
+      + JSON.stringify({ kingdomsGuideCtl, specimenGuideCtl }));
+  }
   /* Charter recovery changes player-facing Guide truth, so prove both affected
      topics render the action contract. Pure content lookup cannot establish
      that fillGuide actually placed the revised body in the live panel. */
@@ -1660,10 +1743,14 @@ try {
     const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
       recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
       training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
+      art=bulletNodes.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
+      workspace=bulletNodes.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
+      coldArt=bulletNodes.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
+      worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
       headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
-      firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),
+      firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),artHeading=headingFor(art),
       charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
-      trainingText=training?.textContent||'',
+      trainingText=training?.textContent||'',artText=art?.textContent||'',
       trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
@@ -1685,28 +1772,51 @@ try {
         &&trainingText.includes('completing the drill after Land stays at Earth')
         &&trainingText.includes('An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen')
         &&trainingText.includes('leaves the stored expedition unchanged')
-        &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction;
+        &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction,
+      artContradiction=/(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\\b(?:all|every)\\b[^.!?]{0,40}\\b1,?500\\b/i.test(artText)
+        ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(artText)
+        ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(artText)
+        ||/(?:lease|thumbnail)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,40}(?:after|when)[^.!?]{0,40}(?:Close|leave|unmount|filter)/i.test(artText),
+      artContract=artHeading==='Under the Hood'&&artText.includes('Species art loads on demand')
+        &&artText.includes('up to 1,500 logical entries while mounting the visible viewport plus half a viewport of overscan on each side (about two viewports total), plus at most the focused pinned row')
+        &&artText.includes('neutral placeholder to an exact 132px thumbnail keyed by the complete genome')
+        &&artText.includes('Search filters the logical count')
+        &&artText.includes('Back restores the saved row and focus')&&artText.includes('Close returns focus to the exact opener')
+        &&artText.includes('Planetside shares the same bounded thumbnail lease path')
+        &&artText.includes('leases release with their visible owners')
+        &&artText.includes('only specimen detail publishes and retains an exact 440px portrait')
+        &&artText.includes('thumbnail scratch art is downsampled to 132px before it crosses the worker boundary')
+        &&!artContradiction,
+      workspaceContract=headingFor(workspace)==='UI Enhancements'
+        &&(workspace?.textContent||'').includes('Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column'),
+      coldArtContract=headingFor(coldArt)==='Bug Fixes'
+        &&(coldArt?.textContent||'').includes('Loading and painting the first specimen thumbnails now happens away from the renderer thread'),
+      workerContract=headingFor(worker)==='Under the Hood'
+        &&(worker?.textContent||'').includes('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn')
+        &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback');
     const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
     return {title,identity:title.includes('v2.0 · A New Foundation'),
       status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,headings,bulletCount:bullets.length,
-      populated:bullets.length===44&&bullets.every((bullet)=>bullet.length>0),
+      populated:bullets.length===47&&bullets.every((bullet)=>bullet.length>0),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
-      complete:charterPlacement&&trainingContract&&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
+      complete:charterPlacement&&trainingContract&&artContract&&workspaceContract&&coldArtContract&&workerContract
+        &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
         &&/a genuine empty-sky press still dismisses it/.test(text)
         &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
         &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
         &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text),
-      charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,
-      honest:!overclaim&&!trainingContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
+      charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
+      workspaceContract,coldArtContract,workerContract,
+      honest:!overclaim&&!trainingContradiction&&!artContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
       authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
   const releaseDraft = await evalIn(releaseDraftCheck);
   if (!releaseDraft.identity || releaseDraft.status !== 'draft'
-    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 44 || !releaseDraft.complete
+    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 47 || !releaseDraft.complete
     || !releaseDraft.honest || !releaseDraft.authority || releaseDraft.releasePending !== releaseBaseline.releasePending
     || releaseDraft.rnSeen !== releaseBaseline.rnSeen) {
     fails.push('GUIDE v2.0 development bulletin is incomplete or changed shipped-release state: '
@@ -1721,8 +1831,9 @@ try {
   const releaseInventoryCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][12];
     if(!row)return {populated:true,error:'missing control row'};const parent=row.parentNode,next=row.nextSibling;row.remove();const result=${releaseDraftCheck};
     parent.insertBefore(row,next);return result; })()`);
-  if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 43) {
-    fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet stayed complete: ' + JSON.stringify(releaseInventoryCtl));
+  if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 46) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet did not produce the exact 46-row incomplete inventory: '
+      + JSON.stringify(releaseInventoryCtl));
   }
   const releaseCloseCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
     .find((item)=>/ONE SURFACE, ONE CLOSE/.test(item.textContent||''));if(!row)return {complete:true,error:'missing sentinel row'};
@@ -1790,6 +1901,74 @@ try {
     || !releaseTrainingCopyCtl.restored) {
     fails.push('GUIDE RELEASE TRAINING CONTROL FAILED — stale/contradictory restore claims stayed current: '
       + JSON.stringify(releaseTrainingCopyCtl));
+  }
+  const releaseArtCopyCtl = await evalIn(`(()=>{ const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
+    row=rows.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
+    workspace=rows.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||''));
+    if(!row||!workspace)return {stale:{complete:true},contradiction:{honest:true},error:'missing species-art placement fixture'};
+    const prior=row.textContent,rowParent=row.parentNode,rowNext=row.nextSibling,wrongParent=workspace.parentNode;
+    row.textContent='📦 ART ARRIVES WHEN IT IS NEEDED: The large species-art payload loads lazily for Compendium or Planetside, shares one in-flight request, and retains only the latest subscriber per surface.';
+    const stale=${releaseDraftCheck};row.textContent=prior;
+    row.textContent=prior.replace('only specimen detail publishes and retains an exact 440px portrait','specimen detail can show a 440px portrait');
+    const publishChanged=row.textContent!==prior,publishStale=${releaseDraftCheck};row.textContent=prior;
+    row.textContent=prior.replace('thumbnail scratch art is downsampled to 132px before it crosses the worker boundary','thumbnail scratch art crosses the worker boundary');
+    const downsampleChanged=row.textContent!==prior,downsampleStale=${releaseDraftCheck};row.textContent=prior;
+    wrongParent.appendChild(row);const placementMoved=row.parentNode===wrongParent,placementStale=${releaseDraftCheck};rowParent.insertBefore(row,rowNext);
+    row.textContent=prior+' Thumbnail leases remain pinned after Close, and Planetside renders a 440px portrait for every row.';
+    const contradiction=${releaseDraftCheck};row.textContent=prior;
+    return {stale,publishChanged,publishStale,downsampleChanged,downsampleStale,placementMoved,placementStale,contradiction,
+      restored:row.textContent===prior&&row.parentNode===rowParent&&row.nextSibling===rowNext};})()`);
+  if (releaseArtCopyCtl.stale.complete || releaseArtCopyCtl.stale.artContract
+    || !releaseArtCopyCtl.publishChanged || releaseArtCopyCtl.publishStale.complete || releaseArtCopyCtl.publishStale.artContract
+    || !releaseArtCopyCtl.downsampleChanged || releaseArtCopyCtl.downsampleStale.complete || releaseArtCopyCtl.downsampleStale.artContract
+    || !releaseArtCopyCtl.placementMoved || releaseArtCopyCtl.placementStale.complete || releaseArtCopyCtl.placementStale.artContract
+    || releaseArtCopyCtl.contradiction.complete || releaseArtCopyCtl.contradiction.honest
+    || releaseArtCopyCtl.contradiction.artContract || !releaseArtCopyCtl.contradiction.artContradiction
+    || !releaseArtCopyCtl.restored) {
+    fails.push('GUIDE RELEASE ART CONTROL FAILED — pre-Arc-1A or contradictory thumbnail ownership stayed current: '
+      + JSON.stringify(releaseArtCopyCtl));
+  }
+  const releaseWorkerCopyCtl = await evalIn(`(()=>{ const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
+    workspace=rows.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
+    coldArt=rows.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
+    worker=rows.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||''));
+    if(!workspace||!coldArt||!worker)return {error:'missing PR32 release rows'};
+    const workspaceText=workspace.textContent,coldArtText=coldArt.textContent,workerText=worker.textContent,
+      workspaceParent=workspace.parentNode,workspaceNext=workspace.nextSibling,coldArtParent=coldArt.parentNode,coldArtNext=coldArt.nextSibling,
+      workerParent=worker.parentNode,workerNext=worker.nextSibling;
+    workspace.textContent=workspaceText.replace('Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column','short-landscape workspace outcome removed');
+    const workspaceChanged=workspace.textContent!==workspaceText,workspaceStale=${releaseDraftCheck};workspace.textContent=workspaceText;
+    coldArt.textContent=coldArtText.replace('Loading and painting the first specimen thumbnails now happens away from the renderer thread','cold renderer-answerability outcome removed');
+    const coldArtChanged=coldArt.textContent!==coldArtText,coldArtStale=${releaseDraftCheck};coldArt.textContent=coldArtText;
+    worker.textContent=workerText.replace('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn','worker ownership outcome removed');
+    const workerChanged=worker.textContent!==workerText,workerStale=${releaseDraftCheck};worker.textContent=workerText;
+    worker.textContent=workerText.replace('terminates an idle or replaced producer without a synchronous renderer fallback','worker release/fallback outcome removed');
+    const workerReleaseChanged=worker.textContent!==workerText,workerReleaseStale=${releaseDraftCheck};worker.textContent=workerText;
+    workerParent.appendChild(workspace);const workspaceMoved=workspace.parentNode===workerParent,workspaceMisplaced=${releaseDraftCheck};workspaceParent.insertBefore(workspace,workspaceNext);
+    workspaceParent.appendChild(coldArt);const coldArtMoved=coldArt.parentNode===workspaceParent,coldArtMisplaced=${releaseDraftCheck};coldArtParent.insertBefore(coldArt,coldArtNext);
+    coldArtParent.appendChild(worker);const workerMoved=worker.parentNode===coldArtParent,workerMisplaced=${releaseDraftCheck};workerParent.insertBefore(worker,workerNext);
+    const restored=workspace.textContent===workspaceText&&coldArt.textContent===coldArtText&&worker.textContent===workerText
+      &&workspace.parentNode===workspaceParent&&workspace.nextSibling===workspaceNext
+      &&coldArt.parentNode===coldArtParent&&coldArt.nextSibling===coldArtNext
+      &&worker.parentNode===workerParent&&worker.nextSibling===workerNext;
+    return {workspaceChanged,workspaceStale,coldArtChanged,coldArtStale,workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,
+      workspaceMoved,workspaceMisplaced,coldArtMoved,coldArtMisplaced,workerMoved,workerMisplaced,restored};})()`);
+  if (!releaseWorkerCopyCtl.workspaceChanged || releaseWorkerCopyCtl.workspaceStale?.complete
+    || releaseWorkerCopyCtl.workspaceStale?.workspaceContract !== false
+    || !releaseWorkerCopyCtl.coldArtChanged || releaseWorkerCopyCtl.coldArtStale?.complete
+    || releaseWorkerCopyCtl.coldArtStale?.coldArtContract !== false
+    || !releaseWorkerCopyCtl.workerChanged || releaseWorkerCopyCtl.workerStale?.complete
+    || releaseWorkerCopyCtl.workerStale?.workerContract !== false
+    || !releaseWorkerCopyCtl.workerReleaseChanged || releaseWorkerCopyCtl.workerReleaseStale?.complete
+    || releaseWorkerCopyCtl.workerReleaseStale?.workerContract !== false
+    || !releaseWorkerCopyCtl.workspaceMoved || releaseWorkerCopyCtl.workspaceMisplaced?.complete
+    || releaseWorkerCopyCtl.workspaceMisplaced?.workspaceContract !== false
+    || !releaseWorkerCopyCtl.coldArtMoved || releaseWorkerCopyCtl.coldArtMisplaced?.complete
+    || releaseWorkerCopyCtl.coldArtMisplaced?.coldArtContract !== false
+    || !releaseWorkerCopyCtl.workerMoved || releaseWorkerCopyCtl.workerMisplaced?.complete
+    || releaseWorkerCopyCtl.workerMisplaced?.workerContract !== false || !releaseWorkerCopyCtl.restored) {
+    fails.push('GUIDE RELEASE PR32 CONTROL FAILED — a short-landscape/cold-art/worker claim was not independently required: '
+      + JSON.stringify(releaseWorkerCopyCtl));
   }
   const releaseVersionCtl = await evalIn(`(()=>{ const heading=document.querySelector('#guidepanel .guide-topic [data-guide-heading]');
     if(!heading)return {identity:true,error:'missing release heading'};const prior=heading.textContent;heading.textContent=prior.replace('v2.0','v2x0');
@@ -2167,7 +2346,6 @@ try {
   }
   const exactOrdinalLand = await evalIn(`window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)})`);
   if (!exactOrdinalLand) fails.push('PLANET ORDINAL ACCEPTANCE: exact Earth {seed,ordinal} did not survey and Land');
-  await sleep(300);
   const landedSurvey = await evalIn(`(()=>{ const S=window.__CF_SLICE__,card=document.getElementById('survey'),
     rarity=[...card.querySelectorAll('[data-row="Rarity"]')],spectral=card.querySelectorAll('[data-row="Spectral class"]');
     return {mode:S.api.state().mode,landed:S.api.state().save.landed.includes(133),rarityCount:rarity.length,
@@ -2178,15 +2356,62 @@ try {
     fails.push('LANDED PLANET SURVEY: Earth did not disclose exactly one plain Rarity row after landfall: '
       + JSON.stringify(landedSurvey));
   }
-  /* THE LIVING PLANETSIDE: Earth's ground survey shows its real roster,
-     each specimen wearing an hdart portrait */
-  const side = await evalIn(`(()=>{ const el=document.getElementById('planetside');
-    if(!el || el.style.display==='none') return { on:false };
-    const sp=[...el.querySelectorAll('[data-sel=planetside-sp]')];
-    const imgs=sp.filter(x=>x.querySelector('img') && String(x.querySelector('img').src||'').length>2000).length;
-    return { on:true, n:sp.length, imgs }; })()`);
-  if (!side.on || !(side.n >= 3)) fails.push('the planetside strip did not show Earth’s roster: ' + JSON.stringify(side));
-  else if (!(side.imgs >= 3)) fails.push('planetside portraits did not paint: ' + JSON.stringify(side));
+  /* THE LIVING PLANETSIDE: wait for the exact lease/decode/work outcome.
+     The former fixed 300ms sleep plus src-length count was neither a product
+     deadline nor evidence that the 132px image decoded. */
+  const planetsideTimeoutMs = 30000;
+  const planetsideDeadline = performance.now() + planetsideTimeoutMs;
+  let side = null;
+  let sideDecision = { status: 'pending', reasons: ['not observed'] };
+  while (performance.now() < planetsideDeadline) {
+    const remainingMs = planetsidePhaseRemainingMs(planetsideDeadline, performance.now());
+    if (remainingMs <= 0) {
+      sideDecision = {
+        status: 'pending',
+        reasons: [`phase deadline exhausted before target observation (${planetsideTimeoutMs}ms)`],
+      };
+      break;
+    }
+    try {
+      side = await evalIn(`(()=>{ const el=document.getElementById('planetside');
+        if(!el || el.style.display==='none') return {on:false,n:0,images:[],art:null};
+        const sp=[...el.querySelectorAll('[data-sel=planetside-sp]')];
+        const images=sp.map(row=>{const image=row.querySelector('img');return {
+          state:image?.dataset.thumbState||null,hasSrc:!!image?.getAttribute('src'),
+          complete:image?.complete===true,naturalWidth:image?.naturalWidth||0,naturalHeight:image?.naturalHeight||0};});
+        const diagnostics=window.__CF_SLICE__.api.compendiumDiagnostics?.();
+        return {on:true,n:sp.length,images,art:diagnostics?.art||null}; })()`, { timeoutMs: remainingMs });
+    } catch (error) {
+      const timeoutDecision = planetsideRuntimeTimeoutDecision(error?.cause, planetsideTimeoutMs);
+      if (timeoutDecision) {
+        sideDecision = timeoutDecision;
+        break;
+      }
+      throw error;
+    }
+    if (performance.now() >= planetsideDeadline) {
+      sideDecision = {
+        status: 'pending',
+        reasons: [`phase deadline expired before target observation completed (${planetsideTimeoutMs}ms)`],
+      };
+      break;
+    }
+    sideDecision = classifyPlanetsideSettlement(side);
+    if (sideDecision.status !== 'pending') break;
+    const sleepMs = Math.min(50, planetsidePhaseRemainingMs(planetsideDeadline, performance.now()));
+    if (sleepMs > 0) await sleep(sleepMs);
+  }
+  if (sideDecision.status === 'pending' && performance.now() >= planetsideDeadline
+    && !sideDecision.reasons.some((reason) => reason.startsWith('phase deadline expired'))) {
+    sideDecision = {
+      ...sideDecision,
+      reasons: [...sideDecision.reasons, `phase deadline expired (${planetsideTimeoutMs}ms)`],
+    };
+  }
+  if (sideDecision.status !== 'ready') {
+    fails.push(`planetside thumbnail settlement ${sideDecision.status}: `
+      + JSON.stringify({ reasons: sideDecision.reasons, observation: side }));
+  }
   const stSurf = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (stSurf.mode !== 'surface') fails.push('landing did not reach surface mode: ' + stSurf.mode);
   if (!/Earth/.test(stSurf.trail)) fails.push('surface trail missing Earth: ' + JSON.stringify(stSurf.trail));
@@ -3984,33 +4209,164 @@ try {
   /* Opposite arbitration direction: Import claims first while waiting on an
      older persist. The real Skip must refuse busy in-place; only after release
      may Import replace/reload the expedition. */
+  const importOwnerPersistDrained = await evalIn(`window.__CF_SLICE__.api.__smokePersistNow()`);
+  if (!importOwnerPersistDrained) {
+    throw new Error('D-TRAIN import-owner setup could not drain the prior Atlas/Land persistence chain');
+  }
+  const importOwnerUnsafeSeedRaw = JSON.stringify({
+    ...JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION)),
+    me: 'D-TRAIN unjoined fixture control must win late',
+  });
+  if (importOwnerUnsafeSeedRaw === DTRAIN_LEGACY_RAW) {
+    throw new Error('D-TRAIN import-owner setup control did not create distinct delayed bytes');
+  }
+  const importOwnerUnsafeSeedArmed = await evalIn(
+    `window.__CF_SLICE__.api.__smokeArmImportRace(${JSON.stringify(importOwnerUnsafeSeedRaw)})`,
+  );
+  if (!importOwnerUnsafeSeedArmed) {
+    throw new Error('D-TRAIN import-owner setup control could not arm its delayed prior write');
+  }
+  await evalIn(`new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
+    q.onerror=()=>reject(q.error);q.onsuccess=()=>{const db=q.result,tx=db.transaction('meta','readwrite');
+      tx.objectStore('meta').put(${JSON.stringify(DTRAIN_LEGACY_RAW)},'save');tx.oncomplete=()=>{db.close();resolve(true)};
+      tx.onerror=()=>reject(tx.error);};})`);
+  const importOwnerUnsafeSeeded = await evalIn(READ_PRIMARY_EXPRESSION);
+  const importOwnerUnsafeReleased = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseImportRace()`);
+  if (!importOwnerUnsafeReleased || importOwnerUnsafeSeeded !== DTRAIN_LEGACY_RAW) {
+    throw new Error('D-TRAIN import-owner setup control did not reproduce the unjoined fixture-write race: '
+      + JSON.stringify({ armed: importOwnerUnsafeSeedArmed, released: importOwnerUnsafeReleased,
+        seededExact: importOwnerUnsafeSeeded === DTRAIN_LEGACY_RAW }));
+  }
+  const importOwnerUnsafeDeadline = performance.now() + 2000;
+  let importOwnerUnsafeAfter = importOwnerUnsafeSeeded;
+  let importOwnerUnsafeObservedBeforeDeadline = false;
+  while (performance.now() < importOwnerUnsafeDeadline) {
+    const remainingMs = Math.max(1, Math.floor(importOwnerUnsafeDeadline - performance.now()));
+    importOwnerUnsafeAfter = await evalIn(READ_PRIMARY_EXPRESSION, { timeoutMs: remainingMs });
+    const receivedAtMs = performance.now();
+    if (receivedAtMs >= importOwnerUnsafeDeadline) break;
+    if (importOwnerUnsafeAfter === importOwnerUnsafeSeedRaw) {
+      importOwnerUnsafeObservedBeforeDeadline = true;
+      break;
+    }
+    await sleep(Math.min(20, Math.max(0, importOwnerUnsafeDeadline - performance.now())));
+  }
+  if (!importOwnerUnsafeObservedBeforeDeadline) {
+    throw new Error('D-TRAIN import-owner setup control did not observe its exact armed late write: '
+      + JSON.stringify({ expectedLength: importOwnerUnsafeSeedRaw.length,
+        actualLength: importOwnerUnsafeAfter.length,
+        expectedName: JSON.parse(importOwnerUnsafeSeedRaw).me,
+        actualName: (() => { try { return JSON.parse(importOwnerUnsafeAfter).me ?? null; } catch { return null; } })() }));
+  }
   const importOwnerBooted = await dtrainSeedPrimary(DTRAIN_LEGACY_RAW, 'D-TRAIN import-owner race');
+  const importOwnerPrecondition = await evalIn(`(async()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
+    card=document.getElementById('tutcard'),button=card?.querySelector('[data-sel="tutskip"]'),
+    status=card?.querySelector('[data-sel="tutstatus"]');
+    return {documentToken:S?.documentToken||null,primaryRaw:await (${READ_PRIMARY_EXPRESSION}),state,
+      card:!!card,trainingBody:document.body.classList.contains('training'),
+      button:{present:!!button,connected:button?.isConnected??false,disabled:button?.disabled??null,
+        visible:!!button&&button.getClientRects().length>0&&getComputedStyle(button).visibility!=='hidden'},
+      buttonOwnedByCard:!!card&&!!button&&card.contains(button),
+      status:{present:!!status,hidden:status?.hidden??null},statusOwnedByCard:!!card&&!!status&&card.contains(status),
+      tickerStarted:S?.app?.ticker?.started===true};})()`);
+  const importOwnerPreconditionAssessment = assessTrainingBusyRefusalPrecondition(
+    importOwnerPrecondition,
+    { documentToken: importOwnerBooted.token, primaryRaw: DTRAIN_LEGACY_RAW },
+  );
+  if (!importOwnerPreconditionAssessment.ok) {
+    throw new Error('D-TRAIN import-owner setup was not an exact runnable Training document: '
+      + JSON.stringify({ precondition: importOwnerPrecondition,
+        assessment: importOwnerPreconditionAssessment }));
+  }
   const importOwnerNativeLabel = 'import-owner-training-busy';
   const importOwnerNativeArmed = await evalIn(dtrainNativeWriteArmExpression(importOwnerNativeLabel));
+  if (!importOwnerNativeArmed) {
+    throw new Error('D-TRAIN import-owner setup could not arm exact native-write evidence');
+  }
   const importOwnerMark = events.length;
-  const importOwnerStart = await evalIn(`(async()=>{const api=window.__CF_SLICE__.api,
-    armed=api.__smokeArmImportRace(${JSON.stringify(DTRAIN_LEGACY_RAW)});
-    void api.importBlob(${JSON.stringify(VETERAN_RAW)});await Promise.resolve();
-    const button=document.querySelector('[data-sel="tutskip"]');button?.focus();button?.click();await Promise.resolve();
-    const status=document.querySelector('[data-sel="tutstatus"]');return {armed,button:!!button,
-      disabled:button?.disabled??null,focus:document.activeElement===button,text:status?.textContent||'',
-      hidden:status?.hidden??null,witness:api.state().trainingRestoreWitness};})()`);
+  const importOwnerRaceArmed = await evalIn(
+    `window.__CF_SLICE__.api.__smokeArmImportRace(${JSON.stringify(DTRAIN_LEGACY_RAW)})`,
+  );
+  if (!importOwnerRaceArmed) {
+    throw new Error('D-TRAIN import-owner setup could not arm the held prior persist');
+  }
+  const importOwnerRefusalDeadline = performance.now() + 6000;
+  const importOwnerStart = await evalIn(`(async()=>{const api=window.__CF_SLICE__.api;
+    void api.importBlob(${JSON.stringify(VETERAN_RAW)});
+    const duplicate=await api.importBlob(${JSON.stringify(VETERAN_RAW)}),
+      card=document.getElementById('tutcard'),button=card?.querySelector('[data-sel="tutskip"]');let clickReceipts=0;
+    button?.addEventListener('click',()=>{clickReceipts++},{capture:true,once:true});button?.focus();button?.click();
+    return {duplicate,button:!!button,clickReceipts};})()`, {
+    timeoutMs: Math.max(1, Math.floor(importOwnerRefusalDeadline - performance.now())),
+  });
+  const importOwnerStartReceivedBeforeDeadline = performance.now() < importOwnerRefusalDeadline;
+  let importOwnerRefusal = null;
+  let importOwnerRefusalReceivedBeforeDeadline = false;
+  while (performance.now() < importOwnerRefusalDeadline) {
+    const remainingMs = Math.max(1, Math.floor(importOwnerRefusalDeadline - performance.now()));
+    importOwnerRefusal = await evalIn(`(()=>{const S=window.__CF_SLICE__,api=S?.api,
+      state=api?.state?.(),card=document.getElementById('tutcard'),
+      button=card?.querySelector('[data-sel="tutskip"]'),status=card?.querySelector('[data-sel="tutstatus"]');
+      return {documentToken:S?.documentToken||null,tutActive:state?.tutActive??null,tutDone:state?.tutDone??null,
+        button:!!button,buttonConnected:button?.isConnected??false,disabled:button?.disabled??null,
+        focus:document.activeElement===button,text:status?.textContent||'',hidden:status?.hidden??null,
+        witness:state?.trainingRestoreWitness??null};})()`, { timeoutMs: remainingMs });
+    const receivedAtMs = performance.now();
+    if (receivedAtMs >= importOwnerRefusalDeadline) break;
+    if (importOwnerRefusal.documentToken === importOwnerBooted.token
+      && importOwnerRefusal.tutActive === true && importOwnerRefusal.tutDone === false
+      && importOwnerRefusal.button && importOwnerRefusal.buttonConnected
+      && importOwnerRefusal.disabled === false && importOwnerRefusal.focus
+      && importOwnerRefusal.hidden === false
+      && /another save replacement.*Nothing changed/i.test(importOwnerRefusal.text)
+      && importOwnerRefusal.witness?.stage === 'claim-rejected'
+      && importOwnerRefusal.witness?.error === 'busy') {
+      importOwnerRefusalReceivedBeforeDeadline = true;
+      break;
+    }
+    await sleep(Math.min(20, Math.max(0, importOwnerRefusalDeadline - performance.now())));
+  }
+  const bindingJoinDeadline = importOwnerRefusalDeadline;
+  let importOwnerEntries = trainingWitnessesSince(sess, importOwnerMark);
+  let importOwnerBindingsReceivedAt = performance.now();
+  let importOwnerBindingsReceivedBeforeDeadline = trainingBindingReceiptBeforeDeadline(
+    importOwnerEntries, 2, bindingJoinDeadline, importOwnerBindingsReceivedAt,
+  );
+  while (!importOwnerBindingsReceivedBeforeDeadline && importOwnerBindingsReceivedAt < bindingJoinDeadline) {
+    await sleep(Math.min(10, Math.max(0, bindingJoinDeadline - performance.now())));
+    importOwnerEntries = trainingWitnessesSince(sess, importOwnerMark);
+    importOwnerBindingsReceivedAt = performance.now();
+    importOwnerBindingsReceivedBeforeDeadline = trainingBindingReceiptBeforeDeadline(
+      importOwnerEntries, 2, bindingJoinDeadline, importOwnerBindingsReceivedAt,
+    );
+  }
   const importOwnerRawBeforeRelease = await evalIn(READ_PRIMARY_EXPRESSION);
   const importOwnerNativeBeforeRelease = dtrainNativeWritesSince(sess, importOwnerMark);
-  const importOwnerWitness = dtrainAssertWitness('D-TRAIN IMPORT-OWNER BUSY REFUSAL', importOwnerMark, {
+  const importOwnerWitness = assessTrainingWitnesses(importOwnerEntries, {
     intent: 'skip', checkpointKind: 'legacy-v1', stages: ['invoked', 'claim-rejected'],
     writes: 'none', documentToken: importOwnerBooted.token, tickerMode: 'busy',
     errorByStage: { 'claim-rejected': 'busy' },
   });
-  if (!importOwnerStart.armed || !importOwnerStart.button || importOwnerStart.disabled
-    || !importOwnerStart.focus || importOwnerStart.hidden
-    || !/another save replacement.*Nothing changed/i.test(importOwnerStart.text)
-    || importOwnerStart.witness?.stage !== 'claim-rejected'
+  if (!importOwnerStart.button || importOwnerStart.clickReceipts !== 1
+    || !importOwnerStartReceivedBeforeDeadline
+    || !/another expedition replacement is finishing/i.test(importOwnerStart.duplicate || '')
+    || !importOwnerRefusalReceivedBeforeDeadline
+    || !importOwnerBindingsReceivedBeforeDeadline
+    || importOwnerRefusal?.documentToken !== importOwnerBooted.token
+    || importOwnerRefusal?.tutActive !== true || importOwnerRefusal?.tutDone !== false
+    || !importOwnerRefusal?.button || !importOwnerRefusal?.buttonConnected
+    || importOwnerRefusal?.disabled || !importOwnerRefusal?.focus || importOwnerRefusal?.hidden
+    || !/another save replacement.*Nothing changed/i.test(importOwnerRefusal?.text || '')
+    || importOwnerRefusal?.witness?.stage !== 'claim-rejected'
     || importOwnerRawBeforeRelease !== importOwnerBooted.stored
     || importOwnerNativeBeforeRelease.length !== 0
-    || importOwnerWitness.entries.at(-1)?.error !== 'busy') {
+    || !importOwnerWitness.ok) {
     fails.push('D-TRAIN IMPORT-OWNER RACE: Training did not refuse busy in place before Import release: '
-      + JSON.stringify({ start: importOwnerStart,
+      + JSON.stringify({ precondition: importOwnerPrecondition, start: importOwnerStart,
+        startReceivedBeforeDeadline: importOwnerStartReceivedBeforeDeadline,
+        refusal: importOwnerRefusal, refusalReceivedBeforeDeadline: importOwnerRefusalReceivedBeforeDeadline,
+        bindingReceipt: { receivedAt: importOwnerBindingsReceivedAt,
+          deadline: bindingJoinDeadline, receivedBeforeDeadline: importOwnerBindingsReceivedBeforeDeadline },
         rawStable: importOwnerRawBeforeRelease === importOwnerBooted.stored,
         nativeBeforeRelease: importOwnerNativeBeforeRelease, witness: importOwnerWitness }));
   }
@@ -4021,7 +4377,7 @@ try {
   const importOwnerNativeWitness = assessDtrainNativeWrites(dtrainNativeWritesSince(sess, importOwnerMark), {
     label: importOwnerNativeLabel, documentToken: importOwnerBooted.token, count: 2,
   });
-  if (!importOwnerNativeArmed || !importOwnerReleased || importOwnerDone.save.name !== 'Dakk'
+  if (!importOwnerReleased || importOwnerDone.save.name !== 'Dakk'
     || importOwnerDone.tutActive || !importOwnerNativeWitness.ok
     || importOwnerNativeWitness.entries[0]?.length !== DTRAIN_LEGACY_RAW.length
     || importOwnerNativeWitness.entries[0]?.tut !== 0
@@ -4158,6 +4514,25 @@ try {
     || !/Toruneeus/.test(codexQueryBack.heading) || !codexQueryBack.focus) {
     fails.push('COMPENDIUM QUERY: Detail → Back lost the query or exact row focus: ' + JSON.stringify(codexQueryBack));
   }
+  await evalIn(`(()=>{ const input=document.getElementById('searchbox'); input.focus(); input.select(); return true; })()`);
+  await keyIn('Backspace', 'Backspace');
+  await keyIn('Enter', 'Enter');
+  const codexClearCheck = `(()=>{ const rows=[...document.querySelectorAll('#codexpanel [data-ci]')],heading=document.querySelector('#codexpanel h3'),
+    input=document.getElementById('searchbox'),text=heading?.textContent||''; return {panel:window.__CF_SLICE__.api.state().panelOpen,
+      count:rows.length,queryAbsent:!/Toruneeus|[“”]/.test(text),input:input?.value??null,
+      focus:document.activeElement===rows[0],heading:text}; })()`;
+  const codexCleared = await evalIn(codexClearCheck);
+  if (codexCleared.panel !== 'codex' || codexCleared.count !== 3 || !codexCleared.queryAbsent
+    || codexCleared.input !== '' || !codexCleared.focus) {
+    fails.push('COMPENDIUM QUERY CLEAR: empty Search Enter did not clear the open filtered list: '
+      + JSON.stringify(codexCleared));
+  }
+  const codexClearCtl = await evalIn(`(()=>{ const heading=document.querySelector('#codexpanel h3'),marker=document.createElement('span');
+    marker.textContent=' “Toruneeus”'; heading?.appendChild(marker); const result=${codexClearCheck}; marker.remove(); return result; })()`);
+  if (codexClearCtl.queryAbsent) {
+    fails.push('COMPENDIUM QUERY CLEAR CONTROL FAILED — injected retained filter stayed green: '
+      + JSON.stringify(codexClearCtl));
+  }
   await evalIn(`(()=>{ document.querySelector('#codexpanel [data-pnx]')?.click(); const opener=document.getElementById('railcodex');
     opener.focus(); opener.click(); return true; })()`);
   const codexFullCheck = `(()=>{ const rows=[...document.querySelectorAll('#codexpanel [data-ci]')],heading=document.querySelector('#codexpanel h3');
@@ -4179,9 +4554,10 @@ try {
   const codexRow = await evalIn(`(()=>{ document.getElementById('dockcodex').click();
     const row=document.querySelector('#codexpanel [data-ci]'),r=row?.getBoundingClientRect();
     row?.focus(); return {ok:row?.tagName==='BUTTON'&&row?.type==='button'&&!!r&&r.height>=44,
-      index:row?.getAttribute('data-ci')||null,tag:row?.tagName||null,type:row?.type||null,
+      index:row?.getAttribute('data-ci')||null,logicalId:row?.getAttribute('data-cid')||null,
+      tag:row?.tagName||null,type:row?.type||null,
       height:r?.height||0,focus:document.activeElement===row}; })()`);
-  if (!codexRow.ok || !codexRow.focus || codexRow.index === null) {
+  if (!codexRow.ok || !codexRow.focus || codexRow.index === null || !codexRow.logicalId) {
     fails.push('COMPENDIUM KEYBOARD: first row is not a focused native 44px action: ' + JSON.stringify(codexRow));
   }
   const codexPointerSetup = await evalIn(`(()=>{ const row=document.querySelector('#codexpanel [data-ci]');
@@ -4198,16 +4574,95 @@ try {
     fails.push('COMPENDIUM CONTROL FAILED — injected pointer-only row responded to real Enter: '
       + JSON.stringify({ codexPointerSetup, codexPointerCtl }));
   }
+  const codexDetailAuthority = await evalIn(`(()=>{ const S=window.__CF_SLICE__,
+    diag=S?.api?.compendiumDiagnostics?.(),row=document.querySelector('#codexpanel [data-ci="${codexRow.index}"]');
+    return {documentToken:S?.documentToken||null,generation:diag?.generation??null,
+      logicalId:row?.getAttribute('data-cid')||null,focus:document.activeElement===row}; })()`);
+  const detailExpected = typeof codexDetailAuthority.documentToken === 'string'
+    && codexDetailAuthority.documentToken.length > 0
+    && Number.isSafeInteger(codexDetailAuthority.generation)
+    && codexDetailAuthority.generation >= 0
+    && codexDetailAuthority.generation < Number.MAX_SAFE_INTEGER
+    && codexDetailAuthority.logicalId === codexRow.logicalId
+    && codexDetailAuthority.focus
+    ? Object.freeze({
+      documentToken: codexDetailAuthority.documentToken,
+      preEnterGeneration: codexDetailAuthority.generation,
+      logicalId: codexDetailAuthority.logicalId,
+    }) : null;
+  if (!detailExpected) {
+    fails.push('COMPENDIUM DETAIL AUTHORITY: pre-Enter document/generation/logical owner was not exact: '
+      + JSON.stringify({ codexRow, codexDetailAuthority }));
+  }
   await keyIn('Enter', 'Enter');
-  const detail = await evalIn(`(()=>{ const det=document.querySelector('#codexpanel [data-sel=codex-detail]');
-    const stats=document.querySelectorAll('#codexpanel [data-sel=detail-stat]').length;
-    const desc=(document.querySelector('#codexpanel [data-sel=detail-desc]')||{}).textContent||'';
-    const port=document.querySelector('#codexpanel [data-sel=detail-portrait]'),back=document.getElementById('codexback');
-    const br=back?.getBoundingClientRect(); return {ok:!!det,stats,descLen:desc.trim().length,
-      portLen:port?String(port.getAttribute('src')||'').length:0,backNative:back?.tagName==='BUTTON',
-      backHeight:br?.height||0,backFocus:document.activeElement===back}; })()`);
-  if (!detail.ok || !detail.backNative || detail.backHeight < 44 || !detail.backFocus) {
+  /* Detail art is a separate asynchronous 440px request. The former single
+     src-length read passed only when an earlier open/Back race happened to
+     warm that cache. Own one monotonic phase and require the published image
+     plus decode outcome before capturing or releasing the detail owner. */
+  const detailTimeoutMs = 30000;
+  const detailDeadline = performance.now() + detailTimeoutMs;
+  let detail = {
+    phase: 'not-observed', documentToken: null, generation: null,
+    panelMode: null, detailPresent: false, logicalId: null,
+    image: { present: false, connected: false, state: null, hasSrc: false, srcLength: 0,
+      complete: false, naturalWidth: 0, naturalHeight: 0 },
+    stats: 0, descLen: 0, backNative: false, backHeight: 0, backFocus: false,
+    diagnostics: null,
+  };
+  let detailDecision = detailExpected
+    ? { status: 'pending', reasons: ['not observed'] }
+    : { status: 'error', reasons: ['pre-Enter detail authority absent'] };
+  while (detailExpected && performance.now() < detailDeadline) {
+    const remainingMs = Math.floor(detailDeadline - performance.now());
+    if (remainingMs <= 0) break;
+    try {
+      detail = await evalIn(`(()=>{ const S=window.__CF_SLICE__,diag=S?.api?.compendiumDiagnostics?.();
+        const det=document.querySelector('#codexpanel [data-sel=codex-detail]');
+        const stats=document.querySelectorAll('#codexpanel [data-sel=detail-stat]').length;
+        const desc=(document.querySelector('#codexpanel [data-sel=detail-desc]')||{}).textContent||'';
+        const port=document.querySelector('#codexpanel [data-sel=detail-portrait]'),back=document.getElementById('codexback');
+        const src=String(port?.getAttribute('src')||''),br=back?.getBoundingClientRect();
+        return {phase:'observed',documentToken:S?.documentToken||null,generation:diag?.generation??null,
+          panelMode:diag?.panel?.mode||null,
+          detailPresent:!!det,logicalId:diag?.surfaces?.detail?.logicalId||null,
+          image:{present:!!port,connected:port?.isConnected===true,state:port?.dataset?.artState||null,
+            hasSrc:src.length>0,srcLength:src.length,complete:port?.complete===true,
+            naturalWidth:port?.naturalWidth||0,naturalHeight:port?.naturalHeight||0},
+          stats,descLen:desc.trim().length,backNative:back?.tagName==='BUTTON',backHeight:br?.height||0,
+          backFocus:document.activeElement===back,
+          diagnostics:diag?{generation:diag.generation,panel:diag.panel,detail:diag.surfaces?.detail||null,
+            lazyArt:diag.lazyArt||null,art:diag.art||null}:null}; })()`, { timeoutMs: remainingMs });
+    } catch (error) {
+      const message = String(error?.cause?.message || '');
+      if (/(?:^|: )timed out waiting for Runtime\.evaluate$/.test(message)) {
+        detailDecision = {
+          status: 'error',
+          reasons: [`detail phase deadline expired during target observation (${detailTimeoutMs}ms)`],
+        };
+        break;
+      }
+      throw error;
+    }
+    detailDecision = classifyCompendiumDetailReceipt(
+      detail, detailExpected, detailDeadline, performance.now(),
+    );
+    if (detailDecision.status !== 'pending') break;
+    const sleepMs = Math.min(50, Math.max(0, Math.floor(detailDeadline - performance.now())));
+    if (sleepMs > 0) await sleep(sleepMs);
+  }
+  if (detailDecision.status === 'pending') {
+    detailDecision = {
+      status: 'error',
+      reasons: [...detailDecision.reasons, `detail phase deadline expired (${detailTimeoutMs}ms)`],
+    };
+  }
+  if (!detail.detailPresent || !detail.backNative || detail.backHeight < 44 || !detail.backFocus) {
     fails.push('COMPENDIUM KEYBOARD: Enter did not open detail on a focused 44px Back action: ' + JSON.stringify(detail));
+  }
+  if (detailDecision.status !== 'ready') {
+    fails.push('COMPENDIUM DETAIL PORTRAIT SETTLEMENT: '
+      + JSON.stringify({ status: detailDecision.status, reasons: detailDecision.reasons,
+        expected: detailExpected, observation: detail }));
   }
   const shotDet = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(screenshotPath('codex'), Buffer.from(shotDet.data, 'base64'));
@@ -4224,9 +4679,7 @@ try {
   const detailBack = await evalIn(`(()=>{ const row=document.querySelector('#codexpanel [data-ci="${codexRow.index}"]');
     return {backRows:document.querySelectorAll('#codexpanel [data-ci]').length,
       exact:row?.getAttribute('data-ci')||null,focus:document.activeElement===row}; })()`);
-  if (detail.ok && !(detail.portLen > 5000)) {
-    fails.push('THE LIVING PORTRAIT did not paint (hdart real-render proof): src length ' + detail.portLen);
-  } else if (detail.ok) {
+  if (detail.detailPresent) {
     if (detail.stats !== 5) fails.push('detail card missing the five stat bars: ' + detail.stats);
     if (!(detail.descLen > 20)) fails.push('detail card description empty (describeSpecies silent): ' + detail.descLen);
   }
@@ -4616,9 +5069,10 @@ try {
 
   /* 4c-lazy-focus. Hold the actual Vite species-art chunk at the HTTP
      response boundary, so this cannot become a lucky sleep around the idle
-     prefetch. Keyboard-open Compendium while text rows are live, then release
-     the exact module request and require the replacement close control to
-     retain logical focus after portraits appear. */
+     prefetch. One document proves neutral placeholders become exact 132px
+     images in place without replacing Close/rows or focus. A second document
+     closes the owning Compendium before the same chunk is released and proves
+     that the stale completion cannot refill or commit into the closed panel. */
   const tLazy = await send('Target.createTarget', { url: URL5 + 'seed.html' });
   const aLazy = await send('Target.attachToTarget', { targetId: tLazy.targetId, flatten: true });
   const lazy = aLazy.sessionId;
@@ -4644,9 +5098,10 @@ try {
   if (seedResult.exceptionDetails || seedResult.result.value !== true) {
     throw new Error('lazy-art veteran seed failed: ' + JSON.stringify(seedResult.exceptionDetails || seedResult.result));
   }
-  await navigateToSlice(lazy, URL5, 'slow species-art veteran boot');
-  const evalLazy = async (expr) => {
-    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, lazy);
+  const lazyDocumentToken = await navigateToSlice(lazy, URL5, 'slow species-art veteran boot');
+  const evalLazy = async (expr, { timeoutMs } = {}) => {
+    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, lazy,
+      timeoutMs === undefined ? undefined : { timeoutMs });
     if (r.exceptionDetails) throw new Error('lazy-art eval threw: '
       + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
     return r.result.value;
@@ -4663,25 +5118,223 @@ try {
   };
   await evalLazy(`(()=>{ const opener=document.getElementById('railcodex'); opener.focus(); return true; })()`);
   await dispatchKeyPress(lazy, 'Enter', 'Enter');
-  const lazyBefore = await waitLazy('slow Compendium keyboard open', `(()=>{ const s=window.__CF_SLICE__.api.state(),close=document.querySelector('#codexpanel [data-pnx]');
-    const rows=[...document.querySelectorAll('#codexpanel [data-ci]')]; if(s.panelOpen!=='codex'||rows.length!==3)return null;
-    window.__cfLazyOriginalClose=close; return {rows:rows.length,images:document.querySelectorAll('#codexpanel [data-ci] img').length,
-      focus:document.activeElement===close}; })()`);
+  const lazyBefore = await waitLazy('slow Compendium keyboard open', `(()=>{ const S=window.__CF_SLICE__,d=S.api.compendiumDiagnostics(),
+    close=document.querySelector('#codexpanel [data-pnx]'),scroller=document.querySelector('#codexpanel [data-sel="codex-scroll"]'),
+    rows=[...document.querySelectorAll('#codexpanel [data-ci]')],images=rows.map(row=>row.querySelector('img'));
+    if(d.panel.mode!=='list'||d.lazyArt.state!=='loading'||rows.length!==3||images.some(image=>!image))return null;
+    const descriptions=rows.map(row=>{const id=row.getAttribute('aria-describedby');return {id,text:id?document.getElementById(id)?.textContent||'':''}});
+    window.__cfLazyOriginalClose=close;window.__cfLazyOriginalRows=rows;
+    return {rows:rows.length,images:images.length,generation:d.generation,renderCommits:d.panel.renderCommits,
+      placeholders:images.every(image=>image.dataset.thumbState==='placeholder'&&!image.hasAttribute('src')
+        &&image.naturalWidth===0&&image.naturalHeight===0&&image.getAttribute('width')==='132'&&image.getAttribute('height')==='132'
+        &&getComputedStyle(image).backgroundColor!=='rgba(0, 0, 0, 0)'),
+      focus:document.activeElement===close,closeLabel:close?.getAttribute('aria-label')||null,
+      group:scroller?.getAttribute('role')==='group'&&scroller?.getAttribute('aria-label')==='Compendium species',
+      nativePositions:rows.every((row,index)=>row.tagName==='BUTTON'&&row.type==='button'
+        &&!row.hasAttribute('aria-setsize')&&!row.hasAttribute('aria-posinset')
+        &&descriptions[index].text==='Item '+(Number(row.dataset.ci)+1)+' of 3')
+        &&new Set(descriptions.map(item=>item.id)).size===rows.length}; })()`);
+
+  const tLazyClosed = await send('Target.createTarget', { url: 'about:blank' });
+  const aLazyClosed = await send('Target.attachToTarget', { targetId: tLazyClosed.targetId, flatten: true });
+  const lazyClosed = aLazyClosed.sessionId;
+  await send('Runtime.enable', {}, lazyClosed);
+  await send('Page.enable', {}, lazyClosed);
+  await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false }, lazyClosed);
+  const lazyClosedDocumentToken = await navigateToSlice(lazyClosed, URL5, 'slow species-art closed-owner boot');
+  const evalLazyClosed = async (expr, { timeoutMs } = {}) => {
+    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, lazyClosed,
+      timeoutMs === undefined ? undefined : { timeoutMs });
+    if (r.exceptionDetails) throw new Error('lazy-art closed-owner eval threw: '
+      + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
+    return r.result.value;
+  };
+  const waitLazyClosed = async (label, expr, timeoutMs = 8000) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = null;
+    while (Date.now() < deadline) {
+      last = await evalLazyClosed(expr);
+      if (last) return last;
+      await sleep(50);
+    }
+    throw new Error(`${label} did not reach its lazy-art outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  const lazyAttachments = new Map([
+    [lazy, Object.freeze({ sessionId: lazy, targetId: tLazy.targetId, documentToken: lazyDocumentToken })],
+    [lazyClosed, Object.freeze({
+      sessionId: lazyClosed, targetId: tLazyClosed.targetId, documentToken: lazyClosedDocumentToken,
+    })],
+  ]);
+  const lazyForegroundObservationExpression = `(()=>{const S=window.__CF_SLICE__,service=window.__cfLazyForegroundService;
+    return {documentToken:typeof S?.documentToken==='string'?S.documentToken:null,
+      visibilityState:document.visibilityState,hidden:document.hidden,focused:document.hasFocus(),
+      service:service?{token:service.token,visibilityChanges:service.visibilityChanges,focusLosses:service.focusLosses,
+        armVisibilityState:service.armVisibilityState,armHidden:service.armHidden,armFocused:service.armFocused,
+        raf:service.raf,rafVisibilityState:service.rafVisibilityState,rafHidden:service.rafHidden,
+        rafFocused:service.rafFocused,laterTask:service.laterTask,
+        laterVisibilityState:service.laterVisibilityState,laterHidden:service.laterHidden,
+        laterFocused:service.laterFocused}:null};})()`;
+  let lazyForegroundOwner = null;
+  let lazyServiceSequence = 0;
+  const ownLazyForeground = async (sessionId, activationTargetId, label) => {
+    const attachment = lazyAttachments.get(sessionId);
+    if (!attachment) throw new Error(`${label} has no attach-derived target binding`);
+    if (lazyForegroundOwner && lazyForegroundOwner.sessionId !== sessionId) {
+      await send('Emulation.setFocusEmulationEnabled', { enabled: false }, lazyForegroundOwner.sessionId);
+    }
+    /* `activationTargetId` is deliberately retained as the observed command
+       identity. The independently attach-derived binding is the expected
+       identity, so a caller that activates one target while evaluating the
+       other cannot manufacture foreground authority. */
+    await send('Target.activateTarget', { targetId: activationTargetId });
+    await send('Emulation.setFocusEmulationEnabled', { enabled: true }, sessionId);
+    await send('Page.bringToFront', {}, sessionId);
+    const serviceToken = `lazy-foreground-service-${++lazyServiceSequence}`;
+    const expected = Object.freeze({
+      targetId: attachment.targetId, documentToken: attachment.documentToken, serviceToken,
+    });
+    const timeoutMs = 5000;
+    const deadline = performance.now() + timeoutMs;
+    const armTimeoutMs = Math.floor(deadline - performance.now());
+    if (armTimeoutMs <= 0) throw new Error(`${label} foreground service deadline exhausted before arm`);
+    const armed = await send('Runtime.evaluate', { expression: `(()=>{
+      window.__cfLazyForegroundCleanup?.();
+      const sample=()=>({visibilityState:document.visibilityState,hidden:document.hidden,focused:document.hasFocus()});
+      const arm=sample(),service={token:${JSON.stringify(serviceToken)},visibilityChanges:0,focusLosses:0,
+        armVisibilityState:arm.visibilityState,armHidden:arm.hidden,armFocused:arm.focused,
+        raf:false,rafVisibilityState:null,rafHidden:null,rafFocused:null,
+        laterTask:false,laterVisibilityState:null,laterHidden:null,laterFocused:null};
+      const visibility=()=>{service.visibilityChanges++},blur=()=>{service.focusLosses++};
+      document.addEventListener('visibilitychange',visibility);window.addEventListener('blur',blur);
+      window.__cfLazyForegroundCleanup=()=>{document.removeEventListener('visibilitychange',visibility);
+        window.removeEventListener('blur',blur);delete window.__cfLazyForegroundCleanup};
+      window.__cfLazyForegroundService=service;
+      requestAnimationFrame(()=>{const frame=sample();service.raf=true;service.rafVisibilityState=frame.visibilityState;
+        service.rafHidden=frame.hidden;service.rafFocused=frame.focused;
+        setTimeout(()=>{const later=sample();service.laterTask=true;service.laterVisibilityState=later.visibilityState;
+          service.laterHidden=later.hidden;service.laterFocused=later.focused},0)});
+      return ${lazyForegroundObservationExpression};})()`, returnByValue: true }, sessionId,
+    { timeoutMs: armTimeoutMs });
+    const armedAtMs = performance.now();
+    if (armed.exceptionDetails) throw new Error(`${label} foreground arm threw: `
+      + JSON.stringify(armed.exceptionDetails.exception?.description || armed.exceptionDetails.text));
+    let last = { ...armed.result.value, targetId: activationTargetId };
+    let decision = classifyForegroundServiceTurnReceipt(last, expected, deadline, armedAtMs);
+    while (decision.status === 'pending' && performance.now() < deadline) {
+      const remainingMs = Math.floor(deadline - performance.now());
+      if (remainingMs <= 0) break;
+      const result = await send('Runtime.evaluate', {
+        expression: lazyForegroundObservationExpression, returnByValue: true,
+      }, sessionId, { timeoutMs: remainingMs });
+      if (result.exceptionDetails) throw new Error(`${label} foreground observation threw: `
+        + JSON.stringify(result.exceptionDetails.exception?.description || result.exceptionDetails.text));
+      const receivedAtMs = performance.now();
+      last = { ...result.result.value, targetId: activationTargetId };
+      decision = classifyForegroundServiceTurnReceipt(last, expected, deadline, receivedAtMs);
+      if (decision.status === 'pending') await sleep(Math.min(25, Math.max(0, deadline - performance.now())));
+    }
+    if (decision.status !== 'ready') {
+      throw new Error(`${label} foreground service ${decision.status}: `
+        + JSON.stringify({ reasons: decision.reasons, expected, observation: last }));
+    }
+    lazyForegroundOwner = attachment;
+    return Object.freeze({ expected, observation: last });
+  };
+  await evalLazyClosed(`(()=>{const opener=document.getElementById('railcodex');opener.focus();return true})()`);
+  await dispatchKeyPress(lazyClosed, 'Enter', 'Enter');
+  const lazyClosedBefore = await waitLazyClosed('slow Compendium closed-owner open', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics(),
+    close=document.querySelector('#codexpanel [data-pnx]'),images=[...document.querySelectorAll('#codexpanel [data-ci] img')];
+    return d.panel.mode==='list'&&d.lazyArt.state==='loading'&&images.length===3
+      &&images.every(image=>image.dataset.thumbState==='placeholder'&&!image.hasAttribute('src'))
+      ?{closedCompletionCommits:d.panel.closedCompletionCommits,renderCommits:d.panel.renderCommits,
+        focus:document.activeElement===close}:null})()`);
+  await dispatchKeyPress(lazyClosed, 'Enter', 'Enter');
+  const lazyClosedArmed = await evalLazyClosed(`(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();return {
+    mode:d.panel.mode,listImages:d.surfaces.list.imageCount,focus:document.activeElement?.id||null,
+    closedCompletionCommits:d.panel.closedCompletionCommits,renderCommits:d.panel.renderCommits}})()`);
   let slowRequestObserved = false;
   for (let i = 0; i < 100 && !slowRequestObserved; i++) {
     slowRequestObserved = slowSpeciesRequests.length > 0;
     if (!slowRequestObserved) await sleep(25);
   }
-  if (!slowRequestObserved || lazyBefore.images !== 0 || !lazyBefore.focus) {
-    fails.push('COMPENDIUM LAZY FOCUS: chunk was not deterministically held before the focused text-only list: '
-      + JSON.stringify({ slowRequestObserved, lazyBefore, held: slowSpeciesRequests.length }));
+  if (!slowRequestObserved || !lazyBefore.placeholders || !lazyBefore.focus || !lazyBefore.group
+    || !lazyBefore.nativePositions || lazyBefore.closeLabel !== 'Close Compendium'
+    || !lazyClosedBefore.focus || lazyClosedArmed.mode !== 'closed' || lazyClosedArmed.listImages !== 0
+    || lazyClosedArmed.focus !== 'railcodex'
+    || lazyClosedArmed.closedCompletionCommits !== lazyClosedBefore.closedCompletionCommits
+    || lazyClosedArmed.renderCommits !== lazyClosedBefore.renderCommits) {
+    fails.push('COMPENDIUM LAZY PLACEHOLDER/CLOSED OWNER: held chunk did not establish both exact owner states: '
+      + JSON.stringify({ slowRequestObserved, lazyBefore, lazyClosedBefore, lazyClosedArmed,
+        held: slowSpeciesRequests.length }));
   }
+  /* The second target now exists, so this owner's foreground authority is no
+     longer implicit. Reclaim the exact first target and service one production-shaped
+     rAF→later-task turn before releasing the single held response. */
+  const lazyReleaseAuthority = await ownLazyForeground(lazy, tLazy.targetId,
+    'slow Compendium live owner');
+  const lazyRefillTimeoutMs = 30000;
+  const lazyRefillDeadline = performance.now() + lazyRefillTimeoutMs;
   releaseSlowSpecies();
-  const lazyAfter = await waitLazy('slow Compendium art refill', `(()=>{ const close=document.querySelector('#codexpanel [data-pnx]'),
-    images=document.querySelectorAll('#codexpanel [data-ci] img').length,replaced=close!==window.__cfLazyOriginalClose;
-    return images>=3&&replaced?{images,replaced,focus:document.activeElement===close}:null; })()`);
-  if (!lazyAfter.focus) {
-    fails.push('COMPENDIUM LAZY FOCUS: portrait refill replaced and lost the logical close focus: ' + JSON.stringify(lazyAfter));
+  const lazyRefillObservationExpression = `(()=>{ const S=window.__CF_SLICE__,d=S.api.compendiumDiagnostics(),
+    close=document.querySelector('#codexpanel [data-pnx]'),rows=[...document.querySelectorAll('#codexpanel [data-ci]')],
+    imageNodes=rows.map(row=>row.querySelector('img')),images=imageNodes.map(image=>({exists:!!image,
+      state:image?.dataset.thumbState||null,hasSrc:!!image?.getAttribute('src'),
+      srcKind:image?.getAttribute('src')?.startsWith('data:image/')?'data-image':image?.getAttribute('src')?'other':null,
+      complete:image?.complete===true,naturalWidth:image?.naturalWidth||0,naturalHeight:image?.naturalHeight||0,
+      width:image?.getAttribute('width')||null,height:image?.getAttribute('height')||null})),
+    foreground=${lazyForegroundObservationExpression},art=d.art||null,live=art?.live||null,lazyArt=d.lazyArt||null;
+    const settled=images.length===3&&images.every(image=>image.exists&&image.state==='ready'
+      &&image.srcKind==='data-image'&&image.complete&&image.naturalWidth===132&&image.naturalHeight===132)
+      &&lazyArt?.state==='ready'&&live?.queuedJobs===0&&live?.activeJobs===0;
+    return {done:settled,panelMode:d.panel.mode,images,
+      queuedJobs:live?.queuedJobs??null,activeJobs:live?.activeJobs??null,foreground,
+      lazyArt:lazyArt?{schema:lazyArt.schema,state:lazyArt.state,importStarts:lazyArt.importStarts,
+        identity:lazyArt.identity,lastEvent:lazyArt.lastEvent,worker:lazyArt.worker,phases:lazyArt.phases,
+        results:lazyArt.results,errors:lazyArt.errors}:null,
+      art:art?{schema:art.schema,deviceClass:art.deviceClass,live:art.live,totals:art.totals,keys:art.keys}:null,
+      sameClose:close===window.__cfLazyOriginalClose,
+      sameRows:rows.length===window.__cfLazyOriginalRows.length&&rows.every((row,index)=>row===window.__cfLazyOriginalRows[index]),
+      generation:d.generation,renderCommits:d.panel.renderCommits,focus:document.activeElement===close,
+      exact132:images.length===3&&images.every(image=>image.srcKind==='data-image'
+        &&image.complete&&image.naturalWidth===132&&image.naturalHeight===132)}; })()`;
+  let lazyAfter = {
+    done: false, reason: 'not yet observed', foreground: lazyReleaseAuthority.observation,
+  };
+  let lazyRefillForegroundDecision = classifyForegroundServiceTurn(
+    lazyReleaseAuthority.observation, lazyReleaseAuthority.expected,
+  );
+  while (performance.now() < lazyRefillDeadline) {
+    const remainingMs = Math.max(0, Math.floor(lazyRefillDeadline - performance.now()));
+    if (remainingMs <= 0) break;
+    try {
+      lazyAfter = await evalLazy(lazyRefillObservationExpression, { timeoutMs: remainingMs });
+    } catch (error) {
+      throw new Error('slow Compendium art refill observation failed inside its immutable deadline: '
+        + JSON.stringify({ error: String(error?.message || error), last: lazyAfter }));
+    }
+    const receivedAtMs = performance.now();
+    const foreground = { ...lazyAfter.foreground, targetId: lazyReleaseAuthority.observation.targetId };
+    lazyAfter = { ...lazyAfter, foreground };
+    lazyRefillForegroundDecision = classifyForegroundServiceTurnReceipt(
+      foreground, lazyReleaseAuthority.expected, lazyRefillDeadline, receivedAtMs,
+    );
+    if (lazyRefillForegroundDecision.status === 'error') {
+      throw new Error('slow Compendium art refill lost foreground authority: '
+        + JSON.stringify({ decision: lazyRefillForegroundDecision, last: lazyAfter }));
+    }
+    if (lazyAfter.done && lazyRefillForegroundDecision.status === 'ready') break;
+    const sleepMs = Math.min(50, Math.max(0, lazyRefillDeadline - performance.now()));
+    if (sleepMs > 0) await sleep(sleepMs);
+  }
+  if (!lazyAfter.done || lazyRefillForegroundDecision.status !== 'ready') {
+    throw new Error(`slow Compendium art refill did not reach its lazy-art outcome within ${lazyRefillTimeoutMs}ms (last `
+      + JSON.stringify({ decision: lazyRefillForegroundDecision, observation: lazyAfter }) + ')');
+  }
+  if (!lazyAfter.sameClose || !lazyAfter.sameRows || !lazyAfter.focus || !lazyAfter.exact132
+    || lazyAfter.generation !== lazyBefore.generation
+    || lazyAfter.renderCommits !== lazyBefore.renderCommits + 3) {
+    fails.push('COMPENDIUM LAZY IN-PLACE READY: placeholder publication replaced identity/focus or missed exact 132px commits: '
+      + JSON.stringify({ before: lazyBefore, after: lazyAfter }));
   }
   const lazyFocusCtl = await evalLazy(`(()=>{ const close=document.querySelector('#codexpanel [data-pnx]'),other=document.getElementById('railcodex');
     other.focus(); const failed=document.activeElement!==close; close?.focus(); return {failed,restored:document.activeElement===close}; })()`);
@@ -4689,7 +5342,102 @@ try {
     fails.push('COMPENDIUM LAZY FOCUS CONTROL FAILED — moving focus off the refilled close stayed green: '
       + JSON.stringify(lazyFocusCtl));
   }
+  await dispatchKeyPress(lazy, 'Tab', 'Tab');
+  const lazyFocusRingCheck = `(()=>{const row=document.activeElement?.closest?.('#codexpanel [data-ci]'),
+    scroller=document.querySelector('#codexpanel [data-sel="codex-scroll"]');if(!row||!scroller)return {ok:false,reason:'missing focused row/scroller'};
+    const r=row.getBoundingClientRect(),s=scroller.getBoundingClientRect(),cs=getComputedStyle(row),
+      width=parseFloat(cs.outlineWidth)||0,offset=parseFloat(cs.outlineOffset)||0,extension=Math.max(0,width+offset),
+      ringLeft=r.left-extension,ringRight=r.right+extension;
+    return {ok:row.matches(':focus-visible')&&cs.outlineStyle!=='none'&&width>=3&&offset<=-width
+        &&/inset/.test(cs.boxShadow)&&ringLeft>=s.left-0.5&&ringRight<=s.right+0.5,
+      focusVisible:row.matches(':focus-visible'),width,offset,boxShadow:cs.boxShadow,
+      rowLeft:r.left,rowRight:r.right,scrollerLeft:s.left,scrollerRight:s.right,ringLeft,ringRight};})()`;
+  const lazyFocusRing = await evalLazy(lazyFocusRingCheck);
+  if (!lazyFocusRing.ok) {
+    fails.push('COMPENDIUM FOCUS RING: native Tab focus paint escapes the horizontal clipping owner: '
+      + JSON.stringify(lazyFocusRing));
+  }
+  const lazyFocusRingCtl = await evalLazy(`(()=>{const row=document.activeElement?.closest?.('#codexpanel [data-ci]');if(!row)return null;
+    const value=row.style.getPropertyValue('outline-offset'),priority=row.style.getPropertyPriority('outline-offset');
+    row.style.setProperty('outline-offset','3px','important');const result=${lazyFocusRingCheck};
+    if(value)row.style.setProperty('outline-offset',value,priority);else row.style.removeProperty('outline-offset');return result})()`);
+  if (!lazyFocusRingCtl || lazyFocusRingCtl.ok || !(lazyFocusRingCtl.offset > 0)) {
+    fails.push('COMPENDIUM FOCUS RING CONTROL FAILED — injected outer ring stayed inside the clipped scroller: '
+      + JSON.stringify(lazyFocusRingCtl));
+  }
+
+  /* Settlement belongs to the closed document, so switch foreground
+     ownership explicitly and require its own serviced turn before reading
+     the post-release state. */
+  const lazyClosedSettlementAuthority = await ownLazyForeground(
+    lazyClosed, tLazyClosed.targetId, 'slow Compendium closed owner',
+  );
+  const lazyClosedOwnerPredicate = `(d)=>d.panel.mode==='closed'&&!d.panel.open
+    &&d.panel.closedCompletionCommits===${lazyClosedBefore.closedCompletionCommits}
+    &&d.panel.renderCommits===${lazyClosedBefore.renderCommits}
+    &&d.surfaces.list.imageCount===0&&d.lazyArt.state==='ready'
+    &&d.art&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0
+    &&document.activeElement?.id==='railcodex'`;
+  const lazyClosedSettlementTimeoutMs = 30000;
+  const lazyClosedSettlementDeadline = performance.now() + lazyClosedSettlementTimeoutMs;
+  const lazyClosedSettlementExpression = `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics(),
+    foreground=${lazyForegroundObservationExpression},settled=d.lazyArt.state==='ready'&&d.art
+      &&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0;
+    return {done:settled,ok:settled&&(${lazyClosedOwnerPredicate})(d),mode:d.panel.mode,
+      listImages:d.surfaces.list.imageCount,focus:document.activeElement?.id||null,
+      closedCompletionCommits:d.panel.closedCompletionCommits,renderCommits:d.panel.renderCommits,
+      lazyArt:d.lazyArt,art:d.art,foreground};})()`;
+  let lazyClosedAfter = {
+    done: false, reason: 'not yet observed', foreground: lazyClosedSettlementAuthority.observation,
+  };
+  let lazyClosedForegroundDecision = classifyForegroundServiceTurn(
+    lazyClosedSettlementAuthority.observation, lazyClosedSettlementAuthority.expected,
+  );
+  while (performance.now() < lazyClosedSettlementDeadline) {
+    const remainingMs = Math.floor(lazyClosedSettlementDeadline - performance.now());
+    if (remainingMs <= 0) break;
+    try {
+      lazyClosedAfter = await evalLazyClosed(lazyClosedSettlementExpression, { timeoutMs: remainingMs });
+    } catch (error) {
+      throw new Error('released chunk closed-owner settlement observation failed inside its immutable deadline: '
+        + JSON.stringify({ error: String(error?.message || error), last: lazyClosedAfter }));
+    }
+    const receivedAtMs = performance.now();
+    const foreground = {
+      ...lazyClosedAfter.foreground, targetId: lazyClosedSettlementAuthority.observation.targetId,
+    };
+    lazyClosedAfter = { ...lazyClosedAfter, foreground };
+    lazyClosedForegroundDecision = classifyForegroundServiceTurnReceipt(
+      foreground, lazyClosedSettlementAuthority.expected, lazyClosedSettlementDeadline, receivedAtMs,
+    );
+    if (lazyClosedForegroundDecision.status === 'error') {
+      throw new Error('released chunk closed-owner settlement lost foreground authority: '
+        + JSON.stringify({ decision: lazyClosedForegroundDecision, last: lazyClosedAfter }));
+    }
+    if (lazyClosedAfter.done && lazyClosedForegroundDecision.status === 'ready') break;
+    const sleepMs = Math.min(50, Math.max(0, lazyClosedSettlementDeadline - performance.now()));
+    if (sleepMs > 0) await sleep(sleepMs);
+  }
+  if (!lazyClosedAfter.done || lazyClosedForegroundDecision.status !== 'ready') {
+    throw new Error(`released chunk closed-owner settlement did not reach its outcome within `
+      + `${lazyClosedSettlementTimeoutMs}ms (last `
+      + JSON.stringify({ decision: lazyClosedForegroundDecision, observation: lazyClosedAfter }) + ')');
+  }
+  if (!lazyClosedAfter.ok || lazyClosedForegroundDecision.status !== 'ready') {
+    fails.push('COMPENDIUM CLOSED OWNER: released lazy chunk committed/refilled after Close or lost opener focus: '
+      + JSON.stringify({ before: lazyClosedBefore, armed: lazyClosedArmed, after: lazyClosedAfter,
+        foreground: lazyClosedForegroundDecision }));
+  }
+  const lazyClosedOwnerCtl = await evalLazyClosed(`(()=>{const api=window.__CF_SLICE__.api,prior=api.compendiumDiagnostics;let accepted=false;
+    try{api.compendiumDiagnostics=()=>{const d=prior();return {...d,panel:{...d.panel,
+      closedCompletionCommits:d.panel.closedCompletionCommits+1}}};accepted=(${lazyClosedOwnerPredicate})(api.compendiumDiagnostics());}
+    finally{api.compendiumDiagnostics=prior}return {rejected:!accepted,restored:api.compendiumDiagnostics===prior}})()`);
+  if (!lazyClosedOwnerCtl.rejected || !lazyClosedOwnerCtl.restored) {
+    fails.push('COMPENDIUM CLOSED OWNER CONTROL FAILED — injected post-Close completion stayed green: '
+      + JSON.stringify(lazyClosedOwnerCtl));
+  }
   await send('Target.closeTarget', { targetId: tLazy.targetId });
+  await send('Target.closeTarget', { targetId: tLazyClosed.targetId });
 
   /* 4d. THE PHONE LEG (emulated): 390×844 @ DPR 3, touch. The physical
      hand-feel stays Nick's; this catches layout, touch wiring and pinch. */

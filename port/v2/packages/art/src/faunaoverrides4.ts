@@ -5,8 +5,9 @@
    pyrosome is a hollow colonial tube, a salp is a chain of glass barrels,
    and a tripod fish stands on three fin rays. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import type { ArtContext2D } from './speciescanvas.js';
 
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 type G = Record<string, unknown>;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 const S = 440;

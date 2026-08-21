@@ -33,6 +33,10 @@ const REPORT_PATH = process.env.CF_UILAYOUT_REPORT
 const RUN_ID = process.env.CF_UILAYOUT_RUN_ID
   || `local-${Date.now()}-${process.pid}-${crypto.randomBytes(5).toString('hex')}`;
 const STARTED_AT_MS = Date.now();
+const ROOT_LAYOUT_CDP_COMMAND_TIMEOUT_MS = 30_000;
+const ROOT_LAYOUT_CDP_SOCKET_TIMEOUT_MS = 15_000;
+const ROOT_LAYOUT_CDP_STARTUP_TIMEOUT_MS = 45_000;
+const ROOT_LAYOUT_CDP_SHUTDOWN_TIMEOUT_MS = 5_000;
 let REPORT_BROWSER = null;
 
 const VIEWPORTS = [
@@ -120,6 +124,18 @@ function reportFor(status, { browser = null, results = [], failure = null } = {}
 }
 
 function writeReport(status, options) { atomicWriteJson(REPORT_PATH, reportFor(status, options)); }
+
+function openRootLayoutCdp(openCdp) {
+  if (typeof openCdp !== 'function') throw new Error('root UI layout CDP opener is invalid');
+  return openCdp({
+    label: 'root UI layout gate',
+    userDataPrefix: 'cf-uilayout',
+    commandTimeoutMs: ROOT_LAYOUT_CDP_COMMAND_TIMEOUT_MS,
+    webSocketOpenTimeoutMs: ROOT_LAYOUT_CDP_SOCKET_TIMEOUT_MS,
+    startupTimeoutMs: ROOT_LAYOUT_CDP_STARTUP_TIMEOUT_MS,
+    shutdownTimeoutMs: ROOT_LAYOUT_CDP_SHUTDOWN_TIMEOUT_MS,
+  });
+}
 
 function resultKey(result) { return `${result.vp}\u0000${result.surf}\u0000${result.name}`; }
 
@@ -227,19 +243,15 @@ async function main() {
   const { openChromiumCdp } = await import('../port/v2/tools/browsercdp.mjs');
   let browser = null;
   try {
-    browser = await openChromiumCdp({
-      label: 'root UI layout gate', userDataPrefix: 'cf-uilayout',
-      /* This gate is the battery's FIRST real browser launch, so it pays the
-         whole Linux runner cold start. Run 31758515194 attempt 1 (job
-         94639563562) launched the exact pinned Chrome (pid 2211, only benign
-         D-Bus stderr) and still had no DevToolsActivePort at the prior 24s
-         bound — the same diagnosed cold-start phase that earned the exact
-         development-preview caller its bounded 30s. Same bounded remedy, this
-         caller only; the generic launcher default stays 15s, and command/
-         shutdown bounds are unchanged. Not a retry, and not the #200
-         provenance class (the right browser was selected and did start). */
-      commandTimeoutMs: 30000, startupTimeoutMs: 30000, shutdownTimeoutMs: 5000,
-    });
+    /* This gate is the battery's FIRST real browser launch, so it pays the
+       whole Linux runner cold start. Run 31758515194 first proved that the
+       prior 24-second bound could expire before DevToolsActivePort. Run
+       32375329693 job 96445227534 then reached the same pre-endpoint phase at
+       the caller's 30-second bound. Keep the accepted process allowance local:
+       one 45-second absolute startup envelope with a 15-second socket phase
+       cap inside it. Generic launcher, command, product, and shutdown bounds
+       remain unchanged; there is no warmup, relaunch, fallback, or retry. */
+    browser = await openRootLayoutCdp(openChromiumCdp);
     REPORT_BROWSER = { ...browser.browser, pid: browser.pid };
     send = browser.send;
 
@@ -711,6 +723,33 @@ async function main() {
 async function selftest() {
   const tempRoot = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), 'cf-uilayout-selftest-'));
   try {
+    let callerOpenCount = 0;
+    let callerOptions = null;
+    const callerSentinel = Object.freeze({ kind: 'root-layout-cdp-caller-selftest' });
+    const callerResult = await openRootLayoutCdp((options) => {
+      callerOpenCount++;
+      callerOptions = options;
+      return callerSentinel;
+    });
+    if (callerResult !== callerSentinel || callerOpenCount !== 1) {
+      throw new Error(`SELFTEST root layout caller opened ${callerOpenCount} times or lost its result`);
+    }
+    if (callerOptions?.label !== 'root UI layout gate'
+      || callerOptions.userDataPrefix !== 'cf-uilayout'
+      || callerOptions.commandTimeoutMs !== ROOT_LAYOUT_CDP_COMMAND_TIMEOUT_MS
+      || callerOptions.webSocketOpenTimeoutMs !== ROOT_LAYOUT_CDP_SOCKET_TIMEOUT_MS
+      || callerOptions.startupTimeoutMs !== ROOT_LAYOUT_CDP_STARTUP_TIMEOUT_MS
+      || callerOptions.shutdownTimeoutMs !== ROOT_LAYOUT_CDP_SHUTDOWN_TIMEOUT_MS) {
+      throw new Error(`SELFTEST root layout caller options drifted: ${JSON.stringify(callerOptions)}`);
+    }
+    const callerOptionKeys = Object.keys(callerOptions).sort();
+    const expectedCallerOptionKeys = [
+      'commandTimeoutMs', 'label', 'shutdownTimeoutMs', 'startupTimeoutMs',
+      'userDataPrefix', 'webSocketOpenTimeoutMs',
+    ];
+    if (JSON.stringify(callerOptionKeys) !== JSON.stringify(expectedCallerOptionKeys)) {
+      throw new Error(`SELFTEST root layout caller exposed unowned options: ${callerOptionKeys.join(', ')}`);
+    }
     const report = path.join(tempRoot, 'report.json');
     atomicWriteJson(report, { schema: REPORT_SCHEMA, status: 'pass', run: { id: 'stale-pass' },
       summary: { failed: 0, completedViewports: 10, requestedViewports: 10 }, failure: null,
@@ -802,6 +841,7 @@ async function selftest() {
     fs.rmSync(tempRoot, { recursive: true, force: true });
   }
   console.log('UI LAYOUT LAUNCHER SELFTEST: PASS');
+  console.log('  one root-layout CDP call owns exact 45s startup / 15s socket / 30s command / 5s shutdown bounds');
   console.log('  stale PASS replaced by current instrument-fail report');
   console.log(`  early executable exit retained before startup bound${process.platform === 'win32' ? '' : ' (73 + stderr marker)'}`);
   console.log('  mismatched run id rejected; owned browser profile cleaned');

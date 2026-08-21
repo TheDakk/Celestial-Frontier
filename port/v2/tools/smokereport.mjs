@@ -14,6 +14,16 @@ import { execFileSync, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { findChromiumBrowser } from './browserpath.mjs';
 import { acquireWorkspaceLock, workspaceLockChildEnvironment } from './workspacelock.mjs';
+import {
+  assessTrainingBusyRefusalPrecondition,
+  classifyCompendiumDetailReceipt,
+  classifyCompendiumDetailSettlement,
+  classifyForegroundServiceTurnReceipt,
+  classifyPlanetsideSettlement,
+  planetsidePhaseRemainingMs,
+  planetsideRuntimeTimeoutDecision,
+  trainingBindingReceiptBeforeDeadline,
+} from './slicesmoke-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
@@ -167,6 +177,274 @@ function runSelftest() {
     || sameSource(source, { ...source, workingTreeSha256: 'd'.repeat(64) })) {
     throw new Error('SELFTEST source-identity change control drifted');
   }
+  const foregroundExpected = Object.freeze({
+    targetId: 'lazy-primary', documentToken: 'document-current', serviceToken: 'service-current',
+  });
+  const foregroundReady = Object.freeze({
+    targetId: foregroundExpected.targetId,
+    documentToken: foregroundExpected.documentToken,
+    visibilityState: 'visible', hidden: false, focused: true,
+    service: Object.freeze({
+      token: foregroundExpected.serviceToken, visibilityChanges: 0, focusLosses: 0,
+      armVisibilityState: 'visible', armHidden: false, armFocused: true,
+      raf: true, rafVisibilityState: 'visible', rafHidden: false, rafFocused: true,
+      laterTask: true, laterVisibilityState: 'visible', laterHidden: false, laterFocused: true,
+    }),
+  });
+  const foregroundControls = [
+    ['ready', foregroundReady, 'ready', null, 999],
+    ['wrong-target', { ...foregroundReady, targetId: 'lazy-foreign' }, 'error', 'target identity'],
+    ['stale-document', { ...foregroundReady, documentToken: 'document-stale' }, 'error', 'document identity'],
+    ['hidden-page', { ...foregroundReady, visibilityState: 'hidden', hidden: true }, 'error', 'page visibility'],
+    ['unfocused-page', { ...foregroundReady, focused: false }, 'error', 'page unfocused'],
+    ['stale-service', { ...foregroundReady, service: { ...foregroundReady.service, token: 'service-stale' } }, 'error', 'service identity'],
+    ['hidden-arm', { ...foregroundReady, service: { ...foregroundReady.service,
+      armVisibilityState: 'hidden', armHidden: true } }, 'error', 'arm visibility'],
+    ['unfocused-arm', { ...foregroundReady, service: { ...foregroundReady.service,
+      armFocused: false } }, 'error', 'arm unfocused'],
+    ['visibility-transition', { ...foregroundReady, service: { ...foregroundReady.service,
+      visibilityChanges: 1 } }, 'error', 'visibility changed'],
+    ['focus-transition', { ...foregroundReady, service: { ...foregroundReady.service,
+      focusLosses: 1 } }, 'error', 'focus lost'],
+    ['missing-rendering-opportunity', { ...foregroundReady, service: { ...foregroundReady.service,
+      raf: false, rafVisibilityState: null, rafHidden: null, rafFocused: null,
+      laterTask: false, laterVisibilityState: null, laterHidden: null, laterFocused: null } },
+    'pending', 'rendering opportunity pending'],
+    ['missing-later-task', { ...foregroundReady, service: { ...foregroundReady.service,
+      laterTask: false, laterVisibilityState: null, laterHidden: null, laterFocused: null } },
+    'pending', 'later task pending'],
+    ['reversed-service-order', { ...foregroundReady, service: { ...foregroundReady.service,
+      raf: false, rafVisibilityState: null, rafHidden: null, rafFocused: null } },
+    'error', 'service phase order'],
+    ['exact-deadline', foregroundReady, 'error', 'at/after deadline', 1000],
+    ['just-late', foregroundReady, 'error', 'at/after deadline', 1000.001],
+  ];
+  const foregroundDrift = foregroundControls.flatMap(([
+    name, observation, expectedStatus, diagnosis, receivedAtMs = 999,
+  ]) => {
+    const actual = classifyForegroundServiceTurnReceipt(
+      observation, foregroundExpected, 1000, receivedAtMs,
+    );
+    const diagnosed = diagnosis === null
+      ? actual.reasons.length === 0
+      : actual.reasons.some((reason) => reason.includes(diagnosis));
+    return actual.status === expectedStatus && diagnosed
+      ? [] : [{ name, expectedStatus, diagnosis, actual }];
+  });
+  if (foregroundDrift.length) {
+    throw new Error(`SELFTEST foreground service controls drifted: ${JSON.stringify(foregroundDrift)}`);
+  }
+  const trainingExpected = Object.freeze({
+    documentToken: 'training-document-current', primaryRaw: '{"training":"exact"}',
+  });
+  const trainingReady = Object.freeze({
+    documentToken: trainingExpected.documentToken, primaryRaw: trainingExpected.primaryRaw,
+    state: Object.freeze({
+      tutActive: true, tutDone: false, tutStep: 'welcome', trainingCheckpointKind: 'legacy-v1',
+      trainingCheckpointWriteHeld: true, tutSnapshotPending: Object.freeze({ view: Object.freeze({}) }),
+      mode: 'system', gal: 999, star: 424242, planet: null,
+      navGalaxyKey: 'galaxy-current', navStarKey: 'star-current', navWorldKey: null,
+      renderedScene: Object.freeze({
+        mode: 'system', serial: 1, galaxyKey: 'galaxy-current', starKey: 'star-current', worldKey: null,
+      }),
+    }),
+    card: true, trainingBody: true,
+    button: Object.freeze({ present: true, connected: true, disabled: false, visible: true }),
+    buttonOwnedByCard: true,
+    status: Object.freeze({ present: true, hidden: true }), statusOwnedByCard: true, tickerStarted: true,
+  });
+  const trainingControls = [
+    ['ready', trainingReady, true, []],
+    ['absent-observation', null, false, ['precondition observation absent']],
+    ['state-absent', { ...trainingReady, state: null }, false, ['Training state absent']],
+    ['stale-document', { ...trainingReady, documentToken: 'training-document-stale' }, false, ['document identity']],
+    ['wrong-primary', { ...trainingReady, primaryRaw: '{"training":"stale"}' }, false, ['primary bytes']],
+    ['inactive-state', { ...trainingReady, state: { ...trainingReady.state, tutActive: false } }, false, ['Training is not runnable at welcome']],
+    ['completed-state', { ...trainingReady, state: { ...trainingReady.state, tutDone: true } }, false, ['Training is not runnable at welcome']],
+    ['wrong-step', { ...trainingReady, state: { ...trainingReady.state, tutStep: 'atlas-open' } }, false, ['Training is not runnable at welcome']],
+    ['wrong-checkpoint', { ...trainingReady, state: { ...trainingReady.state, trainingCheckpointKind: 'none' } }, false, ['legacy checkpoint ownership']],
+    ['checkpoint-not-held', { ...trainingReady, state: { ...trainingReady.state, trainingCheckpointWriteHeld: false } }, false, ['legacy checkpoint ownership']],
+    ['checkpoint-payload-absent', { ...trainingReady, state: { ...trainingReady.state, tutSnapshotPending: null } }, false, ['legacy checkpoint ownership']],
+    ['checkpoint-payload-array', { ...trainingReady, state: { ...trainingReady.state, tutSnapshotPending: [] } }, false, ['legacy checkpoint ownership']],
+    ['wrong-mode', { ...trainingReady, state: { ...trainingReady.state, mode: 'galaxy' } }, false, ['Training route']],
+    ['wrong-galaxy', { ...trainingReady, state: { ...trainingReady.state, gal: 998 } }, false, ['Training route']],
+    ['wrong-route', { ...trainingReady, state: { ...trainingReady.state, star: 7 } }, false, ['Training route']],
+    ['unexpected-planet', { ...trainingReady, state: { ...trainingReady.state, planet: 133 } }, false, ['Training route']],
+    ['missing-galaxy-key', { ...trainingReady, state: { ...trainingReady.state, navGalaxyKey: null,
+      renderedScene: { ...trainingReady.state.renderedScene, galaxyKey: null } } }, false, ['Training route']],
+    ['missing-star-key', { ...trainingReady, state: { ...trainingReady.state, navStarKey: null,
+      renderedScene: { ...trainingReady.state.renderedScene, starKey: null } } }, false, ['Training route']],
+    ['unexpected-world-key', { ...trainingReady, state: { ...trainingReady.state,
+      navWorldKey: 'world-foreign' } }, false, ['Training route']],
+    ['render-absent', { ...trainingReady, state: { ...trainingReady.state, renderedScene: null } }, false, ['rendered Training route']],
+    ['render-mode-drift', { ...trainingReady, state: { ...trainingReady.state,
+      renderedScene: { ...trainingReady.state.renderedScene, mode: 'galaxy' } } }, false, ['rendered Training route']],
+    ['render-drift', { ...trainingReady, state: { ...trainingReady.state,
+      renderedScene: { ...trainingReady.state.renderedScene, serial: 0 } } }, false, ['rendered Training route']],
+    ['render-galaxy-key-drift', { ...trainingReady, state: { ...trainingReady.state,
+      renderedScene: { ...trainingReady.state.renderedScene, galaxyKey: 'galaxy-foreign' } } }, false, ['rendered Training route']],
+    ['render-star-key-drift', { ...trainingReady, state: { ...trainingReady.state,
+      renderedScene: { ...trainingReady.state.renderedScene, starKey: 'star-foreign' } } }, false, ['rendered Training route']],
+    ['render-world-key-drift', { ...trainingReady, state: { ...trainingReady.state,
+      renderedScene: { ...trainingReady.state.renderedScene, worldKey: 'world-foreign' } } }, false, ['rendered Training route']],
+    ['missing-card', { ...trainingReady, card: false }, false, ['Training card']],
+    ['missing-training-body', { ...trainingReady, trainingBody: false }, false, ['Training card']],
+    ['missing-button', { ...trainingReady, button: { ...trainingReady.button, present: false } }, false, ['runnable Skip action']],
+    ['disconnected-button', { ...trainingReady, button: { ...trainingReady.button, connected: false } }, false, ['runnable Skip action']],
+    ['disabled-button', { ...trainingReady, button: { ...trainingReady.button, disabled: true } }, false, ['runnable Skip action']],
+    ['hidden-button', { ...trainingReady, button: { ...trainingReady.button, visible: false } }, false, ['runnable Skip action']],
+    ['button-parent-escape', { ...trainingReady, buttonOwnedByCard: false }, false, ['runnable Skip action']],
+    ['missing-status', { ...trainingReady, status: { ...trainingReady.status, present: false } }, false, ['idle Training status']],
+    ['non-idle-status', { ...trainingReady, status: { ...trainingReady.status, hidden: false } }, false, ['idle Training status']],
+    ['status-parent-escape', { ...trainingReady, statusOwnedByCard: false }, false, ['idle Training status']],
+    ['stopped-ticker', { ...trainingReady, tickerStarted: false }, false, ['outgoing ticker']],
+  ];
+  const trainingDrift = trainingControls.flatMap(([name, observation, expectedOk, expectedReasons]) => {
+    const actual = assessTrainingBusyRefusalPrecondition(observation, trainingExpected);
+    return actual.ok === expectedOk && JSON.stringify(actual.reasons) === JSON.stringify(expectedReasons)
+      ? [] : [{ name, expectedOk, expectedReasons, actual }];
+  });
+  for (const [name, expected] of [
+    ['missing-expected-authority', null],
+    ['missing-expected-document', { ...trainingExpected, documentToken: '' }],
+    ['missing-expected-primary', { ...trainingExpected, primaryRaw: '' }],
+  ]) {
+    let rejected = false;
+    try { assessTrainingBusyRefusalPrecondition(trainingReady, expected); }
+    catch (error) { rejected = error instanceof TypeError; }
+    if (!rejected) trainingDrift.push({ name, expected: 'TypeError' });
+  }
+  if (trainingDrift.length) {
+    throw new Error(`SELFTEST Training busy-refusal precondition controls drifted: ${JSON.stringify(trainingDrift)}`);
+  }
+  const trainingBindingControls = [
+    ['complete-before', [{}, {}], 999, true],
+    ['incomplete-before', [{}], 999, false],
+    ['complete-exact-boundary', [{}, {}], 1000, false],
+    ['complete-just-late', [{}, {}], 1000.001, false],
+  ];
+  const trainingBindingDrift = trainingBindingControls.flatMap(([name, entries, receivedAt, expected]) => {
+    const actual = trainingBindingReceiptBeforeDeadline(entries, 2, 1000, receivedAt);
+    return actual === expected ? [] : [{ name, expected, actual }];
+  });
+  let invalidTrainingBindingRejected = false;
+  try { trainingBindingReceiptBeforeDeadline([], 0, 1000, 999); }
+  catch (error) { invalidTrainingBindingRejected = error instanceof TypeError; }
+  if (!invalidTrainingBindingRejected) {
+    trainingBindingDrift.push({ name: 'invalid-count', expected: 'TypeError' });
+  }
+  if (trainingBindingDrift.length) {
+    throw new Error(`SELFTEST Training binding receipt controls drifted: ${JSON.stringify(trainingBindingDrift)}`);
+  }
+  const readyImage = Object.freeze({
+    state: 'ready', hasSrc: true, complete: true, naturalWidth: 132, naturalHeight: 132,
+  });
+  const settled = {
+    on: true, n: 3, images: [readyImage, readyImage, readyImage],
+    art: { live: { queuedJobs: 0, activeJobs: 0 } },
+  };
+  const settlementControls = [
+    ['settled', settled, 'ready', null],
+    ['missing-src', { ...settled, images: settled.images.map((image) => ({ ...image, hasSrc: false })) }, 'error', 'ready without src'],
+    ['decode-pending', { ...settled, images: settled.images.map((image) => ({ ...image, complete: false })) }, 'pending', 'decode pending'],
+    ['wrong-size', { ...settled, images: settled.images.map((image) => ({ ...image, naturalWidth: 440, naturalHeight: 440 })) }, 'error', 'dimensions 440x440'],
+    ['placeholder', { ...settled, images: settled.images.map((image) => ({ ...image, state: 'placeholder' })) }, 'pending', 'placeholder'],
+    ['producer-error', { ...settled, images: settled.images.map((image) => ({ ...image, state: 'error' })) }, 'error', 'producer error'],
+    ['queued-work', { ...settled, art: { live: { queuedJobs: 1, activeJobs: 0 } } }, 'pending', 'queuedJobs 1'],
+    ['active-work', { ...settled, art: { live: { queuedJobs: 0, activeJobs: 1 } } }, 'pending', 'activeJobs 1'],
+    ['missing-art-diagnostics', { ...settled, art: null }, 'pending', 'art diagnostics absent'],
+    ['short-roster', { ...settled, n: 2, images: settled.images.slice(0, 2) }, 'pending', 'roster count 2'],
+    ['image-count-mismatch', { ...settled, images: settled.images.slice(0, 2) }, 'pending', 'image count 2'],
+  ];
+  const settlementDrift = settlementControls.flatMap(([name, observation, expected, diagnosis]) => {
+    const actual = classifyPlanetsideSettlement(observation);
+    const diagnosed = diagnosis === null
+      ? actual.reasons.length === 0
+      : actual.reasons.some((reason) => reason.includes(diagnosis));
+    return actual.status === expected && diagnosed ? [] : [{ name, expected, diagnosis, actual }];
+  });
+  if (settlementDrift.length) {
+    throw new Error(`SELFTEST Planetside semantic settlement controls drifted: ${JSON.stringify(settlementDrift)}`);
+  }
+  const detailExpected = Object.freeze({
+    documentToken: 'document-current', preEnterGeneration: 41, logicalId: 'detail-current',
+  });
+  const detailReady = Object.freeze({
+    documentToken: detailExpected.documentToken, generation: detailExpected.preEnterGeneration + 1,
+    panelMode: 'detail', detailPresent: true, logicalId: detailExpected.logicalId,
+    image: Object.freeze({
+      present: true, connected: true, state: 'ready', hasSrc: true, srcLength: 5001,
+      complete: true, naturalWidth: 440, naturalHeight: 440,
+    }),
+  });
+  const detailControls = [
+    ['ready', detailReady, 'ready', []],
+    ['placeholder', { ...detailReady, image: { ...detailReady.image,
+      state: 'placeholder' } }, 'pending', ['detail portrait placeholder']],
+    ['ready-no-src', { ...detailReady, image: { ...detailReady.image,
+      hasSrc: false } }, 'error', ['detail portrait ready without src']],
+    ['ready-short-src', { ...detailReady, image: { ...detailReady.image,
+      srcLength: 5000 } }, 'error', ['detail portrait src length 5000']],
+    ['decode-pending', { ...detailReady, image: { ...detailReady.image,
+      complete: false } }, 'pending', ['detail portrait decode pending']],
+    ['wrong-dimensions', { ...detailReady, image: { ...detailReady.image,
+      naturalWidth: 132 } }, 'error', ['detail portrait dimensions 132x440']],
+    ['producer-error', { ...detailReady, image: { ...detailReady.image,
+      state: 'error' } }, 'error', ['detail portrait producer error']],
+    ['closed-detail', { ...detailReady, panelMode: 'closed', detailPresent: false },
+      'error', ['detail surface "closed"/false']],
+    ['wrong-document', { ...detailReady, documentToken: 'document-stale' },
+      'error', ['document identity "document-stale"']],
+    ['stale-generation', { ...detailReady, generation: detailExpected.preEnterGeneration },
+      'error', ['Compendium generation 41']],
+    ['stale-owner', { ...detailReady, logicalId: 'detail-stale' },
+      'error', ['logical owner "detail-stale"']],
+    ['disconnected-owner', { ...detailReady, image: { ...detailReady.image,
+      connected: false } }, 'error', ['detail image disconnected']],
+  ];
+  const detailDrift = detailControls.flatMap(([name, observation, expectedStatus, expectedReasons]) => {
+    const actual = classifyCompendiumDetailSettlement(observation, detailExpected);
+    return actual.status === expectedStatus
+      && JSON.stringify(actual.reasons) === JSON.stringify(expectedReasons)
+      ? [] : [{ name, expectedStatus, expectedReasons, actual }];
+  });
+  const detailBeforeDeadline = classifyCompendiumDetailReceipt(detailReady, detailExpected, 1000, 999.999);
+  const detailAtDeadline = classifyCompendiumDetailReceipt(detailReady, detailExpected, 1000, 1000);
+  const detailJustLate = classifyCompendiumDetailReceipt(detailReady, detailExpected, 1000, 1000.001);
+  if (detailBeforeDeadline.status !== 'ready' || detailBeforeDeadline.reasons.length !== 0
+    || detailAtDeadline.status !== 'error'
+    || JSON.stringify(detailAtDeadline.reasons) !== JSON.stringify([
+      'detail observation received at/after deadline (1000 >= 1000)',
+    ])
+    || detailJustLate.status !== 'error'
+    || JSON.stringify(detailJustLate.reasons) !== JSON.stringify([
+      'detail observation received at/after deadline (1000.001 >= 1000)',
+    ])) {
+    detailDrift.push({
+      name: 'strict-deadline-receipt', detailBeforeDeadline, detailAtDeadline, detailJustLate,
+    });
+  }
+  if (detailDrift.length) {
+    throw new Error(`SELFTEST Compendium detail settlement controls drifted: ${JSON.stringify(detailDrift)}`);
+  }
+  const phaseDeadline = 1000.75;
+  const labelledTimeoutDecision = planetsideRuntimeTimeoutDecision(
+    new Error('slice smoke: timed out waiting for Runtime.evaluate'),
+    30000,
+  );
+  if (planetsidePhaseRemainingMs(phaseDeadline, 250.25) !== 750
+    || planetsidePhaseRemainingMs(phaseDeadline, 1000.75) !== 0
+    || planetsidePhaseRemainingMs(phaseDeadline, 1001) !== 0
+    || labelledTimeoutDecision?.status !== 'pending'
+    || labelledTimeoutDecision.reasons[0] !== 'phase deadline expired during target observation (30000ms)'
+    || planetsideRuntimeTimeoutDecision(
+      new Error('slice smoke: timed out waiting for Page.navigate'), 30000,
+    ) !== null
+    || planetsideRuntimeTimeoutDecision(
+      new Error('slice smoke: timed out waiting for Runtime.evaluate after retry'), 30000,
+    ) !== null) {
+    throw new Error('SELFTEST Planetside monotonic deadline/labelled-timeout controls drifted');
+  }
   const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-smoke-report-selftest-'));
   try {
     fs.writeFileSync(path.join(tempRoot, 'slice-stale-unrelated.png'), 'stale');
@@ -186,6 +464,11 @@ function runSelftest() {
   console.log('  source-identity change: mixed-source evidence rejected');
   console.log('  screenshot provenance: injected stale PNG excluded from the exact run manifest');
   console.log('  infrastructure fatal: retained ahead of generic bundler advice');
+  console.log('  foreground service: exact target/document/token, continuous visible focused rAF→later-task authority, exact/late receipt rejection');
+  console.log('  D-TRAIN busy refusal: exact fixture/document/card action required; setup/parent drift and exact/late binding receipts rejected');
+  console.log('  Planetside settlement: ready+132px+drained accepted; roster/image/decode/art/live-work controls rejected');
+  console.log('  Compendium detail: exact document/generation/logical owner plus connected ready+src+decoded 440px accepted; isolated pending/terminal mutations and exact/late deadlines classified');
+  console.log('  Planetside phase: monotonic remainder clipped; labelled Runtime.evaluate timeout converted exactly');
   console.log('  retry policy remains zero by construction (one child invocation in the wrapper)');
 }
 

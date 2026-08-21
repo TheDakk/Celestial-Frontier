@@ -22,9 +22,10 @@
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { leafSurface } from './surface.js';
 import { speciesHue } from './surface.js';
+import type { ArtContext2D } from './speciescanvas.js';
 
 type G = Record<string, unknown>;
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 export type PainterF = (c: Ctx, g: G, p: Pal, name: string) => void;
 const S = 440;

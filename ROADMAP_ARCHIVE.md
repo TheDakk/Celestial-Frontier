@@ -1,5 +1,1608 @@
 # Celestial Frontier — Roadmap ARCHIVE
 
+## ARCHIVED 2026-08-20 — preview browser-contract repair handoff
+
+> Moved byte-verbatim from ROADMAP.md after exact `9d5247f…` completed the full local battery.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PREVIEW BROWSER-CONTRACT REPAIR -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 PREVIEW BROWSER-CONTRACT REPAIR ◀◀◀
+
+### Fresh-session start
+
+- Read `GITHUB_ACTIONS_BUDGET.md`, this handoff, `PROCESS_LAWS.md`,
+  `PARALLEL_GIT_PROTOCOL.md`, and the owning agent instructions. Either OpenAI/Codex or
+  Anthropic/Claude can resume from repository state; use only that agent's owned worktree.
+- Committed source head is `2721798a80b35dce957f8b79d850184fc63ad6c3` on `openai/mac`.
+  `origin/openai/mac` remains `731b2e2ab974252b410ba97dbdbe3ec6d3ee9c20`; the branch is ahead 5.
+  The working copy intentionally contains the scoped `port/v2/tools/devpreview.mjs` repair plus this
+  documentation batch. Recheck status; do not discard or overwrite either.
+- Actions remain **`FROZEN`**. The repository is public and standard hosted runners are free while
+  it remains public, but Nick's efficiency/intent gate forbids push, label, dispatch, rerun, merge,
+  sync, or publication. The 3,000 cap applies fail-closed if visibility/billing changes.
+
+### Preserved active ruler and hosted history
+
+- Active Compendium budget/test are `546d3a817073e42910b496895734ae2a01bb4c633af2780ecde1b1ef6570b292` /
+  `ef06252af072d59b85351c05671b762f5d3fa259656e20bc87b22e84ba510b55` under measurement
+  `23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92`, collector
+  `0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b`, selftest
+  `0bbb35417182ddfd5465206c2dd5f9f75537c67fec3053e8d8e79935db32b15b`, and producer
+  `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`. Candidate c27/c28/c29
+  are 78/78 with complete lifecycle; baseline11 retains four faults and 14 phone / 13 desktop
+  breaches; all previous numeric ceilings remain strict.
+- Existing open, non-draft PR #32 is `openai/mac` → `develop`
+  `38447019517147319bd08c598202d097ee866874`. Run `32420327368` remains historical no-verdict
+  evidence and is not retry authority. Do not update or merge the PR while frozen.
+
+### Local battery stop and bounded repair
+
+- The local battery at exact committed `2721798…` was green through persona, then stopped without
+  retry at `preview:selftest`. The checker required job-level Chrome even though the intentionally
+  serialized test job owns Edge and the preview-package/smoke step pins exact Chrome. This is a
+  browser-provenance contract-checker red, not a preview package, browser, product, or ruler finding.
+- The scoped working-copy repair makes the owning preview-smoke step's effective browser authoritative:
+  exact Chrome may come from that step (overriding a job pin) or from one exact job environment.
+  Missing, wrong, duplicate, previous-step-only, and command-line overrides reject. The complete
+  `preview:selftest` is green after the repair; no workflow, browser choice, timeout, retry policy,
+  product byte, resource ruler, publication authority, or hosted state changed.
+- Earlier greens belong to committed `2721798…`, not the repaired working copy. They remain useful
+  diagnostics but do not certify the next exact head.
+
+### Next bounded sequence
+
+1. Review and commit only the preview checker plus synchronized docs locally.
+2. From that clean exact commit, run the complete required local battery once from the beginning in
+   protocol order. First red, ambiguity, authority mismatch, or cleanup failure stops; no retry.
+3. HUMAN review remains open for six fresh phone/desktop Compendium list/detail/focus images.
+4. A hosted attempt exists only if Nick explicitly lifts `FROZEN` and authorizes that exact head.
+   PR #32 must close terminal-green before Arc 1B/gameplay resumes. No release, deployment, version
+   bump, or `main` work is authorized.
+
+## Parallel Git handoff — exact budget-aware fields
+
+**Current side:** OpenAI/Codex macOS owns `openai/mac`. Committed head is `2721798…`; the preview
+checker repair and synchronized docs are working-copy changes. Nothing is pushed.
+
+**GitHub step:** None. Do not push, apply `actions-budget-approved`, dispatch, rerun, merge, or
+publish while `FROZEN`.
+
+**PR details:** existing open, non-draft PR #32; base `develop`; source `openai/mac`; title
+**Arc 1A — Bound Compendium portraits and measured resources**. Its remote head lacks all five local
+commits and the current working-copy repair; no PR write is authorized.
+
+**Other side:** Anthropic/Claude Code need not be opened now. It does not have these changes and may
+synchronize only through `origin/develop` after an authorized PR merge, from its own clean branch.
+
+**Release status:** `develop`, `main`, and both sites are unchanged. No release, version bump,
+deployment, or publication was performed or authorized.
+
+**Actions budget:** `FROZEN`; public/standard runners free while visibility holds; 3,000 remains
+the fail-closed private-repository cap. Authorized hosted attempts: zero.
+<!-- END VERBATIM ROADMAP BLOCK: PREVIEW BROWSER-CONTRACT REPAIR -->
+
+## ARCHIVED 2026-08-20 — active Compendium ruler handoff
+
+> Moved byte-verbatim from ROADMAP.md after the exact-head battery exposed and repaired the
+> development-preview workflow-contract checker.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: ACTIVE COMPENDIUM RULER -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 ACTIVE COMPENDIUM RULER ◀◀◀
+
+### Fresh-session start
+
+- Read `GITHUB_ACTIONS_BUDGET.md`, this handoff, `PROCESS_LAWS.md`,
+  `PARALLEL_GIT_PROTOCOL.md`, and the owning agent instructions. Either OpenAI/Codex or
+  Anthropic/Claude can resume from repository state; use only that agent's owned worktree.
+- Activation commit `b3957e1dd5a9dc0784e6854efbdb2905fd5b8915` is on `openai/mac`.
+  `origin/openai/mac` remains `731b2e2ab974252b410ba97dbdbe3ec6d3ee9c20`; the branch was clean
+  and ahead 4 before this synchronized documentation batch. Recheck local status; do not poll GitHub.
+- Actions remain **`FROZEN`**. The repository is public and standard hosted runners are free while
+  it remains public, but Nick's efficiency/intent gate forbids push, label, dispatch, rerun, merge,
+  sync, or publication. The 3,000 cap applies fail-closed if visibility/billing changes.
+
+### Preserved evidence boundary
+
+- Existing open, non-draft PR #32 is `openai/mac` → `develop`
+  `38447019517147319bd08c598202d097ee866874`; do not update or merge it while frozen.
+- Run `32420327368`, attempt 1, remains historical no-verdict evidence. Root/static/Chrome Smoke/
+  Chrome Glass passed, while Compendium job `96590728191` hit its 40-minute ceiling RUNNING and
+  lifecycle-pending with zero terminal profiles/outcomes. It is neither a product verdict nor retry
+  authority; its spending annotation does not override current public billing.
+- Static-server repair `aecf3865095176a509a4cb892e5842b584780870` retains one immutable
+  monotonic 2,000 ms close boundary. Just-before succeeds; exact/late/missing/error callbacks force
+  `closeAllConnections()` once and reject. Cleanup red suppresses PASS/sample.
+
+### Active recalibrated ruler
+
+- Clean committed source `6736ef40f029d71053f1041869afdbf53a8bfb09` collected serial c27,
+  baseline11, c28, c29, each once with zero retries and a fresh exact Edge `.86` materialization.
+  All three candidates completed 78/78 with complete lifecycle and 18 total PNG bindings;
+  baseline11 retained all four faults and breached 14 phone / 13 desktop ceilings.
+- Frozen report/sample/log SHA-256 carriers:
+  - c27 `0925cf68…` / `a67c6dc5…` / `5022ee90…`;
+  - baseline11 `868893d7…` / `3f80a4d6…` / `0aa3a507…`;
+  - c28 `c0599e97…` / `a83b4414…` / `c67a69be…`;
+  - c29 `372f5da3…` / `b797958b…` / `8540f63d…`.
+- Activation `b3957e1…` embeds 3/3 candidates and measured 1/1 baseline under active budget
+  `546d3a817073e42910b496895734ae2a01bb4c633af2780ecde1b1ef6570b292` and focused test
+  `ef06252af072d59b85351c05671b762f5d3fa259656e20bc87b22e84ba510b55`.
+  Measurement `23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92`, collector
+  `0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b`, selftest
+  `0bbb35417182ddfd5465206c2dd5f9f75537c67fec3053e8d8e79935db32b15b`, and producer
+  `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900` are unchanged.
+  Every previous numeric ceiling remains strict above the new candidate maxima. This activates the
+  browser-free ruler; it is not exact-head certification, hosted CI, HUMAN judgment, or Gate closure.
+
+### Next bounded sequence
+
+1. Finish/review and commit this synchronized documentation batch locally; no browser or hosted run.
+2. From that clean exact head, run the required complete local battery once in protocol order. First
+   red, ambiguity, authority mismatch, or cleanup failure stops; do not retry unchanged evidence.
+3. HUMAN review remains open for the six fresh phone/desktop list/detail/focus images.
+4. A hosted attempt exists only if Nick explicitly lifts `FROZEN` and authorizes that exact head.
+   PR #32 must close terminal-green before Arc 1B/gameplay resumes. No release, deployment, version
+   bump, or `main` work is authorized.
+
+## Parallel Git handoff — exact budget-aware fields
+
+**Current side:** OpenAI/Codex macOS owns `openai/mac`. Activation `b3957e1…` is committed locally;
+this synchronized docs batch remains working-copy changes. Nothing is pushed.
+
+**GitHub step:** None. Do not push, apply `actions-budget-approved`, dispatch, rerun, merge, or
+publish while `FROZEN`.
+
+**PR details:** existing open, non-draft PR #32; base `develop`; source `openai/mac`; title
+**Arc 1A — Bound Compendium portraits and measured resources**. Its remote head does not contain
+the four local commits; no PR write is authorized.
+
+**Other side:** Anthropic/Claude Code need not be opened now. It does not have the local commits and
+may synchronize only through `origin/develop` after an authorized PR merge, from its own clean branch.
+
+**Release status:** `develop`, `main`, and both sites are unchanged. No release, version bump,
+deployment, or publication was performed or authorized.
+
+**Actions budget:** `FROZEN`; public/standard runners free while visibility holds; 3,000 remains
+the fail-closed private-repository cap. Authorized hosted attempts: zero.
+<!-- END VERBATIM ROADMAP BLOCK: ACTIVE COMPENDIUM RULER -->
+
+## ARCHIVED 2026-08-20 — bounded static-server recalibration handoff
+
+> Moved byte-verbatim from ROADMAP.md after candidate27/baseline11/candidate28/candidate29
+> activated the repaired Compendium ruler.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: STATIC-SERVER SHUTDOWN RECALIBRATION -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 STATIC-SERVER SHUTDOWN RECALIBRATION ◀◀◀
+
+### Fresh-session start
+
+- Read `GITHUB_ACTIONS_BUDGET.md`, this handoff, `PROCESS_LAWS.md`,
+  `PARALLEL_GIT_PROTOCOL.md`, and the owning agent instructions. Either OpenAI/Codex or
+  Anthropic/Claude can resume from repository state; use only that agent's owned worktree.
+- Implementation commit `aecf3865095176a509a4cb892e5842b584780870` is on `openai/mac`;
+  `origin/openai/mac` remains `731b2e2ab974252b410ba97dbdbe3ec6d3ee9c20`, so the branch was
+  ahead 2 before this documentation batch. Recheck local status; do not poll GitHub.
+- Actions remain **`FROZEN`**. The repository is public and standard hosted runners are free while
+  it remains public, but Nick's efficiency/intent gate still forbids push, label, dispatch, rerun,
+  merge, sync, or publication. The 3,000 cap applies fail-closed if visibility/billing changes.
+
+### Preserved hosted evidence
+
+- PR #32 remains open from `openai/mac` into `develop`
+  `38447019517147319bd08c598202d097ee866874`; do not update or merge it while frozen.
+- Run `32420327368`, attempt 1, remains one no-retry incomplete-evidence red. Root/static/Chrome
+  Smoke/Chrome Glass passed. Compendium job `96590728191` hit its 40-minute ceiling with its report
+  RUNNING/lifecycle-pending, six diagnostic PNGs, and zero terminal profiles/outcomes or product
+  verdict. Its spending annotation is historical and does not override current public billing.
+
+### Bounded shutdown and fail-closed ruler
+
+- Commit `aecf386…` gives the Compendium HTTP server one immutable monotonic 2,000 ms close
+  deadline. Just-before succeeds. Exact, late, missing, or error callbacks force
+  `closeAllConnections()` exactly once and reject; settle-before-force plus stale/reentrant guards
+  prevent later timer/callback delivery from changing the result.
+- Static-server cleanup remains terminal lifecycle ownership. A cleanup red suppresses PASS,
+  discards candidate/baseline samples, publishes truthful instrument evidence, and releases the
+  workspace lock; it is never product or numeric evidence.
+- Frozen SHA-256 authorities: collector `0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b`;
+  selftest `0bbb35417182ddfd5465206c2dd5f9f75537c67fec3053e8d8e79935db32b15b`;
+  measurement `23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92`;
+  budget `c711c8a56072e5a18e60eb2219e7933196a603f8873b9659bef2d4ed186171e0`;
+  focused test `2f3f8dcee6ffdd7e201cf2a51265b26c30ec23834f51418f5ae6b1539794143c`.
+  Producer `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`
+  and exact Arc-local Edge `.86` authority are unchanged.
+- Candidate24/25/26 plus baseline10 are truthful history for the prior collector/measurement only.
+  Current state is `calibration-required`: samples empty, ceilings null, paired baseline
+  `measurement-required` with null collector commit and empty samples. Certification refuses
+  before browser launch.
+
+### Next bounded sequence
+
+1. Finish/review this synchronized documentation batch locally; no browser or hosted run.
+2. From one later clean committed source and one fresh exact Edge `.86` materialization per launch,
+   run serial local IDs `c27`, `baseline11`, `c28`, `c29`, each once with zero retries. First red,
+   authority mismatch, cleanup failure, or ambiguity stops.
+3. Only after all four capsules audit cleanly may a separate activation embed them, restore strict
+   ceilings above candidate maxima, preserve all baseline faults, and run focused controls.
+4. After activation, one exact-head local battery and one explicitly authorized hosted attempt
+   remain. Fresh phone/desktop list/detail/focus images still need HUMAN review. Arc 1B follows
+   terminal-green PR #32; no release, deployment, version bump, or `main` work is authorized.
+
+## Parallel Git handoff — exact budget-aware fields
+
+**Current side:** OpenAI/Codex macOS owns this local batch on `openai/mac`. Implementation
+`aecf386…` is committed locally; synchronized docs remain working-copy changes. Nothing is pushed.
+
+**GitHub step:** None. Do not push, apply `actions-budget-approved`, dispatch, rerun, merge, or
+publish while `FROZEN`.
+
+**PR details:** existing PR #32; base `develop`; source `openai/mac`; title
+**Arc 1A — Bound Compendium portraits and measured resources**. Remote PR #32 contains neither
+local commit; no description update is authorized yet.
+
+**Other side:** Anthropic/Claude Code need not be opened now. It may resume only in its own
+worktree after an authorized handoff; until then it does not have the local commits.
+
+**Release status:** `develop`, `main`, and both sites are unchanged. No release, version bump,
+deployment, or publication was performed or authorized.
+
+**Actions budget:** `FROZEN`; public/standard runners free while visibility holds; 3,000 remains
+the fail-closed private-repository cap. Authorized hosted runs: zero.
+<!-- END VERBATIM ROADMAP BLOCK: STATIC-SERVER SHUTDOWN RECALIBRATION -->
+
+## ARCHIVED 2026-08-20 — GitHub Actions conservation freeze handoff
+
+> Moved byte-verbatim from ROADMAP.md after the local Actions guard landed and the bounded
+> Compendium static-server shutdown repair moved Arc 1A into fresh fail-closed recalibration.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: GITHUB ACTIONS CONSERVATION FREEZE -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 GITHUB ACTIONS CONSERVATION FREEZE ◀◀◀
+
+### Cold start and non-negotiable budget state
+
+- Read `GITHUB_ACTIONS_BUDGET.md` before any GitHub operation, then this handoff,
+  `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and the owning agent instructions.
+- **Current Actions mode is `FROZEN`.** Nick confirmed the repository is public as of 2026-08-20,
+  so standard GitHub-hosted runners are free while it remains public. The reported 3,000 allowance
+  remains a fail-closed cap if the repository becomes private or billing is ambiguous. The freeze
+  remains an efficiency/intent gate until Nick explicitly lifts it: do not push, label, dispatch,
+  rerun, merge, sync, or publish. Continue development and evidence locally.
+- OpenAI/Codex macOS owns
+  `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`. At the freeze boundary,
+  local and `origin/openai/mac` were exact `731b2e2ab974252b410ba97dbdbe3ec6d3ee9c20`
+  with a clean worktree. Recheck local state; avoid repeated GitHub polling.
+
+### PR #32 evidence boundary
+
+- PR #32 remains open from `openai/mac` into `develop`
+  `38447019517147319bd08c598202d097ee866874`. Do not merge it.
+- Exact head `731b2e2…` completed one full local battery in the required order. Its 111-entry
+  checksum manifest is `65e75e516d5e8173c16d6c887780d331f89bf982edf371cee399b7a50778620d`.
+  That local evidence remains truthful but is not hosted CI or merge authority.
+- GitHub Actions run `32420327368`, attempt 1, tested the current PR head/merge. Root gates,
+  v2 static, Chrome Smoke, and Chrome Glass were green. Compendium job `96590728191` was canceled
+  at its 40-minute job ceiling while the report remained `running` and lifecycle-pending; the
+  exact Edge authority matched, six review PNGs existed, but zero terminal profiles/outcomes or
+  product verdict were published. Full-job log/report/artifact ZIP SHA-256 values are
+  `b05cd9dd…` / `896f3217…` / `3c7317e0…`. The verifier correctly rejected absent cleanup/
+  release authority. Persona was skipped. The summary `battery` job separately could not start
+  because GitHub reported the account billing/spending limit. Preserve that exact historical
+  annotation; it does not mean standard hosted runners are currently billed while the repository
+  remains public.
+- Preserve that as one no-retry hosted timeout/incomplete-evidence red. Do not increase a timeout,
+  rerun the unchanged head, or call its six diagnostic PNGs certification. The Compendium timeout
+  diagnosis remains local follow-up after this emergency budget batch.
+
+### Local budget-protocol transition
+
+- The completed local, unpushed batch makes ordinary pushes, PR synchronization, merges, sync,
+  and publication start zero hosted runners by default after rollout. `test.yml` uses one tiny
+  authorization job followed by one serial fail-fast job. Only a successful owner-label plus
+  branch/fork authorization emits the required `battery` name; other events are
+  `budget-not-authorized`. The dependency preserves the Arc-local Edge owner's sealed no-`if`
+  workflow contract; cheap/static checks run before browsers.
+- Branch-flow, agent-sync, and manual-preview workflows are manual-only with a required,
+  false-default budget token. Branch direction is also the first battery step. Automatic branch
+  publication is hard parked pending a separately reviewed exact-SHA promotion contract.
+- `tools/actions-budget-policy.js --selftest` inventories every workflow and mutation-tests
+  automatic triggers, default-run inputs, job guards, decoys, duplicate concurrency, the single
+  battery runner, the parked publisher, and unknown workflows. Root validation runs the real gate.
+- These protections are local until pushed. The remote still contains the old automatic triggers.
+  While mode is frozen, do not push this transition. Because the repository is public, disabling
+  Actions is not needed merely to protect private minutes; a later rollout still requires one
+  explicit Git handoff authorization and must leave the battery label absent.
+
+### Next bounded sequence
+
+1. Keep the completed browser-free policy/workflow/docs batch local and unpushed while `FROZEN`.
+   Its 63 negative controls, YAML parse, Compendium workflow control, root validate, paired-agent
+   instruction identity, and diff checks passed without a hosted run.
+2. Diagnose PR #32's preserved Compendium timeout locally; do not rerun the unchanged head.
+3. Only after Nick explicitly authorizes the rollout may the guarded workflow commit reach GitHub.
+   Public standard-runner billing does not lift `FROZEN`. Record exact head/base, configured maximum
+   runner minutes, one run, no retry, and label removal. PR #32's Compendium timeout must be
+   diagnosed/fixed locally before any new battery authorization.
+4. Fresh phone/desktop list, focus-pinned, and detail images still require separate HUMAN judgment.
+   Arc 1B follows PR #32 closure; no release, version bump, deployment, or `main` work is in scope.
+
+## Parallel Git handoff — exact budget-aware fields
+
+**Current side:** OpenAI/Codex on macOS owns the completed local GitHub Actions conservation batch
+on `openai/mac`. Exact pushed head `731b2e2…` and PR #32 remain blocked. The unpushed local commit
+must not reach GitHub while frozen.
+
+**GitHub step:** None. Do not open Actions, apply `actions-budget-approved`, dispatch, rerun,
+push, merge, or publish. Repository-wide Actions disablement was not performed because it is a
+broad persistent settings change and needs Nick's explicit approval of that exact consequence.
+
+**PR details:** existing PR #32; base `develop`; source `openai/mac`; title
+**Arc 1A — Bound Compendium portraits and measured resources**. Do not update or merge it during
+the freeze. No new PR is needed for the local guard batch yet.
+
+**Other side:** Anthropic/Claude Code need not be opened now. It does not have this local budget
+transition and must not push/sync on the assumption that it does. It may continue unrelated local
+work in its own clean worktree under the same `FROZEN` law.
+
+**Release status:** `develop`, `main`, and both sites are unchanged. No release, version bump,
+deployment, site write, or publication is authorized.
+
+**Actions budget:** `FROZEN`; repository public, so standard hosted runners are free while that
+visibility holds; 3,000 remains the fail-closed private-repository cap. Authorized hosted runs: zero.
+<!-- END VERBATIM ROADMAP BLOCK: GITHUB ACTIONS CONSERVATION FREEZE -->
+
+## ARCHIVED 2026-08-20 — PR #32 active-ruler exact-head battery handoff
+
+> Moved byte-verbatim from ROADMAP.md after exact head `731b2e2…` completed the local battery
+> and the corresponding hosted attempt ended at the 40-minute Compendium job ceiling.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR32 ACTIVE RULER EXACT-HEAD BATTERY -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 ACTIVE RULER AND EXACT-HEAD BATTERY ◀◀◀
+
+### Cold start
+
+- Verify repository, branch, upstream, and worktree live. OpenAI/Codex macOS owns
+  `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`; other agents use their own
+  worktrees under `PARALLEL_GIT_PROTOCOL.md`.
+- Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, `AGENTS.md` or `CLAUDE.md`,
+  `ART_DIRECTION.md`, `UI_PRESENTATION.md`, `celestial-frontier-codebase-reference.md`,
+  `port/V2_PROGRAM_ROADMAP.md`, `port/RUBRICS.md`, `port/v2/README.md`, `port/v2/DEVIATIONS.md`,
+  `port/DEVELOPMENT_PREVIEW.md`, and `tools/README.md`.
+- Resolve GitHub and ignored artifacts live. Never reuse an earlier green report for a newer source,
+  producer, budget, workflow, or commit; never retry an unchanged red.
+
+### Preserved history and completed calibration
+
+- D-TRAIN-1 remains integrated through PR #31 at exact `develop` merge
+  `38447019517147319bd08c598202d097ee866874`; PR #32 remains the active OpenAI branch. Preserve
+  exact-89's owned-shutdown false-green and candidate20's 78/78 clean-lifecycle result on the wrong,
+  self-updated Edge `.93`. Candidate20 carriers `175fac5e…` / `916dd12a…` / `7462144b…` remain
+  quarantined instrument evidence, never calibration, certification, or product failure.
+- Candidate21/22/23 and paired baseline9 remain individually clean diagnostic history that could
+  not cross the corrected path/UA contract. Raw executable path and user agent remain mandatory
+  per-run provenance; canonical product/revision/JavaScript/protocol remain shared authority.
+- Clean exact source `fb321f28979c38d48f321d3cddeb48170b7e5ebc` ran candidate24, paired
+  baseline10, candidate25, and candidate26 exactly once each with zero retries. Each launch used a
+  distinct fresh Edge `.86` materialization. All three candidates completed 78/78 outcomes with
+  zero findings, complete lifecycle, and six verified PNGs; baseline10 measured legacy
+  `38447019517147319bd08c598202d097ee866874` and retained all four sealed faults.
+
+### Frozen active ruler
+
+- Explicit top-level authority remains `Edg/151.0.4129.86`, revision
+  `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript `15.1.23.7`, protocol `1.3`. Candidate
+  and paired-baseline collection still reject mismatch before profile collection, and every raw
+  capsule and complete report must replay that exact authority with a true match.
+- Active budget/schema/contract/collector/selftest/test SHA-256 values are `70145575…` /
+  `695d2529…` / `e7dfea1d…` / `07131f5e…` / `f86db74a…` / `0fa2e89d…`. Measurement authority is
+  `2318f57bcadd83b2f540e3a2d1b8bea54ca6c88d1df8715318a341d4e2ae7cf2`; producer remains
+  `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`, and browser CDP remains
+  `6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce`.
+- Candidate samples are 3/3 per profile; paired baseline10 is measured 1/1 with collector
+  `fb321f2…`. Every retained ceiling is strictly above the three-candidate maximum. Baseline10
+  breaches 14 phone and 13 desktop fields while preserving all four faults.
+- The focused activation check initially reported 12/13 because its positive path/UA control filled
+  only the synthetic phone samples while validating an active ruler. Adding the matching synthetic
+  desktop identities made that same control 13/13. This one-line test-fixture correction changed no
+  budget values or browser evidence and required no browser rerun.
+
+### Next bounded sequence and open human scope
+
+- Commit the active ruler, focused-test correction, and synchronized references as one exact head.
+  Run one complete exact-head local battery, push that unchanged head to existing PR #32, and require one
+  corresponding PR test-merge CI attempt. First red stops. Fresh selected-head phone/desktop list,
+  focus-pinned, and detail images still require separate HUMAN judgment. Arc 1B gameplay begins
+  immediately after terminal-green PR #32 closes; no broader timing work, production release,
+  version bump, or deployment is in scope.
+- No timeout, launch argument, workflow, product byte, producer, browser CDP, fallback, retry, or
+  observation policy changed during calibration or activation.
+
+## Parallel Git handoff — exact five fields
+
+**Current side:** OpenAI/Codex on macOS owns PR #32. Exact-89, candidate20, and the unusable but
+individually clean candidate21/22/23+baseline9 set are preserved history. Exact source `fb321f2…`
+completed candidate24/25/26+baseline10; the scoped working copy contains their active ruler and the
+focused synthetic-desktop correction, not yet the clean committed activation head.
+
+**GitHub step:** None until the activation commit's exact head passes its required local battery.
+Push only that unchanged head to existing PR #32 and require one corresponding test-merge attempt;
+do not rerun clean calibration, create a new PR, or touch `main`.
+
+**PR details:** base `develop`; source `openai/mac`; existing PR #32 title
+**Arc 1A — Bound Compendium portraits and measured resources**. Its description must preserve runs
+`32383320206`, `32394244417`, exact-89's shutdown false-green, candidate20's wrong-browser
+quarantine, the candidate21/22/23+baseline9 shared-identity finding, and active candidate24/25/26+
+baseline10 ruler; name the explicit runtime pin, measurement boundary, and unchanged producer. No
+release or deployment is included.
+
+**Other side:** Anthropic/Claude Code does not have this PR #32 follow-up and need not be opened now.
+Only after the reviewed exact head merges to `develop` may Claude fetch and merge latest
+`origin/develop` into a separate clean `anthropic/*` branch. Never copy files between worktrees.
+
+**Release status:** D-TRAIN-1 is integrated at `3844701…`; Arc 1A/PR #32 remains an OpenAI branch
+candidate. Arc 1B follows immediately after terminal-green PR #32. No `develop`→`main` merge,
+production release, version bump, deployment, or site write was performed or authorized.
+<!-- END VERBATIM ROADMAP BLOCK: PR32 ACTIVE RULER EXACT-HEAD BATTERY -->
+
+
+## ARCHIVED 2026-08-20 — PR #32 explicit-browser-authority recalibration handoff
+
+> Moved byte-verbatim from ROADMAP.md after candidate21/22/23 and baseline9 exposed that fresh
+> executable paths and host user agents were incorrectly treated as shared browser identity.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR32 EXPLICIT BROWSER AUTHORITY RECALIBRATION HANDOFF -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 EXPLICIT BROWSER AUTHORITY RECALIBRATION ◀◀◀
+
+### Cold start
+
+- Verify repository, branch, upstream, and worktree live. OpenAI/Codex macOS owns
+  `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`; other agents use their own
+  worktrees under `PARALLEL_GIT_PROTOCOL.md`.
+- Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, `AGENTS.md` or `CLAUDE.md`,
+  `ART_DIRECTION.md`, `UI_PRESENTATION.md`, `celestial-frontier-codebase-reference.md`,
+  `port/V2_PROGRAM_ROADMAP.md`, `port/RUBRICS.md`, `port/v2/README.md`, `port/v2/DEVIATIONS.md`,
+  `port/DEVELOPMENT_PREVIEW.md`, and `tools/README.md`.
+- Resolve GitHub and ignored artifacts live. Never reuse an earlier green report for a newer source,
+  producer, budget, workflow, or commit; never retry an unchanged red.
+
+### Preserved exact reds and candidate20 quarantine
+
+- D-TRAIN-1 remains integrated through PR #31 at exact `develop` merge
+  `38447019517147319bd08c598202d097ee866874`; PR #32 remains the active OpenAI branch. Exact-89's
+  78/78 product-complete owned-shutdown red and its lifecycle repair remain preserved history.
+- Clean exact source `c49e525535bbb5de70240b922729b5b0a0ec70e5` ran
+  `20260820-arc1a-terminal-lifecycle-candidate20` once without retry. It completed 78/78 outcomes
+  with zero findings, six PNGs, and complete owned lifecycle, but the reused `.86`-named app had
+  self-updated to `Edg/151.0.4129.93`, revision
+  `@4a822b1bb7a8566144cff23f6c09a2ab162665f9`. Its calibration report carried null budget/browser
+  authority, so this wrong browser was allowed to collect profiles.
+- Preserve candidate20 report/sample/terminal-log SHA-256
+  `175fac5e3ab71d2e35578235033af59320b7db519e59ec7383bd31c584ccdc5e` /
+  `916dd12a288f538148b3d2d4d1b9bd5763800cbd8c54c21f166234ebb0cf9624` /
+  `7462144b60a8397404b8000ca859b230ba0ad1ea40c7ca6bff9215864e1f7e91`.
+  Candidate20 is quarantined as wrong-browser instrument evidence—not calibration, certification,
+  or product failure. Baseline9 did not run.
+
+### Frozen explicit browser-authority boundary
+
+- The budget now requires one explicit top-level browser authority in calibration-required and
+  active states: `Edg/151.0.4129.86`, revision
+  `@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript `15.1.23.7`, protocol `1.3`. Candidate
+  and paired-baseline collection compare the live browser before profile collection; mismatch
+  publishes early instrument-fail evidence and collects no profile. Every embedded raw capsule and
+  complete product/calibration report must replay that authority with a true match.
+- Frozen budget/schema/contract/collector/selftest/test SHA-256 values are `71ffa46f…` /
+  `695d2529…` / `2620ebf6…` / `07131f5e…` / `240bbe17…` / `6991f6ce…`. Measurement authority is
+  `825fb386127f2c8b43a05b0adcb883e9fcab635345831bdfbd0cd5dc051d71a5`; producer remains
+  `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`, and browser CDP remains
+  `6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce`.
+- The ruler remains fail-closed: candidate samples are empty, ceilings are null, and the paired
+  baseline is `measurement-required`. Historical candidate20 and older rulers cannot cross this
+  authority. No timeout, launch argument, product byte, producer, retry, fallback, or observation
+  policy changed; this is provenance correctness, not timing optimization.
+
+### Next bounded sequence and open human scope
+
+- Freeze one clean committed repair source. For each launch, materialize an unlaunched exact `.86`
+  app afresh from package `b70216e0…` and verify Info.plist `d2c13c8e…`, executable `69349ca6…`,
+  framework `be28b9b6…`, the single `.86` version directory, and `Versions/Current → .86`; never
+  reuse a launched extraction. Runtime identity remains the final drift check.
+- Run `20260820-arc1a-browser-authority-candidate21`, paired
+  `20260820-arc1a-browser-authority-baseline9`, then independent candidate22 and candidate23 from
+  that identical committed source, exactly once each with zero retries. First red, ambiguity,
+  authority/source mismatch, cleanup failure, or publication failure stops.
+- If and only if the four runs audit cleanly, activate their ruler, commit it, run one complete
+  exact-head local battery, push that unchanged head to existing PR #32, and require one
+  corresponding PR test-merge CI attempt. First red stops. Fresh selected-head phone/desktop list,
+  focus-pinned, and detail images still require separate HUMAN judgment. Arc 1B gameplay begins
+  immediately after terminal-green PR #32 closes; no broader timing work, production release,
+  version bump, or deployment is in scope.
+
+## Parallel Git handoff — exact five fields
+
+**Current side:** OpenAI/Codex on macOS owns PR #32. Exact-89 and candidate20 are preserved reds.
+The scoped working copy contains the explicit browser-authority repair and fail-closed ruler; it is
+not yet the clean committed calibration source.
+
+**GitHub step:** None until baseline9/candidate21/22/23 activate the new authority and the resulting
+exact head passes its required local battery. Push only that unchanged head to existing PR #32 and
+require one corresponding test-merge attempt; do not reuse candidate20, create a new PR, or touch
+`main`.
+
+**PR details:** base `develop`; source `openai/mac`; existing PR #32 title
+**Arc 1A — Bound Compendium portraits and measured resources**. Its description must preserve runs
+`32383320206`, `32394244417`, exact-89's shutdown false-green, and candidate20's wrong-browser
+quarantine; name the explicit runtime pin, new measurement boundary, and unchanged producer. No
+release or deployment is included.
+
+**Other side:** Anthropic/Claude Code does not have this PR #32 follow-up and need not be opened now.
+Only after the reviewed exact head merges to `develop` may Claude fetch and merge latest
+`origin/develop` into a separate clean `anthropic/*` branch. Never copy files between worktrees.
+
+**Release status:** D-TRAIN-1 is integrated at `3844701…`; Arc 1A/PR #32 remains an OpenAI branch
+candidate. Arc 1B follows immediately after terminal-green PR #32. No `develop`→`main` merge,
+production release, version bump, deployment, or site write was performed or authorized.
+<!-- END VERBATIM ROADMAP BLOCK: PR32 EXPLICIT BROWSER AUTHORITY RECALIBRATION HANDOFF -->
+
+## ARCHIVED 2026-08-20 — PR #32 shutdown-lifecycle recalibration handoff
+
+> Moved byte-verbatim from ROADMAP.md after candidate20 exposed the calibration browser-authority
+> fail-open and superseded this transition.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR32 SHUTDOWN LIFECYCLE RECALIBRATION HANDOFF -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 SHUTDOWN LIFECYCLE RECALIBRATION ◀◀◀
+
+### Cold start
+
+- Verify repository, branch, upstream, and worktree live. OpenAI/Codex macOS owns
+  `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`; other agents use their own
+  worktrees under `PARALLEL_GIT_PROTOCOL.md`.
+- Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, `AGENTS.md` or `CLAUDE.md`,
+  `ART_DIRECTION.md`, `UI_PRESENTATION.md`, `celestial-frontier-codebase-reference.md`,
+  `port/V2_PROGRAM_ROADMAP.md`, `port/RUBRICS.md`, `port/v2/README.md`, `port/v2/DEVIATIONS.md`,
+  `port/DEVELOPMENT_PREVIEW.md`, and `tools/README.md`.
+- Resolve GitHub and ignored artifacts live. Never reuse an earlier green report for a newer source,
+  producer, budget, workflow, or commit; never retry an unchanged red.
+
+### Preserved exact post-measurement instrument red
+
+- D-TRAIN-1 remains integrated through PR #31 at exact `develop` merge
+  `38447019517147319bd08c598202d097ee866874`; PR #32 remains the active OpenAI branch. Exact local
+  head `89bfa0581f7eb33c90a79bb8b0ead554626197e7`, run
+  `20260820-pr32-89bfa05-compendiummem`, completed all 78/78 product outcomes with zero findings and
+  wrote six review PNGs. Its owned browser shutdown then exited 2.
+- The terminal log SHA-256 is `b0bb8abcc77c394ba887b73ce192a8e2cd9584a402d7b97f80768b8e7049458f`.
+  Report `66ba13665bf5dac4d08907ee3b0c2abb7fec54d06c94fe5d59948bb5c4749888` and verifier
+  `98664dca6b07c9937bfa1d0f13aacd0d9364cb793a5a9be67c98a9507ca3d8d4` are false-green because
+  success was published before cleanup. Preserve this as one-attempt/no-retry post-measurement
+  instrument red—not certification, calibration, or a product failure.
+
+### Frozen lifecycle repair and authority boundary
+
+- `browsercdp.mjs` now distinguishes direct-child process exit from later stdio/`close`: TERM→KILL
+  is judged on exit, then owned stderr is released and close remains required. The collector keeps
+  reports RUNNING/lifecycle-pending until browser/server cleanup and workspace-lock release; only
+  then may it publish a sample or terminal success. Cleanup, release, sample, and report-publication
+  failures suppress success, and the verifier requires terminal lifecycle authority.
+- Frozen SHA-256 values are browser CDP `6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce`,
+  collector `f4ad842c8e326bb46a54afdbc0c2aba9b748b69df618d01203593126a959796e`, and selftest
+  `2713ed106a1316fb3eb5efbc1eb2adcb53eaba18432040ce1e2a4e5a90b4df6f`. Measurement authority is
+  therefore `a3b3bb9f1e32f13a13bcffd09525e29494d694cbae9886060068f693b0b25e6d`; producer remains
+  `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`.
+- Fail-closed budget/test `ae4ab918471d4e3adec679d4d0a840e227f0c90d513c841eb7711626ce75a833` /
+  `60fa5e9f91f148cace3bc117f742b0a67bf3b771bdbbc1f4a6f3a3b8cbfd6a23` deliberately require
+  calibration: candidate samples are empty, ceilings are null, and the paired baseline is
+  `measurement-required`. Baseline8/candidate17/18/19 and measurement/budget/test
+  `6ba58522…` / `74e88c2b…` / `485be9da…` remain truthful history only.
+- No timeout, browser/package/version, launch argument, product byte, producer, retry, fallback, or
+  observation policy changed. This is lifecycle correctness, not another timing-optimization loop.
+
+### Next bounded sequence and open human scope
+
+- Freeze one clean committed repair source, then collect paired baseline9 plus independent
+  candidate20/21/22 under exact Edge .86 exactly once each with zero retries. First red, ambiguity,
+  source mismatch, cleanup failure, or publication failure stops; do not reuse the false-green
+  exact-89 artifacts or an older ruler.
+- If and only if the four runs audit cleanly, activate their ruler, commit it, run one complete
+  exact-head local battery, push that unchanged head to existing PR #32, and require one
+  corresponding PR test-merge CI attempt. First red stops. Fresh selected-head phone/desktop list,
+  focus-pinned, and detail images still require separate HUMAN judgment. Arc 1B gameplay begins
+  after PR #32 closes; no broader timing work, production release, version bump, or deployment is
+  in scope.
+
+## Parallel Git handoff — exact five fields
+
+**Current side:** OpenAI/Codex on macOS owns PR #32. Exact `89bfa05…` and its post-measurement
+shutdown red are preserved. The scoped working copy contains the frozen lifecycle repair and a
+fail-closed calibration-required ruler; it is not yet the clean committed calibration source.
+
+**GitHub step:** None until baseline9/candidate20/21/22 activate the new authority and the resulting
+exact head passes its required local battery. Push only that unchanged head to existing PR #32 and
+require one corresponding test-merge attempt; do not rerun exact-89, create a new PR, or touch
+`main`.
+
+**PR details:** base `develop`; source `openai/mac`; existing PR #32 title
+**Arc 1A — Bound Compendium portraits and measured resources**. Its description must preserve runs
+`32383320206`, `32394244417`, and exact-89's shutdown false-green; name the displayed-demand repair,
+the lifecycle repair, new measurement boundary, and unchanged producer. No release or deployment
+is included.
+
+**Other side:** Anthropic/Claude Code does not have this PR #32 follow-up and need not be opened now.
+Only after the reviewed exact head merges to `develop` may Claude fetch and merge latest
+`origin/develop` into a separate clean `anthropic/*` branch. Never copy files between worktrees.
+
+**Release status:** D-TRAIN-1 is integrated at `3844701…`; Arc 1A/PR #32 remains an OpenAI branch
+candidate. No `develop`→`main` merge, production release, version bump, deployment, or site write
+was performed or authorized.
+<!-- END VERBATIM ROADMAP BLOCK: PR32 SHUTDOWN LIFECYCLE RECALIBRATION HANDOFF -->
+
+## ARCHIVED 2026-08-20 — PR #32 exact-Edge package-normalization handoff
+
+> Moved byte-verbatim from ROADMAP.md after exact `89bfa05…` reached a post-measurement owned-
+> shutdown instrument red and superseded this transition.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR32 EXACT-EDGE PACKAGE NORMALIZATION HANDOFF -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 EXACT-EDGE PACKAGE NORMALIZATION ◀◀◀
+
+### Cold start
+
+- Verify repository, branch, upstream, and worktree live. OpenAI/Codex macOS owns
+  `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`; other agents use their own
+  worktrees under `PARALLEL_GIT_PROTOCOL.md`.
+- Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, `AGENTS.md` or `CLAUDE.md`,
+  `ART_DIRECTION.md`, `UI_PRESENTATION.md`, `celestial-frontier-codebase-reference.md`,
+  `port/V2_PROGRAM_ROADMAP.md`, `port/RUBRICS.md`, `port/v2/README.md`, `port/v2/DEVIATIONS.md`,
+  `port/DEVELOPMENT_PREVIEW.md`, and `tools/README.md`.
+- Resolve GitHub and ignored artifacts live. Never reuse an earlier green report for a newer source,
+  producer, budget, workflow, or commit; never retry an unchanged red.
+
+### Exact activation head and preserved CI red
+
+- D-TRAIN-1 remains integrated through PR #31 at exact `develop` merge `38447019517147319bd08c598202d097ee866874`.
+  PR #32 remains the active OpenAI branch. Exact pushed activation head
+  `96464d5e4ca59074c0d8d59719a90a5dedc2dd2d` completed its full local battery with the active
+  baseline8/candidate17/18/19 ruler, Compendium 78/78 and named verification, one-attempt Smoke,
+  full Glass, nine joined personas, root layout 787/787, and verified nonpublishable preview work.
+- Corresponding GitHub Actions run `32394244417`, attempt 1, tested synthetic merge `63665b6…`.
+  Root, v2-static, Chrome Smoke, and Chrome Glass were green. Exact-Edge Compendium job
+  `96507263338` downloaded and SHA-verified the pinned `.86` package, verified its installed version
+  and executable, and passed browser-path plus portable preflight controls. The live one-launch
+  preflight then found no CDP endpoint inside the unchanged 45-second startup envelope. The
+  candidate never ran; no report, product outcome, or review PNG exists. Verifier/upload failures
+  are cascades. Preserve this as a one-attempt, zero-retry environment/instrument red, not a product
+  verdict.
+
+### One bounded package-normalization hypothesis
+
+- The passing hosted image `ubuntu24/20260810.271` carried Edge `.78`; installing the pinned `.86`
+  package performed unpack/setup, and exact Edge became live-control ready in all four observed runs.
+  Image `ubuntu24/20260816.277` already carried `.86`; plain `apt-get install` reported “already the
+  newest version,” performed no unpack/setup, and exact Edge became live-control ready in none of
+  three observed runs. The current failure spans multiple west-region pools; the evidence does not
+  isolate image revision from host-pool placement.
+- The only scoped normalization is to force `apt-get install --reinstall` from the same
+  SHA-verified `.86` package in both `.github/workflows/test.yml` and
+  `.github/workflows/dev-preview-package.yml`, then retain the exact package-version and executable
+  checks. This is a strong environment hypothesis, not a proven fix until one matching changed-head
+  CI run reaches the live preflight.
+- Do not change the Edge package/version or Arc-local product/revision/JS/protocol authority; the
+  45/15/5/2-second preflight, 15-second candidate startup, 2-second product observation, one-attempt/
+  zero-retry policy, launcher, preflight, collector, product, measurement `6ba58522…`, producer
+  `d3223177…`, budget `74e88c2b…`, and test `485be9da…` remain unchanged. No warmup, sleep, relaunch,
+  fallback, DBus wrapper, recalibration, or broader infrastructure loop belongs in this batch.
+
+### Next bounded sequence and open human scope
+
+- Keep the two workflows synchronized. The preflight selftest now statically requires each unique
+  owned install step's ordered exact URL/SHA/download/hash/reinstall/version/executable chain and
+  following preflight; per-workflow removal and outside-step decoys fail. That control is green but
+  proves only workflow structure. Review the diff, complete browser-free/static checks, then run the
+  required exact-head local battery and push one changed head to existing PR #32 for one corresponding
+  test-merge CI attempt. First red stops and is preserved.
+- A terminal-green exact-head PR battery remains required before merge. The fresh phone/desktop list,
+  focus-pinned, and detail six-image HUMAN judgment remains separately open. Arc 1B gameplay starts
+  only after PR #32 closes in order; no Cargo, Shipyard, combat, physical-device heat/battery,
+  production release, version bump, or deployment is included here.
+
+## Parallel Git handoff — exact five fields
+
+**Current side:** OpenAI/Codex on macOS owns PR #32. Exact head `96464d5…` and run `32394244417`
+are preserved; the scoped working copy normalizes the pinned Edge package in both workflows and
+adds the fail-closed static workflow control while refreshing current documentation. It is not yet
+a committed, pushed, or CI-proven replacement head.
+
+**GitHub step:** None until the exact new head passes its required local battery and is pushed to
+existing PR #32. The deterministic workflow control is implemented and browser-free green. Then require
+one corresponding PR test-merge attempt; do not rerun `96464d5…`, mark a red head Ready, create a
+new PR, or touch `main`.
+
+**PR details:** base `develop`; source `openai/mac`; existing PR #32 title
+**Arc 1A — Bound Compendium portraits and measured resources**. Its description must preserve runs
+`32383320206` and `32394244417`, name the displayed-demand repair and unchanged authorities, and
+describe `--reinstall` as an unproved hosted-image normalization pending exact-head CI. No release or
+deployment is included.
+
+**Other side:** Anthropic/Claude Code does not have this PR #32 follow-up and need not be opened now.
+Only after the reviewed exact head merges to `develop` may Claude fetch and merge latest
+`origin/develop` into a separate clean `anthropic/*` branch. Never copy files between worktrees.
+
+**Release status:** D-TRAIN-1 is integrated at `3844701…`; Arc 1A/PR #32 remains an OpenAI branch
+candidate. No `develop`→`main` merge, production release, version bump, deployment, or site write
+was performed or authorized.
+<!-- END VERBATIM ROADMAP BLOCK: PR32 EXACT-EDGE PACKAGE NORMALIZATION HANDOFF -->
+
+## ARCHIVED 2026-08-20 — PR #32 product resolution-demand repair handoff
+
+> Moved byte-verbatim from ROADMAP.md after exact activation head `96464d5…` and its preserved
+> GitHub Actions run `32394244417` superseded this live transition.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR32 PRODUCT RESOLUTION-DEMAND REPAIR HANDOFF -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 PRODUCT RESOLUTION-DEMAND REPAIR ◀◀◀
+
+### Cold start
+
+- Verify the repository and branch live. OpenAI/Codex macOS owns
+  /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac; other agents use their own
+  worktrees and branches under PARALLEL_GIT_PROTOCOL.md.
+- Read this handoff, PROCESS_LAWS.md, PARALLEL_GIT_PROTOCOL.md, AGENTS.md or CLAUDE.md,
+  ART_DIRECTION.md, UI_PRESENTATION.md, celestial-frontier-codebase-reference.md,
+  port/V2_PROGRAM_ROADMAP.md, port/RUBRICS.md, port/v2/README.md, port/v2/DEVIATIONS.md, and
+  tools/README.md.
+- Resolve Git, PR, checks, artifacts, and publication live. Ignored browser reports bind only the
+  exact run id, source, inputs, budget bytes, fixture, browser build, and review files they name.
+  Never reuse an earlier green report for a newer source, producer, budget, or commit.
+
+### Preserved exact red and repair boundary
+
+- D-TRAIN-1 is integrated through PR #31 at exact develop merge
+  `38447019517147319bd08c598202d097ee866874`, the Arc 1A broken-baseline product authority.
+  PR #32 remains the active OpenAI branch. Exact pushed head
+  `139ce2f9b1bad7a9f81ffdaf07cf9452efb19ccf` passed its complete local battery once, including
+  Compendium 78/78 plus named verification, one-attempt Smoke, full Glass, nine joined personas,
+  root layout 787/787, and verified nonpublishable preview packaging/browser smoke.
+- Corresponding GitHub Actions run `32383320206`, attempt 1, tested clean synthetic merge
+  `174a914053a6457a33b1401cce3709c235a28409` for pushed head `139ce2f…` under exact
+  Edg/151.0.4129.86 and matching measurement `6ba58522…`, producer `e59685b1…`, and active
+  budget `bb4da2bf0b…`. Phone completed 29 stages through veteran-Earth boot readiness.
+  Planetside thumb settlement's target `Runtime.evaluate` then missed the unchanged 2,000 ms
+  command deadline at `2001.132592` ms while independent root `Browser.getVersion` answered in
+  `10.401960` ms.
+- That terminal carrier is `product-unanswerable`, not instrument/transport or a timing-policy red:
+  zero outcomes, 78 blocked, no review PNG, one attempt, and zero retries. Preserve it without an
+  unchanged retry. Report/log SHA-256 values are
+  `e75d6ca33063bab5e478025e064e90277b85b44c3798a8b557c6ea70e42f668d` /
+  `ca5e14e2f8706b7820984f7902b628a55b5199b209b21ea3c95eb9ac345b873a`; the downloaded artifact
+  zip is `28cf83845bdcd4518c5d9a31ac65822bf7371e7e32f79f81850e3858bab47228`.
+
+### Product resolution-demand repair
+
+- Source audit found that cold Planetside entry always requested the 1024 planet-texture tier before
+  the fitted globe's displayed backing-pixel demand was known. The bounded product repair computes
+  `ceil(diameterCssPx × sceneScale × DPR)` with a finite positive 64px floor. Standard boot demand
+  is 609px on the phone profile and 420px on desktop, selecting the existing 512 tier instead of
+  speculatively starting at 1024.
+- Supported sharpness is preserved. The exact live surface generation plus planet seed and ordinal
+  own the sprite. The owner re-reads the cache after the asynchronous bake and swaps the settled
+  texture; stale world/generation completions cannot publish. Zoom/DPR changes request only a
+  genuinely higher 512/768/1024 tier, suppress duplicate-tier work, and retain the prior tier until
+  its successor settles. Maximum tested phone/desktop zoom demand is 1,248/1,280px, which selects
+  the existing 1024 tier.
+- This changes the game/product and the existing v2.0 development release bullet, not the CDP
+  deadline, retry policy, collector, measurement input, save format, deterministic generation,
+  release identity, or deployment. Worker and painter bytes remain unchanged.
+
+### Active authority and bounded certification
+
+- The product/copy change makes built producer authority
+  `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`: index
+  `dee9af3a18ee0a2513b9ac5d2d0a885040f46008af707f0525a1deeeb502f3bc`, owner
+  `assets/main-Da536xWA.js` /
+  `283828737eefe7774fc27c96319335cb4f1a9433862fe295af56436c5d59031a`, with worker and painter
+  unchanged. Measurement authority remains
+  `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`.
+- Clean committed collector/candidate source
+  `75a996af2fe7c1f22c04324d25df1e93b5b8d551` produced one-attempt/no-retry baseline8 against
+  legacy product `38447019517147319bd08c598202d097ee866874` plus independent candidate17,
+  candidate18, and candidate19 under exact Edge .86. Every candidate replayed 78/78; baseline8
+  retained all four sealed faults and breached 14 phone / 13 desktop ceilings. Report/sample
+  SHA-256 pairs are baseline8 `0a8b831e…` / `a52bccec…`, candidate17 `6b86ca9d…` / `0818c86e…`,
+  candidate18 `a9b28d79…` / `c368ba86…`, and candidate19 `440cb788…` / `abddfa84…`.
+- The active budget/test pair is
+  `74e88c2bbba4cec1a1a3b58ecbe9de3a6f098ae66fad05e7f6dcd4673a945a64` (79,614 bytes) /
+  `485be9da8877c32966972d1f12edcadb3c940ebe777da0e02c5270df41a55fc2` (20,782 bytes). It reuses
+  the prior strict ceilings; all 40 remain above the three-candidate maxima. Phone maxima for page
+  heap / embedder / backing store / aggregate / encoded bytes / warm delta are
+  `7,759,036 / 3,155,752 / 3,079,214 / 12,443,380 / 2,478,772 / 7,008`; desktop maxima are
+  `10,672,452 / 2,990,736 / 4,804,492 / 16,010,775 / 6,608,020 / 312,416`.
+- Ruler activation is browser-free and non-certifying. Commit the unchanged active pair and current
+  documentation to form one exact activation head, then run one complete battery and one
+  corresponding PR test-merge CI attempt from that exact head.
+- First red, ambiguity, source mismatch, or unverifiable carrier stops the transition and is
+  preserved. Do not widen a timing bound, alter CDP/measurement tools, retry an unchanged red, or
+  start another infrastructure loop. After PR #32 closes in order, return to Arc 1B/gameplay.
+
+### Human and scope boundary
+
+- The fresh phone/desktop list, focus-pinned, and detail six-image HUMAN review remains open and
+  cannot be supplied by hashes, dimensions, automated geometry, or model inspection.
+- Arc 1A does not add Cargo, Shipyard, ownership inventory, creature instances, rewards, combat,
+  missions, companions, crafting, research, an Arc 1B combined scene/GPU plateau, physical-device
+  heat/battery evidence, a production release, or deployment.
+
+## Parallel Git handoff — exact five fields
+
+**Current side:** OpenAI/Codex on macOS owns PR #32's bounded product resolution-demand repair and
+active ruler. Product/collector source `75a996af…` now has one no-retry baseline8 plus three
+independent no-retry candidates; active budget/test are `74e88c2b…` / `485be9da…`. Commit the
+activation and documentation together before any exact-head browser certification.
+
+**GitHub step:** None until the activation commit and its one exact-head local battery complete
+under the first-red stop rule. Then push that exact unchanged head to existing PR #32 and require
+one corresponding PR test-merge attempt. Do not create another PR, mark a red head Ready, or touch
+`main`.
+
+**PR details:** base `develop`; source `openai/mac`; existing title
+**Arc 1A — Bound Compendium portraits and measured resources**. Update its description after the
+activation head exists to name run `32383320206`, the displayed-demand/zoom repair, producer
+`d3223177…`, active baseline8/candidate17/18/19 authority, and exact final verification. No release
+or deployment is included.
+
+**Other side:** Anthropic/Claude Code does not have this PR #32 repair and need not be opened now.
+Only after the exact reviewed head merges to `develop` may Claude fetch and merge the latest
+`origin/develop` into a separate clean `anthropic/*` branch under the startup protocol. Never
+copy files from this OpenAI worktree.
+
+**Release status:** D-TRAIN-1 is integrated at `3844701…`. Arc 1A/PR #32 remains an OpenAI branch
+candidate. No `develop`→`main` merge, production release, version bump, manual deployment, or
+production-site write was performed or authorized.
+<!-- END VERBATIM ROADMAP BLOCK: PR32 PRODUCT RESOLUTION-DEMAND REPAIR HANDOFF -->
+
+## ARCHIVED 2026-08-20 — PR #32 final CI-instrument repair handoff
+
+> Moved byte-verbatim from ROADMAP.md when the live handoff approached 400 lines and run
+> `32383320206` superseded its exact-head transition.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR32 FINAL CI-INSTRUMENT REPAIR HANDOFF -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 FINAL CI-INSTRUMENT REPAIR ◀◀◀
+
+### Cold start
+
+- Verify the repository and branch live. OpenAI/Codex macOS owns
+  /Users/nick/Projects/celestial-frontier-openai-mac on openai/mac; other agents use their own
+  worktrees and branches under PARALLEL_GIT_PROTOCOL.md.
+- Read this handoff, PROCESS_LAWS.md, PARALLEL_GIT_PROTOCOL.md, AGENTS.md or CLAUDE.md,
+  ART_DIRECTION.md, UI_PRESENTATION.md, celestial-frontier-codebase-reference.md,
+  port/V2_PROGRAM_ROADMAP.md, port/RUBRICS.md, port/v2/README.md, port/v2/DEVIATIONS.md, and
+  port/DEVELOPMENT_PREVIEW.md.
+- Resolve Git, PR, checks, artifacts, and publication live. Ignored browser reports bind only the
+  exact run id, source, inputs, budget bytes, fixture, browser build, and review files they name.
+  Never reuse an earlier green report for a newer source or budget.
+
+### Integrated foundation and owned branch
+
+- D-TRAIN-1 is integrated through PR #31 at exact develop merge
+  `38447019517147319bd08c598202d097ee866874`, the branch's current base and Arc 1A broken-baseline
+  authority. Completed PR #32 chronologies now live byte-verbatim in the newest sections of
+  `ROADMAP_ARCHIVE.md`; they remain evidence for their named sources and were not deleted or rewritten.
+- PR #32's live boundary is the repaired dedicated-worker product, serviced-turn scheduler, bounded
+  Planetside portrait-stack repair, active fail-closed resource ruler, and three final CI-instrument
+  repairs described below. Historical product, Glass, ruler, foreground, fixture, timer, and first
+  cold-start detail remain byte-verbatim in the archive and in
+  `audits/PR32_FAILURE_REPAIR_REVIEW_2026-08-17.md`.
+- Exact pushed head `c49af5a72a41eebd79ce3975852f3d7c22ab3ac6` completed its full local battery once:
+  Arc-local Edge Compendium 78/78 plus named verifier (report SHA-256
+  `6bfa15afe8379b3c3867865156bc12074eccbbb4e10fdad295259e815983f050`), one-attempt Chrome Smoke
+  with zero findings (`4351d1bf9240b8fa00dbe5ab1e733408fc10ff93478d87086fbad35812b4fccf`), full Glass 12/12 and
+  58/58 (`4215986c7612c0ed5bed63c0e2d8be1f1de7c72ec5a2a59ba16d9a69b447ad`), nine joined personas,
+  root layout 787/787, and verified nonpublishable preview packaging/browser smoke. The separate
+  six-image HUMAN judgment remains open.
+- Corresponding GitHub Actions run `32375329693`, attempt 1, tested synthetic merge
+  `8e09cffe20640e82c7b934df29a40fe22c5326e7` (base `38447019517147319bd08c598202d097ee866874`,
+  head `c49af5a72a41eebd79ce3975852f3d7c22ab3ac6`) once without retry. `v2-static` and `v2-glass`
+  passed. Root job `96445227534` stopped before `DevToolsActivePort` at its 30-second first-launch
+  bound; the valid `instrument-fail` report/job-log SHA-256 values are
+  `500157712b8988372e015f0645e3fbeb53f67f533266391584227fffa3cd01c7` /
+  `b7d7d82336151f829267214381aa23ea84fe54037d7e89a0bf6524a54fc0a123`, with zero viewport
+  outcomes. Compendium job `96445227816` installed exact Edge .86 and opened its live selftest
+  browser under 45 seconds, then its generic launcher's 1.5-second `Runtime.enable` command expired;
+  no candidate, report, product outcome, or retry exists. Job-log SHA-256 is
+  `6b26b83bb577d356b61e23353a501b31a945f7b4597820083928cac35c97513e`.
+- Smoke job `96445227991` ran one 871,609 ms attempt under Chrome 151.0.7922.137 and retained all
+  ten screenshots. Its sole finding was the immediately sampled asynchronous Compendium detail
+  portrait carrying `src length 0`; every other reported Smoke outcome remained clean. Run id is
+  `20260820133818702-2548-507ff6b30f6d`, and report/log SHA-256 values are
+  `3412fcc00fb1b008feccc25fa12befcfb770de358c26be010b4f0632afbc9393` /
+  `2800519eee5febae775e3876fd7696bed95c7373aafdf7c97ac65602f92d4d5e`. The driver pressed Enter,
+  immediately read `src`, and then navigated Back. That one-shot oracle could have sampled the
+  expected pending state and canceled the separately asynchronous 440px owner; because it retained
+  no image state or worker phase, it cannot adjudicate final portrait settlement.
+- The bounded working-tree repair keeps all product and measurement-authority inputs unchanged.
+  Root layout alone owns one 45-second absolute startup envelope with a 15-second socket phase and
+  its existing 30-second command / 5-second shutdown bounds; a portable caller-options control proves
+  exactly one open and no unowned option. The Edge-only Compendium workflow replaces the generic
+  launcher's live selftest with `port/v2/tools/compendiummem-browser-preflight.mjs`: one 45-second
+  cold launch, 15-second socket, sealed 5-second candidate command, 2-second shutdown, exact .86
+  provenance, fresh target and required domains, then one immutable 5-second evaluate plus same-
+  session event phase whose receipts must be strictly before its deadline, and cleanup, with no
+  retry or alternate browser. `browsercdp.mjs` stays byte-identical at SHA-256 `6892dea6…`, so
+  measurement
+  `6ba58522…`, producer `e59685b1…`, budget `bb4da2bf0b…`, and test `d242705ad9…` remain active.
+- Smoke now binds the pre-Enter document, generation and logical detail owner, requires the opened
+  surface to retain that document/owner at exactly generation + 1, and polls it under one immutable
+  30-second monotonic deadline.
+  A PASS requires the connected current image to publish `ready`, a nontrivial source, completed
+  decode, and exact 440×440 natural dimensions; placeholder/decode remain pending, while error,
+  stale/disconnected owner, contradictory ready state, wrong dimensions, and exact/late receipts
+  fail with the last rich panel/image/worker/broker diagnosis. This changes no game timeout,
+  portrait producer, retry policy, release identity, save, deterministic bytes, or live site.
+
+### Arc 1A executable boundary
+
+- The 1,500-entry Compendium now mounts only a virtual window with spacer-preserved scroll. Native
+  filtering, visible and hidden Search entry, clear/reopen, deep Back, Close, selected-row focus,
+  pinned focus rings, resize contraction/expansion, and one-generation publication remain bound to
+  real DOM outcomes.
+- List and Planetside portraits use one complete-genome-keyed `SpeciesArtBroker`. A cold row
+  receives a neutral placeholder, cancellable/deduplicated work, a true 132 by 132 thumbnail, and a
+  bounded cache; unmounted/closed owners release, queued orphan work cancels, settled subscribers
+  clear, and desktop-to-phone cap changes trim immediately. Selected detail owns an asynchronous
+  440px request through the same broker.
+- Producer failure evidence is fail-closed: one proven-cold invariant row receives the exact
+  one-shot error while it remains mounted, the error key stays uncached, and a natural close/reopen
+  proves the same logical id/key recovers as a cached decoded 132px row. Ownership, lifetime
+  counters, cache arithmetic, answerability, command order, and partial-report milestones are
+  retained and verifier-bound.
+- After full app wiring, every default broker pump waits for one rendering opportunity and then one
+  later task before dispatch. At most one serial dedicated module worker at a
+  time dynamically
+  imports the portable painter, performs 440px scratch paint, 132px downsample and PNG encoding,
+  validates document/producer/instance/job identity, and terminates after active work settles and
+  its queue is empty. Each later genuinely new producer burst owns a fresh instance/import. The
+  renderer has no synchronous painter fallback. Capability/import/protocol/worker failures
+  terminate once and settle active plus queued owners without retrying every tile; paint/content
+  encode failures stay per-job. Arc 1B still owns ordinary Pixi/canvas scene texture and
+  long-session resource plateaus. Bfcache suspension invalidates an already-armed pump generation;
+  resume schedules a fresh serviced turn rather than accepting the stale callback.
+
+### Measured resource authority
+
+- The prior e4e8d1d observations and their paired 3844701 baseline remain historical calibration
+  evidence only. They do not authorize an active ruler for the repaired worker-backed product: the
+  observation sequence destructively trimmed the desktop cache before the warm plateau, and the heap
+  summary counted used page heap without the embedder/backing ownership that can move when work moves
+  out of the renderer.
+- The historical da0 ruler embedded paired run
+  `20260820-arc1a-baseline3-21af3fa` from exact broken source
+  `38447019517147319bd08c598202d097ee866874` plus candidate2/3/4 from clean committed source
+  `21af3fa2c096f0590b067c0af578d7ea29000378`. Every ceiling is strictly above its corresponding
+  three-run maximum, with written headroom for variable heap/DOM/encoded-byte ranges and fractional
+  or +1 sentinels for product-owned exact caps. Aggregate heap covers page, embedder, and backing
+  ownership. The fixed retained-window last-three-cycle plateau requires stable unique keys and
+  unchanged job starts, disposals, and worker starts/disposals. The broken baseline retains all four
+  sealed faults and crosses 14 phone and 13 desktop ceiling fields. Those facts are not current
+  ceilings for the repaired producer.
+- The frozen absolute-deadline repair established measurement authority
+  `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Paired baseline5 plus
+  independent candidate8/9/10 then activated historical budget/test `8ffd0d8e…` / `121ab8cd…` for
+  producer `1c8200d7…`; all four runs were one-attempt/no-retry, each candidate replayed 78/78, every
+  one of 40 ceilings exceeded its maximum, and the four-fault baseline breached 14 phone / 13 desktop
+  fields. Their report/sample hashes and ceilings remain preserved authority only for those exact
+  source, measurement, producer, fixture, and Edge .86 carriers.
+- The bounded compact-portrait repair and revised v2.0 development bullet produce `e59685b1…`: index
+  `ca76da4c…`, owner `assets/main-Ccq4RHJt.js` / `9260e359…`, worker/painter unchanged. Clean committed
+  collector/candidate source `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired baseline6
+  against legacy `3844701…` plus independent candidate11/12/13 under exact Edge .86, measurement
+  `f9710bdf…`, and producer `e59685b1…`. All four were one-attempt/no-retry; candidates replay 78/78.
+- Historical budget/test SHA-256 values are `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
+  `ec956b8a7d3bad96736deab42e0ac79e59e6cf9010559723d2dac2249e463a83`. Baseline6 report/sample are
+  `4cea5b1192dd90de3a951a8a4ad1a9b5b9e4006503bd85b29c580629ead4376d` /
+  `0d4caa89664cae0b831d5ba92a4f2387d0f4df048fcb5c294cb4df6d553d257f`; candidate11/12/13 pairs are
+  `3b8eb50e…` / `7c343af0…`, `7eeb6dbd…` / `a3cce84a…`, and `cab70164…` / `8f65909a…`.
+- All 40 ceilings strictly exceed their three-run maxima. Phone page/embedder/backing/aggregate/
+  encoded/warm maxima are `7,778,708/3,177,000/3,086,488/12,458,207/2,473,856/6,492`; desktop are
+  `10,686,028/3,143,608/4,824,582/16,032,517/6,591,340/390,020`. Ceilings remain
+  `8,388,608/4,194,304/4,194,304/14,680,064/2,621,440/65,536` and
+  `12,582,912/4,194,304/6,291,456/18,874,368/6,815,744/524,288`. The four-fault baseline breaches
+  14 phone / 13 desktop fields; desktop page heap 11,858,524 deliberately stays below 12 MiB.
+- The new launcher input changes measurement authority to
+  `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer authority remains
+  `e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`. Clean source `374049536e…`
+  collected baseline7 against legacy `3844701951…` plus independent candidate14/15/16, once each
+  without retry; every candidate replayed 78/78. Active budget/test are `bb4da2bf0b…` (79,599 bytes) /
+  `d242705ad9…` (20,766 bytes). All 40 ceilings strictly exceed the three-run maxima; the four-fault
+  baseline breaches 14 phone / 13 desktop fields. Phone heap/embedder/backing/aggregate/encoded/warm
+  maxima are `7777356/3194840/2964133/12478835/2472768/5548`; desktop are
+  `10811304/3132296/4852023/16046253/6599264/75992`. This activation is browser-free and non-certifying.
+- Arc 1A owns a local cross-host browser-build authority:
+  Edg/151.0.4129.86, revision @083e754915c9ab93da1d8f7b9c860e4520273900,
+  JavaScript 15.1.23.7, protocol 1.3. Executable path and user agent remain recorded provenance.
+  This does not change the Gate-A/root layout/legacy boot Edge 150 pin.
+- The exact notarized universal macOS 151.0.4129.86 package is isolated under `/private/tmp` rather
+  than installed over `/Applications`; its one verified executable path was reused for the fresh
+  paired broken baseline and all three fresh candidate runs and must be reused for final Compendium
+  certification.
+  The auto-updated
+  151.0.4129.93 application is explicitly outside this authority.
+- Ordinary and manual Compendium CI install the exact SHA-verified Edge package only for this gate.
+  Other smoke, Glass, persona, and preview browser work keeps its established Chrome selection.
+  Browser mismatch terminates before profiles as instrument evidence; it can never emit product
+  PASS, FAIL, or product-unanswerable.
+
+### Evidence and verifier state
+
+- The earlier baseline/candidate artifacts received independent read-only audits and remain useful
+  chronology, but their summaries and ceilings are superseded for current certification. The exact
+  dea039 run `20260817150005919-93781-b6643ba7a6` is preserved as truthful 75/76 evidence; its sole
+  desktop warm red must not be retried away or promoted into a product-leak diagnosis the instrument
+  did not collect.
+- The later exact-.86 `baseline2-d0508ec` sample is independently clean and its raw capsules remain
+  truthful for authority `829655e2…`, but the fixed-window warm repair changes that authority and
+  therefore prevents reuse. Candidate1 is preserved as a two-outcome warm-instrument FAIL with no
+  sample; it is not a product-retention diagnosis.
+- The terminal contract replays raw capsules and binds complete measurement inputs plus the exact
+  owner→worker→painter graph. Baseline6 uses collector `2a105d51…` against legacy `3844701…`;
+  candidate11/12/13 bind clean source `2a105d51…` and producer `e59685b1…`. Older baseline/candidate
+  sets remain truthful only for their named historical measurement and producer authorities.
+- Browser-free evidence for the historical fail-closed seam is green: 36 Vitest files / 423 passed /
+  1 skipped; root, app, and worker TypeScript programs; artunused, artaudit, and the exact production
+  owner→worker→painter build graph; 222 Compendium selftest controls; 10 focused budget tests; and
+  Smoke, Glass, and persona selftests. Frozen read-only review is clean. These results validated the
+  historical calibration seam. The serviced-turn scheduler, bfcache generation, and fail-closed
+  calibration seam then passed their separate browser-free review before commit `f47cd381…`.
+- Browser-free transition checks are green: focused replay 11/11, Compendium selftest 222/222, and
+  semantic validation. They prove the new fail-closed authority transition, not an active ruler or
+  exact-head browser certification.
+- The exact clean-head reports `20260817-arc1a-active-cert-65b1bac` and
+  `20260820-arc1a-active-cert-da0de20` remain truthful only for their named commits and producers;
+  neither certifies the serviced-turn repair. The exact-788 and exact-ef6 reports each certify only
+  their named sources. The later exact PR test-merge carrier is the instrument red recorded above;
+  its valid terminal report does not certify a product profile. Source identity is not borrowed
+  across commits. Commit `c0955003d558d7b3deb0afe9e527f24969d512dc` received exact-source
+  Compendium and Smoke PASS carriers, then stopped on its first full Glass product red recorded
+  below. One new exact-head browser battery and one corresponding PR test-merge attempt remain open.
+
+### PR #32 battery repair boundary
+
+- Smoke now waits semantically for 3–8 decoded 132px Planetside images and drained jobs under one
+  immutable monotonic 30-second phase. Every blocking target evaluation is clipped to the same
+  remaining deadline; target-only timeout with a healthy browser heartbeat remains actionable
+  product evidence, with no renewed clock or retry.
+- A multi-target Smoke phase that observes rendering-opportunity-scheduled work must own the page it
+  judges. Creating another target may background the first while `Runtime.evaluate` remains
+  answerable. The held-painter lazy-art control therefore binds the attach-derived target and exact
+  document, activates/focuses/brings that target forward, proves visibility/focus continuously across
+  an rAF→later-task witness, and only then performs its one release. The closed owner is separately
+  re-owned before its settlement assertion. Wrong target/document/token, hidden/unfocused service,
+  phase reversal, and visibility/focus transitions are browser-free negative controls; timeout
+  evidence retains the actual images, queue, worker phases/results/errors, and broker state. Exact-
+  boundary and just-late receipts are rejected after the awaited CDP response, not trusted to timer order.
+- A direct test-fixture write is not setup authority while an earlier app persistence owner can
+  still commit. D-TRAIN setup now joins the prior Atlas/Land write, proves the stale-write race in a
+  deliberate control, then requires exact primary bytes, changed document identity, canonical
+  Training state/rendered route, live card, runnable Skip, idle status, and running ticker before
+  the import-owner transaction begins. Missing setup becomes one harness failure before release;
+  the product busy-refusal verdict requires a semantically observed `claim-rejected/busy` witness,
+  one real Skip click, unchanged primary bytes, and zero writes before owner release.
+- Exact clean `c095500…` Compendium run `20260820-arc1a-absolute-deadline-active-cert-c095500` passed under report SHA-256 `55dba448666b6d461ceaa273c3ec85ed08dfbcb605497d2e1539147480e4b9bc`; one-attempt Chrome Smoke run `20260820104231234-94067-7f954ca9942e` passed under report SHA-256 `6d4f00f841e18e80ecfb5cdcd48fab57f3e1b32f917b141681d49c281ae885dd`.
+- The first full-certifying Glass run then stopped without retry and is preserved as `glassmatrix-report-c095500.json`, SHA-256 `8e89d855abf33ba45d43d8284e05732ebad93891ff9e024004869811778917f0`: Chrome 152, all 12 rows, 58/58 controls, zero instrument failures/retries, and only `PLANETSIDE_SURFACE_OCCLUDED` at compact-phone from a 12.5px Survey/Planetside rectangle overlap. Persona, layout, preview, push, and CI did not run.
+- Source diagnosis classifies that carrier as a bounded product CSS-geometry defect, not an instrument result; it does not claim a more specific dynamic cause than the retained geometry proves. The repair derives Planetside's portrait cap from the same bottom anchor, preserves Survey's 44px floor, preserves a 72px scrollable Planetside floor, and restores the existing 8px gap. The existing Planetside development-release bullet now names that outcome. No Glass predicate, ownership oracle, z-index, timeout, or retry policy changed. Clean `2a105d51…` targeted compact-phone Glass passed at report SHA-256 `13efb5fa4b1ea5e9208b9f468436cdbd15e02d8e07e6c4c6a279219ebb225bad`; it is one-viewport diagnostic evidence, not full-matrix certification.
+- Static evidence proves exactly one production owner-module → dedicated-worker → lazy-painter
+  graph and rejects renderer-reachable legacy synchronous species art. The Compendium report binds
+  worker identity, phase/result/error equations and semantic image decode; it cannot go green merely
+  by moving heavy resources into an unmeasured retained worker.
+
+### Human and scope boundary
+
+- Arc 1A's product, serviced-turn repair, historical rulers, and exact-788/ef6/c095/f9/c49 local
+  carriers remain preserved. Runs `32350971816`, `32367902426`, and `32375329693` remain distinct
+  timer, first Edge cold-start, and final three-instrument reds; c095's full Glass carrier remains
+  the preserved product red. The active `6ba58522…` / `e59685b1…` ruler is unchanged. The bounded
+  repair head gets one complete local battery and one corresponding PR test-merge CI attempt, then
+  work returns to Arc 1B/gameplay rather than expanding timing policy.
+  Separately, the rubric remains open until a person reviews six fresh same-run phone/desktop list,
+  focus-pinned, and detail
+  PNGs for 132px list quality, 440px detail quality, hierarchy, clipping, and visible focus.
+  Automated hashing, dimensions, and model inspection do not satisfy this HUMAN row.
+- Arc 1A does not add Cargo, Shipyard, ownership inventory, creature instances, rewards, combat,
+  missions, companions, crafting, research, live HD scene textures, or an Arc 1B GPU/scene-memory
+  plateau. It does not close Gate C, Gate D, the full 21-step Training curriculum, human play,
+  performance/heat on physical devices, a production release, or deployment.
+
+### Exact-head transition rule
+
+1. Preserve c095's exact Compendium/Smoke PASS plus first full Glass red, f9/c49's full local-green
+   batteries, and run `32375329693`'s three first-red carriers without retry. Keep historical rulers
+   frozen; none certifies a later repair source.
+2. Resolve the committed repair head, target bytes, worktree, and upstream. From that one clean
+   committed head, run browser path/CDP and new Compendium preflight controls, Arc-local Edge
+   Compendium certification and named
+   verifier, one no-retry Chrome Smoke, full Chrome Glass, persona join, root layout plus exact-run
+   verification, and a verified nonpublishable preview package plus browser smoke.
+3. Immediately preserve Smoke's overwrite-prone generic report/log as exact run-ID-named copies.
+   Preserve the other ignored report/package carriers before another producer may overwrite them.
+4. Browser path/CDP controls and preview browser smoke are terminal-only checks, not tool-written
+   reports; capture their contemporaneous output. Root layout has an exact run/browser/outcome
+   carrier but no embedded Git source, so require a commit-tagged run ID, unchanged target bytes,
+   and matching clean HEAD/status before and after its run and verifier.
+5. Any red, ambiguous, blocked, mixed-source, unverifiable carrier, or terminal-only failure stops
+   the transition and is preserved without an unchanged retry.
+6. If and only if every durable carrier, verifier, terminal-only check, and repository-identity
+   proof above is green and agrees on the same unchanged head, push that exact head to existing
+   PR #32 without another tracked edit. The PR is already open; do not create or re-draft it.
+7. Require CI to evaluate the PR test-merge corresponding to that exact pushed head, and verify the
+   head association. Only terminal-green corresponding test-merge CI and the remaining required
+   review permit Ready/merge and subsequent `develop` monitoring.
+8. Fresh six-image HUMAN judgment and Claude presentation-polish remain separate; neither is
+   supplied by the automated evidence.
+9. This is the final bounded infrastructure cycle for PR #32: the repair head gets one
+   exact-head battery and one corresponding CI attempt. Do not add timing optimization or broader harness work
+   here; after closure, return to the gameplay program roadmap. A new red is preserved and brought
+   back as its exact blocker rather than starting another open-ended repair loop.
+
+## Parallel Git handoff — exact five fields
+
+**Current side:** OpenAI/Codex on macOS owns PR #32's final bounded CI-instrument repair. Preserve
+c49's full local-green battery and run `32375329693`'s root/Compendium/Smoke first-red carriers.
+Measurement `6ba58522…` / producer `e59685b1…` remain active and byte-identical. One repair-head
+battery and one corresponding PR test-merge attempt remain; then resume Arc 1B/gameplay. Fresh
+six-image HUMAN judgment and Claude presentation-polish remain separate.
+
+**GitHub step:** Apply the exact-head transition rule above from the bounded three-instrument repair.
+Once every same-head durable carrier,
+verifier, terminal-only check, and repository-identity proof is green, push that unchanged head to
+existing PR #32. Then require PR test-merge CI corresponding to that pushed head and verify the head
+association. Nick does not need to manipulate Git or open another app during that work. Do not
+touch `main`.
+
+**PR details:** base develop; source openai/mac; copy-ready title
+**Arc 1A — Bound Compendium portraits and measured resources**. Copy-ready description:
+
+> Virtualizes the maximum 1,500-row Compendium, preserves native filter/focus/detail/close
+> outcomes, and moves list plus Planetside art to complete-genome-keyed cancellable 132px leases.
+> Heavy import, paint, downsample, and encoding run in at most one serial lazy dedicated worker at a
+> time; each default broker pump crosses one rendering opportunity and one later task, bfcache
+> suspension invalidates stale armed pumps, each producer burst owns a fresh instance/import, and detail is
+> asynchronous at 440px, renderer fallback is forbidden, and fatal worker/import/protocol paths
+> settle owners exactly once without retry. Adds cold error/recovery, ownership, answerability,
+> worker-phase, partial-evidence, and exact raw-outcome controls. Rebuilds the phone/desktop resource
+> ruler around full native-cache warm observation, aggregate page/embedder/backing ownership,
+> stable-key reuse, post-cap restoration, replayable raw calibration capsules, and complete input
+> plus built-producer authority. Da0's historical budget embeds exact baseline3 plus three independent
+> candidate runs and applies strict ceilings above their observed maxima; its local certification and
+> Chrome gates passed. PR CI then retained a no-retry phone Planetside product-unanswerable red. The
+> serviced-turn repair changes producer authority to `1c8200d7…`; one-attempt baseline4 and
+> candidate5/6/7 historically activated its `bb03a3af…` strict replayed-raw ruler, with four retained baseline faults and
+> 14 phone / 13 desktop ceiling breaches. Binds
+> certification to an Arc-local exact Edge 151 build without changing the Gate-A Edge 150 pin,
+> and provisions that exact build only for Compendium CI. Repairs Smoke's semantic Planetside
+> settlement, Glass's Guide/clipping instrument, the short-landscape nonmodal workspace, and the
+> static owner-to-worker-to-painter build proof exposed by the first PR battery.
+>
+> Committed product/Glass evidence includes an exact 12/12 Glass matrix. The first following exact
+> Compendium run is preserved as a truthful 75/76 ruler failure, not product-leak proof. The repaired
+> calibration seam and historical da0 ruler are browser-free green (36 files / 424 passed / 1 skipped;
+> three TypeScript programs; art/build gates; 222 Compendium controls; 11 budget tests;
+> Smoke/Glass/persona selftests). The serviced-turn activation pair passes focused 11/11 budget replay
+> and all 222 instrument controls; exact-788 Compendium certification passed, and its first Chrome
+> Smoke preserved a no-retry foreground-ownership instrument red. Commit ef6 binds the exact
+> foreground document and keeps rich timeout diagnostics; its exact Edge Compendium certification
+> and named verifier pass 78/78. The following no-retry Chrome Smoke preserved only a D-TRAIN
+> fixture-ownership setup race, not a product verdict. Its bounded follow-up joins prior persistence,
+> proves exact runnable Training setup, and waits semantically for busy refusal. Pushed head
+> `1187de0…` then reached PR test-merge run `32350971816` / job `96369841133`; its 2,000 ms command
+> timer fired `0.241274` ms early while the root heartbeat answered in `7.410808` ms, so the valid
+> report classified `instrument-fail`, blocked all 78 outcomes, and made no product verdict. The
+> bounded absolute-deadline re-arm changes measurement authority to frozen `f9710bdf…`. Exact
+> baseline5 plus independent candidate8/9/10 activated historical producer `1c8200d7…`. Exact c095
+> Compendium and Smoke then passed, but the first full Glass run preserved one 12.5px compact-phone
+> Survey/Planetside overlap with all 12 rows and 58/58 controls otherwise executed. The bounded CSS
+> repair restores an 8px stack while retaining 44px Survey and 72px scrollable Planetside floors;
+> baseline6/candidate11/12/13 historically activated strict budget `ebe5b5c3…` for producer
+> `e59685b1…`. Exact f9 then passed the full local battery, while corresponding CI run `32367902426`
+> stopped before browser provenance or product measurement on its first real Edge cold launch. Clean
+> source `374049536e…` collected baseline7 plus candidate14/15/16 once each; all candidates replay
+> 78/78. Browser-free budget/test `bb4da2bf0b…` / `d242705ad9…` activate all 40 strict ceilings for
+> measurement `6ba58522…` and producer `e59685b1…`; this is not certification. Exact c49 then passed
+> the complete local battery, while corresponding run `32375329693` preserved three no-retry
+> instrument reds: root Chrome before endpoint at 30 seconds, Edge selftest `Runtime.enable` at its
+> generic 1.5-second command bound, and Smoke's immediate read of the asynchronous 440px detail owner.
+> The bounded repair gives root layout one explicit 45-second caller envelope, moves the Edge-only
+> live proof into a fresh-target 45/15/5/2-second preflight without changing hashed measurement
+> inputs, and requires semantic detail publication/decode under one 30-second Smoke phase. One
+> repair-head battery and one corresponding CI attempt remain, then work returns to Arc 1B/gameplay.
+> Fresh six-image HUMAN review, integration,
+> development publication, Arc 1B, release and production deployment remain separate authorities.
+
+**Other side:** Anthropic/Claude Code does not have PR #32 yet and need not be opened during Codex's
+battery, push, CI, or integration work. Only after the exact reviewed head merges to `develop` may
+Claude receive it: from a separate clean `anthropic/*` worktree, fetch and merge the latest
+`origin/develop` under the startup protocol, then perform the requested presentation review/polish.
+Never edit or copy this OpenAI worktree.
+
+**Release status:** D-TRAIN-1 is integrated at `3844701`. Arc 1A/PR #32 remains an OpenAI branch
+candidate governed by the exact-head transition rule above. No `develop`→`main` merge, production
+release, version bump, manual deployment, or production-site write was performed or authorized.
+<!-- END VERBATIM ROADMAP BLOCK: PR32 FINAL CI-INSTRUMENT REPAIR HANDOFF -->
+
+
+## ARCHIVED 2026-08-20 — PR #32 foreground, fixture, timer and first cold-start repair chronology
+
+> Moved byte-verbatim from ROADMAP.md when the live handoff approached 400 lines.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR32 FOREGROUND FIXTURE TIMER AND COLD-START CHRONOLOGY -->
+- The first following exact-head Chrome Smoke run
+  `20260820063539761-70885-f80e1a2198fc` is preserved at report/log SHA-256
+  `d2919f0e…` / `4b5de237…`, with one attempt and zero retries. Its only finding was the 30-second
+  held-painter Compendium refill wait returning `last null`. Source/order audit found that the
+  harness created a second target but never re-established or proved foreground authority for the
+  live owner before releasing the painter and waiting for successor pumps that intentionally require
+  `requestAnimationFrame` → later-task service. The report retained neither foreground authority nor
+  the terminal image/worker phase, so it is instrument evidence rather than a visible-page product
+  finding and cannot identify the exact stalled substate. This batch repairs that ownership boundary:
+  it binds attach-derived target plus document identity, explicitly activates/focuses/brings forward
+  each owner, proves a continuously visible/focused rAF→later-task turn before observation, keeps one
+  immutable 30-second refill deadline/no retry, and retains rich image/worker/broker diagnostics.
+  Commit `ef6c2c2cd31363cf47899a89c16c0d9f5f90d7a7` freezes that instrument repair.
+- Exact ef6 Arc-local Edge run `20260820-arc1a-serviced-turn-active-cert-ef6c2c2` then passed all
+  78 Compendium outcomes with zero findings, blocked outcomes, partial failure, or retries. Its
+  report SHA-256 is `406edea11fec5f5a3cf11e6f9fc6dfea00cbdd2ce54fefed780bd1c9dafc9282`,
+  and named-run verification passed. This certifies ef6's unchanged producer/ruler bytes, not any
+  later Smoke-instrument head or PR CI.
+- The immediately following one-attempt Chrome Smoke run
+  `20260820071826194-75001-c2a22330fd09` is preserved at report/log SHA-256
+  `65ca06c8f6d26ef3a9a3da19bb4bc09bb005d754f2291f55f389ac1ecf14aa46` /
+  `87b1c8b6308d3a1969fb45ea4c2ccb70d1f46c2a8311751984b3c1ab0acdd7d9`. It bound clean committed
+  ef6, Chrome for Testing 152.0.7977.54, 150,963 ms, ten screenshots, zero retries, and no source
+  change. Its only two findings were the missing D-TRAIN import-owner busy-refusal witness and the
+  same phase's absent Skip action (`button:false`, `witness:null`). The foreground Compendium phase
+  and every other reported Smoke outcome stayed clean.
+- That red is a harness setup race, not evidence that the product's busy-refusal branch failed. The
+  fixture helper directly wrote IndexedDB after the preceding Atlas/Land journey without first
+  joining its ordinary persistence owner, then proved only a changed document token; an older write
+  could replace the fixture before the new page loaded. The report did not retain the winning bytes,
+  so it cannot identify their exact value. The bounded follow-up drains the prior writer, deliberately
+  reproduces the stale-write race as a negative control, requires exact fixture bytes plus current
+  document/Training route/card/runnable Skip/idle status/ticker before judging the product, and waits
+  semantically for the busy refusal. Exact pushed head `1187de0d052761e4463524cde8438ea8810d7149`
+  contains that bounded follow-up; its local carriers
+  remain authority only for their named exact-source runs.
+- GitHub Actions run `32350971816`, job `96369841133`, workflow attempt 1, tested synthetic PR merge
+  `25200b616bbd509f50eaa18f0a8b27ad20dc83e0` (base `38447019517147319bd08c598202d097ee866874`, head
+  `1187de0d052761e4463524cde8438ea8810d7149`) and stayed red without retry. Valid report
+  `gha-32350971816-1-compendiummem` is `instrument-fail`, not product evidence: after 29 phone stages,
+  final `Runtime.evaluate` timed out at `1999.758726` ms against 2,000 ms while still timely and
+  `0.241274` ms before its deadline; root heartbeat fulfilled in `7.410808` ms. The contract emitted
+  one instrument finding, zero outcomes, and 78 blocked. Artifact/report/job-log SHA-256 values are
+  `4932fb229c1de1d3820d2322e8273ce9ed609716c8f9f4d9e82b2fa2a3e408c7`,
+  `1718faa4403f4f569899d9d328f08c3b7decafae23829d5fabe37660c36da43b`, and
+  `7eda5facdac45d192c5b6071ac91394678d2fdb69b7992b218e0d3b0cb9c4ca9`.
+- The bounded launcher repair keeps one absolute monotonic command deadline; an early callback
+  re-arms only the remaining time and rejects only at/after the boundary. No cap, retry, or product
+  oracle changes. A command that expires synchronously while arming is never transmitted. Frozen
+  historical `browsercdp.mjs` SHA-256 is
+  `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0`.
+- Exact pushed head `f9ae372f13d9a420e302f05e277b4445efb790c0` completed its full local battery once:
+  Arc-local Edge Compendium 78/78, Chrome Smoke with zero findings, full Glass 12/12 and 58/58,
+  nine joined automated personas, root layout 787/787 across 10 viewports, and verified
+  nonpublishable preview packaging/smoke. These exact-source carriers remain truthful local
+  evidence; the separate six-image HUMAN judgment remains open.
+- Corresponding GitHub Actions run `32367902426`, Compendium job `96421452463`, attempt 1, tested
+  synthetic merge `e449e84984400d0b0f4474496264d474424c81d7` (base `3844701…`, head `f9ae372…`)
+  and stopped before product measurement. Edge published its endpoint at `23657.701415` ms, leaving
+  `6342.262417` ms of the 30,000 ms absolute startup window for a socket whose declared cap was
+  15,000 ms; the absolute window expired before `Browser.getVersion`. No Compendium run, report,
+  product outcome, or retry exists. This is cold-start instrument evidence only.
+- The bounded repair gives only the selftest's one real cold launch a caller-owned 45,000 ms
+  startup envelope, with socket/command/shutdown caps unchanged at 15,000/1,500/2,000 ms. Portable
+  controls pass at 38,657 ms and fail at the exact/late 38,658/38,659 ms boundaries with one child
+  and complete socket/child/profile cleanup. There is no warmup, relaunch, retry, fallback, or
+  workflow change; the generic launcher and Compendium candidate runtime remain at 15,000 ms, and
+  the product observation remains 2,000 ms. The 45-second CI allowance is accepted process
+  environment, not a game optimization target. Frozen `browsercdp.mjs` SHA-256 is
+  `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9`.
+- Nothing in this batch changes main, the production v1.8.9 page, a shipped version, a save schema,
+  deterministic generation/share bytes, or either live-site repository.
+<!-- END VERBATIM ROADMAP BLOCK: PR32 FOREGROUND FIXTURE TIMER AND COLD-START CHRONOLOGY -->
+
+## ARCHIVED 2026-08-20 — PR #32 serviced-turn first-red and activation chronology
+
+> Moved byte-verbatim from ROADMAP.md when the live handoff crossed 400 lines.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR32 SERVICED-TURN FIRST-RED AND ACTIVATION -->
+- PR battery run `32334254714`, attempt 1, then correctly stayed red without retry. Its Compendium
+  report `gha-32334254714-1-compendiummem` bound clean detached PR test-merge
+  `88b9c7b0aa90b860a5474bd099cfab48b125a3f5`, exact Edge 151.0.4129.86, the active budget bytes,
+  and matching producer `291b794e…`. Phone completed 29 stages through veteran-Earth boot readiness;
+  `Planetside thumb settlement` then missed the unchanged 2,000 ms target bound at 2,001.723 ms while
+  the independent browser heartbeat answered in 0.872 ms. That is terminal
+  `product-unanswerable`, not an instrument, browser, or transport result; desktop never ran.
+- The partial report did not retain producer phase, so it cannot attribute the exact timeout.
+  Source inspection showed that worker completion could publish several messages, after which the
+  broker's zero-delay successor pumps could repeatedly win over rendering, input, and inspector
+  work on constrained Linux. The frozen repair makes every default broker pump cross one
+  rendering opportunity and then one later task (`requestAnimationFrame` → `setTimeout(0)`). Broker
+  pump-generation invalidation makes a callback armed before bfcache suspension or disposal stale;
+  resume schedules a fresh serviced turn. This changes the built owner and therefore producer
+  authority to `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`
+  (`assets/main-BAg-DH_f.js`; worker and painter unchanged).
+- Commit `f47cd381699fb1934f30bfca82fc9bf971714e6d` freezes the serviced-turn scheduler and its
+  fail-closed calibration seam. Fresh paired broken-baseline run
+  `20260820-arc1a-serviced-turn-baseline4` used collector `f47cd381…` against legacy product
+  `3844701…` and carries no candidate producer field. Independent candidate runs
+  `20260820-arc1a-serviced-turn-candidate5`, `candidate6`, and `candidate7` used clean
+  `f47cd381…` as collector/product source and bound producer `1c8200d7…`. All four shared
+  measurement authority `bb03a3af…` and exact Edge 151.0.4129.86. Every run was one attempt with
+  zero retries; each candidate produced all 78 outcomes. The tracked ruler is active again with
+  strict ceilings above the replayed three-run
+  maxima. The paired baseline retains all four sealed faults and breaches 14 phone / 13 desktop
+  ceilings. Commit `78813cd25c67f4255282f418ea6f635a45e0fc29` activates that ruler. Its one-attempt
+  Arc-local Edge run `20260820-arc1a-serviced-turn-active-cert-78813cd` passed all 78 outcomes with
+  zero findings/retries and independently verified at report SHA-256 `0d4a7f80…`; the same head's
+  root Chrome layout gate passed 787/787 across 10/10 viewports.
+<!-- END VERBATIM ROADMAP BLOCK: PR32 SERVICED-TURN FIRST-RED AND ACTIVATION -->
+
+## ARCHIVED 2026-08-20 — PR #32 pre-serviced-turn chronology compacted from live handoff
+
+> Moved byte-verbatim from ROADMAP.md when the live handoff approached 400 lines. The active
+> serviced-turn ruler, exact-head certification, and Smoke repair boundary remain in ROADMAP.md.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR32 PRE-SERVICED-TURN CHRONOLOGY -->
+- D-TRAIN-1 merged normally through PR #31 into develop at exact merge
+  38447019517147319bd08c598202d097ee866874. That merge is the Arc 1A broken-baseline authority
+  and the current origin/develop base for this branch.
+- PR #32 contains the committed Arc 1A implementation and an exact clean-head Arc-local Compendium
+  report through `65b1bace57cfbbfc57acbffe55537764a382c581`; that report was not full PR-battery
+  certification. The first Linux battery correctly exposed a
+  renderer-answerability defect during cold Planetside species art, plus stale Smoke settlement,
+  Glass instrument/short-landscape geometry, and static-art audit defects.
+- Commit `39d326fa69512508884cb92f85dbabe765989032` moves heavy species art into the dedicated-worker
+  broker and repairs those three gate surfaces. Its full browser-free battery and independent source
+  review are green. Browser path/CDP controls passed on that clean head; the one no-retry Smoke run
+  then found a later stale Guide bulletin predicate shared with Glass (44/43 bullets and obsolete
+  “only detail renders 440px” wording versus the canonical 47/46 and truthful publish/retain plus
+  440→132 downsample contract). The cold Planetside path itself passed. Commit
+  `6105c6f2b5a6413e45e5c6ed4e73594ae39e98f0` fixes both rendered predicates and independently
+  controls all new text/category carriers. Its exact-head Smoke run passes. The first full Glass run
+  then correctly withheld product judgment on two instrument-only faults: absent versus empty inline
+  style after exact 243px restoration, and inherited text sampled on the transparent dock wrapper
+  instead of its painted buttons. Commit
+  `dea03913014bc58134ebb06ca5b36892210a7571` contains the bounded Glass-only repair, and its exact
+  clean-head full Glass matrix passes all 12 rows. Its following exact Compendium run
+  `20260817150005919-93781-b6643ba7a6` truthfully reports 75 of 76 outcomes, with only
+  `desktop/warm-plateau` red. That red exposed a ruler/sequence defect rather than proving either a
+  product leak or a clean plateau: the destructive desktop cap trim ran before the warm observation,
+  so the gate measured cache refill, and the old heap ruler excluded embedder/backing ownership.
+  Commit `4374d95be6c8b6ec2106ecd8518ac9bb39e32065` contains the fail-closed Compendium
+  calibration seam, repairs that authority, and leaves the budget non-certifying. At that
+  checkpoint, fresh calibration, certification, push, and exact-head PR CI remained open.
+- The first fresh paired-baseline attempt is preserved as instrument evidence and produced no
+  sample. It exposed a host/CDP observer race: one 132px pre-owner completion could land between a
+  stable-count read and a separate phase-switch command. The bounded follow-up now drains the exact
+  positive Planetside 440px roster, requires one internal 132px completion per visible owner, seals
+  that expected count in the real opener's capture phase, and atomically seals the final 1,500 list
+  completions with their quiet observation. A late owner completion turns evidence red rather than
+  becoming catalogue work. The attempt also confirmed that the installed macOS Edge had
+  auto-updated to 151.0.4129.93; it is not calibration authority and will not be used or silently
+  re-baselined.
+- After that boundary repair, paired run `20260819-arc1a-baseline2-d0508ec` measured cleanly under
+  exact Edge 151.0.4129.86 and independently reproduced all four sealed baseline faults on both
+  profiles. Candidate run `20260819-arc1a-candidate1-d0508ec` then stopped the sequence with only
+  `phone/warm-precondition` and `desktop/warm-precondition` red and produced no candidate sample.
+  The caches were full, decoded bytes exact, work drained, subscribers zero, and workers released;
+  the instrument instead required an insertion-ordered LRU key list to be lexically sorted and made
+  every warm cycle traverse more identities than the phone cache can retain, guaranteeing repaint
+  and worker churn. The current bounded follow-up measures one fixed retained window after filling
+  the native cache and proves exact unique key identity plus unchanged job/disposal/worker counters
+  across the sealed last-three-cycle plateau.
+  Because that changes collector/contract authority, the green baseline2 evidence remains preserved
+  chronology but must be recaptured before activation. No unchanged candidate rerun occurred.
+- The replacement authority was measured and activated for the pre-scheduler product. Paired broken-
+  baseline run `20260820-arc1a-baseline3-21af3fa` and independent one-attempt candidate runs
+  `20260820-arc1a-candidate2-21af3fa`, `20260820-arc1a-candidate3-21af3fa`, and
+  `20260820-arc1a-candidate4-21af3fa` all bind clean committed collector/product source
+  `21af3fa2c096f0590b067c0af578d7ea29000378`, measurement authority
+  `bb03a3af59cdcc9d4d3773c1396e58b350c27facd99943cbd22028f2236d6a1c`, producer authority
+  `291b794e0dcd93ee21d7ff88cbca383e865a62e8dd162573d475131aca3b911e`, and the one isolated
+  Edge 151.0.4129.86 build. The then-active budget embeds and replays those raw capsules, applies strict
+  ceilings above all three candidate maxima, and adds aggregate page + embedder + backing-store
+  heap. Its fixed-window last-three-cycle plateau keeps identity and job/disposal/worker counters
+  stable. The paired baseline preserves all four sealed faults and breaches 14 phone ceilings and
+  13 desktop ceilings. Commit `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` activated that ruler.
+  Its local one-attempt Arc-local Edge certification
+  `20260820-arc1a-active-cert-da0de20` passed and independently verified. The same clean head also
+  passed one no-retry Chrome Smoke, the full 12-viewport Chrome Glass matrix, the matching nine-
+  persona join, root layout 787/787 across 10/10, and a verified nonpublishable exact-source preview.
+<!-- END VERBATIM ROADMAP BLOCK: PR32 PRE-SERVICED-TURN CHRONOLOGY -->
+
+## ARCHIVED 2026-08-17 — D-TRAIN-1 handoff superseded by merged integration and Arc 1A
+
+> Moved byte-verbatim from ROADMAP.md after D-TRAIN-1 merged through PR #31 at
+> 38447019517147319bd08c598202d097ee866874 and Arc 1A became the active bounded batch.
+
+<!-- BEGIN VERBATIM ROADMAP HANDOFF: D-TRAIN-1 LEGACY CHECKPOINT TRANSACTION -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-16 · D-TRAIN-1 LEGACY CHECKPOINT TRANSACTION ◀◀◀
+
+### Cold start
+
+- Verify repository/branch ownership live before work: Codex macOS works only in the folder ending
+  `/celestial-frontier-openai-mac` on `openai/mac`; Claude macOS uses `anthropic/mac`; Windows
+  uses the matching rows in `PARALLEL_GIT_PROTOCOL.md`.
+- Read in order: this handoff · `PROCESS_LAWS.md` · `PARALLEL_GIT_PROTOCOL.md` · `AGENTS.md` or
+  `CLAUDE.md` · `SAVE_SYSTEM.md` · `QUESTS_AND_CHAPTERS.md` ·
+  `celestial-frontier-codebase-reference.md` ·
+  [`port/V2_PROGRAM_ROADMAP.md`](port/V2_PROGRAM_ROADMAP.md) ·
+  `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` · `port/RUBRICS.md` · `port/DECISIONS.md` ·
+  `port/v2/README.md` · `port/v2/DEVIATIONS.md` · `port/DEVELOPMENT_PREVIEW.md`.
+- Resolve Git, PR, checks and publication live. Historical run IDs and ignored reports below bind
+  only their named inputs; never reuse them as authority for a newer tip. Never copy files manually
+  between agent worktrees.
+
+### Synchronized foundation through F2
+
+- PR [#30](https://github.com/TheDakk/Celestial-Frontier/pull/30) finished at head
+  `24bcc3cbf4e76f7bb65a00e810e0eeeeb8d7c837` and merged normally into `develop` at
+  `b091f010011fa16bec457599b41274b7f92bb5e6`. At the start of this batch `HEAD`,
+  `origin/openai/mac`, `origin/develop`, and the other synchronized agent refs all resolved to that
+  merge. The superseded F2 candidate handoff is archived byte-verbatim; its historical dirty-tree
+  reports remain evidence for the inputs they named, not for D-TRAIN-1.
+- F2's bounded canonical-ingress seam is integrated. This does not close Arc 0, Gate D, any human
+  gate, a release, or the planned F3/F4 transaction/time work.
+
+### Active D-TRAIN-1 boundary — local working-tree candidate [PARTIAL]
+
+- The genuine v1.8.9 Field Training `tsnap` is an exact eleven-key checkpoint
+  `{st, ps, ac, es, c, ca, cx, it, eq, ea, e}`, not a whole save or whole expedition. The new
+  action-derived fixture captures that real Settings → Restart Training outcome; the old synthetic
+  `{codex, essence, marker}` object remains an unknown/refusal-only control.
+- Persistence classifies `none`, current one-key `{view}`, exact `legacy-v1`, and bounded
+  `legacy-or-unknown` evidence. It rescues a genuine checkpoint paired with legacy `tut:1` back to
+  incomplete, refuses unsafe/oversized evidence, forbids completed-plus-pending export, and keeps
+  numeric future `ever.v > 1` under whole-save future-version protection.
+- Legacy restoration starts from the surrounding imported v4 expedition and replaces only the
+  eleven checkpoint-owned surfaces through established sanitizers. It source-proves Earth instead
+  of trusting `e.where`, invents no landing/conquest/achievement/reward, never heals HP, reserves
+  Earth inside the Atlas cap, and retains surrounding fields. The optional additive v4-envelope
+  carrier `ever:{v:1,hybrids,best,maxGen,scanhits[,arrivals]}` preserves facts that cannot always
+  be re-derived; outer `v` remains 4, but this is an additive schema extension, not “no schema
+  change,” v5, or a release bump.
+- The legacy checkpoint owns no `view`. Real Skip from Welcome persists/runtime-seats proven Sol;
+  real full Finish after Land persists/runtime-seats proven Earth. Only the current-v2 exact
+  one-key `{view}` checkpoint restores the pre-Training route.
+- Finish/Skip is an async atomic replacement: claim exclusive ownership before the first await,
+  keep the lesson busy and focus-locked, stop the ticker, cancel/drain ordinary persistence, build
+  and source-prove a detached candidate, perform exactly one direct primary write, then publish
+  live state and release the renderer. Pre-durable failure leaves the checkpoint and lesson
+  retryable; post-durable publication failure never writes twice and reloads from the committed
+  primary. Source failure durably defers at proven Sol with the exact checkpoint.
+- Loaded pending checkpoints and loaded `tut:0` saves without a checkpoint are write-held; the
+  latter receives only a runtime Sol seat. Fresh empty onboarding remains ordinary. Unknown
+  checkpoint or unavailable route opens a persistent nonclosable recovery modal: the background is
+  inert/hidden and re-locked after mutation, focus stays trapped, Escape is consumed, release copy
+  is suppressed, and only trusted complete import or reload/retry remains available.
+- Existing Settings/Saving Guide paragraphs and the existing Field Training development bullet now
+  state those bounded legacy/current outcomes. This adds no Guide capability or lesson, keeps the
+  development inventory at five categories / 44 bullets, and does not set a current release.
+
+### Exact local evidence and red → repair chronology
+
+- Static evidence was refreshed after implementation: the three focused D-TRAIN files pass
+  **26/26**; the complete v2 suite passes **30 files / 366 passed / 1 skipped**; both TypeScript
+  programs and `artunused` pass. Root `npm run trainingcheckpoint` passes and binds the
+  2,074-byte action-derived checkpoint SHA-256
+  `2e2f7c566a27e79398ea18650de9ac6acf236e92235fc293e4815b8bfefa22e3`. The browser reports
+  below each rebuilt the production bundle they exercised.
+- The first broad D-TRAIN diagnostic smoke was honestly red. Most initial failures were instrument
+  expectation/setup drift: fresh unfinished Training now source-seats Sol rather than Cosmos;
+  keyboard and phone journeys therefore needed a real target release and real ascent; normalized
+  land census expands the fixture's two rows to the established six-row union; and the oracle had
+  to distinguish direct atomic-write Atlas false defaults from a later ordinary re-export. Those
+  repairs preserved real input, draw-tail receipts, native IndexedDB write counts, exact route
+  identity, outer-save sentinels, and deliberate negative controls.
+- That red also found one real product defect: while recovery was open, a later DOM mutation could
+  clear `inert`/`aria-hidden` from a background root. The repair snapshots exact top-level roots,
+  enforces the lock idempotently, and observes body mutations; the browser control deliberately
+  removes both attributes, waits an observer turn, and requires re-lock while the modal itself
+  remains exposed.
+- Further harness reds were classified and repaired without weakening outcomes: canvas focus was
+  reset with blur/focus so the real focus event owns keyboard targeting; offscreen Sol was reached
+  by bounded real Arrow/Minus camera input; phone ascent used two complete real pinch gestures;
+  full-Finish expected Earth route/ordinal 2; queued release publication explained the later
+  `rn=2.0.0-test` sample; and the raw oracle records why direct Training writes retain explicit
+  Atlas `quasar:false,dwarf:false` while the later exporter omits those false defaults.
+- The first full Glass Matrix after Slice went red only in its instrument: it still required
+  “preference fixture did not return to the universe after Training Skip,” then could not enter the
+  home galaxy or prepare the Charter toast. D-TRAIN correctly ended Skip at proven Sol. Glass now
+  drives the real canvas focus law—first Escape releases the selected target, the next two Escapes
+  ascend Sol → Milky Way → Cosmos with advancing canonical render receipts—before the unchanged
+  universe and Charter checks.
+- The first post-copy Slice run was also honestly instrument-red: the legacy Skip contradiction
+  regexp allowed a comma inside its clause, crossed the valid “Skip … Sol, while … Earth” sentence,
+  and misread Finish's Earth as Skip's destination. The repair makes comma/semicolon a hard clause
+  boundary; it does not weaken the contradictory Earth/pre-Training-view control.
+- The matching post-copy Glass run was instrument-red because an injected `Completing … Sol`
+  contradiction used an initial capital while the forbidden literal was lower-case. Glass now
+  compares forbidden rendered copy case-insensitively while keeping required player copy exact.
+  Both instrument reds remained visible and were followed by fresh one-attempt runs; no retry
+  concealed either result.
+- Final ignored Slice report `cf-v2-slice-smoke-ci/v1` is terminal PASS for run
+  `20260816195736683-4852-27b5c876410a`: Edge `151.0.4129.86`, 154,788 ms, zero
+  findings/retries, ten run-bound screenshots, commit
+  `b091f010011fa16bec457599b41274b7f92bb5e6`, and dirty-tree SHA-256
+  `465adef3606b0b06dd285eb049662e5b5ee659bb6dc0b53430568a3df9cf9104`. Report-file SHA-256:
+  `33953319124590ced0cebc16888cfb2b8cbe2879cbcb3c225e061d0d7a817027`; its 4,163-byte raw-log
+  SHA-256 is `b060af3aaa8454a5d9813b2e5f8e6eba0ec2b7f5d3090e991154c1664a132670`, its Git-status digest
+  is `c195873a910c3bce42db222560c9bc70b8763df330d0454036388e4e398faa6d`, and source-change
+  detection remained false.
+- Final ignored full-certifying Glass report `cf-v2-glassmatrix/v1` is terminal PASS on the same
+  Edge/base commit: 57,476 ms, 12/12 viewports and reload-evidence rows, 57/57 planned negative
+  controls with none blocked/omitted, zero findings/instrument failures/retries, and dirty-tree
+  SHA-256 `4f266568aacdb98c7a6e9cfc8571fc60e0bfc140762540dd844a2714fc0836f5`.
+  Report-file SHA-256:
+  `fe32fe802460a61ec4337c373276de8601196ead530ae8184c36970247545254`; it binds the same
+  `c195873a910c3bce42db222560c9bc70b8763df330d0454036388e4e398faa6d` Git-status digest.
+- The report snapshots are intentionally different: Glass includes harness repairs made after
+  Slice. This handoff/docs refresh postdates both. Neither report claims the exact current working
+  diff; a committed exact-head battery and integration evidence remain mandatory. D-TRAIN-1 stays
+  **[PARTIAL]**.
+
+### Hard exclusions
+
+- D-TRAIN-1 does not add the other fifteen legacy lessons, claim the complete 21-step curriculum,
+  make `tsnap` a whole-save rollback, restore a legacy pre-Training route it never stored, or close
+  real-save Gate C/human play.
+- It does not add ownership, rewards, inventory, missions, combat, companions, or any Arc 2+
+  writer. F3 still owns general CAS/revisions, split stores, receipts/journal, and tab lease; F4
+  still owns visibility/active-play time and SessionRNG.
+- It does not change deterministic generation/share bytes, reach/Charter balance, outer save
+  version 4, development/production version identity, `main`, production release/deploy, or either
+  live-site repository.
+
+### Next actions
+
+1. Finish read-only source, harness, documentation, and scope audits on the complete working diff.
+2. Commit and push the bounded D-TRAIN-1 candidate, open a draft PR from `openai/mac` into
+   `develop`, and require fresh exact-head branch-flow plus the full required battery.
+3. Merge only a reviewed-or-explicitly-waived terminal-green exact head, then monitor the resulting
+   `develop` battery and mapped development publication. Keep Gate C/human save open.
+4. Do not begin F3, F4, or a product Arc inside this batch.
+
+## Parallel Git handoff — exact five fields
+
+**Current side:** OpenAI/Codex on macOS, owned folder
+`/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, based on synchronized
+`develop` merge `b091f010011fa16bec457599b41274b7f92bb5e6`. The shared worktree contains the
+uncommitted bounded D-TRAIN-1 implementation, tests, harness, references, and this later docs-only
+handoff. Static checks and two separately bound local browser reports are green as recorded above;
+they do not bind this exact post-report documentation state. Exact-head CI/integration is pending.
+
+**GitHub step:** None for Nick now. OpenAI/Codex owns final audit, intentional commit/push, draft PR
+creation from `openai/mac` into `develop`, fresh exact-head CI, review/waiver boundary, and normal
+integration monitoring under the standing proceed authority. Do not touch `main`.
+
+**PR details:** base `develop`; source `openai/mac`; copy-ready title
+**D-TRAIN-1 — Restore genuine legacy Training checkpoints atomically**. Copy-ready description:
+
+> Restores the exact eleven-key v1.8.9 Field Training checkpoint without treating it as a whole
+> save. Adds genuine action-derived fixture/provenance, bounded checkpoint classification and
+> additive cumulative-record carrier, current-versus-legacy route semantics, source-proven Earth,
+> and one-write async replacement with write-hold, rollback, post-durable reload, race controls,
+> and persistent modal recovery for unknown/unavailable state. Updates existing Guide/release copy
+> without adding a capability or lesson.
+>
+> Local evidence: 3 focused files / 26 passed; 30 files / 366 passed / 1 skipped; both TypeScript
+> programs; `artunused`; action-derived fixture check; one zero-finding/zero-retry Slice report; and
+> one full-certifying 12-viewport Glass report with 57/57 negative controls and zero findings,
+> instrument failures, or retries. The two ignored reports bind their separately named dirty-tree
+> hashes; exact-head PR CI, integration, Gate C, human play, release, and deployment remain open.
+
+**Other side:** Anthropic/Claude Code need not be opened now. It may review the pushed draft later
+from a clean synchronized `anthropic/mac`, but must not edit or copy files from this OpenAI
+worktree. At its next coding batch it must fetch and verify its own branch against current
+`origin/develop`.
+
+**Release status:** F2 is integrated at `b091f010011fa16bec457599b41274b7f92bb5e6`. D-TRAIN-1 is
+only a local working-tree candidate. No `develop` → `main` merge, production release, version bump,
+manual deployment, or production-site write was performed or authorized.
+<!-- END VERBATIM ROADMAP HANDOFF: D-TRAIN-1 LEGACY CHECKPOINT TRANSACTION -->
+
 ## ARCHIVED 2026-08-16 — F2 canonical-ingress handoff superseded by merged integration and D-TRAIN-1
 
 > Moved byte-verbatim from `ROADMAP.md` after PR #30 merged at

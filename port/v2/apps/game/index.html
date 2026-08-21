@@ -163,10 +163,19 @@
       }
       /* A short portrait keeps the trail. Cap the populated strip to the live
          band between the lowest VISIBLE top-chrome edge and the already-
-         measured lower chrome; only the strip scrolls when A++ cannot fit. */
+         measured lower chrome; only the strip scrolls when A++ cannot fit.
+         While Survey stays open after Land, its 44px minimum plus the
+         existing 8px stack gap also caps this bottom-anchored strip. The
+         shared bottom-anchor terms cancel, so unusual dock/context heights
+         cannot recreate the compact-phone overlap. */
       body.surface-mode #planetside {
-        max-height: max(72px, calc(100dvh - var(--safe-bottom) - var(--dock-h) - var(--ctx-h) - 92px - var(--surface-chrome-bottom)));
+        max-height: max(72px, min(
+          calc(100dvh - var(--safe-bottom) - var(--dock-h) - var(--ctx-h) - 92px - var(--surface-chrome-bottom)),
+          var(--planetside-card-max, 100dvh)));
         overflow-y: auto !important;
+      }
+      body.surface-mode.card-open #planetside {
+        --planetside-card-max: calc(100dvh - var(--safe-bottom) - var(--dock-h) - var(--ctx-h) - var(--topbar-h) - 144px);
       }
       /* If a genuinely short portrait cannot retain a useful 72px roster
          viewport plus 6px clearance, the noninteractive trail yields. */
@@ -194,6 +203,16 @@
        surface. The populated strip returns as soon as the player graduates,
        instead of being visibly present but entirely buried behind the card. */
     body.training.surface-mode #planetside { display: none !important; }
+    #planetside .planetside-heading { margin: 0 0 6px; color: var(--dim);
+      font-size: 10.5px; letter-spacing: 0.06em; }
+    #planetside .planetside-species { display: inline-block; margin-right: 8px;
+      text-align: center; vertical-align: top; }
+    #planetside .planetside-thumb { display: block; width: 64px; height: 64px;
+      box-sizing: border-box; object-fit: contain; color: transparent;
+      border-radius: 10px; border: 1px solid #22304a; background: #101827; }
+    #planetside .planetside-thumb[data-thumb-state="error"] { background: #171827; border-color: #55445f; }
+    #planetside .planetside-species > div { max-width: 72px; overflow: hidden;
+      color: #b7c8e4; font-size: 10px; text-overflow: ellipsis; }
     body.card-open #railrgt, body.card-open #ctxbar { display: none; }   /* the card owns its silhouette */
     body.training #ctxbar { display: none; }   /* captions yield to the lesson card */
 
@@ -297,6 +316,58 @@
     .panel .centry b { color: #eaf2ff; }
     .panel .centry .sub { color: var(--dim); font-size: 12px; }
     .panel .empty { color: var(--faint); font-style: italic; padding: 12px 0; }
+    /* The Compendium owns a bounded inner scroll extent while its count and
+       close action stay stable. Variable-height rows are positioned against
+       measured offsets; the named spacers retain the logical scrollbar. */
+    #codexpanel.codex-list-mode { overflow: hidden; }
+    #codexpanel .codex-query { color: var(--dim); font-size: 12px; }
+    .compendium-scroll { position: relative; width: 100%;
+      height: min(560px, max(44px, calc(100dvh - var(--topbar-h) - var(--dock-h) - var(--safe-bottom) - 126px)));
+      overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; scrollbar-gutter: stable; }
+    /* An A++ Compendium row is taller than the 48px left between the measured
+       top bar and two-row phone dock in a short landscape viewport. Panels
+       are non-modal: Search and the dock remain rendered, named, focusable,
+       and hit-testable in the right safe column. Only noninteractive status
+       chrome yields while the left panel uses the full safe-height workspace. */
+    @media (max-width: 900px) and (orientation: landscape) {
+      body.panel-open :is(#topbar,#ctxbar,#hintpill) {
+        visibility: hidden;
+        pointer-events: none;
+      }
+      body.panel-open .panel {
+        top: calc(var(--safe-top) + 6px);
+        max-height: calc(100dvh - var(--safe-top) - var(--safe-bottom) - 30px);
+        width: calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2);
+      }
+      body.panel-open #codexpanel .compendium-scroll {
+        height: min(560px, max(44px, calc(100dvh - var(--safe-top) - var(--safe-bottom) - 126px)));
+      }
+      body.panel-open #dock {
+        left: auto;
+        right: calc(var(--safe-right) + 12px);
+        transform: none;
+      }
+      body.panel-open #survey {
+        top: calc(var(--safe-top) + 64px);
+        max-height: max(44px, calc(100dvh - var(--safe-top) - var(--safe-bottom) - var(--dock-h) - 88px));
+      }
+    }
+    .compendium-virtual-extent { position: relative; width: 100%; min-height: 1px; }
+    .compendium-spacer { position: absolute; left: 0; right: 0; pointer-events: none; }
+    .panel button.centry.compendium-row { display: flex; gap: 10px; align-items: center;
+      margin: 0; padding: 6px 0; }
+    /* The list scroller clips horizontal overflow. Keep this row-specific ring
+       inside its border box so the global +3px focus treatment remains visible
+       on every other control. */
+    .panel button.centry.compendium-row:focus-visible {
+      outline-offset: -4px;
+      box-shadow: inset 0 0 0 2px #07101d, inset 0 0 0 5px rgba(255,217,106,0.45); }
+    .compendium-thumb { display: block; width: 44px; height: 44px; flex: 0 0 44px;
+      box-sizing: border-box; object-fit: contain; color: transparent;
+      border-radius: 8px; border: 1px solid #22304a; background: #101827; }
+    .compendium-thumb[data-thumb-state="error"] { background: #171827; border-color: #55445f; }
+    .compendium-row-copy { min-width: 0; overflow-wrap: anywhere; }
+    .compendium-row-origin { display: block; }
     .guide-tools { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px; margin-bottom: 8px; }
     .guide-tools input { min-width: 0; min-height: 44px; box-sizing: border-box; border: 1px solid #405477;
       border-radius: 10px; background: rgba(4,8,18,.8); color: var(--ink); padding: 8px 10px; font: 13px var(--ui); }

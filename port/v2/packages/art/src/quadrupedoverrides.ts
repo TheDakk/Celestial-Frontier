@@ -20,9 +20,10 @@ import { type Form } from './surface.js';
 import { alienEyes, alienSkin, alienGlow, alienSail, alienArmor, type AlienTraits } from './alientraits.js';
 import { Tube, pathThrough, spline } from './torso.js';
 import { coatMaterial, type Material, countershade, coatSpots, coatRosettes, coatBars, coatPatches, coatBlotches, coatBrindle, coatShaggy, shaggyRim, coatBlocks } from './skin.js';
+import type { ArtContext2D } from './speciescanvas.js';
 
 type G = Record<string, unknown>;
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 const S = 440;
 /** ★ how much fine material detail every mammal gets. 0 reproduces the old

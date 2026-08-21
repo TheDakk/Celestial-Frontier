@@ -3,6 +3,8 @@
   "version": "1.8.9",
   "description": "Verification toolkit for the Celestial Frontier single-file game",
   "scripts": {
+    "actionsbudget": "node tools/actions-budget-policy.js",
+    "actionsbudget:selftest": "node tools/actions-budget-policy.js --selftest",
     "preflight": "node tools/preflight.js",
     "preflight:selftest": "node tools/preflight.js --selftest",
     "preflight:ci": "node tools/preflight.js --assert-pin",
