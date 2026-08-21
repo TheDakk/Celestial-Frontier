@@ -2,8 +2,8 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** PR #32's initial and changed-head attempts were consumed
-and failed; both labels were removed and details are below.
+**Hosted attempt state: none authorized.** PR #32's three post-freeze closure attempts are consumed;
+the final changed-head attempt passed, its label was removed, and the PR merged. Details are below.
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
@@ -48,9 +48,9 @@ This efficiency rule applies equally to OpenAI/Codex and Anthropic/Claude Code:
 
 ## Hosted workflows are fail-closed
 
-The guarded design now present on PR #32's branch makes ordinary pushes, PR synchronization events,
-branch merges, and successful batteries start **zero hosted runners by default**. It is not yet on
-`develop` because the PR remains red and unmerged:
+The guarded design reached `develop` in PR #32 merge commit
+`d4ab7e671959ab80198bed22bb600a26fc3524cc`. Ordinary pushes, PR synchronization events, branch
+merges, and successful batteries now start **zero hosted runners by default**:
 
 - `.github/workflows/test.yml` has one tiny, two-minute owner/branch authorization job followed by
   one fail-fast serial battery. The battery is eligible only when the repository owner adds exact
@@ -103,9 +103,16 @@ answerability field passed. Report SHA-256 is
 committed compressed raw report are preserved under `audits/`. The label was removed immediately. The run is
 terminal red, consumed, and must not be rerun; PR #32 was not merged.
 
-A local changed-head repair widens only those three cross-host ceilings to 262,144 B and preserves
-the same paired-baseline breach inventory. It is not pushed and owns no hosted authority. No further
-hosted attempt is authorized.
+Nick then authorized one new changed-head attempt for head
+`c68aee241220dcb720cadb7fc55f7fbf99bde6fb` against the same base and bounds. Run `32462323775`,
+attempt 1, completed terminal-green: authorization passed in 2s and the battery passed in 40m39s.
+Root validation, Smoke, Field Training capture, 10-viewport layout, v2 parity/type/art/coverage,
+exact Edge authority, Compendium certification and evidence verification, Chrome selftests,
+real-browser Smoke, 12-viewport Glass, persona synthesis, preview packaging, and every artifact
+upload passed. The label was removed, the PR was re-read as clean/mergeable at the exact head/base,
+and PR #32 merged normally as `d4ab7e671959ab80198bed22bb600a26fc3524cc`. The push also completed
+the base branch's then-automatic branch-flow guard in 3s; the merged guard is now manual-only. No
+retry or additional `test-battery` ran. No further hosted attempt is authorized.
 
 When Nick explicitly lifts `FROZEN`, he may authorize exactly one hosted attempt. Before any GitHub write, the
 handoff must record:
@@ -125,8 +132,8 @@ minutes or letting unrelated jobs continue after the first deterministic red.
 
 ## Safe rollout of this guard
 
-These protections are present on the PR branch but do not reach `develop` until a terminal-green
-authorized merge. Because the repository is public, standard hosted-runner minutes are free;
+These protections are present on `develop` as of PR #32 merge commit `d4ab7e6…`. Because the
+repository is public, standard hosted-runner minutes are free;
 repository-wide Actions disablement is not needed merely to protect the private 3,000-minute
 allowance. Every changed-head push and label still requires its own exact authorization; verify the
 remote workflow bytes without dispatching, and leave the approval label absent after the one run.
