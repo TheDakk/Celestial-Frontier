@@ -207,7 +207,7 @@ function cycleWorkReasons(precondition, cycles) {
     || points.some((point) => WORK_FIELDS.some((field) => !count(workCounters(point)[field])))) {
     return ['precondition/cycle work counters invalid'];
   }
-  const deltas = [];
+  const structuralDeltas = [];
   for (let index = 1; index < points.length; index++) {
     const before = workCounters(points[index - 1]);
     const after = workCounters(points[index]);
@@ -220,10 +220,19 @@ function cycleWorkReasons(precondition, cycles) {
       || delta.textureCreations !== delta.textureDisposals) {
       return [`cycle ${index}: creation/release work delta is unbalanced`];
     }
-    deltas.push(delta);
+    if (delta.leaseAcquisitions < delta.textureCreations) {
+      return [`cycle ${index}: lease work did not cover texture creation`];
+    }
+    structuralDeltas.push({
+      sceneGeneration: delta.sceneGeneration,
+      scopeCreations: delta.scopeCreations,
+      scopeDisposals: delta.scopeDisposals,
+      textureCreations: delta.textureCreations,
+      textureDisposals: delta.textureDisposals,
+    });
   }
-  return deltas.every((delta) => same(delta, deltas[0]))
-    ? [] : ['cycle work deltas differ'];
+  return structuralDeltas.every((delta) => same(delta, structuralDeltas[0]))
+    ? [] : ['cycle structural work deltas differ'];
 }
 
 function answerabilityReasons(value, budget, documentToken) {
@@ -337,7 +346,7 @@ function profileOutcomes(profile, measurement, budget) {
   out.push(outcome(`${profile}/cycle-work-deltas`, workReasons.length === 0,
     workReasons.length
       ? workReasons.join('; ')
-      : 'all four cycles performed the same nonzero balanced scene work'));
+      : 'all four cycles performed equal structural work with balanced lease reuse'));
 
   const plateau = cycles.length === SCENE_MEMORY_CYCLE_COUNT
     && cycles.every((cycle) => same(warmSignature(cycle), warmSignature(cycles[0])))

@@ -201,7 +201,7 @@ describe('Arc 1B scene-memory contract', () => {
     expect(resultFor(result, 'phone/warm-resource-plateau').pass).toBe(true);
   });
 
-  it('negative controls: cycle work must be nonzero, balanced, and equal', () => {
+  it('requires nonzero cycle work and accepts balanced variable reuse work', () => {
     const zero = input();
     const zeroProfile = zero.profiles.phone;
     for (const measured of zeroProfile.cycles) {
@@ -216,21 +216,37 @@ describe('Arc 1B scene-memory contract', () => {
     expect(resultFor(evaluateSceneMemory(zero), 'phone/cycle-work-deltas').message)
       .toContain('positive');
 
-    const unequal = input();
-    const unequalProfile = unequal.profiles.phone;
-    for (const measured of unequalProfile.cycles.slice(1)) {
-      measured.sceneGeneration++;
-      for (const field of [
-        'scopeCreations', 'scopeDisposals', 'leaseAcquisitions', 'leaseReleases',
-        'textureCreations', 'textureDisposals',
-      ] as const) measured.registry[field]++;
+    const variable = input();
+    const variableProfile = variable.profiles.phone;
+    for (const measured of variableProfile.cycles.slice(1)) {
+      measured.registry.leaseAcquisitions += 8;
+      measured.registry.leaseReleases += 8;
     }
-    unequalProfile.bfcache.sceneGeneration = unequalProfile.cycles[3]!.sceneGeneration;
-    unequalProfile.bfcache.registry = structuredClone(unequalProfile.cycles[3]!.registry);
-    const unequalResult = evaluateSceneMemory(unequal);
-    expect(resultFor(unequalResult, 'phone/cycle-work-deltas').message)
-      .toContain('differ');
-    expect(resultFor(unequalResult, 'phone/registry-balance').pass).toBe(true);
+    variableProfile.bfcache.sceneGeneration = variableProfile.cycles[3]!.sceneGeneration;
+    variableProfile.bfcache.registry = structuredClone(variableProfile.cycles[3]!.registry);
+    const variableResult = evaluateSceneMemory(variable);
+    expect(resultFor(variableResult, 'phone/cycle-work-deltas')).toMatchObject({ pass: true });
+    expect(resultFor(variableResult, 'phone/registry-balance').pass).toBe(true);
+    expect(variableResult.status).toBe('pass');
+  });
+
+  it('negative control: balanced generation/scope/texture structural drift still fails', () => {
+    const broken = input();
+    const profile = broken.profiles.phone;
+    for (const measured of profile.cycles.slice(1)) {
+      measured.sceneGeneration++;
+      measured.registry.scopeCreations++;
+      measured.registry.scopeDisposals++;
+      measured.registry.textureCreations++;
+      measured.registry.textureDisposals++;
+    }
+    profile.bfcache.sceneGeneration = profile.cycles[3]!.sceneGeneration;
+    profile.bfcache.registry = structuredClone(profile.cycles[3]!.registry);
+    const result = evaluateSceneMemory(broken);
+    expect(resultFor(result, 'phone/cycle-work-deltas').message)
+      .toContain('structural work deltas differ');
+    expect(resultFor(result, 'phone/registry-balance').pass).toBe(true);
+    expect(resultFor(result, 'phone/registry-coherence').pass).toBe(true);
   });
 
   it('negative control: a coherent missing release breaks the exact warm plateau', () => {
