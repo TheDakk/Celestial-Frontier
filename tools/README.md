@@ -42,7 +42,9 @@ is `FROZEN`, do not push, label, dispatch, rerun, merge, sync, or publish; build
 >
 > **Browser ownership:** `uilayout.js` consumes the shared
 > `port/v2/tools/browserpath.mjs` resolver and `browsercdp.mjs` launcher. An exact
-> `$CF_BROWSER` is authoritative; CI requires it at job scope. The launcher uses
+> `$CF_BROWSER` is authoritative; CI requires it in the effective owning step or job environment.
+> A step pin may intentionally override a serialized job's different browser, but a previous step,
+> duplicate mapping, or inline command override is not authority. The launcher uses
 > browser-assigned port 0 plus `DevToolsActivePort`, records the canonical executable
 > and complete `Browser.getVersion` provenance, retains bounded startup stderr, detects
 > early exit, and owns bounded shutdown/profile cleanup. Root preflight and
