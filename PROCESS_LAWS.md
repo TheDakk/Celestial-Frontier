@@ -32,6 +32,17 @@ merge authority is not standing Actions-spend authority. Negative-control the wo
 automatic triggers, a run-by-default input, a missing job guard, a decoy guard, a second battery
 runner, an unparked publisher, or an unknown workflow must all fail locally before any push.
 
+⚠⚠ **A MARKDOWN POLICY CARRIER IS EXECUTABLE INPUT, NOT A DOCS-ONLY DESCENDANT** (2026-08-20).
+PR #32 run `32440536261` spent its one authorized attempt and failed before browser work because
+`GITHUB_ACTIONS_BUDGET.md` changed its guarded mode declaration while the policy parser still
+accepted only `FROZEN`. Grep every reader before classifying Markdown as authority-neutral, and run
+the owning policy selftest after changing a parsed carrier. An owner-lifted state must remain an
+exact recognized token; prose belongs on a separate line. The policy now accepts exactly `FROZEN`
+or `UNFROZEN`, proves both valid, and negative-controls unknown and duplicate direct declarations;
+neither mode bypasses the exact owner-label/manual workflow guards. An `always()` verifier failing
+because its upstream producer never ran is fallout, not a second root cause. A red attempt remains
+consumed; repair locally and obtain fresh changed-head authorization rather than rerunning it.
+
 ⚠⚠ **A SERVER CLOSE CALLBACK IS NOT A BOUNDED CLEANUP OUTCOME** (2026-08-20).
 Compendium's owned static server now has one immutable monotonic 2,000 ms shutdown deadline.
 Just-before succeeds; exact-boundary, late, missing, or error callbacks force
