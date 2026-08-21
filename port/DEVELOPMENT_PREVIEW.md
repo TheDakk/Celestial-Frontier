@@ -184,10 +184,19 @@ startup variance, not a retry or a workflow/job timeout increase.
 
 Browser provenance is owned by each process. A `CF_BROWSER` value attached to one GitHub
 Actions step does not carry into the next step merely because both belong to the same job.
-The ordinary smoke, Glass, persona, preview, and root browser gates therefore pin and resolve
-`/usr/bin/google-chrome` fail-closed; the manual workflow also restores that exact Chrome path
-for its later smoke, matrix, persona, package, and preview-smoke steps. Do not depend on fallback
-ordering when a runner has several Chromium-family browsers installed.
+The preview contract therefore requires effective exact `/usr/bin/google-chrome` on the step that
+owns `preview:smoke`: one exact step mapping may override a different job browser, or one exact job
+mapping may supply Chrome when the step has none. Missing, wrong, duplicate, previous-step-only, and
+inline-command overrides reject. The serialized test job may own Edge while its preview step owns
+Chrome; the manual workflow may own Chrome at job scope and override only its Edge steps. Do not
+depend on fallback ordering when a runner has several Chromium-family browsers installed.
+
+At committed head `2721798a80b35dce957f8b79d850184fc63ad6c3`, the local battery was green
+through persona and then stopped without retry when the old `devpreview.mjs` checker incorrectly
+required job-level Chrome. The scoped working-copy checker repair implements the effective-owner
+contract above and its complete `preview:selftest` is green. This is instrument repair, not preview,
+product, ruler, timeout, workflow, or publication evidence; the repaired exact head still requires
+one complete local battery from the beginning.
 
 Arc 1A is the deliberate narrow exception. The current 1,500-row Compendium is virtualized;
 list art uses leased, cancellable, deduplicated 132px thumbnails, detail uses a separately

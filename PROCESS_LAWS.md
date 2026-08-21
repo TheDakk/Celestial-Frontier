@@ -990,8 +990,10 @@ content, or removing a touch floor.
 product, smoke, full 12-viewport and persona gates under explicitly pinned Chrome, then the next
 GitHub Actions step lost that step-local `CF_BROWSER`, selected an installed Linux Edge through
 fallback order, and failed before CDP created a page. That red browser check never exercised the
-packaged page or product. Pin one exact browser at job scope for every browser-owning process and
-resolve it fail-closed before long gates. Every raw-CDP gate must consume the shared executable
+packaged page or product. Pin one effective exact browser in the environment that owns each
+browser process and resolve it fail-closed before long gates. An owning step may deliberately
+override one job pin; otherwise one exact job pin may supply it. Reject missing, wrong, duplicate,
+previous-step-only, or inline-command substitutes. Every raw-CDP gate must consume the shared executable
 resolver and pinned `ws` transport; any gate claiming the shared owned lifecycle must actually use
 it instead of carrying a guessed port, WebSocket loop or cleanup path. The owned launcher uses a
 unique profile, asks Chromium for port 0, reads its

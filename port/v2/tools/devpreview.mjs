@@ -266,17 +266,19 @@ export function assertPreviewWorkflowBrowserContract(source, label = 'preview wo
     if (lines[index].trim() === 'env:') directJobEnv.push(index);
     if (lines[index].trim() === 'steps:') directSteps.push(index);
   }
-  assert(directJobEnv.length === 1,
-    `${label}: job ${jobName} lacks one exact job-level browser environment`);
-  const jobEnvLine = directJobEnv[0];
-  const jobEnvEnd = workflowBlockEnd(lines, jobEnvLine, jobIndent + 2);
+  assert(directJobEnv.length <= 1,
+    `${label}: job ${jobName} has ambiguous job-level browser environments`);
   const jobBrowserPins = [];
-  for (let index = jobEnvLine + 1; index < jobEnvEnd; index++) {
-    if (yamlIndent(lines[index], `${label} line ${index + 1}`) === jobIndent + 4
-      && /^CF_BROWSER\s*:/.test(lines[index].trim())) jobBrowserPins.push(lines[index].trim());
+  if (directJobEnv.length === 1) {
+    const jobEnvLine = directJobEnv[0];
+    const jobEnvEnd = workflowBlockEnd(lines, jobEnvLine, jobIndent + 2);
+    for (let index = jobEnvLine + 1; index < jobEnvEnd; index++) {
+      if (yamlIndent(lines[index], `${label} line ${index + 1}`) === jobIndent + 4
+        && /^CF_BROWSER\s*:/.test(lines[index].trim())) jobBrowserPins.push(lines[index].trim());
+    }
   }
-  assert(jobBrowserPins.length === 1 && jobBrowserPins[0] === `CF_BROWSER: ${CI_PREVIEW_BROWSER}`,
-    `${label}: job ${jobName} lacks exact job-level CF_BROWSER: ${CI_PREVIEW_BROWSER}`);
+  assert(jobBrowserPins.length <= 1,
+    `${label}: job ${jobName} has ambiguous job-level CF_BROWSER pins`);
 
   assert(directSteps.length === 1, `${label}: job ${jobName} must own one steps sequence`);
   const stepsLine = directSteps[0];
@@ -306,21 +308,20 @@ export function assertPreviewWorkflowBrowserContract(source, label = 'preview wo
     if (yamlIndent(lines[index], `${label} line ${index + 1}`) === stepIndent + 2
       && trimmed === 'env:') stepEnvLines.push(index);
   }
+  const stepBrowserPins = [];
   assert(stepEnvLines.length <= 1, `${label}: preview smoke step has ambiguous env mappings`);
   if (stepEnvLines.length === 1) {
     const stepEnvLine = stepEnvLines[0];
     const stepEnvEnd = Math.min(workflowBlockEnd(lines, stepEnvLine, stepIndent + 2), stepEnd);
-    const stepBrowserPins = [];
     for (let index = stepEnvLine + 1; index < stepEnvEnd; index++) {
       if (yamlIndent(lines[index], `${label} line ${index + 1}`) === stepIndent + 4
         && /^CF_BROWSER\s*:/.test(lines[index].trim())) stepBrowserPins.push(lines[index].trim());
     }
     assert(stepBrowserPins.length <= 1, `${label}: preview smoke step has ambiguous CF_BROWSER pins`);
-    if (stepBrowserPins.length === 1) {
-      assert(stepBrowserPins[0] === `CF_BROWSER: ${CI_PREVIEW_BROWSER}`,
-        `${label}: preview smoke step conflicts with the job browser pin`);
-    }
   }
+  const effectiveBrowserPin = stepBrowserPins[0] ?? jobBrowserPins[0] ?? null;
+  assert(effectiveBrowserPin === `CF_BROWSER: ${CI_PREVIEW_BROWSER}`,
+    `${label}: preview smoke step lacks effective CF_BROWSER: ${CI_PREVIEW_BROWSER}`);
   return Object.freeze({ job: jobName, browser: CI_PREVIEW_BROWSER, smokeLine: smokeLine + 1 });
 }
 
@@ -690,6 +691,23 @@ function runSelftest() {
     '          npm run preview:smoke -- --root=fixture',
   ].join('\n');
   assertPreviewWorkflowBrowserContract(validWorkflow, 'SELFTEST valid job-level pin');
+  const validStepOverride = validWorkflow
+    .replace(`      CF_BROWSER: ${CI_PREVIEW_BROWSER}`, '      CF_BROWSER: /usr/bin/microsoft-edge-stable')
+    .replace('      - name: package preview\n',
+      `      - name: package preview\n        env:\n          CF_BROWSER: ${CI_PREVIEW_BROWSER}\n`);
+  assertPreviewWorkflowBrowserContract(validStepOverride, 'SELFTEST valid owning-step pin');
+  const missingStepOverride = validStepOverride.replace(
+    `        env:\n          CF_BROWSER: ${CI_PREVIEW_BROWSER}\n`, '');
+  expectRejected('missing owning-step browser override',
+    () => assertPreviewWorkflowBrowserContract(missingStepOverride, 'SELFTEST missing owning-step override'),
+    /preview smoke step lacks effective CF_BROWSER/);
+  const duplicateStepOverride = validStepOverride.replace(
+    `          CF_BROWSER: ${CI_PREVIEW_BROWSER}`,
+    `          CF_BROWSER: ${CI_PREVIEW_BROWSER}\n          CF_BROWSER: ${CI_PREVIEW_BROWSER}`,
+  );
+  expectRejected('duplicate owning-step browser override',
+    () => assertPreviewWorkflowBrowserContract(duplicateStepOverride, 'SELFTEST duplicate owning-step override'),
+    /ambiguous CF_BROWSER pins/);
   const previousStepOnly = [
     'name: fixture',
     'jobs:',
@@ -704,7 +722,7 @@ function runSelftest() {
   ].join('\n');
   expectRejected('previous-step-only browser pin',
     () => assertPreviewWorkflowBrowserContract(previousStepOnly, 'SELFTEST previous-step-only'),
-    /lacks one exact job-level browser environment/);
+    /preview smoke step lacks effective CF_BROWSER/);
   const duplicateSmoke = `${validWorkflow}\n      - name: duplicate preview\n        run: npm run preview:smoke -- --root=duplicate\n`;
   expectRejected('duplicate preview smoke',
     () => assertPreviewWorkflowBrowserContract(duplicateSmoke, 'SELFTEST duplicate'),
@@ -715,7 +733,7 @@ function runSelftest() {
   );
   expectRejected('conflicting preview-step browser pin',
     () => assertPreviewWorkflowBrowserContract(conflictingStepPin, 'SELFTEST conflicting step'),
-    /preview smoke step conflicts with the job browser pin/);
+    /preview smoke step lacks effective CF_BROWSER/);
   const commandOverride = validWorkflow.replace(
     '          npm run preview:smoke -- --root=fixture',
     '          CF_BROWSER=/usr/bin/microsoft-edge npm run preview:smoke -- --root=fixture',
@@ -877,8 +895,8 @@ function runSelftest() {
     fs.rmSync(resolved, { recursive: true });
   }
   console.log('DEV PREVIEW SELFTEST: PASS');
-  console.log('  workflow browser provenance: exact job-level Chrome pin in all controlled workflows');
-  console.log('  previous-step-only/conflicting/command-override/duplicate preview-smoke controls: rejected');
+  console.log('  workflow browser provenance: exact effective Chrome pin on every preview-smoke owner');
+  console.log('  missing/wrong/duplicate owning-step, previous-step-only, command-override, and duplicate-smoke controls: rejected');
   console.log('  production/same-origin/insecure/path origins: rejected');
   console.log('  output outside the owned ignored evidence root: rejected');
   console.log('  unapproved review artifact: remote execution rejected');
