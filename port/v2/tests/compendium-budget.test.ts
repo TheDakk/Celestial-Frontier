@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gunzipSync } from 'node:zlib';
 import {
   BASELINE_CALIBRATION_EVIDENCE_SCHEMA,
   BROKEN_BASELINE_EXPECTED_FAULTS, BUDGET_SCHEMA, CEILING_FIELDS,
@@ -11,7 +12,8 @@ import {
   COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS,
   EXPECTED_OUTCOMES, OUTCOME_IDS, PROFILES, SAMPLE_METRIC_FIELDS,
   compendiumBrowserAuthorityMatches, compendiumBudgetBrowserAuthority,
-  compendiumMeasurementAuthority, validCompendiumBrowserAuthority, validateBudgetRecord,
+  compendiumMeasurementAuthority, evaluateProfile, validCompendiumBrowserAuthority,
+  validateBudgetRecord,
 } from '../tools/compendiummem-contract.mjs';
 import {
   COMPENDIUM_FIXTURE_SPEC_PATH, buildBrokenBaselineProjection,
@@ -22,6 +24,9 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
 const budgetPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.json');
 const schemaPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.schema.json');
+const retainedLinuxReportPath = path.join(
+  v2Root, '..', '..', 'audits', 'PR32_LINUX_MEMORY_REPORT_32441023665.json.gz',
+);
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const EXPECTED_MEASUREMENT_AUTHORITY =
   '23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92';
@@ -94,6 +99,43 @@ type ActiveBudgetRecord = {
   };
   ceilings: Record<ProfileName, ProfileCeiling> | null;
 };
+type RetainedLinuxOutcome = {
+  id: string;
+  status: string;
+  diagnosis?: string;
+  evidence?: {
+    warmHeapAggregateRange?: number;
+    observed?: { portraitEncodedBytesMax?: number };
+  };
+};
+type RetainedLinuxReport = {
+  schema: string;
+  runId: string;
+  status: string;
+  source: {
+    begin: Record<string, string>;
+    end: Record<string, string>;
+  };
+  inputs: Record<string, string>;
+  browser: Record<string, string>;
+  budget: {
+    status: string;
+    path: string;
+    sha256: string;
+    browserAuthority: BrowserAuthority;
+    browserAuthorityMatch: boolean;
+    producerAuthority: Record<string, unknown>;
+    observedProducerAuthority: Record<string, unknown>;
+    producerAuthorityMatch: boolean;
+  };
+  policy: Record<string, number>;
+  lifecycle: { schema: string; status: string };
+  outcomes: RetainedLinuxOutcome[];
+  findings: string[];
+  profiles: Record<ProfileName, Parameters<typeof evaluateProfile>[0]>;
+  partialFailure: null;
+  blockedOutcomes: string[];
+};
 
 const EXPECTED_SAMPLE_OBJECT_SHA256: Record<ProfileName, {
   candidate: readonly string[]; baseline: string;
@@ -135,8 +177,8 @@ const EXPECTED_CEILINGS: Record<ProfileName, Record<string, number>> = {
     liveLeasesMax: 24,
     liveSubscribersMax: 0.5,
     livePortraitCacheEntriesMax: 1.5,
-    livePortraitEncodedBytesMax: 196_608,
-    warmHeapAggregateRangeBytesMax: 65_536,
+    livePortraitEncodedBytesMax: 262_144,
+    warmHeapAggregateRangeBytesMax: 262_144,
     warmEncodedBytesRangeMax: 0.5,
   },
   desktop: {
@@ -157,11 +199,33 @@ const EXPECTED_CEILINGS: Record<ProfileName, Record<string, number>> = {
     liveLeasesMax: 24,
     liveSubscribersMax: 0.5,
     livePortraitCacheEntriesMax: 1.5,
-    livePortraitEncodedBytesMax: 196_608,
+    livePortraitEncodedBytesMax: 262_144,
     warmHeapAggregateRangeBytesMax: 524_288,
     warmEncodedBytesRangeMax: 0.5,
   },
 };
+
+const RETAINED_LINUX_COMPATIBILITY = Object.freeze({
+  runId: '32441023665',
+  reportRunId: 'gha-32441023665-1-compendiummem',
+  reportSha256: 'a486fe8eb96e9f00cbd3df486079deaa4e9e0987bed01ae870bf2201cbd47e36',
+  gzipSha256: 'a3b67e70881b725266a0fb669f027b51141967a4ff2193e011ed3b1d124a0916',
+  originalBudgetSha256: '546d3a817073e42910b496895734ae2a01bb4c633af2780ecde1b1ef6570b292',
+  source: Object.freeze({
+    commit: 'ff38629db5dfb3936c8d0926cfee125f905e2a7b',
+    branch: 'detached',
+    state: 'committed',
+    statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+    workingTreeSha256: 'f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a',
+  }),
+  phone: Object.freeze({
+    warmHeapAggregateRangeBytes: 97_320,
+    livePortraitEncodedBytes: 220_530,
+  }),
+  desktop: Object.freeze({
+    livePortraitEncodedBytes: 220_530,
+  }),
+});
 
 function sampleObjectSha256(sample: CalibrationSample): string {
   return createHash('sha256').update(JSON.stringify(sample)).digest('hex');
@@ -508,6 +572,134 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(ceiling.liveDecodedBytesMax).toBe(
         Math.max(...samples.map((sample) => sample.metrics.liveDecodedBytes!)) + 1,
       );
+    }
+  });
+
+  it('binds the retained Linux variance without surrendering paired-baseline discrimination', () => {
+    if (activeBudget.status === 'calibration-required') {
+      expect(activeBudget.ceilings).toBeNull();
+      return;
+    }
+    expect(activeBudget.calibration.selectionRule).toContain(RETAINED_LINUX_COMPATIBILITY.runId);
+    expect(activeBudget.calibration.selectionRule)
+      .toContain(RETAINED_LINUX_COMPATIBILITY.reportSha256);
+
+    const compressedReport = fs.readFileSync(retainedLinuxReportPath);
+    expect(createHash('sha256').update(compressedReport).digest('hex'))
+      .toBe(RETAINED_LINUX_COMPATIBILITY.gzipSha256);
+    const rawReport = gunzipSync(compressedReport);
+    expect(createHash('sha256').update(rawReport).digest('hex'))
+      .toBe(RETAINED_LINUX_COMPATIBILITY.reportSha256);
+    const retainedReport = JSON.parse(rawReport.toString('utf8')) as RetainedLinuxReport;
+
+    expect(retainedReport.schema).toBe('cf-v2-compendium-memory-report/v1');
+    expect(retainedReport.runId).toBe(RETAINED_LINUX_COMPATIBILITY.reportRunId);
+    expect(retainedReport.status).toBe('fail');
+    expect(retainedReport.source.begin).toEqual(RETAINED_LINUX_COMPATIBILITY.source);
+    expect(retainedReport.source.end).toEqual(RETAINED_LINUX_COMPATIBILITY.source);
+    expect(retainedReport.inputs.budget)
+      .toBe(RETAINED_LINUX_COMPATIBILITY.originalBudgetSha256);
+    expect(retainedReport.inputs.fixtureRows).toBe(fixture.rowsSha256);
+    expect(retainedReport.inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
+    expect(compendiumMeasurementAuthority(retainedReport.inputs)?.sha256)
+      .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+    expect(retainedReport.browser).toEqual({
+      executable: '/opt/microsoft/msedge/microsoft-edge',
+      product: EXPECTED_BROWSER_AUTHORITY.product,
+      revision: EXPECTED_BROWSER_AUTHORITY.revision,
+      user_agent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0',
+      js_version: EXPECTED_BROWSER_AUTHORITY.jsVersion,
+      protocol_version: EXPECTED_BROWSER_AUTHORITY.protocolVersion,
+    });
+    expect(retainedReport.budget).toMatchObject({
+      status: 'active',
+      path: 'budgets/compendium-memory-v1.json',
+      sha256: RETAINED_LINUX_COMPATIBILITY.originalBudgetSha256,
+      browserAuthority: EXPECTED_BROWSER_AUTHORITY,
+      browserAuthorityMatch: true,
+      producerAuthorityMatch: true,
+    });
+    expect(retainedReport.budget.producerAuthority).toEqual(budget.producerAuthority);
+    expect(retainedReport.budget.observedProducerAuthority).toEqual(budget.producerAuthority);
+    expect(retainedReport.policy).toEqual({
+      attemptCount: 1,
+      automaticRetries: 0,
+      commandTimeoutMs: 2_000,
+      targetTimeoutMs: 2_000,
+      heartbeatTimeoutMs: 2_000,
+      transportTimeoutMs: 5_000,
+    });
+    expect(retainedReport.lifecycle)
+      .toEqual({ schema: 'cf-v2-compendium-report-lifecycle/v1', status: 'complete' });
+    expect(retainedReport.partialFailure).toBeNull();
+    expect(retainedReport.blockedOutcomes).toEqual([]);
+    expect(retainedReport.outcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
+    expect(retainedReport.outcomes.filter((outcome) => outcome.status === 'pass')).toHaveLength(75);
+    const originalFailures = retainedReport.outcomes
+      .filter((outcome) => outcome.status === 'fail');
+    expect(originalFailures.map((outcome) => outcome.id)).toEqual([
+      'phone/warm-plateau', 'phone/byte-ceiling', 'desktop/byte-ceiling',
+    ]);
+    expect(originalFailures.map((outcome) => outcome.diagnosis)).toEqual(retainedReport.findings);
+    const originalFailureById = new Map(originalFailures.map((outcome) => [outcome.id, outcome]));
+    expect(originalFailureById.get('phone/warm-plateau')?.evidence?.warmHeapAggregateRange)
+      .toBe(RETAINED_LINUX_COMPATIBILITY.phone.warmHeapAggregateRangeBytes);
+    expect(originalFailureById.get('phone/byte-ceiling')?.evidence?.observed
+      ?.portraitEncodedBytesMax)
+      .toBe(RETAINED_LINUX_COMPATIBILITY.phone.livePortraitEncodedBytes);
+    expect(originalFailureById.get('desktop/byte-ceiling')?.evidence?.observed
+      ?.portraitEncodedBytesMax)
+      .toBe(RETAINED_LINUX_COMPATIBILITY.desktop.livePortraitEncodedBytes);
+
+    const replay = (record: ActiveBudgetRecord) => PROFILE_NAMES.flatMap((profile) =>
+      evaluateProfile(retainedReport.profiles[profile], record, fixture));
+    const repairedOutcomes = replay(activeBudget);
+    expect(repairedOutcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
+    expect(repairedOutcomes.filter((outcome) => outcome.status === 'pass')).toHaveLength(78);
+    expect(repairedOutcomes.filter((outcome) => outcome.status === 'fail')).toEqual([]);
+
+    const observations = [
+      {
+        profile: 'phone' as const,
+        ceilingField: 'warmHeapAggregateRangeBytesMax',
+        sampleField: 'warmHeapAggregateRangeBytes',
+        observed: RETAINED_LINUX_COMPATIBILITY.phone.warmHeapAggregateRangeBytes,
+        expectedHeadroom: 164_824,
+        expectedFailure: 'phone/warm-plateau',
+      },
+      {
+        profile: 'phone' as const,
+        ceilingField: 'livePortraitEncodedBytesMax',
+        sampleField: 'livePortraitEncodedBytes',
+        observed: RETAINED_LINUX_COMPATIBILITY.phone.livePortraitEncodedBytes,
+        expectedHeadroom: 41_614,
+        expectedFailure: 'phone/byte-ceiling',
+      },
+      {
+        profile: 'desktop' as const,
+        ceilingField: 'livePortraitEncodedBytesMax',
+        sampleField: 'livePortraitEncodedBytes',
+        observed: RETAINED_LINUX_COMPATIBILITY.desktop.livePortraitEncodedBytes,
+        expectedHeadroom: 41_614,
+        expectedFailure: 'desktop/byte-ceiling',
+      },
+    ];
+    for (const observation of observations) {
+      const ceiling = Number(activeBudget.ceilings![observation.profile][observation.ceilingField]);
+      const baseline = activeBudget.pairedBrokenBaseline.samples[observation.profile][0];
+      const admitted = (value: number) => Number.isSafeInteger(value) && value <= ceiling;
+      expect(ceiling).toBe(262_144);
+      expect(admitted(observation.observed)).toBe(true);
+      expect(admitted(ceiling)).toBe(true);
+      expect(admitted(ceiling + 1)).toBe(false);
+      expect(ceiling - observation.observed).toBe(observation.expectedHeadroom);
+      expect(baseline?.metrics[observation.sampleField]).toBeGreaterThan(ceiling);
+
+      const justBelow = structuredClone(activeBudget);
+      justBelow.ceilings![observation.profile][observation.ceilingField]
+        = observation.observed - 1;
+      expect(replay(justBelow).filter((outcome) => outcome.status === 'fail')
+        .map((outcome) => outcome.id)).toEqual([observation.expectedFailure]);
     }
   });
 
