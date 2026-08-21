@@ -28,8 +28,9 @@
    the machinery that finally makes it cheap to obey. */
 
 import { Tube } from './torso.js';
+import type { ArtContext2D } from './speciescanvas.js';
 
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 const TAU = Math.PI * 2;
 type RNG = () => number;
 

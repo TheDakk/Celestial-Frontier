@@ -8,6 +8,23 @@ deterministic core.
 Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 (acorn + jsdom + ws).
 
+## GitHub Actions budget gate
+
+GitHub-hosted CI is manual, finite release evidence—not the development loop. The repository is
+public and standard runners are free while it remains public; 3,000 is the fail-closed private/
+ambiguous cap and current mode is tracked in `GITHUB_ACTIONS_BUDGET.md`. Before any GitHub
+write, run the browser-free workflow-policy controls locally:
+
+```bash
+npm run actionsbudget:selftest
+```
+
+`npm run actionsbudget` inventories every workflow and rejects automatic spend, missing job guards,
+run-by-default inputs, duplicate-run concurrency, an unparked publisher, a second battery runner,
+and unknown workflow files. Its selftest mutates every owned direction and must reject each one.
+`node tools/validate.js` invokes the real policy check before any heavier validation. While the mode
+is `FROZEN`, do not push, label, dispatch, rerun, merge, sync, or publish; build and test locally.
+
 > ## ⚠ `npm install` IS NOT ENOUGH — two suites need a real browser
 >
 > **Run `npm run preflight` on any new machine before trusting the battery.**
@@ -25,14 +42,22 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 >
 > **Browser ownership:** `uilayout.js` consumes the shared
 > `port/v2/tools/browserpath.mjs` resolver and `browsercdp.mjs` launcher. An exact
-> `$CF_BROWSER` is authoritative; CI requires it at job scope. The launcher uses
+> `$CF_BROWSER` is authoritative; CI requires it in the effective owning step or job environment.
+> A step pin may intentionally override a serialized job's different browser, but a previous step,
+> duplicate mapping, or inline command override is not authority. The launcher uses
 > browser-assigned port 0 plus `DevToolsActivePort`, records the canonical executable
 > and complete `Browser.getVersion` provenance, retains bounded startup stderr, detects
 > early exit, and owns bounded shutdown/profile cleanup. Root preflight and
 > `uilayout` consume one monotonic, absolute spawn → endpoint → socket-open startup deadline;
 > WebSocket opening also has a validated phase cap that defaults to the startup budget
 > and is clipped to the startup time still remaining; only post-open CDP work consumes
-> the command ceiling. Portable controls prove delayed-open success, explicit-cap and
+> the command ceiling. Each post-open command owns one absolute monotonic deadline, not one
+> best-effort timer: if its timeout callback wakes before the boundary, it re-arms only for the
+> remaining interval under the same deadline; only the clock at or beyond that boundary may reject,
+> while a response received at/after it remains late. Expiry during initial timer arming rejects
+> without transmitting the command. No fresh clock, cap extension, or retry is
+> allowed. Portable controls prove just-before command result/protocol receipt, reject exact/late
+> result and protocol-error receipts, and separately prove delayed-open success, explicit-cap and
 > remaining-startup rejection, fail-closed pre-construction expiry, constructor-overrun
 > rejection with guarded CONNECTING cleanup, just-late-open rejection, invalid-cap pre-launch
 > rejection, and failure cleanup. Endpoint discovery also requires two consecutive identical,
@@ -54,6 +79,134 @@ Requires Node ^20.19, ^22.13, or ≥24 and `npm install` at the repo root
 > a misleading Edge crash report before CDP or a page exists. The two historical
 > `port/spike` screenshot launchers also resolve through this guard; current macOS-
 > capable repository browser tools therefore fail before spawn inside Seatbelt.
+>
+> **PR #32 timer/Planetside evidence (2026-08-20):** GitHub Actions run `32350971816`, job
+> `96369841133`, attempt 1, tested synthetic merge
+> `25200b616bbd509f50eaa18f0a8b27ad20dc83e0` for pushed head `1187de0…`. Its final
+> `Runtime.evaluate` timeout fired at `1999.758726` ms against 2,000 ms, even though the target was
+> still timely and its recorded completion preceded the deadline by `0.241274` ms; the independent
+> root heartbeat fulfilled in `7.410808` ms. The valid terminal report therefore classified
+> `instrument-fail`, blocked all 78 outcomes, and made no product verdict. Frozen launcher SHA-256
+> `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0` moves the Compendium
+> measurement authority from historical `bb03a3af…` to
+> `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Paired baseline5 and
+> independent candidate8/9/10 historically activated budget/test `8ffd0d8e…` / `121ab8cd…` for
+> producer `1c8200d7…`; their raw evidence remains truthful only for those bytes.
+>
+> Exact `c095500…` then passed Compendium and one-attempt Smoke before its first full Glass run
+> preserved one no-retry product finding: Chrome 152, 12/12 rows, 58/58 controls, zero instrument
+> failures, and a 12.5px compact-phone Survey/Planetside overlap. The bounded 44px Survey / 8px gap /
+> 72px scrollable Planetside repair changes producer authority to `e59685b1…`; measurement was
+> `f9710bdf…` before the later cold-start transition. Clean committed source
+> `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired
+> baseline6 against legacy `3844701…` plus independent candidate11/12/13 under exact Edge .86. All
+> four were one-attempt/no-retry; candidates replay 78/78. Their historical budget/test SHA-256 values are
+> `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
+> `ec956b8a7d3bad96736deab42e0ac79e59e6cf9010559723d2dac2249e463a83`; all 40 ceilings exceed their
+> maxima and the four-fault baseline breaches 14 phone / 13 desktop fields. Focused 11/11,
+> Compendium selftest 222/222, and semantic validation proved that ruler only. Exact pushed head
+> `f9ae372f13d9a420e302f05e277b4445efb790c0` subsequently passed the complete local battery once,
+> including Compendium 78/78, Smoke with zero findings, Glass 12/12 and 58/58, nine automated
+> personas, root layout 787/787, and verified nonpublishable preview packaging/smoke.
+>
+> GitHub Actions run `32367902426`, Compendium job `96421452463`, attempt 1, then tested synthetic
+> merge `e449e84984400d0b0f4474496264d474424c81d7` (base `3844701…`, head `f9ae372…`) and stopped
+> before `Browser.getVersion` or product measurement. Edge published its endpoint at
+> `23657.701415` ms, leaving `6342.262417` ms of the 30-second absolute startup deadline for the
+> declared 15-second socket phase. No Compendium run/report/outcome or retry exists.
+>
+> The bounded repair gives only the selftest's one real cold launch 45,000 ms startup, retaining
+> 15,000 ms socket, 1,500 ms command, and 2,000 ms shutdown caps. Portable controls pass at
+> 38,657 ms and fail at the exact/late 38,658/38,659 ms boundaries with one child and full cleanup.
+> There is no warmup, relaunch, retry, fallback, or workflow change; generic and candidate startup
+> remain 15 seconds and product observation remains 2 seconds. Launcher SHA-256
+> `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9` establishes measurement
+> authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer then remained
+> `e59685b1…`. Clean source `374049536e…` collected baseline7 plus independent candidate14/15/16
+> once without retry; each candidate replayed 78/78. The then-active browser-free budget/test
+> `bb4da2bf0b…` (79,599 bytes) / `d242705ad9…` (20,766 bytes) retain all four baseline faults,
+> 14 phone / 13 desktop breaches, and all 40 strict ceilings above the three-run maxima. This is
+> activation, not certification. The 45-second CI cold-start allowance is accepted environment,
+> not a game optimization target. Exact pushed head `139ce2f…` subsequently passed one complete
+> local battery. Corresponding run `32383320206`, attempt 1, matched exact Edge .86 and every
+> then-active authority before preserving a valid no-retry Planetside `product-unanswerable` red:
+> target `Runtime.evaluate` took `2001.132592` ms against the unchanged 2,000 ms deadline while root
+> `Browser.getVersion` answered in `10.401960` ms. The report contains zero outcomes, 78 blocked,
+> and no review PNG; it is product evidence, not an instrument/transport or timing-policy result.
+>
+> The bounded product repair computes fitted globe demand from CSS diameter, scene scale, and DPR.
+> Standard phone/desktop boot is 609/420px and selects 512. An exact generation/world owner re-reads
+> the asynchronous bake, rejects stale completion and duplicate-tier work, and upgrades through 768
+> to 1024 only when real zoom/DPR requires it; maximum tested demand is 1,248/1,280px. Producer is
+> now `d3223177…` (index `dee9af3a…`, owner `assets/main-Da536xWA.js` / `28382873…`;
+> worker/painter unchanged), under historical measurement `6ba58522…`. Then-active budget/test
+> `74e88c2b…` / `485be9da…` (79,614 / 20,782 bytes) came from clean source `75a996af…`'s
+> one-attempt/no-retry baseline8 plus independent candidate17/18/19 under exact Edge .86. Every
+> candidate replayed 78/78; baseline8 retained all four faults and 14 phone / 13 desktop breaches;
+> all 40 reused ceilings remain strictly above the three-run maxima. Report/sample pairs are
+> baseline8 `0a8b831e…` / `a52bccec…`, c17 `6b86ca9d…` / `0818c86e…`, c18 `a9b28d79…` /
+> `c368ba86…`, and c19 `440cb788…` / `abddfa84…`. The browser-free activation became exact head
+> `96464d5e4ca59074c0d8d59719a90a5dedc2dd2d`, which completed its full same-head local battery.
+> Corresponding GitHub Actions run `32394244417`, Compendium job `96507263338`, attempt 1, tested
+> synthetic merge `63665b6…` and preserved a pre-product environment/instrument red. Its
+> `ubuntu24/20260816.277` runner already had exact Edge 151.0.4129.86 newest, so plain apt install
+> was a no-op. Browser-path and portable preflight selftests passed, but the live one-launch
+> preflight saw no CDP endpoint inside the unchanged 45-second startup bound. The collector never
+> ran; no Compendium report, outcome, review PNG, or retry exists. The verifier and artifact-upload
+> reds are cascades from those absent outputs. Root/static and Chrome Smoke/Glass jobs passed.
+>
+> Across the retained PR #32 exact-Edge jobs, `ubuntu24/20260810.271` began with bundled .78,
+> upgraded to the exact .86 package, and launched 4/4 times. `ubuntu24/20260816.277` already carried
+> .86, made plain apt a no-op, and launched 0/3. This supports one bounded hypothesis only:
+> SHA-verify the exact `.deb` and install those same bytes once with `--reinstall` to normalize the
+> hosted runner. It does not prove the fix. The preflight selftest now statically requires both
+> workflows' exact ordered URL/SHA/download/hash/reinstall/version/executable/following-preflight
+> chain and rejects per-workflow removal plus outside-step decoys; that browser-free control is green
+> but cannot prove live launch. This workflow-only normalization changes no timing, retry, fallback,
+> live repository-tool behavior, product, browser package/version, measurement, producer, budget, or
+> authority. Exact `731b2e2…` passed locally; hosted run `32420327368` was consumed at its
+> 40-minute lifecycle-pending ceiling with no product verdict. PR #32 remains blocked, no rerun is
+> authorized, and HUMAN review plus Arc 1B remain open.
+>
+> Exact local head `89bfa05…`, run `20260820-pr32-89bfa05-compendiummem`, later completed 78/78
+> outcomes with zero findings and six PNGs, then exited 2 during owned browser shutdown. Terminal
+> log `b0bb8abc…` is authoritative; pre-cleanup PASS report `66ba1366…` and verifier `98664dca…`
+> are false-green. This is a one-attempt/no-retry post-measurement instrument red, not product
+> certification or calibration.
+>
+> Clean lifecycle-repair source `c49e525…` then ran
+> `20260820-arc1a-terminal-lifecycle-candidate20` once. It completed 78/78 product outcomes, zero
+> findings, six PNGs, and complete lifecycle, but the reused `.86`-named app had self-updated to
+> Edge `.93` / revision `@4a822b1b…`. Quarantine report/sample/log `175fac5e…` / `916dd12a…` /
+> `7462144b…` as instrument evidence—not calibration, certification, product failure, or a reusable
+> ruler.
+>
+> Candidate21/22/23 and paired baseline9 subsequently completed once each without retry under exact
+> Edge `.86` and complete lifecycle. Every candidate replayed 78/78 with zero findings; baseline9
+> retained all four faults. They are individually clean diagnostic history, but cannot activate:
+> the old shared-sample identity compared fresh host-local executable paths and user agents. Both
+> remain mandatory raw per-run provenance; shared browser authority is exact product/revision/
+> JavaScript/protocol.
+>
+> Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10, each once
+> with zero retries and a distinct fresh `.86` path. All candidates completed 78/78 with zero
+> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. The formerly active budget/schema/
+> contract/collector/selftest/test `70145575…` / `695d2529…` / `e7dfea1d…` / `07131f5e…` /
+> `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged producer `d3223177…`, 3/3
+> samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
+> baseline breaches. The focused control's initial 12/13 was its phone-only synthetic active state;
+> adding matching desktop identities made it 13/13 without changing or rerunning browser evidence.
+> No deadline, launch argument, workflow, product byte, producer, browser-CDP, or retry policy changed.
+>
+> Exact implementation `aecf386…` then bounded the owned static server at one immutable monotonic
+> 2,000 ms close deadline. Just-before succeeds; exact/late/missing/error callbacks force-close all
+> connections exactly once and reject, with reentrant/stale settlement controls. Cleanup red still
+> suppresses PASS/sample. Collector/selftest/measurement/budget/focused-test are `0c7ec3ba…` /
+> `0bbb3541…` / `23aacc2c…`; producer stays `d3223177…`. Clean `6736ef4…` then collected
+> c27/baseline11/c28/c29 once each, zero retry, fresh exact `.86`: candidates were 78/78 with complete
+> lifecycle and 18 PNG bindings; baseline11 retained four faults and 14 phone / 13 desktop breaches.
+> Activation `b3957e1…` makes budget/test `546d3a81…` / `ef06252a…` active with all prior numeric
+> ceilings still strict. Exact-head battery and HUMAN review remain open.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,
@@ -278,11 +431,10 @@ node tools/duelxp-check.js     # REWARD OUTCOMES: plays a real duel, reads the l
 node tools/sizedrift-check.js  # guards the size clamp regression (see below)
 node tools/harvestclock-check.js # proves the harvest clock cannot be wound
 node tools/publish-branch-site.js --selftest
-                               # validates the post-battery branch publisher,
+                               # validates the parked branch publisher implementation,
                                # including its channel/package/identity reject paths.
-# GitHub Actions publishes only after a successful push battery:
-#   main    -> https://celestialfrontier.github.io/ (root v1.8.9 HTML)
-#   develop -> https://dev-celestialfrontier.github.io/ (exact tested port/v2 v2.0 package)
+# Automatic GitHub Actions publication is parked by GITHUB_ACTIONS_BUDGET.md.
+# Any future promotion needs one separately authorized exact tested SHA and target.
 ```
 
 Production and development deliberately use different package paths. Production replaces
@@ -486,8 +638,12 @@ separate always-run artifact step where a missing file is an error.
 The first mutable-tree diagnostic through the new launcher preserved a sandboxed Edge
 SIGABRT as red startup evidence. A separately permitted diagnostic then completed all
 787 checks across 10 viewports. That second run proves reachability only; neither run
-is exact-head certification. The implementation still needs a clean commit, the full
-sequential exact-commit battery, push, and matching GitHub CI.
+is exact-head certification. Exact-head authority for any later source comes only from a named
+schema-v2 layout run plus exact-run verification inside the same local battery. Because that report
+does not embed Git source, the caller must also retain a commit-tagged run ID, unchanged target blob,
+and matching clean HEAD/status before and after the run and verifier. Terminal-green PR test-merge
+CI corresponding to that pushed head remains separate; this reference does not cache the current
+outcome.
 
 ## uilayout.js — the training-card reachability pass
 

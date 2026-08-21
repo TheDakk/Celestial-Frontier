@@ -7,8 +7,9 @@
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { Tube, pathThrough } from './torso.js';
 import { countershade } from './skin.js';
+import type { ArtContext2D } from './speciescanvas.js';
 
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 type G = Record<string, unknown>;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 const S = 440;

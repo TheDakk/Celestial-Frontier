@@ -20,6 +20,7 @@ import crypto from 'node:crypto';
 import { execFileSync, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
+import { buildCompendiumFixture } from './compendiummem-fixture.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -227,6 +228,7 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'reload-resource-release',
   'ready-confirmation-heartbeat',
   'ready-confirmation-ticker-progress',
+  'nonmodal-dock-button-contrast',
   'ultra-viewport-render-budget',
   'ultra-same-backing-resize',
 ]);
@@ -1863,6 +1865,27 @@ function viewportTimingsOutcome(timings, { certifying, status }) {
   }
   return { ok: true, why: null };
 }
+
+/* A rendered Guide negative control may remove a short needle from a longer
+   required sentence. The checker reports that enclosing sentence as missing,
+   not the needle. Accept the control only when the mutation is real, exactly
+   one required carrier owns the needle, and that exact carrier is the sole
+   missing requirement after the rendered copy no longer contains the needle. */
+function guideRequiredControlRejected({ before, after, needle, required, result }) {
+  if (typeof before !== 'string' || typeof after !== 'string'
+    || typeof needle !== 'string' || needle.length === 0
+    || !Array.isArray(required) || !result || result.ok !== false
+    || typeof result.text !== 'string' || !Array.isArray(result.missing)) return false;
+  const carriers = required.filter((carrier) => typeof carrier === 'string' && carrier.includes(needle));
+  return carriers.length === 1
+    && before.includes(needle)
+    && before !== after
+    && !after.includes(needle)
+    && !result.text.includes(needle)
+    && result.missing.length === 1
+    && result.missing[0] === carriers[0];
+}
+
 function writeReport({ status, exitCode, browser, findings, instrumentFailures, controlsRun,
   executedControls = [], blockedControls = [], source = runSource || sourceIdentity() }) {
   const counts = new Map();
@@ -1922,6 +1945,65 @@ async function reportSelftest() {
   const reloadFailures = await reloadPhaseSelftest();
   if (reloadFailures.length) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: replacement-document controls failed (${reloadFailures.join('; ')})`);
+  }
+  const inlineStyleRestoration = {
+    absent: sameInlineStyleAttribute(null, null),
+    empty: sameInlineStyleAttribute('', ''),
+    absentToEmpty: sameInlineStyleAttribute(null, ''),
+    emptyToAbsent: sameInlineStyleAttribute('', null),
+    exactNonempty: sameInlineStyleAttribute('height: 243px;', 'height: 243px;'),
+    leakedFromAbsent: sameInlineStyleAttribute(null, 'height: 48px !important;'),
+    leakedFromEmpty: sameInlineStyleAttribute('', 'height: 48px !important;'),
+    changedNonempty: sameInlineStyleAttribute('height: 243px;', 'height: 48px !important;'),
+    malformedBefore: sameInlineStyleAttribute({}, ''),
+    malformedAfter: sameInlineStyleAttribute('', 0),
+  };
+  if (!inlineStyleRestoration.absent || !inlineStyleRestoration.empty
+    || !inlineStyleRestoration.absentToEmpty || !inlineStyleRestoration.emptyToAbsent
+    || !inlineStyleRestoration.exactNonempty || inlineStyleRestoration.leakedFromAbsent
+    || inlineStyleRestoration.leakedFromEmpty || inlineStyleRestoration.changedNonempty
+    || inlineStyleRestoration.malformedBefore || inlineStyleRestoration.malformedAfter) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: inline-style restoration controls failed (${JSON.stringify(inlineStyleRestoration)})`);
+  }
+  const guideNeedle = 'up to 1,500 logical entries';
+  const guideCarrier = `read-only Compendium presents ${guideNeedle}`;
+  const guideBefore = `The ${guideCarrier} while Search filters those saved records.`;
+  const guideAfter = guideBefore.replace(guideNeedle, 'a bounded set of logical entries');
+  const guideRejected = {
+    positive: guideRequiredControlRejected({
+      before: guideBefore, after: guideAfter, needle: guideNeedle,
+      required: [guideCarrier, 'Search filters those saved records'],
+      result: { ok: false, missing: [guideCarrier], text: guideAfter },
+    }),
+    zeroCarrier: guideRequiredControlRejected({
+      before: guideBefore, after: guideAfter, needle: guideNeedle,
+      required: ['Search filters those saved records'],
+      result: { ok: false, missing: [guideCarrier], text: guideAfter },
+    }),
+    multipleCarriers: guideRequiredControlRejected({
+      before: guideBefore, after: guideAfter, needle: guideNeedle,
+      required: [guideCarrier, `A second carrier also says ${guideNeedle}`],
+      result: { ok: false, missing: [guideCarrier], text: guideAfter },
+    }),
+    noOp: guideRequiredControlRejected({
+      before: guideBefore, after: guideBefore, needle: guideNeedle,
+      required: [guideCarrier],
+      result: { ok: false, missing: [guideCarrier], text: guideAfter },
+    }),
+    wrongCarrier: guideRequiredControlRejected({
+      before: guideBefore, after: guideAfter, needle: guideNeedle,
+      required: [guideCarrier, 'Search filters those saved records'],
+      result: { ok: false, missing: ['Search filters those saved records'], text: guideAfter },
+    }),
+    needleStillPresent: guideRequiredControlRejected({
+      before: guideBefore, after: guideAfter, needle: guideNeedle,
+      required: [guideCarrier],
+      result: { ok: false, missing: [guideCarrier], text: `${guideAfter} ${guideNeedle}` },
+    }),
+  };
+  if (!guideRejected.positive || guideRejected.zeroCarrier || guideRejected.multipleCarriers
+    || guideRejected.noOp || guideRejected.wrongCarrier || guideRejected.needleStillPresent) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: rendered Guide required-copy predicate failed closed incorrectly (${JSON.stringify(guideRejected)})`);
   }
   const fixture = {
     status: 'fail', exitCode: 1,
@@ -2023,11 +2105,25 @@ async function reportSelftest() {
   const ultraBlocked = productBlockedSuffixForViewport(
     'desktop-8k', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', [],
   );
+  const landscapeContrastExecuted = productBlockedSuffixForViewport(
+    'phone-landscape', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', ['nonmodal-dock-button-contrast'],
+  );
+  const landscapeSurfaceExecuted = productBlockedSuffixForViewport(
+    'phone-landscape', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', ['mobile-landscape-surface-chrome-yield'],
+  );
+  const landscapeBothExecuted = productBlockedSuffixForViewport(
+    'phone-landscape', 'REPLACEMENT_UNANSWERABLE_AFTER_READY',
+    ['nonmodal-dock-button-contrast', 'mobile-landscape-surface-chrome-yield'],
+  );
   const primaryAlreadyExecuted = productBlockedSuffixForViewport(
     'primary-phone', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', ['forced-colors-system-mapping'],
   );
   if (primaryBlocked.length !== 1 || primaryBlocked[0].name !== 'forced-colors-system-mapping'
-    || landscapeBlocked.length !== 1 || landscapeBlocked[0].name !== 'mobile-landscape-surface-chrome-yield'
+    || landscapeBlocked.length !== 2 || landscapeBlocked[0].name !== 'nonmodal-dock-button-contrast'
+    || landscapeBlocked[1].name !== 'mobile-landscape-surface-chrome-yield'
+    || landscapeContrastExecuted.length !== 1 || landscapeContrastExecuted[0].name !== 'mobile-landscape-surface-chrome-yield'
+    || landscapeSurfaceExecuted.length !== 1 || landscapeSurfaceExecuted[0].name !== 'nonmodal-dock-button-contrast'
+    || landscapeBothExecuted.length !== 0
     || ultraBlocked.length !== 1 || ultraBlocked[0].name !== 'ultra-same-backing-resize'
     || primaryAlreadyExecuted.length !== 0
     || productBlockedSuffixForViewport('small-phone', 'REPLACEMENT_UNANSWERABLE_AFTER_READY', []).length) {
@@ -2153,7 +2249,7 @@ function installAuditHarness() {
   const selectorName = (el) => {
     if (!(el instanceof Element)) return String(el);
     if (el.id) return '#' + CSS.escape(el.id);
-    const stable = ['data-pref', 'data-value', 'data-sel', 'data-act', 'data-pnx', 'data-motion', 'data-gt', 'data-release-index', 'name'];
+    const stable = ['data-pref', 'data-value', 'data-sel', 'data-act', 'data-pnx', 'data-cid', 'data-ci', 'data-motion', 'data-gt', 'data-release-index', 'name'];
     const attrs = stable.filter((name) => el.hasAttribute(name))
       .map((name) => `[${name}=${JSON.stringify(el.getAttribute(name))}]`).join('');
     let part = el.tagName.toLowerCase() + attrs;
@@ -2507,17 +2603,26 @@ function installAuditHarness() {
   };
   const clippedBounds = (el, root, viewport) => {
     const bounds = { ...viewport };
+    const ancestors = [];
     for (let n = el.parentElement; n; n = n.parentElement) {
       const s = getComputedStyle(n), r = n.getBoundingClientRect();
-      if (s.overflowX !== 'visible') { bounds.left = Math.max(bounds.left, r.left); bounds.right = Math.min(bounds.right, r.right); }
-      if (s.overflowY !== 'visible') { bounds.top = Math.max(bounds.top, r.top); bounds.bottom = Math.min(bounds.bottom, r.bottom); }
+      const clipsX = s.overflowX !== 'visible', clipsY = s.overflowY !== 'visible';
+      if (clipsX) { bounds.left = Math.max(bounds.left, r.left); bounds.right = Math.min(bounds.right, r.right); }
+      if (clipsY) { bounds.top = Math.max(bounds.top, r.top); bounds.bottom = Math.min(bounds.bottom, r.bottom); }
+      if (clipsX || clipsY) ancestors.push({
+        element: selectorName(n), rect: box(n), overflowX: s.overflowX, overflowY: s.overflowY,
+        clientWidth: n.clientWidth, clientHeight: n.clientHeight,
+        scrollWidth: n.scrollWidth, scrollHeight: n.scrollHeight,
+      });
       if (n === root) break;
     }
-    return bounds;
+    bounds.width = round(Math.max(0, bounds.right - bounds.left));
+    bounds.height = round(Math.max(0, bounds.bottom - bounds.top));
+    return { bounds, ancestors };
   };
   const scrollControlIntoView = (el, root, viewport) => {
-    let r = box(el), bounds = clippedBounds(el, root, viewport);
-    if (inside(r, bounds)) return { rect: r, bounds };
+    let r = box(el), clipped = clippedBounds(el, root, viewport);
+    if (inside(r, clipped.bounds)) return { rect: r, ...clipped };
     for (let n = el.parentElement; n; n = n.parentElement) {
       const s = getComputedStyle(n);
       if ((n.scrollHeight > n.clientHeight + 1 && /(auto|scroll)/.test(s.overflowY))
@@ -2526,12 +2631,12 @@ function installAuditHarness() {
         if (n.scrollHeight > n.clientHeight + 1) n.scrollTop += (er.top + er.bottom - nr.top - nr.bottom) / 2;
         if (n.scrollWidth > n.clientWidth + 1) n.scrollLeft += (er.left + er.right - nr.left - nr.right) / 2;
         r = box(el);
-        bounds = clippedBounds(el, root, viewport);
-        if (inside(r, bounds)) return { rect: r, bounds };
+        clipped = clippedBounds(el, root, viewport);
+        if (inside(r, clipped.bounds)) return { rect: r, ...clipped };
       }
       if (n === root) break;
     }
-    return { rect: r, bounds };
+    return { rect: r, ...clipped };
   };
   const focusEvidence = (el) => {
     try { el.blur(); } catch { /* non-focusable */ }
@@ -2643,10 +2748,18 @@ function installAuditHarness() {
     for (const el of controls) {
       const scrolled = scrollControlIntoView(el, root, bounds), r = scrolled.rect, controlBounds = scrolled.bounds;
       const name = selectorName(el), h = hit(el);
+      const sourceIndexRaw = el.getAttribute('data-ci');
+      const identity = {
+        logicalId: el.getAttribute('data-cid'),
+        sourceIndex: sourceIndexRaw === null || !Number.isFinite(Number(sourceIndexRaw))
+          ? sourceIndexRaw : Number(sourceIndexRaw),
+      };
       if (r.width + 0.5 < targetFloor || r.height + 0.5 < targetFloor) {
         controlIssue(issue('TARGET_TOO_SMALL', surface, name, { width: r.width, height: r.height }, 'both dimensions >= ' + targetFloor + 'px'));
       }
-      if (!inside(r, controlBounds)) controlIssue(issue('CONTROL_OUTSIDE_VIEWPORT', surface, name, { rect: r, bounds: controlBounds }, 'control scrolls fully inside every clipping ancestor, the visual viewport, and safe area'));
+      if (!inside(r, controlBounds)) controlIssue(issue('CONTROL_OUTSIDE_VIEWPORT', surface, name, {
+        rect: r, bounds: controlBounds, ...identity, clippingAncestors: scrolled.ancestors,
+      }, 'control scrolls fully inside every clipping ancestor, the visual viewport, and safe area'));
       if (!h.ok) controlIssue(issue('CONTROL_NOT_HITTABLE', surface, name, h, 'control owns its centre point after scrolling into reach'));
       const a11y = accessibleName(el);
       if (!a11y) controlIssue(issue('ACCESSIBLE_NAME_MISSING', surface, name, { tag: el.tagName.toLowerCase(), type: el.getAttribute('type') }, 'non-empty accessible name'));
@@ -2840,6 +2953,46 @@ function installAuditHarness() {
     const metrics = { width: innerWidth, height: innerHeight, dpr: devicePixelRatio };
     list = audit({ ...base, viewportExpected: metrics }); reject('viewport metrics positive', list, 'VIEWPORT_METRICS_MISMATCH');
     list = audit({ ...base, viewportExpected: { ...metrics, width: metrics.width + 17 } }); expect('viewport metrics injection', list, 'VIEWPORT_METRICS_MISMATCH', 'window');
+    const geometryBase = (fixture) => ({
+      surface: 'selftest-control-geometry', root: '#' + fixture.id, textMin: 1,
+      interactiveRoots: ['#' + fixture.id], contrastSelectors: [], targetFloor: 44,
+      maxControlReports: 10,
+    });
+    const shortClip = document.createElement('section');
+    shortClip.id = 'cf-control-short-clip';
+    shortClip.style.cssText = 'position:fixed;left:8px;top:280px;width:240px;height:90px;z-index:1003';
+    shortClip.innerHTML = '<div id="cf-control-short-scroller" style="width:210px;height:48px;overflow-y:auto"><button data-cid="short-first" data-ci="0" style="display:block;width:180px;height:61px">first oversized row</button><button data-cid="short-last" data-ci="9" style="display:block;width:180px;height:61px">last oversized row</button></div>';
+    document.body.appendChild(shortClip);
+    list = audit(geometryBase(shortClip));
+    const shortOutside = list.filter((row) => row.code === 'CONTROL_OUTSIDE_VIEWPORT');
+    const shortIdentities = new Set(shortOutside.map((row) => `${row.actual?.logicalId}:${row.actual?.sourceIndex}`));
+    if (shortOutside.length !== 2 || !shortIdentities.has('short-first:0') || !shortIdentities.has('short-last:9')
+      || shortOutside.some((row) => !row.actual?.clippingAncestors?.some((ancestor) => ancestor.element === '#cf-control-short-scroller'
+        && ancestor.clientHeight === 48 && /(auto|scroll)/.test(ancestor.overflowY)))) {
+      failures.push('48px row-clipping diagnostics did not preserve both logical identities and the limiting scroller: ' + JSON.stringify(shortOutside));
+    }
+    shortClip.remove();
+    const reachableClip = document.createElement('section');
+    reachableClip.id = 'cf-control-reachable-clip';
+    reachableClip.style.cssText = 'position:fixed;left:8px;top:280px;width:240px;height:100px;z-index:1003';
+    reachableClip.innerHTML = '<div style="width:210px;height:70px;overflow-y:auto"><div style="height:96px"></div><button data-cid="reachable-middle" data-ci="4" style="display:block;width:180px;height:44px">reachable middle row</button><div style="height:96px"></div></div>';
+    document.body.appendChild(reachableClip);
+    list = audit(geometryBase(reachableClip));
+    reject('scrollable row positive geometry', list, 'CONTROL_OUTSIDE_VIEWPORT', 'reachable-middle');
+    reachableClip.remove();
+    const ancestorClip = document.createElement('section');
+    ancestorClip.id = 'cf-control-ancestor-root';
+    ancestorClip.style.cssText = 'position:fixed;left:8px;top:280px;width:240px;height:100px;z-index:1003';
+    ancestorClip.innerHTML = '<div id="cf-control-ancestor-clip" style="width:220px;height:48px;overflow:hidden"><div style="width:210px;height:80px;overflow-y:auto"><button data-cid="ancestor-pinned" data-ci="5" style="display:block;width:180px;height:61px">ancestor clipped row</button></div></div>';
+    document.body.appendChild(ancestorClip);
+    list = audit(geometryBase(ancestorClip));
+    const ancestorOutside = list.find((row) => row.code === 'CONTROL_OUTSIDE_VIEWPORT'
+      && row.actual?.logicalId === 'ancestor-pinned' && row.actual?.sourceIndex === 5);
+    if (!ancestorOutside || !ancestorOutside.actual.clippingAncestors?.some((ancestor) => ancestor.element === '#cf-control-ancestor-clip'
+      && ancestor.clientHeight === 48 && ancestor.overflowY === 'hidden')) {
+      failures.push('overflow-ancestor control did not diagnose its 48px hidden limiter: ' + JSON.stringify(list));
+    }
+    ancestorClip.remove();
     const preference = document.createElement('section');
     preference.id = 'cf-control-preference';
     preference.style.cssText = 'position:fixed;left:8px;top:72px;width:180px;height:44px;z-index:1000';
@@ -3035,7 +3188,7 @@ function targetedProductRemainderBlocked(selectedViewport, productFailure) {
 function productBlockedSuffixForViewport(viewport, findingCode, executedControls = []) {
   const uniqueReachableSuffix = {
     'primary-phone': ['forced-colors-system-mapping'],
-    'phone-landscape': ['mobile-landscape-surface-chrome-yield'],
+    'phone-landscape': ['nonmodal-dock-button-contrast', 'mobile-landscape-surface-chrome-yield'],
     'desktop-8k': ['ultra-same-backing-resize'],
   }[viewport] || [];
   const executed = new Set(executedControls);
@@ -3064,11 +3217,40 @@ function controlCoverageOutcome(executedControls = [], blockedControls = []) {
   };
 }
 
+/* HTML serialization may expose an inline-style attribute with no
+   declarations as either absent or the empty string. Those states are
+   presentation-identical; every nonempty byte remains exact so a leaked
+   control declaration cannot be normalized away. */
+function sameInlineStyleAttribute(before, after) {
+  if (!(before === null || typeof before === 'string')
+    || !(after === null || typeof after === 'string')) return false;
+  return before === after || (before === null && after === '') || (before === '' && after === null);
+}
+
 async function main() {
   if (selftestOnly) {
     await reportSelftest();
     return;
   }
+  const hostileCompendiumRows = MATRIX_VIEWPORTS.some((vp) => vp.label === 'phone-landscape')
+    ? buildCompendiumFixture().rows.slice(0, 21).map(([, entry], index) => {
+      const fixtureId = `glass-hostile-${String(index).padStart(2, '0')}`;
+      const stress = index === 10
+        ? 'UnbrokenGenomeIdentityCarrier'.repeat(2)
+        : `variable-height wrapped origin evidence ${'continuation '.repeat(index % 3 + 1)}`;
+      return [fixtureId, {
+        ...entry,
+        id: fixtureId,
+        name: index === 0 ? 'First A++ geometry row'
+          : index === 10 ? `Middle A++ geometry row ${stress}`
+            : index === 20 ? 'Last A++ geometry row with a wrapped provenance tail'
+              : `A++ geometry row ${String(index).padStart(2, '0')} ${stress}`,
+        from: index === 10 ? 'Hostile provenance '.repeat(2)
+          : index === 20 ? 'Last reachable source with variable-height evidence'
+            : `Wrapped source ${index} ${'lineage '.repeat(index % 4 + 1)}`,
+      }];
+    })
+    : [];
   runReloadEvidence = [];
   runViewportTimings = [];
   const releaseLock = acquireWorkspaceLock('v2 responsive glass matrix');
@@ -4327,6 +4509,10 @@ async function main() {
             await evalIn(`document.getElementById('docksurvey')?.click()`);
             await waitFor(`${item.name} survey composition`, `window.__CF_SLICE__.api.state().cardOpen===${JSON.stringify(overSurvey)}`);
           }
+          const chromeBeforePanel = vp.label === 'phone-landscape' && item.id === 'codex'
+            ? await evalIn(`['topbar','ctxbar','hintpill','searchbox','dock'].map(id=>{const el=document.getElementById(id),style=el?getComputedStyle(el):null;
+                return {id,display:style?.display||'missing',visibility:style?.visibility||'missing',pointerEvents:style?.pointerEvents||'missing'};})`)
+            : null;
           const openerReady = await evalIn(`(()=>{ const b=document.querySelector(${JSON.stringify(opener)});if(!b)return false;const s=getComputedStyle(b),r=b.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;})()`);
           if (!openerReady) instrumentFailures.push(`${vp.label}: ${item.name} has no visible opener in its intended ${overSurvey ? 'over-survey' : 'instead-of-survey'} composition`);
           await evalIn(`(()=>{ const b=document.querySelector(${JSON.stringify(opener)}); b?.focus(); b?.click(); })()`);
@@ -4353,6 +4539,286 @@ async function main() {
             fitSelectors: [item.panel], interactiveRoots: [item.panel], contrastSelectors: [item.panel, opener],
             maxContrastReports: 16, overlapPairs: [],
           }));
+          if (vp.label === 'phone-landscape' && item.id === 'codex') {
+            /* Exercise the repaired short-landscape workspace against real
+               virtual rows, not a convenient fixed-height surrogate. The
+               fixture uses complete production-valid genomes and bounded
+               hostile wrapping at the imported A++/Mono preference. */
+            const baselineCodexCount = await evalIn('window.__CF_SLICE__.api.compendiumDiagnostics().panel.sourceCount');
+            const hostileTargets = [
+              { state: 'first', index: 0, id: hostileCompendiumRows[0][0] },
+              { state: 'middle', index: 10, id: hostileCompendiumRows[10][0] },
+              { state: 'last', index: 20, id: hostileCompendiumRows[20][0] },
+            ];
+            let hostileInstallAttempted = false;
+            const hostileHeights = [];
+            const shortClipIdentities = new Set();
+            try {
+              hostileInstallAttempted = true;
+              const installed = await evalIn(`window.__CF_SLICE__.api.__compendiumEvidence.installFixture(${JSON.stringify(hostileCompendiumRows)})`);
+              if (installed?.installed !== hostileCompendiumRows.length) throw new Error(`${vp.label}: hostile Compendium fixture installed ${JSON.stringify(installed)}`);
+              await waitFor('hostile Compendium fixture', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
+                return d.panel.mode==='list'&&d.panel.sourceCount===${hostileCompendiumRows.length}
+                  &&document.querySelector('#codexpanel [data-ci="0"]');})()`);
+
+              const workspace = await evalIn(`(()=>{const panel=document.getElementById('codexpanel'),scroll=document.querySelector('[data-sel="codex-scroll"]'),
+                survey=document.getElementById('survey'),search=document.getElementById('searchbox'),dock=document.getElementById('dock'),
+                root=getComputedStyle(document.documentElement),yielded=['topbar','ctxbar','hintpill'].map(id=>{
+                  const el=document.getElementById(id),style=el?getComputedStyle(el):null;return {id,visibility:style?.visibility||'missing',pointerEvents:style?.pointerEvents||'missing'};});
+                if(!panel||!scroll||!survey||!search||!dock)return {ok:false,why:'missing panel/scroller/survey/Search/dock',yielded};
+                const p=panel.getBoundingClientRect(),s=scroll.getBoundingClientRect(),v=survey.getBoundingClientRect(),
+                  q=search.getBoundingClientRect(),d=dock.getBoundingClientRect(),intersects=(a,b)=>a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1,
+                  safe={top:parseFloat(root.getPropertyValue('--safe-top'))||0,right:parseFloat(root.getPropertyValue('--safe-right'))||0,
+                    bottom:parseFloat(root.getPropertyValue('--safe-bottom'))||0,left:parseFloat(root.getPropertyValue('--safe-left'))||0},
+                  surveyStyle=getComputedStyle(survey),surveyVisible=surveyStyle.display!=='none'&&surveyStyle.visibility!=='hidden'&&v.width>0&&v.height>0,
+                  retained=[search,dock].map((el)=>{const style=getComputedStyle(el),r=el.getBoundingClientRect();return {id:el.id,display:style.display,
+                    visibility:style.visibility,pointerEvents:style.pointerEvents,rect:[r.left,r.top,r.right,r.bottom]};}),
+                  overlaps={panelSurvey:intersects(p,v),panelSearch:intersects(p,q),panelDock:intersects(p,d),surveySearch:intersects(v,q),
+                    surveyDock:intersects(v,d),searchDock:intersects(q,d)};
+                return {ok:document.body.classList.contains('panel-open')&&document.body.classList.contains('fs-xl')
+                    &&document.body.classList.contains('font-mono')&&yielded.every(row=>row.visibility==='hidden'&&row.pointerEvents==='none')
+                    &&retained.every(row=>row.display!=='none'&&row.visibility==='visible'&&row.pointerEvents!=='none')
+                    &&p.left>=safe.left-1&&p.top>=safe.top-1&&p.right<=innerWidth-safe.right+1&&p.bottom<=innerHeight-safe.bottom+1
+                    &&q.left>=safe.left-1&&q.top>=safe.top-1&&q.right<=innerWidth-safe.right+1&&q.bottom<=innerHeight-safe.bottom+1
+                    &&d.left>=safe.left-1&&d.top>=safe.top-1&&d.right<=innerWidth-safe.right+1&&d.bottom<=innerHeight-safe.bottom+1
+                    &&surveyVisible&&v.left>=safe.left-1&&v.top>=safe.top-1&&v.right<=innerWidth-safe.right+1&&v.bottom<=innerHeight-safe.bottom+1
+                    &&Object.values(overlaps).every(value=>value===false)
+                    &&scroll.clientHeight>=243&&s.top>=p.top-1&&s.bottom<=p.bottom+1&&panel.scrollHeight<=panel.clientHeight+1,
+                  safe,panel:[p.left,p.top,p.right,p.bottom],scroller:[s.left,s.top,s.right,s.bottom],scrollerHeight:scroll.clientHeight,
+                  panelClientHeight:panel.clientHeight,panelScrollHeight:panel.scrollHeight,survey:[v.left,v.top,v.right,v.bottom],surveyVisible,
+                  search:[q.left,q.top,q.right,q.bottom],dock:[d.left,d.top,d.right,d.bottom],overlaps,yielded,retained};})()`);
+              addOutcome(vp.label, 'compendium-short-landscape', 'COMPENDIUM_SHORT_LANDSCAPE_WORKSPACE', '#codexpanel', workspace,
+                'the A++ Compendium owns the safe-height left workspace while Search, dock, and Survey remain separate usable right-column surfaces');
+
+              const nonModalChrome = await evalIn(`(()=>{const search=document.getElementById('searchbox'),dock=document.getElementById('dock'),
+                dockButton=document.getElementById('dockcodex'),buttons=dock?[...dock.querySelectorAll('button')]:[],panel=document.getElementById('codexpanel');
+                if(!(search instanceof HTMLInputElement)||!dock||!dockButton||!panel)return {ok:false,why:'Search/dock/Compendium missing'};
+                const rendered=(el)=>{const style=getComputedStyle(el),r=el.getBoundingClientRect();return style.display!=='none'&&style.visibility==='visible'
+                    &&style.pointerEvents!=='none'&&r.width>0&&r.height>0;},ownsCentre=(el)=>{const r=el.getBoundingClientRect(),hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);
+                    return !!hit&&(hit===el||el.contains(hit));},named=(el)=>!!(el.getAttribute('aria-label')||el.textContent||'').trim(),
+                  exposed=(el)=>!el.inert&&!el.closest('[inert],[aria-hidden="true"]'),positiveVisibility=rendered(search)&&rendered(dock)&&exposed(search)&&exposed(dock),
+                  searchStyle=search.getAttribute('style'),dockStyle=dock.getAttribute('style'),dockAriaHidden=dock.getAttribute('aria-hidden');
+                let hiddenSearchRejected=false,blockedDockRejected=false,hiddenDockA11yRejected=false;
+                try{search.style.setProperty('visibility','hidden','important');hiddenSearchRejected=!rendered(search);}
+                finally{if(searchStyle===null)search.removeAttribute('style');else search.setAttribute('style',searchStyle);}
+                try{dock.style.setProperty('pointer-events','none','important');blockedDockRejected=!rendered(dock);}
+                finally{if(dockStyle===null)dock.removeAttribute('style');else dock.setAttribute('style',dockStyle);}
+                try{dock.setAttribute('aria-hidden','true');hiddenDockA11yRejected=!exposed(dock);}
+                finally{if(dockAriaHidden===null)dock.removeAttribute('aria-hidden');else dock.setAttribute('aria-hidden',dockAriaHidden);}
+                const searchHit=ownsCentre(search),dockHits=buttons.map(button=>({id:button.id,hit:ownsCentre(button),named:named(button),
+                  exposed:exposed(button),tabIndex:button.tabIndex,disabled:button.disabled}));
+                search.focus({preventScroll:true});const searchFocused=document.activeElement===search;
+                search.value='Middle A++ geometry row';search.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',code:'Enter',bubbles:true,cancelable:true}));
+                const filtered=window.__CF_SLICE__.api.compendiumDiagnostics();
+                search.value='';search.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',code:'Enter',bubbles:true,cancelable:true}));
+                const cleared=window.__CF_SLICE__.api.compendiumDiagnostics();
+                dockButton.focus({preventScroll:true});const dockFocused=document.activeElement===dockButton;dockButton.click();
+                const closed=window.__CF_SLICE__.api.state();dockButton.click();const reopened=window.__CF_SLICE__.api.state(),
+                  close=panel.querySelector('[data-pnx]'),focusEntered=!!close&&document.activeElement===close;
+                return {ok:positiveVisibility&&hiddenSearchRejected&&blockedDockRejected&&hiddenDockA11yRejected&&searchHit&&searchFocused
+                    &&search.getAttribute('aria-label')?.trim().length>0&&exposed(search)&&search.tabIndex>=0&&!search.disabled&&!search.readOnly
+                    &&dock.getAttribute('aria-label')?.trim().length>0&&dockFocused&&dockHits.length===8
+                    &&dockHits.every(row=>row.hit&&row.named&&row.exposed&&row.tabIndex>=0&&!row.disabled)
+                    &&filtered.panel.mode==='list'&&filtered.panel.filteredCount===1
+                    &&cleared.panel.mode==='list'&&cleared.panel.filteredCount===${hostileCompendiumRows.length}
+                    &&closed.panelOpen===null&&reopened.panelOpen==='codex'&&focusEntered,
+                  positiveVisibility,hiddenSearchRejected,blockedDockRejected,hiddenDockA11yRejected,searchHit,searchFocused,searchName:search.getAttribute('aria-label'),
+                  dockName:dock.getAttribute('aria-label'),dockFocused,dockHits,filteredCount:filtered.panel.filteredCount,
+                  clearedCount:cleared.panel.filteredCount,closedPanel:closed.panelOpen,reopenedPanel:reopened.panelOpen,focusEntered};})()`);
+              addOutcome(vp.label, 'compendium-nonmodal-chrome', 'NONMODAL_CHROME_UNUSABLE', '#searchbox,#dock', nonModalChrome,
+                'non-modal Search and every dock action remain rendered, named, focusable, hit-testable, and usable while the Compendium is open');
+              await waitFor('non-modal Compendium reopen', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();return d.panel.mode==='list'
+                &&d.panel.sourceCount===${hostileCompendiumRows.length}&&d.panel.filteredCount===${hostileCompendiumRows.length}
+                &&document.querySelector('#codexpanel [data-ci="0"]');})()`);
+              const nonModalAuditOptions = {
+                surface: 'compendium-nonmodal-chrome', root: 'body', textMin: 20, targetFloor,
+                safe: vp.safe || {}, safeExpected: vp.safe || undefined,
+                viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr },
+                fitSelectors: ['#searchbox', '#dock', '#survey'], interactiveRoots: ['#searchbox', '#dock'],
+                focusSelectors: ['#searchbox', '#dockcodex'], contrastSelectors: ['#searchbox', '#dock button'],
+                maxControlReports: 10, maxContrastReports: 10,
+                overlapPairs: [['#codexpanel', '#searchbox'], ['#codexpanel', '#dock'], ['#survey', '#searchbox'], ['#survey', '#dock'],
+                  ['#searchbox', '#dock']],
+              };
+              const nonModalAuditRows = await audit(nonModalAuditOptions);
+              add(vp.label, 'compendium-nonmodal-chrome', nonModalAuditRows);
+              const dockContrastControl = await evalIn(`(()=>{const buttons=[...document.querySelectorAll('#dock button')];
+                if(buttons.length!==8||buttons.some(button=>!(button instanceof HTMLButtonElement)||!button.id))
+                  return {ok:false,why:'exact eight named dock buttons missing',count:buttons.length};
+                const expected=buttons.map(button=>'#'+CSS.escape(button.id)).sort(),prior=buttons.map(button=>button.getAttribute('style')),
+                  baseline=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)});let injected=[];
+                try{for(const button of buttons){button.style.setProperty('color','#fff','important');button.style.setProperty('background','#fff','important');}
+                  injected=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)});
+                }finally{buttons.forEach((button,index)=>{if(prior[index]===null)button.removeAttribute('style');else button.setAttribute('style',prior[index]);});}
+                const restored=buttons.map(button=>button.getAttribute('style')),clean=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)}),
+                  contrastIds=(rows)=>rows.filter(row=>row.code==='TEXT_CONTRAST_LOW'&&expected.includes(row.element)).map(row=>row.element).sort(),
+                  baselineIds=contrastIds(baseline),injectedIds=contrastIds(injected),cleanIds=contrastIds(clean),
+                  bare=[...baseline,...injected,...clean].some(row=>row.code==='TEXT_CONTRAST_LOW'&&row.element==='#dock'),
+                  restoredExact=restored.every((value,index)=>(${sameInlineStyleAttribute.toString()})(prior[index],value));
+                return {ok:JSON.stringify(injectedIds)===JSON.stringify(expected)&&JSON.stringify(cleanIds)===JSON.stringify(baselineIds)
+                    &&!bare&&restoredExact,expected,baselineIds,injectedIds,cleanIds,bare,restoredExact,prior,restored};})()`);
+              if (!dockContrastControl?.ok || nonModalAuditRows.some(row=>row.code==='TEXT_CONTRAST_LOW'&&row.element==='#dock')) {
+                instrumentFailures.push(`${vp.label}: non-modal dock contrast control did not isolate the painted buttons from the transparent layout wrapper (${JSON.stringify(dockContrastControl)})`);
+              }
+              recordControls('nonmodal-dock-button-contrast');
+              await evalIn(`document.querySelector('#codexpanel [data-pnx]')?.focus()`);
+
+              const revealHostileRow = async (target) => {
+                let state = null;
+                for (let attempt = 0; attempt < 5; attempt++) {
+                  state = await evalIn(`(()=>{const scroller=document.querySelector('[data-sel="codex-scroll"]'),targetIndex=${target.index},
+                    targetId=${JSON.stringify(target.id)},count=${hostileCompendiumRows.length};if(!scroller)return {ready:false,why:'scroller missing'};
+                    const mounted=[...scroller.querySelectorAll('[data-ci][data-cid]')].map(row=>({index:Number(row.dataset.ci),id:row.dataset.cid}));
+                    if(mounted.some(row=>row.index===targetIndex&&row.id===targetId))return {ready:true,mounted,scrollTop:scroller.scrollTop};
+                    const mean=Math.max(44,scroller.scrollHeight/Math.max(1,count)),max=Math.max(0,scroller.scrollHeight-scroller.clientHeight),
+                      nearest=mounted.slice().sort((a,b)=>Math.abs(a.index-targetIndex)-Math.abs(b.index-targetIndex))[0],
+                      next=${attempt}===0?max*targetIndex/Math.max(1,count-1):scroller.scrollTop+(targetIndex-(nearest?.index??targetIndex))*mean;
+                    scroller.scrollTop=Math.max(0,Math.min(max,next));scroller.dispatchEvent(new Event('scroll'));
+                    return {ready:false,mounted,scrollTop:scroller.scrollTop,mean,max};})()`);
+                  if (state?.ready) return state;
+                  await evalIn('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true))))');
+                }
+                state = await evalIn(`(()=>{const row=[...document.querySelectorAll('#codexpanel [data-ci][data-cid]')]
+                  .find(el=>Number(el.dataset.ci)===${target.index}&&el.dataset.cid===${JSON.stringify(target.id)});
+                  return {ok:!!row,ready:!!row,mounted:[...document.querySelectorAll('#codexpanel [data-ci][data-cid]')].map(el=>({index:Number(el.dataset.ci),id:el.dataset.cid}))};})()`);
+                addOutcome(vp.label, `compendium-hostile-${target.state}`, 'COMPENDIUM_HOSTILE_ROW_NOT_MOUNTED', '#codexpanel [data-ci]', state,
+                  `the ${target.state} logical row mounts after bounded virtual scrolling`);
+                return state;
+              };
+              const auditHostileRow = async (target) => {
+                const reveal = await revealHostileRow(target);
+                if (!reveal?.ready) return null;
+                const rowSelector = `#codexpanel [data-cid=${JSON.stringify(target.id)}][data-ci="${target.index}"]`;
+                add(vp.label, `compendium-hostile-${target.state}`, await audit({
+                  surface: `compendium-hostile-${target.state}`, root: '#codexpanel', textMin: 20, targetFloor,
+                  safe: vp.safe || {}, safeExpected: vp.safe || undefined,
+                  viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr },
+                  fitSelectors: ['#codexpanel'], interactiveRoots: [rowSelector], contrastSelectors: [],
+                  maxControlReports: 10, overlapPairs: [['#codexpanel', '#survey']],
+                }));
+                const geometry = await evalIn(`(()=>{const row=[...document.querySelectorAll('#codexpanel [data-ci][data-cid]')]
+                  .find(el=>Number(el.dataset.ci)===${target.index}&&el.dataset.cid===${JSON.stringify(target.id)}),
+                  scroller=document.querySelector('[data-sel="codex-scroll"]');if(!row||!scroller)return {ok:false,why:'target detached'};
+                  const r=row.getBoundingClientRect(),s=scroller.getBoundingClientRect(),style=getComputedStyle(row),copy=row.querySelector('.compendium-row-copy');
+                  return {ok:document.body.classList.contains('fs-xl')&&document.body.classList.contains('font-mono')
+                      &&parseFloat(style.fontSize)>=16&&/mono/i.test(style.fontFamily)&&r.height>=44&&r.height<=s.height+1
+                      &&r.top>=s.top-1&&r.bottom<=s.bottom+1&&row.scrollHeight<=row.clientHeight+1
+                      &&copy&&getComputedStyle(copy).overflowWrap==='anywhere',logicalId:row.dataset.cid||null,sourceIndex:Number(row.dataset.ci),
+                    fontSize:parseFloat(style.fontSize),fontFamily:style.fontFamily,rect:[r.left,r.top,r.right,r.bottom],
+                    scroller:[s.left,s.top,s.right,s.bottom],clientHeight:row.clientHeight,scrollHeight:row.scrollHeight,
+                    copyScrollHeight:copy?.scrollHeight??null};})()`);
+                hostileHeights.push(geometry?.rect?.[3] - geometry?.rect?.[1]);
+                addOutcome(vp.label, `compendium-hostile-${target.state}`, 'COMPENDIUM_HOSTILE_ROW_GEOMETRY', rowSelector, geometry,
+                  `the ${target.state} A++/Mono variable-height row is fully reachable without text or row truncation`);
+                return { rowSelector, geometry };
+              };
+              const runShortClipControl = async (target) => {
+                const rowSelector = `#codexpanel [data-cid=${JSON.stringify(target.id)}][data-ci="${target.index}"]`;
+                const controlOptions = {
+                  surface: 'compendium-48px-control', root: '#codexpanel', textMin: 1, targetFloor,
+                  safe: vp.safe || {}, fitSelectors: ['#codexpanel'], interactiveRoots: [rowSelector], contrastSelectors: [],
+                  maxControlReports: 10, overlapPairs: [],
+                };
+                const control = await evalIn(`(()=>{const scroller=document.querySelector('[data-sel="codex-scroll"]');
+                  if(!scroller)return {rows:[],restoration:{ok:false,why:'scroller missing'}};
+                  const prior=scroller.getAttribute('style'),beforeClientHeight=scroller.clientHeight;let rows=[],appliedClientHeight=null;
+                  try{scroller.style.setProperty('height','48px','important');appliedClientHeight=scroller.clientHeight;
+                    rows=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(controlOptions)});
+                  }finally{if(prior===null)scroller.removeAttribute('style');else scroller.setAttribute('style',prior);}
+                  const restored=scroller.getAttribute('style'),restoredClientHeight=scroller.clientHeight;
+                  return {rows,restoration:{ok:(${sameInlineStyleAttribute.toString()})(prior,restored)&&beforeClientHeight>=243&&appliedClientHeight===48
+                    &&restoredClientHeight===beforeClientHeight,prior,restored,beforeClientHeight,appliedClientHeight,restoredClientHeight}};})()`);
+                const rows = control?.rows || [];
+                if (!control?.restoration?.ok) instrumentFailures.push(`${vp.label}: real ${target.state} 48px Compendium injection did not restore the exact scroller style and >=243px geometry (${JSON.stringify(control?.restoration)})`);
+                const outside = rows.find((row) => row.code === 'CONTROL_OUTSIDE_VIEWPORT'
+                  && row.actual?.logicalId === target.id && row.actual?.sourceIndex === target.index
+                  && row.actual?.rect?.height > 48
+                  && row.actual?.clippingAncestors?.some((ancestor) => ancestor.clientHeight === 48
+                    && /(auto|scroll)/.test(ancestor.overflowY)));
+                if (!outside) instrumentFailures.push(`${vp.label}: real ${target.state} 48px Compendium injection did not report its exact logical/source identity (${JSON.stringify(rows)})`);
+                else shortClipIdentities.add(`${outside.actual.logicalId}:${outside.actual.sourceIndex}`);
+              };
+
+              await auditHostileRow(hostileTargets[0]);
+              await runShortClipControl(hostileTargets[0]);
+              await auditHostileRow(hostileTargets[1]);
+              const ancestorTarget = hostileTargets[1];
+              const ancestorSelector = `#codexpanel [data-cid=${JSON.stringify(ancestorTarget.id)}][data-ci="${ancestorTarget.index}"]`;
+              const ancestorOptions = {
+                surface: 'compendium-overflow-ancestor-control', root: '#codexpanel', textMin: 1, targetFloor,
+                safe: vp.safe || {}, fitSelectors: ['#codexpanel'], interactiveRoots: [ancestorSelector], contrastSelectors: [],
+                maxControlReports: 10, overlapPairs: [],
+              };
+              const ancestorControl = await evalIn(`(()=>{const panel=document.getElementById('codexpanel'),scroller=document.querySelector('[data-sel="codex-scroll"]');
+                if(!panel||!scroller)return {rows:[],restoration:{ok:false,why:'panel/scroller missing'}};
+                const prior=panel.getAttribute('style'),beforeClientHeight=panel.clientHeight,beforeScrollerHeight=scroller.clientHeight,
+                  beforeOverflowY=getComputedStyle(panel).overflowY,p=panel.getBoundingClientRect(),s=scroller.getBoundingClientRect();let rows=[],applied=null;
+                try{const clippedHeight=Math.max(1,s.top-p.top+48);panel.style.setProperty('height',clippedHeight+'px','important');
+                  panel.style.setProperty('max-height',clippedHeight+'px','important');panel.style.setProperty('overflow-y','hidden','important');
+                  applied={clientHeight:panel.clientHeight,overflowY:getComputedStyle(panel).overflowY};
+                  rows=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(ancestorOptions)});
+                }finally{if(prior===null)panel.removeAttribute('style');else panel.setAttribute('style',prior);}
+                const restored=panel.getAttribute('style'),restoredClientHeight=panel.clientHeight,restoredScrollerHeight=scroller.clientHeight,
+                  restoredOverflowY=getComputedStyle(panel).overflowY;
+                return {rows,restoration:{ok:(${sameInlineStyleAttribute.toString()})(prior,restored)&&beforeScrollerHeight>=243&&applied?.overflowY==='hidden'
+                    &&applied.clientHeight<beforeClientHeight&&restoredClientHeight===beforeClientHeight
+                    &&restoredScrollerHeight===beforeScrollerHeight&&restoredOverflowY===beforeOverflowY,
+                  prior,restored,beforeClientHeight,beforeScrollerHeight,beforeOverflowY,applied,restoredClientHeight,restoredScrollerHeight,restoredOverflowY}};})()`);
+              const ancestorRows = ancestorControl?.rows || [];
+              if (!ancestorControl?.restoration?.ok) instrumentFailures.push(`${vp.label}: real overflow-ancestor Compendium injection did not restore the exact panel style and >=243px scroller geometry (${JSON.stringify(ancestorControl?.restoration)})`);
+              const ancestorOutside = ancestorRows.find((row) => row.code === 'CONTROL_OUTSIDE_VIEWPORT'
+                && row.actual?.logicalId === ancestorTarget.id && row.actual?.sourceIndex === ancestorTarget.index
+                && row.actual?.clippingAncestors?.some((ancestor) => ancestor.element === '#codexpanel'
+                  && ancestor.overflowY === 'hidden'));
+              if (!ancestorOutside) instrumentFailures.push(`${vp.label}: real overflow-ancestor Compendium injection did not diagnose #codexpanel and its exact row (${JSON.stringify(ancestorRows)})`);
+
+              await auditHostileRow(hostileTargets[2]);
+              await runShortClipControl(hostileTargets[2]);
+              if (shortClipIdentities.size !== 2
+                || !shortClipIdentities.has(`${hostileTargets[0].id}:0`)
+                || !shortClipIdentities.has(`${hostileTargets[2].id}:20`)) {
+                instrumentFailures.push(`${vp.label}: first/last 48px Compendium controls did not retain distinct logicalId/sourceIndex diagnostics (${JSON.stringify([...shortClipIdentities])})`);
+              }
+              if (hostileHeights.length !== 3 || new Set(hostileHeights.map((height) => Math.round(height))).size < 2) {
+                instrumentFailures.push(`${vp.label}: hostile Compendium fixture did not exercise variable row heights (${JSON.stringify(hostileHeights)})`);
+              }
+
+              await revealHostileRow(hostileTargets[1]);
+              await evalIn(`(()=>{const row=[...document.querySelectorAll('#codexpanel [data-ci][data-cid]')]
+                .find(el=>Number(el.dataset.ci)===10&&el.dataset.cid===${JSON.stringify(hostileTargets[1].id)});row?.focus({preventScroll:true});
+                const scroller=document.querySelector('[data-sel="codex-scroll"]');if(scroller){scroller.scrollTop=scroller.scrollHeight;scroller.dispatchEvent(new Event('scroll'));}
+                return !!row;})()`);
+              await evalIn('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true))))');
+              const pinned = await evalIn(`(()=>{const id=${JSON.stringify(hostileTargets[1].id)},d=window.__CF_SLICE__.api.compendiumDiagnostics(),
+                row=[...document.querySelectorAll('#codexpanel [data-ci][data-cid]')].find(el=>el.dataset.cid===id),
+                scroller=document.querySelector('[data-sel="codex-scroll"]');if(!row||!scroller)return {ok:false,why:'pinned row/scroller missing',diagnostics:d};
+                const r=row.getBoundingClientRect(),s=scroller.getBoundingClientRect(),outside=r.bottom<=s.top+1||r.top>=s.bottom-1;
+                return {ok:document.activeElement===row&&d.window.focusedLogicalId===id
+                    &&d.window.pinnedLogicalIds.length===1&&d.window.pinnedLogicalIds[0]===id
+                    &&d.window.mountedLogicalIds.includes(id)&&!(10>=d.window.start&&10<d.window.end)&&outside,
+                  logicalId:row.dataset.cid||null,sourceIndex:Number(row.dataset.ci),active:document.activeElement===row,
+                  window:d.window,row:[r.left,r.top,r.right,r.bottom],scroller:[s.left,s.top,s.right,s.bottom],outside};})()`);
+              addOutcome(vp.label, 'compendium-hostile-focus-pinned', 'COMPENDIUM_FOCUS_PIN_GEOMETRY', ancestorSelector, pinned,
+                'the focused middle logical row stays mounted and focused outside the normal last-row window without expanding or clipping that window');
+              add(vp.label, 'compendium-hostile-focus-pinned', await audit({
+                surface: 'compendium-hostile-focus-pinned', root: '#codexpanel', textMin: 20, targetFloor,
+                safe: vp.safe || {}, safeExpected: vp.safe || undefined,
+                viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr },
+                fitSelectors: ['#codexpanel'], interactiveRoots: [ancestorSelector], contrastSelectors: [],
+                maxControlReports: 10, overlapPairs: [['#codexpanel', '#survey']],
+              }));
+              recordControls('viewport-fit');
+            } finally {
+              if (hostileInstallAttempted) {
+                const restored = await evalIn('window.__CF_SLICE__.api.__compendiumEvidence.resetFixture()');
+                await waitFor('restored Compendium fixture', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
+                  return d.panel.mode==='list'&&d.panel.sourceCount===${baselineCodexCount}
+                    &&document.querySelectorAll('#codexpanel [data-sel="codex-entry"]').length>0;})()`);
+                if (restored?.installed !== baselineCodexCount) throw new Error(`${vp.label}: Compendium fixture reset mismatch ${JSON.stringify(restored)}`);
+                await evalIn(`document.querySelector('#codexpanel [data-pnx]')?.focus()`);
+              }
+            }
+          }
           const closeLabel = await evalIn(`(()=>{ const panel=document.querySelector(${JSON.stringify(item.panel)}),close=panel?.querySelector('[data-pnx]');
             const expected='Close '+(panel?.getAttribute('aria-label')||'');return {ok:!!close&&close.getAttribute('aria-label')===expected,
               actual:close?.getAttribute('aria-label')||null,expected};})()`);
@@ -4390,6 +4856,26 @@ async function main() {
             `close owns its centre, closes the panel, preserves ${overSurvey ? 'the survey' : 'Planetside'}, and restores logical opener focus`);
           if (!closed.ok) await evalIn(`document.querySelector(${JSON.stringify(item.panel)}+' [data-pnx]')?.click()`);
           await waitFor(`${item.name} closed`, `window.__CF_SLICE__.api.state().panelOpen===null && window.__CF_SLICE__.api.state().cardOpen===${JSON.stringify(overSurvey)}`);
+          if (vp.label === 'phone-landscape' && item.id === 'codex') {
+            const chromeRestored = await evalIn(`(()=>{const opener=document.querySelector(${JSON.stringify(opener)}),
+              survey=document.getElementById('survey'),expected=${JSON.stringify(chromeBeforePanel)},rows=['topbar','ctxbar','hintpill','searchbox','dock'].map(id=>{const el=document.getElementById(id),style=el?getComputedStyle(el):null;
+                const r=el?.getBoundingClientRect();return {id,display:style?.display||'missing',visibility:style?.visibility||'missing',
+                  pointerEvents:style?.pointerEvents||'missing',rect:r?[r.left,r.top,r.right,r.bottom]:null};}),surveyStyle=survey?getComputedStyle(survey):null,
+              surveyRect=survey?.getBoundingClientRect(),searchRect=document.getElementById('searchbox')?.getBoundingClientRect(),
+              dockRect=document.getElementById('dock')?.getBoundingClientRect(),intersects=(a,b)=>!!a&&!!b&&a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1,
+              policyMatches=Array.isArray(expected)&&expected.length===rows.length&&rows.every(row=>{const prior=expected.find(entry=>entry.id===row.id);
+                return !!prior&&row.display===prior.display&&row.visibility===prior.visibility&&row.pointerEvents===prior.pointerEvents;});
+              return {ok:!document.body.classList.contains('panel-open')&&document.body.classList.contains('card-open')&&document.activeElement===opener
+                  &&policyMatches&&rows.every(row=>row.visibility==='visible')
+                  &&rows.filter(row=>row.id!=='ctxbar').every(row=>row.display!=='none')&&rows.find(row=>row.id==='ctxbar')?.display==='none'
+                  &&surveyStyle?.display!=='none'&&surveyStyle?.visibility==='visible'
+                  &&dockRect&&Math.abs((dockRect.left+dockRect.right)/2-innerWidth/2)<=1
+                  &&!intersects(surveyRect,searchRect)&&!intersects(surveyRect,dockRect),active:document.activeElement?.id||null,
+                opener:opener?.id||null,surveyDisplay:surveyStyle?.display||'missing',dockCentered:dockRect?((dockRect.left+dockRect.right)/2):null,
+                surveySearchOverlap:intersects(surveyRect,searchRect),surveyDockOverlap:intersects(surveyRect,dockRect),policyMatches,expected,rows};})()`);
+            addOutcome(vp.label, 'compendium-short-landscape-close', 'MOBILE_PANEL_CHROME_NOT_RESTORED', opener, chromeRestored,
+              'Close synchronously restores the centered dock, status chrome, opener focus, and the separate Survey/Search composition');
+          }
           addOutcome(vp.label, composition, 'PANEL_DISCLOSURE_STATE', opener,
             await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome(${JSON.stringify(opener)},${JSON.stringify(item.panel)},false)`),
             'visible opener exposes expanded=false after its panel closes');
@@ -4669,12 +5155,26 @@ async function main() {
              rejects it. This extends guide-render-focus without changing the
              sealed outcome or negative-control inventories. */
           const renderedGuideIngress = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),input=document.getElementById('guidesearch'),rows=[];
+            const guideRequiredControlRejected=${guideRequiredControlRejected.toString()};
+            const probeNeedle='up to 1,500 logical entries',probeCarrier='read-only Compendium presents '+probeNeedle,
+              probeBefore='The '+probeCarrier+'.',probeAfter=probeBefore.replace(probeNeedle,'a bounded set of logical entries'),
+              probeResult={ok:false,missing:[probeCarrier],text:probeAfter};
+            const predicateControls={
+              positive:guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier],result:probeResult}),
+              zeroCarrier:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:['unrelated required copy'],result:probeResult}),
+              multipleCarriers:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier,'second '+probeNeedle],result:probeResult}),
+              noOp:!guideRequiredControlRejected({before:probeBefore,after:probeBefore,needle:probeNeedle,required:[probeCarrier],result:probeResult}),
+              wrongCarrier:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier],result:{...probeResult,missing:['wrong carrier']}}),
+              needleStillPresent:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier],result:{...probeResult,text:probeAfter+' '+probeNeedle}}),
+            };
             const specs=[
               {id:'landing',required:['Any galaxy, star, or planet route arriving from Search, the Star Atlas, or a saved location is regenerated from the seeded universe before it is accepted','navigation uses only the source-verified destination','A stale or forged route cannot act'],forbidden:['A planet address from Search or the Star Atlas returns to its live system survey when it is inside the expedition’s saved reach'],stale:'A planet address from Search or the Star Atlas returns to its live system survey when it is inside the expedition’s saved reach; it never lands for you.'},
               {id:'search',required:['Every galaxy, star, or planet code is treated as an address to verify, not as authority','accepts only the source-verified destination','A stale or forged code leaves the current view unchanged and keeps the exact query in Search for correction'],forbidden:['A valid world address inside the expedition’s saved reach reopens the destination’s system survey'],stale:'The top-bar search accepts discovered species names and deterministic CF1 world addresses. A valid world address inside the expedition’s saved reach reopens the destination’s system survey.'},
               {id:'codes',required:['Before any shared galaxy, star, or planet route is accepted','uses only the source-verified destination','A stale or forged code leaves the current view unchanged and keeps the exact query in Search'],forbidden:['Opening it returns another explorer to the live system survey'],stale:'Share on a planet card prepares a deterministic CF1 address. Opening it returns another explorer to the live system survey when the destination is inside that expedition’s saved reach.'},
               {id:'atlas',required:['Each saved galaxy, star, or planet route is regenerated from the seeded universe','must produce a source-verified destination before its row can travel','A stale, forged, or incomplete imported route remains visible but disabled'],forbidden:['choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level'],stale:'Use Star Atlas on a planet card to chart it. The Atlas lists saved galaxies, stars, and worlds; choosing a complete entry inside the expedition’s saved reach returns to that destination’s own navigation level.'},
               {id:'determinism',required:['A CF1 address is a pointer into that shared math, not authority of its own','accepts only a source-verified match','a stale or forged address cannot replace the current view'],forbidden:['which is why deterministic CF1 addresses work without an account or game server'],stale:'The same supported coordinates resolve to the same galaxy, star, world, and current-slice survey, which is why deterministic CF1 addresses work without an account or game server.'},
+              {id:'kingdoms',required:['read-only Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','Discovery, capture, husbandry, renaming, and other collection-writing actions remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Capture is now live'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Capture is now live.']},
+              {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','profile remains read-only','Capture, feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry or collection-writing outcomes are deliberately absent'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Capture is now live'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Capture is now live.']},
               {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
               {id:'saving',paragraph:1,required:['On reload, a saved galaxy, star, or planet location is regenerated from the seeded universe','accepted only when it is source-verified','If that saved location is stale, forged, or incomplete, the view returns safely to Cosmos','normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'A newer-build, incomplete, or corrupt stored expedition remains protected, and there is no cloud account yet.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
             ];
@@ -4689,18 +5189,25 @@ async function main() {
                 row.click();const article=panel.querySelector('.guide-topic'),paragraphs=article?[...article.querySelectorAll('p')]:[],target=paragraphs[spec.paragraph??0];
                 if(!(article instanceof HTMLElement)||!(target instanceof HTMLElement))throw new Error('Guide topic did not render '+spec.id);
                 const current=check(article,spec),prior=target.innerHTML,priorText=(article.textContent||'');
-                target.textContent=spec.stale;const injected=check(article,spec);target.innerHTML=prior;
+                let injected;
+                try { target.textContent=spec.stale;injected=check(article,spec); }
+                finally { target.innerHTML=prior; }
                 const requiredControls=[];
                 for(const part of spec.requiredControls||[]){
-                  target.innerHTML=prior.replace(part,'required Training contract removed');const result=check(article,spec);target.innerHTML=prior;
-                  requiredControls.push({part,result,rejected:prior.includes(part)&&result.ok===false&&result.missing.includes(part)});
+                  const changed=prior.replace(part,'required Training contract removed');let result;
+                  try { target.innerHTML=changed;result=check(article,spec); }
+                  finally { target.innerHTML=prior; }
+                  requiredControls.push({part,result,rejected:guideRequiredControlRejected({before:prior,after:changed,needle:part,required:spec.required,result})});
                 }
                 let contradictory=null;
-                if(spec.contradiction){const marker=document.createElement('p');marker.textContent=spec.contradiction;article.appendChild(marker);
-                  contradictory=check(article,spec);marker.remove();}
+                if(spec.contradiction){const marker=document.createElement('p');marker.textContent=spec.contradiction;
+                  try { article.appendChild(marker);contradictory=check(article,spec); }
+                  finally { marker.remove(); }}
                 const contradictionControls=[];
-                for(const copy of spec.contradictions||[]){const marker=document.createElement('p');marker.textContent=copy;article.appendChild(marker);
-                  const result=check(article,spec);marker.remove();contradictionControls.push({copy,result,rejected:result.ok===false&&result.stale.length>0});}
+                for(const copy of spec.contradictions||[]){const marker=document.createElement('p');marker.textContent=copy;let result;
+                  try { article.appendChild(marker);result=check(article,spec); }
+                  finally { marker.remove(); }
+                  contradictionControls.push({copy,result,rejected:result.ok===false&&result.stale.length>0});}
                 const restored=(article.textContent||'')===priorText&&check(article,spec).ok;
                 rows.push({id:spec.id,current,injected,requiredControls,contradictory,contradictionControls,
                   controlRejected:injected.ok===false,requiredControlsRejected:requiredControls.every((row)=>row.rejected),
@@ -4708,7 +5215,7 @@ async function main() {
               }
             } catch(cause) { error=String(cause?.message||cause); }
             finally { if(input instanceof HTMLInputElement){input.value='';input.dispatchEvent(new Event('input',{bubbles:true}));} }
-            return {ok:!error&&rows.length===specs.length&&rows.every((row)=>row.current.ok&&row.controlRejected&&row.requiredControlsRejected&&row.contradictionRejected&&row.restored),rows,error};})()`);
+            return {ok:!error&&Object.values(predicateControls).every(Boolean)&&rows.length===specs.length&&rows.every((row)=>row.current.ok&&row.controlRejected&&row.requiredControlsRejected&&row.contradictionRejected&&row.restored),predicateControls,rows,error};})()`);
           if (!renderedGuideIngress.ok) {
             instrumentFailures.push(`${vp.label}: rendered F2 Guide/stale-copy controls failed (${JSON.stringify(renderedGuideIngress)})`);
           }
@@ -4751,9 +5258,13 @@ async function main() {
             worldCode=bulletNodes.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
             atlasRoute=bulletNodes.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
             training=bulletNodes.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
+            art=bulletNodes.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
+            workspace=bulletNodes.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
+            coldArt=bulletNodes.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
+            worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
             headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
-            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),trainingHeading=headingFor(training),
-            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',
+            firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),trainingHeading=headingFor(training),artHeading=headingFor(art),
+            worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',
             charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
             ingressPlacement=!!worldCode&&!!atlasRoute&&worldCode!==atlasRoute&&worldCodeHeading==='Gameplay'&&atlasRouteHeading==='Gameplay',
             worldCodeContract=worldCodeText.includes('Every accepted galaxy, star, or planet route is regenerated from the seeded universe and source-verified instead of trusting the code.')
@@ -4786,15 +5297,37 @@ async function main() {
               &&trainingText.includes('completing the drill after Land stays at Earth')
               &&trainingText.includes('An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen')
               &&trainingText.includes('leaves the stored expedition unchanged')
-              &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction;
+              &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction,
+            artContradiction=/(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\\b(?:all|every)\\b[^.!?]{0,40}\\b1,?500\\b/i.test(artText)
+              ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(artText)
+              ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(artText)
+              ||/(?:lease|thumbnail)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,40}(?:after|when)[^.!?]{0,40}(?:Close|leave|unmount|filter)/i.test(artText),
+            artContract=artHeading==='Under the Hood'&&artText.includes('Species art loads on demand')
+              &&artText.includes('up to 1,500 logical entries while mounting the visible viewport plus half a viewport of overscan on each side (about two viewports total), plus at most the focused pinned row')
+              &&artText.includes('neutral placeholder to an exact 132px thumbnail keyed by the complete genome')
+              &&artText.includes('Search filters the logical count')
+              &&artText.includes('Back restores the saved row and focus')&&artText.includes('Close returns focus to the exact opener')
+              &&artText.includes('Planetside shares the same bounded thumbnail lease path')
+              &&artText.includes('leases release with their visible owners')
+              &&artText.includes('only specimen detail publishes and retains an exact 440px portrait')
+              &&artText.includes('thumbnail scratch art is downsampled to 132px before it crosses the worker boundary')
+              &&!artContradiction,
+            workspaceContract=headingFor(workspace)==='UI Enhancements'
+              &&(workspace?.textContent||'').includes('Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column'),
+            coldArtContract=headingFor(coldArt)==='Bug Fixes'
+              &&(coldArt?.textContent||'').includes('Loading and painting the first specimen thumbnails now happens away from the renderer thread'),
+            workerContract=headingFor(worker)==='Under the Hood'
+              &&(worker?.textContent||'').includes('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn')
+              &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback');
           const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
             ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
-          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!trainingContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
+          const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!trainingContradiction&&!artContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
-            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===44&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
-            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&trainingContract
+            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===47&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
+            &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&trainingContract&&artContract
+            &&workspaceContract&&coldArtContract&&workerContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
             &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
@@ -4806,11 +5339,12 @@ async function main() {
             &&honest&&state.releasePending===${JSON.stringify(guideReleaseBaseline.releasePending)},
             identity,honest,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
             charterPlacement,firstHeading,recoveryHeading,ingressPlacement,worldCodeHeading,atlasRouteHeading,
-            worldCodeContract,atlasRouteContract,trainingHeading,trainingContract,trainingContradiction,rnSeen:state.rnSeen,
+            worldCodeContract,atlasRouteContract,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
+            workspaceContract,coldArtContract,workerContract,rnSeen:state.rnSeen,
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 44-outcome development inventory, including source-verified code/Atlas routes, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 47-outcome development inventory, including source-verified code/Atlas routes, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -4823,11 +5357,17 @@ async function main() {
               worldCode=items.find((item)=>/WORLD CODES KEEP THE WHOLE DESTINATION/.test(item.textContent||'')),
               atlasRoute=items.find((item)=>/THE ATLAS LEADS BACK/.test(item.textContent||'')),
               training=items.find((item)=>/FIELD TRAINING LIVES IN THE NEW SHELL/.test(item.textContent||'')),
-              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',
-              recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling;
-            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,authority=null,error=null;
+              art=items.find((item)=>/ART ARRIVES WHEN IT IS NEEDED/.test(item.textContent||'')),
+              workspace=items.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
+              coldArt=items.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
+              worker=items.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
+              firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
+              recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling,
+              artParent=art?.parentNode,artNext=art?.nextSibling,workspaceParent=workspace?.parentNode,workspaceNext=workspace?.nextSibling,
+              coldArtParent=coldArt?.parentNode,coldArtNext=coldArt?.nextSibling,workerParent=worker?.parentNode,workerNext=worker?.nextSibling;
+            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false;
             try {
-              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!training||!recoveryParent)throw new Error('development-detail control fixture missing');
+              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!training||!art||!workspace||!coldArt||!worker||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
@@ -4859,6 +5399,26 @@ async function main() {
               trainingLegacyContradictory=${developmentDetailCheck};training.textContent=trainingText;
               training.textContent=trainingText+' An unrecognized checkpoint can close recovery, clear the stored expedition, and continue exploring.';
               trainingRecoveryContradictory=${developmentDetailCheck};training.textContent=trainingText;
+              art.textContent='📦 ART ARRIVES WHEN IT IS NEEDED: The large species-art payload loads lazily for Compendium or Planetside, shares one in-flight request, and retains only the latest subscriber per surface.';
+              artStale=${developmentDetailCheck};art.textContent=artText;
+              art.textContent=artText.replace('only specimen detail publishes and retains an exact 440px portrait','specimen detail can show a 440px portrait');
+              artPublishChanged=art.textContent!==artText;artPublishStale=${developmentDetailCheck};art.textContent=artText;
+              art.textContent=artText.replace('thumbnail scratch art is downsampled to 132px before it crosses the worker boundary','thumbnail scratch art crosses the worker boundary');
+              artDownsampleChanged=art.textContent!==artText;artDownsampleStale=${developmentDetailCheck};art.textContent=artText;
+              workspaceParent.appendChild(art);artPlacementMoved=art.parentNode===workspaceParent;artPlacementStale=${developmentDetailCheck};artParent.insertBefore(art,artNext);
+              workspace.textContent=workspaceText.replace('Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column','short-landscape workspace outcome removed');
+              workspaceChanged=workspace.textContent!==workspaceText;workspaceStale=${developmentDetailCheck};workspace.textContent=workspaceText;
+              workerParent.appendChild(workspace);workspacePlacementMoved=workspace.parentNode===workerParent;workspacePlacementStale=${developmentDetailCheck};workspaceParent.insertBefore(workspace,workspaceNext);
+              coldArt.textContent=coldArtText.replace('Loading and painting the first specimen thumbnails now happens away from the renderer thread','cold renderer-answerability outcome removed');
+              coldArtChanged=coldArt.textContent!==coldArtText;coldArtStale=${developmentDetailCheck};coldArt.textContent=coldArtText;
+              workspaceParent.appendChild(coldArt);coldArtPlacementMoved=coldArt.parentNode===workspaceParent;coldArtPlacementStale=${developmentDetailCheck};coldArtParent.insertBefore(coldArt,coldArtNext);
+              worker.textContent=workerText.replace('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn','worker ownership outcome removed');
+              workerChanged=worker.textContent!==workerText;workerStale=${developmentDetailCheck};worker.textContent=workerText;
+              worker.textContent=workerText.replace('terminates an idle or replaced producer without a synchronous renderer fallback','worker release/fallback outcome removed');
+              workerReleaseChanged=worker.textContent!==workerText;workerReleaseStale=${developmentDetailCheck};worker.textContent=workerText;
+              coldArtParent.appendChild(worker);workerPlacementMoved=worker.parentNode===coldArtParent;workerPlacementStale=${developmentDetailCheck};workerParent.insertBefore(worker,workerNext);
+              art.textContent=artText+' Thumbnail leases remain pinned after Close, and Planetside renders a 440px portrait for every row.';
+              artContradictory=${developmentDetailCheck};art.textContent=artText;
               S.api.state=()=>({...priorState(),rnSeen:'v2-control'});authority=${developmentDetailCheck};
             } catch(cause) { error=String(cause?.message||cause); }
             finally {
@@ -4866,13 +5426,21 @@ async function main() {
               if(middle&&parent&&!middle.isConnected)parent.insertBefore(middle,next);if(title)title.textContent=titleText;if(claim)claim.textContent=claimText;
               if(panelBoundary)panelBoundary.textContent=panelBoundaryText;
               if(first)first.textContent=firstText;if(recovery){recovery.textContent=recoveryText;if(recoveryParent&&recovery.parentNode!==recoveryParent)recoveryParent.insertBefore(recovery,recoveryNext);}
-              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(training)training.textContent=trainingText;S.api.state=priorState;
+              if(worldCode)worldCode.textContent=worldCodeText;if(atlasRoute)atlasRoute.textContent=atlasRouteText;if(training)training.textContent=trainingText;
+              if(art){art.textContent=artText;if(artParent&&art.parentNode!==artParent)artParent.insertBefore(art,artNext);}
+              if(workspace){workspace.textContent=workspaceText;if(workspaceParent&&workspace.parentNode!==workspaceParent)workspaceParent.insertBefore(workspace,workspaceNext);}
+              if(coldArt){coldArt.textContent=coldArtText;if(coldArtParent&&coldArt.parentNode!==coldArtParent)coldArtParent.insertBefore(coldArt,coldArtNext);}
+              if(worker){worker.textContent=workerText;if(workerParent&&worker.parentNode!==workerParent)workerParent.insertBefore(worker,workerNext);}S.api.state=priorState;
             }
             const restored=headings[0]?.textContent===a&&headings[1]?.textContent===b&&middle?.isConnected===true
               &&title?.textContent===titleText&&claim?.textContent===claimText&&first?.textContent===firstText
               &&panelBoundary?.textContent===panelBoundaryText&&recovery?.textContent===recoveryText
-              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&training?.textContent===trainingText&&S.api.state===priorState;
-            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===43
+              &&worldCode?.textContent===worldCodeText&&atlasRoute?.textContent===atlasRouteText&&training?.textContent===trainingText&&art?.textContent===artText
+              &&art?.parentNode===artParent&&art?.nextSibling===artNext
+              &&workspace?.textContent===workspaceText&&workspace?.parentNode===workspaceParent&&workspace?.nextSibling===workspaceNext
+              &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
+              &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext&&S.api.state===priorState;
+            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===46
               &&identity?.ok===false&&identity?.identity===false&&overclaim?.ok===false&&overclaim?.honest===false
               &&closeContract?.ok===false&&panelBoundaryContract?.ok===false&&emptySkyContract?.ok===false
               &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
@@ -4884,8 +5452,23 @@ async function main() {
               &&trainingRecoveryStale?.ok===false&&trainingRecoveryStale?.trainingContract===false
               &&trainingLegacyContradictory?.ok===false&&trainingLegacyContradictory?.honest===false&&trainingLegacyContradictory?.trainingContradiction===true
               &&trainingRecoveryContradictory?.ok===false&&trainingRecoveryContradictory?.honest===false&&trainingRecoveryContradictory?.trainingContradiction===true
+              &&artStale?.ok===false&&artStale?.artContract===false
+              &&artPublishChanged&&artPublishStale?.ok===false&&artPublishStale?.artContract===false
+              &&artDownsampleChanged&&artDownsampleStale?.ok===false&&artDownsampleStale?.artContract===false
+              &&artPlacementMoved&&artPlacementStale?.ok===false&&artPlacementStale?.artContract===false
+              &&workspaceChanged&&workspaceStale?.ok===false&&workspaceStale?.workspaceContract===false
+              &&workspacePlacementMoved&&workspacePlacementStale?.ok===false&&workspacePlacementStale?.workspaceContract===false
+              &&coldArtChanged&&coldArtStale?.ok===false&&coldArtStale?.coldArtContract===false
+              &&coldArtPlacementMoved&&coldArtPlacementStale?.ok===false&&coldArtPlacementStale?.coldArtContract===false
+              &&workerChanged&&workerStale?.ok===false&&workerStale?.workerContract===false
+              &&workerReleaseChanged&&workerReleaseStale?.ok===false&&workerReleaseStale?.workerContract===false
+              &&workerPlacementMoved&&workerPlacementStale?.ok===false&&workerPlacementStale?.workerContract===false
+              &&artContradictory?.ok===false&&artContradictory?.honest===false&&artContradictory?.artContract===false&&artContradictory?.artContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
-              order,inventory,identity,overclaim,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,authority,restored,error};})()`);
+              order,inventory,identity,overclaim,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
+              artStale,artPublishChanged,artPublishStale,artDownsampleChanged,artDownsampleStale,artPlacementMoved,artPlacementStale,
+              workspaceChanged,workspaceStale,workspacePlacementMoved,workspacePlacementStale,coldArtChanged,coldArtStale,coldArtPlacementMoved,coldArtPlacementStale,
+              workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,workerPlacementMoved,workerPlacementStale,artContradictory,authority,restored,error};})()`);
           if (!detailControls.ok) {
             instrumentFailures.push(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
           }

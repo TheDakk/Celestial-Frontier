@@ -17,13 +17,14 @@
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { profileTube } from './torso.js';
 import { coatMaterial } from './skin.js';
+import type { ArtContext2D } from './speciescanvas.js';
 
 /** the cost dial for fish scales — see BIRD_MAT_DETAIL / MAT_DETAIL. 0 is free
     and restores the pre-wave-21 flat body exactly. */
 const FISH_MAT_DETAIL = 1;
 
 type G = Record<string, unknown>;
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 export type Painter3 = (c: Ctx, g: G, p: Pal, name: string) => void;
 const S = 440;

@@ -17,6 +17,7 @@ import { speciesHue } from './surface.js';
 import { ellipseTube } from './torso.js';
 import { coatMaterial } from './skin.js';
 import { insectBody } from './invertoverrides.js';
+import type { ArtContext2D } from './speciescanvas.js';
 
 /* the cost dial for bird plumage, matching MAT_DETAIL in quadrupedoverrides.
    Portraits are generated at runtime under an art-hold law and a standing
@@ -26,7 +27,7 @@ const BIRD_MAT_DETAIL = 1;
 
 /** THE PATTERN LAW (D-ART-16): every mark falls off to zero alpha, so it
     melts into the surface instead of sitting on it as a sticker. */
-function softMark(c: CanvasRenderingContext2D, x: number, y: number, rx: number, ry: number, rgb: string, a: number, rot = 0): void {
+function softMark(c: ArtContext2D, x: number, y: number, rx: number, ry: number, rgb: string, a: number, rot = 0): void {
   c.save(); c.translate(x, y); c.rotate(rot); c.scale(1, ry / rx);
   const gg = c.createRadialGradient(0, 0, rx * 0.1, 0, 0, rx);
   gg.addColorStop(0, `rgba(${rgb},${a})`);
@@ -37,7 +38,7 @@ function softMark(c: CanvasRenderingContext2D, x: number, y: number, rx: number,
 }
 
 type G = Record<string, unknown>;
-type Ctx = CanvasRenderingContext2D;
+type Ctx = ArtContext2D;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 export type FaunaPainter = (c: Ctx, g: G, p: Pal, name: string) => void;
 const S = 440;

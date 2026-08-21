@@ -315,7 +315,7 @@ export const GUIDE_TOPIC_SUPPORT: Readonly<Record<GuideTopicId, GuideTopicSuppor
     ),
     kingdoms: partial(
       ['compendium-read'],
-      '<p>The <b>Compendium</b> reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.</p><p>Discovery, husbandry, and other kingdom-specific actions remain unavailable until their outcome paths are ported.</p>',
+      '<p>The read-only <b>Compendium</b> presents up to 1,500 logical entries across Microbe, Flora, Fungi, and Fauna. Search filters those saved records, the count reports the logical matches, and choosing a row opens its detail. The long list mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total), plus at most the focused pinned row.</p><p>Each mounted row starts with a neutral placeholder, then receives an exact <b>132px</b> thumbnail. The complete genome—not only the displayed name or seed—owns visual identity. Planetside shares the same bounded thumbnail lease path, and thumbnails are released when their visible owner leaves.</p><p>Discovery, capture, husbandry, renaming, and other collection-writing actions remain unavailable until their outcome paths are ported.</p>',
       'The Compendium is a real read-only view over the imported catalogue; collection actions remain open.',
       'The Compendium catalogue has not been connected in this build.',
     ),
@@ -327,7 +327,7 @@ export const GUIDE_TOPIC_SUPPORT: Readonly<Record<GuideTopicId, GuideTopicSuppor
     ),
     specimen: partial(
       ['species-details'],
-      '<p>Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.</p><p>Feeding, breeding, dueling, Field Scout selection, injury care, and CFB actions are deliberately absent until those outcome paths are ported.</p>',
+      '<p>Open a Compendium row’s detail to read its name, kingdom, realm, description, grade, five battle-stat bars, and exact <b>440px</b> portrait. The portrait uses the same complete-genome identity as its exact 132px list thumbnail; the 440px image is reserved for this detail rather than the list or Planetside.</p><p><b>Back</b> returns to the saved list position and restores focus to the same logical row. <b>Close</b> returns focus to the exact Compendium opener.</p><p>This profile remains read-only. Capture, feeding, breeding, dueling, Field Scout selection, injury care, renaming, CFB actions, and other husbandry or collection-writing outcomes are deliberately absent until those paths are ported.</p>',
       'The read-only specimen profile is live; interactive specimen actions remain open.',
       'Specimen details have not been connected in this build.',
     ),

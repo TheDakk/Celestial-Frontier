@@ -4,7 +4,348 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 source overlay matches code as of 2026-08-16.**
+> **Current port/v2 source overlay matches code as of 2026-08-20.**
+> **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
+> displayed-demand/zoom-owner product repair and active repaired ruler; exact-731 local battery
+> complete, hosted run `32420327368` consumed at its 40-minute incomplete-evidence ceiling,
+> PR #32 blocked, and final HUMAN review open):**
+> Exact local implementation `aecf3865095176a509a4cb892e5842b584780870` bounds the
+> Compendium HTTP server's close at one immutable monotonic 2,000 ms. Just-before succeeds;
+> exact/late/missing/error callbacks force `closeAllConnections()` once and reject, with
+> settle-before-force and stale/reentrant controls. Cleanup failure suppresses PASS/sample.
+> Clean source `6736ef4…` collected c27/baseline11/c28/c29 once each with zero retries and fresh exact
+> Edge `.86`. All candidates completed 78/78 and complete lifecycle with 18 PNG bindings; baseline11
+> retained four faults and 14 phone / 13 desktop breaches. Activation `b3957e1…` binds active
+> budget/test `546d3a81…` / `ef06252a…` to measurement/collector/selftest `23aacc2c…` /
+> `0c7ec3ba…` / `0bbb3541…`; producer `d3223177…` is unchanged and all prior ceilings remain strict.
+> This is browser-free ruler authority only; exact-head certification and HUMAN review remain open.
+> `apps/game/src/compendium.ts` owns a variable-height virtual list over the
+> deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
+> bounded overscan, and any focus-pinned row; measured logical anchor-plus-offset
+> and the selected row survive filter, detail/Back reconstruction, and height-map
+> replacement. `apps/game/src/species-art-loader.ts` is the sole DOM adapter around
+> `SpeciesArtBroker` and binds both Compendium and Planetside images to `leaseThumb`
+> ownership. Filter, rebind, close, ascent, and final document teardown release their
+> exact owners; a persisted bfcache `pagehide` retains the live document's leases
+> while suspending worker execution.
+>
+> `packages/art/src/speciesidentity.ts`, `speciescanvas.ts`, `speciespainter.ts`, and
+> `speciesbroker.ts` separate deterministic identity, portable canvas allocation,
+> painting, and main-thread ownership. After full app wiring, the app loader's default scheduler
+> crosses one rendering opportunity and then one later task (`requestAnimationFrame` →
+> `setTimeout(0)`) before every broker pump. At most one serial dedicated module worker at a time dynamically imports the painter, paints a
+> 440px scratch canvas, downsamples and encodes a true 132px thumbnail, and returns
+> only validated identity-bound results. The renderer never synchronously falls back
+> to that heavy path; the worker runs one job at a time and terminates after active work settles and
+> its queue is empty, keeping the measured page heap honest. A later new producer burst owns a fresh
+> instance/import. Broker pump-generation invalidation rejects a callback armed before bfcache
+> suspension or final disposal; resume schedules a fresh serviced turn. Once-per-worker capability,
+> import, protocol, and worker failures terminate the instance and settle active plus
+> queued owners exactly once, while content-specific paint/encode errors remain
+> per-job. Phone/desktop cache, decoded-pixel, byte, queue, lease, portrait, worker
+> lifecycle, and phase evidence are explicit. The last pre-timer resource ruler was active under
+> measurement authority `bb03a3af…`; exact-788 and exact-ef6 certification remain truthful for that
+> authority. The frozen shared-timer repair moves measurement authority to `f9710bdf…`; exact
+> baseline5 plus independent candidate8/9/10 historically activated its successor ruler for producer
+> `1c8200d7…`. Paired baseline6 plus independent candidate11/12/13 historically activated that
+> measurement authority for producer `e59685b1…` under budget `ebe5b5c3…`; the later launcher input
+> change prevents carrying those capsules into current certification.
+> Specimen detail requests an
+> asynchronous 440px result through the same owner; Back/Close cancels that request
+> and clears the DOM source. `speciesart.ts`/`speciescompat.ts` remain Window-only
+> synchronous audit compatibility and are rejected from the live entry-to-worker
+> build graph. Producer failure remains a stable owned error tile and the same key
+> recovers under a fresh lease.
+> In portrait `surface-mode.card-open`, Survey retains its 44px minimum, Planetside retains a 72px
+> scrollable floor, and Planetside's maximum derives from the same bottom anchor so the existing 8px
+> inter-surface gap survives compact-phone height. This is the bounded product repair for c095's
+> retained 12.5px rectangle overlap; it does not alter Glass ownership predicates or z-index.
+> `apps/game/src/planet-texture-demand.ts` owns the pure fitted backing-pixel demand, exact legacy
+> 512/768/1024 tier projection, higher-tier suppression, and surface generation/world identity.
+> `drawSurface()` computes `ceil(420 × fitZ × DPR)` with a 64px floor: standard phone/desktop boot is
+> 609/420px and selects 512. The app owner retains the live Sprite, generation, planet seed/ordinal,
+> requested tier, and one refresh timer; it re-reads ThumbArt's cache after the asynchronous bake,
+> swaps only a current owner's settled texture, destroys the displaced Pixi texture, rejects stale
+> completion, and requests only a genuinely higher tier on zoom/DPR bucket changes. Maximum tested
+> phone/desktop zoom demand is 1,248/1,280px and selects 1024, preserving supported sharpness.
+>
+> `apps/game/src/species-art-protocol.ts`, `species-art-worker-core.ts`, and
+> `species-art.worker.ts` own the validated realm protocol, worker state machine, and direct Vite
+> module-worker entry. `apps/game/tsconfig.worker.json` compiles that graph with WebWorker globals
+> without widening the Window program. `tools/speciesart-build.mjs` proves one exact index owner →
+> module worker → worker-local dynamic painter graph and rejects orphan/duplicate/static/preloaded
+> worker or painter edges plus any renderer-reachable legacy synchronous facade. The loader owns a
+> live `(max-width: 700px)` subscription that immediately trims to phone caps and removes the
+> listener on final disposal.
+>
+> `tools/compendiummem.mjs`, its pure contract, and
+> `budgets/compendium-memory-v1.json` own a fail-closed calibration and active-ruler seam. Exact committed
+> repair `dea03913014bc58134ebb06ca5b36892210a7571` passes the complete 12-row Glass
+> matrix. Its following exact Compendium run
+> `20260817150005919-93781-b6643ba7a6` truthfully reports 75/76, solely red at
+> `desktop/warm-plateau`; it proves neither a product leak nor a clean plateau because
+> the old sequence destructively trimmed the desktop cache before the warm observation
+> and measured refill, while its heap summary omitted embedder/backing ownership. The
+> repaired collector observes the full native warm cache before cap control; records
+> used, embedder, backing-store, and aggregate heap; proves stable unique keys plus
+> unchanged job/disposal/worker counters over the last three cycles of one retained window;
+> retains a post-cap restored snapshot; embeds compact replayable baseline/candidate capsules; and
+> binds the complete fixture/generator/schema/contract/collector/browser/lock/package/
+> baseline-save/art-build/outcome input set plus the exact built index-owner → module-worker
+> → worker-local-painter graph. Da0's historical budget embeds paired run
+> `20260820-arc1a-baseline3-21af3fa`, collected by `21af3fa2…` against legacy product `3844701…`,
+> plus independent one-attempt candidate2/3/4 runs from clean committed `21af3fa2…`
+> collector/product source that bind historical producer `291b794e…`. All share measurement
+> authority `bb03a3af…` and exact Edge 151.0.4129.86. Strict ceilings exceeded all three-run maxima;
+> the baseline retained all four sealed faults and breached 14 phone / 13 desktop fields. Commit
+> `da0de20bcd78271d6bd4a2ff2f5ca2ca5a6c55e3` locally certified that exact ruler; its no-retry Chrome
+> Smoke, full Glass, persona, root-layout, and nonpublishable-preview gates also passed.
+>
+> PR run `32334254714`, attempt 1, preserved the later terminal product red. Its clean detached
+> test-merge `88b9c7b0aa90b860a5474bd099cfab48b125a3f5` matched exact Edge .86, the active budget bytes, and
+> producer `291b794e…`. Phone completed 29 stages through veteran-Earth boot readiness; Planetside
+> thumb settlement then missed the unchanged 2,000 ms target command bound at 2,001.723 ms while
+> root-session `Browser.getVersion` answered in 0.872 ms. The report is correctly
+> `product-unanswerable`, not instrument/transport, and desktop did not run. Its partial evidence did
+> not retain producer phase at the timeout, so it cannot distinguish worker import, paint, encode,
+> result publication, or absence there. Source inspection shows the heavy painter is off-thread and
+> that zero-delay main-thread successor pumps could repeatedly win over rendering and inspector work.
+>
+> The serviced-turn/bfcache repair changes exact built producer authority to
+> `1c8200d7a5ab71341be0f808c242f250b529a3ead4c8cf551cbdf99bebd405c2`: index
+> `f528797d1b3339291dedd5db4b768add9485e8006b1158690323ff2f5ff2769e`, owner
+> `assets/main-BAg-DH_f.js` at
+> `b12503d154d83a44c4606c31306bf756d6a35e1459877a30e6a89d423c49261f`, with worker and painter
+> unchanged.
+> Commit `f47cd381699fb1934f30bfca82fc9bf971714e6d` collected exact-Edge-.86 baseline4 against legacy
+> product `3844701…`; that baseline carries no candidate producer field. Independent one-attempt
+> candidate5/6/7 use `f47cd381…` as clean collector/product source and bind producer `1c8200d7…`.
+> All four share measurement authority `bb03a3af…`; every candidate run completed 78/78 outcomes
+> with zero retries. That historical pre-timer budget replays those raw capsules and puts all 40 profile ceilings strictly
+> above their three-run maxima; baseline4 retains all four sealed faults and breaches 14 phone / 13
+> desktop fields. The desktop warm aggregate maximum is 436,412 bytes under a 524,288-byte ceiling.
+> Baseline3 and candidate2/3/4 remain truthful inputs to the old `bb03a3af…` ruler; only the
+> candidate runs carry old producer `291b794e…`. They are not current certification. Commit
+> `78813cd25c67f4255282f418ea6f635a45e0fc29` passed exact-head
+> Arc-local Edge run `20260820-arc1a-serviced-turn-active-cert-78813cd`: 78/78 outcomes, zero
+> findings/retries, independent named-run verification, report SHA-256 `0d4a7f80…`.
+>
+> The first following Chrome Smoke run `20260820063539761-70885-f80e1a2198fc` is preserved as a
+> one-attempt/zero-retry instrument red (report/log `d2919f0e…` / `4b5de237…`). Its held-painter
+> phase created a second target and then observed the first owner without re-establishing or proving
+> its foreground authority, while repaired successor pumps intentionally wait for rAF→later-task service. The generic
+> `last null` carrier retained neither foreground authority nor the exact terminal image/worker
+> phase, so it is not a visible-page product finding. `tools/slicesmoke.mjs` now binds each
+> attach-derived target/session plus exact document token, explicitly activates/focuses/brings that
+> owner forward, proves continuous visible/focused arm→rAF→later-task service under a fresh token,
+> releases once under one immutable 30-second deadline, and retains image/decode, queue, worker
+> phase/result/error, broker, and foreground diagnostics. The closed owner gets its own foreground
+> proof before settlement. `tools/slicesmoke-contract.mjs` and the report selftest reject wrong or
+> stale identity, hidden/unfocused phases, reversed service order, and intervening visibility/focus
+> changes; receipt at or after either absolute deadline is late even when the CDP timeout callback
+> has not run first. Commit `ef6c2c2cd31363cf47899a89c16c0d9f5f90d7a7` freezes that
+> foreground instrument. Exact Edge run `20260820-arc1a-serviced-turn-active-cert-ef6c2c2` and its
+> named verifier pass 78/78 with zero findings/blocked/partial/retries; report SHA-256 is
+> `406edea11fec5f5a3cf11e6f9fc6dfea00cbdd2ce54fefed780bd1c9dafc9282`.
+>
+> The immediately following clean-ef6 Chrome Smoke run
+> `20260820071826194-75001-c2a22330fd09` stopped the browser battery with only two D-TRAIN import-
+> owner findings: the busy-refusal witness was absent and the Skip action was missing
+> (`button:false`, `witness:null`). It used Chrome for Testing 152.0.7977.54, one attempt, zero
+> retries, 150,963 ms, ten screenshots, and no detected source change. Report/log SHA-256 values are
+> `65ca06c8f6d26ef3a9a3da19bb4bc09bb005d754f2291f55f389ac1ecf14aa46` /
+> `87b1c8b6308d3a1969fb45ea4c2ccb70d1f46c2a8311751984b3c1ab0acdd7d9`.
+> This is a Smoke setup-race finding, not a product transaction finding: the direct D-TRAIN fixture
+> put followed real Atlas/Land activity without joining its ordinary persistence owner, and the old
+> helper proved only changed document identity before accepting whatever primary remained. The
+> report did not retain the winning bytes, so their exact value and the product busy-refusal outcome
+> are unobserved. The bounded instrument follow-up drains the prior writer, reproduces stale overwrite
+> as a negative control, requires exact primary/document/classified Training route/render/card/
+> runnable Skip/idle status/ticker preconditions, and then waits semantically for one
+> `claim-rejected/busy` witness with no pre-release write.
+>
+> Pushed head `1187de0d052761e4463524cde8438ea8810d7149` then reached GitHub Actions run
+> `32350971816`, job `96369841133`, workflow attempt 1, on synthetic merge
+> `25200b616bbd509f50eaa18f0a8b27ad20dc83e0` (parents `38447019517147319bd08c598202d097ee866874`
+> and `1187de0d052761e4463524cde8438ea8810d7149`). Valid report
+> `gha-32350971816-1-compendiummem` retained 29 completed phone stages and one final target timeout
+> after `1999.758726` ms against its 2,000 ms command deadline. The target remained `timely:true`,
+> the ledger put completion `0.241274` ms before the deadline, and the independent root heartbeat
+> fulfilled in `7.410808` ms. The terminal contract correctly emitted one instrument finding, zero
+> outcomes, and 78 blocked outcomes: this is `instrument-fail`, not a product verdict. Artifact,
+> report, and job-log SHA-256 values are `4932fb229c1de1d3820d2322e8273ce9ed609716c8f9f4d9e82b2fa2a3e408c7`,
+> `1718faa4403f4f569899d9d328f08c3b7decafae23829d5fabe37660c36da43b`, and
+> `7eda5facdac45d192c5b6071ac91394678d2fdb69b7992b218e0d3b0cb9c4ca9`.
+>
+> `browsercdp.send()` now computes one absolute monotonic deadline. An early timer callback re-arms
+> only the remaining interval under that deadline; it rejects only when the clock proves the
+> boundary reached/passed, while response receipt at/after the same boundary remains late. Expiry
+> during initial timer arming rejects without transmitting the command. Frozen browser-CDP SHA-256
+> `36a832bc8cc32ba56373d1fa6d7339903a37a07b337fbf2748bbf95e489061d0`
+> changes measurement authority from historical `bb03a3af…` to
+> `f9710bdfaac255d7df7e8c29f251c8387041abe99a0178667b7b3430110a0409`. Historical budget/test
+> `8ffd0d8e…` / `121ab8cd…` bound the following baseline5/candidate8/9/10 evidence to producer
+> `1c8200d7…`.
+> Paired `20260820-arc1a-absolute-deadline-baseline5` used clean collector
+> `cbe786816cafd196a4b1649b0d1b72966036b7cc` against detached broken source `3844701…`;
+> candidate8/9/10 used that clean source, exact Edge .86, producer `1c8200d7…`, one attempt, and no
+> retries. Each candidate replays 78/78. All 40 ceilings exceed the three-run maxima: phone
+> page/embedder/backing/aggregate/encoded/warm maxima → ceilings are
+> `7,771,656/3,151,408/3,099,159/12,406,038/2,477,068/6,196` →
+> `8,388,608/4,194,304/4,194,304/14,680,064/2,621,440/65,536` bytes; desktop values are
+> `10,550,176/3,216,400/4,914,765/16,017,176/6,592,468/306,704` →
+> `12,582,912/4,194,304/6,291,456/18,874,368/6,815,744/524,288`. Baseline5 preserves all four
+> faults, observes warm ranges 1,037,780 / 1,222,370 bytes, and breaches 14 phone / 13 desktop
+> fields. Those are historical activation facts for their exact producer, not current authority.
+>
+> Exact clean commit `c0955003d558d7b3deb0afe9e527f24969d512dc` passed Compendium run
+> `20260820-arc1a-absolute-deadline-active-cert-c095500` (report `55dba448…`) and Smoke run
+> `20260820104231234-94067-7f954ca9942e` (report `6d4f00f8…`). Its first full Glass run is preserved
+> at report SHA-256 `8e89d855abf33ba45d43d8284e05732ebad93891ff9e024004869811778917f0`:
+> Chrome 152, all 12 viewport rows, 58/58 controls, zero instrument failures/retries, and one product
+> `PLANETSIDE_SURFACE_OCCLUDED` finding from a 12.5px compact-phone Survey/Planetside overlap.
+> Persona, layout, preview, push, and CI did not run after that stopping red.
+>
+> The bounded stack repair plus revised development-release bullet changes built producer authority
+> to `e59685b1a0d009c321c53fe2d3d8566b3f417d8c2decd89387d7be6d08b9a9fb`: index
+> `ca76da4cfd094a7426cfd60b56428ca6abfc9851f472a1e459ad2938ae1e008e`, owner
+> `assets/main-Ccq4RHJt.js` / `9260e359c3bebe6bf722ecad5234babbeff0a3e7bb6cb6f0a33242b99668e6c2`, worker and painter
+> unchanged. Measurement was `f9710bdf…` before the later cold-start launcher transition. Clean committed collector/candidate source
+> `2a105d51397eef97542d856ed3b1bb23edf2b028` collected paired baseline6 against legacy product
+> `3844701…` and independent candidate11/12/13 under exact Edge .86. Every run was one-attempt with no
+> retry and each candidate replays 78/78. Historical budget/test SHA-256 values are
+> `ebe5b5c38f4796652ebbe6110c19a5ad31c310d63ca3adbf5fd4575e3724527d` /
+> `ec956b8a7d3bad96736deab42e0ac79e59e6cf9010559723d2dac2249e463a83`.
+> All 40 ceilings strictly exceed their maxima. Phone page/embedder/backing/aggregate/encoded/warm
+> maxima are `7,778,708/3,177,000/3,086,488/12,458,207/2,473,856/6,492`; desktop values are
+> `10,686,028/3,143,608/4,824,582/16,032,517/6,591,340/390,020`. The strict ceilings remain
+> `8,388,608/4,194,304/4,194,304/14,680,064/2,621,440/65,536` and
+> `12,582,912/4,194,304/6,291,456/18,874,368/6,815,744/524,288`. The four-fault baseline breaches
+> 14 phone / 13 desktop fields; its 11,858,524-byte desktop page heap deliberately remains below the
+> 12 MiB variance ceiling. Focused 11/11, selftest 222/222, and semantic validation pass. This is an
+> historical browser-free ruler.
+>
+> Exact pushed head `f9ae372f13d9a420e302f05e277b4445efb790c0` passed its complete local battery
+> once: Compendium 78/78, Smoke with zero findings, Glass 12/12 and 58/58, nine joined automated
+> personas, root layout 787/787 across 10 viewports, and verified nonpublishable preview packaging/
+> smoke. Corresponding GitHub Actions run `32367902426`, Compendium job `96421452463`, attempt 1,
+> tested synthetic merge `e449e84984400d0b0f4474496264d474424c81d7` (base `3844701…`, head
+> `f9ae372…`) and stopped before product measurement. Edge published the stable endpoint at
+> `23657.701415` ms, leaving only `6342.262417` ms of the 30,000 ms absolute startup window for a
+> declared 15,000 ms socket phase; the absolute deadline expired before `Browser.getVersion`.
+> It emitted no Compendium run, report, product outcome, or retry.
+>
+> At the `32367902426` transition, `browsercdp.mjs` gave only its selftest's one real cold launch a
+> caller-owned 45,000 ms
+> startup envelope while retaining 15,000/1,500/2,000 ms socket/command/shutdown caps. Portable
+> controls pass at 38,657 ms and reject exact/late 38,658/38,659 ms with one child and complete
+> socket/child/profile cleanup. That caller change itself added no warmup, relaunch, retry, fallback,
+> or workflow change;
+> generic and Compendium candidate startup remain 15,000 ms, later warm startup remains 10,000 ms,
+> and the product observation remains 2,000 ms. Browser-CDP SHA-256
+> `6892dea6df1d222f53093faf62f0b0e38a2d18c600b7191aa29befc9960632e9` establishes measurement
+> authority `6ba58522fc961e145df4f065f913d99d8b18355a20d664b9bcdc90741057638a`; producer `e59685b1…`
+> remains unchanged. Clean source `374049536e…` collected paired baseline7 plus independent
+> candidate14/15/16 once without retry; every candidate replayed 78/78. The then-active browser-free
+> budget/test `bb4da2bf0b…` / `d242705ad9…` retain all four baseline faults, 14 phone / 13 desktop
+> breaches, and all 40 ceilings strictly above the three-run maxima. This activation is not
+> certification. The accepted 45-second CI cold-start allowance is process environment, not a
+> game optimization target.
+>
+> Exact pushed head `c49af5a72a41eebd79ce3975852f3d7c22ab3ac6` completed one full local battery:
+> Compendium 78/78 plus named verifier (`6bfa15af…`), zero-finding Smoke (`4351d1bf…`), Glass
+> 12/12 and 58/58 (`4215986c…`), nine joined personas, root layout 787/787, and verified preview
+> packaging/browser smoke. Corresponding run `32375329693`, attempt 1, tested synthetic merge
+> `8e09cffe20640e82c7b934df29a40fe22c5326e7` (base `3844701…`, head `c49af5a…`) without retry.
+> Static and Glass passed. Root job `96445227534` emitted zero viewport outcomes after its first
+> Chrome launch found no endpoint inside 30 seconds. Compendium job `96445227816` opened exact Edge
+> .86 inside 45 seconds, then the generic selftest's 1.5-second `Runtime.enable` command expired
+> before the collector. Smoke job `96445227991` retained ten screenshots and only `src length 0`
+> from an immediate read of the separately asynchronous detail owner; because the carrier has no
+> image state or worker phase and Back then released the owner, it cannot adjudicate 440px settlement.
+>
+> The bounded repair leaves `browsercdp.mjs` and all measurement-authority inputs unchanged. Root
+> layout now owns one captured 45-second startup / 15-second socket / 30-second command / 5-second
+> shutdown call. New `port/v2/tools/compendiummem-browser-preflight.mjs` owns the Edge-only workflow
+> live proof: one 45/15/sealed-5/2-second launch, exact browser/executable authority, fresh target,
+> Runtime/Page/HeapProfiler enable, and one immutable 5-second evaluate plus same-session event phase
+> whose receipts must be strictly before deadline, one close, and profile cleanup. Both
+> PR certification and development-preview packaging invoke the same preflight before the unchanged
+> Compendium selftest/candidate. Smoke binds pre-open document/generation/logical owner, requires
+> the opened surface to retain that document/owner at generation + 1, and requires connected
+> current `ready`, nontrivial source, completed decode, and exact 440×440 natural dimensions under one
+> immutable 30-second deadline, with pending/error/stale/contradictory/exact-late controls and rich
+> final diagnostics. Exact pushed head `139ce2f…` then passed the complete local battery.
+> Corresponding run `32383320206`, attempt 1, tested synthetic merge `174a9140…` under exact Edge
+> .86 and matching measurement `6ba58522…`, producer `e59685b1…`, and then-active budget
+> `bb4da2bf0b…`. Phone completed 29 stages through veteran-Earth boot readiness; Planetside thumb
+> settlement's target `Runtime.evaluate` took `2001.132592` ms against the unchanged 2,000 ms
+> deadline while root `Browser.getVersion` answered in `10.401960` ms. This is terminal
+> `product-unanswerable` evidence—zero outcomes, 78 blocked, no review PNG, and no retry—not an
+> instrument/transport or timing-policy red.
+>
+> The displayed-demand/zoom-owner product and development-copy change produces
+> `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`: index `dee9af3a…`, owner
+> `assets/main-Da536xWA.js` / `28382873…`, worker and painter unchanged. Measurement authority
+> was `6ba58522…`. Clean committed collector/candidate source `75a996af…` produced one no-retry
+> baseline8 against legacy `3844701…` plus independent no-retry candidate17/18/19 under exact Edge
+> .86. Every candidate replayed 78/78; baseline8 retained all four faults and breached 14 phone / 13
+> desktop ceilings. Then-active budget/test SHA-256 were `74e88c2b…` / `485be9da…` (79,614 / 20,782
+> bytes), with all 40 reused ceilings strictly above the three-candidate maxima. Report/sample pairs
+> are baseline8 `0a8b831e…` / `a52bccec…`, c17 `6b86ca9d…` / `0818c86e…`, c18 `a9b28d79…` /
+> `c368ba86…`, and c19 `440cb788…` / `abddfa84…`. The browser-free activation became exact head
+> `96464d5e4ca59074c0d8d59719a90a5dedc2dd2d`, which completed its full same-head local battery.
+> Corresponding GitHub Actions run `32394244417`, Compendium job `96507263338`, attempt 1, tested
+> synthetic merge `63665b6…` and retained a pre-product environment/instrument red. On runner image
+> `ubuntu24/20260816.277`, exact Edge 151.0.4129.86 was already newest and plain apt was a no-op.
+> Browser-path and portable preflight selftests passed; the one-launch live preflight then received
+> no CDP endpoint inside the unchanged 45-second bound. It ran no collector and emitted no report,
+> outcome, review PNG, or retry. Verifier/upload failures are cascades; root/static and Chrome
+> Smoke/Glass jobs passed.
+>
+> Retained exact-Edge history shows `ubuntu24/20260810.271` upgraded bundled .78 to exact .86 and
+> launched 4/4, whereas `ubuntu24/20260816.277` already carried .86, made apt a no-op, and launched
+> 0/3. This supports only a single SHA-verified same-package `--reinstall` workflow-normalization
+> hypothesis; it does not prove a fix. The preflight selftest now owns a green fail-closed static
+> control for both workflows' exact ordered URL/SHA/download/hash/reinstall/version/executable/
+> following-preflight chain and rejects removal plus outside-step decoys. That selftest-only control
+> changes no live repository-tool behavior; the normalization changes no timing, retry, fallback,
+> product, browser package/version, measurement, producer, budget, or authority.
+> Exact local head `89bfa05…`, run `20260820-pr32-89bfa05-compendiummem`, then completed 78/78
+> outcomes with zero findings and six PNGs before owned browser shutdown exited 2. Terminal log
+> `b0bb8abc…` is authoritative; pre-cleanup PASS report `66ba1366…` and verifier `98664dca…` are
+> false-green. Preserve this one-attempt/no-retry result as post-measurement instrument red, not
+> certification, calibration, or product failure.
+>
+> Clean lifecycle-repair source `c49e525…` then ran candidate20 once. It completed 78/78 product
+> outcomes, zero findings, six PNGs, and complete lifecycle, but the reused `.86`-named app had
+> self-updated to `Edg/151.0.4129.93`, revision `@4a822b1b…`. Quarantine report/sample/log
+> `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser instrument evidence—not calibration,
+> certification, product failure, or HUMAN review.
+>
+> Candidate21/22/23 and paired baseline9 then completed once each without retry under exact Edge
+> `.86` and complete lifecycle. Every candidate replayed 78/78 with zero findings; baseline9 kept
+> all four faults. They cannot activate a ruler because the old shared-sample identity incorrectly
+> compared fresh executable paths and host user agents. Both strings remain mandatory raw per-run
+> provenance, while exact product/revision/JavaScript/protocol form shared browser authority.
+>
+> Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10, each once
+> with zero retries and a distinct fresh `.86` path. All candidates completed 78/78 with zero
+> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. That historical budget
+> owned explicit top-level `cf-v2-compendium-browser-authority/v1` and rejected mismatch before
+> profile collection. Budget/schema/contract/collector/selftest/test `70145575…` / `695d2529…` /
+> `e7dfea1d…` / `07131f5e…` / `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged
+> producer `d3223177…`, 3/3 samples per profile, measured 1/1 baseline, and strict ceilings with
+> 14 phone / 13 desktop baseline breaches. A synthetic desktop-identity line corrected the focused
+> check from 12/13 to 13/13 without changing or rerunning browser evidence. Those facts do not cross
+> the later `aecf386…` collector change. Clean `6736ef4…` c27/baseline11/c28/c29 evidence now activates
+> budget/test `546d3a81…` / `ef06252a…` at `b3957e1…`; exact-head certification remains open. First red stops;
+> terminal-green PR #32 returns immediately to Arc 1B/gameplay.
+> The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
+> pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
+> focus-pinned, and detail set still awaits HUMAN review.
+> This repair owns the current surface globe's fitted start and live tier swap only;
+> the broader Arc 1B/1C scene-resource ownership, disposal, and HD texture package remains open.
 > **2026-08-16 D-TRAIN-1 source overlay (current working tree; local browser
 > evidence recorded below; exact-head CI, integration, real-save Gate C, and
 > human authority remain open):** `@cf/persistence` now classifies the real
@@ -189,10 +530,11 @@
 > hidden-time policy, live global-read timing, and SessionRNG remain F4. F3 owns
 > the CAS/revision/tab-lease substrate; F4 owns the persisted `activePlayMs`
 > clock/accrual policy. This is not a current-player data-loss finding.
-> **2026-08-13 exploration/ship/loot/companion/audio review:** The executable v2
-> boundary remains the Phase-4 travel/survey slice. `apps/game/src/main.ts` renders the
-> read-only Compendium through `@cf/art/species`, consumes `@cf/domain-combatcore`
-> battle stats for specimen detail, and uses only the lifted whoosh/survey stings from
+> **2026-08-13 exploration/ship/loot/companion/audio review (historical review
+> boundary; Arc 1A resource status is refreshed above):** The executable v2
+> boundary remained the Phase-4 travel/survey slice. `apps/game/src/main.ts` rendered the
+> read-only Compendium through `@cf/art/species`, consumed `@cf/domain-combatcore`
+> battle stats for specimen detail, and used only the lifted whoosh/survey stings from
 > `@cf/audio`. `@cf/persistence` round-trips legacy cargo/items/equipment/affix/tech/
 > creature fields, but Inventory, Shipyard, mining/crafting, item-instance loot,
 > breeding/care, live combat/Guardians and companion missions have no v2 command owner.
@@ -205,9 +547,10 @@
 > travel; companion mission loot is an immutable dispatch-time receipt claimed once
 > through revisioned persistence; audio resolves a versioned profile/cue plan without
 > consuming simulation RNG. These are planned module boundaries, not current exports.
-> Before adding content scale, virtualize the 1,500-entry Compendium, swap mounted rows
-> to true 132px thumbnails, bound decoded pixels/jobs/resources, and prove ordinary
-> Canvas/Pixi transitions plateau. The present one-blob, last-writer-wins repository is
+> That review required the 1,500-entry Compendium to be virtualized, mounted rows
+> moved to true 132px thumbnails, and decoded pixels/jobs/resources bounded before
+> adding content scale; Arc 1A now implements and measures that bounded DOM/Canvas path.
+> Pixi scene ownership remains Arc 1B. The present one-blob, last-writer-wins repository is
 > insufficient for two-tab exact-once claims and must gain compare-and-swap or one
 > authoritative serialized coordinator.
 >
@@ -259,42 +602,26 @@
 > galaxy/star-only CF1 routes, generated descents and all future ownership/receipt writers
 > still need their own canonical boundary integration.
 >
-> **2026-08-13 branch publication overlay (battery structure updated 2026-08-14):**
-> `.github/workflows/test.yml` runs the exact battery for push events on both `main` and
-> `develop`, and since 2026-08-14 as **five parallel jobs plus one summary gate**:
-> `root-gates`, `v2-static`, `v2-smoke` and `v2-glass` in parallel, then
-> `v2-persona-preview` joining their evidence, then a summary job named **`battery`**
-> that needs all five and fails unless every one succeeded. The summary job exists
-> because the develop/main branch rulesets require one status context named `battery`
-> (the old serial job); it keeps repository settings decoupled from internal job names
-> and can never satisfy the ruleset by being skipped (`if: always()` + explicit result
-> check). The split
-> exists because the two real-browser evidence commands owned 78% of the old 33-minute
-> serial wall (glassmatrix ~17 min, smoke:ci ~9 min on the 2-core software-rendering
-> runner). Every serial-battery command still runs exactly once with unchanged
-> one-attempt/no-retry semantics; the persona join and the `v2-development-preview`
-> artifact still require ALL other jobs green; each browser-owning job pins `CF_BROWSER`
-> at job scope and re-proves provenance with its own selftests. Artifacts: root evidence
-> moved from the old combined bundle into `root-reports` + `root-layout-evidence`;
-> `v2-smoke-evidence`/`v2-glass-evidence` upload per-job (retained on red) and are
-> re-joined into `battery-reports` by the final job. The glass report now carries
-> per-viewport `viewportTimings` (validated: a certifying PASS must time all 12 rows;
-> partial timings stay legal on red), so future runner/shard decisions are measured, not
-> guessed. Only a successful **workflow** conclusion — all five jobs — can
-> trigger `.github/workflows/publish-branch-sites.yml`, which checks out that event's full SHA
-> and invokes `tools/publish-branch-site.js`. A separate
-> `.github/workflows/sync-agent-branches.yml` runs on every `develop` push and
-> fast-forwards each agent branch that is strictly behind `develop`; diverged branches
-> (unmerged agent work) are skipped with a report line and follow the manual protocol
-> merge. It never force-pushes and never touches `main`. `main` targets only
-> `CelestialFrontier/celestialfrontier.github.io`; `develop` targets only
-> `Dev-CelestialFrontier/dev-celestialfrontier.github.io`. Separate write-only deploy keys and
-> repository secrets prevent cross-target access; PR/manual/failed runs have none. Development
-> publication accepts the already-tested exact `port/v2` package, while production preserves
-> the root v1.8.9 HTML. The development package is v2.0, noindexed and `robots.txt`-blocked;
-> runtime and manifest bind the full source commit, exact archive inputs, expected origin,
-> shared version and generated site `version.json`. Visible identity is inside the Guide only,
-> never a corner badge. The public development site is not human-play or release authority.
+> **2026-08-20 GitHub Actions budget overlay:** the repository is public, so standard hosted runners
+> are free while visibility remains public; 3,000 is the fail-closed private/ambiguous cap and mode
+> remains `FROZEN` in `GITHUB_ACTIONS_BUDGET.md`. The former every-PR/every-push parallel battery,
+> automatic agent-branch sync, and post-green `workflow_run` publisher are retired as default
+> execution paths in local commit `5a2c605…`, which is not pushed; the remote still has the old
+> triggers. Local `.github/workflows/test.yml` exposes one tiny authorization job followed by
+> one fail-fast serial runner whose display name remains the required `battery` context and whose job id remains
+> `v2-compendium-memory` for the sealed exact-Edge workflow control. It is eligible only on a PR
+> `labeled` event where the repository owner applied exact label `actions-budget-approved`. The
+> dependency preserves the sealed Compendium owner's no-`if` contract. Branch direction runs in the
+> authorization job; cheap/static gates run before Edge/Chrome work; each dependency tree installs
+> once; the first red skips later gates. No push, PR synchronization, merge, or ordinary label starts
+> a runner. Branch-flow, agent-sync, and manual-preview workflows are manual-only, false-default,
+> and job-guarded. Branch publication is manual-only and hard parked until a later reviewed exact-SHA
+> promotion contract. `tools/actions-budget-policy.js` validates direct YAML ownership and
+> negative-controls every trigger/input/job/publisher/concurrency direction plus unknown workflows;
+> root `validate.js` runs its real policy first. The old parallel structure and automatic publishers
+> remain truthful history only. Development/production target isolation, manifests, origin refusal,
+> noindex/robots, target-specific credentials, and the rule that previews are not human/release
+> authority remain unchanged; no publication is currently authorized.
 >
 > **2026-08-11 v2 integration/hardening overlay:** PR #10 merged the Platinum
 > repair into `develop` at `61cc058`. The current bounded port candidate makes the app
@@ -307,8 +634,8 @@
 > measured 4×2 non-overlap contract. At that 2026-08-11 boundary the slice still stored one exported save
 > blob, `NavState` was not yet a discriminated union, complete CF1 hierarchy and
 > legacy checkpoint restoration remained open, and CFB still lost hybrid
-> parents. Runtime priorities are Compendium virtualization, scene texture
-> ownership/memory proof, live HD planet replacement, clock/visibility policy,
+> parents. Runtime priorities at that boundary were Compendium virtualization,
+> scene texture ownership/memory proof, live HD planet replacement, clock/visibility policy,
 > then living organism rigs and biome scenes. Platinum-approved static portraits
 > remain frozen; optional polish is not a mandate to repaint them.
 >
@@ -331,12 +658,13 @@
 > launches the selected executable through `browsercdp`; its selftest rejects
 > executable non-browsers and excluded Node lines. `bootperf` shares the executable
 > resolver and `ws` transport but retains its legacy CDP lifecycle. Two evidence
-> callers continue to deviate from the 15-second CDP-start default with a fixed
-> bounded 30-second allowance: the final development-preview package check (after
-> exact packaging) and the root layout gate `tools/uilayout.js` — the battery job's first
-> real browser launch, where the identical diagnosed Linux cold-start phase
-> recurred at its prior 24-second bound (run `31758515194` attempt 1). The
-> browsercdp selftest's first real provenance launch also owns a fixed 30-second
+> callers continue to deviate from the 15-second CDP-start default. The final
+> development-preview package check keeps its fixed 30-second allowance. Root layout
+> `tools/uilayout.js` is the battery job's first real browser launch; after the same diagnosed
+> pre-endpoint phase recurred at 24 seconds in run `31758515194` and at 30 seconds in run
+> `32375329693`, it now owns one explicit 45-second startup / 15-second socket / existing
+> 30-second command / 5-second shutdown call, captured by a one-open selftest. The
+> browsercdp selftest's first real provenance launch alone now owns a fixed 45-second
 > absolute spawn → endpoint → socket-open allowance. The selftest isolates its
 > earlier injected WebSocket timeout behind a private launcher seam: the seam writes
 > one valid owned endpoint and starts one portable Node child to prove the 200-millisecond socket
@@ -353,9 +681,21 @@
 > phase budget while requiring a provisional error handler before CONNECTING-socket cleanup, and
 > reject a just-late open before its overdue
 > timer runs; nonpositive/fractional caps reject before launch.
-> The cold live leg declares a 15-second socket cap inside its 30-second startup budget; its later
+> The cold live leg declares a 15-second socket cap inside its 45-second startup budget; its later
 > warm leg keeps 10 seconds for both. Both retain 1,500-millisecond command and 2-second shutdown
-> bounds, assert profile cleanup in `finally` on either rejection or success, and never retry. Every platform captures the exact options
+> bounds. Post-open `send()` uses one absolute monotonic deadline per command: a callback that wakes
+> early re-arms only the remaining interval and cannot reject before the boundary; the response path
+> independently rejects at/after that same boundary. This is the bounded repair for run
+> `32350971816`'s `1999.758726`-millisecond early timeout. The later caller-local 45-second cold
+> envelope addresses only run `32367902426`'s pre-provenance Linux first launch. Run
+> `32375329693` then opened exact Edge under that envelope but expired during the generic selftest's
+> 1.5-second `Runtime.enable` before the collector. The Edge-only workflows therefore use
+> `port/v2/tools/compendiummem-browser-preflight.mjs` for one exact-authority fresh-target proof at
+> 45-second startup / 15-second socket / the sealed 5-second candidate command / 2-second shutdown.
+> This file is outside the hashed measurement graph, while `browsercdp.mjs` remains byte-identical at
+> `6892dea6…`; the active `6ba58522…` ruler is not recalibrated. It is not a product cap increase or
+> retry. The live legs
+> assert profile cleanup in `finally` on either rejection or success, and never retry. Every platform captures the exact options
 > passed by the preview caller and completes a real browser outcome. On POSIX the
 > preview selftest starts Chrome immediately but withholds its
 > ready CDP endpoint for 16 seconds: the generic path times out while the exact preview
@@ -428,9 +768,10 @@
 > remains unchanged for Training. Field Training is six live
 > chart/travel/landing lessons plus an honest graduation. Tooltip deep-links,
 > Advanced Briefings and the full 21-step curriculum remain OPEN. The newer
-> D-TRAIN-1 overlay above records exact legacy-checkpoint restoration. Lazy species art uses one shared load Promise
-> and one latest subscriber per view, so prefetch cannot strand Compendium or
-> Planetside and a 1,500-row list cannot retain 1,500 rerender callbacks.
+> D-TRAIN-1 overlay above records exact legacy-checkpoint restoration. Lazy species art uses
+> exact broker leases plus a serial close-at-idle dedicated worker, not a shared renderer import
+> callback; Compendium and Planetside bind exact 132px owners, release stale work, and virtualize
+> the 1,500-row list without retaining list-scale callbacks, portraits, or main-thread painter work.
 > Survey presentation filters the legacy `Spectral class` descriptor row. Planet
 > rarity is absent before landing and shown afterward as the plain display-grade
 > name. Internal `.designation`/`spectral()` data remains deterministic for art and
@@ -445,6 +786,13 @@
 > to recreate dismissal, and proves the opposite direction on a hit-tested canvas point. Both
 > delegated document handlers reject non-`Element` targets before `closest`, restoring the legacy
 > event-boundary guard without changing modal, Training, Search or Escape policy.
+> Short-landscape panel-open uses a nonmodal split safe workspace: Compendium occupies the left
+> safe-height column with a scroller recomputed from the safe viewport; Search, dock, and Survey
+> when open remain visible, named, focusable, hit-testable, and operable at right. Panel-open
+> status already yields trail/objective, while the short-landscape rule additionally yields only
+> noninteractive top/context/hint chrome. Glass drives real hostile A++ first/middle/last and
+> focus-pinned rows plus clipped-ancestor controls. This is a bounded geometry repair, not a broad
+> presentation-polish claim.
 >
 > V2 now applies imported Text size / tone / font preferences, a contrast-safe
 > 0.82..0.98 glass floor, safe-area and measured dock/context/hint offsets,
@@ -503,7 +851,8 @@
 > malformed protocol outcome is instrument/transport failure. The live command
 > ledger contains exactly five bound rows: import arm, cycle-1 target/heartbeat,
 > and cycle-2 target/heartbeat. `browsercdp.send()` permits a shorter per-command
-> timeout but never one above its connection-wide ceiling. Its browser-native
+> timeout but never one above its connection-wide ceiling; one absolute deadline owns that timeout,
+> and any early timer wake re-arms only the remaining interval before it may reject. Its browser-native
 > `performanceNow` must also be strictly below 20 seconds; an exact-boundary
 > control fails, preventing Node observer descheduling from laundering a late
 > product boot. Ready is publication evidence; the two confirmations additionally
@@ -846,9 +1195,10 @@
 > sheets `tools/sheets/biome-coverage.js` (MODE=earth|proc, EMPTY=1), `proc-skins.js`, `proc-aqua.js`,
 > `b15-butterfly.js`.
 
-> **2026-08-10 port/v2 full-catalogue reset overlay:** PixiJS owns the live
+> **2026-08-10 port/v2 full-catalogue reset overlay (historical; superseded for live delivery by
+> the 2026-08-17 broker/worker overlay above):** PixiJS owns the live
 > galaxy/world scene in `port/v2/apps/game/src/main.ts`; deterministic organism
-> anatomy is still generated by Canvas2D painters through
+> anatomy was generated by Canvas2D painters through
 > `packages/art/src/speciesart.ts` and displayed as DOM `<img>` portraits in the
 > Compendium/planetside UI. The genetics facade records the selected Earth
 > lineage's exact `_earthBlendKingdom`; `speciesoverrides.ts` sends fauna to the
@@ -1262,11 +1612,20 @@ Trait arrays drive description & art: `FA_HABITAT`, `FA_LOCO`, `FA_BODY`, `FA_SK
 
 ### Art
 `speciesPortrait(g)` renders per-kingdom painterly **Canvas** art (microbe = cell cluster,
-flora = stalk+fronds+bloom, fungi = mushrooms, fauna = assembled anatomy). The full portrait
-LRU is device-capped at **96 on phones / 256 otherwise** and the separate 132px thumbnail LRU
-is capped at **600**; `pagehide` clears only the full portrait LRU today. The first cold thumbnail call still returns the
-440px source while its asynchronous downscale is produced, which is why current v2 planning
-requires virtualization and a completed-thumbnail replacement path. Reveal cards show a
+flora = stalk+fronds+bloom, fungi = mushrooms, fauna = assembled anatomy). In current
+`port/v2`, `speciesart.ts` and `speciescompat.ts` expose that synchronous Window-only URL path for
+audit compatibility; the production entry graph rejects it as a renderer-reachable dependency.
+`leaseThumb(g)` is the Compendium and Planetside path: `SpeciesArtBroker` snapshots the complete
+genome, deduplicates/cancels keyed asynchronous jobs, and owns a true-132px LRU capped at **96 / 256**
+with decoded-pixel, byte, queue, active-job, lease, and worker-lifecycle limits. The app's default
+broker scheduler crosses one animation frame and one later task before every pump; bfcache
+suspension invalidates an already-armed pump generation and resume schedules a fresh one. At most
+one serial lazy module worker at a time imports the portable painter, creates a 440px scratch canvas,
+downsamples to 132px, and encodes the result off the renderer. It terminates after active work
+settles and its queue is empty; a later genuinely new producer burst owns a fresh instance/import.
+Detail uses an asynchronous broker-owned 440px result rather than the compatibility URL. A persisted bfcache
+`pagehide` retains the same document's leases while suspending worker execution; final
+non-persisted teardown releases jobs, leases, caches, and the worker. Reveal cards show a
 **biome-colored glow** behind the portrait (ability-theme color for fauna, nourished-stat color
 for flora).
 
@@ -1348,6 +1707,12 @@ The `codex` Map stores discovered species. `discoverSpecies`, `autoScanWorld`,
 `_storeSpecies`, `renderCodex`, `removeFromCodex`. **Renamed to "Compendium"** in UI
 (button, headers, prose). NOTE: "Prime Codex" (win track) and "Cosmic Codex" (app title)
 are intentionally **kept** as "Codex."
+
+The current v2 read-only Compendium projects as many as 1,500 deterministic species through
+`CompendiumVirtualList`, mounting only its measured window, bounded overscan, and any
+focus-pinned row. Rows acquire 132px art leases; detail alone retains a 440px portrait. Logical
+anchor-plus-offset, selected-row focus, and exact release/recovery ownership survive filter,
+detail/Back, resize, and close.
 
 ### Star Atlas (bookmarks)
 The `logMap` Map. `addToLog`, `renderLog`. Every survey card (galaxy/star/planet/moon/etc.)

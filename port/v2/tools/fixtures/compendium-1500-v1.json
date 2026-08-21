@@ -1,0 +1,13 @@
+{
+  "schema": "cf-v2-compendium-fixture/v1",
+  "generator": "compendium-realistic-genomes/v1",
+  "seed": 3235779840,
+  "count": 1500,
+  "sameSeedPair": [
+    "cmem-0000-same-seed-a",
+    "cmem-0001-same-seed-b"
+  ],
+  "filterBeacon": "cmem-0777-filter-beacon",
+  "expectedRowsSha256": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
+  "brokenBaselineProjectionRowsSha256": "f7bee0cf6fb7b3308c49c03d9c0e84c55281d3966a444e66108bdfd95c2886a2"
+}

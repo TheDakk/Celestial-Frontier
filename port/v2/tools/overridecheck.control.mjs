@@ -57,11 +57,13 @@
    and export-all re-export laundering. CI–CL pin the compositor's free numeric
    dependencies; CM rejects bare re-export side effects; CN proves adjacent
    fauna shadow direction comes from the audited selector order; CO requires
-   the returned-canvas serialization call itself to be exact and argument-free;
+   every routed consumer to return its live canvas without serializing it;
    CP rejects a curly-apostrophe table key that runtime lookup cannot reach.
    CQ pins the reviewed fauna allowlist; CR/CS pin both new lineage helpers;
    CT/CU require the drift compositor on both canonical and fauna consumers;
    CV proves the new Set dependency cannot be shadowed by a live local binding.
+   CW seals the TypeScript compatibility URL wrapper in the opposite direction;
+   CX/CY independently seal the generated Canvas body and generated URL wrapper.
    Usage: node tools/overridecheck.control.mjs  (exit 0 = every control fires) */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -79,26 +81,32 @@ const TMP_DIR = path.join(SRC, `zztmpoverrides-control-${process.pid}`);
 const TMP_NESTED = path.join(TMP_DIR, 'faunaoverrides2.ts');
 const TMP_MTS = path.join(SRC, `zztmpoverrides-control-${process.pid}.mts`);
 const ROUTER = path.join(SRC, 'speciesoverrides.ts');
+const COMPAT = path.join(SRC, 'speciescompat.ts');
 const FLORA = path.join(SRC, 'floraoverrides.ts');
 const QUAD = path.join(SRC, 'quadrupedoverrides.ts');
 const CATALOG = path.join(root, 'packages/domain/descriptors/src/apphooks.verbatim.js');
 const ESCAPE = path.join(root, 'packages/art', `routeescape-control-${process.pid}.ts`);
 const VERBATIM = path.join(SRC, 'hdart.verbatim.js');
+const WORKER_VERBATIM = path.join(SRC, 'hdportrait.worker.verbatim.js');
 const CATALOG_WRAPPER = path.join(root, 'packages/domain/descriptors/src/apphooks.ts');
 const orig = fs.readFileSync(VICTIM, 'utf8');
 const routerOrig = fs.readFileSync(ROUTER, 'utf8');
+const compatOrig = fs.readFileSync(COMPAT, 'utf8');
 const floraOrig = fs.readFileSync(FLORA, 'utf8');
 const quadOrig = fs.readFileSync(QUAD, 'utf8');
 const catalogOrig = fs.readFileSync(CATALOG, 'utf8');
 const verbatimOrig = fs.readFileSync(VERBATIM, 'utf8');
+const workerVerbatimOrig = fs.readFileSync(WORKER_VERBATIM, 'utf8');
 const catalogWrapperOrig = fs.readFileSync(CATALOG_WRAPPER, 'utf8');
 let victimExpected = orig;
 let routerExpected = routerOrig;
+let compatExpected = compatOrig;
 let floraExpected = floraOrig;
 let quadExpected = quadOrig;
 let catalogExpected = catalogOrig;
 let escapeExpected = null;
 let verbatimExpected = verbatimOrig;
+let workerVerbatimExpected = workerVerbatimOrig;
 let catalogWrapperExpected = catalogWrapperOrig;
 let tmpExpected = null;
 let nestedExpected = null;
@@ -140,6 +148,11 @@ const writeRouter = (next) => {
   fs.writeFileSync(ROUTER, next);
   routerExpected = next;
 };
+const writeCompat = (next) => {
+  assertCurrent(COMPAT, compatExpected, 'speciescompat.ts');
+  fs.writeFileSync(COMPAT, next);
+  compatExpected = next;
+};
 const writeFlora = (next) => {
   assertCurrent(FLORA, floraExpected, 'floraoverrides.ts');
   fs.writeFileSync(FLORA, next);
@@ -170,6 +183,11 @@ const writeVerbatim = (next) => {
   assertCurrent(VERBATIM, verbatimExpected, 'hdart.verbatim.js');
   fs.writeFileSync(VERBATIM, next);
   verbatimExpected = next;
+};
+const writeWorkerVerbatim = (next) => {
+  assertCurrent(WORKER_VERBATIM, workerVerbatimExpected, 'hdportrait.worker.verbatim.js');
+  fs.writeFileSync(WORKER_VERBATIM, next);
+  workerVerbatimExpected = next;
 };
 const writeCatalogWrapper = (next) => {
   assertCurrent(CATALOG_WRAPPER, catalogWrapperExpected, 'apphooks.ts');
@@ -220,6 +238,7 @@ const restore = () => {
   const errors = [];
   try { writeVictim(orig); } catch (error) { errors.push(error); }
   try { writeRouter(routerOrig); } catch (error) { errors.push(error); }
+  try { writeCompat(compatOrig); } catch (error) { errors.push(error); }
   try { writeFlora(floraOrig); } catch (error) { errors.push(error); }
   try { writeQuad(quadOrig); } catch (error) { errors.push(error); }
   try { writeCatalog(catalogOrig); } catch (error) { errors.push(error); }
@@ -228,6 +247,7 @@ const restore = () => {
   try { removeMts(); } catch (error) { errors.push(error); }
   try { removeEscape(); } catch (error) { errors.push(error); }
   try { writeVerbatim(verbatimOrig); } catch (error) { errors.push(error); }
+  try { writeWorkerVerbatim(workerVerbatimOrig); } catch (error) { errors.push(error); }
   try { writeCatalogWrapper(catalogWrapperOrig); } catch (error) { errors.push(error); }
   if (errors.length) throw new AggregateError(errors, 'override controls could not safely restore owned files');
 };
@@ -395,7 +415,7 @@ try {
   writeRouter(routerOrig);
 
   /* F: a table whose keys all resolve and whose ownership helper still sees it,
-     but which resolveOverride never reads — the wave-11 bug: 280 routes written,
+     but which resolveOverrideCanvas never reads — the wave-11 bug: 280 routes written,
      imported, and unreachable from the renderer. */
   writeRouter(replaceOnce(routerOrig,
     '    const iconic = FLORA_ICONIC[name] || FLORA2_SPEC[name];',
@@ -449,7 +469,7 @@ try {
     `import { FAUNA3_NAME } from './faunaoverrides3.js';\nimport { FAUNA5_NAME } from './${path.basename(TMP, '.ts')}.js';\n`,
     'control AF'));
   check('AF: an imported route table must have a scanned declaration owner', run(), 'parser-fail',
-    /FAUNA5_NAME is imported\/read by resolveOverride but has no declaration owner[\s\S]*PARSER is broken/);
+    /FAUNA5_NAME is imported\/read by resolveOverrideCanvas but has no declaration owner[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
   removeTmp();
 
@@ -512,7 +532,7 @@ try {
     'control AO inert read');
   writeRouter(inertRouter);
   check('AO: inert in-body mentions cannot disguise a disconnected table', run(), 'parser-fail',
-    /resolver selector\/consumer contract changed: resolveOverride contains a route-table member outside the audited selector initializers[\s\S]*PARSER is broken/);
+    /resolver selector\/consumer contract changed: resolveOverrideCanvas contains a route-table member outside the audited selector initializers[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
@@ -534,7 +554,7 @@ try {
     `import { FAUNA2_NAME } from './${path.basename(TMP_DIR)}/faunaoverrides2.js';`,
     'control AR'));
   check('AR: same-basename nested imports cannot impersonate the declaration owner', run(), 'parser-fail',
-    /FAUNA2_NAME is read by resolveOverride from zztmpoverrides-control-\d+\/faunaoverrides2\.ts, but its only declaration owner is faunaoverrides2\.ts[\s\S]*PARSER is broken/);
+    /FAUNA2_NAME is read by resolveOverrideCanvas from zztmpoverrides-control-\d+\/faunaoverrides2\.ts, but its only declaration owner is faunaoverrides2\.ts[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
   removeNested();
 
@@ -557,11 +577,11 @@ try {
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverride(g: G): string | null {',
-    'export function resolveOverride(g: G, fitInk: (src: HTMLCanvasElement, dst: Ctx, who: string) => void = () => {}): string | null {',
+    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    'export function resolveOverrideCanvas(g: G, fitInk: (src: ArtCanvas, dst: Ctx, who: string) => void = () => {}): ArtCanvas | null {',
     'control AV'));
   check('AV: a resolver parameter cannot shadow the canvas compositor', run(), 'parser-fail',
-    /resolver selector\/consumer contract changed: resolveOverride must have only its audited g parameter[\s\S]*PARSER is broken/);
+    /resolver selector\/consumer contract changed: resolveOverrideCanvas must have only its audited g parameter[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeVictim(replaceOnce(orig, PYTHON, "  'Python': null!,", 'control AW'));
@@ -650,32 +670,32 @@ try {
   writeVictim(orig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverride(g: G): string | null {',
-    "fitInk = (_src: HTMLCanvasElement, _dst: Ctx, _who: string): void => {};\n\nexport function resolveOverride(g: G): string | null {",
+    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    "fitInk = (_src: ArtCanvas, _dst: Ctx, _who: string): void => {};\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
     'control BG'));
   check('BG: a reassigned canvas helper fails the binding contract', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: route helper fitInk is not its stable exact function binding[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverride(g: G): string | null {',
-    "const String = (_value: unknown): string => '';\n\nexport function resolveOverride(g: G): string | null {",
+    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    "const String = (_value: unknown): string => '';\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
     'control BH'));
   check('BH: a local binding cannot shadow the built-in String resolver input', run(), 'parser-fail',
     /shadowing the built-in String binding is unsupported in route-table sources[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverride(g: G): string | null {',
-    "const Boolean = (_value: unknown): boolean => false;\n\nexport function resolveOverride(g: G): string | null {",
+    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    "const Boolean = (_value: unknown): boolean => false;\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
     'control BI'));
   check('BI: a local binding cannot shadow the built-in Boolean route probe', run(), 'parser-fail',
     /shadowing the built-in Boolean binding is unsupported in route-table sources[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverride(g: G): string | null {',
-    "lineageRenderKingdom = (_g: G): EarthKingdom => 'fauna';\n\nexport function resolveOverride(g: G): string | null {",
+    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    "lineageRenderKingdom = (_g: G): EarthKingdom => 'fauna';\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
     'control BJ'));
   check('BJ: a reassigned lineage route helper fails the binding contract', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: route helper lineageRenderKingdom is not its stable exact function binding[\s\S]*PARSER is broken/);
@@ -698,16 +718,16 @@ try {
   writeQuad(quadOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverride(g: G): string | null {',
-    'newCanvas = newCanvas;\n\nexport function resolveOverride(g: G): string | null {',
+    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    'newCanvas = newCanvas;\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {',
     'control BM'));
   check('BM: a reassigned canvas allocator fails the binding contract', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: route helper newCanvas is not its stable exact function binding[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverride(g: G): string | null {',
-    'newInk = newInk;\n\nexport function resolveOverride(g: G): string | null {',
+    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    'newInk = newInk;\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {',
     'control BN'));
   check('BN: a reassigned ink allocator fails the binding contract', run(), 'parser-fail',
     /resolver selector\/consumer contract changed: route helper newInk is not its stable exact function binding[\s\S]*PARSER is broken/);
@@ -741,24 +761,24 @@ try {
   writeCatalog(catalogOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverride(g: G): string | null {',
-    "(Object as any).keys = (_value: object): string[] => [];\n\nexport function resolveOverride(g: G): string | null {",
+    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    "(Object as any).keys = (_value: object): string[] => [];\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
     'control BR'));
   check('BR: Object.keys cannot be monkeypatched around the route audit', run(), 'parser-fail',
     /trusted built-in Object member escapes its approved direct-call context[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverride(g: G): string | null {',
-    "globalThis.String = ((_value?: unknown): string => '') as StringConstructor;\n\nexport function resolveOverride(g: G): string | null {",
+    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    "globalThis.String = ((_value?: unknown): string => '') as StringConstructor;\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
     'control BS'));
   check('BS: a global-object write cannot poison the String route input', run(), 'parser-fail',
     /globalThis global-object access is outside its exact audited context[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'export function resolveOverride(g: G): string | null {',
-    "void import('./faunaoverrides2.js');\n\nexport function resolveOverride(g: G): string | null {",
+    'export function resolveOverrideCanvas(g: G): ArtCanvas | null {',
+    "void import('./faunaoverrides2.js');\n\nexport function resolveOverrideCanvas(g: G): ArtCanvas | null {",
     'control BT'));
   check('BT: dynamic imports cannot acquire a route table outside static provenance', run(), 'parser-fail',
     /dynamic imports are unsupported in route-table sources[\s\S]*PARSER is broken/);
@@ -773,24 +793,24 @@ try {
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    "  const cv = document.createElement('canvas'); cv.width = cv.height = S;",
-    "  const cv = document.createElement('canvas'); cv.width = cv.height = 1;",
+    '  const cv = createSpeciesCanvas(S, S);',
+    '  const cv = createSpeciesCanvas(1, 1);',
     'control BV'));
   check('BV: newCanvas implementation drift fails the canvas contract', run(), 'parser-fail',
     /route helper newCanvas implementation changed from its audited canvas contract[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    "  const cv = document.createElement('canvas'); cv.width = cv.height = INK;",
-    "  const cv = document.createElement('canvas'); cv.width = cv.height = 1;",
+    '  const cv = createSpeciesCanvas(INK, INK);',
+    '  const cv = createSpeciesCanvas(1, 1);',
     'control BW'));
   check('BW: newInk implementation drift fails the canvas contract', run(), 'parser-fail',
     /route helper newInk implementation changed from its audited canvas contract[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
   writeRouter(replaceOnce(routerOrig,
-    'function fitInk(src: HTMLCanvasElement, dst: Ctx, who: string): void {',
-    'function fitInk(src: HTMLCanvasElement, dst: Ctx, who: string): void {\n  if (Boolean(src)) return;',
+    'function fitInk(src: ArtCanvas, dst: Ctx, who: string): void {',
+    'function fitInk(src: ArtCanvas, dst: Ctx, who: string): void {\n  if (Boolean(src)) return;',
     'control BX'));
   check('BX: fitInk implementation drift fails the compositor contract', run(), 'parser-fail',
     /route helper fitInk implementation changed from its audited canvas contract[\s\S]*PARSER is broken/);
@@ -855,6 +875,11 @@ try {
     /hdart\.verbatim\.js changed from its audited executable-input hash[\s\S]*PARSER is broken/);
   writeVerbatim(verbatimOrig);
 
+  writeWorkerVerbatim(workerVerbatimOrig + '\nvoid 0;\n');
+  check('CE2: the worker-only generated portrait input is byte-pinned', run(), 'parser-fail',
+    /hdportrait\.worker\.verbatim\.js changed from its audited executable-input hash[\s\S]*PARSER is broken/);
+  writeWorkerVerbatim(workerVerbatimOrig);
+
   writeCatalogWrapper(catalogWrapperOrig + '\nvoid 0;\n');
   check('CF: the live catalog wrapper is byte-pinned', run(), 'parser-fail',
     /live apphooks\.ts catalog wrapper changed from its audited authority contract[\s\S]*catalog PARSER is broken/);
@@ -907,10 +932,10 @@ try {
   writeVictim(orig);
 
   writeRouter(replaceOnce(routerOrig,
+    "    fitInk(ink.cv, c, kingdom + ':' + name);\n    return cv;\n  }\n  /* FLORA",
     "    fitInk(ink.cv, c, kingdom + ':' + name);\n    return cv.toDataURL();\n  }\n  /* FLORA",
-    "    fitInk(ink.cv, c, kingdom + ':' + name);\n    return cv.toDataURL((() => { throw new Error('route never returns'); })());\n  }\n  /* FLORA",
     'control CO'));
-  check('CO: returned-canvas serialization must be the exact zero-argument call', run(), 'parser-fail',
+  check('CO: a routed Canvas body cannot serialize its return value', run(), 'parser-fail',
     /canon lookup is not the guarded painter that feeds the returned canvas[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
 
@@ -969,6 +994,38 @@ try {
   check('CV: the reviewed-lineage Set constructor cannot be shadowed', run(), 'parser-fail',
     /trusted built-in Set is shadowed or reassigned[\s\S]*PARSER is broken/);
   writeRouter(routerOrig);
+
+  writeCompat(replaceOnce(compatOrig,
+    '  const canvas = resolveOverrideCanvas(genome);\n  return canvas ? encodePortableCanvas(canvas) : null;',
+    '  const canvas = resolveOverrideCanvas(genome);\n  return canvas as unknown as string;',
+    'control CW'));
+  check('CW: the TypeScript compatibility seam must serialize the Canvas exactly once', run(), 'parser-fail',
+    /resolveOverride must remain the exact Window-only URL wrapper around resolveOverrideCanvas[\s\S]*PARSER is broken/);
+  writeCompat(compatOrig);
+
+  writeCompat(replaceOnce(compatOrig,
+    '  return (canvas as unknown as HTMLCanvasElement).toDataURL();',
+    "  return '';",
+    'control CW2'));
+  check('CW2: the Window compatibility encoder cannot omit toDataURL', run(), 'parser-fail',
+    /encodePortableCanvas must remain the exact Window-only zero-argument toDataURL boundary[\s\S]*PARSER is broken/);
+  writeCompat(compatOrig);
+
+  writeVerbatim(replaceOnce(verbatimOrig,
+    "  c2.fillStyle=fg;c2.fillRect(0,S2*0.7,S2,S2*0.3);\n  return cv;\n}\n/* world camouflage",
+    "  c2.fillStyle=fg;c2.fillRect(0,S2*0.7,S2,S2*0.3);\n  return cv.toDataURL();\n}\n/* world camouflage",
+    'control CX'));
+  check('CX: a generated Canvas painter cannot move serialization into its body', run(), 'parser-fail',
+    /generated canvas\/URL wrapper contract changed: hdPortraitFaunaCanvas must return cv without serialization[\s\S]*PARSER is broken/);
+  writeVerbatim(verbatimOrig);
+
+  writeVerbatim(replaceOnce(verbatimOrig,
+    'function hdPortraitFauna(g){ return hdPortraitFaunaCanvas(g).toDataURL(); }',
+    'function hdPortraitFauna(g){ return hdPortraitFaunaCanvas(g); }',
+    'control CY'));
+  check('CY: a generated compatibility wrapper cannot omit Canvas serialization', run(), 'parser-fail',
+    /generated canvas\/URL wrapper contract changed: hdPortraitFauna must exactly serialize hdPortraitFaunaCanvas\(g\)[\s\S]*PARSER is broken/);
+  writeVerbatim(verbatimOrig);
 
   let shadowRouter = replaceOnce(routerOrig,
     "import { FAUNA2_NAME } from './faunaoverrides2.js';\n",
