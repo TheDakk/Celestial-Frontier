@@ -17,21 +17,22 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 FREEZE LIFTED · EXACT RUN PENDING ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 ATTEMPT 1 RED · POLICY REPAIRED LOCALLY ◀◀◀
 
 ### Fresh-session start
 
 - Read `GITHUB_ACTIONS_BUDGET.md`, this handoff, `PROCESS_LAWS.md`,
   `PARALLEL_GIT_PROTOCOL.md`, and the owning agent instructions. Either OpenAI/Codex or
   Anthropic/Claude can resume from repository state; use only that agent's owned worktree.
-- Certified committed head is `9d5247f0d6e7c36015d465cef0961a460d1a27d3` on `openai/mac`.
-  `origin/openai/mac` remains `731b2e2ab974252b410ba97dbdbe3ec6d3ee9c20`; the locally committed
-  docs-only closure descends from certified `9d` and does not alter code, tool, workflow, product,
-  browser, or resource-ruler authority. Recheck the current docs-only descendant HEAD and clean status.
-- Nick lifted **`FROZEN`** on 2026-08-20 for the bounded PR #32 integration preparation. The
-  repository is public and standard hosted runners are free while it remains public, but no exact
-  hosted attempt is authorized yet; do not push, label, dispatch, rerun, or merge until that record
-  names the final eligible head. The 3,000 cap applies fail-closed if visibility/billing changes.
+- Certified product head is `9d5247f0d6e7c36015d465cef0961a460d1a27d3` on `openai/mac`. Remote PR
+  head `6e33b3d01b25889f3f5894aa221c28a0f44bc239` contains the prior synchronized closure and the
+  mode-state docs change. The current local descendant repairs only the budget-policy parser,
+  selftest, and current Markdown; it does not alter product, browser, or resource-ruler authority.
+  Recheck the current locally committed repair descendant HEAD and clean status.
+- Nick lifted **`FROZEN`** on 2026-08-20. The repository is public and standard hosted runners are
+  free while it remains public; 3,000 applies fail-closed if visibility/billing changes. The one
+  authorized PR #32 attempt is consumed and red, its label is removed, and no further attempt is
+  authorized. Do not push, label, dispatch, rerun, or merge without fresh changed-head authority.
 
 ### Preserved active ruler and hosted history
 
@@ -44,9 +45,11 @@ the archive verbatim and refresh this handoff in place.
   are 78/78 with complete lifecycle; baseline11 retains four faults and 14 phone / 13 desktop
   breaches; all previous numeric ceilings remain strict.
 - Existing open, non-draft PR #32 is `openai/mac` → `develop`
-  `38447019517147319bd08c598202d097ee866874`. Run `32420327368` remains historical no-verdict
-  evidence and is not retry authority. Do not update or merge the PR until the exact one-run
-  authorization is recorded.
+  `38447019517147319bd08c598202d097ee866874`. Exact-head run `32440536261` attempt 1 failed during
+  root validation because `GITHUB_ACTIONS_BUDGET.md` no longer matched its policy parser; the later
+  missing layout report was fallout after its producer never ran. No browser gate ran, the
+  `actions-budget-approved` label was removed, and the attempt is consumed with no retry authority.
+  Run `32420327368` remains older historical no-verdict evidence and is also not retry authority.
 
 ### Exact-head local certification
 
@@ -60,27 +63,32 @@ the archive verbatim and refresh this handoff in place.
   it is not certification evidence and was not used to erase or rerun a product failure.
 - This local result is not hosted CI, HUMAN visual judgment, PR closure, Gate closure, release, or
   deployment authority.
+- The changed-head policy repair passes `node tools/actions-budget-policy.js --selftest` with 64
+  fail-closed controls and full `node tools/validate.js`, including the normal policy gate, clean
+  boot/render audit, and 50/50 determinism fingerprint. This is local repair evidence, not authority
+  to reuse or rerun attempt 1.
 
 ### Next bounded sequence
 
-1. The synchronized docs closure is committed locally. Do not rerun the certified battery merely
-   because descendant Markdown changed; the docs do not alter its authority inputs.
-2. HUMAN review remains open for the six phone/desktop Compendium list/detail/focus images.
-3. Nick lifted `FROZEN`; the remaining gate is his exact one-run authorization for the final eligible
-   head. PR #32 must close terminal-green before Arc 1B/gameplay resumes.
-4. No release, deployment, version bump, publication, or `main` work is authorized.
+1. Commit the locally green policy/docs repair and stop before any push.
+2. A fresh changed-head `test-battery` attempt requires Nick's new exact head/base authorization;
+   never rerun or reuse failed run `32440536261`.
+3. PR #32 must close terminal-green and merge before Arc 1B/gameplay resumes. HUMAN review remains
+   open for the six phone/desktop Compendium list/detail/focus images.
+4. No Arc 1B implementation, release, deployment, version bump, publication, or `main` work is authorized.
 
 ## Parallel Git handoff — exact budget-aware fields
 
-**Current side:** OpenAI/Codex macOS owns `openai/mac`. Certified source is `9d5247f…`; its
-synchronized docs-only descendant is committed locally and the working tree is clean. Nothing is pushed.
+**Current side:** OpenAI/Codex macOS owns `openai/mac`. Certified product source is `9d5247f…`;
+remote PR head `6e33b3d…` is red. The locally green policy/docs repair descends from it and remains
+unpushed; recheck its final commit and clean status.
 
-**GitHub step:** Record Nick's exact one-run authorization for the final local head. Until then, do
-not push, apply `actions-budget-approved`, dispatch, rerun, merge, or publish.
+**GitHub step:** None until Nick authorizes one fresh changed-head attempt. Do not push, apply
+`actions-budget-approved`, dispatch, rerun, merge, or publish before then.
 
 **PR details:** existing open, non-draft PR #32; base `develop`; source `openai/mac`; title
-**Arc 1A — Bound Compendium portraits and measured resources**. Its remote head lacks the locally
-committed closure; the freeze is lifted, but no exact PR write or hosted attempt is authorized yet.
+**Arc 1A — Bound Compendium portraits and measured resources**. Remote head `6e33b3d…` failed run
+`32440536261`; its existing title and description need no change. The local repair is not on GitHub.
 
 **Other side:** Anthropic/Claude Code need not be opened now. It does not have these changes and may
 synchronize only through `origin/develop` after an authorized PR merge, from its own clean branch.
@@ -89,4 +97,5 @@ synchronize only through `origin/develop` after an authorized PR merge, from its
 deployment, or publication was performed or authorized.
 
 **Actions budget:** `UNFROZEN`; public/standard runners free while visibility holds; 3,000 remains
-the fail-closed private-repository cap. Authorized hosted attempts: zero pending the final head SHA.
+the fail-closed private-repository cap. Consumed attempts: one (`32440536261`, red); authorized
+future attempts: zero.

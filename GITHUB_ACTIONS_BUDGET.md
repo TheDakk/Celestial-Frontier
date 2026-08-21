@@ -1,6 +1,8 @@
 # GitHub Actions Budget Protocol
 
-**Current mode: `UNFROZEN` — no hosted attempt authorized**
+**Current mode: `UNFROZEN`**
+
+**Hosted attempt state: none authorized.** PR #32 attempt 1 was consumed and failed; details below.
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
@@ -21,7 +23,8 @@ private-repository cap, or authorize one exact hosted run.
 - Missing hosted checks remain blockers. Exhausted budget is never permission to bypass branch
   protection, reuse stale evidence, merge a red/unfinished PR, or call local evidence “CI.”
 - A monthly reset is never inferred from the calendar. The mode remains `FROZEN` until Nick says
-  otherwise in the current task; Nick lifted it on 2026-08-20, without yet authorizing a run.
+  otherwise in the current task; Nick lifted it on 2026-08-20. Every hosted attempt still requires
+  its own exact authorization.
 - A locally activated ruler or terminal-green exact-head local battery does not change `FROZEN` or
   authorize a push, label, hosted run, merge, publication, or deployment.
 
@@ -80,8 +83,12 @@ tools/validate.js` also runs the real policy check before the normal validation 
 
 ## One-run authorization after the freeze
 
-Nick lifted `FROZEN` on 2026-08-20. The exact one-run authorization record below remains required
-before any PR #32 push, approval label, hosted run, or merge.
+Nick lifted `FROZEN` on 2026-08-20. He authorized one `test-battery` attempt for PR #32 head
+`6e33b3d01b25889f3f5894aa221c28a0f44bc239` against base
+`38447019517147319bd08c598202d097ee866874`, using `actions-budget-approved`, with a 92 runner-minute
+ceiling and no retry. Run `32440536261` attempt 1 failed during root validation before browser work:
+the mode declaration had been changed to prose the policy parser could not accept. The label was
+removed immediately. That attempt is consumed; no further hosted attempt is authorized.
 
 When Nick explicitly lifts `FROZEN`, he may authorize exactly one hosted attempt. Before any GitHub write, the
 handoff must record:

@@ -12,6 +12,7 @@ const crypto = require('crypto');
 const ROOT = path.resolve(__dirname, '..');
 const WORKFLOW_DIR = path.join(ROOT, '.github', 'workflows');
 const BUDGET_DOC = 'GITHUB_ACTIONS_BUDGET.md';
+const BUDGET_MODES = Object.freeze(['FROZEN', 'UNFROZEN']);
 const RUN_TOKEN = 'RUN_ONE_AUTHORIZED_WORKFLOW';
 const STOP_TOKEN = 'DO_NOT_RUN';
 const APPROVAL_LABEL = 'actions-budget-approved';
@@ -294,8 +295,8 @@ function validate(carriers) {
     `policy carrier inventory changed: expected ${expected.join(', ')}, found ${actual.join(', ')}`);
   const budget = carriers.get(BUDGET_DOC);
   const modes = [...budget.matchAll(/^\*\*Current mode: `([^`]+)`\*\*$/gm)];
-  assert(modes.length === 1 && modes[0][1] === 'FROZEN',
-    `${BUDGET_DOC}: exactly one direct Current mode declaration must remain FROZEN until Nick explicitly lifts it`);
+  assert(modes.length === 1 && BUDGET_MODES.includes(modes[0][1]),
+    `${BUDGET_DOC}: exactly one direct Current mode declaration must be ${BUDGET_MODES.join(' or ')}`);
   assert(budget.includes('3,000'), `${BUDGET_DOC}: missing Nick's hard monthly cap`);
   for (const [name, mode] of Object.entries(WORKFLOWS)) {
     const source = carriers.get(name);
@@ -335,12 +336,18 @@ function expectInvalid(base, label, mutate) {
 function selftest() {
   const base = readCarriers();
   validate(base);
+  const frozen = clone(base);
+  frozen.set(BUDGET_DOC, replaceUnique(frozen.get(BUDGET_DOC),
+    '**Current mode: `UNFROZEN`**', '**Current mode: `FROZEN`**', BUDGET_DOC));
+  validate(frozen);
   let controls = 0;
   const control = (label, mutate) => { expectInvalid(base, label, mutate); controls++; };
 
-  control('budget mode cannot silently unfreeze', (c) => c.set(BUDGET_DOC,
-    replaceUnique(c.get(BUDGET_DOC), '**Current mode: `FROZEN`**',
+  control('budget rejects an unknown mode', (c) => c.set(BUDGET_DOC,
+    replaceUnique(c.get(BUDGET_DOC), '**Current mode: `UNFROZEN`**',
       '**Current mode: `CONSERVE`**', BUDGET_DOC)));
+  control('budget rejects multiple direct mode declarations', (c) => c.set(BUDGET_DOC,
+    c.get(BUDGET_DOC) + '\n**Current mode: `FROZEN`**\n'));
   control('battery rejects push trigger', (c) => c.set('test.yml',
     replaceUnique(c.get('test.yml'), '  pull_request:\n', '  push:\n', 'test.yml')));
   control('battery rejects synchronize', (c) => c.set('test.yml',
