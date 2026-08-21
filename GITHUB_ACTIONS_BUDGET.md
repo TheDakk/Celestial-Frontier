@@ -2,7 +2,8 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** PR #32 attempt 1 was consumed and failed; details below.
+**Hosted attempt state: none authorized.** PR #32's initial and changed-head attempts were consumed
+and failed; both labels were removed and details are below.
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
@@ -47,9 +48,9 @@ This efficiency rule applies equally to OpenAI/Codex and Anthropic/Claude Code:
 
 ## Hosted workflows are fail-closed
 
-The following **local and not-yet-pushed guarded design** makes ordinary pushes, PR synchronization
-events, branch merges, and successful batteries start **zero hosted runners by default** once it is
-committed to GitHub:
+The guarded design now present on PR #32's branch makes ordinary pushes, PR synchronization events,
+branch merges, and successful batteries start **zero hosted runners by default**. It is not yet on
+`develop` because the PR remains red and unmerged:
 
 - `.github/workflows/test.yml` has one tiny, two-minute owner/branch authorization job followed by
   one fail-fast serial battery. The battery is eligible only when the repository owner adds exact
@@ -81,14 +82,30 @@ the authorize result to the required battery name, seals standard runners/time c
 execution, proves publication remains parked, and mutation-tests every job guard. `node
 tools/validate.js` also runs the real policy check before the normal validation battery.
 
-## One-run authorization after the freeze
+## Authorized PR #32 attempts after the freeze
 
 Nick lifted `FROZEN` on 2026-08-20. He authorized one `test-battery` attempt for PR #32 head
 `6e33b3d01b25889f3f5894aa221c28a0f44bc239` against base
 `38447019517147319bd08c598202d097ee866874`, using `actions-budget-approved`, with a 92 runner-minute
 ceiling and no retry. Run `32440536261` attempt 1 failed during root validation before browser work:
 the mode declaration had been changed to prose the policy parser could not accept. The label was
-removed immediately. That attempt is consumed; no further hosted attempt is authorized.
+removed immediately. That attempt is consumed.
+
+Nick then authorized one new changed-head `test-battery` attempt for head
+`e9b04d5d515ce09363971f912603720f820de7f1` against the same base, with the same label, 92-minute
+ceiling, and no retry. Run `32441023665` attempt 1 completed in 33m43s. Root validation, Smoke,
+legacy Field Training capture, 10-viewport layout, v2 parity/type/art/coverage, exact Edge install,
+and browser/instrument selftests passed. Compendium produced a complete 78-outcome report: 75 passed;
+phone warm aggregate range was 97,320 B against 65,536 B, and Linux encoded the one retained portrait
+at 220,530 B against 196,608 B on phone and desktop. Every other resource/lifecycle/heap/DOM/
+answerability field passed. Report SHA-256 is
+`a486fe8eb96e9f00cbd3df486079deaa4e9e0987bed01ae870bf2201cbd47e36`; exact diagnosis and the
+committed compressed raw report are preserved under `audits/`. The label was removed immediately. The run is
+terminal red, consumed, and must not be rerun; PR #32 was not merged.
+
+A local changed-head repair widens only those three cross-host ceilings to 262,144 B and preserves
+the same paired-baseline breach inventory. It is not pushed and owns no hosted authority. No further
+hosted attempt is authorized.
 
 When Nick explicitly lifts `FROZEN`, he may authorize exactly one hosted attempt. Before any GitHub write, the
 handoff must record:
@@ -106,15 +123,13 @@ configured job-minutes on every PR update, then repeat on `develop` and fan out 
 That automatic fanout is retired. Parallel wall-clock speed is not worth multiplying finite hosted
 minutes or letting unrelated jobs continue after the first deterministic red.
 
-## Safe rollout of this local guard
+## Safe rollout of this guard
 
-These protections do not affect GitHub until their commit reaches the repository. The remote branch
-still contains the old automatic triggers, so do not push this transition without Nick's explicit Git
-handoff authorization. Because the repository is now public, standard hosted-runner minutes are free;
-repository-wide Actions disablement is no longer needed merely to protect the private 3,000-minute
-allowance. Only after Nick explicitly lifts `FROZEN` and authorizes that exact Git write, land the
-guard in one intentional push, verify the remote workflow bytes without dispatching them, and
-leave the approval label absent. If the repository becomes
-private again before rollout, stop and re-evaluate the remaining private allowance first. Disabling
-Actions remains a broad persistent setting change and still requires explicit approval of that exact
-consequence.
+These protections are present on the PR branch but do not reach `develop` until a terminal-green
+authorized merge. Because the repository is public, standard hosted-runner minutes are free;
+repository-wide Actions disablement is not needed merely to protect the private 3,000-minute
+allowance. Every changed-head push and label still requires its own exact authorization; verify the
+remote workflow bytes without dispatching, and leave the approval label absent after the one run.
+If the repository becomes private again, stop and re-evaluate the remaining private allowance first.
+Disabling Actions remains a broad persistent setting change and still requires explicit approval of
+that exact consequence.

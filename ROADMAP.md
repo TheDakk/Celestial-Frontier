@@ -17,85 +17,95 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 ATTEMPT 1 RED · POLICY REPAIRED LOCALLY ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-20 · PR #32 ATTEMPT 2 RED · CROSS-HOST RULER REPAIRED LOCALLY ◀◀◀
 
 ### Fresh-session start
 
 - Read `GITHUB_ACTIONS_BUDGET.md`, this handoff, `PROCESS_LAWS.md`,
   `PARALLEL_GIT_PROTOCOL.md`, and the owning agent instructions. Either OpenAI/Codex or
   Anthropic/Claude can resume from repository state; use only that agent's owned worktree.
-- Certified product head is `9d5247f0d6e7c36015d465cef0961a460d1a27d3` on `openai/mac`. Remote PR
-  head `6e33b3d01b25889f3f5894aa221c28a0f44bc239` contains the prior synchronized closure and the
-  mode-state docs change. The current local descendant repairs only the budget-policy parser,
-  selftest, and current Markdown; it does not alter product, browser, or resource-ruler authority.
-  Recheck the current locally committed repair descendant HEAD and clean status.
+- Existing open, non-draft PR #32 is `openai/mac` → `develop`; remote head
+  `e9b04d5d515ce09363971f912603720f820de7f1`, base
+  `38447019517147319bd08c598202d097ee866874`. It is mergeable but correctly blocked by terminal-red
+  battery run `32441023665`. The `actions-budget-approved` label is absent. Do not merge it.
+- Certified product source remains `9d5247f0d6e7c36015d465cef0961a460d1a27d3`; descendants through
+  `e9b04d5…` changed workflow/policy/docs only. The current local descendant changes the numeric
+  budget, its focused tests, audit evidence, and current Markdown only. Recheck local HEAD/status.
 - Nick lifted **`FROZEN`** on 2026-08-20. The repository is public and standard hosted runners are
-  free while it remains public; 3,000 applies fail-closed if visibility/billing changes. The one
-  authorized PR #32 attempt is consumed and red, its label is removed, and no further attempt is
-  authorized. Do not push, label, dispatch, rerun, or merge without fresh changed-head authority.
+  free while it remains public; 3,000 applies fail-closed if visibility/billing changes. Both exact
+  PR #32 attempts are consumed and red. No future attempt is authorized.
 
-### Preserved active ruler and hosted history
+### Exact terminal evidence and diagnosis
 
-- Active Compendium budget/test are `546d3a817073e42910b496895734ae2a01bb4c633af2780ecde1b1ef6570b292` /
-  `ef06252af072d59b85351c05671b762f5d3fa259656e20bc87b22e84ba510b55` under measurement
+- Authorized run `32441023665`, attempt 1, tested exact head/base once with a 92 runner-minute owner
+  ceiling and no retry. It completed in 33m43s. Root validate, Smoke, Field Training capture,
+  10-viewport layout, v2 parity/type/art/coverage, exact Edge install, and browser/instrument
+  selftests passed. The battery stopped at Compendium; later browser gates correctly did not run.
+- Complete report `a486fe8eb96e9f00cbd3df486079deaa4e9e0987bed01ae870bf2201cbd47e36`
+  produced 78 outcomes: 75 pass, three fail, none blocked, complete lifecycle. Phone warm aggregate
+  range was 97,320 B against 65,536 B, entirely non-monotonic embedder-heap variance with stable
+  resource bytes. Linux native PNG encoding retained one 220,530 B portrait against 196,608 B on
+  phone and desktop. Every other cache/job/lease/worker/decoded/encoded/DOM/absolute-heap/
+  answerability field passed. Exact authority and raw values are preserved in
+  `audits/PR32_LINUX_MEMORY_EVIDENCE_2026-08-21.md`; the exact raw report is retained as deterministic
+  gzip `audits/PR32_LINUX_MEMORY_REPORT_32441023665.json.gz` (`a3b67e70…` compressed).
+- The run matched fixture, working-tree digest, measurement
   `23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92`, collector
-  `0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b`, selftest
-  `0bbb35417182ddfd5465206c2dd5f9f75537c67fec3053e8d8e79935db32b15b`, and producer
-  `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`. Candidate c27/c28/c29
-  are 78/78 with complete lifecycle; baseline11 retains four faults and 14 phone / 13 desktop
-  breaches; all previous numeric ceilings remain strict.
-- Existing open, non-draft PR #32 is `openai/mac` → `develop`
-  `38447019517147319bd08c598202d097ee866874`. Exact-head run `32440536261` attempt 1 failed during
-  root validation because `GITHUB_ACTIONS_BUDGET.md` no longer matched its policy parser; the later
-  missing layout report was fallout after its producer never ran. No browser gate ran, the
-  `actions-budget-approved` label was removed, and the attempt is consumed with no retry authority.
-  Run `32420327368` remains older historical no-verdict evidence and is also not retry authority.
+  `0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b`, producer
+  `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`, and exact Edge `.86` used
+  by macOS candidate27/28/29. This is cross-host ruler portability evidence, not a product leak.
+- Earlier run `32440536261` remains consumed/red before browser work on the now-repaired Markdown
+  mode parser. Run `32420327368` remains older no-verdict history. None may be rerun or reused.
 
-### Exact-head local certification
+### Local bounded repair and evidence
 
-- Exact `9d5247f…` passed the complete local battery: root and v2 static gates; root layout 787/787;
-  exact-Edge preflight plus active Compendium 78/78 with six PNGs; repaired preview selftest and all
-  Chrome controls; Smoke; Glass 12/12 and 58/58; nine automated personas; and exact-commit
-  nonpublishable preview package, verification, and browser smoke.
-- `apps/game/smoke/final-battery-sha256-9d5247f.txt` contains 99 entries and has SHA-256
-  `adcc16cf83d526c2fcacbcf7675051c907e1957c1572cdf5caa2e4e8a5b4558c`.
-  One earlier invalid self-including manifest is preserved as a generation-failed tooling diagnostic;
-  it is not certification evidence and was not used to erase or rerun a product failure.
-- This local result is not hosted CI, HUMAN visual judgment, PR closure, Gate closure, release, or
-  deployment authority.
-- The changed-head policy repair passes `node tools/actions-budget-policy.js --selftest` with 64
-  fail-closed controls and full `node tools/validate.js`, including the normal policy gate, clean
-  boot/render audit, and 50/50 determinism fingerprint. This is local repair evidence, not authority
-  to reuse or rerun attempt 1.
+- Budget `e3a71c8ae96e98b73c6957efe722f0222394c77bc8acb5d6fd93c0c761ca8f68` raises exactly
+  phone warm range and phone/desktop retained-portrait encoding to 262,144 B. Every other ceiling,
+  the three candidates, paired baseline, measurement, collector, producer, browser, attempt policy,
+  and HUMAN boundary remain unchanged.
+- Replaying the exact Linux raw report against the repaired budget yields 78/78. Three independent
+  just-below controls reproduce only `phone/warm-plateau`, `phone/byte-ceiling`, and
+  `desktop/byte-ceiling`. Baseline11's 393,140 B phone warm range and 20,693,680 / 55,868,080 B
+  portrait totals still breach; the inventory remains four sealed faults and 14 phone / 13 desktop
+  ceiling breaches.
+- Focused budget test `0793772dbe9f679c2f3df954ed7ed5b78edf332057ce8b94a75f0a884fd2cd05`
+  passes 14/14 and verifies the committed raw gzip/SHA/authorities, original 75/3 result, production
+  replay, and three isolated negative controls. `npm run compendiummem:selftest` passes 222 controls;
+  all 445 v2 tests pass with one intentional skip; root/app/worker typechecks pass; Actions policy
+  passes 64 fail-closed controls; root validate passes boot/render and 50/50 determinism.
+- Exact `9d5247f…` previously passed the complete local battery, including exact Edge Compendium
+  78/78/six PNGs, Smoke, Glass, personas, root layout 787/787, and nonpublishable preview. That is
+  prior local evidence, not authority to overwrite either hosted red.
 
 ### Next bounded sequence
 
-1. Commit the locally green policy/docs repair and stop before any push.
-2. A fresh changed-head `test-battery` attempt requires Nick's new exact head/base authorization;
-   never rerun or reuse failed run `32440536261`.
-3. PR #32 must close terminal-green and merge before Arc 1B/gameplay resumes. HUMAN review remains
-   open for the six phone/desktop Compendium list/detail/focus images.
-4. No Arc 1B implementation, release, deployment, version bump, publication, or `main` work is authorized.
+1. Confirm the current repair is committed with a clean worktree, record its exact HEAD, and stop
+   before push.
+2. A new changed-head `test-battery` requires Nick's fresh exact head/base authorization. Never rerun
+   `32441023665`; remove the label after any separately authorized attempt.
+3. Merge PR #32 only if that exact changed head is terminal-green and still clean/mergeable.
+4. Do not start Arc 1B, release, deployment, version bump, publication, `main`, or site work before
+   PR #32 merges. HUMAN review remains open for the six Compendium images.
 
 ## Parallel Git handoff — exact budget-aware fields
 
-**Current side:** OpenAI/Codex macOS owns `openai/mac`. Certified product source is `9d5247f…`;
-remote PR head `6e33b3d…` is red. The locally green policy/docs repair descends from it and remains
-unpushed; recheck its final commit and clean status.
+**Current side:** OpenAI/Codex macOS owns `openai/mac`. Remote head `e9b04d5…` is terminal red on
+run `32441023665`. The current local cross-host budget/evidence/docs repair commit descends from it
+and remains unpushed; record its exact HEAD and verify clean status.
 
 **GitHub step:** None until Nick authorizes one fresh changed-head attempt. Do not push, apply
 `actions-budget-approved`, dispatch, rerun, merge, or publish before then.
 
 **PR details:** existing open, non-draft PR #32; base `develop`; source `openai/mac`; title
-**Arc 1A — Bound Compendium portraits and measured resources**. Remote head `6e33b3d…` failed run
-`32440536261`; its existing title and description need no change. The local repair is not on GitHub.
+**Arc 1A — Bound Compendium portraits and measured resources**. Its title/description need no
+change. Remote exact head `e9b04d5…` is red; local repair is not on GitHub.
 
-**Other side:** Anthropic/Claude Code need not be opened now. It does not have these changes and may
-synchronize only through `origin/develop` after an authorized PR merge, from its own clean branch.
+**Other side:** Anthropic/Claude Code need not be opened now. It may synchronize only through
+`origin/develop` after an authorized PR merge, from its own clean branch.
 
-**Release status:** `develop`, `main`, and both sites are unchanged. No release, version bump,
-deployment, or publication was performed or authorized.
+**Release status:** `develop`, `main`, live site, and development site are unchanged. No release,
+version bump, deployment, or publication was performed or authorized.
 
 **Actions budget:** `UNFROZEN`; public/standard runners free while visibility holds; 3,000 remains
-the fail-closed private-repository cap. Consumed attempts: one (`32440536261`, red); authorized
-future attempts: zero.
+the fail-closed private/ambiguous cap. Consumed attempts: `32440536261` and `32441023665`, both red;
+authorized future attempts: zero; approval label: absent.

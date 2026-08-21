@@ -43,6 +43,28 @@ neither mode bypasses the exact owner-label/manual workflow guards. An `always()
 because its upstream producer never ran is fallout, not a second root cause. A red attempt remains
 consumed; repair locally and obtain fresh changed-head authorization rather than rerunning it.
 
+⚠⚠ **A CANONICAL BROWSER TUPLE DOES NOT MAKE NATIVE ENCODING OR EMBEDDER HEAP
+HOST-INVARIANT** (2026-08-20). PR #32 run `32441023665` replayed the exact Edge
+151.0.4129.86 product/revision/JS/protocol tuple, fixture, measurement authority, producer, and
+working-tree digest used by the macOS calibration, yet Linux encoded the one retained 440px PNG at
+220,530 B instead of 182,238 B and produced a non-monotonic 97,320 B phone warm aggregate range
+entirely inside embedder heap. The report was complete: 75/78 passed; encoded/decoded resources,
+jobs, ownership, worker lifecycle, DOM, responsiveness, and every absolute heap ceiling were stable
+or green. This is neither permission to ignore a red nor evidence of a product leak.
+
+Preserve raw path/user-agent as provenance while judging the deliberately shared browser authority
+by its canonical tuple. A bounded cross-host budget repair must name and hash the retained report,
+change only the observed host-sensitive fields, commit the compressed raw measurement with both
+compressed and decompressed hashes, replay it through the production evaluator, negative-control each
+changed boundary, and remain below the paired broken baseline with the same breach inventory. Here
+budget `e3a71c8a…` raises only phone warm range and phone/desktop one-portrait encoding to 262,144 B;
+committed gzip `a3b67e70…` expands to exact report `a486fe8e…` and replays 78/78, while just-below
+controls reproduce all three original
+failures, and baseline11 still breaches 14 phone / 13 desktop ceilings. Measurement, collector,
+producer, browser, samples, baseline, no-retry, and HUMAN authority remain unchanged. Never widen a
+ruler merely because it fired, and never call an earlier red terminal-green retroactively; a fresh
+changed-head hosted check still requires exact owner authorization.
+
 ⚠⚠ **A SERVER CLOSE CALLBACK IS NOT A BOUNDED CLEANUP OUTCOME** (2026-08-20).
 Compendium's owned static server now has one immutable monotonic 2,000 ms shutdown deadline.
 Just-before succeeds; exact-boundary, late, missing, or error callbacks force
@@ -52,10 +74,11 @@ Because collector bytes are measurement authority, this repair invalidates the f
 fail closed with empty candidates, null ceilings, and a measurement-required paired baseline, then
 recalibrate from one clean source without reusing historical capsules. Clean source `6736ef4…`
 then produced c27/baseline11/c28/c29 once each under fresh exact Edge `.86`; activation `b3957e1…`
-binds active budget/test `546d3a81…` / `ef06252a…` to unchanged measurement `23aacc2c…`, collector
+originally bound budget/test `546d3a81…` / `ef06252a…` to unchanged measurement `23aacc2c…`, collector
 `0c7ec3ba…`, selftest `0bbb3541…`, and producer `d3223177…`. All candidates completed 78/78 with
 complete lifecycle; baseline11 retained four faults and 14 phone / 13 desktop breaches; every prior
-numeric ceiling remains strict. Activation is not exact-head, hosted, HUMAN, or Gate authority.
+numeric ceiling was strict. Cross-host budget `e3a71c8a…` now supersedes only the three numeric
+fields documented above. Activation is not exact-head, hosted, HUMAN, or Gate authority.
 
 ⚠⚠ WHEN A NEW INSTRUMENT FIRES — OR PASSES — SUSPECT THE INSTRUMENT FIRST (2026-07-30, learned
   THREE times across two ships). Every gate built in this arc found a bug in ITSELF before it

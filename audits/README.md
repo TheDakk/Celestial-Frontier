@@ -10,6 +10,23 @@ summary of it.
 
 ## Contents
 
+### `PR32_LINUX_MEMORY_EVIDENCE_2026-08-21.md` — exact-head cross-host ruler evidence
+
+GitHub Actions run `32441023665` reached a complete 78-outcome Compendium report on exact Edge
+151.0.4129.86: 75 passed, while three macOS-derived numeric ceilings rejected Linux-native PNG
+encoding and embedder-heap variance. The note preserves the report/artifact hashes, exact
+authorities, raw failing values, stable resource state, paired-baseline discrimination, and the
+three-field budget-only repair. It is instrument portability evidence, not a product leak, retry,
+merge, HUMAN review, or Gate closure.
+
+### `PR32_LINUX_MEMORY_REPORT_32441023665.json.gz` — retained raw hosted report
+
+Deterministic gzip of the complete 10,466,459-byte report from artifact `9433081460`. Compressed
+SHA-256 is `a3b67e70881b725266a0fb669f027b51141967a4ff2193e011ed3b1d124a0916`; decompressed SHA-256 is
+`a486fe8eb96e9f00cbd3df486079deaa4e9e0987bed01ae870bf2201cbd47e36`. The focused budget test
+verifies its authorities, original ordered 75/3 result, repaired production-evaluator replay, and
+three isolated just-below controls.
+
 ### `v2-program-review-2026-08-14/` — PR #23 roadmap and HD-audio direction review
 
 Two Markdown review inputs supplied after the complete v2 program roadmap was proposed: Claude's R1–R9
