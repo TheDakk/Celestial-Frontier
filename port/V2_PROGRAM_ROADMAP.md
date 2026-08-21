@@ -43,13 +43,14 @@
 > workflow design removes automatic spend and must not be pushed through the still-automatic remote
 > configuration. No product/ruler verdict follows from the hosted timeout. Arc 1B/gameplay resumes
 > only after PR #32 eventually closes terminal-green under a separately authorized attempt.
-> Exact local `aecf3865095176a509a4cb892e5842b584780870` now bounds the Compendium HTTP
+> Exact local `aecf3865095176a509a4cb892e5842b584780870` bounds the Compendium HTTP
 > server close at 2,000 ms and fails exact/late/missing/error cleanup closed with one forced
-> connection close. Cleanup red suppresses PASS/sample. Collector/selftest/measurement/budget/
-> focused-test are `0c7ec3ba…` / `0bbb3541…` / `23aacc2c…` / `c711c8a5…` / `2f3f8dce…`;
-> producer remains `d3223177…`. Candidate24/25/26+baseline10 are historical only. Current state is
-> calibration-required; recollect c27, baseline11, c28, c29 serially from one later clean exact-.86
-> source, once each without retry, before activation or certification.
+> connection close. Cleanup red suppresses PASS/sample. Clean source `6736ef4…` collected serial
+> c27/baseline11/c28/c29 once each with zero retries and fresh exact `.86`; candidates completed
+> 78/78 with complete lifecycle and 18 PNG bindings, while baseline11 retained four faults and
+> 14 phone / 13 desktop breaches. Activation `b3957e1…` makes budget/test `546d3a81…` /
+> `ef06252a…` active under unchanged collector/selftest/measurement `0c7ec3ba…` / `0bbb3541…` /
+> `23aacc2c…` and producer `d3223177…`; all prior numeric ceilings remain strict.
 > Later product batches remain planned.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
@@ -647,7 +648,7 @@ both parent voices.
 accessibility, or approved static art.
 
 **Current state (2026-08-20): product implementation, serviced-turn scheduler, compact-phone stack,
-displayed-demand/zoom-owner repair, bounded static-server shutdown, and fail-closed recalibration are
+displayed-demand/zoom-owner repair, bounded static-server shutdown, and the active repaired ruler are
 present. Exact-89's shutdown false-green and candidate20's
 wrong-browser `175fac5e…` / `916dd12a…` / `7462144b…` carriers remain preserved instrument history.
 Candidate21/22/23 plus paired baseline9 each completed once without retry under exact `.86` and
@@ -659,10 +660,11 @@ completed 78/78 with zero findings, complete lifecycle, and six PNGs; baseline10
 faults. The formerly active budget `70145575…` embeds 3/3 samples per profile, measured 1/1 baseline, and strict
 ceilings with 14 phone / 13 desktop breaches under measurement `2318f57b…` and unchanged producer
 `d3223177…`. Focused activation is 13/13 after the synthetic active-state control received matching
-desktop identities; browser evidence did not change or rerun. That ruler is now historical because
-collector `0c7ec3ba…` changes measurement to `23aacc2c…`; current budget `c711c8a5…` is
-calibration-required with empty samples/null ceilings and a measurement-required/null paired
-baseline. Fresh `[HUMAN]` review is open.**
+desktop identities; browser evidence did not change or rerun. That ruler is historical. Clean
+`6736ef4…` c27/baseline11/c28/c29 evidence now activates budget/test `546d3a81…` / `ef06252a…`
+under measurement/collector/selftest `23aacc2c…` / `0c7ec3ba…` / `0bbb3541…`; candidates are 78/78
+with complete lifecycle, baseline11 retains four faults and 14 phone / 13 desktop breaches, and
+prior ceilings remain strict. Fresh `[HUMAN]` review is open.**
 This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
 corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
 `compendiummem` gate drives a deterministic 1,500-row

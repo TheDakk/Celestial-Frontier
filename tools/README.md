@@ -200,10 +200,11 @@ is `FROZEN`, do not push, label, dispatch, rerun, merge, sync, or publish; build
 > 2,000 ms close deadline. Just-before succeeds; exact/late/missing/error callbacks force-close all
 > connections exactly once and reject, with reentrant/stale settlement controls. Cleanup red still
 > suppresses PASS/sample. Collector/selftest/measurement/budget/focused-test are `0c7ec3ba…` /
-> `0bbb3541…` / `23aacc2c…` / `c711c8a5…` / `2f3f8dce…`; producer stays `d3223177…`.
-> Candidate24/25/26+baseline10 are historical only. The current ruler is calibration-required with
-> empty samples/null ceilings and a measurement-required paired baseline; certification refuses
-> before browser launch. Recollect c27, baseline11, c28, c29 serially from one later clean source.
+> `0bbb3541…` / `23aacc2c…`; producer stays `d3223177…`. Clean `6736ef4…` then collected
+> c27/baseline11/c28/c29 once each, zero retry, fresh exact `.86`: candidates were 78/78 with complete
+> lifecycle and 18 PNG bindings; baseline11 retained four faults and 14 phone / 13 desktop breaches.
+> Activation `b3957e1…` makes budget/test `546d3a81…` / `ef06252a…` active with all prior numeric
+> ceilings still strict. Exact-head battery and HUMAN review remain open.
 >
 > **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
 > / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,

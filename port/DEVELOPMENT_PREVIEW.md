@@ -242,11 +242,12 @@ not rerun authority. PR #32 remains blocked under the frozen efficiency gate. No
 product byte, producer, browser-CDP, or retry policy changed.
 Exact `aecf386…` later bounds static-server close at one immutable monotonic 2,000 ms; exact/late/
 missing/error callbacks force one connection close and reject, while cleanup red suppresses PASS/
-sample. Collector/selftest/measurement/budget/focused-test are `0c7ec3ba…` / `0bbb3541…` /
-`23aacc2c…` / `c711c8a5…` / `2f3f8dce…`; producer remains `d3223177…`. Current budget is
-calibration-required with empty samples/null ceilings and a measurement-required/null paired
-baseline. The manual preview workflow cannot certify it; c27/baseline11/c28/c29 must be recollected
-serially from one later clean exact-.86 source first.
+sample. Clean `6736ef4…` c27/baseline11/c28/c29 evidence ran serially once each with zero retries
+under fresh exact `.86`; candidates completed 78/78 with complete lifecycle, baseline11 retained
+four faults and 14 phone / 13 desktop breaches. Activation `b3957e1…` makes budget/test
+`546d3a81…` / `ef06252a…` active under collector/selftest/measurement `0c7ec3ba…` / `0bbb3541…` /
+`23aacc2c…` and unchanged producer `d3223177…`; prior ceilings remain strict. The manual preview
+workflow still cannot certify the ruler, and publication remains separately authorized.
 This does not re-pin Gate A or the global browser authority: `../tools/deps.pinned.json` remains
 Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates, any
 timing, product bytes, or the one-attempt/zero-retry policy.

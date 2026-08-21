@@ -26,14 +26,14 @@ evidence. Exact head `731b2e2…` passed locally; hosted run `32420327368` stopp
 RUNNING/lifecycle-pending at the 40-minute job ceiling and no product verdict, then exposed the
 account spending limit. `GITHUB_ACTIONS_BUDGET.md` is now `FROZEN`: no push, label, dispatch, merge,
 sync, or publication is authorized. Six-image `[HUMAN]` review is open.**
-**Current static-server follow-up:** implementation `aecf386…` owns one immutable monotonic
+**Current static-server/ruler follow-up:** implementation `aecf386…` owns one immutable monotonic
 2,000 ms HTTP close deadline. Just-before succeeds; exact/late/missing/error callbacks force one
 `closeAllConnections()` and reject, with settle-before-force/reentrant/stale controls. Cleanup red
-suppresses PASS/sample. Collector/selftest/measurement/budget/focused-test are `0c7ec3ba…` /
-`0bbb3541…` / `23aacc2c…` / `c711c8a5…` / `2f3f8dce…`; producer stays `d3223177…`.
-Candidate24/25/26+baseline10 are historical only. Current state is calibration-required with empty
-samples/null ceilings and a measurement-required/null paired baseline; planned serial recollection
-is c27, baseline11, c28, c29 from one later clean exact-.86 source, once each without retry.
+suppresses PASS/sample. Clean `6736ef4…` c27/baseline11/c28/c29 ran once each with zero retries and
+fresh exact `.86`; candidates completed 78/78 with complete lifecycle and 18 PNG bindings, while
+baseline11 retained four faults and 14 phone / 13 desktop breaches. Activation `b3957e1…` makes
+budget/test `546d3a81…` / `ef06252a…` active under unchanged collector/selftest/measurement
+`0c7ec3ba…` / `0bbb3541…` / `23aacc2c…` and producer `d3223177…`; prior ceilings remain strict.
 This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
 its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
 This block records the current disposition of the historical
@@ -1738,8 +1738,8 @@ duplicates).
   lifecycle-pending ceiling and left PR #32 blocked without a product verdict. Product, timing,
   producer, browser CDP, and zero-retry policy remain unchanged.
   **2026-08-20 static-server shutdown follow-up (current):** exact `aecf386…` adds the bounded
-  close and invalidates the prior collector measurement. Current budget is calibration-required;
-  c27/baseline11/c28/c29 must be recollected before activation or certification.
+  close. Clean `6736ef4…` c27/baseline11/c28/c29 evidence activates budget/test `546d3a81…` /
+  `ef06252a…` at `b3957e1…`; exact-head certification remains open.
 - ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
   (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
   heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces

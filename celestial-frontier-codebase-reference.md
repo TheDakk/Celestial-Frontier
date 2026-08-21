@@ -6,20 +6,19 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-20.**
 > **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
-> displayed-demand/zoom-owner product repair and fail-closed resource recalibration; exact-731 local battery
+> displayed-demand/zoom-owner product repair and active repaired ruler; exact-731 local battery
 > complete, hosted run `32420327368` consumed at its 40-minute incomplete-evidence ceiling,
 > PR #32 blocked, and final HUMAN review open):**
 > Exact local implementation `aecf3865095176a509a4cb892e5842b584780870` bounds the
 > Compendium HTTP server's close at one immutable monotonic 2,000 ms. Just-before succeeds;
 > exact/late/missing/error callbacks force `closeAllConnections()` once and reject, with
 > settle-before-force and stale/reentrant controls. Cleanup failure suppresses PASS/sample.
-> Collector/selftest/measurement/budget/focused-test SHA-256 are `0c7ec3ba…` / `0bbb3541…` /
-> `23aacc2c…` / `c711c8a5…` / `2f3f8dce…`; producer `d3223177…` is unchanged. The former
-> candidate24/25/26+baseline10 ruler is truthful history only. Current budget is
-> `calibration-required`, with empty candidates, null ceilings, and a measurement-required/null
-> paired baseline; certification refuses before browser launch. Planned serial local recollection
-> is c27 → baseline11 → c28 → c29, one attempt/zero retry/fresh exact Edge `.86`, from one later
-> clean committed source.
+> Clean source `6736ef4…` collected c27/baseline11/c28/c29 once each with zero retries and fresh exact
+> Edge `.86`. All candidates completed 78/78 and complete lifecycle with 18 PNG bindings; baseline11
+> retained four faults and 14 phone / 13 desktop breaches. Activation `b3957e1…` binds active
+> budget/test `546d3a81…` / `ef06252a…` to measurement/collector/selftest `23aacc2c…` /
+> `0c7ec3ba…` / `0bbb3541…`; producer `d3223177…` is unchanged and all prior ceilings remain strict.
+> This is browser-free ruler authority only; exact-head certification and HUMAN review remain open.
 > `apps/game/src/compendium.ts` owns a variable-height virtual list over the
 > deterministic 1,500-row fixture/import ceiling. It mounts the visible window,
 > bounded overscan, and any focus-pinned row; measured logical anchor-plus-offset
@@ -339,7 +338,8 @@
 > producer `d3223177…`, 3/3 samples per profile, measured 1/1 baseline, and strict ceilings with
 > 14 phone / 13 desktop baseline breaches. A synthetic desktop-identity line corrected the focused
 > check from 12/13 to 13/13 without changing or rerunning browser evidence. Those facts do not cross
-> the later `aecf386…` collector change or authorize certification. First red stops;
+> the later `aecf386…` collector change. Clean `6736ef4…` c27/baseline11/c28/c29 evidence now activates
+> budget/test `546d3a81…` / `ef06252a…` at `b3957e1…`; exact-head certification remains open. First red stops;
 > terminal-green PR #32 returns immediately to Arc 1B/gameplay.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,

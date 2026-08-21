@@ -39,7 +39,12 @@ Just-before succeeds; exact-boundary, late, missing, or error callbacks force
 callback delivery cannot change the result. Cleanup failure suppresses PASS and sample publication.
 Because collector bytes are measurement authority, this repair invalidates the former active ruler:
 fail closed with empty candidates, null ceilings, and a measurement-required paired baseline, then
-recalibrate from one clean source without reusing historical capsules.
+recalibrate from one clean source without reusing historical capsules. Clean source `6736ef4…`
+then produced c27/baseline11/c28/c29 once each under fresh exact Edge `.86`; activation `b3957e1…`
+binds active budget/test `546d3a81…` / `ef06252a…` to unchanged measurement `23aacc2c…`, collector
+`0c7ec3ba…`, selftest `0bbb3541…`, and producer `d3223177…`. All candidates completed 78/78 with
+complete lifecycle; baseline11 retained four faults and 14 phone / 13 desktop breaches; every prior
+numeric ceiling remains strict. Activation is not exact-head, hosted, HUMAN, or Gate authority.
 
 ⚠⚠ WHEN A NEW INSTRUMENT FIRES — OR PASSES — SUSPECT THE INSTRUMENT FIRST (2026-07-30, learned
   THREE times across two ships). Every gate built in this arc found a bug in ITSELF before it
