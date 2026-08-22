@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Arc 1B scene Canvas/Pixi memory plateau probe.
+/* Arc 1C scene Canvas/Pixi memory plateau probe.
 
    This is deliberately standalone. It reuses the repository's owned raw-CDP
    launcher, browser resolver, workspace lock, deterministic Compendium fixture,
@@ -12,8 +12,9 @@
      four following cycles must reproduce its settled inventory and peaks.
    - Chromium exposes no portable true GPU-byte counter. Product-owned decoded
      pixels and Pixi managed TextureSource pixels are therefore named proxies.
-   - Shipyard does not exist yet. This probe covers travel + Compendium and says
-     so in its report; it must not be cited as the future full Gate-D loop.
+   - The route ends with the implemented static Shipyard. Its visible opener,
+     exact visual-state projection, single preview, owned close, and zero-retain
+     settlement are product outcomes rather than collector shortcuts.
    - --calibrate records non-certifying observations. A normal run requires an
      exact, tracked --budget and delegates every semantic verdict to the
      browser-free scenemem contract; this collector has no parallel pass logic.
@@ -63,17 +64,23 @@ const contractPath = fileURLToPath(new URL('./scenemem-contract.mjs', import.met
 const packagePath = path.join(v2Root, 'package.json');
 const packageLockPath = path.join(v2Root, 'package-lock.json');
 const appPackagePath = path.join(appDir, 'package.json');
+const gameHtmlPath = path.join(appDir, 'index.html');
 const gameMainPath = path.join(appDir, 'src', 'main.ts');
+const shipVisualStatePath = path.join(v2Root, 'packages', 'scene', 'src', 'ship-visual-state.ts');
+const shipyardPreviewPath = path.join(appDir, 'src', 'shipyard-preview.ts');
+const planetTextureAttachmentPath = path.join(appDir, 'src', 'planet-texture-attachment.ts');
+const planetTextureDemandPath = path.join(appDir, 'src', 'planet-texture-demand.ts');
 const sceneTextureOwnerPath = path.join(appDir, 'src', 'scene-texture-owner.ts');
 const pixiManagedResourceOwnerPath = path.join(appDir, 'src', 'pixi-managed-resource-owner.ts');
 const pixiBatchTextureArrayPath = path.join(appDir, 'src', 'pixi-batch-texture-array.ts');
 const sceneTextPath = path.join(appDir, 'src', 'scene-text.ts');
 
-const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v1';
+const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v2';
 const LIFECYCLE_SCHEMA = 'cf-v2-scene-memory-report-lifecycle/v1';
-const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v1';
+const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v2';
 const WARMUP_CYCLES = 4;
 const WARM_CYCLES = SCENE_MEMORY_CYCLE_COUNT;
+const OUTCOME_COUNT = 42;
 const COMMAND_TIMEOUT_MS = 5_000;
 const ANSWERABILITY_TIMEOUT_MS = 2_000;
 const ROUTE_TIMEOUT_MS = 20_000;
@@ -106,7 +113,9 @@ const BROWSER_AUTHORITY_FIELDS = Object.freeze([
 const PRODUCER_AUTHORITY_FIELDS = Object.freeze([
   'collector', 'browserCdp', 'browserPath', 'workspaceLock', 'fixtureGenerator',
   'verdictContract', 'fixtureSpec', 'fixtureRows', 'baselineSaveFixtures',
-  'package', 'packageLock', 'appPackage', 'gameMain', 'sceneTextureOwner',
+  'package', 'packageLock', 'appPackage', 'buildDist', 'gameHtml', 'gameMain',
+  'shipVisualState', 'shipyardPreview', 'planetTextureAttachment', 'planetTextureDemand',
+  'sceneTextureOwner',
   'pixiManagedResourceOwner', 'pixiBatchTextureArray', 'sceneText',
 ]);
 
@@ -129,6 +138,36 @@ const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 const hashFile = (file) => sha256(fs.readFileSync(file));
 const portable = (value) => value.split(path.sep).join('/');
 const same = (left, right) => stableJson(left) === stableJson(right);
+
+export function terminalOutcomeInventoryErrors(outcomes, canonicalOutcomes = null) {
+  const errors = [];
+  if (!Array.isArray(outcomes) || outcomes.length !== OUTCOME_COUNT
+    || outcomes.some((outcome) => outcome?.pass !== true)) {
+    errors.push(`terminal outcome inventory is not exactly ${OUTCOME_COUNT} green outcomes`);
+  }
+  if (canonicalOutcomes !== null && !same(outcomes, canonicalOutcomes)) {
+    errors.push('terminal outcome inventory differs from the imported contract replay');
+  }
+  return errors;
+}
+
+export function terminalPassEvidenceErrors(fatalEvents, findings) {
+  const errors = [];
+  if (!same(fatalEvents, [])) errors.push('terminal fatal-event inventory must be an exact empty array');
+  if (!same(findings, [])) errors.push('terminal finding inventory must be an exact empty array');
+  return errors;
+}
+
+export function terminalSourceAuthorityErrors(begin, end, current) {
+  const errors = [];
+  if (begin?.state !== 'committed' || end?.state !== 'committed' || current?.state !== 'committed') {
+    errors.push('terminal source authority must be committed and clean');
+  }
+  if (!same(begin, end) || !same(end, current)) {
+    errors.push('source identity is stale or changed');
+  }
+  return errors;
+}
 
 function atomicWriteJson(file, value) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -208,7 +247,9 @@ function distIdentity() {
   });
 }
 
-function exactInputs(fixture, budgetFile = null) {
+function exactInputs(fixture, budgetFile = null, buildSha256 = null) {
+  assert(buildSha256 === null || /^[a-f0-9]{64}$/.test(buildSha256),
+    'scene-memory build authority must be one SHA-256 digest');
   return Object.freeze({
     collector: hashFile(collectorPath),
     browserCdp: hashFile(browserCdpPath),
@@ -222,7 +263,13 @@ function exactInputs(fixture, budgetFile = null) {
     package: hashFile(packagePath),
     packageLock: hashFile(packageLockPath),
     appPackage: hashFile(appPackagePath),
+    buildDist: buildSha256,
+    gameHtml: hashFile(gameHtmlPath),
     gameMain: hashFile(gameMainPath),
+    shipVisualState: hashFile(shipVisualStatePath),
+    shipyardPreview: hashFile(shipyardPreviewPath),
+    planetTextureAttachment: hashFile(planetTextureAttachmentPath),
+    planetTextureDemand: hashFile(planetTextureDemandPath),
     sceneTextureOwner: hashFile(sceneTextureOwnerPath),
     pixiManagedResourceOwner: hashFile(pixiManagedResourceOwnerPath),
     pixiBatchTextureArray: hashFile(pixiBatchTextureArrayPath),
@@ -314,14 +361,27 @@ function producerAuthority(inputs) {
   ));
 }
 
+export function reportBrowserAuthorityErrors(browser, expectedBrowserAuthority) {
+  if (!browser || typeof browser !== 'object' || Array.isArray(browser)) {
+    return ['terminal report browser authority is missing'];
+  }
+  const actual = Object.fromEntries(
+    BROWSER_AUTHORITY_FIELDS.map((field) => [field, browser[field]]),
+  );
+  if (BROWSER_AUTHORITY_FIELDS.some((field) =>
+    typeof actual[field] !== 'string' || !actual[field])) {
+    return ['terminal report browser authority is incomplete'];
+  }
+  return same(actual, expectedBrowserAuthority)
+    ? []
+    : ['terminal report browser authority does not match the budget'];
+}
+
 function assertBudgetBinding(record, inputs, browser) {
   assert(same(record.authority.producer, producerAuthority(inputs)),
     'scene-memory budget producer authority does not match this collector/input set');
-  const browserAuthority = Object.fromEntries(
-    BROWSER_AUTHORITY_FIELDS.map((field) => [field, browser[field]]),
-  );
-  assert(same(record.authority.browser, browserAuthority),
-    'scene-memory budget browser authority does not match the launched browser tuple');
+  const browserErrors = reportBrowserAuthorityErrors(browser, record.authority.browser);
+  assert(browserErrors.length === 0, browserErrors.join('; '));
 }
 
 function assertBudgetAuthority(file) {
@@ -525,11 +585,12 @@ async function collectSnapshot({ send, sessionId, collector, profile, label }) {
   await send('HeapProfiler.collectGarbage', {}, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
   const heap = await send('Runtime.getHeapUsage', {}, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
   const raw = await collector.evaluate(sessionId, `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),
-    scene=S.api.sceneResourceDiagnostics(),c=S.api.compendiumDiagnostics();return {
+    scene=S.api.sceneResourceDiagnostics(),c=S.api.compendiumDiagnostics(),
+    y=S.api.shipyardDiagnostics();return {
       state:{mode:s.mode,gal:s.gal,star:s.star,planet:s.planet,planetOrdinal:s.planetOrdinal,
         tickerTicks:s.tickerTicks,renderedScene:s.renderedScene,panelOpen:s.panelOpen},
       scene,compendium:{panel:c.panel,surfaces:c.surfaces,artLive:c.art?.live??null,
-        artLimits:c.art?.limits??null,lazyArt:c.lazyArt??null}}})()`, `${label} resource snapshot`);
+        artLimits:c.art?.limits??null,lazyArt:c.lazyArt??null},shipyard:y}})()`, `${label} resource snapshot`);
   const dom = await send('Memory.getDOMCounters', {}, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
   const heapAggregateBytes = Number(heap.usedSize || 0)
     + Number(heap.embedderHeapUsedSize || 0) + Number(heap.backingStorageSize || 0);
@@ -538,6 +599,7 @@ async function collectSnapshot({ send, sessionId, collector, profile, label }) {
 
 function contractPoint(snapshot) {
   const scene = snapshot.raw.scene;
+  const shipyard = snapshot.raw.shipyard;
   return Object.freeze({
     documentToken: scene.documentToken,
     sceneGeneration: scene.generation,
@@ -551,9 +613,16 @@ function contractPoint(snapshot) {
     peakLocalCanvasCacheEntries: scene.peakLocalCanvasCacheEntries,
     productRenderTargets: scene.productRenderTargets,
     retiredFineOwnerCount: scene.retiredFineOwnerCount,
+    shipyardDiagnosticsSchema: shipyard.schema,
+    shipyardPreviewStatus: shipyard.status,
+    shipyardPreviewStateKey: shipyard.stateKey,
+    shipyardPreviewActiveCount: shipyard.activePreviewCount,
+    shipyardPreviewRetainedCount: shipyard.retainedPreviewCount,
+    shipyardPreviewPendingWork: shipyard.pendingPreviewWork,
     pending: scene.pendingSurfaceRefreshes + scene.pendingSystemRefreshes
       + scene.pendingPersistenceWrites
-      + scene.retiredFineOwnerCount,
+      + scene.retiredFineOwnerCount + shipyard.activePreviewCount
+      + shipyard.retainedPreviewCount + shipyard.pendingPreviewWork,
     ringCacheEntries: scene.ringGeometryEntries,
     peakRingGeometryEntries: scene.peakRingGeometryEntries,
     answerability: {
@@ -607,10 +676,16 @@ async function navigateGame({ send, collector, sessionId, origin, profile }) {
   await send('Page.navigate', { url: `${origin}/` }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
   return await collector.waitValue(sessionId, 'game readiness', `(()=>{const S=window.__CF_SLICE__;
     if(!S||!S.api||typeof S.api.sceneResourceDiagnostics!=='function'
-      ||typeof S.api.compendiumDiagnostics!=='function'||!S.api.__sceneEvidence)return null;
-    const s=S.api.state(),r=S.api.sceneResourceDiagnostics();return s.mode==='universe'
+      ||typeof S.api.compendiumDiagnostics!=='function'
+      ||typeof S.api.shipyardDiagnostics!=='function'||!S.api.__sceneEvidence)return null;
+    const s=S.api.state(),r=S.api.sceneResourceDiagnostics(),y=S.api.shipyardDiagnostics();
+    return s.mode==='universe'
       &&r.schema==='cf-v2-scene-resources/v2'&&r.registry?.schema==='cf-v2-scene-textures/v2'
-      ?{documentToken:S.documentToken,state:s,resources:r}:null})()`, Boolean, ROUTE_TIMEOUT_MS);
+      &&y.schema==='cf-v2-shipyard-diagnostics/v1'&&y.status==='closed'
+      &&y.stateKey===null&&y.activePreviewCount===0&&y.retainedPreviewCount===0
+      &&y.pendingPreviewWork===0
+      &&document.querySelectorAll('#shipyardpanel [data-cf-shipyard-preview="v1"]').length===0
+      ?{documentToken:S.documentToken,state:s,resources:r,shipyard:y}:null})()`, Boolean, ROUTE_TIMEOUT_MS);
 }
 
 function exactMode(mode, expected = {}) {
@@ -631,7 +706,7 @@ async function driveCycle({ collector, sessionId, profile }) {
   const visitedRoutes = [];
   const inventory = {
     routes: visitedRoutes,
-    shipyardStatus: 'future-arc-1c',
+    shipyard: null,
     sceneObjectsByRoute,
     fine: { requested: false, layer: false, scope: false },
     surface: { mode: false, owner: false, scope: false },
@@ -702,7 +777,10 @@ async function driveCycle({ collector, sessionId, profile }) {
       &&s.rendererDpr===${expectedRendererDpr}
       &&r.pendingSurfaceRefreshes===0&&r.pendingSystemRefreshes===0
       &&r.retiredFineOwnerCount===0
-      &&r.surfaceTextureOwnerActive===true&&r.surfaceRequestedTierPx===${expectedTierPx}
+      &&r.surfaceTextureOwnerActive===true
+      &&r.surfaceCurrentTierPx===${expectedTierPx}&&r.surfaceRequestedTierPx===0
+      &&r.surfaceCurrentBackingWidth===${expectedTierPx}
+      &&r.surfaceCurrentBackingHeight===${expectedTierPx}
       &&r.registry.coherent===true?{...r,rendererDpr:s.rendererDpr}:null})()`,
   Boolean, ART_TIMEOUT_MS);
   sceneObjectsByRoute.surface = surfaceRoute.worldChildren;
@@ -710,7 +788,6 @@ async function driveCycle({ collector, sessionId, profile }) {
   inventory.surface = {
     mode: surface.mode === 'surface', owner: surface.surfaceTextureOwnerActive === true,
     scope: surface.registry.activeScopes.some((scope) => scope.closed === false && scope.leaseCount > 0),
-    requestedTierPx: surface.surfaceRequestedTierPx, rendererDpr: surface.rendererDpr,
   };
 
   productAssert(await clickVisible(collector, sessionId, '#dockcodex,#railcodex',
@@ -742,6 +819,79 @@ async function driveCycle({ collector, sessionId, profile }) {
     planetsideImages: closed.surfaces.planetside.imageCount,
   } });
 
+  if (profile === 'desktop') {
+    const surveyWasOpen = await collector.evaluate(
+      sessionId, 'window.__CF_SLICE__.api.state().cardOpen', 'Shipyard desktop Survey composition',
+    );
+    if (surveyWasOpen) {
+      productAssert(await clickVisible(
+        collector, sessionId, '#docksurvey', 'yield Survey to desktop Shipyard rail',
+      ) === true, `${profile}: Survey could not yield the right rail`);
+      await collector.waitValue(
+        sessionId,
+        'desktop Shipyard rail settlement',
+        "window.__CF_SLICE__.api.state().cardOpen===false?'ready':null",
+        Boolean,
+        ROUTE_TIMEOUT_MS,
+      );
+    }
+  }
+  const openerDriven = await clickVisible(
+    collector, sessionId, '#dockshipyard,#railshipyard', 'open Shipyard',
+  );
+  productAssert(openerDriven === true, `${profile}: no visible Shipyard opener`);
+  const shipyardOpen = await collector.waitValue(
+    sessionId,
+    'Shipyard open settlement',
+    `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),d=S.api.shipyardDiagnostics(),v=s.shipVisual,
+      nodes=[...document.querySelectorAll('#shipyardpanel [data-cf-shipyard-preview="v1"]')],
+      domStateKey=nodes[0]?.getAttribute('data-state-key')??null;
+      return s.panelOpen==='shipyard'&&d.schema==='cf-v2-shipyard-diagnostics/v1'
+        &&d.status==='open'&&typeof v?.stateKey==='string'&&v.stateKey.length>0
+        &&nodes.length===1&&domStateKey===v.stateKey&&d.stateKey===v.stateKey
+        &&d.activePreviewCount===1&&d.retainedPreviewCount===0
+        &&d.pendingPreviewWork===0?{stateKey:d.stateKey,canonicalStateKey:v.stateKey,
+          domStateKey,activePreviewCount:nodes.length,
+          retainedPreviewCount:d.retainedPreviewCount,
+          pendingPreviewWork:d.pendingPreviewWork}:null})()`,
+    Boolean,
+    ART_TIMEOUT_MS,
+  );
+  stages.push({ label: 'shipyard:open', state: shipyardOpen });
+  sceneObjectsByRoute.shipyard = shipyardOpen.activePreviewCount;
+  visitedRoutes.push('shipyard');
+
+  const closeDriven = await clickVisible(
+    collector, sessionId, '#shipyardpanel [data-pnx="shipyard"]', 'close Shipyard',
+  );
+  productAssert(closeDriven === true, `${profile}: no visible Shipyard close control`);
+  const shipyardClosed = await collector.waitValue(
+    sessionId,
+    'Shipyard close settlement',
+    `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),d=S.api.shipyardDiagnostics(),
+      nodes=[...document.querySelectorAll('#shipyardpanel [data-cf-shipyard-preview="v1"]')];
+      return s.panelOpen===null&&d.schema==='cf-v2-shipyard-diagnostics/v1'
+        &&d.status==='closed'&&d.stateKey===null&&d.activePreviewCount===0
+        &&nodes.length===0&&d.retainedPreviewCount===0&&d.pendingPreviewWork===0
+        ?{activePreviewCount:nodes.length,retainedPreviewCount:d.retainedPreviewCount,
+          pendingPreviewWork:d.pendingPreviewWork}:null})()`,
+    Boolean,
+    ART_TIMEOUT_MS,
+  );
+  stages.push({ label: 'shipyard:closed', state: shipyardClosed });
+  inventory.shipyard = Object.freeze({
+    status: 'implemented-static', openerDriven, closeDriven,
+    stateKey: shipyardOpen.stateKey,
+    stateMatch: shipyardOpen.stateKey === shipyardOpen.canonicalStateKey
+      && shipyardOpen.domStateKey === shipyardOpen.canonicalStateKey,
+    openPreviewCount: shipyardOpen.activePreviewCount,
+    openRetainedPreviewCount: shipyardOpen.retainedPreviewCount,
+    openPendingPreviewWork: shipyardOpen.pendingPreviewWork,
+    closedPreviewCount: shipyardClosed.activePreviewCount,
+    closedRetainedPreviewCount: shipyardClosed.retainedPreviewCount,
+    closedPendingPreviewWork: shipyardClosed.pendingPreviewWork,
+  });
+
   const ascend = async (from, to, accept) => {
     const result = await collector.evaluate(sessionId, `(()=>{const S=window.__CF_SLICE__,before=S.api.state().mode;
       const event=new MouseEvent('contextmenu',{bubbles:true,cancelable:true,clientX:innerWidth/2,clientY:innerHeight/2});
@@ -754,14 +904,17 @@ async function driveCycle({ collector, sessionId, profile }) {
   await ascend('surface', 'system', exactMode('system', { gal: 999, star: 424242 }));
   await ascend('system', 'galaxy', exactMode('galaxy', { gal: 999 }));
   await ascend('galaxy', 'universe', exactMode('universe'));
-  await collector.waitValue(sessionId, 'universe resource settlement', `(()=>{const S=window.__CF_SLICE__,r=S.api.sceneResourceDiagnostics(),c=S.api.compendiumDiagnostics();
+  await collector.waitValue(sessionId, 'universe resource settlement', `(()=>{const S=window.__CF_SLICE__,r=S.api.sceneResourceDiagnostics(),c=S.api.compendiumDiagnostics(),y=S.api.shipyardDiagnostics();
     return r.mode==='universe'&&r.registry.coherent===true&&r.fineScopeActive===false
       &&r.surfaceTextureOwnerActive===false&&r.pendingSurfaceRefreshes===0
       &&r.pendingSystemRefreshes===0&&r.pendingPersistenceWrites===0
       &&r.retiredFineOwnerCount===0
       &&r.registry.activeScopeCount===1&&r.ringGeometryEntries===0&&c.panel.mode==='closed'
       &&c.art?.live?.queuedJobs===0&&c.art?.live?.activeJobs===0
-      &&c.art?.live?.leases===0&&c.art?.live?.subscribers===0?{r,c}:null})()`,
+      &&y.status==='closed'&&y.stateKey===null&&y.activePreviewCount===0
+      &&y.retainedPreviewCount===0&&y.pendingPreviewWork===0
+      &&document.querySelectorAll('#shipyardpanel [data-cf-shipyard-preview="v1"]').length===0
+      &&c.art?.live?.leases===0&&c.art?.live?.subscribers===0?{r,c,y}:null})()`,
   Boolean, ART_TIMEOUT_MS);
   productAssert(same(visitedRoutes, SCENE_MEMORY_ROUTES),
     `${profile}: observed route inventory drifted`, visitedRoutes);
@@ -774,7 +927,8 @@ async function driveCycle({ collector, sessionId, profile }) {
 
 function routeInventory(stages) {
   return Object.freeze(stages.map((stage) => {
-    if (stage.label === 'compendium:list' || stage.label === 'compendium:closed') return stage.label;
+    if (stage.label === 'compendium:list' || stage.label === 'compendium:closed'
+      || stage.label === 'shipyard:open' || stage.label === 'shipyard:closed') return stage.label;
     if (stage.label === 'route galaxy fine 999') return 'galaxy-fine:999';
     const state = stage.state;
     if (state.mode === 'galaxy') return `galaxy:${state.gal}`;
@@ -1047,8 +1201,8 @@ function makeRunningReport({ id, startedAt, source, inputs, mode, budgetFile }) 
     },
     scope: {
       covered: [...SCENE_MEMORY_ROUTES],
-      shipyardStatus: 'future-arc-1c',
-      excluded: ['Shipyard (not implemented)', 'audio lifecycle', 'true GPU bytes'],
+      shipyardStatus: 'implemented-static',
+      excluded: ['Shipyard build writers', 'audio lifecycle', 'true GPU bytes'],
     },
     certification: mode,
     source: { begin: source, end: source }, inputs,
@@ -1084,7 +1238,7 @@ function unavailableSource(reason) {
 }
 
 async function runGate(options) {
-  const releaseLock = acquireWorkspaceLock('v2 Arc 1B scene memory/resource evidence');
+  const releaseLock = acquireWorkspaceLock('v2 Arc 1C scene memory/resource evidence');
   let lockOwned = true;
   let server = null;
   let browser = null;
@@ -1126,7 +1280,7 @@ async function runGate(options) {
          budget. Empty measurements intentionally yield a red verdict but
          must not throw when the budget shape is authoritative. */
       evaluateSceneMemory({
-        schema: 'cf-v2-scene-memory-input/v2',
+        schema: 'cf-v2-scene-memory-input/v3',
         profiles: { phone: { cycles: [], bfcache: null }, desktop: { cycles: [], bfcache: null } },
         budgets: budget.profiles,
       });
@@ -1145,12 +1299,13 @@ async function runGate(options) {
     const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
     execFileSync(npm, ['run', 'build'], { cwd: appDir, stdio: 'inherit' });
     build = distIdentity();
-    running = { ...running, build };
+    inputs = exactInputs(fixture, authoritativeBudgetFile, build.sha256);
+    running = { ...running, inputs, build };
     atomicWriteJson(reportPath, running);
     server = await serveDist();
     const sessionProfiles = new Map();
     browser = await openChromiumCdp({
-      label: 'Arc 1B scene memory/resource gate', userDataPrefix: 'cf-scenemem',
+      label: 'Arc 1C scene memory/resource gate', userDataPrefix: 'cf-scenemem',
       commandTimeoutMs: COMMAND_TIMEOUT_MS, startupTimeoutMs: 45_000,
       webSocketOpenTimeoutMs: 15_000, shutdownTimeoutMs: 2_000,
       onEvent: (message) => {
@@ -1197,7 +1352,7 @@ async function runGate(options) {
       ]),
     );
     contractInput = {
-      schema: 'cf-v2-scene-memory-input/v2',
+      schema: 'cf-v2-scene-memory-input/v3',
       profiles: Object.fromEntries(Object.entries(profiles).map(([profile, measurement]) => [
         profile, {
           precondition: measurement.precondition,
@@ -1321,13 +1476,8 @@ function verifyReport(report, expectedRunId, options) {
       errors.push(`${profile} terminal profile evidence is incomplete or red`);
     }
   }
-  if (!Array.isArray(report?.outcomes) || !report.outcomes.length
-    || report.outcomes.some((outcome) => outcome.pass !== true)) {
-    errors.push('terminal outcome inventory is empty or red');
-  }
-  if (Array.isArray(report?.fatalEvents) && report.fatalEvents.length) {
-    errors.push('terminal report contains fatal browser events');
-  }
+  errors.push(...terminalOutcomeInventoryErrors(report?.outcomes));
+  errors.push(...terminalPassEvidenceErrors(report?.fatalEvents, report?.findings));
   if (report?.certification !== 'contract-budget') {
     errors.push('report certification must be contract-budget');
   }
@@ -1367,18 +1517,24 @@ function verifyReport(report, expectedRunId, options) {
       if (!same(recomputed, report.verdict) || recomputed.status !== 'pass') {
         errors.push('imported contract verdict is stale or red');
       }
+      errors.push(...terminalOutcomeInventoryErrors(report.outcomes, recomputed.outcomes));
     }
   } catch (error) { errors.push(`contract replay failed: ${error.message}`); }
   try {
     const fixture = buildCompendiumFixture();
-    const inputs = exactInputs(fixture, authoritativeBudgetFile);
+    const currentBuild = distIdentity();
+    if (!same(report?.build, currentBuild)) errors.push('built product graph authority drifted');
+    const inputs = exactInputs(fixture, authoritativeBudgetFile, currentBuild.sha256);
     if (!same(report?.inputs, inputs)) errors.push('collector/fixture/dependency input authority drifted');
-    if (authoritativeBudgetFile && report?.browser) {
+    if (authoritativeBudgetFile) {
       assertBudgetBinding(readJson(authoritativeBudgetFile), inputs, report.browser);
     }
     const currentSource = sourceIdentity();
-    if (!same(report?.source?.begin, report?.source?.end)
-      || !same(report?.source?.end, currentSource)) errors.push('source identity is stale or changed');
+    errors.push(...terminalSourceAuthorityErrors(
+      report?.source?.begin,
+      report?.source?.end,
+      currentSource,
+    ));
   } catch (error) { errors.push(`current authority check failed: ${error.message}`); }
   return { ok: errors.length === 0, errors };
 }

@@ -1,7 +1,7 @@
 export type SceneMemoryProfileName = 'phone' | 'desktop';
 export type SceneMemoryRoute =
   | 'universe' | 'galaxy' | 'galaxy-fine' | 'system'
-  | 'surface' | 'compendium';
+  | 'surface' | 'compendium' | 'shipyard';
 export type SceneTextureKind =
   | 'scene-canvas' | 'galaxy-haze' | 'planet-texture'
   | 'ring-texture' | 'surface-cloud' | 'star-surface';
@@ -110,6 +110,12 @@ export interface SceneMemoryPoint {
   peakLocalCanvasCacheEntries: number;
   productRenderTargets: number;
   retiredFineOwnerCount: number;
+  shipyardDiagnosticsSchema: 'cf-v2-shipyard-diagnostics/v1';
+  shipyardPreviewStatus: 'closed';
+  shipyardPreviewStateKey: null;
+  shipyardPreviewActiveCount: number;
+  shipyardPreviewRetainedCount: number;
+  shipyardPreviewPendingWork: number;
   pending: number;
   ringCacheEntries: number;
   peakRingGeometryEntries: number;
@@ -122,7 +128,19 @@ export interface SceneMemoryCycle extends SceneMemoryPoint {
   cycle: number;
   inventory: {
     routes: SceneMemoryRoute[];
-    shipyardStatus: 'future-arc-1c';
+    shipyard: {
+      status: 'implemented-static';
+      openerDriven: boolean;
+      closeDriven: boolean;
+      stateKey: string;
+      stateMatch: boolean;
+      openPreviewCount: number;
+      openRetainedPreviewCount: number;
+      openPendingPreviewWork: number;
+      closedPreviewCount: number;
+      closedRetainedPreviewCount: number;
+      closedPendingPreviewWork: number;
+    };
     sceneObjectsByRoute: Record<SceneMemoryRoute, number>;
     fine: { requested: boolean; layer: boolean; scope: boolean };
     surface: { mode: boolean; owner: boolean; scope: boolean };
@@ -147,7 +165,7 @@ export interface SceneMemoryProfileMeasurement {
 }
 
 export interface SceneMemoryInput {
-  schema: 'cf-v2-scene-memory-input/v2';
+  schema: 'cf-v2-scene-memory-input/v3';
   profiles: Record<SceneMemoryProfileName, SceneMemoryProfileMeasurement>;
   budgets: Record<SceneMemoryProfileName, SceneMemoryBudget>;
 }
@@ -160,7 +178,7 @@ export interface SceneMemoryOutcome {
 }
 
 export interface SceneMemoryVerdict {
-  readonly schema: 'cf-v2-scene-memory-verdict/v1';
+  readonly schema: 'cf-v2-scene-memory-verdict/v2';
   readonly status: 'pass' | 'fail';
   readonly outcomes: readonly SceneMemoryOutcome[];
   readonly failures: readonly SceneMemoryOutcome[];

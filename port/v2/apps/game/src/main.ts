@@ -50,12 +50,13 @@ import {
 import { buildLegacyTrainingRestoreCandidate } from './training-restore.js';
 import {
   displayedPlanetTextureDemandPx,
-  nextPlanetTextureTierPx,
   planetTextureTierForDemandPx,
-  sameSurfacePlanetTextureIdentity,
-  type PlanetTextureTierPx,
   type SurfacePlanetTextureIdentity,
 } from './planet-texture-demand.js';
+import {
+  SURFACE_PLANET_TEXTURE_REFRESH_MS,
+  SurfacePlanetTextureAttachment,
+} from './planet-texture-attachment.js';
 import {
   CanvasTextureRegistry,
   type SceneTextureKind,
@@ -65,6 +66,10 @@ import {
 import { PixiManagedResourceOwner } from './pixi-managed-resource-owner.js';
 import { installBatchTextureArrayUidCompaction } from './pixi-batch-texture-array.js';
 import { createSceneText } from './scene-text.js';
+import {
+  ShipyardPreviewOwner,
+  shipVisualStateKey,
+} from './shipyard-preview.js';
 import {
   getGuideCatalogue, getGuideTopic, searchGuide,
   type GuideCategoryId, type GuideTopicId, type GuideTopicView,
@@ -80,10 +85,12 @@ import {
   resolveCF1GalaxyAddress, resolveCF1StarAddress, resolveCF1WorldAddress,
   isProvenPlanetFor, getProvenGalaxyKey, getProvenStarKey, getProvenPlanetKey,
   universeGalaxies, provenGalaxyCell, galaxyFineCell, galaxyCellWindow, systemScene,
-  ascStageOf, ascAllowsStar, reachRadiusOf, withinReachOf, currentRegionOf, ascHintFor, primeReachHint,
+  ascAllowsStar, reachRadiusOf, withinReachOf, currentRegionOf, ascHintFor, primeReachHint,
   bankLandfall, reconcileV2Chapters, currentV2Objective, projectV2Charter,
+  shipVisualStateOf,
   GR, GCELL, type NavState, type GalaxyNode, type PlanetNode,
   type CanonicalCF1Address, type ProvenGalaxy, type ProvenStar, type ProvenPlanet,
+  type ShipVisualState,
 } from '@cf/scene';
 import { galaxyProfile, galaxyHaze, systemFor, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
 import { planetSpecies } from '@cf/domain-ecology';
@@ -1443,6 +1450,79 @@ function fillCharters(): void {
     })();
   fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter);
 }
+const SHIP_CHASSIS_PRESENTATION = Object.freeze([
+  Object.freeze({ name: 'Scout', role: 'Chemical-system reach' }),
+  Object.freeze({ name: 'Jump', role: 'Interstellar reach' }),
+  Object.freeze({ name: 'Survey Cruiser', role: 'Survey-array reach' }),
+  Object.freeze({ name: 'Frontier', role: 'Intergalactic reach' }),
+] as const);
+const SHIP_SYSTEM_NAMES = Object.freeze({
+  jumpdrive: 'Jump Drive',
+  array: 'Long-Range Array',
+  igdrive: 'Intergalactic Drive',
+  autoext: 'Auto-Extractor',
+  cscoop: 'Corona Scoop',
+} as const);
+let shipyardPreviewOwner: ShipyardPreviewOwner | null = null;
+
+function closeShipyardSurface(): void {
+  shipyardPreviewOwner?.dispose();
+  shipyardPreviewOwner = null;
+}
+
+function fillShipyard(): void {
+  closeShipyardSurface();
+  const visual = currentShipVisualState();
+  const chassis = SHIP_CHASSIS_PRESENTATION[visual.chassisStage];
+  const installedRows = visual.installedSystemIds.length === 0
+    ? '<div class="empty" data-sel="shipyard-systems-empty">No permanent ship systems installed.</div>'
+    : visual.installedSystemIds.map((id) =>
+      `<div class="row" data-shipyard-system="${id}"><label>${esc(SHIP_SYSTEM_NAMES[id])}</label><span style="color:#8ce6b1">installed</span></div>`
+    ).join('');
+  const hardpointRows = ([
+    ['array', 'Long-Range Array mount', visual.hardpoints.array],
+    ['autoext', 'Auto-Extractor mount', visual.hardpoints.autoext],
+    ['cscoop', 'Corona Scoop mount', visual.hardpoints.cscoop],
+  ] as const).map(([id, label, installed]) =>
+    `<div class="row" data-shipyard-hardpoint="${id}" data-installed="${installed}"><label>${label}</label><span>${installed ? 'fitted' : 'open'}</span></div>`
+  ).join('');
+  const provenance = visual.provenance === 'legacy-charter-refit'
+    ? 'Legacy expedition reach is shown as a generic charter refit. No missing drive is claimed.'
+    : 'Chassis and fittings reflect this save’s owned permanent systems.';
+
+  fillPanel('shipyard',
+    '<h3>Shipyard — Inspection</h3>' +
+    `<section data-sel="shipyard-summary" data-shipyard-chassis-stage="${visual.chassisStage}" data-state-key="${esc(visual.stateKey)}">` +
+      `<b>${esc(chassis.name)}</b><div class="sub">${esc(chassis.role)}</div>` +
+      `<div class="sub" data-sel="shipyard-provenance">${esc(provenance)}</div>` +
+    '</section>' +
+    '<div id="shipyardpreviewmount" data-sel="shipyard-preview"></div>' +
+    '<h3>Installed systems</h3>' + installedRows +
+    '<h3>Hardpoints</h3>' + hardpointRows +
+    '<div class="centry" data-sel="shipyard-boundary"><b>Inspection only</b>' +
+      '<div class="sub">Fabrication, research, and ship upgrades are not available in this development slice.</div></div>');
+  const mount = document.getElementById('shipyardpreviewmount');
+  if (!mount) throw new Error('Shipyard preview mount is unavailable');
+  shipyardPreviewOwner = new ShipyardPreviewOwner(mount);
+  shipyardPreviewOwner.open(visual);
+}
+
+function shipyardDiagnostics(): unknown {
+  const panelOpen = openPanelId() === 'shipyard';
+  const owned = shipyardPreviewOwner?.diagnostics() ?? null;
+  const unownedPreviewCount = owned === null
+    ? document.querySelectorAll('#shipyardpanel [data-cf-shipyard-preview="v1"]').length
+    : 0;
+  return Object.freeze({
+    schema: 'cf-v2-shipyard-diagnostics/v1',
+    status: panelOpen ? 'open' : 'closed',
+    stateKey: panelOpen ? owned?.stateKey ?? null : null,
+    activePreviewCount: owned?.activePreviewCount ?? 0,
+    retainedPreviewCount: (owned?.retainedPreviewCount ?? 0) + unownedPreviewCount,
+    pendingPreviewWork: 0,
+  });
+}
+
 registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: fillCharters });
 document.getElementById('dockcharters')!.addEventListener('click', () => togglePanel('ch'));
 document.getElementById('railcharters')!.addEventListener('click', () => togglePanel('ch'));
@@ -1464,12 +1544,21 @@ registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [
   codexOpenController.onOpen();
 }, onClose: closeCodexSurface });
 registerPanel({ id: 'rec', el: document.getElementById('recpanel')!, btns: [document.getElementById('dockrecords'), document.getElementById('railrecords')], onOpen: fillRecords });
+registerPanel({
+  id: 'shipyard',
+  el: document.getElementById('shipyardpanel')!,
+  btns: [document.getElementById('dockshipyard'), document.getElementById('railshipyard')],
+  onOpen: fillShipyard,
+  onClose: closeShipyardSurface,
+});
 document.getElementById('docksets')!.addEventListener('click', () => togglePanel('set'));
 document.getElementById('dockguide')!.addEventListener('click', () => togglePanel('guide'));
 document.getElementById('dockcodex')!.addEventListener('click', () => togglePanel('codex'));
 document.getElementById('railcodex')!.addEventListener('click', () => togglePanel('codex'));
 document.getElementById('dockrecords')!.addEventListener('click', () => togglePanel('rec'));
 document.getElementById('railrecords')!.addEventListener('click', () => togglePanel('rec'));
+document.getElementById('dockshipyard')!.addEventListener('click', () => togglePanel('shipyard'));
+document.getElementById('railshipyard')!.addEventListener('click', () => togglePanel('shipyard'));
 /* codex list rows open the detail card (delegated — rows refill often) */
 document.getElementById('codexpanel')!.addEventListener('click', (e) => {
   const row = (e.target as HTMLElement).closest('[data-ci]');
@@ -1503,7 +1592,11 @@ function navigationAuthorityFailureFor(
 ): NavigationAuthorityFailure | null {
   if (target.mode === 'universe') return null;
   const candidatePrimeCount = Object.keys(authoritySave.primeFill || {}).length;
-  const candidateStage = ascStageOf(authoritySave.items, authoritySave.ascCh);
+  const candidateStage = shipVisualStateOf({
+    items: authoritySave.items,
+    ascCh: authoritySave.ascCh,
+    liverySeed: SHIP_LIVERY_SEED,
+  }).chassisStage;
   if (!withinReachOf(candidatePrimeCount, target.gal.x, target.gal.y)) return 'prime-reach';
   if ((target.mode === 'system' || target.mode === 'surface')
     && !ascAllowsStar(candidateStage, target.gal.seed, target.star)) return 'charter-reach';
@@ -1807,7 +1900,17 @@ function toastPrimeReachBoundary(): boolean {
   return toastReachBoundary('⬆ Beyond Your Saved Reach', primeReachHint());
 }
 const primeCount = (): number => Object.keys(save.primeFill || {}).length;
-const ascStage = (): 0 | 1 | 2 | 3 => ascStageOf(save.items, save.ascCh);
+const SHIP_LIVERY_SEED = 0x5111;   /* legacy ship painter's stable livery authority */
+type ShipVisualViewState = ShipVisualState & { readonly stateKey: string };
+function currentShipVisualState(): ShipVisualViewState {
+  const visual = shipVisualStateOf({
+    items: save.items,
+    ascCh: save.ascCh,
+    liverySeed: SHIP_LIVERY_SEED,
+  });
+  return Object.freeze({ ...visual, stateKey: shipVisualStateKey(visual) });
+}
+const ascStage = (): 0 | 1 | 2 | 3 => currentShipVisualState().chassisStage;
 
 function updateChips(): void {
   playerChipEl.innerHTML = `⚙ ${esc(save.explorerName || 'Explorer')} <span class="dim">— ✦ ${save.essence}<span class="player-worlds"> · ${save.landed.length} worlds</span></span>`;
@@ -2086,33 +2189,27 @@ let chartLayer: Container | null = null;   /* Star charts (chartsOn, OFF by defa
 let starSurfSpr: Sprite | null = null;
 let starSurfTextureLease: SceneTextureLease<Texture> | null = null;
 let surfClouds: { a: Sprite; b: Sprite; w: number } | null = null;
-type SurfacePlanetTextureOwner = SurfacePlanetTextureIdentity & {
-  planet: PlanetNode;
-  sprite: Sprite;
-  textureLease: SceneTextureLease<Texture>;
-  diameterCssPx: number;
-  requestedTierPx: PlanetTextureTierPx | 0;
-  refreshTimer: ReturnType<typeof setTimeout> | null;
-};
 let surfacePlanetTextureGeneration = 0;
-let surfacePlanetTextureOwner: SurfacePlanetTextureOwner | null = null;
-const SURFACE_PLANET_TEXTURE_REFRESH_MS = 31;
+let surfacePlanetTextureOwner:
+  SurfacePlanetTextureAttachment<HTMLCanvasElement, Texture> | null = null;
+const SURFACE_PLANET_DIAMETER_CSS_PX = 420;
 let systemPlanetTextureRefreshTimer: ReturnType<typeof setTimeout> | null = null;
 const baseR = (): number => Math.max(0.7 / cam.z, 0.55);   /* Renderer star sizing (main.js 4126) */
 
-function releaseSurfacePlanetTextureOwner(): void {
+function releaseSurfacePlanetTextureOwner():
+  SurfacePlanetTextureAttachment<HTMLCanvasElement, Texture> | null {
   surfacePlanetTextureGeneration++;
-  if (surfacePlanetTextureOwner?.refreshTimer != null) {
-    clearTimeout(surfacePlanetTextureOwner.refreshTimer);
-  }
+  const previous = surfacePlanetTextureOwner;
+  previous?.cancelPending();
   surfacePlanetTextureOwner = null;
+  return previous;
 }
 
 function clearWorld(openNextScope = true): void {
   /* Destroy display objects first, then the scene owner's unique CanvasSource
      set. The painter caches may retain bounded CPU canvases for deterministic
      reuse, but Pixi must not keep their evicted GPU sources reachable. */
-  releaseSurfacePlanetTextureOwner();
+  const previousSurfacePlanetTextureOwner = releaseSurfacePlanetTextureOwner();
   if (systemPlanetTextureRefreshTimer !== null) {
     clearTimeout(systemPlanetTextureRefreshTimer);
     systemPlanetTextureRefreshTimer = null;
@@ -2124,6 +2221,10 @@ function clearWorld(openNextScope = true): void {
   retireFineTextureOwner(previousFineLayer, previousFineScope);
   for (const c of world.removeChildren()) c.destroy({ children: true, context: true });
   const releaseFailures: unknown[] = [];
+  if (previousSurfacePlanetTextureOwner) {
+    try { previousSurfacePlanetTextureOwner.dispose(); }
+    catch (error) { releaseFailures.push(error); }
+  }
   try { releaseRetiredFineTextureOwners(); }
   catch (error) { releaseFailures.push(error); }
   if (sceneTextureScope) {
@@ -2670,54 +2771,11 @@ function currentSurfacePlanetTextureIdentity(): SurfacePlanetTextureIdentity | n
   };
 }
 
-function publishSurfacePlanetTexture(
-  owner: SurfacePlanetTextureOwner,
-  canvas: HTMLCanvasElement,
-): void {
-  if (surfacePlanetTextureOwner !== owner
-    || !sameSurfacePlanetTextureIdentity(owner, currentSurfacePlanetTextureIdentity())) return;
-  const successor = sceneTextureLease(canvas, 'planet-texture');
-  const predecessor = owner.textureLease;
-  if (successor.texture === predecessor.texture) {
-    successor.release();
-    return;
-  }
-  owner.sprite.texture = successor.texture;
-  owner.sprite.width = owner.diameterCssPx;
-  owner.sprite.height = owner.diameterCssPx;
-  owner.textureLease = successor;
-  predecessor.release();
-  pixiManagedResourceOwner.compact();
-}
-
-function scheduleSurfacePlanetTextureRefresh(
-  owner: SurfacePlanetTextureOwner,
-  demandPx: number,
-): void {
-  if (owner.refreshTimer !== null) clearTimeout(owner.refreshTimer);
-  owner.refreshTimer = setTimeout(() => {
-    owner.refreshTimer = null;
-    if (surfacePlanetTextureOwner !== owner
-      || !sameSurfacePlanetTextureIdentity(owner, currentSurfacePlanetTextureIdentity())) return;
-    publishSurfacePlanetTexture(owner, getPlanetSprite(owner.planet.P, demandPx));
-  }, SURFACE_PLANET_TEXTURE_REFRESH_MS);
-}
-
-function requestSurfacePlanetTextureDemand(demandPx: number): void {
-  const owner = surfacePlanetTextureOwner;
-  if (!owner || !sameSurfacePlanetTextureIdentity(owner, currentSurfacePlanetTextureIdentity())) return;
-  const nextTierPx = nextPlanetTextureTierPx(owner.requestedTierPx, demandPx);
-  if (nextTierPx === null) return;
-  owner.requestedTierPx = nextTierPx;
-  getPlanetSprite(owner.planet.P, demandPx);
-  scheduleSurfacePlanetTextureRefresh(owner, demandPx);
-}
-
 function updateSurfacePlanetTextureDemand(): void {
   const owner = surfacePlanetTextureOwner;
   if (!owner || nav.mode !== 'surface') return;
-  requestSurfacePlanetTextureDemand(displayedPlanetTextureDemandPx(
-    owner.diameterCssPx,
+  owner.requestDemand(displayedPlanetTextureDemandPx(
+    SURFACE_PLANET_DIAMETER_CSS_PX,
     camT.z,
     DPR,
   ));
@@ -3585,6 +3643,7 @@ function sceneResourceDiagnostics(): unknown {
   }
   const sceneTextStyleUpdateListeners = Object.values(SCENE_TEXT_STYLES)
     .reduce((sum, style) => sum + style.listenerCount('update'), 0);
+  const surfaceTextureAttachment = surfacePlanetTextureOwner?.snapshot() ?? null;
   return Object.freeze({
     schema: 'cf-v2-scene-resources/v2',
     documentToken: DOCUMENT_TOKEN,
@@ -3596,8 +3655,12 @@ function sceneResourceDiagnostics(): unknown {
     fineScopeActive: fineTextureScope !== null,
     retiredFineOwnerCount: retiredFineTextureOwners.size,
     surfaceTextureOwnerActive: surfacePlanetTextureOwner !== null,
-    surfaceRequestedTierPx: surfacePlanetTextureOwner?.requestedTierPx ?? 0,
-    pendingSurfaceRefreshes: surfacePlanetTextureOwner?.refreshTimer == null ? 0 : 1,
+    surfaceCurrentTierPx: surfaceTextureAttachment?.currentTierPx ?? 0,
+    surfaceCurrentBackingWidth: surfaceTextureAttachment?.currentBackingWidth ?? 0,
+    surfaceCurrentBackingHeight: surfaceTextureAttachment?.currentBackingHeight ?? 0,
+    surfaceRequestedTierPx: surfaceTextureAttachment?.requestedTierPx ?? 0,
+    surfaceRetiredLeaseCount: surfaceTextureAttachment?.retiredLeaseCount ?? 0,
+    pendingSurfaceRefreshes: surfaceTextureAttachment?.pendingDemandPx == null ? 0 : 1,
     pendingSystemRefreshes: systemPlanetTextureRefreshTimer === null ? 0 : 1,
     pendingPersistenceWrites: activePersist === null ? 0 : 1,
     ringGeometryEntries: _rgCache.size,
@@ -3669,29 +3732,41 @@ function drawSurface(p: PlanetNode, state: Extract<NavState, { mode: 'surface' }
      overfilled a 390px screen as blur; the globe should present itself) */
   document.body.classList.add('surface-mode');
   clearWorld();
-  const R = 210;
-  const fitZ = Math.min(1, (minWH() * 0.78) / (R * 2));
-  const initialTextureDemandPx = displayedPlanetTextureDemandPx(R * 2, fitZ, DPR);
+  const R = SURFACE_PLANET_DIAMETER_CSS_PX / 2;
+  const fitZ = Math.min(1, (minWH() * 0.78) / SURFACE_PLANET_DIAMETER_CSS_PX);
+  const initialTextureDemandPx = displayedPlanetTextureDemandPx(
+    SURFACE_PLANET_DIAMETER_CSS_PX,
+    fitZ,
+    DPR,
+  );
   const textureLease = sceneTextureLease(
     getPlanetSprite(p.P, initialTextureDemandPx),
     'planet-texture',
   );
   const spr = new Sprite(textureLease.texture);
   spr.anchor.set(0.5);
-  spr.width = R * 2; spr.height = R * 2;
+  spr.width = SURFACE_PLANET_DIAMETER_CSS_PX;
+  spr.height = SURFACE_PLANET_DIAMETER_CSS_PX;
   world.addChild(spr);
-  surfacePlanetTextureOwner = {
-    generation: surfacePlanetTextureGeneration,
-    planetSeed: state.planet.seed,
-    planetOrdinal: state.planet.ordinal,
-    planet: p,
-    sprite: spr,
-    textureLease,
-    diameterCssPx: R * 2,
-    requestedTierPx: planetTextureTierForDemandPx(initialTextureDemandPx),
-    refreshTimer: null,
-  };
-  scheduleSurfacePlanetTextureRefresh(surfacePlanetTextureOwner, initialTextureDemandPx);
+  surfacePlanetTextureOwner = new SurfacePlanetTextureAttachment({
+    identity: {
+      generation: surfacePlanetTextureGeneration,
+      planetSeed: state.planet.seed,
+      planetOrdinal: state.planet.ordinal,
+    },
+    target: spr,
+    initialLease: textureLease,
+    diameterCssPx: SURFACE_PLANET_DIAMETER_CSS_PX,
+    resourceForDemand: (demandPx) => getPlanetSprite(p.P, demandPx),
+    acquireLease: (canvas) => sceneTextureLease(canvas, 'planet-texture'),
+    textureBackingSize: (texture) => ({
+      width: texture.source?.pixelWidth ?? 0,
+      height: texture.source?.pixelHeight ?? 0,
+    }),
+    currentIdentity: currentSurfacePlanetTextureIdentity,
+    compact: () => { pixiManagedResourceOwner.compact(); },
+  });
+  surfacePlanetTextureOwner.scheduleRefresh(initialTextureDemandPx);
   if ((p.P.type === 'terran' || p.P.type === 'ocean') && motionOK()) {
     /* the drifting upper cloud deck (main.js 5256) — twin sprites wrap so
        the sliding edge never shows; drift rate scaled to the slice's fixed
@@ -4667,6 +4742,7 @@ async function loadSave(): Promise<void> {
     removeEventListener('resize', syncRendererDensity);
     visualViewport?.removeEventListener('resize', syncRendererDensity);
     closeCodexSurface();
+    closeShipyardSurface();
     clearPlanetside();
     speciesArtLoader.dispose(`intentional replacement: ${reason}`);
     try { clearWorld(false); }
@@ -4744,6 +4820,7 @@ async function loadSave(): Promise<void> {
         cardOpen: card.style.display !== 'none',
         cardTitle: card.querySelector('[data-sel=title]')?.textContent ?? null,
         stage: ascStage(), reach: reachRadiusOf(primeCount()),
+        shipVisual: currentShipVisualState(),
         toastOn: toastEl.style.opacity === '1', toastText: toastEl.textContent || '', toastSerial: _toastSerial,
         galaxyBuildMs: lastGalaxyBuildMs,
         trail: trailEl.textContent || '', ctx: ctxEl.textContent || '',
@@ -4800,6 +4877,7 @@ async function loadSave(): Promise<void> {
       }),
       compendiumDiagnostics,
       sceneResourceDiagnostics,
+      shipyardDiagnostics,
       __sceneEvidence: Object.freeze({
         beginObservationWindow: () => {
           peakRingGeometryEntries = _rgCache.size;

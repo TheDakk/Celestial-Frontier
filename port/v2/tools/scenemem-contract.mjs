@@ -1,9 +1,9 @@
-/* Browser-free Arc 1B scene-memory verdicts. The future CDP collector owns
+/* Browser-free Arc 1C scene-memory verdicts. The CDP collector owns
    measurement; this module only judges a complete, explicit inventory. */
 
 export const SCENE_MEMORY_CYCLE_COUNT = 4;
 export const SCENE_MEMORY_ROUTES = Object.freeze([
-  'universe', 'galaxy', 'galaxy-fine', 'system', 'surface', 'compendium',
+  'universe', 'galaxy', 'galaxy-fine', 'system', 'surface', 'compendium', 'shipyard',
 ]);
 export const SCENE_TEXTURE_KINDS = Object.freeze([
   'scene-canvas', 'galaxy-haze', 'planet-texture',
@@ -32,6 +32,14 @@ const MANAGED_RESOURCE_HASH_FIELDS = Object.freeze([
 const MANAGED_RESOURCE_COUNT_FIELDS = Object.freeze([
   'hashCount', 'liveEntryCount', 'clearedEntryCount',
   'compactionCount', 'compactedSlotCount', 'faultCount',
+]);
+const SHIPYARD_WITNESS_FIELDS = Object.freeze([
+  'status', 'openerDriven', 'closeDriven', 'stateKey', 'stateMatch',
+  'openPreviewCount', 'openRetainedPreviewCount', 'openPendingPreviewWork',
+  'closedPreviewCount', 'closedRetainedPreviewCount', 'closedPendingPreviewWork',
+]);
+const CYCLE_INVENTORY_FIELDS = Object.freeze([
+  'routes', 'shipyard', 'sceneObjectsByRoute', 'fine', 'surface',
 ]);
 const object = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
 const count = (value) => Number.isSafeInteger(value) && value >= 0;
@@ -228,6 +236,30 @@ function managedResourceStructuralSignature(snapshot) {
   };
 }
 
+function shipyardWitnessReasons(witness) {
+  if (!object(witness)) return ['witness absent'];
+  const reasons = [];
+  if (!exactKeys(witness, SHIPYARD_WITNESS_FIELDS)) reasons.push('witness shape');
+  if (witness.status !== 'implemented-static') reasons.push('status is not implemented-static');
+  if (witness.openerDriven !== true) reasons.push('open did not use the visible opener');
+  if (witness.closeDriven !== true) reasons.push('close did not use the owned close control');
+  if (!nonempty(witness.stateKey) || witness.stateKey.trim() !== witness.stateKey) {
+    reasons.push('visual state key absent or noncanonical');
+  }
+  if (witness.stateMatch !== true) reasons.push('preview and canonical visual state disagreed');
+  for (const field of [
+    'openPreviewCount', 'openRetainedPreviewCount', 'openPendingPreviewWork',
+    'closedPreviewCount', 'closedRetainedPreviewCount', 'closedPendingPreviewWork',
+  ]) if (!count(witness[field])) reasons.push(`${field} invalid`);
+  if (witness.openPreviewCount !== 1) reasons.push('open preview count must be exactly one');
+  if (witness.openRetainedPreviewCount !== 0) reasons.push('open retained preview count must be zero');
+  if (witness.openPendingPreviewWork !== 0) reasons.push('open preview work did not settle');
+  if (witness.closedPreviewCount !== 0) reasons.push('closed preview count must be zero');
+  if (witness.closedRetainedPreviewCount !== 0) reasons.push('preview retained after close');
+  if (witness.closedPendingPreviewWork !== 0) reasons.push('closed preview work did not settle');
+  return reasons;
+}
+
 function liveSignature(point) {
   const registry = point?.registry;
   return {
@@ -246,6 +278,12 @@ function liveSignature(point) {
     peakLocalCanvasCacheEntries: point?.peakLocalCanvasCacheEntries,
     productRenderTargets: point?.productRenderTargets,
     retiredFineOwnerCount: point?.retiredFineOwnerCount,
+    shipyardDiagnosticsSchema: point?.shipyardDiagnosticsSchema,
+    shipyardPreviewStatus: point?.shipyardPreviewStatus,
+    shipyardPreviewStateKey: point?.shipyardPreviewStateKey,
+    shipyardPreviewActiveCount: point?.shipyardPreviewActiveCount,
+    shipyardPreviewRetainedCount: point?.shipyardPreviewRetainedCount,
+    shipyardPreviewPendingWork: point?.shipyardPreviewPendingWork,
     pending: point?.pending,
     ringCacheEntries: point?.ringCacheEntries,
     peakRingGeometryEntries: point?.peakRingGeometryEntries,
@@ -263,6 +301,7 @@ function warmSignature(cycle) {
     sceneObjectsByRoute: SCENE_MEMORY_ROUTES.map(
       (route) => cycle?.inventory?.sceneObjectsByRoute?.[route],
     ),
+    shipyard: cycle?.inventory?.shipyard,
     documents: cycle?.dom?.documents,
     nodes: cycle?.dom?.nodes,
     jsEventListeners: cycle?.dom?.jsEventListeners,
@@ -408,7 +447,14 @@ function diagnosticResourceReasons(point, budget) {
     'managedTextureCount', 'managedTexturePixels', 'managedTextureClearedSlots',
     'localCanvasCacheEntries', 'peakLocalCanvasCacheEntries',
     'productRenderTargets', 'retiredFineOwnerCount',
+    'shipyardPreviewActiveCount', 'shipyardPreviewRetainedCount',
+    'shipyardPreviewPendingWork',
   ]) if (!count(point[field])) reasons.push(`${field} invalid`);
+  if (point.shipyardDiagnosticsSchema !== 'cf-v2-shipyard-diagnostics/v1') {
+    reasons.push('Shipyard diagnostics schema');
+  }
+  if (point.shipyardPreviewStatus !== 'closed') reasons.push('settled Shipyard status must be closed');
+  if (point.shipyardPreviewStateKey !== null) reasons.push('settled Shipyard state key must be null');
   /* Pixi's deprecated managedTextures inventory is deliberately secondary:
      it also includes backdrop/Text/Graphics sources and may exclude a culled
      product canvas that has not uploaded. The named registry is the ownership
@@ -434,6 +480,9 @@ function diagnosticResourceReasons(point, budget) {
     reasons.push('product render targets must remain zero');
   }
   if (point.retiredFineOwnerCount !== 0) reasons.push('retired fine owners must remain zero');
+  if (point.shipyardPreviewActiveCount !== 0) reasons.push('settled Shipyard preview must be inactive');
+  if (point.shipyardPreviewRetainedCount !== 0) reasons.push('settled Shipyard preview retained resources');
+  if (point.shipyardPreviewPendingWork !== 0) reasons.push('settled Shipyard preview work remained');
   return reasons;
 }
 
@@ -454,10 +503,18 @@ function profileOutcomes(profile, measurement, budget) {
 
   const complete = cycles.length === SCENE_MEMORY_CYCLE_COUNT
     && cycles.every((cycle, index) => cycle?.cycle === index + 1
-      && same(cycle?.inventory?.routes, SCENE_MEMORY_ROUTES)
-      && cycle?.inventory?.shipyardStatus === 'future-arc-1c');
+      && exactKeys(cycle?.inventory, CYCLE_INVENTORY_FIELDS)
+      && same(cycle?.inventory?.routes, SCENE_MEMORY_ROUTES));
   out.push(outcome(`${profile}/cycle-inventory`, complete,
     complete ? 'four ordered route inventories present' : 'expected four exact travel inventories'));
+
+  const shipyardReasons = cycles.flatMap((cycle, index) =>
+    shipyardWitnessReasons(cycle?.inventory?.shipyard)
+      .map((reason) => `cycle ${index + 1}: ${reason}`));
+  out.push(outcome(`${profile}/shipyard-lifecycle`, shipyardReasons.length === 0,
+    shipyardReasons.length
+      ? shipyardReasons.join('; ')
+      : 'visible opener, exact visual state, one preview, and owned close lifecycle agree'));
 
   const observationSequence = object(precondition) && precondition.registry?.observationWindow === 0
     && cycles.length === SCENE_MEMORY_CYCLE_COUNT
@@ -621,7 +678,7 @@ function profileOutcomes(profile, measurement, budget) {
 }
 
 export function evaluateSceneMemory(input) {
-  if (!object(input) || input.schema !== 'cf-v2-scene-memory-input/v2'
+  if (!object(input) || input.schema !== 'cf-v2-scene-memory-input/v3'
     || !exactKeys(input.profiles, PROFILES) || !exactKeys(input.budgets, PROFILES)) {
     throw new TypeError('scene-memory input requires exact phone and desktop profiles/budgets');
   }
@@ -632,7 +689,7 @@ export function evaluateSceneMemory(input) {
   }
   const failures = outcomes.filter((entry) => !entry.pass);
   return Object.freeze({
-    schema: 'cf-v2-scene-memory-verdict/v1',
+    schema: 'cf-v2-scene-memory-verdict/v2',
     status: failures.length === 0 ? 'pass' : 'fail',
     outcomes: Object.freeze(outcomes),
     failures: Object.freeze(failures),

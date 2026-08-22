@@ -12,11 +12,71 @@ implied.
 | --- | --- | --- |
 | OpenAI/Codex on Windows | `openai/windows` | `C:\Projects\celestial-frontier-openai-windows` |
 | Anthropic/Claude Code on Windows | `anthropic/windows` | `C:\Projects\celestial-frontier-anthropic-windows` |
-| OpenAI/Codex on macOS | `openai/mac` | local path ending in `/celestial-frontier-openai-mac` |
-| Anthropic/Claude Code on macOS | `anthropic/mac` | local path ending in `/celestial-frontier-anthropic-mac` |
+| OpenAI/Codex on macOS | `openai/mac` | `/Users/nick/Projects/celestial-frontier-openai-mac` |
+| Anthropic/Claude Code on macOS | `anthropic/mac` | `/Users/nick/Projects/celestial-frontier-anthropic-mac` |
 
 `develop` is the integration branch. `main` is the production branch.
 Neither agent may commit directly to either one.
+
+## Fail-closed workspace identity
+
+The app, operating system, physical Git root, and branch form one identity.
+Before any read that informs work, edit, test, commit, fetch, or GitHub write,
+the agent must identify itself as OpenAI/Codex or Anthropic/Claude Code,
+identify the host OS, and match exactly one ownership row above.
+
+1. Resolve the physical current directory and `git rev-parse --show-toplevel`.
+   Both must be the row's exact folder after normalizing Windows slash direction
+   and drive-letter case. A similarly named folder, symlink to another
+   worktree, parent directory, or another agent/OS worktree is not accepted.
+2. Require `git branch --show-current` to equal the row's exact branch and
+   confirm that branch tracks its matching `origin/<branch>` before syncing or
+   publishing.
+3. If any element mismatches, stop before fetching or changing files. Report
+   the actual app, OS, physical root, branch, and expected row to Nick.
+4. Do not work around a mismatch with `cd`, branch switching, editor workspace
+   switching inside the task, copying files, or by retargeting another
+   worktree. Close or leave the incorrectly opened task and reopen the app on
+   its owned folder. This is especially important when Codex was launched in
+   an `anthropic/*` folder or Claude Code was launched in an `openai/*` folder.
+5. The preflight and final handoff record the verified row verbatim. “Correct
+   repository” without the app/OS-qualified folder and branch is insufficient.
+
+## GitHub SSH authentication
+
+All four agent worktrees use the SSH origin
+`git@github.com:TheDakk/Celestial-Frontier.git`. The private key stays in the
+local 1Password SSH Agent; never export it into a worktree, copy it between
+machines, print its public-key blob in a handoff, or silently fall back to an
+HTTPS credential or personal access token.
+
+Each Mac and Windows environment must pass this fail-closed preflight before
+its first GitHub write, and repeat it after an OS, OpenSSH, 1Password, SSH-key,
+or Git remote change:
+
+1. Confirm `git remote get-url origin` is the exact SSH URL above.
+2. Verify GitHub's presented host-key fingerprint against
+   <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints>
+   before accepting a new or changed host key. A changed unverified key stops
+   the batch.
+3. Run `ssh -T -o BatchMode=yes git@github.com`. Success is GitHub's exact
+   authenticated-account message followed by its intentional exit status `1`
+   because GitHub provides no shell; an authentication, agent, account, or
+   host-key error is red.
+4. Run `git ls-remote origin HEAD`. It must return one full commit and exit
+   zero, proving that the same SSH path can read this repository.
+5. A normal `git fetch origin` then serves as the batch's repository-level SSH
+   read check. Before an authorized push, re-run the two explicit probes only
+   when the agent/socket/config changed or the fetch exposed an SSH error.
+
+`ssh-add -l` is diagnostic, not the decisive test: on macOS it can query
+Apple's default `SSH_AUTH_SOCK` even while OpenSSH correctly follows a
+per-host `IdentityAgent` entry for 1Password. Inspect the effective
+`ssh -G git@github.com` configuration or query the explicit 1Password socket
+when diagnosing that mismatch. On Windows, use the 1Password/OpenSSH agent
+integration configured on that machine; do not assume the Mac socket path.
+Record only the account name, pass/fail result, remote URL, and repository SHA
+in the handoff—never private-key material.
 
 ## GitHub Actions budget gate
 
@@ -70,24 +130,27 @@ This rule applies equally to OpenAI/Codex and Anthropic/Claude Code:
 
 Before every new coding batch:
 
-1. Verify the repository root and current branch. Stop if they do not match
-   the agent's ownership row above.
-2. Read `GITHUB_ACTIONS_BUDGET.md`, record its current mode, then read
+1. Pass the exact app × OS × physical-root × branch check in the fail-closed
+   workspace identity section. Stop and reopen the correct workspace if any
+   element does not match; never continue from another agent's folder.
+2. Verify the worktree's SSH origin and authentication under the GitHub SSH
+   section above when this environment has not yet established that proof.
+3. Read `GITHUB_ACTIONS_BUDGET.md`, record its current mode, then read
    `ROADMAP.md`, including its live session handoff, then
    `PROCESS_LAWS.md` and the agent's normal instructions (`AGENTS.md` for
    Codex; `CLAUDE.md` for Claude Code). Follow the roadmap's pointers to the
    system/reference Markdown relevant to the assigned task. Do not load every
    historical Markdown file indiscriminately.
-3. Run `git fetch origin` only when a current remote comparison is needed and
+4. Run `git fetch origin` only when a current remote comparison is needed and
    inspect `git status --short --branch`. Fetch/read-only metadata does not use
    runner minutes, but do not poll GitHub repeatedly while frozen.
-4. Only if the worktree is clean, safely bring the current branch up to date
+5. Only if the worktree is clean, safely bring the current branch up to date
    with its remote and merge the latest `origin/develop` into the current
    agent branch when needed. `.github/workflows/sync-agent-branches.yml` is
    manual-only under the budget gate; do not expect GitHub to move an agent
    branch. A branch carrying unmerged agent work is synchronized only by this
    explicit local merge step.
-5. Never use `git reset --hard`, `git clean -fd`, rebase, force-push, or any
+6. Never use `git reset --hard`, `git clean -fd`, rebase, force-push, or any
    operation that discards work. If Git reports a conflict, stop and report
    it unless the user explicitly asks for conflict resolution.
 
@@ -96,14 +159,17 @@ Before every new coding batch:
 Before editing, the agent must give the user a short preflight report that
 states:
 
-1. Which agent it is, the verified folder, and the verified branch.
-2. Whether the worktree is clean and synchronized with its upstream and the
+1. The exact verified ownership row: app, OS, physical folder, branch, and
+   matching upstream branch.
+2. The exact SSH origin plus the last Mac/Windows authentication and repository
+   read result for the environment performing the work.
+3. Whether the worktree is clean and synchronized with its upstream and the
    latest `origin/develop`.
-3. Which core and task-relevant Markdown files it read.
-4. The current roadmap/handoff objective it intends to work on.
-5. The integration path: current agent branch → draft pull request →
+4. Which core and task-relevant Markdown files it read.
+5. The current roadmap/handoff objective it intends to work on.
+6. The integration path: current agent branch → draft pull request →
    `develop`; later `develop` → `main` only with user approval.
-6. The Actions budget mode, repository visibility/billing assumption, standing
+7. The Actions budget mode, repository visibility/billing assumption, standing
    private cap, whether the next GitHub write can trigger a workflow, and whether
    exact one-run authority exists.
 
@@ -125,8 +191,9 @@ When a coding batch is complete:
 5. Verify that `git status --short --branch` has no changed-file lines. If a
    push was authorized, also verify synchronization with upstream; otherwise
    report the exact local-ahead state without treating it as a defect.
-6. Report the commit hash, files changed, checks run, budget mode, estimated
-   hosted cost, authorization state, and push result or explicit no-push result.
+6. Report the commit hash, files changed, checks run, SSH account/remote/read
+   result, budget mode, estimated hosted cost, authorization state, and push
+   result or explicit no-push result.
 7. Remind the user that the next integration step is a reviewed pull request
    from the current agent branch into `develop`, never directly into `main`.
 8. End with the paired OpenAI/Anthropic handoff reminder defined below. Do

@@ -15,6 +15,17 @@ export function displayedPlanetTextureDemandPx(
 
 export type PlanetTextureTierPx = 512 | 768 | 1024;
 
+/** A displayed tier is real only when the attached square TextureSource has
+ * that exact backing size. Placeholders and malformed/non-square sources are
+ * deliberately reported as tier 0. */
+export function planetTextureTierForBackingPx(
+  width: number,
+  height: number,
+): PlanetTextureTierPx | 0 {
+  if (!Number.isSafeInteger(width) || !Number.isSafeInteger(height) || width !== height) return 0;
+  return width === 512 || width === 768 || width === 1024 ? width : 0;
+}
+
 /** Keep this threshold map identical to ThumbArt#getPlanetSprite. */
 export function planetTextureTierForDemandPx(demandPx: number): PlanetTextureTierPx {
   const requestedPx = Number.isFinite(demandPx) ? Math.trunc(demandPx) : 0;
