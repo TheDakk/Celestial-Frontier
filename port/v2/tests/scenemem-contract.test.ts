@@ -9,6 +9,7 @@ import {
   type SceneMemoryOutcome,
   type SceneMemoryPoint,
   type SceneRegistrySnapshot,
+  type PixiManagedResourceOwnerSnapshot,
 } from '../tools/scenemem-contract.mjs';
 
 function budget(): SceneMemoryBudget {
@@ -18,6 +19,7 @@ function budget(): SceneMemoryBudget {
     backingStorageBytesMax: 2_000,
     heapAggregateBytesMax: 17_000,
     warmHeapAggregateRangeBytesMax: 100,
+    warmHeapSlopeBytesPerCycleMax: 20,
     documentsMax: 2,
     nodesMax: 1_000,
     jsEventListenersMax: 100,
@@ -72,13 +74,33 @@ function registry(step: number): SceneRegistrySnapshot {
   };
 }
 
+function managedResources(step: number): PixiManagedResourceOwnerSnapshot {
+  return {
+    schema: 'cf-v2-pixi-managed-resources/v2',
+    valid: true,
+    hashCount: 2,
+    hashes: [
+      { name: 'graphics', type: 'renderable', liveEntryCount: 4, clearedEntryCount: 0 },
+      { name: 'glTexture', type: 'resource', liveEntryCount: 4, clearedEntryCount: 0 },
+    ],
+    liveEntryCount: 8,
+    clearedEntryCount: 0,
+    compactionCount: 5 + step * step,
+    compactedSlotCount: 20 + step * step * 3,
+    faultCount: 0,
+  };
+}
+
 function point(step: number, documentToken: string): SceneMemoryPoint {
   return {
     sceneGeneration: 100 + step * 6,
     documentToken,
     registry: registry(step),
+    managedResources: managedResources(step),
     managedTextureCount: 6,
     managedTexturePixels: 1_000,
+    managedTextureClearedSlots: step === 0 ? 5 : 7,
+    sceneTextStyleUpdateListeners: 12,
     localCanvasCacheEntries: 0,
     peakLocalCanvasCacheEntries: 4,
     productRenderTargets: 0,
@@ -145,7 +167,7 @@ function input(): SceneMemoryInput {
     };
   };
   return {
-    schema: 'cf-v2-scene-memory-input/v1',
+    schema: 'cf-v2-scene-memory-input/v2',
     profiles: { phone: profile('phone-document'), desktop: profile('desktop-document') },
     budgets: { phone: budget(), desktop: budget() },
   };
@@ -174,7 +196,7 @@ describe('Arc 1B scene-memory contract', () => {
     const result = evaluateSceneMemory(input());
     expect(result.status).toBe('pass');
     expect(result.failures).toEqual([]);
-    expect(result.outcomes).toHaveLength(32);
+    expect(result.outcomes).toHaveLength(40);
   });
 
   it('negative controls: the explicit precondition and first measured cycle cannot be discarded', () => {
@@ -191,6 +213,257 @@ describe('Arc 1B scene-memory contract', () => {
     firstCycleDrift.profiles.phone.cycles[0]!.managedTextureCount--;
     expect(resultFor(evaluateSceneMemory(firstCycleDrift), 'phone/warm-resource-plateau'))
       .toMatchObject({ pass: false });
+  });
+
+  it('allows a fixed nonzero precondition pool but requires measured and bfcache slot equality', () => {
+    const baseline = input();
+    expect(baseline.profiles.phone.precondition.managedTextureClearedSlots).toBe(5);
+    expect(baseline.profiles.phone.cycles.map((measured) =>
+      measured.managedTextureClearedSlots)).toEqual([7, 7, 7, 7]);
+    expect(evaluateSceneMemory(baseline).status).toBe('pass');
+
+    const measuredDrift = input();
+    measuredDrift.profiles.phone.cycles[1]!.managedTextureClearedSlots = 8;
+    const measuredResult = evaluateSceneMemory(measuredDrift);
+    expect(resultFor(measuredResult, 'phone/warm-resource-plateau')).toMatchObject({ pass: false });
+    expect(resultFor(measuredResult, 'phone/bfcache-survival').pass).toBe(true);
+
+    const bfcacheDrift = input();
+    bfcacheDrift.profiles.phone.bfcache.managedTextureClearedSlots = 8;
+    const bfcacheResult = evaluateSceneMemory(bfcacheDrift);
+    expect(resultFor(bfcacheResult, 'phone/warm-resource-plateau').pass).toBe(true);
+    expect(resultFor(bfcacheResult, 'phone/bfcache-survival')).toMatchObject({ pass: false });
+  });
+
+  it('negative controls: shared TextStyle listeners cannot grow, disappear, or drift in bfcache', () => {
+    const growing = input();
+    growing.profiles.phone.cycles[1]!.sceneTextStyleUpdateListeners++;
+    const growingResult = evaluateSceneMemory(growing);
+    expect(resultFor(growingResult, 'phone/scene-text-style-listeners').pass).toBe(true);
+    expect(resultFor(growingResult, 'phone/warm-resource-plateau')).toMatchObject({ pass: false });
+    expect(resultFor(growingResult, 'phone/bfcache-survival').pass).toBe(true);
+
+    const bfcacheDrift = input();
+    bfcacheDrift.profiles.phone.bfcache.sceneTextStyleUpdateListeners++;
+    const bfcacheResult = evaluateSceneMemory(bfcacheDrift);
+    expect(resultFor(bfcacheResult, 'phone/warm-resource-plateau').pass).toBe(true);
+    expect(resultFor(bfcacheResult, 'phone/bfcache-survival')).toMatchObject({ pass: false });
+
+    const vacuous = input();
+    const profile = vacuous.profiles.phone;
+    for (const measured of [profile.precondition, ...profile.cycles, profile.bfcache]) {
+      measured.sceneTextStyleUpdateListeners = 0;
+    }
+    const vacuousResult = evaluateSceneMemory(vacuous);
+    expect(resultFor(vacuousResult, 'phone/scene-text-style-listeners')).toMatchObject({
+      pass: false,
+      message: 'shared TextStyle update-listener witness was absent or vacuous',
+    });
+    expect(resultFor(vacuousResult, 'phone/warm-resource-plateau').pass).toBe(true);
+    expect(resultFor(vacuousResult, 'phone/bfcache-survival').pass).toBe(true);
+  });
+
+  it('negative control: stable cleared managed-resource slots cannot plateau green', () => {
+    const broken = input();
+    const profile = broken.profiles.phone;
+    for (const measured of [profile.precondition, ...profile.cycles, profile.bfcache]) {
+      measured.managedResources.clearedEntryCount = 1;
+    }
+    const result = evaluateSceneMemory(broken);
+    expect(resultFor(result, 'phone/managed-resource-compaction').message)
+      .toContain('cleared entries remained');
+    expect(resultFor(result, 'phone/managed-resource-compaction').message)
+      .toContain('per-hash cleared total mismatch');
+    expect(resultFor(result, 'phone/managed-resource-plateau').pass).toBe(true);
+    expect(resultFor(result, 'phone/warm-resource-plateau').pass).toBe(true);
+    expect(resultFor(result, 'phone/bfcache-survival').pass).toBe(true);
+  });
+
+  it('negative controls: invalid and faulted adapters fail independently', () => {
+    const invalid = input();
+    invalid.profiles.phone.precondition.managedResources.valid = false;
+    const invalidResult = evaluateSceneMemory(invalid);
+    expect(resultFor(invalidResult, 'phone/managed-resource-compaction').message)
+      .toContain('adapter invalid');
+    expect(resultFor(invalidResult, 'phone/managed-resource-plateau').pass).toBe(true);
+
+    const faulted = input();
+    const profile = faulted.profiles.phone;
+    for (const measured of [profile.precondition, ...profile.cycles, profile.bfcache]) {
+      measured.managedResources.faultCount = 1;
+    }
+    const faultResult = evaluateSceneMemory(faulted);
+    expect(resultFor(faultResult, 'phone/managed-resource-compaction').message)
+      .toContain('adapter fault');
+    expect(resultFor(faultResult, 'phone/managed-resource-plateau').pass).toBe(true);
+    expect(resultFor(faultResult, 'phone/bfcache-survival').pass).toBe(true);
+  });
+
+  it('negative controls: both compaction counters must advance on every cycle', () => {
+    const noCompaction = input();
+    const noCompactionProfile = noCompaction.profiles.phone;
+    noCompactionProfile.cycles[0]!.managedResources.compactionCount =
+      noCompactionProfile.precondition.managedResources.compactionCount;
+    const compactionResult = evaluateSceneMemory(noCompaction);
+    expect(resultFor(compactionResult, 'phone/managed-resource-compaction').message)
+      .toContain('compaction count did not advance');
+    expect(resultFor(compactionResult, 'phone/managed-resource-plateau').pass).toBe(true);
+    expect(resultFor(compactionResult, 'phone/bfcache-survival').pass).toBe(true);
+
+    const noSlots = input();
+    const noSlotsProfile = noSlots.profiles.phone;
+    noSlotsProfile.cycles[0]!.managedResources.compactedSlotCount =
+      noSlotsProfile.precondition.managedResources.compactedSlotCount;
+    const slotsResult = evaluateSceneMemory(noSlots);
+    expect(resultFor(slotsResult, 'phone/managed-resource-compaction').message)
+      .toContain('compacted slot count did not advance');
+    expect(resultFor(slotsResult, 'phone/managed-resource-plateau').pass).toBe(true);
+    expect(resultFor(slotsResult, 'phone/bfcache-survival').pass).toBe(true);
+  });
+
+  it('negative control: live managed-resource drift fails its dedicated plateau', () => {
+    const broken = input();
+    broken.profiles.phone.cycles[1]!.managedResources.hashes[0]!.liveEntryCount++;
+    broken.profiles.phone.cycles[1]!.managedResources.liveEntryCount++;
+    const result = evaluateSceneMemory(broken);
+    expect(resultFor(result, 'phone/managed-resource-compaction').pass).toBe(true);
+    expect(resultFor(result, 'phone/managed-resource-plateau')).toMatchObject({ pass: false });
+    expect(resultFor(result, 'phone/warm-resource-plateau').pass).toBe(true);
+    expect(resultFor(result, 'phone/bfcache-survival').pass).toBe(true);
+  });
+
+  it('negative controls: per-hash redistribution and semantic drift cannot hide in stable totals', () => {
+    const redistributed = input();
+    const redistributedHashes =
+      redistributed.profiles.phone.cycles[1]!.managedResources.hashes;
+    redistributedHashes[0]!.liveEntryCount++;
+    redistributedHashes[1]!.liveEntryCount--;
+    const redistributedResult = evaluateSceneMemory(redistributed);
+    expect(resultFor(redistributedResult, 'phone/managed-resource-compaction').pass).toBe(true);
+    expect(resultFor(redistributedResult, 'phone/managed-resource-plateau')).toMatchObject({
+      pass: false,
+      message: 'settled Pixi managed-resource inventory drifted',
+    });
+    expect(resultFor(redistributedResult, 'phone/warm-resource-plateau').pass).toBe(true);
+
+    const renamed = input();
+    renamed.profiles.phone.cycles[1]!.managedResources.hashes[0]!.name = 'graphics-renamed';
+    const renamedResult = evaluateSceneMemory(renamed);
+    expect(resultFor(renamedResult, 'phone/managed-resource-compaction').pass).toBe(true);
+    expect(resultFor(renamedResult, 'phone/managed-resource-plateau').pass).toBe(false);
+
+    const retyped = input();
+    const retypedHashes = retyped.profiles.phone.cycles[1]!.managedResources.hashes;
+    retypedHashes[1]!.type = 'renderable';
+    retypedHashes.sort((left, right) => {
+      const leftIdentity = `${left.type}\u0000${left.name}`;
+      const rightIdentity = `${right.type}\u0000${right.name}`;
+      return leftIdentity < rightIdentity ? -1 : leftIdentity > rightIdentity ? 1 : 0;
+    });
+    const retypedResult = evaluateSceneMemory(retyped);
+    expect(resultFor(retypedResult, 'phone/managed-resource-compaction').pass).toBe(true);
+    expect(resultFor(retypedResult, 'phone/managed-resource-plateau').pass).toBe(false);
+  });
+
+  it('negative controls: duplicate identities and aggregate total mismatch fail validation', () => {
+    const duplicate = input();
+    const duplicateHashes = duplicate.profiles.phone.cycles[1]!.managedResources.hashes;
+    duplicateHashes[1]!.name = duplicateHashes[0]!.name;
+    duplicateHashes[1]!.type = duplicateHashes[0]!.type;
+    const duplicateResult = evaluateSceneMemory(duplicate);
+    expect(resultFor(duplicateResult, 'phone/managed-resource-compaction').message)
+      .toContain('per-hash identity duplicated');
+    expect(resultFor(duplicateResult, 'phone/managed-resource-plateau').pass).toBe(false);
+
+    const totalMismatch = input();
+    const totalProfile = totalMismatch.profiles.phone;
+    for (const measured of [totalProfile.precondition, ...totalProfile.cycles, totalProfile.bfcache]) {
+      measured.managedResources.liveEntryCount++;
+    }
+    const totalResult = evaluateSceneMemory(totalMismatch);
+    expect(resultFor(totalResult, 'phone/managed-resource-compaction').message)
+      .toContain('per-hash live total mismatch');
+    expect(resultFor(totalResult, 'phone/managed-resource-plateau').pass).toBe(true);
+    expect(resultFor(totalResult, 'phone/bfcache-survival').pass).toBe(true);
+  });
+
+  it('negative control: a per-hash cleared slot cannot hide behind a zero aggregate', () => {
+    const broken = input();
+    const profile = broken.profiles.phone;
+    for (const measured of [profile.precondition, ...profile.cycles, profile.bfcache]) {
+      measured.managedResources.hashes[0]!.clearedEntryCount = 1;
+      expect(measured.managedResources.clearedEntryCount).toBe(0);
+    }
+    const result = evaluateSceneMemory(broken);
+    const finding = resultFor(result, 'phone/managed-resource-compaction');
+    expect(finding.message).toContain('graphics retained cleared entries');
+    expect(finding.message).toContain('per-hash cleared total mismatch');
+    expect(resultFor(result, 'phone/managed-resource-plateau').pass).toBe(true);
+    expect(resultFor(result, 'phone/bfcache-survival').pass).toBe(true);
+  });
+
+  it('negative control: bfcache-only per-hash drift fails survival with stable aggregates', () => {
+    const broken = input();
+    const hashes = broken.profiles.phone.bfcache.managedResources.hashes;
+    hashes[0]!.liveEntryCount++;
+    hashes[1]!.liveEntryCount--;
+    const result = evaluateSceneMemory(broken);
+    expect(resultFor(result, 'phone/managed-resource-compaction').pass).toBe(true);
+    expect(resultFor(result, 'phone/managed-resource-plateau').pass).toBe(true);
+    expect(resultFor(result, 'phone/bfcache-survival')).toMatchObject({ pass: false });
+  });
+
+  it('negative control: bfcache cannot perform another managed-resource compaction', () => {
+    const broken = input();
+    broken.profiles.phone.bfcache.managedResources.compactionCount++;
+    broken.profiles.phone.bfcache.managedResources.compactedSlotCount++;
+    const result = evaluateSceneMemory(broken);
+    expect(resultFor(result, 'phone/managed-resource-compaction').pass).toBe(true);
+    expect(resultFor(result, 'phone/managed-resource-plateau').pass).toBe(true);
+    expect(resultFor(result, 'phone/bfcache-survival')).toMatchObject({ pass: false });
+  });
+
+  it('semantic controls: managed-resource evidence is exact, safe, and nonvacuous', () => {
+    const wrongSchema = input();
+    (wrongSchema.profiles.phone.precondition.managedResources as { schema: string }).schema =
+      'cf-v2-pixi-managed-resources/v3';
+    expect(resultFor(
+      evaluateSceneMemory(wrongSchema), 'phone/managed-resource-compaction',
+    ).message).toContain('snapshot schema');
+
+    const extraKey = input();
+    (extraKey.profiles.phone.precondition.managedResources as unknown as Record<string, unknown>)
+      .unexpected = 0;
+    expect(resultFor(evaluateSceneMemory(extraKey), 'phone/managed-resource-compaction').message)
+      .toContain('snapshot shape');
+
+    const unsafe = input();
+    unsafe.profiles.phone.precondition.managedResources.compactionCount =
+      Number.MAX_SAFE_INTEGER + 1;
+    expect(resultFor(evaluateSceneMemory(unsafe), 'phone/managed-resource-compaction').message)
+      .toContain('compactionCount invalid');
+
+    const emptyHashes = input();
+    const hashProfile = emptyHashes.profiles.phone;
+    for (const measured of [hashProfile.precondition, ...hashProfile.cycles, hashProfile.bfcache]) {
+      measured.managedResources.hashCount = 0;
+    }
+    const hashResult = evaluateSceneMemory(emptyHashes);
+    expect(resultFor(hashResult, 'phone/managed-resource-compaction').message)
+      .toContain('hash inventory empty');
+    expect(resultFor(hashResult, 'phone/managed-resource-plateau').pass).toBe(true);
+    expect(resultFor(hashResult, 'phone/bfcache-survival').pass).toBe(true);
+
+    const emptyLive = input();
+    const liveProfile = emptyLive.profiles.phone;
+    for (const measured of [liveProfile.precondition, ...liveProfile.cycles, liveProfile.bfcache]) {
+      measured.managedResources.liveEntryCount = 0;
+    }
+    const liveResult = evaluateSceneMemory(emptyLive);
+    expect(resultFor(liveResult, 'phone/managed-resource-compaction').message)
+      .toContain('live inventory empty');
+    expect(resultFor(liveResult, 'phone/managed-resource-plateau').pass).toBe(true);
+    expect(resultFor(liveResult, 'phone/bfcache-survival').pass).toBe(true);
   });
 
   it('negative control: registry observation windows must reset in exact sequence', () => {
@@ -506,6 +779,32 @@ describe('Arc 1B scene-memory contract', () => {
     expect(resultFor(result, 'phone/bfcache-survival')).toMatchObject({ pass: false });
     expect(resultFor(result, 'phone/registry-balance').pass).toBe(true);
     expect(resultFor(result, 'phone/registry-coherence').pass).toBe(true);
+  });
+
+  it('negative control: monotonic backing growth fails positive heap slope independently', () => {
+    const broken = input();
+    broken.profiles.phone.cycles.forEach((measured, index) => {
+      measured.heap.backingStorageSize += index * 15;
+    });
+    const result = evaluateSceneMemory(broken);
+    expect(resultFor(result, 'phone/heap-plateau')).toMatchObject({ pass: false });
+    expect(resultFor(result, 'phone/heap-dom-budget').pass).toBe(true);
+    expect(resultFor(result, 'phone/warm-resource-plateau').pass).toBe(true);
+
+    broken.budgets.phone.warmHeapSlopeBytesPerCycleMax = 25;
+    expect(resultFor(evaluateSceneMemory(broken), 'phone/heap-plateau').pass).toBe(true);
+  });
+
+  it('negative control: a transient heap spike fails range with a nonpositive slope', () => {
+    const broken = input();
+    broken.profiles.phone.cycles[1]!.heap.usedSize += 150;
+    const result = evaluateSceneMemory(broken);
+    expect(resultFor(result, 'phone/heap-plateau')).toMatchObject({ pass: false });
+    expect(resultFor(result, 'phone/heap-dom-budget').pass).toBe(true);
+    expect(resultFor(result, 'phone/warm-resource-plateau').pass).toBe(true);
+
+    broken.budgets.phone.warmHeapAggregateRangeBytesMax = 200;
+    expect(resultFor(evaluateSceneMemory(broken), 'phone/heap-plateau').pass).toBe(true);
   });
 
   it('checks fine/surface witnesses and supplied heap/DOM ceilings', () => {

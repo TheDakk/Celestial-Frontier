@@ -17,7 +17,7 @@
    full Atlas chart/favorites presentation, rarity stings, ring↔planet mutual shadows, PROTO star disk,
    biome vista surfaces (Phase 6). Static deterministic Canvas species portraits
    are live; retained Pixi actors, meshes, and portrait animation remain Phase 5. */
-import { Application, Container, Graphics, Sprite, Texture, Text, extensions, CullerPlugin } from 'pixi.js';
+import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin } from 'pixi.js';
 import {
   galSpriteFor, decoSprite, getPlanetSprite, starSprite,
   _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr,
@@ -62,6 +62,9 @@ import {
   type SceneTextureLease,
   type SceneTextureScope,
 } from './scene-texture-owner.js';
+import { PixiManagedResourceOwner } from './pixi-managed-resource-owner.js';
+import { installBatchTextureArrayUidCompaction } from './pixi-batch-texture-array.js';
+import { createSceneText } from './scene-text.js';
 import {
   getGuideCatalogue, getGuideTopic, searchGuide,
   type GuideCategoryId, type GuideTopicId, type GuideTopicView,
@@ -101,6 +104,7 @@ import {
 } from '@cf/persistence';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
+installBatchTextureArrayUidCompaction(BatchTextureArray);
 document.title = `Celestial Frontier v${V2_DEVELOPMENT_VERSION} — Development`;
 installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt fully replaces the hooks */
 /* THE PORTRAIT ENGINE IS A WORKER-LOCAL LAZY CHUNK: heavy species painters stay
@@ -121,6 +125,7 @@ gSeam.customNames = customNames;   /* one app-owned map shared with descriptor s
 extensions.add(CullerPlugin);   /* offscreen sprites skip render — thousands of stars, one flag */
 
 const app = new Application();
+const pixiManagedResourceOwner = new PixiManagedResourceOwner(() => app.renderer, cleanHash);
 const sceneTextureRegistry = new CanvasTextureRegistry<HTMLCanvasElement, Texture>(
   (resource) => Texture.from(resource, true),
 );
@@ -2009,6 +2014,28 @@ function terminatorSpr(starCol: string): HTMLCanvasElement {
 interface StarNodeRef { seed: number; x: number; y: number; c?: string; s: number; }
 interface StarEntry { spr: Sprite; star: StarNodeRef; }
 interface ScreenScaled { obj: Container; f: number; }   /* scale = f / cam.z */
+/* Pixi keys managed canvas-text textures by TextStyle identity. Recreating an
+   equivalent style for every scene leaves one null cache key per old label;
+   these finite document-owned styles make repeated routes reuse those keys. */
+const italicSceneTextStyle = (fontSize: number, fill: string | number): TextStyle =>
+  new TextStyle({ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize, fill });
+const SCENE_TEXT_STYLES = Object.freeze({
+  clusterCaption: italicSceneTextStyle(13, 'rgba(170,150,230,0.34)'),
+  voidCaption: italicSceneTextStyle(13, 'rgba(110,118,150,0.4)'),
+  homeGalaxy: italicSceneTextStyle(12, 0xffd9a0),
+  quasar: italicSceneTextStyle(12, 'rgba(190,215,255,0.85)'),
+  radioGalaxy: italicSceneTextStyle(12, 'rgba(255,190,150,0.8)'),
+  namedGalaxy: italicSceneTextStyle(12, 'rgba(200,210,240,0.7)'),
+  charter: italicSceneTextStyle(13, 'rgba(170,205,255,0.72)'),
+  sun: italicSceneTextStyle(12, 'rgba(255,217,160,0.95)'),
+  habitableZone: italicSceneTextStyle(10, 'rgba(140,230,170,0.6)'),
+  asteroidBelt: italicSceneTextStyle(9.5, 'rgba(180,172,158,0.7)'),
+  planet: new TextStyle({
+    fontFamily: 'Georgia, serif', fontSize: 11, fill: 'rgba(220,226,255,0.8)',
+  }),
+  comet: italicSceneTextStyle(9, 'rgba(205,228,255,0.78)'),
+  visitor: italicSceneTextStyle(9, 'rgba(230,190,160,0.8)'),
+});
 const galaxySpins: Array<{ spr: Sprite; base: number }> = [];
 let uniNodes: GalaxyNode[] = [];   /* cached universe composition — checkTransitions runs per tick */
 let uniCell: { ux: number; uy: number } | null = null;   /* the streamed window's anchor cell */
@@ -2095,7 +2122,7 @@ function clearWorld(openNextScope = true): void {
   fineLayer = null;
   fineTextureScope = null;
   retireFineTextureOwner(previousFineLayer, previousFineScope);
-  for (const c of world.removeChildren()) c.destroy({ children: true });
+  for (const c of world.removeChildren()) c.destroy({ children: true, context: true });
   const releaseFailures: unknown[] = [];
   try { releaseRetiredFineTextureOwners(); }
   catch (error) { releaseFailures.push(error); }
@@ -2118,6 +2145,7 @@ function clearWorld(openNextScope = true): void {
   if (releaseFailures.length) {
     throw new AggregateError(releaseFailures, 'one or more scene texture scopes failed to release');
   }
+  pixiManagedResourceOwner.compact();
   if (openNextScope) {
     sceneTextureScope = sceneTextureRegistry.createScope(`scene:${sceneTextureGeneration}`);
   }
@@ -2151,10 +2179,13 @@ function drawUniverse(): void {
       webLayer.addChild(b);
     }
     /* far-zoom captions: clusters glow, voids yawn (sparse, seeded picks) */
-    const capt = (web > 0.86 && ((cx * 7 + cy * 13) % 29 === 0)) ? ['galaxy cluster', 'rgba(170,150,230,0.34)']
-      : (web < 0.05 && ((cx * 5 + cy * 3) % 23 === 0)) ? ['cosmic void', 'rgba(110,118,150,0.4)'] : null;
+    const capt: [string, TextStyle] | null =
+      (web > 0.86 && ((cx * 7 + cy * 13) % 29 === 0))
+        ? ['galaxy cluster', SCENE_TEXT_STYLES.clusterCaption]
+        : (web < 0.05 && ((cx * 5 + cy * 3) % 23 === 0))
+          ? ['cosmic void', SCENE_TEXT_STYLES.voidCaption] : null;
     if (capt) {
-      const t = new Text({ text: capt[0]!, style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 13, fill: capt[1]! } });
+      const t = createSceneText(capt[0], capt[1]);
       t.anchor.set(0.5);
       t.position.set(cx * UCELL + UCELL / 2, cy * UCELL + UCELL / 2);
       t.visible = false;
@@ -2172,7 +2203,7 @@ function drawUniverse(): void {
         { label: 'Enter galaxy', run: () => descendGalaxy(g) },
       );
     };
-    let label: [string, string, number] | null = null;   /* text, color, gate */
+    let label: [string, TextStyle, number] | null = null;   /* text, style, gate */
     if (g.quasar) {
       /* the feeding black hole outshines its galaxy (main.js 3714) */
       const q = new Sprite(sceneTexture(_quasarSpr()));
@@ -2185,7 +2216,12 @@ function drawUniverse(): void {
       q.on('pointertap', onTap);
       world.addChild(q);
       if (g.blazar) uniPulse.push({ spr: q, seed: g.seed });
-      label = [g.blazar ? 'blazar — a quasar jet aimed straight at you' : 'quasar — a feeding black hole outshining its galaxy', 'rgba(190,215,255,0.85)', 26];
+      label = [
+        g.blazar ? 'blazar — a quasar jet aimed straight at you'
+          : 'quasar — a feeding black hole outshining its galaxy',
+        SCENE_TEXT_STYLES.quasar,
+        26,
+      ];
     } else {
       if (g.radio) {
         const lobes = new Sprite(sceneTexture(radioLobesSpr()));
@@ -2195,7 +2231,7 @@ function drawUniverse(): void {
         lobes.rotation = g.rot;
         lobes.eventMode = 'none'; lobes.cullable = true;
         world.addChild(lobes);
-        label = ['radio galaxy — jets inflate giant lobes', 'rgba(255,190,150,0.8)', 30];
+        label = ['radio galaxy — jets inflate giant lobes', SCENE_TEXT_STYLES.radioGalaxy, 30];
       }
       if (g.bridge) {
         /* tidal bridge of stars torn between colliding galaxies (main.js 3729) */
@@ -2222,12 +2258,12 @@ function drawUniverse(): void {
       if (!g.radio) galaxySpins.push({ spr, base: g.rot });
     }
     if (g.home) {
-      const t = new Text({ text: 'Milky Way — you are here', style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 12, fill: 0xffd9a0 } });
+      const t = createSceneText('Milky Way — you are here', SCENE_TEXT_STYLES.homeGalaxy);
       t.anchor.set(0.5, 0);
       t.position.set(g.x, g.y + sz * 1.15 + 4);
       world.addChild(t);
     } else if (label) {
-      const t = new Text({ text: label[0], style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 12, fill: label[1] } });
+      const t = createSceneText(label[0], label[1]);
       t.anchor.set(0.5, 0);
       t.position.set(g.x, g.y + sz * (g.quasar ? 2 : 2.4));
       t.visible = false;
@@ -2236,7 +2272,7 @@ function drawUniverse(): void {
       uniLabels.push({ t, size: sz, gate: label[2] });
     } else if (!g.dwarf) {
       /* every named galaxy earns its name as you close in (main.js 3746) */
-      const t = new Text({ text: galaxyName(g.seed), style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 12, fill: 'rgba(200,210,240,0.7)' } });
+      const t = createSceneText(galaxyName(g.seed), SCENE_TEXT_STYLES.namedGalaxy);
       t.anchor.set(0.5, 0);
       t.position.set(g.x, g.y + sz * 1.15);
       t.visible = false;
@@ -2275,7 +2311,10 @@ function drawUniverse(): void {
   }
   const ring = new Graphics().circle(HOME_POS.x, HOME_POS.y, rr).stroke({ width: Math.max(rr * 0.0035, 1.2), color: 0x96beff, alpha: 0.5 });
   charterFx.addChild(ring);
-  const cLab = new Text({ text: 'your charter — ' + currentRegionOf(primeCount()).name, style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 13, fill: 'rgba(170,205,255,0.72)' } });
+  const cLab = createSceneText(
+    'your charter — ' + currentRegionOf(primeCount()).name,
+    SCENE_TEXT_STYLES.charter,
+  );
   cLab.anchor.set(0.5, 1);
   cLab.position.set(HOME_POS.x, HOME_POS.y - rr - 4);
   charterFx.addChild(cLab);
@@ -2315,6 +2354,13 @@ function drawGalaxy(state: Extract<NavState, { mode: 'galaxy' }>): void {
   world.addChild(hazeSpr);
   const w = galaxyCellWindow(-GR * 1.2, -GR * 1.2, GR * 1.2, GR * 1.2);
   const bR = baseR();
+  const galaxyCells: Array<ReturnType<typeof provenGalaxyCell>> = [];
+  for (let cx = w.cx0; cx <= w.cx1; cx++) for (let cy = w.cy0; cy <= w.cy1; cy++) {
+    /* Materialize the old full ±1.2R window once. The second draw pass reuses
+       it instead of repeating the 4,900-cell domain/cache traversal; cells
+       beyond R still own the generated globular-cluster halo out to 1.7R. */
+    galaxyCells.push(provenGalaxyCell(state.gal, prof, cx, cy));
+  }
   /* deco pass UNDER the stars, Renderer sizes (main.js ~4131): nebulae ×2.3 ·
      planetary shells ×2.4 · remnants ×2.6 · open/glob star knots · rogue
      planets · failed brown dwarfs. Deco sprites are PICKABLE — the survey
@@ -2325,8 +2371,8 @@ function drawGalaxy(state: Extract<NavState, { mode: 'galaxy' }>): void {
     const d = describePick({ kind: 'deco', data: dc } as never);
     if (d) showSurvey(d as unknown as Descriptor);
   };
-  for (let cx = w.cx0; cx <= w.cx1; cx++) for (let cy = w.cy0; cy <= w.cy1; cy++) {
-    for (const dc of provenGalaxyCell(state.gal, prof, cx, cy).deco) {
+  for (const cell of galaxyCells) {
+    for (const dc of cell.deco) {
       if (dc.k === 'h2' || dc.k === 'neb' || dc.k === 'mol' || dc.k === 'plan' || dc.k === 'rem') {
         const f = dc.k === 'rem' ? 1.3 : dc.k === 'plan' ? 1.2 : 1.15;
         const spr = new Sprite(sceneTexture(decoSprite(dc)));
@@ -2373,8 +2419,8 @@ function drawGalaxy(state: Extract<NavState, { mode: 'galaxy' }>): void {
   }
   /* THE STARS — starSprite painters, additive, Renderer sizing D=s·baseR·8,
      spiked halo for the giants (s≥1.5), twinkle list for the bright (s>1.3) */
-  for (let cx = w.cx0; cx <= w.cx1; cx++) for (let cy = w.cy0; cy <= w.cy1; cy++) {
-    for (const s of provenGalaxyCell(state.gal, prof, cx, cy).stars) {
+  for (const cell of galaxyCells) {
+    for (const s of cell.stars) {
       const spr = new Sprite(sceneTexture(starSprite(s.c, s.s >= 1.5)));
       spr.anchor.set(0.5);
       spr.blendMode = 'add';
@@ -2476,7 +2522,7 @@ function buildSolMark(x: number, y: number): void {
   solMark.eventMode = 'none';
   solMark.position.set(x, y);
   const ring = new Graphics().circle(0, 0, 9).stroke({ width: 1.2, color: 0xffd9a0, alpha: 0.8 });
-  const label = new Text({ text: 'Sun — our star', style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 12, fill: 'rgba(255,217,160,0.95)' } });
+  const label = createSceneText('Sun — our star', SCENE_TEXT_STYLES.sun);
   label.anchor.set(0.5, 1);
   label.position.set(0, -14);
   solMark.addChild(ring); solMark.addChild(label);
@@ -2487,12 +2533,15 @@ function buildSolMark(x: number, y: number): void {
 function releaseFineLayer(): void {
   const previousLayer = fineLayer;
   const previousScope = fineTextureScope;
+  const ownedResources = previousLayer !== null || previousScope !== null
+    || retiredFineTextureOwners.size > 0;
   fineLayer = null;
   fineTextureScope = null;
   fineWin = null;
   fineStarTargets = [];
   retireFineTextureOwner(previousLayer, previousScope);
   releaseRetiredFineTextureOwners();
+  if (ownedResources) pixiManagedResourceOwner.compact();
 }
 
 function retireFineTextureOwner(
@@ -2509,7 +2558,7 @@ function releaseRetiredFineTextureOwners(): void {
     try {
       if (owner.layer && !owner.layer.destroyed) {
         owner.layer.removeFromParent();
-        owner.layer.destroy({ children: true });
+        owner.layer.destroy({ children: true, context: true });
       }
       owner.scope?.dispose();
       retiredFineTextureOwners.delete(owner);
@@ -2578,7 +2627,7 @@ function updateFineLayer(force: boolean): void {
       : (bhDisc ? world.getChildIndex(bhDisc) : world.children.length);
     world.addChildAt(nextLayer, insertionIndex);
   } catch (error) {
-    nextLayer.destroy({ children: true });
+    nextLayer.destroy({ children: true, context: true });
     try { nextScope.dispose(); }
     catch (releaseError) {
       throw new AggregateError([error, releaseError], 'fine scene build and cleanup failed');
@@ -2591,6 +2640,7 @@ function updateFineLayer(force: boolean): void {
   fineWin = win;
   retireFineTextureOwner(previousLayer, previousScope);
   releaseRetiredFineTextureOwners();
+  pixiManagedResourceOwner.compact();
 }
 
 function updateZoomDependent(): void {
@@ -2637,6 +2687,7 @@ function publishSurfacePlanetTexture(
   owner.sprite.height = owner.diameterCssPx;
   owner.textureLease = successor;
   predecessor.release();
+  pixiManagedResourceOwner.compact();
 }
 
 function scheduleSurfacePlanetTextureRefresh(
@@ -2691,6 +2742,7 @@ function updateStarSurf(): void {
     world.removeChild(starSurfSpr); starSurfSpr.destroy(); starSurfSpr = null;
     starSurfTextureLease?.release();
     starSurfTextureLease = null;
+    pixiManagedResourceOwner.compact();
   }
 }
 
@@ -2765,7 +2817,7 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
   if (hz) {
     const band = new Graphics().circle(0, 0, hz[1]).fill({ color: 0x50d282, alpha: 0.055 }).circle(0, 0, hz[0]).cut();
     chartLayer.addChild(band);
-    const hzl = new Text({ text: 'habitable zone', style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 10, fill: 'rgba(140,230,170,0.6)' } });
+    const hzl = createSceneText('habitable zone', SCENE_TEXT_STYLES.habitableZone);
     hzl.anchor.set(0.5);
     hzl.position.set(0, -(hz[0] + hz[1]) / 2);
     chartLayer.addChild(hzl);
@@ -2773,7 +2825,7 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
   }
   const beltR = (sys.belt as { r?: number } | null)?.r;
   if (beltR) {
-    const bl = new Text({ text: 'asteroid belt', style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 9.5, fill: 'rgba(180,172,158,0.7)' } });
+    const bl = createSceneText('asteroid belt', SCENE_TEXT_STYLES.asteroidBelt);
     bl.anchor.set(0.5, 1);
     bl.position.set(0, -beltR - 2);
     chartLayer.addChild(bl);
@@ -2850,7 +2902,7 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
       holder.addChild(moonC);
       orbiters.push({ c: moonC, kind: 'moon', orb: 1.7 + m * 0.48, sp: 0.55, a0: m * 2.4, mul: pr, pOrb: p.orb, face: [mterm] });
     }
-    const label = new Text({ text: p.name, style: { fontFamily: 'Georgia, serif', fontSize: 11, fill: 'rgba(220,226,255,0.8)' } });
+    const label = createSceneText(p.name, SCENE_TEXT_STYLES.planet);
     label.anchor.set(0.5, 0);
     label.eventMode = 'none';
     world.addChild(label);
@@ -2877,7 +2929,10 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
     coma.anchor.set(0.5);
     coma.eventMode = 'none';
     world.addChild(coma);
-    const label = new Text({ text: 'Comet ' + properName(hashInt(starSeed, 31 + ci, 17), 2), style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 9, fill: 'rgba(205,228,255,0.78)' } });
+    const label = createSceneText(
+      'Comet ' + properName(hashInt(starSeed, 31 + ci, 17), 2),
+      SCENE_TEXT_STYLES.comet,
+    );
     label.anchor.set(0.5, 1);
     label.eventMode = 'none';
     world.addChild(label);
@@ -2899,7 +2954,7 @@ function drawSystem(state: Extract<NavState, { mode: 'system' }>): void {
     body.width = 10; body.height = 3.8;
     wrap.addChild(body);
     world.addChild(wrap);
-    const label = new Text({ text: 'interstellar object', style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 9, fill: 'rgba(230,190,160,0.8)' } });
+    const label = createSceneText('interstellar object', SCENE_TEXT_STYLES.visitor);
     label.anchor.set(0.5, 1);
     label.eventMode = 'none';
     world.addChild(label);
@@ -2969,6 +3024,7 @@ function rebuildSystemHD(scheduleRefresh = true): void {
   /* the focused world earns the HD master as you close in (main.js 5215) */
   if (nav.mode !== 'system' || !nav.star) return;
   const sys = systemScene(nav.star.seed);
+  let releasedPredecessor = false;
   for (const o of orbiters) {
     if (o.kind !== 'planet' || !o.face || !o.planetTextureLease) continue;
     const p = sys.planets.find((q) => Math.abs(q.orb - o.orb) < 1e-9);
@@ -2985,8 +3041,10 @@ function rebuildSystemHD(scheduleRefresh = true): void {
       o.face[0]!.texture = successor.texture;
       o.planetTextureLease = successor;
       predecessor.release();
+      releasedPredecessor = true;
     }
   }
+  if (releasedPredecessor) pixiManagedResourceOwner.compact();
   if (scheduleRefresh) scheduleSystemPlanetTextureRefresh();
 }
 
@@ -3525,12 +3583,15 @@ function sceneResourceDiagnostics(): unknown {
       managedTexturePixels += pixels;
     }
   }
+  const sceneTextStyleUpdateListeners = Object.values(SCENE_TEXT_STYLES)
+    .reduce((sum, style) => sum + style.listenerCount('update'), 0);
   return Object.freeze({
-    schema: 'cf-v2-scene-resources/v1',
+    schema: 'cf-v2-scene-resources/v2',
     documentToken: DOCUMENT_TOKEN,
     generation: sceneTextureGeneration,
     mode: nav.mode,
     registry: sceneTextureRegistry.snapshot(),
+    managedResources: pixiManagedResourceOwner.snapshot(),
     fineLayerActive: fineLayer !== null,
     fineScopeActive: fineTextureScope !== null,
     retiredFineOwnerCount: retiredFineTextureOwners.size,
@@ -3538,6 +3599,7 @@ function sceneResourceDiagnostics(): unknown {
     surfaceRequestedTierPx: surfacePlanetTextureOwner?.requestedTierPx ?? 0,
     pendingSurfaceRefreshes: surfacePlanetTextureOwner?.refreshTimer == null ? 0 : 1,
     pendingSystemRefreshes: systemPlanetTextureRefreshTimer === null ? 0 : 1,
+    pendingPersistenceWrites: activePersist === null ? 0 : 1,
     ringGeometryEntries: _rgCache.size,
     peakRingGeometryEntries,
     localCanvasCacheEntries: _coronaC.size + _termC.size,
@@ -3548,6 +3610,7 @@ function sceneResourceDiagnostics(): unknown {
     managedTextureCount,
     managedTextureClearedSlots: managedTextures.length - managedTextureCount,
     managedTexturePixels,
+    sceneTextStyleUpdateListeners,
     persistedPagehideCount,
     persistedPageshowCount,
   });

@@ -12,6 +12,7 @@ export interface SceneMemoryBudget {
   backingStorageBytesMax: number;
   heapAggregateBytesMax: number;
   warmHeapAggregateRangeBytesMax: number;
+  warmHeapSlopeBytesPerCycleMax: number;
   documentsMax: number;
   nodesMax: number;
   jsEventListenersMax: number;
@@ -58,6 +59,25 @@ export interface SceneRegistrySnapshot {
   activeScopes: Array<{ label: string; leaseCount: number; closed: boolean }>;
 }
 
+export interface PixiManagedResourceHashSnapshot {
+  name: string;
+  type: 'resource' | 'renderable';
+  liveEntryCount: number;
+  clearedEntryCount: number;
+}
+
+export interface PixiManagedResourceOwnerSnapshot {
+  schema: 'cf-v2-pixi-managed-resources/v2';
+  valid: boolean;
+  hashCount: number;
+  hashes: PixiManagedResourceHashSnapshot[];
+  liveEntryCount: number;
+  clearedEntryCount: number;
+  compactionCount: number;
+  compactedSlotCount: number;
+  faultCount: number;
+}
+
 export interface SceneAnswerabilityWitness {
   target: {
     ok: boolean;
@@ -81,8 +101,11 @@ export interface SceneMemoryPoint {
   sceneGeneration: number;
   documentToken: string;
   registry: SceneRegistrySnapshot;
+  managedResources: PixiManagedResourceOwnerSnapshot;
   managedTextureCount: number;
   managedTexturePixels: number;
+  managedTextureClearedSlots: number;
+  sceneTextStyleUpdateListeners: number;
   localCanvasCacheEntries: number;
   peakLocalCanvasCacheEntries: number;
   productRenderTargets: number;
@@ -124,7 +147,7 @@ export interface SceneMemoryProfileMeasurement {
 }
 
 export interface SceneMemoryInput {
-  schema: 'cf-v2-scene-memory-input/v1';
+  schema: 'cf-v2-scene-memory-input/v2';
   profiles: Record<SceneMemoryProfileName, SceneMemoryProfileMeasurement>;
   budgets: Record<SceneMemoryProfileName, SceneMemoryBudget>;
 }

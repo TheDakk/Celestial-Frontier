@@ -8,8 +8,8 @@
    Assumptions kept explicit:
    - "phone" is the existing evidence profile: 390x844, DPR 3, mobile/touch.
    - "desktop" is 1280x800, DPR 1.
-   - one warm-up cycle fills the exact route's intentional caches; four following
-     cycles must reproduce its settled resource inventory and per-cycle peaks.
+   - four unmeasured warm-up cycles fill the exact route's intentional caches;
+     four following cycles must reproduce its settled inventory and peaks.
    - Chromium exposes no portable true GPU-byte counter. Product-owned decoded
      pixels and Pixi managed TextureSource pixels are therefore named proxies.
    - Shipyard does not exist yet. This probe covers travel + Compendium and says
@@ -65,10 +65,14 @@ const packageLockPath = path.join(v2Root, 'package-lock.json');
 const appPackagePath = path.join(appDir, 'package.json');
 const gameMainPath = path.join(appDir, 'src', 'main.ts');
 const sceneTextureOwnerPath = path.join(appDir, 'src', 'scene-texture-owner.ts');
+const pixiManagedResourceOwnerPath = path.join(appDir, 'src', 'pixi-managed-resource-owner.ts');
+const pixiBatchTextureArrayPath = path.join(appDir, 'src', 'pixi-batch-texture-array.ts');
+const sceneTextPath = path.join(appDir, 'src', 'scene-text.ts');
 
 const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v1';
 const LIFECYCLE_SCHEMA = 'cf-v2-scene-memory-report-lifecycle/v1';
 const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v1';
+const WARMUP_CYCLES = 4;
 const WARM_CYCLES = SCENE_MEMORY_CYCLE_COUNT;
 const COMMAND_TIMEOUT_MS = 5_000;
 const ANSWERABILITY_TIMEOUT_MS = 2_000;
@@ -88,6 +92,7 @@ const EARTH = Object.freeze({ seed: 133, ordinal: 2 });
 const BUDGET_FIELDS = Object.freeze([
   'heapUsedBytesMax', 'embedderHeapUsedBytesMax', 'backingStorageBytesMax',
   'heapAggregateBytesMax', 'warmHeapAggregateRangeBytesMax',
+  'warmHeapSlopeBytesPerCycleMax',
   'documentsMax', 'nodesMax', 'jsEventListenersMax',
   'peakActiveLeaseCountMax', 'peakLiveTextureCountMax', 'peakLiveCanvasBytesMax',
   'managedTextureCountMax', 'managedTexturePixelsMax', 'localCanvasCacheEntriesMax',
@@ -102,6 +107,7 @@ const PRODUCER_AUTHORITY_FIELDS = Object.freeze([
   'collector', 'browserCdp', 'browserPath', 'workspaceLock', 'fixtureGenerator',
   'verdictContract', 'fixtureSpec', 'fixtureRows', 'baselineSaveFixtures',
   'package', 'packageLock', 'appPackage', 'gameMain', 'sceneTextureOwner',
+  'pixiManagedResourceOwner', 'pixiBatchTextureArray', 'sceneText',
 ]);
 
 class ProductFailure extends Error {
@@ -218,6 +224,9 @@ function exactInputs(fixture, budgetFile = null) {
     appPackage: hashFile(appPackagePath),
     gameMain: hashFile(gameMainPath),
     sceneTextureOwner: hashFile(sceneTextureOwnerPath),
+    pixiManagedResourceOwner: hashFile(pixiManagedResourceOwnerPath),
+    pixiBatchTextureArray: hashFile(pixiBatchTextureArrayPath),
+    sceneText: hashFile(sceneTextPath),
     budget: budgetFile ? hashFile(budgetFile) : null,
   });
 }
@@ -461,14 +470,15 @@ function routeStateExpression() {
     planetOrdinal:s.planetOrdinal,tickerTicks:s.tickerTicks,renderedScene:s.renderedScene,
     panel:s.panelOpen,sceneMode:r.mode,generation:r.generation,worldChildren:S.world.children.length,
     fineLayer:r.fineLayerActive,fineScope:r.fineScopeActive,pendingSurface:r.pendingSurfaceRefreshes,
-    pendingSystem:r.pendingSystemRefreshes,retiredFine:r.retiredFineOwnerCount,registry:r.registry}})()`;
+    pendingSystem:r.pendingSystemRefreshes,pendingPersistence:r.pendingPersistenceWrites,
+    retiredFine:r.retiredFineOwnerCount,registry:r.registry}})()`;
 }
 
 async function postRenderAnswerability(send, sessionId, profile, token) {
   const expression = `new Promise(resolve=>{const S=window.__CF_SLICE__,before=S.api.state().tickerTicks,
     documentTokenBefore=S.documentToken;
     S.app.ticker.addOnce(()=>setTimeout(()=>{const after=S.api.state().tickerTicks;
-      resolve({token:${JSON.stringify(token)},before,after,started:S.app.ticker.started===true,
+      resolve({before,after,started:S.app.ticker.started===true,
         documentTokenBefore,documentTokenAfter:S.documentToken})},0),undefined,-50)})`;
   const targetStarted = performance.now();
   const targetPromise = send('Runtime.evaluate', {
@@ -498,7 +508,7 @@ async function postRenderAnswerability(send, sessionId, profile, token) {
     );
   }
   const value = evaluationValue(target.response, `${profile} ${token} answerability`);
-  productAssert(value?.token === token && value?.started === true
+  productAssert(value?.started === true
     && Number.isSafeInteger(value?.before) && Number.isSafeInteger(value?.after)
     && value.after > value.before,
   `${profile} ${token}: target did not service a later advancing Pixi ticker turn`,
@@ -532,13 +542,17 @@ function contractPoint(snapshot) {
     documentToken: scene.documentToken,
     sceneGeneration: scene.generation,
     registry: scene.registry,
+    managedResources: scene.managedResources,
     managedTextureCount: scene.managedTextureCount,
     managedTexturePixels: scene.managedTexturePixels,
+    managedTextureClearedSlots: scene.managedTextureClearedSlots,
+    sceneTextStyleUpdateListeners: scene.sceneTextStyleUpdateListeners,
     localCanvasCacheEntries: scene.localCanvasCacheEntries,
     peakLocalCanvasCacheEntries: scene.peakLocalCanvasCacheEntries,
     productRenderTargets: scene.productRenderTargets,
     retiredFineOwnerCount: scene.retiredFineOwnerCount,
     pending: scene.pendingSurfaceRefreshes + scene.pendingSystemRefreshes
+      + scene.pendingPersistenceWrites
       + scene.retiredFineOwnerCount,
     ringCacheEntries: scene.ringGeometryEntries,
     peakRingGeometryEntries: scene.peakRingGeometryEntries,
@@ -595,7 +609,7 @@ async function navigateGame({ send, collector, sessionId, origin, profile }) {
     if(!S||!S.api||typeof S.api.sceneResourceDiagnostics!=='function'
       ||typeof S.api.compendiumDiagnostics!=='function'||!S.api.__sceneEvidence)return null;
     const s=S.api.state(),r=S.api.sceneResourceDiagnostics();return s.mode==='universe'
-      &&r.schema==='cf-v2-scene-resources/v1'&&r.registry?.schema==='cf-v2-scene-textures/v2'
+      &&r.schema==='cf-v2-scene-resources/v2'&&r.registry?.schema==='cf-v2-scene-textures/v2'
       ?{documentToken:S.documentToken,state:s,resources:r}:null})()`, Boolean, ROUTE_TIMEOUT_MS);
 }
 
@@ -631,6 +645,7 @@ async function driveCycle({ collector, sessionId, profile }) {
   };
   const universe = await observe('route universe start', (value) => exactMode('universe')(value)
     && value.retiredFine === 0 && value.pendingSurface === 0 && value.pendingSystem === 0
+    && value.pendingPersistence === 0
     && value.registry?.activeScopeCount === 1 && value.registry?.coherent === true);
   sceneObjectsByRoute.universe = universe.worldChildren;
   visitedRoutes.push('universe');
@@ -742,7 +757,8 @@ async function driveCycle({ collector, sessionId, profile }) {
   await collector.waitValue(sessionId, 'universe resource settlement', `(()=>{const S=window.__CF_SLICE__,r=S.api.sceneResourceDiagnostics(),c=S.api.compendiumDiagnostics();
     return r.mode==='universe'&&r.registry.coherent===true&&r.fineScopeActive===false
       &&r.surfaceTextureOwnerActive===false&&r.pendingSurfaceRefreshes===0
-      &&r.pendingSystemRefreshes===0&&r.retiredFineOwnerCount===0
+      &&r.pendingSystemRefreshes===0&&r.pendingPersistenceWrites===0
+      &&r.retiredFineOwnerCount===0
       &&r.registry.activeScopeCount===1&&r.ringGeometryEntries===0&&c.panel.mode==='closed'
       &&c.art?.live?.queuedJobs===0&&c.art?.live?.activeJobs===0
       &&c.art?.live?.leases===0&&c.art?.live?.subscribers===0?{r,c}:null})()`,
@@ -828,10 +844,33 @@ async function collectBfcache({ send, collector, sessionId, origin, profile, doc
   });
 }
 
+function leastSquaresSlope(values) {
+  assert(Array.isArray(values) && values.length === WARM_CYCLES
+    && values.every((value) => Number.isFinite(value) && value >= 0),
+  'heap slope requires four nonnegative measured samples');
+  const xMean = (values.length - 1) / 2;
+  const yMean = values.reduce((sum, value) => sum + value, 0) / values.length;
+  let numerator = 0;
+  let denominator = 0;
+  for (let index = 0; index < values.length; index++) {
+    const xDelta = index - xMean;
+    numerator += xDelta * (values[index] - yMean);
+    denominator += xDelta * xDelta;
+  }
+  assert(denominator > 0, 'heap slope denominator is empty');
+  return numerator / denominator;
+}
+
 function metricSummary(measurement) {
   const points = [measurement.precondition, ...measurement.cycles, measurement.bfcache].filter(Boolean);
   const warmAggregates = measurement.cycles.map((point) => point.heap.usedSize
     + point.heap.embedderHeapUsedSize + point.heap.backingStorageSize);
+  const warmHeapSlope = Math.max(0, ...[
+    measurement.cycles.map((point) => point.heap.usedSize),
+    measurement.cycles.map((point) => point.heap.embedderHeapUsedSize),
+    measurement.cycles.map((point) => point.heap.backingStorageSize),
+    warmAggregates,
+  ].map(leastSquaresSlope));
   const max = (select) => Math.max(...points.map(select));
   return Object.freeze({
     heapUsedBytesMax: max((point) => point.heap.usedSize),
@@ -840,6 +879,7 @@ function metricSummary(measurement) {
     heapAggregateBytesMax: max((point) => point.heap.usedSize
       + point.heap.embedderHeapUsedSize + point.heap.backingStorageSize),
     warmHeapAggregateRangeBytesMax: Math.max(...warmAggregates) - Math.min(...warmAggregates),
+    warmHeapSlopeBytesPerCycleMax: warmHeapSlope,
     documentsMax: max((point) => point.dom.documents),
     nodesMax: max((point) => point.dom.nodes),
     jsEventListenersMax: max((point) => point.dom.jsEventListeners),
@@ -917,12 +957,15 @@ async function collectProfile({
     });
     onProgress(measurement);
 
-    const warmupRoute = await driveCycle({ collector, sessionId, profile });
-    measurement.warmupInventory = warmupRoute.inventory;
-    measurement.routeInventories.push(routeInventory(warmupRoute.stages));
-    measurement.warmup = await collectSnapshot({
-      send, sessionId, collector, profile, label: `${profile}-warmup`,
-    });
+    for (let index = 0; index < WARMUP_CYCLES; index++) {
+      const warmupRoute = await driveCycle({ collector, sessionId, profile });
+      measurement.warmupInventory = warmupRoute.inventory;
+      measurement.routeInventories.push(routeInventory(warmupRoute.stages));
+      measurement.warmup = await collectSnapshot({
+        send, sessionId, collector, profile, label: `${profile}-warmup-${index + 1}`,
+      });
+      onProgress(measurement);
+    }
     measurement.precondition = contractPoint(measurement.warmup);
     productAssert(measurement.precondition.registry.observationWindow === 0,
       `${profile}: warmup changed the registry observation window`, measurement.precondition.registry);
@@ -997,7 +1040,7 @@ function makeRunningReport({ id, startedAt, source, inputs, mode, budgetFile }) 
     lifecycle: { schema: LIFECYCLE_SCHEMA, status: 'pending' },
     startedAt: startedAt.toISOString(), endedAt: null, durationMs: null,
     policy: {
-      attemptCount: 1, automaticRetries: 0, warmupCycles: 1,
+      attemptCount: 1, automaticRetries: 0, warmupCycles: WARMUP_CYCLES,
       measuredWarmCycles: WARM_CYCLES, commandTimeoutMs: COMMAND_TIMEOUT_MS,
       targetTimeoutMs: ANSWERABILITY_TIMEOUT_MS,
       heartbeatTimeoutMs: ANSWERABILITY_TIMEOUT_MS,
@@ -1083,7 +1126,7 @@ async function runGate(options) {
          budget. Empty measurements intentionally yield a red verdict but
          must not throw when the budget shape is authoritative. */
       evaluateSceneMemory({
-        schema: 'cf-v2-scene-memory-input/v1',
+        schema: 'cf-v2-scene-memory-input/v2',
         profiles: { phone: { cycles: [], bfcache: null }, desktop: { cycles: [], bfcache: null } },
         budgets: budget.profiles,
       });
@@ -1154,7 +1197,7 @@ async function runGate(options) {
       ]),
     );
     contractInput = {
-      schema: 'cf-v2-scene-memory-input/v1',
+      schema: 'cf-v2-scene-memory-input/v2',
       profiles: Object.fromEntries(Object.entries(profiles).map(([profile, measurement]) => [
         profile, {
           precondition: measurement.precondition,
@@ -1257,7 +1300,7 @@ function verifyReport(report, expectedRunId, options) {
   if (report?.lifecycle?.schema !== LIFECYCLE_SCHEMA
     || report?.lifecycle?.status !== 'complete') errors.push('report lifecycle is not complete');
   if (report?.policy?.attemptCount !== 1 || report?.policy?.automaticRetries !== 0
-    || report?.policy?.warmupCycles !== 1
+    || report?.policy?.warmupCycles !== WARMUP_CYCLES
     || report?.policy?.measuredWarmCycles !== WARM_CYCLES) {
     errors.push('one-attempt/warm-cycle policy drifted');
   }
@@ -1274,7 +1317,7 @@ function verifyReport(report, expectedRunId, options) {
       || !Array.isArray(measurement.cycles) || measurement.cycles.length !== WARM_CYCLES
       || !measurement.bfcache
       || !Array.isArray(measurement.routeInventories)
-      || measurement.routeInventories.length !== WARM_CYCLES + 1) {
+      || measurement.routeInventories.length !== WARMUP_CYCLES + WARM_CYCLES) {
       errors.push(`${profile} terminal profile evidence is incomplete or red`);
     }
   }
@@ -1285,21 +1328,29 @@ function verifyReport(report, expectedRunId, options) {
   if (Array.isArray(report?.fatalEvents) && report.fatalEvents.length) {
     errors.push('terminal report contains fatal browser events');
   }
-  if (report?.certification === 'contract-budget') {
-    if (!options.budgetFile) errors.push('external-budget report requires the same --budget for verification');
-    else {
-      try {
-        authoritativeBudgetFile = assertBudgetAuthority(options.budgetFile);
-        const currentBudget = readJson(authoritativeBudgetFile);
-        const validation = validateBudget(currentBudget);
-        if (!validation.ok) errors.push(...validation.errors);
-        if (report.budget?.sha256 !== hashFile(authoritativeBudgetFile)) errors.push('budget hash drifted');
-        if (!same(report?.contractInput?.budgets, currentBudget.profiles)) {
-          errors.push('contract input budget differs from the supplied authority');
-        }
-      } catch (error) { errors.push(`budget authority failed: ${error.message}`); }
-    }
-  } else if (options.budgetFile) errors.push('--budget was supplied for a non-budget report');
+  if (report?.certification !== 'contract-budget') {
+    errors.push('report certification must be contract-budget');
+  }
+  if (!options.budgetFile) errors.push('verification requires the same tracked --budget');
+  else {
+    try {
+      authoritativeBudgetFile = assertBudgetAuthority(options.budgetFile);
+      const currentBudget = readJson(authoritativeBudgetFile);
+      const validation = validateBudget(currentBudget);
+      if (!validation.ok) errors.push(...validation.errors);
+      const expectedReportBudget = {
+        schema: BUDGET_SCHEMA,
+        path: portable(authoritativeBudgetFile),
+        sha256: hashFile(authoritativeBudgetFile),
+      };
+      if (!same(report?.budget, expectedReportBudget)) {
+        errors.push('report budget authority path/schema/hash drifted');
+      }
+      if (!same(report?.contractInput?.budgets, currentBudget.profiles)) {
+        errors.push('contract input budget differs from the supplied authority');
+      }
+    } catch (error) { errors.push(`budget authority failed: ${error.message}`); }
+  }
   try {
     if (!report?.contractInput || !report?.verdict) errors.push('contract input/verdict is absent');
     else {
@@ -1353,4 +1404,8 @@ async function main() {
   return await runGate(options);
 }
 
-process.exitCode = await main();
+if (process.argv[1] && path.resolve(process.argv[1]) === collectorPath) {
+  process.exitCode = await main();
+}
+
+export { verifyReport };
