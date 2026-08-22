@@ -10,6 +10,15 @@ summary of it.
 
 ## Contents
 
+### `ARC1_CLAUDE_REVIEW_2026-08-22.md` — Anthropic/Claude Arc 1 read-only review
+
+The full-Arc adversarial review of PR #33 head `8b2c423b` against base `d4ab7e67…`, requested by the
+`openai/mac` handoff. Records the exact review authority, what was independently recomputed here
+(evidence hashes, all 21 producer inputs, raw↔derived agreement inside the certification report),
+one MEDIUM instrument-hardening finding and three LOW items — each with file/line, why the existing
+suites miss it, the smallest correction, and its required negative control. It claims no hosted CI,
+HUMAN judgment, Gate closure, or release authority.
+
 ### `PR32_LINUX_MEMORY_EVIDENCE_2026-08-21.md` — exact-head cross-host ruler evidence
 
 GitHub Actions run `32441023665` reached a complete 78-outcome Compendium report on exact Edge
