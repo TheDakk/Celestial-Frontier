@@ -58,6 +58,7 @@ jobs:
     env:
       CF_BROWSER: /usr/bin/microsoft-edge-stable
       CF_COMPENDIUMMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-compendiummem
+      CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -152,6 +153,41 @@ jobs:
         working-directory: port/v2
         run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
 
+      # Arc 1B has a separate browser/product authority from Arc 1A. Install
+      # its exact Edge only after the .86 Compendium report is terminal and
+      # verified; neither ruler borrows the other's browser identity.
+      - name: install exact Arc 1B Edge scene-memory browser
+        shell: bash
+        env:
+          EDGE_PACKAGE_URL: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.93-1_amd64.deb
+          EDGE_PACKAGE_SHA256: 09e3819fcd01e526cf4c26dab8a028679ced0cfd73ce89418c773c47ca366ebf
+        run: |
+          set -euo pipefail
+          scene_edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.93-1_amd64.deb"
+          curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$scene_edge_package"
+          printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$scene_edge_package" | sha256sum --check --strict
+          sudo apt-get install --yes "$scene_edge_package"
+          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.93-1"
+          test -x "$CF_BROWSER"
+      - name: scene-memory instrument and calibration controls
+        working-directory: port/v2
+        run: |
+          node tools/browserpath.mjs --selftest
+          node --check tools/scenemem.mjs
+          node --check tools/scenemem-contract.mjs
+          npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts
+      - name: one-attempt scene-memory certification
+        id: scenemem
+        timeout-minutes: 10
+        working-directory: port/v2
+        run: node tools/scenemem.mjs --budget=budgets/scene-memory-v1.json
+      - name: verify current scene-memory evidence
+        if: >-
+          always() &&
+          (steps.scenemem.outcome == 'success' || steps.scenemem.outcome == 'failure')
+        working-directory: port/v2
+        run: node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v1.json
+
       # Chrome gates remain one attempt each and run only after every cheaper
       # gate and the exact-Edge ruler are green.
       - name: Chrome provenance and reporter selftests
@@ -215,6 +251,14 @@ jobs:
           path: |
             port/v2/apps/game/smoke/compendiummem-report.json
             port/v2/apps/game/smoke/compendiummem-${{ env.CF_COMPENDIUMMEM_RUN_ID }}-*.png
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: archive scene-memory evidence
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: v2-scene-memory-evidence
+          path: port/v2/apps/game/smoke/scenemem-report.json
           if-no-files-found: ignore
           retention-days: 14
       - name: archive battery reports
