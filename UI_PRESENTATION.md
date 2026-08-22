@@ -1,5 +1,75 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-22 v2 Arc 1C Shipyard/surface overlay — current source:** clean
+> product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds one real, read-only
+> **Shipyard — Inspection** panel to the established one-panel system. It opens from the desktop
+> right rail and the phone dock, whose exact compact contract is now 260px, 5 columns × 2 rows,
+> nine controls. The real controls, ARIA/focus-visible behavior, panel close path, compact geometry,
+> and safe-area relationships are exercised in Slice Smoke and the 12-viewport Glass Matrix.
+>
+> Shipyard renders chassis, provenance, the exact installed-system order
+> `jumpdrive,array,igdrive,autoext,cscoop`, and exact `array`/`autoext`/`cscoop` hardpoints from one
+> pure recursively frozen `ShipVisualState`. `ascStageOf` remains the sole travel/chassis-stage
+> authority; livery seed is the stable legacy `0x5111`, and `legacy-charter-refit` is terminal-only.
+> The four silhouettes are deterministic, code-native SVG. Exactly one DOM/SVG preview owner may
+> exist while open; replace/close disposes it, and settled diagnostics require zero active, retained
+> and pending preview work. No Shipyard Pixi scene, second renderer, `RenderTexture`, animation,
+> filter or particle owner was added.
+>
+> Copy is deliberately bounded: chassis and fittings reflect owned permanent systems; a terminal
+> legacy refit stays generic and does not name an absent drive; **Long-Range Array**,
+> **Auto-Extractor**, and **Corona Scoop** use their exact player names; and the panel explicitly
+> says Fabrication, Research and ship upgrades are unavailable. Guide capability is therefore
+> partial inspection, not a build/reward/save writer.
+>
+> `SurfacePlanetTextureAttachment` now owns each displayed surface planet's HD replacement
+> transaction. It keeps the predecessor attached and leased until an identity-current successor
+> publishes, derives the claimed 512/768/1024 tier from the exact attached TextureSource backing,
+> rolls back or release-cleans stale/undersized/failing successors, and leaves failed demand
+> retryable. SceneMemory now drives the real Shipyard leg and proves settled zero preview ownership.
+> Activation/certification source `59530da3bf40965adf9c54f169b310e11ccdd0f8` binds
+> `scene-memory-v2.json` SHA-256
+> `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`;
+> local one-attempt/no-retry run `20260822-arc1-local-certification` passed 42/42 plus named
+> verification under Edge `151.0.4129.101`. This documentation descendant is not the exact
+> certified head. Hosted CI/integration, release/deploy, Cargo/Inventory/Forge UI,
+> Fabrication/Research/upgrades, richer living previews, and HUMAN silhouette judgment remain open.
+
+> **2026-08-21 v2 Arc 1B scene-resource overlay (historical foundation; current where Arc 1C does not supersede it):** Arc 1B is
+> lifecycle and measurement infrastructure, not a new player-facing panel, visual redesign, HD-art
+> pass, gameplay system, release, or version bump. The existing Universe → Galaxy/fine → System →
+> Surface → Compendium presentation remains the product surface. A document-wide canvas-texture
+> registry now refcounts non-backdrop scene resources; scene construction and fine/surface/HD-tier
+> replacements transfer ownership transactionally, and final logical release destroys the owned
+> TextureSource. Settled Universe boundaries also reconcile retired owners, timers, pending writes,
+> route-local canvases, and ring/corona/terminator caches. Persisted bfcache suspension preserves the
+> same live renderer; only intentional document replacement performs final teardown.
+>
+> Pixi retention is bounded at the owning seams: managed GC hashes compact only after product
+> release, owned Graphics contexts are destroyed, destroyed scene Text detaches from shared
+> TextStyle listeners, and `BatchTextureArray.clear()` removes only its cleared UID tombstones in
+> place. The galaxy renderer still materializes the original ordered ±1.2R window and preserves halo
+> content while avoiding a duplicate traversal. No player copy or visible scene content was added by
+> these repairs.
+>
+> The standalone scene-memory route uses one Edge process, four unmeasured warmups and four measured
+> phone/desktop cycles through the existing travel surfaces and the 1,500-row Compendium. Product/
+> ruler authority is exact commit `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`; tracked budget and
+> workflow activation is `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`, with budget SHA-256
+> `78a9e81a121d2598b8d83bbbd0c8311e503470dcd88083f959fc82c181ee5afb`. Run
+> `20260821-arc1b-local-certification` at that clean activation passed 40/40 under Edge
+> `151.0.4129.93`, complete lifecycle/cleanup and independent named verification. Retained evidence
+> descendant `b30b6d49a8ff1745f33be9a329d421309b96b5e3` archives the report; later documentation commits
+> do not retroactively make their HEAD the certified source. This is local exact-authority evidence,
+> not hosted terminal-green or HUMAN visual authority.
+>
+> At this historical Arc 1B boundary, Shipyard was explicitly `future-arc-1c`: no absent panel,
+> texture owner, or test route was fabricated. The completed static Arc 1C foundation is recorded
+> above. Broader HD-visual expansion,
+> living actors/biome animation, long-task/hidden-tab work, and all Cargo,
+> crafting, research, upgrade, combat, and companion features also remain future work; Arc 1B closes
+> only the existing-scene lifecycle and automated memory boundary.
+
 > **2026-08-16 D-TRAIN-1 UI overlay (current source; local browser evidence
 > recorded below; exact-head CI, integration, real-save Gate C, and human
 > authority remain open):**
@@ -90,7 +160,7 @@
 > certification, and it changes no schema, production version, shipped release
 > or update-popup state.
 
-> **2026-08-20 v2 Arc 1A UI/resource overlay — current implementation:** The read-only
+> **2026-08-20 v2 Arc 1A UI/resource overlay — historical implementation foundation:** The read-only
 > Compendium now virtualizes all 1,500 deterministic rows to a visible variable-height
 > window, bounded overscan, and any focus-pinned row. Native keyboard focus and logical
 > anchor-plus-offset survive measurement, filtering, detail/Back reconstruction, and row
@@ -231,24 +301,25 @@
 > samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
 > baseline breaches. A synthetic desktop-identity line corrected the focused check from 12/13 to
 > 13/13 without changing or rerunning browser evidence. No UI/product, timing, launch, workflow,
-> producer, browser-CDP, or retry-policy change occurred. Terminal-green PR #32 returns immediately
-> to Arc 1B/gameplay.
+> producer, browser-CDP, or retry-policy change occurred. At this historical Arc 1A boundary,
+> terminal-green PR #32 was the prerequisite for the Arc 1B lifecycle work now recorded in the
+> current overlay above.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
 > list, focus-pinned, and detail PNGs still await HUMAN review. This repair owns the current surface
-> globe's fitted start and live tier swap only; the broader Arc 1B/1C scene-resource disposal and HD
-> texture package remains open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
-> research, or upgrade controls.
+> globe's fitted start and live tier swap only. At this historical boundary Arc 1B still owned the
+> broader existing-scene lifecycle while Shipyard and named HD attachment remained Arc 1C. The
+> 2026-08-22 overlay above records their static/read-only implementation; Cargo, crafting,
+> Research and upgrade controls still remain later work.
 >
-> The approved Shipyard is a new responsive panel, not a repurposed character sheet. Its
+> The approved—and now statically implemented—Shipyard is a new responsive panel, not a repurposed character sheet. Its
 > static presentation reads one pure `ShipVisualState` shared with the travel-reach
 > projection: Scout/Chemical, Jump/Interstellar, Array/Survey Cruiser and
 > Intergalactic/Frontier chassis, plus independent Auto-Extractor and Corona Scoop
 > hardpoints. The legacy `ascCh` veteran-completion fallback receives an honest refit
 > presentation even when no old drive item exists. A before/after build preview, installed-
-> system list and reach copy must all agree; art never grants capability. At most one Pixi
-> preview may animate engines, beacons or the array. It pauses when hidden/reduced-motion
-> and disposes scene-owned textures, filters and particles on panel close; no Pixi renderer
-> is created per inventory row. The progression layout is a player-respectful mastery
+> system list and reach copy must all agree; art never grants capability. Arc 1C chose one
+> owned static DOM/SVG preview and no Pixi preview, second renderer or `RenderTexture`; a later
+> motion proposal would require separate ownership and reduced-motion proof. The progression layout is a player-respectful mastery
 > ladder: each earned capability has an immediately readable silhouette and named outcome,
 > optional systems remain legible hardpoints, and cosmetic rarity never impersonates power.
 >
@@ -268,7 +339,8 @@
 > and accessibility lenses; it records clarity, agency, delight, meaningful choice,
 > attachment and fatigue—not retention pressure or engagement targets.
 >
-> **2026-08-15 v2 development overlay (matches the current `port/v2` contract):**
+> **Historical 2026-08-15 v2 development overlay (superseded wherever the current overlays above
+> differ):**
 > Desktop notifications now rise from the bottom-right utility edge above the measured
 > dock; Settings and Records open from that same bottom-right anchor. Panel padding,
 > row spacing, dividers, corner radii and inset borders use one balanced glass grammar.
@@ -298,8 +370,8 @@
 > repeated block stays quiet. The matching Guide route/Charter copy carries both precise
 > capability boundaries and never promises Signature collection.
 >
-> **2026-08-12 v2 port base overlay:** The phone slice now
-> owns an explicit 206×98, 4×2 dock and publishes measured `--dock-h` and
+> **Historical 2026-08-12 v2 port base overlay:** At that eight-control boundary, the phone slice
+> owned an explicit 206×98, 4×2 dock and published measured `--dock-h` and
 > `--ctx-h`. Context, hint and Planetside offsets derive from those values, so a
 > wrapped line, safe-area change or media-query change cannot bury copy beneath
 > the dock. The 390×844 real-browser leg checks pairwise rectangle clearance,
@@ -307,7 +379,7 @@
 > injects the old overlap and requires the gate to fail. Hint verbs also use real
 > word-boundary regex bytes, so `.kw` highlighting is tested as an outcome. A
 > separate fresh-origin phone leg keeps Field Training active, anchors its card
-> above measured `--dock-h`, proves all eight dock centres remain geometrically
+> above measured `--dock-h`, proved all eight dock centres remained geometrically
 > clear, and rejects an injected training-card burial; the veteran phone capture
 > can no longer make that fresh-player layout pass vacuously.
 > Pixi also uses `autoDensity: true`: the backing store remains DPR-scaled
@@ -560,9 +632,10 @@
 > activation head must still own exact-source local resource certification and corresponding
 > terminal-green PR test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150
-> browser. Fresh six-image evidence still awaits HUMAN review. The broader Arc 1B/1C
-> scene-texture ownership/disposal and HD texture package, broader long-task
-> coverage, and fuller hidden-tab behavior remain open. The v2 static preview packaging/hosting
+> browser. Fresh six-image evidence still awaits HUMAN review. The current Arc 1C overlay above
+> supersedes this historical open scene-texture ownership/disposal claim and now implements the
+> read-only Shipyard plus named HD attachment; broader HD visual expansion,
+> broader long-task coverage, and fuller hidden-tab behavior remain bounded future work. The v2 static preview packaging/hosting
 > contract is documented separately in `port/DEVELOPMENT_PREVIEW.md`; a preview
 > is development evidence, never a release or production deployment.
 >

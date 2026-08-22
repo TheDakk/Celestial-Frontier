@@ -1,7 +1,7 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-**Status:** process reference, matches preview packaging and the Actions-budget publication freeze
-as of 2026-08-20. This is not a release record.
+**Status:** process reference, matches preview packaging and the Actions-budget publication guard
+as of 2026-08-22. This is not a release record.
 
 ## Separate-origin requirement; approved branch site
 
@@ -251,7 +251,8 @@ strict ceilings with 14 phone / 13 desktop breaches. Focused activation is 13/13
 synthetic desktop identities fixed its initial phone-only control without changing browser evidence.
 Exact head `731b2e2…` passed the full local battery. Hosted run `32420327368` was then consumed at
 the 40-minute Compendium job ceiling with lifecycle-pending evidence and no product verdict; it is
-not rerun authority. PR #32 remains blocked under the frozen efficiency gate. No launch argument,
+not rerun authority. At that historical checkpoint PR #32 remained blocked under the then-frozen
+efficiency gate; changed-head run `32462323775` later passed and PR #32 merged at `d4ab7e6…`. No launch argument,
 product byte, producer, browser-CDP, or retry policy changed.
 Exact `aecf386…` later bounds static-server close at one immutable monotonic 2,000 ms; exact/late/
 missing/error callbacks force one connection close and reject, while cleanup red suppresses PASS/
@@ -264,6 +265,47 @@ workflow still cannot certify the ruler, and publication remains separately auth
 This does not re-pin Gate A or the global browser authority: `../tools/deps.pinned.json` remains
 Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates, any
 timing, product bytes, or the one-attempt/zero-retry policy.
+
+## Arc 1 scene-memory boundary (2026-08-22)
+
+Arc 1B's standalone scene-memory-v1 gate remains the exact historical authority for the existing
+rendered scenes before Shipyard. Product/ruler `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`
+and activation `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910` produced one local no-retry 40/40
+certificate under Edge `.93`, complete lifecycle/cleanup and named verification. Its
+`shipyardStatus: future-arc-1c` field was truthful at that source; it is not proof of Arc 1C.
+
+Arc 1C product/ruler source `a4de5007ffc9131b8bc952a0a4cb469d9139039e` implements a responsive
+read-only Shipyard with one code-native SVG/DOM preview owner, zero second renderer/RenderTexture,
+and a named HD-surface texture attachment. Exact activation/certification source
+`59530da3bf40965adf9c54f169b310e11ccdd0f8` binds `budgets/scene-memory-v2.json` SHA-256
+`3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`. Local no-retry run
+`20260822-arc1-local-certification` passed 42/42 under Edge `151.0.4129.101`, complete lifecycle and
+browser/server/workspace-lock cleanup, zero findings/fatal events and a passing exact named-run
+verifier. Report raw/gzip SHA-256 are
+`e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5` /
+`0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6`.
+
+The current gate uses one browser process for 390×844 phone and 1280×800 desktop profiles, four
+unmeasured warmups and four measured cycles through Universe, Galaxy/fine, Sol/System,
+Earth/Surface, the 1,500-row Compendium, the real Shipyard, and settled Universe. Forty-two outcomes
+include the visible Shipyard opener, exact canonical visual/DOM state, one open preview, owned Close,
+and zero retained/pending preview work after Close. The Fabricator, Research Bench, Cargo/material
+spending, fabrication, research and upgrades remain unavailable.
+
+The guarded ordinary `test-battery` carries this scene-memory-v2 step serially after Arc 1A's exact
+Edge `.86` report is terminal and verified and before the Chrome smoke/Glass/persona/preview steps.
+It installs exact Edge `.101`, runs the browser-free instrument and calibration controls, performs
+one no-retry active-budget certification, always verifies the named terminal report, and uploads
+whatever that attempt produced as `v2-scene-memory-evidence`. This is part of the single fail-fast
+owner-label-authorized battery, not a new parallel job or automatic retry. At this handoff **zero
+Arc 1C hosted attempts have run or are authorized**. Local 42/42 evidence does not authorize adding the label,
+dispatching either workflow, publishing, marking a PR Ready, merging, releasing, or deploying.
+
+The separate manual `development-preview-package` workflow still owns preview packaging and its
+existing Arc 1A `.86` Compendium/Chrome sequence; it does not run or certify the Arc 1
+scene-memory-v2 ruler. A future preview artifact may include the current product bytes only after
+its own exact-source workflow authorization, but package verification remains distinct from scene-memory,
+hosted-battery, HUMAN, merge, and release authority.
 
 `preview:verify` proves package integrity and the safety metadata. It does not assert that a
 commit is still the newest development commit. The full 40-character commit and
@@ -479,30 +521,32 @@ made green by lengthening startup or clearing D-Bus. This infrastructure repair
 does not authorize publication. The separate-origin hosting choice and genuine
 human playtest remain required before PR #11 may leave draft or merge.
 
-The ordinary battery (parallel-job structure since 2026-08-14) emits these artifacts
-(per-job report/log evidence is still uploaded when that job is red):
+The ordinary guarded battery's single serialized, fail-fast product job emits these artifacts.
+Report/log evidence is still uploaded when its owning step is red:
 
 - `root-reports` + `root-layout-evidence`: the root fingerprint/current report and the
-  atomic uilayout evidence, from the `root-gates` job;
-- `v2-smoke-evidence` / `v2-glass-evidence`: `slice-smoke-report.json` + log and
-  `glassmatrix-report.json` (now including per-viewport `viewportTimings`), uploaded by
-  their own jobs so red runs retain evidence;
+  atomic uilayout evidence, retained by the serial battery job's always-run upload steps;
 - `v2-compendium-memory-evidence`: the exact-run `compendiummem-report.json` and every
   same-run phone/desktop list, detail, and focus-pinned review artifact produced. A terminal
   product PASS/FAIL must bind the complete six-image packet; an earlier instrument failure may
   diagnose why none exists. A success remains RUNNING/lifecycle-pending until owned browser/server
   cleanup and workspace-lock release complete; only then may its sample and terminal report
-  publish, and named verification requires that lifecycle. The independent job runs the browser-
-  free instrument selftest before one ordinary active-budget certification, then always verifies the named run id and uploads
+  publish, and named verification requires that lifecycle. The owning serial steps run the browser-
+  free instrument selftest before one ordinary active-budget certification, then verify the named run id and upload
   current evidence even when the gate is red. The local report/PNGs are Git-ignored,
   overwritten current-run evidence—not a committed PASS; certification exists only when the
   exact-current report verifies. They do not supply the still-open [HUMAN] six-image visual
-  judgment. Arc 1B is not claimed;
-- `battery-reports`: the joined smoke/glass/persona bundle assembled by the final
-  `v2-persona-preview` job;
+  judgment. That artifact alone does not claim Arc 1B;
+- `v2-scene-memory-evidence`: the Arc 1 scene-memory-v2 `scenemem-report.json` from the same one
+  authorized, serial test-battery attempt. The gate owns four warmups plus four measured cycles,
+  42 outcomes including the real Shipyard lifecycle, complete cleanup, and exact named-run
+  verification under Edge `.101`; the artifact is retained even when red. Missing, incomplete,
+  nonterminal, wrong-browser, unverified, bypassed-opener/Close, duplicate-preview, or retained-work
+  evidence remains red. It supplies no HUMAN or preview-publication authority;
+- `battery-reports`: the smoke/glass/persona bundle assembled after those earlier serial steps;
 - `v2-browser-evidence`: the real-browser screenshots;
 - `v2-development-preview`: a loopback-playable, commit-bound review artifact, produced
-  by the final job only when **all** battery jobs are green; `publishable:false` prevents
+  only when **all** preceding battery steps are green; `publishable:false` prevents
   remote execution.
 
 The separate `development-preview-package` workflow is manual (`workflow_dispatch`). GitHub

@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import {
   displayedPlanetTextureDemandPx,
   nextPlanetTextureTierPx,
+  planetTextureTierForBackingPx,
   planetTextureTierForDemandPx,
   sameSurfacePlanetTextureIdentity,
 } from '../apps/game/src/planet-texture-demand.js';
@@ -16,11 +17,15 @@ const thumbArtSource = readFileSync(
   fileURLToPath(new URL('../packages/art/src/thumbart.verbatim.js', import.meta.url)),
   'utf8',
 );
+const attachmentSource = readFileSync(
+  fileURLToPath(new URL('../apps/game/src/planet-texture-attachment.ts', import.meta.url)),
+  'utf8',
+);
 
 function surfaceDemandBindingErrors(source: string): string[] {
   const errors: string[] = [];
   const demandCalls = source.match(
-    /displayedPlanetTextureDemandPx\(R \* 2, fitZ, DPR\)/g,
+    /displayedPlanetTextureDemandPx\(\s*SURFACE_PLANET_DIAMETER_CSS_PX,\s*fitZ,\s*DPR,?\s*\)/g,
   ) ?? [];
   const surfaceBindings = source.match(
     /getPlanetSprite\(p\.P, initialTextureDemandPx\)/g,
@@ -35,44 +40,50 @@ function surfaceDemandBindingErrors(source: string): string[] {
 
 function surfaceTextureLifecycleBindingErrors(
   source: string,
+  ownerSource = attachmentSource,
   thumbSource = thumbArtSource,
 ): string[] {
   const errors: string[] = [];
   const exactBindings: ReadonlyArray<readonly [string, string]> = [
     [
-      'scheduleSurfacePlanetTextureRefresh(surfacePlanetTextureOwner, initialTextureDemandPx);',
+      'surfacePlanetTextureOwner = new SurfacePlanetTextureAttachment({',
+      'surface does not construct the named texture attachment',
+    ],
+    [
+      'surfacePlanetTextureOwner.scheduleRefresh(initialTextureDemandPx);',
       'initial fitted tier has no post-bake refresh',
     ],
     [
-      'owner.requestedTierPx = nextTierPx;',
-      'requested tier is not committed before the refresh',
+      'owner.requestDemand(displayedPlanetTextureDemandPx(',
+      'live zoom and DPR do not drive the named attachment',
     ],
     [
-      'if (surfacePlanetTextureOwner?.refreshTimer != null) {\n    clearTimeout(surfacePlanetTextureOwner.refreshTimer);',
+      'previous?.cancelPending();',
       'surface teardown does not cancel its current refresh',
     ],
     [
-      'publishSurfacePlanetTexture(owner, getPlanetSprite(owner.planet.P, demandPx));',
-      'post-bake refresh does not re-read and publish the requested tier',
+      'previousSurfacePlanetTextureOwner.dispose();',
+      'surface teardown does not release the attachment after display destruction',
     ],
     [
-      'const nextTierPx = nextPlanetTextureTierPx(owner.requestedTierPx, demandPx);',
-      'live demand does not compare against the owned tier',
+      'currentIdentity: currentSurfacePlanetTextureIdentity,',
+      'surface attachment is not bound to the current world identity',
     ],
     [
-      'if (nextTierPx === null) return;',
-      'same-tier demand is not suppressed',
+      "acquireLease: (canvas) => sceneTextureLease(canvas, 'planet-texture'),",
+      'surface attachment successor bypasses the scene texture registry',
     ],
     [
-      'requestSurfacePlanetTextureDemand(displayedPlanetTextureDemandPx(\n    owner.diameterCssPx,\n    camT.z,\n    DPR,\n  ));',
-      'live zoom and DPR do not drive displayed backing demand',
+      'textureBackingSize: (texture) => ({',
+      'surface attachment does not observe the attached TextureSource backing',
     ],
   ];
   for (const [binding, error] of exactBindings) {
     if (source.split(binding).length - 1 !== 1) errors.push(error);
   }
   const refreshDelay = Number(
-    /const SURFACE_PLANET_TEXTURE_REFRESH_MS = (\d+);/.exec(source)?.[1] ?? Number.NaN,
+    /export const SURFACE_PLANET_TEXTURE_REFRESH_MS = (\d+);/.exec(ownerSource)?.[1]
+      ?? Number.NaN,
   );
   const bakeDelay = Number(
     /_hdLater\(\(\)=>\{[\s\S]*?renderPlanetSprite\(P, hdPx\|\|P_PX\)[\s\S]*?\},\s*(\d+)\);/
@@ -106,6 +117,15 @@ describe('displayed planet texture demand', () => {
     expect(thumbArtSource).toContain(
       "const hdPx=(wantPx|0)>=900 ? 1024 : ((wantPx|0)>640 ? 768 : 0);",
     );
+  });
+
+  it('derives a published tier only from an exact square attached backing', () => {
+    expect(planetTextureTierForBackingPx(512, 512)).toBe(512);
+    expect(planetTextureTierForBackingPx(768, 768)).toBe(768);
+    expect(planetTextureTierForBackingPx(1024, 1024)).toBe(1024);
+    expect(planetTextureTierForBackingPx(128, 128)).toBe(0);
+    expect(planetTextureTierForBackingPx(768, 512)).toBe(0);
+    expect(planetTextureTierForBackingPx(Number.NaN, 768)).toBe(0);
   });
 
   it('upgrades genuine phone and desktop zoom demand without rescheduling an owned tier', () => {
@@ -158,12 +178,14 @@ describe('displayed planet texture demand', () => {
     expect(surfaceTextureLifecycleBindingErrors(mainSource)).toEqual([]);
     expect(mainSource).toContain('updateSurfacePlanetTextureDemand();');
     expect(mainSource).toContain('releaseSurfacePlanetTextureOwner();');
-    expect(mainSource).toContain('sameSurfacePlanetTextureIdentity(owner, currentSurfacePlanetTextureIdentity())');
+    expect(attachmentSource).toContain(
+      'sameSurfacePlanetTextureIdentity(this.identity, this.currentIdentity())',
+    );
   });
 
   it('negative control: removing the initial post-bake refresh is rejected', () => {
     const broken = mainSource.replace(
-      'scheduleSurfacePlanetTextureRefresh(surfacePlanetTextureOwner, initialTextureDemandPx);',
+      'surfacePlanetTextureOwner.scheduleRefresh(initialTextureDemandPx);',
       '',
     );
     expect(broken).not.toBe(mainSource);
@@ -172,70 +194,81 @@ describe('displayed planet texture demand', () => {
     );
   });
 
-  it('negative control: a tier that is not committed before refresh is rejected', () => {
-    const broken = mainSource.replace('owner.requestedTierPx = nextTierPx;', '');
+  it('negative control: bypassing the named attachment construction is rejected', () => {
+    const broken = mainSource.replace(
+      'surfacePlanetTextureOwner = new SurfacePlanetTextureAttachment({',
+      'surfacePlanetTextureOwner = null; void ({',
+    );
     expect(broken).not.toBe(mainSource);
     expect(surfaceTextureLifecycleBindingErrors(broken)).toContain(
-      'requested tier is not committed before the refresh',
+      'surface does not construct the named texture attachment',
+    );
+  });
+
+  it('negative control: hiding the attached TextureSource backing is rejected', () => {
+    const broken = mainSource.replace('textureBackingSize: (texture) => ({', 'backingSize: (texture) => ({');
+    expect(broken).not.toBe(mainSource);
+    expect(surfaceTextureLifecycleBindingErrors(broken)).toContain(
+      'surface attachment does not observe the attached TextureSource backing',
     );
   });
 
   it('negative control: hard-coding the live zoom path back to 1024 is rejected', () => {
     const broken = mainSource.replace(
-      'requestSurfacePlanetTextureDemand(displayedPlanetTextureDemandPx(\n    owner.diameterCssPx,\n    camT.z,\n    DPR,\n  ));',
-      'requestSurfacePlanetTextureDemand(1024);',
+      'owner.requestDemand(displayedPlanetTextureDemandPx(',
+      'owner.requestDemand(1024); void displayedPlanetTextureDemandPx(',
     );
     expect(broken).not.toBe(mainSource);
     expect(surfaceTextureLifecycleBindingErrors(broken)).toContain(
-      'live zoom and DPR do not drive displayed backing demand',
-    );
-  });
-
-  it('negative control: removing duplicate-tier suppression is rejected', () => {
-    const broken = mainSource.replace('if (nextTierPx === null) return;', '');
-    expect(broken).not.toBe(mainSource);
-    expect(surfaceTextureLifecycleBindingErrors(broken)).toContain(
-      'same-tier demand is not suppressed',
-    );
-  });
-
-  it('negative control: disconnecting the owned tier from live demand is rejected', () => {
-    const broken = mainSource.replace(
-      'const nextTierPx = nextPlanetTextureTierPx(owner.requestedTierPx, demandPx);',
-      'const nextTierPx = planetTextureTierForDemandPx(demandPx);',
-    );
-    expect(broken).not.toBe(mainSource);
-    expect(surfaceTextureLifecycleBindingErrors(broken)).toContain(
-      'live demand does not compare against the owned tier',
-    );
-  });
-
-  it('negative control: a refresh at or before the painter timer is rejected', () => {
-    const exactBoundary = mainSource.replace(
-      'const SURFACE_PLANET_TEXTURE_REFRESH_MS = 31;',
-      'const SURFACE_PLANET_TEXTURE_REFRESH_MS = 30;',
-    );
-    expect(exactBoundary).not.toBe(mainSource);
-    expect(surfaceTextureLifecycleBindingErrors(exactBoundary)).toContain(
-      'refresh delay 30 does not follow bake delay 30',
-    );
-    const tooEarly = mainSource.replace(
-      'const SURFACE_PLANET_TEXTURE_REFRESH_MS = 31;',
-      'const SURFACE_PLANET_TEXTURE_REFRESH_MS = 29;',
-    );
-    expect(surfaceTextureLifecycleBindingErrors(tooEarly)).toContain(
-      'refresh delay 29 does not follow bake delay 30',
+      'live zoom and DPR do not drive the named attachment',
     );
   });
 
   it('negative control: removing teardown cancellation is rejected', () => {
-    const broken = mainSource.replace(
-      'if (surfacePlanetTextureOwner?.refreshTimer != null) {\n    clearTimeout(surfacePlanetTextureOwner.refreshTimer);',
-      'if (surfacePlanetTextureOwner?.refreshTimer != null) {',
-    );
+    const broken = mainSource.replace('previous?.cancelPending();', '');
     expect(broken).not.toBe(mainSource);
     expect(surfaceTextureLifecycleBindingErrors(broken)).toContain(
       'surface teardown does not cancel its current refresh',
+    );
+  });
+
+  it('negative control: releasing the attachment before display teardown is rejected', () => {
+    const broken = mainSource.replace(
+      'previousSurfacePlanetTextureOwner.dispose();',
+      '',
+    );
+    expect(broken).not.toBe(mainSource);
+    expect(surfaceTextureLifecycleBindingErrors(broken)).toContain(
+      'surface teardown does not release the attachment after display destruction',
+    );
+  });
+
+  it('negative control: a refresh at or before the painter timer is rejected', () => {
+    const exactBoundary = attachmentSource.replace(
+      'export const SURFACE_PLANET_TEXTURE_REFRESH_MS = 31;',
+      'export const SURFACE_PLANET_TEXTURE_REFRESH_MS = 30;',
+    );
+    expect(exactBoundary).not.toBe(attachmentSource);
+    expect(surfaceTextureLifecycleBindingErrors(mainSource, exactBoundary)).toContain(
+      'refresh delay 30 does not follow bake delay 30',
+    );
+    const tooEarly = attachmentSource.replace(
+      'export const SURFACE_PLANET_TEXTURE_REFRESH_MS = 31;',
+      'export const SURFACE_PLANET_TEXTURE_REFRESH_MS = 29;',
+    );
+    expect(surfaceTextureLifecycleBindingErrors(mainSource, tooEarly)).toContain(
+      'refresh delay 29 does not follow bake delay 30',
+    );
+  });
+
+  it('negative control: bypassing the scene texture registry is rejected', () => {
+    const broken = mainSource.replace(
+      "acquireLease: (canvas) => sceneTextureLease(canvas, 'planet-texture'),",
+      'acquireLease: (canvas) => ({ texture: Texture.from(canvas), release: () => true }),',
+    );
+    expect(broken).not.toBe(mainSource);
+    expect(surfaceTextureLifecycleBindingErrors(broken)).toContain(
+      'surface attachment successor bypasses the scene texture registry',
     );
   });
 });

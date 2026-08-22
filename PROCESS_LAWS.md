@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-20. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-22. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -17,6 +17,64 @@ with a self-contained fresh-session `ROADMAP.md` handoff: exact state, evidence,
 and next action. Either OpenAI/Codex or Anthropic/Claude must be able to resume from repository
 state alone, without chat or app-private context. Logs archive verbatim; references refresh in
 place. A stale current reference or agent-specific-only handoff leaves the Arc incomplete.
+
+⚠⚠ **FOCUS EVIDENCE MUST OWN INPUT MODALITY, NOT INHERIT IT FROM THE PREVIOUS ROUTE**
+(2026-08-22). Arc 1C's first full Glass Matrix drove the real Shipyard opener and Close with trusted
+pointer input, then used plain programmatic `focus()` for later Guide, Settings and Import audits.
+Edge correctly remained in pointer modality, so those controls became `activeElement` without
+matching `:focus-visible`. The unchanged product CSS was reported as 55 false
+`FOCUS_INVISIBLE` findings: 15 Guide, 16 Settings and 24 Import.
+
+A focus ruler must establish the modality it claims—trusted keyboard traversal or a self-tested
+`focus({ focusVisible: true })` boundary—and require all of: the intended active element,
+`matches(':focus-visible')`, visible painted decoration, and a real before→after computed-style
+change. Negative-control focused-but-suppressed `focusVisible:false`, forced removal of outline and
+shadow, and restoration to green. Never broaden product CSS from `:focus-visible` to `:focus`,
+reorder the route to hide inherited modality, or accept a permanent inline outline as the positive
+control.
+
+⚠⚠ **A REQUESTED TEXTURE TIER IS NOT AN ATTACHED-BACKING OUTCOME** (2026-08-22).
+Arc 1C's first named HD-attachment integration advanced its bookkeeping tier after a 768/1024
+request even when the asynchronous painter returned the same 512px predecessor. A memory gate that
+read only that number could certify sharpness that was never attached while remaining comfortably
+inside every resource ceiling. Derive the live tier from the attached TextureSource's exact positive
+square backing dimensions and require that backing to equal the route's expected tier. The named
+owner retains the predecessor until a valid successor is acquired and published, releases stale or
+duplicate candidates, keeps undersized results retryable, cancels pending publication before display
+destruction, and disposes the final lease afterward. Negative-control same-resource, undersized,
+stale-identity and failed-successor paths; a timer firing or request field clearing is not settlement.
+
+⚠⚠ **A RESOURCE PLATEAU MUST NAME EVERY OWNER; A FLAT TOTAL CAN STILL HIDE RETENTION**
+(2026-08-21). Arc 1B reached stable canvas/texture counts before it reached a stable process. Pixi
+8.19 still retained destroyed `Graphics` contexts, shared-`TextStyle` update listeners, managed-GC
+hash tombstones, and `BatchTextureArray` UID tombstones outside the app's logical scene registry.
+Those carriers required separate ownership and diagnostics: destroy the context an app-owned
+`Graphics` created, detach each destroyed scene Text from its shared style, compact a managed hash
+only after a real product release boundary, and delete only the null UID entries produced by the
+batch array's own `clear()`. Never destroy a shared style, reset all of Pixi's cache, patch
+`node_modules`, or run cleanup from a diagnostic/snapshot path merely to make the ruler green.
+
+Aggregate equality is insufficient. Record canonical per-hash semantic identities, live and
+cleared counts, and reject renamed owners, duplicate semantic owners, redistribution with the same
+total, or bfcache-only drift. A private framework seam must be isolated behind one narrow adapter,
+validate the exact pinned runtime shape, preserve live object identity, fail sticky when that shape
+drifts, and have a direct non-vacuity control proving observation does not mutate it. Display-tree
+destruction is not proof that TextureSources, timers, persistence, local canvas caches, or framework
+bookkeeping died; reconcile each owner separately.
+
+The certifying route uses four unmeasured warmups followed by exactly four measured phone and
+desktop cycles. Arc 1B's historical v1 ruler correctly covered Universe → Galaxy/fine → Sol/System
+→ Earth/Surface → 1,500-row Compendium → Universe and required
+`shipyardStatus: future-arc-1c`; it did not fabricate an absent surface. Arc 1C's v2 extension drives
+the real visible Shipyard opener, requires exact normalized state/DOM identity, observes exactly one
+owned preview, closes through the product's own Close action, and requires zero active, retained or
+pending preview ownership at the settled boundary. Both versions require exact logical work and live
+plateaus, bounded transient peaks, zero pending owners, per-hash Pixi inventories, heap/DOM bounds,
+answerability, and same-document bfcache survival. The retained 12-cycle runs are diagnostic rather
+than certification: they exposed the hidden linear slopes and, after repair, observed every sliding
+four-cycle slope below the later selected ceiling. Budget changes require retained raw evidence,
+strict headroom, producer/browser authority, independent replay, and just-below or next-unit
+negative controls; never widen a heap ruler to bless a known ownership slope.
 
 ⚠⚠ **HOSTED CI IS A FINITE RELEASE RESOURCE, NOT THE DEVELOPMENT LOOP** (2026-08-20).
 The repository is public as of 2026-08-20, so standard hosted runners are free while it remains

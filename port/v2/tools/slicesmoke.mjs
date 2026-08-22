@@ -1292,7 +1292,7 @@ try {
     || !/mono/i.test(law.pref.font)) {
     fails.push('Settings accessibility preferences did not apply to rendered UI and save state: ' + JSON.stringify(law.pref));
   }
-  const registeredCloseCheck = `(()=>{ const ids=['setpanel','guidepanel','codexpanel','recpanel','atlaspanel','chpanel'];
+  const registeredCloseCheck = `(()=>{ const ids=['setpanel','guidepanel','codexpanel','recpanel','atlaspanel','chpanel','shipyardpanel'];
     const rows=ids.map(id=>({id,count:document.getElementById(id)?.querySelectorAll(':scope > [data-pnx]').length??-1}));
     return {ok:rows.every(row=>row.count===1),rows};})()`;
   const registeredCloses = await evalIn(registeredCloseCheck);
@@ -1373,8 +1373,143 @@ try {
       panel?.querySelector('[data-pnx]')?.click();return window.__CF_SLICE__.api.state().panelOpen;})()`);
     await sleep(40);
   };
-  const rightGap = railGapProbe('railrgt', 'railatlas', 'railrecords');
+  const rightGap = railGapProbe('railrgt', 'railatlas', 'railshipyard');
   const leftGap = railGapProbe('raillft', 'railcharters', 'railcodex');
+
+  /* ARC 1C SHIPYARD: exercise the real desktop right-rail route before the
+     generic gap probes. This is a read-only product leg, not an API panel
+     helper: browser mouse opens the visible rail control, the DOM is matched
+     to one canonical ShipVisualState, and browser mouse closes the 44px
+     action with zero preview ownership left behind. */
+  const shipyardOpenCheck = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),ship=state?.shipVisual,
+    panel=document.getElementById('shipyardpanel'),opener=document.getElementById('railshipyard'),
+    close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),diag=S?.api?.shipyardDiagnostics?.(),
+    previews=panel?[...panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')]:[],preview=previews[0]||null,
+    canonicalSystemIds=['jumpdrive','array','igdrive','autoext','cscoop'],canonicalHardpointIds=['array','autoext','cscoop'],
+    expectedSystems=Array.isArray(ship?.installedSystemIds)?[...ship.installedSystemIds]:[],
+    domSystems=panel?[...panel.querySelectorAll('[data-shipyard-system]')].map(node=>node.getAttribute('data-shipyard-system')):[],
+    hardpointKeys=ship?.hardpoints?Object.keys(ship.hardpoints):[],
+    expectedHardpoints=ship?.hardpoints?canonicalHardpointIds.filter((id)=>ship.hardpoints[id]===true):[],
+    domHardpoints=preview?[...preview.querySelectorAll('[data-hardpoint]')].map(node=>node.getAttribute('data-hardpoint')):[],
+    ps=panel?getComputedStyle(panel):null,os=opener?getComputedStyle(opener):null,pr=panel?.getBoundingClientRect(),
+    cr=close?.getBoundingClientRect(),hit=cr?document.elementFromPoint((cr.left+cr.right)/2,(cr.top+cr.bottom)/2):null,
+    diagKeys=diag?Object.keys(diag).sort():[],expectedDiagKeys=['activePreviewCount','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
+    stateKey=typeof ship?.stateKey==='string'&&ship.stateKey?ship.stateKey:null,
+    canonicalIds=JSON.stringify(hardpointKeys)===JSON.stringify(canonicalHardpointIds)
+      &&JSON.stringify(expectedSystems)===JSON.stringify(canonicalSystemIds.filter((id)=>expectedSystems.includes(id)))
+      &&canonicalHardpointIds.every((id)=>ship?.hardpoints?.[id]===expectedSystems.includes(id)),
+    truth=!!preview&&stateKey!==null&&canonicalIds&&diag?.stateKey===stateKey&&preview.getAttribute('data-state-key')===stateKey
+      &&Number(preview.getAttribute('data-chassis-stage'))===ship?.chassisStage
+      &&preview.getAttribute('data-provenance')===ship?.provenance
+      &&JSON.stringify(domHardpoints)===JSON.stringify(expectedHardpoints)
+      &&JSON.stringify(domSystems)===JSON.stringify(expectedSystems),
+    diagnostics=diag?.schema==='cf-v2-shipyard-diagnostics/v1'&&diag?.status==='open'
+      &&diag?.activePreviewCount===1&&diag?.retainedPreviewCount===0&&diag?.pendingPreviewWork===0
+      &&JSON.stringify(diagKeys)===JSON.stringify(expectedDiagKeys),
+    geometry=!!panel&&ps?.display!=='none'&&ps?.visibility!=='hidden'&&!!pr
+      &&pr.left>=-1&&pr.top>=-1&&pr.right<=innerWidth+1&&pr.bottom<=innerHeight+1
+      &&!!close&&cr.width>=44&&cr.height>=44&&!!hit&&(hit===close||close.contains(hit)),
+    openerReady=!!opener&&os?.display!=='none'&&os?.visibility!=='hidden'&&opener.getClientRects().length===1
+      &&opener.getAttribute('aria-controls')==='shipyardpanel'&&opener.getAttribute('aria-expanded')==='true',
+    previewA11y=previews.length===1&&preview?.getAttribute('role')==='img'
+      &&(preview?.getAttribute('aria-label')||'').trim().length>=30&&panel?.querySelectorAll('[role="img"]').length===1,
+    writerCount=panel?.querySelectorAll('button:not([data-pnx]),input,select,textarea,[contenteditable="true"]').length??-1;
+    return {ok:state?.panelOpen==='shipyard'&&truth&&diagnostics&&geometry&&openerReady&&previewA11y
+      &&writerCount===0&&document.activeElement===close,panelOpen:state?.panelOpen??null,truth,diagnostics,geometry,
+      openerReady,previewA11y,writerCount,focus:document.activeElement?.getAttribute?.('data-pnx')||document.activeElement?.id||null,
+      stateKey,stage:ship?.chassisStage??null,provenance:ship?.provenance??null,canonicalIds,hardpointKeys,expectedHardpoints,domHardpoints,
+      expectedSystems,domSystems,previewCount:previews.length,diag,diagKeys,expectedDiagKeys,
+      panelRect:pr?[pr.left,pr.top,pr.right,pr.bottom]:null,closeRect:cr?[cr.left,cr.top,cr.right,cr.bottom]:null};})()`;
+  await armDesktopPointerReceipt();
+  const shipyardOpened = await openDesktopRailPanel('railshipyard', 'shipyard', 'SHIPYARD');
+  const shipyardOpenReceipt = await takeDesktopPointerReceipt();
+  if (!shipyardOpened || shipyardOpenReceipt?.targetId !== 'railshipyard'
+    || shipyardOpenReceipt?.pointerType !== 'mouse') {
+    fails.push('SHIPYARD: visible right-rail opener did not receive real browser-mouse input: '
+      + JSON.stringify({ shipyardOpened, shipyardOpenReceipt }));
+  }
+  if (shipyardOpened) {
+    const shipyardOpen = await evalIn(shipyardOpenCheck);
+    if (!shipyardOpen.ok) {
+      fails.push('SHIPYARD: open read-only chassis/hardpoint/system state or diagnostics disagreed: '
+        + JSON.stringify(shipyardOpen));
+    }
+    const duplicateShipyardCtl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
+      preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),duplicate=preview?.cloneNode(true);
+      if(duplicate)panel?.appendChild(duplicate);const broken=${shipyardOpenCheck};duplicate?.remove();
+      return {ok:broken.ok===false&&broken.previewCount===2&&${shipyardOpenCheck}.ok,broken};})()`);
+    if (!duplicateShipyardCtl.ok) {
+      fails.push('SHIPYARD PREVIEW CONTROL FAILED — duplicate preview stayed green or failed to restore: '
+        + JSON.stringify(duplicateShipyardCtl));
+    }
+    const parityShipyardCtl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
+      preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),priorKey=preview?.getAttribute('data-state-key'),
+      fakeHardpoint=document.createElementNS('http://www.w3.org/2000/svg','g'),fakeSystem=document.createElement('div');
+      preview?.setAttribute('data-state-key','ship-v1:tampered');const key=${shipyardOpenCheck};
+      if(priorKey===null)preview?.removeAttribute('data-state-key');else preview?.setAttribute('data-state-key',priorKey);
+      fakeHardpoint.setAttribute('data-hardpoint','autoext');preview?.appendChild(fakeHardpoint);const hardpoint=${shipyardOpenCheck};fakeHardpoint.remove();
+      fakeSystem.setAttribute('data-shipyard-system','cscoop');panel?.appendChild(fakeSystem);const system=${shipyardOpenCheck};fakeSystem.remove();
+      return {ok:key.ok===false&&hardpoint.ok===false&&system.ok===false&&${shipyardOpenCheck}.ok,key,hardpoint,system};})()`);
+    if (!parityShipyardCtl.ok) {
+      fails.push('SHIPYARD STATE CONTROL FAILED — state-key/hardpoint/system mismatch stayed green or failed to restore: '
+        + JSON.stringify(parityShipyardCtl));
+    }
+    const openerShipyardCtl = await evalIn(`(()=>{const opener=document.getElementById('railshipyard'),
+      priorStyle=opener?.getAttribute('style')??null,priorExpanded=opener?.getAttribute('aria-expanded')??null;
+      opener?.style.setProperty('display','none','important');opener?.setAttribute('aria-expanded','false');
+      const broken=${shipyardOpenCheck};if(priorStyle===null)opener?.removeAttribute('style');else opener?.setAttribute('style',priorStyle);
+      if(priorExpanded===null)opener?.removeAttribute('aria-expanded');else opener?.setAttribute('aria-expanded',priorExpanded);
+      return {ok:broken.ok===false&&${shipyardOpenCheck}.ok,broken};})()`);
+    if (!openerShipyardCtl.ok) {
+      fails.push('SHIPYARD OPENER CONTROL FAILED — hidden/bypassed opener stayed green or failed to restore: '
+        + JSON.stringify(openerShipyardCtl));
+    }
+    const geometryShipyardCtl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
+      close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),opener=document.getElementById('railshipyard'),
+      priorStyle=close?.getAttribute('style')??null;close?.style.setProperty('min-width','0','important');
+      close?.style.setProperty('min-height','0','important');close?.style.setProperty('width','20px','important');
+      close?.style.setProperty('height','20px','important');opener?.focus();const broken=${shipyardOpenCheck};
+      if(priorStyle===null)close?.removeAttribute('style');else close?.setAttribute('style',priorStyle);close?.focus();
+      window.__cfShipyardSmokeClosedControl=panel?.querySelector('[data-cf-shipyard-preview="v1"]')?.cloneNode(true)||null;
+      return {ok:broken.ok===false&&broken.geometry===false&&${shipyardOpenCheck}.ok,broken,
+        retainedReady:!!window.__cfShipyardSmokeClosedControl};})()`);
+    if (!geometryShipyardCtl.ok || !geometryShipyardCtl.retainedReady) {
+      fails.push('SHIPYARD GEOMETRY/FOCUS CONTROL FAILED — undersized Close/wrong focus stayed green or control clone was absent: '
+        + JSON.stringify(geometryShipyardCtl));
+    }
+
+    const shipyardClosePoint = await evalIn(`(()=>{const button=document.querySelector('#shipyardpanel [data-pnx="shipyard"]'),
+      rect=button?.getBoundingClientRect(),x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0,
+      hit=rect?document.elementFromPoint(x,y):null;return {ok:!!button&&!!rect&&rect.width>=44&&rect.height>=44
+        &&!!hit&&(hit===button||button.contains(hit)),x,y};})()`);
+    await armDesktopPointerReceipt();
+    if (shipyardClosePoint.ok) await clickDesktopPoint(shipyardClosePoint);
+    const shipyardCloseReceipt = await takeDesktopPointerReceipt();
+    const shipyardClosedCheck = `(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
+      opener=document.getElementById('railshipyard'),diag=S?.api?.shipyardDiagnostics?.(),style=panel?getComputedStyle(panel):null,
+      previews=panel?.querySelectorAll('[data-cf-shipyard-preview="v1"]').length??-1,
+      keys=diag?Object.keys(diag).sort():[],expected=['activePreviewCount','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort();
+      return {ok:S?.api?.state?.().panelOpen===null&&style?.display==='none'&&previews===0
+        &&diag?.schema==='cf-v2-shipyard-diagnostics/v1'&&diag?.status==='closed'&&diag?.stateKey===null
+        &&diag?.activePreviewCount===0&&diag?.retainedPreviewCount===0&&diag?.pendingPreviewWork===0
+        &&JSON.stringify(keys)===JSON.stringify(expected)&&opener?.getAttribute('aria-expanded')==='false'
+        &&document.activeElement===opener,panelOpen:S?.api?.state?.().panelOpen??null,panelDisplay:style?.display||null,
+        previews,diag,keys,expected,expanded:opener?.getAttribute('aria-expanded')||null,focus:document.activeElement?.id||null};})()`;
+    const shipyardClosed = await evalIn(shipyardClosedCheck);
+    if (!shipyardClosePoint.ok || shipyardCloseReceipt?.tag !== 'BUTTON'
+      || shipyardCloseReceipt?.pointerType !== 'mouse' || !shipyardClosed.ok) {
+      fails.push('SHIPYARD: real 44px Close did not release the preview and restore exact opener focus/diagnostics: '
+        + JSON.stringify({ shipyardClosePoint, shipyardCloseReceipt, shipyardClosed }));
+    }
+    const retainedShipyardCtl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
+      retained=window.__cfShipyardSmokeClosedControl||null;if(retained)panel?.appendChild(retained);
+      const broken=${shipyardClosedCheck};retained?.remove();delete window.__cfShipyardSmokeClosedControl;
+      return {ok:broken.ok===false&&broken.previews===1&&${shipyardClosedCheck}.ok,broken};})()`);
+    if (!retainedShipyardCtl.ok) {
+      fails.push('SHIPYARD CLOSE CONTROL FAILED — retained preview stayed green or failed to restore: '
+        + JSON.stringify(retainedShipyardCtl));
+    }
+  }
 
   if (await openDesktopRailPanel('railcodex', 'codex', 'RIGHT RAIL GAP')) {
     const before = await evalIn(rightGap);
@@ -1747,10 +1882,13 @@ try {
       workspace=bulletNodes.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
       coldArt=bulletNodes.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
       worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
+      shipyard=bulletNodes.find((item)=>/THE SHIPYARD READS CAPABILITY, NOT WISHES/.test(item.textContent||'')),
+      hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
       headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
       firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),artHeading=headingFor(art),
+      shipyardHeading=headingFor(shipyard),hdSurfaceHeading=headingFor(hdSurface),
       charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
-      trainingText=training?.textContent||'',artText=art?.textContent||'',
+      trainingText=training?.textContent||'',artText=art?.textContent||'',shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
       trainingContradiction=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(trainingText)
         ||/verification[^.!?]{0,48}pauses?[^.!?]{0,96}(?:view|location)[^.!?]{0,48}(?:cleared|discarded|lost)/i.test(trainingText)
@@ -1793,15 +1931,27 @@ try {
         &&(coldArt?.textContent||'').includes('Loading and painting the first specimen thumbnails now happens away from the renderer thread'),
       workerContract=headingFor(worker)==='Under the Hood'
         &&(worker?.textContent||'').includes('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn')
-        &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback');
+        &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback'),
+      shipyardContract=shipyardHeading==='New Features & Systems'
+        &&shipyardText.includes('same canonical saved reach used by travel')
+        &&shipyardText.includes('shows only actually owned systems and hardpoints')
+        &&shipyardText.includes('legacy charter refit that never names or draws the missing drive')
+        &&shipyardText.includes('fabrication, Research Bench purchases, and upgrades remain unavailable'),
+      hdSurfaceContract=hdSurfaceHeading==='Under the Hood'
+        &&hdSurfaceText.includes('named HD surface-planet texture attachment')
+        &&hdSurfaceText.includes('exact surface generation and planet identity')
+        &&hdSurfaceText.includes('retains the displayed predecessor until an acquired successor publishes')
+        &&hdSurfaceText.includes('rejects stale work')&&hdSurfaceText.includes('suppresses same-texture swaps')
+        &&hdSurfaceText.includes('cancels and releases its timer and leases at the owning scene boundary');
     const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
     return {title,identity:title.includes('v2.0 · A New Foundation'),
       status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,headings,bulletCount:bullets.length,
-      populated:bullets.length===47&&bullets.every((bullet)=>bullet.length>0),
+      populated:bullets.length===49&&bullets.every((bullet)=>bullet.length>0),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
       complete:charterPlacement&&trainingContract&&artContract&&workspaceContract&&coldArtContract&&workerContract
+        &&shipyardContract&&hdSurfaceContract
         &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
         &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
@@ -1810,13 +1960,13 @@ try {
         &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
         &&/RARITY IS NOT A SPECTRAL CLASS/.test(text)&&/DEVELOPMENT PUBLISHING IS ISOLATED/.test(text),
       charterPlacement,firstHeading,recoveryHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
-      workspaceContract,coldArtContract,workerContract,
+      workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,hdSurfaceHeading,hdSurfaceContract,
       honest:!overclaim&&!trainingContradiction&&!artContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised'),
       authority:state.rnSeen==='0'&&state.releasePending===null,rnSeen:state.rnSeen,releasePending:state.releasePending}; })()`;
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
   const releaseDraft = await evalIn(releaseDraftCheck);
   if (!releaseDraft.identity || releaseDraft.status !== 'draft'
-    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 47 || !releaseDraft.complete
+    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 49 || !releaseDraft.complete
     || !releaseDraft.honest || !releaseDraft.authority || releaseDraft.releasePending !== releaseBaseline.releasePending
     || releaseDraft.rnSeen !== releaseBaseline.rnSeen) {
     fails.push('GUIDE v2.0 development bulletin is incomplete or changed shipped-release state: '
@@ -1831,9 +1981,27 @@ try {
   const releaseInventoryCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][12];
     if(!row)return {populated:true,error:'missing control row'};const parent=row.parentNode,next=row.nextSibling;row.remove();const result=${releaseDraftCheck};
     parent.insertBefore(row,next);return result; })()`);
-  if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 46) {
-    fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet did not produce the exact 46-row incomplete inventory: '
+  if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 48) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet did not produce the exact 48-row incomplete inventory: '
       + JSON.stringify(releaseInventoryCtl));
+  }
+  const releaseShipyardCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+    .find((item)=>/THE SHIPYARD READS CAPABILITY, NOT WISHES/.test(item.textContent||''));
+    if(!row)return {complete:true,shipyardContract:true,error:'missing Shipyard release row'};const prior=row.textContent;
+    row.textContent=prior.replace('same canonical saved reach used by travel','Shipyard state authority removed');
+    const result=${releaseDraftCheck};row.textContent=prior;return {...result,restored:${releaseDraftCheck}.shipyardContract===true}; })()`);
+  if (releaseShipyardCopyCtl.complete || releaseShipyardCopyCtl.shipyardContract || !releaseShipyardCopyCtl.restored) {
+    fails.push('GUIDE RELEASE SHIPYARD CONTROL FAILED — removing canonical state authority stayed complete or failed to restore: '
+      + JSON.stringify(releaseShipyardCopyCtl));
+  }
+  const releaseHdSurfaceCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
+    .find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||''));
+    if(!row)return {complete:true,hdSurfaceContract:true,error:'missing HD-surface release row'};const prior=row.textContent;
+    row.textContent=prior.replace('binds each completion to the exact surface generation and planet identity','HD texture identity ownership removed');
+    const result=${releaseDraftCheck};row.textContent=prior;return {...result,restored:${releaseDraftCheck}.hdSurfaceContract===true}; })()`);
+  if (releaseHdSurfaceCopyCtl.complete || releaseHdSurfaceCopyCtl.hdSurfaceContract || !releaseHdSurfaceCopyCtl.restored) {
+    fails.push('GUIDE RELEASE HD-SURFACE CONTROL FAILED — removing generation/planet identity ownership stayed complete or failed to restore: '
+      + JSON.stringify(releaseHdSurfaceCopyCtl));
   }
   const releaseCloseCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
     .find((item)=>/ONE SURFACE, ONE CLOSE/.test(item.textContent||''));if(!row)return {complete:true,error:'missing sentinel row'};
@@ -5477,7 +5645,7 @@ try {
   const phGeo = await evalPh(geoCheck);
   if (phGeo.length) fails.push('PHONE GOLDEN LAYOUT drift: ' + phGeo.join(' · '));
   /* The lower-phone stack has four independently-sized surfaces. Assert the
-     rendered outcome, including the 4×2 intent and the actual hit target at
+     rendered outcome, including the explicit 5×2 intent and the actual hit target at
      every button centre; merely finding the CSS declarations missed the
      three-row overlap this guards. */
   const phoneChromeCheck = `(()=>{ const bad=[];
@@ -5495,7 +5663,7 @@ try {
     }
     const dock=document.getElementById('dock');
     const buttons=[...dock.querySelectorAll('button')].filter((button)=>box(button.id));
-    if(buttons.length!==8) bad.push('dock does not expose eight buttons: '+buttons.length);
+    if(buttons.length!==9) bad.push('dock does not expose nine buttons: '+buttons.length);
     const rows=[];
     for(const button of buttons){ const b=button.getBoundingClientRect();
       let row=rows.find((candidate)=>Math.abs(candidate.top-b.top)<2);
@@ -5505,8 +5673,8 @@ try {
       if(!hit||!button.contains(hit)) bad.push(button.id+' is not hit-testable at its centre');
     }
     rows.sort((a,b)=>a.top-b.top);
-    if(rows.length!==2||rows.some((row)=>row.n!==4)) bad.push('dock is not 4x2: '+JSON.stringify(rows.map((row)=>row.n)));
-    if(boxes.dock&&(Math.abs(boxes.dock.w-206)>1||Math.abs(boxes.dock.h-98)>1)) bad.push('dock box is not 206x98: '+JSON.stringify([boxes.dock.w,boxes.dock.h]));
+    if(rows.length!==2||rows[0]?.n!==5||rows[1]?.n!==4) bad.push('dock is not 5x2 (5+4): '+JSON.stringify(rows.map((row)=>row.n)));
+    if(boxes.dock&&(Math.abs(boxes.dock.w-260)>1||Math.abs(boxes.dock.h-98)>1)) bad.push('dock box is not 260x98: '+JSON.stringify([boxes.dock.w,boxes.dock.h]));
     const published=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dock-h'));
     if(!boxes.dock||!Number.isFinite(published)||Math.abs(published-boxes.dock.h)>1) bad.push('--dock-h does not match the rendered dock: '+JSON.stringify([published,boxes.dock&&boxes.dock.h]));
     const ctxPublished=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--ctx-h'));
@@ -6555,7 +6723,7 @@ try {
   }
 
   /* 4e-phone. A FRESH PHONE starts with training active. Prove its card
-     clears the measured 4x2 dock and does not geometrically bury any 44px
+     clears the measured 5x2 dock and does not geometrically bury any 44px
      dock target. The dock is intentionally focus-locked at welcome, so the
      probe temporarily enables pointer hit-testing without clicking anything;
      the training lock is restored before this target closes. */
@@ -6584,12 +6752,18 @@ try {
     const priorDockPointer=dock&&dock.style.pointerEvents, priorDockInert=dock&&dock.hasAttribute('inert');
     if(dock){dock.style.pointerEvents='auto';dock.removeAttribute('inert');}
     const buttons=dock?[...dock.querySelectorAll('button')]:[];
-    if(buttons.length!==8) bad.push('training dock does not expose eight buttons: '+buttons.length);
+    if(buttons.length!==9) bad.push('training dock does not expose nine buttons: '+buttons.length);
+    const rows=[];
     for(const button of buttons){ const b=button.getBoundingClientRect();
+      let row=rows.find((candidate)=>Math.abs(candidate.top-b.top)<2);
+      if(!row){row={top:b.top,n:0};rows.push(row);}row.n++;
       if(Math.abs(b.width-44)>1||Math.abs(b.height-44)>1) bad.push(button.id+' is not a 44px training target');
       const hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
       if(!hit||!button.contains(hit)) bad.push(button.id+' is buried at its centre during training');
     }
+    rows.sort((a,b)=>a.top-b.top);
+    if(rows.length!==2||rows[0]?.n!==5||rows[1]?.n!==4) bad.push('training dock is not 5x2 (5+4): '+JSON.stringify(rows.map(row=>row.n)));
+    if(db&&(Math.abs(db.w-260)>1||Math.abs(db.h-98)>1)) bad.push('training dock box is not 260x98: '+JSON.stringify([db.w,db.h]));
     if(dock){dock.style.pointerEvents=priorDockPointer;if(priorDockInert)dock.setAttribute('inert','');}
     return bad; })()`;
   const phoneTraining = await evalTp(phoneTrainingCheck);
@@ -7157,6 +7331,6 @@ try {
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · READ-ONLY SHIPYARD (real right-rail open/Close, exact chassis/hardpoints/systems, one owned preview, zero retained work) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-guide · slice-settings · slice-training · slice-earth · slice-solmark · slice-phone');
 process.exit(0);
