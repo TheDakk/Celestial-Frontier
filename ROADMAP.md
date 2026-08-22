@@ -17,95 +17,124 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-21 · PR #32 MERGED · ARC 1A AUTOMATED CLOSURE GREEN ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-21 · ARC 1B LOCAL COMPLETE · CLAUDE REVIEW NEXT ◀◀◀
 
 ### Fresh-session start
 
 - Read `GITHUB_ACTIONS_BUDGET.md`, this handoff, `PROCESS_LAWS.md`,
-  `PARALLEL_GIT_PROTOCOL.md`, and the owning agent instructions. Either OpenAI/Codex or
-  Anthropic/Claude can resume from repository state; use only that agent's owned worktree.
-- PR #32 (`openai/mac` → `develop`) merged normally at
-  `d4ab7e671959ab80198bed22bb600a26fc3524cc`; its parents are exact base
-  `38447019517147319bd08c598202d097ee866874` and terminal-green head
-  `c68aee241220dcb720cadb7fc55f7fbf99bde6fb`. `origin/develop` contains Arc 1A's automated closure.
-- The local `openai/mac` worktree was fast-forwarded to `d4ab7e6…` before this documentation-only
-  handoff commit. Recheck its exact local HEAD, clean status, and unpushed relationship before the
-  next batch; do not infer authority to push the handoff or start hosted work.
-- Nick lifted **`FROZEN`** on 2026-08-20. The repository is public and standard hosted runners are
-  free while it remains public; 3,000 applies fail-closed if visibility/billing changes. The three
-  post-freeze PR #32 closure attempts recorded here are consumed; the final one is green. No future
-  attempt is authorized and the `actions-budget-approved` label is absent.
+  `PARALLEL_GIT_PROTOCOL.md`, and the owning agent instructions. Use only the active agent's own
+  worktree; another agent may review `openai/mac` by commit/ref without editing that worktree.
+- `origin/develop` is PR #32 merge `d4ab7e671959ab80198bed22bb600a26fc3524cc`.
+  Arc 1B product/ruler authority is local commit
+  `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`; tracked budget/workflow activation is
+  `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`; retained-certification descendant is
+  `b30b6d49a8ff1745f33be9a329d421309b96b5e3`. This documentation batch is a descendant and does
+  not retroactively make its HEAD the certified source.
+- Remote draft PR #33 is still `openai/mac` → `develop`, remote head
+  `49b872ef5b01127e687d824d95956b09f6262b23`, base `d4ab7e6…`, title
+  **docs: record PR 32 terminal-green merge**, `MERGEABLE` but `BLOCKED` because it is draft and its
+  current Arc 1B commits are not pushed. Local `openai/mac` is six commits ahead of that remote
+  before this final docs commit. Re-read exact local HEAD/status; never infer push authority.
+- Current Actions mode is `UNFROZEN`, repository visibility is public, and the 3,000-minute cap
+  remains fail-closed for private/ambiguous billing. No Arc 1B push, approval label, hosted attempt,
+  Ready transition, merge, publication, release, version bump, or deployment is authorized.
 
-### Arc 1A terminal closure
+### Arc 1B automated result
 
-- Authorized run [`32462323775`](https://github.com/TheDakk/Celestial-Frontier/actions/runs/32462323775),
-  attempt 1, tested exact head `c68aee2…` against base `3844701…` with a 2+90 runner-minute ceiling
-  and no retry. Authorization passed in 2s and the battery passed in 40m39s. Every step was green:
-  root validation, Smoke, Field Training capture, layout, v2 parity/type/art/coverage, exact Edge,
-  Compendium certification/evidence verification, Chrome controls, real-browser Smoke, Glass,
-  personas, preview packaging, and all artifact uploads.
-- The label was removed immediately after terminal completion. PR #32 was then re-read as
-  `MERGEABLE/CLEAN` at the exact head/base and merged normally; no additional battery ran.
-- Exact budget `e3a71c8ae96e98b73c6957efe722f0222394c77bc8acb5d6fd93c0c761ca8f68`
-  raises only phone warm range and phone/desktop retained-portrait encoding to 262,144 B. Test
-  `0793772dbe9f679c2f3df954ed7ed5b78edf332057ce8b94a75f0a884fd2cd05` binds the committed raw
-  Linux report, its authorities/original 75/3 result, production replay, and three isolated negative
-  controls. Baseline11 retains four sealed faults and 14 phone / 13 desktop breaches.
-- Arc 1A's automated resource/ownership boundary is integrated. It is not Gate closure: the six
-  fresh phone/desktop Compendium list/detail/focus images still require HUMAN judgment.
+- One document-wide `CanvasTextureRegistry` now refcounts canvas identity across scene scopes.
+  Non-backdrop scene textures bypass Pixi's global cache; final logical release destroys the
+  TextureSource. Whole-scene builds, fine-layer replacements, surface handoff, system-HD refresh,
+  star-surface release, and clear/retry paths preserve transactional ownership and current content.
+  `_rgCache`, corona/terminator canvases, timers, pending writes, retired fine owners, and route
+  caches reconcile at settled Universe boundaries. Persisted `pagehide` keeps the same live app;
+  only intentional replacement destroys the renderer.
+- Pixi 8.19 retention carriers are bounded at their actual owners: managed GC hashes compact only
+  after product release boundaries; owned `Graphics` contexts are destroyed; destroyed scene Text
+  detaches from its shared `TextStyle`; and `BatchTextureArray.clear()` deletes only its own null UID
+  tombstones in place. The galaxy view still materializes the original ordered ±1.2R window once,
+  preserving globular-halo content while removing the duplicate 4,900-cell traversal.
+- Standalone `scenemem` uses one browser process, four unmeasured warmups and four measured cycles
+  for 390×844 phone and 1280×800 desktop. Each cycle proves Universe → Galaxy/fine → Sol/System →
+  Earth/Surface → 1,500-row Compendium → Universe, exact owner/work deltas, populated routes,
+  transient peaks, per-hash Pixi inventory, heap/DOM bounds, target plus independent browser
+  heartbeat, and same-document bfcache survival. `shipyardStatus: future-arc-1c` is explicit; no
+  absent Shipyard surface is fabricated or claimed.
+- Three clean one-attempt/no-retry candidates at `79c605f…` replayed 40/40 under exact Edge
+  `151.0.4129.93`. Budget `port/v2/budgets/scene-memory-v1.json` SHA-256
+  `78a9e81a121d2598b8d83bbbd0c8311e503470dcd88083f959fc82c181ee5afb` binds their exact producer
+  and browser authorities. Exact clean `e244c9e…` run `20260821-arc1b-local-certification` passed
+  40/40, complete lifecycle/cleanup, no findings/fatals, followed by independent named verification.
+  Raw/gzip evidence and ceiling rationale are retained in
+  `audits/ARC1B_SCENEMEM_CALIBRATION_2026-08-21.md`.
+- Retained 12-cycle diagnostics prove stable product-owned counts, six Pixi hashes at 87 live / 0
+  cleared, 13 shared-style listeners, zero pending persistence, and byte-flat backing storage on
+  both profiles. The post-fix maximum sliding four-cycle heap slope is 70,049.2 B/cycle; the active
+  131,072-B ceiling remains far below the pre-fix 648,704/765,221-B slopes.
 
-### Preserved earlier diagnostics
+### Local verification completed
 
-- Authorized run `32441023665`, attempt 1, tested exact head/base once with a 92 runner-minute owner
-  ceiling and no retry. It completed in 33m43s. Root validate, Smoke, Field Training capture,
-  10-viewport layout, v2 parity/type/art/coverage, exact Edge install, and browser/instrument
-  selftests passed. The battery stopped at Compendium; later browser gates correctly did not run.
-- Complete report `a486fe8eb96e9f00cbd3df486079deaa4e9e0987bed01ae870bf2201cbd47e36`
-  produced 78 outcomes: 75 pass, three fail, none blocked, complete lifecycle. Phone warm aggregate
-  range was 97,320 B against 65,536 B, entirely non-monotonic embedder-heap variance with stable
-  resource bytes. Linux native PNG encoding retained one 220,530 B portrait against 196,608 B on
-  phone and desktop. Every other cache/job/lease/worker/decoded/encoded/DOM/absolute-heap/
-  answerability field passed. Exact authority and raw values are preserved in
-  `audits/PR32_LINUX_MEMORY_EVIDENCE_2026-08-21.md`; the exact raw report is retained as deterministic
-  gzip `audits/PR32_LINUX_MEMORY_REPORT_32441023665.json.gz` (`a3b67e70…` compressed).
-- The run matched fixture, working-tree digest, measurement
-  `23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92`, collector
-  `0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b`, producer
-  `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`, and exact Edge `.86` used
-  by macOS candidate27/28/29. This is cross-host ruler portability evidence, not a product leak.
-- Earlier run `32440536261` remains consumed/red before browser work on the now-repaired Markdown
-  mode parser. Run `32420327368` remains older no-verdict history. None may be rerun or reused.
+- `port/v2 npm test`: 45 files, 509 passed / 1 intentional skip.
+- `port/v2 npm run typecheck`: root, game, and worker configurations PASS.
+- Compendium browser-preflight workflow selftest PASS after adding the separate Arc 1B Edge phase.
+- Post-fix real-browser Slice Smoke PASS: complete Gate-D core route, phone journey, Compendium,
+  save/reload, zero console errors.
+- `scenemem` clean candidates 3/3; tracked-budget local certification PASS; exact named verifier PASS.
+- Two independent pre-commit reviews found and cleared the galaxy-halo regression and the terminal
+  verifier/producer-authority gaps. No unresolved product/ruler blocker is recorded.
 
-### Next bounded sequence
+### Review and next bounded sequence
 
-1. Stop this batch after the post-merge documentation handoff; do not begin Arc 1B implementation
-   implicitly.
-2. The next implementation scope is **Arc 1B — Pixi/canvas scene texture/resource ownership plus a
-   long-session memory plateau gate**, followed by Arc 1C ShipVisualState/static Shipyard/owned HD
-   planet attachment. Re-read `port/V2_PROGRAM_ROADMAP.md`, `PROCESS_LAWS.md`, the owning references,
-   and current source before proposing the bounded Arc 1B batch.
-3. Keep the six-image Arc 1A HUMAN review open; automation and the merge do not supply visual judgment.
-4. No release, deployment, version bump, publication, `main`, or site work is authorized.
+1. Finish and commit this documentation descendant, then ask Nick for exact authorization to push
+   that full local `openai/mac` head and refresh draft PR #33's title/body. Do not apply
+   `actions-budget-approved`; no hosted attempt is authorized. Claude's separate owned worktree
+   cannot review unpushed OpenAI bytes through GitHub, and files must not be copied between worktrees.
+2. **After the authorized push, open Claude Code for a read-only review.** From its own clean
+   `anthropic/mac` worktree, fetch `origin` and review
+   `origin/develop...origin/openai/mac` plus draft PR #33. Do not merge the OpenAI branch into the
+   Anthropic branch and do not edit the OpenAI worktree. Focus on scene lease transactions, the
+   narrow Pixi-private compatibility seam, BatchTextureArray patch safety, stale async publication,
+   bfcache, the raw-CDP evaluator/negative controls, budget authority, and `.86` → `.93` workflow
+   ordering. Record actionable findings with file/line evidence; do not mark the draft Ready.
+3. Resolve any Claude findings locally on `openai/mac`, then rerun the affected focused checks plus
+   full v2 test/type and the browser gate when warranted. Do not broaden scope without a concrete
+   finding.
+4. A hosted `test-battery` attempt requires a separate exact changed head/base/label/runner-ceiling/
+   no-retry authorization after review; local green is not CI. Keep the draft unapproved until then.
+5. Keep Arc 1A's six-image HUMAN Compendium review open. Arc 1B's existing-scene automated boundary
+   is complete, but Gate D/I, physical heat/battery, and HUMAN play/art judgment are not closed.
+6. Arc 1C remains next product work after this review/integration boundary: pure `ShipVisualState`,
+   static responsive Shipyard, at most one owned preview, and named HD planet attachment. Arc 1C
+   appends the real Shipyard leg to the resource cycle; Arc 1B deliberately does not build a shell.
 
 ## Parallel Git handoff — exact budget-aware fields
 
-**Current side:** OpenAI/Codex macOS owns `openai/mac`. PR #32 head `c68aee2…` is merged into
-`origin/develop` at `d4ab7e6…`. The current local documentation-only handoff commit descends from
-that merge and remains unpushed; record its exact HEAD and verify clean status.
+**Current side:** OpenAI/Codex macOS owns local `openai/mac`. Product/ruler commit is `79c605f…`,
+budget/workflow commit `e244c9e…`, and certification-evidence commit `b30b6d4…`; the final docs
+commit descends from those. Remote `origin/openai/mac` remains `49b872e…` until separately authorized.
 
-**GitHub step:** None. PR #32 is closed/merged and its label is absent. Any future push, label,
-dispatch, or publication requires its own exact authority.
+**GitHub step:** None now. Do not push, label, dispatch, mark Ready, merge, or publish. The next
+GitHub step requires Nick's exact local-head authority to push `openai/mac` and refresh the existing
+draft's title/body; only then may the Claude review begin. Do not open another PR.
 
-**PR details:** [PR #32](https://github.com/TheDakk/Celestial-Frontier/pull/32), base `develop`, source
-`openai/mac`, title **Arc 1A — Bound Compendium portraits and measured resources**, is merged. No new
-PR is needed for this handoff-only commit; Arc 1B will need a separately scoped PR later.
+**PR details:** [PR #33](https://github.com/TheDakk/Celestial-Frontier/pull/33), base `develop`, source
+`openai/mac`. Copy-ready replacement title: **Arc 1B — Bound Pixi scene resources and certify memory
+plateaus**. Copy-ready description: **Adds explicit Canvas/Pixi scene ownership and transactional
+release, bounds Pixi GC/style/batch bookkeeping, preserves bfcache, and adds a calibrated phone/
+desktop travel + Compendium scene-memory gate with a one-attempt CI gate. Shipyard remains Arc 1C.
+Verification: full v2 tests 509 passed / 1 skipped; typecheck, browser-preflight workflow selftest,
+and real-browser Slice Smoke passed; three clean calibrations and exact-budget local certification
+each passed 40/40, with independent certification verification. Hosted CI has not run. After push,
+Claude reviews read-only from `anthropic/mac`; that side receives the change only after PR merge by
+merging `origin/develop`, never by copying files. No release, deployment, version bump, or
+publication is included.**
 
-**Other side:** Anthropic/Claude Code need not be opened now. At its next clean coding batch it may
-fetch and merge `origin/develop` (`d4ab7e6…`) into its own `anthropic/*` branch; never copy files.
+**Other side:** Do not open Anthropic/Claude Code for this review until Nick authorizes the exact
+local-head push. After that push, open it in its own clean `anthropic/mac` worktree, fetch origin,
+and perform the read-only range review above; never copy files between worktrees.
 
-**Release status:** `develop` advanced to `d4ab7e6…`; `main`, live site, and development site are
-unchanged. No release, version bump, deployment, or publication was performed or authorized.
+**Release status:** `develop` remains `d4ab7e6…`; `main`, live site, and development site are
+unchanged. No release, deployment, version bump, publication, or site write occurred.
 
-**Actions budget:** `UNFROZEN`; public/standard runners free while visibility holds; 3,000 remains
-the fail-closed private/ambiguous cap. Consumed attempts: `32440536261` and `32441023665` red,
-`32462323775` green; authorized future attempts: zero; approval label: absent.
+**Actions budget:** `UNFROZEN`; public/standard runners remain free while visibility holds; 3,000 is
+the fail-closed private/ambiguous cap. PR #32 attempts remain consumed history. Arc 1B authorized
+future attempts: zero; approval label: absent.

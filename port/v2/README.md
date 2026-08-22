@@ -2,6 +2,37 @@
 
 ## Current port status — 2026-08-21
 
+> **Arc 1B scene-resource ownership is locally complete (2026-08-21; Claude review follows an
+> exact-head authorized push;
+> no hosted attempt authorized):** non-backdrop scene canvases and Pixi textures now have explicit,
+> refcounted ownership with fresh-owner whole-scene build/rollback, transactional fine/surface
+> swaps, final-source destruction,
+> bounded Pixi managed-resource/style/batch bookkeeping, settled cache cleanup, and same-document
+> bfcache survival. The standalone `scenemem` ruler drives the existing Universe → Galaxy/fine →
+> Sol/System → Earth/Surface → 1,500-row Compendium → Universe route on 390×844 phone and
+> 1280×800 desktop profiles. It performs four unmeasured warmups followed by exactly four measured
+> cycles and evaluates 40 outcomes. Shipyard remains explicitly `future-arc-1c`; Arc 1B neither
+> fabricates nor claims an absent Shipyard surface.
+>
+> Product/ruler source `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`, active-budget/workflow
+> descendant `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`, and retained-evidence descendant
+> `b30b6d49a8ff1745f33be9a329d421309b96b5e3` preserve the local authority boundary. Three clean,
+> independent, one-attempt/no-retry calibrations replayed 40/40 under exact
+> `Edg/151.0.4129.93`, revision `@4a822b1bb7a8566144cff23f6c09a2ab162665f9`, JavaScript
+> `15.1.23.7`, and CDP `1.3`. Exact clean run `20260821-arc1b-local-certification` then passed
+> 40/40 against `budgets/scene-memory-v1.json`, with complete browser/server/workspace-lock cleanup,
+> zero findings/fatal events, and a passing named-run verifier. Calibration, diagnostic, and local
+> certification hashes are retained under `../../audits/`; these committed capsules are local raw
+> evidence, not hosted CI or HUMAN authority.
+>
+> The guarded `test-battery` now owns one serial, fail-fast Arc 1B step after Arc 1A's exact Edge
+> `.86` certification and before the Chrome gates: install exact Edge `.93`, run the browser-free
+> instrument/calibration controls, perform one no-retry scene-memory certification, always verify
+> its named terminal report, and retain `v2-scene-memory-evidence`. It starts only inside the one
+> owner-label-authorized battery. At this handoff Arc 1B has **zero authorized hosted attempts**;
+> local green does not authorize a push, approval label, workflow run, Ready transition, merge,
+> preview publication, release, or deployment.
+>
 > **Arc 1A Compendium resource implementation (2026-08-21; product and serviced-turn
 > scheduler repair present; exact-9d local battery green; hosted run `32441023665`
 > exposed three bounded Linux-variance ceilings; exact changed-head run `32462323775` passed the
@@ -304,7 +335,8 @@
 > normalization hypothesis; exact-89 reached product and then exposed the separate owned-shutdown
 > false-green described above. Product, timing, browser authority, and one-attempt/zero-retry policy
 > remain unchanged. Exact changed-head run `32462323775` confirmed the normalization and complete
-> product battery once; PR #32 is closed/merged, so the next implementation scope is Arc 1B.
+> product battery once; PR #32 is closed/merged. At that closure boundary Arc 1B was the next
+> implementation scope; it is now locally complete as recorded above.
 > Fresh six-image HUMAN review remains separately open.
 >
 > Numeric certification is scoped to the Arc-local browser authority
@@ -320,7 +352,8 @@
 > preview, and root browser gates remain on `/usr/bin/google-chrome`. This is
 > not a Gate-A/global browser rebaseline: `../../tools/deps.pinned.json`
 > remains Edge `150.0.4078.83`. Exact run `32462323775` confirmed the reinstall path without a
-> timing, authority, or product change. Arc 1B remains next and is not claimed by this closure.
+> timing, authority, or product change. That Arc 1A closure did not itself claim Arc 1B; the later
+> local Arc 1B completion is recorded above.
 >
 > The PR #32 short-landscape fix is similarly bounded, not a visual redesign. An open
 > nonmodal Compendium uses the left safe-height workspace with its variable-row scroller
@@ -1074,22 +1107,23 @@ device/browser lens, starting save, findings, and retest using
 Automated personas are evidence, not a human playtest. Resolve current Git, PR, and
 check state live; this reference intentionally carries no “latest tip is green” claim.
 
-Highest-priority active v2 work is now Arc 1B's Pixi/canvas scene texture ownership and long-session
-memory plateau. PR #32 merged exact green head `c68aee2…` into `develop` at `d4ab7e6…` after run
-`32462323775` passed the complete battery once; its label is absent. Arc 1A's budget/test
-`e3a71c8a…` / `0793772d…` retain exact raw replay, isolated negative controls, and 14/13 paired
-baseline discrimination. The six-image HUMAN Compendium review remains open. A new Arc 1B batch,
-PR, hosted run, or publication requires its own scope and authority. Adjacent backlog remains: decide
+Arc 1B's existing-scene ownership and scene-memory ruler are locally complete at the exact
+authorities recorded above; Claude's read-only review is the next bounded step. PR #32 merged exact
+green head `c68aee2…` into `develop` at `d4ab7e6…` after run `32462323775` passed the complete
+battery once; its label is absent. Arc 1A's budget/test `e3a71c8a…` / `0793772d…` retain exact raw
+replay, isolated negative controls, and 14/13 paired-baseline discrimination. The six-image HUMAN
+Compendium review remains open. Arc 1B has no authorized hosted attempt, and its local 40/40
+certification must not be described as hosted, HUMAN, merge, preview, or release proof. After
+review/integration, Arc 1C owns the real Shipyard route and named HD planet attachment. Adjacent
+backlog remains: decide
 and preserve hybrid parent identity in CFB codes;
 finish the remaining legacy Field Training arc and keep the canonical Guide's
 current-safe topic bodies synchronized as systems land; add tooltip deep-links and
 the Advanced Briefing surface; preserve da0's exact historical local PASS and no-retry CI red,
 carry the repaired Arc 1A producer's historical ruler and ef6 certification through the D-TRAIN Smoke
-setup-instrument follow-up, and complete a fresh six-image [HUMAN] review without
-claiming Arc 1B; extend explicit
-ownership/destruction to the remaining Pixi canvas textures and long-session
-texture/audio paths; extend the current surface globe's owned tier swap into the
-broader Arc 1B/1C HD texture attachment/disposal package;
+setup-instrument follow-up, and complete a fresh six-image [HUMAN] review without treating it as
+Arc 1B proof; extend ownership to audio and other later long-session paths; extend the current
+surface globe's owned tier swap into Arc 1C's named HD attachment package;
 persist/invalidate epoch edges and settle hidden-tab/reduced-motion policy;
 then close remaining literal Gate-B boundaries and split-store/CAS persistence. PR test-merge runs
 `32350971816`, `32367902426`, and `32375329693` remain the preserved timer, first Edge cold-start,
@@ -1435,6 +1469,7 @@ retry, fallback, product, launch-argument, or producer drift occurred in that hi
 | `npm run smoke:ci` | Runs the authoritative real-browser `slicesmoke.mjs` exactly once, retains complete stdout/stderr in `slice-smoke.log`, and writes commit/branch/working-tree/browser/screenshot-bound `slice-smoke-report.json`. It uses browser-mouse input to hit-test both desktop rail gaps, their independent ownership-removal controls, non-Element delegated events, deliberately outside Search, and the bidirectional owned/unowned canvas close outcome. Cold Planetside settlement requires the expected 3–8 ready images with nonempty `src`, `complete`, exact 132×132 natural dimensions, and queued/active jobs zero under one immutable monotonic 30-second phase; every blocking target evaluation is clipped to that same remaining deadline and a labelled target timeout becomes one structured no-retry diagnosis. Compendium detail is a separate asynchronous 440px owner: after real keyboard open, Smoke keeps the exact logical owner mounted and polls under one immutable 30-second deadline until the connected current image is `ready`, has a nontrivial source, completes decode, and reports exact 440×440 natural dimensions. Placeholder/decode are pending; producer error, stale/disconnected owner, contradictory ready state, wrong dimensions, and exact/late receipts are terminal browser-free controls, and the last panel/image/worker/broker state accompanies failure. Its held-painter multi-target control binds each attach-derived target/session and exact document, activates/focuses/brings the judged owner forward, and requires continuous visible/focused rAF→later-task service under a fresh token before the single release or post-close settlement. Wrong target/document/service, hidden/unfocused phases, phase reversal, visibility/focus transitions, and exact/just-late receipts are controlled; post-await receipt time, rather than timer callback order, owns the deadline. A timeout retains non-null image/decode, queue, worker phase/result/error, broker, and foreground diagnostics. D-TRAIN direct-fixture setup first joins prior persistence, reproduces the unjoined stale-write race, and then requires exact primary bytes, current document/route/render/card/runnable-action/status/ticker state before it may judge one semantically observed busy refusal; missing optional-chained UI is a harness failure, not product evidence. It also advances the app-owned monotonic source by one exact epoch, drives the real `current()` → `persistView()` → raw IndexedDB → fresh reload chain, and rejects stored-base/stale-reload substitutions without claiming automatic edge persistence. `smokereport` owns one full-lifetime workspace lock and passes a validated one-child inherited lease to `slicesmoke`, retaining the lock through screenshot hashing and report finalization. A failure prints the first scoped diagnosis plus a related count; it never retries a red run. |
 | `npm run glassmatrix:selftest` / `npm run glassmatrix` | Negative-controls the responsive/a11y instrument, then runs fresh Chromium ownership across 12 viewports—including an 8K stress case—and writes `glassmatrix-report.json` on pass, product failure, or instrument failure. It covers populated Training/Guide/cards/settings/import surfaces, safe areas, zoom, keyboard focus, 44px targets, contrast, reduced motion, aggregate twin-canvas DPR and boot order without retrying. The Guide carrier control requires an actual exact-one-carrier removal and rejects zero/multiple/no-op/wrong/still-rendered mutations. Short-landscape Compendium uses the left safe-height workspace while Search, dock, and Survey when open remain operable at right; hostile A++ first/middle/last/focus-pinned rows and exact clipping-ancestor diagnostics make a 48px row regression fail for its real cause. Portrait Planetside owns `planetside-portrait-band-viability` and `planetside-portrait-trail-fallback`; the product derives its lower cap from the shared bottom anchor so a 44px Survey, 72px scrollable Planetside band, and 8px gap coexist at compact-phone height. Import/reload owns `import-phase-sequence`, `replacement-ticker-quiescence`, `replacement-document-loader-token-phase`, `reload-resource-release`, and `replacement-boot-phase-sequence`: the exact import stream requires ticker-running invocation, a stopped claim/write/release, and one absolute 20-second clock before the bounded arm. A capture-scoped ordinal requires the exact release-started N → release N+1 → release-complete N+2 tail; only the valid release-first intermediate waits under that unchanged clock. Sticky receipts then require a changed-loader commit within 5 seconds, the exact 12-stage `cf-v2-boot-phase/v1` sequence, and one `cf-v2-slice-ready/v1` tail from the new session/context/generation/origin/loader/token within 20 seconds. The ticker stays false through wiring and true thereafter; browser-native `performanceNow` is strictly below the bound. Two strict at-most-2-second post-ready cycles each pair an exact-context target probe with an independent browser-process heartbeat, with cycle two awaiting a later post-render ticker turn; the import arm plus both pairs form the exact five-row command ledger. The same-backing ultra control applies that target/heartbeat discriminator to both downshift and restore, requires a later advancing ticker turn, and rejects stopped/stale ticker states. Bounded sticky failure evidence diagnoses red and separates a target-only product answerability failure from transport/instrument failure. No retry, timeout increase, or IndexedDB timeout race is used. The command owns the shared workspace lock while building/browsing. |
 | `npm run compendiummem:selftest` / `npm run compendiummem` / `node tools/compendiummem.mjs --verify-run=<run-id>` | Negative-controls the browser-free Compendium instrument, performs one standalone browser run without automatic retry, and independently verifies the named report. Exact `aecf386…` adds an immutable monotonic 2,000 ms static-server close boundary: just-before succeeds; exact/late/missing/error force one connection cleanup and reject; cleanup red suppresses PASS/sample. Clean `6736ef4…` c27/baseline11/c28/c29 evidence owns three candidates plus paired baseline under measurement `23aacc2c…`. Cross-host budget/test `e3a71c8a…` / `0793772d…` retain their 78/78 lifecycle evidence and 14/13 baseline breach inventory while admitting committed exact Linux report `a486fe8e…`; three just-below controls recover its original failures. Exact run `32462323775` passed this gate and the complete PR battery once on `c68aee2…`; PR #32 merged at `d4ab7e6…`. The gate still owns the 1,500-row fixture, authority graph, six review PNGs, and instrument/product distinction; automation never supplies HUMAN judgment. |
+| `npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts` / `node tools/scenemem.mjs --budget=budgets/scene-memory-v1.json` / `node tools/scenemem.mjs --verify-run=<run-id> --budget=budgets/scene-memory-v1.json` | Negative-controls the Arc 1B contract, tracked budget, and terminal verifier; then performs one no-retry raw-CDP certification and independently verifies the exact named report. One Edge `.93` process owns four unmeasured warmups plus exactly four measured phone/desktop cycles through Universe, Galaxy/fine, Sol/System, Earth/Surface, the 1,500-row Compendium, and settled Universe. Forty outcomes bind exact scene ownership/work, transient peaks, canonical per-hash Pixi inventory, heap/DOM/resource bounds, target answerability, an independent browser heartbeat, zero pending work, and same-document bfcache survival. Clean exact `e244c9e…` passed 40/40 locally under budget `78a9e81…`; retained evidence does not turn later descendants into certified heads. `shipyardStatus: future-arc-1c` is required, and automation supplies neither hosted nor HUMAN authority. |
 | `node tools/compendiummem-browser-preflight.mjs --selftest` / `node tools/compendiummem-browser-preflight.mjs` | Owns the exact-Edge workflow's one cold authority proof without changing any hashed Compendium measurement input. One 45-second startup / 15-second socket / sealed 5-second candidate-command / 2-second shutdown launch must match the budget's product, revision, JS, protocol and selected executable, then create and attach a fresh target and enable Runtime/Page/HeapProfiler. Its evaluate return and exact-marker, same-session console event share one immutable 5-second monotonic phase; both must arrive strictly before the deadline. Portable controls accept just-before evaluate/event receipts, reject exact and just-late receipts, reject missing/wrong-marker/wrong-session events and a backward clock, and prove one open/close with cleanup and no retry. Browser/executable mismatch, command/sentinel failure, and deliberate cleanup leak are also terminal. There is no warmup, retry, fallback, alternate browser, or authority rebaseline. Both PR certification and development-preview packaging workflows run this same preflight before the Compendium selftest/candidate. The selftest also parses each workflow fail-closed: it requires one unique owned Edge-install step with the exact ordered URL, SHA, download, hash check, `apt-get install --reinstall --yes "$edge_package"`, installed-version check, executable check, and following preflight; it rejects either workflow's removal plus outside-step decoys. That browser-free control proves workflow structure, not live hosted-runner launch. Run `32394244417` stopped before product when image `ubuntu24/20260816.277`'s already-resident .86 made the prior plain install a no-op and the unchanged live launch found no endpoint; exact changed-head run `32462323775` later confirmed the same-package reinstall and live preflight path. |
 | `npm run persona:selftest` / `npm run persona:report` | Joins only passing slice-smoke and glass-matrix evidence with matching commit/branch and dirty-tree digest into `automated-persona-report.{json,md}`. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |
 | `node tools/browserpath.mjs --print` / `--selftest` | Resolves one exact real Chromium-family executable for raw-CDP evidence tools, including root `tools/uilayout.js`; an explicit invalid `CF_BROWSER` fails closed instead of silently selecting another browser. Environment scope is process-local: a green browser in one workflow step does not pin the resolver in the next. CI therefore supplies the exact effective path in the owning step or job and resolves it before long gates. On macOS the launch boundary rejects the Codex Seatbelt environment before spawn: that sandbox denies Chromium's LaunchServices registration and otherwise produces an Edge SIGABRT before CDP. Approved out-of-sandbox browser execution remains the evidence path. |

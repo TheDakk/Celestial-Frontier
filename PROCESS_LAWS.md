@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-20. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-21. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -17,6 +17,35 @@ with a self-contained fresh-session `ROADMAP.md` handoff: exact state, evidence,
 and next action. Either OpenAI/Codex or Anthropic/Claude must be able to resume from repository
 state alone, without chat or app-private context. Logs archive verbatim; references refresh in
 place. A stale current reference or agent-specific-only handoff leaves the Arc incomplete.
+
+⚠⚠ **A RESOURCE PLATEAU MUST NAME EVERY OWNER; A FLAT TOTAL CAN STILL HIDE RETENTION**
+(2026-08-21). Arc 1B reached stable canvas/texture counts before it reached a stable process. Pixi
+8.19 still retained destroyed `Graphics` contexts, shared-`TextStyle` update listeners, managed-GC
+hash tombstones, and `BatchTextureArray` UID tombstones outside the app's logical scene registry.
+Those carriers required separate ownership and diagnostics: destroy the context an app-owned
+`Graphics` created, detach each destroyed scene Text from its shared style, compact a managed hash
+only after a real product release boundary, and delete only the null UID entries produced by the
+batch array's own `clear()`. Never destroy a shared style, reset all of Pixi's cache, patch
+`node_modules`, or run cleanup from a diagnostic/snapshot path merely to make the ruler green.
+
+Aggregate equality is insufficient. Record canonical per-hash semantic identities, live and
+cleared counts, and reject renamed owners, duplicate semantic owners, redistribution with the same
+total, or bfcache-only drift. A private framework seam must be isolated behind one narrow adapter,
+validate the exact pinned runtime shape, preserve live object identity, fail sticky when that shape
+drifts, and have a direct non-vacuity control proving observation does not mutate it. Display-tree
+destruction is not proof that TextureSources, timers, persistence, local canvas caches, or framework
+bookkeeping died; reconcile each owner separately.
+
+The certifying route uses four unmeasured warmups followed by exactly four measured phone and
+desktop cycles through the existing Universe → Galaxy/fine → Sol/System → Earth/Surface →
+1,500-row Compendium → Universe product. It requires exact logical work and live plateaus, bounded
+transient peaks, zero pending owners, per-hash Pixi inventories, heap/DOM bounds, answerability, and
+same-document bfcache survival. The retained 12-cycle runs are diagnostic rather than certification:
+they exposed the hidden linear slopes and, after repair, observed every sliding four-cycle slope
+below the later selected ceiling. Budget changes require retained raw evidence, strict headroom, producer/browser authority,
+independent replay, and just-below or next-unit negative controls; never widen a heap ruler to bless
+a known ownership slope. Shipyard does not exist in Arc 1B and remains explicitly
+`future-arc-1c` rather than a fabricated green route.
 
 ⚠⚠ **HOSTED CI IS A FINITE RELEASE RESOURCE, NOT THE DEVELOPMENT LOOP** (2026-08-20).
 The repository is public as of 2026-08-20, so standard hosted runners are free while it remains

@@ -4,11 +4,55 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 source overlay matches code as of 2026-08-20.**
-> **2026-08-20 Arc 1A Compendium/art/resource overlay (current source;
-> displayed-demand/zoom-owner product repair and active repaired ruler; exact-731 local battery
-> complete, hosted run `32420327368` consumed at its 40-minute incomplete-evidence ceiling,
-> PR #32 blocked, and final HUMAN review open):**
+> **Current port/v2 source overlay matches code as of 2026-08-21.**
+> **2026-08-21 Arc 1B scene-resource ownership and memory overlay (current source):**
+> `apps/game/src/scene-texture-owner.ts` owns one document-wide canvas-identity registry for
+> non-backdrop scene resources. Leases/scopes are refcounted, Texture creation bypasses Pixi's global
+> cache, and the last logical release destroys the owned TextureSource. Whole-scene construction,
+> fine-layer replacement, surface handoff, live system tier refresh, star-surface release, and retry/
+> clear paths transfer ownership transactionally so a rejected or stale replacement cannot publish
+> partial content. Settled Universe boundaries clear retired owners, timers, pending persistence,
+> route canvases, and bounded ring/corona/terminator caches. Persisted `pagehide` suspends without
+> destroying the live app; intentional document replacement performs final renderer teardown.
+>
+> Pixi-private retention is isolated behind narrow, fail-closed adapters.
+> `pixi-managed-resource-owner.ts` observes and compacts the six managed GC hashes only after product
+> release boundaries; owned Graphics teardown includes contexts. `scene-text.ts` detaches destroyed
+> Text from shared TextStyle update listeners. `pixi-batch-texture-array.ts` wraps
+> `BatchTextureArray.clear()` once and deletes only verified cleared UID tombstones in place. The
+> Galaxy path materializes the unchanged ordered ±1.2R cell window once for decoration and stars,
+> retaining globular-halo content while removing the duplicate traversal. Diagnostics are
+> observational and cannot perform cleanup.
+>
+> `tools/scenemem.mjs`, `scenemem-contract.mjs`, and
+> `budgets/scene-memory-v1.json` own the standalone fail-closed ruler. One Edge process runs four
+> unmeasured warmups plus four measured cycles at 390×844 and 1280×800 through Universe → Galaxy/
+> fine → Sol/System → Earth/Surface → 1,500-row Compendium → Universe. The contract proves exact
+> route/owner work, settled and transient resource counts, canonical per-hash Pixi inventory,
+> heap/DOM ceilings, target plus independent browser heartbeat, zero pending work, and same-document
+> bfcache survival. Shipyard is explicitly `future-arc-1c` and is not simulated.
+>
+> Product/ruler authority is exact clean commit
+> `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`; tracked budget/workflow activation is
+> `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`, with budget SHA-256
+> `78a9e81a121d2598b8d83bbbd0c8311e503470dcd88083f959fc82c181ee5afb`. Its one-attempt/no-retry run
+> `20260821-arc1b-local-certification` passed 40/40 under exact Edge `151.0.4129.93`, complete
+> lifecycle/cleanup, zero findings/fatals, and independent named verification. Evidence-retention
+> descendant `b30b6d49a8ff1745f33be9a329d421309b96b5e3` does not change the certified product source;
+> later documentation descendants likewise are not retroactively exact-head certified. This is
+> local evidence, not hosted terminal-green, HUMAN visual review, release, or production authority.
+>
+> Arc 1B changes resource lifetime and its automated proof, not UI capability or authored visuals.
+> Existing scene output and supported 512/768/1024 surface tiers remain; no Cargo, Shipyard, ship
+> portrait, crafting, research, upgrade, combat, companion system, new HD package, release note, or
+> version identity was added. Arc 1C is bounded to pure ShipVisualState, the static responsive
+> Shipyard, at most one owned preview, named HD planet attachment, and the real Shipyard gate leg.
+> Broader HD visual expansion, living actor/biome animation, and long-task/hidden-tab policy remain
+> later work.
+> **2026-08-20 Arc 1A Compendium/art/resource overlay (historical implementation and ruler
+> chronology; final HUMAN review remains open):** The blocked state described inside this overlay
+> was later superseded by terminal-green changed-head run `32462323775` and PR #32 merge
+> `d4ab7e6…`; the dated evidence below remains preserved rather than rewritten.
 > Exact local implementation `aecf3865095176a509a4cb892e5842b584780870` bounds the
 > Compendium HTTP server's close at one immutable monotonic 2,000 ms. Just-before succeeds;
 > exact/late/missing/error callbacks force `closeAllConnections()` once and reject, with
@@ -339,13 +383,15 @@
 > 14 phone / 13 desktop baseline breaches. A synthetic desktop-identity line corrected the focused
 > check from 12/13 to 13/13 without changing or rerunning browser evidence. Those facts do not cross
 > the later `aecf386…` collector change. Clean `6736ef4…` c27/baseline11/c28/c29 evidence now activates
-> budget/test `546d3a81…` / `ef06252a…` at `b3957e1…`; exact-head certification remains open. First red stops;
-> terminal-green PR #32 returns immediately to Arc 1B/gameplay.
+> budget/test `546d3a81…` / `ef06252a…` at `b3957e1…`; exact-head certification remained open at this
+> historical Arc 1A boundary. PR #32 later merged, and the current overlay above records the bounded
+> Arc 1B lifecycle result.
 > The authority remains Arc-local Edge 151 and does not change the global Gate-A Edge 150
 > pin. Da0's six images are stale for the repaired producer; a fresh phone/desktop list,
 > focus-pinned, and detail set still awaits HUMAN review.
-> This repair owns the current surface globe's fitted start and live tier swap only;
-> the broader Arc 1B/1C scene-resource ownership, disposal, and HD texture package remains open.
+> This repair owns the current surface globe's fitted start and live tier swap only. The current Arc
+> 1B overlay now owns broader existing-scene resource lifetime; Shipyard and named HD planet
+> attachment remain Arc 1C, while broader visual expansion remains later rendering/art work.
 > **2026-08-16 D-TRAIN-1 source overlay (current working tree; local browser
 > evidence recorded below; exact-head CI, integration, real-save Gate C, and
 > human authority remain open):** `@cf/persistence` now classifies the real
@@ -550,7 +596,9 @@
 > That review required the 1,500-entry Compendium to be virtualized, mounted rows
 > moved to true 132px thumbnails, and decoded pixels/jobs/resources bounded before
 > adding content scale; Arc 1A now implements and measures that bounded DOM/Canvas path.
-> Pixi scene ownership remains Arc 1B. The present one-blob, last-writer-wins repository is
+> The current Arc 1B overlay now implements and measures Pixi/canvas scene ownership for the existing
+> travel surfaces; this historical review still does not imply Shipyard, HD expansion, or new gameplay.
+> The present one-blob, last-writer-wins repository is
 > insufficient for two-tab exact-once claims and must gain compare-and-swap or one
 > authoritative serialized coordinator.
 >
@@ -602,12 +650,12 @@
 > galaxy/star-only CF1 routes, generated descents and all future ownership/receipt writers
 > still need their own canonical boundary integration.
 >
-> **2026-08-20 GitHub Actions budget overlay:** the repository is public, so standard hosted runners
+> **2026-08-21 GitHub Actions budget overlay:** the repository is public, so standard hosted runners
 > are free while visibility remains public; 3,000 is the fail-closed private/ambiguous cap and mode
-> remains `FROZEN` in `GITHUB_ACTIONS_BUDGET.md`. The former every-PR/every-push parallel battery,
-> automatic agent-branch sync, and post-green `workflow_run` publisher are retired as default
-> execution paths in local commit `5a2c605…`, which is not pushed; the remote still has the old
-> triggers. Local `.github/workflows/test.yml` exposes one tiny authorization job followed by
+> is `UNFROZEN` in `GITHUB_ACTIONS_BUDGET.md`, with no Arc 1B hosted attempt currently authorized.
+> PR #32 integrated the guarded workflow at `d4ab7e6…`: the former every-PR/every-push parallel
+> battery, automatic agent-branch sync, and post-green `workflow_run` publisher are retired as
+> default execution paths on the remote. `.github/workflows/test.yml` exposes one tiny authorization job followed by
 > one fail-fast serial runner whose display name remains the required `battery` context and whose job id remains
 > `v2-compendium-memory` for the sealed exact-Edge workflow control. It is eligible only on a PR
 > `labeled` event where the repository owner applied exact label `actions-budget-approved`. The
@@ -618,7 +666,9 @@
 > and job-guarded. Branch publication is manual-only and hard parked until a later reviewed exact-SHA
 > promotion contract. `tools/actions-budget-policy.js` validates direct YAML ownership and
 > negative-controls every trigger/input/job/publisher/concurrency direction plus unknown workflows;
-> root `validate.js` runs its real policy first. The old parallel structure and automatic publishers
+> root `validate.js` runs its real policy first. The local Arc 1B branch adds the exact Edge `.93`
+> scene-memory phase after the terminal verified `.86` Compendium phase; those unpushed bytes are not
+> yet remote or hosted evidence. The old parallel structure and automatic publishers
 > remain truthful history only. Development/production target isolation, manifests, origin refusal,
 > noindex/robots, target-specific credentials, and the rule that previews are not human/release
 > authority remain unchanged; no publication is currently authorized.

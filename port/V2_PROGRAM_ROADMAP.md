@@ -1,7 +1,7 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-20.
+> 2026-08-21.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -14,44 +14,30 @@
 > merge `5171abcdc538938fdf5ac82688d1ab868da6ff48`. F2 canonical ingress and discriminated navigation
 > finished at PR #30 head `24bcc3cbf4e76f7bb65a00e810e0eeeeb8d7c837` and is integrated at
 > `b091f010011fa16bec457599b41274b7f92bb5e6`. D-TRAIN-1 is integrated through PR #31 at
-> `38447019517147319bd08c598202d097ee866874`. Arc 1A/PR #32 is the active bounded review branch.
-> Exact local `89bfa05…`, run `20260820-pr32-89bfa05-compendiummem`, completed 78/78 with zero
-> findings and six PNGs, then exited 2 during owned browser shutdown. Terminal log `b0bb8abc…` is
-> authoritative; pre-cleanup PASS report/verifier `66ba1366…` / `98664dca…` are false-green. This
-> is a one-attempt/no-retry post-measurement instrument red, not product certification or
-> calibration. Clean lifecycle-repair source `c49e525…` then ran candidate20 once: 78/78, zero
-> findings, six PNGs, and complete lifecycle, but a reused `.86`-named app reported Edge `.93` /
-> revision `@4a822b1b…`; quarantine `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser
-> instrument evidence. Candidate21/22/23 plus paired baseline9 later completed once each without
-> retry under exact `.86` and complete lifecycle: candidates replayed 78/78 with zero findings and
-> baseline9 retained four faults. They are individually clean diagnostic history only because the
-> old shared-sample identity incorrectly compared fresh executable paths and host user agents.
-> Raw path/UA remain required per-run provenance; product/revision/JavaScript/protocol are shared
-> authority. Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10,
-> each once with zero retries and a distinct fresh `.86` path. Candidates completed 78/78 with zero
-> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. The formerly active budget/schema/
-> contract/collector/selftest/test `70145575…` / `695d2529…` / `e7dfea1d…` / `07131f5e…` /
-> `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged producer `d3223177…`, 3/3
-> samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
-> breaches. A synthetic desktop-identity line corrected focused 12/13 to 13/13 without changing
-> browser evidence. Exact head `731b2e2…` passed its complete local battery; GitHub run
-> `32420327368` then preserved a no-retry hosted timeout/incomplete-evidence red when Compendium
-> remained RUNNING/lifecycle-pending at the 40-minute job ceiling, and GitHub separately reported
-> the account spending limit. The repository is now public, so standard runners are free while it
-> remains public; `FROZEN` remains Nick's intent gate and 3,000 the private/ambiguous cap.
-> `GITHUB_ACTIONS_BUDGET.md` blocks push/label/dispatch/merge/publication; the guarded local
-> workflow design removes automatic spend and must not be pushed through the still-automatic remote
-> configuration. No product/ruler verdict follows from the hosted timeout. Arc 1B/gameplay resumes
-> only after PR #32 eventually closes terminal-green under a separately authorized attempt.
-> Exact local `aecf3865095176a509a4cb892e5842b584780870` bounds the Compendium HTTP
-> server close at 2,000 ms and fails exact/late/missing/error cleanup closed with one forced
-> connection close. Cleanup red suppresses PASS/sample. Clean source `6736ef4…` collected serial
-> c27/baseline11/c28/c29 once each with zero retries and fresh exact `.86`; candidates completed
-> 78/78 with complete lifecycle and 18 PNG bindings, while baseline11 retained four faults and
-> 14 phone / 13 desktop breaches. Activation `b3957e1…` makes budget/test `546d3a81…` /
-> `ef06252a…` active under unchanged collector/selftest/measurement `0c7ec3ba…` / `0bbb3541…` /
-> `23aacc2c…` and producer `d3223177…`; all prior numeric ceilings remain strict.
-> Later product batches remain planned.
+> `38447019517147319bd08c598202d097ee866874`. Arc 1A then reached terminal-green hosted evidence:
+> run `32462323775` tested exact head `c68aee241220dcb720cadb7fc55f7fbf99bde6fb` once without
+> retry, and PR #32 merged into `develop` at `d4ab7e671959ab80198bed22bb600a26fc3524cc`.
+> Its six-image Compendium `[HUMAN]` review remains open.
+>
+> Arc 1B is locally implementation-complete on `openai/mac`; draft PR #33's remote head does not yet
+> contain these unpushed Arc 1B commits. Product
+> and ruler source `79c605f9c7ab8b63ad082d852c38d66ad6bb11af` owns explicit Canvas/Pixi scene
+> texture scopes, whole-scene rollback to a cleared diagnosed state, transactional fine-layer
+> replacement, bounded cache release, Pixi managed-
+> resource cleanup, shared-style and batch-UID retention repairs, and BFCache survival. Three clean,
+> independent exact-Edge-151.0.4129.93 calibration runs at that source each passed 40/40 under four
+> warm-up plus four measured phone/desktop cycles. Tracked budget
+> `78a9e81a121d2598b8d83bbbd0c8311e503470dcd88083f959fc82c181ee5afb` and workflow
+> activation `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910` then received one no-retry local
+> exact-budget certification: 40/40, complete lifecycle, independent verification PASS. Descendant
+> `b30b6d49a8ff1745f33be9a329d421309b96b5e3` retains that report and evidence controls; it is not
+> a second certification and does not move certification authority beyond `e244c9e…`.
+>
+> The Arc 1B gate covers Universe, Galaxy, Galaxy fine, Sol, Earth Surface, and the deterministic
+> 1,500-row Compendium on phone and desktop. Shipyard is not implemented; the report says
+> `future-arc-1c`, and Arc 1C remains the owner of ShipVisualState, static Shipyard proof, and owned
+> HD planet attachment. PR #33 remains draft; no Arc 1B push, hosted attempt, review acceptance,
+> integration, release, or publication is authorized or claimed here.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -647,26 +633,13 @@ both parent voices.
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
 
-**Current state (2026-08-20): product implementation, serviced-turn scheduler, compact-phone stack,
-displayed-demand/zoom-owner repair, bounded static-server shutdown, and the active repaired ruler are
-present. Exact-89's shutdown false-green and candidate20's
-wrong-browser `175fac5e…` / `916dd12a…` / `7462144b…` carriers remain preserved instrument history.
-Candidate21/22/23 plus paired baseline9 each completed once without retry under exact `.86` and
-complete lifecycle; candidates replayed 78/78 with zero findings and baseline9 retained four faults.
-They are individually clean diagnostic history only because the old shared identity incorrectly
-compared fresh path/UA provenance. Clean exact source `fb321f2…` then collected candidate24/25/26
-plus paired baseline10, each once with zero retries and distinct fresh `.86` paths. Candidates
-completed 78/78 with zero findings, complete lifecycle, and six PNGs; baseline10 retained four
-faults. The formerly active budget `70145575…` embeds 3/3 samples per profile, measured 1/1 baseline, and strict
-ceilings with 14 phone / 13 desktop breaches under measurement `2318f57b…` and unchanged producer
-`d3223177…`. Focused activation is 13/13 after the synthetic active-state control received matching
-desktop identities; browser evidence did not change or rerun. That ruler is historical. Clean
-`6736ef4…` c27/baseline11/c28/c29 evidence now activates budget/test `546d3a81…` / `ef06252a…`
-under measurement/collector/selftest `23aacc2c…` / `0c7ec3ba…` / `0bbb3541…`; candidates are 78/78
-with complete lifecycle, baseline11 retains four faults and 14 phone / 13 desktop breaches, and
-prior ceilings remain strict. Fresh `[HUMAN]` review is open.**
-This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
-corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
+**Current state (2026-08-21): automated implementation and integration complete.** Product
+virtualization, serviced-turn scheduling, compact-phone layout, displayed-demand texture ownership,
+bounded static-server shutdown, and the repaired ruler are present. Exact changed-head run
+`32462323775` passed the complete battery once on `c68aee2…`; its approval label was removed and
+PR #32 merged at `d4ab7e6…`. The earlier false-greens, wrong-browser carriers, calibration history,
+and no-retry reds below remain preserved because they explain the final ruler. The separate six-image
+phone/desktop `[HUMAN]` review remains open. The runnable, fail-closed
 `compendiummem` gate drives a deterministic 1,500-row
 Compendium through a spacer-preserved virtual window, focus pinning and native keyboard traversal,
 filter/clear, detail/Back, Close cleanup, and Planetside hide/release/reacquire. The product path
@@ -823,15 +796,13 @@ each once with zero retries and distinct fresh `.86` paths. Active budget/test `
 initial phone-only 12/13 control; browser evidence did not change. No package, launch argument,
 workflow, product, timing, producer, or retry-policy change occurred. Exact `731b2e2…` passed the
 complete local battery; hosted run `32420327368` was consumed at its 40-minute incomplete-evidence
-ceiling and left PR #32 blocked. No rerun/push is authorized while the efficiency gate is frozen.
-After terminal-green PR #32 closure, execution returns immediately to Arc 1B/gameplay. The Arc-local Edge authority
-still does **not** repin
-Gate-A/global Edge `150.0.4078.83`.
+ceiling and left PR #32 blocked at that historical boundary. Later changed-head run `32462323775`
+passed once without retry and PR #32 merged at `d4ab7e6…`. The Arc-local Edge authority still does
+**not** repin Gate-A/global Edge `150.0.4078.83`.
 
-The current state records an implemented product/scheduler/stack repair and a fail-closed ruler
-transition, not terminal resource certification. Human judgment of a fresh certifying run's six phone/desktop
-list, detail, and focus-pinned images remains outstanding. Arc 1B remains open for ordinary scene/Pixi
-texture, render-target, GPU-proxy, and combined travel → Compendium → Shipyard plateau ownership.
+Arc 1A's automated criterion is integrated. Human judgment of a fresh certifying run's six
+phone/desktop list, detail, and focus-pinned images remains outstanding. Arc 1B's current local
+resource state is recorded separately below; Shipyard remains future Arc 1C.
 
 **Scope:**
 
@@ -871,9 +842,36 @@ art-review-packet evidence, not a Compendium delivery tier.
 **Goal:** give ordinary scene lifetime the same explicit ownership discipline as intentional
 replacement-document teardown.
 
-**Scope:** own/acquire/release/evict galaxy haze, planet texture tiers, render/canvas caches,
-`_rgCache`, render targets, and future selected previews. Establish a travel → Compendium →
-Shipyard warm plateau under raw-CDP resource counters and decoded/GPU proxies.
+**Current state (2026-08-21): locally implementation-complete; review, hosted evidence, and
+integration remain open.** Product/ruler source `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`
+routes ordinary non-backdrop Canvas/Pixi textures through document-owned, refcounted scene scopes;
+rolls a failed whole-scene build back to a cleared diagnosed state; keeps fine-layer replacement
+transactional; releases local caches and Graphics contexts;
+detaches destroyed scene text from shared styles; compacts Pixi managed-resource and batch UID
+tombstones only at release boundaries; and preserves the live application across persisted
+`pagehide`/`pageshow`.
+
+Three clean, independent exact-Edge-151.0.4129.93 calibration runs at `79c605f…` used four warm-up
+and four measured cycles per phone/desktop profile and each passed all 40 outcomes. Tracked budget
+SHA-256 `78a9e81a121d2598b8d83bbbd0c8311e503470dcd88083f959fc82c181ee5afb` was activated at
+`e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`; one no-retry local exact-budget run then passed
+40/40, complete lifecycle, and independent verification. Descendant `b30b6d49a8ff1745f33be9a329d421309b96b5e3`
+retains that evidence and its validation control, but is not a second certification and does not
+move exact certification beyond `e244c9e…`. Draft PR #33 does not yet contain the unpushed Arc 1B
+head; no Arc 1B hosted attempt,
+review acceptance, or integration is claimed.
+
+**Implemented scope:** own/acquire/release/evict galaxy haze, planet texture tiers, render/canvas
+caches, `_rgCache`, transient ring geometry, and scene-owned managed-resource proxies. The standalone
+raw-CDP gate drives Universe → Galaxy → Galaxy fine → Sol → Earth Surface → a deterministic
+1,500-row Compendium, then proves BFCache survival, answerability, exact route inventories, balanced
+texture scopes, stable per-hash managed resources, bounded heap/DOM/proxy ceilings, and cleanup on
+phone and desktop.
+
+**Shipyard boundary:** Shipyard does not exist in the current slice. Reports carry exact
+`shipyardStatus: 'future-arc-1c'`; ShipVisualState, static Shipyard proof, owned Shipyard preview,
+and HD planet attachment remain Arc 1C. Arc 1B must not be cited as the future complete
+travel → Compendium → Shipyard Gate-D loop.
 
 **bfcache law:** ordinary `pagehide` must not unconditionally destroy the application. A pagehide
 signal may notify an owner only with an explicit persisted/pageshow plan; renderer destruction stays
@@ -898,7 +896,7 @@ not complete audio lifecycle. Arc 7 owns that work.
 
 **Exit evidence:** four stages, hardpoint permutations, legacy fallback, save/reload,
 travel/visual-selector agreement, deliberately mismatched-selector controls, phone/desktop
-silhouette review, and the Arc 1B resource cycle including Shipyard.
+silhouette review, and extension of Arc 1B's resource owner/ruler through the implemented Shipyard.
 
 ### 4.8 F3 — persistence authority, split stores, and receipts
 
