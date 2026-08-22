@@ -53,6 +53,7 @@ type CalibrationReport = {
   runId: string;
   status: string;
   certification: string;
+  budget?: { schema: string; path: string; sha256: string };
   lifecycle: { status: string };
   cleanup: Record<string, boolean>;
   source: {
@@ -181,6 +182,42 @@ describe('scene-memory active budget', () => {
 
     expect(new Set(reports.map((report) => report.source.begin.workingTreeSha256)).size).toBe(1);
     expect(new Set(reports.map((report) => report.build.sha256)).size).toBe(1);
+  });
+
+  it('replays the retained exact-budget local certification', () => {
+    const compressed = fs.readFileSync(path.join(
+      auditRoot, 'ARC1B_SCENEMEM_LOCAL_CERTIFICATION.json.gz',
+    ));
+    expect(sha256(compressed)).toBe(
+      '430ff07d46adf9ba060949a41f59632ddc2691fcbc9d1da330b5f9564178bb44',
+    );
+    const raw = gunzipSync(compressed);
+    expect(sha256(raw)).toBe(
+      'c487731dea7e7813b094cb1c080f04239e30c8c74e8be9322ae7de684a786d17',
+    );
+    const report = JSON.parse(raw.toString('utf8')) as CalibrationReport;
+    expect(report.runId).toBe('20260821-arc1b-local-certification');
+    expect(report.status).toBe('pass');
+    expect(report.certification).toBe('contract-budget');
+    expect(report.source.begin).toEqual(report.source.end);
+    expect(report.source.begin.commit).toBe('e244c9e2342c6abd79ca4efcd3d26eb46d3d8910');
+    expect(report.source.begin.state).toBe('committed');
+    expect(report.budget).toEqual({
+      schema: 'cf-v2-scene-memory-budget/v1',
+      path: '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/budgets/scene-memory-v1.json',
+      sha256: '78a9e81a121d2598b8d83bbbd0c8311e503470dcd88083f959fc82c181ee5afb',
+    });
+    expect(report.inputs.budget).toBe(report.budget?.sha256);
+    expect(report.cleanup).toEqual({ browser: true, server: true, workspaceLock: true });
+    expect(report.lifecycle.status).toBe('complete');
+    expect(report.outcomes).toHaveLength(40);
+    expect(report.outcomes.every((outcome) => outcome.pass)).toBe(true);
+    expect(report.findings).toEqual([]);
+    expect(report.fatalEvents).toEqual([]);
+    for (const profile of PROFILE_NAMES) {
+      expect(metricSummary(report.profiles[profile])).toEqual(report.profiles[profile].metrics);
+    }
+    expect(evaluateSceneMemory(report.contractInput)).toEqual(report.verdict);
   });
 
   it('replays every candidate green with strict headroom over every observed metric', () => {
