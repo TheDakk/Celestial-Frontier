@@ -1,5 +1,40 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-21 v2 Arc 1B scene-resource overlay (current source):** Arc 1B is
+> lifecycle and measurement infrastructure, not a new player-facing panel, visual redesign, HD-art
+> pass, gameplay system, release, or version bump. The existing Universe → Galaxy/fine → System →
+> Surface → Compendium presentation remains the product surface. A document-wide canvas-texture
+> registry now refcounts non-backdrop scene resources; scene construction and fine/surface/HD-tier
+> replacements transfer ownership transactionally, and final logical release destroys the owned
+> TextureSource. Settled Universe boundaries also reconcile retired owners, timers, pending writes,
+> route-local canvases, and ring/corona/terminator caches. Persisted bfcache suspension preserves the
+> same live renderer; only intentional document replacement performs final teardown.
+>
+> Pixi retention is bounded at the owning seams: managed GC hashes compact only after product
+> release, owned Graphics contexts are destroyed, destroyed scene Text detaches from shared
+> TextStyle listeners, and `BatchTextureArray.clear()` removes only its cleared UID tombstones in
+> place. The galaxy renderer still materializes the original ordered ±1.2R window and preserves halo
+> content while avoiding a duplicate traversal. No player copy or visible scene content was added by
+> these repairs.
+>
+> The standalone scene-memory route uses one Edge process, four unmeasured warmups and four measured
+> phone/desktop cycles through the existing travel surfaces and the 1,500-row Compendium. Product/
+> ruler authority is exact commit `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`; tracked budget and
+> workflow activation is `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`, with budget SHA-256
+> `78a9e81a121d2598b8d83bbbd0c8311e503470dcd88083f959fc82c181ee5afb`. Run
+> `20260821-arc1b-local-certification` at that clean activation passed 40/40 under Edge
+> `151.0.4129.93`, complete lifecycle/cleanup and independent named verification. Retained evidence
+> descendant `b30b6d49a8ff1745f33be9a329d421309b96b5e3` archives the report; later documentation commits
+> do not retroactively make their HEAD the certified source. This is local exact-authority evidence,
+> not hosted terminal-green or HUMAN visual authority.
+>
+> Shipyard is explicitly `future-arc-1c`: no absent panel, texture owner, or test route is fabricated.
+> Arc 1C is bounded to the pure ShipVisualState, static responsive Shipyard, at most one owned
+> preview, named HD planet attachment, and the real Shipyard gate leg. Broader HD-visual expansion,
+> living actors/biome animation, long-task/hidden-tab work, and all Cargo,
+> crafting, research, upgrade, combat, and companion features also remain future work; Arc 1B closes
+> only the existing-scene lifecycle and automated memory boundary.
+
 > **2026-08-16 D-TRAIN-1 UI overlay (current source; local browser evidence
 > recorded below; exact-head CI, integration, real-save Gate C, and human
 > authority remain open):**
@@ -231,12 +266,15 @@
 > samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
 > baseline breaches. A synthetic desktop-identity line corrected the focused check from 12/13 to
 > 13/13 without changing or rerunning browser evidence. No UI/product, timing, launch, workflow,
-> producer, browser-CDP, or retry-policy change occurred. Terminal-green PR #32 returns immediately
-> to Arc 1B/gameplay.
+> producer, browser-CDP, or retry-policy change occurred. At this historical Arc 1A boundary,
+> terminal-green PR #32 was the prerequisite for the Arc 1B lifecycle work now recorded in the
+> current overlay above.
 > The Arc-local Edge 151 authority still does not repin global Gate-A Edge 150. Six fresh run-bound
 > list, focus-pinned, and detail PNGs still await HUMAN review. This repair owns the current surface
-> globe's fitted start and live tier swap only; the broader Arc 1B/1C scene-resource disposal and HD
-> texture package remains open. V2 still has no Cargo, Shipyard, ship portrait, crafting,
+> globe's fitted start and live tier swap only. Arc 1B now owns the broader existing-scene resource
+> lifecycle; Shipyard and named HD planet attachment remain Arc 1C, while broader visual expansion
+> remains later rendering/art work. V2
+> still has no Cargo, Shipyard, ship portrait, crafting,
 > research, or upgrade controls.
 >
 > The approved Shipyard is a new responsive panel, not a repurposed character sheet. Its
@@ -560,9 +598,10 @@
 > activation head must still own exact-source local resource certification and corresponding
 > terminal-green PR test-merge CI. The
 > existing Arc-local Edge 151 authority does not repin the global Gate-A Edge 150
-> browser. Fresh six-image evidence still awaits HUMAN review. The broader Arc 1B/1C
-> scene-texture ownership/disposal and HD texture package, broader long-task
-> coverage, and fuller hidden-tab behavior remain open. The v2 static preview packaging/hosting
+> browser. Fresh six-image evidence still awaits HUMAN review. The current Arc 1B overlay supersedes
+> this historical open scene-texture ownership/disposal claim; Shipyard/named HD attachment remain
+> Arc 1C, while broader HD visual expansion,
+> broader long-task coverage, and fuller hidden-tab behavior remain bounded future work. The v2 static preview packaging/hosting
 > contract is documented separately in `port/DEVELOPMENT_PREVIEW.md`; a preview
 > is development evidence, never a release or production deployment.
 >
