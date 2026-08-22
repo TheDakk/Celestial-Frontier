@@ -82,6 +82,63 @@ const COMPENDIUM_COPY_CONTRADICTIONS = Object.freeze([
   /(?:capture|feeding|breeding|husbandry|renaming)[^.!?]{0,72}(?:is|are) (?:now )?(?:live|playable|available)/i,
 ]);
 
+const SHIPYARD_COPY_CONTRADICTIONS = Object.freeze([
+  /(?:current|read-only) Shipyard[^.!?]{0,80}\bcan\b[^.!?]{0,40}(?:build|buy|research|upgrade|equip|salvage|reward|change)/i,
+  /(?:Fabricator|Research Bench|ship upgrades?)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|playable|available)/i,
+  /legacy charter refit[^.!?]{0,96}(?:names|draws|includes) (?:(?:an?|the) )?(?:unowned |missing )?Intergalactic Drive/i,
+  /hardpoints?[^.!?]{0,80}(?:inferred|assumed|granted) from (?:the )?(?:chassis|stage|reach)/i,
+  /(?:chassis|visual state)[^.!?]{0,80}(?:saved separately|separate saved state|writes? to the save)/i,
+]);
+
+const HD_ATTACHMENT_COPY_CONTRADICTIONS = Object.freeze([
+  /release(?:s|d)? the (?:displayed )?predecessor[^.!?]{0,64}before[^.!?]{0,64}(?:acquir|publish)/i,
+  /stale (?:work|completion)[^.!?]{0,64}(?:can|may|will|does) publish/i,
+  /(?:timer|lease|texture)[^.!?]{0,80}(?:remain|stay|kept|pinned)[^.!?]{0,48}after[^.!?]{0,32}(?:scene|surface|dispose|teardown)/i,
+]);
+
+function plainCopy(body: string): string {
+  return body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function shipyardGuideCopyIsTruthful(body: string): boolean {
+  const copy = plainCopy(body);
+  return /Shipyard[^.!?]{0,48}read-only inspection/i.test(copy)
+    && /canonical saved reach and actual owned systems/i.test(copy)
+    && /same derived capability state as travel/i.test(copy)
+    && /no separate visual state is saved/i.test(copy)
+    && /Scout\/Chemical[^.!?]{0,48}Jump\/Interstellar[^.!?]{0,48}Survey Cruiser[^.!?]{0,48}Frontier\/IG/i.test(copy)
+    && /Only systems and hardpoints actually present in the saved inventory are named and drawn/i.test(copy)
+    && /completed Charter proves frontier reach while no Intergalactic Drive is owned/i.test(copy)
+    && /honest legacy charter refit[^.!?]{0,80}generic long-range chassis/i.test(copy)
+    && /never names or draws the unowned drive or any unowned hardpoint/i.test(copy)
+    && /Fabricator, Research Bench purchases and prerequisites, ship upgrades[^.!?]{0,160}all inventory writers remain unavailable/i.test(copy)
+    && /current Shipyard cannot build, buy, research, equip, salvage, reward, or change the expedition/i.test(copy)
+    && SHIPYARD_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
+}
+
+function shipyardReleaseCopyIsTruthful(body: string): boolean {
+  return /SHIPYARD READS CAPABILITY, NOT WISHES/i.test(body)
+    && /read-only Shipyard derives its Scout\/Chemical, Jump\/Interstellar, Survey Cruiser, or Frontier\/IG chassis/i.test(body)
+    && /same canonical saved reach used by travel/i.test(body)
+    && /shows only actually owned systems and hardpoints/i.test(body)
+    && /completed veteran Charter without an owned Intergalactic Drive/i.test(body)
+    && /honest generic legacy charter refit/i.test(body)
+    && /never names or draws the missing drive/i.test(body)
+    && /fabrication, Research Bench purchases, and upgrades remain unavailable/i.test(body)
+    && SHIPYARD_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+}
+
+function hdAttachmentReleaseCopyIsTruthful(body: string): boolean {
+  return /HD SURFACES HAVE ONE NAMED OWNER/i.test(body)
+    && /named HD surface-planet texture attachment/i.test(body)
+    && /exact surface generation and planet identity/i.test(body)
+    && /retains the displayed predecessor until an acquired successor publishes/i.test(body)
+    && /rejects stale work/i.test(body)
+    && /suppresses same-texture swaps/i.test(body)
+    && /cancels and releases its timer and leases at the owning scene boundary/i.test(body)
+    && HD_ATTACHMENT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
+}
+
 function compendiumCatalogueCopyIsTruthful(body: string): boolean {
   return /read-only <b>Compendium<\/b> presents up to 1,500 logical entries/i.test(body)
     && /Search filters those saved records/i.test(body)
@@ -197,8 +254,8 @@ describe('v2 Guide capability filter', () => {
     expect(categories).toHaveLength(9);
     expect(topics).toHaveLength(41);
     expect(topics.filter((topic) => topic.availability === 'available')).toHaveLength(0);
-    expect(topics.filter((topic) => topic.availability === 'partial')).toHaveLength(18);
-    expect(topics.filter((topic) => topic.availability === 'unavailable')).toHaveLength(23);
+    expect(topics.filter((topic) => topic.availability === 'partial')).toHaveLength(19);
+    expect(topics.filter((topic) => topic.availability === 'unavailable')).toHaveLength(22);
     expect(topics.filter((topic) => topic.availability === 'partial')
       .every((topic) => topic.body !== topic.legacyBody)).toBe(true);
     expect(topics.some((topic) => topic.id === 'beacon' || topic.id === 'events')).toBe(false);
@@ -262,6 +319,57 @@ describe('v2 Guide capability filter', () => {
     expect(getGuideTopic('hp')?.availability).toBe('partial');
     expect(getGuideTopic('hp')?.body).toContain('read-only expedition fact');
     expect(getGuideTopic('hp')?.body).toContain('round-trippable');
+  });
+
+  it('exposes only honest read-only Shipyard inspection and keeps every writer unavailable', () => {
+    const research = getGuideTopic('research');
+    const crafting = getGuideTopic('crafting');
+    const shipyardBullet = V2_DRAFT_RELEASE.sections
+      .flatMap((section) => section.bullets)
+      .find((bullet) => bullet.includes('SHIPYARD READS CAPABILITY, NOT WISHES'));
+    const attachmentBullet = V2_DRAFT_RELEASE.sections
+      .flatMap((section) => section.bullets)
+      .find((bullet) => bullet.includes('HD SURFACES HAVE ONE NAMED OWNER'));
+
+    expect(research?.availability).toBe('partial');
+    expect(shipyardGuideCopyIsTruthful(research!.body)).toBe(true);
+    expect(crafting?.availability).toBe('unavailable');
+    for (const id of ['stardust', 'harvest', 'mining', 'skimming', 'crafting'] as const) {
+      expect(getGuideTopic(id)?.availability, `${id} writer/faucet became available`)
+        .toBe('unavailable');
+    }
+    expect(shipyardBullet).toBeDefined();
+    expect(shipyardReleaseCopyIsTruthful(shipyardBullet!)).toBe(true);
+    expect(attachmentBullet).toBeDefined();
+    expect(hdAttachmentReleaseCopyIsTruthful(attachmentBullet!)).toBe(true);
+
+    expect(shipyardGuideCopyIsTruthful(
+      research!.body + ' The current Shipyard can build and upgrade the ship.',
+    )).toBe(false);
+    expect(shipyardGuideCopyIsTruthful(
+      research!.body + ' The legacy charter refit names an unowned Intergalactic Drive.',
+    )).toBe(false);
+    expect(shipyardGuideCopyIsTruthful(
+      research!.body.replace(
+        'Only systems and hardpoints actually present in the saved inventory are named and drawn',
+        'Hardpoints are inferred from the chassis stage',
+      ),
+    )).toBe(false);
+    expect(shipyardReleaseCopyIsTruthful(
+      shipyardBullet! + ' The Research Bench is now available.',
+    )).toBe(false);
+    expect(shipyardReleaseCopyIsTruthful(
+      shipyardBullet! + ' The legacy charter refit draws the missing Intergalactic Drive.',
+    )).toBe(false);
+    expect(hdAttachmentReleaseCopyIsTruthful(
+      attachmentBullet!.replace(
+        'retains the displayed predecessor until an acquired successor publishes',
+        'releases the displayed predecessor before a successor publishes',
+      ),
+    )).toBe(false);
+    expect(hdAttachmentReleaseCopyIsTruthful(
+      attachmentBullet! + ' Stale work may publish after the surface changes.',
+    )).toBe(false);
   });
 
   it('keeps star/drive and saved Prime-radius route boundaries truthful and distinct', () => {
@@ -618,6 +726,13 @@ describe('legacy and v2 release channels', () => {
       /Loading and painting the first specimen thumbnails now happens away from the renderer thread/,
       /A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn/,
       /terminates an idle or replaced producer without a synchronous renderer fallback/,
+      /SHIPYARD READS CAPABILITY, NOT WISHES/,
+      /same canonical saved reach used by travel/,
+      /shows only actually owned systems and hardpoints/,
+      /honest generic legacy charter refit/,
+      /fabrication, Research Bench purchases, and upgrades remain unavailable/,
+      /named HD surface-planet texture attachment/,
+      /retains the displayed predecessor until an acquired successor publishes/,
       /Automated lenses still do not replace human play/,
       /production remains the v1\.8\.9 main-branch site/,
     ];
@@ -632,6 +747,8 @@ describe('legacy and v2 release channels', () => {
       ...TRAINING_RESTORE_CONTRADICTIONS,
       ...TRAINING_LEGACY_RECOVERY_CONTRADICTIONS,
       ...COMPENDIUM_COPY_CONTRADICTIONS,
+      ...SHIPYARD_COPY_CONTRADICTIONS,
+      ...HD_ATTACHMENT_COPY_CONTRADICTIONS,
     ];
     const bulletinOutcome = (sections: readonly {
       readonly category: string;
@@ -643,7 +760,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 47,
+        inventory: bullets.length === 49,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,

@@ -206,6 +206,7 @@ export const GUIDE_CAPABILITIES = Object.freeze([
   'harvesting',
   'mining',
   'skimming',
+  'shipyard-inspection',
   'research',
   'crafting',
   'chapters',
@@ -417,9 +418,11 @@ export const GUIDE_TOPIC_SUPPORT: Readonly<Record<GuideTopicId, GuideTopicSuppor
       ['skimming'],
       'Stellar skimming, heat, reserves, and rewards are not yet ported.',
     ),
-    research: unavailable(
-      ['research'],
-      'Research purchases, prerequisites, and ship upgrades are not yet ported.',
+    research: partial(
+      ['shipyard-inspection'],
+      '<p>The <b>Shipyard</b> is a read-only inspection of the ship implied by canonical saved reach and actual owned systems. Its preview and captions consume the same derived capability state as travel; no separate visual state is saved. Four roles stay recognizable: <b>Scout/Chemical</b>, <b>Jump/Interstellar</b>, <b>Survey Cruiser</b>, and <b>Frontier/IG</b>.</p><p>Only systems and hardpoints actually present in the saved inventory are named and drawn, including the Array dish, Auto-Extractor pod, and Corona Scoop. A veteran expedition whose completed Charter proves frontier reach while no Intergalactic Drive is owned receives an honest <b>legacy charter refit</b>: a generic long-range chassis that never names or draws the unowned drive or any unowned hardpoint.</p><p>The Fabricator, Research Bench purchases and prerequisites, ship upgrades, Cargo or material spending, recipes, and all inventory writers remain unavailable. The current Shipyard cannot build, buy, research, equip, salvage, reward, or change the expedition.</p>',
+      'Read-only capability-derived ship inspection is live; fabrication, research, upgrades, and every inventory writer remain unavailable.',
+      'Shipyard chassis and owned-system inspection have not been connected in this build.',
     ),
     crafting: unavailable(
       ['crafting'],
@@ -481,6 +484,7 @@ export const V2_DEVELOPMENT_GUIDE_CAPABILITIES =
     'atlas',
     'compendium-read',
     'species-details',
+    'shipyard-inspection',
     'explorer-health',
     'frontier-reach',
     'deterministic-world',

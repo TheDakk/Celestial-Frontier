@@ -105,6 +105,12 @@ function point(step: number, documentToken: string): SceneMemoryPoint {
     peakLocalCanvasCacheEntries: 4,
     productRenderTargets: 0,
     retiredFineOwnerCount: 0,
+    shipyardDiagnosticsSchema: 'cf-v2-shipyard-diagnostics/v1',
+    shipyardPreviewStatus: 'closed',
+    shipyardPreviewStateKey: null,
+    shipyardPreviewActiveCount: 0,
+    shipyardPreviewRetainedCount: 0,
+    shipyardPreviewPendingWork: 0,
     pending: 0,
     ringCacheEntries: 0,
     peakRingGeometryEntries: 10,
@@ -137,7 +143,19 @@ function cycle(index: number, documentToken: string): SceneMemoryCycle {
     cycle: index,
     inventory: {
       routes: [...SCENE_MEMORY_ROUTES],
-      shipyardStatus: 'future-arc-1c',
+      shipyard: {
+        status: 'implemented-static',
+        openerDriven: true,
+        closeDriven: true,
+        stateKey: 'frontier-ig|veteran-refit|array,autoext,cscoop',
+        stateMatch: true,
+        openPreviewCount: 1,
+        openRetainedPreviewCount: 0,
+        openPendingPreviewWork: 0,
+        closedPreviewCount: 0,
+        closedRetainedPreviewCount: 0,
+        closedPendingPreviewWork: 0,
+      },
       sceneObjectsByRoute: Object.fromEntries(
         SCENE_MEMORY_ROUTES.map((route, routeIndex) => [route, routeIndex + 1]),
       ) as SceneMemoryCycle['inventory']['sceneObjectsByRoute'],
@@ -167,7 +185,7 @@ function input(): SceneMemoryInput {
     };
   };
   return {
-    schema: 'cf-v2-scene-memory-input/v2',
+    schema: 'cf-v2-scene-memory-input/v3',
     profiles: { phone: profile('phone-document'), desktop: profile('desktop-document') },
     budgets: { phone: budget(), desktop: budget() },
   };
@@ -191,12 +209,19 @@ function addCoherentLeak(snapshot: SceneRegistrySnapshot): void {
   snapshot.activeScopes[0]!.leaseCount++;
 }
 
-describe('Arc 1B scene-memory contract', () => {
+describe('Arc 1C scene-memory contract', () => {
   it('accepts complete phone and desktop four-cycle plateau evidence', () => {
     const result = evaluateSceneMemory(input());
     expect(result.status).toBe('pass');
     expect(result.failures).toEqual([]);
-    expect(result.outcomes).toHaveLength(40);
+    expect(result.outcomes).toHaveLength(42);
+  });
+
+  it('rejects the superseded Arc 1B input schema before judging it', () => {
+    const stale = input() as unknown as { schema: string };
+    stale.schema = 'cf-v2-scene-memory-input/v2';
+    expect(() => evaluateSceneMemory(stale as unknown as SceneMemoryInput))
+      .toThrow('scene-memory input requires exact phone and desktop profiles/budgets');
   });
 
   it('negative controls: the explicit precondition and first measured cycle cannot be discarded', () => {
@@ -707,16 +732,94 @@ describe('Arc 1B scene-memory contract', () => {
     expect(resultFor(evaluateSceneMemory(missingRoute), 'phone/cycle-inventory'))
       .toMatchObject({ pass: false });
 
-    const prematureShipyard = input();
-    prematureShipyard.profiles.phone.cycles[0]!.inventory.shipyardStatus =
-      'live' as unknown as 'future-arc-1c';
-    expect(resultFor(evaluateSceneMemory(prematureShipyard), 'phone/cycle-inventory'))
-      .toMatchObject({ pass: false });
-
     const empty = input();
-    empty.profiles.phone.cycles[0]!.inventory.sceneObjectsByRoute.surface = 0;
+    empty.profiles.phone.cycles[0]!.inventory.sceneObjectsByRoute.shipyard = 0;
     expect(resultFor(evaluateSceneMemory(empty), 'phone/populated-scene'))
       .toMatchObject({ pass: false, message: 'scene proof was empty or vacuous' });
+  });
+
+  it('negative control: a future Shipyard claim cannot pass as implemented', () => {
+    const broken = input();
+    (broken.profiles.phone.cycles[0]!.inventory.shipyard as { status: string }).status =
+      'future-arc-1c';
+    expect(resultFor(evaluateSceneMemory(broken), 'phone/shipyard-lifecycle').message)
+      .toContain('status is not implemented-static');
+  });
+
+  it('negative control: the superseded flat future-Shipyard field is rejected', () => {
+    const broken = input();
+    (broken.profiles.phone.cycles[0]!.inventory as unknown as Record<string, unknown>)
+      .shipyardStatus = 'future-arc-1c';
+    expect(resultFor(evaluateSceneMemory(broken), 'phone/cycle-inventory'))
+      .toMatchObject({ pass: false });
+  });
+
+  it('negative control: duplicate active Shipyard previews are rejected', () => {
+    const broken = input();
+    broken.profiles.phone.cycles[0]!.inventory.shipyard.openPreviewCount = 2;
+    expect(resultFor(evaluateSceneMemory(broken), 'phone/shipyard-lifecycle').message)
+      .toContain('open preview count must be exactly one');
+  });
+
+  it('negative control: preview/canonical visual-state mismatch is rejected', () => {
+    const broken = input();
+    broken.profiles.phone.cycles[0]!.inventory.shipyard.stateMatch = false;
+    expect(resultFor(evaluateSceneMemory(broken), 'phone/shipyard-lifecycle').message)
+      .toContain('preview and canonical visual state disagreed');
+  });
+
+  it('negative control: a retained preview after real close is rejected', () => {
+    const broken = input();
+    broken.profiles.phone.cycles[0]!.inventory.shipyard.closedRetainedPreviewCount = 1;
+    expect(resultFor(evaluateSceneMemory(broken), 'phone/shipyard-lifecycle').message)
+      .toContain('preview retained after close');
+  });
+
+  it('negative control: bypassing the visible Shipyard opener is rejected', () => {
+    const broken = input();
+    broken.profiles.phone.cycles[0]!.inventory.shipyard.openerDriven = false;
+    expect(resultFor(evaluateSceneMemory(broken), 'phone/shipyard-lifecycle').message)
+      .toContain('open did not use the visible opener');
+  });
+
+  it('negative control: bypassing the owned Shipyard close is rejected', () => {
+    const broken = input();
+    broken.profiles.phone.cycles[0]!.inventory.shipyard.closeDriven = false;
+    expect(resultFor(evaluateSceneMemory(broken), 'phone/shipyard-lifecycle').message)
+      .toContain('close did not use the owned close control');
+  });
+
+  it('negative control: settled point diagnostics cannot hide a Shipyard preview leak', () => {
+    const broken = input();
+    broken.profiles.phone.cycles[0]!.shipyardPreviewActiveCount = 1;
+    broken.profiles.phone.cycles[0]!.pending = 1;
+    const result = evaluateSceneMemory(broken);
+    expect(resultFor(result, 'phone/diagnostic-resource-budget').message)
+      .toContain('settled Shipyard preview must be inactive');
+    expect(resultFor(result, 'phone/pending-zero')).toMatchObject({ pass: false });
+  });
+
+  it('negative control: an identical retained Shipyard leak at every point stays red', () => {
+    const broken = input();
+    const profile = broken.profiles.phone;
+    for (const measured of [profile.precondition, ...profile.cycles, profile.bfcache]) {
+      measured.shipyardPreviewRetainedCount = 1;
+      measured.pending = 1;
+    }
+    const result = evaluateSceneMemory(broken);
+    expect(resultFor(result, 'phone/warm-resource-plateau').pass).toBe(true);
+    expect(resultFor(result, 'phone/diagnostic-resource-budget').message)
+      .toContain('settled Shipyard preview retained resources');
+    expect(resultFor(result, 'phone/pending-zero')).toMatchObject({ pass: false });
+    expect(result.status).toBe('fail');
+  });
+
+  it('negative control: a stale Shipyard diagnostic schema cannot be judged as current', () => {
+    const broken = input();
+    (broken.profiles.phone.precondition as { shipyardDiagnosticsSchema: string })
+      .shipyardDiagnosticsSchema = 'cf-v2-shipyard-diagnostics/v0';
+    expect(resultFor(evaluateSceneMemory(broken), 'phone/diagnostic-resource-budget').message)
+      .toContain('Shipyard diagnostics schema');
   });
 
   it('negative controls: target and browser heartbeat fail independently', () => {
