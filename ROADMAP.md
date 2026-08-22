@@ -17,124 +17,153 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-21 · ARC 1B LOCAL COMPLETE · CLAUDE REVIEW NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-22 · ARC 1 AUTOMATED IMPLEMENTATION LOCALLY COMPLETE · CLAUDE FULL-ARC REVIEW NEXT ◀◀◀
 
-### Fresh-session start
+### Fail-closed workspace and SSH identity
 
-- Read `GITHUB_ACTIONS_BUDGET.md`, this handoff, `PROCESS_LAWS.md`,
-  `PARALLEL_GIT_PROTOCOL.md`, and the owning agent instructions. Use only the active agent's own
-  worktree; another agent may review `openai/mac` by commit/ref without editing that worktree.
-- `origin/develop` is PR #32 merge `d4ab7e671959ab80198bed22bb600a26fc3524cc`.
-  Arc 1B product/ruler authority is local commit
-  `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`; tracked budget/workflow activation is
-  `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`; retained-certification descendant is
-  `b30b6d49a8ff1745f33be9a329d421309b96b5e3`. This documentation batch is a descendant and does
-  not retroactively make its HEAD the certified source.
-- Remote draft PR #33 is still `openai/mac` → `develop`, remote head
-  `49b872ef5b01127e687d824d95956b09f6262b23`, base `d4ab7e6…`, title
-  **docs: record PR 32 terminal-green merge**, `MERGEABLE` but `BLOCKED` because it is draft and its
-  current Arc 1B commits are not pushed. Local `openai/mac` is six commits ahead of that remote
-  before this final docs commit. Re-read exact local HEAD/status; never infer push authority.
-- Current Actions mode is `UNFROZEN`, repository visibility is public, and the 3,000-minute cap
-  remains fail-closed for private/ambiguous billing. No Arc 1B push, approval label, hosted attempt,
-  Ready transition, merge, publication, release, version bump, or deployment is authorized.
+- The current owner is **OpenAI/Codex on macOS** in the physical root
+  `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, tracking
+  `origin/openai/mac`. Before any work or GitHub operation, require that exact app + OS + physical
+  root + branch row. Do not repair a mismatch by changing directory or switching branches inside an
+  incorrectly opened task.
+- The four valid rows are fixed in `PARALLEL_GIT_PROTOCOL.md`:
+  - OpenAI/Codex Windows: `C:\Projects\celestial-frontier-openai-windows` · `openai/windows`
+  - Anthropic/Claude Code Windows: `C:\Projects\celestial-frontier-anthropic-windows` · `anthropic/windows`
+  - OpenAI/Codex macOS: `/Users/nick/Projects/celestial-frontier-openai-mac` · `openai/mac`
+  - Anthropic/Claude Code macOS: `/Users/nick/Projects/celestial-frontier-anthropic-mac` · `anthropic/mac`
+- All four rows use exact origin `git@github.com:TheDakk/Celestial-Frontier.git`; never fall back to
+  HTTPS credentials or copy a private key into a worktree. On this Mac, effective OpenSSH config
+  selected the local 1Password SSH Agent. Noninteractive
+  `ssh -T -o BatchMode=yes -o ConnectTimeout=15 git@github.com` returned GitHub's authenticated
+  **Hi TheDakk!** message and the expected no-shell exit 1. BatchMode repository read returned
+  `d4ab7e671959ab80198bed22bb600a26fc3524cc` for remote `HEAD`, and `git fetch origin` passed.
+  Nick reports the Windows 1Password setup verified there; this Mac did not independently probe the
+  Windows agent. Repeat the same fail-closed proof on each machine before its first write.
+- Git branch bytes use SSH. PR title/body metadata may use the authenticated GitHub connector; that
+  does not change the Git remote or authorize an HTTPS/PAT fallback. The local `gh` token is not an
+  authority for this handoff.
 
-### Arc 1B automated result
+### Exact Arc 1 authority layers
 
-- One document-wide `CanvasTextureRegistry` now refcounts canvas identity across scene scopes.
-  Non-backdrop scene textures bypass Pixi's global cache; final logical release destroys the
-  TextureSource. Whole-scene builds, fine-layer replacements, surface handoff, system-HD refresh,
-  star-surface release, and clear/retry paths preserve transactional ownership and current content.
-  `_rgCache`, corona/terminator canvases, timers, pending writes, retired fine owners, and route
-  caches reconcile at settled Universe boundaries. Persisted `pagehide` keeps the same live app;
-  only intentional replacement destroys the renderer.
-- Pixi 8.19 retention carriers are bounded at their actual owners: managed GC hashes compact only
-  after product release boundaries; owned `Graphics` contexts are destroyed; destroyed scene Text
-  detaches from its shared `TextStyle`; and `BatchTextureArray.clear()` deletes only its own null UID
-  tombstones in place. The galaxy view still materializes the original ordered ±1.2R window once,
-  preserving globular-halo content while removing the duplicate 4,900-cell traversal.
-- Standalone `scenemem` uses one browser process, four unmeasured warmups and four measured cycles
-  for 390×844 phone and 1280×800 desktop. Each cycle proves Universe → Galaxy/fine → Sol/System →
-  Earth/Surface → 1,500-row Compendium → Universe, exact owner/work deltas, populated routes,
-  transient peaks, per-hash Pixi inventory, heap/DOM bounds, target plus independent browser
-  heartbeat, and same-document bfcache survival. `shipyardStatus: future-arc-1c` is explicit; no
-  absent Shipyard surface is fabricated or claimed.
-- Three clean one-attempt/no-retry candidates at `79c605f…` replayed 40/40 under exact Edge
-  `151.0.4129.93`. Budget `port/v2/budgets/scene-memory-v1.json` SHA-256
-  `78a9e81a121d2598b8d83bbbd0c8311e503470dcd88083f959fc82c181ee5afb` binds their exact producer
-  and browser authorities. Exact clean `e244c9e…` run `20260821-arc1b-local-certification` passed
-  40/40, complete lifecycle/cleanup, no findings/fatals, followed by independent named verification.
-  Raw/gzip evidence and ceiling rationale are retained in
-  `audits/ARC1B_SCENEMEM_CALIBRATION_2026-08-21.md`.
-- Retained 12-cycle diagnostics prove stable product-owned counts, six Pixi hashes at 87 live / 0
-  cleared, 13 shared-style listeners, zero pending persistence, and byte-flat backing storage on
-  both profiles. The post-fix maximum sliding four-cycle heap slope is 70,049.2 B/cycle; the active
-  131,072-B ceiling remains far below the pre-fix 648,704/765,221-B slopes.
+- `origin/develop` is Arc 1A integration commit
+  `d4ab7e671959ab80198bed22bb600a26fc3524cc` from terminal-green PR #32. Arc 1A's automated maximum
+  Compendium implementation is integrated; its six phone/desktop images still need HUMAN review.
+- Arc 1B historical product/ruler authority is
+  `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`; scene-memory-v1 activation/certification authority is
+  `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`; retained evidence descendant is
+  `b30b6d49a8ff1745f33be9a329d421309b96b5e3`.
+- Arc 1C product/ruler authority is
+  `a4de5007ffc9131b8bc952a0a4cb469d9139039e`. Scene-memory-v2 budget/workflow activation and exact
+  local-certification source is `59530da3bf40965adf9c54f169b310e11ccdd0f8`. Active budget
+  `port/v2/budgets/scene-memory-v2.json` SHA-256 is
+  `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`.
+- Durable Arc 1C calibration/certification evidence and refreshed references are committed at
+  `ebede04e26267d67821115a6767aa046e1f58049`. This final handoff is a later documentation
+  descendant; neither it nor `ebede04…` is retroactively the exact certified source.
 
-### Local verification completed
+### Automated implementation result
 
-- `port/v2 npm test`: 45 files, 509 passed / 1 intentional skip.
+- **Arc 1A — maximum Compendium:** virtualized 1,500-row list, deterministic filter/detail/focus,
+  cancellable thumbnail and portrait leases, bounded cache/worker ownership, serviced-turn paint,
+  Planetside integration, and exact phone/desktop memory authority. PR #32 is merged in `develop`.
+- **Arc 1B — explicit scene ownership:** document-wide refcounted canvas/TextureSource leases,
+  fresh-owner whole-scene rollback, transactional fine/surface swaps, stale HD cleanup, bfcache
+  survival, bounded local caches, and narrow Pixi 8.19 managed-hash/TextStyle/batch-UID cleanup.
+- **Arc 1C — ship visual and Shipyard foundation:** one recursively frozen `ShipVisualState` from
+  canonical reach and exact owned ids; four deterministic code-native SVG silhouettes; a responsive
+  read-only Shipyard in the desktop rail and exact 260px 5×2 nine-control phone dock; one preview
+  owner while open and zero retained after Close; no second Pixi renderer or `RenderTexture`.
+  `SurfacePlanetTextureAttachment` now owns identity-safe acquire/publish/release and proves the
+  actual attached 512/768/1024 TextureSource backing rather than requested-tier bookkeeping.
+- Fabrication, Research, Cargo/material spending, build/upgrade writers, richer living previews,
+  true GPU-byte measurement, physical heat/battery, release and deployment remain outside this Arc
+  1 automated-local claim. No save schema, production version, or shipped release changed.
+
+### Exact local verification completed
+
+- `port/v2 npm test`: 49 files PASS; 567 passed / 1 intentional skip.
 - `port/v2 npm run typecheck`: root, game, and worker configurations PASS.
-- Compendium browser-preflight workflow selftest PASS after adding the separate Arc 1B Edge phase.
-- Post-fix real-browser Slice Smoke PASS: complete Gate-D core route, phone journey, Compendium,
-  save/reload, zero console errors.
-- `scenemem` clean candidates 3/3; tracked-budget local certification PASS; exact named verifier PASS.
-- Two independent pre-commit reviews found and cleared the galaxy-halo regression and the terminal
-  verifier/producer-authority gaps. No unresolved product/ruler blocker is recorded.
+- Real-browser Slice Smoke: terminal `SLICE SMOKE: PASS`, including the real Shipyard open/read/
+  owned-Close leg and attached Earth HD backing witness; one attempt, no retry.
+- Real-browser Glass Matrix: terminal PASS for all 12/12 viewports after the focus ruler began owning
+  `focusVisible` modality and negative-controlled suppression, paint removal, and restoration.
+- SceneMemory v2: three clean one-attempt/no-retry calibration reports each replay 42/42 under exact
+  Edge `151.0.4129.101`. Clean run `20260822-arc1-local-certification` at `59530da…` passed 42/42,
+  complete lifecycle/cleanup, empty findings/fatals, then passed the independent named verifier.
+  Report raw/gzip SHA-256 are
+  `e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5` /
+  `0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6`.
+- The retained evidence test is 7/7 and binds the collected profile projection, exact scope/fixture,
+  exact 38-file built inventory, producer/browser/budget authority, terminal evidence, recomputed
+  metrics, and byte-equal verdict/outcomes. Actions-budget policy selftest passed 64 controls.
+- Independent product, ruler, evidence, archive, and current-reference reviews are CLEAR. The old
+  Arc 1B handoff is preserved byte-verbatim at the top of `ROADMAP_ARCHIVE.md`.
 
-### Review and next bounded sequence
+### Claude full-Arc review — immediate next action
 
-1. Finish and commit this documentation descendant, then ask Nick for exact authorization to push
-   that full local `openai/mac` head and refresh draft PR #33's title/body. Do not apply
-   `actions-budget-approved`; no hosted attempt is authorized. Claude's separate owned worktree
-   cannot review unpushed OpenAI bytes through GitHub, and files must not be copied between worktrees.
-2. **After the authorized push, open Claude Code for a read-only review.** From its own clean
-   `anthropic/mac` worktree, fetch `origin` and review
-   `origin/develop...origin/openai/mac` plus draft PR #33. Do not merge the OpenAI branch into the
-   Anthropic branch and do not edit the OpenAI worktree. Focus on scene lease transactions, the
-   narrow Pixi-private compatibility seam, BatchTextureArray patch safety, stale async publication,
-   bfcache, the raw-CDP evaluator/negative controls, budget authority, and `.86` → `.93` workflow
-   ordering. Record actionable findings with file/line evidence; do not mark the draft Ready.
-3. Resolve any Claude findings locally on `openai/mac`, then rerun the affected focused checks plus
-   full v2 test/type and the browser gate when warranted. Do not broaden scope without a concrete
-   finding.
-4. A hosted `test-battery` attempt requires a separate exact changed head/base/label/runner-ceiling/
-   no-retry authorization after review; local green is not CI. Keep the draft unapproved until then.
-5. Keep Arc 1A's six-image HUMAN Compendium review open. Arc 1B's existing-scene automated boundary
-   is complete, but Gate D/I, physical heat/battery, and HUMAN play/art judgment are not closed.
-6. Arc 1C remains next product work after this review/integration boundary: pure `ShipVisualState`,
-   static responsive Shipyard, at most one owned preview, and named HD planet attachment. Arc 1C
-   appends the real Shipyard leg to the resource cycle; Arc 1B deliberately does not build a shell.
+1. Nick authorized publication of the complete OpenAI Arc 1 head in this batch. Push only
+   `openai/mac` to matching `origin/openai/mac` through the proven 1Password SSH path, then refresh
+   existing draft PR #33. Keep it draft. Do not add `actions-budget-approved`, dispatch, rerun,
+   mark Ready, merge, publish, release, version, or deploy.
+2. **After that push, open Claude Code now** in its own exact macOS folder
+   `/Users/nick/Projects/celestial-frontier-anthropic-mac`, branch `anthropic/mac`. Re-prove that
+   folder/branch/upstream and its SSH agent, fetch origin, and review remote refs read-only. Do not
+   edit the OpenAI worktree, merge the OpenAI branch into the Anthropic branch, or copy files.
+3. Review the **entire Arc 1** as
+   `38447019517147319bd08c598202d097ee866874...origin/openai/mac`. Also inspect the current Arc 1B/C
+   PR delta `origin/develop...origin/openai/mac` and draft PR #33 metadata. Focus on Arc 1A
+   Compendium/art/worker ownership; Arc 1B scene/Pixi transactions and bfcache; Arc 1C normalized
+   ship truth, SVG owner, HD attachment; browser-gate modality; raw-CDP authority and negative
+   controls. Return only evidence-backed findings or CLEAR; do not mark the draft Ready.
+4. Resolve any Claude findings on `openai/mac`, rerun proportionate checks, then request one exact
+   changed-head/base/label/runner-ceiling/no-retry `test-battery` authorization. Only terminal-green
+   hosted evidence can unlock normal merge to `develop` under the standing merge rule.
+5. Keep Arc 1A's six-image Compendium review and Arc 1C's phone/desktop silhouette/readability review
+   open as HUMAN work. After review/integration, the implementation spine is **F3 → F4 → Arc 2**.
 
 ## Parallel Git handoff — exact budget-aware fields
 
-**Current side:** OpenAI/Codex macOS owns local `openai/mac`. Product/ruler commit is `79c605f…`,
-budget/workflow commit `e244c9e…`, and certification-evidence commit `b30b6d4…`; the final docs
-commit descends from those. Remote `origin/openai/mac` remains `49b872e…` until separately authorized.
+**Current side:** OpenAI/Codex macOS owns
+`/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`. Arc 1 product/ruler,
+activation, retained evidence, references, and this handoff are committed. Nick authorized this
+complete head to be pushed to `origin/openai/mac`; verify exact local/remote SHA equality after push
+rather than trusting a pre-push hash embedded in the handoff.
 
-**GitHub step:** None now. Do not push, label, dispatch, mark Ready, merge, or publish. The next
-GitHub step requires Nick's exact local-head authority to push `openai/mac` and refresh the existing
-draft's title/body; only then may the Claude review begin. Do not open another PR.
+**GitHub step:** Push `openai/mac` via SSH and refresh existing draft PR #33 only. A branch push or
+PR metadata edit starts no hosted runner under the sealed labeled-event workflow. Do not apply the
+approval label, dispatch, mark Ready, merge, or publish.
 
 **PR details:** [PR #33](https://github.com/TheDakk/Celestial-Frontier/pull/33), base `develop`, source
-`openai/mac`. Copy-ready replacement title: **Arc 1B — Bound Pixi scene resources and certify memory
-plateaus**. Copy-ready description: **Adds explicit Canvas/Pixi scene ownership and transactional
-release, bounds Pixi GC/style/batch bookkeeping, preserves bfcache, and adds a calibrated phone/
-desktop travel + Compendium scene-memory gate with a one-attempt CI gate. Shipyard remains Arc 1C.
-Verification: full v2 tests 509 passed / 1 skipped; typecheck, browser-preflight workflow selftest,
-and real-browser Slice Smoke passed; three clean calibrations and exact-budget local certification
-each passed 40/40, with independent certification verification. Hosted CI has not run. After push,
-Claude reviews read-only from `anthropic/mac`; that side receives the change only after PR merge by
-merging `origin/develop`, never by copying files. No release, deployment, version bump, or
-publication is included.**
+`openai/mac`. Copy-ready title: **Arc 1 — Complete Compendium, scene ownership, and Shipyard foundations**
 
-**Other side:** Do not open Anthropic/Claude Code for this review until Nick authorizes the exact
-local-head push. After that push, open it in its own clean `anthropic/mac` worktree, fetch origin,
-and perform the read-only range review above; never copy files between worktrees.
+Copy-ready description:
 
-**Release status:** `develop` remains `d4ab7e6…`; `main`, live site, and development site are
+> Completes Arc 1's remaining automated-local layers on top of Arc 1A's already integrated maximum
+> virtualized Compendium and bounded art worker: Arc 1B adds explicit Canvas/Pixi scene ownership,
+> bfcache survival, and a memory plateau ruler; Arc 1C adds normalized ShipVisualState, a
+> responsive read-only Shipyard with one code-native SVG owner, and named identity-safe surface-HD
+> attachment. Fabrication, Research, Cargo spending, build/upgrade writers, and richer living ship
+> previews remain future work.
+>
+> Verification: full v2 tests passed 567 with 1 intentional skip across 49 files; root/game/worker
+> typecheck passed; real-browser Slice Smoke passed; Glass Matrix passed all 12 viewports; three
+> clean Arc 1C calibrations and the exact-budget local certificate each passed 42/42 under Edge
+> 151.0.4129.101; the named verifier and 64-control Actions-budget selftest passed. Hosted CI has
+> not run for this Arc 1C head.
+>
+> After push, Claude reviews the full Arc 1 remote range read-only from its separate `anthropic/mac`
+> worktree. The Anthropic side must not copy, merge, or edit OpenAI bytes; it receives accepted work
+> only after PR merge through `origin/develop`. This PR remains draft during review. No release,
+> deployment, version bump, publication, or site write is included.
+
+**Other side:** Open Anthropic/Claude Code only after the OpenAI push is verified. Use
+`/Users/nick/Projects/celestial-frontier-anthropic-mac` on `anthropic/mac`, fetch origin via its own
+1Password SSH Agent, and perform the read-only full-Arc review above. Do not synchronize changes into
+that branch yet.
+
+**Release status:** `develop` remains `d4ab7e6…`; `main`, the live site, and development site are
 unchanged. No release, deployment, version bump, publication, or site write occurred.
 
-**Actions budget:** `UNFROZEN`; public/standard runners remain free while visibility holds; 3,000 is
-the fail-closed private/ambiguous cap. PR #32 attempts remain consumed history. Arc 1B authorized
-future attempts: zero; approval label: absent.
+**Actions budget:** `UNFROZEN`; public standard runners remain free while visibility holds; 3,000 is
+the fail-closed private/ambiguous cap. Exact Arc 1C hosted attempts authorized: zero. Approval label:
+absent by required policy. The next hosted attempt requires separate exact changed-head authority.
