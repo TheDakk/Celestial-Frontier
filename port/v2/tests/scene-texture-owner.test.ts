@@ -243,6 +243,13 @@ describe('scene texture ownership', () => {
     const pixiImport = source.match(/^import \{[^;]+from 'pixi\.js';$/m)?.[0] ?? '';
     expect(pixiImport).not.toContain('RenderTexture');
     expect(source).not.toMatch(/\.generateTexture\(/);
+    expect(source.match(/\bnew Text\(/g) ?? []).toHaveLength(0);
+    expect(source.match(/createSceneText\(/g) ?? []).toHaveLength(11);
+    expect(source.match(/destroy\(\{ children: true, context: true \}\)/g) ?? [])
+      .toHaveLength(3);
+    expect(source.match(/provenGalaxyCell\(state\.gal, prof, cx, cy\)/g) ?? [])
+      .toHaveLength(1);
+    expect(source.match(/for \(const cell of galaxyCells\)/g) ?? []).toHaveLength(2);
     expect(source.match(/\bdrawUniverse\(/g)).toHaveLength(3);
     expect(source.match(/\bdrawGalaxy\(/g)).toHaveLength(2);
     expect(source.match(/\bdrawSystem\(/g)).toHaveLength(2);
@@ -255,4 +262,5 @@ describe('scene texture ownership', () => {
     expect(source.match(/retireFineTextureOwner\(previousLayer, previousScope\);/g)).toHaveLength(2);
     expect(source).toContain('owner.scope?.dispose();\n      retiredFineTextureOwners.delete(owner);');
   });
+
 });

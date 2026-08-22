@@ -14,6 +14,7 @@ const PROFILES = Object.freeze(['phone', 'desktop']);
 const BUDGET_FIELDS = Object.freeze([
   'heapUsedBytesMax', 'embedderHeapUsedBytesMax', 'backingStorageBytesMax',
   'heapAggregateBytesMax', 'warmHeapAggregateRangeBytesMax',
+  'warmHeapSlopeBytesPerCycleMax',
   'documentsMax', 'nodesMax', 'jsEventListenersMax',
   'peakActiveLeaseCountMax', 'peakLiveTextureCountMax', 'peakLiveCanvasBytesMax',
   'managedTextureCountMax', 'managedTexturePixelsMax', 'localCanvasCacheEntriesMax',
@@ -21,7 +22,17 @@ const BUDGET_FIELDS = Object.freeze([
   'ringCacheEntriesMax', 'peakRingGeometryEntriesMax',
   'targetElapsedMsMax', 'heartbeatElapsedMsMax',
 ]);
-
+const MANAGED_RESOURCE_FIELDS = Object.freeze([
+  'schema', 'valid', 'hashCount', 'hashes', 'liveEntryCount', 'clearedEntryCount',
+  'compactionCount', 'compactedSlotCount', 'faultCount',
+]);
+const MANAGED_RESOURCE_HASH_FIELDS = Object.freeze([
+  'name', 'type', 'liveEntryCount', 'clearedEntryCount',
+]);
+const MANAGED_RESOURCE_COUNT_FIELDS = Object.freeze([
+  'hashCount', 'liveEntryCount', 'clearedEntryCount',
+  'compactionCount', 'compactedSlotCount', 'faultCount',
+]);
 const object = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
 const count = (value) => Number.isSafeInteger(value) && value >= 0;
 const finite = (value) => Number.isFinite(value) && value >= 0;
@@ -129,6 +140,94 @@ function registryCoherenceReasons(registry) {
   return reasons;
 }
 
+function managedResourceSnapshotReasons(snapshot) {
+  if (!object(snapshot)) return ['snapshot absent'];
+  const reasons = [];
+  if (!exactKeys(snapshot, MANAGED_RESOURCE_FIELDS)) reasons.push('snapshot shape');
+  if (snapshot.schema !== 'cf-v2-pixi-managed-resources/v2') reasons.push('snapshot schema');
+  if (snapshot.valid !== true) reasons.push('adapter invalid');
+  for (const field of MANAGED_RESOURCE_COUNT_FIELDS) {
+    if (!count(snapshot[field])) reasons.push(`${field} invalid`);
+  }
+  if (!count(snapshot.hashCount) || snapshot.hashCount === 0) reasons.push('hash inventory empty');
+  if (!Array.isArray(snapshot.hashes) || snapshot.hashes.length !== snapshot.hashCount) {
+    reasons.push('per-hash inventory incomplete');
+  } else {
+    const identities = new Set();
+    const identityOrder = [];
+    let liveEntryCount = 0;
+    let clearedEntryCount = 0;
+    for (const hash of snapshot.hashes) {
+      if (!exactKeys(hash, MANAGED_RESOURCE_HASH_FIELDS)
+        || !nonempty(hash.name) || hash.name.trim() !== hash.name
+        || (hash.type !== 'resource' && hash.type !== 'renderable')
+        || !count(hash.liveEntryCount) || !count(hash.clearedEntryCount)) {
+        reasons.push('per-hash entry invalid');
+        continue;
+      }
+      const identity = `${hash.type}\u0000${hash.name}`;
+      if (identities.has(identity)) reasons.push('per-hash identity duplicated');
+      identities.add(identity);
+      identityOrder.push(identity);
+      liveEntryCount += hash.liveEntryCount;
+      clearedEntryCount += hash.clearedEntryCount;
+      if (hash.clearedEntryCount !== 0) reasons.push(`${hash.name} retained cleared entries`);
+    }
+    if (!same(identityOrder, [...identityOrder].sort())) {
+      reasons.push('per-hash inventory is not canonical');
+    }
+    if (liveEntryCount !== snapshot.liveEntryCount) reasons.push('per-hash live total mismatch');
+    if (clearedEntryCount !== snapshot.clearedEntryCount) {
+      reasons.push('per-hash cleared total mismatch');
+    }
+  }
+  if (!count(snapshot.liveEntryCount) || snapshot.liveEntryCount === 0) {
+    reasons.push('live inventory empty');
+  }
+  if (snapshot.clearedEntryCount !== 0) reasons.push('cleared entries remained');
+  if (!count(snapshot.compactionCount) || snapshot.compactionCount === 0) {
+    reasons.push('compaction witness absent');
+  }
+  if (!count(snapshot.compactedSlotCount) || snapshot.compactedSlotCount === 0) {
+    reasons.push('compacted-slot witness absent');
+  }
+  if (snapshot.faultCount !== 0) reasons.push('adapter fault');
+  return reasons;
+}
+
+function managedResourceProgressReasons(precondition, cycles) {
+  if (!object(precondition?.managedResources)
+    || cycles.length !== SCENE_MEMORY_CYCLE_COUNT
+    || cycles.some((cycle) => !object(cycle?.managedResources))) {
+    return ['precondition/cycle compaction sequence incomplete'];
+  }
+  const points = [precondition, ...cycles];
+  const reasons = [];
+  for (let index = 1; index < points.length; index++) {
+    const before = points[index - 1].managedResources;
+    const after = points[index].managedResources;
+    const compactionDelta = after.compactionCount - before.compactionCount;
+    const compactedSlotDelta = after.compactedSlotCount - before.compactedSlotCount;
+    if (!Number.isSafeInteger(compactionDelta) || compactionDelta <= 0) {
+      reasons.push(`cycle ${index}: compaction count did not advance`);
+    }
+    if (!Number.isSafeInteger(compactedSlotDelta) || compactedSlotDelta <= 0) {
+      reasons.push(`cycle ${index}: compacted slot count did not advance`);
+    }
+  }
+  return reasons;
+}
+
+function managedResourceStructuralSignature(snapshot) {
+  return {
+    hashCount: snapshot?.hashCount,
+    hashes: snapshot?.hashes,
+    liveEntryCount: snapshot?.liveEntryCount,
+    clearedEntryCount: snapshot?.clearedEntryCount,
+    faultCount: snapshot?.faultCount,
+  };
+}
+
 function liveSignature(point) {
   const registry = point?.registry;
   return {
@@ -141,6 +240,8 @@ function liveSignature(point) {
     liveTexturesByKind: SCENE_TEXTURE_KINDS.map((kind) => registry?.liveTexturesByKind?.[kind]),
     managedTextureCount: point?.managedTextureCount,
     managedTexturePixels: point?.managedTexturePixels,
+    managedTextureClearedSlots: point?.managedTextureClearedSlots,
+    sceneTextStyleUpdateListeners: point?.sceneTextStyleUpdateListeners,
     localCanvasCacheEntries: point?.localCanvasCacheEntries,
     peakLocalCanvasCacheEntries: point?.peakLocalCanvasCacheEntries,
     productRenderTargets: point?.productRenderTargets,
@@ -275,11 +376,36 @@ function heapAggregate(point) {
   return heap.usedSize + heap.embedderHeapUsedSize + heap.backingStorageSize;
 }
 
+function leastSquaresSlope(values) {
+  if (!Array.isArray(values) || values.length !== SCENE_MEMORY_CYCLE_COUNT
+    || values.some((value) => !finite(value))) return Number.POSITIVE_INFINITY;
+  const xMean = (values.length - 1) / 2;
+  const yMean = values.reduce((sum, value) => sum + value, 0) / values.length;
+  let numerator = 0;
+  let denominator = 0;
+  for (let index = 0; index < values.length; index++) {
+    const xDelta = index - xMean;
+    numerator += xDelta * (values[index] - yMean);
+    denominator += xDelta * xDelta;
+  }
+  return denominator > 0 ? numerator / denominator : Number.POSITIVE_INFINITY;
+}
+
+function maximumPositiveHeapSlope(cycles) {
+  const series = [
+    cycles.map((cycle) => cycle?.heap?.usedSize),
+    cycles.map((cycle) => cycle?.heap?.embedderHeapUsedSize),
+    cycles.map((cycle) => cycle?.heap?.backingStorageSize),
+    cycles.map(heapAggregate),
+  ];
+  return Math.max(0, ...series.map(leastSquaresSlope));
+}
+
 function diagnosticResourceReasons(point, budget) {
   if (!object(point)) return ['resource point absent'];
   const reasons = [];
   for (const field of [
-    'managedTextureCount', 'managedTexturePixels',
+    'managedTextureCount', 'managedTexturePixels', 'managedTextureClearedSlots',
     'localCanvasCacheEntries', 'peakLocalCanvasCacheEntries',
     'productRenderTargets', 'retiredFineOwnerCount',
   ]) if (!count(point[field])) reasons.push(`${field} invalid`);
@@ -373,6 +499,31 @@ function profileOutcomes(profile, measurement, budget) {
     .concat(cycles.map((cycle, index) => [`cycle ${index + 1}`, cycle]))
     .concat([['bfcache', bfcache]]);
   const allPoints = pointsWithLabels.map(([, point]) => point);
+  const sceneTextStyleListeners = allPoints.every((point) =>
+    count(point?.sceneTextStyleUpdateListeners) && point.sceneTextStyleUpdateListeners > 0);
+  out.push(outcome(`${profile}/scene-text-style-listeners`, sceneTextStyleListeners,
+    sceneTextStyleListeners
+      ? 'every populated universe anchor retained shared TextStyle update listeners'
+      : 'shared TextStyle update-listener witness was absent or vacuous'));
+  const managedResourceReasons = pointsWithLabels.flatMap(([label, point]) =>
+    managedResourceSnapshotReasons(point?.managedResources).map((reason) =>
+      `${label}: ${reason}`));
+  managedResourceReasons.push(...managedResourceProgressReasons(precondition, cycles));
+  out.push(outcome(`${profile}/managed-resource-compaction`,
+    managedResourceReasons.length === 0,
+    managedResourceReasons.length
+      ? managedResourceReasons.join('; ')
+      : 'Pixi managed-resource hashes were compacted in every measured cycle'));
+  const managedResourcePlateau = object(precondition?.managedResources)
+    && cycles.length === SCENE_MEMORY_CYCLE_COUNT
+    && cycles.every((cycle) => same(
+      managedResourceStructuralSignature(cycle?.managedResources),
+      managedResourceStructuralSignature(precondition.managedResources),
+    ));
+  out.push(outcome(`${profile}/managed-resource-plateau`, managedResourcePlateau,
+    managedResourcePlateau
+      ? 'precondition and all four measured cycles share one managed-resource inventory'
+      : 'settled Pixi managed-resource inventory drifted'));
   const diagnosticResources = pointsWithLabels.flatMap(([label, point]) =>
     diagnosticResourceReasons(point, budget).map((reason) =>
       `${label}: ${reason}`));
@@ -426,7 +577,6 @@ function profileOutcomes(profile, measurement, budget) {
     && count(point.dom.documents) && point.dom.documents > 0
     && count(point.dom.nodes) && point.dom.nodes > 0
     && count(point.dom.jsEventListeners) && point.dom.jsEventListeners > 0);
-  const warmHeaps = cycles.map(heapAggregate);
   const heapDom = heaps.every((aggregate, index) => {
     const heap = allPoints[index]?.heap;
     const dom = allPoints[index]?.dom;
@@ -436,10 +586,20 @@ function profileOutcomes(profile, measurement, budget) {
       && heap?.backingStorageSize <= budget.backingStorageBytesMax
       && dom?.documents <= budget.documentsMax && dom?.nodes <= budget.nodesMax
       && dom?.jsEventListeners <= budget.jsEventListenersMax;
-  }) && domValid && warmHeaps.length === SCENE_MEMORY_CYCLE_COUNT
-    && Math.max(...warmHeaps) - Math.min(...warmHeaps) <= budget.warmHeapAggregateRangeBytesMax;
+  }) && domValid;
   out.push(outcome(`${profile}/heap-dom-budget`, heapDom,
     heapDom ? 'heap and DOM counters stayed within supplied ceilings' : 'heap or DOM ceiling was exceeded'));
+
+  const warmHeaps = cycles.map(heapAggregate);
+  const warmHeapRange = warmHeaps.length === SCENE_MEMORY_CYCLE_COUNT
+    ? Math.max(...warmHeaps) - Math.min(...warmHeaps) : Number.POSITIVE_INFINITY;
+  const warmHeapSlope = maximumPositiveHeapSlope(cycles);
+  const heapPlateau = warmHeapRange <= budget.warmHeapAggregateRangeBytesMax
+    && warmHeapSlope <= budget.warmHeapSlopeBytesPerCycleMax;
+  out.push(outcome(`${profile}/heap-plateau`, heapPlateau,
+    heapPlateau
+      ? 'four measured heap samples stayed within range and positive-slope ceilings'
+      : 'measured heap range or positive slope exceeded budget'));
 
   const bfcacheOk = object(bfcache) && bfcache.pagehidePersisted === true
     && bfcache.pageshowPersisted === true && bfcache.resumed === true
@@ -452,6 +612,8 @@ function profileOutcomes(profile, measurement, budget) {
     && bfcache.sceneGeneration === cycles.at(-1)?.sceneGeneration
     && same(cumulativeRegistrySignature(bfcache.registry),
       cumulativeRegistrySignature(cycles.at(-1)?.registry))
+    && object(bfcache.managedResources)
+    && same(bfcache.managedResources, cycles.at(-1)?.managedResources)
     && same(liveSignature(bfcache), liveSignature(cycles.at(-1)));
   out.push(outcome(`${profile}/bfcache-survival`, bfcacheOk,
     bfcacheOk ? 'persisted pagehide/pageshow preserved the live application' : 'bfcache resume changed or destroyed its owner'));
@@ -459,7 +621,7 @@ function profileOutcomes(profile, measurement, budget) {
 }
 
 export function evaluateSceneMemory(input) {
-  if (!object(input) || input.schema !== 'cf-v2-scene-memory-input/v1'
+  if (!object(input) || input.schema !== 'cf-v2-scene-memory-input/v2'
     || !exactKeys(input.profiles, PROFILES) || !exactKeys(input.budgets, PROFILES)) {
     throw new TypeError('scene-memory input requires exact phone and desktop profiles/budgets');
   }
