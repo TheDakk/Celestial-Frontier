@@ -1,6 +1,6 @@
 # Celestial Frontier — Master Art Direction
 
-**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` Arc 1A art/resource overlay matches code as of 2026-08-20 and appears immediately below; the GP7 addendum preserves the earlier executed reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
+**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` Arc 1C art/resource overlay matches code as of 2026-08-22 and appears immediately below; the Arc 1A and GP7 overlays preserve earlier implementation and reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the
@@ -8,9 +8,43 @@ decisions we actually made). Content catalogs (`BIOME_ATLAS.md` at the repo root
 fauna/flora data-pack CSVs) remain the *content* source of truth; this is the *direction* source
 of truth.
 
-## 2026-08-20 v2 Arc 1A overlay — current implementation and remaining direction
+## 2026-08-22 v2 Arc 1C overlay — current ship and surface presentation
 
-**Current implementation:** `port/v2` keeps the deterministic 1,500-species Compendium read-only,
+**Current implementation:** clean product/ruler
+`a4de5007ffc9131b8bc952a0a4cb469d9139039e` implements the four-stage ship-art foundation as
+deterministic, code-native SVG rather than a new bitmap or Pixi asset pipeline. One pure,
+recursively frozen `ShipVisualState` consumes only normalized `items`, `ascCh`, and injected legacy
+livery seed `0x5111`; `ascStageOf` remains the single reach/chassis authority. Chassis read as
+Scout/Chemical, Jump/Interstellar, Survey Cruiser/Array, and Frontier/Intergalactic. The exact
+optional hardpoint ids are `array`, `autoext`, and `cscoop`, presented as **Long-Range Array**,
+**Auto-Extractor**, and **Corona Scoop**. Installed systems stay in exact order
+`jumpdrive,array,igdrive,autoext,cscoop`, and only the terminal compatibility case receives the
+generic `legacy-charter-refit` marking.
+
+The read-only Shipyard is reachable from the desktop right rail and the phone's exact 5×2,
+260px, nine-control dock. At most one owned SVG preview is attached; replacement and close dispose
+it, with zero pending or retained preview work. There is deliberately no Shipyard Pixi scene,
+second renderer, `RenderTexture`, filter, particle system, or animation. This is the automated
+silhouette/ownership foundation, not HUMAN proof that all four forms read strongly enough at
+delivery size; that judgment remains open.
+
+The surface globe's 512/768/1024 sharpness path now has one named transactional
+`SurfacePlanetTextureAttachment` owner.
+It retains the displayed predecessor until an identity-current successor is actually attached and
+its TextureSource backing proves the claimed tier; stale, undersized, throwing, or failed-release
+paths roll back or remain explicitly owned/retryable. The real travel resource route now includes
+Shipyard open/close and a settled zero-preview outcome. Activation/certification source
+`59530da3bf40965adf9c54f169b310e11ccdd0f8` binds `scene-memory-v2.json` SHA-256
+`3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`;
+one-attempt/no-retry local run `20260822-arc1-local-certification` passed 42/42 and its named
+verifier under Edge `151.0.4129.101`. This later documentation state is a descendant, not the exact
+certified head. Hosted CI, integration, release/deploy, Cargo/Inventory/Forge presentation,
+Fabrication/Research/upgrades, richer living previews, broader HD art, and HUMAN silhouette review
+remain open.
+
+## 2026-08-20 v2 Arc 1A overlay — historical implementation foundation and remaining direction
+
+**Implementation at that boundary:** `port/v2` kept the deterministic 1,500-species Compendium read-only,
 but its list is now virtualized: only the visible variable-height window, bounded overscan, and any
 focus-pinned row are mounted. Compendium rows and the Planetside roster acquire identity-safe
 `leaseThumb` ownership of true asynchronous 132px resources. A complete deterministic genome
@@ -197,24 +231,26 @@ change or rerun. No portrait/product, timing, launch, workflow, producer, browse
 policy change occurred. After terminal-green PR #32, work returns immediately to Arc 1B/gameplay.
 The Arc-local Edge 151 authority still does **not** repin the global Gate-A Edge 150
 browser. Calibration review PNGs do not satisfy the selected-head HUMAN row; a fresh phone/desktop
-list, focus-pinned, and detail set still requires HUMAN review. This repair owns the
-current surface globe's fitted start and live tier swap only; the broader Arc 1B/1C
-scene-resource ownership, disposal, and HD texture package remains open.
+list, focus-pinned, and detail set still requires HUMAN review. At that historical Arc 1A
+boundary, the repair owned only the surface globe's fitted start/live tier swap, while broader
+Arc 1B/1C scene ownership and attachment work remained open; the current Arc 1C state is above.
 
-**What remains planned:** V2 has no Cargo, Shipyard, ship portrait, crafting, research, or
-ship-upgrade presentation yet. Legacy v1.8.9 does have deterministic additive ship art in
-`shipImage()`—the scout gains visible drive, array, extractor and scoop details—but that one base
-silhouette is a reference, not proof that the v2 distinct-hull target is built.
+**Historical Arc 1A boundary (superseded for the Arc 1C ship foundation):** At this point V2 had no
+Cargo, Shipyard, ship portrait, crafting, research, or ship-upgrade presentation. Legacy v1.8.9 did
+have deterministic additive ship art in `shipImage()`—the scout gained visible drive, array,
+extractor and scoop details—but that one base silhouette was only a reference. The current static
+four-silhouette Shipyard state is recorded in the 2026-08-22 overlay above; Cargo, crafting,
+Research, Fabrication and upgrade actions remain open.
 
 Ship art is driven by one pure `ShipVisualState` projection shared with the reach ladder—art never
-writes progression. Four chassis stages must pass the same two-second silhouette test as organisms:
+writes progression. Four chassis stages must pass the same two-second HUMAN silhouette test as organisms:
 **Scout / Chemical**, **Jump / Interstellar**, **Array / Survey Cruiser**, and
 **Intergalactic / Frontier**. Built Auto-Extractor and Corona Scoop systems are legible hardpoints,
 not extra chassis tiers. The legacy `ascCh` completion fallback must resolve to an honest veteran
 refit state even when an old save has no drive item; it must not show a bare scout with full reach or
-claim that a missing named system is installed. Shipyard may add one bounded Pixi preview for engine,
-beacon and dish motion, but it pauses while hidden or under reduced motion and destroys its owned
-textures, filters and particles on close. Dense inventory rows remain static DOM images.
+claim that a missing named system is installed. Arc 1C chose one static code-native SVG preview and
+no Pixi preview; any later motion proposal would require a new bounded owner and may not weaken
+hidden/reduced-motion or disposal rules. Dense inventory rows remain static DOM images.
 
 The visual ladder respects player mastery: every stage first communicates the capability the player
 earned, then adds craft and ornament. Optional systems remain recognizable without turning rarity
