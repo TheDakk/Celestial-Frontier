@@ -1,7 +1,7 @@
 # Development Preview — Separate-Origin Human Playtesting
 
 **Status:** process reference, matches preview packaging and the Actions-budget publication guard
-as of 2026-08-21. This is not a release record.
+as of 2026-08-22. This is not a release record.
 
 ## Separate-origin requirement; approved branch site
 
@@ -266,39 +266,45 @@ This does not re-pin Gate A or the global browser authority: `../tools/deps.pinn
 Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates, any
 timing, product bytes, or the one-attempt/zero-retry policy.
 
-## Arc 1B scene-memory boundary
+## Arc 1 scene-memory boundary (2026-08-22)
 
-Arc 1B is locally complete for the existing rendered scenes. Its standalone `scenemem` gate uses
-one browser process for 390×844 phone and 1280×800 desktop profiles, performs four unmeasured
-warmups followed by exactly four measured cycles, and evaluates 40 outcomes across Universe,
-Galaxy/fine, Sol/System, Earth/Surface, the 1,500-row Compendium, and the settled return to Universe.
-`shipyardStatus: future-arc-1c` is an explicit scope boundary: there is no Shipyard route or preview
-surface to certify until Arc 1C implements it.
+Arc 1B's standalone scene-memory-v1 gate remains the exact historical authority for the existing
+rendered scenes before Shipyard. Product/ruler `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`
+and activation `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910` produced one local no-retry 40/40
+certificate under Edge `.93`, complete lifecycle/cleanup and named verification. Its
+`shipyardStatus: future-arc-1c` field was truthful at that source; it is not proof of Arc 1C.
 
-Clean product/ruler source `79c605f9c7ab8b63ad082d852c38d66ad6bb11af` produced three
-independent one-attempt/no-retry calibrations under exact `Edg/151.0.4129.93`, revision
-`@4a822b1bb7a8566144cff23f6c09a2ab162665f9`, JavaScript `15.1.23.7`, and CDP `1.3`.
-Active-budget/workflow descendant `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910` then produced local
-run `20260821-arc1b-local-certification`: 40/40, complete lifecycle and browser/server/workspace-lock
-cleanup, zero findings/fatal events, followed by a passing exact named-run verifier. Retained raw
-calibration, diagnostic, and certification hashes live in `../audits/`. They prove local automated
-behavior only; they do not make a development-preview package, a hosted check, a HUMAN playtest, or
-a publication candidate.
+Arc 1C product/ruler source `a4de5007ffc9131b8bc952a0a4cb469d9139039e` implements a responsive
+read-only Shipyard with one code-native SVG/DOM preview owner, zero second renderer/RenderTexture,
+and a named HD-surface texture attachment. Exact activation/certification source
+`59530da3bf40965adf9c54f169b310e11ccdd0f8` binds `budgets/scene-memory-v2.json` SHA-256
+`3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`. Local no-retry run
+`20260822-arc1-local-certification` passed 42/42 under Edge `151.0.4129.101`, complete lifecycle and
+browser/server/workspace-lock cleanup, zero findings/fatal events and a passing exact named-run
+verifier. Report raw/gzip SHA-256 are
+`e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5` /
+`0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6`.
 
-The guarded ordinary `test-battery` carries the hosted Arc 1B step serially after Arc 1A's exact
+The current gate uses one browser process for 390×844 phone and 1280×800 desktop profiles, four
+unmeasured warmups and four measured cycles through Universe, Galaxy/fine, Sol/System,
+Earth/Surface, the 1,500-row Compendium, the real Shipyard, and settled Universe. Forty-two outcomes
+include the visible Shipyard opener, exact canonical visual/DOM state, one open preview, owned Close,
+and zero retained/pending preview work after Close. The Fabricator, Research Bench, Cargo/material
+spending, fabrication, research and upgrades remain unavailable.
+
+The guarded ordinary `test-battery` carries this scene-memory-v2 step serially after Arc 1A's exact
 Edge `.86` report is terminal and verified and before the Chrome smoke/Glass/persona/preview steps.
-It installs exact Edge `.93`, runs the scene-memory instrument and calibration controls, performs
+It installs exact Edge `.101`, runs the browser-free instrument and calibration controls, performs
 one no-retry active-budget certification, always verifies the named terminal report, and uploads
 whatever that attempt produced as `v2-scene-memory-evidence`. This is part of the single fail-fast
 owner-label-authorized battery, not a new parallel job or automatic retry. At this handoff **zero
-Arc 1B hosted attempts are authorized**. Local 40/40 evidence does not authorize adding the label,
-dispatching either workflow, pushing, publishing, marking a PR Ready, merging, releasing, or
-deploying.
+Arc 1C hosted attempts have run or are authorized**. Local 42/42 evidence does not authorize adding the label,
+dispatching either workflow, publishing, marking a PR Ready, merging, releasing, or deploying.
 
 The separate manual `development-preview-package` workflow still owns preview packaging and its
-existing Arc 1A `.86` Compendium/Chrome sequence; it does not run or certify the Arc 1B `.93`
-scene-memory ruler. A future preview artifact may include Arc 1B product bytes only after its own
-exact-source workflow authorization, but package verification remains distinct from scene-memory,
+existing Arc 1A `.86` Compendium/Chrome sequence; it does not run or certify the Arc 1
+scene-memory-v2 ruler. A future preview artifact may include the current product bytes only after
+its own exact-source workflow authorization, but package verification remains distinct from scene-memory,
 hosted-battery, HUMAN, merge, and release authority.
 
 `preview:verify` proves package integrity and the safety metadata. It does not assert that a
@@ -531,12 +537,12 @@ Report/log evidence is still uploaded when its owning step is red:
   overwritten current-run evidence—not a committed PASS; certification exists only when the
   exact-current report verifies. They do not supply the still-open [HUMAN] six-image visual
   judgment. That artifact alone does not claim Arc 1B;
-- `v2-scene-memory-evidence`: the Arc 1B `scenemem-report.json` from the same one authorized,
-  serial test-battery attempt. The gate owns four warmups plus four measured cycles, 40 outcomes,
-  complete lifecycle/cleanup, and exact named-run verification under Edge `.93`; the artifact is
-  retained even when red. Missing, incomplete, nonterminal, wrong-browser, or unverified evidence
-  remains red. It has no Shipyard leg before Arc 1C and supplies no HUMAN or preview-publication
-  authority;
+- `v2-scene-memory-evidence`: the Arc 1 scene-memory-v2 `scenemem-report.json` from the same one
+  authorized, serial test-battery attempt. The gate owns four warmups plus four measured cycles,
+  42 outcomes including the real Shipyard lifecycle, complete cleanup, and exact named-run
+  verification under Edge `.101`; the artifact is retained even when red. Missing, incomplete,
+  nonterminal, wrong-browser, unverified, bypassed-opener/Close, duplicate-preview, or retained-work
+  evidence remains red. It supplies no HUMAN or preview-publication authority;
 - `battery-reports`: the smoke/glass/persona bundle assembled after those earlier serial steps;
 - `v2-browser-evidence`: the real-browser screenshots;
 - `v2-development-preview`: a loopback-playable, commit-bound review artifact, produced

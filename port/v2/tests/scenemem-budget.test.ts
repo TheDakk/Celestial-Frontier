@@ -19,6 +19,8 @@ const auditRoot = path.resolve(v2Root, '..', '..', 'audits');
 const SOURCE_COMMIT = 'a4de5007ffc9131b8bc952a0a4cb469d9139039e';
 const SOURCE_WORKING_TREE = 'f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a';
 const BUILD_SHA256 = '44eb670cc2160c39ff5c159f5f1aec1e68e5d6bae5d02e75bf0e2eec026ff81e';
+const BUILD_FILE_COUNT = 38;
+const BUILD_FILES_SHA256 = 'ffd2616047932577db169f05d891ea96054bd2dcc5cb65c1d02a2a3df7f1ca03';
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const CANDIDATES = [
   {
@@ -40,6 +42,14 @@ const CANDIDATES = [
     gzipSha256: '385d4622e669cc0849aced533da50869b01a6b11ef5d06e3e61afe5de910a593',
   },
 ] as const;
+const LOCAL_CERTIFICATION = Object.freeze({
+  runId: '20260822-arc1-local-certification',
+  file: 'ARC1C_SCENEMEM_LOCAL_CERTIFICATION.json.gz',
+  sourceCommit: '59530da3bf40965adf9c54f169b310e11ccdd0f8',
+  rawSha256: 'e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5',
+  gzipSha256: '0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6',
+  budgetSha256: '3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7',
+});
 
 type ProfileName = typeof PROFILE_NAMES[number];
 type BudgetRecord = {
@@ -74,6 +84,7 @@ type CalibrationReport = {
   inputs: Record<string, string | null>;
   build: { schema: string; files: unknown[]; sha256: string };
   fixture: { count: number; rowsSha256: string };
+  budget?: { schema: string; path: string; sha256: string };
   contractInput: SceneMemoryInput;
   verdict: SceneMemoryVerdict;
   outcomes: Array<{ id: string; pass: boolean; message: string }>;
@@ -198,6 +209,25 @@ const authorityProjection = (
   Object.keys(authority).map((field) => [field, record[field] ?? null]),
 );
 
+const collectedProfileProjection = (
+  report: CalibrationReport,
+): SceneMemoryInput['profiles'] => Object.fromEntries(
+  PROFILE_NAMES.map((profile) => [profile, {
+    precondition: report.profiles[profile].precondition,
+    cycles: report.profiles[profile].cycles,
+    bfcache: report.profiles[profile].bfcache,
+  }]),
+) as SceneMemoryInput['profiles'];
+
+const expectExactBuildInventory = (report: CalibrationReport): void => {
+  expect(report.build).toMatchObject({
+    schema: 'cf-v2-scene-memory-build/v1',
+    sha256: BUILD_SHA256,
+  });
+  expect(report.build.files).toHaveLength(BUILD_FILE_COUNT);
+  expect(sha256(Buffer.from(JSON.stringify(report.build.files)))).toBe(BUILD_FILES_SHA256);
+};
+
 const metric = (
   report: CalibrationReport,
   profile: ProfileName,
@@ -317,9 +347,7 @@ describe('Arc 1C scene-memory active budget', () => {
         count: 1500,
         rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
       });
-      expect(report.build.schema).toBe('cf-v2-scene-memory-build/v1');
-      expect(report.build.files.length).toBeGreaterThan(0);
-      expect(report.build.sha256).toBe(BUILD_SHA256);
+      expectExactBuildInventory(report);
       expect(report.inputs.budget).toBeNull();
       expect(Object.keys(report.inputs).sort()).toEqual(
         [...Object.keys(EXPECTED_PRODUCER_AUTHORITY), 'budget'].sort(),
@@ -335,6 +363,7 @@ describe('Arc 1C scene-memory active budget', () => {
       expect(report.findings).toEqual([]);
       expect(report.fatalEvents).toEqual([]);
       expect(report.contractInput.schema).toBe('cf-v2-scene-memory-input/v3');
+      expect(report.contractInput.profiles).toEqual(collectedProfileProjection(report));
       const recomputed = evaluateSceneMemory(report.contractInput);
       expect(recomputed).toEqual(report.verdict);
       expect(recomputed.status).toBe('pass');
@@ -353,6 +382,78 @@ describe('Arc 1C scene-memory active budget', () => {
       expect(new Set(reports.map((report) => report.profiles[profile].targetId)).size).toBe(3);
       expect(new Set(reports.map((report) => report.profiles[profile].documentToken)).size).toBe(3);
     }
+  });
+
+  it('durably replays the exact clean local certification', () => {
+    const compressed = fs.readFileSync(path.join(auditRoot, LOCAL_CERTIFICATION.file));
+    expect(sha256(compressed)).toBe(LOCAL_CERTIFICATION.gzipSha256);
+    const raw = gunzipSync(compressed);
+    expect(sha256(raw)).toBe(LOCAL_CERTIFICATION.rawSha256);
+    const report = JSON.parse(raw.toString('utf8')) as CalibrationReport;
+
+    expect(report.schema).toBe('cf-v2-scene-memory-report/v2');
+    expect(report.runId).toBe(LOCAL_CERTIFICATION.runId);
+    expect(report.status).toBe('pass');
+    expect(report.certification).toBe('contract-budget');
+    expect(report.lifecycle).toEqual({
+      schema: 'cf-v2-scene-memory-report-lifecycle/v1',
+      status: 'complete',
+    });
+    expect(report.policy).toEqual({
+      attemptCount: 1,
+      automaticRetries: 0,
+      warmupCycles: 4,
+      measuredWarmCycles: 4,
+      commandTimeoutMs: 5000,
+      targetTimeoutMs: 2000,
+      heartbeatTimeoutMs: 2000,
+    });
+    expect(report.cleanup).toEqual({ browser: true, server: true, workspaceLock: true });
+    expect(report.source.begin).toEqual(report.source.end);
+    expect(report.source.begin).toEqual({
+      commit: LOCAL_CERTIFICATION.sourceCommit,
+      branch: 'openai/mac',
+      state: 'committed',
+      statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      workingTreeSha256: SOURCE_WORKING_TREE,
+    });
+    expect(report.scope).toEqual({
+      covered: ['universe', 'galaxy', 'galaxy-fine', 'system', 'surface', 'compendium', 'shipyard'],
+      shipyardStatus: 'implemented-static',
+      excluded: ['Shipyard build writers', 'audio lifecycle', 'true GPU bytes'],
+    });
+    expect(report.fixture).toEqual({
+      count: 1500,
+      rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
+    });
+    expectExactBuildInventory(report);
+    expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
+      EXPECTED_PRODUCER_AUTHORITY,
+    );
+    expect(authorityProjection(report.browser, EXPECTED_BROWSER_AUTHORITY)).toEqual(
+      EXPECTED_BROWSER_AUTHORITY,
+    );
+    expect(report.budget).toEqual({
+      schema: 'cf-v2-scene-memory-budget/v2',
+      path: '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/budgets/scene-memory-v2.json',
+      sha256: LOCAL_CERTIFICATION.budgetSha256,
+    });
+    expect(report.inputs.budget).toBe(LOCAL_CERTIFICATION.budgetSha256);
+    expect(sha256(fs.readFileSync(budgetPath))).toBe(LOCAL_CERTIFICATION.budgetSha256);
+    expect(report.contractInput.budgets).toEqual(budget.profiles);
+    expect(report.contractInput.profiles).toEqual(collectedProfileProjection(report));
+    expect(report.outcomes).toHaveLength(42);
+    expect(report.outcomes.every((outcome) => outcome.pass)).toBe(true);
+    expect(report.findings).toEqual([]);
+    expect(report.fatalEvents).toEqual([]);
+    for (const profile of PROFILE_NAMES) {
+      expect(metricSummary(report.profiles[profile])).toEqual(report.profiles[profile].metrics);
+    }
+    const recomputed = evaluateSceneMemory(report.contractInput);
+    expect(recomputed).toEqual(report.verdict);
+    expect(recomputed.status).toBe('pass');
+    expect(recomputed.outcomes).toEqual(report.outcomes);
+    expect(recomputed.failures).toEqual([]);
   });
 
   it('replays every candidate green with strict headroom over every observed metric', () => {

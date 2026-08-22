@@ -4,8 +4,48 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 source overlay matches code as of 2026-08-21.**
-> **2026-08-21 Arc 1B scene-resource ownership and memory overlay (current source):**
+> **Current port/v2 source overlay matches code as of 2026-08-22.**
+> **2026-08-22 Arc 1C ship/surface implementation and SceneMemory v2 overlay (current source):**
+> clean product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds
+> `packages/scene/src/ship-visual-state.ts`. Its pure `shipVisualStateOf()` accepts only normalized
+> `items`, `ascCh`, and an injected livery seed, delegates chassis selection to `ascStageOf`, and
+> returns a recursively frozen projection. Installed ids are filtered in exact order
+> `jumpdrive,array,igdrive,autoext,cscoop`; visible hardpoints are exactly `array`, `autoext`, and
+> `cscoop`; app livery authority is `0x5111`. Only stage 3 from terminal `ascCh` without an owned
+> `igdrive` receives `legacy-charter-refit`; nonterminal chapter state, equipment, affixes,
+> Research and art cannot mint capability.
+>
+> `apps/game/src/shipyard-preview.ts` owns deterministic code-native SVG composition for four
+> chassis silhouettes, exact hardpoint groups, livery, truthful ARIA text, and an idempotent
+> `ShipyardPreviewOwner.open/replace/dispose` lifecycle. There is at most one owned DOM/SVG preview;
+> the implementation creates no Pixi application, second renderer, `RenderTexture`, filter,
+> particle or asynchronous preview job. `apps/game/src/main.ts` exposes the state at
+> `state().shipVisual`, the owner census at `api.shipyardDiagnostics()`, and a read-only registered
+> Shipyard panel from the desktop right rail and phone's exact 260px 5×2 nine-control dock. The
+> panel lists chassis/provenance, exact installed systems and fitted/open hardpoints, then states
+> that Fabrication, Research and ship upgrades are unavailable. Close disposes the preview.
+>
+> `SurfacePlanetTextureAttachment` in `apps/game/src/planet-texture-attachment.ts` names the displayed surface-HD attachment owner
+> without coupling that owner to Pixi. A requested successor cannot replace its predecessor until
+> identity, lease acquisition, target attachment, and actual TextureSource square backing prove
+> the tier. Stale, undersized, throwing, rollback and release-failure paths retain or clean exact
+> ownership, and a rejected tier remains retryable. Snapshot evidence includes the currently
+> attached backing width/height rather than trusting requested-tier bookkeeping.
+>
+> Slice Smoke and Glass open/read/close the real Shipyard, compare DOM/state/canonical ids, require
+> one preview while open and zero retained after close, and cover the nine-control phone dock,
+> geometry, safe areas and real `:focus-visible` paint. The standalone SceneMemory route appends the
+> same real Shipyard leg and settles at zero preview work. Activation/certification source
+> `59530da3bf40965adf9c54f169b310e11ccdd0f8` binds
+> `budgets/scene-memory-v2.json` SHA-256
+> `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`.
+> One-attempt/no-retry local run `20260822-arc1-local-certification` passed all 42/42 outcomes,
+> complete lifecycle/cleanup, empty findings/fatals, and the independent named verifier under Edge
+> `151.0.4129.101`. This documentation descendant does not retroactively make its HEAD the
+> certified source. Hosted CI/integration, HUMAN silhouette judgment, Cargo/Inventory/Forge,
+> Fabrication/Research/upgrades, richer preview/art work, release and deployment remain open.
+>
+> **2026-08-21 Arc 1B scene-resource ownership and memory overlay (historical foundation; current where Arc 1C does not supersede it):**
 > `apps/game/src/scene-texture-owner.ts` owns one document-wide canvas-identity registry for
 > non-backdrop scene resources. Leases/scopes are refcounted, Texture creation bypasses Pixi's global
 > cache, and the last logical release destroys the owned TextureSource. Whole-scene construction,
@@ -30,7 +70,7 @@
 > fine → Sol/System → Earth/Surface → 1,500-row Compendium → Universe. The contract proves exact
 > route/owner work, settled and transient resource counts, canonical per-hash Pixi inventory,
 > heap/DOM ceilings, target plus independent browser heartbeat, zero pending work, and same-document
-> bfcache survival. Shipyard is explicitly `future-arc-1c` and is not simulated.
+> bfcache survival. At this historical boundary Shipyard was explicitly `future-arc-1c` and was not simulated.
 >
 > Product/ruler authority is exact clean commit
 > `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`; tracked budget/workflow activation is
@@ -43,10 +83,10 @@
 > local evidence, not hosted terminal-green, HUMAN visual review, release, or production authority.
 >
 > Arc 1B changes resource lifetime and its automated proof, not UI capability or authored visuals.
-> Existing scene output and supported 512/768/1024 surface tiers remain; no Cargo, Shipyard, ship
-> portrait, crafting, research, upgrade, combat, companion system, new HD package, release note, or
-> version identity was added. Arc 1C is bounded to pure ShipVisualState, the static responsive
-> Shipyard, at most one owned preview, named HD planet attachment, and the real Shipyard gate leg.
+> Existing scene output and supported 512/768/1024 surface tiers remain; that Arc 1B commit added no
+> Cargo, Shipyard, ship portrait, crafting, research, upgrade, combat, companion system, new HD
+> package, release note, or version identity. Arc 1C's completed static/read-only foundation is
+> recorded above.
 > Broader HD visual expansion, living actor/biome animation, and long-task/hidden-tab policy remain
 > later work.
 > **2026-08-20 Arc 1A Compendium/art/resource overlay (historical implementation and ruler
@@ -578,26 +618,28 @@
 > clock/accrual policy. This is not a current-player data-loss finding.
 > **2026-08-13 exploration/ship/loot/companion/audio review (historical review
 > boundary; Arc 1A resource status is refreshed above):** The executable v2
-> boundary remained the Phase-4 travel/survey slice. `apps/game/src/main.ts` rendered the
+> boundary remained the Phase-4 travel/survey slice. At that boundary, `apps/game/src/main.ts` rendered the
 > read-only Compendium through `@cf/art/species`, consumed `@cf/domain-combatcore`
 > battle stats for specimen detail, and used only the lifted whoosh/survey stings from
 > `@cf/audio`. `@cf/persistence` round-trips legacy cargo/items/equipment/affix/tech/
 > creature fields, but Inventory, Shipyard, mining/crafting, item-instance loot,
 > breeding/care, live combat/Guardians and companion missions have no v2 command owner.
-> The current Guide correctly keeps those capabilities unavailable.
+> The Guide at that boundary correctly kept those capabilities unavailable. The 2026-08-22 overlay
+> above supersedes only Shipyard inspection from unavailable to partial.
 >
 > The approved ownership graph is specified in
 > `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md`: catalogue species split from living
 > `CreatureInstance`; stackable definitions/materials split from `GearInstance`;
-> `ShipVisualState` is a pure projection of the same normalized reach state used by
+> The then-approved `ShipVisualState` boundary was a pure projection of the same normalized reach state used by
 > travel; companion mission loot is an immutable dispatch-time receipt claimed once
 > through revisioned persistence; audio resolves a versioned profile/cue plan without
-> consuming simulation RNG. These are planned module boundaries, not current exports.
+> consuming simulation RNG. They were planned module boundaries at this historical review; the
+> current pure ship projection is now exported as recorded above, while the other writers remain planned.
 > That review required the 1,500-entry Compendium to be virtualized, mounted rows
 > moved to true 132px thumbnails, and decoded pixels/jobs/resources bounded before
 > adding content scale; Arc 1A now implements and measures that bounded DOM/Canvas path.
-> The current Arc 1B overlay now implements and measures Pixi/canvas scene ownership for the existing
-> travel surfaces; this historical review still does not imply Shipyard, HD expansion, or new gameplay.
+> Arc 1B later implemented and measured Pixi/canvas scene ownership for the existing travel surfaces;
+> Arc 1C then added only the static Shipyard inspection and named HD attachment described above.
 > The present one-blob, last-writer-wins repository is
 > insufficient for two-tab exact-once claims and must gain compare-and-swap or one
 > authoritative serialized coordinator.
@@ -650,7 +692,8 @@
 > galaxy/star-only CF1 routes, generated descents and all future ownership/receipt writers
 > still need their own canonical boundary integration.
 >
-> **2026-08-21 GitHub Actions budget overlay:** the repository is public, so standard hosted runners
+> **Historical 2026-08-21 GitHub Actions budget overlay, followed by the current Arc 1C authority:**
+> the repository is public, so standard hosted runners
 > are free while visibility remains public; 3,000 is the fail-closed private/ambiguous cap and mode
 > is `UNFROZEN` in `GITHUB_ACTIONS_BUDGET.md`, with no Arc 1B hosted attempt currently authorized.
 > PR #32 integrated the guarded workflow at `d4ab7e6…`: the former every-PR/every-push parallel
@@ -666,9 +709,12 @@
 > and job-guarded. Branch publication is manual-only and hard parked until a later reviewed exact-SHA
 > promotion contract. `tools/actions-budget-policy.js` validates direct YAML ownership and
 > negative-controls every trigger/input/job/publisher/concurrency direction plus unknown workflows;
-> root `validate.js` runs its real policy first. The local Arc 1B branch adds the exact Edge `.93`
-> scene-memory phase after the terminal verified `.86` Compendium phase; those unpushed bytes are not
-> yet remote or hosted evidence. The old parallel structure and automatic publishers
+> root `validate.js` runs its real policy first. At that historical Arc 1B boundary the local branch
+> added the exact Edge `.93` scene-memory-v1 phase after the terminal verified `.86` Compendium
+> phase; it was not yet pushed or hosted. Current Arc 1C workflow authority instead installs exact
+> Edge `.101` and runs `scene-memory-v2.json` / 42 outcomes at activation
+> `59530da3bf40965adf9c54f169b310e11ccdd0f8`; its local certificate is recorded in the 2026-08-22
+> overlay above, and no Arc 1C hosted attempt is authorized or claimed. The old parallel structure and automatic publishers
 > remain truthful history only. Development/production target isolation, manifests, origin refusal,
 > noindex/robots, target-specific credentials, and the rule that previews are not human/release
 > authority remain unchanged; no publication is currently authorized.

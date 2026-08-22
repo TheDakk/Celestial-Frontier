@@ -1,7 +1,7 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-21.
+> 2026-08-22.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -19,25 +19,29 @@
 > retry, and PR #32 merged into `develop` at `d4ab7e671959ab80198bed22bb600a26fc3524cc`.
 > Its six-image Compendium `[HUMAN]` review remains open.
 >
-> Arc 1B is locally implementation-complete on `openai/mac`; draft PR #33's remote head does not yet
-> contain these unpushed Arc 1B commits. Product
-> and ruler source `79c605f9c7ab8b63ad082d852c38d66ad6bb11af` owns explicit Canvas/Pixi scene
-> texture scopes, whole-scene rollback to a cleared diagnosed state, transactional fine-layer
-> replacement, bounded cache release, Pixi managed-
-> resource cleanup, shared-style and batch-UID retention repairs, and BFCache survival. Three clean,
-> independent exact-Edge-151.0.4129.93 calibration runs at that source each passed 40/40 under four
-> warm-up plus four measured phone/desktop cycles. Tracked budget
-> `78a9e81a121d2598b8d83bbbd0c8311e503470dcd88083f959fc82c181ee5afb` and workflow
-> activation `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910` then received one no-retry local
-> exact-budget certification: 40/40, complete lifecycle, independent verification PASS. Descendant
-> `b30b6d49a8ff1745f33be9a329d421309b96b5e3` retains that report and evidence controls; it is not
-> a second certification and does not move certification authority beyond `e244c9e…`.
+> Arc 1's automated implementation is locally complete. Arc 1B's exact historical source
+> `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`, v1 budget/workflow activation
+> `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`, and one no-retry 40/40 local certificate remain the
+> authority for the pre-Shipyard scene-resource boundary. They are preserved as Arc 1B chronology,
+> not reused as proof of Arc 1C.
 >
-> The Arc 1B gate covers Universe, Galaxy, Galaxy fine, Sol, Earth Surface, and the deterministic
-> 1,500-row Compendium on phone and desktop. Shipyard is not implemented; the report says
-> `future-arc-1c`, and Arc 1C remains the owner of ShipVisualState, static Shipyard proof, and owned
-> HD planet attachment. PR #33 remains draft; no Arc 1B push, hosted attempt, review acceptance,
-> integration, release, or publication is authorized or claimed here.
+> Arc 1C product/ruler source `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds one pure normalized
+> `ShipVisualState` shared by travel and presentation, a responsive read-only Shipyard with one
+> code-native SVG/DOM preview owner and zero second renderer/RenderTexture, and the named
+> `SurfacePlanetTextureAttachment`. Exact activation/certification source
+> `59530da3bf40965adf9c54f169b310e11ccdd0f8` binds `budgets/scene-memory-v2.json` SHA-256
+> `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`. Local no-retry run
+> `20260822-arc1-local-certification` passed 42/42 under Edge `151.0.4129.101`, complete lifecycle
+> and cleanup, followed by a passing exact named-run verifier; report raw/gzip SHA-256 are
+> `e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5` /
+> `0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6`. A later documentation
+> descendant does not move that exact authority.
+>
+> The v2 gate drives Universe, Galaxy, Galaxy fine, Sol, Earth Surface, the deterministic 1,500-row
+> Compendium, and the real Shipyard on phone and desktop before settling back at Universe. PR #33
+> remains draft; hosted evidence, review acceptance, integration, the Arc 1A six-image HUMAN review,
+> Arc 1C phone/desktop ship-readability judgment, whole-Gate closure, release, and publication remain
+> open.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -801,8 +805,9 @@ passed once without retry and PR #32 merged at `d4ab7e6…`. The Arc-local Edge 
 **not** repin Gate-A/global Edge `150.0.4078.83`.
 
 Arc 1A's automated criterion is integrated. Human judgment of a fresh certifying run's six
-phone/desktop list, detail, and focus-pinned images remains outstanding. Arc 1B's current local
-resource state is recorded separately below; Shipyard remains future Arc 1C.
+phone/desktop list, detail, and focus-pinned images remains outstanding. Arc 1B's historical local
+resource certificate and Arc 1C's locally certified real-Shipyard extension are recorded separately
+below; neither supplies HUMAN judgment or closes Gate D.
 
 **Scope:**
 
@@ -842,8 +847,9 @@ art-review-packet evidence, not a Compendium delivery tier.
 **Goal:** give ordinary scene lifetime the same explicit ownership discipline as intentional
 replacement-document teardown.
 
-**Current state (2026-08-21): locally implementation-complete; review, hosted evidence, and
-integration remain open.** Product/ruler source `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`
+**Historical exact state (2026-08-21): locally implementation-complete at the pre-Shipyard
+boundary; later extended by Arc 1C.** Product/ruler source
+`79c605f9c7ab8b63ad082d852c38d66ad6bb11af`
 routes ordinary non-backdrop Canvas/Pixi textures through document-owned, refcounted scene scopes;
 rolls a failed whole-scene build back to a cleared diagnosed state; keeps fine-layer replacement
 transactional; releases local caches and Graphics contexts;
@@ -857,9 +863,8 @@ SHA-256 `78a9e81a121d2598b8d83bbbd0c8311e503470dcd88083f959fc82c181ee5afb` was a
 `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`; one no-retry local exact-budget run then passed
 40/40, complete lifecycle, and independent verification. Descendant `b30b6d49a8ff1745f33be9a329d421309b96b5e3`
 retains that evidence and its validation control, but is not a second certification and does not
-move exact certification beyond `e244c9e…`. Draft PR #33 does not yet contain the unpushed Arc 1B
-head; no Arc 1B hosted attempt,
-review acceptance, or integration is claimed.
+move exact certification beyond `e244c9e…`. This remains local Arc 1B history, not hosted,
+integration, HUMAN, or Arc 1C evidence.
 
 **Implemented scope:** own/acquire/release/evict galaxy haze, planet texture tiers, render/canvas
 caches, `_rgCache`, transient ring geometry, and scene-owned managed-resource proxies. The standalone
@@ -868,10 +873,10 @@ raw-CDP gate drives Universe → Galaxy → Galaxy fine → Sol → Earth Surfac
 texture scopes, stable per-hash managed resources, bounded heap/DOM/proxy ceilings, and cleanup on
 phone and desktop.
 
-**Shipyard boundary:** Shipyard does not exist in the current slice. Reports carry exact
-`shipyardStatus: 'future-arc-1c'`; ShipVisualState, static Shipyard proof, owned Shipyard preview,
-and HD planet attachment remain Arc 1C. Arc 1B must not be cited as the future complete
-travel → Compendium → Shipyard Gate-D loop.
+**Historical Shipyard boundary:** the v1 report correctly carried
+`shipyardStatus: 'future-arc-1c'` because Shipyard did not exist at that exact Arc 1B source. Arc 1C
+now implements and separately certifies the real Shipyard leg below. Never cite the 40/40 v1
+certificate as proof of the later travel → Compendium → Shipyard loop.
 
 **bfcache law:** ordinary `pagehide` must not unconditionally destroy the application. A pagehide
 signal may notify an owner only with an explicit persisted/pageshow plan; renderer destruction stays
@@ -884,19 +889,39 @@ not complete audio lifecycle. Arc 7 owns that work.
 
 **Goal:** make capability visually legible without allowing art to become a second gameplay owner.
 
-**Scope:**
+**Current state (2026-08-22): automated implementation locally complete; HUMAN readability,
+review, hosted evidence, and integration remain open.** Product/ruler source
+`a4de5007ffc9131b8bc952a0a4cb469d9139039e` owns the product and its negative-controlled browser
+route. Exact activation/certification source `59530da3bf40965adf9c54f169b310e11ccdd0f8`
+binds scene-memory-v2 budget SHA-256
+`3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`; local run
+`20260822-arc1-local-certification` passed 42/42 once without retry under Edge
+`151.0.4129.101`, complete lifecycle/cleanup and exact named verification. Report raw/gzip SHA-256
+are `e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5` /
+`0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6`.
+
+**Implemented scope:**
 
 - One pure normalized `ShipVisualState`, derived from canonical saved capability/reach state.
   Travel, Shipyard captions, chassis, hardpoints, and preview consume it; it is not separately saved.
 - Prove Scout/Chemical, Jump/Interstellar, Survey Cruiser, and Frontier/IG chassis roles. Hardpoints
-  appear only when truly owned; veteran legacy data receives an honest generic-refit fallback.
-- Build static Shipyard proof before real build writers. At most one disposable Pixi ship preview is
-  owned by Shipyard; dense inventory/comparison remains DOM-first.
-- Give completed HD planet textures a named attachment/lifetime package after Arc 1B.
+  `array`, `autoext`, and `cscoop` appear only when truly owned; veteran legacy data receives an
+  honest generic-refit fallback.
+- The responsive read-only Shipyard owns exactly one code-native SVG/DOM preview. It creates no
+  second Pixi renderer, RenderTexture, filter, particle system, build writer, or inventory writer.
+- `SurfacePlanetTextureAttachment` gives the existing HD surface tier swap one named,
+  identity-safe acquire/publish/release lifetime.
 
-**Exit evidence:** four stages, hardpoint permutations, legacy fallback, save/reload,
-travel/visual-selector agreement, deliberately mismatched-selector controls, phone/desktop
-silhouette review, and extension of Arc 1B's resource owner/ruler through the implemented Shipyard.
+**Automated exit evidence:** four stages, all hardpoint permutations, legacy fallback,
+reload-shaped reconstruction, travel/visual-selector agreement, deliberately mismatched-selector
+controls, the real visible Shipyard opener and owned Close, one open preview, and zero retained or
+pending preview work after Close and settled Universe. The scene-memory-v2 route adds one Shipyard
+lifecycle outcome per phone/desktop profile for 42 total outcomes.
+
+**Still open:** phone/desktop HUMAN silhouette and caption readability; Arc 1A's six Compendium
+images; PR review, hosted CI and integration; true GPU bytes and physical heat/battery; and the
+actual Fabricator, Research Bench, Cargo spending, fabrication, research, and ship-upgrade writers.
+No whole Gate, production release, version bump, deployment, or publication is claimed.
 
 ### 4.8 F3 — persistence authority, split stores, and receipts
 
