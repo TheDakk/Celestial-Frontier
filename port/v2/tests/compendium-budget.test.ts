@@ -53,6 +53,14 @@ const currentBaselineEvidence = Object.freeze({
   rawSha256: '3d99883d925487e2dd0a827431644a3acc2eb7d5642143f00fb8936486ade9c3',
   gzipSha256: '334d0d933717d42ebd057a9b55bc91301acbef9ab641123beffe69596880ff7c',
 });
+const currentCertificationEvidence = Object.freeze({
+  file: 'ARC1_COMPENDIUM_CERTIFICATION_20260823.json.gz',
+  runId: '20260823-arc1-current-product-certification',
+  sourceCommit: '23e177a4eebdcac8890f9b7d6a02456a948e4ab2',
+  budgetSha256: '9e36bdfb8d0a425beb6e3c131c3a0fc4e5154a23b504213b76e8dc4fe6170311',
+  rawSha256: 'f45e1da50f6f053d55e666bede4f5e545501c79f26168c25a2ae57733a93c0c5',
+  gzipSha256: 'cef1d5593b69c68f9bcdf9024b9d967d10b91cf16255a20bb9d86de779c20722',
+});
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const EXPECTED_MEASUREMENT_AUTHORITY =
   '23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92';
@@ -610,6 +618,58 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(baselineCarrier.samples[profile])
         .toEqual(activeBudget.pairedBrokenBaseline.samples[profile][0]);
     }
+  });
+
+  it('retains and replays the independent exact-budget certificate', () => {
+    if (activeBudget.status === 'calibration-required') return;
+    const compressed = fs.readFileSync(path.join(
+      v2Root, '..', '..', 'audits', currentCertificationEvidence.file,
+    ));
+    expect(createHash('sha256').update(compressed).digest('hex'))
+      .toBe(currentCertificationEvidence.gzipSha256);
+    const raw = gunzipSync(compressed);
+    expect(createHash('sha256').update(raw).digest('hex'))
+      .toBe(currentCertificationEvidence.rawSha256);
+    const report = JSON.parse(raw.toString('utf8')) as RetainedLinuxReport & {
+      expectedOutcomes: string[];
+    };
+    expect(report).toMatchObject({
+      schema: 'cf-v2-compendium-memory-report/v1',
+      runId: currentCertificationEvidence.runId,
+      status: 'pass',
+      lifecycle: { schema: 'cf-v2-compendium-report-lifecycle/v1', status: 'complete' },
+      findings: [],
+      partialFailure: null,
+      blockedOutcomes: [],
+    });
+    expect(report.source.begin).toEqual(report.source.end);
+    expect(report.source.begin).toMatchObject({
+      commit: currentCertificationEvidence.sourceCommit,
+      state: 'committed',
+      statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+    });
+    expect(report.inputs.budget).toBe(currentCertificationEvidence.budgetSha256);
+    expect(report.budget).toMatchObject({
+      status: 'active',
+      sha256: currentCertificationEvidence.budgetSha256,
+      browserAuthority: EXPECTED_BROWSER_AUTHORITY,
+      browserAuthorityMatch: true,
+      producerAuthorityMatch: true,
+    });
+    expect(report.budget.producerAuthority).toEqual(budget.producerAuthority);
+    expect(report.budget.observedProducerAuthority).toEqual(budget.producerAuthority);
+    expect(report.browser).toMatchObject({
+      product: EXPECTED_BROWSER_AUTHORITY.product,
+      revision: EXPECTED_BROWSER_AUTHORITY.revision,
+      js_version: EXPECTED_BROWSER_AUTHORITY.jsVersion,
+      protocol_version: EXPECTED_BROWSER_AUTHORITY.protocolVersion,
+    });
+    const replay = PROFILE_NAMES.flatMap((profile) =>
+      evaluateProfile(report.profiles[profile], activeBudget, fixture));
+    expect(report.expectedOutcomes).toEqual(EXPECTED_OUTCOMES);
+    expect(report.outcomes).toEqual(replay);
+    expect(replay).toHaveLength(78);
+    expect(replay.every((outcome) => outcome.status === 'pass')).toBe(true);
   });
 
   it('keeps every active ceiling strictly above its samples and below the broken shape', () => {

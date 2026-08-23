@@ -136,8 +136,10 @@ the archive verbatim and refresh this handoff in place.
   candidates under exact Edge `.101`, one attempt and zero retries each. Durable raw evidence and
   strict selected ceilings are bound by active budget SHA-256 `9e36bdfb…`; all candidates replay
   78/78 and baseline1 retains four faults plus 14 phone / 13 desktop breaches. An independent
-  exact-budget certificate, named verifier, and complete local battery remain. Do not rerun either
-  consumed hosted run. A later changed head still needs fresh exact authorization.
+  exact-budget run `20260823-arc1-current-product-certification` then passed 78/78 at clean source
+  `23e177a…`, complete lifecycle and named verifier, with raw/gzip report SHA-256 `f45e1da5…` /
+  `cef1d559…`. The complete local battery remains. Do not rerun either consumed hosted run. A later
+  changed head still needs fresh exact authorization.
 - Keep Arc 1A's six-image Compendium review and Arc 1C's phone/desktop silhouette/readability review
   open as HUMAN work. After review/integration, the implementation spine is **F3 → F4 → Arc 2**.
 
