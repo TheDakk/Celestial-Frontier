@@ -102,9 +102,9 @@ the archive verbatim and refresh this handoff in place.
 
 ### Claude full-Arc review — completed and remediated locally
 
-- Claude's read-only full-Arc review is retained at
-  `origin/anthropic/mac` commit `53692f117908f6df9f432b54d35fe9225ae8eed0` in
-  `audits/ARC1_CLAUDE_REVIEW_2026-08-22.md`. It reviewed the full range
+- Claude's read-only full-Arc review is retained on this branch at
+  `audits/ARC1_CLAUDE_REVIEW_2026-08-22.md`, traceably preserved from
+  `origin/anthropic/mac` commit `53692f117908f6df9f432b54d35fe9225ae8eed0`. It reviewed the full range
   `38447019517147319bd08c598202d097ee866874...8b2c423bc9b1a17295d5ce9f23908e67c18a11f9` and found no
   BLOCKER or HIGH item.
 - Commit `1a3eeec83e6d262fc03c8bde7e7b5b1412586afe` resolves its one MEDIUM and three LOW findings without
@@ -154,10 +154,11 @@ Copy-ready description:
 > 151.0.4129.101; the named verifier and 64-control Actions-budget selftest passed. Hosted CI has
 > not run for this Arc 1C head.
 >
-> After push, Claude reviews the full Arc 1 remote range read-only from its separate `anthropic/mac`
-> worktree. The Anthropic side must not copy, merge, or edit OpenAI bytes; it receives accepted work
-> only after PR merge through `origin/develop`. This PR remains draft during review. No release,
-> deployment, version bump, publication, or site write is included.
+> Claude's full-Arc review is complete and preserved with this PR. Its one MEDIUM and three LOW
+> findings are resolved at the current head. The Anthropic side did not copy, merge, or edit OpenAI
+> bytes; it receives accepted work only after PR merge through `origin/develop`. This PR remains draft
+> pending the exact-head hosted battery. No release, deployment, version bump, publication, or site
+> write is included.
 
 **Other side:** The Claude review is already complete on its separate `anthropic/mac` branch. Do not
 merge, rebase, copy, or synchronize that review branch into either `openai/mac` or `develop`; the
