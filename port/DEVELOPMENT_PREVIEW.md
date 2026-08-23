@@ -312,9 +312,9 @@ steps. It runs the browser-free instrument and calibration controls, performs on
 active-budget certification, always verifies the named terminal report, and uploads whatever that
 attempt produced as `v2-scene-memory-evidence`. This is part of the single fail-fast
 owner-label-authorized battery, not a new parallel job or automatic retry. Hosted attempt 4 is
-consumed and terminal-red; **zero new Arc 1C hosted attempts are authorized**. Local 42/42 evidence
-does not authorize adding the label, dispatching either workflow, publishing, marking a PR Ready,
-merging, releasing, or deploying.
+consumed and terminal-red. A later authorized PR #33 battery, `32646110946`, passed terminal-green
+and merged `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`; its label was removed. No new hosted attempt
+is authorized. Local 42/42 evidence still does not authorize publication, release, or deployment.
 
 The separate manual `development-preview-package` workflow still owns preview packaging and its
 current exact `.101` Compendium/Chrome sequence; it does not run or certify the Arc 1

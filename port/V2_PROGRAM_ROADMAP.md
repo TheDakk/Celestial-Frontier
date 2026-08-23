@@ -49,9 +49,9 @@
 >
 > The v2 gate drives Universe, Galaxy, Galaxy fine, Sol, Earth Surface, the deterministic 1,500-row
 > Compendium, and the real Shipyard on phone and desktop before settling back at Universe. PR #33
-> remains draft; hosted terminal-green evidence, review acceptance, integration, the Arc 1A six-image HUMAN review,
-> Arc 1C phone/desktop ship-readability judgment, whole-Gate closure, release, and publication remain
-> open.
+> passed terminal-green battery run `32646110946` and merged as
+> `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`. The Arc 1A six-image HUMAN review, Arc 1C
+> phone/desktop ship-readability judgment, whole-Gate closure, release, and publication remain open.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -899,8 +899,9 @@ not complete audio lifecycle. Arc 7 owns that work.
 
 **Goal:** make capability visually legible without allowing art to become a second gameplay owner.
 
-**Current state (2026-08-23): automated implementation locally complete; HUMAN readability,
-review, hosted terminal-green evidence, and integration remain open.** Product/ruler source
+**Current state (2026-08-23): automated implementation and hosted integration complete; HUMAN
+readability remains open.** PR #33 merged as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` after
+terminal-green battery run `32646110946`. Product/ruler source
 `a4de5007ffc9131b8bc952a0a4cb469d9139039e` owns the product and its negative-controlled browser
 route. Source `59530da3bf40965adf9c54f169b310e11ccdd0f8`, budget SHA-256
 `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`, and local run

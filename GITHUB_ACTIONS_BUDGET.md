@@ -2,11 +2,11 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** PR #32's three post-freeze closure attempts are consumed;
-the final changed-head attempt passed, its label was removed, and the PR merged. PR #33 runs
-`32609389977`, `32611053651`, `32614177932`, and `32618995487` are also consumed and terminal-red;
-their labels were removed.
-Details are below.
+**Hosted attempt state: none authorized.** PR #33's fifth and final authorized changed-head attempt,
+run `32646110946`, passed terminal-green (one attempt, no retry; battery 50m29s), its label was
+removed, and it merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`.
+Runs `32609389977`, `32611053651`, `32614177932`, and `32618995487` remain consumed terminal-red
+historical evidence; their labels were removed. Details are below.
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
@@ -68,6 +68,10 @@ merges, and successful batteries now start **zero hosted runners by default**:
 - `branch-flow-guard.yml`, `sync-agent-branches.yml`, and `dev-preview-package.yml` are manual-only
   and default to `DO_NOT_RUN`. Their runner-owning authorization also requires the repository owner;
   preview uses the same tiny authorize→sealed-owner dependency as the main battery.
+- The active `develop` ruleset requires only the terminal-green `battery` context, normal merge
+  commits, resolved threads, and an up-to-date head. It has no required review count, no extra
+  unattributed-change approval, and no required `Approved branch flow` context. The latter remains
+  an optional manual diagnostic and must not be dispatched merely to unblock a green PR.
 - `publish-branch-sites.yml` is manual-only and additionally hard parked. Neither production nor
   development publication can run until a later reviewed exact-SHA promotion contract removes its
   explicit false guard.
@@ -131,8 +135,8 @@ rarity sanity, dead-code scan, and v2 install passed. All 571 v2 tests and all t
 inside the failing step, but `artaudit` then emitted D-ART-36 against `tools/scenemem.mjs`: its static
 ruler recognized only the legacy `execSync('npx vite build')` spelling and missed SceneMemory's real,
 unconditional `execFileSync(npm, ['run', 'build'])`. Later Edge/Chrome/browser gates were correctly
-skipped. The approval label was removed immediately; the run is consumed, PR #33 remains draft and
-unmerged, and no retry or future hosted attempt is authorized.
+skipped. The approval label was removed immediately; the run is consumed. At that point PR #33 was
+still draft and unmerged; no retry was authorized.
 
 Nick then authorized the push of changed head
 `27b965870c8e831d8b42a0346cf86c112998c15e` and one new attempt against the same base, label,
@@ -144,7 +148,8 @@ Arc-1 index/owner built producer
 `5a316197d9aca27967f4e930f43089d2bbe2b9e4a66a40c207ea59c809405d94`. Worker and painter bytes
 were unchanged; the owner/index change is still producer authority and cannot reuse or rebind old
 ceilings. Later browser gates were skipped. The label was removed immediately; this attempt is
-consumed, PR #33 remains draft and unmerged, and no future hosted attempt is authorized.
+consumed. At that point PR #33 remained draft and unmerged, and no future hosted attempt was
+authorized.
 
 The local repair batch reopened and freshly calibrated Compendium under the current Arc-1 producer
 and exact Edge `.101`, then updated both guarded hosted workflows and the fail-closed preflight from
@@ -160,8 +165,8 @@ The phone focus-pinned point sampled `cmem-0740` and `cmem-0743` as 0×0 placeho
 live subscribers: the collector had proved the prior window ready, then its own mandatory renderer
 turn remounted a fresh normal window before snapshot. Every other byte/pixel/cache/queue/lease/
 portrait ceiling passed; the one paint error was the gate's intentional, recovered negative-control
-job. The run is terminal-red and consumed, its label was removed immediately, PR #33 remains Draft
-and unmerged, and no retry or future hosted attempt is authorized. The local bounded repair consumes
+job. The run is terminal-red and consumed, and its label was removed immediately. At that point PR
+#33 remained Draft and unmerged; no retry was authorized. The local bounded repair consumes
 the deferred virtual-window render turn and re-proves decoded thumbnail settlement before the
 unchanged GC/snapshot sequence. Clean collector source `14626a7…` was recalibrated in exactly three
 current-product candidates plus one paired legacy baseline, each one attempt with zero retries. The
@@ -177,8 +182,8 @@ rule. Run `32618995487`, attempt 1, completed Compendium 78/78 and then terminal
 40/42; only `phone/answerability` and `desktop/answerability` failed. All twelve targets retained the
 same document, advanced the Pixi ticker, and completed below the unchanged 2,000 ms transport
 deadline, while Linux rendered turns took 493–647 ms against the Mac-selected 250 ms ceiling. The
-label was removed; the run is consumed, PR #33 remains Draft/unmerged, and no retry or future hosted
-attempt is authorized.
+label was removed; the run is consumed. At that point PR #33 remained Draft/unmerged, and no retry
+or future hosted attempt was authorized.
 
 Local repair commit `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` preserves collector and contract
 bytes, activates budget SHA-256

@@ -11,8 +11,9 @@ as any change that touches an entry.
 
 ## Current-state decision — Arc 1C ship visual and real-Shipyard resource extension (2026-08-23)
 
-**Status: ★ automated implementation locally complete; HUMAN readability, review, hosted terminal-green evidence,
-and integration remain open.** Product/ruler source
+**Status: ★ automated implementation and hosted integration complete; HUMAN readability remains
+open.** PR #33 merged as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` after terminal-green battery
+run `32646110946`. Product/ruler source
 `a4de5007ffc9131b8bc952a0a4cb469d9139039e` projects one unsaved normalized `ShipVisualState` from
 the same canonical saved reach used by travel. Scout/Chemical, Jump/Interstellar, Survey Cruiser and
 Frontier/IG chassis; exact `array`, `autoext` and `cscoop` hardpoints; installed-system captions; and
@@ -46,8 +47,8 @@ Universe on phone and desktop.
 The previous plan allowed at most one Pixi preview; choosing one code-native SVG/DOM owner and zero
 second renderer is within that bound, not a new gameplay deviation. Fabrication, the Research Bench,
 Cargo/material spending, build/research/upgrade writers and a living animated preview remain future.
-PR #33 remains draft; hosted terminal-green CI, integration, Arc 1A's six-image HUMAN review, Arc 1C phone/desktop
-silhouette judgment, whole-Gate closure, release and deployment are not claimed.
+Arc 1A's six-image HUMAN review, Arc 1C phone/desktop silhouette judgment, whole-Gate closure,
+release and deployment remain unclaimed.
 
 ## Historical exact decision — Arc 1B scene resource ownership (2026-08-21)
 
@@ -253,7 +254,8 @@ current disposition of historical `D-COMPENDIUM-MEM` without rewriting that date
 - This is an automated implementation/integration decision, not human art approval or Gate/release
   closure. Fresh phone/desktop list/detail/focus-pinned images still require human review. Arc 1B's
   historical scene/Pixi certificate and Arc 1C's locally certified real-Shipyard extension are
-  recorded in the two blocks above; PR #33 review, hosted terminal-green evidence and integration remain open.
+  recorded in the two blocks above. Later terminal-green run `32646110946` merged PR #33; HUMAN
+  review and Gate/release closure remain open.
 - PR #32's layout deviations remain bounded. In portrait, shared bottom-anchor math preserves the
   44px Survey / 8px gap / 72px scrollable Planetside stack. In short landscape, Compendium uses the left
   safe-height workspace and recomputes its scroller from the safe viewport, while Search, dock, and
@@ -1955,8 +1957,8 @@ duplicates).
   recorded in the current-state blocks above. Arc 1A later passed exact changed-head hosted evidence
   and merged in PR #32. Arc 1B's broader pre-Shipyard scene-memory proof remains preserved in its
   2026-08-21 historical block; Arc 1C's 2026-08-23 current block now owns the locally certified real
-  Shipyard extension. PR #33 review, hosted terminal-green evidence and integration remain open, and the Arc 1A
-  HUMAN review remains separate.
+  Shipyard extension. Later terminal-green run `32646110946` merged PR #33; the Arc 1A HUMAN review
+  remains separate.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds

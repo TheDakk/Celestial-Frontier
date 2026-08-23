@@ -17,252 +17,83 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-23 · PR #33 ATTEMPT 4 RED · FIXED ANSWERABILITY SLA LOCALLY CERTIFIED ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-23 · ARC 1 MERGED · F3 NEXT ◀◀◀
 
-### Fail-closed workspace and SSH identity
+### Current integration state
 
-- The current owner is **OpenAI/Codex on macOS** in the physical root
-  `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`, tracking
-  `origin/openai/mac`. Before any work or GitHub operation, require that exact app + OS + physical
-  root + branch row. Do not repair a mismatch by changing directory or switching branches inside an
-  incorrectly opened task.
-- The four valid rows are fixed in `PARALLEL_GIT_PROTOCOL.md`:
-  - OpenAI/Codex Windows: `C:\Projects\celestial-frontier-openai-windows` · `openai/windows`
-  - Anthropic/Claude Code Windows: `C:\Projects\celestial-frontier-anthropic-windows` · `anthropic/windows`
-  - OpenAI/Codex macOS: `/Users/nick/Projects/celestial-frontier-openai-mac` · `openai/mac`
-  - Anthropic/Claude Code macOS: `/Users/nick/Projects/celestial-frontier-anthropic-mac` · `anthropic/mac`
-- All four rows use exact origin `git@github.com:TheDakk/Celestial-Frontier.git`; never fall back to
-  HTTPS credentials or copy a private key into a worktree. On this Mac, effective OpenSSH config
-  selected the local 1Password SSH Agent. Noninteractive
-  `ssh -T -o BatchMode=yes -o ConnectTimeout=15 git@github.com` returned GitHub's authenticated
-  **Hi TheDakk!** message and the expected no-shell exit 1. BatchMode repository read returned
-  `d4ab7e671959ab80198bed22bb600a26fc3524cc` for remote `HEAD`, and `git fetch origin` passed.
-  Nick reports the Windows 1Password setup verified there; this Mac did not independently probe the
-  Windows agent. Repeat the same fail-closed proof on each machine before its first write.
-- Git branch bytes use SSH. PR title/body metadata may use the authenticated GitHub connector; that
-  does not change the Git remote or authorize an HTTPS/PAT fallback. The local `gh` token is not an
-  authority for this handoff.
+- PR #33 merged normally into `develop` as
+  `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` after terminal-green
+  `test-battery` run `32646110946` (one attempt, no retry; battery 50m29s).
+  The approval label was removed. Arc 1A's Compendium, Arc 1B's explicit scene
+  ownership, and Arc 1C's normalized ship state/read-only Shipyard are integrated.
+- The terminal run included SceneMemory, Compendium, Slice Smoke, Glass Matrix,
+  persona synthesis, and preview packaging. It is integration evidence, not a
+  production release, whole-Gate closure, true-GPU-byte measurement, or physical-device
+  heat/battery evidence.
+- `main`, the production site, and the parked development-preview publisher are
+  unchanged. No release, deployment, version bump, publication, or save-schema change occurred.
 
-### Exact Arc 1 authority layers
+### Remaining Arc 1 evidence
 
-- `origin/develop` is Arc 1A integration commit
-  `d4ab7e671959ab80198bed22bb600a26fc3524cc` from terminal-green PR #32. Arc 1A's automated maximum
-  Compendium implementation is integrated; its six phone/desktop images still need HUMAN review.
-- Arc 1B historical product/ruler authority is
-  `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`; scene-memory-v1 activation/certification authority is
-  `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`; retained evidence descendant is
-  `b30b6d49a8ff1745f33be9a329d421309b96b5e3`.
-- Arc 1C product/ruler authority is
-  `a4de5007ffc9131b8bc952a0a4cb469d9139039e`. Historical SceneMemory source
-  `59530da3bf40965adf9c54f169b310e11ccdd0f8` and budget
-  `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7` remain the exact local
-  250 ms certificate; they are not the active cross-host authority. Repair commit
-  `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` preserves collector/contract bytes and activates
-  `port/v2/budgets/scene-memory-v2.json` SHA-256
-  `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501` with a fixed strict
-  `< 1,000 ms` target SLA, unchanged 100 ms heartbeat ceiling, and unchanged 2,000 ms transport
-  deadline.
-- Durable Arc 1C calibration/certification evidence and refreshed references are committed at
-  `ebede04e26267d67821115a6767aa046e1f58049`. That prior handoff is a later documentation
-  descendant; neither it nor `ebede04…` is retroactively the exact certified source.
-- Current cross-host SLA evidence/reference descendant
-  `c771fd9fbbfe05b87ea32af4acebb9356a76d208` retains the exact Linux red, the fresh local
-  certificate, current budget test, and aligned references. It is later than exact certifying
-  source `7d8dc380…` and therefore does not become a second certificate.
+- HUMAN review remains required for Arc 1A's six Compendium list/detail/focus images
+  and Arc 1C's phone/desktop ship silhouette and caption readability.
+- Real-device iOS/iPadOS/Android/desktop accessibility, heat, and battery evidence
+  remain open. Arc 1 does not close Gates C, D, I, or any release gate.
 
-### Automated implementation result
+### Next implementation spine
 
-- **Arc 1A — maximum Compendium:** virtualized 1,500-row list, deterministic filter/detail/focus,
-  cancellable thumbnail and portrait leases, bounded cache/worker ownership, serviced-turn paint,
-  Planetside integration, and exact phone/desktop memory authority. PR #32 is merged in `develop`.
-- **Arc 1B — explicit scene ownership:** document-wide refcounted canvas/TextureSource leases,
-  fresh-owner whole-scene rollback, transactional fine/surface swaps, stale HD cleanup, bfcache
-  survival, bounded local caches, and narrow Pixi 8.19 managed-hash/TextStyle/batch-UID cleanup.
-- **Arc 1C — ship visual and Shipyard foundation:** one recursively frozen `ShipVisualState` from
-  canonical reach and exact owned ids; four deterministic code-native SVG silhouettes; a responsive
-  read-only Shipyard in the desktop rail and exact 260px 5×2 nine-control phone dock; one preview
-  owner while open and zero retained after Close; no second Pixi renderer or `RenderTexture`.
-  `SurfacePlanetTextureAttachment` now owns identity-safe acquire/publish/release and proves the
-  actual attached 512/768/1024 TextureSource backing rather than requested-tier bookkeeping.
-- Fabrication, Research, Cargo/material spending, build/upgrade writers, richer living previews,
-  true GPU-byte measurement, physical heat/battery, release and deployment remain outside this Arc
-  1 automated-local claim. No save schema, production version, or shipped release changed.
+1. **F3 — persistence authority, split stores, and receipts:** revision/CAS-safe
+   mutations, immutable receipts, v4→v5 migration/recovery, and the tab lease.
+2. **F4 — active-play clock and SessionRNG:** replayable outcome authority and
+   migration away from wall-clock accrual.
+3. **Arc 2 — item instances and readable economy:** only after F3/F4 establish
+   safe mutation, time, and outcome authority.
 
-### Exact local verification completed
+### SSH and branch discipline
 
-- `port/v2 npm test`: 49 files PASS; 577 passed / 1 intentional skip.
-- `port/v2 npm run typecheck`: root, game, and worker configurations PASS.
-- Root `node tools/validate.js` passed Actions policy, syntax/CSS/ids/domain purity, 1,010-species
-  render audit, boot, and the exact 50-probe v1 fingerprint. V2 art-unused/audit, override/control,
-  coverage-gap, spec, Compendium preflight, 84 focused SceneMemory controls, and 64-control Actions
-  selftest all passed.
-- Real-browser Slice Smoke: terminal `SLICE SMOKE: PASS`, including the real Shipyard open/read/
-  owned-Close leg; the SceneMemory surface route separately proves the attached Earth HD backing
-  witness. One attempt, no retry.
-- Real-browser Glass Matrix: terminal PASS for all 12/12 viewports after the focus ruler began owning
-  `focusVisible` modality and negative-controlled suppression, paint removal, and restoration.
-- SceneMemory's three clean calibration reports and run `20260822-arc1-local-certification` remain
-  truthful historical 250 ms evidence at `59530da…`; they were not rewritten after Linux exposed
-  that sampled Mac ceiling as non-portable. Clean repair commit `7d8dc380…` then ran
-  `20260823-pr33-cross-host-sla-certification` once without retry under exact Edge
-  `151.0.4129.101`: 42/42 passed, lifecycle/cleanup completed, findings/fatals were empty, and the
-  exact named verifier passed. Report raw/gzip SHA-256 are
-  `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
-  `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`.
-- Retained Linux replay preserves run `32618995487` as exact 40/42 red under its original budget,
-  replays only the two answerability outcomes green under the active SLA, and makes all twelve
-  999.999 ms targets pass while exact 1,000/1,000.001 ms fail. Target success, later ticker,
-  same-document identity, heartbeat independence, and a non-answerability memory fault retain
-  separate red controls. Actions-budget policy selftest remains the standing workflow gate.
-- Independent product, ruler, evidence, archive, and current-reference reviews are CLEAR. The old
-  Arc 1B handoff is preserved byte-verbatim at the top of `ROADMAP_ARCHIVE.md`.
+- Use only the matching app/OS/root/branch row in `PARALLEL_GIT_PROTOCOL.md`;
+  Codex macOS is
+  `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`.
+  All agent roots use `git@github.com:TheDakk/Celestial-Frontier.git` and their
+  local 1Password SSH Agent; no HTTPS/PAT fallback or copied private key.
+- Before a machine's first GitHub write, require the exact-root/branch check,
+  `ssh -T -o BatchMode=yes -o ConnectTimeout=15 git@github.com` (the expected
+  authenticated no-shell exit is 1), and `git ls-remote origin HEAD`.
+- The stale `backup/*` and `hotfix/v12-mobile` remote branches were pruned after
+  being confirmed merged, unused, and PR-free. Do not delete active
+  `openai/*`, `anthropic/*`, `develop`, or `main` branches as cleanup.
 
-### Claude full-Arc review — completed and remediated locally
+### Streamlined GitHub protocol
 
-- Claude's read-only full-Arc review is retained on this branch at
-  `audits/ARC1_CLAUDE_REVIEW_2026-08-22.md`, traceably preserved from
-  `origin/anthropic/mac` commit `53692f117908f6df9f432b54d35fe9225ae8eed0`. It reviewed the full range
-  `38447019517147319bd08c598202d097ee866874...8b2c423bc9b1a17295d5ce9f23908e67c18a11f9` and found no
-  BLOCKER or HIGH item.
-- Commit `1a3eeec83e6d262fc03c8bde7e7b5b1412586afe` resolves its one MEDIUM and three LOW findings without
-  changing product, collector, workflow, or the calibrated producer authority: retained raw
-  SceneMemory observations are now independently re-derived in tests; the `pendingPreviewWork: 0`
-  claim is source-policy guarded; the Slice Smoke/HD evidence wording is corrected; and the exact
-  PR #32 cross-host-repair handoff is restored byte-verbatim in the archive.
-- The remediation passed full v2 tests (49 files, 571 passed / 1 intentional skip), root/game/worker
-  typecheck, and diff hygiene. The following documentation-only handoff commit is not a new product
-  or certification authority.
-- Authorized run `32609389977` tested exact head `5ce92fc458d0d6acc9e389f94a2f2e5ffcbfa1fd`
-  against `d4ab7e671959ab80198bed22bb600a26fc3524cc` once. Authorization passed in 3s; the battery was
-  terminal-red after 3m39s at `v2 parity, type, art, and coverage gates`. Root validation, Smoke,
-  Field Training, layout, and all 571 v2 tests/typechecks passed. `artaudit` then falsely classified
-  SceneMemory as a stale-bundle reader because D-ART-36 recognized only the legacy `execSync` build
-  spelling, not its real unconditional `execFileSync(npm, ['run', 'build'])`. Later browser work was
-  skipped, the label was removed, the attempt is consumed, and PR #33 was not merged.
-- The bounded local repair teaches D-ART-36 both supported synchronous build forms and runs paired
-  controls proving unconditional `execSync`/`execFileSync` pass while conditional/missing builds stay
-  red. Post-repair `artaudit`, all 571 tests, root/game/worker typecheck, unused-art, override/coverage,
-  spec, Actions-policy, and root validation gates pass. The repair is published as changed head
-  `27b965870c8e831d8b42a0346cf86c112998c15e`.
-- Authorized changed-head run `32611053651` then passed that D-ART stage and failed closed at
-  Compendium producer authority after 6m11s. The active pre-Arc-1 budget expected `d3223177…`; the
-  current Arc-1 index/owner built `5a316197…`. Worker and painter bytes were unchanged, but the
-  measured ownership path was not, so old `.86` samples cannot be rebound to the current `.101`
-  product. The label was removed; the attempt is consumed and later browser gates were skipped.
-- Clean source `c348e51…` produced one fresh legacy paired baseline and three clean current-product
-  candidates under exact Edge `.101`, one attempt and zero retries each. Durable raw evidence and
-  strict selected ceilings are bound by active budget SHA-256 `9e36bdfb…`; all candidates replay
-  78/78 and baseline1 retains four faults plus 14 phone / 13 desktop breaches. An independent
-  exact-budget run `20260823-arc1-current-product-certification` then passed 78/78 at clean source
-  `23e177a…`, complete lifecycle and named verifier, with raw/gzip report SHA-256 `f45e1da5…` /
-  `cef1d559…`. A final hosted-only audit caught both guarded workflows and their preflight still
-  installing `.86`; they now own the budget's exact `.101` URL/SHA/version tuple, with preflight,
-  workflow, and 64-control Actions selftests green.
-- Clean workflow-repair source `63107f656c4623f1b9c2df922346e6bc08f601b6` passed the complete
-  local fail-fast battery: root validation/Smoke/training/rarity/dead-code; legacy layout 787/787;
-  573 v2 tests with one intentional skip; all type/art/coverage/spec gates; Compendium 78/78 and
-  SceneMemory 42/42 with named verifiers; real-browser Slice Smoke; Glass 12/12; nine personas; and
-  origin-isolated preview browser smoke. The following handoff is documentation-only. Do not rerun
-  either consumed hosted run. The changed head still needs fresh exact authorization.
-- Authorized exact-head run `32614177932` then passed every prior root/v2/static stage and reached
-  the fresh `.101` Compendium gate. Desktop passed. Phone failed only because the focus-pinned
-  snapshot's mandatory animation turn mounted two fresh normal-window rows after an earlier ready
-  observation: `cmem-0740` and `cmem-0743` were sampled at 0×0 with two subscribers. All other
-  byte/pixel/cache/queue/lease/portrait ceilings passed; the one paint error was the gate's
-  intentional recovered producer-error control. The run is terminal-red and consumed, its label was
-  removed, and PR #33 remains Draft/unmerged. The bounded local collector repair consumes that
-  deferred render turn, re-proves decoded thumbnail settlement, and only then enters the unchanged
-  GC/snapshot sequence. Its paired selftest reproduces the old placeholder capture. Collector
-  authority changed, so the old samples were retired rather than rebound.
-- Clean collector source `14626a70a88793a339472204709348d210956ecc` completed three fresh
-  current-product candidates and one paired legacy baseline under exact Edge `.101`, one attempt
-  each and zero retries. The baseline retained all four sealed faults plus 14 phone / 13 desktop
-  ceiling breaches. Active budget source `e8898bf3a12d094eefc99fe188a217d9e60058a0` selected unchanged
-  strict ceilings with new three-run headroom and budget SHA-256 `28b958678fa2e95bb7b906cb10bd1a422dfe0b52867400e8722fbf6befddb15d`.
-  Independent run `20260823-pr33-focus-settlement-certification` passed 78/78, complete lifecycle,
-  and named verification at that clean source; its report raw/gzip SHA-256 are `d1ea225b…` /
-  `8e09255b…`. Evidence-bound descendant `d359d8c12fcb67677d7f95c00a43e2cc31ea531a` then passed the
-  complete local root/v2/browser battery: root validation/Smoke/training/rarity/dead-code; layout
-  787/787; 573 v2 tests with one intentional skip; all type/art/coverage/spec gates; Compendium
-  78/78 and SceneMemory 42/42 with named verifiers; real-browser Slice Smoke; Glass 12/12; nine
-  personas; and origin-isolated preview browser smoke. The Mac's available Chromium for generic UI
-  gates was exact Edge `.101`; hosted Chrome remains owned by the guarded workflow.
-- Authorized exact head `bd3e65bfd99b91e556ff27b5dd028fe92f447227` against base
-  `d4ab7e671959ab80198bed22bb600a26fc3524cc` ran once as `32618995487`. Compendium completed 78/78;
-  SceneMemory completed 40/42 with only phone/desktop answerability red. All twelve targets retained
-  the same document, advanced the Pixi ticker, and completed below the unchanged 2,000 ms transport
-  deadline; Linux turns were 493–647 ms, exposing the Mac-selected 250 ms ceiling as non-portable.
-  The label was removed; the run is consumed, PR #33 remains Draft/unmerged, and no future hosted
-  attempt is authorized.
-- Local repair `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` installs a fixed strict `< 1,000 ms`
-  SLA and moves the shorter SceneMemory chain before Compendium with exact-package `--reinstall` for
-  its first Edge ownership. Its fresh 42/42 local certificate and named verifier do not relabel the
-  hosted red or authorize a push, label, hosted run, Ready transition, or merge.
-- Keep Arc 1A's six-image Compendium review and Arc 1C's phone/desktop silhouette/readability review
-  open as HUMAN work. After review/integration, the implementation spine is **F3 → F4 → Arc 2**.
+- `develop` requires a current, terminal-green `battery` check, normal merge
+  commits, resolved review threads, and an up-to-date head. It requires neither a
+  review count nor the former extra approval for unattributed changes.
+- `branch-flow-guard` remains a manual diagnostic workflow, but is not a required
+  merge context. Do not dispatch it to unblock a green PR.
+- While `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN`, Nick authorizes one exact
+  changed-head `test-battery` attempt. After that exact battery is green, the
+  agent removes the label, marks a draft Ready if necessary, and merges normally
+  without asking Nick for a second review/guard/merge approval. A red or incomplete
+  battery remains a hard stop.
+- One authorization remains intentionally explicit: a new hosted attempt for a new
+  head. It controls Actions spend; it is not a second merge approval.
 
-## Parallel Git handoff — exact budget-aware fields
+### Fresh-session start
 
-**Current side:** OpenAI/Codex macOS owns
-`/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`. Arc 1 product/ruler,
-activation, retained evidence, references, and Claude review remediation are published to matching
-`origin/openai/mac` at exact head `bd3e65bfd99b91e556ff27b5dd028fe92f447227`. Local repair authority
-is exact commit `7d8dc380cd89ef53aac5a11c3850316e19e1aae9`; evidence/reference descendant is exact
-`c771fd9fbbfe05b87ea32af4acebb9356a76d208`. This ROADMAP-only handoff is later local history.
-Nothing after `bd3e65b…` has been pushed.
+1. Verify the exact app/OS/root/branch row and clean worktree; then
+   `git fetch origin`.
+2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
+   `GITHUB_ACTIONS_BUDGET.md`; inspect the F3 scope in
+   `port/V2_PROGRAM_ROADMAP.md` before proposing or editing F3 work.
+3. Create no new product scope before F3 is decomposed into a bounded owned batch.
+   Preserve the Arc 1 proof boundaries and current HUMAN evidence list.
+4. Claude/Anthropic should receive merged work only by fetching `origin` and
+   merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
+   manual file copying. Nick does not need to open Claude now.
 
-**GitHub step:** PR #33 is Draft, open, unlabeled, unmerged, and terminal-red at consumed runs
-`32609389977`, `32611053651`, `32614177932`, and `32618995487`. The local evidence/reference
-descendant is complete and reviewed. Commit this ROADMAP-only handoff, then
-request one exact changed-head/base/label/92-minute-ceiling/no-retry authorization. Do not push,
-apply the label, dispatch, mark Ready, merge, or publish before that new authority and terminal-green
-evidence.
-
-**PR details:** [PR #33](https://github.com/TheDakk/Celestial-Frontier/pull/33), base `develop`, source
-`openai/mac`. Copy-ready title: **Arc 1 — Complete Compendium, scene ownership, and Shipyard foundations**
-
-Copy-ready description:
-
-> Completes Arc 1's remaining automated-local layers on top of Arc 1A's already integrated maximum
-> virtualized Compendium and bounded art worker: Arc 1B adds explicit Canvas/Pixi scene ownership,
-> bfcache survival, and a memory plateau ruler; Arc 1C adds normalized ShipVisualState, a
-> responsive read-only Shipyard with one code-native SVG owner, and named identity-safe surface-HD
-> attachment. Fabrication, Research, Cargo spending, build/upgrade writers, and richer living ship
-> previews remain future work.
->
-> Verification: full v2 tests passed 577 with 1 intentional skip across 49 files; root/game/worker
-> typecheck passed; legacy layout passed 787/787; real-browser Slice Smoke passed; Glass Matrix
-> passed all 12 viewports; Compendium passed 78/78 and SceneMemory passed 42/42 on exact Edge
-> 151.0.4129.101 with named verifiers; the 64-control Actions-budget selftest passed. Hosted run
-> `32609389977` exposed and led to the repaired D-ART shell-spelling ruler. Changed-head run
-> `32611053651` passed that stage, then correctly rejected stale pre-Arc-1 Compendium producer
-> authority. Run `32614177932` passed both repairs and every preceding gate, then exposed the
-> focus-pinned deferred-render settlement boundary described above. Run `32618995487` then passed
-> Compendium 78/78 and exposed only SceneMemory's non-portable 250 ms target ruler. All four reds
-> were consumed without retry. The corrected settlement boundary has paired negative control,
-> three fresh candidates, a paired broken baseline, strict active budget, independent 78/78
-> certification and named verifier, and a complete local root/v2/browser battery through tested
-> descendant `d359d8c…`. Repair
-> `7d8dc380…` fixes answerability at a strict `< 1,000 ms` product SLA, moves SceneMemory first with
-> exact-package `--reinstall`, and passed a fresh local 42/42 certificate plus named verifier.
->
-> Claude's full-Arc review is complete and preserved with this PR. Its one MEDIUM and three LOW
-> findings are resolved at the current head. The Anthropic side did not copy, merge, or edit OpenAI
-> bytes; it receives accepted work only after PR merge through `origin/develop`. This PR remains draft
-> pending the exact-head hosted battery. No release, deployment, version bump, publication, or site
-> write is included.
-
-**Other side:** The Claude review is already complete on its separate `anthropic/mac` branch. Do not
-merge, rebase, copy, or synchronize that review branch into either `openai/mac` or `develop`; the
-review was read-only evidence. It receives accepted work only after the eventual PR merge through
-`origin/develop`. Nick does not need to open Anthropic/Claude Code now; synchronization waits for its
-next clean coding batch after PR #33 merges.
-
-**Release status:** `develop` remains `d4ab7e6…`; `main`, the live site, and development site are
-unchanged. No release, deployment, version bump, publication, or site write occurred.
-
-**Actions budget:** `UNFROZEN`; public standard runners remain free while visibility holds; 3,000 is
-the fail-closed private/ambiguous cap. Consumed Arc 1C attempts: `32609389977`, `32611053651`,
-`32614177932`, and `32618995487`, all terminal-red. Authorized future attempts: zero. Approval
-label: absent. The next attempt requires separate exact changed-head authority and must not reuse or
-rerun a consumed run.
+**Current side:** Codex macOS is on `openai/mac`; this documentation handoff is
+local until a later scoped PR is authorized.
+**GitHub step:** none.
+**Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.
+**Actions budget:** `UNFROZEN`; run `32646110946` is consumed terminal-green;
+no new hosted attempt is authorized by this handoff.

@@ -2,8 +2,9 @@
 
 ## Current port status — 2026-08-23
 
-> **Arc 1 automated implementation is locally complete; review, hosted CI, integration, and HUMAN
-> judgment remain open.** Arc 1A's maximum Compendium is integrated in `develop` through PR #32,
+> **Arc 1 automated implementation and hosted integration are complete; HUMAN judgment remains
+> open.** PR #33 merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`
+> after terminal-green battery run `32646110946`. Arc 1A's maximum Compendium is integrated,
 > while its six phone/desktop review images still require HUMAN judgment. Arc 1B's exact
 > `79c605f…` product/ruler and `e244c9e…` scene-memory-v1 activation/certificate remain the
 > historical 40/40 pre-Shipyard authority.
@@ -39,9 +40,9 @@
 > exact Edge `.101` with same-package `--reinstall`, runs the browser-free controls, performs one
 > no-retry certification, always verifies its named terminal report, and retains
 > `v2-scene-memory-evidence`. Only then may the separately sealed exact-`.101` Compendium chain run;
-> Chrome gates remain later. The serial battery starts only from one owner-label authorization. At
-> this handoff Arc 1 has **zero new authorized hosted attempts**; local green does not authorize an
-> approval label, hosted run, Ready transition, merge, preview publication, release, or deployment.
+> Chrome gates remain later. The serial battery starts only from one owner-label authorization. The
+> terminal-green PR #33 run is consumed and merged; no subsequent hosted attempt is authorized by
+> this handoff. Local evidence still does not authorize a release, preview publication, or deployment.
 >
 > PR #33 attempt 4, run `32618995487`, tested the exact authorized head/base once and is terminal-red,
 > consumed, and not retried. Its complete SceneMemory report passed 40/42: all memory, ownership,
@@ -58,8 +59,8 @@
 > render/GC/snapshot sequence. Clean collector `14626a7…` then completed three one-shot candidates
 > plus one paired legacy baseline; active budget SHA-256 `28b95867…` preserves the strict product
 > ceilings, and independent source `e8898bf…` passed 78/78 plus named verification. Evidence-bound
-> descendant `d359d8c…` passed the complete local battery. The consumed hosted run was not retried,
-> its label is absent, and PR #33 remains Draft and unmerged.
+> descendant `d359d8c…` passed the complete local battery. The consumed hosted run was not retried;
+> its label is absent. That historical pre-merge attempt does not alter the later terminal-green merge.
 >
 > **Arc 1A Compendium resource implementation (2026-08-21; product and serviced-turn
 > scheduler repair present; exact-9d local battery green; hosted run `32441023665`

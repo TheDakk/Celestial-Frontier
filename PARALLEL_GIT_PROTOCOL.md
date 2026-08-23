@@ -206,6 +206,11 @@ battery, an agent may complete its normal merge to `develop` without asking agai
 provided the Actions budget gate is not frozen and Nick authorized that exact
 hosted attempt. There is no automatic post-merge battery or branch publication
 under the conservation policy.
+As of 2026-08-23, the active `develop` ruleset names `battery` as its only required
+status context; `branch-flow-guard` is a manual diagnostic, not a merge prerequisite.
+Do not request or wait for a second review/guard/merge approval after that exact
+battery is terminal-green. A new changed head still needs Nick's separate exact
+Actions-attempt authorization.
 That standing approval is the proceed instruction: do not request repeated generic
 confirmation after the same exact preconditions are met.
 This permission is limited to the reviewed PR's exact head and its normal
