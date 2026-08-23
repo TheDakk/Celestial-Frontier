@@ -115,11 +115,12 @@ the archive verbatim and refresh this handoff in place.
 - The remediation passed full v2 tests (49 files, 571 passed / 1 intentional skip), root/game/worker
   typecheck, and diff hygiene. The following documentation-only handoff commit is not a new product
   or certification authority.
-- Next: push the final `openai/mac` head through the verified 1Password SSH path and refresh the
-  existing draft PR #33. Keep it draft. Do not add `actions-budget-approved`, dispatch, rerun, mark
-  Ready, merge, publish, release, version, or deploy. Then request one exact
-  changed-head/base/label/runner-ceiling/no-retry `test-battery` authorization. Only terminal-green
-  hosted evidence can unlock normal merge to `develop` under the standing merge rule.
+- `openai/mac` is published through the verified 1Password SSH path and draft PR #33 now names the
+  remediation and current 571/1 local suite result. It remains draft, unlabeled, with no hosted
+  checks started. Next, request one exact changed-head/base/label/runner-ceiling/no-retry
+  `test-battery` authorization. Do not dispatch, rerun, mark Ready, merge, publish, release, version,
+  or deploy. Only terminal-green hosted evidence can unlock normal merge to `develop` under the
+  standing merge rule.
 - Keep Arc 1A's six-image Compendium review and Arc 1C's phone/desktop silhouette/readability review
   open as HUMAN work. After review/integration, the implementation spine is **F3 → F4 → Arc 2**.
 
@@ -127,13 +128,13 @@ the archive verbatim and refresh this handoff in place.
 
 **Current side:** OpenAI/Codex macOS owns
 `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`. Arc 1 product/ruler,
-activation, retained evidence, references, Claude review remediation, and this handoff are committed.
-Nick authorized this complete head to be pushed to `origin/openai/mac`; verify exact local/remote SHA
-equality after push rather than trusting a pre-push hash embedded in the handoff.
+activation, retained evidence, references, Claude review remediation, and this handoff are committed
+and published only to matching `origin/openai/mac`. At a fresh-session start, verify the exact
+local/remote SHA equality rather than trusting an embedded hash.
 
-**GitHub step:** Push `openai/mac` via SSH and refresh existing draft PR #33 only. A branch push or
-PR metadata edit starts no hosted runner under the sealed labeled-event workflow. Do not apply the
-approval label, dispatch, mark Ready, merge, or publish.
+**GitHub step:** PR #33 is refreshed, draft, mergeable, and unlabeled. A branch push or PR metadata
+edit starts no hosted runner under the sealed labeled-event workflow. Do not apply the approval label,
+dispatch, mark Ready, merge, or publish until Nick provides one exact changed-head authorization.
 
 **PR details:** [PR #33](https://github.com/TheDakk/Celestial-Frontier/pull/33), base `develop`, source
 `openai/mac`. Copy-ready title: **Arc 1 — Complete Compendium, scene ownership, and Shipyard foundations**
