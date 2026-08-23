@@ -206,22 +206,25 @@ Arc 1A is the deliberate narrow exception. The current 1,500-row Compendium is v
 list art uses leased, cancellable, deduplicated 132px thumbnails, detail uses a separately
 owned 440px image, and Planetside uses the same lease path. Its standalone `compendiummem` gate
 retains the Arc-local four-field browser authority
-`arc1a-compendium-memory-only`: product `Edg/151.0.4129.86`, revision
-`@083e754915c9ab93da1d8f7b9c860e4520273900`, JavaScript version `15.1.23.7`, and
-CDP protocol version `1.3`. Executable path and user agent remain recorded provenance, not
-cross-host match fields.
+`arc1a-compendium-memory-only`: product `Edg/151.0.4129.101`, revision
+`@cc1d9f4080fd9140611a9600b8d1615db310105d`, JavaScript version `15.1.23.9`, and CDP protocol
+version `1.3`; active budget SHA-256 is
+`28b958678fa2e95bb7b906cb10bd1a422dfe0b52867400e8722fbf6befddb15d`. Executable path and user
+agent remain recorded provenance, not cross-host match fields.
 
 Ubuntu provisions `/usr/bin/microsoft-edge-stable` only for the ordinary Compendium job and
 the manual Compendium selftest/run/verify steps. The package is the exact Microsoft
-`microsoft-edge-stable_151.0.4129.86-1_amd64.deb` from
-`https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.86-1_amd64.deb`,
-with SHA-256 `26b02cb1c6465756df94b9ef34191b614f3df627ba21b7b00b641f44cc1d8343`;
+`microsoft-edge-stable_151.0.4129.101-1_amd64.deb` from
+`https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.101-1_amd64.deb`,
+with SHA-256 `bd7604025424914a61c06293cb6bf269141a29d8c54cf1997110bc96d3365d60`;
 both workflows check those bytes, request
 `sudo apt-get install --reinstall --yes "$edge_package"`, then verify the installed package version
 and executable before use. The preflight selftest statically requires that unique owned install
 step's exact ordered URL/SHA/download/hash/reinstall/version/executable chain followed by preflight,
 and negative-controls removal from either workflow plus outside-step decoys. This reinstall is a
-preserved hosted-runner normalization transition: activation head `96464d5…` passed its complete
+preserved hosted-runner normalization transition.
+
+Historical `.86` normalization history: activation head `96464d5…` passed its complete
 local battery, but run `32394244417`, attempt 1,
 stopped before product when image `ubuntu24/20260816.277`'s already-resident verified .86 made the
 prior plain apt install a no-op and the unchanged one-launch preflight published no CDP endpoint.
@@ -266,7 +269,7 @@ This does not re-pin Gate A or the global browser authority: `../tools/deps.pinn
 Edge `150.0.4078.83`. It also does not change the Chrome authority of the other browser gates, any
 timing, product bytes, or the one-attempt/zero-retry policy.
 
-## Arc 1 scene-memory boundary (2026-08-22)
+## Arc 1 scene-memory boundary (2026-08-23)
 
 Arc 1B's standalone scene-memory-v1 gate remains the exact historical authority for the existing
 rendered scenes before Shipyard. Product/ruler `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`
@@ -276,14 +279,25 @@ certificate under Edge `.93`, complete lifecycle/cleanup and named verification.
 
 Arc 1C product/ruler source `a4de5007ffc9131b8bc952a0a4cb469d9139039e` implements a responsive
 read-only Shipyard with one code-native SVG/DOM preview owner, zero second renderer/RenderTexture,
-and a named HD-surface texture attachment. Exact activation/certification source
-`59530da3bf40965adf9c54f169b310e11ccdd0f8` binds `budgets/scene-memory-v2.json` SHA-256
-`3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`. Local no-retry run
-`20260822-arc1-local-certification` passed 42/42 under Edge `151.0.4129.101`, complete lifecycle and
+and a named HD-surface texture attachment. Source
+`59530da3bf40965adf9c54f169b310e11ccdd0f8`, `budgets/scene-memory-v2.json` SHA-256
+`3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`, and local run
+`20260822-arc1-local-certification` are retained only as historical Mac-derived 250 ms evidence.
+Hosted attempt 4, run `32618995487`, was exact terminal-red 40/42: only phone and desktop
+answerability exceeded that old ruler on Linux, at 618–647 ms and 493–507 ms respectively. Every
+liveness, memory, ownership, target-health, ticker, route, and cleanup outcome was green; the run is
+not hosted-green evidence.
+
+Active cross-host SLA repair source `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds
+`budgets/scene-memory-v2.json` SHA-256
+`5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501` to the existing fixed,
+strict `<1000 ms` product answerability contract. Local no-retry run
+`20260823-pr33-cross-host-sla-certification` passed 42/42 under Edge `151.0.4129.101`, complete
 browser/server/workspace-lock cleanup, zero findings/fatal events and a passing exact named-run
 verifier. Report raw/gzip SHA-256 are
-`e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5` /
-`0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6`.
+`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
+verdict-contract bytes are unchanged.
 
 The current gate uses one browser process for 390×844 phone and 1280×800 desktop profiles, four
 unmeasured warmups and four measured cycles through Universe, Galaxy/fine, Sol/System,
@@ -292,17 +306,18 @@ include the visible Shipyard opener, exact canonical visual/DOM state, one open 
 and zero retained/pending preview work after Close. The Fabricator, Research Bench, Cargo/material
 spending, fabrication, research and upgrades remain unavailable.
 
-The guarded ordinary `test-battery` carries this scene-memory-v2 step serially after Arc 1A's exact
-Edge `.86` report is terminal and verified and before the Chrome smoke/Glass/persona/preview steps.
-It installs exact Edge `.101`, runs the browser-free instrument and calibration controls, performs
-one no-retry active-budget certification, always verifies the named terminal report, and uploads
-whatever that attempt produced as `v2-scene-memory-evidence`. This is part of the single fail-fast
-owner-label-authorized battery, not a new parallel job or automatic retry. At this handoff **zero
-Arc 1C hosted attempts have run or are authorized**. Local 42/42 evidence does not authorize adding the label,
-dispatching either workflow, publishing, marking a PR Ready, merging, releasing, or deploying.
+The guarded ordinary `test-battery` installs exact Edge `.101` with same-package `--reinstall`, then
+runs scene-memory-v2 first and Compendium second before the Chrome smoke/Glass/persona/preview
+steps. It runs the browser-free instrument and calibration controls, performs one no-retry
+active-budget certification, always verifies the named terminal report, and uploads whatever that
+attempt produced as `v2-scene-memory-evidence`. This is part of the single fail-fast
+owner-label-authorized battery, not a new parallel job or automatic retry. Hosted attempt 4 is
+consumed and terminal-red; **zero new Arc 1C hosted attempts are authorized**. Local 42/42 evidence
+does not authorize adding the label, dispatching either workflow, publishing, marking a PR Ready,
+merging, releasing, or deploying.
 
 The separate manual `development-preview-package` workflow still owns preview packaging and its
-existing Arc 1A `.86` Compendium/Chrome sequence; it does not run or certify the Arc 1
+current exact `.101` Compendium/Chrome sequence; it does not run or certify the Arc 1
 scene-memory-v2 ruler. A future preview artifact may include the current product bytes only after
 its own exact-source workflow authorization, but package verification remains distinct from scene-memory,
 hosted-battery, HUMAN, merge, and release authority.
@@ -540,7 +555,9 @@ Report/log evidence is still uploaded when its owning step is red:
 - `v2-scene-memory-evidence`: the Arc 1 scene-memory-v2 `scenemem-report.json` from the same one
   authorized, serial test-battery attempt. The gate owns four warmups plus four measured cycles,
   42 outcomes including the real Shipyard lifecycle, complete cleanup, and exact named-run
-  verification under Edge `.101`; the artifact is retained even when red. Missing, incomplete,
+  verification under Edge `.101` and the fixed strict `<1000 ms` product answerability SLA; the
+  artifact is retained even when red. Hosted attempt 4, run `32618995487`, is exactly such a retained
+  terminal-red 40/42 artifact and must never be described as hosted green. Missing, incomplete,
   nonterminal, wrong-browser, unverified, bypassed-opener/Close, duplicate-preview, or retained-work
   evidence remains red. It supplies no HUMAN or preview-publication authority;
 - `battery-reports`: the smoke/glass/persona bundle assembled after those earlier serial steps;
@@ -576,7 +593,7 @@ When available on the default branch, the manual workflow:
    should be configured before the first candidate run (the environment name alone does
    not create reviewer protection);
 4. reruns deterministic, type, art, browser, and preview-producer controls;
-5. provisions exact Edge 151 with same-package `--reinstall` only for the Compendium browser
+5. provisions exact Edge `151.0.4129.101` with same-package `--reinstall` only for the Compendium browser
    preflight, memory selftest,
    one-attempt/no-retry active-budget run, and exact-run verification; the preflight binds exact
    product/revision/JS/protocol/executable and a fresh target's Runtime/Page/HeapProfiler plus

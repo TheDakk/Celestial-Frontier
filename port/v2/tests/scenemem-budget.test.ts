@@ -42,13 +42,21 @@ const CANDIDATES = [
     gzipSha256: '385d4622e669cc0849aced533da50869b01a6b11ef5d06e3e61afe5de910a593',
   },
 ] as const;
-const LOCAL_CERTIFICATION = Object.freeze({
+const HISTORICAL_LOCAL_CERTIFICATION = Object.freeze({
   runId: '20260822-arc1-local-certification',
   file: 'ARC1C_SCENEMEM_LOCAL_CERTIFICATION.json.gz',
   sourceCommit: '59530da3bf40965adf9c54f169b310e11ccdd0f8',
   rawSha256: 'e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5',
   gzipSha256: '0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6',
   budgetSha256: '3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7',
+});
+const CURRENT_LOCAL_CERTIFICATION = Object.freeze({
+  runId: '20260823-pr33-cross-host-sla-certification',
+  file: 'PR33_SCENEMEM_CROSS_HOST_SLA_CERTIFICATION_20260823.json.gz',
+  sourceCommit: '7d8dc380cd89ef53aac5a11c3850316e19e1aae9',
+  rawSha256: 'd16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960',
+  gzipSha256: '7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a',
+  budgetSha256: '5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501',
 });
 const HOSTED_LINUX_FAILURE = Object.freeze({
   runId: 'gha-32618995487-1-scenemem',
@@ -404,15 +412,15 @@ describe('Arc 1C scene-memory active budget', () => {
     }
   });
 
-  it('durably replays the exact clean local certification', () => {
-    const compressed = fs.readFileSync(path.join(auditRoot, LOCAL_CERTIFICATION.file));
-    expect(sha256(compressed)).toBe(LOCAL_CERTIFICATION.gzipSha256);
+  it('keeps the superseded 250 ms local certificate truthful and historical', () => {
+    const compressed = fs.readFileSync(path.join(auditRoot, HISTORICAL_LOCAL_CERTIFICATION.file));
+    expect(sha256(compressed)).toBe(HISTORICAL_LOCAL_CERTIFICATION.gzipSha256);
     const raw = gunzipSync(compressed);
-    expect(sha256(raw)).toBe(LOCAL_CERTIFICATION.rawSha256);
+    expect(sha256(raw)).toBe(HISTORICAL_LOCAL_CERTIFICATION.rawSha256);
     const report = JSON.parse(raw.toString('utf8')) as CalibrationReport;
 
     expect(report.schema).toBe('cf-v2-scene-memory-report/v2');
-    expect(report.runId).toBe(LOCAL_CERTIFICATION.runId);
+    expect(report.runId).toBe(HISTORICAL_LOCAL_CERTIFICATION.runId);
     expect(report.status).toBe('pass');
     expect(report.certification).toBe('contract-budget');
     expect(report.lifecycle).toEqual({
@@ -431,7 +439,7 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(report.cleanup).toEqual({ browser: true, server: true, workspaceLock: true });
     expect(report.source.begin).toEqual(report.source.end);
     expect(report.source.begin).toEqual({
-      commit: LOCAL_CERTIFICATION.sourceCommit,
+      commit: HISTORICAL_LOCAL_CERTIFICATION.sourceCommit,
       branch: 'openai/mac',
       state: 'committed',
       statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
@@ -456,10 +464,11 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(report.budget).toEqual({
       schema: 'cf-v2-scene-memory-budget/v2',
       path: '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/budgets/scene-memory-v2.json',
-      sha256: LOCAL_CERTIFICATION.budgetSha256,
+      sha256: HISTORICAL_LOCAL_CERTIFICATION.budgetSha256,
     });
-    expect(report.inputs.budget).toBe(LOCAL_CERTIFICATION.budgetSha256);
-    expect(sha256(fs.readFileSync(budgetPath))).not.toBe(LOCAL_CERTIFICATION.budgetSha256);
+    expect(report.inputs.budget).toBe(HISTORICAL_LOCAL_CERTIFICATION.budgetSha256);
+    expect(sha256(fs.readFileSync(budgetPath)))
+      .not.toBe(HISTORICAL_LOCAL_CERTIFICATION.budgetSha256);
     expect(report.contractInput.budgets).toEqual(ORIGINAL_250_PROFILES);
     expect(report.contractInput.profiles).toEqual(collectedProfileProjection(report));
     expect(report.outcomes).toHaveLength(42);
@@ -481,6 +490,78 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(currentBudgetReplay.status).toBe('pass');
     expect(currentBudgetReplay.outcomes).toHaveLength(42);
     expect(currentBudgetReplay.failures).toEqual([]);
+  });
+
+  it('durably replays the exact clean current-budget certification', () => {
+    const compressed = fs.readFileSync(path.join(auditRoot, CURRENT_LOCAL_CERTIFICATION.file));
+    expect(sha256(compressed)).toBe(CURRENT_LOCAL_CERTIFICATION.gzipSha256);
+    const raw = gunzipSync(compressed);
+    expect(sha256(raw)).toBe(CURRENT_LOCAL_CERTIFICATION.rawSha256);
+    const report = JSON.parse(raw.toString('utf8')) as CalibrationReport;
+
+    expect(report.schema).toBe('cf-v2-scene-memory-report/v2');
+    expect(report.runId).toBe(CURRENT_LOCAL_CERTIFICATION.runId);
+    expect(report.status).toBe('pass');
+    expect(report.certification).toBe('contract-budget');
+    expect(report.lifecycle).toEqual({
+      schema: 'cf-v2-scene-memory-report-lifecycle/v1',
+      status: 'complete',
+    });
+    expect(report.policy).toEqual({
+      attemptCount: 1,
+      automaticRetries: 0,
+      warmupCycles: 4,
+      measuredWarmCycles: 4,
+      commandTimeoutMs: 5000,
+      targetTimeoutMs: 2000,
+      heartbeatTimeoutMs: 2000,
+    });
+    expect(report.cleanup).toEqual({ browser: true, server: true, workspaceLock: true });
+    expect(report.source.begin).toEqual(report.source.end);
+    expect(report.source.begin).toEqual({
+      commit: CURRENT_LOCAL_CERTIFICATION.sourceCommit,
+      branch: 'openai/mac',
+      state: 'committed',
+      statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      workingTreeSha256: SOURCE_WORKING_TREE,
+    });
+    expect(report.scope).toEqual({
+      covered: ['universe', 'galaxy', 'galaxy-fine', 'system', 'surface', 'compendium', 'shipyard'],
+      shipyardStatus: 'implemented-static',
+      excluded: ['Shipyard build writers', 'audio lifecycle', 'true GPU bytes'],
+    });
+    expect(report.fixture).toEqual({
+      count: 1500,
+      rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
+    });
+    expectExactBuildInventory(report);
+    expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
+      EXPECTED_PRODUCER_AUTHORITY,
+    );
+    expect(authorityProjection(report.browser, EXPECTED_BROWSER_AUTHORITY)).toEqual(
+      EXPECTED_BROWSER_AUTHORITY,
+    );
+    expect(report.budget).toEqual({
+      schema: 'cf-v2-scene-memory-budget/v2',
+      path: '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/budgets/scene-memory-v2.json',
+      sha256: CURRENT_LOCAL_CERTIFICATION.budgetSha256,
+    });
+    expect(report.inputs.budget).toBe(CURRENT_LOCAL_CERTIFICATION.budgetSha256);
+    expect(sha256(fs.readFileSync(budgetPath))).toBe(CURRENT_LOCAL_CERTIFICATION.budgetSha256);
+    expect(report.contractInput.budgets).toEqual(budget.profiles);
+    expect(report.contractInput.profiles).toEqual(collectedProfileProjection(report));
+    expect(report.outcomes).toHaveLength(42);
+    expect(report.outcomes.every((outcome) => outcome.pass)).toBe(true);
+    expect(report.findings).toEqual([]);
+    expect(report.fatalEvents).toEqual([]);
+    for (const profile of PROFILE_NAMES) {
+      expect(metricSummary(report.profiles[profile])).toEqual(report.profiles[profile].metrics);
+    }
+    const recomputed = evaluateSceneMemory(report.contractInput);
+    expect(recomputed).toEqual(report.verdict);
+    expect(recomputed.status).toBe('pass');
+    expect(recomputed.outcomes).toEqual(report.outcomes);
+    expect(recomputed.failures).toEqual([]);
   });
 
   it('retains the exact hosted Linux red and replays only its elapsed ruler green', () => {

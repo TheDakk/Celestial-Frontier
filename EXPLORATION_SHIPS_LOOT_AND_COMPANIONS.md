@@ -1,6 +1,6 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
-**STATUS:** approved product direction and implementation contract as of **2026-08-22**.
+**STATUS:** approved product direction and implementation contract as of **2026-08-23**.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the
 read-only Arc 1C Shipyard foundation described immediately below. Inventory, Cargo writers,
 item-instance loot, capture/acquisition, companion-expedition, breeding, live combat,
@@ -29,15 +29,22 @@ does not silently promote planned behavior into the in-game Guide.
 > predecessor leased until an identity-current successor with a qualifying attached backing
 > size publishes, rolls back/release-cleans stale or failed successors, and leaves rejected
 > demand retryable. The real SceneMemory route now opens and closes Shipyard and proves settled
-> zero preview ownership. Activation/certification source
-> `59530da3bf40965adf9c54f169b310e11ccdd0f8` binds
-> `scene-memory-v2.json` SHA-256
-> `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`;
-> one-attempt/no-retry local run `20260822-arc1-local-certification` passed 42/42 plus its
-> named verifier under Edge `151.0.4129.101`. This documentation descendant is not the exact
-> certified head. Hosted CI, integration, release/deploy, Cargo/Inventory/Forge writers,
-> Fabrication/Research/upgrades, richer inventory, and HUMAN four-silhouette judgment remain
-> open.
+> zero preview ownership. Historical activation/certification source
+> `59530da3bf40965adf9c54f169b310e11ccdd0f8` bound the original 250 ms
+> `scene-memory-v2.json` budget SHA-256
+> `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`; local run
+> `20260822-arc1-local-certification` passed 42/42 and its named verifier under Edge
+> `151.0.4129.101`, but that certificate remains historical. Clean cross-host SLA repair
+> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds active budget SHA-256
+> `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`; local one-attempt/no-retry
+> run `20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier under
+> the same Edge `.101`. Raw/gzip SHA-256 are
+> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+> `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
+> `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
+> is unchanged. This documentation descendant is not the exact certified head. Hosted
+> terminal-green integration, release/deploy, Cargo/Inventory/Forge writers,
+> Fabrication/Research/upgrades, richer inventory, and HUMAN four-silhouette judgment remain open.
 
 > **2026-08-16 D-TRAIN-1 ownership overlay (current source; local browser
 > evidence recorded below; exact-head CI, integration, real-save Gate C, and

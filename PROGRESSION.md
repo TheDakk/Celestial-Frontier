@@ -17,13 +17,21 @@
 > `RenderTexture`. The Guide describes this capability as partial inspection only.
 >
 > The real SceneMemory journey now opens and closes Shipyard and proves a settled zero-preview
-> state alongside the named transactional `SurfacePlanetTextureAttachment`. Activation/certification
-> source `59530da3bf40965adf9c54f169b310e11ccdd0f8` binds
-> `scene-memory-v2.json` SHA-256
-> `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`;
-> one-attempt/no-retry run `20260822-arc1-local-certification` passed 42/42 plus named
-> verification under Edge `151.0.4129.101`. This docs descendant is not the exact certified
-> head. Hosted CI/integration, HUMAN silhouette judgment, Cargo/Inventory/Forge writers,
+> state alongside the named transactional `SurfacePlanetTextureAttachment`. Historical
+> activation/certification source `59530da3bf40965adf9c54f169b310e11ccdd0f8` bound the original
+> 250 ms `scene-memory-v2.json` budget SHA-256
+> `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`; local run
+> `20260822-arc1-local-certification` passed 42/42 and its named verifier under Edge
+> `151.0.4129.101`, but that certificate remains historical. Clean cross-host SLA repair
+> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds active budget SHA-256
+> `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`; local one-attempt/no-retry
+> run `20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier under
+> the same Edge `.101`. Raw/gzip SHA-256 are
+> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+> `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
+> `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
+> is unchanged. This docs descendant is not the exact certified head. Hosted terminal-green
+> integration, HUMAN silhouette judgment, Cargo/Inventory/Forge writers,
 > Fabrication/Research/upgrades, release and deployment remain open.
 
 > **2026-08-16 D-TRAIN-1 progression overlay (current source; local browser

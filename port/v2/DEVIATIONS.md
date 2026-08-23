@@ -9,9 +9,9 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state decision — Arc 1C ship visual and real-Shipyard resource extension (2026-08-22)
+## Current-state decision — Arc 1C ship visual and real-Shipyard resource extension (2026-08-23)
 
-**Status: ★ automated implementation locally complete; HUMAN readability, review, hosted evidence,
+**Status: ★ automated implementation locally complete; HUMAN readability, review, hosted terminal-green evidence,
 and integration remain open.** Product/ruler source
 `a4de5007ffc9131b8bc952a0a4cb469d9139039e` projects one unsaved normalized `ShipVisualState` from
 the same canonical saved reach used by travel. Scout/Chemical, Jump/Interstellar, Survey Cruiser and
@@ -22,21 +22,31 @@ filter or particle owner. The named `SurfacePlanetTextureAttachment` gives the e
 tier swap an identity-safe acquire/publish/release lifetime. These are presentation/resource-owner
 improvements, not new save state or gameplay authority.
 
-Exact activation/certification source `59530da3bf40965adf9c54f169b310e11ccdd0f8` binds
-`budgets/scene-memory-v2.json` SHA-256
-`3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`. Local no-retry run
-`20260822-arc1-local-certification` passed 42/42 under Edge `151.0.4129.101`, complete lifecycle and
-cleanup, followed by exact named verification; report raw/gzip SHA-256 are
-`e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5` /
-`0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6`. The route extends Arc 1B
-through a real visible Shipyard opener, exact visual/DOM state,
+Source `59530da3bf40965adf9c54f169b310e11ccdd0f8`, `budgets/scene-memory-v2.json`
+SHA-256 `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`, and local run
+`20260822-arc1-local-certification` are retained only as the historical Mac-derived 250 ms
+certificate. Hosted attempt 4, run `32618995487`, was terminal-red at 40/42 solely because Linux
+phone and desktop answerability measured 618–647 ms and 493–507 ms against that old ruler; every
+liveness, memory, ownership, route, target-health, ticker, and cleanup outcome was green.
+
+Active cross-host SLA repair source `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds the budget
+SHA-256 `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501` to the existing fixed,
+strict `<1000 ms` product answerability contract. Local no-retry run
+`20260823-pr33-cross-host-sla-certification` passed 42/42 under Edge `151.0.4129.101`, complete
+lifecycle and cleanup, followed by exact named verification; report raw/gzip SHA-256 are
+`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
+verdict-contract bytes are unchanged. The guarded battery now performs exact Edge `.101`
+same-package `--reinstall`, then SceneMemory before Compendium, with no retry. No new hosted attempt
+is authorized; this certificate is local and must never be represented as hosted green. The route
+extends Arc 1B through a real visible Shipyard opener, exact visual/DOM state,
 one open preview, an owned Close, and zero retained/pending preview work after Close and settled
 Universe on phone and desktop.
 
 The previous plan allowed at most one Pixi preview; choosing one code-native SVG/DOM owner and zero
 second renderer is within that bound, not a new gameplay deviation. Fabrication, the Research Bench,
 Cargo/material spending, build/research/upgrade writers and a living animated preview remain future.
-PR #33 remains draft; hosted CI, integration, Arc 1A's six-image HUMAN review, Arc 1C phone/desktop
+PR #33 remains draft; hosted terminal-green CI, integration, Arc 1A's six-image HUMAN review, Arc 1C phone/desktop
 silhouette judgment, whole-Gate closure, release and deployment are not claimed.
 
 ## Historical exact decision — Arc 1B scene resource ownership (2026-08-21)
@@ -243,7 +253,7 @@ current disposition of historical `D-COMPENDIUM-MEM` without rewriting that date
 - This is an automated implementation/integration decision, not human art approval or Gate/release
   closure. Fresh phone/desktop list/detail/focus-pinned images still require human review. Arc 1B's
   historical scene/Pixi certificate and Arc 1C's locally certified real-Shipyard extension are
-  recorded in the two blocks above; PR #33 review, hosted evidence and integration remain open.
+  recorded in the two blocks above; PR #33 review, hosted terminal-green evidence and integration remain open.
 - PR #32's layout deviations remain bounded. In portrait, shared bottom-anchor math preserves the
   44px Survey / 8px gap / 72px scrollable Planetside stack. In short landscape, Compendium uses the left
   safe-height workspace and recomputes its scroller from the safe viewport, while Search, dock, and
@@ -1944,8 +1954,8 @@ duplicates).
   request may create a fresh producer. Virtualization and worker ownership are implemented as
   recorded in the current-state blocks above. Arc 1A later passed exact changed-head hosted evidence
   and merged in PR #32. Arc 1B's broader pre-Shipyard scene-memory proof remains preserved in its
-  2026-08-21 historical block; Arc 1C's 2026-08-22 current block now owns the locally certified real
-  Shipyard extension. PR #33 review, hosted evidence and integration remain open, and the Arc 1A
+  2026-08-21 historical block; Arc 1C's 2026-08-23 current block now owns the locally certified real
+  Shipyard extension. PR #33 review, hosted terminal-green evidence and integration remain open, and the Arc 1A
   HUMAN review remains separate.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier

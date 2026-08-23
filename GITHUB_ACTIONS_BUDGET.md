@@ -4,8 +4,8 @@
 
 **Hosted attempt state: none authorized.** PR #32's three post-freeze closure attempts are consumed;
 the final changed-head attempt passed, its label was removed, and the PR merged. PR #33 runs
-`32609389977`, `32611053651`, and `32614177932` are also consumed and terminal-red; their labels
-were removed.
+`32609389977`, `32611053651`, `32614177932`, and `32618995487` are also consumed and terminal-red;
+their labels were removed.
 Details are below.
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
@@ -60,8 +60,11 @@ merges, and successful batteries now start **zero hosted runners by default**:
   label `actions-budget-approved` to a PR and the branch/fork authorization succeeds. Only that
   successful dependency may emit the required `battery` check name; rejected/skipped events use
   `budget-not-authorized`. Static/root checks run before Edge/Chrome work, each dependency tree
-  installs once, and the first red stops later work. The separate authorization job preserves the
-  sealed Compendium owner's no-`if` workflow contract.
+  installs once, and the first red stops later work. The shorter 10-minute SceneMemory ruler now
+  owns the first exact-Edge install and runs before the 40-minute Compendium chain; both separately
+  sealed owners use exact-package `--reinstall`. The separate authorization job preserves the
+  Compendium owner's no-`if` contract; SceneMemory's direct order and no-soft-fail behavior are
+  independently controlled.
 - `branch-flow-guard.yml`, `sync-agent-branches.yml`, and `dev-preview-package.yml` are manual-only
   and default to `DO_NOT_RUN`. Their runner-owning authorization also requires the repository owner;
   preview uses the same tiny authorize→sealed-owner dependency as the main battery.
@@ -117,7 +120,7 @@ and PR #32 merged normally as `d4ab7e671959ab80198bed22bb600a26fc3524cc`. The pu
 the base branch's then-automatic branch-flow guard in 3s; the merged guard is now manual-only. No
 retry or additional `test-battery` ran. No further hosted attempt is authorized.
 
-## Authorized PR #33 attempt
+## Authorized PR #33 attempts
 
 Nick authorized one changed-head `test-battery` attempt for PR #33 head
 `5ce92fc458d0d6acc9e389f94a2f2e5ffcbfa1fd` against base
@@ -168,8 +171,28 @@ local root/v2/browser battery, including SceneMemory 42/42, Slice Smoke, Glass 1
 and origin-isolated preview smoke. This local green does not authorize a push, label, hosted run,
 Ready transition, or merge.
 
-When Nick explicitly lifts `FROZEN`, he may authorize exactly one hosted attempt. Before any GitHub write, the
-handoff must record:
+Nick then authorized exact head `bd3e65bfd99b91e556ff27b5dd028fe92f447227` against base
+`d4ab7e671959ab80198bed22bb600a26fc3524cc`, with the same label, 92-minute ceiling, and no-retry
+rule. Run `32618995487`, attempt 1, completed Compendium 78/78 and then terminal-red SceneMemory
+40/42; only `phone/answerability` and `desktop/answerability` failed. All twelve targets retained the
+same document, advanced the Pixi ticker, and completed below the unchanged 2,000 ms transport
+deadline, while Linux rendered turns took 493–647 ms against the Mac-selected 250 ms ceiling. The
+label was removed; the run is consumed, PR #33 remains Draft/unmerged, and no retry or future hosted
+attempt is authorized.
+
+Local repair commit `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` preserves collector and contract
+bytes, activates budget SHA-256
+`5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`, and replaces the sampled
+ceiling with a fixed strict `< 1,000 ms` product SLA. SceneMemory now runs first and its first-owner
+Edge install uses `--reinstall`. Fresh one-attempt local run
+`20260823-pr33-cross-host-sla-certification` passed 42/42 and its named verifier at `7d8dc380…`;
+report raw/gzip SHA-256 are
+`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. The old
+`3b71d14c…`/`59530da…` certificate remains historical. Nothing from this repair has been pushed, and
+no new hosted attempt is authorized.
+
+Before Nick authorizes another exact changed-head hosted attempt, the handoff must record:
 
 1. current budget mode, repository visibility/billing assumption, and standing private cap;
 2. workflow name, PR number/ref, full head SHA, base SHA, and the exact approval label or manual token;
@@ -178,7 +201,8 @@ handoff must record:
 5. one-attempt/no-retry stopping rule and the owner who will remove the approval label afterward.
 
 `test-battery` currently has a two-minute authorization runner plus one battery capped at 90 minutes,
-with the Compendium certification step independently capped at 40 minutes. The old parallel form
+with SceneMemory independently capped at 10 minutes before Compendium's independent 40-minute cap.
+The old parallel form
 could start seven runners with 175 combined
 configured job-minutes on every PR update, then repeat on `develop` and fan out into sync/publication.
 That automatic fanout is retired. Parallel wall-clock speed is not worth multiplying finite hosted

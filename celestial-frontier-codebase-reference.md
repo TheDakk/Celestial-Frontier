@@ -4,7 +4,7 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 source overlay matches code as of 2026-08-22.**
+> **Current port/v2 source overlay matches code as of 2026-08-23.**
 > **2026-08-22 Arc 1C ship/surface implementation and SceneMemory v2 overlay (current source):**
 > clean product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds
 > `packages/scene/src/ship-visual-state.ts`. Its pure `shipVisualStateOf()` accepts only normalized
@@ -35,14 +35,24 @@
 > Slice Smoke and Glass open/read/close the real Shipyard, compare DOM/state/canonical ids, require
 > one preview while open and zero retained after close, and cover the nine-control phone dock,
 > geometry, safe areas and real `:focus-visible` paint. The standalone SceneMemory route appends the
-> same real Shipyard leg and settles at zero preview work. Activation/certification source
-> `59530da3bf40965adf9c54f169b310e11ccdd0f8` binds
+> same real Shipyard leg and settles at zero preview work. Historical activation/certification source
+> `59530da3bf40965adf9c54f169b310e11ccdd0f8` bound the original 250 ms per-target
 > `budgets/scene-memory-v2.json` SHA-256
 > `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`.
-> One-attempt/no-retry local run `20260822-arc1-local-certification` passed all 42/42 outcomes,
-> complete lifecycle/cleanup, empty findings/fatals, and the independent named verifier under Edge
-> `151.0.4129.101`. This documentation descendant does not retroactively make its HEAD the
-> certified source. Hosted CI/integration, HUMAN silhouette judgment, Cargo/Inventory/Forge,
+> Its one-attempt/no-retry local run `20260822-arc1-local-certification` passed all 42/42 outcomes
+> and its named verifier under Edge `151.0.4129.101`; that certificate remains historical and is
+> not rewritten or promoted. Clean cross-host SLA repair
+> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds the active 1,000 ms budget SHA-256
+> `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`.
+> Its one-attempt/no-retry local run `20260823-pr33-cross-host-sla-certification` passed exact 42/42,
+> complete lifecycle/cleanup, empty findings/fatals, and its named verifier under the same exact Edge
+> `.101`. Raw report SHA-256 is
+> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960`; deterministic gzip SHA-256
+> is `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`.
+> Hosted run `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. The
+> repair changes only measurement and fail-fast workflow order; product behavior is unchanged.
+> This documentation descendant does not retroactively make its HEAD the certified source. Hosted
+> terminal-green integration, HUMAN silhouette judgment, Cargo/Inventory/Forge,
 > Fabrication/Research/upgrades, richer preview/art work, release and deployment remain open.
 >
 > **2026-08-21 Arc 1B scene-resource ownership and memory overlay (historical foundation; current where Arc 1C does not supersede it):**
@@ -703,8 +713,8 @@
 > `v2-compendium-memory` for the sealed exact-Edge workflow control. It is eligible only on a PR
 > `labeled` event where the repository owner applied exact label `actions-budget-approved`. The
 > dependency preserves the sealed Compendium owner's no-`if` contract. Branch direction runs in the
-> authorization job; cheap/static gates run before Edge/Chrome work; each dependency tree installs
-> once; the first red skips later gates. No push, PR synchronization, merge, or ordinary label starts
+> authorization job; cheap/static gates run before the shorter SceneMemory exact-Edge ruler, then
+> Compendium and Chrome work; each dependency tree installs once; the first red skips later gates. No push, PR synchronization, merge, or ordinary label starts
 > a runner. Branch-flow, agent-sync, and manual-preview workflows are manual-only, false-default,
 > and job-guarded. Branch publication is manual-only and hard parked until a later reviewed exact-SHA
 > promotion contract. `tools/actions-budget-policy.js` validates direct YAML ownership and
@@ -712,9 +722,10 @@
 > root `validate.js` runs its real policy first. At that historical Arc 1B boundary the local branch
 > added the exact Edge `.93` scene-memory-v1 phase after the terminal verified `.86` Compendium
 > phase; it was not yet pushed or hosted. Current Arc 1C workflow authority instead installs exact
-> Edge `.101` and runs `scene-memory-v2.json` / 42 outcomes at activation
-> `59530da3bf40965adf9c54f169b310e11ccdd0f8`; its local certificate is recorded in the 2026-08-22
-> overlay above, and no Arc 1C hosted attempt is authorized or claimed. The old parallel structure and automatic publishers
+> Edge `.101` and runs `scene-memory-v2.json` / 42 outcomes. The historical 250 ms activation
+> `59530da3bf40965adf9c54f169b310e11ccdd0f8` and the active cross-host repair
+> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` are distinguished in the current overlay above.
+> Hosted run `32618995487` remains terminal-red at 40/42 and provides no hosted authority. The old parallel structure and automatic publishers
 > remain truthful history only. Development/production target isolation, manifests, origin refusal,
 > noindex/robots, target-specific credentials, and the rule that previews are not human/release
 > authority remain unchanged; no publication is currently authorized.
