@@ -60,8 +60,10 @@
 > commands, and the gate then misdiagnosed the absent detail as an art timeout. Local collector
 > `50c28928…` now requires full containment, independent hit ownership, and an immediate exact-detail
 > receipt. Three retained candidates plus paired baseline1 activate measurement `cfc40f89…` and
-> budget `208af955…` with every numeric product ceiling unchanged. Exact-budget certification and a
-> new explicitly authorized hosted attempt remain pending.
+> budget `208af955…` with every numeric product ceiling unchanged. Clean source `7de42c6…` passed
+> local exact-budget run `20260823-pr34-row-activation-certification` 78/78 with complete lifecycle
+> and named verification (raw/gzip `ea31612f…` / `1c6c12fa…`). A new explicitly authorized hosted
+> attempt remains pending.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 

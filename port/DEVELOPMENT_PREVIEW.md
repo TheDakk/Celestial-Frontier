@@ -212,7 +212,9 @@ version `1.3`. PR #34's repaired native-row interaction authority is measurement
 collector `50c28928…`; active budget SHA-256 is
 `208af9558317cae7748f01470dd50e608485d4a197212ecd04db823f7c15a424`. It requires full row
 containment, independent hit ownership and an immediate exact-detail receipt before judging art;
-numeric resource ceilings are unchanged. Executable path and user
+numeric resource ceilings are unchanged. Clean source `7de42c6…` passed local exact-budget run
+`20260823-pr34-row-activation-certification` 78/78 with named verification; raw/gzip report hashes
+are `ea31612f…` / `1c6c12fa…`. Executable path and user
 agent remain recorded provenance, not cross-host match fields.
 
 Ubuntu provisions `/usr/bin/microsoft-edge-stable` only for the ordinary Compendium job and

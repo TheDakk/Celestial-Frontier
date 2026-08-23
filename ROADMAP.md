@@ -47,9 +47,12 @@ the archive verbatim and refresh this handoff in place.
   `cfc40f891e817c54c5b382cd5ef39ff606a0af27e1c142382c19da3d213edf0a`; every numeric product
   ceiling is unchanged and the baseline still preserves all four sealed faults.
 - The active replacement budget is SHA-256
-  `208af9558317cae7748f01470dd50e608485d4a197212ecd04db823f7c15a424`. A clean exact-budget
-  78/78 local certificate and its named verifier are the next required step before the final local
-  evidence commit. No push, hosted attempt, Ready transition, or merge is authorized yet.
+  `208af9558317cae7748f01470dd50e608485d4a197212ecd04db823f7c15a424`. Clean committed source
+  `7de42c6bb02f4c7af26053fa7a4cf45f5fbdc777` passed exact-budget local run
+  `20260823-pr34-row-activation-certification` 78/78 with complete lifecycle and its named verifier.
+  Report raw/gzip SHA-256 are `ea31612f16c978d30a40d8b6465f89e4e6f10f23b35ae996919e5ed0c7656108` /
+  `1c6c12faaf984716c31aecb8b1e5c11767ed998892c6bd4eba9f4edf23a0f1eb`. No push, hosted
+  attempt, Ready transition, or merge is authorized yet.
 
 ### Remaining Arc 1 evidence
 

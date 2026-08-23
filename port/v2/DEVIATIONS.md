@@ -11,15 +11,16 @@ as any change that touches an entry.
 
 ## Current-state instrument correction — PR #34 Compendium native row activation (2026-08-23)
 
-**Status: ★ locally repaired and recalibrated; exact-budget certification pending.** Hosted run
+**Status: ★ locally repaired, recalibrated and exact-budget certified.** Hosted run
 `32665404776` failed because a virtual row was not a stable native hit owner across separate CDP
 press/release commands. The downstream art wait could never succeed, and its final 46 ms clipped
 poll obscured the missed activation. Collector `50c28928…` now requires full containment,
 independent `elementFromPoint` ownership, and the exact detail receipt immediately after release.
 Three clean retained candidates plus paired baseline1 activate measurement `cfc40f89…` and budget
 `208af955…`; no product resource ceiling changed and the baseline still exposes all four faults.
-This is a ruler correction, not a gameplay deviation, timeout increase, retry, or memory-budget
-widening.
+Clean source `7de42c6…` passed local run `20260823-pr34-row-activation-certification` 78/78 with
+complete lifecycle and named verification (raw/gzip `ea31612f…` / `1c6c12fa…`). This is a ruler
+correction, not a gameplay deviation, timeout increase, retry, or memory-budget widening.
 
 ## Current-state decision — Arc 1C ship visual and real-Shipyard resource extension (2026-08-23)
 
