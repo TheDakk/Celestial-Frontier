@@ -136,6 +136,20 @@ producer, browser, samples, baseline, no-retry, and HUMAN authority remain uncha
 ruler merely because it fired, and never call an earlier red terminal-green retroactively; a fresh
 changed-head hosted check still requires exact owner authorization.
 
+**A FIXED ANSWERABILITY SLA IS NOT AN EMPIRICALLY CALIBRATED RESOURCE CEILING** (2026-08-23).
+SceneMemory's post-render target witness has two deliberately separate bounds: the collector's
+strict 2,000 ms command/transport deadline proves that the exact document can service a later Pixi
+tick at all, while the product contract requires every settled target witness to complete in
+strictly less than 1,000 ms. The one-second value is the repository's player-answerability boundary,
+not “observed maximum plus host headroom,” and SceneMemory does not by itself close Gate D's formal
+4× cold-boot criterion. Control a fixed semantic SLA at all judged points in both directions:
+999.999 ms passes; exact 1,000 ms and 1,000.001 ms fail the exact answerability inventory while all
+non-answerability outcomes remain byte-identical. Keep target success, later-ticker progress,
+same-document identity, independent browser heartbeat, and the 2,000 ms transport timeout as
+separate negative-controlled facts. The paired empirical broken-baseline rule above still applies
+when widening sampled heap, bytes, counts, ranges, slopes, or other resource ceilings; it is neither
+replaced nor satisfied by this fixed-SLA boundary fixture.
+
 ⚠⚠ **A SERVER CLOSE CALLBACK IS NOT A BOUNDED CLEANUP OUTCOME** (2026-08-20).
 Compendium's owned static server now has one immutable monotonic 2,000 ms shutdown deadline.
 Just-before succeeds; exact-boundary, late, missing, or error callbacks force

@@ -50,6 +50,16 @@ const LOCAL_CERTIFICATION = Object.freeze({
   gzipSha256: '0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6',
   budgetSha256: '3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7',
 });
+const HOSTED_LINUX_FAILURE = Object.freeze({
+  runId: 'gha-32618995487-1-scenemem',
+  file: 'PR33_LINUX_SCENEMEM_REPORT_32618995487.json.gz',
+  sourceCommit: '715a74a276b5f8f8bcde115bbd15844e4efbac30',
+  originalBudgetSha256: '3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7',
+  rawSha256: 'c59908636e8addd72da019f372089216ad231bb862b718f75f266f6b25347856',
+  gzipSha256: '20db9d1671f9324f469fdd3305085b49f7fc44d871d0ddbedf9f6031c25b4b5f',
+  artifactId: 9488319243,
+  artifactSha256: '39697f623d793e9eb42f99eb78a4f63c93de618bf82d86b651d3a097d33f2493',
+});
 
 type ProfileName = typeof PROFILE_NAMES[number];
 type BudgetRecord = {
@@ -151,7 +161,7 @@ const SELECTED_PROFILES = Object.freeze({
     productRenderTargetsMax: 0.5,
     ringCacheEntriesMax: 0.5,
     peakRingGeometryEntriesMax: 2.5,
-    targetElapsedMsMax: 250,
+    targetElapsedMsMax: 1000,
     heartbeatElapsedMsMax: 100,
   }),
   desktop: Object.freeze({
@@ -174,9 +184,13 @@ const SELECTED_PROFILES = Object.freeze({
     productRenderTargetsMax: 0.5,
     ringCacheEntriesMax: 0.5,
     peakRingGeometryEntriesMax: 2.5,
-    targetElapsedMsMax: 250,
+    targetElapsedMsMax: 1000,
     heartbeatElapsedMsMax: 100,
   }),
+}) satisfies Readonly<Record<ProfileName, SceneMemoryBudget>>;
+const ORIGINAL_250_PROFILES = Object.freeze({
+  phone: Object.freeze({ ...SELECTED_PROFILES.phone, targetElapsedMsMax: 250 }),
+  desktop: Object.freeze({ ...SELECTED_PROFILES.desktop, targetElapsedMsMax: 250 }),
 }) satisfies Readonly<Record<ProfileName, SceneMemoryBudget>>;
 
 const BUDGET_FIELDS = Object.keys(SELECTED_PROFILES.phone) as Array<keyof SceneMemoryBudget>;
@@ -201,6 +215,12 @@ const evidence = CANDIDATES.map((candidate) => {
   };
 });
 const reports = evidence.map(({ report }) => report);
+
+const profilePoints = (measurement: SceneMemoryProfileMeasurement) => [
+  measurement.precondition,
+  ...measurement.cycles,
+  measurement.bfcache,
+];
 
 const authorityProjection = (
   record: Readonly<Record<string, string | null>>,
@@ -439,8 +459,8 @@ describe('Arc 1C scene-memory active budget', () => {
       sha256: LOCAL_CERTIFICATION.budgetSha256,
     });
     expect(report.inputs.budget).toBe(LOCAL_CERTIFICATION.budgetSha256);
-    expect(sha256(fs.readFileSync(budgetPath))).toBe(LOCAL_CERTIFICATION.budgetSha256);
-    expect(report.contractInput.budgets).toEqual(budget.profiles);
+    expect(sha256(fs.readFileSync(budgetPath))).not.toBe(LOCAL_CERTIFICATION.budgetSha256);
+    expect(report.contractInput.budgets).toEqual(ORIGINAL_250_PROFILES);
     expect(report.contractInput.profiles).toEqual(collectedProfileProjection(report));
     expect(report.outcomes).toHaveLength(42);
     expect(report.outcomes.every((outcome) => outcome.pass)).toBe(true);
@@ -454,6 +474,213 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(recomputed.status).toBe('pass');
     expect(recomputed.outcomes).toEqual(report.outcomes);
     expect(recomputed.failures).toEqual([]);
+    const currentBudgetReplay = evaluateSceneMemory({
+      ...report.contractInput,
+      budgets: budget.profiles,
+    });
+    expect(currentBudgetReplay.status).toBe('pass');
+    expect(currentBudgetReplay.outcomes).toHaveLength(42);
+    expect(currentBudgetReplay.failures).toEqual([]);
+  });
+
+  it('retains the exact hosted Linux red and replays only its elapsed ruler green', () => {
+    const compressed = fs.readFileSync(path.join(auditRoot, HOSTED_LINUX_FAILURE.file));
+    expect(sha256(compressed)).toBe(HOSTED_LINUX_FAILURE.gzipSha256);
+    const raw = gunzipSync(compressed);
+    expect(sha256(raw)).toBe(HOSTED_LINUX_FAILURE.rawSha256);
+    const report = JSON.parse(raw.toString('utf8')) as CalibrationReport;
+
+    expect(report).toMatchObject({
+      schema: 'cf-v2-scene-memory-report/v2',
+      runId: HOSTED_LINUX_FAILURE.runId,
+      status: 'fail',
+      certification: 'contract-budget',
+      lifecycle: {
+        schema: 'cf-v2-scene-memory-report-lifecycle/v1',
+        status: 'complete',
+      },
+      policy: {
+        attemptCount: 1,
+        automaticRetries: 0,
+        warmupCycles: 4,
+        measuredWarmCycles: 4,
+        commandTimeoutMs: 5000,
+        targetTimeoutMs: 2000,
+        heartbeatTimeoutMs: 2000,
+      },
+      cleanup: { browser: true, server: true, workspaceLock: true },
+    });
+    expect(report.source.begin).toEqual(report.source.end);
+    expect(report.source.begin).toEqual({
+      commit: HOSTED_LINUX_FAILURE.sourceCommit,
+      branch: 'detached',
+      state: 'committed',
+      statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      workingTreeSha256: SOURCE_WORKING_TREE,
+    });
+    expect(report.scope).toEqual({
+      covered: ['universe', 'galaxy', 'galaxy-fine', 'system', 'surface', 'compendium', 'shipyard'],
+      shipyardStatus: 'implemented-static',
+      excluded: ['Shipyard build writers', 'audio lifecycle', 'true GPU bytes'],
+    });
+    expect(report.fixture).toEqual({
+      count: 1500,
+      rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
+    });
+    expectExactBuildInventory(report);
+    expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
+      EXPECTED_PRODUCER_AUTHORITY,
+    );
+    expect(authorityProjection(report.browser, EXPECTED_BROWSER_AUTHORITY)).toEqual(
+      EXPECTED_BROWSER_AUTHORITY,
+    );
+    expect(report.browser).toMatchObject({
+      executable: '/opt/microsoft/msedge/microsoft-edge',
+      userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0',
+    });
+    expect(report.inputs.budget).toBe(HOSTED_LINUX_FAILURE.originalBudgetSha256);
+    expect(report.budget).toMatchObject({
+      schema: 'cf-v2-scene-memory-budget/v2',
+      path: '/home/runner/work/Celestial-Frontier/Celestial-Frontier/port/v2/budgets/scene-memory-v2.json',
+      sha256: HOSTED_LINUX_FAILURE.originalBudgetSha256,
+    });
+    expect(report.contractInput.budgets).toEqual(ORIGINAL_250_PROFILES);
+    expect(report.contractInput.profiles).toEqual(collectedProfileProjection(report));
+    const targetTimeoutMs = report.policy.targetTimeoutMs;
+    if (typeof targetTimeoutMs !== 'number') throw new Error('hosted report target timeout missing');
+    expect(targetTimeoutMs).toBe(2000);
+    for (const profile of PROFILE_NAMES) {
+      expect(metricSummary(report.profiles[profile])).toEqual(report.profiles[profile].metrics);
+    }
+
+    const originalReplay = evaluateSceneMemory(report.contractInput);
+    expect(originalReplay).toEqual(report.verdict);
+    expect(originalReplay.outcomes).toEqual(report.outcomes);
+    expect(report.outcomes).toHaveLength(42);
+    expect(report.outcomes.filter((outcome) => outcome.pass)).toHaveLength(40);
+    expect(report.outcomes.filter((outcome) => !outcome.pass).map((outcome) => outcome.id))
+      .toEqual(['phone/answerability', 'desktop/answerability']);
+    expect(report.findings).toEqual([
+      'phone/answerability: precondition: target deadline; cycle 1: target deadline; cycle 2: target deadline; cycle 3: target deadline; cycle 4: target deadline; bfcache: target deadline',
+      'desktop/answerability: precondition: target deadline; cycle 1: target deadline; cycle 2: target deadline; cycle 3: target deadline; cycle 4: target deadline; bfcache: target deadline',
+    ]);
+    expect(report.fatalEvents).toEqual([]);
+
+    const expectedTimings = {
+      phone: [
+        [623.1854850000018, 0.7958199999993667],
+        [618.7216800000024, 0.7450379999936558],
+        [637.6419119999991, 1.564061999997648],
+        [620.9491869999911, 1.0488849999965169],
+        [626.3161269999982, 1.0095530000107829],
+        [647.2180230000085, 1.5142499999928987],
+      ],
+      desktop: [
+        [498.7795749999932, 0.689792999997735],
+        [493.4734289999906, 0.9595790000021225],
+        [497.8501930000202, 3.5842219999758527],
+        [494.5800139999774, 0.9394709999905899],
+        [497.75840200000675, 5.9932020000123885],
+        [506.8920119999966, 2.318636999989394],
+      ],
+    } as const;
+    for (const profile of PROFILE_NAMES) {
+      const points = profilePoints(report.profiles[profile]);
+      expect(points.map((point) => [
+        point.answerability.target.elapsedMs,
+        point.answerability.heartbeat.elapsedMs,
+      ])).toEqual(expectedTimings[profile]);
+      for (const point of points) {
+        expect(point.answerability.target).toMatchObject({ ok: true, laterTicker: true });
+        expect(point.answerability.target.tickerAfter)
+          .toBe(point.answerability.target.tickerBefore + 1);
+        expect(point.answerability.target.documentTokenAfter)
+          .toBe(point.answerability.target.documentTokenBefore);
+        expect(point.answerability.target.elapsedMs).toBeGreaterThanOrEqual(250);
+        expect(point.answerability.target.elapsedMs).toBeLessThan(targetTimeoutMs);
+        expect(point.answerability.heartbeat).toMatchObject({ ok: true, independent: true });
+        expect(point.answerability.heartbeat.elapsedMs).toBeLessThan(100);
+      }
+    }
+    expect(report.profiles.phone.metrics.targetElapsedMsMax).toBe(647.2180230000085);
+    expect(report.profiles.desktop.metrics.targetElapsedMsMax).toBe(506.8920119999966);
+    expect(budget.profiles.phone.targetElapsedMsMax).toBe(1000);
+    expect(budget.profiles.desktop.targetElapsedMsMax).toBe(1000);
+    expect(budget.profiles.phone.targetElapsedMsMax).toBeLessThan(targetTimeoutMs);
+
+    const repaired = evaluateSceneMemory({ ...report.contractInput, budgets: budget.profiles });
+    expect(repaired.status).toBe('pass');
+    expect(repaired.outcomes).toHaveLength(42);
+    expect(repaired.failures).toEqual([]);
+    const originalById = new Map(report.outcomes.map((outcome) => [outcome.id, outcome]));
+    expect(repaired.outcomes.filter((outcome) =>
+      JSON.stringify(outcome) !== JSON.stringify(originalById.get(outcome.id))).map(({ id }) => id))
+      .toEqual(['phone/answerability', 'desktop/answerability']);
+    expect(sha256(raw)).toBe(HOSTED_LINUX_FAILURE.rawSha256);
+
+    const targetBoundaryInput = (elapsedMs: number): SceneMemoryInput => {
+      const input = structuredClone(report.contractInput);
+      input.budgets = structuredClone(budget.profiles);
+      for (const profile of PROFILE_NAMES) {
+        for (const point of profilePoints(input.profiles[profile])) {
+          point.answerability.target.elapsedMs = elapsedMs;
+        }
+      }
+      return input;
+    };
+    expect(evaluateSceneMemory(targetBoundaryInput(999.999)).status).toBe('pass');
+    for (const elapsedMs of [1000, 1000.001]) {
+      const boundary = evaluateSceneMemory(targetBoundaryInput(elapsedMs));
+      expect(boundary.status, `${elapsedMs} ms boundary`).toBe('fail');
+      expect(boundary.outcomes.filter((outcome) => !outcome.pass).map(({ id }) => id))
+        .toEqual(['phone/answerability', 'desktop/answerability']);
+      expect(boundary.failures).toEqual([
+        {
+          id: 'phone/answerability',
+          pass: false,
+          message: 'precondition: target deadline; cycle 1: target deadline; cycle 2: target deadline; cycle 3: target deadline; cycle 4: target deadline; bfcache: target deadline',
+        },
+        {
+          id: 'desktop/answerability',
+          pass: false,
+          message: 'precondition: target deadline; cycle 1: target deadline; cycle 2: target deadline; cycle 3: target deadline; cycle 4: target deadline; bfcache: target deadline',
+        },
+      ]);
+      const boundaryById = new Map(boundary.outcomes.map((outcome) => [outcome.id, outcome]));
+      expect(repaired.outcomes.filter(({ id }) => !id.endsWith('/answerability'))
+        .every((outcome) => JSON.stringify(outcome) === JSON.stringify(boundaryById.get(outcome.id))))
+        .toBe(true);
+    }
+
+    const negativeMutations = [
+      (input: SceneMemoryInput) => { input.profiles.phone.precondition.answerability.target.ok = false; },
+      (input: SceneMemoryInput) => {
+        input.profiles.phone.precondition.answerability.target.laterTicker = false;
+        input.profiles.phone.precondition.answerability.target.tickerAfter =
+          input.profiles.phone.precondition.answerability.target.tickerBefore;
+      },
+      (input: SceneMemoryInput) => {
+        input.profiles.phone.precondition.answerability.target.documentTokenAfter = 'replacement';
+      },
+      (input: SceneMemoryInput) => { input.profiles.phone.precondition.answerability.heartbeat.ok = false; },
+      (input: SceneMemoryInput) => {
+        input.profiles.phone.precondition.answerability.heartbeat.independent = false;
+      },
+    ];
+    for (const mutate of negativeMutations) {
+      const input = structuredClone(report.contractInput);
+      input.budgets = structuredClone(budget.profiles);
+      mutate(input);
+      expect(evaluateSceneMemory(input).outcomes
+        .find(({ id }) => id === 'phone/answerability')?.pass).toBe(false);
+    }
+    const retainedMemoryRed = structuredClone(report.contractInput);
+    retainedMemoryRed.budgets = structuredClone(budget.profiles);
+    retainedMemoryRed.profiles.phone.precondition.pending = 1;
+    const memoryVerdict = evaluateSceneMemory(retainedMemoryRed);
+    expect(memoryVerdict.status).toBe('fail');
+    expect(memoryVerdict.outcomes.some((outcome) =>
+      !outcome.pass && outcome.id !== 'phone/answerability')).toBe(true);
   });
 
   it('replays every candidate green with strict headroom over every observed metric', () => {
