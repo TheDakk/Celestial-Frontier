@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-22. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-23. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -10,6 +10,21 @@ shipped, or with a check that went green while the thing it guarded was broken. 
 roughly by how often they have bitten.
 
 ---
+
+⚠⚠ **NATIVE POINTER EVIDENCE MUST PROVE A STABLE HIT OWNER AND THE IMMEDIATE ACTION RECEIPT**
+(2026-08-23). PR #34 run `32665404776` positioned a virtual Compendium row while it was only
+partially intersecting the scroller, then sent native press and release as separate hosted CDP
+commands. The row could move or lose hit ownership between those commands. No detail opened, but
+the instrument skipped the action receipt and spent the next 30 seconds waiting for detail art;
+its last clipped poll had only 46 ms left and was misleadingly reported as an art timeout.
+
+Before native pointer input on a moving or virtualized surface, require the exact target to be fully
+contained, choose an inset point, and independently prove `elementFromPoint(...).closest(...)` owns
+that exact logical identity. Immediately after release, assert the exact semantic action receipt
+before entering any downstream resource or art wait. Negative-control missing hit ownership,
+partial containment, and a press/release that does not activate. A final clipped command remainder
+is not the phase's SLA and must never replace the earliest failed outcome in the diagnosis. Do not
+repair this class with a retry, a larger art timeout, or a weakened resource ceiling.
 
 ⚠⚠ **AN ARC IS NOT DONE UNTIL ITS CURRENT DOCS AND HANDOFF AGREE** (2026-08-20).
 Every Arc update refreshes all affected current Markdown/reference docs in the same batch and ends
