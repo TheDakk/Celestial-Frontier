@@ -7,8 +7,41 @@ extraction, cosmic gear — are now **IMPLEMENTED** (2026-07-23); the **authorit
 arc extends the same painterly engine + ARPG presentation from *living* things to the **made** things
 (gear, materials, the ship) and reworks **world rarity into a landing discovery**.
 **Legacy status verified:** 2026-08-13 — core proposals are present in the v1.8.9 source;
-see `MATERIALS_AND_GEAR.md` for the spec of record and the dated overlay below for the
-separate v2 boundary.
+see `MATERIALS_AND_GEAR.md` for the spec of record and the 2026-08-22 overlay below for the
+current separate v2 boundary.
+**Current v2 overlay matches code as of:** 2026-08-23.
+
+> **2026-08-22 Arc 1C v2 Forge/Shipyard boundary — current implementation:** clean
+> product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` implements the read-only
+> ship foundation, not the Forge loop. Pure, recursively frozen `ShipVisualState` derives from
+> normalized `items`, `ascCh`, and livery seed `0x5111`; it delegates stage selection to
+> `ascStageOf`. Exact installed-system order is `jumpdrive,array,igdrive,autoext,cscoop`; exact
+> visible hardpoint ids are `array`, `autoext`, and `cscoop`. The generic
+> `legacy-charter-refit` provenance is terminal-only and never invents an absent named drive.
+>
+> The desktop right rail and phone 5×2 nine-control dock open **Shipyard — Inspection**. It
+> presents four deterministic code-native SVG silhouettes, owned systems and fitted/open
+> hardpoints through one disposable DOM/SVG preview owner. It creates no Pixi preview, second
+> renderer, `RenderTexture`, animation, material receipt, recipe, research project, fabrication
+> job, upgrade or Cargo mutation. The panel explicitly keeps Fabrication, Research and upgrades
+> unavailable.
+>
+> The real SceneMemory route includes Shipyard open/close with zero settled previews and the
+> named transactional `SurfacePlanetTextureAttachment`. Historical activation/certification source
+> `59530da3bf40965adf9c54f169b310e11ccdd0f8` bound the original 250 ms budget SHA-256
+> `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`; local run
+> `20260822-arc1-local-certification` passed 42/42 and its named verifier under Edge
+> `151.0.4129.101`, but that certificate remains historical. Clean cross-host SLA repair
+> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds active budget SHA-256
+> `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`; local one-attempt/no-retry
+> run `20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier under
+> the same Edge `.101`. Raw/gzip SHA-256 are
+> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+> `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
+> `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
+> is unchanged. This documentation descendant is not the exact certified head. Hosted
+> terminal-green integration, Cargo/Inventory/Forge writers, Fabrication/Research/upgrades,
+> richer inventory, HUMAN silhouette judgment, release and deploy remain open.
 
 > **2026-08-13 v2 presentation decision:** the original discovery rationale is now the
 > binding port behavior. V2 never renders a survey row titled **Spectral class**. A
@@ -22,7 +55,7 @@ separate v2 boundary.
 > world-only ladder and “remove star rarity” passages below are preserved as superseded
 > design history, not current v2 instructions.
 
-> **2026-08-13 v2 next-arc overlay — approved design, not current implementation:**
+> **2026-08-13 v2 next-arc overlay — historical pre-Arc-1C boundary:**
 > Legacy v1.8.9 already gives one deterministic scout hull additive Jump Drive, Array,
 > Intergalactic Drive, Auto-Extractor and Corona Scoop details. V2 currently has none of
 > the Cargo, Shipyard, crafting/research, upgrade or ship-art surfaces, so the older art is

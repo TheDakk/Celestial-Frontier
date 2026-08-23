@@ -1,7 +1,7 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-20.
+> 2026-08-23.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -14,44 +14,44 @@
 > merge `5171abcdc538938fdf5ac82688d1ab868da6ff48`. F2 canonical ingress and discriminated navigation
 > finished at PR #30 head `24bcc3cbf4e76f7bb65a00e810e0eeeeb8d7c837` and is integrated at
 > `b091f010011fa16bec457599b41274b7f92bb5e6`. D-TRAIN-1 is integrated through PR #31 at
-> `38447019517147319bd08c598202d097ee866874`. Arc 1A/PR #32 is the active bounded review branch.
-> Exact local `89bfa05…`, run `20260820-pr32-89bfa05-compendiummem`, completed 78/78 with zero
-> findings and six PNGs, then exited 2 during owned browser shutdown. Terminal log `b0bb8abc…` is
-> authoritative; pre-cleanup PASS report/verifier `66ba1366…` / `98664dca…` are false-green. This
-> is a one-attempt/no-retry post-measurement instrument red, not product certification or
-> calibration. Clean lifecycle-repair source `c49e525…` then ran candidate20 once: 78/78, zero
-> findings, six PNGs, and complete lifecycle, but a reused `.86`-named app reported Edge `.93` /
-> revision `@4a822b1b…`; quarantine `175fac5e…` / `916dd12a…` / `7462144b…` as wrong-browser
-> instrument evidence. Candidate21/22/23 plus paired baseline9 later completed once each without
-> retry under exact `.86` and complete lifecycle: candidates replayed 78/78 with zero findings and
-> baseline9 retained four faults. They are individually clean diagnostic history only because the
-> old shared-sample identity incorrectly compared fresh executable paths and host user agents.
-> Raw path/UA remain required per-run provenance; product/revision/JavaScript/protocol are shared
-> authority. Clean exact source `fb321f2…` then collected candidate24/25/26 plus paired baseline10,
-> each once with zero retries and a distinct fresh `.86` path. Candidates completed 78/78 with zero
-> findings, complete lifecycle, and six PNGs; baseline10 retained four faults. The formerly active budget/schema/
-> contract/collector/selftest/test `70145575…` / `695d2529…` / `e7dfea1d…` / `07131f5e…` /
-> `f86db74a…` / `0fa2e89d…` bind measurement `2318f57b…`, unchanged producer `d3223177…`, 3/3
-> samples per profile, measured 1/1 baseline, and strict ceilings with 14 phone / 13 desktop
-> breaches. A synthetic desktop-identity line corrected focused 12/13 to 13/13 without changing
-> browser evidence. Exact head `731b2e2…` passed its complete local battery; GitHub run
-> `32420327368` then preserved a no-retry hosted timeout/incomplete-evidence red when Compendium
-> remained RUNNING/lifecycle-pending at the 40-minute job ceiling, and GitHub separately reported
-> the account spending limit. The repository is now public, so standard runners are free while it
-> remains public; `FROZEN` remains Nick's intent gate and 3,000 the private/ambiguous cap.
-> `GITHUB_ACTIONS_BUDGET.md` blocks push/label/dispatch/merge/publication; the guarded local
-> workflow design removes automatic spend and must not be pushed through the still-automatic remote
-> configuration. No product/ruler verdict follows from the hosted timeout. Arc 1B/gameplay resumes
-> only after PR #32 eventually closes terminal-green under a separately authorized attempt.
-> Exact local `aecf3865095176a509a4cb892e5842b584780870` bounds the Compendium HTTP
-> server close at 2,000 ms and fails exact/late/missing/error cleanup closed with one forced
-> connection close. Cleanup red suppresses PASS/sample. Clean source `6736ef4…` collected serial
-> c27/baseline11/c28/c29 once each with zero retries and fresh exact `.86`; candidates completed
-> 78/78 with complete lifecycle and 18 PNG bindings, while baseline11 retained four faults and
-> 14 phone / 13 desktop breaches. Activation `b3957e1…` makes budget/test `546d3a81…` /
-> `ef06252a…` active under unchanged collector/selftest/measurement `0c7ec3ba…` / `0bbb3541…` /
-> `23aacc2c…` and producer `d3223177…`; all prior numeric ceilings remain strict.
-> Later product batches remain planned.
+> `38447019517147319bd08c598202d097ee866874`. Arc 1A then reached terminal-green hosted evidence:
+> run `32462323775` tested exact head `c68aee241220dcb720cadb7fc55f7fbf99bde6fb` once without
+> retry, and PR #32 merged into `develop` at `d4ab7e671959ab80198bed22bb600a26fc3524cc`.
+> Its six-image Compendium `[HUMAN]` review remains open.
+>
+> Arc 1's automated implementation is locally complete. Arc 1B's exact historical source
+> `79c605f9c7ab8b63ad082d852c38d66ad6bb11af`, v1 budget/workflow activation
+> `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`, and one no-retry 40/40 local certificate remain the
+> authority for the pre-Shipyard scene-resource boundary. They are preserved as Arc 1B chronology,
+> not reused as proof of Arc 1C.
+>
+> Arc 1C product/ruler source `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds one pure normalized
+> `ShipVisualState` shared by travel and presentation, a responsive read-only Shipyard with one
+> code-native SVG/DOM preview owner and zero second renderer/RenderTexture, and the named
+> `SurfacePlanetTextureAttachment`. Source `59530da3bf40965adf9c54f169b310e11ccdd0f8`, budget
+> SHA-256 `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`, and local run
+> `20260822-arc1-local-certification` are retained only as the historical Mac-derived 250 ms
+> certificate. Hosted attempt 4, run `32618995487`, reproduced all 42 lifecycle/memory/ownership
+> checks but finished terminal-red at 40/42: only phone and desktop answerability exceeded that old
+> ruler on Linux, at 618–647 ms and 493–507 ms respectively.
+>
+> Active cross-host SLA repair source `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds
+> `budgets/scene-memory-v2.json` SHA-256
+> `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501` to the existing fixed,
+> strict `<1000 ms` product answerability contract. Local no-retry run
+> `20260823-pr33-cross-host-sla-certification` passed 42/42 under Edge `151.0.4129.101`, complete
+> lifecycle/cleanup and exact named verification; report raw/gzip SHA-256 are
+> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+> `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
+> verdict-contract bytes are unchanged. The guarded battery now installs exact Edge `.101` with
+> same-package `--reinstall`, runs SceneMemory before Compendium, and permits no retry. This local
+> repair has no hosted-green authority and no hosted attempt is currently authorized.
+>
+> The v2 gate drives Universe, Galaxy, Galaxy fine, Sol, Earth Surface, the deterministic 1,500-row
+> Compendium, and the real Shipyard on phone and desktop before settling back at Universe. PR #33
+> remains draft; hosted terminal-green evidence, review acceptance, integration, the Arc 1A six-image HUMAN review,
+> Arc 1C phone/desktop ship-readability judgment, whole-Gate closure, release, and publication remain
+> open.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
@@ -647,26 +647,13 @@ both parent voices.
 **Goal:** make the 1,500-entry catalogue bounded on phone and desktop without degrading identity,
 accessibility, or approved static art.
 
-**Current state (2026-08-20): product implementation, serviced-turn scheduler, compact-phone stack,
-displayed-demand/zoom-owner repair, bounded static-server shutdown, and the active repaired ruler are
-present. Exact-89's shutdown false-green and candidate20's
-wrong-browser `175fac5e…` / `916dd12a…` / `7462144b…` carriers remain preserved instrument history.
-Candidate21/22/23 plus paired baseline9 each completed once without retry under exact `.86` and
-complete lifecycle; candidates replayed 78/78 with zero findings and baseline9 retained four faults.
-They are individually clean diagnostic history only because the old shared identity incorrectly
-compared fresh path/UA provenance. Clean exact source `fb321f2…` then collected candidate24/25/26
-plus paired baseline10, each once with zero retries and distinct fresh `.86` paths. Candidates
-completed 78/78 with zero findings, complete lifecycle, and six PNGs; baseline10 retained four
-faults. The formerly active budget `70145575…` embeds 3/3 samples per profile, measured 1/1 baseline, and strict
-ceilings with 14 phone / 13 desktop breaches under measurement `2318f57b…` and unchanged producer
-`d3223177…`. Focused activation is 13/13 after the synthetic active-state control received matching
-desktop identities; browser evidence did not change or rerun. That ruler is historical. Clean
-`6736ef4…` c27/baseline11/c28/c29 evidence now activates budget/test `546d3a81…` / `ef06252a…`
-under measurement/collector/selftest `23aacc2c…` / `0c7ec3ba…` / `0bbb3541…`; candidates are 78/78
-with complete lifecycle, baseline11 retains four faults and 14 phone / 13 desktop breaches, and
-prior ceilings remain strict. Fresh `[HUMAN]` review is open.**
-This row remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and its
-corresponding PR test-merge CI are terminal green; the live outcome is not cached here. The runnable, fail-closed
+**Current state (2026-08-21): automated implementation and integration complete.** Product
+virtualization, serviced-turn scheduling, compact-phone layout, displayed-demand texture ownership,
+bounded static-server shutdown, and the repaired ruler are present. Exact changed-head run
+`32462323775` passed the complete battery once on `c68aee2…`; its approval label was removed and
+PR #32 merged at `d4ab7e6…`. The earlier false-greens, wrong-browser carriers, calibration history,
+and no-retry reds below remain preserved because they explain the final ruler. The separate six-image
+phone/desktop `[HUMAN]` review remains open. The runnable, fail-closed
 `compendiummem` gate drives a deterministic 1,500-row
 Compendium through a spacer-preserved virtual window, focus pinning and native keyboard traversal,
 filter/clear, detail/Back, Close cleanup, and Planetside hide/release/reacquire. The product path
@@ -823,15 +810,14 @@ each once with zero retries and distinct fresh `.86` paths. Active budget/test `
 initial phone-only 12/13 control; browser evidence did not change. No package, launch argument,
 workflow, product, timing, producer, or retry-policy change occurred. Exact `731b2e2…` passed the
 complete local battery; hosted run `32420327368` was consumed at its 40-minute incomplete-evidence
-ceiling and left PR #32 blocked. No rerun/push is authorized while the efficiency gate is frozen.
-After terminal-green PR #32 closure, execution returns immediately to Arc 1B/gameplay. The Arc-local Edge authority
-still does **not** repin
-Gate-A/global Edge `150.0.4078.83`.
+ceiling and left PR #32 blocked at that historical boundary. Later changed-head run `32462323775`
+passed once without retry and PR #32 merged at `d4ab7e6…`. The Arc-local Edge authority still does
+**not** repin Gate-A/global Edge `150.0.4078.83`.
 
-The current state records an implemented product/scheduler/stack repair and a fail-closed ruler
-transition, not terminal resource certification. Human judgment of a fresh certifying run's six phone/desktop
-list, detail, and focus-pinned images remains outstanding. Arc 1B remains open for ordinary scene/Pixi
-texture, render-target, GPU-proxy, and combined travel → Compendium → Shipyard plateau ownership.
+Arc 1A's automated criterion is integrated. Human judgment of a fresh certifying run's six
+phone/desktop list, detail, and focus-pinned images remains outstanding. Arc 1B's historical local
+resource certificate and Arc 1C's locally certified real-Shipyard extension are recorded separately
+below; neither supplies HUMAN judgment or closes Gate D.
 
 **Scope:**
 
@@ -871,9 +857,36 @@ art-review-packet evidence, not a Compendium delivery tier.
 **Goal:** give ordinary scene lifetime the same explicit ownership discipline as intentional
 replacement-document teardown.
 
-**Scope:** own/acquire/release/evict galaxy haze, planet texture tiers, render/canvas caches,
-`_rgCache`, render targets, and future selected previews. Establish a travel → Compendium →
-Shipyard warm plateau under raw-CDP resource counters and decoded/GPU proxies.
+**Historical exact state (2026-08-21): locally implementation-complete at the pre-Shipyard
+boundary; later extended by Arc 1C.** Product/ruler source
+`79c605f9c7ab8b63ad082d852c38d66ad6bb11af`
+routes ordinary non-backdrop Canvas/Pixi textures through document-owned, refcounted scene scopes;
+rolls a failed whole-scene build back to a cleared diagnosed state; keeps fine-layer replacement
+transactional; releases local caches and Graphics contexts;
+detaches destroyed scene text from shared styles; compacts Pixi managed-resource and batch UID
+tombstones only at release boundaries; and preserves the live application across persisted
+`pagehide`/`pageshow`.
+
+Three clean, independent exact-Edge-151.0.4129.93 calibration runs at `79c605f…` used four warm-up
+and four measured cycles per phone/desktop profile and each passed all 40 outcomes. Tracked budget
+SHA-256 `78a9e81a121d2598b8d83bbbd0c8311e503470dcd88083f959fc82c181ee5afb` was activated at
+`e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`; one no-retry local exact-budget run then passed
+40/40, complete lifecycle, and independent verification. Descendant `b30b6d49a8ff1745f33be9a329d421309b96b5e3`
+retains that evidence and its validation control, but is not a second certification and does not
+move exact certification beyond `e244c9e…`. This remains local Arc 1B history, not hosted,
+integration, HUMAN, or Arc 1C evidence.
+
+**Implemented scope:** own/acquire/release/evict galaxy haze, planet texture tiers, render/canvas
+caches, `_rgCache`, transient ring geometry, and scene-owned managed-resource proxies. The standalone
+raw-CDP gate drives Universe → Galaxy → Galaxy fine → Sol → Earth Surface → a deterministic
+1,500-row Compendium, then proves BFCache survival, answerability, exact route inventories, balanced
+texture scopes, stable per-hash managed resources, bounded heap/DOM/proxy ceilings, and cleanup on
+phone and desktop.
+
+**Historical Shipyard boundary:** the v1 report correctly carried
+`shipyardStatus: 'future-arc-1c'` because Shipyard did not exist at that exact Arc 1B source. Arc 1C
+now implements and separately certifies the real Shipyard leg below. Never cite the 40/40 v1
+certificate as proof of the later travel → Compendium → Shipyard loop.
 
 **bfcache law:** ordinary `pagehide` must not unconditionally destroy the application. A pagehide
 signal may notify an owner only with an explicit persisted/pageshow plan; renderer destruction stays
@@ -886,19 +899,49 @@ not complete audio lifecycle. Arc 7 owns that work.
 
 **Goal:** make capability visually legible without allowing art to become a second gameplay owner.
 
-**Scope:**
+**Current state (2026-08-23): automated implementation locally complete; HUMAN readability,
+review, hosted terminal-green evidence, and integration remain open.** Product/ruler source
+`a4de5007ffc9131b8bc952a0a4cb469d9139039e` owns the product and its negative-controlled browser
+route. Source `59530da3bf40965adf9c54f169b310e11ccdd0f8`, budget SHA-256
+`3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`, and local run
+`20260822-arc1-local-certification` are historical 250 ms Mac-local evidence only. Hosted attempt
+4, run `32618995487`, was terminal-red at 40/42 solely because phone and desktop answerability on
+Linux measured 618–647 ms and 493–507 ms against that old ruler; all liveness, memory, ownership,
+route, and cleanup outcomes were green.
+
+Active cross-host SLA repair source `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds
+scene-memory-v2 budget SHA-256
+`5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501` to the fixed strict
+`<1000 ms` product SLA. Local no-retry run `20260823-pr33-cross-host-sla-certification` passed
+42/42 under Edge `151.0.4129.101`, complete lifecycle/cleanup and exact named verification. Report
+raw/gzip SHA-256 are `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
+verdict-contract bytes are unchanged. The ordinary battery now performs exact Edge `.101`
+same-package `--reinstall`, runs SceneMemory first and Compendium second, and has no retry. No new
+hosted attempt is authorized, and this local certificate must never be described as hosted green.
+
+**Implemented scope:**
 
 - One pure normalized `ShipVisualState`, derived from canonical saved capability/reach state.
   Travel, Shipyard captions, chassis, hardpoints, and preview consume it; it is not separately saved.
 - Prove Scout/Chemical, Jump/Interstellar, Survey Cruiser, and Frontier/IG chassis roles. Hardpoints
-  appear only when truly owned; veteran legacy data receives an honest generic-refit fallback.
-- Build static Shipyard proof before real build writers. At most one disposable Pixi ship preview is
-  owned by Shipyard; dense inventory/comparison remains DOM-first.
-- Give completed HD planet textures a named attachment/lifetime package after Arc 1B.
+  `array`, `autoext`, and `cscoop` appear only when truly owned; veteran legacy data receives an
+  honest generic-refit fallback.
+- The responsive read-only Shipyard owns exactly one code-native SVG/DOM preview. It creates no
+  second Pixi renderer, RenderTexture, filter, particle system, build writer, or inventory writer.
+- `SurfacePlanetTextureAttachment` gives the existing HD surface tier swap one named,
+  identity-safe acquire/publish/release lifetime.
 
-**Exit evidence:** four stages, hardpoint permutations, legacy fallback, save/reload,
-travel/visual-selector agreement, deliberately mismatched-selector controls, phone/desktop
-silhouette review, and the Arc 1B resource cycle including Shipyard.
+**Automated exit evidence:** four stages, all hardpoint permutations, legacy fallback,
+reload-shaped reconstruction, travel/visual-selector agreement, deliberately mismatched-selector
+controls, the real visible Shipyard opener and owned Close, one open preview, and zero retained or
+pending preview work after Close and settled Universe. The scene-memory-v2 route adds one Shipyard
+lifecycle outcome per phone/desktop profile for 42 total outcomes.
+
+**Still open:** phone/desktop HUMAN silhouette and caption readability; Arc 1A's six Compendium
+images; PR review, hosted terminal-green CI and integration; true GPU bytes and physical heat/battery; and the
+actual Fabricator, Research Bench, Cargo spending, fabrication, research, and ship-upgrade writers.
+No whole Gate, production release, version bump, deployment, or publication is claimed.
 
 ### 4.8 F3 — persistence authority, split stores, and receipts
 

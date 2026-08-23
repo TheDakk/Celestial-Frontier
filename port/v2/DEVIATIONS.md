@@ -9,35 +9,80 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
-## Current-state decision — Arc 1A maximum Compendium (2026-08-20)
+## Current-state decision — Arc 1C ship visual and real-Shipyard resource extension (2026-08-23)
 
-**Status: ★ product implementation, serviced-turn scheduler, compact-phone Planetside stack, and
-displayed-demand/zoom-owner repair present. Exact-89's shutdown false-green and candidate20's wrong-
-browser carriers remain instrument history. Candidate21/22/23 plus paired baseline9 completed once
-each without retry under exact `.86` and complete lifecycle; candidates replayed 78/78 with zero
-findings and baseline9 retained all four faults. They are individually clean diagnostic history only
-because the old shared identity incorrectly compared fresh path/UA provenance. Clean exact
-`fb321f2…` candidate24/25/26 plus paired baseline10 ran once each with zero retries and distinct
-fresh `.86` paths. The formerly active budget/test `70145575…` / `0fa2e89d…` embed 3/3 samples per profile,
-measured 1/1 baseline, strict ceilings, and 14 phone / 13 desktop breaches under measurement
-`2318f57b…`, producer `d3223177…`, and browser CDP `6da9e2ef…`. Focused activation is 13/13 after
-matching synthetic desktop identities fixed its initial phone-only control without changing browser
-evidence. Exact head `731b2e2…` passed locally; hosted run `32420327368` stopped with Compendium
-RUNNING/lifecycle-pending at the 40-minute job ceiling and no product verdict, then exposed the
-account spending limit. `GITHUB_ACTIONS_BUDGET.md` is now `FROZEN`: no push, label, dispatch, merge,
-sync, or publication is authorized. Six-image `[HUMAN]` review is open.**
-**Current static-server/ruler follow-up:** implementation `aecf386…` owns one immutable monotonic
-2,000 ms HTTP close deadline. Just-before succeeds; exact/late/missing/error callbacks force one
-`closeAllConnections()` and reject, with settle-before-force/reentrant/stale controls. Cleanup red
-suppresses PASS/sample. Clean `6736ef4…` c27/baseline11/c28/c29 ran once each with zero retries and
-fresh exact `.86`; candidates completed 78/78 with complete lifecycle and 18 PNG bindings, while
-baseline11 retained four faults and 14 phone / 13 desktop breaches. Activation `b3957e1…` makes
-budget/test `546d3a81…` / `ef06252a…` active under unchanged collector/selftest/measurement
-`0c7ec3ba…` / `0bbb3541…` / `23aacc2c…` and producer `d3223177…`; prior ceilings remain strict.
-This criterion remains `[EXEC-TODO]` unless the selected head's ignored exact-source artifacts and
-its corresponding PR test-merge CI are terminal green; the live outcome is not cached here.
-This block records the current disposition of the historical
-`D-COMPENDIUM-MEM` proposal below without rewriting that dated discovery record.
+**Status: ★ automated implementation locally complete; HUMAN readability, review, hosted terminal-green evidence,
+and integration remain open.** Product/ruler source
+`a4de5007ffc9131b8bc952a0a4cb469d9139039e` projects one unsaved normalized `ShipVisualState` from
+the same canonical saved reach used by travel. Scout/Chemical, Jump/Interstellar, Survey Cruiser and
+Frontier/IG chassis; exact `array`, `autoext` and `cscoop` hardpoints; installed-system captions; and
+the honest `legacy-charter-refit` fallback all consume that projection. A responsive read-only
+Shipyard owns one code-native SVG/DOM preview and creates zero second Pixi renderer, RenderTexture,
+filter or particle owner. The named `SurfacePlanetTextureAttachment` gives the existing HD surface
+tier swap an identity-safe acquire/publish/release lifetime. These are presentation/resource-owner
+improvements, not new save state or gameplay authority.
+
+Source `59530da3bf40965adf9c54f169b310e11ccdd0f8`, `budgets/scene-memory-v2.json`
+SHA-256 `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`, and local run
+`20260822-arc1-local-certification` are retained only as the historical Mac-derived 250 ms
+certificate. Hosted attempt 4, run `32618995487`, was terminal-red at 40/42 solely because Linux
+phone and desktop answerability measured 618–647 ms and 493–507 ms against that old ruler; every
+liveness, memory, ownership, route, target-health, ticker, and cleanup outcome was green.
+
+Active cross-host SLA repair source `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds the budget
+SHA-256 `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501` to the existing fixed,
+strict `<1000 ms` product answerability contract. Local no-retry run
+`20260823-pr33-cross-host-sla-certification` passed 42/42 under Edge `151.0.4129.101`, complete
+lifecycle and cleanup, followed by exact named verification; report raw/gzip SHA-256 are
+`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
+verdict-contract bytes are unchanged. The guarded battery now performs exact Edge `.101`
+same-package `--reinstall`, then SceneMemory before Compendium, with no retry. No new hosted attempt
+is authorized; this certificate is local and must never be represented as hosted green. The route
+extends Arc 1B through a real visible Shipyard opener, exact visual/DOM state,
+one open preview, an owned Close, and zero retained/pending preview work after Close and settled
+Universe on phone and desktop.
+
+The previous plan allowed at most one Pixi preview; choosing one code-native SVG/DOM owner and zero
+second renderer is within that bound, not a new gameplay deviation. Fabrication, the Research Bench,
+Cargo/material spending, build/research/upgrade writers and a living animated preview remain future.
+PR #33 remains draft; hosted terminal-green CI, integration, Arc 1A's six-image HUMAN review, Arc 1C phone/desktop
+silhouette judgment, whole-Gate closure, release and deployment are not claimed.
+
+## Historical exact decision — Arc 1B scene resource ownership (2026-08-21)
+
+**Status: ★ locally implementation-complete at its exact pre-Shipyard boundary; later extended by
+the current Arc 1C decision above.**
+Product/ruler source `79c605f9c7ab8b63ad082d852c38d66ad6bb11af` makes non-backdrop
+Canvas/Pixi texture ownership explicit through refcounted document and scene scopes. Whole-scene
+failure rolls back its fresh ownership to a cleared, diagnosed state; fine-layer swaps retain old
+content until their successor is valid. Release destroys exact TextureSources, Graphics contexts and
+local cache owners, while persisted `pagehide`/`pageshow` keeps the application alive. Finite shared
+scene-text styles detach destroyed labels; a narrow, fail-closed Pixi compatibility
+seam removes managed-resource and pooled batch-UID tombstones only at real release boundaries. These
+are lifecycle corrections with no new gameplay command, Guide capability, release note or visual
+redesign.
+
+Three clean, independent exact-Edge-151.0.4129.93 calibration runs at `79c605f…` used four warm-up
+and four measured phone/desktop cycles and each passed 40/40. Budget
+`78a9e81a121d2598b8d83bbbd0c8311e503470dcd88083f959fc82c181ee5afb` was activated at
+`e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`; one no-retry local exact-budget run passed 40/40,
+complete lifecycle and independent verification. Descendant `b30b6d49a8ff1745f33be9a329d421309b96b5e3`
+retains the report and evidence control but is not a second certification. At that exact historical
+source the gate covered Universe, Galaxy, Galaxy fine, Sol, Earth Surface and a deterministic
+1,500-row Compendium; Shipyard was correctly absent and reported as `future-arc-1c`. Arc 1C's later
+42/42 certificate above is the authority for the implemented Shipyard extension. The Arc 1B v1
+report must not be reused as hosted, HUMAN, integration, or Arc 1C evidence.
+
+## Current-state decision — Arc 1A maximum Compendium (2026-08-21)
+
+**Status: ★ automated implementation and integration complete; six-image `[HUMAN]` review open.**
+Product virtualization, serviced-turn scheduling, compact-phone layout, displayed-demand texture
+ownership, bounded static-server shutdown and the repaired ruler are present. Exact changed-head run
+`32462323775` passed the complete battery once on `c68aee2…`; its approval label was removed and
+PR #32 merged at `d4ab7e6…`. The false-greens, wrong-browser carriers, calibration history and
+no-retry reds below remain preserved because they explain the final ruler. This block records the
+current disposition of historical `D-COMPENDIUM-MEM` without rewriting that dated discovery record.
 
 - The maximum 1,500-row Compendium now uses spacer-preserved virtual rows, pinned keyboard focus,
   native filter/clear, detail/Back and Close cleanup. Real 132px leases own one bounded producer,
@@ -201,14 +246,14 @@ This block records the current disposition of the historical
   `0fa2e89d…` embed 3/3 samples per profile, measured 1/1 baseline, strict ceilings, and 14 phone /
   13 desktop breaches under measurement `2318f57b…`, producer `d3223177…`, and browser CDP
   `6da9e2ef…`. Exact `731b2e2…` passed locally; hosted run `32420327368` was consumed at the
-  40-minute lifecycle-pending ceiling with no product verdict. PR #32 remains blocked; no rerun is
-  authorized. No broader timing work is in scope.
+  40-minute lifecycle-pending ceiling with no product verdict and left PR #32 blocked at that
+  historical boundary. Later changed-head run `32462323775` passed once without retry and PR #32
+  merged at `d4ab7e6…`. No broader timing work belongs to that historical transition.
 - This Arc-local Edge 151.0.4129.86 authority does not repin the global Gate-A Edge 150 browser.
-- This is an implementation/current-instrument decision, not a terminal certification for mutable bytes,
-  a human art approval, or Gate/release closure. The six phone/desktop list/detail/focus-pinned
-  images from da0 are stale for the repaired producer; a fresh certifying set still requires human
-  review. Arc 1B remains open for scene/Pixi textures, render targets,
-  GPU proxies, and the combined travel → Compendium → Shipyard resource plateau.
+- This is an automated implementation/integration decision, not human art approval or Gate/release
+  closure. Fresh phone/desktop list/detail/focus-pinned images still require human review. Arc 1B's
+  historical scene/Pixi certificate and Arc 1C's locally certified real-Shipyard extension are
+  recorded in the two blocks above; PR #33 review, hosted terminal-green evidence and integration remain open.
 - PR #32's layout deviations remain bounded. In portrait, shared bottom-anchor math preserves the
   44px Survey / 8px gap / 72px scrollable Planetside stack. In short landscape, Compendium uses the left
   safe-height workspace and recomputes its scroller from the safe viewport, while Search, dock, and
@@ -1637,11 +1682,13 @@ duplicates).
   Creature voices, ambience, combat/Guardian cues, music, buses/mixing, node ownership,
   visibility/context-loss recovery, budgets, rights, device listening and all other Arc 7/8 /
   Gate G acceptance remain open. No Guide/Training/release-copy or version change is implied.
-- ★ **D-UI-1 — lower mobile chrome is measured as a group (2026-08-12).** The phone dock wrapped
-  3/3/2 while context/hint/Planetside used fixed offsets, so green smoke evidence visibly covered
-  copy and controls. The port owns a 206×98 4×2 phone dock, publishes measured `--dock-h`/`--ctx-h`,
-  and derives every lower anchor from them. Browser smoke asserts pairwise clearance, row geometry,
-  button hit targets and CSS-variable equality, with an injected old-style overlap that must fail.
+- ★ **D-UI-1 — lower mobile chrome is measured as a group (2026-08-12; current geometry updated
+  2026-08-22).** The phone dock originally wrapped 3/3/2 while context/hint/Planetside used fixed
+  offsets, so green smoke evidence visibly covered copy and controls. The first bounded correction
+  was a 206×98 4×2 eight-control dock; Arc 1C now owns the exact 260px 5×2 nine-control dock required
+  by Shipyard. Both publish measured `--dock-h`/`--ctx-h` and derive every lower anchor from them.
+  Browser smoke asserts pairwise clearance, row geometry, button hit targets and CSS-variable
+  equality, with an injected old-style overlap that must fail.
   Each dock button remains a 44px target while its icon uses the 42px client line inside the 1px
   border, eliminating the hidden two-pixel overflow without shrinking the action.
 - ★ **D-UI-2 — DPR-scaled pixels and player input share one coordinate space (2026-08-11).**
@@ -1735,11 +1782,12 @@ duplicates).
   activated budget/test `70145575…` / `0fa2e89d…` with 3/3 samples per profile, measured 1/1
   baseline, strict ceilings, and 14 phone / 13 desktop breaches under measurement `2318f57b…`.
   Exact `731b2e2…` passed the local battery; hosted run `32420327368` was consumed at its 40-minute
-  lifecycle-pending ceiling and left PR #32 blocked without a product verdict. Product, timing,
+  lifecycle-pending ceiling and left PR #32 blocked at that historical boundary without a product verdict. Product, timing,
   producer, browser CDP, and zero-retry policy remain unchanged.
-  **2026-08-20 static-server shutdown follow-up (current):** exact `aecf386…` adds the bounded
+  **2026-08-20 static-server shutdown follow-up (historical final-ruler boundary):** exact `aecf386…` adds the bounded
   close. Clean `6736ef4…` c27/baseline11/c28/c29 evidence activates budget/test `546d3a81…` /
-  `ef06252a…` at `b3957e1…`; exact-head certification remains open.
+  `ef06252a…` at `b3957e1…`. Later cross-host repair `c68aee2…` passed exact run `32462323775`, and
+  PR #32 merged at `d4ab7e6…`; the separate six-image HUMAN review remains open.
 - ★ **D-UI-3 — glass accessibility is an outcome contract, not a translucent stylesheet
   (2026-08-12).** The v2 shell consumes all four safe-area insets and measured dock/context/hint
   heights; exercises 320px portrait, phone landscape, tablet, desktop and ultrawide shapes; enforces
@@ -1896,17 +1944,19 @@ duplicates).
   and prefetch. An idle prefetch can no longer swallow a later view subscription, while a 1,500-row
   Compendium registers once outside its row map instead of retaining 1,500 callbacks and launching
   1,500 full-list rerenders when the chunk resolves. Import failure clears the Promise for a later
-  retry; Compendium virtualization and texture-memory proof remain OPEN.
-  **Superseded current disposition (2026-08-17):** Arc 1A no longer uses this Window import-Promise
+  retry; Compendium virtualization and texture-memory proof were open at that boundary.
+  **Superseded disposition (2026-08-17):** Arc 1A no longer uses this Window import-Promise
   path for live art. Exact broker leases own Compendium/Planetside/detail requests; at most one
   serial dedicated worker exists at a time, each producer burst owns a fresh instance and lazy
   painter import, and the instance terminates after active work settles and its queue is empty.
   Capability/import/protocol/worker fatal paths
   settle the failed active and queued jobs once with no automatic retry; a later genuinely new
   request may create a fresh producer. Virtualization and worker ownership are implemented as
-  recorded in the current-state block above; measured resource acceptance remains `[EXEC-TODO]`
-  unless the selected head's ignored exact-source artifacts and its corresponding PR test-merge CI
-  are terminal green. This reference caches neither live outcome, and the HUMAN review remains open.
+  recorded in the current-state blocks above. Arc 1A later passed exact changed-head hosted evidence
+  and merged in PR #32. Arc 1B's broader pre-Shipyard scene-memory proof remains preserved in its
+  2026-08-21 historical block; Arc 1C's 2026-08-23 current block now owns the locally certified real
+  Shipyard extension. PR #33 review, hosted terminal-green evidence and integration remain open, and the Arc 1A
+  HUMAN review remains separate.
 - ☐ **D-9e — dead biome→fauna filter.** `main.js:11112` reads `wbRoll.fauna` off a
   `BIOME_SETS` entry that has no `fauna` field — a jungle landing can show glacier
   fauna. *Port fix:* wire the filter through the biome profile when Phase 4+ builds

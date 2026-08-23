@@ -11,6 +11,7 @@ import {
   COMPENDIUM_BROWSER_AUTHORITY_SCHEMA, COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
   COMPENDIUM_MEASUREMENT_AUTHORITY_INPUT_KEYS,
   EXPECTED_OUTCOMES, OUTCOME_IDS, PROFILES, SAMPLE_METRIC_FIELDS,
+  calibrationMetrics, candidateCalibrationEvidence,
   compendiumBrowserAuthorityMatches, compendiumBudgetBrowserAuthority,
   compendiumMeasurementAuthority, evaluateProfile, validCompendiumBrowserAuthority,
   validateBudgetRecord,
@@ -27,15 +28,48 @@ const schemaPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.schema
 const retainedLinuxReportPath = path.join(
   v2Root, '..', '..', 'audits', 'PR32_LINUX_MEMORY_REPORT_32441023665.json.gz',
 );
+const currentEvidence = [
+  {
+    runId: '20260823-pr33-focus-settlement-candidate1',
+    file: 'ARC1_COMPENDIUM_FOCUS_SETTLEMENT_REPORT_20260823_CANDIDATE1.json.gz',
+    rawSha256: '02afb70d4a44b0d58c21d84faec23a551aa4ad662842c6c927fd5e38aab85f5b',
+    gzipSha256: 'f222eaa8cddd0afa935f9b9006d9e785716262e656ed8c31ac9d92efb4fad600',
+  },
+  {
+    runId: '20260823-pr33-focus-settlement-candidate2',
+    file: 'ARC1_COMPENDIUM_FOCUS_SETTLEMENT_REPORT_20260823_CANDIDATE2.json.gz',
+    rawSha256: '0e6578f9d3a7e4adafeaa61adbb54c42a83dd763a6b47867045d9c52210e269d',
+    gzipSha256: 'ebfbb80d5cfee1e7226c494be79de69daa47d2dfb5fc5736734102bfb153830d',
+  },
+  {
+    runId: '20260823-pr33-focus-settlement-candidate3',
+    file: 'ARC1_COMPENDIUM_FOCUS_SETTLEMENT_REPORT_20260823_CANDIDATE3.json.gz',
+    rawSha256: 'd539fb8df3ae8873d1ebb1725574f5e85b3cfff8ca8fcb9cdd5ba80d8bb6882f',
+    gzipSha256: 'fdede499e335cd6edca65b5c5d35d9457189a21545b273734b8428a653afb5c8',
+  },
+] as const;
+const currentBaselineEvidence = Object.freeze({
+  file: 'ARC1_COMPENDIUM_FOCUS_SETTLEMENT_BASELINE_SAMPLE_20260823.json.gz',
+  rawSha256: 'fb56e4bc55fa448e8add17872cca86948296b2d56ed524aba31bdd0c90f00916',
+  gzipSha256: '3b0c5356e7cf37a749e55d5859672c246d46c1d3be9f1d7ed9be7280c264b036',
+});
+const currentCertificationEvidence = Object.freeze({
+  file: 'ARC1_COMPENDIUM_FOCUS_SETTLEMENT_CERTIFICATION_20260823.json.gz',
+  runId: '20260823-pr33-focus-settlement-certification',
+  sourceCommit: 'e8898bf3a12d094eefc99fe188a217d9e60058a0',
+  budgetSha256: '28b958678fa2e95bb7b906cb10bd1a422dfe0b52867400e8722fbf6befddb15d',
+  rawSha256: 'd1ea225b913c28a2b9110538d064e3df6609582dc94c875f62a622998ac55071',
+  gzipSha256: '8e09255b616f9539a8dee5e180df00c8f03d211f3da7eac82529397a6f3b1966',
+});
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  '23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92';
+  '625d29787a4dab24f1b4c17450bfc0f2aaa8c5d13ec7090fb45e7c2d5f3b9177';
 const EXPECTED_COLLECTOR_AUTHORITY =
-  '0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b';
+  '4ab533a7a18d0e8116f3685438e615e7e75e9bcd2645f4474a533727499d9687';
 const HISTORICAL_MEASUREMENT_AUTHORITY =
   '2318f57bcadd83b2f540e3a2d1b8bea54ca6c88d1df8715318a341d4e2ae7cf2';
 const EXPECTED_PRODUCER_AUTHORITY =
-  'd32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900';
+  '5a316197d9aca27967f4e930f43089d2bbe2b9e4a66a40c207ea59c809405d94';
 type BrowserAuthority = {
   schema: string;
   scope: string;
@@ -47,17 +81,17 @@ type BrowserAuthority = {
 const EXPECTED_BROWSER_AUTHORITY: BrowserAuthority = {
   schema: COMPENDIUM_BROWSER_AUTHORITY_SCHEMA,
   scope: COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
-  product: 'Edg/151.0.4129.86',
-  revision: '@083e754915c9ab93da1d8f7b9c860e4520273900',
-  jsVersion: '15.1.23.7',
+  product: 'Edg/151.0.4129.101',
+  revision: '@cc1d9f4080fd9140611a9600b8d1615db310105d',
+  jsVersion: '15.1.23.9',
   protocolVersion: '1.3',
 };
 const EXPECTED_CANDIDATE_RUNS = [
-  '20260820-arc1a-server-shutdown-candidate27',
-  '20260820-arc1a-server-shutdown-candidate28',
-  '20260820-arc1a-server-shutdown-candidate29',
+  '20260823-pr33-focus-settlement-candidate1',
+  '20260823-pr33-focus-settlement-candidate2',
+  '20260823-pr33-focus-settlement-candidate3',
 ] as const;
-const EXPECTED_BASELINE_RUN = '20260820-arc1a-server-shutdown-baseline11';
+const EXPECTED_BASELINE_RUN = '20260823-pr33-focus-settlement-baseline1';
 const HISTORICAL_CANDIDATE_RUNS = [
   'Candidate24/25/26',
 ] as const;
@@ -142,19 +176,19 @@ const EXPECTED_SAMPLE_OBJECT_SHA256: Record<ProfileName, {
 }> = {
   phone: {
     candidate: [
-      'b1603612b37bc00509cccd70bd29f72602651215691e129feea8ed56e9767c64',
-      'a9c1f220b685f10b10a171df6c0b96c7d989ce9402302d9c940270d18f808130',
-      '579a55baea0346f21ed1fbe94762b6a0b30464df27cb26e14674d05f6e6e5f0f',
+      '59241536e7283c56f62fc2ca83e33171aae97f2ccf434244d6548bc68bafc00f',
+      'e625023eb7b4e758ddf0ad0a8a9d602923112f3327dc480a5126f6e8ff6ff1ef',
+      '57a80bdf3315afd990a79acd52c46e3981b3dafef7aaf8b817de393effc9e842',
     ],
-    baseline: 'c08dbf8af149d4dab16e2ca5a12c721f56e754bb3c657b574cdeccab64a6f1c1',
+    baseline: 'fd3cda696afb95b4c4d9e213e3a46749fdea7fa1ac6ce281a7716b162eb214dd',
   },
   desktop: {
     candidate: [
-      '49cd4c3998fdb57d230f9b6a3e346fd746bcabf519245fef44bf317f9906770a',
-      '74e0b31eff7a9f2fa28902954a3d6c34a3da1d14064e7757dbda5e3f69c4cb69',
-      '1b1e54920e339a4b0bc373a41f74bb66d4829a8a99c666edcb735346b298e1a8',
+      '09b4f3299ebae519d0746ef4b7db34864db10d2eaadbc8cf9bcc03180f500c0c',
+      '9767323259492174ce3d9cd1588ae5bc1253d459e20d5e50fb6bbeec6ebb315b',
+      '323bc5bf3457654f717f7c57c5d9548f424b91912d4f8291fa992f7cd83d71c1',
     ],
-    baseline: 'f96d102d33d77ec92cb0a3bdf3d3b43b9faa690000dfaf8c0a6ed1b2849490f1',
+    baseline: '03e389efe25116744daed0e95adfed086ce5ac18cc059bc0008ec3ba054316dc',
   },
 };
 
@@ -226,6 +260,20 @@ const RETAINED_LINUX_COMPATIBILITY = Object.freeze({
     livePortraitEncodedBytes: 220_530,
   }),
 });
+const RETAINED_LINUX_BROWSER_AUTHORITY: BrowserAuthority = Object.freeze({
+  schema: COMPENDIUM_BROWSER_AUTHORITY_SCHEMA,
+  scope: COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
+  product: 'Edg/151.0.4129.86',
+  revision: '@083e754915c9ab93da1d8f7b9c860e4520273900',
+  jsVersion: '15.1.23.7',
+  protocolVersion: '1.3',
+});
+const RETAINED_LINUX_PRODUCER_AUTHORITY =
+  'd32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900';
+const RETAINED_LINUX_COLLECTOR_AUTHORITY =
+  '0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b';
+const RETAINED_LINUX_MEASUREMENT_AUTHORITY =
+  '23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92';
 
 function sampleObjectSha256(sample: CalibrationSample): string {
   return createHash('sha256').update(JSON.stringify(sample)).digest('hex');
@@ -375,7 +423,7 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(activeBudget.pairedBrokenBaseline.commit)
         .toBe('38447019517147319bd08c598202d097ee866874');
       expect(activeBudget.pairedBrokenBaseline.collectorCommit).toBeNull();
-      expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.86');
+      expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.101');
       expect(activeBudget.calibration.selectionRule).toContain('fresh exact');
       expect(activeBudget.calibration.selectionRule).toContain(HISTORICAL_MEASUREMENT_AUTHORITY);
       expect(activeBudget.calibration.selectionRule).toContain('historical evidence only');
@@ -459,15 +507,15 @@ describe('Arc 1A Compendium budget authority', () => {
     ]);
     expect(new Set(everySample.map(authorityKey))).toEqual(new Set([
       [
-        'Edg/151.0.4129.86',
-        '@083e754915c9ab93da1d8f7b9c860e4520273900',
-        '15.1.23.7',
-        '1.3',
+        EXPECTED_BROWSER_AUTHORITY.product,
+        EXPECTED_BROWSER_AUTHORITY.revision,
+        EXPECTED_BROWSER_AUTHORITY.jsVersion,
+        EXPECTED_BROWSER_AUTHORITY.protocolVersion,
       ].join('\0'),
     ]));
     expect(everySample.every((sample) =>
       compendiumBrowserAuthorityMatches(sample.browser, activeBudget.browserAuthority))).toBe(true);
-    expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.86');
+    expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.101');
     expect(activeBudget.calibration.selectionRule).toContain('raw-capsule');
     expect(activeBudget.calibration.selectionRule).toContain('strictly above');
     expect(activeBudget.calibration.selectionRule).toContain('rational headroom');
@@ -492,6 +540,140 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(activeBudget.pairedBrokenBaseline.samples[profile][0]?.observedFaults)
         .toEqual(BROKEN_BASELINE_EXPECTED_FAULTS);
     }
+  });
+
+  it('re-derives every selected current-product sample from durable raw evidence', () => {
+    if (activeBudget.status === 'calibration-required') return;
+    for (const evidence of currentEvidence) {
+      const compressed = fs.readFileSync(path.join(v2Root, '..', '..', 'audits', evidence.file));
+      expect(createHash('sha256').update(compressed).digest('hex')).toBe(evidence.gzipSha256);
+      const raw = gunzipSync(compressed);
+      expect(createHash('sha256').update(raw).digest('hex')).toBe(evidence.rawSha256);
+      const report = JSON.parse(raw.toString('utf8')) as {
+        schema: string; runId: string; status: string; startedAt: string; endedAt: string;
+        lifecycle: { status: string }; source: { begin: Record<string, string>; end: Record<string, string> };
+        inputs: Record<string, string>; browser: Record<string, string>;
+        budget: { producerAuthority: unknown; observedProducerAuthority: unknown; producerAuthorityMatch: boolean; browserAuthorityMatch: boolean };
+        outcomes: Array<{ status: string }>; findings: string[];
+        profiles: Record<ProfileName, Parameters<typeof calibrationMetrics>[0]>;
+      };
+      expect(report).toMatchObject({
+        schema: 'cf-v2-compendium-memory-report/v1',
+        runId: evidence.runId,
+        status: 'calibration',
+        lifecycle: { status: 'complete' },
+        findings: [],
+      });
+      expect(report.source.begin).toEqual(report.source.end);
+      expect(report.source.begin.state).toBe('committed');
+      expect(report.budget.producerAuthorityMatch).toBe(true);
+      expect(report.budget.browserAuthorityMatch).toBe(true);
+      expect(report.budget.producerAuthority).toEqual(budget.producerAuthority);
+      expect(report.budget.observedProducerAuthority).toEqual(budget.producerAuthority);
+      expect(report.outcomes).toHaveLength(78);
+      expect(report.outcomes.every((outcome) => outcome.status === 'pass')).toBe(true);
+      const inputDigest = createHash('sha256').update(stableJson(report.inputs)).digest('hex');
+      for (const profile of PROFILE_NAMES) {
+        const selected = activeBudget.calibration.samples[profile]
+          .find((sample) => sample.runId === evidence.runId);
+        expect(selected).toBeDefined();
+        const { measuredAt, ...selectedWithoutMeasuredAt } = selected as CalibrationSample & {
+          measuredAt: string;
+        };
+        expect(Date.parse(measuredAt)).toBeGreaterThanOrEqual(Date.parse(report.startedAt));
+        expect(Date.parse(measuredAt)).toBeLessThanOrEqual(Date.parse(report.endedAt));
+        expect(selectedWithoutMeasuredAt).toEqual({
+          runId: evidence.runId,
+          commit: report.source.begin.commit,
+          workingTreeDigest: report.source.begin.workingTreeSha256,
+          inputDigest,
+          measurementAuthoritySha256: EXPECTED_MEASUREMENT_AUTHORITY,
+          producerAuthoritySha256: EXPECTED_PRODUCER_AUTHORITY,
+          sourceState: report.source.begin.state,
+          sourceChanged: false,
+          fixtureRowsSha256: fixture.rowsSha256,
+          browser: {
+            executable: report.browser.executable,
+            product: report.browser.product,
+            revision: report.browser.revision,
+            userAgent: report.browser.user_agent,
+            jsVersion: report.browser.js_version,
+            protocolVersion: report.browser.protocol_version,
+          },
+          metrics: calibrationMetrics(report.profiles[profile]),
+          evidence: candidateCalibrationEvidence(report.profiles[profile], { runId: evidence.runId }),
+        });
+      }
+    }
+
+    const baselineCompressed = fs.readFileSync(path.join(
+      v2Root, '..', '..', 'audits', currentBaselineEvidence.file,
+    ));
+    expect(createHash('sha256').update(baselineCompressed).digest('hex'))
+      .toBe(currentBaselineEvidence.gzipSha256);
+    const baselineRaw = gunzipSync(baselineCompressed);
+    expect(createHash('sha256').update(baselineRaw).digest('hex'))
+      .toBe(currentBaselineEvidence.rawSha256);
+    const baselineCarrier = JSON.parse(baselineRaw.toString('utf8')) as {
+      runId: string; samples: Record<ProfileName, CalibrationSample>;
+    };
+    expect(baselineCarrier.runId).toBe(EXPECTED_BASELINE_RUN);
+    for (const profile of PROFILE_NAMES) {
+      expect(baselineCarrier.samples[profile])
+        .toEqual(activeBudget.pairedBrokenBaseline.samples[profile][0]);
+    }
+  });
+
+  it('retains and replays the independent exact-budget certificate', () => {
+    if (activeBudget.status === 'calibration-required') return;
+    const compressed = fs.readFileSync(path.join(
+      v2Root, '..', '..', 'audits', currentCertificationEvidence.file,
+    ));
+    expect(createHash('sha256').update(compressed).digest('hex'))
+      .toBe(currentCertificationEvidence.gzipSha256);
+    const raw = gunzipSync(compressed);
+    expect(createHash('sha256').update(raw).digest('hex'))
+      .toBe(currentCertificationEvidence.rawSha256);
+    const report = JSON.parse(raw.toString('utf8')) as RetainedLinuxReport & {
+      expectedOutcomes: string[];
+    };
+    expect(report).toMatchObject({
+      schema: 'cf-v2-compendium-memory-report/v1',
+      runId: currentCertificationEvidence.runId,
+      status: 'pass',
+      lifecycle: { schema: 'cf-v2-compendium-report-lifecycle/v1', status: 'complete' },
+      findings: [],
+      partialFailure: null,
+      blockedOutcomes: [],
+    });
+    expect(report.source.begin).toEqual(report.source.end);
+    expect(report.source.begin).toMatchObject({
+      commit: currentCertificationEvidence.sourceCommit,
+      state: 'committed',
+      statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+    });
+    expect(report.inputs.budget).toBe(currentCertificationEvidence.budgetSha256);
+    expect(report.budget).toMatchObject({
+      status: 'active',
+      sha256: currentCertificationEvidence.budgetSha256,
+      browserAuthority: EXPECTED_BROWSER_AUTHORITY,
+      browserAuthorityMatch: true,
+      producerAuthorityMatch: true,
+    });
+    expect(report.budget.producerAuthority).toEqual(budget.producerAuthority);
+    expect(report.budget.observedProducerAuthority).toEqual(budget.producerAuthority);
+    expect(report.browser).toMatchObject({
+      product: EXPECTED_BROWSER_AUTHORITY.product,
+      revision: EXPECTED_BROWSER_AUTHORITY.revision,
+      js_version: EXPECTED_BROWSER_AUTHORITY.jsVersion,
+      protocol_version: EXPECTED_BROWSER_AUTHORITY.protocolVersion,
+    });
+    const replay = PROFILE_NAMES.flatMap((profile) =>
+      evaluateProfile(report.profiles[profile], activeBudget, fixture));
+    expect(report.expectedOutcomes).toEqual(EXPECTED_OUTCOMES);
+    expect(report.outcomes).toEqual(replay);
+    expect(replay).toHaveLength(78);
+    expect(replay.every((outcome) => outcome.status === 'pass')).toBe(true);
   });
 
   it('keeps every active ceiling strictly above its samples and below the broken shape', () => {
@@ -600,27 +782,32 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(retainedReport.inputs.budget)
       .toBe(RETAINED_LINUX_COMPATIBILITY.originalBudgetSha256);
     expect(retainedReport.inputs.fixtureRows).toBe(fixture.rowsSha256);
-    expect(retainedReport.inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
+    expect(retainedReport.inputs.collector).toBe(RETAINED_LINUX_COLLECTOR_AUTHORITY);
     expect(compendiumMeasurementAuthority(retainedReport.inputs)?.sha256)
-      .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+      .toBe(RETAINED_LINUX_MEASUREMENT_AUTHORITY);
     expect(retainedReport.browser).toEqual({
       executable: '/opt/microsoft/msedge/microsoft-edge',
-      product: EXPECTED_BROWSER_AUTHORITY.product,
-      revision: EXPECTED_BROWSER_AUTHORITY.revision,
+      product: RETAINED_LINUX_BROWSER_AUTHORITY.product,
+      revision: RETAINED_LINUX_BROWSER_AUTHORITY.revision,
       user_agent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0',
-      js_version: EXPECTED_BROWSER_AUTHORITY.jsVersion,
-      protocol_version: EXPECTED_BROWSER_AUTHORITY.protocolVersion,
+      js_version: RETAINED_LINUX_BROWSER_AUTHORITY.jsVersion,
+      protocol_version: RETAINED_LINUX_BROWSER_AUTHORITY.protocolVersion,
     });
     expect(retainedReport.budget).toMatchObject({
       status: 'active',
       path: 'budgets/compendium-memory-v1.json',
       sha256: RETAINED_LINUX_COMPATIBILITY.originalBudgetSha256,
-      browserAuthority: EXPECTED_BROWSER_AUTHORITY,
+      browserAuthority: RETAINED_LINUX_BROWSER_AUTHORITY,
       browserAuthorityMatch: true,
       producerAuthorityMatch: true,
     });
-    expect(retainedReport.budget.producerAuthority).toEqual(budget.producerAuthority);
-    expect(retainedReport.budget.observedProducerAuthority).toEqual(budget.producerAuthority);
+    expect(retainedReport.budget.producerAuthority).toMatchObject({
+      sha256: RETAINED_LINUX_PRODUCER_AUTHORITY,
+    });
+    expect(retainedReport.budget.observedProducerAuthority).toEqual(
+      retainedReport.budget.producerAuthority,
+    );
+    expect(retainedReport.budget.producerAuthority).not.toEqual(budget.producerAuthority);
     expect(retainedReport.policy).toEqual({
       attemptCount: 1,
       automaticRetries: 0,
@@ -651,8 +838,14 @@ describe('Arc 1A Compendium budget authority', () => {
       ?.portraitEncodedBytesMax)
       .toBe(RETAINED_LINUX_COMPATIBILITY.desktop.livePortraitEncodedBytes);
 
-    const replay = (record: ActiveBudgetRecord) => PROFILE_NAMES.flatMap((profile) =>
-      evaluateProfile(retainedReport.profiles[profile], record, fixture));
+    const replay = (record: ActiveBudgetRecord) => {
+      const historicalRecord = structuredClone(record);
+      historicalRecord.producerAuthority = retainedReport.budget.producerAuthority as {
+        sha256: string;
+      };
+      return PROFILE_NAMES.flatMap((profile) =>
+        evaluateProfile(retainedReport.profiles[profile], historicalRecord, fixture));
+    };
     const repairedOutcomes = replay(activeBudget);
     expect(repairedOutcomes.map((outcome) => outcome.id)).toEqual(EXPECTED_OUTCOMES);
     expect(repairedOutcomes.filter((outcome) => outcome.status === 'pass')).toHaveLength(78);

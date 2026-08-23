@@ -6,16 +6,51 @@ family/tier/class/job), and the economy is now **wired**: all 7 cosmics are obta
 world-cosmics via tier-gated veins (`cosmicVeinFor`, §6 note), the 2 stellar via star skimming (`skimStar`,
 §8 note), each anchoring an endgame gear piece (`cg-*`, §17 note). This landed **fp-SAFE (no re-pin)** — the
 cosmics are a separate lit vein, so `depositsFor` and every existing world stay byte-identical. **Still design
-(not yet built in its approved form):** the §22 gear-family×tier masters and **distinct v2** ship-hull
-stages. Legacy v1.8.9 already has deterministic additive `shipImage()` art—a scout hull gains each
-built system—but that is one evolving silhouette, not the four-stage v2 target. *(2026-07-26: the §5 per-deposit resolver shipped —
+in the legacy source:** the §22 gear-family×tier masters and distinct ship-hull stages. Legacy v1.8.9
+has deterministic additive `shipImage()` art—a scout hull gains each built system—while current v2
+now owns the separate four-stage static inspection foundation described below. *(2026-07-26: the §5 per-deposit resolver shipped —
 `resolvedDepositTier`, grounded cards grade each vein for that world; the §24 power-curve pass ran — archetype
 band restored via the balance sim, two dead relics retuned as sidegrades, sim joined the deploy gate.)*
 **Build phase:** the legacy Forge economy and additive ship image are bundled in v1.8.9;
-the distinct v2 presentation and progression boundary is the dated overlay below.
+the current v2 read-only ship presentation is recorded below. V2 Cargo/Inventory/Forge writers,
+Research, Fabrication and upgrade actions remain open.
+**Current v2 overlay matches code as of:** 2026-08-23.
 **Related:** `RARITY_UNIVERSAL.md`, `FORGE_AND_DISCOVERY.md`, `ECONOMY_LOOT_CRAFTING.md`.
 
-> **2026-08-13 v2 next-arc overlay — approved design, not current behavior:** V2
+> **2026-08-22 Arc 1C v2 materials/gear boundary — current implementation:** clean
+> product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds only the read-only ship
+> inspection projection. Pure, recursively frozen `ShipVisualState` consumes normalized `items`,
+> `ascCh`, and livery seed `0x5111`; `ascStageOf` remains the one capability-stage authority.
+> Permanent systems appear in exact order `jumpdrive,array,igdrive,autoext,cscoop`; only exact
+> owned ids fit the `array`, `autoext`, and `cscoop` hardpoints. Terminal legacy reach without an
+> owned Intergalactic Drive is labelled only as a generic `legacy-charter-refit`.
+>
+> Shipyard renders four deterministic code-native SVG silhouettes and lists chassis,
+> provenance, installed systems and hardpoints. Its one DOM/SVG preview owner disposes on replace
+> or close and retains no preview work. It uses no Pixi preview, second renderer or
+> `RenderTexture`. Most importantly for this reference, Shipyard is **inspection only**: it does
+> not consume materials, research a technology, fabricate a system, improve gear, mutate Cargo,
+> or grant reach. Those legacy Forge actions and the richer v2 instance-backed economy remain
+> future writers.
+>
+> The real SceneMemory route now includes Shipyard open/close and the named transactional
+> `SurfacePlanetTextureAttachment`. Historical activation/certification source
+> `59530da3bf40965adf9c54f169b310e11ccdd0f8` bound the original 250 ms budget SHA-256
+> `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`; local run
+> `20260822-arc1-local-certification` passed 42/42 and its named verifier under Edge
+> `151.0.4129.101`, but that certificate remains historical. Clean cross-host SLA repair
+> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds active budget SHA-256
+> `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`; local one-attempt/no-retry
+> run `20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier under
+> the same Edge `.101`. Raw/gzip SHA-256 are
+> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+> `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
+> `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
+> is unchanged. This documentation descendant is not the exact certified head. Hosted
+> terminal-green integration, HUMAN silhouette judgment, Cargo/Inventory/Forge,
+> Research/Fabrication/upgrades, release and deployment remain open.
+
+> **2026-08-13 v2 next-arc overlay — historical pre-Arc-1C boundary:** V2
 > currently preserves imported Cargo, items, equipment, technologies and Ascent state,
 > but it does not expose an inventory, Fabricator, Research Bench, Shipyard, upgrade action
 > or ship visual. Its read-only Compendium is also not the finished inventory-delivery

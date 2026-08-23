@@ -31,10 +31,10 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const budgetPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.json');
 const repoRoot = path.resolve(here, '..', '..', '..');
 const EDGE_INSTALL_STEP_NAME = 'install exact Arc 1A Edge calibration browser';
-const EDGE_PACKAGE_URL = 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.86-1_amd64.deb';
-const EDGE_PACKAGE_SHA256 = '26b02cb1c6465756df94b9ef34191b614f3df627ba21b7b00b641f44cc1d8343';
-const EDGE_PACKAGE_FILENAME = 'microsoft-edge-stable_151.0.4129.86-1_amd64.deb';
-const EDGE_PACKAGE_VERSION = '151.0.4129.86-1';
+const EDGE_PACKAGE_URL = 'https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.101-1_amd64.deb';
+const EDGE_PACKAGE_SHA256 = 'bd7604025424914a61c06293cb6bf269141a29d8c54cf1997110bc96d3365d60';
+const EDGE_PACKAGE_FILENAME = 'microsoft-edge-stable_151.0.4129.101-1_amd64.deb';
+const EDGE_PACKAGE_VERSION = '151.0.4129.101-1';
 const EDGE_BROWSER = '/usr/bin/microsoft-edge-stable';
 const CHROME_BROWSER = '/usr/bin/google-chrome';
 const EDGE_REINSTALL_COMMAND = 'sudo apt-get install --reinstall --yes "$edge_package"';
@@ -722,7 +722,7 @@ function selftestAuthority() {
   return Object.freeze({
     schema: COMPENDIUM_BROWSER_AUTHORITY_SCHEMA,
     scope: COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
-    product: 'Edg/151.0.4129.86',
+    product: 'Edg/151.0.4129.101',
     revision: '@selftest-edge-revision',
     jsVersion: '15.1.selftest',
     protocolVersion: '1.3',

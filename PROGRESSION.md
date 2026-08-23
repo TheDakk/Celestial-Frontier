@@ -1,5 +1,39 @@
 # Celestial Frontier — Player Progression
 
+> **2026-08-22 Arc 1C progression overlay — current implementation:** clean
+> product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds a read-only Shipyard
+> projection without adding a progression writer. `ShipVisualState` is recursively frozen and
+> derives only from normalized `items`, `ascCh`, and injected livery seed `0x5111`;
+> `ascStageOf` remains the sole reach/chassis-stage authority. Installed-system identity and order
+> are exactly `jumpdrive,array,igdrive,autoext,cscoop`, with visible hardpoints exactly `array`,
+> `autoext`, and `cscoop`. Only the terminal compatibility path lacking its Intergalactic Drive
+> may use the generic `legacy-charter-refit` provenance; no art or chapter-progress number invents
+> an owned named system.
+>
+> The Shipyard exposes four static SVG silhouettes and truthful chassis, provenance, installed
+> systems, and open/fitted hardpoints from the desktop right rail and phone 5×2 nine-control dock.
+> One DOM/SVG preview owner disposes on replace/close. It deliberately offers no Fabrication,
+> Research, upgrade, Cargo, reward, reach, or save mutation and creates no Pixi renderer or
+> `RenderTexture`. The Guide describes this capability as partial inspection only.
+>
+> The real SceneMemory journey now opens and closes Shipyard and proves a settled zero-preview
+> state alongside the named transactional `SurfacePlanetTextureAttachment`. Historical
+> activation/certification source `59530da3bf40965adf9c54f169b310e11ccdd0f8` bound the original
+> 250 ms `scene-memory-v2.json` budget SHA-256
+> `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`; local run
+> `20260822-arc1-local-certification` passed 42/42 and its named verifier under Edge
+> `151.0.4129.101`, but that certificate remains historical. Clean cross-host SLA repair
+> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds active budget SHA-256
+> `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`; local one-attempt/no-retry
+> run `20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier under
+> the same Edge `.101`. Raw/gzip SHA-256 are
+> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+> `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
+> `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
+> is unchanged. This docs descendant is not the exact certified head. Hosted terminal-green
+> integration, HUMAN silhouette judgment, Cargo/Inventory/Forge writers,
+> Fabrication/Research/upgrades, release and deployment remain open.
+
 > **2026-08-16 D-TRAIN-1 progression overlay (current source; local browser
 > evidence recorded below; exact-head CI, integration, real-save Gate C, and
 > human authority remain open):** Field Training compatibility restores only the exact eleven
@@ -63,7 +97,7 @@
 > open. F2 itself made no schema/version/release, exact-head certification or Gate status changes
 > here.
 
-> **2026-08-15 v2 overlay — CURRENT versus PLANNED:**
+> **2026-08-15 v2 overlay — historical pre-Arc-1C boundary (superseded where noted above):**
 > The current v2 slice preserves imported Cargo/items/equipment/technology/Ascent data and
 > uses built drive items plus compatible `ascCh` state for reach, but it has no Cargo,
 > Shipyard, crafting, research, upgrade actions or ship portrait. The Charter board and
@@ -80,14 +114,14 @@
 > contain an additive deterministic ship picture; it is not a live v2 surface and does not
 > satisfy the approved distinct-silhouette target.
 >
-> The next arc defines one pure `ShipVisualState` projection shared with the reach-stage
+> The subsequent Arc 1C implemented one pure `ShipVisualState` projection shared with the reach-stage
 > decision. It yields four capability stages—Scout/Chemical, Jump/Interstellar,
 > Array/Survey Cruiser and Intergalactic/Frontier—plus independent Auto-Extractor and
 > Corona Scoop hardpoints. A legacy save completed through `ascCh` but lacking drive items
 > receives an honest veteran-refit chassis; it must not appear as a bare scout with full
-> reach or claim an absent named drive. Visual state never writes save progression. One
-> bounded Shipyard Pixi preview may animate the selected state, but it pauses when hidden
-> or reduced-motion and disposes its owned textures/filters/particles on close.
+> reach or claim an absent named drive. Visual state never writes save progression.
+> Arc 1C chose one bounded static DOM/SVG preview and no Pixi preview, second renderer or
+> `RenderTexture`; any later motion proposal remains a separately owned decision.
 >
 > Collection presentation follows the same player-respect rule. A possible 1,500-entry
 > Compendium is virtualized; visible rows receive asynchronous 132px thumbnails and the
@@ -133,8 +167,8 @@
 > Repeat planet landings do not bank an extra landfall; a veteran Training
 > replay may still receive its lesson event without receiving progression credit.
 
-**STATUS:** legacy sections match `main.js` as of 2026-07-30; the dated v2 overlays
-match `port/v2` and the approved next-arc boundary as of 2026-08-15. See the 2026-07-30 addendum at the end —
+**STATUS:** legacy sections match `main.js` as of 2026-07-30; the current dated v2 overlay
+matches `port/v2` as of 2026-08-22, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
