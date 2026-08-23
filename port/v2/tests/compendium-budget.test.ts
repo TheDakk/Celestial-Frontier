@@ -30,28 +30,28 @@ const retainedLinuxReportPath = path.join(
 );
 const currentEvidence = [
   {
-    runId: '20260823-arc1-current-product-candidate1',
-    file: 'ARC1_COMPENDIUM_REPORT_20260823_CANDIDATE1.json.gz',
-    rawSha256: '84a2350fbe29ac64a4c9ab718363e4e9f031d5a815dbf4d20c8fd650ac775100',
-    gzipSha256: 'd7076216d6274dbde09687051c65f57e3388a59da2100360fff095f483800d6a',
+    runId: '20260823-pr33-focus-settlement-candidate1',
+    file: 'ARC1_COMPENDIUM_FOCUS_SETTLEMENT_REPORT_20260823_CANDIDATE1.json.gz',
+    rawSha256: '02afb70d4a44b0d58c21d84faec23a551aa4ad662842c6c927fd5e38aab85f5b',
+    gzipSha256: 'f222eaa8cddd0afa935f9b9006d9e785716262e656ed8c31ac9d92efb4fad600',
   },
   {
-    runId: '20260823-arc1-current-product-candidate2',
-    file: 'ARC1_COMPENDIUM_REPORT_20260823_CANDIDATE2.json.gz',
-    rawSha256: '6dad66cd3ee7484cec8d986c021b05090dd1cc1140e559c9353188d7f96703d2',
-    gzipSha256: 'd4254913700f134e4fa0fd6fe421fd81a1459b271fdf1b8cf2804ba216b87a99',
+    runId: '20260823-pr33-focus-settlement-candidate2',
+    file: 'ARC1_COMPENDIUM_FOCUS_SETTLEMENT_REPORT_20260823_CANDIDATE2.json.gz',
+    rawSha256: '0e6578f9d3a7e4adafeaa61adbb54c42a83dd763a6b47867045d9c52210e269d',
+    gzipSha256: 'ebfbb80d5cfee1e7226c494be79de69daa47d2dfb5fc5736734102bfb153830d',
   },
   {
-    runId: '20260823-arc1-current-product-candidate3',
-    file: 'ARC1_COMPENDIUM_REPORT_20260823_CANDIDATE3.json.gz',
-    rawSha256: '7777ecb5c7930ec12fafbdb7bf2b1472300691201849b64c3f4d46a655cf8b71',
-    gzipSha256: 'f378b645447510dd03b23a82912fde734d84881f85bf5598f34482b95f2a547e',
+    runId: '20260823-pr33-focus-settlement-candidate3',
+    file: 'ARC1_COMPENDIUM_FOCUS_SETTLEMENT_REPORT_20260823_CANDIDATE3.json.gz',
+    rawSha256: 'd539fb8df3ae8873d1ebb1725574f5e85b3cfff8ca8fcb9cdd5ba80d8bb6882f',
+    gzipSha256: 'fdede499e335cd6edca65b5c5d35d9457189a21545b273734b8428a653afb5c8',
   },
 ] as const;
 const currentBaselineEvidence = Object.freeze({
-  file: 'ARC1_COMPENDIUM_BASELINE_SAMPLE_20260823.json.gz',
-  rawSha256: '3d99883d925487e2dd0a827431644a3acc2eb7d5642143f00fb8936486ade9c3',
-  gzipSha256: '334d0d933717d42ebd057a9b55bc91301acbef9ab641123beffe69596880ff7c',
+  file: 'ARC1_COMPENDIUM_FOCUS_SETTLEMENT_BASELINE_SAMPLE_20260823.json.gz',
+  rawSha256: 'fb56e4bc55fa448e8add17872cca86948296b2d56ed524aba31bdd0c90f00916',
+  gzipSha256: '3b0c5356e7cf37a749e55d5859672c246d46c1d3be9f1d7ed9be7280c264b036',
 });
 const currentCertificationEvidence = Object.freeze({
   file: 'ARC1_COMPENDIUM_CERTIFICATION_20260823.json.gz',
@@ -87,11 +87,11 @@ const EXPECTED_BROWSER_AUTHORITY: BrowserAuthority = {
   protocolVersion: '1.3',
 };
 const EXPECTED_CANDIDATE_RUNS = [
-  '20260823-arc1-current-product-candidate1',
-  '20260823-arc1-current-product-candidate2',
-  '20260823-arc1-current-product-candidate3',
+  '20260823-pr33-focus-settlement-candidate1',
+  '20260823-pr33-focus-settlement-candidate2',
+  '20260823-pr33-focus-settlement-candidate3',
 ] as const;
-const EXPECTED_BASELINE_RUN = '20260823-arc1-current-product-baseline1';
+const EXPECTED_BASELINE_RUN = '20260823-pr33-focus-settlement-baseline1';
 const HISTORICAL_CANDIDATE_RUNS = [
   'Candidate24/25/26',
 ] as const;
@@ -176,19 +176,19 @@ const EXPECTED_SAMPLE_OBJECT_SHA256: Record<ProfileName, {
 }> = {
   phone: {
     candidate: [
-      '9acc72b2de9e890c4be0593b4f53b2385aa25f8bebbd80c0d018033097b1ef1d',
-      '14fa9414f48973fa190d96ccf587cba849893db6889b2e8e65217146c77b5b4b',
-      'ffcc87192415c175261ec99650fd8d48a30b22079b391e6d4890741a4702cf05',
+      '59241536e7283c56f62fc2ca83e33171aae97f2ccf434244d6548bc68bafc00f',
+      'e625023eb7b4e758ddf0ad0a8a9d602923112f3327dc480a5126f6e8ff6ff1ef',
+      '57a80bdf3315afd990a79acd52c46e3981b3dafef7aaf8b817de393effc9e842',
     ],
-    baseline: '1ce98c29cb930c361bda15b66b3eea3655587049318c9be87c0fa81aabf58641',
+    baseline: 'fd3cda696afb95b4c4d9e213e3a46749fdea7fa1ac6ce281a7716b162eb214dd',
   },
   desktop: {
     candidate: [
-      'bfe1920710a49d8fb915f5eb1e50394124118744a60bee991b7c3fdbbbae8910',
-      '40315a3232826184c106ef49b18bfcfa442a16689a8267f1112aec27923ace5c',
-      '04a33db4fe0b9ae2f957730f4c3b4fac661bda69e7f72c05db5d834fe9592981',
+      '09b4f3299ebae519d0746ef4b7db34864db10d2eaadbc8cf9bcc03180f500c0c',
+      '9767323259492174ce3d9cd1588ae5bc1253d459e20d5e50fb6bbeec6ebb315b',
+      '323bc5bf3457654f717f7c57c5d9548f424b91912d4f8291fa992f7cd83d71c1',
     ],
-    baseline: 'c4e784afa650865e61301c4c435a09b5d30837f361dd10673479969823827d67',
+    baseline: '03e389efe25116744daed0e95adfed086ce5ac18cc059bc0008ec3ba054316dc',
   },
 };
 
@@ -270,6 +270,10 @@ const RETAINED_LINUX_BROWSER_AUTHORITY: BrowserAuthority = Object.freeze({
 });
 const RETAINED_LINUX_PRODUCER_AUTHORITY =
   'd32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900';
+const RETAINED_LINUX_COLLECTOR_AUTHORITY =
+  '0c7ec3ba5b41f7ee0766c6986a27e75b3c22c00009419fbf540d4de280d6315b';
+const RETAINED_LINUX_MEASUREMENT_AUTHORITY =
+  '23aacc2cda6b46ae022c7cfaac70929fb2cd1f310fa846208bd5b2486c2c5b92';
 
 function sampleObjectSha256(sample: CalibrationSample): string {
   return createHash('sha256').update(JSON.stringify(sample)).digest('hex');
@@ -778,9 +782,9 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(retainedReport.inputs.budget)
       .toBe(RETAINED_LINUX_COMPATIBILITY.originalBudgetSha256);
     expect(retainedReport.inputs.fixtureRows).toBe(fixture.rowsSha256);
-    expect(retainedReport.inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);
+    expect(retainedReport.inputs.collector).toBe(RETAINED_LINUX_COLLECTOR_AUTHORITY);
     expect(compendiumMeasurementAuthority(retainedReport.inputs)?.sha256)
-      .toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+      .toBe(RETAINED_LINUX_MEASUREMENT_AUTHORITY);
     expect(retainedReport.browser).toEqual({
       executable: '/opt/microsoft/msedge/microsoft-edge',
       product: RETAINED_LINUX_BROWSER_AUTHORITY.product,
