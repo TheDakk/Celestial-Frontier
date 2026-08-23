@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-23 · PR #33 ATTEMPT 3 RED · FOCUS SETTLEMENT CALIBRATION REOPENED ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-23 · PR #33 ATTEMPT 4 RED · FIXED ANSWERABILITY SLA LOCALLY CERTIFIED ◀◀◀
 
 ### Fail-closed workspace and SSH identity
 
@@ -53,13 +53,22 @@ the archive verbatim and refresh this handoff in place.
   `e244c9e2342c6abd79ca4efcd3d26eb46d3d8910`; retained evidence descendant is
   `b30b6d49a8ff1745f33be9a329d421309b96b5e3`.
 - Arc 1C product/ruler authority is
-  `a4de5007ffc9131b8bc952a0a4cb469d9139039e`. Scene-memory-v2 budget/workflow activation and exact
-  local-certification source is `59530da3bf40965adf9c54f169b310e11ccdd0f8`. Active budget
-  `port/v2/budgets/scene-memory-v2.json` SHA-256 is
-  `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`.
+  `a4de5007ffc9131b8bc952a0a4cb469d9139039e`. Historical SceneMemory source
+  `59530da3bf40965adf9c54f169b310e11ccdd0f8` and budget
+  `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7` remain the exact local
+  250 ms certificate; they are not the active cross-host authority. Repair commit
+  `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` preserves collector/contract bytes and activates
+  `port/v2/budgets/scene-memory-v2.json` SHA-256
+  `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501` with a fixed strict
+  `< 1,000 ms` target SLA, unchanged 100 ms heartbeat ceiling, and unchanged 2,000 ms transport
+  deadline.
 - Durable Arc 1C calibration/certification evidence and refreshed references are committed at
-  `ebede04e26267d67821115a6767aa046e1f58049`. This final handoff is a later documentation
+  `ebede04e26267d67821115a6767aa046e1f58049`. That prior handoff is a later documentation
   descendant; neither it nor `ebede04…` is retroactively the exact certified source.
+- Current cross-host SLA evidence/reference descendant
+  `c771fd9fbbfe05b87ea32af4acebb9356a76d208` retains the exact Linux red, the fresh local
+  certificate, current budget test, and aligned references. It is later than exact certifying
+  source `7d8dc380…` and therefore does not become a second certificate.
 
 ### Automated implementation result
 
@@ -81,22 +90,30 @@ the archive verbatim and refresh this handoff in place.
 
 ### Exact local verification completed
 
-- `port/v2 npm test`: 49 files PASS; 571 passed / 1 intentional skip.
+- `port/v2 npm test`: 49 files PASS; 577 passed / 1 intentional skip.
 - `port/v2 npm run typecheck`: root, game, and worker configurations PASS.
+- Root `node tools/validate.js` passed Actions policy, syntax/CSS/ids/domain purity, 1,010-species
+  render audit, boot, and the exact 50-probe v1 fingerprint. V2 art-unused/audit, override/control,
+  coverage-gap, spec, Compendium preflight, 84 focused SceneMemory controls, and 64-control Actions
+  selftest all passed.
 - Real-browser Slice Smoke: terminal `SLICE SMOKE: PASS`, including the real Shipyard open/read/
   owned-Close leg; the SceneMemory surface route separately proves the attached Earth HD backing
   witness. One attempt, no retry.
 - Real-browser Glass Matrix: terminal PASS for all 12/12 viewports after the focus ruler began owning
   `focusVisible` modality and negative-controlled suppression, paint removal, and restoration.
-- SceneMemory v2: three clean one-attempt/no-retry calibration reports each replay 42/42 under exact
-  Edge `151.0.4129.101`. Clean run `20260822-arc1-local-certification` at `59530da…` passed 42/42,
-  complete lifecycle/cleanup, empty findings/fatals, then passed the independent named verifier.
-  Report raw/gzip SHA-256 are
-  `e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5` /
-  `0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6`.
-- The retained evidence test is 7/7 and binds the collected profile projection, exact scope/fixture,
-  exact 38-file built inventory, producer/browser/budget authority, terminal evidence, recomputed
-  metrics, and byte-equal verdict/outcomes. Actions-budget policy selftest passed 64 controls.
+- SceneMemory's three clean calibration reports and run `20260822-arc1-local-certification` remain
+  truthful historical 250 ms evidence at `59530da…`; they were not rewritten after Linux exposed
+  that sampled Mac ceiling as non-portable. Clean repair commit `7d8dc380…` then ran
+  `20260823-pr33-cross-host-sla-certification` once without retry under exact Edge
+  `151.0.4129.101`: 42/42 passed, lifecycle/cleanup completed, findings/fatals were empty, and the
+  exact named verifier passed. Report raw/gzip SHA-256 are
+  `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+  `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`.
+- Retained Linux replay preserves run `32618995487` as exact 40/42 red under its original budget,
+  replays only the two answerability outcomes green under the active SLA, and makes all twelve
+  999.999 ms targets pass while exact 1,000/1,000.001 ms fail. Target success, later ticker,
+  same-document identity, heartbeat independence, and a non-answerability memory fault retain
+  separate red controls. Actions-budget policy selftest remains the standing workflow gate.
 - Independent product, ruler, evidence, archive, and current-reference reviews are CLEAR. The old
   Arc 1B handoff is preserved byte-verbatim at the top of `ROADMAP_ARCHIVE.md`.
 
@@ -170,6 +187,17 @@ the archive verbatim and refresh this handoff in place.
   78/78 and SceneMemory 42/42 with named verifiers; real-browser Slice Smoke; Glass 12/12; nine
   personas; and origin-isolated preview browser smoke. The Mac's available Chromium for generic UI
   gates was exact Edge `.101`; hosted Chrome remains owned by the guarded workflow.
+- Authorized exact head `bd3e65bfd99b91e556ff27b5dd028fe92f447227` against base
+  `d4ab7e671959ab80198bed22bb600a26fc3524cc` ran once as `32618995487`. Compendium completed 78/78;
+  SceneMemory completed 40/42 with only phone/desktop answerability red. All twelve targets retained
+  the same document, advanced the Pixi ticker, and completed below the unchanged 2,000 ms transport
+  deadline; Linux turns were 493–647 ms, exposing the Mac-selected 250 ms ceiling as non-portable.
+  The label was removed; the run is consumed, PR #33 remains Draft/unmerged, and no future hosted
+  attempt is authorized.
+- Local repair `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` installs a fixed strict `< 1,000 ms`
+  SLA and moves the shorter SceneMemory chain before Compendium with exact-package `--reinstall` for
+  its first Edge ownership. Its fresh 42/42 local certificate and named verifier do not relabel the
+  hosted red or authorize a push, label, hosted run, Ready transition, or merge.
 - Keep Arc 1A's six-image Compendium review and Arc 1C's phone/desktop silhouette/readability review
   open as HUMAN work. After review/integration, the implementation spine is **F3 → F4 → Arc 2**.
 
@@ -178,16 +206,17 @@ the archive verbatim and refresh this handoff in place.
 **Current side:** OpenAI/Codex macOS owns
 `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`. Arc 1 product/ruler,
 activation, retained evidence, references, and Claude review remediation are published to matching
-`origin/openai/mac` at exact head `ebfc3bf…`. The local branch is three clean commits ahead through
-tested evidence descendant `d359d8c…`: focus-settlement collector repair, fresh calibration/active
-budget, and retained independent certificate. Nothing from this repair has been pushed.
+`origin/openai/mac` at exact head `bd3e65bfd99b91e556ff27b5dd028fe92f447227`. Local repair authority
+is exact commit `7d8dc380cd89ef53aac5a11c3850316e19e1aae9`; evidence/reference descendant is exact
+`c771fd9fbbfe05b87ea32af4acebb9356a76d208`. This ROADMAP-only handoff is later local history.
+Nothing after `bd3e65b…` has been pushed.
 
-**GitHub step:** PR #33 is draft, mergeable, unlabeled, and terminal-red at consumed runs
-`32609389977`, `32611053651`, and `32614177932`. The third run's exact retained report is diagnosed;
-the permanent settlement repair, fresh calibration, independent certification, and complete local
-battery are green through `d359d8c…`. Commit this documentation-only handoff, then request one exact
-changed-head/base/label/runner-ceiling/no-retry authorization. Do not push, apply the label, dispatch,
-mark Ready, merge, or publish before that new authority and terminal-green evidence.
+**GitHub step:** PR #33 is Draft, open, unlabeled, unmerged, and terminal-red at consumed runs
+`32609389977`, `32611053651`, `32614177932`, and `32618995487`. The local evidence/reference
+descendant is complete and reviewed. Commit this ROADMAP-only handoff, then
+request one exact changed-head/base/label/92-minute-ceiling/no-retry authorization. Do not push,
+apply the label, dispatch, mark Ready, merge, or publish before that new authority and terminal-green
+evidence.
 
 **PR details:** [PR #33](https://github.com/TheDakk/Celestial-Frontier/pull/33), base `develop`, source
 `openai/mac`. Copy-ready title: **Arc 1 — Complete Compendium, scene ownership, and Shipyard foundations**
@@ -201,17 +230,21 @@ Copy-ready description:
 > attachment. Fabrication, Research, Cargo spending, build/upgrade writers, and richer living ship
 > previews remain future work.
 >
-> Verification: full v2 tests passed 573 with 1 intentional skip across 49 files; root/game/worker
+> Verification: full v2 tests passed 577 with 1 intentional skip across 49 files; root/game/worker
 > typecheck passed; legacy layout passed 787/787; real-browser Slice Smoke passed; Glass Matrix
 > passed all 12 viewports; Compendium passed 78/78 and SceneMemory passed 42/42 on exact Edge
 > 151.0.4129.101 with named verifiers; the 64-control Actions-budget selftest passed. Hosted run
 > `32609389977` exposed and led to the repaired D-ART shell-spelling ruler. Changed-head run
 > `32611053651` passed that stage, then correctly rejected stale pre-Arc-1 Compendium producer
 > authority. Run `32614177932` passed both repairs and every preceding gate, then exposed the
-> focus-pinned deferred-render settlement boundary described above. All three reds were consumed
-> without retry. The corrected boundary has paired negative control, three fresh candidates, a
-> paired broken baseline, strict active budget, independent 78/78 certification and named verifier,
-> and a complete local root/v2/browser battery through tested descendant `d359d8c…`.
+> focus-pinned deferred-render settlement boundary described above. Run `32618995487` then passed
+> Compendium 78/78 and exposed only SceneMemory's non-portable 250 ms target ruler. All four reds
+> were consumed without retry. The corrected settlement boundary has paired negative control,
+> three fresh candidates, a paired broken baseline, strict active budget, independent 78/78
+> certification and named verifier, and a complete local root/v2/browser battery through tested
+> descendant `d359d8c…`. Repair
+> `7d8dc380…` fixes answerability at a strict `< 1,000 ms` product SLA, moves SceneMemory first with
+> exact-package `--reinstall`, and passed a fresh local 42/42 certificate plus named verifier.
 >
 > Claude's full-Arc review is complete and preserved with this PR. Its one MEDIUM and three LOW
 > findings are resolved at the current head. The Anthropic side did not copy, merge, or edit OpenAI
@@ -222,12 +255,14 @@ Copy-ready description:
 **Other side:** The Claude review is already complete on its separate `anthropic/mac` branch. Do not
 merge, rebase, copy, or synchronize that review branch into either `openai/mac` or `develop`; the
 review was read-only evidence. It receives accepted work only after the eventual PR merge through
-`origin/develop`.
+`origin/develop`. Nick does not need to open Anthropic/Claude Code now; synchronization waits for its
+next clean coding batch after PR #33 merges.
 
 **Release status:** `develop` remains `d4ab7e6…`; `main`, the live site, and development site are
 unchanged. No release, deployment, version bump, publication, or site write occurred.
 
 **Actions budget:** `UNFROZEN`; public standard runners remain free while visibility holds; 3,000 is
-the fail-closed private/ambiguous cap. Consumed Arc 1C attempts: `32609389977`, `32611053651`, and
-`32614177932`, all terminal-red. Authorized future attempts: zero. Approval label: absent. The next
-attempt requires separate exact changed-head authority and must not reuse or rerun a consumed run.
+the fail-closed private/ambiguous cap. Consumed Arc 1C attempts: `32609389977`, `32611053651`,
+`32614177932`, and `32618995487`, all terminal-red. Authorized future attempts: zero. Approval
+label: absent. The next attempt requires separate exact changed-head authority and must not reuse or
+rerun a consumed run.
