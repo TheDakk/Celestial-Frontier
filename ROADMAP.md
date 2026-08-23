@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-22 · ARC 1 AUTOMATED IMPLEMENTATION LOCALLY COMPLETE · CLAUDE FULL-ARC REVIEW NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-22 · CLAUDE REVIEW REMEDIATION COMPLETE LOCALLY · PR #33 EXACT BATTERY NEXT ◀◀◀
 
 ### Fail-closed workspace and SSH identity
 
@@ -100,35 +100,36 @@ the archive verbatim and refresh this handoff in place.
 - Independent product, ruler, evidence, archive, and current-reference reviews are CLEAR. The old
   Arc 1B handoff is preserved byte-verbatim at the top of `ROADMAP_ARCHIVE.md`.
 
-### Claude full-Arc review — immediate next action
+### Claude full-Arc review — completed and remediated locally
 
-1. Nick authorized publication of the complete OpenAI Arc 1 head in this batch. Push only
-   `openai/mac` to matching `origin/openai/mac` through the proven 1Password SSH path, then refresh
-   existing draft PR #33. Keep it draft. Do not add `actions-budget-approved`, dispatch, rerun,
-   mark Ready, merge, publish, release, version, or deploy.
-2. **After that push, open Claude Code now** in its own exact macOS folder
-   `/Users/nick/Projects/celestial-frontier-anthropic-mac`, branch `anthropic/mac`. Re-prove that
-   folder/branch/upstream and its SSH agent, fetch origin, and review remote refs read-only. Do not
-   edit the OpenAI worktree, merge the OpenAI branch into the Anthropic branch, or copy files.
-3. Review the **entire Arc 1** as
-   `38447019517147319bd08c598202d097ee866874...origin/openai/mac`. Also inspect the current Arc 1B/C
-   PR delta `origin/develop...origin/openai/mac` and draft PR #33 metadata. Focus on Arc 1A
-   Compendium/art/worker ownership; Arc 1B scene/Pixi transactions and bfcache; Arc 1C normalized
-   ship truth, SVG owner, HD attachment; browser-gate modality; raw-CDP authority and negative
-   controls. Return only evidence-backed findings or CLEAR; do not mark the draft Ready.
-4. Resolve any Claude findings on `openai/mac`, rerun proportionate checks, then request one exact
-   changed-head/base/label/runner-ceiling/no-retry `test-battery` authorization. Only terminal-green
-   hosted evidence can unlock normal merge to `develop` under the standing merge rule.
-5. Keep Arc 1A's six-image Compendium review and Arc 1C's phone/desktop silhouette/readability review
-   open as HUMAN work. After review/integration, the implementation spine is **F3 → F4 → Arc 2**.
+- Claude's read-only full-Arc review is retained at
+  `origin/anthropic/mac` commit `53692f117908f6df9f432b54d35fe9225ae8eed0` in
+  `audits/ARC1_CLAUDE_REVIEW_2026-08-22.md`. It reviewed the full range
+  `38447019517147319bd08c598202d097ee866874...8b2c423bc9b1a17295d5ce9f23908e67c18a11f9` and found no
+  BLOCKER or HIGH item.
+- Commit `1a3eeec83e6d262fc03c8bde7e7b5b1412586afe` resolves its one MEDIUM and three LOW findings without
+  changing product, collector, workflow, or the calibrated producer authority: retained raw
+  SceneMemory observations are now independently re-derived in tests; the `pendingPreviewWork: 0`
+  claim is source-policy guarded; the Slice Smoke/HD evidence wording is corrected; and the exact
+  PR #32 cross-host-repair handoff is restored byte-verbatim in the archive.
+- The remediation passed full v2 tests (49 files, 571 passed / 1 intentional skip), root/game/worker
+  typecheck, and diff hygiene. The following documentation-only handoff commit is not a new product
+  or certification authority.
+- Next: push the final `openai/mac` head through the verified 1Password SSH path and refresh the
+  existing draft PR #33. Keep it draft. Do not add `actions-budget-approved`, dispatch, rerun, mark
+  Ready, merge, publish, release, version, or deploy. Then request one exact
+  changed-head/base/label/runner-ceiling/no-retry `test-battery` authorization. Only terminal-green
+  hosted evidence can unlock normal merge to `develop` under the standing merge rule.
+- Keep Arc 1A's six-image Compendium review and Arc 1C's phone/desktop silhouette/readability review
+  open as HUMAN work. After review/integration, the implementation spine is **F3 → F4 → Arc 2**.
 
 ## Parallel Git handoff — exact budget-aware fields
 
 **Current side:** OpenAI/Codex macOS owns
 `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`. Arc 1 product/ruler,
-activation, retained evidence, references, and this handoff are committed. Nick authorized this
-complete head to be pushed to `origin/openai/mac`; verify exact local/remote SHA equality after push
-rather than trusting a pre-push hash embedded in the handoff.
+activation, retained evidence, references, Claude review remediation, and this handoff are committed.
+Nick authorized this complete head to be pushed to `origin/openai/mac`; verify exact local/remote SHA
+equality after push rather than trusting a pre-push hash embedded in the handoff.
 
 **GitHub step:** Push `openai/mac` via SSH and refresh existing draft PR #33 only. A branch push or
 PR metadata edit starts no hosted runner under the sealed labeled-event workflow. Do not apply the
@@ -157,10 +158,10 @@ Copy-ready description:
 > only after PR merge through `origin/develop`. This PR remains draft during review. No release,
 > deployment, version bump, publication, or site write is included.
 
-**Other side:** Open Anthropic/Claude Code only after the OpenAI push is verified. Use
-`/Users/nick/Projects/celestial-frontier-anthropic-mac` on `anthropic/mac`, fetch origin via its own
-1Password SSH Agent, and perform the read-only full-Arc review above. Do not synchronize changes into
-that branch yet.
+**Other side:** The Claude review is already complete on its separate `anthropic/mac` branch. Do not
+merge, rebase, copy, or synchronize that review branch into either `openai/mac` or `develop`; the
+review was read-only evidence. It receives accepted work only after the eventual PR merge through
+`origin/develop`.
 
 **Release status:** `develop` remains `d4ab7e6…`; `main`, the live site, and development site are
 unchanged. No release, deployment, version bump, publication, or site write occurred.
