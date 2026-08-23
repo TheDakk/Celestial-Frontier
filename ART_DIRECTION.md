@@ -1,6 +1,6 @@
 # Celestial Frontier — Master Art Direction
 
-**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` Arc 1C art/resource overlay matches code as of 2026-08-22 and appears immediately below; the Arc 1A and GP7 overlays preserve earlier implementation and reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
+**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` Arc 1C art/resource overlay matches code as of 2026-08-23 and appears immediately below; the Arc 1A and GP7 overlays preserve earlier implementation and reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the
@@ -33,12 +33,20 @@ The surface globe's 512/768/1024 sharpness path now has one named transactional
 It retains the displayed predecessor until an identity-current successor is actually attached and
 its TextureSource backing proves the claimed tier; stale, undersized, throwing, or failed-release
 paths roll back or remain explicitly owned/retryable. The real travel resource route now includes
-Shipyard open/close and a settled zero-preview outcome. Activation/certification source
-`59530da3bf40965adf9c54f169b310e11ccdd0f8` binds `scene-memory-v2.json` SHA-256
-`3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`;
-one-attempt/no-retry local run `20260822-arc1-local-certification` passed 42/42 and its named
-verifier under Edge `151.0.4129.101`. This later documentation state is a descendant, not the exact
-certified head. Hosted CI, integration, release/deploy, Cargo/Inventory/Forge presentation,
+Shipyard open/close and a settled zero-preview outcome. Historical activation/certification source
+`59530da3bf40965adf9c54f169b310e11ccdd0f8` bound the original 250 ms budget SHA-256
+`3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`; its local run
+`20260822-arc1-local-certification` passed 42/42 and its named verifier under Edge
+`151.0.4129.101`, but that certificate remains historical. Clean cross-host SLA repair
+`7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds active budget SHA-256
+`5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`; local one-attempt/no-retry
+run `20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier under
+the same Edge `.101`. Raw/gzip SHA-256 are
+`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
+`32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
+is unchanged. This later documentation state is a descendant, not the exact certified head.
+Hosted terminal-green integration, release/deploy, Cargo/Inventory/Forge presentation,
 Fabrication/Research/upgrades, richer living previews, broader HD art, and HUMAN silhouette review
 remain open.
 

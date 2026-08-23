@@ -69,8 +69,14 @@ The focused budget test now:
   non-answerability memory fault red.
 
 The old local 250 ms certificate remains historical and bound to its original budget SHA. It is not
-rewritten or promoted. A fresh clean current-budget certificate is required before this repair is
-called locally certified.
+rewritten or promoted. Clean repair commit
+`7d8dc380cd89ef53aac5a11c3850316e19e1aae9` then ran the current budget once without retry:
+`20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier, with complete
+lifecycle/cleanup and zero findings/fatals. The report's target maxima were 8.754 ms phone and
+7.886 ms desktop. Raw/gzip SHA-256 are
+`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`.
+Later evidence/reference descendants are not retroactive certificates for their own Git commit.
 
 ## Fail-fast optimization
 
@@ -87,6 +93,13 @@ Compendium certificate carry-forward is deliberately deferred. The current verif
 source identity; safe reuse of the complete hosted 78/78 report would require a separately reviewed,
 negative-controlled closure authority. This batch does not weaken that verifier or silently skip
 live Compendium evidence.
+
+Local verification after retaining the fresh certificate: 84 focused SceneMemory
+contract/budget/tool/workflow controls; full v2 Vitest (49 files, 577 passed / 1 intentional skip);
+root/game/worker typecheck; root validation and exact determinism fingerprint; v2 art-unused/audit,
+override/control, coverage-gap and spec gates; Compendium browser-preflight selftest; 64-control
+Actions-budget selftest; gzip integrity and diff hygiene. The product, SceneMemory collector, and
+SceneMemory verdict-contract bytes did not change in this repair.
 
 ## Authority boundary
 

@@ -1,7 +1,7 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
-> 2026-08-22.
+> 2026-08-23.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,
 > premium visual/audio production, Gate A–I evidence, and release readiness.
 > **Implementation status:** active, one bounded review branch at a time. F1a save integrity is
@@ -28,18 +28,28 @@
 > Arc 1C product/ruler source `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds one pure normalized
 > `ShipVisualState` shared by travel and presentation, a responsive read-only Shipyard with one
 > code-native SVG/DOM preview owner and zero second renderer/RenderTexture, and the named
-> `SurfacePlanetTextureAttachment`. Exact activation/certification source
-> `59530da3bf40965adf9c54f169b310e11ccdd0f8` binds `budgets/scene-memory-v2.json` SHA-256
-> `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`. Local no-retry run
-> `20260822-arc1-local-certification` passed 42/42 under Edge `151.0.4129.101`, complete lifecycle
-> and cleanup, followed by a passing exact named-run verifier; report raw/gzip SHA-256 are
-> `e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5` /
-> `0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6`. A later documentation
-> descendant does not move that exact authority.
+> `SurfacePlanetTextureAttachment`. Source `59530da3bf40965adf9c54f169b310e11ccdd0f8`, budget
+> SHA-256 `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`, and local run
+> `20260822-arc1-local-certification` are retained only as the historical Mac-derived 250 ms
+> certificate. Hosted attempt 4, run `32618995487`, reproduced all 42 lifecycle/memory/ownership
+> checks but finished terminal-red at 40/42: only phone and desktop answerability exceeded that old
+> ruler on Linux, at 618–647 ms and 493–507 ms respectively.
+>
+> Active cross-host SLA repair source `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds
+> `budgets/scene-memory-v2.json` SHA-256
+> `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501` to the existing fixed,
+> strict `<1000 ms` product answerability contract. Local no-retry run
+> `20260823-pr33-cross-host-sla-certification` passed 42/42 under Edge `151.0.4129.101`, complete
+> lifecycle/cleanup and exact named verification; report raw/gzip SHA-256 are
+> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+> `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
+> verdict-contract bytes are unchanged. The guarded battery now installs exact Edge `.101` with
+> same-package `--reinstall`, runs SceneMemory before Compendium, and permits no retry. This local
+> repair has no hosted-green authority and no hosted attempt is currently authorized.
 >
 > The v2 gate drives Universe, Galaxy, Galaxy fine, Sol, Earth Surface, the deterministic 1,500-row
 > Compendium, and the real Shipyard on phone and desktop before settling back at Universe. PR #33
-> remains draft; hosted evidence, review acceptance, integration, the Arc 1A six-image HUMAN review,
+> remains draft; hosted terminal-green evidence, review acceptance, integration, the Arc 1A six-image HUMAN review,
 > Arc 1C phone/desktop ship-readability judgment, whole-Gate closure, release, and publication remain
 > open.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
@@ -889,16 +899,26 @@ not complete audio lifecycle. Arc 7 owns that work.
 
 **Goal:** make capability visually legible without allowing art to become a second gameplay owner.
 
-**Current state (2026-08-22): automated implementation locally complete; HUMAN readability,
-review, hosted evidence, and integration remain open.** Product/ruler source
+**Current state (2026-08-23): automated implementation locally complete; HUMAN readability,
+review, hosted terminal-green evidence, and integration remain open.** Product/ruler source
 `a4de5007ffc9131b8bc952a0a4cb469d9139039e` owns the product and its negative-controlled browser
-route. Exact activation/certification source `59530da3bf40965adf9c54f169b310e11ccdd0f8`
-binds scene-memory-v2 budget SHA-256
-`3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`; local run
-`20260822-arc1-local-certification` passed 42/42 once without retry under Edge
-`151.0.4129.101`, complete lifecycle/cleanup and exact named verification. Report raw/gzip SHA-256
-are `e24ceef86d17fb4a47bbb10e58f81d442cac6e3def28923672448f6c47eac3a5` /
-`0d83e6ce339205beb0b5387008ca74ca9b1f95cb22bf61444c439da36405f2a6`.
+route. Source `59530da3bf40965adf9c54f169b310e11ccdd0f8`, budget SHA-256
+`3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`, and local run
+`20260822-arc1-local-certification` are historical 250 ms Mac-local evidence only. Hosted attempt
+4, run `32618995487`, was terminal-red at 40/42 solely because phone and desktop answerability on
+Linux measured 618–647 ms and 493–507 ms against that old ruler; all liveness, memory, ownership,
+route, and cleanup outcomes were green.
+
+Active cross-host SLA repair source `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds
+scene-memory-v2 budget SHA-256
+`5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501` to the fixed strict
+`<1000 ms` product SLA. Local no-retry run `20260823-pr33-cross-host-sla-certification` passed
+42/42 under Edge `151.0.4129.101`, complete lifecycle/cleanup and exact named verification. Report
+raw/gzip SHA-256 are `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Product, collector, and
+verdict-contract bytes are unchanged. The ordinary battery now performs exact Edge `.101`
+same-package `--reinstall`, runs SceneMemory first and Compendium second, and has no retry. No new
+hosted attempt is authorized, and this local certificate must never be described as hosted green.
 
 **Implemented scope:**
 
@@ -919,7 +939,7 @@ pending preview work after Close and settled Universe. The scene-memory-v2 route
 lifecycle outcome per phone/desktop profile for 42 total outcomes.
 
 **Still open:** phone/desktop HUMAN silhouette and caption readability; Arc 1A's six Compendium
-images; PR review, hosted CI and integration; true GPU bytes and physical heat/battery; and the
+images; PR review, hosted terminal-green CI and integration; true GPU bytes and physical heat/battery; and the
 actual Fabricator, Research Bench, Cargo spending, fabrication, research, and ship-upgrade writers.
 No whole Gate, production release, version bump, deployment, or publication is claimed.
 

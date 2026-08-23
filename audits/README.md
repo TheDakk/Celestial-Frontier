@@ -26,6 +26,14 @@ run `32618995487`. Compressed SHA-256 is
 requires its original exact 40/42 result, then replays the same immutable measurements under the
 fixed product SLA and negative-controls every changed boundary and retained liveness fact.
 
+### `PR33_SCENEMEM_CROSS_HOST_SLA_CERTIFICATION_20260823.json.gz` — current-budget local certificate
+
+Deterministic gzip of the clean one-attempt 42/42 certificate at repair commit `7d8dc380…`, active
+budget SHA-256 `5c8a6e75…`, and exact Edge `.101` authority. Compressed SHA-256 is
+`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`; decompressed SHA-256 is
+`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960`. Its named verifier passed
+immediately after collection. It is local exact-budget authority, not hosted terminal-green status.
+
 ### `ARC1_CLAUDE_REVIEW_2026-08-22.md` — Anthropic/Claude Arc 1 read-only review
 
 The full-Arc adversarial review of PR #33 head `8b2c423b` against base `d4ab7e67…`, requested by the
