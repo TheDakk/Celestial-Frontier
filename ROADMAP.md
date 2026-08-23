@@ -140,8 +140,13 @@ the archive verbatim and refresh this handoff in place.
   `23e177a…`, complete lifecycle and named verifier, with raw/gzip report SHA-256 `f45e1da5…` /
   `cef1d559…`. A final hosted-only audit caught both guarded workflows and their preflight still
   installing `.86`; they now own the budget's exact `.101` URL/SHA/version tuple, with preflight,
-  workflow, and 64-control Actions selftests green. The complete local battery remains. Do not rerun
-  either consumed hosted run. A later changed head still needs fresh exact authorization.
+  workflow, and 64-control Actions selftests green.
+- Clean workflow-repair source `63107f656c4623f1b9c2df922346e6bc08f601b6` passed the complete
+  local fail-fast battery: root validation/Smoke/training/rarity/dead-code; legacy layout 787/787;
+  573 v2 tests with one intentional skip; all type/art/coverage/spec gates; Compendium 78/78 and
+  SceneMemory 42/42 with named verifiers; real-browser Slice Smoke; Glass 12/12; nine personas; and
+  origin-isolated preview browser smoke. The following handoff is documentation-only. Do not rerun
+  either consumed hosted run. The changed head still needs fresh exact authorization.
 - Keep Arc 1A's six-image Compendium review and Arc 1C's phone/desktop silhouette/readability review
   open as HUMAN work. After review/integration, the implementation spine is **F3 → F4 → Arc 2**.
 
@@ -150,14 +155,15 @@ the archive verbatim and refresh this handoff in place.
 **Current side:** OpenAI/Codex macOS owns
 `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`. Arc 1 product/ruler,
 activation, retained evidence, references, and Claude review remediation remain published to matching
-`origin/openai/mac`. Published head `27b9658…` contains the D-ART repair; the local branch owns the
-fresh Compendium activation/evidence batch. Do not push before its independent certificate and full
-local battery are complete.
+`origin/openai/mac`. Published head `27b9658…` contains the D-ART repair; the local branch is five
+commits ahead with the fresh Compendium activation/evidence, exact `.101` workflow repair, and this
+docs-only handoff. Tested source `63107f6…` is clean and full-battery green. No new push occurred.
 
 **GitHub step:** PR #33 is draft, mergeable, unlabeled, and terminal-red at consumed runs
-`32609389977` and `32611053651`. Finish and commit the fresh calibration/certificate/battery locally;
-then request one exact changed-head/base/label/runner-ceiling/no-retry authorization. Do not apply the
-label, dispatch, mark Ready, merge, or publish before that authority and terminal-green evidence.
+`32609389977` and `32611053651`. The fresh calibration/certificate/full battery are complete locally.
+Commit this docs-only handoff, then request one exact changed-head/base/label/runner-ceiling/no-retry
+authorization. Do not apply the label, dispatch, mark Ready, merge, or publish before that authority
+and terminal-green evidence.
 
 **PR details:** [PR #33](https://github.com/TheDakk/Celestial-Frontier/pull/33), base `develop`, source
 `openai/mac`. Copy-ready title: **Arc 1 — Complete Compendium, scene ownership, and Shipyard foundations**
@@ -171,14 +177,15 @@ Copy-ready description:
 > attachment. Fabrication, Research, Cargo spending, build/upgrade writers, and richer living ship
 > previews remain future work.
 >
-> Verification: full v2 tests passed 571 with 1 intentional skip across 49 files; root/game/worker
-> typecheck passed; real-browser Slice Smoke passed; Glass Matrix passed all 12 viewports; three
-> clean Arc 1C calibrations and the exact-budget local certificate each passed 42/42 under Edge
-> 151.0.4129.101; the named verifier and 64-control Actions-budget selftest passed. Hosted run
+> Verification: full v2 tests passed 573 with 1 intentional skip across 49 files; root/game/worker
+> typecheck passed; legacy layout passed 787/787; real-browser Slice Smoke passed; Glass Matrix
+> passed all 12 viewports; Compendium passed 78/78 and SceneMemory passed 42/42 on exact Edge
+> 151.0.4129.101 with named verifiers; the 64-control Actions-budget selftest passed. Hosted run
 > `32609389977` exposed and led to the repaired D-ART shell-spelling ruler. Changed-head run
 > `32611053651` passed that stage, then correctly rejected stale pre-Arc-1 Compendium producer
-> authority. A fresh current-product calibration and certificate are in progress; neither red is
-> being retried.
+> authority. Fresh current-product calibration, paired-baseline discrimination, independent
+> certification, workflow alignment, and the complete local battery now pass; neither red was
+> retried.
 >
 > Claude's full-Arc review is complete and preserved with this PR. Its one MEDIUM and three LOW
 > findings are resolved at the current head. The Anthropic side did not copy, merge, or edit OpenAI
