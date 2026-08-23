@@ -3,7 +3,8 @@
 **Current mode: `UNFROZEN`**
 
 **Hosted attempt state: none authorized.** PR #32's three post-freeze closure attempts are consumed;
-the final changed-head attempt passed, its label was removed, and the PR merged. Details are below.
+the final changed-head attempt passed, its label was removed, and the PR merged. PR #33 run
+`32609389977` is also consumed and terminal-red; its label was removed. Details are below.
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
@@ -113,6 +114,20 @@ upload passed. The label was removed, the PR was re-read as clean/mergeable at t
 and PR #32 merged normally as `d4ab7e671959ab80198bed22bb600a26fc3524cc`. The push also completed
 the base branch's then-automatic branch-flow guard in 3s; the merged guard is now manual-only. No
 retry or additional `test-battery` ran. No further hosted attempt is authorized.
+
+## Authorized PR #33 attempt
+
+Nick authorized one changed-head `test-battery` attempt for PR #33 head
+`5ce92fc458d0d6acc9e389f94a2f2e5ffcbfa1fd` against base
+`d4ab7e671959ab80198bed22bb600a26fc3524cc`, using `actions-budget-approved`, with a 92 runner-minute
+ceiling and no retry. Run `32609389977`, attempt 1, authorized in 3s and completed terminal-red in
+3m39s. Root validation, Smoke, Field Training capture, 10-viewport layout, evidence freshness,
+rarity sanity, dead-code scan, and v2 install passed. All 571 v2 tests and all typechecks also passed
+inside the failing step, but `artaudit` then emitted D-ART-36 against `tools/scenemem.mjs`: its static
+ruler recognized only the legacy `execSync('npx vite build')` spelling and missed SceneMemory's real,
+unconditional `execFileSync(npm, ['run', 'build'])`. Later Edge/Chrome/browser gates were correctly
+skipped. The approval label was removed immediately; the run is consumed, PR #33 remains draft and
+unmerged, and no retry or future hosted attempt is authorized.
 
 When Nick explicitly lifts `FROZEN`, he may authorize exactly one hosted attempt. Before any GitHub write, the
 handoff must record:

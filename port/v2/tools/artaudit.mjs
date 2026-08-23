@@ -37,6 +37,36 @@ const all = Object.values(text).concat(consumers).join('\n');
 const findings = [];
 const note = (code, msg) => findings.push(`  [${code}] ${msg}`);
 
+function hasUnconditionalBuild(source) {
+  return [
+    /^\s*execSync\('npx vite build'/m,
+    /^\s*execFileSync\(npm,\s*\[\s*['"]run['"],\s*['"]build['"]\s*\]/m,
+  ].some((pattern) => pattern.test(source));
+}
+
+function hasConditionalBuild(source) {
+  return [
+    /if \(!fs\.existsSync[^)]*\)\)\s*execSync\('npx vite build'/,
+    /if \(!fs\.existsSync[^)]*\)\)\s*execFileSync\(npm,\s*\[\s*['"]run['"],\s*['"]build['"]\s*\]/,
+  ].some((pattern) => pattern.test(source));
+}
+
+/* The D-ART-36 ruler must recognize both supported synchronous build forms,
+   while still rejecting the conditional form that caused the original stale
+   bundle defect. These controls run with the audit so a green result cannot
+   depend on one command spelling. */
+for (const control of [
+  { name: 'legacy unconditional build', source: "execSync('npx vite build', { stdio: 'inherit' });", always: true, maybe: false },
+  { name: 'npm unconditional build', source: "execFileSync(npm, ['run', 'build'], { cwd: appDir });", always: true, maybe: false },
+  { name: 'conditional build', source: "if (!fs.existsSync(distDir)) execFileSync(npm, ['run', 'build']);", always: false, maybe: true },
+  { name: 'missing build', source: "const page = path.join(distDir, 'index.html');", always: false, maybe: false },
+]) {
+  if (hasUnconditionalBuild(control.source) !== control.always
+      || hasConditionalBuild(control.source) !== control.maybe) {
+    throw new Error(`D-ART-36 self-control failed: ${control.name}`);
+  }
+}
+
 /* ── A · a painter nothing can reach ───────────────────────────────────── */
 for (const [f, t] of Object.entries(text)) {
   if (f === 'hdart.verbatim.js' || /verbatim/.test(f)) continue;
@@ -130,10 +160,11 @@ for (const f of fs.readdirSync(TOOLS).filter((n) => n.endsWith('.mjs'))) {
 
 /* ── H · a tool that reads dist without rebuilding it ──────────────────── */
 for (const f of fs.readdirSync(TOOLS).filter((n) => n.endsWith('.mjs'))) {
+  if (f === path.basename(fileURLToPath(import.meta.url))) continue;
   const t = fs.readFileSync(path.join(TOOLS, f), 'utf8');
   if (!/\bdist\b/.test(t)) continue;
-  const buildsAlways = /^\s*execSync\('npx vite build'/m.test(t);
-  const buildsMaybe = /if \(!fs\.existsSync[^)]*\)\s*execSync\('npx vite build'/.test(t);
+  const buildsAlways = hasUnconditionalBuild(t);
+  const buildsMaybe = hasConditionalBuild(t);
   if (buildsMaybe || (!buildsAlways && /audit\.html|index\.html/.test(t))) {
     note('H', `tools/${f}: reads the built bundle without unconditionally rebuilding it — an instrument that reads yesterday's build reports on code nobody is running (D-ART-36)`);
   }
