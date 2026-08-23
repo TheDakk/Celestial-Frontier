@@ -160,7 +160,13 @@ portrait ceiling passed; the one paint error was the gate's intentional, recover
 job. The run is terminal-red and consumed, its label was removed immediately, PR #33 remains Draft
 and unmerged, and no retry or future hosted attempt is authorized. The local bounded repair consumes
 the deferred virtual-window render turn and re-proves decoded thumbnail settlement before the
-unchanged GC/snapshot sequence; changing collector authority reopens calibration fail-closed.
+unchanged GC/snapshot sequence. Clean collector source `14626a7…` was recalibrated in exactly three
+current-product candidates plus one paired legacy baseline, each one attempt with zero retries. The
+strict active budget is SHA-256 `28b95867…`; independent source `e8898bf…` then passed 78/78 with
+complete lifecycle and named verification. Evidence-bound descendant `d359d8c…` passed the complete
+local root/v2/browser battery, including SceneMemory 42/42, Slice Smoke, Glass 12/12, nine personas,
+and origin-isolated preview smoke. This local green does not authorize a push, label, hosted run,
+Ready transition, or merge.
 
 When Nick explicitly lifts `FROZEN`, he may authorize exactly one hosted attempt. Before any GitHub write, the
 handoff must record:

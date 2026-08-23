@@ -156,7 +156,20 @@ the archive verbatim and refresh this handoff in place.
   removed, and PR #33 remains Draft/unmerged. The bounded local collector repair consumes that
   deferred render turn, re-proves decoded thumbnail settlement, and only then enters the unchanged
   GC/snapshot sequence. Its paired selftest reproduces the old placeholder capture. Collector
-  authority changed, so the budget is fail-closed `calibration-required` pending fresh evidence.
+  authority changed, so the old samples were retired rather than rebound.
+- Clean collector source `14626a70a88793a339472204709348d210956ecc` completed three fresh
+  current-product candidates and one paired legacy baseline under exact Edge `.101`, one attempt
+  each and zero retries. The baseline retained all four sealed faults plus 14 phone / 13 desktop
+  ceiling breaches. Active budget source `e8898bf3a12d094eefc99fe188a217d9e60058a0` selected unchanged
+  strict ceilings with new three-run headroom and budget SHA-256 `28b958678fa2e95bb7b906cb10bd1a422dfe0b52867400e8722fbf6befddb15d`.
+  Independent run `20260823-pr33-focus-settlement-certification` passed 78/78, complete lifecycle,
+  and named verification at that clean source; its report raw/gzip SHA-256 are `d1ea225b…` /
+  `8e09255b…`. Evidence-bound descendant `d359d8c12fcb67677d7f95c00a43e2cc31ea531a` then passed the
+  complete local root/v2/browser battery: root validation/Smoke/training/rarity/dead-code; layout
+  787/787; 573 v2 tests with one intentional skip; all type/art/coverage/spec gates; Compendium
+  78/78 and SceneMemory 42/42 with named verifiers; real-browser Slice Smoke; Glass 12/12; nine
+  personas; and origin-isolated preview browser smoke. The Mac's available Chromium for generic UI
+  gates was exact Edge `.101`; hosted Chrome remains owned by the guarded workflow.
 - Keep Arc 1A's six-image Compendium review and Arc 1C's phone/desktop silhouette/readability review
   open as HUMAN work. After review/integration, the implementation spine is **F3 → F4 → Arc 2**.
 
@@ -165,16 +178,16 @@ the archive verbatim and refresh this handoff in place.
 **Current side:** OpenAI/Codex macOS owns
 `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`. Arc 1 product/ruler,
 activation, retained evidence, references, and Claude review remediation are published to matching
-`origin/openai/mac` at exact head `ebfc3bf…`. The worktree now contains the bounded focus-settlement
-collector repair and fail-closed calibration-required budget; it is not yet committed, recalibrated,
-or pushed.
+`origin/openai/mac` at exact head `ebfc3bf…`. The local branch is three clean commits ahead through
+tested evidence descendant `d359d8c…`: focus-settlement collector repair, fresh calibration/active
+budget, and retained independent certificate. Nothing from this repair has been pushed.
 
 **GitHub step:** PR #33 is draft, mergeable, unlabeled, and terminal-red at consumed runs
 `32609389977`, `32611053651`, and `32614177932`. The third run's exact retained report is diagnosed;
-the local settlement repair is not yet recalibrated or pushed. Complete fresh calibration,
-independent certification, and the local battery at one clean changed head, then request one exact
-changed-head/base/label/runner-ceiling/no-retry authorization. Do not apply the label, dispatch, mark
-Ready, merge, or publish before that authority and terminal-green evidence.
+the permanent settlement repair, fresh calibration, independent certification, and complete local
+battery are green through `d359d8c…`. Commit this documentation-only handoff, then request one exact
+changed-head/base/label/runner-ceiling/no-retry authorization. Do not push, apply the label, dispatch,
+mark Ready, merge, or publish before that new authority and terminal-green evidence.
 
 **PR details:** [PR #33](https://github.com/TheDakk/Celestial-Frontier/pull/33), base `develop`, source
 `openai/mac`. Copy-ready title: **Arc 1 — Complete Compendium, scene ownership, and Shipyard foundations**
@@ -196,8 +209,9 @@ Copy-ready description:
 > `32611053651` passed that stage, then correctly rejected stale pre-Arc-1 Compendium producer
 > authority. Run `32614177932` passed both repairs and every preceding gate, then exposed the
 > focus-pinned deferred-render settlement boundary described above. All three reds were consumed
-> without retry. Fresh calibration/certification and the complete local battery are required at the
-> next changed head before any further hosted authorization.
+> without retry. The corrected boundary has paired negative control, three fresh candidates, a
+> paired broken baseline, strict active budget, independent 78/78 certification and named verifier,
+> and a complete local root/v2/browser battery through tested descendant `d359d8c…`.
 >
 > Claude's full-Arc review is complete and preserved with this PR. Its one MEDIUM and three LOW
 > findings are resolved at the current head. The Anthropic side did not copy, merge, or edit OpenAI
