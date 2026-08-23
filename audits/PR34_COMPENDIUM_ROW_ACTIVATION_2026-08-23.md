@@ -51,6 +51,7 @@ impersonating downstream art unanswerability.
 | candidate6 | `da4429ca04d72c63806d4dee92423bb06ce234c9cf43c1b5a6a02d328f6827b4` | `2e86982c5a75a5fa68af19eada2254c4dee923affbd5736cb4b5577e24cccc6b` |
 | paired baseline1 reduced sample | `621755c66c819955d20619f8205f2d6fa2116423c40405d6e3cdc77ac201544e` | `43d528e059b6fa31d5f7ff2d4ea0ee1916be106f18c8a51b6ebb80c304475534` |
 | diagnostic baseline2 | `4b9807e92037e44a1e79b1690fd896a150dfdf9583e77fa90fd572cffcfba3a3` | `b88e2ed2fc1dd1c5410792ff601e4053946098fcd309e6925f173d74bea63a14` |
+| exact-budget certification | `ea31612f16c978d30a40d8b6465f89e4e6f10f23b35ae996919e5ed0c7656108` | `1c6c12faaf984716c31aecb8b1e5c11767ed998892c6bd4eba9f4edf23a0f1eb` |
 
 Candidates 4/5b/6 each completed all 78 calibration outcomes and both native detail interactions.
 Baseline1 retains the four sealed product faults (`unwindowed-1500-rows`, `list-source-440`,
@@ -58,8 +59,11 @@ Baseline1 retains the four sealed product faults (`unwindowed-1500-rows`, `list-
 inventory. Baseline2 retains the four product faults but is diagnostic-only because its desktop
 warm jitter did not preserve that breach inventory. No numeric resource ceiling changed.
 
-## Remaining activation step
+## Exact-budget certification
 
-Commit the activated budget and durable evidence, then run one clean exact-budget 78/78 local
-certificate and its named verifier. Retain that report separately. Neither these calibrations nor a
-local certificate supplies hosted-green, merge, HUMAN-review, release or deployment authority.
+Clean committed source `7de42c6bb02f4c7af26053fa7a4cf45f5fbdc777` ran
+`20260823-pr34-row-activation-certification` once under the active budget. It completed 78/78 with
+zero findings, no partial or blocked outcomes, complete browser/server/workspace-lock lifecycle,
+and a passing named verifier. Both phone and desktop native detail interactions succeeded.
+Neither these calibrations nor this local certificate supplies hosted-green, merge, HUMAN-review,
+release or deployment authority.

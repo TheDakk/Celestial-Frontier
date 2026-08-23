@@ -229,9 +229,10 @@ for that incomplete desktop profile. The label was removed and the attempt is co
 Local repair `bf0ece6…` requires full row containment, independent exact hit ownership, and an
 immediate exact-detail receipt before any art wait. Three fresh retained candidates plus one paired
 legacy baseline preserve all numeric ceilings and four sealed baseline faults under measurement
-authority `cfc40f89…`; active budget SHA-256 is `208af955…`. A clean current-budget certificate is
-still required before a final changed head can be proposed. This local work does not authorize a
-push, label, hosted attempt, Ready transition, or merge.
+authority `cfc40f89…`; active budget SHA-256 is `208af955…`. Clean committed source `7de42c6…`
+passed local exact-budget run `20260823-pr34-row-activation-certification` 78/78 with complete
+lifecycle and named verification; raw/gzip report SHA-256 are `ea31612f…` / `1c6c12fa…`. This
+local work does not authorize a push, label, hosted attempt, Ready transition, or merge.
 
 ## Safe rollout of this guard
 

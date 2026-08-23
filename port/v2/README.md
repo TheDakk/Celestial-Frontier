@@ -52,8 +52,9 @@
 > and an immediate exact-detail receipt after the one native press/release. Three retained clean
 > candidates and paired legacy baseline1 activate measurement `cfc40f89…` and budget
 > `208af955…` without changing any numeric resource ceiling; the baseline retains all four faults.
-> A clean 78/78 exact-budget run and named verifier remain required before this local repair may be
-> proposed for another hosted attempt.
+> Clean committed source `7de42c6…` then passed local run
+> `20260823-pr34-row-activation-certification` 78/78 with complete lifecycle and named verification;
+> report raw/gzip SHA-256 are `ea31612f…` / `1c6c12fa…`. This is local authority only.
 >
 > PR #33 attempt 4, run `32618995487`, tested the exact authorized head/base once and is terminal-red,
 > consumed, and not retried. Its complete SceneMemory report passed 40/42: all memory, ownership,
