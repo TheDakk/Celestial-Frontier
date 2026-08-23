@@ -423,6 +423,10 @@ longer existed just as readily.
 > mtime against the newest source it claims to cover and refuse to report if it is older. The
 > sibling tool that always rebuilt (`speciesstrip`) was honest all session; the difference was
 > one `if`.
+> **The ruler must test the policy, not one shell spelling.** PR #33 run `32609389977` went red even
+> though SceneMemory rebuilt unconditionally: D-ART-36 recognized only `execSync('npx vite build')`
+> and missed `execFileSync(npm, ['run', 'build'])`. Every supported unconditional build form must
+> have a passing self-control, while conditional and missing-build forms independently stay red.
 
 ⚠ **"INDEPENDENT" PARAMETERS THAT SHARE A DERIVATION ARE ONE PARAMETER.** Six variation axes
 were computed as `(hash ^ salt) / 2^32` with salts 0x11, 0x22, 0x33… XOR-ing a small salt
