@@ -35,7 +35,7 @@ const EXPECTED_COLLECTOR_AUTHORITY =
 const HISTORICAL_MEASUREMENT_AUTHORITY =
   '2318f57bcadd83b2f540e3a2d1b8bea54ca6c88d1df8715318a341d4e2ae7cf2';
 const EXPECTED_PRODUCER_AUTHORITY =
-  'd32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900';
+  '5a316197d9aca27967f4e930f43089d2bbe2b9e4a66a40c207ea59c809405d94';
 type BrowserAuthority = {
   schema: string;
   scope: string;
@@ -47,17 +47,17 @@ type BrowserAuthority = {
 const EXPECTED_BROWSER_AUTHORITY: BrowserAuthority = {
   schema: COMPENDIUM_BROWSER_AUTHORITY_SCHEMA,
   scope: COMPENDIUM_BROWSER_AUTHORITY_SCOPE,
-  product: 'Edg/151.0.4129.86',
-  revision: '@083e754915c9ab93da1d8f7b9c860e4520273900',
-  jsVersion: '15.1.23.7',
+  product: 'Edg/151.0.4129.101',
+  revision: '@cc1d9f4080fd9140611a9600b8d1615db310105d',
+  jsVersion: '15.1.23.9',
   protocolVersion: '1.3',
 };
 const EXPECTED_CANDIDATE_RUNS = [
-  '20260820-arc1a-server-shutdown-candidate27',
-  '20260820-arc1a-server-shutdown-candidate28',
-  '20260820-arc1a-server-shutdown-candidate29',
+  '20260823-arc1-current-product-candidate1',
+  '20260823-arc1-current-product-candidate2',
+  '20260823-arc1-current-product-candidate3',
 ] as const;
-const EXPECTED_BASELINE_RUN = '20260820-arc1a-server-shutdown-baseline11';
+const EXPECTED_BASELINE_RUN = '20260823-arc1-current-product-baseline1';
 const HISTORICAL_CANDIDATE_RUNS = [
   'Candidate24/25/26',
 ] as const;
@@ -375,7 +375,7 @@ describe('Arc 1A Compendium budget authority', () => {
       expect(activeBudget.pairedBrokenBaseline.commit)
         .toBe('38447019517147319bd08c598202d097ee866874');
       expect(activeBudget.pairedBrokenBaseline.collectorCommit).toBeNull();
-      expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.86');
+      expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.101');
       expect(activeBudget.calibration.selectionRule).toContain('fresh exact');
       expect(activeBudget.calibration.selectionRule).toContain(HISTORICAL_MEASUREMENT_AUTHORITY);
       expect(activeBudget.calibration.selectionRule).toContain('historical evidence only');

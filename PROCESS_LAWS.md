@@ -971,6 +971,14 @@ exact-source browser evidence; whether the selected head has such ignored eviden
 its named artifacts, never cached in this reference. Activation or an earlier-head PASS is not
 certification.
 
+**A downstream arc can invalidate an already-green sub-gate without changing its worker.** PR #33
+run `32611053651` passed the repaired art ruler, then Compendium correctly rejected the pre-Arc-1
+producer: Arc 1B/1C changed the built owner/index while the worker and painter stayed byte-identical.
+Producer authority covers the whole measured ownership path, not only the leaf doing the paint.
+Never rebind an old sample to the new hash or bump a ceiling from the red run. Reopen the ruler as
+calibration-required, retain the mismatch as evidence, collect a fresh paired broken baseline and
+independent current-product candidates under one exact browser authority, then certify once.
+
 **Correction earned by PR #32's first serviced-turn Chrome Smoke:** a CDP session that answers
 `Runtime.evaluate` does not prove that its document owns a rendering opportunity. Exact-head run
 `20260820063539761-70885-f80e1a2198fc` created a live held-painter owner, then created a second
