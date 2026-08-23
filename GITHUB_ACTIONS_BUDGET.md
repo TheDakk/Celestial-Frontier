@@ -142,6 +142,12 @@ were unchanged; the owner/index change is still producer authority and cannot re
 ceilings. Later browser gates were skipped. The label was removed immediately; this attempt is
 consumed, PR #33 remains draft and unmerged, and no future hosted attempt is authorized.
 
+The local repair batch reopens and freshly calibrates Compendium under the current Arc-1 producer
+and exact Edge `.101`, then updates both guarded hosted workflows and the fail-closed preflight from
+the stale `.86` package URL/SHA/version tuple to the budget's exact `.101` tuple. The workflow and
+preflight bytes must be committed, locally selftested, and included in a new changed head before any
+future authorization; neither consumed run may be retried.
+
 When Nick explicitly lifts `FROZEN`, he may authorize exactly one hosted attempt. Before any GitHub write, the
 handoff must record:
 
