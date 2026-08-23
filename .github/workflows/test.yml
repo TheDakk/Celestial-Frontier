@@ -124,15 +124,15 @@ jobs:
       - name: install exact Arc 1A Edge calibration browser
         shell: bash
         env:
-          EDGE_PACKAGE_URL: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.86-1_amd64.deb
-          EDGE_PACKAGE_SHA256: 26b02cb1c6465756df94b9ef34191b614f3df627ba21b7b00b641f44cc1d8343
+          EDGE_PACKAGE_URL: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.101-1_amd64.deb
+          EDGE_PACKAGE_SHA256: bd7604025424914a61c06293cb6bf269141a29d8c54cf1997110bc96d3365d60
         run: |
           set -euo pipefail
-          edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.86-1_amd64.deb"
+          edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.101-1_amd64.deb"
           curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"
           printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$edge_package" | sha256sum --check --strict
           sudo apt-get install --reinstall --yes "$edge_package"
-          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.86-1"
+          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.101-1"
           test -x "$CF_BROWSER"
       - name: browser provenance and Compendium memory instrument selftests
         working-directory: port/v2
@@ -154,7 +154,7 @@ jobs:
         run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
 
       # Arc 1C has a separate browser/product authority from Arc 1A. Install
-      # its exact Edge only after the .86 Compendium report is terminal and
+      # its exact contract only after the .101 Compendium report is terminal and
       # verified; neither ruler borrows the other's browser identity.
       - name: install exact Arc 1C Edge scene-memory browser
         shell: bash

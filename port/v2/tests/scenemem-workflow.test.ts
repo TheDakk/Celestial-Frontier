@@ -40,24 +40,31 @@ const satisfiesZeroDefaultPolicy = (source: string): boolean => {
 
 const satisfiesSceneWorkflow = (source: string): boolean => {
   if (!satisfiesZeroDefaultPolicy(source)) return false;
+  const ownedStart = source.indexOf(ORDERED_CONTRACT[0]);
+  const ownedEnd = source.indexOf(ORDERED_CONTRACT.at(-1)!);
+  if (ownedStart < 0 || ownedEnd <= ownedStart) return false;
+  const owned = source.slice(ownedStart, ownedEnd + ORDERED_CONTRACT.at(-1)!.length);
   let cursor = -1;
   for (const token of ORDERED_CONTRACT) {
-    const index = source.indexOf(token);
-    if (index <= cursor || source.indexOf(token, index + 1) !== -1) return false;
+    const index = owned.indexOf(token);
+    if (index <= cursor || owned.indexOf(token, index + 1) !== -1) return false;
     cursor = index;
   }
   const env = 'CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem';
   if (source.split(env).length !== 2) return false;
-  const owned = source.slice(
-    source.indexOf(ORDERED_CONTRACT[1]),
-    source.indexOf(ORDERED_CONTRACT.at(-1)!),
-  );
   return !owned.includes('continue-on-error')
     && !owned.includes('--calibrate')
     && !owned.includes('--allow-dirty')
     && source.includes('- name: archive scene-memory evidence')
     && source.includes('name: v2-scene-memory-evidence')
     && source.includes('path: port/v2/apps/game/smoke/scenemem-report.json');
+};
+
+const replaceOwnedToken = (source: string, token: string): string => {
+  const ownedStart = source.indexOf(ORDERED_CONTRACT[0]);
+  const tokenAt = source.indexOf(token, Math.max(0, ownedStart));
+  if (tokenAt < 0) return source;
+  return `${source.slice(0, tokenAt)}BROKEN${source.slice(tokenAt + token.length)}`;
 };
 
 describe('scene-memory test-battery workflow contract', () => {
@@ -77,7 +84,7 @@ describe('scene-memory test-battery workflow contract', () => {
 
   it('rejects every missing or drifted owned step', () => {
     for (const token of ORDERED_CONTRACT) {
-      expect(satisfiesSceneWorkflow(workflow.replace(token, 'BROKEN')), token).toBe(false);
+      expect(satisfiesSceneWorkflow(replaceOwnedToken(workflow, token)), token).toBe(false);
     }
   });
 });
