@@ -54,6 +54,14 @@
 > phone/desktop ship-readability judgment, whole-Gate closure, release, and publication remain open.
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
+>
+> PR #34 run `32665404776` subsequently exposed one Compendium native-input ruler defect: a
+> partially positioned virtual row could lose hit ownership between separate hosted press/release
+> commands, and the gate then misdiagnosed the absent detail as an art timeout. Local collector
+> `50c28928…` now requires full containment, independent hit ownership, and an immediate exact-detail
+> receipt. Three retained candidates plus paired baseline1 activate measurement `cfc40f89…` and
+> budget `208af955…` with every numeric product ceiling unchanged. Exact-budget certification and a
+> new explicitly authorized hosted attempt remain pending.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 

@@ -44,6 +44,17 @@
 > terminal-green PR #33 run is consumed and merged; no subsequent hosted attempt is authorized by
 > this handoff. Local evidence still does not authorize a release, preview publication, or deployment.
 >
+> **PR #34 Compendium interaction-ruler repair (2026-08-23; local certification pending):** hosted
+> run `32665404776` did not expose a memory leak. Its desktop second 440-detail native click never
+> activated a partially positioned virtual row, after which the gate incorrectly spent 30 seconds
+> waiting for absent detail art and surfaced its final clipped 46 ms poll as the diagnosis. Collector
+> `50c28928…` now requires full containment, an inset point with independent exact hit ownership,
+> and an immediate exact-detail receipt after the one native press/release. Three retained clean
+> candidates and paired legacy baseline1 activate measurement `cfc40f89…` and budget
+> `208af955…` without changing any numeric resource ceiling; the baseline retains all four faults.
+> A clean 78/78 exact-budget run and named verifier remain required before this local repair may be
+> proposed for another hosted attempt.
+>
 > PR #33 attempt 4, run `32618995487`, tested the exact authorized head/base once and is terminal-red,
 > consumed, and not retried. Its complete SceneMemory report passed 40/42: all memory, ownership,
 > cleanup, same-document ticker liveness, and independent-heartbeat evidence was green, while only

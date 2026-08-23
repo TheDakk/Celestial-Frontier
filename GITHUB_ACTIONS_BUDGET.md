@@ -2,7 +2,10 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** PR #33's fifth and final authorized changed-head attempt,
+**Hosted attempt state: none authorized.** PR #34's authorized documentation-sync attempt, run
+`32665404776`, is consumed terminal-red; its Compendium interaction-ruler evidence is retained and
+the approval label was removed. No retry or replacement attempt is authorized. PR #33's fifth and
+final authorized changed-head attempt,
 run `32646110946`, passed terminal-green (one attempt, no retry; battery 50m29s), its label was
 removed, and it merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`.
 Runs `32609389977`, `32611053651`, `32614177932`, and `32618995487` remain consumed terminal-red
@@ -212,6 +215,23 @@ could start seven runners with 175 combined
 configured job-minutes on every PR update, then repeat on `develop` and fan out into sync/publication.
 That automatic fanout is retired. Parallel wall-clock speed is not worth multiplying finite hosted
 minutes or letting unrelated jobs continue after the first deterministic red.
+
+## Authorized PR #34 attempt
+
+PR #34 tested documentation-sync head `4909069ba6f1e2d5dee62286d29b0bc8201186ee` against base
+`8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` once in run `32665404776`, under the normal
+`actions-budget-approved` label, 92-runner-minute ceiling, and no-retry rule. All earlier gates and
+the phone Compendium profile passed. The desktop second 440-detail native click did not activate its
+virtual row; the gate then waited for detail art that could not exist and ended on a final clipped
+46 ms CDP command. The exact retained report shows healthy transport and no product memory verdict
+for that incomplete desktop profile. The label was removed and the attempt is consumed.
+
+Local repair `bf0ece6…` requires full row containment, independent exact hit ownership, and an
+immediate exact-detail receipt before any art wait. Three fresh retained candidates plus one paired
+legacy baseline preserve all numeric ceilings and four sealed baseline faults under measurement
+authority `cfc40f89…`; active budget SHA-256 is `208af955…`. A clean current-budget certificate is
+still required before a final changed head can be proposed. This local work does not authorize a
+push, label, hosted attempt, Ready transition, or merge.
 
 ## Safe rollout of this guard
 

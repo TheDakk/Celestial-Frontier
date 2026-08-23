@@ -208,8 +208,11 @@ owned 440px image, and Planetside uses the same lease path. Its standalone `comp
 retains the Arc-local four-field browser authority
 `arc1a-compendium-memory-only`: product `Edg/151.0.4129.101`, revision
 `@cc1d9f4080fd9140611a9600b8d1615db310105d`, JavaScript version `15.1.23.9`, and CDP protocol
-version `1.3`; active budget SHA-256 is
-`28b958678fa2e95bb7b906cb10bd1a422dfe0b52867400e8722fbf6befddb15d`. Executable path and user
+version `1.3`. PR #34's repaired native-row interaction authority is measurement `cfc40f89…` under
+collector `50c28928…`; active budget SHA-256 is
+`208af9558317cae7748f01470dd50e608485d4a197212ecd04db823f7c15a424`. It requires full row
+containment, independent hit ownership and an immediate exact-detail receipt before judging art;
+numeric resource ceilings are unchanged. Executable path and user
 agent remain recorded provenance, not cross-host match fields.
 
 Ubuntu provisions `/usr/bin/microsoft-edge-stable` only for the ordinary Compendium job and

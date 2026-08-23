@@ -33,6 +33,24 @@ the archive verbatim and refresh this handoff in place.
 - `main`, the production site, and the parked development-preview publisher are
   unchanged. No release, deployment, version bump, publication, or save-schema change occurred.
 
+### PR #34 Compendium ruler repair
+
+- The documentation-sync PR #34 battery run `32665404776` is consumed terminal-red and was not
+  retried. The label was removed. Its retained report proves the desktop second 440-detail native
+  click never activated the virtual row; the following 30-second art wait ended on a final clipped
+  46 ms CDP poll. This was an interaction-ruler failure, not a Compendium memory leak or a 46 ms
+  product SLA.
+- Local collector repair `bf0ece6c7d32410f6cb76fb0a4920c0332d080c4` requires full row
+  containment, exact independent hit ownership, and an immediate exact-detail receipt after the
+  one native press/release. Its selftest independently breaks those conditions. Three retained
+  one-attempt candidates and paired legacy baseline1 are green under measurement authority
+  `cfc40f891e817c54c5b382cd5ef39ff606a0af27e1c142382c19da3d213edf0a`; every numeric product
+  ceiling is unchanged and the baseline still preserves all four sealed faults.
+- The active replacement budget is SHA-256
+  `208af9558317cae7748f01470dd50e608485d4a197212ecd04db823f7c15a424`. A clean exact-budget
+  78/78 local certificate and its named verifier are the next required step before the final local
+  evidence commit. No push, hosted attempt, Ready transition, or merge is authorized yet.
+
 ### Remaining Arc 1 evidence
 
 - HUMAN review remains required for Arc 1A's six Compendium list/detail/focus images
@@ -91,9 +109,9 @@ the archive verbatim and refresh this handoff in place.
    merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
    manual file copying. Nick does not need to open Claude now.
 
-**Current side:** Codex macOS is on `openai/mac`; this documentation handoff is
-local until a later scoped PR is authorized.
+**Current side:** Codex macOS is on `openai/mac`; PR #34's ruler repair and replacement evidence
+are local and ahead of `origin/openai/mac`.
 **GitHub step:** none.
 **Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.
-**Actions budget:** `UNFROZEN`; run `32646110946` is consumed terminal-green;
-no new hosted attempt is authorized by this handoff.
+**Actions budget:** `UNFROZEN`; PR #34 run `32665404776` is consumed terminal-red and its label was
+removed; no new hosted attempt is authorized by this handoff.
