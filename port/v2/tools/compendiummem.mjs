@@ -1093,6 +1093,27 @@ export async function collectCandidateSnapshot({
   return { diagnostics: observed.diagnostics, heap, dom, raw: observed.raw };
 }
 
+/** A focused virtual row can keep the old pinned row mounted while the normal
+ * window changes on the next renderer turn. A ready observation taken before
+ * that turn is therefore not sufficient: the snapshot's own mandatory rAF
+ * can create fresh placeholder leases and then measure them. Consume the
+ * deferred render boundary, re-prove exact surface settlement, and only then
+ * enter the existing post-rAF/post-GC snapshot sequence. */
+export async function collectCandidateSettledThumbnailSnapshot({
+  sessionId, label, rawSnapshotExpression, evaluate, sendStage, waitReady,
+}) {
+  assert(typeof waitReady === 'function',
+    'settled thumbnail snapshot requires a readiness observer');
+  await waitReady(sessionId);
+  await evaluate(sessionId,
+    `new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true))))`,
+    `${label} deferred-window settlement`);
+  await waitReady(sessionId);
+  return await collectCandidateSnapshot({
+    sessionId, label, rawSnapshotExpression, evaluate, sendStage,
+  });
+}
+
 async function collectProfile({
   profile, viewport, fixture, browser, origin, veteranRaw, runId, candidateSpeciesArt,
 }) {
@@ -1606,7 +1627,14 @@ async function collectProfile({
       `document.activeElement?.closest?.('[data-cid]')?.dataset.cid===${JSON.stringify(targets.pinned)}`,
       'first-row focus'), `${profile}: native Tab did not focus the first logical row`);
     await scrollToIndex(sessionId, 750);
-    const focusPinned = await snapshot(sessionId, 'focused off-window row');
+    const focusPinned = await collectCandidateSettledThumbnailSnapshot({
+      sessionId,
+      label: 'focused off-window row',
+      rawSnapshotExpression,
+      evaluate,
+      sendStage,
+      waitReady: (candidateSessionId) => waitListReady(candidateSessionId, 1500),
+    });
 
     /* Reopen from the dock so final Close focus provenance belongs to the
        dock/rail opener rather than the earlier global search control. */

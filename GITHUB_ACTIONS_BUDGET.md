@@ -4,7 +4,8 @@
 
 **Hosted attempt state: none authorized.** PR #32's three post-freeze closure attempts are consumed;
 the final changed-head attempt passed, its label was removed, and the PR merged. PR #33 runs
-`32609389977` and `32611053651` are also consumed and terminal-red; their labels were removed.
+`32609389977`, `32611053651`, and `32614177932` are also consumed and terminal-red; their labels
+were removed.
 Details are below.
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
@@ -148,6 +149,18 @@ the stale `.86` package URL/SHA/version tuple to the budget's exact `.101` tuple
 `63107f656c4623f1b9c2df922346e6bc08f601b6` passed Compendium 78/78, SceneMemory 42/42, both named
 verifiers, the complete root/v2/browser battery, and all workflow/policy selftests. It remains local;
 a new exact changed-head authorization is still required. Neither consumed run may be retried.
+
+Nick then authorized exact head `ebfc3bfa5e1cac722788c8ce104f80c0408ff3f9` against the same base,
+label, 92-minute ceiling, and no-retry rule. Run `32614177932`, attempt 1, authorized and reached the
+fresh `.101` Compendium measurement after every earlier root/v2/static gate passed. Desktop passed.
+The phone focus-pinned point sampled `cmem-0740` and `cmem-0743` as 0×0 placeholders with exactly two
+live subscribers: the collector had proved the prior window ready, then its own mandatory renderer
+turn remounted a fresh normal window before snapshot. Every other byte/pixel/cache/queue/lease/
+portrait ceiling passed; the one paint error was the gate's intentional, recovered negative-control
+job. The run is terminal-red and consumed, its label was removed immediately, PR #33 remains Draft
+and unmerged, and no retry or future hosted attempt is authorized. The local bounded repair consumes
+the deferred virtual-window render turn and re-proves decoded thumbnail settlement before the
+unchanged GC/snapshot sequence; changing collector authority reopens calibration fail-closed.
 
 When Nick explicitly lifts `FROZEN`, he may authorize exactly one hosted attempt. Before any GitHub write, the
 handoff must record:
