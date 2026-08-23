@@ -61,6 +61,7 @@ import {
   candidateThumbSettlementExpression,
   candidateProducerErrorPreArmExpression, candidateProducerErrorWorkExpression,
   candidateFilterInputExpression, candidateFilterTelemetryExpression,
+  candidateRowPointExpression,
   collectCandidateSnapshot, collectCandidateSettledThumbnailSnapshot,
   createCandidateCollectorObservations,
   createCandidateCommandRecorder,
@@ -70,6 +71,7 @@ import {
   finalizeCompendiumLifecycle,
   validCandidateThumbSettlementExpression,
   validCandidateFilterTelemetryExpression, validCandidateArmProducerErrorExpression,
+  validCandidateRowPointExpression,
   validCandidateProducerErrorExpression, verifyCompendiumTerminalReport,
 } from './compendiummem.mjs';
 
@@ -102,6 +104,19 @@ assert(!candidateLegacyWindowSpeciesArtSource(
 assert(!candidateLegacyWindowSpeciesArtSource(
   'canvas.toDataURL()',
 ), 'an unrelated canvas encoder impersonated the legacy synchronous species-art facade');
+
+const rowPointSource = candidateRowPointExpression('cmem-row-selftest');
+assert(validCandidateRowPointExpression(rowPointSource, 'cmem-row-selftest'),
+  'the exact row activation expression was rejected');
+assert(rowPointSource.includes('elementFromPoint')
+  && rowPointSource.includes('r.top<top-0.5||r.bottom>bottom+0.5'),
+'row activation lost its full-viewport and hit-test preconditions');
+assert(!validCandidateRowPointExpression(
+  rowPointSource.replace("document.elementFromPoint(x,y)?.closest?.('[data-cid]')", 'e'),
+  'cmem-row-selftest',
+), 'a row activation expression without an independent hit test was accepted');
+assertThrows(() => candidateRowPointExpression(''),
+  'an empty row activation identity was accepted');
 
 {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-species-art-graph-'));

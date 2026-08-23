@@ -901,6 +901,30 @@ export function validCandidateFilterTelemetryExpression(source) {
   return true;
 }
 
+/* A native press/release pair is meaningful only while the exact virtual row
+   is fully inside the scroll viewport and owns the hit-test point. A merely
+   intersecting row can move when focus/measurement settles between the two
+   CDP commands, turning a healthy product into a 30-second false wait. */
+export function candidateRowPointExpression(logicalId) {
+  assert(typeof logicalId === 'string' && logicalId,
+    'candidate row activation identity is invalid');
+  return `(()=>{
+    const e=[...document.querySelectorAll('#codexpanel [data-cid]')].find(x=>x.dataset.cid===${JSON.stringify(logicalId)});
+    const s=document.querySelector('[data-sel="codex-scroll"]');if(!e||!s)return null;
+    const r=e.getBoundingClientRect(),sr=s.getBoundingClientRect(),inset=8;
+    const left=Math.max(r.left,sr.left,0)+inset,right=Math.min(r.right,sr.right,innerWidth)-inset;
+    const top=Math.max(sr.top,0),bottom=Math.min(sr.bottom,innerHeight);
+    if(right<=left||r.top<top-0.5||r.bottom>bottom+0.5)return null;
+    const x=(left+right)/2,y=(r.top+r.bottom)/2;
+    const hit=document.elementFromPoint(x,y)?.closest?.('[data-cid]');
+    return hit===e?{x,y}:null})()`;
+}
+
+export function validCandidateRowPointExpression(source, logicalId) {
+  return typeof source === 'string' && typeof logicalId === 'string' && logicalId.length > 0
+    && source === candidateRowPointExpression(logicalId);
+}
+
 /* Native search replacement is evidence, not setup convenience. The hidden
    branch uses Search's real outside-boundary pointer close; the visible branch
    uses a bounded focus-only setup followed by native keys; empty clear uses
@@ -1267,13 +1291,12 @@ async function collectProfile({
       type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sessionId);
   };
-  const rowPoint = async (sessionId, logicalId) => await waitValue(sessionId, `row ${logicalId}`, `(()=>{
-    const e=[...document.querySelectorAll('#codexpanel [data-cid]')].find(x=>x.dataset.cid===${JSON.stringify(logicalId)});
-    const s=document.querySelector('[data-sel="codex-scroll"]');if(!e||!s)return null;
-    const r=e.getBoundingClientRect(),sr=s.getBoundingClientRect();
-    const left=Math.max(r.left,sr.left,0),right=Math.min(r.right,sr.right,innerWidth);
-    const top=Math.max(r.top,sr.top,0),bottom=Math.min(r.bottom,sr.bottom,innerHeight);
-    return right>left&&bottom>top?{x:(left+right)/2,y:(top+bottom)/2}:null})()`);
+  const rowPoint = async (sessionId, logicalId) => {
+    const expression = candidateRowPointExpression(logicalId);
+    assert(validCandidateRowPointExpression(expression, logicalId),
+      `${profile}: row activation expression was invalid`);
+    return await waitValue(sessionId, `row ${logicalId}`, expression);
+  };
   const clickRow = async (sessionId, logicalId) => {
     const point = await rowPoint(sessionId, logicalId);
     await sendStage(`row ${logicalId} mouse press`, 'Input.dispatchMouseEvent', {
@@ -1282,6 +1305,11 @@ async function collectProfile({
     await sendStage(`row ${logicalId} mouse release`, 'Input.dispatchMouseEvent', {
       type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sessionId);
+    const receipt = await evaluate(sessionId, `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
+      return {mode:d.panel.mode,logicalId:d.surfaces.detail.logicalId}})()`,
+    `row ${logicalId} activation receipt`);
+    assert(receipt?.mode === 'detail' && receipt.logicalId === logicalId,
+      `${profile}: native row activation did not open exact detail ${logicalId}`);
   };
   const key = async (
     sessionId, keyName, code, modifiers = 0, labelPrefix = '', commands = [],
@@ -1306,18 +1334,24 @@ async function collectProfile({
       const logicalId = fixture.rows[wanted]?.[0];
       const visibility = await evaluate(sessionId, `(()=>{const row=[...document.querySelectorAll('#codexpanel [data-cid]')]
         .find(x=>x.dataset.cid===${JSON.stringify(logicalId)});const s=document.querySelector('[data-sel="codex-scroll"]');
-        if(!row||!s)return {intersects:false,direction:null};const r=row.getBoundingClientRect(),sr=s.getBoundingClientRect();
+        if(!row||!s)return {intersects:false,fullyContained:false,direction:null};const r=row.getBoundingClientRect(),sr=s.getBoundingClientRect();
         const top=Math.max(sr.top,0),bottom=Math.min(sr.bottom,innerHeight);
-        return {intersects:r.bottom>top+0.5&&r.top<bottom-0.5,
-          direction:r.top>=bottom-0.5?1:r.bottom<=top+0.5?-1:0}})()`,
+        const intersects=r.bottom>top&&r.top<bottom;
+        return {intersects,fullyContained:intersects&&r.top>=top-0.5&&r.bottom<=bottom+0.5,
+          direction:r.top<top-0.5?-1:r.bottom>bottom+0.5?1:0}})()`,
       `scroll visibility ${wanted}`);
-      if (wanted >= windowState.start && wanted < windowState.end && visibility.intersects) {
+      if (wanted >= windowState.start && wanted < windowState.end
+        && visibility.fullyContained) {
         if (settle) {
           await waitListReady(sessionId);
           const settled = await evaluate(sessionId, `(()=>{const row=[...document.querySelectorAll('#codexpanel [data-cid]')]
             .find(x=>x.dataset.cid===${JSON.stringify(logicalId)});const s=document.querySelector('[data-sel="codex-scroll"]');
-            if(!row||!s)return false;const r=row.getBoundingClientRect(),sr=s.getBoundingClientRect();
-            return r.bottom>Math.max(sr.top,0)+0.5&&r.top<Math.min(sr.bottom,innerHeight)-0.5})()`,
+            if(!row||!s)return false;const r=row.getBoundingClientRect(),sr=s.getBoundingClientRect(),inset=8;
+            const left=Math.max(r.left,sr.left,0)+inset,right=Math.min(r.right,sr.right,innerWidth)-inset;
+            const top=Math.max(sr.top,0),bottom=Math.min(sr.bottom,innerHeight);
+            const x=(left+right)/2,y=(r.top+r.bottom)/2;
+            return right>left&&r.top>=top-0.5&&r.bottom<=bottom+0.5
+              &&document.elementFromPoint(x,y)?.closest?.('[data-cid]')===row})()`,
           `settled scroll visibility ${wanted}`);
           if (!settled) continue;
         }
