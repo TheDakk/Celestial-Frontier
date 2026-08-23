@@ -120,7 +120,42 @@ jobs:
           npm run coveragegap
           node tools/speccheck.mjs
 
-      # Compendium resource certification retains its exact Edge authority.
+      # SceneMemory is the shorter exact-Edge ruler, so it fails first without
+      # weakening either authority or retrying either certificate.
+      - name: install exact Arc 1C Edge scene-memory browser
+        shell: bash
+        env:
+          EDGE_PACKAGE_URL: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.101-1_amd64.deb
+          EDGE_PACKAGE_SHA256: bd7604025424914a61c06293cb6bf269141a29d8c54cf1997110bc96d3365d60
+        run: |
+          set -euo pipefail
+          scene_edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.101-1_amd64.deb"
+          curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$scene_edge_package"
+          printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$scene_edge_package" | sha256sum --check --strict
+          sudo apt-get install --reinstall --yes "$scene_edge_package"
+          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.101-1"
+          test -x "$CF_BROWSER"
+      - name: scene-memory instrument and calibration controls
+        working-directory: port/v2
+        run: |
+          node tools/browserpath.mjs --selftest
+          node --check tools/scenemem.mjs
+          node --check tools/scenemem-contract.mjs
+          npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts
+      - name: one-attempt scene-memory certification
+        id: scenemem
+        timeout-minutes: 10
+        working-directory: port/v2
+        run: node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json
+      - name: verify current scene-memory evidence
+        if: >-
+          always() &&
+          (steps.scenemem.outcome == 'success' || steps.scenemem.outcome == 'failure')
+        working-directory: port/v2
+        run: node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v2.json
+
+      # Compendium retains its separately sealed install -> preflight -> live
+      # certificate chain after the shorter SceneMemory ruler is terminal-green.
       - name: install exact Arc 1A Edge calibration browser
         shell: bash
         env:
@@ -152,41 +187,6 @@ jobs:
           (steps.compendium.outcome == 'success' || steps.compendium.outcome == 'failure')
         working-directory: port/v2
         run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
-
-      # Arc 1C has a separate browser/product authority from Arc 1A. Install
-      # its exact contract only after the .101 Compendium report is terminal and
-      # verified; neither ruler borrows the other's browser identity.
-      - name: install exact Arc 1C Edge scene-memory browser
-        shell: bash
-        env:
-          EDGE_PACKAGE_URL: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.101-1_amd64.deb
-          EDGE_PACKAGE_SHA256: bd7604025424914a61c06293cb6bf269141a29d8c54cf1997110bc96d3365d60
-        run: |
-          set -euo pipefail
-          scene_edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.101-1_amd64.deb"
-          curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$scene_edge_package"
-          printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$scene_edge_package" | sha256sum --check --strict
-          sudo apt-get install --yes "$scene_edge_package"
-          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.101-1"
-          test -x "$CF_BROWSER"
-      - name: scene-memory instrument and calibration controls
-        working-directory: port/v2
-        run: |
-          node tools/browserpath.mjs --selftest
-          node --check tools/scenemem.mjs
-          node --check tools/scenemem-contract.mjs
-          npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts
-      - name: one-attempt scene-memory certification
-        id: scenemem
-        timeout-minutes: 10
-        working-directory: port/v2
-        run: node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json
-      - name: verify current scene-memory evidence
-        if: >-
-          always() &&
-          (steps.scenemem.outcome == 'success' || steps.scenemem.outcome == 'failure')
-        working-directory: port/v2
-        run: node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v2.json
 
       # Chrome gates remain one attempt each and run only after every cheaper
       # gate and the exact-Edge ruler are green.

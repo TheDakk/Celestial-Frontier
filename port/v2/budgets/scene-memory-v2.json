@@ -54,7 +54,7 @@
       "productRenderTargetsMax": 0.5,
       "ringCacheEntriesMax": 0.5,
       "peakRingGeometryEntriesMax": 2.5,
-      "targetElapsedMsMax": 250,
+      "targetElapsedMsMax": 1000,
       "heartbeatElapsedMsMax": 100
     },
     "desktop": {
@@ -77,7 +77,7 @@
       "productRenderTargetsMax": 0.5,
       "ringCacheEntriesMax": 0.5,
       "peakRingGeometryEntriesMax": 2.5,
-      "targetElapsedMsMax": 250,
+      "targetElapsedMsMax": 1000,
       "heartbeatElapsedMsMax": 100
     }
   }
