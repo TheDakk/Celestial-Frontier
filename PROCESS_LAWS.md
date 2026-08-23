@@ -33,6 +33,19 @@ shadow, and restoration to green. Never broaden product CSS from `:focus-visible
 reorder the route to hide inherited modality, or accept a permanent inline outline as the positive
 control.
 
+⚠⚠ **A READY VIRTUAL WINDOW MUST SURVIVE THE SNAPSHOT'S OWN RENDER TURN** (2026-08-23).
+PR #33 run `32614177932` first proved every mounted Compendium thumbnail decoded and the queue
+drained, then its mandatory pre-GC animation turn remounted part of the normal window while an
+off-window focused row stayed pinned. The snapshot caught two new 0×0 placeholders and two live
+subscribers. A pre-render readiness observation therefore cannot certify a post-render snapshot.
+
+For a virtualized resource surface, consume the deferred render/layout boundary, re-prove the exact
+mounted identities, decoded dimensions, ownership and zero queued/active work, and only then enter
+the ordinary render-turn/GC/snapshot sequence. Negative-control the historical ordering by making
+that first renderer turn create fresh placeholders; it must remain red while the re-settled ordering
+is green. Do not widen subscriber ceilings, ignore placeholder rows, remove the mandatory render
+turn, or retry a red hosted sample.
+
 ⚠⚠ **A REQUESTED TEXTURE TIER IS NOT AN ATTACHED-BACKING OUTCOME** (2026-08-22).
 Arc 1C's first named HD-attachment integration advanced its bookkeeping tier after a 768/1024
 request even when the asynchronous painter returned the same 512px predecessor. A memory gate that

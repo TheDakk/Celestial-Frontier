@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## Current port status — 2026-08-22
+## Current port status — 2026-08-23
 
 > **Arc 1 automated implementation is locally complete; review, hosted CI, integration, and HUMAN
 > judgment remain open.** Arc 1A's maximum Compendium is integrated in `develop` through PR #32,
@@ -37,6 +37,15 @@
 > battery. At this handoff Arc 1 has **zero authorized hosted attempts**; local green does not
 > authorize an approval label, hosted run, Ready transition, merge, preview publication, release,
 > or deployment.
+>
+> PR #33 run `32614177932` passed every preceding root/v2/static gate and desktop Compendium, then
+> exposed one phone-only collector boundary: the focus-pinned point proved the old virtual window
+> ready before its mandatory animation turn, that turn mounted two fresh rows, and the immediate
+> snapshot observed two 0×0 placeholders/two subscribers. The corrected collector consumes that
+> deferred window turn and re-proves exact decoded thumbnail settlement before the unchanged
+> render/GC/snapshot sequence. Because collector bytes are measurement authority, the tracked
+> Compendium budget is deliberately `calibration-required`; the consumed run was not retried, its
+> label is absent, and PR #33 remains Draft and unmerged.
 >
 > **Arc 1A Compendium resource implementation (2026-08-21; product and serviced-turn
 > scheduler repair present; exact-9d local battery green; hosted run `32441023665`
