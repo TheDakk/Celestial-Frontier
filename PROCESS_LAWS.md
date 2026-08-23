@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-20. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-22. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -17,6 +17,77 @@ with a self-contained fresh-session `ROADMAP.md` handoff: exact state, evidence,
 and next action. Either OpenAI/Codex or Anthropic/Claude must be able to resume from repository
 state alone, without chat or app-private context. Logs archive verbatim; references refresh in
 place. A stale current reference or agent-specific-only handoff leaves the Arc incomplete.
+
+⚠⚠ **FOCUS EVIDENCE MUST OWN INPUT MODALITY, NOT INHERIT IT FROM THE PREVIOUS ROUTE**
+(2026-08-22). Arc 1C's first full Glass Matrix drove the real Shipyard opener and Close with trusted
+pointer input, then used plain programmatic `focus()` for later Guide, Settings and Import audits.
+Edge correctly remained in pointer modality, so those controls became `activeElement` without
+matching `:focus-visible`. The unchanged product CSS was reported as 55 false
+`FOCUS_INVISIBLE` findings: 15 Guide, 16 Settings and 24 Import.
+
+A focus ruler must establish the modality it claims—trusted keyboard traversal or a self-tested
+`focus({ focusVisible: true })` boundary—and require all of: the intended active element,
+`matches(':focus-visible')`, visible painted decoration, and a real before→after computed-style
+change. Negative-control focused-but-suppressed `focusVisible:false`, forced removal of outline and
+shadow, and restoration to green. Never broaden product CSS from `:focus-visible` to `:focus`,
+reorder the route to hide inherited modality, or accept a permanent inline outline as the positive
+control.
+
+⚠⚠ **A READY VIRTUAL WINDOW MUST SURVIVE THE SNAPSHOT'S OWN RENDER TURN** (2026-08-23).
+PR #33 run `32614177932` first proved every mounted Compendium thumbnail decoded and the queue
+drained, then its mandatory pre-GC animation turn remounted part of the normal window while an
+off-window focused row stayed pinned. The snapshot caught two new 0×0 placeholders and two live
+subscribers. A pre-render readiness observation therefore cannot certify a post-render snapshot.
+
+For a virtualized resource surface, consume the deferred render/layout boundary, re-prove the exact
+mounted identities, decoded dimensions, ownership and zero queued/active work, and only then enter
+the ordinary render-turn/GC/snapshot sequence. Negative-control the historical ordering by making
+that first renderer turn create fresh placeholders; it must remain red while the re-settled ordering
+is green. Do not widen subscriber ceilings, ignore placeholder rows, remove the mandatory render
+turn, or retry a red hosted sample.
+
+⚠⚠ **A REQUESTED TEXTURE TIER IS NOT AN ATTACHED-BACKING OUTCOME** (2026-08-22).
+Arc 1C's first named HD-attachment integration advanced its bookkeeping tier after a 768/1024
+request even when the asynchronous painter returned the same 512px predecessor. A memory gate that
+read only that number could certify sharpness that was never attached while remaining comfortably
+inside every resource ceiling. Derive the live tier from the attached TextureSource's exact positive
+square backing dimensions and require that backing to equal the route's expected tier. The named
+owner retains the predecessor until a valid successor is acquired and published, releases stale or
+duplicate candidates, keeps undersized results retryable, cancels pending publication before display
+destruction, and disposes the final lease afterward. Negative-control same-resource, undersized,
+stale-identity and failed-successor paths; a timer firing or request field clearing is not settlement.
+
+⚠⚠ **A RESOURCE PLATEAU MUST NAME EVERY OWNER; A FLAT TOTAL CAN STILL HIDE RETENTION**
+(2026-08-21). Arc 1B reached stable canvas/texture counts before it reached a stable process. Pixi
+8.19 still retained destroyed `Graphics` contexts, shared-`TextStyle` update listeners, managed-GC
+hash tombstones, and `BatchTextureArray` UID tombstones outside the app's logical scene registry.
+Those carriers required separate ownership and diagnostics: destroy the context an app-owned
+`Graphics` created, detach each destroyed scene Text from its shared style, compact a managed hash
+only after a real product release boundary, and delete only the null UID entries produced by the
+batch array's own `clear()`. Never destroy a shared style, reset all of Pixi's cache, patch
+`node_modules`, or run cleanup from a diagnostic/snapshot path merely to make the ruler green.
+
+Aggregate equality is insufficient. Record canonical per-hash semantic identities, live and
+cleared counts, and reject renamed owners, duplicate semantic owners, redistribution with the same
+total, or bfcache-only drift. A private framework seam must be isolated behind one narrow adapter,
+validate the exact pinned runtime shape, preserve live object identity, fail sticky when that shape
+drifts, and have a direct non-vacuity control proving observation does not mutate it. Display-tree
+destruction is not proof that TextureSources, timers, persistence, local canvas caches, or framework
+bookkeeping died; reconcile each owner separately.
+
+The certifying route uses four unmeasured warmups followed by exactly four measured phone and
+desktop cycles. Arc 1B's historical v1 ruler correctly covered Universe → Galaxy/fine → Sol/System
+→ Earth/Surface → 1,500-row Compendium → Universe and required
+`shipyardStatus: future-arc-1c`; it did not fabricate an absent surface. Arc 1C's v2 extension drives
+the real visible Shipyard opener, requires exact normalized state/DOM identity, observes exactly one
+owned preview, closes through the product's own Close action, and requires zero active, retained or
+pending preview ownership at the settled boundary. Both versions require exact logical work and live
+plateaus, bounded transient peaks, zero pending owners, per-hash Pixi inventories, heap/DOM bounds,
+answerability, and same-document bfcache survival. The retained 12-cycle runs are diagnostic rather
+than certification: they exposed the hidden linear slopes and, after repair, observed every sliding
+four-cycle slope below the later selected ceiling. Budget changes require retained raw evidence,
+strict headroom, producer/browser authority, independent replay, and just-below or next-unit
+negative controls; never widen a heap ruler to bless a known ownership slope.
 
 ⚠⚠ **HOSTED CI IS A FINITE RELEASE RESOURCE, NOT THE DEVELOPMENT LOOP** (2026-08-20).
 The repository is public as of 2026-08-20, so standard hosted runners are free while it remains
@@ -64,6 +135,20 @@ failures, and baseline11 still breaches 14 phone / 13 desktop ceilings. Measurem
 producer, browser, samples, baseline, no-retry, and HUMAN authority remain unchanged. Never widen a
 ruler merely because it fired, and never call an earlier red terminal-green retroactively; a fresh
 changed-head hosted check still requires exact owner authorization.
+
+**A FIXED ANSWERABILITY SLA IS NOT AN EMPIRICALLY CALIBRATED RESOURCE CEILING** (2026-08-23).
+SceneMemory's post-render target witness has two deliberately separate bounds: the collector's
+strict 2,000 ms command/transport deadline proves that the exact document can service a later Pixi
+tick at all, while the product contract requires every settled target witness to complete in
+strictly less than 1,000 ms. The one-second value is the repository's player-answerability boundary,
+not “observed maximum plus host headroom,” and SceneMemory does not by itself close Gate D's formal
+4× cold-boot criterion. Control a fixed semantic SLA at all judged points in both directions:
+999.999 ms passes; exact 1,000 ms and 1,000.001 ms fail the exact answerability inventory while all
+non-answerability outcomes remain byte-identical. Keep target success, later-ticker progress,
+same-document identity, independent browser heartbeat, and the 2,000 ms transport timeout as
+separate negative-controlled facts. The paired empirical broken-baseline rule above still applies
+when widening sampled heap, bytes, counts, ranges, slopes, or other resource ceilings; it is neither
+replaced nor satisfied by this fixed-SLA boundary fixture.
 
 ⚠⚠ **A SERVER CLOSE CALLBACK IS NOT A BOUNDED CLEANUP OUTCOME** (2026-08-20).
 Compendium's owned static server now has one immutable monotonic 2,000 ms shutdown deadline.
@@ -365,6 +450,10 @@ longer existed just as readily.
 > mtime against the newest source it claims to cover and refuse to report if it is older. The
 > sibling tool that always rebuilt (`speciesstrip`) was honest all session; the difference was
 > one `if`.
+> **The ruler must test the policy, not one shell spelling.** PR #33 run `32609389977` went red even
+> though SceneMemory rebuilt unconditionally: D-ART-36 recognized only `execSync('npx vite build')`
+> and missed `execFileSync(npm, ['run', 'build'])`. Every supported unconditional build form must
+> have a passing self-control, while conditional and missing-build forms independently stay red.
 
 ⚠ **"INDEPENDENT" PARAMETERS THAT SHARE A DERIVATION ARE ONE PARAMETER.** Six variation axes
 were computed as `(hash ^ salt) / 2^32` with salts 0x11, 0x22, 0x33… XOR-ing a small salt
@@ -908,6 +997,14 @@ and exact-788 local certification passed. Every instrument-only head and PR test
 exact-source browser evidence; whether the selected head has such ignored evidence is resolved from
 its named artifacts, never cached in this reference. Activation or an earlier-head PASS is not
 certification.
+
+**A downstream arc can invalidate an already-green sub-gate without changing its worker.** PR #33
+run `32611053651` passed the repaired art ruler, then Compendium correctly rejected the pre-Arc-1
+producer: Arc 1B/1C changed the built owner/index while the worker and painter stayed byte-identical.
+Producer authority covers the whole measured ownership path, not only the leaf doing the paint.
+Never rebind an old sample to the new hash or bump a ceiling from the red run. Reopen the ruler as
+calibration-required, retain the mismatch as evidence, collect a fresh paired broken baseline and
+independent current-product candidates under one exact browser authority, then certify once.
 
 **Correction earned by PR #32's first serviced-turn Chrome Smoke:** a CDP session that answers
 `Runtime.evaluate` does not prove that its document owns a rendering opportunity. Exact-head run

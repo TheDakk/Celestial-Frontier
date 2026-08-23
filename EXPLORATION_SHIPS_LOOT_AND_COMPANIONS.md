@@ -1,11 +1,50 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
-**STATUS:** approved product direction and implementation contract as of **2026-08-16**.
-The current `port/v2` build is still the playable Phase-4 exploration/survey slice; the
-Inventory, Shipyard, item-instance loot, capture/acquisition, companion-expedition, breeding, live-combat,
-Guardian and full-audio outcomes described here are **not yet implemented** unless a row
-below explicitly says otherwise. This document coordinates the existing system specs; it
+**STATUS:** approved product direction and implementation contract as of **2026-08-23**.
+The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the
+read-only Arc 1C Shipyard foundation described immediately below. Inventory, Cargo writers,
+item-instance loot, capture/acquisition, companion-expedition, breeding, live combat,
+Guardians, Fabrication, Research and ship-upgrade actions remain **not implemented** unless a
+row below explicitly says otherwise. This document coordinates the existing system specs; it
 does not silently promote planned behavior into the in-game Guide.
+
+> **2026-08-22 Arc 1C ship/scene overlay — current implementation:** clean product/ruler
+> `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds one recursively frozen, pure
+> `ShipVisualState` projection from normalized `items`, `ascCh`, and injected livery seed
+> `0x5111`. `ascStageOf` remains the sole chassis/reach-stage authority. The only permanent
+> system ids are projected in exact installed-system order
+> `jumpdrive,array,igdrive,autoext,cscoop`; the visible hardpoint ids are exactly `array`, `autoext`, and
+> `cscoop`. Only the terminal no-Intergalactic-Drive compatibility case may report
+> `legacy-charter-refit`, without claiming an absent named drive.
+>
+> The responsive **Shipyard — Inspection** panel is live from the desktop right rail and the
+> phone's exact 5×2, 260px, nine-control dock. It renders four deterministic code-native SVG
+> chassis silhouettes, deterministic livery, truthful chassis/provenance, owned systems, and
+> open/fitted hardpoints. One DOM/SVG owner replaces or disposes the preview; there is no Pixi
+> Shipyard scene, second renderer, `RenderTexture`, animation, or pending preview work. Close
+> leaves zero retained previews. The panel explicitly says Fabrication, Research, and ship
+> upgrades are unavailable, so this visual projection is not a progression writer.
+>
+> `SurfacePlanetTextureAttachment` now names the surface-HD owner. It keeps the displayed
+> predecessor leased until an identity-current successor with a qualifying attached backing
+> size publishes, rolls back/release-cleans stale or failed successors, and leaves rejected
+> demand retryable. The real SceneMemory route now opens and closes Shipyard and proves settled
+> zero preview ownership. Historical activation/certification source
+> `59530da3bf40965adf9c54f169b310e11ccdd0f8` bound the original 250 ms
+> `scene-memory-v2.json` budget SHA-256
+> `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`; local run
+> `20260822-arc1-local-certification` passed 42/42 and its named verifier under Edge
+> `151.0.4129.101`, but that certificate remains historical. Clean cross-host SLA repair
+> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds active budget SHA-256
+> `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`; local one-attempt/no-retry
+> run `20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier under
+> the same Edge `.101`. Raw/gzip SHA-256 are
+> `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
+> `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
+> `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
+> is unchanged. This documentation descendant is not the exact certified head. Hosted
+> terminal-green integration, release/deploy, Cargo/Inventory/Forge writers,
+> Fabrication/Research/upgrades, richer inventory, and HUMAN four-silhouette judgment remain open.
 
 > **2026-08-16 D-TRAIN-1 ownership overlay (current source; local browser
 > evidence recorded below; exact-head CI, integration, real-save Gate C, and
@@ -124,10 +163,10 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 |---|---|---|
 | Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
 | Charters / reach language | One current stage-aware landfall projection; imported drive/chapter facts still gate reach; no other v2 Charter writer or reward | Port complete outcome writers and only then expose their goals, transitions and rewards |
-| Compendium | Read-only rows, details and deterministic static portraits | Virtualized list, bounded thumbnail work, living selected preview |
+| Compendium | Read-only virtualized 1,500-row list, bounded asynchronous thumbnails and selected static detail | HUMAN Arc 1 art review, then any separately bounded living selected preview |
 | Capture / specimen acquisition | No live v2 Tame, Scavenge, Sample or Biosphere Yield action | Port finite capture writers before owned companions or collection progression |
 | Inventory / character portrait | Imported legacy bytes preserved; no live surface | Instance-backed inventory, paper doll and item inspection |
-| Shipyard / ship upgrades | Imported items/chapter state can gate reach; no Shipyard or v2 ship portrait | Shared capability/visual state and real research/build outcomes |
+| Shipyard / ship upgrades | Read-only Shipyard inspection with pure normalized capability/visual state, four static SVG silhouettes, truthful systems/hardpoints, and one disposable DOM/SVG preview | HUMAN silhouette judgment, then real Research/Fabrication/upgrade writers and build outcomes |
 | Materials / crafting / loot | Legacy v1.8.9 is mature; v2 preserves data only | Port economy, then migrate slotted gear to real item instances |
 | Breeding / care | Domain genetics exists; no live v2 action | Nonlethal breeding with bounded parent Recovery, lineage, care and bond outcomes |
 | Combat / conquest / Guardians | Deterministic domain duel exists; no live v2 action | Outcome-driven combat UI, rewards, injury and Guardian encounters |
@@ -247,9 +286,10 @@ nearly identical bit combinations. Build preview shows before/after art beside t
 installed-system list. The same state/asset graph is reused in the Shipyard, travel and
 arrival—three drawings may differ in LOD but never disagree about the vessel.
 
-One disposable Pixi preview may add engine, beacon and dish motion. It owns its filters,
-particles and scene-only textures and releases them on close. Repeated travel → Compendium →
-Shipyard cycles must plateau after warmup under raw-CDP resource counters.
+The current foundation deliberately uses one disposable static DOM/SVG preview and no Pixi,
+second renderer or `RenderTexture`; repeated travel → Compendium → Shipyard cycles plateau after
+warmup under the raw-CDP SceneMemory ruler. A later living-preview proposal would be a separate
+bounded decision and could not replace the current ownership, reduced-motion and cleanup laws.
 
 ---
 
@@ -612,7 +652,7 @@ batch. Planned systems live here and in their system docs, not in player-visible
 | Arc | Deliverable | Required proof before the next arc |
 |---|---|---|
 | 0 — repair/current truth | Actionable Charter projection/copy; canonical CF1 galaxy → star → planet identity proof; deterministic world-opportunity and first-journey contracts; source/doc table corrections | fresh save can never receive an impossible live goal; every surfaced opportunity maps to a real action; no world-bound ownership receipt/writer exists before the canonical identity seam is proven; Guide remains honest |
-| 1 — portrait/ship foundation | virtualized thumbnails, character portrait service, pure `ShipVisualState`, static Shipyard proof | 1,500-row bound, all ship states/permutations, phone/desktop human review, memory plateau |
+| 1 — portrait/ship foundation | virtualized thumbnails, character portrait service, pure `ShipVisualState`, static Shipyard proof | Automated foundation and 42/42 memory route are complete; phone/desktop HUMAN portrait and four-silhouette judgment remain open |
 | 2 — item instances and readable economy | schema/migration, inventory, equip/salvage/inspect, deterministic tables, build tags/comparison and source/sink/pacing ledger | fixed-point migration, exact-instance mutation, no duplicate/reroll/overflow loss; sources, ranges and targeted-crafting/salvage paths are inspectable |
 | 3 — engineering loop | mining/skimming/research/fabrication and visible build outcomes | real-action rewards, finite veins, active-play extraction, reach/visual/Guide agreement |
 | 4 — capture/ownership | finite Tame/Scavenge/Sample acquisition, catalogue/owned-instance split and Biosphere Yield | real-action page/specimen creation, attempt spend/recovery, no duplicate/reroll/two-tab grant |
@@ -654,7 +694,7 @@ cannot understand, enjoy or comfortably use it.
 ### Product systems still open in v2
 
 - full Inventory/Cargo, explorer paper doll and equipment actions;
-- Shipyard, mining, skimming, research, fabrication, salvage and visual vessel progression;
+- Shipyard Research/Fabrication/upgrade writers, mining, skimming, salvage and richer visual vessel progression beyond the read-only static foundation;
 - true item-instance loot, deeper affix pools, reward receipts and Guardian drops;
 - a truthful world-opportunity map, readable loot comparison/filter/salvage paths and an
   executable economy source/sink/pacing model;
@@ -674,9 +714,9 @@ cannot understand, enjoy or comfortably use it.
   including saved views and Atlas; persisted ownership-receipt ingress and local
   ledger migration remain open;
 - D-TRAIN-1 exact-head/integration plus real-save Gate-C evidence, and CFB parent identity;
-- Compendium virtualization and bounded art/audio work;
-- Pixi/Canvas texture ownership and long-session memory plateau;
-- live HD planet textures, living organism rigs and biome/ecology scenes;
+- Compendium and Shipyard HUMAN art judgment, plus bounded living-preview/audio work;
+- physical-device long-session memory/heat judgment beyond the automated Pixi/Canvas ownership plateau;
+- broader HD planet art beyond the named transactional surface attachment, living organism rigs and biome/ecology scenes;
 - epoch invalidation and hidden-tab/reduced-motion policy;
 - split-store/CAS or serialized cross-tab persistence;
 - real veteran-save Gate C, human listening Gate G, physical mobile Gate I and sustained heat QA;

@@ -10,6 +10,39 @@ summary of it.
 
 ## Contents
 
+### `PR33_BATTERY_FAILURE_DIAGNOSIS_2026-08-23.md` — four-run diagnosis and bounded repair
+
+Classifies all four consumed PR #33 battery failures, binds the exact fourth-run Linux SceneMemory
+artifact, and records the fixed one-second answerability SLA plus SceneMemory-before-Compendium
+fail-fast order. It preserves the original 40/42 red verdict and no-retry boundary; it does not
+claim a hosted pass, Ready transition, merge, release, or deployment.
+
+### `PR33_LINUX_SCENEMEM_REPORT_32618995487.json.gz` — retained raw hosted report
+
+Deterministic gzip of the complete 299,811-byte SceneMemory report from artifact `9488319243` in
+run `32618995487`. Compressed SHA-256 is
+`20db9d1671f9324f469fdd3305085b49f7fc44d871d0ddbedf9f6031c25b4b5f`; decompressed SHA-256 is
+`c59908636e8addd72da019f372089216ad231bb862b718f75f266f6b25347856`. The focused budget test
+requires its original exact 40/42 result, then replays the same immutable measurements under the
+fixed product SLA and negative-controls every changed boundary and retained liveness fact.
+
+### `PR33_SCENEMEM_CROSS_HOST_SLA_CERTIFICATION_20260823.json.gz` — current-budget local certificate
+
+Deterministic gzip of the clean one-attempt 42/42 certificate at repair commit `7d8dc380…`, active
+budget SHA-256 `5c8a6e75…`, and exact Edge `.101` authority. Compressed SHA-256 is
+`7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`; decompressed SHA-256 is
+`d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960`. Its named verifier passed
+immediately after collection. It is local exact-budget authority, not hosted terminal-green status.
+
+### `ARC1_CLAUDE_REVIEW_2026-08-22.md` — Anthropic/Claude Arc 1 read-only review
+
+The full-Arc adversarial review of PR #33 head `8b2c423b` against base `d4ab7e67…`, requested by the
+`openai/mac` handoff. Records the exact review authority, what was independently recomputed here
+(evidence hashes, all 21 producer inputs, raw↔derived agreement inside the certification report),
+one MEDIUM instrument-hardening finding and three LOW items — each with file/line, why the existing
+suites miss it, the smallest correction, and its required negative control. It claims no hosted CI,
+HUMAN judgment, Gate closure, or release authority.
+
 ### `PR32_LINUX_MEMORY_EVIDENCE_2026-08-21.md` — exact-head cross-host ruler evidence
 
 GitHub Actions run `32441023665` reached a complete 78-outcome Compendium report on exact Edge

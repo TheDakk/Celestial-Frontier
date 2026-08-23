@@ -229,6 +229,12 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'ready-confirmation-heartbeat',
   'ready-confirmation-ticker-progress',
   'nonmodal-dock-button-contrast',
+  'phone-dock-inventory',
+  'shipyard-preview-uniqueness',
+  'shipyard-dom-state-parity',
+  'shipyard-close-release',
+  'shipyard-opener-path',
+  'shipyard-geometry-focus',
   'ultra-viewport-render-budget',
   'ultra-same-backing-resize',
 ]);
@@ -2180,7 +2186,10 @@ async function reportSelftest() {
       'motion-css-policy', 'ordinary-panel-centre-close', 'opener-expanded-controls',
       'pseudo-placeholder-contrast', 'typography-no-shrink-hierarchy', 'backing-pixel-ceiling',
       'forced-colors-system-mapping', 'panel-open-focus', 'replacement-document-loader-token-phase',
-      'replacement-boot-phase-sequence', 'reload-resource-release']
+      'replacement-boot-phase-sequence', 'reload-resource-release',
+      'phone-dock-inventory',
+      'shipyard-preview-uniqueness', 'shipyard-dom-state-parity',
+      'shipyard-close-release', 'shipyard-opener-path', 'shipyard-geometry-focus']
       .every((name) => shaped.controlSummary.negativeControls.includes(name))) {
     throw new Error('GLASS MATRIX REPORT SELFTEST: injected finding/report grouping drifted');
   }
@@ -2642,14 +2651,25 @@ function installAuditHarness() {
     try { el.blur(); } catch { /* non-focusable */ }
     const before = getComputedStyle(el);
     const b = { outline: before.outline, shadow: before.boxShadow, border: before.borderColor, background: before.backgroundColor };
-    try { el.focus({ preventScroll: true }); } catch { /* reported below */ }
+    /* Plain script focus inherits the browser's latest input modality. A
+       prior real pointer route can therefore suppress :focus-visible even
+       when the product's keyboard focus paint is correct. Force the standard
+       indicated-focus state so this audit measures the authored outcome. */
+    try { el.focus({ preventScroll: true, focusVisible: true }); } catch { /* reported below */ }
     const after = getComputedStyle(el);
     const outlineWidth = parseFloat(after.outlineWidth) || 0;
     const outline = after.outlineStyle !== 'none' && outlineWidth >= 1 && parseColor(after.outlineColor)?.[3] !== 0;
-    const changed = b.shadow !== after.boxShadow || b.border !== after.borderColor || b.background !== after.backgroundColor;
+    const focusVisible = el.matches(':focus-visible');
+    const outlineChanged = b.outline !== after.outline;
+    const shadowChanged = b.shadow !== after.boxShadow;
+    const borderChanged = b.border !== after.borderColor;
+    const backgroundChanged = b.background !== after.backgroundColor;
+    const changed = outlineChanged || shadowChanged || borderChanged || backgroundChanged;
+    const painted = outline || (after.boxShadow !== 'none' && shadowChanged) || borderChanged || backgroundChanged;
     return {
       focused: document.activeElement === el,
-      visible: outline || (after.boxShadow !== 'none' && after.boxShadow !== b.shadow) || changed,
+      focusVisible,
+      visible: focusVisible && changed && painted,
       before: b,
       after: { outline: after.outline, shadow: after.boxShadow, border: after.borderColor, background: after.backgroundColor },
     };
@@ -2892,18 +2912,30 @@ function installAuditHarness() {
     const root = document.createElement('section');
     root.id = 'cf-control-surface'; root.className = 'glass';
     root.style.cssText = 'position:fixed;left:8px;top:70px;width:280px;height:190px;padding:8px;box-sizing:border-box;background:rgba(10,16,30,.96);color:#fff;z-index:1000';
-    root.innerHTML = '<p id="cf-control-copy" style="margin:0">Readable control copy</p><ul style="margin:0"><li id="cf-control-list-copy">List copy</li></ul><small id="cf-control-small-copy">Small copy</small><button id="cf-control-button" aria-label="control button" style="display:block;width:44px;height:44px;outline:3px solid white">x</button>';
+    root.innerHTML = '<p id="cf-control-copy" style="margin:0">Readable control copy</p><ul style="margin:0"><li id="cf-control-list-copy">List copy</li></ul><small id="cf-control-small-copy">Small copy</small><button id="cf-control-button" aria-label="control button" style="display:block;width:44px;height:44px">x</button>';
     document.body.appendChild(root);
     const base = { surface: 'selftest', root: '#cf-control-surface', textMin: 4, required: [{ selector: '#cf-control-copy', min: 1, textMin: 4 }], interactiveRoots: ['#cf-control-surface'], focusSelectors: ['#cf-control-button'], contrastSelectors: ['#cf-control-surface'], targetFloor: 44 };
+    const button = root.querySelector('#cf-control-button');
+    button.blur();
+    button.focus({ preventScroll: true, focusVisible: false });
+    const suppressed = getComputedStyle(button);
+    if (document.activeElement !== button || button.matches(':focus-visible')
+      || (suppressed.outlineStyle !== 'none' && (parseFloat(suppressed.outlineWidth) || 0) >= 1)
+      || suppressed.boxShadow !== 'none') {
+      failures.push('focus modality control: focusVisible:false unexpectedly painted or failed to own focus');
+    }
     let list = audit(base);
     reject('positive viewport geometry', list, 'OUTSIDE_VIEWPORT', '#cf-control-surface');
     reject('positive clipping geometry', list, 'CLIPPED_WITHOUT_SCROLL', '#cf-control-surface');
     reject('positive geometry', list, 'TARGET_TOO_SMALL', '#cf-control-button');
     reject('positive focus', list, 'FOCUS_INVISIBLE', '#cf-control-button');
     reject('positive contrast', list, 'TEXT_CONTRAST_LOW', '#cf-control-copy');
-    const button = root.querySelector('#cf-control-button');
     button.style.width = '20px'; list = audit(base); expect('small target injection', list, 'TARGET_TOO_SMALL', '#cf-control-button'); button.style.width = '44px';
-    button.style.outline = 'none'; button.style.boxShadow = 'none'; list = audit(base); expect('focus injection', list, 'FOCUS_INVISIBLE', '#cf-control-button'); button.style.outline = '3px solid white';
+    button.style.setProperty('outline', 'none', 'important');
+    button.style.setProperty('box-shadow', 'none', 'important');
+    list = audit(base); expect('focus paint injection', list, 'FOCUS_INVISIBLE', '#cf-control-button');
+    button.style.removeProperty('outline'); button.style.removeProperty('box-shadow');
+    list = audit(base); reject('focus paint restoration', list, 'FOCUS_INVISIBLE', '#cf-control-button');
     button.removeAttribute('aria-label'); button.textContent = ''; list = audit(base); expect('accessible-name injection', list, 'ACCESSIBLE_NAME_MISSING', '#cf-control-button'); button.setAttribute('aria-label', 'control button'); button.textContent = 'x';
     const custom = document.createElement('span'); custom.id = 'cf-control-custom'; custom.setAttribute('role', 'button'); custom.textContent = 'custom'; custom.style.cssText = 'display:inline-flex;width:44px;height:44px'; root.appendChild(custom);
     list = audit(base); expect('keyboard reachability injection', list, 'KEYBOARD_UNREACHABLE', '#cf-control-custom'); custom.remove();
@@ -3298,7 +3330,8 @@ async function main() {
     portraitFallbackControlRun = false,
     modalControlRun = false, modalLiveControlRun = false, closeLabelControlRun = false,
     hiddenOpenerControlRun = false, reloadBindingControlRun = false,
-    releaseDetailControlRun = false, releaseTailControlRun = false;
+    releaseDetailControlRun = false, releaseTailControlRun = false, phoneDockControlRun = false,
+    shipyardControlRun = false;
   const add = (viewport, surface, rows) => {
     for (const row of rows || []) findings.push({ context: { viewport, surface }, row });
   };
@@ -3479,6 +3512,51 @@ async function main() {
           const key = { key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 };
           await send('Input.dispatchKeyEvent', { type: 'rawKeyDown', ...key }, session);
           await send('Input.dispatchKeyEvent', { type: 'keyUp', ...key }, session);
+        };
+        /* Shipyard is a real route in Arc 1C. Preserve an input receipt for
+           its opener and Close rather than using the panel helper's
+           programmatic click: visible DOM plus a direct API toggle can agree
+           while the player-facing button is covered or unwired. */
+        const activateRealControl = async (selector, label) => {
+          const target = await evalIn(`(()=>{ const button=document.querySelector(${JSON.stringify(selector)}),
+            rect=button?.getBoundingClientRect(),style=button?getComputedStyle(button):null,
+            x=rect?(rect.left+rect.right)/2:NaN,y=rect?(rect.top+rect.bottom)/2:NaN,
+            hit=rect?document.elementFromPoint(x,y):null;
+            window.__cfGlassShipyardReceipt=null;window.__cfGlassShipyardReceiptAbort?.abort();
+            const controller=new AbortController();window.__cfGlassShipyardReceiptAbort=controller;
+            document.addEventListener('pointerdown',(event)=>{const node=event.target instanceof Element?event.target:null;
+              window.__cfGlassShipyardReceipt={buttonId:node?.closest('button')?.id||null,
+                pointerType:event.pointerType||null,x:event.clientX,y:event.clientY};
+              window.__cfGlassShipyardReceiptAbort=null;},{capture:true,once:true,signal:controller.signal});
+            return {ok:!!button&&style?.display!=='none'&&style?.visibility!=='hidden'
+              &&rect.width>=44&&rect.height>=44&&!!hit&&(hit===button||button.contains(hit)),
+              id:button?.id||null,x,y,rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null,
+              hit:hit?.id||hit?.tagName||null};})()`);
+          if (!target.ok || !Number.isFinite(target.x) || !Number.isFinite(target.y)) {
+            return { ok: false, why: `${label} is not a visible 44px centre-owned control`, target, receipt: null };
+          }
+          if (vp.mobile) {
+            await send('Input.dispatchTouchEvent', {
+              type: 'touchStart', touchPoints: [{ x: target.x, y: target.y, id: 1 }],
+            }, session);
+            await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }, session);
+          } else {
+            await send('Input.dispatchMouseEvent', {
+              type: 'mousePressed', x: target.x, y: target.y, button: 'left', clickCount: 1,
+            }, session);
+            await send('Input.dispatchMouseEvent', {
+              type: 'mouseReleased', x: target.x, y: target.y, button: 'left', clickCount: 1,
+            }, session);
+          }
+          await sleep(40);
+          const receipt = await evalIn(`(()=>{const value=window.__cfGlassShipyardReceipt||null;
+            window.__cfGlassShipyardReceiptAbort?.abort();delete window.__cfGlassShipyardReceiptAbort;
+            delete window.__cfGlassShipyardReceipt;return value;})()`);
+          return {
+            ok: receipt?.buttonId === target.id
+              && receipt.pointerType === (vp.mobile ? 'touch' : 'mouse'),
+            target, receipt,
+          };
         };
         /* Geometry/state predicates are product outcomes, while target
            starvation and browser transport loss are distinct failures. Poll
@@ -4267,6 +4345,36 @@ async function main() {
           focusSelectors: vp.label === 'primary-phone' || vp.label === 'desktop' ? ['#searchbox', '#dockguide', '#docksets'] : [],
           canvas: true, expectedDpr, maxBackingPixels,
         }));
+        if (vp.width <= 900) {
+          const phoneDockCheck = `(()=>{const dock=document.getElementById('dock'),style=dock?getComputedStyle(dock):null,
+            rect=dock?.getBoundingClientRect(),expected=['docksurvey','dockcodex','dockrecords','dockcharters','dockatlas','dockcharts','dockshipyard','docksets','dockguide'],
+            buttons=dock?[...dock.querySelectorAll(':scope > button')].filter(button=>{const s=getComputedStyle(button),r=button.getBoundingClientRect();
+              return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;}):[],rows=[];
+            for(const button of buttons){const r=button.getBoundingClientRect();let row=rows.find(candidate=>Math.abs(candidate.top-r.top)<2);
+              if(!row){row={top:r.top,ids:[]};rows.push(row);}row.ids.push(button.id);}
+            rows.sort((a,b)=>a.top-b.top);const ids=buttons.map(button=>button.id),centres=buttons.map(button=>{const r=button.getBoundingClientRect(),
+              hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);return {id:button.id,width:r.width,height:r.height,
+                hit:!!hit&&(hit===button||button.contains(hit))};});
+            return {ok:style?.display==='grid'&&buttons.length===9&&JSON.stringify(ids)===JSON.stringify(expected)
+              &&rows.length===2&&rows[0].ids.length===5&&rows[1].ids.length===4
+              &&!!rect&&Math.abs(rect.width-260)<=1&&Math.abs(rect.height-98)<=1
+              &&centres.every(row=>Math.abs(row.width-44)<=1&&Math.abs(row.height-44)<=1&&row.hit),
+              display:style?.display||null,ids,expected,rows:rows.map(row=>row.ids),
+              rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null,centres};})()`;
+          addOutcome(vp.label, 'phone-dock', 'PHONE_DOCK_INVENTORY', '#dock', await evalIn(phoneDockCheck),
+            'the exact nine visible named controls occupy one 260x98 five-plus-four grid of centre-owned 44px targets');
+          if (!phoneDockControlRun) {
+            phoneDockControlRun = true;
+            const dockControl = await evalIn(`(()=>{const dock=document.getElementById('dock'),prior=dock?.getAttribute('style')??null;
+              dock?.style.setProperty('grid-template-columns','repeat(4,44px)','important');const broken=${phoneDockCheck};
+              if(prior===null)dock?.removeAttribute('style');else dock?.setAttribute('style',prior);
+              return {ok:broken.ok===false&&broken.rows.length===3&&${phoneDockCheck}.ok,broken};})()`);
+            if (!dockControl.ok) {
+              instrumentFailures.push(`${vp.label}: phone dock 4-column control stayed green or failed to restore (${JSON.stringify(dockControl)})`);
+            }
+            recordControls('phone-dock-inventory');
+          }
+        }
         const hpLabelCheck = `(()=>{ const track=document.querySelector('#hpbar .track'),fill=document.querySelector('#hpbar .fill'),txt=document.querySelector('#hpbar .txt');
           if(!track||!fill||!txt)return {ok:false,why:'missing'};
           const tr=track.getBoundingClientRect(),xr=txt.getBoundingClientRect(),s=getComputedStyle(txt);
@@ -4496,6 +4604,7 @@ async function main() {
           { id: 'codex', name: 'compendium', dock: '#dockcodex', rail: '#railcodex', panel: '#codexpanel', required: '[data-sel=codex-entry]', min: 1, textMin: 80 },
           { id: 'rec', name: 'records', dock: '#dockrecords', rail: '#railrecords', panel: '#recpanel', required: '#recpanel .row', min: 6, textMin: 80 },
           { id: 'atlas', name: 'atlas', dock: '#dockatlas', rail: '#railatlas', panel: '#atlaspanel', required: '[data-sel=atlas-entry]', min: 1, textMin: 25 },
+          { id: 'shipyard', name: 'shipyard', dock: '#dockshipyard', rail: '#railshipyard', panel: '#shipyardpanel', required: '[data-cf-shipyard-preview="v1"]', min: 1, textMin: 80, shipyard: true },
           { id: 'ch', name: 'charters', dock: '#dockcharters', rail: '#railcharters', panel: '#chpanel', required: '[data-sel=charter-ch]', min: 1, textMin: 120 },
         ];
         for (const item of ordinaryPanels) {
@@ -4503,7 +4612,7 @@ async function main() {
           /* A populated desktop survey deliberately yields the right rail,
              so Records/Atlas are reached *instead of* the card, while the
              left rail and every phone dock panel remain operable over it. */
-          const overSurvey = !(vp.width > 900 && (item.id === 'rec' || item.id === 'atlas'));
+          const overSurvey = !(vp.width > 900 && (item.id === 'rec' || item.id === 'atlas' || item.id === 'shipyard'));
           const cardBeforePanel = await evalIn('window.__CF_SLICE__.api.state().cardOpen');
           if (cardBeforePanel !== overSurvey) {
             await evalIn(`document.getElementById('docksurvey')?.click()`);
@@ -4515,9 +4624,110 @@ async function main() {
             : null;
           const openerReady = await evalIn(`(()=>{ const b=document.querySelector(${JSON.stringify(opener)});if(!b)return false;const s=getComputedStyle(b),r=b.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;})()`);
           if (!openerReady) instrumentFailures.push(`${vp.label}: ${item.name} has no visible opener in its intended ${overSurvey ? 'over-survey' : 'instead-of-survey'} composition`);
-          await evalIn(`(()=>{ const b=document.querySelector(${JSON.stringify(opener)}); b?.focus(); b?.click(); })()`);
+          const realShipyardOpen = item.shipyard
+            ? await activateRealControl(opener, `${vp.label} Shipyard opener`)
+            : null;
+          if (item.shipyard && !realShipyardOpen?.ok) {
+            instrumentFailures.push(`${vp.label}: Shipyard did not receive real visible-opener input (${JSON.stringify(realShipyardOpen)})`);
+          }
+          if (!item.shipyard) {
+            await evalIn(`(()=>{ const b=document.querySelector(${JSON.stringify(opener)}); b?.focus(); b?.click(); })()`);
+          }
           await waitFor(`${item.name} panel`, `window.__CF_SLICE__.api.state().panelOpen===${JSON.stringify(item.id)} && document.querySelectorAll(${JSON.stringify(item.required)}).length>=${item.min} && window.__CF_SLICE__.api.state().cardOpen===${JSON.stringify(overSurvey)}`);
           const composition = `${item.name}-${overSurvey ? 'over' : 'instead-of'}-survey`;
+          const shipyardOpenCheck = item.shipyard ? `(()=>{ const S=window.__CF_SLICE__,state=S?.api?.state?.(),
+            ship=state?.shipVisual,diag=S?.api?.shipyardDiagnostics?.(),panel=document.getElementById('shipyardpanel'),
+            opener=document.querySelector(${JSON.stringify(opener)}),close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),
+            previews=panel?[...panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')]:[],preview=previews[0]||null,
+            canonicalSystemIds=['jumpdrive','array','igdrive','autoext','cscoop'],canonicalHardpointIds=['array','autoext','cscoop'],
+            expectedSystems=Array.isArray(ship?.installedSystemIds)?[...ship.installedSystemIds]:[],
+            domSystems=panel?[...panel.querySelectorAll('[data-shipyard-system]')].map(node=>node.getAttribute('data-shipyard-system')):[],
+            hardpointKeys=ship?.hardpoints?Object.keys(ship.hardpoints):[],
+            expectedHardpoints=ship?.hardpoints?canonicalHardpointIds.filter((id)=>ship.hardpoints[id]===true):[],
+            domHardpoints=preview?[...preview.querySelectorAll('[data-hardpoint]')].map(node=>node.getAttribute('data-hardpoint')):[],
+            panelStyle=panel?getComputedStyle(panel):null,openerStyle=opener?getComputedStyle(opener):null,
+            cr=close?.getBoundingClientRect(),hit=cr?document.elementFromPoint((cr.left+cr.right)/2,(cr.top+cr.bottom)/2):null,
+            diagKeys=diag?Object.keys(diag).sort():[],expectedDiagKeys=['activePreviewCount','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
+            stateKey=typeof ship?.stateKey==='string'&&ship.stateKey?ship.stateKey:null,
+            canonicalIds=JSON.stringify(hardpointKeys)===JSON.stringify(canonicalHardpointIds)
+              &&JSON.stringify(expectedSystems)===JSON.stringify(canonicalSystemIds.filter((id)=>expectedSystems.includes(id)))
+              &&canonicalHardpointIds.every((id)=>ship?.hardpoints?.[id]===expectedSystems.includes(id)),
+            stateMatch=!!preview&&stateKey!==null&&canonicalIds&&diag?.stateKey===stateKey&&preview.getAttribute('data-state-key')===stateKey
+              &&Number(preview.getAttribute('data-chassis-stage'))===ship?.chassisStage
+              &&preview.getAttribute('data-provenance')===ship?.provenance
+              &&JSON.stringify(domHardpoints)===JSON.stringify(expectedHardpoints)
+              &&JSON.stringify(domSystems)===JSON.stringify(expectedSystems),
+            diagnostics=diag?.schema==='cf-v2-shipyard-diagnostics/v1'&&diag?.status==='open'
+              &&diag?.activePreviewCount===1&&diag?.retainedPreviewCount===0&&diag?.pendingPreviewWork===0
+              &&JSON.stringify(diagKeys)===JSON.stringify(expectedDiagKeys),
+            geometry=!!panel&&panelStyle?.display!=='none'&&panelStyle?.visibility!=='hidden'
+              &&!!close&&cr.width>=44&&cr.height>=44&&!!hit&&(hit===close||close.contains(hit)),
+            openerReady=!!opener&&openerStyle?.display!=='none'&&openerStyle?.visibility!=='hidden'
+              &&opener.getClientRects().length===1&&opener.getAttribute('aria-controls')==='shipyardpanel'
+              &&opener.getAttribute('aria-expanded')==='true',
+            previewA11y=previews.length===1&&preview?.getAttribute('role')==='img'
+              &&(preview?.getAttribute('aria-label')||'').trim().length>=30
+              &&panel?.querySelectorAll('[role="img"]').length===1;
+            return {ok:stateMatch&&diagnostics&&geometry&&openerReady&&previewA11y&&document.activeElement===close,
+              stateMatch,diagnostics,geometry,openerReady,previewA11y,focus:document.activeElement?.id||null,
+              stateKey,stage:ship?.chassisStage??null,provenance:ship?.provenance??null,canonicalIds,hardpointKeys,
+              expectedHardpoints,domHardpoints,expectedSystems,domSystems,previewCount:previews.length,
+              diag,diagKeys,expectedDiagKeys,closeRect:cr?[cr.left,cr.top,cr.right,cr.bottom]:null};})()` : null;
+          if (item.shipyard) {
+            addOutcome(vp.label, composition, 'SHIPYARD_REAL_OPENER', opener, realShipyardOpen,
+              'the one visible Shipyard opener receives real browser pointer input');
+            const shipyardOpen = await evalIn(shipyardOpenCheck);
+            addOutcome(vp.label, composition, 'SHIPYARD_STATE_TRUTH', item.panel, shipyardOpen,
+              'one accessible preview, exact chassis/hardpoints/owned systems, and open diagnostics match the canonical ShipVisualState');
+            if (!shipyardControlRun) {
+              const duplicateControl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
+                preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),duplicate=preview?.cloneNode(true);
+                if(duplicate)panel.appendChild(duplicate);const result=${shipyardOpenCheck};duplicate?.remove();
+                return {rejected:result.ok===false,previewCount:result.previewCount,restored:${shipyardOpenCheck}};})()`);
+              if (!duplicateControl.rejected || duplicateControl.previewCount !== 2 || !duplicateControl.restored?.ok) {
+                instrumentFailures.push(`${vp.label}: duplicate Shipyard preview control did not reject and restore (${JSON.stringify(duplicateControl)})`);
+              }
+              recordControls('shipyard-preview-uniqueness');
+
+              const parityControl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
+                preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),priorKey=preview?.getAttribute('data-state-key'),
+                fakeHardpoint=document.createElementNS('http://www.w3.org/2000/svg','g'),fakeSystem=document.createElement('div');
+                preview?.setAttribute('data-state-key','ship-v1:tampered');const key=${shipyardOpenCheck};
+                if(priorKey===null)preview?.removeAttribute('data-state-key');else preview?.setAttribute('data-state-key',priorKey);
+                fakeHardpoint.setAttribute('data-hardpoint','autoext');preview?.appendChild(fakeHardpoint);const hardpoint=${shipyardOpenCheck};fakeHardpoint.remove();
+                fakeSystem.setAttribute('data-shipyard-system','cscoop');panel?.appendChild(fakeSystem);const system=${shipyardOpenCheck};fakeSystem.remove();
+                return {ok:key.ok===false&&hardpoint.ok===false&&system.ok===false&&${shipyardOpenCheck}.ok,key,hardpoint,system};})()`);
+              if (!parityControl.ok) {
+                instrumentFailures.push(`${vp.label}: Shipyard state-key/hardpoint/system parity controls stayed green or failed to restore (${JSON.stringify(parityControl)})`);
+              }
+              recordControls('shipyard-dom-state-parity');
+
+              const openerControl = await evalIn(`(()=>{const opener=document.querySelector(${JSON.stringify(opener)}),
+                priorStyle=opener?.getAttribute('style')??null,priorExpanded=opener?.getAttribute('aria-expanded')??null;
+                opener?.style.setProperty('display','none','important');opener?.setAttribute('aria-expanded','false');
+                const hidden=${shipyardOpenCheck};if(priorStyle===null)opener?.removeAttribute('style');else opener?.setAttribute('style',priorStyle);
+                if(priorExpanded===null)opener?.removeAttribute('aria-expanded');else opener?.setAttribute('aria-expanded',priorExpanded);
+                return {ok:hidden.ok===false&&${shipyardOpenCheck}.ok,hidden};})()`);
+              if (!openerControl.ok) {
+                instrumentFailures.push(`${vp.label}: hidden/bypassed Shipyard opener control stayed green or failed to restore (${JSON.stringify(openerControl)})`);
+              }
+              recordControls('shipyard-opener-path');
+
+              const geometryFocusControl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
+                close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),opener=document.querySelector(${JSON.stringify(opener)}),
+                priorStyle=close?.getAttribute('style')??null;close?.style.setProperty('min-width','0','important');
+                close?.style.setProperty('min-height','0','important');close?.style.setProperty('width','20px','important');
+                close?.style.setProperty('height','20px','important');opener?.focus();const broken=${shipyardOpenCheck};
+                if(priorStyle===null)close?.removeAttribute('style');else close?.setAttribute('style',priorStyle);close?.focus();
+                return {ok:broken.ok===false&&broken.geometry===false&&${shipyardOpenCheck}.ok,broken};})()`);
+              if (!geometryFocusControl.ok) {
+                instrumentFailures.push(`${vp.label}: Shipyard close geometry/focus control stayed green or failed to restore (${JSON.stringify(geometryFocusControl)})`);
+              }
+              recordControls('shipyard-geometry-focus');
+              await evalIn(`(()=>{const preview=document.querySelector('#shipyardpanel [data-cf-shipyard-preview="v1"]');
+                window.__cfShipyardClosedControl=preview?.cloneNode(true)||null;return !!window.__cfShipyardClosedControl;})()`);
+            }
+          }
           addOutcome(vp.label, composition, 'PANEL_OPEN_FOCUS_OUTCOME', `${item.panel} [data-pnx]`,
             await evalIn(`window.__CF_GLASS_AUDIT__.openFocusOutcome(${JSON.stringify(item.panel)})`),
             'the real opener moves focus into the newly opened panel before any audit focuses it');
@@ -4617,7 +4827,7 @@ async function main() {
                   close=panel.querySelector('[data-pnx]'),focusEntered=!!close&&document.activeElement===close;
                 return {ok:positiveVisibility&&hiddenSearchRejected&&blockedDockRejected&&hiddenDockA11yRejected&&searchHit&&searchFocused
                     &&search.getAttribute('aria-label')?.trim().length>0&&exposed(search)&&search.tabIndex>=0&&!search.disabled&&!search.readOnly
-                    &&dock.getAttribute('aria-label')?.trim().length>0&&dockFocused&&dockHits.length===8
+                    &&dock.getAttribute('aria-label')?.trim().length>0&&dockFocused&&dockHits.length===9
                     &&dockHits.every(row=>row.hit&&row.named&&row.exposed&&row.tabIndex>=0&&!row.disabled)
                     &&filtered.panel.mode==='list'&&filtered.panel.filteredCount===1
                     &&cleared.panel.mode==='list'&&cleared.panel.filteredCount===${hostileCompendiumRows.length}
@@ -4643,8 +4853,8 @@ async function main() {
               const nonModalAuditRows = await audit(nonModalAuditOptions);
               add(vp.label, 'compendium-nonmodal-chrome', nonModalAuditRows);
               const dockContrastControl = await evalIn(`(()=>{const buttons=[...document.querySelectorAll('#dock button')];
-                if(buttons.length!==8||buttons.some(button=>!(button instanceof HTMLButtonElement)||!button.id))
-                  return {ok:false,why:'exact eight named dock buttons missing',count:buttons.length};
+                if(buttons.length!==9||buttons.some(button=>!(button instanceof HTMLButtonElement)||!button.id))
+                  return {ok:false,why:'exact nine named dock buttons missing',count:buttons.length};
                 const expected=buttons.map(button=>'#'+CSS.escape(button.id)).sort(),prior=buttons.map(button=>button.getAttribute('style')),
                   baseline=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)});let injected=[];
                 try{for(const button of buttons){button.style.setProperty('color','#fff','important');button.style.setProperty('background','#fff','important');}
@@ -4851,7 +5061,45 @@ async function main() {
             recordControls('panel-planetside-layering');
           }
           const preservedSurface = overSurvey ? '#survey' : '#planetside';
-          const closed = await evalIn(`window.__CF_GLASS_AUDIT__.panelCloseOutcome(${JSON.stringify(item.panel)},'[data-pnx]',${JSON.stringify(opener)},${JSON.stringify(preservedSurface)})`);
+          const shipyardClosedCheck = item.shipyard ? `(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
+            opener=document.querySelector(${JSON.stringify(opener)}),preserved=document.querySelector(${JSON.stringify(preservedSurface)}),
+            diag=S?.api?.shipyardDiagnostics?.(),panelStyle=panel?getComputedStyle(panel):null,
+            preservedStyle=preserved?getComputedStyle(preserved):null,diagKeys=diag?Object.keys(diag).sort():[],
+            expectedDiagKeys=['activePreviewCount','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort(),
+            previews=panel?.querySelectorAll('[data-cf-shipyard-preview="v1"]').length??-1;
+            return {ok:S?.api?.state?.().panelOpen===null&&panelStyle?.display==='none'&&previews===0
+              &&diag?.schema==='cf-v2-shipyard-diagnostics/v1'&&diag?.status==='closed'&&diag?.stateKey===null
+              &&diag?.activePreviewCount===0&&diag?.retainedPreviewCount===0&&diag?.pendingPreviewWork===0
+              &&JSON.stringify(diagKeys)===JSON.stringify(expectedDiagKeys)
+              &&opener?.getAttribute('aria-expanded')==='false'&&document.activeElement===opener
+              &&preservedStyle?.display!=='none'&&preservedStyle?.visibility!=='hidden',
+              panelOpen:S?.api?.state?.().panelOpen??null,panelDisplay:panelStyle?.display||null,previews,
+              diag,diagKeys,expectedDiagKeys,expanded:opener?.getAttribute('aria-expanded')||null,
+              focus:document.activeElement?.id||null,preservedDisplay:preservedStyle?.display||null};})()` : null;
+          let realShipyardClose = null;
+          let closed;
+          if (item.shipyard) {
+            realShipyardClose = await activateRealControl('#shipyardpanel [data-pnx="shipyard"]', `${vp.label} Shipyard Close`);
+            await waitFor(`${item.name} real close`, `window.__CF_SLICE__.api.state().panelOpen===null`);
+            const closeState = await evalIn(shipyardClosedCheck);
+            closed = { ...closeState, ok: realShipyardClose?.ok === true && closeState.ok,
+              realClose: realShipyardClose };
+            addOutcome(vp.label, composition, 'SHIPYARD_CLOSED_RELEASE', item.panel, closed,
+              'real Close removes the only preview, publishes exact closed diagnostics, preserves the underlying surface, and restores opener focus');
+            if (!shipyardControlRun) {
+              const retainedControl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
+                retained=window.__cfShipyardClosedControl||null;if(retained)panel?.appendChild(retained);
+                const broken=${shipyardClosedCheck};retained?.remove();delete window.__cfShipyardClosedControl;
+                return {ok:broken.ok===false&&broken.previews===1&&${shipyardClosedCheck}.ok,broken};})()`);
+              if (!retainedControl.ok) {
+                instrumentFailures.push(`${vp.label}: retained Shipyard preview after Close control stayed green or failed to restore (${JSON.stringify(retainedControl)})`);
+              }
+              recordControls('shipyard-close-release');
+              shipyardControlRun = true;
+            }
+          } else {
+            closed = await evalIn(`window.__CF_GLASS_AUDIT__.panelCloseOutcome(${JSON.stringify(item.panel)},'[data-pnx]',${JSON.stringify(opener)},${JSON.stringify(preservedSurface)})`);
+          }
           addOutcome(vp.label, composition, 'ORDINARY_PANEL_CLOSE_OUTCOME', `${item.panel} [data-pnx]`, closed,
             `close owns its centre, closes the panel, preserves ${overSurvey ? 'the survey' : 'Planetside'}, and restores logical opener focus`);
           if (!closed.ok) await evalIn(`document.querySelector(${JSON.stringify(item.panel)}+' [data-pnx]')?.click()`);
@@ -5262,9 +5510,13 @@ async function main() {
             workspace=bulletNodes.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
             coldArt=bulletNodes.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
             worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
+            shipyard=bulletNodes.find((item)=>/THE SHIPYARD READS CAPABILITY, NOT WISHES/.test(item.textContent||'')),
+            hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
             headingFor=(item)=>(item?.parentElement?.previousElementSibling?.textContent||'').trim(),
             firstHeading=headingFor(first),recoveryHeading=headingFor(recovery),worldCodeHeading=headingFor(worldCode),atlasRouteHeading=headingFor(atlasRoute),trainingHeading=headingFor(training),artHeading=headingFor(art),
+            shipyardHeading=headingFor(shipyard),hdSurfaceHeading=headingFor(hdSurface),
             worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',
+            shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
             charterPlacement=!!first&&!!recovery&&first!==recovery&&firstHeading==='Gameplay'&&recoveryHeading==='Bug Fixes',
             ingressPlacement=!!worldCode&&!!atlasRoute&&worldCode!==atlasRoute&&worldCodeHeading==='Gameplay'&&atlasRouteHeading==='Gameplay',
             worldCodeContract=worldCodeText.includes('Every accepted galaxy, star, or planet route is regenerated from the seeded universe and source-verified instead of trusting the code.')
@@ -5318,16 +5570,27 @@ async function main() {
               &&(coldArt?.textContent||'').includes('Loading and painting the first specimen thumbnails now happens away from the renderer thread'),
             workerContract=headingFor(worker)==='Under the Hood'
               &&(worker?.textContent||'').includes('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn')
-              &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback');
+              &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback'),
+            shipyardContract=shipyardHeading==='New Features & Systems'
+              &&shipyardText.includes('same canonical saved reach used by travel')
+              &&shipyardText.includes('shows only actually owned systems and hardpoints')
+              &&shipyardText.includes('legacy charter refit that never names or draws the missing drive')
+              &&shipyardText.includes('fabrication, Research Bench purchases, and upgrades remain unavailable'),
+            hdSurfaceContract=hdSurfaceHeading==='Under the Hood'
+              &&hdSurfaceText.includes('named HD surface-planet texture attachment')
+              &&hdSurfaceText.includes('exact surface generation and planet identity')
+              &&hdSurfaceText.includes('retains the displayed predecessor until an acquired successor publishes')
+              &&hdSurfaceText.includes('rejects stale work')&&hdSurfaceText.includes('suppresses same-texture swaps')
+              &&hdSurfaceText.includes('cancels and releases its timer and leases at the owning scene boundary');
           const overclaim=/\\b(?:mining|crafting|combat|capture|breeding)\\b[^.!?]{0,80}\\b(?:is|are)\\s+(?:now\\s+)?(?:playable|available|live)\\b/i.test(text)
             ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
             ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
           const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!trainingContradiction&&!artContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
-            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===47&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
+            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===49&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
             &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&trainingContract&&artContract
-            &&workspaceContract&&coldArtContract&&workerContract
+            &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
             &&/Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/.test(text)
@@ -5340,11 +5603,11 @@ async function main() {
             identity,honest,headings,bulletCount:bullets.length,populated:bullets.every((bullet)=>bullet.length>0),
             charterPlacement,firstHeading,recoveryHeading,ingressPlacement,worldCodeHeading,atlasRouteHeading,
             worldCodeContract,atlasRouteContract,trainingHeading,trainingContract,trainingContradiction,artHeading,artContract,artContradiction,
-            workspaceContract,coldArtContract,workerContract,rnSeen:state.rnSeen,
+            workspaceContract,coldArtContract,workerContract,shipyardHeading,shipyardContract,hdSurfaceHeading,hdSurfaceContract,rnSeen:state.rnSeen,
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 47-outcome development inventory, including source-verified code/Atlas routes, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 49-outcome development inventory, including Shipyard and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -5361,13 +5624,16 @@ async function main() {
               workspace=items.find((item)=>/SHORT LANDSCAPE KEEPS EVERY COMMAND/.test(item.textContent||'')),
               coldArt=items.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
               worker=items.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
+              shipyard=items.find((item)=>/THE SHIPYARD READS CAPABILITY, NOT WISHES/.test(item.textContent||'')),
+              hdSurface=items.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
               firstText=first?.textContent||'',recoveryText=recovery?.textContent||'',worldCodeText=worldCode?.textContent||'',atlasRouteText=atlasRoute?.textContent||'',trainingText=training?.textContent||'',artText=art?.textContent||'',workspaceText=workspace?.textContent||'',coldArtText=coldArt?.textContent||'',workerText=worker?.textContent||'',
+              shipyardText=shipyard?.textContent||'',hdSurfaceText=hdSurface?.textContent||'',
               recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling,
               artParent=art?.parentNode,artNext=art?.nextSibling,workspaceParent=workspace?.parentNode,workspaceNext=workspace?.nextSibling,
               coldArtParent=coldArt?.parentNode,coldArtNext=coldArt?.nextSibling,workerParent=worker?.parentNode,workerNext=worker?.nextSibling;
-            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false;
+            let order=null,inventory=null,identity=null,overclaim=null,closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,hdSurfaceStale=null,artContradictory=null,authority=null,error=null,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,hdSurfaceChanged=false;
             try {
-              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!training||!art||!workspace||!coldArt||!worker||!recoveryParent)throw new Error('development-detail control fixture missing');
+              if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!recoveryParent)throw new Error('development-detail control fixture missing');
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
@@ -5417,6 +5683,10 @@ async function main() {
               worker.textContent=workerText.replace('terminates an idle or replaced producer without a synchronous renderer fallback','worker release/fallback outcome removed');
               workerReleaseChanged=worker.textContent!==workerText;workerReleaseStale=${developmentDetailCheck};worker.textContent=workerText;
               coldArtParent.appendChild(worker);workerPlacementMoved=worker.parentNode===coldArtParent;workerPlacementStale=${developmentDetailCheck};workerParent.insertBefore(worker,workerNext);
+              shipyard.textContent=shipyardText.replace('same canonical saved reach used by travel','Shipyard state authority removed');
+              shipyardChanged=shipyard.textContent!==shipyardText;shipyardStale=${developmentDetailCheck};shipyard.textContent=shipyardText;
+              hdSurface.textContent=hdSurfaceText.replace('binds each completion to the exact surface generation and planet identity','HD texture identity ownership removed');
+              hdSurfaceChanged=hdSurface.textContent!==hdSurfaceText;hdSurfaceStale=${developmentDetailCheck};hdSurface.textContent=hdSurfaceText;
               art.textContent=artText+' Thumbnail leases remain pinned after Close, and Planetside renders a 440px portrait for every row.';
               artContradictory=${developmentDetailCheck};art.textContent=artText;
               S.api.state=()=>({...priorState(),rnSeen:'v2-control'});authority=${developmentDetailCheck};
@@ -5430,7 +5700,8 @@ async function main() {
               if(art){art.textContent=artText;if(artParent&&art.parentNode!==artParent)artParent.insertBefore(art,artNext);}
               if(workspace){workspace.textContent=workspaceText;if(workspaceParent&&workspace.parentNode!==workspaceParent)workspaceParent.insertBefore(workspace,workspaceNext);}
               if(coldArt){coldArt.textContent=coldArtText;if(coldArtParent&&coldArt.parentNode!==coldArtParent)coldArtParent.insertBefore(coldArt,coldArtNext);}
-              if(worker){worker.textContent=workerText;if(workerParent&&worker.parentNode!==workerParent)workerParent.insertBefore(worker,workerNext);}S.api.state=priorState;
+              if(worker){worker.textContent=workerText;if(workerParent&&worker.parentNode!==workerParent)workerParent.insertBefore(worker,workerNext);}
+              if(shipyard)shipyard.textContent=shipyardText;if(hdSurface)hdSurface.textContent=hdSurfaceText;S.api.state=priorState;
             }
             const restored=headings[0]?.textContent===a&&headings[1]?.textContent===b&&middle?.isConnected===true
               &&title?.textContent===titleText&&claim?.textContent===claimText&&first?.textContent===firstText
@@ -5439,8 +5710,9 @@ async function main() {
               &&art?.parentNode===artParent&&art?.nextSibling===artNext
               &&workspace?.textContent===workspaceText&&workspace?.parentNode===workspaceParent&&workspace?.nextSibling===workspaceNext
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
-              &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext&&S.api.state===priorState;
-            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===46
+              &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
+              &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&S.api.state===priorState;
+            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===48
               &&identity?.ok===false&&identity?.identity===false&&overclaim?.ok===false&&overclaim?.honest===false
               &&closeContract?.ok===false&&panelBoundaryContract?.ok===false&&emptySkyContract?.ok===false
               &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
@@ -5463,12 +5735,15 @@ async function main() {
               &&workerChanged&&workerStale?.ok===false&&workerStale?.workerContract===false
               &&workerReleaseChanged&&workerReleaseStale?.ok===false&&workerReleaseStale?.workerContract===false
               &&workerPlacementMoved&&workerPlacementStale?.ok===false&&workerPlacementStale?.workerContract===false
+              &&shipyardChanged&&shipyardStale?.ok===false&&shipyardStale?.shipyardContract===false
+              &&hdSurfaceChanged&&hdSurfaceStale?.ok===false&&hdSurfaceStale?.hdSurfaceContract===false
               &&artContradictory?.ok===false&&artContradictory?.honest===false&&artContradictory?.artContract===false&&artContradictory?.artContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
               order,inventory,identity,overclaim,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
               artStale,artPublishChanged,artPublishStale,artDownsampleChanged,artDownsampleStale,artPlacementMoved,artPlacementStale,
               workspaceChanged,workspaceStale,workspacePlacementMoved,workspacePlacementStale,coldArtChanged,coldArtStale,coldArtPlacementMoved,coldArtPlacementStale,
-              workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,workerPlacementMoved,workerPlacementStale,artContradictory,authority,restored,error};})()`);
+              workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,workerPlacementMoved,workerPlacementStale,
+              shipyardChanged,shipyardStale,hdSurfaceChanged,hdSurfaceStale,artContradictory,authority,restored,error};})()`);
           if (!detailControls.ok) {
             instrumentFailures.push(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
           }
@@ -5885,6 +6160,12 @@ async function main() {
   }
   if (!releaseTailControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.label === 'primary-phone')) {
     instrumentFailures.push('development release hidden-overflow tail control never ran');
+  }
+  if (!shipyardControlRun && !targetedProductBlocked) {
+    instrumentFailures.push('Shipyard opener/state/preview/geometry/close controls never ran');
+  }
+  if (!phoneDockControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900)) {
+    instrumentFailures.push('exact nine-control 5x2 phone dock control never ran');
   }
   if (!reloadBindingControlRun && !targetedProductBlocked) instrumentFailures.push('live slice-ready binding controls never ran');
   const browser = browserVersions.length ? {

@@ -61,7 +61,8 @@ import {
   candidateThumbSettlementExpression,
   candidateProducerErrorPreArmExpression, candidateProducerErrorWorkExpression,
   candidateFilterInputExpression, candidateFilterTelemetryExpression,
-  collectCandidateSnapshot, createCandidateCollectorObservations,
+  collectCandidateSnapshot, collectCandidateSettledThumbnailSnapshot,
+  createCandidateCollectorObservations,
   createCandidateCommandRecorder,
   COMPENDIUM_SERVER_SHUTDOWN_TIMEOUT_MS,
   closeCompendiumServer,
@@ -2131,6 +2132,64 @@ export async function runCompendiumMemSelftest() {
     && successfulSnapshot.diagnostics.exact === true
     && successfulSnapshot.raw.exact === true,
   'candidate snapshot reordered cleanup, heap, diagnostics, or DOM evidence');
+
+  const deferredWindowScenario = async (settledBoundary) => {
+    let deferredRemount = true;
+    let surfaceReady = true;
+    const sequence = [];
+    const evaluate = async (_sessionId, _expression, label) => {
+      sequence.push(`evaluate:${label}`);
+      if (label.endsWith('animation task')
+        || label.endsWith('deferred-window settlement')) {
+        if (deferredRemount) {
+          deferredRemount = false;
+          surfaceReady = false;
+        }
+        return true;
+      }
+      if (label.endsWith('product/DOM snapshot')) {
+        return {
+          diagnostics: { exact: surfaceReady },
+          raw: { listImages: [{ naturalWidth: surfaceReady ? 132 : 0 }] },
+        };
+      }
+      return true;
+    };
+    const sendStage = async (label, method) => {
+      sequence.push(`send:${label}:${method}`);
+      if (method === 'Runtime.getHeapUsage') return {
+        usedSize: 1, totalSize: 2, embedderHeapUsedSize: 3, backingStorageSize: 4,
+      };
+      if (method === 'Memory.getDOMCounters') return {
+        documents: 1, nodes: 2, jsEventListeners: 3,
+      };
+      return {};
+    };
+    const waitReady = async () => {
+      sequence.push('wait:thumbs-ready');
+      surfaceReady = true;
+      return { ready: true };
+    };
+    const dependencies = {
+      sessionId: 'selftest-session', label: 'focused off-window row',
+      rawSnapshotExpression: 'selftest-expression', evaluate, sendStage,
+    };
+    const point = settledBoundary
+      ? await collectCandidateSettledThumbnailSnapshot({ ...dependencies, waitReady })
+      : await collectCandidateSnapshot(dependencies);
+    return { point, sequence };
+  };
+  const historicalDeferredCapture = await deferredWindowScenario(false);
+  const settledDeferredCapture = await deferredWindowScenario(true);
+  assert(historicalDeferredCapture.point.raw.listImages[0].naturalWidth === 0
+    && settledDeferredCapture.point.raw.listImages[0].naturalWidth === 132
+    && JSON.stringify(settledDeferredCapture.sequence.slice(0, 4)) === JSON.stringify([
+      'wait:thumbs-ready',
+      'evaluate:focused off-window row deferred-window settlement',
+      'wait:thumbs-ready',
+      'evaluate:focused off-window row animation task',
+    ]),
+  'deferred virtual-window remount was not consumed and re-settled before snapshot');
 
   let observerNow = 100;
   class FakeCanvas {
