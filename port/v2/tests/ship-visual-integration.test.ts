@@ -6,6 +6,17 @@ const mainSource = readFileSync(
   fileURLToPath(new URL('../apps/game/src/main.ts', import.meta.url)),
   'utf8',
 );
+const shipyardPreviewSource = readFileSync(
+  fileURLToPath(new URL('../apps/game/src/shipyard-preview.ts', import.meta.url)),
+  'utf8',
+);
+
+function synchronousShipyardPreviewErrors(source: string): string[] {
+  const asynchronousTokens = [
+    'setTimeout', 'requestAnimationFrame', 'Promise', 'async', 'await', 'fetch', 'new Image',
+  ];
+  return asynchronousTokens.filter((token) => source.includes(token));
+}
 
 function shipVisualIntegrationErrors(source: string): string[] {
   const errors: string[] = [];
@@ -120,5 +131,18 @@ describe('ShipVisualState app integration', () => {
     expect(shipVisualIntegrationErrors(broken)).toContain(
       'Auto-Extractor hardpoint identity drifted',
     );
+  });
+
+  it('keeps the one-owner Shipyard preview synchronously settled', () => {
+    expect(synchronousShipyardPreviewErrors(shipyardPreviewSource)).toEqual([]);
+  });
+
+  it('negative control: asynchronous Shipyard preview work cannot hide behind zero diagnostics', () => {
+    const broken = shipyardPreviewSource.replace(
+      'const SVG_NS =',
+      'void Promise.resolve();\nconst SVG_NS =',
+    );
+    expect(broken).not.toBe(shipyardPreviewSource);
+    expect(synchronousShipyardPreviewErrors(broken)).toEqual(['Promise']);
   });
 });
