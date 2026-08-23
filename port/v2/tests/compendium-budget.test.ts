@@ -54,12 +54,12 @@ const currentBaselineEvidence = Object.freeze({
   gzipSha256: '3b0c5356e7cf37a749e55d5859672c246d46c1d3be9f1d7ed9be7280c264b036',
 });
 const currentCertificationEvidence = Object.freeze({
-  file: 'ARC1_COMPENDIUM_CERTIFICATION_20260823.json.gz',
-  runId: '20260823-arc1-current-product-certification',
-  sourceCommit: '23e177a4eebdcac8890f9b7d6a02456a948e4ab2',
-  budgetSha256: '9e36bdfb8d0a425beb6e3c131c3a0fc4e5154a23b504213b76e8dc4fe6170311',
-  rawSha256: 'f45e1da50f6f053d55e666bede4f5e545501c79f26168c25a2ae57733a93c0c5',
-  gzipSha256: 'cef1d5593b69c68f9bcdf9024b9d967d10b91cf16255a20bb9d86de779c20722',
+  file: 'ARC1_COMPENDIUM_FOCUS_SETTLEMENT_CERTIFICATION_20260823.json.gz',
+  runId: '20260823-pr33-focus-settlement-certification',
+  sourceCommit: 'e8898bf3a12d094eefc99fe188a217d9e60058a0',
+  budgetSha256: '28b958678fa2e95bb7b906cb10bd1a422dfe0b52867400e8722fbf6befddb15d',
+  rawSha256: 'd1ea225b913c28a2b9110538d064e3df6609582dc94c875f62a622998ac55071',
+  gzipSha256: '8e09255b616f9539a8dee5e180df00c8f03d211f3da7eac82529397a6f3b1966',
 });
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const EXPECTED_MEASUREMENT_AUTHORITY =
