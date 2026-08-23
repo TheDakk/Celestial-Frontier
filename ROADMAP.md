@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-22 · PR #33 ATTEMPT 1 RED · D-ART-36 RULER REPAIRED LOCALLY ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-23 · PR #33 ATTEMPT 2 RED · COMPENDIUM CALIBRATION REOPENED ◀◀◀
 
 ### Fail-closed workspace and SSH identity
 
@@ -125,9 +125,17 @@ the archive verbatim and refresh this handoff in place.
 - The bounded local repair teaches D-ART-36 both supported synchronous build forms and runs paired
   controls proving unconditional `execSync`/`execFileSync` pass while conditional/missing builds stay
   red. Post-repair `artaudit`, all 571 tests, root/game/worker typecheck, unused-art, override/coverage,
-  spec, Actions-policy, and root validation gates pass. The repair and terminal-red record are
-  committed locally as one changed head; publish it only with fresh exact push authority, then obtain
-  separate exact head/base/label/runner-ceiling/no-retry authorization. Do not rerun `32609389977`.
+  spec, Actions-policy, and root validation gates pass. The repair is published as changed head
+  `27b965870c8e831d8b42a0346cf86c112998c15e`.
+- Authorized changed-head run `32611053651` then passed that D-ART stage and failed closed at
+  Compendium producer authority after 6m11s. The active pre-Arc-1 budget expected `d3223177…`; the
+  current Arc-1 index/owner built `5a316197…`. Worker and painter bytes were unchanged, but the
+  measured ownership path was not, so old `.86` samples cannot be rebound to the current `.101`
+  product. The label was removed; the attempt is consumed and later browser gates were skipped.
+- The tracked Compendium ruler is being reopened as calibration-required. Required evidence is one
+  fresh legacy paired baseline, three clean current-product candidates, strict selected ceilings,
+  one independent exact-budget local certificate, and the complete local battery. Do not rerun
+  either consumed hosted run. A later changed head still needs fresh exact authorization.
 - Keep Arc 1A's six-image Compendium review and Arc 1C's phone/desktop silhouette/readability review
   open as HUMAN work. After review/integration, the implementation spine is **F3 → F4 → Arc 2**.
 
@@ -136,15 +144,13 @@ the archive verbatim and refresh this handoff in place.
 **Current side:** OpenAI/Codex macOS owns
 `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`. Arc 1 product/ruler,
 activation, retained evidence, references, and Claude review remediation remain published to matching
-`origin/openai/mac`. The D-ART-36 repair and this terminal-red handoff are committed together locally
-but remain unpushed pending fresh exact authority. At a fresh-session start, verify status and exact
-local-ahead SHA state.
+`origin/openai/mac`. Published head `27b9658…` contains the D-ART repair; the working tree owns the
+fail-closed Compendium recalibration batch. Do not push an intermediate calibration head.
 
-**GitHub step:** PR #33 is draft, mergeable, unlabeled, and terminal-red at consumed run
-`32609389977`. The bounded ruler repair is locally reviewed and committed; push that exact changed
-head only after Nick authorizes the GitHub write. A branch push starts no hosted runner under the
-sealed labeled-event workflow. Do not apply the approval label, dispatch, mark Ready, merge, or
-publish until Nick separately provides one fresh exact changed-head attempt authorization.
+**GitHub step:** PR #33 is draft, mergeable, unlabeled, and terminal-red at consumed runs
+`32609389977` and `32611053651`. Finish and commit the fresh calibration/certificate/battery locally;
+then request one exact changed-head/base/label/runner-ceiling/no-retry authorization. Do not apply the
+label, dispatch, mark Ready, merge, or publish before that authority and terminal-green evidence.
 
 **PR details:** [PR #33](https://github.com/TheDakk/Celestial-Frontier/pull/33), base `develop`, source
 `openai/mac`. Copy-ready title: **Arc 1 — Complete Compendium, scene ownership, and Shipyard foundations**
@@ -162,8 +168,10 @@ Copy-ready description:
 > typecheck passed; real-browser Slice Smoke passed; Glass Matrix passed all 12 viewports; three
 > clean Arc 1C calibrations and the exact-budget local certificate each passed 42/42 under Edge
 > 151.0.4129.101; the named verifier and 64-control Actions-budget selftest passed. Hosted run
-> `32609389977` reached the v2 gate and went red only because D-ART-36 failed to recognize
-> SceneMemory's unconditional npm build form; the changed-head ruler repair is locally green.
+> `32609389977` exposed and led to the repaired D-ART shell-spelling ruler. Changed-head run
+> `32611053651` passed that stage, then correctly rejected stale pre-Arc-1 Compendium producer
+> authority. A fresh current-product calibration and certificate are in progress; neither red is
+> being retried.
 >
 > Claude's full-Arc review is complete and preserved with this PR. Its one MEDIUM and three LOW
 > findings are resolved at the current head. The Anthropic side did not copy, merge, or edit OpenAI
@@ -180,6 +188,6 @@ review was read-only evidence. It receives accepted work only after the eventual
 unchanged. No release, deployment, version bump, publication, or site write occurred.
 
 **Actions budget:** `UNFROZEN`; public standard runners remain free while visibility holds; 3,000 is
-the fail-closed private/ambiguous cap. Consumed Arc 1C attempt: `32609389977` terminal-red. Authorized
-future attempts: zero. Approval label: absent. The next attempt requires separate exact changed-head
-authority and must not reuse or rerun the consumed run.
+the fail-closed private/ambiguous cap. Consumed Arc 1C attempts: `32609389977` and `32611053651`, both
+terminal-red. Authorized future attempts: zero. Approval label: absent. The next attempt requires
+separate exact changed-head authority and must not reuse or rerun either consumed run.

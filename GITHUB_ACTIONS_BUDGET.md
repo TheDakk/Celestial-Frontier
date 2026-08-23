@@ -3,8 +3,9 @@
 **Current mode: `UNFROZEN`**
 
 **Hosted attempt state: none authorized.** PR #32's three post-freeze closure attempts are consumed;
-the final changed-head attempt passed, its label was removed, and the PR merged. PR #33 run
-`32609389977` is also consumed and terminal-red; its label was removed. Details are below.
+the final changed-head attempt passed, its label was removed, and the PR merged. PR #33 runs
+`32609389977` and `32611053651` are also consumed and terminal-red; their labels were removed.
+Details are below.
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
@@ -128,6 +129,18 @@ ruler recognized only the legacy `execSync('npx vite build')` spelling and misse
 unconditional `execFileSync(npm, ['run', 'build'])`. Later Edge/Chrome/browser gates were correctly
 skipped. The approval label was removed immediately; the run is consumed, PR #33 remains draft and
 unmerged, and no retry or future hosted attempt is authorized.
+
+Nick then authorized the push of changed head
+`27b965870c8e831d8b42a0346cf86c112998c15e` and one new attempt against the same base, label,
+92-minute ceiling, and no-retry rule. Run `32611053651`, attempt 1, authorized in 4s and completed
+terminal-red in 6m11s. The repaired D-ART ruler and all preceding root/v2 gates passed. The
+Compendium instrument failed closed before measurement because the active pre-Arc-1 budget expected
+producer `d32231773e4e06db4074111b49ebe2eca698d5004bd5af3fbd8d2867d765b900`, while the current
+Arc-1 index/owner built producer
+`5a316197d9aca27967f4e930f43089d2bbe2b9e4a66a40c207ea59c809405d94`. Worker and painter bytes
+were unchanged; the owner/index change is still producer authority and cannot reuse or rebind old
+ceilings. Later browser gates were skipped. The label was removed immediately; this attempt is
+consumed, PR #33 remains draft and unmerged, and no future hosted attempt is authorized.
 
 When Nick explicitly lifts `FROZEN`, he may authorize exactly one hosted attempt. Before any GitHub write, the
 handoff must record:
