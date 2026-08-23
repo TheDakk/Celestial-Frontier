@@ -132,10 +132,12 @@ the archive verbatim and refresh this handoff in place.
   current Arc-1 index/owner built `5a316197…`. Worker and painter bytes were unchanged, but the
   measured ownership path was not, so old `.86` samples cannot be rebound to the current `.101`
   product. The label was removed; the attempt is consumed and later browser gates were skipped.
-- The tracked Compendium ruler is being reopened as calibration-required. Required evidence is one
-  fresh legacy paired baseline, three clean current-product candidates, strict selected ceilings,
-  one independent exact-budget local certificate, and the complete local battery. Do not rerun
-  either consumed hosted run. A later changed head still needs fresh exact authorization.
+- Clean source `c348e51…` produced one fresh legacy paired baseline and three clean current-product
+  candidates under exact Edge `.101`, one attempt and zero retries each. Durable raw evidence and
+  strict selected ceilings are bound by active budget SHA-256 `9e36bdfb…`; all candidates replay
+  78/78 and baseline1 retains four faults plus 14 phone / 13 desktop breaches. An independent
+  exact-budget certificate, named verifier, and complete local battery remain. Do not rerun either
+  consumed hosted run. A later changed head still needs fresh exact authorization.
 - Keep Arc 1A's six-image Compendium review and Arc 1C's phone/desktop silhouette/readability review
   open as HUMAN work. After review/integration, the implementation spine is **F3 → F4 → Arc 2**.
 
@@ -144,8 +146,9 @@ the archive verbatim and refresh this handoff in place.
 **Current side:** OpenAI/Codex macOS owns
 `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`. Arc 1 product/ruler,
 activation, retained evidence, references, and Claude review remediation remain published to matching
-`origin/openai/mac`. Published head `27b9658…` contains the D-ART repair; the working tree owns the
-fail-closed Compendium recalibration batch. Do not push an intermediate calibration head.
+`origin/openai/mac`. Published head `27b9658…` contains the D-ART repair; the local branch owns the
+fresh Compendium activation/evidence batch. Do not push before its independent certificate and full
+local battery are complete.
 
 **GitHub step:** PR #33 is draft, mergeable, unlabeled, and terminal-red at consumed runs
 `32609389977` and `32611053651`. Finish and commit the fresh calibration/certificate/battery locally;
