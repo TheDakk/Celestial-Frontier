@@ -1,5 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { isDeepStrictEqual } from 'node:util';
+import { gunzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 import {
   reportBrowserAuthorityErrors,
@@ -13,6 +15,96 @@ const collectorSource = readFileSync(
   fileURLToPath(new URL('../tools/scenemem.mjs', import.meta.url)),
   'utf8',
 );
+const RETAINED_REPORT_FILES = [
+  '../../../audits/ARC1C_SCENEMEM_CALIBRATION_CANDIDATE1.json.gz',
+  '../../../audits/ARC1C_SCENEMEM_CALIBRATION_CANDIDATE2.json.gz',
+  '../../../audits/ARC1C_SCENEMEM_CALIBRATION_CANDIDATE3.json.gz',
+  '../../../audits/ARC1C_SCENEMEM_LOCAL_CERTIFICATION.json.gz',
+] as const;
+
+function rawContractProjection(snapshot: any): Record<string, unknown> {
+  const scene = snapshot.raw.scene;
+  const shipyard = snapshot.raw.shipyard;
+  return {
+    documentToken: scene.documentToken,
+    sceneGeneration: scene.generation,
+    registry: scene.registry,
+    managedResources: scene.managedResources,
+    managedTextureCount: scene.managedTextureCount,
+    managedTexturePixels: scene.managedTexturePixels,
+    managedTextureClearedSlots: scene.managedTextureClearedSlots,
+    sceneTextStyleUpdateListeners: scene.sceneTextStyleUpdateListeners,
+    localCanvasCacheEntries: scene.localCanvasCacheEntries,
+    peakLocalCanvasCacheEntries: scene.peakLocalCanvasCacheEntries,
+    productRenderTargets: scene.productRenderTargets,
+    retiredFineOwnerCount: scene.retiredFineOwnerCount,
+    shipyardDiagnosticsSchema: shipyard.schema,
+    shipyardPreviewStatus: shipyard.status,
+    shipyardPreviewStateKey: shipyard.stateKey,
+    shipyardPreviewActiveCount: shipyard.activePreviewCount,
+    shipyardPreviewRetainedCount: shipyard.retainedPreviewCount,
+    shipyardPreviewPendingWork: shipyard.pendingPreviewWork,
+    pending: scene.pendingSurfaceRefreshes + scene.pendingSystemRefreshes
+      + scene.pendingPersistenceWrites
+      + scene.retiredFineOwnerCount + shipyard.activePreviewCount
+      + shipyard.retainedPreviewCount + shipyard.pendingPreviewWork,
+    ringCacheEntries: scene.ringGeometryEntries,
+    peakRingGeometryEntries: scene.peakRingGeometryEntries,
+    answerability: {
+      target: {
+        ok: snapshot.answerability.target.ok,
+        elapsedMs: snapshot.answerability.target.durationMs,
+        laterTicker: snapshot.answerability.target.value.after
+          > snapshot.answerability.target.value.before,
+        tickerBefore: snapshot.answerability.target.value.before,
+        tickerAfter: snapshot.answerability.target.value.after,
+        documentTokenBefore: snapshot.answerability.target.value.documentTokenBefore,
+        documentTokenAfter: snapshot.answerability.target.value.documentTokenAfter,
+      },
+      heartbeat: {
+        ok: snapshot.answerability.heartbeat.ok,
+        elapsedMs: snapshot.answerability.heartbeat.durationMs,
+        independent: true,
+        product: snapshot.answerability.heartbeat.product,
+        protocolVersion: snapshot.answerability.heartbeat.protocolVersion,
+      },
+    },
+    heap: {
+      usedSize: snapshot.heap.usedSize,
+      embedderHeapUsedSize: snapshot.heap.embedderHeapUsedSize,
+      backingStorageSize: snapshot.heap.backingStorageSize,
+    },
+    dom: {
+      documents: snapshot.dom.documents,
+      nodes: snapshot.dom.nodes,
+      jsEventListeners: snapshot.dom.jsEventListeners,
+    },
+  };
+}
+
+function rawDerivedProjectionErrors(report: any): string[] {
+  const errors: string[] = [];
+  for (const [profile, measurement] of Object.entries<any>(report.profiles ?? {})) {
+    if (!isDeepStrictEqual(measurement.precondition, rawContractProjection(measurement.warmup))) {
+      errors.push(`${profile} precondition is detached from retained warmup evidence`);
+    }
+    for (const [index, snapshot] of measurement.measured.entries()) {
+      const { cycle, inventory, ...point } = measurement.cycles[index] ?? {};
+      void cycle;
+      void inventory;
+      if (!isDeepStrictEqual(point, rawContractProjection(snapshot))) {
+        errors.push(`${profile} cycle ${index + 1} is detached from retained raw evidence`);
+      }
+    }
+  }
+  return errors;
+}
+
+function retainedReports(): any[] {
+  return RETAINED_REPORT_FILES.map((relative) => JSON.parse(gunzipSync(readFileSync(
+    fileURLToPath(new URL(relative, import.meta.url)),
+  )).toString('utf8')));
+}
 const PRODUCT_AUTHORITY_BINDINGS = [
   ['gameHtml', 'gameHtmlPath', "const gameHtmlPath = path.join(appDir, 'index.html');"],
   ['shipVisualState', 'shipVisualStatePath',
@@ -165,6 +257,22 @@ describe('scene-memory terminal verifier', () => {
     expect(tampered.every((outcome) => outcome.pass)).toBe(true);
     expect(terminalOutcomeInventoryErrors(tampered, canonical)).toEqual([
       'terminal outcome inventory differs from the imported contract replay',
+    ]);
+  });
+
+  it('re-derives every retained SceneMemory contract point from raw observations', () => {
+    for (const report of retainedReports()) {
+      expect(rawDerivedProjectionErrors(report), report.runId).toEqual([]);
+    }
+  });
+
+  it('negative control: a cycle cannot be detached from unchanged retained raw evidence', () => {
+    const report = structuredClone(retainedReports().at(-1)!);
+    const rawBefore = structuredClone(report.profiles.phone.measured[0]);
+    report.profiles.phone.cycles[0].managedTextureCount++;
+    expect(report.profiles.phone.measured[0]).toEqual(rawBefore);
+    expect(rawDerivedProjectionErrors(report)).toEqual([
+      'phone cycle 1 is detached from retained raw evidence',
     ]);
   });
 

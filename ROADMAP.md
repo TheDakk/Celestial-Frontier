@@ -81,10 +81,11 @@ the archive verbatim and refresh this handoff in place.
 
 ### Exact local verification completed
 
-- `port/v2 npm test`: 49 files PASS; 567 passed / 1 intentional skip.
+- `port/v2 npm test`: 49 files PASS; 571 passed / 1 intentional skip.
 - `port/v2 npm run typecheck`: root, game, and worker configurations PASS.
 - Real-browser Slice Smoke: terminal `SLICE SMOKE: PASS`, including the real Shipyard open/read/
-  owned-Close leg and attached Earth HD backing witness; one attempt, no retry.
+  owned-Close leg; the SceneMemory surface route separately proves the attached Earth HD backing
+  witness. One attempt, no retry.
 - Real-browser Glass Matrix: terminal PASS for all 12/12 viewports after the focus ruler began owning
   `focusVisible` modality and negative-controlled suppression, paint removal, and restoration.
 - SceneMemory v2: three clean one-attempt/no-retry calibration reports each replay 42/42 under exact
@@ -145,7 +146,7 @@ Copy-ready description:
 > attachment. Fabrication, Research, Cargo spending, build/upgrade writers, and richer living ship
 > previews remain future work.
 >
-> Verification: full v2 tests passed 567 with 1 intentional skip across 49 files; root/game/worker
+> Verification: full v2 tests passed 571 with 1 intentional skip across 49 files; root/game/worker
 > typecheck passed; real-browser Slice Smoke passed; Glass Matrix passed all 12 viewports; three
 > clean Arc 1C calibrations and the exact-budget local certificate each passed 42/42 under Edge
 > 151.0.4129.101; the named verifier and 64-control Actions-budget selftest passed. Hosted CI has
