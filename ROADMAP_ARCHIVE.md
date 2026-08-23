@@ -227,7 +227,7 @@ the fail-closed private/ambiguous cap. Consumed attempts: `32440536261` and `324
 `32462323775` green; authorized future attempts: zero; approval label: absent.
 <!-- END VERBATIM ROADMAP BLOCK: PR32 MERGED / ARC1A AUTOMATED CLOSURE -->
 
-+## ARCHIVED 2026-08-20 — PR #32 attempt 2 red / cross-host ruler repair
+## ARCHIVED 2026-08-20 — PR #32 attempt 2 red / cross-host ruler repair
 
 > Moved byte-verbatim from ROADMAP.md after the later PR #32 merge handoff superseded it.
 
@@ -301,6 +301,7 @@ the fail-closed private/ambiguous cap. Consumed attempts: `32440536261` and `324
 3. Merge PR #32 only if that exact changed head is terminal-green and still clean/mergeable.
 4. Do not start Arc 1B, release, deployment, version bump, publication, `main`, or site work before
    PR #32 merges. HUMAN review remains open for the six Compendium images.
+
 <!-- END VERBATIM ROADMAP BLOCK: PR32 ATTEMPT 2 RED / CROSS-HOST RULER REPAIRED LOCALLY -->
 
 ## ARCHIVED 2026-08-20 — preview browser-contract repair handoff
