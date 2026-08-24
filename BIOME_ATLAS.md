@@ -1,9 +1,23 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
-**STATUS:** §1 verified against code as of **2026-07-31 (v1.8.9)**. §§2–4 are design-pack content and are
-NOT derivable from source — see PROVENANCE below. The approved, unimplemented environmental-audio
-overlay matches the v2 next-arc contract as of **2026-08-13**. Audited and promoted from `tools/` to
-the repo root during port **Phase 0** (Gate A); the file itself dates from 2026-07-20.
+**STATUS:** §1 verified against code as of **2026-07-31 (v1.8.9)**. §§2–4 are design-pack content and
+are NOT derivable from source — see PROVENANCE below. The environmental-audio overlay matches the
+package-only pure hint foundation and remaining v2 contract as of **2026-08-24**. Audited and
+promoted from `tools/` to the repo root during port **Phase 0** (Gate A); the file itself dates from
+2026-07-20.
+
+> **2026-08-24 Arc 3/4 current opportunity boundary:** canonical Arc 3 world snapshots now derive
+> finite deposits, exceptional/cosmic veins, raw tier and player-facing rarity from the exact
+> source-proven CF1 world. The Engineering panel exposes truthful Mine/Skim actions and displays six
+> research rows, but only Deep Scanners is purchasable. Its pure orbital-reveal policy exists; the
+> current Survey surface does not render orbital mineral rows. All 62 fixed recipes are listed, while
+> only connected-effect outputs with exact costs/preconditions and capacity/revision headroom are
+> actionable; fully exceptional slotted outputs and disconnected-effect rows remain unavailable.
+> This is a resource subset, not a generic biome opportunity resolver:
+> no anomaly, blueprint, lore, Guardian or project-site table has been invented. Arc 4 can project
+> the exact epoch-bound roster into a pure acquisition snapshot/plan, but no Tame/Scavenge/Sample
+> writer or UI exists. Neither package changes the 43 biome definitions or promotes design-pack
+> rows into runtime keys.
 
 _Originally generated 2026-07-20 from: live `BIOME_SETS` (main.js) + data-pack CSVs (01_EARTH 93 ·
 02_NON_EARTH 315) + Additional Biomes file. Colors are PROPOSED signatures for the biome→dot /
@@ -45,12 +59,15 @@ biome→vista tint._
 > `ammonia`, `stormeye`) do carry floater fauna — `hotglow` carries none, making it a fifth case
 > rather than a gas-biome norm. Separately, **17** biomes carry `flora:[]`.
 
-## 0 · v2.0 next-arc environmental sonification (approved, not implemented — 2026-08-13)
+## 0 · v2.0 environmental sonification (pure hint seam only — 2026-08-24)
 
-The current v2 development package is stings-only. It does not yet play biome ambience, weather,
-distant ecology, creature calls or music. Production v1.8.9 retains its synthesized ambience beds;
-this overlay does not change them, the 43 live biome profiles, roster selection, descent, hazards,
-rarity or any design-pack status below.
+The current v2 player application is stings-only. It does not yet play biome ambience, weather,
+distant ecology, creature calls or music. `@cf/audio` now implements a pure
+`DistantEcologyHintPlan` from canonical world identity plus exact already-surfaced ecology evidence,
+with hidden/wrong-owner and silent/non-fauna controls; no application owner invokes it and no
+`ambientAudioProfile`, authored layer, ducking or playback exists. Production v1.8.9 retains its
+synthesized ambience beds; this overlay does not change them, the 43 live biome profiles, roster
+selection, descent, hazards, rarity or any design-pack status below.
 
 The future environment resolver consumes one typed, deterministic biome identity and produces a
 presentation-only soundscape plan from atmosphere, weather, terrain/water, pressure, gravity,
@@ -72,12 +89,13 @@ browser painter: art and audio may read the same pure biome/ecology taxonomy, bu
 renderer, cache and lifecycle. The mixer, same-origin rights manifest, decoded-byte/node budgets,
 background restart policy, captions and human listening gate are defined in `AUDIO.md` §0.
 
-## 0.1 · v2 world-opportunity presentation contract (approved, not implemented — 2026-08-13)
+## 0.1 · v2 world-opportunity presentation contract (resource subset implemented — 2026-08-24)
 
-`WORLD_GENERATION.md` owns the future canonical World Opportunity Manifest; this atlas supplies
-only its **biome compatibility and presentation vocabulary**. No opportunity resolver, capture
-writer, project site, loot source, anomaly, blueprint, Guardian lead or extra biome is live in v2
-because this section exists.
+`WORLD_GENERATION.md` owns the canonical World Opportunity Manifest. Arc 3 now owns its finite
+resource/star-skimming subset and real Engineering actions; this atlas still supplies only
+**biome compatibility and presentation vocabulary**. No generic biome-opportunity resolver,
+capture writer, project site, new loot-occurrence table, anomaly, blueprint, Guardian lead or
+extra biome becomes live because this section exists.
 
 For the 43 source-derived live profiles, a future compatibility layer may describe how terrain,
 weather, hazard, life forms and atmosphere make an already-generated opportunity readable:

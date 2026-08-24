@@ -1,5 +1,24 @@
 # Celestial Frontier — Save System
 
+> **2026-08-24 Arc 3–5 persistence overlay — current committed boundary:** Arc 3 adds the strict
+> `engineering/arc3.state` carrier and a bounded legacy seed-only migration that resolves every
+> source through exact canonical CF1 evidence or protects the source instead of guessing. The panel
+> displays six research rows but only Deep Scanners is purchasable; its pure orbital-reveal policy
+> exists while current Survey renders no orbital mineral rows. It lists all 62 fixed recipes, but
+> only connected-effect outputs with exact costs/preconditions and capacity/revision headroom are
+> actionable; fully exceptional slotted outputs and disconnected-effect rows remain unavailable.
+> Mine, Skim, the eligible Deep-Scanner purchase and eligible fixed Fabrication update the engineering
+> carrier, Arc 2 inventory carrier, v4 compatibility fields, F4 authority, immutable receipt and next revision in one fenced CAS.
+> Charter mining/fabrication progress is derived into that same durable candidate. A publication
+> failure after durability reloads; it never performs a second write.
+>
+> Arc 4 now has strict ownership-v1 codecs over catalogue species, discovery records, stable fauna
+> instances, specimen lots, biosphere progress and bounded legacy evidence. This is package
+> authority only: no app bootstrap, durable capture writer or save replacement path writes it yet.
+> Arc 5 adds only a digest certificate in `player/arc5.ownership.migration`, derived from a fresh
+> Arc 4 import and binding source/target modes, revisions and digests. It stores no duplicate
+> ownership-v2 bytes and is not a product migration or ownership writer.
+
 > **2026-08-24 F3/F4 + Arc 2 persistence overlay — current local implementation:** v4 remains the
 > supported compatibility codec, while v5 partitions its canonical fields into owner-named
 > `player`, `creatures`, `catalog`, `inventory`, and `settings` rows. Migration checks the exact v4
@@ -30,10 +49,12 @@
 > or reloads without a second write if publication cannot converge. This extends—not broadens—the
 > checkpoint's established eleven-field ownership.
 >
-> Focused Arc 2/F3/F4 tests and the TypeScript/build gates are green. Local one-attempt Slice Smoke
-> and full-certifying 12-viewport Glass Matrix are terminal PASS on Edge `151.0.4129.101`, with
+> For the recorded pre-current-WIP Arc 2 candidate, focused Arc 2/F3/F4 tests, TypeScript/build,
+> one-attempt Slice Smoke and full-certifying Glass Matrix were terminal PASS on Edge
+> `151.0.4129.101`, with
 > exact raw/runtime/DOM carrier, action, stale/storage, modal/focus and Training-replacement controls.
-> They bind dirty working-tree inputs and grant no exact-head/hosted/integration/real-save Gate C,
+> They bind that recorded candidate's dirty inputs, do not certify the current moving working tree,
+> and grant no exact-head/hosted/integration/real-save Gate C,
 > preview, HUMAN, release or deployment authority. Broader real-browser schema-upgrade/two-tab
 > evidence for later product writers and Nick's real veteran save remain open.
 

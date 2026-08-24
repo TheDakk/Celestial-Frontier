@@ -2,8 +2,24 @@
 
 ## Current port status — 2026-08-24
 
-> **Arc 2's implementation slice is locally green and the campaign has moved to Arc 3; Arc 2 remains
-> program-partial.** F3/F4 now supply live v5 split rows, revision/lease authority, a protected
+> **The committed local product boundary now includes Arc 3 Engineering; Arc 4 prerequisite work is
+> active.** Full-CF1 finite Mine/Skim, the Engineering & Shipyard panel, shared
+> ProductActionCoordinator and committed-only Charter mine/fabrication banking are live. Six
+> research rows are displayed but only Deep Scanners is purchasable; its pure orbital-reveal policy
+> exists while current Survey renders no orbital mineral rows. All 62 fixed recipes are listed, but
+> only connected-effect outputs with exact costs/preconditions and capacity/revision headroom are
+> actionable; fully exceptional slotted outputs and disconnected-effect rows remain unavailable.
+> Arc 4 has committed epoch/full-roster,
+> contact-capability, ownership-v1, acquisition-snapshot and pure-planner foundations, but no
+> durable capture writer or UI. Its committed pre-draw/capacity all-scenario certification and
+> settlement prerequisite does not settle capture or publish ownership. Arc 5 has only a receipt-
+> bound V2 model and digest migration certificate. Arc 7 has package-only identity/runtime/lab/
+> rights foundations plus committed absolute eight-emitter/120-node configuration caps. Arc 3
+> Guide/release/Training guidance is committed. Only browser-instrument and docs work remains dirty;
+> clean current-source Smoke then Glass and the final measurement reseal remain pending.
+>
+> **Arc 2 implementation boundary — historical foundation, still current where not superseded:**
+> F3/F4 supply live v5 split rows, revision/lease authority, a protected
 > active-play + SessionRNG carrier, immutable receipts, and one checked product transaction. Random
 > plans retain their value after a failed write. Deterministic Inventory actions reserve only the
 > global receipt ordinal and leave every per-domain counter unchanged.
@@ -24,17 +40,19 @@
 > it owns in the same checked boundary; current-view/source-deferred restore preserves it and
 > corrupt/future evidence refuses.
 >
-> Focused Arc 2/F3/F4 evidence is 16 files /149 tests; root/app/worker TypeScript and Vite build are
-> green. The no-retry Slice Smoke report is terminal PASS on Edge `151.0.4129.101`
+> For the recorded pre-current-WIP Arc 2 candidate, focused checks plus root/app/worker TypeScript
+> and the Vite build were green. Its no-retry Slice Smoke report is terminal PASS on Edge `151.0.4129.101`
 > (`20260824102021537-86225-972f651deaa3`, 239,546 ms, zero findings/retries). Full-certifying Glass
 > is separately terminal PASS (61,039 ms, 12/12 viewports, 78/78 controls, none blocked/omitted,
-> zero findings/instrument failures/retries). Both bind dirty working-tree inputs.
+> zero findings/instrument failures/retries). Both bind that recorded candidate's dirty inputs.
 >
-> The full test run remains red only at the deliberate Compendium measurement-authority mismatch:
-> the new dependency graph moves sealed input `6a961df8…` to `e6e6bbc…`. Recalibrate/reseal once
+> In that recorded candidate, the full test run's sole deliberate red was the Compendium measurement-authority mismatch:
+> the evolving dependency/package input moves sealed input `6a961df8…` to `2ab18865…`.
+> Recalibrate/reseal once
 > after the final multi-Arc dependency set freezes; do not weaken or churn the ruler after every Arc.
+> This evidence does not certify the current moving working tree.
 > Authored new-loot sources/rates and natural-affix compatibility, crafted modifier/drawback,
-> upgrades/sockets, Fabricator/Research/Cargo-material writers, source-to-upgrade pacing/recovery,
+> upgrades/sockets, authored random-loot/variable-craft writers, source-to-upgrade pacing/recovery,
 > and HUMAN item/compare/art review remain open. No hosted, PR/integration, preview/publication,
 > whole-Gate, release, version or deployment authority follows from this local state.
 
@@ -587,7 +605,7 @@
 > checkpoint transaction remained open. The dated 2026-08-13 review below is
 > retained as the earlier, narrower Search-to-planet boundary it recorded.
 
-> **Next-arc architecture review (2026-08-13):**
+> **Next-arc architecture review (2026-08-13; historical pre-Arcs 1–5 boundary):**
 > `../../EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` is the approved cross-system
 > implementation contract. It does not widen the current Guide capabilities. Inventory,
 > Shipyard/build actions, item-instance loot, living companion ownership/dispatch, live
@@ -615,7 +633,7 @@
 > At that 2026-08-13 boundary, the wall-clock Auto-Extractor exploit, Compendium
 > decoded-image exposure, and long-session texture/audio ownership were explicit
 > prerequisites. Arc 1A now closes only the Compendium implementation slice described
-> above; Auto-Extractor and broader long-session texture/audio ownership remain open.
+> above; at that boundary Auto-Extractor and broader long-session texture/audio ownership remained open.
 > Planned systems stay unavailable
 > in the Guide until real actions, reload/persistence, reachability and negative-controlled
 > outcome gates exist.
@@ -678,33 +696,40 @@ so. Empty, special-only, and cached calls may not read that binding. This closes
 the missing public warning, not the free-global dependency, CF1/F2, or F4 clock
 wiring, and `_sanitizeSavedGenome`'s separate DOM-11 mutation remains open.
 
-The current `@cf/audio` boundary remains stings-only. Its exported rarity,
+The current **player** audio boundary remains stings-only. Exported rarity,
 survey and navigation stings plus `applySfxGain()` safely no-op before
 `initAudio()` installs the save-backed seam; initialization does not create an
 `AudioContext`. After initialization, Sound-off prevents context creation, the
 first enabled sting lazily prefers standard `AudioContext` and uses
 `webkitAudioContext` only when the standard constructor is absent, and one
-context is reused. The focused package suite covers import/pre-init safety,
-post-init dispatch, live mute state, constructor precedence/failure and
-suspended resume rejection without claiming audible quality. During the
-awaited save-load, the application assigns the save and then calls
-`initAudio()` synchronously before later playable scene/input publication; no
-ordinary current pre-init action route to the former package exception has
-been reproduced. Creature voices, ambience, combat/Guardian cues, music,
-mixer/node ownership, visibility/context-loss lifecycle, budgets, rights, listening and
-device evidence remain Arc 7/8 and Gate G work. This hardening changes no Guide
-capability, Training lesson, development-release bullet or version identity.
+context is reused. The app calls survey ping and travel whoosh and still exposes
+only Sound/Volume. During awaited save-load it assigns the save and calls
+`initAudio()` synchronously before later playable scene/input publication.
 
-The `@cf/domain-progression` epoch contract now distinguishes the immutable
+As of 2026-08-24, `@cf/audio` separately owns a package-only Arc 7 foundation:
+pure resolver-v1 signature/profile/call plans over already-normalized inputs;
+the pinned 1,014-route/1,010-identity coarse kingdom manifest and sound witness;
+pure distant-ecology and settled-expression plans; an injected five-category
+mixer/limiter/meter and voice/lifecycle runtime; a pure two-cycle lab audit; and
+a pinned empty rights manifest/validator. The committed package policy makes runtime configuration
+fail closed above eight creature emitters or 120 nodes. The compatibility stings remain
+outside this runtime's lifecycle/accounting, and the app does not construct it.
+Canonical creature/event adapters, authored playback/assets, browser/device
+plateaus, captions/mono/dynamic-range/reduced-intensity controls, combat/Guardian
+integration and HUMAN listening remain Arc 7/8 and Gate G work. No Guide
+capability, Training lesson, development-release bullet or version identity
+follows from the package foundation.
+
+The historical F1b `@cf/domain-progression` epoch contract distinguished the immutable
 sanitized `EpochClock.base()` construction origin from the advancing
 `current()` snapshot ordinary saves must persist. The app was already wired
 correctly: it constructs once from imported `EPOCH_BASE` plus a fresh monotonic
 page-residence segment, refreshes the compatibility-named field from `current()`
 before export, and constructs a new clock after reload. Smoke now advances one
 exact epoch, inspects the raw IndexedDB primary, reloads it, and rejects stored-
-base or stale-reload substitutions. This does not close F3's CAS/revision/tab-
-lease substrate or F4's automatic-edge, hidden-tab, live-global, SessionRNG and
-persisted `activePlayMs` clock/accrual work.
+base or stale-reload substitutions. At that boundary it did not close F3/F4. The current status
+overlay now records the live CAS/revision/tab lease, visible/answerable active-play/SessionRNG
+authority and Arc 3 Auto-Extractor settlement.
 
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,

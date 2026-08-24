@@ -1,13 +1,22 @@
 # Celestial Frontier — Species & Genome System
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 reset
-overlay below matches `port/v2` as of 2026-08-11, and the approved, unimplemented
-audio-identity overlay matches the next-arc contract as of 2026-08-13. ⚠ v1.8.9: every reader of the
+overlay below matches `port/v2` as of 2026-08-11, and the partially implemented package-only
+audio-identity overlay matches `@cf/audio` as of 2026-08-24. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract.
+
+> **2026-08-24 Arc 4/5 ownership overlay — package foundation only:** the port now has a strict
+> identity split between immutable catalogue/discovery facts, stable owned fauna instances and
+> nonliving specimen lots. Ownership-v1 binds canonical genome identity, exact CF1 provenance,
+> biosphere progress and bounded legacy evidence. Ownership-v2 adds receipt-bound acquisitions,
+> deterministic fauna-only bred-child successors, ordered parent/lineage evidence and tombstones;
+> its migration certificate records only source/target digests, never duplicate ownership bytes.
+> These are registered domain/persistence models, not player capability: no capture/breed/care/
+> companion writer, app migration, UI or browser outcome exists yet.
 
 > **2026-08-11 v2 executable-contract correction:** No genome, descriptor or
 > portrait output changed. The SpeciesTraits declaration now matches its tables:
@@ -43,32 +52,37 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > **PASS with optional polish only**; the sealed archive's generated UNREVIEWED status
 > remains its preparation state, and final all-bloodline certification remains open.
 
-> **2026-08-13 v2 next-arc audio identity — approved, not implemented:** Catalogue
+> **2026-08-24 v2 Arc 7 audio identity — package foundation only:** Catalogue
 > identity and living-creature identity are separate. The Earth catalogue owns 1,010
 > identities and 1,014 set-qualified route rows; every art/audio join carries the exact
-> catalogue set/kingdom + species rather than a bare display name. A living specimen's
-> visual identity continues to use its canonical **complete plain genome**. Future audio
-> instead uses an immutable typed `AudioSignature` projection derived only from selected
-> audio-relevant phenotype fields, exact Earth owner when present, lineage markers that
+> catalogue set/kingdom + species rather than a bare display name. `@cf/audio` now pins that
+> complete route inventory to a coarse kingdom taxonomy and rejects legacy/mammal fallback in
+> ordinary sound witnesses. A living specimen's visual identity continues to use its canonical
+> **complete plain genome**. The package audio pipeline instead uses an immutable typed
+> `AudioSignature` projection derived only from selected audio-relevant phenotype fields, exact
+> Earth owner when present, lineage markers that
 > survive persistence and an explicit resolver version. It excludes mutable `xp`, `hurt`,
 > `fed`, `brood`, `assignment` and `bond`. They may share a pure body/rig/habitat taxonomy,
 > but neither renderer owns the other's runtime. Same seed is insufficient when
 > reverse-parent children inherit different audio-relevant phenotype or lineage, while
 > changing any excluded mutable field must leave the signature, audio profile and cue plan
 > exactly unchanged. The audio product is stable typed data, not byte-identical browser PCM.
-> Current v2 remains stings-only; this paragraph changes no genome, save, portrait,
-> descriptor, Guide capability or player mechanic.
+> Resolver-v1 and its negative/positive vectors are implemented only over an already-normalized
+> `AudioIdentityInput`. The canonical app creature/save → audio-input projector, authored voice
+> graph and player playback are not implemented; the current app remains stings-only. This
+> paragraph changes no genome, save, portrait, descriptor, Guide capability or player mechanic.
 >
-> Fauna will use curated biological/foley families; flora, fungi and microbes will receive
-> kingdom-appropriate ecological or Compendium sonification and must never fall through to
-> an animal voice. The promise is a recognizable deterministic specimen signature assembled
-> from curated palettes and synthesis, **not** one recorded sample for every Earth species.
-> Bred signatures blend from the `_earthBlend` name, exact `_earthBlendKingdom` owner and
-> `_anchorVal` fields that survive current normalization. They may not depend on complete
-> `parents` objects until the sharing/save contract explicitly preserves the required
-> lineage. Automated identity acceptance includes negative controls for each excluded
-> mutable field. See `AUDIO.md` §0 for the typed resolver, rights, listening and resource
-> gates.
+> The package assigns fauna and each non-fauna kingdom a distinct truthful coarse policy; curated
+> biological/foley families and authored ecological or Compendium sonification remain future and
+> must never fall through to an animal voice. The promise is a recognizable deterministic specimen
+> signature assembled from curated palettes and synthesis, **not** one recorded sample for every
+> Earth species.
+> Resolver-v1 accepts exact owner/anchor and ordered parent-seed fields and keeps reverse-parent
+> signatures distinct, but no app projector claims a complete parent-voice blend. It may not depend
+> on unregistered legacy `parents` objects. Ownership-v2 now defines a receipt-bound ordered parent
+> projection for future writers, but the audio app projector still does not consume it. Automated
+> identity acceptance includes negative controls for each excluded mutable
+> field. See `AUDIO.md` §0 for the typed resolver, rights, listening and resource gates.
 
 > **B15.4 classifier + naming (render/text-only, fp 50/50):** `FA_BODY[0]` renamed `"six-limbed"` →
 > `"sturdy-limbed"` (Plan 0 is now a "land grazer" whose limb count is set by the limb gene, not the

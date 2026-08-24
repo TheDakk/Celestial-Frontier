@@ -1,14 +1,31 @@
 # Celestial Frontier — World & Universe Generation
 
-**STATUS:** legacy mechanics match `main.js` as of 2026-07-23; the v2 type-contract
-overlay below matches `port/v2` as of 2026-08-15.
+**STATUS:** legacy mechanics match `main.js` as of 2026-07-23; the dated v2 overlays
+match the committed `port/v2` boundary as of 2026-08-24.
 **Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime, `port/v2/packages/domain/{planetgen,worldgen,surveyphrases}` own the
 generated content contracts, and `port/v2/packages/scene/{address,cf1-code,system,universe,zoommode}`
 own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION.md. The biome CONTENT catalog is `BIOME_ATLAS.md` at the repo root (audited and promoted there from `tools/` on 2026-07-31; it had existed since 2026-07-21, and an earlier same-day note in these docs wrongly declared it missing — see ART_DIRECTION §6.1).
 
-> **2026-08-15 F2 canonical-ingress overlay (current code):** Public and
+> **2026-08-24 Arc 3/4 current-world overlay:** `@cf/domain-opportunity` now projects exact
+> source-proven CF1 world and star opportunities, preserves raw tiers 0–14 separately from the
+> display rarity ladder, and exposes finite world deposits, stellar skim material/hazard and
+> worked-out/active-play cursor facts. The player can Mine and Skim; the Engineering panel displays
+> six research rows but only Deep Scanners is purchasable. A pure Deep-Scanner orbital-reveal policy
+> exposes already-generated mineral facts without mutating generation, but the current Survey surface
+> does not render orbital mineral rows. All 62 fixed recipes are listed; only connected-effect outputs
+> with exact costs/preconditions and capacity/revision headroom are actionable, while fully
+> exceptional slotted outputs and disconnected-effect rows remain unavailable. Eligible Engineering
+> actions use one receipt-bearing F3/F4 transaction.
+>
+> Arc 4 separately consumes the full epoch-bound canonical roster—never the eight-row Planetside
+> preview—to build a source-proven acquisition snapshot and pure capture plan. Ownership-v1 codecs,
+> 18 namespaces and canonical owner identities exist, but no capture writer, save bootstrap or UI
+> action exists yet. The broader anomaly/blueprint/lore/Guardian/project manifest remains planned.
+
+> **2026-08-15 F2 canonical-ingress overlay (historical foundation; current where the 2026-08-24
+> overlay does not supersede it):** Public and
 > persisted galaxy/star/planet coordinates are candidates, not generated-world
 > identity. The scene resolver searches the production galaxy cells, then both
 > coarse and fine star layers beneath the proven galaxy, then the exact
@@ -59,7 +76,8 @@ own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION
 > `supernovaSites(galaxySeed, epoch)` names its second argument as the
 > deterministic cosmic-time key—not a requested site count—and exposes the
 > exact remnant and protostar-birth result used by the app. TypeScript still
-> accepts any `number`; nominal epoch ownership remains future F4 work.
+> accepts any `number`; at that boundary nominal epoch ownership remained future F4 work. The
+> current app now supplies the explicit epoch owner recorded in the 2026-08-24 overlay.
 >
 > Importing `@cf/domain-worldgen` is safe, but its transitional lifted seam is
 > not standalone for a first uncached branch that generates an ordinary galaxy,
@@ -68,18 +86,19 @@ own the dated F2 navigation-provenance contract. Art rules live in ART_DIRECTION
 > cached calls may not read that binding. The current app installs the hook
 > before WorldGen use. This documents the dependency; it does not remove it.
 
-> **2026-08-13 cross-system review:** The approved ship/loot/companion/audio arc in
+> **2026-08-13 cross-system review (historical pre-F2/Arc-3 boundary):** The approved ship/loot/companion/audio arc in
 > `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` changes no generated world values.
 > Companion missions, loot provenance and Guardian receipts must reference the eventual
 > canonical galaxy → star → planet identity rather than a display name or partial seed.
 > Until that hierarchy proof closes, they remain unavailable in v2. Biome/hazard tags may
 > select transparent reward and audio palettes, but may not consume or reorder world RNG.
 
-## 0. v2 world-opportunity contract (approved, not implemented)
+## 0. v2 world-opportunity contract (resource subset implemented; broader manifest planned)
 
 The universe should give a player a reason to wonder about a destination before it
-becomes a checklist. The future **World Opportunity Manifest** is a pure,
-versioned projection of the canonical galaxy → star → planet identity. It is not a
+becomes a checklist. Arc 3 implements the finite resource/star-skimming subset as pure,
+versioned projections of canonical galaxy → star → planet identity. The broader
+**World Opportunity Manifest** remains the contract for other families. It is not a
 replacement for `planetParams`, `biomeFor`, the live survey, or a new promise that
 every world contains every reward type.
 

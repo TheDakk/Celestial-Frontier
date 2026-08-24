@@ -1,5 +1,22 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
+> **2026-08-24 Arc 3 Engineering overlay — current local implementation:** the port now exposes
+> finite full-CF1 world mining, star skimming, six Research rows and every fixed legacy recipe in
+> the **Engineering & Shipyard** panel. Only Deep Scanners is purchasable among those six research
+> rows. Its pure orbital-reveal policy exists, but current Survey does not render orbital mineral
+> rows. All 62 fixed recipes are listed; only connected-effect outputs with exact costs/
+> preconditions and capacity/revision headroom are actionable, while fully exceptional slotted
+> outputs and disconnected-effect rows remain unavailable. Mine, Skim, the eligible Deep-Scanner
+> purchase and eligible fixed Fabrication settle through one lease-fenced F3/F4 CAS with the exact
+> Cargo/item/technology changes, Arc 2/3 carriers, compatibility mirrors, Charter mining/fabrication
+> progress, immutable receipt and revision. Resource cursors settle from the prior active-play state;
+> failed writes retain the same plan and stale/duplicate/storage/capacity/revision failures publish
+> no optimistic result.
+>
+> Arc 3 implements fixed sinks and their real resource sources, not the remaining authored economy:
+> variable/natural loot occurrence, compatible affix pools, crafted modifier/drawback, upgrades,
+> sockets, vendors/bulk targeting, full recovery/pacing and HUMAN comprehension remain open.
+
 > **2026-08-24 Arc 2 v2 overlay — CURRENT versus OPEN:** the port now has executable authority
 > for the mature table facts: all 47 material ids; all 62 item definitions (20 stackables and 42
 > slotted gear/relics across 9 slots); all 6 legacy affixes; fixed recipe, prerequisite and Signature
@@ -21,17 +38,20 @@
 > advancing a per-domain SessionRNG counter; stale/duplicate/storage failures never publish an
 > optimistic result or reroll.
 >
-> **Still open, and deliberately not fabricated:** the economy trace is source-neutral and reports
-> `sourceModelStatus: arc3-deferred`; no current v2 world source, rate/ETA, mining, Fabricator,
-> Research, ship-system build or new loot occurrence writer exists. Authored natural-affix pools and
+> **At the Arc 2 boundary, still open and deliberately not fabricated:** its economy trace is
+> source-neutral and reports `sourceModelStatus: arc3-deferred`. Arc 3's current overlay above now
+> supplies the separate live world/star sources, eligible Deep-Scanner purchase and eligible fixed-
+> Fabrication actions; the Arc 2
+> trace remains unchanged historical evidence. Authored natural-affix pools and
 > compatibility, crafted modifiers/drawbacks, upgrades, sockets, targeting/vendor policy, complete
 > source-to-upgrade recovery/pacing, and HUMAN phone/desktop item comparison remain later criteria.
 > Fixed recipe and sink truth is executable development authority, not a claim that players can craft.
 >
-> Focused tests, one no-retry real Slice Smoke and one 12-viewport Glass Matrix are locally green on
-> Edge `151.0.4129.101`. The full suite's only current red is the intentionally stale Compendium
-> measurement digest after the dependency graph changed; it will be recalibrated once at the final
-> multi-Arc head. No hosted, integration, preview, release, version or deployment authority follows.
+> For the recorded pre-current-WIP Arc 2 candidate, focused tests, one no-retry real Slice Smoke and
+> one Glass Matrix were locally green on Edge `151.0.4129.101`. In that recorded candidate, the full
+> suite's sole deliberate red was the Compendium measurement-authority mismatch scheduled for one
+> final multi-Arc reseal. This evidence does not certify the current moving working tree. No hosted,
+> integration, preview, release, version or deployment authority follows.
 
 > **2026-08-13 v2 next-arc overlay — historical pre-Arc-2 boundary:** The playable v2
 > slice currently preserves and displays imported economy state; it does **not**

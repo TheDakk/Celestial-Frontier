@@ -1,5 +1,23 @@
 # Celestial Frontier — Determinism Discipline
 
+> **2026-08-24 Arc 3–5 current deterministic boundary:** Arc 3 world/star opportunities are pure
+> projections of registered full-CF1 addresses. Mine/Skim outcomes and fixed craft identities use
+> canonical source facts and explicit ordered plans; active-play cursor settlement is computed from
+> the prior carrier, never a caller timestamp. Six research rows are displayed, but only Deep
+> Scanners is purchasable; its pure orbital-reveal policy exists while current Survey renders no
+> orbital mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs with
+> exact costs/preconditions and capacity/revision headroom are actionable; fully exceptional slotted
+> outputs and disconnected-effect rows remain unavailable. Eligible Deep-Scanner and fixed-
+> Fabrication actions use the no-RNG sibling transaction, while any random plan is committed with its exact successor authority. Reopening,
+> reload, UI order and a failed write cannot reroll or perturb another domain.
+>
+> Arc 4's epoch-bound full roster, registered acquisition snapshot and pure planner separate target
+> selection/success draws from mutation. The ownership-v1 package and Arc 5 ownership-v2 model bind
+> canonical genome/owner/receipt evidence, deterministic fauna-only child ids, ordered parents and
+> tombstones. The Arc 5 migration artifact is digest-only. None of these package seams is a live
+> capture/breed writer yet. The committed pre-draw/capacity all-scenario certification and
+> settlement prerequisite remains a prerequisite only; it does not settle capture or publish state.
+
 > **2026-08-24 F4 + Arc 2 outcome-determinism overlay — current local implementation:**
 > `SessionRNGState` now persists one uint32 seed, isolated semantic-domain counters and one global
 > save-lifetime receipt ordinal inside protected `player/f4.authority` v1. `planSessionRNGDraw()` is
@@ -18,7 +36,7 @@
 >
 > The audited 24 legacy `Math.random()` physical sites remain classified as 14 outcome and 10
 > presentation calls. This inventory plus the live authority seam does **not** mean every legacy
-> gameplay call site has migrated: Arc 3+ writers still own their semantic settlement, and audio/FX
+> gameplay call site has migrated: Arc 4+ writers still own their semantic settlement, and audio/FX
 > presentation never share an outcome counter. Current focused tests and real local Inventory browser
 > paths are green; end-of-campaign exact-head/hosted evidence and all later outcome writers remain open.
 

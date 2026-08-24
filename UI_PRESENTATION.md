@@ -1,5 +1,24 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-24 Arc 3 Engineering UI overlay — current local source:** the former read-only
+> Shipyard panel now renders **Engineering & Shipyard** from one detached authority projection. It
+> retains the four code-native SVG chassis and exact installed-system/hardpoint facts, then adds
+> foldable Mine, Skim, Research and Fabricator sections. The model contains exact opportunity
+> status, deposits/material, six canonical research rows, all 62 fixed recipes, costs,
+> prerequisites, output type, effect-support truth, availability reason and pending state. Only
+> Deep Scanners is purchasable among the six research rows. Its pure orbital-reveal policy exists,
+> but the current Survey surface does not render orbital mineral rows. Only recipe outputs with a
+> connected live effect, exact costs/preconditions and capacity/revision headroom are actionable;
+> fully exceptional slotted outputs and disconnected-effect rows remain unavailable. Controls remain
+> keyboard/touch reachable, unavailable rows have no optimistic action, and Close remains available during a pending operation.
+>
+> Every press routes through the shared ProductActionCoordinator used by Engineering and Inventory;
+> a second action is refused while one settlement owns publication. The panel reprojects only after
+> durability and exposes waiting/worked-out/unavailable states without inventing capability. The
+> existing Arc 1C paragraphs below are retained as historical pre-Engineering evidence. Updated
+> player guidance is committed; clean current-source no-retry Slice Smoke followed by Glass remains
+> pending while the browser tools and docs are the only dirty batches.
+
 > **2026-08-24 v2 Arc 2 Inventory overlay — current local source:** **Inventory** is a registered
 > ordinary panel in the desktop rail and the phone dock. Adding it makes the exact compact contract
 > 260px, 5 columns × 2 rows, **ten controls**. The panel projects only the strict Arc 2 carrier and
@@ -17,15 +36,19 @@
 > in its live region, and reload-converges after a post-durable publication fault without clicking or
 > writing again.
 >
-> The 2026-08-24 no-retry Slice Smoke is terminal PASS on Edge `151.0.4129.101` in 239,546 ms with
+> For the recorded pre-current-WIP Arc 2 candidate, the 2026-08-24 no-retry Slice Smoke is terminal
+> PASS on Edge `151.0.4129.101` in 239,546 ms with
 > zero findings/retries. Full-certifying Glass is separately terminal PASS in 61,039 ms across 12/12
 > viewports, with 78/78 planned/executed negative controls, none blocked/omitted, and zero findings,
 > instrument failures or retries. The rulers independently mutate/remove carrier, raw authority,
 > runtime, DOM equipped state, duplicate/missing rows, focus/modal, conditional copy, protection,
 > action publication and convergence so equal wrong representations cannot agree green. Both bind
-> dirty working-tree inputs; they are not exact-head, hosted, HUMAN, integration, preview, release or
-> deployment evidence. Item-art/compare readability still needs HUMAN phone/desktop review, and no
-> Cargo/Fabricator/Research/vendor/bulk surface is implied.
+> that recorded candidate's dirty inputs and do not certify the current moving working tree; they are
+> not exact-head, hosted, HUMAN, integration, preview, release or
+> deployment evidence. Item-art/compare readability still needs HUMAN phone/desktop review. At that
+> Arc 2 evidence boundary no Cargo/Fabricator/Research/vendor/bulk surface was implied; the newer
+> Engineering overlay above supersedes only Mine/Skim, the eligible Deep-Scanner purchase and the
+> eligible fixed-Fabrication subset.
 
 > **2026-08-22 v2 Arc 1C Shipyard/surface overlay — historical pre-Arc-2 source:** clean
 > product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds one real, read-only

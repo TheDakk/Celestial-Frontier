@@ -1,5 +1,23 @@
 # Celestial Frontier — Player Progression
 
+> **2026-08-24 Arc 3 progression overlay — current local implementation:** Mine and Skim are live
+> through the Engineering panel. Six research rows are displayed, but only Deep Scanners is
+> purchasable; its pure orbital-reveal policy exists while current Survey does not render orbital
+> mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs with exact costs/
+> preconditions and capacity/revision headroom are actionable; fully exceptional slotted outputs
+> and disconnected-effect rows remain unavailable. Eligible Deep-Scanner and fixed-Fabrication
+> actions use the durable transaction. Canonical source opportunities, technology prerequisites,
+> material/part/Signature/Stardust costs, finite reserves, active-play accrual and revision/capacity
+> headroom are projected before each press and re-derived inside it. Eligible fixed system
+> fabrication can change the normalized ship/reach projection. Charter mining and fabrication counters bank only from the
+> committed result, never from button intent. One shared coordinator serializes Engineering with
+> Inventory publication.
+>
+> This does not complete progression: authored random loot, variable crafting, upgrades/sockets,
+> capture/companions, combat/Guardians, the complete Charter/Training journey and HUMAN pacing remain
+> open. Arc 4's ownership/snapshot/planner packages add no player progression until a capture writer
+> and UI land.
+
 > **2026-08-24 F3/F4 + Arc 2 progression overlay — current local implementation:** the v5 app now
 > persists one protected F4 authority containing visible/answerable/lease-owned `activePlayMs` and
 > SessionRNG's seed, isolated domain counters, and global receipt ordinal. Hidden, frozen,
@@ -8,20 +26,22 @@
 > Arc 2's deterministic Equip, Unequip, Salvage and pending-claim actions consume no domain roll and
 > reserve only the next receipt identity, so UI order cannot perturb later random outcomes.
 >
-> The exact-instance Inventory is live from the desktop rail and the phone's exact 260px 5×2
+> At the Arc 2 boundary, the exact-instance Inventory became live from the desktop rail and the phone's exact 260px 5×2
 > ten-control dock. It can inspect and conditionally compare migrated gear, then durably equip,
-> unequip, salvage or claim a pending item. It does not grant materials, research, reach, crafting,
-> random loot or a ship upgrade. Oversized legacy holds remain complete inspection-only evidence
+> unequip, salvage or claim a pending item. That Arc did not grant materials, research, reach,
+> crafting, random loot or a ship upgrade; Arc 3 now owns the fixed Engineering subset above.
+> Oversized legacy holds remain complete inspection-only evidence
 > rather than being truncated into false progression. Fixed recipe and economy-sink graphs are
-> inspectable development truth; their source model reports `arc3-deferred` and exposes no player
-> progression action.
+> inspectable development truth; their Arc 2-local source model reports `arc3-deferred` and exposed
+> no player progression action at that boundary. Arc 3 now owns the fixed actions described above.
 >
 > Genuine legacy Training completion also keeps the Arc 2 carrier aligned with its owned
 > `items` / `equip` / `equipAff` checkpoint fields under one checked transaction. Current-view and
-> source-deferred recovery preserve the carrier; corrupt/future evidence cannot mint gear. Local
-> focused tests plus one no-retry Slice Smoke and one 12-viewport Glass Matrix are terminal green on
-> Edge `151.0.4129.101`, but bind dirty working-tree inputs. Auto-Extractor source settlement,
-> remaining outcome-call-site migration, authored loot/craft progression and HUMAN comparison/pacing
+> source-deferred recovery preserve the carrier; corrupt/future evidence cannot mint gear. For the
+> recorded pre-current-WIP Arc 2 candidate, focused tests plus one no-retry Slice Smoke and one Glass
+> Matrix were terminal green on Edge `151.0.4129.101`, but bind that recorded candidate's dirty
+> inputs and do not certify the current moving tree. Remaining outcome-call-site migration,
+> authored loot/craft progression and HUMAN comparison/pacing
 > remain open; no hosted, integration, Gate, release, version or deployment authority follows.
 
 > **2026-08-22 Arc 1C progression overlay — historical pre-Arc-2 implementation:** clean
@@ -174,7 +194,7 @@
 > history store, a score substitute or a reward faucet. Rename, migration, reload and
 > catalogue deduplication must preserve the referent of every displayed memory.
 >
-> **2026-08-15 v2 epoch-contract overlay:** `COSMIC_EPOCH` accepts only a
+> **2026-08-15 v2 epoch-contract overlay (historical pre-F3/F4 boundary):** `COSMIC_EPOCH` accepts only a
 > nonnegative safe integer and is capped at 10,000 to bound retained O(epoch)
 > ecology work. `EpochClock.base()` is the immutable sanitized construction
 > origin; it is not the current save value. The browser app constructs once from
@@ -183,8 +203,9 @@
 > clock from that serialized snapshot plus another fresh segment after reload.
 > The real browser gate advances one exact 1,200-second epoch, reads the raw
 > IndexedDB primary, reloads, and requires the advancing snapshot to survive.
-> Current elapsed time is not yet a proved foreground-only active-play policy.
-> F3 owns the CAS/revision and cross-tab lease substrate. F4 owns hidden-tab
+> At that boundary current elapsed time was not yet a proved foreground-only active-play policy.
+> The current F3/F4 overlay above now owns the CAS/revision/lease and visible/answerable active-play
+> authority. In this historical plan, F4 still owned hidden-tab
 > semantics, automatic integer-edge persistence/invalidation, live global-read
 > timing, SessionRNG, and the separate persisted `activePlayMs` clock/accrual
 > policy for future readiness systems.

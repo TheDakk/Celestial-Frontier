@@ -1,6 +1,19 @@
 # Celestial Frontier — Breeding & Sharing
 
-> **2026-08-15 F2 sharing overlay (current code; supersedes the open CF1
+> **2026-08-24 Arc 0/5 current package boundary:** legacy `CFB-` remains the exact v1
+> challenger/exhibit contract. Versioned `CFB2-` round-trips one bounded ordered uint32 parent
+> tuple for an owned-creature identity while excluding XP, feeding, brood, injury, bond and
+> assignment; forward/reverse parents remain distinct and malformed/future/mismatched payloads fail
+> closed. Ownership-v2 separately defines receipt-bound deterministic fauna-only child successors,
+> local child ids, ordered genome parent evidence, dispositions and tombstones. The additive Arc 5
+> migration certificate binds only fresh V1/V2 digests and stores no duplicate state.
+>
+> No breeding, feeding, care, Recovery, assignment, companion or share UI writer is live in v2.
+> The non-consuming parent/Recovery design below therefore remains the product contract, not a
+> shipped action; the new model cannot mutate a save or grant a child by itself.
+
+> **2026-08-15 F2 sharing overlay (historical foundation; current where not superseded above;
+> supersedes the open CF1
 > hierarchy note in the 2026-08-11 overlay):** Strict CF1 galaxy, star and
 > planet routes are now regenerated through the production hierarchy before
 > navigation. The payload remains a pointer, never authority: forged, stale,
@@ -20,7 +33,7 @@
 > ownership, local ledgers, the save schema or any future receipt design; CFB
 > hybrid-parent preservation remains open.
 
-> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** Breeding,
+> **2026-08-13 v2 next-arc overlay — historical pre-ownership-model boundary:** Breeding,
 > feeding, creature ownership mutations and companion dispatch are not live in
 > the current v2 slice; their Guide topics correctly remain **Unavailable**.
 > Legacy v1.8.9 stores species discovery and a living owned specimen in the same
@@ -62,7 +75,7 @@
 > deviation and new compatibility tests.
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the dated v2
-overlays match `port/v2` as of 2026-08-15. Carries v1.8.6
+overlays match the committed `port/v2` boundary as of 2026-08-24. Carries v1.8.6
 and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **See also:** `LINEAGE_AND_BREEDING.md` — the v1.6 Earth-lineage layer on top of `breedPair`:
 a child of an Earth parent keeps that parent's Earth RIG + wears the child's alien palette

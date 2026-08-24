@@ -9,6 +9,38 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
+## Current-state boundary — Arc 3 Engineering and Arc 4/5 ownership foundations (2026-08-24)
+
+- ★ **D-ARC3-ENGINEERING — fixed Engineering is player-live locally.** Registered full-CF1
+  world/star opportunity snapshots preserve raw tiers 0–14, finite reserves and active-play cursors.
+  Mine and Skim settle through the existing F3/F4 receipt/CAS and publish through one shared
+  Engineering/Inventory coordinator. Six research rows are displayed, but only Deep Scanners is
+  purchasable; its pure orbital-reveal policy exists while current Survey renders no orbital
+  mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs with exact
+  costs/preconditions and capacity/revision headroom are actionable; fully exceptional slotted
+  outputs and disconnected-effect rows remain unavailable. Charter mining/fabrication banking
+  derives only from committed outcomes. This intentionally does not invent variable crafting,
+  natural-affix policy, upgrades or random loot.
+- ◐ **D-ARC4-OWNERSHIP — identity/planning exists before mutation.** The full epoch-bound roster,
+  contact capability, 18 owner namespaces, ownership-v1/import codecs, acquisition snapshot and
+  pure capture planner are committed. No bootstrap, attempt-spend writer, Compendium/ownership
+  publication or UI exists. Commit `af12659` adds the pre-draw/capacity all-scenario certification
+  and settlement prerequisite; it is not a durable capture writer, product publication or UI.
+- ◐ **D-ARC5-OWNERSHIP-V2 — successor model and migration certificate only.** V2 binds capture
+  receipts, deterministic fauna-only children, ordered parents, dispositions and tombstones. Its
+  migration carrier stores only V1/V2 digests derived from a fresh import. It is not duplicate
+  ownership state, an app migration, breeding/care UI or companion system.
+- ★ **D-F3F4-CURRENT — superseding persistence/time overlay (2026-08-24).** V5 now partitions
+  canonical owner rows, protects F4 authority, and commits product state, next active-play/
+  SessionRNG authority, one immutable receipt and the next revision through one lease-fenced CAS.
+  Arc 3 settles Auto-Extractor loads from the prior active-play cursor, caps them by finite
+  reserves, ignores legacy wall timestamps and reanchors a newly fabricated extractor. Arc 2 owns
+  exact gear instances; Arc 4/5 own catalogue/specimen/fauna models and migration evidence, but no
+  capture, breeding, care or assignment writer exists. Unmigrated combat, breeding, capture and
+  later random writers remain open. This overlay supersedes current-state implications in the
+  dated `D-EPOCH-1`, `D-STORE`, `D-IDENTITY-LOOT`, `D-AUTOEXTRACT-CLOCK` and `D-RNG` entries below
+  without rewriting their historical boundaries.
+
 ## Current-state instrument correction — PR #34 Compendium native row activation (2026-08-23)
 
 **Status: ★ second bounded correction locally certified; hosted proof remains open.** Runs
@@ -1705,6 +1737,20 @@ duplicates).
   Creature voices, ambience, combat/Guardian cues, music, buses/mixing, node ownership,
   visibility/context-loss recovery, budgets, rights, device listening and all other Arc 7/8 /
   Gate G acceptance remain open. No Guide/Training/release-copy or version change is implied.
+- ◐ **D-AUDIO-FOUNDATION — Arc 7 now has a package-only injected foundation
+  (2026-08-24).** `@cf/audio` owns resolver-v1 signature/profile/call-plan data over
+  already-normalized inputs, the source-pinned 1,014-route/1,010-identity coarse kingdom manifest
+  and sound witness, pure distant-ecology and settled-expression plans, an injected five-category
+  mixer/limiter/meter with bounded voice/lifecycle ownership, a pure two-cycle lab audit, and a
+  pinned empty rights manifest/validator. The committed package policy rejects maxima above eight
+  creature emitters or 120 nodes before context construction. This current overlay supersedes only
+  the current-state implication of the dated
+  `D-AUDIO-CAP` finding below; its original Phase 0 measurement remains historical. It does not supersede the dated
+  `D-AUDIO-INIT` history: the compatibility stings remain separate, player-live survey/travel are
+  still the only app sounds, and the app does not construct or account through the new runtime.
+  Canonical creature/event adapters, authored playback/assets, app/browser/device evidence,
+  complete accessibility, combat/Guardian integration and HUMAN listening remain open. Gate G,
+  Arc 7 and Arc 8 are not closed; no Guide/Training/release/version change is implied.
 - ★ **D-UI-1 — lower mobile chrome is measured as a group (2026-08-12; current geometry updated
   2026-08-22).** The phone dock originally wrapped 3/3/2 while context/hint/Planetside used fixed
   offsets, so green smoke evidence visibly covered copy and controls. The first bounded correction

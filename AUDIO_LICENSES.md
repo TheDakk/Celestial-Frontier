@@ -1,8 +1,10 @@
 # Celestial Frontier — Audio Asset Rights Ledger
 
-**STATUS:** authoritative empty ledger and intake contract as of **2026-08-13**.
+**STATUS:** authoritative empty ledger and intake contract as of **2026-08-24**.
 The repository currently contains no committed `.wav`, `.ogg`, `.mp3`, `.m4a`, `.aac`,
 `.flac` or `.webm` audio assets; current audible behavior is synthesized at runtime.
+`port/v2/packages/audio/src/rights.ts` pins the matching empty version-1 machine authority and a
+pure validator; it does not inspect repository files or media bytes and approves no asset.
 Adding an entry here does not make an asset player-visible. `AUDIO.md` owns runtime design,
 and `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` owns the staged product boundary.
 
@@ -26,7 +28,8 @@ without written consent, and a runtime dependency on remote TTS, generative audi
 
 ## 2. Machine-readable manifest contract
 
-Before the first media asset lands, add a validated manifest whose rows contain:
+The package now owns a validated **empty** machine-readable manifest. Before the first media asset
+lands, populate that authority with rows containing:
 
 ```ts
 type AudioAssetRightsRow = {
@@ -64,6 +67,12 @@ Originals and license proof are retained in an appropriate source archive even w
 processed derivative ships. Updating a derivative creates a new version/hash; it does not
 silently replace the evidence for an older published build.
 
+The current pure validator proves exact row/observation/evidence/reachability joins, hashes and
+technical-policy bounds for supplied data, with independent missing-row, hash-drift, license-drift
+and orphan controls. A first nonempty batch must also add the concrete filesystem/media observer
+that supplies real file, codec, duration, loudness, peak and proof observations; the empty authority
+alone is not CI evidence for bytes that do not yet exist.
+
 ## 3. Catalogue language
 
 An Earth organism mapping is keyed by `kingdom|name`. The current roster has 1,010 deduplicated
@@ -94,6 +103,8 @@ is not evidence.
 
 ## 5. Current ledger
 
-No external or recorded audio assets are approved or committed as of 2026-08-13. The first
-asset batch must add the machine-readable manifest, proof archive convention, validator,
-negative controls, decoded-memory budget and the corresponding entries here in the same PR.
+No external or recorded audio assets are approved or committed as of 2026-08-24. The pinned
+machine-readable manifest is empty and its pure validator/negative controls authorize nothing.
+The first asset batch must populate it, add the proof archive convention and real filesystem/media
+observations, lock a decoded-memory policy from measurements, extend the necessary negative
+controls, and add the corresponding entries here in the same batch.
