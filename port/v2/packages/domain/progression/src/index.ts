@@ -25,6 +25,7 @@
    clock-free and winding the device clock grants nothing by construction. */
 
 export * from './readiness.js';
+export * from './auto-extractor.js';
 
 /** Injected elapsed seconds per epoch — v1.7 balance: 240→1200 ("slow evolution, not
     a 4-min farm"). ⚠ SHARED knob: drives biosphere recovery AND harvest
