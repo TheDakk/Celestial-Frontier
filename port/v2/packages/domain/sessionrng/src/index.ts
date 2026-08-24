@@ -2,9 +2,10 @@
    NEW code, deliberately not a lift).
 
    THE PROBLEM IT SOLVES: §16.2 makes the UNIVERSE reproducible; nothing makes
-   a PLAYER OUTCOME reproducible. Fourteen outcome rolls in v1.8.9
+   a PLAYER OUTCOME reproducible. Fourteen outcome call sites in v1.8.9
    draw from bare Math.random(), so no test can pin a capture and no bug
-   report can be replayed. Two named domains result:
+   report can be replayed. They map to thirteen semantic counters (manual and
+   bulk feeding intentionally share one). Two named RNG classes result:
      WorldRNG   — the existing @cf/domain-rand: seeded, pure, universe-shaping.
      SessionRNG — THIS: seeded once per session from a STORED value (in the
                   save + the diagnostics export), so outcomes stay
@@ -137,54 +138,89 @@ export const DOMAINS = Object.freeze({
   surveyHazard: 'survey.hazard',
   captureCandidate: 'capture.candidate',
   captureSuccess: 'capture.success',
-  bulkFeedOutcome: 'care.bulk-feed',
+  bulkFeedOutcome: 'care.feed',
+  feedOutcome: 'care.feed',
   healOutcome: 'care.heal',
   breedOutcome: 'care.breed',
-  feedOutcome: 'care.feed',
   hazardFlavor: 'hazard.flavor',
   trainingSpecimenSeed: 'training.specimen-seed',
   trainingSpecimenVariation: 'training.specimen-variation',
   trainingDuelSeed: 'training.duel-seed',
 });
 
-export interface LegacyOutcomeRngSite {
+export type LegacyRngClassification = 'outcome' | 'presentation';
+export type LegacyOutcomeRngDomain = (typeof DOMAINS)[keyof typeof DOMAINS];
+
+interface LegacyRngSiteBase {
   readonly id: string;
-  readonly domain: (typeof DOMAINS)[keyof typeof DOMAINS];
   readonly legacyLine: number;
   readonly occurrenceOnLine: number;
   readonly owner: string;
   readonly purpose: string;
+  /** Exact trimmed physical source line. Any source drift reopens the audit. */
+  readonly sourceLine: string;
 }
 
-/** Exact executable gameplay/outcome inventory in the frozen v1.8.9 source.
- * `occurrenceOnLine` is one-based and distinguishes the two Training draws on
- * line 23306. It is evidence for migration, not a license to retain bare RNG. */
-export const LEGACY_OUTCOME_RNG_SITES: readonly LegacyOutcomeRngSite[] = Object.freeze([
-  { id: 'contact-success', domain: DOMAINS.contactSuccess, legacyLine: 10720, occurrenceOnLine: 1, owner: 'contact', purpose: 'contact attempt succeeds' },
-  { id: 'descent-success', domain: DOMAINS.descentSuccess, legacyLine: 10982, occurrenceOnLine: 1, owner: 'descent', purpose: 'descent succeeds' },
-  { id: 'descent-damage', domain: DOMAINS.descentDamage, legacyLine: 10992, occurrenceOnLine: 1, owner: 'descent', purpose: 'descent damage amount' },
-  { id: 'survey-hazard', domain: DOMAINS.surveyHazard, legacyLine: 11837, occurrenceOnLine: 1, owner: 'survey', purpose: 'survey hazard occurs' },
-  { id: 'capture-candidate', domain: DOMAINS.captureCandidate, legacyLine: 12415, occurrenceOnLine: 1, owner: 'capture', purpose: 'capture candidate selection' },
-  { id: 'capture-success', domain: DOMAINS.captureSuccess, legacyLine: 12420, occurrenceOnLine: 1, owner: 'capture', purpose: 'capture succeeds' },
-  { id: 'bulk-feed-outcome', domain: DOMAINS.bulkFeedOutcome, legacyLine: 16592, occurrenceOnLine: 1, owner: 'care', purpose: 'bulk feed outcome' },
-  { id: 'heal-outcome', domain: DOMAINS.healOutcome, legacyLine: 16688, occurrenceOnLine: 1, owner: 'care', purpose: 'heal outcome' },
-  { id: 'breed-outcome', domain: DOMAINS.breedOutcome, legacyLine: 16704, occurrenceOnLine: 1, owner: 'care', purpose: 'breed outcome' },
-  { id: 'feed-outcome', domain: DOMAINS.feedOutcome, legacyLine: 16725, occurrenceOnLine: 1, owner: 'care', purpose: 'feed outcome' },
-  { id: 'hazard-flavor', domain: DOMAINS.hazardFlavor, legacyLine: 16800, occurrenceOnLine: 1, owner: 'hazard', purpose: 'hazard flavor selection' },
-  { id: 'training-specimen-seed', domain: DOMAINS.trainingSpecimenSeed, legacyLine: 23306, occurrenceOnLine: 1, owner: 'training', purpose: 'training specimen seed' },
-  { id: 'training-specimen-variation', domain: DOMAINS.trainingSpecimenVariation, legacyLine: 23306, occurrenceOnLine: 2, owner: 'training', purpose: 'training specimen variation' },
-  { id: 'training-duel-seed', domain: DOMAINS.trainingDuelSeed, legacyLine: 23321, occurrenceOnLine: 1, owner: 'training', purpose: 'training duel seed' },
+export interface LegacyOutcomeRngSite extends LegacyRngSiteBase {
+  readonly classification: 'outcome';
+  readonly domain: LegacyOutcomeRngDomain;
+}
+
+export interface LegacyPresentationRngSite extends LegacyRngSiteBase {
+  readonly classification: 'presentation';
+  readonly domain: null;
+}
+
+export type LegacyRngSite = LegacyOutcomeRngSite | LegacyPresentationRngSite;
+
+function freezeLegacySites(sites: LegacyRngSite[]): readonly LegacyRngSite[] {
+  for (const site of sites) Object.freeze(site);
+  return Object.freeze(sites);
+}
+
+/** All and only the 24 executable `Math.random()` call sites in frozen
+ * v1.8.9. `legacyLine` + one-based `occurrenceOnLine` is the stable physical
+ * address; `sourceLine` makes even same-address source drift fail closed.
+ * Presentation calls are recorded but have no SessionRNG domain, so audio/FX
+ * scheduling can never perturb a player-outcome counter. This is migration
+ * evidence, not permission to retain bare RNG. */
+export const LEGACY_RNG_SITES: readonly LegacyRngSite[] = freezeLegacySites([
+  { id: 'contact-success', classification: 'outcome', domain: DOMAINS.contactSuccess, legacyLine: 10720, occurrenceOnLine: 1, owner: 'attemptContact', purpose: 'contact attempt succeeds', sourceLine: `if(Math.random()<Math.min(0.98, 0.7+_equipBonus('contact')/100)){` },
+  { id: 'descent-success', classification: 'outcome', domain: DOMAINS.descentSuccess, legacyLine: 10982, occurrenceOnLine: 1, owner: '_descRoll', purpose: 'descent decision', sourceLine: 'if(Math.random()*100 < d.pct){' },
+  { id: 'descent-damage', classification: 'outcome', domain: DOMAINS.descentDamage, legacyLine: 10992, occurrenceOnLine: 1, owner: '_descRoll', purpose: 'descent damage amount', sourceLine: 'let dmg=d.lo+Math.floor(Math.random()*(d.hi-d.lo+1));' },
+  { id: 'survey-hazard', classification: 'outcome', domain: DOMAINS.surveyHazard, legacyLine: 11837, occurrenceOnLine: 1, owner: 'bioscan', purpose: 'bioscan hazard decision', sourceLine: 'if(dz.pct>0 && Math.random()<dz.pct){' },
+  { id: 'capture-candidate', classification: 'outcome', domain: DOMAINS.captureCandidate, legacyLine: 12415, occurrenceOnLine: 1, owner: 'tryCapture', purpose: 'capture target selection', sourceLine: 'const g=pool[(Math.random()*pool.length)|0];' },
+  { id: 'capture-success', classification: 'outcome', domain: DOMAINS.captureSuccess, legacyLine: 12420, occurrenceOnLine: 1, owner: 'tryCapture', purpose: 'capture succeeds', sourceLine: 'if(Math.random()<ch){' },
+  { id: 'bulk-feed-outcome', classification: 'outcome', domain: DOMAINS.bulkFeedOutcome, legacyLine: 16592, occurrenceOnLine: 1, owner: 'bulk feed', purpose: 'bulk-feed meal outcome', sourceLine: 'const r2=feedPair(base, fl[0], Math.random());' },
+  { id: 'heal-outcome', classification: 'outcome', domain: DOMAINS.healOutcome, legacyLine: 16688, occurrenceOnLine: 1, owner: 'heal', purpose: 'flora-heal outcome', sourceLine: 'const r=healExplorer(other, (_tutRig&&_tutRig.heal!=null)?_tutRig.heal:(!tutDone?0.95:Math.random()));' },
+  { id: 'breed-outcome', classification: 'outcome', domain: DOMAINS.breedOutcome, legacyLine: 16704, occurrenceOnLine: 1, owner: 'breed', purpose: 'breeding outcome', sourceLine: 'const r=breedPair(_pickBase, other, (_tutRig&&_tutRig.breed!=null)?_tutRig.breed:(!tutDone?-1:Math.random()));' },
+  { id: 'feed-outcome', classification: 'outcome', domain: DOMAINS.feedOutcome, legacyLine: 16725, occurrenceOnLine: 1, owner: 'feed', purpose: 'manual-feed meal outcome', sourceLine: 'const r=feedPair(_pickBase, other, (_tutRig&&_tutRig.feed!=null)?_tutRig.feed:(!tutDone?0.99:Math.random()));' },
+  { id: 'hazard-flavor', classification: 'outcome', domain: DOMAINS.hazardFlavor, legacyLine: 16800, occurrenceOnLine: 1, owner: 'hazardFlavor', purpose: 'hazard flavor selection', sourceLine: 'const env=arr[Math.floor(Math.random()*arr.length)];' },
+  { id: 'training-specimen-seed', classification: 'outcome', domain: DOMAINS.trainingSpecimenSeed, legacyLine: 23306, occurrenceOnLine: 1, owner: '_tutGrant', purpose: 'training specimen seed', sourceLine: 'do{ g=makeGenome((Math.random()*0xFFFFFFFF)>>>0, kingdom, 0.3+Math.random()*0.35); }' },
+  { id: 'training-specimen-variation', classification: 'outcome', domain: DOMAINS.trainingSpecimenVariation, legacyLine: 23306, occurrenceOnLine: 2, owner: '_tutGrant', purpose: 'training specimen variation', sourceLine: 'do{ g=makeGenome((Math.random()*0xFFFFFFFF)>>>0, kingdom, 0.3+Math.random()*0.35); }' },
+  { id: 'training-duel-seed', classification: 'outcome', domain: DOMAINS.trainingDuelSeed, legacyLine: 23321, occurrenceOnLine: 1, owner: '_tutDuel', purpose: 'training rival seed', sourceLine: `const rg=makeGenome((Math.random()*0xFFFFFFFF)>>>0, 'fauna', 0.5);` },
+
+  { id: 'voice-noise', classification: 'presentation', domain: null, legacyLine: 13690, occurrenceOnLine: 1, owner: 'playVoice', purpose: 'voice noise buffer', sourceLine: 'for(let i=0;i<n;i++){ const w=Math.random()*2-1; last=(last+w*0.22)/1.22; ch[i]=last*(1-i/n); }' },
+  { id: 'whoosh-noise', classification: 'presentation', domain: null, legacyLine: 13783, occurrenceOnLine: 1, owner: 'playWhoosh', purpose: 'whoosh noise buffer', sourceLine: 'for(let i=0;i<ch.length;i++) ch[i]=Math.random()*2-1;' },
+  { id: 'fx-burst-angle', classification: 'presentation', domain: null, legacyLine: 16098, occurrenceOnLine: 1, owner: 'fxBurst', purpose: 'particle angle', sourceLine: 'const a=Math.random()*Math.PI*2, v=70+Math.random()*240, s=4+Math.random()*6;' },
+  { id: 'fx-burst-velocity', classification: 'presentation', domain: null, legacyLine: 16098, occurrenceOnLine: 2, owner: 'fxBurst', purpose: 'particle velocity', sourceLine: 'const a=Math.random()*Math.PI*2, v=70+Math.random()*240, s=4+Math.random()*6;' },
+  { id: 'fx-burst-size', classification: 'presentation', domain: null, legacyLine: 16098, occurrenceOnLine: 3, owner: 'fxBurst', purpose: 'particle size', sourceLine: 'const a=Math.random()*Math.PI*2, v=70+Math.random()*240, s=4+Math.random()*6;' },
+  { id: 'fx-burst-shape', classification: 'presentation', domain: null, legacyLine: 16102, occurrenceOnLine: 1, owner: 'fxBurst', purpose: 'particle shape', sourceLine: `if(Math.random()<0.4) p.style.borderRadius='50%';` },
+  { id: 'fx-burst-rotation', classification: 'presentation', domain: null, legacyLine: 16105, occurrenceOnLine: 1, owner: 'fxBurst', purpose: 'particle rotation', sourceLine: `p.style.setProperty('--rot',((Math.random()*720-360)|0)+'deg');` },
+  { id: 'fx-burst-duration', classification: 'presentation', domain: null, legacyLine: 16106, occurrenceOnLine: 1, owner: 'fxBurst', purpose: 'particle duration', sourceLine: `p.style.setProperty('--t',(0.7+Math.random()*0.7).toFixed(2)+'s');` },
+  { id: 'hit-noise', classification: 'presentation', domain: null, legacyLine: 16153, occurrenceOnLine: 1, owner: 'playHit', purpose: 'impact noise buffer', sourceLine: 'for(let i=0;i<n;i++) ch[i]=(Math.random()*2-1)*(1-i/n);' },
+  { id: 'ambience-noise', classification: 'presentation', domain: null, legacyLine: 16219, occurrenceOnLine: 1, owner: 'ambienceStart', purpose: 'ambient noise buffer', sourceLine: 'for(let i=0;i<n;i++){ const w=Math.random()*2-1; last=(last+w*0.14)/1.14; ch[i]=last*3.2; }' },
 ]);
 
-/** Exact presentation-only Math.random inventory in v1.8.9. The repeated line
- * numbers intentionally preserve multiple executable calls on one line. */
-export const LEGACY_PRESENTATION_RNG_LINES: readonly number[] = Object.freeze([
-  13690,
-  13783,
-  16098, 16098, 16098,
-  16102,
-  16105,
-  16106,
-  16153,
-  16219,
-]);
+export const LEGACY_OUTCOME_RNG_SITES: readonly LegacyOutcomeRngSite[] = Object.freeze(
+  LEGACY_RNG_SITES.filter((site): site is LegacyOutcomeRngSite => site.classification === 'outcome'),
+);
+
+export const LEGACY_PRESENTATION_RNG_SITES: readonly LegacyPresentationRngSite[] = Object.freeze(
+  LEGACY_RNG_SITES.filter((site): site is LegacyPresentationRngSite => site.classification === 'presentation'),
+);
+
+/** Compatibility view for older audit consumers. Prefer the exact sites. */
+export const LEGACY_PRESENTATION_RNG_LINES: readonly number[] = Object.freeze(
+  LEGACY_PRESENTATION_RNG_SITES.map(({ legacyLine }) => legacyLine),
+);

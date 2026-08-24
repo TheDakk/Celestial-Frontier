@@ -194,6 +194,61 @@ describe('@cf/persistence — F3/F4 active-play persistence owner', () => {
     expect(after.extensions.player?.[F4_AUTHORITY_NAMESPACE]).toBeDefined();
   });
 
+  it('rejects a receipt-free extension write targeting F4 authority without changing any durable authority', async () => {
+    const backend = createMemoryBackend();
+    const writable = await migrated(backend);
+    const revisioned = createRevisionedRepository(backend);
+    const { grant } = await acquire(backend, 'tab-a', 'f4-protection', controlledClock());
+    const owner = createActivePlayPersistenceOwner(revisioned, REGISTRY);
+    const seeded = await owner.commit({
+      expectedRevision: 0,
+      grant,
+      writable,
+      snapshot: { activePlayMs: 900 },
+      sessionRng: createSessionRNG(73, { prior: 2 }, 2).state(),
+      now: NOW,
+    });
+    if (seeded.kind !== 'committed') throw new Error(`expected seeded authority; got ${seeded.kind}`);
+    const prior = await readSaveV5(backend, REGISTRY, NOW);
+    if (prior.kind !== 'loaded') throw new Error(`expected seeded v5; got ${prior.kind}`);
+    const receiptRaw = '{"ordinal":9,"kind":"preexisting-control","witness":"keep-exact"}';
+    await backend.apply([{ store: 'receipts', key: 'receipt:9', value: receiptRaw }]);
+    const priorPrimary = await backend.get('meta', V4_PRIMARY_KEY);
+    const priorState = JSON.stringify(prior.state);
+    const priorExtensions = JSON.stringify(prior.extensions);
+    const priorF4 = prior.extensions.player?.[F4_AUTHORITY_NAMESPACE];
+    const candidate = structuredClone(prior.state);
+    candidate.essence += 99;
+
+    await expect(owner.commit({
+      expectedRevision: 1,
+      grant,
+      writable: { state: candidate, extensions: prior.extensions },
+      extensionWrites: [{
+        segment: 'player',
+        namespace: F4_AUTHORITY_NAMESPACE,
+        carrier: {
+          version: 1,
+          json: '{"activePlayMs":901,"sessionRng":{"seed":999,"ordinal":0,"draws":{}}}',
+        },
+      }],
+      snapshot: { activePlayMs: 901 },
+      sessionRng: createSessionRNG(73, { prior: 2 }, 2).state(),
+      now: NOW,
+    })).rejects.toThrow('active-play extension writes cannot overwrite player/f4.authority');
+
+    expect(await revisioned.revision()).toBe(1);
+    expect(await backend.get('meta', V4_PRIMARY_KEY)).toBe(priorPrimary);
+    expect(await backend.keys('receipts')).toEqual(['receipt:9']);
+    expect(await backend.get('receipts', 'receipt:9')).toBe(receiptRaw);
+    const after = await readSaveV5(backend, REGISTRY, NOW);
+    if (after.kind !== 'loaded') throw new Error(`expected protected v5; got ${after.kind}`);
+    expect(JSON.stringify(after.state)).toBe(priorState);
+    expect(JSON.stringify(after.extensions)).toBe(priorExtensions);
+    expect(after.extensions.player?.[F4_AUTHORITY_NAMESPACE]).toEqual(priorF4);
+    expect(readF4Authority(after.extensions)).toEqual(readF4Authority(prior.extensions));
+  });
+
   it('protects future/corrupt authority and rejects rollback or forged lease grants', async () => {
     expect(readF4Authority({ player: {
       [F4_AUTHORITY_NAMESPACE]: { version: 2, json: '{"future":true}' },

@@ -2,16 +2,25 @@ import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
 import {
+  ARC2_LOOT_NAMESPACE,
+  arc2LootLegacyMirrorMatches,
+  canonicalizeV5Extensions,
   classifyLegacyTrainingCheckpointV1,
   exportSaveV2,
   importSaveV2,
+  prepareArc2LootLegacyMigration,
+  projectArc2LootLegacyMirror,
   type ContentRegistry,
   type LegacyTrainingCheckpointV1,
   type SaveStateV2,
 } from '@cf/persistence';
 import { navToView, resolveViewToNav } from '@cf/scene';
 import { installCaptureHooks } from '@cf/domain-descriptors';
-import { buildLegacyTrainingRestoreCandidate } from '../apps/game/src/training-restore.js';
+import {
+  buildLegacyTrainingRestoreCandidate,
+  committedTrainingArc2State,
+  prepareTrainingArc2Restore,
+} from '../apps/game/src/training-restore.js';
 
 interface TrainingFixture {
   snapshot: Record<string, unknown>;
@@ -36,6 +45,10 @@ const registry = JSON.parse(fs.readFileSync(
 const veteranRaw = saves.inputs.veteran_rich!;
 const NOW = 1_753_900_060_000;
 const COMMIT_EPOCH = 8_765;
+const MAIN_SOURCE = fs.readFileSync(
+  fileURLToPath(new URL('../apps/game/src/main.ts', import.meta.url)),
+  'utf8',
+);
 
 beforeAll(() => installCaptureHooks());
 
@@ -159,6 +172,31 @@ function allObjectKeys(value: unknown, keys = new Set<string>()): Set<string> {
 }
 
 describe('legacy Field Training checkpoint restoration candidate', () => {
+  it('keeps the Arc 2 write inside Training single-write durability and publishes it afterward', () => {
+    const start = MAIN_SOURCE.indexOf('async function completeTraining(');
+    const end = MAIN_SOURCE.indexOf("const F4_FRESH_RACE_RELEASE_KEY", start);
+    expect(start).toBeGreaterThanOrEqual(0);
+    expect(end).toBeGreaterThan(start);
+    const source = MAIN_SOURCE.slice(start, end);
+    const prepare = source.indexOf('prepareTrainingArc2Restore(');
+    const write = source.indexOf('await f4Runtime!.commit(');
+    const coupled = source.indexOf('[preparedLoot.write]', write);
+    const durable = source.indexOf('durablyWritten = true', write);
+    const injectedPostDurable = source.indexOf('smokeRejectNextTrainingPublish', durable);
+    const verify = source.indexOf('committedTrainingArc2State(', injectedPostDurable);
+    const publishSave = source.indexOf('save = prepared.state', verify);
+    const publishLoot = source.indexOf('arc2LootState = restoredLoot', publishSave);
+    const publishPanel = source.indexOf('inventoryPanelController.setState(arc2LootState)', publishLoot);
+    const anchors = [
+      prepare, write, coupled, durable, injectedPostDurable,
+      verify, publishSave, publishLoot, publishPanel,
+    ];
+    expect(anchors.every((anchor) => anchor >= 0)).toBe(true);
+    for (let index = 1; index < anchors.length; index++) {
+      expect(anchors[index]).toBeGreaterThan(anchors[index - 1]!);
+    }
+  });
+
   it('restores exactly checkpoint-owned state while retaining outer expedition identity', () => {
     const checkpoint = checkpointFrom();
     const { current, nonEarthRow, nonEarthEntry, trainingEarth } = trainingCurrent(checkpoint);
@@ -481,5 +519,73 @@ describe('legacy Field Training checkpoint restoration candidate', () => {
     };
     expect(exported.log).toHaveLength(120);
     expect(exported.log.some((entry) => entry.id === 'p133')).toBe(true);
+  });
+
+  it('couples restored checkpoint gear to one exact Arc 2 carrier and publishes only matching durable bytes', () => {
+    const checkpoint = checkpointFrom();
+    const current = trainingCurrent(checkpoint).current;
+    const restoredState = restore(current, checkpoint).state;
+    const baseExtensions = canonicalizeV5Extensions({
+      player: {
+        'f4.authority': {
+          version: 1,
+          json: '{"activePlayMs":77,"sessionRng":{"seed":5,"ordinal":3,"draws":{"prior":2}}}',
+        },
+        'future.player': { version: 41, json: '{"opaque":"keep"}' },
+      },
+      settings: { 'arc7.audio': { version: 2, json: '{"gain":0.4}' } },
+    });
+    const old = prepareArc2LootLegacyMigration({
+      extensions: baseExtensions,
+      legacy: current,
+      capacity: 200,
+    });
+    if (old.kind !== 'prepared') throw new Error(`old Training carrier was ${old.kind}`);
+    const oldBytes = JSON.stringify(old.extensions);
+
+    expect(prepareTrainingArc2Restore('none', false, restoredState, old.extensions)).toBeNull();
+    expect(prepareTrainingArc2Restore('current-view', false, restoredState, old.extensions)).toBeNull();
+    expect(prepareTrainingArc2Restore('legacy-v1', false, restoredState, old.extensions)).toBeNull();
+    const prepared = prepareTrainingArc2Restore('legacy-v1', true, restoredState, old.extensions);
+    expect(prepared?.kind).toBe('prepared');
+    if (prepared?.kind !== 'prepared') return;
+    expect(JSON.stringify(old.extensions)).toBe(oldBytes);
+    expect(prepared.write.carrier).not.toEqual(old.write.carrier);
+    expect(prepared.extensions.player).toEqual(baseExtensions.player);
+    expect(prepared.extensions.settings).toEqual(baseExtensions.settings);
+    expect(prepared.extensions.inventory?.[ARC2_LOOT_NAMESPACE]).toEqual(prepared.write.carrier);
+    expect(projectArc2LootLegacyMirror(prepared.state)).toEqual({
+      items: restoredState.items,
+      equip: restoredState.equip,
+      equipAff: restoredState.equipAff,
+    });
+    expect(arc2LootLegacyMirrorMatches(prepared.state, restoredState)).toBe(true);
+
+    const published = committedTrainingArc2State(restoredState, prepared, prepared.extensions);
+    expect(published).toEqual(prepared.state);
+    expect(committedTrainingArc2State(restoredState, prepared, old.extensions)).toBeNull();
+    expect(committedTrainingArc2State(current, prepared, prepared.extensions)).toBeNull();
+
+    const wrongCarrier = canonicalizeV5Extensions({
+      ...prepared.extensions,
+      inventory: {
+        ...prepared.extensions.inventory,
+        [ARC2_LOOT_NAMESPACE]: old.write.carrier,
+      },
+    });
+    expect(committedTrainingArc2State(restoredState, prepared, wrongCarrier)).toBeNull();
+
+    const future = canonicalizeV5Extensions({ inventory: {
+      [ARC2_LOOT_NAMESPACE]: { version: 2, json: '{"opaque":"future"}' },
+    } });
+    expect(prepareTrainingArc2Restore('legacy-v1', true, restoredState, future)).toEqual({
+      kind: 'protected', reason: 'target-future', version: 2,
+    });
+    const corrupt = canonicalizeV5Extensions({ inventory: {
+      [ARC2_LOOT_NAMESPACE]: { version: 1, json: '{"kind":"inventory"}' },
+    } });
+    expect(prepareTrainingArc2Restore('legacy-v1', true, restoredState, corrupt)).toEqual({
+      kind: 'protected', reason: 'target-corrupt',
+    });
   });
 });

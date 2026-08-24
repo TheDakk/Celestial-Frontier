@@ -17,14 +17,12 @@ import {
 } from './active-play.js';
 import type { ContentRegistry, SaveStateV2 } from './import-v2.js';
 import {
-  V5_MAX_EXTENSION_NAMESPACES,
+  applyV5ExtensionWrites,
   canonicalizeV5Extensions,
   prepareV5SaveWrite,
-  V5_SEGMENTS,
   type PreparedV5SaveWrite,
-  type V5ExtensionCarrier,
+  type V5ExtensionWrite,
   type V5Extensions,
-  type V5Segment,
   type V5WritableState,
 } from './migration-v5.js';
 import type { MutationReceipt, RevisionedRepository } from './revisioned.js';
@@ -57,12 +55,6 @@ export interface F4OutcomeDeriveInput {
    * policy may inspect it, but changes are accepted only through the checked
    * `extensionWrites` returned by the derivation. */
   readonly extensions: V5Extensions;
-}
-
-export interface V5ExtensionWrite {
-  readonly segment: V5Segment;
-  readonly namespace: string;
-  readonly carrier: V5ExtensionCarrier;
 }
 
 export interface F4OutcomeDerivation {
@@ -191,64 +183,6 @@ function detachedState(value: unknown): SaveStateV2 {
   return detached as unknown as SaveStateV2;
 }
 
-function checkedExtensionWrites(value: unknown): readonly V5ExtensionWrite[] {
-  if (!Array.isArray(value)) throw new TypeError('extensionWrites must be an array');
-  if (value.length > V5_MAX_EXTENSION_NAMESPACES) {
-    throw new RangeError(`extensionWrites count exceeds ${V5_MAX_EXTENSION_NAMESPACES}`);
-  }
-  const seen = new Set<string>();
-  return Object.freeze(value.map((rawWrite) => {
-    if (!isRecord(rawWrite) || !hasExactKeys(rawWrite, ['segment', 'namespace', 'carrier'])) {
-      throw new TypeError('each extension write must contain exactly segment, namespace, and carrier');
-    }
-    if (typeof rawWrite.segment !== 'string'
-      || !(V5_SEGMENTS as readonly string[]).includes(rawWrite.segment)) {
-      throw new RangeError(`unknown v5 extension segment ${JSON.stringify(rawWrite.segment)}`);
-    }
-    const segment = rawWrite.segment as V5Segment;
-    if (typeof rawWrite.namespace !== 'string') {
-      throw new RangeError(`invalid v5 extension namespace ${JSON.stringify(rawWrite.namespace)}`);
-    }
-    const namespace = rawWrite.namespace;
-    if (segment === 'player' && namespace === F4_AUTHORITY_NAMESPACE) {
-      throw new Error('product extension writes cannot overwrite player/f4.authority');
-    }
-    const identity = `${segment}\u0000${namespace}`;
-    if (seen.has(identity)) {
-      throw new Error(`duplicate product extension write for ${segment}/${namespace}`);
-    }
-    seen.add(identity);
-    const canonical = canonicalizeV5Extensions({
-      [segment]: { [namespace]: rawWrite.carrier },
-    });
-    const carrier = canonical[segment]?.[namespace];
-    if (carrier === undefined) throw new Error('validated extension carrier was not retained');
-    return Object.freeze({
-      segment,
-      namespace,
-      carrier,
-    });
-  }));
-}
-
-/** Apply complete namespace replacements to a detached validated base.
- * Unmentioned namespaces survive exactly. F4 authority is not writable here;
- * its owner runs after this product layer and therefore remains final. */
-function applyExtensionWrites(
-  base: V5Extensions,
-  writes: readonly V5ExtensionWrite[],
-): V5Extensions {
-  if (writes.length === 0) return base;
-  const result: Partial<Record<V5Segment, Readonly<Record<string, V5ExtensionCarrier>>>> = { ...base };
-  for (const write of writes) {
-    result[write.segment] = Object.freeze({
-      ...(result[write.segment] ?? {}),
-      [write.namespace]: write.carrier,
-    });
-  }
-  return canonicalizeV5Extensions(result);
-}
-
 function frozenSessionRng(state: SessionRNGState): F4AuthorityV1['sessionRng'] {
   const draws = Object.freeze(Object.fromEntries(
     Object.entries(state.draws).sort(([left], [right]) => left < right ? -1 : left > right ? 1 : 0),
@@ -347,10 +281,13 @@ async function commitPlannedProduct<Plan extends ReceiptAuthorityPlan>(
 
   let productExtensions: V5Extensions;
   try {
-    const writes = derivation.extensionWrites === undefined
+    const applied = applyV5ExtensionWrites(extensions, derivation.extensionWrites === undefined
       ? Object.freeze([]) as readonly V5ExtensionWrite[]
-      : checkedExtensionWrites(derivation.extensionWrites);
-    productExtensions = applyExtensionWrites(extensions, writes);
+      : derivation.extensionWrites);
+    if (applied.writes.some(({ segment, namespace }) => (
+      segment === 'player' && namespace === F4_AUTHORITY_NAMESPACE
+    ))) throw new Error('product extension writes cannot overwrite player/f4.authority');
+    productExtensions = applied.extensions;
   } catch (error) {
     return {
       kind: 'rejected', stage: 'extension-writes', message: messageOf(error), plan: input.plan,

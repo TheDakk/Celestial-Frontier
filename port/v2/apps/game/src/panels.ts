@@ -21,7 +21,7 @@ export interface PanelDef {
 }
 
 const PANELS: PanelDef[] = [];
-const MODAL_SEL = '#importsheet';   /* true modals stand apart from the law */
+const MODAL_SEL = '#importsheet,#inventorysheet';   /* true modals stand apart from the law */
 /* Fixed and dynamic non-dismiss chrome declares this ownership on its own
    root. Search intentionally remains outside this set until the later panel-
    coexistence/Escape policy decides otherwise; true modals stay separate. */

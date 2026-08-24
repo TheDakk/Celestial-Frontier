@@ -3,15 +3,21 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
+  ARC2_LOOT_NAMESPACE,
   V4_PRIMARY_KEY,
+  arc2LootLegacyMirrorMatches,
   createMemoryBackend,
   createRevisionedRepository,
   createTabLeaseClient,
   migrateStoredV4ToV5,
+  prepareArc2LootLegacyMigration,
+  prepareArc2LootLegacyRestore,
   prepareV5Replacement,
+  readArc2Loot,
   readF4Authority,
   readSaveV5,
   type ContentRegistry,
+  type SaveStateV2,
   type StorageBackend,
 } from '@cf/persistence';
 import {
@@ -42,6 +48,50 @@ async function migrated() {
   const loaded = await readSaveV5(backend, REGISTRY, NOW);
   if (loaded.kind !== 'loaded') throw new Error(`expected loaded v5; got ${loaded.kind}`);
   return { backend, loaded };
+}
+
+interface ReceiptEvidence {
+  readonly keys: readonly string[];
+  readonly rawByKey: Readonly<Record<string, string | undefined>>;
+  readonly parsedByKey: Readonly<Record<string, unknown>>;
+}
+
+async function receiptEvidence(backend: StorageBackend): Promise<ReceiptEvidence> {
+  const keys = [...await backend.keys('receipts')].sort();
+  const rawByKey: Record<string, string | undefined> = {};
+  const parsedByKey: Record<string, unknown> = {};
+  for (const key of keys) {
+    const raw = await backend.get('receipts', key);
+    rawByKey[key] = raw;
+    parsedByKey[key] = raw === undefined ? undefined : JSON.parse(raw) as unknown;
+  }
+  return Object.freeze({
+    keys: Object.freeze(keys),
+    rawByKey: Object.freeze(rawByKey),
+    parsedByKey: Object.freeze(parsedByKey),
+  });
+}
+
+function sameReceiptEvidence(left: ReceiptEvidence, right: ReceiptEvidence): boolean {
+  return JSON.stringify(left) === JSON.stringify(right);
+}
+
+async function seedPriorTrainingOutcome(
+  runtime: ReturnType<typeof createF4RuntimeAuthority>,
+  state: SaveStateV2,
+): Promise<SaveStateV2> {
+  const outcome = await runtime.commitOutcome({
+    state,
+    domain: 'training.preexisting',
+    receiptKind: 'training-prior-outcome',
+    codecNow: NOW,
+    derive: ({ draft, receiptOrdinal }) => ({
+      state: draft,
+      witness: `training-prior:${receiptOrdinal}`,
+    }),
+  });
+  if (outcome.kind !== 'committed') throw new Error(`prior Training outcome was ${outcome.kind}`);
+  return outcome.state;
 }
 
 describe('F4 runtime authority join', () => {
@@ -856,5 +906,205 @@ describe('F4 runtime authority join', () => {
     });
     await expect(runtimeB.heartbeat()).resolves.toMatchObject({ kind: 'owned' });
     expect(runtimeB.diagnostics().activePlayMs).toBe(450);
+  });
+
+  it('commits restored Training gear and its Arc 2 carrier without adding a receipt or random draw', async () => {
+    const { backend, loaded } = await migrated();
+    const old = prepareArc2LootLegacyMigration({
+      extensions: {
+        ...loaded.extensions,
+        settings: { 'arc7.audio': { version: 3, json: '{"muted":false}' } },
+      },
+      legacy: loaded.state,
+      capacity: 200,
+    });
+    if (old.kind !== 'prepared') throw new Error(`old Arc 2 setup was ${old.kind}`);
+    const repository = createRevisionedRepository(backend);
+    const runtime = createF4RuntimeAuthority({
+      backend, repository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: old.extensions, restoredAuthority: null,
+      freshSessionSeed: 0xD7A11, ownerId: 'tab', token: 'training-document', leaseTtlMs: 100,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await runtime.heartbeat();
+    expect((await runtime.commit(loaded.state, NOW)).kind).toBe('committed');
+    const priorState = await seedPriorTrainingOutcome(runtime, loaded.state);
+    const oldCarrier = runtime.extensions.inventory?.[ARC2_LOOT_NAMESPACE];
+    const oldRng = runtime.sessionRng;
+    const oldF4Carrier = runtime.extensions.player?.['f4.authority'];
+    const oldReceipts = await receiptEvidence(backend);
+    expect(oldReceipts).toEqual({
+      keys: ['receipt:0'],
+      rawByKey: {
+        'receipt:0': '{"ordinal":0,"kind":"training-prior-outcome","witness":"training-prior:0"}',
+      },
+      parsedByKey: {
+        'receipt:0': { ordinal: 0, kind: 'training-prior-outcome', witness: 'training-prior:0' },
+      },
+    });
+    expect(oldRng).toEqual({
+      seed: 0xD7A11, ordinal: 1, draws: { 'training.preexisting': 1 },
+    });
+
+    const restoredState = structuredClone(priorState);
+    restoredState.items = [['plate', 8], ['lens', 1], ['cell', 2], ['headlamp', 1]];
+    restoredState.equip = { helmet: 'headlamp' };
+    restoredState.equipAff = { helmet: { k: 'strike', v: 0.05, forId: 'headlamp' } };
+    const restored = prepareArc2LootLegacyRestore({
+      extensions: runtime.extensions,
+      legacy: restoredState,
+      capacity: 200,
+    });
+    if (restored.kind !== 'prepared') throw new Error(`restored Arc 2 setup was ${restored.kind}`);
+    expect(restored.write.carrier).not.toEqual(oldCarrier);
+
+    const committed = await runtime.commit(restoredState, NOW, [restored.write]);
+    expect(committed.kind).toBe('committed');
+    if (committed.kind !== 'committed') return;
+    expect(runtime.revision).toBe(3);
+    expect(runtime.sessionRng).toEqual(oldRng);
+    expect(runtime.extensions.player?.['f4.authority']).toEqual(oldF4Carrier);
+    const afterReceipts = await receiptEvidence(backend);
+    expect(afterReceipts).toEqual(oldReceipts);
+    expect(sameReceiptEvidence(afterReceipts, oldReceipts)).toBe(true);
+    const rawMutation = structuredClone(oldReceipts) as {
+      keys: string[]; rawByKey: Record<string, string | undefined>; parsedByKey: Record<string, unknown>;
+    };
+    rawMutation.rawByKey['receipt:0'] = `${rawMutation.rawByKey['receipt:0']} `;
+    expect(sameReceiptEvidence(rawMutation, oldReceipts)).toBe(false);
+    const semanticMutation = structuredClone(oldReceipts) as {
+      keys: string[]; rawByKey: Record<string, string | undefined>; parsedByKey: Record<string, unknown>;
+    };
+    (semanticMutation.parsedByKey['receipt:0'] as Record<string, unknown>).witness = 'mutated';
+    expect(sameReceiptEvidence(semanticMutation, oldReceipts)).toBe(false);
+    expect(runtime.extensions.inventory?.[ARC2_LOOT_NAMESPACE]).toEqual(restored.write.carrier);
+    expect(runtime.extensions.settings?.['arc7.audio']).toEqual({
+      version: 3, json: '{"muted":false}',
+    });
+    expect(readF4Authority(runtime.extensions)).toEqual({
+      kind: 'loaded', authority: { activePlayMs: 0, sessionRng: oldRng },
+    });
+
+    const reloaded = await readSaveV5(backend, REGISTRY, NOW);
+    if (reloaded.kind !== 'loaded') throw new Error(`restored reload was ${reloaded.kind}`);
+    const reloadedLoot = readArc2Loot(reloaded.extensions);
+    expect(reloadedLoot).toEqual({ kind: 'loaded', state: restored.state });
+    expect(reloaded.extensions.player?.['f4.authority']).toEqual(oldF4Carrier);
+    if (reloadedLoot.kind !== 'loaded') return;
+    expect(arc2LootLegacyMirrorMatches(reloadedLoot.state, reloaded.state)).toBe(true);
+    expect(reloaded.state.items).toEqual(restoredState.items);
+    expect(reloaded.state.equip).toEqual(restoredState.equip);
+    expect(reloaded.state.equipAff).toEqual(restoredState.equipAff);
+  });
+
+  it('leaves the old Training state and carrier durable when the coupled checkpoint is stale', async () => {
+    const { backend, loaded } = await migrated();
+    const old = prepareArc2LootLegacyMigration({
+      extensions: loaded.extensions, legacy: loaded.state, capacity: 200,
+    });
+    if (old.kind !== 'prepared') throw new Error(`old Arc 2 setup was ${old.kind}`);
+    const repository = createRevisionedRepository(backend);
+    const runtime = createF4RuntimeAuthority({
+      backend, repository, registry: REGISTRY,
+      initialRevision: 0, initialExtensions: old.extensions, restoredAuthority: null,
+      freshSessionSeed: 0xD7A12, ownerId: 'tab', token: 'stale-training', leaseTtlMs: 100,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await runtime.heartbeat();
+    expect((await runtime.commit(loaded.state, NOW)).kind).toBe('committed');
+    const priorState = await seedPriorTrainingOutcome(runtime, loaded.state);
+    const priorCarrier = runtime.extensions.inventory?.[ARC2_LOOT_NAMESPACE];
+    const priorRng = runtime.sessionRng;
+    const priorF4Carrier = runtime.extensions.player?.['f4.authority'];
+    const priorReceipts = await receiptEvidence(backend);
+    const candidate = structuredClone(priorState);
+    candidate.items = [['headlamp', 1]];
+    candidate.equip = { helmet: 'headlamp' };
+    candidate.equipAff = {};
+    const restored = prepareArc2LootLegacyRestore({
+      extensions: runtime.extensions, legacy: candidate, capacity: 200,
+    });
+    if (restored.kind !== 'prepared') throw new Error(`restored Arc 2 setup was ${restored.kind}`);
+    await repository.mutate({
+      expectedRevision: 2,
+      writes: [{ store: 'player', key: 'stale-control', value: 'winner' }],
+    });
+
+    await expect(runtime.commit(candidate, NOW, [restored.write])).resolves.toEqual({
+      kind: 'stale', expectedRevision: 2, actualRevision: 3,
+    });
+    expect(runtime.extensions.inventory?.[ARC2_LOOT_NAMESPACE]).toEqual(priorCarrier);
+    expect(runtime.extensions.player?.['f4.authority']).toEqual(priorF4Carrier);
+    expect(runtime.sessionRng).toEqual(priorRng);
+    expect(await receiptEvidence(backend)).toEqual(priorReceipts);
+    const reloaded = await readSaveV5(backend, REGISTRY, NOW);
+    if (reloaded.kind !== 'loaded') throw new Error(`stale reload was ${reloaded.kind}`);
+    expect(reloaded.state.items).toEqual(priorState.items);
+    expect(reloaded.extensions.inventory?.[ARC2_LOOT_NAMESPACE]).toEqual(priorCarrier);
+    expect(reloaded.extensions.player?.['f4.authority']).toEqual(priorF4Carrier);
+    expect(await receiptEvidence(backend)).toEqual(priorReceipts);
+  });
+
+  it('leaves the old Training state and carrier durable after a storage-aborted coupled checkpoint', async () => {
+    const base = createMemoryBackend();
+    let rejectNextCheckpoint = false;
+    const backend: StorageBackend = {
+      ...base,
+      async compareAndApply(checks, operations, clearStores) {
+        if (rejectNextCheckpoint && operations.some(({ store, value }) => (
+          store === 'inventory' && value?.includes(ARC2_LOOT_NAMESPACE)
+        ))) {
+          rejectNextCheckpoint = false;
+          throw new Error('injected Training carrier transaction abort');
+        }
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    await backend.apply([{
+      store: 'meta', key: V4_PRIMARY_KEY, value: JSON.stringify(fixtures.inputs.veteran_rich),
+    }]);
+    expect((await migrateStoredV4ToV5(backend, REGISTRY, NOW)).kind).toBe('migrated');
+    const loaded = await readSaveV5(backend, REGISTRY, NOW);
+    if (loaded.kind !== 'loaded') throw new Error(`expected loaded v5; got ${loaded.kind}`);
+    const old = prepareArc2LootLegacyMigration({
+      extensions: loaded.extensions, legacy: loaded.state, capacity: 200,
+    });
+    if (old.kind !== 'prepared') throw new Error(`old Arc 2 setup was ${old.kind}`);
+    const runtime = createF4RuntimeAuthority({
+      backend, repository: createRevisionedRepository(backend), registry: REGISTRY,
+      initialRevision: 0, initialExtensions: old.extensions, restoredAuthority: null,
+      freshSessionSeed: 0xD7A13, ownerId: 'tab', token: 'aborted-training', leaseTtlMs: 100,
+      now: () => 0, visible: true, answerable: true,
+    });
+    await runtime.heartbeat();
+    expect((await runtime.commit(loaded.state, NOW)).kind).toBe('committed');
+    const priorState = await seedPriorTrainingOutcome(runtime, loaded.state);
+    const priorCarrier = runtime.extensions.inventory?.[ARC2_LOOT_NAMESPACE];
+    const priorRng = runtime.sessionRng;
+    const priorF4Carrier = runtime.extensions.player?.['f4.authority'];
+    const priorReceipts = await receiptEvidence(backend);
+    const candidate = structuredClone(priorState);
+    candidate.items = [['headlamp', 1]];
+    candidate.equip = { helmet: 'headlamp' };
+    candidate.equipAff = {};
+    const restored = prepareArc2LootLegacyRestore({
+      extensions: runtime.extensions, legacy: candidate, capacity: 200,
+    });
+    if (restored.kind !== 'prepared') throw new Error(`restored Arc 2 setup was ${restored.kind}`);
+    rejectNextCheckpoint = true;
+
+    await expect(runtime.commit(candidate, NOW, [restored.write]))
+      .rejects.toThrow('injected Training carrier transaction abort');
+    expect(runtime.revision).toBe(2);
+    expect(runtime.extensions.inventory?.[ARC2_LOOT_NAMESPACE]).toEqual(priorCarrier);
+    expect(runtime.extensions.player?.['f4.authority']).toEqual(priorF4Carrier);
+    expect(runtime.sessionRng).toEqual(priorRng);
+    expect(await receiptEvidence(backend)).toEqual(priorReceipts);
+    const reloaded = await readSaveV5(backend, REGISTRY, NOW);
+    if (reloaded.kind !== 'loaded') throw new Error(`aborted reload was ${reloaded.kind}`);
+    expect(reloaded.state.items).toEqual(priorState.items);
+    expect(reloaded.extensions.inventory?.[ARC2_LOOT_NAMESPACE]).toEqual(priorCarrier);
+    expect(reloaded.extensions.player?.['f4.authority']).toEqual(priorF4Carrier);
+    expect(await receiptEvidence(backend)).toEqual(priorReceipts);
   });
 });

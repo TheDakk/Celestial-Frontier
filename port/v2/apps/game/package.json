@@ -25,6 +25,7 @@
     "@cf/domain-genome": "*",
     "@cf/domain-genetics": "*",
     "@cf/domain-combatcore": "*",
+    "@cf/domain-loot": "*",
     "@cf/domain-strays": "*",
     "@cf/domain-ecology": "*",
     "@cf/domain-surveyphrases": "*"

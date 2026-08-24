@@ -8,11 +8,19 @@
  * its caller owns source proof, the single repository write and publication.
  */
 import {
+  arc2LootLegacyMirrorMatches,
   importSaveV2,
+  prepareArc2LootLegacyRestore,
+  readArc2Loot,
+  type Arc2LootStateV1,
+  type Arc2LootWritePreparation,
   type ContentRegistry,
+  type ImportTrainingSnapshotIngressV2,
   type LegacyTrainingCheckpointV1,
   type SaveStateV2,
+  type V5Extensions,
 } from '@cf/persistence';
+import { MAX_GEAR_CAPACITY } from '@cf/domain-loot';
 
 const DIRECT_STAT_KEYS = [
   'shares', 'jumps', 'anomalies', 'events', 'duels', 'duelwins',
@@ -41,6 +49,51 @@ export type LegacyTrainingRestoreResult =
       readonly earthEntry: Record<string, unknown>;
     }
   | { readonly ok: false };
+
+export type PreparedTrainingArc2Restore = Extract<
+  Arc2LootWritePreparation,
+  { readonly kind: 'prepared' }
+>;
+
+/** Derive Training's coupled Arc 2 namespace from the candidate's restored
+ * compatibility fields. This is preparation only; the caller must land its
+ * one write with the candidate state in the same durable transaction. */
+export function prepareTrainingArc2Restore(
+  checkpointKind: ImportTrainingSnapshotIngressV2['kind'],
+  legacyFieldsRestored: boolean,
+  state: SaveStateV2,
+  extensions: V5Extensions,
+): Arc2LootWritePreparation | null {
+  /* Current-v2 route checkpoints never own inventory. Rebuilding their
+     carrier from the compatibility mirror could erase exact-instance flags,
+     revision or pending rewards. Only the eleven-field legacy checkpoint
+     owns `it`/`eq`/`ea` and therefore requires a replacement carrier. */
+  if (checkpointKind !== 'legacy-v1' || legacyFieldsRestored !== true) return null;
+  return prepareArc2LootLegacyRestore({
+    extensions,
+    legacy: state,
+    capacity: MAX_GEAR_CAPACITY,
+  });
+}
+
+/** Read the post-commit carrier only after durability and prove it is the
+ * exact prepared carrier and the exact compatibility mirror being published.
+ * A null result is convergence-by-reload, never permission to retry. */
+export function committedTrainingArc2State(
+  state: SaveStateV2,
+  prepared: PreparedTrainingArc2Restore,
+  extensions: V5Extensions,
+): Arc2LootStateV1 | null {
+  const carrier = extensions[prepared.write.segment]?.[prepared.write.namespace];
+  const loaded = readArc2Loot(extensions);
+  if (loaded.kind !== 'loaded'
+    || JSON.stringify(loaded.state) !== JSON.stringify(prepared.state)
+    || carrier === undefined
+    || carrier.version !== prepared.write.carrier.version
+    || carrier.json !== prepared.write.carrier.json
+    || !arc2LootLegacyMirrorMatches(loaded.state, state)) return null;
+  return loaded.state;
+}
 
 function checkpointRaw(
   current: SaveStateV2,

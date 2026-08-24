@@ -112,6 +112,12 @@ const VETERAN_PREF_RAW = (() => {
   fixture.tone = 'tone-max';
   fixture.font = 'font-mono';
   fixture.tut = 0;
+  /* The ordinary rich save owns one helmet but no same-slot comparison.
+     Add one equipped suit and one conditional same-slot candidate so the
+     Inventory matrix proves landing-family wording instead of passing on an
+     unconditional self-comparison. These are fixture bytes only. */
+  fixture.items = [...fixture.items, ['hazmat', 1], ['thermal', 1]];
+  fixture.eq = { ...fixture.eq, suit: 'hazmat' };
   /* This fixture supplies populated panels and display preferences, not a
      navigation starting point. veteran_rich is saved on Earth's surface;
      clearing that route lets unfinished Training source-seat Sol. The matrix
@@ -120,6 +126,21 @@ const VETERAN_PREF_RAW = (() => {
   fixture.view = null;
   return JSON.stringify(fixture);
 })();
+
+/* Read the durable Arc 2 carrier rather than trusting Main's diagnostics as
+   its own oracle. The Inventory outcome joins these exact bytes to the DOM;
+   a stale UI and a stale diagnostic cannot agree their way to green. */
+const READ_ARC2_GLASS_CARRIER_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
+  const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
+  try{const tx=db.transaction('inventory','readonly'),done=new Promise((resolve,reject)=>{
+    tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('Arc 2 glass read aborted'))});
+    const request=tx.objectStore('inventory').get('v5:inventory');
+    const raw=await new Promise((resolve,reject)=>{request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error)});
+    await done;const row=(()=>{try{return JSON.parse(String(raw))}catch{return null}})(),carrier=row?.extensions?.['arc2.loot']??null,
+      arc2=(()=>{try{return JSON.parse(String(carrier?.json))}catch{return null}})();
+    return {rowSchema:row?.schema??null,rowSegment:row?.segment??null,carrierVersion:carrier?.version??null,
+      carrierJson:carrier?.json??null,arc2};
+  }finally{db.close()}})()`;
 
 const VIEWPORTS = Object.freeze([
   { width: 320, height: 568, dpr: 2, mobile: true, label: 'small-phone' },
@@ -230,6 +251,20 @@ const NEGATIVE_CONTROLS = Object.freeze([
   'ready-confirmation-ticker-progress',
   'nonmodal-dock-button-contrast',
   'phone-dock-inventory',
+  'phone-dock-exact-membership',
+  'inventory-control-floor',
+  'inventory-missing-row',
+  'inventory-duplicate-row',
+  'inventory-raw-authority-parity',
+  'inventory-disabled-pager-contrast',
+  'inventory-condition-wording',
+  'inventory-modal-duplication',
+  'inventory-modal-retention',
+  'inventory-modal-focus',
+  'inventory-focus-wrap',
+  'inventory-protected-action',
+  'inventory-action-publication',
+  'inventory-convergence-retry',
   'shipyard-preview-uniqueness',
   'shipyard-dom-state-parity',
   'shipyard-close-release',
@@ -2187,7 +2222,12 @@ async function reportSelftest() {
       'pseudo-placeholder-contrast', 'typography-no-shrink-hierarchy', 'backing-pixel-ceiling',
       'forced-colors-system-mapping', 'panel-open-focus', 'replacement-document-loader-token-phase',
       'replacement-boot-phase-sequence', 'reload-resource-release',
-      'phone-dock-inventory',
+      'phone-dock-inventory', 'phone-dock-exact-membership',
+      'inventory-control-floor', 'inventory-missing-row', 'inventory-duplicate-row', 'inventory-raw-authority-parity',
+      'inventory-disabled-pager-contrast',
+      'inventory-condition-wording', 'inventory-modal-duplication', 'inventory-modal-retention',
+      'inventory-modal-focus', 'inventory-focus-wrap', 'inventory-protected-action', 'inventory-action-publication',
+      'inventory-convergence-retry',
       'shipyard-preview-uniqueness', 'shipyard-dom-state-parity',
       'shipyard-close-release', 'shipyard-opener-path', 'shipyard-geometry-focus']
       .every((name) => shaped.controlSummary.negativeControls.includes(name))) {
@@ -2555,6 +2595,211 @@ function installAuditHarness() {
       centreOwned, centre: r ? [round((r.left + r.right) / 2), round((r.top + r.bottom) / 2)] : null,
       hit: node ? selectorName(node) : null, panelClosed, preservedVisible, focusRestored,
       active: document.activeElement instanceof Element ? selectorName(document.activeElement) : null,
+    };
+  };
+  const inventoryRowsOutcome = (carrier, openerSelector) => {
+    const state = window.__CF_SLICE__?.api?.state?.();
+    const panel = document.getElementById('inventorypanel');
+    const opener = document.querySelector(openerSelector);
+    const inventory = carrier?.arc2?.kind === 'inventory' ? carrier.arc2.inventory : null;
+    const equipped = new Set((inventory?.equipped || []).map((binding) => binding.instanceId));
+    const expectedRows = inventory ? [
+      ...inventory.pendingRewards.map(({ instance }) => ({
+        instanceId: instance.instanceId, baseId: instance.baseId, pending: true,
+        equipped: false, favorite: false, locked: false,
+      })),
+      ...inventory.entries.map((entry) => ({
+        instanceId: entry.instance.instanceId, baseId: entry.instance.baseId, pending: false,
+        equipped: equipped.has(entry.instance.instanceId), favorite: entry.favorite, locked: entry.locked,
+      })),
+    ] : [];
+    const domRows = panel ? [...panel.querySelectorAll('[data-inventory-row="exact"]')].map((row) => ({
+      instanceId: row.getAttribute('data-instance-id'), baseId: row.getAttribute('data-base-id'),
+      pending: row.getAttribute('data-pending') === 'true', equipped: row.getAttribute('data-equipped') === 'true',
+      favorite: row.getAttribute('data-favorite') === 'true', locked: row.getAttribute('data-locked') === 'true',
+    })) : [];
+    const ids = domRows.map((row) => row.instanceId);
+    const controls = panel ? [...panel.querySelectorAll('button,input,select')].filter(visible) : [];
+    const floor = [opener, ...controls].map((control) => {
+      const rect = control?.getBoundingClientRect();
+      return { id: control?.id || selectorName(control), width: round(rect?.width ?? 0), height: round(rect?.height ?? 0) };
+    });
+    const stateIds = state?.inventory?.entryIds || [];
+    const statePendingIds = state?.inventory?.pendingIds || [];
+    const stateBindings = state?.inventory?.equippedBindings || [];
+    const durable = carrier?.rowSchema === 5 && carrier?.rowSegment === 'inventory'
+      && carrier?.carrierVersion === 1 && typeof carrier?.carrierJson === 'string'
+      && carrier.carrierJson === JSON.stringify(carrier.arc2);
+    const runtimeMatch = state?.inventory?.stateKind === 'inventory' && state.inventory.bootstrapPending === false
+      && state.inventory.revision === inventory?.revision && state.inventory.entries === inventory?.entries?.length
+      && state.inventory.pending === inventory?.pendingRewards?.length
+      && JSON.stringify(stateIds) === JSON.stringify(inventory?.entries?.map(({ instance }) => instance.instanceId) || [])
+      && JSON.stringify(statePendingIds) === JSON.stringify(inventory?.pendingRewards?.map(({ instance }) => instance.instanceId) || [])
+      && JSON.stringify(stateBindings) === JSON.stringify(inventory?.equipped || []);
+    const rowsMatch = expectedRows.length > 0 && expectedRows.length <= 48
+      && ids.length === new Set(ids).size && JSON.stringify(domRows) === JSON.stringify(expectedRows);
+    const openerReady = !!opener && visible(opener) && opener.getAttribute('aria-controls') === 'inventorypanel'
+      && opener.getAttribute('aria-expanded') === 'true';
+    return {
+      ok: !!panel && visible(panel) && durable && runtimeMatch && rowsMatch && openerReady
+        && floor.length > 1 && floor.every((row) => row.width >= 44 && row.height >= 44),
+      durable, runtimeMatch, rowsMatch, openerReady, expectedRows, domRows, floor,
+      stateInventory: state?.inventory || null,
+    };
+  };
+  const inventoryConditionOutcome = () => {
+    const sheet = document.getElementById('inventorysheet');
+    const expected = (condition) => condition === 'unconditional' ? 'Always applies'
+      : condition.startsWith('landing:') ? `Only when landing on ${condition.slice('landing:'.length)}`
+        : `Only when ${condition}`;
+    const inspect = (selector) => sheet ? [...sheet.querySelectorAll(selector)].map((row) => {
+      const condition = row.getAttribute('data-condition') || '';
+      const wording = expected(condition);
+      return { condition, wording, text: (row.textContent || '').replace(/\s+/g, ' ').trim(),
+        ok: condition.length > 0 && (row.textContent || '').includes(wording) };
+    }) : [];
+    const effects = inspect('[data-inventory-effect]');
+    const comparisons = inspect('[data-compare-effect]');
+    const conditionalEffects = effects.filter((row) => row.condition !== 'unconditional');
+    const conditionalComparisons = comparisons.filter((row) => row.condition !== 'unconditional');
+    return {
+      ok: !!sheet && visible(sheet) && effects.length > 0 && comparisons.length > 0
+        && conditionalEffects.length > 0 && conditionalComparisons.length > 0
+        && effects.every((row) => row.ok) && comparisons.every((row) => row.ok),
+      effects, comparisons, conditionalEffects: conditionalEffects.length,
+      conditionalComparisons: conditionalComparisons.length,
+    };
+  };
+  const inventoryModalOutcome = (expectedInstanceId, safe = {}, expectedFocusSelector = '[data-inventory-sheet-close]') => {
+    const sheets = [...document.querySelectorAll('#inventorysheet')];
+    const sheet = sheets[0] || null;
+    const card = sheet?.querySelector('.inventory-sheet-card') || null;
+    const detail = sheet?.querySelector('[data-inventory-detail]') || null;
+    const focus = sheet?.querySelector(expectedFocusSelector) || null;
+    const diagnostics = window.__CF_SLICE__?.api?.inventoryDiagnostics?.();
+    const labelledBy = sheet?.getAttribute('aria-labelledby');
+    const title = labelledBy ? document.getElementById(labelledBy) : null;
+    const siblings = [...document.body.children].filter((node) => node !== sheet);
+    const backgroundLocked = siblings.length > 0
+      && siblings.every((node) => node.inert === true && node.getAttribute('aria-hidden') === 'true');
+    const bounds = visualBounds(safe), cardBox = card ? box(card) : null;
+    const cardStyle = card ? getComputedStyle(card) : null;
+    const controls = sheet ? [...sheet.querySelectorAll('button,input,select,textarea,a[href],[tabindex]:not([tabindex="-1"])')]
+      .filter((control) => visible(control)) : [];
+    const controlFloor = controls.map((control) => {
+      const rect = control.getBoundingClientRect();
+      return { selector: selectorName(control), width: round(rect.width), height: round(rect.height) };
+    });
+    const detailCount = sheet?.querySelectorAll('[data-inventory-detail]').length ?? 0;
+    const geometry = !!cardBox && inside(cardBox, bounds)
+      && (card.scrollHeight <= card.clientHeight + 1 || /(auto|scroll)/.test(cardStyle?.overflowY || ''));
+    return {
+      ok: sheets.length === 1 && !!sheet && visible(sheet) && sheet.hidden === false
+        && sheet.getAttribute('role') === 'dialog' && sheet.getAttribute('aria-modal') === 'true'
+        && sheet.getAttribute('aria-hidden') === 'false' && !!title && sheet.contains(title)
+        && detailCount === 1 && detail?.getAttribute('data-inventory-detail') === expectedInstanceId
+        && diagnostics?.schema === 'cf-v2-inventory-sheet-diagnostics/v1'
+        && diagnostics?.activeCount === 1 && diagnostics?.retainedCount === 0
+        && diagnostics?.pendingWork === 0 && diagnostics?.selectedInstanceId === expectedInstanceId
+        && backgroundLocked && geometry && controls.length >= 2
+        && controlFloor.every((row) => row.width >= 44 && row.height >= 44)
+        && document.activeElement === focus,
+      sheetCount: sheets.length, detailCount, detailId: detail?.getAttribute('data-inventory-detail') || null,
+      diagnostics, backgroundLocked, geometry, cardBox, bounds, controlFloor,
+      expectedFocus: focus ? selectorName(focus) : null,
+      active: document.activeElement instanceof Element ? selectorName(document.activeElement) : null,
+    };
+  };
+  const inventoryFocusTrapOutcome = (expectedEdge) => {
+    const sheet = document.getElementById('inventorysheet');
+    const controls = sheet ? [...sheet.querySelectorAll(
+      'button,input,select,textarea,a[href],[tabindex]:not([tabindex="-1"])',
+    )].filter((element) => !element.hidden && !element.disabled && !element.closest('[hidden]')) : [];
+    const first = controls[0] || null, last = controls.at(-1) || null;
+    const expected = expectedEdge === 'first' ? first : expectedEdge === 'last' ? last : null;
+    const active = document.activeElement instanceof Element ? document.activeElement : null;
+    const activeInside = !!sheet && !!active && sheet.contains(active);
+    return {
+      ok: !!sheet && visible(sheet) && controls.length >= 2 && !!expected
+        && activeInside && active === expected,
+      expectedEdge, controlCount: controls.length, activeInside,
+      first: first ? selectorName(first) : null, last: last ? selectorName(last) : null,
+      expected: expected ? selectorName(expected) : null,
+      active: active ? selectorName(active) : null,
+    };
+  };
+  const inventoryClosedOutcome = (expectedFocusInstanceId = null) => {
+    const sheets = [...document.querySelectorAll('#inventorysheet')];
+    const sheet = sheets[0] || null;
+    const diagnostics = window.__CF_SLICE__?.api?.inventoryDiagnostics?.();
+    const active = document.activeElement instanceof Element ? document.activeElement : null;
+    const focusInstanceId = active?.getAttribute('data-instance-id') || null;
+    return {
+      ok: sheets.length === 1 && !!sheet && !visible(sheet) && sheet.hidden === true
+        && sheet.getAttribute('aria-hidden') === 'true' && sheet.getAttribute('aria-busy') === 'false'
+        && sheet.querySelector('[data-inventory-sheet-body]')?.childElementCount === 0
+        && diagnostics?.schema === 'cf-v2-inventory-sheet-diagnostics/v1'
+        && diagnostics?.activeCount === 0 && diagnostics?.retainedCount === 0
+        && diagnostics?.pendingWork === 0 && diagnostics?.selectedInstanceId === null
+        && !document.body.classList.contains('inventory-sheet-open')
+        && (expectedFocusInstanceId === null || focusInstanceId === expectedFocusInstanceId),
+      sheetCount: sheets.length, hidden: sheet?.hidden ?? null,
+      bodyChildren: sheet?.querySelector('[data-inventory-sheet-body]')?.childElementCount ?? -1,
+      busy: sheet?.getAttribute('aria-busy') || null, diagnostics, focusInstanceId,
+    };
+  };
+  const inventoryProtectedActionOutcome = (instanceId) => {
+    const actions = [...document.querySelectorAll(`#inventorysheet [data-inventory-action][data-instance-id="${CSS.escape(instanceId)}"]`)];
+    const protectedActions = actions.filter((button) => button.getAttribute('data-protected-reason'));
+    return {
+      ok: protectedActions.length > 0 && protectedActions.every((button) => button.disabled
+        && button.getAttribute('data-action-enabled') === 'false'),
+      actions: actions.map((button) => ({ operation: button.getAttribute('data-inventory-action'),
+        disabled: button.disabled, enabled: button.getAttribute('data-action-enabled'),
+        reason: button.getAttribute('data-protected-reason') })),
+    };
+  };
+  const inventoryBusyOutcome = (before) => {
+    const state = window.__CF_SLICE__?.api?.state?.();
+    const diagnostics = window.__CF_SLICE__?.api?.inventoryDiagnostics?.();
+    const sheet = document.getElementById('inventorysheet');
+    const rowElements = [...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')];
+    const rowIds = rowElements.map((row) => row.getAttribute('data-instance-id'));
+    const domEquipped = rowElements.map((row) => row.getAttribute('data-equipped'));
+    const equippedBindings = state?.inventory?.equippedBindings || [];
+    const actions = sheet ? [...sheet.querySelectorAll('[data-inventory-action]')] : [];
+    const entryIdsMatch = JSON.stringify(state?.inventory?.entryIds || [])
+      === JSON.stringify(before?.entryIds || []);
+    const runtimeBindingsMatch = JSON.stringify(equippedBindings)
+      === JSON.stringify(before?.equippedBindings || []);
+    const rowIdsMatch = JSON.stringify(rowIds) === JSON.stringify(before?.rowIds || []);
+    const domEquippedMatch = JSON.stringify(domEquipped) === JSON.stringify(before?.domEquipped || []);
+    return {
+      ok: sheet?.getAttribute('aria-busy') === 'true' && diagnostics?.pendingWork === 1
+        && actions.length > 0 && actions.every((button) => button.disabled)
+        && state?.inventory?.revision === before?.revision
+        && entryIdsMatch && runtimeBindingsMatch && rowIdsMatch && domEquippedMatch,
+      busy: sheet?.getAttribute('aria-busy') || null, diagnostics,
+      revision: state?.inventory?.revision ?? null, entryIds: state?.inventory?.entryIds || [],
+      equippedBindings, rowIds, domEquipped,
+      entryIdsMatch, runtimeBindingsMatch, rowIdsMatch, domEquippedMatch,
+      actions: actions.map((button) => ({ operation: button.getAttribute('data-inventory-action'), disabled: button.disabled })),
+    };
+  };
+  const inventoryConvergenceOutcome = (diagnostics = window.__CF_SLICE__?.api?.inventoryDiagnostics?.()) => {
+    const sheet = document.getElementById('inventorysheet');
+    const actions = sheet ? [...sheet.querySelectorAll('[data-inventory-action]')] : [];
+    const action = diagnostics?.lastAction;
+    return {
+      ok: diagnostics?.activeCount === 1 && diagnostics?.pendingWork === 0
+        && action?.kind === 'committed' && /publication-reload/.test(action?.detail || '')
+        && sheet?.getAttribute('aria-busy') === 'false' && actions.length > 0
+        && actions.every((button) => button.disabled
+          && button.getAttribute('data-action-enabled') === 'false'
+          && button.getAttribute('data-protected-reason') === 'convergence-reload'),
+      diagnostics, busy: sheet?.getAttribute('aria-busy') || null,
+      actions: actions.map((button) => ({ disabled: button.disabled,
+        enabled: button.getAttribute('data-action-enabled'), reason: button.getAttribute('data-protected-reason') })),
     };
   };
   const openerOutcome = (openerSelector, controlledSelector, expectedExpanded) => {
@@ -3147,6 +3392,9 @@ function installAuditHarness() {
     audit, canvasIssues, safeProbe, viewportIssues, preferenceOutcome, choiceOutcome,
     navigationOutcome, openFocusOutcome, forcedColorsOutcome, motionPolicyOutcome, closeIntegrityOutcome,
     rightBottomAnchorOutcome, panelCloseOutcome, openerOutcome, pressedOutcome,
+    inventoryRowsOutcome, inventoryConditionOutcome, inventoryModalOutcome, inventoryFocusTrapOutcome,
+    inventoryClosedOutcome,
+    inventoryProtectedActionOutcome, inventoryBusyOutcome, inventoryConvergenceOutcome,
     sceneSnapshot, sceneDelta, selftest,
   });
 }
@@ -3331,7 +3579,7 @@ async function main() {
     modalControlRun = false, modalLiveControlRun = false, closeLabelControlRun = false,
     hiddenOpenerControlRun = false, reloadBindingControlRun = false,
     releaseDetailControlRun = false, releaseTailControlRun = false, phoneDockControlRun = false,
-    shipyardControlRun = false;
+    shipyardControlRun = false, inventoryControlRun = false;
   const add = (viewport, surface, rows) => {
     for (const row of rows || []) findings.push({ context: { viewport, surface }, row });
   };
@@ -3510,6 +3758,12 @@ async function main() {
         };
         const pressEscape = async () => {
           const key = { key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 };
+          await send('Input.dispatchKeyEvent', { type: 'rawKeyDown', ...key }, session);
+          await send('Input.dispatchKeyEvent', { type: 'keyUp', ...key }, session);
+        };
+        const pressTab = async (shift = false) => {
+          const key = { key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9,
+            ...(shift ? { modifiers: 8 } : {}) };
           await send('Input.dispatchKeyEvent', { type: 'rawKeyDown', ...key }, session);
           await send('Input.dispatchKeyEvent', { type: 'keyUp', ...key }, session);
         };
@@ -4347,7 +4601,7 @@ async function main() {
         }));
         if (vp.width <= 900) {
           const phoneDockCheck = `(()=>{const dock=document.getElementById('dock'),style=dock?getComputedStyle(dock):null,
-            rect=dock?.getBoundingClientRect(),expected=['docksurvey','dockcodex','dockrecords','dockcharters','dockatlas','dockcharts','dockshipyard','docksets','dockguide'],
+            rect=dock?.getBoundingClientRect(),expected=['docksurvey','dockcodex','dockrecords','dockcharters','dockatlas','dockcharts','dockshipyard','dockinventory','docksets','dockguide'],
             buttons=dock?[...dock.querySelectorAll(':scope > button')].filter(button=>{const s=getComputedStyle(button),r=button.getBoundingClientRect();
               return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;}):[],rows=[];
             for(const button of buttons){const r=button.getBoundingClientRect();let row=rows.find(candidate=>Math.abs(candidate.top-r.top)<2);
@@ -4355,14 +4609,14 @@ async function main() {
             rows.sort((a,b)=>a.top-b.top);const ids=buttons.map(button=>button.id),centres=buttons.map(button=>{const r=button.getBoundingClientRect(),
               hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);return {id:button.id,width:r.width,height:r.height,
                 hit:!!hit&&(hit===button||button.contains(hit))};});
-            return {ok:style?.display==='grid'&&buttons.length===9&&JSON.stringify(ids)===JSON.stringify(expected)
-              &&rows.length===2&&rows[0].ids.length===5&&rows[1].ids.length===4
+            return {ok:style?.display==='grid'&&buttons.length===10&&JSON.stringify(ids)===JSON.stringify(expected)
+              &&rows.length===2&&rows[0].ids.length===5&&rows[1].ids.length===5
               &&!!rect&&Math.abs(rect.width-260)<=1&&Math.abs(rect.height-98)<=1
               &&centres.every(row=>Math.abs(row.width-44)<=1&&Math.abs(row.height-44)<=1&&row.hit),
               display:style?.display||null,ids,expected,rows:rows.map(row=>row.ids),
               rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null,centres};})()`;
           addOutcome(vp.label, 'phone-dock', 'PHONE_DOCK_INVENTORY', '#dock', await evalIn(phoneDockCheck),
-            'the exact nine visible named controls occupy one 260x98 five-plus-four grid of centre-owned 44px targets');
+            'the exact ten visible named controls occupy one 260x98 five-by-two grid of centre-owned 44px targets');
           if (!phoneDockControlRun) {
             phoneDockControlRun = true;
             const dockControl = await evalIn(`(()=>{const dock=document.getElementById('dock'),prior=dock?.getAttribute('style')??null;
@@ -4373,6 +4627,14 @@ async function main() {
               instrumentFailures.push(`${vp.label}: phone dock 4-column control stayed green or failed to restore (${JSON.stringify(dockControl)})`);
             }
             recordControls('phone-dock-inventory');
+            const membershipControl = await evalIn(`(()=>{const button=document.getElementById('dockinventory'),prior=button?.id||null;
+              if(button)button.id='dockinventory-substitution';const broken=${phoneDockCheck};if(button&&prior)button.id=prior;
+              const restored=${phoneDockCheck};return {ok:broken.ok===false&&broken.ids.length===10
+                &&broken.ids.includes('dockinventory-substitution')&&!broken.ids.includes('dockinventory')&&restored.ok,broken,restored};})()`);
+            if (!membershipControl.ok) {
+              instrumentFailures.push(`${vp.label}: substituted Inventory dock member stayed green or failed to restore (${JSON.stringify(membershipControl)})`);
+            }
+            recordControls('phone-dock-exact-membership');
           }
         }
         const hpLabelCheck = `(()=>{ const track=document.querySelector('#hpbar .track'),fill=document.querySelector('#hpbar .fill'),txt=document.querySelector('#hpbar .txt');
@@ -4488,7 +4750,7 @@ async function main() {
               instrumentFailures.push(`${vp.label}: injected left-anchored toast stayed on the bottom-right utility edge (${JSON.stringify(leftToastControl)})`);
             }
             /* The standing viewport-fit control now also owns the reported
-               side-anchor regression; keep the sealed 57-name inventory. */
+               side-anchor regression; keep the existing control inventory. */
             recordControls('viewport-fit');
           }
         }
@@ -4545,7 +4807,7 @@ async function main() {
             instrumentFailures.push(`${vp.label}: injected upper-left survey close stayed green (${JSON.stringify(misplacedCloseControl)})`);
           }
           /* Extend the existing close control rather than growing the sealed
-             57-name inventory: it now rejects duplicates and bad corners. */
+             existing inventory: it now rejects duplicates and bad corners. */
           recordControls('ordinary-panel-centre-close');
         }
         add(vp.label, 'survey', await audit({
@@ -4605,14 +4867,17 @@ async function main() {
           { id: 'rec', name: 'records', dock: '#dockrecords', rail: '#railrecords', panel: '#recpanel', required: '#recpanel .row', min: 6, textMin: 80 },
           { id: 'atlas', name: 'atlas', dock: '#dockatlas', rail: '#railatlas', panel: '#atlaspanel', required: '[data-sel=atlas-entry]', min: 1, textMin: 25 },
           { id: 'shipyard', name: 'shipyard', dock: '#dockshipyard', rail: '#railshipyard', panel: '#shipyardpanel', required: '[data-cf-shipyard-preview="v1"]', min: 1, textMin: 80, shipyard: true },
+          { id: 'inventory', name: 'inventory', dock: '#dockinventory', rail: '#railinventory', panel: '#inventorypanel', required: '[data-inventory-row="exact"]', min: 3, textMin: 120, inventory: true },
           { id: 'ch', name: 'charters', dock: '#dockcharters', rail: '#railcharters', panel: '#chpanel', required: '[data-sel=charter-ch]', min: 1, textMin: 120 },
         ];
         for (const item of ordinaryPanels) {
           const opener = vp.width > 900 ? item.rail : item.dock;
           /* A populated desktop survey deliberately yields the right rail,
-             so Records/Atlas are reached *instead of* the card, while the
-             left rail and every phone dock panel remain operable over it. */
-          const overSurvey = !(vp.width > 900 && (item.id === 'rec' || item.id === 'atlas' || item.id === 'shipyard'));
+             so Records/Atlas/Shipyard/Inventory are reached *instead of* the
+             card, while the left rail and every phone dock panel remain
+             operable over it. */
+          const overSurvey = !(vp.width > 900 && (item.id === 'rec' || item.id === 'atlas'
+            || item.id === 'shipyard' || item.id === 'inventory'));
           const cardBeforePanel = await evalIn('window.__CF_SLICE__.api.state().cardOpen');
           if (cardBeforePanel !== overSurvey) {
             await evalIn(`document.getElementById('docksurvey')?.click()`);
@@ -4627,14 +4892,24 @@ async function main() {
           const realShipyardOpen = item.shipyard
             ? await activateRealControl(opener, `${vp.label} Shipyard opener`)
             : null;
+          const realInventoryOpen = item.inventory
+            ? await activateRealControl(opener, `${vp.label} Inventory opener`)
+            : null;
           if (item.shipyard && !realShipyardOpen?.ok) {
             instrumentFailures.push(`${vp.label}: Shipyard did not receive real visible-opener input (${JSON.stringify(realShipyardOpen)})`);
           }
-          if (!item.shipyard) {
+          if (item.inventory && !realInventoryOpen?.ok) {
+            instrumentFailures.push(`${vp.label}: Inventory did not receive real visible-opener input (${JSON.stringify(realInventoryOpen)})`);
+          }
+          if (!item.shipyard && !item.inventory) {
             await evalIn(`(()=>{ const b=document.querySelector(${JSON.stringify(opener)}); b?.focus(); b?.click(); })()`);
           }
           await waitFor(`${item.name} panel`, `window.__CF_SLICE__.api.state().panelOpen===${JSON.stringify(item.id)} && document.querySelectorAll(${JSON.stringify(item.required)}).length>=${item.min} && window.__CF_SLICE__.api.state().cardOpen===${JSON.stringify(overSurvey)}`);
           const composition = `${item.name}-${overSurvey ? 'over' : 'instead-of'}-survey`;
+          const inventoryCarrier = item.inventory ? await evalIn(READ_ARC2_GLASS_CARRIER_EXPRESSION) : null;
+          const inventoryRowsCheck = item.inventory
+            ? `window.__CF_GLASS_AUDIT__.inventoryRowsOutcome(${JSON.stringify(inventoryCarrier)},${JSON.stringify(opener)})`
+            : null;
           const shipyardOpenCheck = item.shipyard ? `(()=>{ const S=window.__CF_SLICE__,state=S?.api?.state?.(),
             ship=state?.shipVisual,diag=S?.api?.shipyardDiagnostics?.(),panel=document.getElementById('shipyardpanel'),
             opener=document.querySelector(${JSON.stringify(opener)}),close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),
@@ -4728,6 +5003,84 @@ async function main() {
                 window.__cfShipyardClosedControl=preview?.cloneNode(true)||null;return !!window.__cfShipyardClosedControl;})()`);
             }
           }
+          if (item.inventory) {
+            addOutcome(vp.label, composition, 'INVENTORY_REAL_OPENER', opener, realInventoryOpen,
+              'the one visible Inventory dock or right-rail opener receives real browser pointer input');
+            addOutcome(vp.label, composition, 'INVENTORY_CARRIER_DOM_PARITY', item.panel,
+              await evalIn(inventoryRowsCheck),
+              'the durable Arc 2 carrier, runtime projection, and one bounded exact-instance DOM row per held or pending id agree');
+            if (!inventoryControlRun) {
+              const floorControl = await evalIn(`(()=>{const row=document.querySelector('#inventorypanel [data-inventory-row="exact"]'),
+                prior=row?.getAttribute('style')??null;row?.style.setProperty('min-height','0','important');
+                row?.style.setProperty('height','20px','important');const broken=${inventoryRowsCheck};
+                if(prior===null)row?.removeAttribute('style');else row?.setAttribute('style',prior);
+                return {ok:broken.ok===false&&broken.floor?.some(entry=>entry.height<44)&&${inventoryRowsCheck}.ok,broken};})()`);
+              if (!floorControl.ok) {
+                instrumentFailures.push(`${vp.label}: undersized Inventory control stayed green or failed to restore (${JSON.stringify(floorControl)})`);
+              }
+              recordControls('inventory-control-floor');
+
+              const missingControl = await evalIn(`(()=>{const row=document.querySelector('#inventorypanel [data-inventory-row="exact"]'),
+                parent=row?.parentNode||null,next=row?.nextSibling||null;if(row)row.remove();const broken=${inventoryRowsCheck};
+                if(row&&parent)parent.insertBefore(row,next);return {ok:broken.ok===false&&broken.durable===true
+                  &&broken.runtimeMatch===true&&broken.rowsMatch===false&&${inventoryRowsCheck}.ok,broken};})()`);
+              if (!missingControl.ok) {
+                instrumentFailures.push(`${vp.label}: missing exact Inventory row stayed green or failed to restore (${JSON.stringify(missingControl)})`);
+              }
+              recordControls('inventory-missing-row');
+
+              const duplicateControl = await evalIn(`(()=>{const row=document.querySelector('#inventorypanel [data-inventory-row="exact"]'),
+                duplicate=row?.cloneNode(true)||null;row?.parentNode?.appendChild(duplicate);const broken=${inventoryRowsCheck};duplicate?.remove();
+                return {ok:broken.ok===false&&broken.durable===true&&broken.runtimeMatch===true
+                  &&broken.rowsMatch===false&&broken.domRows.length===broken.expectedRows.length+1&&${inventoryRowsCheck}.ok,broken};})()`);
+              if (!duplicateControl.ok) {
+                instrumentFailures.push(`${vp.label}: duplicate exact Inventory row stayed green or failed to restore (${JSON.stringify(duplicateControl)})`);
+              }
+              recordControls('inventory-duplicate-row');
+
+              const poisonedRawCarrier = structuredClone(inventoryCarrier);
+              const rawCarrierControlApplied = typeof poisonedRawCarrier?.carrierJson === 'string';
+              if (rawCarrierControlApplied) poisonedRawCarrier.carrierJson += '\n';
+              const rawIntegrityControl = await evalIn(`(()=>{const broken=window.__CF_GLASS_AUDIT__.inventoryRowsOutcome(
+                ${JSON.stringify(poisonedRawCarrier)},${JSON.stringify(opener)}),restored=${inventoryRowsCheck};
+                return {ok:${JSON.stringify(rawCarrierControlApplied)}&&broken.ok===false&&broken.durable===false
+                  &&broken.runtimeMatch===true&&broken.rowsMatch===true&&restored.ok,broken,restored};})()`);
+              const runtimeParityControl = await evalIn(`(()=>{const S=window.__CF_SLICE__,prior=S?.api?.state;
+                if(typeof prior!=='function')return {ok:false,why:'runtime state owner missing'};const snapshot=prior(),
+                  bindings=(snapshot.inventory?.equippedBindings||[]).map(binding=>({...binding}));
+                if(bindings.length)bindings[0]={...bindings[0],instanceId:String(bindings[0].instanceId)+':runtime-only-poison'};
+                else bindings.push({slot:'control',instanceId:'runtime-only-poison'});
+                let broken=null,controlApplied=false;try{S.api.state=()=>{const current=prior();return {...current,
+                  inventory:{...current.inventory,equippedBindings:bindings.map(binding=>({...binding}))}}};
+                  controlApplied=JSON.stringify(S.api.state().inventory.equippedBindings)===JSON.stringify(bindings);
+                  broken=${inventoryRowsCheck};}finally{S.api.state=prior;}
+                const restored=${inventoryRowsCheck};return {ok:controlApplied&&S.api.state===prior&&broken?.ok===false
+                  &&broken?.durable===true&&broken?.runtimeMatch===false&&broken?.rowsMatch===true&&restored.ok,
+                  controlApplied,restoredOwner:S.api.state===prior,broken,restored};})()`);
+              if (!rawIntegrityControl.ok || !runtimeParityControl.ok) {
+                instrumentFailures.push(`${vp.label}: raw/runtime Inventory authority controls were not independent or failed to restore (${JSON.stringify({ rawIntegrityControl, runtimeParityControl })})`);
+              }
+              recordControls('inventory-raw-authority-parity');
+
+              const pagerContrastOptions = { surface: 'inventory-pager-contrast-control', root: '#inventorypanel',
+                textMin: 1, targetFloor, safe: vp.safe || {}, fitSelectors: [], interactiveRoots: [],
+                contrastSelectors: ['#inventorypanel .inventory-pager'], maxContrastReports: 8, overlapPairs: [] };
+              const pagerContrastControl = await evalIn(`(()=>{const button=document.querySelector('#inventorypanel .inventory-pager button:disabled'),
+                prior=button?.getAttribute('style')??null;if(button)button.style.setProperty('opacity','.45','important');
+                const broken=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(pagerContrastOptions)});
+                if(button){if(prior===null)button.removeAttribute('style');else button.setAttribute('style',prior);}
+                const restored=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(pagerContrastOptions)}),
+                  brokenLow=broken.some(row=>row.code==='TEXT_CONTRAST_LOW'&&row.actual?.sample==='‹'),
+                  restoredLow=restored.some(row=>row.code==='TEXT_CONTRAST_LOW'),after=button?.getAttribute('style')??null,
+                  styleRestored=(${sameInlineStyleAttribute.toString()})(prior,after);
+                return {ok:!!button&&brokenLow&&!restoredLow&&styleRestored,
+                  brokenLow,restoredLow,styleRestored,prior,after,broken,restored};})()`);
+              if (!pagerContrastControl.ok) {
+                instrumentFailures.push(`${vp.label}: disabled Inventory pager contrast injection stayed green or failed to restore (${JSON.stringify(pagerContrastControl)})`);
+              }
+              recordControls('inventory-disabled-pager-contrast');
+            }
+          }
           addOutcome(vp.label, composition, 'PANEL_OPEN_FOCUS_OUTCOME', `${item.panel} [data-pnx]`,
             await evalIn(`window.__CF_GLASS_AUDIT__.openFocusOutcome(${JSON.stringify(item.panel)})`),
             'the real opener moves focus into the newly opened panel before any audit focuses it');
@@ -4747,7 +5100,7 @@ async function main() {
             ...common, surface: composition, root: item.panel, textMin: item.textMin,
             required: [{ selector: '[data-pnx]', min: 1 }, { selector: item.required, min: item.min }],
             fitSelectors: [item.panel], interactiveRoots: [item.panel], contrastSelectors: [item.panel, opener],
-            maxContrastReports: 16, overlapPairs: [],
+            maxContrastReports: 16, overlapPairs: item.inventory ? [[item.panel, '#dock']] : [],
           }));
           if (vp.label === 'phone-landscape' && item.id === 'codex') {
             /* Exercise the repaired short-landscape workspace against real
@@ -4827,7 +5180,7 @@ async function main() {
                   close=panel.querySelector('[data-pnx]'),focusEntered=!!close&&document.activeElement===close;
                 return {ok:positiveVisibility&&hiddenSearchRejected&&blockedDockRejected&&hiddenDockA11yRejected&&searchHit&&searchFocused
                     &&search.getAttribute('aria-label')?.trim().length>0&&exposed(search)&&search.tabIndex>=0&&!search.disabled&&!search.readOnly
-                    &&dock.getAttribute('aria-label')?.trim().length>0&&dockFocused&&dockHits.length===9
+                    &&dock.getAttribute('aria-label')?.trim().length>0&&dockFocused&&dockHits.length===10
                     &&dockHits.every(row=>row.hit&&row.named&&row.exposed&&row.tabIndex>=0&&!row.disabled)
                     &&filtered.panel.mode==='list'&&filtered.panel.filteredCount===1
                     &&cleared.panel.mode==='list'&&cleared.panel.filteredCount===${hostileCompendiumRows.length}
@@ -4853,8 +5206,8 @@ async function main() {
               const nonModalAuditRows = await audit(nonModalAuditOptions);
               add(vp.label, 'compendium-nonmodal-chrome', nonModalAuditRows);
               const dockContrastControl = await evalIn(`(()=>{const buttons=[...document.querySelectorAll('#dock button')];
-                if(buttons.length!==9||buttons.some(button=>!(button instanceof HTMLButtonElement)||!button.id))
-                  return {ok:false,why:'exact nine named dock buttons missing',count:buttons.length};
+                if(buttons.length!==10||buttons.some(button=>!(button instanceof HTMLButtonElement)||!button.id))
+                  return {ok:false,why:'exact ten named dock buttons missing',count:buttons.length};
                 const expected=buttons.map(button=>'#'+CSS.escape(button.id)).sort(),prior=buttons.map(button=>button.getAttribute('style')),
                   baseline=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)});let injected=[];
                 try{for(const button of buttons){button.style.setProperty('color','#fff','important');button.style.setProperty('background','#fff','important');}
@@ -5029,6 +5382,349 @@ async function main() {
               }
             }
           }
+          if (item.inventory) {
+            const thermalId = inventoryCarrier?.arc2?.kind === 'inventory'
+              ? inventoryCarrier.arc2.inventory.entries.find((entry) => entry.instance.baseId === 'thermal')?.instance.instanceId
+              : null;
+            const hazmatId = inventoryCarrier?.arc2?.kind === 'inventory'
+              ? inventoryCarrier.arc2.inventory.entries.find((entry) => entry.instance.baseId === 'hazmat')?.instance.instanceId
+              : null;
+            if (typeof thermalId !== 'string' || typeof hazmatId !== 'string') {
+              instrumentFailures.push(`${vp.label}: Inventory conditional/protected fixture identities are unavailable (${JSON.stringify({ thermalId, hazmatId })})`);
+            } else {
+              const thermalSelector = `#inventorypanel [data-inventory-row="exact"][data-instance-id=${JSON.stringify(thermalId)}]`;
+              const hazmatSelector = `#inventorypanel [data-inventory-row="exact"][data-instance-id=${JSON.stringify(hazmatId)}]`;
+              await evalIn(`document.querySelector(${JSON.stringify(thermalSelector)})?.scrollIntoView({block:'center',inline:'nearest'})`);
+              const realThermalOpen = await activateRealControl(thermalSelector, `${vp.label} Inventory thermal row`);
+              await waitFor('Inventory thermal detail', `(()=>{const d=window.__CF_SLICE__.api.inventoryDiagnostics();
+                return d.activeCount===1&&d.selectedInstanceId===${JSON.stringify(thermalId)}
+                  &&document.querySelector('#inventorysheet [data-inventory-detail=${JSON.stringify(thermalId)}]');})()`);
+              addOutcome(vp.label, 'inventory-modal', 'INVENTORY_REAL_ROW_OPEN', thermalSelector, realThermalOpen,
+                'the exact conditional candidate row receives real browser pointer input');
+              const modalCheck = `window.__CF_GLASS_AUDIT__.inventoryModalOutcome(${JSON.stringify(thermalId)},${JSON.stringify(vp.safe || {})})`;
+              addOutcome(vp.label, 'inventory-modal', 'INVENTORY_MODAL_OWNERSHIP', '#inventorysheet',
+                await evalIn(modalCheck),
+                'one labelled modal owns one exact detail, all background siblings, safe geometry, 44px actions, and initial Close focus');
+              const conditionCheck = 'window.__CF_GLASS_AUDIT__.inventoryConditionOutcome()';
+              addOutcome(vp.label, 'inventory-modal', 'INVENTORY_CONDITIONAL_COMPARISON', '#inventorysheet [data-compare-effect]',
+                await evalIn(conditionCheck),
+                'every exact effect and comparison row renders its carrier condition, including landing-family wording');
+              add(vp.label, 'inventory-modal', await audit({
+                surface: 'inventory-modal', root: '#inventorysheet', textMin: 220, targetFloor,
+                safe: {}, viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr },
+                required: [
+                  { selector: '[data-inventory-sheet-close]', min: 1 },
+                  { selector: '[data-inventory-detail]', min: 1, textMin: 180 },
+                  { selector: '[data-compare-effect]', min: 1 },
+                  { selector: '[data-inventory-action]', min: 2 },
+                ],
+                fitSelectors: ['#inventorysheet .inventory-sheet-card'],
+                interactiveRoots: ['#inventorysheet'], contrastSelectors: ['#inventorysheet .inventory-sheet-card'],
+                maxControlReports: 16, maxContrastReports: 16, overlapPairs: [],
+              }));
+
+              if (!inventoryControlRun) {
+                const conditionControl = await evalIn(`(()=>{const row=[...document.querySelectorAll('#inventorysheet [data-compare-effect]')]
+                  .find(node=>(node.getAttribute('data-condition')||'')!=='unconditional'),copy=row?.querySelector('span'),prior=copy?.textContent??null;
+                  if(copy)copy.textContent='Conditional wording omitted';const broken=${conditionCheck};if(copy&&prior!==null)copy.textContent=prior;
+                  return {ok:broken.ok===false&&broken.conditionalComparisons>0&&${conditionCheck}.ok,broken};})()`);
+                if (!conditionControl.ok) {
+                  instrumentFailures.push(`${vp.label}: dropped Inventory condition wording stayed green or failed to restore (${JSON.stringify(conditionControl)})`);
+                }
+                recordControls('inventory-condition-wording');
+
+                const duplicateModalControl = await evalIn(`(()=>{const sheet=document.getElementById('inventorysheet'),duplicate=sheet?.cloneNode(true)||null;
+                  if(duplicate)document.body.appendChild(duplicate);const broken=${modalCheck};duplicate?.remove();
+                  return {ok:broken.ok===false&&broken.sheetCount===2&&${modalCheck}.ok,broken};})()`);
+                if (!duplicateModalControl.ok) {
+                  instrumentFailures.push(`${vp.label}: duplicate Inventory modal stayed green or failed to restore (${JSON.stringify(duplicateModalControl)})`);
+                }
+                recordControls('inventory-modal-duplication');
+
+                const modalFocusControl = await evalIn(`(()=>{const close=document.querySelector('#inventorysheet [data-inventory-sheet-close]');
+                  close?.blur();const broken=${modalCheck};close?.focus();return {ok:broken.ok===false&&${modalCheck}.ok,broken};})()`);
+                if (!modalFocusControl.ok) {
+                  instrumentFailures.push(`${vp.label}: Inventory modal focus omission stayed green or failed to restore (${JSON.stringify(modalFocusControl)})`);
+                }
+                recordControls('inventory-modal-focus');
+              }
+
+              const trapSetup = await evalIn(`(()=>{const sheet=document.getElementById('inventorysheet'),controls=sheet?[...sheet.querySelectorAll('button,input,select,textarea,a[href],[tabindex]:not([tabindex="-1"])')]
+                .filter(node=>!node.hidden&&!node.disabled&&!node.closest('[hidden]')):[],first=controls[0]||null,last=controls.at(-1)||null;
+                last?.focus();return {ok:controls.length>=2&&document.activeElement===last,first:first?.getAttribute('data-inventory-sheet-close')!==null,
+                  last:last?.getAttribute('data-inventory-action')||last?.tagName||null};})()`);
+              await pressTab();
+              const forwardTrap = await evalIn(`window.__CF_GLASS_AUDIT__.inventoryFocusTrapOutcome('first')`);
+              await pressTab(true);
+              const reverseTrap = await evalIn(`window.__CF_GLASS_AUDIT__.inventoryFocusTrapOutcome('last')`);
+              addOutcome(vp.label, 'inventory-modal-focus-trap', 'INVENTORY_MODAL_FOCUS_TRAP', '#inventorysheet',
+                { ok: trapSetup.ok && trapSetup.first && forwardTrap.ok && reverseTrap.ok,
+                  trapSetup, forwardTrap, reverseTrap },
+                'real forward and reverse Tab wrap inside the one Inventory modal');
+              if (!inventoryControlRun) {
+                /* Window is earlier than document on the capture path. These
+                   two temporary interceptors therefore bypass the owned
+                   document Tab/focus-containment handlers without changing
+                   product code or replacing their exact listener identity. */
+                const wrapControlSetup = await evalIn(`(()=>{const sheet=document.getElementById('inventorysheet'),
+                  controls=sheet?[...sheet.querySelectorAll('button,input,select,textarea,a[href],[tabindex]:not([tabindex="-1"])')]
+                    .filter(node=>!node.hidden&&!node.disabled&&!node.closest('[hidden]')):[],first=controls[0]||null,last=controls.at(-1)||null,
+                  outsideBefore=document.createElement('button'),outsideAfter=document.createElement('button'),receipt={keydown:0,focusin:0};
+                  outsideBefore.id='cf-inventory-focus-wrap-before';outsideAfter.id='cf-inventory-focus-wrap-after';
+                  for(const [outside,label] of [[outsideBefore,'before'],[outsideAfter,'after']]){outside.type='button';
+                    outside.textContent='outside focus target '+label;
+                    outside.style.cssText='position:fixed;left:0;top:0;width:44px;height:44px;z-index:2147483647';}
+                  const keydown=event=>{if(event.key!=='Tab')return;receipt.keydown+=1;event.stopImmediatePropagation();},
+                    focusin=event=>{if(sheet?.contains(event.target))return;receipt.focusin+=1;event.stopImmediatePropagation();};
+                  sheet?.before(outsideBefore);sheet?.after(outsideAfter);window.addEventListener('keydown',keydown,true);
+                  window.addEventListener('focusin',focusin,true);
+                  window.__cfInventoryFocusWrapControl={outsideBefore,outsideAfter,first,last,keydown,focusin,receipt};last?.focus();
+                  return {ok:!!sheet&&controls.length>=2&&!!first&&!!last&&outsideBefore.isConnected&&outsideAfter.isConnected
+                    &&!outsideBefore.inert&&!outsideAfter.inert&&outsideBefore.tabIndex===0&&outsideAfter.tabIndex===0&&document.activeElement===last,
+                    first:first?.getAttribute('data-inventory-sheet-close')!==null,
+                    last:last?.getAttribute('data-inventory-action')||last?.tagName||null,
+                    outside:[outsideBefore.id,outsideAfter.id]};})()`);
+                await pressTab();
+                const wrapBrokenForward = await evalIn(`(()=>{const probe=window.__cfInventoryFocusWrapControl,
+                  outcome=window.__CF_GLASS_AUDIT__.inventoryFocusTrapOutcome('first');return {
+                    ok:!!probe&&document.activeElement===probe.outsideAfter&&outcome.ok===false,
+                    escaped:document.activeElement===probe?.outsideAfter,outcome,
+                    receipt:probe?{...probe.receipt}:null};})()`);
+                const reverseBreakSetup = await evalIn(`(()=>{const probe=window.__cfInventoryFocusWrapControl;
+                  probe?.first?.focus();return !!probe?.first&&document.activeElement===probe.first;})()`);
+                await pressTab(true);
+                const wrapBrokenReverse = await evalIn(`(()=>{const probe=window.__cfInventoryFocusWrapControl,
+                  outcome=window.__CF_GLASS_AUDIT__.inventoryFocusTrapOutcome('last');return {
+                    ok:!!probe&&document.activeElement===probe.outsideBefore&&outcome.ok===false,
+                    escaped:document.activeElement===probe?.outsideBefore,outcome,
+                    receipt:probe?{...probe.receipt}:null};})()`);
+                const wrapRestoreSetup = await evalIn(`(()=>{const probe=window.__cfInventoryFocusWrapControl;
+                  if(!probe)return {ok:false,why:'focus-wrap bypass receipt absent'};
+                  const receipt={...probe.receipt};window.removeEventListener('keydown',probe.keydown,true);
+                  window.removeEventListener('focusin',probe.focusin,true);probe.outsideBefore.remove();probe.outsideAfter.remove();
+                  delete window.__cfInventoryFocusWrapControl;
+                  const sentinel=document.createElement('button');sentinel.id='cf-inventory-focus-wrap-restored';
+                  sentinel.type='button';sentinel.textContent='restored-handler outside target';
+                  sentinel.style.cssText='position:fixed;left:0;top:0;width:44px;height:44px;z-index:2147483647';
+                  document.body.appendChild(sentinel);sentinel.focus();
+                  const close=document.querySelector('#inventorysheet [data-inventory-sheet-close]'),
+                    focusContainmentRestored=document.activeElement===close,last=[...document.querySelectorAll('#inventorysheet button,#inventorysheet input,#inventorysheet select,#inventorysheet textarea,#inventorysheet a[href],#inventorysheet [tabindex]:not([tabindex="-1"])')]
+                      .filter(node=>!node.hidden&&!node.disabled&&!node.closest('[hidden]')).at(-1)||null;
+                  last?.focus();return {ok:receipt.keydown===2&&receipt.focusin===2
+                    &&focusContainmentRestored&&!document.getElementById('cf-inventory-focus-wrap-before')
+                    &&!document.getElementById('cf-inventory-focus-wrap-after')
+                    &&!('__cfInventoryFocusWrapControl' in window)&&!!last&&document.activeElement===last,
+                    receipt,focusContainmentRestored,last:last?.getAttribute('data-inventory-action')||last?.tagName||null};})()`);
+                await pressTab();
+                const wrapRestored = await evalIn(`window.__CF_GLASS_AUDIT__.inventoryFocusTrapOutcome('first')`);
+                await pressTab(true);
+                const reverseRestored = await evalIn(`window.__CF_GLASS_AUDIT__.inventoryFocusTrapOutcome('last')`);
+                const wrapCleanup = await evalIn(`(()=>{document.getElementById('cf-inventory-focus-wrap-restored')?.remove();
+                  const close=document.querySelector('#inventorysheet [data-inventory-sheet-close]');close?.focus();
+                  return {ok:!document.getElementById('cf-inventory-focus-wrap-before')
+                    &&!document.getElementById('cf-inventory-focus-wrap-after')
+                    &&!document.getElementById('cf-inventory-focus-wrap-restored')
+                    &&!('__cfInventoryFocusWrapControl' in window)&&${modalCheck}.ok,
+                    active:document.activeElement===close};})()`);
+                const wrapControl = { ok: wrapControlSetup.ok && wrapControlSetup.first
+                    && wrapBrokenForward.ok && reverseBreakSetup && wrapBrokenReverse.ok
+                    && wrapRestoreSetup.ok && wrapRestored.ok && reverseRestored.ok && wrapCleanup.ok,
+                  setup: wrapControlSetup, brokenForward: wrapBrokenForward,
+                  reverseBreakSetup, brokenReverse: wrapBrokenReverse,
+                  restoreSetup: wrapRestoreSetup, restored: wrapRestored,
+                  reverseRestored, cleanup: wrapCleanup };
+                if (!wrapControl.ok) {
+                  instrumentFailures.push(`${vp.label}: Inventory focus-wrap bypass did not escape, fail red, and restore (${JSON.stringify(wrapControl)})`);
+                }
+                recordControls('inventory-focus-wrap');
+              }
+
+              await evalIn(`window.__cfInventoryRetainedControl=document.querySelector('#inventorysheet [data-inventory-detail]')?.cloneNode(true)||null`);
+              await pressEscape();
+              await waitFor('Inventory Escape close', `window.__CF_SLICE__.api.inventoryDiagnostics().activeCount===0&&document.getElementById('inventorysheet')?.hidden===true`);
+              const escaped = await evalIn(`window.__CF_GLASS_AUDIT__.inventoryClosedOutcome(${JSON.stringify(thermalId)})`);
+              addOutcome(vp.label, 'inventory-modal-escape', 'INVENTORY_ESCAPE_RELEASE', '#inventorysheet', escaped,
+                'Escape clears active, retained, and pending ownership and restores the exact opener row');
+              if (!inventoryControlRun) {
+                const retentionControl = await evalIn(`(()=>{const body=document.querySelector('#inventorysheet [data-inventory-sheet-body]'),
+                  retained=window.__cfInventoryRetainedControl||null;if(retained)body?.appendChild(retained);
+                  const broken=window.__CF_GLASS_AUDIT__.inventoryClosedOutcome(${JSON.stringify(thermalId)});retained?.remove();
+                  delete window.__cfInventoryRetainedControl;return {ok:broken.ok===false&&broken.bodyChildren===1
+                    &&window.__CF_GLASS_AUDIT__.inventoryClosedOutcome(${JSON.stringify(thermalId)}).ok,broken};})()`);
+                if (!retentionControl.ok) {
+                  instrumentFailures.push(`${vp.label}: retained Inventory detail after Escape stayed green or failed to restore (${JSON.stringify(retentionControl)})`);
+                }
+                recordControls('inventory-modal-retention');
+              } else await evalIn('delete window.__cfInventoryRetainedControl');
+
+              await evalIn(`document.querySelector(${JSON.stringify(hazmatSelector)})?.scrollIntoView({block:'center',inline:'nearest'})`);
+              const realHazmatOpen = await activateRealControl(hazmatSelector, `${vp.label} Inventory equipped row`);
+              await waitFor('Inventory equipped detail', `window.__CF_SLICE__.api.inventoryDiagnostics().selectedInstanceId===${JSON.stringify(hazmatId)}`);
+              addOutcome(vp.label, 'inventory-protected-action', 'INVENTORY_REAL_PROTECTED_ROW', hazmatSelector, realHazmatOpen,
+                'the exact equipped row receives real pointer input before its destructive boundary is audited');
+              const protectedCheck = `window.__CF_GLASS_AUDIT__.inventoryProtectedActionOutcome(${JSON.stringify(hazmatId)})`;
+              addOutcome(vp.label, 'inventory-protected-action', 'INVENTORY_PROTECTED_ACTION_DISABLED', '#inventorysheet [data-inventory-action="salvage"]',
+                await evalIn(protectedCheck), 'the equipped exact instance exposes no enabled salvage retry');
+              if (!inventoryControlRun) {
+                const protectedControl = await evalIn(`(()=>{const button=document.querySelector('#inventorysheet [data-inventory-action="salvage"]'),
+                  disabled=button?.disabled??null,enabled=button?.getAttribute('data-action-enabled')??null,reason=button?.getAttribute('data-protected-reason')??null;
+                  if(button){button.disabled=false;button.setAttribute('data-action-enabled','true');button.removeAttribute('data-protected-reason');}
+                  const broken=${protectedCheck};if(button){button.disabled=disabled;if(enabled===null)button.removeAttribute('data-action-enabled');else button.setAttribute('data-action-enabled',enabled);
+                    if(reason===null)button.removeAttribute('data-protected-reason');else button.setAttribute('data-protected-reason',reason);}
+                  return {ok:broken.ok===false&&${protectedCheck}.ok,broken};})()`);
+                if (!protectedControl.ok) {
+                  instrumentFailures.push(`${vp.label}: enabled protected Inventory action stayed green or failed to restore (${JSON.stringify(protectedControl)})`);
+                }
+                recordControls('inventory-protected-action');
+              }
+              const realDetailClose = await activateRealControl('#inventorysheet [data-inventory-sheet-close]', `${vp.label} Inventory detail Close`);
+              await waitFor('Inventory real Close', `window.__CF_SLICE__.api.inventoryDiagnostics().activeCount===0&&document.getElementById('inventorysheet')?.hidden===true`);
+              const detailClosed = await evalIn(`window.__CF_GLASS_AUDIT__.inventoryClosedOutcome(${JSON.stringify(hazmatId)})`);
+              addOutcome(vp.label, 'inventory-modal-close', 'INVENTORY_CLOSE_RELEASE', '#inventorysheet',
+                { ...detailClosed, ok: realDetailClose?.ok === true && detailClosed.ok, realClose: realDetailClose },
+                'real Close clears active, retained, and pending ownership and restores the exact equipped row');
+
+              await evalIn(`document.querySelector(${JSON.stringify(thermalSelector)})?.scrollIntoView({block:'center',inline:'nearest'})`);
+              const realActionDetailOpen = await activateRealControl(thermalSelector, `${vp.label} Inventory action candidate`);
+              await waitFor('Inventory action detail', `window.__CF_SLICE__.api.inventoryDiagnostics().selectedInstanceId===${JSON.stringify(thermalId)}`);
+              await waitFor('Inventory action authority', `(()=>{const s=window.__CF_SLICE__.api.state();return s.sceneResources?.pendingPersistenceWrites===0
+                &&s.persistence?.mutationBlocked===false&&s.persistence?.runtime?.leaseOwned===true;})()`);
+              const actionSelector = `#inventorysheet [data-inventory-action="equip"][data-instance-id=${JSON.stringify(thermalId)}]`;
+              const actionArm = await evalIn(`(()=>{const S=window.__CF_SLICE__,state=S.api.state(),
+                rowElements=[...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')],
+                before={revision:state.inventory.revision,entryIds:[...state.inventory.entryIds],
+                  equippedBindings:(state.inventory.equippedBindings||[]).map(binding=>({...binding})),
+                  rowIds:rowElements.map(row=>row.getAttribute('data-instance-id')),
+                  domEquipped:rowElements.map(row=>row.getAttribute('data-equipped'))},
+                button=document.querySelector(${JSON.stringify(actionSelector)});if(!button)return {ok:false,why:'enabled equip action missing',before};
+                delete window.__cfInventoryActionReceipt;window.__cfInventoryActionReceiptAbort?.abort();const controller=new AbortController();
+                window.__cfInventoryActionReceiptAbort=controller;document.addEventListener('click',(event)=>{const target=event.target instanceof Element?event.target.closest('[data-inventory-action]'):null,
+                  baseline=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before),priorState=S.api.state,
+                  runtimeSnapshot=priorState(),poisonedBindings=(runtimeSnapshot.inventory?.equippedBindings||[]).map(binding=>({...binding}));
+                  if(poisonedBindings.length)poisonedBindings[0]={...poisonedBindings[0],instanceId:String(poisonedBindings[0].instanceId)+':optimistic-binding'};
+                  else poisonedBindings.push({slot:'control',instanceId:'optimistic-binding'});
+                  let bindingBroken=null,bindingControlApplied=false;try{S.api.state=()=>{const current=priorState();return {...current,
+                    inventory:{...current.inventory,equippedBindings:poisonedBindings.map(binding=>({...binding}))}}};
+                    bindingControlApplied=JSON.stringify(S.api.state().inventory.equippedBindings)===JSON.stringify(poisonedBindings);
+                    bindingBroken=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);}finally{S.api.state=priorState;}
+                  const bindingRestored=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before),
+                    row=[...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')]
+                      .find(candidate=>candidate.getAttribute('data-instance-id')===${JSON.stringify(thermalId)})||null,
+                    priorEquipped=row?.getAttribute('data-equipped')??null,toggledEquipped=priorEquipped==='true'?'false':'true';
+                  row?.setAttribute('data-equipped',toggledEquipped);const domControlApplied=!!row
+                    &&row.getAttribute('data-equipped')===toggledEquipped,
+                    domBroken=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);
+                  if(row){if(priorEquipped===null)row.removeAttribute('data-equipped');else row.setAttribute('data-equipped',priorEquipped);}
+                  const domControlRestored=!!row&&row.getAttribute('data-equipped')===priorEquipped,
+                    domRestored=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before),
+                    identityRow=document.querySelector('#inventorypanel [data-inventory-row="exact"]'),priorId=identityRow?.getAttribute('data-instance-id')??null;
+                  identityRow?.setAttribute('data-instance-id','stale-optimistic-row');
+                  const identityBroken=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);
+                  if(identityRow){if(priorId===null)identityRow.removeAttribute('data-instance-id');else identityRow.setAttribute('data-instance-id',priorId);}
+                  const restored=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);window.__cfInventoryActionReceipt={trusted:event.isTrusted,
+                    operation:target?.getAttribute('data-inventory-action')||null,instanceId:target?.getAttribute('data-instance-id')||null,
+                    before,baseline,bindingControlApplied,bindingOwnerRestored:S.api.state===priorState,bindingBroken,bindingRestored,
+                    domControlApplied,domControlRestored,domBroken,domRestored,
+                    identityBroken,restored};window.__cfInventoryActionReceiptAbort=null;},{once:true,signal:controller.signal});
+                return {ok:true,before};})()`);
+              const actionScroll = await evalIn(`(()=>{const button=document.querySelector(${JSON.stringify(actionSelector)}),
+                card=button?.closest('.inventory-sheet-card')||null;if(!button||!card)return {ok:false,scrollTop:null};
+                button.scrollIntoView({block:'center',inline:'nearest'});return {ok:true,scrollTop:card.scrollTop};})()`);
+              let actionReachabilityControl = { ok: true, skipped: true };
+              if (!inventoryControlRun) {
+                const offscreenSetup = await evalIn(`(()=>{const button=document.querySelector(${JSON.stringify(actionSelector)}),
+                  card=button?.closest('.inventory-sheet-card')||null,saved=card?.scrollTop??null;if(card)card.scrollTop=0;
+                  return {ok:!!button&&!!card&&Number.isFinite(saved)&&saved>0,saved,top:card?.scrollTop??null};})()`);
+                const offscreenProbe = await activateRealControl(actionSelector, `${vp.label} Inventory offscreen action control`);
+                const restoredScroll = await evalIn(`(()=>{const button=document.querySelector(${JSON.stringify(actionSelector)}),
+                  card=button?.closest('.inventory-sheet-card')||null;if(card&&Number.isFinite(${JSON.stringify(offscreenSetup?.saved)}))
+                    card.scrollTop=${JSON.stringify(offscreenSetup?.saved)};return {ok:!!button&&!!card,
+                    scrollTop:card?.scrollTop??null};})()`);
+                const offscreenRect = offscreenProbe?.target?.rect;
+                const offscreenGeometry = Array.isArray(offscreenRect) && offscreenRect.length === 4
+                  && offscreenRect[2] - offscreenRect[0] >= 44 && offscreenRect[3] - offscreenRect[1] >= 44
+                  && Number.isFinite(offscreenProbe?.target?.y)
+                  && (offscreenProbe.target.y < 0 || offscreenProbe.target.y > vp.height)
+                  && offscreenProbe.target.hit === null;
+                actionReachabilityControl = { ok: offscreenSetup.ok && offscreenSetup.top === 0
+                    && offscreenProbe.ok === false && offscreenGeometry
+                    && restoredScroll.ok && restoredScroll.scrollTop === offscreenSetup.saved,
+                  skipped: false, offscreenSetup, offscreenProbe, restoredScroll };
+              }
+              const realAction = await activateRealControl(actionSelector, `${vp.label} Inventory exact equip`);
+              const actionReceipt = await evalIn(`(()=>{const receipt=window.__cfInventoryActionReceipt||null;
+                window.__cfInventoryActionReceiptAbort?.abort();delete window.__cfInventoryActionReceiptAbort;delete window.__cfInventoryActionReceipt;return receipt;})()`);
+              const actionControl = { ok: actionArm.ok && actionScroll.ok && actionReachabilityControl.ok
+                  && realAction.ok && actionReceipt?.trusted === true
+                  && actionReceipt?.operation === 'equip' && actionReceipt?.instanceId === thermalId
+                  && actionReceipt?.baseline?.ok === true
+                  && actionReceipt?.bindingControlApplied === true && actionReceipt?.bindingOwnerRestored === true
+                  && actionReceipt?.bindingBroken?.ok === false
+                  && actionReceipt?.bindingBroken?.entryIdsMatch === true
+                  && actionReceipt?.bindingBroken?.runtimeBindingsMatch === false
+                  && actionReceipt?.bindingBroken?.rowIdsMatch === true
+                  && actionReceipt?.bindingBroken?.domEquippedMatch === true
+                  && actionReceipt?.bindingRestored?.ok === true
+                  && actionReceipt?.domControlApplied === true && actionReceipt?.domControlRestored === true
+                  && actionReceipt?.domBroken?.ok === false
+                  && actionReceipt?.domBroken?.entryIdsMatch === true
+                  && actionReceipt?.domBroken?.runtimeBindingsMatch === true
+                  && actionReceipt?.domBroken?.rowIdsMatch === true
+                  && actionReceipt?.domBroken?.domEquippedMatch === false
+                  && actionReceipt?.domRestored?.ok === true
+                  && actionReceipt?.identityBroken?.ok === false
+                  && actionReceipt?.identityBroken?.entryIdsMatch === true
+                  && actionReceipt?.identityBroken?.runtimeBindingsMatch === true
+                  && actionReceipt?.identityBroken?.rowIdsMatch === false
+                  && actionReceipt?.identityBroken?.domEquippedMatch === true
+                  && actionReceipt?.restored?.ok === true,
+                arm: actionArm, actionScroll, actionReachabilityControl, realAction, receipt: actionReceipt };
+              addOutcome(vp.label, 'inventory-action-pending', 'INVENTORY_ACTION_NO_OPTIMISM', '#inventorysheet [data-inventory-action="equip"]',
+                { ...actionControl, ok: realActionDetailOpen?.ok === true && actionControl.ok, realOpen: realActionDetailOpen },
+                'a real pending exact equip disables every action and leaves the full runtime equipped bindings and every DOM row data-equipped state unchanged');
+              if (!inventoryControlRun) {
+                if (!actionControl.ok) {
+                  instrumentFailures.push(`${vp.label}: optimistic Inventory binding/DOM publication stayed green or failed to restore (${JSON.stringify(actionControl)})`);
+                }
+                recordControls('inventory-action-publication');
+              }
+              const settledAction = await waitFor('Inventory action settlement', `(()=>{const S=window.__CF_SLICE__,d=S.api.inventoryDiagnostics(),s=S.api.state();
+                return d.pendingWork===0&&d.lastAction?.operation==='equip'&&d.lastAction?.instanceId===${JSON.stringify(thermalId)}
+                  &&d.lastAction?.kind==='committed'&&s.inventory.revision===${Number(inventoryCarrier?.arc2?.inventory?.revision) + 1}
+                  &&s.inventory.equippedBindings.some(binding=>binding.instanceId===${JSON.stringify(thermalId)})?{d,s:s.inventory}:null;})()`, 10000);
+              addOutcome(vp.label, 'inventory-action-settled', 'INVENTORY_ACTION_COMMITTED', '#inventorysheet',
+                { ok: settledAction?.d?.activeCount === 1 && settledAction?.d?.retainedCount === 0
+                    && settledAction?.d?.pendingWork === 0 && settledAction?.d?.selectedInstanceId === thermalId,
+                  diagnostics: settledAction?.d || null, inventory: settledAction?.s || null },
+                'the one durable action publishes one newer exact carrier and refreshes the still-owned modal');
+              const committedCarrier = await evalIn(READ_ARC2_GLASS_CARRIER_EXPRESSION);
+              addOutcome(vp.label, 'inventory-action-settled', 'INVENTORY_COMMITTED_CARRIER_DOM_PARITY', item.panel,
+                await evalIn(`window.__CF_GLASS_AUDIT__.inventoryRowsOutcome(${JSON.stringify(committedCarrier)},${JSON.stringify(opener)})`),
+                'the committed durable carrier, runtime projection, and exact rows converge before another action is offered');
+
+              if (!inventoryControlRun) {
+                const convergenceControl = await evalIn(`(()=>{const S=window.__CF_SLICE__,prior=S.api.inventoryDiagnostics,actions=[...document.querySelectorAll('#inventorysheet [data-inventory-action]')],
+                  attrs=actions.map(button=>({disabled:button.disabled,enabled:button.getAttribute('data-action-enabled'),reason:button.getAttribute('data-protected-reason')})),
+                  current=prior(),synthetic={...current,pendingWork:0,lastAction:{operation:'equip',instanceId:${JSON.stringify(thermalId)},kind:'committed',detail:'revision:control;publication-reload'}};
+                  S.api.inventoryDiagnostics=()=>synthetic;actions.forEach(button=>{button.disabled=true;button.setAttribute('data-action-enabled','false');button.setAttribute('data-protected-reason','convergence-reload');});
+                  const baseline=window.__CF_GLASS_AUDIT__.inventoryConvergenceOutcome();if(actions[0]){actions[0].disabled=false;actions[0].setAttribute('data-action-enabled','true');}
+                  const broken=window.__CF_GLASS_AUDIT__.inventoryConvergenceOutcome();actions.forEach((button,index)=>{const saved=attrs[index];button.disabled=saved.disabled;
+                    if(saved.enabled===null)button.removeAttribute('data-action-enabled');else button.setAttribute('data-action-enabled',saved.enabled);
+                    if(saved.reason===null)button.removeAttribute('data-protected-reason');else button.setAttribute('data-protected-reason',saved.reason);});S.api.inventoryDiagnostics=prior;
+                  return {ok:baseline.ok&&broken.ok===false&&window.__CF_SLICE__.api.inventoryDiagnostics===prior,baseline,broken};})()`);
+                if (!convergenceControl.ok) {
+                  instrumentFailures.push(`${vp.label}: enabled post-convergence Inventory retry stayed green or failed to restore (${JSON.stringify(convergenceControl)})`);
+                }
+                recordControls('inventory-convergence-retry');
+                inventoryControlRun = true;
+              }
+              await pressEscape();
+              await waitFor('Inventory post-action close', `window.__CF_SLICE__.api.inventoryDiagnostics().activeCount===0&&document.getElementById('inventorysheet')?.hidden===true`);
+              addOutcome(vp.label, 'inventory-post-action-release', 'INVENTORY_POST_ACTION_RELEASE', '#inventorysheet',
+                await evalIn(`window.__CF_GLASS_AUDIT__.inventoryClosedOutcome(${JSON.stringify(thermalId)})`),
+                'post-action Escape leaves zero active, retained, or pending Inventory ownership');
+            }
+          }
           const closeLabel = await evalIn(`(()=>{ const panel=document.querySelector(${JSON.stringify(item.panel)}),close=panel?.querySelector('[data-pnx]');
             const expected='Close '+(panel?.getAttribute('aria-label')||'');return {ok:!!close&&close.getAttribute('aria-label')===expected,
               actual:close?.getAttribute('aria-label')||null,expected};})()`);
@@ -5102,6 +5798,11 @@ async function main() {
           }
           addOutcome(vp.label, composition, 'ORDINARY_PANEL_CLOSE_OUTCOME', `${item.panel} [data-pnx]`, closed,
             `close owns its centre, closes the panel, preserves ${overSurvey ? 'the survey' : 'Planetside'}, and restores logical opener focus`);
+          if (item.inventory) {
+            addOutcome(vp.label, composition, 'INVENTORY_PANEL_CLOSE_RELEASE', '#inventorysheet',
+              await evalIn('window.__CF_GLASS_AUDIT__.inventoryClosedOutcome(null)'),
+              'ordinary panel Close leaves its modal owner disposed to zero active, retained, and pending work');
+          }
           if (!closed.ok) await evalIn(`document.querySelector(${JSON.stringify(item.panel)}+' [data-pnx]')?.click()`);
           await waitFor(`${item.name} closed`, `window.__CF_SLICE__.api.state().panelOpen===null && window.__CF_SLICE__.api.state().cardOpen===${JSON.stringify(overSurvey)}`);
           if (vp.label === 'phone-landscape' && item.id === 'codex') {
@@ -5588,7 +6289,7 @@ async function main() {
           const identity=title.includes('v2.0 · A New Foundation'),honest=!overclaim&&!trainingContradiction&&!artContradiction&&lower.includes('mechanics that are not yet playable are labelled instead of promised');
           return {ok:identity
             &&article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')==='draft'
-            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===49&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
+            &&JSON.stringify(headings)===JSON.stringify(expected)&&bullets.length===53&&bullets.every((bullet)=>bullet.length>0)&&charterPlacement
             &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&trainingContract&&artContract
             &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
@@ -5607,7 +6308,7 @@ async function main() {
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 49-outcome development inventory, including Shipyard and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 53-outcome development inventory, including truthful Arc 2 authority, Shipyard, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -5712,7 +6413,7 @@ async function main() {
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&S.api.state===priorState;
-            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===48
+            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===52
               &&identity?.ok===false&&identity?.identity===false&&overclaim?.ok===false&&overclaim?.honest===false
               &&closeContract?.ok===false&&panelBoundaryContract?.ok===false&&emptySkyContract?.ok===false
               &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
@@ -6164,8 +6865,11 @@ async function main() {
   if (!shipyardControlRun && !targetedProductBlocked) {
     instrumentFailures.push('Shipyard opener/state/preview/geometry/close controls never ran');
   }
+  if (!inventoryControlRun && !targetedProductBlocked) {
+    instrumentFailures.push('Inventory carrier/row/modal/focus/action/release controls never ran');
+  }
   if (!phoneDockControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900)) {
-    instrumentFailures.push('exact nine-control 5x2 phone dock control never ran');
+    instrumentFailures.push('exact ten-control 5x2 phone dock control never ran');
   }
   if (!reloadBindingControlRun && !targetedProductBlocked) instrumentFailures.push('live slice-ready binding controls never ran');
   const browser = browserVersions.length ? {
@@ -6210,7 +6914,7 @@ async function main() {
     console.log(`GLASS MATRIX TARGETED DIAGNOSTIC PASS — ${viewportLabel}; this does not certify the 12-viewport matrix.`);
     console.log(`diagnostic evidence: apps/game/smoke/${path.basename(reportPath)}`);
   } else {
-    console.log(`GLASS MATRIX PASS — ${MATRIX_VIEWPORTS.length} isolated viewport classes; populated Training, toast, survey, Planetside, Guide, Settings and import surfaces; safe-area, zoom, focus, target, contrast, reduced-motion and DPR controls all passed.`);
+    console.log(`GLASS MATRIX PASS — ${MATRIX_VIEWPORTS.length} isolated viewport classes; populated Training, toast, survey, Planetside, Inventory, Guide, Settings and import surfaces; safe-area, zoom, focus, target, contrast, reduced-motion and DPR controls all passed.`);
     console.log('structured evidence: apps/game/smoke/glassmatrix-report.json');
   }
   } finally {

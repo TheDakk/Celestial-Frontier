@@ -14,6 +14,8 @@ export interface GearEffectReadModel {
   readonly source: 'base' | 'legacy' | 'prefix' | 'suffix';
   readonly percent: boolean;
   readonly label: string;
+  /** Explicit applicability context; null means the value is unconditional. */
+  readonly condition: string | null;
 }
 
 export interface GearInspection {
@@ -43,6 +45,7 @@ export interface GearComparisonRow {
   readonly equipped: number;
   readonly candidate: number;
   readonly delta: number;
+  readonly condition: string | null;
 }
 
 export interface GearComparison {
@@ -75,7 +78,8 @@ const checkedEnumFilter = <T extends string>(
   return new Set(values);
 };
 
-const PERCENT_EFFECTS = new Set(['yield', 'strike', 'scut', 'heal', 'speed']);
+/* Legacy speed is a flat drive-multiplier add, not percentage wording. */
+const PERCENT_EFFECTS = new Set(['yield', 'strike', 'scut', 'heal']);
 
 const affixDefinition = (affixId: string) => LEGACY_AFFIX_DEFINITIONS.find(
   (candidate) => candidate.key === affixId,
@@ -85,11 +89,14 @@ const effectRows = (instance: GearInstance): readonly GearEffectReadModel[] => {
   const base: GearEffectReadModel[] = [];
   for (const [key, value] of Object.entries(instance.baseEffects)) {
     if (typeof value === 'number') {
-      base.push({ key, value, source: 'base', percent: PERCENT_EFFECTS.has(key), label: key });
+      base.push({
+        key, value, source: 'base', percent: PERCENT_EFFECTS.has(key), label: key, condition: null,
+      });
     } else if (key === 'landfam' && value && typeof value === 'object') {
       for (const [family, amount] of Object.entries(value)) {
         if (typeof amount === 'number') base.push({
-          key: `landfam.${family}`, value: amount, source: 'base', percent: false, label: `landing on ${family}`,
+          key: `landfam.${family}`, value: amount, source: 'base', percent: false,
+          label: `landing on ${family}`, condition: `landing:${family}`,
         });
       }
     }
@@ -104,6 +111,7 @@ const effectRows = (instance: GearInstance): readonly GearEffectReadModel[] => {
       source: affix.role,
       percent: definition.percent,
       label: definition.label,
+      condition: null,
     };
     }),
     ...(instance.legacyAffix ? (() => {
@@ -114,6 +122,7 @@ const effectRows = (instance: GearInstance): readonly GearEffectReadModel[] => {
       source: 'legacy' as const,
       percent: definition.percent,
       label: definition.label,
+      condition: null,
     }];
     })() : []),
   ]);
@@ -159,6 +168,10 @@ export function compareGear(
   const before = summedEffects(equipped);
   const after = summedEffects(candidate);
   const keys = [...new Set([...before.keys(), ...after.keys()])].sort();
+  const conditions = new Map(
+    [...effectRows(equipped ?? candidate), ...effectRows(candidate)]
+      .map((effect) => [effect.key, effect.condition] as const),
+  );
   return deepFreeze({
     compatibleSlot: equipped === null || equipped.slot === candidate.slot,
     equippedInstanceId: equipped?.instanceId ?? null,
@@ -173,6 +186,7 @@ export function compareGear(
         equipped: equippedValue,
         candidate: candidateValue,
         delta: candidateValue - equippedValue,
+        condition: conditions.get(key) ?? null,
       };
     }),
   });
