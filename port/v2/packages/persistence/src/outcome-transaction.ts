@@ -17,6 +17,8 @@ import {
 } from './active-play.js';
 import type { ContentRegistry, SaveStateV2 } from './import-v2.js';
 import {
+  V5_MAX_EXTENSION_NAMESPACES,
+  canonicalizeV5Extensions,
   prepareV5SaveWrite,
   V5_SEGMENTS,
   type PreparedV5SaveWrite,
@@ -175,55 +177,11 @@ function hasExactKeys(value: Record<string, unknown>, expected: readonly string[
   return actual.length === wanted.length && actual.every((key, index) => key === wanted[index]);
 }
 
-function checkedExtensionCarrier(value: unknown, namespace: string): V5ExtensionCarrier {
-  if (!isRecord(value) || !hasExactKeys(value, ['version', 'json'])) {
-    throw new TypeError(`invalid v5 extension carrier ${JSON.stringify(namespace)}`);
-  }
-  if (!Number.isSafeInteger(value.version) || (value.version as number) < 1) {
-    throw new RangeError(`invalid v5 extension version ${JSON.stringify(namespace)}`);
-  }
-  if (typeof value.json !== 'string' || value.json.length > 262_144) {
-    throw new RangeError(`invalid v5 extension JSON ${JSON.stringify(namespace)}`);
-  }
-  try {
-    if (!isRecord(JSON.parse(value.json) as unknown)) throw new Error('JSON must encode an object');
-  } catch {
-    throw new TypeError(`invalid v5 extension JSON ${JSON.stringify(namespace)}`);
-  }
-  return Object.freeze({ version: value.version as number, json: value.json });
-}
-
-function checkedNamespace(value: unknown): string {
-  if (typeof value !== 'string' || !/^[a-z][a-z0-9.-]{0,63}$/.test(value)) {
-    throw new RangeError(`invalid v5 extension namespace ${JSON.stringify(value)}`);
-  }
-  return value;
-}
-
 /** Validate and detach extension authority without invoking the complete save
  * writer. The complete writer is deliberately reserved for the one final
  * state assembled after product policy and F4 authority have both landed. */
 function detachedCanonicalExtensions(value: unknown): V5Extensions {
-  if (!isRecord(value)) throw new TypeError('v5 extensions must be an object');
-  const unknownSegments = Object.keys(value).filter(
-    (segment) => !(V5_SEGMENTS as readonly string[]).includes(segment),
-  );
-  if (unknownSegments.length > 0) {
-    throw new RangeError(`unknown v5 extension segment ${JSON.stringify(unknownSegments[0])}`);
-  }
-  const result: Partial<Record<V5Segment, Readonly<Record<string, V5ExtensionCarrier>>>> = {};
-  for (const segment of V5_SEGMENTS) {
-    const rawNamespaces = value[segment];
-    if (rawNamespaces === undefined) continue;
-    if (!isRecord(rawNamespaces)) throw new TypeError(`v5 ${segment} extensions must be an object`);
-    const namespaces: Record<string, V5ExtensionCarrier> = {};
-    for (const namespace of Object.keys(rawNamespaces).sort()) {
-      const checked = checkedNamespace(namespace);
-      namespaces[checked] = checkedExtensionCarrier(rawNamespaces[namespace], checked);
-    }
-    if (Object.keys(namespaces).length > 0) result[segment] = Object.freeze(namespaces);
-  }
-  return Object.freeze(result);
+  return canonicalizeV5Extensions(value);
 }
 
 function detachedState(value: unknown): SaveStateV2 {
@@ -235,6 +193,9 @@ function detachedState(value: unknown): SaveStateV2 {
 
 function checkedExtensionWrites(value: unknown): readonly V5ExtensionWrite[] {
   if (!Array.isArray(value)) throw new TypeError('extensionWrites must be an array');
+  if (value.length > V5_MAX_EXTENSION_NAMESPACES) {
+    throw new RangeError(`extensionWrites count exceeds ${V5_MAX_EXTENSION_NAMESPACES}`);
+  }
   const seen = new Set<string>();
   return Object.freeze(value.map((rawWrite) => {
     if (!isRecord(rawWrite) || !hasExactKeys(rawWrite, ['segment', 'namespace', 'carrier'])) {
@@ -245,7 +206,10 @@ function checkedExtensionWrites(value: unknown): readonly V5ExtensionWrite[] {
       throw new RangeError(`unknown v5 extension segment ${JSON.stringify(rawWrite.segment)}`);
     }
     const segment = rawWrite.segment as V5Segment;
-    const namespace = checkedNamespace(rawWrite.namespace);
+    if (typeof rawWrite.namespace !== 'string') {
+      throw new RangeError(`invalid v5 extension namespace ${JSON.stringify(rawWrite.namespace)}`);
+    }
+    const namespace = rawWrite.namespace;
     if (segment === 'player' && namespace === F4_AUTHORITY_NAMESPACE) {
       throw new Error('product extension writes cannot overwrite player/f4.authority');
     }
@@ -254,10 +218,15 @@ function checkedExtensionWrites(value: unknown): readonly V5ExtensionWrite[] {
       throw new Error(`duplicate product extension write for ${segment}/${namespace}`);
     }
     seen.add(identity);
+    const canonical = canonicalizeV5Extensions({
+      [segment]: { [namespace]: rawWrite.carrier },
+    });
+    const carrier = canonical[segment]?.[namespace];
+    if (carrier === undefined) throw new Error('validated extension carrier was not retained');
     return Object.freeze({
       segment,
       namespace,
-      carrier: checkedExtensionCarrier(rawWrite.carrier, namespace),
+      carrier,
     });
   }));
 }
@@ -277,7 +246,7 @@ function applyExtensionWrites(
       [write.namespace]: write.carrier,
     });
   }
-  return Object.freeze(result);
+  return canonicalizeV5Extensions(result);
 }
 
 function frozenSessionRng(state: SessionRNGState): F4AuthorityV1['sessionRng'] {
