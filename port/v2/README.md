@@ -44,7 +44,7 @@
 > terminal-green PR #33 run is consumed and merged; no subsequent hosted attempt is authorized by
 > this handoff. Local evidence still does not authorize a release, preview publication, or deployment.
 >
-> **PR #34 Compendium interaction-ruler repair (2026-08-23; recalibration required):** runs
+> **PR #34 Compendium interaction-ruler repair (2026-08-23; locally certified):** runs
 > `32665404776` and `32677088518` did not expose a memory leak. The second run proves the first
 > full-containment/hit-owner repair activated detail once, but after Close/reopen its one-shot row
 > point became invalid across a deferred ResizeObserver/render turn. The passive wait issued 112
@@ -54,8 +54,11 @@
 > requires the same owned inset point before and after it. It then sends one press/release and checks
 > the immediate detail receipt; there is no click retry or timeout widening. Measurement authority
 > is now `6a961df8…`; former budget `208af955…`, samples, baseline and certificate are historical.
-> The tracked budget is `calibration-required` with no ceilings until fresh clean candidate,
-> paired-baseline and exact-budget evidence is retained. No new hosted attempt is authorized.
+> Clean repair `a95889d…` produced three 78/78 candidates and a paired legacy baseline; activation
+> commit `d21ba26…` selects active budget `faa160b3…` with unchanged numeric ceilings and the same
+> 14-phone/13-desktop baseline discrimination. Exact-budget run
+> `20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
+> `d21ba26…`; raw/gzip hashes are `42753d5e…` / `a2ff5b00…`. No new hosted attempt is authorized.
 >
 > PR #33 attempt 4, run `32618995487`, tested the exact authorized head/base once and is terminal-red,
 > consumed, and not retried. Its complete SceneMemory report passed 40/42: all memory, ownership,

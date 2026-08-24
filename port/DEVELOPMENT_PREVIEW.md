@@ -215,8 +215,11 @@ ended after 112 observations on a clipped 51 ms command with a timely heartbeat.
 raw/gzip hashes are `544015e9…` / `cc5ed778…`. Collector `6d681d19…` now uses native-scroll
 repositioning and requires the same owned point before/after a double-render plus thumbnail-settle
 boundary before its one press/release and immediate receipt. Measurement is `6a961df8…`; former
-budget `208af955…` and its evidence are historical. The tracked budget has no ceilings while
-`calibration-required`; fresh candidate, paired-baseline and exact-budget evidence remain pending.
+budget `208af955…` and its evidence are historical. Clean repair `a95889d…` produced three 78/78
+candidates and the paired legacy baseline; activation `d21ba26…` selects active budget `faa160b3…`
+with unchanged numeric ceilings and the retained 14-phone/13-desktop breach inventory. Exact-budget
+run `20260823-pr34-render-stable-row-certification` passed 78/78 plus named verification on clean
+`d21ba26…` (raw/gzip `42753d5e…` / `a2ff5b00…`). This is local evidence, not a new hosted green.
 Executable path and user agent remain recorded provenance, not cross-host match fields.
 
 Ubuntu provisions `/usr/bin/microsoft-edge-stable` only for the ordinary Compendium job and
