@@ -179,8 +179,8 @@ describe('@cf/audio — bounded sting facade', () => {
 
     const api = await import('../src/index.js');
     expect(Object.keys(api).sort()).toEqual([
-      'AUDIO_PALETTE_POLICY', 'AUDIO_RESOLVER_VERSION', 'applySfxGain',
-      'createAudioIdentityProfile', 'createAudioSignature', 'createCreatureCallPlan',
+      'AUDIO_CATEGORIES', 'AUDIO_PALETTE_POLICY', 'AUDIO_RESOLVER_VERSION', 'applySfxGain',
+      'createAudioIdentityProfile', 'createAudioRuntime', 'createAudioSignature', 'createCreatureCallPlan',
       'createCreatureExpressionCue', 'createDistantEcologyHintPlan',
       'creatureExpressionAudioEvent', 'deserializeAudioSignature',
       'distantEcologyAudioEvent', 'initAudio', 'playRaritySting', 'playSurveyPing',

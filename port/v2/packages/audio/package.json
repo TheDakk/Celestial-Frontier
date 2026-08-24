@@ -1,3 +1,3 @@
 { "name": "@cf/audio", "private": true, "version": "0.0.0", "type": "module",
-  "description": "The game's SHIPPED navigation/survey stings, AUTO-LIFTED verbatim (whoosh, survey ping, rarity sting). ⚠ BROWSER-ONLY (Web Audio). §15 audio scope (voices/ambience/mixer) stays gated behind the human listening test — this package deliberately carries none of it.",
+  "description": "Shipped navigation/survey stings plus a separate injected Web Audio runtime foundation. Runtime budgets cover only submitted voice graphs; sting migration, decoded-byte budgets, authored content, and listening proof remain open.",
   "exports": { ".": "./src/index.ts" } }
