@@ -299,6 +299,51 @@ function counterpart(
 }
 
 describe('Arc 7 injected audio runtime', () => {
+  it('rejects creature and node policies above the absolute Gate G caps before context creation', () => {
+    let contextCalls = 0;
+    const createContext = (): AudioContextLike => {
+      contextCalls++;
+      return new FakeContext();
+    };
+
+    const exact = createAudioRuntime({
+      createContext,
+      nowMs: () => 0,
+      budgets: { maxCreatureEmitters: 8, maxNodes: 120 },
+    });
+    expect(exact.diagnostics()).toMatchObject({
+      creatureEmitters: { budget: 8 },
+      nodes: { budget: 120 },
+    });
+    expect(contextCalls).toBe(0);
+
+    expect(() => createAudioRuntime({
+      createContext,
+      nowMs: () => 0,
+      budgets: { maxCreatureEmitters: 9, maxNodes: 120 },
+    })).toThrow(/creature-emitter budget/u);
+    expect(contextCalls).toBe(0);
+
+    expect(() => createAudioRuntime({
+      createContext,
+      nowMs: () => 0,
+      budgets: { maxCreatureEmitters: 8, maxNodes: 121 },
+    })).toThrow(/node budget/u);
+    expect(contextCalls).toBe(0);
+
+    expect(() => createAudioRuntime({
+      createContext,
+      nowMs: () => 0,
+      budgets: { maxCreatureEmitters: 9, maxNodes: 15 },
+    })).toThrow(/creature-emitter budget/u);
+    expect(() => createAudioRuntime({
+      createContext,
+      nowMs: () => 0,
+      budgets: { maxCreatureEmitters: 1, maxNodes: 14 },
+    })).toThrow(/node budget/u);
+    expect(contextCalls).toBe(0);
+  });
+
   it('mutes before creation, builds the complete limited mixer, routes real categories, and meters peaks', async () => {
     const context = new FakeContext();
     const factory = contextFactory([context]);
