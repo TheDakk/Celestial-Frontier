@@ -1,5 +1,13 @@
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { describe, it, expect } from 'vitest';
-import { createSessionRNG, planSessionRNGDraw, DOMAINS } from '@cf/domain-sessionrng';
+import {
+  createSessionRNG,
+  planSessionRNGDraw,
+  DOMAINS,
+  LEGACY_OUTCOME_RNG_SITES,
+  LEGACY_PRESENTATION_RNG_LINES,
+} from '@cf/domain-sessionrng';
 
 describe('@cf/domain-sessionrng — the reviewer §2.1 contract, as tests', () => {
   it('REPLAYABLE: same seed → identical sequences per domain', () => {
@@ -41,8 +49,37 @@ describe('@cf/domain-sessionrng — the reviewer §2.1 contract, as tests', () =
     const mean = av.reduce((s, v) => s + v, 0) / av.length;
     expect(mean).toBeGreaterThan(0.35); expect(mean).toBeLessThan(0.65);
   });
-  it('the eleven call sites have their domain vocabulary', () => {
-    expect(Object.keys(DOMAINS).length).toBeGreaterThanOrEqual(7);
+  it('pins all fourteen legacy outcome sites to distinct semantic domains', () => {
+    expect(LEGACY_OUTCOME_RNG_SITES).toHaveLength(14);
+    expect(Object.keys(DOMAINS)).toHaveLength(14);
+    expect(new Set(Object.values(DOMAINS)).size).toBe(14);
+    expect(LEGACY_OUTCOME_RNG_SITES.map(({ domain }) => domain).sort())
+      .toEqual(Object.values(DOMAINS).sort());
+    expect(new Set(LEGACY_OUTCOME_RNG_SITES.map(({ id }) => id)).size).toBe(14);
+    for (const site of LEGACY_OUTCOME_RNG_SITES) {
+      expect(site.owner.length).toBeGreaterThan(0);
+      expect(site.purpose.length).toBeGreaterThan(0);
+    }
+  });
+  it('accounts for every executable legacy Math.random call as outcome or presentation', () => {
+    const rootMain = fileURLToPath(new URL('../../../../../../main.js', import.meta.url));
+    const lines = readFileSync(rootMain, 'utf8').split(/\r?\n/);
+    const observed: number[] = [];
+    lines.forEach((line, index) => {
+      const count = [...line.matchAll(/Math\.random\s*\(/g)].length;
+      if (index + 1 === 29) return; // frozen architecture comment, not executable
+      for (let occurrence = 0; occurrence < count; occurrence++) observed.push(index + 1);
+    });
+    const accounted = [
+      ...LEGACY_OUTCOME_RNG_SITES.map(({ legacyLine }) => legacyLine),
+      ...LEGACY_PRESENTATION_RNG_LINES,
+    ].sort((a, b) => a - b);
+    expect(observed).toEqual(accounted);
+    expect(observed).toHaveLength(24);
+    for (const site of LEGACY_OUTCOME_RNG_SITES) {
+      const occurrences = observed.filter((line) => line === site.legacyLine).length;
+      expect(site.occurrenceOnLine).toBeLessThanOrEqual(occurrences);
+    }
   });
   it('hostile persisted property names are ordinary isolated counters, not prototype reads', () => {
     /* Negative control for the old plain-object implementation: `toString`
