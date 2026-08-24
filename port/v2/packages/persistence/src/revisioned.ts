@@ -39,12 +39,32 @@ export interface RevisionedMutation {
   readonly fences?: readonly StorageCheck[];
 }
 
+/** A complete expedition replacement. Unlike an ordinary mutation it clears
+ * the prior expedition's receipt namespace in the same revision-fenced
+ * transaction as the replacement rows. This is the only supported way to
+ * reset SessionRNG to ordinal zero without colliding with historical rows. */
+export interface RevisionedReplacement {
+  readonly expectedRevision: number;
+  readonly writes: readonly StorageOperation[];
+  readonly fences?: readonly StorageCheck[];
+}
+
 export type RevisionedMutationOutcome =
   | { readonly kind: 'committed'; readonly revision: number; readonly receiptKey: string | null }
   | { readonly kind: 'stale'; readonly expectedRevision: number; readonly actualRevision: number }
   | { readonly kind: 'duplicate-receipt'; readonly receiptKey: string; readonly existing: MutationReceipt }
   | { readonly kind: 'fence-lost'; readonly fence: StorageCheck; readonly actual: string | undefined }
   | { readonly kind: 'conflict'; readonly expectedRevision: number };
+
+export type RevisionedReplacementOutcome = Exclude<
+  RevisionedMutationOutcome,
+  { readonly kind: 'duplicate-receipt' }
+>;
+
+export interface F3RevisionSnapshot {
+  readonly raw: string | undefined;
+  readonly revision: number;
+}
 
 function checkedRevision(value: unknown, label: string): number {
   if (!Number.isSafeInteger(value) || (value as number) < 0 || (value as number) >= Number.MAX_SAFE_INTEGER) {
@@ -141,7 +161,11 @@ async function firstLostFence(
  * several app subsystems and several tabs that point at the same backend. */
 export interface RevisionedRepository {
   revision(): Promise<number>;
+  revisionSnapshot(): Promise<F3RevisionSnapshot>;
   mutate(mutation: RevisionedMutation): Promise<RevisionedMutationOutcome>;
+  /** Replace all product rows and reset the immutable receipt namespace in
+      one transaction. Never use for an ordinary reset-like player action. */
+  replace(replacement: RevisionedReplacement): Promise<RevisionedReplacementOutcome>;
   readReceipt(ordinal: number): Promise<MutationReceipt | undefined>;
 }
 
@@ -157,10 +181,40 @@ export function createRevisionedRepository(backend: StorageBackend): RevisionedR
     async revision(): Promise<number> {
       return (await readRevision()).revision;
     },
+    revisionSnapshot(): Promise<F3RevisionSnapshot> {
+      return readRevision();
+    },
     async readReceipt(ordinal: number): Promise<MutationReceipt | undefined> {
       const key = receiptKey(ordinal);
       const raw = await backend.get('receipts', key);
       return raw === undefined ? undefined : decodeReceipt(raw, key);
+    },
+    async replace(replacement: RevisionedReplacement): Promise<RevisionedReplacementOutcome> {
+      const expectedRevision = checkedRevision(replacement.expectedRevision, 'expected revision');
+      const writes = validateWrites(replacement.writes);
+      const fences = validateFences(replacement.fences);
+      const before = await readRevision();
+      if (before.revision !== expectedRevision) {
+        return { kind: 'stale', expectedRevision, actualRevision: before.revision };
+      }
+      const lostBeforeCommit = await firstLostFence(backend, fences);
+      if (lostBeforeCommit !== null) return lostBeforeCommit;
+      const revision = expectedRevision + 1;
+      const committed = await backend.compareAndApply([
+        { store: 'meta', key: F3_REVISION_KEY, value: before.raw },
+        ...fences,
+      ], [
+        ...writes,
+        { store: 'meta', key: F3_REVISION_KEY, value: String(revision) },
+      ], ['receipts']);
+      if (committed) return { kind: 'committed', revision, receiptKey: null };
+      const after = await readRevision();
+      if (after.revision !== expectedRevision) {
+        return { kind: 'stale', expectedRevision, actualRevision: after.revision };
+      }
+      const lostAfterCommit = await firstLostFence(backend, fences);
+      if (lostAfterCommit !== null) return lostAfterCommit;
+      return { kind: 'conflict', expectedRevision };
     },
     async mutate(mutation: RevisionedMutation): Promise<RevisionedMutationOutcome> {
       const expectedRevision = checkedRevision(mutation.expectedRevision, 'expected revision');

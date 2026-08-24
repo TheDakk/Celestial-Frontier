@@ -100,17 +100,28 @@ import { SYS_R, UCELL, OBS_R, HOME_GAL_SEED, HOME_POS, SOL_SEED, SOL_POS } from 
 import { galaxyName, starName, properName } from '@cf/domain-naming';
 import { createEpochClock, type EpochClock } from '@cf/domain-progression';
 import { mulberry32, hashInt, TAU } from '@cf/domain-rand';
-import { installCaptureHooks, planetDescriptor, describePick, SOL_MOONS, galaxyStats, fmtBig, type Descriptor } from '@cf/domain-descriptors';
+import {
+  installCaptureHooks, planetDescriptor, describePickWithState,
+  SOL_MOONS, galaxyStats, fmtBig,
+  type Descriptor, type DescriptorPick,
+} from '@cf/domain-descriptors';
 import { cleanName, encodeWhere } from '@cf/domain-strays';
 import { describeSpecies } from '@cf/domain-genome';
 import { battleStats, STAT_NAMES, STAT_HUES } from '@cf/domain-combatcore';
 import {
-  createSaveRepository, createIndexedDBBackend,
-  importSaveV2, isPlausibleSaveEnvelope, exportSaveV2, readSaveWithRecovery,
-  type SaveStateV2, type ContentRegistry, type StoredPayloadStatus,
+  STORES, createSaveRepository, createIndexedDBBackend,
+  createRevisionedRepository, initializeFreshV5, migrateStoredV4ToV5,
+  prepareV5Replacement, readF4Authority, readSaveV5, readRevisionedSaveV5WithRecovery,
+  importSaveV2, exportSaveV2,
+  type SaveStateV2, type ContentRegistry,
   type ImportRouteIngressV2, type ImportTrainingSnapshotIngressV2,
+  type V5Extensions,
 } from '@cf/persistence';
 import { runF3PersistenceBrowserProbe } from './f3-persistence-browser-probe.js';
+import {
+  createF4RuntimeAuthority,
+  type F4RuntimeAuthority,
+} from './f4-runtime-authority.js';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
 installBatchTextureArrayUidCompaction(BatchTextureArray);
@@ -120,16 +131,8 @@ installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt fully replaces the 
    off the renderer boot path. The first serviced art owner enables a broker that
    owns at most one producer at a time and terminates it when the queue drains;
    thumbnails/portraits return as validated PNG assets without a sync fallback. */
-/* app-state seams the VERBATIM descriptor code reads as globals (D-ST in
-   DEVIATIONS — describePick reads `st`/`customNames` inside a [domain]
-   module; the port passes state explicitly when Phase 4 rebuilds the card
-   layer). The slice keeps them true: stSeam tracks nav below. */
 const REGISTRY = REGISTRY_JSON as unknown as ContentRegistry;
-const gSeam = globalThis as Record<string, unknown>;
-const stSeam: { gal: unknown; star: unknown } = { gal: null, star: null };
 const customNames = new Map<string, string>();
-gSeam.st ??= stSeam;
-gSeam.customNames = customNames;   /* one app-owned map shared with descriptor seams */
 
 extensions.add(CullerPlugin);   /* offscreen sprites skip render — thousands of stars, one flag */
 
@@ -157,10 +160,197 @@ const sceneTextureLease = (
   kind: SceneTextureKind = 'scene-canvas',
 ): SceneTextureLease<Texture> => currentSceneTextureScope().acquireLease(resource, kind);
 const DOCUMENT_TOKEN = crypto.randomUUID();
+/* A lease identity belongs to one live Document, not sessionStorage: browsers
+   may clone sessionStorage into a duplicated/opener tab. BFCache retains this
+   same JS realm and therefore correctly retains this token. */
+const F4_TAB_TOKEN = DOCUMENT_TOKEN;
 const speciesArtLoader = new SpeciesArtLoader(DOCUMENT_TOKEN);
+const F4_LEASE_TTL_MS = 10_000;
+const F4_HEARTBEAT_MS = F4_LEASE_TTL_MS / 2;
+const F4_CHECKPOINT_MS = 30_000;
+const F4_OWNER_ID = 'celestial-frontier-game-tab';
+const F4_START_HIDDEN_FOR_SMOKE = typeof (window as unknown as Record<string, unknown>).__cfF4StartHidden === 'function';
+let f4VisibilityOverrideHidden = F4_START_HIDDEN_FOR_SMOKE;
+const f4PageVisible = (): boolean => document.visibilityState === 'visible' && !f4VisibilityOverrideHidden;
+let f4Runtime: F4RuntimeAuthority | null = null;
+let f4HeartbeatTimer = 0;
+let f4HeartbeatInFlight: Promise<void> | null = null;
+let f4LastCheckpointAt = performance.now();
+let f4SeedBootstrapPending = false;
+let f4SeedBootstrapInFlight: Promise<boolean> | null = null;
+let f4AuthorityReloadScheduled = false;
+let smokeRejectNextF4HideCheckpoint = false;
+let lastF4HideWitness: Readonly<{
+  schema: 'cf-v2-f4-hide/v1'; checkpoint: 'committed' | 'skipped' | 'rejected';
+  checkpointError: string | null; visibilityAttempted: boolean;
+  visibilityOutcome: string | null; visibilityError: string | null;
+}> | null = null;
+function scheduleF4AuthorityConvergenceReload(runtime: F4RuntimeAuthority, detail: string): void {
+  persistHold = 'transient-read';
+  persistenceProtectedDetail = detail;
+  runtime.setAnswerable(false);
+  stopF4Heartbeat();
+  if (f4AuthorityReloadScheduled) return;
+  f4AuthorityReloadScheduled = true;
+  setTimeout(() => { void runtime.release().catch(() => undefined).finally(() => location.reload()); }, 0);
+}
+async function ensureF4RevisionCurrent(runtime: F4RuntimeAuthority): Promise<boolean> {
+  try {
+    const durableRevision = await revisionRepo.revision();
+    if (durableRevision === runtime.revision) return true;
+    scheduleF4AuthorityConvergenceReload(
+      runtime,
+      `lease acquisition observed revision ${runtime.revision}/${durableRevision}; reloading stable authority`,
+    );
+    return false;
+  } catch (error) {
+    persistHold = 'protected-payload';
+    persistenceBootKind = 'transient-protected';
+    persistenceProtectedDetail = `revision verification failed (${error instanceof Error ? error.message : String(error)})`;
+    runtime.setAnswerable(false);
+    stopF4Heartbeat();
+    return false;
+  }
+}
+async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boolean> {
+  if (!f4SeedBootstrapPending) return true;
+  if (runtime !== f4Runtime || !runtime.diagnostics().leaseOwned) return false;
+  if (f4SeedBootstrapInFlight) return f4SeedBootstrapInFlight;
+  const run = (async (): Promise<boolean> => {
+    try {
+      const seeded = await runtime.commit(save, Date.now());
+      lastPersistenceOutcome = seeded.kind === 'committed'
+        ? `seed-committed:${seeded.revision}` : `seed-${seeded.kind}`;
+      if (seeded.kind !== 'committed') {
+        if (seeded.kind === 'stale') {
+          scheduleF4AuthorityConvergenceReload(
+            runtime,
+            `seed bootstrap observed newer revision ${seeded.actualRevision}; reloading stable authority`,
+          );
+          return false;
+        }
+        throw new Error(`F4 authority bootstrap refused: ${seeded.kind}`);
+      }
+      f4SeedBootstrapPending = false;
+      f4LastCheckpointAt = performance.now();
+      return true;
+    } catch (error) {
+      persistHold = 'protected-payload';
+      persistenceBootKind = 'transient-protected';
+      persistenceProtectedDetail = error instanceof Error ? error.message : String(error);
+      runtime.setAnswerable(false);
+      stopF4Heartbeat();
+      return false;
+    }
+  })();
+  f4SeedBootstrapInFlight = run;
+  try { return await run; }
+  finally { if (f4SeedBootstrapInFlight === run) f4SeedBootstrapInFlight = null; }
+}
+function f4RuntimeMayMutate(runtime: F4RuntimeAuthority | null = f4Runtime): runtime is F4RuntimeAuthority {
+  if (!runtime || persistHold || f4SeedBootstrapPending) return false;
+  const diagnostics = runtime.diagnostics();
+  return diagnostics.leaseOwned && !diagnostics.staleBlocked;
+}
+function f4RuntimeMayAnswer(runtime: F4RuntimeAuthority | null = f4Runtime): runtime is F4RuntimeAuthority {
+  return f4PageVisible() && f4RuntimeMayMutate(runtime);
+}
+const stopF4Heartbeat = (): void => {
+  if (f4HeartbeatTimer !== 0) clearInterval(f4HeartbeatTimer);
+  f4HeartbeatTimer = 0;
+};
+const heartbeatF4 = async (): Promise<void> => {
+  if (!f4Runtime || !f4PageVisible()
+    || activePersist || importWriteInFlight || replacementTransaction) return;
+  if (f4HeartbeatInFlight) return f4HeartbeatInFlight;
+  let heartbeatOwned = false;
+  let checkpointDue = false;
+  const runtime = f4Runtime;
+  const run = runtime.heartbeat().then((outcome) => {
+    heartbeatOwned = outcome.kind === 'owned';
+    checkpointDue = outcome.kind === 'owned'
+      && performance.now() - f4LastCheckpointAt >= F4_CHECKPOINT_MS;
+  });
+  f4HeartbeatInFlight = run;
+  try { await run; }
+  finally { if (f4HeartbeatInFlight === run) f4HeartbeatInFlight = null; }
+  if (heartbeatOwned) {
+    if (!await ensureF4RevisionCurrent(runtime)) return;
+    if (f4SeedBootstrapPending && !await ensureF4SeedBootstrap(runtime)) return;
+    if (f4RuntimeMayAnswer(runtime)) runtime.setAnswerable(app.ticker?.started === true);
+  }
+  if (checkpointDue) await persistView();
+};
+const settleF4Heartbeat = async (): Promise<void> => {
+  if (f4HeartbeatInFlight) await f4HeartbeatInFlight;
+};
+const startF4Heartbeat = (): void => {
+  if (!f4Runtime || !f4PageVisible() || f4HeartbeatTimer !== 0) return;
+  f4HeartbeatTimer = window.setInterval(() => { void heartbeatF4(); }, F4_HEARTBEAT_MS);
+};
 let persistedPagehideCount = 0;
 let persistedPageshowCount = 0;
+let f4HideInFlight: Promise<void> | null = null;
+const checkpointAndHideF4 = (): Promise<void> => {
+  if (f4HideInFlight) return f4HideInFlight;
+  const runtime = f4Runtime;
+  if (!runtime) return Promise.resolve();
+  /* Stop accrual at the lifecycle event, then checkpoint the captured interval
+     while the old lease is still fenced. The periodic checkpoint bounds loss
+     when pagehide itself cannot finish asynchronous storage. */
+  runtime.setAnswerable(false);
+  const run = (async () => {
+    let checkpoint: 'committed' | 'skipped' | 'rejected' = 'skipped';
+    let checkpointError: string | null = null;
+    let visibilityAttempted = false;
+    let visibilityOutcome: string | null = null;
+    let visibilityError: string | null = null;
+    try {
+      if (smokeRejectNextF4HideCheckpoint) {
+        smokeRejectNextF4HideCheckpoint = false;
+        throw new Error('slice-smoke injected F4 hide checkpoint rejection');
+      }
+      await settleF4Heartbeat();
+      checkpoint = await persistView() ? 'committed' : 'skipped';
+    } catch (error) {
+      checkpoint = 'rejected';
+      checkpointError = error instanceof Error ? error.message : String(error);
+    } finally {
+      visibilityAttempted = true;
+      try { visibilityOutcome = (await runtime.setVisible(false)).kind; }
+      catch (error) {
+        visibilityError = error instanceof Error ? error.message : String(error);
+        try { await runtime.release(); visibilityOutcome = 'release-fallback'; }
+        catch (releaseError) {
+          visibilityError += `; release fallback: ${releaseError instanceof Error ? releaseError.message : String(releaseError)}`;
+        }
+      }
+    }
+    lastF4HideWitness = Object.freeze({
+      schema: 'cf-v2-f4-hide/v1', checkpoint, checkpointError,
+      visibilityAttempted, visibilityOutcome, visibilityError,
+    });
+  })();
+  f4HideInFlight = run;
+  const clear = (): void => { if (f4HideInFlight === run) f4HideInFlight = null; };
+  void run.then(clear, clear);
+  return run;
+};
+const showF4 = async (): Promise<void> => {
+  if (f4HideInFlight) await f4HideInFlight.catch(() => undefined);
+  const runtime = f4Runtime;
+  if (!runtime || !f4PageVisible()) return;
+  const outcome = await runtime.setVisible(true);
+  if (outcome.kind === 'owned') {
+    if (!await ensureF4RevisionCurrent(runtime)) return;
+    if (f4SeedBootstrapPending && !await ensureF4SeedBootstrap(runtime)) return;
+    runtime.setAnswerable(app.ticker?.started === true);
+  } else runtime.setAnswerable(false);
+  startF4Heartbeat();
+};
 addEventListener('pagehide', (event) => {
+  stopF4Heartbeat();
+  void checkpointAndHideF4();
   if (event.persisted) {
     persistedPagehideCount++;
     speciesArtLoader.suspendForBfcache();
@@ -171,7 +361,17 @@ addEventListener('pageshow', (event) => {
   if (event.persisted) {
     persistedPageshowCount++;
     speciesArtLoader.resumeFromBfcache();
+    void showF4();
   }
+});
+addEventListener('visibilitychange', () => {
+  if (!f4Runtime) return;
+  if (document.visibilityState !== 'visible') {
+    stopF4Heartbeat();
+    void checkpointAndHideF4();
+    return;
+  }
+  void showF4();
 });
 type ReloadCanvasRelease = {
   beforeWidth: number;
@@ -196,6 +396,7 @@ type ImportPhaseWitness = {
   performanceNow: number;
   error: string | null;
 };
+let lastImportPhaseWitness: ImportPhaseWitness | null = null;
 type TrainingRestoreStage =
   | 'invoked' | 'validation-rejected' | 'claim-rejected' | 'claimed'
   | 'waiting-active-persist' | 'no-active-persist' | 'active-persist-settled'
@@ -277,13 +478,17 @@ function claimReplacementTransaction(reason: ReplacementReloadReason): Replaceme
      but are distinct writes. One opaque claim per operation prevents either
      flow from releasing/reloading while another same-kind write is pending. */
   if (replacementTransaction) return null;
+  stopF4Heartbeat();
   /* Stop the outgoing renderer before the first persistence await. At an 8K
      software-rendered viewport, allowing another 16.7M-pixel frame to start
      can starve the IndexedDB completion task for the whole import budget.
      A failed replacement restarts only a ticker that this claim stopped; a
      successful replacement destroys it while quiescent. */
   const tickerWasStarted = app.ticker?.started === true;
-  if (tickerWasStarted) app.stop();
+  if (tickerWasStarted) {
+    f4Runtime?.setAnswerable(false);
+    app.stop();
+  }
   const persistWasScheduled = _persistT !== 0;
   const claim = Object.freeze({
     reason, token: Symbol(reason), tickerWasStarted, persistWasScheduled,
@@ -295,7 +500,12 @@ function claimReplacementTransaction(reason: ReplacementReloadReason): Replaceme
 function releaseReplacementTransaction(claim: ReplacementTransaction, rearmPersist = true): void {
   if (!replacementReloadScheduled && replacementTransaction === claim) {
     replacementTransaction = null;
-    if (claim.tickerWasStarted && app.ticker && !app.ticker.started) app.start();
+    if (claim.tickerWasStarted && app.ticker && !app.ticker.started) {
+      app.start();
+      const runtime = f4Runtime;
+      if (f4RuntimeMayAnswer(runtime)) runtime.setAnswerable(true);
+    }
+    if (!persistHold) startF4Heartbeat();
     /* A refused replacement must not silently discard a pending settings
        slider write merely because ownership canceled its debounce timer. */
     if (rearmPersist && claim.persistWasScheduled) persistSoon();
@@ -314,30 +524,44 @@ function scheduleReplacementReload(
   const { reason } = claim;
   replacementReloadScheduled = true;
   replacementReloadPending = true;
-  let witness: ReloadReleaseWitness;
-  try { witness = releaseRendererForReload(reason); }
-  catch (error) {
-    witness = {
-      schema: 'cf-v2-reload-release/v1', status: 'release-failed',
-      error: error instanceof Error ? error.message : String(error), reason,
-      documentToken: DOCUMENT_TOKEN,
-      rendererReleased: false, stageReleased: false, viewDetached: false,
-      appCanvas: unreleasedCanvas(), backdropCanvas: unreleasedCanvas(),
-    };
-  }
-  /* Runtime.addBinding installs this optional diagnostics seam before the
-     page boots. Ordinary play has no such property. CDP receives the release
-     evidence outside the dying execution context, so a vanished global can
-     never masquerade as a replacement page becoming ready. */
-  try {
-    const binding = (window as unknown as Record<string, unknown>).__cfReloadReleaseWitness;
-    if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
-  } catch { /* evidence harness fails closed when its binding is absent/broken */ }
-  try { afterRelease?.(witness); }
-  catch { /* optional evidence must never strand a completed durable write */ }
-  /* One task boundary lets WebGL context loss/canvas resize settle and lets
-     importBlob resolve, without retrying or hiding a failed navigation. */
-  setTimeout(() => location.reload(), 0);
+  void (async () => {
+    /* The old document must release its private lease before its renderer is
+       destroyed and a fresh document token tries to acquire. */
+    await settleF4Heartbeat();
+    const runtime = f4Runtime;
+    let runtimeReleaseError: string | null = null;
+    try { await runtime?.release(); }
+    catch (error) { runtimeReleaseError = error instanceof Error ? error.message : String(error); }
+    if (f4Runtime === runtime) f4Runtime = null;
+
+    let witness: ReloadReleaseWitness;
+    try { witness = releaseRendererForReload(reason); }
+    catch (error) {
+      witness = {
+        schema: 'cf-v2-reload-release/v1', status: 'release-failed',
+        error: error instanceof Error ? error.message : String(error), reason,
+        documentToken: DOCUMENT_TOKEN,
+        rendererReleased: false, stageReleased: false, viewDetached: false,
+        appCanvas: unreleasedCanvas(), backdropCanvas: unreleasedCanvas(),
+      };
+    }
+    if (runtimeReleaseError !== null && witness.error === null) {
+      witness = { ...witness, status: 'release-failed', error: runtimeReleaseError };
+    }
+    /* Runtime.addBinding installs this optional diagnostics seam before the
+       page boots. Ordinary play has no such property. CDP receives the release
+       evidence outside the dying execution context, so a vanished global can
+       never masquerade as a replacement page becoming ready. */
+    try {
+      const binding = (window as unknown as Record<string, unknown>).__cfReloadReleaseWitness;
+      if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
+    } catch { /* evidence harness fails closed when its binding is absent/broken */ }
+    try { afterRelease?.(witness); }
+    catch { /* optional evidence must never strand a completed durable write */ }
+    /* One task boundary lets WebGL context loss/canvas resize settle and lets
+       importBlob resolve, without retrying or hiding a failed navigation. */
+    setTimeout(() => location.reload(), 0);
+  })();
 }
 /* ---- THE PHASE 4 CHROME (UI_PRESENTATION contracts): the unified topbar
    (trail · player chip · objective chip) publishing --topbar-h, the hint
@@ -460,12 +684,28 @@ function setTrail(segs: string[]): void {
   trailEl.innerHTML = segs.map((s, i) =>
     `<span class="seg${i === segs.length - 1 ? ' cur' : ''}">${esc(s)}</span>`).join('<span class="sep">›</span>');
 }
-const repo = createSaveRepository(createIndexedDBBackend('cf-v2-slice'));
+const persistenceBackend = createIndexedDBBackend('cf-v2-slice');
+const repo = createSaveRepository(persistenceBackend);
+const revisionRepo = createRevisionedRepository(persistenceBackend);
+const EMPTY_V5_EXTENSIONS: V5Extensions = Object.freeze({});
+type PersistenceBootKind =
+  | 'fresh-v5' | 'migrated-v4' | 'current-v5'
+  | 'recovered-v4-protected' | 'future-protected'
+  | 'corrupt-protected' | 'transient-protected';
+let persistenceBootKind: PersistenceBootKind = 'transient-protected';
+let persistenceProtectedDetail: string | null = null;
+let f4AuthorityBootKind: ReturnType<typeof readF4Authority>['kind'] | 'unavailable' = 'unavailable';
+let lastPersistenceOutcome: string | null = null;
+let lastSmokeImportRaceWitness: Readonly<{
+  beforeRevision: number;
+  afterRevision: number;
+  outcome: string;
+}> | null = null;
 /* THE REAL SAVE LOOP: the slice persists a genuine cfcc_save_v2 blob through
-   importSaveV2/exportSaveV2 (the proven round-trip fixed point) — the nav
-   view rides in `view`, landings ride in `land`. An older slice store that
-   held only {nav,view} JSON migrates for free: importSaveV2 reads its `view`
-   and defaults everything else. */
+   the v5 split-store/revision boundary while retaining exportSaveV2 as the
+   compatibility mirror. The nav view rides in `view`, landings ride in
+   `land`. An older slice store that held only {nav,view} JSON migrates once
+   through the persistence package's exact stored-source bridge. */
 let save: SaveStateV2;
 let f3PersistenceBrowserProbeInFlight = false;
 async function runF3PersistenceBrowserEvidence() {
@@ -577,6 +817,8 @@ let DPR = densityPlan.dpr;
 const minWH = (): number => Math.max(80, Math.min(innerWidth, innerHeight));   /* floor: a zero-sized window must not mint z=0 → NaN cameras (audit #8) */
 
 let nav: NavState = NAV_HOME;
+const describePick = (pick: DescriptorPick): Descriptor | null =>
+  describePickWithState(pick, nav, (key) => customNames.get(key));
 type ProvenGalaxyStats = Readonly<{ stars: number; planets: number }>;
 const provenGalaxyStats = new WeakMap<ProvenGalaxy, ProvenGalaxyStats>();
 function statsForProvenGalaxy(galaxy: ProvenGalaxy): ProvenGalaxyStats {
@@ -1102,9 +1344,11 @@ function showV2ReleaseBulletin(
   if (index < 0) return false;
   openPanel('guide', null);
   renderRelease(index, true, history);
-  save.rnSeen = current.version;
-  pendingReleaseBulletin = null;
-  void persistView();
+  if (!blockPlayerMutation('release-seen')) {
+    save.rnSeen = current.version;
+    pendingReleaseBulletin = null;
+    void persistView();
+  }
   return true;
 }
 function showUnseenV2Release(): boolean {
@@ -1131,7 +1375,7 @@ function fillGuide(): void {
     '<div class="sub guide-scope">The mature manual, adapted to what is actually live in this v2 development build. Unported active systems stay visible and honestly marked; intentionally dormant topics remain recorded but hidden.</div>' +
     '<div class="guide-body" data-sel="guide-body"></div>');
   renderGuideMenu();
-  if (!save.seenGuide) {
+  if (!save.seenGuide && !blockPlayerMutation('guide-seen')) {
     save.seenGuide = true;
     void persistView();
   }
@@ -1697,7 +1941,7 @@ function jumpToProvenNav(target: NavState, incomingName: string | null = null): 
     if (!lifted.ok || lifted.state.mode !== 'system') return false;
     committedNav = lifted.state;
   }
-  if (focusPlanet && incomingName) {
+  if (focusPlanet && incomingName && !playerMutationsBlocked()) {
     const name = cleanName(incomingName);
     if (name) {
       customNames.set('p' + focusPlanet.seed, name);
@@ -1781,14 +2025,16 @@ async function importBlob(raw: string, diagnosticPhaseId?: string): Promise<stri
   /* returns an error message, or null on success (then we reload) */
   let phaseSequence = 0;
   const phase = (stage: ImportPhaseStage, error: string | null = null): void => {
-    if (typeof diagnosticPhaseId !== 'string' || !diagnosticPhaseId) return;
     const witness: ImportPhaseWitness = {
-      schema: 'cf-v2-import-phase/v1', phaseId: diagnosticPhaseId,
+      schema: 'cf-v2-import-phase/v1',
+      phaseId: typeof diagnosticPhaseId === 'string' && diagnosticPhaseId
+        ? diagnosticPhaseId : `${DOCUMENT_TOKEN}:import`,
       reason: 'save-import', documentToken: DOCUMENT_TOKEN,
       stage, sequence: ++phaseSequence,
       tickerStarted: app.ticker?.started === true,
       performanceNow: performance.now(), error,
     };
+    lastImportPhaseWitness = witness;
     try {
       const binding = (window as unknown as Record<string, unknown>).__cfImportPhaseWitness;
       if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
@@ -1799,27 +2045,19 @@ async function importBlob(raw: string, diagnosticPhaseId?: string): Promise<stri
      for the recovery keepsake, while retaining the importer's historical
      trimmed candidate for classification and the live primary. */
   const checkedRaw = raw.trim();
-  const imp = importSaveV2(checkedRaw, REGISTRY, Date.now());
-  if (!imp.ok && imp.reason === 'future-version') {
+  const replacementPrepared = prepareV5Replacement(checkedRaw, REGISTRY, Date.now());
+  if (replacementPrepared.kind === 'future-version') {
     phase('validation-rejected', 'future-version');
     return 'This save is from a newer Celestial Frontier build. Update first; nothing was stored.';
   }
-  if (!imp.ok) {
+  if (replacementPrepared.kind !== 'prepared') {
     phase('validation-rejected', 'invalid save payload');
     return 'That does not load as a Celestial Frontier save — nothing was stored.';
   }
-  /* the real loader hardens ANY object into a fresh save — fine at boot,
-     dangerous in an import sheet (an accidental "{}" would wipe the stored
-     expedition). Require a face we recognize before we overwrite. */
-  try {
-    const o = JSON.parse(checkedRaw) as unknown;
-    if (!isPlausibleSaveEnvelope(o)) {
-      phase('validation-rejected', 'incomplete save envelope');
-      return 'That parses, but is not a complete save envelope — nothing was stored.';
-    }
-  } catch {
-    phase('validation-rejected', 'invalid JSON');
-    return 'That does not load as a Celestial Frontier save — nothing was stored.';
+  const runtime = f4Runtime;
+  if (!f4RuntimeMayMutate(runtime)) {
+    phase('validation-rejected', 'versioned persistence authority unavailable');
+    return 'This expedition is protected from writes. Reload after resolving the storage warning, then try again.';
   }
   const replacement = claimReplacementTransaction('save-import');
   if (!replacement) {
@@ -1839,14 +2077,44 @@ async function importBlob(raw: string, diagnosticPhaseId?: string): Promise<stri
     await priorPersist.catch(() => false);
     phase('active-persist-settled');
   }
+  await settleF4Heartbeat();
   phase('primary-write-started');
+  let authorityRefused = false;
   try {
-    await repo.write(checkedRaw);
+    /* The runtime owns the exact lease and observed revision. Its dedicated
+       repository replacement clears the prior expedition's receipts in the
+       SAME transaction as split rows, empty extensions, backup/snapshot and
+       next revision, so reset ordinal zero cannot collide with old history. */
+    const mutation = await runtime.replace(replacementPrepared.operations);
+    if (mutation.kind !== 'committed') {
+      authorityRefused = true;
+      persistHold = 'protected-payload';
+      persistenceProtectedDetail = `replacement authority ${mutation.kind}; reload required`;
+      runtime.setAnswerable(false);
+      stopF4Heartbeat();
+      throw new Error(`versioned replacement refused: ${mutation.kind}`);
+    }
+    lastPersistenceOutcome = `replacement-committed:${mutation.revision}`;
     phase('primary-write-complete');
   }
-  catch {
-    phase('primary-write-rejected', 'storage refused the primary write');
+  catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    phase('primary-write-rejected', message);
     importWriteInFlight = false;
+    /* A repository I/O exception leaves the same authority eligible for a
+       player retry, so renew it. A semantic refusal (or a release rejection
+       after runtime conflict) is permanently read-only in this document and
+       must retry release instead of reacquiring a ghost lease. */
+    const authorityLost = authorityRefused || runtime.diagnostics().staleBlocked;
+    if (authorityLost) {
+      if (!persistHold) {
+        persistHold = 'protected-payload';
+        persistenceProtectedDetail = 'replacement authority lost; reload required';
+        runtime.setAnswerable(false);
+        stopF4Heartbeat();
+      }
+      await runtime.release().catch(() => undefined);
+    } else await runtime.heartbeat().catch(() => ({ kind: 'lost' as const }));
     releaseReplacementTransaction(replacement);
     return 'Storage refused the write (private mode?).';
   }
@@ -3170,7 +3438,6 @@ function rerender(options: { preserveSurvey?: boolean; skipPersist?: boolean } =
     clearPlanetside();
     document.documentElement.style.removeProperty('--planetside-top');
   }
-  stSeam.gal = nav.gal; stSeam.star = nav.star;   /* the describePick seam stays true */
   buildCurrentSceneTransaction();
   world.alpha = 0.25;   /* the mode fade (st.fade), eased back in the ticker */
   hudText();
@@ -3372,6 +3639,7 @@ async function copyShareCode(code: string): Promise<boolean> {
   }
 }
 function doLand(): boolean {
+  if (blockPlayerMutation('land')) return false;
   if (!cardCtx || nav.mode !== 'system') return false;
   const surface = activeCardPlanetState();
   if (!surface) return false;
@@ -3404,7 +3672,6 @@ function doLand(): boolean {
     /* Panels and Survey deliberately coexist outside Training. If Charters is
        already open, its rendered record must move with the saved ledger. */
     if (openPanelId() === 'ch') fillCharters();
-    stSeam.gal = nav.gal; stSeam.star = nav.star;
     playWhoosh();   /* planetfall */
     buildCurrentSceneTransaction(); hudText(); void persistView();
     if (lastCard) showSurvey(lastCard, buildCardActions(p));
@@ -3417,6 +3684,7 @@ function doLand(): boolean {
     return true;
 }
 function addToAtlas(): void {
+  if (blockPlayerMutation('atlas-add')) return;
   const where = activeCardPlanetWhere();
   if (!cardCtx || !save || !where) return;
   const p = cardCtx.p;
@@ -4068,8 +4336,18 @@ function installKeyboardExploration(): void {
 /* ---- the save/reload leg — THE REAL PIPELINE ---- */
 async function persistView(replacementOwner: ReplacementTransaction | null = null): Promise<boolean> {
   if (persistHold || trainingCheckpointWriteHeld || importWriteInFlight || replacementReloadPending
-    || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
-  const write = async (): Promise<boolean> => { try {
+    || !f4RuntimeMayMutate() || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
+  const write = async (): Promise<boolean> => {
+    const priorSavedView = save.savedView;
+    const priorEpochBase = save.EPOCH_BASE;
+    const rollbackAppOwnedSnapshot = (): void => {
+      save.savedView = priorSavedView;
+      save.EPOCH_BASE = priorEpochBase;
+    };
+    try {
+    await settleF4Heartbeat();
+    const runtime = f4Runtime;
+    if (!f4RuntimeMayMutate(runtime)) return false;
     /* A transient generator failure is not proof that a valid imported route
        is stale. Hold that one field until a later successful resolution or
        player navigation; unrelated save progress may still persist. */
@@ -4084,9 +4362,34 @@ async function persistView(replacementOwner: ReplacementTransaction | null = nul
       smokeRejectNextPersist = false;
       throw new Error('slice-smoke injected persistence rejection');
     }
-    await repo.write(exportSaveV2(save, Date.now()));
-    return true;
-  } catch { return false; /* private mode: session continues unsaved */ } };
+    const outcome = await runtime.commit(save, Date.now());
+    lastPersistenceOutcome = outcome.kind === 'committed'
+      ? `committed:${outcome.revision}` : outcome.kind;
+    if (outcome.kind === 'committed') {
+      f4LastCheckpointAt = performance.now();
+      return true;
+    }
+    rollbackAppOwnedSnapshot();
+    const detail = outcome.kind === 'stale'
+      ? `stale revision ${outcome.expectedRevision}/${outcome.actualRevision}`
+      : `save authority ${outcome.kind}; reload required`;
+    scheduleF4AuthorityConvergenceReload(runtime, detail);
+    toast('Reload required', 'Another save authority won. This page is now read-only so no progress can be overwritten.', true);
+    return false;
+  } catch (error) {
+    /* Only these two fields are staged by persistView itself. Restore them on
+       rejection so a failed authority attempt cannot masquerade as a live
+       player mutation while the durable expedition remains unchanged. */
+    rollbackAppOwnedSnapshot();
+    if (!(error instanceof Error && error.message === 'slice-smoke injected persistence rejection')) {
+      const runtime = f4Runtime;
+      if (runtime) scheduleF4AuthorityConvergenceReload(
+        runtime,
+        `save attempt rejected (${error instanceof Error ? error.message : String(error)}); reload required`,
+      );
+    }
+    return false;
+  } };
   const prior = activePersist;
   const run = prior ? prior.catch(() => false).then(write) : write();
   activePersist = run;
@@ -4098,15 +4401,76 @@ let importWriteInFlight = false;
 let activePersist: Promise<boolean> | null = null;
 let smokeRejectNextPersist = false;
 let smokeImportRaceRelease: (() => void) | null = null;
+async function smokeCommitF4Outcome(): Promise<unknown> {
+  /* Browser evidence only: exercise the real receipt-bearing F4 transaction
+     without inventing an Arc product writer. The detached canonical draft is
+     returned unchanged, while RNG, clock, receipt and revision still commit
+     through the production lease-fenced owner exactly once. */
+  const runtime = f4Runtime;
+  if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
+    || replacementTransaction || replacementReloadPending) {
+    return Object.freeze({ schema: 'cf-v2-f4-smoke-outcome/v1', kind: 'unavailable' });
+  }
+  await settleF4Heartbeat();
+  const before = runtime.diagnostics();
+  const outcome = await runtime.commitOutcome({
+    state: save,
+    domain: 'diagnostics.slice-smoke.f4',
+    receiptKind: 'slice-smoke-f4-outcome',
+    codecNow: Date.now(),
+    derive: ({ draft, value, receiptOrdinal }) => ({
+      state: draft,
+      witness: `slice-smoke-f4:${receiptOrdinal}:${value}`,
+    }),
+  });
+  const after = runtime.diagnostics();
+  if (outcome.kind === 'committed') {
+    lastPersistenceOutcome = `outcome-committed:${outcome.revision}`;
+    f4LastCheckpointAt = performance.now();
+  }
+  return Object.freeze({
+    schema: 'cf-v2-f4-smoke-outcome/v1',
+    kind: outcome.kind,
+    beforeRevision: before.revision,
+    afterRevision: after.revision,
+    beforeOrdinal: before.sessionOrdinal,
+    afterOrdinal: after.sessionOrdinal,
+    ...(outcome.kind === 'committed' ? {
+      revision: outcome.revision,
+      plan: Object.freeze({
+        domain: outcome.plan.domain,
+        value: outcome.plan.value,
+        receiptOrdinal: outcome.plan.receiptOrdinal,
+      }),
+      receipt: outcome.receipt,
+      canonicalProduct: Object.freeze({
+        explorerName: outcome.state.explorerName,
+        essence: outcome.state.essence,
+        landedCount: outcome.state.landed.length,
+      }),
+    } : {}),
+  });
+}
 function smokeArmImportRace(staleRaw: string): boolean {
-  /* Diagnostics-only ordering witness. The armed active persist writes its
-     stale snapshot only after release. A valid import started before that
-     release must await this write, then replace it. Removing importBlob's
-     await reverses the two real repository transactions and stale wins. */
-  if (activePersist || importWriteInFlight || smokeImportRaceRelease) return false;
+  /* Diagnostics-only ordering witness. The armed active persist commits its
+     stale snapshot through the same lease-fenced revision boundary as play.
+     A valid import started before release must await that revision, then CAS
+     its replacement from the newly observed parent. */
+  if (activePersist || importWriteInFlight || smokeImportRaceRelease || !f4RuntimeMayMutate()) return false;
+  const imported = importSaveV2(staleRaw, REGISTRY, Date.now());
+  if (!imported.ok) return false;
   let releaseGate: (() => void) | null = null;
   const gate = new Promise<void>((resolve) => { releaseGate = resolve; });
-  const run = gate.then(async () => { await repo.write(staleRaw); return true; });
+  const run = gate.then(async () => {
+    const beforeRevision = f4Runtime!.revision;
+    const outcome = await f4Runtime!.commit(imported.state, Date.now());
+    lastSmokeImportRaceWitness = Object.freeze({
+      beforeRevision,
+      afterRevision: f4Runtime!.revision,
+      outcome: outcome.kind,
+    });
+    return outcome.kind === 'committed';
+  });
   activePersist = run;
   smokeImportRaceRelease = () => {
     const release = releaseGate;
@@ -4125,6 +4489,29 @@ function smokeReleaseImportRace(): boolean {
   release();
   return true;
 }
+async function smokeStageStoredV4(raw: string | null, backup?: string): Promise<boolean> {
+  /* Browser-gate fixture setup only. A v4 fixture must represent a genuinely
+     pre-migration database; overwriting only the compatibility mirror under
+     a live v5 schema is correctly classified as corruption. Quiesce this
+     document, wipe every authoritative store, then stage the exact old bytes
+     for the NEXT document's real migration path. */
+  if ((raw !== null && typeof raw !== 'string') || activePersist || importWriteInFlight
+    || replacementTransaction || replacementReloadPending) return false;
+  stopF4Heartbeat();
+  f4Runtime?.setAnswerable(false);
+  await settleF4Heartbeat();
+  await f4Runtime?.release();
+  f4Runtime = null;
+  persistHold = 'protected-payload';
+  await persistenceBackend.clear(STORES);
+  if (raw !== null) {
+    await persistenceBackend.apply([
+      { store: 'meta', key: 'save', value: raw },
+      ...(backup === undefined ? [] : [{ store: 'meta' as const, key: 'save_bak', value: backup }]),
+    ]);
+  }
+  return true;
+}
 function persistSoon(): void {
   /* slider-friendly: one export per drag, not one per input event (audit #5) */
   if (replacementReloadPending) return;
@@ -4139,57 +4526,44 @@ function persistSoon(): void {
 }
 let persistHold: false | 'transient-read' | 'protected-payload' = false;
 let persistRetrying = false;
-function isLegacySliceEnvelope(value: unknown): boolean {
-  /* e960e21–the full-save wiring stored this exact two-field envelope in
-     cf-v2-slice. Keep that one real compatibility bridge without turning
-     sparse objects back into whole-save evidence. Both copies of the route
-     must agree, and every identity needed by its mode must be finite. */
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
-  const data = value as Record<string, unknown>;
-  if (Object.keys(data).sort().join('|') !== 'nav|view') return false;
-  if (!data.nav || typeof data.nav !== 'object' || Array.isArray(data.nav)) return false;
-  const rawNav = data.nav as Record<string, unknown>;
-  if (Object.keys(rawNav).sort().join('|') !== 'gal|mode|planet|star') return false;
-  const mode = rawNav.mode;
-  if (!['universe', 'galaxy', 'system', 'surface'].includes(String(mode))) return false;
-  if (mode === 'universe') {
-    return data.view === null && rawNav.gal === null && rawNav.star === null && rawNav.planet === null;
-  }
-  if (!data.view || typeof data.view !== 'object' || Array.isArray(data.view)) return false;
-  const rawView = data.view as Record<string, unknown>;
-  const expectedType = mode === 'galaxy' ? 'galaxy' : mode === 'system' ? 'star' : 'planet';
-  if (rawView.type !== expectedType) return false;
-  const samePoint = (a: unknown, b: unknown): boolean => {
-    if (!a || typeof a !== 'object' || Array.isArray(a)
-      || !b || typeof b !== 'object' || Array.isArray(b)) return false;
-    const left = a as Record<string, unknown>, right = b as Record<string, unknown>;
-    return typeof left.seed === 'number' && Number.isFinite(left.seed)
-      && typeof left.x === 'number' && Number.isFinite(left.x)
-      && typeof left.y === 'number' && Number.isFinite(left.y)
-      && left.seed === right.seed && left.x === right.x && left.y === right.y;
-  };
-  if (!samePoint(rawNav.gal, rawView.gal)) return false;
-  if (mode === 'galaxy') return rawNav.star === null && rawNav.planet === null;
-  if (!samePoint(rawNav.star, rawView.star)) return false;
-  if (mode === 'system') return rawNav.planet === null;
-  if (!rawNav.planet || typeof rawNav.planet !== 'object' || Array.isArray(rawNav.planet)) return false;
-  const rawPlanet = rawNav.planet as Record<string, unknown>;
-  return typeof rawPlanet.seed === 'number' && Number.isFinite(rawPlanet.seed)
-    && rawPlanet.seed === rawView.pseed;
+let smokeForceReadOnly = false;
+let mutationBlockCount = 0;
+let lastMutationBlockWitness: Readonly<{
+  schema: 'cf-v2-read-only-boundary/v1'; action: string; count: number;
+  hold: false | 'transient-read' | 'protected-payload'; leaseOwned: boolean;
+  staleBlocked: boolean; seedBootstrapPending: boolean;
+}> | null = null;
+const READ_ONLY_MUTATION_SELECTOR = [
+  '#dockcharts', '#setsnd', '#setvol', '[data-pref]', '[data-motion]',
+  '#setcharts', '#setglass', '#setrestart',
+  '[data-act="landcta"]', '[data-act="add"]',
+  '[data-sel="tutbtn"]', '[data-sel="tutskip"]',
+].join(',');
+function playerMutationsBlocked(): boolean {
+  return smokeForceReadOnly || !f4RuntimeMayMutate();
 }
-function importStoredPayload(payload: string | null): ReturnType<typeof importSaveV2> {
-  const result = importSaveV2(payload, REGISTRY, Date.now());
-  if (!result.ok || payload === null) return result;
-  try {
-    const parsed = JSON.parse(payload) as unknown;
-    return (isPlausibleSaveEnvelope(parsed) || isLegacySliceEnvelope(parsed))
-      ? result : { ok: false, reason: 'invalid' };
-  } catch { return { ok: false, reason: 'invalid' }; }
+function blockPlayerMutation(action: string): boolean {
+  if (!playerMutationsBlocked()) return false;
+  const runtime = f4Runtime?.diagnostics() ?? null;
+  lastMutationBlockWitness = Object.freeze({
+    schema: 'cf-v2-read-only-boundary/v1', action, count: ++mutationBlockCount,
+    hold: persistHold, leaseOwned: runtime?.leaseOwned === true,
+    staleBlocked: runtime?.staleBlocked === true,
+    seedBootstrapPending: f4SeedBootstrapPending,
+  });
+  toast('Read-only expedition', 'Inspection remains available, but this action cannot change the expedition until save authority is restored.', true);
+  return true;
 }
-function storedPayloadStatus(payload: string): StoredPayloadStatus {
-  const result = importStoredPayload(payload);
-  return result.ok ? 'supported' : result.reason;
-}
+const guardReadOnlyMutationEvent = (event: Event): void => {
+  const target = event.target instanceof Element
+    ? event.target.closest<HTMLElement>(READ_ONLY_MUTATION_SELECTOR) : null;
+  if (!target || !blockPlayerMutation(`${event.type}:${target.id || target.dataset.act || target.dataset.sel || target.tagName}`)) return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+};
+document.addEventListener('click', guardReadOnlyMutationEvent, true);
+document.addEventListener('input', guardReadOnlyMutationEvent, true);
+document.addEventListener('change', guardReadOnlyMutationEvent, true);
 
 type PreparedTrainingCandidate = Readonly<{
   raw: string;
@@ -4286,7 +4660,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     phase('validation-rejected', 'unknown-snapshot');
     return { kind: 'refused', reason: 'unknown-snapshot' };
   }
-  if (persistHold) {
+  if (!f4RuntimeMayMutate()) {
     phase('validation-rejected', 'protected-storage');
     return { kind: 'refused', reason: 'protected-storage' };
   }
@@ -4307,6 +4681,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
       await priorPersist.catch(() => false);
       phase('active-persist-settled');
     } else phase('no-active-persist');
+    await settleF4Heartbeat();
 
     phase('candidate-started');
     const now = Date.now();
@@ -4404,7 +4779,16 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
         smokeRejectNextTrainingCommit = false;
         throw new Error('slice-smoke injected Training commit rejection');
       }
-      await repo.write(prepared.raw);
+      const committed = await f4Runtime!.commit(prepared.state, now);
+      lastPersistenceOutcome = committed.kind === 'committed'
+        ? `training-committed:${committed.revision}` : `training-${committed.kind}`;
+      if (committed.kind !== 'committed') {
+        if (committed.kind === 'stale') {
+          persistHold = 'protected-payload';
+          persistenceProtectedDetail = `stale revision ${committed.expectedRevision}/${committed.actualRevision}`;
+        }
+        throw new Error(`Training versioned commit refused: ${committed.kind}`);
+      }
       return true;
     })();
     activePersist = write;
@@ -4468,42 +4852,186 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
   }
 }
 
-async function loadSave(): Promise<void> {
-  /* THE RECOVERY CONTRACT, finally wired (audit finding #1 — the CF-RR-002
-     path was built and tested in the repository but never called):
-     primary unreadable/corrupt → recover() restores the backup ONCE; a
-     payload that PROVES it loads is promoted to last-known-good, exactly
-     the v1.8.9 loadSave semantic. A read that THREW (infra, not absence)
-     holds all persists until a user action, so the boot's own write can
-     never destroy the evidence. */
-  /* A sparse but syntactically valid truncation (`{}` / `{view:null}`)
-     hardens into defaults inside the legacy importer. That is useful for
-     constructing a fresh in-memory state, but it is NOT proof that a stored
-     payload is safe to promote over the last-known-good backup. */
-  const bootRead = await readSaveWithRecovery(repo, storedPayloadStatus);
-  const imp = bootRead.kind === 'loaded'
-    ? importStoredPayload(bootRead.raw)
-    : { ok: false as const, reason: bootRead.kind === 'protected' ? bootRead.reason : 'invalid' as const };
-  if (bootRead.kind === 'loaded') {
-    try { await repo.promoteLastKnownGood(bootRead.raw); } catch { /* keepsake only */ }
+const F4_FRESH_RACE_RELEASE_KEY = 'cf_slice_f4_fresh_race_release';
+async function awaitSmokeFreshInitializationRaceGate(): Promise<void> {
+  /* Optional native-browser ordering seam. Runtime.addBinding exists before
+     module evaluation, so two genuinely empty documents can both finish the
+     stable absence read before either enters the production initializer. */
+  const binding = (window as unknown as Record<string, unknown>).__cfF4FreshInitRaceGate;
+  if (typeof binding !== 'function') return;
+  (binding as (payload: string) => unknown)(JSON.stringify({
+    schema: 'cf-v2-f4-fresh-race/v1', documentToken: DOCUMENT_TOKEN, stage: 'initializer-ready',
+  }));
+  const deadline = performance.now() + 15_000;
+  while (localStorage.getItem(F4_FRESH_RACE_RELEASE_KEY) !== 'release') {
+    if (performance.now() >= deadline) throw new Error('F4 fresh initialization race gate timed out');
+    await new Promise<void>((resolve) => setTimeout(resolve, 10));
   }
-  /* A future save is valid evidence from a newer build, not corruption. Do
-     not replace it with a backup or let this older app write defaults over
-     it; the explicit import path remains available after updating. */
-  persistHold = bootRead.kind === 'transient-read' ? 'transient-read'
-    : bootRead.kind === 'protected' ? 'protected-payload' : false;
-  const protectedReason = bootRead.kind === 'protected' ? bootRead.reason : null;
+}
+
+async function loadSave(): Promise<void> {
+  /* v5 is authoritative before any app state exists. A missing schema gets
+     exactly one stored-v4 migration attempt; only a genuinely empty source
+     may bootstrap a new v5 expedition. Corrupt/future current rows and a
+     read-only recovery snapshot are playable evidence, never write
+     authorization. Transient reads remain unknown until a full reload. */
+  const now = Date.now();
   const fresh = importSaveV2('{}', REGISTRY, Date.now());
   if (!fresh.ok) throw new Error('fresh v2 save construction failed');
-  save = imp.ok ? imp.state : fresh.state;   /* fresh expedition */
-  importedRouteIngress = imp.ok ? imp.ingress : fresh.ingress;
+  let trulyFresh = false;
+  let loadedExisting = false;
+  let bootResolved = false;
+  let initialRevision = 0;
+  let initialExtensions: V5Extensions = EMPTY_V5_EXTENSIONS;
+  let restoredAuthority: Parameters<typeof createF4RuntimeAuthority>[0]['restoredAuthority'] = null;
+  let protectedReason: 'future-version' | 'invalid' | null = null;
+
+  const useProtectedFresh = (
+    kind: Exclude<PersistenceBootKind, 'fresh-v5' | 'migrated-v4' | 'current-v5'>,
+    reason: 'future-version' | 'invalid',
+    detail: string,
+  ): void => {
+    persistenceBootKind = kind;
+    persistenceProtectedDetail = detail;
+    persistHold = kind === 'transient-protected' ? 'transient-read' : 'protected-payload';
+    protectedReason = reason;
+    save = fresh.state;
+    importedRouteIngress = fresh.ingress;
+    bootResolved = true;
+  };
+  const acceptCurrent = async (
+    current: Extract<Awaited<ReturnType<typeof readRevisionedSaveV5WithRecovery>>, { kind: 'loaded' }>,
+    kind: 'migrated-v4' | 'current-v5',
+  ): Promise<void> => {
+    save = current.state;
+    importedRouteIngress = current.ingress;
+    initialExtensions = current.extensions;
+    loadedExisting = true;
+    bootResolved = true;
+    persistenceBootKind = kind;
+    initialRevision = current.revision;
+    const authority = readF4Authority(initialExtensions);
+    f4AuthorityBootKind = authority.kind;
+    if (authority.kind === 'loaded') restoredAuthority = authority.authority;
+    else if (authority.kind === 'future-version' || authority.kind === 'corrupt') {
+      persistHold = 'protected-payload';
+      protectedReason = authority.kind === 'future-version' ? 'future-version' : 'invalid';
+      persistenceBootKind = authority.kind === 'future-version'
+        ? 'future-protected' : 'corrupt-protected';
+      persistenceProtectedDetail = `F4 authority ${authority.kind}`;
+    }
+    if (!persistHold) {
+      try { await repo.promoteLastKnownGood(current.legacyV4Raw); } catch { /* compatibility keepsake only */ }
+    }
+  };
+
+  let current = await readRevisionedSaveV5WithRecovery(persistenceBackend, REGISTRY, now);
+  let currentKind: 'migrated-v4' | 'current-v5' = 'current-v5';
+  if (current.kind === 'not-migrated') {
+    const migration = await migrateStoredV4ToV5(persistenceBackend, REGISTRY, now);
+    if (migration.kind === 'fresh') {
+      trulyFresh = true;
+      persistenceBootKind = 'fresh-v5';
+      persistHold = false;
+      save = fresh.state;
+      importedRouteIngress = fresh.ingress;
+      bootResolved = true;
+    } else if (migration.kind === 'migrated' || migration.kind === 'already-current') {
+      currentKind = migration.kind === 'migrated' ? 'migrated-v4' : 'current-v5';
+      current = await readRevisionedSaveV5WithRecovery(persistenceBackend, REGISTRY, now);
+    } else if (migration.kind === 'protected') {
+      useProtectedFresh(
+        migration.reason === 'future-version' ? 'future-protected' : 'corrupt-protected',
+        migration.reason === 'future-version' ? 'future-version' : 'invalid',
+        `stored v4 source ${migration.reason}`,
+      );
+    } else if (migration.kind === 'storage-error') {
+      useProtectedFresh('transient-protected', 'invalid', migration.message);
+    } else {
+      /* A competing migration may have completed. Re-read once; never retry
+         the migration or infer that a still-missing schema means fresh. */
+      current = await readRevisionedSaveV5WithRecovery(persistenceBackend, REGISTRY, now);
+    }
+  }
+
+  if (!bootResolved) {
+    if (current.kind === 'loaded') await acceptCurrent(current, currentKind);
+    else if (current.kind === 'recovered-v4') {
+      save = current.state;
+      importedRouteIngress = current.ingress;
+      initialExtensions = current.extensions;
+      loadedExisting = true;
+      f4AuthorityBootKind = 'absent';
+      persistHold = 'protected-payload';
+      protectedReason = 'invalid';
+      persistenceBootKind = 'recovered-v4-protected';
+      persistenceProtectedDetail = 'current v5 rows failed validation; pre-migration v4 snapshot loaded read-only';
+      bootResolved = true;
+    } else if (current.kind === 'future-version') {
+      useProtectedFresh('future-protected', 'future-version', `future v5 ${current.scope}`);
+    } else if (current.kind === 'corrupt') {
+      useProtectedFresh('corrupt-protected', 'invalid', `corrupt v5 ${current.scope}`);
+    } else if (current.kind === 'storage-error') {
+      useProtectedFresh('transient-protected', 'invalid', current.message);
+    } else if (current.kind === 'changed') {
+      useProtectedFresh('transient-protected', 'invalid', 'save revision changed during the boot snapshot');
+    } else if (current.kind === 'not-migrated') {
+      useProtectedFresh('transient-protected', 'invalid', 'schema/source changed during migration');
+    }
+  }
+  if (!bootResolved || importedRouteIngress === null) {
+    throw new Error('v5 boot classifier did not produce a safe runtime state');
+  }
+  /* Prepare exactly the fresh state that the initializer stores before any
+     derived live boot state is published. If another empty tab wins, accept
+     one new stable coupled v5 snapshot and continue the SAME downstream boot
+     derivation from its state/revision/extensions—not the losing local fresh
+     object and not a corrupt/read-only placeholder. */
+  if (trulyFresh && !persistHold) {
+    save.tutDone = false;
+    const freshSol = trainingSolSystemNav();
+    if (freshSol) save.savedView = navToView(freshSol);
+    await awaitSmokeFreshInitializationRaceGate();
+    const initialized = await initializeFreshV5(
+      persistenceBackend,
+      { state: save, extensions: EMPTY_V5_EXTENSIONS },
+      REGISTRY,
+      now,
+    );
+    if (initialized.kind === 'initialized') {
+      initialRevision = initialized.revision;
+      initialExtensions = EMPTY_V5_EXTENSIONS;
+      f4AuthorityBootKind = 'absent';
+    } else if (initialized.kind === 'not-fresh') {
+      let winner = await readRevisionedSaveV5WithRecovery(persistenceBackend, REGISTRY, now);
+      if (winner.kind === 'changed') {
+        winner = await readRevisionedSaveV5WithRecovery(persistenceBackend, REGISTRY, now);
+      }
+      if (winner.kind === 'loaded') {
+        trulyFresh = false;
+        persistenceProtectedDetail = null;
+        protectedReason = null;
+        await acceptCurrent(winner, 'current-v5');
+      } else {
+        useProtectedFresh(
+          'transient-protected',
+          'invalid',
+          `fresh initialization winner was not stably readable (${winner.kind}); reload required`,
+        );
+      }
+    } else {
+      useProtectedFresh('transient-protected', 'invalid', initialized.message);
+    }
+  }
+  const bootIngress = importedRouteIngress;
+
   customNames.clear();
   for (const [key, name] of save.customNames) customNames.set(key, name);
   /* A supported save is never rejected as a whole because its location is
      stale. Re-prove that one raw route from source; deterministic failure
      repairs only `view`, while a transient source failure holds its bytes. */
   const savedRoute = resolveViewToNav(
-    importedRouteIngress.savedView === undefined ? null : importedRouteIngress.savedView,
+    bootIngress.savedView === undefined ? null : bootIngress.savedView,
   );
   if (savedRoute.ok && navigationAuthorityFailure(savedRoute.state) === null) {
     nav = savedRoute.state;
@@ -4518,7 +5046,7 @@ async function loadSave(): Promise<void> {
      Only a non-home proven target becomes actionable; source-derived fields
      replace tolerant display aliases without changing ids or local ledgers. */
   for (const [, entry] of save.logMap) {
-    const rawWhere = importedRouteIngress.atlasWhere.get(entry);
+    const rawWhere = bootIngress.atlasWhere.get(entry);
     if (rawWhere === null || rawWhere === undefined) {
       entry.where = null;
       continue;
@@ -4531,12 +5059,12 @@ async function loadSave(): Promise<void> {
       entry.where = null;
     }
   }
-  trainingSnapshotIngress = importedRouteIngress.trainingSnapshot;
+  trainingSnapshotIngress = bootIngress.trainingSnapshot;
   /* A pending checkpoint is the durable pre-drill authority. Ordinary
      practice autosaves stay held so only the explicit restart write and the
      atomic completion transaction may replace it. Unknown shapes are also
      quarantined from the Training UI below. */
-  const loadedUnfinishedWithoutSnapshot = bootRead.kind === 'loaded'
+  const loadedUnfinishedWithoutSnapshot = loadedExisting
     && !save.tutDone
     && trainingSnapshotIngress.kind === 'none';
   trainingCheckpointWriteHeld = trainingSnapshotIngress.kind !== 'none'
@@ -4550,14 +5078,14 @@ async function loadSave(): Promise<void> {
      checkpoint is quarantined instead: ordinary Training actions would
      mutate live ledgers before completion could refuse, contradicting the
      promise that the unrecognized evidence remains untouched. */
-  if (bootRead.kind === 'fresh') save.tutDone = false;
+  if (trulyFresh) save.tutDone = false;
   const recognizedPendingTraining = !save.tutDone
     && trainingSnapshotIngress.kind !== 'legacy-or-unknown';
   if (recognizedPendingTraining) {
     const solNav = trainingSolSystemNav();
     if (solNav) {
       nav = solNav;
-      if (bootRead.kind === 'fresh') {
+      if (trulyFresh) {
         save.savedView = navToView(solNav);
         savedRouteWriteHeld = false;
       } else {
@@ -4570,6 +5098,53 @@ async function loadSave(): Promise<void> {
     } else {
       trainingBootRouteBlocked = true;
       if (trainingSnapshotIngress.kind !== 'none') trainingCheckpointWriteHeld = true;
+    }
+  }
+  if (!persistHold) {
+    const entropy = new Uint32Array(1);
+    crypto.getRandomValues(entropy);
+    const runtime = createF4RuntimeAuthority({
+      backend: persistenceBackend,
+      repository: revisionRepo,
+      registry: REGISTRY,
+      initialRevision,
+      initialExtensions,
+      restoredAuthority,
+      freshSessionSeed: entropy[0]!,
+      ownerId: F4_OWNER_ID,
+      token: F4_TAB_TOKEN,
+      leaseTtlMs: F4_LEASE_TTL_MS,
+      now: () => performance.now(),
+      visible: f4PageVisible(),
+      answerable: false,
+    });
+    f4Runtime = runtime;
+    f4SeedBootstrapPending = f4AuthorityBootKind === 'absent';
+    try {
+      const leaseOutcome = f4PageVisible()
+        ? await runtime.heartbeat() : { kind: 'lost' as const };
+      /* A newly minted crypto seed becomes durable before any outcome API can
+         roll from it. If this write fails, play remains protected; reload can
+         never silently mint a different value after a failed player action. */
+      if (leaseOutcome.kind === 'owned' && !await ensureF4RevisionCurrent(runtime)) {
+        throw new Error(persistenceProtectedDetail || 'F4 revision verification failed');
+      }
+      if (f4SeedBootstrapPending && leaseOutcome.kind === 'owned') {
+        if (!await ensureF4SeedBootstrap(runtime)) {
+          throw new Error(persistenceProtectedDetail || 'F4 authority bootstrap failed');
+        }
+      }
+      f4LastCheckpointAt = performance.now();
+      startF4Heartbeat();
+    } catch (error) {
+      await runtime.release().catch(() => undefined);
+      f4Runtime = null;
+      f4SeedBootstrapPending = false;
+      stopF4Heartbeat();
+      persistHold = 'protected-payload';
+      persistenceBootKind = 'transient-protected';
+      persistenceProtectedDetail = error instanceof Error ? error.message : String(error);
+      protectedReason = 'invalid';
     }
   }
   if (nav.mode === 'galaxy') { camT.z = gz0 * 1.05; cam.z = camT.z; }
@@ -4590,7 +5165,9 @@ async function loadSave(): Promise<void> {
       protectedReason === 'future-version' ? 'Update required' : 'Save protected',
       protectedReason === 'future-version'
         ? 'This expedition was written by a newer build. It will not be changed here.'
-        : 'The stored expedition is incomplete and no proven backup loaded. It will not be overwritten.',
+        : persistenceBootKind === 'recovered-v4-protected'
+          ? 'A proven pre-migration snapshot opened read-only. Current v5 rows remain untouched until recovery is resolved.'
+          : 'The stored expedition is incomplete or conflicted. It will not be overwritten.',
       true,
     ), 0);
   }
@@ -4837,6 +5414,25 @@ async function loadSave(): Promise<void> {
         starX: nav.star?.x ?? null, starY: nav.star?.y ?? null,
         fine: !!fineLayer, solVisible: !!(solMark && solMark.visible),
         epoch: epochClock.current(),
+        persistence: {
+          schema: 'cf-v2-app-persistence/v1',
+          ready: app.ticker?.started === true && tickerTicks >= 1,
+          documentToken: DOCUMENT_TOKEN,
+          bootKind: persistenceBootKind,
+          hold: persistHold || null,
+          protectedDetail: persistenceProtectedDetail,
+          authorityBootKind: f4AuthorityBootKind,
+          seedBootstrapPending: f4SeedBootstrapPending,
+          visibilityOverrideHidden: f4VisibilityOverrideHidden,
+          lastOutcome: lastPersistenceOutcome,
+          hideWitness: lastF4HideWitness,
+          mutationBlocked: playerMutationsBlocked(),
+          mutationBlockCount,
+          mutationBlockWitness: lastMutationBlockWitness,
+          importPhase: lastImportPhaseWitness,
+          importRace: lastSmokeImportRaceWitness,
+          runtime: f4Runtime?.diagnostics() ?? null,
+        },
         cardOpen: card.style.display !== 'none',
         cardTitle: card.querySelector('[data-sel=title]')?.textContent ?? null,
         stage: ascStage(), reach: reachRadiusOf(primeCount()),
@@ -4914,6 +5510,7 @@ async function loadSave(): Promise<void> {
       importBlob,   /* Gate C's front door, drivable by the smoke */
       __smokeArmImportRace: smokeArmImportRace,
       __smokeReleaseImportRace: smokeReleaseImportRace,
+      __smokeStageStoredV4: smokeStageStoredV4,
       __smokeRejectNextPersist: () => {
         if (smokeRejectNextPersist) return false;
         smokeRejectNextPersist = true;
@@ -4921,6 +5518,22 @@ async function loadSave(): Promise<void> {
       },
       __smokePersistAfterDebounce: () => { persistSoon(); return true; },
       __smokePersistNow: persistView,
+      __smokeCommitF4Outcome: smokeCommitF4Outcome,
+      __smokeShowF4: async () => {
+        f4VisibilityOverrideHidden = false;
+        await showF4();
+        return f4Runtime?.diagnostics() ?? null;
+      },
+      __smokeRejectNextF4HideCheckpoint: () => {
+        if (smokeRejectNextF4HideCheckpoint) return false;
+        smokeRejectNextF4HideCheckpoint = true;
+        return true;
+      },
+      __smokeCheckpointAndHideF4: checkpointAndHideF4,
+      __smokeForceReadOnly: (force: boolean) => {
+        smokeForceReadOnly = force === true;
+        return playerMutationsBlocked();
+      },
       __f3PersistenceBrowserProbe: runF3PersistenceBrowserEvidence,
       __smokeAbortNextRenderBeforeReceipt: () => {
         if (smokeAbortNextRenderBeforeReceipt) return false;
@@ -5197,13 +5810,14 @@ async function loadSave(): Promise<void> {
        one click must never authorize overwriting that evidence. */
     if (persistHold === 'transient-read' && !persistRetrying) {
       persistRetrying = true;
-      void readSaveWithRecovery(repo, storedPayloadStatus).then((retryRead) => {
+      void readRevisionedSaveV5WithRecovery(persistenceBackend, REGISTRY, Date.now()).then((retryRead) => {
         if (persistHold !== 'transient-read') return;
-        if (retryRead.kind === 'loaded') {
+        if (retryRead.kind === 'loaded' || retryRead.kind === 'not-migrated'
+          || retryRead.kind === 'changed') {
           /* The first read failed before we knew whether storage was empty.
-             If retry reveals real bytes, never overwrite them with the
-             temporary fresh in-memory state: reload through the full
-             classifier/recovery path. */
+             Even a still-unmigrated result needs the full exact-source
+             migration/fresh classifier. Never authorize this temporary
+             in-memory state from a partial retry. */
           const replacement = claimReplacementTransaction('storage-retry');
           if (!replacement) {
             toast('Save replacement underway', 'The current expedition replacement will finish before storage recovery continues.');
@@ -5212,19 +5826,17 @@ async function loadSave(): Promise<void> {
           scheduleReplacementReload(replacement);
           return;
         }
-        if (retryRead.kind === 'protected') {
+        if (retryRead.kind === 'future-version' || retryRead.kind === 'corrupt'
+          || retryRead.kind === 'recovered-v4') {
           persistHold = 'protected-payload';
-          toast(retryRead.reason === 'future-version' ? 'Update required' : 'Save protected',
-            retryRead.reason === 'future-version'
+          const future = retryRead.kind === 'future-version';
+          toast(future ? 'Update required' : 'Save protected',
+            future
               ? 'This expedition was written by a newer build. It will not be changed here.'
-              : 'Stored expedition bytes appeared after retry but did not prove safe. They remain unchanged.', true);
+              : 'Stored expedition evidence appeared after retry but did not prove writable. It remains unchanged.', true);
           return;
         }
-        if (retryRead.kind === 'transient-read') throw new Error('storage retry still unavailable');
-        /* A successful retry that proves the store is genuinely empty may
-           finally authorize the new expedition's first write. */
-        persistHold = false;
-        void persistView();
+        throw new Error('storage retry still unavailable');
       }).catch(() => {
         toast('Save unavailable', 'Storage is still unavailable. This expedition remains protected from overwrite.');
       }).finally(() => { persistRetrying = false; });
@@ -5313,6 +5925,12 @@ async function loadSave(): Promise<void> {
       if (tickerTicks < 1) { emitBootReady(); return; }
       emitBootPhase('ready-scheduled');
       setTimeout(() => {
+        /* This is the first point at which the rendered app has also serviced
+           one event-loop turn with all input/persistence wiring present.
+           Visibility and the tab lease were established earlier, but the
+           active-play clock may not accrue until this answerability edge. */
+        const runtime = f4Runtime;
+        if (f4RuntimeMayAnswer(runtime)) runtime.setAnswerable(true);
         /* Real owners may queue during the initial surface render, but the
            heavy painter Worker cannot start until complete app wiring, one
            animation frame, and this serviced task boundary. */

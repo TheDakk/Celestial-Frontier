@@ -19,8 +19,13 @@ import {
   type ImportRouteIngressV2,
   type SaveStateV2,
 } from './import-v2.js';
-import type { StorageBackend, StorageOperation, StoreName } from './repository.js';
-import { createRevisionedRepository } from './revisioned.js';
+import {
+  V4_BACKUP_KEY,
+  type StorageBackend,
+  type StorageOperation,
+  type StoreName,
+} from './repository.js';
+import { F3_REVISION_KEY, createRevisionedRepository } from './revisioned.js';
 
 export const V5_SCHEMA_VERSION = 5;
 export const V5_CODEC = 'legacy-v4-split-v1';
@@ -162,6 +167,15 @@ export type V5ReadOutcome =
   | { readonly kind: 'future-version'; readonly scope: 'schema' | V5Segment | 'snapshot' | 'envelope' }
   | { readonly kind: 'corrupt'; readonly scope: 'schema' | V5Segment | 'snapshot' | 'envelope' }
   | { readonly kind: 'storage-error'; readonly message: string };
+
+/** A v5 read accepted together with the exact F3 revision that bracketed its
+ * complete multi-row snapshot. A changed revision is neither corruption nor
+ * a newer accepted parent; callers must protect/reload instead of pairing the
+ * old product state with a newer CAS revision. */
+export type RevisionedV5ReadOutcome =
+  | (Extract<V5ReadOutcome, { readonly kind: 'loaded' }> & { readonly revision: number })
+  | Exclude<V5ReadOutcome, { readonly kind: 'loaded' }>
+  | { readonly kind: 'changed' };
 
 export type V5MigrationOutcome =
   | { readonly kind: 'fresh' }
@@ -339,9 +353,10 @@ export function prepareV5SaveWrite(
 
 /** Prepare one trusted complete-save replacement for RevisionedRepository.
  * The imported expedition starts with no v5-only extensions, and its exact
- * validated bytes replace both the compatibility mirror and recovery
- * snapshot in the same CAS as the normalized split rows. A later recovery
- * therefore cannot resurrect the expedition that existed before import. */
+ * validated bytes replace the compatibility mirror and recovery snapshot,
+ * while the old compatibility backup is deleted in the same CAS as the
+ * normalized split rows. A later recovery therefore cannot resurrect the
+ * expedition that existed before import. */
 export function prepareV5Replacement(
   exactRaw: string,
   registry: ContentRegistry,
@@ -352,6 +367,7 @@ export function prepareV5Replacement(
   const operations = segmentOperations(classified.normalizedRaw, EMPTY_EXTENSIONS);
   operations.push(
     { store: 'meta', key: V4_PRIMARY_KEY, value: exactRaw },
+    { store: 'meta', key: V4_BACKUP_KEY },
     {
       store: 'journal',
       key: V5_SNAPSHOT_KEY,
@@ -463,6 +479,10 @@ export function prepareV4ToV5Migration(
         codec: V5_CODEC,
       }),
     },
+    /* A migrated repository starts from an explicit revision rather than
+       absence. Deleting a once-used revision can therefore never recreate
+       the pre-migration compare-and-apply parent (ABA). */
+    { store: 'meta', key: F3_REVISION_KEY, value: '0' },
     /* The schema marker is intentionally last in the operation list. The
        backend contract is atomic, but this also keeps intent obvious in raw
        transaction traces and fault-injection diagnostics. */
@@ -641,6 +661,31 @@ export async function readSaveV5WithRecovery(
   }
 }
 
+/** Bracket the complete v5/recovery read with the revision authority. This
+ * is intentionally one bounded attempt: a concurrent commit reports
+ * `changed`; it never silently rereads and accepts a different expedition. */
+export async function readRevisionedSaveV5WithRecovery(
+  backend: StorageBackend,
+  registry: ContentRegistry,
+  now: number,
+): Promise<RevisionedV5ReadOutcome> {
+  try {
+    const repository = createRevisionedRepository(backend);
+    const before = await repository.revisionSnapshot();
+    const current = await readSaveV5WithRecovery(backend, registry, now);
+    const after = await repository.revisionSnapshot();
+    if (before.raw !== after.raw || before.revision !== after.revision) return { kind: 'changed' };
+    if (current.kind === 'loaded' && before.raw === undefined) {
+      return { kind: 'storage-error', message: 'current v5 revision authority is absent' };
+    }
+    return current.kind === 'loaded'
+      ? Object.freeze({ ...current, revision: before.revision })
+      : current;
+  } catch (error) {
+    return { kind: 'storage-error', message: error instanceof Error ? error.message : String(error) };
+  }
+}
+
 /** One exact stored-source migration. The v4 primary remains byte-identical
  * on success, stale races, validation refusal, and backend failure. */
 export async function migrateStoredV4ToV5(
@@ -660,6 +705,8 @@ export async function migrateStoredV4ToV5(
 
     const sourceRaw = await backend.get('meta', V4_PRIMARY_KEY);
     if (sourceRaw === undefined) return { kind: 'fresh' };
+    const revisionRaw = await backend.get('meta', F3_REVISION_KEY);
+    if (revisionRaw !== undefined) return { kind: 'protected', reason: 'corrupt' };
     const prepared = prepareV4ToV5Migration(sourceRaw, registry, now);
     if ('kind' in prepared) {
       return { kind: 'protected', reason: prepared.kind === 'future-version' ? 'future-version' : 'corrupt' };
@@ -667,6 +714,7 @@ export async function migrateStoredV4ToV5(
     const committed = await backend.compareAndApply([
       { store: 'meta', key: V4_PRIMARY_KEY, value: sourceRaw },
       { store: 'meta', key: V5_SCHEMA_KEY, value: undefined },
+      { store: 'meta', key: F3_REVISION_KEY, value: undefined },
     ], prepared.operations);
     if (committed) return { kind: 'migrated', normalizedV4Raw: prepared.normalizedV4Raw };
 

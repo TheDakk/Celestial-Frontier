@@ -41,13 +41,20 @@ export interface StorageBackend {
   /** Atomically check exact raw values then apply every operation. `false`
       means a competing writer changed one checked key; it is not an I/O
       failure and callers must surface a stale/duplicate outcome. */
-  compareAndApply(checks: readonly StorageCheck[], ops: readonly StorageOperation[]): Promise<boolean>;
+  compareAndApply(
+    checks: readonly StorageCheck[],
+    ops: readonly StorageOperation[],
+    /** Stores cleared inside the same successful transaction, before `ops`.
+        This is reserved for whole-authority replacement; ordinary mutations
+        should leave historical rows intact. */
+    clearStores?: readonly StoreName[],
+  ): Promise<boolean>;
   keys(store: StoreName): Promise<string[]>;
   clear(stores: readonly StoreName[]): Promise<void>;
 }
 
 const PRIMARY = 'save';
-const BACKUP = 'save_bak';    /* last-known-good — the SAVE_KEY_bak pattern */
+export const V4_BACKUP_KEY = 'save_bak';    /* last-known-good — the SAVE_KEY_bak pattern */
 
 export interface SaveRepository {
   /** Write the authoritative save payload (one atomic transaction). */
@@ -105,12 +112,12 @@ export function createSaveRepository(backend: StorageBackend): SaveRepository {
       return backend.get('meta', PRIMARY);
     },
     async promoteLastKnownGood(payload: string): Promise<void> {
-      await backend.apply([{ store: 'meta', key: BACKUP, value: payload }]);
+      await backend.apply([{ store: 'meta', key: V4_BACKUP_KEY, value: payload }]);
     },
     async recover(isSupported): Promise<string | undefined> {
       const primary = await backend.get('meta', PRIMARY);
       if (primary === undefined) return undefined;        /* genuinely fresh — nothing to recover */
-      const bak = await backend.get('meta', BACKUP);
+      const bak = await backend.get('meta', V4_BACKUP_KEY);
       if (bak === undefined) return undefined;
       /* The backup is untrusted storage input too. Classify the exact bytes
          before any write: corrupt/future backup data must never destroy the
@@ -143,7 +150,7 @@ export function createMemoryBackend(): StorageBackend {
       }
       for (const [s, t] of touched) data.set(s, t);
     },
-    async compareAndApply(checks, ops) {
+    async compareAndApply(checks, ops, clearStores = []) {
       for (const check of checks) {
         if (table(check.store).get(check.key) !== check.value) return false;
       }
@@ -152,6 +159,7 @@ export function createMemoryBackend(): StorageBackend {
          can reproduce two-tab stale writers instead of hiding them behind
          last-writer-wins awaits. */
       const touched = new Map<StoreName, Map<string, string>>();
+      for (const store of clearStores) touched.set(store, new Map());
       for (const op of ops) {
         let t = touched.get(op.store);
         if (!t) { t = new Map(table(op.store)); touched.set(op.store, t); }
@@ -220,10 +228,14 @@ export function createIndexedDBBackend(dbName = 'cf-v2', version = 2): StorageBa
       }
       await done(tx);
     },
-    async compareAndApply(checks, ops) {
-      if (!checks.length) { await this.apply(ops); return true; }
+    async compareAndApply(checks, ops, clearStores = []) {
+      if (!checks.length && !clearStores.length) { await this.apply(ops); return true; }
       const db = await open();
-      const stores = [...new Set([...checks, ...ops].map((entry) => entry.store))];
+      const stores = [...new Set([
+        ...checks.map((entry) => entry.store),
+        ...ops.map((entry) => entry.store),
+        ...clearStores,
+      ])];
       return new Promise<boolean>((resolve, reject) => {
         const tx = db.transaction(stores, 'readwrite');
         let remaining = checks.length;
@@ -243,11 +255,16 @@ export function createIndexedDBBackend(dbName = 'cf-v2', version = 2): StorageBa
         tx.onerror = () => stale ? finish(false) : rejectFailure();
         tx.onabort = () => stale ? finish(false) : rejectFailure();
         const write = (): void => {
+          for (const store of clearStores) tx.objectStore(store).clear();
           for (const op of ops) {
             const os = tx.objectStore(op.store);
             if (op.value === undefined) os.delete(op.key); else os.put(op.value, op.key);
           }
         };
+        if (checks.length === 0) {
+          write();
+          return;
+        }
         for (const check of checks) {
           const req = tx.objectStore(check.store).get(check.key);
           req.onerror = () => { try { tx.abort(); } catch { /* tx will report the request failure */ } };

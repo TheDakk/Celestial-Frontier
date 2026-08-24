@@ -66,11 +66,11 @@ describe('@cf/persistence — F3/F4 active-play persistence owner', () => {
     let activeTransaction: { checks: readonly StorageCheck[]; operations: readonly StorageOperation[] } | null = null;
     const backend: StorageBackend = {
       ...base,
-      async compareAndApply(checks, operations) {
+      async compareAndApply(checks, operations, clearStores) {
         if (operations.some((operation) => operation.store === 'meta' && operation.key === F3_REVISION_KEY)) {
           activeTransaction = { checks: [...checks], operations: [...operations] };
         }
-        return base.compareAndApply(checks, operations);
+        return base.compareAndApply(checks, operations, clearStores);
       },
     };
     const writable = await migrated(backend);
@@ -94,7 +94,7 @@ describe('@cf/persistence — F3/F4 active-play persistence owner', () => {
     expect(await base.get('player', 'activePlayMs')).toBeUndefined();
     expect(activeTransaction).not.toBeNull();
     expect(activeTransaction!.checks).toEqual([
-      { store: 'meta', key: F3_REVISION_KEY, value: undefined },
+      { store: 'meta', key: F3_REVISION_KEY, value: '0' },
       grant.check,
     ]);
     expect(activeTransaction!.operations).toEqual([
@@ -137,7 +137,7 @@ describe('@cf/persistence — F3/F4 active-play persistence owner', () => {
     })).resolves.toEqual({ kind: 'lost', reason: 'lease-lost' });
     expect(await backend.get('player', 'v5:player')).toBe(playerBefore);
     expect(await backend.get('meta', V4_PRIMARY_KEY)).toBe(mirrorBefore);
-    expect(await backend.get('meta', F3_REVISION_KEY)).toBeUndefined();
+    expect(await backend.get('meta', F3_REVISION_KEY)).toBe('0');
   });
 
   it('returns stale and leaves active-play authority absent when the revision advanced first', async () => {
@@ -233,6 +233,6 @@ describe('@cf/persistence — F3/F4 active-play persistence owner', () => {
       sessionRng: createSessionRNG(4).state(),
       now: NOW,
     })).rejects.toThrow('activePlayMs cannot move backwards');
-    expect(await backend.get('meta', F3_REVISION_KEY)).toBeUndefined();
+    expect(await backend.get('meta', F3_REVISION_KEY)).toBe('0');
   });
 });

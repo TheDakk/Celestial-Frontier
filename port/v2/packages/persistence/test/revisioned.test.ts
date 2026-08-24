@@ -127,6 +127,52 @@ describe('@cf/persistence — F3 revision/CAS and immutable receipts', () => {
       ],
     })).rejects.toThrow('duplicate mutation fence for meta/authority');
   });
+
+  it('resets receipts only inside a successful whole-expedition replacement transaction', async () => {
+    const base = createMemoryBackend();
+    const repository = createRevisionedRepository(base);
+    await repository.mutate({
+      expectedRevision: 0,
+      writes: [{ store: 'player', key: 'expedition', value: 'old' }],
+      receipt: { ordinal: 0, kind: 'old-outcome', witness: 'old:0' },
+    });
+    const oldReceipt = await repository.readReceipt(0);
+    expect(oldReceipt).toBeDefined();
+
+    await expect(repository.replace({
+      expectedRevision: 0,
+      writes: [{ store: 'player', key: 'expedition', value: 'stale-must-not-land' }],
+    })).resolves.toEqual({ kind: 'stale', expectedRevision: 0, actualRevision: 1 });
+    expect(await repository.readReceipt(0)).toEqual(oldReceipt);
+    expect(await base.get('player', 'expedition')).toBe('old');
+
+    const failingBackend = {
+      ...base,
+      async compareAndApply(
+        checks: Parameters<typeof base.compareAndApply>[0],
+        operations: Parameters<typeof base.compareAndApply>[1],
+        clearStores?: Parameters<typeof base.compareAndApply>[2],
+      ) {
+        if (clearStores?.includes('receipts')) throw new Error('injected replacement abort');
+        return base.compareAndApply(checks, operations, clearStores);
+      },
+    };
+    await expect(createRevisionedRepository(failingBackend).replace({
+      expectedRevision: 1,
+      writes: [{ store: 'player', key: 'expedition', value: 'aborted-must-not-land' }],
+    })).rejects.toThrow('injected replacement abort');
+    expect(await repository.readReceipt(0)).toEqual(oldReceipt);
+    expect(await base.get('player', 'expedition')).toBe('old');
+    expect(await repository.revision()).toBe(1);
+
+    await expect(repository.replace({
+      expectedRevision: 1,
+      writes: [{ store: 'player', key: 'expedition', value: 'new' }],
+    })).resolves.toEqual({ kind: 'committed', revision: 2, receiptKey: null });
+    expect(await base.keys('receipts')).toEqual([]);
+    expect(await base.get('player', 'expedition')).toBe('new');
+    expect(await repository.revision()).toBe(2);
+  });
 });
 
 async function repositoryValue(
