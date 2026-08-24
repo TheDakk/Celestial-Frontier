@@ -1,5 +1,17 @@
 # Celestial Frontier — Quests & Chapters
 
+> **2026-08-24 Arc 3 Charter/current-capability overlay:** mining and eligible fixed Fabrication are
+> real receipt-backed Engineering actions. The panel displays six research rows but only Deep
+> Scanners is purchasable; its pure orbital-reveal policy exists while current Survey renders no
+> orbital mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs with
+> exact costs/preconditions and capacity/revision headroom are actionable; fully exceptional slotted
+> outputs and disconnected-effect rows remain unavailable. `bankMinedAction` and `bankFixedFabrication` advance a
+> matching live Charter goal only from the committed result; a press, refusal or stale/storage
+> failure banks nothing. The six-lesson v2 Field Training remains a minimal navigation drill, not
+> the legacy 21-step curriculum. Commit `4e0a976` aligns its guidance, the Guide and the development
+> release bulletin with the live Engineering panel without pretending the missing capture/companion/
+> combat lessons exist. The broader chapter/reward ladder remains unported.
+
 > **2026-08-16 D-TRAIN-1 source-truth overlay (current source; local browser
 > evidence recorded below; exact-head CI, integration, real-save Gate C, and
 > human authority remain open):** v1.8.9 Training's reversible checkpoint is the exact eleven-field
@@ -48,7 +60,7 @@
 > they are local outcome evidence for those recorded inputs, not this later
 > documentation state, exact-head CI, integration, Gate C, human, or release authority.
 
-> **2026-08-14 v2 current-truth overlay — CURRENT versus PLANNED:** The current
+> **2026-08-14 v2 Charter overlay — historical pre-Arc-3 boundary:** The then-current
 > v2 Charter facade preserves the canonical legacy `ASC_CHAPTERS_DATA` and imported
 > `ascCh` / `ascProg` bytes for parity and reach, but never renders that raw chapter
 > copy as a player instruction. `projectV2Charter` and `currentV2Objective` expose
@@ -86,7 +98,7 @@
 > verified outcomes.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the newest v2 overlay
-above matches `port/v2` source as of 2026-08-16. Carries v1.8.6 and v1.8.7
+above matches the committed `port/v2` boundary as of 2026-08-24. Carries v1.8.6 and v1.8.7
 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and Field Training. The **21-step** curriculum described below is the legacy game; the current v2 boundary is explicit here.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy

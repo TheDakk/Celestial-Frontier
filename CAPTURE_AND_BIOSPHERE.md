@@ -1,18 +1,36 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
-**STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The approved,
-unimplemented v2 ecology/audio overlay matches the next-arc contract as of **2026-08-13**. See the
-2026-07-31 addendum — the epoch clock now drives the stardust harvest as well as biosphere recovery,
-so EPOCH_TICK is a shared knob.
+**STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
+ecology/audio overlay matches the package-only partial foundation and remaining contract as of
+**2026-08-24**. See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as
+well as biosphere recovery, so EPOCH_TICK is a shared knob.
 **Purpose:** How a surveyed world's revealed life earns Compendium pages — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
-## 0. v2.0 next-arc ecology/audio link (approved, not implemented — 2026-08-13)
+> **2026-08-24 Arc 4 package foundation — current committed boundary:** `@cf/domain-acquisition`
+> now separates catalogue species, discovery records, stable fauna `CreatureInstance`s, specimen
+> lots and per-world biosphere progress under 18 owner namespaces. Strict ownership-v1 codecs,
+> bounded legacy import/protection, canonical full-CF1 provenance, exact epoch-bound full-roster
+> snapshots, capture odds/preflight and a pure Tame/Scavenge/Sample plan exist. Gear contact
+> capability comes from the exact Engineering loadout, and the eight-row Planetside preview is never
+> capture authority.
+>
+> This does **not** make capture player-live. There is no save bootstrap, attempt-spend/CAS writer,
+> Compendium mutation, stable-ID publication, button, reload/browser outcome or Guide capability.
+> Commit `af12659` adds the pre-draw/capacity all-scenario certification and settlement prerequisite,
+> not a durable capture writer. Until that writer exists, the legacy formulas below are parity/design
+> input and the current v2 UI correctly exposes no Tame, Scavenge or Sample action.
+
+## 0. v2.0 ecology/audio link (pure package seams only — 2026-08-24)
 
 The current v2 development slice does not expose Tame, Scavenge, Sample, Biosphere Yield or living
-companions, and its audio is stings-only. The v1 mechanics and formulas below remain unchanged.
-This overlay specifies a later presentation link; it does not alter success odds, attempt spending,
-pool recovery, epoch cadence, Compendium ownership, rare-find rewards or capture randomness.
+companions, although the pure Arc 4 ownership/snapshot/planner foundation above exists; its player
+audio remains stings-only. `@cf/audio` now has pure
+`DistantEcologyHintPlan` and settled caption-gated expression-cue seams, but no capture/survey owner
+supplies them and they perform no playback or state write. The v1 mechanics and formulas below
+remain unchanged. This overlay specifies the later presentation link; it does not alter success
+odds, attempt spending, pool recovery, epoch cadence, Compendium ownership, rare-find rewards or
+capture randomness.
 
 Future capture audio is driven by typed outcomes after the authoritative action resolves:
 
@@ -24,7 +42,7 @@ Future capture audio is driven by typed outcomes after the authoritative action 
   never fires from a render function and never substitutes for visible odds, remaining attempts or
   result text.
 
-The future acquisition writers are explicit and separate from that presentation layer:
+The still-future acquisition writer is explicit and separate from that presentation layer:
 
 - Every successful Tame, Scavenge or Sample creates or updates the corresponding `CatalogSpecies`
   discovery record.

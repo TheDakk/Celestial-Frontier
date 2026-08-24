@@ -74,8 +74,27 @@
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 >
-> **2026-08-24 local campaign boundary — Arc 2 implementation slice is locally green; program
-> Arc remains `[PARTIAL]`:** F3/F4 now supply the app's v5 revision/lease, protected active-play +
+> **2026-08-24 local campaign boundary — committed product work now includes Arc 3; Arc 4 is the
+> active prerequisite and every program Arc remains bounded by its open evidence:** canonical
+> full-CF1 resource/star opportunities, finite active-play Mine/Skim, the Engineering panel, shared
+> product-action coordination and committed-only Charter mining/fabrication banking are live locally.
+> Six research rows are displayed but only Deep Scanners is purchasable; its pure orbital-reveal
+> policy exists while current Survey renders no orbital mineral rows. All 62 fixed recipes are
+> listed, but only connected-effect outputs with exact costs/preconditions and capacity/revision
+> headroom are actionable; fully exceptional slotted outputs and disconnected-effect rows remain
+> unavailable. Arc 4 has committed full
+> roster/epoch/contact, ownership-v1, acquisition snapshot and pure planner foundations, but no
+> durable writer/UI. Its pre-draw/capacity all-scenario certification and settlement prerequisite
+> is also committed; it does not settle capture or publish ownership. Arc 5 has a receipt-bound V2
+> model and digest-only migration certificate, not
+> an app migration or companion action. Arc 7 has package-only identity/runtime/lab/rights
+> foundations, including the committed absolute eight-emitter/120-node configuration caps. Arc 3
+> Guide/release/Training guidance is committed. Only the browser instruments and current-doc batch
+> remain working-tree work; clean current-source Smoke then Glass and the final measurement reseal
+> remain pending.
+>
+> **Arc 2 implementation slice — historical foundation, still current where not superseded:**
+> F3/F4 supply the app's v5 revision/lease, protected active-play +
 > SessionRNG carrier, immutable receipts, and one checked product transaction. Random plans retain
 > their draw across a failed write; Equip, Unequip, Salvage and pending-claim reserve only the global
 > receipt ordinal and do not advance a domain counter. `inventory/arc2.loot` v1 is the strict
@@ -90,17 +109,15 @@
 > rail and the 260px 5×2 ten-control phone dock with bounded pages, focus-owned detail, conditional
 > comparison, salvage confirmation, pending claims, and durable action publication.
 >
-> Focused code evidence is 16 files /149 tests plus all TypeScript programs and the Vite build.
-> One local no-retry Slice Smoke is terminal PASS on Edge `151.0.4129.101` (239,546 ms, zero
-> findings), and one local full-certifying Glass Matrix is terminal PASS (61,039 ms, 12/12
-> viewports, 78/78 controls, none blocked/omitted, zero findings/instrument failures). Both bind
-> dirty working-tree inputs. The full suite remains deliberately red only because the dependency
-> graph changed the sealed Compendium measurement digest (`6a961df8…` → `e6e6bbc…`); that ruler is
-> recalibrated once after the final multi-Arc dependency set freezes, never weakened per Arc.
+> For the recorded pre-current-WIP Arc 2 candidate, focused checks, all TypeScript programs, Vite,
+> one local no-retry Slice Smoke and one local full-certifying Glass Matrix were terminal green.
+> Both browser reports bind that candidate's dirty inputs. In that recorded candidate, the full
+> suite's sole deliberate red was the Compendium measurement-authority mismatch scheduled for one
+> final multi-Arc reseal. This is not final evidence for the current moving working tree.
 > Authored new-loot occurrence/rates and affix compatibility, crafted modifier/drawback, upgrades,
-> sockets, production Fabricator/Research writers, pacing/source recovery, and HUMAN item/compare
+> sockets, authored random-loot/variable-craft writers, pacing/source recovery, and HUMAN item/compare
 > readability remain open. No hosted run, PR/integration, preview/publication, release, version bump,
-> deployment, or whole-Gate authority follows. Arc 3 is now the active local campaign item.
+> deployment, or whole-Gate authority follows.
 
 ## 1. Purpose, authority, and status
 
@@ -142,12 +159,11 @@ When sources disagree, resolve the conflict in this order and record the discrep
 | **[EXEC-TODO]** | An executable criterion is required but absent or insufficient. |
 | **[HUMAN]** | Human review is required; no automated metric can replace it. |
 
-The current v2 application is a playable exploration/survey Phase-4 slice with read-only Shipyard
-inspection and the bounded Arc 2 exact-instance Inventory actions described above. It is not a
-finished v2 product: Shipyard build actions, material sources/Fabricator/Research, new loot-source
-policy, creature ownership, missions, combat, Guardians, living previews, and full audio remain
-planned until their real actions, persistence/reload, reachability, negative controls, and required
-human evidence land.
+The current v2 application is a playable exploration/survey Phase-4 slice with bounded Arc 2
+exact-instance Inventory and Arc 3 Engineering actions. It is not a finished v2 product: authored
+variable construction/new loot policy, upgrades/sockets, capture and companion writers, missions,
+combat, Guardians, living previews, and full app-owned audio remain planned until their real
+actions, persistence/reload, reachability, negative controls, and required human evidence land.
 
 ## 2. Product promise and non-negotiable program laws
 
@@ -993,6 +1009,10 @@ images; PR review, hosted terminal-green CI and integration; true GPU bytes and 
 actual Fabricator, Research Bench, Cargo spending, fabrication, research, and ship-upgrade writers.
 No whole Gate, production release, version bump, deployment, or publication is claimed.
 
+**2026-08-24 superseding current note:** PR #33 integrated this historical Arc 1C boundary and PR
+#34 integrated its bounded Compendium repair. Arc 3 later implemented only the fixed Engineering
+subset described in §5.2; broader upgrades, variable construction and all current open evidence remain.
+
 ### 4.8 F3 — persistence authority, split stores, and receipts
 
 **Goal:** make future ownership/reward mutations exact-once and safe against stale writers.
@@ -1053,9 +1073,10 @@ visible/answerable/lease-owned active-play total and SessionRNG seed, isolated d
 one save-lifetime ordinal. One shared writer assembles product extensions first, rejects any attempt
 to shadow the protected F4 namespace, then commits state + product + next F4 authority + receipt in
 one F3 CAS. Random plans replay the same value after a failed write. Arc 2's deterministic actions
-use the sibling no-RNG path: they advance only the receipt ordinal. This proves the authority seam;
-Auto-Extractor source settlement and the remaining legacy outcome call sites still belong to their
-own Arcs and cannot be claimed migrated by Inventory.
+use the sibling no-RNG path: they advance only the receipt ordinal. Arc 3 now settles
+Auto-Extractor accrual from the prior active-play cursor, caps it by finite reserves, rejects wall
+time as authority and reanchors newly fabricated extractors. The remaining legacy outcome call
+sites still belong to their own Arcs and cannot be claimed migrated by Inventory or Engineering.
 
 ### 4.10 Approved 2026-08-24 campaign sequencing
 
@@ -1119,14 +1140,26 @@ legacy projection coherent under the same checked transaction. Slice Smoke and 1
 exercise the real opener, exact carrier/raw/runtime/DOM parity, real action publication, reload,
 modal/focus/Close, conditional wording, controls, and fail-safe mutations.
 
-Arc 2 is not marked program-complete: the source-neutral economy ledger deliberately reports
-`arc3-deferred` instead of inventing world faucets or ETAs; the app exposes no Fabricator/Research
-spend; and authored new-loot tables/rates, natural-affix compatibility, crafted modifier/drawback,
+Arc 2 is not marked program-complete: its source-neutral economy ledger deliberately reports
+`arc3-deferred` instead of inventing world faucets or ETAs. Arc 3 now owns the separate live
+Mine/Skim, eligible Deep-Scanner and eligible fixed-Fabrication path; authored new-loot tables/rates, natural-affix
+compatibility, crafted modifier/drawback,
 upgrade/socket policy, source-to-upgrade recovery/pacing, and HUMAN phone/desktop item/compare review
 remain open. Final clean exact-head/full-battery evidence waits for the one end-of-campaign
 Compendium measurement recalibration described in the status overlay.
 
 ### 5.2 Arc 3 — engineering loop
+
+**Implementation status (2026-08-24): `[PARTIAL]`, product actions committed locally.** The
+canonical opportunity projections, finite active-play Mine/Skim, Engineering panel, shared action
+coordinator and committed-only Charter banking are implemented. Six research rows are displayed,
+but only Deep Scanners is purchasable; its pure orbital-reveal policy exists while current Survey
+renders no orbital mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs
+with exact costs/preconditions and capacity/revision headroom are actionable; fully exceptional
+slotted outputs and disconnected-effect rows remain unavailable. Clean current-source Slice/Glass,
+exact-head/full-battery evidence, economy
+simulation, HUMAN comprehension, authored variable construction/new loot and later progression
+depth remain open; therefore the Arc and its exit evidence are not declared complete.
 
 **Player promise:** surveyed worlds reveal finite, understandable opportunities. Gathering and
 engineering visibly improve what the player can build, see, and reach.
@@ -1144,6 +1177,13 @@ engineering visibly improve what the player can build, see, and reach.
 protection; reach/visual/Guide agreement; economy simulation; phone/desktop human comprehension.
 
 ### 5.3 Arc 4 — capture and ownership
+
+**Implementation status (2026-08-24): `[PARTIAL]`, package foundation only.** Full epoch-bound
+rosters, contact capability, 18 ownership namespaces, strict ownership-v1/import codecs, canonical
+acquisition snapshots and the pure capture planner are committed. No save bootstrap, capture
+writer, Compendium/ownership publication, product control, reload outcome or browser evidence
+exists. Commit `af12659` adds the pre-draw/capacity all-scenario certification and settlement
+prerequisite. It is committed prerequisite authority, not a durable capture settlement writer or UI.
 
 **Player promise:** discovery becomes meaningful ownership through finite, legible actions—not by
 opening a page or replaying a roll.
@@ -1188,6 +1228,12 @@ Arc 4.5 is a hard product gate. It is not optional polish and cannot be passed b
 retention metric, or technically green demo.
 
 ### 5.5 Arc 5 — companions
+
+**Implementation status (2026-08-24): `[PARTIAL]`, model/certificate only.** Ownership-v2 defines
+receipt-bound acquisition, deterministic fauna-only child successors, ordered parent evidence,
+dispositions and tombstones. A digest-only migration certificate binds a freshly imported V1 source
+to its V2 target without storing duplicate bytes. No product migration, breed/care/Recovery writer,
+companion UI, assignment, Chronicle or mission exists.
 
 **Player promise:** a companion is an owned creature with care, history, and recoverable stakes—not
 a disposable loot roll or unattended-income machine.
@@ -1248,8 +1294,17 @@ unimplemented combat. Combat/Guardian event integration remains a later Arc 6 ob
 **Goal:** build the platform that can deliver premium, distinctive audio safely before broad sound
 content is added.
 
-**Current truth:** v2 currently has stings only. It does not have creature calls, ambience, music,
-recorded assets, a category mixer, a concurrency manager, or complete audio package tests.
+**Current truth (2026-08-24; package-only partial):** the v2 player application still has stings
+only: survey ping and travel whoosh are live, the rarity sting is an exported seam, and Settings
+expose only Sound/Volume. Separately, `@cf/audio` now owns pure resolver-v1
+signature/profile/call-plan data over already-normalized inputs; a pinned
+1,014-route/1,010-identity coarse kingdom manifest and sound witness; pure distant-ecology and
+settled-expression plan seams; an injected five-category mixer/limiter/meter and bounded
+voice/lifecycle runtime; a pure lab accounting audit; and a pinned empty rights manifest/validator.
+The compatibility stings are not migrated into or counted by that runtime. There is no canonical
+app-creature/event adapter, authored playback or media, application/runtime owner, browser/device
+plateau, complete accessibility surface, combat/Guardian integration, or HUMAN listening evidence.
+This foundation does not close Arc 7 or Gate G and changes no Guide/release/version capability.
 
 **Build scope:**
 
@@ -1277,7 +1332,11 @@ speaker, mono, low volume, and reduced-intensity settings.
 **Initial budget policy:** measure before locking encoded/decoded byte caps. The approved starting
 full-mix active-voice targets are 20–28 low/mobile, 28–40 standard mobile/tablet, 40–56 desktop
 standard, and 56–72 desktop high. Gate G begins with at most eight creature emitters and 120 live
-nodes; these counts are distinct scopes, not interchangeable limits.
+nodes; these counts are distinct scopes, not interchangeable limits. The committed package policy
+defaults the injected package runtime to eight creature emitters and 96 nodes and rejects caller
+overrides above eight/120 before
+context creation. Compatibility stings and the player application remain outside that accounting,
+so app/browser/device plateau evidence is still required.
 
 ### 5.9 Arc 8 — HD audio and content
 
@@ -1285,6 +1344,10 @@ nodes; these counts are distinct scopes, not interchangeable limits.
 combat, Guardian, conquest, and post-combat layers stay explicit future Arc 6 integration work; their
 absence must remain visible in manifests and player copy rather than being represented by fabricated
 coverage.
+
+**Current truth:** no Arc 8 authored audio content or recorded asset is player-live. The empty
+machine-readable rights authority and coarse package sound witnesses are intake/design foundations,
+not content, route-family listening, file-integrity, or real-device evidence.
 
 **Goal:** turn the proven audio platform into a full local, distinctive, legally safe soundscape.
 
@@ -1308,8 +1371,9 @@ coverage.
 - Add adaptive music; universe, celestial, planet, biome, ship, material, crafting, capture,
   combat, and Guardian layers; animation-linked foley; selective spatialization/reverb.
 - Use only local project-owned, public-domain/CC0, or explicitly commercially redistributable media.
-  Add machine-readable rights manifest, proof, hashes, processing chain, loop/loudness data, and
-  validator in the same asset PR.
+  Populate the pinned empty machine-readable rights manifest and add proof, hashes, processing
+  chain, loop/loudness data, real file/media observations, and any necessary validator extension in
+  the same asset batch.
 - Enforce decoded-buffer byte LRU, fetch/decode deduplication, and device heat/battery testing.
 
 **Exit evidence:** complete route/rights coverage; family distinction; no non-fauna fallback;

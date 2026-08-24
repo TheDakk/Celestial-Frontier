@@ -2,8 +2,8 @@
 
 **STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
 2026-07-30. The dated v2 overlay below matches the development boundary and approved direction as
-of **2026-08-15**. It distinguishes the bounded sting package that is live from the later systems
-that remain a plan.
+of **2026-08-24**. It distinguishes the stings-only player application from the separate
+package-only Arc 7 foundation and the later content, integration and HUMAN work that remain open.
 **Shipped (production v1):** v1.8.0 "The Connection" · corrected and widened in v1.8.4
 "Clear Ground".
 
@@ -12,14 +12,14 @@ whole layer undocumented despite being the largest single feature of v1.8.
 
 ---
 
-## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-15)
+## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-24)
 
 ### 0.1 Truth boundary
 
-The current v2 development package is **stings-only**. `@cf/audio` lifts the synthesized rarity,
-survey and navigation stings; the application currently calls survey ping and travel whoosh, while
-the rarity sting remains an exported discovery seam. Current v2 Settings expose only master Sound
-and volume.
+The current v2 **player application is stings-only**. `@cf/audio` exports the synthesized rarity,
+survey and navigation compatibility facade; the application imports initialization, survey,
+navigation and gain operations, calls survey ping and travel whoosh, and leaves the rarity sting as
+an exported discovery seam. Current v2 Settings expose only master Sound and volume.
 
 The package facade is safe before application initialization: every exported sting and
 `applySfxGain()` is a no-op until `initAudio()` installs the save-backed seam. Initialization itself
@@ -33,15 +33,26 @@ awaited save-load, the current app assigns the save and then calls `initAudio()`
 before later playable scene/input publication; no ordinary current pre-init action route to the
 former exception has been reproduced.
 
-There are still no v2 creature calls, combat or Guardian cues, ambience, music, recorded assets,
-asset loader, category mixer or concurrency manager. Imported `vce`/`cbx` creature-voice and
-battle-sound preferences are preserved by persistence but are not yet live controls. The bounded
-sting suite is not the complete lifecycle, content, budget, listening or device evidence required
-by Arc 7/8 and Gate G.
+Separately, the package now contains a **package-only Arc 7 foundation**: pure resolver-v1
+`AudioSignature`/profile/call-plan data over already-normalized inputs; a pinned
+1,014-route/1,010-identity coarse kingdom taxonomy and sound-output witness; pure distant-ecology
+and settled-expression plan seams; an injected five-category mixer, limiter, meters, lifecycle,
+voice/concurrency manager and bounded diagnostics; a pure two-cycle lab audit; and a pinned empty
+rights manifest with a pure validator. The committed package policy rejects configured maxima above
+eight creature emitters or 120 live nodes before context creation. The compatibility stings deliberately
+remain outside that runtime's lifecycle and accounting.
 
-Everything below this paragraph is an **approved next-arc contract**. Capability-aware Guide copy
-and release notes must continue to describe only the stings that actually work until each later
-stage lands with its tests and listening evidence.
+There are still no player-live v2 creature calls, combat or Guardian cues, ambience, music,
+recorded assets or asset loader. No canonical app-creature/event adapter, authored voice graph,
+app runtime owner or real-browser/device plateau exists. Imported `vce`/`cbx` creature-voice and
+battle-sound preferences are preserved by persistence but are not yet live controls. Captions,
+mono, dynamic range, reduced intensity, physical-device listening/heat/battery evidence and all
+HUMAN appeal/comfort judgments remain open. Arc 7/8 and Gate G are therefore not closed.
+
+The sections below remain the **approved Arc 7/8 contract**. They identify which package
+foundations now exist and which product/content/evidence obligations remain. Capability-aware
+Guide copy and release notes must continue to describe only the stings that actually work in the
+application until a later capability is wired through its owning action and proved truthfully.
 
 ### 0.2 Deterministic identity means stable data, not identical rendered bytes
 
@@ -68,6 +79,11 @@ browser/device, and presentation-only noise in v1 is not a cross-engine PCM cont
 typed profiles, palette IDs and cue plans; they do not hash browser waveforms. Decorative jitter is
 allowed only when it cannot alter identity, simulation, saves or authoritative tests.
 
+The pure resolver-v1 package pipeline now implements this transformation **after** a caller supplies
+an exact, already-normalized `AudioIdentityInput`, including its owner and surviving lineage. The
+canonical application creature/save → audio-input projector is not implemented, and the player app
+does not call the pipeline or render its plans.
+
 ### 0.3 Typed runtime, buses and lifecycle
 
 The v2 package grows in stages behind one typed event boundary:
@@ -84,6 +100,11 @@ The v2 package grows in stages behind one typed event boundary:
    context-loss recovery, mute-before-create behavior, loop shutdown, route-transition cleanup and
    explicit `dispose()`. A hidden tab stops long-lived work. The approved ambience policy is
    **RESTART on visibility return**, re-armed safely when a browser requires another gesture.
+
+The injected package runtime now provides the structural mixer/limiter/meter, voice ownership,
+priority/cooldown/concurrency/stealing, mute/hidden/restart/context-loss and disposal foundation
+behind an injected `AudioContextLike`. It is not constructed or driven by the application, does not
+own the compatibility stings, and has no authored synthesis/asset renderer or browser evidence.
 
 The approved v2 settings surface retains master volume and adds category gains only as their buses
 become real. It restores independent Creature voices and Battle sound from the existing `vce` and
@@ -126,9 +147,10 @@ exact surviving owner/blend, anchor and ordered seed tuple. The tuple is never s
 implementation may claim it combines both complete parent voices until the selected representation
 round-trips and passes malformed/reverse-order controls.
 
-The already-settled voice corrections remain **planned, not implemented in v2**: retain `legacy`
-as an emergency definition but exclude it from ordinary procedural selection, and replace both
-hard f0 clips with a soft-saturation curve tuned only after human listening.
+Of the already-settled voice corrections, resolver-v1 now retains `legacy` as an emergency data
+definition while excluding it from ordinary route/sound-witness selection. Replacing both hard f0
+clips with a soft-saturation curve remains unimplemented and must be tuned only after HUMAN
+listening; no player-live renderer consumes either policy yet.
 
 ### 0.5 Combat, Guardians and environmental cues
 
@@ -153,6 +175,13 @@ Initial full-mix active-voice targets are **20–28 low/mobile, 28–40 standard
 desktop standard and 56–72 desktop high**. Inside that mix, Gate G begins with at most **8
 simultaneous creature-call emitters** and **120 live AudioNodes**. Those scopes are different: an
 eight-creature cap is not an eight-voice whole-game mix. Real phones may require lower values.
+
+The committed package policy defaults to 24 full-mix voices, eight creature emitters and 96 nodes,
+and fails closed if a caller configures more than eight creature emitters or 120 nodes. Its tests cover
+the exact 8/120 boundary, independent 9/121 rejections before context creation, the graph lower
+bound and separate creature/node pressure. This is package policy/accounting evidence only: the
+application and compatibility stings do not yet use that runtime, and no real-browser plateau has
+been measured.
 
 Encoded download bytes and decoded `AudioBuffer` bytes are separate budgets. Their exact tier caps
 must be measured and locked in `budgets.json` before recorded media is accepted; there is no
@@ -182,8 +211,11 @@ with explicit commercial modification and redistribution rights. No scraping, va
 unlicensed biological catalogue, human/celebrity voice cloning or biometric likeness is accepted.
 The root code license does not automatically license third-party media.
 
-`AUDIO_LICENSES.md` is the current empty human-readable rights ledger. Before the first media asset
-lands, add its machine-readable companion manifest. Each asset record carries stable ID,
+`AUDIO_LICENSES.md` is the current empty human-readable rights ledger. `@cf/audio` now also pins an
+empty versioned machine-readable authority and a pure fail-closed validator with negative controls.
+That proves the zero-asset state and intake data contract; it does not inspect repository files or
+media bytes and approves no asset. Before the first media asset lands, populate both ledgers and add
+the concrete file/media observation and proof boundary. Each asset record carries stable ID,
 creator/source, license and stored proof, commercial/derivative/redistribution/attribution terms,
 acquisition date, processing chain,
 original + runtime SHA-256, version, codec, duration, loop points, loudness, peak and tags. CI fails
@@ -206,6 +238,10 @@ The deterministic contract is:
 canonicalWorldKey + already surfaced opportunity/survey-roster projection + audio resolver version
   -> DistantEcologyHintPlan
 ```
+
+The pure `createDistantEcologyHintPlan()` seam now implements this data contract and its hidden,
+wrong-owner, silent/non-fauna and determinism controls. No approach/survey owner supplies it in the
+application, and it performs no playback, ducking or lifecycle work.
 
 The plan consumes the canonical world and the exact lead/roster projection the approach,
 survey, or opportunity owner has already made player-visible. It never keys on a bare planet seed,
@@ -243,6 +279,10 @@ Identity and expression are separate contracts:
 immutable inputs -> AudioSignature -> AudioIdentityProfile + CreatureCallPlan
 CreatureCallPlan + settled AudioEvent -> CreatureExpressionCue
 ```
+
+The package now implements the pure settled-event/caption-gated expression resolver and rejects
+absence/polling, missing-counterpart and mutated-plan inputs. No live care, capture, companion or
+combat writer emits these events, and no player playback path consumes the resulting cue.
 
 `CreatureCallPlan` is an invariant repertoire. `hurt`, `fed`, `bond`, care and assignment state do
 not change its serialized bytes, the signature or the identity profile. A separate pure resolver
@@ -345,7 +385,9 @@ A wolf roars (mammal, 148 Hz), a sparrow chirps (bird, 2068 Hz), a blue whale si
 `legacy` is documented as the fallback for a genome with no rig, but it is in `_VOICE_KEYS`, so
 ~5.5% of procedural creatures roll it as a first-class 18th family in production v1.8.9. The port
 decision is settled: keep the definition as a fallback but exclude it from ordinary procedural
-selection. That correction is planned, not implemented; current v2 has no creature-voice resolver.
+selection. The package-only resolver-v1 now implements that correction: it retains `legacy` as
+emergency data and excludes it from ordinary route/sound-witness selection. The player application
+remains stings-only and has no canonical creature adapter or renderer consuming the resolver.
 
 ### Genes the voice reads (v1.8.4)
 
@@ -419,7 +461,7 @@ in the shrillest band of human hearing.
 > per-family defect is invisible in an aggregate where that family is 4 of 631 classified fauna.
 > The port decision is now settled at **soft saturation at both bounds** so the extremes compress
 > rather than collapse. The exact curve still waits for the human listening test, and the change is
-> not implemented in the current stings-only v2 package.
+> not implemented in the current player or package renderer foundation.
 
 ---
 
@@ -454,8 +496,9 @@ stops the previous bed first). Ramped down over 0.5 s, nodes stopped 700 ms late
 
 **Production v1.8.9 behavior:** nothing restarts the bed when the tab becomes visible again, so
 returning to a vista leaves it silent. The port decision is now settled at **RESTART**, with a
-gesture-safe re-arm when the browser blocks automatic resume. It remains planned, not implemented
-in the current stings-only v2 package.
+gesture-safe re-arm when the browser blocks automatic resume. The injected v2 runtime implements
+and tests the package-level hidden/restart/context-recovery policy, but the application does not
+drive it and has no v2 ambience bed; compatibility stings remain outside its ownership.
 
 ---
 
@@ -514,6 +557,12 @@ gated (smoke): the toggles round-trip; `_TEMPER_BOLD` has one entry per `FA_TEMP
 most aggressive temperament is the boldest; two genomes differing only in `trait`/`diet`/`loco`
 produce different voices; a bat-family voice still moves with size rather than pinning at the
 clamp; `ambienceStop` exists and is callable.
+
+The separate v2 package suites now exercise sting initialization, pure identity/lineage/mutable-field
+contracts, the full set-qualified route inventory and sound witness, static purity, distant ecology,
+settled expression, injected runtime lifecycle/ownership/budgets, pure lab accounting, and the empty
+rights authority plus hypothetical intake failures. They do not listen, render through the player
+application, inspect real media bytes, or measure a browser/device audio graph.
 
 **What no harness here can do is judge whether any of it sounds good.** The repository has no
 audio-capture or perceptual oracle, and no external persona fleet hears an audio signal, so a flat

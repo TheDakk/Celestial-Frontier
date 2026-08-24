@@ -12,10 +12,27 @@ now owns the separate four-stage static inspection foundation described below. *
 `resolvedDepositTier`, grounded cards grade each vein for that world; the §24 power-curve pass ran — archetype
 band restored via the balance sim, two dead relics retuned as sidegrades, sim joined the deploy gate.)*
 **Build phase:** the legacy Forge economy and additive ship image are bundled in v1.8.9;
-the current v2 read-only ship presentation and bounded exact-instance Inventory are recorded below.
-V2 Cargo-material writers, Forge/Research/Fabrication, new loot sources and upgrade actions remain open.
+the current v2 exact-instance Inventory and Arc 3 Engineering actions are recorded below.
+Authored variable crafting, new loot-occurrence tables, upgrades/sockets and later economy depth remain open.
 **Current v2 overlay matches code as of:** 2026-08-24.
 **Related:** `RARITY_UNIVERSAL.md`, `FORGE_AND_DISCOVERY.md`, `ECONOMY_LOOT_CRAFTING.md`.
+
+> **2026-08-24 Arc 3 Engineering boundary — current local implementation:** the former read-only
+> Shipyard is now the **Engineering & Shipyard** panel. It preserves the four-stage static ship
+> projection and adds truthful current-world mining, current-star skimming, six research rows and
+> all 62 fixed recipes grouped by output family. Only Deep Scanners is purchasable among the six
+> research rows. Its pure orbital-reveal policy exists, but the current Survey surface does not
+> render orbital mineral rows. Only recipe outputs with a connected live effect, exact costs/
+> preconditions and capacity/revision headroom are actionable; fully exceptional slotted outputs
+> and disconnected-effect rows remain unavailable. Mine, Skim, the eligible Deep-Scanner purchase
+> and eligible fixed Fabrication are durable F3/F4 actions; the same transaction updates Cargo/
+> items/technology, Arc 2/3 carriers, ship/reach compatibility, Charter progress where applicable,
+> immutable receipt and revision. One coordinator prevents overlapping Engineering/Inventory work,
+> and UI state publishes only after durability.
+>
+> This is not authored random loot or unrestricted crafting. Recipe effects without a live
+> consumer remain labelled unavailable; natural-affix compatibility, variable modifiers/drawbacks,
+> upgrades, sockets, vendors and full source-to-upgrade pacing remain open.
 
 > **2026-08-24 Arc 2 v2 materials/gear boundary — current local implementation:**
 > `@cf/domain-loot` now owns the exact v1.8.9 62-definition catalogue: 9 parts, 6 components,
@@ -42,12 +59,14 @@ V2 Cargo-material writers, Forge/Research/Fabrication, new loot sources and upgr
 > material legacy rule and explicit equipped/locked/favorite safeguards. The UI publishes only
 > after durability and reload-converges without a second write after a post-commit publication fault.
 >
-> This is **not** the complete Forge or finished loot policy. Fixed recipes are inspectable authority,
-> but no v2 Fabricator/Research/Cargo-material spend is exposed. The source-neutral economy ledger
-> reports sources/rates as `arc3-deferred`; new loot occurrence/table policy, authored natural-affix
+> This was **not** the complete Forge or finished loot policy at the Arc 2 boundary. Fixed recipes
+> were inspectable while the source-neutral economy ledger reported sources/rates as
+> `arc3-deferred`; Arc 3's later current overlay above now owns live Mine/Skim, the eligible Deep-
+> Scanner purchase and eligible fixed-Fabrication actions. New loot occurrence/table policy, authored natural-affix
 > compatibility, crafted modifiers/drawbacks, upgrades, sockets, vendor/bulk actions, pacing/recovery,
-> and bespoke v2 Inventory portraits remain open. Local focused tests, one no-retry real Slice Smoke,
-> and one 12-viewport Glass Matrix are green on Edge `151.0.4129.101`; HUMAN item/compare/art review,
+> and bespoke v2 Inventory portraits remain open. For the recorded pre-current-WIP Arc 2 candidate,
+> focused tests, one no-retry real Slice Smoke and one Glass Matrix were green on Edge
+> `151.0.4129.101`; they do not certify the current moving working tree. HUMAN item/compare/art review,
 > the end-of-campaign Compendium measurement reseal, hosted/integration evidence, release and
 > deployment remain open.
 

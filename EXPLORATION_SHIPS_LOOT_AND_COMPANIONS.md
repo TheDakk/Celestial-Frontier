@@ -1,13 +1,31 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
 **STATUS:** approved product direction and implementation contract as of **2026-08-24**.
-The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the
-read-only Arc 1C Shipyard and bounded Arc 2 exact-instance Inventory foundations described below.
-Cargo-source/Fabricator writers, new item-instance loot sources, capture/acquisition,
-companion-expedition, breeding, live combat,
-Guardians, Fabrication, Research and ship-upgrade actions remain **not implemented** unless a
-row below explicitly says otherwise. This document coordinates the existing system specs; it
+The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
+exact-instance Inventory and Arc 3 Engineering actions described below. Arc 4 has committed
+roster/ownership/snapshot/planner packages but no durable capture writer or UI; Arc 5 has only its
+ownership-v2 model and digest migration certificate. Five non-Deep-Scanner research purchases,
+Survey orbital-mineral-row rendering, disconnected-effect and fully exceptional slotted fixed-
+recipe actions, new random loot sources, upgrades/sockets, capture/acquisition UI, companion
+expeditions, breeding, live combat and Guardians remain
+**not implemented** unless a row below explicitly says otherwise. This document coordinates the existing system specs; it
 does not silently promote planned behavior into the in-game Guide.
+
+> **2026-08-24 Arc 3–5 current boundary:** the **Engineering & Shipyard** panel now owns truthful
+> Mine and Skim actions around the existing static ship projection. It displays six research rows,
+> but only Deep Scanners is purchasable. The pure orbital-reveal policy exists, while current Survey
+> does not render orbital mineral rows. It lists all 62 fixed recipes, but only connected-effect
+> outputs with exact costs/preconditions and capacity/revision headroom are actionable; fully
+> exceptional slotted outputs and disconnected-effect rows remain unavailable. Each eligible action
+> settles Cargo/items/technology, Arc 2/3 carriers, compatibility mirrors, Charter progress where
+> applicable, F4 authority, one receipt and revision together. Finite source cursors advance from
+> prior active-play state. Variable crafting/new loot occurrence/upgrades remain open.
+>
+> Arc 4 owns the full epoch-bound roster, canonical acquisition snapshot, pure capture plan and
+> ownership-v1 model across 18 namespaces. Arc 5 owns a receipt-bound V2 model plus digest-only
+> migration certificate. Neither has a product writer, UI/reload/browser outcome, live breed/care/
+> assignment or companion expedition. Arc 4's pre-draw/capacity all-scenario certification and
+> settlement prerequisite is committed; it is not a durable capture writer or product publication.
 
 > **2026-08-24 Arc 2 ownership/economy overlay — current local implementation:** the canonical
 > loot package contains all 62 legacy definitions (20 stackables, 42 slotted across nine slots),
@@ -26,12 +44,15 @@ does not silently promote planned behavior into the in-game Guide.
 > that owns gear replaces the carrier in that same authority boundary; other checkpoint forms
 > preserve or protect it.
 >
-> The economy ledger is intentionally source-neutral. It proves fixed sinks and replays externally
-> authorized receipts but reports its production source model `arc3-deferred`; it supplies no mining
-> rate, ETA, drop occurrence, Fabricator or Research action. Authored natural-affix compatibility,
+> At the Arc 2 boundary the economy ledger was intentionally source-neutral. It proves fixed sinks
+> and replays externally authorized receipts but retains `arc3-deferred` as its own historical source
+> field; Arc 3's separate current overlay above owns live Mine/Skim, the eligible Deep-Scanner
+> purchase and eligible fixed Fabrication.
+> It still supplies no new random drop-occurrence table. Authored natural-affix compatibility,
 > crafted modifiers/drawbacks, upgrades, sockets, vendor/bulk policy, pacing/recovery and HUMAN
-> item/compare/art review remain open. Focused tests and one no-retry Slice Smoke plus one
-> 12-viewport Glass Matrix are locally green on Edge `151.0.4129.101`, but no exact-head/hosted,
+> item/compare/art review remain open. For the recorded pre-current-WIP Arc 2 candidate, focused
+> tests and one no-retry Slice Smoke plus one 12-viewport Glass Matrix were locally green on Edge
+> `151.0.4129.101`, but no exact-head/hosted,
 > integration, preview, Gate, release, version or deployment authority follows.
 
 > **2026-08-22 Arc 1C ship/scene overlay — historical pre-Arc-2 implementation:** clean product/ruler
@@ -188,16 +209,16 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 | System | Current v2 executable state | Next owned outcome |
 |---|---|---|
 | Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
-| Charters / reach language | One current stage-aware landfall projection; imported drive/chapter facts still gate reach; no other v2 Charter writer or reward | Port complete outcome writers and only then expose their goals, transitions and rewards |
+| Charters / reach language | Stage-aware landfall projection plus committed-only Arc 3 mining/fixed-fabrication goal banking; imported drive/chapter facts still gate reach | Port remaining outcome writers and expose goals/transitions/rewards only with them |
 | Compendium | Read-only virtualized 1,500-row list, bounded asynchronous thumbnails and selected static detail | HUMAN Arc 1 art review, then any separately bounded living selected preview |
-| Capture / specimen acquisition | No live v2 Tame, Scavenge, Sample or Biosphere Yield action | Port finite capture writers before owned companions or collection progression |
+| Capture / specimen acquisition | Canonical full-roster snapshot, pure planner and ownership-v1 package exist; no live Tame, Scavenge, Sample or Biosphere writer/UI | Bootstrap then port one finite receipt-backed capture writer before companions |
 | Inventory / character portrait | Exact-instance gear carrier and real bounded Inventory inspect/filter/conditional compare plus Equip/Unequip/Salvage/pending-claim are live and receipt-backed; oversized legacy holds are lossless inspection-only | Authored new-loot/upgrade/socket/modifier policy, paper-doll/bespoke item art and HUMAN phone/desktop readability |
-| Shipyard / ship upgrades | Read-only Shipyard inspection with pure normalized capability/visual state, four static SVG silhouettes, truthful systems/hardpoints, and one disposable DOM/SVG preview | HUMAN silhouette judgment, then real Research/Fabrication/upgrade writers and build outcomes |
-| Materials / crafting / loot | All 47 material/62 item/six-affix facts, fixed recipe/salvage graphs and source-neutral ledger are executable; no production source or craft writer is exposed | Arc 3 finite sources and real Research/Fabrication settlement, then later reward-source tables |
+| Shipyard / ship upgrades | Engineering & Shipyard retains the pure normalized ship projection/four static SVG silhouettes and exposes real Mine/Skim, the sole purchasable Deep-Scanner row, and eligible fixed-Fabrication actions; the pure orbital-reveal policy exists but Survey renders no orbital mineral rows; connected exact system outputs can update reach | Other five research purchases, Survey orbital mineral rows, fully exceptional slotted/disconnected recipe outputs, HUMAN silhouette and Engineering comprehension, and later authored upgrades/variable construction |
+| Materials / crafting / loot | All 47 material/62 item/six-affix facts, finite canonical Mine/Skim sources, six displayed Research rows and all 62 listed fixed recipes are present; only Deep Scanners and connected-effect recipes with exact costs/preconditions and capacity/revision headroom are actionable and receipt-backed | Fully exceptional slotted/disconnected outputs, authored random-loot sources, natural-affix compatibility, upgrades/sockets and recovery/pacing |
 | Breeding / care | Domain genetics exists; no live v2 action | Nonlethal breeding with bounded parent Recovery, lineage, care and bond outcomes |
 | Combat / conquest / Guardians | Deterministic domain duel exists; no live v2 action | Outcome-driven combat UI, rewards, injury and Guardian encounters |
 | Companion expeditions | No committed runtime exists | Active-play missions with sealed exact-once receipts |
-| Audio | Whoosh and survey ping only | Versioned mixer, creature identity, combat, ship and biome sound |
+| Audio | Player path: whoosh and survey ping only. Package-only partial: pure resolver/taxonomy/ecology/expression data, injected bounded mixer/lifecycle/lab, and empty rights validator; compatibility stings are outside it | Canonical app adapters and owned playback first; then authored creature/ship/biome sound, accessibility, browser/device plateaus and HUMAN listening. Combat/Guardian integration waits for Arc 6 |
 
 The in-game Guide must continue to say these unavailable outcomes are unavailable. It may
 describe a new capability only after the action exists, persists, reloads, is reachable by
@@ -689,15 +710,15 @@ batch. Planned systems live here and in their system docs, not in player-visible
 |---|---|---|
 | 0 — repair/current truth | Actionable Charter projection/copy; canonical CF1 galaxy → star → planet identity proof; deterministic world-opportunity and first-journey contracts; source/doc table corrections | fresh save can never receive an impossible live goal; every surfaced opportunity maps to a real action; no world-bound ownership receipt/writer exists before the canonical identity seam is proven; Guide remains honest |
 | 1 — portrait/ship foundation | virtualized thumbnails, character portrait service, pure `ShipVisualState`, static Shipyard proof | Automated foundation and 42/42 memory route are complete; phone/desktop HUMAN portrait and four-silhouette judgment remain open |
-| 2 — item instances and readable economy **[PARTIAL locally green]** | Schema/migration, strict carrier, Inventory, equip/unequip/salvage/pending-claim, canonical fixed tables and exact inspect/conditional compare are implemented; production source/craft policy is not | Current fixed-point/exact-instance/browser outcomes are green; authored source/range/targeted-craft/pacing policy and HUMAN phone/desktop review remain before program closure |
-| 3 — engineering loop | mining/skimming/research/fabrication and visible build outcomes | real-action rewards, finite veins, active-play extraction, reach/visual/Guide agreement |
-| 4 — capture/ownership | finite Tame/Scavenge/Sample acquisition, catalogue/owned-instance split and Biosphere Yield | real-action page/specimen creation, attempt spend/recovery, no duplicate/reroll/two-tab grant |
+| 2 — item instances and readable economy **[PARTIAL; recorded local candidate green]** | Schema/migration, strict carrier, Inventory, equip/unequip/salvage/pending-claim, canonical fixed tables and exact inspect/conditional compare are implemented; production source/craft policy is not | The recorded pre-current-WIP Arc 2 candidate's fixed-point/exact-instance/browser outcomes were green; this does not certify the current moving tree. Authored source/range/targeted-craft/pacing policy and HUMAN phone/desktop review remain before program closure |
+| 3 — engineering loop **[PARTIAL locally implemented]** | Mine/Skim, sole purchasable Deep-Scanner row, six-row Research presentation, all-62 fixed-recipe listing, eligible connected-effect/exact-cost/headroom fabrication actions, and truthful Guide/release/Training guidance are implemented; Survey orbital mineral rows, the other five research purchases, fully exceptional slotted/disconnected outputs and wider engineering depth remain open | real-action rewards, finite veins, active-play extraction, clean current-source browser proof, reach/visual/Guide agreement and HUMAN comprehension |
+| 4 — capture/ownership **[PARTIAL package/prerequisite]** | Catalogue/owned-instance models, canonical snapshot/planner and pre-draw/capacity all-scenario certification/settlement prerequisite are committed; no durable Tame/Scavenge/Sample writer or UI exists | real-action page/specimen creation, attempt spend/recovery, no duplicate/reroll/two-tab grant |
 | 4.5 — first complete journey | Fresh-start Survey → opportunity → Gather → Build → Tame → ship upgrade → farther reach → meaningful Return | first-time 30–60-minute human path proves comprehension, agency and satisfying pacing without idle waits or a scripted fake reward |
 | 5 — companions | nonlethal breeding/recovery, care/bond/Chronicle and active-play missions | fed inheritance, recovery/away locks, exact-once return, save-failure/two-tab controls |
 | 5.5 — combat decision model | role, preparation, telegraphing, counterplay, retreat and settlement rules are specified and scenario-proven before battle UI expands | humans can choose and explain a viable response; no opaque hard-counter or stat-only outcome passes as strategy |
 | 6 — combat/Guardians | live duel/conquest party presentation and receipt rewards | transcript-driven presentation; every reward/injury/settlement outcome tested |
-| 7 — audio foundation | mixer/lifecycle, current procedural voice parity, audio lab, accessibility | deterministic signatures/profiles, node/voice budgets, visibility resume, human listening gate |
-| 8 — HD audio/content | Earth mapping, hybrid voice, combat/Guardian/ship/biome layers | complete rights manifest and route coverage, family distinctness, real-device heat/listening |
+| 7 — audio foundation **[PARTIAL package-only]** | Pure resolver/taxonomy/ecology/expression seams, injected mixer/lifecycle/voice owner, lab accounting and the hard ≤8-creature/≤120-node configuration cap are committed; app adapters/playback and accessibility remain open | Canonical app projection and owned playback, real-browser node/voice plateau, captions/mono/dynamic-range/reduced-intensity behavior, visibility outcome and HUMAN listening gate |
+| 8 — HD audio/content | Empty rights authority exists; Earth family mapping, hybrid voice and current-system authored creature/ship/biome layers remain open, while combat/Guardian layers wait for Arc 6 | Nonempty rights/file evidence and complete authored route coverage, family distinctness, real-device heat/listening |
 | 9 — frontier legacy and projects | Chronicle/museum, ship/discovery/Guardian history, share cards and optional bounded frontier projects | finite visible inputs; no decay, mandatory maintenance or offline-income loop; every legacy record has a real action owner |
 | 10 — integration beta | living previews, travel reuse, balance and complete Guide/Training | full battery, save migration, long-session memory/audio plateau, multi-lens human play |
 
@@ -729,12 +750,16 @@ cannot understand, enjoy or comfortably use it.
 
 ### Product systems still open in v2
 
-- Cargo-material sources, explorer paper doll/bespoke item art, saved advanced filters and broader
-  Inventory policy beyond the live exact gear actions;
-- Shipyard Research/Fabrication/upgrade writers, mining, skimming and richer visual vessel progression beyond the read-only static foundation;
+- broader Cargo-material source coverage beyond the live finite Mine/Skim subset, explorer paper
+  doll/bespoke item art, saved advanced filters and broader Inventory policy beyond the live exact
+  gear actions;
+- Research beyond the live Deep Scanners purchase, fixed Fabrication outputs whose effects are not
+  yet connected, authored upgrade writers and richer visual vessel progression beyond the live
+  Engineering panel;
 - production item-instance loot sources, authored natural-affix compatibility/deeper pools,
   crafted modifier/drawback, upgrades/sockets and Guardian drops;
-- a truthful world-opportunity map and executable economy source/rate/recovery/pacing model;
+- broader world-opportunity presentation and economy source/rate/recovery/pacing coverage beyond
+  the canonical finite Arc 3 opportunities and their currently executable source subset;
 - Tame/Scavenge/Sample acquisition, finite Biosphere Yield and catalogue/specimen ownership;
 - feeding, injury care, breeding, lineage actions, creature XP/classes and Companion bond;
 - friendly duels, conquest, Apex Guardians, settlement rewards and Binder/Paragons;

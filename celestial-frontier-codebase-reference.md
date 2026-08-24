@@ -5,7 +5,30 @@
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 source overlay matches code as of 2026-08-24.**
-> **2026-08-24 F3/F4 + Arc 2 implementation overlay — current local source:**
+>
+> **2026-08-24 Arc 3–5 + Arc 7 current local overlay:** `@cf/domain-opportunity`,
+> `arc3-engineering-actions.ts`, `engineering-panel-model.ts`, `engineering-panel.ts`, and
+> `product-action-coordinator.ts` now own full-CF1 finite world/star opportunities and the live
+> Mine/Skim and eligible fixed-Engineering path. The panel displays six research rows but only Deep
+> Scanners is purchasable. Its pure orbital-reveal policy exists, while current Survey renders no
+> orbital mineral rows. The panel lists all 62 fixed recipes, but only connected-effect outputs with
+> exact costs/preconditions and capacity/revision headroom are actionable; fully exceptional slotted
+> outputs and disconnected-effect rows remain unavailable. One transaction commits Cargo/items/technology, Arc 2/3
+> carriers, compatibility mirrors, Charter mine/fabrication progress, F4 authority, receipt and
+> revision; publication follows durability.
+>
+> Arc 4's committed package boundary is `fullWorldRoster` plus explicit epoch ownership,
+> capture-contact capability, acquisition snapshot/planner, ownership-v1 and its persistence codec
+> across 18 namespaces. There is no ownership bootstrap, capture CAS, product button or browser
+> outcome yet; the committed pre-draw/capacity all-scenario certification and settlement prerequisite
+> does not settle capture or publish ownership. Arc 5 adds the
+> receipt-bound ownership-v2 model and a digest-only V1→V2 migration certificate—not duplicated V2
+> state, a writer, breed action or companion UI. Arc 7 has pure identity/taxonomy/ecology/expression,
+> an injected runtime, lab and empty-rights validator; it is not app-owned playback. Its absolute
+> eight-emitter/120-node configuration caps are committed package policy.
+>
+> **2026-08-24 F3/F4 + Arc 2 implementation overlay — historical foundation, still current where
+> the newer overlay does not supersede it:**
 > `packages/domain/loot` now owns the recursively frozen 62-definition catalogue (20 stackable,
 > 42 slotted across nine slots), ten-tier vocabulary, six literal legacy affixes, strict
 > `GearInstance`/`GearInventory` codecs and transitions, fixed recipe/graph/salvage audits, pure
@@ -40,13 +63,12 @@
 > current-view/source-deferred restore preserves it, corrupt/future refuses, and post-durable
 > publication failure reloads without a second write.
 >
-> Focused Arc 2/F3/F4 evidence is 16 files /149 tests; all TypeScript programs and Vite build pass.
-> One no-retry local Slice Smoke passed on Edge `151.0.4129.101` in 239,546 ms with zero findings;
-> one full Glass Matrix passed in 61,039 ms at 12/12 viewports and 78/78 controls, with none blocked/
-> omitted and zero findings/instrument failures/retries. Both bind dirty working-tree inputs. The full
-> suite remains deliberately red only because the dependency graph moved sealed Compendium
-> measurement input `6a961df8…` to `e6e6bbc…`; reseal once at the final multi-Arc head. Authored
-> sources/rates/affix compatibility/richer construction, Fabricator/Research, pacing and HUMAN
+> For the recorded pre-current-WIP Arc 2 candidate, focused Arc 2/F3/F4 checks plus all TypeScript
+> programs and the Vite build passed. Its no-retry local Slice Smoke and full Glass Matrix reports
+> were terminal PASS on Edge `151.0.4129.101`; both bind that recorded candidate's dirty inputs. In
+> that recorded candidate, the full suite's sole deliberate red was the Compendium measurement-
+> authority mismatch scheduled for one final multi-Arc reseal. This evidence does not certify the
+> current moving working tree. Authored random-loot sources/rates/affix compatibility/richer construction, pacing and HUMAN
 > item/compare art remain open. No hosted/integration, preview, Gate, version, release or deployment
 > authority follows.
 >
@@ -637,7 +659,7 @@
 > version or release. At that boundary D-TRAIN-1 remained open for richer legacy snapshots; F3
 > still owns revisions/CAS/split stores/receipt journal, and F4 owns clock,
 > visibility, active-play and SessionRNG policy.
-> **2026-08-15 F1b WorldGen contract overlay:** The byte-verbatim WorldGen body,
+> **2026-08-15 F1b WorldGen contract overlay (historical pre-F3/F4 boundary):** The byte-verbatim WorldGen body,
 > generated values, cache keys and call order are unchanged. Its typed surface
 > now exposes required own `GalaxyCellGalaxies.web` metadata and the exact
 > `SupernovaSite`/birth/remnant shape, with `supernovaSites`'s second parameter
@@ -646,7 +668,7 @@
 > `GAL_SPRITES` precondition for a first uncached ordinary generated-galaxy
 > branch; `installCaptureHooks()` remains the current boot seam. This is
 > contract truth, not removal of the free-global dependency, D-HAZE, CF1/F2,
-> `_sanitizeSavedGenome` mutation, or F4 clock work.
+> `_sanitizeSavedGenome` mutation, or the then-open F4 clock work.
 > **2026-08-15 F1b audio package overlay:** The v2 package remains stings-only, but its public
 > rarity/survey/navigation stings and `applySfxGain()` now no-op before `initAudio()` installs the
 > save-backed seam. Initialization creates no context. After it, Sound-off prevents construction;
@@ -658,7 +680,7 @@
 > pre-init action route to the former package exception was reproduced. This does not implement or
 > close Arc 7/8 or Gate G lifecycle, content, ownership, budget, rights, device or listening work, and it
 > changes no Guide/Training/release-copy capability or version identity.
-> **2026-08-15 F1b epoch persistence overlay:** `EpochClock.base()` is the
+> **2026-08-15 F1b epoch persistence overlay (historical pre-F3/F4 boundary):** `EpochClock.base()` is the
 > immutable sanitized construction origin; ordinary persistence must snapshot
 > the advancing `current()` value. The browser app already followed that recipe:
 > it constructs once from imported `SaveStateV2.EPOCH_BASE` and a fresh
@@ -667,10 +689,10 @@
 > snapshot after reload. The package comments and tests now state that saving
 > never rebases the live clock and carrying an old elapsed segment into a new
 > base would double-count it. Real-browser smoke advances one exact epoch, reads
-> the raw IndexedDB primary, and reloads the snapshot. Automatic edge saves,
-> hidden-time policy, live global-read timing, and SessionRNG remain F4. F3 owns
-> the CAS/revision/tab-lease substrate; F4 owns the persisted `activePlayMs`
-> clock/accrual policy. This is not a current-player data-loss finding.
+> the raw IndexedDB primary, and reloads the snapshot. Automatic edge saves, hidden-time policy,
+> live global-read timing, SessionRNG and the CAS/revision/tab-lease substrate were still F3/F4
+> work at that boundary. The current 2026-08-24 overlay records their implemented authority. This
+> was not a current-player data-loss finding.
 > **2026-08-13 exploration/ship/loot/companion/audio review (historical review
 > boundary; Arc 1A resource status is refreshed above):** The executable v2
 > boundary remained the Phase-4 travel/survey slice. At that boundary, `apps/game/src/main.ts` rendered the
@@ -1711,12 +1733,13 @@ etc.) are pure functions of position/seed.
 
 ## 4. World generation
 
-**Current v2 typed boundary (2026-08-15):** `galaxiesInCell` returns its
+**Historical v2 typed boundary (2026-08-15; current where not superseded):** `galaxiesInCell` returns its
 memoized mutable galaxy array with required finite `[0,1]` `web` metadata, even
 when the array is empty. `supernovaSites(galaxySeed, epoch)` returns 1–3 typed
 sites, each with a typed `NS | shell | BH` remnant and 1–3 births; `epoch` is the
 deterministic cache/time key, not a count. A plain `number` cannot nominally
-prevent count misuse, so stronger epoch ownership remains F4. Import is safe,
+prevent count misuse; stronger epoch ownership was still F4 work at that boundary and is now
+supplied by the current app authority. Import is safe,
 but an uncached ordinary galaxy/merger/dwarf generation path still needs the
 legacy-compatible 16-entry `GAL_SPRITES` binding installed first; empty,
 special-only, and cached paths may not read it. The app performs that installation
@@ -2105,20 +2128,30 @@ Compendium / Star Atlas / Cosmic Events / Settings.
 > **See `AUDIO.md` for the full system** (creature voices, combat, ambience, the
 > feedback grammar, the toggles, and the traps). This section is the code map only.
 
-The current v2 package is deliberately narrower than production v1: its exact public surface is
-`initAudio`, the lifted rarity/survey/navigation stings, and the shared-gain updater. The three
-sting calls and gain updater are inert before `initAudio()` installs live Sound/Volume getters;
-initialization itself allocates nothing.
-Thereafter Sound-off remains mute-before-create, while an enabled call lazily selects standard
-`AudioContext` before the `webkitAudioContext` compatibility fallback and reuses the context.
-Focused package controls cover the pre-init/public surface in both directions and the constructor,
-mute and suspended-resume boundaries. During the awaited save-load, the application assigns the
-save and calls `initAudio()` synchronously before later playable scene/input publication; no
-ordinary current pre-init action route was reproduced. The repaired exception is therefore a
-package contract finding rather than a proved player route. Full engine lifecycle, voices,
-ambience, combat/Guardian cues, music, assets/rights, mixing, node/buffer ownership, budgets,
-device listening and quality acceptance
-remain open under Arc 7/8 and Gate G; no player-facing capability or version follows from this guard.
+The current v2 application is deliberately narrower than production v1. It imports the
+compatibility `initAudio`, survey/navigation stings and shared-gain updater; the package also exports
+the rarity sting discovery seam. Sting calls and the gain updater are inert before `initAudio()`
+installs live Sound/Volume getters, and initialization allocates nothing. Thereafter Sound-off
+remains mute-before-create, while an enabled call lazily selects standard `AudioContext` before the
+`webkitAudioContext` fallback and reuses it. During awaited save-load, the app assigns the save and
+calls `initAudio()` synchronously before later playable scene/input publication. Current audible v2
+behavior is still survey ping and travel whoosh only.
+
+The package's separate Arc 7 surface exports pure identity serialization/profile/call planning,
+set-qualified taxonomy and sound witnesses, static-purity auditing, distant-ecology and
+settled-expression plans, the injected `createAudioRuntime()` owner and diagnostics/lab audits, and
+the versioned empty rights authority/validator. The runtime owns five category buses, limiter,
+meters, priority/cooldown/concurrency/stealing, reservations, exact node/cache/context cleanup,
+mute/hidden/restart/context-loss handling and disposal for graphs submitted to it. The committed
+policy defaults it to 24 voices, eight creature emitters and 96 nodes and rejects
+configuration above the absolute eight-emitter/120-node caps before context creation. It neither
+owns nor counts the compatibility stings.
+
+No canonical app creature/save/event adapter or authored graph feeds that runtime, and no v2
+creature voice, ambience, combat/Guardian cue, music or recorded asset is player-live. Browser/device
+plateaus, decoded-byte policy, file/media rights observation, captions, mono, dynamic range,
+reduced-intensity behavior and HUMAN listening/quality acceptance remain open. Gate G and Arc 7/8
+remain partial; no player-facing capability or version follows from the package foundation.
 
 **v1.8 "The Connection" added the largest part of this layer** and it is not
 described below: `voiceOf`/`playVoice` (deterministic per-genome creature voices
