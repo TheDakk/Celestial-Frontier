@@ -30,6 +30,7 @@ import {
   type StorageOperation,
   type TabLeaseClient,
   type TabLeaseGrant,
+  type V5ExtensionWrite,
   type V5Extensions,
   type V5WritableState,
 } from '@cf/persistence';
@@ -123,7 +124,13 @@ export interface F4RuntimeAuthority {
   /** Stop accrual before asynchronous release when the document hides. */
   setVisible(visible: boolean): Promise<F4RuntimeHeartbeatOutcome>;
   setAnswerable(answerable: boolean): void;
-  commit(state: V5WritableState['state'], codecNow: number): Promise<F4RuntimeCommitOutcome>;
+  /** Commit a receipt-free checkpoint. Optional namespaced replacements land
+      in the same lease/revision CAS as state, clock and unchanged RNG. */
+  commit(
+    state: V5WritableState['state'],
+    codecNow: number,
+    extensionWrites?: readonly V5ExtensionWrite[],
+  ): Promise<F4RuntimeCommitOutcome>;
   /** Plan and commit one receipt-bearing product outcome under this
       controller's private revision, lease, active-play and RNG authority. */
   commitOutcome(input: F4RuntimeOutcomeInput): Promise<F4RuntimeOutcomeCommitOutcome>;
@@ -274,6 +281,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
     expectedRevision: number,
     expectedExtensions: V5Extensions,
     expectedSessionRng: SessionRNGState,
+    extensionWrites: readonly V5ExtensionWrite[],
   ): Promise<F4RuntimeCommitOutcome> => {
     if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
     const outcome = await owner.commit({
@@ -282,6 +290,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
       writable: { state, extensions: expectedExtensions },
       snapshot: clock.current(input.now()),
       sessionRng: expectedSessionRng,
+      extensionWrites,
       now: codecNow,
     });
     if (outcome.kind === 'committed') {
@@ -330,6 +339,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
     commit(
       state: V5WritableState['state'],
       codecNow: number,
+      extensionWrites: readonly V5ExtensionWrite[] = Object.freeze([]),
     ): Promise<F4RuntimeCommitOutcome> {
       /* Bind a write to the exact parent visible when its caller submitted it.
          The queue orders I/O and lifecycle transitions; it must never turn a
@@ -338,7 +348,7 @@ export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4Runt
       const expectedExtensions = extensions;
       const expectedSessionRng = sessionRng;
       return enqueue(() => commitUnsafe(
-        state, codecNow, expectedRevision, expectedExtensions, expectedSessionRng,
+        state, codecNow, expectedRevision, expectedExtensions, expectedSessionRng, extensionWrites,
       ));
     },
     commitOutcome(outcomeInput: F4RuntimeOutcomeInput): Promise<F4RuntimeOutcomeCommitOutcome> {

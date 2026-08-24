@@ -90,6 +90,13 @@ const SHIPYARD_COPY_CONTRADICTIONS = Object.freeze([
   /(?:chassis|visual state)[^.!?]{0,80}(?:saved separately|separate saved state|writes? to the save)/i,
 ]);
 
+const INVENTORY_COPY_CONTRADICTIONS = Object.freeze([
+  /(?:new loot sources?|drop rates?|Fabricator|Research Bench|item upgrades?|sockets?|vendors?|targeted crafting)[^.!?]{0,96}(?:is|are) (?:now )?(?:live|playable|available)/i,
+  /salvage[^.!?]{0,80}(?:scrap|Stardust)/i,
+  /oversized legacy hold[^.!?]{0,80}(?:is|may be|will be) (?:truncat|discard|drop)/i,
+  /(?:reload|double press|stale tab)[^.!?]{0,80}(?:can|may|will) (?:reroll|duplicate)/i,
+]);
+
 const HD_ATTACHMENT_COPY_CONTRADICTIONS = Object.freeze([
   /release(?:s|d)? the (?:displayed )?predecessor[^.!?]{0,64}before[^.!?]{0,64}(?:acquir|publish)/i,
   /stale (?:work|completion)[^.!?]{0,64}(?:can|may|will|does) publish/i,
@@ -111,9 +118,27 @@ function shipyardGuideCopyIsTruthful(body: string): boolean {
     && /completed Charter proves frontier reach while no Intergalactic Drive is owned/i.test(copy)
     && /honest legacy charter refit[^.!?]{0,80}generic long-range chassis/i.test(copy)
     && /never names or draws the unowned drive or any unowned hardpoint/i.test(copy)
-    && /Fabricator, Research Bench purchases and prerequisites, ship upgrades[^.!?]{0,160}all inventory writers remain unavailable/i.test(copy)
-    && /current Shipyard cannot build, buy, research, equip, salvage, reward, or change the expedition/i.test(copy)
+    && /Fabricator, Research Bench purchases and prerequisites, ship upgrades[^.!?]{0,160}ship-system writers remain unavailable/i.test(copy)
+    && /current Shipyard cannot build, buy, research, reward, or change the expedition/i.test(copy)
+    && /explorer-gear inspection, equipping, unequipping, and salvage live[^.!?]{0,64}Inventory/i.test(copy)
     && SHIPYARD_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
+}
+
+function inventoryGuideCopyIsTruthful(body: string): boolean {
+  const copy = plainCopy(body);
+  return /Inventory[^.!?]{0,80}(?:phone dock|desktop rail)/i.test(copy)
+    && /stable item instance/i.test(copy)
+    && /compare every effect/i.test(copy)
+    && /conditional effects are labelled/i.test(copy)
+    && /Equip[^.!?]{0,24}Unequip[^.!?]{0,24}Salvage[^.!?]{0,40}pending-reward claim[^.!?]{0,96}revision-checked/i.test(copy)
+    && /reload cannot reroll/i.test(copy)
+    && /half of each direct material cost, rounded down/i.test(copy)
+    && /one-unit non-gated fallback/i.test(copy)
+    && /oversized legacy hold[^.!?]{0,80}inspection only/i.test(copy)
+    && /never truncated/i.test(copy)
+    && /New loot sources and drop rates[^.!?]{0,180}remain unavailable/i.test(copy)
+    && /no recipe is exposed as a player action until Arc 3/i.test(copy)
+    && INVENTORY_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
 }
 
 function shipyardReleaseCopyIsTruthful(body: string): boolean {
@@ -254,8 +279,8 @@ describe('v2 Guide capability filter', () => {
     expect(categories).toHaveLength(9);
     expect(topics).toHaveLength(41);
     expect(topics.filter((topic) => topic.availability === 'available')).toHaveLength(0);
-    expect(topics.filter((topic) => topic.availability === 'partial')).toHaveLength(19);
-    expect(topics.filter((topic) => topic.availability === 'unavailable')).toHaveLength(22);
+    expect(topics.filter((topic) => topic.availability === 'partial')).toHaveLength(20);
+    expect(topics.filter((topic) => topic.availability === 'unavailable')).toHaveLength(21);
     expect(topics.filter((topic) => topic.availability === 'partial')
       .every((topic) => topic.body !== topic.legacyBody)).toBe(true);
     expect(topics.some((topic) => topic.id === 'beacon' || topic.id === 'events')).toBe(false);
@@ -321,7 +346,7 @@ describe('v2 Guide capability filter', () => {
     expect(getGuideTopic('hp')?.body).toContain('round-trippable');
   });
 
-  it('exposes only honest read-only Shipyard inspection and keeps every writer unavailable', () => {
+  it('keeps Shipyard read-only while exposing only the exact Inventory actions that exist', () => {
     const research = getGuideTopic('research');
     const crafting = getGuideTopic('crafting');
     const shipyardBullet = V2_DRAFT_RELEASE.sections
@@ -333,8 +358,9 @@ describe('v2 Guide capability filter', () => {
 
     expect(research?.availability).toBe('partial');
     expect(shipyardGuideCopyIsTruthful(research!.body)).toBe(true);
-    expect(crafting?.availability).toBe('unavailable');
-    for (const id of ['stardust', 'harvest', 'mining', 'skimming', 'crafting'] as const) {
+    expect(crafting?.availability).toBe('partial');
+    expect(inventoryGuideCopyIsTruthful(crafting!.body)).toBe(true);
+    for (const id of ['stardust', 'harvest', 'mining', 'skimming'] as const) {
       expect(getGuideTopic(id)?.availability, `${id} writer/faucet became available`)
         .toBe('unavailable');
     }
@@ -354,6 +380,15 @@ describe('v2 Guide capability filter', () => {
         'Only systems and hardpoints actually present in the saved inventory are named and drawn',
         'Hardpoints are inferred from the chassis stage',
       ),
+    )).toBe(false);
+    expect(inventoryGuideCopyIsTruthful(
+      crafting!.body + ' New loot sources and drop rates are now available.',
+    )).toBe(false);
+    expect(inventoryGuideCopyIsTruthful(
+      crafting!.body.replace('never truncated', 'truncated to fit'),
+    )).toBe(false);
+    expect(inventoryGuideCopyIsTruthful(
+      crafting!.body.replace('half of each direct material cost, rounded down', 'invented scrap and Stardust'),
     )).toBe(false);
     expect(shipyardReleaseCopyIsTruthful(
       shipyardBullet! + ' The Research Bench is now available.',
@@ -629,6 +664,15 @@ describe('v2 Guide capability filter', () => {
     expect(withBreeding?.body).toBe(withBreeding?.legacyBody);
   });
 
+  it('negative control: Inventory copy is capability-bound rather than always exposed', () => {
+    const withoutInventory = V2_DEVELOPMENT_GUIDE_CAPABILITIES
+      .filter((capability) => capability !== 'inventory-actions');
+    const topic = getGuideTopic('crafting', withoutInventory);
+    expect(topic?.availability).toBe('unavailable');
+    expect(topic?.body).toContain('Exact Inventory actions have not been connected');
+    expect(topic?.body).not.toContain('revision-checked actions');
+  });
+
   it('can expose dormant inventory explicitly without presenting it as live', () => {
     expect(getGuideTopic('beacon')).toBeUndefined();
     const beacon = getGuideTopic('beacon', V2_DEVELOPMENT_GUIDE_CAPABILITIES, {
@@ -695,6 +739,15 @@ describe('legacy and v2 release channels', () => {
     const requiredCopy = [
       /TypeScript and Pixi v2 development build/,
       /Star Atlas, read-only Compendium, Records, Charters, Settings, Field Training/,
+      /EVERY PIECE STAYS ITSELF/,
+      /stable exact item instance/,
+      /Oversized legacy holds remain lossless inspection-only evidence/,
+      /COMPARISON TELLS THE WHOLE STORY/,
+      /bounded 48-row page/,
+      /GEAR ACTIONS SETTLE ONCE/,
+      /tab lease, save revision, exact item identity, and one immutable receipt/,
+      /ONE DURABLE AUTHORITY AT A TIME/,
+      /Versioned split-store saves, a per-document tab lease, revision fences, immutable receipts/,
       /exactly one 44-pixel top-right Close action/,
       /Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/,
       /a genuine empty-sky press still dismisses it/,
@@ -760,7 +813,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 49,
+        inventory: bullets.length === 53,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,

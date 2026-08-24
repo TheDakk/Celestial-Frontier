@@ -249,7 +249,7 @@
       border-radius: 12px; box-shadow: 0 8px 26px rgba(0,0,0,.48);
       opacity: 0; transition: opacity .35s; pointer-events: none; }
     @media (max-width: 900px) {
-      /* Nine controls have one explicit phone shape: five columns by two
+      /* Ten controls have one explicit phone shape: five columns by two
          rows. A shrink-to-fit flex dock produced three rows at 390px and
          buried the contextual chrome despite every fixed offset looking
          individually reasonable. */
@@ -275,7 +275,7 @@
     #railrgt button.on { background: linear-gradient(rgba(202,162,79,0.12),rgba(202,162,79,0.12)), #0a101e; color: #ffe3a8; border-color: #caa24f; }
     @media (min-width: 901px) {
       #dock { left: auto; right: calc(var(--safe-right) + 14px); transform: none; }
-      #dock #dockcodex, #dock #dockrecords, #dock #dockatlas, #dock #dockcharters, #dock #dockshipyard { display: none; }   /* rails own them on desktop; Charts remains a dock control */
+      #dock #dockcodex, #dock #dockrecords, #dock #dockatlas, #dock #dockcharters, #dock #dockshipyard, #dock #dockinventory { display: none; }   /* rails own them on desktop; Charts remains a dock control */
       #raillft, #railrgt { display: flex; }
     }
 
@@ -294,7 +294,7 @@
     #guidepanel { z-index: 24; }   /* player-requested help must sit above the z23 survey card */
     #setpanel { z-index: 24; }   /* preferences must remain operable over a populated phone survey card */
     @media (max-width: 900px) {
-      body:not(.training) :is(#codexpanel,#recpanel,#atlaspanel,#chpanel,#shipyardpanel) { z-index: 24; }
+      body:not(.training) :is(#codexpanel,#recpanel,#atlaspanel,#chpanel,#shipyardpanel,#inventorypanel) { z-index: 24; }
     }
     .panel h3 { min-height: 44px; display: flex; align-items: center; margin: 0 0 10px; font-size: 11.5px; letter-spacing: 0.14em;
       text-transform: uppercase; color: #e8c87a;
@@ -332,6 +332,85 @@
     @media (prefers-reduced-motion: reduce) {
       #shipyardpanel [data-cf-shipyard-preview="v1"],
       #shipyardpanel [data-cf-shipyard-preview="v1"] * { animation: none !important; transition: none !important; }
+    }
+    /* Inventory stays a bounded DOM list. The exact-instance detail is one
+       separately owned true dialog; no row creates a renderer or canvas. */
+    #inventorypanel { overflow: auto; }
+    .inventory-panel-body { display: grid; gap: 9px; }
+    .inventory-summary, .inventory-protected-notice { margin: 0; color: var(--dim); }
+    .inventory-protected-notice { padding: 9px; border: 1px solid #8a6540;
+      border-radius: 10px; background: rgba(90,55,22,.28); color: #ffd9a0; }
+    .inventory-tools { display: grid; grid-template-columns: minmax(0,1fr) minmax(96px,.55fr);
+      gap: 8px; }
+    .inventory-tools :is(input,select) { width: 100%; min-width: 0; min-height: 44px;
+      box-sizing: border-box; border: 1px solid #405477; border-radius: 10px;
+      background: rgba(4,8,18,.8); color: var(--ink); padding: 8px 10px; font: 13px var(--ui); }
+    .inventory-list { display: grid; gap: 4px; }
+    #inventorypanel button.inventory-row { display: grid; grid-template-columns: minmax(0,1fr) auto;
+      align-items: center; gap: 8px; width: 100%; min-height: 52px; box-sizing: border-box;
+      border: 1px solid rgba(64,84,119,.65); border-radius: 10px;
+      background: rgba(8,14,27,.5); color: var(--ink); padding: 7px 9px;
+      text-align: left; cursor: pointer; font: 13px var(--ui); }
+    #inventorypanel button.inventory-row:hover { background: rgba(32,50,80,.72); }
+    .inventory-row-copy { min-width: 0; overflow-wrap: anywhere; }
+    .inventory-row-copy small { display: block; color: var(--dim); margin-top: 2px; }
+    .inventory-badges { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px; }
+    .inventory-badge { padding: 2px 6px; border: 1px solid #57709a; border-radius: 999px;
+      color: #cfe0f4; font-size: 10px; white-space: nowrap; }
+    .inventory-badge[data-state="pending"] { border-color: #a87939; color: #ffe0a0; }
+    .inventory-badge[data-state="protected"] { border-color: #8a6540; color: #ffd9a0; }
+    .inventory-pager { display: grid; grid-template-columns: 44px minmax(0,1fr) 44px;
+      align-items: center; gap: 8px; text-align: center; }
+    #inventorypanel .inventory-pager button { min-width: 44px; min-height: 44px;
+      border: 1px solid #405477; border-radius: 10px; background: rgba(22,34,57,.9);
+      color: #cfe0f4; cursor: pointer; }
+    #inventorypanel .inventory-pager button:disabled { opacity: .56; cursor: default; }
+    .inventory-legacy-list, .inventory-stack-list { margin: 0; padding: 0; list-style: none;
+      display: grid; gap: 4px; }
+    .inventory-legacy-list li, .inventory-stack-list li { min-height: 44px; box-sizing: border-box;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      border-bottom: 1px solid rgba(64,84,119,.38); overflow-wrap: anywhere; }
+    #inventorysheet[hidden] { display: none !important; }
+    #inventorysheet { position: fixed; inset: 0; z-index: 42; display: flex;
+      align-items: center; justify-content: center; box-sizing: border-box;
+      padding: calc(var(--safe-top) + 16px) calc(var(--safe-right) + 16px)
+        calc(var(--safe-bottom) + 16px) calc(var(--safe-left) + 16px);
+      overflow: hidden; background: rgba(4,6,12,.72); }
+    .inventory-sheet-card { position: relative; width: min(640px,100%); max-height: 100%;
+      box-sizing: border-box; overflow: auto; border: 1px solid #405477; border-radius: 14px;
+      background: rgba(10,16,30,.98); color: var(--ink); padding: 18px;
+      box-shadow: 0 14px 42px rgba(0,0,0,.66); }
+    .inventory-sheet-close { position: sticky; top: 0; float: right; margin: -4px -4px 8px 10px; }
+    #inventorysheet h2 { min-height: 44px; display: flex; align-items: center;
+      margin: 0 0 10px; font-size: 18px; color: #f4f8ff; }
+    .inventory-detail { display: grid; gap: 12px; clear: both; user-select: text;
+      -webkit-user-select: text; }
+    .inventory-detail h3 { margin: 4px 0 0; color: #e8c87a; font-size: 13px; }
+    .inventory-facts { display: grid; grid-template-columns: minmax(112px,.6fr) minmax(0,1.4fr);
+      gap: 5px 10px; margin: 0; }
+    .inventory-facts dt { color: var(--dim); }
+    .inventory-facts dd { margin: 0; overflow-wrap: anywhere; }
+    .inventory-effect-list, .inventory-compare-list { margin: 0; padding: 0; list-style: none;
+      display: grid; gap: 4px; }
+    .inventory-effect-list li, .inventory-compare-list li { display: grid;
+      grid-template-columns: minmax(0,1fr) repeat(3,minmax(58px,auto)); gap: 7px;
+      align-items: center; min-height: 44px; border-bottom: 1px solid rgba(64,84,119,.38); }
+    .inventory-effect-list li { grid-template-columns: minmax(0,1fr) auto minmax(120px,auto) auto; }
+    .inventory-actions { display: grid; gap: 8px; border-top: 1px solid rgba(64,84,119,.5);
+      padding-top: 12px; }
+    .inventory-action-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+    .inventory-action-controls button { min-height: 44px; }
+    .inventory-action-status { min-height: 20px; margin: 0; color: var(--dim); }
+    .inventory-action-status[data-kind="committed"] { color: #9ee49d; }
+    .inventory-action-status[data-kind="refused"],
+    .inventory-action-status[data-kind="unavailable"] { color: #f0a4a4; }
+    .inventory-delta[data-sign="positive"] { color: #9ee49d; }
+    .inventory-delta[data-sign="negative"] { color: #f0a4a4; }
+    @media (max-width: 480px) {
+      .inventory-tools { grid-template-columns: minmax(0,1fr); }
+      .inventory-facts { grid-template-columns: minmax(0,1fr); }
+      .inventory-facts dt { margin-top: 4px; }
+      .inventory-effect-list li, .inventory-compare-list li { font-size: 11px; gap: 4px; }
     }
     /* The Compendium owns a bounded inner scroll extent while its count and
        close action stay stable. Variable-height rows are positioned against
@@ -432,7 +511,7 @@
     .guide-build b { color: #ffe0a0; }
     .guide-build [data-sel="guide-build-commit"] { font: 10px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
     @media (min-width: 901px) {
-      #setpanel, #recpanel, #shipyardpanel { top: auto; left: auto; right: calc(var(--safe-right) + 12px);
+      #setpanel, #recpanel, #shipyardpanel, #inventorypanel { top: auto; left: auto; right: calc(var(--safe-right) + 12px);
         bottom: calc(var(--safe-bottom) + var(--dock-h) + 24px);
         max-height: calc(100dvh - var(--safe-top) - var(--safe-bottom) - var(--dock-h) - 48px); }
     }
@@ -464,7 +543,7 @@
       /* Let the UA map every descendant to system colors. Applying inherited
          `forced-color-adjust:none` to a glass ancestor preserved pale author
          colors on a light Canvas and made dim/gold copy nearly disappear. */
-      .glass, #dock button, .panel button { background: Canvas; color: CanvasText; border-color: ButtonText; }
+      .glass, #dock button, .panel button, #inventorysheet { background: Canvas; color: CanvasText; border-color: ButtonText; }
       :is(.glass, #dock button, .panel button) :is(.sub,small,label,b,h2,h3,h4,h5) { color: CanvasText !important; }
       #shipyardpanel [data-cf-shipyard-preview="v1"] { background: Canvas; border-color: ButtonText; }
       #shipyardpanel [data-layer="chassis"] { filter: none; }
@@ -494,6 +573,7 @@
   <nav id="railrgt" aria-label="right rail" data-panel-boundary>
     <button id="railatlas" aria-label="Star Atlas">🌐 Star Atlas</button>
     <button id="railshipyard" aria-label="Shipyard">🛠 Shipyard</button>
+    <button id="railinventory" aria-label="Inventory" aria-controls="inventorypanel" aria-expanded="false">🎒 Inventory</button>
     <button id="railrecords" aria-label="Records">📜 Records</button>
   </nav>
   <nav id="dock" aria-label="dock" data-panel-boundary>
@@ -504,6 +584,7 @@
     <button id="dockatlas" aria-label="Star Atlas"><span class="ico">🌐</span>atlas</button>
     <button id="dockcharts" aria-label="star charts" aria-pressed="false"><span class="ico">📈</span>charts</button>
     <button id="dockshipyard" aria-label="Shipyard"><span class="ico">🛠</span>shipyard</button>
+    <button id="dockinventory" aria-label="Inventory" aria-controls="inventorypanel" aria-expanded="false"><span class="ico">🎒</span>inventory</button>
     <button id="docksets" aria-label="settings"><span class="ico">⚙</span>settings</button>
     <button id="dockguide" aria-label="Guide"><span class="ico">?</span>guide</button>
   </nav>
@@ -514,6 +595,18 @@
   <aside id="atlaspanel" class="glass panel" aria-label="Star Atlas"></aside>
   <aside id="chpanel" class="glass panel" aria-label="Charters"></aside>
   <aside id="shipyardpanel" class="glass panel" aria-label="Shipyard"></aside>
+  <aside id="inventorypanel" class="glass panel" aria-label="Inventory" aria-hidden="true" style="display:none">
+    <div class="inventory-panel-body" data-inventory-panel-body></div>
+  </aside>
+  <div id="inventorysheet" role="dialog" aria-modal="true" aria-labelledby="inventorysheettitle"
+    aria-hidden="true" data-panel-boundary hidden>
+    <section class="inventory-sheet-card">
+      <button type="button" class="surface-close inventory-sheet-close" data-inventory-sheet-close
+        aria-label="Close item inspection">✕</button>
+      <h2 id="inventorysheettitle">Item inspection</h2>
+      <div data-inventory-sheet-body></div>
+    </section>
+  </div>
   <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

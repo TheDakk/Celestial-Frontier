@@ -47,7 +47,11 @@ import {
   initTraining, gameEvent, trainingActive, trainingStepId,
   type TrainingEndIntent, type TrainingEndResult,
 } from './training.js';
-import { buildLegacyTrainingRestoreCandidate } from './training-restore.js';
+import {
+  buildLegacyTrainingRestoreCandidate,
+  committedTrainingArc2State,
+  prepareTrainingArc2Restore,
+} from './training-restore.js';
 import {
   displayedPlanetTextureDemandPx,
   planetTextureTierForDemandPx,
@@ -112,12 +116,23 @@ import {
   STORES, createSaveRepository, createIndexedDBBackend,
   createRevisionedRepository, initializeFreshV5, migrateStoredV4ToV5,
   prepareV5Replacement, readF4Authority, readSaveV5, readRevisionedSaveV5WithRecovery,
+  arc2LootLegacyMirrorMatches, prepareArc2LootLegacyMigration,
+  prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror, readArc2Loot,
   importSaveV2, exportSaveV2,
-  type SaveStateV2, type ContentRegistry,
+  type SaveStateV2, type ContentRegistry, type Arc2LootStateV1,
   type ImportRouteIngressV2, type ImportTrainingSnapshotIngressV2,
   type V5Extensions,
 } from '@cf/persistence';
+import {
+  MAX_GEAR_CAPACITY,
+} from '@cf/domain-loot';
 import { runF3PersistenceBrowserProbe } from './f3-persistence-browser-probe.js';
+import {
+  planArc2InventoryAction,
+  projectArc2LegacyAction,
+  type Arc2InventoryOperation,
+} from './inventory-actions.js';
+import { InventoryPanelController } from './inventory-panel.js';
 import {
   createF4RuntimeAuthority,
   type F4RuntimeAuthority,
@@ -178,6 +193,10 @@ let f4HeartbeatInFlight: Promise<void> | null = null;
 let f4LastCheckpointAt = performance.now();
 let f4SeedBootstrapPending = false;
 let f4SeedBootstrapInFlight: Promise<boolean> | null = null;
+let arc2LootState: Arc2LootStateV1 | null = null;
+let arc2LootBootstrapPending = false;
+let arc2LootProtection: string | null = null;
+let lastArc2LootOutcome: string | null = null;
 let f4AuthorityReloadScheduled = false;
 let smokeRejectNextF4HideCheckpoint = false;
 let lastF4HideWitness: Readonly<{
@@ -213,11 +232,22 @@ async function ensureF4RevisionCurrent(runtime: F4RuntimeAuthority): Promise<boo
   }
 }
 async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boolean> {
-  if (!f4SeedBootstrapPending) return true;
+  if (!f4SeedBootstrapPending && !arc2LootBootstrapPending) return true;
   if (runtime !== f4Runtime || !runtime.diagnostics().leaseOwned) return false;
   if (f4SeedBootstrapInFlight) return f4SeedBootstrapInFlight;
+  const productBootstrapWasPending = arc2LootBootstrapPending;
   const run = (async (): Promise<boolean> => {
     try {
+      if (productBootstrapWasPending) {
+        const rejector = (window as unknown as Record<string, unknown>).__cfRejectArc2ProductBootstrap;
+        if (typeof rejector === 'function' && (rejector as (payload: string) => unknown)(JSON.stringify({
+          schema: 'cf-v2-arc2-bootstrap-control/v1',
+          documentToken: DOCUMENT_TOKEN,
+          stateKind: arc2LootState?.kind ?? null,
+        })) === true) {
+          throw new Error('slice-smoke injected Arc 2 product bootstrap rejection');
+        }
+      }
       const seeded = await runtime.commit(save, Date.now());
       lastPersistenceOutcome = seeded.kind === 'committed'
         ? `seed-committed:${seeded.revision}` : `seed-${seeded.kind}`;
@@ -232,9 +262,20 @@ async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boole
         throw new Error(`F4 authority bootstrap refused: ${seeded.kind}`);
       }
       f4SeedBootstrapPending = false;
+      arc2LootBootstrapPending = false;
+      if (productBootstrapWasPending) {
+        arc2LootProtection = null;
+        inventoryPanelController.setState(arc2LootState);
+      }
       f4LastCheckpointAt = performance.now();
       return true;
     } catch (error) {
+      if (productBootstrapWasPending) {
+        arc2LootState = null;
+        arc2LootBootstrapPending = false;
+        arc2LootProtection = 'bootstrap-failed';
+        inventoryPanelController.setState(null);
+      }
       persistHold = 'protected-payload';
       persistenceBootKind = 'transient-protected';
       persistenceProtectedDetail = error instanceof Error ? error.message : String(error);
@@ -248,7 +289,7 @@ async function ensureF4SeedBootstrap(runtime: F4RuntimeAuthority): Promise<boole
   finally { if (f4SeedBootstrapInFlight === run) f4SeedBootstrapInFlight = null; }
 }
 function f4RuntimeMayMutate(runtime: F4RuntimeAuthority | null = f4Runtime): runtime is F4RuntimeAuthority {
-  if (!runtime || persistHold || f4SeedBootstrapPending) return false;
+  if (!runtime || persistHold || f4SeedBootstrapPending || arc2LootBootstrapPending) return false;
   const diagnostics = runtime.diagnostics();
   return diagnostics.leaseOwned && !diagnostics.staleBlocked;
 }
@@ -276,7 +317,8 @@ const heartbeatF4 = async (): Promise<void> => {
   finally { if (f4HeartbeatInFlight === run) f4HeartbeatInFlight = null; }
   if (heartbeatOwned) {
     if (!await ensureF4RevisionCurrent(runtime)) return;
-    if (f4SeedBootstrapPending && !await ensureF4SeedBootstrap(runtime)) return;
+    if ((f4SeedBootstrapPending || arc2LootBootstrapPending)
+      && !await ensureF4SeedBootstrap(runtime)) return;
     if (f4RuntimeMayAnswer(runtime)) runtime.setAnswerable(app.ticker?.started === true);
   }
   if (checkpointDue) await persistView();
@@ -343,7 +385,8 @@ const showF4 = async (): Promise<void> => {
   const outcome = await runtime.setVisible(true);
   if (outcome.kind === 'owned') {
     if (!await ensureF4RevisionCurrent(runtime)) return;
-    if (f4SeedBootstrapPending && !await ensureF4SeedBootstrap(runtime)) return;
+    if ((f4SeedBootstrapPending || arc2LootBootstrapPending)
+      && !await ensureF4SeedBootstrap(runtime)) return;
     runtime.setAnswerable(app.ticker?.started === true);
   } else runtime.setAnswerable(false);
   startF4Heartbeat();
@@ -1808,6 +1851,14 @@ registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [
   codexOpenController.onOpen();
 }, onClose: closeCodexSurface });
 registerPanel({ id: 'rec', el: document.getElementById('recpanel')!, btns: [document.getElementById('dockrecords'), document.getElementById('railrecords')], onOpen: fillRecords });
+const inventoryPanelController = new InventoryPanelController({
+  panel: document.getElementById('inventorypanel')!,
+  sheet: document.getElementById('inventorysheet')!,
+  openers: [document.getElementById('dockinventory'), document.getElementById('railinventory')],
+  onAction: ({ operation, instanceId }) => commitArc2InventoryAction(operation, instanceId),
+  requiresSalvageConfirmation: () => save.salvageConfirm,
+});
+registerPanel(inventoryPanelController.registration());
 registerPanel({
   id: 'shipyard',
   el: document.getElementById('shipyardpanel')!,
@@ -1823,6 +1874,8 @@ document.getElementById('dockrecords')!.addEventListener('click', () => togglePa
 document.getElementById('railrecords')!.addEventListener('click', () => togglePanel('rec'));
 document.getElementById('dockshipyard')!.addEventListener('click', () => togglePanel('shipyard'));
 document.getElementById('railshipyard')!.addEventListener('click', () => togglePanel('shipyard'));
+document.getElementById('dockinventory')!.addEventListener('click', () => togglePanel('inventory'));
+document.getElementById('railinventory')!.addEventListener('click', () => togglePanel('inventory'));
 /* codex list rows open the detail card (delegated — rows refill often) */
 document.getElementById('codexpanel')!.addEventListener('click', (e) => {
   const row = (e.target as HTMLElement).closest('[data-ci]');
@@ -4399,8 +4452,161 @@ async function persistView(replacementOwner: ReplacementTransaction | null = nul
 let _persistT = 0;
 let importWriteInFlight = false;
 let activePersist: Promise<boolean> | null = null;
+let arc2ActionInFlight = false;
 let smokeRejectNextPersist = false;
 let smokeImportRaceRelease: (() => void) | null = null;
+
+type Arc2InventoryActionOutcome = Readonly<{
+  kind: 'committed' | 'unchanged' | 'unavailable' | 'refused';
+  operation: Arc2InventoryOperation;
+  instanceId: string;
+  detail: string;
+  state: Arc2LootStateV1 | null;
+}>;
+
+function applyArc2LegacyMirror(target: SaveStateV2, state: Arc2LootStateV1): void {
+  const mirror = projectArc2LootLegacyMirror(state);
+  target.items = mirror.items.map(([baseId, count]) => [baseId, count]);
+  target.equip = { ...mirror.equip };
+  target.equipAff = Object.fromEntries(Object.entries(mirror.equipAff).map(([slot, affix]) => [
+    slot,
+    { k: affix.k, v: affix.v, forId: affix.forId },
+  ]));
+}
+
+function publishArc2ProductFields(target: SaveStateV2, committed: SaveStateV2): void {
+  /* Arc 2 owns only these compatibility fields. Publishing them into the
+     existing live object preserves route/Atlas identity sidecars and any
+     disjoint UI mutation staged while IndexedDB was settling. */
+  target.items = committed.items.map(([baseId, count]) => [baseId, count]);
+  target.equip = { ...committed.equip };
+  target.equipAff = Object.fromEntries(Object.entries(committed.equipAff).map(([slot, affix]) => [
+    slot,
+    { k: affix.k, v: affix.v, forId: affix.forId },
+  ]));
+  target.cargo = committed.cargo.map(([materialId, count]) => [materialId, count]);
+}
+
+async function commitArc2InventoryAction(
+  operation: Arc2InventoryOperation,
+  instanceId: string,
+): Promise<Arc2InventoryActionOutcome> {
+  const unavailable = (detail: string): Arc2InventoryActionOutcome => Object.freeze({
+    kind: 'unavailable', operation, instanceId, detail, state: null,
+  });
+  const state = arc2LootState;
+  const runtime = f4Runtime;
+  if (typeof instanceId !== 'string' || instanceId.length < 1 || instanceId.length > 4_096) {
+    return unavailable('invalid-instance');
+  }
+  if (state?.kind !== 'inventory') {
+    return unavailable(state?.kind ?? arc2LootProtection ?? 'inventory-unavailable');
+  }
+  if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
+    || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    return unavailable('write-authority-unavailable');
+  }
+  const preflight = planArc2InventoryAction(state.inventory, operation, instanceId);
+  if (preflight.kind !== 'ready') {
+    const kind = preflight.kind === 'unchanged' ? 'unchanged' : 'refused';
+    lastArc2LootOutcome = `${operation}-${preflight.detail}`;
+    return Object.freeze({ kind, operation, instanceId, detail: preflight.detail, state: null });
+  }
+  await settleF4Heartbeat();
+  if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
+    || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    return unavailable('write-authority-changed');
+  }
+  const actionNow = Date.now();
+  let settleActionBarrier: (committed: boolean) => void = () => undefined;
+  const actionBarrier = new Promise<boolean>((resolve) => { settleActionBarrier = resolve; });
+  arc2ActionInFlight = true;
+  activePersist = actionBarrier;
+  let durable = false;
+  try {
+    const outcome = await runtime.commitProduct({
+      state: save,
+      operation,
+      codecNow: actionNow,
+      derive: ({ draft, extensions, receiptOrdinal }) => {
+        const current = readArc2Loot(extensions);
+        if (current.kind !== 'loaded' || current.state.kind !== 'inventory') {
+          throw new Error(`Arc 2 carrier became ${current.kind}`);
+        }
+        const planned = planArc2InventoryAction(current.state.inventory, operation, instanceId);
+        if (planned.kind !== 'ready') throw new Error(`Arc 2 ${operation} became ${planned.detail}`);
+        projectArc2LegacyAction(draft, operation, planned);
+        const prepared = prepareArc2LootInventoryWrite({
+          extensions,
+          inventory: planned.state,
+          stackableCounts: current.state.stackableCounts,
+        });
+        if (prepared.kind !== 'prepared') {
+          throw new Error(`Arc 2 ${operation} carrier refused: ${prepared.reason}`);
+        }
+        return {
+          state: draft,
+          extensionWrites: [prepared.write],
+          witness: `arc2:${operation}:${receiptOrdinal}:${instanceId}:${planned.state.revision}`,
+        };
+      },
+    });
+    lastArc2LootOutcome = `${operation}-${outcome.kind}`;
+    if (outcome.kind !== 'committed') {
+      if (outcome.kind === 'stale' || outcome.kind === 'duplicate-receipt'
+        || outcome.kind === 'lost' || outcome.kind === 'lease-unavailable'
+        || outcome.kind === 'protected') {
+        scheduleF4AuthorityConvergenceReload(runtime, `Arc 2 ${operation} authority ${outcome.kind}`);
+      }
+      return Object.freeze({
+        kind: 'refused', operation, instanceId, detail: outcome.kind, state: null,
+      });
+    }
+
+    /* Durability is terminal. Any failure below converges from the committed
+       bytes and remains a committed UI outcome—it can never invite a retry. */
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = `arc2-${operation}-committed:${outcome.revision}`;
+    try {
+      const loaded = readArc2Loot(runtime.extensions);
+      if (loaded.kind !== 'loaded') throw new Error('carrier-unreadable');
+      if (!arc2LootLegacyMirrorMatches(loaded.state, outcome.state)) {
+        throw new Error('carrier-legacy-projection-mismatch');
+      }
+      publishArc2ProductFields(save, outcome.state);
+      arc2LootState = loaded.state;
+      return Object.freeze({
+        kind: 'committed', operation, instanceId,
+        detail: `revision:${outcome.revision}`, state: arc2LootState,
+      });
+    } catch (error) {
+      arc2LootState = null;
+      const detail = error instanceof Error ? error.message : String(error);
+      lastArc2LootOutcome = `${operation}-committed-publication-reload`;
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        `Arc 2 ${operation} committed at revision ${outcome.revision}; publication ${detail}`,
+      );
+      return Object.freeze({
+        kind: 'committed', operation, instanceId,
+        detail: `revision:${outcome.revision};publication-reload`, state: null,
+      });
+    }
+  } catch (error) {
+    lastArc2LootOutcome = `${operation}-rejected`;
+    return Object.freeze({
+      kind: 'refused', operation, instanceId,
+      detail: error instanceof Error ? error.message : String(error),
+      state: null,
+    });
+  } finally {
+    arc2ActionInFlight = false;
+    settleActionBarrier(durable);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
+}
+
 async function smokeCommitF4Outcome(): Promise<unknown> {
   /* Browser evidence only: exercise the real receipt-bearing F4 transaction
      without inventing an Arc product writer. The detached canonical draft is
@@ -4540,7 +4746,7 @@ const READ_ONLY_MUTATION_SELECTOR = [
   '[data-sel="tutbtn"]', '[data-sel="tutskip"]',
 ].join(',');
 function playerMutationsBlocked(): boolean {
-  return smokeForceReadOnly || !f4RuntimeMayMutate();
+  return smokeForceReadOnly || arc2ActionInFlight || !f4RuntimeMayMutate();
 }
 function blockPlayerMutation(action: string): boolean {
   if (!playerMutationsBlocked()) return false;
@@ -4695,6 +4901,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     let expectedEarthKey: string | null = null;
     let outcome: TrainingEndResult = { kind: 'completed' };
     let targetNav: NavState = nav;
+    let legacyGearRestored = false;
 
     if (checkpoint.kind === 'current-view') {
       const restored = smokeRejectNextTrainingRouteResolution
@@ -4752,6 +4959,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
           throw new Error('legacy Training checkpoint candidate was rejected');
         }
         candidate = restored.state;
+        legacyGearRestored = true;
         if (navigationAuthorityFailureFor(candidate, targetNav) !== null) {
           targetNav = NAV_HOME;
           candidate.savedView = null;
@@ -4772,6 +4980,18 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     if (!prepared) {
       throw new Error('Training replacement candidate failed source proof');
     }
+    /* A transient route-source deferral retains the checkpoint and outer
+       expedition; it did not restore `it`/`eq`/`ea`, so it must retain the
+       current exact-instance carrier too. */
+    const preparedLoot = prepareTrainingArc2Restore(
+      checkpoint.kind,
+      legacyGearRestored,
+      prepared.state,
+      f4Runtime!.extensions,
+    );
+    if (preparedLoot !== null && preparedLoot.kind !== 'prepared') {
+      throw new Error(`Training Arc 2 carrier refused: ${preparedLoot.reason}`);
+    }
     phase('primary-write-started');
     writeStarted = true;
     const write = (async (): Promise<boolean> => {
@@ -4779,7 +4999,11 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
         smokeRejectNextTrainingCommit = false;
         throw new Error('slice-smoke injected Training commit rejection');
       }
-      const committed = await f4Runtime!.commit(prepared.state, now);
+      const committed = await f4Runtime!.commit(
+        prepared.state,
+        now,
+        preparedLoot === null ? undefined : [preparedLoot.write],
+      );
       lastPersistenceOutcome = committed.kind === 'committed'
         ? `training-committed:${committed.revision}` : `training-${committed.kind}`;
       if (committed.kind !== 'committed') {
@@ -4804,7 +5028,24 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
       smokeRejectNextTrainingPublish = false;
       throw new Error('slice-smoke injected post-durable Training publication failure');
     }
+    let restoredLoot: Arc2LootStateV1 | null = null;
+    if (preparedLoot !== null) {
+      restoredLoot = committedTrainingArc2State(
+        prepared.state,
+        preparedLoot,
+        f4Runtime!.extensions,
+      );
+      if (!restoredLoot) {
+        throw new Error('Training Arc 2 carrier did not converge with restored checkpoint gear');
+      }
+    }
     save = prepared.state;
+    if (restoredLoot) {
+      arc2LootState = restoredLoot;
+      arc2LootProtection = null;
+      arc2LootBootstrapPending = false;
+      inventoryPanelController.setState(arc2LootState);
+    }
     importedRouteIngress = prepared.ingress;
     trainingSnapshotIngress = prepared.ingress.trainingSnapshot;
     trainingCheckpointWriteHeld = trainingSnapshotIngress.kind !== 'none';
@@ -4885,6 +5126,10 @@ async function loadSave(): Promise<void> {
   let initialExtensions: V5Extensions = EMPTY_V5_EXTENSIONS;
   let restoredAuthority: Parameters<typeof createF4RuntimeAuthority>[0]['restoredAuthority'] = null;
   let protectedReason: 'future-version' | 'invalid' | null = null;
+  arc2LootState = null;
+  arc2LootBootstrapPending = false;
+  arc2LootProtection = null;
+  lastArc2LootOutcome = null;
 
   const useProtectedFresh = (
     kind: Exclude<PersistenceBootKind, 'fresh-v5' | 'migrated-v4' | 'current-v5'>,
@@ -5100,6 +5345,40 @@ async function loadSave(): Promise<void> {
       if (trainingSnapshotIngress.kind !== 'none') trainingCheckpointWriteHeld = true;
     }
   }
+  /* Arc 2 owns an independently versioned Inventory carrier. Seed it from
+     the already-sanitized legacy item facts without truncating oversized
+     saves or overwriting future/corrupt extension bytes. A prepared carrier
+     joins the same first lease-fenced commit as a fresh F4 seed; until that
+     commit lands, every player mutation stays unavailable. */
+  if (!persistHold) {
+    const loot = prepareArc2LootLegacyMigration({
+      extensions: initialExtensions,
+      legacy: save,
+      capacity: MAX_GEAR_CAPACITY,
+    });
+    if (loot.kind === 'prepared') {
+      initialExtensions = loot.extensions;
+      arc2LootState = loot.state;
+      applyArc2LegacyMirror(save, loot.state);
+      arc2LootBootstrapPending = true;
+    } else if (loot.kind === 'already-loaded') {
+      arc2LootState = loot.state;
+      /* A current Arc 2 carrier is the exact-instance authority. Portable-v5
+         inputs can carry a stale legacy mirror, so repair only those three
+         compatibility fields in the same first lease-fenced commit before
+         any action or editable Inventory UI becomes available. */
+      if (!arc2LootLegacyMirrorMatches(loot.state, save)) {
+        applyArc2LegacyMirror(save, loot.state);
+        arc2LootBootstrapPending = true;
+      }
+    } else {
+      arc2LootProtection = `${loot.reason}${loot.version === undefined ? '' : `:${loot.version}`}`;
+    }
+  }
+  /* A newly prepared or reconciled carrier is not player-visible authority
+     until its product bootstrap transaction commits. Persisted aligned
+     carriers remain safely inspectable even if F4 later enters read-only. */
+  inventoryPanelController.setState(arc2LootBootstrapPending ? null : arc2LootState);
   if (!persistHold) {
     const entropy = new Uint32Array(1);
     crypto.getRandomValues(entropy);
@@ -5129,9 +5408,10 @@ async function loadSave(): Promise<void> {
       if (leaseOutcome.kind === 'owned' && !await ensureF4RevisionCurrent(runtime)) {
         throw new Error(persistenceProtectedDetail || 'F4 revision verification failed');
       }
-      if (f4SeedBootstrapPending && leaseOutcome.kind === 'owned') {
+      if ((f4SeedBootstrapPending || arc2LootBootstrapPending)
+        && leaseOutcome.kind === 'owned') {
         if (!await ensureF4SeedBootstrap(runtime)) {
-          throw new Error(persistenceProtectedDetail || 'F4 authority bootstrap failed');
+          throw new Error(persistenceProtectedDetail || 'F4/product authority bootstrap failed');
         }
       }
       f4LastCheckpointAt = performance.now();
@@ -5140,6 +5420,12 @@ async function loadSave(): Promise<void> {
       await runtime.release().catch(() => undefined);
       f4Runtime = null;
       f4SeedBootstrapPending = false;
+      if (arc2LootBootstrapPending) {
+        arc2LootState = null;
+        inventoryPanelController.setState(null);
+      }
+      arc2LootBootstrapPending = false;
+      arc2LootProtection ||= 'bootstrap-failed';
       stopF4Heartbeat();
       persistHold = 'protected-payload';
       persistenceBootKind = 'transient-protected';
@@ -5423,6 +5709,7 @@ async function loadSave(): Promise<void> {
           protectedDetail: persistenceProtectedDetail,
           authorityBootKind: f4AuthorityBootKind,
           seedBootstrapPending: f4SeedBootstrapPending,
+          productBootstrapPending: arc2LootBootstrapPending,
           visibilityOverrideHidden: f4VisibilityOverrideHidden,
           lastOutcome: lastPersistenceOutcome,
           hideWitness: lastF4HideWitness,
@@ -5432,6 +5719,22 @@ async function loadSave(): Promise<void> {
           importPhase: lastImportPhaseWitness,
           importRace: lastSmokeImportRaceWitness,
           runtime: f4Runtime?.diagnostics() ?? null,
+        },
+        inventory: {
+          stateKind: arc2LootState?.kind ?? 'unavailable',
+          protection: arc2LootProtection,
+          bootstrapPending: arc2LootBootstrapPending,
+          lastOutcome: lastArc2LootOutcome,
+          entries: arc2LootState?.kind === 'inventory' ? arc2LootState.inventory.entries.length : 0,
+          equipped: arc2LootState?.kind === 'inventory' ? arc2LootState.inventory.equipped.length : 0,
+          pending: arc2LootState?.kind === 'inventory' ? arc2LootState.inventory.pendingRewards.length : 0,
+          revision: arc2LootState?.kind === 'inventory' ? arc2LootState.inventory.revision : null,
+          entryIds: arc2LootState?.kind === 'inventory'
+            ? arc2LootState.inventory.entries.map(({ instance }) => instance.instanceId) : [],
+          equippedBindings: arc2LootState?.kind === 'inventory'
+            ? arc2LootState.inventory.equipped.map((binding) => ({ ...binding })) : [],
+          pendingIds: arc2LootState?.kind === 'inventory'
+            ? arc2LootState.inventory.pendingRewards.map(({ instance }) => instance.instanceId) : [],
         },
         cardOpen: card.style.display !== 'none',
         cardTitle: card.querySelector('[data-sel=title]')?.textContent ?? null,
@@ -5494,6 +5797,7 @@ async function loadSave(): Promise<void> {
       compendiumDiagnostics,
       sceneResourceDiagnostics,
       shipyardDiagnostics,
+      inventoryDiagnostics: () => inventoryPanelController.diagnostics(),
       __sceneEvidence: Object.freeze({
         beginObservationWindow: () => {
           peakRingGeometryEntries = _rgCache.size;

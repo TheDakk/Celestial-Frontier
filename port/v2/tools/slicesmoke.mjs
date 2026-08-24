@@ -210,6 +210,16 @@ const VETERAN_ATLAS_RAW = (() => {
   ];
   return JSON.stringify(save);
 })();
+/* The ordinary veteran remains the browser route/import authority. This
+   bounded derivative adds one equipped suit and one same-slot conditional
+   candidate so the real Inventory detail can prove comparison semantics
+   instead of passing vacuously on the veteran's lone helmet. */
+const INVENTORY_VETERAN_RAW = (() => {
+  const save = JSON.parse(VETERAN_ATLAS_RAW);
+  save.items = [...save.items, ['hazmat', 1], ['thermal', 1]];
+  save.eq = { ...save.eq, suit: 'hazmat' };
+  return JSON.stringify(save);
+})();
 const STALE_SAVED_ROUTE_RAW = (() => {
   const save = JSON.parse(VETERAN_ATLAS_RAW);
   save.me = 'Field-local Route Repair';
@@ -361,6 +371,30 @@ const READ_F4_AUTHORITY_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v
       ordinal:authority?.sessionRng?.ordinal??null,draws:authority?.sessionRng?.draws??null,
       receiptKeys:receiptKeys.map(String),receiptRows:receiptRows.map((raw)=>{try{return JSON.parse(String(raw))}catch{return null}})};
   }finally{db.close()}})()`;
+const READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
+  const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
+  try{const tx=db.transaction(['meta','player','inventory','receipts'],'readonly'),done=new Promise((resolve,reject)=>{
+    tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('Arc 2 Inventory read aborted'))});
+    const get=(store,key)=>new Promise((resolve,reject)=>{const q=tx.objectStore(store).get(key);q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
+    const all=(method)=>new Promise((resolve,reject)=>{const q=tx.objectStore('receipts')[method]();q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
+    const [revisionRaw,legacyRaw,playerRaw,inventoryRaw,receiptKeys,receiptRawRows]=await Promise.all([
+      get('meta','f3:revision'),get('meta','save'),get('player','v5:player'),get('inventory','v5:inventory'),
+      all('getAllKeys'),all('getAll')]);await done;
+    const parse=(raw)=>{try{return JSON.parse(String(raw))}catch{return null}};
+    const legacy=parse(legacyRaw),playerRow=parse(playerRaw),inventoryRow=parse(inventoryRaw);
+    const authorityCarrier=playerRow?.extensions?.['f4.authority']??null;
+    const lootCarrier=inventoryRow?.extensions?.['arc2.loot']??null;
+    const authority=authorityCarrier?parse(authorityCarrier.json):null;
+    const arc2=lootCarrier?parse(lootCarrier.json):null;
+    return {revisionRaw:revisionRaw===undefined?null:String(revisionRaw),revision:Number(revisionRaw),
+      legacyRaw:legacyRaw===undefined?null:String(legacyRaw),legacy,
+      playerRaw:playerRaw===undefined?null:String(playerRaw),playerRow,
+      inventoryRaw:inventoryRaw===undefined?null:String(inventoryRaw),inventoryRow,
+      carrierVersion:lootCarrier?.version??null,carrierJson:lootCarrier?.json??null,arc2,
+      authorityVersion:authorityCarrier?.version??null,authorityJson:authorityCarrier?.json??null,authority,
+      receiptKeys:receiptKeys.map(String),receiptRawRows:receiptRawRows.map(String),
+      receiptRows:receiptRawRows.map((raw)=>parse(raw))};
+  }finally{db.close()}})()`;
 const STAGE_OLD_F4_RECEIPT_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
   const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
   try{const tx=db.transaction('receipts','readwrite'),done=new Promise((resolve,reject)=>{tx.oncomplete=()=>resolve();
@@ -433,6 +467,9 @@ const URL6 = 'http://127.0.0.1:' + server6.address().port + '/';   /* isolated t
 const server7 = http.createServer(serveDist);
 await new Promise((r) => server7.listen(0, '127.0.0.1', r));
 const URL7 = 'http://127.0.0.1:' + server7.address().port + '/';   /* isolated hidden-first F4 bootstrap */
+const server8 = http.createServer(serveDist);
+await new Promise((r) => server8.listen(0, '127.0.0.1', r));
+const URL8 = 'http://127.0.0.1:' + server8.address().port + '/';   /* isolated Arc 2 carrier-bootstrap refusal */
 
 const events = [];
 let browser;
@@ -444,7 +481,7 @@ try {
     onEvent: (event) => events.push(event),
   });
 } catch (error) {
-  server.close(); server2.close(); server3.close(); server4.close(); server5.close(); server6.close(); server7.close();
+  server.close(); server2.close(); server3.close(); server4.close(); server5.close(); server6.close(); server7.close(); server8.close();
   throw error;
 }
 const send = browser.send;
@@ -492,6 +529,424 @@ const canonicalJson = (value) => {
     return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`).join(',')}}`;
   }
   return JSON.stringify(value);
+};
+const exactCountRecord = (pairs) => {
+  if (!Array.isArray(pairs)) return null;
+  const counts = {};
+  for (const pair of pairs) {
+    if (!Array.isArray(pair) || pair.length !== 2 || typeof pair[0] !== 'string'
+      || !Number.isSafeInteger(pair[1]) || pair[1] < 1
+      || Object.prototype.hasOwnProperty.call(counts, pair[0])) return null;
+    counts[pair[0]] = pair[1];
+  }
+  return Object.fromEntries(Object.entries(counts).sort(([left], [right]) => left.localeCompare(right)));
+};
+const exactPlainRecord = (value) => value && typeof value === 'object' && !Array.isArray(value)
+  ? Object.fromEntries(Object.entries(value).sort(([left], [right]) => left.localeCompare(right))) : null;
+const arc2LegacyMirror = (arc2) => {
+  if (arc2?.kind !== 'inventory' || !Array.isArray(arc2.inventory?.entries)
+    || !Array.isArray(arc2.inventory?.pendingRewards) || !Array.isArray(arc2.inventory?.equipped)
+    || !Array.isArray(arc2.stackableCounts)) return null;
+  const counts = new Map();
+  for (const row of arc2.stackableCounts) {
+    if (typeof row?.baseId !== 'string' || !Number.isSafeInteger(row?.count) || row.count < 1
+      || counts.has(row.baseId)) return null;
+    counts.set(row.baseId, row.count);
+  }
+  const instances = new Map();
+  for (const entry of arc2.inventory.entries) {
+    const instance = entry?.instance;
+    if (typeof instance?.instanceId !== 'string' || typeof instance?.baseId !== 'string'
+      || instances.has(instance.instanceId)) return null;
+    instances.set(instance.instanceId, instance);
+    counts.set(instance.baseId, (counts.get(instance.baseId) || 0) + 1);
+  }
+  for (const reward of arc2.inventory.pendingRewards) {
+    const instance = reward?.instance;
+    if (typeof instance?.instanceId !== 'string' || typeof instance?.baseId !== 'string'
+      || instances.has(instance.instanceId)) return null;
+    counts.set(instance.baseId, (counts.get(instance.baseId) || 0) + 1);
+  }
+  const equip = {}, equipAff = {};
+  for (const binding of arc2.inventory.equipped) {
+    const instance = instances.get(binding?.instanceId);
+    if (!instance || instance.slot !== binding.slot || Object.prototype.hasOwnProperty.call(equip, binding.slot)) return null;
+    equip[binding.slot] = instance.baseId;
+    if (instance.legacyAffix) equipAff[binding.slot] = {
+      k: instance.legacyAffix.affixId,
+      v: instance.legacyAffix.value,
+      forId: instance.legacyAffix.forBaseId,
+    };
+  }
+  return {
+    items: Object.fromEntries([...counts.entries()].sort(([left], [right]) => left.localeCompare(right))),
+    equip: exactPlainRecord(equip),
+    equipAff: exactPlainRecord(equipAff),
+  };
+};
+const legacyLootMirror = (value) => ({
+  items: exactCountRecord(value?.items),
+  equip: exactPlainRecord(value?.eq),
+  equipAff: exactPlainRecord(value?.ea),
+});
+const arc2MirrorParity = (evidence) => {
+  const expected = arc2LegacyMirror(evidence?.arc2);
+  const legacy = legacyLootMirror(evidence?.legacy);
+  const segment = legacyLootMirror(evidence?.inventoryRow?.data);
+  return expected !== null && legacy.items !== null && legacy.equip !== null && legacy.equipAff !== null
+    && segment.items !== null && segment.equip !== null && segment.equipAff !== null
+    && canonicalJson(expected) === canonicalJson(legacy)
+    && canonicalJson(expected) === canonicalJson(segment);
+};
+const arc2PercentEffect = (key) => ['yield', 'strike', 'scut', 'heal'].includes(key);
+const arc2TextNumber = (value, percent = false) => {
+  const amount = percent ? value * 100 : value;
+  const rounded = Number.isInteger(amount) ? String(amount) : String(Number(amount.toFixed(4)));
+  return `${amount > 0 ? '+' : ''}${rounded}${percent ? '%' : ''}`;
+};
+const arc2EffectRows = (instance) => {
+  if (!instance || typeof instance !== 'object') return [];
+  const rows = [];
+  for (const [key, value] of Object.entries(instance.baseEffects || {})) {
+    if (typeof value === 'number') rows.push({
+      key, value, source: 'base', percent: arc2PercentEffect(key), condition: null,
+    });
+    else if (key === 'landfam' && value && typeof value === 'object' && !Array.isArray(value)) {
+      for (const [family, amount] of Object.entries(value)) if (typeof amount === 'number') rows.push({
+        key: `landfam.${family}`, value: amount, source: 'base', percent: false,
+        condition: `landing:${family}`,
+      });
+    }
+  }
+  for (const affix of instance.naturalAffixes || []) rows.push({
+    key: affix.affixId, value: affix.value, source: affix.role,
+    percent: arc2PercentEffect(affix.affixId), condition: null,
+  });
+  if (instance.legacyAffix) rows.push({
+    key: instance.legacyAffix.affixId, value: instance.legacyAffix.value,
+    source: 'legacy', percent: arc2PercentEffect(instance.legacyAffix.affixId), condition: null,
+  });
+  return rows;
+};
+const arc2ComparisonRows = (candidate, equipped) => {
+  const before = new Map(), after = new Map(), conditions = new Map(), percentages = new Map();
+  for (const effect of arc2EffectRows(equipped)) {
+    before.set(effect.key, (before.get(effect.key) || 0) + effect.value);
+    conditions.set(effect.key, effect.condition);
+    percentages.set(effect.key, effect.percent);
+  }
+  for (const effect of arc2EffectRows(candidate)) {
+    after.set(effect.key, (after.get(effect.key) || 0) + effect.value);
+    conditions.set(effect.key, effect.condition);
+    percentages.set(effect.key, effect.percent);
+  }
+  return [...new Set([...before.keys(), ...after.keys()])].sort().map((key) => ({
+    key, equipped: before.get(key) || 0, candidate: after.get(key) || 0,
+    delta: (after.get(key) || 0) - (before.get(key) || 0), condition: conditions.get(key) ?? null,
+    percent: percentages.get(key) === true,
+  }));
+};
+const arc2InventoryRows = (arc2) => {
+  if (arc2?.kind !== 'inventory') return [];
+  const equipped = new Set(arc2.inventory.equipped.map((row) => row.instanceId));
+  return [
+    ...arc2.inventory.pendingRewards.map(({ instance }) => ({
+      instanceId: instance.instanceId, baseId: instance.baseId, pending: true,
+      equipped: false, favorite: false, locked: false,
+    })),
+    ...arc2.inventory.entries.map((entry) => ({
+      instanceId: entry.instance.instanceId, baseId: entry.instance.baseId, pending: false,
+      equipped: equipped.has(entry.instance.instanceId), favorite: entry.favorite, locked: entry.locked,
+    })),
+  ];
+};
+const assessArc2InventorySurface = ({ state, raw, surface, detail, closed, selectedInstanceId }) => {
+  const reasons = [];
+  const arc2 = raw?.arc2, inventory = arc2?.inventory;
+  const rows = arc2InventoryRows(arc2);
+  const candidate = inventory?.entries?.find((entry) => entry.instance.instanceId === selectedInstanceId)?.instance;
+  const equippedBinding = inventory?.equipped?.find((binding) => binding.slot === candidate?.slot);
+  const equipped = inventory?.entries?.find((entry) => entry.instance.instanceId === equippedBinding?.instanceId)?.instance ?? null;
+  if (raw?.revisionRaw !== String(raw?.revision) || raw?.carrierVersion !== 1
+    || raw?.inventoryRow?.schema !== 5 || raw?.inventoryRow?.segment !== 'inventory'
+    || typeof raw?.carrierJson !== 'string' || raw.carrierJson !== JSON.stringify(arc2)
+    || !arc2MirrorParity(raw)) reasons.push('raw carrier/legacy mirror parity');
+  if (state?.inventory?.stateKind !== 'inventory' || state.inventory.bootstrapPending
+    || state.inventory.entries !== inventory?.entries?.length
+    || state.inventory.pending !== inventory?.pendingRewards?.length
+    || state.inventory.revision !== inventory?.revision
+    || canonicalJson(state.inventory.entryIds) !== canonicalJson(inventory?.entries?.map(({ instance }) => instance.instanceId))) {
+    reasons.push('runtime carrier projection');
+  }
+  if (!candidate || candidate.baseId !== 'thermal' || !equipped || equipped.baseId !== 'hazmat'
+    || candidate.slot !== equipped.slot) reasons.push('same-slot fixture');
+  if (rows.length < 1 || rows.length > 48 || surface?.rowCount !== rows.length
+    || new Set(surface?.rows?.map((row) => row.instanceId)).size !== surface?.rows?.length
+    || canonicalJson(surface?.rows) !== canonicalJson(rows)) reasons.push('exact bounded DOM rows');
+  const openerPoint = surface?.opener?.preClick;
+  const openerPointer = surface?.opener?.pointer;
+  if (surface?.opener?.id !== 'railinventory' || surface?.opener?.tag !== 'BUTTON'
+    || surface?.opener?.visible !== true || openerPoint?.ok !== true
+    || openerPoint?.targetId !== 'railinventory'
+    || !Number.isFinite(openerPoint?.x) || !Number.isFinite(openerPoint?.y)
+    || surface?.opener?.pointer?.targetId !== 'railinventory'
+    || surface?.opener?.pointer?.pointerType !== 'mouse' || surface?.opener?.pointer?.trusted !== true
+    || !Number.isFinite(openerPointer?.x) || !Number.isFinite(openerPointer?.y)
+    || Math.abs(openerPointer.x - openerPoint.x) > 0.75
+    || Math.abs(openerPointer.y - openerPoint.y) > 0.75
+    || surface?.panelOpen !== 'inventory' || surface?.panelDirectCloseCount !== 1
+    || surface?.panelFocus !== 'inventory') reasons.push('real Inventory opener/one-panel surface');
+  const selectedRow = surface?.rows?.find((row) => row.instanceId === selectedInstanceId);
+  if (!selectedRow || selectedRow.baseId !== 'thermal' || selectedRow.equipped) reasons.push('selected exact candidate row');
+  const expectedEffects = arc2EffectRows(candidate);
+  const expectedComparison = arc2ComparisonRows(candidate, equipped);
+  if (detail?.sheetCount !== 1 || detail?.open !== true || detail?.role !== 'dialog'
+    || detail?.modal !== 'true' || detail?.labelled !== true || detail?.detailId !== selectedInstanceId
+    || detail?.focus !== 'sheet-close' || detail?.busy !== 'false' || detail?.panelInert !== true
+    || detail?.diagnostics?.activeCount !== 1 || detail?.diagnostics?.retainedCount !== 0
+    || detail?.diagnostics?.pendingWork !== 0 || detail?.diagnostics?.selectedInstanceId !== selectedInstanceId
+    || detail?.pointer?.instanceId !== selectedInstanceId || detail?.pointer?.trusted !== true
+    || detail?.pointer?.pointerType !== 'mouse') reasons.push('modal/detail/focus lifecycle');
+  if (!detail?.factsText?.includes(candidate?.instanceId) || !detail?.factsText?.includes(candidate?.baseId)
+    || !detail?.factsText?.includes(candidate?.provenance?.sourceActionId)
+    || !detail?.factsText?.includes(equipped?.instanceId) || /\bscore\b/i.test(detail?.factsText || '')
+    || !/Authored targeting tags\s*Not present in the current Arc 2 authority/i.test(detail?.factsText || '')) {
+    reasons.push('exact truthful detail');
+  }
+  const expectedFacts = {
+    'Exact instance': candidate?.instanceId,
+    Base: candidate ? `${candidate.baseName} (${candidate.baseId})` : null,
+    Slot: candidate?.slot,
+    State: 'Held, unprotected',
+    'Derived compatibility facets': candidate?.tags?.join(' · ') || 'None recorded',
+    'Authored targeting tags': 'Not present in the current Arc 2 authority',
+    'Upgrade state': candidate === undefined ? null : String(candidate.upgrade),
+    Sockets: candidate?.sockets?.join(' · ') || 'None recorded',
+    Construction: candidate?.construction,
+    'Source kind': candidate?.provenance?.kind,
+    'Source action': candidate?.provenance?.sourceActionId,
+    'World provenance': candidate?.provenance?.worldId ?? 'None recorded',
+    'Mission provenance': candidate?.provenance?.missionId ?? 'None recorded',
+    'Receipt provenance': candidate?.provenance?.receiptId ?? 'None recorded',
+    Generation: candidate ? `seed ${candidate.generation.seed} · ordinal ${candidate.generation.ordinal}` : null,
+  };
+  if (Object.entries(expectedFacts).some(([key, value]) => detail?.facts?.[key] !== value)) {
+    reasons.push('exact source/provenance facts');
+  }
+  if (detail?.effects?.length !== expectedEffects.length || expectedEffects.some((expected, index) => {
+    const actual = detail.effects[index];
+    return actual?.key !== expected.key || actual?.condition !== (expected.condition ?? 'unconditional')
+      || actual?.source !== expected.source || Number(actual?.value) !== expected.value
+      || actual?.percent !== expected.percent
+      || actual?.text !== arc2TextNumber(expected.value, expected.percent);
+  })) reasons.push('exact effect rows');
+  if (detail?.comparison?.length !== expectedComparison.length || expectedComparison.some((expected, index) => {
+    const actual = detail.comparison[index];
+    return actual?.key !== expected.key || Number(actual?.equipped) !== expected.equipped
+      || Number(actual?.candidate) !== expected.candidate || Number(actual?.delta) !== expected.delta
+      || actual?.condition !== (expected.condition ?? 'unconditional')
+      || actual?.equippedPercent !== expected.percent || actual?.candidatePercent !== expected.percent
+      || actual?.deltaPercent !== expected.percent
+      || actual?.equippedText !== arc2TextNumber(expected.equipped, expected.percent)
+      || actual?.candidateText !== arc2TextNumber(expected.candidate, expected.percent)
+      || actual?.deltaText !== arc2TextNumber(expected.delta, expected.percent);
+  })) reasons.push('complete comparison deltas');
+  if (detail?.axes?.itemLevel !== candidate?.itemLevel - equipped?.itemLevel
+    || detail?.axes?.quality !== candidate?.quality - equipped?.quality) reasons.push('comparison axes');
+  const conditionalEffect = detail?.effects?.find((row) => row.key === 'landfam.lava');
+  const conditionalDelta = detail?.comparison?.find((row) => row.key === 'landfam.lava');
+  if (conditionalEffect?.condition !== 'landing:lava'
+    || conditionalEffect?.conditionText !== 'Only when landing on lava'
+    || conditionalDelta?.condition !== 'landing:lava'
+    || !conditionalDelta?.text?.includes('Only when landing on lava')) reasons.push('conditional effect wording');
+  if (closed?.open !== false || closed?.bodyChildren !== 0 || closed?.focusInstanceId !== selectedInstanceId
+    || closed?.panelInert === true || closed?.diagnostics?.activeCount !== 0
+    || closed?.diagnostics?.retainedCount !== 0 || closed?.diagnostics?.pendingWork !== 0
+    || closed?.diagnostics?.selectedInstanceId !== null || closed?.closeHeight < 44
+    || closed?.pointer?.tag !== 'BUTTON' || closed?.pointer?.pointerType !== 'mouse'
+    || closed?.pointer?.trusted !== true) reasons.push('close/focus/zero ownership');
+  return { ok: reasons.length === 0, reasons };
+};
+const assessArc2InventoryAction = ({ before, after, beforeState, afterState, interaction, detail, instanceId }) => {
+  const reasons = [];
+  const beforeInventory = before?.arc2?.inventory, afterInventory = after?.arc2?.inventory;
+  const beforeAuthority = before?.authority?.sessionRng, afterAuthority = after?.authority?.sessionRng;
+  const afterEntry = afterInventory?.entries?.find((entry) => entry.instance.instanceId === instanceId);
+  const binding = afterInventory?.equipped?.find((entry) => entry.slot === afterEntry?.instance?.slot);
+  const beforeReceiptKeys = Array.isArray(before?.receiptKeys) ? before.receiptKeys : [];
+  const afterReceiptKeys = Array.isArray(after?.receiptKeys) ? after.receiptKeys : [];
+  const beforeKeySet = new Set(beforeReceiptKeys);
+  const newReceiptKeys = afterReceiptKeys.filter((key) => !beforeKeySet.has(key));
+  const receiptIndex = afterReceiptKeys.indexOf(newReceiptKeys[0]);
+  const receipt = Number.isInteger(receiptIndex) && receiptIndex >= 0 ? after.receiptRows?.[receiptIndex] : null;
+  const receiptEvidenceComplete = beforeReceiptKeys.length > 0
+    && beforeReceiptKeys.length === before?.receiptRawRows?.length
+    && beforeReceiptKeys.length === before?.receiptRows?.length
+    && afterReceiptKeys.length === after?.receiptRawRows?.length
+    && afterReceiptKeys.length === after?.receiptRows?.length
+    && new Set(afterReceiptKeys).size === afterReceiptKeys.length;
+  const oldReceiptPrefixStable = receiptEvidenceComplete
+    && beforeReceiptKeys.every((key, index) => {
+      return afterReceiptKeys[index] === key
+        && before.receiptRawRows[index] === after.receiptRawRows[index]
+        && canonicalJson(before.receiptRows[index]) === canonicalJson(after.receiptRows[index]);
+    });
+  const seedIsUint32 = Number.isSafeInteger(beforeAuthority?.seed)
+    && beforeAuthority.seed >= 0 && beforeAuthority.seed <= 0xFFFF_FFFF;
+  const beforeRuntime = beforeState?.persistence?.runtime;
+  const afterRuntime = afterState?.persistence?.runtime;
+  if (!arc2MirrorParity(after) || before?.carrierJson === after?.carrierJson
+    || after?.revision !== before?.revision + 1 || afterInventory?.revision !== beforeInventory?.revision + 1
+    || before?.authorityVersion !== 1 || after?.authorityVersion !== 1
+    || before?.authorityJson !== JSON.stringify(before?.authority)
+    || after?.authorityJson !== JSON.stringify(after?.authority)
+    || !seedIsUint32 || afterAuthority?.seed !== beforeAuthority?.seed
+    || beforeAuthority?.seed !== beforeRuntime?.sessionSeed || afterAuthority?.seed !== afterRuntime?.sessionSeed
+    || afterAuthority?.ordinal !== beforeAuthority?.ordinal + 1
+    || beforeAuthority?.ordinal !== beforeRuntime?.sessionOrdinal
+    || afterAuthority?.ordinal !== afterRuntime?.sessionOrdinal
+    || canonicalJson(afterAuthority?.draws) !== canonicalJson(beforeAuthority?.draws)
+    || canonicalJson(beforeAuthority?.draws) !== canonicalJson(beforeRuntime?.sessionDraws)
+    || canonicalJson(afterAuthority?.draws) !== canonicalJson(afterRuntime?.sessionDraws)
+    || before?.revision !== beforeRuntime?.revision || after?.revision !== afterRuntime?.revision
+    || !oldReceiptPrefixStable
+    || newReceiptKeys.length !== 1 || newReceiptKeys[0] !== `receipt:${beforeAuthority?.ordinal}`
+    || afterReceiptKeys.length !== beforeReceiptKeys.length + 1
+    || receipt?.ordinal !== beforeAuthority?.ordinal || receipt?.kind !== 'arc2-equip'
+    || receipt?.witness !== `arc2:equip:${beforeAuthority?.ordinal}:${instanceId}:${afterInventory?.revision}`
+    || after.receiptRawRows?.[receiptIndex] !== JSON.stringify(receipt)) {
+    reasons.push('single atomic revision/receipt/carrier outcome');
+  }
+  if (!afterEntry || binding?.instanceId !== instanceId
+    || beforeInventory?.equipped?.some((entry) => entry.instanceId === instanceId)
+    || afterState?.inventory?.revision !== afterInventory?.revision
+    || !afterState?.inventory?.equippedBindings?.some((entry) => entry.instanceId === instanceId)) {
+    reasons.push('exact equip publication');
+  }
+  if (interaction?.pressCount !== 1 || interaction?.operation !== 'equip'
+    || interaction?.instanceId !== instanceId || interaction?.trusted !== true
+    || interaction?.pointerType !== 'mouse') reasons.push('one real visible action');
+  if (detail?.detailId !== instanceId || detail?.focus !== 'sheet-close' || detail?.busy !== 'false'
+    || detail?.diagnostics?.activeCount !== 1
+    || detail?.diagnostics?.retainedCount !== 0 || detail?.diagnostics?.pendingWork !== 0
+    || detail?.diagnostics?.lastAction?.operation !== 'equip'
+    || detail?.diagnostics?.lastAction?.instanceId !== instanceId
+    || detail?.diagnostics?.lastAction?.kind !== 'committed'
+    || detail?.actions?.includes('unequip') !== true || detail?.statusKind !== 'committed') {
+    reasons.push('committed detail refresh');
+  }
+  const atlasProjection = (state) => canonicalJson({
+    mode: state?.mode, gal: state?.gal, star: state?.star, planet: state?.planet,
+    atlasCount: state?.atlasCount, atlasTravelable: state?.atlasTravelable, save: state?.save,
+  });
+  if (atlasProjection(afterState) !== atlasProjection(beforeState)
+    || canonicalJson(after?.legacy?.log) !== canonicalJson(before?.legacy?.log)) reasons.push('Atlas/product continuity');
+  return { ok: reasons.length === 0, reasons };
+};
+const assessArc2InventoryReload = ({ committed, reloaded, committedState, reloadedState, surface, instanceId, previousToken, token }) => {
+  const reasons = [];
+  const committedEntry = committed?.arc2?.inventory?.entries?.find((entry) => entry.instance.instanceId === instanceId);
+  const reloadedEntry = reloaded?.arc2?.inventory?.entries?.find((entry) => entry.instance.instanceId === instanceId);
+  const projection = (state) => canonicalJson({
+    atlasCount: state?.atlasCount, atlasTravelable: state?.atlasTravelable,
+    landed: state?.save?.landed, customNames: state?.save?.customNames, savedView: state?.save?.savedView,
+  });
+  if (typeof token !== 'string' || token === previousToken || reloadedState?.persistence?.bootKind !== 'current-v5'
+    || reloaded?.carrierJson !== committed?.carrierJson || reloaded?.inventoryRaw !== committed?.inventoryRaw
+    || !arc2MirrorParity(reloaded) || reloadedEntry?.instanceId !== committedEntry?.instanceId
+    || reloadedState?.inventory?.revision !== committed?.arc2?.inventory?.revision
+    || !reloadedState?.inventory?.equippedBindings?.some((entry) => entry.instanceId === instanceId)) {
+    reasons.push('current-v5 carrier reload');
+  }
+  if (projection(reloadedState) !== projection(committedState)
+    || surface?.inventoryPointer?.targetId !== 'railinventory' || surface?.inventoryPointer?.trusted !== true
+    || surface?.inventoryPointer?.pointerType !== 'mouse'
+    || surface?.inventoryRows?.length < 1 || surface.inventoryRows.length > 48
+    || canonicalJson(surface.inventoryRows) !== canonicalJson(arc2InventoryRows(reloaded.arc2))
+    || !surface.inventoryRows.some((row) => row.instanceId === instanceId && row.equipped === true)
+    || surface?.inventoryClose?.point?.ok !== true
+    || surface?.inventoryClose?.point?.owner !== 'inventory'
+    || !Number.isFinite(surface?.inventoryClose?.point?.x)
+    || !Number.isFinite(surface?.inventoryClose?.point?.y)
+    || surface?.inventoryClose?.pointer?.tag !== 'BUTTON'
+    || surface?.inventoryClose?.pointer?.trusted !== true
+    || surface?.inventoryClose?.pointer?.pointerType !== 'mouse'
+    || !Number.isFinite(surface?.inventoryClose?.pointer?.x)
+    || !Number.isFinite(surface?.inventoryClose?.pointer?.y)
+    || Math.abs(surface.inventoryClose.pointer.x - surface.inventoryClose.point.x) > 0.75
+    || Math.abs(surface.inventoryClose.pointer.y - surface.inventoryClose.point.y) > 0.75
+    || surface?.inventoryClose?.settled?.panelOpen !== null
+    || surface?.inventoryClose?.settled?.inventoryHidden !== true
+    || surface?.inventoryClose?.settled?.inventoryExpanded !== 'false'
+    || surface?.inventoryClose?.settled?.focusId !== 'railinventory'
+    || surface?.inventoryClose?.settled?.diagnostics?.activeCount !== 0
+    || surface?.inventoryClose?.settled?.diagnostics?.retainedCount !== 0
+    || surface?.inventoryClose?.settled?.diagnostics?.pendingWork !== 0
+    || surface?.atlasPreClick?.ok !== true || surface?.atlasPreClick?.targetId !== 'railatlas'
+    || !Number.isFinite(surface?.atlasPreClick?.x) || !Number.isFinite(surface?.atlasPreClick?.y)
+    || surface?.panelOpen !== 'atlas' || surface?.inventoryHidden !== true
+    || surface?.inventoryExpanded !== 'false' || surface?.atlasRow?.id !== 'p133'
+    || surface?.atlasRow?.tag !== 'BUTTON' || surface?.atlasRow?.disabled
+    || surface?.atlasRow?.ariaDisabled === 'true' || !(surface?.atlasRow?.height >= 44)
+    || surface?.atlasPointer?.targetId !== 'railatlas' || surface?.atlasPointer?.trusted !== true
+    || surface?.atlasPointer?.pointerType !== 'mouse'
+    || !Number.isFinite(surface?.atlasPointer?.x) || !Number.isFinite(surface?.atlasPointer?.y)
+    || Math.abs(surface.atlasPointer.x - surface.atlasPreClick.x) > 0.75
+    || Math.abs(surface.atlasPointer.y - surface.atlasPreClick.y) > 0.75
+    || surface?.inventoryDiagnostics?.activeCount !== 0
+    || surface?.inventoryDiagnostics?.retainedCount !== 0
+    || surface?.inventoryDiagnostics?.pendingWork !== 0) reasons.push('Atlas travelable/one-panel continuity');
+  return { ok: reasons.length === 0, reasons };
+};
+const assessArc2BootstrapRefusal = ({ failed, failedRaw, hook, succeeded, succeededRaw }) => {
+  const reasons = [];
+  if (hook?.callsAfterFailure !== 1 || hook?.rejected !== true
+    || hook?.decisionsAfterFailure !== 1 || hook?.firstRejected !== true
+    || hook?.firstPayload?.schema !== 'cf-v2-arc2-bootstrap-control/v1'
+    || hook?.firstPayload?.stateKind !== 'inventory'
+    || hook?.primaryBeforeHook !== failedRaw?.legacyRaw
+    || hook?.inventoryBeforeHook !== failedRaw?.inventoryRaw
+    || failed?.persistence?.bootKind !== 'transient-protected'
+    || failed?.persistence?.hold !== 'protected-payload' || failed?.persistence?.mutationBlocked !== true
+    || failed?.persistence?.runtime !== null
+    || failed?.inventory?.stateKind !== 'unavailable' || failed?.inventory?.protection !== 'bootstrap-failed'
+    || failed?.inventory?.bootstrapPending || failedRaw?.arc2 !== null || failedRaw?.carrierVersion !== null
+    || failedRaw?.revisionRaw !== '1' || failedRaw?.revision !== 1
+    || failedRaw?.authorityVersion !== null || failedRaw?.authorityJson !== null || failedRaw?.authority !== null
+    || failedRaw?.playerRow?.extensions?.['f4.authority'] !== undefined
+    || failedRaw?.receiptKeys?.length !== 0 || failedRaw?.receiptRawRows?.length !== 0
+    || failedRaw?.receiptRows?.length !== 0
+    || failedRaw?.inventoryRow?.extensions?.['arc2.loot'] !== undefined
+    || hook?.panelState !== 'absent' || hook?.panelRows !== 0 || hook?.panelActions !== 0) {
+    reasons.push('failed bootstrap remained protected and byte-stable');
+  }
+  const succeededAuthority = succeededRaw?.authority?.sessionRng;
+  const succeededRuntime = succeeded?.persistence?.runtime;
+  const legacyRewrite = assessStampedCanonicalRewrite(failedRaw?.legacyRaw, succeededRaw?.legacyRaw);
+  if (hook?.callsAfterSuccess !== 2 || hook?.decisionsAfterSuccess !== 2 || hook?.secondRejected !== false
+    || hook?.secondPayload?.schema !== 'cf-v2-arc2-bootstrap-control/v1'
+    || hook?.secondPayload?.stateKind !== 'inventory'
+    || hook?.secondPayload?.documentToken === hook?.firstPayload?.documentToken
+    || succeeded?.persistence?.bootKind !== 'current-v5' || succeeded?.persistence?.hold !== null
+    || succeeded?.inventory?.stateKind !== 'inventory' || succeeded?.inventory?.protection !== null
+    || succeeded?.inventory?.bootstrapPending || succeededRaw?.carrierVersion !== 1
+    || succeededRaw?.revisionRaw !== '2' || succeededRaw?.revision !== 2
+    || succeededRuntime?.revision !== 2
+    || succeededRaw?.authorityVersion !== 1
+    || succeededRaw?.authorityJson !== JSON.stringify(succeededRaw?.authority)
+    || !Number.isSafeInteger(succeededAuthority?.seed)
+    || succeededAuthority.seed < 0 || succeededAuthority.seed > 0xFFFF_FFFF
+    || succeededAuthority.seed !== succeededRuntime?.sessionSeed
+    || succeededAuthority?.ordinal !== 0 || succeededRuntime?.sessionOrdinal !== 0
+    || canonicalJson(succeededAuthority?.draws) !== '{}'
+    || canonicalJson(succeededAuthority?.draws) !== canonicalJson(succeededRuntime?.sessionDraws)
+    || succeededRaw?.receiptKeys?.length !== 0 || succeededRaw?.receiptRawRows?.length !== 0
+    || succeededRaw?.receiptRows?.length !== 0
+    || succeededRaw?.arc2?.kind !== 'inventory'
+    || succeededRaw?.carrierJson !== JSON.stringify(succeededRaw?.arc2)
+    || !arc2MirrorParity(succeededRaw) || !legacyRewrite.ok
+    || succeededRaw?.revision !== failedRaw?.revision + 1) reasons.push('clean reload prepared and committed coupled authorities once');
+  return { ok: reasons.length === 0, reasons };
 };
 const canonicalDiffPaths = (before, after, path = '', paths = [], limit = 16) => {
   if (canonicalJson(before) === canonicalJson(after) || paths.length >= limit) return paths;
@@ -1036,7 +1491,7 @@ try {
     delete window.__cfPanelPointer;const controller=new AbortController();window.__cfPanelPointerAbort=controller;
     document.addEventListener('pointerdown',(event)=>{ const target=event.target instanceof Element?event.target:null;
       window.__cfPanelPointer={targetId:target?.id||null,tag:target?.tagName||null,x:event.clientX,y:event.clientY,
-        pointerType:event.pointerType||null};window.__cfPanelPointerAbort=null; },
+        pointerType:event.pointerType||null,trusted:event.isTrusted===true};window.__cfPanelPointerAbort=null; },
       {capture:true,once:true,signal:controller.signal});return true; })()`);
   const takeDesktopPointerReceipt = async () => evalIn(`(()=>{ const receipt=window.__cfPanelPointer||null;
     window.__cfPanelPointerAbort?.abort();delete window.__cfPanelPointerAbort;delete window.__cfPanelPointer;
@@ -1741,7 +2196,7 @@ try {
     || !/mono/i.test(law.pref.font)) {
     fails.push('Settings accessibility preferences did not apply to rendered UI and save state: ' + JSON.stringify(law.pref));
   }
-  const registeredCloseCheck = `(()=>{ const ids=['setpanel','guidepanel','codexpanel','recpanel','atlaspanel','chpanel','shipyardpanel'];
+  const registeredCloseCheck = `(()=>{ const ids=['setpanel','guidepanel','codexpanel','recpanel','atlaspanel','chpanel','shipyardpanel','inventorypanel'];
     const rows=ids.map(id=>({id,count:document.getElementById(id)?.querySelectorAll(':scope > [data-pnx]').length??-1}));
     return {ok:rows.every(row=>row.count===1),rows};})()`;
   const registeredCloses = await evalIn(registeredCloseCheck);
@@ -2397,7 +2852,7 @@ try {
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text);
     return {title,identity:title.includes('v2.0 · A New Foundation'),
       status:article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,headings,bulletCount:bullets.length,
-      populated:bullets.length===49&&bullets.every((bullet)=>bullet.length>0),
+      populated:bullets.length===53&&bullets.every((bullet)=>bullet.length>0),
       canonical:JSON.stringify(headings)===JSON.stringify(['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood']),
       complete:charterPlacement&&trainingContract&&artContract&&workspaceContract&&coldArtContract&&workerContract
         &&shipyardContract&&hdSurfaceContract
@@ -2415,7 +2870,7 @@ try {
   await evalIn(`document.querySelector('#guidepanel [data-release-index="0"]')?.click()`);
   const releaseDraft = await evalIn(releaseDraftCheck);
   if (!releaseDraft.identity || releaseDraft.status !== 'draft'
-    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 49 || !releaseDraft.complete
+    || !releaseDraft.canonical || !releaseDraft.populated || releaseDraft.bulletCount !== 53 || !releaseDraft.complete
     || !releaseDraft.honest || !releaseDraft.authority || releaseDraft.releasePending !== releaseBaseline.releasePending
     || releaseDraft.rnSeen !== releaseBaseline.rnSeen) {
     fails.push('GUIDE v2.0 development bulletin is incomplete or changed shipped-release state: '
@@ -2430,8 +2885,8 @@ try {
   const releaseInventoryCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')][12];
     if(!row)return {populated:true,error:'missing control row'};const parent=row.parentNode,next=row.nextSibling;row.remove();const result=${releaseDraftCheck};
     parent.insertBefore(row,next);return result; })()`);
-  if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 48) {
-    fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet did not produce the exact 48-row incomplete inventory: '
+  if (releaseInventoryCtl.populated || releaseInventoryCtl.bulletCount !== 52) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — removing a middle v2.0 bullet did not produce the exact 52-row incomplete inventory: '
       + JSON.stringify(releaseInventoryCtl));
   }
   const releaseShipyardCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
@@ -3616,7 +4071,7 @@ try {
      sheet's own path (api.importBlob = the button's handler) must validate,
      store the veteran, and reboot into its name, stardust and view. Every
      rejected input below owns a before/after exact-primary assertion. */
-  const vrRaw = VETERAN_ATLAS_RAW;
+  const vrRaw = INVENTORY_VETERAN_RAW;
   /* a garbage blob must be REFUSED with nothing stored */
   const preGarbageImportRaw = await evalIn(READ_PRIMARY_EXPRESSION);
   const refuse = await evalIn(`window.__CF_SLICE__.api.importBlob('{"not":"a save"' )`).catch(() => 'navigated');
@@ -3908,6 +4363,449 @@ try {
     || postRacePrimary.me === 'Stale Autosave Must Lose') {
     fails.push('IMPORT/AUTOSAVE/DUPLICATE RACE: imported primary did not remain authoritative after reload/settle: '
       + JSON.stringify({ state: vet.save, storedName: postRacePrimary?.me, storedEssence: postRacePrimary?.essence }));
+  }
+
+  /* ARC 2 INVENTORY: use the veteran import's real current-v5 carrier and
+     visible desktop controls. The candidate is an exact thermal suit beside
+     an equipped hazmat suit, so this proves conditional effect wording and
+     every same-slot delta instead of accepting a synthetic score or a
+     base-level alias. One real Equip then has to land one coupled F4 receipt,
+     both legacy mirrors and the Arc 2 carrier before surviving reload. */
+  await waitForF4Writable('Arc 2 Inventory veteran authority');
+  /* Seed one real immutable predecessor through the production F4 owner.
+     The Inventory action must append its own receipt while preserving both
+     the predecessor's exact bytes and its parsed semantics; an empty receipt
+     store would make that preservation claim vacuous. */
+  const inventoryReceiptPrefixSeed = await evalIn(`window.__CF_SLICE__.api.__smokeCommitF4Outcome()`);
+  if (inventoryReceiptPrefixSeed?.schema !== 'cf-v2-f4-smoke-outcome/v1'
+    || inventoryReceiptPrefixSeed?.kind !== 'committed'
+    || inventoryReceiptPrefixSeed?.afterRevision !== inventoryReceiptPrefixSeed?.beforeRevision + 1
+    || inventoryReceiptPrefixSeed?.afterOrdinal !== inventoryReceiptPrefixSeed?.beforeOrdinal + 1
+    || inventoryReceiptPrefixSeed?.receipt?.ordinal !== inventoryReceiptPrefixSeed?.beforeOrdinal) {
+    fails.push('ARC 2 INVENTORY RECEIPT PREFIX SETUP: one real immutable predecessor was not committed: '
+      + JSON.stringify(inventoryReceiptPrefixSeed));
+  }
+  const inventoryBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const inventoryBeforeRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
+  const inventoryFixture = (() => {
+    const entries = inventoryBeforeRaw?.arc2?.kind === 'inventory'
+      ? inventoryBeforeRaw.arc2.inventory.entries : [];
+    const thermal = entries.filter((entry) => entry?.instance?.baseId === 'thermal');
+    const hazmat = entries.filter((entry) => entry?.instance?.baseId === 'hazmat');
+    const equippedSuit = inventoryBeforeRaw?.arc2?.kind === 'inventory'
+      ? inventoryBeforeRaw.arc2.inventory.equipped.find((binding) => binding.slot === 'suit') : null;
+    return {
+      selectedInstanceId: thermal.length === 1 ? thermal[0].instance.instanceId : null,
+      thermalCount: thermal.length,
+      hazmatCount: hazmat.length,
+      equippedSuit: equippedSuit?.instanceId ?? null,
+      hazmatId: hazmat[0]?.instance?.instanceId ?? null,
+    };
+  })();
+  if (!inventoryFixture.selectedInstanceId || inventoryFixture.thermalCount !== 1
+    || inventoryFixture.hazmatCount !== 1 || inventoryFixture.equippedSuit !== inventoryFixture.hazmatId) {
+    fails.push('ARC 2 INVENTORY FIXTURE: current-v5 veteran did not expose one exact thermal candidate beside equipped hazmat: '
+      + JSON.stringify({ inventoryFixture, raw: inventoryBeforeRaw }));
+  } else {
+    const inventoryInstanceId = inventoryFixture.selectedInstanceId;
+    const captureInventoryRows = `(()=>[...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')]
+      .map((row)=>({instanceId:row.getAttribute('data-instance-id'),baseId:row.getAttribute('data-base-id'),
+        pending:row.getAttribute('data-pending')==='true',equipped:row.getAttribute('data-equipped')==='true',
+        favorite:row.getAttribute('data-favorite')==='true',locked:row.getAttribute('data-locked')==='true'})))()`;
+    const captureInventoryDetail = `(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
+      body=sheet?.querySelector('[data-inventory-sheet-body]'),article=body?.querySelector('[data-inventory-detail]'),
+      title=document.getElementById(sheet?.getAttribute('aria-labelledby')||''),panel=document.getElementById('inventorypanel'),
+      effects=article?[...article.querySelectorAll('[data-inventory-effect]')].map((row)=>{const cells=[...row.children],
+        text=(cells[3]?.textContent||'').trim(),percent=text.endsWith('%');return {key:row.getAttribute('data-inventory-effect'),
+          condition:row.getAttribute('data-condition'),source:(cells[1]?.textContent||'').trim(),
+          conditionText:(cells[2]?.textContent||'').trim(),value:Number(text.replace('%',''))/(percent?100:1),
+          percent,text};}):[],
+      comparison=article?[...article.querySelectorAll('[data-compare-effect]')].map((row)=>{const cells=[...row.children],
+        equippedText=(cells[1]?.textContent||'').trim(),candidateText=(cells[2]?.textContent||'').trim(),
+        deltaText=(cells[3]?.textContent||'').trim();return {
+          key:row.getAttribute('data-effect-key'),condition:row.getAttribute('data-condition'),
+          equipped:Number(row.getAttribute('data-equipped')),candidate:Number(row.getAttribute('data-candidate')),
+          delta:Number(row.getAttribute('data-delta')),text:row.textContent||'',
+          equippedPercent:equippedText.endsWith('%'),candidatePercent:candidateText.endsWith('%'),
+          deltaPercent:deltaText.endsWith('%'),equippedText,candidateText,deltaText};}):[],
+      factsList=article?.querySelector('.inventory-facts'),facts=Object.fromEntries(factsList?[...factsList.querySelectorAll(':scope > dt')]
+        .map((term)=>[(term.textContent||'').trim(),(term.nextElementSibling?.textContent||'').trim()]):[]),
+      axes=Object.fromEntries(article?[...article.querySelectorAll('[data-compare-axis]')]
+        .map((row)=>[row.getAttribute('data-compare-axis'),Number(row.getAttribute('data-delta'))]):[]),
+      status=article?.querySelector('[data-inventory-action-status]');return {
+        sheetCount:document.querySelectorAll('#inventorysheet').length,open:!!sheet&&!sheet.hidden&&sheet.getAttribute('aria-hidden')==='false',
+        role:sheet?.getAttribute('role')||null,modal:sheet?.getAttribute('aria-modal')||null,busy:sheet?.getAttribute('aria-busy')||null,
+        labelled:!!title&&sheet?.contains(title)===true,detailId:article?.getAttribute('data-inventory-detail')||null,
+        focus:document.activeElement?.hasAttribute?.('data-inventory-sheet-close')?'sheet-close':document.activeElement?.id||null,
+        panelInert:panel?.inert===true,diagnostics:S?.api?.inventoryDiagnostics?.()||null,
+        pointer:window.__cfInventoryRowPointer||null,factsText:article?.textContent||'',facts,effects,comparison,axes,
+        actions:article?[...article.querySelectorAll('[data-inventory-action]')].map((button)=>button.getAttribute('data-inventory-action')):[],
+        statusKind:status?.getAttribute('data-kind')||null};})()`;
+    const armInventoryRowPointer = async () => evalIn(`(()=>{window.__cfInventoryRowPointerAbort?.abort();
+      delete window.__cfInventoryRowPointer;const controller=new AbortController();window.__cfInventoryRowPointerAbort=controller;
+      document.addEventListener('pointerdown',(event)=>{const target=event.target instanceof Element?event.target:null,
+        row=target?.closest('[data-inventory-row="exact"][data-instance-id]');if(!row)return;
+        window.__cfInventoryRowPointer={instanceId:row.getAttribute('data-instance-id'),pointerType:event.pointerType||null,
+          trusted:event.isTrusted===true};controller.abort();delete window.__cfInventoryRowPointerAbort;},
+        {capture:true,signal:controller.signal});return true;})()`);
+    const inventoryRowPoint = async () => evalIn(`(()=>{const row=[...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')]
+      .find((node)=>node.getAttribute('data-instance-id')===${JSON.stringify(inventoryInstanceId)}),r=row?.getBoundingClientRect(),
+      x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,hit=r?document.elementFromPoint(x,y):null;
+      return {ok:!!row&&!!r&&r.width>0&&r.height>=44&&!!hit&&(hit===row||row.contains(hit)),x,y,height:r?.height||0};})()`);
+
+    const inventoryOpenerPoint = await evalIn(railButtonPoint('railinventory'));
+    await armDesktopPointerReceipt();
+    const inventoryOpened = await openDesktopRailPanel('railinventory', 'inventory', 'ARC 2 INVENTORY');
+    const inventoryOpenPointer = await takeDesktopPointerReceipt();
+    const inventorySurfaceBase = await evalIn(`(()=>{const S=window.__CF_SLICE__,opener=document.getElementById('railinventory'),
+      panel=document.getElementById('inventorypanel'),style=opener?getComputedStyle(opener):null,r=opener?.getBoundingClientRect(),
+      x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,hit=r?document.elementFromPoint(x,y):null,rows=${captureInventoryRows};
+      return {opener:{id:opener?.id||null,tag:opener?.tagName||null,visible:!!r&&r.width>0&&r.height>=44
+        &&style?.display!=='none'&&style?.visibility!=='hidden',hitOwner:!!hit&&(hit===opener||opener?.contains(hit))},
+        panelOpen:S?.api?.state?.().panelOpen??null,panelDirectCloseCount:panel?.querySelectorAll(':scope > [data-pnx]').length??-1,
+        panelFocus:document.activeElement?.getAttribute?.('data-pnx')||document.activeElement?.id||null,
+        rowCount:rows.length,rows};})()`);
+    const inventorySurface = {
+      ...inventorySurfaceBase,
+      opener: {
+        ...inventorySurfaceBase.opener,
+        preClick: inventoryOpenerPoint,
+        pointer: inventoryOpenPointer,
+      },
+    };
+    let inventoryDetail = null;
+    let inventoryClosed = null;
+    if (!inventoryOpened) {
+      fails.push('ARC 2 INVENTORY: real visible right-rail opener did not open the registered panel');
+    } else {
+      await armInventoryRowPointer();
+      const rowPoint = await inventoryRowPoint();
+      if (rowPoint.ok) await clickDesktopPoint(rowPoint);
+      inventoryDetail = await evalIn(captureInventoryDetail);
+      const closePoint = await evalIn(`(()=>{const button=document.querySelector('#inventorysheet [data-inventory-sheet-close]'),
+        r=button?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
+        hit=r?document.elementFromPoint(x,y):null;return {ok:!!button&&!!r&&r.width>=44&&r.height>=44
+          &&!!hit&&(hit===button||button.contains(hit)),x,y,height:r?.height||0};})()`);
+      await armDesktopPointerReceipt();
+      if (closePoint.ok) await clickDesktopPoint(closePoint);
+      const closePointer = await takeDesktopPointerReceipt();
+      inventoryClosed = await evalIn(`(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
+        body=sheet?.querySelector('[data-inventory-sheet-body]'),panel=document.getElementById('inventorypanel');return {
+          open:!!sheet&&!sheet.hidden&&sheet.getAttribute('aria-hidden')==='false',bodyChildren:body?.childElementCount??-1,
+          focusInstanceId:document.activeElement?.getAttribute?.('data-instance-id')||null,panelInert:panel?.inert===true,
+          diagnostics:S?.api?.inventoryDiagnostics?.()||null};})()`);
+      inventoryClosed = { ...inventoryClosed, closeHeight: closePoint.height, pointer: closePointer };
+      if (!rowPoint.ok || !closePoint.ok) {
+        fails.push('ARC 2 INVENTORY: exact row or modal Close was not a real browser-hittable 44px target: '
+          + JSON.stringify({ rowPoint, closePoint }));
+      }
+    }
+    const inventorySurfaceBundle = {
+      state: inventoryBeforeState, raw: inventoryBeforeRaw, surface: inventorySurface,
+      detail: inventoryDetail, closed: inventoryClosed, selectedInstanceId: inventoryInstanceId,
+    };
+    const inventorySurfaceAssessment = assessArc2InventorySurface(inventorySurfaceBundle);
+    if (!inventorySurfaceAssessment.ok) {
+      fails.push('ARC 2 INVENTORY SURFACE: carrier, legacy mirrors, bounded exact DOM, detail, comparison, condition, or modal lifecycle disagreed: '
+        + JSON.stringify({ assessment: inventorySurfaceAssessment, bundle: inventorySurfaceBundle }));
+    }
+    if (inventoryDetail && inventoryClosed && inventorySurface.rows.length) {
+      const mirrorRaw = structuredClone(inventoryBeforeRaw);
+      mirrorRaw.legacy = { ...mirrorRaw.legacy, eq: { ...(mirrorRaw.legacy?.eq || {}), suit: 'thermal' } };
+      const droppedConditionDetail = structuredClone(inventoryDetail);
+      droppedConditionDetail.effects = droppedConditionDetail.effects.map((row) => row.key === 'landfam.lava'
+        ? { ...row, condition: 'unconditional', conditionText: 'Always applies' } : row);
+      const strippedPercentDetail = structuredClone(inventoryDetail);
+      strippedPercentDetail.effects = strippedPercentDetail.effects.map((row) => row.key === 'scut'
+        ? { ...row, percent: false, text: row.text.replace('%', '') } : row);
+      strippedPercentDetail.comparison = strippedPercentDetail.comparison.map((row) => row.key === 'scut'
+        ? { ...row, equippedPercent: false, candidatePercent: false, deltaPercent: false,
+          equippedText: row.equippedText.replace('%', ''), candidateText: row.candidateText.replace('%', ''),
+          deltaText: row.deltaText.replace('%', '') } : row);
+      const inventorySurfaceControls = {
+        openerHittability: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
+          ...inventorySurface, opener: {
+            ...inventorySurface.opener,
+            preClick: { ...inventorySurface.opener.preClick, ok: false },
+          },
+        } }),
+        openerTarget: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
+          ...inventorySurface, opener: {
+            ...inventorySurface.opener,
+            preClick: { ...inventorySurface.opener.preClick, targetId: 'railatlas' },
+          },
+        } }),
+        openerReceiptPoint: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
+          ...inventorySurface, opener: {
+            ...inventorySurface.opener,
+            pointer: { ...inventorySurface.opener.pointer, x: inventorySurface.opener.pointer.x + 2 },
+          },
+        } }),
+        openerReceiptMissing: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
+          ...inventorySurface, opener: {
+            ...inventorySurface.opener,
+            pointer: { ...inventorySurface.opener.pointer, x: null },
+          },
+        } }),
+        missingRow: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
+          ...inventorySurface, rows: inventorySurface.rows.slice(1), rowCount: inventorySurface.rowCount - 1,
+        } }),
+        duplicateRow: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
+          ...inventorySurface, rows: [...inventorySurface.rows, inventorySurface.rows[0]], rowCount: inventorySurface.rowCount + 1,
+        } }),
+        mirrorMismatch: assessArc2InventorySurface({ ...inventorySurfaceBundle, raw: mirrorRaw }),
+        droppedCondition: assessArc2InventorySurface({ ...inventorySurfaceBundle, detail: droppedConditionDetail }),
+        strippedPercent: assessArc2InventorySurface({ ...inventorySurfaceBundle, detail: strippedPercentDetail }),
+        retainedModal: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, open: true, bodyChildren: 1,
+          diagnostics: { ...inventoryClosed.diagnostics, activeCount: 1, retainedCount: 1 },
+        } }),
+        pendingWork: assessArc2InventorySurface({ ...inventorySurfaceBundle, closed: {
+          ...inventoryClosed, diagnostics: { ...inventoryClosed.diagnostics, pendingWork: 1 },
+        } }),
+      };
+      if (Object.values(inventorySurfaceControls).some((control) => control.ok)) {
+        fails.push('ARC 2 INVENTORY SURFACE CONTROLS FAILED — opener target/receipt binding, missing/duplicate row, mirror mismatch, dropped condition/percent unit, retained modal, or pending work stayed green: '
+          + JSON.stringify(inventorySurfaceControls));
+      }
+    }
+
+    let inventoryCommittedRaw = null;
+    let inventoryCommittedState = null;
+    let inventoryActionDetail = null;
+    if (inventoryOpened && inventoryClosed?.open === false) {
+      const actionRowPoint = await inventoryRowPoint();
+      if (actionRowPoint.ok) await clickDesktopPoint(actionRowPoint);
+      const actionBeforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+      const actionBeforeRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
+      const actionPoint = await evalIn(`(()=>{const button=[...document.querySelectorAll('#inventorysheet [data-inventory-action="equip"][data-instance-id]')]
+        .find((node)=>node.getAttribute('data-instance-id')===${JSON.stringify(inventoryInstanceId)}),
+        ignored=button?.scrollIntoView({block:'center',inline:'nearest'}),
+        r=button?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
+        hit=r?document.elementFromPoint(x,y):null;return {ok:!!button&&!button.disabled&&!!r&&r.width>0&&r.height>=44
+          &&!!hit&&(hit===button||button.contains(hit)),x,y,height:r?.height||0};})()`);
+      await evalIn(`(()=>{window.__cfInventoryActionAbort?.abort();window.__cfInventoryActionPresses=[];
+        const controller=new AbortController();window.__cfInventoryActionAbort=controller;
+        document.addEventListener('pointerdown',(event)=>{const target=event.target instanceof Element?event.target:null,
+          action=target?.closest('[data-inventory-action][data-instance-id]');if(!action)return;
+          window.__cfInventoryActionPresses.push({operation:action.getAttribute('data-inventory-action'),
+            instanceId:action.getAttribute('data-instance-id'),pointerType:event.pointerType||null,trusted:event.isTrusted===true});},
+          {capture:true,signal:controller.signal});return true;})()`);
+      if (actionPoint.ok) await clickDesktopPoint(actionPoint);
+      const actionSettled = await waitDesktopValue('Arc 2 exact thermal equip commit', `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
+        diag=S?.api?.inventoryDiagnostics?.();return state?.inventory?.equippedBindings?.some((row)=>row.instanceId===${JSON.stringify(inventoryInstanceId)})
+          &&diag?.pendingWork===0&&diag?.lastAction?.operation==='equip'&&diag?.lastAction?.kind==='committed';})()`).catch(() => false);
+      const actionPresses = await evalIn(`(()=>{window.__cfInventoryActionAbort?.abort();delete window.__cfInventoryActionAbort;
+        const rows=window.__cfInventoryActionPresses||[];delete window.__cfInventoryActionPresses;return rows;})()`);
+      inventoryCommittedState = await evalIn(`window.__CF_SLICE__.api.state()`);
+      inventoryCommittedRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
+      inventoryActionDetail = await evalIn(captureInventoryDetail);
+      const interaction = { pressCount: actionPresses.length, ...(actionPresses[0] || {}) };
+      const actionBundle = {
+        before: actionBeforeRaw, after: inventoryCommittedRaw,
+        beforeState: actionBeforeState, afterState: inventoryCommittedState,
+        interaction, detail: inventoryActionDetail, instanceId: inventoryInstanceId,
+      };
+      const actionAssessment = assessArc2InventoryAction(actionBundle);
+      if (!actionPoint.ok || !actionSettled || !actionAssessment.ok) {
+        fails.push('ARC 2 INVENTORY ACTION: one visible exact Equip did not commit one revision/receipt/mirror outcome: '
+          + JSON.stringify({ actionPoint, actionSettled, assessment: actionAssessment, bundle: actionBundle }));
+      }
+      const oldReceiptKey = actionBeforeRaw.receiptKeys[0] ?? null;
+      const oldReceiptIndex = oldReceiptKey === null ? -1 : inventoryCommittedRaw.receiptKeys.indexOf(oldReceiptKey);
+      const oldReceiptByteMutation = structuredClone(inventoryCommittedRaw);
+      const oldReceiptSemanticMutation = structuredClone(inventoryCommittedRaw);
+      if (oldReceiptIndex >= 0) {
+        oldReceiptByteMutation.receiptRawRows[oldReceiptIndex] += ' ';
+        oldReceiptSemanticMutation.receiptRows[oldReceiptIndex] = {
+          ...oldReceiptSemanticMutation.receiptRows[oldReceiptIndex], witness: 'mutated-old-receipt-control',
+        };
+      }
+      const mutateActionAuthority = (mutate) => {
+        const altered = structuredClone(inventoryCommittedRaw);
+        mutate(altered);
+        altered.authorityJson = JSON.stringify(altered.authority);
+        altered.playerRow.extensions['f4.authority'].json = altered.authorityJson;
+        altered.playerRaw = JSON.stringify(altered.playerRow);
+        return altered;
+      };
+      const seedDriftRaw = mutateActionAuthority((altered) => {
+        altered.authority.sessionRng.seed = (altered.authority.sessionRng.seed ^ 1) >>> 0;
+      });
+      const drawDriftRaw = mutateActionAuthority((altered) => {
+        altered.authority.sessionRng.draws['arc2-control'] = 1;
+      });
+      const authorityVersionRaw = structuredClone(inventoryCommittedRaw);
+      authorityVersionRaw.authorityVersion = 2;
+      authorityVersionRaw.playerRow.extensions['f4.authority'].version = 2;
+      authorityVersionRaw.playerRaw = JSON.stringify(authorityVersionRaw.playerRow);
+      const actionControls = {
+        double: assessArc2InventoryAction({ ...actionBundle, interaction: { ...interaction, pressCount: 2 } }),
+        bypass: assessArc2InventoryAction({ ...actionBundle, interaction: { ...interaction, pressCount: 0, trusted: false } }),
+        seedDrift: assessArc2InventoryAction({ ...actionBundle, after: seedDriftRaw }),
+        drawDrift: assessArc2InventoryAction({ ...actionBundle, after: drawDriftRaw }),
+        authorityVersion: assessArc2InventoryAction({ ...actionBundle, after: authorityVersionRaw }),
+        oldReceiptBytes: assessArc2InventoryAction({ ...actionBundle, after: oldReceiptByteMutation }),
+        oldReceiptSemantic: assessArc2InventoryAction({ ...actionBundle, after: oldReceiptSemanticMutation }),
+        duplicateReceipt: assessArc2InventoryAction({ ...actionBundle, after: {
+          ...inventoryCommittedRaw,
+          receiptKeys: [...inventoryCommittedRaw.receiptKeys, inventoryCommittedRaw.receiptKeys.at(-1)],
+          receiptRawRows: [...inventoryCommittedRaw.receiptRawRows, inventoryCommittedRaw.receiptRawRows.at(-1)],
+          receiptRows: [...inventoryCommittedRaw.receiptRows, inventoryCommittedRaw.receiptRows.at(-1)],
+        } }),
+      };
+      if (Object.values(actionControls).some((control) => control.ok)) {
+        fails.push('ARC 2 INVENTORY ACTION CONTROLS FAILED — double/bypassed action, RNG/version drift, old-receipt mutation, or duplicate receipt stayed green: '
+          + JSON.stringify(actionControls));
+      }
+
+      const actionClosePoint = await evalIn(`(()=>{const button=document.querySelector('#inventorysheet [data-inventory-sheet-close]'),
+        r=button?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
+        hit=r?document.elementFromPoint(x,y):null;return {ok:!!button&&!!r&&r.width>=44&&r.height>=44
+          &&!!hit&&(hit===button||button.contains(hit)),x,y};})()`);
+      await armDesktopPointerReceipt();
+      if (actionClosePoint.ok) await clickDesktopPoint(actionClosePoint);
+      const actionClosePointer = await takeDesktopPointerReceipt();
+      const actionClosed = await evalIn(`(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
+        diag=S?.api?.inventoryDiagnostics?.();return {open:!!sheet&&!sheet.hidden,bodyChildren:sheet?.querySelector('[data-inventory-sheet-body]')?.childElementCount??-1,
+          focusInstanceId:document.activeElement?.getAttribute?.('data-instance-id')||null,diag};})()`);
+      if (!actionClosePoint.ok || actionClosePointer?.trusted !== true || actionClosePointer?.pointerType !== 'mouse'
+        || actionClosed.open || actionClosed.bodyChildren !== 0 || actionClosed.focusInstanceId !== inventoryInstanceId
+        || actionClosed.diag?.activeCount !== 0 || actionClosed.diag?.retainedCount !== 0 || actionClosed.diag?.pendingWork !== 0) {
+        fails.push('ARC 2 INVENTORY ACTION CLOSE: committed detail did not close to its surviving exact row with zero ownership: '
+          + JSON.stringify({ actionClosePoint, actionClosePointer, actionClosed }));
+      }
+    }
+
+    if (inventoryCommittedRaw && inventoryCommittedState) {
+      const inventoryCommittedToken = await sliceToken(sess);
+      const inventoryReloadToken = await navigateToSlice(sess, URL0, 'Arc 2 Inventory committed reload');
+      await assertBootTickerRunning('Arc 2 Inventory committed reload');
+      await waitForF4Writable('Arc 2 Inventory reloaded authority', { previousToken: inventoryCommittedToken });
+      const inventoryReloadState = await evalIn(`window.__CF_SLICE__.api.state()`);
+      const inventoryReloadRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
+      await armDesktopPointerReceipt();
+      const inventoryReloadOpened = await openDesktopRailPanel('railinventory', 'inventory', 'ARC 2 INVENTORY RELOAD');
+      const inventoryReloadPointer = await takeDesktopPointerReceipt();
+      const inventoryReloadRows = await evalIn(captureInventoryRows);
+
+      /* Inventory is intentionally a tall right-aligned panel. Once open it
+         overlaps the rail beneath it, so switching to Atlas must first use
+         the player's real 44px Close—not a synthetic panel-manager call. */
+      const inventoryClosePoint = await evalIn(`(()=>{const button=document.querySelector('#inventorypanel > [data-pnx="inventory"]'),
+        r=button?.getBoundingClientRect(),x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,
+        hit=r?document.elementFromPoint(x,y):null;return {ok:!!button&&!!r&&r.width>=44&&r.height>=44
+          &&!!hit&&(hit===button||button.contains(hit)),x,y,owner:button?.getAttribute('data-pnx')||null};})()`);
+      await armDesktopPointerReceipt();
+      if (inventoryClosePoint.ok) await clickDesktopPoint(inventoryClosePoint);
+      const inventoryClosePointer = await takeDesktopPointerReceipt();
+      const inventoryCloseSettled = await waitDesktopValue('Arc 2 Inventory reload close', `(()=>{const S=window.__CF_SLICE__,
+        panel=document.getElementById('inventorypanel'),opener=document.getElementById('railinventory'),
+        diag=S?.api?.inventoryDiagnostics?.(),panelOpen=S?.api?.state?.().panelOpen??null,
+        inventoryHidden=panel?.style.display==='none'&&panel?.getAttribute('aria-hidden')==='true',
+        inventoryExpanded=opener?.getAttribute('aria-expanded')||null,focusId=document.activeElement?.id||null;
+        return panelOpen===null&&inventoryHidden&&inventoryExpanded==='false'&&focusId==='railinventory'
+          &&diag?.activeCount===0&&diag?.retainedCount===0&&diag?.pendingWork===0
+          ?{panelOpen,inventoryHidden,inventoryExpanded,focusId,diagnostics:diag}:null;})()`).catch(() => null);
+
+      const atlasPreClick = await evalIn(railButtonPoint('railatlas'));
+      await armDesktopPointerReceipt();
+      if (atlasPreClick.ok) await clickDesktopPoint(atlasPreClick);
+      const atlasOpened = atlasPreClick.ok
+        ? await waitDesktopValue('ARC 2 INVENTORY ATLAS CONTINUITY open', `window.__CF_SLICE__.api.state().panelOpen==='atlas'`)
+          .catch(() => false)
+        : false;
+      if (!atlasPreClick.ok) {
+        fails.push(`ARC 2 INVENTORY ATLAS CONTINUITY: visible rail opener was not browser-mouse hittable: ${JSON.stringify(atlasPreClick)}`);
+      } else if (!atlasOpened) {
+        fails.push('ARC 2 INVENTORY ATLAS CONTINUITY: browser-mouse rail opener did not open atlas');
+      }
+      const atlasPointer = await takeDesktopPointerReceipt();
+      const reloadSurface = await evalIn(`(()=>{const S=window.__CF_SLICE__,inventory=document.getElementById('inventorypanel'),
+        inventoryOpener=document.getElementById('railinventory'),row=document.querySelector('#atlaspanel [data-aid="p133"]'),
+        r=row?.getBoundingClientRect();return {panelOpen:S?.api?.state?.().panelOpen??null,
+          inventoryHidden:inventory?.style.display==='none'&&inventory?.getAttribute('aria-hidden')==='true',
+          inventoryExpanded:inventoryOpener?.getAttribute('aria-expanded')||null,
+          atlasRow:{id:row?.getAttribute('data-aid')||null,tag:row?.tagName||null,disabled:!!row?.disabled,
+            ariaDisabled:row?.getAttribute('aria-disabled')||null,height:r?.height||0},
+          inventoryDiagnostics:S?.api?.inventoryDiagnostics?.()||null};})()`);
+      Object.assign(reloadSurface, {
+        inventoryPointer: inventoryReloadPointer,
+        inventoryRows: inventoryReloadRows,
+        inventoryClose: {
+          point: inventoryClosePoint,
+          pointer: inventoryClosePointer,
+          settled: inventoryCloseSettled,
+        },
+        atlasPreClick,
+        atlasPointer,
+      });
+      const reloadBundle = {
+        committed: inventoryCommittedRaw, reloaded: inventoryReloadRaw,
+        committedState: inventoryCommittedState, reloadedState: inventoryReloadState,
+        surface: reloadSurface, instanceId: inventoryInstanceId,
+        previousToken: inventoryCommittedToken, token: inventoryReloadToken,
+      };
+      const reloadAssessment = assessArc2InventoryReload(reloadBundle);
+      if (!inventoryReloadOpened || !atlasOpened || !reloadAssessment.ok) {
+        fails.push('ARC 2 INVENTORY RELOAD/ATLAS: durable exact equip or travelable Atlas continuity disagreed after reload: '
+          + JSON.stringify({ inventoryReloadOpened, atlasOpened, assessment: reloadAssessment, bundle: reloadBundle }));
+      }
+      /* Mutation controls operate only on a complete green witness. A real
+         missing receipt/row is already a product finding and must not be
+         converted into a harness TypeError while constructing a clone. */
+      if (reloadAssessment.ok) {
+        const atlasLossState = {
+          ...inventoryReloadState,
+          atlasTravelable: Math.max(0, Number(inventoryReloadState.atlasTravelable || 0) - 1),
+        };
+        const reloadSurfaceControl = (mutate) => {
+          const surface = structuredClone(reloadSurface);
+          mutate(surface);
+          return assessArc2InventoryReload({ ...reloadBundle, surface });
+        };
+        const reloadControls = {
+          atlasLoss: assessArc2InventoryReload({ ...reloadBundle, reloadedState: atlasLossState }),
+          closePoint: reloadSurfaceControl((surface) => { surface.inventoryClose.point.ok = false; }),
+          closeOwner: reloadSurfaceControl((surface) => { surface.inventoryClose.point.owner = 'atlas'; }),
+          closePointCoordinate: reloadSurfaceControl((surface) => { surface.inventoryClose.point.x = null; }),
+          closeTag: reloadSurfaceControl((surface) => { surface.inventoryClose.pointer.tag = 'DIV'; }),
+          closeTrust: reloadSurfaceControl((surface) => { surface.inventoryClose.pointer.trusted = false; }),
+          closePointerType: reloadSurfaceControl((surface) => { surface.inventoryClose.pointer.pointerType = 'touch'; }),
+          closePointerCoordinate: reloadSurfaceControl((surface) => { surface.inventoryClose.pointer.x += 2; }),
+          closePanelState: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.panelOpen = 'inventory'; }),
+          closeVisibility: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.inventoryHidden = false; }),
+          closeExpansion: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.inventoryExpanded = 'true'; }),
+          closeFocus: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.focusId = 'railatlas'; }),
+          closeActiveOwner: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.diagnostics.activeCount = 1; }),
+          closeRetainedOwner: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.diagnostics.retainedCount = 1; }),
+          closePendingWork: reloadSurfaceControl((surface) => { surface.inventoryClose.settled.diagnostics.pendingWork = 1; }),
+          atlasPreClickOk: reloadSurfaceControl((surface) => { surface.atlasPreClick.ok = false; }),
+          atlasPreClickOwner: reloadSurfaceControl((surface) => { surface.atlasPreClick.targetId = 'inventorypanel'; }),
+          atlasPreClickCoordinate: reloadSurfaceControl((surface) => { surface.atlasPreClick.x = null; }),
+          atlasPointerOwner: reloadSurfaceControl((surface) => { surface.atlasPointer.targetId = 'inventorypanel'; }),
+          atlasPointerTrust: reloadSurfaceControl((surface) => { surface.atlasPointer.trusted = false; }),
+          atlasPointerType: reloadSurfaceControl((surface) => { surface.atlasPointer.pointerType = 'touch'; }),
+          atlasPointerCoordinate: reloadSurfaceControl((surface) => { surface.atlasPointer.x += 2; }),
+          atlasPanelState: reloadSurfaceControl((surface) => { surface.panelOpen = 'inventory'; }),
+          inventoryStillVisible: reloadSurfaceControl((surface) => { surface.inventoryHidden = false; }),
+          inventoryStillExpanded: reloadSurfaceControl((surface) => { surface.inventoryExpanded = 'true'; }),
+          atlasRowIdentity: reloadSurfaceControl((surface) => { surface.atlasRow.id = 'not-earth'; }),
+          atlasRowRole: reloadSurfaceControl((surface) => { surface.atlasRow.tag = 'DIV'; }),
+          atlasRowHeight: reloadSurfaceControl((surface) => { surface.atlasRow.height = 43; }),
+          atlasDisabled: reloadSurfaceControl((surface) => {
+            surface.atlasRow.disabled = true; surface.atlasRow.ariaDisabled = 'true';
+          }),
+          retainedModal: reloadSurfaceControl((surface) => {
+            surface.inventoryDiagnostics.activeCount = 1; surface.inventoryDiagnostics.retainedCount = 1;
+          }),
+        };
+        if (Object.values(reloadControls).some((control) => control.ok)) {
+          fails.push('ARC 2 INVENTORY RELOAD CONTROLS FAILED — exact Close/Atlas ownership, geometry, lifecycle, or route loss stayed green: '
+            + JSON.stringify(reloadControls));
+        }
+      }
+    }
   }
 
   /* A current one-key Training snapshot can be perfectly source-proven and
@@ -4444,15 +5342,16 @@ try {
     await sleep(900);
     const token = await sliceToken(sess);
     const state = await evalIn(`window.__CF_SLICE__.api.state()`);
-    const [stored, authority, migration] = await Promise.all([
+    const [stored, authority, migration, loot] = await Promise.all([
       evalIn(READ_PRIMARY_EXPRESSION),
       evalIn(READ_F4_AUTHORITY_EXPRESSION),
       evalIn(READ_V5_MIGRATION_EVIDENCE_EXPRESSION),
+      evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION),
     ]);
     if (!beforeToken || !token || token === beforeToken) {
       fails.push(`${label.toUpperCase()}: direct fixture boot reused the prior document token`);
     }
-    return { token, state, stored, authority, migration };
+    return { token, state, stored, authority, migration, loot };
   };
   const assessDtrainMigratedBoot = (booted, sourceRaw) => {
     const reasons = [];
@@ -4719,6 +5618,104 @@ try {
     return { ok: reasons.length === 0, reasons, outer };
   };
   const dtrainRestoredRawOutcome = (raw, options) => dtrainRestoredRawAssessment(raw, options).ok;
+  const assessDtrainArc2Restore = ({
+    before, after, state, expectedRevision, expectedCommits, expectedLastOutcome,
+  }) => {
+    const reasons = [];
+    const require = (condition, reason) => { if (!condition) reasons.push(reason); };
+    const inventory = after?.arc2?.inventory;
+    const stackableCounts = after?.arc2?.stackableCounts;
+    const entries = Array.isArray(inventory?.entries) ? inventory.entries : [];
+    const headlampEntry = entries.find((entry) => entry?.instance?.baseId === 'headlamp');
+    const headlamp = headlampEntry?.instance;
+    const binding = inventory?.equipped?.find((entry) => entry?.slot === 'helmet');
+    const expectedStackables = [
+      { baseId: 'plate', count: 3 },
+      { baseId: 'lens', count: 1 },
+      { baseId: 'cell', count: 2 },
+    ];
+    const runtime = state?.persistence?.runtime;
+    require(after?.revisionRaw === String(expectedRevision) && after?.revision === expectedRevision
+      && runtime?.revision === expectedRevision && runtime?.commits === expectedCommits
+      && state?.persistence?.lastOutcome === expectedLastOutcome,
+    'single expected revision path');
+    require(after?.carrierVersion === 1 && after?.arc2?.kind === 'inventory'
+      && after?.carrierJson === JSON.stringify(after?.arc2)
+      && after?.inventoryRow?.schema === 5 && after?.inventoryRow?.segment === 'inventory'
+      && arc2MirrorParity(after), 'checkpoint carrier/mirror parity');
+    require(inventory?.revision === 0 && entries.length === 1
+      && canonicalJson(stackableCounts) === canonicalJson(expectedStackables)
+      && headlamp?.baseId === 'headlamp' && binding?.instanceId === headlamp?.instanceId
+      && canonicalJson(headlamp?.legacyAffix) === canonicalJson({
+        affixId: 'strike', value: 0.05, forBaseId: 'headlamp',
+      })
+      && !entries.some((entry) => entry?.instance?.baseId === 'visor'),
+    'exact checkpoint inventory');
+    require(canonicalJson(after?.legacy?.items) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.it)
+      && canonicalJson(after?.legacy?.eq) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.eq)
+      && canonicalJson(after?.legacy?.ea) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.ea),
+    'checkpoint compatibility fields');
+    require(state?.inventory?.stateKind === 'inventory' && state?.inventory?.protection === null
+      && state?.inventory?.bootstrapPending === false && state?.inventory?.revision === 0
+      && state?.inventory?.entries === 1 && state?.inventory?.equipped === 1
+      && state?.inventory?.pending === 0
+      && canonicalJson(state?.inventory?.entryIds) === canonicalJson(entries.map((entry) => entry.instance.instanceId))
+      && canonicalJson(state?.inventory?.equippedBindings) === canonicalJson(inventory?.equipped)
+      && state?.persistence?.productBootstrapPending === false,
+    'live checkpoint carrier publication');
+    require(before?.authorityVersion === 1 && after?.authorityVersion === 1
+      && before?.authorityJson === JSON.stringify(before?.authority)
+      && after?.authorityJson === JSON.stringify(after?.authority)
+      && canonicalJson(after?.authority?.sessionRng) === canonicalJson(before?.authority?.sessionRng)
+      && canonicalJson(runtime?.sessionDraws) === canonicalJson(after?.authority?.sessionRng?.draws)
+      && runtime?.sessionSeed === after?.authority?.sessionRng?.seed
+      && runtime?.sessionOrdinal === after?.authority?.sessionRng?.ordinal,
+    'receiptless SessionRNG preservation');
+    require(canonicalJson(after?.receiptKeys) === canonicalJson(before?.receiptKeys)
+      && canonicalJson(after?.receiptRawRows) === canonicalJson(before?.receiptRawRows)
+      && canonicalJson(after?.receiptRows) === canonicalJson(before?.receiptRows)
+      && before?.carrierJson !== after?.carrierJson,
+    'receipt preservation and actual carrier replacement');
+    return { ok: reasons.length === 0, reasons };
+  };
+  const assessDtrainArc2Deferred = ({ before, after, state }) => {
+    const reasons = [];
+    const require = (condition, reason) => { if (!condition) reasons.push(reason); };
+    const runtime = state?.persistence?.runtime;
+    require(after?.revisionRaw === '2' && after?.revision === 2
+      && runtime?.revision === 2 && runtime?.commits === 0
+      && state?.persistence?.productBootstrapPending === false,
+    'deferred revision without successor bootstrap');
+    require(before?.carrierVersion === 1 && after?.carrierVersion === 1
+      && before?.carrierJson === JSON.stringify(before?.arc2)
+      && after?.carrierJson === JSON.stringify(after?.arc2)
+      && before?.carrierJson === after?.carrierJson
+      && canonicalJson(before?.arc2) === canonicalJson(after?.arc2)
+      && arc2MirrorParity(after),
+    'exact pre-existing Arc 2 carrier');
+    require(state?.inventory?.stateKind === 'inventory'
+      && state?.inventory?.protection === null
+      && state?.inventory?.bootstrapPending === false
+      && state?.inventory?.revision === after?.arc2?.inventory?.revision
+      && canonicalJson(state?.inventory?.entryIds)
+        === canonicalJson(after?.arc2?.inventory?.entries?.map((entry) => entry.instance.instanceId))
+      && canonicalJson(state?.inventory?.equippedBindings)
+        === canonicalJson(after?.arc2?.inventory?.equipped),
+    'deferred live carrier publication');
+    require(before?.authorityVersion === 1 && after?.authorityVersion === 1
+      && before?.authorityJson === JSON.stringify(before?.authority)
+      && after?.authorityJson === JSON.stringify(after?.authority)
+      && canonicalJson(before?.authority?.sessionRng) === canonicalJson(after?.authority?.sessionRng)
+      && canonicalJson(runtime?.sessionDraws) === canonicalJson(after?.authority?.sessionRng?.draws)
+      && runtime?.sessionSeed === after?.authority?.sessionRng?.seed
+      && runtime?.sessionOrdinal === after?.authority?.sessionRng?.ordinal,
+    'deferred SessionRNG preservation');
+    require(canonicalJson(after?.receiptKeys) === canonicalJson(before?.receiptKeys)
+      && canonicalJson(after?.receiptRawRows) === canonicalJson(before?.receiptRawRows)
+      && canonicalJson(after?.receiptRows) === canonicalJson(before?.receiptRows),
+    'deferred receipt preservation');
+    return { ok: reasons.length === 0, reasons };
+  };
   const assessNoSnapshotCanonicalBoot = (state, raw, authority) => {
     const reasons = [];
     const require = (condition, reason) => { if (!condition) reasons.push(reason); };
@@ -5111,6 +6108,7 @@ try {
     return !s.tutActive&&s.tutDone&&s.trainingRestoreWitness?.stage==='released'?s:null;})()`);
   await sleep(80);
   const retryRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  const retryLootEvidence = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
   const retryWitness = dtrainAssertWitness('D-TRAIN COMMIT RETRY', retryMark, {
     intent: 'skip', checkpointKind: 'legacy-v1', stages: DTRAIN_SUCCESS_STAGES,
     documentToken: rejectBooted.token,
@@ -5123,7 +6121,11 @@ try {
   );
   const retryRawAssessment = dtrainRestoredRawAssessment(retryRaw);
   const retryRouteAssessment = dtrainStateRouteAssessment(retryDone, 'sol');
-  if (!retryRawAssessment.ok || !retryRouteAssessment.ok
+  const retryArc2Assessment = assessDtrainArc2Restore({
+    before: rejectBooted.loot, after: retryLootEvidence, state: retryDone,
+    expectedRevision: 2, expectedCommits: 2, expectedLastOutcome: 'training-committed:2',
+  });
+  if (!retryRawAssessment.ok || !retryRouteAssessment.ok || !retryArc2Assessment.ok
     || retryWitness.operationIds[0] === rejectedWitness.operationIds[0]
     || !retryNativeWitness.ok || retryTransactionWrites.length !== 1
     || retryDone.trainingCheckpointKind !== 'none' || retryDone.trainingCheckpointWriteHeld
@@ -5131,7 +6133,18 @@ try {
     fails.push('D-TRAIN COMMIT RETRY: clean retry did not restore once under a fresh operation id: '
       + JSON.stringify({ retryDone, retryRaw, rejectedWitness, retryWitness,
         native: retryNativeWitness, transactionWrites: retryTransactionWrites,
-        rawAssessment: retryRawAssessment, routeAssessment: retryRouteAssessment }));
+        rawAssessment: retryRawAssessment, routeAssessment: retryRouteAssessment,
+        arc2Assessment: retryArc2Assessment, arc2Evidence: retryLootEvidence }));
+  }
+  if (retryArc2Assessment.ok) {
+    const retryOutcomeControl = structuredClone(retryDone);
+    retryOutcomeControl.persistence.lastOutcome = 'seed-committed:2';
+    if (assessDtrainArc2Restore({
+      before: rejectBooted.loot, after: retryLootEvidence, state: retryOutcomeControl,
+      expectedRevision: 2, expectedCommits: 2, expectedLastOutcome: 'training-committed:2',
+    }).ok) {
+      fails.push('D-TRAIN COMMIT RETRY OUTCOME CONTROL FAILED — hidden bootstrap outcome stayed green');
+    }
   }
 
   /* A failure after the one durable write is committed-state convergence,
@@ -5154,6 +6167,7 @@ try {
     actions:document.querySelectorAll('[data-sel="tutbtn"],[data-sel="tutskip"]').length,
     retryStatus:!!document.querySelector('[data-sel="tutstatus"]:not([hidden])')})`);
   const publishRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  const publishLootEvidence = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
   const publishWitness = dtrainAssertWitness('D-TRAIN POST-WRITE PUBLICATION REJECTION', publishMark, {
     intent: 'skip', checkpointKind: 'legacy-v1',
     stages: ['invoked', 'claimed', 'no-active-persist', 'candidate-started', 'earth-proven',
@@ -5174,11 +6188,15 @@ try {
   );
   const publishRawAssessment = dtrainRestoredRawAssessment(publishRaw);
   const publishRouteAssessment = dtrainStateRouteAssessment(publishDone, 'sol');
+  const publishArc2Assessment = assessDtrainArc2Restore({
+    before: publishBooted.loot, after: publishLootEvidence, state: publishDone,
+    expectedRevision: 3, expectedCommits: 1, expectedLastOutcome: 'committed:3',
+  });
   if (!publishNativeArmed || !publishArmed.button || !publishArmed.armed
     || !publishWitness.ok || publishWitness.entries.some((entry) => entry.stage === 'live-swap-complete')
     || !/post-durable Training publication failure/i.test(publishWitness.entries.at(-1)?.error || '')
     || !publishNativeWitness.ok || publishTransactionWrites.length !== 1 || !publishReleaseWitness.ok
-    || !publishRawAssessment.ok || !publishRouteAssessment.ok
+    || !publishRawAssessment.ok || !publishRouteAssessment.ok || !publishArc2Assessment.ok
     || !publishDone.tutDone || publishDone.tutActive || publishDone.trainingCheckpointKind !== 'none'
     || publishDone.trainingCheckpointWriteHeld || publishDone.tutSnapshotPending !== null
     || publishUi.card || publishUi.actions !== 0 || publishUi.retryStatus
@@ -5187,7 +6205,65 @@ try {
       + JSON.stringify({ publishNativeArmed, publishArmed, done: publishDone, ui: publishUi,
         raw: publishRaw, witness: publishWitness, native: publishNativeWitness,
         transactionWrites: publishTransactionWrites, release: publishReleaseWitness,
-        rawAssessment: publishRawAssessment, routeAssessment: publishRouteAssessment }));
+        rawAssessment: publishRawAssessment, routeAssessment: publishRouteAssessment,
+        arc2Assessment: publishArc2Assessment, arc2Evidence: publishLootEvidence }));
+  }
+  /* Build mutation controls only from a complete green witness. A genuine
+     missing carrier/authority is already red and must not become a harness
+     TypeError while cloning nested evidence. */
+  if (publishArc2Assessment.ok) {
+    const stalePublishCarrier = structuredClone(publishLootEvidence);
+    stalePublishCarrier.carrierVersion = publishBooted.loot.carrierVersion;
+    stalePublishCarrier.carrierJson = publishBooted.loot.carrierJson;
+    stalePublishCarrier.arc2 = structuredClone(publishBooted.loot.arc2);
+    stalePublishCarrier.inventoryRow.extensions['arc2.loot'] = structuredClone(
+      publishBooted.loot.inventoryRow.extensions['arc2.loot'],
+    );
+    stalePublishCarrier.inventoryRaw = JSON.stringify(stalePublishCarrier.inventoryRow);
+    const stalePublishState = structuredClone(publishDone);
+    stalePublishState.inventory = structuredClone(publishBooted.state.inventory);
+    const extraBootstrapEvidence = structuredClone(publishLootEvidence);
+    extraBootstrapEvidence.revision = 4;
+    extraBootstrapEvidence.revisionRaw = '4';
+    const extraBootstrapState = structuredClone(publishDone);
+    extraBootstrapState.persistence.runtime.revision = 4;
+    extraBootstrapState.persistence.runtime.commits = 2;
+    const hiddenBootstrapOutcomeState = structuredClone(publishDone);
+    hiddenBootstrapOutcomeState.persistence.lastOutcome = 'seed-committed:3';
+    const rngDriftEvidence = structuredClone(publishLootEvidence);
+    rngDriftEvidence.authority.sessionRng.seed = (rngDriftEvidence.authority.sessionRng.seed ^ 1) >>> 0;
+    rngDriftEvidence.authorityJson = JSON.stringify(rngDriftEvidence.authority);
+    rngDriftEvidence.playerRow.extensions['f4.authority'].json = rngDriftEvidence.authorityJson;
+    rngDriftEvidence.playerRaw = JSON.stringify(rngDriftEvidence.playerRow);
+    const receiptDriftEvidence = structuredClone(publishLootEvidence);
+    const receiptDrift = { ordinal: 0, kind: 'foreign-training-control', witness: 'foreign:receipt:0' };
+    receiptDriftEvidence.receiptKeys = ['receipt:0'];
+    receiptDriftEvidence.receiptRawRows = [JSON.stringify(receiptDrift)];
+    receiptDriftEvidence.receiptRows = [receiptDrift];
+    const stackableDriftEvidence = structuredClone(publishLootEvidence);
+    stackableDriftEvidence.arc2.stackableCounts[0].count += 1;
+    stackableDriftEvidence.carrierJson = JSON.stringify(stackableDriftEvidence.arc2);
+    stackableDriftEvidence.inventoryRow.extensions['arc2.loot'].json = stackableDriftEvidence.carrierJson;
+    stackableDriftEvidence.inventoryRaw = JSON.stringify(stackableDriftEvidence.inventoryRow);
+    const assessPublishControl = (after, state = publishDone) => assessDtrainArc2Restore({
+      before: publishBooted.loot, after, state,
+      expectedRevision: 3, expectedCommits: 1, expectedLastOutcome: 'committed:3',
+    });
+    const stackableDriftAssessment = assessPublishControl(stackableDriftEvidence);
+    const publishArc2Controls = {
+      staleCarrier: assessPublishControl(stalePublishCarrier),
+      staleLiveController: assessPublishControl(publishLootEvidence, stalePublishState),
+      extraBootstrap: assessPublishControl(extraBootstrapEvidence, extraBootstrapState),
+      hiddenBootstrapOutcome: assessPublishControl(publishLootEvidence, hiddenBootstrapOutcomeState),
+      rngDrift: assessPublishControl(rngDriftEvidence),
+      receiptDrift: assessPublishControl(receiptDriftEvidence),
+      stackableDrift: stackableDriftAssessment,
+    };
+    if (Object.values(publishArc2Controls).some((control) => control.ok)
+      || !stackableDriftAssessment.reasons.includes('exact checkpoint inventory')) {
+      fails.push('D-TRAIN ARC 2 CARRIER CONTROLS FAILED — stale carrier/controller, hidden bootstrap, RNG, or receipt drift stayed green: '
+        + JSON.stringify(publishArc2Controls));
+    }
   }
 
   /* The restored checkpoint Earth row must be bound to the final-import entry,
@@ -5446,6 +6522,7 @@ try {
   await sleep(900);
   const sourceReload = await evalIn(`window.__CF_SLICE__.api.state()`);
   const sourceRaw = JSON.parse(await evalIn(READ_PRIMARY_EXPRESSION));
+  const sourceLootEvidence = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
   const sourceWitness = dtrainAssertWitness('D-TRAIN SOURCE-ERROR DEFER', sourceMark, {
     intent: 'skip', checkpointKind: 'legacy-v1',
     stages: ['invoked', 'claimed', 'no-active-persist', 'candidate-started', 'source-deferred',
@@ -5461,6 +6538,9 @@ try {
   const sourceReleaseWitness = assessTrainingReleaseWitnesses(
     reloadReleaseWitnessesSince(sess, sourceMark), { documentToken: sourceBooted.token },
   );
+  const sourceArc2Assessment = assessDtrainArc2Deferred({
+    before: sourceBooted.loot, after: sourceLootEvidence, state: sourceReload,
+  });
   if (!sourceNativeArmed || !sourceArmed.armed || !sourceArmed.button || sourceReload.mode !== 'system'
     || sourceReload.gal !== 999 || sourceReload.star !== 424242
     || sourceReload.navGalaxyKey === null || sourceReload.navStarKey === null
@@ -5471,11 +6551,25 @@ try {
     || sourceRaw.view?.type !== 'star' || sourceRaw.view?.gal?.seed !== 999
     || sourceRaw.view?.star?.seed !== 424242 || !routeOwnsNoPrivateProof(sourceRaw.view)
     || !renderedSceneMatchesNav(sourceReload) || !sourceNativeWitness.ok
+    || !sourceArc2Assessment.ok
     || sourceTransactionWrites.length !== 1 || !sourceReleaseWitness.ok) {
     fails.push('D-TRAIN SOURCE-ERROR: deferred write/reload did not retain exact checkpoint at proven Sol: '
       + JSON.stringify({ sourceNativeArmed, sourceArmed, sourceReload, sourceRaw, sourceWitness,
         native: sourceNativeWitness, transactionWrites: sourceTransactionWrites,
-        release: sourceReleaseWitness }));
+        release: sourceReleaseWitness, arc2Assessment: sourceArc2Assessment,
+        arc2Evidence: sourceLootEvidence }));
+  }
+  if (sourceArc2Assessment.ok) {
+    const changedSourceCarrier = structuredClone(sourceLootEvidence);
+    changedSourceCarrier.arc2.inventory.revision += 1;
+    changedSourceCarrier.carrierJson = JSON.stringify(changedSourceCarrier.arc2);
+    changedSourceCarrier.inventoryRow.extensions['arc2.loot'].json = changedSourceCarrier.carrierJson;
+    changedSourceCarrier.inventoryRaw = JSON.stringify(changedSourceCarrier.inventoryRow);
+    if (assessDtrainArc2Deferred({
+      before: sourceBooted.loot, after: changedSourceCarrier, state: sourceReload,
+    }).ok) {
+      fails.push('D-TRAIN SOURCE-ERROR ARC 2 CONTROL FAILED — a mutated retained carrier stayed green');
+    }
   }
   const sourceRetryNativeLabel = 'legacy-source-retry';
   const sourceRetryNativeArmed = await evalIn(dtrainNativeWriteArmExpression(sourceRetryNativeLabel));
@@ -6533,7 +7627,11 @@ try {
     }
     const dock=document.getElementById('dock');
     const buttons=[...dock.querySelectorAll('button')].filter((button)=>box(button.id));
-    if(buttons.length!==9) bad.push('dock does not expose nine buttons: '+buttons.length);
+    const expectedButtonIds=['docksurvey','dockcodex','dockrecords','dockcharters','dockatlas',
+      'dockcharts','dockshipyard','dockinventory','docksets','dockguide'];
+    if(buttons.length!==10) bad.push('dock does not expose ten buttons: '+buttons.length);
+    if(JSON.stringify(buttons.map((button)=>button.id))!==JSON.stringify(expectedButtonIds))
+      bad.push('dock button identity/order drifted: '+JSON.stringify(buttons.map((button)=>button.id)));
     const rows=[];
     for(const button of buttons){ const b=button.getBoundingClientRect();
       let row=rows.find((candidate)=>Math.abs(candidate.top-b.top)<2);
@@ -6543,7 +7641,7 @@ try {
       if(!hit||!button.contains(hit)) bad.push(button.id+' is not hit-testable at its centre');
     }
     rows.sort((a,b)=>a.top-b.top);
-    if(rows.length!==2||rows[0]?.n!==5||rows[1]?.n!==4) bad.push('dock is not 5x2 (5+4): '+JSON.stringify(rows.map((row)=>row.n)));
+    if(rows.length!==2||rows[0]?.n!==5||rows[1]?.n!==5) bad.push('dock is not 5x2 (5+5): '+JSON.stringify(rows.map((row)=>row.n)));
     if(boxes.dock&&(Math.abs(boxes.dock.w-260)>1||Math.abs(boxes.dock.h-98)>1)) bad.push('dock box is not 260x98: '+JSON.stringify([boxes.dock.w,boxes.dock.h]));
     const published=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--dock-h'));
     if(!boxes.dock||!Number.isFinite(published)||Math.abs(published-boxes.dock.h)>1) bad.push('--dock-h does not match the rendered dock: '+JSON.stringify([published,boxes.dock&&boxes.dock.h]));
@@ -6559,6 +7657,15 @@ try {
     h.style.bottom='12px'; const bad=${phoneChromeCheck}; h.style.bottom=prev; return bad; })()`);
   if (!phChromeCtl.some((b) => b === 'hintpill overlaps dock')) {
     fails.push('PHONE LOWER CHROME CONTROL FAILED — an injected hint/dock overlap went unseen: ' + JSON.stringify(phChromeCtl));
+  }
+  const phDockInventoryCtl = await evalPh(`(()=>{const button=document.getElementById('dockinventory');
+    if(!button)return ['dockinventory control target is missing'];const prior=button.style.display;
+    button.style.display='none';const bad=${phoneChromeCheck};button.style.display=prior;return bad;})()`);
+  if (!phDockInventoryCtl.some((finding) => finding === 'dock does not expose ten buttons: 9')
+    || !phDockInventoryCtl.some((finding) => finding.startsWith('dock button identity/order drifted:'))
+    || !phDockInventoryCtl.includes('dock is not 5x2 (5+5): [5,4]')) {
+    fails.push('PHONE LOWER CHROME INVENTORY CONTROL FAILED — removed Inventory membership/grid stayed green: '
+      + JSON.stringify(phDockInventoryCtl));
   }
   /* Settings import is a true modal outcome. It must cover the high-z phone
      dock, own focus, and consume Escape instead of letting the world behind it
@@ -7810,8 +8917,12 @@ try {
     if(cb&&db&&cb.l<db.r-1&&cb.r>db.l+1&&cb.t<db.b-1&&cb.b>db.t+1) bad.push('training card overlaps dock');
     const priorDockPointer=dock&&dock.style.pointerEvents, priorDockInert=dock&&dock.hasAttribute('inert');
     if(dock){dock.style.pointerEvents='auto';dock.removeAttribute('inert');}
-    const buttons=dock?[...dock.querySelectorAll('button')]:[];
-    if(buttons.length!==9) bad.push('training dock does not expose nine buttons: '+buttons.length);
+    const buttons=dock?[...dock.querySelectorAll('button')].filter((button)=>box(button)):[];
+    const expectedButtonIds=['docksurvey','dockcodex','dockrecords','dockcharters','dockatlas',
+      'dockcharts','dockshipyard','dockinventory','docksets','dockguide'];
+    if(buttons.length!==10) bad.push('training dock does not expose ten buttons: '+buttons.length);
+    if(JSON.stringify(buttons.map((button)=>button.id))!==JSON.stringify(expectedButtonIds))
+      bad.push('training dock button identity/order drifted: '+JSON.stringify(buttons.map((button)=>button.id)));
     const rows=[];
     for(const button of buttons){ const b=button.getBoundingClientRect();
       let row=rows.find((candidate)=>Math.abs(candidate.top-b.top)<2);
@@ -7821,7 +8932,7 @@ try {
       if(!hit||!button.contains(hit)) bad.push(button.id+' is buried at its centre during training');
     }
     rows.sort((a,b)=>a.top-b.top);
-    if(rows.length!==2||rows[0]?.n!==5||rows[1]?.n!==4) bad.push('training dock is not 5x2 (5+4): '+JSON.stringify(rows.map(row=>row.n)));
+    if(rows.length!==2||rows[0]?.n!==5||rows[1]?.n!==5) bad.push('training dock is not 5x2 (5+5): '+JSON.stringify(rows.map(row=>row.n)));
     if(db&&(Math.abs(db.w-260)>1||Math.abs(db.h-98)>1)) bad.push('training dock box is not 260x98: '+JSON.stringify([db.w,db.h]));
     if(dock){dock.style.pointerEvents=priorDockPointer;if(priorDockInert)dock.setAttribute('inert','');}
     return bad; })()`;
@@ -7835,6 +8946,15 @@ try {
   if (!phoneTrainingCtl.includes('training card overlaps dock')
     || !phoneTrainingCtl.some((finding) => finding.includes('is buried at its centre during training'))) {
     fails.push('PHONE TRAINING/DOCK CONTROL FAILED — injected burial went unseen: ' + JSON.stringify(phoneTrainingCtl));
+  }
+  const phoneTrainingInventoryCtl = await evalTp(`(()=>{const button=document.getElementById('dockinventory');
+    if(!button)return ['dockinventory control target is missing'];const prior=button.style.display;
+    button.style.display='none';const bad=${phoneTrainingCheck};button.style.display=prior;return bad;})()`);
+  if (!phoneTrainingInventoryCtl.some((finding) => finding === 'training dock does not expose ten buttons: 9')
+    || !phoneTrainingInventoryCtl.some((finding) => finding.startsWith('training dock button identity/order drifted:'))
+    || !phoneTrainingInventoryCtl.includes('training dock is not 5x2 (5+5): [5,4]')) {
+    fails.push('PHONE TRAINING/DOCK INVENTORY CONTROL FAILED — removed Inventory membership/grid stayed green: '
+      + JSON.stringify(phoneTrainingInventoryCtl));
   }
   /* Reuse this already-booted fresh-origin document only as the exact IDB
      staging page for the full D-TRAIN Finish journey below. Closing it after
@@ -8383,13 +9503,16 @@ try {
   /* Two native documents cross the production fresh initializer together.
      Exactly one remains the fresh winner; the not-fresh loser must adopt the
      stable current-v5 winner, then become writable after the winner closes. */
-  const attachF4ControlTarget = async (url, bindings) => {
+  const attachF4ControlTarget = async (url, bindings, preloadSource = null) => {
     const target = await send('Target.createTarget', { url: 'about:blank' });
     const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
     const session = attached.sessionId;
     await send('Runtime.enable', {}, session);
     await send('Page.enable', {}, session);
     for (const name of bindings) await send('Runtime.addBinding', { name }, session);
+    if (typeof preloadSource === 'string' && preloadSource) {
+      await send('Page.addScriptToEvaluateOnNewDocument', { source: preloadSource }, session);
+    }
     await send('Emulation.setDeviceMetricsOverride', { width: 800, height: 600, deviceScaleFactor: 1, mobile: false }, session);
     await send('Page.navigate', { url }, session);
     return { targetId: target.targetId, session };
@@ -8503,6 +9626,166 @@ try {
       + JSON.stringify(hiddenBootstrapControls));
   }
 
+  /* Arc 2's locally prepared carrier shares the F4 bootstrap transaction.
+     This fresh isolated origin rejects that coupled commit synchronously,
+     before its first product write. The failed document must remain
+     protected with byte-identical primary/inventory rows and no carrier;
+     the next document gets a second preparation and is the only one allowed
+     to make it durable. The hook and IDB witnesses live solely in this CDP
+     target's pre-document diagnostic script—not in product code. */
+  const arc2BootstrapControlSource = `(()=>{const primaryKey='cf_slice_arc2_primary_put',inventoryKey='cf_slice_arc2_inventory_put',
+    callsKey='cf_slice_arc2_hook_calls',payloadsKey='cf_slice_arc2_hook_payloads',decisionsKey='cf_slice_arc2_hook_decisions',
+    rejectedKey='cf_slice_arc2_hook_rejected',proto=IDBObjectStore.prototype,descriptor=Object.getOwnPropertyDescriptor(proto,'put');
+    if(descriptor&&typeof descriptor.value==='function'&&descriptor.writable){const original=descriptor.value;
+      Object.defineProperty(proto,'put',{...descriptor,value:function(value,key){
+        if(this?.name==='meta'&&key==='save')sessionStorage.setItem(primaryKey,String(value));
+        if(this?.name==='inventory'&&key==='v5:inventory')sessionStorage.setItem(inventoryKey,String(value));
+        return Reflect.apply(original,this,arguments);}});}
+    window.__cfRejectArc2ProductBootstrap=(payload)=>{const calls=Number(sessionStorage.getItem(callsKey)||'0')+1;
+      sessionStorage.setItem(callsKey,String(calls));let parsed=null;try{parsed=JSON.parse(String(payload));}catch{parsed={invalid:String(payload)}}
+      let payloads=[];try{payloads=JSON.parse(sessionStorage.getItem(payloadsKey)||'[]')}catch{}payloads.push(parsed);
+      sessionStorage.setItem(payloadsKey,JSON.stringify(payloads));const reject=sessionStorage.getItem(rejectedKey)!=='1';
+      if(reject){sessionStorage.setItem(rejectedKey,'1');sessionStorage.setItem('cf_slice_arc2_primary_before_hook',sessionStorage.getItem(primaryKey)||'');
+        sessionStorage.setItem('cf_slice_arc2_inventory_before_hook',sessionStorage.getItem(inventoryKey)||'');}
+      let decisions=[];try{decisions=JSON.parse(sessionStorage.getItem(decisionsKey)||'[]')}catch{}decisions.push(reject);
+      sessionStorage.setItem(decisionsKey,JSON.stringify(decisions));return reject;};})()`;
+  const arc2BootstrapTarget = await attachF4ControlTarget(URL8, [], arc2BootstrapControlSource);
+  await waitForSlice(arc2BootstrapTarget.session, 'Arc 2 rejected product bootstrap');
+  const arc2FailureDeadline = Date.now() + 8000;
+  let arc2BootstrapFailed = null;
+  while (Date.now() < arc2FailureDeadline) {
+    arc2BootstrapFailed = await evalF4Control(arc2BootstrapTarget.session, `window.__CF_SLICE__.api.state()`);
+    if (arc2BootstrapFailed?.inventory?.protection === 'bootstrap-failed'
+      && arc2BootstrapFailed?.inventory?.bootstrapPending === false
+      && arc2BootstrapFailed?.persistence?.hold === 'protected-payload') break;
+    await sleep(50);
+  }
+  const arc2BootstrapFailedRaw = await evalF4Control(
+    arc2BootstrapTarget.session, READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION,
+  );
+  const arc2BootstrapHookFailure = await evalF4Control(arc2BootstrapTarget.session, `(()=>{let payloads=[],decisions=[];
+    try{payloads=JSON.parse(sessionStorage.getItem('cf_slice_arc2_hook_payloads')||'[]')}catch{}
+    try{decisions=JSON.parse(sessionStorage.getItem('cf_slice_arc2_hook_decisions')||'[]')}catch{}
+    const panel=document.getElementById('inventorypanel');return {
+      callsAfterFailure:Number(sessionStorage.getItem('cf_slice_arc2_hook_calls')||'0'),
+      rejected:sessionStorage.getItem('cf_slice_arc2_hook_rejected')==='1',firstPayload:payloads[0]||null,
+      decisionsAfterFailure:decisions.length,firstRejected:decisions[0]===true,
+      primaryBeforeHook:sessionStorage.getItem('cf_slice_arc2_primary_before_hook'),
+      inventoryBeforeHook:sessionStorage.getItem('cf_slice_arc2_inventory_before_hook'),
+      panelState:panel?.querySelector('[data-inventory-state]')?.getAttribute('data-inventory-state')||null,
+      panelRows:panel?.querySelectorAll('[data-inventory-row]').length??-1,
+      panelActions:panel?.querySelectorAll('[data-inventory-action]').length??-1};})()`);
+  const arc2BootstrapFailedToken = await sliceToken(arc2BootstrapTarget.session);
+  await send('Page.navigate', { url: URL8 }, arc2BootstrapTarget.session);
+  const arc2BootstrapSuccessToken = await waitForSlice(
+    arc2BootstrapTarget.session, 'Arc 2 product bootstrap retry', { previousToken: arc2BootstrapFailedToken },
+  );
+  const arc2SuccessDeadline = Date.now() + 15000;
+  let arc2BootstrapSucceeded = null;
+  while (Date.now() < arc2SuccessDeadline) {
+    arc2BootstrapSucceeded = await evalF4Control(arc2BootstrapTarget.session, `window.__CF_SLICE__.api.state()`);
+    if (arc2BootstrapSucceeded?.persistence?.bootKind === 'current-v5'
+      && arc2BootstrapSucceeded?.persistence?.mutationBlocked === false
+      && arc2BootstrapSucceeded?.persistence?.runtime?.answerable === true
+      && arc2BootstrapSucceeded?.inventory?.stateKind === 'inventory'
+      && arc2BootstrapSucceeded?.inventory?.protection === null
+      && arc2BootstrapSucceeded?.inventory?.bootstrapPending === false) break;
+    await sleep(50);
+  }
+  const arc2BootstrapSucceededRaw = await evalF4Control(
+    arc2BootstrapTarget.session, READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION,
+  );
+  const arc2BootstrapHookSuccess = await evalF4Control(arc2BootstrapTarget.session, `(()=>{let payloads=[],decisions=[];
+    try{payloads=JSON.parse(sessionStorage.getItem('cf_slice_arc2_hook_payloads')||'[]')}catch{}
+    try{decisions=JSON.parse(sessionStorage.getItem('cf_slice_arc2_hook_decisions')||'[]')}catch{}
+    return {callsAfterSuccess:Number(sessionStorage.getItem('cf_slice_arc2_hook_calls')||'0'),
+      decisionsAfterSuccess:decisions.length,secondPayload:payloads[1]||null,secondRejected:decisions[1]===true};})()`);
+  await send('Target.closeTarget', { targetId: arc2BootstrapTarget.targetId });
+  const arc2BootstrapBundle = {
+    failed: arc2BootstrapFailed,
+    failedRaw: arc2BootstrapFailedRaw,
+    hook: { ...arc2BootstrapHookFailure, ...arc2BootstrapHookSuccess },
+    succeeded: arc2BootstrapSucceeded,
+    succeededRaw: arc2BootstrapSucceededRaw,
+    token: arc2BootstrapSuccessToken,
+  };
+  const arc2BootstrapAssessment = assessArc2BootstrapRefusal(arc2BootstrapBundle);
+  if (!arc2BootstrapAssessment.ok) {
+    fails.push('ARC 2 BOOTSTRAP REFUSAL: rejected local carrier leaked, became editable, or was reused as durable on reload: '
+      + JSON.stringify({ assessment: arc2BootstrapAssessment, bundle: arc2BootstrapBundle }));
+  }
+  const arc2FalseDurableRaw = structuredClone(arc2BootstrapFailedRaw);
+  arc2FalseDurableRaw.arc2 = arc2BootstrapSucceededRaw.arc2;
+  arc2FalseDurableRaw.carrierVersion = 1;
+  const arc2PartialAuthorityRaw = structuredClone(arc2BootstrapFailedRaw);
+  arc2PartialAuthorityRaw.authorityVersion = arc2BootstrapSucceededRaw.authorityVersion;
+  arc2PartialAuthorityRaw.authorityJson = arc2BootstrapSucceededRaw.authorityJson;
+  arc2PartialAuthorityRaw.authority = structuredClone(arc2BootstrapSucceededRaw.authority);
+  const arc2SucceededAuthorityCarrier =
+    arc2BootstrapSucceededRaw?.playerRow?.extensions?.['f4.authority'] ?? {
+      version: arc2BootstrapSucceededRaw?.authorityVersion ?? null,
+      json: arc2BootstrapSucceededRaw?.authorityJson ?? null,
+    };
+  const arc2PartialPlayerRow = arc2PartialAuthorityRaw.playerRow
+    || structuredClone(arc2BootstrapSucceededRaw?.playerRow)
+    || { schema: 5, segment: 'player', data: {}, extensions: {} };
+  arc2PartialAuthorityRaw.playerRow = {
+    ...arc2PartialPlayerRow,
+    extensions: {
+      ...(arc2PartialPlayerRow.extensions || {}),
+      'f4.authority': structuredClone(arc2SucceededAuthorityCarrier),
+    },
+  };
+  arc2PartialAuthorityRaw.playerRaw = JSON.stringify(arc2PartialAuthorityRaw.playerRow);
+  const arc2SuccessLegacyDriftRaw = structuredClone(arc2BootstrapSucceededRaw);
+  const arc2SuccessLegacyDrift = JSON.parse(arc2SuccessLegacyDriftRaw.legacyRaw);
+  arc2SuccessLegacyDrift.me = `${String(arc2SuccessLegacyDrift.me || '')} bootstrap-control`;
+  arc2SuccessLegacyDriftRaw.legacy = arc2SuccessLegacyDrift;
+  arc2SuccessLegacyDriftRaw.legacyRaw = JSON.stringify(arc2SuccessLegacyDrift);
+  const withArc2BootstrapReceiptLeak = (raw, phase) => {
+    const altered = structuredClone(raw);
+    const receipt = {
+      ordinal: 0, kind: `slice-smoke-arc2-${phase}-leak`, witness: `arc2:${phase}:receipt-leak`,
+    };
+    altered.receiptKeys = ['receipt:0'];
+    altered.receiptRawRows = [JSON.stringify(receipt)];
+    altered.receiptRows = [receipt];
+    return altered;
+  };
+  const arc2FailedReceiptLeakRaw = withArc2BootstrapReceiptLeak(arc2BootstrapFailedRaw, 'failed');
+  const arc2SucceededReceiptLeakRaw = withArc2BootstrapReceiptLeak(arc2BootstrapSucceededRaw, 'succeeded');
+  const arc2BootstrapControls = {
+    leakedCarrier: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, failedRaw: arc2FalseDurableRaw }),
+    partialAuthority: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, failedRaw: arc2PartialAuthorityRaw }),
+    failedReceiptLeak: assessArc2BootstrapRefusal({
+      ...arc2BootstrapBundle, failedRaw: arc2FailedReceiptLeakRaw,
+    }),
+    succeededReceiptLeak: assessArc2BootstrapRefusal({
+      ...arc2BootstrapBundle, succeededRaw: arc2SucceededReceiptLeakRaw,
+    }),
+    revisionDrift: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, failedRaw: {
+      ...arc2BootstrapFailedRaw, revisionRaw: '2', revision: 2,
+    } }),
+    successLegacyDrift: assessArc2BootstrapRefusal({
+      ...arc2BootstrapBundle, succeededRaw: arc2SuccessLegacyDriftRaw,
+    }),
+    changedPrimary: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, hook: {
+      ...arc2BootstrapBundle.hook, primaryBeforeHook: `${arc2BootstrapBundle.hook.primaryBeforeHook || ''}x`,
+    } }),
+    editableFailure: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, failed: {
+      ...arc2BootstrapFailed,
+      persistence: { ...arc2BootstrapFailed.persistence, mutationBlocked: false },
+      inventory: { ...arc2BootstrapFailed.inventory, stateKind: 'inventory' },
+    } }),
+    reusedLocalCarrier: assessArc2BootstrapRefusal({ ...arc2BootstrapBundle, hook: {
+      ...arc2BootstrapBundle.hook, callsAfterSuccess: 1, secondPayload: arc2BootstrapBundle.hook.firstPayload,
+    } }),
+  };
+  if (Object.values(arc2BootstrapControls).some((control) => control.ok)) {
+    fails.push('ARC 2 BOOTSTRAP REFUSAL CONTROLS FAILED — leaked carrier/authority/receipt, revision/product drift, changed/editable state, or reused local carrier stayed green: '
+      + JSON.stringify(arc2BootstrapControls));
+  }
+
   /* 5. zero console errors / exceptions across the whole run */
   const errs = events.filter((e) =>
     (e.method === 'Runtime.exceptionThrown') ||
@@ -8517,7 +9800,7 @@ try {
 } finally {
   releaseSlowSpecies();
   try { await browser.close(); } catch (e) { fails.push('browser close: ' + e.message); }
-  server.close(); server2.close(); server3.close(); server4.close(); server5.close(); server6.close(); server7.close();
+  server.close(); server2.close(); server3.close(); server4.close(); server5.close(); server6.close(); server7.close(); server8.close();
 }
 
 if (fails.length) {
@@ -8532,6 +9815,6 @@ if (fails.length) {
   console.error('SLICE SMOKE: FAILURE DETAILS\n  - ' + fails.join('\n  - '));
   process.exit(1);
 }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · READ-ONLY SHIPYARD (real right-rail open/Close, exact chassis/hardpoints/systems, one owned preview, zero retained work) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · READ-ONLY SHIPYARD (real right-rail open/Close, exact chassis/hardpoints/systems, one owned preview, zero retained work) · ARC 2 INVENTORY (real rail/row/detail/Equip, exact carrier↔legacy↔DOM parity, conditional comparison, one receipt, reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-guide · slice-settings · slice-training · slice-earth · slice-solmark · slice-phone');
 process.exit(0);

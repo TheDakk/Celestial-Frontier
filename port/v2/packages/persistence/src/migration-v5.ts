@@ -54,10 +54,20 @@ export interface V5ExtensionCarrier {
   readonly version: number;
   readonly json: string;
 }
+export interface V5ExtensionWrite {
+  readonly segment: V5Segment;
+  readonly namespace: string;
+  readonly carrier: V5ExtensionCarrier;
+}
 export type V5Extensions = Readonly<Partial<Record<
   V5Segment,
   Readonly<Record<string, V5ExtensionCarrier>>
 >>>;
+
+export interface AppliedV5ExtensionWrites {
+  readonly writes: readonly V5ExtensionWrite[];
+  readonly extensions: V5Extensions;
+}
 
 const SEGMENT_STORE: Readonly<Record<V5Segment, StoreName>> = Object.freeze({
   player: 'player',
@@ -310,6 +320,58 @@ export function canonicalizeV5Extensions(value: unknown): V5Extensions {
     }
   }
   return Object.keys(result).length === 0 ? EMPTY_EXTENSIONS : Object.freeze(result);
+}
+
+/** Validate complete namespace replacements, reject duplicate ownership, and
+ * apply them to a detached canonical base. Product-specific protected
+ * namespaces remain the caller's policy; this shared layer owns only the v5
+ * shape and aggregate bounds. */
+export function applyV5ExtensionWrites(
+  base: V5Extensions,
+  value: unknown,
+): AppliedV5ExtensionWrites {
+  if (!Array.isArray(value)) throw new TypeError('extensionWrites must be an array');
+  if (value.length > V5_MAX_EXTENSION_NAMESPACES) {
+    throw new RangeError(`extensionWrites count exceeds ${V5_MAX_EXTENSION_NAMESPACES}`);
+  }
+  const seen = new Set<string>();
+  const writes = Object.freeze(value.map((rawWrite): V5ExtensionWrite => {
+    if (!isRecord(rawWrite) || !exactKeys(rawWrite, ['segment', 'namespace', 'carrier'])) {
+      throw new TypeError('each extension write must contain exactly segment, namespace, and carrier');
+    }
+    if (typeof rawWrite.segment !== 'string'
+      || !(V5_SEGMENTS as readonly string[]).includes(rawWrite.segment)) {
+      throw new RangeError(`unknown v5 extension segment ${JSON.stringify(rawWrite.segment)}`);
+    }
+    const segment = rawWrite.segment as V5Segment;
+    if (typeof rawWrite.namespace !== 'string') {
+      throw new RangeError(`invalid v5 extension namespace ${JSON.stringify(rawWrite.namespace)}`);
+    }
+    const identity = `${segment}\u0000${rawWrite.namespace}`;
+    if (seen.has(identity)) {
+      throw new Error(`duplicate product extension write for ${segment}/${rawWrite.namespace}`);
+    }
+    seen.add(identity);
+    const isolated = canonicalizeV5Extensions({
+      [segment]: { [rawWrite.namespace]: rawWrite.carrier },
+    });
+    const carrier = isolated[segment]?.[rawWrite.namespace];
+    if (carrier === undefined) throw new Error('validated extension carrier was not retained');
+    return Object.freeze({ segment, namespace: rawWrite.namespace, carrier });
+  }));
+  if (writes.length === 0) {
+    return Object.freeze({ writes, extensions: canonicalizeV5Extensions(base) });
+  }
+  const result: Partial<Record<V5Segment, Readonly<Record<string, V5ExtensionCarrier>>>> = {
+    ...canonicalizeV5Extensions(base),
+  };
+  for (const write of writes) {
+    result[write.segment] = Object.freeze({
+      ...(result[write.segment] ?? {}),
+      [write.namespace]: write.carrier,
+    });
+  }
+  return Object.freeze({ writes, extensions: canonicalizeV5Extensions(result) });
 }
 
 function canonicalV4FromState(

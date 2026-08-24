@@ -109,6 +109,17 @@ export type Arc2LootLegacyMigrationPreparation =
   | { readonly kind: 'protected'; readonly reason: Arc2LootWriteProtectionReason; readonly version?: number };
 
 type LegacyLootFields = Pick<SaveStateV2, 'items' | 'equip' | 'equipAff'>;
+type LegacyLootFactsInput = Readonly<{
+  items: readonly (readonly [string, number])[];
+  equip: Readonly<Partial<Record<GearSlot, string>>>;
+  equipAff: Readonly<Partial<Record<GearSlot, LegacyEquippedAffix>>>;
+}>;
+
+export interface Arc2LootLegacyMirror {
+  readonly items: readonly (readonly [string, number])[];
+  readonly equip: Readonly<Partial<Record<GearSlot, string>>>;
+  readonly equipAff: Readonly<Partial<Record<GearSlot, LegacyEquippedAffix>>>;
+}
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   if (value === null || typeof value !== 'object' || Array.isArray(value)) return false;
@@ -208,7 +219,7 @@ function migrationInput(facts: CanonicalLegacyFacts): LegacyGearMigrationInput {
   });
 }
 
-function canonicalLegacyFacts(value: LegacyLootFields): CanonicalLegacyFacts {
+function canonicalLegacyFacts(value: LegacyLootFactsInput): CanonicalLegacyFacts {
   const itemCounts = canonicalItemCounts(value.items);
   const equipped = canonicalEquipped(value.equip);
   const equippedAffixes = canonicalEquippedAffixes(value.equipAff);
@@ -230,6 +241,85 @@ function canonicalLegacyFacts(value: LegacyLootFields): CanonicalLegacyFacts {
   });
   migrateLegacyGear(migrationInput(validationFacts));
   return facts;
+}
+
+/** Derive the legacy-v4 compatibility mirror from the versioned Arc 2
+ * carrier. The carrier is the exact-instance authority once present; these
+ * three legacy fields remain only a projection for still-unported readers.
+ * No cargo or other product field is observed or changed here. */
+export function projectArc2LootLegacyMirror(state: Arc2LootStateV1): Arc2LootLegacyMirror {
+  const checked = canonicalState(state);
+  if (checked.kind === 'legacy-protected') {
+    return Object.freeze({
+      items: checked.itemCounts,
+      equip: checked.equipped,
+      equipAff: checked.equippedAffixes,
+    });
+  }
+
+  const counts = new Map<string, number>();
+  for (const { baseId, count } of checked.stackableCounts) counts.set(baseId, count);
+  const entriesById = new Map<string, GearInventory['entries'][number]['instance']>();
+  for (const { instance } of checked.inventory.entries) {
+    counts.set(instance.baseId, (counts.get(instance.baseId) ?? 0) + 1);
+    entriesById.set(instance.instanceId, instance);
+  }
+  /* A pending reward is already owned in the legacy count mirror; claiming
+     it only moves the exact instance into editable storage. */
+  for (const { instance } of checked.inventory.pendingRewards) {
+    counts.set(instance.baseId, (counts.get(instance.baseId) ?? 0) + 1);
+  }
+  const items = LOOT_CATALOGUE_V1.flatMap(({ id }) => {
+    const count = counts.get(id) ?? 0;
+    return count > 0 ? [Object.freeze([id, count] as const)] : [];
+  });
+  const equip: Partial<Record<GearSlot, string>> = {};
+  const equipAff: Partial<Record<GearSlot, LegacyEquippedAffix>> = {};
+  for (const slot of GEAR_SLOTS) {
+    const binding = checked.inventory.equipped.find((candidate) => candidate.slot === slot);
+    if (!binding) continue;
+    const instance = entriesById.get(binding.instanceId);
+    if (!instance) throw new Error(`Arc 2 equipped instance ${binding.instanceId} is absent`);
+    equip[slot] = instance.baseId;
+    if (instance.legacyAffix) {
+      equipAff[slot] = Object.freeze({
+        k: instance.legacyAffix.affixId,
+        v: instance.legacyAffix.value,
+        forId: instance.legacyAffix.forBaseId,
+      });
+    }
+  }
+  const facts = canonicalLegacyFacts({ items, equip, equipAff });
+  return Object.freeze({
+    items: facts.itemCounts,
+    equip: facts.equipped,
+    equipAff: facts.equippedAffixes,
+  });
+}
+
+/** Semantic mirror check used at the app boot join. It deliberately ignores
+ * object identity, while malformed, zero-noise, or divergent legacy facts
+ * require one carrier-authoritative repair transaction. */
+export function arc2LootLegacyMirrorMatches(
+  state: Arc2LootStateV1,
+  legacy: LegacyLootFields,
+): boolean {
+  try {
+    const actual = canonicalLegacyFacts(legacy);
+    const expected = projectArc2LootLegacyMirror(state);
+    const normalizedExpected = canonicalLegacyFacts(expected);
+    return JSON.stringify({
+      items: actual.itemCounts,
+      equip: actual.equipped,
+      equipAff: actual.equippedAffixes,
+    }) === JSON.stringify({
+      items: normalizedExpected.itemCounts,
+      equip: normalizedExpected.equipped,
+      equipAff: normalizedExpected.equippedAffixes,
+    });
+  } catch {
+    return false;
+  }
 }
 
 function canonicalStackableCounts(value: unknown): readonly Arc2LootStackableCountV1[] {
@@ -401,20 +491,11 @@ function targetProtection(read: Arc2LootReadOutcome): Arc2LootWritePreparation |
   return null;
 }
 
-/** Seed the Arc 2 namespace from the already-sanitized legacy-v4 item fields.
- * Existing current/future/corrupt target bytes are never overwritten. */
-export function prepareArc2LootLegacyMigration(input: Readonly<{
-  extensions: V5Extensions;
+function prepareLegacyFactsWrite(input: Readonly<{
+  base: V5Extensions;
   legacy: LegacyLootFields;
   capacity: number;
-}>): Arc2LootLegacyMigrationPreparation {
-  const base = canonicalBase(input.extensions);
-  if (!base) return Object.freeze({ kind: 'protected', reason: 'extensions-corrupt' });
-  const read = readArc2Loot(base);
-  const protection = targetProtection(read);
-  if (protection) return protection;
-  if (read.kind === 'loaded') return Object.freeze({ kind: 'already-loaded', state: read.state });
-
+}>): Arc2LootWritePreparation {
   const capacity = checkedInteger(input.capacity, 1, MAX_GEAR_CAPACITY, 'Arc 2 caller capacity');
   let facts: CanonicalLegacyFacts;
   try {
@@ -434,7 +515,7 @@ export function prepareArc2LootLegacyMigration(input: Readonly<{
         inventory: inventoryFromMigration(migrated, capacity),
         stackableCounts: canonicalStackableCounts(migrated.stackableCounts),
       });
-      const full = prepared(base, state);
+      const full = prepared(input.base, state);
       if (full) return full;
     } catch {
       return Object.freeze({ kind: 'protected', reason: 'legacy-corrupt' });
@@ -450,8 +531,42 @@ export function prepareArc2LootLegacyMigration(input: Readonly<{
     equipped: facts.equipped,
     equippedAffixes: facts.equippedAffixes,
   });
-  return prepared(base, protectedState)
+  return prepared(input.base, protectedState)
     ?? Object.freeze({ kind: 'protected', reason: 'extension-bounds' });
+}
+
+/** Seed the Arc 2 namespace from the already-sanitized legacy-v4 item fields.
+ * Existing current/future/corrupt target bytes are never overwritten. */
+export function prepareArc2LootLegacyMigration(input: Readonly<{
+  extensions: V5Extensions;
+  legacy: LegacyLootFields;
+  capacity: number;
+}>): Arc2LootLegacyMigrationPreparation {
+  const base = canonicalBase(input.extensions);
+  if (!base) return Object.freeze({ kind: 'protected', reason: 'extensions-corrupt' });
+  const read = readArc2Loot(base);
+  const protection = targetProtection(read);
+  if (protection) return protection;
+  if (read.kind === 'loaded') return Object.freeze({ kind: 'already-loaded', state: read.state });
+  return prepareLegacyFactsWrite({ base, legacy: input.legacy, capacity: input.capacity });
+}
+
+/** Replace an absent or current Arc 2 carrier from a trusted, already-
+ * sanitized legacy snapshot. This is the Training/recovery counterpart to
+ * first-boot migration: the restored legacy fields are the transaction's
+ * source authority, so retaining the pre-restore current carrier would make
+ * the next load undo the restoration. Future and corrupt carrier bytes stay
+ * refusal-only, and unrelated namespaces are preserved exactly. */
+export function prepareArc2LootLegacyRestore(input: Readonly<{
+  extensions: V5Extensions;
+  legacy: LegacyLootFields;
+  capacity: number;
+}>): Arc2LootWritePreparation {
+  const base = canonicalBase(input.extensions);
+  if (!base) return Object.freeze({ kind: 'protected', reason: 'extensions-corrupt' });
+  const protection = targetProtection(readArc2Loot(base));
+  if (protection) return protection;
+  return prepareLegacyFactsWrite({ base, legacy: input.legacy, capacity: input.capacity });
 }
 
 /** Prepare one replacement for an already-editable inventory. This is the

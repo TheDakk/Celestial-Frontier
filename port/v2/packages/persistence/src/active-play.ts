@@ -7,9 +7,11 @@ import { MAX_ACTIVE_PLAY_MS, type ActivePlaySnapshot } from '@cf/domain-progress
 import { createSessionRNG, type SessionRNGState } from '@cf/domain-sessionrng';
 import type { ContentRegistry } from './import-v2.js';
 import {
+  applyV5ExtensionWrites,
   prepareV5SaveWrite,
   type PreparedV5SaveWrite,
   type V5ExtensionCarrier,
+  type V5ExtensionWrite,
   type V5Extensions,
   type V5WritableState,
 } from './migration-v5.js';
@@ -37,6 +39,9 @@ export interface ActivePlayCommit {
   readonly grant: TabLeaseGrant;
   /** Exact state/extensions returned by the v5 reader (or fresh bootstrap). */
   readonly writable: V5WritableState;
+  /** Optional complete product-namespace replacements that must share this
+   * receipt-free checkpoint transaction. F4 authority is never writable. */
+  readonly extensionWrites?: readonly V5ExtensionWrite[];
   /** Explicit snapshot from the injected visible/answerable domain clock. */
   readonly snapshot: Pick<ActivePlaySnapshot, 'activePlayMs'>;
   /** The sibling save-lifetime outcome authority; never silently defaulted. */
@@ -170,8 +175,15 @@ export function createActivePlayPersistenceOwner(
 ): ActivePlayPersistenceOwner {
   return Object.freeze({
     async commit(input: ActivePlayCommit): Promise<ActivePlayCommitOutcome> {
-      const update = prepareF4AuthorityUpdate(
+      const product = applyV5ExtensionWrites(
         input.writable.extensions,
+        input.extensionWrites ?? Object.freeze([]),
+      );
+      if (product.writes.some(({ segment, namespace }) => (
+        segment === 'player' && namespace === F4_AUTHORITY_NAMESPACE
+      ))) throw new Error('active-play extension writes cannot overwrite player/f4.authority');
+      const update = prepareF4AuthorityUpdate(
+        product.extensions,
         input.snapshot,
         input.sessionRng,
       );

@@ -4,8 +4,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createSessionRNG } from '@cf/domain-sessionrng';
 import {
+  claimPendingGear,
   LOOT_CATALOGUE_V1,
   SLOTTED_GEAR_BASES_V1,
+  createGearInstance,
+  createGearInventory,
+  grantGear,
+  makeGearSourceActionId,
+  salvageGear,
   setGearProtection,
   type GearInventory,
 } from '@cf/domain-loot';
@@ -22,9 +28,12 @@ import {
   createRevisionedRepository,
   createTabLeaseClient,
   encodeArc2LootCarrier,
+  arc2LootLegacyMirrorMatches,
   migrateStoredV4ToV5,
+  projectArc2LootLegacyMirror,
   prepareArc2LootInventoryWrite,
   prepareArc2LootLegacyMigration,
+  prepareArc2LootLegacyRestore,
   readArc2Loot,
   readSaveV5,
   type ContentRegistry,
@@ -170,6 +179,155 @@ describe('@cf/persistence — Arc 2 loot extension carrier', () => {
       expect(write.extensions.player).toEqual(base.player);
       expect(write.extensions.settings).toEqual(base.settings);
     }
+  });
+
+  it('makes the current carrier authoritative and derives one exact legacy compatibility mirror', () => {
+    const prepared = prepareArc2LootLegacyMigration({
+      extensions: {}, legacy: legacyFixture(), capacity: 8,
+    });
+    expect(prepared.kind).toBe('prepared');
+    if (prepared.kind !== 'prepared') return;
+
+    const mirror = projectArc2LootLegacyMirror(prepared.state);
+    expect(mirror).toEqual({
+      items: [['plate', 3], ['rig1', 2], ['fieldsuit', 1], ['rl-star', 1]],
+      equip: { helmet: 'rl-star', suit: 'fieldsuit', tool: 'rig1' },
+      equipAff: {
+        helmet: { k: 'contact', v: 9, forId: 'rl-star' },
+        suit: { k: 'scut', v: 0, forId: 'fieldsuit' },
+        tool: { k: 'yield', v: 0.05, forId: 'rig1' },
+      },
+    });
+    expect(arc2LootLegacyMirrorMatches(prepared.state, legacyFixture())).toBe(true);
+
+    const missingBase = legacyFixture();
+    missingBase.items = missingBase.items.filter(([id]) => id !== 'rig1');
+    expect(arc2LootLegacyMirrorMatches(prepared.state, missingBase)).toBe(false);
+    const wrongEquip = legacyFixture();
+    wrongEquip.equip = { ...wrongEquip.equip, tool: 'rl-star' };
+    expect(arc2LootLegacyMirrorMatches(prepared.state, wrongEquip)).toBe(false);
+    const missingAffix = legacyFixture();
+    missingAffix.equipAff = { ...missingAffix.equipAff };
+    delete missingAffix.equipAff.tool;
+    expect(arc2LootLegacyMirrorMatches(prepared.state, missingAffix)).toBe(false);
+
+    const zeroNoise = legacyFixture();
+    zeroNoise.items = [...zeroNoise.items, ['array', 0]];
+    expect(arc2LootLegacyMirrorMatches(prepared.state, zeroNoise)).toBe(false);
+    expect(projectArc2LootLegacyMirror(prepared.state)).toEqual(mirror);
+  });
+
+  it('atomically prepares restored legacy gear over a current carrier while preserving every other authority', () => {
+    const unrelated = canonicalizeV5Extensions({
+      player: {
+        'f4.authority': {
+          version: 1,
+          json: '{"activePlayMs":90,"sessionRng":{"seed":7,"ordinal":4,"draws":{"loot":2}}}',
+        },
+        'future.player': { version: 88, json: '{"opaque":"player"}' },
+      },
+      inventory: { 'other.inventory': { version: 9, json: '{"opaque":"inventory"}' } },
+      settings: { 'arc7.audio': { version: 3, json: '{"muted":false}' } },
+    });
+    const old = prepareArc2LootLegacyMigration({
+      extensions: unrelated,
+      legacy: legacyFixture(),
+      capacity: 8,
+    });
+    expect(old.kind).toBe('prepared');
+    if (old.kind !== 'prepared') return;
+    const oldBytes = JSON.stringify(old.extensions);
+    const restoredLegacy: LegacyLootFields = {
+      items: [['plate', 8], ['lens', 1], ['cell', 2], ['headlamp', 1]],
+      equip: { helmet: 'headlamp' },
+      equipAff: { helmet: { k: 'strike', v: 0.05, forId: 'headlamp' } },
+    };
+    const restored = prepareArc2LootLegacyRestore({
+      extensions: old.extensions,
+      legacy: restoredLegacy,
+      capacity: 8,
+    });
+    expect(restored.kind).toBe('prepared');
+    if (restored.kind !== 'prepared') return;
+
+    expect(JSON.stringify(old.extensions)).toBe(oldBytes);
+    expect(restored.write).toMatchObject({ segment: 'inventory', namespace: ARC2_LOOT_NAMESPACE });
+    expect(restored.write.carrier).not.toEqual(old.write.carrier);
+    expect(restored.extensions.player).toEqual(unrelated.player);
+    expect(restored.extensions.settings).toEqual(unrelated.settings);
+    expect(restored.extensions.inventory?.['other.inventory'])
+      .toEqual(unrelated.inventory?.['other.inventory']);
+    expect(restored.extensions.inventory?.[ARC2_LOOT_NAMESPACE]).toEqual(restored.write.carrier);
+    expect(readArc2Loot(restored.extensions)).toEqual({ kind: 'loaded', state: restored.state });
+    expect(projectArc2LootLegacyMirror(restored.state)).toEqual(restoredLegacy);
+    expect(arc2LootLegacyMirrorMatches(restored.state, restoredLegacy)).toBe(true);
+
+    const future = canonicalizeV5Extensions({ inventory: {
+      [ARC2_LOOT_NAMESPACE]: { version: 2, json: '{"opaque":"future"}' },
+    } });
+    const futureBefore = JSON.stringify(future);
+    expect(prepareArc2LootLegacyRestore({
+      extensions: future, legacy: restoredLegacy, capacity: 8,
+    })).toEqual({ kind: 'protected', reason: 'target-future', version: 2 });
+    expect(JSON.stringify(future)).toBe(futureBefore);
+
+    const corrupt = canonicalizeV5Extensions({ inventory: {
+      [ARC2_LOOT_NAMESPACE]: { version: 1, json: '{"kind":"inventory"}' },
+    } });
+    const corruptBefore = JSON.stringify(corrupt);
+    expect(prepareArc2LootLegacyRestore({
+      extensions: corrupt, legacy: restoredLegacy, capacity: 8,
+    })).toEqual({ kind: 'protected', reason: 'target-corrupt' });
+    expect(JSON.stringify(corrupt)).toBe(corruptBefore);
+  });
+
+  it('keeps capacity-held rewards in the legacy ownership mirror before and after exact claim', () => {
+    const sourceActionId = makeGearSourceActionId({
+      kind: 'expedition', ownerId: 'mirror-test', actionKey: 'settlement', missionId: 'm:1',
+    });
+    const make = (baseId: string, ordinal: number) => createGearInstance(sourceActionId, ordinal, {
+      baseId,
+      generationSeed: 0xA200 + ordinal,
+      itemLevel: 1,
+      quality: 0,
+      rarityTier: 1,
+      naturalAffixes: [],
+      craftedModifier: null,
+      drawback: null,
+      upgrade: 0,
+      sockets: [],
+    });
+    const first = make('rig1', 0);
+    const held = make('fieldsuit', 1);
+    const granted = grantGear(createGearInventory(1), 0, first);
+    expect(granted.status).toBe('committed');
+    if (granted.status !== 'committed') return;
+    const overflow = grantGear(granted.state, 1, held);
+    expect(overflow.status).toBe('committed');
+    if (overflow.status !== 'committed') return;
+
+    const before: Parameters<typeof projectArc2LootLegacyMirror>[0] = {
+      kind: 'inventory', inventory: overflow.state, stackableCounts: [],
+    };
+    expect(projectArc2LootLegacyMirror(before).items).toEqual([
+      ['rig1', 1], ['fieldsuit', 1],
+    ]);
+    const salvaged = salvageGear(overflow.state, 2, first.instanceId);
+    expect(salvaged.status).toBe('committed');
+    if (salvaged.status !== 'committed') return;
+    const claimed = claimPendingGear(salvaged.state, 3, held.instanceId);
+    expect(claimed.status).toBe('committed');
+    if (claimed.status !== 'committed') return;
+    const after: Parameters<typeof projectArc2LootLegacyMirror>[0] = {
+      kind: 'inventory', inventory: claimed.state, stackableCounts: [],
+    };
+    expect(projectArc2LootLegacyMirror(after).items).toEqual([['fieldsuit', 1]]);
+    expect(projectArc2LootLegacyMirror({
+      kind: 'inventory', inventory: salvaged.state, stackableCounts: [],
+    })).toEqual(projectArc2LootLegacyMirror(after));
+    expect(arc2LootLegacyMirrorMatches(after, {
+      items: [['fieldsuit', 1]], equip: {}, equipAff: {},
+    })).toBe(true);
   });
 
   it('classifies absent, future, and corrupt target carriers without overwriting their exact bytes', () => {
