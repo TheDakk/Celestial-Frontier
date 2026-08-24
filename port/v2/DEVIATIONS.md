@@ -11,16 +11,21 @@ as any change that touches an entry.
 
 ## Current-state instrument correction — PR #34 Compendium native row activation (2026-08-23)
 
-**Status: ★ locally repaired, recalibrated and exact-budget certified.** Hosted run
-`32665404776` failed because a virtual row was not a stable native hit owner across separate CDP
-press/release commands. The downstream art wait could never succeed, and its final 46 ms clipped
-poll obscured the missed activation. Collector `50c28928…` now requires full containment,
-independent `elementFromPoint` ownership, and the exact detail receipt immediately after release.
-Three clean retained candidates plus paired baseline1 activate measurement `cfc40f89…` and budget
-`208af955…`; no product resource ceiling changed and the baseline still exposes all four faults.
-Clean source `7de42c6…` passed local run `20260823-pr34-row-activation-certification` 78/78 with
-complete lifecycle and named verification (raw/gzip `ea31612f…` / `1c6c12fa…`). This is a ruler
-correction, not a gameplay deviation, timeout increase, retry, or memory-budget widening.
+**Status: ★ second bounded correction implemented; fresh calibration required.** Runs
+`32665404776` and `32677088518` exposed two consecutive green-too-early row-activation boundaries.
+The second report proves the first activation and receipt passed, but after Close/reopen the row's
+one-shot owned point moved across a deferred ResizeObserver/render turn. A passive wait then issued
+112 observations and ended on a clipped 51 ms command with a timely root heartbeat. The exact
+report is retained at raw/gzip `544015e9…` / `cc5ed778…`.
+
+Collector `6d681d19…` now positions only through the ordinary native-scroll path, requires the same
+exact owned inset point before and after a double-render plus thumbnail-settlement boundary, then
+sends one press/release and checks the immediate exact-detail receipt. Its controls reproduce a
+pre-render-green/post-render-null row and reject perpetual movement. This changes measurement
+authority to `6a961df8…`; former budget `208af955…`, samples, paired baseline and certificate are
+historical. The tracked budget is fail-closed at `calibration-required` with no ceilings pending
+three fresh candidates, one paired baseline, and one exact-budget certificate. This remains a ruler
+correction, not a gameplay deviation, timeout increase, click retry, or memory-budget widening.
 
 ## Current-state decision — Arc 1C ship visual and real-Shipyard resource extension (2026-08-23)
 

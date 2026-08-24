@@ -28,6 +28,16 @@ const schemaPath = path.join(here, '..', 'budgets', 'compendium-memory-v1.schema
 const retainedLinuxReportPath = path.join(
   v2Root, '..', '..', 'audits', 'PR32_LINUX_MEMORY_REPORT_32441023665.json.gz',
 );
+const latestHostedFailureEvidence = Object.freeze({
+  file: 'PR34_COMPENDIUM_GHA_32677088518_FAILURE.json.gz',
+  runId: 'gha-32677088518-1-compendiummem',
+  sourceCommit: '8fecd69a9f3c9a8073ec893bd9a45e693d99939a',
+  budgetSha256: '208af9558317cae7748f01470dd50e608485d4a197212ecd04db823f7c15a424',
+  measurementAuthoritySha256: 'cfc40f891e817c54c5b382cd5ef39ff606a0af27e1c142382c19da3d213edf0a',
+  collectorSha256: '50c28928c7aac758c2b19d0a7c52de1d05f730d03e293b0d83fa324cdd300cf7',
+  rawSha256: '544015e9e8e9e09e6ad6e13c5be40e7629f3e5884e55a147c503234a754f45da',
+  gzipSha256: 'cc5ed778f402763f34ceb76785f080b56d61f6067033087b6fe1143a492a28c9',
+});
 const currentEvidence = [
   {
     runId: '20260823-pr34-row-activation-candidate4',
@@ -71,11 +81,11 @@ const currentCertificationEvidence = Object.freeze({
 });
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  'cfc40f891e817c54c5b382cd5ef39ff606a0af27e1c142382c19da3d213edf0a';
+  '6a961df806e460d6ed02600f5366485d09d0878efa0129960b683cc4037173c7';
 const EXPECTED_COLLECTOR_AUTHORITY =
-  '50c28928c7aac758c2b19d0a7c52de1d05f730d03e293b0d83fa324cdd300cf7';
+  '6d681d19ab8c9a6ec77de04db9cbacc2ab49fb9f65044b421635ba9fed09487b';
 const HISTORICAL_MEASUREMENT_AUTHORITY =
-  '2318f57bcadd83b2f540e3a2d1b8bea54ca6c88d1df8715318a341d4e2ae7cf2';
+  'cfc40f891e817c54c5b382cd5ef39ff606a0af27e1c142382c19da3d213edf0a';
 const EXPECTED_PRODUCER_AUTHORITY =
   '5a316197d9aca27967f4e930f43089d2bbe2b9e4a66a40c207ea59c809405d94';
 type BrowserAuthority = {
@@ -95,15 +105,11 @@ const EXPECTED_BROWSER_AUTHORITY: BrowserAuthority = {
   protocolVersion: '1.3',
 };
 const EXPECTED_CANDIDATE_RUNS = [
-  '20260823-pr34-row-activation-candidate4',
-  '20260823-pr34-row-activation-candidate5b',
-  '20260823-pr34-row-activation-candidate6',
+  '20260823-pr34-render-stable-row-candidate1',
+  '20260823-pr34-render-stable-row-candidate2',
+  '20260823-pr34-render-stable-row-candidate3',
 ] as const;
-const EXPECTED_BASELINE_RUN = '20260823-pr34-row-activation-baseline1';
-const HISTORICAL_CANDIDATE_RUNS = [
-  'Candidate24/25/26',
-] as const;
-const HISTORICAL_BASELINE_RUN = 'baseline10';
+const EXPECTED_BASELINE_RUN = '20260823-pr34-render-stable-row-baseline1';
 
 type ProfileName = typeof PROFILE_NAMES[number];
 type CalibrationSample = {
@@ -371,6 +377,93 @@ describe('Arc 1A Compendium budget authority', () => {
       .toBe(baselineProjection.rowsSha256);
   });
 
+  it('retains the exact hosted render-boundary failure and its passive-poll diagnosis', () => {
+    const compressed = fs.readFileSync(path.join(
+      v2Root, '..', '..', 'audits', latestHostedFailureEvidence.file,
+    ));
+    expect(createHash('sha256').update(compressed).digest('hex'))
+      .toBe(latestHostedFailureEvidence.gzipSha256);
+    const raw = gunzipSync(compressed);
+    expect(createHash('sha256').update(raw).digest('hex'))
+      .toBe(latestHostedFailureEvidence.rawSha256);
+    const report = JSON.parse(raw.toString('utf8')) as {
+      schema: string; runId: string; status: string;
+      lifecycle: { schema: string; status: string };
+      source: { begin: Record<string, string>; end: Record<string, string> };
+      inputs: Record<string, string>;
+      browser: Record<string, string>;
+      budget: {
+        sha256: string; browserAuthorityMatch: boolean; producerAuthorityMatch: boolean;
+        producerAuthority: { sha256: string }; observedProducerAuthority: unknown;
+      };
+      outcomes: unknown[]; findings: string[]; blockedOutcomes: string[];
+      partialFailure: {
+        classification: string; profile: string; lastCompletedStage: string;
+        failingStage: string; command: Record<string, any>;
+      };
+      profiles: Record<string, {
+        completedStages: string[]; commandLedger: Array<Record<string, any>>;
+      }>;
+    };
+    expect(report).toMatchObject({
+      schema: 'cf-v2-compendium-memory-report/v1',
+      runId: latestHostedFailureEvidence.runId,
+      status: 'product-unanswerable',
+      lifecycle: { schema: 'cf-v2-compendium-report-lifecycle/v1', status: 'complete' },
+    });
+    expect(report.source.begin).toEqual(report.source.end);
+    expect(report.source.begin).toMatchObject({
+      commit: latestHostedFailureEvidence.sourceCommit,
+      branch: 'detached', state: 'committed',
+      statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+    });
+    expect(report.inputs.budget).toBe(latestHostedFailureEvidence.budgetSha256);
+    expect(report.inputs.collector).toBe(latestHostedFailureEvidence.collectorSha256);
+    expect(compendiumMeasurementAuthority(report.inputs)?.sha256)
+      .toBe(latestHostedFailureEvidence.measurementAuthoritySha256);
+    expect(report.browser).toMatchObject({
+      product: EXPECTED_BROWSER_AUTHORITY.product,
+      revision: EXPECTED_BROWSER_AUTHORITY.revision,
+      js_version: EXPECTED_BROWSER_AUTHORITY.jsVersion,
+      protocol_version: EXPECTED_BROWSER_AUTHORITY.protocolVersion,
+    });
+    expect(report.budget).toMatchObject({
+      sha256: latestHostedFailureEvidence.budgetSha256,
+      browserAuthorityMatch: true, producerAuthorityMatch: true,
+      producerAuthority: { sha256: EXPECTED_PRODUCER_AUTHORITY },
+    });
+    expect(report.budget.observedProducerAuthority).toEqual(report.budget.producerAuthority);
+    expect(report.outcomes).toEqual([]);
+    expect(report.blockedOutcomes).toEqual(EXPECTED_OUTCOMES);
+    expect(report.findings).toEqual([
+      'product: desktop row cmem-0777-filter-beacon: target Runtime.evaluate missed the 51ms deadline while the root heartbeat remained timely',
+    ]);
+    expect(report.partialFailure).toMatchObject({
+      classification: 'product-unanswerable', profile: 'desktop',
+      lastCompletedStage: 'pre-detail Back anchor',
+      failingStage: 'row cmem-0777-filter-beacon',
+      command: {
+        label: 'row cmem-0777-filter-beacon', timeoutMs: 51,
+        target: { status: 'rejected', timely: false },
+        heartbeat: { status: 'fulfilled', timely: true },
+      },
+    });
+    const desktop = report.profiles.desktop!;
+    expect(desktop.completedStages).toContain('row cmem-0777-filter-beacon activation receipt');
+    expect(desktop.completedStages).toContain('440 detail');
+    expect(desktop.completedStages).toContain('settled scroll visibility 777');
+    const failedPhaseDeadline = report.partialFailure.command.phaseDeadlineMs;
+    const passivePhase = desktop.commandLedger.filter((command) =>
+      command.label === 'row cmem-0777-filter-beacon'
+      && command.phaseDeadlineMs === failedPhaseDeadline);
+    expect(passivePhase).toHaveLength(112);
+    expect(passivePhase.slice(0, -1).every((command) =>
+      command.target.status === 'fulfilled' && command.target.timely === true)).toBe(true);
+    expect(passivePhase.at(-1)).toEqual(report.partialFailure.command);
+    expect(report.partialFailure.command.target.durationMs).toBeCloseTo(51.791665, 5);
+    expect(report.partialFailure.command.heartbeat.durationMs).toBeCloseTo(2.386498, 5);
+  });
+
   it('keeps strict metric and ceiling schema keys identical to the semantic contract', () => {
     type StrictObjectDefinition = {
       required: string[]; properties: Record<string, unknown>; additionalProperties: boolean;
@@ -432,35 +525,21 @@ describe('Arc 1A Compendium budget authority', () => {
         .toBe('38447019517147319bd08c598202d097ee866874');
       expect(activeBudget.pairedBrokenBaseline.collectorCommit).toBeNull();
       expect(activeBudget.calibration.selectionRule).toContain('Edg/151.0.4129.101');
-      expect(activeBudget.calibration.selectionRule).toContain('fresh exact');
       expect(activeBudget.calibration.selectionRule).toContain(HISTORICAL_MEASUREMENT_AUTHORITY);
-      expect(activeBudget.calibration.selectionRule).toContain('historical evidence only');
-      for (const runId of HISTORICAL_CANDIDATE_RUNS) {
-        expect(activeBudget.calibration.selectionRule).toContain(runId);
-      }
-      expect(activeBudget.calibration.selectionRule).toContain(HISTORICAL_BASELINE_RUN);
+      expect(activeBudget.calibration.selectionRule).toContain('historical');
+      expect(activeBudget.calibration.selectionRule).toContain('All earlier samples');
+      expect(activeBudget.calibration.selectionRule).toContain('32677088518');
       expect(activeBudget.calibration.selectionRule)
-        .toContain('32420327368');
-      expect(activeBudget.calibration.selectionRule).toContain('40-minute job ceiling');
-      expect(activeBudget.calibration.selectionRule).toContain('lifecycle RUNNING');
-      expect(activeBudget.calibration.selectionRule)
-        .toContain('no product verdict');
-      expect(activeBudget.calibration.selectionRule).toContain('bounded 2-second');
-      expect(activeBudget.calibration.selectionRule).toContain('forced connection cleanup');
+        .toContain(latestHostedFailureEvidence.rawSha256);
+      expect(activeBudget.calibration.selectionRule).toContain('113 passive observations');
+      expect(activeBudget.calibration.selectionRule).toContain('double-render settlement');
       expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_COLLECTOR_AUTHORITY);
       expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_MEASUREMENT_AUTHORITY);
-      expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_BASELINE_RUN);
-      for (const runId of EXPECTED_CANDIDATE_RUNS) {
-        expect(activeBudget.calibration.selectionRule).toContain(runId);
-      }
       expect(activeBudget.calibration.selectionRule).toContain('one attempt');
       expect(activeBudget.calibration.selectionRule).toContain('zero retries');
-      expect(activeBudget.calibration.selectionRule).toContain('raw-capsule');
-      expect(activeBudget.calibration.selectionRule).toContain('strictly above');
-      expect(activeBudget.calibration.selectionRule).toContain('rational headroom');
-      expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_PRODUCER_AUTHORITY);
+      expect(activeBudget.calibration.selectionRule).toContain('strict measured headroom');
       expect(activeBudget.calibration.selectionRule)
-        .toContain('does not re-pin the Gate-A/global browser');
+        .toContain('does not re-pin Gate A');
       expect((budget.measurementAuthority as {
         inputs: { collector: string };
       }).inputs.collector).toBe(EXPECTED_COLLECTOR_AUTHORITY);

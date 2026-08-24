@@ -44,17 +44,18 @@
 > terminal-green PR #33 run is consumed and merged; no subsequent hosted attempt is authorized by
 > this handoff. Local evidence still does not authorize a release, preview publication, or deployment.
 >
-> **PR #34 Compendium interaction-ruler repair (2026-08-23; local certification pending):** hosted
-> run `32665404776` did not expose a memory leak. Its desktop second 440-detail native click never
-> activated a partially positioned virtual row, after which the gate incorrectly spent 30 seconds
-> waiting for absent detail art and surfaced its final clipped 46 ms poll as the diagnosis. Collector
-> `50c28928…` now requires full containment, an inset point with independent exact hit ownership,
-> and an immediate exact-detail receipt after the one native press/release. Three retained clean
-> candidates and paired legacy baseline1 activate measurement `cfc40f89…` and budget
-> `208af955…` without changing any numeric resource ceiling; the baseline retains all four faults.
-> Clean committed source `7de42c6…` then passed local run
-> `20260823-pr34-row-activation-certification` 78/78 with complete lifecycle and named verification;
-> report raw/gzip SHA-256 are `ea31612f…` / `1c6c12fa…`. This is local authority only.
+> **PR #34 Compendium interaction-ruler repair (2026-08-23; recalibration required):** runs
+> `32665404776` and `32677088518` did not expose a memory leak. The second run proves the first
+> full-containment/hit-owner repair activated detail once, but after Close/reopen its one-shot row
+> point became invalid across a deferred ResizeObserver/render turn. The passive wait issued 112
+> observations and ended on a clipped 51 ms command with a timely root heartbeat. Exact report
+> raw/gzip SHA-256 are `544015e9…` / `cc5ed778…`. Collector `6d681d19…` now repositions only through
+> the native-scroll path, consumes a double-render boundary, re-proves thumbnail settlement, and
+> requires the same owned inset point before and after it. It then sends one press/release and checks
+> the immediate detail receipt; there is no click retry or timeout widening. Measurement authority
+> is now `6a961df8…`; former budget `208af955…`, samples, baseline and certificate are historical.
+> The tracked budget is `calibration-required` with no ceilings until fresh clean candidate,
+> paired-baseline and exact-budget evidence is retained. No new hosted attempt is authorized.
 >
 > PR #33 attempt 4, run `32618995487`, tested the exact authorized head/base once and is terminal-red,
 > consumed, and not retried. Its complete SceneMemory report passed 40/42: all memory, ownership,

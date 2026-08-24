@@ -55,15 +55,16 @@
 > This document does not authorize a release, deployment, version bump, or claim that an entire
 > Gate is closed.
 >
-> PR #34 run `32665404776` subsequently exposed one Compendium native-input ruler defect: a
-> partially positioned virtual row could lose hit ownership between separate hosted press/release
-> commands, and the gate then misdiagnosed the absent detail as an art timeout. Local collector
-> `50c28928…` now requires full containment, independent hit ownership, and an immediate exact-detail
-> receipt. Three retained candidates plus paired baseline1 activate measurement `cfc40f89…` and
-> budget `208af955…` with every numeric product ceiling unchanged. Clean source `7de42c6…` passed
-> local exact-budget run `20260823-pr34-row-activation-certification` 78/78 with complete lifecycle
-> and named verification (raw/gzip `ea31612f…` / `1c6c12fa…`). A new explicitly authorized hosted
-> attempt remains pending.
+> PR #34 runs `32665404776` and `32677088518` subsequently exposed two Compendium native-input
+> ruler boundaries. The second proves the first activation/receipt repair worked, but after
+> Close/reopen a one-shot owned row point moved across a deferred ResizeObserver/render turn. A
+> passive wait issued 112 observations and ended on a clipped 51 ms command with a timely root
+> heartbeat. Exact report raw/gzip hashes are `544015e9…` / `cc5ed778…`. Collector `6d681d19…`
+> now repositions only through native scroll and requires the same exact owned point before and
+> after a double-render plus thumbnail-settlement boundary before its one click. Measurement is
+> `6a961df8…`; former budget `208af955…`, samples, baseline and certificate are historical. The
+> tracked budget is fail-closed at `calibration-required`; fresh local evidence is required before
+> any new explicitly authorized hosted attempt.
 > **Review provenance:** the accepted PR #23 and HD-audio review inputs are preserved verbatim at
 > [`../audits/v2-program-review-2026-08-14/`](../audits/v2-program-review-2026-08-14/).
 

@@ -208,14 +208,16 @@ owned 440px image, and Planetside uses the same lease path. Its standalone `comp
 retains the Arc-local four-field browser authority
 `arc1a-compendium-memory-only`: product `Edg/151.0.4129.101`, revision
 `@cc1d9f4080fd9140611a9600b8d1615db310105d`, JavaScript version `15.1.23.9`, and CDP protocol
-version `1.3`. PR #34's repaired native-row interaction authority is measurement `cfc40f89…` under
-collector `50c28928…`; active budget SHA-256 is
-`208af9558317cae7748f01470dd50e608485d4a197212ecd04db823f7c15a424`. It requires full row
-containment, independent hit ownership and an immediate exact-detail receipt before judging art;
-numeric resource ceilings are unchanged. Clean source `7de42c6…` passed local exact-budget run
-`20260823-pr34-row-activation-certification` 78/78 with named verification; raw/gzip report hashes
-are `ea31612f…` / `1c6c12fa…`. Executable path and user
-agent remain recorded provenance, not cross-host match fields.
+version `1.3`. PR #34 runs `32665404776` and `32677088518` are retained terminal-red interaction
+evidence, not memory verdicts. The second run proves the first activation succeeded, then a
+Close/reopen row point moved across the deferred ResizeObserver/render boundary; its passive wait
+ended after 112 observations on a clipped 51 ms command with a timely heartbeat. Exact report
+raw/gzip hashes are `544015e9…` / `cc5ed778…`. Collector `6d681d19…` now uses native-scroll
+repositioning and requires the same owned point before/after a double-render plus thumbnail-settle
+boundary before its one press/release and immediate receipt. Measurement is `6a961df8…`; former
+budget `208af955…` and its evidence are historical. The tracked budget has no ceilings while
+`calibration-required`; fresh candidate, paired-baseline and exact-budget evidence remain pending.
+Executable path and user agent remain recorded provenance, not cross-host match fields.
 
 Ubuntu provisions `/usr/bin/microsoft-edge-stable` only for the ordinary Compendium job and
 the manual Compendium selftest/run/verify steps. The package is the exact Microsoft

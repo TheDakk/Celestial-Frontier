@@ -35,24 +35,22 @@ the archive verbatim and refresh this handoff in place.
 
 ### PR #34 Compendium ruler repair
 
-- The documentation-sync PR #34 battery run `32665404776` is consumed terminal-red and was not
-  retried. The label was removed. Its retained report proves the desktop second 440-detail native
-  click never activated the virtual row; the following 30-second art wait ended on a final clipped
-  46 ms CDP poll. This was an interaction-ruler failure, not a Compendium memory leak or a 46 ms
-  product SLA.
-- Local collector repair `bf0ece6c7d32410f6cb76fb0a4920c0332d080c4` requires full row
-  containment, exact independent hit ownership, and an immediate exact-detail receipt after the
-  one native press/release. Its selftest independently breaks those conditions. Three retained
-  one-attempt candidates and paired legacy baseline1 are green under measurement authority
-  `cfc40f891e817c54c5b382cd5ef39ff606a0af27e1c142382c19da3d213edf0a`; every numeric product
-  ceiling is unchanged and the baseline still preserves all four sealed faults.
-- The active replacement budget is SHA-256
-  `208af9558317cae7748f01470dd50e608485d4a197212ecd04db823f7c15a424`. Clean committed source
-  `7de42c6bb02f4c7af26053fa7a4cf45f5fbdc777` passed exact-budget local run
-  `20260823-pr34-row-activation-certification` 78/78 with complete lifecycle and its named verifier.
-  Report raw/gzip SHA-256 are `ea31612f16c978d30a40d8b6465f89e4e6f10f23b35ae996919e5ed0c7656108` /
-  `1c6c12faaf984716c31aecb8b1e5c11767ed998892c6bd4eba9f4edf23a0f1eb`. No push, hosted
-  attempt, Ready transition, or merge is authorized yet.
+- Runs `32665404776` and `32677088518` are consumed terminal-red, were not retried, and had their
+  labels removed. The second exact Linux report proves the first repaired activation succeeded,
+  then the Close/reopen activation passed a one-shot row check before a deferred
+  ResizeObserver/render turn invalidated its point. A passive 20-second wait issued 112 observations
+  and ended on a clipped 51 ms command with a timely root heartbeat. This is a virtual-row
+  positioning race, not a memory leak or a 51 ms product SLA.
+- The exact report is retained as `audits/PR34_COMPENDIUM_GHA_32677088518_FAILURE.json.gz` with
+  raw/gzip SHA-256 `544015e9…` / `cc5ed778…`. The bounded local correction repositions only through
+  the existing native-scroll path, consumes a double-render boundary, re-proves thumbnail
+  settlement, and requires the same exact owned point before and after that boundary. It then sends
+  one press/release and checks the immediate detail receipt; no click retry or timeout widening exists.
+- Collector `6d681d19…` changes measurement authority to `6a961df8…`. The former active budget
+  `208af955…`, its samples, baseline and local certificate are historical only. The tracked budget
+  is `calibration-required`, with empty samples and no ceilings, until three fresh clean candidates,
+  one paired legacy baseline and one independent exact-budget certificate are retained from the
+  committed repair source. PR #34 remains Draft and unmerged; no new hosted attempt is authorized.
 
 ### Remaining Arc 1 evidence
 
@@ -112,9 +110,9 @@ the archive verbatim and refresh this handoff in place.
    merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
    manual file copying. Nick does not need to open Claude now.
 
-**Current side:** Codex macOS is on `openai/mac`; PR #34's ruler repair and replacement evidence
-are local and ahead of `origin/openai/mac`.
+**Current side:** Codex macOS is on `openai/mac`; PR #34's render-stable row repair and failed-run
+evidence are local, uncommitted, and not yet calibrated.
 **GitHub step:** none.
 **Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.
-**Actions budget:** `UNFROZEN`; PR #34 run `32665404776` is consumed terminal-red and its label was
-removed; no new hosted attempt is authorized by this handoff.
+**Actions budget:** `UNFROZEN`; PR #34 runs `32665404776` and `32677088518` are consumed
+terminal-red and their labels were removed; no new hosted attempt is authorized by this handoff.

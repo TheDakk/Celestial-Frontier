@@ -69,6 +69,7 @@ import {
   closeCompendiumServer,
   driveCandidateFilterTransition, validCandidateFilterInputExpression,
   finalizeCompendiumLifecycle,
+  settleCandidateRowActivationPoint,
   validCandidateThumbSettlementExpression,
   validCandidateFilterTelemetryExpression, validCandidateArmProducerErrorExpression,
   validCandidateRowPointExpression,
@@ -109,7 +110,8 @@ const rowPointSource = candidateRowPointExpression('cmem-row-selftest');
 assert(validCandidateRowPointExpression(rowPointSource, 'cmem-row-selftest'),
   'the exact row activation expression was rejected');
 assert(rowPointSource.includes('elementFromPoint')
-  && rowPointSource.includes('r.top<top-0.5||r.bottom>bottom+0.5'),
+  && rowPointSource.includes('r.top<top-0.5||r.bottom>bottom+0.5')
+  && rowPointSource.includes('for(const y of ys)for(const x of xs)'),
 'row activation lost its full-viewport and hit-test preconditions');
 assert(!validCandidateRowPointExpression(
   rowPointSource.replace("document.elementFromPoint(x,y)?.closest?.('[data-cid]')", 'e'),
@@ -117,6 +119,58 @@ assert(!validCandidateRowPointExpression(
 ), 'a row activation expression without an independent hit test was accepted');
 assertThrows(() => candidateRowPointExpression(''),
   'an empty row activation identity was accepted');
+
+{
+  let attempt = 0;
+  let afterBoundary = false;
+  const sequence = [];
+  const stablePoint = await settleCandidateRowActivationPoint({
+    sessionId: 'row-settlement-session', logicalId: 'cmem-row-selftest',
+    scrollToIndex: async () => {
+      attempt++;
+      afterBoundary = false;
+      sequence.push(`scroll:${attempt}`);
+    },
+    waitReady: async () => { sequence.push(`ready:${attempt}`); },
+    evaluate: async (_sessionId, expression, label) => {
+      sequence.push(label);
+      if (expression.startsWith('new Promise')) {
+        afterBoundary = true;
+        return true;
+      }
+      if (attempt === 1 && afterBoundary) return null;
+      return attempt === 1 ? { x: 10, y: 20 } : { x: 30, y: 40 };
+    },
+  });
+  assert(JSON.stringify(stablePoint) === JSON.stringify({ x: 30, y: 40 })
+    && attempt === 2
+    && sequence.includes('row cmem-row-selftest deferred-layout settlement 1')
+    && sequence.includes('row cmem-row-selftest post-render point 1'),
+  'a row that moved after the deferred render boundary was clicked or never repositioned');
+
+  let unstableRejected = false;
+  let unstableAttempt = 0;
+  let unstableAfterBoundary = false;
+  try {
+    await settleCandidateRowActivationPoint({
+      sessionId: 'row-settlement-session', logicalId: 'cmem-row-selftest', maxAttempts: 2,
+      scrollToIndex: async () => { unstableAttempt++; unstableAfterBoundary = false; },
+      waitReady: async () => {},
+      evaluate: async (_sessionId, expression) => {
+        if (expression.startsWith('new Promise')) {
+          unstableAfterBoundary = true;
+          return true;
+        }
+        return { x: unstableAttempt, y: unstableAfterBoundary ? 2 : 1 };
+      },
+    });
+  } catch (error) {
+    unstableRejected = error?.classification === 'product-unanswerable'
+      && String(error.message).includes('never owned a render-stable activation point');
+  }
+  assert(unstableRejected,
+    'a row without a stable post-render activation point remained green');
+}
 
 {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-species-art-graph-'));

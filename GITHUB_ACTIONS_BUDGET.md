@@ -2,9 +2,9 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** PR #34's authorized documentation-sync attempt, run
-`32665404776`, is consumed terminal-red; its Compendium interaction-ruler evidence is retained and
-the approval label was removed. No retry or replacement attempt is authorized. PR #33's fifth and
+**Hosted attempt state: none authorized.** PR #34 runs `32665404776` and `32677088518` are
+consumed terminal-red; their Compendium interaction-ruler evidence is retained and both approval
+labels were removed. No retry or replacement attempt is authorized. PR #33's fifth and
 final authorized changed-head attempt,
 run `32646110946`, passed terminal-green (one attempt, no retry; battery 50m29s), its label was
 removed, and it merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`.
@@ -216,7 +216,7 @@ configured job-minutes on every PR update, then repeat on `develop` and fan out 
 That automatic fanout is retired. Parallel wall-clock speed is not worth multiplying finite hosted
 minutes or letting unrelated jobs continue after the first deterministic red.
 
-## Authorized PR #34 attempt
+## Consumed PR #34 attempts
 
 PR #34 tested documentation-sync head `4909069ba6f1e2d5dee62286d29b0bc8201186ee` against base
 `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` once in run `32665404776`, under the normal
@@ -226,13 +226,28 @@ virtual row; the gate then waited for detail art that could not exist and ended 
 46 ms CDP command. The exact retained report shows healthy transport and no product memory verdict
 for that incomplete desktop profile. The label was removed and the attempt is consumed.
 
-Local repair `bf0ece6…` requires full row containment, independent exact hit ownership, and an
-immediate exact-detail receipt before any art wait. Three fresh retained candidates plus one paired
-legacy baseline preserve all numeric ceilings and four sealed baseline faults under measurement
-authority `cfc40f89…`; active budget SHA-256 is `208af955…`. Clean committed source `7de42c6…`
-passed local exact-budget run `20260823-pr34-row-activation-certification` 78/78 with complete
+The first local repair `bf0ece6…` required full row containment, independent exact hit ownership,
+and an immediate exact-detail receipt before any art wait. Three retained candidates plus one paired
+legacy baseline preserved all numeric ceilings and four sealed baseline faults under measurement
+authority `cfc40f89…`; its now-historical budget SHA-256 was `208af955…`. Clean committed source
+`7de42c6…` passed local exact-budget run `20260823-pr34-row-activation-certification` 78/78 with complete
 lifecycle and named verification; raw/gzip report SHA-256 are `ea31612f…` / `1c6c12fa…`. This
 local work does not authorize a push, label, hosted attempt, Ready transition, or merge.
+
+Nick then authorized head `3dc213cc87c1995a58525fa6b310f79bbfc99fef` against the same base
+once, under the same label, 92-runner-minute ceiling, and no-retry rule. Run `32677088518` passed
+every earlier gate and reached the second desktop row activation. Its exact report proves the first
+activation and immediate receipt succeeded; after Close/reopen, a one-shot pre-render row point
+became invalid across the deferred ResizeObserver/render turn. The passive point wait issued 112
+observations and ended on a final clipped 51 ms command while the root heartbeat remained timely.
+The label was removed; PR #34 stayed Draft and unmerged; the attempt is consumed.
+
+The retained raw/gzip report hashes are `544015e9…` / `cc5ed778…`. Collector `6d681d19…` now
+requires native-scroll positioning and the same exact owned point before and after a double-render
+settlement before sending its one press/release. This changes measurement authority to `6a961df8…`,
+so budget `208af955…`, its samples, baseline, and prior certificate are historical. The tracked
+budget is `calibration-required` with no ceilings. Fresh local calibration, paired baseline, and
+exact-budget certification are required before Nick may authorize a new changed-head hosted attempt.
 
 ## Safe rollout of this guard
 
